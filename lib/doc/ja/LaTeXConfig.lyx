@@ -136,7 +136,7 @@ LyXに欲しい機能であり、LaTeX装備にも追加したいと思うよう
 ら、LyXにそのことを教えなくてはなりません。導入後、メニュー項目
 \family sans
 ツール\SpecialChar \menuseparator
-再初期設定
+環境構成
 \family default
 を実行して、このファイルを再度読み込み、新しいパッケージが認識されたかどうかを確認してください。もし「検出」項目が「いいえ」となっているときは、何らかの理由で現
 在のLaTeX設定の一覧を取得できなかったことを示しています。大抵、ファイル名データベース(texhash)を更新するのを忘れた場合が殆どです。これを適切に行う
@@ -3948,38 +3948,6 @@ enumitem
 パッケージは、リスト（番号・記号・記述）の外観を調整するのに多くの可能性を提供します。言語学モジュールが、下位連番用例の外観を微調整するのに使用します。
 \end_layout
 
-\begin_layout Subsection
-『リスクと安全性に関する表示』モジュール
-\end_layout
-
-\begin_layout Subsubsection
-rsphrase
-\end_layout
-
-\begin_layout Description
-検出: 
-\begin_inset Info
-type  "package"
-arg   "rsphrase"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family typewriter
-macros/latex/contrib/mhchem/
-\end_layout
-
-\begin_layout Description
-備考: 
-\family sans
-rsphrase
-\family default
-パッケージは、公式の化学リスクと安全性に関する表示を挿入するのに用いられます。
-\end_layout
-
 \begin_layout Section
 
 \series bold
@@ -4290,58 +4258,6 @@ macros/latex/contrib/breakurl/
 breakurl
 \family default
 パッケージは、hyperrefが使用されているときに、DVI出力中のURLが行末で正しく改行されるようにします。
-\end_layout
-
-\begin_layout Subsection
-cancel
-\end_layout
-
-\begin_layout Description
-検出: 
-\begin_inset Info
-type  "package"
-arg   "esint"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family typewriter
-macros/latex/contrib/cancel/
-\end_layout
-
-\begin_layout Description
-備考: 
-\family sans
-cancel
-\family default
-パッケージは、数式の消去を組版するのに用いられます。
-\family sans
-
-\backslash
-cancel
-\family default
-・
-\family sans
-
-\backslash
-bcancel
-\family default
-・
-\family sans
-
-\backslash
-xcancel
-\family default
-・
-\family sans
-
-\backslash
-cancelto
-\family default
-の各コマンドが使えます。
 \end_layout
 
 \begin_layout Subsection
@@ -4809,34 +4725,6 @@ iddots
 数式オプション
 \family default
 タブで読み込ませることができ、文書中すべての数式ドットの外観を変更することもできます。
-\end_layout
-
-\begin_layout Subsection
-mathtools
-\end_layout
-
-\begin_layout Description
-検出: 
-\begin_inset Info
-type  "package"
-arg   "mathdots"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN: 
-\family typewriter
-macros/latex/contrib/mh/
-\end_layout
-
-\begin_layout Description
-備考: 
-\family sans
-mathtools
-\family default
-モジュールは、いくつかのunicode記号のために、LyXが使用します。
 \end_layout
 
 \begin_layout Subsection

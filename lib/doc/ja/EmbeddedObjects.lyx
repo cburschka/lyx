@@ -145,7 +145,7 @@
 % used for captions on the side
 \newboolean{sidecap}
 \IfFileExists{sidecap.sty}
- {\usepackage{sidecap}
+ {%\usepackage{sidecap} % This breaks fonts in pLaTeX
   \setboolean{sidecap}{true}}
  {\setboolean{sidecap}{false}}
 
@@ -170,6 +170,11 @@
  {\usepackage{diagbox}
   \setboolean{diagbox}{true}}
  {\setboolean{diagbox}{false}}
+
+ \IfFileExists{okumacro.sty}
+{\usepackage{okumacro}
+ \newcommand{\捷径}{\ruby{捷径}{\small ショートカット}}}
+{\newcommand{\捷径}{ショートカット}}
 
 \usepackage{t1enc}
 \renewcommand{\seename}{→}
@@ -744,7 +749,7 @@ arg   "float-insert figure"
 フロート\SpecialChar \menuseparator
 図
 \family default
-メニューを用いると、「図 #」（#は実際には数字です）というラベルのキャプションを持ったフロートが挿入されます。画像は、図
+メニューを用いると、「図 #」(#は実際には数字です)というラベルのキャプションを持ったフロートが挿入されます。画像は、図
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:犠牲のカモノハシ"
@@ -1134,12 +1139,12 @@ reference "cha:ファイル出力形式"
 \end_layout
 
 \begin_layout Description
-ビットマップ画像 は、ピクセル値を（時により圧縮された形で）保持しています。したがって、この画像形式は完全に伸縮可能ではなく、拡大するとピクセルが目立つようにな
-ります。よく知られたビットマップ画像形式には、「Graphics Interchange Format（画像交換形式）」（GIF・ファイル拡張子は「
+ビットマップ画像 は、ピクセル値を(時により圧縮された形で)保持しています。したがって、この画像形式は完全に伸縮可能ではなく、拡大するとピクセルが目立つようにな
+ります。よく知られたビットマップ画像形式には、「Graphics Interchange Format(画像交換形式)」(GIF・ファイル拡張子は「
 \family typewriter
 .gif
 \family default
-」）
+」)
 \begin_inset Index idx
 status collapsed
 
@@ -1171,11 +1176,11 @@ status collapsed
 
 \end_inset
 
-、「Portable Network Graphics（可搬性ネットワーク画像ファイル）」（PNG・ファイル拡張子は「
+、「Portable Network Graphics(可搬性ネットワーク画像ファイル)」(PNG・ファイル拡張子は「
 \family typewriter
 .png
 \family default
-」）
+」)
 \begin_inset Index idx
 status collapsed
 
@@ -1207,7 +1212,7 @@ status collapsed
 
 \end_inset
 
-、「Joint Photographic Experts Group（写真専門家連合組織）」（JPG・ファイル拡張子は「
+、「Joint Photographic Experts Group(写真専門家連合組織)」(JPG・ファイル拡張子は「
 \family typewriter
 .jpg
 \family default
@@ -1215,7 +1220,7 @@ status collapsed
 \family typewriter
 .jpeg
 \family default
-」）
+」)
 \begin_inset Index idx
 status collapsed
 
@@ -1257,11 +1262,11 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
-よく知られた伸縮可能画像形式には、「Scalable Vector Graphics（伸縮可能ベクトル画像ファイル）」（SVG・ファイル拡張子は「
+よく知られた伸縮可能画像形式には、「Scalable Vector Graphics(伸縮可能ベクトル画像ファイル)」(SVG・ファイル拡張子は「
 \family typewriter
 .svg
 \family default
-」）
+」)
 \begin_inset Index idx
 status collapsed
 
@@ -1293,11 +1298,11 @@ status collapsed
 
 \end_inset
 
-、「Encapsulated PostScript（カプセル化ポストスクリプト）」（EPS・ファイル拡張子は「
+、「Encapsulated PostScript(カプセル化ポストスクリプト)」(EPS・ファイル拡張子は「
 \family typewriter
 .eps
 \family default
-」）
+」)
 \begin_inset Index idx
 status collapsed
 
@@ -1329,11 +1334,11 @@ status collapsed
 
 \end_inset
 
-、「Portable Document Format（可搬文書形式）」（PDF・ファイル拡張子は「
+、「Portable Document Format(可搬文書形式)」(PDF・ファイル拡張子は「
 \family typewriter
 .pdf
 \family default
-」）
+」)
 \begin_inset Index idx
 status collapsed
 
@@ -1343,11 +1348,11 @@ PDF
 
 \end_inset
 
-、「Windowsメタファイル」（WMF・ファイル拡張子は「
+、「Windowsメタファイル」(WMF・ファイル拡張子は「
 \family typewriter
 .wmf
 \family default
-」）
+」)
 \begin_inset Index idx
 status collapsed
 
@@ -2640,7 +2645,7 @@ arg   "float-insert table"
 \begin_inset space ~
 \end_inset
 
-#:」（#は実際には表番号です）というラベルのついたキャプションがあります。表は、このキャプションの上にも下にも入れることができます。
+#:」(#は実際には表番号です)というラベルのついたキャプションがあります。表は、このキャプションの上にも下にも入れることができます。
 \end_layout
 
 \begin_layout Standard
@@ -2919,7 +2924,7 @@ reference "sub:長尺表のキャプション"
 \begin_layout Plain Layout
 
 \series bold
-例示用電話帳（名前は無視してください）
+例示用電話帳(名前は無視してください)
 \end_layout
 
 \end_inset
@@ -7262,7 +7267,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \series bold
-例示用電話帳（名前は無視の事）
+例示用電話帳(名前は無視の事)
 \end_layout
 
 \end_inset
@@ -9112,7 +9117,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-LaTeXは、表ページの頁高と改頁をいわゆる単位塊（チャンクchunk）を使って計算します。単位塊は、一度にLaTeXのメモリに読み込まれる表の断片です。歴史上
+LaTeXは、表ページの頁高と改頁をいわゆる単位塊(チャンクchunk)を使って計算します。単位塊は、一度にLaTeXのメモリに読み込まれる表の断片です。歴史上
 の経緯から、既定値はたった表20行分に設定されています。多頁にわたる長尺表がある場合、この設定では文書の生成に時間がかかるかもしれません。この場合、
 \end_layout
 
@@ -9365,7 +9370,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \series bold
-例示用電話帳（氏名は無視の事）
+例示用電話帳(氏名は無視の事)
 \end_layout
 
 \end_inset
@@ -10755,13 +10760,26 @@ cm幅とし、水平揃え及び垂直揃えをともに中央揃えに設定し
 \begin_inset space \thinspace{}
 \end_inset
 
-cmよりも短いため、一行しか表示されません。そこで二行とも表示するために、両端揃え改行（短絡キー
+cmよりも短いため、一行しか表示されません。そこで二行とも表示するために、両端揃え改行(
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径
+\end_layout
+
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert linebreak"
 \end_inset
 
-）を挿入してあります。もし文章が設定されたセル幅よりも広い場合には、文章は自動的にいくつかの行に改行されます。
+)を挿入してあります。もし文章が設定されたセル幅よりも広い場合には、文章は自動的にいくつかの行に改行されます。
 \end_layout
 
 \begin_layout Standard
@@ -11432,7 +11450,7 @@ cm幅に設定します。すると第二列は自動的に1.25
 \begin_inset space \thinspace{}
 \end_inset
 
-cm幅（連結列幅マイナス第一列の幅）になります。表
+cm幅(連結列幅マイナス第一列の幅)になります。表
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:半分でない表"
@@ -12159,7 +12177,20 @@ raggedright}
 \end_layout
 
 \begin_layout Standard
-連結行で新しい行に移るには、強制改行(短絡キー
+連結行で新しい行に移るには、強制改行(
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径
+\end_layout
+
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -16389,40 +16420,40 @@ definecolor{色彩名}{色彩モデル}{色彩値}
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-cmyk： シアン（
+cmyk： シアン(
 \bar under
 c
 \bar default
-yan）・マゼンタ（
+yan)・マゼンタ(
 \bar under
 m
 \bar default
-agenta）・黄（
+agenta)・黄(
 \bar under
 y
 \bar default
-ellow）・黒（blac
+ellow)・黒(blac
 \bar under
 k
 \bar default
-）
+)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-rgb： 赤（
+rgb： 赤(
 \bar under
 r
 \bar default
-ed）・緑（
+ed)・緑(
 \bar under
 g
 \bar default
-reen）・青（
+reen)・青(
 \bar under
 b
 \bar default
-lue）
+lue)
 \end_layout
 
 \begin_layout Labeling
@@ -18735,7 +18766,7 @@ extrarowheight}{height}
 \end_layout
 
 \begin_layout Standard
-しかしこの方法は、セル内の文章が縦方向に中央揃えにならないという欠点があります（自己定義の表書式を用いると、LyXは自動的に
+しかしこの方法は、セル内の文章が縦方向に中央揃えにならないという欠点があります(自己定義の表書式を用いると、LyXは自動的に
 \series bold
 array
 \series default
@@ -18745,7 +18776,7 @@ array
 \backslash
 @ifundefined
 \series default
-が使用されています）。
+が使用されています)。
 \end_layout
 
 \begin_layout Standard
@@ -22348,8 +22379,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-フロートは、何かしらのラベルに関連付けられた文章の塊で、固定された居場所を持ちません。フロートはもっとも適した場所を求めて、1頁ないし2頁、前後にただよう（フロ
-ート）ことができます。
+フロートは、何かしらのラベルに関連付けられた文章の塊で、固定された居場所を持ちません。フロートはもっとも適した場所を求めて、1頁ないし2頁、前後にただよう(フロ
+ート)ことができます。
 \family sans
 脚注
 \family default
@@ -22775,7 +22806,7 @@ status collapsed
 \family default
 メニューかツールバーボタンを使用して、フロートのキャプションにラベルを挿入してください。
 \begin_inset Graphics
-	filename ../clipart/labelQt4.png
+	filename clipart/labelQt4.png
 	scale 85
 	scaleBeforeRotation
 
@@ -23008,17 +23039,17 @@ LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
 \backslash
 newrefformat
 \series default
-コマンド（prettyrefの場合）あるいは
+コマンド(prettyrefの場合)あるいは
 \series bold
 
 \backslash
 newref
 \series default
-コマンド（refstyleの場合）を書き加えることによって指定することができます。たとえば、図への参照（これは短絡ラベル「
+コマンド(refstyleの場合)を書き加えることによって指定することができます。たとえば、図への参照(これは短絡ラベル「
 \family sans
 fig
 \family default
-」を持ちます）をすべて定義し直すには、
+」を持ちます)をすべて定義し直すには、
 \begin_inset Newline newline
 \end_inset
 
@@ -23084,25 +23115,7 @@ on this page
 status open
 
 \begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- It is recommended to use the LaTeX-package 
-\series bold
-refstyle
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
-\end_layout
-
-\end_inset
-
- because 
+【註】LaTeXパッケージ
 \series bold
 prettyref
 \series default
@@ -23116,11 +23129,12 @@ LaTeXぱっけーじ@LaTeXパッケージ! prettyref
 
 \end_inset
 
- does not know all of LyX's possible label shortcuts
+は、LyXの取り得るラベル捷径（ショートカット）
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
+例えば、
 \begin_inset Quotes eld
 \end_inset
 
@@ -23128,12 +23142,26 @@ fig:
 \begin_inset Quotes erd
 \end_inset
 
- is for example LyX's shortcut for labels in figure captions.
+は図キャプションを表すLyX捷径です。
 \end_layout
 
 \end_inset
 
- and is not internationalized.
+を全部は解釈できず、国際化もされていないので、
+\series bold
+refstyle
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
+\end_layout
+
+\end_inset
+
+を使用することを推奨します。
 \end_layout
 
 \end_inset
@@ -23178,11 +23206,11 @@ LaTeXぱっけーじ@LaTeXパッケージ ! hyperref
 
 \end_inset
 
- LaTeXパッケージは、相互参照が参照されたフロート（あるいは
+ LaTeXパッケージは、相互参照が参照されたフロート(あるいは
 \emph on
 節
 \emph default
-のような文章中の箇所）の名称を自動的に取り入れてくれるという、たいへん便利な機能を提供します。つまり、図への参照毎に前に「図」と書き込む必要はなくなるのです。こ
+のような文章中の箇所)の名称を自動的に取り入れてくれるという、たいへん便利な機能を提供します。つまり、図への参照毎に前に「図」と書き込む必要はなくなるのです。こ
 の機能を使用するには、hyperrefを有効にして、
 \end_layout
 
@@ -23258,7 +23286,7 @@ extrasenglishを
 \backslash
 extras***
 \series default
-に置き換えてください（***は使用中の言語名）。
+に置き換えてください(***は使用中の言語名)。
 \end_layout
 
 \begin_layout Standard
@@ -23303,14 +23331,14 @@ status open
 \family sans
 整形参照
 \family default
-様式（第
+様式(第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:相互参照の書式"
 
 \end_inset
 
-節）で使用しているときには、使用することができません。
+節)で使用しているときには、使用することができません。
 \end_layout
 
 \end_inset
@@ -23652,13 +23680,13 @@ LaTeXは、
 \family sans
 ページ上部
 \family default
- は、フロートのページに占める割合が7割以下の場合のみ、ページ上部に配置します（
+ は、フロートのページに占める割合が7割以下の場合のみ、ページ上部に配置します(
 \series bold
 
 \backslash
 topfraction
 \series default
-）。
+)。
 \end_layout
 
 \begin_layout Labeling
@@ -23667,13 +23695,13 @@ topfraction
 \family sans
 ページ下部
 \family default
- は、フロートのページに占める割合が3割以下の場合のみ、ページ下部に配置します（
+ は、フロートのページに占める割合が3割以下の場合のみ、ページ下部に配置します(
 \series bold
 
 \backslash
 bottomfraction
 \series default
-）。
+)。
 \end_layout
 
 \begin_layout Labeling
@@ -23682,13 +23710,13 @@ bottomfraction
 \family sans
 フロートを独立したページ 
 \family default
-には、フロートのページに占める割合が5割以下の場合のみ、複数のフロートを同一ページに配置します（
+には、フロートのページに占める割合が5割以下の場合のみ、複数のフロートを同一ページに配置します(
 \series bold
 
 \backslash
 floatpagefraction
 \series default
-）。
+)。
 \end_layout
 
 \begin_layout Standard
@@ -23933,7 +23961,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-回転フロートは、つねに独立したページ（二段組文書のときは独立した段）に配置されます。フロート設定の
+回転フロートは、つねに独立したページ(二段組文書のときは独立した段)に配置されます。フロート設定の
 \family sans
 段をまたぐ
 \family default
@@ -24993,7 +25021,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! KOMA-script
 
 \end_inset
 
-文書クラス（
+文書クラス(
 \family sans
 article (KOMA-script)
 \family default
@@ -25009,7 +25037,7 @@ letter (KOMA-script)
 \family sans
 report (KOMA-script)
 \family default
-）を使用している場合には、
+)を使用している場合には、
 \series bold
 caption
 \series default
@@ -25346,7 +25374,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! KOMA-script
 
 \end_inset
 
-文書クラス（
+文書クラス(
 \family sans
 article (KOMA-script)
 \family default
@@ -25366,7 +25394,7 @@ report (KOMA-script)
 \begin_inset space \thinspace{}
 \end_inset
 
-）をお使いの場合には、
+)をお使いの場合には、
 \series bold
 caption
 \series default
@@ -26020,6 +26048,43 @@ LaTeXぱっけーじ@LaTeXパッケージ ! hypcap
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+【訳註】
+\series default
+LaTeXパッケージ
+\series bold
+sidecap
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ ! sidecap
+\end_layout
+
+\end_inset
+
+は、pLaTeXと互換性がなく、特に文書全体の見出しのフォントが適切に表示できなくなってしまうため、本日本語訳では当該パッケージを使用していません。その使用例に
+ついては、取扱説明書『
+\emph on
+埋め込み機能篇
+\emph default
+』(つまりこの文書)のLyX文書本体を見るか、出力結果を見たい場合には英語版を出力するようにしてください。
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -26035,7 +26100,7 @@ FigBesBeg
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -26075,7 +26140,7 @@ name "fig:図横キャプション"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -26091,7 +26156,7 @@ FigBesEnd
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -26107,7 +26172,7 @@ TabBesBeg
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Float table
 wide false
 sideways false
@@ -26340,7 +26405,7 @@ name "tab:表横キャプション"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -26356,7 +26421,7 @@ TabBesEnd
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -26409,7 +26474,7 @@ name "fig:図横キャプション-2"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -26425,7 +26490,7 @@ FigBesEnd
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -26441,7 +26506,7 @@ TabBesBeg[5]
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Float table
 wide false
 sideways false
@@ -26681,7 +26746,7 @@ j
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -26697,7 +26762,9 @@ TabBesEnd
 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -26830,7 +26897,7 @@ LyX注釈 この注釈型は、内部用途の注釈で出力には現れませ�
 
 
 \begin_inset Graphics
-	filename ../clipart/LyXNoteImageQt4.png
+	filename clipart/LyXNoteImageQt4.png
 	display false
 	scale 85
 	scaleBeforeRotation
@@ -26867,7 +26934,7 @@ LaTeX (pdflatex) / (平文)
 
 
 \begin_inset Graphics
-	filename ../clipart/CommentNoteImageQt4.png
+	filename clipart/CommentNoteImageQt4.png
 	display false
 	scale 85
 	scaleBeforeRotation
@@ -26898,7 +26965,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../clipart/GreyedOutNoteImageQt4.png
+	filename clipart/GreyedOutNoteImageQt4.png
 	display false
 	scale 85
 	scaleBeforeRotation
@@ -27301,14 +27368,14 @@ reference "sub:長尺表での脚注"
 \end_layout
 
 \begin_layout Standard
-ミニページ中の脚注は出力されますが、ミニボックスは頁中の頁のようなものなので、ボックス内に独立した連番として出力されます（ミニページについての詳細は、第
+ミニページ中の脚注は出力されますが、ミニボックスは頁中の頁のようなものなので、ボックス内に独立した連番として出力されます(ミニページについての詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:ミニページ"
 
 \end_inset
 
-節を参照）。通常の脚注のように頁底部に出力されるミニページを得るには、やはり
+節を参照)。通常の脚注のように頁底部に出力されるミニページを得るには、やはり
 \series bold
 
 \backslash
@@ -27891,14 +27958,14 @@ vspace{1.5mm}}}
 \begin_inset VSpace bigskip
 \end_inset
 
-二段組文書では、脚注は各段底部に表示されます（図
+二段組文書では、脚注は各段底部に表示されます(図
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:標準的脚注配置"
 
 \end_inset
 
-）。図
+)。図
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:ftnright脚注配置"
@@ -28492,7 +28559,7 @@ reversemarginpar
 status open
 
 \begin_layout Plain Layout
-AVeryLongMarginParWord（とっても長い傍注段落中の単語）がハイフネートされない例。
+AVeryLongMarginParWord(とっても長い傍注段落中の単語)がハイフネートされない例。
 \end_layout
 
 \end_inset
@@ -28517,7 +28584,7 @@ status open
 \length 0pt
 \end_inset
 
-AVeryLongMarginParWord（とっても長い傍注段落中の単語）がハイフネートされる例。
+AVeryLongMarginParWord(とっても長い傍注段落中の単語)がハイフネートされる例。
 \end_layout
 
 \end_inset
@@ -29107,42 +29174,42 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-ボックスは、一塊の文章を整形するのに使用します。ボックスは、多言語文書を書くのに使用したり（第
+ボックスは、一塊の文章を整形するのに使用します。ボックスは、多言語文書を書くのに使用したり(第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:ミニページ"
 
 \end_inset
 
-節参照）、文章を囲ったり（第
+節参照)、文章を囲ったり(第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:装飾"
 
 \end_inset
 
-節参照）、単語がハイフネートされるのを予防したり（第
+節参照)、単語がハイフネートされるのを予防したり(第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:ハイフネーションの回避"
 
 \end_inset
 
-節参照）、文章を揃えたり（第
+節参照)、文章を揃えたり(第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:垂直揃え"
 
 \end_inset
 
-節参照）、あるいは文章の背景色を設定したり（第
+節参照)、あるいは文章の背景色を設定したり(第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:色付きボックス"
 
 \end_inset
 
-節参照）するのに使用します。
+節参照)するのに使用します。
 \end_layout
 
 \begin_layout Standard
@@ -29163,7 +29230,7 @@ arg   "box-insert Frameless"
 \family default
 を使って挿入することができます。すると、
 \begin_inset Graphics
-	filename ../clipart/BoxInsetDefaultQt4.png
+	filename clipart/BoxInsetDefaultQt4.png
 	scale 85
 	scaleBeforeRotation
 
@@ -29171,7 +29238,7 @@ arg   "box-insert Frameless"
 
 のように
 \family sans
-ボックス（minipage環境）
+ボックス(minipage環境)
 \family default
 というラベルのついた灰色の箱形が挿入されます。ボックス型は、この箱形を右クリックすると出てくるメニューで指定することができます。
 \family sans
@@ -29236,11 +29303,11 @@ status open
 \begin_layout Plain Layout
 【註】ボックスは、
 \family sans
-箇条書き（記号）
+箇条書き(記号)
 \family default
 環境や
 \family sans
-箇条書き（記述）
+箇条書き(記述)
 \family default
 環境の単独要素とすべきではありません。
 \end_layout
@@ -29846,7 +29913,7 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-楕円形の枠（細線） これはボックスの周りに楕円形の枠を描きます。枠線の太さは0.4
+楕円形の枠(細線) これはボックスの周りに楕円形の枠を描きます。枠線の太さは0.4
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -29866,7 +29933,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \align center
-楕円形の箱型（細線）
+楕円形の箱型(細線)
 \end_layout
 
 \end_inset
@@ -29875,7 +29942,7 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-楕円形の枠（太線） これはボックスの周りに楕円形の枠を描きます。枠線の太さは0.8
+楕円形の枠(太線) これはボックスの周りに楕円形の枠を描きます。枠線の太さは0.8
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -29895,7 +29962,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \align center
-楕円形の箱型（太線）
+楕円形の箱型(太線)
 \end_layout
 
 \end_inset
@@ -31288,13 +31355,26 @@ veryverylongword
 \family sans
 整形なし改行
 \family default
-メニュー（短絡キー
+メニュー(
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径
+\end_layout
+
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
 \end_inset
 
-）から改行を単語の前に入れてください。
+)から改行を単語の前に入れてください。
 \end_layout
 
 \begin_layout Standard
@@ -32442,23 +32522,23 @@ origin=位置
 \emph on
 c
 \emph default
-（中央揃え）・
+(中央揃え)・
 \emph on
 l
 \emph default
-（左揃え）・
+(左揃え)・
 \emph on
 r
 \emph default
-（右揃え）・
+(右揃え)・
 \emph on
 b
 \emph default
-（下揃え）・
+(下揃え)・
 \emph on
 t
 \emph default
-（上揃え）と、これら五つの適切な組み合わせです。たとえば、
+(上揃え)と、これら五つの適切な組み合わせです。たとえば、
 \emph on
 lt
 \emph default
@@ -33313,9 +33393,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ほんぶんまわりこみ
-\series bold
-@本文回り込み
+ほんぶんまわりこみ@本文回り込み
 \end_layout
 
 \end_inset
@@ -34500,9 +34578,7 @@ fi
 status collapsed
 
 \begin_layout Plain Layout
-かしらもじ
-\series bold
-@頭文字
+かしらもじ@頭文字
 \end_layout
 
 \end_inset
@@ -34959,7 +35035,7 @@ LyX文書 別のLyX文書。その内容は直接使用中の文書に挿入さ�
 \end_layout
 
 \begin_layout Description
-平文（行を連結して） テキスト文書。各テキスト行がその形のまま挿入されます。空の行があると、使用中の文書に新規段落を生成します。
+平文(行を連結して) テキスト文書。各テキスト行がその形のまま挿入されます。空の行があると、使用中の文書に新規段落を生成します。
 \end_layout
 
 \begin_layout Description
@@ -35013,11 +35089,11 @@ status collapsed
 \family sans
 外部素材
 \family default
-ダイアログから挿入することができます。目下、以下のファイル形式（
+ダイアログから挿入することができます。目下、以下のファイル形式(
 \family sans
 ひな型
 \family default
-）が使用できます。
+)が使用できます。
 \end_layout
 
 \begin_layout Description
@@ -35377,7 +35453,7 @@ reference "sec:画像ダイアログ"
 EPS画像はサポートされていません。右記は、ラスター画像を挿入した例です。
 \begin_inset External
 	template RasterImage
-	filename ../clipart/ToolbarEnvBox.png
+	filename clipart/ToolbarEnvBox.png
 
 \end_inset
 
@@ -35738,7 +35814,7 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-Include（インクルード） LyX文書とLaTeX文書は、インクルードすることができます。
+Include(インクルード) LyX文書とLaTeX文書は、インクルードすることができます。
 \family sans
 子文書
 \family default
@@ -35804,7 +35880,7 @@ LyXまたはLaTeXファイルを取り込んだ際、子文書が親文書と異
 \end_layout
 
 \begin_layout Description
-Input（インプット） この方法は、Includeによる方法に非常によく似ています。異なっている点は、
+Input(インプット) この方法は、Includeによる方法に非常によく似ています。異なっている点は、
 \end_layout
 
 \begin_deeper
@@ -35852,7 +35928,7 @@ filename "DummyDocument2.lyx"
 \end_layout
 
 \begin_layout Description
-Verbatim（文字通り） この方法では、テキストファイルなら何でも取り込むことができます。出力中では、ファイルはそのソースコードの通りに表示され、テキスト中
+Verbatim(文字通り) この方法では、テキストファイルなら何でも取り込むことができます。出力中では、ファイルはそのソースコードの通りに表示され、テキスト中
 に用いられているコマンドは実行されません。
 \family sans
 出力の空白に印付けをする
@@ -36256,7 +36332,7 @@ typewriter
 \family sans
 フォント
 \family default
-メニューで別のフォントを選択してください（
+メニューで別のフォントを選択してください(
 \emph on
 LuxiMono
 \emph default
@@ -36268,7 +36344,7 @@ BeraMono
 \emph on
 Courier
 \emph default
-の各フォントはボールド体を提供します）。
+の各フォントはボールド体を提供します)。
 \end_layout
 
 \end_inset
@@ -36529,23 +36605,23 @@ mathescape=true
 \end_layout
 
 \begin_layout Enumerate
-数式の内容（数式差込枠ではなく）をクリップボードにコピーします（短縮キー
+数式の内容(数式差込枠ではなく)をクリップボードにコピーします(短縮キー
 \begin_inset Info
 type  "shortcut"
 arg   "copy"
 \end_inset
 
-）。
+)。
 \end_layout
 
 \begin_layout Enumerate
-リストに「$$」と書き、クリップボードの内容をドルマークの間に貼り付けます（短縮キー
+リストに「$$」と書き、クリップボードの内容をドルマークの間に貼り付けます(短縮キー
 \begin_inset Info
 type  "shortcut"
 arg   "paste"
 \end_inset
 
-）。
+)。
 \end_layout
 
 \begin_layout Standard
@@ -37252,7 +37328,7 @@ status collapsed
 \family typewriter
 .dvi
 \family default
-」です。このファイル型は完全に可搬性があるので「device-independent（DVI：デバイス独立型）」の名称がついています。これはあるコンピュータから
+」です。このファイル型は完全に可搬性があるので「device-independent(DVI：デバイス独立型)」の名称がついています。これはあるコンピュータから
 別のコンピュータへ、何らの変換も行うことなしに移動することができます。このファイル書式が開発された当時には、これは当然のことでは全くありませんでした。DVIは手
 っ取り早くプレビューしたり、PostScriptなどの他の出力形式への中間段階として使用されます。
 \end_layout
@@ -37386,11 +37462,11 @@ key "pstricks"
 \end_layout
 
 \begin_layout Standard
-PostScriptは、「Encapsulated PostScript（EPS：ファイル拡張子「
+PostScriptは、「Encapsulated PostScript(EPS：ファイル拡張子「
 \family typewriter
 .eps
 \family default
-」）」形式の画像のみを含めることができます。LyXでは、既知の画像形式であればどれでも文書中で使用することができるようになっているため、LyXはバックグラウンド
+」)」形式の画像のみを含めることができます。LyXでは、既知の画像形式であればどれでも文書中で使用することができるようになっているため、LyXはバックグラウンド
 で画像をEPSに変換しなくてはなりません。文書中に、仮に50の画像があれば、文書を表示したり書き出ししたりするたびに、LyXは50もの変換を行わなくてはなりませ
 ん。すると、LyXで行う作業手順が、著しく遅れてしまいます。したがって、もしPostScriptを使用することを考えているならば、この問題を回避するために、画像
 を直接EPSとして入れておく方がよいでしょう。
@@ -37460,11 +37536,11 @@ PDF
 Adobe
 \family default
 社によってPostScriptの派生として開発されました。PDFは、PostScriptよりも圧縮されており、かなり少ないコマンドしか使いません。「portab
-le（可搬的）」の名称が示すとおり、この形式は、どのコンピュータシステムでも処理することができ、印字出力は全く同じように出すことができます。
+le(可搬的)」の名称が示すとおり、この形式は、どのコンピュータシステムでも処理することができ、印字出力は全く同じように出すことができます。
 \end_layout
 
 \begin_layout Standard
-PDFは画像を、同じPDF形式か、「Joint Photographic Experts Group（JPG：ファイル拡張子「
+PDFは画像を、同じPDF形式か、「Joint Photographic Experts Group(JPG：ファイル拡張子「
 \family typewriter
 .jpg
 \family default
@@ -37472,11 +37548,11 @@ PDFは画像を、同じPDF形式か、「Joint Photographic Experts Group（JPG
 \family typewriter
 .jpeg
 \family default
-」）」形式か、「Portable Network Graphics（PNG：ファイル拡張子「
+」)」形式か、「Portable Network Graphics(PNG：ファイル拡張子「
 \family typewriter
 .png
 \family default
-」）」として含めることができます。それにもかかわらず、LyXは画像をこれらの形式のいずれかにバックグラウンドで変換を行うので、他の画像形式も自由に使用することが
+」)」として含めることができます。それにもかかわらず、LyXは画像をこれらの形式のいずれかにバックグラウンドで変換を行うので、他の画像形式も自由に使用することが
 できます。しかし、PostScriptの節で説明したように、この画像変換は作業手順を遅らせます。したがって、上記で述べた3つの画像形式のうちいずれかを使用するこ
 とをお勧めします。
 \end_layout
@@ -37567,7 +37643,7 @@ dvipdfm
 
 \end_inset
 
-（これは
+(これは
 \family sans
 PDF
 \begin_inset space ~
@@ -37575,7 +37651,7 @@ PDF
 
 (pdflatex)
 \family default
-を使用します）を用います。
+を使用します)を用います。
 \end_layout
 
 \begin_layout Chapter
@@ -41197,6 +41273,7 @@ W_{g\, n}=\frac{W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexcompanion"
@@ -41212,6 +41289,7 @@ The LaTeX Companion Second Edition.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexguide"
@@ -41228,6 +41306,7 @@ A Guide to LaTeX Fourth Edition.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexbook"
@@ -41243,6 +41322,7 @@ LaTeX: A Document Preparation System.
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "arydshln"
@@ -41275,6 +41355,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! arydshln
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "booktabs"
@@ -41307,6 +41388,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! booktabs
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "caption"
@@ -41339,6 +41421,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! caption
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "diagbox"
@@ -41371,6 +41454,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! diagbox
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "endfloat"
@@ -41403,6 +41487,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! endfloat
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "footmisc"
@@ -41435,6 +41520,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! footmisc
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hypcap"
@@ -41467,6 +41553,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! hyperref
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hyperref"
@@ -41499,6 +41586,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! hyperref
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "KOMA-script"
@@ -41531,6 +41619,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! KOMA-script
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "lettrine"
@@ -41571,6 +41660,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! lettrine
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "listings"
@@ -41603,6 +41693,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! listings
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "marginnote"
@@ -41635,6 +41726,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! marginnote
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "pdfpages"
@@ -41667,6 +41759,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! pdfpages
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "prettyref"
@@ -41699,6 +41792,7 @@ LaTeXぱっけーじ@LaTeXパッケージ! prettyref
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "pstricks"
@@ -41731,6 +41825,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! PSTricks
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "refstyle"
@@ -41763,6 +41858,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "sidecap"
@@ -41795,6 +41891,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! sidecap
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "NewInLyX20"

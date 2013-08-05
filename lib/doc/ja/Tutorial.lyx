@@ -2,7 +2,7 @@
 \lyxformat 413
 \begin_document
 \begin_header
-\textclass book
+\textclass jbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
 %
@@ -33,6 +33,11 @@
    \myTOC
    \cleardoublepage
    \pagenumbering{arabic} }
+
+\IfFileExists{okumacro.sty}
+ {\usepackage{okumacro}
+  \newcommand{\捷径}{\ruby{捷径}{ショートカット}}}
+ {\newcommand{\捷径}{ショートカット}}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -630,46 +635,39 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-文字書式 
-\lang english
-You can 
+文字書式 文字は、
 \emph on
-emphasize
+強調したり
 \emph default
- text (toolbar button 
+(ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "font-emph"
 \end_inset
 
-, which will by default print characters in italics), set it in 
+:既定では、英文はイタリック体に和文はボールド体にします)、, 
 \noun on
-Noun Style
+名詞体にしたり
 \noun default
- (toolbar button 
+(ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "font-noun"
 \end_inset
 
-, usually small caps, used for people's names), or use your own formatting
- by using the 
+:通常はスモールキャップ体で、人の名前に用いられます)、あるいは
 \family sans
-Edit\SpecialChar \menuseparator
-Text
-\begin_inset space ~
-\end_inset
-
-Style\SpecialChar \menuseparator
-Customized
+編集\SpecialChar \menuseparator
+文字様式\SpecialChar \menuseparator
+任意設定
 \family default
- dialog (toolbar button 
+ダイアログ(ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "dialog-show character"
 \end_inset
 
-).
+)を使って、好きな書体にすることができます。
 \end_layout
 
 \begin_layout Description
@@ -775,7 +773,7 @@ environment
 環境は、LyXの「What You See Is What You Mean」の哲学を支えるための基本的な要素です。ある一つの環境は、そのためのフォント型、フォ
 ントの大きさ、字下げ、行間の間隔等を必要とします。問題をより複雑にするのは、ある環境の正確な体裁が、文書によって変わることです。ある学術雑誌は、節見出しに18ポ
 イントのボールド体を使い、中央揃えにするのに対して、他の学術雑誌は15ポイントのイタリック体を使って左寄せにします。言語によって字下げの標準様式は変わるでしょう
-し、参考文献の体裁もひじょうに大きく異なります。LyXを使えば、これらすべての異なる体裁様式を覚える必要はなくなるのです。
+し、書誌情報の体裁もひじょうに大きく異なります。LyXを使えば、これらすべての異なる体裁様式を覚える必要はなくなるのです。
 \end_layout
 
 \begin_layout Standard
@@ -1320,7 +1318,7 @@ LyXコード
 前章で、LyXでの書きかたに慣れていただけたものと思います。そこでは、LyXの基本的な編集操作と、環境を使った強力な執筆法を紹介しました。しかしながら、LyXを
 使うほとんどの人々は、論文・論説・書籍・取扱説明書・書簡のような本格的な文書を執筆することを欲しています。本章は、LyXを使って単に文章を書くだけのレベルを卒業
 して、本格的な文書を執筆する水準までご案内しようとするものです。まず各種の文書を執筆することを可能とする文書クラスというものをご紹介します。それから、タイトル・
-脚注・相互参照・参考文献・目次といった、単なる文章を文書に仕上げるための多くの追加機能をご説明いたします。
+脚注・相互参照・書誌情報・目次といった、単なる文章を文書に仕上げるための多くの追加機能をご説明いたします。
 \end_layout
 
 \begin_layout Section
@@ -1421,15 +1419,15 @@ Article
 \end_layout
 
 \begin_layout Standard
-以下の表は、いくつかの文書クラスのひじょうに簡単な要約です。さらに多くの詳細については、取扱説明書
+以下の表は、いくつかの文書クラスのひじょうに簡単な要約です。さらに多くの詳細については、取扱説明書『
 \emph on
-拡張機能篇
+高度な機能篇
 \emph default
-の
+』の「
 \emph on
-Special Document Classes
+特別な文書クラス
 \emph default
- （特別な文書クラス）の節をご参照ください。
+」の節をご参照ください。
 \end_layout
 
 \begin_layout Standard
@@ -1855,7 +1853,20 @@ ec:この文書について」を選択します（欧文の場合に、「Secti
 編集\SpecialChar \menuseparator
 貼り付け
 \family default
-メニュー（短絡キー
+メニュー（
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径{}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "paste"
@@ -2056,10 +2067,10 @@ example_raw.lyx
 \end_layout
 
 \begin_layout Section
-参考文献
+書誌情報
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:参考文献"
+name "sec:書誌情報"
 
 \end_inset
 
@@ -2067,16 +2078,16 @@ name "sec:参考文献"
 \end_layout
 
 \begin_layout Standard
-（少なくとも厳密な科学の分野では）参考文献の参照は、相互参照と似ています。参考文献は文章の最後につく文献のリストで、文章の中から参照できます。節見出しと同じよう
+（少なくとも厳密な科学の分野では）書誌情報の参照は、相互参照と似ています。書誌情報は文章の最後につく文献のリストで、文章の中から参照できます。節見出しと同じよう
 にLyXとLaTeXが文献リストに番号をつけ、文献を追加して番号が変わった場合は、その文献を参照している先の文献番号も変えてくれます。
 \end_layout
 
 \begin_layout Standard
 文章の最後に行って
 \family sans
-参考文献
+書誌情報
 \family default
-環境に変えてください。すると入力する段落のそれぞれが、参考文献の項目になります。一つめの文献として「
+環境に変えてください。すると入力する段落のそれぞれが、書誌情報の項目になります。一つめの文献として「
 \family typewriter
 LyX文書化チーム著『LyX入門編』
 \family default
@@ -2086,7 +2097,7 @@ LyX文書化チーム著『LyX入門編』
 \family default
 LyXは各文献の前に四角に囲まれた番号を自動的につけます。四角に囲まれた文献番号をクリックすると、
 \family sans
-参考文献の設定
+書誌情報の設定
 \family default
 ダイアログボックスが現れます。「キー」とは、LyX文書中でのこの文献への参照に使われるキーであり、「ラベル」は出力に現れる文字です。ラベルが入力されていない（既
 定）ときには、文献番号が出力されます。キーフィールドを、覚えやすいように「lyxtutorial」に変えましょう。
@@ -2115,27 +2126,17 @@ arg   "dialog-show-new-inset citation"
 ダイアログボックスが現れます。ダイアログの右パネルには、すべての文献項目が表示され、参照したい文献を選ぶことができるようになっているはずです。「lyxtutor
 ial」を選択して（今のところ、文献で選べるのはこれだけです）、中央の「追加」ボタンを押して挿入します（このやり方で複数のキーを移動すれば、複数の文献を一箇所に
 参照することができます）。
-\lang english
-
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-If one uses label names for references that are easy to remember it is easier
- to find the entry in the list of references.
+書誌情報のラベル名に覚えやすいものをつければ、書誌一覧で項目を見つけやすくなります。
 \end_layout
 
 \end_inset
 
-Click the 
-\family sans
-OK
-\family default
- button.
-\lang japanese
-このファイルをPDFで表示してください。文献の引用が、角括弧で本文に挿入され、文末の参考文献を参照していることが確認できるでしょう。
+そしてOKボタンを押してください。このファイルをPDFで表示してください。文献の引用が、角括弧で本文に挿入され、文末の書誌情報を参照していることが確認できるでし
+ょう。
 \end_layout
 
 \begin_layout Standard
@@ -2147,11 +2148,11 @@ OK
 \family sans
 後置文字列
 \family default
-フィールドは、参照番号のあとに入れる（例えば、参考文献の何ページか、何章かというような）コメントを書くのに使います。これは参照番号の後に括弧にくくられて印刷され
-ます。もし参考文献を番号ではなくラベルで参照したい場合（学術誌の中には、Smithが95年に書いた論文を参照するのに[Smith95]と表記するものもあります）
+フィールドは、参照番号のあとに入れる（例えば、書誌情報の何ページか、何章かというような）コメントを書くのに使います。これは参照番号の後に括弧にくくられて印刷され
+ます。もし書誌情報を番号ではなくラベルで参照したい場合（学術誌の中には、Smithが95年に書いた論文を参照するのに[Smith95]と表記するものもあります）
 には、
 \family sans
-参考文献の設定
+書誌情報の設定
 \family default
 ダイアログの
 \family sans
@@ -2177,7 +2178,7 @@ OK
 \family typewriter
 example_raw.lyx
 \family default
-の参考文献とそれの参照を直してください。
+の書誌情報とそれの参照を直してください。
 \end_layout
 
 \begin_layout Section
@@ -2281,28 +2282,20 @@ eXを使ったことのない人でも
 \end_layout
 
 \begin_layout Standard
-代わりに、正しく組版されるような数式を作りましょう。
-\lang english
-Highlight the equation and click the toolbar button 
+代わりに、正しく組版されるような数式を作りましょう。数式を選択して、ツールバーボタンの
 \begin_inset Info
 type  "icon"
 arg   "math-mode"
 \end_inset
 
- or use the menu
-\lang japanese
 を押すか、
 \family sans
 挿入\SpecialChar \menuseparator
 数式\SpecialChar \menuseparator
 行内数式
 \family default
-メニューを選んでください。
-\lang english
-If nothing is highlighted LyX inserts a little blue square, which is an
- empty math formula.
-\lang japanese
-そこにもう一度E=mc^2と入力してください。数式は青色で表示され、数式が書かれると青い四角は消えます。
+メニューを選んでください。何も選択しなかった場合には、LyXは空の数式を表す小さな青い箱を挿入します。そこにもう一度E=mc^2と入力してください。数式は青色で
+表示され、数式が書かれると青い四角は消えます。
 \family sans
 Esc
 \family default
@@ -2453,7 +2446,20 @@ example_raw.lyx
 \family sans
 数式ツールバー
 \family default
-の使い方の説明にとどめることにしましょう。短絡キーとコマンドは、説明書の
+の使い方の説明にとどめることにしましょう。
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径{}
+\end_layout
+
+\end_inset
+
+とコマンドは、説明書の
 \emph on
 数式篇
 \emph default
@@ -3338,12 +3344,12 @@ BibTeX
 \end_layout
 
 \begin_layout Standard
-LyXはBibTeXをサポートしています。BibTeXとは、複数の文書で使うための参考文献のデータベースをつくるものです。BibTeXファイルを文書に挿入するに
+LyXはBibTeXをサポートしています。BibTeXとは、複数の文書で使うための書誌情報のデータベースをつくるものです。BibTeXファイルを文書に挿入するに
 は、
 \family sans
 挿入\SpecialChar \menuseparator
 一覧/目次\SpecialChar \menuseparator
-BibTeX参考文献
+BibTeX書誌情報
 \family default
 を選択してください。
 \family sans
@@ -3369,7 +3375,7 @@ BibTeX参考文献
 （第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:参考文献"
+reference "sec:書誌情報"
 
 \end_inset
 

@@ -2,7 +2,15 @@
 \lyxformat 413
 \begin_document
 \begin_header
-\textclass jarticle
+\textclass article
+\begin_preamble
+\IfFileExists{okumacro.sty}
+ {\usepackage{okumacro}
+  \newcommand{\捷径}{\ruby{捷径}{ショートカット}}}
+ {\newcommand{\捷径}{ショートカット}}
+
+\usepackage{t1enc}
+\end_preamble
 \use_default_options false
 \maintain_unincluded_children false
 \language japanese
@@ -61,7 +69,7 @@
 \begin_body
 
 \begin_layout Title
-LyXキーボード短絡キー
+LyXキーボードショートカット
 \end_layout
 
 \begin_layout Author
@@ -79,16 +87,29 @@ arg   "bind_file"
 
 
 \family default
-が定義している短絡キーを列挙しています。LyX
+が定義している
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径{}
+\end_layout
+
+\end_inset
+
+を列挙しています。LyX
 \emph on
 ユーザーの手引き
 \emph default
-の「短絡キー」の節に説明されているように、短絡キーは、
+の「捷径」の節に説明されているように、捷径は、
 \family sans
 ツール\SpecialChar \menuseparator
 設定\SpecialChar \menuseparator
 編集\SpecialChar \menuseparator
-短絡キー
+捷径
 \family default
 メニューで変更することができます。
 \end_layout
@@ -123,7 +144,19 @@ arg   "bind_file"
 \begin_inset Text
 
 \begin_layout Plain Layout
-短絡キー
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径{}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -141,7 +174,19 @@ arg   "bind_file"
 \begin_inset Text
 
 \begin_layout Plain Layout
-短絡キー
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径{}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -159,7 +204,19 @@ arg   "bind_file"
 \begin_inset Text
 
 \begin_layout Plain Layout
-短絡キー
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径{}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -482,7 +539,19 @@ arg   "buffer-previous"
 \begin_inset Text
 
 \begin_layout Plain Layout
-短絡キー
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径{}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -500,7 +569,19 @@ arg   "buffer-previous"
 \begin_inset Text
 
 \begin_layout Plain Layout
-短絡キー
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径{}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1208,7 +1289,19 @@ arg   "bookmark-goto 0"
 \begin_inset Text
 
 \begin_layout Plain Layout
-短絡キー
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径{}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1226,7 +1319,19 @@ arg   "bookmark-goto 0"
 \begin_inset Text
 
 \begin_layout Plain Layout
-短絡キー
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径{}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1244,7 +1349,19 @@ arg   "bookmark-goto 0"
 \begin_inset Text
 
 \begin_layout Plain Layout
-短絡キー
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径{}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2328,7 +2445,19 @@ arg   "math-insert \\Psi"
 \begin_inset Text
 
 \begin_layout Plain Layout
-短絡キー
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径{}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2346,7 +2475,19 @@ arg   "math-insert \\Psi"
 \begin_inset Text
 
 \begin_layout Plain Layout
-短絡キー
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径{}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2364,7 +2505,19 @@ arg   "math-insert \\Psi"
 \begin_inset Text
 
 \begin_layout Plain Layout
-短絡キー
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径{}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3520,7 +3673,19 @@ arg   "math-insert \\superseteq"
 \begin_inset Text
 
 \begin_layout Plain Layout
-短絡キー
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径{}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3538,7 +3703,19 @@ arg   "math-insert \\superseteq"
 \begin_inset Text
 
 \begin_layout Plain Layout
-短絡キー
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径{}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3556,7 +3733,19 @@ arg   "math-insert \\superseteq"
 \begin_inset Text
 
 \begin_layout Plain Layout
-短絡キー
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+捷径{}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
