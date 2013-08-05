@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-08-05 13:08-0700\n"
+"POT-Creation-Date: 2013-08-05 13:11-0700\n"
 "PO-Revision-Date: 2013-06-15 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -1000,7 +1000,7 @@ msgstr "Nah&raď"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:153
 msgid "Shift+Enter search backwards directly"
-msgstr ""
+msgstr "Shift+Enter pro hledání nazpět"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:156
 #: src/frontends/qt4/ui/SearchUi.ui:196
@@ -1765,11 +1765,11 @@ msgstr "Vybrat výstupní formát"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:127
 msgid "Show the source as the master document gets it"
-msgstr ""
+msgstr "Zobrazit zdrojový kód z perspektivty hlavního dokumentu"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:130
 msgid "&Master's perspective"
-msgstr ""
+msgstr "Kód hlavního dokumentu"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:137
 msgid "Automatic update"
@@ -3001,11 +3001,11 @@ msgstr "&Dvousloupcový dokument"
 msgid ""
 "Justify text in the LyX editor (this does not affect whether the text is "
 "justified in the output)"
-msgstr ""
+msgstr "Zarovnat text do bloku (pouze v editoru, nemá vliv na výsledný výstup)"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:284
 msgid "Use &justification in LyX work area"
-msgstr ""
+msgstr "Zarovnat do bloku na o&brazovce"
 
 #: src/frontends/qt4/ui/OutputUi.ui:20
 msgid "Output Format"
@@ -3476,7 +3476,7 @@ msgstr "&Jediné tlačítko pro zavírání panelu"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:193
 msgid "Closing last &view:"
-msgstr ""
+msgstr "Uzavření &posledního panelu"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:204
 msgid "Closes document"
@@ -4513,7 +4513,7 @@ msgstr "."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:249
 msgid "Minimum word length for completion"
-msgstr ""
+msgstr "Minimální délka slova pro doplnění"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:274
 msgid ""
@@ -5212,7 +5212,7 @@ msgstr "REVTeX (V. 4.1)"
 #: lib/layouts/svjog.layout:4 lib/layouts/doublecol-new.layout:4
 #: lib/layouts/acmsiggraph.layout:4
 msgid "Articles"
-msgstr "Articles"
+msgstr "Články"
 
 #: lib/layouts/revtex4-1.layout:46 lib/layouts/isprs.layout:148
 #: lib/layouts/amsart.layout:64 lib/layouts/siamltex.layout:365
@@ -5398,33 +5398,28 @@ msgid "Affiliation:"
 msgstr "Affiliation:"
 
 #: lib/layouts/revtex4-1.layout:98 lib/layouts/revtex4.layout:152
-#, fuzzy
 msgid "Affiliation (alternate)"
-msgstr "Affiliation Mark"
+msgstr "Affiliation (alternate)"
 
 #: lib/layouts/revtex4-1.layout:101 lib/layouts/revtex4.layout:161
-#, fuzzy
 msgid "Affiliation (alternate):"
-msgstr "Affiliation Mark"
+msgstr "Affiliation (alternate):"
 
 #: lib/layouts/revtex4-1.layout:103 lib/layouts/revtex4.layout:158
-#, fuzzy
 msgid "Alternate Affiliation Option"
-msgstr "Alternative Affiliation"
+msgstr "Alternate Affiliation Option"
 
 #: lib/layouts/revtex4-1.layout:104 lib/layouts/revtex4.layout:159
 msgid "Optional argument to the altaffiliation command"
-msgstr ""
+msgstr "Optional argument to the altaffiliation command"
 
 #: lib/layouts/revtex4-1.layout:110 lib/layouts/revtex4.layout:165
-#, fuzzy
 msgid "Affiliation (none)"
-msgstr "Affiliation"
+msgstr "Affiliation (none)"
 
 #: lib/layouts/revtex4-1.layout:113 lib/layouts/revtex4.layout:168
-#, fuzzy
 msgid "No affiliation"
-msgstr "Author affiliation"
+msgstr "No affiliation"
 
 #: lib/layouts/revtex4-1.layout:120 lib/layouts/isprs.layout:112
 #: lib/layouts/scrlettr.layout:144 lib/layouts/siamltex.layout:286
@@ -5462,13 +5457,12 @@ msgid "Electronic Address:"
 msgstr "Electronic Address:"
 
 #: lib/layouts/revtex4-1.layout:132 lib/layouts/revtex4.layout:207
-#, fuzzy
 msgid "Electronic Address Option|s"
-msgstr "Electronic Address:"
+msgstr "Electronic Address Option|s"
 
 #: lib/layouts/revtex4-1.layout:133 lib/layouts/revtex4.layout:208
 msgid "Optional argument to the email command"
-msgstr ""
+msgstr "Optional argument to the email command"
 
 #: lib/layouts/revtex4-1.layout:145 lib/layouts/revtex4.layout:220
 #: lib/layouts/elsart.layout:178
@@ -5481,23 +5475,20 @@ msgid "URL:"
 msgstr "URL:"
 
 #: lib/layouts/revtex4-1.layout:150 lib/layouts/revtex4.layout:226
-#, fuzzy
 msgid "Author URL Option"
-msgstr "Author URL"
+msgstr "Author URL Option"
 
 #: lib/layouts/revtex4-1.layout:151 lib/layouts/revtex4.layout:227
 msgid "Optional argument to the homepage command"
-msgstr ""
+msgstr "Optional argument to the homepage command"
 
 #: lib/layouts/revtex4-1.layout:157 lib/layouts/revtex4.layout:187
-#, fuzzy
 msgid "Collaboration"
-msgstr "Variation"
+msgstr "Collaboration"
 
 #: lib/layouts/revtex4-1.layout:160 lib/layouts/revtex4.layout:190
-#, fuzzy
 msgid "Collaboration:"
-msgstr "Variation:"
+msgstr "Collaboration:"
 
 #: lib/layouts/revtex4-1.layout:164 lib/layouts/lettre.layout:52
 #: lib/layouts/lettre.layout:214 lib/layouts/scrlettr.layout:165
@@ -5680,9 +5671,8 @@ msgid "acknowledgments"
 msgstr "acknowledgments"
 
 #: lib/layouts/revtex4-1.layout:245
-#, fuzzy
 msgid "Ruled Table"
-msgstr "PlaceTable"
+msgstr "Ruled Table"
 
 #: lib/layouts/revtex4-1.layout:247 lib/layouts/revtex4-1.layout:255
 #: lib/layouts/revtex4-1.layout:263 src/frontends/qt4/GuiSymbols.cpp:123
@@ -5690,28 +5680,24 @@ msgid "Specials"
 msgstr "Specializované"
 
 #: lib/layouts/revtex4-1.layout:253
-#, fuzzy
 msgid "Turn Page"
-msgstr "Uzavřít stránku (\\clearpage)"
+msgstr "Turn Page"
 
 #: lib/layouts/revtex4-1.layout:261
-#, fuzzy
 msgid "Wide Text"
-msgstr "Jako prostý text"
+msgstr "Wide Text"
 
 #: lib/layouts/revtex4-1.layout:271
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: lib/layouts/revtex4-1.layout:274
-#, fuzzy
 msgid "List of Videos"
-msgstr "List of Slides"
+msgstr "List of Videos"
 
 #: lib/layouts/revtex4-1.layout:283 lib/layouts/revtex4-1.layout:285
-#, fuzzy
 msgid "Float Link"
-msgstr "Nastavení plovoucích objektů"
+msgstr "Float Link"
 
 #: lib/layouts/revtex4-1.layout:292 lib/layouts/revtex4-1.layout:294
 #: lib/layouts/IEEEtran.layout:106
@@ -5727,21 +5713,19 @@ msgstr "Surname"
 
 #: lib/layouts/letter.layout:3
 msgid "Letter (Standard Class)"
-msgstr ""
+msgstr "Letter (Standard Class)"
 
 #: lib/layouts/letter.layout:4 lib/layouts/heb-letter.layout:4
 #: lib/layouts/lettre.layout:4 lib/layouts/scrlettr.layout:4
 #: lib/layouts/dinbrief.layout:4 lib/layouts/scrlttr2.layout:4
 #: lib/layouts/frletter.layout:4 lib/layouts/extletter.layout:4
 #: lib/layouts/g-brief.layout:4 lib/layouts/g-brief2.layout:4
-#, fuzzy
 msgid "Letters"
-msgstr "Letter"
+msgstr "Dopisy"
 
 #: lib/layouts/heb-letter.layout:3
-#, fuzzy
 msgid "Hebrew Letter"
-msgstr "Close Letter"
+msgstr "Hebrew Letter"
 
 #: lib/layouts/heb-letter.layout:11 lib/layouts/lettre.layout:34
 #: lib/layouts/lettre.layout:138 lib/layouts/dinbrief.layout:69
@@ -5757,7 +5741,7 @@ msgstr "Send To Address"
 
 #: lib/layouts/lettre.layout:3
 msgid "French Letter (lettre)"
-msgstr ""
+msgstr "French Letter (lettre)"
 
 #: lib/layouts/lettre.layout:31 lib/layouts/amsart.layout:31
 #: lib/layouts/scrlettr.layout:8 lib/layouts/siamltex.layout:37
@@ -6028,19 +6012,18 @@ msgstr "P.S.:"
 
 #: lib/layouts/treport.layout:3
 msgid "Japanese Report (Vertical Writing)"
-msgstr ""
+msgstr "Japanese Report (Vertical Writing)"
 
 #: lib/layouts/treport.layout:4 lib/layouts/mwrep.layout:4
 #: lib/layouts/extreport.layout:4 lib/layouts/scrreprt.layout:4
 #: lib/layouts/ctex-report.layout:4 lib/layouts/report.layout:4
 #: lib/layouts/jreport.layout:4
 msgid "Reports"
-msgstr ""
+msgstr "Hlášení"
 
 #: lib/layouts/jsbook.layout:3
-#, fuzzy
 msgid "Japanese Book (jsbook)"
-msgstr "Japonština (CJK)"
+msgstr "Japanese Book (jsbook)"
 
 #: lib/layouts/jsbook.layout:4 lib/layouts/book.layout:4
 #: lib/layouts/svmono.layout:4 lib/layouts/svmult.layout:4
@@ -6049,13 +6032,12 @@ msgstr "Japonština (CJK)"
 #: lib/layouts/ctex-book.layout:4 lib/layouts/recipebook.layout:4
 #: lib/layouts/mwbk.layout:4 lib/layouts/extbook.layout:4
 #: lib/layouts/memoir.layout:4 lib/layouts/amsbook.layout:4
-#, fuzzy
 msgid "Books"
-msgstr "&Záložky"
+msgstr "Knihy"
 
 #: lib/layouts/svglobal.layout:3
 msgid "Springer SV Global (Obsolete Version)"
-msgstr ""
+msgstr "Springer SV Global (Obsolete Version)"
 
 #: lib/layouts/svglobal.layout:67 lib/layouts/svprobth.layout:101
 #: lib/layouts/svjog.layout:71
@@ -7592,7 +7574,7 @@ msgstr "Simple CV"
 #: lib/layouts/simplecv.layout:4 lib/layouts/europecv.layout:4
 #: lib/layouts/moderncv.layout:4
 msgid "Curricula Vitae"
-msgstr "Curricula Vitae"
+msgstr "Životopisy"
 
 #: lib/layouts/simplecv.layout:65
 msgid "Topic"
@@ -8112,7 +8094,7 @@ msgstr "DocBook Article (SGML)"
 
 #: lib/layouts/docbook.layout:4 lib/layouts/agu-dtd.layout:4
 msgid "Articles (DocBook)"
-msgstr ""
+msgstr "Články (DocBook)"
 
 #: lib/layouts/egs.layout:3
 msgid "European Geophysical Society (EGS)"
@@ -8208,9 +8190,8 @@ msgstr "Beamer"
 #: lib/layouts/beamer.layout:4 lib/layouts/foils.layout:4
 #: lib/layouts/seminar.layout:4 lib/layouts/slides.layout:4
 #: lib/layouts/powerdot.layout:4
-#, fuzzy
 msgid "Presentations"
-msgstr "Presentation"
+msgstr "Prezentace"
 
 #: lib/layouts/beamer.layout:86 lib/layouts/beamer.layout:119
 #: lib/layouts/beamer.layout:158 lib/layouts/beamer.layout:431
@@ -8902,9 +8883,8 @@ msgid "Figure"
 msgstr "Obrázek"
 
 #: lib/layouts/arab-article.layout:3
-#, fuzzy
 msgid "Arabic Article"
-msgstr "Arabština (Arabi)"
+msgstr "Arabic Article"
 
 #: lib/layouts/docbook-chapter.layout:3
 #, fuzzy
@@ -8913,9 +8893,8 @@ msgstr "DocBook (XML)"
 
 #: lib/layouts/docbook-chapter.layout:4 lib/layouts/docbook-book.layout:4
 #: lib/layouts/docbook-section.layout:4
-#, fuzzy
 msgid "Books (DocBook)"
-msgstr "DocBook"
+msgstr "Knihy (DocBook)"
 
 #: lib/layouts/agu-dtd.layout:3
 msgid "American Geophysical Union (AGU, SGML Article)"
@@ -9974,26 +9953,24 @@ msgid "Theorem #."
 msgstr "Theorem #."
 
 #: lib/layouts/docbook-book.layout:3
-#, fuzzy
 msgid "DocBook Book (SGML)"
-msgstr "DocBook (XML)"
+msgstr "DocBook Book (SGML)"
 
 #: lib/layouts/ctex-book.layout:3
-#, fuzzy
 msgid "Chinese Book (CTeX)"
-msgstr "Lilipond book (LaTeX)"
+msgstr "Chinese Book (CTeX)"
 
 #: lib/layouts/report.layout:3
 msgid "Report (Standard Class)"
-msgstr ""
+msgstr "Report (Standard Class)"
 
 #: lib/layouts/tufte-handout.layout:3
 msgid "Tufte Handout"
-msgstr ""
+msgstr "Tufte Handout"
 
 #: lib/layouts/tufte-handout.layout:4
 msgid "Handouts"
-msgstr ""
+msgstr "Sylaby"
 
 #: lib/layouts/dtk.layout:3
 msgid "Die TeXnische Komoedie"
@@ -10324,9 +10301,8 @@ msgid "Hollywood"
 msgstr ""
 
 #: lib/layouts/hollywood.layout:4 lib/layouts/broadway.layout:4
-#, fuzzy
 msgid "Scripts"
-msgstr "Index dole"
+msgstr "Scénáře"
 
 #: lib/layouts/hollywood.layout:41 lib/layouts/broadway.layout:32
 msgid "Dialogue"
@@ -25385,9 +25361,8 @@ msgid "Dings 4"
 msgstr "Dings 4"
 
 #: src/frontends/qt4/CategorizedCombo.cpp:187
-#, fuzzy
 msgid "Unavailable:"
-msgstr "Nedostupné: %1$s"
+msgstr "Nedostupné:"
 
 #: src/frontends/qt4/CategorizedCombo.cpp:498
 #, c-format
@@ -25397,9 +25372,8 @@ msgstr "Nedostupné: %1$s"
 #: src/frontends/qt4/CategorizedCombo.cpp:501
 #: src/frontends/qt4/CategorizedCombo.cpp:526
 #: src/frontends/qt4/CategorizedCombo.cpp:527
-#, fuzzy
 msgid "Uncategorized"
-msgstr "CR categories"
+msgstr "Jiné"
 
 #: src/frontends/qt4/FileDialog.cpp:189
 msgid "Directories"
