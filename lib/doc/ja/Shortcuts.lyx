@@ -1,10 +1,38 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
-\textclass jarticle
+\textclass jsarticle
 \use_default_options false
 \maintain_unincluded_children false
+\begin_local_layout
+InsetLayout		Flex:Ruby
+LyxType		charstyle
+LatexType		command
+LatexName		ruby
+BgColor		none
+LabelString		"ルビ"
+MenuString		"ルビ(R)|R"
+Decoration		Conglomerate
+Argument post:1
+      LabelString	"ルビ文"
+      MenuString	"ルビ文(S)|S"
+      Decoration	Conglomerate
+      Font
+            Size		tiny
+      EndFont
+      LabelFont
+            Size		tiny
+      EndFont
+      Mandatory	1
+EndArgument
+Preamble
+\IfFileExists{okumacro.sty}
+ {\usepackage{okumacro}}
+ {\newcommand{\ruby}[2]{#2}}
+EndPreamble
+End
+\end_local_layout
 \language japanese
 \language_package default
 \inputencoding auto
@@ -12,13 +40,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format pdf3
 \output_sync 0
@@ -29,15 +57,24 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index 索引
 \shortcut idx
@@ -79,28 +116,38 @@ arg   "bind_file"
 
 
 \family default
-が定義しているショートカットを列挙しています。
-\lang english
-You can change the shortcuts in the menu 
-\family sans
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-Editing\SpecialChar \menuseparator
-Shortcuts
-\family default
- as described in section 
-\begin_inset Quotes eld
+が定義している
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
 \end_inset
 
-Shortcuts
-\begin_inset Quotes erd
+
+\end_layout
+
 \end_inset
 
- of the LyX 
+を列挙しています。捷径は、LyX
 \emph on
-User's Guide
+ユーザーの手引き
 \emph default
-.
+の「捷径」の節に述べられているように、
+\family sans
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+編集\SpecialChar \menuseparator
+捷径
+\family default
+で変更できます。
 \end_layout
 
 \begin_layout Subsection*
@@ -112,7 +159,7 @@ User's Guide
 \lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="6">
-<features booktabs="true" tabularvalignment="middle">
+<features rotate="0" booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -133,7 +180,26 @@ User's Guide
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
 ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -151,7 +217,26 @@ User's Guide
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
 ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -169,7 +254,26 @@ User's Guide
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
 ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -473,7 +577,7 @@ arg   "buffer-previous"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="15" columns="4">
-<features booktabs="true" tabularvalignment="middle">
+<features rotate="0" booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -492,7 +596,26 @@ arg   "buffer-previous"
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
 ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -510,7 +633,26 @@ arg   "buffer-previous"
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
 ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1197,7 +1339,7 @@ arg   "bookmark-goto 0"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="14" columns="6">
-<features booktabs="true" tabularvalignment="middle">
+<features rotate="0" booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -1218,7 +1360,26 @@ arg   "bookmark-goto 0"
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
 ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1236,7 +1397,26 @@ arg   "bookmark-goto 0"
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
 ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1254,7 +1434,26 @@ arg   "bookmark-goto 0"
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
 ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2317,7 +2516,7 @@ arg   "math-insert \\Psi"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="15" columns="6">
-<features booktabs="true" tabularvalignment="middle">
+<features rotate="0" booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -2338,7 +2537,26 @@ arg   "math-insert \\Psi"
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
 ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2356,7 +2574,26 @@ arg   "math-insert \\Psi"
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
 ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2374,7 +2611,26 @@ arg   "math-insert \\Psi"
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
 ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3509,7 +3765,7 @@ arg   "math-insert \\superseteq"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="6">
-<features booktabs="true" tabularvalignment="middle">
+<features rotate="0" booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -3530,7 +3786,26 @@ arg   "math-insert \\superseteq"
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
 ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3548,7 +3823,26 @@ arg   "math-insert \\superseteq"
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
 ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3566,7 +3860,26 @@ arg   "math-insert \\superseteq"
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
 ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset

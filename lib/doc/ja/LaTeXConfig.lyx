@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
@@ -12,13 +12,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format pdf3
 \output_sync 0
@@ -29,15 +29,24 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 0
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index 索引
 \shortcut idx
@@ -132,37 +141,15 @@ LyXに欲しい機能であり、LaTeX装備にも追加したいと思うよう
 \end_layout
 
 \begin_layout Standard
-これらのパッケージのほとんどは、teTeXのような新しいTeX頒布版を使っていれば、利用可能です。もし、存在しないアイテムを装備しようと決めたら、LyXにそのこ
-とを教えなくてはなりません。インストールし終えたら、メニュー項目
+これらのパッケージのほとんどは、TeXLiveやMiKTeXのような新しいTeX頒布版を使っていれば、利用可能です。もし、存在しないアイテムを装備しようと決めた
+ら、LyXにそのことを教えなくてはなりません。導入し終えたら、メニュー項目
 \family sans
 ツール\SpecialChar \menuseparator
-再初期設定
+環境構成
 \family default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-あるいは、もしシステム全体の設定を変えたいならば、LyXシステムディレクトリ（既定では
-\family typewriter
-/usr/local/lib/lyx/
-\family default
-）でコマンド
-\family typewriter
-./configure
-\family default
-を実行してください。
-\end_layout
-
-\end_inset
-
-を使ったあと、このファイルを再度読み込んで、新しいパッケージが認識されたかどうかを確認してください。もし「検出」項目が「???」となっているときは、何らかの理由
-で現在のLaTeX設定の一覧を取得できなかったことを示しています。もしteTeXをお使いならば、装備済みの新しいパッケージが見つからなかったことを示しているかも
-しれません。teTeXに設定を更新させるコマンド
-\family typewriter
-texhash
-\family default
-を実行し忘れた可能性があります。
+を使ったあと、このファイルを再度読み込んで、新しいパッケージが認識されたかどうかを確認してください。もし「検出」項目が「いいえ」となっているときは、何らかの理由
+で現在のLaTeX設定の一覧を取得できなかったことを示しています。ほとんどの場合、ファイル名データベース(texhash)を更新し忘れただけでしょう。これを行う
+正しい方法については、お使いのLaTeX頒布版の説明書をお読みください。
 \end_layout
 
 \begin_layout Section
@@ -225,6 +212,65 @@ fonts/bera
 \begin_layout Description
 備考： beraフォントは、Bitstream Veraのクローンであり、Bera Serif（slab-serifのローマン体）、Bera Sans（Frut
 igerの後継）、およびBera Mono（等間隔／タイプライタ）を含みます。
+\end_layout
+
+\begin_layout Subsection
+Biolinum
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "biolinum-type1"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+fonts/libertine/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+biolinum-type1
+\family default
+パッケージは、
+\emph on
+Biolinum
+\emph default
+サンセリフフォント族のサポートを提供します。これは、
+\emph on
+Libertine
+\emph default
+ローマンフォントと共に用いるべくデザインされたものです。
+\emph on
+Biolinum
+\emph default
+はOld Style Figuresをサポートします。これらの図が利用可能でローマンフォントに要求された場合には、自動的に有効化されます。新しい版では、伸縮も可
+能です。このフォントの旧版は、
+\family sans
+libertine-legacy
+\family default
+パッケージ(検出: 
+\begin_inset Info
+type  "package"
+arg   "libertine"
+\end_inset
+
+)で提供されています。後者のパッケージのみをお持ちの場合には、Biolinumを得るためには、ローマンフォントを
+\emph on
+Libertine
+\emph default
+にサンセリフフォントを
+\emph on
+Standard
+\emph default
+に設定する必要があります。
 \end_layout
 
 \begin_layout Subsection
@@ -360,6 +406,38 @@ Computer Modern
 \end_layout
 
 \begin_layout Subsection
+Euler Virtual Math
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "eulervm"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+fonts/eulervm/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+eulervm
+\family default
+パッケージは、
+\emph on
+Euler
+\emph default
+数式フォントへのアクセスを提供します。
+\end_layout
+
+\begin_layout Subsection
 feyn
 \end_layout
 
@@ -395,6 +473,36 @@ feyn
 Diagram
 \series default
 ）に使用されます。
+\end_layout
+
+\begin_layout Subsection
+fontspec
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "fontspec"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/fontspec
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+fontspec
+\family default
+パッケージは、お使いのオペレーティング・システムのOpenType、TrueTypeおよびPostScriptフォントへのアクセスを提供します。そのためには、パ
+ッケージは、XeTeX若しくはLuaTeXエンジンを必要とします。LuaTeXは、fontspec第2.0版(2010/07/11)以降でのみサポートされています
+。
 \end_layout
 
 \begin_layout Subsection
@@ -499,7 +607,290 @@ luximono
 \end_layout
 
 \begin_layout Subsection
-psnfss
+Libertine
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "libertine-type1"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+fonts/libertine/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+libertine-type1
+\family default
+パッケージは、
+\emph on
+Libertine
+\emph default
+ローマンフォント族へのサポートを提供します。このパッケージの旧版
+\family sans
+libertine-legacy
+\family default
+ (検出: 
+\begin_inset Info
+type  "package"
+arg   "libertine"
+\end_inset
+
+)もサポートされており、予備として使用されます。
+\end_layout
+
+\begin_layout Subsection
+Libertine Mono
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "libertineMono-type1"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+fonts/libertine/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+libertineMono-type1
+\family default
+パッケージは、
+\emph on
+Libertine Mono
+\emph default
+ タイプライタフォントへのサポートを提供します。このフォントは、2013年2月現在、libertineフォントパッケージに同梱して提供されています。
+\end_layout
+
+\begin_layout Subsection
+Mathdesign
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "mathdesign"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+fonts/mathdesign/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+mathdesign
+\family default
+パッケージは、3つのポピュラーなローマンフォントを提供し、一致する数式フォントへ拡張します。以下のローマンフォントの1つを、LyXの
+\family sans
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+フォント
+\family default
+で選択すると、
+\family sans
+mathdesign
+\family default
+パッケージとその対応する数式フォントが自動的に読み込まれます。
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+URW Garamond (Mathdesign)
+\family default
+.
+ 
+\series bold
+検出:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mdugm"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Bitstream Charter (Mathdesign)
+\family default
+.
+ 
+\series bold
+検出:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mdbch"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Utopia (Mathdesign)
+\family default
+.
+ 
+\series bold
+検出:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mdput"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LaTeXの既定数式フォントは維持して、本文用フォントのみが欲しい場合、各フォントの非数式デザイン版を選択するか、
+\family sans
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+フォント\SpecialChar \menuseparator
+数式
+\family default
+で
+\emph on
+クラス既定値
+\emph default
+を選択してください。
+\end_layout
+
+\begin_layout Subsection
+MinionPro
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "MinionPro"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+fonts/minionpro
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+MinionPro
+\family default
+パッケージは、
+\emph on
+Minion Pro
+\emph default
+フォントのサポートを提供します。フォント自体はパッケージの一部ではなく、別に導入しなくてはなりません(詳細はMinionProパッケージ説明書をお読みください)
+。
+\end_layout
+
+\begin_layout Subsection
+NewTX Math
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "newtxmath"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+fonts/newtx
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+newtxmath
+\family default
+パッケージは、
+\emph on
+URW Garamond
+\emph default
+・
+\emph on
+Times Roman
+\emph default
+ (あるいは
+\emph on
+NewTX
+\emph default
+)・
+\emph on
+Libertine
+\emph default
+・
+\emph on
+MinionPro
+\emph default
+の一致する数式フォントへのサポートを提供します。
+\emph on
+MinionPro
+\emph default
+サポートは、外部フォントと共に、補完的役割を果たす
+\family sans
+minion2newtx
+\family default
+パッケージ(検出: 
+\begin_inset Info
+type  "package"
+arg   "minion2newtx"
+\end_inset
+
+)が必要です(詳細については、
+\family sans
+minion2newtx
+\family default
+の説明書をお読みください)。
+\end_layout
+
+\begin_layout Subsection
+PSNFSS
 \end_layout
 
 \begin_layout Description
@@ -523,125 +914,21 @@ macros/latex/required/psnfss/
 \family sans
  psnfss
 \family default
-群を使えば、LyXが使うフォントを、PostScript®プリンタで利用可能な35の伝統的フォントに変更することができるようになります。現在のところ、LyXにお
-ける
-\family sans
-psnfss
-\family default
-のサポートは限られています。
-\family sans
-文書\SpecialChar \menuseparator
-設定
-\family default
-の中でフォントの組み合せを選ぶことができるだけです。
+群を使えば、LyXが使うフォントを、PostScriptプリンタで利用可能な35の伝統的フォントに変更することができるようになります。
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 
 \family sans
 psnfss
 \family default
-のバージョンによって、提供するフォントパッケージは異なります。LyXは古くなったパッケージもサポートしますが、つねに最新版が装備されているように留意されることを
-おすすめします。最近の
+のバージョンによって、提供するフォントパッケージは異なります。パッケージによっては、廃止が宣言され、新しいものに置き換わったものもあります。LyXは古くなったパ
+ッケージもサポートしますが、つねに最新版が装備されているように留意されることを強くおすすめします(LyXもそれを好みます)。最近の
 \family sans
 psnfss
 \family default
 群は少なくとも次のものを含んでいます。
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-mathpazo
-\family default
- (newest Palatino support).
- 
-\series bold
-検出：
-\series default
- 
-\begin_inset Info
-type  "package"
-arg   "mathpazo"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-mathpple
-\family default
- (deprecated Palatino support).
- 
-\series bold
-検出：
-\series default
- 
-\begin_inset Info
-type  "package"
-arg   "mathpple"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-mathptmx
-\family default
- (newest Times support).
- 
-\series bold
-検出：
-\series default
- 
-\begin_inset Info
-type  "package"
-arg   "mathptmx"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-mathptm
-\family default
- (deprecated Times support).
- 
-\series bold
-検出：
-\series default
- 
-\begin_inset Info
-type  "package"
-arg   "mathptm"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-utopia
-\family default
- (Utopia).
- 
-\series bold
-検出：
-\series default
- 
-\begin_inset Info
-type  "package"
-arg   "utopia"
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -685,6 +972,25 @@ arg   "bookman"
 \begin_layout Itemize
 
 \family sans
+chancery
+\family default
+ (Zapf Chancery).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "chancery"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
 charter
 \family default
  (Charter).
@@ -696,6 +1002,128 @@ charter
 \begin_inset Info
 type  "package"
 arg   "charter"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+courier
+\family default
+ (
+\emph on
+Courier
+\emph default
+).
+ 
+\series bold
+検出:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "courier"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+helvet
+\family default
+ (
+\emph on
+Helvetica
+\emph default
+).
+ 
+\series bold
+検出:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "helvet"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathpazo
+\family default
+ (最新Palatinoサポート).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mathpazo"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathpple
+\family default
+ (旧版Palatinoサポート).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mathpple"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathptm
+\family default
+ (旧版Timesサポート).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mathptm"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+mathptmx
+\family default
+ (最新Timesサポート).
+ 
+\series bold
+検出：
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "mathptmx"
 \end_inset
 
 
@@ -723,9 +1151,86 @@ arg   "newcent"
 \begin_layout Itemize
 
 \family sans
-chancery
+palatino
 \family default
- (Zapf Chancery).
+ (旧版
+\emph on
+Palatino
+\emph default
+サポート; 代わりに
+\family sans
+mathpazo
+\family default
+の使用を推奨).
+ 
+\series bold
+検出:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "psnfss"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+pifont
+\family default
+ (
+\emph on
+Zapf Dingbats
+\emph default
+).
+ 
+\series bold
+検出:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "pifont"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+times
+\family default
+ (旧版
+\emph on
+Times
+\emph default
+サポート; 代わりに
+\family sans
+mathptmx
+\family default
+の使用を推奨).
+ 
+\series bold
+検出:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "psnfss"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+utopia
+\family default
+ (Utopia).
  
 \series bold
 検出：
@@ -733,12 +1238,322 @@ chancery
  
 \begin_inset Info
 type  "package"
-arg   "chancery"
+arg   "utopia"
 \end_inset
 
 
 \end_layout
 
+\begin_layout Standard
+これらのフォントの一部は、一致する数式フォントを自動的に選択することに注意してください。LaTeXの既定数式フォントは維持して、本文用フォントのみが欲しい場合、
+各フォントの非数式デザイン版を選択するか、
+\family sans
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+フォント\SpecialChar \menuseparator
+数式
+\family default
+で
+\emph on
+クラス既定値
+\emph default
+を選択してください。
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+TeX Gyreフォントコレクション
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+fonts/tex-gyre
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+tex-gyre
+\family default
+コレクションは、
+\family sans
+psnfss
+\family default
+フォントの代替として使用することのできる、35に及ぶ基本PostScriptフォントのリメークと拡張を提供します。フォントは、LaTeXで使用することを念頭にデ
+ザインされました。現在のところ、以下のフォントが利用でき、かつLyXによってネイティブにサポートされています。
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family sans
+tgadventor
+\family default
+ (
+\emph on
+TeX Gyre Adventor
+\emph default
+): 
+\emph on
+URW Gothic L
+\emph default
+ (これ自身
+\emph on
+Avant Garde
+\emph default
+クローンです)に基づいたサンセリフフォント
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+検出:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "tgadventor"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+tgbonum
+\family default
+ (
+\emph on
+TeX Gyre Bonum
+\emph default
+): 
+\emph on
+URW Bookman L
+\emph default
+ (
+\emph on
+ITC Bookman
+\emph default
+クローン)に基づいたローマンフォント
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+検出:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "tgbonum"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+tgchorus
+\family default
+ (
+\emph on
+TeX Gyre Chorus
+\emph default
+): 
+\emph on
+URW Chancery L
+\emph default
+ (
+\emph on
+Zapf Chancery
+\emph default
+クローン)に基づいたローマン(筆記体)フォント
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+検出:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "tgchorus"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+tgcursor
+\family default
+ (
+\emph on
+TeX Gyre Cursor
+\emph default
+): 
+\emph on
+URW Nimbus Mono L
+\emph default
+ (
+\emph on
+Courier
+\emph default
+クローン)に基づいた等間隔フォント
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+検出:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "tgcursor"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+tgheros
+\family default
+ (
+\emph on
+TeX Gyre Heros
+\emph default
+): 
+\emph on
+URW Nimbus Sans L
+\emph default
+ (
+\emph on
+Helvetica
+\emph default
+クローン)に基づいたサンセリフフォント
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+検出:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "tgheros"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+tgpagella
+\family default
+ (
+\emph on
+TeX Gyre Pagella
+\emph default
+): 
+\emph on
+URW Palladio L
+\emph default
+ (
+\emph on
+Palatino
+\emph default
+クローン)に基づいたローマンフォント
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+検出:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "tgpagella"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+tgschola
+\family default
+ (
+\emph on
+TeX Gyre Schola
+\emph default
+): 
+\emph on
+URW Century Schoolbook L
+\emph default
+に基づいたローマンフォント
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+検出:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "tgschola"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+tgtermes
+\family default
+ (
+\emph on
+TeX Gyre Termes
+\emph default
+): 
+\emph on
+URW Nimbus Roman No9 L
+\emph default
+ (a 
+\emph on
+Times New Roman
+\emph default
+クローン)に基づいたローマンフォント
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+検出:
+\series default
+ 
+\begin_inset Info
+type  "package"
+arg   "tgtermes"
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 tipa/tipx
 \end_layout
@@ -764,10 +1579,139 @@ fonts/tipa/
 \family sans
 tipa
 \family default
-パッケージは、『国際音声字母(IPA)』で定義されているように、発音記号を植字するのに必要な包括的なサポートとフォントを提供します。これらの記号は、LyXの数式
-エディタあるいは挿入\SpecialChar \menuseparator
+および
+\family sans
+tipx
+\family default
+パッケージは、『国際音声字母(IPA)』で定義されている発音記号を植字するのに必要な包括的なサポートとフォントを提供します。これらの記号は、
+\family sans
+挿入\SpecialChar \menuseparator
 特殊文字\SpecialChar \menuseparator
-記号ダイアログから入力することができます。
+発音記号
+\family default
+あるいはLyXの数式エディタ、または
+\family sans
+挿入\SpecialChar \menuseparator
+特殊文字\SpecialChar \menuseparator
+記号
+\family default
+ダイアログから入力することができます。
+\end_layout
+
+\begin_layout Subsection
+TX Fonts
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "txfonts"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+fonts/txfonts/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+txfonts
+\family default
+パッケージは、
+\emph on
+Times Roman
+\emph default
+ に基づいたフォントとその数式サポートを提供します。LyXでは、現在のところ、等間隔体(
+\emph on
+TXTT
+\emph default
+)のみが、ネイティブにサポートされています。
+\end_layout
+
+\begin_layout Subsection
+URW Classico (Optima)
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "urwclassico"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+/fonts/urw/classico/
+\end_layout
+
+\begin_layout Description
+備考: URW Classicoは、Hermann Zapfによってデザインされた、非常によく知られたサンセリフ体であるOptima書体のクローンです。このフォ
+ントは、Aladdin Free Public Licenseの下で非商用に使用ができます。TeX Liveの下では、このフォントは「getnonfreefon
+ts-sys」ユーティリティ経由で導入する必要があります。
+\end_layout
+
+\begin_layout Subsection
+URW Garamond
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "garamondx"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+/fonts/garamondx/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+garamondx
+\family default
+パッケージは、URW Garamondフォントへのアクセスを提供します。このフォントは、Aladdin Free Public Licenseの下で非商用に使用
+ができます。TeX Liveの下では、フォントは、パッケージとは別に「getnonfreefonts-sys」ユーティリティ経由で導入する必要があります(導入済
+: 
+\begin_inset Info
+type  "package"
+arg   "garamondx-fonts"
+\end_inset
+
+)。
+\family sans
+garamondx
+\family default
+パッケージは、オールドスタイルの形を提供します。一致する数式フォントは
+\emph on
+URW Garamond (NewTX)
+\emph default
+で提供されます。予備として、
+\family sans
+ugm
+\family default
+ (導入済: 
+\begin_inset Info
+type  "package"
+arg   "ugm"
+\end_inset
+
+)パッケージが使用されますが、これにはオールドスタイル形は含まれていません。
 \end_layout
 
 \begin_layout Section
@@ -3697,6 +4641,473 @@ a4
 \end_layout
 
 \begin_layout Section
+書誌情報及び引用パッケージ
+\end_layout
+
+\begin_layout Subsection
+achicago
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "achicago"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+\series medium
+ 
+\family typewriter
+\series default
+macros/latex/contrib/frankenstein/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+achicago
+\family default
+パッケージは、
+\emph on
+Chicago Manual of Style
+\emph default
+の推奨に従った引用様式を提供します。これは、基本LaTeXのみ、または
+\family sans
+natbib
+\family default
+と共に使用することができますが、著者完全列挙はサポートしていません。
+\end_layout
+
+\begin_layout Subsection
+apacite
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "apacite"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+\series medium
+ 
+\family typewriter
+\series default
+/biblio/bibtex/contrib/apacite/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+apacite
+\family default
+パッケージは、アメリカ心理学会(American Psychological Association)の推奨に忠実に従った引用様式を提供します。これは、基本La
+TeXのみ、または
+\family sans
+natbib
+\family default
+と共に使用することができます。最初の引用での著者完全列挙をサポートしており、2回目以降の引用では、引用を自動的に第1著者に短縮します(
+\family sans
+natbib
+\family default
+の
+\family sans
+longnamesfirst
+\family default
+オプションと同様です)。
+\end_layout
+
+\begin_layout Subsection
+apalike
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "apalike"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+\series medium
+ 
+\family typewriter
+\series default
+biblio/bibtex/base/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+apalike
+\family default
+パッケージは、アメリカ心理学会(American Psychological Association)の推奨に緩やかに従った引用様式を提供します。これは、基本L
+aTeXのみ、または
+\family sans
+natbib
+\family default
+と共に使用することができますが、著者完全列挙はサポートしていません。
+\end_layout
+
+\begin_layout Subsection
+astron
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "astron"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+\series medium
+ 
+\family typewriter
+\series default
+biblio/bibtex/contrib/astron/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+astron
+\family default
+パッケージは、学術誌『Astronomy and Astrophysics』のガイドラインに従った引用様式を提供します。これは、基本LaTeXのみ、または
+\family sans
+natbib
+\family default
+と共に使用することができますが、著者完全列挙はサポートしていません。
+\end_layout
+
+\begin_layout Subsection
+authordate1-4
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "authordate1-4"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+\series medium
+ 
+\family typewriter
+\series default
+biblio/bibtex/contrib/authordate/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+authordate1-4
+\family default
+パッケージは、
+\emph on
+British Standard
+\emph default
+とButcher著
+\emph on
+Copy-editing
+\emph default
+及び
+\emph on
+Chicago Manual of Style
+\emph default
+の推奨に緩やかに従った引用様式を提供します。これは、基本LaTeXのみ、または
+\family sans
+natbib
+\family default
+と共に使用することができますが、著者完全列挙はサポートしていません。
+\end_layout
+
+\begin_layout Subsection
+bibtopic
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "bibtopic"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/bibtopic/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+bibtopic
+\family default
+パッケージは、BibTeXが生成する書誌情報を節分けするのに使用されます。
+\end_layout
+
+\begin_layout Subsection
+chicago
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "chicago"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+\series medium
+ 
+\family typewriter
+\series default
+biblio/bibtex/contrib/chicago/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+chicago
+\family default
+パッケージは、
+\emph on
+Chicago Manual of Style
+\emph default
+の推奨に従った引用様式を提供します。これは、基本LaTeXのみ、または
+\family sans
+natbib
+\family default
+と共に使用することができます。
+\end_layout
+
+\begin_layout Subsection
+harvard
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "harvard"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+\series medium
+ 
+\family typewriter
+\series default
+macros/latex/contrib/harvard/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+harvard
+\family default
+パッケージは、Pitson著
+\emph on
+Style Manual for Authorsや Editors and Printers of Australian Government
+ Publications
+\emph default
+を中心に様々な推奨に従った引用様式を提供します。これは、基本LaTeXのみ、または
+\family sans
+natbib
+\family default
+と共に使用することができます。最初の引用での著者完全列挙をサポートしており、2回目以降の引用では、引用を自動的に第1著者に短縮します(
+\family sans
+natbib
+\family default
+の
+\family sans
+longnamesfirst
+\family default
+オプションと同様です)。
+\end_layout
+
+\begin_layout Subsection
+jurabib
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "jurabib"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/jurabib/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+jurabib
+\family default
+パッケージ(
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.jurabib.org
+\end_layout
+
+\end_inset
+
+)は、
+\family sans
+natbib
+\family default
+の代替として、LyXに柔軟な参考文献様式を与えます。人文科学や法学でよく用いられる引用様式や脚注引用、ibidemなどをサポートします。少なくとも第0.6版以降の
+jurabibが必要です。
+\end_layout
+
+\begin_layout Subsection
+mslapa
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "mslapa"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+\series medium
+ 
+\family typewriter
+\series default
+macros/latex/contrib/mslapa/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+mslapa
+\family default
+パッケージは、アメリカ心理学会(American Psychological Association)の推奨におおよそ従った引用様式を提供します。これは、基本L
+aTeXのみ、または
+\family sans
+natbib
+\family default
+と共に使用することができます。
+\end_layout
+
+\begin_layout Subsection
+named
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "named"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN:
+\series medium
+ 
+\family typewriter
+\series default
+biblio/bibtex/contrib/named/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+named
+\family default
+パッケージは、文書化されていないガイドラインに従った著者-年引用様式を提供します。これは、基本LaTeXのみ、または
+\family sans
+natbib
+\family default
+と共に使用することができますが、著者完全列挙はサポートしていません。
+\end_layout
+
+\begin_layout Subsection
+natbib
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "natbib"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/natbib/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+natbib
+\family default
+パッケージは、LyXが、利用可能な書誌情報様式の大半への柔軟なインタフェースとして必要とします(代わりに
+\family sans
+jurabib
+\family default
+を使用することもできます)。
+\end_layout
+
+\begin_layout Section
 モジュールが必要とするパッケージ
 \end_layout
 
@@ -3761,7 +5172,7 @@ braille
 \end_layout
 
 \begin_layout Subsection
-イニシャルモジュール
+頭文字モジュール
 \end_layout
 
 \begin_layout Subsubsection
@@ -3792,7 +5203,7 @@ lettrine
 パッケージは、
 \begin_inset CommandInset href
 LatexCommand href
-name "イニシャル"
+name "頭文字"
 target "http://en.wikipedia.org/wiki/Initial"
 
 \end_inset
@@ -3888,6 +5299,38 @@ enumitem
 パッケージは、リスト（番号・記号・記述）の外観を調整するのに多くの可能性を提供します。言語学モジュールが、下位連番用例の外観を微調整するのに使用します。
 \end_layout
 
+\begin_layout Subsection
+リスクと安全性に関する表示用モジュール
+\end_layout
+
+\begin_layout Subsubsection
+rsphrase
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "rsphrase"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/mhchem/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+rsphrase
+\family default
+パッケージは、化学物質の公式なリスクと安全性に関する表示を挿入するのに用いられます。
+\end_layout
+
 \begin_layout Section
 
 \series bold
@@ -3921,6 +5364,34 @@ language/arabic/arabi/
 arabi
 \family default
 パッケージは、文書言語がアラビア語やペルシア語の文書を、LyXが出力するために必要です。
+\end_layout
+
+\begin_layout Subsection
+bidi
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "bidi"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/bidi/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+bidi
+\family default
+パッケージは、アラビア語・ウルドゥー語・シリア語・ディベヒ語・ヘブライ語・ペルシャ語など、右から左に書かれる文書を出力するために、LyXが使用します。
 \end_layout
 
 \begin_layout Subsection
@@ -4145,34 +5616,6 @@ algorithm
 \end_layout
 
 \begin_layout Subsection
-bibtopic
-\end_layout
-
-\begin_layout Description
-検出： 
-\begin_inset Info
-type  "package"
-arg   "bibtopic"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN： 
-\family typewriter
-macros/latex/contrib/bibtopic/
-\end_layout
-
-\begin_layout Description
-備考： 
-\family sans
-bibtopic
-\family default
-パッケージは、BibTeXが生成する書誌情報を節に分けるのに使用されます。
-\end_layout
-
-\begin_layout Subsection
 breakurl
 \end_layout
 
@@ -4198,6 +5641,58 @@ macros/latex/contrib/breakurl/
 breakurl
 \family default
 パッケージは、hyperrefが使用されているときに、DVI出力中のURLが行末で正しく改行されるようにします。
+\end_layout
+
+\begin_layout Subsection
+cancel
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "esint"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/cancel/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+cancel
+\family default
+パッケージは、数式の消去を組むのに使用されます。これは、コマンド
+\family sans
+
+\backslash
+cancel
+\family default
+・
+\family sans
+
+\backslash
+bcancel
+\family default
+・
+\family sans
+
+\backslash
+xcancel
+\family default
+・
+\family sans
+
+\backslash
+cancelto
+\family default
+を入力することで可能です。
 \end_layout
 
 \begin_layout Subsection
@@ -4329,8 +5824,12 @@ macros/latex/contrib/fancybox/
 \family sans
 fancybox
 \family default
-パッケージは、ボックスの周りに枠を描くのに必要です（挿入\SpecialChar \menuseparator
-ボックスメニュー）。
+パッケージは、ボックスの周りに枠を描くのに必要です（
+\family sans
+挿入\SpecialChar \menuseparator
+ボックス
+\family default
+メニュー）。
 \end_layout
 
 \begin_layout Subsection
@@ -4363,6 +5862,37 @@ fancyhdr
 fancyheadings
 \family default
 という名称でした）は、文書レイアウトポップアップで「装飾的（fancy）」を選択した時に用いられます。これは、2ページごとに交代するヘッダとフッタを提供します。
+\end_layout
+
+\begin_layout Subsection
+fix-cm
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "fix-cm"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/unpacked/fix-cm.sty
+\end_layout
+
+\begin_layout Description
+備考: T1及びTS1エンコードされたCMフォント(別名`EC')の外観を、伝統的な(OT1エンコードされた)フォントにできる限り近付けるために、Compute
+r Modernフォントのフォント定義を変更します。特に、壊れたり醜いデザインの寸法は用いられず、大寸でのボールドサンセリフ体の見栄えはかなり向上し、さらに本文
+用フォントと対応する数式フォントの間のミスマッチは回避されています。Computer Modernフォントは任意寸で使用できます。Type1形式でも通常は使用で
+きるフォントデザイン寸のみが使用されます。これは、
+\family sans
+fix-cm
+\family default
+モジュールを読み込むことで使用できるようになります。
 \end_layout
 
 \begin_layout Subsection
@@ -4461,56 +5991,6 @@ if
  else
 \emph default
 ）を提供します。この機能は、いくつかのクラスやモジュールが必要とします。
-\end_layout
-
-\begin_layout Subsection
-jurabib
-\end_layout
-
-\begin_layout Description
-検出： 
-\begin_inset Info
-type  "package"
-arg   "jurabib"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN： 
-\family typewriter
-macros/latex/contrib/jurabib/
-\end_layout
-
-\begin_layout Description
-備考： 
-\family sans
-jurabib
-\family default
-パッケージ（
-\color none
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.jurabib.org
-\end_layout
-
-\end_inset
-
-
-\color inherit
-）は、LyXで柔軟な参考文献スタイルを用いるために、
-\family sans
-\color none
-natbib
-\family default
-\color inherit
-の代わりとして使用することができます。本パッケージは、人文科学と法学で一般的な引用スタイル、及び脚注引用、ibid.表記（ibidem）等をサポートします。jur
-abib第0.6版以降が必要です。
 \end_layout
 
 \begin_layout Subsection
@@ -4637,6 +6117,34 @@ iddots
 \end_layout
 
 \begin_layout Subsection
+mathtools
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "mathdots"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/mh/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+mathtools
+\family default
+パッケージは、一部unicode記号のためにLyXが使用します。
+\end_layout
+
+\begin_layout Subsection
 mhchem
 \end_layout
 
@@ -4690,38 +6198,6 @@ macros/latex/contrib/multirow/
 multirow
 \family default
 パッケージは、LyXが複数行の表セルを連結するのに使用され、同時に表計算外部差込枠のサポートも提供します。
-\end_layout
-
-\begin_layout Subsection
-natbib
-\end_layout
-
-\begin_layout Description
-検出： 
-\begin_inset Info
-type  "package"
-arg   "natbib"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-CTAN： 
-\family typewriter
-macros/latex/contrib/natbib/
-\end_layout
-
-\begin_layout Description
-備考： 
-\family sans
-natbib
-\family default
-パッケージは、LyXが、利用可能な参考文献スタイルの大半への柔軟なインタフェースを生成するのに必要です（代わりに
-\family sans
-jurabib
-\family default
-を使用することもできます）。
 \end_layout
 
 \begin_layout Subsection
@@ -5003,6 +6479,64 @@ splitindex
 \end_layout
 
 \begin_layout Subsection
+stackrel
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "stackrel"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/oberdiek
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+stackrel
+\family default
+パッケージは、下付き文字に
+\backslash
+stackrelコマンドを使用して数式を出力するのに、LyXが必要とします。
+\end_layout
+
+\begin_layout Subsection
+stmaryrd
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "stmaryrd"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+fonts/stmaryrd/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+stmaryrd
+\family default
+パッケージは、St Mary's Roadシンボルフォント由来の拡張文字を出力するのに、LyXが必要とします。
+\end_layout
+
+\begin_layout Subsection
 subfig
 \end_layout
 
@@ -5118,6 +6652,40 @@ ulem
 \family default
 パッケージは、複数の単語や行を越えることも可能な、様々な型の下線引きや取消線および強調を提供します。本パッケージは、LyXが、変更追跡が有効になっている文書で、
 取消線を引いた文章をPDFに出力するのに必要です。
+\end_layout
+
+\begin_layout Subsection
+undertilde
+\end_layout
+
+\begin_layout Description
+検出: 
+\begin_inset Info
+type  "package"
+arg   "undertilde"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/undertilde/
+\end_layout
+
+\begin_layout Description
+備考: 
+\family sans
+undertilde
+\family default
+パッケージは、
+\family sans
+
+\backslash
+utilde
+\family default
+コマンドを提供します。数式中でチルダの付いた記号に下線を引くのに、LyXが使用します。
 \end_layout
 
 \begin_layout Subsection

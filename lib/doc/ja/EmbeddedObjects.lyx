@@ -2,7 +2,7 @@
 \lyxformat 474
 \begin_document
 \begin_header
-\textclass jbook
+\textclass scrbook
 \begin_preamble
 %% Added by the translator
 %   Correction for PDF bookmarks
@@ -145,7 +145,7 @@
 % used for captions on the side
 \newboolean{sidecap}
 \IfFileExists{sidecap.sty}
- {\usepackage{sidecap}
+ {% \usepackage{sidecap} % This breaks title fonts with pLaTeX
   \setboolean{sidecap}{true}}
  {\setboolean{sidecap}{false}}
 
@@ -184,9 +184,37 @@
 initials
 \end_modules
 \maintain_unincluded_children false
+\begin_local_layout
+InsetLayout		Flex:Ruby
+LyxType		charstyle
+LatexType		command
+LatexName		ruby
+BgColor		none
+LabelString		"ルビ"
+MenuString		"ルビ(R)|R"
+Decoration		Conglomerate
+Argument post:1
+      LabelString	"ルビ文"
+      MenuString	"ルビ文(S)|S"
+      Decoration	Conglomerate
+      Font
+            Size		tiny
+      EndFont
+      LabelFont
+            Size		tiny
+      EndFont
+      Mandatory	1
+EndArgument
+Preamble
+\IfFileExists{okumacro.sty}
+ {\usepackage{okumacro}}
+ {\newcommand{\ruby}[2]{#2}}
+EndPreamble
+End
+\end_local_layout
 \language japanese
-\language_package none
-\inputencoding jis-platex
+\language_package default
+\inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -315,7 +343,7 @@ status collapsed
 
 
 \family sans
-第2.0.x版
+第2.1.x版
 \end_layout
 
 \begin_layout Standard
@@ -891,22 +919,30 @@ reference "fig:エッシャー"
 ラベル
 \family default
 メニューかツールバーボタン
+\family sans
+
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
+
+\family default
 を使用して、キャプションにラベルを挿入してください。その後、
 \family sans
 挿入\SpecialChar \menuseparator
 相互参照
 \family default
 メニューかツールバーボタン
+\family sans
+
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
 を使用して、ラベルを参照することができます。LaTeXは仕上文書でのフロートの位置を調整するので、「上図」のような曖昧な参照のしかたをするのではなく、フロートを
 直接参照することが重要です。仕上文書では、「上図」ではないことが、大いにありうるからです。
 \begin_inset Newline newline
@@ -962,7 +998,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1004,7 +1040,7 @@ name "fig:何かわからない構造"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1759,21 +1795,6 @@ reference "sub:連結行"
 \end_inset
 
 回転関連のチェックボックスは、現在セルや選択範囲あるいは表全体を反時計廻りに90度回転させます。回転は、LyX内部では反映されず、出力にのみ現れます。
-\lang english
-For more information see sec.
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\lang japanese
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Rotated-Table-Cells"
-
-\end_inset
-
-。
 \begin_inset Newline newline
 \end_inset
 
@@ -2055,211 +2076,295 @@ status collapsed
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-row"
 \end_inset
 
+
+\family default
  は、現在セルあるいは選択範囲の下に行を追加します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-column"
 \end_inset
 
+
+\family default
  は、現在セルあるいは選択範囲の右に列を追加します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-row"
 \end_inset
 
+
+\family default
  は、現在行あるいは選択範囲行を削除します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-column"
 \end_inset
 
+
+\family default
  は、現在列あるいは選択範囲列を削除します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-top"
 \end_inset
 
+
+\family default
  は、現在セルや現在行、あるいは選択範囲の上部に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-bottom"
 \end_inset
 
+
+\family default
  は、現在セルや現在行、あるいは選択範囲の下部に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-left"
 \end_inset
 
+
+\family default
  は、現在セルや現在行、あるいは選択範囲の左側に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-right"
 \end_inset
 
+
+\family default
  は、現在セルや現在行、あるいは選択範囲の右側に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-all-lines"
 \end_inset
 
+
+\family default
  は、現在セルあるいは選択範囲の周囲に罫線を描画します。現在セルが連結列でなければ、現在行と現在列にも影響します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular unset-all-lines"
 \end_inset
 
+
+\family default
  は、現在セルあるいは選択範囲のすべての罫線を消去します。現在セルが連結列でなければ、現在行と現在列にも影響します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-left"
 \end_inset
 
+
+\family default
  は、現在セルあるいは現在列の内容を左揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-center"
 \end_inset
 
+
+\family default
  は、現在セルあるいは現在列の内容を水平方向中央揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-right"
 \end_inset
 
+
+\family default
  は、現在セルあるいは現在列の内容を右揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular align-decimal"
 \end_inset
 
+
+\family default
  は、現在セルの内容を特定文字位置で揃えます。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-top"
 \end_inset
 
+
+\family default
  は、現在セルの内容を垂直方向上揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-middle"
 \end_inset
 
+
+\family default
  は、現在セルの内容を垂直方向中央揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-bottom"
 \end_inset
 
+
+\family default
  は、現在セルの内容を垂直方向下揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-rotate-cell"
 \end_inset
 
+
+\family default
  は、現在セルあるいは選択範囲を反時計廻りに90度回転します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-rotate-tabular"
 \end_inset
 
+
+\family default
  は、表全体を反時計廻りに90度回転します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multicolumn"
 \end_inset
 
+
+\family default
  は、現在セルあるいは選択範囲を連結列にします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multirow"
 \end_inset
 
+
+\family default
  は、現在セルあるいは選択範囲を連結行にします。
 \end_layout
 
@@ -2664,18 +2769,26 @@ status collapsed
 ラベル
 \family default
 メニューかツールバーボタンの
+\family sans
+
 \begin_inset Info
 type  "icon"
 arg   "label-insert"
 \end_inset
 
+
+\family default
 を用いて、キャプションにラベルを挿入して下さい。然る後に、挿入\SpecialChar \menuseparator
 相互参照メニューかツールバーボタンの
+\family sans
+
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
 を用いて、このラベルを参照することができます。
 \begin_inset Newline newline
 \end_inset
@@ -5472,8 +5585,23 @@ reference "sec:長尺表"
 \family sans
 キャプション
 \family default
-を使用すれば、フロートのキャプション環境を長尺表でも使用することができます。キャプションは、冒頭ヘッダ・ヘッダ・フッタ・末尾フッタのいずれかに入れなくてはなりま
-せん。それぞれのヘッダ・フッタに入れることができる行は、ひとつだけです。
+を使用すれば、フロートのキャプション環境を長尺表でも使用することができます。キャプションは、
+\family sans
+冒頭ヘッダ
+\family default
+・
+\family sans
+ヘッダ
+\family default
+・
+\family sans
+フッタ
+\family default
+・
+\family sans
+末尾フッタ
+\family default
+のいずれかに入れなくてはなりません。それぞれのヘッダ・フッタに入れることができる行は、ひとつだけです。
 \end_layout
 
 \begin_layout Standard
@@ -10652,7 +10780,11 @@ reference "tab:複数行表"
 
 \end_inset
 
-を生成するには、まず3×3表を作り、最初のセルを右クリックして現れるメニューから、
+を生成するには、まず3
+\begin_inset Formula $\times$
+\end_inset
+
+3表を作り、最初のセルを右クリックして現れるメニューから、
 \family sans
 設定
 \family default
@@ -10664,7 +10796,27 @@ cm幅とし、水平揃え及び垂直揃えをともに中央揃えに設定し
 \begin_inset space \thinspace{}
 \end_inset
 
-cmよりも短いため、一行しか表示されません。そこで二行とも表示するために、両端揃え改行（短絡キー
+cmよりも短いため、一行しか表示されません。そこで二行とも表示するために、両端揃え改行（
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert linebreak"
@@ -10985,11 +11137,15 @@ status collapsed
 
 \begin_layout Standard
 一つのセルが複数の列にまたがるようにするためには、行中から一つの連結セルにまとめるべき各セルを選択して、表ツールバーボタン
+\family sans
+
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multicolumn"
 \end_inset
 
+
+\family default
 を押すか、
 \family sans
 編集\SpecialChar \menuseparator
@@ -11313,7 +11469,11 @@ reference "tab:中央揃え表"
 
 \end_inset
 
-を生成するには、3×3表の第一行の最初の二つのセルを選択して、右クリックして現れるメニューから
+を生成するには、3
+\begin_inset Formula $\times$
+\end_inset
+
+3表の第一行の最初の二つのセルを選択して、右クリックして現れるメニューから
 \family sans
 設定
 \family default
@@ -11711,11 +11871,15 @@ status collapsed
 
 \begin_layout Standard
 複数行にかかるセルを連結するには、同一列中の統合したいセルをすべて選択し、ツールバーボタン
+\family sans
+
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multirow"
 \end_inset
 
+
+\family default
 を押すか、メニュー
 \family sans
 編集\SpecialChar \menuseparator
@@ -12060,7 +12224,27 @@ raggedright}
 \end_layout
 
 \begin_layout Standard
-連結行で新しい行に移るには、強制改行(短絡キー
+連結行で新しい行に移るには、強制改行(
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -14059,7 +14243,11 @@ cmidrule(l){3-4}
 
 \end_inset
 
-検知器の厚み [µm]
+検知器の厚み [
+\begin_inset Formula $\mu m$
+\end_inset
+
+]
 \end_layout
 
 \end_inset
@@ -14097,7 +14285,7 @@ cmidrule(l){3-4}
 \begin_inset Text
 
 \begin_layout Plain Layout
-エッジ角 [°]
+エッジ角 [度]
 \end_layout
 
 \end_inset
@@ -14135,7 +14323,11 @@ cmidrule(l){3-4}
 \begin_inset Text
 
 \begin_layout Plain Layout
-空間分解能 [µm]
+空間分解能 [
+\begin_inset Formula $\mu m$
+\end_inset
+
+]
 \end_layout
 
 \end_inset
@@ -14264,7 +14456,10 @@ LSF空間分解能
 \begin_inset Text
 
 \begin_layout Plain Layout
-µm表示
+\begin_inset Formula $\mu m$
+\end_inset
+
+表示
 \end_layout
 
 \end_inset
@@ -14796,7 +14991,11 @@ cmidrule{2-4}
 
 \end_inset
 
-検知器の厚み [µm]
+検知器の厚み [
+\begin_inset Formula $\mu m$
+\end_inset
+
+]
 \end_layout
 
 \end_inset
@@ -14834,7 +15033,7 @@ cmidrule{2-4}
 \begin_inset Text
 
 \begin_layout Plain Layout
-エッジ角 [°]
+エッジ角 [度]
 \end_layout
 
 \end_inset
@@ -14872,7 +15071,11 @@ cmidrule{2-4}
 \begin_inset Text
 
 \begin_layout Plain Layout
-空間分解能 [µm]
+空間分解能 [
+\begin_inset Formula $\mu m$
+\end_inset
+
+]
 \end_layout
 
 \end_inset
@@ -15014,7 +15217,10 @@ LSF空間分解能
 \begin_inset Text
 
 \begin_layout Plain Layout
-µm表示
+\begin_inset Formula $\mu m$
+\end_inset
+
+表示
 \end_layout
 
 \end_inset
@@ -19279,9 +19485,12 @@ reference "tab:演算子揃え表"
 
 \end_inset
 
-のような方法を用いる必要があります。この表は、4×2表として作成されており、見出しは中央揃え連結列です。第1列には、右揃えで演算子を含む前半部を収め、第2列には
-、左揃えで残りを収めます。演算子の周りに通常加えられる空白を得るために、第2列の各セルの冒頭には、小空白が加えられています。通常、表の列間に加えられる余白を削る
-ために、
+のような方法を用いる必要があります。この表は、4
+\begin_inset Formula $\times$
+\end_inset
+
+2表として作成されており、見出しは中央揃え連結列です。第1列には、右揃えで演算子を含む前半部を収め、第2列には、左揃えで残りを収めます。演算子の周りに通常加えら
+れる空白を得るために、第2列の各セルの冒頭には、小空白が加えられています。通常、表の列間に加えられる余白を削るために、
 \end_layout
 
 \begin_layout Standard
@@ -19408,7 +19617,11 @@ name "tab:表セル揃え"
 \begin_inset Text
 
 \begin_layout Plain Layout
-12×
+12
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -19476,7 +19689,11 @@ name "tab:表セル揃え"
 \begin_inset Text
 
 \begin_layout Plain Layout
-1024×
+1024
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -19544,7 +19761,11 @@ name "tab:表セル揃え"
 \begin_inset Text
 
 \begin_layout Plain Layout
-32×
+32
+\begin_inset Formula $\times$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -22676,7 +22897,7 @@ status collapsed
 \family default
 メニューかツールバーボタンを使用して、フロートのキャプションにラベルを挿入してください。
 \begin_inset Graphics
-	filename ../clipart/labelQt4.png
+	filename clipart/labelQt4.png
 	scale 85
 	scaleBeforeRotation
 
@@ -22697,11 +22918,15 @@ fig:
 相互参照
 \family default
 メニューかツールバーボタン
+\family sans
+
 \begin_inset Info
 type  "icon"
 arg   "dialog-show-new-inset ref"
 \end_inset
 
+
+\family default
 を使えば、ラベルを参照することができます。
 \begin_inset Graphics
 	filename clipart/referenceQt4.png
@@ -22981,25 +23206,7 @@ on this page
 status open
 
 \begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- It is recommended to use the LaTeX-package 
-\series bold
-refstyle
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
-\end_layout
-
-\end_inset
-
- because 
+【註】LaTeXパッケージ
 \series bold
 prettyref
 \series default
@@ -23013,11 +23220,32 @@ LaTeXぱっけーじ@LaTeXパッケージ! prettyref
 
 \end_inset
 
- does not know all of LyX's possible label shortcuts
+は、LyXの取り得るラベル
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
+例えば、
 \begin_inset Quotes eld
 \end_inset
 
@@ -23025,12 +23253,46 @@ fig:
 \begin_inset Quotes erd
 \end_inset
 
- is for example LyX's shortcut for labels in figure captions.
+は図キャプションを表すLyX
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
 \end_layout
 
 \end_inset
 
- and is not internationalized.
+
+\end_layout
+
+\end_inset
+
+です。
+\end_layout
+
+\end_inset
+
+を全部は解釈できず、国際化もされていないので、
+\series bold
+refstyle
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
+\end_layout
+
+\end_inset
+
+を使用することを推奨します。
 \end_layout
 
 \end_inset
@@ -25917,6 +26179,43 @@ LaTeXぱっけーじ@LaTeXパッケージ ! hypcap
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+【訳註】
+\series default
+LaTeXパッケージ
+\series bold
+sidecap
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeXぱっけーじ@LaTeXパッケージ ! sidecap
+\end_layout
+
+\end_inset
+
+は、pLaTeXと互換性がなく、特に文書全体の見出しのフォントが適切に表示できなくなってしまうため、本日本語訳では当該パッケージを使用していません。その使用例に
+ついては、取扱説明書『
+\emph on
+埋め込み機能篇
+\emph default
+』(つまりこの文書)のLyX文書本体を見るか、出力結果を見たい場合には英語版を出力するようにしてください。
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -25932,7 +26231,7 @@ FigBesBeg
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -25972,7 +26271,7 @@ name "fig:図横キャプション"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -25988,7 +26287,7 @@ FigBesEnd
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -26004,7 +26303,7 @@ TabBesBeg
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Float table
 wide false
 sideways false
@@ -26237,7 +26536,7 @@ name "tab:表横キャプション"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -26253,7 +26552,7 @@ TabBesEnd
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -26306,7 +26605,7 @@ name "fig:図横キャプション-2"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -26322,7 +26621,7 @@ FigBesEnd
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -26338,7 +26637,7 @@ TabBesBeg[5]
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Float table
 wide false
 sideways false
@@ -26578,7 +26877,7 @@ j
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -26587,6 +26886,11 @@ status collapsed
 
 \backslash
 TabBesEnd
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -26699,11 +27003,15 @@ status collapsed
 
 \begin_layout Standard
 注釈は、ツールバーボタン
+\family sans
+
 \begin_inset Info
 type  "icon"
 arg   "note-insert"
 \end_inset
 
+
+\family default
 か、
 \family sans
 挿入\SpecialChar \menuseparator
@@ -26723,7 +27031,7 @@ LyX注釈 この注釈型は、内部用途の注釈で出力には現れませ�
 
 
 \begin_inset Graphics
-	filename ../clipart/LyXNoteImageQt4.png
+	filename clipart/LyXNoteImageQt4.png
 	display false
 	scale 85
 	scaleBeforeRotation
@@ -26760,7 +27068,7 @@ LaTeX (pdflatex) / (平文)
 
 
 \begin_inset Graphics
-	filename ../clipart/CommentNoteImageQt4.png
+	filename clipart/CommentNoteImageQt4.png
 	display false
 	scale 85
 	scaleBeforeRotation
@@ -26791,7 +27099,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../clipart/GreyedOutNoteImageQt4.png
+	filename clipart/GreyedOutNoteImageQt4.png
 	display false
 	scale 85
 	scaleBeforeRotation
@@ -26897,11 +27205,15 @@ status open
 \end_inset
 
 注釈を挿入するのにツールバーボタン
+\family sans
+
 \begin_inset Info
 type  "icon"
 arg   "note-insert"
 \end_inset
 
+
+\family default
 を使用すると、
 \family sans
 LyX注釈
@@ -26957,11 +27269,15 @@ status collapsed
 
 \begin_layout Standard
 脚注は、ツールバーボタン
+\family sans
+
 \begin_inset Info
 type  "icon"
 arg   "footnote-insert"
 \end_inset
 
+
+\family default
 か、
 \family sans
 挿入\SpecialChar \menuseparator
@@ -28232,11 +28548,15 @@ LyX内において、傍注注釈は、脚注のような外見と挙動を示�
 傍注
 \family default
 メニューかツールバーボタン
+\family sans
+
 \begin_inset Info
 type  "icon"
 arg   "marginalnote-insert"
 \end_inset
 
+
+\family default
 で挿入することができます。すると、紫字で「傍注」と書かれた灰色のボックスが現れて、そこに傍注文を入れることができます。
 \end_layout
 
@@ -29033,14 +29353,18 @@ reference "sec:色付きボックス"
 ボックス
 \family default
 メニューかツールバーボタン
+\family sans
+
 \begin_inset Info
 type  "icon"
 arg   "box-insert Frameless"
 \end_inset
 
+
+\family default
 を使って挿入することができます。すると、
 \begin_inset Graphics
-	filename ../clipart/BoxInsetDefaultQt4.png
+	filename clipart/BoxInsetDefaultQt4.png
 	scale 85
 	scaleBeforeRotation
 
@@ -29084,7 +29408,7 @@ parbox
 型については第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Parbox"
+reference "sec:Parboxes"
 
 \end_inset
 
@@ -29242,7 +29566,7 @@ width "12col%"
 special "none"
 height "1in"
 height_special "depth"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -29275,7 +29599,7 @@ width "20col%"
 special "none"
 height "2in"
 height_special "height"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -29300,7 +29624,7 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -29325,7 +29649,7 @@ width "12col%"
 special "none"
 height "1in"
 height_special "width"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -29372,7 +29696,7 @@ width "12col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -29397,7 +29721,7 @@ width "12col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -29422,7 +29746,7 @@ width "12col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -29479,7 +29803,7 @@ width "12col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -29504,7 +29828,7 @@ width "12col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -29529,7 +29853,7 @@ width "12col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -29554,7 +29878,7 @@ width "17col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -29604,7 +29928,7 @@ width "25col%"
 special "none"
 height "1.25in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align left
@@ -29647,7 +29971,7 @@ width "90col%"
 special "none"
 height "1.25in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 このボックスの文章は水平方向に広げてあります。
@@ -29710,7 +30034,7 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -29739,7 +30063,7 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -29768,7 +30092,7 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -29803,7 +30127,7 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -29845,7 +30169,7 @@ width "50col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 影付き背景の箱型
@@ -29911,7 +30235,7 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -30259,7 +30583,15 @@ cornersize{数値}
 \begin_inset space \thinspace{}
 \end_inset
 
-×
+
+\family default
+
+\begin_inset Formula $\times$
+\end_inset
+
+
+\family sans
+
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -30950,7 +31282,7 @@ status open
 Parbox
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Parbox"
+name "sec:Parboxes"
 
 \end_inset
 
@@ -31165,7 +31497,27 @@ veryverylongword
 \family sans
 整形なし改行
 \family default
-メニュー（短絡キー
+メニュー（
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -32014,7 +32366,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 これは背景色を付けた文章です。これは背景色を付けた文章です。
@@ -32418,7 +32770,7 @@ width "1in"
 special "width"
 height "1in"
 height_special "totalheight"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 回転した
@@ -33190,9 +33542,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ほんぶんまわりこみ
-\series bold
-@本文回り込み
+ほんぶんまわりこみ@本文回り込み
 \end_layout
 
 \end_inset
@@ -34377,9 +34727,7 @@ fi
 status collapsed
 
 \begin_layout Plain Layout
-かしらもじ
-\series bold
-@頭文字
+かしらもじ@頭文字
 \end_layout
 
 \end_inset
@@ -34422,13 +34770,23 @@ LaTeXぱっけーじ@LaTeXパッケージ ! lettrine
 \family sans
 頭文字
 \family default
-様式を使用してください。この様式には、必須引数と非必須引数があります。必須引数は、
+様式を使用してください。この様式には、1つの必須引数と2つの非必須引数があります。引数は、
 \family sans
-挿入\SpecialChar \menuseparator
-短縮タイトル
+挿入
 \family default
-メニューで挿入し、頭文字にする文字を中に入れてください。非必須引数も使う場合は、必須引数の前にもうひとつ引数を挿入してください。これには、頭文字を修正するパラメ
-ータが入ります。使うことができるパラメータについての詳細は、
+メニューから挿入できます。必須引数
+\family sans
+頭文字
+\family default
+には、頭文字にする文字を入れ、引数
+\family sans
+頭文字の残り
+\family default
+には、頭文字の単語若しくは文字列の残りが入ります。引数
+\family sans
+オプション
+\family default
+には、頭文字を修正するパラメータが入ります。使うことができるパラメータについての詳細は、
 \series bold
 lettrine
 \series default
@@ -34443,15 +34801,7 @@ key "lettrine"
 \shape smallcaps
 スモールキャップ体(small caps
 \shape default
-)で印字されます。どこでこの単語が終わるかをLaTeXに指示するには、その単語の後ろにTeXコードで閉波括弧「
-\series bold
-}
-\series default
-」を置いてください。また、様式の終わりには、TeXコードで開波括弧「
-\series bold
-{
-\series default
-」がなくてはなりません。
+)で印字されます。
 \end_layout
 
 \begin_layout Standard
@@ -34510,13 +34860,12 @@ status open
 
 \end_inset
 
-t
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 3
+status open
 
 \begin_layout Plain Layout
-
-}
+t
 \end_layout
 
 \end_inset
@@ -34528,17 +34877,6 @@ status collapsed
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Newpage newpage
 \end_inset
 
@@ -34571,17 +34909,6 @@ It
 
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
  was in the spring of the year 1894 that all London was interested, and
  the fashionable world dismayed, by the murder of the Honourable Ronald
  Adair under most unusual and inexplicable circumstances.
@@ -34589,17 +34916,6 @@ status collapsed
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -34718,13 +35034,12 @@ status open
 
 \end_inset
 
-t was in the spring
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 3
+status open
 
 \begin_layout Plain Layout
-
-}
+t was in the spring
 \end_layout
 
 \end_inset
@@ -34736,17 +35051,6 @@ status collapsed
  out in the police investigation, but a good deal was suppressed upon that
  occasion, since the case for the prosecution was so overwhelmingly strong
  that it was not necessary to bring forward all the facts.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -35171,7 +35475,7 @@ setbeamertemplate{background canvas}{}
 \begin_inset Newline newline
 \end_inset
 
-下記は、-5°回転させたPDFを取り込んだものです。
+下記は、-5度回転させたPDFを取り込んだものです。
 \begin_inset Newline newline
 \end_inset
 
@@ -35254,7 +35558,7 @@ reference "sec:画像ダイアログ"
 EPS画像はサポートされていません。右記は、ラスター画像を挿入した例です。
 \begin_inset External
 	template RasterImage
-	filename ../clipart/ToolbarEnvBox.png
+	filename clipart/ToolbarEnvBox.png
 
 \end_inset
 
@@ -37491,12 +37795,13 @@ fcolorbox{black}{
 
 \end_inset
 
-
-\begin_inset Argument 3
-status open
+white
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-white
+
+}{
 \end_layout
 
 \end_inset
@@ -37533,12 +37838,13 @@ fcolorbox{black}{
 
 \end_inset
 
-
-\begin_inset Argument 3
-status open
+white
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-white
+
+}{
 \end_layout
 
 \end_inset
@@ -37575,12 +37881,13 @@ fcolorbox{black}{
 
 \end_inset
 
-
-\begin_inset Argument 3
-status open
+white
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-white
+
+}{
 \end_layout
 
 \end_inset
@@ -41458,6 +41765,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! lettrine
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "listings"
@@ -41490,6 +41798,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! listings
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "marginnote"
@@ -41522,6 +41831,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! marginnote
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "pdfpages"
@@ -41554,6 +41864,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! pdfpages
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "prettyref"
@@ -41586,6 +41897,7 @@ LaTeXぱっけーじ@LaTeXパッケージ! prettyref
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "pstricks"
@@ -41618,6 +41930,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! PSTricks
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "refstyle"
@@ -41650,6 +41963,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "sidecap"
@@ -41682,6 +41996,7 @@ LaTeXぱっけーじ@LaTeXパッケージ ! sidecap
 \end_layout
 
 \begin_layout Bibliography
+\labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "NewInLyX20"

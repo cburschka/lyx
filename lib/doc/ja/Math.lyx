@@ -1,8 +1,8 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
-\textclass jarticle
+\textclass scrartcl
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
 %
@@ -41,13 +41,13 @@
 %\DeclareInputText{183}{\ifmmode\cdot\else\textperiodcentered\fi}
 
 % increase link area for cross-references and autoname them,
-\AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
-\addto\extrasenglish{%
- \renewcommand*{\equationautorefname}[1]{}
- \renewcommand{\sectionautorefname}{sec.\negthinspace}
- \renewcommand{\subsectionautorefname}{sec.\negthinspace}
- \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}
-}
+%\AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
+%\addto\extrasenglish{%
+% \renewcommand*{\equationautorefname}[1]{}
+% \renewcommand{\sectionautorefname}{sec.\negthinspace}
+% \renewcommand{\subsectionautorefname}[1]{sec.\negthinspace}
+% \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}
+%}
 
 % don't load packages twice
 % see first footnote in sec. 9.3
@@ -150,11 +150,38 @@
 % make pdf bookmark sane with Japanese
 \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}
 % Added by lyx2lyx
-\usepackage{cancel}
 \end_preamble
 \options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,samesize
 \use_default_options true
 \maintain_unincluded_children false
+\begin_local_layout
+InsetLayout		Flex:Ruby
+LyxType		charstyle
+LatexType		command
+LatexName		ruby
+BgColor		none
+LabelString		"ルビ"
+MenuString		"ルビ(R)|R"
+Decoration		Conglomerate
+Argument post:1
+      LabelString	"ルビ文"
+      MenuString	"ルビ文(S)|S"
+      Decoration	Conglomerate
+      Font
+            Size		tiny
+      EndFont
+      LabelFont
+            Size		tiny
+      EndFont
+      Mandatory	1
+EndArgument
+Preamble
+\IfFileExists{okumacro.sty}
+ {\usepackage{okumacro}}
+ {\newcommand{\ruby}[2]{#2}}
+EndPreamble
+End
+\end_local_layout
 \language japanese
 \language_package default
 \inputencoding auto
@@ -162,13 +189,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format pdf3
 \output_sync 0
@@ -193,15 +220,24 @@
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
 \use_geometry true
-\use_amsmath 2
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 2
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \notefontcolor #0000ff
 \index 索引
@@ -278,7 +314,7 @@ status collapsed
 
 
 \family sans
-第2.0.x版
+第2.1.x版
 \end_layout
 
 \begin_layout Standard
@@ -382,13 +418,13 @@ http://wiki.lyx.org/LyX/DocumentationDevelopment#Math
 \end_layout
 
 \begin_layout Standard
-とくに断らなければ、コマンドは数式内からのみ利用可能です。この文書で説明されているすべてのコマンドを利用できるようにするためには、文書設定（
+とくに断らなければ、コマンドは数式内からのみ利用可能です。この文書で説明されているすべてのコマンドを利用できるようにするためには、文書設定(
 \family sans
 文書\SpecialChar \menuseparator
 設定\SpecialChar \menuseparator
 数式オプション
 \family default
-メニュー）で
+メニュー)で
 \family sans
 AMS mathパッケージを使う
 \family default
@@ -489,7 +525,27 @@ status collapsed
 
 \end_inset
 
-を作成するには、短絡キー
+を作成するには、
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Info
 type  "shortcuts"
 arg   "math-mode"
@@ -522,7 +578,27 @@ type  "shortcuts"
 arg   "math-display"
 \end_inset
 
-のうちいずれかの短絡キーを使用して下さい。
+のうちいずれかの
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+を使用して下さい。
 \end_layout
 
 \begin_layout Standard
@@ -532,7 +608,27 @@ type  "shortcuts"
 arg   "math-mode"
 \end_inset
 
-のいずれかの短絡キーか、
+のいずれかの
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+か、
 \family sans
 編集\SpecialChar \menuseparator
 数式\SpecialChar \menuseparator
@@ -588,7 +684,7 @@ displaystyle
 ツールバー
 \family default
 メニューの「数式」をもう一度クリックすると、数式ツールバーは、カーソルが数式内部にあるときのみ表示されるようになります。この状態は、メニュー項目が「数式」から「
-数式（自動）」に変わることで表されます。
+数式(自動)」に変わることで表されます。
 \end_layout
 
 \begin_layout Standard
@@ -625,13 +721,33 @@ status collapsed
 
 Xコード
 \family default
-（短絡キー
+(
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "ert-insert"
 \end_inset
 
-）メニューを使うことで、起動できます。
+)メニューを使うことで、起動できます。
 \begin_inset Note Note
 status collapsed
 
@@ -739,7 +855,27 @@ status collapsed
 
 \end_inset
 
-が使用されます。このモードには、短絡キー
+が使用されます。このモードには、
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "math-mode"
@@ -885,7 +1021,27 @@ spce
 \begin_inset Formula $\to$
 \end_inset
 
-のような矢印は、キーボードから対応する矢印キーを押すことを表します。
+のような矢印は、キーボードから対応する矢印
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+鍵
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+キー
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+を押すことを表します。
 \end_layout
 
 \begin_layout Subsection*
@@ -902,7 +1058,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -923,9 +1079,9 @@ name "tab:使用できる単位"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1232,7 +1388,7 @@ mu
 \begin_inset Text
 
 \begin_layout Plain Layout
-数式単位（1
+数式単位(1
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1244,7 +1400,7 @@ mu =
 \begin_inset space \thinspace{}
 \end_inset
 
-em）
+em)
 \end_layout
 
 \end_inset
@@ -1270,7 +1426,7 @@ em）
 \end_layout
 
 \begin_layout Section
-基礎的な函数
+基礎的な関数
 \end_layout
 
 \begin_layout Subsection
@@ -1383,7 +1539,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -1659,7 +1815,7 @@ dfrac
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -2043,7 +2199,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-（註）
+【註】
 \backslash
 cfracleft
 \series default
@@ -2113,11 +2269,11 @@ nicefrac
 
 \end_inset
 
-（例：
+(例：
 \begin_inset Formula $\nicefrac{5}{31}$
 \end_inset
 
-）を使うか、コマンド
+)を使うか、コマンド
 \series bold
 
 \backslash
@@ -2135,11 +2291,11 @@ unitfrac
 
 \end_inset
 
-（例：
+(例：
 \begin_inset Formula $\unitfrac{5}{31}$
 \end_inset
 
-）を使います。さらに、
+)を使います。さらに、
 \begin_inset Formula $\unitfrac[2]{1}{3}$
 \end_inset
 
@@ -2159,7 +2315,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-（註）
+【註】
 \series default
 実は、
 \series bold
@@ -2300,7 +2456,7 @@ root
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -2502,11 +2658,11 @@ uproot{距離}
 \end_layout
 
 \begin_layout Standard
-ここで「距離」は、指数を左あるいは上に動かす、Big Point（単位bp；
+ここで「距離」は、指数を左あるいは上に動かす、Big Point(単位bp；
 \begin_inset Formula $\mathrm{72\, bp=1}$
 \end_inset
 
-インチ）での数値です。これらのコマンドは、指数に書き込みます。このようにして、コマンド
+インチ)での数値です。これらのコマンドは、指数に書き込みます。このようにして、コマンド
 \begin_inset Newline newline
 \end_inset
 
@@ -2598,13 +2754,13 @@ binom
 
 \end_inset
 
-の下位メニューを使って挿入することができます。分数（
+の小メニューを使って挿入することができます。分数(
 \series bold
 
 \backslash
 frac
 \series default
-）と同様に、
+)と同様に、
 \series bold
 
 \backslash
@@ -2689,7 +2845,7 @@ brack
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -2963,7 +3119,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -3113,7 +3269,27 @@ cases
 
 \end_inset
 
-を使用した後では、短絡キー
+を使用した後では、
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -3185,7 +3361,7 @@ not
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -3295,7 +3471,7 @@ parallel
 \end_layout
 
 \begin_layout Standard
-最後の例が示すように、すべての否定形がきれいに出力されるわけではありません。このことから、否定形に専用のコマンドを持つものもあります（第
+最後の例が示すように、すべての否定形がきれいに出力されるわけではありません。このことから、否定形に専用のコマンドを持つものもあります(第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:数学記号"
@@ -3309,7 +3485,7 @@ reference "sec:関係子"
 
 \end_inset
 
-節を参照）。
+節を参照)。
 \end_layout
 
 \begin_layout Subsection
@@ -3432,7 +3608,7 @@ reference "sub:化学記号と化学式"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -3535,7 +3711,7 @@ status collapsed
 
 \end_inset
 
-の下位メニューに入っています。
+の小メニューに入っています。
 \end_layout
 
 \end_inset
@@ -3553,8 +3729,8 @@ status collapsed
 \backslash
 phantom
 \series default
-を挿入すると、二つの赤い矢印が重なった青枠が表示されます。矢印は、箱の中身の幅と高さの両方が、埋め草（指定した文字と同じ大きさの余白を確保するために使われる空打
-ち文字）として適用されることを示しています。したがって、
+を挿入すると、二つの赤い矢印が重なった青枠が表示されます。矢印は、箱の中身の幅と高さの両方が、埋め草(指定した文字と同じ大きさの余白を確保するために使われる空打
+ち文字)として適用されることを示しています。したがって、
 \series bold
 
 \backslash
@@ -3567,9 +3743,9 @@ phantom
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -3838,7 +4014,7 @@ vphantom
 
 \end_inset
 
-（ツールバーボタン
+(ツールバーボタン
 \begin_inset space ~
 \end_inset
 
@@ -3849,7 +4025,7 @@ vphantom
 
 \end_inset
 
-）および
+)および
 \series bold
 
 \backslash
@@ -3867,7 +4043,7 @@ hphantom
 
 \end_inset
 
-（ツールバーボタン
+(ツールバーボタン
 \begin_inset space ~
 \end_inset
 
@@ -3878,7 +4054,7 @@ hphantom
 
 \end_inset
 
-）というコマンドもあります。
+)というコマンドもあります。
 \series bold
 
 \backslash
@@ -4040,7 +4216,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -4307,7 +4483,7 @@ rule[垂直オフセット幅]{長さ}{厚み}
 \series bold
 「垂直オフセット幅
 \series default
-」は、行を上方に（値が負であれば下方に）移動させます。値としては、第
+」は、行を上方に(値が負であれば下方に)移動させます。値としては、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:使用できる単位"
@@ -4404,12 +4580,12 @@ status collapsed
 
 \end_inset
 
-ボタンで表示されている下位メニューです。
+ボタンで表示されている小メニューです。
 \end_layout
 
 \end_inset
 
-。列挙のためには、ベースラインの点々（
+。列挙のためには、ベースラインの点々(
 \series bold
 
 \backslash
@@ -4427,7 +4603,7 @@ ldots
 
 \end_inset
 
-）を使用しますが、演算子の場合は、演算子と同じ高さの点々（
+)を使用しますが、演算子の場合は、演算子と同じ高さの点々(
 \series bold
 
 \backslash
@@ -4445,7 +4621,7 @@ cdots
 
 \end_inset
 
-）が必要です。
+)が必要です。
 \series bold
 
 \backslash
@@ -4470,7 +4646,7 @@ dots
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -4777,7 +4953,11 @@ iddots
 \begin_inset Text
 
 \begin_layout Plain Layout
-いろいろな点々を使った3×3行列
+いろいろな点々を使った
+\begin_inset Formula $3\times3$
+\end_inset
+
+行列
 \end_layout
 
 \end_inset
@@ -4837,7 +5017,7 @@ iddots
 \family default
 にある
 \family sans
-mathdotsパッケージを（自動的に）使う
+mathdotsパッケージを(自動的に)使う
 \family default
 オプションのうちいずれかを有効にしなくてはなりません。
 \begin_inset Newline newline
@@ -5101,11 +5281,11 @@ c
 \emph on
 r
 \emph default
-は右寄せを意味します。たとえば、第1列が左寄せで第2列と第3列が中央揃え、第4列が右揃えの4
-\series bold
-×
-\series default
-4行列を作成するには、水平配置のところに
+は右寄せを意味します。たとえば、第1列が左寄せで第2列と第3列が中央揃え、第4列が右揃えの
+\begin_inset Formula $4\times4$
+\end_inset
+
+行列を作成するには、水平配置のところに
 \series bold
 lccr
 \series default
@@ -5237,7 +5417,27 @@ right
 
 \end_inset
 
-コマンドで作成することもできます（短絡キー
+コマンドで作成することもできます(
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \family sans
 Alt+M
 \begin_inset space ~
@@ -5245,7 +5445,7 @@ Alt+M
 
 括弧
 \family default
-）。第
+)。第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:自動の括弧丈"
@@ -5266,9 +5466,9 @@ reference "sub:自動の括弧丈"
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -5325,11 +5525,11 @@ spce
 
 \end_inset
 
-2
-\series bold
-×
-\series default
-2行列
+
+\begin_inset Formula $2\times2$
+\end_inset
+
+行列
 \end_layout
 
 \end_inset
@@ -5370,11 +5570,11 @@ spce
 
 \end_inset
 
-2
-\series bold
-×
-\series default
-2行列
+
+\begin_inset Formula $2\times2$
+\end_inset
+
+行列
 \end_layout
 
 \end_inset
@@ -5415,11 +5615,11 @@ spce
 
 \end_inset
 
-2
-\series bold
-×
-\series default
-2行列
+
+\begin_inset Formula $2\times2$
+\end_inset
+
+行列
 \end_layout
 
 \end_inset
@@ -5451,9 +5651,9 @@ spce
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -5494,11 +5694,11 @@ spce
 
 \end_inset
 
-2
-\series bold
-×
-\series default
-2行列
+
+\begin_inset Formula $2\times2$
+\end_inset
+
+行列
 \end_layout
 
 \end_inset
@@ -5539,11 +5739,11 @@ spce
 
 \end_inset
 
-2
-\series bold
-×
-\series default
-2行列
+
+\begin_inset Formula $2\times2$
+\end_inset
+
+行列
 \end_layout
 
 \end_inset
@@ -5584,11 +5784,11 @@ spce
 
 \end_inset
 
-2
-\series bold
-×
-\series default
-2行列
+
+\begin_inset Formula $2\times2$
+\end_inset
+
+行列
 \end_layout
 
 \end_inset
@@ -5809,7 +6009,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -6036,7 +6236,7 @@ lfloor
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -6277,7 +6477,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-（注意）
+【註】
 \series default
 TeXモードでは、
 \backslash
@@ -6414,7 +6614,7 @@ Bigg
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -6677,9 +6877,9 @@ r
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="middle" width="0">
-<column alignment="center" valignment="middle" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="middle">
+<column alignment="center" valignment="middle">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -7101,7 +7301,27 @@ left
 \backslash
 right
 \series default
-の代わりに、短絡キー
+の代わりに、
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \family sans
 Alt+M
 \begin_inset space ~
@@ -7242,7 +7462,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \series bold
-（訳註）
+(訳註)
 \series default
 pLaTeXでは、標準では
 \series bold
@@ -7311,7 +7531,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -7940,7 +8160,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8149,7 +8369,7 @@ hookleftarrow
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8365,7 +8585,7 @@ hookrightarrow
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8529,7 +8749,7 @@ rightleftharpoons
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8748,7 +8968,7 @@ vspace{4mm}
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8925,7 +9145,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9109,7 +9329,7 @@ downarrow
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9398,7 +9618,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9726,7 +9946,7 @@ A
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -10039,9 +10259,9 @@ ddot
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -10167,7 +10387,7 @@ ddot
 \emph on
 数式中テキストでは使用できない
 \emph default
-のに対し、ウムラウトは直接数式中テキストに変換されることです。（アクセントコマンドによる）アクセント付き文字を数式中テキストに変換すると、アクセントの下にある文
+のに対し、ウムラウトは直接数式中テキストに変換されることです。(アクセントコマンドによる)アクセント付き文字を数式中テキストに変換すると、アクセントの下にある文
 字しか変換されません。これは、たとえばイタリック体やボールド体への変換など、他のすべての変換に関しても言えることです。
 \end_layout
 
@@ -10196,7 +10416,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -10398,7 +10618,7 @@ A=B
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -10725,13 +10945,33 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-数式に水平方向の空白を挿入することが、必要になることがあります。これは、保護された空白（短絡キー
+数式に水平方向の空白を挿入することが、必要になることがあります。これは、保護された空白(
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "space-insert protected"
 \end_inset
 
-）を挿入することで実現できます。「
+)を挿入することで実現できます。「
 \color blue
 
 \begin_inset ERT
@@ -10771,14 +11011,14 @@ Space
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="7">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="6.8cm">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -11024,7 +11264,7 @@ Space
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="6.8cm">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -11144,9 +11384,9 @@ Space
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -11280,7 +11520,7 @@ f_kl
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -11376,14 +11616,33 @@ B
 
 物理単位には、値と単位のあいだに通常の空白ではなく、最小の空白を入れる必要があるために、それに適した空白が必要です。本文中の単位には、挿入\SpecialChar \menuseparator
 整形\SpecialChar \menuseparator
-小空白メニュー（短
-絡キー
+小空白メニュー(
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "space-insert thin"
 \end_inset
 
-）で、最小の空白を挿入することができます。
+)で、最小の空白を挿入することができます。
 \end_layout
 
 \begin_layout Standard
@@ -11393,9 +11652,9 @@ arg   "space-insert thin"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -11627,17 +11886,17 @@ hfill
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-コマンド（
+コマンド(
 \backslash
-hspace 長さ）
+hspace 長さ)
 \end_layout
 
 \end_inset
@@ -11810,14 +12069,14 @@ hfill
 \series bold
 行頭下げ
 \series default
-数式スタイルが使われているときのみ、意味を持ちます（数式スタイルは第
+数式スタイルが使われているときのみ、意味を持ちます(数式スタイルは第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:数式様式"
 
 \end_inset
 
-節で説明されています）。
+節で説明されています)。
 \end_layout
 
 \begin_layout Standard
@@ -11860,7 +12119,7 @@ reference "sub:省略符号"
 \end_layout
 
 \begin_layout Standard
-（例）
+(例)
 \end_layout
 
 \begin_layout Standard
@@ -12281,9 +12540,9 @@ fbox
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -12818,7 +13077,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-（註）
+【註】
 \series default
 下の最後の
 \series bold
@@ -12848,9 +13107,9 @@ raisebox
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -13155,7 +13414,7 @@ colorbox{色}{ボックスの内容}
 \backslash
 colorbox
 \series default
-自体も、別のボックスに入っていても構いません（以下の二番目と三番目の例を参照してください）。ボックスに数式を含める場合には、
+自体も、別のボックスに入っていても構いません(以下の二番目と三番目の例を参照してください)。ボックスに数式を含める場合には、
 \series bold
 
 \backslash
@@ -13189,35 +13448,35 @@ fcolorbox
 \series bold
 black
 \series default
-（黒）・
+(黒)・
 \series bold
 blue
 \series default
-（青）・
+(青)・
 \series bold
 cyan
 \series default
-（シアン）・
+(シアン)・
 \series bold
 green
 \series default
-（緑）・
+(緑)・
 \series bold
 magenta
 \series default
-（マゼンタ）・
+(マゼンタ)・
 \series bold
 red
 \series default
-（赤）・
+(赤)・
 \series bold
 white
 \series default
-（白）・
+(白)・
 \series bold
 yellow
 \series default
-（黄）
+(黄)
 \end_layout
 
 \begin_layout Standard
@@ -13228,9 +13487,9 @@ yellow
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -13690,19 +13949,19 @@ cmyk
 \series bold
 cyan
 \series default
-（シアン）・
+(シアン)・
 \series bold
 magenta
 \series default
-（マゼンタ）・
+(マゼンタ)・
 \series bold
 yellow
 \series default
-（黄）・
+(黄)・
 \series bold
 black
 \series default
-（黒）の各色を表す色空間です。コンマで区切られた四つの数字は、この色空間における各色の出力強度です。強度は、0
+(黒)の各色を表す色空間です。コンマで区切られた四つの数字は、この色空間における各色の出力強度です。強度は、0
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -13726,15 +13985,15 @@ rgb
 \series bold
 red
 \series default
-（赤）・
+(赤)・
 \series bold
 green
 \series default
-（緑）・
+(緑)・
 \series bold
 blue
 \series default
-（青）の各色を意味し、この場合には、各色に対応した三つの出力強度を指定します。さらに、灰色の出力強度のみをとる
+(青)の各色を意味し、この場合には、各色に対応した三つの出力強度を指定します。さらに、灰色の出力強度のみをとる
 \series bold
 gray
 \series default
@@ -13890,7 +14149,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-いくつかの行や段落を含む、いわゆる段落ボックス（parbox）は、
+いくつかの行や段落を含む、いわゆる段落ボックス(parbox)は、
 \family sans
 挿入\SpecialChar \menuseparator
 ボックス
@@ -14021,19 +14280,19 @@ t
 \emph on
 b
 \emph default
-（
+(
 \bar under
 b
 \bar default
-ottom）は、ボックスを、周囲の本文中の最後の行と合わせることを意味します。上揃えを意味する
+ottom)は、ボックスを、周囲の本文中の最後の行と合わせることを意味します。上揃えを意味する
 \emph on
 t
 \emph default
-（
+(
 \bar under
 t
 \bar default
-op）は、これを最初の行に合わせます。位置を指定しない時には、ボックスは事実上中央揃えになります。用例については、取扱説明書埋込オブジェクト篇の
+op)は、これを最初の行に合わせます。位置を指定しない時には、ボックスは事実上中央揃えになります。用例については、取扱説明書埋込オブジェクト篇の
 \emph on
 Boxes
 \emph default
@@ -14250,7 +14509,7 @@ parbox
 \backslash
 tag
 \series default
-コマンドといっしょに使います（
+コマンドといっしょに使います(
 \series bold
 
 \backslash
@@ -14263,7 +14522,7 @@ reference "sub:ユーザー定義番号"
 
 \end_inset
 
-節をご参照下さい）
+節をご参照下さい)
 \end_layout
 
 \begin_layout Standard
@@ -14355,14 +14614,14 @@ tag*
 \backslash
 hfill
 \series default
-を用いることもできます（数式様式に関しては、第
+を用いることもできます(数式様式に関しては、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:数式様式"
 
 \end_inset
 
-節をご参照下さい）。
+節をご参照下さい)。
 \end_layout
 
 \end_inset
@@ -14480,7 +14739,7 @@ esintパッケージを自動的に使う
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -14738,7 +14997,7 @@ bigcup
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -15070,7 +15329,27 @@ d
 \emph on
 d
 \emph default
-を選択して、短絡キー
+を選択して、
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "font-roman"
@@ -15141,9 +15420,9 @@ status open
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -15266,9 +15545,9 @@ sqiint
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -15404,7 +15683,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -15515,13 +15794,33 @@ A(x)
 行内形式
 \family default
 \series default
-（短絡キー
+(
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "math-limits"
 \end_inset
 
-）を選択することで範囲形式を変更することができます。以下はその用例です。
+)を選択することで範囲形式を変更することができます。以下はその用例です。
 \end_layout
 
 \begin_layout Standard
@@ -15681,13 +15980,13 @@ spce
 
 
 \series default
-コマンドを挿入します。すると、青枠が紫枠の中に入って、ここに複数の行を書き込むことができるようになります。新しい行は、改行（
+コマンドを挿入します。すると、青枠が紫枠の中に入って、ここに複数の行を書き込むことができるようになります。新しい行は、改行(
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
 \end_inset
 
-）を挿入することで作ることができます。ここに
+)を挿入することで作ることができます。ここに
 \begin_inset Newline newline
 \end_inset
 
@@ -15929,18 +16228,15 @@ reference "sub:自己定義演算子"
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Decoration for Operators
-\lang japanese
-
+演算子の修飾
 \begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
 えんざんし@演算子 ! 
-\lang english
-Decoration
+\family sans
+\series bold
+しゅうしょく@修飾
 \end_layout
 
 \end_inset
@@ -16088,12 +16384,11 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note: 
+【註】
 \backslash
 sideset
 \series default
- can only be used to decorate big operators, binary operators are not allowed.
+は、大演算子を修飾するためだけに用いることができ、二項演算子には用いることができません。
 \end_layout
 
 \end_inset
@@ -16203,7 +16498,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -16570,7 +16865,7 @@ bullet
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -16904,7 +17199,7 @@ vee
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -17272,11 +17567,11 @@ nabla
 \series bold
 2
 \series default
-（
+(
 \begin_inset Formula $\nabla^{2}$
 \end_inset
 
-）を使用することもできます。
+)を使用することもできます。
 \end_layout
 
 \begin_layout Standard
@@ -17463,7 +17758,7 @@ mathbin
 \end_layout
 
 \begin_layout Standard
-（書式）
+(書式)
 \series bold
 
 \backslash
@@ -17654,10 +17949,10 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -17681,7 +17976,26 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-短絡キー
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18024,10 +18338,10 @@ AbC
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -18051,7 +18365,26 @@ AbC
 \begin_inset Text
 
 \begin_layout Plain Layout
-短絡キー
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -18290,7 +18623,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-（注意）
+【註】
 \backslash
 mathbb
 \series default
@@ -18774,9 +19107,9 @@ normalsize
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -19192,7 +19525,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -19476,7 +19809,7 @@ vartheta
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="12" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -19783,7 +20116,7 @@ rho
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -20106,7 +20439,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -20308,7 +20641,7 @@ Pi
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -20613,9 +20946,9 @@ boldsymbol
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -20831,7 +21164,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -21090,7 +21423,7 @@ jmath
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -21389,7 +21722,7 @@ Bbbk
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -21674,7 +22007,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -21927,7 +22260,7 @@ $
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $§$
+\begin_inset Formula $\mathsection$
 \end_inset
 
 
@@ -21943,9 +22276,9 @@ $
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -22216,7 +22549,7 @@ bullet
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -22515,7 +22848,7 @@ reference "sub:書体寸法"
 \end_layout
 
 \begin_layout Subsection
-ユーロ通貨記号€
+ユーロ通貨記号
 \begin_inset Index idx
 status collapsed
 
@@ -22606,7 +22939,7 @@ euro
 \series bold
 eurosym
 \series default
-が導入されていなくても、ユーロ通貨記号を直接€キーを使って挿入することができます。
+が導入されていなくても、ユーロ通貨記号を直接キーボードを使って(あれば)挿入することができます。
 \series bold
 eurosym
 \series default
@@ -22634,7 +22967,7 @@ officialeuro
 
 \end_inset
 
-コマンド（これはTeXモードでのみ使用することができます）で挿入することができます。
+コマンド(これはTeXモードでのみ使用することができます)で挿入することができます。
 \end_layout
 
 \begin_layout Standard
@@ -22675,7 +23008,7 @@ eurosym
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -22756,7 +23089,7 @@ euro
 \begin_inset Text
 
 \begin_layout Plain Layout
-€
+(ユーロ記号)
 \end_layout
 
 \end_inset
@@ -22765,10 +23098,7 @@ euro
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mbox{€}$
-\end_inset
-
-
+(ユーロ記号)
 \end_layout
 
 \end_inset
@@ -22949,7 +23279,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -23384,7 +23714,7 @@ nmid
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -23816,7 +24146,7 @@ widehat=
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -24330,9 +24660,9 @@ stackrel
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -24464,11 +24794,11 @@ B
 \end_layout
 
 \begin_layout Section
-函数
+関数
 \end_layout
 
 \begin_layout Subsection
-定義済み函数
+定義済み関数
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:定義済み函数"
@@ -24480,7 +24810,7 @@ name "sub:定義済み函数"
 status collapsed
 
 \begin_layout Plain Layout
-かんすう@函数 ! ていぎずみ@定義済み
+かんすう@関数 ! ていぎずみ@定義済み
 \end_layout
 
 \end_inset
@@ -24493,7 +24823,7 @@ status collapsed
 \shape italic
 イタリック体
 \shape default
-に設定されますが、函数名はイタリック体にしません。なぜなら、
+に設定されますが、関数名はイタリック体にしません。なぜなら、
 \begin_inset Formula $sin$
 \end_inset
 
@@ -24501,7 +24831,7 @@ status collapsed
 \begin_inset Formula $s\cdot i\cdot n$
 \end_inset
 
-であるかのように誤解させる恐れがあるためです。そのために、定義済み函数が存在し、これらは先行する要素よりも少し離れて配置されます。定義済み函数は、函数名の前にバ
+であるかのように誤解させる恐れがあるためです。そのために、定義済み関数が存在し、これらは先行する要素よりも少し離れて配置されます。定義済み関数は、関数名の前にバ
 ックスラッシュを加えたコマンドとして挿入します。
 \end_layout
 
@@ -24509,7 +24839,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="4">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -24606,7 +24936,7 @@ sin(x)+B
 \end_layout
 
 \begin_layout Standard
-以下の函数が定義済みです。
+以下の関数が定義済みです。
 \end_layout
 
 \begin_layout Standard
@@ -24620,7 +24950,7 @@ sin(x)+B
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="4">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -25050,12 +25380,12 @@ gcd
 \end_layout
 
 \begin_layout Subsection
-自己定義函数
+自己定義関数
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-かんすう@函数 ! じこていぎ@自己定義
+かんすう@関数 ! じこていぎ@自己定義
 \end_layout
 
 \end_inset
@@ -25064,11 +25394,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-たとえば符号函数sgn(x)のように、定義済みでない函数を使うには、二つの方法があります。
+たとえば符号関数sgn(x)のように、定義済みでない関数を使うには、二つの方法があります。
 \end_layout
 
 \begin_layout Itemize
-以下の行をLaTeXプリアンブルに加えることによって函数を定義します。
+以下の行をLaTeXプリアンブルに加えることによって関数を定義します。
 \begin_inset Foot
 status collapsed
 
@@ -25137,7 +25467,7 @@ DeclareMathOperator
 \begin_inset Newline newline
 \end_inset
 
-これによって、新しく定義された函数を
+これによって、新しく定義された関数を
 \series bold
 
 \backslash
@@ -25147,20 +25477,20 @@ sgn
 \end_layout
 
 \begin_layout Itemize
-数式を普通に書き下し、函数名を選択して（上記の例では
+数式を普通に書き下し、関数名を選択して(上記の例では
 \emph on
 sgn
 \emph default
-の文字）、それを数式テキストに変更します。最後に、空白を先行する要素と函数の間に入れます。
+の文字)、それを数式テキストに変更します。最後に、空白を先行する要素と関数の間に入れます。
 \end_layout
 
 \begin_layout Standard
-双方とも定義済み函数と同等の出力をもたらします
+双方とも定義済み関数と同等の出力をもたらします
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-LyX上では、自己定義函数は赤で表示され、定義済み函数は黒で表示されます。
+LyX上では、自己定義関数は赤で表示され、定義済み関数は黒で表示されます。
 \end_layout
 
 \end_inset
@@ -25172,7 +25502,7 @@ LyX上では、自己定義函数は赤で表示され、定義済み函数は�
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -25257,7 +25587,7 @@ A
 \end_layout
 
 \begin_layout Standard
-自己定義函数を何回か使用する場合には、一番目の方法の方が適切です。
+自己定義関数を何回か使用する場合には、一番目の方法の方が適切です。
 \end_layout
 
 \begin_layout Subsection
@@ -25305,16 +25635,16 @@ liminf
 \backslash
 limsup
 \series default
-の他に、以下の函数があります。
+の他に、以下の関数があります。
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -25466,14 +25796,14 @@ varinjlim
 \begin_inset VSpace medskip
 \end_inset
 
-極限は、下付き文字を挿入することによって示されます。行内数式では、極限は、以下のように函数の横に置かれます。
+極限は、下付き文字を挿入することによって示されます。行内数式では、極限は、以下のように関数の横に置かれます。
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -25589,12 +25919,12 @@ x=B
 \end_layout
 
 \begin_layout Subsection
-剰余函数
+剰余関数
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-かんすう@函数 ! じょうよ@剰余
+かんすう@関数 ! じょうよ@剰余
 \end_layout
 
 \end_inset
@@ -25604,7 +25934,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-かんすう@函数 ! もじゅらす@モジュラス | see
+かんすう@関数 ! もじゅらす@モジュラス | see
 \begin_inset ERT
 status collapsed
 
@@ -25635,7 +25965,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-剰余函数は、特別に4つの派生型があります。
+剰余関数は、特別に4つの派生型があります。
 \end_layout
 
 \begin_layout Standard
@@ -25655,7 +25985,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-行内数式では、すべての派生型で、関数名の前の余白がすこし小さく設定されます。既定では、剰余函数は、続く一文字目だけを考慮します。二文字以上を使いたい時には、下記
+行内数式では、すべての派生型で、関数名の前の余白がすこし小さく設定されます。既定では、剰余関数は、続く一文字目だけを考慮します。二文字以上を使いたい時には、下記
 のように文字をTeX括弧で囲みます。
 \begin_inset Formula 
 \begin{align*}
@@ -25698,9 +26028,9 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
-<column alignment="block" valignment="top" width="0">
-<column alignment="block" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="block" valignment="top">
+<column alignment="block" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -25936,9 +26266,9 @@ i
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
-<column alignment="block" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="block" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -26263,9 +26593,9 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
-<column alignment="block" valignment="top" width="0">
-<column alignment="block" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="block" valignment="top">
+<column alignment="block" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -26591,9 +26921,9 @@ t ee
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
-<column alignment="block" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="block" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -27098,9 +27428,9 @@ textcircled
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -27301,7 +27631,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-小数字（minuscule number）は、
+小数字(minuscule number)は、
 \series bold
 
 \backslash
@@ -27373,9 +27703,9 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -27519,7 +27849,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-しかしながら、角度記号「°」は、以下の行をLaTeXプリアンブルに書き加えれば、直接挿入することができます
+しかしながら、角度記号
+\begin_inset Formula $^{\circ}$
+\end_inset
+
+は、以下の行をLaTeXプリアンブルに書き加えれば、直接挿入することができます
 \begin_inset Foot
 status collapsed
 
@@ -28399,7 +28733,27 @@ target "http://www.lyx.org/trac/ticket/1429"
 
 \end_inset
 
-。カーソルを行頭に合わせて、矢印キーで移動するしかありません。
+。カーソルを行頭に合わせて、矢印
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+鍵
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+キー
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+で移動するしかありません。
 \end_layout
 
 \end_inset
@@ -28998,7 +29352,7 @@ reference "eq:lefteqn"
 \end_layout
 
 \begin_layout Standard
-文書の付番設定が右寄せ（左寄せ）になっているときには、出力では、multline環境の最後（最初）の行だけが付番されます
+文書の付番設定が右寄せ(左寄せ)になっているときには、出力では、multline環境の最後(最初)の行だけが付番されます
 \begin_inset Foot
 status collapsed
 
@@ -29379,6 +29733,8 @@ status collapsed
 
 \backslash
 intertext
+\series default
+
 \begin_inset Index idx
 status collapsed
 
@@ -29418,7 +29774,7 @@ intertext
 \begin_inset Formula 
 \begin{align}
 I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
-\intertext{\text{integrand is symmetric to \ensuremath{\phi=\pi}, therefore}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi
+\intertext{\text{被積分函数は\ensuremath{\phi=\pi}において対称なので、}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi
 \end{align}
 
 \end_inset
@@ -29487,7 +29843,27 @@ status collapsed
 数式\SpecialChar \menuseparator
 付番数式
 \family default
-メニュー（短絡キー
+メニュー(
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \family sans
 Ctrl+Alt
 \begin_inset space ~
@@ -29495,19 +29871,19 @@ Ctrl+Alt
 
 N
 \family default
-）で作ることができます。既存の数式に番号を振るには、
+)で作ることができます。既存の数式に番号を振るには、
 \family sans
 編集\SpecialChar \menuseparator
 数式\SpecialChar \menuseparator
 数式全体を付番
 \family default
-メニュー（短絡キー
+メニュー(捷径
 \begin_inset Info
 type  "shortcut"
 arg   "math-number-toggle"
 \end_inset
 
-）を使います。LyX中において数式番号は、数式の後に括弧に囲まれた「#」で表されます。「#」は、実際の出力では数式番号に置き換えられます。
+)を使います。LyX中において数式番号は、数式の後に括弧に囲まれた「#」で表されます。「#」は、実際の出力では数式番号に置き換えられます。
 \end_layout
 
 \begin_layout Standard
@@ -29517,13 +29893,13 @@ arg   "math-number-toggle"
 数式\SpecialChar \menuseparator
 この行を付番
 \family default
-メニュー（短絡キー
+メニュー(捷径
 \begin_inset Info
 type  "shortcut"
 arg   "math-number-line-toggle"
 \end_inset
 
-）を使用すれば、各行毎に付番するかどうか指定することができます。
+)を使用すれば、各行毎に付番するかどうか指定することができます。
 \end_layout
 
 \begin_layout Standard
@@ -29568,7 +29944,7 @@ status collapsed
 \series bold
 eq:と
 \series default
-いう接頭語の入ったダイアログが現れるので、接頭語の後にラベルを挿入します。この既定の接頭辞は「equation（数式）」を意味し、こうして数式ラベルであるとの標
+いう接頭語の入ったダイアログが現れるので、接頭語の後にラベルを挿入します。この既定の接頭辞は「equation(数式)」を意味し、こうして数式ラベルであるとの標
 を付けることによって、節ラベルなどから区別し、大きな文書の中でラベルを見つけるのを容易にします。ラベルを変更するには、
 \family sans
 挿入\SpecialChar \menuseparator
@@ -30905,7 +31281,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-（注意）
+【註】
 \series default
 ラテン文字を使うと、一つの文書の中で、最大26個の数式しか番号を振ることができません。
 \end_layout
@@ -31162,7 +31538,27 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-この化学式は、直接数式として作成することができます。記号がイタリック体として表示されることを防ぐには、全体を選択してから短絡キー
+この化学式は、直接数式として作成することができます。記号がイタリック体として表示されることを防ぐには、全体を選択してから
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "font-roman"
@@ -31234,9 +31630,9 @@ ce
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -31751,7 +32147,7 @@ mu
 \backslash
 hyphen$Cl}
 \series default
-（
+(
 \begin_inset ERT
 status collapsed
 
@@ -31768,7 +32164,7 @@ hyphen$Cl}
 
 \end_inset
 
-）のようにTeXコードを使わなくてはなりません。
+)のようにTeXコードを使わなくてはなりません。
 \end_layout
 
 \end_inset
@@ -32320,7 +32716,7 @@ XY-pic説明書
 \end_layout
 
 \begin_layout Subsection
-ファインマン・ダイアグラム
+ファインマン図
 \series medium
 
 \begin_inset Index idx
@@ -32336,35 +32732,35 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-ファインマン・ダイアグラムを使うには、LaTeXパッケージ
+ファインマン図を使うには、LaTeXパッケージ
 \series bold
 feyn
 \series default
-を導入しておかなくてはなりません。すると、ファインマン・ダイアグラムは、数式中で
+を導入しておかなくてはなりません。すると、ファインマン図は、数式中で
 \series bold
 
 \backslash
 Diagram
 \series default
-コマンドを挿入すれば生成されます。通常の行列で行うのと同じようにして新規行や新規列を加えることができます（第
+コマンドを挿入すれば生成されます。通常の行列で行うのと同じようにして新規行や新規列を加えることができます(第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:行列"
 
 \end_inset
 
-節参照）。
+節参照)。
 \end_layout
 
 \begin_layout Standard
-LyXでのファインマン・ダイアグラムの作り方は、メニュー
+LyXでのファインマン図の作り方は、メニュー
 \family sans
 ヘルプ\SpecialChar \menuseparator
 用途別説明書
 \family default
 内の『
 \emph on
-ファインマン・ダイアグラム
+ファインマン図
 \emph default
 』にあります。
 \end_layout
@@ -32388,7 +32784,7 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-（注意）ユーザー定義コマンド名及びマクロ名には、ラテン文字しか使用することができません。
+【註】ユーザー定義コマンド名及びマクロ名には、ラテン文字しか使用することができません。
 \end_layout
 
 \end_inset
@@ -32490,7 +32886,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-（注意）
+【註】
 \series default
 新コマンド名が、使用中の文書や呼び出しているLaTeXパッケージで、既に使用されていないことを確認して下さい。たとえば、
 \series bold
@@ -32588,7 +32984,7 @@ underline
 \backslash
 us
 \series default
-というコマンドを定義するには、（下線を引くべき文字列を示す）引数を考慮に入れなくてはなりません。このためには、以下のようなプリアンブル行を入れます。
+というコマンドを定義するには、(下線を引くべき文字列を示す)引数を考慮に入れなくてはなりません。このためには、以下のようなプリアンブル行を入れます。
 \begin_inset VSpace medskip
 \end_inset
 
@@ -32734,9 +33130,9 @@ white
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -33258,7 +33654,7 @@ qG:
 さらに、数式中のマクロ表示は、マクロの中にカーソルを置いて、
 \family sans
 表示\SpecialChar \menuseparator
-数式マクロを展開（畳む）
+数式マクロを展開(畳む)
 \family default
 メニューを使うことで、マクロ毎に変えることができます。
 \end_layout
@@ -33371,7 +33767,27 @@ xleftarrow[#2]{#1}}
 
 
 \series default
-というコマンドを書き入れ、この全体を選択して、短絡キー
+というコマンドを書き入れ、この全体を選択して、
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \family sans
 Ctrl+M
 \family default
@@ -33452,8 +33868,8 @@ status collapsed
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top">
 <column alignment="left" valignment="top" width="85col%">
 <row interlinespace="2.5mm">
 <cell alignment="center" valignment="top" usebox="none">
@@ -33875,11 +34291,11 @@ Octave
 \end_layout
 
 \begin_layout Standard
-下記は、どのような計算が可能かをいくつか例示したものです（出力は
+下記は、どのような計算が可能かをいくつか例示したものです(出力は
 \family typewriter
 Maxima
 \family default
-です）。
+です)。
 \end_layout
 
 \begin_layout Itemize
@@ -33922,15 +34338,35 @@ Maxima
 \end_layout
 
 \begin_layout Subsection
-短絡キー
+捷径
 \end_layout
 
 \begin_layout Standard
-現在のところ、代数プログラムを呼び出すための短絡キーはありません。しかし、短絡キーを
+現在のところ、代数プログラムを呼び出すための
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+はありません。しかし、捷径を
 \family sans
 math-extern
 \family default
- LyX関数にバインドすることは容易です（取扱説明書『
+ LyX関数にバインドすることは容易です(取扱説明書『
 \family sans
 \emph on
 LyX関数篇
@@ -33940,11 +34376,31 @@ LyX関数篇
 \family sans
 リターン
 \family default
-キーをバインドさせることもできます。それを
+
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+鍵
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+キー
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+をバインドさせることもできます。それを
 \family typewriter
 Maxima
 \family default
-にバインドするには、下記の短絡キー定義コマンドを使用します。
+にバインドするには、下記の捷径定義コマンドを使用します。
 \end_layout
 
 \begin_layout Standard
@@ -33954,18 +34410,12 @@ command-alternatives break-paragraph;math-extern maxima
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Miscellaneous
-\lang japanese
-
+補遺
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Miscellaneous
+ほい@補遺
 \end_layout
 
 \end_inset
@@ -34004,9 +34454,9 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="right" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="right" valignment="top">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -34131,13 +34581,33 @@ LaTeXでは、英語の慣習にしたがい、数式中のコンマを数字の
 \end_layout
 
 \begin_layout Standard
-これを回避するためには、コンマを選択して、数式テキストに変更して下さい（短絡キー
+これを回避するためには、コンマを選択して、数式テキストに変更して下さい(
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "math-mode"
 \end_inset
 
-）。
+)。
 \end_layout
 
 \begin_layout Standard
@@ -34310,9 +34780,9 @@ braket
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -34604,9 +35074,9 @@ genfrac
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -34621,7 +35091,7 @@ genfrac
 \begin_inset Text
 
 \begin_layout Plain Layout
-様式（大きさ）
+様式(大きさ)
 \end_layout
 
 \end_inset
@@ -34681,7 +35151,7 @@ genfrac
 \begin_inset Text
 
 \begin_layout Plain Layout
-やや小（small）
+やや小(small)
 \end_layout
 
 \end_inset
@@ -34701,7 +35171,7 @@ genfrac
 \begin_inset Text
 
 \begin_layout Plain Layout
-最小（tiny）
+最小(tiny)
 \end_layout
 
 \end_inset
@@ -34896,9 +35366,9 @@ usepackage{cancel}
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -35391,7 +35861,7 @@ boldmath
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -35792,12 +36262,8 @@ reference "eq:within"
 \begin_inset Formula $n$
 \end_inset
 
-個の変数が使われている場合、左寄せの列を持つ2
-\series bold
-×
-\series default
-
-\begin_inset Formula $n$
+個の変数が使われている場合、左寄せの列を持つ
+\begin_inset Formula $2\times n$
 \end_inset
 
 行列を使用します
@@ -36089,7 +36555,11 @@ uptau
 \end_layout
 
 \begin_layout Standard
-アップライト体の文字は、イタリック体のものよりも太く幅広です。したがって、これらを「µm」のような単位に使うべきではありません。
+アップライト体の文字は、イタリック体のものよりも太く幅広です。したがって、これらを「
+\begin_inset Formula $\mu m$
+\end_inset
+
+」のような単位に使うべきではありません。
 \end_layout
 
 \begin_layout Standard
@@ -36226,13 +36696,33 @@ i}
 \end_layout
 
 \begin_layout Standard
-文字エンコーディング（
+文字エンコーディング(
 \family sans
 文書\SpecialChar \menuseparator
 設定\SpecialChar \menuseparator
 言語
 \family default
-メニュー）は、キーボード上のキーが押されたときにどの文字が表示されるかを指定します。「·」文字に対応するキーが押されると、内部的には
+メニュー)は、キーボード上の
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+鍵
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+キー
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+が押されたときにどの文字が表示されるかを指定します。「·」文字に対応する鍵が押されると、内部的には
 \series bold
 
 \backslash
@@ -36259,12 +36749,16 @@ latin9.def
 \begin_inset VSpace medskip
 \end_inset
 
-中黒の他にこの文書では、角度記号「°」が、数式に直接入れることができるよう、以下のようなLaTeXプリアンブル行で定義されています
+中黒の他にこの文書では、角度記号「
+\begin_inset Formula $^{\circ}$
+\end_inset
+
+」が、数式に直接入れることができるよう、以下のようなLaTeXプリアンブル行で定義されています
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-（訳註）pLaTeXでは、これらの定義は必要ないので、コメントアウトして無効にしてあります。
+(訳註)pLaTeXでは、これらの定義は必要ないので、コメントアウトして無効にしてあります。
 \end_layout
 
 \end_inset
@@ -36335,7 +36829,7 @@ key "Duden"
 \end_layout
 
 \begin_layout Itemize
-物理単位は、つねに（イタリック文中にあるときも）アップライト体にします
+物理単位は、つねに(イタリック文中にあるときも)アップライト体にします
 \begin_inset Foot
 status collapsed
 
@@ -36414,11 +36908,19 @@ unit[値]{単位}
 \end_layout
 
 \begin_layout Itemize
-角度記号は値の直後に置きます：15°。しかし、単位として用いられるときは別です：15
+角度記号は値の直後に置きます：
+\begin_inset Formula $15^{\circ}$
+\end_inset
+
+。しかし、単位として用いられるときは別です：15
 \begin_inset space \thinspace{}
 \end_inset
 
-°C
+
+\begin_inset Formula $^{\circ}\negmedspace\mbox{C}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -36434,11 +36936,18 @@ unit[値]{単位}
 \end_layout
 
 \begin_layout Itemize
-120×90×40
+\begin_inset Formula $120\times90\times40$
+\end_inset
+
+
 \begin_inset space \thinspace{}
 \end_inset
 
-cmのような寸法には、積記号「×」を用います。これは、
+cmのような寸法には、積記号「
+\begin_inset Formula $\times$
+\end_inset
+
+」を用います。これは、
 \series bold
 
 \backslash
@@ -36454,7 +36963,7 @@ times
 \end_layout
 
 \begin_layout Itemize
-いくつかの文字を含む函数名は、混乱を防ぐためにアップライト体にします。第
+いくつかの文字を含む関数名は、混乱を防ぐためにアップライト体にします。第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:定義済み函数"
@@ -36570,7 +37079,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="12" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -36900,7 +37409,7 @@ vert
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="12" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>

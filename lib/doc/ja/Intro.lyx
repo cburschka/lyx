@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
@@ -33,20 +33,48 @@
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
+\begin_local_layout
+InsetLayout		Flex:Ruby
+LyxType		charstyle
+LatexType		command
+LatexName		ruby
+BgColor		none
+LabelString		"ルビ"
+MenuString		"ルビ(R)|R"
+Decoration		Conglomerate
+Argument post:1
+      LabelString	"ルビ文"
+      MenuString	"ルビ文(S)|S"
+      Decoration	Conglomerate
+      Font
+            Size		tiny
+      EndFont
+      LabelFont
+            Size		tiny
+      EndFont
+      Mandatory	1
+EndArgument
+Preamble
+\IfFileExists{okumacro.sty}
+ {\usepackage{okumacro}}
+ {\newcommand{\ruby}[2]{#2}}
+EndPreamble
+End
+\end_local_layout
 \language japanese
 \language_package default
-\inputencoding EUC-JP-pLaTeX
+\inputencoding utf8-platex
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format pdf3
 \output_sync 0
@@ -71,15 +99,24 @@
 \pdf_quoted_options "unicode=false, linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize a4paper
 \use_geometry false
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index 索引
 \shortcut idx
@@ -2056,7 +2093,8 @@ type "mailto:"
 画面では脚注や目次も完全には表示されません。脚注を開くには
 \begin_inset Graphics
 	filename clipart/footnoteQt4.png
-	scale 75
+	height 14pt
+	rotateOrigin centerBaseline
 
 \end_inset
 
@@ -2081,7 +2119,7 @@ type "mailto:"
 は、次のような明るい灰色の箱で表されます
 \begin_inset Graphics
 	filename clipart/referenceQt4.png
-	scale 75
+	height 12pt
 
 \end_inset
 
@@ -2158,7 +2196,54 @@ LyXはじめの一歩
 \bar no
 \noun off
 \color none
-は、メニュー名・ボタン名・ダイアログボックス名・キーボードのキーの名称に使われます。
+は、メニュー名・ボタン名・ダイアログボックス名・キーボードの
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+鍵
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+キー
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+の名称に使われます。
 \end_layout
 
 \begin_layout Itemize
@@ -2194,7 +2279,7 @@ LyXはじめの一歩
 \bar no
 \noun off
 \color none
-キーを参照する場合には次のように短縮して表示します。
+鍵を参照する場合には次のように短縮して表示します。
 \end_layout
 
 \begin_layout Itemize
@@ -2220,7 +2305,7 @@ Ctrl-
 \color inherit
 コントロール-
 \family default
-キーを表します。
+鍵を表します。
 \end_layout
 
 \begin_layout Itemize
@@ -2246,7 +2331,7 @@ Shift-
 \color inherit
 シフト-
 \family default
-キーを表します。
+鍵を表します。
 \end_layout
 
 \begin_layout Itemize
@@ -2276,7 +2361,11 @@ Alt
 \family sans
 Meta
 \family default
-)キーを表します。
+)
+\family sans
+-
+\family default
+鍵を表します。
 \end_layout
 
 \begin_layout Itemize
@@ -2311,7 +2400,7 @@ F12
 \bar no
 \noun off
 \color none
-」はファンクションキーです。
+」はファンクション鍵です。
 \end_layout
 
 \begin_layout Itemize
@@ -2326,7 +2415,7 @@ Esc
 \bar no
 \noun off
 \color none
-」はエスケープキーです。
+」はエスケープ鍵です。
 \end_layout
 
 \begin_layout Itemize
@@ -2534,7 +2623,7 @@ PC
 \bar no
 \noun off
 \color none
-キーボードの場合、矢印キーの上にある6つのキーです。キーボードによっては
+キーボードの場合、矢印鍵の上にある6つの鍵です。キーボードによっては
 \family default
 \series default
 \shape default
@@ -2647,7 +2736,7 @@ Next
 \bar no
 \noun off
 \color none
-は同じキーを指します。
+は同じ鍵を指します。
 \family sans
 \series default
 \shape default
@@ -2665,7 +2754,7 @@ Next
 \bar no
 \noun off
 \color none
-キーを
+鍵を
 \family default
 \series default
 \shape default
@@ -2701,7 +2790,7 @@ Next
 \bar no
 \noun off
 \color none
-」と表示しているものもあり、はたまた両方のキーを持つキーボードもあります。LyXはそれらをすべて同じキーとして扱うので、われわれも
+」と表示しているものもあり、はたまた両方の鍵を持つキーボードもあります。LyXはそれらをすべて同じ鍵として扱うので、われわれも
 \family sans
 \series default
 \shape default
@@ -2736,7 +2825,27 @@ Next
 \bar no
 \noun off
 \color none
-現在設定されている短絡キーの一覧は、
+現在設定されている
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+の一覧は、
 \family sans
 \series default
 \shape default
@@ -2763,7 +2872,7 @@ Next
 \bar default
 \noun default
 \color inherit
-短絡キー
+捷径
 \family roman
 \series medium
 \shape up
@@ -2797,7 +2906,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -2825,9 +2934,9 @@ name "tab:画像用単位"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features booktabs="true" tabularvalignment="middle">
+<features rotate="0" booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -3478,12 +3587,97 @@ em)
 \bar no
 \noun off
 \color none
-LyX全体の挙動のカスタマイズの仕方など、高度なLyXの機能を説明しています。これには、キー設定・国際化・設定ファイルの説明などを含みます。これには、LyXがL
-aTeXクラスやパッケージをサポートするのに必要な、レイアウトファイルの情報も含まれています。
+LyX全体の挙動のカスタマイズの仕方など、高度なLyXの機能を説明しています。これには、
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+鍵
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+キー
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+設定・国際化・設定ファイルの説明などを含みます。これには、LyXがLaTeXクラスやパッケージをサポートするのに必要な、レイアウトファイルの情報も含まれています
+。
 \end_layout
 
 \begin_layout Description
-短絡キー 現在定義されているLyXの短絡キーを表にしています。
+捷径 現在定義されているLyXの
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+を表にしています。
 \end_layout
 
 \begin_layout Description
