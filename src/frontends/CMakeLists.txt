@@ -26,3 +26,4 @@ target_link_libraries(frontends ${Lyx_Boost_Libraries})
 
 project_source_group("${GROUP_CODE}" frontends_sources frontends_headers)
 
+add_subdirectory(tests)
