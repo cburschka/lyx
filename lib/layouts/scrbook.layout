@@ -20,6 +20,13 @@ Style Chapter
 End
 
 
+# Equations are numbered by chapter
+Counter equation
+	Within chapter
+	LabelString "\thechapter.\arabic{equation}"
+End
+
+
 Style Bibliography
 	TopSep		4
 	LabelString	"Bibliography"
