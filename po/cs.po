@@ -22769,31 +22769,28 @@ msgstr ""
 "nedostupným. Budete muset aktualizovat cestu k dokumentu potomka."
 
 #: src/BufferParams.cpp:452
-#, fuzzy
 msgid ""
 "The LaTeX package amsmath is only used if AMS formula types or symbols from "
 "the AMS math toolbars are inserted into formulas"
 msgstr ""
-"LaTeX-ové AMS balíčky jsou použity pouze pokud jsou vloženy AMS symboly z "
+"LaTeX-ový balíček amsmath je použit pouze pokud jsou vloženy AMS-typy formulí nebo AMS symboly z "
 "panelu nástrojů do mat. formulí."
 
 #: src/BufferParams.cpp:454
-#, fuzzy
 msgid ""
 "The LaTeX package amssymb is only used if symbols from the AMS math toolbars "
 "are inserted into formulas"
 msgstr ""
-"LaTeX-ové AMS balíčky jsou použity pouze pokud jsou vloženy AMS symboly z "
+"LaTeX-ový balíček amssymb je použit pouze pokud jsou vloženy AMS symboly z "
 "panelu nástrojů do mat. formulí."
 
 #: src/BufferParams.cpp:456
-#, fuzzy
 msgid ""
 "The LaTeX package cancel is only used if \\cancel commands are used in "
 "formulas"
 msgstr ""
-"LaTeX-ový balíček mathdots je použit pouze pokud je vloženo makro \\iddots "
-"do mat. formulí"
+"LaTeX-ový balíček cancel je použit pouze pokud jsou použity příkazy \\cancel "
+"v mat. formulích"
 
 #: src/BufferParams.cpp:458
 msgid ""
@@ -22812,13 +22809,12 @@ msgstr ""
 "do mat. formulí"
 
 #: src/BufferParams.cpp:462
-#, fuzzy
 msgid ""
 "The LaTeX package mathtools is only used if some mathematical relations are "
 "inserted into formulas"
 msgstr ""
-"LaTeX-ový balíček mathdots je použit pouze pokud je vloženo makro \\iddots "
-"do mat. formulí"
+"LaTeX-ový balíček mathtools je použit pouze pokud jsou použity mat. relace "
+"v mat. formulích"
 
 #: src/BufferParams.cpp:464
 msgid ""
@@ -22829,31 +22825,27 @@ msgstr ""
 "makra \\ce nebo \\cg"
 
 #: src/BufferParams.cpp:466
-#, fuzzy
 msgid ""
 "The LaTeX package stackrel is only used if the command \\stackrel with "
 "subscript is inserted into formulas"
 msgstr ""
-"LaTeX-ový balíček mathdots je použit pouze pokud je vloženo makro \\iddots "
-"do mat. formulí"
+"LaTeX-ový balíček stackrel je použit pouze pokud je vložen příkaz \\stackrel "
+"spolu s dolním indexem do mat. formulí"
 
 #: src/BufferParams.cpp:468
-#, fuzzy
 msgid ""
 "The LaTeX package stmaryrd is only used if symbols from the St Mary's Road "
 "symbol font for theoretical computer science are inserted into formulas"
 msgstr ""
-"LaTeX-ové AMS balíčky jsou použity pouze pokud jsou vloženy AMS symboly z "
-"panelu nástrojů do mat. formulí."
+"LaTeX-ový balíček stmaryrd je použit pouze pokud je vložen symbol fontu St Mary Road "
+"do mat. formule"
 
 #: src/BufferParams.cpp:470
-#, fuzzy
 msgid ""
 "The LaTeX package undertilde is only used if you use the math frame "
 "decoration 'utilde'"
 msgstr ""
-"LaTeX-ový balíček esint je použit pouze pokud jsou do mat. formulí vloženy "
-"speciální symboly pro integrál."
+"LaTeX-ový balíček undertilde je použit pouze pokud je v mat. formuli použita dekorace rámu 'utilde'"
 
 #: src/BufferParams.cpp:616
 #, c-format
@@ -22886,13 +22878,13 @@ msgid "Uncodable characters"
 msgstr "Nekódovatelné znaky"
 
 #: src/BufferParams.cpp:1808
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters that are used in an index name are not\n"
 "representable in the current encoding and therefore have been omitted:\n"
 "%1$s."
 msgstr ""
-"Následující znaky použité ve vložce hypertextového odkazu nejsou\n"
+"Následující znaky použité ve jméně rejstříku nejsou\n"
 " reprezentovatelné ve zvoleném kódování a byly vynechány:\n"
 "%1$s."
 
@@ -23130,7 +23122,7 @@ msgid "Uncodable character in author name"
 msgstr "Nekódovatelné znaky ve jménu autora"
 
 #: src/Changes.cpp:371
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The author name '%1$s',\n"
 "used for change tracking, contains the following glyphs that\n"
@@ -23141,8 +23133,8 @@ msgid ""
 "or change the spelling of the author name."
 msgstr ""
 "Jméno autora '%1$s',\n"
-"použité pro revize, obsahuje znaky, které nelze reprezentovat\n"
-"v aktuálním kódování. Příslušné znaky budou při exportu do LaTeX-u "
+"použité pro revize, obsahuje následující znaky, které nelze reprezentovat\n"
+"v aktuálním kódování: %2$s.\nPříslušné znaky budou při exportu do LaTeX-u "
 "vynechány.\n"
 "\n"
 "Vyberte vhodné kódování dokumentu (např. utf8)\n"
