@@ -261,6 +261,7 @@ dist_ukexamples_DATA = \
 
 examplesdir = $(pkgdatadir)/examples
 dist_examples_DATA = \
+	examples/ACM-siggraph.lyx \
 	examples/AEA.lyx \
 	examples/Braille.lyx \
 	examples/CV-image.eps \
@@ -2108,7 +2109,6 @@ templatesdir = $(pkgdatadir)/templates
 dist_templates_DATA = \
 	templates/aa.lyx \
 	templates/aastex.lyx \
-	templates/ACM-siggraph.lyx \
 	templates/ACM-sigplan.lyx \
 	templates/AGUTeX.lyx \
 	templates/AGU_article.lyx \
