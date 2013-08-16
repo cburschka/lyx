@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 469
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
@@ -40,7 +40,7 @@
 \use_package stmaryrd 1
 \use_package undertilde 1
 \cite_engine basic
-\cite_engine_type numerical
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -87,18 +87,21 @@ embeddable graphics
 \end_inset
 
  (equations, commented graphics, etc.).
- Simply write down some content (say, '
-\begin_inset Formula $x^{2}-\gamma$
-\end_inset
-
-) and hit the Preview button: you will obtain a cropped EPS output of the
- LyX content.
- Now you can insert the resulting vector EPS image into a different document
+ Simply write down some content and hit the Preview button: you will obtain
+ a cropped PDF output of the LyX content.
+ Now you can insert the resulting vector PDF image into a different document
  (another LyX document, a LibreOffice Presentation, a Beamer presentation,
  etc.).
- 
+ Below is an example (hit the Preview button to see the result).
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $x^{2}-\gamma$
 \end_inset
 
 
