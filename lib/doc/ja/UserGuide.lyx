@@ -409,7 +409,7 @@ status collapsed
 
 \end_inset
 
-メニューで調整することができます。また、LyXは、システムにどんなプログラムが装備されているか、どんなLaTeX文書クラスやLaTeXパッケージが備わっているか
+メニューで調整することができます。また、LyXは、システムにどんなプログラムが導入されているか、どんなLaTeX文書クラスやLaTeXパッケージが備わっているか
 を検査することができます。LyXは、この検査で得た情報を、一部の
 \family sans
 設定
@@ -424,7 +424,7 @@ status collapsed
 
 \end_inset
 
-項目に対して、ふさわしい既定値を与えるのに使用します。この検査は、LyXがシステムに装備された時に既に行われていますが、LyXが検査を行った後に、新しいLaTe
+項目に対して、ふさわしい既定値を与えるのに使用します。この検査は、LyXがシステムに導入された時に既に行われていますが、LyXが検査を行った後に、新しいLaTe
 Xクラスなどのアイテムを、ローカルに導入することもあるでしょう。LyXに再検査を行わせるには、
 \family sans
 ツール\SpecialChar \menuseparator
@@ -435,7 +435,7 @@ Xクラスなどのアイテムを、ローカルに導入することもある�
 status collapsed
 
 \begin_layout Plain Layout
-さいしょきせってい@環境構成
+かんきょうこうせい@環境構成
 \end_layout
 
 \end_inset
@@ -482,7 +482,7 @@ status collapsed
 
 eXの設定
 \family default
-で見ることができるファイルに列挙してあります。必要なパッケージがない場合には、必要なパッケージを導入して、LyXを再設定してください(メニュー
+で見ることができるファイルに列挙してあります。必要なパッケージがない場合には、必要なパッケージを導入して、LyXの環境構成を行なってください(メニュー
 \family sans
 ツール\SpecialChar \menuseparator
 環境構成
@@ -517,7 +517,7 @@ reference "sub:LyXの固有名称"
 status collapsed
 
 \begin_layout Plain Layout
-LyXのさいしょきせってい@LyXの環境構成
+Lyx@LyX ! のかんきょうこうせい@------の環境構成
 \end_layout
 
 \end_inset
@@ -721,16 +721,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-へんしゅう@
-\family roman
-\series bold
-\shape up
-\size large
-\emph off
-\bar no
-\noun off
-\color none
-編集
+へんしゅう@編集
 \end_layout
 
 \end_inset
@@ -1389,13 +1380,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-たんごほかん@単語補完|see
+たんごほかん@単語補完
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -1514,7 +1505,7 @@ autocorrect
 status collapsed
 
 \begin_layout Plain Layout
-
+きー
 \family roman
 \series medium
 \shape up
@@ -1523,7 +1514,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-きーわりあて@
+わりあて@
 \family default
 \series default
 \shape default
@@ -1532,7 +1523,27 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-鍵割り当て
+
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+鍵
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+キー
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+割り当て
 \end_layout
 
 \end_inset
@@ -1542,18 +1553,38 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-わりあて@割り当て|see
+わりあて@割り当て
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
 
-鍵割り当て
+
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+鍵
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+キー
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+割り当て
 \begin_inset ERT
 status collapsed
 
@@ -1594,50 +1625,38 @@ status collapsed
 
 \end_inset
 
-|see
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
 
-鍵割り当て
-\begin_inset ERT
+
+\begin_inset Flex Ruby
 status collapsed
 
 \begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
+鍵
+\begin_inset Argument post:1
 status collapsed
 
 \begin_layout Plain Layout
-しょーとかっと@ショートカット|see
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
+キー
 \end_layout
 
 \end_inset
 
-鍵割り当て
+
+\end_layout
+
+\end_inset
+
+割り当て
 \begin_inset ERT
 status collapsed
 
@@ -1697,7 +1716,7 @@ cua
 で変更することができます(第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:短絡キーの編集"
+reference "sub:捷径の編集"
 
 \end_inset
 
@@ -2041,16 +2060,6 @@ A
 
 \begin_layout Chapter
 LyXの基本
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Lyx@LyX ! きほん@基本
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -2059,7 +2068,7 @@ Lyx@LyX ! きほん@基本
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書 ! がた@------型
+ふんしよ@文書 ! がた@------型
 \end_layout
 
 \end_inset
@@ -2072,6 +2081,15 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Lyx@LyX ! のきほん@------の基本
+\end_layout
+
+\end_inset
+
 文章を書く前に、まず一番最初に
 \emph on
 どのような型
@@ -2108,7 +2126,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-ぶんしょ@
+ふんしよ@
 \family default
 \series default
 \shape default
@@ -2143,7 +2161,7 @@ name "sec:文書クラス"
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書 ! せってい@設定
+ふんしよ@文書 ! せってい@------設定
 \end_layout
 
 \end_inset
@@ -2404,7 +2422,7 @@ Springer
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書 ! せってい@設定
+ふんしよ@文書 ! せってい@------設定
 \end_layout
 
 \end_inset
@@ -2464,7 +2482,7 @@ name "sub:モジュール"
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書 ! もじゅーる@モジュール
+ふんしよ@文書 ! もじゅーる@モジュール
 \end_layout
 
 \end_inset
@@ -2484,7 +2502,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!せってい@------ 設定
+ふんしよ@文書!せってい@------設定
 \end_layout
 
 \end_inset
@@ -2510,7 +2528,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-LyXのさいしょきせってい@LyXの環境構成
+Lyx@LyX ! のかんきょうこうせい@------の環境構成
 \end_layout
 
 \end_inset
@@ -2557,7 +2575,7 @@ name "sub:ローカルレイアウト"
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書 ! ろーかるれいあうと@ローカルレイアウト
+ふんしよ@文書 ! ろーかるれいあうと@ローカルレイアウト
 \end_layout
 
 \end_inset
@@ -2943,7 +2961,7 @@ name "sub:文書レイアウト"
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!れいあうと@------レイアウト
+ふんしよ@文書!れいあうと@------レイアウト
 \end_layout
 
 \end_inset
@@ -2953,7 +2971,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!せってい@------ 設定
+ふんしよ@文書!せってい@------設定
 \end_layout
 
 \end_inset
@@ -3048,7 +3066,7 @@ fancyhdr
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! fancyhdr
+latexはつけじ@LaTeXパッケージ ! fancyhdr
 \end_layout
 
 \end_inset
@@ -3080,7 +3098,7 @@ reference "sub:段落の分け方"
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!ようしすんぽう@用紙寸法
+ふんしよ@文書!ようしすんぽう@用紙寸法
 \end_layout
 
 \end_inset
@@ -3110,7 +3128,7 @@ name "sub:用紙寸法と方向"
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!せってい@------ 設定
+ふんしよ@文書!せってい@------設定
 \end_layout
 
 \end_inset
@@ -3203,7 +3221,7 @@ JIS B0 - JIS B6
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!のよはく@------の余白
+ふんしよ@文書!のよはく@------の余白
 \end_layout
 
 \end_inset
@@ -3237,7 +3255,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!せってい@------ 設定
+ふんしよ@文書!せってい@------設定
 \end_layout
 
 \end_inset
@@ -3363,7 +3381,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@
+ふんしよ@
 \family roman
 \series medium
 \shape up
@@ -3457,7 +3475,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!せってい@------ 設定
+ふんしよ@文書!せってい@------設定
 \end_layout
 
 \end_inset
@@ -3498,16 +3516,17 @@ status collapsed
 
 \begin_layout Plain Layout
 だんらく@段落!かんきょう@------環境
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+|(
 \end_layout
 
 \end_inset
 
 
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-だんらくかんきょう@段落環境|(
 \end_layout
 
 \end_inset
@@ -3708,7 +3727,7 @@ arg   "break-paragraph inverse"
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!たいとる@------タイトル
+ふんしよ@文書!たいとる@------タイトル
 \end_layout
 
 \end_inset
@@ -4056,16 +4075,7 @@ name "sub:番号の付け方-深度"
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-文書!せってい@------ 設定
+ふんしよ@文書!せってい@------設定
 \end_layout
 
 \end_inset
@@ -4490,7 +4500,7 @@ reference "sec:入れ子"
 status collapsed
 
 \begin_layout Plain Layout
-かじょうがき@箇条書き!きごう@------(記号)
+かしようかき@箇条書き!きこう@記号
 \end_layout
 
 \end_inset
@@ -4637,16 +4647,7 @@ reference "sec:入れ子"
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-文書!せってい@------ 設定
+ふんしよ@文書!せってい@------設定
 \end_layout
 
 \end_inset
@@ -4677,7 +4678,7 @@ reference "sec:入れ子"
 status collapsed
 
 \begin_layout Plain Layout
-かじょうがき@箇条書き!ばんごう@------(番号)
+かしようかき@箇条書き!れんはん@連番
 \end_layout
 
 \end_inset
@@ -4687,7 +4688,7 @@ status collapsed
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:箇条書き（番号）"
+name "sec:箇条書き（連番）"
 
 \end_inset
 
@@ -4846,7 +4847,7 @@ reference "sec:入れ子"
 status collapsed
 
 \begin_layout Plain Layout
-かじょうがき@箇条書き!きじゅつ@------(記述)
+かしようかき@箇条書き!きしゆつ@記述
 \end_layout
 
 \end_inset
@@ -4985,7 +4986,7 @@ LyX
 status collapsed
 
 \begin_layout Plain Layout
-かじょうがき@箇条書き!LyXりすと@------(LyXリスト)
+かしようかき@箇条書き!lyxりすと@LyXリスト
 \end_layout
 
 \end_inset
@@ -5203,7 +5204,7 @@ name "sub:箇条書きの微調整"
 status collapsed
 
 \begin_layout Plain Layout
-かじょうがき@箇条書き! びちょうせい@微調整
+かしようかき@箇条書き! のひちようせい@------の微調整
 \end_layout
 
 \end_inset
@@ -5225,7 +5226,7 @@ enumitem
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! enumitem
+latexはつけじ@LaTeXパッケージ ! enumitem
 \end_layout
 
 \end_inset
@@ -5239,7 +5240,7 @@ Latexぱっけーじ@LaTeXパッケージ ! enumitem
 status collapsed
 
 \begin_layout Plain Layout
-かじょうがき@箇条書き! れんばん@連番 ! ちょうせい@調整
+かしようかき@箇条書き! れんはん@連番 ! のちようせい@------の調整
 \end_layout
 
 \end_inset
@@ -5580,7 +5581,7 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-かじょうがき@箇条書き! れんばん@連番 ! ふっき@復帰
+かしようかき@箇条書き! れんはん@連番 ! のふつき@------の復帰
 \end_layout
 
 \end_inset
@@ -5721,7 +5722,7 @@ start=4
 status collapsed
 
 \begin_layout Plain Layout
-かじょうがき@箇条書き ! よはく@余白
+かしようかき@箇条書き ! のよはく@------の余白
 \end_layout
 
 \end_inset
@@ -5790,7 +5791,7 @@ enumitem
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! enumitem
+latexはつけじ@LaTeXパッケージ ! enumitem
 \end_layout
 
 \end_inset
@@ -5848,7 +5849,7 @@ parindent, labelsep=2cm
 status collapsed
 
 \begin_layout Plain Layout
-かじょうがき@箇条書き ! びちょうせい@微調整
+かしようかき@箇条書き ! のひちようせい@------の微調整
 \end_layout
 
 \end_inset
@@ -5937,7 +5938,7 @@ enumitem
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! enumitem
+latexはつけじ@LaTeXパッケージ ! enumitem
 \end_layout
 
 \end_inset
@@ -6267,12 +6268,42 @@ reference "fig:概要環境内の段落"
 \end_layout
 
 \begin_layout Subsubsection
-参考文献
+書誌情報
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-さんこうぶんけん@参考文献
+しよししようほう@書誌情報
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+さんこうふんけん@参考文献
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+|see{
+\end_layout
+
+\end_inset
+
+書誌情報
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6280,7 +6311,7 @@ status collapsed
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:参考文献環境"
+name "sub:書誌情報環境"
 
 \end_inset
 
@@ -6290,28 +6321,28 @@ name "sub:参考文献環境"
 \begin_layout Standard
 
 \family sans
-参考文献
+書誌情報
 \family default
-環境は参考文献のリストを作るための環境です。この環境は文章のどこにでもおけるのですが、実際上は文章の終わりにおくべきです。
+環境は、書誌情報一覧を作るための環境です。この環境は文章のどこにでもおけるのですが、実際上は文章の終わりにおくべきです。
 \family sans
-参考文献
+書誌情報
 \family default
-環境を他の環境の中に入れたり、他の環境を 
+環境を他の環境の中に入れたり、他の環境を
 \family sans
-参考文献
+書誌情報
 \family default
-環境の中に入れたりすると、動きません。
+環境の中に入れたりすると、動作しません。
 \end_layout
 
 \begin_layout Standard
 初めて
 \family sans
-参考文献
+書誌情報
 \family default
-環境を開くと、LyXはその上の段落との間に大きなスペースを開けてBibliographyかReferencesという名前の見出しをボールド体の大きなフォントでつ
-けます。見出しの名前がどちらになるかは、文書クラスによって決まっています。
+環境を開くと、LyXはその上の段落との間に大きなスペースを空け、ボールド体の大きなフォントでBibliographyやReferencesといった見出しをつけま
+す。見出しの名前がどれになるかは、文書クラスによって決まっています。
 \family sans
-参考文献
+書誌情報
 \family default
 環境の一つの段落は一つの文献に対応しています。したがって、
 \family sans
@@ -6319,13 +6350,13 @@ Return
 \family default
 を押しても段落環境は変わらずに
 \family sans
-参考文献
+書誌情報
 \family default
 環境のままです。
 \end_layout
 
 \begin_layout Standard
-LyXにおける参考文献の取扱いに詳細については、第
+LyXにおける書誌情報の取扱について詳しくは、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:書誌情報"
@@ -6343,7 +6374,7 @@ LyXコード
 status collapsed
 
 \begin_layout Plain Layout
-だんらく@段落!Lyxこーど@LyXコード
+だんらく@段落!lyxこと@LyXコード
 \end_layout
 
 \end_inset
@@ -6576,12 +6607,16 @@ n");
 LyXコード
 \family default
 の目的はただ一つ、プログラムソースやシェルスクリプト、rcファイルなどのコードを植字することです。この環境は、タイプライタを使ったような文字列を生成する必要があ
-るような、非常に特別な場合にのみ使って下さい。
+るような、非常に特別な場合にのみ使って下さい。長いプログラムコードについては、取扱説明書『埋込オブジェクト篇』の「
+\emph on
+プログラムコードリスト
+\emph default
+」の節に説明されているリスト差込枠を使用してください。
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-だんらくかんきょう@
+だんらく@段落!かんきょう@------環境
 \family roman
 \series medium
 \shape up
@@ -6590,16 +6625,23 @@ status collapsed
 \bar no
 \noun off
 \color none
-段落環境|)
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+|)
 \end_layout
 
 \end_inset
 
-長いプログラムコードについては、取扱説明書『埋込オブジェクト篇』の「
-\emph on
-プログラムコードリスト
-\emph default
-」の節に説明されているリスト差込枠を使用してください。
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -9040,7 +9082,7 @@ em
 \begin_layout Subsubsection
 水平フィル
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 くうはく@空白!ふぃる@フィル
@@ -9385,16 +9427,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-文書!せってい@------ 設定
+ふんしよ@文書!せってい@------設定
 \end_layout
 
 \end_inset
@@ -9649,7 +9682,7 @@ status collapsed
 \bar no
 \noun off
 \color none
-かいぺーじ@
+かいぺじ@
 \family default
 \series default
 \shape default
@@ -9658,7 +9691,7 @@ status collapsed
 \bar default
 \noun default
 \color inherit
-改頁!きょうせい@強制------
+改頁!きようせい@強制------
 \end_layout
 
 \end_inset
@@ -9736,7 +9769,7 @@ name "sub:改段改頁"
 status collapsed
 
 \begin_layout Plain Layout
-かいぺーじ@改頁!かいだん@改段
+かいぺじ@改頁!かいだん@改段------
 \end_layout
 
 \end_inset
@@ -9966,7 +9999,7 @@ name "sec:フォントと文字様式"
 status collapsed
 
 \begin_layout Plain Layout
-ふぉんと@フォント ! のしゅるい@------ の種類
+ふぉんと@フォント ! のしゅるい@------の種類
 \end_layout
 
 \end_inset
@@ -9984,7 +10017,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ふぉんと@フォント ! べくたー@ベクター ------
+ふぉんと@フォント ! べくたー@ベクター------
 \end_layout
 
 \end_inset
@@ -10026,7 +10059,7 @@ Type
 status collapsed
 
 \begin_layout Plain Layout
-ふぉんと@フォント ! びっとまっぷ@ビットマップ ------
+ふぉんと@フォント ! びっとまっぷ@ビットマップ------
 \end_layout
 
 \end_inset
@@ -10147,7 +10180,7 @@ name "sub:文書フォント"
 status collapsed
 
 \begin_layout Plain Layout
-ふぉんと@フォント ! すんぽう@------ 寸法
+ふぉんと@フォント ! すんぽう@------寸法
 \end_layout
 
 \end_inset
@@ -10166,7 +10199,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!せってい@------ 設定
+ふんしよ@文書!せってい@------設定
 \end_layout
 
 \end_inset
@@ -10427,23 +10460,13 @@ cm
 \family default
 輪郭グリフを「拝借」してくるからです。これには、フランス語のギュメ(「«」や「»」)をはじめとするいくつかの文字が欠落していること
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 LaTeXパッケージの
 \series bold
 aeguill
 \series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! aeguill
-\end_layout
-
-\end_inset
-
 をプリアンブル行で
 \end_layout
 
@@ -10455,6 +10478,16 @@ usepackage[ec]{aeguill}
 \end_inset
 
 として読み込むと、ギュメの問題は解消されます。
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+latexはつけじ@LaTeXパッケージ ! aeguill
 \end_layout
 
 \end_inset
@@ -10669,7 +10702,7 @@ fontenc
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! fontenc
+latexはつけじ@LaTeXパッケージ ! fontenc
 \end_layout
 
 \end_inset
@@ -10727,21 +10760,21 @@ CJK
 \series bold
 CJK
 \series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! CJK
-\end_layout
-
-\end_inset
-
 を使用しない
 \family sans
 日本語
 \family default
 文書言語に対しては、影響をもちません。
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+latexはつけじ@LaTeXパッケージ ! CJK
 \end_layout
 
 \end_inset
@@ -10988,7 +11021,7 @@ name "sub:文字微調整"
 status collapsed
 
 \begin_layout Plain Layout
-もじけいしき@文字様式
+もじようしき@文字様式
 \end_layout
 
 \end_inset
@@ -12176,17 +12209,17 @@ status collapsed
 \series bold
 pstricks
 \series default
+を見てみてください。
+\end_layout
+
+\end_inset
+
 
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! pstricks
-\end_layout
-
-\end_inset
-
-を見てみてください。
+latexはつけじ@LaTeXパッケージ ! pstricks
 \end_layout
 
 \end_inset
@@ -12495,8 +12528,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTML
 \end_layout
 
@@ -12558,7 +12589,7 @@ LyXHTML
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!ぷれびゅー@プレビュー
+ふんしよ@文書!ぷれびゅー@プレビュー
 \end_layout
 
 \end_inset
@@ -13087,7 +13118,7 @@ abel
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! babel
+latexはつけじ@LaTeXパッケージ ! babel
 \end_layout
 
 \end_inset
@@ -13372,13 +13403,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-いんようふ@引用符|see
+いんようふ@引用符
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -13453,7 +13484,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書 ! せってい@設定
+ふんしよ@文書 ! せってい@------設定
 \end_layout
 
 \end_inset
@@ -13707,13 +13738,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ごうじ@合字|see
+ごうじ@合字
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -13795,16 +13826,6 @@ fest」のようになります。
 
 \begin_layout Subsection
 LyXの固有名称
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Lyx@LyX!こゆうめいしょう@固有名称
-\end_layout
-
-\end_inset
-
-
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:LyXの固有名称"
@@ -13815,6 +13836,15 @@ name "sub:LyXの固有名称"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Lyx@LyX!のこゆうめいしょう@------の固有名称
+\end_layout
+
+\end_inset
+
 ここまでで、「LaTeX」という単語が、つねにばらばらの寸法と高さを持つ文字で表されていることに気づかれたはずです。LaTeXとは、LyXが用いるプログラムの名
 称で、LyX内で「LaT
 \begin_inset ERT
@@ -14571,7 +14601,7 @@ reference "sub:図フロート"
 status collapsed
 
 \begin_layout Plain Layout
-がぞう@画像 ! けいしき@形式
+かそう@画像 ! けいしき@------形式
 \end_layout
 
 \end_inset
@@ -14624,24 +14654,13 @@ reference "sub:出力ファイル形式"
 status collapsed
 
 \begin_layout Plain Layout
-GIF |see
+GIF
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
-\end_layout
-
-\end_inset
-
-画像形式
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+|see{画像形式}
 \end_layout
 
 \end_inset
@@ -14660,13 +14679,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-PNG|see
+PNG
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -14700,13 +14719,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-JPG|see
+JPG
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -14773,7 +14792,7 @@ PDFの場合には、元の画像を圧縮することもあります。
 status collapsed
 
 \begin_layout Plain Layout
-がぞう@画像 ! せっていのぐるーぷか@設定のグループ化
+かそう@画像 ! せつていのくるふか@------設定のグループ化
 \end_layout
 
 \end_inset
@@ -15280,13 +15299,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Longtable|see
+Longtable
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -18508,13 +18527,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-しき@式|see
+しき@式
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -19234,18 +19253,18 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式!はんい@範囲|see
+すうしき@数式!はんい@範囲
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
 
-数式の項の上限下限
+数式の上限下限
 \begin_inset ERT
 status collapsed
 
@@ -19341,13 +19360,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式!くうはく@空白|see
+すうしき@数式!くうはく@空白
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -21313,7 +21332,7 @@ AMSサポートを有効にする
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!せってい@------ 設定
+ふんしよ@文書!せってい@------設定
 \end_layout
 
 \end_inset
@@ -21701,7 +21720,7 @@ refstyle
 status collapsed
 
 \begin_layout Plain Layout
-LaTeXぱっけーじ@LaTeXパッケージ! prettyref
+latexはつけじ@LaTeXパッケージ! prettyref
 \end_layout
 
 \end_inset
@@ -21711,7 +21730,7 @@ LaTeXぱっけーじ@LaTeXパッケージ! prettyref
 status collapsed
 
 \begin_layout Plain Layout
-LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
+latexはつけじ@LaTeXパッケージ ! refstyle
 \end_layout
 
 \end_inset
@@ -21902,7 +21921,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!こうぞう@------構造
+ふんしよ@文書!こうぞう@------構造
 \end_layout
 
 \end_inset
@@ -21912,18 +21931,18 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-あうとらいん@アウトライン|see
+あうとらいん@アウトライン
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
 
-文書の項の構造
+文書構造
 \begin_inset ERT
 status collapsed
 
@@ -22276,16 +22295,6 @@ status collapsed
 \end_inset
 
 
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-さんこうぶんけん@参考文献
-\end_layout
-
-\end_inset
-
-
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:書誌情報"
@@ -22309,7 +22318,7 @@ status collapsed
 をインクルードするか、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:参考文献環境"
+reference "sub:書誌情報環境"
 
 \end_inset
 
@@ -22712,7 +22721,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!せってい@------ 設定
+ふんしよ@文書!せってい@------設定
 \end_layout
 
 \end_inset
@@ -22830,7 +22839,7 @@ status collapsed
 の下にグループ化したいものとしましょう。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:箇条書き（番号）"
+reference "sec:箇条書き（連番）"
 
 \end_inset
 
@@ -22965,8 +22974,8 @@ reference "sub:LyXコード"
 \series bold
 |)
 \series default
-」というコマンドは、それぞれ索引範囲の開始と終了を表します。また、同一の索引項目を文書中のべつべつの場所で登録することもできます。すると、ひとつの索引項目の下に
-、索引登録された部分の各ページがコンマで区切られて列挙されます。本文書の「文書!設定」という索引項目が、その例です。
+」というコマンドは、それぞれ索引範囲の開始と終了を表し、TeXコードとして入力しなくてはなりません。また、同一の索引項目を文書中のべつべつの場所で登録することも
+できます。すると、ひとつの索引項目の下に、索引登録された部分の各ページがコンマで区切られて列挙されます。本文書の「文書!設定」という索引項目が、その例です。
 \end_layout
 
 \begin_layout Subsection
@@ -23130,7 +23139,7 @@ status collapsed
 
 \end_inset
 
-is
+is@maison
 \end_layout
 
 \end_inset
@@ -23148,12 +23157,12 @@ status collapsed
 
 
 \backslash
-^
+"
 \end_layout
 
 \end_inset
 
-itre
+is
 \end_layout
 
 \end_inset
@@ -23163,7 +23172,7 @@ itre
 status collapsed
 
 \begin_layout Plain Layout
-だみーこうもく@ダミー項目 ! mais@ma
+だみーこうもく@ダミー項目 ! ma
 \begin_inset ERT
 status collapsed
 
@@ -23368,7 +23377,7 @@ status collapsed
 \begin_layout Standard
 索引項目の外観は、文字様式ダイアログを使用して変更することができます。
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 だみーこうもく@ダミー項目 ! これ@
@@ -23390,12 +23399,27 @@ status open
 \begin_inset Newline newline
 \end_inset
 
-と書くと、イタリック体のページ番号を得ることができます。
+と書くと、イタリック体のページ番号を得ることができます(
+\series bold
+:|textit
+\series default
+はTeXコードで挿入しなくてはなりません)。
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-だみーこうもく@ダミー項目 ! いたりっくたいのぺーじばんごう@イタリック体のページ番号:|textit
+だみーこうもく@ダミー項目 ! いたりっくたいのぺーじばんごう@イタリック体のページ番号
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+:|textit
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -23497,12 +23521,23 @@ textit{#1}}
 \begin_inset Newline newline
 \end_inset
 
-と書いてください。
+と書いてください(「|IndexDef」はTeXコードとして挿入してください)。
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-だみーこうもく@ダミー項目 ! さくいんこうもく@索引項目|IndexDef
+だみーこうもく@ダミー項目 ! さくいんこうもく@索引項目
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+|IndexDef
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -23620,7 +23655,7 @@ key "makeindex,xindy"
 status collapsed
 
 \begin_layout Plain Layout
-LaTeXぱっけーじ @ LaTeXパッケージ ! splitidx
+latexはつけじ@LaTeXパッケージ ! splitidx
 \end_layout
 
 \end_inset
@@ -23678,13 +23713,13 @@ LyXが複数の索引を使用できるようにするためには、
 status collapsed
 
 \begin_layout Plain Layout
-きごういちらん@記号一覧|see
+きこういちらん@記号一覧
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -23710,7 +23745,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ようごしゅう@用語集
+ようこしゆう@用語集
 \end_layout
 
 \end_inset
@@ -23720,13 +23755,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Nomenclature|see
+Nomenclature
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -23752,13 +23787,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Glossary|see
+Glossary
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -23803,7 +23838,7 @@ nomencl
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! nomencl
+latexはつけじ@LaTeXパッケージ ! nomencl
 \end_layout
 
 \end_inset
@@ -23860,7 +23895,7 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-きごういちらん@記号一覧 ! れいあうと@レイアウト
+きこういちらん@記号一覧 ! のれいあうと@------のレイアウト
 \end_layout
 
 \end_inset
@@ -23985,7 +24020,7 @@ emph
 status collapsed
 
 \begin_layout Plain Layout
-ようごしゅう@用語集 ! せいじょじゅん@整序順
+ようこしゆう@用語集 ! せいじょじゅん@整序順
 \end_layout
 
 \end_inset
@@ -24089,7 +24124,7 @@ key "nomencl"
 status collapsed
 
 \begin_layout Plain Layout
-ようごしゅう@用語集 ! おぷしょん@オプション
+ようこしゆう@用語集 ! おふしよん@オプション
 \end_layout
 
 \end_inset
@@ -24249,7 +24284,7 @@ nobreakspace{}ページ}
 status collapsed
 
 \begin_layout Plain Layout
-ようごしゅう@用語集 ! しゅつりょく@出力
+ようこしゆう@用語集 ! のしゆつりよく@------の出力
 \end_layout
 
 \end_inset
@@ -24318,7 +24353,7 @@ nomname}{記号一覧}
 status collapsed
 
 \begin_layout Plain Layout
-ようごしゅう@用語集 ! ぷろぐらむ@プログラム
+ようこしゆう@用語集 ! ふろくらむ@プログラム
 \end_layout
 
 \end_inset
@@ -24375,7 +24410,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書 ! はせいし@派生枝
+ふんしよ@文書 ! はせいし@派生枝
 \end_layout
 
 \end_inset
@@ -24731,7 +24766,7 @@ hyperref
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! hyperref
+latexはつけじ@LaTeXパッケージ ! hyperref
 \end_layout
 
 \end_inset
@@ -25099,7 +25134,7 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! caption
+latexはつけじ@LaTeXパッケージ ! caption
 \end_layout
 
 \end_inset
@@ -25426,7 +25461,7 @@ name "sec:ユーザ設定ページヘッダ"
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書 ! へっだ・ふったぎょう@ヘッダ・フッタ行
+ふんしよ@文書 ! へっだ・ふったぎょう@ヘッダ・フッタ行
 \end_layout
 
 \end_inset
@@ -25896,7 +25931,7 @@ fancyhdr
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! fancyhdr
+latexはつけじ@LaTeXパッケージ ! fancyhdr
 \end_layout
 
 \end_inset
@@ -26056,7 +26091,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!ぷれびゅー@プレビュー
+ふんしよ@文書!ぷれびゅー@プレビュー
 \end_layout
 
 \end_inset
@@ -26083,7 +26118,7 @@ preview-latex
 status collapsed
 
 \begin_layout Plain Layout
-LaTeXぱっけーじ@LaTeXパッケージ ! preview-latex
+latexはつけじ@LaTeXパッケージ ! preview-latex
 \end_layout
 
 \end_inset
@@ -27133,13 +27168,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Thesaurus|see
+Thesaurus
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -27353,7 +27388,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!へんこうついせききのう@変更追跡機能
+ふんしよ@文書!へんこうついせききのう@変更追跡機能
 \end_layout
 
 \end_inset
@@ -27423,7 +27458,7 @@ arg   "changes-merge"
 status collapsed
 
 \begin_layout Plain Layout
-つーるばー@ツールバー ! こうえつ@校閲
+つーるばー@ツールバー ! こうえつ@校閲------
 \end_layout
 
 \end_inset
@@ -27829,7 +27864,7 @@ dvipost
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! dvipost
+latexはつけじ@LaTeXパッケージ ! dvipost
 \end_layout
 
 \end_inset
@@ -27940,7 +27975,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!せってい@------ 設定
+ふんしよ@文書!せってい@------設定
 \end_layout
 
 \end_inset
@@ -27950,7 +27985,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!げんご@言語
+ふんしよ@文書!げんご@言語
 \end_layout
 
 \end_inset
@@ -28899,7 +28934,7 @@ R
 \end_inset
 
 (pdflatex)・Postscriptのうち、ひとつでもメニュー項目から漏れていたならば、導入されているLaTeXを更新する必要があります。更新したあとには
-LyXの再設定を行わなくてはなりません。第
+LyXの環境構成を行わなくてはなりません。第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:LaTeXの設定"
@@ -28911,7 +28946,7 @@ reference "sec:LaTeXの設定"
 status collapsed
 
 \begin_layout Plain Layout
-Lyxのさいせってい@LyXの再設定
+Lyx@LyX ! のかんきょうこうせい@------の環境構成
 \end_layout
 
 \end_inset
@@ -29325,7 +29360,7 @@ PDF
 (pdflatex)
 \family default
 のメニュー項目は、メニューに登場するはずです。これらのうち一つでも欠けているようならば、導入されているLaTeXを更新する必要があります。更新したあとにはLyX
-の再設定を行わなくてはなりません。第
+の環境構成を行わなくてはなりません。第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:LaTeXの設定"
@@ -29337,7 +29372,7 @@ reference "sec:LaTeXの設定"
 status collapsed
 
 \begin_layout Plain Layout
-Lyxのさいせってい@LyXの再設定
+Lyx@LyX ! のかんきょうこうせい@------の環境構成
 \end_layout
 
 \end_inset
@@ -29808,7 +29843,7 @@ tipa
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! tipa
+latexはつけじ@LaTeXパッケージ ! tipa
 \end_layout
 
 \end_inset
@@ -30633,7 +30668,7 @@ arg   "bookmark-goto 2"
 status collapsed
 
 \begin_layout Plain Layout
-めにゅー@メニュー!ぶんしょ@文書
+めにゅー@メニュー!ふんしよ@文書
 \end_layout
 
 \end_inset
@@ -30902,51 +30937,18 @@ reference "sec:文書比較"
 
 \begin_layout Subsection
 環境構成
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Lyx@LyX ! かんきょうこうせい@環境構成 | see 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-環境構成
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-かんきょうこうせい@環境構成
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Lyx@LyX ! のかんきょうこうせい@------の環境構成
+\end_layout
+
+\end_inset
+
 このメニュー項目はLyXの環境設定をし直します。すなわち、LyXに必要なLaTeXパッケージとプログラムを検索します。第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -31060,7 +31062,7 @@ reference "sub:ツールバー"
 status collapsed
 
 \begin_layout Plain Layout
-つーるばー@ツールバー ! ひょうじゅん@標準
+つーるばー@ツールバー ! ひょうじゅん@標準------
 \end_layout
 
 \end_inset
@@ -31845,7 +31847,7 @@ arg   "toolbar-toggle table"
 status collapsed
 
 \begin_layout Plain Layout
-つーるばー@ツールバー ! ついか@追加 ------
+つーるばー@ツールバー ! ついか@追加------
 \end_layout
 
 \end_inset
@@ -32662,7 +32664,7 @@ arg   "thesaurus-entry"
 status collapsed
 
 \begin_layout Plain Layout
-つーるばー@ツールバー ! ひょうじこうしん@表示／更新 ------
+つーるばー@ツールバー ! ひょうじこうしん@表示／更新------
 \end_layout
 
 \end_inset
@@ -32943,7 +32945,7 @@ reference "sec:変更追跡機能"
 status collapsed
 
 \begin_layout Plain Layout
-つーるばー@ツールバー ! ひょう@表 ------
+つーるばー@ツールバー ! ひょう@表------
 \end_layout
 
 \end_inset
@@ -32957,7 +32959,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-つーるばー@ツールバー ! まくろ@マクロ ------
+つーるばー@ツールバー ! まくろ@マクロ------
 \end_layout
 
 \end_inset
@@ -32982,7 +32984,7 @@ name "cha:文書設定"
 status collapsed
 
 \begin_layout Plain Layout
-ぶんしょ@文書!せってい@------ 設定
+ふんしよ@文書!せってい@------設定
 \end_layout
 
 \end_inset
@@ -33144,7 +33146,7 @@ prettyref
 status collapsed
 
 \begin_layout Plain Layout
-LaTeXぱっけーじ@LaTeXパッケージ! prettyref
+latexはつけじ@LaTeXパッケージ! prettyref
 \end_layout
 
 \end_inset
@@ -33154,7 +33156,7 @@ LaTeXぱっけーじ@LaTeXパッケージ! prettyref
 status collapsed
 
 \begin_layout Plain Layout
-LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
+latexはつけじ@LaTeXパッケージ ! refstyle
 \end_layout
 
 \end_inset
@@ -33451,7 +33453,7 @@ babel
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! babel
+latexはつけじ@LaTeXパッケージ ! babel
 \end_layout
 
 \end_inset
@@ -33465,7 +33467,7 @@ polyglossia
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! polyglossia
+latexはつけじ@LaTeXパッケージ ! polyglossia
 \end_layout
 
 \end_inset
@@ -33533,7 +33535,7 @@ inputenc
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! inputenc
+latexはつけじ@LaTeXパッケージ ! inputenc
 \end_layout
 
 \end_inset
@@ -33665,7 +33667,7 @@ LaTeXコマンドが必要な場合には、ファイルが大きくなる可能
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! CJK
+latexはつけじ@LaTeXパッケージ ! CJK
 \end_layout
 
 \end_inset
@@ -33700,7 +33702,7 @@ ucs
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! ucs
+latexはつけじ@LaTeXパッケージ ! ucs
 \end_layout
 
 \end_inset
@@ -33718,7 +33720,7 @@ inputenc
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! inputenc
+latexはつけじ@LaTeXパッケージ ! inputenc
 \end_layout
 
 \end_inset
@@ -33788,7 +33790,7 @@ CJK
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! CJK
+latexはつけじ@LaTeXパッケージ ! CJK
 \end_layout
 
 \end_inset
@@ -33822,7 +33824,7 @@ japanese
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! japanese
+latexはつけじ@LaTeXパッケージ ! japanese
 \end_layout
 
 \end_inset
@@ -33856,7 +33858,7 @@ japanese
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! japanese
+latexはつけじ@LaTeXパッケージ ! japanese
 \end_layout
 
 \end_inset
@@ -34172,7 +34174,7 @@ natbib
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! natbib
+latexはつけじ@LaTeXパッケージ ! natbib
 \end_layout
 
 \end_inset
@@ -34186,7 +34188,7 @@ jurabib
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! jurabib
+latexはつけじ@LaTeXパッケージ ! jurabib
 \end_layout
 
 \end_inset
@@ -34200,7 +34202,7 @@ bibtopic
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! bibtopic
+latexはつけじ@LaTeXパッケージ ! bibtopic
 \end_layout
 
 \end_inset
@@ -34263,7 +34265,7 @@ amsmath
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! amsmath
+latexはつけじ@LaTeXパッケージ ! amsmath
 \end_layout
 
 \end_inset
@@ -34277,7 +34279,7 @@ esint
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! esint
+latexはつけじ@LaTeXパッケージ ! esint
 \end_layout
 
 \end_inset
@@ -34291,7 +34293,7 @@ mathdots
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! mathdots
+latexはつけじ@LaTeXパッケージ ! mathdots
 \end_layout
 
 \end_inset
@@ -34305,7 +34307,7 @@ mhchem
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! mhchem
+latexはつけじ@LaTeXパッケージ ! mhchem
 \end_layout
 
 \end_inset
@@ -34943,7 +34945,7 @@ name "sub:文書のバックアップ"
 status collapsed
 
 \begin_layout Plain Layout
-ばっくあっぷ@バックアップ ! ぶんしょ@文書
+ばっくあっぷ@バックアップ ! ふんしよ@文書
 \end_layout
 
 \end_inset
@@ -35071,7 +35073,7 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-ふぉんと@フォント!がめん@画面
+ふぉんと@フォント!がめん@画面------
 \end_layout
 
 \end_inset
@@ -35399,7 +35401,27 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-きーせってい@鍵設定
+きーせってい@
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+鍵
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+キー
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+設定
 \end_layout
 
 \end_inset
@@ -35409,18 +35431,38 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ばいんど@バインド | see 
+ばいんど@バインド
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+ |see{
 \end_layout
 
 \end_inset
 
-鍵設定
+
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+鍵
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+キー
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+設定
 \begin_inset ERT
 status collapsed
 
@@ -35441,7 +35483,27 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-せってい@設定 ! しょうけい@捷径
+せってい@設定 ! しょうけい@
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35565,7 +35627,7 @@ math.bind
 捷径の編集
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:短絡キーの編集"
+name "sub:捷径の編集"
 
 \end_inset
 
@@ -35574,7 +35636,27 @@ name "sub:短絡キーの編集"
 status collapsed
 
 \begin_layout Plain Layout
-きーせってい@鍵設定 ! へんしゅう@編集
+きーせってい@
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+鍵
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+キー
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+設定 ! のへんしゅう@------の編集
 \end_layout
 
 \end_inset
@@ -35721,7 +35803,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-せってい@設定 ! きーぼーどはいちひょう@キーボード配置表
+せってい@設定 ! きぼどはいちひよう@キーボード配置表
 \end_layout
 
 \end_inset
@@ -36093,7 +36175,7 @@ reference "sec:変更追跡機能"
 status collapsed
 
 \begin_layout Plain Layout
-げんご@言語 ! せってい@------ 設定
+げんご@言語 ! せってい@------設定
 \end_layout
 
 \end_inset
@@ -36103,7 +36185,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-せってい@設定 ! げんご@------ 言語
+せってい@設定 ! げんご@言語------
 \end_layout
 
 \end_inset
@@ -36144,7 +36226,7 @@ babel
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! babel
+latexはつけじ@LaTeXパッケージ ! babel
 \end_layout
 
 \end_inset
@@ -36159,7 +36241,7 @@ polyglossia
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! polyglossia
+latexはつけじ@LaTeXパッケージ ! polyglossia
 \end_layout
 
 \end_inset
@@ -37904,7 +37986,7 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! caption
+latexはつけじ@LaTeXパッケージ ! caption
 \end_layout
 
 \end_inset
@@ -37951,7 +38033,7 @@ enumitem
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! enumitem
+latexはつけじ@LaTeXパッケージ ! enumitem
 \end_layout
 
 \end_inset
@@ -37998,7 +38080,7 @@ fancyhdr
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! fancyhdr
+latexはつけじ@LaTeXパッケージ ! fancyhdr
 \end_layout
 
 \end_inset
@@ -38045,7 +38127,7 @@ hyperref
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! hyperref
+latexはつけじ@LaTeXパッケージ ! hyperref
 \end_layout
 
 \end_inset
@@ -38092,7 +38174,7 @@ nomencl
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! nomencl
+latexはつけじ@LaTeXパッケージ ! nomencl
 \end_layout
 
 \end_inset
@@ -38139,7 +38221,7 @@ prettyref
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! prettyref
+latexはつけじ@LaTeXパッケージ ! prettyref
 \end_layout
 
 \end_inset
@@ -38186,7 +38268,7 @@ refstyle
 status collapsed
 
 \begin_layout Plain Layout
-Latexぱっけーじ@LaTeXパッケージ ! refstyle
+latexはつけじ@LaTeXパッケージ ! refstyle
 \end_layout
 
 \end_inset
@@ -38661,6 +38743,20 @@ status collapsed
 renewcommand{
 \backslash
 nomname}{記号一覧}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\backslash
+renewcommand{
+\backslash
+pagedeclaration}[1]{ (#1頁参照)}
 \end_layout
 
 \end_inset
