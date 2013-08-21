@@ -17,8 +17,6 @@
 
 #include "Context.h"
 #include "Encoding.h"
-#include "Format.h"
-#include "LaTeXFeatures.h"
 #include "Layout.h"
 #include "LayoutFile.h"
 #include "LayoutModuleList.h"
@@ -31,7 +29,6 @@
 #include "support/filetools.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
-#include "support/Messages.h"
 #include "support/os.h"
 #include "support/Package.h"
 #include "support/Systemcall.h"
@@ -49,69 +46,6 @@ using namespace lyx::support;
 using namespace lyx::support::os;
 
 namespace lyx {
-
-namespace frontend {
-namespace Alert {
-	void warning(docstring const & title, docstring const & message,
-				 bool const &)
-	{
-		cerr << to_utf8(title) << "\n" << to_utf8(message) << endl;
-	}
-}
-}
-
-
-// Dummy texrow support
-void TexRow::newline()
-{}
-
-
-void TexRow::newlines(int)
-{}
-
-
-// Dummy LyXRC support
-class LyXRC {
-public:
-	string icon_set;
-} lyxrc;
-
-
-// Dummy translation support
-Messages messages_;
-Messages const & getMessages(string const &)
-{
-	return messages_;
-}
-
-
-Messages const & getGuiMessages()
-{
-	return messages_;
-}
-
-
-// tex2lyx does not read lyxrc and therefore can't really check for
-// zipped formats (Used by lexer)
-
-Formats formats;
-
-bool Formats::isZippedFile(FileName const&) const
-{
-	return false;
-}
-
-
-bool LaTeXFeatures::isAvailable(string const &)
-{
-	return true;
-}
-
-
-// Keep the linker happy on Windows
-void lyx_exit(int)
-{}
-
 
 string const trimSpaceAndEol(string const & a)
 {

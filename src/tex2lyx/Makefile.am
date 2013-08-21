@@ -97,6 +97,7 @@ tex2lyx_SOURCES = \
 	boost.cpp \
 	Context.cpp \
 	Context.h \
+	dummy_impl.cpp \
 	math.cpp \
 	Parser.cpp \
 	Parser.h \
