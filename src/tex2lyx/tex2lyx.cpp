@@ -18,6 +18,7 @@
 #include "Context.h"
 #include "Encoding.h"
 #include "Format.h"
+#include "LaTeXFeatures.h"
 #include "Layout.h"
 #include "LayoutFile.h"
 #include "LayoutModuleList.h"
@@ -98,6 +99,12 @@ Formats formats;
 bool Formats::isZippedFile(FileName const&) const
 {
 	return false;
+}
+
+
+bool LaTeXFeatures::isAvailable(string const &)
+{
+	return true;
 }
 
 

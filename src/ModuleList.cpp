@@ -48,21 +48,14 @@ LyXModule::LyXModule(string const & n, string const & i,
 
 vector<string> LyXModule::prerequisites() const
 {
-#ifdef TEX2LYX
-	return vector<string>();
-#else
 	if (!checked_)
 		isAvailable();
 	return prerequisites_;
-#endif
 }
 
 
 bool LyXModule::isAvailable() const
 {
-#ifdef TEX2LYX
-	return true;
-#else
 	if (package_list_.empty())
 		return true;
 	if (checked_)
@@ -79,7 +72,6 @@ bool LyXModule::isAvailable() const
 		}
 	}
 	return available_;
-#endif
 }
 
 
