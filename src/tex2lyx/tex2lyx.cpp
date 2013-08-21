@@ -17,6 +17,7 @@
 
 #include "Context.h"
 #include "Encoding.h"
+#include "Format.h"
 #include "Layout.h"
 #include "LayoutFile.h"
 #include "LayoutModuleList.h"
@@ -77,7 +78,7 @@ public:
 
 // Dummy translation support
 Messages messages_;
-Messages const & getMessages(std::string const &)
+Messages const & getMessages(string const &)
 {
 	return messages_;
 }
@@ -86,6 +87,17 @@ Messages const & getMessages(std::string const &)
 Messages const & getGuiMessages()
 {
 	return messages_;
+}
+
+
+// tex2lyx does not read lyxrc and therefore can't really check for
+// zipped formats (Used by lexer)
+
+Formats formats;
+
+bool Formats::isZippedFile(FileName const&) const
+{
+	return false;
 }
 
 
