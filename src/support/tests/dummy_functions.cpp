@@ -8,6 +8,11 @@ namespace lyx {
 	// Dummy LyXRC support
 	class LyXRC { string icon_set; } lyxrc;
 
+	// Dummy LyXAlignment support
+	enum LyXAlignment {
+		DUMMY
+	};
+
 	// Keep the linker happy on Windows
 	void lyx_exit(int) {}
 
@@ -24,4 +29,10 @@ namespace lyx {
 
 		return lyx_messages;
 	}
+
+	string alignmentToCSS(LyXAlignment)
+	{
+		return string();
+	}
+
 }

@@ -689,7 +689,7 @@ if INSTALL_MACOSX
 ADD_FRAMEWORKS = -framework QtGui -framework QtCore -framework AppKit -framework ApplicationServices
 endif
 
-check_layout_CPPFLAGS = $(AM_CPPFLAGS) -DNO_LAYOUT_CSS
+check_layout_CPPFLAGS = $(AM_CPPFLAGS)
 check_layout_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ $(QT4_CORE_LIBS) $(LIBSHLWAPI)
 check_layout_LDFLAGS = $(QT4_CORE_LDFLAGS) $(ADD_FRAMEWORKS)
 check_layout_SOURCES = \

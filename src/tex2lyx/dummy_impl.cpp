@@ -21,6 +21,7 @@
 #include "Format.h"
 #include "LaTeXFeatures.h"
 #include "LyXRC.h"
+#include "output_xhtml.h"
 
 #include "support/Messages.h"
 
@@ -114,6 +115,11 @@ bool LaTeXFeatures::isAvailable(string const &)
 	return true;
 }
 
+
+string alignmentToCSS(LyXAlignment)
+{
+	return string();
+}
 
 //
 // Keep the linker happy on Windows
