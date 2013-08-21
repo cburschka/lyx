@@ -5,6 +5,7 @@
 #
 #
 # LYX_ROOT  = ${TOP_SRC_DIR}/lib/{doc,examples,templates}
+# LYX_USERDIR_VER = Name of environment variable for the user directory
 # lyx       = 
 # format    = lyx16x|xhtml
 # extension = 16.lyx|xhtml
@@ -12,7 +13,8 @@
 #
 # Script should be called like:
 # cmake -DLYX_ROOT=xxx \
-#       -DWORKDIR=${BUILD_DIR}/autotests/out-home
+#       -DWORKDIR=${BUILD_DIR}/autotests/out-home \
+#       -DLYX_USERDIR_VER=${LYX_USERDIR_VER} \
 #       -Dlyx=xxx \
 #       -Dformat=xxx \
 #       -Dextension=xxx \
@@ -22,7 +24,7 @@
 #
 
 message(STATUS "Executing ${lyx} -E ${format} ${file}.${extension} ${LYX_ROOT}/${file}.lyx")
-set(ENV{LYX_USERDIR} "${WORKDIR}/.lyx")
+set(ENV{${LYX_USERDIR_VER}} "${WORKDIR}/.lyx")
 execute_process(COMMAND ${CMAKE_COMMAND} -E remove ${file}.${extension})
 execute_process(
   COMMAND ${lyx} -E ${format} ${file}.${extension} "${LYX_ROOT}/${file}.lyx"

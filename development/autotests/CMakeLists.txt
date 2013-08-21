@@ -60,11 +60,11 @@ if(Q_WS_X11)
 
   if(Missing)
     message(STATUS "Missing Libraries or programs to create xvkbd: ${Missing}")
-    message(STATUS "cmake build is therefore omitting autotests")
+    message(STATUS "cmake build is therefore omitting keytests")
   endif()
 
   if(NOT Missing)
-    project(autotests)
+    project(keytest)
 
     add_subdirectory(xvkbd)
 
@@ -80,7 +80,7 @@ if(Q_WS_X11)
 
     foreach(_tf first-time-in.txt hello-world-in.txt ${TESTST})
       string(REGEX REPLACE "-in\\.(txt|sh)" "" _t ${_tf})
-      add_test(NAME autotests/${_t}
+      add_test(NAME keytest/${_t}
         WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
         COMMAND ${CMAKE_COMMAND}
         -DAUTOTEST_ROOT=${TOP_SRC_DIR}/development/autotests
@@ -89,6 +89,7 @@ if(Q_WS_X11)
         -DBINDIR=$<TARGET_FILE_DIR:${_lyx}>
         -DLYX=${_lyx}
         -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
+        -DLYX_USERDIR_VER=${LYX_USERDIR_VER}
         -DKEYTEST_OUTFILE=${_t}-out.txt
         -DPACKAGE=${PACKAGE}
         -DLOCALE_DIR=${LOCALE_DIR}
@@ -142,6 +143,7 @@ foreach(libsubfolder doc examples templates)
     endif()
   endforeach()
   file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/revertedTests" revertedTests)
+  file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/ignoredTests" ignoredTests)
   foreach(f ${nolang_lyx_files} ${lang_lyx_files})
     # Strip extension
     string(REGEX REPLACE "\\.lyx$" "" f ${f})
@@ -152,18 +154,28 @@ foreach(libsubfolder doc examples templates)
       COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
           -Dlyx=$<TARGET_FILE:${_lyx}>
           -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
+          -DLYX_USERDIR_VER=${LYX_USERDIR_VER}
           -Dformat=lyx16x
           -Dextension=16.lyx
           -Dfile=${f}
           -Dreverted=${reverted}
           -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
+    set(TestName "lyx2lyx/${libsubfolder}/${f}")
+    getreverted(TestName reverted revertedTests)
+    add_test(NAME ${TestName}
+      WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
+      COMMAND ${CMAKE_COMMAND} -DLYX2LYX=${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx
+        -DLYXFILE=${LIBSUB_SRC_DIR}/${f}.lyx
+        -P "${TOP_SRC_DIR}/development/autotests/lyx2lyxtest.cmake")
     getoutputformats("${LIBSUB_SRC_DIR}/${f}.lyx" formatlist)
     foreach(format ${formatlist})
       set(TestName "export/${libsubfolder}/${f}_${format}")
-      getreverted(TestName reverted revertedTests)
-      add_test(NAME ${TestName}
-        WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
-        COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
+      list(FIND ignoredTests ${TestName} _idx)
+      if (${_idx} LESS 0)
+        getreverted(TestName reverted revertedTests)
+        add_test(NAME ${TestName}
+          WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
+          COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
             -Dlyx=$<TARGET_FILE:${_lyx}>
             -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
             -Dformat=${format}
@@ -171,6 +183,7 @@ foreach(libsubfolder doc examples templates)
             -Dfile=${f}
             -Dreverted=${reverted}
             -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
+      endif()
     endforeach()
   endforeach()
 endforeach()

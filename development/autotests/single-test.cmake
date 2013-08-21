@@ -6,6 +6,7 @@
 # KEYTEST_OUTFILE = xxx-out.txt
 # BINDIR          = ${BUILD_DIR}/bin
 # WORKDIR         = ${BUILD_DIR}/autotests/out-home
+# LYX_USERDIR_VER = ${LYX_USERDIR_VER}
 # LOCALE_DIR      = ${BUILD_DIR}/autotests/locale
 # PO_BUILD_DIR    = ${BUILD_DIR}/po
 # PACKAGE         = lyx2.1
@@ -17,6 +18,7 @@
 #       -DBINDIR=xxx \
 #       -DLYX=xxx \
 #       -DWORKDIR=xxx \
+#       -DLYX_USERDIR_VER=${LYX_USERDIR_VER} \
 #       -DLOCALE_DIR=xxx \
 #       -DPO_BUILD_DIR=xxx \
 #       -DPACKAGE=xxx \
@@ -46,8 +48,25 @@ else()
 endif()
 
 set(LYX_EXE "${BINDIR}/${LYX}")
-set(XVKBD_EXE "${BINDIR}/xvkbd")
-set(ENV{XVKBD_HACKED} "1")
+set(use_hacked $ENV{XVKBD_HACKED})
+if(NOT use_hacked)
+  if(use_hacked STREQUAL "")
+    # ENV{XVKBD_HACKED} probably not set, so the default should be
+    # to use the hacked
+    set(use_hacked "1")
+  else()
+    set(use_hacked "0")
+  endif()
+else()
+  set(use_hacked "1")
+endif()
+
+set(ENV{XVKBD_HACKED} ${use_hacked})
+if(use_hacked)
+  set(XVKBD_EXE "${BINDIR}/xvkbd")
+else()
+  set(XVKBD_EXE "/usr/bin/xvkbd")
+endif()
 
 if(EXISTS "${WORKDIR}/.lyx/session")
   execute_process(COMMAND ${CMAKE_COMMAND} -E remove -f "${WORKDIR}/.lyx/session")
@@ -56,7 +75,7 @@ endif()
 set(ENV{PACKAGE} ${PACKAGE})
 set(ENV{LOCALE_DIR} ${LOCALE_DIR})
 set(ENV{LYX_LOCALEDIR} "${WORKDIR}/../locale")
-set(ENV{LYX_USERDIR} "${WORKDIR}/.lyx")
+set(ENV{${LYX_USERDIR_VER}} "${WORKDIR}/.lyx")
 set(ENV{LYX_PID} ${pidres})
 set(ENV{LYX_WINDOW_NAME} ${LYX_WINDOW_NAME})
 set(ENV{LYX_EXE} ${LYX_EXE})
