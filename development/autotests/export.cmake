@@ -23,11 +23,11 @@
 #       -P "${TOP_SRC_DIR}/development/autotests/export.cmake"
 #
 
-message(STATUS "Executing ${lyx} -E ${format} ${file}.${extension} ${LYX_ROOT}/${file}.lyx")
+message(STATUS "Executing ${lyx} -userdir \"${WORKDIR}/.lyx\" -E ${format} ${file}.${extension} \"${LYX_ROOT}/${file}.lyx\"")
 set(ENV{${LYX_USERDIR_VER}} "${WORKDIR}/.lyx")
 execute_process(COMMAND ${CMAKE_COMMAND} -E remove ${file}.${extension})
 execute_process(
-  COMMAND ${lyx} -E ${format} ${file}.${extension} "${LYX_ROOT}/${file}.lyx"
+  COMMAND ${lyx} -userdir "${WORKDIR}/.lyx" -E ${format} ${file}.${extension} "${LYX_ROOT}/${file}.lyx"
   RESULT_VARIABLE _err)
 if(reverted)
   string(COMPARE EQUAL  ${_err} 0 _erg)
