@@ -4,6 +4,11 @@
 # Copyright (c) 2012 Kornel Benko kornel@lyx.org
 #
 
+set(LYX_HOME "out-home")
+set(LYX_USERDIR "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}/.lyx")
+set(LOCALE_DIR "${CMAKE_CURRENT_BINARY_DIR}/locale")
+file(MAKE_DIRECTORY "${LYX_USERDIR}" "${LOCALE_DIR}")
+
 if(Q_WS_X11)
   set(Missing)
   set(XVFBDLIBS)
@@ -69,9 +74,6 @@ if(Q_WS_X11)
     add_subdirectory(xvkbd)
 
     set(KEYTEST "${CMAKE_CURRENT_SOURCE_DIR}/keytest.py")
-    set(LYX_HOME "out-home")
-    set(LYX_USERDIR "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}/.lyx")
-    set(LOCALE_DIR "${CMAKE_CURRENT_BINARY_DIR}/locale") 
     file(GLOB TESTST RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "*-in.txt")
     file(GLOB TESTSS RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "*-in.sh")
     list(REMOVE_ITEM TESTST hello-world-in.txt first-time-in.txt)
@@ -167,6 +169,15 @@ foreach(libsubfolder doc examples templates)
       COMMAND ${CMAKE_COMMAND} -DLYX2LYX=${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx
         -DLYXFILE=${LIBSUB_SRC_DIR}/${f}.lyx
         -P "${TOP_SRC_DIR}/development/autotests/lyx2lyxtest.cmake")
+    set(TestName "check_load/${libsubfolder}/${f}")
+    getreverted(TestName reverted revertedTests)
+    add_test(NAME ${TestName}
+      WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
+      COMMAND ${CMAKE_COMMAND} -DLYXFILE=${LIBSUB_SRC_DIR}/${f}.lyx
+        -Dlyx=$<TARGET_FILE:${_lyx}>
+        -DPARAMS_DIR=${TOP_SRC_DIR}/development/autotests
+        -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
+        -P "${TOP_SRC_DIR}/development/autotests/check_load.cmake")
     getoutputformats("${LIBSUB_SRC_DIR}/${f}.lyx" formatlist)
     foreach(format ${formatlist})
       set(TestName "export/${libsubfolder}/${f}_${format}")
