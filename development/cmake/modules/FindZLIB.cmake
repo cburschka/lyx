@@ -9,10 +9,12 @@ if (ZLIB_INCLUDE_DIR)
   set(ZLIB_FIND_QUIETLY TRUE)
 endif()
 
-find_path(ZLIB_INCLUDE_DIR zlib.h PATHS
- /usr/include
- /usr/local/include
- "${GNUWIN32_DIR}"/include)
+set(zlibsearch "/usr/include" "/usr/local/include")
+if (GNUWIN32_DIR)
+  list(APPEND zlibsearch "${GNUWIN32_DIR}/include")
+endif()
+
+find_path(ZLIB_INCLUDE_DIR zlib.h PATHS ${zlibsearch})
 
 find_file(ZLIB_HEADER zlib.h
 	PATHS ${ZLIB_INCLUDE_DIR} NO_DEFAULT_PATH)
@@ -25,11 +27,15 @@ find_library(ZLIB_LIBRARY NAMES ${POTENTIAL_Z_LIBS}
 	NO_DEFAULT_PATH)
 	
 
+set(zlibsearch "C:\\Programme\\Microsoft Visual Studio 8\\VC\\lib")
+if(SYSTEM_LIB_DIRS)
+  list(APPEND zlibsearch ${SYSTEM_LIB_DIRS})
+endif()
+if(GNUWIN32_DIR)
+  list(APPEND zlibsearch "${GNUWIN32_DIR}/lib")
+endif()
 find_library(ZLIB_LIBRARY NAMES ${POTENTIAL_Z_LIBS}
-	PATHS 
-	"C:\\Programme\\Microsoft Visual Studio 8\\VC\\lib"
-	${SYSTEM_LIB_DIRS}
-	"${GNUWIN32_DIR}"/lib)
+	PATHS ${zlibsearch})
 
 if(ZLIB_INCLUDE_DIR AND ZLIB_LIBRARY)
    set(ZLIB_FOUND TRUE)
