@@ -14,16 +14,18 @@
 #       -P "${TOP_SRC_DIR}/development/autotests/lyx2lyxtest.cmake"
 #
 
-message(STATUS "Executing ${LYX2LYX} -e errors -o output ${LYXFILE}")
+string(RANDOM LENGTH 5 errorfile)
+string(RANDOM LENGTH 6 outputfile)
+message(STATUS "Executing ${LYX2LYX} -e ${errorfile} -o ${outputfile} ${LYXFILE}")
 execute_process(
-  COMMAND ${LYX2LYX} -e errors -o output ${LYXFILE}
+  COMMAND ${LYX2LYX} -e ${errorfile} -o ${outputfile} ${LYXFILE}
   RESULT_VARIABLE _err)
 
 message(STATUS "Error output of lyx2lyx = ${_err}")
 string(COMPARE NOTEQUAL  ${_err} 0 _erg)
 
 # Check file "errors" being empty
-file(STRINGS "errors" foundErrors)
+file(STRINGS ${errorfile} foundErrors)
 if(foundErrors)
   set(_erg 1)
   foreach(_l ${foundErrors})
@@ -31,13 +33,14 @@ if(foundErrors)
   endforeach()
 endif()
 
-# Check file "output" being not empty
-file(STRINGS "output" createdLyx)
+# Check the output-file being not empty
+file(STRINGS ${outputfile} createdLyx)
 if(NOT createdLyx)
   set(_erg 1)
   message(STATUS "Created file empty")
 endif()
 
+execute_process(COMMAND ${CMAKE_COMMAND} -E remove ${errorfile} ${outputfile})
 if(_erg)
   message(FATAL_ERROR "lyx2lyx failed")
 endif()
