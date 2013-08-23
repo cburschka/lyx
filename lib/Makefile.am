@@ -10,7 +10,7 @@ dist_pkgdata_DATA = CREDITS autocorrect chkconfig.ltx external_templates \
 
 # We use DATA now instead of PYTHON because automake 1.11.2 complains.
 # Note that we "chmod 755" manually this file in install-data-hook.
-dist_pkgdata_DATA += configure.py
+dist_pkgdata_DATA += configure.py 
 
 dist_noinst_DATA = \
 	fonts/stmary10.sfd \
@@ -1880,7 +1880,7 @@ dist_layouts_DATA =\
 	layouts/acm-sigs.inc \
 	layouts/acmsiggraph.layout \
 	layouts/AEA.layout \
-	layouts/AGUTeX.layout \
+	layouts/agutex.layout \
 	layouts/agu-dtd.layout \
 	layouts/agu_stdclass.inc \
 	layouts/agu_stdcounters.inc \
