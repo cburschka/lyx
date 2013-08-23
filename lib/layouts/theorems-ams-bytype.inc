@@ -54,7 +54,7 @@ Style Theorem
 	LatexName             thm
 	NextNoIndent          1
 	Argument 1
-		LabelString   "Alternative Theorem String"
+		LabelString   "Alternative Theorem String|S"
 		Tooltip       "Alternative theorem string"
 	EndArgument
 	LabelSep              xx
