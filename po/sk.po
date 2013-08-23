@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-08-01 11:00+0200\n"
+"POT-Creation-Date: 2013-08-23 11:40+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -11144,6 +11144,10 @@ msgstr "Beamer Článok (KOMA-Script)"
 msgid "KOMA-Script Book"
 msgstr "KOMA-Script Kniha"
 
+#: lib/layouts/scrbook.layout:26
+msgid "\\thechapter.\\arabic{equation}"
+msgstr "\\thechapter.\\arabic{equation}"
+
 #: lib/layouts/scrlettr.layout:3
 msgid "KOMA-Script Letter (V. 1, Obsolete)"
 msgstr "KOMA-Script list (V. 1, zastaralý)"
@@ -12524,10 +12528,10 @@ msgid "Svgraybox"
 msgstr "Sv šedý rámec"
 
 #: lib/layouts/theorems-ams-bytype.inc:57 lib/layouts/theorems-ams.inc:31
-#: lib/layouts/theorems-bytype.inc:33 lib/layouts/theorems.inc:31
-#: lib/layouts/theorems-starred.inc:32
-msgid "Alternative Theorem String"
-msgstr "Alternatívny reťazec teorémy"
+#: lib/layouts/theorems-bytype.inc:33 lib/layouts/theorems-starred.inc:32
+#: lib/layouts/theorems.inc:31
+msgid "Alternative Theorem String|S"
+msgstr "Alternatívny Reťazec Teorémy|o"
 
 #: lib/layouts/theorems-ams-bytype.inc:58 lib/layouts/theorems-ams.inc:32
 #: lib/layouts/theorems-bytype.inc:34 lib/layouts/theorems.inc:32
@@ -12956,7 +12960,7 @@ msgstr ""
 
 #: lib/layouts/eqs-within-sections.module:17
 msgid "\\thesection.\\arabic{equation}"
-msgstr "\\thesection.\\arabic{rovnica}"
+msgstr "\\thesection.\\arabic{equation}"
 
 #: lib/layouts/figs-within-sections.module:2
 msgid "Number Figures by Section"
@@ -32233,3 +32237,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Custom paragraph shapes"
 #~ msgstr "Vlastné tvary odstavca"
+
+#~ msgid "Alternative Theorem String"
+#~ msgstr "Alternatívny reťazec teorémy"
