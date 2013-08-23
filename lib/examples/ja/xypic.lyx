@@ -823,11 +823,11 @@ ar[r] & Z }
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula \xymatrix{ U \ar[ddr] \ar[drr] \ar[dr]\\
+\begin_inset Formula $\xymatrix{ U \ar[ddr] \ar[drr] \ar[dr]\\
  &  X \times_{Z} Y \ar[d] \ar[r]  &  X \ar[d]\\
  &  Y \ar[r]  &  Z 
 }
-
+$
 \end_inset
 
 
@@ -964,11 +964,11 @@ ar[r]^g & Z }
 \end_layout
 
 \begin_layout LyX-Code
-\begin_inset Formula \xymatrix{ U \ar[ddr]_{\psi}\ar[drr]^{\varphi}\ar[dr]|-{(x,y)}\\
+\begin_inset Formula $\xymatrix{ U \ar[ddr]_{\psi}\ar[drr]^{\varphi}\ar[dr]|-{(x,y)}\\
  &  X \times_{Z} Y \ar[d]^{q} \ar[r]_{p}  &  X \ar[d]_{f}\\
  &  Y \ar[r]^{g}  &  Z 
 }
-
+$
 \end_inset
 
 
@@ -1145,8 +1145,8 @@ LyX中のソースコード
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar[r]  &  \ }
+$
 \end_inset
 
 
@@ -1173,8 +1173,8 @@ ar
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{-->}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{-->}[r]  &  \ }
+$
 \end_inset
 
 
@@ -1201,8 +1201,8 @@ ar@{-->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{..>}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{..>}[r]  &  \ }
+$
 \end_inset
 
 
@@ -1229,8 +1229,8 @@ ar@{..>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{~>}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{~>}[r]  &  \ }
+$
 \end_inset
 
 
@@ -1257,8 +1257,8 @@ ar@{~>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{->>}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{->>}[r]  &  \ }
+$
 \end_inset
 
 
@@ -1285,8 +1285,8 @@ ar@{->>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{-->>}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{-->>}[r]  &  \ }
+$
 \end_inset
 
 
@@ -1313,8 +1313,8 @@ ar@{-->>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{>->>}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{>->>}[r]  &  \ }
+$
 \end_inset
 
 
@@ -1341,8 +1341,8 @@ ar@{>->>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{_{(}->}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{_{(}->}[r]  &  \ }
+$
 \end_inset
 
 
@@ -1369,8 +1369,8 @@ ar@{_(->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{^{(}->}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{^{(}->}[r]  &  \ }
+$
 \end_inset
 
 
@@ -1397,8 +1397,8 @@ ar@{^(->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{|-|}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{|-|}[r]  &  \ }
+$
 \end_inset
 
 
@@ -1468,8 +1468,8 @@ LyX中のソースコード
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@2[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@2[r]  &  \ }
+$
 \end_inset
 
 
@@ -1496,8 +1496,8 @@ ar@2
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@3[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@3[r]  &  \ }
+$
 \end_inset
 
 
@@ -1524,8 +1524,8 @@ ar@3
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@_{->}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@_{->}[r]  &  \ }
+$
 \end_inset
 
 
@@ -1552,8 +1552,8 @@ ar@_{->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@^{->}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@^{->}[r]  &  \ }
+$
 \end_inset
 
 
@@ -1580,8 +1580,8 @@ ar@^{->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@^{>>->>}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@^{>>->>}[r]  &  \ }
+$
 \end_inset
 
 
@@ -1608,8 +1608,8 @@ ar@^{>>->>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@{^{<}-_{>}}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@{^{<}-_{>}}[r]  &  \ }
+$
 \end_inset
 
 
@@ -1636,8 +1636,8 @@ ar@{^<-_>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula \xymatrix{\ \ar@2{--}[r]  &  \ }
-
+\begin_inset Formula $\xymatrix{\ \ar@2{--}[r]  &  \ }
+$
 \end_inset
 
 
