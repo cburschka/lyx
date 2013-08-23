@@ -30,7 +30,7 @@ foreach(_fl ${_tex_tests})
     "${TOP_SRC_DIR}/lib/scripts"
     "${CMAKE_CURRENT_BINARY_DIR}"
     ${fl})
-  add_test(NAME tex2lyx2lyx/roundtrip/${_fl}
+  add_test(NAME tex2lyx/cmplyx/${_fl}
     WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
     COMMAND ${LYX_PYTHON_EXECUTABLE} "${TOP_SRC_DIR}/src/tex2lyx/test/runtests.py" "uselyx2lyx"
     "$<TARGET_FILE:${_tex2lyx}>"
