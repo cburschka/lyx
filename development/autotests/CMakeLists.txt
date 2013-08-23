@@ -119,13 +119,18 @@ macro(getoutputformats filepath varname)
   endforeach()
 endmacro()
 
-macro(getreverted testname reverted listreverted)
-  list(FIND ${listreverted} ${${testname}} _idx)
+macro(maketestname testname reverted listreverted listignored)
+  list(FIND ${listignored} ${${testname}} _idx)
   if (${_idx} LESS 0)
-    set(${reverted} 0)
+    list(FIND ${listreverted} ${${testname}} _idx)
+    if (${_idx} LESS 0)
+      set(${reverted} 0)
+    else()
+      set(${reverted} 1)
+      set(${testname} "INVERTED_SEE-README.ctest_${${testname}}")
+    endif()
   else()
-    set(${reverted} 1)
-    set(${testname} "INVERTED_SEE-README.ctest_${${testname}}")
+    set(${testname} "")
   endif()
 endmacro()
 
@@ -163,40 +168,47 @@ foreach(libsubfolder doc examples templates)
     # Strip extension
     string(REGEX REPLACE "\\.lyx$" "" f ${f})
     set(TestName "export/${libsubfolder}/${f}_lyx16")
-    getreverted(TestName reverted revertedTests)
-    add_test(NAME ${TestName}
-      WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
-      COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
-          -Dlyx=$<TARGET_FILE:${_lyx}>
-          -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
-          -DLYX_USERDIR_VER=${LYX_USERDIR_VER}
-          -Dformat=lyx16x
-          -Dextension=16.lyx
-          -Dfile=${f}
-          -Dreverted=${reverted}
-          -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
+    maketestname(TestName reverted revertedTests ignoredTests)
+    if(TestName)
+      add_test(NAME ${TestName}
+        WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
+        COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
+            -Dlyx=$<TARGET_FILE:${_lyx}>
+            -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
+            -DLYX_USERDIR_VER=${LYX_USERDIR_VER}
+            -Dformat=lyx16x
+            -Dextension=16.lyx
+            -Dfile=${f}
+            -Dreverted=${reverted}
+            -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
+    endif()
     set(TestName "lyx2lyx/${libsubfolder}/${f}")
-    getreverted(TestName reverted revertedTests)
-    add_test(NAME ${TestName}
-      WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
-      COMMAND ${CMAKE_COMMAND} -DLYX2LYX=${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx
-        -DLYXFILE=${LIBSUB_SRC_DIR}/${f}.lyx
-        -P "${TOP_SRC_DIR}/development/autotests/lyx2lyxtest.cmake")
+    maketestname(TestName reverted revertedTests ignoredTests)
+    if(TestName)
+      add_test(NAME ${TestName}
+        WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
+        COMMAND ${CMAKE_COMMAND} -DLYX2LYX=${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx
+          -DLYXFILE=${LIBSUB_SRC_DIR}/${f}.lyx
+          -P "${TOP_SRC_DIR}/development/autotests/lyx2lyxtest.cmake")
+    endif()
     set(TestName "check_load/${libsubfolder}/${f}")
-    getreverted(TestName reverted revertedTests)
-    add_test(NAME ${TestName}
-      WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
-      COMMAND ${CMAKE_COMMAND} -DLYXFILE=${LIBSUB_SRC_DIR}/${f}.lyx
-        -Dlyx=$<TARGET_FILE:${_lyx}>
-        -DPARAMS_DIR=${TOP_SRC_DIR}/development/autotests
-        -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
-        -P "${TOP_SRC_DIR}/development/autotests/check_load.cmake")
+    maketestname(TestName reverted revertedTests ignoredTests)
+    if(TestName)
+      add_test(NAME ${TestName}
+        WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
+        COMMAND ${CMAKE_COMMAND} -DLYXFILE=${LIBSUB_SRC_DIR}/${f}.lyx
+          -Dlyx=$<TARGET_FILE:${_lyx}>
+          -DPARAMS_DIR=${TOP_SRC_DIR}/development/autotests
+          -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
+          -P "${TOP_SRC_DIR}/development/autotests/check_load.cmake")
+    else()
+      message("ignored test")
+    endif()
     getoutputformats("${LIBSUB_SRC_DIR}/${f}.lyx" formatlist)
     foreach(format ${formatlist})
       set(TestName "export/${libsubfolder}/${f}_${format}")
-      list(FIND ignoredTests ${TestName} _idx)
-      if (${_idx} LESS 0)
-        getreverted(TestName reverted revertedTests)
+      maketestname(TestName reverted revertedTests ignoredTests)
+      if(TestName)
         add_test(NAME ${TestName}
           WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
           COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
