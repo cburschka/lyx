@@ -439,6 +439,12 @@ bool FindAndReplaceWidget::findAndReplace(
 		scope = FindAndReplaceOptions::S_ALL_MANUALS;
 	else
 		LATTEST(false);
+
+	FindAndReplaceOptions::SearchRestriction restr =
+		OnlyMaths->isChecked()
+			? FindAndReplaceOptions::R_ONLY_MATHS
+			: FindAndReplaceOptions::R_EVERYTHING;
+
 	LYXERR(Debug::FIND, "FindAndReplaceOptions: "
 	       << "find_buf_name=" << find_buf_name
 	       << ", casesensitiv=" << casesensitive
@@ -448,10 +454,12 @@ bool FindAndReplaceWidget::findAndReplace(
 	       << ", ignoreformat=" << ignoreformat
 	       << ", repl_buf_name" << repl_buf_name
 	       << ", keep_case=" << keep_case
-	       << ", scope=" << scope);
+	       << ", scope=" << scope
+	       << ", restr=" << restr);
+
 	FindAndReplaceOptions opt(find_buf_name, casesensitive, matchword,
 				  !backwards, expandmacros, ignoreformat,
-				  repl_buf_name, keep_case, scope);
+				  repl_buf_name, keep_case, scope, restr);
 	return findAndReplaceScope(opt, replace_all);
 }
 

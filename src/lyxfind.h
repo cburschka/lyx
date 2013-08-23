@@ -80,6 +80,10 @@ public:
 		S_OPEN_BUFFERS,
 		S_ALL_MANUALS
 	} SearchScope;
+	typedef enum {
+		R_EVERYTHING,
+		R_ONLY_MATHS
+	} SearchRestriction;
 	FindAndReplaceOptions(
 		docstring const & find_buf_name,
 		bool casesensitive,
@@ -89,7 +93,8 @@ public:
 		bool ignoreformat,
 		docstring const & repl_buf_name,
 		bool keep_case,
-		SearchScope scope = S_BUFFER
+		SearchScope scope = S_BUFFER,
+		SearchRestriction restr = R_EVERYTHING
 	);
 	FindAndReplaceOptions() {  }
 	docstring find_buf_name;
@@ -102,6 +107,7 @@ public:
 	docstring repl_buf_name;
 	bool keep_case;
 	SearchScope scope;
+	SearchRestriction restr;
 };
 
 /// Write a FindAdvOptions instance to a stringstream

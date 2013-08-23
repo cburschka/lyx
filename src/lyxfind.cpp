@@ -904,6 +904,9 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 
 int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) const
 {
+	if (at_begin &&
+		(opt.restr == FindAndReplaceOptions::R_ONLY_MATHS && !cur.inMathed()) )
+		return 0;
 	docstring docstr = stringifyFromForSearch(opt, cur, len);
 	LYXERR(Debug::FIND, "Matching against     '" << lyx::to_utf8(docstr) << "'");
 	string str = normalize(docstr, true);
@@ -1296,10 +1299,10 @@ FindAndReplaceOptions::FindAndReplaceOptions(
 	docstring const & find_buf_name, bool casesensitive,
 	bool matchword, bool forward, bool expandmacros, bool ignoreformat,
 	docstring const & repl_buf_name, bool keep_case,
-	SearchScope scope)
+	SearchScope scope, SearchRestriction restr)
 	: find_buf_name(find_buf_name), casesensitive(casesensitive), matchword(matchword),
 	  forward(forward), expandmacros(expandmacros), ignoreformat(ignoreformat),
-	  repl_buf_name(repl_buf_name), keep_case(keep_case), scope(scope)
+	  repl_buf_name(repl_buf_name), keep_case(keep_case), scope(scope), restr(restr)
 {
 }
 
@@ -1492,7 +1495,8 @@ ostringstream & operator<<(ostringstream & os, FindAndReplaceOptions const & opt
 	   << opt.ignoreformat << ' '
 	   << to_utf8(opt.repl_buf_name) << "\nEOSS\n"
 	   << opt.keep_case << ' '
-	   << int(opt.scope);
+	   << int(opt.scope) << ' '
+	   << int(opt.restr);
 
 	LYXERR(Debug::FIND, "built: " << os.str());
 
@@ -1534,8 +1538,12 @@ istringstream & operator>>(istringstream & is, FindAndReplaceOptions & opt)
 	int i;
 	is >> i;
 	opt.scope = FindAndReplaceOptions::SearchScope(i);
+	is >> i;
+	opt.restr = FindAndReplaceOptions::SearchRestriction(i);
+
 	LYXERR(Debug::FIND, "parsed: " << opt.casesensitive << ' ' << opt.matchword << ' ' << opt.forward << ' '
-	       << opt.expandmacros << ' ' << opt.ignoreformat << ' ' << opt.keep_case);
+	       << opt.expandmacros << ' ' << opt.ignoreformat << ' ' << opt.keep_case << ' '
+	       << opt.scope << ' ' << opt.restr);
 	return is;
 }
 
