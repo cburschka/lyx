@@ -14,16 +14,10 @@
 
 #include "Encoding.h"
 
-#include "Buffer.h"
-#include "BufferList.h"
-#include "InsetIterator.h"
-#include "LaTeXFeatures.h"
 #include "Lexer.h"
-#include "LyXRC.h"
 
 #include "support/debug.h"
 #include "support/gettext.h"
-#include "support/FileName.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
 #include "support/unicode.h"
@@ -700,97 +694,6 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 }
 
 
-void Encodings::initUnicodeMath(Buffer const & buffer, bool for_master)
-{
-#ifdef TEX2LYX
-	// The code below is not needed in tex2lyx and requires additional stuff
-	(void)buffer;
-	(void)for_master;
-#else
-	if (for_master) {
-		mathcmd.clear();
-		textcmd.clear();
-		mathsym.clear();
-	}
-
-	// Check this buffer
-	Inset & inset = buffer.inset();
-	InsetIterator it = inset_iterator_begin(inset);
-	InsetIterator const end = inset_iterator_end(inset);
-	for (; it != end; ++it)
-		it->initUnicodeMath();
-
-	if (!for_master)
-		return;
-
-	// Check children
-	ListOfBuffers blist = buffer.getDescendents();
-	ListOfBuffers::const_iterator bit = blist.begin();
-	ListOfBuffers::const_iterator const bend = blist.end();
-	for (; bit != bend; ++bit)
-		initUnicodeMath(**bit, false);
-#endif
-}
-
-
-void Encodings::validate(char_type c, LaTeXFeatures & features, bool for_mathed)
-{
-#ifdef TEX2LYX
-	// The code below is not needed in tex2lyx and requires additional stuff
-	(void)c;
-	(void)features;
-	(void)for_mathed;
-#else
-	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
-	if (it != unicodesymbols.end()) {
-		// In mathed, c could be used both in textmode and mathmode
-		bool const math_mode = for_mathed && isMathCmd(c);
-		bool const use_math = math_mode ||
-		                      (!for_mathed && it->second.textcommand.empty());
-		bool const use_text = (for_mathed && isTextCmd(c)) ||
-		                      (!for_mathed && !it->second.textcommand.empty());
-		bool const plain_utf8 = (features.runparams().encoding->name() == "utf8-plain");
-		bool const unicode_math = (features.isRequired("unicode-math")
-			&& features.isAvailable("unicode-math"));
-		// with utf8-plain, we only load packages when in mathed (see #7766)
-		// and if we do not use unicode-math
-		if ((math_mode && !unicode_math)
-		     || (use_math && !plain_utf8)) {
-			if (!it->second.mathpreamble.empty()) {
-				if (it->second.mathfeature()) {
-					string feats = it->second.mathpreamble;
-					while (!feats.empty()) {
-						string feat;
-						feats = split(feats, feat, ',');
-						features.require(feat);
-					}
-				} else
-					features.addPreambleSnippet(it->second.mathpreamble);
-			}
-		}
-		// with utf8-plain, we do not load packages (see #7766)
-		if (use_text && !plain_utf8) {
-			if (!it->second.textpreamble.empty()) {
-				if (it->second.textfeature()) {
-					string feats = it->second.textpreamble;
-					while (!feats.empty()) {
-						string feat;
-						feats = split(feats, feat, ',');
-						features.require(feat);
-					}
-				} else
-					features.addPreambleSnippet(it->second.textpreamble);
-			}
-		}
-	}
-	if (for_mathed && isMathSym(c)) {
-		features.require("amstext");
-		features.require("lyxmathsym");
-	}
-#endif
-}
-
-
 bool Encodings::isHebrewComposeChar(char_type c)
 {
 	return c <= 0x05c2 && c >= 0x05b0 && c != 0x05be && c != 0x05c0;
@@ -819,6 +722,14 @@ bool Encodings::isArabicChar(char_type c)
 {
 	return c >= arabic_start && c <= arabic_end
 		&& arabic_table[c-arabic_start][0];
+}
+
+
+CharInfo const & Encodings::unicodeCharInfo(char_type c)
+{
+	static CharInfo empty;
+	CharInfoMap::const_iterator const it = unicodesymbols.find(c);
+	return it != unicodesymbols.end() ? it->second : empty;
 }
 
 

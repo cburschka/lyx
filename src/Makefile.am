@@ -119,6 +119,7 @@ SOURCEFILESCORE = \
 	DepTable.cpp \
 	DocIterator.cpp \
 	Encoding.cpp \
+	BufferEncodings.cpp \
 	ErrorList.cpp \
 	Exporter.cpp \
 	factory.cpp \
@@ -194,6 +195,7 @@ HEADERFILESCORE = \
 	BranchList.h \
 	buffer_funcs.h \
 	Buffer.h \
+	BufferEncodings.h \
 	BufferList.h \
 	BufferParams.h \
 	BufferView.h \

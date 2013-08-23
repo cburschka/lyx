@@ -24,9 +24,6 @@ namespace lyx {
 
 namespace support { class FileName; }
 
-class Buffer;
-class LaTeXFeatures;
-
 class EncodingException : public std::exception {
 public:
 	EncodingException(char_type c);
@@ -60,6 +57,8 @@ enum CharInfoFlags {
 /// Information about a single UCS4 character
 class CharInfo {
 public:
+	// we assume that at least one command is nonempty when using unicodesymbols
+	bool isUnicodeSymbol() const { return !textcommand.empty() || !mathcommand.empty(); }
 	/// LaTeX command (text mode) for this character
 	docstring textcommand;
 	/// LaTeX command (math mode) for this character
@@ -258,6 +257,8 @@ public:
 	static bool isArabicSpecialChar(char_type c);
 	///
 	static bool isArabicChar(char_type c);
+	/// Accessor for the unicode information table.
+	static CharInfo const & unicodeCharInfo(char_type c);
 	///
 	static char_type transformChar(char_type c, LetterForm form);
 	/// Is this a combining char?
@@ -304,10 +305,6 @@ public:
 	 */
 	static bool isMathSym(char_type c) { return mathsym.count(c); }
 	/**
-	 * Initialize mathcmd, textcmd, and mathsym sets.
-	 */
-	static void initUnicodeMath(Buffer const & buffer, bool for_master = true);
-	/**
 	 * If \p c cannot be encoded in the given \p encoding, convert
 	 * it to something that LaTeX can understand in mathmode.
 	 * \p needsTermination indicates whether the command needs to be
@@ -346,16 +343,8 @@ public:
 	static docstring fromLaTeXCommand(docstring const & cmd, int cmdtype,
 			bool & needsTermination, docstring & rem,
 			std::set<std::string> * req = 0);
-	/**
-	 * Add the preamble snippet needed for the output of \p c to
-	 * \p features.
-	 * This does not depend on the used encoding, since the inputenc
-	 * package only maps the code point \p c to a command, it does not
-	 * make this command available.
-	 */
-	static void validate(char_type c, LaTeXFeatures & features, bool for_mathed = false);
 
-private:
+protected:
 	///
 	EncodingList encodinglist;
 	///
