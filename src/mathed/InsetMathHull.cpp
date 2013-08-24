@@ -412,7 +412,9 @@ ColorCode InsetMathHull::standardColor() const
 
 bool InsetMathHull::previewState(BufferView * bv) const
 {
-	if (!editing(bv) && RenderPreview::status() == LyXRC::PREVIEW_ON) {
+	if (!editing(bv) && RenderPreview::status() == LyXRC::PREVIEW_ON
+		&& type_ != hullRegexp)
+	{
 		graphics::PreviewImage const * pimage =
 			preview_->getPreviewImage(bv->buffer());
 		return pimage && pimage->image();
