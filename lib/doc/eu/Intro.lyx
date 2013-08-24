@@ -150,11 +150,11 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 LyX-en filosofia
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Zer da LyX?
 \end_layout
 
@@ -405,7 +405,7 @@ n du.
  tresna egokiak dauden bezala, dokumentuak idazteko tresnen artean LyX daukagu.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 LyX eta testu-prozesadoreen arteko ezberdintasunak
 \begin_inset Argument
 status collapsed
@@ -557,7 +557,7 @@ funtzionatzen du
  
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Zer demontre da LaTeX?
 \end_layout
 
@@ -707,7 +707,7 @@ zergatik
  Haren itxuraz ordenagailua arduratuko da.
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 Dokumentazioan nabigatzea
 \end_layout
 
@@ -763,7 +763,7 @@ type "mailto:"
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Eskuliburuen egitura
 \end_layout
 
@@ -1043,7 +1043,7 @@ Uneko lasterbideen zerrenda Laguntza menuko Lasterbideak dokumentuan aurkitzen
  dira zehaztuta.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Eskuliburuetan erabilitako unitateak
 \end_layout
 
@@ -1535,7 +1535,7 @@ matematikako unitatea (1 mu = 1 / 18 em)
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Eskuliburuak
 \end_layout
 
@@ -1700,7 +1700,7 @@ Bestela alferrik haserretuko zara zeure buruarekin.
  erabilera ezberdin batekin.
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 LyX proiektuan laguntzea
 \begin_inset CommandInset label
 LatexCommand label
@@ -1711,7 +1711,7 @@ name "atal:auzolana"
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Lagundu LyX-i
 \end_layout
 
@@ -1722,7 +1722,7 @@ LyX ia bere osotasunean C++ programaketa hizkuntzan idatzia dago (LaTeX
  edo iturburua hobetu beharra izatea.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Bidali errorea
 \end_layout
 
@@ -1802,7 +1802,7 @@ config.log
  fitxategia eranstea eta zein konpilatzaile erabiltzen ari zaren azaltzea.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Lagundu finkatzen eta eginbide berrietan
 \end_layout
 
@@ -1820,7 +1820,7 @@ changelog
  fitxategia eta zure txaplatak egiten duenari buruzko azalpena ere.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Lagundu dokumentazioan
 \end_layout
 
@@ -1833,7 +1833,7 @@ LyX-en dokumentazioa zabala da.
  bat aholkatu nahi badiguzu.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Eskuliburuetako errore-txostena
 \end_layout
 
@@ -1850,7 +1850,7 @@ type "mailto:"
  Dokumentazio-taldeak behar diren zuzenketak egingo dituzte.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Dokumentazio-taldera elkartzea
 \end_layout
 
