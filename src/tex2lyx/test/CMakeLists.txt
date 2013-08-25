@@ -25,18 +25,29 @@ foreach(_fl ${_tex_tests})
   set(fl ${_fl})
   add_test(NAME tex2lyx/roundtrip/${_fl}
     WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
-    COMMAND ${LYX_PYTHON_EXECUTABLE} "${TOP_SRC_DIR}/src/tex2lyx/test/runtests.py"
-    "$<TARGET_FILE:${_tex2lyx}>"
-    "${TOP_SRC_DIR}/lib/scripts"
-    "${CMAKE_CURRENT_BINARY_DIR}"
-    ${fl})
+    COMMAND ${CMAKE_COMMAND}
+      -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}
+      -DLYX_USERDIR_VER=${LYX_USERDIR_VER}
+      -DLYX_PYTHON_EXECUTABLE=${LYX_PYTHON_EXECUTABLE}
+      -DPY_SCRIPT=${TOP_SRC_DIR}/src/tex2lyx/test/runtests.py
+      -DTEX2LYX_EXE=$<TARGET_FILE:${_tex2lyx}>
+      -DSCRIPT_DIR=${TOP_SRC_DIR}/lib/scripts
+      -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}
+      -DTESTFILE=${fl}
+      -P ${TOP_SRC_DIR}/src/tex2lyx/test/runtests.cmake)
   add_test(NAME tex2lyx/cmplyx/${_fl}
     WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
-    COMMAND ${LYX_PYTHON_EXECUTABLE} "${TOP_SRC_DIR}/src/tex2lyx/test/runtests.py" "uselyx2lyx"
-    "$<TARGET_FILE:${_tex2lyx}>"
-    "${TOP_SRC_DIR}/lib/scripts"
-    "${CMAKE_CURRENT_BINARY_DIR}"
-    ${fl})
+    COMMAND ${CMAKE_COMMAND}
+      -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}
+      -DLYX_USERDIR_VER=${LYX_USERDIR_VER}
+      -DLYX_PYTHON_EXECUTABLE=${LYX_PYTHON_EXECUTABLE}
+      -DPY_SCRIPT=${TOP_SRC_DIR}/src/tex2lyx/test/runtests.py
+      -DFIRST_PARAM=uselyx2lyx
+      -DTEX2LYX_EXE=$<TARGET_FILE:${_tex2lyx}>
+      -DSCRIPT_DIR=${TOP_SRC_DIR}/lib/scripts
+      -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}
+      -DTESTFILE=${fl}
+      -P ${TOP_SRC_DIR}/src/tex2lyx/test/runtests.cmake)
 endforeach()
 
 add_dependencies(lyx_run_tests ${_tex2lyx} ${_lyx})
