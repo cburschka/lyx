@@ -5,9 +5,8 @@
 #
 
 set(LYX_HOME "out-home")
-set(LYX_USERDIR "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}/.lyx")
 set(LOCALE_DIR "${CMAKE_CURRENT_BINARY_DIR}/locale")
-file(MAKE_DIRECTORY "${LYX_USERDIR}" "${LOCALE_DIR}")
+file(MAKE_DIRECTORY "${LOCALE_DIR}")
 
 if(Q_WS_X11)
   set(Missing)
@@ -78,13 +77,13 @@ if(Q_WS_X11)
     file(GLOB TESTSS RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "*-in.sh")
     list(REMOVE_ITEM TESTST hello-world-in.txt first-time-in.txt)
     list(SORT TESTST)
-    file(MAKE_DIRECTORY "${LYX_USERDIR}" "${LOCALE_DIR}")
 
     foreach(_tf first-time-in.txt hello-world-in.txt ${TESTST})
       string(REGEX REPLACE "-in\\.(txt|sh)" "" _t ${_tf})
       add_test(NAME keytest/${_t}
         WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
         COMMAND ${CMAKE_COMMAND}
+        -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}
         -DAUTOTEST_ROOT=${TOP_SRC_DIR}/development/autotests
         -DPO_BUILD_DIR=${TOP_BINARY_DIR}/po
         -DKEYTEST_INFILE=${_tf}
@@ -173,6 +172,7 @@ foreach(libsubfolder doc examples templates)
       add_test(NAME ${TestName}
         WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
         COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
+            -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}
             -Dlyx=$<TARGET_FILE:${_lyx}>
             -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
             -DLYX_USERDIR_VER=${LYX_USERDIR_VER}
@@ -188,6 +188,7 @@ foreach(libsubfolder doc examples templates)
       add_test(NAME ${TestName}
         WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
         COMMAND ${CMAKE_COMMAND} -DLYX2LYX=${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx
+          -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}
           -DLYXFILE=${LIBSUB_SRC_DIR}/${f}.lyx
           -P "${TOP_SRC_DIR}/development/autotests/lyx2lyxtest.cmake")
     endif()
@@ -197,6 +198,7 @@ foreach(libsubfolder doc examples templates)
       add_test(NAME ${TestName}
         WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
         COMMAND ${CMAKE_COMMAND} -DLYXFILE=${LIBSUB_SRC_DIR}/${f}.lyx
+          -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}
           -Dlyx=$<TARGET_FILE:${_lyx}>
           -DPARAMS_DIR=${TOP_SRC_DIR}/development/autotests
           -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
@@ -212,6 +214,7 @@ foreach(libsubfolder doc examples templates)
         add_test(NAME ${TestName}
           WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
           COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
+            -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}
             -Dlyx=$<TARGET_FILE:${_lyx}>
             -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
             -Dformat=${format}

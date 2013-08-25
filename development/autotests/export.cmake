@@ -13,6 +13,7 @@
 #
 # Script should be called like:
 # cmake -DLYX_ROOT=xxx \
+#       -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR} \
 #       -DWORKDIR=${BUILD_DIR}/autotests/out-home \
 #       -DLYX_USERDIR_VER=${LYX_USERDIR_VER} \
 #       -Dlyx=xxx \
@@ -24,10 +25,10 @@
 #
 
 message(STATUS "Executing ${lyx} -userdir \"${WORKDIR}/.lyx\" -E ${format} ${file}.${extension} \"${LYX_ROOT}/${file}.lyx\"")
-set(ENV{${LYX_USERDIR_VER}} "${WORKDIR}/.lyx")
+set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
 execute_process(COMMAND ${CMAKE_COMMAND} -E remove ${file}.${extension})
 execute_process(
-  COMMAND ${lyx} -userdir "${WORKDIR}/.lyx" -E ${format} ${file}.${extension} "${LYX_ROOT}/${file}.lyx"
+  COMMAND ${lyx} -userdir "${LYX_TESTS_USERDIR}" -E ${format} ${file}.${extension} "${LYX_ROOT}/${file}.lyx"
   RESULT_VARIABLE _err)
 if(reverted)
   string(COMPARE EQUAL  ${_err} 0 _erg)

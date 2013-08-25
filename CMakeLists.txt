@@ -23,7 +23,7 @@ set(CMAKE_MODULE_PATH "${TOP_MODULE_PATH}")
 set(CMAKE_PROJECT_NAME ${LYX_PROJECT})
 
 message(STATUS)
-if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR}) 
+if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
 	message(STATUS "Building in-source")
 	set(TOP_BINARY_DIR "${CMAKE_BINARY_DIR}/build")
 else()
@@ -31,6 +31,9 @@ else()
 	set(TOP_BINARY_DIR "${CMAKE_BINARY_DIR}")
 endif()
 
+# This directory should be used if some test uses lyx-executable
+set(LYX_TESTS_USERDIR "${TOP_BINARY_DIR}/Testing/.lyx")
+file(MAKE_DIRECTORY "${LYX_TESTS_USERDIR}")
 
 if(COMMAND cmake_policy)
 	cmake_policy(SET CMP0003 OLD)

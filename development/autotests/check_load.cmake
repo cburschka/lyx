@@ -10,6 +10,7 @@
 #
 # Script should be called like:
 # cmake -DWORKDIR=${BUILD_DIR}/autotests/out-home \
+#       -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR} \
 #       -DLYXFILE=xxx \
 #       -DLYX_USERDIR_VER=${LYX_USERDIR_VER} \
 #       -DPARAMS_DIR="${TOP_SRC_DIR}/development/autotests" \
@@ -17,11 +18,11 @@
 #
 
 message(STATUS "Executing ${lyx} -batch ${LYXFILE}")
-set(ENV{${LYX_USERDIR_VER}} "${WORKDIR}/.lyx")
+set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
 set(ENV{LANG} "en") # to get all error-messages in english
 
 execute_process(
-  COMMAND ${lyx} -batch -userdir ${WORKDIR}/.lyx ${LYXFILE}
+  COMMAND ${lyx} -batch -userdir "${LYX_TESTS_USERDIR}" ${LYXFILE}
   RESULT_VARIABLE _err
   ERROR_VARIABLE lyxerr)
 

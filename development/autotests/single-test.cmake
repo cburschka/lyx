@@ -13,6 +13,7 @@
 #
 # Script should be called like:
 # cmake -DAUTOTEST_ROOT=xxxx \
+#       -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}
 #       -DKEYTEST_INFILE=xxxx \
 #       -DKEYTEST_OUTFILE=xxx \
 #       -DBINDIR=xxx \
@@ -68,14 +69,14 @@ else()
   set(XVKBD_EXE "/usr/bin/xvkbd")
 endif()
 
-if(EXISTS "${WORKDIR}/.lyx/session")
-  execute_process(COMMAND ${CMAKE_COMMAND} -E remove -f "${WORKDIR}/.lyx/session")
+if(EXISTS "${LYX_TESTS_USERDIR}/session")
+  execute_process(COMMAND ${CMAKE_COMMAND} -E remove -f "${LYX_TESTS_USERDIR}/session")
 endif()
 # Environments needed by keytest.py
 set(ENV{PACKAGE} ${PACKAGE})
 set(ENV{LOCALE_DIR} ${LOCALE_DIR})
 set(ENV{LYX_LOCALEDIR} "${WORKDIR}/../locale")
-set(ENV{${LYX_USERDIR_VER}} "${WORKDIR}/.lyx")
+set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
 set(ENV{LYX_PID} ${pidres})
 set(ENV{LYX_WINDOW_NAME} ${LYX_WINDOW_NAME})
 set(ENV{LYX_EXE} ${LYX_EXE})

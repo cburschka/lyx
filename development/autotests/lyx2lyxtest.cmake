@@ -9,6 +9,7 @@
 #
 # Script should be called like:
 # cmake -DLYX2LYX=xxx \
+#       -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR} \
 #       -DWORKDIR=${BUILD_DIR}/autotests/out-home \
 #       -DLYXFILE=xxx \
 #       -P "${TOP_SRC_DIR}/development/autotests/lyx2lyxtest.cmake"
