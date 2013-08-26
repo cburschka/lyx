@@ -1,9 +1,11 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# Copyright (c) 2013 Kornel Benko kornel@lyx.org
+# Copyright (c) 2013 Kornel Benko <kornel@lyx.org>
+#           (c) 2013 Scott Kostyshak <skotysh@lyx.org>
 #
-#
+# Script should be called like:
+# COMMAND ${CMAKE_COMMAND} \
 #     -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR} \
 #     -DLYX_USERDIR_VER=${LYX_USERDIR_VER} \
 #     -DLYX_PYTHON_EXECUTABLE=${LYX_PYTHON_EXECUTABLE} \
