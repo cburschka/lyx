@@ -6,7 +6,7 @@
 
 set(LYX_HOME "out-home")
 set(LOCALE_DIR "${CMAKE_CURRENT_BINARY_DIR}/locale")
-file(MAKE_DIRECTORY "${LOCALE_DIR}")
+file(MAKE_DIRECTORY "${LOCALE_DIR}" "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}")
 
 if(Q_WS_X11)
   set(Missing)
