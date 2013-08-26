@@ -333,4 +333,9 @@ notify us.
               </edit>
           </match>
       </fontconfig>
-
+  o Building on Solaris 11.1. Compilation does not work out of the box
+    at the moment (incompatible iconv argument parameters.)
+    One possible solution is to force ./configure to use appropriate
+    POSIX/SUS level, e.g.:
+    CPPFLAGS="-D_XOPEN_SOURCE=500" ./configure --disable-nls --prefix=/opt/lyx
+    For details see bug #8783.
