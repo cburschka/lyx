@@ -3304,6 +3304,10 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				dispatch(FuncRequest(LFUN_DIALOG_SHOW, "sendto"), dr);
 				break;
 			}
+			if (!doc_buffer->fileName().onlyPath().isDirWritable()) {
+				exportBufferAs(*doc_buffer);
+				break;
+			}
 			/* TODO/Review: Is it a problem to also export the children?
 					See the update_unincluded flag */
 			d.asyncBufferProcessing(argument,
