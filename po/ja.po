@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2013-08-01 11:00+0200\n"
-"PO-Revision-Date: 2013-07-25 14:13+0900\n"
+"PO-Revision-Date: 2013-08-09 17:35+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-doc@lyx.org>\n"
 "Language: ja\n"
@@ -925,8 +925,7 @@ msgstr "検索フィールド(&H):"
 #: src/frontends/qt4/ui/CitationUi.ui:382
 msgid ""
 "Enter the text to search for and press Enter or click the button to search"
-msgstr ""
-"検索する語句を入力してEnterを押すか、ボタンをクリックして検索してください"
+msgstr "検索する語句を入力してEnterを押すか、ボタンをクリックして検索してください"
 
 #: src/frontends/qt4/ui/CitationUi.ui:395
 msgid "Click or press Enter in the search box to search"
@@ -1447,8 +1446,7 @@ msgstr "様式を無視(&F)"
 msgid ""
 "Keep the case of the replacement's first letter as in each matching text "
 "first letter"
-msgstr ""
-"置換後の語句の最初の文字の大小を、置換前の語句の最初の文字の大小に合わせる。"
+msgstr "置換後の語句の最初の文字の大小を、置換前の語句の最初の文字の大小に合わせる。"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:310
 msgid "&Preserve first case on replace"
@@ -3025,8 +3023,7 @@ msgstr "一般"
 msgid ""
 "After the cursor has not moved for this time, the inline completion is shown "
 "if it is available."
-msgstr ""
-"これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
+msgstr "これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:154
 msgid "s inline completion dela&y"
@@ -3056,8 +3053,7 @@ msgstr "補完を開始する最小文字数"
 msgid ""
 "When the TAB completion is not unique, there won't be a delay of the popup. "
 "It will be shown right away."
-msgstr ""
-"タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
+msgstr "タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:277
 msgid "Sho&w popup without delay for non-unique completions"
@@ -3333,8 +3329,7 @@ msgstr "文書形式(&D)"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:80
 msgid "Check this to show the current format in the File > Export menu"
-msgstr ""
-"この形式をファイル→書き出しメニューに表示させたいときには有効にしてください"
+msgstr "この形式をファイル→書き出しメニューに表示させたいときには有効にしてください"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:83
 msgid "Sho&w in export menu"
@@ -3358,7 +3353,7 @@ msgstr "&MIME:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:136
 msgid "Shortc&ut:"
-msgstr "短絡キー(&U):"
+msgstr "捷径(&U):"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:149
 msgid "Ed&itor:"
@@ -3377,26 +3372,24 @@ msgid "Specify the default output format when using (PDF)LaTeX"
 msgstr "(PDF)LaTeX使用時の既定用紙寸法を指定してください"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:205
-#, fuzzy
 msgid "Default Output Formats"
-msgstr "既定出力形式(&F):"
+msgstr "既定の出力形式"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:214
 msgid "With &TeX fonts:"
-msgstr ""
+msgstr "&TeXフォント使用時:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:224
 msgid "The default output format for documents (except with non-TeX fonts)"
-msgstr ""
+msgstr "文書の既定出力形式(非TeXフォント使用時を除く)"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:244
 msgid "With n&on-TeX fonts:"
-msgstr ""
+msgstr "非T&eXフォント使用時:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:254
-#, fuzzy
 msgid "The default output format for documents using non-TeX fonts"
-msgstr "(PDF)LaTeX使用時の既定用紙寸法を指定してください"
+msgstr "非TeXフォント使用時の文書の既定出力形式"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -4167,8 +4160,7 @@ msgstr "ユーザー設定幅(&W):"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
-msgstr ""
-"任意設定の値。「リストの行頭下げ」を「任意設定」に設定する必要があります。"
+msgstr "任意設定の値。「リストの行頭下げ」を「任意設定」に設定する必要があります。"
 
 #: src/frontends/qt4/ui/PrintUi.ui:28
 msgid "Pages"
@@ -4422,7 +4414,7 @@ msgstr "書き出しファイルを右記のコマンドに送る(&S):"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:13
 msgid "Edit shortcut"
-msgstr "短絡キーを編集する"
+msgstr "捷径を編集する"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:77
 msgid "Enter LyX function or command sequence"
@@ -4430,7 +4422,7 @@ msgstr "LyX関数かコマンド・シークエンスを入力してください
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:87
 msgid "Remove last key from the shortcut sequence"
-msgstr "短絡キー列から最後のキーを削除する"
+msgstr "捷径鍵列から最後の鍵を削除する"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:90
 msgid "&Delete Key"
@@ -4438,7 +4430,7 @@ msgstr "キーを削除(&D)"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:97
 msgid "Clear current shortcut"
-msgstr "現在の短絡キーを消去"
+msgstr "現在の捷径を消去"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:100
 #: src/frontends/qt4/ui/TabularUi.ui:1118
@@ -4447,7 +4439,7 @@ msgstr "消去(&L)"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:107
 msgid "&Shortcut:"
-msgstr "短絡キー(&S):"
+msgstr "捷径(&S):"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:117
 msgid "&Function:"
@@ -4458,8 +4450,8 @@ msgid ""
 "Type shortcut after clicking on this field. You can reset the content with "
 "the 'Clear' button"
 msgstr ""
-"本フィールドをクリックして短絡キーを入力してください。「消去」ボタンを押すと"
-"内容をリセットできます。"
+"本フィールドをクリックして捷径を入力してください。「消去」ボタンを押すと内容"
+"をリセットできます。"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:19
 #: src/frontends/qt4/GuiSpellchecker.cpp:251
@@ -4951,8 +4943,7 @@ msgstr "二段組文書(&C)"
 msgid ""
 "Justify text in the LyX editor (this does not affect whether the text is "
 "justified in the output)"
-msgstr ""
-"LyXエディタ中で整形を行う(出力中で文書が整形されるかどうかには影響しません)"
+msgstr "LyXエディタ中で整形を行う(出力中で文書が整形されるかどうかには影響しません)"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:284
 msgid "Use &justification in LyX work area"
@@ -4993,8 +4984,7 @@ msgstr "見出しを選択語で置換"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:102
 msgid "Click to select a proposal, double click to look it up."
-msgstr ""
-"クリックすれば候補が選択されます。ダブルクリックするとその意味を引きます。"
+msgstr "クリックすれば候補が選択されます。ダブルクリックするとその意味を引きます。"
 
 #: src/frontends/qt4/ui/TocUi.ui:36
 msgid "Filter:"
@@ -5058,8 +5048,7 @@ msgstr "LyX: 入力して下さい"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:44
 msgid "If you check this, LyX will not warn you again in the given case."
-msgstr ""
-"これを有効にすると、LyXは当該ケースについて今後警告することはなくなります。"
+msgstr "これを有効にすると、LyXは当該ケースについて今後警告することはなくなります。"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:47
 msgid "&Do not show this warning again!"
@@ -5593,13 +5582,12 @@ msgid "Institute Mark"
 msgstr "所属機関マーク"
 
 #: lib/layouts/aa.layout:262
-#, fuzzy
 msgid "Abstract (unstructured)"
-msgstr "概要*(出力なし)"
+msgstr "概要(平文)"
 
 #: lib/layouts/aa.layout:278 lib/layouts/spie.layout:81
 msgid "ABSTRACT"
-msgstr "要約"
+msgstr "概要"
 
 #: lib/layouts/aa.layout:291 lib/layouts/aapaper.layout:102
 #: lib/layouts/aapaper.layout:205 lib/layouts/aastex.layout:240
@@ -5636,42 +5624,40 @@ msgid "Abstract"
 msgstr "概要"
 
 #: lib/layouts/aa.layout:296
-#, fuzzy
 msgid "Abstract (structured)"
-msgstr "概要*(出力なし)"
+msgstr "概要(系統立て)"
 
 #: lib/layouts/aa.layout:300
-#, fuzzy
 msgid "Context"
-msgstr "内容は"
+msgstr "内容"
 
 #: lib/layouts/aa.layout:301
 msgid "Context of your work (optional, can be left empty)"
-msgstr ""
+msgstr "著作物の内容(非必須:空白可)"
 
 #: lib/layouts/aa.layout:305
 msgid "Aims"
-msgstr ""
+msgstr "目的"
 
 #: lib/layouts/aa.layout:306
 msgid "Aims of your work"
-msgstr ""
+msgstr "著作物の目的"
 
 #: lib/layouts/aa.layout:310
 msgid "Methods"
-msgstr ""
+msgstr "方法"
 
 #: lib/layouts/aa.layout:311
 msgid "Methods used in your work"
-msgstr ""
+msgstr "著作物で使用されている方法"
 
 #: lib/layouts/aa.layout:315
 msgid "Results"
-msgstr ""
+msgstr "結果"
 
 #: lib/layouts/aa.layout:316
 msgid "Results of your work"
-msgstr ""
+msgstr "著作物の結果"
 
 #: lib/layouts/aa.layout:321 lib/layouts/aastex.layout:282
 #: lib/layouts/achemso.layout:156 lib/layouts/acmsiggraph.layout:163
@@ -5696,9 +5682,8 @@ msgid "Keywords"
 msgstr "キーワード"
 
 #: lib/layouts/aa.layout:337
-#, fuzzy
 msgid "Key words."
-msgstr "キーワード:"
+msgstr "キーワード."
 
 #: lib/layouts/aa.layout:351 lib/layouts/beamer.layout:955
 #: lib/layouts/cl2emult.layout:73 lib/layouts/llncs.layout:220
@@ -6293,12 +6278,11 @@ msgstr "謝辞"
 
 #: lib/layouts/acm-sigs-alt.layout:3
 msgid "ACM SIGS ('Alternate' Style)"
-msgstr ""
+msgstr "ACM SIGS ('Alternate'様式)"
 
 #: lib/layouts/acm-sigs.layout:3
-#, fuzzy
 msgid "ACM SIG Proceedings (SP)"
-msgstr "SPIE Proceedings"
+msgstr "ACM SIG Proceedings (SP)"
 
 #: lib/layouts/AEA.layout:3
 msgid "American Economic Association (AEA)"
@@ -6984,7 +6968,7 @@ msgstr "注釈"
 
 #: lib/layouts/apa6.layout:242 lib/layouts/apa.layout:87
 msgid "Abstract:"
-msgstr "要約:"
+msgstr "概要:"
 
 #: lib/layouts/apa6.layout:274
 msgid "AuthorNote"
@@ -10110,7 +10094,7 @@ msgstr "Int. Society f. Photogrammetry and Remote Sensing (ISPRS)"
 
 #: lib/layouts/isprs.layout:39
 msgid "ABSTRACT:"
-msgstr "要約:"
+msgstr "概要:"
 
 #: lib/layouts/isprs.layout:67
 msgid "KEY WORDS:"
@@ -10564,19 +10548,16 @@ msgid "Homepage:"
 msgstr "ホームページ:"
 
 #: lib/layouts/moderncv.layout:155
-#, fuzzy
 msgid "Social"
-msgstr "特殊用途文字"
+msgstr "SNS"
 
 #: lib/layouts/moderncv.layout:158
-#, fuzzy
 msgid "Social:"
-msgstr "特殊用途文字"
+msgstr "SNS:"
 
 #: lib/layouts/moderncv.layout:161
-#, fuzzy
 msgid "Name of the social network"
-msgstr "著者の名前"
+msgstr "ソーシャルネットワーク名"
 
 #: lib/layouts/moderncv.layout:165
 msgid "ExtraInfo"
@@ -10876,16 +10857,15 @@ msgstr "一覧"
 
 #: lib/layouts/powerdot.layout:269 lib/layouts/powerdot.layout:292
 msgid "Itemize Type"
-msgstr "記号型箇条書き"
+msgstr "箇条書き(記号)の型式"
 
 #: lib/layouts/powerdot.layout:270 lib/layouts/powerdot.layout:293
-#, fuzzy
 msgid "Itemize type specification (see powerdot manual)"
-msgstr "記号型箇条書きの指定(powerdot説明書を参照のこと)"
+msgstr "箇条書き(記号)の型式指定(powerdot説明書を参照のこと)"
 
 #: lib/layouts/powerdot.layout:273 lib/layouts/enumitem.module:57
 msgid "Itemize Options"
-msgstr "記号型箇条書きオプション"
+msgstr "箇条書き(記号)のオプション"
 
 #: lib/layouts/powerdot.layout:274 lib/layouts/powerdot.layout:324
 #: lib/layouts/enumitem.module:58 lib/layouts/enumitem.module:65
@@ -10895,24 +10875,23 @@ msgstr "この一覧の非必須引数(enumitem説明書を参照のこと)"
 
 #: lib/layouts/powerdot.layout:289
 msgid "ItemizeType1"
-msgstr "箇条書き(タイプ１)"
+msgstr "箇条書き(記号)タイプ1"
 
 #: lib/layouts/powerdot.layout:319 lib/layouts/powerdot.layout:342
 msgid "Enumerate Type"
-msgstr "連番型箇条書き"
+msgstr "箇条書き(連番)の型式"
 
 #: lib/layouts/powerdot.layout:320 lib/layouts/powerdot.layout:343
-#, fuzzy
 msgid "Enumerate type specification (see powerdot manual)"
-msgstr "連番型箇条書きの指定(powerdot説明書を参照のこと)"
+msgstr "箇条書き(連番)の型式指定(powerdot説明書を参照のこと)"
 
 #: lib/layouts/powerdot.layout:323 lib/layouts/enumitem.module:64
 msgid "Enumerate Options"
-msgstr "連番型箇条書きオプション"
+msgstr "箇条書き(連番)のオプション"
 
 #: lib/layouts/powerdot.layout:339
 msgid "EnumerateType1"
-msgstr "連番型箇条書き１"
+msgstr "箇条書き(連番)タイプ1"
 
 #: lib/layouts/powerdot.layout:435
 msgid "Twocolumn"
@@ -11747,9 +11726,8 @@ msgid "Thesaurus not supported in recent A&A:"
 msgstr "同義語辞典は最近のA&Aではサポートされていません:"
 
 #: lib/layouts/acm-sigs.inc:37
-#, fuzzy
 msgid "General terms:"
-msgstr "一般"
+msgstr "一般用語:"
 
 #: lib/layouts/aguplus.inc:71 lib/layouts/db_stdstarsections.inc:72
 #: lib/layouts/stdstarsections.inc:68 lib/layouts/svcommon.inc:278
@@ -12163,9 +12141,8 @@ msgid "RevisionRemark"
 msgstr "改訂所見"
 
 #: lib/layouts/litinsets.inc:12
-#, fuzzy
 msgid "Chunk ##"
-msgstr "コード組(chunk)"
+msgstr "コード組 ##"
 
 #: lib/layouts/litinsets.inc:15 lib/layouts/litinsets.inc:16
 msgid "Chunk"
@@ -12898,9 +12875,8 @@ msgstr ""
 "\\theendnotesと書いたTeXコードを挿入する必要があります。"
 
 #: lib/layouts/endnotes.module:10
-#, fuzzy
 msgid "Endnote ##"
-msgstr "巻末注"
+msgstr "巻末注 ##"
 
 #: lib/layouts/endnotes.module:23
 msgid "endnote"
@@ -13261,25 +13237,20 @@ msgid "Multiple Columns"
 msgstr "多段組"
 
 #: lib/layouts/multicol.module:7
-#, fuzzy
 msgid ""
 "Adds a custom inset whose content is set with multiple columns (2 by "
 "default). See the Additional manual, section 'Multiple Text Columns', for a "
 "detailed description of multiple columns."
 msgstr ""
-"多段組の文を開始し終了するためのスタイルを2つ追加します。開始スタイルには段数"
-"を入力し、終了スタイルは空のままにおいておきます。多段組についての詳細は、取"
-"扱説明書高度な機能篇の「多段組」の節をご覧ください。"
+"内容が多段組(既定では二段)となる任意設定差込枠を追加します。多段組についての詳細は、取扱説明書『高度な機能篇』の「多段組」の節をご覧ください。"
 
 #: lib/layouts/multicol.module:19
-#, fuzzy
 msgid "Number of Columns"
-msgstr "列数"
+msgstr "段数"
 
 #: lib/layouts/multicol.module:20
-#, fuzzy
 msgid "Insert the number of columns here"
-msgstr "「%1$s」の列数を変えることができません。"
+msgstr "ここに段数を入力してください"
 
 #: lib/layouts/multicol.module:26
 msgid "An optional preface"
@@ -15602,7 +15573,7 @@ msgstr "レポジトリを使ってローカル辞書を更新(D)|D"
 
 #: lib/ui/stdmenus.inc:80
 msgid "Revert to Repository Version|v"
-msgstr "レポジトリのバージョンに戻す(V)|V"
+msgstr "レポジトリ版に戻す(V)|V"
 
 #: lib/ui/stdmenus.inc:81
 msgid "Undo Last Check In|U"
@@ -16438,7 +16409,7 @@ msgstr "カスタマイズ篇(C)|C"
 
 #: lib/ui/stdmenus.inc:588
 msgid "Shortcuts|S"
-msgstr "短絡キー(S)|S"
+msgstr "捷径(S)|S"
 
 #: lib/ui/stdmenus.inc:589
 msgid "LyX Functions|y"
@@ -21473,9 +21444,8 @@ msgid "EPS (uncropped)"
 msgstr "EPS (切り落としなし)"
 
 #: lib/configure.py:584
-#, fuzzy
 msgid "EPS (cropped)"
-msgstr "EPS (切り落としなし)"
+msgstr "EPS (切り落とし)"
 
 #: lib/configure.py:585
 msgid "Postscript"
@@ -21530,9 +21500,8 @@ msgid "PDF (graphics)"
 msgstr "PDF (graphics)"
 
 #: lib/configure.py:596
-#, fuzzy
 msgid "PDF (cropped)"
-msgstr "EPS (切り落としなし)"
+msgstr "PDF (切り落としなし)"
 
 #: lib/configure.py:599
 msgid "DVI"
@@ -21850,16 +21819,14 @@ msgstr "変換スクリプトが失敗しました"
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
 "convert it."
-msgstr ""
-"%1$s は旧版のLyXで作成されており，スクリプトlyx2lyxは変換に失敗 しました。"
+msgstr "%1$s は旧版のLyXで作成されており，スクリプトlyx2lyxは変換に失敗 しました。"
 
 #: src/Buffer.cpp:1221
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
 "it."
-msgstr ""
-"%1$s は新版のLyXファイルなので，スクリプトlyx2lyxが変換に失敗しました。"
+msgstr "%1$s は新版のLyXファイルなので，スクリプトlyx2lyxが変換に失敗しました。"
 
 #: src/Buffer.cpp:1242 src/Buffer.cpp:4138 src/Buffer.cpp:4201
 msgid "File is read-only"
@@ -22289,8 +22256,7 @@ msgstr ""
 msgid ""
 "The LaTeX package cancel is only used if \\cancel commands are used in "
 "formulas"
-msgstr ""
-"数式に\\cancelが挿入されたときに限り、LaTeXパッケージcancelが読み込まれます"
+msgstr "数式に\\cancelが挿入されたときに限り、LaTeXパッケージcancelが読み込まれます"
 
 #: src/BufferParams.cpp:458
 msgid ""
@@ -22304,8 +22270,7 @@ msgstr ""
 msgid ""
 "The LaTeX package mathdots is only used if the command \\iddots is inserted "
 "into formulas"
-msgstr ""
-"数式に\\iddotsが挿入されたときに限り、LaTeXパッケージmathdotsが読み込まれます"
+msgstr "数式に\\iddotsが挿入されたときに限り、LaTeXパッケージmathdotsが読み込まれます"
 
 #: src/BufferParams.cpp:462
 msgid ""
@@ -22843,7 +22808,7 @@ msgstr "数式行"
 
 #: src/Color.cpp:254
 msgid "math macro hovered background"
-msgstr "数式マクロの浮遊背景"
+msgstr "マウス下の数式マクロの背景"
 
 #: src/Color.cpp:255
 msgid "math macro label"
@@ -22887,11 +22852,11 @@ msgstr "LaTeXエラー"
 
 #: src/Color.cpp:265
 msgid "end-of-line marker"
-msgstr "行末マーク"
+msgstr "行末標"
 
 #: src/Color.cpp:266
 msgid "appendix marker"
-msgstr "付録マーカ"
+msgstr "付録標"
 
 #: src/Color.cpp:267
 msgid "change bar"
@@ -22931,7 +22896,7 @@ msgstr "削除された文章の修飾子"
 
 #: src/Color.cpp:276
 msgid "added space markers"
-msgstr "空白マーカ"
+msgstr "空白標"
 
 #: src/Color.cpp:277
 msgid "table line"
@@ -23089,8 +23054,7 @@ msgstr "レイアウトが見つかりません"
 #: src/CutAndPaste.cpp:753
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
-msgstr ""
-"「%2$s」レイアウトを読み込み直したため自由差込枠%1$sは未定義になりました。"
+msgstr "「%2$s」レイアウトを読み込み直したため自由差込枠%1$sは未定義になりました。"
 
 #: src/CutAndPaste.cpp:756
 #, c-format
@@ -23335,14 +23299,12 @@ msgid "Running MakeIndex for nomencl."
 msgstr "nomencl用にMakeIndexを実行しています。"
 
 #: src/LaTeX.cpp:1279 src/LaTeX.cpp:1285 src/LaTeX.cpp:1294
-#, fuzzy
 msgid "BibTeX error: "
-msgstr "LaTeXエラー"
+msgstr "BibTeXエラー:"
 
 #: src/LaTeX.cpp:1301
-#, fuzzy
 msgid "Biber error: "
-msgstr "ディスクエラー: "
+msgstr "Biberエラー: "
 
 #: src/LaTeXFonts.cpp:211 src/LaTeXFonts.cpp:280
 msgid "Font not available"
@@ -23723,8 +23685,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3125
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
-msgstr ""
-"pLaTeX(日本語LaTeX)用のbibtexプログラムのオプションを定義してください。"
+msgstr "pLaTeX(日本語LaTeX)用のbibtexプログラムのオプションを定義してください。"
 
 #: src/LyXRC.cpp:3129
 msgid ""
@@ -23736,8 +23697,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3133
 msgid "Select to check whether the lastfiles still exist."
-msgstr ""
-"最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
+msgstr "最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
 
 #: src/LyXRC.cpp:3137
 msgid ""
@@ -23766,20 +23726,17 @@ msgstr ""
 
 #: src/LyXRC.cpp:3159
 msgid "Make Apple key act as Meta and Control key as Ctrl."
-msgstr ""
-"アップルキーをMetaキーとして、コントロールキーをCtrlキーとして動作させます。"
+msgstr "アップルキーをMetaキーとして、コントロールキーをCtrlキーとして動作させます。"
 
 #: src/LyXRC.cpp:3163
-#, fuzzy
 msgid "Use the Mac OS X conventions for cursor movement"
-msgstr "単語間のカーソル移動にMac OS X式の方法を使う。"
+msgstr "カーソル移動はMac OS Xの慣習に従う。"
 
 #: src/LyXRC.cpp:3167
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
-msgstr ""
-"カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
+msgstr "カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
 
 #: src/LyXRC.cpp:3172
 #, no-c-format
@@ -23799,10 +23756,9 @@ msgstr ""
 "はグローバルとローカルの commands/ ディレクトリを見に行きます。"
 
 #: src/LyXRC.cpp:3180
-#, fuzzy
 msgid ""
 "The default format used with LFUN_BUFFER_[VIEW|UPDATE] with non-TeX fonts."
-msgstr "LFUN_BUFFER_[VIEW|UPDATE]で使う既定形式。"
+msgstr "非TeXフォント使用時にLFUN_BUFFER_[VIEW|UPDATE]で使う既定形式。"
 
 #: src/LyXRC.cpp:3184
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
@@ -23824,8 +23780,7 @@ msgstr "LyX が画像をどのように表示するかを選びます。"
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
-msgstr ""
-"文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
+msgstr "文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
 
 #: src/LyXRC.cpp:3200
 msgid "Specify additional chars that can be part of a word."
@@ -23936,8 +23891,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3272
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr ""
-"LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
+msgstr "LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
 
 #: src/LyXRC.cpp:3276
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -23984,8 +23938,7 @@ msgstr "複数の補完候補がある際、遅延なしに補完ポップアッ
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
-msgstr ""
-"補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
+msgstr "補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
 
 #: src/LyXRC.cpp:3313
 msgid "The inline completion delay."
@@ -24010,8 +23963,7 @@ msgstr "=>を\\Rightarrowに変換するなどのTeXMacs用簡略記法を許可
 #: src/LyXRC.cpp:3333
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr ""
-"最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
+msgstr "最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
 
 #: src/LyXRC.cpp:3344
 msgid "Shows a typeset preview of things such as math"
@@ -24341,8 +24293,7 @@ msgstr "未知のトークン"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr ""
-"空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
+msgstr "空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
 
 #: src/Text.cpp:998
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -24474,8 +24425,7 @@ msgstr "破損ファイル"
 
 #: src/TextClass.cpp:833
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
-msgstr ""
-"stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
+msgstr "stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
 
 #: src/TextClass.cpp:1503
 #, c-format
@@ -26399,11 +26349,11 @@ msgstr "解釈不能"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "shortcut"
-msgstr "短絡キー"
+msgstr "捷径"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "shortcuts"
-msgstr "短絡キー"
+msgstr "捷径"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "lyxrc"
@@ -26723,7 +26673,7 @@ msgstr "制御"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2786
 msgid "Shortcuts"
-msgstr "短絡キー"
+msgstr "捷径"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2791
 msgid "Function"
@@ -26731,7 +26681,7 @@ msgstr "関数"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2792
 msgid "Shortcut"
-msgstr "短絡キー"
+msgstr "捷径"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2871
 msgid "Cursor, Mouse and Editing Functions"
@@ -26760,7 +26710,7 @@ msgstr "復元(&T)"
 #: src/frontends/qt4/GuiPrefs.cpp:3171 src/frontends/qt4/GuiPrefs.cpp:3178
 #: src/frontends/qt4/GuiPrefs.cpp:3198 src/frontends/qt4/GuiPrefs.cpp:3217
 msgid "Failed to create shortcut"
-msgstr "短絡キーの生成に失敗しました"
+msgstr "捷径の生成に失敗しました"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3172
 msgid "Unknown or invalid LyX function"
@@ -26777,13 +26727,13 @@ msgid ""
 "%2$s\n"
 "You need to remove that binding before creating a new one."
 msgstr ""
-"短絡キー「%1$s」はすでに以下に割り当てられています:\n"
+"捷径「%1$s」はすでに以下に割り当てられています:\n"
 "%2$s\n"
-"新規のキー割り当てを作成する前に、このキー割り当てを削除する必要があります。"
+"新規の鍵割り当てを作成する前に、この鍵割り当てを削除する必要があります。"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3218
 msgid "Can not insert shortcut to the list"
-msgstr "短絡キーを一覧に加えることができません"
+msgstr "捷径を一覧に加えることができません"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3249
 msgid "Identity"
@@ -26874,21 +26824,19 @@ msgid "Find and Replace"
 msgstr "検索及び置換"
 
 #: src/frontends/qt4/GuiSearch.cpp:134
-#, fuzzy
 msgid ""
 "End of file reached while searching forward.\n"
 "Continue searching from the beginning?"
 msgstr ""
-"%1$s: 前方検索を行っていて文末に到達しました。\n"
+"前方検索を行っていて文末に到達しました。\n"
 "文頭から検索を続けますか？"
 
 #: src/frontends/qt4/GuiSearch.cpp:137
-#, fuzzy
 msgid ""
 "End of file reached while searching backward.\n"
 "Continue searching from the end?"
 msgstr ""
-"%1$s: 後方検索を行っていて文頭に到達しました。\n"
+"後方検索を行っていて文頭に到達しました。\n"
 "文末から検索を続けますか？"
 
 #: src/frontends/qt4/GuiSearch.cpp:155 src/lyxfind.cpp:367 src/lyxfind.cpp:385
@@ -29257,7 +29205,7 @@ msgstr ""
 
 #: src/output_plaintext.cpp:144
 msgid "Abstract: "
-msgstr "要約: "
+msgstr "概要: "
 
 #: src/output_plaintext.cpp:156
 msgid "References: "
@@ -29271,8 +29219,7 @@ msgstr "LyXバイナリが見つかりません！"
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr ""
-"コマンドライン %1$s からは、LyXバイナリへのパスを特定することができません。"
+msgstr "コマンドライン %1$s からは、LyXバイナリへのパスを特定することができません。"
 
 #: src/support/Package.cpp:622
 #, c-format
@@ -29505,8 +29452,7 @@ msgstr ""
 msgid ""
 "It should be safe to continue, but you\n"
 "may wish to save your work and restart LyX."
-msgstr ""
-"続けても安全ですが、作業を保存してLyXを再起動するのが望ましいでしょう。"
+msgstr "続けても安全ですが、作業を保存してLyXを再起動するのが望ましいでしょう。"
 
 #: src/support/lassert.cpp:65
 msgid "Warning!"
