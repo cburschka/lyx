@@ -87,6 +87,16 @@ Win32/packaging/installer/ThesaurusDictionaryNames.txt \
 Win32/pdfview/pdfview.nsi \
 Win32/vld/cmake/CMakeLists.txt \
 Win32/vld/cmake/vld.cmake \
+autotests/CMakeLists.txt \
+autotests/check_load.cmake \
+autotests/export.cmake \
+autotests/keytest.py \
+autotests/lyx2lyxtest.cmake \
+autotests/single-test.cmake \
+autotests/xvkbd/CMakeLists.txt \
+checkurls/CMakeLists.txt \
+checkurls/CheckURL.pm \
+checkurls/search_url.pl \
 cmake/ConfigureChecks.cmake \
 cmake/Install.cmake \
 cmake/LyxPackaging.cmake \
@@ -94,6 +104,8 @@ cmake/PyCompile.cmake \
 cmake/config.cpp.cmake \
 cmake/config.h.cmake \
 cmake/configCompiler.h.cmake \
+cmake/configFunctions.cmake \
+cmake/configIncludes.cmake \
 cmake/doc/CMakeLists.txt \
 cmake/doc/ReplaceValues.pl \
 cmake/doc/ReplaceValues.py \
@@ -119,4 +131,9 @@ cmake/modules/PCHSupport_26.cmake \
 cmake/modules/ProjectSourceGroup.cmake \
 cmake/po/cat.py \
 cmake/po/dos2unix.py \
-cmake/po/unix2dos.py
+cmake/po/unix2dos.py \
+cmake/scripts/LyXCreateImagesResource.cmake \
+cmake/scripts/LyXGetVersion.cmake \
+keystest/cache-bisect.py \
+keystest/keytest.py \
+keystest/make_screenshot_html.py
