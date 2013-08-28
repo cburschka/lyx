@@ -120,7 +120,8 @@ for my $u (@urls) {
   if ($printSourceFiles) {
     if (defined($URLS{$u})) {
       for my $f(sort keys %{$URLS{$u}}) {
-	print "  $f\n";
+	my $lines = ":" . join(',', @{$URLS{$u}->{$f}});
+	print "  $f$lines\n";
       }
     }
     if ($res ) {
@@ -172,23 +173,42 @@ sub parse_file($)
 
   return if ($f =~ /\/attic\//);
   if(open(FI, $f)) {
+    my $line = 0;
     while(my $l = <FI>) {
+      $line++;
       $l =~ s/[\r\n]+$//;	#  Simulate chomp
-      if($status eq "out") {
+      if ($status eq "out") {
 	# searching for "\begin_inset Flex URL"
 	if($l =~ /^\s*\\begin_inset\s+Flex\s+URL\s*$/) {
-	  $status = "ininset";
+	  $status = "inUrlInset";
+	}
+	elsif ($l =~ /^\s*\\begin_inset\s+CommandInset\s+href\s*$/) {
+	  $status = "inHrefInset";
+	}
+	else {
+	  # Outside of url, check also
+	  if ($l =~ /"((ftp|http|https):\/\/[^ ]+)"/) {
+	    my $url = $1;
+	    &handle_url($url, $f, "x$line");
+	  }
 	}
       }
       else {
 	if($l =~ /^\s*\\end_(layout|inset)\s*$/) {
 	  $status = "out";
 	}
-	else {
-	  if($l =~ /\s*([a-z]+:\/\/.+)\s*$/) {
+	elsif ($status eq "inUrlInset") {
+	  if ($l =~ /\s*([a-z]+:\/\/.+)\s*$/) {
 	    my $url = $1;
 	    $status = "out";
-	    &handle_url($url, $f);
+	    &handle_url($url, $f, "u$line");
+	  }
+	}
+	elsif ($status eq "inHrefInset") {
+	  if ($l =~ /^target\s+"([a-z]+:\/\/[^ ]+)"$/) {
+	    my $url = $1;
+	    $status = "out";
+	    &handle_url($url, $f, "h$line");
 	  }
 	}
       }
@@ -197,12 +217,13 @@ sub parse_file($)
   }
 }
 
-sub handle_url($$)
+sub handle_url($$$)
 {
-  my($url, $f) = @_;
+  my($url, $f, $line) = @_;
 
   if(!defined($URLS{$url})) {
     $URLS{$url} = {};
+    $URLS{$url}->{$f} = [];
   }
-  $URLS{$url}->{$f} = 1;
+  push(@{$URLS{$url}->{$f}}, $line);
 }
