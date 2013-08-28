@@ -20,12 +20,13 @@ endforeach()
 # Define the perl-script running the actual test
 set(SEARCH_URL_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/search_url.pl")
 
-# Test all but inaccessible
+# Test used and as accessible expected urls
 add_test(NAME "check_accessible_urls"
   WORKING_DIRECTORY "${TOP_SEARCH_PATH}"
   COMMAND ${PERL_EXECUTABLE} "${SEARCH_URL_SCRIPT}"
     "filesToScan=${LYXFILES_FILE}"
-    "ignoredURLS=${CMAKE_CURRENT_SOURCE_DIR}/inaccessibleURLS")
+    "ignoredURLS=${CMAKE_CURRENT_SOURCE_DIR}/inaccessibleURLS"
+    "ignoredURLS=${CMAKE_CURRENT_SOURCE_DIR}/knownInvalidURLS")
 
 # Test inaccessible, but revert the error marker (failed <=> passed)
 # if this fails, then some url is accessible and does not belong
@@ -38,7 +39,8 @@ add_test(NAME "check_inaccessible_urls"
     "revertedURLS=${CMAKE_CURRENT_SOURCE_DIR}/inaccessibleURLS")
 
 #
-# Test our own bad URLs
+# Test our own bad urls
+# and urls used in examples which should not match valid urls
 # if this test fails, then our testtool contains errors
 add_test(NAME "check_invalid_urls"
   WORKING_DIRECTORY "${TOP_SEARCH_PATH}"

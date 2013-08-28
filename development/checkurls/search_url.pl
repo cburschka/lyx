@@ -87,8 +87,14 @@ my $errorcount = 0;
 my $URLScount = 0;
 
 for my $u (@urls) {
-  next if (defined($ignoredURLS{$u}));
+  if (defined($ignoredURLS{$u})) {
+    $ignoredURLS{$u} += 1;
+    next;
+  }
   next if ($checkSelectedOnly && ! defined(${selectedURLS}{$u}));
+  if (defined(${selectedURLS}{$u})) {
+    ${selectedURLS}{$u} += 1;
+  }
   $URLScount++;
   print "Checking '$u'";
   my $res = &check_url($u);
@@ -123,10 +129,27 @@ for my $u (@urls) {
   }
 }
 
+&printNotUsedURLS("Ignored", \%ignoredURLS);
+&printNotUsedURLS("Selected", \%selectedURLS);
+
 print "\n$errorcount URL-tests failed out of $URLScount\n\n";
 exit($errorcount);
 
 ###############################################################################
+
+sub printNotUsedURLS($$)
+{
+  my ($txt, $rURLS) = @_;
+  my @msg = ();
+  for my $u ( sort keys %{$rURLS}) {
+    if ($rURLS->{$u} < 2) {
+      push(@msg, $u);
+    }
+  }
+  if (@msg) {
+    print "\n$txt URLs not found in sources: " . join(' ',@msg) . "\n";
+  }
+}
 
 sub readUrls($$)
 {
