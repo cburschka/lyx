@@ -235,7 +235,7 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 		LASSERT(false, return docstring());
 	}
 
-	Toc const & toc = buffer().tocBackend().toc(cmd2type(command));
+	Toc const & toc = buffer().masterBuffer()->tocBackend().toc(cmd2type(command));
 	if (toc.empty())
 		return docstring();
 
