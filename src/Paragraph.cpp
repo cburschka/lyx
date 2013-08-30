@@ -1302,7 +1302,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		docstring nextlatex;
 		bool nexttipas = false;
 		string nexttipashortcut;
-		if (next != '\0' && next != META_INSET) {
+		if (next != '\0' && next != META_INSET && encoding.encodable(next)) {
 			nextlatex = encoding.latexChar(next).first;
 			if (runparams.inIPA) {
 				nexttipashortcut = Encodings::TIPAShortcut(next);
