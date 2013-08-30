@@ -103,7 +103,7 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 	odocstringstream ods;
 	XHTMLStream xs(ods);
 
-	Toc const & toc = buffer().tocBackend().toc("tableofcontents");
+	Toc const & toc = buffer().masterBuffer()->tocBackend().toc("tableofcontents");
 	if (toc.empty())
 		return docstring();
 
