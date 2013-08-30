@@ -428,7 +428,9 @@ public:
 	docstring const & htmlpreamble() const { return htmlpreamble_; }
 	///
 	docstring const & htmlstyles() const { return htmlstyles_; }
-	///
+	/// Looks for the layout of "highest level", other than Part (or other
+	/// layouts with a negative toc number), for use in constructing TOCs and 
+	/// similar information.
 	Layout const & getTOCLayout() const;
 	/// the paragraph style to use for TOCs, Bibliography, etc
 	/// we will attempt to calculate this if it was not given
