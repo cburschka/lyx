@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-08-23 11:40+0200\n"
+"POT-Creation-Date: 2013-08-30 12:25+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -1946,7 +1946,7 @@ msgstr "Doslovne (Verbatim)"
 #: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1180
 #: src/insets/InsetInclude.cpp:1186
 msgid "Program Listing"
-msgstr "Výpis zdrojového kódu"
+msgstr "Výpis Zdrojového Kódu"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:342
 msgid "Edit the file"
@@ -7163,7 +7163,7 @@ msgstr "Prezentácie"
 #: lib/layouts/beamer.layout:1113 lib/layouts/beamer.layout:1139
 #: lib/layouts/beamer.layout:1314
 msgid "Overlay Specifications|v"
-msgstr "Špecifikácie prekrytia"
+msgstr "Špecifikácie Prekrytia"
 
 #: lib/layouts/beamer.layout:87 lib/layouts/beamer.layout:120
 #: lib/layouts/beamer.layout:159
@@ -16012,11 +16012,11 @@ msgstr "Text. rez vzpriamený"
 
 #: lib/ui/stdmenus.inc:298
 msgid "Octave|O"
-msgstr "Octave"
+msgstr "Octave|O"
 
 #: lib/ui/stdmenus.inc:299
 msgid "Maxima|M"
-msgstr "Maxima"
+msgstr "Maxima|M"
 
 #: lib/ui/stdmenus.inc:300
 msgid "Mathematica|a"
@@ -16024,7 +16024,7 @@ msgstr "Mathematica|a"
 
 #: lib/ui/stdmenus.inc:302
 msgid "Maple, Simplify|S"
-msgstr "Maple, simplify (zjednodušiť)"
+msgstr "Maple, Simplify (zjednodušiť)|S"
 
 #: lib/ui/stdmenus.inc:303
 msgid "Maple, Factor|F"
@@ -16032,7 +16032,7 @@ msgstr "Maple, Factor (rozložiť)|F"
 
 #: lib/ui/stdmenus.inc:304
 msgid "Maple, Evalm|E"
-msgstr "Maple, Evalm (vyhodnotiť)"
+msgstr "Maple, Evalm (vyhodnotiť)|E"
 
 #: lib/ui/stdmenus.inc:305
 msgid "Maple, Evalf|v"
@@ -16164,7 +16164,7 @@ msgstr "Poznámku pod čiarou"
 
 #: lib/ui/stdmenus.inc:377
 msgid "Marginal Note|M"
-msgstr "Okrajovú poznámku"
+msgstr "Okrajovú Poznámku|O"
 
 #: lib/ui/stdmenus.inc:379
 msgid "TeX Code|X"
@@ -16172,7 +16172,7 @@ msgstr "TeX Kód"
 
 #: lib/ui/stdmenus.inc:380
 msgid "Program Listing[[Menu]]"
-msgstr "Výpis zdrojového kódu"
+msgstr "Výpis Zdrojového Kódu"
 
 #: lib/ui/stdmenus.inc:382
 msgid "Preview|w"
@@ -29564,6 +29564,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Overlay Specifications|S"
+#~ msgstr "Špecifikácie prekrytia"
 
 #~ msgid "Default Format"
 #~ msgstr "Štandardný Formát"
