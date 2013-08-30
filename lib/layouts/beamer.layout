@@ -83,7 +83,7 @@ Style Itemize
   LatexType        Item_Environment
   LatexName        itemize
   Argument 1
-    LabelString    "Overlay Specifications|S"
+    LabelString    "Overlay Specifications|v"
     Tooltip        "Overlay specifications for this list"
     LeftDelim      [<
     RightDelim     >]
@@ -116,7 +116,7 @@ Style Enumerate
   LatexType        Item_Environment
   LatexName        enumerate
   Argument 1
-    LabelString    "Overlay Specifications|S"
+    LabelString    "Overlay Specifications|v"
     Tooltip        "Overlay specifications for this list"
     LeftDelim      [<
     RightDelim     >]
@@ -155,7 +155,7 @@ Style Description
   LatexType        Item_environment
   LatexName        description
   Argument 1
-    LabelString    "Overlay Specifications|S"
+    LabelString    "Overlay Specifications|v"
     Tooltip        "Overlay specifications for this list"
     LeftDelim      [<
     RightDelim     >]
@@ -428,7 +428,7 @@ Style Frame
   EndFont
   Argument 1
     LabelString     "Action"
-    MenuString      "Overlay Specifications|S"
+    MenuString      "Overlay Specifications|v"
     Tooltip         "Overlay specifications for this frame"
     LeftDelim       <
     RightDelim      >
@@ -487,7 +487,7 @@ Style AgainFrame
   LatexName         againframe
   Argument 1
     LabelString     "Slide"
-    MenuString      "Overlay Specifications|S"
+    MenuString      "Overlay Specifications|v"
     Tooltip         "Overlay specifications for this frame"
     LeftDelim       <
     RightDelim      >
@@ -542,7 +542,7 @@ Style FrameTitle
   EndFont
   Argument 1
     LabelString    "On Slide"
-    MenuString     "Overlay Specifications|S"
+    MenuString     "Overlay Specifications|v"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -570,7 +570,7 @@ Style FrameSubtitle
   EndFont
   Argument 1
     LabelString    "On Slide"
-    MenuString     "Overlay Specifications|S"
+    MenuString     "Overlay Specifications|v"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -772,7 +772,7 @@ Style Uncover
   EndFont
   Argument 1
     LabelString    "On Slide"
-    MenuString     "Overlay Specifications|S"
+    MenuString     "Overlay Specifications|v"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -800,7 +800,7 @@ Style Only
   EndFont
   Argument 1
     LabelString    "On Slide"
-    MenuString     "Overlay Specifications|S"
+    MenuString     "Overlay Specifications|v"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -1087,7 +1087,7 @@ Style Quotation
   AlignPossible    Block, Left, Right, Center
   Argument 1
     LabelString    "On Slide"
-    MenuString     "Overlay Specifications|S"
+    MenuString     "Overlay Specifications|v"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -1110,7 +1110,7 @@ Style Quote
   LabelType        No_Label
   Argument 1
     LabelString    "On Slide"
-    MenuString     "Overlay Specifications|S"
+    MenuString     "Overlay Specifications|v"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -1136,7 +1136,7 @@ Style Verse
   LabelType        No_Label
   Argument 1
     LabelString    "On Slide"
-    MenuString     "Overlay Specifications|S"
+    MenuString     "Overlay Specifications|v"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
@@ -1311,7 +1311,7 @@ Style NoteItem
   EndFont
   Argument 1
     LabelString    "On Slide"
-    MenuString     "Overlay Specifications|S"
+    MenuString     "Overlay Specifications|v"
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
