@@ -40,8 +40,9 @@ BEGIN  {
 
 use CheckURL;
 
-$ENV{LANG} = "en";
-$ENV{LANGUAGE} = "en";
+$ENV{LC_ALL} = "en_US.UTF-8";
+$ENV{LANG} = "en_US.UTF-8";
+$ENV{LANGUAGE} = "en_US.UTF-8";
 
 my %URLS = ();
 my %ignoredURLS = ();
@@ -87,14 +88,14 @@ my $errorcount = 0;
 my $URLScount = 0;
 
 for my $u (@urls) {
+  if (defined($selectedURLS{$u})) {
+    ${selectedURLS}{$u}->{count} += 1;
+  }
   if (defined($ignoredURLS{$u})) {
-    $ignoredURLS{$u} += 1;
+    $ignoredURLS{$u}->{count} += 1;
     next;
   }
-  next if ($checkSelectedOnly && ! defined(${selectedURLS}{$u}));
-  if (defined(${selectedURLS}{$u})) {
-    ${selectedURLS}{$u} += 1;
-  }
+  next if ($checkSelectedOnly && ! defined($selectedURLS{$u}));
   $URLScount++;
   print "Checking '$u'";
   my $res = &check_url($u);
@@ -130,8 +131,11 @@ for my $u (@urls) {
   }
 }
 
-&printNotUsedURLS("Ignored", \%ignoredURLS);
-&printNotUsedURLS("Selected", \%selectedURLS);
+if (%URLS) {
+  &printNotUsedURLS("Ignored", \%ignoredURLS);
+  &printNotUsedURLS("Selected", \%selectedURLS);
+  &printNotUsedURLS("KnownInvalid", \%extraURLS);
+}
 
 print "\n$errorcount URL-tests failed out of $URLScount\n\n";
 exit($errorcount);
@@ -143,8 +147,13 @@ sub printNotUsedURLS($$)
   my ($txt, $rURLS) = @_;
   my @msg = ();
   for my $u ( sort keys %{$rURLS}) {
-    if ($rURLS->{$u} < 2) {
-      push(@msg, $u);
+    if ($rURLS->{$u}->{count} < 2) {
+      my @submsg = ();
+      for my $f (sort keys %{$rURLS->{$u}}) {
+	next if ($f eq "count");
+	push(@submsg, "$f:" . $rURLS->{$u}->{$f});
+      }
+      push(@msg, "\n  $u\n    " . join("\n    ", @submsg) . "\n");
     }
   }
   if (@msg) {
@@ -157,11 +166,15 @@ sub readUrls($$)
   my ($file, $rUrls) = @_;
 
   die("Could not read file $file") if (! open(ULIST, $file));
+  my $line = 0;
   while (my $l = <ULIST>) {
+    $line++;
     $l =~ s/[\r\n]+$//;		# remove eol
     $l =~ s/\s*\#.*$//;		# remove comment
     next if ($l eq "");
-    $rUrls->{$l} = 1;
+    if (! defined($rUrls->{$l} )) {
+      $rUrls->{$l} = {$file => $line, count => 1};
+    }
   }
   close(ULIST);
 }
@@ -169,7 +182,7 @@ sub readUrls($$)
 sub parse_file($)
 {
   my($f) = @_;
-  my $status = "out";		# outside of URL
+  my $status = "out";		# outside of URL/href
 
   return if ($f =~ /\/attic\//);
   if(open(FI, $f)) {
