@@ -851,10 +851,15 @@ string const LaTeXFeatures::getPackages() const
 	// The rest of these packages are somewhat more complicated
 	// than those above.
 
-	// if fontspec is used, AMS packages have to be loaded before
-	// fontspec (in BufferParams)
+	// if fontspec or newtxmath is used, AMS packages have to be loaded
+	// before fontspec (in BufferParams)
 	string const amsPackages = loadAMSPackages();
-	if (!params_.useNonTeXFonts && !amsPackages.empty())
+	bool const ot1 = (params_.font_encoding() == "default" || params_.font_encoding() == "OT1");
+	bool const use_newtxmath =
+		theLaTeXFonts().getLaTeXFont(from_ascii(params_.fonts_math)).getUsedPackage(
+			ot1, false, false) == "newtxmath";
+	
+	if (!params_.useNonTeXFonts && !use_newtxmath && !amsPackages.empty())
 		packages << amsPackages;
 
 	// fixltx2e must be loaded after amsthm, since amsthm produces an error with
@@ -863,9 +868,9 @@ string const LaTeXFeatures::getPackages() const
 	if (mustProvide("fixltx2e"))
 		packages << "\\usepackage{fixltx2e}\n";
 
-        if (mustProvide("cancel") &&
-            params_.use_package("cancel") != BufferParams::package_off)
-                packages << "\\usepackage{cancel}\n";
+	if (mustProvide("cancel") &&
+	    params_.use_package("cancel") != BufferParams::package_off)
+		packages << "\\usepackage{cancel}\n";
 	// wasysym is a simple feature, but it must be after amsmath if both
 	// are used
 	// wasysym redefines some integrals (e.g. iint) from amsmath. That

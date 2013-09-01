@@ -82,6 +82,8 @@ public:
 				       int const & scale = 100);
 	/// Return the actually used font
 	docstring const getUsedFont(bool ot1, bool complete, bool nomath);
+	/// Return the actually used package
+	docstring const getUsedPackage(bool ot1, bool complete, bool nomath);
 	///
 	bool read(Lexer & lex);
 	///

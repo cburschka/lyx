@@ -1445,9 +1445,13 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	os << '{' << from_ascii(tclass.latexname()) << "}\n";
 	// end of \documentclass defs
 
-	// if we use fontspec, we have to load the AMS packages here
+	// if we use fontspec or newtxmath, we have to load the AMS packages here
 	string const ams = features.loadAMSPackages();
-	if (useNonTeXFonts && !ams.empty())
+	bool const ot1 = (font_encoding() == "default" || font_encoding() == "OT1");
+	bool const use_newtxmath =
+		theLaTeXFonts().getLaTeXFont(from_ascii(fonts_math)).getUsedPackage(
+			ot1, false, false) == "newtxmath";
+	if ((useNonTeXFonts || use_newtxmath) && !ams.empty())
 		os << from_ascii(ams);
 
 	if (useNonTeXFonts) {

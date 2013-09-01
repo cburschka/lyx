@@ -193,6 +193,15 @@ docstring const LaTeXFont::getUsedFont(bool ot1, bool complete, bool nomath)
 }
 
 
+docstring const LaTeXFont::getUsedPackage(bool ot1, bool complete, bool nomath)
+{
+	docstring const usedfont = getUsedFont(ot1, complete, nomath);
+	if (usedfont.empty())
+		return docstring();
+	return theLaTeXFonts().getLaTeXFont(usedfont).package();
+}
+
+
 string const LaTeXFont::getAvailablePackage(bool dryrun)
 {
 	if (package_.empty())
