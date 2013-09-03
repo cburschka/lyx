@@ -29,8 +29,8 @@ Style Theorem
 	NextNoIndent          1
 	ResetArgs             1
 	Argument 1
-		LabelString   "Alternative Theorem String|S"
-		Tooltip       "Alternative theorem string"
+		LabelString    "Additional Theorem Text"
+		Tooltip        "Additional text appended to the theorem header"
 	EndArgument
 	LabelSep              xx
 	ParIndent             MMM
