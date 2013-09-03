@@ -100,7 +100,7 @@ def revert_Argument_to_TeX_brace(document, line, endline, n, nmax, environment, 
     return wasOpt
 
 
-def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment):
+def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment, opt):
     '''
     Converts TeX code for mandatory arguments to an InsetArgument
     The conversion of TeX code for optional arguments must be done with another routine
@@ -110,12 +110,13 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment):
     - "}" + " " + "{" separates mandatory arguments of commands
     - { and } surround a mandatory argument of an environment
     usage:
-    convert_TeX_brace_to_Argument(document, LineOfBeginLayout/Inset, StartArgument, EndArgument, isInset, isEnvironment)
+    convert_TeX_brace_to_Argument(document, LineOfBeginLayout/Inset, StartArgument, EndArgument, isInset, isEnvironment, isOpt)
     LineOfBeginLayout/Inset is the line  of the \begin_layout or \begin_inset statement
     StartArgument is the number of the first ERT that needs to be converted
     EndArgument is the number of the last ERT that needs to be converted
     isInset must be true, if braces inside an InsetLayout needs to be converted
     isEnvironment must be true, if the layout is for a LaTeX environment
+    isOpt must be true, if the argument is an optional one
     
     Todo: this routine can currently handle only one mandatory argument of environments
     '''
@@ -125,7 +126,11 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment):
     while lineERT != -1 and n < nmax + 1:
       lineERT = find_token(document.body, "\\begin_inset ERT", lineERT)
       if environment == False and lineERT != -1:
-        bracePair = find_token(document.body, "}{", lineERT)
+        bracePair = -1
+        if opt:
+          bracePair = find_token(document.body, "][", lineERT)
+        else:
+          bracePair = find_token(document.body, "}{", lineERT)
         # assure that the "}{" is in this ERT
         if bracePair == lineERT + 5:
           end = find_token(document.body, "\\end_inset", bracePair)
@@ -158,9 +163,17 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment):
           loop = loop + 1
         # now check the case that we have "}" + "{" in two ERTs
         else:
-          endBrace = find_token(document.body, "}", lineERT)
+          endBrace = -1
+          if opt:
+            endBrace = find_token(document.body, "]", lineERT)
+          else:
+            endBrace = find_token(document.body, "}", lineERT)
           if endBrace == lineERT + 5:
-            beginBrace = find_token(document.body, "{", endBrace)
+            beginBrace = -1
+            if opt:
+              beginBrace = find_token(document.body, "[", endBrace)
+            else:
+              beginBrace = find_token(document.body, "{", endBrace)
             # assure that the ERTs are consecutive (11 or 12 depending if there is a space between the ERTs or not)
             if beginBrace == endBrace + 11 or beginBrace == endBrace + 12:
               end = find_token(document.body, "\\end_inset", beginBrace)
@@ -200,13 +213,21 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment):
           else:
             lineERT += 1
       if environment == True and lineERT != -1:
-        opening = find_token(document.body, "{", lineERT)
+        opening = -1
+        if opt:
+          opening = find_token(document.body, "[", lineERT)
+        else:
+          opening = find_token(document.body, "{", lineERT)
         if opening == lineERT + 5: # assure that the "{" is in this ERT
           end = find_token(document.body, "\\end_inset", opening)
           document.body[lineERT : end + 1] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
           n += 1
           lineERT2 = find_token(document.body, "\\begin_inset ERT", lineERT)
-          closing = find_token(document.body, "}", lineERT2)
+          closing = -1
+          if opt:
+            closing = find_token(document.body, "]", lineERT)
+          else:
+            closing = find_token(document.body, "}", lineERT2)
           if closing == lineERT2 + 5: # assure that the "}" is in this ERT
             end2 = find_token(document.body, "\\end_inset", closing)
             document.body[lineERT2 : end2 + 1] = ["\\end_layout", "", "\\end_inset"]
@@ -1627,12 +1648,12 @@ def convert_IEEEtran(document):
       if i != -1:
         i = find_token(document.body, "\\begin_layout Page headings", i)
       if i != -1:
-        convert_TeX_brace_to_Argument(document, i, 1, 1, False, False)
+        convert_TeX_brace_to_Argument(document, i, 1, 1, False, False, False)
         i += 1
       if j != -1:
         j = find_token(document.body, "\\begin_layout Biography without photo", j)
       if j != -1:
-        convert_TeX_brace_to_Argument(document, j, 1, 1, False, True)
+        convert_TeX_brace_to_Argument(document, j, 1, 1, False, True, False)
         j += 1
       if k != -1:
         # assure that we don't handle Biography Biography without photo
@@ -1643,7 +1664,7 @@ def convert_IEEEtran(document):
         continue
       if k != -1:
         # the argument we want to convert is the second one
-        convert_TeX_brace_to_Argument(document, k, 2, 2, False, True)
+        convert_TeX_brace_to_Argument(document, k, 2, 2, False, True, False)
         k += 1
       if i == -1 and j == -1 and k == -1:
         return
@@ -1669,7 +1690,7 @@ def convert_AASTeX(document):
       i = find_token(document.body, "\\begin_layout Altaffilation", i)
       if i == -1:
         return
-      convert_TeX_brace_to_Argument(document, i, 1, 1, False, False)
+      convert_TeX_brace_to_Argument(document, i, 1, 1, False, False, False)
       i += 1
 
 
@@ -1693,7 +1714,7 @@ def convert_AGUTeX(document):
       i = find_token(document.body, "\\begin_layout Author affiliation", i)
       if i == -1:
         return
-      convert_TeX_brace_to_Argument(document, i, 1, 1, False, False)
+      convert_TeX_brace_to_Argument(document, i, 1, 1, False, False, False)
       i += 1
 
 
@@ -1717,7 +1738,7 @@ def convert_IJMP(document):
       i = find_token(document.body, "\\begin_layout MarkBoth", i)
       if i == -1:
         return
-      convert_TeX_brace_to_Argument(document, i, 1, 1, False, False)
+      convert_TeX_brace_to_Argument(document, i, 1, 1, False, False, False)
       i += 1
 
 
@@ -1750,12 +1771,12 @@ def convert_SIGPLAN(document):
       if i != -1:
         i = find_token(document.body, "\\begin_layout Conference", i)
       if i != -1:
-        convert_TeX_brace_to_Argument(document, i, 1, 1, False, False)
+        convert_TeX_brace_to_Argument(document, i, 1, 1, False, False, False)
         i += 1
       if j != -1:
         j = find_token(document.body, "\\begin_layout Author", j)
       if j != -1:
-        convert_TeX_brace_to_Argument(document, j, 1, 2, False, False)
+        convert_TeX_brace_to_Argument(document, j, 1, 2, False, False, False)
         j += 1
       if i == -1 and j == -1:
         return
@@ -1781,7 +1802,7 @@ def convert_SIGGRAPH(document):
       i = find_token(document.body, "\\begin_inset Flex CRcat", i)
       if i == -1:
         return
-      convert_TeX_brace_to_Argument(document, i, 1, 3, True, False)
+      convert_TeX_brace_to_Argument(document, i, 1, 3, True, False, False)
       i += 1
 
 
@@ -1828,22 +1849,22 @@ def convert_EuropeCV(document):
       if i != -1:
         i = find_token(document.body, "\\begin_layout Item", i)
       if i != -1:
-        convert_TeX_brace_to_Argument(document, i, 2, 2, False, False)
+        convert_TeX_brace_to_Argument(document, i, 2, 2, False, False, False)
         i += 1
       if j != -1:
         j = find_token(document.body, "\\begin_layout BulletedItem", j)
       if j != -1:
-        convert_TeX_brace_to_Argument(document, j, 2, 2, False, False)
+        convert_TeX_brace_to_Argument(document, j, 2, 2, False, False, False)
         j += 1
       if k != -1:
         k = find_token(document.body, "\\begin_layout Language", k)
       if k != -1:
-        convert_TeX_brace_to_Argument(document, k, 2, 6, False, False)
+        convert_TeX_brace_to_Argument(document, k, 2, 6, False, False, False)
         k += 1
       if m != -1:
         m = find_token(document.body, "\\begin_layout LastLanguage", m)
       if m != -1:
-        convert_TeX_brace_to_Argument(document, m, 2, 6, False, False)
+        convert_TeX_brace_to_Argument(document, m, 2, 6, False, False, False)
         m += 1
       if i == -1 and j == -1 and k == -1 and m == -1:
         return
@@ -1965,23 +1986,23 @@ def convert_ModernCV(document):
       if i != -1:
         i = find_token(document.body, "\\begin_layout DoubleItem", i)
       if i != -1:
-        convert_TeX_brace_to_Argument(document, i, 1, 1, False, False)
+        convert_TeX_brace_to_Argument(document, i, 1, 1, False, False, False)
         document.body[o] = document.body[o].replace("\\begin_layout DoubleItem", "\\begin_layout DoubleListItem")
         i += 1
       if j != -1:
         j = find_token(document.body, "\\begin_layout Entry", j)
       if j != -1:
-        convert_TeX_brace_to_Argument(document, j, 1, 5, False, False)
+        convert_TeX_brace_to_Argument(document, j, 1, 5, False, False, False)
         j += 1
       if k != -1:
         k = find_token(document.body, "\\begin_layout Item", k)
       if k != -1:
-        convert_TeX_brace_to_Argument(document, k, 1, 1, False, False)
+        convert_TeX_brace_to_Argument(document, k, 1, 1, False, False, False)
         k += 1
       if m != -1:
         m = find_token(document.body, "\\begin_layout Language", m)
       if m != -1:
-        convert_TeX_brace_to_Argument(document, m, 1, 2, False, False)
+        convert_TeX_brace_to_Argument(document, m, 1, 2, False, False, False)
         m += 1
       if i == -1 and j == -1 and k == -1 and m == -1:
         return
@@ -2006,7 +2027,7 @@ def convert_Initials(document):
     i = find_token(document.body, "\\begin_layout Initial", i)
     if i == -1:
       return
-    convert_TeX_brace_to_Argument(document, i, 3, 3, False, False)
+    convert_TeX_brace_to_Argument(document, i, 3, 3, False, False, False)
     i += 1
 
 
@@ -2306,15 +2327,17 @@ def convert_corollary_args(document):
                         i = j
                         continue
                     elif document.body[ertcont].startswith("["):
-                        # This is an ERT option
-                        # strip off the [
-                        document.body[ertcont] = document.body[ertcont][1:]
                         if document.body[ertcont].endswith("]"):
+                            # This is an ERT option
+                            # strip off the [
+                            document.body[ertcont] = document.body[ertcont][1:]
                             # strip off the ]
                             document.body[ertcont] = document.body[ertcont][:-1]
-                        # Convert to ArgInset
-                        document.body[parbeg] = "\\begin_inset Argument 2"
-                    i = j
+                            # Convert to ArgInset
+                            document.body[parbeg] = "\\begin_inset Argument 2"
+                        else:
+                            convert_TeX_brace_to_Argument(document, i, 2, 2, False, True, True)
+                    i += 1
                     continue
             i = j
 
@@ -2888,7 +2911,7 @@ def convert_beamerblocks(document):
                                 # Multipar ERT. Skip this.
                                 break
                             else:
-                                convert_TeX_brace_to_Argument(document, i, 2, 2, False, True)
+                                convert_TeX_brace_to_Argument(document, i, 2, 2, False, True, False)
                         else:
                             break
                         j = find_end_of_layout(document.body, i)
