@@ -28,6 +28,7 @@ Style Theorem*
 	LabelType             Static
 	LabelString           "Theorem."
 	NextNoIndent          1
+	ResetArgs             1
 	Argument 1
 		LabelString   "Alternative Theorem String|S"
 		Tooltip       "Alternative theorem string"
