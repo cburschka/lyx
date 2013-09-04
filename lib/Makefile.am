@@ -215,7 +215,7 @@ dist_springerexamples_DATA = \
 	examples/springer/svmono_foreword.lyx \
 	examples/springer/svmono_glossary.lyx \
 	examples/springer/svmono_part.lyx \
-	examples/springer/svmono_preface.lyx
+	examples/springer/svmono_preface.lyx \
 	examples/springer/svmono_referenc.lyx \
 	examples/springer/svmono_solutions.lyx \
 	examples/springer/svmult_acknow.lyx \
