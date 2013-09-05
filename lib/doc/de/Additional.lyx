@@ -6522,7 +6522,7 @@ echo "$COMMAND" > "${LYXPIPE}".in || exit
 \begin_inset Newline newline
 \end_inset
 
-read < "${LYXPIPE}".out || exit
+read TMP < "${LYXPIPE}".out || exit
 \end_layout
 
 \begin_layout Standard
