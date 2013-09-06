@@ -387,6 +387,9 @@ set(LYX_LOCALEDIR "locale")
 set(LYX_ABS_INSTALLED_LOCALEDIR "${LYX_ABS_INSTALLED_DATADIR}/${LYX_DATA_SUBDIR}${LYX_LOCALEDIR}")
 set(LYX_ABS_TOP_SRCDIR "${TOP_SRC_DIR}")
 
+set(LYX_MAN_DIR "/usr/local/man" CACHE STRING
+  "Install location for man pages.")
+mark_as_advanced(LYX_MAN_DIR)
 
 if(LYX_INSTALL AND WIN32)
 	message(STATUS "Configuring NSIS files")
