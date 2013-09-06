@@ -96,6 +96,7 @@ LYX_OPTION(MERGE_REBUILD    "Rebuild generated files from merged files build" OF
 LYX_OPTION(QUIET            "Don't generate verbose makefiles" OFF ALL)
 LYX_OPTION(INSTALL_PREFIX   "Install path for LyX" OFF ALL)
 LYX_OPTION(BUNDLE           "Build bundle  (experimental) " OFF ALL)
+LYX_OPTION(ENABLE_URLTESTS  "Enable for URL tests" OFF ALL)
 
 # GCC specific
 LYX_OPTION(PROFILE              "Build profile version" OFF GCC)
@@ -759,6 +760,9 @@ endif()
 
 add_subdirectory(sourcedoc "${TOP_BINARY_DIR}/sourcedoc")
 add_subdirectory(development/autotests "${TOP_BINARY_DIR}/autotests")
+if(LYX_ENABLE_URLTESTS)
+	add_subdirectory(development/checkurls "${TOP_BINARY_DIR}/checkurls")
+endif()
 
 message(STATUS)
 message(STATUS "Build options, switch LYX_* variables by -DLYX_*=ON or OFF:")
