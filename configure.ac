@@ -61,11 +61,9 @@ done
 AM_PATH_PYTHON(2.4.0,, :)
 AC_PROG_RANLIB
 
-### we need to know the byte order for unicode conversions
-AC_C_BIGENDIAN
-
 ### Check for a C++ compiler
 LYX_PROG_CXX
+AC_LANG(C++)
 
 ### Objective-C compiler
 AC_PROG_OBJC
@@ -96,6 +94,9 @@ AC_CHECK_LIB(gdi32, main)
 
 LYX_USE_INCLUDED_BOOST
 LYX_USE_INCLUDED_MYTHES
+
+### we need to know the byte order for unicode conversions
+AC_C_BIGENDIAN
 
 # Needed for our char_type
 AC_CHECK_SIZEOF(wchar_t)
@@ -181,7 +182,7 @@ AC_FUNC_SELECT_ARGTYPES
 LYX_CHECK_SPELL_ENGINES
 
 lyx_client_subdir=true
-AC_LANG_PUSH(C)
+dnl AC_LANG_PUSH(C)
 dnl LIBS already contains some X extra libs that may interfere.
 save_LIBS="$LIBS"
 LIBS=
@@ -194,7 +195,7 @@ AC_CHECK_FUNCS(fcntl,
 AC_SUBST(SOCKET_LIBS,$LIBS)
 LIBS="$save_LIBS"
 AM_CONDITIONAL(BUILD_CLIENT_SUBDIR, $lyx_client_subdir)
-AC_LANG_POP(C)
+dnl AC_LANG_POP(C)
 
 lyx_win_res=false;
 case ${host} in
