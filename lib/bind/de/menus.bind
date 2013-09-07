@@ -118,6 +118,20 @@ Format 1
 # \bind "M-a S-§"		"layout Subsection*"	# M-a S-3
 # \bind "M-a S-dollar"		"layout Subsubsection*"	# M-a S-4
 
+#
+# Argumente
+#
+
+\bind "M-g 1"			"argument-insert 1"
+\bind "M-g 2"			"argument-insert 2"
+\bind "M-g 3"			"argument-insert 3"
+\bind "M-g 4"			"argument-insert 4"
+\bind "M-g 5"			"argument-insert 5"
+\bind "M-g 6"			"argument-insert 6"
+\bind "M-g 7"			"argument-insert 7"
+\bind "M-g 8"			"argument-insert 8"
+\bind "M-g 9"			"argument-insert 9"
+
 
 #
 # Menü Zeichensatz
