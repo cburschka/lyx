@@ -35,6 +35,7 @@ foreach(_fl ${_tex_tests})
       -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}
       -DTESTFILE=${fl}
       -P ${TOP_SRC_DIR}/src/tex2lyx/test/runtests.cmake)
+  set_tests_properties(tex2lyx/roundtrip/${_fl} PROPERTIES RESOURCE_LOCK "runtests.lock" LABELS "roundtrip")
   add_test(NAME tex2lyx/cmplyx/${_fl}
     WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
     COMMAND ${CMAKE_COMMAND}
@@ -48,6 +49,7 @@ foreach(_fl ${_tex_tests})
       -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}
       -DTESTFILE=${fl}
       -P ${TOP_SRC_DIR}/src/tex2lyx/test/runtests.cmake)
+  set_tests_properties(tex2lyx/cmplyx/${_fl} PROPERTIES RESOURCE_LOCK "runtests.lock" LABELS "cmplyx")
 endforeach()
 
 add_dependencies(lyx_run_tests ${_tex2lyx} ${_lyx})

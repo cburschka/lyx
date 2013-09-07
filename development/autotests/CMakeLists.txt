@@ -95,6 +95,8 @@ if(Q_WS_X11)
         -DPACKAGE=${PACKAGE}
         -DLOCALE_DIR=${LOCALE_DIR}
         -P ${TOP_SRC_DIR}/development/autotests/single-test.cmake)
+      settestlabel(keytest/${_t} "key")
+      set_tests_properties(keytest/${_t} PROPERTIES RUN_SERIAL ON)
     endforeach()
   endif()
 endif()
@@ -181,6 +183,7 @@ foreach(libsubfolder doc examples templates)
             -Dfile=${f}
             -Dreverted=${reverted}
             -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
+      setmarkedtestlabel(${TestName} ${reverted} "export")
     endif()
     set(TestName "lyx2lyx/${libsubfolder}/${f}")
     maketestname(TestName reverted revertedTests ignoredTests)
@@ -191,6 +194,7 @@ foreach(libsubfolder doc examples templates)
           -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}
           -DLYXFILE=${LIBSUB_SRC_DIR}/${f}.lyx
           -P "${TOP_SRC_DIR}/development/autotests/lyx2lyxtest.cmake")
+      setmarkedtestlabel(${TestName} ${reverted} "export")
     endif()
     set(TestName "check_load/${libsubfolder}/${f}")
     maketestname(TestName reverted revertedTests ignoredTests)
@@ -203,6 +207,7 @@ foreach(libsubfolder doc examples templates)
           -DPARAMS_DIR=${TOP_SRC_DIR}/development/autotests
           -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
           -P "${TOP_SRC_DIR}/development/autotests/check_load.cmake")
+      setmarkedtestlabel(${TestName} ${reverted} "load")
     endif()
     getoutputformats("${LIBSUB_SRC_DIR}/${f}.lyx" formatlist)
     foreach(format ${formatlist})
@@ -220,6 +225,7 @@ foreach(libsubfolder doc examples templates)
             -Dfile=${f}
             -Dreverted=${reverted}
             -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
+        setmarkedtestlabel(${TestName} ${reverted} "export")
       endif()
     endforeach()
   endforeach()

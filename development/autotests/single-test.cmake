@@ -75,7 +75,7 @@ endif()
 # Environments needed by keytest.py
 set(ENV{PACKAGE} ${PACKAGE})
 set(ENV{LOCALE_DIR} ${LOCALE_DIR})
-set(ENV{LYX_LOCALEDIR} "${WORKDIR}/../locale")
+set(ENV{LYX_LOCALEDIR} "${LOCALE_DIR}")
 set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
 set(ENV{LYX_PID} ${pidres})
 set(ENV{LYX_WINDOW_NAME} ${LYX_WINDOW_NAME})

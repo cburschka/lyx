@@ -48,4 +48,8 @@ add_test(NAME "check_invalid_urls"
     "extraURLS=${CMAKE_CURRENT_SOURCE_DIR}/knownInvalidURLS"
     "revertedURLS=${CMAKE_CURRENT_SOURCE_DIR}/knownInvalidURLS")
 
+set_tests_properties("check_accessible_urls" "check_inaccessible_urls" "check_invalid_urls"
+        PROPERTIES RESOURCE_LOCK "url.lock" LABELS "url")
 
+settestlabel("check_inaccessible_urls" "reverted")
+settestlabel("check_invalid_urls" "reverted")
