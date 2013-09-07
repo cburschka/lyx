@@ -29,4 +29,5 @@ foreach(bns ${layout_files})
 
   add_test(NAME "check_layout/${bns}"
     COMMAND check_layout "${TOP_SRC_DIR}/lib/layouts/${bn}")
+  settestlabel("check_layout/${bns}" "layout")
 endforeach()
