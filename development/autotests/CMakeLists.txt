@@ -203,8 +203,6 @@ foreach(libsubfolder doc examples templates)
           -DPARAMS_DIR=${TOP_SRC_DIR}/development/autotests
           -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
           -P "${TOP_SRC_DIR}/development/autotests/check_load.cmake")
-    else()
-      message("ignored test")
     endif()
     getoutputformats("${LIBSUB_SRC_DIR}/${f}.lyx" formatlist)
     foreach(format ${formatlist})
