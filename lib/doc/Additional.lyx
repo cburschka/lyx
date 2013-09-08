@@ -7099,7 +7099,44 @@ $$o
 
 \begin_layout Standard
 Note that only some of the viewers provide full forward search functionality,
- among them yap, xdvi, okular and Sumatra PDF.
+ among them yap, xdvi, okular
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+You might want to set 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+okular --unique
+\end_layout
+
+\end_inset
+
+ in 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+File Handling\SpecialChar \menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ and Sumatra PDF
 \begin_inset Foot
 status collapsed
 
@@ -7116,6 +7153,7 @@ target "http://www.istri.fr/zip/CMCDDE.zip"
 
 \end_inset
 
+.
  While many of the widespread PDF viewers (most notably Adobe Reader) do
  not support forward search at all, some other viewers -- e.
 \begin_inset space \thinspace{}
