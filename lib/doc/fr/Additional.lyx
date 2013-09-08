@@ -5882,7 +5882,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-DISPLAY=:0.0 xdvi -editor 'lyxeditor.sh %f %l'
+DISPLAY=:0.0 xdvi -editor "lyxeditor.sh %f %l"
 \end_layout
 
 \end_inset
@@ -5897,7 +5897,7 @@ DISPLAY=:0.0 xdvi -editor 'lyxeditor.sh %f %l'
 status collapsed
 
 \begin_layout Plain Layout
-xdvi -editor 'lyxeditor.sh %f %l'
+xdvi -editor "lyxeditor.sh %f %l"
 \end_layout
 
 \end_inset
