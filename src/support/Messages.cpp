@@ -305,6 +305,8 @@ docstring const Messages::get(string const & m) const
 
 namespace lyx {
 
+std::string Messages::gui_lang_;
+
 Messages::Messages(string const & /* l */) {}
 
 docstring const Messages::get(string const & m) const
