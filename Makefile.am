@@ -46,7 +46,7 @@ rpmdist: dist
 	rm lyx.png; exit $$saved_status
 
 doxydoc:
-	cd sourcedoc; make doxydoc
+	cd sourcedoc; $(MAKE) doxydoc
 
 lfundoc:
 	development/tools/gen_lfuns.py src/LyXAction.cpp > lib/doc/LFUNs.lyx
@@ -54,8 +54,16 @@ lfundoc:
 keystest:
 	development/keystest/lyx_make.sh
 
+alltests: check alltests-recursive
+
+alltests-recursive:
+	cd src; $(MAKE) alltests-recursive
+
+updatetests:
+	cd src; $(MAKE) updatetests
+
 lgbtags:
 	etags --totals=yes --recurse=yes -o TAGS $(top_srcdir)/*
 
-.PHONY: doxydoc
+.PHONY: doxydoc alltests alltests-recursive updatetests
 

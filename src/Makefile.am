@@ -668,9 +668,19 @@ endif
 EXTRA_DIST += \
 	tests/test_layout
 
+alltests: check alltests-recursive
 
-TESTS = \
-	tests/test_layout
+alltests-recursive: check_layout
+	@srcdir=$(srcdir) $(srcdir)/tests/test_layout; \
+	if test $$? -eq 0; then \
+		echo -e "====================\nlayout tests passed.\n===================="; \
+	else \
+		echo -e "====================\nlayout tests failed.\n===================="; \
+	fi
+	cd tex2lyx; $(MAKE) alltests-recursive
+
+updatetests:
+	cd tex2lyx; $(MAKE) updatetests
 
 check_PROGRAMS = \
 	check_layout
@@ -699,3 +709,4 @@ check_layout_SOURCES = \
 	support/tests/boost.cpp \
 	support/tests/dummy_functions.cpp
 
+.PHONY: alltests alltests-recursive updatetests

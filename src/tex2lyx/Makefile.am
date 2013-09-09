@@ -53,7 +53,16 @@ TEST_RESULTS = \
 	test/verbatim.lyx.lyx \
 	test/XeTeX-polyglossia.lyx.lyx
 
-TESTS = test/runtests.py
+alltests: check alltests-recursive
+
+alltests-recursive: tex2lyx
+	@$(PYTHON) "$(srcdir)/test/runtests.py"; \
+	if test $$? -eq 0; then \
+		echo -e "=====================\ntex2lyx tests passed.\n====================="; \
+	else \
+		echo -e "=====================\ntex2lyx tests failed.\n====================="; \
+	fi
+
 updatetests: tex2lyx
 	$(PYTHON) "$(srcdir)/test/runtests.py" ./tex2lyx "$(top_srcdir)/lib/scripts" "$(srcdir)/test"
 
@@ -107,3 +116,5 @@ tex2lyx_LDADD = \
 if INSTALL_MACOSX
 tex2lyx_LDFLAGS = -framework AppKit
 endif
+
+.PHONY: alltests alltests-recursive updatetests
