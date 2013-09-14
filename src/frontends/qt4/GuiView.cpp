@@ -2385,7 +2385,7 @@ bool GuiView::exportBufferAs(Buffer & b)
 	dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 
 	QStringList types;
-	types << "Any supported format (*.*)";
+	types << qt_("Any supported format (*.*)");
 	Formats::const_iterator it = formats.begin();
 	vector<Format const *> export_formats;
 	for (; it != formats.end(); ++it)
@@ -2395,7 +2395,9 @@ bool GuiView::exportBufferAs(Buffer & b)
 	sort(export_formats.begin(), export_formats.end(), cmp);
 	vector<Format const *>::const_iterator fit = export_formats.begin();
 	for (; fit != export_formats.end(); ++fit)
-		types << toqstr((*fit)->prettyname() + " (*." + (*fit)->extension() + ")");
+		types << toqstr(bformat(_("%1$s (*.%2$s)"),
+					translateIfPossible(from_utf8((*fit)->prettyname())),
+					from_ascii((*fit)->extension())));
 	QString filter;
 	FileDialog::Result result =
 		dlg.save(toqstr(fname.onlyPath().absFileName()),
