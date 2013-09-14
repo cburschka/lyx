@@ -134,7 +134,7 @@ void GuiSearch::wrap_dispatch(const FuncRequest & func, bool forward) {
 			q = _("End of file reached while searching forward.\n"
 			  "Continue searching from the beginning?");
 		else
-			q = _("End of file reached while searching backward.\n"
+			q = _("Beginning of file reached while searching backward.\n"
 			  "Continue searching from the end?");
 		int wrap_answer = frontend::Alert::prompt(_("Wrap search?"),
 			q, 0, 1, _("&Yes"), _("&No"));
