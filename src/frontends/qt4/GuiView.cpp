@@ -2372,7 +2372,8 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname, RenameKind kin
 struct PrettyNameComparator
 {
 	bool operator()(Format const *first, Format const *second) const {
-		return compare_ascii_no_case(first->prettyname(), second->prettyname()) <= 0;
+		return compare_no_case(translateIfPossible(from_ascii(first->prettyname())),
+				       translateIfPossible(from_ascii(second->prettyname()))) <= 0;
 	}
 };
 
@@ -2385,7 +2386,8 @@ bool GuiView::exportBufferAs(Buffer & b)
 	dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 
 	QStringList types;
-	types << qt_("Any supported format (*.*)");
+	QString const anyformat = qt_("Any supported format (*.*)");
+	types << anyformat;
 	Formats::const_iterator it = formats.begin();
 	vector<Format const *> export_formats;
 	for (; it != formats.end(); ++it)
@@ -2418,7 +2420,7 @@ bool GuiView::exportBufferAs(Buffer & b)
 	string fmt_prettyname = s.substr(0, pos);
 	string fmt_name;
 	fname.set(fromqstr(result.second));
-	if (fmt_prettyname == "Any supported format")
+	if (filter == anyformat)
 		fmt_name = formats.getFormatFromExtension(fname.extension());
 	else
 		fmt_name = fmap[from_utf8(fmt_prettyname)];
