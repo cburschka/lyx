@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-08-30 12:25+0200\n"
+"POT-Creation-Date: 2013-09-14 13:17+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -4929,7 +4929,7 @@ msgstr "Ako oddeliť odstavce"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:35
 msgid "Indent consecutive paragraphs"
-msgstr "Odsadiť po sebe idúce odstavce"
+msgstr "Odsadenie postupných odstavcov"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:38
 msgid "&Indentation:"
@@ -5846,7 +5846,7 @@ msgstr "Číslo"
 
 #: lib/layouts/aastex.layout:179
 msgid "Consecutive number for the alternative affiliations"
-msgstr "Následné číslo pre alternatívne príslušenstva"
+msgstr "Postupné číslo pre alternatívne príslušenstvá"
 
 #: lib/layouts/aastex.layout:183
 msgid "Alternative affiliation:"
@@ -6825,7 +6825,7 @@ msgstr "Príslušenstvo autora"
 
 #: lib/layouts/agutex.layout:125
 msgid "Consecutive number for the author affiliations"
-msgstr "Následné číslo pre autorove príslušenstva"
+msgstr "Postupné číslo pre autorove príslušenstvá"
 
 #: lib/layouts/agutex.layout:129
 msgid "Author affiliation:"
@@ -10163,7 +10163,7 @@ msgstr "Prefix Príslušenstva"
 
 #: lib/layouts/jasatex.layout:127
 msgid "A prefix like 'Also at '"
-msgstr "Prefix ako napr. 'Aj na '"
+msgstr "Prefix ako napr. 'Aj v '"
 
 #: lib/layouts/jasatex.layout:132 lib/layouts/moderncv.layout:149
 msgid "Homepage"
@@ -11024,11 +11024,11 @@ msgstr "Príslušenstvo(alternatívne):"
 
 #: lib/layouts/revtex4-1.layout:103 lib/layouts/revtex4.layout:158
 msgid "Alternate Affiliation Option"
-msgstr "Voľba Alternatívne Príslušenstvo"
+msgstr "Voľba pre Alternatívne Príslušenstvo"
 
 #: lib/layouts/revtex4-1.layout:104 lib/layouts/revtex4.layout:159
 msgid "Optional argument to the altaffiliation command"
-msgstr "Nepovinný argument pre príkaz alternatívne príslušenstvo"
+msgstr "Nepovinný argument pre príkaz \\altaffiliation"
 
 #: lib/layouts/revtex4-1.layout:110 lib/layouts/revtex4.layout:165
 msgid "Affiliation (none)"
@@ -12527,18 +12527,6 @@ msgstr "Petit"
 msgid "Svgraybox"
 msgstr "Sv šedý rámec"
 
-#: lib/layouts/theorems-ams-bytype.inc:57 lib/layouts/theorems-ams.inc:31
-#: lib/layouts/theorems-bytype.inc:33 lib/layouts/theorems-starred.inc:32
-#: lib/layouts/theorems.inc:31
-msgid "Alternative Theorem String|S"
-msgstr "Alternatívny Reťazec Teorémy|o"
-
-#: lib/layouts/theorems-ams-bytype.inc:58 lib/layouts/theorems-ams.inc:32
-#: lib/layouts/theorems-bytype.inc:34 lib/layouts/theorems.inc:32
-#: lib/layouts/theorems-starred.inc:33
-msgid "Alternative theorem string"
-msgstr "Alternatívny reťazec teorémy"
-
 #: lib/layouts/theorems-ams-bytype.inc:169 lib/layouts/theorems-bytype.inc:145
 #: lib/layouts/theorems-without-preamble.inc:166
 msgid "Fact \\thefact."
@@ -13175,7 +13163,7 @@ msgstr "Príklad:"
 
 #: lib/layouts/linguistics.module:38
 msgid "Numbered Examples (consecutive)"
-msgstr "Číslovaný príklad (nepretržitý)"
+msgstr "Číslované príklady (postupne)"
 
 #: lib/layouts/linguistics.module:42
 msgid "Examples:"
@@ -26890,15 +26878,15 @@ msgid ""
 "End of file reached while searching forward.\n"
 "Continue searching from the beginning?"
 msgstr ""
-"Dosiahol som koniec súboru hľadajúc dopredu.\n"
+"Došlo ku koncu súboru hľadajúc dopredu.\n"
 "Pokračovať hľadaním od začiatku?"
 
 #: src/frontends/qt4/GuiSearch.cpp:137
 msgid ""
-"End of file reached while searching backward.\n"
+"Beginning of file reached while searching backward.\n"
 "Continue searching from the end?"
 msgstr ""
-"Dosiahol som začiatok súboru hľadajúc spätne.\n"
+"Došlo k začiatku súboru hľadajúc spätne.\n"
 "Pokračovať hľadaním od konca?"
 
 #: src/frontends/qt4/GuiSearch.cpp:155 src/lyxfind.cpp:367 src/lyxfind.cpp:385
@@ -27554,6 +27542,15 @@ msgstr "&Kopírovať"
 #: src/frontends/qt4/GuiView.cpp:2382
 msgid "Choose a filename to export the document as"
 msgstr "Zvoľte názov súboru, pod ktorým sa má dokument uložiť ako"
+
+#: src/frontends/qt4/GuiView.cpp:2388
+msgid "Any supported format (*.*)"
+msgstr "Akýkoľvek podporovaný format (*.*)"
+
+#: src/frontends/qt4/GuiView.cpp:2401
+#, c-format
+msgid "%1$s (*.%2$s)"
+msgstr "%1$s (%2$s)"
 
 #: src/frontends/qt4/GuiView.cpp:2470
 #, c-format
@@ -29564,6 +29561,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Alternative Theorem String|S"
+#~ msgstr "Alternatívny Reťazec Teorémy|o"
+
+#~ msgid "Alternative theorem string"
+#~ msgstr "Alternatívny reťazec teorémy"
 
 #~ msgid "Overlay Specifications|S"
 #~ msgstr "Špecifikácie prekrytia"
@@ -32243,3 +32246,10 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Alternative Theorem String"
 #~ msgstr "Alternatívny reťazec teorémy"
+
+#~ msgid ""
+#~ "End of file reached while searching backward.\n"
+#~ "Continue searching from the end?"
+#~ msgstr ""
+#~ "Dosiahol som začiatok súboru hľadajúc spätne.\n"
+#~ "Pokračovať hľadaním od konca?"
