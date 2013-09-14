@@ -2394,10 +2394,15 @@ bool GuiView::exportBufferAs(Buffer & b)
 	PrettyNameComparator cmp;
 	sort(export_formats.begin(), export_formats.end(), cmp);
 	vector<Format const *>::const_iterator fit = export_formats.begin();
-	for (; fit != export_formats.end(); ++fit)
+	map<docstring, string> fmap;
+	for (; fit != export_formats.end(); ++fit) {
+		docstring const loc_prettyname =
+			translateIfPossible(from_utf8((*fit)->prettyname()));
 		types << toqstr(bformat(_("%1$s (*.%2$s)"),
-					translateIfPossible(from_utf8((*fit)->prettyname())),
+					loc_prettyname,
 					from_ascii((*fit)->extension())));
+		fmap[loc_prettyname] = (*fit)->name();
+	}
 	QString filter;
 	FileDialog::Result result =
 		dlg.save(toqstr(fname.onlyPath().absFileName()),
@@ -2416,7 +2421,7 @@ bool GuiView::exportBufferAs(Buffer & b)
 	if (fmt_prettyname == "Any supported format")
 		fmt_name = formats.getFormatFromExtension(fname.extension());
 	else
-		fmt_name = formats.getFormatFromPrettyName(fmt_prettyname);
+		fmt_name = fmap[from_utf8(fmt_prettyname)];
 	LYXERR(Debug::FILES, "fmt_prettyname=" << fmt_prettyname
 	       << ", fmt_name=" << fmt_name << ", fname=" << fname.absFileName());
 
