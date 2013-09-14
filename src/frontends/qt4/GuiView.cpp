@@ -2396,14 +2396,15 @@ bool GuiView::exportBufferAs(Buffer & b)
 	PrettyNameComparator cmp;
 	sort(export_formats.begin(), export_formats.end(), cmp);
 	vector<Format const *>::const_iterator fit = export_formats.begin();
-	map<docstring, string> fmap;
+	map<QString, string> fmap;
 	for (; fit != export_formats.end(); ++fit) {
 		docstring const loc_prettyname =
 			translateIfPossible(from_utf8((*fit)->prettyname()));
-		types << toqstr(bformat(_("%1$s (*.%2$s)"),
-					loc_prettyname,
-					from_ascii((*fit)->extension())));
-		fmap[loc_prettyname] = (*fit)->name();
+		QString const loc_filter = toqstr(bformat(_("%1$s (*.%2$s)"),
+						     loc_prettyname,
+						     from_ascii((*fit)->extension())));
+		types << loc_filter;
+		fmap[loc_filter] = (*fit)->name();
 	}
 	QString filter;
 	FileDialog::Result result =
@@ -2414,17 +2415,13 @@ bool GuiView::exportBufferAs(Buffer & b)
 	if (result.first != FileDialog::Chosen)
 		return false;
 
-	string s = fromqstr(filter);
-	size_t pos = s.find(" (*.");
-	LATTEST(pos != string::npos);
-	string fmt_prettyname = s.substr(0, pos);
 	string fmt_name;
 	fname.set(fromqstr(result.second));
 	if (filter == anyformat)
 		fmt_name = formats.getFormatFromExtension(fname.extension());
 	else
-		fmt_name = fmap[from_utf8(fmt_prettyname)];
-	LYXERR(Debug::FILES, "fmt_prettyname=" << fmt_prettyname
+		fmt_name = fmap[filter];
+	LYXERR(Debug::FILES, "filter=" << fromqstr(filter)
 	       << ", fmt_name=" << fmt_name << ", fname=" << fname.absFileName());
 
 	if (fmt_name.empty() || fname.empty())
