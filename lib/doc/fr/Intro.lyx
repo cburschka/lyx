@@ -196,11 +196,11 @@ Qu'est-ce que LyX ?
 LyX est un système de préparation de documents.
  Il est excellent si vous voulez écrire des articles scientifiques et techniques
  complexes avec des mathématiques, des références croisées, des bibliographies,
- des index, etc\SpecialChar \ldots{}
- Il est très bon pour tous les documents de toutes tailles
- pour lesquels sont requises les fonctions habituelles d'un traitement de
- texte: numérotation des sections et pagination automatiques, correction
- orthographique, et ainsi de suite.
+ des index, etc.
+ Il est très bon pour tous les documents de toutes tailles pour lesquels
+ sont requises les fonctions habituelles d'un traitement de texte: numérotation
+ des sections et pagination automatiques, correction orthographique, et
+ ainsi de suite.
  Il peut aussi servir à écrire une lettre à votre maman, même si je vous
  accorde qu'il existe sans doute des programmes plus simples pour ça.
  Il n'est certainement pas le meilleur outil pour créer des affiches, tracts
@@ -510,9 +510,8 @@ WYSIWYM
 voulez
 \emph default
  définir exactement où va chaque chose, parce qu'il n'y a pas d'unités fonctionn
-elles comme des paragraphes, des sections, etc\SpecialChar \ldots{}
- Ça ne veut pas dire qu'il
- manque à LyX des fonctions utiles.
+elles comme des paragraphes, des sections, etc.
+ Ça ne veut pas dire qu'il manque à LyX des fonctions utiles.
  Ça signifie simplement que ce n'est pas l'outil adapté – vous n'utilisez
  pas un tournevis pour enfoncer des clous (sauf si votre tournevis est garanti
  à vie).
@@ -581,8 +580,7 @@ sauts de page;
 \end_layout
 
 \begin_layout Itemize
-interligne (simple, double, etc\SpecialChar \ldots{}
-);
+interligne (simple, double, etc.);
 \end_layout
 
 \begin_layout Itemize
@@ -594,8 +592,7 @@ polices et tailles de police;
 \end_layout
 
 \begin_layout Itemize
-types de caractère (gras, italique, souligné, etc\SpecialChar \ldots{}
-).
+types de caractère (gras, italique, souligné, etc.).
 \end_layout
 
 \begin_layout Standard
@@ -795,8 +792,7 @@ dvi
 \family typewriter
 dvi
 \family default
-, ou le convertir vers d'autres formats comme PostScript, PDF, etc\SpecialChar \ldots{}
-
+, ou le convertir vers d'autres formats comme PostScript, PDF, etc.
 \end_layout
 
 \begin_layout Standard
@@ -2685,7 +2681,7 @@ lyx-fr-subscribe@lists.lyx.org
 \begin_layout Standard
 D'autre part il faut prendre garde à ne modifier que la dernière version
  de la traduction.
- C'est toujours celle qui est sur le serveur SVN 
+ C'est toujours celle qui est sur le serveur Trac 
 \lang english
 
 \begin_inset Flex URL
@@ -2708,7 +2704,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.lyx.org/Translation/
+http://www.lyx.org/WebFr.Translation/
 \end_layout
 
 \end_inset
