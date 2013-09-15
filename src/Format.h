@@ -156,8 +156,6 @@ public:
 	std::string getFormatFromFile(support::FileName const & filename) const;
 	/// Finds a format from a file extension. Returns string() if not found.
 	std::string getFormatFromExtension(std::string const & ext) const;
-	/// Finds a format by pretty name. Returns string() if not found.
-	std::string getFormatFromPrettyName(std::string const & prettyname) const;
 	/** Returns true if the file referenced by \p filename is zipped and
 	 ** needs to be unzipped for being handled
 	 ** @note For natively zipped formats, such as dia/odg, this returns false.

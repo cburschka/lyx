@@ -100,19 +100,6 @@ private:
 };
 
 
-class FormatPrettyNameEqual : public unary_function<Format, bool> {
-public:
-	FormatPrettyNameEqual(string const & prettyname)
-		: prettyname_(prettyname)
-	{}
-	bool operator()(Format const & f) const
-	{
-		return f.prettyname() == prettyname_;
-	}
-private:
-	string prettyname_;
-};
-
 } //namespace anon
 
 bool Format::formatSorter(Format const * lhs, Format const * rhs)
@@ -468,19 +455,6 @@ string Formats::getFormatFromExtension(string const & ext) const
 				<< ext << " -> " << cit->name());
 			return cit->name();
 		}
-	}
-	return string();
-}
-
-
-string Formats::getFormatFromPrettyName(string const & prettyname) const
-{
-	if (!prettyname.empty()) {
-		Formats::const_iterator cit =
-			find_if(formatlist.begin(), formatlist.end(),
-				FormatPrettyNameEqual(prettyname));
-		if (cit != formats.end())
-			return cit->name();
 	}
 	return string();
 }
