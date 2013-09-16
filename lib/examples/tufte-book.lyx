@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 469
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass tufte-book
@@ -49,7 +49,7 @@
 \use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
-\cite_engine_type numerical
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -105,8 +105,18 @@ Note 2
 \series default
 : If you wish to compile to PDF with plain LaTeX (instead of pdfTeX), there
  is currently a bug in the Tufte class that causes errors.
- You can add the class option 'nols' to get rid of the errors, but this
- also removes letterspacing, an important part of the Tufte design.
+ You can add the class option 'nols' (put this in the 
+\begin_inset Quotes eld
+\end_inset
+
+Custom
+\begin_inset Quotes erd
+\end_inset
+
+ field of Document\SpecialChar \menuseparator
+Settings \SpecialChar \menuseparator
+Document Class) to get rid of the errors, but
+ this also removes letterspacing, an important part of the Tufte design.
 \end_layout
 
 \end_inset
