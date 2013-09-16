@@ -3307,12 +3307,16 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		case LFUN_BUFFER_EXPORT: {
 			if (!doc_buffer)
 				break;
+			FileName target_dir = doc_buffer->fileName().onlyPath();
+			string const dest = cmd.getArg(1);
+			if (!dest.empty() && FileName::isAbsolute(dest))
+				target_dir = FileName(support::onlyPath(dest));
 			// GCC only sees strfwd.h when building merged
 			if (::lyx::operator==(cmd.argument(), "custom")) {
 				dispatch(FuncRequest(LFUN_DIALOG_SHOW, "sendto"), dr);
 				break;
 			}
-			if (!doc_buffer->fileName().onlyPath().isDirWritable()) {
+			if (!target_dir.isDirWritable()) {
 				exportBufferAs(*doc_buffer);
 				break;
 			}
