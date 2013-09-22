@@ -139,6 +139,8 @@ public:
 	///
 	bool hasSettings() const { return true; }
 	///
+	bool clickable(int, int) const { return true; }
+	///
 	InsetCode lyxCode() const { return SPACE_CODE; }
 	/// is this an expandible space (rubber length)?
 	bool isStretchableSpace() const;

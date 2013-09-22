@@ -32,6 +32,8 @@ public:
 	///
 	bool hasSettings() const { return true; }
 	///
+	bool clickable(int, int) const { return true; }
+	///
 	std::string contextMenuName() const;
 	///
 	static void string2params(std::string const &, VSpace &);
