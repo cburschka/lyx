@@ -42,18 +42,34 @@ use strict;
 use parsePoLine;
 use Term::ANSIColor qw(:constants);
 use File::Temp;
-use Cwd;
+use Cwd qw(abs_path getcwd);
 
 my ($status, $foundline, $msgid, $msgstr, $fuzzy);
 
-my %Messages = ();              # Used for original po-file
-my %newMessages = ();           # new po-file
-my %Untranslated = ();          # inside new po-file
-my %Fuzzy = ();                 # inside new po-file
-my $result = 0;                 # exit value
+my %Messages = ();		# Used for original po-file
+my %newMessages = ();		# new po-file
+my %Untranslated = ();		# inside new po-file
+my %Fuzzy = ();			# inside new po-file
+my $result = 0;			# exit value
 my $printlines = 1;
 my @names = ();
+my %options = (
+  "--display-fuzzy" => 1,
+  "--display-untranslated" => 1,
+    );
 
+# Check for options
+my ($opt, $val);
+while (($opt=$ARGV[0]) =~ s/=(\d+)$//) {
+  $val = $1;
+  if (defined($options{$opt})) {
+    $options{$opt} = $val;
+    shift(@ARGV);
+  }
+  else {
+    die("illegal option \"$opt\"\n");
+  }
+}
 # Check first, if called as standalone program for git
 if ($ARGV[0] =~ /^-r(.*)/) {
   my $rev = $1;
@@ -61,7 +77,12 @@ if ($ARGV[0] =~ /^-r(.*)/) {
   if ($rev eq "") {
     $rev = shift(@ARGV);
   }
+  # convert arguments to full path ...
+  for my $argf1 (@ARGV) {
+    $argf1 = abs_path($argf1);
+  }
   for my $argf (@ARGV) {
+    #my $argf = abs_path($argf1);
     my $baseargf;
     my $filedir;
     if ($argf =~ /^(.*)\/([^\/]+)$/) {
@@ -216,7 +237,10 @@ sub diff_po($$)
     }
     elsif ($newMessages{$k}->{fuzzy}) {
       #fuzzy string
-      $Fuzzy{$newMessages{$k}->{line}} = $k;
+      # mark only, if not in alternative area
+      if (! $newMessages{$k}->{alternative}) {
+	$Fuzzy{$newMessages{$k}->{line}} = $k;
+      }
     }
     if (exists($Messages{$k})) {
       &printIfDiff($k, $Messages{$k}, $newMessages{$k});
@@ -267,8 +291,12 @@ sub diff_po($$)
       print GREEN "> msgstr = \"" . $newMessages{$k}->{msgstr} . "\"\n", RESET;
     }
   }
-  &printExtraMessages("fuzzy", \%Fuzzy, \@names);
-  &printExtraMessages("untranslated", \%Untranslated, \@names);
+  if ($options{"--display-fuzzy"}) {
+    &printExtraMessages("fuzzy", \%Fuzzy, \@names);
+  }
+  if ($options{"--display-untranslated"}) {
+    &printExtraMessages("untranslated", \%Untranslated, \@names);
+  }
 }
 
 sub check_po_file_readable($$)
@@ -325,11 +353,11 @@ sub printExtraMessages($$$)
 {
   my ($type, $rExtra, $rNames) = @_;
   #print "file1 = $rNames->[0], file2 = $rNames->[1]\n";
-  my @UntranslatedKeys = sort { $a <=> $b;} keys %{$rExtra};
+  my @sortedExtraKeys = sort { $a <=> $b;} keys %{$rExtra};
 
-  if (@UntranslatedKeys > 0) {
-    print "Still " . 0 + @UntranslatedKeys . " $type messages found in $rNames->[0]\n";
-    for my $l (@UntranslatedKeys) {
+  if (@sortedExtraKeys > 0) {
+    print "Still " . 0 + @sortedExtraKeys . " $type messages found in $rNames->[0]\n";
+    for my $l (@sortedExtraKeys) {
       print "> line $l: \"" . $rExtra->{$l} . "\"\n";
     }
   }
