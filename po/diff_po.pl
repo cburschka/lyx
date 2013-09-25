@@ -60,10 +60,37 @@ my %options = (
 
 # Check for options
 my ($opt, $val);
+
+sub get_env_name($)
+{
+  my ($e) = @_;
+  return undef if ($e !~ s/^\-\-//);
+  $e = uc($e);
+  $e =~ s/\-/_/g;
+  return "DIFF_PO_" . $e;
+}
+
+# Set option-defaults from environment
+# git: not needed, diff is not recursive here
+# svn: needed to pass options through --diff-cmd parameter
+# hg:  needed to pass options through extdiff parameter
+for my $opt (keys %options) {
+  my $e = &get_env_name($opt);
+  if (defined($e)) {
+    if (defined($ENV{$e})) {
+      $options{$opt} = $ENV{$e};
+    }
+  }
+}
+
 while (($opt=$ARGV[0]) =~ s/=(\d+)$//) {
   $val = $1;
   if (defined($options{$opt})) {
     $options{$opt} = $val;
+    my $e = &get_env_name($opt);
+    if (defined($e)) {
+      $ENV{$e} = $val;
+    }
     shift(@ARGV);
   }
   else {
@@ -119,7 +146,7 @@ if ($ARGV[0] =~ /^-r(.*)/) {
     if ($repo eq ".git") {
       my @args = ();
       my $tmpfile = File::Temp->new();
-      $rev = &getrev($repo, $rev);
+      $rev = &getrev($repo, $rev, $argf);
       push(@args, "-L", $argf . "    (" . $rev . ")");
       push(@args, "-L", $argf . "    (local copy)");
       print "git show $rev:$relargf\n";
@@ -136,7 +163,7 @@ if ($ARGV[0] =~ /^-r(.*)/) {
     }
     elsif ($repo eq ".svn") {
       # program svnversion needed here
-      $rev = &getrev($repo, $rev);
+      $rev = &getrev($repo, $rev, $argf);
       # call it again indirectly
       my @cmd = ("svn", "diff", "-r$rev", "--diff-cmd", $0, $relargf);
       print "cmd = " . join(' ', @cmd) . "\n";
@@ -148,7 +175,7 @@ if ($ARGV[0] =~ /^-r(.*)/) {
       #     [extensions]
       #     hgext.extdiff =
       #
-      $rev = &getrev($repo, $rev);
+      $rev = &getrev($repo, $rev, $argf);
       my @cmd = ("hg", "extdiff", "-r", "$rev", "-p", $0, $relargf);
       print "cmd = " . join(' ', @cmd) . "\n";
       system(@cmd);
@@ -201,12 +228,14 @@ sub diff_po($$)
   %Untranslated = ();
   %Fuzzy = ();
   @names = ();
+  my $switchargs = 0;
   while(defined($args[0])) {
     last if ($args[0] !~ /^\-/);
     my $param = shift(@args);
     if ($param eq "-L") {
       my $name = shift(@args);
       push(@names, $name);
+      $switchargs = 1;
     }
   }
   if (! defined($names[0])) {
@@ -220,6 +249,11 @@ sub diff_po($$)
     die("names = \"", join('" "', @names) . "\"... args = \"" . join('" "', @args) . "\" Expected exactly 2 parameters");
   }
 
+  if ($switchargs) {
+    my $tmp = $args[0];
+    $args[0] =  $args[1];
+    $args[1] = $tmp;
+  }
   &check_po_file_readable($names[0], $args[0]);
   &check_po_file_readable($names[1], $args[1]);
 
@@ -365,9 +399,9 @@ sub printExtraMessages($$$)
 
 #
 # get repository dependent revision representation
-sub getrev($$)
+sub getrev($$$)
 {
-  my ($repo, $rev) = @_;
+  my ($repo, $rev, $argf) = @_;
   my $revnum;
 
   if ($rev eq "HEAD") {
@@ -378,22 +412,68 @@ sub getrev($$)
     $revnum = $2;
   }
   if ($repo eq ".hg") {
-    return "-$revnum";
-  }
-  elsif ($repo eq ".git") {
-    return("HEAD~$revnum");
-  }
-  elsif ($repo eq ".svn") {
-    if (open(VI, "svnversion |")) {
-      while (my $r1 = <VI>) {
-	chomp($r1);
-	if ($r1 =~ /^((\d+):)?(\d+)M?$/) {
-	  $rev = $3-$revnum;
+    # try to get the revision of n-th previous change of the po-file
+    if (open(FIR, "hg log '$argf'|")) {
+      my $count = $revnum;
+      my $res = "-$revnum";
+      while (my $l = <FIR>) {
+	chomp($l);
+	if ($l =~ /:\s+(\d+):([^\s]+)$/) {
+	  $res = $2;
+	  last if ($count-- <= 0);
 	}
       }
-      close(VI);
+      close(FIR);
+      return($res);
     }
-    return $rev;
+    else {
+      return "-$revnum";
+    }
+  }
+  elsif ($repo eq ".git") {
+    # try to get the revision of n-th previous change of the po-file
+    if (open(FIR, "git log --skip=$revnum -1 '$argf'|")) {
+      my $res = "HEAD~$revnum";
+      while (my $l = <FIR>) {
+	chomp($l);
+	if ($l =~ /^commit\s+([^\s]+)$/) {
+	  $res = $1;
+	  last;
+	}
+      }
+      close(FIR);
+      return($res);
+    }
+    else {
+      return("HEAD~$revnum");
+    }
+  }
+  elsif ($repo eq ".svn") {
+    if (open(FIR, "svn log '$argf'|")) {
+      my $count = $revnum;
+      my $res = $rev;
+      while (my $l = <FIR>) {
+	chomp($l);
+	if ($l =~ /^r(\d+)\s+\|/) {
+	  $res = $1;
+	  last if ($count-- <= 0);
+	}
+      }
+      close(FIR);
+      return $res;
+    }
+    else {
+      if (open(VI, "svnversion |")) {
+	while (my $r1 = <VI>) {
+	  chomp($r1);
+	  if ($r1 =~ /^((\d+):)?(\d+)M?$/) {
+	    $rev = $3-$revnum;
+	  }
+	}
+	close(VI);
+      }
+      return $rev;
+    }
   }
   return $rev;
 }
