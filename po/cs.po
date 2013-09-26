@@ -5627,9 +5627,8 @@ msgid "Short Title|S"
 msgstr "Krátký titulek"
 
 #: lib/layouts/revtex4-1.layout:215
-#, fuzzy
 msgid "Short title as it appears in the running headers"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Short title as it appears in the running headers"
 
 #: lib/layouts/revtex4-1.layout:226 lib/layouts/iopart.layout:244
 #: lib/layouts/iopart.layout:258 lib/layouts/spie.layout:91
@@ -5904,9 +5903,8 @@ msgstr "EndOfFile"
 #: lib/layouts/g-brief2.layout:732 lib/layouts/g-brief2.layout:755
 #: lib/layouts/g-brief2.layout:777 lib/layouts/stdletter.inc:26
 #: lib/layouts/stdletter.inc:38
-#, fuzzy
 msgid "Postal Data"
-msgstr "Postal comment"
+msgstr "Postal Data"
 
 #: lib/layouts/lettre.layout:159 lib/layouts/lettre.layout:189
 #: lib/layouts/lettre.layout:215 lib/layouts/lettre.layout:238
@@ -6052,9 +6050,8 @@ msgstr "Headnote (optional):"
 #: lib/layouts/svglobal.layout:90 lib/layouts/svglobal.layout:92
 #: lib/layouts/svprobth.layout:124 lib/layouts/svprobth.layout:126
 #: lib/layouts/svjog.layout:94 lib/layouts/svjog.layout:96
-#, fuzzy
 msgid "thanks"
-msgstr "Thanks"
+msgstr "thanks"
 
 #: lib/layouts/svglobal.layout:102 lib/layouts/svprobth.layout:136
 #: lib/layouts/svjog.layout:106
@@ -6761,7 +6758,7 @@ msgstr "An alternative proof string"
 
 #: lib/layouts/siamltex.layout:206
 msgid "The title as it appears in the running headers"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Titulek tak, jak se objeví v hlavičkách"
 
 #: lib/layouts/siamltex.layout:306 lib/layouts/egs.layout:239
 #: lib/layouts/hollywood.layout:307 lib/layouts/broadway.layout:216
@@ -7425,16 +7422,14 @@ msgstr "Sectioning"
 
 #: lib/layouts/tufte-book.layout:81 lib/layouts/stdsections.inc:61
 #: lib/layouts/scrclass.inc:129
-#, fuzzy
 msgid "The chapter as it appears in the table of contents/running headers"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Kapitola tak, jak se objeví v obsahu/hlavičkách"
 
 #: lib/layouts/tufte-book.layout:108 lib/layouts/simplecv.layout:52
 #: lib/layouts/beamer.layout:258 lib/layouts/stdsections.inc:89
 #: lib/layouts/scrclass.inc:139
-#, fuzzy
 msgid "The section as it appears in the table of contents/running headers"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Sekce tak, jak se objeví v obsahu/hlavičkách"
 
 #: lib/layouts/tufte-book.layout:130
 msgid "Sidenote"
@@ -7979,16 +7974,14 @@ msgstr "Centered"
 
 #: lib/layouts/apa6.layout:351 lib/layouts/apa.layout:251
 #: lib/layouts/stdinsets.inc:520 src/insets/InsetCaption.cpp:412
-#, fuzzy
 msgid "standard"
-msgstr "Standardní"
+msgstr "standardní"
 
 #: lib/layouts/apa6.layout:356 lib/layouts/apa.layout:256
 #: lib/layouts/scrclass.inc:274 lib/layouts/scrclass.inc:294
 #: lib/layouts/stdinsets.inc:525
-#, fuzzy
 msgid "The caption as it appears in the list of figures/tables"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Popisek tak, jak se objeví v obsahu/hlavičkách"
 
 #: lib/layouts/apa6.layout:370 lib/layouts/apa.layout:270
 msgid "FitFigure"
@@ -8200,20 +8193,19 @@ msgstr "Prezentace"
 #: lib/layouts/beamer.layout:803 lib/layouts/beamer.layout:1090
 #: lib/layouts/beamer.layout:1113 lib/layouts/beamer.layout:1139
 #: lib/layouts/beamer.layout:1314
-#, fuzzy
 msgid "Overlay Specifications|v"
-msgstr "Vybrat sekce|e"
+msgstr "Overlay Specifications|v"
 
 #: lib/layouts/beamer.layout:87 lib/layouts/beamer.layout:120
 #: lib/layouts/beamer.layout:159
 msgid "Overlay specifications for this list"
-msgstr ""
+msgstr "Overlay specifications for this list"
 
 #: lib/layouts/beamer.layout:96 lib/layouts/beamer.layout:133
 #: lib/layouts/beamer.layout:168 lib/layouts/beamer.layout:699
 #: lib/layouts/powerdot.layout:281 lib/layouts/powerdot.layout:331
 msgid "Item Overlay Specifications"
-msgstr ""
+msgstr "Item Overlay Specifications"
 
 #: lib/layouts/beamer.layout:97 lib/layouts/beamer.layout:134
 #: lib/layouts/beamer.layout:169 lib/layouts/beamer.layout:544
@@ -8222,9 +8214,8 @@ msgstr ""
 #: lib/layouts/beamer.layout:1089 lib/layouts/beamer.layout:1112
 #: lib/layouts/beamer.layout:1138 lib/layouts/beamer.layout:1313
 #: lib/layouts/powerdot.layout:282 lib/layouts/powerdot.layout:332
-#, fuzzy
 msgid "On Slide"
-msgstr "Slide"
+msgstr "On Slide"
 
 #: lib/layouts/beamer.layout:98 lib/layouts/beamer.layout:135
 #: lib/layouts/beamer.layout:170 lib/layouts/beamer.layout:701
@@ -8233,51 +8224,47 @@ msgid "Overlay specifications for this item"
 msgstr ""
 
 #: lib/layouts/beamer.layout:125
-#, fuzzy
 msgid "Mini Template"
-msgstr "Š&ablona"
+msgstr "Mini Template"
 
 #: lib/layouts/beamer.layout:126
 msgid "Mini template for this list (see beamer manual for details)"
-msgstr ""
+msgstr "Mini template for this list (see beamer manual for details)"
 
 #: lib/layouts/beamer.layout:164
-#, fuzzy
 msgid "Longest label|s"
-msgstr "&Nejdelší značka"
+msgstr "Longest label|s"
 
 #: lib/layouts/beamer.layout:165
 msgid "The longest label in this list (to determine the indendation width)"
-msgstr ""
+msgstr "The longest label in this list (to determine the indendation width)"
 
 #: lib/layouts/beamer.layout:200 lib/layouts/beamer.layout:250
 #: lib/layouts/beamer.layout:280 lib/layouts/beamer.layout:307
 #: lib/layouts/beamer.layout:337 lib/layouts/beamer.layout:364
 #: lib/layouts/beamer.layout:394
 msgid "Mode"
-msgstr ""
+msgstr "Mode"
 
 #: lib/layouts/beamer.layout:201 lib/layouts/beamer.layout:251
 #: lib/layouts/beamer.layout:281 lib/layouts/beamer.layout:308
 #: lib/layouts/beamer.layout:338 lib/layouts/beamer.layout:365
 #: lib/layouts/beamer.layout:395
-#, fuzzy
 msgid "Mode Specification|S"
-msgstr "Přesunout sekci nahorů|n"
+msgstr "Mode Specification|S"
 
 #: lib/layouts/beamer.layout:202 lib/layouts/beamer.layout:252
 #: lib/layouts/beamer.layout:282 lib/layouts/beamer.layout:309
 #: lib/layouts/beamer.layout:339 lib/layouts/beamer.layout:366
 #: lib/layouts/beamer.layout:396
 msgid "Specify in which mode (article, presentation etc.) this header appears"
-msgstr ""
+msgstr "Specify in which mode (article, presentation etc.) this header appears"
 
 #: lib/layouts/beamer.layout:208 lib/layouts/tufte-handout.layout:41
 #: lib/layouts/memoir.layout:57 lib/layouts/stdsections.inc:32
 #: lib/layouts/scrclass.inc:119
-#, fuzzy
 msgid "The part as it appears in the table of contents/running headers"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Část tak, jak se objeví v obsahu/hlavičkách"
 
 #: lib/layouts/beamer.layout:247
 msgid "Section \\arabic{section}"
@@ -8293,9 +8280,8 @@ msgid "Subsection \\arabic{section}.\\arabic{subsection}"
 msgstr "Subsection \\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:315
-#, fuzzy
 msgid "The subsection as it appears in the table of contents/running headers"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Subsekce tak, jak se objeví v obsahu/hlavičkách"
 
 #: lib/layouts/beamer.layout:325
 msgid "\\arabic{section}.\\arabic{subsection}"
@@ -9477,101 +9463,87 @@ msgstr "Solution \\thesolution"
 
 #: lib/layouts/europecv.layout:3
 msgid "Europe CV"
-msgstr ""
+msgstr "Europe CV"
 
 #: lib/layouts/europecv.layout:47
-#, fuzzy
 msgid "FooterName"
-msgstr "Patička:"
+msgstr "FooterName"
 
 #: lib/layouts/europecv.layout:50
-#, fuzzy
 msgid "Footer name:"
-msgstr "Patička:"
+msgstr "Footer name:"
 
 #: lib/layouts/europecv.layout:53
-#, fuzzy
 msgid "Nationality"
-msgstr "volitelné"
+msgstr "Nationality"
 
 #: lib/layouts/europecv.layout:56
-#, fuzzy
 msgid "Nationality:"
-msgstr "Facility:"
+msgstr "Nationality:"
 
 #: lib/layouts/europecv.layout:59
 msgid "Birthday"
-msgstr ""
+msgstr "Birthday"
 
 #: lib/layouts/europecv.layout:62
-#, fuzzy
 msgid "Date of birth:"
-msgstr "Formát &datumu:"
+msgstr "Date of birth:"
 
 #: lib/layouts/europecv.layout:82 lib/layouts/moderncv.layout:125
 msgid "Mobile"
 msgstr "Mobile"
 
 #: lib/layouts/europecv.layout:83
-#, fuzzy
 msgid "Mobile phone number"
-msgstr "Číslování řádek"
+msgstr "Mobile phone number"
 
 #: lib/layouts/europecv.layout:87
-#, fuzzy
 msgid "Gender"
-msgstr "Absender:"
+msgstr "Gender"
 
 #: lib/layouts/europecv.layout:90
-#, fuzzy
 msgid "Gender:"
-msgstr "Absender:"
+msgstr "Gender:"
 
 #: lib/layouts/europecv.layout:99
-#, fuzzy
 msgid "BeforePicture"
-msgstr "Řídící znaky"
+msgstr "BeforePicture"
 
 #: lib/layouts/europecv.layout:102
 msgid "Space before picture:"
-msgstr ""
+msgstr "Space before picture:"
 
 #: lib/layouts/europecv.layout:105
-#, fuzzy
 msgid "Picture"
-msgstr "Structure"
+msgstr "Picture"
 
 #: lib/layouts/europecv.layout:108
-#, fuzzy
 msgid "Picture:"
-msgstr "Signature:"
+msgstr "Picture:"
 
 #: lib/layouts/europecv.layout:110
-#, fuzzy
 msgid "Size"
-msgstr "&Velikost:"
+msgstr "Size"
 
 #: lib/layouts/europecv.layout:111
 msgid "Size the photo is resized to"
-msgstr ""
+msgstr "Size the photo is resized to"
 
 #: lib/layouts/europecv.layout:115
-#, fuzzy
 msgid "AfterPicture"
-msgstr "Structure"
+msgstr "AfterPicture"
 
 #: lib/layouts/europecv.layout:118
 msgid "Space after picture:"
-msgstr ""
+msgstr "Space after picture:"
 
 #: lib/layouts/europecv.layout:121 src/frontends/qt4/GuiDocument.cpp:129
 msgid "Page"
 msgstr "Stránka"
 
 #: lib/layouts/europecv.layout:136
-#, fuzzy
 msgid "The title as it appears in the header"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Titulek tak, jak se objeví v hlavičce"
 
 #: lib/layouts/europecv.layout:152 lib/layouts/moderncv.layout:336
 msgid "Item"
@@ -9583,13 +9555,12 @@ msgid "Vertical Space"
 msgstr "Vertikální mezera"
 
 #: lib/layouts/europecv.layout:159 lib/layouts/europecv.layout:218
-#, fuzzy
 msgid "Additional vertical space"
-msgstr "Volitelný vertikální posun"
+msgstr "Additional vertical space"
 
 #: lib/layouts/europecv.layout:165
 msgid "Summary of the item, can also be the time"
-msgstr ""
+msgstr "Summary of the item, can also be the time"
 
 #: lib/layouts/europecv.layout:171 lib/layouts/moderncv.layout:350
 msgid "Item:"
@@ -9640,45 +9611,40 @@ msgid "Language:"
 msgstr "Language:"
 
 #: lib/layouts/europecv.layout:248
-#, fuzzy
 msgid "Name of the language"
-msgstr "Žádný jazyk"
+msgstr "Name of the language"
 
 #: lib/layouts/europecv.layout:252
-#, fuzzy
 msgid "Listening"
-msgstr "Výpis"
+msgstr "Listening"
 
 #: lib/layouts/europecv.layout:253
 msgid "Level how good you think you can listen"
-msgstr ""
+msgstr "Level how good you think you can listen"
 
 #: lib/layouts/europecv.layout:257
-#, fuzzy
 msgid "Reading"
-msgstr "Headings"
+msgstr "Reading"
 
 #: lib/layouts/europecv.layout:258
 msgid "Level how good you think you can read"
-msgstr ""
+msgstr "Level how good you think you can read"
 
 #: lib/layouts/europecv.layout:262
-#, fuzzy
 msgid "Interaction"
-msgstr "Vložit zlomek"
+msgstr "Interaction"
 
 #: lib/layouts/europecv.layout:263
 msgid "Level how good you think you can conversate"
-msgstr ""
+msgstr "Level how good you think you can conversate"
 
 #: lib/layouts/europecv.layout:267
-#, fuzzy
 msgid "Production"
-msgstr "Úvod|o"
+msgstr "Production"
 
 #: lib/layouts/europecv.layout:268
 msgid "Level how good you think you can freely talk"
-msgstr ""
+msgstr "Level how good you think you can freely talk"
 
 #: lib/layouts/europecv.layout:272
 msgid "LastLanguage"
@@ -9705,18 +9671,16 @@ msgid "End of CV"
 msgstr "End of CV"
 
 #: lib/layouts/europecv.layout:302
-#, fuzzy
 msgid "VerticalSpace"
-msgstr "Vertikální mezera"
+msgstr "VerticalSpace"
 
 #: lib/layouts/europecv.layout:307
-#, fuzzy
 msgid "Vertical space"
-msgstr "&Vertikální mezera:"
+msgstr "Vertical space"
 
 #: lib/layouts/g-brief.layout:3
 msgid "G-Brief (V. 1, Obsolete)"
-msgstr ""
+msgstr "G-Brief (V. 1, Obsolete)"
 
 #: lib/layouts/g-brief.layout:27 lib/layouts/g-brief2.layout:74
 msgid "Letter:"
@@ -10128,9 +10092,8 @@ msgid "fig."
 msgstr ""
 
 #: lib/layouts/aastex.layout:533
-#, fuzzy
 msgid "The caption as it appears in the list of figures"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Popisek tak, jak se objeví v seznamu obrázků"
 
 #: lib/layouts/aastex.layout:548
 msgid "Facility"
@@ -11094,38 +11057,34 @@ msgstr "BankRowF:"
 
 #: lib/layouts/ltugboat.layout:3
 msgid "TUGboat"
-msgstr ""
+msgstr "TUGboat"
 
 #: lib/layouts/memoir.layout:3
 msgid "Memoir"
-msgstr ""
+msgstr "Memoir"
 
 #: lib/layouts/memoir.layout:65 lib/layouts/memoir.layout:78
 #: lib/layouts/memoir.layout:86 lib/layouts/memoir.layout:99
 #: lib/layouts/memoir.layout:112 lib/layouts/memoir.layout:125
 #: lib/layouts/memoir.layout:138 lib/layouts/memoir.layout:205
 #: lib/layouts/memoir.layout:224
-#, fuzzy
 msgid "Short Title (TOC)|S"
-msgstr "Krátký titulek"
+msgstr "Krátký titulek (Obsah)|h"
 
 #: lib/layouts/memoir.layout:66 lib/layouts/memoir.layout:79
-#, fuzzy
 msgid "The chapter as it appears in the table of contents"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Kapitola tak, jak se objeví v obsahu"
 
 #: lib/layouts/memoir.layout:69 lib/layouts/memoir.layout:90
 #: lib/layouts/memoir.layout:103 lib/layouts/memoir.layout:116
 #: lib/layouts/memoir.layout:129 lib/layouts/memoir.layout:142
 #: lib/layouts/memoir.layout:209
-#, fuzzy
 msgid "Short Title (Header)"
-msgstr "Krátký titulek|i"
+msgstr "Krátký titulek (Hlavička)"
 
 #: lib/layouts/memoir.layout:70
-#, fuzzy
 msgid "The chapter as it appears in the running headers"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Kapitola tak, jak se objeví v hlavičkách"
 
 #: lib/layouts/memoir.layout:76 lib/layouts/db_stdstarsections.inc:24
 #: lib/layouts/stdstarsections.inc:24 lib/layouts/svcommon.inc:250
@@ -11133,54 +11092,44 @@ msgid "Chapter*"
 msgstr "Kapitola*"
 
 #: lib/layouts/memoir.layout:87
-#, fuzzy
 msgid "The section as it appears in the table of contents"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Sekce tak, jak se objeví v obsahu"
 
 #: lib/layouts/memoir.layout:91
-#, fuzzy
 msgid "The section as it appears in the running headers"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Sekce tak, jak se objeví v hlavičkách"
 
 #: lib/layouts/memoir.layout:100
-#, fuzzy
 msgid "The subsection as it appears in the table of contents"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Podsekce tak, jak se objeví v obsahu"
 
 #: lib/layouts/memoir.layout:104
-#, fuzzy
 msgid "The subsection as it appears in the running headers"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Podsekce tak, jak se objeví v hlavičkách"
 
 #: lib/layouts/memoir.layout:113
-#, fuzzy
 msgid "The subsubsection as it appears in the table of contents"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Podpodsekce tak, jak se objeví v obsahu"
 
 #: lib/layouts/memoir.layout:117
-#, fuzzy
 msgid "The subsubsection as it appears in the running headers"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Podpodsekce tak, jak se objeví v hlavičkách"
 
 #: lib/layouts/memoir.layout:126
-#, fuzzy
 msgid "The paragraph as it appears in the table of contents"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Odstavec tak, jak se objeví v obsahu"
 
 #: lib/layouts/memoir.layout:130
-#, fuzzy
 msgid "The paragraph as it appears in the running headers"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Odstavec tak, jak se objeví v hlavičkách"
 
 #: lib/layouts/memoir.layout:139
-#, fuzzy
 msgid "The subparagraph as it appears in the table of contents"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Pododstavec tak, jak se objeví v obsahu"
 
 #: lib/layouts/memoir.layout:143
-#, fuzzy
 msgid "The subparagraph as it appears in the running headers"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Pododstavec tak, jak se objeví v hlavičkách"
 
 #: lib/layouts/memoir.layout:149
 msgid "Chapterprecis"
@@ -11191,32 +11140,28 @@ msgid "Epigraph"
 msgstr "Epigraf"
 
 #: lib/layouts/memoir.layout:178
-#, fuzzy
 msgid "Epigraph Source|S"
-msgstr "Zdrojový text pro LaTeX|x"
+msgstr "Zdroj epigrafu|f"
 
 #: lib/layouts/memoir.layout:179
-#, fuzzy
 msgid "Source"
-msgstr "Zdrojový kód pro LaTeX"
+msgstr "Zdroj"
 
 #: lib/layouts/memoir.layout:180
 msgid "The source/author of this epigraph"
-msgstr ""
+msgstr "Zdroj/autor epigrafu"
 
 #: lib/layouts/memoir.layout:193
 msgid "Poemtitle"
 msgstr "Název básně"
 
 #: lib/layouts/memoir.layout:206 lib/layouts/memoir.layout:225
-#, fuzzy
 msgid "The poem title as it appears in the table of contents"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Název básně tak, jak se objeví v obsahu"
 
 #: lib/layouts/memoir.layout:210
-#, fuzzy
 msgid "The poem title as it appears in the running headers"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Název básně tak, jak se objeví v hlavičkách"
 
 #: lib/layouts/memoir.layout:219
 msgid "Poemtitle*"
@@ -11228,11 +11173,11 @@ msgstr "Legenda"
 
 #: lib/layouts/acm-sigs-alt.layout:3
 msgid "ACM SIGS ('Alternate' Style)"
-msgstr ""
+msgstr "ACM SIGS ('Alternate' Style)"
 
 #: lib/layouts/apa.layout:3
 msgid "American Psychological Association (APA)"
-msgstr ""
+msgstr "American Psychological Association (APA)"
 
 #: lib/layouts/apa.layout:54
 msgid "RightHeader"
@@ -11248,13 +11193,12 @@ msgstr "Acknowledgements:"
 
 #: lib/layouts/svjog.layout:3
 msgid "Springer SV Jour/Jog"
-msgstr ""
+msgstr "Springer SV Jour/Jog"
 
 #: lib/layouts/slides.layout:3 lib/layouts/powerdot.layout:125
 #: lib/layouts/powerdot.layout:151 lib/layouts/powerdot.layout:205
-#, fuzzy
 msgid "Slides"
-msgstr "Slide"
+msgstr "Slides"
 
 #: lib/layouts/slides.layout:107
 msgid "New Slide:"
@@ -12865,9 +12809,8 @@ msgid "Listings[[List of Listings]]"
 msgstr "Seznam výpisů"
 
 #: lib/layouts/stdinsets.inc:259 src/frontends/qt4/GuiDocument.cpp:1417
-#, fuzzy
 msgid "Listings[[inset]]"
-msgstr "Nastavení výpisů"
+msgstr "Výpisy"
 
 #: lib/layouts/stdinsets.inc:293
 msgid "Idx"
@@ -12886,9 +12829,8 @@ msgid "Long Table Caption (unnumbered)"
 msgstr ""
 
 #: lib/layouts/stdinsets.inc:544
-#, fuzzy
 msgid "The caption as it appears in the list of tables"
-msgstr "Značka tak, jak se objeví v dokumentu"
+msgstr "Popisek tak, jak se objeví v seznamu tabulek"
 
 #: lib/layouts/stdinsets.inc:550
 msgid "Preview"
@@ -12920,15 +12862,14 @@ msgid "LilyPond"
 msgstr "LilyPond"
 
 #: lib/layouts/lilypond.module:37
-#, fuzzy
 msgid "LilyPond Options"
-msgstr "LilyPond Book"
+msgstr "LilyPond - vlasnosti"
 
 #: lib/layouts/lilypond.module:38
 msgid ""
 "A comma-separated option list (see the LilyPond documentation for available "
 "options)."
-msgstr ""
+msgstr "Čárkami oddělený seznam voleb (viz dokumentace LiLyPondu)."
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
