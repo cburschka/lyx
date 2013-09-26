@@ -285,12 +285,12 @@ struct CharInfo {
 typedef map<char_type, CharInfo> CharInfoMap;
 CharInfoMap unicodesymbols;
 
-typedef std::set<char_type> CharSet;
-typedef std::map<string, CharSet> CharSetMap;
+typedef set<char_type> CharSet;
+typedef map<string, CharSet> CharSetMap;
 CharSet forced;
 CharSetMap forcedselected;
 
-typedef std::set<char_type> MathAlphaSet;
+typedef set<char_type> MathAlphaSet;
 MathAlphaSet mathalpha;
 
 
