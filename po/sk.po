@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-09-14 13:17+0200\n"
+"POT-Creation-Date: 2013-09-22 13:18+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -4975,11 +4975,11 @@ msgstr "&Dvojstĺpcový dokument"
 msgid ""
 "Justify text in the LyX editor (this does not affect whether the text is "
 "justified in the output)"
-msgstr "Zarovnať text v LyX editore (to nemá vplyv na zarovnanie vo výstupe)"
+msgstr "Bloková sadzba v LyX editore (to nemá vplyv na sadzbu vo výstupe)"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:284
 msgid "Use &justification in LyX work area"
-msgstr "Použiť zarovnanie v &LyX-ovej pracovnej ploche"
+msgstr "Použiť blokovú sadzbu v &LyX-ovej pracovnej ploche"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:32
 msgid "Language of the thesaurus"
@@ -5144,9 +5144,10 @@ msgstr "Stredná medzera(MedSkip)"
 msgid "BigSkip"
 msgstr "Veľká medzera(BigSkip)"
 
+# Výplň
 #: src/frontends/qt4/ui/VSpaceUi.ui:102
 msgid "VFill"
-msgstr "Výplň (VFILL)"
+msgstr "Variabilná medzera (VFill)"
 
 #: src/frontends/qt4/ui/WrapUi.ui:45
 msgid "Unit of width value"
@@ -14999,7 +15000,7 @@ msgstr "Medzislovná medzera"
 
 #: lib/ui/stdcontext.inc:218
 msgid "Protected Space|o"
-msgstr "Chránená medzera"
+msgstr "Chránená Medzera"
 
 #: lib/ui/stdcontext.inc:219
 msgid "Visible Space|a"
@@ -15031,35 +15032,35 @@ msgstr "dvojnásobná Quad medzera"
 
 #: lib/ui/stdcontext.inc:226
 msgid "Horizontal Fill|F"
-msgstr "Horizontálne zarovnanie"
+msgstr "Variabilná Horizontálna Medzera"
 
 #: lib/ui/stdcontext.inc:227
 msgid "Protected Horizontal Fill|i"
-msgstr "Chránené horizontálne zarovnanie"
+msgstr "Chránená Variabilná Horizontálna Medzera"
 
 #: lib/ui/stdcontext.inc:228
 msgid "Horizontal Fill (Dots)|D"
-msgstr "Horizontálne zarovnanie (Bodky)"
+msgstr "Variabilná Horizontálna Medzera(Bodky)"
 
 #: lib/ui/stdcontext.inc:229
 msgid "Horizontal Fill (Rule)|R"
-msgstr "Horizontálne zarovnanie (línia)"
+msgstr "Variabilná Horizontálna Medzera (línia)"
 
 #: lib/ui/stdcontext.inc:230
 msgid "Horizontal Fill (Left Arrow)|L"
-msgstr "Horizontálne zarovnanie (šípka doľava)"
+msgstr "Variabilná Horizontálna Medzera(šípka doľava)"
 
 #: lib/ui/stdcontext.inc:231
 msgid "Horizontal Fill (Right Arrow)|g"
-msgstr "Horizontálne zarovnanie (šípka doprava)"
+msgstr "Variabilná Horizontálna Medzera(šípka doprava)"
 
 #: lib/ui/stdcontext.inc:232
 msgid "Horizontal Fill (Up Brace)|p"
-msgstr "Horizontálne zarovnanie(svorka nahor)"
+msgstr "Variabilná Horizontálna Medzera(svorka nahor)"
 
 #: lib/ui/stdcontext.inc:233
 msgid "Horizontal Fill (Down Brace)|B"
-msgstr "Horizontálne zarovnanie(svorka nadol)"
+msgstr "Variabilná Horizontálna Medzera(svorka nadol)"
 
 #: lib/ui/stdcontext.inc:234 lib/ui/stdcontext.inc:252
 msgid "Custom Length|C"
@@ -15097,9 +15098,10 @@ msgstr "Stredná medzera(MedSkip)"
 msgid "BigSkip|B"
 msgstr "Veľká medzera(BigSkip)"
 
+# Výplň
 #: lib/ui/stdcontext.inc:265
 msgid "VFill|F"
-msgstr "Výplň (VFill)"
+msgstr "Variabilná medzera|V"
 
 #: lib/ui/stdcontext.inc:266
 msgid "Custom|C"
@@ -15151,11 +15153,11 @@ msgstr "Vyprázdniť Dvojitú Stránku"
 
 #: lib/ui/stdcontext.inc:300 lib/ui/stdmenus.inc:412
 msgid "Ragged Line Break|R"
-msgstr "Normálne zalomenie riadkov"
+msgstr "Normálne Zalomenie Riadku"
 
 #: lib/ui/stdcontext.inc:301 lib/ui/stdmenus.inc:413
 msgid "Justified Line Break|J"
-msgstr "Zarovnanie konca riadkov"
+msgstr "Zarovnané Zalomenie Riadku Sprava"
 
 #: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:105 lib/ui/stdtoolbars.inc:81
 #: src/Text3.cpp:1277 src/mathed/InsetMathNest.cpp:596
@@ -16188,7 +16190,7 @@ msgstr "Jednoduchá úvodzovka"
 
 #: lib/ui/stdmenus.inc:391
 msgid "Protected Hyphen|y"
-msgstr "Chránené spojovacie znamienko"
+msgstr "Chránené Spojovacie Znamienko"
 
 #: lib/ui/stdmenus.inc:392
 msgid "Breakable Slash|a"
@@ -16212,7 +16214,7 @@ msgstr "Dolný index"
 
 #: lib/ui/stdmenus.inc:401
 msgid "Protected Space|P"
-msgstr "Chránená medzera"
+msgstr "Chránená Medzera"
 
 #: lib/ui/stdmenus.inc:403
 msgid "Visible Space|i"
@@ -16220,11 +16222,11 @@ msgstr "Viditeľná Medzera|i"
 
 #: lib/ui/stdmenus.inc:405
 msgid "Horizontal Space...|o"
-msgstr "Horizontálna medzera..."
+msgstr "Horizontálna medzera...|o"
 
 #: lib/ui/stdmenus.inc:406
 msgid "Horizontal Line...|L"
-msgstr "Horizontálna Línia..."
+msgstr "Horizontálna Línia...|L"
 
 #: lib/ui/stdmenus.inc:407
 msgid "Vertical Space...|V"
@@ -24765,7 +24767,7 @@ msgstr "Veľká"
 
 #: src/VSpace.cpp:174
 msgid "Vertical fill"
-msgstr "Vertikálne zarovnanie"
+msgstr "Variabilné"
 
 #: src/VSpace.cpp:181
 msgid "protected"
@@ -26335,7 +26337,7 @@ msgstr "Dvojité Quad (2 em)"
 #: src/frontends/qt4/GuiHSpace.cpp:55 src/frontends/qt4/GuiHSpace.cpp:66
 #: src/insets/InsetSpace.cpp:107
 msgid "Horizontal Fill"
-msgstr "Horizontálne zarovnanie"
+msgstr "Variabilná Horizontálna Medzera"
 
 #: src/frontends/qt4/GuiHSpace.cpp:68 src/insets/InsetSpace.cpp:74
 msgid "Visible Space"
@@ -28893,7 +28895,7 @@ msgstr "horný index"
 
 #: src/insets/InsetSpace.cpp:71
 msgid "Protected Space"
-msgstr "Chránená medzera"
+msgstr "Chránená Medzera"
 
 #: src/insets/InsetSpace.cpp:86
 msgid "Quad Space"
@@ -28913,41 +28915,41 @@ msgstr "En-medzera (Enskip)"
 
 #: src/insets/InsetSpace.cpp:110
 msgid "Protected Horizontal Fill"
-msgstr "Chránené Horizontálne Zarovnanie"
+msgstr "Chránená Variabilná Horizontálna Medzera"
 
 #: src/insets/InsetSpace.cpp:113
 msgid "Horizontal Fill (Dots)"
-msgstr "Horizontálne zarovnanie (Bodky)"
+msgstr "Variabilná Horizontálna Medzera(Bodky)"
 
 #: src/insets/InsetSpace.cpp:116
 msgid "Horizontal Fill (Rule)"
-msgstr "Horizontálne zarovnanie (línia)"
+msgstr "Variabilná Horizontálna Medzera(línia)"
 
 #: src/insets/InsetSpace.cpp:119
 msgid "Horizontal Fill (Left Arrow)"
-msgstr "Horizontálne zarovnanie (šípka doľava)"
+msgstr "Variabilná Horizontálna Medzera(šípka doľava)"
 
 #: src/insets/InsetSpace.cpp:122
 msgid "Horizontal Fill (Right Arrow)"
-msgstr "Horizontálne zarovnanie (šípka doprava)"
+msgstr "Variabilná Horizontálna Medzera(šípka doprava)"
 
 #: src/insets/InsetSpace.cpp:125
 msgid "Horizontal Fill (Up Brace)"
-msgstr "Horizontálne zarovnanie(svorka nahor)"
+msgstr "Variabilná Horizontálna Medzera(svorka nahor)"
 
 #: src/insets/InsetSpace.cpp:128
 msgid "Horizontal Fill (Down Brace)"
-msgstr "Horizontálne zarovnanie(svorka nadol)"
+msgstr "Variabilná Horizontálna Medzera(svorka nadol)"
 
 #: src/insets/InsetSpace.cpp:132
 #, c-format
 msgid "Horizontal Space (%1$s)"
-msgstr "Horizontálna medzera (%1$s)"
+msgstr "Horizontálna Medzera (%1$s)"
 
 #: src/insets/InsetSpace.cpp:137
 #, c-format
 msgid "Protected Horizontal Space (%1$s)"
-msgstr "Chránená horizontálna medzera (%1$s)"
+msgstr "Chránená Horizontálna Medzera (%1$s)"
 
 #: src/insets/InsetTOC.cpp:77
 msgid "List of Listings"
