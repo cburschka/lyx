@@ -235,7 +235,9 @@ sub diff_po($$)
     if ($param eq "-L") {
       my $name = shift(@args);
       push(@names, $name);
-      $switchargs = 1;
+    }
+    else {
+      # ignore other options
     }
   }
   if (! defined($names[0])) {
@@ -249,11 +251,6 @@ sub diff_po($$)
     die("names = \"", join('" "', @names) . "\"... args = \"" . join('" "', @args) . "\" Expected exactly 2 parameters");
   }
 
-  if ($switchargs) {
-    my $tmp = $args[0];
-    $args[0] =  $args[1];
-    $args[1] = $tmp;
-  }
   &check_po_file_readable($names[0], $args[0]);
   &check_po_file_readable($names[1], $args[1]);
 
@@ -390,7 +387,7 @@ sub printExtraMessages($$$)
   my @sortedExtraKeys = sort { $a <=> $b;} keys %{$rExtra};
 
   if (@sortedExtraKeys > 0) {
-    print "Still " . 0 + @sortedExtraKeys . " $type messages found in $rNames->[0]\n";
+    print "Still " . 0 + @sortedExtraKeys . " $type messages found in $rNames->[1]\n";
     for my $l (@sortedExtraKeys) {
       print "> line $l: \"" . $rExtra->{$l} . "\"\n";
     }
