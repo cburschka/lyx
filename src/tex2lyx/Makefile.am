@@ -16,7 +16,7 @@ bin_PROGRAMS = tex2lyx
 
 DEFAULT_INCLUDES =
 
-AM_CPPFLAGS += -DTEX2LYX $(PCH_FLAGS) -I$(top_srcdir)/src/tex2lyx \
+AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src/tex2lyx \
 	-I$(top_srcdir)/src -I$(top_builddir) $(BOOST_INCLUDES)
 
 TEST_FILES = \
