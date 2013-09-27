@@ -78,8 +78,10 @@ Format 1
 #  -: "Shift-Tab"                    # Navigate through controls in a reverse direction
 #  +: "Control-Tab"                  # Move focus to the next grouping of controls in a dialog or the next table (when Tab moves to the next cell)
 \bind "M-Tab"                        "buffer-next"
+\bind "A-Tab"                        "buffer-next"
 #  +: "Shift-Control-Tab"            # Move focus to the previous grouping of controls
 \bind "M-S-BackTab"                  "buffer-previous"
+\bind "A-S-BackTab"                  "buffer-previous"
 #  +: "fn-Delete"                    # Forward Delete (on portable Macs' built-in keyboard)
 \bind "Delete"                       "char-delete-forward"
 #  ?: "Control-F1"                   # Toggle full keyboard access on or off
