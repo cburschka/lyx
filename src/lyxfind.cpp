@@ -419,21 +419,24 @@ bool findChange(BufferView * bv, bool next)
 	// of this function). This will avoid changes to be selected half.
 	bool search_both_sides = false;
 	Cursor tmpcur = cur;
-	// Leave math first
+	// Find enclosing text cursor
 	while (tmpcur.inMathed())
 		tmpcur.pop_back();
 	Change change_next_pos
 		= tmpcur.paragraph().lookupChange(tmpcur.pos());
-	if (change_next_pos.changed() && cur.inMathed()) {
-		cur = tmpcur;
-		search_both_sides = true;
-	} else if (tmpcur.pos() > 0 && tmpcur.inTexted()) {
-		Change change_prev_pos
-			= tmpcur.paragraph().lookupChange(tmpcur.pos() - 1);
-		if (change_next_pos.isSimilarTo(change_prev_pos))
+	if (change_next_pos.changed()) {
+		if (cur.inMathed()) {
+			cur = tmpcur;
 			search_both_sides = true;
+		} else if (tmpcur.pos() > 0 && tmpcur.inTexted()) {
+			Change change_prev_pos
+				= tmpcur.paragraph().lookupChange(tmpcur.pos() - 1);
+			if (change_next_pos.isSimilarTo(change_prev_pos))
+				search_both_sides = true;
+		}
 	}
 
+	// find the next change
 	if (!findChange(cur, next))
 		return false;
 
@@ -441,7 +444,7 @@ bool findChange(BufferView * bv, bool next)
 
 	CursorSlice & tip = cur.top();
 
-	if (!next)
+	if (!next && tip.pos() > 0)
 		// take a step into the change
 		tip.backwardPos();
 
