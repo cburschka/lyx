@@ -2111,7 +2111,6 @@ dist_templates_DATA = \
 	templates/aastex.lyx \
 	templates/ACM-sigplan.lyx \
 	templates/AGUTeX.lyx \
-	templates/AGU_article.lyx \
 	templates/APA.lyx \
 	templates/APA6.lyx \
 	templates/beamer-conference-ornate-20min.lyx \
