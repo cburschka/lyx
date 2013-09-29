@@ -39,6 +39,59 @@ public:
 };
 
 
+enum CharInfoFlags {
+	///
+	CharInfoCombining = 1,
+	///
+	CharInfoTextFeature = 2,
+	///
+	CharInfoMathFeature = 4,
+	///
+	CharInfoForce = 8,
+	///
+	CharInfoTextNoTermination = 16,
+	///
+	CharInfoMathNoTermination = 32,
+	///
+	CharInfoForceSelected = 64,
+};
+
+
+/// Information about a single UCS4 character
+class CharInfo {
+public:
+	/// LaTeX command (text mode) for this character
+	docstring textcommand;
+	/// LaTeX command (math mode) for this character
+	docstring mathcommand;
+	/// Needed LaTeX preamble (or feature) for text mode
+	std::string textpreamble;
+	/// Needed LaTeX preamble (or feature) for math mode
+	std::string mathpreamble;
+	/// Is this a combining character?
+	bool combining() const { return flags & CharInfoCombining ? true : false; }
+	/// Is \c textpreamble a feature known by LaTeXFeatures, or a raw LaTeX
+	/// command?
+	bool textfeature() const { return flags & CharInfoTextFeature ? true : false; }
+	/// Is \c mathpreamble a feature known by LaTeXFeatures, or a raw LaTeX
+	/// command?
+	bool mathfeature() const { return flags & CharInfoMathFeature ? true : false; }
+	/// Always force the LaTeX command, even if the encoding contains
+	/// this character?
+	bool force() const { return flags & CharInfoForce ? true : false; }
+	/// Force the LaTeX command for some encodings?
+	bool forceselected() const { return flags & CharInfoForceSelected ? true : false; }
+	/// TIPA shortcut
+	std::string tipashortcut;
+	/// \c textcommand needs no termination (such as {} or space).
+	bool textnotermination() const { return flags & CharInfoTextNoTermination ? true : false; }
+	/// \c mathcommand needs no termination (such as {} or space).
+	bool mathnotermination() const { return flags & CharInfoMathNoTermination ? true : false; }
+	///
+	unsigned int flags;
+};
+
+
 ///
 class Encoding {
 public:
