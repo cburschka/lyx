@@ -28,7 +28,7 @@
 #include "CutAndPaste.h"
 #include "DispatchResult.h"
 #include "DocIterator.h"
-#include "Encoding.h"
+#include "BufferEncodings.h"
 #include "ErrorList.h"
 #include "Exporter.h"
 #include "Format.h"
@@ -1558,7 +1558,7 @@ void Buffer::writeLaTeXSource(otexstream & os,
 		d->ignore_parent = true;
 
 	// Classify the unicode characters appearing in math insets
-	Encodings::initUnicodeMath(*this);
+	BufferEncodings::initUnicodeMath(*this);
 
 	// validate the buffer.
 	LYXERR(Debug::LATEX, "  Validating buffer...");

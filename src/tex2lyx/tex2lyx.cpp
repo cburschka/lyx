@@ -29,7 +29,6 @@
 #include "support/filetools.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
-#include "support/Messages.h"
 #include "support/os.h"
 #include "support/Package.h"
 #include "support/Systemcall.h"
@@ -47,52 +46,6 @@ using namespace lyx::support;
 using namespace lyx::support::os;
 
 namespace lyx {
-
-namespace frontend {
-namespace Alert {
-	void warning(docstring const & title, docstring const & message,
-				 bool const &)
-	{
-		cerr << to_utf8(title) << "\n" << to_utf8(message) << endl;
-	}
-}
-}
-
-
-// Dummy texrow support
-void TexRow::newline()
-{}
-
-
-void TexRow::newlines(int)
-{}
-
-
-// Dummy LyXRC support
-class LyXRC {
-public:
-	string icon_set;
-} lyxrc;
-
-
-// Dummy translation support
-Messages messages_;
-Messages const & getMessages(std::string const &)
-{
-	return messages_;
-}
-
-
-Messages const & getGuiMessages()
-{
-	return messages_;
-}
-
-
-// Keep the linker happy on Windows
-void lyx_exit(int)
-{}
-
 
 string const trimSpaceAndEol(string const & a)
 {

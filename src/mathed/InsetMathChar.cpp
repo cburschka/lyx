@@ -18,7 +18,7 @@
 #include "MetricsInfo.h"
 
 #include "Dimension.h"
-#include "Encoding.h"
+#include "BufferEncodings.h"
 #include "LaTeXFeatures.h"
 #include "TextPainter.h"
 
@@ -141,7 +141,7 @@ void InsetMathChar::write(WriteStream & os) const
 void InsetMathChar::validate(LaTeXFeatures & features) const
 {
 	if (!isASCII(char_))
-		encodings.validate(char_, features, true);
+		BufferEncodings::validate(char_, features, true);
 }
 
 

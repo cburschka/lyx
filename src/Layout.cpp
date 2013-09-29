@@ -1505,14 +1505,11 @@ void Layout::makeDefaultCSS() const
 		htmldefaultstyle_ += from_ascii(tmp);
 	}
 
-// tex2lyx does not see output_xhtml.cpp
-#ifndef NO_LAYOUT_CSS
 	// alignment
 	string where = alignmentToCSS(align);
 	if (!where.empty()) {
 		htmldefaultstyle_ += from_ascii("text-align: " + where + ";\n");
 	}
-#endif
 
 	// wrap up what we have, if anything
 	if (!htmldefaultstyle_.empty())

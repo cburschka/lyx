@@ -24,9 +24,6 @@ namespace lyx {
 
 namespace support { class FileName; }
 
-class Buffer;
-class LaTeXFeatures;
-
 class EncodingException : public std::exception {
 public:
 	EncodingException(char_type c);
@@ -36,6 +33,78 @@ public:
 	char_type failed_char;
 	int par_id;
 	pos_type pos;
+};
+
+
+enum CharInfoFlags {
+	///
+	CharInfoCombining = 1,
+	///
+	CharInfoTextFeature = 2,
+	///
+	CharInfoMathFeature = 4,
+	///
+	CharInfoForce = 8,
+	///
+	CharInfoTextNoTermination = 16,
+	///
+	CharInfoMathNoTermination = 32,
+	///
+	CharInfoForceSelected = 64,
+};
+
+
+/// Information about a single UCS4 character
+class CharInfo {
+public:
+	CharInfo() {}
+	CharInfo(
+		docstring const textcommand, docstring const mathcommand,
+		std::string const textpreamble, std::string const mathpreamble,
+		std::string const tipashortcut, unsigned int flags);
+	// we assume that at least one command is nonempty when using unicodesymbols
+	bool isUnicodeSymbol() const { return !textcommand_.empty() || !mathcommand_.empty(); }
+	/// LaTeX command (text mode) for this character
+	docstring const textcommand() const { return textcommand_; }
+	/// LaTeX command (math mode) for this character
+	docstring mathcommand() const { return mathcommand_; }
+	/// Needed LaTeX preamble (or feature) for text mode
+	std::string textpreamble() const { return textpreamble_; }
+	/// Needed LaTeX preamble (or feature) for math mode
+	std::string mathpreamble() const { return mathpreamble_; }
+	/// Is this a combining character?
+	bool combining() const { return flags_ & CharInfoCombining ? true : false; }
+	/// Is \c textpreamble a feature known by LaTeXFeatures, or a raw LaTeX
+	/// command?
+	bool textfeature() const { return flags_ & CharInfoTextFeature ? true : false; }
+	/// Is \c mathpreamble a feature known by LaTeXFeatures, or a raw LaTeX
+	/// command?
+	bool mathfeature() const { return flags_ & CharInfoMathFeature ? true : false; }
+	/// Always force the LaTeX command, even if the encoding contains
+	/// this character?
+	bool force() const { return flags_ & CharInfoForce ? true : false; }
+	/// Force the LaTeX command for some encodings?
+	bool forceselected() const { return flags_ & CharInfoForceSelected ? true : false; }
+	/// TIPA shortcut
+	std::string const tipashortcut() const { return tipashortcut_; }
+	/// \c textcommand needs no termination (such as {} or space).
+	bool textnotermination() const { return flags_ & CharInfoTextNoTermination ? true : false; }
+	/// \c mathcommand needs no termination (such as {} or space).
+	bool mathnotermination() const { return flags_ & CharInfoMathNoTermination ? true : false; }
+	///
+private:
+	/// LaTeX command (text mode) for this character
+	docstring textcommand_;
+	/// LaTeX command (math mode) for this character
+	docstring mathcommand_;
+	/// Needed LaTeX preamble (or feature) for text mode
+	std::string textpreamble_;
+	/// Needed LaTeX preamble (or feature) for math mode
+	std::string mathpreamble_;
+	/// TIPA shortcut
+	std::string tipashortcut_;
+	/// feature flags
+	unsigned int flags_;
 };
 
 
@@ -205,6 +274,8 @@ public:
 	static bool isArabicSpecialChar(char_type c);
 	///
 	static bool isArabicChar(char_type c);
+	/// Accessor for the unicode information table.
+	static CharInfo const & unicodeCharInfo(char_type c);
 	///
 	static char_type transformChar(char_type c, LetterForm form);
 	/// Is this a combining char?
@@ -251,10 +322,6 @@ public:
 	 */
 	static bool isMathSym(char_type c) { return mathsym.count(c); }
 	/**
-	 * Initialize mathcmd, textcmd, and mathsym sets.
-	 */
-	static void initUnicodeMath(Buffer const & buffer, bool for_master = true);
-	/**
 	 * If \p c cannot be encoded in the given \p encoding, convert
 	 * it to something that LaTeX can understand in mathmode.
 	 * \p needsTermination indicates whether the command needs to be
@@ -293,16 +360,8 @@ public:
 	static docstring fromLaTeXCommand(docstring const & cmd, int cmdtype,
 			bool & needsTermination, docstring & rem,
 			std::set<std::string> * req = 0);
-	/**
-	 * Add the preamble snippet needed for the output of \p c to
-	 * \p features.
-	 * This does not depend on the used encoding, since the inputenc
-	 * package only maps the code point \p c to a command, it does not
-	 * make this command available.
-	 */
-	static void validate(char_type c, LaTeXFeatures & features, bool for_mathed = false);
 
-private:
+protected:
 	///
 	EncodingList encodinglist;
 	///

@@ -25,7 +25,7 @@
 #include "BufferParams.h"
 #include "Changes.h"
 #include "Counters.h"
-#include "Encoding.h"
+#include "BufferEncodings.h"
 #include "InsetList.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
@@ -1528,7 +1528,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 				break;
 			}
 		}
-		Encodings::validate(text_[i], features);
+		BufferEncodings::validate(text_[i], features);
 	}
 }
 
