@@ -58,7 +58,7 @@ void BufferEncodings::validate(char_type c, LaTeXFeatures & features, bool for_m
 	CharInfo const & ci = Encodings::unicodeCharInfo(c);
 	if (ci.isUnicodeSymbol()) {
 		// In mathed, c could be used both in textmode and mathmode
-		docstring const textcommand = ci.textcommand;
+		docstring const textcommand = ci.textcommand();
 		bool const math_mode = for_mathed && isMathCmd(c);
 		bool const use_math = math_mode ||
 		                      (!for_mathed && textcommand.empty());
@@ -71,7 +71,7 @@ void BufferEncodings::validate(char_type c, LaTeXFeatures & features, bool for_m
 		// and if we do not use unicode-math
 		if ((math_mode && !unicode_math)
 		     || (use_math && !plain_utf8)) {
-			string const mathpreamble = ci.mathpreamble;
+			string const mathpreamble = ci.mathpreamble();
 			if (!mathpreamble.empty()) {
 				if (ci.mathfeature()) {
 					string feats = mathpreamble;
@@ -86,7 +86,7 @@ void BufferEncodings::validate(char_type c, LaTeXFeatures & features, bool for_m
 		}
 		// with utf8-plain, we do not load packages (see #7766)
 		if (use_text && !plain_utf8) {
-			string const textpreamble = ci.textpreamble;
+			string const textpreamble = ci.textpreamble();
 			if (!textpreamble.empty()) {
 				if (ci.textfeature()) {
 					string feats = textpreamble;

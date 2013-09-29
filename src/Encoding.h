@@ -57,37 +57,54 @@ enum CharInfoFlags {
 /// Information about a single UCS4 character
 class CharInfo {
 public:
+	CharInfo() {}
+	CharInfo(
+		docstring const textcommand, docstring const mathcommand,
+		std::string const textpreamble, std::string const mathpreamble,
+		std::string const tipashortcut, unsigned int flags);
 	// we assume that at least one command is nonempty when using unicodesymbols
-	bool isUnicodeSymbol() const { return !textcommand.empty() || !mathcommand.empty(); }
+	bool isUnicodeSymbol() const { return !textcommand_.empty() || !mathcommand_.empty(); }
 	/// LaTeX command (text mode) for this character
-	docstring textcommand;
+	docstring const textcommand() const { return textcommand_; }
 	/// LaTeX command (math mode) for this character
-	docstring mathcommand;
+	docstring mathcommand() const { return mathcommand_; }
 	/// Needed LaTeX preamble (or feature) for text mode
-	std::string textpreamble;
+	std::string textpreamble() const { return textpreamble_; }
 	/// Needed LaTeX preamble (or feature) for math mode
-	std::string mathpreamble;
+	std::string mathpreamble() const { return mathpreamble_; }
 	/// Is this a combining character?
-	bool combining() const { return flags & CharInfoCombining ? true : false; }
+	bool combining() const { return flags_ & CharInfoCombining ? true : false; }
 	/// Is \c textpreamble a feature known by LaTeXFeatures, or a raw LaTeX
 	/// command?
-	bool textfeature() const { return flags & CharInfoTextFeature ? true : false; }
+	bool textfeature() const { return flags_ & CharInfoTextFeature ? true : false; }
 	/// Is \c mathpreamble a feature known by LaTeXFeatures, or a raw LaTeX
 	/// command?
-	bool mathfeature() const { return flags & CharInfoMathFeature ? true : false; }
+	bool mathfeature() const { return flags_ & CharInfoMathFeature ? true : false; }
 	/// Always force the LaTeX command, even if the encoding contains
 	/// this character?
-	bool force() const { return flags & CharInfoForce ? true : false; }
+	bool force() const { return flags_ & CharInfoForce ? true : false; }
 	/// Force the LaTeX command for some encodings?
-	bool forceselected() const { return flags & CharInfoForceSelected ? true : false; }
+	bool forceselected() const { return flags_ & CharInfoForceSelected ? true : false; }
 	/// TIPA shortcut
-	std::string tipashortcut;
+	std::string const tipashortcut() const { return tipashortcut_; }
 	/// \c textcommand needs no termination (such as {} or space).
-	bool textnotermination() const { return flags & CharInfoTextNoTermination ? true : false; }
+	bool textnotermination() const { return flags_ & CharInfoTextNoTermination ? true : false; }
 	/// \c mathcommand needs no termination (such as {} or space).
-	bool mathnotermination() const { return flags & CharInfoMathNoTermination ? true : false; }
+	bool mathnotermination() const { return flags_ & CharInfoMathNoTermination ? true : false; }
 	///
-	unsigned int flags;
+private:
+	/// LaTeX command (text mode) for this character
+	docstring textcommand_;
+	/// LaTeX command (math mode) for this character
+	docstring mathcommand_;
+	/// Needed LaTeX preamble (or feature) for text mode
+	std::string textpreamble_;
+	/// Needed LaTeX preamble (or feature) for math mode
+	std::string mathpreamble_;
+	/// TIPA shortcut
+	std::string tipashortcut_;
+	/// feature flags
+	unsigned int flags_;
 };
 
 
