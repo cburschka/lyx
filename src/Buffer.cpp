@@ -4736,7 +4736,7 @@ int Buffer::charCount(bool with_blanks) const
 }
 
 
-Buffer::ReadStatus Buffer::reload(bool clearUndo)
+Buffer::ReadStatus Buffer::reload()
 {
 	setBusy(true);
 	// c.f. bug http://www.lyx.org/trac/ticket/6587
@@ -4754,8 +4754,7 @@ Buffer::ReadStatus Buffer::reload(bool clearUndo)
 		updateTitles();
 		markClean();
 		message(bformat(_("Document %1$s reloaded."), disp_fn));
-		if (clearUndo)
-			d->undo_.clear();
+		d->undo_.clear();
 	} else {
 		message(bformat(_("Could not reload document %1$s."), disp_fn));
 	}
