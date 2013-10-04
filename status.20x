@@ -74,7 +74,10 @@ What's new
 
 * USER INTERFACE
 
-- Fix crash when saving document with module that is not present (bug 8523).
+- Fix crash when saving document with module that is not present (bug
+  8523).
+
+- Fix crash when changing alignment of several cells in tabular (bug 8859).
 
 - Fix bug where searching for next change may leave an empty paragraph
   where cursor was (bug 3199).
