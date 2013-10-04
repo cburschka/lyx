@@ -4376,6 +4376,8 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_FONT_UULINE:
 	case LFUN_FONT_UWAVE:
 	case LFUN_LANGUAGE:
+	case LFUN_PARAGRAPH_PARAMS_APPLY:
+	case LFUN_PARAGRAPH_PARAMS:
 	case LFUN_WORD_CAPITALIZE:
 	case LFUN_WORD_UPCASE:
 	case LFUN_WORD_LOWCASE:
