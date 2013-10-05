@@ -84,7 +84,7 @@
 \begin_body
 
 \begin_layout Section*
-LFUNs documentation automatically generated 2013-08-04
+LFUNs documentation automatically generated 2013-10-05
 \end_layout
 
 \begin_layout Standard
@@ -6539,8 +6539,8 @@ LFUN_MASTER_BUFFER_UPDATE
 \end_layout
 
 \begin_layout Description
-Action When run from a child document, this updates (exports) document built
- from the master buffer, if available.
+Action Update (export) the document built from the master buffer, if the
+ current buffer is part of a master/child document.
 \end_layout
 
 \begin_layout Description
@@ -6563,8 +6563,8 @@ LFUN_MASTER_BUFFER_VIEW
 \end_layout
 
 \begin_layout Description
-Action When run from a child document, this command shows a preview built
- from the master buffer, if available.
+Action Show a preview built from the master buffer, if available.
+ if the current buffer is part of a master/child document.
 \end_layout
 
 \begin_layout Description
