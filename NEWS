@@ -1,5 +1,103 @@
+
+
+
+What's new in version 2.0.6?
+----------------------------
+
+This is a bug-fixing release, for the most part. Though, as it has been
+almost six months since the last release, a lot of important bugs have
+been fixed. Please see the ANNOUNCE file for details.
+
+
+What's new in version 2.0.5?
+----------------------------
+
+The View>Source widget now allows you to select the backend to display,
+e.g., LaTeX or XHTML, rather than the output format. The previous choice
+really made no sense: You didn't see a PDF there if you chose one of the
+PDF output formats, but rather LaTeX. This solves some long-standing issues
+with View>Source.
+
+There has been an important change in how the "language" lfun works.
+  - "language <LANG>" now toggles between languages
+    (status quo ante LyX 2.0.2)
+  - "language <LANG> set" sets to language <LANG>
+    (meaning of "language <LANG>" as of LyX 2.0.2)
+  - "language [reset]" resets to the document language.
+  - Menu functions are unchanged.
+
+
+What's new in version 2.0.4?
+----------------------------
+
+We have migrated our development from subversion to the git revision 
+control sytem. If you follow or maintain packaging of up-to-date versions 
+of LyX 2.0.x, you must switch to the new repository address:
+  git://git.lyx.org/lyx
+Branch 2.0.x is the stable branch. See 
+  http://www.lyx.org/HowToUseGIT
+for details.
+
+Most of the improvements in 2.0.4 are bug fixes, some of them important. In
+particular, we have fixed several crashes. The main outstanding problem is
+the inability to cancel the background export process. Some improvement has
+been made here, by updating the timeout mechanism, but more needs to be done,
+and hopefully will be done for 2.0.5.
+
+There have been several updates to LyX's XHTML export routines. Work on this
+will continue for 2.0.5.
+
+
+What's new in version 2.0.3?
+----------------------------
+
+There have been several more updates to LyX's Sweave support. Work on this
+is expected to continue through the 2.0.x series. 
+
+LyX 2.0.3 still requires a python 2 interpreter, but steps have been taken
+to avoid problems on systems where python 3 is the default python interpreter.
+A python 2 interpreter is now automatically detected and used. Additionally,
+byte-compiled python files changed their installation target. Distribution 
+maintainers are encouraged to verify their patch sets.
+
+There have again been several updates to the tex2lyx conversion script. Not
+as many as with 2.0.2, but quite a few.
+
+
+What's new in version 2.0.2?
+----------------------------
+
+There have been several improvements to LyX's ability to export documents
+in the background, so the program does not freeze during compilation. We 
+hope to continue these improvements throughout the 2.0.x series.
+
+There have been major updates to the tex2lyx conversion script. Please see
+below for the details.
+
+The ctex document classes, used for Chinese documents, are now supported
+by LyX.
+
+Support for the Springer document classes has been updated for compatibility
+with the lasest versions. This has the side-effect that files, created with 
+LyX 2.0.2 or future, using a Springer document class, will not be compilable 
+with LyX versions older than LyX 2.0.2. The same applies for files created
+with LyX 1.6.10 or older that are saved with LyX 2.0.2 or future.
+
+
+What's new in version 2.0.1?
+----------------------------
+
+We have fixed an unusually large number of bugs for this release and made 
+a number of improvements. All of these are detailed in the ANNOUNCE file. 
+We would like to highlight the improved handling of external files referenced 
+from ERT. This may cause issues for those who made use of the undocumented 
+\input@path hack. See the ANNOUNCE file again for how to do things the new 
+way. New methods for calling external scripts should also solve several issues
+on Windows.
+
+
 What's new in version 2.0.0?
--------------------------------
+----------------------------
 
 The new features in LyX 2.0 are detailed in
 http://wiki.lyx.org/LyX/NewInLyX20
