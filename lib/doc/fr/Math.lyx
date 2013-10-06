@@ -32,11 +32,6 @@
 \renewcommand{\l@subsection}{\@dottedtocline{2}{1.5em}{2.8em}}
 \renewcommand{\l@subsubsection}{\@dottedtocline{3}{4.3em}{3.6em}}
 
-% To be able to enter the character ° and · directly in LyX,
-% see sec. 22.11
-\DeclareInputText{176}{\ifmmode^\circ\else\textdegree\fi}
-\DeclareInputText{183}{\ifmmode\cdot\else\textperiodcentered\fi}
-
 % increase link area for cross-references and autoname them,
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
 \addto\extrasfrench{%
@@ -479,7 +474,6 @@ name "amsguide.ps"
 target "ftp://ftp.ams.org/pub/tex/doc/amstex/amsguide.pdf"
 
 \end_inset
-
 
 \family default
 , qui est inclus dans toutes les installations LaTeX standard.
@@ -22949,14 +22943,6 @@ diagdown
 \begin_inset VSpace medskip
 \end_inset
 
-D'autres symboles sont listés dans 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Caractères-spéciaux-divers"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -27787,219 +27773,6 @@ oldstylenums{0123456789
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Caractères spéciaux divers
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Caractères-spéciaux-divers"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Caractères spéciaux ! divers
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Les caractères suivants ne peuvent être insérés que dans des formules en
- utilisant les commandes suivantes:
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Commande
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Résultat
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\mathcircumflex$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-_
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\_$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
-\end_inset
-
-
-\backslash
-circ
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-@°
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $^{\circ}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Le symbole degré ° peut être inséré directement à condition que le préambule
- LaTeX contienne la ligne suivante
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Plus d'information à ce sujet dans 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Caractères-texte"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-DeclareInputtext{176}{
-\backslash
-ifmmode^
-\backslash
-circ
-\backslash
-else
-\backslash
-textdegree
-\backslash
-fi}
 \end_layout
 
 \begin_layout Section
