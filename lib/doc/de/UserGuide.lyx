@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrbook
@@ -73,13 +73,13 @@ enumitem
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -104,15 +104,24 @@ enumitem
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \notefontcolor #0000ff
 \branch Frage
@@ -3041,7 +3050,7 @@ Jede Dokumentklasse hat Standardwerte, diese Tabelle beschreibt sie:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -5039,7 +5048,7 @@ Titel ! Kurztitel
 \end_inset
 
  mit optionalen Argumenten definieren
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -6737,7 +6746,7 @@ Als Beispiel eine Liste mit benutzerdefinierter Nummerierung:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -6767,7 +6776,7 @@ Stufe 1
 
 \begin_deeper
 \begin_layout Enumerate
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -6799,7 +6808,7 @@ Level 2
 
 \begin_deeper
 \begin_layout Enumerate
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -6827,7 +6836,7 @@ Stufe 3
 
 \begin_deeper
 \begin_layout Enumerate
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -6950,7 +6959,7 @@ Aufzählungen können nach Unterbrechungen fortgesetzt werden:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -7067,7 +7076,7 @@ Aufzählung startet bei gegebenem Wert:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -7137,7 +7146,7 @@ nolistsep
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -7207,7 +7216,7 @@ cm, so dass sich die Nummer im Seitenrand befindet:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -7296,7 +7305,7 @@ Ionisierende
 \end_inset
 
 Strahlung: 
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -8888,7 +8897,7 @@ Gleitobjekte
 \end_inset
 
  usw.
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -8983,7 +8992,7 @@ Dies ist (a) und geschachtelt.
 \begin_layout Address
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9062,7 +9071,7 @@ Dies ist (a) und geschachtelt.
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9149,7 +9158,7 @@ Dies ist (a) und geschachtelt.
 \begin_layout Address
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9940,7 +9949,7 @@ Schachtelungs!-beispiele
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -10340,7 +10349,7 @@ Hier kommt eine Tabelle:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <row>
@@ -11104,7 +11113,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -11125,9 +11134,9 @@ Breite der verschiedenen horizontalen Lerräume.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -16240,10 +16249,10 @@ Minuszeichen
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="3mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -17584,9 +17593,9 @@ Hier ist ein Beispiel, das den Unterschied verdeutlicht:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -18772,7 +18781,7 @@ Tabelle
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0in">
@@ -19029,9 +19038,9 @@ ngs-, Breiten-, und Linieneinstellungen nur die Mehrfachspaltenzelle betrifft.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
-<features firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
+<features rotate="0" firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="middle" width="0">
+<column alignment="center" valignment="middle">
 <column alignment="center" valignment="top" width="0in">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -19362,7 +19371,7 @@ Kopfzeile
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="69" columns="3">
-<features islongtable="true" longtabularalignment="center">
+<features rotate="0" islongtable="true" longtabularalignment="center">
 <column alignment="block" valignment="top" width="5cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -21566,7 +21575,7 @@ Um mehrzeilige Einträge in Tabellenzellen zu erstellen, muss man eine feste
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="block" valignment="top" width="3cm">
 <column alignment="center" valignment="top" width="0pt">
@@ -21947,7 +21956,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -22097,7 +22106,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -22137,7 +22146,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -22175,7 +22184,7 @@ Schnabeltier
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -22257,7 +22266,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -22278,7 +22287,7 @@ Ein Tabellen-Gleitobjekt.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -23691,7 +23700,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -23722,7 +23731,7 @@ Akzente
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -24973,7 +24982,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -25004,7 +25013,7 @@ mathematische ! Schriftstile
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -30660,7 +30669,7 @@ wechselt temporär auf den Stil mit benutzerdefinierten Kopf/Fußzeilen
 \end_layout
 
 \begin_layout Left Header
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -30696,7 +30705,7 @@ definiert die Kopfzeile wie unten beschrieben
 \end_layout
 
 \begin_layout Center Header
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -30709,7 +30718,7 @@ status open
 \end_layout
 
 \begin_layout Right Header
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -30734,7 +30743,7 @@ leftmark
 \end_layout
 
 \begin_layout Left Footer
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -30759,7 +30768,7 @@ thepage
 \end_layout
 
 \begin_layout Center Footer
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -30784,7 +30793,7 @@ Magischer Code:
 \end_layout
 
 \begin_layout Right Footer
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -30959,7 +30968,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="30line%">
 <column alignment="center" valignment="top" width="30line%">
 <column alignment="right" valignment="top" width="30line%">
@@ -31120,7 +31129,7 @@ Fußzeile rechts
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -32980,8 +32989,9 @@ Thesaurus
 
 \begin_layout Standard
 LyX bietet einen mehrsprachigen Thesaurus.
- Es verwendet denselben Thesaurus wie LibreOffice, OpenOffice und Firefox
- (namentlich die 
+ Es verwendet dasselbe System wie Libre\SpecialChar \-
+Office, OpenOffice und Firefox (nämlich
+ die 
 \family typewriter
 MyThes
 \family default
@@ -33001,13 +33011,13 @@ target "http://lingucomponent.openoffice.org/thesaurus.html"
 
 \end_inset
 
- Thesaurus-Bibliothek, die in LyX enthalten ist).
- Daher kann LyX direkt auf OpenOffice Thesaurus Wörterbücher zugreifen,
+-Thesaurus-Bibliothek, die in LyX enthalten ist).
+ Daher kann LyX direkt auf OpenOffice-Thesaurus-Wörterbücher zugreifen,
  die für viele Sprachen verfügbar sind.
 \end_layout
 
 \begin_layout Standard
-Dieser Abschnitt beschreibt wie neue Wörterbücher installiert und für LyX
+Dieser Abschnitt beschreibt, wie neue Wörterbücher installiert und für LyX
  bereitgestellt werden.
 \end_layout
 
@@ -33017,14 +33027,15 @@ Einrichten des Thesaurus
 
 \begin_layout Standard
 Die 
-\family typewriter
+\family sans
 MyThes
-\family default
 \emph on
 /
 \emph default
-OpenOffice Thesauri bestehen aus zwei Dateien pro Sprache: Eine Datei mit
- der Endung 
+OpenOffice-
+\family default
+Thesauri bestehen aus zwei Dateien pro Sprache: Eine Datei mit der Endung
+ 
 \emph on
 *.dat
 \emph default
@@ -33033,7 +33044,7 @@ OpenOffice Thesauri bestehen aus zwei Dateien pro Sprache: Eine Datei mit
 *.idx
 \emph default
 .
- Der Standardisierte Dateinamen enthält den Code der Sprache (z.
+ Der standardisierte Dateiname enthält den Code der Sprache (z.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -33055,44 +33066,165 @@ th_de_DE_v2.dat
 \end_layout
 
 \begin_layout Standard
-Wenn Sie LibreOffice oder OpenOffice verwenden uns dessen Thesaurus auf
- einem Linux-System installiert haben, sollten sich diese Dateien bereits
- auf Ihrem System befinden.
- Bei Windows kann man im LyX-Installer auswählen, welche Wörterbucher installier
-t werden sollen..
+Wenn Sie 
+\family sans
+LibreOffice
+\family default
+ oder 
+\family sans
+OpenOffice
+\family default
+ verwenden und dessen Thesaurus installiert haben, sollten sich diese Dateien
+ bereits auf Ihrem System befinden und Sie müssen nun LyX (über 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Pfade\SpecialChar \menuseparator
+Thesaurus-Wörterbücher
+\family default
+) nur noch mitteilen, wo sie gespeichert sind.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Unter Linux sind die üblichen Orte (abhängig von Ihrer Distribution und
+ der Art, wie Sie die Wörterbücher installiert haben): 
+\family typewriter
+/usr/share/mythes/
+\family default
+, 
+\family typewriter
+/usr/share/myspell/dicts/
+\family default
+, 
+\family typewriter
+/usr\SpecialChar \slash{}
+share\SpecialChar \slash{}
+ooo\SpecialChar \slash{}
+thesaurus/
+\family default
+,
+\family typewriter
+ ~/.config\SpecialChar \slash{}
+libreoffice\SpecialChar \slash{}
+<version>\SpecialChar \slash{}
+user/
+\family default
+ o.
+\begin_inset space \thinspace{}
+\end_inset
+
+ä.
+ Unter Windows finden Sie die Wörterbücher am ehesten unter 
+\family typewriter
+~
+\backslash
+Programme
+\backslash
+LibreOffice-<Version>
+\backslash
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\family typewriter
+""
+\end_layout
+
+\end_inset
+
+share
+\backslash
+extensions
+\family default
+.
+ Auf dem Mac ist das Standardverzeichnis 
+\family typewriter
+/Users\SpecialChar \slash{}
+<Benutzername>\SpecialChar \slash{}
+Library\SpecialChar \slash{}
+Application Support\SpecialChar \slash{}
+libreoffice\SpecialChar \slash{}
+<Version>\SpecialChar \slash{}
+user
+\family default
+/.
+\end_layout
+
+\end_inset
+
+ Bei Windows kann man alternativ dazu auch im LyX-Installer auswählen, welche
+ Wörterbucher installiert werden sollen; diese werden dann direkt am richtigen
+ Ort installiert.
 \end_layout
 
 \begin_layout Standard
-Alle von LyX unterstützten Wörterbucher können von hier heruntergeladen
- werden:
-\begin_inset Newline newline
-\end_inset
+Wenn Sie neue\SpecialChar \slash{}
+weitere Wörterbucher installieren möchten, können Sie sie von
+ hier herunterladen:
+\end_layout
 
-
+\begin_layout Itemize
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-http://sourceforge.net/projects/lyxwininstaller/files/thesaurus/
+http://www.lyx.org/trac/browser/lyxsvn/dictionaries/trunk/thes/
 \end_layout
 
 \end_inset
 
 
-\begin_inset Newline newline
+\end_layout
+
+\begin_layout Standard
+Um ein neues Wörterbuch zu installieren, laden Sie beide Dateien für die
+ jeweilige Sprache herunter und speichern sie im Thesaurus-Ordner (der unter
+ 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Pfade\SpecialChar \menuseparator
+Thesaurus-Wörterbücher
+\family default
+ angegeben ist); anschließend starten Sie LyX neu.
+ Wenn noch kein Pfad in LyX definiert sein sollte, können Sie ein Verzeichnis
+ Ihrer Wahl nehmen und LyX dorthin verweisen.
+\end_layout
+
+\begin_layout Standard
+Alternativ dazu können Sie auch über 
+\family sans
+OpenOffice\SpecialChar \slash{}
+LibreOffice
+\family default
+ -- oder, wenn Sie Linux verwenden, über Ihren Softwaremanager (suchen Sie
+ nach Paketen mit den Namen 
+\emph on
+mythes-*
+\emph default
+ oder 
+\emph on
+libreoffice-thesaurus-*
+\emph default
+) -- neue Wörterbücher installieren.
+ Wenn Sie dies tun, sollten Sie aber wieder darauf achten, dass LyX die
+ neuen Wörterbücher findet, d.
+\begin_inset space \thinspace{}
 \end_inset
 
-Um ein Wörterbuch zu installieren, kopiert man beide Dateien in LyXs Installatio
-nsunterordner 
+h., dass 
 \family sans
-~
-\backslash
-Resources
-\backslash
-thes
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Pfade\SpecialChar \menuseparator
+Thesaurus-Wörterbücher
 \family default
- und startet LyX neu.
+ auf den Ordner verweist, in dem Sie diese neuen Wörterbücher gespeichert
+ haben.
 \end_layout
 
 \begin_layout Subsection
@@ -33372,9 +33504,9 @@ Diese Werkzeugleiste enthält folgende Knöpfe:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="2.5mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -37733,9 +37865,9 @@ Eingebettete Objekte
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -37780,9 +37912,9 @@ Auswahlbox für die Umgebungen
 \align left
 \begin_inset Tabular
 <lyxtabular version="3" rows="22" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="2.5mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -38526,9 +38658,9 @@ Die Extra-Werkzeugleiste enthält wie oben gezeigt von links nach rechts
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="25" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="2.5mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -39356,9 +39488,9 @@ Die Ansicht / Aktualisieren-Werkzeugleiste enthält wie oben gezeigt von
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="2.5mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -44546,7 +44678,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -44574,9 +44706,9 @@ Maßeinheiten
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
