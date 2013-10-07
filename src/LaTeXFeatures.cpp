@@ -428,6 +428,7 @@ void LaTeXFeatures::require(set<string> const & names)
 void LaTeXFeatures::useLayout(docstring const & layoutname)
 {
 	// Some code to avoid loops in dependency definition
+	// FIXME THREAD
 	static int level = 0;
 	const int maxlevel = 30;
 	if (level > maxlevel) {

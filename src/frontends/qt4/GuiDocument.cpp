@@ -1471,6 +1471,7 @@ QString GuiDocument::validateListingsParameters()
 {
 	// use a cache here to avoid repeated validation
 	// of the same parameters
+	// FIXME THREAD
 	static string param_cache;
 	static QString msg_cache;
 
@@ -1488,6 +1489,7 @@ QString GuiDocument::validateListingsParameters()
 
 void GuiDocument::setListingsMessage()
 {
+	// FIXME THREAD
 	static bool isOK = true;
 	QString msg = validateListingsParameters();
 	if (msg.isEmpty()) {

@@ -78,7 +78,7 @@ public:
 };
 
 
-static ProgressInterface* progress_instance = 0;
+static ProgressInterface * progress_instance = 0;
 
 void ProgressInterface::setInstance(ProgressInterface* p)
 {
@@ -86,7 +86,7 @@ void ProgressInterface::setInstance(ProgressInterface* p)
 }
 
 
-ProgressInterface* ProgressInterface::instance()
+ProgressInterface * ProgressInterface::instance()
 {
 	if (!progress_instance) {
 		static ProgressDummy dummy;

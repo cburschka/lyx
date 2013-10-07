@@ -53,6 +53,10 @@ enum OpenEncoding {
 	CJK
 };
 
+// FIXME THREAD
+// There could easily be a conflict here, with the export process
+// setting this one way, and a View>Source process (possbily for
+// another Buffer) resetting it.
 static int open_encoding_ = none;
 static int cjk_inherited_ = 0;
 Language const * prev_env_language_ = 0;

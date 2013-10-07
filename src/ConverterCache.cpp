@@ -49,6 +49,8 @@ unsigned long do_crc(string const & s)
 }
 
 
+// FIXME THREAD
+// This should be OK because it is only assigned during init()
 static FileName cache_dir;
 
 

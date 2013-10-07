@@ -198,6 +198,7 @@ void GuiPainter::lines(int const * xp, int const * yp, int np,
 		return;
 
 	// double the size if needed
+	// FIXME THREAD
 	static QVector<QPoint> points(32);
 	if (np > points.size())
 		points.resize(2 * np);

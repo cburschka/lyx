@@ -78,14 +78,14 @@ BoxTranslatorLoc initBoxtranslatorLoc()
 
 BoxTranslator const & boxtranslator()
 {
-	static BoxTranslator translator = initBoxtranslator();
+	static BoxTranslator const translator = initBoxtranslator();
 	return translator;
 }
 
 
 BoxTranslatorLoc const & boxtranslator_loc()
 {
-	static BoxTranslatorLoc translator = initBoxtranslatorLoc();
+	static BoxTranslatorLoc const translator = initBoxtranslatorLoc();
 	return translator;
 }
 

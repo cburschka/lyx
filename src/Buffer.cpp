@@ -354,6 +354,7 @@ private:
 /// Creates the per buffer temporary directory
 static FileName createBufferTmpDir()
 {
+	// FIXME THREAD
 	static int count;
 	// We are in our own directory.  Why bother to mangle name?
 	// In fact I wrote this code to circumvent a problematic behaviour

@@ -156,6 +156,7 @@ void BufferList::closeAll()
 
 FileNameList const & BufferList::fileNames() const
 {
+	// FIXME THREAD
 	static FileNameList nvec;
 	nvec.clear();
 	BufferStorage::const_iterator it = bstore.begin();

@@ -104,6 +104,9 @@ docstring sgml::escapeString(docstring const & raw)
 
 docstring const sgml::uniqueID(docstring const label)
 {
+	// FIXME THREAD
+	// It seems unlikely there could be a problem here,
+	// but we could have concurrent access, in principle.
 	static unsigned int seed = 1000;
 	return label + convert<docstring>(++seed);
 }
@@ -132,6 +135,7 @@ docstring sgml::cleanID(Buffer const & buf, OutputParams const & runparams,
 
 	docstring content;
 
+	// FIXME THREAD
 	typedef map<docstring, docstring> MangledMap;
 	static MangledMap mangledNames;
 	static int mangleID = 1;

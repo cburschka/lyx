@@ -477,6 +477,7 @@ struct ZippedInfo {
 };
 
 
+// FIXME THREAD
 /// Mapping absolute pathnames of files to their ZippedInfo metadata.
 static std::map<std::string, ZippedInfo> zipped_;
 
@@ -796,7 +797,7 @@ FlavorTranslator initFlavorTranslator()
 
 FlavorTranslator const & flavorTranslator()
 {
-	static FlavorTranslator translator = initFlavorTranslator();
+	static FlavorTranslator const translator = initFlavorTranslator();
 	return translator;
 }
 

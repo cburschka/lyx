@@ -925,6 +925,9 @@ string DocFileName::outputFileName(string const & path) const
 
 string DocFileName::mangledFileName(string const & dir) const
 {
+	// FIXME THREAD
+	// Concurrent access to these variables is possible.
+
 	// We need to make sure that every DocFileName instance for a given
 	// filename returns the same mangled name.
 	typedef map<string, string> MangledMap;
@@ -954,6 +957,7 @@ string DocFileName::mangledFileName(string const & dir) const
 	// Add the extension back on
 	mname = support::changeExtension(mname, getExtension(name));
 
+	// FIXME THREAD
 	// Prepend a counter to the filename. This is necessary to make
 	// the mangled name unique.
 	static int counter = 0;

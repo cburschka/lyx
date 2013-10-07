@@ -142,6 +142,7 @@ Converter::Impl::Impl(FileName const & from_file, string const & to_file_base,
 		<< "\n--------------------------------------\n");
 
 	// Output the script to file.
+	// FIXME THREAD
 	static int counter = 0;
 	script_file_ = FileName(onlyPath(to_file_base) + "lyxconvert" +
 		convert<string>(counter++) + ".py");
@@ -288,6 +289,7 @@ static void build_script(string const & from_file,
 
 	// Create a temporary base file-name for all intermediate steps.
 	// Remember to remove the temp file because we only want the name...
+	// FIXME THREAD
 	static int counter = 0;
 	string const tmp = "gconvert" + convert<string>(counter++);
 	string const to_base = FileName::tempName(tmp).toFilesystemEncoding();

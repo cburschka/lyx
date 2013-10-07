@@ -63,7 +63,7 @@ NoteTranslator const init_notetranslator()
 
 NoteTranslator const & notetranslator()
 {
-	static NoteTranslator translator = init_notetranslator();
+	static NoteTranslator const translator = init_notetranslator();
 	return translator;
 }
 

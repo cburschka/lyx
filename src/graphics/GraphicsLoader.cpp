@@ -74,6 +74,7 @@ private:
 //static int s_numimages_ = 5;
 //static int s_millisecs_ = 500;
 
+// FIXME THREAD
 static int s_numimages_ = 10;
 static int s_millisecs_ = 500;
 

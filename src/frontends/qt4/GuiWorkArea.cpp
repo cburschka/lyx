@@ -1210,6 +1210,8 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		stopBlinkingCursor();
 
 	// last_width : for checking if last preedit string was/wasn't empty.
+	// FIXME THREAD
+	// We could have more than one work area, right?
 	static bool last_width = false;
 	if (!last_width && preedit_string.empty()) {
 		// if last_width is last length of preedit string.

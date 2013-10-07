@@ -75,6 +75,7 @@ bool setEnv(string const & name, string const & value)
 	// the argument of putenv() needs to be static, because changing its
 	// value will change the environment. Therefore we need a different static
 	// storage for each variable.
+	// FIXME THREAD
 	static map<string, string> varmap;
 	varmap[name] = name + '=' + encoded;
 	return ::putenv(const_cast<char*>(varmap[name].c_str())) == 0;

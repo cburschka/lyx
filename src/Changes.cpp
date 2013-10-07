@@ -348,6 +348,7 @@ docstring getLaTeXMarkup(docstring const & macro, docstring const & author,
 	if (macro.empty())
 		return docstring();
 
+	// FIXME THREAD
 	static docstring warned_author = docstring();
 	docstring uncodable_author = warned_author;
 	odocstringstream ods;

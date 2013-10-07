@@ -71,14 +71,16 @@ PhantomTranslatorLoc const init_phantomtranslator_loc()
 
 PhantomTranslator const & phantomtranslator()
 {
-	static PhantomTranslator translator = init_phantomtranslator();
+	static PhantomTranslator const translator =
+	    init_phantomtranslator();
 	return translator;
 }
 
 
 PhantomTranslatorLoc const & phantomtranslator_loc()
 {
-	static PhantomTranslatorLoc translator = init_phantomtranslator_loc();
+	static PhantomTranslatorLoc const translator =
+	    init_phantomtranslator_loc();
 	return translator;
 }
 

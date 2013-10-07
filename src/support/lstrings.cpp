@@ -32,7 +32,7 @@ namespace lyx {
 // without #include "support/docstring" there.
 docstring const & empty_docstring()
 {
-	static docstring s;
+	static const docstring s;
 	return s;
 }
 
@@ -40,7 +40,7 @@ docstring const & empty_docstring()
 // without #include <string>
 string const & empty_string()
 {
-	static string s;
+	static const string s;
 	return s;
 }
 

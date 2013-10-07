@@ -172,6 +172,7 @@ Buffer * newFile(string const & filename, string const & templatename,
 Buffer * newUnnamedFile(FileName const & path, string const & prefix,
 						string const & templatename)
 {
+	// FIXME THREAD
 	static map<string, int> file_number;
 
 	FileName filename;

@@ -115,6 +115,9 @@ static bool getContent(BufferView const * view, Buffer::OutputWhat output,
 	view->buffer().getSourceCode(ostr, format, par_begin, par_end + 1,
 				     output, master);
 	docstring s = ostr.str();
+	// FIXME THREAD
+	// Could this be private to this particular dialog? We could have
+	// more than one of these, in different windows.
 	static size_t crc = 0;
 	size_t newcrc = crcCheck(s);
 	if (newcrc == crc && !force_getcontent)

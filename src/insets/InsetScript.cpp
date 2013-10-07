@@ -68,14 +68,16 @@ ScriptTranslatorLoc const init_scripttranslator_loc()
 
 ScriptTranslator const & scripttranslator()
 {
-	static ScriptTranslator translator = init_scripttranslator();
+	static ScriptTranslator const translator =
+	    init_scripttranslator();
 	return translator;
 }
 
 
 ScriptTranslatorLoc const & scripttranslator_loc()
 {
-	static ScriptTranslatorLoc translator = init_scripttranslator_loc();
+	static ScriptTranslatorLoc const translator =
+	    init_scripttranslator_loc();
 	return translator;
 }
 

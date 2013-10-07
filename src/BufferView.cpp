@@ -1499,6 +1499,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_WORD_FIND_FORWARD:
 	case LFUN_WORD_FIND_BACKWARD: {
+		// FIXME THREAD
+		// Would it maybe be better if this variable were view specific anyway?
 		static docstring last_search;
 		docstring searched_string;
 

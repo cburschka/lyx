@@ -483,6 +483,7 @@ void putClipboard(ParagraphList const & paragraphs,
 	// to be so, but the alternative is to construct a new one of these (with a
 	// new temporary directory, etc) every time, and then to destroy it. So maybe
 	// it's worth just keeping this one around.
+	// FIXME THREAD
 	static Buffer * staticbuffer = theBufferList().newInternalBuffer(
 		FileName::tempName("clipboard.internal").absFileName());
 

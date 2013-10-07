@@ -141,7 +141,7 @@ MathSymbol const & mathSymbol(string tex_name)
 	map<string, MathSymbol>::const_iterator it =
 		math_symbols_.find(tex_name);
 
-	static MathSymbol unknown_symbol;
+	static MathSymbol const unknown_symbol;
 	if (it == math_symbols_.end())
 		return unknown_symbol;
 
@@ -154,7 +154,7 @@ string const & texName(char_type math_symbol)
 	map<char_type, string>::const_iterator it =
 		tex_names_.find(math_symbol);
 
-	static string empty_string;
+	static string const empty_string;
 	if (it == tex_names_.end())
 		return empty_string;
 

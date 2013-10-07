@@ -76,6 +76,7 @@ namespace {
 
 docstring const uniqueID()
 {
+	// FIXME THREAD
 	static unsigned int seed = 1000;
 	return "file" + convert<docstring>(++seed);
 }

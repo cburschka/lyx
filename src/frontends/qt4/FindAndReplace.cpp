@@ -146,12 +146,13 @@ bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 
 static vector<string> const & allManualsFiles() 
 {
-	static vector<string> v;
 	static const char * files[] = {
 		"Intro", "UserGuide", "Tutorial", "Additional",
 		"EmbeddedObjects", "Math", "Customization", "Shortcuts",
 		"LFUNs", "LaTeXConfig"
 	};
+
+	static vector<string> v;
 	if (v.empty()) {
 		FileName fname;
 		for (size_t i = 0; i < sizeof(files) / sizeof(files[0]); ++i) {
@@ -159,6 +160,7 @@ static vector<string> const & allManualsFiles()
 			v.push_back(fname.absFileName());
 		}
 	}
+
 	return v;
 }
 

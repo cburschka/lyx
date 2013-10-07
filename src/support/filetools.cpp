@@ -574,8 +574,8 @@ string const replaceEnvironmentPath(string const & path)
 	// $[A-Za-z_][A-Za-z_0-9]*
 	static string const envvar = "[$]([A-Za-z_][A-Za-z_0-9]*)";
 
-	static regex envvar_br_re("(.*)" + envvar_br + "(.*)");
-	static regex envvar_re("(.*)" + envvar + "(.*)");
+	static regex const envvar_br_re("(.*)" + envvar_br + "(.*)");
+	static regex const envvar_re("(.*)" + envvar + "(.*)");
 	string result = path;
 	while (1) {
 		smatch what;

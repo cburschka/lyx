@@ -92,7 +92,7 @@ public:
 	///
 	const_iterator fontIterator(pos_type pos) const;
 	///
-	Font & get(pos_type pos);
+	Font const & get(pos_type pos);
 	///
 	void set(pos_type pos, Font const & font);
 	///

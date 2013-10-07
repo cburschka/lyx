@@ -75,7 +75,7 @@ char const * const rorigin_gui_strs[] = {
 
 size_t const rorigin_size = sizeof(rorigin_lyx_strs) / sizeof(char *);
 
-static string autostr = N_("automatically");
+static string const autostr = N_("automatically");
 
 } // namespace anon
 

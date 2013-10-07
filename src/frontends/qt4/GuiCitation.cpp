@@ -54,6 +54,8 @@ using namespace lyx::support;
 namespace lyx {
 namespace frontend {
 
+// FIXME THREAD
+// I am guessing that it would not hurt to make these private members.
 static vector<string> citeCmds_;
 static vector<CitationStyle> citeStyles_;
 
@@ -539,6 +541,7 @@ void GuiCitation::findKey(BiblioInfo const & bi,
 	docstring field, docstring entry_type,
 	bool case_sensitive, bool reg_exp, bool reset)
 {
+	// FIXME THREAD
 	// Used for optimisation: store last searched string.
 	static QString last_searched_string;
 	// Used to disable the above optimisation.

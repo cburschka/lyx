@@ -48,6 +48,7 @@ using namespace lyx::support;
 namespace lyx {
 
 
+// FIXME THREAD
 int InsetBibitem::key_counter = 0;
 docstring const key_prefix = from_ascii("key-");
 

@@ -472,7 +472,7 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 		docstring before, docstring after, docstring dialog, bool next) const
 {
 	// incorrect use of macros could put us in an infinite loop
-	static int max_passes = 5000;
+	static int const max_passes = 5000;
 	// the use of overly large keys can lead to performance problems, due
 	// to eventual attempts to convert LaTeX macros to unicode. See bug
 	// #8944. This is perhaps not the best solution, but it will have to

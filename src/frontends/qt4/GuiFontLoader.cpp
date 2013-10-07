@@ -345,6 +345,7 @@ GuiFontInfo::GuiFontInfo(FontInfo const & f)
 
 bool FontLoader::available(FontInfo const & f)
 {
+	// FIXME THREAD
 	static vector<int> cache_set(NUM_FAMILIES, false);
 	static vector<int> cache(NUM_FAMILIES, false);
 

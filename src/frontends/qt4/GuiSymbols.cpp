@@ -153,6 +153,7 @@ const int no_blocks = sizeof(unicode_blocks) / sizeof(UnicodeBlocks);
 QString getBlock(char_type c)
 {
 	// store an educated guess for the next search
+	// FIXME THREAD
 	static int lastBlock = 0;
 
 	// "clever reset"
@@ -226,6 +227,7 @@ public:
 		static QString const strCharacter = qt_("Character: ");
 		static QString const strCodePoint = qt_("Code Point: ");
 
+		// FIXME THREAD
 		static char codeName[10];
 
 		char_type c = symbols_.at(index.row()); 

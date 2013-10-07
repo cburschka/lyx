@@ -202,7 +202,7 @@ char const * LyXErr::stripName(char const * n)
 {
 	string const name = n;
 	// find the last occurence of /src/ in name
-	static regex re("[\\/]src[\\/]");
+	static const regex re("[\\/]src[\\/]");
 	string::const_iterator const begin = name.begin();
 	string::const_iterator it = begin;
 	string::const_iterator const end = name.end();

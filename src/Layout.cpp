@@ -775,6 +775,8 @@ void Layout::readLabelType(Lexer & lex)
 
 void Layout::readEndLabelType(Lexer & lex)
 {
+	// this should be const, but can't be because
+	// of PushPopHelper.
 	static LexerKeyword endlabelTypeTags[] = {
 		{ "box",	      END_LABEL_BOX },
 		{ "filled_box",	END_LABEL_FILLED_BOX },

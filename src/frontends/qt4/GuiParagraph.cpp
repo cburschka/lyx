@@ -311,7 +311,7 @@ ParagraphParameters const & GuiParagraph::params() const
 	if (haveMultiParSelection()) {
 		// FIXME: in case of multi-paragraph selection, it would be nice to
 		// initialise the parameters that are common to all paragraphs.
-		static ParagraphParameters empty;
+		static ParagraphParameters const empty;
 		return empty;
 	}
 	return bufferview()->cursor().innerParagraph().params();

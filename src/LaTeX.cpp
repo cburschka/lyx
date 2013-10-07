@@ -634,8 +634,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	FileName const fn = FileName(makeAbsPath(tmp));
 	ifstream ifs(fn.toFilesystemEncoding().c_str());
 	bool fle_style = false;
-	static regex file_line_error(".+\\.\\D+:[0-9]+: (.+)");
-	static regex child_file(".*([0-9]+[A-Za-z]*_.+\\.tex).*");
+	static regex const file_line_error(".+\\.\\D+:[0-9]+: (.+)");
+	static regex const child_file(".*([0-9]+[A-Za-z]*_.+\\.tex).*");
 	// Flag for 'File ended while scanning' message.
 	// We need to wait for subsequent processing.
 	string wait_for_error;
@@ -1215,7 +1215,7 @@ void LaTeX::deplog(DepTable & head)
 		// (and in addition to those above)
 		if (regex_match(token, sub, reg5)) {
 			// search for strings in <...>
-			static regex reg5_1("<([^>]+)(.)");
+			static regex const reg5_1("<([^>]+)(.)");
 			fragment_pos = iterateLine(token, reg5_1, ">",
 						   fragment_pos, head);
 			fragment = (fragment_pos != -1);
@@ -1228,7 +1228,7 @@ void LaTeX::deplog(DepTable & head)
 		// where "File: file.ext" would be skipped
 		if (regex_match(token, sub, reg6)) {
 			// search for strings in (...)
-			static regex reg6_1("\\(([^()]+)(.)");
+			static regex const reg6_1("\\(([^()]+)(.)");
 			fragment_pos = iterateLine(token, reg6_1, ")",
 						   fragment_pos, head);
 			fragment = (fragment_pos != -1);

@@ -122,7 +122,8 @@ ParSepTranslator const init_parseptranslator()
 
 ParSepTranslator const & parseptranslator()
 {
-	static ParSepTranslator translator = init_parseptranslator();
+	static ParSepTranslator const translator =
+		init_parseptranslator();
 	return translator;
 }
 
@@ -146,7 +147,8 @@ QuotesLangTranslator const init_quoteslangtranslator()
 
 QuotesLangTranslator const & quoteslangtranslator()
 {
-	static QuotesLangTranslator translator = init_quoteslangtranslator();
+	static QuotesLangTranslator const translator =
+		init_quoteslangtranslator();
 	return translator;
 }
 
@@ -196,7 +198,8 @@ static PaperSizeTranslator initPaperSizeTranslator()
 
 PaperSizeTranslator const & papersizetranslator()
 {
-	static PaperSizeTranslator translator = initPaperSizeTranslator();
+	static PaperSizeTranslator const translator =
+		initPaperSizeTranslator();
 	return translator;
 }
 
@@ -215,7 +218,8 @@ PaperOrientationTranslator const init_paperorientationtranslator()
 
 PaperOrientationTranslator const & paperorientationtranslator()
 {
-	static PaperOrientationTranslator translator = init_paperorientationtranslator();
+	static PaperOrientationTranslator const translator =
+	    init_paperorientationtranslator();
 	return translator;
 }
 
@@ -234,7 +238,7 @@ SidesTranslator const init_sidestranslator()
 
 SidesTranslator const & sidestranslator()
 {
-	static SidesTranslator translator = init_sidestranslator();
+	static SidesTranslator const translator = init_sidestranslator();
 	return translator;
 }
 
@@ -254,7 +258,8 @@ PackageTranslator const init_packagetranslator()
 
 PackageTranslator const & packagetranslator()
 {
-	static PackageTranslator translator = init_packagetranslator();
+	static PackageTranslator const translator =
+		init_packagetranslator();
 	return translator;
 }
 
@@ -274,7 +279,8 @@ CiteEngineTypeTranslator const init_citeenginetypetranslator()
 
 CiteEngineTypeTranslator const & citeenginetypetranslator()
 {
-	static CiteEngineTypeTranslator translator = init_citeenginetypetranslator();
+	static CiteEngineTypeTranslator const translator =
+		init_citeenginetypetranslator();
 	return translator;
 }
 
@@ -296,7 +302,7 @@ SpaceTranslator const init_spacetranslator()
 
 SpaceTranslator const & spacetranslator()
 {
-	static SpaceTranslator translator = init_spacetranslator();
+	static SpaceTranslator const translator = init_spacetranslator();
 	return translator;
 }
 
@@ -445,6 +451,8 @@ void BufferParams::use_package(std::string const & p, BufferParams::Package u)
 
 map<string, string> const & BufferParams::auto_packages()
 {
+	// FIXME THREAD
+	// It is extremely unlikely that there could be a problem here, but...
 	static map<string, string> packages;
 	if (packages.empty()) {
 		// adding a package here implies a file format change!

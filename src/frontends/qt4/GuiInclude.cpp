@@ -93,6 +93,7 @@ docstring GuiInclude::validate_listings_params()
 {
 	// use a cache here to avoid repeated validation
 	// of the same parameters
+	// FIXME THREAD
 	static string param_cache = string();
 	static docstring msg_cache = docstring();
 	
@@ -110,6 +111,7 @@ docstring GuiInclude::validate_listings_params()
 
 void GuiInclude::setListingsMsg()
 {
+	// FIXME THREAD
 	static bool isOK = true;
 	docstring msg = validate_listings_params();
 	if (msg.empty()) {

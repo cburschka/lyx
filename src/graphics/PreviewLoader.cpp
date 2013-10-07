@@ -61,6 +61,7 @@ typedef vector<SnippetPair> BitmapFile;
 
 string const unique_filename(string const & bufferpath)
 {
+	// FIXME THREAD
 	static int theCounter = 0;
 	string const filename = lyx::convert<string>(theCounter++) + "lyxpreview";
 	return addName(bufferpath, filename);
@@ -85,6 +86,7 @@ lyx::Converter const * setConverter(string const from)
 			return ptr;
 	}
 
+	// FIXME THREAD
 	static bool first = true;
 	if (first) {
 		first = false;
@@ -618,6 +620,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	if (wait) {
 		ForkedCall call(buffer_.filePath());
 		int ret = call.startScript(ForkedProcess::Wait, command);
+		// FIXME THREAD
 		static int fake = (2^20) + 1;
 		int pid = fake++;
 		inprogress.pid = pid;

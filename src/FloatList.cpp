@@ -64,7 +64,7 @@ Floating const & FloatList::getType(string const & t) const
 #ifdef HAVE_EXCEPTIONS
 	throw UnknownFloatType(t);
 #else
-	static Floating empty_float;
+	static Floating const empty_float;
 	return empty_float;
 #endif
 }

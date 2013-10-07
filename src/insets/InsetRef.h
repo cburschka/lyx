@@ -28,7 +28,7 @@ public:
 		///
 		std::string short_gui_name;
 	};
-	static type_info types[];
+	static const type_info types[];
 	///
 	static int getType(std::string const & name);
 	///

@@ -59,14 +59,16 @@ IPADecoTranslatorLoc const init_ipadecotranslator_loc()
 
 IPADecoTranslator const & ipadecotranslator()
 {
-	static IPADecoTranslator decotranslator = init_ipadecotranslator();
+	static IPADecoTranslator const decotranslator =
+			init_ipadecotranslator();
 	return decotranslator;
 }
 
 
 IPADecoTranslatorLoc const & ipadecotranslator_loc()
 {
-	static IPADecoTranslatorLoc translator = init_ipadecotranslator_loc();
+	static IPADecoTranslatorLoc const translator =
+	    init_ipadecotranslator_loc();
 	return translator;
 }
 
@@ -86,7 +88,8 @@ IPACharTranslator const init_ipachartranslator()
 
 IPACharTranslator const & ipachartranslator()
 {
-	static IPACharTranslator chartranslator = init_ipachartranslator();
+	static IPACharTranslator const chartranslator =
+	    init_ipachartranslator();
 	return chartranslator;
 }
 

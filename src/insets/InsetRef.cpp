@@ -351,7 +351,7 @@ void InsetRef::validate(LaTeXFeatures & features) const
 }
 
 
-InsetRef::type_info InsetRef::types[] = {
+InsetRef::type_info const InsetRef::types[] = {
 	{ "ref",       N_("Standard"),              N_("Ref: ")},
 	{ "eqref",     N_("Equation"),              N_("EqRef: ")},
 	{ "pageref",   N_("Page Number"),           N_("Page: ")},
