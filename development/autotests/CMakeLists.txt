@@ -103,7 +103,7 @@ endif()
 
 macro(getoutputformats filepath varname)
   file(STRINGS "${filepath}" lines)
-  set(out_formats "xhtml" "pdf" "pdf2" "pdf5")
+  set(out_formats "xhtml" "pdf" "pdf2" "pdf4" "pdf5")
   set(${varname} ${out_formats})
   foreach(_l ${lines})
     if(_l MATCHES "^\\\\default_output_format +\([^ ]+\)")
