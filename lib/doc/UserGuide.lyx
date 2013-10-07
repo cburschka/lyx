@@ -32375,7 +32375,7 @@ name "sec:Thesaurus"
 LyX provides a multilingual thesaurus.
  It uses the same thesaurus framework as LibreOffice, OpenOffice and Firefox
  (namely the 
-\family typewriter
+\family sans
 MyThes
 \family default
 
@@ -32395,8 +32395,8 @@ target "http://lingucomponent.openoffice.org/thesaurus.html"
 \end_inset
 
  thesaurus library, which is included in LyX).
- Therefore, LyX can directly access OpenOffice thesaurus dictionaries, which
- are available for many languages.
+ Therefore, LyX is able to directly access OpenOffice thesaurus dictionaries,
+ which are available for many languages.
 \end_layout
 
 \begin_layout Standard
@@ -32410,14 +32410,14 @@ Setting up the thesaurus
 
 \begin_layout Standard
 The 
-\family typewriter
+\family sans
 MyThes
-\family default
 \emph on
 /
 \emph default
-OpenOffice thesauri consist of two files per language: A file with the suffix
- 
+OpenOffice
+\family default
+ thesauri consist of two files per language: A file with the suffix 
 \emph on
 *.dat
 \emph default
@@ -32452,45 +32452,151 @@ th_en_EN_v2.dat
 \end_layout
 
 \begin_layout Standard
-If you have LibreOffice or OpenOffice and its thesaurus installed on a Linux
- system, these files should be already on your system.
- On Windows you can choose in LyX's installer wich dictionaries should be
- installed.
-\end_layout
-
-\begin_layout Standard
-All thesaurus dictionaries supported by LyX can be downloaded from here:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://sourceforge.net/projects/lyxwininstaller/files/thesaurus/
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-To install a dictionary, copy the 2
+If you have 
+\family sans
+LibreOffice
+\family default
+ or 
+\family sans
+OpenOffice
+\family default
+ and its thesaurus installed, these files should be already on your system
+ and you just need to point LyX (in 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Paths\SpecialChar \menuseparator
+Thesaurus
 \begin_inset space ~
 \end_inset
 
-files into LyX's installation subfolder 
-\family sans
+dictionaries
+\family default
+) to the path where they are installed.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+On Linux, depending on your distribution and the way you installed the dictionar
+ies, typical locations are 
+\family typewriter
+/usr/share/mythes/
+\family default
+, 
+\family typewriter
+/usr/share/myspell/dicts/
+\family default
+, 
+\family typewriter
+/usr/share/ooo/thesaurus/
+\family default
+,
+\family typewriter
+ ~/.config/libreoffice/<version>/user/
+\family default
+ or alike.
+ On Windows, dictionaries are to be found at 
+\family typewriter
 ~
 \backslash
-Resources
+Program Files
 \backslash
-thes
+LibreOffice-<Version>
+\backslash
+share
+\backslash
+extensions 
 \family default
- and restart LyX.
+or similar.
+ On the Mac, the default location is 
+\family typewriter
+/Users\SpecialChar \slash{}
+<user name>\SpecialChar \slash{}
+Library\SpecialChar \slash{}
+Application Support\SpecialChar \slash{}
+libreoffice\SpecialChar \slash{}
+<version>\SpecialChar \slash{}
+user
+\family default
+/.
+\end_layout
+
+\end_inset
+
+ On Windows, you can alternatively also select dictionaries for installation
+ during the LyX installation process, which will then be installed in the
+ correct place right away.
+\end_layout
+
+\begin_layout Standard
+If you want to install new\SpecialChar \slash{}
+further thesaurus dictionaries, you can downloaded
+ them from here:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/trac/browser/lyxsvn/dictionaries/trunk/thes/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To install a new dictionary, download the two files for this dictionary
+ into the thesaurus path (which is set in 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Paths\SpecialChar \menuseparator
+Thesaurus
+\begin_inset space ~
+\end_inset
+
+dictionaries
+\family default
+) and restart LyX.
+\end_layout
+
+\begin_layout Standard
+Alternatively, you can also install new dictionaries via 
+\family sans
+LibreOffice\SpecialChar \slash{}
+OpenOffice
+\family default
+ or, on Linux, via your package manager (look for 
+\emph on
+mythes-*
+\emph default
+ or 
+\emph on
+libreoffice-thesaurus-*
+\emph default
+ packages).
+ If you do this, make sure that LyX is able to find the installed dictionaries,
+ i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+ that 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Paths\SpecialChar \menuseparator
+Thesaurus
+\begin_inset space ~
+\end_inset
+
+dictionaries
+\family default
+ points to the path where you installed these dictionaries.
 \end_layout
 
 \begin_layout Subsection
