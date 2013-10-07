@@ -1,0 +1,3853 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+% 3.45em幅のサイドバーを左に付けた「Berkeley」テーマを用います
+\usetheme[left,width=3.45em]{Berkeley}
+
+% 定理様式ブロックの見出しを日本語化します
+\deftranslation[to=japanese]{Theorem}{定理}
+\deftranslation[to=japanese]{Fact}{事実}
+\deftranslation[to=japanese]{Example}{例}
+\deftranslation[to=japanese]{Definition}{定義}
+% 証明ブロックの見出しの翻訳の取り扱いは異なります
+\renewcommand{\proofname}{証明}
+\end_preamble
+\options 10pt
+\use_default_options true
+\maintain_unincluded_children false
+\language japanese
+\language_package default
+\inputencoding utf8-platex
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format pdf
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+BeamerとLyXを用いた発表
+\end_layout
+
+\begin_layout Subtitle
+基本の紹介
+\end_layout
+
+\begin_layout Author
+LyXプロジェクトチーム
+\end_layout
+
+\begin_layout Date
+第2.1版
+\end_layout
+
+\begin_layout TitleGraphic
+\begin_inset Graphics
+	filename ../../doc/clipart/mobius.eps
+	lyxscale 30
+	scale 10
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+presentation
+\end_layout
+
+\end_inset
+
+目次
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+目的
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
++-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Beamerクラスの目的
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+クラスを用いると、発表スライドを生成することができます。これは
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+視覚的に、高度にカスタマイズ可能であり
+\end_layout
+
+\begin_layout Itemize
+非常に良く構造化されていて
+\end_layout
+
+\begin_layout Itemize
+段階を追うように構築することができ(
+\emph on
+重ね合わせ
+\emph default
+概念)
+\end_layout
+
+\begin_layout Itemize
+多様な進行ルートを入れ込むことが可能で(スライドには、あらゆるハイパーリンクを入れることができます)
+\end_layout
+
+\begin_layout Itemize
+LaTeXの超高品質な出力を使用することができ
+\end_layout
+
+\begin_layout Itemize
+マルチメディアのコンテンツ(オーディオやビデオ)を埋め込むことが可能で
+\end_layout
+
+\begin_layout Itemize
+簡単に(article様の配布資料のような)附属資料に変換することができるなど
+\end_layout
+
+\begin_layout Itemize
+他にも多くの特徴を持ちます。
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+この発表の目的
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+この発表は、
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+の基本機能の一部を説明し
+\end_layout
+
+\begin_layout Itemize
+とくに、これらをLyX中でどのように使うことができるか
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+を説明します。
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+自身についての、もっと一般的で包括的な情報は、当該クラスの浩瀚な取扱説明書
+\begin_inset CommandInset citation
+LatexCommand cite
+key "beamer-ug"
+
+\end_inset
+
+を参照してください。
+\end_layout
+
+\begin_layout Section
+発表の構成要素
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+全体の構造
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+通常、発表には
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+表題ページ
+\end_layout
+
+\begin_layout Itemize
+場合により節や部にグループ化されたスライド
+\end_layout
+
+\begin_layout Itemize
+書誌情報などの追加情報を含んだ付録
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+などが含まれます。以下では、全体構造のうちの、これらの各部について説明します。
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+表題ページ
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+LyXでは、表題ページは、
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+表題
+\end_layout
+
+\end_inset
+
+・
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+副題
+\end_layout
+
+\end_inset
+
+・
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+著者
+\end_layout
+
+\end_inset
+
+・
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+所属機関
+\end_layout
+
+\end_inset
+
+・
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+日付
+\end_layout
+
+\end_inset
+
+・
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+表題グラフィック
+\end_layout
+
+\end_inset
+
+の各レイアウトで構成されます。
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+これらの要素は、各々はどれも必須ではありませんが、少なくともひとつは必要です。
+\end_layout
+
+\begin_layout Itemize
+挿入順は関係ありません(実際の順序は
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+のテーマで決められています)。
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+表題
+\end_layout
+
+\end_inset
+
+・
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+副題
+\end_layout
+
+\end_inset
+
+・
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+著者
+\end_layout
+
+\end_inset
+
+・
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+所属機関
+\end_layout
+
+\end_inset
+
+・
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+日付
+\end_layout
+
+\end_inset
+
+では、
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+挿入\SpecialChar \menuseparator
+見出し短縮形\SpecialChar \slash{}
+日付短縮形\SpecialChar \slash{}
+\SpecialChar \ldots{}
+
+\end_layout
+
+\end_inset
+
+で「短縮形」を定義することができます。これらは、サイドバーやヘディングで使用されます(ただし、サイドバーやヘディングがテーマで実際に提供されている場合のみ)。
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+表題
+\end_layout
+
+\end_inset
+
+の代わりに
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+表題(白紙フレーム)
+\end_layout
+
+\end_inset
+
+を選ぶと、表題頁にはサイドバーやヘディングが現れません。
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+スライド/フレーム
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+では、スライドのことを「フレーム」と呼びます。フレーム内のものは全て、1つのスライドに収められます(スライドの中に副スライドを収めることもあります)。
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+フレームの開始箇所で
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+フレーム
+\end_layout
+
+\end_inset
+
+段落様式を選んでください。
+\end_layout
+
+\begin_layout Itemize
+フレームの見出しは「フレーム見出し」差込枠に書き込まなくてはなりません。この差込枠は、新規フレームには自動的に用意されますが、 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+挿入\SpecialChar \menuseparator
+フレーム見出し
+\end_layout
+
+\end_inset
+
+で手動で挿入することもできます。
+\end_layout
+
+\begin_layout Itemize
+あるいは、
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+フレーム見出し
+\end_layout
+
+\end_inset
+
+レイアウトを使用することもできます。これを使うと、(あまり用いられませんが)フレーム見出し短縮形のオプションと、重ね合わせ指定のオプション(こちらの方が重要です
+)が提供されます。
+\end_layout
+
+\begin_layout Itemize
+副題を
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+フレーム小見出し
+\end_layout
+
+\end_inset
+
+レイアウトで付けることができます。
+\end_layout
+
+\begin_layout Itemize
+フレームオプションは
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+挿入\SpecialChar \menuseparator
+フレームオプション
+\end_layout
+
+\end_inset
+
+で指定することができ(各種オプションについては
+\begin_inset CommandInset citation
+LatexCommand cite
+key "beamer-ug"
+
+\end_inset
+
+参照)、
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+挿入\SpecialChar \menuseparator
+重ね合わせ指定
+\end_layout
+
+\end_inset
+
+および
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+挿入\SpecialChar \menuseparator
+重ね合わせ指定の既定値
+\end_layout
+
+\end_inset
+
+で重ね合わせオプションを指定することができます(これが何であるかについては後述します)。
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1-2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+label=myframe
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+フレームは再表示させることができます
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+各フレームは、フレーム全体あるいは選択した副フレームだけを、発表の後の方で何度でも再表示させることができます。
+\end_layout
+
+\begin_layout Frame
+それには、(このフレームで行なっているように)各フレームのフレームオプションに「label」を指定して、ラベル名を付けます。
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+そうしておいて、発表の後の方で
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+再フレーム
+\end_layout
+
+\end_inset
+
+レイアウトを使えば、このフレームを再表示させることができます。それには、ただ
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+再フレーム
+\end_layout
+
+\end_inset
+
+レイアウトにラベル名を入力し、必要ならば、どの副スレイドを再表示させたいかを
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+挿入\SpecialChar \menuseparator
+重ね合わせ指定
+\end_layout
+
+\end_inset
+
+で指定するだけです(再度「重ね合わせ」の概念については、下記参照)。
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+これが証明です!
+\end_layout
+
+\end_inset
+
+ (この文章は、副スライド3でのみ表示されます。副スライド3は、このフレームが後で再表示された時にのみ表示されます。)証明ブロックの見出しの日本語化には、プリア
+ンブルで
+\begin_inset Flex Bold
+status open
+
+\begin_layout Plain Layout
+
+\backslash
+renewcommand{
+\backslash
+proofname}{証明}
+\end_layout
+
+\end_inset
+
+を用います(この発表の
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+LaTeXプリアンブル
+\end_layout
+
+\end_inset
+
+を参照)。
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+フレームを1枚に表示するために
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+入れ子を使うこと!
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+フレーム
+\end_layout
+
+\end_inset
+
+様式以外のフレームの内容物は、すべて(
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+編集\SpecialChar \menuseparator
+リストの階層を下げる
+\end_layout
+
+\end_inset
+
+か
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
+を使用して)フレーム環境に入れ子にしなくてはならないことに注意してください。
+\end_layout
+
+\begin_layout Itemize
+内容物を入れ子にしたことは、LyX作業領域の余白に赤い傍線で表示されます。
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+(この行のように)入れ子にしない内容物も、発表に(別のスライドとして)表示されますが、綺麗に整えられないのです。
+\end_layout
+
+\begin_layout Itemize
+ですから、これは避けてくださいね。
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+フレームの分割
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\noindent
+連続したフレームは、
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+分離線
+\end_layout
+
+\end_inset
+
+段落様式で分けることができます。
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+分離線
+\end_layout
+
+\end_inset
+
+を挿入して新規フレームを自動で開始するのに最も便利な方法は、
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+フレーム
+\end_layout
+
+\end_inset
+
+レイアウトの段落上で
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+編集\SpecialChar \menuseparator
+環境を分割
+\end_layout
+
+\end_inset
+
+を選ぶことです。
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+ヒント
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+何のレイアウトであれ、入れ子になっている段落から、外の
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+フレーム
+\end_layout
+
+\end_inset
+
+レイアウトに出るには、
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-break inverse"
+\end_inset
+
+を打鍵してください!
+\end_layout
+
+\end_deeper
+\begin_layout AgainFrame
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+myframe
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout PlainFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+特殊なフレーム型
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainFrame
+LyXは、以下の2つの特殊なフレーム型を提供しています。
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+白紙フレーム
+\end_layout
+
+\end_inset
+
+は、(このフレームのように)サイドバーやヘッダがないフレームです。これは、内容が多かったり幅広な表があるスライドに便利です。
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+脆弱フレーム
+\end_layout
+
+\end_inset
+
+は、プログラムリストなど字句通り(verbatim)の内容が含まれている場合のように、フレームに「脆弱な」内容が含まれている時に使用します。
+\end_layout
+
+\end_deeper
+\begin_layout PlainFrame
+白紙の脆弱フレームが欲しい場合には、脆弱フレームに「plain」オプションを渡すか、白紙フレームに「fragile」オプションを渡してください。
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+発表を節分けする
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+フレームをグループ分けするには、(
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+部
+\end_layout
+
+\end_inset
+
+・
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+節
+\end_layout
+
+\end_inset
+
+・
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+小節
+\end_layout
+
+\end_inset
+
+のような)通常の節分けコマンドを使用してください。
+\end_layout
+
+\begin_layout Itemize
+これらは、目次や(テーマに依存して)サイドバー・ヘッダ、およびarticle出力に表示されます(「article」については、下記「モード」に関する節を参照)。
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+フレーム構成の再調整
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+ヒント
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+全フレームを再調整したり移動したりするのに、文書構造面(
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+表示\SpecialChar \menuseparator
+文書構造面
+\end_layout
+
+\end_inset
+
+)を使えば簡単にできるということをご存知でしたか?
+\end_layout
+
+\begin_layout Block
+また、特定のフレームに移動するには、
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+移動
+\end_layout
+
+\end_inset
+
+メニューを使うことができます。
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+付録
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+付録は、追加の内容や留保しておいた内容を書くのに便利かもしれません。付録は発表の一部ですが、目次やサイドバー、ヘッダには表示されません。
+\end_layout
+
+\begin_layout Itemize
+付録は、LyX中では、以下のようにして通常通り入力することができます。
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+付録を開始するには、開始する箇所で
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+文書\SpecialChar \menuseparator
+ここから付録を開始
+\end_layout
+
+\end_inset
+
+を選択します。
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+付録によく収録されるのは書誌情報です。
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+他の全LyXクラスで行われるように、
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+書誌情報
+\end_layout
+
+\end_inset
+
+段落様式を用いて書き込みます(例としてこの発表の最後にある書誌情報を参照)。
+\end_layout
+
+\begin_layout Itemize
+BibTeXスタイルのすべてが
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+と協働できる訳ではないですが、BibTeXを使うこともできます。
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+重ね合わせの概念
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+重ね合わせとは
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+基本的には、重ね合わせは、スライドの中身を動的に変更できるようにするものです。ものや文章を少しずつ開示したり、内容をフェイドアウトさせ、強調したり、文字や画像を
+取り替えたりといったことができます。
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
++-
+\end_layout
+
+\end_inset
+
+重ね合わせは、喋る内容に合わせてスライドを作り上げていくのに便利です。
+\end_layout
+
+\begin_layout Itemize
+これによって、聴衆の関心を特定のものに合わせていくことができます。
+\end_layout
+
+\begin_layout Itemize
+そして、聴衆があなたの話に付いていく手助けとなります。
+\end_layout
+
+\begin_layout Itemize
+ですから、重ね合わせを使いましょう！ 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+
+ほんまに！
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+重ねあわせ型
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+では、多くの重ね合わせ型が提供されています。中でも重要なものは
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+蔵匿型: ある点まで全く表示されないもの
+\end_layout
+
+\begin_layout Description
+被覆型: 褪色表示にするもの(完全に見えないわけではない)
+\end_layout
+
+\begin_layout Description
+強調型: ある点で何らかの方法で強調されるもの
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+これらの型の例は後に挙げますが、まずは重ね合わせの指定可能性についての一般的な注意から始めましょう。
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+重ね合わせと動作の指定可能性
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+多くの
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+構成要素は、重ね合わせの設定をすることができます。どの副スライドに特定の内容が表示されるかを指定したり(
+\begin_inset Quotes eld
+\end_inset
+
+2
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+2-4
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+3-
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+1,3
+\begin_inset Quotes erd
+\end_inset
+
+など)、どの出力モードで表示するかを指定することができます(
+\begin_inset Quotes eld
+\end_inset
+
+presentation
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+article
+\begin_inset Quotes erd
+\end_inset
+
+など)。
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+LyXでは、これらの設定は、一般に
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+挿入\SpecialChar \menuseparator
+重ね合わせ指定
+\end_layout
+
+\end_inset
+
+または
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+挿入\SpecialChar \menuseparator
+動作指定
+\end_layout
+
+\end_inset
+
+で指定することができます。
+\end_layout
+
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Definition
+「動作」はより一般的な概念で、これまで「重ね合わせ」と呼んできたもの(この上に副スライドを表示したり隠したり強調したりするもの)を含むだけでなく、「この発表には
+表示するけれども配布資料には表示しない」とか「これは第2画面にのみ表示する」といった指定(いわゆる「モード」)を含みます。
+\end_layout
+
+\begin_layout Definition
+
+\size footnotesize
+定義を始めとする定理様式ブロックの見出しを日本語化するには、プリアンブルで
+\begin_inset Flex Bold
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+
+\backslash
+deftranslation[to=japanese]{Definition}{定義}
+\end_layout
+
+\end_inset
+
+などとします(この発表の
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+
+\size footnotesize
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+LaTeXプリアンブル
+\end_layout
+
+\end_inset
+
+を参照)。
+\end_layout
+
+\end_deeper
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout AlertBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+LaTeX愛の人たちへの註
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout AlertBlock
+上述の重ね合わせと動作の設定は、LaTeX出力では
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset space \space{}
+\end_inset
+
+<\SpecialChar \ldots{}
+>
+\end_layout
+
+\end_inset
+
+や
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+[<\SpecialChar \ldots{}
+>]
+\end_layout
+
+\end_inset
+
+で囲んだコマンドオプションや環境オプションに対応します。
+\end_layout
+
+\begin_layout AlertBlock
+LyXは、書き出し時に括弧を追加しますので、括弧は自分で入れてはなりません。つまり、重ね合わせ/動作差込枠には、「<1>」や「[<+->]」ではなく、「1」や「
++-」と入力してください。
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+用例
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+用例として引用を取り上げてみましょう。
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+引用(字下げなし)
+\end_layout
+
+\end_inset
+
+環境では、重ね合わせ設定は
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+挿入\SpecialChar \menuseparator
+重ね合わせ指定
+\end_layout
+
+\end_inset
+
+で指定することができます。このようにして「2」を入力すれば、引用は第2(副)スライドにのみ表示されます。
+\end_layout
+
+\begin_deeper
+\begin_layout Quote
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+
+\lang ngerman
+Ich weiß nicht, was ich will
+\end_layout
+
+\begin_layout Quote
+
+\lang ngerman
+ich will nicht, was ich weiß
+\end_layout
+
+\begin_layout Quote
+
+\lang ngerman
+im Sommer ist mir kalt
+\end_layout
+
+\begin_layout Quote
+
+\lang ngerman
+im Winter ist mir heiß.
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+重ね合わせは、基本的にこのように動作します。
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+被覆vs蔵匿
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+「被覆(covering)」と「蔵匿(hiding)」の違いは、蔵匿対象がそこに無いかのごとく扱われるのに対し、被覆対象は覆われているだけである(スペースは確保
+されている)という点です。前スライドの引用を被覆する代わりに蔵匿したとすると、以下のように、スペースは表示される時だけ確保されます。
+\end_layout
+
+\begin_deeper
+\begin_layout Quote
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+only@2
+\end_layout
+
+\end_inset
+
+
+\lang ngerman
+Ich weiß nicht, was ich will
+\end_layout
+
+\begin_layout Quote
+
+\lang ngerman
+ich will nicht, was ich weiß
+\end_layout
+
+\begin_layout Quote
+
+\lang ngerman
+im Sommer ist mir kalt
+\end_layout
+
+\begin_layout Quote
+
+\lang ngerman
+im Winter ist mir heiß.
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+引用の蔵匿が解かれるとともに、この文が移動するのがわかるでしょう。
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+被覆濃度
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamercovered{transparent}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+には「被覆」の濃度があり、
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+setbeamercovered
+\end_layout
+
+\end_inset
+
+コマンドを使って、(発表全体にわたって)グローバルにも、(ここでのように1フレームのみなど)ローカルにも設定することができます。既定では、対象は完全に被覆されま
+す。「transparent(透過)」モードでは、被覆文は、以下のように淡色表示されているのがわかります。
+\end_layout
+
+\begin_deeper
+\begin_layout Quote
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+
+\lang ngerman
+Ich weiß nicht, was ich will
+\end_layout
+
+\begin_layout Quote
+
+\lang ngerman
+ich will nicht, was ich weiß
+\end_layout
+
+\begin_layout Quote
+
+\lang ngerman
+im Sommer ist mir kalt
+\end_layout
+
+\begin_layout Quote
+
+\lang ngerman
+im Winter ist mir heiß.
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+他の選択肢については、
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+取扱説明書を参照してください。
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+既定の重ね合わせ/動作指定vs
+\begin_inset Newline newline
+\end_inset
+
+(通常の)重ね合わせ/動作指定
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+環境によっては(箇条書きやフレームなど)、通常の重ね合わせ指定や動作指定に加えて(箇条書きの場合には、箇条書き全体に対しては「重ね合わせ指定」、項目単独に対して
+は「項目重ね合わせ指定」に加えて)「指定の既定値」を選ぶことができます。
+\end_layout
+
+\begin_layout Itemize
+指定の既定値は、個別に新たに設定しない限りは、その環境の全内容に対して適用されます。
+\end_layout
+
+\begin_layout Itemize
+通常の重ね合わせ/動作指定には、順序指定用文法を用います。例えば「+(1)-」とすると、以下のように、個別の項目指定がない限りは、箇条書き中の各項目を一つづつ(
+開始オフセット1で)開示します。
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
++(1)-
+\end_layout
+
+\end_inset
+
+ひとつ
+\end_layout
+
+\begin_layout Itemize
+ふたつ
+\end_layout
+
+\begin_layout Itemize
+みっつ
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+1-
+\end_layout
+
+\end_inset
+
+常在
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+この文法についての詳細は、
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+取扱説明書を参照してください。
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
++-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+既定の重ね合わせ/動作指定vs
+\begin_inset Newline newline
+\end_inset
+
+(通常の)重ね合わせ/動作指定
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\noindent
+このフレームは、既定の重ね合わせ指定を使用しています。
+\end_layout
+
+\begin_layout Frame
+これによって、重ね合わせ対応の段落や\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\SpecialChar \ldots{}
+箇条書き項目は\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar \ldots{}
+副スライドに一つづつ\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar \ldots{}
+表示されます\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+ブロック
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\SpecialChar \ldots{}
+次から次へと
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+alert@+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+既定の重ね合わせ/動作指定vs
+\begin_inset Newline newline
+\end_inset
+
+(通常の)重ね合わせ/動作指定
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\noindent
+このフレームは、既定の重ね合わせ指定を使用しています\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\SpecialChar \ldots{}
+これによって、重ね合わせ対応の箇条書き各項目は\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar \ldots{}
+それぞれの副スライド上で\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar \ldots{}
+強調されています
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+一時停止
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+一時停止
+\end_layout
+
+\end_inset
+
+レイアウトを用いると、以下のように、それ以降のすべての内容を被覆する点を指定できます(既定では、一時停止以前の内容が開示された後、1つのスライドの間のみ被覆しま
+す)。
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+一回目の一時停止の後です
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+二回目の一時停止の後です
+\end_layout
+
+\begin_layout Pause
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+既定では、一連の一時停止は一つづつ解除されます。
+\end_layout
+
+\begin_layout Frame
+ただし
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+挿入\SpecialChar \menuseparator
+一時停止回数
+\end_layout
+
+\end_inset
+
+を使えば、それ以前に挿入された一時停止の数に関わらず、一時停止を解除する副スライドを指定することができます。
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+段落単位での重ね合わせ
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+およびLyXは、段落全体や複数の段落を、特定のスライドで表示させたり隠したりするための段落レイアウトを用意しています。
+\end_layout
+
+\begin_layout Frame
+これらは具体的に
+\end_layout
+
+\begin_deeper
+\begin_layout Uncover
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2-
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Uncover
+特定のスライドで全内容を開示する
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+限定開示(uncover)
+\end_layout
+
+\end_inset
+
+レイアウト\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\SpecialChar \ldots{}
+これには入れ子になっている他のレイアウト段落も追従します。
+\end_layout
+
+\end_deeper
+\begin_layout Only
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+3-
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Only
+内容の蔵匿を解除する
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+限定挿入(only)
+\end_layout
+
+\end_inset
+
+レイアウト(前の例と同じように、これが表示されるようになった時に周りの文が「移動する」のがわかるでしょう)。
+\end_layout
+
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+特定のスライドで決められたスペースを占める文を入力することを許す \SpecialChar \ldots{}
+
+\end_layout
+
+\end_deeper
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\SpecialChar \ldots{}
+ 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+重ね刷り
+\end_layout
+
+\end_inset
+
+環境。
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+ここに表示されています。
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+行内の重ね合わせ
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%限定開示(uncover)と可視との違いを示すため
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamercovered{transparent}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+は、文章の一部の行内での重ね合わせをサポートしており、LyX中では、以下のように
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+編集\SpecialChar \menuseparator
+文字様式
+\end_layout
+
+\end_inset
+
+で設定することができます。
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+特定のスライドで
+\begin_inset Flex Uncover
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2-
+\end_layout
+
+\end_inset
+
+文を
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+限定開示(uncover)
+\end_layout
+
+\end_inset
+
+することができます。
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Visible
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+3-
+\end_layout
+
+\end_inset
+
+文を
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+可視
+\end_layout
+
+\end_inset
+
+にすることができます(このスライドでローカルに用いられているように「transparent」被覆設定が指定されたときのみ、「限定開示(uncover)」との違い
+が出てきます。
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Only
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+4-
+\end_layout
+
+\end_inset
+
+文を
+\end_layout
+
+\end_inset
+
+特定のスライドでのみ
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+限定挿入(only)
+\end_layout
+
+\end_inset
+
+することができます。
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Invisible
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+5-
+\end_layout
+
+\end_inset
+
+文を
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+不可視
+\end_layout
+
+\end_inset
+
+にすることができます。
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alternative
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+6-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+違う
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+書き換え
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+文を表示することができます。
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+段落レイアウトと同様に、重ね合わせの設定は
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+挿入
+\end_layout
+
+\end_inset
+
+メニューから行うことができます。
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+重ね合わせ対応コマンド
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+多くの「行内」コマンド(
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+編集\SpecialChar \menuseparator
+文字様式
+\end_layout
+
+\end_inset
+
+でも見つけられます)が重ねあわせを認識します。
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+したがって、特定のスライドにある文を、例えば
+\begin_inset Flex Emphasize
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+強調したり
+\end_layout
+
+\end_inset
+
+、
+\begin_inset Flex Bold
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+ボールド体にしたり
+\end_layout
+
+\end_inset
+
+、
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+
+注目色
+\end_layout
+
+\end_inset
+
+や
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+
+構造色
+\end_layout
+
+\end_inset
+
+で表示したりすることができます。
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+ヒント
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+(通常のフォント設定を通じてではなく)強調差込枠やボールド体差込枠を使用してください。単に重ね合わせ指定をしなくていいという他に、
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+における強調やボールド体の定義のされ方のおかげで、通常の強調やボールド体の指定の仕方では、例えば節見出しで使用したりすると、LaTeXエラーが発生することがあり
+ます。
+\end_layout
+
+\end_deeper
+\begin_layout Section
+特定の環境
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+特定の環境
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+特に発表に適した環境に
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+様々な「ブロック」
+\end_layout
+
+\begin_layout Itemize
+定理様式環境
+\end_layout
+
+\begin_layout Itemize
+段
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+があります。以下では、これらを簡単に説明します。
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+ブロック
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+ブロックには、あらゆる種類の情報を入れることができます。ここでは、これらを「ヒント」と「こつ」に使用しました。
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+クラスは、外見の異なる、以下の3つの定義済ブロックを提供しています。
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+ブロック
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+一般的な用途のブロック
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+3-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+用例ブロック
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+「用例」用のブロック
+\end_layout
+
+\begin_layout AlertBlock
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+4-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+注目ブロック
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout AlertBlock
+重要な注意用の「注目」ブロック
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+ブロックの操作
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+LyXでは、ブロックは、フレームに類似のインターフェースを持ちます。つまり
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ブロックの内容は、(「ブロック」段落レイアウト自身を除き)入れ子にする必要があります。
+\end_layout
+
+\begin_layout Itemize
+同種のブロックが続く際には、「分離線」段落様式で分離してやる必要があります。
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+ブロックは重ね合わせに対応しています。
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+定理様式環境
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+(定理・系・定義・定義(複数)・用例・用例(複数)・事実・証明)
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+定理は、出力はブロックに類似していますが、(型に依存して)固定した見出しを持っています。
+\end_layout
+
+\begin_deeper
+\begin_layout Theorem
+これが定理だ！
+\end_layout
+
+\begin_layout Theorem
+
+\size footnotesize
+定理様式ブロックの見出しを日本語化するには、プリアンブルで
+\begin_inset Flex Bold
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+
+\backslash
+deftranslation[to=japanese]{Theorem}{定理}
+\end_layout
+
+\end_inset
+
+などとします(この発表の
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+
+\size footnotesize
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+LaTeXプリアンブル
+\end_layout
+
+\end_inset
+
+を参照)。
+\end_layout
+
+\begin_layout Fact
+これが事実だ！
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+挿入\SpecialChar \menuseparator
+定理見出し文
+\end_layout
+
+\end_inset
+
+を使えば、この固定した見出しに文を追記することができます。
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Example
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+悪い例！
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+見出し文を付けた用例(括弧は自動的に付けられます)
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+段組
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+発表を段組にすると便利なことがあります。
+\end_layout
+
+\begin_deeper
+\begin_layout ColumnsTopAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.4
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+そのためには、段組を開始するために、まず
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+段組
+\end_layout
+
+\end_inset
+
+(段ではない)を選択してください。
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.4
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+それから、特定の段を開始するために、次の段落で
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+段
+\end_layout
+
+\end_inset
+
+(段組ではない)を選択してください。
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+註:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+段
+\end_layout
+
+\end_inset
+
+環境では、LaTeX文法を使って(とはいえ「3.5cm」のようなものも大丈夫です)幅を指定しなくてはなりません。
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+段
+\end_layout
+
+\end_inset
+
+は必ず
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+段組
+\end_layout
+
+\end_inset
+
+の下に入れ子にしなくてはなりません。同様に、段の内容は
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+段
+\end_layout
+
+\end_inset
+
+に入れ子にすれば、どのような段落様式でも構いません。
+\end_layout
+
+\end_deeper
+\begin_layout Section
+モードについての簡単な注意
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+モード
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+用語では、「モード」は特定の出力経路を指します。各目的のためにモードがいくつか存在しますが、特に3つを取り上げてみたいと思います。
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+「beamer」モード
+\end_layout
+
+\begin_layout Enumerate
+「presentation(発表)」モード
+\end_layout
+
+\begin_layout Enumerate
+「article(原稿)」モード
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+beamerモードが既定値です。明示的に指定しない限り、
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+文書は「beamer」モードになります。
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+presentation
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+モードの切替
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+しかし、文書の一部やフレーム、見出し、すべての「動作」対応環境は、別のモードに切り替えることができます。例えば、このフレームは「presentation」モード
+に切り替えられています。
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+それはどういうことですか？
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+つまり、このフレームは、発表(presentation)でのみ表示され、付随の「原稿(article)」を作ったとしても、それには表示されないということです(こ
+の点は後述します)。
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+article
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+モードの切替
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+このフレームは、発表では表示されませんが、「article」モードにあるので原稿には表示されます。
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+だからなに？
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+これは、本当に便利なのですよ！文書を一つだけ作っておいて、発表と配布資料---article(原稿)モードを使って---の両方を生成することができるのです。
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ここで、私たちは
+\begin_inset Flex Emphasize
+status collapsed
+
+\begin_layout Plain Layout
+本当の
+\end_layout
+
+\end_inset
+
+役立つハンドアウトを意味しているのであって、このところふつうに見られるようになったスライドの単なる縮刷版を意味しているのではないのです(どうしてもそうしたければ
+、そのような縮刷版を作ることも可能です)。
+\end_layout
+
+\begin_layout Itemize
+モードを使うと、配布資料に文章を追加したり、一部を隠したりすることが可能です。
+\end_layout
+
+\begin_layout Itemize
+例えば、発表と配布資料で異なる画像を使用することも可能です。
+\end_layout
+
+\begin_layout Itemize
+等々 \SpecialChar \ldots{}
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+用例
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+既述のように多くの要素がモードに対応しています。
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\noindent
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+編集\SpecialChar \menuseparator
+文字様式\SpecialChar \menuseparator
+限定挿入(only)
+\end_layout
+
+\end_inset
+
+を使って、特定の文を
+\begin_inset Flex Only
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+presentation
+\end_layout
+
+\end_inset
+
+発表のみで
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Only
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+article
+\end_layout
+
+\end_inset
+
+原稿のみで
+\end_layout
+
+\end_inset
+
+表示することができます。
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Itemize
+あるいは、
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+挿入\SpecialChar \menuseparator
+任意設定差込枠\SpecialChar \menuseparator
+原稿モード
+\end_layout
+
+\end_inset
+
+を使えば、原稿(article)モードでのみ出力される差込枠が挿入されるので、そこにはどんな複雑な内容でも入れることもできます。
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex PresentationMode
+status open
+
+\begin_layout Itemize
+あるいは、
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+挿入\SpecialChar \menuseparator
+任意設定差込枠\SpecialChar \menuseparator
+発表モード
+\end_layout
+
+\end_inset
+
+を使えば、発表(presentation)モードでのみ出力される差込枠が挿入されるので、そこにはどんな複雑な内容でも入れることもできます。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+あるいは、
+\begin_inset Flex Emphasize
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+presentation
+\end_layout
+
+\end_inset
+
+強調(though Kanjis are sometimes not emphasized)
+\end_layout
+
+\end_inset
+
+が発表にのみ適用され、
+\begin_inset Flex Bold
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+article
+\end_layout
+
+\end_inset
+
+ボールド体
+\end_layout
+
+\end_inset
+
+は原稿にのみ適用されるように定義することもできます。
+\end_layout
+
+\begin_layout Itemize
+また、節見出しやフレーム表題・副題を、発表若しくは原稿のみで表示させることもできます(この発表でも「目次」と「参考文献」のフレーム表題でそのようにしています)。
+\end_layout
+
+\begin_layout Itemize
+この種のことはまだまだあります\SpecialChar \ldots{}
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+原稿を作る
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+LyXでbeamer article(原稿)を作るのは簡単です。
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\noindent
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+Beamer Article (標準クラス)
+\end_layout
+
+\end_inset
+
+または
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+Beamer Article (KOMA-Script)
+\end_layout
+
+\end_inset
+
+クラスで新規文書を作成する
+\end_layout
+
+\begin_layout Itemize
+この文書に、(
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+挿入\SpecialChar \menuseparator
+ファイル\SpecialChar \menuseparator
+子文書\SpecialChar \ldots{}
+
+\end_layout
+
+\end_inset
+
+を使って)子文書として発表を追加する
+\end_layout
+
+\begin_layout Itemize
+それだけです。これら二つの文書のいずれかをコンパイルすることによって、配布資料や発表を作ることができます。その一方で、編集するのは片方、即ち発表の方だけで構いま
+せん。
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+この発表に付随するbeamer-article文書もご覧ください。この文書と同じフォルダにあります。
+\end_layout
+
+\begin_layout Section
+外観を変更する
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+テーマ
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+発表の外観は、テーマ化されています。テーマは、使用される色やマクロ構造(サイドバーやヘッドラインの使用法など)、フォント、箇条書きの表示の仕方、ブロック、及び発
+表全体の印象一般を定義するものです。
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+自体、異なった外見を持つたくさんのテーマを同梱しています(この発表では「Berkeley」テーマを使用しています。
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+LaTeXプリアンブル
+\end_layout
+
+\end_inset
+
+を見れば、このテーマを有効にして微調整を加えている様を見ることができるでしょう)。
+\end_layout
+
+\begin_layout Itemize
+この標準セットに加えて、
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://www.ctan.org"
+
+\end_inset
+
+やインターネット上の他の所からもテーマを手に入れることができます。
+\end_layout
+
+\begin_layout Itemize
+それでも満足できなかったり、あなたの大学や会社のコーポレートデザインにあったテーマを作りたい場合には、
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+取扱説明書
+\begin_inset CommandInset citation
+LatexCommand cite
+key "beamer-ug"
+
+\end_inset
+
+に自作テーマの作り方の説明があります。
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+テーマは修正することが可能です
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+しかし、外見を変更したい時に、更の状態からテーマを書く必要はありません。
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+既存のテーマは、細部に亘るまで変更したり、(色彩等)大雑把な領域だけを変更したりすることができます。
+\end_layout
+
+\begin_layout Itemize
+詳細については
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+取扱説明書
+\begin_inset CommandInset citation
+LatexCommand cite
+key "beamer-ug"
+
+\end_inset
+
+を参照してください。
+\end_layout
+
+\end_deeper
+\begin_layout Section
+さらに\SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+\SpecialChar \ldots{}
+もっとたくさん！
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+は、ここで取り上げたよりも、もっと多くのことができるのです。
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+取扱説明書
+\begin_inset CommandInset citation
+LatexCommand cite
+key "beamer-ug"
+
+\end_inset
+
+に、包括的な説明があります。
+\end_layout
+
+\begin_layout Frame
+また、LyXに同梱されている
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+の用例やひな型をご覧ください！
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+付録
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+以下では、原稿(article)で表題が重複しないように、フレーム表題レイアウトを使います(そしてフレーム表題差込枠は使いません)。また、書誌情報に
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+を使っていることに留意してください。これは、項目が正しく出力されるのに必要です(PDF出力では著者の色が違うことに注意)。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+presentation
+\end_layout
+
+\end_inset
+
+参考文献
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "beamer-ug"
+
+\end_inset
+
+Tantau, Till et al.:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+ The beamer class.
+ 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

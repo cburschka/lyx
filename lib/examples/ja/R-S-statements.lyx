@@ -1,0 +1,492 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass scrartcl
+\begin_preamble
+% if pdflatex is used
+\usepackage{ifpdf}
+\ifpdf
+
+% set fonts for nicer pdf view
+\IfFileExists{lmodern.sty}
+ {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+\end_preamble
+\use_default_options true
+\begin_modules
+rsphrase
+\end_modules
+\maintain_unincluded_children false
+\language japanese
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format pdf
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "Chemical Risk and Safety statements in LyX"
+\pdf_author "Uwe Stohr"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+LyXでの『化学リスクと安全性に関する表示』
+\end_layout
+
+\begin_layout Author
+Uwe Stöhr
+\end_layout
+
+\begin_layout Section
+はじめに
+\end_layout
+
+\begin_layout Standard
+LyXに、化学リスクと安全性に関する表示(
+\lang english
+Chemical Risk and Safety Statements
+\lang japanese
+)を挿入できるようにするには、
+\family sans
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+モジュール
+\family default
+メニューから
+\family sans
+リスクと安全性に関する表示
+\family default
+モジュールを読み込ませる必要があります。このモジュールは、2つの差込枠と1つの環境を提供します。差込枠は、
+\family sans
+挿入\SpecialChar \menuseparator
+任意設定差込枠
+\family default
+メニューで入れることができます。
+\end_layout
+
+\begin_layout Section
+リスクに関する表示
+\end_layout
+
+\begin_layout Standard
+差込枠
+\family sans
+R-S番号
+\family default
+は、番号を組むのに用いられ、差込枠
+\family sans
+R-S説明文
+\family default
+は、対応する説明文を出力します。
+\end_layout
+
+\begin_layout Standard
+リスクに関する表示
+\begin_inset Flex R-S number
+status open
+
+\begin_layout Plain Layout
+R55
+\end_layout
+
+\end_inset
+
+の説明文は: 
+\begin_inset Flex R-S phrase
+status open
+
+\begin_layout Plain Layout
+R55
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+これは
+\begin_inset Flex R-S number
+status collapsed
+
+\begin_layout Plain Layout
+R23
+\end_layout
+
+\end_inset
+
+です: 
+\begin_inset Flex R-S phrase
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ご覧のように、説明文差込枠は、空のままでも構いません。この場合は、直前に用いられた番号が、この説明文にも用いられます。
+\end_layout
+
+\begin_layout Standard
+もちろん、下記のように複数の表示をつなげても構いません。:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex R-S number
+status collapsed
+
+\begin_layout Plain Layout
+R36/38
+\end_layout
+
+\end_inset
+
+の表示は: 
+\begin_inset Flex R-S phrase
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+安全性に関する表示
+\end_layout
+
+\begin_layout Standard
+安全性に関する表示は、下記のように、リスクに関する表示と同じように挿入できます。
+\end_layout
+
+\begin_layout Standard
+安全性に関する表示
+\begin_inset Flex R-S number
+status open
+
+\begin_layout Plain Layout
+S35
+\end_layout
+
+\end_inset
+
+の説明文は: 
+\begin_inset Flex R-S phrase
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+安全性に関する表示の一部には、文字列を必要とするものがあります。これらの表示については、差込枠ではなく、LyXの環境選択ボックスから説明文環境を選んで使う必要が
+あります。必要とされる文字列は、非必須引数として指定します(
+\family sans
+挿入\SpecialChar \menuseparator
+短縮タイトル
+\family default
+メニューで挿入)。
+\end_layout
+
+\begin_layout Standard
+もし何かを138
+\begin_inset space \thinspace{}
+\end_inset
+
+°C以上に熱してはならない場合、下記のように、
+\begin_inset Flex R-S number
+status open
+
+\begin_layout Plain Layout
+S47
+\end_layout
+
+\end_inset
+
+に非必須引数「138」を与えて使用してください:
+\end_layout
+
+\begin_layout Safety phrase
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+138
+\end_layout
+
+\end_inset
+
+S47
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+特別な用法のある表示についても、完全にサポートされています。例えば、S
+\begin_inset space \thinspace{}
+\end_inset
+
+43については、水がリスクを増大させる場合、さらに文章を追記しなくてはなりません。派生番号S
+\begin_inset space \thinspace{}
+\end_inset
+
+43.1はこの文章を追記し、S
+\begin_inset space \thinspace{}
+\end_inset
+
+43.0はこの文章を表示させません。
+\end_layout
+
+\begin_layout Standard
+水を用いる表示
+\begin_inset Flex R-S number
+status open
+
+\begin_layout Plain Layout
+S43
+\end_layout
+
+\end_inset
+
+は:
+\end_layout
+
+\begin_layout Safety phrase
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+water
+\end_layout
+
+\end_inset
+
+S43.0
+\end_layout
+
+\begin_layout Standard
+砂を用いる表示
+\begin_inset Flex R-S number
+status open
+
+\begin_layout Plain Layout
+S43
+\end_layout
+
+\end_inset
+
+は:
+\end_layout
+
+\begin_layout Safety phrase
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+sand
+\end_layout
+
+\end_inset
+
+S43.1
+\end_layout
+
+\begin_layout Section
+言語関連
+\end_layout
+
+\begin_layout Standard
+表示は、言語によって出力が変わります。現在、サポートされている言語は、
+\begin_inset Newline newline
+\end_inset
+
+イタリア語・英語・スペイン語・デンマーク語・ドイツ語・フランス語
+\begin_inset Newline newline
+\end_inset
+
+です。
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+name "このウェブページ"
+target "http://schoolscout24.de/cgi-bin/rsp/rspinput.cgi"
+
+\end_inset
+
+には、EU全23言語の公的な表示があります。
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+言語は、以下のように、問題なく混ぜることができます。
+\end_layout
+
+\begin_layout Standard
+(ドイツ語) 
+\lang ngerman
+Dies Sicherheitssatz 
+\begin_inset Flex R-S number
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang ngerman
+S15
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Flex R-S phrase
+status open
+
+\begin_layout Plain Layout
+
+\lang ngerman
+S15
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(英語) This is safety statement 
+\begin_inset Flex R-S number
+status collapsed
+
+\begin_layout Plain Layout
+S15
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Flex R-S phrase
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+【註】説明文差込枠が文書言語ではない場合、差込枠は空にしておかなくてはなりません。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

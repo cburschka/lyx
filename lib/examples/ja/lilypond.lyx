@@ -1,0 +1,1367 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\begin_modules
+lilypond
+\end_modules
+\maintain_unincluded_children false
+\language japanese
+\language_package default
+\inputencoding utf8-platex
+\fontencoding global
+\font_roman lmodern
+\font_sans lmss
+\font_typewriter lmtt
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format pdf
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "LilyPond-book and LyX"
+\pdf_author "The LyX Team"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=blue,urlcolor=blue,pdfstartview=XYZ"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict true
+\end_header
+
+\begin_body
+
+\begin_layout Title
+LilyPond-bookとLyX
+\end_layout
+
+\begin_layout Author
+LyXプロジェクトチーム
+\end_layout
+
+\begin_layout Date
+第2.1.x版
+\end_layout
+
+\begin_layout Abstract
+この文書は、LyX文書への楽譜片の取り込み方の説明と例示を行います。記譜法としては、LilyPond文法を用い、処理にはLilyPond-bookユーティリティ
+を使用します。
+\end_layout
+
+\begin_layout Section
+はじめに
+\end_layout
+
+\begin_layout Standard
+LilyPondは、コンピュータで生成した美しい音楽スコアを生成することを可能にするオープンソースプロジェクトです。このプロジェクトには、テキストベースの記譜言
+語と、この記譜法を音楽スコアに変換するプログラムが含まれています。
+\end_layout
+
+\begin_layout Standard
+LilyPond自身も、タイトルや作者情報、脚注、巻末注などの表示をサポートしていますが、主な目的はあくまで楽譜の組版です。文章の組版には、一般的に云って、他の
+プログラムの方が向いています。LilyPond-bookは、LilyPond記譜法を使った音楽スコアを、なかんずくLaTeX文書に組み込むことを補助するための、
+LilyPondプロジェクトが提供するユーティリティです。
+\end_layout
+
+\begin_layout Standard
+この文書は、LaTeXベースのレイアウトを用いたLyX文書中で、LilyPond記譜法を用いることで、LaTeXとLilyPondの両方を結びつけて実現される、
+美しく高品質な組版を得る方法を説明します。記譜のために、LiliPond文法の基本を理解していることが必要ですが、LyXを使用している限りはLaTeXの知識は必
+要ありません。
+\end_layout
+
+\begin_layout Standard
+第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:LilyPondコードを使用"
+
+\end_inset
+
+節は、必要要件と使用法、LyX中でLiliPond記譜法を用いることの短所を説明します。第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:LilyPond-examples"
+
+\end_inset
+
+節は、いくつかの例を用いて、その組版の美しさと品質をお見せします。
+\end_layout
+
+\begin_layout Section
+LyX中でLilyPondコードを使用する
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:LilyPondコードを使用"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+使用中の文書に、LilyPondモジュールを追加すると、LyXでのLilyPond記譜法(LilyPondコード)のサポートが有効になります。これは、
+\family sans
+文書\SpecialChar \menuseparator
+設定
+\family default
+メニューを開いて、モジュール一覧からLilyPondを選択することで、実現できます。LaTeXベースのLyXレイアウトはどれでも使うことができ、通常のプレビュー
+や書き出し機構も使用できます。LyXは、LaTeX/LilyPond混在コードを、LilyPond-bookを用いて処理してくれます。LilyPond-book
+は、DocBookやHTML文書も扱うことができますが、これらの文書型をLilyPond-bookとLyXに統合することは、今のところ実現していません。
+\end_layout
+
+\begin_layout Subsection
+必要要件
+\end_layout
+
+\begin_layout Standard
+LilyPond-book第2.13版以降。
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+LilyPond-bookは、第2.1版以降で、LaTeX出力をサポートしていますが、PDFLaTeXサポート(第2.9版以降)や、
+\family typewriter
+--lily-output-dir
+\family default
+フラグ(第2.11版以降)、なかんずく
+\family typewriter
+--safe
+\family default
+フラグ(第2.13版以降)など、LyXが使用する機能の一部は、それよりも最近の版でしか利用することができません。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+統合
+\end_layout
+
+\begin_layout Standard
+本モジュールは、LilyPond差込枠を提供しており、
+\family sans
+挿入\SpecialChar \menuseparator
+任意設定差込枠
+\family default
+メニューで挿入することができます。この差込枠は、LilyPondコードを入力するためのもので、このコードが楽譜に組まれることになります。まずは、簡単な音階から始
+めてみましょう。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex LilyPond
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+staffsize=28
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+relative c'' {
+\end_layout
+
+\begin_layout Plain Layout
+
+  g a b c
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+上記のLyX差込枠は、以下のようなLaTeX様のコードを生成します。
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin{lilypond}[staffsize=28]
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+relative c'' {
+\end_layout
+
+\begin_layout LyX-Code
+  g a b c
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+end{lilypond}
+\end_layout
+
+\begin_layout Standard
+最初の角括弧の中に書かれているのは、LilyPond-bookに渡すオプションです。これは、LyX中では、LilyPond差込枠を挿入したときと同じように、
+\family sans
+挿入
+\family default
+メニューから挿入されたものです。ここでは、譜表(staff)の大きさを28
+\begin_inset space \thinspace{}
+\end_inset
+
+pt(ポイント)にしています。例えば、
+\family typewriter
+[staffsize=28,verbatim]
+\family default
+のように、コンマで区切れば、他のオプションを追加することができます。譜表オプションの一覧は、LilyPond説明書の中にあります。既定の設定が欲しい場合には、角
+括弧ブロック全体を省略することができます。
+\end_layout
+
+\begin_layout Standard
+オプションブロックの後に来るのは、LilyPond文法で書かれた楽譜片の文字表記です。このコードは、実はLaTeXが処理するのではなく、LilyPond-boo
+kが前処理を行います。LilyPond-bookは、グラフィックファイルを生成し、このコード部分を置き換えた
+\family typewriter
+
+\backslash
+includegraphics{\SpecialChar \ldots{}
+}
+\family default
+コマンドが、このファイルをLaTeX文書に取り込みます。
+\end_layout
+
+\begin_layout Standard
+したがって、変換過程は、
+\family sans
+LyX\SpecialChar \menuseparator
+LilyPond-book\SpecialChar \menuseparator
+LaTeX
+\family default
+のようになります。LyXは.lytexファイルを生成し、次にLilyPond-bookが.texファイルと付随する画像ファイルを生成し、最後にLaTeXが最終文書を
+生成します。ツール連鎖の各段階では、あなたが選択した配置方法に従います。つまり、楽譜片を行内に配置するか、独立した段落にするか、中央揃えか左揃えか等々、LyXウ
+ィンドウ内での表示のされ方は、出力書式でも尊重されます。行内での使用の例としては、
+\begin_inset Flex LilyPond
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+staffsize=12
+\end_layout
+
+\end_inset
+
+ 
+\backslash
+markup { 
+\backslash
+concat {B 
+\backslash
+super 
+\backslash
+flat } }
+\end_layout
+
+\end_inset
+
+のようにコード名を表示したい場合や、非常に短い楽譜片を表示したい時などが挙げられます。
+\end_layout
+
+\begin_layout Subsection
+プレビュー
+\end_layout
+
+\begin_layout Standard
+記譜がどのように見えるかについては、LyX内で直接フィードバックを得ることができます。そのためには、LilyPond差込枠を、
+\family sans
+挿入\SpecialChar \menuseparator
+プレビュー
+\family default
+メニューを使って得られるプレビュー差込枠の中に入れなくてはなりません。これは、以下のように、LyX内での表示に影響するだけで出力には関係しません。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset Flex LilyPond
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+relative c'' {
+\end_layout
+
+\begin_layout Plain Layout
+
+  ais a g ges
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+残念ながら、プレビューがそれほど即座に表示されないことに気づかれるかもしれません。コンパイルを開始するには、カーソルをプレビュー差込枠の外にカーソルを出す必要が
+あり、さらに、処理には数秒の時間がかかり得ます。しかしながら、編集中に、直接フィードバックを得ることには相応の価値があり、文書内の移動を非常に楽にします。
+\end_layout
+
+\begin_layout Subsection
+Gotchas
+\end_layout
+
+\begin_layout Standard
+ここでは、LilyPond-bookとLyXを統合する上で経験された認識のいくつかを紹介します。
+\end_layout
+
+\begin_layout Subsubsection
+子文書
+\end_layout
+
+\begin_layout Standard
+LilyPondモジュールを用いたLyX文書は、「Input」法を用いた子文書を持つことができません。
+\family sans
+挿入\SpecialChar \menuseparator
+ファイル\SpecialChar \menuseparator
+子文書
+\family default
+において、「取り込みの型」として「Input」を選択すると、出力を生成する際にエラーが発生します。これは、LilyPond-bookが、これらのインプットファイ
+ルを、自動で再帰的に処理してしまうせいです。現在のところ、LilyPond-bookには、この挙動を停止するコマンドラインオプションは存在しないので、代わりに「
+Include」法を使用することを推奨致します。
+\end_layout
+
+\begin_layout Standard
+なお、LilyPondモジュールを使用していない親文書に、LilyPondモジュールを使用した子文書を挿入することは、「Input」法でも「Include」法で
+も可能です。これを動作させるには、
+\family sans
+文書\SpecialChar \menuseparator
+設定
+\family default
+下で親文書のプリアンブルに
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+usepackage{graphicx}
+\end_layout
+
+\begin_layout Standard
+という行を追加する必要があります。
+\end_layout
+
+\begin_layout Subsubsection
+囲み波括弧
+\end_layout
+
+\begin_layout Standard
+LilyPond-bookは、コードが楽譜片に過ぎないかどうかを確かめるために、LilyPond-book
+\family typewriter
+
+\backslash
+score
+\family default
+コマンドあるいは
+\family typewriter
+
+\backslash
+relative
+\family default
+コマンドを検索します。LilyPondコマンドを全く入れないことも可能ですが、その場合には{囲み波括弧}が必要です。したがって、下記のコード
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin{lilypond}
+\end_layout
+
+\begin_layout LyX-Code
+  ais' f'' g' e'' % no 
+\backslash
+score given
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+end{lilypond}
+\end_layout
+
+\begin_layout Standard
+では、LilyPond-bookは、以下のように混乱してしまいます。
+\end_layout
+
+\begin_layout LyX-Code
+error: syntax error, unexpected NOTENAME_PITCH
+\end_layout
+
+\begin_layout LyX-Code
+ais' f'' g' e'' % no 
+\backslash
+score given
+\end_layout
+
+\begin_layout Standard
+囲み波括弧を用いれば、下記のようにうまく行きます。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset Flex LilyPond
+status collapsed
+
+\begin_layout Plain Layout
+
+{ais' f'' g' e''} % no 
+\backslash
+score given
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LilyPondコマンドを使用せずに、波括弧内に直接音符を書くと、短い楽譜片を書く場合に便利です。熟練ユーザーは、おそらく、楽曲をLilyPond変数やコマンド
+を使用して入力したいものと思われますが、もちろんその方法もサポートされています。
+\end_layout
+
+\begin_layout Subsubsection
+タブ譜
+\end_layout
+
+\begin_layout Standard
+もう一つのgotchaは、下記のように
+\family typewriter
+
+\backslash
+fret-diagram
+\family default
+マークアップコマンドを用いた、連続したLilyPond楽譜片についてです。
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin{lilypond}
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+markup{ 
+\backslash
+fret-diagram-terse #"x;3;2;o;1;o;" }
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+end{lilypond}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+begin{lilypond}
+\end_layout
+
+\begin_layout LyX-Code
+  
+\backslash
+markup{ 
+\backslash
+fret-diagram-terse #"x;x;o;2;3;2;" }
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+end{lilypond}
+\end_layout
+
+\begin_layout Standard
+何らかの理由で、LilyPond-book第2.13版は、これを安全モードで走らせると(意図を理解していない限り、つねにこうするべきです)、文句を云います。これは
+第2.15版の時点では修正されています(LilyPond issue #1900にファイルされています)。
+\end_layout
+
+\begin_layout Subsubsection
+
+\family typewriter
+
+\backslash
+lilypondfile
+\family default
+コマンド
+\end_layout
+
+\begin_layout Standard
+LilyPond-bookは、
+\family typewriter
+
+\backslash
+lilypondfile
+\family default
+コマンドによって、外部ファイルに存在するLilyPondコードを取込むことをサポートしています。このコマンドによって、LilyPondコードは、文書内で打ち込ま
+れたかのように処理され、出力スコアは、行幅・改頁等、LaTeXが定める組版に従います。これは、LyXに長らく存在する、LilyPondスコアを外部素材として取り
+込む機能とは対照的です。そこでは、外部ファイルを処理するのにLilyPondを呼び出し、固定した画像を生成した上で、文書中にこの画像を取り込んでいたので、組版の
+決定はLilyPondに委ねられていました。残念ながら、LyXでの
+\family typewriter
+
+\backslash
+lilypondfile
+\family default
+コマンドのサポートは、まだ実装されていませんが、望むファイルへの完全な絶対パスを与えるということさえ守れば、TeXコードブロック中でこれを使用することは可能です
+。
+\end_layout
+
+\begin_layout Section
+LilyPondの用例
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:LilyPond-examples"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+例
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Editorial-headword"
+
+\end_inset
+
+は、LilyPond要素を多用した複雑なスコアです。安全モードで実行できるように、この楽譜片のオリジナルソースからは、スキームコードの一部が取り除かれています。
+また、例
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:タブ譜のひな型"
+
+\end_inset
+
+は、ギター奏者に魅力的なLilyPondの出力を示しています。
+\end_layout
+
+\begin_layout Subsection
+編集見出し
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Editorial-headword"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+NR 1.7 編註 ベートーヴェン作品31-3 ピアノソナタ第18番 第2楽章 スケルツォ 第9--14小節
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset Flex LilyPond
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+new PianoStaff <<
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+  % RH Staff
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+new Staff {
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+clef treble
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+key aes 
+\backslash
+major
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+time 2/4
+\end_layout
+
+\begin_layout Plain Layout
+
+    %
+\backslash
+set Staff.fingeringOrientations = #'(up)
+\end_layout
+
+\begin_layout Plain Layout
+
+    %
+\backslash
+set Score.currentBarNumber = #9
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+partial 8
+\end_layout
+
+\begin_layout Plain Layout
+
+    <aes''-4 c''>8
+\backslash
+staccato
+\end_layout
+
+\begin_layout Plain Layout
+
+    |
+\end_layout
+
+\begin_layout Plain Layout
+
+    %
+\backslash
+set doubleSlurs = ##t
+\end_layout
+
+\begin_layout Plain Layout
+
+    <bes''-5 des''-2>4(
+\end_layout
+
+\begin_layout Plain Layout
+
+    <aes''-4 c''>8
+\backslash
+staccato)
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+noBeam
+\end_layout
+
+\begin_layout Plain Layout
+
+    c''8-5
+\backslash
+staccato
+\backslash
+pp
+\end_layout
+
+\begin_layout Plain Layout
+
+    |
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+unset doubleSlurs
+\end_layout
+
+\begin_layout Plain Layout
+
+    bes'8..(
+\end_layout
+
+\begin_layout Plain Layout
+
+    aes'32
+\end_layout
+
+\begin_layout Plain Layout
+
+    g'8)
+\backslash
+staccato
+\end_layout
+
+\begin_layout Plain Layout
+
+    f'8
+\backslash
+staccato
+\end_layout
+
+\begin_layout Plain Layout
+
+    |
+\end_layout
+
+\begin_layout Plain Layout
+
+    e'4-2
+\end_layout
+
+\begin_layout Plain Layout
+
+    r8
+\end_layout
+
+\begin_layout Plain Layout
+
+    %
+\backslash
+once 
+\backslash
+override Script #'script-priority = #-100
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+afterGrace
+\end_layout
+
+\begin_layout Plain Layout
+
+    f'8(
+\backslash
+trill^
+\backslash
+markup { 
+\backslash
+finger "3-2" }
+\end_layout
+
+\begin_layout Plain Layout
+
+    { e'16[ f'16] }
+\end_layout
+
+\begin_layout Plain Layout
+
+    |
+\end_layout
+
+\begin_layout Plain Layout
+
+    g'8..-3
+\end_layout
+
+\begin_layout Plain Layout
+
+    f'32
+\end_layout
+
+\begin_layout Plain Layout
+
+    e'8-1)
+\backslash
+staccato
+\end_layout
+
+\begin_layout Plain Layout
+
+    d'8-2
+\backslash
+staccato
+\end_layout
+
+\begin_layout Plain Layout
+
+    |
+\end_layout
+
+\begin_layout Plain Layout
+
+    c'4
+\end_layout
+
+\begin_layout Plain Layout
+
+    r4
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+  % LH Staff
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+new Staff {
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+key aes 
+\backslash
+major
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+clef treble
+\end_layout
+
+\begin_layout Plain Layout
+
+    %
+\backslash
+override Fingering #'direction = #down
+\end_layout
+
+\begin_layout Plain Layout
+
+    %
+\backslash
+set Staff.fingeringOrientations = #'(down)
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+partial 8
+\end_layout
+
+\begin_layout Plain Layout
+
+    <aes' aes>8
+\backslash
+staccato
+\end_layout
+
+\begin_layout Plain Layout
+
+    %
+\backslash
+set doubleSlurs = ##t
+\end_layout
+
+\begin_layout Plain Layout
+
+    <g'-2 ees'-3>4(
+\end_layout
+
+\begin_layout Plain Layout
+
+    <aes' aes>8)
+\backslash
+staccato
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+noBeam
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+clef bass
+\end_layout
+
+\begin_layout Plain Layout
+
+    c'8-1
+\backslash
+staccato
+\end_layout
+
+\begin_layout Plain Layout
+
+    |
+\end_layout
+
+\begin_layout Plain Layout
+
+    %
+\backslash
+set doubleSlurs = ##f
+\end_layout
+
+\begin_layout Plain Layout
+
+    bes8..(
+\end_layout
+
+\begin_layout Plain Layout
+
+    aes32
+\end_layout
+
+\begin_layout Plain Layout
+
+    g8-1)
+\backslash
+staccato
+\end_layout
+
+\begin_layout Plain Layout
+
+    f8
+\backslash
+staccato
+\end_layout
+
+\begin_layout Plain Layout
+
+    |
+\end_layout
+
+\begin_layout Plain Layout
+
+    e4
+\end_layout
+
+\begin_layout Plain Layout
+
+    r8
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+afterGrace
+\end_layout
+
+\begin_layout Plain Layout
+
+    f8(
+\backslash
+trill_
+\backslash
+markup { 
+\backslash
+finger "2-1" }
+\end_layout
+
+\begin_layout Plain Layout
+
+    { e16[ f16] }
+\end_layout
+
+\begin_layout Plain Layout
+
+    |
+\end_layout
+
+\begin_layout Plain Layout
+
+    g8..-1
+\end_layout
+
+\begin_layout Plain Layout
+
+    f32
+\end_layout
+
+\begin_layout Plain Layout
+
+    e8)
+\backslash
+staccato
+\end_layout
+
+\begin_layout Plain Layout
+
+    d8
+\backslash
+staccato
+\end_layout
+
+\begin_layout Plain Layout
+
+    |
+\end_layout
+
+\begin_layout Plain Layout
+
+    c4
+\end_layout
+
+\begin_layout Plain Layout
+
+    r4
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+>>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+[
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://lsr.dsi.unimi.it/LSR/Item?id=627
+\end_layout
+
+\end_inset
+
+より。スキームコードは削除。段落設定で中央揃えに。]
+\end_layout
+
+\begin_layout Subsection
+タブ譜のひな型
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:タブ譜のひな型"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset Flex LilyPond
+status collapsed
+
+\begin_layout Plain Layout
+
+upper=  
+\backslash
+relative c' {
+\end_layout
+
+\begin_layout Plain Layout
+
+  c4.
+  g4  g  c
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+lower=  
+\backslash
+relative c {
+\end_layout
+
+\begin_layout Plain Layout
+
+  c4  e  g,  e'
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+score {
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+new StaffGroup <<
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+new Staff = "guitar" <<
+\end_layout
+
+\begin_layout Plain Layout
+
+      
+\backslash
+context Voice = "upper guitar" { 
+\backslash
+clef "G_8" 
+\backslash
+voiceOne  
+\backslash
+upper }
+\end_layout
+
+\begin_layout Plain Layout
+
+      
+\backslash
+context Voice = "lower guitar" { 
+\backslash
+clef "G_8" 
+\backslash
+voiceTwo  
+\backslash
+lower }
+\end_layout
+
+\begin_layout Plain Layout
+
+    >>
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+new TabStaff = "tab" <<
+\end_layout
+
+\begin_layout Plain Layout
+
+      
+\backslash
+context TabVoice = "upper tab" { 
+\backslash
+clef "tab" 
+\backslash
+voiceOne 
+\backslash
+upper }
+\end_layout
+
+\begin_layout Plain Layout
+
+      
+\backslash
+context TabVoice = "lower tab" { 
+\backslash
+clef "tab" 
+\backslash
+voiceTwo 
+\backslash
+lower }
+\end_layout
+
+\begin_layout Plain Layout
+
+    >>
+\end_layout
+
+\begin_layout Plain Layout
+
+  >>
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+[
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://lsr.dsi.unimi.it/LSR/Item?id=634
+\end_layout
+
+\end_inset
+
+より]
+\end_layout
+
+\end_body
+\end_document
