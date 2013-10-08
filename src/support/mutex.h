@@ -21,6 +21,9 @@ namespace lyx {
 
 class Mutex
 {
+	/// noncopyable
+	Mutex(const Mutex&);
+	Mutex& operator=(const Mutex&);
 public:
 	Mutex();
 	~Mutex();
@@ -45,12 +48,6 @@ public:
 		Locker& operator=(const Locker& rhs);
 		Mutex* mutex_;
 	};
-	
-
-	// pseude-value semantic
-	// needed by GuiPrefs which makes a copy
-	Mutex(const Mutex&);
-	Mutex& operator=(const Mutex&);
 
 private:
 	struct Private;

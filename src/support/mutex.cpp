@@ -40,22 +40,6 @@ Mutex::~Mutex()
 }
 
 
-// It makes no sense to copy the mutex,
-// each instance has its own QMutex,
-// therefore nothing to copy!
-// TODO review
-Mutex::Mutex(const Mutex&) : d(new Private)
-{
-}
-
-
-Mutex& Mutex::operator=(const Mutex&)
-{
-	return *this;
-}
-
-
-
 Mutex::Locker::Locker(Mutex* mtx) : mutex_(mtx)
 {
 	mutex_->d->qmutex_.lock();
