@@ -26970,29 +26970,24 @@ msgid "||x||"
 msgstr "||x||"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:43
-#, fuzzy
 msgid "bmatrix"
-msgstr "Vložit matici"
+msgstr "bmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:44
-#, fuzzy
 msgid "pmatrix"
-msgstr "Vložit matici"
+msgstr "pmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:45
-#, fuzzy
 msgid "Bmatrix"
-msgstr "Vložit matici"
+msgstr "Bmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:46
-#, fuzzy
 msgid "vmatrix"
-msgstr "Vložit matici"
+msgstr "vmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:47
-#, fuzzy
 msgid "Vmatrix"
-msgstr "Vložit matici"
+msgstr "Vmatrix"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:62
 msgid "Math Matrix"
@@ -27329,7 +27324,6 @@ msgid "Find and Replace"
 msgstr "Najít a zaměnit"
 
 #: src/frontends/qt4/GuiSearch.cpp:134
-#, fuzzy
 msgid ""
 "End of file reached while searching forward.\n"
 "Continue searching from the beginning?"
@@ -27338,7 +27332,6 @@ msgstr ""
 "Pokračovat ve vyhledávání od počátku dokumentu?"
 
 #: src/frontends/qt4/GuiSearch.cpp:137
-#, fuzzy
 msgid ""
 "Beginning of file reached while searching backward.\n"
 "Continue searching from the end?"
@@ -27347,9 +27340,8 @@ msgstr ""
 "Pokračovat ve vyhledávání od konce dokumentu?"
 
 #: src/frontends/qt4/GuiSearch.cpp:155 src/lyxfind.cpp:367 src/lyxfind.cpp:385
-#, fuzzy
 msgid "String not found."
-msgstr "Řetězec nenalezen!"
+msgstr "Řetězec nenalezen."
 
 #: src/frontends/qt4/GuiSendto.cpp:40
 msgid "Export or Send Document"
@@ -27992,28 +27984,24 @@ msgstr ""
 "Chcete jej přepsat ?"
 
 #: src/frontends/qt4/GuiView.cpp:2315
-#, fuzzy
 msgid "Rename document?"
-msgstr "Uložit nový dokument ?"
+msgstr "Přejmenovat dokument?"
 
 #: src/frontends/qt4/GuiView.cpp:2315
-#, fuzzy
 msgid "Copy document?"
-msgstr "Zavřít dokument"
+msgstr "Zkopírovat dokument?"
 
 #: src/frontends/qt4/GuiView.cpp:2317
-#, fuzzy
 msgid "&Copy"
-msgstr "Zkopírovat"
+msgstr "&Zkopírovat"
 
 #: src/frontends/qt4/GuiView.cpp:2385
-#, fuzzy
 msgid "Choose a filename to export the document as"
-msgstr "Vybrat nové jméno souboru pro dokument"
+msgstr "Vybrat nové jméno pro exportovaný soubor"
 
 #: src/frontends/qt4/GuiView.cpp:2389
 msgid "Any supported format (*.*)"
-msgstr ""
+msgstr "Všechny podporované formáty (*.*)"
 
 #: src/frontends/qt4/GuiView.cpp:2403
 #, fuzzy, c-format
@@ -28053,14 +28041,12 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2536
-#, fuzzy
 msgid "Close or hide document?"
-msgstr "Zavřít dokument"
+msgstr "Zavřít nebo skrýt dokument"
 
 #: src/frontends/qt4/GuiView.cpp:2537
-#, fuzzy
 msgid "&Hide"
-msgstr "Skrýt panel"
+msgstr "&Skrýt"
 
 #: src/frontends/qt4/GuiView.cpp:2623
 msgid "Close document"
@@ -28132,9 +28118,8 @@ msgid "Reload externally changed document?"
 msgstr "Znovunačíst externě modifikovaný dokument?"
 
 #: src/frontends/qt4/GuiView.cpp:2910
-#, fuzzy
 msgid "Document could not be checked in."
-msgstr "Dokument nemůže být přečten"
+msgstr "Dokument nemůže být uložen do repositáře."
 
 #: src/frontends/qt4/GuiView.cpp:2954
 msgid "Error when setting the locking property."
@@ -28155,14 +28140,12 @@ msgid "No buffer for file: %1$s."
 msgstr "Žádný dokument pro soubor: %1$s"
 
 #: src/frontends/qt4/GuiView.cpp:3209
-#, fuzzy
 msgid "Export Error"
-msgstr "Export|E"
+msgstr "Chyba při exportu"
 
 #: src/frontends/qt4/GuiView.cpp:3210
-#, fuzzy
 msgid "Error cloning the Buffer."
-msgstr "Chyba při uzavírání souboru"
+msgstr "Chyba při duplikování souboru"
 
 #: src/frontends/qt4/GuiView.cpp:3327 src/frontends/qt4/GuiView.cpp:3343
 msgid "Exporting ..."
@@ -28277,9 +28260,9 @@ msgid "Enter characters to filter the layout list."
 msgstr "Zadejte znaky pro zmenšení seznamu."
 
 #: src/frontends/qt4/LayoutBox.cpp:577
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (unknown)"
-msgstr "%1$s neznámý"
+msgstr "%1$s (neznámý)"
 
 #: src/frontends/qt4/Menus.cpp:696
 msgid "More...|M"
@@ -28403,23 +28386,21 @@ msgid "No citations selected!"
 msgstr "Není vybrána žádná citace!"
 
 #: src/frontends/qt4/Menus.cpp:1631
-#, fuzzy, c-format
+#, c-format
 msgid "Caption (%1$s)"
-msgstr "Popisky"
+msgstr "Popisek (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:2269
 msgid "No Action Defined!"
 msgstr "Žádná akce není definována!"
 
 #: src/frontends/qt4/PanelStack.cpp:74
-#, fuzzy
 msgid "Search"
-msgstr "&Vyhledat"
+msgstr "Hledat"
 
 #: src/frontends/qt4/PanelStack.cpp:80
-#, fuzzy
 msgid "Clear text"
-msgstr "Uzavřít stránku (\\clearpage)"
+msgstr "Smazat text"
 
 #: src/frontends/qt4/Toolbars.cpp:217
 #, c-format
@@ -28471,52 +28452,44 @@ msgid "Table of Contents"
 msgstr "Obsah"
 
 #: src/frontends/qt4/qt_helpers.cpp:601
-#, fuzzy
 msgid "Equations"
 msgstr "Rovnice"
 
 #: src/frontends/qt4/qt_helpers.cpp:603
-#, fuzzy
 msgid "Footnotes"
-msgstr "Poznámka pod čarou|d"
+msgstr "Poznámky pod čarou"
 
 #: src/frontends/qt4/qt_helpers.cpp:605
 msgid "Listings"
 msgstr "Výpisy"
 
 #: src/frontends/qt4/qt_helpers.cpp:607
-#, fuzzy
 msgid "Index Entries"
-msgstr "Heslo rejstříku"
+msgstr "Hesla rejstříku"
 
 #: src/frontends/qt4/qt_helpers.cpp:609
-#, fuzzy
 msgid "Marginal notes"
-msgstr "Marginnote"
+msgstr "Postranní poznámky"
 
 #: src/frontends/qt4/qt_helpers.cpp:611
-#, fuzzy
 msgid "Nomenclature Entries"
-msgstr "Položka nomenklatury"
+msgstr "Položky nomenklatury"
 
 #: src/frontends/qt4/qt_helpers.cpp:613
-#, fuzzy
 msgid "Notes"
-msgstr "Poznámka"
+msgstr "Poznámky"
 
 #: src/frontends/qt4/qt_helpers.cpp:615
-#, fuzzy
 msgid "Citations"
-msgstr "Citation"
+msgstr "Citace"
 
 #: src/frontends/qt4/qt_helpers.cpp:617
 msgid "Labels and References"
 msgstr "Značky a odkazy"
 
 #: src/frontends/qt4/qt_helpers.cpp:621
-#, fuzzy
 msgid "Changes"
-msgstr "Změnit:"
+msgstr "Změny"
 
 #: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:298
 #: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:541
@@ -28570,17 +28543,16 @@ msgid "Horizontal Math Space"
 msgstr "Horizontální mat. mezera"
 
 #: src/insets/InsetArgument.cpp:114
-#, fuzzy
 msgid "Unknown Argument"
-msgstr "Neznámý argument mezery: "
+msgstr "Neznámý argument"
 
 #: src/insets/InsetArgument.cpp:115
 msgid "Argument not known in this Layout. Will be supressed in the output."
-msgstr ""
+msgstr "Neznámý argument pro toto rozvržení. Na výstupu bude ignorován."
 
 #: src/insets/InsetBibitem.cpp:92
 msgid "Keys must be unique!"
-msgstr "Klíč musí být unikátní"
+msgstr "Klíč musí být unikátní!"
 
 #: src/insets/InsetBibitem.cpp:93
 #, c-format
@@ -28702,7 +28674,7 @@ msgstr "neaktivní"
 #: src/insets/InsetBranch.cpp:75
 #, c-format
 msgid "master: %1$s, child: %2$s"
-msgstr ""
+msgstr "hlavní: %1$s, potomek: %2$s"
 
 #: src/insets/InsetBranch.cpp:78
 #, c-format
@@ -28718,9 +28690,8 @@ msgid "Branch (child only): "
 msgstr "Větev (pouze potomek): "
 
 #: src/insets/InsetBranch.cpp:95
-#, fuzzy
 msgid "Branch (master only): "
-msgstr "Větev (pouze potomek): "
+msgstr "Větev (pouze hlavní dokument): "
 
 #: src/insets/InsetBranch.cpp:97
 msgid "Branch (undefined): "
@@ -28731,16 +28702,15 @@ msgid "Undef: "
 msgstr "Nedef: "
 
 #: src/insets/InsetBranch.cpp:168
-#, fuzzy
 msgid "Branch state changes in master document"
-msgstr "Aktualizovat hlavní dokument"
+msgstr "Stav větve změněn v hlavním dokumentu"
 
 #: src/insets/InsetBranch.cpp:169
 #, c-format
 msgid ""
 "The state of the branch '%1$s' was changed in the master file. Please make "
 "sure to save the master."
-msgstr ""
+msgstr "Stav větve '%1$s' změněn v hlavním dokumentu - nezapomeňte na jeho uložení."
 
 #: src/insets/InsetCaption.cpp:404
 #, c-format
@@ -28767,7 +28737,6 @@ msgstr "Nekompatibilní jméno příkazu"
 msgid "InsetCommandParams Error: "
 msgstr "Chyba InsetCommandParams: "
 
-# TODO ?preklad?
 #: src/insets/InsetCommandParams.cpp:308
 msgid "InsetCommandParams: "
 msgstr "InsetCommandParams: "
@@ -28892,9 +28861,8 @@ msgid "Include (excluded)"
 msgstr "Zahrnout (vyjmutý)"
 
 #: src/insets/InsetInclude.cpp:391
-#, fuzzy
 msgid "Unknown"
-msgstr "neznámý"
+msgstr "Neznámý"
 
 #: src/insets/InsetInclude.cpp:502 src/insets/InsetInclude.cpp:784
 #: src/insets/InsetInclude.cpp:859
@@ -29439,9 +29407,8 @@ msgid "Unknown TOC type"
 msgstr "Neznámý typ Obsahu"
 
 #: src/insets/InsetTabular.cpp:4496
-#, fuzzy
 msgid "Selections not supported."
-msgstr "soubor nebyl importován!"
+msgstr "Výběry nejsou podporovány."
 
 #: src/insets/InsetTabular.cpp:4518
 msgid "Multi-column in current or destination column."
