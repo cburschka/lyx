@@ -37,6 +37,8 @@ HEADERFILES =
 lyxclient.cpp:
 	@echo -e '$(SOURCEFILES:%=\n#include "%")\n' > $@
 
+EXTRA_DIST += pch.h
+
 if MONOLITHIC_CLIENT
 
 AM_CPPFLAGS += -I$(srcdir)/.. $(BOOST_INCLUDES)
@@ -47,7 +49,6 @@ lyxclient_SOURCES = lyxclient.cpp $(HEADERFILES)
 
 else
 
-EXTRA_DIST += pch.h
 AM_CPPFLAGS += $(PCH_FLAGS)
 BUILT_SOURCES = $(PCH_FILE)
 
