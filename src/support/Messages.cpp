@@ -3,19 +3,17 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
  *
  * Full author contact details are available in file CREDITS.
  */
 
 /*
-  This is a limited parser for gettext's po files. Several features are
-  not handled for now:
-   * encoding is supposed to be UTF-8 (the charset parameter is not honored)
+  This contains a limited parser for gettext's mo files. Several features are
+  not implemented currently:
+   * encoding is supposed to be UTF-8 (the charset parameter is enforced)
    * context is not handled (implemented differently in LyX)
-   * plural forms not implemented (not used for now in LyX).
-   * The byte endianness of the machine on which the .mo file have been
-     built is expected to be the same as the one of the machine where this
-     code is run.
+   * plural forms are not implemented (not used for now in LyX).
 
   The data is loaded in a std::map object for simplicity.
  */
@@ -89,6 +87,7 @@
 
 #include <cerrno>
 #include <fstream>
+#include <utility>
 
 #ifdef HAVE_SYS_STAT_H
 # include <sys/stat.h>
@@ -105,10 +104,10 @@ void cleanTranslation(docstring & trans)
 	  Some english words have different translations, depending on
 	  context. In these cases the original string is augmented by
 	  context information (e.g. "To:[[as in 'From page x to page
-	  y']]" and "To:[[as in 'From format x to format y']]". Also, 
+	  y']]" and "To:[[as in 'From format x to format y']]". Also,
 	  when placeholders are used, the context can indicate what will
 	  be substituted for the placeholder (e.g. "%1$s[[date]], %1$s
-	  [[time]]). This means that we need to filter out everything 
+	  [[time]]). This means that we need to filter out everything
 	  in double square brackets at the end of the string, otherwise
 	  the user sees bogus messages. If we are unable to honour the
 	  request we just return what we got in.
@@ -182,6 +181,15 @@ string Messages::language() const
 	return realCode(lang_);
 }
 
+namespace {
+
+void swapInt(uint32_t & number)
+{
+	unsigned char * num_ar = reinterpret_cast<unsigned char *>(&number);
+	swap(num_ar[0], num_ar[3]);
+	swap(num_ar[1], num_ar[2]);
+}
+
 
 struct MoHeader
 {
@@ -195,9 +203,21 @@ struct MoHeader
 	uint32_t O;
 	// offset of table with translation strings
 	uint32_t T;
-	// there is a hashing table afterwrds, but we ignore it
+	// there is a hash table afterwards, but we ignore it
+
+	// Change the endianness of header data
+	void swapEnd();
 };
 
+
+void MoHeader::swapEnd()
+{
+	swapInt(magic);
+	swapInt(rev);
+	swapInt(N);
+	swapInt(O);
+	swapInt(T);
+}
 
 struct StringTable
 {
@@ -205,8 +225,20 @@ struct StringTable
 	uint32_t length;
 	// string offset
 	uint32_t offset;
+
+	// Change the endianness of string stable data
+	void swapEnd();
 };
 
+
+void StringTable::swapEnd()
+{
+	swapInt(length);
+	swapInt(offset);
+}
+
+
+} // namespace anon
 
 bool Messages::readMoFile()
 {
@@ -239,16 +271,28 @@ bool Messages::readMoFile()
 		return false;
 	}
 
-	MoHeader const * header = reinterpret_cast<MoHeader const *>(&moData[0]);
+	MoHeader * header = reinterpret_cast<MoHeader *>(&moData[0]);
+
+	bool doSwap = false;
+	if (header->magic == 0xde120495) {
+		header->swapEnd();
+		doSwap = true;
+	}
+
 	if (header->magic != 0x950412de) {
 		LYXERR0("Wrong magic number for file " << filen
-			<< ".\nExpected 0x950412de, got " << std::hex << header->magic);
+			<< ".\nExpected 0x950412de, got 0x" << std::hex << header->magic);
 		return false;
 	}
 
-	StringTable const * orig = reinterpret_cast<StringTable const *>(&moData[0] + header->O);
-	StringTable const * trans = reinterpret_cast<StringTable const *>(&moData[0] + header->T);
+	StringTable * orig = reinterpret_cast<StringTable *>(&moData[0] + header->O);
+	StringTable * trans = reinterpret_cast<StringTable *>(&moData[0] + header->T);
 	// First the header
+	if (doSwap) {
+		// Handle endiannness change
+		orig[0].swapEnd();
+		trans[0].swapEnd();
+	}
 	string const info = string(&moData[0] + trans[0].offset, trans[0].length);
 	size_t pos = info.find("charset=");
 	if (pos != string::npos) {
@@ -270,6 +314,11 @@ bool Messages::readMoFile()
 	}
 
 	for (size_t i = 1; i < header->N; ++i) {
+		if (doSwap) {
+			// Handle endiannness change
+			orig[i].swapEnd();
+			trans[i].swapEnd();
+		}
 		// Note that in theory the strings may contain NUL characters.
 		// This may be the case with plural forms
 		string const ostr(&moData[0] + orig[i].offset, orig[i].length);
