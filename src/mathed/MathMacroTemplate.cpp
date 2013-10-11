@@ -465,7 +465,7 @@ docstring MathMacroTemplate::name() const
 }
 
 
-void MathMacroTemplate::updateToContext(MacroContext const & mc) const
+void MathMacroTemplate::updateToContext(MacroContext const & mc)
 {
 	redefinition_ = mc.get(name()) != 0;
 }
@@ -551,12 +551,8 @@ void MathMacroTemplate::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	// valid macro?
 	MacroData const * macro = 0;
-	if (validName()) {
+	if (validName())
 		macro = mi.macrocontext.get(name());
-
-		// updateToContext() - avoids another lookup
-		redefinition_ = macro != 0;
-	}
 
 	// update look?
 	int argsInDef = maxArgumentInDefinition();

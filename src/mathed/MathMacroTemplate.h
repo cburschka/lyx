@@ -87,7 +87,7 @@ public:
 	virtual void validate(LaTeXFeatures &) const;
 
 	/// decide whether its a redefinition
-	void updateToContext(MacroContext const & mc) const;
+	void updateToContext(MacroContext const & mc);
 
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -164,7 +164,7 @@ private:
 	/// (re)newcommand or def
 	mutable MacroType type_;
 	/// defined before already?
-	mutable bool redefinition_;
+	bool redefinition_;
 	///
 	void createLook(int args) const;
 	///
