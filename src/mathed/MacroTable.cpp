@@ -45,16 +45,15 @@ MacroData::MacroData(Buffer * buf)
 	  redefinition_(false), type_(MacroTypeNewcommand)
 {}
 
-	
-	
+
 MacroData::MacroData(Buffer * buf, DocIterator const & pos)
 	: buffer_(buf), pos_(pos), queried_(false), numargs_(0),
 	  optionals_(0), lockCount_(0), redefinition_(false),
 	  type_(MacroTypeNewcommand)
 {
 }
-	
-	
+
+
 MacroData::MacroData(Buffer * buf, MathMacroTemplate const & macro)
 	: buffer_(buf), queried_(false), numargs_(0), optionals_(0), lockCount_(0),
 	  redefinition_(false), type_(MacroTypeNewcommand)
@@ -100,7 +99,7 @@ size_t MacroData::optionals() const
 }
 
 
-vector<docstring> const &  MacroData::defaults() const
+vector<docstring> const & MacroData::defaults() const
 {
 	updateData();
 	return defaults_;
@@ -126,7 +125,7 @@ void MacroData::queryData(MathMacroTemplate const & macro) const
 	redefinition_ = macro.redefinition();
 	type_ = macro.type();
 	optionals_ = macro.numOptionals();
-	
+
 	macro.getDefaults(defaults_);
 }
 
@@ -137,21 +136,21 @@ void MacroData::updateData() const
 		return;
 
 	LBUFERR(buffer_);
-	
+
 	// Try to fix position DocIterator. Should not do anything in theory.
 	pos_.fixIfBroken();
-	
+
 	// find macro template
 	Inset * inset = pos_.nextInset();
 	if (inset == 0 || inset->lyxCode() != MATHMACRO_CODE) {
 		lyxerr << "BUG: No macro template found by MacroData" << endl;
 		return;
 	}
-	
+
 	// query the data from the macro template
-	queryData(static_cast<MathMacroTemplate const &>(*inset));	
+	queryData(static_cast<MathMacroTemplate const &>(*inset));
 }
-	
+
 
 int MacroData::write(odocstream & os, bool overwriteRedefinition) const
 {
@@ -163,7 +162,7 @@ int MacroData::write(odocstream & os, bool overwriteRedefinition) const
 		lyxerr << "BUG: No macro template found by MacroData" << endl;
 		return 0;
 	}
-		
+
 	// output template
 	MathMacroTemplate const & tmpl =
 		static_cast<MathMacroTemplate const &>(*inset);

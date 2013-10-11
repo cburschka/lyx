@@ -33,7 +33,7 @@ enum MacroType {
 	MacroTypeNewcommandx,
 	MacroTypeDef
 };
-	
+
 ///
 class MacroData {
 public:
@@ -58,27 +58,23 @@ public:
 	///
 	std::vector<docstring> const & defaults() const;
 	///
-	std::string const & requires() const { updateData(); return requires_; }
+	std::string const & requires() const { return requires_; }
 	///
-	std::string & requires() { updateData(); return requires_; }
-	
+	std::string & requires() { return requires_; }
+
 	/// lock while being drawn to avoid recursions
 	int lock() const { return ++lockCount_; }
 	/// is it being drawn?
 	bool locked() const { return lockCount_ != 0; }
  	///
 	void unlock() const;
-	
-	///
-	bool redefinition() const { return redefinition_; }
-	///
-	void setRedefinition(bool redefined) { redefinition_ = redefined; }
 
 	///
-	MacroType type() const { return type_; }
+	bool redefinition() const { updateData(); return redefinition_; }
+
 	///
-	MacroType & type() { return type_; }
-	
+	MacroType type() const { updateData(); return type_; }
+
 	/// output as TeX macro, only works for lazy MacroData!!!
 	int write(odocstream & os, bool overwriteRedefinition) const;
 
@@ -86,7 +82,7 @@ public:
 	bool operator==(MacroData const & x) const {
 		updateData();
 		x.updateData();
-		return definition_ == x.definition_ 
+		return definition_ == x.definition_
 			&& numargs_ == x.numargs_
 			&& display_ == x.display_
 			&& requires_ == x.requires_
@@ -105,10 +101,10 @@ private:
 	Buffer const * buffer_;
 	/// The position of the definition in the buffer.
 	/// There is no guarantee it stays valid if the buffer
-	/// changes. But it (normally) exists only until the 
+	/// changes. But it (normally) exists only until the
 	/// next Buffer::updateMacros call where new MacroData
 	/// objects are created for each macro definition.
-	/// In the worst case, it is invalidated and the MacroData 
+	/// In the worst case, it is invalidated and the MacroData
 	/// returns its defaults values and the user sees unfolded
 	/// macros.
 	mutable DocIterator pos_;
@@ -121,7 +117,7 @@ private:
 	///
 	mutable docstring display_;
 	///
-	mutable std::string requires_;
+	std::string requires_;
 	///
 	mutable size_t optionals_;
 	///
@@ -140,7 +136,7 @@ class MacroNameSet : public std::set<docstring> {};
 ///
 class MacroSet : public std::set<MacroData const *> {};
 
-	
+
 /// A lookup table of macro definitions.
 /**
  * This contains a table of "global" macros that are always accessible,
@@ -179,10 +175,10 @@ class MacroContext {
 public:
 	/// construct context for the insets at pos
 	MacroContext(Buffer const * buf, DocIterator const & pos);
-	
+
 	/// Lookup macro
 	MacroData const * get(docstring const & name) const;
-	
+
 private:
 	///
 	Buffer const * buf_;
