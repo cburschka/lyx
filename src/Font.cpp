@@ -284,7 +284,7 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 			tmp += "{";
 			os << from_ascii(tmp);
 			count += tmp.length();
-		} else {
+		} else if (language()->encoding()->package() != Encoding::CJK) {
 			os << '{';
 			count += 1;
 		}
@@ -319,7 +319,7 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 				      "$$lang", language()->babel());
 			os << from_ascii(tmp);
 			count += tmp.length();
-		} else {
+		} else if (language()->encoding()->package() != Encoding::CJK) {
 			os << '{';
 			count += 1;
 		}

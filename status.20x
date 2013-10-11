@@ -59,6 +59,9 @@ What's new
 
 - Fix problem with unbalanced braces in XeTeX output (bug 8765).
 
+- Fix problems with unbalanced braces with a secondary CJK language
+  (bug 8215).
+
 - Fix state of certain language packages (polyglossia, japanese) in
   child documents (bug 8770).
 
