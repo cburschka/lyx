@@ -14,7 +14,6 @@
 
 #include "rowpainter.h"
 
-#include "Bidi.h"
 #include "Buffer.h"
 #include "CoordCache.h"
 #include "Cursor.h"
@@ -56,13 +55,12 @@ using frontend::FontMetrics;
 
 
 RowPainter::RowPainter(PainterInfo & pi,
-	Text const & text, pit_type pit, Row const & row, Bidi & bidi, int x, int y)
+	Text const & text, pit_type pit, Row const & row, int x, int y)
 	: pi_(pi), text_(text),
 	  text_metrics_(pi_.base.bv->textMetrics(&text)),
 	  pars_(text.paragraphs()),
 	  row_(row), pit_(pit), par_(text.paragraphs()[pit]),
-	  pm_(text_metrics_.parMetrics(pit)),
-	  bidi_(bidi), change_(pi_.change_),
+	  pm_(text_metrics_.parMetrics(pit)), change_(pi_.change_),
 	  xo_(x), yo_(y), width_(text_metrics_.width()),
 	  solid_line_thickness_(1.0), solid_line_offset_(1),
 	  dotted_line_thickness_(1.0), dotted_line_offset_(2)

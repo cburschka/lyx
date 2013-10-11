@@ -14,13 +14,13 @@
 #ifndef ROWPAINTER_H
 #define ROWPAINTER_H
 
+#include "Bidi.h"
 #include "Changes.h"
 
 #include "support/types.h"
 
 namespace lyx {
 
-class Bidi;
 class BufferView;
 class Font;
 class FontInfo;
@@ -44,7 +44,7 @@ class RowPainter {
 public:
 	/// initialise and run painter
 	RowPainter(PainterInfo & pi, Text const & text,
-		pit_type pit, Row const & row, Bidi & bidi, int x, int y);
+		pit_type pit, Row const & row, int x, int y);
 
 	/// paint various parts
 	/// FIXME: transfer to TextMetrics
@@ -98,10 +98,8 @@ private:
 	Paragraph const & par_;
 	ParagraphMetrics const & pm_;
 
-	/// bidi cache, comes from outside the rowpainter because
-	/// rowpainters are normally created in a for loop and there only
-	/// one of them is active at a time.
-	Bidi & bidi_;
+	/// bidi cache
+	Bidi bidi_;
 
 	/// row changed? (change tracking)
 	Change const change_;

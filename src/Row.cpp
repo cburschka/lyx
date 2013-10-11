@@ -218,9 +218,11 @@ ostream & operator<<(ostream & os, Row const & row)
 	   << " descent: " << row.dim_.des
 	   << " separator: " << row.separator
 	   << " label_hfill : " << row.label_hfill << "\n";
+	double x = row.x;
 	Row::Elements::const_iterator it = row.elements_.begin();
 	for ( ; it != row.elements_.end() ; ++it) {
-		os << "** " << *it << endl;
+		os << "x=" << x << " => " << *it << endl;
+		x += it->width();
 	}
 	return os;
 }

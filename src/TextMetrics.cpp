@@ -21,7 +21,9 @@
 
 #include "TextMetrics.h"
 
+#ifdef KEEP_OLD_METRICS_CODE
 #include "Bidi.h"
+#endif
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "BufferParams.h"
@@ -1115,9 +1117,18 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		Row const & row, int & x, bool & boundary) const
 {
-	boundary = false;
+
+	/// For the main Text, it is possible that this pit is not
+	/// yet in the CoordCache when moving cursor up.
+	/// x Paragraph coordinate is always 0 for main text anyway.
+	int const xo = origin_.x_;
+	x -= xo;
+#ifdef KEEP_OLD_METRICS_CODE
+	int const x_orig = x;
+#endif
 
 	pos_type pos = row.pos();
+	boundary = false;
 	if (row.x >= x || row.empty())
 		x = row.x;
 	else if (x >= row.width() - row.right_margin) {
@@ -1158,16 +1169,13 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	    && row.back().endpos == row.endpos())
 		boundary = row.right_boundary();
 
+	x += xo;
 #if !defined(KEEP_OLD_METRICS_CODE)
 	return pos - row.pos();
 #else
 	Buffer const & buffer = bv_->buffer();
 
-	/// For the main Text, it is possible that this pit is not
-	/// yet in the CoordCache when moving cursor up.
-	/// x Paragraph coordinate is always 0 for main text anyway.
-	int const xo = origin_.x_;
-	int x2 = x - xo;
+	int x2 = x_orig;
 	Paragraph const & par = text_->getPar(pit);
 	Bidi bidi;
 	bidi.computeTables(par, buffer, row);
@@ -1280,8 +1288,8 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 
 	if (abs(x2 - x) > 0.1 || boundary != boundary
 	    || c != pos) {
-		lyxerr << "new=(x=" << x << ", b=" << boundary << ", p=" << pos << "), "
-		       << "old=(x=" << x2 << ", b=" << boundary2 << ", p=" << c << "), " << row;
+		lyxerr << "getColumnNearX: new=(x=" << x - xo << ", b=" << boundary << ", p=" << pos << "), "
+		       << "old=(x=" << x2 - xo << ", b=" << boundary2 << ", p=" << c << "), " << row;
 	}
 
 	if (!c || end == par.size())
@@ -2100,7 +2108,6 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 	if (pm.rows().empty())
 		return;
 
-	Bidi bidi;
 	bool const original_drawing_state = pi.pain.isDrawingEnabled();
 	int const ww = bv_->workHeight();
 	size_t const nrows = pm.rows().size();
@@ -2141,7 +2148,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 			&& y - row.ascent() < ww);
 		// It is not needed to draw on screen if we are not inside.
 		pi.pain.setDrawingEnabled(inside && original_drawing_state);
-		RowPainter rp(pi, *text_, pit, row, bidi, x, y);
+		RowPainter rp(pi, *text_, pit, row, x, y);
 
 		if (selection)
 			row.setSelectionAndMargins(sel_beg_par, sel_end_par);
