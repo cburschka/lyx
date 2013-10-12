@@ -57,6 +57,8 @@ my $check_trans = (!%options or defined($options{t}));
 
 my %trans;
 
+my $total_warn = 0;
+
 foreach my $pofilename ( @ARGV ) {
   my %bad;
   if (!$silent_mode) {
@@ -239,4 +241,8 @@ foreach my $pofilename ( @ARGV ) {
     }
     print "\n";
   }
+  $total_warn += $warn;
 }
+
+exit ($total_warn > 0);
+
