@@ -74,6 +74,9 @@ What's new
 
 - Include alt tag when exporting math as images (bug 8746).
 
+- Fix garbage in document export (and maybe other places) by making encoding
+  conversions thread-safe (bug 8854).
+
 
 * USER INTERFACE
 

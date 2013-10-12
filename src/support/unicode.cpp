@@ -14,7 +14,8 @@
 
 #include "support/unicode.h"
 #include "support/debug.h"
-#include "support/mutex.h"
+
+#include <QThreadStorage>
 
 #include <iconv.h>
 
@@ -66,8 +67,6 @@ struct IconvProcessor::Impl
 	iconv_t cd;
 	string tocode_;
 	string fromcode_;
-
-	Mutex mutex_; // iconv() is not thread save, see #7240
 };
 
 
@@ -124,8 +123,6 @@ bool IconvProcessor::init()
 int IconvProcessor::convert(char const * buf, size_t buflen,
 		char * outbuf, size_t maxoutsize)
 {
-	Mutex::Locker lock(&pimpl_->mutex_);
-
 	if (buflen == 0)
 		return 0;
 
@@ -228,7 +225,10 @@ iconv_convert(IconvProcessor & processor, InType const * buf, size_t buflen)
 	char const * inbuf = reinterpret_cast<char const *>(buf);
 	size_t inbytesleft = buflen * sizeof(InType);
 
-	static std::vector<char> outbuf(32768);
+	static QThreadStorage<std::vector<char> *> static_outbuf;
+	if (!static_outbuf.hasLocalData())
+		static_outbuf.setLocalData(new std::vector<char>(32768));
+	std::vector<char> & outbuf = *static_outbuf.localData();
 	// The number of UCS4 code points in buf is at most inbytesleft.
 	// The output encoding will use at most
 	// max_encoded_bytes(pimpl_->tocode_) per UCS4 code point.
@@ -249,6 +249,15 @@ iconv_convert(IconvProcessor & processor, InType const * buf, size_t buflen)
 } // anon namespace
 
 
+IconvProcessor & utf8ToUcs4()
+{
+	static QThreadStorage<IconvProcessor *> processor;
+	if (!processor.hasLocalData())
+		processor.setLocalData(new IconvProcessor(ucs4_codeset, "UTF-8"));
+	return *processor.localData();
+}
+
+
 vector<char_type> utf8_to_ucs4(vector<char> const & utf8str)
 {
 	if (utf8str.empty())
@@ -261,32 +270,43 @@ vector<char_type> utf8_to_ucs4(vector<char> const & utf8str)
 vector<char_type>
 utf8_to_ucs4(char const * utf8str, size_t ls)
 {
-	static IconvProcessor processor(ucs4_codeset, "UTF-8");
-	return iconv_convert<char_type>(processor, utf8str, ls);
+	return iconv_convert<char_type>(utf8ToUcs4(), utf8str, ls);
 }
 
 
 vector<char_type>
 utf16_to_ucs4(unsigned short const * s, size_t ls)
 {
-	static IconvProcessor processor(ucs4_codeset, utf16_codeset);
-	return iconv_convert<char_type>(processor, s, ls);
+	static QThreadStorage<IconvProcessor *> processor;
+	if (!processor.hasLocalData())
+		processor.setLocalData(new IconvProcessor(ucs4_codeset, utf16_codeset));
+	return iconv_convert<char_type>(*processor.localData(), s, ls);
 }
 
 
 vector<unsigned short>
 ucs4_to_utf16(char_type const * s, size_t ls)
 {
-	static IconvProcessor processor(utf16_codeset, ucs4_codeset);
-	return iconv_convert<unsigned short>(processor, s, ls);
+	static QThreadStorage<IconvProcessor *> processor;
+	if (!processor.hasLocalData())
+		processor.setLocalData(new IconvProcessor(utf16_codeset, ucs4_codeset));
+	return iconv_convert<unsigned short>(*processor.localData(), s, ls);
+}
+
+
+IconvProcessor & ucs4ToUtf8()
+{
+	static QThreadStorage<IconvProcessor *> processor;
+	if (!processor.hasLocalData())
+		processor.setLocalData(new IconvProcessor("UTF-8", ucs4_codeset));
+	return *processor.localData();
 }
 
 
 vector<char>
 ucs4_to_utf8(char_type c)
 {
-	static IconvProcessor processor("UTF-8", ucs4_codeset);
-	return iconv_convert<char>(processor, &c, 1);
+	return iconv_convert<char>(ucs4ToUtf8(), &c, 1);
 }
 
 
@@ -303,15 +323,17 @@ ucs4_to_utf8(vector<char_type> const & ucs4str)
 vector<char>
 ucs4_to_utf8(char_type const * ucs4str, size_t ls)
 {
-	static IconvProcessor processor("UTF-8", ucs4_codeset);
-	return iconv_convert<char>(processor, ucs4str, ls);
+	return iconv_convert<char>(ucs4ToUtf8(), ucs4str, ls);
 }
 
 
 vector<char_type>
 eightbit_to_ucs4(char const * s, size_t ls, string const & encoding)
 {
-	static map<string, IconvProcessor> processors;
+	static QThreadStorage<map<string, IconvProcessor> *> static_processors;
+	if (!static_processors.hasLocalData())
+		static_processors.setLocalData(new map<string, IconvProcessor>);
+	map<string, IconvProcessor> & processors = *static_processors.localData();
 	if (processors.find(encoding) == processors.end()) {
 		IconvProcessor processor(ucs4_codeset, encoding.c_str());
 		processors.insert(make_pair(encoding, processor));
@@ -320,10 +342,23 @@ eightbit_to_ucs4(char const * s, size_t ls, string const & encoding)
 }
 
 
+namespace {
+
+map<string, IconvProcessor> & ucs4To8bitProcessors()
+{
+	static QThreadStorage<map<string, IconvProcessor> *> processors;
+	if (!processors.hasLocalData())
+		processors.setLocalData(new map<string, IconvProcessor>);
+	return *processors.localData();
+}
+
+}
+
+
 vector<char>
 ucs4_to_eightbit(char_type const * ucs4str, size_t ls, string const & encoding)
 {
-	static map<string, IconvProcessor> processors;
+	map<string, IconvProcessor> & processors(ucs4To8bitProcessors());
 	if (processors.find(encoding) == processors.end()) {
 		IconvProcessor processor(encoding.c_str(), ucs4_codeset);
 		processors.insert(make_pair(encoding, processor));
@@ -334,7 +369,7 @@ ucs4_to_eightbit(char_type const * ucs4str, size_t ls, string const & encoding)
 
 char ucs4_to_eightbit(char_type ucs4, string const & encoding)
 {
-	static map<string, IconvProcessor> processors;
+	map<string, IconvProcessor> & processors(ucs4To8bitProcessors());
 	map<string, IconvProcessor>::iterator it = processors.find(encoding);
 	if (it == processors.end()) {
 		IconvProcessor processor(encoding.c_str(), ucs4_codeset);
@@ -352,7 +387,10 @@ char ucs4_to_eightbit(char_type ucs4, string const & encoding)
 void ucs4_to_multibytes(char_type ucs4, vector<char> & out,
 	string const & encoding)
 {
-	static map<string, IconvProcessor> processors;
+	static QThreadStorage<map<string, IconvProcessor> *> static_processors;
+	if (!static_processors.hasLocalData())
+		static_processors.setLocalData(new map<string, IconvProcessor>);
+	map<string, IconvProcessor> & processors = *static_processors.localData();
 	map<string, IconvProcessor>::iterator it = processors.find(encoding);
 	if (it == processors.end()) {
 		IconvProcessor processor(encoding.c_str(), ucs4_codeset);

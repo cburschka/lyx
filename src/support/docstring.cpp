@@ -66,14 +66,6 @@ string const to_ascii(docstring const & ucs4)
 }
 
 
-IconvProcessor & utf8ToUcs4()
-{
-	static IconvProcessor iconv(ucs4_codeset, "UTF-8");
-	return iconv;
-}
-
-
-
 void utf8_to_ucs4(string const & utf8, docstring & ucs4)
 {
 	size_t n = utf8.size();

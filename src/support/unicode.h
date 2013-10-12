@@ -21,6 +21,27 @@
 
 namespace lyx {
 
+/**
+ * Wrapper for iconv(3).
+ *
+ * According to the POSIX standard, all specified functions are thread-safe,
+ * with some exceptions. The iconv() function is not listed as an exception:
+ * http://pubs.opengroup.org/onlinepubs/9699919799/xrat/V4_xsh_chap02.html#tag_22_02_09_09
+ * http://man7.org/linux/man-pages/man7/pthreads.7.html
+ *
+ * Therefore, you can use as many instances of this class in parallel as you
+ * like. However, you need to ensure that each instance is only used by one
+ * thread at any given time. If this condition is not met you get nasty
+ * mixtures of different thread data as in bug 7240.
+ *
+ * From a performance point of view it is best to use one static instance
+ * per thread for each in/out encoding pair. This can e.g. be achieved by
+ * using helpers for thread-local storage such as QThreadStorage or
+ * boost::thread_specific_ptr. A single static instance protected by a mutex
+ * would work as well, and might be preferrable for exotic encoding pairs.
+ * Creating local IconvProcessor instances should be avoided because of the
+ * overhead in iconv_open().
+ */
 class IconvProcessor
 {
 public:
@@ -51,6 +72,10 @@ private:
 	Impl * pimpl_;
 };
 
+/// Get the global IconvProcessor instance of the current thread for
+/// utf8->ucs4 conversions
+IconvProcessor & utf8ToUcs4();
+
 // A single codepoint conversion for utf8_to_ucs4 does not make
 // sense, so that function is left out.
 
@@ -65,6 +90,10 @@ std::vector<char_type> utf16_to_ucs4(unsigned short const * s, size_t ls);
 // ucs4_to_utf16
 
 std::vector<unsigned short> ucs4_to_utf16(char_type const * s, size_t ls);
+
+/// Get the global IconvProcessor instance of the current thread for
+/// ucs4->utf8 conversions
+IconvProcessor & ucs4ToUtf8();
 
 // ucs4_to_utf8
 
