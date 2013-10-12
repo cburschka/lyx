@@ -361,8 +361,6 @@ UIFILES = \
 liblyxqt4.cpp:
 	@echo -e '$(SOURCEFILES:%=\n#include "%")\n' > $@
 
-EXTRA_DIST = pch.h $(UIFILES:%=ui/%)
-
 if MONOLITHIC_FRONTEND_QT4
 
 liblyxqt4_a_SOURCES = \
@@ -380,6 +378,7 @@ liblyxqt4_a_SOURCES = \
 	$(MOCHEADER) \
 	$(NOMOCHEADER)
 
+EXTRA_DIST = pch.h $(UIFILES:%=ui/%)
 BUILT_SOURCES += $(PCH_FILE)
 AM_CPPFLAGS += $(PCH_FLAGS)
 
