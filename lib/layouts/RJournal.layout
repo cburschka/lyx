@@ -1,4 +1,8 @@
-#  \DeclareLaTeXClass[report,RJournal.sty,booktabs.sty,natbib.sty]{report (R Journal)}
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[report,RJournal.sty,booktabs.sty,natbib.sty]{R Journal}
+#  \DeclareCategory{Reports}
+# Author: Yihui Xie
+# Modified by: Scott Kostyshak
 
 Format 48
 
