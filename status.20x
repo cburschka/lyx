@@ -54,6 +54,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix garbage in document export (and maybe other places) by making encoding
+  conversions thread-safe (bug 8854).
+
 - Fix output of ulem commands (underline etc.) which was broken as of
   LyX 2.0.6 (bug 8733).
 
@@ -68,14 +71,13 @@ What's new
 - Fix compilation of documents containing chemical equations and math
   integrals (bug 8731).
 
+- Fix compilation with nested ("sub") custom floats.
+
 - Fix import of CSV-files.
 
 - Added h5 and h6 as HTML tags for Paragraph and Subparagraph.
 
 - Include alt tag when exporting math as images (bug 8746).
-
-- Fix garbage in document export (and maybe other places) by making encoding
-  conversions thread-safe (bug 8854).
 
 
 * USER INTERFACE
