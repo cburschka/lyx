@@ -140,7 +140,7 @@ Package::Package(string const & command_line_arg0,
 
 	FileName const configure_script(addName(system_support().absFileName(), "configure.py"));
 	configure_command_ = os::python() + ' ' +
-			quoteName(configure_script.toFilesystemEncoding(), quote_python) +
+			quoteName(configure_script.toFilesystemEncoding()) +
 			with_version_suffix() + " --binary-dir=" +
 			quoteName(FileName(binary_dir().absFileName()).toFilesystemEncoding());
 
