@@ -31536,6 +31536,12 @@ Search may be format-insensitive, so that the searched text is found in
 \end_layout
 
 \begin_layout Itemize
+Search may be restricted to mathematics environments only; this is useful
+ for remangling math notation where one does not want to match any text
+ outside of mathematics environments
+\end_layout
+
+\begin_layout Itemize
 Search may be widened to a specific 
 \emph on
 scope
