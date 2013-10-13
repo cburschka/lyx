@@ -1680,7 +1680,8 @@ void LaTeXFeatures::getFloatDefinitions(odocstream & os) const
 			// effect. (Lgb)
 		}
 		if (cit->second)
-			os << "\n\\newsubfloat{" << from_ascii(fl.floattype()) << "}\n";
+			// The subfig package is loaded later
+			os << "\n\\AtBeginDocument{\\newsubfloat{" << from_ascii(fl.floattype()) << "}}\n";
 	}
 }
 
