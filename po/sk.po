@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-10-09 18:10+0200\n"
+"POT-Creation-Date: 2013-10-14 11:50+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -1461,6 +1461,14 @@ msgstr "Zachovať v&eľkosť prvých písiem"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:320
 msgid "&Expand macros"
 msgstr "Rozvinúť &makrá"
+
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:314
+msgid "Search only in mat&hs"
+msgstr "Prehľadať len mat. vzork&y"
+
+#: src/frontends/qt4/ui/FindAndReplaceUi.ui:317
+msgid "Restrict search to math environments only"
+msgstr "Obmedziť hľadanie na mat. prostredia"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
 #: src/frontends/qt4/ui/OutputUi.ui:14 src/frontends/qt4/ui/PDFSupportUi.ui:13
@@ -7749,6 +7757,10 @@ msgstr "Fakt."
 msgid "Proof."
 msgstr "Dôkaz."
 
+#: lib/layouts/RJournal.layout:3
+msgid "R Journal"
+msgstr "R Denník"
+
 #: lib/layouts/beamer.layout:1228 lib/layouts/foils.layout:298
 #: lib/layouts/theorems-starred.inc:29
 msgid "Theorem."
@@ -11132,10 +11144,6 @@ msgstr "PACS-číslo:"
 #: lib/layouts/revtex.layout:3
 msgid "REVTeX (Obsolete Version)"
 msgstr "REVTeX (zastaralá verzia)"
-
-#: lib/layouts/RJournal.layout:2
-msgid "report (R Journal)"
-msgstr "referát (R Journal)"
 
 #: lib/layouts/scrartcl.layout:3
 msgid "KOMA-Script Article"
@@ -29567,6 +29575,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "report (R Journal)"
+#~ msgstr "referát (R Journal)"
 
 #~ msgid "Alternative Theorem String|S"
 #~ msgstr "Alternatívny Reťazec Teorémy|o"
