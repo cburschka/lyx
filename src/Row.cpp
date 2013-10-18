@@ -36,17 +36,23 @@ using frontend::FontMetrics;
 
 double Row::Element::pos2x(pos_type const i) const
 {
+	LASSERT(i >= pos && i <= endpos, return 0);
+
 	bool const rtl = font.isVisibleRightToLeft();
 
-	// handle first the two bounds of the element
-	if ((!rtl && pos >= i) || (rtl && endpos <= i))
-		return 0;
-	if ((!rtl && endpos <= i) || (rtl && pos >= i))
-		return width();
+	int w = 0;
+	//handle first the two bounds of the element
+	if (i == pos)
+		w = 0;
+	else if (i == endpos)
+		w = width();
+	else {
+		LASSERT(type == STRING, return 0);
+		FontMetrics const & fm = theFontMetrics(font);
+		// FIXME Avoid caching of metrics there?
+		w = fm.width(str.substr(0, i - pos));
+	}
 
-	FontMetrics const & fm = theFontMetrics(font);
-	// FIXME Avoid caching of metrics there?
-	int const w = fm.width(str.substr(0, i - pos));
 	if (rtl)
 		return width() - w;
 	else

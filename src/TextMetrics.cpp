@@ -1613,15 +1613,16 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	double x = row.x;
 
 	/**
-	 * When boundary is true, position is on the row element (pos, endpos)
+	 * When boundary is true, position i is in the row element (pos, endpos)
 	 * if
-	 *    pos < pos <= endpos
+	 *    pos < i <= endpos
 	 * whereas, when boundary is false, the test is
-	 *    pos <= pos < endpos
+	 *    pos <= i < endpos
 	 * The correction below allows to handle both cases.
 	*/
 	int const boundary_corr = (boundary && pos) ? -1 : 0;
 
+	//?????
 	if (row.empty()
 	    || (row.begin()->font.isVisibleRightToLeft()
 		&& pos == row.begin()->endpos))
