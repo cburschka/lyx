@@ -13,6 +13,16 @@ Preamble
 	\theorembodyfont{\upshape}
 	\newtheorem{theorem}{\R{משפט}}[section]
 	\AtBeginDocument{\make@lr\thetheorem}
+
+	% The following chunk fixes export with XeTeX.
+	% It is needed because polyglossia is used by default
+	% and \make@lr is only defined by babel.
+	\@ifundefined{make@lr}
+	{\def\make@lr#1{\begingroup
+	    \toks@=\expandafter{#1}%
+	    \edef\x{\endgroup
+	  \def\noexpand#1{\noexpand\@number{\the\toks@}}}%
+	  \x}}{\relax}
 EndPreamble
 
 
