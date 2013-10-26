@@ -671,8 +671,6 @@ bool GuiView::restoreLayout()
 		dialog->prepareView();
 	if ((dialog = findOrBuild("progress", true)))
 		dialog->prepareView();
-	if ((dialog = findOrBuild("findreplaceadv", true)))
-		dialog->prepareView();
 
 	if (!restoreState(settings.value("layout").toByteArray(), 0))
 		initToolbars();
