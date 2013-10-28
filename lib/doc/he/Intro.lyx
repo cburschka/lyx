@@ -19,9 +19,9 @@
  % set fonts for nicer pdf view
  \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
 
-\fi % end if pdflatex is used
-
-% the pages of the TOC is numbered roman
+% XeTeX with Hebrew does not like this bookmark code
+% so it is in the conditional.
+% The pages of the TOC is numbered roman
 % and a pdf-bookmark for the TOC is added
 \pagenumbering{roman}
 \let\myTOC\tableofcontents
@@ -30,6 +30,8 @@
   \myTOC
   \cleardoublepage
   \pagenumbering{arabic} }
+
+\fi % end if pdflatex is used
 
 %disable hyphenation (breaking words at end of line)
 \usepackage[none]{hyphenat}
