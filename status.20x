@@ -87,6 +87,9 @@ What's new
 
 - Fix crash when changing alignment of several cells in tabular (bug 8859).
 
+- Disable invalid actions in empty outliner that could trigger a crash
+  (bug 8885).
+
 - Fix bug where searching for next change may leave an empty paragraph
   where cursor was (bug 3199).
 
