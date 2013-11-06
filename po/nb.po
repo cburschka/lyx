@@ -1,5 +1,5 @@
 # Norske oversettelser for LyX
-# Copyright 1997-2011
+# Copyright 1997-2013
 # Lars Gullik Bjønnes <larsbj@lyx.org>
 # Helge Hafting <helge.hafting@aitel.hist.no>
 msgid ""
@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: lyx 1.6.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2013-10-05 16:55+0200\n"
-"PO-Revision-Date: 2013-08-13 17:43+0200\n"
+"PO-Revision-Date: 2013-11-06 23:19+0100\n"
 "Last-Translator: Helge Hafting <helge.hafting@aitel.hist.no>\n"
 "Language-Team: norsk <no@li.org>\n"
 "Language: nb\n"
@@ -4095,9 +4095,8 @@ msgid "Use icons from system's &theme"
 msgstr "Bruk ikoner fra systemtemaet"
 
 #: src/frontends/qt4/ui/PrefUi.ui:120
-#, fuzzy
 msgid "Context help"
-msgstr "Innhold"
+msgstr "Kontekstsensitiv hjelp"
 
 #: src/frontends/qt4/ui/PrefUi.ui:138
 msgid ""
@@ -5622,9 +5621,8 @@ msgid "Abstract (structured)"
 msgstr "Sammendrag (strukturert)"
 
 #: lib/layouts/aa.layout:300
-#, fuzzy
 msgid "Context"
-msgstr "Innhold"
+msgstr "Kontekst"
 
 #: lib/layouts/aa.layout:301
 msgid "Context of your work (optional, can be left empty)"
@@ -6099,13 +6097,12 @@ msgid "Supporting Information Available"
 msgstr ""
 
 #: lib/layouts/achemso.layout:254
-#, fuzzy
 msgid "TOC entry"
-msgstr "Forfatter av innholdsfortegnelsen"
+msgstr "Innslag i innholdsfortegnelsen"
 
 #: lib/layouts/achemso.layout:258
 msgid "Graphical TOC Entry"
-msgstr ""
+msgstr "Grafisk innslag i innholdsfortegnelsen"
 
 #: lib/layouts/achemso.layout:262
 msgid "Bibnote"
@@ -6169,7 +6166,7 @@ msgstr ""
 
 #: lib/layouts/acmsiggraph.layout:110
 msgid "Project URL:"
-msgstr ""
+msgstr "Prosjekt-URL:"
 
 #: lib/layouts/acmsiggraph.layout:114
 msgid "TOG video URL"
@@ -6908,14 +6905,12 @@ msgid "FourAuthors"
 msgstr "Fire forfattere"
 
 #: lib/layouts/apa6.layout:113
-#, fuzzy
 msgid "FiveAuthors"
-msgstr "Forfattere"
+msgstr "Fem forfattere"
 
 #: lib/layouts/apa6.layout:120
-#, fuzzy
 msgid "SixAuthors"
-msgstr "Forfattere"
+msgstr "Seks forfattere"
 
 #: lib/layouts/apa6.layout:127
 msgid "LeftHeader"
@@ -6944,14 +6939,12 @@ msgid "FourAffiliations"
 msgstr "Fire_tilknytninger"
 
 #: lib/layouts/apa6.layout:191
-#, fuzzy
 msgid "FiveAffiliations"
-msgstr "Tilknytning"
+msgstr "Fem_tilknytninger"
 
 #: lib/layouts/apa6.layout:198
-#, fuzzy
 msgid "SixAffiliations"
-msgstr "Tilknytning"
+msgstr "Seks_tilknytninger"
 
 #: lib/layouts/apa6.layout:206 lib/layouts/beamer.layout:1491
 #: lib/layouts/elsart.layout:407 lib/layouts/iopart.layout:100
@@ -7303,9 +7296,8 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:443 lib/layouts/beamer.layout:465
 #: lib/layouts/beamer.layout:476 lib/layouts/beamer.layout:502
-#, fuzzy
 msgid "Frame Options"
-msgstr "LaTeX-opsjoner"
+msgstr "Lysarkopsjoner"
 
 #: lib/layouts/beamer.layout:444 lib/layouts/beamer.layout:466
 #: lib/layouts/beamer.layout:477 lib/layouts/beamer.layout:503
@@ -7318,40 +7310,35 @@ msgstr "Innstillinger"
 #: lib/layouts/beamer.layout:445 lib/layouts/beamer.layout:467
 #: lib/layouts/beamer.layout:478 lib/layouts/beamer.layout:504
 msgid "Frame options (see beamer manual)"
-msgstr ""
+msgstr "Lysarkopsjoner (se beamer-manualen)"
 
 #: lib/layouts/beamer.layout:448
-#, fuzzy
 msgid "Frame Title"
-msgstr "Lysark undertittel"
+msgstr "Tittel for lysarket"
 
 #: lib/layouts/beamer.layout:449
 msgid "Enter the frame title here"
-msgstr ""
+msgstr "Skriv tittelen for lysarket her"
 
 #: lib/layouts/beamer.layout:461
-#, fuzzy
 msgid "PlainFrame"
-msgstr "Start enkelt lysark"
+msgstr "Enkelt lysark"
 
 #: lib/layouts/beamer.layout:463
-#, fuzzy
 msgid "Frame (plain)"
-msgstr "LaTeX (vanlig)"
+msgstr "Lysark (enkelt)"
 
 #: lib/layouts/beamer.layout:472
-#, fuzzy
 msgid "FragileFrame"
-msgstr "Start lysark"
+msgstr "Fragile lysark"
 
 #: lib/layouts/beamer.layout:474
-#, fuzzy
 msgid "Frame (fragile)"
-msgstr "Navn (etternavn)"
+msgstr "Lysark (fragile)"
 
 #: lib/layouts/beamer.layout:483
 msgid "AgainFrame"
-msgstr "Lysark igjen"
+msgstr "Repetert lysark"
 
 #: lib/layouts/beamer.layout:489 lib/layouts/powerdot.layout:124
 #: lib/layouts/seminar.layout:97 lib/layouts/slides.layout:91
@@ -7360,14 +7347,12 @@ msgid "Slide"
 msgstr "Lysark"
 
 #: lib/layouts/beamer.layout:516
-#, fuzzy
 msgid "Repeat frame with label"
-msgstr "Lysark igjen med etikett"
+msgstr "Gjenta lysarket med etikett"
 
 #: lib/layouts/beamer.layout:527
-#, fuzzy
 msgid "FrameTitle"
-msgstr "Lysark undertittel"
+msgstr "Lysarktittel"
 
 #: lib/layouts/beamer.layout:546 lib/layouts/beamer.layout:574
 #: lib/layouts/beamer.layout:776 lib/layouts/beamer.layout:804
@@ -7383,13 +7368,12 @@ msgid "Specify the overlay settings (see beamer manual)"
 msgstr ""
 
 #: lib/layouts/beamer.layout:551
-#, fuzzy
 msgid "Short Frame Title|S"
-msgstr "Kort tittel"
+msgstr "Kort lysarktittel|s"
 
 #: lib/layouts/beamer.layout:552
 msgid "A short form of the frame title used in some themes"
-msgstr ""
+msgstr "En kort versjon av lysarktittelen"
 
 #: lib/layouts/beamer.layout:556
 msgid "FrameSubtitle"
@@ -7469,9 +7453,8 @@ msgid "Overprint"
 msgstr "Legg over"
 
 #: lib/layouts/beamer.layout:694
-#, fuzzy
 msgid "Overprint Area Width"
-msgstr "Overskrive"
+msgstr "Overlegg bredde"
 
 #: lib/layouts/beamer.layout:695 lib/layouts/moderncv.layout:274
 #: src/frontends/qt4/GuiBox.cpp:71
@@ -7480,28 +7463,27 @@ msgstr "Bredde"
 
 #: lib/layouts/beamer.layout:696
 msgid "The width of the overprint area (default: text width)"
-msgstr ""
+msgstr "Bredden for overlegget (standard: tekstbredden)"
 
 #: lib/layouts/beamer.layout:722
 msgid "OverlayArea"
-msgstr ""
+msgstr "Overlagt Område"
 
 #: lib/layouts/beamer.layout:732
 msgid "Overlayarea"
-msgstr ""
+msgstr "Overlagt område"
 
 #: lib/layouts/beamer.layout:742
 msgid "Overlay Area Width"
-msgstr ""
+msgstr "Bredde for overlegget"
 
 #: lib/layouts/beamer.layout:743
-#, fuzzy
 msgid "The width of the overlay area"
-msgstr "Fast bredde for kolonnen"
+msgstr "Bredden for området som legges over lysarket"
 
 #: lib/layouts/beamer.layout:747
 msgid "Overlay Area Height"
-msgstr ""
+msgstr "Overlegg høyde"
 
 #: lib/layouts/beamer.layout:748 lib/layouts/moderncv.layout:176
 #: src/frontends/qt4/GuiBox.cpp:70
@@ -7510,7 +7492,7 @@ msgstr "Høyde"
 
 #: lib/layouts/beamer.layout:749
 msgid "The height of the overlay area"
-msgstr ""
+msgstr "Høyden for området som legges over lysarket"
 
 #: lib/layouts/beamer.layout:754 lib/layouts/beamer.layout:1413
 #: lib/layouts/beamer.layout:1415 lib/layouts/powerdot.layout:584
@@ -7548,13 +7530,12 @@ msgid "Action Specification|S"
 msgstr "Velg avsnitt|s"
 
 #: lib/layouts/beamer.layout:842
-#, fuzzy
 msgid "Block Title"
-msgstr "Blokker"
+msgstr "Rammetittel"
 
 #: lib/layouts/beamer.layout:843
 msgid "Enter the block title here"
-msgstr ""
+msgstr "Skriv tittelen for ramma her"
 
 #: lib/layouts/beamer.layout:854
 msgid "ExampleBlock"
@@ -7580,11 +7561,11 @@ msgstr "Titulering"
 
 #: lib/layouts/beamer.layout:892
 msgid "Short title which appears in the sidebar/header"
-msgstr ""
+msgstr "Kort tittel som vises på kanten/toppen"
 
 #: lib/layouts/beamer.layout:901
 msgid "Title (Plain Frame)"
-msgstr "Tittel (enkel ramme)"
+msgstr "Tittel (enkelt lysark)"
 
 #: lib/layouts/beamer.layout:923
 msgid "Short Subtitle|S"
@@ -7592,7 +7573,7 @@ msgstr "Kort undertittel|K"
 
 #: lib/layouts/beamer.layout:924
 msgid "Short subtitle which appears in the sidebar/header"
-msgstr ""
+msgstr "Kort undertittel som vises på kanten/toppen"
 
 #: lib/layouts/beamer.layout:946 lib/layouts/IEEEtran.layout:123
 msgid "Short Author|S"
@@ -7600,7 +7581,7 @@ msgstr "Kort forfatter|K"
 
 #: lib/layouts/beamer.layout:947
 msgid "Short author which appears in the sidebar/header"
-msgstr ""
+msgstr "Kort forfatter som vises på kanten/toppen"
 
 #: lib/layouts/beamer.layout:968
 msgid "Short Institute|S"
@@ -7608,7 +7589,7 @@ msgstr "Kort institutt|K"
 
 #: lib/layouts/beamer.layout:969
 msgid "Short institute which appears in the sidebar/header"
-msgstr ""
+msgstr "Kort institutt som vises på kanten/toppen"
 
 #: lib/layouts/beamer.layout:977
 msgid "InstituteMark"
@@ -7620,7 +7601,7 @@ msgstr "Kort dato|K"
 
 #: lib/layouts/beamer.layout:1012
 msgid "Short date which appears in the sidebar/header"
-msgstr ""
+msgstr "Kort dato som vises på kanten/toppen"
 
 #: lib/layouts/beamer.layout:1020
 msgid "TitleGraphic"
@@ -7677,9 +7658,8 @@ msgstr "Velg avsnitt|s"
 #: lib/layouts/beamer.layout:1180 lib/layouts/theorems-ams-bytype.inc:58
 #: lib/layouts/theorems-ams.inc:32 lib/layouts/theorems-bytype.inc:34
 #: lib/layouts/theorems.inc:32 lib/layouts/theorems-starred.inc:33
-#, fuzzy
 msgid "Additional Theorem Text"
-msgstr "Ekstra opsjoner for LaTeX"
+msgstr "Ekstra teoremtekst"
 
 #: lib/layouts/beamer.layout:1181 lib/layouts/theorems-ams-bytype.inc:59
 #: lib/layouts/theorems-ams.inc:33 lib/layouts/theorems-bytype.inc:35
@@ -7760,7 +7740,7 @@ msgstr "LyX-Kode"
 
 #: lib/layouts/beamer.layout:1293
 msgid "NoteItem"
-msgstr ""
+msgstr "Merknad"
 
 #: lib/layouts/beamer.layout:1327 lib/layouts/beamer.layout:1329
 #: src/Font.cpp:64 src/frontends/qt4/GuiCharacter.cpp:111
@@ -7803,22 +7783,20 @@ msgid "Default Text"
 msgstr "Standardtekst"
 
 #: lib/layouts/beamer.layout:1484
-#, fuzzy
 msgid "Enter the default text here"
-msgstr "Navn på standardskriver"
+msgstr "Skriv standardtekst her"
 
 #: lib/layouts/beamer.layout:1489
 msgid "Beamer Note"
 msgstr "Beamer merknad"
 
 #: lib/layouts/beamer.layout:1506
-#, fuzzy
 msgid "Note Options"
-msgstr "Matte-innstillinger"
+msgstr "Merknadsinnstillinger"
 
 #: lib/layouts/beamer.layout:1507
 msgid "Specifiy note options (see beamer manual)"
-msgstr ""
+msgstr "Spesifiser opsjoner for merknad (se beamer-manualen)"
 
 #: lib/layouts/beamer.layout:1511
 msgid "ArticleMode"
@@ -8999,9 +8977,8 @@ msgid "Page"
 msgstr "Side"
 
 #: lib/layouts/europecv.layout:136
-#, fuzzy
 msgid "The title as it appears in the header"
-msgstr "Referansemerket slik det vises i dokumentet"
+msgstr "Tittelen slik den vises i hodet"
 
 #: lib/layouts/europecv.layout:152 lib/layouts/moderncv.layout:336
 msgid "Item"
@@ -9896,7 +9873,7 @@ msgstr "Kort tittel"
 
 #: lib/layouts/IEEEtran.layout:333
 msgid "Short title for the appendix"
-msgstr ""
+msgstr "Kort tittel for appendiks"
 
 #: lib/layouts/IEEEtran.layout:362
 msgid "Biography"
@@ -10178,9 +10155,8 @@ msgid "Alternative Affiliation"
 msgstr "Alternativ tilknytning"
 
 #: lib/layouts/jasatex.layout:126
-#, fuzzy
 msgid "Affiliation Prefix"
-msgstr "Tilknytningsmerke"
+msgstr "Tilknytningsprefiks"
 
 #: lib/layouts/jasatex.layout:127
 msgid "A prefix like 'Also at '"
@@ -10681,7 +10657,7 @@ msgstr "Ord"
 
 #: lib/layouts/moderncv.layout:296 lib/layouts/moderncv.layout:297
 msgid "Time"
-msgstr ""
+msgstr "Tid"
 
 #: lib/layouts/moderncv.layout:301 lib/layouts/moderncv.layout:302
 msgid "What?"
@@ -11070,9 +11046,8 @@ msgid "Affiliation (alternate):"
 msgstr "Tilknytning (alternativ):"
 
 #: lib/layouts/revtex4-1.layout:103 lib/layouts/revtex4.layout:158
-#, fuzzy
 msgid "Alternate Affiliation Option"
-msgstr "Alternativ tilknytning:"
+msgstr "Alternativ tilknytningsopsjon"
 
 #: lib/layouts/revtex4-1.layout:104 lib/layouts/revtex4.layout:159
 msgid "Optional argument to the altaffiliation command"
@@ -11091,9 +11066,8 @@ msgid "Electronic Address:"
 msgstr "Elektronisk adresse:"
 
 #: lib/layouts/revtex4-1.layout:132 lib/layouts/revtex4.layout:207
-#, fuzzy
 msgid "Electronic Address Option|s"
-msgstr "Elektronisk adresse:"
+msgstr "Elektronisk adresseopsjon|s"
 
 #: lib/layouts/revtex4-1.layout:133 lib/layouts/revtex4.layout:208
 msgid "Optional argument to the email command"
@@ -11109,14 +11083,12 @@ msgid "Optional argument to the homepage command"
 msgstr ""
 
 #: lib/layouts/revtex4-1.layout:157 lib/layouts/revtex4.layout:187
-#, fuzzy
 msgid "Collaboration"
-msgstr "Variant"
+msgstr "Samarbeid"
 
 #: lib/layouts/revtex4-1.layout:160 lib/layouts/revtex4.layout:190
-#, fuzzy
 msgid "Collaboration:"
-msgstr "Variant:"
+msgstr "Samarbeid:"
 
 #: lib/layouts/revtex4-1.layout:192 lib/layouts/revtex4.layout:103
 msgid "Preprint"
@@ -11136,9 +11108,8 @@ msgid "acknowledgments"
 msgstr "takk til"
 
 #: lib/layouts/revtex4-1.layout:245
-#, fuzzy
 msgid "Ruled Table"
-msgstr "Plasser_tabell"
+msgstr "Linjert tabell"
 
 #: lib/layouts/revtex4-1.layout:247 lib/layouts/revtex4-1.layout:255
 #: lib/layouts/revtex4-1.layout:263 src/frontends/qt4/GuiSymbols.cpp:123
@@ -11146,14 +11117,12 @@ msgid "Specials"
 msgstr "Spesialiteter"
 
 #: lib/layouts/revtex4-1.layout:253
-#, fuzzy
 msgid "Turn Page"
-msgstr "Blank side"
+msgstr "Bla om"
 
 #: lib/layouts/revtex4-1.layout:261
-#, fuzzy
 msgid "Wide Text"
-msgstr "Finn &Neste"
+msgstr "Bred tekst"
 
 #: lib/layouts/revtex4-1.layout:271
 msgid "Video"
@@ -11480,14 +11449,12 @@ msgid "Title banner:"
 msgstr "Tittelfotnote:"
 
 #: lib/layouts/sigplanconf.layout:116
-#, fuzzy
 msgid "PreprintFooter"
-msgstr "Fortrykk"
+msgstr "Fortrykkfot"
 
 #: lib/layouts/sigplanconf.layout:119
-#, fuzzy
 msgid "Preprint footer:"
-msgstr "Fortrykk"
+msgstr "Fortrykkfot:"
 
 #: lib/layouts/sigplanconf.layout:160
 msgid "Affiliation and/or address of the author"
@@ -12152,7 +12119,7 @@ msgstr "Postnr"
 
 #: lib/layouts/amsdefs.inc:39
 msgid "Short title which appears in the running headers"
-msgstr ""
+msgstr "Kort tittel som vises i løpende hode"
 
 #: lib/layouts/amsdefs.inc:141
 msgid "Current Address"
@@ -12575,14 +12542,12 @@ msgid "Alternative name"
 msgstr "Alternativt navn"
 
 #: lib/layouts/svcommon.inc:598
-#, fuzzy
 msgid "Longest Description Label"
-msgstr "Beskrivelse: "
+msgstr "Lengste listeetikett"
 
 #: lib/layouts/svcommon.inc:599
-#, fuzzy
 msgid "Longest description label"
-msgstr "&Lengste listeetikett"
+msgstr "Lengste listeetikett"
 
 #: lib/layouts/svcommon.inc:606
 msgid "Petit"
@@ -12803,9 +12768,8 @@ msgstr ""
 "beskrivelse, se fila MultilingualCaptions.lyx i eksempelmappa."
 
 #: lib/layouts/bicaption.module:10
-#, fuzzy
 msgid "Caption setup"
-msgstr "Bildetekster"
+msgstr "Bildetekstoppsett"
 
 #: lib/layouts/bicaption.module:16
 msgid ""
@@ -12813,9 +12777,8 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/bicaption.module:29
-#, fuzzy
 msgid "Caption setup:"
-msgstr "Tabelloverskrift:"
+msgstr "Bildetekstoppsett:"
 
 #: lib/layouts/bicaption.module:39
 #, fuzzy
@@ -12823,9 +12786,8 @@ msgid "Bicaption"
 msgstr "Bildetekst"
 
 #: lib/layouts/bicaption.module:40
-#, fuzzy
 msgid "bilingual"
-msgstr "Titulering"
+msgstr "tospråklig"
 
 #: lib/layouts/bicaption.module:44
 msgid "Main Language Short Title"
@@ -13119,9 +13081,8 @@ msgid "Initial letter(s)"
 msgstr "Forbokstav(er)"
 
 #: lib/layouts/initials.module:43
-#, fuzzy
 msgid "Rest of Initial"
-msgstr "Forbokstav"
+msgstr "Resten av forbokstaven"
 
 #: lib/layouts/initials.module:44
 msgid "Rest of initial word or text"
@@ -13369,9 +13330,8 @@ msgid "An optional preface"
 msgstr "Ekstra mellomrom"
 
 #: lib/layouts/multicol.module:29
-#, fuzzy
 msgid "Space Before Page Break"
-msgstr "Enkel ramme, med sideskift|r"
+msgstr "avstand før sideskift"
 
 #: lib/layouts/multicol.module:30
 msgid ""
@@ -13537,13 +13497,12 @@ msgid "For scaling the <Shape specification> to positions on the page"
 msgstr ""
 
 #: lib/layouts/shapepar.module:127
-#, fuzzy
 msgid "Shape specification"
-msgstr "Spesialseksjon"
+msgstr "Formspesifikasjon"
 
 #: lib/layouts/shapepar.module:128
 msgid "Specification of the shape"
-msgstr ""
+msgstr "Spesifikasjon for formen"
 
 #: lib/layouts/shapepar.module:132
 #, fuzzy
@@ -15258,9 +15217,8 @@ msgid "Jump Back to Saved Bookmark|B"
 msgstr "Gå tilbake til lagret bokmerke|b"
 
 #: lib/ui/stdcontext.inc:316 lib/ui/stdmenus.inc:541
-#, fuzzy
 msgid "Forward Search|F"
-msgstr "Foroversøk|F"
+msgstr "Søk fremover|f"
 
 #: lib/ui/stdcontext.inc:318 lib/ui/stdmenus.inc:117
 msgid "Move Paragraph Up|o"
@@ -20948,9 +20906,8 @@ msgid "Half-long"
 msgstr "Halvlang"
 
 #: lib/ui/stdtoolbars.inc:1376
-#, fuzzy
 msgid "Extra short"
-msgstr "Endre hurtigtast"
+msgstr "Ekstra kort"
 
 #: lib/ui/stdtoolbars.inc:1377
 msgid "Primary stress"
@@ -20980,11 +20937,11 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1386
 msgid "Voiceless"
-msgstr ""
+msgstr "Stemmeløs"
 
 #: lib/ui/stdtoolbars.inc:1387
 msgid "Voiceless (above)"
-msgstr ""
+msgstr "Stemmeløs (over)"
 
 #: lib/ui/stdtoolbars.inc:1388
 msgid "Voiced"
@@ -21076,14 +21033,12 @@ msgid "Velarized or pharyngialized"
 msgstr "Velarisert eller faryngialisert"
 
 #: lib/ui/stdtoolbars.inc:1410
-#, fuzzy
 msgid "Raised"
-msgstr "Revidert"
+msgstr "Hevet"
 
 #: lib/ui/stdtoolbars.inc:1411
-#, fuzzy
 msgid "Lowered"
-msgstr "Små bokstaver"
+msgstr "Senket"
 
 #: lib/ui/stdtoolbars.inc:1412
 msgid "Advanced tongue root"
@@ -21373,14 +21328,12 @@ msgid "Dia diagram.\n"
 msgstr "Dia diagram.\n"
 
 #: lib/configure.py:500
-#, fuzzy
 msgid "tgo"
-msgstr "top"
+msgstr "tgo"
 
 #: lib/configure.py:500
-#, fuzzy
 msgid "tgo|Tgif"
-msgstr "Tgif"
+msgstr "tgo|Tgif"
 
 #: lib/configure.py:503
 msgid "FIG"
@@ -21392,11 +21345,11 @@ msgstr "DIA"
 
 #: lib/configure.py:509
 msgid "sxd"
-msgstr ""
+msgstr "sxd"
 
 #: lib/configure.py:509
 msgid "sxd|OpenOffice"
-msgstr ""
+msgstr "sxd|OpenOffice"
 
 #: lib/configure.py:512
 msgid "Grace"
@@ -21420,7 +21373,7 @@ msgstr "GIF"
 
 #: lib/configure.py:522
 msgid "jpeg"
-msgstr ""
+msgstr "jpeg"
 
 #: lib/configure.py:522
 msgid "jpeg|JPEG"
@@ -23468,6 +23421,8 @@ msgid ""
 "The LaTeX package `%1$s' needed for the font `%2$s'\n"
 "is not available on your system. LyX will fall back to the default font."
 msgstr ""
+"LaTeX-pakka `%1$s', som trengs for skriften `%2$s',\n"
+"fins ikke på din maskin. LyX faller tilbake på standardskrift."
 
 #: src/LyX.cpp:120
 msgid "Could not read configuration file"
@@ -23526,7 +23481,7 @@ msgstr "Mangler filnavn for denne operasjonen."
 #: src/LyX.cpp:510
 #, c-format
 msgid "LyX failed to load the following file: %1$s"
-msgstr ""
+msgstr "LyX fikk ikke lest fila: %1$s"
 
 #: src/LyX.cpp:536
 msgid "No textclass is found"
@@ -24235,7 +24190,7 @@ msgstr ""
 msgid ""
 "Specify whether, closing the last view of an open document, LyX should close "
 "the document (yes), hide it (no), or ask the user (ask)."
-msgstr ""
+msgstr "Når du stenger siste visning av et åpent dokument, skal LyX stenge dokumentet (ja), gjemme det (nei) eller spørre brukeren (spørre)."
 
 #: src/LyXRC.cpp:3440
 msgid ""
@@ -25000,11 +24955,11 @@ msgstr "%1$s: søkte baklengs og kom til starten. Fortsette å søke fra slutten
 
 #: src/frontends/qt4/FindAndReplace.cpp:313
 msgid "Advanced search in progress (press ESC to cancel) . . ."
-msgstr ""
+msgstr "Avansert søk pågår, (trykk ESC for å avbryte) . . ."
 
 #: src/frontends/qt4/FindAndReplace.cpp:357
 msgid "Advanced search cancelled by user"
-msgstr ""
+msgstr "Avansert søk ble avbrutt av bruker"
 
 #: src/frontends/qt4/FindAndReplace.cpp:375
 #: src/frontends/qt4/GuiSearch.cpp:139
@@ -26964,12 +26919,11 @@ msgstr ""
 "Fortsette fra starten?"
 
 #: src/frontends/qt4/GuiSearch.cpp:137
-#, fuzzy
 msgid ""
 "Beginning of file reached while searching backward.\n"
 "Continue searching from the end?"
 msgstr ""
-"Søkte baklengs og kom til starten. \n"
+"Søkte baklengs og kom til starten på fila. \n"
 "Fortsette å søke fra slutten?"
 
 #: src/frontends/qt4/GuiSearch.cpp:155 src/lyxfind.cpp:367 src/lyxfind.cpp:385
@@ -26990,7 +26944,7 @@ msgstr "Feil -> kan ikke laste inn fil!"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:252
 msgid "Spell check of the selection done, did not find any errors."
-msgstr ""
+msgstr "Utvalget ble sjekket, ingen stavefeil."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:259
 msgid ""
@@ -27587,10 +27541,15 @@ msgid ""
 "Please close it before attempting to overwrite it.\n"
 "Do you want to choose a new filename?"
 msgstr ""
+"Fila\n"
+"%1$s\n"
+"er allerede åpen.\n"
+"Vennligst steng den før du prøver å overskrive den.\n"
+"Vil du velge et nytt filnavn?"
 
 #: src/frontends/qt4/GuiView.cpp:2294
 msgid "Chosen File Already Open"
-msgstr ""
+msgstr "Den valgte fila er allerede åpen"
 
 #: src/frontends/qt4/GuiView.cpp:2295 src/frontends/qt4/GuiView.cpp:2317
 #: src/frontends/qt4/GuiView.cpp:2333 src/frontends/qt4/GuiView.cpp:2438
@@ -27627,12 +27586,12 @@ msgstr "Velg filnavn som dokumentet skal eksporteres til"
 
 #: src/frontends/qt4/GuiView.cpp:2389
 msgid "Any supported format (*.*)"
-msgstr ""
+msgstr "Hvilket som helst støttet format (*.*)"
 
 #: src/frontends/qt4/GuiView.cpp:2403
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s (*.%2$s)"
-msgstr "%1$s (%2$s)"
+msgstr "%1$s (*.%2$s)"
 
 #: src/frontends/qt4/GuiView.cpp:2478
 #, c-format
@@ -27665,6 +27624,14 @@ msgid ""
 "To remove this question, set your preference in:\n"
 "  Tools->Preferences->Look&Feel->UserInterface\n"
 msgstr ""
+"Siste visning av dokumentet %1$s stenges.\n"
+"Vil du stenge eller skjule dokumentet?\n"
+"\n"
+"Skjulte dokumenter kan bringes frem med\n"
+"menyen: Vis->Skjult->...\n"
+"\n"
+"For å slippe dette spørsmålet, sett dine preferanser i:\n"
+"Verktøy->Oppsett->Utseende->Brukergrensesnitt\n"
 
 #: src/frontends/qt4/GuiView.cpp:2536
 msgid "Close or hide document?"
@@ -28337,7 +28304,7 @@ msgstr "Endringer i grentilstand i hoveddokument "
 msgid ""
 "The state of the branch '%1$s' was changed in the master file. Please make "
 "sure to save the master."
-msgstr ""
+msgstr "Tilstanden til grenen '%1$s' ble endret i hoveddokumentet. Pass på å lagre det."
 
 #: src/insets/InsetCaption.cpp:404
 #, c-format
@@ -29039,11 +29006,11 @@ msgstr "Utvalg støttes ikke."
 
 #: src/insets/InsetTabular.cpp:4518
 msgid "Multi-column in current or destination column."
-msgstr ""
+msgstr "Multikolonne i denne eller målkolonnen."
 
 #: src/insets/InsetTabular.cpp:4530
 msgid "Multi-row in current or destination row."
-msgstr ""
+msgstr "Multirad i denne eller målraden."
 
 #: src/insets/InsetTabular.cpp:4922
 msgid "Selection size should match clipboard content."
@@ -29344,7 +29311,7 @@ msgstr "LyX binærfil ikke funnet"
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr ""
+msgstr "Klarte ikke finne veien til LyX-programmet fra kommandolinja %1$s"
 
 #: src/support/Package.cpp:622
 #, c-format
@@ -29354,6 +29321,10 @@ msgid ""
 "Use the '-sysdir' command line parameter or set the environment variable\n"
 "%2$s to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
+"Fant ikke systemmappa etter å ha søkt gjennom\n"
+"     %1$s\n"
+"Bruk parameteren '-sysdir' på kommandolinja, eller sett miljøvariabelen\n"
+"%2$s til LyX-systemmappa som har filen `chkconfig.ltx'."
 
 #: src/support/Package.cpp:691 src/support/Package.cpp:718
 msgid "File not found"
@@ -29365,6 +29336,8 @@ msgid ""
 "Invalid %1$s switch.\n"
 "Directory %2$s does not contain %3$s."
 msgstr ""
+"Ugyldig %1$s parameter.\n"
+"Mappa %2$s inneholder ikke %3$s."
 
 #: src/support/Package.cpp:719
 #, c-format
@@ -29372,6 +29345,8 @@ msgid ""
 "Invalid %1$s environment variable.\n"
 "Directory %2$s does not contain %3$s."
 msgstr ""
+"Ugyldig %1$s miljøvariabel.\n"
+"Mappa %2$s inneholder ikke %3$s."
 
 #: src/support/Package.cpp:743
 #, c-format
@@ -29379,6 +29354,8 @@ msgid ""
 "Invalid %1$s environment variable.\n"
 "%2$s is not a directory."
 msgstr ""
+"Ugyldig %1$s miljøvariabel.\n"
+"%2$s er ikke ei mappe."
 
 #: src/support/Package.cpp:745
 msgid "Directory not found"
@@ -29477,7 +29454,7 @@ msgstr "Bruker kommandoer"
 
 #: src/support/debug.cpp:58
 msgid "The LyX Lexer"
-msgstr ""
+msgstr "The LyX Lexer"
 
 #: src/support/debug.cpp:59
 msgid "Dependency information"
@@ -29558,12 +29535,16 @@ msgid ""
 "Assertion %1$s violated in\n"
 "file: %2$s, line: %3$s"
 msgstr ""
+"Assertion %1$s violated in\n"
+"file: %2$s, line: %3$s"
 
 #: src/support/lassert.cpp:62
 msgid ""
 "It should be safe to continue, but you\n"
 "may wish to save your work and restart LyX."
 msgstr ""
+"Det skulle være trygt å fortsette, men du\n"
+"vil muligens lagre arbeidet ditt og restarte LyX."
 
 #: src/support/lassert.cpp:65
 msgid "Warning!"
@@ -29574,6 +29555,8 @@ msgid ""
 "There has been an error with this document.\n"
 "LyX will attempt to close it safely."
 msgstr ""
+"Det er en feil med dette dokumentet.\n"
+"LyX prøver å lukke det trygt."
 
 #: src/support/lassert.cpp:75
 #, fuzzy
@@ -29585,11 +29568,12 @@ msgid ""
 "LyX has encountered an application error\n"
 "and will now shut down."
 msgstr ""
+"LyX har fått et internt problem,\n"
+"og avslutter nå."
 
 #: src/support/lassert.cpp:85
-#, fuzzy
 msgid "Fatal Exception!"
-msgstr "Tabelltittel"
+msgstr "Fatal Exception!"
 
 #: src/support/os_win32.cpp:482
 msgid "System file not found"
