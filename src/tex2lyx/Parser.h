@@ -172,7 +172,7 @@ class Parser {
 	Parser & operator=(Parser const & p);
 public:
 	///
-	Parser(idocstream & is);
+	Parser(idocstream & is, std::string const & fixedenc);
 	///
 	Parser(std::string const & s);
 	///
@@ -351,10 +351,12 @@ private:
 	std::string encoding_iconv_;
 	///
 	CatCode theCatcode_[256];
-	//
+	///
 	cat_type theCatcodesType_;
-	//
+	///
 	cat_type curr_cat_;
+	///
+	bool fixed_enc_;
 };
 
 

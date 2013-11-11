@@ -1096,7 +1096,7 @@ bool pasteClipboardText(Cursor & cur, ErrorList & errorList, bool asParagraphs,
 
 	// Then try TeX and HTML
 	Clipboard::TextType types[2] = {Clipboard::HtmlTextType, Clipboard::LaTeXTextType};
-	string names[2] = {"html", "latex"};
+	string names[2] = {"html", "latexclipboard"};
 	for (int i = 0; i < 2; ++i) {
 		if (type != types[i] && type != Clipboard::AnyTextType)
 			continue;

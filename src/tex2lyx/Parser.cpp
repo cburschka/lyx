@@ -154,10 +154,14 @@ iparserdocstream & iparserdocstream::get(char_type &c)
 //
 
 
-Parser::Parser(idocstream & is)
-	: lineno_(0), pos_(0), iss_(0), is_(is), encoding_iconv_("UTF-8"),
-	  theCatcodesType_(NORMAL_CATCODES), curr_cat_(UNDECIDED_CATCODES)
+Parser::Parser(idocstream & is, std::string const & fixedenc)
+	: lineno_(0), pos_(0), iss_(0), is_(is),
+	  encoding_iconv_(fixedenc.empty() ? "UTF-8" : fixedenc),
+	  theCatcodesType_(NORMAL_CATCODES), curr_cat_(UNDECIDED_CATCODES),
+	  fixed_enc_(!fixedenc.empty())
 {
+	if (fixed_enc_)
+		is_.setEncoding(fixedenc);
 }
 
 
@@ -165,7 +169,9 @@ Parser::Parser(string const & s)
 	: lineno_(0), pos_(0),
 	  iss_(new idocstringstream(from_utf8(s))), is_(*iss_),
 	  encoding_iconv_("UTF-8"),
-	  theCatcodesType_(NORMAL_CATCODES), curr_cat_(UNDECIDED_CATCODES)
+	  theCatcodesType_(NORMAL_CATCODES), curr_cat_(UNDECIDED_CATCODES),
+	  // An idocstringstream can not change the encoding
+	  fixed_enc_(true)
 {
 }
 
@@ -261,7 +267,12 @@ bool Parser::setEncoding(std::string const & e)
 {
 	//cerr << "setting encoding to " << e << std::endl;
 	encoding_iconv_ = e;
-	is_.setEncoding(e);
+	// If the encoding is fixed, we must not change the stream encoding
+	// (because the whole input uses that encoding, e.g. if it comes from
+	// the clipboard). We still need to track the original encoding in
+	// encoding_iconv_, so that the generated output is correct.
+	if (!fixed_enc_)
+		is_.setEncoding(e);
 	return true;
 }
 

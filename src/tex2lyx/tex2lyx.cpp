@@ -494,7 +494,7 @@ void read_syntaxfile(FileName const & file_name)
 	// modeled after TeX.
 	// Unknown tokens are just silently ignored, this helps us to skip some
 	// reLyX specific things.
-	Parser p(is);
+	Parser p(is, string());
 	while (p.good()) {
 		Token const & t = p.get_token();
 		if (t.cat() == catEscape) {
@@ -519,6 +519,7 @@ void read_syntaxfile(FileName const & file_name)
 
 string documentclass;
 string default_encoding;
+bool fixed_encoding = false;
 string syntaxfile;
 bool copy_files = false;
 bool overwrite_files = false;
@@ -537,6 +538,7 @@ int parse_help(string const &, string const &)
 		"\t-m mod1[,mod2...]  Load the given modules.\n"
 		"\t-copyfiles         Copy all included files to the directory of outfile.lyx.\n"
 		"\t-e encoding        Set the default encoding (latex name).\n"
+		"\t-fixedenc encoding Like -e, but ignore encoding changing commands while parsing.\n"
 		"\t-f                 Force overwrite of .lyx files.\n"
 		"\t-help              Print this message and quit.\n"
 		"\t-n                 translate literate programming (noweb, sweave,... ) file.\n"
@@ -601,6 +603,16 @@ int parse_encoding(string const & arg, string const &)
 	if (arg.empty())
 		error_message("Missing encoding string after -e switch");
 	default_encoding = arg;
+	return 1;
+}
+
+
+int parse_fixed_encoding(string const & arg, string const &)
+{
+	if (arg.empty())
+		error_message("Missing encoding string after -fixedenc switch");
+	default_encoding = arg;
+	fixed_encoding = true;
 	return 1;
 }
 
@@ -686,6 +698,7 @@ void easyParse(int & argc, char * argv[])
 	cmdmap["-c"] = parse_class;
 	cmdmap["-m"] = parse_module;
 	cmdmap["-e"] = parse_encoding;
+	cmdmap["-fixedenc"] = parse_fixed_encoding;
 	cmdmap["-f"] = parse_force;
 	cmdmap["-s"] = parse_syntaxfile;
 	cmdmap["-n"] = parse_noweb;
@@ -775,6 +788,14 @@ bool roundtripMode()
 }
 
 
+string fixedEncoding()
+{
+	if (fixed_encoding)
+		return default_encoding;
+	return "";
+}
+
+
 namespace {
 
 /*!
@@ -803,7 +824,7 @@ bool tex2lyx(idocstream & is, ostream & os, string encoding)
 		}
 	}
 
-	Parser p(is);
+	Parser p(is, fixed_encoding ? default_encoding : string());
 	p.setEncoding(encoding);
 	//p.dump();
 

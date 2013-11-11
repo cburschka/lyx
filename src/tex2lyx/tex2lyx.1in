@@ -21,6 +21,8 @@ options.
 .PP
 \fBtex2lyx\fR [ \fB\-userdir\fR \fIuserdir\fR ] [ \fB\-systemdir\fR \fIsystemdir\fR ]
 [ \fB\-f\fR ] [ \fB\-n\fR ] [ \fB\-c\fR \fItextclass\fR ]
+[ \fB\-e\fR \fIencoding\fR ]
+[ \fB\-fixedenc\fR \fIencoding\fR ]
 [\ \fB\-m\fR \fImodule1\fR[,\fImodule2\fR...]]
 [\ \fB\-s\fR\ \fIsfile1\fR[,\fIsfile2\fR...]] [ \fB\-skipchildren\fR ] [
 \fB\-roundtrip\fR ] [ \fB\-copyfiles\fR ] \fIinputfile\fR [ \fIoutputfile\fR ]
@@ -52,6 +54,15 @@ are loaded in the given order. If a module \fIfoo\fR depends on a module
 .BI \-f
 Force. \fBtex2lyx\fR will not run if the .lyx file it would generate already exists.
 Use the \fB\-f\fR option (carefully) to clobber any existing files.
+.TP
+.BI \-e
+Specify the default encoding using the LaTeX name as defined in the encodings
+file.  \fBtex2lyx\fR will use this encoding, but switch if it finds any encoding
+changing commands in the input.
+.TP
+.BI \-fixedenc
+Specify the encoding using the LaTeX name as defined in the encodings file.
+\fBtex2lyx\fR will ignore any encoding changing commands in the input.
 .TP
 .BI \-n
 Noweb. Translate a noweb (aka literate programming) file. This should be
@@ -419,10 +430,14 @@ is your personal LyX directory, then the following files are read by tex2lyx:
 User's personal layout files for document classes
 .IP "\fI\s-1MY_LYXDIR\s0\fR/syntax.default" 4
 User's personal syntax file
+.IP "\fI\s-1MY_LYXDIR\s0\fR/encodings" 4
+User's personal encoding definition file
 .IP "\fI\s-1LIBDIR\s0\fR/layouts/*.layout" 4
 System-wide layout files for document classes
 .IP "\fI\s-1LIBDIR\s0\fR/lib/syntax.default" 4
 System-wide LaTeX syntax file
+.IP "\fI\s-1LIBDIR\s0\fR/lib/encodings" 4
+System-wide encoding definition file
 .SH "SEE ALSO"
 \fIlyx@version_suffix@\fR\|(1), \fIlatex\fR\|(1)
 .SH "AUTHORS"

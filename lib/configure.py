@@ -553,6 +553,7 @@ def checkFormatEntries(dtl_tools):
 \Format luatex     tex    "LaTeX (LuaTeX)"        "" ""	"%%"	"document,menu=export"	""
 \Format pdflatex   tex    "LaTeX (pdflatex)"      "" ""	"%%"	"document,menu=export"	""
 \Format xetex      tex    "LaTeX (XeTeX)"         "" ""	"%%"	"document,menu=export"	""
+\Format latexclipboard tex "LaTeX (clipboard)"    "" ""	"%%"	""	""
 \Format text       txt    "Plain text"            a  ""	"%%"	"document,menu=export"	"text/plain"
 \Format text2      txt    "Plain text (pstotext)" "" ""	"%%"	"document"	""
 \Format text3      txt    "Plain text (ps2ascii)" "" ""	"%%"	"document"	""
@@ -665,6 +666,7 @@ def checkConverterEntries():
 
     path, t2l = checkProg('a LaTeX/Noweb -> LyX converter', [in_binary_subdir, in_binary_subdir + version_suffix, in_binary_dir, in_binary_dir + version_suffix, 'tex2lyx' + version_suffix, 'tex2lyx'],
         rc_entry = [r'''\converter latex      lyx        "%% -f $$i $$o"	""
+\converter latexclipboard lyx        "%% -fixedenc utf8 -f $$i $$o"	""
 \converter literate   lyx        "%% -n -m noweb -f $$i $$o"	""'''], not_found = 'tex2lyx')
     if path == '':
         logger.warning("Failed to find tex2lyx on your system.")
