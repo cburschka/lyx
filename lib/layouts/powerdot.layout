@@ -19,6 +19,7 @@ Provides url        1
 Provides hyperref   1
 Provides geometry   1
 DefaultStyle        Standard
+ExcludesModule      enumitem
 
 DefaultFont
   Family        Sans
@@ -322,6 +323,7 @@ Style Enumerate
   Argument 2
     LabelString   "Enumerate Options"
     Tooltip       "Optional arguments for this list (see enumitem manual)"
+    Requires      1
   EndArgument
   Argument item:1
     LabelString   "Custom Item|s"
