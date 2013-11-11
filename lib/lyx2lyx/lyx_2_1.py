@@ -3878,6 +3878,13 @@ def convert_lyxframes(document):
                     old = document.body[fend]
                     if val == frametype:
                         document.body[fend : fend] = ['\\end_deeper', '', '\\begin_layout Separator', '', '\\end_layout']
+                    # consider explicit EndFrames between two identical frame types
+                    elif val == "EndFrame":
+                        nextlayout = find_token(document.body, "\\begin_layout", fend + 1)
+                        if nextlayout != -1 and get_value(document.body, "\\begin_layout", nextlayout) == frametype:
+                            document.body[fend : fend] = ['\\end_deeper', '', '\\begin_layout Separator', '', '\\end_layout']
+                        else:
+                            document.body[fend : fend] = ['\\end_deeper']
                     else:
                         document.body[fend : fend] = ['\\end_deeper']
                     document.body[j + 1 : j + 1] = ['', '\\begin_deeper']
