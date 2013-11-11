@@ -102,8 +102,11 @@ End
 
 Style Enumerate-Resume
 	CopyStyle             Enumerate
-	LatexParam            [resume]
-	ResetArgs             1
+	Argument 1
+		LabelString   "Enumerate Options"
+		Tooltip       "Optional arguments for this list (see enumitem manual)"
+		PresetArg     "resume"
+	EndArgument
 	# a blue label to indicate that this is not a WYSIWYG label
 	# because the numbering differs in the output
 	LabelFont
