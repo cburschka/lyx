@@ -624,7 +624,7 @@ def checkFormatEntries(dtl_tools):
 \Format lyx13x     13.lyx "LyX 1.3.x"             "" ""	""	"document"	""
 \Format lyx14x     14.lyx "LyX 1.4.x"             "" ""	""	"document"	""
 \Format lyx15x     15.lyx "LyX 1.5.x"             "" ""	""	"document"	""
-\Format lyx16x     16.lyx "LyX 1.6.x"             "" ""	""	"document,menu=export"	""
+\Format lyx16x     16.lyx "LyX 1.6.x"             "" ""	""	"document"	""
 \Format lyx20x     20.lyx "LyX 2.0.x"             "" ""	""	"document,menu=export"	""
 \Format clyx       cjklyx "CJK LyX 1.4.x (big5)"  "" ""	""	"document"	""
 \Format jlyx       cjklyx "CJK LyX 1.4.x (euc-jp)" "" ""	""	"document"	""
