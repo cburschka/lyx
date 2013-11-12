@@ -323,7 +323,7 @@ public:
 	CloneList * clone_list_;
 	/// are we in the process of exporting this buffer?
 	mutable bool doing_export;
- 
+
 	/// compute statistics
 	/// \p from initial position
 	/// \p to points to the end position
@@ -1536,7 +1536,10 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 		lyxerr << "File '" << fname << "' was not closed properly." << endl;
 	}
 
-	errors("Export");
+	if (runparams_in.silent)
+		errorList.clear();
+	else
+		errors("Export");
 	return !failed_export;
 }
 
@@ -1916,7 +1919,7 @@ void Buffer::writeLyXHTMLSource(odocstream & os,
 					    << ";\n";
 				css << "}\n";
 		}
-		
+
 		docstring const dstyles = css.str();
 		if (!dstyles.empty()) {
 			bool written = false;
@@ -2000,7 +2003,10 @@ int Buffer::runChktex()
 
 	setBusy(false);
 
-	errors("ChkTeX");
+	if (runparams.silent)
+		d->errorLists["ChkTeX"].clear();
+	else
+		errors("ChkTeX");
 
 	return res;
 }
@@ -3439,7 +3445,7 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to)
 
 	string const paramName = "key";
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
-		if (it->lyxCode() != CITE_CODE) 
+		if (it->lyxCode() != CITE_CODE)
 			continue;
 		InsetCommand * inset = it->asInsetCommand();
 		docstring const oldValue = inset->getParam(paramName);
@@ -3968,17 +3974,21 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 	// Emit the signal to show the error list or copy it back to the
 	// cloned Buffer so that it can be emitted afterwards.
 	if (format != backend_format) {
-		if (d->cloned_buffer_) {
+		if (runparams.silent)
+			error_list.clear();
+		else if (d->cloned_buffer_)
 			d->cloned_buffer_->d->errorLists[error_type] =
 				d->errorLists[error_type];
-		} else
+		else
 			errors(error_type);
 		// also to the children, in case of master-buffer-view
 		ListOfBuffers clist = getDescendents();
 		ListOfBuffers::const_iterator cit = clist.begin();
 		ListOfBuffers::const_iterator const cen = clist.end();
 		for (; cit != cen; ++cit) {
-			if (d->cloned_buffer_) {
+			if (runparams.silent)
+				(*cit)->d->errorLists[error_type].clear();
+			else if (d->cloned_buffer_) {
 				// Enable reverse search by copying back the
 				// texrow object to the cloned buffer.
 				// FIXME: this is not thread safe.
@@ -4671,16 +4681,16 @@ void Buffer::Impl::updateStatistics(DocIterator & from, DocIterator & to, bool s
 	word_count_ = 0;
 	char_count_ = 0;
 	blank_count_ = 0;
- 
+
 	for (DocIterator dit = from ; dit != to && !dit.atEnd(); ) {
 		if (!dit.inTexted()) {
 			dit.forwardPos();
 			continue;
 		}
-		
+
 		Paragraph const & par = dit.paragraph();
 		pos_type const pos = dit.pos();
-		
+
 		// Copied and adapted from isWordSeparator() in Paragraph
 		if (pos == dit.lastpos()) {
 			inword = false;
@@ -4694,7 +4704,7 @@ void Buffer::Impl::updateStatistics(DocIterator & from, DocIterator & to, bool s
 					break;
 				continue;
 			} else if (!par.isDeleted(pos)) {
-				if (par.isWordSeparator(pos)) 
+				if (par.isWordSeparator(pos))
 					inword = false;
 				else if (!inword) {
 					++word_count_;

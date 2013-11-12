@@ -213,7 +213,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 				+ _("no more lstline delimiters available") + ">";
 			code = subst(code, from_ascii("!"), delim_error);
 			delimiter = lstinline_delimiters;
-			if (!runparams.dryrun) {
+			if (!runparams.dryrun && !runparams.silent) {
 				// FIXME: warning should be passed to the error dialog
 				frontend::Alert::warning(_("Running out of delimiters"),
 				_("For inline program listings, one character must be reserved\n"
@@ -253,7 +253,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 		runparams.encoding = save_enc;
 	}
 
-	if (!uncodable.empty()) {
+	if (!uncodable.empty() && !runparams.silent) {
 		// issue a warning about omitted characters
 		// FIXME: should be passed to the error dialog
 		frontend::Alert::warning(_("Uncodable characters in listings inset"),

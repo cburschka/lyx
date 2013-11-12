@@ -38,7 +38,7 @@ public:
 		TEXT,
 		LYX
 	};
-	
+
 	enum MathFlavor {
 		NotApplicable,
 		MathAsMathML,
@@ -70,10 +70,10 @@ public:
 	bool isLaTeX() const;
 	/// does this flavour support full unicode?
 	bool isFullUnicode() const;
-	
+
 	/// Same, but for math output, which only matter is XHTML output.
 	MathFlavor math_flavor;
-	
+
 	/** Are we to write a 'nice' LaTeX file or not.
 	    This esentially seems to mean whether InsetInclude, InsetGraphics
 	    and InsetExternal should add the absolute path to any external
@@ -217,7 +217,7 @@ public:
 
 	/** The change information of the outermost logically deleted inset.
 	 *  changeOfDeletedInset shall only be evaluated if inDeletedInset > 0.
-         */ 
+         */
 	Change changeOfDeletedInset;
 
 	/** allow output of only part of the top-level paragraphs
@@ -239,28 +239,31 @@ public:
 
 	/// is this the last paragraph in the current buffer/inset?
 	bool isLastPar;
-	
+
 
 	/** whether or not do actual file copying and image conversion
 	 *  This mode will be used to preview the source code
 	 */
 	bool dryrun;
-	
+
+	/// whether to display output errors or not
+	bool silent;
+
 	/// Should we output verbatim or escape LaTeX's special chars?
 	bool pass_thru;
-	
+
 	/// Should we output captions?
 	bool html_disable_captions;
-	
+
 	/// Are we already in a paragraph?
 	bool html_in_par;
-	
+
 	/// Does the present context even permit paragraphs?
 	bool html_make_pars;
-	
+
 	/// Are we generating this material for inclusion in a TOC-like entity?
 	bool for_toc;
-	
+
 	/// Are we generating this material for inclusion in a tooltip?
 	bool for_tooltip;
 

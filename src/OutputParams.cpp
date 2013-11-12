@@ -28,13 +28,13 @@ OutputParams::OutputParams(Encoding const * enc)
 	  inIndexEntry(false), inIPA(false), inDeletedInset(0),
 	  changeOfDeletedInset(Change::UNCHANGED),
 	  par_begin(0), par_end(0), lastid(-1), lastpos(-1), isLastPar(false),
-	  dryrun(false), pass_thru(false), 
+	  dryrun(false), silent(false), pass_thru(false),
 	  html_disable_captions(false), html_in_par(false),
 	  html_make_pars(true), for_toc(false), for_tooltip(false),
     for_search(false), includeall(false)
 {
 	// Note: in PreviewLoader::Impl::dumpPreamble
-	// OutputParams runparams(0); 
+	// OutputParams runparams(0);
 	if (enc && enc->package() == Encoding::japanese)
 		use_japanese = true;
 }
@@ -47,7 +47,7 @@ OutputParams::~OutputParams()
 bool OutputParams::isLaTeX() const
 {
 	return flavor == LATEX || flavor == LUATEX || flavor == DVILUATEX
-		|| flavor == PDFLATEX || flavor == XETEX; 
+		|| flavor == PDFLATEX || flavor == XETEX;
 }
 
 

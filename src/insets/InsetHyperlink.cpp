@@ -191,7 +191,7 @@ void InsetHyperlink::latex(otexstream & os,
 		pair<docstring, docstring> name_latexed =
 			runparams.encoding->latexString(name, runparams.dryrun);
 		name = name_latexed.first;
-		if (!name_latexed.second.empty()) {
+		if (!name_latexed.second.empty() && !runparams.silent) {
 			// issue a warning about omitted characters
 			// FIXME: should be passed to the error dialog
 			frontend::Alert::warning(_("Uncodable characters"),

@@ -536,6 +536,8 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 
 	if (!runparams.nice)
 		incfile = mangled;
+	else if (!runparams.silent)
+		; // no warning wanted
 	else if (!isValidLaTeXFileName(incfile)) {
 		frontend::Alert::warning(_("Invalid filename"),
 			_("The following filename will cause troubles "
@@ -626,42 +628,46 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 
 		Buffer * tmp = loadIfNeeded();
 		if (!tmp) {
-			docstring text = bformat(_("Could not load included "
-				"file\n`%1$s'\n"
-				"Please, check whether it actually exists."),
-				included_file.displayName());
-			Alert::warning(_("Missing included file"), text);
+			if (!runparams.silent) {
+				docstring text = bformat(_("Could not load included "
+					"file\n`%1$s'\n"
+					"Please, check whether it actually exists."),
+					included_file.displayName());
+				Alert::warning(_("Missing included file"), text);
+			}
 			return;
 		}
 
-		if (tmp->params().baseClass() != masterBuffer->params().baseClass()) {
-			// FIXME UNICODE
-			docstring text = bformat(_("Included file `%1$s'\n"
-				"has textclass `%2$s'\n"
-				"while parent file has textclass `%3$s'."),
-				included_file.displayName(),
-				from_utf8(tmp->params().documentClass().name()),
-				from_utf8(masterBuffer->params().documentClass().name()));
-			Alert::warning(_("Different textclasses"), text, true);
-		}
-
-		// Make sure modules used in child are all included in master
-		// FIXME It might be worth loading the children's modules into the master
-		// over in BufferParams rather than doing this check.
-		LayoutModuleList const masterModules = masterBuffer->params().getModules();
-		LayoutModuleList const childModules = tmp->params().getModules();
-		LayoutModuleList::const_iterator it = childModules.begin();
-		LayoutModuleList::const_iterator end = childModules.end();
-		for (; it != end; ++it) {
-			string const module = *it;
-			LayoutModuleList::const_iterator found =
-				find(masterModules.begin(), masterModules.end(), module);
-			if (found == masterModules.end()) {
+		if (!runparams.silent) {
+			if (tmp->params().baseClass() != masterBuffer->params().baseClass()) {
+				// FIXME UNICODE
 				docstring text = bformat(_("Included file `%1$s'\n"
-					"uses module `%2$s'\n"
-					"which is not used in parent file."),
-					included_file.displayName(), from_utf8(module));
-				Alert::warning(_("Module not found"), text);
+					"has textclass `%2$s'\n"
+					"while parent file has textclass `%3$s'."),
+					included_file.displayName(),
+					from_utf8(tmp->params().documentClass().name()),
+					from_utf8(masterBuffer->params().documentClass().name()));
+				Alert::warning(_("Different textclasses"), text, true);
+			}
+
+			// Make sure modules used in child are all included in master
+			// FIXME It might be worth loading the children's modules into the master
+			// over in BufferParams rather than doing this check.
+			LayoutModuleList const masterModules = masterBuffer->params().getModules();
+			LayoutModuleList const childModules = tmp->params().getModules();
+			LayoutModuleList::const_iterator it = childModules.begin();
+			LayoutModuleList::const_iterator end = childModules.end();
+			for (; it != end; ++it) {
+				string const module = *it;
+				LayoutModuleList::const_iterator found =
+					find(masterModules.begin(), masterModules.end(), module);
+				if (found == masterModules.end()) {
+					docstring text = bformat(_("Included file `%1$s'\n"
+						"uses module `%2$s'\n"
+						"which is not used in parent file."),
+						included_file.displayName(), from_utf8(module));
+					Alert::warning(_("Module not found"), text);
+				}
 			}
 		}
 
@@ -688,16 +694,18 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		runparams.is_child = true;
 		if (!tmp->makeLaTeXFile(tmpwritefile, masterFileName(buffer()).
 				onlyPath().absFileName(), runparams, Buffer::OnlyBody)) {
-			docstring msg = bformat(_("Included file `%1$s' "
+			if (!runparams.silent) {
+				docstring msg = bformat(_("Included file `%1$s' "
 					"was not exported correctly.\nWarning: "
 					"LaTeX export is probably incomplete."),
 					included_file.displayName());
-			ErrorList const & el = tmp->errorList("Export");
-			if (!el.empty())
-				msg = bformat(from_ascii("%1$s\n\n%2$s\n\n%3$s"),
+				ErrorList const & el = tmp->errorList("Export");
+				if (!el.empty())
+					msg = bformat(from_ascii("%1$s\n\n%2$s\n\n%3$s"),
 						msg, el.begin()->error,
 						el.begin()->description);
-			Alert::warning(_("Export failure"), msg);
+				Alert::warning(_("Export failure"), msg);
+			}
 		}
 		runparams.encoding = oldEnc;
 		runparams.master_language = oldLang;
@@ -711,7 +719,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 							included_file,
 							inc_format, tex_format, el);
 
-			if (!success) {
+			if (!success && !runparams.silent) {
 				docstring msg = bformat(_("Included file `%1$s' "
 						"was not exported correctly.\nWarning: "
 						"LaTeX export is probably incomplete."),
@@ -769,7 +777,8 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 	// converter on the included file. But that's just masochistic.)
 	FileName const included_file = includedFileName(buffer(), params());
 	if (!isLyXFileName(included_file.absFileName())) {
-		frontend::Alert::warning(_("Unsupported Inclusion"),
+		if (!rp.silent)
+			frontend::Alert::warning(_("Unsupported Inclusion"),
 					 bformat(_("LyX does not know how to include non-LyX files when "
 					           "generating HTML output. Offending file:\n%1$s"),
 					            params()["filename"]));
