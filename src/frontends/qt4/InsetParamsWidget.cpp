@@ -29,6 +29,10 @@ CheckedWidget::CheckedWidget(QLineEdit * input, QWidget * label)
 
 bool CheckedWidget::check() const
 {
+	// Ignore if widget is disabled.
+	if (!input_->isEnabled())
+		return true;
+
 	bool const valid = input_->hasAcceptableInput();
 	// Visual feedback.
 	setValid(input_, valid);

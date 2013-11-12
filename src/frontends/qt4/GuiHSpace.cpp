@@ -104,12 +104,16 @@ void GuiHSpace::enableWidgets()
 	QString const selection = spacingCO->itemData(spacingCO->currentIndex()).toString();
 	bool const custom = selection == "custom";
 	valueLE->setEnabled(custom);
+	valueL->setEnabled(custom);
 	unitCO->setEnabled(custom);
 	fillPatternCO->setEnabled(!math_mode_ && selection == "hfill");
+	fillPatternL->setEnabled(!math_mode_ && selection == "hfill");
 	bool const no_pattern = fillPatternCO->currentIndex() == 0 || math_mode_;
 	bool const enable_keep =
-		selection == "normal" || selection == "halfquad" || (selection == "hfill" && no_pattern) || custom;
+		selection == "normal" || selection == "halfquad"
+		|| (selection == "hfill" && no_pattern) || custom;
 	keepCB->setEnabled(enable_keep);
+	keepL->setEnabled(enable_keep);
 }
 
 
