@@ -21,6 +21,12 @@ if [ "$(which wmctrl)" == "" ]; then
     exit -1;
 fi
 
+if [ "$(which pcregrep)" == "" ]; then
+    echo "You need to install pcregrep first, try:"
+    echo "  sudo apt-get install pcregrep"
+    exit -1;
+fi
+
 export XVKBD_EXE=../$XVKBD_EXE
 export KEYTEST=../keytest.py
 LYX_HOME=out-home
