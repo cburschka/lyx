@@ -21,15 +21,13 @@ if [ "$(which wmctrl)" == "" ]; then
     exit -1;
 fi
 
-<<<<<<< Updated upstream
 if [ "$(which pcregrep)" == "" ]; then
     echo "You need to install pcregrep first, try:"
     echo "  sudo apt-get install pcregrep"
     exit -1;
 fi
-=======
+
 PROGRAM_SUFFIX=$(grep -e '#define PACKAGE ' ../../config.h | sed -e 's/#define PACKAGE "lyx\(.*\)"/\1/')
->>>>>>> Stashed changes
 
 export XVKBD_EXE=../$XVKBD_EXE
 export KEYTEST=../keytest.py
