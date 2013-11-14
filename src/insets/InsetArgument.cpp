@@ -149,6 +149,25 @@ void InsetArgument::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_PASTE:
+	case LFUN_CLIPBOARD_PASTE:
+	case LFUN_SELECTION_PASTE:
+	case LFUN_PRIMARY_SELECTION_PASTE:
+		// Do not call InsetCollapsable::doDispatch(cur, cmd)
+		// with (inherited) pass_thru to avoid call for
+		// fixParagraphsFont(), which does not play nicely with
+		// inherited pass_thru (see #8471).
+		// FIXME: Once we have implemented genuine pass_thru 
+		// option for InsetArgument (not inherited pass_thru),
+		// we should probably directly call
+		// InsetCollapsable::doDispatch(cur, cmd) for that
+		// case as well
+		if (pass_thru_)
+			text().dispatch(cur, cmd);
+		else
+			InsetCollapsable::doDispatch(cur, cmd);
+		break;
+
 	default:
 		InsetCollapsable::doDispatch(cur, cmd);
 		break;
