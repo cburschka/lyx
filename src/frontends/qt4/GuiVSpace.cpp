@@ -57,6 +57,7 @@ GuiVSpace::GuiVSpace(QWidget * parent) : InsetParamsWidget(parent)
 
 	// initialize the length validator
 	addCheckedWidget(valueLE, valueL);
+	enableCustom(spacingCO->currentIndex());
 }
 
 
@@ -64,7 +65,9 @@ void GuiVSpace::enableCustom(int selection)
 {
 	bool const enable = selection == 5;
 	valueLE->setEnabled(enable);
+	valueL->setEnabled(enable);
 	unitCO->setEnabled(enable);
+	changed();
 }
 
 
