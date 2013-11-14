@@ -2371,9 +2371,13 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		break;
 	}
 
-	case LFUN_BUILD_PROGRAM:
-		doExport("program", true);
+	case LFUN_BUILD_PROGRAM: {
+		ExportStatus const status = doExport("program", true);
+		dr.setError(status != ExportSuccess);
+		if (status != ExportSuccess)
+			dr.setMessage(_("Error generating literate programming code."));
 		break;
+	}
 
 	case LFUN_BUFFER_CHKTEX:
 		runChktex();
