@@ -600,6 +600,10 @@ bool LaTeXFeatures::hasLanguages() const
 
 bool LaTeXFeatures::hasOnlyPolyglossiaLanguages() const
 {
+	// first the main language
+	if (params_.language->polyglossia().empty())
+		return false;
+	// now the secondary languages
 	LanguageList::const_iterator const begin = UsedLanguages_.begin();
 	for (LanguageList::const_iterator cit = begin;
 	     cit != UsedLanguages_.end();
@@ -613,6 +617,10 @@ bool LaTeXFeatures::hasOnlyPolyglossiaLanguages() const
 
 bool LaTeXFeatures::hasPolyglossiaExclusiveLanguages() const
 {
+	// first the main language
+	if (params_.language->isPolyglossiaExclusive())
+		return true;
+	// now the secondary languages
 	LanguageList::const_iterator const begin = UsedLanguages_.begin();
 	for (LanguageList::const_iterator cit = begin;
 	     cit != UsedLanguages_.end();
