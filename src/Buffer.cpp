@@ -2562,7 +2562,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 			break;
 		}
 
-		if (!doExport("dvi", true)) {
+		if (doExport("dvi", true) != ExportSuccess) {
 			showPrintError(absFileName());
 			dr.setMessage(_("Error exporting to DVI."));
 			break;
