@@ -104,6 +104,8 @@ void GuiHSpace::enableWidgets()
 	QString const selection = spacingCO->itemData(spacingCO->currentIndex()).toString();
 	bool const custom = selection == "custom";
 	valueLE->setEnabled(custom);
+	if (custom)
+		valueLE->setFocus();
 	valueL->setEnabled(custom);
 	unitCO->setEnabled(custom);
 	fillPatternCO->setEnabled(!math_mode_ && selection == "hfill");

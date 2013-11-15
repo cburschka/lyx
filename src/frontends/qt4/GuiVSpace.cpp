@@ -65,6 +65,8 @@ void GuiVSpace::enableCustom(int selection)
 {
 	bool const enable = selection == 5;
 	valueLE->setEnabled(enable);
+	if (enable)
+		valueLE->setFocus();
 	valueL->setEnabled(enable);
 	unitCO->setEnabled(enable);
 	changed();
