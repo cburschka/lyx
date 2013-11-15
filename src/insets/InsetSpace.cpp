@@ -146,10 +146,16 @@ void InsetSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action()) {
 
-	case LFUN_INSET_MODIFY:
+	case LFUN_INSET_MODIFY: {
 		cur.recordUndo();
-		string2params(to_utf8(cmd.argument()), params_);
+		string arg = to_utf8(cmd.argument());
+		if (arg == "space \\hspace{}")
+			arg += params_.length.len().empty()
+				? " \\length 1" + string(stringFromUnit(Length::defaultUnit()))
+				: " \\length " + params_.length.asString();
+		string2params(arg, params_);
 		break;
+	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		cur.bv().updateDialog("space", params2string(params()));
@@ -172,7 +178,7 @@ bool InsetSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 			InsetSpaceParams params;
 			string2params(to_utf8(cmd.argument()), params);
 			status.setOnOff(params_.kind == params.kind);
-			status.setEnabled(true);	
+			status.setEnabled(true);
 		} else
 			status.setEnabled(false);
 		return true;

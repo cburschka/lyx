@@ -59,7 +59,12 @@ void InsetVSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		cur.recordUndo();
-		InsetVSpace::string2params(to_utf8(cmd.argument()), space_);
+		string arg = to_utf8(cmd.argument());
+		if (arg == "vspace custom")
+			arg = (space_.kind() == VSpace::LENGTH)
+				? "vspace " + space_.length().asString()
+				: "vspace 1" + string(stringFromUnit(Length::defaultUnit()));
+		InsetVSpace::string2params(arg, space_);
 		break;
 	}
 
@@ -78,7 +83,12 @@ bool InsetVSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "vspace") {
 			VSpace vspace;
-			InsetVSpace::string2params(to_utf8(cmd.argument()), vspace);
+			string arg = to_utf8(cmd.argument());
+			if (arg == "vspace custom")
+				arg = (space_.kind() == VSpace::LENGTH)
+				? "vspace " + space_.length().asString()
+				: "vspace 1" + string(stringFromUnit(Length::defaultUnit()));
+			InsetVSpace::string2params(arg, vspace);
 			status.setOnOff(vspace == space_);
 		} 
 		status.setEnabled(true);

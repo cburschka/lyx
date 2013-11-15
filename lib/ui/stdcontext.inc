@@ -231,7 +231,7 @@ Menuset
 		Item "Horizontal Fill (Right Arrow)|g" "inset-modify space \rightarrowfill{}"
 		Item "Horizontal Fill (Up Brace)|p" "inset-modify space \upbracefill{}"
 		Item "Horizontal Fill (Down Brace)|B" "inset-modify space \downbracefill{}"
-		Item "Custom Length|C" "command-sequence inset-modify space \hspace{} \length 1in; inset-settings"
+		Item "Custom Length|C" "command-sequence inset-modify space \hspace{}; inset-settings"
 		Separator
 		Item "Settings...|S" "inset-settings"
 	End
@@ -263,7 +263,7 @@ Menuset
 		Item "MedSkip|M" "inset-modify vspace medskip"
 		Item "BigSkip|B" "inset-modify vspace bigskip"
 		Item "VFill|F" "inset-modify vspace vfill"
-		Item "Custom|C" "command-sequence inset-modify vspace 1in; inset-settings"
+		Item "Custom|C" "command-sequence inset-modify vspace custom; inset-settings"
 		Separator
 		Item "Settings...|e" "inset-settings"
 	End
