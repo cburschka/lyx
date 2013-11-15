@@ -143,6 +143,7 @@ void GuiVSpace::paramsToDialog(Inset const * inset)
 	InsetVSpace const * vs = static_cast<InsetVSpace const *>(inset);
 	VSpace const & params = vs->space();
 	setWidgetsFromVSpace(params, spacingCO, valueLE, unitCO, keepCB);
+	enableCustom(spacingCO->currentIndex());
 }
 
 } // namespace frontend
