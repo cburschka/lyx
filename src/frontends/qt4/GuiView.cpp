@@ -2376,7 +2376,7 @@ struct PrettyNameComparator
 };
 
 
-bool GuiView::exportBufferAs(Buffer & b)
+bool GuiView::exportBufferAs(Buffer & b, docstring const & iformat)
 {
 	FileName fname = b.fileName();
 
@@ -2395,6 +2395,8 @@ bool GuiView::exportBufferAs(Buffer & b)
 	sort(export_formats.begin(), export_formats.end(), cmp);
 	vector<Format const *>::const_iterator fit = export_formats.begin();
 	map<QString, string> fmap;
+	QString filter;
+	string ext;
 	for (; fit != export_formats.end(); ++fit) {
 		docstring const loc_prettyname =
 			translateIfPossible(from_utf8((*fit)->prettyname()));
@@ -2403,12 +2405,18 @@ bool GuiView::exportBufferAs(Buffer & b)
 						     from_ascii((*fit)->extension())));
 		types << loc_filter;
 		fmap[loc_filter] = (*fit)->name();
+		if (from_ascii((*fit)->name()) == iformat) {
+			filter = loc_filter;
+			ext = (*fit)->extension();
+		}
 	}
-	QString filter;
+	string ofname = fname.onlyFileName();
+	if (!ext.empty())
+		ofname = support::changeExtension(ofname, ext);
 	FileDialog::Result result =
 		dlg.save(toqstr(fname.onlyPath().absFileName()),
 			 types,
-			 toqstr(fname.onlyFileName()),
+			 toqstr(ofname),
 			 &filter);
 	if (result.first != FileDialog::Chosen)
 		return false;
@@ -2436,7 +2444,7 @@ bool GuiView::exportBufferAs(Buffer & b)
 			text, 0, 2, _("&Overwrite"), _("&Rename"), _("&Cancel"));
 		switch (ret) {
 		case 0: break;
-		case 1: return exportBufferAs(b);
+		case 1: return exportBufferAs(b, from_ascii(fmt_name));
 		case 2: return false;
 		}
 	}
@@ -3315,7 +3323,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				break;
 			}
 			if (!target_dir.isDirWritable()) {
-				exportBufferAs(*doc_buffer);
+				exportBufferAs(*doc_buffer, cmd.argument());
 				break;
 			}
 			/* TODO/Review: Is it a problem to also export the children?
@@ -3330,10 +3338,14 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 		}
 
-		case LFUN_BUFFER_EXPORT_AS:
+		case LFUN_BUFFER_EXPORT_AS: {
 			LASSERT(doc_buffer, break);
-			exportBufferAs(*doc_buffer);
+			docstring f = cmd.argument();
+			if (f.empty())
+				f = from_ascii(doc_buffer->params().getDefaultOutputFormat());
+			exportBufferAs(*doc_buffer, f);
 			break;
+		}
 
 		case LFUN_BUFFER_UPDATE: {
 			d.asyncBufferProcessing(argument,

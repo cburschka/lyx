@@ -106,6 +106,8 @@ FileDialog::Result FileDialog::save(QString const & path,
 	dlg.setFileMode(QFileDialog::AnyFile);
 	dlg.setAcceptMode(QFileDialog::AcceptSave);
 	dlg.setConfirmOverwrite(false);
+	if (selectedFilter != 0 && !selectedFilter->isEmpty())
+		dlg.selectNameFilter(*selectedFilter);
 
 	if (!suggested.isEmpty())
 		dlg.selectFile(suggested);

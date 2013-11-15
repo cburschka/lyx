@@ -354,8 +354,9 @@ private:
 	///
 	void insertPlaintextFile(docstring const & fname,
 		bool asParagraph);
-	///
-	bool exportBufferAs(Buffer & b);
+	/// Open Export As ... dialog. \p iformat is the format the
+	/// filter is initially set to.
+	bool exportBufferAs(Buffer & b, docstring const & iformat);
 
 	///
 	enum RenameKind { LV_WRITE_AS, LV_VC_RENAME, LV_VC_COPY };

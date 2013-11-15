@@ -3075,8 +3075,15 @@ void LyXAction::init()
 		{ LFUN_BUFFER_EXPORT_CUSTOM, "buffer-export-custom", ReadOnly, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_EXPORT_AS
- * \li Action: Pops up a dialog for exporting the current buffer.
- * \li Syntax: buffer-export-as
+ * \li Action: Opens a dialog for exporting the current buffer.
+ * \li Syntax: buffer-export-as [<FORMAT>]
+ * \li Params: <FORMAT> is the export format initially selected in the dialog.
+ *                      You can pass any of the formats which you can find in
+ *                      Tools->Preferences->File formats->Format, provided it
+ *                      has the "document" flag set. If no format is specified
+ *                      the dialog will start with the default output format of
+ *                      the current document.
+ * \li Sample: buffer-export-as pdf2
  * \li Origin: tommaso, 6 Oct 2011
  * \endvar
  */
