@@ -2384,7 +2384,7 @@ bool GuiView::exportBufferAs(Buffer & b)
 	dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 
 	QStringList types;
-	QString const anyformat = qt_("Any supported format (*.*)");
+	QString const anyformat = qt_("Guess from extension (*.*)");
 	types << anyformat;
 	Formats::const_iterator it = formats.begin();
 	vector<Format const *> export_formats;
