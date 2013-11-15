@@ -2389,7 +2389,7 @@ bool GuiView::exportBufferAs(Buffer & b)
 	Formats::const_iterator it = formats.begin();
 	vector<Format const *> export_formats;
 	for (; it != formats.end(); ++it)
-		if (it->documentFormat() && it->inExportMenu())
+		if (it->documentFormat())
 			export_formats.push_back(&(*it));
 	PrettyNameComparator cmp;
 	sort(export_formats.begin(), export_formats.end(), cmp);
