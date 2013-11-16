@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-11-10 15:41+0100\n"
+"POT-Creation-Date: 2013-11-15 17:14+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -852,10 +852,6 @@ msgstr "Presunúť označenú citáciu nahor (Ctrl-Up)"
 #: src/frontends/qt4/ui/CitationUi.ui:148
 msgid "Move the selected citation down (Ctrl-Down)"
 msgstr "Presunúť označenú citáciu nadol (Ctrl-Down)"
-
-#: src/frontends/qt4/ui/CitationUi.ui:151
-msgid "&Down"
-msgstr "Nado&l"
 
 #: src/frontends/qt4/ui/CitationUi.ui:174
 #: src/frontends/qt4/ui/DocumentUi.ui:44
@@ -21452,6 +21448,10 @@ msgid "LaTeX (XeTeX)"
 msgstr "LaTeX (XeTeX)"
 
 #: lib/configure.py:556
+msgid "LaTeX (clipboard)"
+msgstr "LaTeX (schránka)"
+
+#: lib/configure.py:556
 msgid "Plain text"
 msgstr "Prostý text"
 
@@ -22052,6 +22052,10 @@ msgstr "Žiadne informácie pre export formátu: %1$s"
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Chyba pri exporte na formát: %1$s."
+
+#: src/Buffer.cpp:2378
+msgid "Error generating literate programming code."
+msgstr "Chyba pri generovaní \"Literate Programming\" kódu."
 
 #: src/Buffer.cpp:2447
 #, c-format
@@ -27558,8 +27562,8 @@ msgid "Choose a filename to export the document as"
 msgstr "Zvoľte názov súboru, pod ktorým sa má dokument uložiť ako"
 
 #: src/frontends/qt4/GuiView.cpp:2387
-msgid "Any supported format (*.*)"
-msgstr "Akýkoľvek podporovaný format (*.*)"
+msgid "Guess from extension (*.*)"
+msgstr "Uhádnuť z rozšírenia (*.*)"
 
 #: src/frontends/qt4/GuiView.cpp:2401
 #, c-format
@@ -29575,6 +29579,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Any supported format (*.*)"
+#~ msgstr "Akýkoľvek podporovaný format (*.*)"
+
+#~ msgid "&Down"
+#~ msgstr "Nado&l"
 
 #~ msgid "report (R Journal)"
 #~ msgstr "referát (R Journal)"
