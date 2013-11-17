@@ -2400,7 +2400,7 @@ bool GuiView::exportBufferAs(Buffer & b, docstring const & iformat)
 	for (; fit != export_formats.end(); ++fit) {
 		docstring const loc_prettyname =
 			translateIfPossible(from_utf8((*fit)->prettyname()));
-		QString const loc_filter = toqstr(bformat(_("%1$s (*.%2$s)"),
+		QString const loc_filter = toqstr(bformat(from_ascii("%1$s (*.%2$s)"),
 						     loc_prettyname,
 						     from_ascii((*fit)->extension())));
 		types << loc_filter;
