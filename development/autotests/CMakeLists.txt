@@ -101,9 +101,14 @@ if(Q_WS_X11)
   endif()
 endif()
 
+find_package(Perl)
+
 macro(getoutputformats filepath varname)
   file(STRINGS "${filepath}" lines)
-  set(out_formats "xhtml" "pdf" "pdf2" "pdf4" "pdf5")
+  set(out_formats "xhtml" "dvi" "dvi3" "pdf" "pdf2" "pdf3" "pdf4" "pdf5")
+  if(NOT PERL_FOUND)
+    list(REMOVE_ITEM out_formats "pdf4" "pdf5")
+  endif()
   set(${varname} ${out_formats})
   foreach(_l ${lines})
     if(_l MATCHES "^\\\\default_output_format +\([^ ]+\)")
@@ -182,6 +187,8 @@ foreach(libsubfolder doc examples templates)
             -Dextension=16.lyx
             -Dfile=${f}
             -Dreverted=${reverted}
+            -DTOP_SRC_DIR=${TOP_SRC_DIR}
+            -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
             -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
       setmarkedtestlabel(${TestName} ${reverted} "export")
     endif()
@@ -224,6 +231,8 @@ foreach(libsubfolder doc examples templates)
             -Dextension=${format}
             -Dfile=${f}
             -Dreverted=${reverted}
+            -DTOP_SRC_DIR=${TOP_SRC_DIR}
+            -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
             -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
         setmarkedtestlabel(${TestName} ${reverted} "export")
       endif()
