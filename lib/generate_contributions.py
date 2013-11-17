@@ -1259,6 +1259,14 @@ contributors = [
                  "30 March 2005",
                  u"Support for two-column figure (figure*) and table (table*) environments.  Fixed minibuffer entry of floats."),
 
+     contributor(u"Gilad Orr",
+                 "giladorr () gmail ! com",
+                 "GPL",
+                 "Internationalization-Hebrew",
+                 "m=138314500901798",
+                 "28 October 2013",
+                 u"Hebrew translation."),
+
      contributor(u'Panayotis "PAP" Papasotiriou',
                  "papasot () upatras ! gr",
                  "GPL",
