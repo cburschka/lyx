@@ -43,7 +43,6 @@ BEGIN {
 }
 use File::Basename;
 use File::Path;
-use Cwd 'abs_path';
 use File::Copy "cp";
 use File::Temp qw/ :POSIX /;
 use lyxStatus;
@@ -57,8 +56,8 @@ my ($source, $dest, $format, $rest) = @ARGV;
 &diestack("Destfilename not defined") if (! defined($dest));
 &diestack("Format (e.g. pdf4) not defined") if (! defined($format));
 
-$source = &abs_path($source);
-$dest = &abs_path($dest);
+$source = File::Spec->rel2abs($source);
+$dest = File::Spec->rel2abs($dest);
 
 my %font = ();
 
