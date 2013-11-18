@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2013-05-07 11:33-0400\n"
-"PO-Revision-Date: 2013-04-12 11:56+0300\n"
+"PO-Revision-Date: 2013-11-17 12:09+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
@@ -25,7 +25,7 @@ msgstr "Версія"
 
 #: src/frontends/qt4/ui/AboutUi.ui:50
 msgid "Version goes here"
-msgstr "Версію вказують тут"
+msgstr "Тут слід вказати версію"
 
 #: src/frontends/qt4/ui/AboutUi.ui:64
 msgid "Credits"
@@ -3212,9 +3212,8 @@ msgid "&Mark end of paragraphs"
 msgstr "П&означати кінці абзаців"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:26
-#, fuzzy
 msgid "Session handling"
-msgstr "Обробка шрифтів"
+msgstr "Робота з сеансами"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:38
 msgid "Restore window layouts and &geometries"
@@ -3237,23 +3236,20 @@ msgid "&Clear all session information"
 msgstr "Вилучити всі ві&домості про сеанси"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:85
-#, fuzzy
 msgid "Backup && saving"
-msgstr "Помилка резервного копіювання"
+msgstr "Резервне копіювання і збереження"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:94
-#, fuzzy
 msgid "Backup &original documents when saving"
-msgstr "Створювати резервні копії під час збереження"
+msgstr "Створювати &резервні копії під час збереження"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:103
 msgid "&Backup documents, every"
 msgstr "Створювати &резервні копії документів кожні"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:120
-#, fuzzy
 msgid "&minutes"
-msgstr "хвилин"
+msgstr "&хвилин"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
 msgid "&Save documents compressed by default"
@@ -3261,15 +3257,13 @@ msgstr "Типово &зберігати документи зі стискан�
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
 msgid "Windows && work area"
-msgstr ""
+msgstr "Вікна і робоча область"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:164
-#, fuzzy
 msgid "Open documents in &tabs"
 msgstr "Відкривати документи у в&кладках"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:175
-#, fuzzy
 msgid "Use s&ingle instance"
 msgstr "&Єдиний екземпляр"
 
@@ -3280,7 +3274,6 @@ msgstr ""
 "кнопку закриття вгорі праворуч."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:185
-#, fuzzy
 msgid "Displa&y single close-tab button"
 msgstr "&Єдина кнопка закриття вкладок"
 
@@ -3450,7 +3443,7 @@ msgstr "&Перша:"
 #: src/frontends/qt4/ui/PrefInputUi.ui:64
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:83
 msgid "Br&owse..."
-msgstr "Нав&ігація…"
+msgstr "В&ибрати…"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:90
 msgid "S&econd:"
@@ -4149,9 +4142,8 @@ msgid "Al&ternative language:"
 msgstr "&Інша мова:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:25
-#, fuzzy
 msgid "General Look && Feel"
-msgstr "Вигляд та поведінка"
+msgstr "Загальний вигляд та поведінка"
 
 #: src/frontends/qt4/ui/PrefUi.ui:36
 msgid "&User interface file:"
@@ -4162,9 +4154,8 @@ msgid "&Icon Set:"
 msgstr "&Набір піктограм:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:109
-#, fuzzy
 msgid "Context help"
-msgstr "Вміст"
+msgstr "Контекстна довідка"
 
 #: src/frontends/qt4/ui/PrefUi.ui:127
 msgid ""
@@ -4179,7 +4170,6 @@ msgid "&Enable tool tips in main work area"
 msgstr "Увімкнути &підказки у основній робочій області"
 
 #: src/frontends/qt4/ui/PrefUi.ui:140
-#, fuzzy
 msgid "Menus"
 msgstr "Меню"
 
@@ -6182,7 +6172,7 @@ msgstr "позначка установи"
 
 #: lib/layouts/aa.layout:367
 msgid "Key words."
-msgstr "Ключові слова"
+msgstr "Ключові слова."
 
 #: lib/layouts/aa.layout:389 lib/layouts/beamer.layout:859
 #: lib/layouts/cl2emult.layout:70 lib/layouts/llncs.layout:216
@@ -6935,7 +6925,7 @@ msgstr "Заголовок (звичайна вставка)"
 
 #: lib/layouts/beamer.layout:880
 msgid "InstituteMark"
-msgstr "ПозначкаІнституту"
+msgstr "Позначка установи"
 
 #: lib/layouts/beamer.layout:884
 msgid "Institute mark"
@@ -9675,7 +9665,7 @@ msgstr "Підпідпараграф"
 
 #: lib/layouts/agu_stdtitle.inc:13
 msgid "Header"
-msgstr "Заголовок"
+msgstr "Шапка"
 
 #: lib/layouts/agu_stdtitle.inc:19
 msgid "-- Header --"
@@ -21716,9 +21706,8 @@ msgid "Oxygen"
 msgstr "Oxygen"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2550
-#, fuzzy
 msgid "Document Handling"
-msgstr "Документ і вікно"
+msgstr "Робота з документами"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2637
 msgid "Control"
