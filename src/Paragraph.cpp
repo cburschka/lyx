@@ -1450,7 +1450,8 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 	if (layout_->inpreamble && inset_owner_) {
 		bool const is_command = layout_->latextype == LATEX_COMMAND;
 		Buffer const & buf = inset_owner_->buffer();
-		BufferParams const & bp = buf.params();
+		BufferParams const & bp = features.runparams().is_child
+			? buf.masterBuffer()->params() : buf.params();
 		Font f;
 		TexRow texrow;
 		// Using a string stream here circumvents the encoding
