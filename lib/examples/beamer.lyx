@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 465
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass beamer
@@ -44,7 +44,7 @@
 \use_package stmaryrd 1
 \use_package undertilde 1
 \cite_engine basic
-\cite_engine_type numerical
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -1095,16 +1095,6 @@ To group frames, you can use the usual sectioning commands (
 status collapsed
 
 \begin_layout Plain Layout
-Part
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Structure
-status collapsed
-
-\begin_layout Plain Layout
 Section
 \end_layout
 
@@ -1143,6 +1133,82 @@ modes
 \end_inset
 
 )
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Parts have special meaning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+You can also divide your presentation into 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Parts
+\end_layout
+
+\end_inset
+
+.
+ Note, however, that parts behave differently in 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ than in other document classes: a part is considered to be 
+\begin_inset Quotes eld
+\end_inset
+
+a little 
+\begin_inset Quotes els
+\end_inset
+
+talk of its own
+\begin_inset Quotes ers
+\end_inset
+
+ with its own table of contents, its own navigation bars, and so on.
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "sec.~10.3"
+key "beamer-ug"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This means, for instance, that if you use parts, the table of contents will
+ only list the sections and subsections of the part that contains this table
+ of contents, and the sidebar\SpecialChar \slash{}
+header will also only show the sections of
+ the current part.
 \end_layout
 
 \end_deeper

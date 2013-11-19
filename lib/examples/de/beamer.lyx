@@ -1271,16 +1271,6 @@ ebungen (
 status collapsed
 
 \begin_layout Plain Layout
-Teil
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Structure
-status collapsed
-
-\begin_layout Plain Layout
 Abschnitt
 \end_layout
 
@@ -1303,7 +1293,7 @@ Unterabschnitt
 Diese werden im Inhaltsverzeichnis der Präsentation angezeigt, außerdem
  in der Seitenleiste oder der Kopfzeile (je nach 
 \begin_inset Flex Structure
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Beamer
@@ -1336,6 +1326,78 @@ Modi
 \end_inset
 
 ).
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Untergliederung in 
+\begin_inset Quotes gld
+\end_inset
+
+Teile
+\begin_inset Quotes grd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sie können Ihre Präsentation auch in 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Teile
+\end_layout
+
+\end_inset
+
+ untergliedern.
+ Beachten Sie aber, dass Teile in Beamer anders interpretiert werden als
+ in anderen Dokumentklassen: ein Teil wird als 
+\begin_inset Quotes gld
+\end_inset
+
+kleiner eigenständiger Vortrag
+\begin_inset Quotes grd
+\end_inset
+
+ angesehen, der sein eigenes Inhaltsverzeichnis, seine eigene Navigationsleiste
+ usw.
+ bekommt (vgl.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "Abschn.~10.3"
+key "beamer-ug"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Das bedeutet, dass beispielsweise ein Inhaltsverzeichnis, sobald Sie die
+ Präsentation in Teile untergliedern, nur die Abschnitte und Unterabschnitte
+ des Teils auf\SpecialChar \textcompwordmark{}
+führt, in den Sie das Inhaltsverzeichnis eingefügt haben.
+ Auch die Seitenleiste bzw.
+ Kopf-\SpecialChar \slash{}
+Fußzeile enthält dann jeweils nur die Abschnitte des aktuelles Teils.
 \end_layout
 
 \end_deeper
