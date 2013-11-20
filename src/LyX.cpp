@@ -754,8 +754,15 @@ bool LyX::init()
 		prependEnvPath("PATH", replaceEnvironmentPath(lyxrc.path_prefix));
 
 	// Check that user LyX directory is ok.
-	if (queryUserLyXDir(package().explicit_user_support()))
-		reconfigureUserLyXDir();
+	{
+		string const lock_file = package().user_support().absFileName() + ".lyx_configure_lock";
+		int fd = fileLock(lock_file.c_str());
+
+		if (queryUserLyXDir(package().explicit_user_support())) {
+			reconfigureUserLyXDir();
+		}
+		fileUnlock(fd, lock_file.c_str());
+	}
 
 	if (!use_gui) {
 		// No need for a splash when there is no GUI

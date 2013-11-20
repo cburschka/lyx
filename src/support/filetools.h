@@ -292,6 +292,8 @@ typedef std::pair<int, std::string> cmd_ret;
 
 cmd_ret const runCommand(std::string const & cmd);
 
+int fileLock(const char * lock_file);
+void fileUnlock(int fd, const char * lock_file);
 
 } // namespace support
 } // namespace lyx

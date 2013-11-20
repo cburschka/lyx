@@ -40,7 +40,7 @@ configure_file(${TOP_BINARY_DIR}/configIncludes.h.cmake ${TOP_BINARY_DIR}/config
 set(Function_Defines)
 foreach(_f alloca __argz_count __argz_next __argz_stringify
 	chmod close _close dcgettext fcntl fork __fsetlocking
-	getcwd getegid getgid getpid _getpid gettext getuid lstat mempcpy mkdir _mkdir
+	getcwd getegid getgid getpid _getpid gettext getuid lstat lockf mempcpy mkdir _mkdir
 	mkfifo open _open pclose _pclose popen _popen putenv readlink
 	setenv setlocale strcasecmp stpcpy strdup strerror strtoul tsearch unsetenv wcslen)
   string(TOUPPER ${_f} _UF)

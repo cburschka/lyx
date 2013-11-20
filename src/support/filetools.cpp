@@ -1064,6 +1064,28 @@ bool prefs2prefs(FileName const & filename, FileName const & tempfile, bool lfun
 	return true;
 }
 
+int fileLock(const char * lock_file)
+{
+	int fd = -1;
+#if defined(HAVE_LOCKF)
+	fd = open(lock_file, O_CREAT|O_APPEND|O_SYNC|O_RDWR, 0666);
+	if (lockf(fd, F_LOCK, 0) != 0) {
+		close(fd);
+		return(-1);
+	}
+#endif
+	return(fd);
+}
+
+void fileUnlock(int fd, const char * lock_file)
+{
+#if defined(HAVE_LOCKF)
+	if ( fd >= 0) {
+		(void) lockf(fd, F_ULOCK, 0);
+		close(fd);
+	}
+#endif
+}
 
 } //namespace support
 } // namespace lyx
