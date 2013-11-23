@@ -933,7 +933,7 @@ bool Buffer::readDocument(Lexer & lex)
 		}
 	}
 
-	if (!params().master.empty()) {
+	if (!parent() && !params().master.empty()) {
 		FileName const master_file = makeAbsPath(params().master,
 			   onlyPath(absFileName()));
 		if (isLyXFileName(master_file.absFileName())) {
