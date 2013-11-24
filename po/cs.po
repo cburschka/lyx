@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-05-07 11:33-0400\n"
+"POT-Creation-Date: 2013-11-24 11:51-0500\n"
 "PO-Revision-Date: 2013-03-08 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -246,7 +246,8 @@ msgstr "&OK"
 msgid "Move the selected database downwards in the list"
 msgstr "Pøesuò vybranou databázi v seznamu dolù"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:228 src/frontends/qt4/ui/ModulesUi.ui:121
+#: src/frontends/qt4/ui/BibtexUi.ui:228 src/frontends/qt4/ui/CitationUi.ui:151
+#: src/frontends/qt4/ui/ModulesUi.ui:121
 msgid "Do&wn"
 msgstr "&Dolù"
 
@@ -487,8 +488,8 @@ msgid "Remove the selected branch"
 msgstr "Smazat vybranou vìtev"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136
-#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3915
-#: src/Buffer.cpp:3928
+#: src/frontends/qt4/ui/IndicesUi.ui:165 src/Buffer.cpp:3956
+#: src/Buffer.cpp:3969
 msgid "&Remove"
 msgstr "&Smazat"
 
@@ -522,7 +523,7 @@ msgstr "Pøidat &v¹echny"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1169
-#: src/Buffer.cpp:2439 src/Buffer.cpp:3890 src/Buffer.cpp:3953
+#: src/Buffer.cpp:2480 src/Buffer.cpp:3931 src/Buffer.cpp:3994
 #: src/LyXVC.cpp:89 src/LyXVC.cpp:224 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1839
@@ -813,10 +814,6 @@ msgstr "Pøesun oznaèené citace nahoru (Ctrl+nahoru)"
 #: src/frontends/qt4/ui/CitationUi.ui:148
 msgid "Move the selected citation down (Ctrl-Down)"
 msgstr "Pøesun oznaèené citace dolù (Ctrl+dolù)"
-
-#: src/frontends/qt4/ui/CitationUi.ui:151
-msgid "&Down"
-msgstr "&Dolù"
 
 #: src/frontends/qt4/ui/CitationUi.ui:174
 #: src/frontends/qt4/ui/DocumentUi.ui:44
@@ -1893,8 +1890,8 @@ msgstr "Vstup (lze rekurzivnì)"
 msgid "Verbatim"
 msgstr "Doslovnì"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1144
-#: src/insets/InsetInclude.cpp:1150
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1147
+#: src/insets/InsetInclude.cpp:1153
 msgid "Program Listing"
 msgstr "Výpis zdrojového kódu"
 
@@ -5156,17 +5153,17 @@ msgstr "Povoluje promìnlivé umístìní"
 msgid "Allow &floating"
 msgstr "Plovoucí &objekt"
 
-#: lib/layouts/AEA.layout:55 lib/layouts/apa.layout:92
+#: lib/layouts/AEA.layout:49 lib/layouts/apa.layout:92
 #: lib/layouts/apa6.layout:49
 msgid "ShortTitle"
 msgstr "ShortTitle"
 
-#: lib/layouts/AEA.layout:56 lib/layouts/AEA.layout:99
+#: lib/layouts/AEA.layout:50 lib/layouts/AEA.layout:93
 #: lib/layouts/IEEEtran.layout:68 lib/layouts/IEEEtran.layout:117
 #: lib/layouts/IEEEtran.layout:158 lib/layouts/IEEEtran.layout:192
-#: lib/layouts/aa.layout:124 lib/layouts/aa.layout:147
-#: lib/layouts/aa.layout:162 lib/layouts/aa.layout:186
-#: lib/layouts/aa.layout:326 lib/layouts/aastex.layout:276
+#: lib/layouts/aa.layout:126 lib/layouts/aa.layout:149
+#: lib/layouts/aa.layout:164 lib/layouts/aa.layout:188
+#: lib/layouts/aa.layout:328 lib/layouts/aastex.layout:276
 #: lib/layouts/aastex.layout:293 lib/layouts/aastex.layout:333
 #: lib/layouts/aastex.layout:359 lib/layouts/aastex.layout:398
 #: lib/layouts/achemso.layout:57 lib/layouts/achemso.layout:190
@@ -5218,41 +5215,41 @@ msgstr "ShortTitle"
 msgid "FrontMatter"
 msgstr "Úvodní èást"
 
-#: lib/layouts/AEA.layout:63
+#: lib/layouts/AEA.layout:57
 msgid "Publication Month"
 msgstr "Publication Month"
 
-#: lib/layouts/AEA.layout:69
+#: lib/layouts/AEA.layout:63
 msgid "Publication Month:"
 msgstr "Publication Month:"
 
-#: lib/layouts/AEA.layout:76
+#: lib/layouts/AEA.layout:70
 msgid "Publication Year"
 msgstr "Publication Year"
 
-#: lib/layouts/AEA.layout:79
+#: lib/layouts/AEA.layout:73
 msgid "Publication Year:"
 msgstr "Publication Year:"
 
-#: lib/layouts/AEA.layout:82
+#: lib/layouts/AEA.layout:76
 msgid "Publication Volume"
 msgstr "Publication Volume"
 
-#: lib/layouts/AEA.layout:85
+#: lib/layouts/AEA.layout:79
 msgid "Publication Volume:"
 msgstr "Publication Volume:"
 
-#: lib/layouts/AEA.layout:88
+#: lib/layouts/AEA.layout:82
 msgid "Publication Issue"
 msgstr "Publication Issue"
 
-#: lib/layouts/AEA.layout:91
+#: lib/layouts/AEA.layout:85
 msgid "Publication Issue:"
 msgstr "Publication Issue:"
 
-#: lib/layouts/AEA.layout:94 lib/layouts/IEEEtran.layout:188
-#: lib/layouts/aa.layout:88 lib/layouts/aa.layout:322
-#: lib/layouts/aa.layout:338 lib/layouts/aapaper.layout:100
+#: lib/layouts/AEA.layout:88 lib/layouts/IEEEtran.layout:188
+#: lib/layouts/aa.layout:90 lib/layouts/aa.layout:324
+#: lib/layouts/aa.layout:340 lib/layouts/aapaper.layout:100
 #: lib/layouts/aapaper.layout:203 lib/layouts/aastex.layout:113
 #: lib/layouts/aastex.layout:252 lib/layouts/achemso.layout:186
 #: lib/layouts/achemso.layout:203 lib/layouts/acmsiggraph.layout:110
@@ -5278,14 +5275,14 @@ msgstr "Publication Issue:"
 #: lib/layouts/svmult.layout:99 lib/layouts/tufte-handout.layout:45
 #: lib/layouts/tufte-handout.layout:60 lib/layouts/agu_stdtitle.inc:193
 #: lib/layouts/amsdefs.inc:91 lib/layouts/db_stdstruct.inc:11
-#: lib/layouts/scrclass.inc:239 lib/layouts/stdstruct.inc:12
+#: lib/layouts/scrclass.inc:232 lib/layouts/stdstruct.inc:12
 #: lib/layouts/stdstruct.inc:27 lib/layouts/svcommon.inc:422
 #: lib/layouts/svcommon.inc:428 src/output_plaintext.cpp:133
 msgid "Abstract"
 msgstr "Abstrakt"
 
-#: lib/layouts/AEA.layout:98 lib/layouts/aa.layout:91
-#: lib/layouts/aa.layout:205 lib/layouts/aapaper.layout:103
+#: lib/layouts/AEA.layout:92 lib/layouts/aa.layout:93
+#: lib/layouts/aa.layout:207 lib/layouts/aapaper.layout:103
 #: lib/layouts/egs.layout:530 lib/layouts/elsart.layout:424
 #: lib/layouts/svmult.layout:146 lib/layouts/aapaper.inc:80
 #: lib/layouts/svcommon.inc:535
@@ -5302,13 +5299,13 @@ msgstr "Abstrakt"
 msgid "Acknowledgement"
 msgstr "Podìkování"
 
-#: lib/layouts/AEA.layout:100 lib/layouts/egs.layout:544
+#: lib/layouts/AEA.layout:94 lib/layouts/egs.layout:544
 #: lib/layouts/theorems-ams-extended-bytype.module:325
 #: lib/layouts/theorems-ams-extended.module:296
 msgid "Acknowledgement."
 msgstr "Podìkování."
 
-#: lib/layouts/AEA.layout:105 lib/layouts/IEEEtran.layout:290
+#: lib/layouts/AEA.layout:99 lib/layouts/IEEEtran.layout:290
 #: lib/layouts/beamer.layout:1099 lib/layouts/elsart.layout:259
 #: lib/layouts/foils.layout:218 lib/layouts/heb-article.layout:18
 #: lib/layouts/ijmpc.layout:305 lib/layouts/ijmpc.layout:308
@@ -5340,7 +5337,7 @@ msgstr "Podìkování."
 msgid "Theorem"
 msgstr "Vìta"
 
-#: lib/layouts/AEA.layout:112 lib/layouts/elsart.layout:343
+#: lib/layouts/AEA.layout:106 lib/layouts/elsart.layout:343
 #: lib/layouts/powerdot.layout:397 lib/layouts/siamltex.layout:116
 #: lib/layouts/stdfloats.inc:41
 #: lib/layouts/theorems-ams-extended-bytype.module:94
@@ -5356,7 +5353,7 @@ msgstr "Vìta"
 msgid "Algorithm"
 msgstr "Algoritmus"
 
-#: lib/layouts/AEA.layout:119
+#: lib/layouts/AEA.layout:113
 #: lib/layouts/theorems-ams-extended-bytype.module:129
 #: lib/layouts/theorems-ams-extended-bytype.module:138
 #: lib/layouts/theorems-ams-extended-bytype.module:141
@@ -5370,7 +5367,7 @@ msgstr "Algoritmus"
 msgid "Axiom"
 msgstr "Axiom"
 
-#: lib/layouts/AEA.layout:126 lib/layouts/elsart.layout:414
+#: lib/layouts/AEA.layout:120 lib/layouts/elsart.layout:414
 #: lib/layouts/llncs.layout:286 lib/layouts/theorems-case.inc:27
 #: lib/layouts/theorems-case.inc:51 lib/layouts/theorems-case.inc:54
 #: lib/layouts/theorems-order.inc:73
@@ -5380,11 +5377,11 @@ msgstr "Axiom"
 msgid "Case"
 msgstr "Pøípad"
 
-#: lib/layouts/AEA.layout:130 lib/layouts/theorems-without-preamble.inc:341
+#: lib/layouts/AEA.layout:124 lib/layouts/theorems-without-preamble.inc:341
 msgid "Case \\thecase."
 msgstr "Pøípad \\thecase."
 
-#: lib/layouts/AEA.layout:136 lib/layouts/elsart.layout:399
+#: lib/layouts/AEA.layout:130 lib/layouts/elsart.layout:399
 #: lib/layouts/heb-article.layout:65 lib/layouts/ijmpc.layout:391
 #: lib/layouts/ijmpd.layout:415 lib/layouts/llncs.layout:307
 #: lib/layouts/svmono.layout:80 lib/layouts/theorems-ams-bytype.inc:289
@@ -5405,7 +5402,7 @@ msgstr "Pøípad \\thecase."
 msgid "Claim"
 msgstr "Tvrzení"
 
-#: lib/layouts/AEA.layout:143
+#: lib/layouts/AEA.layout:137
 #: lib/layouts/theorems-ams-extended-bytype.module:339
 #: lib/layouts/theorems-ams-extended-bytype.module:348
 #: lib/layouts/theorems-ams-extended-bytype.module:351
@@ -5419,7 +5416,7 @@ msgstr "Tvrzení"
 msgid "Conclusion"
 msgstr "Závìr"
 
-#: lib/layouts/AEA.layout:151
+#: lib/layouts/AEA.layout:145
 #: lib/layouts/theorems-ams-extended-bytype.module:164
 #: lib/layouts/theorems-ams-extended-bytype.module:173
 #: lib/layouts/theorems-ams-extended-bytype.module:176
@@ -5433,7 +5430,7 @@ msgstr "Závìr"
 msgid "Condition"
 msgstr "Podmínka"
 
-#: lib/layouts/AEA.layout:159 lib/layouts/elsart.layout:364
+#: lib/layouts/AEA.layout:153 lib/layouts/elsart.layout:364
 #: lib/layouts/ijmpc.layout:400 lib/layouts/ijmpd.layout:424
 #: lib/layouts/llncs.layout:314 lib/layouts/siamltex.layout:107
 #: lib/layouts/theorems-ams-bytype.inc:145
@@ -5453,7 +5450,7 @@ msgstr "Podmínka"
 msgid "Conjecture"
 msgstr "Hypotéza"
 
-#: lib/layouts/AEA.layout:166 lib/layouts/beamer.layout:1029
+#: lib/layouts/AEA.layout:160 lib/layouts/beamer.layout:1029
 #: lib/layouts/elsart.layout:322 lib/layouts/foils.layout:250
 #: lib/layouts/heb-article.layout:55 lib/layouts/ijmpc.layout:346
 #: lib/layouts/ijmpd.layout:370 lib/layouts/llncs.layout:321
@@ -5474,7 +5471,7 @@ msgstr "Hypotéza"
 msgid "Corollary"
 msgstr "Dùsledek"
 
-#: lib/layouts/AEA.layout:173 lib/layouts/elsart.layout:336
+#: lib/layouts/AEA.layout:167 lib/layouts/elsart.layout:336
 #: lib/layouts/theorems-ams-extended-bytype.module:60
 #: lib/layouts/theorems-ams-extended-bytype.module:69
 #: lib/layouts/theorems-ams-extended-bytype.module:72
@@ -5488,7 +5485,7 @@ msgstr "Dùsledek"
 msgid "Criterion"
 msgstr "Kritérium"
 
-#: lib/layouts/AEA.layout:181 lib/layouts/beamer.layout:1057
+#: lib/layouts/AEA.layout:175 lib/layouts/beamer.layout:1057
 #: lib/layouts/elsart.layout:350 lib/layouts/foils.layout:264
 #: lib/layouts/heb-article.layout:75 lib/layouts/llncs.layout:335
 #: lib/layouts/siamltex.layout:126 lib/layouts/theorems-ams-bytype.inc:181
@@ -5508,7 +5505,7 @@ msgstr "Kritérium"
 msgid "Definition"
 msgstr "Definice"
 
-#: lib/layouts/AEA.layout:188 lib/layouts/beamer.layout:1069
+#: lib/layouts/AEA.layout:182 lib/layouts/beamer.layout:1069
 #: lib/layouts/elsart.layout:371 lib/layouts/llncs.layout:342
 #: lib/layouts/theorems-ams-bytype.inc:206
 #: lib/layouts/theorems-ams-bytype.inc:216
@@ -5528,7 +5525,7 @@ msgstr "Definice"
 msgid "Example"
 msgstr "Pøíklad"
 
-#: lib/layouts/AEA.layout:195 lib/layouts/llncs.layout:349
+#: lib/layouts/AEA.layout:189 lib/layouts/llncs.layout:349
 #: lib/layouts/theorems-ams-bytype.inc:244
 #: lib/layouts/theorems-ams-bytype.inc:254
 #: lib/layouts/theorems-ams-bytype.inc:257 lib/layouts/theorems-ams.inc:214
@@ -5548,7 +5545,7 @@ msgstr "Pøíklad"
 msgid "Exercise"
 msgstr "Cvièení"
 
-#: lib/layouts/AEA.layout:202 lib/layouts/elsart.layout:315
+#: lib/layouts/AEA.layout:196 lib/layouts/elsart.layout:315
 #: lib/layouts/foils.layout:243 lib/layouts/heb-article.layout:45
 #: lib/layouts/ijmpc.layout:355 lib/layouts/ijmpd.layout:379
 #: lib/layouts/llncs.layout:356 lib/layouts/siamltex.layout:87
@@ -5569,7 +5566,7 @@ msgstr "Cvièení"
 msgid "Lemma"
 msgstr "Lemma"
 
-#: lib/layouts/AEA.layout:209 lib/layouts/agutex.layout:157
+#: lib/layouts/AEA.layout:203 lib/layouts/agutex.layout:157
 #: lib/layouts/agutex.layout:169
 #: lib/layouts/theorems-ams-extended-bytype.module:234
 #: lib/layouts/theorems-ams-extended-bytype.module:243
@@ -5584,7 +5581,7 @@ msgstr "Lemma"
 msgid "Notation"
 msgstr "Znaèení"
 
-#: lib/layouts/AEA.layout:217 lib/layouts/elsart.layout:378
+#: lib/layouts/AEA.layout:211 lib/layouts/elsart.layout:378
 #: lib/layouts/llncs.layout:369 lib/layouts/theorems-ams-bytype.inc:225
 #: lib/layouts/theorems-ams-bytype.inc:235
 #: lib/layouts/theorems-ams-bytype.inc:238 lib/layouts/theorems-ams.inc:197
@@ -5602,7 +5599,7 @@ msgstr "Znaèení"
 msgid "Problem"
 msgstr "Úloha"
 
-#: lib/layouts/AEA.layout:225 lib/layouts/elsart.layout:329
+#: lib/layouts/AEA.layout:219 lib/layouts/elsart.layout:329
 #: lib/layouts/foils.layout:257 lib/layouts/ijmpc.layout:364
 #: lib/layouts/ijmpd.layout:388 lib/layouts/llncs.layout:390
 #: lib/layouts/siamltex.layout:97 lib/layouts/theorems-ams-bytype.inc:127
@@ -5622,7 +5619,7 @@ msgstr "Úloha"
 msgid "Proposition"
 msgstr "Tvrzení"
 
-#: lib/layouts/AEA.layout:232 lib/layouts/elsart.layout:385
+#: lib/layouts/AEA.layout:226 lib/layouts/elsart.layout:385
 #: lib/layouts/ijmpd.layout:309 lib/layouts/llncs.layout:403
 #: lib/layouts/theorems-ams-bytype.inc:263
 #: lib/layouts/theorems-ams-bytype.inc:280
@@ -5641,13 +5638,13 @@ msgstr "Tvrzení"
 msgid "Remark"
 msgstr "Poznámka"
 
-#: lib/layouts/AEA.layout:234 lib/layouts/ijmpd.layout:313
+#: lib/layouts/AEA.layout:228 lib/layouts/ijmpd.layout:313
 #: lib/layouts/theorems-ams-bytype.inc:266 lib/layouts/theorems-bytype.inc:242
 #: lib/layouts/theorems-without-preamble.inc:311
 msgid "Remark \\theremark."
 msgstr "Poznámka \\theremark."
 
-#: lib/layouts/AEA.layout:240 lib/layouts/llncs.layout:410
+#: lib/layouts/AEA.layout:234 lib/layouts/llncs.layout:410
 #: lib/layouts/svglobal3.layout:85
 #: lib/layouts/theorems-without-preamble.inc:264
 #: lib/layouts/theorems-without-preamble.inc:271
@@ -5655,11 +5652,11 @@ msgstr "Poznámka \\theremark."
 msgid "Solution"
 msgstr "Solution"
 
-#: lib/layouts/AEA.layout:244 lib/layouts/theorems-without-preamble.inc:268
+#: lib/layouts/AEA.layout:238 lib/layouts/theorems-without-preamble.inc:268
 msgid "Solution \\thesolution."
 msgstr "Solution \\thesolution."
 
-#: lib/layouts/AEA.layout:250 lib/layouts/elsart.layout:406
+#: lib/layouts/AEA.layout:244 lib/layouts/elsart.layout:406
 #: lib/layouts/theorems-ams-extended-bytype.module:269
 #: lib/layouts/theorems-ams-extended-bytype.module:278
 #: lib/layouts/theorems-ams-extended-bytype.module:281
@@ -5673,11 +5670,11 @@ msgstr "Solution \\thesolution."
 msgid "Summary"
 msgstr "Souhrn"
 
-#: lib/layouts/AEA.layout:258 lib/ui/stdmenus.inc:361
+#: lib/layouts/AEA.layout:252 lib/ui/stdmenus.inc:361
 msgid "Caption"
 msgstr "Popisek"
 
-#: lib/layouts/AEA.layout:260 lib/layouts/amsart.layout:31
+#: lib/layouts/AEA.layout:254 lib/layouts/amsart.layout:31
 #: lib/layouts/amsbook.layout:32 lib/layouts/beamer.layout:35
 #: lib/layouts/beamer.layout:950 lib/layouts/beamer.layout:969
 #: lib/layouts/beamer.layout:988 lib/layouts/beamer.layout:1108
@@ -5686,7 +5683,7 @@ msgstr "Popisek"
 #: lib/layouts/europecv.layout:105 lib/layouts/moderncv.layout:20
 #: lib/layouts/revtex4.layout:45 lib/layouts/siamltex.layout:37
 #: lib/layouts/tufte-book.layout:195 lib/layouts/lyxmacros.inc:13
-#: lib/layouts/scrclass.inc:295 lib/layouts/stdclass.inc:29
+#: lib/layouts/scrclass.inc:288 lib/layouts/stdclass.inc:29
 #: lib/layouts/stdlayouts.inc:13 lib/layouts/stdlayouts.inc:34
 #: lib/layouts/stdlayouts.inc:55 lib/layouts/stdlayouts.inc:75
 #: lib/layouts/svcommon.inc:597 lib/layouts/svcommon.inc:608
@@ -5694,11 +5691,11 @@ msgstr "Popisek"
 msgid "MainText"
 msgstr "MainText"
 
-#: lib/layouts/AEA.layout:264
+#: lib/layouts/AEA.layout:258
 msgid "Caption: "
 msgstr "Caption: "
 
-#: lib/layouts/AEA.layout:269 lib/layouts/IEEEtran.layout:289
+#: lib/layouts/AEA.layout:263 lib/layouts/IEEEtran.layout:289
 #: lib/layouts/beamer.layout:1093 lib/layouts/elsart.layout:288
 #: lib/layouts/foils.layout:278 lib/layouts/heb-article.layout:95
 #: lib/layouts/ijmpc.layout:327 lib/layouts/ijmpd.layout:348
@@ -5710,7 +5707,7 @@ msgstr "Caption: "
 msgid "Proof"
 msgstr "Dùkaz"
 
-#: lib/layouts/IEEEtran.layout:34 lib/layouts/aa.layout:27
+#: lib/layouts/IEEEtran.layout:34 lib/layouts/aa.layout:29
 #: lib/layouts/aapaper.layout:34 lib/layouts/aastex.layout:52
 #: lib/layouts/achemso.layout:32 lib/layouts/acmsiggraph.layout:34
 #: lib/layouts/agutex.layout:31 lib/layouts/amsart.layout:30
@@ -5739,8 +5736,8 @@ msgstr "Dùkaz"
 msgid "Standard"
 msgstr "Standardní"
 
-#: lib/layouts/IEEEtran.layout:64 lib/layouts/aa.layout:67
-#: lib/layouts/aa.layout:264 lib/layouts/aapaper.layout:76
+#: lib/layouts/IEEEtran.layout:64 lib/layouts/aa.layout:69
+#: lib/layouts/aa.layout:266 lib/layouts/aapaper.layout:76
 #: lib/layouts/aapaper.layout:170 lib/layouts/aastex.layout:95
 #: lib/layouts/aastex.layout:217 lib/layouts/achemso.layout:54
 #: lib/layouts/agutex.layout:54 lib/layouts/apa.layout:39
@@ -5763,7 +5760,7 @@ msgstr "Standardní"
 #: lib/layouts/svmult.layout:46 lib/layouts/svprobth.layout:42
 #: lib/layouts/tufte-book.layout:34 lib/layouts/agu_stdtitle.inc:246
 #: lib/layouts/amsdefs.inc:24 lib/layouts/db_stdtitle.inc:13
-#: lib/layouts/scrclass.inc:162 lib/layouts/stdtitle.inc:57
+#: lib/layouts/scrclass.inc:155 lib/layouts/stdtitle.inc:57
 #: lib/layouts/svcommon.inc:56 lib/layouts/svcommon.inc:318
 msgid "Title"
 msgstr "Titulek"
@@ -5780,8 +5777,8 @@ msgstr "Lowercase"
 msgid "lowercase"
 msgstr "lowercase"
 
-#: lib/layouts/IEEEtran.layout:114 lib/layouts/aa.layout:73
-#: lib/layouts/aa.layout:276 lib/layouts/aapaper.layout:82
+#: lib/layouts/IEEEtran.layout:114 lib/layouts/aa.layout:75
+#: lib/layouts/aa.layout:278 lib/layouts/aapaper.layout:82
 #: lib/layouts/aapaper.layout:181 lib/layouts/aastex.layout:98
 #: lib/layouts/aastex.layout:229 lib/layouts/achemso.layout:77
 #: lib/layouts/apa.layout:114 lib/layouts/apa6.layout:72
@@ -5801,7 +5798,7 @@ msgstr "lowercase"
 #: lib/layouts/svmult.layout:78 lib/layouts/svprobth.layout:59
 #: lib/layouts/tufte-book.layout:38 lib/layouts/agu_stdtitle.inc:167
 #: lib/layouts/amsdefs.inc:47 lib/layouts/db_stdtitle.inc:21
-#: lib/layouts/scrclass.inc:178 lib/layouts/stdtitle.inc:78
+#: lib/layouts/scrclass.inc:171 lib/layouts/stdtitle.inc:78
 #: lib/layouts/svcommon.inc:338
 msgid "Author"
 msgstr "Autor"
@@ -5831,7 +5828,7 @@ msgstr "Publication ID"
 msgid "Abstract---"
 msgstr "Abstract---"
 
-#: lib/layouts/IEEEtran.layout:210 lib/layouts/aa.layout:352
+#: lib/layouts/IEEEtran.layout:210 lib/layouts/aa.layout:354
 #: lib/layouts/aastex.layout:116 lib/layouts/aastex.layout:327
 #: lib/layouts/apa6.layout:248 lib/layouts/elsart.layout:62
 #: lib/layouts/elsarticle.layout:252 lib/layouts/ijmpc.layout:201
@@ -5856,7 +5853,7 @@ msgid "Appendices"
 msgstr "Appendices"
 
 #: lib/layouts/IEEEtran.layout:221 lib/layouts/IEEEtran.layout:246
-#: lib/layouts/IEEEtran.layout:269 lib/layouts/aa.layout:209
+#: lib/layouts/IEEEtran.layout:269 lib/layouts/aa.layout:211
 #: lib/layouts/aastex.layout:457 lib/layouts/aastex.layout:489
 #: lib/layouts/acmsiggraph.layout:155 lib/layouts/agutex.layout:151
 #: lib/layouts/agutex.layout:161 lib/layouts/agutex.layout:181
@@ -5881,8 +5878,8 @@ msgstr "Závìreèná èást"
 msgid "Appendix"
 msgstr "Pøíloha"
 
-#: lib/layouts/IEEEtran.layout:242 lib/layouts/aa.layout:94
-#: lib/layouts/aa.layout:381 lib/layouts/aapaper.layout:106
+#: lib/layouts/IEEEtran.layout:242 lib/layouts/aa.layout:96
+#: lib/layouts/aa.layout:383 lib/layouts/aapaper.layout:106
 #: lib/layouts/aapaper.layout:220 lib/layouts/achemso.layout:238
 #: lib/layouts/agutex.layout:200 lib/layouts/beamer.layout:925
 #: lib/layouts/book.layout:21 lib/layouts/book.layout:23
@@ -5890,19 +5887,19 @@ msgstr "Pøíloha"
 #: lib/layouts/elsarticle.layout:273 lib/layouts/foils.layout:210
 #: lib/layouts/ijmpc.layout:432 lib/layouts/ijmpd.layout:456
 #: lib/layouts/jasatex.layout:260 lib/layouts/latex8.layout:125
-#: lib/layouts/llncs.layout:263 lib/layouts/memoir.layout:171
-#: lib/layouts/memoir.layout:173 lib/layouts/moderncv.layout:152
+#: lib/layouts/llncs.layout:263 lib/layouts/memoir.layout:164
+#: lib/layouts/memoir.layout:166 lib/layouts/moderncv.layout:152
 #: lib/layouts/mwbk.layout:22 lib/layouts/mwbk.layout:24
 #: lib/layouts/mwrep.layout:13 lib/layouts/mwrep.layout:15
 #: lib/layouts/powerdot.layout:287 lib/layouts/recipebook.layout:46
 #: lib/layouts/recipebook.layout:48 lib/layouts/report.layout:12
-#: lib/layouts/report.layout:14 lib/layouts/scrbook.layout:22
-#: lib/layouts/scrbook.layout:24 lib/layouts/scrreprt.layout:11
+#: lib/layouts/report.layout:14 lib/layouts/scrbook.layout:29
+#: lib/layouts/scrbook.layout:31 lib/layouts/scrreprt.layout:11
 #: lib/layouts/scrreprt.layout:13 lib/layouts/siamltex.layout:318
 #: lib/layouts/simplecv.layout:145 lib/layouts/tufte-book.layout:241
 #: lib/layouts/tufte-book.layout:243 lib/layouts/aguplus.inc:172
 #: lib/layouts/aguplus.inc:174 lib/layouts/amsdefs.inc:196
-#: lib/layouts/scrclass.inc:246 lib/layouts/stdstruct.inc:53
+#: lib/layouts/scrclass.inc:239 lib/layouts/stdstruct.inc:53
 #: lib/layouts/svcommon.inc:566 src/frontends/qt4/GuiDocument.cpp:1316
 msgid "Bibliography"
 msgstr "Literatura"
@@ -5943,7 +5940,7 @@ msgstr "BiographyNoPhoto"
 msgid "Proof."
 msgstr "Dùkaz."
 
-#: lib/layouts/aa.layout:42 lib/layouts/aa.layout:229
+#: lib/layouts/aa.layout:44 lib/layouts/aa.layout:231
 #: lib/layouts/aapaper.layout:64 lib/layouts/aapaper.layout:137
 #: lib/layouts/aastex.layout:67 lib/layouts/aastex.layout:177
 #: lib/layouts/amsart.layout:63 lib/layouts/amsbook.layout:54
@@ -5954,16 +5951,16 @@ msgstr "Dùkaz."
 #: lib/layouts/europecv.layout:29 lib/layouts/isprs.layout:147
 #: lib/layouts/kluwer.layout:60 lib/layouts/latex8.layout:46
 #: lib/layouts/llncs.layout:46 lib/layouts/ltugboat.layout:45
-#: lib/layouts/memoir.layout:70 lib/layouts/memoir.layout:142
+#: lib/layouts/memoir.layout:68 lib/layouts/memoir.layout:135
 #: lib/layouts/moderncv.layout:34 lib/layouts/paper.layout:58
 #: lib/layouts/powerdot.layout:220 lib/layouts/revtex.layout:38
 #: lib/layouts/revtex4.layout:64 lib/layouts/siamltex.layout:358
 #: lib/layouts/simplecv.layout:29 lib/layouts/spie.layout:20
 #: lib/layouts/tufte-book.layout:64 lib/layouts/tufte-book.layout:85
 #: lib/layouts/tufte-book.layout:86 lib/layouts/tufte-handout.layout:23
-#: lib/layouts/agu_stdsections.inc:32 lib/layouts/aguplus.inc:29
-#: lib/layouts/db_stdsections.inc:30 lib/layouts/numrevtex.inc:6
-#: lib/layouts/scrclass.inc:68 lib/layouts/scrclass.inc:144
+#: lib/layouts/agu_stdsections.inc:30 lib/layouts/aguplus.inc:29
+#: lib/layouts/db_stdsections.inc:28 lib/layouts/numrevtex.inc:6
+#: lib/layouts/scrclass.inc:66 lib/layouts/scrclass.inc:137
 #: lib/layouts/stdsections.inc:13 lib/layouts/stdsections.inc:41
 #: lib/layouts/stdsections.inc:65 lib/layouts/stdsections.inc:66
 #: lib/layouts/svcommon.inc:116 lib/layouts/svcommon.inc:153
@@ -5973,7 +5970,7 @@ msgstr "Dùkaz."
 msgid "Section"
 msgstr "Sekce"
 
-#: lib/layouts/aa.layout:46 lib/layouts/aa.layout:240
+#: lib/layouts/aa.layout:48 lib/layouts/aa.layout:242
 #: lib/layouts/aapaper.layout:68 lib/layouts/aapaper.layout:147
 #: lib/layouts/aastex.layout:71 lib/layouts/aastex.layout:190
 #: lib/layouts/amsart.layout:104 lib/layouts/amsbook.layout:64
@@ -5981,35 +5978,35 @@ msgstr "Sekce"
 #: lib/layouts/beamer.layout:184 lib/layouts/egs.layout:52
 #: lib/layouts/isprs.layout:159 lib/layouts/kluwer.layout:69
 #: lib/layouts/latex8.layout:55 lib/layouts/llncs.layout:55
-#: lib/layouts/ltugboat.layout:65 lib/layouts/memoir.layout:76
+#: lib/layouts/ltugboat.layout:65 lib/layouts/memoir.layout:73
 #: lib/layouts/moderncv.layout:55 lib/layouts/paper.layout:67
 #: lib/layouts/revtex.layout:50 lib/layouts/revtex4.layout:73
 #: lib/layouts/siamltex.layout:369 lib/layouts/simplecv.layout:51
-#: lib/layouts/tufte-book.layout:109 lib/layouts/agu_stdsections.inc:43
-#: lib/layouts/aguplus.inc:44 lib/layouts/db_stdsections.inc:39
-#: lib/layouts/numrevtex.inc:15 lib/layouts/scrclass.inc:76
+#: lib/layouts/tufte-book.layout:109 lib/layouts/agu_stdsections.inc:40
+#: lib/layouts/aguplus.inc:44 lib/layouts/db_stdsections.inc:36
+#: lib/layouts/numrevtex.inc:15 lib/layouts/scrclass.inc:73
 #: lib/layouts/stdsections.inc:90 lib/layouts/svcommon.inc:199
 msgid "Subsection"
 msgstr "Podsekce"
 
-#: lib/layouts/aa.layout:50 lib/layouts/aa.layout:253
+#: lib/layouts/aa.layout:52 lib/layouts/aa.layout:255
 #: lib/layouts/aapaper.layout:72 lib/layouts/aapaper.layout:159
 #: lib/layouts/aastex.layout:75 lib/layouts/aastex.layout:203
 #: lib/layouts/amsart.layout:127 lib/layouts/amsbook.layout:73
 #: lib/layouts/apa.layout:308 lib/layouts/apa6.layout:420
 #: lib/layouts/beamer.layout:228 lib/layouts/isprs.layout:169
 #: lib/layouts/kluwer.layout:79 lib/layouts/llncs.layout:64
-#: lib/layouts/ltugboat.layout:85 lib/layouts/memoir.layout:82
+#: lib/layouts/ltugboat.layout:85 lib/layouts/memoir.layout:78
 #: lib/layouts/paper.layout:76 lib/layouts/recipebook.layout:97
 #: lib/layouts/revtex.layout:59 lib/layouts/revtex4.layout:82
-#: lib/layouts/siamltex.layout:378 lib/layouts/agu_stdsections.inc:54
-#: lib/layouts/db_stdsections.inc:48 lib/layouts/numrevtex.inc:24
-#: lib/layouts/scrclass.inc:84 lib/layouts/stdsections.inc:106
+#: lib/layouts/siamltex.layout:378 lib/layouts/agu_stdsections.inc:50
+#: lib/layouts/db_stdsections.inc:44 lib/layouts/numrevtex.inc:24
+#: lib/layouts/scrclass.inc:80 lib/layouts/stdsections.inc:106
 #: lib/layouts/svcommon.inc:208
 msgid "Subsubsection"
 msgstr "Podpodsekce"
 
-#: lib/layouts/aa.layout:54 lib/layouts/aapaper.layout:48
+#: lib/layouts/aa.layout:56 lib/layouts/aapaper.layout:48
 #: lib/layouts/aastex.layout:83 lib/layouts/apa.layout:339
 #: lib/layouts/apa6.layout:451 lib/layouts/beamer.layout:48
 #: lib/layouts/egs.layout:168 lib/layouts/powerdot.layout:237
@@ -6018,7 +6015,7 @@ msgstr "Podpodsekce"
 msgid "Itemize"
 msgstr "Polo¾ka"
 
-#: lib/layouts/aa.layout:57 lib/layouts/aapaper.layout:51
+#: lib/layouts/aa.layout:59 lib/layouts/aapaper.layout:51
 #: lib/layouts/aastex.layout:86 lib/layouts/apa.layout:356
 #: lib/layouts/apa6.layout:470 lib/layouts/beamer.layout:66
 #: lib/layouts/egs.layout:149 lib/layouts/powerdot.layout:261
@@ -6027,7 +6024,7 @@ msgstr "Polo¾ka"
 msgid "Enumerate"
 msgstr "Výèet"
 
-#: lib/layouts/aa.layout:60 lib/layouts/aapaper.layout:54
+#: lib/layouts/aa.layout:62 lib/layouts/aapaper.layout:54
 #: lib/layouts/aastex.layout:89 lib/layouts/beamer.layout:86
 #: lib/layouts/egs.layout:185 lib/layouts/hollywood.layout:129
 #: lib/layouts/paper.layout:101 lib/layouts/scrlettr.layout:17
@@ -6038,7 +6035,7 @@ msgstr "Výèet"
 msgid "Description"
 msgstr "Popis"
 
-#: lib/layouts/aa.layout:63 lib/layouts/aapaper.layout:57
+#: lib/layouts/aa.layout:65 lib/layouts/aapaper.layout:57
 #: lib/layouts/aastex.layout:92 lib/layouts/apa6.layout:452
 #: lib/layouts/apa6.layout:471 lib/layouts/apa6.layout:491
 #: lib/layouts/beamer.layout:49 lib/layouts/beamer.layout:67
@@ -6052,16 +6049,16 @@ msgstr "Popis"
 msgid "List"
 msgstr "Seznam"
 
-#: lib/layouts/aa.layout:70 lib/layouts/aa.layout:119
+#: lib/layouts/aa.layout:72 lib/layouts/aa.layout:121
 #: lib/layouts/aapaper.layout:79 lib/layouts/beamer.layout:812
 #: lib/layouts/kluwer.layout:129 lib/layouts/llncs.layout:128
 #: lib/layouts/sigplanconf.layout:110 lib/layouts/svprobth.layout:51
-#: lib/layouts/aapaper.inc:9 lib/layouts/scrclass.inc:169
+#: lib/layouts/aapaper.inc:9 lib/layouts/scrclass.inc:162
 #: lib/layouts/svcommon.inc:327
 msgid "Subtitle"
 msgstr "Podtitulek"
 
-#: lib/layouts/aa.layout:76 lib/layouts/aa.layout:141
+#: lib/layouts/aa.layout:78 lib/layouts/aa.layout:143
 #: lib/layouts/aapaper.layout:85 lib/layouts/dinbrief.layout:250
 #: lib/layouts/ectaart.layout:62 lib/layouts/egs.layout:236
 #: lib/layouts/elsarticle.layout:196 lib/layouts/entcs.layout:60
@@ -6075,16 +6072,16 @@ msgstr "Podtitulek"
 msgid "Address"
 msgstr "Adresa"
 
-#: lib/layouts/aa.layout:79 lib/layouts/aa.layout:159
+#: lib/layouts/aa.layout:81 lib/layouts/aa.layout:161
 #: lib/layouts/aapaper.layout:91 lib/layouts/aapaper.inc:63
 msgid "Offprint"
 msgstr "Offprint"
 
-#: lib/layouts/aa.layout:82 lib/layouts/aa.layout:182
+#: lib/layouts/aa.layout:84 lib/layouts/aa.layout:184
 msgid "Mail"
 msgstr "Mail"
 
-#: lib/layouts/aa.layout:85 lib/layouts/aa.layout:287
+#: lib/layouts/aa.layout:87 lib/layouts/aa.layout:289
 #: lib/layouts/aapaper.layout:97 lib/layouts/aapaper.layout:192
 #: lib/layouts/aastex.layout:110 lib/layouts/aastex.layout:241
 #: lib/layouts/beamer.layout:902 lib/layouts/dinbrief.layout:152
@@ -6097,48 +6094,48 @@ msgstr "Mail"
 #: lib/layouts/scrlettr.layout:160 lib/layouts/scrlttr2.layout:239
 #: lib/layouts/siamltex.layout:229 lib/layouts/tufte-book.layout:42
 #: lib/layouts/agu_stdtitle.inc:238 lib/layouts/amsdefs.inc:67
-#: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:185
+#: lib/layouts/db_stdtitle.inc:35 lib/layouts/scrclass.inc:178
 #: lib/layouts/stdtitle.inc:97 lib/layouts/svcommon.inc:364
 #: lib/ui/stdmenus.inc:374 lib/external_templates:343
 #: lib/external_templates:344 lib/external_templates:348
 msgid "Date"
 msgstr "Datum"
 
-#: lib/layouts/aa.layout:168 lib/layouts/aapaper.inc:71
+#: lib/layouts/aa.layout:170 lib/layouts/aapaper.inc:71
 msgid "Offprint Requests to:"
 msgstr "Offprint Requests to:"
 
-#: lib/layouts/aa.layout:191
+#: lib/layouts/aa.layout:193
 msgid "Correspondence to:"
 msgstr "Correspondence to:"
 
-#: lib/layouts/aa.layout:217 lib/layouts/egs.layout:519
+#: lib/layouts/aa.layout:219 lib/layouts/egs.layout:519
 msgid "Acknowledgements."
 msgstr "Acknowledgements."
 
-#: lib/layouts/aa.layout:299
+#: lib/layouts/aa.layout:301
 msgid "institutemark"
 msgstr "institutemark"
 
-#: lib/layouts/aa.layout:303
+#: lib/layouts/aa.layout:305
 msgid "institute mark"
 msgstr "institute mark"
 
-#: lib/layouts/aa.layout:367
+#: lib/layouts/aa.layout:369
 msgid "Key words."
 msgstr "Key words."
 
-#: lib/layouts/aa.layout:389 lib/layouts/beamer.layout:859
+#: lib/layouts/aa.layout:391 lib/layouts/beamer.layout:859
 #: lib/layouts/cl2emult.layout:70 lib/layouts/llncs.layout:216
 #: lib/layouts/svcommon.inc:347
 msgid "Institute"
 msgstr "Institute"
 
-#: lib/layouts/aa.layout:399 lib/layouts/scrlttr2.layout:199
+#: lib/layouts/aa.layout:401 lib/layouts/scrlttr2.layout:199
 msgid "E-Mail"
 msgstr "E-Mail"
 
-#: lib/layouts/aa.layout:410 lib/layouts/aapaper.layout:88
+#: lib/layouts/aa.layout:412 lib/layouts/aapaper.layout:88
 #: lib/layouts/aastex.layout:104 lib/layouts/aastex.layout:354
 #: lib/layouts/achemso.layout:89 lib/layouts/ectaart.layout:69
 #: lib/layouts/elsarticle.layout:213 lib/layouts/iopart.layout:160
@@ -6151,7 +6148,7 @@ msgstr "E-Mail"
 msgid "Email"
 msgstr "Email"
 
-#: lib/layouts/aa.layout:414 src/insets/InsetHyperlink.cpp:298
+#: lib/layouts/aa.layout:416 src/insets/InsetHyperlink.cpp:298
 msgid "email"
 msgstr "email"
 
@@ -6164,11 +6161,11 @@ msgstr "Tezaurus"
 #: lib/layouts/amsbook.layout:126 lib/layouts/apa.layout:318
 #: lib/layouts/apa6.layout:430 lib/layouts/egs.layout:71
 #: lib/layouts/kluwer.layout:89 lib/layouts/llncs.layout:73
-#: lib/layouts/ltugboat.layout:105 lib/layouts/memoir.layout:88
+#: lib/layouts/ltugboat.layout:105 lib/layouts/memoir.layout:83
 #: lib/layouts/paper.layout:85 lib/layouts/revtex.layout:68
-#: lib/layouts/revtex4.layout:90 lib/layouts/agu_stdsections.inc:65
-#: lib/layouts/aguplus.inc:59 lib/layouts/db_stdsections.inc:57
-#: lib/layouts/numrevtex.inc:33 lib/layouts/scrclass.inc:92
+#: lib/layouts/revtex4.layout:90 lib/layouts/agu_stdsections.inc:60
+#: lib/layouts/aguplus.inc:59 lib/layouts/db_stdsections.inc:52
+#: lib/layouts/numrevtex.inc:33 lib/layouts/scrclass.inc:87
 #: lib/layouts/stdsections.inc:121 lib/layouts/svcommon.inc:217
 msgid "Paragraph"
 msgstr "Odstavec"
@@ -6459,7 +6456,7 @@ msgstr "SpecialSection"
 
 #: lib/layouts/amsart.layout:95 lib/layouts/beamer.layout:176
 #: lib/layouts/beamer.layout:220 lib/layouts/beamer.layout:264
-#: lib/layouts/memoir.layout:161 lib/layouts/stdstarsections.inc:15
+#: lib/layouts/memoir.layout:154 lib/layouts/stdstarsections.inc:15
 #: lib/layouts/stdstarsections.inc:26 lib/layouts/stdstarsections.inc:37
 #: lib/layouts/stdstarsections.inc:48 lib/layouts/stdstarsections.inc:59
 #: lib/layouts/stdstarsections.inc:70 lib/layouts/stdstarsections.inc:81
@@ -6545,7 +6542,7 @@ msgid "CenteredCaption"
 msgstr "CenteredCaption"
 
 #: lib/layouts/apa.layout:245 lib/layouts/apa6.layout:357
-#: lib/layouts/scrclass.inc:265 lib/layouts/scrclass.inc:285
+#: lib/layouts/scrclass.inc:258 lib/layouts/scrclass.inc:278
 msgid "Senseless!"
 msgstr "Nesmyslné!"
 
@@ -6559,10 +6556,10 @@ msgstr "FitBitmap"
 
 #: lib/layouts/apa.layout:328 lib/layouts/apa6.layout:440
 #: lib/layouts/egs.layout:89 lib/layouts/kluwer.layout:99
-#: lib/layouts/llncs.layout:83 lib/layouts/memoir.layout:94
-#: lib/layouts/paper.layout:94 lib/layouts/agu_stdsections.inc:76
-#: lib/layouts/db_stdsections.inc:66 lib/layouts/scrclass.inc:100
-#: lib/layouts/stdsections.inc:131 lib/layouts/svcommon.inc:228
+#: lib/layouts/llncs.layout:83 lib/layouts/memoir.layout:88
+#: lib/layouts/paper.layout:94 lib/layouts/agu_stdsections.inc:70
+#: lib/layouts/db_stdsections.inc:60 lib/layouts/scrclass.inc:94
+#: lib/layouts/stdsections.inc:132 lib/layouts/svcommon.inc:228
 msgid "Subparagraph"
 msgstr "Pododstavec"
 
@@ -6689,14 +6686,13 @@ msgstr "BeginFrame"
 #: lib/layouts/mwart.layout:24 lib/layouts/paper.layout:46
 #: lib/layouts/scrartcl.layout:21 lib/layouts/svmult.layout:102
 #: lib/layouts/tufte-handout.layout:22 lib/layouts/agu_stdsections.inc:12
-#: lib/layouts/db_stdsections.inc:12 lib/layouts/numreport.inc:6
-#: lib/layouts/scrclass.inc:51 lib/layouts/stdsections.inc:12
-#: lib/layouts/svcommon.inc:107
+#: lib/layouts/db_stdsections.inc:12 lib/layouts/scrclass.inc:51
+#: lib/layouts/stdsections.inc:12 lib/layouts/svcommon.inc:107
 msgid "Part"
 msgstr "Èást"
 
-#: lib/layouts/article.layout:31 lib/layouts/mwart.layout:35
-#: lib/layouts/scrartcl.layout:31 lib/layouts/db_stdstarsections.inc:13
+#: lib/layouts/article.layout:30 lib/layouts/mwart.layout:34
+#: lib/layouts/scrartcl.layout:30 lib/layouts/db_stdstarsections.inc:13
 #: lib/layouts/stdstarsections.inc:13 lib/layouts/svcommon.inc:240
 msgid "Part*"
 msgstr "Èást*"
@@ -7339,7 +7335,7 @@ msgstr "Date:"
 
 #: lib/layouts/dinbrief.layout:159 lib/layouts/lettre.layout:57
 #: lib/layouts/lettre.layout:428 lib/layouts/scrlettr.layout:196
-#: lib/layouts/scrlttr2.layout:280 lib/layouts/scrclass.inc:192
+#: lib/layouts/scrlttr2.layout:280 lib/layouts/scrclass.inc:185
 msgid "Subject"
 msgstr "Subject"
 
@@ -8824,11 +8820,11 @@ msgstr "EndOfFile."
 msgid "P.S.:"
 msgstr "P.S.:"
 
-#: lib/layouts/llncs.layout:39 lib/layouts/memoir.layout:59
+#: lib/layouts/llncs.layout:39 lib/layouts/memoir.layout:58
 #: lib/layouts/recipebook.layout:41 lib/layouts/scrbook.layout:16
 #: lib/layouts/svmult.layout:110 lib/layouts/tufte-book.layout:62
-#: lib/layouts/agu_stdsections.inc:22 lib/layouts/db_stdsections.inc:21
-#: lib/layouts/scrclass.inc:59 lib/layouts/stdsections.inc:39
+#: lib/layouts/agu_stdsections.inc:21 lib/layouts/db_stdsections.inc:20
+#: lib/layouts/scrclass.inc:58 lib/layouts/stdsections.inc:39
 #: lib/layouts/svcommon.inc:146
 msgid "Chapter"
 msgstr "Kapitola"
@@ -8912,32 +8908,32 @@ msgstr "Remark #."
 msgid "Solution #."
 msgstr "Solution #."
 
-#: lib/layouts/memoir.layout:65 lib/layouts/db_stdstarsections.inc:24
+#: lib/layouts/memoir.layout:63 lib/layouts/db_stdstarsections.inc:24
 #: lib/layouts/stdstarsections.inc:24 lib/layouts/svcommon.inc:245
 msgid "Chapter*"
 msgstr "Kapitola*"
 
-#: lib/layouts/memoir.layout:100
+#: lib/layouts/memoir.layout:93
 msgid "Chapterprecis"
 msgstr "Výtah kapitoly"
 
-#: lib/layouts/memoir.layout:120
+#: lib/layouts/memoir.layout:113
 msgid "Epigraph"
 msgstr "Epigraf"
 
-#: lib/layouts/memoir.layout:121 lib/layouts/memoir.layout:185
+#: lib/layouts/memoir.layout:114 lib/layouts/memoir.layout:178
 msgid "Maintext"
 msgstr "Maintext"
 
-#: lib/layouts/memoir.layout:141
+#: lib/layouts/memoir.layout:134
 msgid "Poemtitle"
 msgstr "Název básnì"
 
-#: lib/layouts/memoir.layout:159
+#: lib/layouts/memoir.layout:152
 msgid "Poemtitle*"
 msgstr "Název básnì*"
 
-#: lib/layouts/memoir.layout:184
+#: lib/layouts/memoir.layout:177
 msgid "Legend"
 msgstr "Legenda"
 
@@ -9105,6 +9101,11 @@ msgstr "acknowledgments"
 #: lib/layouts/revtex4.layout:254
 msgid "PACS number:"
 msgstr "PACS number:"
+
+#: lib/layouts/scrbook.layout:25
+#, fuzzy
+msgid "\\thechapter.\\arabic{equation}"
+msgstr "\\thesection.\\arabic{equation}"
 
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:28
 #: lib/layouts/scrclass.inc:42 lib/layouts/stdlyxlist.inc:6
@@ -9481,7 +9482,7 @@ msgstr "extrachap"
 msgid "Extrachap"
 msgstr "Extrachap"
 
-#: lib/layouts/svmult.layout:134 lib/layouts/scrclass.inc:204
+#: lib/layouts/svmult.layout:134 lib/layouts/scrclass.inc:197
 #: lib/layouts/svcommon.inc:477
 msgid "Dedication"
 msgstr "Vìnování"
@@ -9613,7 +9614,7 @@ msgstr "Issue-day"
 msgid "Issue-months"
 msgstr "Issue-months"
 
-#: lib/layouts/agu_stdsections.inc:86
+#: lib/layouts/agu_stdsections.inc:79
 msgid "Subsubparagraph"
 msgstr "Subsubparagraph"
 
@@ -9992,15 +9993,15 @@ msgstr "FirstName"
 msgid "Scrap"
 msgstr "Útr¾ek"
 
-#: lib/layouts/numreport.inc:12
+#: lib/layouts/numreport.inc:8
 msgid "\\arabic{chapter}"
 msgstr "\\arabic{chapter}"
 
-#: lib/layouts/numreport.inc:13
+#: lib/layouts/numreport.inc:9
 msgid "\\Alph{chapter}"
 msgstr "\\Alph{chapter}"
 
-#: lib/layouts/numreport.inc:44
+#: lib/layouts/numreport.inc:40
 msgid "\\arabic{footnote}"
 msgstr "\\arabic{footnote}"
 
@@ -10032,63 +10033,63 @@ msgstr "\\alph{subsubsection}."
 msgid "\\alph{paragraph}."
 msgstr "\\alph{paragraph}."
 
-#: lib/layouts/scrclass.inc:110
+#: lib/layouts/scrclass.inc:103
 msgid "Addpart"
 msgstr "Addpart"
 
-#: lib/layouts/scrclass.inc:117
+#: lib/layouts/scrclass.inc:110
 msgid "Addchap"
 msgstr "Addchap"
 
-#: lib/layouts/scrclass.inc:124
+#: lib/layouts/scrclass.inc:117
 msgid "Addsec"
 msgstr "Addsec"
 
-#: lib/layouts/scrclass.inc:131
+#: lib/layouts/scrclass.inc:124
 msgid "Addchap*"
 msgstr "Addchap*"
 
-#: lib/layouts/scrclass.inc:137
+#: lib/layouts/scrclass.inc:130
 msgid "Addsec*"
 msgstr "Addsec*"
 
-#: lib/layouts/scrclass.inc:143
+#: lib/layouts/scrclass.inc:136
 msgid "Minisec"
 msgstr "Minisekce"
 
-#: lib/layouts/scrclass.inc:198
+#: lib/layouts/scrclass.inc:191
 msgid "Publishers"
 msgstr "Nakladatel"
 
-#: lib/layouts/scrclass.inc:210
+#: lib/layouts/scrclass.inc:203
 msgid "Titlehead"
 msgstr "Hlavièka titulku"
 
-#: lib/layouts/scrclass.inc:220
+#: lib/layouts/scrclass.inc:213
 msgid "Uppertitleback"
 msgstr "Uppertitleback"
 
-#: lib/layouts/scrclass.inc:226
+#: lib/layouts/scrclass.inc:219
 msgid "Lowertitleback"
 msgstr "Lowertitleback"
 
-#: lib/layouts/scrclass.inc:232
+#: lib/layouts/scrclass.inc:225
 msgid "Extratitle"
 msgstr "Extra titulek"
 
-#: lib/layouts/scrclass.inc:254
+#: lib/layouts/scrclass.inc:247
 msgid "Captionabove"
 msgstr "Captionabove"
 
-#: lib/layouts/scrclass.inc:255 lib/layouts/scrclass.inc:275
+#: lib/layouts/scrclass.inc:248 lib/layouts/scrclass.inc:268
 msgid "Captions"
 msgstr "Popisky"
 
-#: lib/layouts/scrclass.inc:274
+#: lib/layouts/scrclass.inc:267
 msgid "Captionbelow"
 msgstr "Captionbelow"
 
-#: lib/layouts/scrclass.inc:294
+#: lib/layouts/scrclass.inc:287
 msgid "Dictum"
 msgstr "Výrok"
 
@@ -13559,11 +13560,11 @@ msgstr "Vytisknout dokument"
 msgid "Check spelling"
 msgstr "Kontrola pravopisu"
 
-#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1335
+#: lib/ui/stdtoolbars.inc:78 src/BufferView.cpp:1324
 msgid "Undo"
 msgstr "Zpìt zmìnu"
 
-#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1345
+#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1334
 msgid "Redo"
 msgstr "Znovu zmìnu"
 
@@ -16917,12 +16918,12 @@ msgstr "chybí \\begin_header"
 msgid "\\begin_document is missing"
 msgstr "chybí \\begin_document"
 
-#: src/Buffer.cpp:904 src/Buffer.cpp:910 src/BufferView.cpp:1440
-#: src/BufferView.cpp:1446
+#: src/Buffer.cpp:904 src/Buffer.cpp:910 src/BufferView.cpp:1429
+#: src/BufferView.cpp:1435
 msgid "Changes not shown in LaTeX output"
 msgstr "Zmìny nezobrazeny v LaTeX-ovém výstupu"
 
-#: src/Buffer.cpp:905 src/BufferView.cpp:1441
+#: src/Buffer.cpp:905 src/BufferView.cpp:1430
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -16934,7 +16935,7 @@ msgstr ""
 "Prosím nainstalujte tyto balíèky nebo pøedefinujte \\lyxadded a "
 "\\lyxdeletedv LaTeX-ové preambuli."
 
-#: src/Buffer.cpp:911 src/BufferView.cpp:1447
+#: src/Buffer.cpp:911 src/BufferView.cpp:1436
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -17009,7 +17010,7 @@ msgid ""
 "it."
 msgstr "%1$s je z novìj¹í verze LyX-u a skript lyx2lyx selhal pøi konverzi."
 
-#: src/Buffer.cpp:1156 src/Buffer.cpp:3900 src/Buffer.cpp:3962
+#: src/Buffer.cpp:1156 src/Buffer.cpp:3941 src/Buffer.cpp:4003
 msgid "File is read-only"
 msgstr "Dokument je jen ke ètení"
 
@@ -17030,7 +17031,7 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Pøepsat modifikovaný soubor?"
 
-#: src/Buffer.cpp:1169 src/Buffer.cpp:2439 src/Exporter.cpp:50
+#: src/Buffer.cpp:1169 src/Buffer.cpp:2480 src/Exporter.cpp:50
 #: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2123
 #: src/frontends/qt4/GuiView.cpp:2289
 msgid "&Overwrite"
@@ -17120,11 +17121,11 @@ msgstr "iconv konverze se nezdaøila"
 msgid "conversion failed"
 msgstr "konverze se nezdaøila"
 
-#: src/Buffer.cpp:1536
+#: src/Buffer.cpp:1538
 msgid "Uncodable character in file path"
 msgstr "Nekódovatelný znaky v cestì k souboru"
 
-#: src/Buffer.cpp:1538
+#: src/Buffer.cpp:1540
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -17147,48 +17148,53 @@ msgstr ""
 "Vyberte vhodné kódování dokumentu (napø. utf8)\n"
 "nebo zmìnte cestu k souboru."
 
-#: src/Buffer.cpp:1850
+#: src/Buffer.cpp:1854
 msgid "Running chktex..."
 msgstr "Spou¹tím chktex..."
 
-#: src/Buffer.cpp:1864
+#: src/Buffer.cpp:1868
 msgid "chktex failure"
 msgstr "chktex selhal"
 
-#: src/Buffer.cpp:1865
+#: src/Buffer.cpp:1869
 msgid "Could not run chktex successfully."
 msgstr "chktex nelze úspì¹nì spustit."
 
-#: src/Buffer.cpp:2141
+#: src/Buffer.cpp:2145
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Nedostatek informace pro export do formátu %1$s."
 
-#: src/Buffer.cpp:2205 src/frontends/qt4/GuiView.cpp:3132
+#: src/Buffer.cpp:2217 src/frontends/qt4/GuiView.cpp:3132
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Chyba pøi exportu do formátu %1$s."
 
-#: src/Buffer.cpp:2288
+#: src/Buffer.cpp:2295
+#, c-format
+msgid "Branch \"%1$s\" does not exist."
+msgstr "Vìtev \"%1$s\" neexistuje."
+
+#: src/Buffer.cpp:2329
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Vìtev \"%1$s\" ji¾ existuje."
 
-#: src/Buffer.cpp:2353
+#: src/Buffer.cpp:2394
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Nelze správnì dekódovat \"%1$s\""
 
-#: src/Buffer.cpp:2360
+#: src/Buffer.cpp:2401
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Neznámý cíl \"%1$s\""
 
-#: src/Buffer.cpp:2370
+#: src/Buffer.cpp:2411
 msgid "Error exporting to DVI."
 msgstr "Chyba pøi exportu do DVI."
 
-#: src/Buffer.cpp:2435 src/Exporter.cpp:45
+#: src/Buffer.cpp:2476 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -17199,85 +17205,85 @@ msgstr ""
 "\n"
 "Chcete tento soubor pøepsat?"
 
-#: src/Buffer.cpp:2438 src/Exporter.cpp:48
+#: src/Buffer.cpp:2479 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Pøepsat soubor?"
 
-#: src/Buffer.cpp:2455
+#: src/Buffer.cpp:2496
 msgid "Error running external commands."
 msgstr "Chyba pøi bìhu externích pøíkazù."
 
-#: src/Buffer.cpp:3262
+#: src/Buffer.cpp:3303
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Náhled zdrojového kódu pro odstavec %1$d"
 
-#: src/Buffer.cpp:3266
+#: src/Buffer.cpp:3307
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Náhled zdrojového kódu pro odstavce %1$s - %2$s"
 
-#: src/Buffer.cpp:3319
+#: src/Buffer.cpp:3360
 msgid "Preview source code"
 msgstr "Náhled zdrojového kódu"
 
-#: src/Buffer.cpp:3321
+#: src/Buffer.cpp:3362
 msgid "Preview preamble"
 msgstr "Preambule náhledu"
 
-#: src/Buffer.cpp:3323
+#: src/Buffer.cpp:3364
 msgid "Preview body"
 msgstr "Tìlo náhledu"
 
-#: src/Buffer.cpp:3338
+#: src/Buffer.cpp:3379
 msgid "Plain text does not have a preamble."
 msgstr "Prostý text nemá preambuli."
 
-#: src/Buffer.cpp:3450
+#: src/Buffer.cpp:3491
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatické ulo¾ení %1$s"
 
-#: src/Buffer.cpp:3504
+#: src/Buffer.cpp:3545
 msgid "Autosave failed!"
 msgstr "Automatické ulo¾ení selhalo!"
 
-#: src/Buffer.cpp:3565
+#: src/Buffer.cpp:3606
 msgid "Autosaving current document..."
 msgstr "Automatické ulo¾ení souèasného dokumentu"
 
-#: src/Buffer.cpp:3655
+#: src/Buffer.cpp:3696
 msgid "Couldn't export file"
 msgstr "Nelze exportovat soubor"
 
-#: src/Buffer.cpp:3656
+#: src/Buffer.cpp:3697
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "®ádná informace pro export formátu %1$s."
 
-#: src/Buffer.cpp:3712
+#: src/Buffer.cpp:3753
 msgid "File name error"
 msgstr "Chyba ve jménì souboru"
 
-#: src/Buffer.cpp:3713
+#: src/Buffer.cpp:3754
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Cesta k dokumentu nesmí obsahovat mezery."
 
-#: src/Buffer.cpp:3797
+#: src/Buffer.cpp:3838
 msgid "Document export cancelled."
 msgstr "Export dokumentu zru¹en."
 
-#: src/Buffer.cpp:3807
+#: src/Buffer.cpp:3848
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exportován jako %1$s do souboru `%2$s'"
 
-#: src/Buffer.cpp:3813
+#: src/Buffer.cpp:3854
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exportován jako %1$s"
 
-#: src/Buffer.cpp:3886
+#: src/Buffer.cpp:3927
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -17288,19 +17294,19 @@ msgstr ""
 "\n"
 "Obnovit z nouzového ulo¾ení ?"
 
-#: src/Buffer.cpp:3889
+#: src/Buffer.cpp:3930
 msgid "Load emergency save?"
 msgstr "Naèíst nouzové ulo¾ení ?"
 
-#: src/Buffer.cpp:3890
+#: src/Buffer.cpp:3931
 msgid "&Recover"
 msgstr "&Obnovit"
 
-#: src/Buffer.cpp:3890
+#: src/Buffer.cpp:3931
 msgid "&Load Original"
 msgstr "&Naèíst pùvodní"
 
-#: src/Buffer.cpp:3901
+#: src/Buffer.cpp:3942
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -17310,15 +17316,15 @@ msgstr ""
 "má nastaveny atributy pouze pro ètení. Ujistìte se prosím, ¾e jste ulo¾ili "
 "tento dokument jako odli¹ný soubor."
 
-#: src/Buffer.cpp:3907
+#: src/Buffer.cpp:3948
 msgid "Document was successfully recovered."
 msgstr "Dokument byl úspì¹nì obnoven."
 
-#: src/Buffer.cpp:3909
+#: src/Buffer.cpp:3950
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument NEBYL úspì¹nì obnoven."
 
-#: src/Buffer.cpp:3910
+#: src/Buffer.cpp:3951
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -17327,27 +17333,27 @@ msgstr ""
 "Smazat nyní soubor s nouzovým ulo¾ením ?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:3914 src/Buffer.cpp:3926
+#: src/Buffer.cpp:3955 src/Buffer.cpp:3967
 msgid "Delete emergency file?"
 msgstr "Smazat nouzové ulo¾ení ?"
 
-#: src/Buffer.cpp:3915 src/Buffer.cpp:3928
+#: src/Buffer.cpp:3956 src/Buffer.cpp:3969
 msgid "&Keep"
 msgstr "&Ponechat"
 
-#: src/Buffer.cpp:3919
+#: src/Buffer.cpp:3960
 msgid "Emergency file deleted"
 msgstr "Soubor s nouzovým ulo¾ením smazán."
 
-#: src/Buffer.cpp:3920
+#: src/Buffer.cpp:3961
 msgid "Do not forget to save your file now!"
 msgstr "Nezapomeòte ulo¾it nyní vá¹ soubor!"
 
-#: src/Buffer.cpp:3927
+#: src/Buffer.cpp:3968
 msgid "Remove emergency file now?"
 msgstr "Smazat nyní soubor s nouzovým ulo¾ením ?"
 
-#: src/Buffer.cpp:3950
+#: src/Buffer.cpp:3991
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -17358,19 +17364,19 @@ msgstr ""
 "\n"
 "Naèíst místo toho zálohu ?"
 
-#: src/Buffer.cpp:3952
+#: src/Buffer.cpp:3993
 msgid "Load backup?"
 msgstr "Naèíst zálohu ?"
 
-#: src/Buffer.cpp:3953
+#: src/Buffer.cpp:3994
 msgid "&Load backup"
 msgstr "&Naèíst zálohu"
 
-#: src/Buffer.cpp:3953
+#: src/Buffer.cpp:3994
 msgid "Load &original"
 msgstr "Naèíst &pùvodní"
 
-#: src/Buffer.cpp:3963
+#: src/Buffer.cpp:4004
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -17380,25 +17386,25 @@ msgstr ""
 "nastaveny atributy pouze pro ètení. Ujistìte se prosím, ¾e jste ulo¾ili "
 "tento dokument jako odli¹ný soubor."
 
-#: src/Buffer.cpp:4305 src/insets/InsetCaption.cpp:326
+#: src/Buffer.cpp:4346 src/insets/InsetCaption.cpp:326
 msgid "Senseless!!! "
 msgstr "Nesmyslné! "
 
-#: src/Buffer.cpp:4505
+#: src/Buffer.cpp:4546
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s znovunaèten."
 
-#: src/Buffer.cpp:4508
+#: src/Buffer.cpp:4549
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Nelze znovunaèíst dokument %1$s"
 
-#: src/Buffer.cpp:4575
+#: src/Buffer.cpp:4616
 msgid "Included File Invalid"
 msgstr "Neplatný soubor k zahrnutí"
 
-#: src/Buffer.cpp:4576
+#: src/Buffer.cpp:4617
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -17466,7 +17472,7 @@ msgstr ""
 "Bude pou¾ita tøída se standardním rozvr¾ením.\n"
 "LyX nebude schopen vytvoøit korektní výstup."
 
-#: src/BufferParams.cpp:2019 src/BufferView.cpp:1285 src/BufferView.cpp:1317
+#: src/BufferParams.cpp:2019 src/BufferView.cpp:1274 src/BufferView.cpp:1306
 msgid "Could not load class"
 msgstr "Nelze naèíst tøídu"
 
@@ -17498,112 +17504,107 @@ msgstr "Dokument je jen ke ètení"
 msgid "This portion of the document is deleted."
 msgstr "Tato èást dokumentu je vymazána."
 
-#: src/BufferView.cpp:1043 src/BufferView.cpp:1932
+#: src/BufferView.cpp:1043 src/BufferView.cpp:1921
 #: src/frontends/qt4/GuiView.cpp:3188 src/frontends/qt4/GuiView.cpp:3263
 msgid "Absolute filename expected."
 msgstr "Je oèekávána absolutní cesta k souboru."
 
-#: src/BufferView.cpp:1283 src/BufferView.cpp:1315
+#: src/BufferView.cpp:1272 src/BufferView.cpp:1304
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "Tøídu dokumentu `%1$s' se nepodaøilo naèíst."
 
-#: src/BufferView.cpp:1338
+#: src/BufferView.cpp:1327
 msgid "No further undo information"
 msgstr "®ádná dal¹í informace pro návrat zpìt (undo)"
 
-#: src/BufferView.cpp:1348
+#: src/BufferView.cpp:1337
 msgid "No further redo information"
 msgstr "®ádná dal¹í informace pro opakování akce (redo)"
 
-#: src/BufferView.cpp:1537 src/lyxfind.cpp:377 src/lyxfind.cpp:395
+#: src/BufferView.cpp:1526 src/lyxfind.cpp:377 src/lyxfind.cpp:395
 msgid "String not found!"
 msgstr "Øetìzec nenalezen!"
 
-#: src/BufferView.cpp:1580
+#: src/BufferView.cpp:1569
 msgid "Mark off"
 msgstr "Znaèka vyp."
 
-#: src/BufferView.cpp:1586
+#: src/BufferView.cpp:1575
 msgid "Mark on"
 msgstr "Znaèka zap."
 
-#: src/BufferView.cpp:1593
+#: src/BufferView.cpp:1582
 msgid "Mark removed"
 msgstr "Znaèka smazána"
 
-#: src/BufferView.cpp:1596
+#: src/BufferView.cpp:1585
 msgid "Mark set"
 msgstr "Znaèka nastavena"
 
-#: src/BufferView.cpp:1652
+#: src/BufferView.cpp:1641
 msgid "Statistics for the selection:"
 msgstr "Statistika výbìru:"
 
-#: src/BufferView.cpp:1654
+#: src/BufferView.cpp:1643
 msgid "Statistics for the document:"
 msgstr "Statistika aktuálního dokumentu:"
 
-#: src/BufferView.cpp:1657
+#: src/BufferView.cpp:1646
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d slov"
 
-#: src/BufferView.cpp:1659
+#: src/BufferView.cpp:1648
 msgid "One word"
 msgstr "Jedno slovo"
 
-#: src/BufferView.cpp:1662
+#: src/BufferView.cpp:1651
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d znakù (vèetnì mezer)"
 
-#: src/BufferView.cpp:1665
+#: src/BufferView.cpp:1654
 msgid "One character (including blanks)"
 msgstr "Jeden znak (vèetnì mezer)"
 
-#: src/BufferView.cpp:1668
+#: src/BufferView.cpp:1657
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d znakù (kromì mezer)"
 
-#: src/BufferView.cpp:1671
+#: src/BufferView.cpp:1660
 msgid "One character (excluding blanks)"
 msgstr "Jeden znak (kromì mezer)"
 
-#: src/BufferView.cpp:1673
+#: src/BufferView.cpp:1662
 msgid "Statistics"
 msgstr "Statistika"
 
-#: src/BufferView.cpp:1809
+#: src/BufferView.cpp:1798
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr "`inset-forall' pøeru¹en proto¾e poèet akcí je vy¹¹í ne¾li %1$d"
 
-#: src/BufferView.cpp:1811
+#: src/BufferView.cpp:1800
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "\"%1$s\" aplikováno na %2$d vlo¾ek"
 
-#: src/BufferView.cpp:1819
+#: src/BufferView.cpp:1808
 msgid "Branch name"
 msgstr "Jméno vìtve"
 
-#: src/BufferView.cpp:1826 src/frontends/qt4/GuiBranches.cpp:218
+#: src/BufferView.cpp:1815 src/frontends/qt4/GuiBranches.cpp:218
 msgid "Branch already exists"
 msgstr "Vìtev ji¾ existuje"
 
-#: src/BufferView.cpp:1958
-#, c-format
-msgid "Branch \"%1$s\" does not exist."
-msgstr "Vìtev \"%1$s\" neexistuje."
-
-#: src/BufferView.cpp:2307
+#: src/BufferView.cpp:2262
 msgid "Inverse Search Failed"
 msgstr "Chyba pøi zpìtném hledání"
 
-#: src/BufferView.cpp:2308
+#: src/BufferView.cpp:2263
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
@@ -17611,22 +17612,22 @@ msgstr ""
 "Zpìtné hledání vy¾ádalo nekorektní pozici.\n"
 "Musíte aktualizovat prohlí¾ený dokument."
 
-#: src/BufferView.cpp:2689
+#: src/BufferView.cpp:2644
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vkládání dokumentu %1$s..."
 
-#: src/BufferView.cpp:2700
+#: src/BufferView.cpp:2655
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s vlo¾en."
 
-#: src/BufferView.cpp:2702
+#: src/BufferView.cpp:2657
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nepodaøilo se vlo¾it dokument %1$s"
 
-#: src/BufferView.cpp:2967
+#: src/BufferView.cpp:2922
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -17637,11 +17638,11 @@ msgstr ""
 "%1$s\n"
 "zpùsobeno chybou: %2$s"
 
-#: src/BufferView.cpp:2969
+#: src/BufferView.cpp:2924
 msgid "Could not read file"
 msgstr "Soubor nelze pøeèíst"
 
-#: src/BufferView.cpp:2976
+#: src/BufferView.cpp:2931
 #, c-format
 msgid ""
 "%1$s\n"
@@ -17650,15 +17651,15 @@ msgstr ""
 "%1$s\n"
 " nelze pøeèíst."
 
-#: src/BufferView.cpp:2977 src/output.cpp:39
+#: src/BufferView.cpp:2932 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Nelze otevøít soubor"
 
-#: src/BufferView.cpp:2984
+#: src/BufferView.cpp:2939
 msgid "Reading not UTF-8 encoded file"
 msgstr "Naèítání souboru v jiném kódování ne¾li je UTF-8"
 
-#: src/BufferView.cpp:2985
+#: src/BufferView.cpp:2940
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -23732,7 +23733,7 @@ msgstr "Chránìná horizontální mezera (%1$s)"
 msgid "Unknown TOC type"
 msgstr "Neznámý typ Obsahu"
 
-#: src/insets/InsetTabular.cpp:4772
+#: src/insets/InsetTabular.cpp:4774
 msgid "Selection size should match clipboard content."
 msgstr "Velikost výbìru by mìla odpovídat obsahu schránky."
 
@@ -23877,15 +23878,15 @@ msgstr "Øetìzec byl nahrazen."
 msgid "%1$d strings have been replaced."
 msgstr "%1$d øetìzcù bylo nahrazeno."
 
-#: src/lyxfind.cpp:1436
+#: src/lyxfind.cpp:1429
 msgid "Invalid regular expression!"
 msgstr "Neplatný regulární výraz!"
 
-#: src/lyxfind.cpp:1441
+#: src/lyxfind.cpp:1434
 msgid "Match not found!"
 msgstr "Øetìzec nenalezen!"
 
-#: src/lyxfind.cpp:1445
+#: src/lyxfind.cpp:1438
 msgid "Match found!"
 msgstr "Øetìzec nalezen!"
 
@@ -24297,6 +24298,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámý u¾ivatel"
+
+#~ msgid "&Down"
+#~ msgstr "&Dolù"
 
 #~ msgid ""
 #~ "The icon set to use. Warning: normal size of icons may be\n"
