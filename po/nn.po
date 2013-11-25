@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2013-11-24 11:51-0500\n"
-"PO-Revision-Date: 2013-05-01 16:15+0200\n"
-"Last-Translator: Ingar Pareliussen\n"
+"PO-Revision-Date: 2013-11-24 18:57+0100\n"
+"Last-Translator: ingar Pareliussen\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
@@ -1475,7 +1475,7 @@ msgid ""
 "Use OpenType and TrueType fonts with the fontspec package (requires XeTeX or "
 "LuaTeX)"
 msgstr ""
-"Bruk OpenType- og TrueType-skriftypar med fontspec-pakken (du treng XeTeX "
+"Bruk OpenType- og TrueType-skrifttypar med fontspec-pakken (du treng XeTeX "
 "eller LuaTeX )"
 
 #: src/frontends/qt4/ui/FontUi.ui:22
@@ -1553,12 +1553,12 @@ msgstr "C&JK:"
 #: src/frontends/qt4/ui/FontUi.ui:203
 msgid "Input the font to be used for Chinese, Japanese or Korean (CJK) script"
 msgstr ""
-"Kvafor skrift type skal brukast for Kinesisk, Japansk eller Koreansk (CJK) "
+"Kva for skrifttype skal brukast for Kinesisk, Japansk eller Koreansk (CJK) "
 "skrift"
 
 #: src/frontends/qt4/ui/FontUi.ui:210
 msgid "Use a real small caps shape, if the font provides one"
-msgstr "Bruk ekte kapitél, dersom skriftypa støttar det"
+msgstr "Bruk ekte kapitél, dersom skrifttypa støttar det"
 
 #: src/frontends/qt4/ui/FontUi.ui:213
 msgid "Use true S&mall Caps"
@@ -9076,9 +9076,8 @@ msgid "PACS number:"
 msgstr "PACS nummer:"
 
 #: lib/layouts/scrbook.layout:25
-#, fuzzy
 msgid "\\thechapter.\\arabic{equation}"
-msgstr "\\thesection.\\arabic{equation}"
+msgstr "\\thechapter.\\arabic{equation}"
 
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:28
 #: lib/layouts/scrclass.inc:42 lib/layouts/stdlyxlist.inc:6
@@ -10577,8 +10576,8 @@ msgid ""
 "available with arbitrary sizes. For details see the documentation of the fix-"
 "cm.sty package: http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
 msgstr ""
-"Fiks cm gjer at skriftypane i familia  Computer Modern ser betre ut og kan "
-"lagast i ulike storleikar. For fleire detaljar sjådokumentasjonen til fix "
+"Fiks cm gjer at skrifttypane i familien  Computer Modern ser betre ut og kan "
+"lagast i ulike storleikar. For fleire detaljar sjå dokumentasjonen til fix "
 "cm: http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
 
 #: lib/layouts/fixltx2e.module:2
@@ -12917,7 +12916,7 @@ msgstr "I teksten|I"
 
 #: lib/ui/stdmenus.inc:262
 msgid "Math Normal Font|N"
-msgstr "Normal matte skriftype|o"
+msgstr "Normal matte skrifttype|o"
 
 #: lib/ui/stdmenus.inc:264
 msgid "Math Calligraphic Family|C"
@@ -12925,11 +12924,11 @@ msgstr "Kalliografi matte skrift|K"
 
 #: lib/ui/stdmenus.inc:265
 msgid "Math Formal Script Family|o"
-msgstr "Formell matte-skriftype|F"
+msgstr "Formell matte-skrifttype|F"
 
 #: lib/ui/stdmenus.inc:266
 msgid "Math Fraktur Family|F"
-msgstr "Fraktur matte-skriftype|k"
+msgstr "Fraktur matte-skrifttype|k"
 
 #: lib/ui/stdmenus.inc:267
 msgid "Math Roman Family|R"
@@ -12937,15 +12936,15 @@ msgstr "Romansk matte-skrifttype|R"
 
 #: lib/ui/stdmenus.inc:268
 msgid "Math Sans Serif Family|S"
-msgstr "Sans serif matte-skriftype|S"
+msgstr "Sans serif matte-skrifttype|S"
 
 #: lib/ui/stdmenus.inc:270
 msgid "Math Bold Series|B"
-msgstr "Feit matte-skriftype|e"
+msgstr "Feit matte-skrifttype|e"
 
 #: lib/ui/stdmenus.inc:272
 msgid "Text Normal Font|T"
-msgstr "Normal tekst-skriftype|N"
+msgstr "Normal tekst-skrifttype|N"
 
 #: lib/ui/stdmenus.inc:274
 msgid "Text Roman Family"
@@ -12965,7 +12964,7 @@ msgstr "Feit tekstfamilie"
 
 #: lib/ui/stdmenus.inc:279
 msgid "Text Medium Series"
-msgstr "Medium-tekst-skriftype"
+msgstr "Medium-tekst-skrifttype"
 
 #: lib/ui/stdmenus.inc:281
 msgid "Text Italic Shape"
@@ -20602,7 +20601,7 @@ msgid ""
 "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
 "You need to install the package \"fontspec\" to use this feature"
 msgstr ""
-"Brukar OpenType- og TrueType-skriftypar direkte (du treng XeTeX eller "
+"Brukar OpenType- og TrueType-skrifttypar direkte (du treng XeTeX eller "
 "LuaTeX )\n"
 "Du må ha LaTeX-pakken \"fontspec\" for å bruke denne."
 
@@ -20968,7 +20967,7 @@ msgstr "T&ilpass Hyperref val"
 
 #: src/frontends/qt4/GuiDocument.cpp:3050
 msgid "&Use Hyperref Support"
-msgstr "Br&uk hyperref støtte"
+msgstr "Br&uk Hyperref støtte"
 
 #: src/frontends/qt4/GuiDocument.cpp:3199
 msgid "Can't set layout!"
@@ -21042,11 +21041,11 @@ msgstr "Venstre grunnlinje"
 
 #: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
 msgid "Top center"
-msgstr "Øvst midtpå"
+msgstr "Øvst, midt på"
 
 #: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
 msgid "Bottom center"
-msgstr "Nedst midtpå"
+msgstr "Nedst, midt på"
 
 #: src/frontends/qt4/GuiExternal.cpp:77 src/frontends/qt4/GuiGraphics.cpp:72
 msgid "Baseline center"
@@ -21750,7 +21749,7 @@ msgstr "IPA utvidingar"
 
 #: src/frontends/qt4/GuiSymbols.cpp:59
 msgid "Spacing Modifier Letters"
-msgstr "Avstandendrande teikn"
+msgstr "Avstandsendrande-teikn"
 
 #: src/frontends/qt4/GuiSymbols.cpp:60
 msgid "Combining Diacritical Marks"
@@ -22663,7 +22662,7 @@ msgstr "Ingen greiner i dokumentet!"
 
 #: src/frontends/qt4/Menus.cpp:1414
 msgid "Index List|I"
-msgstr "Indeks liste|l"
+msgstr "Indeksliste|l"
 
 #: src/frontends/qt4/Menus.cpp:1419
 msgid "Index Entry|d"
@@ -22917,15 +22916,15 @@ msgstr "Enkel ramme, sideskift"
 
 #: src/insets/InsetBox.cpp:69
 msgid "oval, thin"
-msgstr "Tynn, oval"
+msgstr "tynn, oval"
 
 #: src/insets/InsetBox.cpp:70
 msgid "oval, thick"
-msgstr "Tjukk oval"
+msgstr "tjukk oval"
 
 #: src/insets/InsetBox.cpp:71
 msgid "drop shadow"
-msgstr "Kastar skugge"
+msgstr "kastar skugge"
 
 #: src/insets/InsetBox.cpp:72
 msgid "shaded background"
@@ -23092,7 +23091,7 @@ msgstr "Ingen konvertering av %1$s var naudsynt likvel"
 #: src/insets/InsetGraphics.cpp:811
 #, c-format
 msgid "Graphics file: %1$s"
-msgstr "Grafikk-fil: %1$s"
+msgstr "Grafikkfil: %1$s"
 
 #: src/insets/InsetHyperlink.cpp:221
 #, c-format
@@ -23788,11 +23787,11 @@ msgstr "Sidehøgd %"
 
 #: src/lyxfind.cpp:144
 msgid "Search error"
-msgstr "Søk feil"
+msgstr "Feil i søkinga"
 
 #: src/lyxfind.cpp:144
 msgid "Search string is empty"
-msgstr "Søkje strengen er tom"
+msgstr "Søkestrengen er tom"
 
 #: src/lyxfind.cpp:380
 msgid "String found."
