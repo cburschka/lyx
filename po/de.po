@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2013-11-24 11:51-0500\n"
-"PO-Revision-Date: 2013-03-29 10:13+0100\n"
+"PO-Revision-Date: 2013-11-25 07:48+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -9263,9 +9263,8 @@ msgid "PACS number:"
 msgstr "PACS-Nummer:"
 
 #: lib/layouts/scrbook.layout:25
-#, fuzzy
 msgid "\\thechapter.\\arabic{equation}"
-msgstr "\\thesection.\\arabic{equation}"
+msgstr "\\thechapter.\\arabic{equation}"
 
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:28
 #: lib/layouts/scrclass.inc:42 lib/layouts/stdlyxlist.inc:6
