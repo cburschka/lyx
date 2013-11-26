@@ -74,7 +74,7 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 				"The document %1$s is already loaded and has unsaved changes.\n"
 				"Do you want to abandon your changes and reload the version on disk?"), file);
 		if (!Alert::prompt(_("Reload saved document?"),
-			  text, 1, 1,  _("&Reload"), _("&Keep Changes"))) {
+			  text, 1, 1,  _("&Reload"), _("&Cancel"))) {
 			// reload the document
 			if (checkBuffer->reload() != Buffer::ReadSuccess)
 				return 0;
