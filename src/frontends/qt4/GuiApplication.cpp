@@ -1572,8 +1572,10 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		validateCurrentView();
 		// FIXME: create a new method shared with LFUN_HELP_OPEN.
 		string const fname = to_utf8(cmd.argument());
-		if (d->views_.empty() || (!lyxrc.open_buffers_in_tabs
-			  && current_view_->documentBufferView() != 0)) {
+		if (d->views_.empty()
+		    || (!lyxrc.open_buffers_in_tabs
+			&& current_view_->documentBufferView() != 0
+			&& !theBufferList().getBuffer(FileName(fname)))) {
 			// We want the ui session to be saved per document and not per
 			// window number. The filename crc is a good enough identifier.
 			boost::crc_32_type crc;
