@@ -80,7 +80,7 @@ docstring InsetFoot::toolTip(BufferView const & bv, int x, int y) const
 	if (isOpen(bv))
 		// this will give us something useful if there is no button
 		return InsetCollapsable::toolTip(bv, x, y);
-	return toolTipText(custom_label_);
+	return toolTipText(custom_label_+ ": ");
 }
 
 
