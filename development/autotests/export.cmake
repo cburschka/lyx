@@ -27,7 +27,7 @@
 #
 
 set(Perl_Script "${TOP_SRC_DIR}/development/autotests/useSystemFonts.pl")
-if(format MATCHES "pdf4|pdf5")
+if(format MATCHES "dvi3|pdf4|pdf5")
   message(STATUS "LYX_TESTS_USERDIR = ${LYX_TESTS_USERDIR}")
   message(STATUS "Converting with perl ${Perl_Script}")
   set(LYX_SOURCE "${WORKDIR}/${file}_${format}.lyx")
