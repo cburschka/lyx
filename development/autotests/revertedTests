@@ -1,5 +1,15 @@
+# Hebrew docs do not currently work with LuaTeX
 export/doc/he/Intro_pdf5
+export/doc/he/Intro_dvi3
 export/doc/he/Tutorial_pdf5
+export/doc/he/Tutorial_dvi3
+export/examples/he/example_lyxified_pdf5
+export/examples/he/example_lyxified_dvi3
+export/examples/he/example_raw_pdf5
+export/examples/he/example_raw_dvi3
+export/examples/he/splash_pdf5
+export/examples/he/splash_dvi3
+#
 export/doc/hu/Intro_pdf5
 export/doc/id/Intro_pdf5
 export/doc/id/Shortcuts_pdf5
@@ -13,9 +23,6 @@ export/examples/noweb2lyx_pdf2
 export/examples/noweb2lyx_pdf5
 export/examples/es/europeCV_pdf5
 export/examples/fa/splash_pdf5
-export/examples/he/example_lyxified_pdf5
-export/examples/he/example_raw_pdf5
-export/examples/he/splash_pdf5
 export/examples/hu/example_lyxified_pdf5
 export/examples/hu/example_raw_pdf5
 export/examples/hu/splash_pdf5
