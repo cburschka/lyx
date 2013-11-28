@@ -10,6 +10,14 @@ export/examples/he/example_raw_dvi3
 export/examples/he/splash_pdf5
 export/examples/he/splash_dvi3
 #
+# Greek docs do not currently work with LuaTeX
+# This should be fixed for LyX 2.2
+# See http://marc.info/?l=lyx-devel&m=138506346715339&w=2
+export/doc/el/Intro_dvi3
+export/doc/el/Intro_pdf5
+export/examples/el/splash_dvi3
+export/examples/el/splash_pdf5
+#
 export/doc/hu/Intro_pdf5
 export/doc/id/Intro_pdf5
 export/doc/id/Shortcuts_pdf5
