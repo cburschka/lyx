@@ -73,13 +73,22 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 		docstring const text = bformat(_(
 				"The document %1$s is already loaded and has unsaved changes.\n"
 				"Do you want to abandon your changes and reload the version on disk?"), file);
-		if (!Alert::prompt(_("Reload saved document?"),
-			  text, 1, 1,  _("&Reload"), _("&Keep Changes"))) {
-			// reload the document
-			if (checkBuffer->reload() != Buffer::ReadSuccess)
+		int res = Alert::prompt(_("Reload saved document?"),
+					text, 2, 2,  _("Yes, &Reload"), _("No, &Keep Changes"), _("&Cancel"));
+		switch (res) {
+			case 0: {
+				// reload the document
+				if (checkBuffer->reload() != Buffer::ReadSuccess)
+					return 0;
+				return checkBuffer;
+			}
+			case 1:
+				// keep changes
+				return checkBuffer;
+			case 2:
+				// cancel
 				return 0;
 		}
-		return checkBuffer;
 	}
 
 	bool const exists = filename.exists();
