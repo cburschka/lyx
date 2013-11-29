@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-11-15 17:14+0100\n"
+"POT-Creation-Date: 2013-11-29 10:52+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -24802,13 +24802,17 @@ msgstr ""
 msgid "Reload saved document?"
 msgstr "Opäť načítať uložený dokument?"
 
+#: src/buffer_funcs.cpp:77
+msgid "Yes, &Reload"
+msgstr "Áno, &načítať"
+
+#: src/buffer_funcs.cpp:77
+msgid "No, &Keep Changes"
+msgstr "Nie, &Držať Zmeny"
+
 #: src/buffer_funcs.cpp:77 src/frontends/qt4/GuiView.cpp:2864
 msgid "&Reload"
 msgstr "Opäť &načítať"
-
-#: src/buffer_funcs.cpp:77
-msgid "&Keep Changes"
-msgstr "&Držať Zmeny"
 
 #: src/buffer_funcs.cpp:89
 #, c-format
@@ -27565,11 +27569,6 @@ msgstr "Zvoľte názov súboru, pod ktorým sa má dokument uložiť ako"
 msgid "Guess from extension (*.*)"
 msgstr "Uhádnuť z rozšírenia (*.*)"
 
-#: src/frontends/qt4/GuiView.cpp:2401
-#, c-format
-msgid "%1$s (*.%2$s)"
-msgstr "%1$s (*.%2$s)"
-
 #: src/frontends/qt4/GuiView.cpp:2476
 #, c-format
 msgid ""
@@ -29579,6 +29578,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "%1$s (*.%2$s)"
+#~ msgstr "%1$s (*.%2$s)"
 
 #~ msgid "Any supported format (*.*)"
 #~ msgstr "Akýkoľvek podporovaný format (*.*)"
@@ -32280,3 +32282,6 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Dosiahol som začiatok súboru hľadajúc spätne.\n"
 #~ "Pokračovať hľadaním od konca?"
+
+#~ msgid "&Keep Changes"
+#~ msgstr "&Držať Zmeny"
