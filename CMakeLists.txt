@@ -468,6 +468,10 @@ if(NOT MSVC)
 	endif()
 endif()
 
+if(LYX_CXX_FLAGS_EXTRA)
+	add_definitions(${LYX_CXX_FLAGS_EXTRA})
+endif()
+
 find_package(Qt5Core QUIET)
 if (Qt5Core_FOUND)
 	find_package(Qt5Widgets REQUIRED)
