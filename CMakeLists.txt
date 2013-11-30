@@ -445,7 +445,7 @@ endif()
 if(LYX_SHARED_LIBRARIES)
 	set(library_type SHARED)
 else()
- 	set(library_type STATIC)
+	set(library_type STATIC)
 endif()
 
 if(NOT MSVC)
