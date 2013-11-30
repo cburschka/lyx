@@ -79,7 +79,7 @@ logicalmkup
 \graphics default
 \default_output_format default
 \output_sync 0
-\bibtex_command default
+\bibtex_command bibtex
 \index_command default
 \paperfontsize 12
 \spacing single
@@ -29971,7 +29971,7 @@ intoc insère le glossaire dans la table de matières.
 \end_layout
 
 \begin_layout Standard
-Pour utiliser une ou plusieurs de ces options, ajoutez-les, séparés par
+Pour utiliser une ou plusieurs de ces options, ajoutez-les, séparées par
  des virgules, à la liste d'options de la classe de document de la fenêtre
  de dialogue 
 \family sans
@@ -30004,8 +30004,8 @@ refpage, intoc
 
 \begin_layout Standard
 Vous pouvez aussi utiliser les deux premières options seulement pour certaines
- entrées de glossaires quand vous ajoutez une des commandes qui suivent
- dans le champ 
+ entrées de glossaire quand vous ajoutez une des commandes qui suivent dans
+ le champ 
 \family sans
 Description
 \family default
@@ -30073,8 +30073,8 @@ page
 \begin_inset Quotes frd
 \end_inset
 
- sont automatiquement traduits pour cerianes langues de documents.
- Sinon, ajoutez v)ces lignes au préambule LaTeX:
+ sont automatiquement traduits pour certaines langues de documents.
+ Sinon, ajoutez ces lignes au préambule LaTeX:
 \end_layout
 
 \begin_layout Standard
