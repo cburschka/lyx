@@ -735,6 +735,18 @@ bool LyX::init()
 	if (!setEnv("LyXDir", lyx_dir))
 		LYXERR(Debug::INIT, "\t... failed!");
 
+	if (package().explicit_user_support() && getEnv(LYX_USERDIR_VER).empty()) {
+		// -userdir was given on the command line.
+		// Make it available to child processes, otherwise tex2lyx
+		// would not find all layout files, and other converters might
+		// use it as well.
+		string const user_dir = package().user_support().absFileName();
+		LYXERR(Debug::INIT, "Setting " LYX_USERDIR_VER "... to \""
+		                    << user_dir << '"');
+		if (!setEnv(LYX_USERDIR_VER, user_dir))
+			LYXERR(Debug::INIT, "\t... failed!");
+	}
+
 	//
 	// Read configuration files
 	//
