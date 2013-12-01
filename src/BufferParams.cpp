@@ -2847,6 +2847,15 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 				os << "\\usepackage{CJK}\n";
 			break;
 		}
+		// Load the CJK package if needed by a secondary language.
+		// If the main encoding is some variant of UTF8, use CJKutf8.
+		if (encoding().package() != Encoding::CJK && features.mustProvide("CJK")) {
+			if (encoding().iconvName() == "UTF-8"
+			    && LaTeXFeatures::isAvailable("CJKutf8"))
+				os << "\\usepackage{CJKutf8}\n";
+			else
+				os << "\\usepackage{CJK}\n";
+		}
 	}
 }
 
