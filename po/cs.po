@@ -1452,14 +1452,12 @@ msgid "&Expand macros"
 msgstr "Rozvinout &makra"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:314
-#, fuzzy
 msgid "Search only in mat&hs"
-msgstr "Hledaný řetězec je prázdný"
+msgstr "&Hledat pouze ve vzorcích"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:317
-#, fuzzy
 msgid "Restrict search to math environments only"
-msgstr "Hledat pouze celá slova"
+msgstr "Hledat pouze v prostředí matematických vzorců"
 
 # TODO
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
@@ -6165,83 +6163,72 @@ msgid "TOG online ID"
 msgstr ""
 
 #: lib/layouts/acmsiggraph.layout:77
-#, fuzzy
 msgid "Online ID:"
-msgstr "Uvnitř řádky (inline)|U"
+msgstr "Online ID:"
 
 #: lib/layouts/acmsiggraph.layout:85
-#, fuzzy
 msgid "TOG volume"
-msgstr "AGU-volume"
+msgstr "TOG volume"
 
 #: lib/layouts/acmsiggraph.layout:88
-#, fuzzy
 msgid "Volume number:"
-msgstr "Žádné číslo"
+msgstr "Volume number:"
 
 #: lib/layouts/acmsiggraph.layout:92
-#, fuzzy
 msgid "TOG number"
-msgstr "Žádné číslo"
+msgstr "TOG number"
 
 #: lib/layouts/acmsiggraph.layout:95
-#, fuzzy
 msgid "Article number:"
-msgstr "PACS number:"
+msgstr "Article number:"
 
 #: lib/layouts/acmsiggraph.layout:99
 msgid "TOG article DOI"
-msgstr ""
+msgstr "TOG article DOI"
 
 #: lib/layouts/acmsiggraph.layout:102
-#, fuzzy
 msgid "Article DOI:"
-msgstr "Article"
+msgstr "Article DOI:"
 
 #: lib/layouts/acmsiggraph.layout:106
 msgid "TOG project URL"
-msgstr ""
+msgstr "TOG project URL"
 
 #: lib/layouts/acmsiggraph.layout:110
 msgid "Project URL:"
-msgstr ""
+msgstr "Project URL:"
 
 #: lib/layouts/acmsiggraph.layout:114
 msgid "TOG video URL"
-msgstr ""
+msgstr "TOG video URL"
 
 #: lib/layouts/acmsiggraph.layout:117
-#, fuzzy
 msgid "Video URL:"
-msgstr "Sender URL:"
+msgstr "Video URL:"
 
 #: lib/layouts/acmsiggraph.layout:121
 msgid "TOG data URL"
-msgstr ""
+msgstr "TOG data URL"
 
 #: lib/layouts/acmsiggraph.layout:124
-#, fuzzy
 msgid "Data URL:"
-msgstr "URL:"
+msgstr "Data URL:"
 
 #: lib/layouts/acmsiggraph.layout:128
 msgid "TOG code URL"
-msgstr ""
+msgstr "TOG code URL"
 
 #: lib/layouts/acmsiggraph.layout:131
-#, fuzzy
 msgid "Code URL:"
-msgstr "Sender URL:"
+msgstr "Code URL:"
 
 #: lib/layouts/acmsiggraph.layout:157
-#, fuzzy
 msgid "PDF author"
-msgstr "TOC author:"
+msgstr "PDF author"
 
 #: lib/layouts/acmsiggraph.layout:160
-#, fuzzy
 msgid "PDF author:"
-msgstr "TOC author:"
+msgstr "PDF author:"
 
 #: lib/layouts/acmsiggraph.layout:175
 msgid "Teaser"
@@ -6256,9 +6243,8 @@ msgid "CR categories"
 msgstr "CR categories"
 
 #: lib/layouts/acmsiggraph.layout:230
-#, fuzzy
 msgid "CR Categories:"
-msgstr "CR categories"
+msgstr "CR Categories:"
 
 #: lib/layouts/acmsiggraph.layout:238
 msgid "CRcat"
@@ -6269,37 +6255,32 @@ msgid "CR category"
 msgstr "CR category"
 
 #: lib/layouts/acmsiggraph.layout:260
-#, fuzzy
 msgid "CR-number"
-msgstr "msnumber"
+msgstr "CR-number"
 
 #: lib/layouts/acmsiggraph.layout:261
-#, fuzzy
 msgid "Number of the category"
-msgstr "Rozbalit do zadané úrovně"
+msgstr "Number of the category"
 
 #: lib/layouts/acmsiggraph.layout:265 lib/layouts/acmsiggraph.layout:266
-#, fuzzy
 msgid "Subcategory"
-msgstr "CR category"
+msgstr "Subcategory"
 
 #: lib/layouts/acmsiggraph.layout:270
 msgid "Third-level"
-msgstr ""
+msgstr "Third-level"
 
 #: lib/layouts/acmsiggraph.layout:271
 msgid "Third-level of the category"
-msgstr ""
+msgstr "Third-level of the category"
 
 #: lib/layouts/acmsiggraph.layout:276
-#, fuzzy
 msgid "ShortCite"
-msgstr "ShortTitle"
+msgstr "ShortCite"
 
 #: lib/layouts/acmsiggraph.layout:281
-#, fuzzy
 msgid "Short cite"
-msgstr "Krátký titulek|i"
+msgstr "Short cite"
 
 #: lib/layouts/acmsiggraph.layout:285 lib/layouts/elsart.layout:201
 #: lib/layouts/revtex4-1.layout:205 lib/layouts/revtex4.layout:194
@@ -6308,9 +6289,8 @@ msgid "Thanks"
 msgstr "Thanks"
 
 #: lib/layouts/acmsiggraph.layout:289
-#, fuzzy
 msgid "E-mail"
-msgstr "E-mail:"
+msgstr "E-mail"
 
 #: lib/layouts/acmsiggraph.layout:296 lib/layouts/acmsiggraph.layout:303
 #: lib/layouts/agutex.layout:184 lib/layouts/apa6.layout:302
@@ -6329,11 +6309,11 @@ msgstr "ACM SIGS ('Alternate' Style)"
 
 #: lib/layouts/acm-sigs.layout:3
 msgid "ACM SIG Proceedings (SP)"
-msgstr ""
+msgstr "ACM SIG Proceedings (SP)"
 
 #: lib/layouts/AEA.layout:3
 msgid "American Economic Association (AEA)"
-msgstr ""
+msgstr "American Economic Association (AEA)"
 
 #: lib/layouts/AEA.layout:50 lib/layouts/apa6.layout:51
 #: lib/layouts/apa.layout:96
@@ -6374,11 +6354,11 @@ msgstr "Publication Issue:"
 
 #: lib/layouts/AEA.layout:89
 msgid "JEL"
-msgstr ""
+msgstr "JEL"
 
 #: lib/layouts/AEA.layout:92
 msgid "JEL:"
-msgstr ""
+msgstr "JEL:"
 
 #: lib/layouts/AEA.layout:107 lib/layouts/egs.layout:562
 #: lib/layouts/theorems-ams-extended-bytype.module:325
@@ -6387,18 +6367,16 @@ msgid "Acknowledgement."
 msgstr "Poděkování."
 
 #: lib/layouts/AEA.layout:112
-#, fuzzy
 msgid "Figure Notes"
-msgstr "Figures"
+msgstr "Figure Notes"
 
 #: lib/layouts/AEA.layout:119
-#, fuzzy
 msgid "Figure Note"
-msgstr "Obrázek"
+msgstr "Figure Note"
 
 #: lib/layouts/AEA.layout:120
 msgid "Text of a note in a figure"
-msgstr ""
+msgstr "Text of a note in a figure"
 
 #: lib/layouts/AEA.layout:127 lib/layouts/apa6.layout:219
 #: lib/layouts/beamer.layout:1306 lib/layouts/powerdot.layout:217
@@ -6406,19 +6384,16 @@ msgid "Note:"
 msgstr "Note:"
 
 #: lib/layouts/AEA.layout:138
-#, fuzzy
 msgid "Table Notes"
-msgstr "Table note"
+msgstr "Table Notes"
 
 #: lib/layouts/AEA.layout:142
-#, fuzzy
 msgid "Table Note"
-msgstr "Table note"
+msgstr "Table Note"
 
 #: lib/layouts/AEA.layout:143
-#, fuzzy
 msgid "Text of a note in a table"
-msgstr "Kurzor není v tabulce"
+msgstr "Text of a note in a table"
 
 #: lib/layouts/AEA.layout:147 lib/layouts/beamer.layout:1225
 #: lib/layouts/elsart.layout:272 lib/layouts/foils.layout:220
@@ -7326,70 +7301,62 @@ msgstr "Frames"
 #: lib/layouts/beamer.layout:1422 lib/layouts/beamer.layout:1440
 #: lib/layouts/beamer.layout:1458 lib/layouts/beamer.layout:1476
 #: lib/layouts/beamer.layout:1499
-#, fuzzy
 msgid "Action"
-msgstr "Sekce"
+msgstr "Action"
 
 #: lib/layouts/beamer.layout:432 lib/layouts/beamer.layout:491
 msgid "Overlay specifications for this frame"
-msgstr ""
+msgstr "Overlay specifications for this frame"
 
 #: lib/layouts/beamer.layout:437 lib/layouts/beamer.layout:496
 msgid "Default Overlay Specifications"
-msgstr ""
+msgstr "Default Overlay Specifications"
 
 #: lib/layouts/beamer.layout:438 lib/layouts/beamer.layout:497
 msgid "Default overlay specifications within this frame"
-msgstr ""
+msgstr "Default overlay specifications within this frame"
 
 #: lib/layouts/beamer.layout:443 lib/layouts/beamer.layout:465
 #: lib/layouts/beamer.layout:476 lib/layouts/beamer.layout:502
-#, fuzzy
 msgid "Frame Options"
-msgstr "Parametry pro LaTeX"
+msgstr "Frame Options"
 
 #: lib/layouts/beamer.layout:444 lib/layouts/beamer.layout:466
 #: lib/layouts/beamer.layout:477 lib/layouts/beamer.layout:503
 #: lib/layouts/beamer.layout:601 lib/layouts/litinsets.inc:41
 #: lib/layouts/litinsets.inc:42 lib/layouts/initials.module:33
 #: lib/layouts/lilypond.module:36
-#, fuzzy
 msgid "Options"
-msgstr "&Možnosti:"
+msgstr "Volby"
 
 #: lib/layouts/beamer.layout:445 lib/layouts/beamer.layout:467
 #: lib/layouts/beamer.layout:478 lib/layouts/beamer.layout:504
 msgid "Frame options (see beamer manual)"
-msgstr ""
+msgstr "Frame options (see beamer manual)"
 
 #: lib/layouts/beamer.layout:448
-#, fuzzy
 msgid "Frame Title"
-msgstr "FrameSubtitle"
+msgstr "Frame Title"
 
 #: lib/layouts/beamer.layout:449
 msgid "Enter the frame title here"
-msgstr ""
+msgstr "Enter the frame title here"
 
 #: lib/layouts/beamer.layout:461
-#, fuzzy
 msgid "PlainFrame"
-msgstr "BeginPlainFrame"
+msgstr "PlainFrame"
 
 #: lib/layouts/beamer.layout:463
-#, fuzzy
 msgid "Frame (plain)"
-msgstr "LaTeX (prostý)"
+msgstr "Frame (plain)"
 
 #: lib/layouts/beamer.layout:472
-#, fuzzy
 msgid "FragileFrame"
-msgstr "BeginFrame"
+msgstr "FragileFrame"
 
 #: lib/layouts/beamer.layout:474
-#, fuzzy
 msgid "Frame (fragile)"
-msgstr "Name (Surname)"
+msgstr "Frame (fragile)"
 
 #: lib/layouts/beamer.layout:483
 msgid "AgainFrame"
@@ -7402,14 +7369,12 @@ msgid "Slide"
 msgstr "Slide"
 
 #: lib/layouts/beamer.layout:516
-#, fuzzy
 msgid "Repeat frame with label"
-msgstr "Again frame with label"
+msgstr "Repeat frame with label"
 
 #: lib/layouts/beamer.layout:527
-#, fuzzy
 msgid "FrameTitle"
-msgstr "FrameSubtitle"
+msgstr "FrameTitle"
 
 #: lib/layouts/beamer.layout:546 lib/layouts/beamer.layout:574
 #: lib/layouts/beamer.layout:776 lib/layouts/beamer.layout:804
@@ -7422,16 +7387,15 @@ msgstr "FrameSubtitle"
 #: lib/layouts/beamer.layout:1442 lib/layouts/beamer.layout:1460
 #: lib/layouts/beamer.layout:1478 lib/layouts/beamer.layout:1501
 msgid "Specify the overlay settings (see beamer manual)"
-msgstr ""
+msgstr "Specify the overlay settings (see beamer manual)"
 
 #: lib/layouts/beamer.layout:551
-#, fuzzy
 msgid "Short Frame Title|S"
-msgstr "Krátký titulek"
+msgstr "Short Frame Title|S"
 
 #: lib/layouts/beamer.layout:552
 msgid "A short form of the frame title used in some themes"
-msgstr ""
+msgstr "A short form of the frame title used in some themes"
 
 #: lib/layouts/beamer.layout:556
 msgid "FrameSubtitle"
@@ -7453,22 +7417,20 @@ msgid "Start column (increase depth!), width:"
 msgstr "Start column (increase depth!), width:"
 
 #: lib/layouts/beamer.layout:600 lib/layouts/powerdot.layout:449
-#, fuzzy
 msgid "Column Options"
-msgstr "Nastavení sloupce"
+msgstr "Column Options"
 
 #: lib/layouts/beamer.layout:602
 msgid "Column options (see beamer manual)"
-msgstr ""
+msgstr "Column options (see beamer manual)"
 
 #: lib/layouts/beamer.layout:625
-#, fuzzy
 msgid "Column Placement Options"
-msgstr "Umístění - rozšířené volby"
+msgstr "Column Placement Options"
 
 #: lib/layouts/beamer.layout:626
 msgid "Column placement options (t, T, c, b)"
-msgstr ""
+msgstr "Column placement options (t, T, c, b)"
 
 #: lib/layouts/beamer.layout:638
 msgid "ColumnsCenterAligned"
@@ -7497,13 +7459,12 @@ msgid "Overlays"
 msgstr "Overlays"
 
 #: lib/layouts/beamer.layout:666 lib/layouts/powerdot.layout:470
-#, fuzzy
 msgid "Pause number"
-msgstr "Číslo stránky"
+msgstr "Pause number"
 
 #: lib/layouts/beamer.layout:667 lib/layouts/powerdot.layout:471
 msgid "Number of slide where the context below the pause gets visible"
-msgstr ""
+msgstr "Number of slide where the context below the pause gets visible"
 
 #: lib/layouts/beamer.layout:678 lib/layouts/powerdot.layout:482
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
@@ -7514,9 +7475,8 @@ msgid "Overprint"
 msgstr "Overprint"
 
 #: lib/layouts/beamer.layout:694
-#, fuzzy
 msgid "Overprint Area Width"
-msgstr "Overprint"
+msgstr "Overprint Area Width"
 
 #: lib/layouts/beamer.layout:695 lib/layouts/moderncv.layout:274
 #: src/frontends/qt4/GuiBox.cpp:71
@@ -7525,7 +7485,7 @@ msgstr "Šířka"
 
 #: lib/layouts/beamer.layout:696
 msgid "The width of the overprint area (default: text width)"
-msgstr ""
+msgstr "The width of the overprint area (default: text width)"
 
 #: lib/layouts/beamer.layout:722
 msgid "OverlayArea"
@@ -7536,19 +7496,16 @@ msgid "Overlayarea"
 msgstr "Overlayarea"
 
 #: lib/layouts/beamer.layout:742
-#, fuzzy
 msgid "Overlay Area Width"
-msgstr "OverlayArea"
+msgstr "Overlay Area Width"
 
 #: lib/layouts/beamer.layout:743
-#, fuzzy
 msgid "The width of the overlay area"
-msgstr "Pevná šířka sloupce"
+msgstr "The width of the overlay area"
 
 #: lib/layouts/beamer.layout:747
-#, fuzzy
 msgid "Overlay Area Height"
-msgstr "OverlayArea"
+msgstr "Overlay Area Height"
 
 #: lib/layouts/beamer.layout:748 lib/layouts/moderncv.layout:176
 #: src/frontends/qt4/GuiBox.cpp:70
@@ -7557,7 +7514,7 @@ msgstr "Výška"
 
 #: lib/layouts/beamer.layout:749
 msgid "The height of the overlay area"
-msgstr ""
+msgstr "The height of the overlay area"
 
 #: lib/layouts/beamer.layout:754 lib/layouts/beamer.layout:1413
 #: lib/layouts/beamer.layout:1415 lib/layouts/powerdot.layout:584
@@ -7590,18 +7547,16 @@ msgid "Block:"
 msgstr "Block:"
 
 #: lib/layouts/beamer.layout:836
-#, fuzzy
 msgid "Action Specification|S"
-msgstr "Vybrat sekce|e"
+msgstr "Action Specification|S"
 
 #: lib/layouts/beamer.layout:842
-#, fuzzy
 msgid "Block Title"
-msgstr "Kvádry"
+msgstr "Block Title"
 
 #: lib/layouts/beamer.layout:843
 msgid "Enter the block title here"
-msgstr ""
+msgstr "Enter the block title here"
 
 #: lib/layouts/beamer.layout:854
 msgid "ExampleBlock"
@@ -7627,51 +7582,47 @@ msgstr "Titling"
 
 #: lib/layouts/beamer.layout:892
 msgid "Short title which appears in the sidebar/header"
-msgstr ""
+msgstr "Short title which appears in the sidebar/header"
 
 #: lib/layouts/beamer.layout:901
 msgid "Title (Plain Frame)"
 msgstr "Title (Plain Frame)"
 
 #: lib/layouts/beamer.layout:923
-#, fuzzy
 msgid "Short Subtitle|S"
-msgstr "Krátký titulek"
+msgstr "Short Subtitle|S"
 
 #: lib/layouts/beamer.layout:924
 msgid "Short subtitle which appears in the sidebar/header"
-msgstr ""
+msgstr "Short subtitle which appears in the sidebar/header"
 
 #: lib/layouts/beamer.layout:946 lib/layouts/IEEEtran.layout:123
-#, fuzzy
 msgid "Short Author|S"
 msgstr "Klávesové zkratky|z"
 
 #: lib/layouts/beamer.layout:947
 msgid "Short author which appears in the sidebar/header"
-msgstr ""
+msgstr "Short author which appears in the sidebar/header"
 
 #: lib/layouts/beamer.layout:968
-#, fuzzy
 msgid "Short Institute|S"
-msgstr "Krátký titulek"
+msgstr "Short Institute|S"
 
 #: lib/layouts/beamer.layout:969
 msgid "Short institute which appears in the sidebar/header"
-msgstr ""
+msgstr "Short institute which appears in the sidebar/header"
 
 #: lib/layouts/beamer.layout:977
 msgid "InstituteMark"
 msgstr "InstituteMark"
 
 #: lib/layouts/beamer.layout:1011
-#, fuzzy
 msgid "Short Date|S"
-msgstr "Krátký titulek"
+msgstr "Short Date|S"
 
 #: lib/layouts/beamer.layout:1012
 msgid "Short date which appears in the sidebar/header"
-msgstr ""
+msgstr "Short date which appears in the sidebar/header"
 
 #: lib/layouts/beamer.layout:1020
 msgid "TitleGraphic"
@@ -7720,22 +7671,20 @@ msgstr "Důsledek."
 #: lib/layouts/beamer.layout:1423 lib/layouts/beamer.layout:1441
 #: lib/layouts/beamer.layout:1459 lib/layouts/beamer.layout:1477
 #: lib/layouts/beamer.layout:1500
-#, fuzzy
 msgid "Action Specifications|S"
-msgstr "Vybrat sekce|e"
+msgstr "Action Specifications|S"
 
 #: lib/layouts/beamer.layout:1180 lib/layouts/theorems-ams-bytype.inc:58
 #: lib/layouts/theorems-ams.inc:32 lib/layouts/theorems-bytype.inc:34
 #: lib/layouts/theorems.inc:32 lib/layouts/theorems-starred.inc:33
-#, fuzzy
 msgid "Additional Theorem Text"
-msgstr "Doplňkové parametry pro LaTeX"
+msgstr "Doplňkový text Věty"
 
 #: lib/layouts/beamer.layout:1181 lib/layouts/theorems-ams-bytype.inc:59
 #: lib/layouts/theorems-ams.inc:33 lib/layouts/theorems-bytype.inc:35
 #: lib/layouts/theorems.inc:33 lib/layouts/theorems-starred.inc:34
 msgid "Additional text appended to the theorem header"
-msgstr ""
+msgstr "Doplňkový text připojený k hlavičce mat. věty"
 
 #: lib/layouts/beamer.layout:1188 lib/layouts/foils.layout:326
 #: lib/layouts/theorems-starred.inc:156
@@ -7822,9 +7771,8 @@ msgid "Emphasize"
 msgstr "Emphasize"
 
 #: lib/layouts/beamer.layout:1346
-#, fuzzy
 msgid "Emph."
-msgstr "Zvýrazněný"
+msgstr "Emph."
 
 #: lib/layouts/beamer.layout:1361 lib/layouts/beamer.layout:1363
 msgid "Alert"
@@ -7838,43 +7786,36 @@ msgstr "Structure"
 
 #: lib/layouts/beamer.layout:1431 lib/layouts/beamer.layout:1433
 #: lib/layouts/powerdot.layout:569
-#, fuzzy
 msgid "Visible"
-msgstr "VisibleText"
+msgstr "Visible"
 
 #: lib/layouts/beamer.layout:1449 lib/layouts/beamer.layout:1451
-#, fuzzy
 msgid "Invisible"
-msgstr "InvisibleText"
+msgstr "Invisible"
 
 #: lib/layouts/beamer.layout:1467 lib/layouts/beamer.layout:1469
-#, fuzzy
 msgid "Alternative"
-msgstr "&Alternativní jazyk:"
+msgstr "Alternative"
 
 #: lib/layouts/beamer.layout:1483
-#, fuzzy
 msgid "Default Text"
-msgstr "Standardní"
+msgstr "Default Text"
 
 #: lib/layouts/beamer.layout:1484
-#, fuzzy
 msgid "Enter the default text here"
-msgstr "Jméno standardní tiskárny"
+msgstr "Enter the default text here"
 
 #: lib/layouts/beamer.layout:1489
-#, fuzzy
 msgid "Beamer Note"
-msgstr "New Note:"
+msgstr "Beamer Note"
 
 #: lib/layouts/beamer.layout:1506
-#, fuzzy
 msgid "Note Options"
-msgstr "Nastavení matematiky"
+msgstr "Note Options"
 
 #: lib/layouts/beamer.layout:1507
 msgid "Specifiy note options (see beamer manual)"
-msgstr ""
+msgstr "Specifiy note options (see beamer manual)"
 
 #: lib/layouts/beamer.layout:1511
 msgid "ArticleMode"
@@ -8096,9 +8037,8 @@ msgid "Springer cl2emult"
 msgstr ""
 
 #: lib/layouts/ctex-article.layout:3
-#, fuzzy
 msgid "Chinese Article (CTeX)"
-msgstr "Čínština (tradiční) (EUC-TW)"
+msgstr "Chinese Article (CTeX)"
 
 #: lib/layouts/ctex-book.layout:3
 msgid "Chinese Book (CTeX)"
@@ -8106,7 +8046,7 @@ msgstr "Chinese Book (CTeX)"
 
 #: lib/layouts/ctex-report.layout:3
 msgid "Chinese Report (CTeX)"
-msgstr ""
+msgstr "Chinese Report (CTeX)"
 
 #: lib/layouts/ctex-report.layout:4 lib/layouts/extreport.layout:4
 #: lib/layouts/jreport.layout:4 lib/layouts/mwrep.layout:4
@@ -8514,31 +8454,28 @@ msgid "Books (DocBook)"
 msgstr "Knihy (DocBook)"
 
 #: lib/layouts/docbook-chapter.layout:3
-#, fuzzy
 msgid "DocBook Chapter (SGML)"
-msgstr "DocBook (XML)"
+msgstr "DocBook Chapter (SGML)"
 
 #: lib/layouts/docbook.layout:3
 msgid "DocBook Article (SGML)"
 msgstr "DocBook Article (SGML)"
 
 #: lib/layouts/docbook-section.layout:3
-#, fuzzy
 msgid "DocBook Section (SGML)"
-msgstr "DocBook (XML)"
+msgstr "DocBook Section (SGML)"
 
 #: lib/layouts/doublecol-new.layout:3
 msgid "Inderscience A4 Journals"
-msgstr ""
+msgstr "Inderscience A4 Journals"
 
 #: lib/layouts/dtk.layout:3
 msgid "Die TeXnische Komoedie"
-msgstr ""
+msgstr "Die TeXnische Komoedie"
 
 #: lib/layouts/ectaart.layout:3
-#, fuzzy
 msgid "Econometrica"
-msgstr "Angličtina (US)"
+msgstr "Econometrica"
 
 #: lib/layouts/ectaart.layout:22
 msgid "RunTitle"
@@ -8557,24 +8494,20 @@ msgid "Running Author:"
 msgstr "Running Author:"
 
 #: lib/layouts/ectaart.layout:67 lib/layouts/elsart.layout:148
-#, fuzzy
 msgid "Address Option"
-msgstr "Address for Offprints:"
+msgstr "Address Option"
 
 #: lib/layouts/ectaart.layout:68 lib/layouts/elsart.layout:149
-#, fuzzy
 msgid "Optional argument for the address"
-msgstr "Přidat pohlcování volitelného argumentu zprava"
+msgstr "Optional argument for the address"
 
 #: lib/layouts/ectaart.layout:78
-#, fuzzy
 msgid "E-Mail Option"
-msgstr "Nastavení matematiky"
+msgstr "E-Mail Option"
 
 #: lib/layouts/ectaart.layout:79
-#, fuzzy
 msgid "Optional argument for the e-mail"
-msgstr "Přidat pohlcování volitelného argumentu zprava"
+msgstr "Optional argument for the e-mail"
 
 #: lib/layouts/ectaart.layout:84 lib/layouts/europecv.layout:74
 #: lib/layouts/latex8.layout:78
@@ -8730,27 +8663,23 @@ msgstr "reprint_reqs_to:"
 
 #: lib/layouts/elsarticle.layout:3
 msgid "Elsevier"
-msgstr ""
+msgstr "Elsevier"
 
 #: lib/layouts/elsarticle.layout:57
-#, fuzzy
 msgid "BeginFrontmatter"
-msgstr "Úvodní část"
+msgstr "BeginFrontmatter"
 
 #: lib/layouts/elsarticle.layout:67
-#, fuzzy
 msgid "Begin frontmatter"
-msgstr "Úvodní část"
+msgstr "Begin frontmatter"
 
 #: lib/layouts/elsarticle.layout:75
-#, fuzzy
 msgid "EndFrontmatter"
-msgstr "Úvodní část"
+msgstr "EndFrontmatter"
 
 #: lib/layouts/elsarticle.layout:78
-#, fuzzy
 msgid "End frontmatter"
-msgstr "Úvodní část"
+msgstr "End frontmatter"
 
 #: lib/layouts/elsarticle.layout:103
 msgid "Titlenotemark"
@@ -8765,26 +8694,24 @@ msgid "Title footnote"
 msgstr "Title footnote"
 
 #: lib/layouts/elsarticle.layout:133
-#, fuzzy
 msgid "Footnote Label"
-msgstr "značka poznámky pod čarou"
+msgstr "Footnote Label"
 
 #: lib/layouts/elsarticle.layout:134
 msgid "Label you refer to in the title"
-msgstr ""
+msgstr "Label you refer to in the title"
 
 #: lib/layouts/elsarticle.layout:141
 msgid "Title footnote:"
 msgstr "Title footnote:"
 
 #: lib/layouts/elsarticle.layout:155
-#, fuzzy
 msgid "Author Label"
-msgstr "Author Email"
+msgstr "Author Label"
 
 #: lib/layouts/elsarticle.layout:156
 msgid "Label you will reference in the address"
-msgstr ""
+msgstr "Label you will reference in the address"
 
 #: lib/layouts/elsarticle.layout:172
 msgid "Authormark"
@@ -8803,13 +8730,12 @@ msgid "Author footnote:"
 msgstr "Author footnote:"
 
 #: lib/layouts/elsarticle.layout:200
-#, fuzzy
 msgid "Author Footnote Label"
-msgstr "Author footnote"
+msgstr "Author Footnote Label"
 
 #: lib/layouts/elsarticle.layout:201
 msgid "Label you refer to for an author"
-msgstr ""
+msgstr "Label you refer to for an author"
 
 #: lib/layouts/elsarticle.layout:206
 msgid "CorAuthormark"
@@ -8828,36 +8754,32 @@ msgid "Corresponding author text:"
 msgstr "Corresponding author text:"
 
 #: lib/layouts/elsarticle.layout:230
-#, fuzzy
 msgid "Address Label"
-msgstr "Adresa"
+msgstr "Address Label"
 
 #: lib/layouts/elsarticle.layout:231
 msgid "Label of the author you refer to"
-msgstr ""
+msgstr "Label of the author you refer to"
 
 #: lib/layouts/elsarticle.layout:248
-#, fuzzy
 msgid "Internet"
-msgstr "InternetRowA"
+msgstr "Internet"
 
 #: lib/layouts/elsarticle.layout:249
 msgid "If content is 'url', email becomes an Internet address"
-msgstr ""
+msgstr "If content is 'url', email becomes an Internet address"
 
 #: lib/layouts/elsart.layout:3
 msgid "Elsevier (Obsolete Version)"
-msgstr ""
+msgstr "Elsevier (Obsolete Version)"
 
 #: lib/layouts/elsart.layout:129
-#, fuzzy
 msgid "Author Option"
-msgstr "Nastavení matematiky"
+msgstr "Author Option"
 
 #: lib/layouts/elsart.layout:130
-#, fuzzy
 msgid "Optional argument for the author"
-msgstr "Přidat pohlcování volitelného argumentu zprava"
+msgstr "Optional argument for the author"
 
 #: lib/layouts/elsart.layout:138
 msgid "Author Address"
@@ -8884,9 +8806,8 @@ msgid "URL:"
 msgstr "URL:"
 
 #: lib/layouts/elsart.layout:207
-#, fuzzy
 msgid "Thanks Option"
-msgstr "Transition"
+msgstr "Thanks Option"
 
 #: lib/layouts/elsart.layout:208
 msgid "Optional argument for the thanks statement"
@@ -9219,9 +9140,8 @@ msgid "Report (Standard Class with Extra Font Sizes)"
 msgstr ""
 
 #: lib/layouts/foils.layout:3
-#, fuzzy
 msgid "FoilTeX"
-msgstr "Foilhead"
+msgstr "FoilTeX"
 
 #: lib/layouts/foils.layout:44
 msgid "Foilhead"
@@ -9746,9 +9666,8 @@ msgid "BankAccount:"
 msgstr "BankAccount:"
 
 #: lib/layouts/heb-article.layout:3
-#, fuzzy
 msgid "Hebrew Article"
-msgstr "Article"
+msgstr "Hebrew Article"
 
 #: lib/layouts/heb-article.layout:70
 msgid "Claim #."
@@ -9837,14 +9756,12 @@ msgid "Standard in Title"
 msgstr "Standard in Title"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:31
-#, fuzzy
 msgid "Author Footnote"
-msgstr "Author footnote"
+msgstr "Author Footnote"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:37
-#, fuzzy
 msgid "Author foot"
-msgstr "Author footnote"
+msgstr "Author foot"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:60
 #: lib/layouts/IEEEtran-TransMag.layout:39
@@ -9857,9 +9774,8 @@ msgid "NontitleAbstractIndexText"
 msgstr "NontitleAbstractIndexText"
 
 #: lib/layouts/IEEEtran.layout:3
-#, fuzzy
 msgid "IEEE Transactions"
-msgstr "Transition"
+msgstr "IEEE Transactions"
 
 #: lib/layouts/IEEEtran.layout:86 lib/layouts/IEEEtran.layout:91
 msgid "IEEE membership"
@@ -9876,27 +9792,23 @@ msgstr "lowercase"
 
 #: lib/layouts/IEEEtran.layout:124
 msgid "A short version of the author name"
-msgstr ""
+msgstr "A short version of the author name"
 
 #: lib/layouts/IEEEtran.layout:140
-#, fuzzy
 msgid "Author Name"
-msgstr "Author Note:"
+msgstr "Author Name"
 
 #: lib/layouts/IEEEtran.layout:146
-#, fuzzy
 msgid "Author name"
-msgstr "Author mark"
+msgstr "Author name"
 
 #: lib/layouts/IEEEtran.layout:157
-#, fuzzy
 msgid "Author Affiliation"
-msgstr "Author affiliation"
+msgstr "Author Affiliation"
 
 #: lib/layouts/IEEEtran.layout:171
-#, fuzzy
 msgid "Author Mark"
-msgstr "Author mark"
+msgstr "Author Mark"
 
 #: lib/layouts/IEEEtran.layout:194
 msgid "Special Paper Notice"
@@ -9911,9 +9823,8 @@ msgid "Page headings"
 msgstr "Page headings"
 
 #: lib/layouts/IEEEtran.layout:224
-#, fuzzy
 msgid "Left Side"
-msgstr "Levá hlavička"
+msgstr "Left Side"
 
 #: lib/layouts/IEEEtran.layout:225
 msgid "Left side of the header line"
@@ -9937,32 +9848,28 @@ msgid "Index Terms---"
 msgstr "Index Terms---"
 
 #: lib/layouts/IEEEtran.layout:283 lib/layouts/IEEEtran.layout:287
-#, fuzzy
 msgid "Paragraph Start"
-msgstr "Nastavení odstavce"
+msgstr "Paragraph Start"
 
 #: lib/layouts/IEEEtran.layout:291
-#, fuzzy
 msgid "First Char"
-msgstr "První hlavička:"
+msgstr "First Char"
 
 #: lib/layouts/IEEEtran.layout:292
 msgid "First character of first word"
-msgstr ""
+msgstr "First character of first word"
 
 #: lib/layouts/IEEEtran.layout:300 lib/layouts/IEEEtran.layout:310
 msgid "Appendices"
 msgstr "Appendices"
 
 #: lib/layouts/IEEEtran.layout:318
-#, fuzzy
 msgid "Peer Review Title"
-msgstr "Náhled selhal"
+msgstr "Peer Review Title"
 
 #: lib/layouts/IEEEtran.layout:323
-#, fuzzy
 msgid "PeerReviewTitle"
-msgstr "Náhled selhal"
+msgstr "PeerReviewTitle"
 
 #: lib/layouts/IEEEtran.layout:332
 msgid "Short Title"
@@ -9970,7 +9877,7 @@ msgstr "Krátký titulek|i"
 
 #: lib/layouts/IEEEtran.layout:333
 msgid "Short title for the appendix"
-msgstr ""
+msgstr "Short title for the appendix"
 
 #: lib/layouts/IEEEtran.layout:362
 msgid "Biography"
@@ -9982,13 +9889,12 @@ msgstr "Photo"
 
 #: lib/layouts/IEEEtran.layout:368
 msgid "Optional photo for biography"
-msgstr ""
+msgstr "Optional photo for biography"
 
 #: lib/layouts/IEEEtran.layout:374 lib/layouts/IEEEtran.layout:391
 #: lib/layouts/sigplanconf.layout:152
-#, fuzzy
 msgid "Name of the author"
-msgstr "Jméno standardní tiskárny"
+msgstr "Name of the author"
 
 #: lib/layouts/IEEEtran.layout:383
 msgid "Biography without photo"
@@ -10245,9 +10151,8 @@ msgid "Alternative Affiliation"
 msgstr "Alternative Affiliation"
 
 #: lib/layouts/jasatex.layout:126
-#, fuzzy
 msgid "Affiliation Prefix"
-msgstr "Affiliation Mark"
+msgstr "Affiliation Prefix"
 
 #: lib/layouts/jasatex.layout:127
 msgid "A prefix like 'Also at '"
@@ -10274,21 +10179,20 @@ msgid "Online citation"
 msgstr "Online citation"
 
 #: lib/layouts/jbook.layout:3
-#, fuzzy
 msgid "Japanese Book (jbook)"
-msgstr "Japonština (CJK)"
+msgstr "Japanese Book (jbook)"
 
 #: lib/layouts/jgrga.layout:3
 msgid "American Geophysical Union (AGUPLUS JGR)"
-msgstr ""
+msgstr "American Geophysical Union (AGUPLUS JGR)"
 
 #: lib/layouts/jreport.layout:3
 msgid "Japanese Report (jreport)"
-msgstr ""
+msgstr "Japanese Report (jreport)"
 
 #: lib/layouts/jsarticle.layout:3
 msgid "Japanese Article (jsarticle)"
-msgstr ""
+msgstr "Japanese Article (jsarticle)"
 
 #: lib/layouts/jsbook.layout:3
 msgid "Japanese Book (jsbook)"
@@ -10296,11 +10200,11 @@ msgstr "Japanese Book (jsbook)"
 
 #: lib/layouts/jss.layout:3
 msgid "Journal of Statistical Software (JSS)"
-msgstr ""
+msgstr "Journal of Statistical Software (JSS)"
 
 #: lib/layouts/kluwer.layout:3
 msgid "Kluwer"
-msgstr ""
+msgstr "Kluwer"
 
 #: lib/layouts/kluwer.layout:202
 msgid "AddressForOffprints"
@@ -10407,7 +10311,7 @@ msgstr "P.S.:"
 
 #: lib/layouts/llncs.layout:3
 msgid "Lecture Notes in Comp. Science (LNCS)"
-msgstr ""
+msgstr "Lecture Notes in Comp. Science (LNCS)"
 
 #: lib/layouts/llncs.layout:41 lib/layouts/memoir.layout:63
 #: lib/layouts/recipebook.layout:42 lib/layouts/scrbook.layout:17
@@ -10427,9 +10331,8 @@ msgid "TOC Title"
 msgstr "TOC Title"
 
 #: lib/layouts/llncs.layout:179
-#, fuzzy
 msgid "TOC Title:"
-msgstr "TOC Title"
+msgstr "TOC Title:"
 
 #: lib/layouts/llncs.layout:204
 msgid "Author Running"
@@ -10623,28 +10526,24 @@ msgid "CVStyle"
 msgstr "CVStyle"
 
 #: lib/layouts/moderncv.layout:45
-#, fuzzy
 msgid "CV Style:"
-msgstr "CV style:"
+msgstr "CV Style:"
 
 #: lib/layouts/moderncv.layout:52
 msgid "CVColor"
 msgstr "CVColor"
 
 #: lib/layouts/moderncv.layout:55
-#, fuzzy
 msgid "CV Color Scheme:"
-msgstr "CV color scheme:"
+msgstr "CV Color Scheme:"
 
 #: lib/layouts/moderncv.layout:58
-#, fuzzy
 msgid "PDF Page Mode"
-msgstr "Stránky PDF"
+msgstr "PDF Page Mode"
 
 #: lib/layouts/moderncv.layout:61
-#, fuzzy
 msgid "PDF Page Mode:"
-msgstr "Stránky PDF"
+msgstr "PDF Page Mode:"
 
 #: lib/layouts/moderncv.layout:64 lib/layouts/db_stdtitle.inc:94
 msgid "FirstName"
@@ -10659,18 +10558,16 @@ msgid "Family Name:"
 msgstr "Family Name:"
 
 #: lib/layouts/moderncv.layout:114
-#, fuzzy
 msgid "Line 1"
-msgstr "Linka nahoře|n"
+msgstr "Line 1"
 
 #: lib/layouts/moderncv.layout:115 lib/layouts/moderncv.layout:121
 msgid "Optional address line"
-msgstr ""
+msgstr "Optional address line"
 
 #: lib/layouts/moderncv.layout:120
-#, fuzzy
 msgid "Line 2"
-msgstr "Linka nahoře|n"
+msgstr "Line 2"
 
 #: lib/layouts/moderncv.layout:128
 msgid "Mobile:"
@@ -10681,19 +10578,16 @@ msgid "Homepage:"
 msgstr "Homepage:"
 
 #: lib/layouts/moderncv.layout:155
-#, fuzzy
 msgid "Social"
-msgstr "Specializované"
+msgstr "Social"
 
 #: lib/layouts/moderncv.layout:158
-#, fuzzy
 msgid "Social:"
-msgstr "Specializované"
+msgstr "Social:"
 
 #: lib/layouts/moderncv.layout:161
-#, fuzzy
 msgid "Name of the social network"
-msgstr "Jméno standardní tiskárny"
+msgstr "Name of the social network"
 
 #: lib/layouts/moderncv.layout:165
 msgid "ExtraInfo"
@@ -10712,13 +10606,12 @@ msgid "Height the photo is resized to"
 msgstr ""
 
 #: lib/layouts/moderncv.layout:180
-#, fuzzy
 msgid "Thickness"
-msgstr "&Tloušťka:"
+msgstr "Thickness"
 
 #: lib/layouts/moderncv.layout:181
 msgid "Thickness of the surrounding frame"
-msgstr ""
+msgstr "Thickness of the surrounding frame"
 
 #: lib/layouts/moderncv.layout:219
 msgid "EmptySection"
@@ -10733,23 +10626,20 @@ msgid "CloseSection"
 msgstr "CloseSection"
 
 #: lib/layouts/moderncv.layout:260
-#, fuzzy
 msgid "Columns:"
-msgstr "&Sloupce:"
+msgstr "Columns:"
 
 #: lib/layouts/moderncv.layout:275
-#, fuzzy
 msgid "Optional width"
-msgstr "volitelné"
+msgstr "Optional width"
 
 #: lib/layouts/moderncv.layout:280 lib/layouts/agu_stdtitle.inc:13
 msgid "Header"
 msgstr "Header"
 
 #: lib/layouts/moderncv.layout:281
-#, fuzzy
 msgid "Header content"
-msgstr "Slidecontents"
+msgstr "Header content"
 
 #: lib/layouts/moderncv.layout:290
 msgid "Entry"
@@ -10757,11 +10647,11 @@ msgstr "Heslo"
 
 #: lib/layouts/moderncv.layout:296 lib/layouts/moderncv.layout:297
 msgid "Time"
-msgstr ""
+msgstr "Time"
 
 #: lib/layouts/moderncv.layout:301 lib/layouts/moderncv.layout:302
 msgid "What?"
-msgstr ""
+msgstr "What?"
 
 #: lib/layouts/moderncv.layout:317 lib/layouts/moderncv.layout:318
 #: lib/layouts/agu_stdtitle.inc:449 lib/layouts/agu_stdtitle.inc:451
@@ -10782,14 +10672,12 @@ msgid "ItemWithComment"
 msgstr "ItemWithComment"
 
 #: lib/layouts/moderncv.layout:360
-#, fuzzy
 msgid "Item with Comment:"
-msgstr "Item with comment:"
+msgstr "Item with Comment:"
 
 #: lib/layouts/moderncv.layout:370 lib/layouts/moderncv.layout:371
-#, fuzzy
 msgid "Text"
-msgstr "Text:"
+msgstr "Text"
 
 #: lib/layouts/moderncv.layout:387
 msgid "ListItem"
@@ -10808,34 +10696,28 @@ msgid "Double Item:"
 msgstr "Double Item:"
 
 #: lib/layouts/moderncv.layout:401
-#, fuzzy
 msgid "Left Summary"
-msgstr "Souhrn"
+msgstr "Left Summary"
 
 #: lib/layouts/moderncv.layout:402
-#, fuzzy
 msgid "Left summary"
-msgstr "Souhrn"
+msgstr "Left summary"
 
 #: lib/layouts/moderncv.layout:406
-#, fuzzy
 msgid "Left Text"
-msgstr "Ref+Text: "
+msgstr "Left Text"
 
 #: lib/layouts/moderncv.layout:407
-#, fuzzy
 msgid "Left text"
-msgstr "text LaTeX-u"
+msgstr "Left text"
 
 #: lib/layouts/moderncv.layout:411
-#, fuzzy
 msgid "Right Summary"
-msgstr "Souhrn"
+msgstr "Right Summary"
 
 #: lib/layouts/moderncv.layout:412
-#, fuzzy
 msgid "Right summary"
-msgstr "Pravá hlavička"
+msgstr "Right summary"
 
 #: lib/layouts/moderncv.layout:416
 msgid "DoubleListItem"
@@ -10846,14 +10728,12 @@ msgid "Double List Item:"
 msgstr "Double List Item:"
 
 #: lib/layouts/moderncv.layout:424
-#, fuzzy
 msgid "First Item"
-msgstr "List Item:"
+msgstr "First Item"
 
 #: lib/layouts/moderncv.layout:425
-#, fuzzy
 msgid "First item"
-msgstr "Pr&vní řádek:"
+msgstr "First item"
 
 #: lib/layouts/moderncv.layout:433
 msgid "Computer"
@@ -10864,18 +10744,16 @@ msgid "MakeCVtitle"
 msgstr "MakeCVtitle"
 
 #: lib/layouts/moderncv.layout:440
-#, fuzzy
 msgid "Make CV Title"
-msgstr "Make CV title"
+msgstr "Make CV Title"
 
 #: lib/layouts/moderncv.layout:447
 msgid "MakeLetterTitle"
 msgstr "MakeLetterTitle"
 
 #: lib/layouts/moderncv.layout:450
-#, fuzzy
 msgid "Make Letter Title"
-msgstr "MakeLetterTitle"
+msgstr "Make Letter Title"
 
 #: lib/layouts/moderncv.layout:454
 msgid "MakeLetterClosing"
@@ -10898,27 +10776,24 @@ msgid "Recipient"
 msgstr "Recipient"
 
 #: lib/layouts/moderncv.layout:511
-#, fuzzy
 msgid "Company Name"
-msgstr "Jméno informace:"
+msgstr "Company Name"
 
 #: lib/layouts/moderncv.layout:512
-#, fuzzy
 msgid "Company name"
-msgstr "Jméno větve"
+msgstr "Company name"
 
 #: lib/layouts/moderncv.layout:555
 msgid "Enclosing"
 msgstr "Enclosing"
 
 #: lib/layouts/moderncv.layout:560 lib/layouts/svcommon.inc:519
-#, fuzzy
 msgid "Alternative Name"
-msgstr "&Alternativní jazyk:"
+msgstr "Alternative Name"
 
 #: lib/layouts/moderncv.layout:561
 msgid "Alternative instead of 'Enclosure'"
-msgstr ""
+msgstr "Alternative instead of 'Enclosure'"
 
 #: lib/layouts/moderncv.layout:565
 msgid "Enclosing:"
@@ -10926,19 +10801,19 @@ msgstr "Enclosing:"
 
 #: lib/layouts/mwart.layout:3
 msgid "Polish Article (MW Bundle)"
-msgstr ""
+msgstr "Polish Article (MW Bundle)"
 
 #: lib/layouts/mwbk.layout:3
 msgid "Polish Book (MW Bundle)"
-msgstr ""
+msgstr "Polish Book (MW Bundle)"
 
 #: lib/layouts/mwrep.layout:3
 msgid "Polish Report (MW Bundle)"
-msgstr ""
+msgstr "Polish Report (MW Bundle)"
 
 #: lib/layouts/paper.layout:3
 msgid "Paper (Standard Class)"
-msgstr ""
+msgstr "Paper (Standard Class)"
 
 #: lib/layouts/paper.layout:149
 msgid "SubTitle"
@@ -10950,13 +10825,12 @@ msgstr "Institution"
 
 #: lib/layouts/powerdot.layout:3
 msgid "Powerdot"
-msgstr ""
+msgstr "Powerdot"
 
 #: lib/layouts/powerdot.layout:43 lib/layouts/powerdot.layout:67
 #: lib/layouts/powerdot.layout:89
-#, fuzzy
 msgid "TitleSlide"
-msgstr "WideSlide"
+msgstr "TitleSlide"
 
 #: lib/layouts/powerdot.layout:125 lib/layouts/powerdot.layout:151
 #: lib/layouts/powerdot.layout:205 lib/layouts/slides.layout:3
@@ -10968,9 +10842,8 @@ msgid "    "
 msgstr "    "
 
 #: lib/layouts/powerdot.layout:140
-#, fuzzy
 msgid "Slide Option"
-msgstr "Parametry pro Sweave"
+msgstr "Slide Option"
 
 #: lib/layouts/powerdot.layout:141
 msgid "Optional arguments to the slide command (see powerdot manual)"
@@ -11001,74 +10874,66 @@ msgid "\\arabic{section}"
 msgstr "\\arabic{section}"
 
 #: lib/layouts/powerdot.layout:245
-#, fuzzy
 msgid "Section Option"
-msgstr "Sectioning"
+msgstr "Section Option"
 
 #: lib/layouts/powerdot.layout:246
 msgid "Optional arguments to the section command (see powerdot manual)"
-msgstr ""
+msgstr "Optional arguments to the section command (see powerdot manual)"
 
 #: lib/layouts/powerdot.layout:254 lib/layouts/powerdot.layout:302
-#, fuzzy
 msgid "Lists"
-msgstr "Generovat:"
+msgstr "Lists"
 
 #: lib/layouts/powerdot.layout:269 lib/layouts/powerdot.layout:292
-#, fuzzy
 msgid "Itemize Type"
-msgstr "ItemizeType1"
+msgstr "Itemize Type"
 
 #: lib/layouts/powerdot.layout:270 lib/layouts/powerdot.layout:293
 msgid "Itemize type specification (see powerdot manual)"
-msgstr ""
+msgstr "Itemize type specification (see powerdot manual)"
 
 #: lib/layouts/powerdot.layout:273 lib/layouts/enumitem.module:57
-#, fuzzy
 msgid "Itemize Options"
-msgstr "Seznam položek"
+msgstr "Itemize Options"
 
 #: lib/layouts/powerdot.layout:274 lib/layouts/powerdot.layout:324
 #: lib/layouts/enumitem.module:58 lib/layouts/enumitem.module:65
 #: lib/layouts/enumitem.module:72
 msgid "Optional arguments for this list (see enumitem manual)"
-msgstr ""
+msgstr "Optional arguments for this list (see enumitem manual)"
 
 #: lib/layouts/powerdot.layout:289
 msgid "ItemizeType1"
 msgstr "ItemizeType1"
 
 #: lib/layouts/powerdot.layout:319 lib/layouts/powerdot.layout:342
-#, fuzzy
 msgid "Enumerate Type"
-msgstr "EnumerateType1"
+msgstr "Enumerate Type"
 
 #: lib/layouts/powerdot.layout:320 lib/layouts/powerdot.layout:343
 msgid "Enumerate type specification (see powerdot manual)"
 msgstr ""
 
 #: lib/layouts/powerdot.layout:323 lib/layouts/enumitem.module:64
-#, fuzzy
 msgid "Enumerate Options"
-msgstr "Parametry pro Sweave"
+msgstr "Enumerate Options"
 
 #: lib/layouts/powerdot.layout:339
 msgid "EnumerateType1"
 msgstr "EnumerateType1"
 
 #: lib/layouts/powerdot.layout:435
-#, fuzzy
 msgid "Twocolumn"
-msgstr "columns "
+msgstr "Twocolumn"
 
 #: lib/layouts/powerdot.layout:450
 msgid "Twocolumn options (see powerdot manual)"
-msgstr ""
+msgstr "Twocolumn options (see powerdot manual)"
 
 #: lib/layouts/powerdot.layout:453
-#, fuzzy
 msgid "Left Column"
-msgstr "Column"
+msgstr "Left Column"
 
 #: lib/layouts/powerdot.layout:454
 msgid "Enter the text of the left column here (right column in main paragraph)"
@@ -11079,38 +10944,32 @@ msgid "List of Algorithms"
 msgstr "Seznam algoritmů"
 
 #: lib/layouts/powerdot.layout:567
-#, fuzzy
 msgid "Onslide"
-msgstr "Only on slides"
+msgstr "Onslide"
 
 #: lib/layouts/powerdot.layout:573
-#, fuzzy
 msgid "On Slides"
-msgstr "Slide"
+msgstr "On Slides"
 
 #: lib/layouts/powerdot.layout:574
-#, fuzzy
 msgid "Overlay Specification|S"
-msgstr "Vybrat sekce|e"
+msgstr "Overlay Specification|S"
 
 #: lib/layouts/powerdot.layout:575
 msgid "Specify the overlay settings (see powerdot manual)"
-msgstr ""
+msgstr "Specify the overlay settings (see powerdot manual)"
 
 #: lib/layouts/powerdot.layout:581
-#, fuzzy
 msgid "Onslide+"
-msgstr "Only on slides"
+msgstr "Onslide+"
 
 #: lib/layouts/powerdot.layout:587
-#, fuzzy
 msgid "Onslide*"
-msgstr "Slide*"
+msgstr "Onslide*"
 
 #: lib/layouts/recipebook.layout:3
-#, fuzzy
 msgid "Recipe Book"
-msgstr "Recipe"
+msgstr "Recipe Book"
 
 #: lib/layouts/recipebook.layout:43 lib/layouts/scrbook.layout:18
 msgid "\\thechapter"
@@ -11129,13 +10988,12 @@ msgid "Ingredients"
 msgstr "Ingredients"
 
 #: lib/layouts/recipebook.layout:118
-#, fuzzy
 msgid "Ingredients Header"
-msgstr "Ingredients"
+msgstr "Ingredients Header"
 
 #: lib/layouts/recipebook.layout:119
 msgid "Specify an optional ingredients header"
-msgstr ""
+msgstr "Specify an optional ingredients header"
 
 #: lib/layouts/recipebook.layout:127
 msgid "Ingredients:"
@@ -11249,7 +11107,7 @@ msgstr "Float Link"
 
 #: lib/layouts/revtex4.layout:3
 msgid "REVTeX (V. 4)"
-msgstr ""
+msgstr "REVTeX (V. 4)"
 
 #: lib/layouts/revtex4.layout:173
 msgid "AltAffiliation"
@@ -11264,26 +11122,24 @@ msgid "REVTeX (Obsolete Version)"
 msgstr "REVTeX (Obsolete Version)"
 
 #: lib/layouts/RJournal.layout:3
-#, fuzzy
 msgid "R Journal"
-msgstr "Journal"
+msgstr "R Journal"
 
 #: lib/layouts/scrartcl.layout:3
 msgid "KOMA-Script Article"
-msgstr ""
+msgstr "KOMA-Script Article"
 
 #: lib/layouts/scrarticle-beamer.layout:3
 msgid "Beamer Article (KOMA-Script)"
-msgstr ""
+msgstr "Beamer Article (KOMA-Script)"
 
 #: lib/layouts/scrbook.layout:3
 msgid "KOMA-Script Book"
-msgstr ""
+msgstr "KOMA-Script Book"
 
 #: lib/layouts/scrbook.layout:26
-#, fuzzy
 msgid "\\thechapter.\\arabic{equation}"
-msgstr "\\thesection.\\arabic{equation}"
+msgstr "\\thechapter.\\arabic{equation}"
 
 #: lib/layouts/scrlettr.layout:3
 msgid "KOMA-Script Letter (V. 1, Obsolete)"
@@ -11405,11 +11261,11 @@ msgstr "End of letter"
 
 #: lib/layouts/scrreprt.layout:3
 msgid "KOMA-Script Report"
-msgstr ""
+msgstr "KOMA-Script Report"
 
 #: lib/layouts/seminar.layout:3
 msgid "Seminar"
-msgstr ""
+msgstr "Seminar"
 
 #: lib/layouts/seminar.layout:26 lib/layouts/seminar.layout:85
 msgid "LandscapeSlide"
@@ -11489,7 +11345,7 @@ msgstr "[Progress Contents]"
 
 #: lib/layouts/siamltex.layout:3
 msgid "Society for Industrial and Applied Mathematics (SIAM)"
-msgstr ""
+msgstr "Society for Industrial and Applied Mathematics (SIAM)"
 
 #: lib/layouts/siamltex.layout:113 lib/layouts/theorems-order.inc:34
 #: lib/layouts/theorems-starred.inc:118
@@ -11551,28 +11407,24 @@ msgid "Copyright data:"
 msgstr "Copyright data:"
 
 #: lib/layouts/sigplanconf.layout:109
-#, fuzzy
 msgid "TitleBanner"
-msgstr "Titlenotemark"
+msgstr "TitleBanner"
 
 #: lib/layouts/sigplanconf.layout:112
-#, fuzzy
 msgid "Title banner:"
-msgstr "Title footnote:"
+msgstr "Title banner:"
 
 #: lib/layouts/sigplanconf.layout:116
-#, fuzzy
 msgid "PreprintFooter"
-msgstr "Preprint"
+msgstr "PreprintFooter"
 
 #: lib/layouts/sigplanconf.layout:119
-#, fuzzy
 msgid "Preprint footer:"
-msgstr "Preprint number:"
+msgstr "Preprint footer:"
 
 #: lib/layouts/sigplanconf.layout:160
 msgid "Affiliation and/or address of the author"
-msgstr ""
+msgstr "Affiliation and/or address of the author"
 
 #: lib/layouts/sigplanconf.layout:170 lib/layouts/acm-sigs.inc:31
 msgid "Terms"
@@ -11592,11 +11444,11 @@ msgstr "Topic"
 
 #: lib/layouts/singlecol.layout:3
 msgid "Inderscience Journals (Obsolete Version)"
-msgstr ""
+msgstr "Inderscience Journals (Obsolete Version)"
 
 #: lib/layouts/singlecol-new.layout:3
 msgid "Inderscience 9.5 x 6.5 Journals"
-msgstr ""
+msgstr "Inderscience 9.5 x 6.5 Journals"
 
 #: lib/layouts/slides.layout:107
 msgid "New Slide:"
@@ -11632,7 +11484,7 @@ msgstr "<Visible Text Follows>"
 
 #: lib/layouts/spie.layout:3
 msgid "SPIE Proceedings"
-msgstr ""
+msgstr "SPIE Proceedings"
 
 #: lib/layouts/spie.layout:56
 msgid "Authorinfo"
@@ -11648,7 +11500,7 @@ msgstr "ACKNOWLEDGMENTS"
 
 #: lib/layouts/svglobal3.layout:3
 msgid "Springer SV Global (V. 3)"
-msgstr ""
+msgstr "Springer SV Global (V. 3)"
 
 #: lib/layouts/svglobal3.layout:73
 msgid "Subclass"
@@ -11732,7 +11584,7 @@ msgstr "Springer SV Jour/Jog"
 
 #: lib/layouts/svmono.layout:3
 msgid "Springer SV Mono"
-msgstr ""
+msgstr "Springer SV Mono"
 
 #: lib/layouts/svmono.layout:91 lib/layouts/svcommon.inc:658
 msgid "Proof(QED)"
@@ -11816,15 +11668,15 @@ msgstr "ChapMotto"
 
 #: lib/layouts/svprobth.layout:3
 msgid "Springer SV Jour/PTRF"
-msgstr ""
+msgstr "Springer SV Jour/PTRF"
 
 #: lib/layouts/tarticle.layout:3
 msgid "Japanese Article (Vertical Writing)"
-msgstr ""
+msgstr "Japanese Article (Vertical Writing)"
 
 #: lib/layouts/tbook.layout:3
 msgid "Japanese Book (Vertical Writing)"
-msgstr ""
+msgstr "Japanese Book (Vertical Writing)"
 
 #: lib/layouts/treport.layout:3
 msgid "Japanese Report (Vertical Writing)"
@@ -11832,7 +11684,7 @@ msgstr "Japanese Report (Vertical Writing)"
 
 #: lib/layouts/tufte-book.layout:3
 msgid "Tufte Book"
-msgstr ""
+msgstr "Tufte Book"
 
 #: lib/layouts/tufte-book.layout:81 lib/layouts/scrclass.inc:129
 #: lib/layouts/stdsections.inc:61
@@ -11908,9 +11760,8 @@ msgid "Thesaurus not supported in recent A&A:"
 msgstr "Thesaurus not supported in recent A&A:"
 
 #: lib/layouts/acm-sigs.inc:37
-#, fuzzy
 msgid "General terms:"
-msgstr "Obecné"
+msgstr "General terms:"
 
 #: lib/layouts/aguplus.inc:71 lib/layouts/db_stdstarsections.inc:72
 #: lib/layouts/stdstarsections.inc:68 lib/layouts/svcommon.inc:278
@@ -12324,9 +12175,8 @@ msgid "RevisionRemark"
 msgstr "RevisionRemark"
 
 #: lib/layouts/litinsets.inc:12
-#, fuzzy
 msgid "Chunk ##"
-msgstr "Útržek"
+msgstr "Útržek ##"
 
 #: lib/layouts/litinsets.inc:15 lib/layouts/litinsets.inc:16
 msgid "Chunk"
@@ -12418,32 +12268,31 @@ msgstr "Extra titulek"
 
 #: lib/layouts/scrclass.inc:268
 msgid "Above"
-msgstr ""
+msgstr "Nad"
 
 #: lib/layouts/scrclass.inc:269
 msgid "above"
-msgstr ""
+msgstr "nad"
 
 #: lib/layouts/scrclass.inc:288
 msgid "Below"
-msgstr ""
+msgstr "Pod"
 
 #: lib/layouts/scrclass.inc:289
 msgid "below"
-msgstr ""
+msgstr "pod"
 
 #: lib/layouts/scrclass.inc:308
 msgid "Dictum"
 msgstr "Výrok"
 
 #: lib/layouts/scrclass.inc:318
-#, fuzzy
 msgid "Dictum Author"
-msgstr "FirstAuthor"
+msgstr "Autor výroku"
 
 #: lib/layouts/scrclass.inc:319
 msgid "The author of this dictum"
-msgstr ""
+msgstr "Autor tohot výroku"
 
 #: lib/layouts/stdcharstyles.inc:10 lib/layouts/stdcustom.inc:10
 msgid "UNDEFINED"
@@ -12528,7 +12377,6 @@ msgid "ERT"
 msgstr "ERT"
 
 #: lib/layouts/stdinsets.inc:227 lib/layouts/stdinsets.inc:233
-#, fuzzy
 msgid "Listings[[List of Listings]]"
 msgstr "Seznam výpisů"
 
@@ -12546,11 +12394,11 @@ msgstr "Argument"
 
 #: lib/layouts/stdinsets.inc:539
 msgid "LongTableNoNumber"
-msgstr ""
+msgstr "LongTableNoNumber"
 
 #: lib/layouts/stdinsets.inc:543
 msgid "Long Table Caption (unnumbered)"
-msgstr ""
+msgstr "Long Table Caption (unnumbered)"
 
 #: lib/layouts/stdinsets.inc:544
 msgid "The caption as it appears in the list of tables"
@@ -12597,14 +12445,12 @@ msgid "--- Back Matter ---"
 msgstr "--- Back Matter ---"
 
 #: lib/layouts/svcommon.inc:141
-#, fuzzy
 msgid "Part Title"
-msgstr "Krátký titulek|i"
+msgstr "Part Title"
 
 #: lib/layouts/svcommon.inc:142
-#, fuzzy
 msgid "Title of this part"
-msgstr "Titlenote mark"
+msgstr "Title of this part"
 
 #: lib/layouts/svcommon.inc:288
 msgid "Run-in headings"
@@ -12655,19 +12501,16 @@ msgid "Abstract* (not printed)"
 msgstr "Abstract* (not printed)"
 
 #: lib/layouts/svcommon.inc:520
-#, fuzzy
 msgid "Alternative name"
-msgstr "&Alternativní jazyk:"
+msgstr "Alternative name"
 
 #: lib/layouts/svcommon.inc:598
-#, fuzzy
 msgid "Longest Description Label"
-msgstr "Popis: "
+msgstr "Longest Description Label"
 
 #: lib/layouts/svcommon.inc:599
-#, fuzzy
 msgid "Longest description label"
-msgstr "&Nejdelší značka"
+msgstr "Longest description label"
 
 #: lib/layouts/svcommon.inc:606
 msgid "Petit"
