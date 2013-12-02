@@ -269,7 +269,12 @@ int LaTeX::run(TeXErrors & terr)
 				runparams);
 	}
 	FileName const nlofile(changeExtension(file.absFileName(), ".nlo"));
-	if (head.haschanged(nlofile))
+	// If all nomencl entries are removed, nomencl writes an empty nlo file.
+	// DepTable::hasChanged() returns false in this case, since it does not
+	// distinguish empty files from non-existing files. This is why we need
+	// the extra checks here (to trigger a rerun). Cf. discussions in #8905.
+	// FIXME: Sort out the real problem in DepTable.
+	if (head.haschanged(nlofile) || (nlofile.exists() && nlofile.isFileEmpty()))
 		rerun |= runMakeIndexNomencl(file, ".nlo", ".nls");
 	FileName const glofile(changeExtension(file.absFileName(), ".glo"));
 	if (head.haschanged(glofile))
