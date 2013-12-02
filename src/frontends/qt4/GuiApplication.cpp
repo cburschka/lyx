@@ -1572,8 +1572,12 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		validateCurrentView();
 		// FIXME: create a new method shared with LFUN_HELP_OPEN.
 		string const fname = to_utf8(cmd.argument());
-		bool const is_open = FileName::isAbsolute(fname)
-			&& theBufferList().getBuffer(FileName(fname));
+		if (!FileName::isAbsolute(fname)) {
+			dr.setError(true);
+			dr.setMessage(_("Absolute filename expected."));
+			break;
+		}		
+		bool const is_open = theBufferList().getBuffer(FileName(fname));
 		if (d->views_.empty()
 		    || (!lyxrc.open_buffers_in_tabs
 			&& current_view_->documentBufferView() != 0
