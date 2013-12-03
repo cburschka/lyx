@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 448
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
@@ -34,13 +34,16 @@ noweb
 \use_geometry false
 \use_package amsmath 0
 \use_package amssymb 0
+\use_package cancel 0
 \use_package esint 0
 \use_package mathdots 1
 \use_package mathtools 0
 \use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
-\cite_engine_type numerical
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -172,132 +175,180 @@ The filter is required to read from standard input, parse for error messages
 Algorithm
 \end_layout
 
-\begin_layout Chunk
-<<Function bodies>>=
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Function bodies
 \end_layout
 
-\begin_layout Chunk
+\end_inset
+
 int
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 main (int argc, char **argv)
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   if (argc == 2) {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     switch (argv[1][0]) {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     case 'n':
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       <<Scan input for noweb error messages>>
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       break;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     case 'x':
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       <<Scan input for xlc error messages>>
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       break;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     case 'a':
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       <<AIX system using both noweb and xlc>>
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       break;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     case 's':
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     case 'b':
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       <<Solaris and Linux systems using both noweb and gcc>>
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       break;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     case 'g':
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     default:
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       <<Scan input for gcc error messages>>
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       break;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     }
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   } else {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     <<Scan input for gcc error messages>>
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   }
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 }
 \end_layout
 
-\begin_layout Chunk
-@
+\end_inset
+
+
 \end_layout
 
-\begin_layout Chunk
-<<Function prototypes>>=
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Function prototypes
 \end_layout
 
-\begin_layout Chunk
+\end_inset
+
 int main (int argc, char **argv);
 \end_layout
 
-\begin_layout Chunk
-@
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -311,28 +362,38 @@ We resort to some global variables to allow access from several different
  input.
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 <<Global variables>>=
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 char    buffer[200][200];
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
 int     last_buf_line;
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
 int     last_err_line;
-\begin_inset Newline newline
+\end_layout
+
+\begin_layout Plain Layout
+
+int     err_line;@ 
+\end_layout
+
 \end_inset
 
-int     err_line;
-\begin_inset Newline newline
-\end_inset
 
-@ 
 \end_layout
 
 \begin_layout Section
@@ -363,37 +424,53 @@ This function has been slightly changed from EW's original to make scanning
 
 \end_layout
 
-\begin_layout Chunk
-<<Function bodies>>=
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Function bodies
 \end_layout
 
-\begin_layout Chunk
+\end_inset
+
 void
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 output_error (int buf_size, int error_line, char *tool)
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   int     i;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
  
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   fprintf(stdout, "! Build Error: ==> %s ==>
 \backslash
 n", tool);
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   fprintf(stdout, " ...
 \backslash
 n
@@ -403,50 +480,69 @@ nl.%d ...
 n", error_line);
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
  
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   for (i=0; i<buf_size; i++)
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     if (strlen(buffer[i]) != 0)
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       fprintf(stdout, "%s", buffer[i]);
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
  
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   fprintf(stdout, "
 \backslash
 n");
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 }
 \end_layout
 
-\begin_layout Chunk
-@
+\end_inset
+
+
 \end_layout
 
-\begin_layout Chunk
-<<Function prototypes>>=
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Function prototypes
 \end_layout
 
-\begin_layout Chunk
+\end_inset
+
 void output_error (int buf_size, int error_line, char *tool);
 \end_layout
 
-\begin_layout Chunk
-@
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -462,40 +558,57 @@ Both noweave and notangle routines, always output one single line for each
  of the file.
 \end_layout
 
-\begin_layout Chunk
-<<Scan input for noweb error messages>>=
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Scan input for noweb error messages
 \end_layout
 
-\begin_layout Chunk
+\end_inset
+
 {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   last_buf_line = 0;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   while (fgets(buffer[0], 200, stdin)) {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     if (noweb_try(0))
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       output_error(1, err_line, "noweb");
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   }
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 }
 \end_layout
 
-\begin_layout Chunk
-@
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -507,88 +620,111 @@ The examination itself is very inefficient.
  array.
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 <<Global variables>>=
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 char *noweb_msgs[] = {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   "couldn't open file",
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   "couldn't open temporary file",
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   "error writing temporary file",
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   "ill-formed option",
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   "unknown option",
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   "Bad format sequence",
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   "Can't open output file",
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   "Can't open temporary file",
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   "Capacity exceeded:",
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   "Ignoring unknown option -",
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   "This can't happen:",
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   "non-numeric line number in"
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 };
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 char *noweb_msgs_mimic_gcc[] = {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   ": unescaped << in documentation chunk"
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 };
 \end_layout
 
-\begin_layout Chunk
-@
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -608,172 +744,220 @@ A noweb error message can be any string that contains a matching pair of
 > >, or any of the above strings
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<Function bodies>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+int noweb_try (int buf_line)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+  char    *s, *t, *b;
+\end_layout
+
+\begin_layout Plain Layout
+
+  int     i; 
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Chunk
-<<Function bodies>>=
-\begin_inset Newline newline
-\end_inset
-
-int
-\begin_inset Newline newline
-\end_inset
-
-noweb_try (int buf_line)
-\begin_inset Newline newline
-\end_inset
-
-{
-\begin_inset Newline newline
-\end_inset
-
-  char    *s, *t, *b;
-\begin_inset Newline newline
-\end_inset
-
-  int     i; 
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
+\begin_layout Plain Layout
 
   b = buffer[buf_line];
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
   err_line = 0;
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Plain Layout
 
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
   for (i=0; i<1; i++) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
       s = (char *)strstr (b, noweb_msgs_mimic_gcc[i]);
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
       if (s != NULL) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
         t = (char *)strchr(buffer[buf_line], ':');
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
         err_line = atoi(t+1);
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
         t = buffer[buf_line];
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
         ++s;
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
         while (*(t++) = *(s++));
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
         return 1;
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
       }
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
   }
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
   s = (char *)strstr(b, "<<");
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
   if (s != NULL) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
     s = (char *)strstr(s+2, ">>");
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
     if (s != NULL) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
       return 1;
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
     }
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
   } else { 
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
      for (i = 0; i < 12; ++i) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
         s = (char *)strstr (b, noweb_msgs[i]);
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
         if (s != NULL) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
            return 1;
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
         }
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
     }
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
   }
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
   return 0;
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
 @
 \end_layout
 
-\begin_layout Chunk
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 <<Function prototypes>>=
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 int noweb_try (int buf_line);
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 @
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -782,40 +966,57 @@ The xlc compiler always outputs one single line for each error found, thus
  line at a time.
 \end_layout
 
-\begin_layout Chunk
-<<Scan input for xlc error messages>>= 
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Scan input for xlc error messages
 \end_layout
 
-\begin_layout Chunk
+\end_inset
+
 {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   last_buf_line = 0;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   while (fgets(buffer[last_buf_line], 200, stdin)) {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     if (xlc_try(0))
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       output_error(1, err_line, "xlc");
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   }
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 }
 \end_layout
 
-\begin_layout Chunk
-@
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -833,94 +1034,126 @@ line
  The following routine tests if a given buffer line matches this criteria:
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 <<Function bodies>>=
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 int 
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 xlc_try (int buf_line)
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   char    *s, *t;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
  
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   t = buffer[buf_line];
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   s = t+1;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   while (*s != '"' && *s != ' ' && *s != '
 \backslash
 0')
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     s++;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   if (*t != '"' || *s != '"' || strncmp(s+1, ", line ", 7) != 0)
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     return 0;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   s += 8;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   err_line = atoi(s);
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   return 1;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 }
 \end_layout
 
-\begin_layout Chunk
-@
+\end_inset
+
+
 \end_layout
 
-\begin_layout Chunk
-<<Function prototypes>>=
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Function prototypes
 \end_layout
 
-\begin_layout Chunk
+\end_inset
+
 int xlc_try (int buf_line);
 \end_layout
 
-\begin_layout Chunk
-@
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -959,210 +1192,246 @@ Every gcc error message contains a string with no space followed by a
 .
 \end_layout
 
-\begin_layout Chunk
-<<Scan input for gcc error messages>>=
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Scan input for gcc error messages
 \end_layout
 
-\begin_layout Chunk
+\end_inset
+
 {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   char    *s, *t;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
  
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   last_buf_line = 0;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   while (fgets(buffer[last_buf_line], 200, stdin)) {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     /****** Skip lines until I find an error */
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     s = (char *)strpbrk(buffer[last_buf_line], " :");
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     if (s == NULL || *s == ' ')
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       continue; /* No gcc error found here */
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     do {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       <<gcc error message criteria is to find a "...:999:" or a "...: ">>
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       /****** OK It is an error message, get line number */
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       err_line = atoi(s+1);
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       if (last_err_line == 0 || last_err_line == err_line) {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
         last_err_line = err_line;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
         continue; /* It's either a header or a continuation, don't output
  yet */
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       }
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       /****** Completed the scan of one error message, output it to LyX
  */
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       discharge_buffer(1);
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       break;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     } while (fgets(buffer[last_buf_line], 200, stdin));
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   }
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   /****** EOF completes the scan of whatever was being scanned */
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   discharge_buffer(0);
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 }
 \end_layout
 
-\begin_layout Chunk
-@
+\end_inset
+
+
 \end_layout
 
-\begin_layout Chunk
-<<gcc error message criteria is to find a "...:999:" or a "...: ">>=
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+gcc error message criteria is to find a "...:999:" or a "...: "
 \end_layout
 
-\begin_layout Chunk
+\end_inset
+
 /****** Search first ":" in the error number */
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 s = (char *)strpbrk(buffer[last_buf_line], " :");
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 last_buf_line++;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 if (s == NULL || *s == ' ') 
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   <<No gcc error found here, but it might terminate the scanning of a previous
  one>>
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 /****** Search second ":" in the error number */
 \end_layout
 
-\begin_layout Chunk
-t = (char *)strpbrk(s+1, " :");
-\begin_inset Newline newline
-\end_inset
+\begin_layout Plain Layout
 
-if (t == NULL || *t == ' ')
-\begin_inset Newline newline
-\end_inset
-
-  <<No gcc error found here, but it might terminate the scanning of a previous
- one>>
-\begin_inset Newline newline
-\end_inset
-
-/****** Verify if is all digits between ":" */
-\begin_inset Newline newline
-\end_inset
-
-if (t != s+1+strspn(s+1, "0123456789")) 
-\begin_inset Newline newline
-\end_inset
-
-  <<No gcc error found here, but it might terminate the scanning of a previous
- one>>
-\begin_inset Newline newline
-\end_inset
-
-@
+t = (char *)strpbrk(s+1, " :");if (t == NULL || *t == ' ')  <<No gcc error
+ found here, but it might terminate the scanning of a previous one>>/******
+ Verify if is all digits between ":" */if (t != s+1+strspn(s+1, "0123456789"))
+   <<No gcc error found here, but it might terminate the scanning of a previous
+ one>>@
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 <<No gcc error found here, but it might terminate the scanning of a previous
  one>>=
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   err_line = 0;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   discharge_buffer(1);
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   continue;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 }
 \end_layout
 
-\begin_layout Chunk
-@
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1181,108 +1450,144 @@ last line
  In those cases we empty the buffer completely.
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
 
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 <<Function bodies>>=
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 void
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 discharge_buffer (int save_last)
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
  if (last_err_line != 0) { 
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
    clean_gcc_messages();
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
    if (save_last != 0) {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       output_error(last_buf_line-1, last_err_line, "gcc");
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       strcpy (buffer[0], buffer[last_buf_line-1]);
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       last_err_line = err_line;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       last_buf_line = 1;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     } else { 
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       ++last_buf_line;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       clean_gcc_messages();
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       output_error(last_buf_line-1, last_err_line, "gcc");
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       last_err_line = 0;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       last_buf_line = 0;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     }
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   }
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 }
 \end_layout
 
-\begin_layout Chunk
-@
+\end_inset
+
+
 \end_layout
 
-\begin_layout Chunk
-<<Function prototypes>>=
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Function prototypes
 \end_layout
 
-\begin_layout Chunk
+\end_inset
+
 void discharge_buffer (int save_last);
 \end_layout
 
-\begin_layout Chunk
-@
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1310,120 +1615,165 @@ More could be done.
 
 \end_layout
 
-\begin_layout Chunk
-<<Function bodies>>=
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Function bodies
 \end_layout
 
-\begin_layout Chunk
+\end_inset
+
 void
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 clean_gcc_messages ()
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   int index;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   char search [30]; 
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   char *tail, *head; 
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   int search_len = sprintf(search, ".nw:%d:", last_err_line);
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   for (index = 0; index < last_buf_line-1; index++) {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     tail = (char *)strstr (buffer[index], search);
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     if ( tail == NULL) {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
        tail = (char *) strstr (buffer[index], ".nw:");
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
        if (tail) {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
           tail += 4;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
        }
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     } else {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
        tail += search_len;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     }
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     if (tail != NULL) {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
        head = buffer[index];
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
        while (*(head++) = *(tail++));
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     }
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   }
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 }
 \end_layout
 
-\begin_layout Chunk
-@
+\end_inset
+
+
 \end_layout
 
-\begin_layout Chunk
-<<Function prototypes>>=
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Function prototypes
 \end_layout
 
-\begin_layout Chunk
+\end_inset
+
 void clean_gcc_messages ();
 \end_layout
 
-\begin_layout Chunk
-@
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1432,48 +1782,68 @@ To combine the scan of noweb error messages and xlc error messages is very
  We just try each one for every input line:
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 <<AIX system using both noweb and xlc>>=
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   last_buf_line = 0;
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
   while (fgets(buffer[0], 200, stdin)) {
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-    if (noweb_try(0))
-\begin_inset Newline newline
-\end_inset
+\begin_layout Plain Layout
 
-      output_error(1, err_line, "noweb");
-\begin_inset Newline newline
-\end_inset
+   if (noweb_try(0))
+\end_layout
 
-    else if (xlc_try(0))
-\begin_inset Newline newline
-\end_inset
+\begin_layout Plain Layout
 
-      output_error(1, err_line, "xlc");
-\begin_inset Newline newline
-\end_inset
+     output_error(1, err_line, "noweb");
+\end_layout
 
-  }
-\begin_inset Newline newline
-\end_inset
+\begin_layout Plain Layout
+
+   else if (xlc_try(0))
+\end_layout
+
+\begin_layout Plain Layout
+
+     output_error(1, err_line, "xlc");
+\end_layout
+
+\begin_layout Plain Layout
+
+ }
+\end_layout
+
+\begin_layout Plain Layout
 
 }
-\begin_inset Newline newline
-\end_inset
+\end_layout
+
+\begin_layout Plain Layout
 
 @
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1484,166 +1854,221 @@ To combine the scan of noweb error messages and gcc error messages is simple
  the beginning of the scan:
 \end_layout
 
-\begin_layout Chunk
-<<Solaris and Linux systems using both noweb and gcc>>=
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Solaris and Linux systems using both noweb and gcc
 \end_layout
 
-\begin_layout Chunk
+\end_inset
+
 {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   char    *s, *t;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
  
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   last_buf_line = 0;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   while (fgets(buffer[last_buf_line], 200, stdin)) {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     /****** Skip lines until I find an error */
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     if (last_buf_line == 0 && noweb_try(0)) {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       output_error(1, err_line, "noweb");
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       continue;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     }
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     s = (char *)strpbrk(buffer[last_buf_line], " :");
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     if (s == NULL || *s == ' ')
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       continue; /* No gcc error found here */
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     do {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       <<gcc error message criteria is to find a "...:999:" or a "...: ">>
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       /****** OK It is an error, get line number */
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       err_line = atoi(s+1);
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       if (last_err_line == 0 || last_err_line == err_line) {
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
         last_err_line = err_line;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
         continue; /* It's either a header or a continuation, don't output
  yet */
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       }
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       /****** Completed the scan of one error message, output it to LyX
  */
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       discharge_buffer(1);
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
       break;
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
     } while (fgets(buffer[last_buf_line], 200, stdin));
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   }
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   /****** EOF completes the scan of whatever was being scanned */
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
   discharge_buffer(0);
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 }
 \end_layout
 
-\begin_layout Chunk
-@
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
 Wrapping the code into a file
 \end_layout
 
-\begin_layout Chunk
-<<listerrors.c>>=
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+listerrors.c
 \end_layout
 
-\begin_layout Chunk
+\end_inset
+
 #include <stdio.h>
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 #include <strings.h>       
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
  
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 <<Global variables>>
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 <<Function prototypes>>
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 <<Function bodies>>
 \end_layout
 
-\begin_layout Chunk
-@
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1675,32 +2100,47 @@ listerrors.c
  option to gcc.
 \end_layout
 
-\begin_layout Chunk
-<<build-script>>=
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+build-script
 \end_layout
 
-\begin_layout Chunk
+\end_inset
+
 #!/bin/sh
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 if [ -z "$NOWEB_SOURCE" ]; then NOWEB_SOURCE=Literate.nw; fi
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 if [ -z "$NOWEB_OUTPUT_DIR" ]; then NOWEB_OUTPUT_DIR=.; fi
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 notangle -L -Rlisterrors.c ${NOWEB_SOURCE} > ${NOWEB_OUTPUT_DIR}/listerrors.c
 \end_layout
 
-\begin_layout Chunk
+\begin_layout Plain Layout
+
 gcc -g -o listerrors listerrors.c
 \end_layout
 
-\begin_layout Chunk
-@
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
