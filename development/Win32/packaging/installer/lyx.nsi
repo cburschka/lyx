@@ -1,6 +1,6 @@
 /*
 
-NSIS Script - LyX 2.0 Installer for Win32
+NSIS Script - LyX 2.2 Installer for Win32
 Authors: Joost Verburg, Angus Leeming, Uwe Stöhr
 Compatible with NSIS 2.46
 
