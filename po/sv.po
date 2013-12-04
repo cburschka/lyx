@@ -4,7 +4,7 @@
 # Joacim Persson <sp2joap@ida.his.se> 1997, 1998.
 # Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2013.
 #
-# Information 2013-04-21:
+# Information 2013-12-03:
 #   Bad Qt shortcuts: 124
 #   Inconsistent translations: 6
 #   Bad menu shortcuts: 136
@@ -211,10 +211,10 @@
 # Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 2.0.6\n"
+"Project-Id-Version: LyX 2.0.7\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-11-24 11:51-0500\n"
-"PO-Revision-Date: 2013-04-21 21:12+0100\n"
+"POT-Creation-Date: 2013-12-03 21:12+0100\n"
+"PO-Revision-Date: 2013-12-03 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
 "Language: sv\n"
@@ -3110,7 +3110,7 @@ msgstr "Lä&ngsta etikett"
 msgid "Line &spacing"
 msgstr "Radavstånd"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1824
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1827
 #: src/frontends/qt4/GuiDocument.cpp:692
 msgid "Single"
 msgstr "Enkel"
@@ -3119,7 +3119,7 @@ msgstr "Enkel"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1830
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1833
 #: src/frontends/qt4/GuiDocument.cpp:696
 msgid "Double"
 msgstr "Dubbel"
@@ -9316,9 +9316,8 @@ msgid "PACS number:"
 msgstr "PACS-nummer:"
 
 #: lib/layouts/scrbook.layout:25
-#, fuzzy
 msgid "\\thechapter.\\arabic{equation}"
-msgstr "\\thesection.\\arabic{equation}"
+msgstr "\\thechapter.\\arabic{equation}"
 
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:28
 #: lib/layouts/scrclass.inc:42 lib/layouts/stdlyxlist.inc:6
@@ -19576,7 +19575,7 @@ msgstr "Okänt författarindex för ändring: %1$d\n"
 msgid "Unknown token"
 msgstr "Okänt tecken"
 
-#: src/Text.cpp:949
+#: src/Text.cpp:952
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -19584,65 +19583,65 @@ msgstr ""
 "Du kan inte infoga ett mellanslag i början på ett stycke. Vänligen läs "
 "Nybörjarkursen."
 
-#: src/Text.cpp:957
+#: src/Text.cpp:960
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Du kan inte skriva två mellanslag i rad. Vänligen läs Nybörjarkursen."
 
-#: src/Text.cpp:1790
+#: src/Text.cpp:1793
 msgid "[Change Tracking] "
 msgstr "[Ändringsspårning] "
 
-#: src/Text.cpp:1796
+#: src/Text.cpp:1799
 msgid "Change: "
 msgstr "Ändring: "
 
-#: src/Text.cpp:1800
+#: src/Text.cpp:1803
 msgid " at "
 msgstr " vid "
 
-#: src/Text.cpp:1810
+#: src/Text.cpp:1813
 #, c-format
 msgid "Font: %1$s"
 msgstr "Typsnitt: %1$s"
 
-#: src/Text.cpp:1815
+#: src/Text.cpp:1818
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Djup: %1$d"
 
-#: src/Text.cpp:1821
+#: src/Text.cpp:1824
 msgid ", Spacing: "
 msgstr ", Avstånd: "
 
-#: src/Text.cpp:1827 src/frontends/qt4/GuiDocument.cpp:694
+#: src/Text.cpp:1830 src/frontends/qt4/GuiDocument.cpp:694
 msgid "OneHalf"
 msgstr "EnHalv"
 
-#: src/Text.cpp:1833
+#: src/Text.cpp:1836
 msgid "Other ("
 msgstr "Annan ("
 
-#: src/Text.cpp:1842
+#: src/Text.cpp:1845
 msgid ", Inset: "
 msgstr ", Insättning: "
 
-#: src/Text.cpp:1843
+#: src/Text.cpp:1846
 msgid ", Paragraph: "
 msgstr ", Stycke: "
 
-#: src/Text.cpp:1844
+#: src/Text.cpp:1847
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1845
+#: src/Text.cpp:1848
 msgid ", Position: "
 msgstr ", Position: "
 
-#: src/Text.cpp:1851
+#: src/Text.cpp:1854
 msgid ", Char: 0x"
 msgstr ", Tecken: 0x"
 
-#: src/Text.cpp:1853
+#: src/Text.cpp:1856
 msgid ", Boundary: "
 msgstr ", Gräns: "
 
