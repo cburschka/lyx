@@ -10895,7 +10895,7 @@ msgstr "Itemize type specification (see powerdot manual)"
 
 #: lib/layouts/powerdot.layout:273 lib/layouts/enumitem.module:57
 msgid "Itemize Options"
-msgstr "Itemize Options"
+msgstr "Nastavení položek"
 
 #: lib/layouts/powerdot.layout:274 lib/layouts/powerdot.layout:324
 #: lib/layouts/enumitem.module:58 lib/layouts/enumitem.module:65
@@ -10917,7 +10917,7 @@ msgstr ""
 
 #: lib/layouts/powerdot.layout:323 lib/layouts/enumitem.module:64
 msgid "Enumerate Options"
-msgstr "Enumerate Options"
+msgstr "Nastavení výčtu"
 
 #: lib/layouts/powerdot.layout:339
 msgid "EnumerateType1"
@@ -12651,13 +12651,12 @@ msgid "Remark."
 msgstr "Poznámka."
 
 #: lib/layouts/theorems-without-preamble.inc:41
-#, fuzzy
 msgid "Name/Title"
-msgstr "Titulek"
+msgstr "Jméno/Titulek"
 
 #: lib/layouts/theorems-without-preamble.inc:42
 msgid "Alternative optional name or title"
-msgstr ""
+msgstr "Alternativní volitelné jméno nebo titulek"
 
 #: lib/layouts/theorems-without-preamble.inc:127
 msgid "Prop \\theprop."
@@ -12866,13 +12865,12 @@ msgid "Header/Footer"
 msgstr "Hlavička/Patička"
 
 #: lib/layouts/customHeadersFooters.module:20
-#, fuzzy
 msgid "Even Header"
-msgstr "Centrovaná hlavička"
+msgstr "Sudá hlavička"
 
 #: lib/layouts/customHeadersFooters.module:21
 msgid "Alternative text for the even header"
-msgstr ""
+msgstr "Alternativní text pro sudou hlavičku"
 
 #: lib/layouts/customHeadersFooters.module:33
 msgid "Center Header"
@@ -12933,9 +12931,8 @@ msgstr ""
 "uživatelské příručce."
 
 #: lib/layouts/enumitem.module:71
-#, fuzzy
 msgid "Description Options"
-msgstr "Popis: "
+msgstr "Nastavení popisu"
 
 #: lib/layouts/enumitem.module:103
 msgid "Enumerate-Resume"
@@ -13942,9 +13939,8 @@ msgid "English (USA)"
 msgstr "Angličtina (USA)"
 
 #: lib/languages:120
-#, fuzzy
 msgid "Greek (ancient)"
-msgstr "Řečtina (polytonic)"
+msgstr "Řečtina (archaická)"
 
 #: lib/languages:131
 msgid "Arabic (ArabTeX)"
@@ -13959,9 +13955,8 @@ msgid "Armenian"
 msgstr "Arménština"
 
 #: lib/languages:161
-#, fuzzy
 msgid "English (Australia)"
-msgstr "Angličtina (USA)"
+msgstr "Angličtina (Austrálie)"
 
 #: lib/languages:172
 msgid "German (Austria, old spelling)"
@@ -14137,9 +14132,8 @@ msgid "Korean"
 msgstr "Korejština"
 
 #: lib/languages:619
-#, fuzzy
 msgid "Kurmanji"
-msgstr "Yourmail"
+msgstr "Kurmanji"
 
 #: lib/languages:628 src/frontends/qt4/GuiSymbols.cpp:76
 msgid "Lao"
@@ -14166,18 +14160,16 @@ msgid "Hungarian"
 msgstr "Maďarština"
 
 #: lib/languages:688
-#, fuzzy
 msgid "Marathi"
-msgstr "Gudžarátština"
+msgstr "Marathi"
 
 #: lib/languages:698
 msgid "Mongolian"
 msgstr "Mongolština"
 
 #: lib/languages:706
-#, fuzzy
 msgid "English (New Zealand)"
-msgstr "Angličtina (Kanada)"
+msgstr "Angličtina (Nový Zéland)"
 
 #: lib/languages:716
 msgid "Norwegian (Bokmaal)"
@@ -14212,9 +14204,8 @@ msgid "North Sami"
 msgstr "Severní sámština"
 
 #: lib/languages:798
-#, fuzzy
 msgid "Sanskrit"
-msgstr "Bezpatkové (Sans Serif)"
+msgstr "Sanskrt"
 
 #: lib/languages:805
 msgid "Scottish"
@@ -14286,7 +14277,7 @@ msgstr "Hornolužická srbština"
 
 #: lib/languages:973
 msgid "Urdu"
-msgstr ""
+msgstr "Urdština"
 
 #: lib/languages:983
 msgid "Vietnamese"
@@ -14317,9 +14308,8 @@ msgid "Zapf Chancery"
 msgstr "Zapf Chancery"
 
 #: lib/latexfonts:122
-#, fuzzy
 msgid "Bitstream Charter (PSNFSS)"
-msgstr "Bitstream Charter"
+msgstr "Bitstream Charter (PSNFSS)"
 
 #: lib/latexfonts:128
 msgid "Computer Modern Roman"
@@ -14327,33 +14317,31 @@ msgstr "Computer Modern Roman"
 
 #: lib/latexfonts:140 lib/latexfonts:149
 msgid "URW Garamond"
-msgstr ""
+msgstr "URW Garamond"
 
 #: lib/latexfonts:155 lib/latexfonts:164 lib/latexfonts:172
-#, fuzzy
 msgid "Libertine"
-msgstr "Liber"
+msgstr "Libertine"
 
 #: lib/latexfonts:179 lib/latexfonts:186
 msgid "Latin Modern Roman"
 msgstr "Latin Modern Roman"
 
 #: lib/latexfonts:193 lib/latexfonts:206
-#, fuzzy
 msgid "Bitstream Charter (Mathdesign)"
-msgstr "Bitstream Charter"
+msgstr "Bitstream Charter (Mathdesign)"
 
 #: lib/latexfonts:213 lib/latexfonts:226
 msgid "Utopia (Mathdesign)"
-msgstr ""
+msgstr "Utopia (Mathdesign)"
 
 #: lib/latexfonts:233 lib/latexfonts:246
 msgid "URW Garamond (Mathdesign)"
-msgstr ""
+msgstr "URW Garamond (Mathdesign)"
 
 #: lib/latexfonts:253 lib/latexfonts:263
 msgid "Minion Pro"
-msgstr ""
+msgstr "Minion Pro"
 
 #: lib/latexfonts:272
 msgid "New Century Schoolbook"
@@ -14370,27 +14358,27 @@ msgstr "Times Roman"
 
 #: lib/latexfonts:344
 msgid "TeX Gyre Bonum"
-msgstr ""
+msgstr "TeX Gyre Bonum"
 
 #: lib/latexfonts:350
 msgid "TeX Gyre Chorus"
-msgstr ""
+msgstr "TeX Gyre Chorus"
 
 #: lib/latexfonts:356
 msgid "TeX Gyre Pagella"
-msgstr ""
+msgstr "TeX Gyre Pagella"
 
 #: lib/latexfonts:362
 msgid "TeX Gyre Schola"
-msgstr ""
+msgstr "TeX Gyre Schola"
 
 #: lib/latexfonts:368
 msgid "TeX Gyre Termes"
-msgstr ""
+msgstr "TeX Gyre Termes"
 
 #: lib/latexfonts:376 lib/latexfonts:387 lib/latexfonts:393 lib/latexfonts:400
 msgid "Utopia (Fourier)"
-msgstr ""
+msgstr "Utopia (Fourier)"
 
 #: lib/latexfonts:411
 msgid "Avant Garde"
@@ -14402,7 +14390,7 @@ msgstr "Bera Sans"
 
 #: lib/latexfonts:425 lib/latexfonts:435
 msgid "Biolinum"
-msgstr ""
+msgstr "Biolinum"
 
 #: lib/latexfonts:443
 msgid "CM Bright"
@@ -14418,37 +14406,35 @@ msgstr "Helvetica"
 
 #: lib/latexfonts:464
 msgid "Iwona"
-msgstr ""
+msgstr "Iwona"
 
 #: lib/latexfonts:471
 msgid "Iwona (Light)"
-msgstr ""
+msgstr "Iwona (Light)"
 
 #: lib/latexfonts:478
 msgid "Iwona (Condensed)"
-msgstr ""
+msgstr "Iwona (Condensed)"
 
 #: lib/latexfonts:485
 msgid "Iwona (Light Condensed)"
-msgstr ""
+msgstr "Iwona (Light Condensed)"
 
 #: lib/latexfonts:492
-#, fuzzy
 msgid "Kurier"
-msgstr "Courier"
+msgstr "Kurier"
 
 #: lib/latexfonts:499
-#, fuzzy
 msgid "Kurier (Light)"
-msgstr "CM Typewriter Light"
+msgstr "Kurier (Light)"
 
 #: lib/latexfonts:506
 msgid "Kurier (Condensed)"
-msgstr ""
+msgstr "Kurier (Condensed)"
 
 #: lib/latexfonts:513
 msgid "Kurier (Light Condensed)"
-msgstr ""
+msgstr "Kurier (Light Condensed)"
 
 #: lib/latexfonts:520
 msgid "Latin Modern Sans"
@@ -14456,15 +14442,15 @@ msgstr "Latin Modern Sans"
 
 #: lib/latexfonts:527
 msgid "TeX Gyre Adventor"
-msgstr ""
+msgstr "TeX Gyre Adventor"
 
 #: lib/latexfonts:533
 msgid "TeX Gyre Heros"
-msgstr ""
+msgstr "TeX Gyre Heros"
 
 #: lib/latexfonts:539
 msgid "URW Classico (Optima)"
-msgstr ""
+msgstr "URW Classico (Optima)"
 
 #: lib/latexfonts:551
 msgid "Bera Mono"
@@ -14483,9 +14469,8 @@ msgid "Courier"
 msgstr "Courier"
 
 #: lib/latexfonts:579
-#, fuzzy
 msgid "Libertine Mono"
-msgstr "Bera Mono"
+msgstr "Libertine Mono"
 
 #: lib/latexfonts:586
 msgid "Latin Modern Typewriter"
@@ -14496,44 +14481,40 @@ msgid "LuxiMono"
 msgstr "LuxiMono"
 
 #: lib/latexfonts:600
-#, fuzzy
 msgid "TeX Gyre Cursor"
-msgstr "chyba LaTeX-u"
+msgstr "TeX Gyre Cursor"
 
 #: lib/latexfonts:606
-#, fuzzy
 msgid "TX Typewriter"
-msgstr "Strojopis"
+msgstr "TX Typewriter"
 
 #: lib/latexfonts:618
 msgid "Euler VM"
-msgstr ""
+msgstr "Euler VM"
 
 #: lib/latexfonts:624
 msgid "URW Garamond (New TX)"
-msgstr ""
+msgstr "URW Garamond (New TX)"
 
 #: lib/latexfonts:632
-#, fuzzy
 msgid "Iwona (Math)"
-msgstr "Ve vzorcích"
+msgstr "Iwona (Matematika)"
 
 #: lib/latexfonts:645
 msgid "Kurier (Math)"
-msgstr ""
+msgstr "Kurier (Math)"
 
 #: lib/latexfonts:658
 msgid "Libertine (New TX)"
-msgstr ""
+msgstr "Libertine (New TX)"
 
 #: lib/latexfonts:666
 msgid "Minion Pro (New TX)"
-msgstr ""
+msgstr "Minion Pro (New TX)"
 
 #: lib/latexfonts:675
-#, fuzzy
 msgid "Times Roman (New TX)"
-msgstr "Times Roman"
+msgstr "Times Roman (New TX)"
 
 #: lib/encodings:31
 msgid "Unicode (utf8)"
@@ -15043,9 +15024,8 @@ msgid "Protected Space|o"
 msgstr "Chráněná mezera|h"
 
 #: lib/ui/stdcontext.inc:219
-#, fuzzy
 msgid "Visible Space|a"
-msgstr "Vertikální mezera"
+msgstr "Viditelná mezera|a"
 
 #: lib/ui/stdcontext.inc:220 lib/ui/stdcontext.inc:243 lib/ui/stdmenus.inc:404
 msgid "Thin Space|T"
@@ -15226,7 +15206,6 @@ msgid "Jump Back to Saved Bookmark|B"
 msgstr "Skok zpět na uloženou záložku|k"
 
 #: lib/ui/stdcontext.inc:316 lib/ui/stdmenus.inc:541
-#, fuzzy
 msgid "Forward Search|F"
 msgstr "Dopředné hledání|h"
 
@@ -15283,7 +15262,6 @@ msgid "Fullscreen Mode"
 msgstr "Celoobrazovkový mód"
 
 #: lib/ui/stdcontext.inc:337
-#, fuzzy
 msgid "Close Current View"
 msgstr "Uzavřít skupinu panelů|U"
 
