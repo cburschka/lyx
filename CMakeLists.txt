@@ -469,8 +469,12 @@ if(NOT MSVC)
 	endif()
 endif()
 
+set(LYX_CXX_FLAGS_EXTRA "" CACHE STRING "Desired semicolon separated list of extra cxx compile flags, like '-Werror'")
+mark_as_advanced(LYX_CXX_FLAGS_EXTRA)
 if(LYX_CXX_FLAGS_EXTRA)
-	add_definitions(${LYX_CXX_FLAGS_EXTRA})
+	foreach(_flag ${LYX_CXX_FLAGS_EXTRA})
+		add_definitions(${_flag})
+	endforeach()
 endif()
 
 find_package(Qt5Core QUIET)
