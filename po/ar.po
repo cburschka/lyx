@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2013-11-28 17:09+0100\n"
-"PO-Revision-Date: 2013-11-28 18:56+0300\n"
+"PO-Revision-Date: 2013-12-04 17:47+0300\n"
 "Last-Translator: Hatim Alahmadi <Dr.hatim@hotmail.com>\n"
 "Language-Team: LyX team <theblackdragon_100@hotmail.com>\n"
 "Language: ar\n"
@@ -62,7 +62,7 @@ msgstr "&هيئة المستند"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:80
 msgid "Check this to show the current format in the File > Export menu"
-msgstr ""
+msgstr "فحص لرؤية الهيئة الحالية في الملف > قائمة التصدير"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:83
 msgid "Sho&w in export menu"
@@ -119,12 +119,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:244
 msgid "With n&on-TeX fonts:"
-msgstr ""
+msgstr "مع خطوط non-TeX:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:254
-#, fuzzy
 msgid "The default output format for documents using non-TeX fonts"
-msgstr "حدد الحجم الافتراضي للورقة."
+msgstr "هيئة الخرج الافتراضية للمستند تستخدم خطوط non-TeX"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:46
 msgid "A&lter..."
@@ -425,11 +424,11 @@ msgstr "عدد النسخ"
 
 #: src/frontends/qt4/ui/PrintUi.ui:177
 msgid "Collate copies"
-msgstr ""
+msgstr "نسخ مرتبة"
 
 #: src/frontends/qt4/ui/PrintUi.ui:180
 msgid "&Collate"
-msgstr ""
+msgstr "مرتب&"
 
 #: src/frontends/qt4/ui/PrintUi.ui:230
 msgid "&Print"
@@ -448,7 +447,7 @@ msgstr "اغلاق"
 
 #: src/frontends/qt4/ui/PrintUi.ui:258
 msgid "Print Destination"
-msgstr ""
+msgstr "لغرض الطباعة"
 
 #: src/frontends/qt4/ui/PrintUi.ui:270
 msgid "Send output to the printer"
@@ -508,15 +507,15 @@ msgstr "&افقية"
 #: src/frontends/qt4/ui/PageLayoutUi.ui:162
 #: src/frontends/qt4/GuiDocument.cpp:1407
 msgid "Page Layout"
-msgstr "نسق الصفحة"
+msgstr "تصميم الصفحة"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:171
 msgid "Page &style:"
-msgstr "نسق& الصفحة:"
+msgstr "أسلوب& الصفحة:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:187
 msgid "Style used for the page header and footer"
-msgstr "النسق المستخدم للرأس والتذييل"
+msgstr "الأسلوب المستخدم لرأس وتذييل الصفحة"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:207
 msgid "Lay out the page for double-sided printing"
@@ -564,7 +563,7 @@ msgstr "ملحوظة LyX"
 
 #: src/frontends/qt4/ui/NoteUi.ui:70
 msgid "Export to LaTeX/Docbook but don't print"
-msgstr ""
+msgstr "تصدير إلى LaTeX/Docbook لكن بدون طباعة"
 
 #: src/frontends/qt4/ui/NoteUi.ui:73
 msgid "&Comment"
@@ -589,7 +588,7 @@ msgstr "اعدادات"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:145
 msgid "Select the debug messages that should be displayed"
-msgstr ""
+msgstr "اختر رسائل التنقيح التي يجب عرضها"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149
 #: src/frontends/qt4/ui/IndicesUi.ui:154 src/frontends/qt4/ui/RefUi.ui:60
@@ -605,9 +604,8 @@ msgid "&Clear automatically"
 msgstr "مس&ح آلي"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
-#, fuzzy
 msgid "Debug messages"
-msgstr "جميع رسائل التنقيح"
+msgstr "رسائل التنقيح"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:203
 #, fuzzy
@@ -627,9 +625,8 @@ msgid "S&elected"
 msgstr "&المحدد"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:223
-#, fuzzy
 msgid "Display all debug messages"
-msgstr "جميع رسائل التنقيح"
+msgstr "عرض كل رسائل التنقيح"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
 msgid "Display statusbar messages?"
@@ -1036,9 +1033,8 @@ msgid "Optional paper size flag (-paper) for some DVI viewers"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:73 src/frontends/qt4/ui/BiblioUi.ui:156
-#, fuzzy
 msgid "Bibliography generation"
-msgstr "بابلوغرافيا رأس الموضوع"
+msgstr "إنتاج ثبت المراجع"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:85 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/BiblioUi.ui:167
@@ -1220,9 +1216,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:240
-#, fuzzy
 msgid "&Master document"
-msgstr "مستند رئيسي"
+msgstr "مستند رئيس&ي"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:250
 msgid "All open documents"
@@ -1347,7 +1342,7 @@ msgstr "اختر حجم خط رقم السطر"
 #: src/frontends/qt4/ui/ListingsUi.ui:188
 #: src/frontends/qt4/ui/TabularUi.ui:1128
 msgid "Style"
-msgstr "النسق"
+msgstr "الأسلوب"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:194
 msgid "F&ont size:"
@@ -1363,7 +1358,7 @@ msgstr "عائلة الخط:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:252
 msgid "The content's base font style"
-msgstr "النسق الاساسي لخط المحتوى"
+msgstr "أسلوب الخط للمحتوى الأساسي"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:268
 msgid "Break lines longer than the linewidth"
@@ -2078,9 +2073,8 @@ msgid "&Horizontal:"
 msgstr "&أفقي:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:210
-#, fuzzy
 msgid "Decoration"
-msgstr "&تزيين:"
+msgstr "التزيين"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:216
 msgid "&Type:"
@@ -2115,7 +2109,7 @@ msgstr "ليك: اضافة قاعدة بيانات BibTeX"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:36 src/frontends/qt4/ui/BibtexUi.ui:47
 msgid "Scan for new databases and styles"
-msgstr "ابحث عن قواعد بيانات وانماط جديدة"
+msgstr "ابحث عن قواعد بيانات والأساليب"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:39 src/frontends/qt4/ui/TexinfoUi.ui:94
 #: src/frontends/qt4/ui/BibtexUi.ui:50
@@ -2128,11 +2122,11 @@ msgstr "ادخل اسم قاعدة بيانات BibTeX"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:19
 msgid "Citation Style"
-msgstr "نمط الاقتباس"
+msgstr "أسلوب الاستشهاد"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:28
 msgid "Use BibTeX's default numerical styles"
-msgstr "استخدام BibTeX's كاسلوب رقمي افتراضي"
+msgstr "استخدام BibTeX's كأسلوب رقمي افتراضي"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:31
 msgid "&Default (numerical)"
@@ -2151,38 +2145,35 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:59
 msgid "Natbib &style:"
-msgstr "&نسق Natbib:"
+msgstr "&أسلوب Natbib:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:97
 msgid "Use the jurabib styles for law and humanities"
-msgstr "استخدام اساليب jurabib للقانون والعلوم الانسانيه"
+msgstr "استخدام أساليب jurabib للقانون والعلوم الإنسانية"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:100
 msgid "&Jurabib"
 msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:110
-#, fuzzy
 msgid "Bibliography Style"
-msgstr "إعدادات مدخلات البابلوغرافيا"
+msgstr "أسلوب ثبت المراجع"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:121
-#, fuzzy
 msgid "Default st&yle:"
-msgstr "&الطابعة الافتراضية:"
+msgstr "الأسلوب& الافتراضي:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:131
-#, fuzzy
 msgid "Define the default BibTeX style"
-msgstr "حدد نسق BibTeX"
+msgstr "حدد أسلوب BibTeX الافتراضي"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:140
 msgid "Select this if you want to split your bibliography into sections"
-msgstr "اختر هذا اذا رغبت بتقسيم البابلوغرافيا الخاص بك في القسم"
+msgstr "اختر هذا إذا كنت تريد تقسيم ثبت مراجعك داخل قسمك"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:143
 msgid "S&ectioned bibliography"
-msgstr "&بابلوغرافيا مصنفة"
+msgstr "تجز&يء ثبت المراجع"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:153
 msgid ""
@@ -2753,11 +2744,11 @@ msgstr "حدد هذا الخيار لعرض كل ما هو متاح من الم�
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:119
 msgid "&Display all"
-msgstr "&عرض الكل"
+msgstr "عرض الك&ل"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:31 src/frontends/qt4/ui/BibitemUi.ui:64
 msgid "The bibliography key"
-msgstr "مفتاح بابلوغرافيا"
+msgstr "مفتاح ثبت المراجع"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:44 src/frontends/qt4/ui/BibitemUi.ui:51
 msgid "The label as it appears in the document"
@@ -3350,7 +3341,7 @@ msgstr "إدراج جديد"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:53
 msgid "&Quote Style:"
-msgstr "&نمط الأقتباس:"
+msgstr "&أسلوب الاقتباس:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:66
 msgid "Encoding"
@@ -4436,7 +4427,7 @@ msgstr "أظهر محتويات الملف المحدد. ممكن فقط عند�
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:107
 msgid "&View"
-msgstr "&عرض"
+msgstr "عرض&"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:124
 msgid "Selected classes or styles"
@@ -4444,15 +4435,15 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:128
 msgid "LaTeX classes"
-msgstr "اصناف لتيك"
+msgstr "LaTeX classes"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:133
 msgid "LaTeX styles"
-msgstr "اسلوب لتيك"
+msgstr "أساليب لتيك"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:138
 msgid "BibTeX styles"
-msgstr "اسلوب BibTeX"
+msgstr "أساليب BibTeX"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:143
 #, fuzzy
@@ -4465,27 +4456,27 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:170
 msgid "Show &path"
-msgstr "&اظهر المسار"
+msgstr "إظهار المس&ار"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:81
 msgid "The BibTeX style"
-msgstr "نسق BibTeX"
+msgstr "أسلوب BibTeX"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:84
 msgid "St&yle"
-msgstr "&الاسلوب"
+msgstr "الاس&لوب"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:94 src/frontends/qt4/ui/BibtexUi.ui:107
 msgid "Choose a style file"
-msgstr "اختر ملف نسق"
+msgstr "اختر ملف الأسلوب"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:131 src/frontends/qt4/ui/BibtexUi.ui:144
 msgid "This bibliography section contains..."
-msgstr "قسم البابلوغرافيا ويحتوي..."
+msgstr "هذا الجزء من ثبت المراجع يحتوي..."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:134
 msgid "&Content:"
-msgstr "&المحتوى:"
+msgstr "المحت&وى:"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:148 src/insets/InsetBibtex.cpp:216
 msgid "all cited references"
@@ -4502,11 +4493,11 @@ msgstr "كل المراجع"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:166
 msgid "Add bibliography to the table of contents"
-msgstr "اضافة بابلوغرافيا لمحتوى الجدول"
+msgstr "إضافة ثبت المراجع لجدول المحتويات"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:169
 msgid "Add bibliography to &TOC"
-msgstr "&أضف بابلوغرافيا الى TOC"
+msgstr "&أضف ثبت المراجع إلى TOC"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:225
 msgid "Move the selected database downwards in the list"
@@ -4629,9 +4620,8 @@ msgid "Formatted reference"
 msgstr "هيئة مرجع"
 
 #: src/frontends/qt4/ui/RefUi.ui:246
-#, fuzzy
 msgid "Textual reference"
-msgstr "كل المراجع"
+msgstr "المراجع النصية"
 
 #: src/frontends/qt4/ui/RefUi.ui:291
 msgid "Update the label list"
@@ -4684,27 +4674,27 @@ msgstr "&الخطأ التالي"
 
 #: src/frontends/qt4/ui/CitationUi.ui:30
 msgid "A&vailable Citations:"
-msgstr "الاقتباس&ات المتاحة:"
+msgstr "الاستشهاد&ات المتاحة:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:53
 msgid "S&elected Citations:"
-msgstr "الاقتباسات المحد&دة:"
+msgstr "الاستشهادات المحد&دة:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:72
 msgid "Click or press Enter to add the selected citation to the list"
-msgstr "انقر أو اضغط إدخال لإضافة الاقتباس المحدد للقائمة"
+msgstr "انقر أو اضغط إدخال لإضافة الاستشهاد المحدد للقائمة"
 
 #: src/frontends/qt4/ui/CitationUi.ui:92
 msgid "Click or press Delete to delete the selected citation from the list"
-msgstr "انقر أو اضغط إدخال لحذف الاقتباس المحدد من لقائمة"
+msgstr "انقر أو اضغط إدخال لحذف الاستشهاد المحدد من لقائمة"
 
 #: src/frontends/qt4/ui/CitationUi.ui:124
 msgid "Move the selected citation up (Ctrl-Up)"
-msgstr "نقل الاقتباس المحدد للأعلى (Ctrl-Up)"
+msgstr "نقل الاستشهاد المحدد للأعلى (Ctrl-Up)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:148
 msgid "Move the selected citation down (Ctrl-Down)"
-msgstr "نقل الاقتباس المحدد للأسفل (Ctrl-Down)"
+msgstr "نقل الاستشهاد المحدد للأسفل (Ctrl-Down)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:210
 msgid "App&ly"
@@ -4716,7 +4706,7 @@ msgstr "تهيئة"
 
 #: src/frontends/qt4/ui/CitationUi.ui:257
 msgid "Citation st&yle:"
-msgstr "اسلوب الاقتباس:"
+msgstr "أسلوب الاستشهاد:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:267
 msgid "Natbib citation style to use"
@@ -4728,7 +4718,7 @@ msgstr "نص قبل:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:284
 msgid "Text to place before citation"
-msgstr "النص قبل الاقتباس"
+msgstr "النص قبل الاستشهاد"
 
 #: src/frontends/qt4/ui/CitationUi.ui:291
 msgid "Text a&fter:"
@@ -4736,7 +4726,7 @@ msgstr "نص بعد:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:301
 msgid "Text to place after citation"
-msgstr "النص بعد الاقتباس"
+msgstr "النص بعد الاستشهاد"
 
 #: src/frontends/qt4/ui/CitationUi.ui:329
 msgid "List all authors"
@@ -4748,7 +4738,7 @@ msgstr "قائمة المؤلف الكاملة"
 
 #: src/frontends/qt4/ui/CitationUi.ui:339
 msgid "Force upper case in citation"
-msgstr "استخدام الحروف الكبيرة في الاقتباس"
+msgstr "استخدام الحروف الكبيرة في الاستشهاد"
 
 #: src/frontends/qt4/ui/CitationUi.ui:342
 msgid "Force u&pper case"
@@ -4756,7 +4746,7 @@ msgstr "احرف كبيرة اجباري"
 
 #: src/frontends/qt4/ui/CitationUi.ui:354
 msgid "Search Citation"
-msgstr "البحث الاقتباس"
+msgstr "بحث الاستشهاد"
 
 #: src/frontends/qt4/ui/CitationUi.ui:369
 msgid "Searc&h:"
@@ -4777,13 +4767,11 @@ msgid "&Search"
 msgstr "بحث&"
 
 #: src/frontends/qt4/ui/CitationUi.ui:408
-#, fuzzy
 msgid "Search field:"
 msgstr "حقل البحث:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:428
 #: src/frontends/qt4/GuiCitation.cpp:285
-#, fuzzy
 msgid "All fields"
 msgstr "كل الحقول"
 
@@ -4907,9 +4895,8 @@ msgid "Copyright"
 msgstr "حقوق النشر"
 
 #: src/frontends/qt4/ui/AboutUi.ui:99
-#, fuzzy
 msgid "Build Info"
-msgstr "أخطاء بناء"
+msgstr "معلومات البناء"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:19
 #: src/frontends/qt4/ui/HyperlinkUi.ui:32 lib/layouts/scrlttr2.layout:211
@@ -5152,9 +5139,8 @@ msgid "Skip trailing non-word characters"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:100
-#, fuzzy
 msgid "Use M&ac-style cursor movement"
-msgstr "تحريك المؤشر:"
+msgstr "استخدام حركة المؤشر بأسلوب الماك"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:107
 msgid "Sort &environments alphabetically"
@@ -6465,7 +6451,7 @@ msgstr ""
 #: lib/layouts/aguplus.inc:172 lib/layouts/aguplus.inc:174
 #: src/frontends/qt4/GuiDocument.cpp:1412
 msgid "Bibliography"
-msgstr "بابلوغرافيا"
+msgstr "ثبت المراجع"
 
 #: lib/layouts/siamltex.layout:326 lib/layouts/isprs.layout:210
 #: lib/layouts/powerdot.layout:354 lib/layouts/iopart.layout:248
@@ -6713,15 +6699,13 @@ msgstr ""
 #: lib/layouts/powerdot.layout:4 lib/layouts/beamer.layout:4
 #: lib/layouts/foils.layout:4 lib/layouts/seminar.layout:4
 #: lib/layouts/slides.layout:4
-#, fuzzy
 msgid "Presentations"
-msgstr "عرض تقديمي"
+msgstr "عروض تقديمية"
 
 #: lib/layouts/powerdot.layout:44 lib/layouts/powerdot.layout:68
 #: lib/layouts/powerdot.layout:90
-#, fuzzy
 msgid "TitleSlide"
-msgstr "العنوان"
+msgstr "شريحة العنوان"
 
 #: lib/layouts/powerdot.layout:125 lib/layouts/beamer.layout:489
 #: lib/layouts/seminar.layout:97 lib/layouts/slides.layout:91
@@ -6731,9 +6715,8 @@ msgstr "شريحة"
 
 #: lib/layouts/powerdot.layout:126 lib/layouts/powerdot.layout:152
 #: lib/layouts/powerdot.layout:206 lib/layouts/slides.layout:3
-#, fuzzy
 msgid "Slides"
-msgstr "شريحة"
+msgstr "شرائح"
 
 #: lib/layouts/powerdot.layout:139
 msgid "    "
@@ -6952,9 +6935,8 @@ msgid "Verse"
 msgstr ""
 
 #: lib/layouts/powerdot.layout:437
-#, fuzzy
 msgid "Twocolumn"
-msgstr "عمود"
+msgstr "عمودين"
 
 #: lib/layouts/powerdot.layout:451 lib/layouts/beamer.layout:600
 msgid "Column Options"
@@ -6965,9 +6947,8 @@ msgid "Twocolumn options (see powerdot manual)"
 msgstr ""
 
 #: lib/layouts/powerdot.layout:455
-#, fuzzy
 msgid "Left Column"
-msgstr "عمود"
+msgstr "عمود ايسر"
 
 #: lib/layouts/powerdot.layout:456
 msgid "Enter the text of the left column here (right column in main paragraph)"
@@ -7228,11 +7209,11 @@ msgstr "اعترافات بالجميل"
 
 #: lib/layouts/iopart.layout:266
 msgid "Bibliography (plain)"
-msgstr "بابلوغرافيا(بسيطة)"
+msgstr "ثبت المراجع (بسيط)"
 
 #: lib/layouts/iopart.layout:290
 msgid "Bibliography heading"
-msgstr "بابلوغرافيا رأس الموضوع"
+msgstr "رأس ثبت المراجع"
 
 #: lib/layouts/amsart.layout:3
 msgid "American Mathematical Society (AMS) Article"
@@ -7787,9 +7768,8 @@ msgid "Thanks:"
 msgstr "شكر:"
 
 #: lib/layouts/revtex4.layout:207 lib/layouts/revtex4-1.layout:132
-#, fuzzy
 msgid "Electronic Address Option|s"
-msgstr "عنوان الكتروني:"
+msgstr "خيار العنوان الإلكتروني|s"
 
 #: lib/layouts/revtex4.layout:208 lib/layouts/revtex4-1.layout:133
 msgid "Optional argument to the email command"
@@ -7800,9 +7780,8 @@ msgid "Electronic Address:"
 msgstr "عنوان الكتروني:"
 
 #: lib/layouts/revtex4.layout:226 lib/layouts/revtex4-1.layout:150
-#, fuzzy
 msgid "Author URL Option"
-msgstr "رابط المؤلف"
+msgstr "خيارات رابط المؤلف"
 
 #: lib/layouts/revtex4.layout:227 lib/layouts/revtex4-1.layout:151
 msgid "Optional argument to the homepage command"
@@ -7822,7 +7801,7 @@ msgstr "تمارين على الفصل"
 
 #: lib/layouts/moderncv.layout:3
 msgid "Modern CV"
-msgstr ""
+msgstr "جديث CV"
 
 #: lib/layouts/moderncv.layout:4 lib/layouts/simplecv.layout:4
 #: lib/layouts/europecv.layout:4
@@ -7830,14 +7809,12 @@ msgid "Curricula Vitae"
 msgstr ""
 
 #: lib/layouts/moderncv.layout:36
-#, fuzzy
 msgid "CVStyle"
-msgstr "النسق"
+msgstr "أسلوب CV"
 
 #: lib/layouts/moderncv.layout:45
-#, fuzzy
 msgid "CV Style:"
-msgstr "اسلوب الاقتباس:"
+msgstr "أسلوب CV:"
 
 #: lib/layouts/moderncv.layout:52
 msgid "CVColor"
@@ -7922,11 +7899,11 @@ msgstr "إضافي"
 
 #: lib/layouts/moderncv.layout:171 lib/layouts/IEEEtran.layout:367
 msgid "Photo"
-msgstr ""
+msgstr "الصورة"
 
 #: lib/layouts/moderncv.layout:174
 msgid "Photo:"
-msgstr ""
+msgstr "الصورة:"
 
 #: lib/layouts/moderncv.layout:176 lib/layouts/beamer.layout:748
 #: src/frontends/qt4/GuiBox.cpp:70
@@ -7995,7 +7972,7 @@ msgstr "مدخل"
 
 #: lib/layouts/moderncv.layout:296 lib/layouts/moderncv.layout:297
 msgid "Time"
-msgstr ""
+msgstr "الوقت"
 
 #: lib/layouts/moderncv.layout:301 lib/layouts/moderncv.layout:302
 msgid "What?"
@@ -8143,19 +8120,16 @@ msgid "--- Separate Environment ---"
 msgstr "--- افصل الوحدة ---"
 
 #: lib/layouts/moderncv.layout:503
-#, fuzzy
 msgid "Recipient"
-msgstr "استعراض"
+msgstr "المستلم"
 
 #: lib/layouts/moderncv.layout:511
-#, fuzzy
 msgid "Company Name"
-msgstr "اسم المعلومات:"
+msgstr "اسم الشركة"
 
 #: lib/layouts/moderncv.layout:512
-#, fuzzy
 msgid "Company name"
-msgstr "فروع"
+msgstr "اسم الشركة"
 
 #: lib/layouts/moderncv.layout:555
 #, fuzzy
@@ -8236,7 +8210,7 @@ msgstr ""
 
 #: lib/layouts/tbook.layout:3
 msgid "Japanese Book (Vertical Writing)"
-msgstr ""
+msgstr "كتاب ياباني (يكتب رأسيا)"
 
 #: lib/layouts/egs.layout:3
 msgid "European Geophysical Society (EGS)"
@@ -8317,9 +8291,8 @@ msgid "LyX-Code"
 msgstr "كود-ليك"
 
 #: lib/layouts/simplecv.layout:3
-#, fuzzy
 msgid "Simple CV"
-msgstr "|Fاطار بسيط"
+msgstr "بسيط CV"
 
 #: lib/layouts/simplecv.layout:52 lib/layouts/beamer.layout:258
 #: lib/layouts/tufte-book.layout:108 lib/layouts/scrclass.inc:139
@@ -8481,9 +8454,8 @@ msgstr ""
 
 #: lib/layouts/sciposter.layout:4 lib/layouts/beamerposter.layout:4
 #: lib/layouts/a0poster.layout:4
-#, fuzzy
 msgid "Posters"
-msgstr "الرمز البريدي"
+msgstr "الملصقات الإعلانية"
 
 #: lib/layouts/sciposter.layout:24 lib/layouts/beamer.layout:955
 #: lib/layouts/llncs.layout:220 lib/layouts/beamerposter.layout:36
@@ -8502,33 +8474,28 @@ msgid "Conference"
 msgstr "مؤتمر"
 
 #: lib/layouts/sciposter.layout:40
-#, fuzzy
 msgid "LeftLogo"
-msgstr "يسار|ي"
+msgstr "الشعار الأيسر"
 
 #: lib/layouts/sciposter.layout:46
-#, fuzzy
 msgid "Left logo:"
-msgstr "تذييل أيسر:"
+msgstr "الشعار الأيسر:"
 
 #: lib/layouts/sciposter.layout:60
-#, fuzzy
 msgid "Logo Size"
-msgstr "حجم الخط"
+msgstr "حجم الشعار"
 
 #: lib/layouts/sciposter.layout:61
 msgid "Relative logo size (0 through 1)"
 msgstr ""
 
 #: lib/layouts/sciposter.layout:65
-#, fuzzy
 msgid "RightLogo"
-msgstr "يمين"
+msgstr "الشعار الأيمن"
 
 #: lib/layouts/sciposter.layout:68
-#, fuzzy
 msgid "Right logo:"
-msgstr "التذييل الايمن:"
+msgstr "الشعار الأيمن:"
 
 #: lib/layouts/sciposter.layout:80
 #, fuzzy
@@ -8585,7 +8552,7 @@ msgstr "Docbook (XML)"
 
 #: lib/layouts/docbook.layout:4 lib/layouts/agu-dtd.layout:4
 msgid "Articles (DocBook)"
-msgstr ""
+msgstr "مقالات (DocBook)"
 
 #: lib/layouts/docbook-book.layout:3
 #, fuzzy
@@ -8594,9 +8561,8 @@ msgstr "Docbook (XML)"
 
 #: lib/layouts/docbook-book.layout:4 lib/layouts/docbook-chapter.layout:4
 #: lib/layouts/docbook-section.layout:4
-#, fuzzy
 msgid "Books (DocBook)"
-msgstr "DocBook"
+msgstr "كتب (DocBook)"
 
 #: lib/layouts/scrlttr2.layout:3
 msgid "KOMA-Script Letter (V. 2)"
@@ -9321,7 +9287,7 @@ msgstr "عرض تقديمي"
 
 #: lib/layouts/europecv.layout:3
 msgid "Europe CV"
-msgstr ""
+msgstr "أوروبي CV"
 
 #: lib/layouts/europecv.layout:47
 msgid "FooterName"
@@ -9479,7 +9445,7 @@ msgstr "عمل قوائم"
 
 #: lib/layouts/europecv.layout:253
 msgid "Level how good you think you can listen"
-msgstr ""
+msgstr "مستوى مدى قدرتك على الاستماع"
 
 #: lib/layouts/europecv.layout:257
 #, fuzzy
@@ -9488,7 +9454,7 @@ msgstr "عناوين رأس الموضوع"
 
 #: lib/layouts/europecv.layout:258
 msgid "Level how good you think you can read"
-msgstr ""
+msgstr "مستوى قدرتك على القراءة"
 
 #: lib/layouts/europecv.layout:262
 msgid "Interaction"
@@ -9496,7 +9462,7 @@ msgstr "المقدمة"
 
 #: lib/layouts/europecv.layout:263
 msgid "Level how good you think you can conversate"
-msgstr ""
+msgstr "مستوى قدرتك على التحدث"
 
 #: lib/layouts/europecv.layout:267
 #, fuzzy
@@ -9505,7 +9471,7 @@ msgstr "مقدمة|I"
 
 #: lib/layouts/europecv.layout:268
 msgid "Level how good you think you can freely talk"
-msgstr ""
+msgstr "مستوى قدرتك على المحادثة الحرة"
 
 #: lib/layouts/europecv.layout:272
 msgid "LastLanguage"
@@ -9517,7 +9483,7 @@ msgstr "آخر لغة:"
 
 #: lib/layouts/europecv.layout:278
 msgid "LangFooter"
-msgstr "لغة التذييل:"
+msgstr "لغة التذييل"
 
 #: lib/layouts/europecv.layout:281
 msgid "Language Footer:"
@@ -9550,7 +9516,7 @@ msgstr "Docbook (XML)"
 
 #: lib/layouts/agu-dtd.layout:3
 msgid "American Geophysical Union (AGU, SGML Article)"
-msgstr ""
+msgstr "الاتحاد الجيوفيزيائي الأمريكي (AGU, SGML Article)"
 
 #: lib/layouts/sigplanconf.layout:3
 msgid "ACM SIGPLAN"
@@ -10334,24 +10300,20 @@ msgid "American Psychological Association (APA), v. 6"
 msgstr ""
 
 #: lib/layouts/apa6.layout:113
-#, fuzzy
 msgid "FiveAuthors"
-msgstr "المؤلف"
+msgstr "خمس مؤلفين"
 
 #: lib/layouts/apa6.layout:120
-#, fuzzy
 msgid "SixAuthors"
-msgstr "المؤلف"
+msgstr "ستة مؤلفين"
 
 #: lib/layouts/apa6.layout:127
-#, fuzzy
 msgid "LeftHeader"
-msgstr "رأس ايسر"
+msgstr "الرأس الأيسر"
 
 #: lib/layouts/apa6.layout:136
-#, fuzzy
 msgid "Left header:"
-msgstr "الرأس الايسر:"
+msgstr "الرأس الأيسر:"
 
 #: lib/layouts/apa6.layout:191
 #, fuzzy
@@ -10662,9 +10624,8 @@ msgid "Supporting Information Available"
 msgstr ""
 
 #: lib/layouts/achemso.layout:254
-#, fuzzy
 msgid "TOC entry"
-msgstr "الدولة"
+msgstr ""
 
 #: lib/layouts/achemso.layout:258
 msgid "Graphical TOC Entry"
@@ -11013,14 +10974,12 @@ msgid "Progress Contents"
 msgstr "المحتويات"
 
 #: lib/layouts/seminar.layout:95
-#, fuzzy
 msgid "Landscape Slide:"
-msgstr "شريحة افقية"
+msgstr "شريحة أفقية:"
 
 #: lib/layouts/seminar.layout:104
-#, fuzzy
 msgid "Portrait Slide:"
-msgstr "شريحة رأسية"
+msgstr "شريحة رأسية:"
 
 #: lib/layouts/seminar.layout:106
 msgid "Slide*"
@@ -11112,9 +11071,8 @@ msgid "Preprint number:"
 msgstr "قبل الطباعة"
 
 #: lib/layouts/jasatex.layout:247 lib/layouts/jasatex.layout:251
-#, fuzzy
 msgid "Online citation"
-msgstr "ادراج اقباس"
+msgstr "استشهاد حي"
 
 #: lib/layouts/acmsiggraph.layout:3
 msgid "ACM SIGGRAPH"
@@ -11911,7 +11869,7 @@ msgstr "معلومات المؤلف"
 
 #: lib/layouts/agutex.layout:3
 msgid "American Geophysical Union (AGUTeX)"
-msgstr ""
+msgstr "الاتحاد الجيوفيزيائي الأمريكي (AGUTeX)"
 
 #: lib/layouts/agutex.layout:74
 msgid "Authors"
@@ -11943,7 +11901,7 @@ msgstr "اعترافات بالجميل"
 
 #: lib/layouts/treport.layout:3
 msgid "Japanese Report (Vertical Writing)"
-msgstr ""
+msgstr "تقرير ياباني (يكتب رأسيا)"
 
 #: lib/layouts/revtex4-1.layout:3
 msgid "REVTeX (V. 4.1)"
@@ -11980,7 +11938,7 @@ msgstr "في النص"
 
 #: lib/layouts/revtex4-1.layout:271
 msgid "Video"
-msgstr ""
+msgstr "فيديو"
 
 #: lib/layouts/revtex4-1.layout:274
 #, fuzzy
@@ -12004,11 +11962,11 @@ msgstr ""
 
 #: lib/layouts/tufte-handout.layout:4
 msgid "Handouts"
-msgstr ""
+msgstr "بيان"
 
 #: lib/layouts/jreport.layout:3
 msgid "Japanese Report (jreport)"
-msgstr ""
+msgstr "تقرير ياباني (jreport)"
 
 #: lib/layouts/acm-sigs.layout:3
 msgid "ACM SIG Proceedings (SP)"
@@ -12030,7 +11988,7 @@ msgstr "حروف صغيرة"
 
 #: lib/layouts/IEEEtran.layout:124
 msgid "A short version of the author name"
-msgstr ""
+msgstr "نسخة مصغرة من اسم المؤلف"
 
 #: lib/layouts/IEEEtran.layout:140
 msgid "Author Name"
@@ -12057,7 +12015,7 @@ msgstr "محارف خاصة|م"
 
 #: lib/layouts/IEEEtran.layout:205
 msgid "After Title Text"
-msgstr ""
+msgstr "بعد نص العنوان"
 
 #: lib/layouts/IEEEtran.layout:215
 msgid "Page headings"
@@ -12095,7 +12053,7 @@ msgstr "الرأس الاول:"
 
 #: lib/layouts/IEEEtran.layout:292
 msgid "First character of first word"
-msgstr ""
+msgstr "أول حرف من أول كلمة"
 
 #: lib/layouts/IEEEtran.layout:300 lib/layouts/IEEEtran.layout:310
 msgid "Appendices"
@@ -12304,11 +12262,11 @@ msgstr ""
 #: lib/layouts/agu_stdtitle.inc:56 lib/layouts/agu_stdclass.inc:136
 #: lib/layouts/agu_stdclass.inc:138
 msgid "Citation-number"
-msgstr "رقم-الاقتباس"
+msgstr "رقم-الاستشهاد"
 
 #: lib/layouts/agu_stdtitle.inc:59
 msgid "Citation-number:"
-msgstr "رقم-الاقتباس:"
+msgstr "رقم-الاستشهاد:"
 
 #: lib/layouts/agu_stdtitle.inc:65
 msgid "AGU-volume"
@@ -12404,11 +12362,11 @@ msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:264 src/frontends/qt4/GuiCitation.cpp:88
 msgid "Citation"
-msgstr "اقتباس"
+msgstr "استشهاد"
 
 #: lib/layouts/agu_stdtitle.inc:267
 msgid "Citation:"
-msgstr "الاقتباس:"
+msgstr "الاستشهاد:"
 
 #: lib/layouts/agu_stdtitle.inc:272
 msgid "Posting-order"
@@ -13002,7 +12960,7 @@ msgstr ""
 
 #: lib/layouts/aguplus.inc:152
 msgid "Paper Id:"
-msgstr ""
+msgstr "معرف الورقة:"
 
 #: lib/layouts/aguplus.inc:156
 msgid "AuthorAddr"
@@ -13452,9 +13410,8 @@ msgid "Main Language Text"
 msgstr "&اللغة الافتراضية"
 
 #: lib/layouts/bicaption.module:50
-#, fuzzy
 msgid "Text in the main(document) language"
-msgstr "&لغة واجهة المستخدم:"
+msgstr "لغة النص في (المستند) الرئيسي"
 
 #: lib/layouts/bicaption.module:53
 msgid "Second Language Short Title"
@@ -13509,9 +13466,8 @@ msgid ""
 msgstr "عرف بعض أنماط محارف الترميز المنطقي:اسم،emph,قوي و كود."
 
 #: lib/layouts/logicalmkup.module:5
-#, fuzzy
 msgid "charstyles"
-msgstr "جدول بياني"
+msgstr ""
 
 #: lib/layouts/logicalmkup.module:11 src/frontends/qt4/GuiCharacter.cpp:82
 msgid "Noun"
@@ -13626,10 +13582,10 @@ msgid ""
 "proposition 4, ...). The numbering is reset at each section start."
 msgstr ""
 "عرف بعض وحدات النظريات لتستخدم مع غير أصناف AMS. على النقيض من نماذج "
-"النظريات المبسطة،الانواع المختلفة المتوفرة هنا كلا منها يملك عداداً "
-"منفصلاً(مثلا.theorem 1, theorem 2, lemma 1, proposition 1, theorem 3, lemma "
-"2, ..., as opposed to theorem 1, theorem 2, lemma 3, proposition 4, ...). "
-"يعاد ضبط الترقيم عند بداية كل قسم."
+"النظريات المبسطة،الانواع المختلفة المتوفرة هنا كلا منها يملك عداداً منفصلاً"
+"(مثلا.theorem 1, theorem 2, lemma 1, proposition 1, theorem 3, lemma 2, ..., "
+"as opposed to theorem 1, theorem 2, lemma 3, proposition 4, ...). يعاد ضبط "
+"الترقيم عند بداية كل قسم."
 
 #: lib/layouts/theorems-std.module:2
 msgid "Theorems"
@@ -13662,9 +13618,9 @@ msgstr ""
 "عرف بعض وحدات النظريات الأضافية لتستخدم مع حزم نظريات الـAMS. تشمل المعايير ،"
 "الخواريزم،المسلمات،الشروط، الملاحظة،الترقيم،الملخص،الأعتراف بالجميل،استنتاج،"
 "الفرض،و الحالات،في الصيغ المرقمة و الغير مرقمة. على النقيض من نموذج  AMS-"
-"الممتد المبسط، النظريات المختلفة في النوع المتوفرة هنا تملك عداداً "
-"منفصلاً(مثلا. criterion 1, criterion 2, axiom 1, assumption 1, criterion "
-"3, ..., as opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
+"الممتد المبسط، النظريات المختلفة في النوع المتوفرة هنا تملك عداداً منفصلاً"
+"(مثلا. criterion 1, criterion 2, axiom 1, assumption 1, criterion 3, ..., as "
+"opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:63
 #, fuzzy
@@ -13901,7 +13857,7 @@ msgstr "عربي"
 #: lib/layouts/jurabib.module:8 lib/layouts/natbib.module:9
 #: lib/layouts/basic.module:6
 msgid "Citation engine"
-msgstr "محرك الاقتباس"
+msgstr "محرك الاستشهاد:"
 
 #: lib/layouts/jurabib.module:49 lib/layouts/natbib.module:44
 #: lib/layouts/basic.module:22
@@ -13912,17 +13868,15 @@ msgstr "محمي"
 #: lib/layouts/jurabib.module:50 lib/layouts/natbib.module:45
 #: lib/layouts/basic.module:23
 msgid "Add to bibliography only."
-msgstr "اضافة للبابلوغرافيا فقط."
+msgstr "إضافة لثبت المراجع فقط."
 
 #: lib/layouts/jurabib.module:51
-#, fuzzy
 msgid "bibliography entry"
-msgstr "إعدادات مدخلات البابلوغرافيا"
+msgstr "مدخل ثبت المراجع"
 
 #: lib/layouts/jurabib.module:52
-#, fuzzy
 msgid "Bibliography entry."
-msgstr "إعدادات مدخلات البابلوغرافيا"
+msgstr "مدخل ثبت المراجع."
 
 #: lib/layouts/jurabib.module:53
 msgid "before"
@@ -15408,9 +15362,8 @@ msgid "Rename|R"
 msgstr "تسمية|R"
 
 #: lib/ui/stdmenus.inc:79
-#, fuzzy
 msgid "Update Local Directory From Repository|d"
-msgstr "تحديث المجلد المحلي من المستودع"
+msgstr "تحديث المجلد المحلي من المستودع|d"
 
 #: lib/ui/stdmenus.inc:80
 #, fuzzy
@@ -15500,7 +15453,7 @@ msgstr "نقل الفقرة لأسفل|v"
 
 #: lib/ui/stdmenus.inc:120
 msgid "Text Style|S"
-msgstr "نسق النص|ن"
+msgstr "أسلوب النص|ن"
 
 #: lib/ui/stdmenus.inc:122 lib/ui/stdcontext.inc:333
 msgid "Paragraph Settings...|P"
@@ -15569,9 +15522,8 @@ msgid "Index Settings...|x"
 msgstr "اعدادات الفهرس...|x"
 
 #: lib/ui/stdmenus.inc:147
-#, fuzzy
 msgid "Info Settings...|n"
-msgstr "اعدادات الصندوق..."
+msgstr "معلومات ألإعدادات...|n"
 
 #: lib/ui/stdmenus.inc:148
 msgid "Listings Settings...|g"
@@ -15641,7 +15593,7 @@ msgstr "نص مبسط، ادمج السطور|ص"
 
 #: lib/ui/stdmenus.inc:180
 msgid "Dissolve Text Style"
-msgstr "الغاء نسق النص"
+msgstr "إلغاء أسلوب النص"
 
 #: lib/ui/stdmenus.inc:184
 msgid "Customized...|C"
@@ -15765,7 +15717,7 @@ msgstr "بدل نوع الصيغة الرياضية|ب"
 
 #: lib/ui/stdmenus.inc:234
 msgid "Text Style|T"
-msgstr "نسق النص|س"
+msgstr "أسلوب النص|س"
 
 #: lib/ui/stdmenus.inc:236
 msgid "Use Computer Algebra System|S"
@@ -16003,9 +15955,8 @@ msgid "Fold Math Macro|d"
 msgstr "مجلد ماكرو الرياضيات|d"
 
 #: lib/ui/stdmenus.inc:330
-#, fuzzy
 msgid "Outline Pane|u"
-msgstr "خط خارجي"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:331
 msgid "Source Pane|S"
@@ -16083,7 +16034,7 @@ msgstr "التعبير العاديه"
 
 #: lib/ui/stdmenus.inc:365
 msgid "Citation...|C"
-msgstr "اقتباس...|ا"
+msgstr "استشهاد...|ا"
 
 #: lib/ui/stdmenus.inc:366
 msgid "Cross-Reference...|R"
@@ -16130,9 +16081,8 @@ msgid "Program Listing[[Menu]]"
 msgstr "قائمة البرنامج[[Menu]]"
 
 #: lib/ui/stdmenus.inc:382
-#, fuzzy
 msgid "Preview|w"
-msgstr "مستعرض ليك"
+msgstr "استعراض|w"
 
 #: lib/ui/stdmenus.inc:386
 msgid "Symbols...|b"
@@ -16207,9 +16157,8 @@ msgid "Vertical Space...|V"
 msgstr "مسافة رأسية...|م"
 
 #: lib/ui/stdmenus.inc:408
-#, fuzzy
 msgid "Phantom|m"
-msgstr "Esperanto"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:410
 msgid "Hyphenation Point|H"
@@ -16310,7 +16259,7 @@ msgstr "مصطلح|ص"
 
 #: lib/ui/stdmenus.inc:459
 msgid "BibTeX Bibliography...|B"
-msgstr "بابلوغرافيا BibTeX ...|ب"
+msgstr "ثبت مراجع BibTeX ...|B"
 
 #: lib/ui/stdmenus.inc:463
 msgid "LyX Document...|X"
@@ -16927,12 +16876,11 @@ msgstr "رفض التغيير|ر"
 
 #: lib/ui/stdcontext.inc:331
 msgid "Apply Last Text Style|A"
-msgstr "تطبيق نسق النص الاخير|ط"
+msgstr "تطبيق أسلوب النص الأخير|ط"
 
 #: lib/ui/stdcontext.inc:332
-#, fuzzy
 msgid "Text Style|x"
-msgstr "نسق النص|ن"
+msgstr "أسلوب النص|ن"
 
 #: lib/ui/stdcontext.inc:336
 msgid "Fullscreen Mode"
@@ -17296,7 +17244,7 @@ msgstr "ادراج اسناد ترافقي"
 
 #: lib/ui/stdtoolbars.inc:125
 msgid "Insert citation"
-msgstr "ادراج اقباس"
+msgstr "إدراج استشهاد"
 
 #: lib/ui/stdtoolbars.inc:126
 msgid "Insert index entry"
@@ -17340,7 +17288,7 @@ msgstr "ملف مضمن"
 
 #: lib/ui/stdtoolbars.inc:138
 msgid "Text style"
-msgstr "نسق النص"
+msgstr "أسلوب النص"
 
 #: lib/ui/stdtoolbars.inc:139
 msgid "Paragraph settings"
@@ -17724,7 +17672,7 @@ msgstr "خيارات الرياضيات"
 
 #: lib/ui/stdtoolbars.inc:293 lib/ui/stdtoolbars.inc:370
 msgid "Styles"
-msgstr "اساليب"
+msgstr "أساليب"
 
 #: lib/ui/stdtoolbars.inc:294 lib/ui/stdtoolbars.inc:377
 msgid "Fractions"
@@ -21780,7 +21728,7 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1402
 msgid "Syllabic"
-msgstr ""
+msgstr "مقطع لفظي"
 
 #: lib/ui/stdtoolbars.inc:1403
 msgid "Non-syllabic"
@@ -21956,7 +21904,7 @@ msgstr ""
 
 #: lib/external_templates:37 lib/external_templates:44
 msgid "Spreadsheet"
-msgstr ""
+msgstr "جدول ممتد"
 
 #: lib/external_templates:39
 msgid ""
@@ -21969,7 +21917,7 @@ msgstr ""
 
 #: lib/external_templates:76
 msgid "RasterImage"
-msgstr ""
+msgstr "صورة نقطية"
 
 #: lib/external_templates:79 lib/external_templates:85
 #, fuzzy
@@ -22282,21 +22230,19 @@ msgstr ""
 
 #: lib/configure.py:566
 msgid "Excel spreadsheet"
-msgstr ""
+msgstr "جدول ممتد اكسيل"
 
 #: lib/configure.py:567
 msgid "OpenOffice spreadsheet"
-msgstr ""
+msgstr "جدول ممتد أوبن أوفيس"
 
 #: lib/configure.py:570
-#, fuzzy
 msgid "LyXHTML"
-msgstr "HTML"
+msgstr "LyXHTML"
 
 #: lib/configure.py:570
-#, fuzzy
 msgid "LyXHTML|y"
-msgstr "HTML|H"
+msgstr "LyXHTML|y"
 
 #: lib/configure.py:578 src/frontends/qt4/GuiLog.cpp:232
 msgid "BibTeX"
@@ -22355,24 +22301,20 @@ msgid "PDF (XeTeX)|X"
 msgstr ""
 
 #: lib/configure.py:595
-#, fuzzy
 msgid "PDF (LuaTeX)"
-msgstr "LaTeX (pLaTeX)"
+msgstr "PDF (LuaTeX)"
 
 #: lib/configure.py:595
-#, fuzzy
 msgid "PDF (LuaTeX)|u"
-msgstr "PDF (pdflatex)|F"
+msgstr "PDF (LuaTeX)|u"
 
 #: lib/configure.py:596
-#, fuzzy
 msgid "PDF (graphics)"
-msgstr "الصور"
+msgstr "PDF (graphics)"
 
 #: lib/configure.py:597
-#, fuzzy
 msgid "PDF (cropped)"
-msgstr "PDF (ps2pdf)"
+msgstr "PDF (cropped)"
 
 #: lib/configure.py:600
 msgid "DVI"
@@ -22383,14 +22325,12 @@ msgid "DVI|D"
 msgstr "DVI|D"
 
 #: lib/configure.py:601
-#, fuzzy
 msgid "DVI (LuaTeX)"
-msgstr "LaTeX (pLaTeX)"
+msgstr "DVI (LuaTeX)"
 
 #: lib/configure.py:601
-#, fuzzy
 msgid "DVI (LuaTeX)|V"
-msgstr "LaTeX (pLaTeX)"
+msgstr "DVI (LuaTeX)|V"
 
 #: lib/configure.py:604
 msgid "DraftDVI"
@@ -22401,9 +22341,8 @@ msgid "htm"
 msgstr "htm"
 
 #: lib/configure.py:607 lib/configure.py:639
-#, fuzzy
 msgid "htm|HTML"
-msgstr "HTML"
+msgstr "htm|HTML"
 
 #: lib/configure.py:610
 msgid "Noteedit"
@@ -22411,7 +22350,7 @@ msgstr "تحرير مدونة"
 
 #: lib/configure.py:613
 msgid "OpenDocument"
-msgstr "فتح مستند"
+msgstr "مستند مفتوح"
 
 #: lib/configure.py:614
 msgid "OpenOffice.Org (sxw)"
@@ -22532,9 +22471,8 @@ msgid "No year"
 msgstr "لا عام"
 
 #: src/BiblioInfo.cpp:849
-#, fuzzy
 msgid "Bibliography entry not found!"
-msgstr "بابلوغرافيا رأس الموضوع"
+msgstr "مدخل ثبت المراجع غير موجود!"
 
 #: src/Buffer.cpp:138
 #, c-format
@@ -23030,9 +22968,8 @@ msgid "Delete emergency file?"
 msgstr "حف ملف الطوارئ؟"
 
 #: src/Buffer.cpp:4168 src/Buffer.cpp:4181
-#, fuzzy
 msgid "&Keep"
-msgstr "يُبقي"
+msgstr "ابق&اء"
 
 #: src/Buffer.cpp:4172
 msgid "Emergency file deleted"
@@ -23909,7 +23846,7 @@ msgstr "فرع مجهول"
 
 #: src/CutAndPaste.cpp:367
 msgid "&Don't Add"
-msgstr ""
+msgstr "عدم الإض&افة"
 
 #: src/CutAndPaste.cpp:725 src/Text.cpp:402
 #, fuzzy, c-format
@@ -24301,7 +24238,7 @@ msgstr ""
 
 #: src/LyX.cpp:669
 msgid "LyX crashed!"
-msgstr ""
+msgstr "انهيار ليك!"
 
 #: src/LyX.cpp:703 src/frontends/qt4/GuiView.cpp:1003
 msgid "LyX: "
@@ -24678,11 +24615,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:3264
 msgid ""
-"The LaTeX command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The LaTeX command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"أمر LaTeX لتحميل حزمة اللغة مثل \"\\usepackage{babel}\", "
-"\"\\usepackage{omega}\"."
+"أمر LaTeX لتحميل حزمة اللغة مثل \"\\usepackage{babel}\", \"\\usepackage"
+"{omega}\"."
 
 #: src/LyXRC.cpp:3268
 #, fuzzy
@@ -24888,7 +24825,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3446
 msgid "The screen fonts used to display the text while editing."
-msgstr ""
+msgstr "خطوط الشاشة تستخدم لعرض النص أثناء التحرير."
 
 #: src/LyXRC.cpp:3455
 msgid ""
@@ -24956,6 +24893,7 @@ msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
 msgstr ""
+"تفعيل استخدام الوان النظام لبعض الأشياء مثل خلفية النافذة الرئيسية والتحديد."
 
 #: src/LyXRC.cpp:3522
 #, fuzzy
@@ -24966,6 +24904,7 @@ msgstr "&تفعيل اداة التلميحات في منطقة العمل ال�
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
+"تفعيل الذاكرة المؤقتة pixmap التي تعمل على تحسين الأداء في ماك وويندوز."
 
 #: src/LyXRC.cpp:3530
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
@@ -25040,7 +24979,7 @@ msgstr ""
 
 #: src/Paragraph.cpp:2110
 msgid "Alignment not permitted"
-msgstr ""
+msgstr "المحاذاة لا تسمح"
 
 #: src/Paragraph.cpp:2111
 msgid ""
@@ -25343,7 +25282,7 @@ msgstr "تم رصد تغييرات"
 
 #: src/VCBackend.cpp:955 src/VCBackend.cpp:959
 msgid "&Abort"
-msgstr ""
+msgstr "إحباط&"
 
 #: src/VCBackend.cpp:955 src/VCBackend.cpp:1514
 msgid "View &Log ..."
@@ -25911,7 +25850,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiBibtex.cpp:53
 msgid "BibTeX Bibliography"
-msgstr "بابلوغرافيا BibTeX"
+msgstr "ثبت المراجع BibTeX"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
@@ -25925,9 +25864,8 @@ msgid "Documents|#o#O"
 msgstr "مستندات|#o#O"
 
 #: src/frontends/qt4/GuiBibtex.cpp:437
-#, fuzzy
 msgid "BibTeX Databases (*.bib)"
-msgstr "BibTeX يمكن استخدام قاعدة بيانات"
+msgstr "BibTeX قاعدة بيانات (*.bib)"
 
 #: src/frontends/qt4/GuiBibtex.cpp:439
 #, fuzzy
@@ -25935,13 +25873,12 @@ msgid "Select a BibTeX database to add"
 msgstr "BibTeX يمكن استخدام قاعدة بيانات"
 
 #: src/frontends/qt4/GuiBibtex.cpp:447
-#, fuzzy
 msgid "BibTeX Styles (*.bst)"
-msgstr "اسلوب BibTeX"
+msgstr "BibTeX أسلوب (*.bst)"
 
 #: src/frontends/qt4/GuiBibtex.cpp:449
 msgid "Select a BibTeX style"
-msgstr "حدد نسق BibTeX"
+msgstr "اختر أسلوب BibTeX"
 
 #: src/frontends/qt4/GuiBox.cpp:54
 msgid "No frame"
@@ -26140,7 +26077,7 @@ msgstr "اصفر"
 
 #: src/frontends/qt4/GuiCharacter.cpp:162
 msgid "Text Style"
-msgstr "نسق النص"
+msgstr "أسلوب النص"
 
 #: src/frontends/qt4/GuiCitation.cpp:286
 msgid "Keys"
@@ -28652,15 +28589,13 @@ msgid "Index Entry (%1$s)"
 msgstr "مدخل فهرس (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:1518
-#, fuzzy
 msgid "No Citation in Scope!"
-msgstr "لا اجراء محدد"
+msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:1531 src/insets/InsetCitation.cpp:164
 #: src/insets/InsetCitation.cpp:256
-#, fuzzy
 msgid "No citations selected!"
-msgstr "لا اجراء محدد"
+msgstr "لا استشهادات محددة!"
 
 #: src/frontends/qt4/Menus.cpp:1631
 #, c-format
@@ -28758,7 +28693,7 @@ msgstr "ملاحظات"
 
 #: src/frontends/qt4/qt_helpers.cpp:615
 msgid "Citations"
-msgstr "الاقتباسات"
+msgstr "الاستشهادات"
 
 #: src/frontends/qt4/qt_helpers.cpp:617
 msgid "Labels and References"
@@ -28788,9 +28723,8 @@ msgid ""
 msgstr ""
 
 #: src/insets/Inset.cpp:88
-#, fuzzy
 msgid "Bibliography Entry"
-msgstr "إعدادات مدخلات البابلوغرافيا"
+msgstr "مدخل ثبت المراجع"
 
 #: src/insets/Inset.cpp:91
 msgid "TeX Code"
@@ -28852,9 +28786,8 @@ msgid "&Proceed"
 msgstr "تابع"
 
 #: src/insets/InsetBibtex.cpp:170
-#, fuzzy
 msgid "BibTeX Generated Bibliography"
-msgstr "بابلوغرافيا BibTeX"
+msgstr "انتج ثبت المراجع BibTeX"
 
 #: src/insets/InsetBibtex.cpp:177
 msgid "Databases:"
@@ -28862,7 +28795,7 @@ msgstr "قاعدة البيانات:"
 
 #: src/insets/InsetBibtex.cpp:202
 msgid "Style File:"
-msgstr "ملف النسق:"
+msgstr "ملف الأسلوب:"
 
 #: src/insets/InsetBibtex.cpp:209
 msgid "Lists:"
@@ -28889,7 +28822,7 @@ msgid ""
 "There are spaces in the path to your BibTeX style file.\n"
 "BibTeX will be unable to find it."
 msgstr ""
-"توجد مباعدات في المسار الى ملف النسق BibTeX الخاصة بك.\n"
+"توجد مباعدات في المسار إلى ملف الأسلوب BibTeX الخاصة بك.\n"
 "BibTeXلن يكون قادرا على العثور عليها."
 
 #: src/insets/InsetBox.cpp:67
@@ -28996,7 +28929,7 @@ msgstr ""
 
 #: src/insets/InsetCitation.cpp:160
 msgid "No bibliography defined!"
-msgstr "لم يتم تعريف قائمة مراجع!"
+msgstr "لم يتم تعيين ثبت المراجع!"
 
 #: src/insets/InsetCommand.cpp:132
 msgid "LaTeX Command: "
@@ -29805,7 +29738,7 @@ msgstr "خطأ في البحث"
 
 #: src/lyxfind.cpp:128
 msgid "Search string is empty"
-msgstr ""
+msgstr "حقل البحث فارغ"
 
 #: src/lyxfind.cpp:370
 #, fuzzy
@@ -30077,7 +30010,7 @@ msgstr "يجرى قراءة ملفات الاعدادت"
 
 #: src/support/debug.cpp:49
 msgid "Custom keyboard definition"
-msgstr ""
+msgstr "تعيين لوحة مفاتيح مخصصة"
 
 #: src/support/debug.cpp:50
 msgid "LaTeX generation/execution"
