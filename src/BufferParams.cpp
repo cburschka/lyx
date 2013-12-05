@@ -1958,7 +1958,8 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 
 	// xunicode needs to be loaded at least after amsmath, amssymb,
 	// esint and the other packages that provide special glyphs
-	if (features.runparams().flavor == OutputParams::XETEX)
+	if (features.runparams().flavor == OutputParams::XETEX
+	    && useNonTeXFonts)
 		lyxpreamble += "\\usepackage{xunicode}\n";
 
 	// Polyglossia must be loaded last
