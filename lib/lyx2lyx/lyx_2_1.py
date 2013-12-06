@@ -2184,6 +2184,93 @@ def convert_beamerargs(document):
         i += 1
 
 
+#
+# Helper function for the frame conversion routines
+#
+def convert_beamerframeargs(document, i, parbeg):
+    ertend = i
+    if document.body[parbeg] == "\\begin_inset ERT":
+        ertend = find_end_of_inset(document.body, parbeg)
+        if ertend == -1:
+            document.warning("Malformed LyX document: missing ERT \\end_inset")
+            return ertend
+        ertcont = parbeg + 5
+        if document.body[ertcont].startswith("[<"):
+            # This is a default overlay specification
+            # strip off the [<
+            document.body[ertcont] = document.body[ertcont][2:]
+            if document.body[ertcont].endswith(">]"):
+                # strip off the >]
+                document.body[ertcont] = document.body[ertcont][:-2]
+            elif document.body[ertcont].endswith("]"):
+                # divide the args
+                tok = document.body[ertcont].find('>][')
+                if tok != -1:
+                    subst = [document.body[ertcont][:tok],
+                              '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
+                              'status collapsed', '', '\\begin_layout Plain Layout',
+                              document.body[ertcont][tok + 3:-1]]
+                    document.body[ertcont : ertcont + 1] = subst
+                    ertend += 11
+            # Convert to ArgInset
+            document.body[parbeg] = "\\begin_inset Argument 2"
+        elif document.body[ertcont].startswith("<"):
+            # This is an overlay specification
+            # strip off the <
+            document.body[ertcont] = document.body[ertcont][1:]
+            if document.body[ertcont].endswith(">"):
+                # strip off the >
+                document.body[ertcont] = document.body[ertcont][:-1]
+                # Convert to ArgInset
+                document.body[parbeg] = "\\begin_inset Argument 1"
+            elif document.body[ertcont].endswith(">]"):
+                # divide the args
+                tok = document.body[ertcont].find('>[<')
+                if tok != -1:
+                    document.body[ertcont : ertcont + 1] = [document.body[ertcont][:tok],
+                                                    '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
+                                                    'status collapsed', '', '\\begin_layout Plain Layout',
+                                                    document.body[ertcont][tok + 3:-2]]
+                # Convert to ArgInset
+                document.body[parbeg] = "\\begin_inset Argument 1"
+                ertend += 11
+            elif document.body[ertcont].endswith("]"):
+                # divide the args
+                tok = document.body[ertcont].find('>[<')
+                if tok != -1:
+                    # divide the args
+                    tokk = document.body[ertcont].find('>][')
+                    if tokk != -1:
+                        document.body[ertcont : ertcont + 1] = [document.body[ertcont][:tok],
+                                                        '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
+                                                        'status collapsed', '', '\\begin_layout Plain Layout',
+                                                        document.body[ertcont][tok + 3:tokk],
+                                                        '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
+                                                        'status collapsed', '', '\\begin_layout Plain Layout',
+                                                        document.body[ertcont][tokk + 3:-1]]
+                        ertend += 22
+                else:
+                    tokk = document.body[ertcont].find('>[')
+                    if tokk != -1:
+                        document.body[ertcont : ertcont + 1] = [document.body[ertcont][:tokk],
+                                                        '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
+                                                        'status collapsed', '', '\\begin_layout Plain Layout',
+                                                        document.body[ertcont][tokk + 2:-1]]
+                        ertend += 11
+                # Convert to ArgInset
+                document.body[parbeg] = "\\begin_inset Argument 1"
+        elif document.body[ertcont].startswith("["):
+            # This is an ERT option
+            # strip off the [
+            document.body[ertcont] = document.body[ertcont][1:]
+            if document.body[ertcont].endswith("]"):
+                # strip off the ]
+                document.body[ertcont] = document.body[ertcont][:-1]
+                # Convert to ArgInset
+                document.body[parbeg] = "\\begin_inset Argument 3"
+    return ertend
+
+
 def convert_againframe_args(document):
     " Converts beamer AgainFrame to new layout "
 
@@ -2204,83 +2291,8 @@ def convert_againframe_args(document):
         j = parent[2]
         parbeg = parent[3]
         if i != -1:
-            if document.body[parbeg] == "\\begin_inset ERT":
-                ertcont = parbeg + 5
-                if document.body[ertcont].startswith("[<"):
-                    # This is a default overlay specification
-                    # strip off the [<
-                    document.body[ertcont] = document.body[ertcont][2:]
-                    if document.body[ertcont].endswith(">]"):
-                        # strip off the >]
-                        document.body[ertcont] = document.body[ertcont][:-2]
-                    elif document.body[ertcont].endswith("]"):
-                        # divide the args
-                        tok = document.body[ertcont].find('>][')
-                        if tok != -1:
-                            subst = [document.body[ertcont][:tok],
-                                     '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
-                                     'status collapsed', '', '\\begin_layout Plain Layout',
-                                     document.body[ertcont][tok + 3:-1]]
-                            document.body[ertcont : ertcont + 1] = subst
-                     # Convert to ArgInset
-                    document.body[parbeg] = "\\begin_inset Argument 2"
-                    i = j
-                    continue
-                elif document.body[ertcont].startswith("<"):
-                    # This is an overlay specification
-                    # strip off the <
-                    document.body[ertcont] = document.body[ertcont][1:]
-                    if document.body[ertcont].endswith(">"):
-                        # strip off the >
-                        document.body[ertcont] = document.body[ertcont][:-1]
-                        # Convert to ArgInset
-                        document.body[parbeg] = "\\begin_inset Argument 1"
-                    elif document.body[ertcont].endswith(">]"):
-                        # divide the args
-                        tok = document.body[ertcont].find('>[<')
-                        if tok != -1:
-                           document.body[ertcont : ertcont + 1] = [document.body[ertcont][:tok],
-                                                           '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
-                                                           'status collapsed', '', '\\begin_layout Plain Layout',
-                                                           document.body[ertcont][tok + 3:-2]]
-                        # Convert to ArgInset
-                        document.body[parbeg] = "\\begin_inset Argument 1"
-                    elif document.body[ertcont].endswith("]"):
-                        # divide the args
-                        tok = document.body[ertcont].find('>[<')
-                        if tok != -1:
-                           # divide the args
-                           tokk = document.body[ertcont].find('>][')
-                           if tokk != -1:
-                               document.body[ertcont : ertcont + 1] = [document.body[ertcont][:tok],
-                                                               '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
-                                                               'status collapsed', '', '\\begin_layout Plain Layout',
-                                                               document.body[ertcont][tok + 3:tokk],
-                                                               '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
-                                                               'status collapsed', '', '\\begin_layout Plain Layout',
-                                                               document.body[ertcont][tokk + 3:-1]]
-                        else:
-                            tokk = document.body[ertcont].find('>[')
-                            if tokk != -1:
-                                document.body[ertcont : ertcont + 1] = [document.body[ertcont][:tokk],
-                                                                '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
-                                                                'status collapsed', '', '\\begin_layout Plain Layout',
-                                                                document.body[ertcont][tokk + 2:-1]]
-                        # Convert to ArgInset
-                        document.body[parbeg] = "\\begin_inset Argument 1"
-                    i = j
-                    continue
-                elif document.body[ertcont].startswith("["):
-                    # This is an ERT option
-                    # strip off the [
-                    document.body[ertcont] = document.body[ertcont][1:]
-                    if document.body[ertcont].endswith("]"):
-                        # strip off the ]
-                        document.body[ertcont] = document.body[ertcont][:-1]
-                        # Convert to ArgInset
-                        document.body[parbeg] = "\\begin_inset Argument 3"
-                    i = j
-                    continue
+            # Convert ERT arguments
+            ertend = convert_beamerframeargs(document, i, parbeg)
         i = j
 
 
@@ -3773,87 +3785,9 @@ def convert_lyxframes(document):
             if i != -1:
                 # Step I: Convert ERT arguments
                 # FIXME: This currently only works if the arguments are in one single ERT
-                ertend = i
-                if document.body[parbeg] == "\\begin_inset ERT":
-                    ertend = find_end_of_inset(document.body, parbeg)
-                    if ertend == -1:
-                        document.warning("Malformed LyX document: missing ERT \\end_inset")
-                        continue
-                    ertcont = parbeg + 5
-                    if document.body[ertcont].startswith("[<"):
-                        # This is a default overlay specification
-                        # strip off the [<
-                        document.body[ertcont] = document.body[ertcont][2:]
-                        if document.body[ertcont].endswith(">]"):
-                            # strip off the >]
-                            document.body[ertcont] = document.body[ertcont][:-2]
-                        elif document.body[ertcont].endswith("]"):
-                            # divide the args
-                            tok = document.body[ertcont].find('>][')
-                            if tok != -1:
-                                subst = [document.body[ertcont][:tok],
-                                         '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
-                                         'status collapsed', '', '\\begin_layout Plain Layout',
-                                         document.body[ertcont][tok + 3:-1]]
-                                document.body[ertcont : ertcont + 1] = subst
-                                ertend += 11
-                        # Convert to ArgInset
-                        document.body[parbeg] = "\\begin_inset Argument 2"
-                    elif document.body[ertcont].startswith("<"):
-                        # This is an overlay specification
-                        # strip off the <
-                        document.body[ertcont] = document.body[ertcont][1:]
-                        if document.body[ertcont].endswith(">"):
-                            # strip off the >
-                            document.body[ertcont] = document.body[ertcont][:-1]
-                            # Convert to ArgInset
-                            document.body[parbeg] = "\\begin_inset Argument 1"
-                        elif document.body[ertcont].endswith(">]"):
-                            # divide the args
-                            tok = document.body[ertcont].find('>[<')
-                            if tok != -1:
-                               document.body[ertcont : ertcont + 1] = [document.body[ertcont][:tok],
-                                                               '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
-                                                               'status collapsed', '', '\\begin_layout Plain Layout',
-                                                               document.body[ertcont][tok + 3:-2]]
-                            # Convert to ArgInset
-                            document.body[parbeg] = "\\begin_inset Argument 1"
-                            ertend += 11
-                        elif document.body[ertcont].endswith("]"):
-                            # divide the args
-                            tok = document.body[ertcont].find('>[<')
-                            if tok != -1:
-                               # divide the args
-                               tokk = document.body[ertcont].find('>][')
-                               if tokk != -1:
-                                   document.body[ertcont : ertcont + 1] = [document.body[ertcont][:tok],
-                                                                   '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
-                                                                   'status collapsed', '', '\\begin_layout Plain Layout',
-                                                                   document.body[ertcont][tok + 3:tokk],
-                                                                   '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
-                                                                   'status collapsed', '', '\\begin_layout Plain Layout',
-                                                                   document.body[ertcont][tokk + 3:-1]]
-                                   ertend += 22
-                            else:
-                                tokk = document.body[ertcont].find('>[')
-                                if tokk != -1:
-                                    document.body[ertcont : ertcont + 1] = [document.body[ertcont][:tokk],
-                                                                    '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 3',
-                                                                    'status collapsed', '', '\\begin_layout Plain Layout',
-                                                                    document.body[ertcont][tokk + 2:-1]]
-                                    ertend += 11
-                            # Convert to ArgInset
-                            document.body[parbeg] = "\\begin_inset Argument 1"
-                    elif document.body[ertcont].startswith("["):
-                        # This is an ERT option
-                        # strip off the [
-                        document.body[ertcont] = document.body[ertcont][1:]
-                        if document.body[ertcont].endswith("]"):
-                            # strip off the ]
-                            document.body[ertcont] = document.body[ertcont][:-1]
-                            # Convert to ArgInset
-                            document.body[parbeg] = "\\begin_inset Argument 3"
-                # End of argument conversion
+                ertend = convert_beamerframeargs(document, i, parbeg)
+                if ertend == -1:
+                    continue
                 # Step II: Now rename the layout and convert the title to an argument
                 j = find_end_of_layout(document.body, i)
                 document.body[j : j + 1] = ['\\end_layout', '', '\\end_inset', '', '\\end_layout']
