@@ -41,7 +41,13 @@ export/examples/hu/example_raw_dvi3
 export/examples/hu/splash_pdf5
 export/examples/hu/splash_dvi3
 #
+export/examples/es/europeCV_pdf4
 export/examples/es/europeCV_pdf5
+export/examples/es/europeCV_dvi3
+# Export with XeTeX and LuaTeX (with either non-tex fonts or 8-bit
+# compatibility mode) does not work because the loading of inputenc with
+# utf8x is hardcoded in europecv.cls at the time of this writing. See:
+# http://comments.gmane.org/gmane.editors.lyx.devel/145896
 export/examples/fa/splash_pdf5
 # See http://www.lyx.org/trac/ticket/8823
 export/examples/ja/lilypond_pdf

@@ -105,6 +105,21 @@
 
 \begin_body
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Exportar con XeTeX y LuaTeX (con tipografías no TeX o en modo compatible
+ 8-bit) no funciona porque, por el momento, la carga de inputenc con utf8x
+ está incrustada en el código fuente de europecv.cls.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Begin
 \begin_inset Note Note
 status open
