@@ -2187,9 +2187,16 @@ def convert_beamerargs(document):
 #
 # Helper function for the frame conversion routines
 #
+# FIXME: This method currently requires the arguments to be either
+#        * In one (whole) ERT each: <ERT>[<arg1>]</ERT><ERT><arg2></ERT><ERT>[arg3]</ERT>
+#        * Altogether in one whole ERT: <ERT>[<arg1>]<arg2>[arg3]</ERT>
+#        If individual arguments mix ERT and non-ERT or are splitted
+#        over several ERTs, the parsing fails.
 def convert_beamerframeargs(document, i, parbeg):
     ertend = i
-    if document.body[parbeg] == "\\begin_inset ERT":
+    while True:
+        if document.body[parbeg] != "\\begin_inset ERT":
+            return ertend
         ertend = find_end_of_inset(document.body, parbeg)
         if ertend == -1:
             document.warning("Malformed LyX document: missing ERT \\end_inset")
@@ -2268,14 +2275,14 @@ def convert_beamerframeargs(document, i, parbeg):
                 document.body[ertcont] = document.body[ertcont][:-1]
                 # Convert to ArgInset
                 document.body[parbeg] = "\\begin_inset Argument 3"
+        parbeg = ertend + 3
+        continue
     return ertend
 
 
 def convert_againframe_args(document):
     " Converts beamer AgainFrame to new layout "
 
-    # FIXME: This currently only works if the arguments are in one single ERT
-    
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
@@ -2292,7 +2299,10 @@ def convert_againframe_args(document):
         parbeg = parent[3]
         if i != -1:
             # Convert ERT arguments
+            # FIXME: See restrictions in convert_beamerframeargs method
             ertend = convert_beamerframeargs(document, i, parbeg)
+            if ertend == -1:
+                break
         i = j
 
 
@@ -3784,10 +3794,10 @@ def convert_lyxframes(document):
             parbeg = parent[3]
             if i != -1:
                 # Step I: Convert ERT arguments
-                # FIXME: This currently only works if the arguments are in one single ERT
+                # FIXME: See restrictions in convert_beamerframeargs method
                 ertend = convert_beamerframeargs(document, i, parbeg)
                 if ertend == -1:
-                    continue
+                    break
                 # Step II: Now rename the layout and convert the title to an argument
                 j = find_end_of_layout(document.body, i)
                 document.body[j : j + 1] = ['\\end_layout', '', '\\end_inset', '', '\\end_layout']
