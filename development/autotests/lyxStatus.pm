@@ -213,7 +213,7 @@ sub checkForLayoutStart($)
     $selem{type} = "layout";
     $selem{name} = $1;
     unshift(@stack, \%selem);
-    if ($selem{name} eq "Picture") {
+    if ($selem{name} =~ /^(Picture|Photo)$/ ) {
       my $rElem = &newMatch("ext" => [".eps", ".png"],
 			    "search" => '^(.+)',
 			    "result" => ["", "", ""]);
