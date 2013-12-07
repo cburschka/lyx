@@ -194,9 +194,9 @@ sub checkForPreamble($)
     $selem{name} = $1;
     unshift(@stack, \%selem);
     my $rElem = &newMatch("ext" => [".eps", ".png"],
-			  "search" => '^\\\\photo(.*\{)(.*)\}',
-			  "fileidx" => 2,
-			  "result" => ["\\photo", "1", "2", "}"]);
+			  "search" => '^\\\\(photo|ecvpicture)(.*\{)(.*)\}',
+			  "fileidx" => 3,
+			  "result" => ["\\", "1", "2", "3", "}"]);
     &setMatching([$rElem]);
     return(1);
   }
