@@ -1,14 +1,14 @@
 # Arabic translation of LyX
-# Copyright (C) 2008 LyX Developers
+# Copyright (C) 2008--2013 LyX Developers
 # This file is distributed under the same license as the PACKAGE package.
-# Hatim Alahmadi <Dr.Hatim@hotmail.com>, 2008
+# Hatim Alahmadi <Dr.Hatim@hotmail.com>, 2008--2013
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 1.6.0\n"
+"Project-Id-Version: LyX 2.1.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2013-11-28 17:09+0100\n"
-"PO-Revision-Date: 2013-12-04 17:47+0300\n"
+"PO-Revision-Date: 2013-12-06 16:53+0300\n"
 "Last-Translator: Hatim Alahmadi <Dr.hatim@hotmail.com>\n"
 "Language-Team: LyX team <theblackdragon_100@hotmail.com>\n"
 "Language: ar\n"
@@ -485,7 +485,7 @@ msgstr "هيئة الورق"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:45
 msgid "Choose a particular paper size, or set your own with \"Custom\""
-msgstr ""
+msgstr "اختر حجم الورق المناسب, أو حدد الخاص بك عن طريق \"مخصص\""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:71 src/frontends/qt4/ui/BoxUi.ui:198
 #: src/frontends/qt4/ui/ExternalUi.ui:446
@@ -618,7 +618,7 @@ msgstr "بدون&"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:213
 msgid "Display the debug messages selected to the right"
-msgstr ""
+msgstr "عرض رسائل التنقيح المحددة في اليمين"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:216
 msgid "S&elected"
@@ -630,7 +630,7 @@ msgstr "عرض كل رسائل التنقيح"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
 msgid "Display statusbar messages?"
-msgstr ""
+msgstr "عرض رسائل شريط الحالة؟"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:239
 #, fuzzy
@@ -689,7 +689,7 @@ msgstr "&تعيين الطابعة:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:114
 msgid "Option used with spool command to set printer."
-msgstr ""
+msgstr "خيارات استخدام أوامر تعيين الطابعة."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:117
 #, fuzzy
@@ -699,7 +699,7 @@ msgstr "الطابعة المعينة:"
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:130
 msgid ""
 "Command transmitted to the system to actually print the postscript file."
-msgstr ""
+msgstr "أوامر ترسل للنظام للقيام بطباعة ملف بوستسكربت."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:136
 #, fuzzy
@@ -716,7 +716,7 @@ msgstr "عكس الصفحات:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:169
 msgid "Lan&dscape:"
-msgstr ""
+msgstr "المنظ&ر:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:182
 msgid "&Number of copies:"
@@ -732,7 +732,7 @@ msgstr "خيار يستخدم لطباعة مدى الصفحات"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:206
 msgid "Co&llated:"
-msgstr ""
+msgstr "الفحص&:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:216
 msgid "Pa&ge range:"
@@ -760,7 +760,7 @@ msgstr "&حجم الورق:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:279
 msgid "Any other options you'd like to use with the printer command."
-msgstr ""
+msgstr "أي خيارات أخرى ترغب باستخدامها مع أوامر الطباعة."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:282
 msgid "E&xtra options:"
@@ -768,7 +768,7 @@ msgstr "&خيارات إضافية:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:298
 msgid "Customizes output to a given printer. Expert option."
-msgstr ""
+msgstr "تخصيص الخرج لإرساله للطباعة. خيارات التصدير."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:301
 msgid ""
@@ -889,7 +889,7 @@ msgstr "عرض العنوان"
 #: src/frontends/qt4/ui/ParagraphUi.ui:69
 #: src/frontends/qt4/ui/ParagraphUi.ui:82
 msgid "This text defines the width of the paragraph label"
-msgstr "هذاالنص يحدد عرض عنوان الفقرة"
+msgstr "هذا النص يحدد عرض عنوان الفقرة"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:72
 msgid "Lo&ngest label"
@@ -955,11 +955,11 @@ msgstr "مزدوج"
 #: src/frontends/qt4/GuiPrefs.cpp:2183
 #: src/frontends/qt4/GuiPrintNomencl.cpp:51
 msgid "Custom"
-msgstr "اختياري"
+msgstr "مخصص"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:146
 msgid "&Indent Paragraph"
-msgstr "&فقرة متبوعة بفراغ"
+msgstr "بد&اية الفقرة"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:153
 #: src/frontends/qt4/ui/MathMatrixUi.ui:152 src/frontends/qt4/ui/BoxUi.ui:39
@@ -984,11 +984,11 @@ msgstr "&يمين"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:196
 msgid "Use the default alignment for this paragraph, whatever it is."
-msgstr "استخدام المحاذاة الافتراضية للفقرة, اي كان شكلها."
+msgstr "استخدام المحاذاة الافتراضية للفقرة, أي كان شكلها."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:199
 msgid "Paragraph's &Default"
-msgstr "&الوضع الأفتراضي للفقرات"
+msgstr "&الوضع الافتراضي للفقرات"
 
 #: src/frontends/qt4/ui/ERTUi.ui:28 src/frontends/qt4/GuiPrefs.cpp:1230
 msgid "Display"
@@ -1076,7 +1076,7 @@ msgstr "خيار&ات:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:209
 msgid "Index command and options (makeindex, xindy)"
-msgstr ""
+msgstr "خيارات وأوامر الفهرس (makeindex, xindy)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:226
 msgid "Specific index command and options for pLaTeX (Japanese)"
@@ -1109,7 +1109,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:291
 msgid "&Use Windows-style paths in LaTeX files"
-msgstr ""
+msgstr "استخدام مسار أسلوب-ويندوز في ملفات لتيك"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:298
 msgid "Set class options to default on class change"
@@ -1156,7 +1156,7 @@ msgstr "&بحث التالي"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:124
 msgid "Restrict search to whole words only"
-msgstr ""
+msgstr "حصر البحث في الكلمة كاملة فقط."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:127
 #, fuzzy
@@ -1259,11 +1259,11 @@ msgstr "ماكرو رياضيات"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:314
 msgid "Search only in mat&hs"
-msgstr ""
+msgstr "البحث في الرياض&يات فقط"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:317
 msgid "Restrict search to math environments only"
-msgstr ""
+msgstr "حصر البحث في المحيط الرياضي فقط"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:247
 #: lib/layouts/stdinsets.inc:253 src/insets/InsetCaption.cpp:396
@@ -1394,7 +1394,7 @@ msgstr "استخدام جدول المحارف الموسع"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:326
 msgid "&Extended character table"
-msgstr ""
+msgstr "جدول الرموز& المحسنة"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:339
 #: src/frontends/qt4/ui/CharacterUi.ui:108
@@ -1473,7 +1473,7 @@ msgstr ""
 #: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid ""
 "Here you can define an alternative index processor and specify its options."
-msgstr ""
+msgstr "هنا يمكن تعيين معالج فهرس بديل وإدخال الخيارات."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:43 src/frontends/qt4/ui/BiblioUi.ui:177
 msgid "Select a processor"
@@ -1481,11 +1481,11 @@ msgstr "اختر المعالج"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
-msgstr ""
+msgstr "تعيين خيارات البرنامج للمعالج المحدد."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
-msgstr ""
+msgstr "اختر إذا كنت تريد استخدام فهارس متعددة (فهرس الأسماء , الخ)"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:92
 msgid "&Use multiple indexes"
@@ -1498,7 +1498,7 @@ msgstr "&جديد:[[index]]"
 #: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
-msgstr ""
+msgstr "ادخل اسم الفهرس المرغوب (الخ \"اسم الفهرس\") وانقر \"إضافة\""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:131
 msgid "Add a new index to the list"
@@ -1618,7 +1618,7 @@ msgstr "&اضف"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:42
 msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
+msgstr "عالج تحويل الملف بالأمر ($$FName = file name)"
 
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/BibtexAddUi.ui:127
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
@@ -1720,7 +1720,7 @@ msgstr "دمج خلايا في صفوف مختلفة"
 
 #: src/frontends/qt4/ui/TabularUi.ui:121
 msgid "M&ultirow"
-msgstr ""
+msgstr "صف&وف متعددة"
 
 #: src/frontends/qt4/ui/TabularUi.ui:133
 msgid "&Vertical Offset:"
@@ -1860,7 +1860,7 @@ msgstr "محاذاة رأسية للخلية فيما يتعلق بالخط ال
 
 #: src/frontends/qt4/ui/TabularUi.ui:550
 msgid "Merge cells of different columns"
-msgstr ""
+msgstr "دمج خلاليا في أعمدة متعددة"
 
 #: src/frontends/qt4/ui/TabularUi.ui:553
 msgid "&Multicolumn"
@@ -1872,7 +1872,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:570
 msgid "Custom column format (LaTeX)"
-msgstr ""
+msgstr "هيئة عمود مخصص (لتيك)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:584
 msgid "&Borders"
@@ -1884,7 +1884,7 @@ msgstr "تعيين الحدود"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1086
 msgid "Set borders of the current (selected) cell(s)"
-msgstr ""
+msgstr "تعيين إطار للخلايا (المحددة)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1099
 msgid "All Borders"
@@ -2281,7 +2281,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:77
 msgid "S&pellcheck continuously"
-msgstr ""
+msgstr "التحقق الإملائي المستمر"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:100
 #, fuzzy
@@ -2310,7 +2310,7 @@ msgstr "&استخدم خريطة لوحة المفاتيح"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:45
 msgid "&Primary:"
-msgstr ""
+msgstr "الرئيس&ي:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:91
 msgid "S&econdary:"
@@ -2344,7 +2344,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:203
 msgid "Scroll wheel zoom"
-msgstr ""
+msgstr "تكبير بعجلة الفارة"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:236
 msgid "Enable"
@@ -2352,15 +2352,15 @@ msgstr "مفعل"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:250
 msgid "Ctrl"
-msgstr ""
+msgstr "Ctrl"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:255
 msgid "Shift"
-msgstr ""
+msgstr "Shift"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:260
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #: src/frontends/qt4/ui/FontUi.ui:14
 msgid "FontUi"
@@ -2374,7 +2374,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:23
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
-msgstr ""
+msgstr "استخ&دام خطوط non-TeX (via XeTeX/LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:43
 msgid "&Default family:"
@@ -2389,9 +2389,8 @@ msgid "&Base Size:"
 msgstr "&الحجم الاساسي:"
 
 #: src/frontends/qt4/ui/FontUi.ui:77
-#, fuzzy
 msgid "LaTe&X font encoding:"
-msgstr "&ترميز TeX:"
+msgstr "ترميز& خط لتيك:"
 
 #: src/frontends/qt4/ui/FontUi.ui:97
 msgid "&Roman:"
@@ -2625,9 +2624,8 @@ msgid "Use icons from system's &theme"
 msgstr "استخدام رمز من ثيم النظام"
 
 #: src/frontends/qt4/ui/PrefUi.ui:120
-#, fuzzy
 msgid "Context help"
-msgstr "المحتويات"
+msgstr "محتوى المساعدة"
 
 #: src/frontends/qt4/ui/PrefUi.ui:138
 #, fuzzy
@@ -2644,7 +2642,7 @@ msgstr "&تفعيل اداة التلميحات في منطقة العمل ال�
 
 #: src/frontends/qt4/ui/PrefUi.ui:151
 msgid "Menus"
-msgstr ""
+msgstr "القائمة"
 
 #: src/frontends/qt4/ui/PrefUi.ui:162
 msgid "&Maximum last files:"
@@ -2736,7 +2734,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:86
 msgid "Ca&tegory:"
-msgstr ""
+msgstr "الص&نف:"
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:116
 msgid "Select this to display all available characters at once"
@@ -2887,12 +2885,12 @@ msgstr "قص"
 #: src/frontends/qt4/ui/ExternalUi.ui:474
 #: src/frontends/qt4/ui/GraphicsUi.ui:309
 msgid "Clip to bounding box values"
-msgstr ""
+msgstr "قيم أبعاد صندوق الشكل"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:477
 #: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to &bounding box"
-msgstr ""
+msgstr "الشكل بأبعاد الصندوق"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:484
 #: src/frontends/qt4/ui/GraphicsUi.ui:345
@@ -2911,7 +2909,7 @@ msgstr "&اعلى اليمين:"
 #: src/frontends/qt4/ui/ExternalUi.ui:514
 #: src/frontends/qt4/ui/GraphicsUi.ui:437
 msgid "Get bounding box from the (EPS) file"
-msgstr ""
+msgstr "أخذ أبعاد الصندوق من ملف (EPS)"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:517
 #: src/frontends/qt4/ui/GraphicsUi.ui:440
@@ -2948,11 +2946,11 @@ msgstr "&خارج:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:141
 msgid "Head &sep:"
-msgstr ""
+msgstr "فاصل& الرأس:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:154
 msgid "Head &height:"
-msgstr ""
+msgstr "ارتفاع الرأس&:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:167
 msgid "&Foot skip:"
@@ -3362,7 +3360,7 @@ msgstr "حز&مة اللغة:"
 #: src/frontends/qt4/ui/LanguageUi.ui:136
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:51
 msgid "Select which language package LyX should use"
-msgstr ""
+msgstr "اختر حزمة اللغة التي يجب أن يستخدمها ليك"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:143
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:78
@@ -3397,9 +3395,8 @@ msgid "&Update"
 msgstr "&تحديث"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:164
-#, fuzzy
 msgid "Current Paragraph"
-msgstr "&فقرة متبوعة بفراغ"
+msgstr "الفقرة الحالية"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:169
 msgid "Complete Source"
@@ -3631,7 +3628,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:176
 msgid "Set languages &globally"
-msgstr ""
+msgstr "تعيين اللغة الع&المية"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:183
 msgid ""
@@ -3940,7 +3937,7 @@ msgstr "أدخل اسم الوثيقة الاصلية"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:186
 msgid "&Suppress default date on front page"
-msgstr ""
+msgstr "ط&مس التاريخ الافتراضي في الصفحة الأمامية"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:206
 msgid "&Use refstyle (not prettyref) for cross-references"
@@ -4196,9 +4193,8 @@ msgid "Load alwa&ys"
 msgstr "تح&ميل دائما"
 
 #: src/frontends/qt4/ui/MathsUi.ui:66
-#, fuzzy
 msgid "Do &not load"
-msgstr "لم يحمل المستند"
+msgstr "لم تح&مل"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:26
 #, fuzzy
@@ -4299,11 +4295,11 @@ msgstr "فقرات متبوعة بفراغ"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:38
 msgid "&Indentation:"
-msgstr ""
+msgstr "بد&اية الفقرة:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:48
 msgid "Size of the indentation"
-msgstr ""
+msgstr "طول الفراغ في بداية الفقرة"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:116
 msgid "&Vertical space:"
@@ -4431,7 +4427,7 @@ msgstr "عرض&"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:124
 msgid "Selected classes or styles"
-msgstr ""
+msgstr "الأسلوب أو النوع المحدد"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:128
 msgid "LaTeX classes"
@@ -4786,9 +4782,8 @@ msgid "Case se&nsitive"
 msgstr "&حساس لحالة الأحرف"
 
 #: src/frontends/qt4/ui/CitationUi.ui:463
-#, fuzzy
 msgid "Entry types:"
-msgstr "نوع المدخل:"
+msgstr "نوع المدخلات:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:480
 #: src/frontends/qt4/GuiCitation.cpp:300
@@ -5193,7 +5188,7 @@ msgstr "الشاشة المستخدمة (&بالنقطة):"
 
 #: lib/layouts/letter.layout:3
 msgid "Letter (Standard Class)"
-msgstr ""
+msgstr "رسالة (نوع قياسي)"
 
 #: lib/layouts/letter.layout:4 lib/layouts/lettre.layout:4
 #: lib/layouts/g-brief.layout:4 lib/layouts/scrlttr2.layout:4
@@ -6043,9 +6038,8 @@ msgid "Encl.:"
 msgstr "Encl.:"
 
 #: lib/layouts/ctex-article.layout:3
-#, fuzzy
 msgid "Chinese Article (CTeX)"
-msgstr "الصينية (traditional) (EUC-TW)"
+msgstr "مقالة صينية (CTeX)"
 
 #: lib/layouts/ctex-article.layout:4 lib/layouts/siamltex.layout:4
 #: lib/layouts/isprs.layout:4 lib/layouts/extarticle.layout:4
@@ -6078,9 +6072,8 @@ msgstr "الصينية (traditional) (EUC-TW)"
 #: lib/layouts/revtex4-1.layout:4 lib/layouts/acm-sigs.layout:4
 #: lib/layouts/IEEEtran.layout:4 lib/layouts/aapaper.layout:4
 #: lib/layouts/mwart.layout:4
-#, fuzzy
 msgid "Articles"
-msgstr "مقال"
+msgstr "مقالات"
 
 #: lib/layouts/siamltex.layout:3
 msgid "Society for Industrial and Applied Mathematics (SIAM)"
@@ -7048,7 +7041,7 @@ msgstr "فقط"
 
 #: lib/layouts/extarticle.layout:3
 msgid "Article (Standard Class with Extra Font Sizes)"
-msgstr ""
+msgstr "مقالة (نوع قياسي مع حجم خط كبير)"
 
 #: lib/layouts/singlecol-new.layout:3
 msgid "Inderscience 9.5 x 6.5 Journals"
@@ -7063,11 +7056,11 @@ msgstr ""
 #: lib/layouts/report.layout:4 lib/layouts/RJournal.layout:4
 #: lib/layouts/treport.layout:4 lib/layouts/jreport.layout:4
 msgid "Reports"
-msgstr ""
+msgstr "تقارير"
 
 #: lib/layouts/book.layout:3
 msgid "Book (Standard Class)"
-msgstr ""
+msgstr "كتاب (نوع قياسي)"
 
 #: lib/layouts/svglobal.layout:3
 msgid "Springer SV Global (Obsolete Version)"
@@ -7217,7 +7210,7 @@ msgstr "رأس ثبت المراجع"
 
 #: lib/layouts/amsart.layout:3
 msgid "American Mathematical Society (AMS) Article"
-msgstr ""
+msgstr "مقال الجمعية الرياضية الأمريكية (AMS)"
 
 #: lib/layouts/amsart.layout:85
 msgid "SpecialSection"
@@ -8206,7 +8199,7 @@ msgstr "العنوان الجانبي"
 
 #: lib/layouts/extreport.layout:3
 msgid "Report (Standard Class with Extra Font Sizes)"
-msgstr ""
+msgstr "تقرير (نوع قياسي مع حجم خط كبير)"
 
 #: lib/layouts/tbook.layout:3
 msgid "Japanese Book (Vertical Writing)"
@@ -8214,7 +8207,7 @@ msgstr "كتاب ياباني (يكتب رأسيا)"
 
 #: lib/layouts/egs.layout:3
 msgid "European Geophysical Society (EGS)"
-msgstr ""
+msgstr "الجمعية الجيوفيزيائية الأوروبية (EGS)"
 
 #: lib/layouts/egs.layout:149 lib/layouts/stdlyxlist.inc:20
 msgid "00.00.0000"
@@ -9268,9 +9261,8 @@ msgid "Specifiy note options (see beamer manual)"
 msgstr ""
 
 #: lib/layouts/beamer.layout:1517
-#, fuzzy
 msgid "ArticleMode"
-msgstr "مقال"
+msgstr "نظام مقالة"
 
 #: lib/layouts/beamer.layout:1523
 msgid "Article"
@@ -9627,9 +9619,8 @@ msgid "Title footnote"
 msgstr "عنوان الهامش"
 
 #: lib/layouts/elsarticle.layout:133
-#, fuzzy
 msgid "Footnote Label"
-msgstr "ملصق حاشية"
+msgstr "ملصق التذييل"
 
 #: lib/layouts/elsarticle.layout:134
 msgid "Label you refer to in the title"
@@ -9648,14 +9639,12 @@ msgid "Label you will reference in the address"
 msgstr ""
 
 #: lib/layouts/elsarticle.layout:172
-#, fuzzy
 msgid "Authormark"
-msgstr "المؤلف"
+msgstr "علامة المؤلف"
 
 #: lib/layouts/elsarticle.layout:177 lib/layouts/IEEEtran.layout:176
-#, fuzzy
 msgid "Author mark"
-msgstr "بريد الكتروني المؤلف"
+msgstr "علامة المؤلف"
 
 #: lib/layouts/elsarticle.layout:195
 msgid "Author footnote"
@@ -9666,9 +9655,8 @@ msgid "Author footnote:"
 msgstr "معلومات المؤلف:"
 
 #: lib/layouts/elsarticle.layout:200
-#, fuzzy
 msgid "Author Footnote Label"
-msgstr "معلومات المؤلف"
+msgstr "ملصق تذييل المؤلف"
 
 #: lib/layouts/elsarticle.layout:201
 msgid "Label you refer to for an author"
@@ -10020,11 +10008,11 @@ msgstr "كتاب ياباني (jbook)"
 
 #: lib/layouts/extletter.layout:3
 msgid "Letter (Standard Class with Extra Font Sizes)"
-msgstr ""
+msgstr "رسالة (نوع قياسي مع حجم خط كبير)"
 
 #: lib/layouts/jsarticle.layout:3
 msgid "Japanese Article (jsarticle)"
-msgstr ""
+msgstr "مقال ياباني (jsarticle)"
 
 #: lib/layouts/svglobal3.layout:3
 msgid "Springer SV Global (V. 3)"
@@ -10287,7 +10275,7 @@ msgstr "حروف عبرية"
 
 #: lib/layouts/scrartcl.layout:3
 msgid "KOMA-Script Article"
-msgstr ""
+msgstr "KOMA-Script مقالة"
 
 #: lib/layouts/scrartcl.layout:31 lib/layouts/article.layout:31
 #: lib/layouts/mwart.layout:35 lib/layouts/stdstarsections.inc:13
@@ -10552,11 +10540,11 @@ msgstr ""
 
 #: lib/layouts/jarticle.layout:3
 msgid "Japanese Article (jarticle)"
-msgstr ""
+msgstr "مقال ياباني (jarticle)"
 
 #: lib/layouts/achemso.layout:3
 msgid "American Chemical Society (ACS)"
-msgstr ""
+msgstr "الجمعية الكيميائية الأمريكية (ACS)"
 
 #: lib/layouts/achemso.layout:78
 msgid "Short title which will appear in the running header"
@@ -10621,7 +10609,7 @@ msgstr ""
 
 #: lib/layouts/achemso.layout:251
 msgid "Supporting Information Available"
-msgstr ""
+msgstr "معلومات الدعم متاحة"
 
 #: lib/layouts/achemso.layout:254
 msgid "TOC entry"
@@ -10743,7 +10731,7 @@ msgstr "شكر"
 
 #: lib/layouts/ctex-book.layout:3
 msgid "Chinese Book (CTeX)"
-msgstr ""
+msgstr "كتاب صيني (CTeX)"
 
 #: lib/layouts/aa.layout:3
 msgid "Astronomy & Astrophysics"
@@ -10898,7 +10886,7 @@ msgstr ""
 
 #: lib/layouts/extbook.layout:3
 msgid "Book (Standard Class with Extra Font Sizes)"
-msgstr ""
+msgstr "كتاب (نوع قياسي مع حجم خط كبير)"
 
 #: lib/layouts/heb-article.layout:3
 msgid "Hebrew Article"
@@ -11004,7 +10992,7 @@ msgstr "المحتويات"
 
 #: lib/layouts/tarticle.layout:3
 msgid "Japanese Article (Vertical Writing)"
-msgstr ""
+msgstr "مقال ياباني (كتابة رأسية)"
 
 #: lib/layouts/slides.layout:107
 msgid "New Slide:"
@@ -11460,24 +11448,20 @@ msgid "The subsubsection as it appears in the running headers"
 msgstr "العنوان كما يظهر في الوثيقة"
 
 #: lib/layouts/memoir.layout:126
-#, fuzzy
 msgid "The paragraph as it appears in the table of contents"
-msgstr "العنوان كما يظهر في الوثيقة"
+msgstr "الفقرة كما تظهر في محتوى الجدول"
 
 #: lib/layouts/memoir.layout:130
-#, fuzzy
 msgid "The paragraph as it appears in the running headers"
-msgstr "العنوان كما يظهر في الوثيقة"
+msgstr "الفقرة كما تظهر في الرأس"
 
 #: lib/layouts/memoir.layout:139
-#, fuzzy
 msgid "The subparagraph as it appears in the table of contents"
-msgstr "العنوان كما يظهر في الوثيقة"
+msgstr "الفقرة الفرعية كما تظهر في محتوى الجدول"
 
 #: lib/layouts/memoir.layout:143
-#, fuzzy
 msgid "The subparagraph as it appears in the running headers"
-msgstr "العنوان كما يظهر في الوثيقة"
+msgstr "الفقرة الفرعية كما تظهر في الرأس"
 
 #: lib/layouts/memoir.layout:149
 msgid "Chapterprecis"
@@ -11851,7 +11835,7 @@ msgstr "صف مصرف و:"
 
 #: lib/layouts/article.layout:3
 msgid "Article (Standard Class)"
-msgstr ""
+msgstr "مقالة (نوع قياسي)"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:3
 msgid "IEEE Transactions Computer Society"
@@ -12154,19 +12138,19 @@ msgstr ""
 
 #: lib/layouts/scrclass.inc:268
 msgid "Above"
-msgstr ""
+msgstr "فوق"
 
 #: lib/layouts/scrclass.inc:269
 msgid "above"
-msgstr ""
+msgstr "فوق"
 
 #: lib/layouts/scrclass.inc:288
 msgid "Below"
-msgstr ""
+msgstr "تحت"
 
 #: lib/layouts/scrclass.inc:289
 msgid "below"
-msgstr ""
+msgstr "تحت"
 
 #: lib/layouts/scrclass.inc:308
 msgid "Dictum"
@@ -13051,9 +13035,8 @@ msgid "# [number of Prob]"
 msgstr "عدد الصفوف"
 
 #: lib/layouts/theorems-without-preamble.inc:289
-#, fuzzy
 msgid "Label of Problem"
-msgstr "مشكلة"
+msgstr "ملصق المشكلة"
 
 #: lib/layouts/theorems-without-preamble.inc:290
 msgid "Label of the corresponding problem"
@@ -13090,9 +13073,8 @@ msgid "Case \\arabic{caseiv}."
 msgstr ".\\arabic{enumi}"
 
 #: lib/layouts/shapepar.module:2
-#, fuzzy
 msgid "Custom Paragraph Shapes"
-msgstr "&فقرة متبوعة بفراغ"
+msgstr "شكل مقطع مخصص"
 
 #: lib/layouts/shapepar.module:7
 msgid ""
@@ -13102,14 +13084,12 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/shapepar.module:26
-#, fuzzy
 msgid "CD label"
-msgstr "ملصق رابط"
+msgstr "CD ملصق"
 
 #: lib/layouts/shapepar.module:30
-#, fuzzy
 msgid "ShapedParagraphs"
-msgstr "فقرة"
+msgstr "شكل الفقرة"
 
 #: lib/layouts/shapepar.module:39 lib/ui/stdtoolbars.inc:807
 #, fuzzy
@@ -14029,7 +14009,7 @@ msgstr ""
 
 #: lib/layouts/eqs-within-sections.module:2
 msgid "Number Equations by Section"
-msgstr "عدد المعادلات في المقطع"
+msgstr "عدد المعادلات في الفقرة"
 
 #: lib/layouts/eqs-within-sections.module:6
 msgid ""
@@ -19020,9 +19000,8 @@ msgid "mathdollar"
 msgstr "مختصر رياضي"
 
 #: lib/ui/stdtoolbars.inc:675
-#, fuzzy
 msgid "mathparagraph"
-msgstr "\\alph{فقرة}."
+msgstr "فقرة رياضية"
 
 #: lib/ui/stdtoolbars.inc:676
 #, fuzzy
@@ -19642,11 +19621,11 @@ msgstr "مدونة"
 
 #: lib/ui/stdtoolbars.inc:842
 msgid "female"
-msgstr ""
+msgstr "أنثى"
 
 #: lib/ui/stdtoolbars.inc:843
 msgid "male"
-msgstr ""
+msgstr "ذكر"
 
 #: lib/ui/stdtoolbars.inc:844
 #, fuzzy
@@ -19663,11 +19642,11 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:847
 msgid "fullmoon"
-msgstr ""
+msgstr "بدر"
 
 #: lib/ui/stdtoolbars.inc:848
 msgid "newmoon"
-msgstr ""
+msgstr "هلال"
 
 #: lib/ui/stdtoolbars.inc:849
 #, fuzzy
@@ -19681,15 +19660,15 @@ msgstr "rightharpoonup"
 
 #: lib/ui/stdtoolbars.inc:851
 msgid "astrosun"
-msgstr ""
+msgstr "نجم الشمس"
 
 #: lib/ui/stdtoolbars.inc:852
 msgid "mercury"
-msgstr ""
+msgstr "عطارد"
 
 #: lib/ui/stdtoolbars.inc:853
 msgid "venus"
-msgstr ""
+msgstr "الزهرة"
 
 #: lib/ui/stdtoolbars.inc:854
 #, fuzzy
@@ -19698,7 +19677,7 @@ msgstr "vartheta"
 
 #: lib/ui/stdtoolbars.inc:855
 msgid "mars"
-msgstr ""
+msgstr "المريخ"
 
 #: lib/ui/stdtoolbars.inc:856
 #, fuzzy
@@ -19712,15 +19691,15 @@ msgstr "natural"
 
 #: lib/ui/stdtoolbars.inc:858
 msgid "uranus"
-msgstr ""
+msgstr "اورانوس"
 
 #: lib/ui/stdtoolbars.inc:859
 msgid "neptune"
-msgstr ""
+msgstr "نبتون"
 
 #: lib/ui/stdtoolbars.inc:860
 msgid "pluto"
-msgstr ""
+msgstr "بلوتو"
 
 #: lib/ui/stdtoolbars.inc:861
 #, fuzzy
@@ -22443,11 +22422,11 @@ msgstr ""
 
 #: lib/configure.py:946
 msgid "LyX Archive (zip)"
-msgstr ""
+msgstr "أرشيف ليك (zip)"
 
 #: lib/configure.py:949
 msgid "LyX Archive (tar.gz)"
-msgstr ""
+msgstr "أرشيف ليك (tar.gz)"
 
 #: src/BiblioInfo.cpp:316 src/frontends/qt4/GuiDocument.cpp:2306
 #, c-format
@@ -26696,9 +26675,9 @@ msgid "Module provided by document class."
 msgstr "موحدة متوفرة بواسطة قسم المستند."
 
 #: src/frontends/qt4/GuiDocument.cpp:2414
-#, fuzzy, c-format
+#, c-format
 msgid "Category: %1$s."
-msgstr "تحديث DVI"
+msgstr "الصنف: %1$s."
 
 #: src/frontends/qt4/GuiDocument.cpp:2422
 #, c-format
@@ -26774,9 +26753,8 @@ msgid ""
 msgstr "صنف المستند %1$s لم تحمل"
 
 #: src/frontends/qt4/GuiErrorList.cpp:44 src/frontends/qt4/GuiLog.cpp:239
-#, fuzzy
 msgid "Literate"
-msgstr "قائمة المواد"
+msgstr "دراسات"
 
 #: src/frontends/qt4/GuiErrorList.cpp:46
 msgid "pLaTeX"
@@ -26911,7 +26889,7 @@ msgstr "مم"
 
 #: src/frontends/qt4/GuiGraphics.cpp:476 src/lengthcommon.cpp:45
 msgid "in[[unit of measure]]"
-msgstr ""
+msgstr "انش[[unit of measure]]"
 
 #: src/frontends/qt4/GuiGraphics.cpp:787
 msgid "Select graphics file"
@@ -26919,7 +26897,7 @@ msgstr "تحديد ملف الصورة"
 
 #: src/frontends/qt4/GuiGraphics.cpp:799
 msgid "Clipart|#C#c"
-msgstr ""
+msgstr "شكل|#C#c"
 
 #: src/frontends/qt4/GuiHSpace.cpp:45 src/frontends/qt4/GuiHSpace.cpp:58
 #: src/insets/InsetSpace.cpp:68
@@ -27065,7 +27043,7 @@ msgstr "معلومات ليك"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:711
 msgid "Shift-"
-msgstr ""
+msgstr "Shift-"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:712
 msgid "Control-"
@@ -27098,7 +27076,7 @@ msgstr "سجل لتيك"
 
 #: src/frontends/qt4/GuiLog.cpp:242
 msgid "LyX2LyX"
-msgstr ""
+msgstr "LyX2LyX"
 
 #: src/frontends/qt4/GuiLog.cpp:269
 msgid "Literate Programming Build Log"
@@ -27296,9 +27274,8 @@ msgid "Enchant"
 msgstr "hat"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1485
-#, fuzzy
 msgid "Hunspell"
-msgstr "ispell "
+msgstr "Hunspell"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1558
 msgid "Converters"
@@ -27350,9 +27327,8 @@ msgid "Oxygen"
 msgstr "أكسجين"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2595
-#, fuzzy
 msgid "Document Handling"
-msgstr "المستند والنافذة"
+msgstr "معالجة المستند"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2698
 msgid "Control"
@@ -27469,9 +27445,8 @@ msgid "PostScript files (*.ps)"
 msgstr "ملفات بوستسكربت (*.ps)"
 
 #: src/frontends/qt4/GuiPrintNomencl.cpp:49
-#, fuzzy
 msgid "Longest label width"
-msgstr "&عنوان اطول"
+msgstr "عرض ملصق صويل"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:37
 msgid "Index Settings"
@@ -27483,11 +27458,11 @@ msgstr "<كل الفهارس>"
 
 #: src/frontends/qt4/GuiProgressView.cpp:53
 msgid "Progress/Debug Messages"
-msgstr ""
+msgstr "رسائل المعالجة/التنقيح"
 
 #: src/frontends/qt4/GuiProgressView.cpp:83
 msgid "Debug Level"
-msgstr ""
+msgstr "مستوى التنقيح"
 
 #: src/frontends/qt4/GuiProgressView.cpp:84
 #, fuzzy
@@ -27558,9 +27533,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:540
-#, fuzzy
 msgid "Spell checker has no dictionaries."
-msgstr "فشل المدقق الاملائي.\n"
+msgstr "التدقيق الإملائي لا يملك معاجم."
 
 #: src/frontends/qt4/GuiSymbols.cpp:54
 #, fuzzy
@@ -27573,11 +27547,11 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:56
 msgid "Latin Extended-A"
-msgstr ""
+msgstr "لاتيني محسن-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:57
 msgid "Latin Extended-B"
-msgstr ""
+msgstr "لاتيني محسن-B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:58
 msgid "IPA Extensions"
@@ -27679,7 +27653,7 @@ msgstr "معاملات رياضية"
 
 #: src/frontends/qt4/GuiSymbols.cpp:91
 msgid "Miscellaneous Technical"
-msgstr ""
+msgstr "تقني منوع"
 
 #: src/frontends/qt4/GuiSymbols.cpp:92
 msgid "Control Pictures"
@@ -27703,14 +27677,12 @@ msgid "Block Elements"
 msgstr "اعترافات بالجميل"
 
 #: src/frontends/qt4/GuiSymbols.cpp:97
-#, fuzzy
 msgid "Geometric Shapes"
-msgstr "شكل نص مائل"
+msgstr "أشكال هندسية"
 
 #: src/frontends/qt4/GuiSymbols.cpp:98
-#, fuzzy
 msgid "Miscellaneous Symbols"
-msgstr "رموز موسيقية"
+msgstr "رموز منوعة"
 
 #: src/frontends/qt4/GuiSymbols.cpp:99
 #, fuzzy
@@ -27718,9 +27690,8 @@ msgid "Dingbats"
 msgstr "Dings 1"
 
 #: src/frontends/qt4/GuiSymbols.cpp:100
-#, fuzzy
 msgid "Miscellaneous Mathematical Symbols-A"
-msgstr "رموز رياضية"
+msgstr "رموز رياضية منوعة-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:101
 msgid "CJK Symbols and Punctuation"
@@ -27869,9 +27840,8 @@ msgid "Kharoshthi"
 msgstr "varnothing"
 
 #: src/frontends/qt4/GuiSymbols.cpp:137
-#, fuzzy
 msgid "Byzantine Musical Symbols"
-msgstr "رموز موسيقية"
+msgstr "رموز موسيقية بيزنطية"
 
 #: src/frontends/qt4/GuiSymbols.cpp:138
 msgid "Musical Symbols"
@@ -28170,7 +28140,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:2292
 msgid "Chosen File Already Open"
-msgstr ""
+msgstr "الملف المختار مفتوح حاليا"
 
 #: src/frontends/qt4/GuiView.cpp:2293 src/frontends/qt4/GuiView.cpp:2315
 #: src/frontends/qt4/GuiView.cpp:2331 src/frontends/qt4/GuiView.cpp:2444
@@ -28256,7 +28226,7 @@ msgstr "إغلاق المستند"
 
 #: src/frontends/qt4/GuiView.cpp:2630
 msgid "Document could not be closed because it is being processed by LyX."
-msgstr ""
+msgstr "المستند لا يمكن إغلاقه لأن بدأ بمعالجته."
 
 #: src/frontends/qt4/GuiView.cpp:2734 src/frontends/qt4/GuiView.cpp:2839
 #, fuzzy, c-format
@@ -28484,7 +28454,7 @@ msgstr "لا مجموعة"
 
 #: src/frontends/qt4/Menus.cpp:810 src/frontends/qt4/Menus.cpp:811
 msgid "More Spelling Suggestions"
-msgstr ""
+msgstr "المزيد من مقترحات التدقيق الإملائي"
 
 #: src/frontends/qt4/Menus.cpp:833
 msgid "Add to personal dictionary|n"
@@ -29036,7 +29006,7 @@ msgstr ""
 
 #: src/insets/InsetHyperlink.cpp:275
 msgid "www"
-msgstr ""
+msgstr "www"
 
 #: src/insets/InsetHyperlink.cpp:277
 msgid "email"
@@ -29047,9 +29017,9 @@ msgid "file"
 msgstr "ملف"
 
 #: src/insets/InsetHyperlink.cpp:280
-#, fuzzy, c-format
+#, c-format
 msgid "Hyperlink (%1$s) to %2$s"
-msgstr "فرع (%1$s): %2$s"
+msgstr "الرابط (%1$s) إلى %2$s"
 
 #: src/insets/InsetInclude.cpp:376
 #, fuzzy
@@ -29092,9 +29062,8 @@ msgstr ""
 "من فضلك تاكد من وجود المجلد و انه يمكن الكتابة فيه."
 
 #: src/insets/InsetInclude.cpp:636
-#, fuzzy
 msgid "Missing included file"
-msgstr "ملف مضمن"
+msgstr "فقد ملف مضمن"
 
 #: src/insets/InsetInclude.cpp:644
 #, c-format
@@ -29813,9 +29782,8 @@ msgid "Unknown tabular feature '%1$s'"
 msgstr "خاصية جدولة مجهولة '%1$s'"
 
 #: src/mathed/InsetMathHull.cpp:1295
-#, fuzzy
 msgid "Bad math environment"
-msgstr "تجميع الوحدات"
+msgstr "إطار رياضي سئ"
 
 #: src/mathed/InsetMathHull.cpp:1296
 msgid ""
@@ -29979,9 +29947,8 @@ msgid "Let it &run"
 msgstr ""
 
 #: src/support/debug.cpp:42
-#, fuzzy
 msgid "No debugging messages"
-msgstr "لاتوجد رسائل تنقيح"
+msgstr "لا رسائل تنقيح"
 
 #: src/support/debug.cpp:43
 msgid "General information"
