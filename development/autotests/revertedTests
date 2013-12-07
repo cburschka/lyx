@@ -54,4 +54,7 @@ export/examples/ja/knitr_pdf
 export/templates/ectaart_pdf5
 export/templates/ectaart_dvi3
 #
+# LuaTeX does not support Farsi yet. See:
+# https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
 export/examples/fa/splash_pdf5
+export/examples/fa/splash_dvi3
