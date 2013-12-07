@@ -1,9 +1,4 @@
 #
-# Incompatibility between luainputenc.sty and ectaart.cls
-# luainputenc.sty loads luatex.sty
-# Both files (luatex.sty and ectaart.cls) define
-# the latex-command \setattribute
-export/templates/ectaart_pdf5
 # latex8.sty is obsolete and replaced by IEEEconf.
 check_load/templates/attic/latex8
 export/templates/attic/latex8_pdf
