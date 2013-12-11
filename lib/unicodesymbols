@@ -2069,13 +2069,13 @@
 #0x2253 ""                         "" "" "" "" # IMAGE OF OR APPROXIMATELY EQUAL TO
 0x2254 ""                         "" "" "\\coloneqq" "mathtools" # COLON EQUALS
 0x2255 ""                         "" "" "\\eqqcolon" "mathtools" # EQUALS COLON
-#0x2256 ""                         "" "" "" "" # RING IN EQUAL TO
-#0x2257 ""                         "" "" "" "" # RING EQUAL TO
+0x2256 ""                         "" "" "\\eqcirc" "amssymb" # RING IN EQUAL TO
+0x2257 ""                         "" "" "\\circeq" "amssymb" # RING EQUAL TO
 #0x2258 ""                         "" "" "" "" # CORRESPONDS TO
 #0x2259 ""                         "" "" "" "" # ESTIMATES
 #0x225a ""                         "" "" "" "" # EQUIANGULAR TO
 #0x225b ""                         "" "" "" "" # STAR EQUALS
-#0x225c ""                         "" "" "" "" # DELTA EQUAL TO
+0x225c ""                         "" "" "\\triangleq" "amssymb" # DELTA EQUAL TO
 #0x225d ""                         "" "" "" "" # EQUAL TO BY DEFINITION
 #0x225e ""                         "" "" "" "" # MEASURED BY
 #0x225f ""                         "" "" "" "" # QUESTIONED EQUAL TO
@@ -2085,66 +2085,66 @@
 #0x2263 ""                         "" "" "" "" # STRICTLY EQUIVALENT TO
 0x2264 ""                         "" "" "\\le" # LESS-THAN OR EQUAL TO
 0x2265 ""                         "" "" "\\ge" # GREATER-THAN OR EQUAL TO
-#0x2266 ""                         "" "" "" "" # LESS-THAN OVER EQUAL TO
-#0x2267 ""                         "" "" "" "" # GREATER-THAN OVER EQUAL TO
-#0x2268 ""                         "" "" "" "" # LESS-THAN BUT NOT EQUAL TO
-#0x2269 ""                         "" "" "" "" # GREATER-THAN BUT NOT EQUAL TO
-#0x226a ""                         "" "" "" "" # MUCH LESS-THAN
-#0x226b ""                         "" "" "" "" # MUCH GREATER-THAN
-#0x226c ""                         "" "" "" "" # BETWEEN
+0x2266 ""                         "" "" "\\leqq" "amssymb" # LESS-THAN OVER EQUAL TO
+0x2267 ""                         "" "" "\\geqq" "amssymb" # GREATER-THAN OVER EQUAL TO
+0x2268 ""                         "" "" "\\lneqq" "amssymb" # LESS-THAN BUT NOT EQUAL TO
+0x2269 ""                         "" "" "\\gneqq" "amssymb" # GREATER-THAN BUT NOT EQUAL TO
+0x226a ""                         "" "" "\\ll" "" # MUCH LESS-THAN
+0x226b ""                         "" "" "\\gg" "" # MUCH GREATER-THAN
+0x226c ""                         "" "" "\\between" "amssymb" # BETWEEN
 #0x226d ""                         "" "" "" "" # NOT EQUIVALENT TO
-#0x226e ""                         "" "" "" "" # NOT LESS-THAN
-#0x226f ""                         "" "" "" "" # NOT GREATER-THAN
-#0x2270 ""                         "" "" "" "" # NEITHER LESS-THAN NOR EQUAL TO
-#0x2271 ""                         "" "" "" "" # NEITHER GREATER-THAN NOR EQUAL TO
-#0x2272 ""                         "" "" "" "" # LESS-THAN OR EQUIVALENT TO
-#0x2273 ""                         "" "" "" "" # GREATER-THAN OR EQUIVALENT TO
+0x226e ""                         "" "" "\\nless" "amssymb" # NOT LESS-THAN
+0x226f ""                         "" "" "\\ngtr" "amssymb" # NOT GREATER-THAN
+0x2270 ""                         "" "" "\\nleq" "amssymb" # NEITHER LESS-THAN NOR EQUAL TO
+0x2271 ""                         "" "" "\\ngeq" "amssymb" # NEITHER GREATER-THAN NOR EQUAL TO
+0x2272 ""                         "" "" "\\lesssim" "amssymb" # LESS-THAN OR EQUIVALENT TO
+0x2273 ""                         "" "" "\\gtrsim" "amssymb" # GREATER-THAN OR EQUIVALENT TO
 #0x2274 ""                         "" "" "" "" # NEITHER LESS-THAN NOR EQUIVALENT TO
 #0x2275 ""                         "" "" "" "" # NEITHER GREATER-THAN NOR EQUIVALENT TO
-#0x2276 ""                         "" "" "" "" # LESS-THAN OR GREATER-THAN
-#0x2277 ""                         "" "" "" "" # GREATER-THAN OR LESS-THAN
+0x2276 ""                         "" "" "\\lessgtr" "amssymb" # LESS-THAN OR GREATER-THAN
+0x2277 ""                         "" "" "\\gtrless" "amssymb" # GREATER-THAN OR LESS-THAN
 #0x2278 ""                         "" "" "" "" # NEITHER LESS-THAN NOR GREATER-THAN
 #0x2279 ""                         "" "" "" "" # NEITHER GREATER-THAN NOR LESS-THAN
-#0x227a ""                         "" "" "" "" # PRECEDES
-#0x227b ""                         "" "" "" "" # SUCCEEDS
-#0x227c ""                         "" "" "" "" # PRECEDES OR EQUAL TO
-#0x227d ""                         "" "" "" "" # SUCCEEDS OR EQUAL TO
-#0x227e ""                         "" "" "" "" # PRECEDES OR EQUIVALENT TO
-#0x227f ""                         "" "" "" "" # SUCCEEDS OR EQUIVALENT TO
-#0x2280 ""                         "" "" "" "" # DOES NOT PRECEDE
-#0x2281 ""                         "" "" "" "" # DOES NOT SUCCEED
-#0x2282 ""                         "" "" "" "" # SUBSET OF
-#0x2283 ""                         "" "" "" "" # SUPERSET OF
+0x227a ""                         "" "" "\\prec" "" # PRECEDES
+0x227b ""                         "" "" "\\succ" "" # SUCCEEDS
+0x227c ""                         "" "" "\\preccurlyeq" "amssymb" # PRECEDES OR EQUAL TO
+0x227d ""                         "" "" "\\succcurlyeq" "amssymb" # SUCCEEDS OR EQUAL TO
+0x227e ""                         "" "" "\\precsim" "amssymb" # PRECEDES OR EQUIVALENT TO
+0x227f ""                         "" "" "\\succsim" "amssymb" # SUCCEEDS OR EQUIVALENT TO
+0x2280 ""                         "" "" "\\nprec" "amssymb" # DOES NOT PRECEDE
+0x2281 ""                         "" "" "\\nsucc" "amssymb" # DOES NOT SUCCEED
+0x2282 ""                         "" "" "\\subset" "" # SUBSET OF
+0x2283 ""                         "" "" "\\supset" "" # SUPERSET OF
 #0x2284 ""                         "" "" "" "" # NOT A SUBSET OF
 #0x2285 ""                         "" "" "" "" # NOT A SUPERSET OF
-#0x2286 ""                         "" "" "" "" # SUBSET OF OR EQUAL TO
-#0x2287 ""                         "" "" "" "" # SUPERSET OF OR EQUAL TO
-#0x2288 ""                         "" "" "" "" # NEITHER A SUBSET OF NOR EQUAL TO
-#0x2289 ""                         "" "" "" "" # NEITHER A SUPERSET OF NOR EQUAL TO
-#0x228a ""                         "" "" "" "" # SUBSET OF WITH NOT EQUAL TO
-#0x228b ""                         "" "" "" "" # SUPERSET OF WITH NOT EQUAL TO
+0x2286 ""                         "" "" "\\subseteq" "" # SUBSET OF OR EQUAL TO
+0x2287 ""                         "" "" "\\supseteq" "" # SUPERSET OF OR EQUAL TO
+0x2288 ""                         "" "" "\\nsubseteq" "amssymb" # NEITHER A SUBSET OF NOR EQUAL TO
+0x2289 ""                         "" "" "\\nsupseteq" "amssymb" # NEITHER A SUPERSET OF NOR EQUAL TO
+0x228a ""                         "" "" "\\subsetneq" "amssymb" # SUBSET OF WITH NOT EQUAL TO
+0x228b ""                         "" "" "\\supsetneq" "amssymb" # SUPERSET OF WITH NOT EQUAL TO
 #0x228c ""                         "" "" "" "" # MULTISET
 #0x228d ""                         "" "" "" "" # MULTISET MULTIPLICATION
-0x228e ""                         "" "" "\\biguplus" "" # MULTISET UNION
+0x228e ""                         "" "" "\\uplus" "" # MULTISET UNION
 #0x228f ""                         "" "" "" "" # SQUARE IMAGE OF
 #0x2290 ""                         "" "" "" "" # SQUARE ORIGINAL OF
 #0x2291 ""                         "" "" "" "" # SQUARE IMAGE OF OR EQUAL TO
 #0x2292 ""                         "" "" "" "" # SQUARE ORIGINAL OF OR EQUAL TO
-#0x2293 ""                         "" "" "" "" # SQUARE CAP
-0x2294 ""                         "" "" "\\bigsqcup" "" # SQUARE CUP
-0x2295 ""                         "" "" "\\bigoplus" "" # CIRCLED PLUS
-#0x2296 ""                         "" "" "" "" # CIRCLED MINUS
-0x2297 ""                         "" "" "\\bigotimes" "" # CIRCLED TIMES
-#0x2298 ""                         "" "" "" "" # CIRCLED DIVISION SLASH
-0x2299 ""                         "" "" "\\bigodot" "" # CIRCLED DOT OPERATOR
-#0x229a ""                         "" "" "" "" # CIRCLED RING OPERATOR
-#0x229b ""                         "" "" "" "" # CIRCLED ASTERISK OPERATOR
+0x2293 ""                         "" "" "\\sqcap" "" # SQUARE CAP
+0x2294 ""                         "" "" "\\sqcup" "" # SQUARE CUP
+0x2295 ""                         "" "" "\\oplus" "" # CIRCLED PLUS
+0x2296 ""                         "" "" "\\ominus" "" # CIRCLED MINUS
+0x2297 ""                         "" "" "\\otimes" "" # CIRCLED TIMES
+0x2298 ""                         "" "" "\\oslash" "" # CIRCLED DIVISION SLASH
+0x2299 ""                         "" "" "\\odot" "" # CIRCLED DOT OPERATOR
+0x229a ""                         "" "" "\\circledcirc" "amssymb" # CIRCLED RING OPERATOR
+0x229b ""                         "" "" "\\circledast" "amssymb" # CIRCLED ASTERISK OPERATOR
 #0x229c ""                         "" "" "" "" # CIRCLED EQUALS
-#0x229d ""                         "" "" "" "" # CIRCLED DASH
-#0x229e ""                         "" "" "" "" # SQUARED PLUS
-#0x229f ""                         "" "" "" "" # SQUARED MINUS
-#0x22a0 ""                         "" "" "" "" # SQUARED TIMES
-#0x22a1 ""                         "" "" "" "" # SQUARED DOT OPERATOR
+0x229d ""                         "" "" "\\circleddash" "amssymb" # CIRCLED DASH
+0x229e ""                         "" "" "\\boxplus" "amssymb" # SQUARED PLUS
+0x229f ""                         "" "" "\\boxminus" "amssymb" # SQUARED MINUS
+0x22a0 ""                         "" "" "\\boxtimes" "amssymb" # SQUARED TIMES
+0x22a1 ""                         "" "" "\\boxdot" "amssymb" # SQUARED DOT OPERATOR
 #0x22a2 ""                         "" "" "" "" # RIGHT TACK
 #0x22a3 ""                         "" "" "" "" # LEFT TACK
 #0x22a4 ""                         "" "" "" "" # DOWN TACK
@@ -2568,10 +2568,28 @@
 #
 # supplemental mathematical operators
 #
+0x2a00 ""                         "" "" "\\bigodot" "" # (or MnSymbol) N-ARY CIRCLED DOT OPERATOR
+0x2a01 ""                         "" "" "\\bigoplus" "" # (or MnSymbol) N-ARY CIRCLED PLUS OPERATOR
+0x2a02 ""                         "" "" "\\bigotimes" "" # (or MnSymbol) N-ARY CIRCLED TIMES OPERATOR
+#0x2a03 ""                         "" "" "\\bigcupdot" "MnSymbol" # N-ARY UNION OPERATOR WITH DOT
+0x2a04 ""                         "" "" "\\biguplus" "" # (or MnSymbol) N-ARY UNION OPERATOR WITH PLUS
+0x2a05 ""                         "" "" "\\bigsqcap" "stmaryrd" # (or MnSymbol) N-ARY SQUARE INTERSECTION OPERATOR
+0x2a06 ""                         "" "" "\\bigsqcup" "" # (or MnSymbol) N-ARY SQUARE UNION OPERATOR
+#0x2a07 ""                         "" "" "" "" # TWO LOGICAL AND OPERATOR
+#0x2a08 ""                         "" "" "" "" # TWO LOGICAL OR OPERATOR
+#0x2a09 ""                         "" "" "\\bigtimes" "MnSymbol" # N-ARY TIMES OPERATOR
+#0x2a0a ""                         "" "" "" "" # MODULO TWO SUM
+#0x2a0b ""                         "" "" "\\sumint" "MnSymbol" # SUMMATION WITH INTEGRAL
 0x2a0c ""                         "" "" "\\iiiint" "esint" # QUADRUPLE INTEGRAL OPERATOR
 #0x2a0d ""                         "" "" "" "" # FINITE PART INTEGRAL
 #0x2a0e ""                         "" "" "" "" # INTEGRAL WITH DOUBLE STROKE
 0x2a0f ""                         "" "" "\\fint" "esint" # INTEGRAL AVERAGE WITH SLASH
+#0x2a10 ""                         "" "" "" "" # CIRCULATION FUNCTION
+#0x2a11 ""                         "" "" "" "" # ANTICLOCKWISE INTEGRATION
+#0x2a12 ""                         "" "" "" "" # LINE INTEGRATION WITH RECTANGULAR PATH AROUND POLE
+#0x2a13 ""                         "" "" "" "" # LINE INTEGRATION WITH SEMICIRCULAR PATH AROUND POLE
+#0x2a14 ""                         "" "" "" "" # LINE INTEGRATION NOT INCLUDING THE POLE
+#0x2a15 ""                         "" "" "" "" # INTEGRAL AROUND A POINT OPERATOR
 0x2a16 ""                         "" "" "\\sqint" "esint" # QUATERNION INTEGRAL OPERATOR
 #0x2a17 ""                         "" "" "" "" # INTEGRAL WITH LEFTWARDS ARROW WITH HOOK
 #0x2a18 ""                         "" "" "" "" # INTEGRAL WITH TIMES SIGN
