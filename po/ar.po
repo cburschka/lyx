@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.1.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2013-11-28 17:09+0100\n"
-"PO-Revision-Date: 2013-12-06 16:53+0300\n"
+"PO-Revision-Date: 2013-12-10 17:39+0300\n"
 "Last-Translator: Hatim Alahmadi <Dr.hatim@hotmail.com>\n"
 "Language-Team: LyX team <theblackdragon_100@hotmail.com>\n"
 "Language: ar\n"
@@ -101,9 +101,8 @@ msgid "Co&pier:"
 msgstr "&الناسخ:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:202
-#, fuzzy
 msgid "Specify the default output format when using (PDF)LaTeX"
-msgstr "حدد الحجم الافتراضي للورقة."
+msgstr "تحديد هيئة الخرج الافتراضي عند استخدام لتيك PDF"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:205
 msgid "Default Output Formats"
@@ -379,7 +378,7 @@ msgstr "طباعة من صفحة"
 
 #: src/frontends/qt4/ui/PrintUi.ui:66
 msgid "&To:[[as in 'From page x to page y']]"
-msgstr ""
+msgstr "&إلى:[[as in 'From page x to page y']]"
 
 #: src/frontends/qt4/ui/PrintUi.ui:79
 msgid "Page number to print to"
@@ -1016,9 +1015,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:27
-#, fuzzy
 msgid "Use LaTe&X font encoding:"
-msgstr "&ترميز TeX:"
+msgstr "استخدام ترميز& خطوط لتيك:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:34 src/frontends/qt4/ui/FontUi.ui:90
 msgid "Specify the font encoding (e.g., T1)."
@@ -1159,9 +1157,8 @@ msgid "Restrict search to whole words only"
 msgstr "حصر البحث في الكلمة كاملة فقط."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:127
-#, fuzzy
 msgid "W&hole words"
-msgstr "كلمات مفتاحية."
+msgstr "كلمات& مفتاحية"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:143
 msgid "Replace and find next occurrence [Enter]"
@@ -1213,7 +1210,7 @@ msgstr "المستند الح&الي"
 msgid ""
 "Current document and all related documents belonging to the same master "
 "document"
-msgstr ""
+msgstr "المستند الحالي و كل المستندات المرتبطة التي تتبع نفس المستند الرئيسي"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:240
 msgid "&Master document"
@@ -3052,7 +3049,7 @@ msgstr "."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:249
 msgid "Minimum word length for completion"
-msgstr ""
+msgstr "أصغر طول لكمة للإكمال"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:274
 msgid ""
@@ -3074,7 +3071,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:32
 msgid "Language of the thesaurus"
-msgstr ""
+msgstr "لغة القاموس"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:39
 msgid "Index entry"
@@ -3086,11 +3083,11 @@ msgstr "&كلمة مفتاحية:"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:52
 msgid "Word to look up"
-msgstr ""
+msgstr "للبحث عن كلمة"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:65
 msgid "L&ookup"
-msgstr ""
+msgstr "بحث& عن"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:72
 #: src/frontends/qt4/ui/ThesaurusUi.ui:85
@@ -3132,7 +3129,7 @@ msgstr "كبير"
 
 #: src/frontends/qt4/ui/VSpaceUi.ui:102
 msgid "VFill"
-msgstr ""
+msgstr "كبير جدا"
 
 #: src/frontends/qt4/ui/PrefsUi.ui:70 src/frontends/qt4/GuiView.cpp:2738
 #: src/frontends/qt4/GuiView.cpp:2745 src/frontends/qt4/GuiView.cpp:2844
@@ -4176,9 +4173,8 @@ msgid "Apply each change automatically"
 msgstr "تطبيق كل التغييرات آلياً"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:308
-#, fuzzy
 msgid "Apply changes &immediately"
-msgstr "تطبيق التغييرات على الفور"
+msgstr "تطبيق التغييرات فور%ا"
 
 #: src/frontends/qt4/ui/MathsUi.ui:45
 msgid "All packages:"
@@ -4442,9 +4438,8 @@ msgid "BibTeX styles"
 msgstr "أساليب BibTeX"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:143
-#, fuzzy
 msgid "BibTeX databases"
-msgstr "BibTeX يمكن استخدام قاعدة بيانات"
+msgstr "قاعدة بيانات BibTeX"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:167
 msgid "Toggles view of the file list"
@@ -4537,9 +4532,8 @@ msgid "&References"
 msgstr "مراجع"
 
 #: src/frontends/qt4/ui/RefUi.ui:76
-#, fuzzy
 msgid "Fil&ter:"
-msgstr "&خارج:"
+msgstr "المرش&ح:"
 
 #: src/frontends/qt4/ui/RefUi.ui:89
 msgid "Enter string to filter the label list"
@@ -10176,7 +10170,7 @@ msgstr ""
 
 #: lib/layouts/llncs.layout:175 lib/layouts/svcommon.inc:376
 msgid "TOC Title"
-msgstr ""
+msgstr "عنوان TOC"
 
 #: lib/layouts/llncs.layout:179
 #, fuzzy
@@ -10613,7 +10607,7 @@ msgstr "معلومات الدعم متاحة"
 
 #: lib/layouts/achemso.layout:254
 msgid "TOC entry"
-msgstr ""
+msgstr "مدخل TOC"
 
 #: lib/layouts/achemso.layout:258
 msgid "Graphical TOC Entry"
@@ -11085,9 +11079,8 @@ msgid "Volume number:"
 msgstr "لا رقم"
 
 #: lib/layouts/acmsiggraph.layout:92
-#, fuzzy
 msgid "TOG number"
-msgstr "لا رقم"
+msgstr "رقم TOG"
 
 #: lib/layouts/acmsiggraph.layout:95
 msgid "Article number:"
@@ -11138,14 +11131,12 @@ msgid "Code URL:"
 msgstr "رابط المرسل:"
 
 #: lib/layouts/acmsiggraph.layout:157
-#, fuzzy
 msgid "PDF author"
-msgstr "المؤلف:"
+msgstr "مؤلف PDF"
 
 #: lib/layouts/acmsiggraph.layout:160
-#, fuzzy
 msgid "PDF author:"
-msgstr "المؤلف:"
+msgstr "مؤلف PDF:"
 
 #: lib/layouts/acmsiggraph.layout:175
 #, fuzzy
@@ -11162,9 +11153,8 @@ msgid "CR categories"
 msgstr ""
 
 #: lib/layouts/acmsiggraph.layout:230
-#, fuzzy
 msgid "CR Categories:"
-msgstr "فحص أصنافالحوسبة"
+msgstr "أصناف CR:"
 
 #: lib/layouts/acmsiggraph.layout:238
 #, fuzzy
@@ -11472,14 +11462,12 @@ msgid "Epigraph"
 msgstr ""
 
 #: lib/layouts/memoir.layout:178
-#, fuzzy
 msgid "Epigraph Source|S"
-msgstr "عرض الكود المصدري|ع"
+msgstr "مصدر صدر الفصل|S"
 
 #: lib/layouts/memoir.layout:179
-#, fuzzy
 msgid "Source"
-msgstr "كود ليتك مصدري"
+msgstr "المصدر"
 
 #: lib/layouts/memoir.layout:180
 msgid "The source/author of this epigraph"
@@ -12163,7 +12151,7 @@ msgstr "المؤلف الاول"
 
 #: lib/layouts/scrclass.inc:319
 msgid "The author of this dictum"
-msgstr ""
+msgstr "صاحب هذا القول"
 
 #: lib/layouts/acm-sigs.inc:37
 #, fuzzy
@@ -12804,14 +12792,12 @@ msgid "--- Back Matter ---"
 msgstr ""
 
 #: lib/layouts/svcommon.inc:141
-#, fuzzy
 msgid "Part Title"
-msgstr "عنوان قصير"
+msgstr "عنوان الجزء"
 
 #: lib/layouts/svcommon.inc:142
-#, fuzzy
 msgid "Title of this part"
-msgstr "حاشية"
+msgstr "عنوان هذا الجزء"
 
 #: lib/layouts/svcommon.inc:288
 #, fuzzy
@@ -12823,18 +12809,16 @@ msgid "Sub-run-in headings"
 msgstr ""
 
 #: lib/layouts/svcommon.inc:360
-#, fuzzy
 msgid "Author data:"
-msgstr "المؤلف:"
+msgstr "بيانات المؤلف:"
 
 #: lib/layouts/svcommon.inc:387
 msgid "TOC title:"
 msgstr ""
 
 #: lib/layouts/svcommon.inc:397
-#, fuzzy
 msgid "TOC author:"
-msgstr "المؤلف:"
+msgstr "مؤلف TOC:"
 
 #: lib/layouts/svcommon.inc:400
 #, fuzzy
@@ -13107,7 +13091,7 @@ msgstr "قلب"
 
 #: lib/layouts/shapepar.module:54
 msgid "Hexagon"
-msgstr ""
+msgstr "المسدس"
 
 #: lib/layouts/shapepar.module:59
 #, fuzzy
@@ -13299,34 +13283,28 @@ msgid "Section Box Width|S"
 msgstr "التحديد"
 
 #: lib/layouts/sectionbox.module:23
-#, fuzzy
 msgid "Width of the section Box"
-msgstr "عرض الصورة في الخرج"
+msgstr "عرض صندوق القسم"
 
 #: lib/layouts/sectionbox.module:26
-#, fuzzy
 msgid "Heading"
-msgstr "عناوين رأس الموضوع"
+msgstr "عنوان"
 
 #: lib/layouts/sectionbox.module:27
-#, fuzzy
 msgid "Section Box Heading"
-msgstr "قسم"
+msgstr "عنوان صندوق القسم"
 
 #: lib/layouts/sectionbox.module:31
-#, fuzzy
 msgid "Insert the section box header here"
-msgstr "أدرج مسافة حتى بعد نهاية السطر"
+msgstr "أدرج عنوان صندوق القسم هنا"
 
 #: lib/layouts/sectionbox.module:39
-#, fuzzy
 msgid "SubsectionBox"
-msgstr "قسم ثانوي"
+msgstr "صندوق القسم الفرعي"
 
 #: lib/layouts/sectionbox.module:41
-#, fuzzy
 msgid "Subsection Box"
-msgstr "قسم ثانوي"
+msgstr "صندوق القسم الفرعي"
 
 #: lib/layouts/sectionbox.module:45
 #, fuzzy
@@ -13562,10 +13540,10 @@ msgid ""
 "proposition 4, ...). The numbering is reset at each section start."
 msgstr ""
 "عرف بعض وحدات النظريات لتستخدم مع غير أصناف AMS. على النقيض من نماذج "
-"النظريات المبسطة،الانواع المختلفة المتوفرة هنا كلا منها يملك عداداً منفصلاً"
-"(مثلا.theorem 1, theorem 2, lemma 1, proposition 1, theorem 3, lemma 2, ..., "
-"as opposed to theorem 1, theorem 2, lemma 3, proposition 4, ...). يعاد ضبط "
-"الترقيم عند بداية كل قسم."
+"النظريات المبسطة،الانواع المختلفة المتوفرة هنا كلا منها يملك عداداً "
+"منفصلاً(مثلا.theorem 1, theorem 2, lemma 1, proposition 1, theorem 3, lemma "
+"2, ..., as opposed to theorem 1, theorem 2, lemma 3, proposition 4, ...). "
+"يعاد ضبط الترقيم عند بداية كل قسم."
 
 #: lib/layouts/theorems-std.module:2
 msgid "Theorems"
@@ -13598,9 +13576,9 @@ msgstr ""
 "عرف بعض وحدات النظريات الأضافية لتستخدم مع حزم نظريات الـAMS. تشمل المعايير ،"
 "الخواريزم،المسلمات،الشروط، الملاحظة،الترقيم،الملخص،الأعتراف بالجميل،استنتاج،"
 "الفرض،و الحالات،في الصيغ المرقمة و الغير مرقمة. على النقيض من نموذج  AMS-"
-"الممتد المبسط، النظريات المختلفة في النوع المتوفرة هنا تملك عداداً منفصلاً"
-"(مثلا. criterion 1, criterion 2, axiom 1, assumption 1, criterion 3, ..., as "
-"opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
+"الممتد المبسط، النظريات المختلفة في النوع المتوفرة هنا تملك عداداً "
+"منفصلاً(مثلا. criterion 1, criterion 2, axiom 1, assumption 1, criterion "
+"3, ..., as opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:63
 #, fuzzy
@@ -14580,7 +14558,7 @@ msgstr "العبرية"
 
 #: lib/languages:520
 msgid "Hindi"
-msgstr ""
+msgstr "الهندية"
 
 #: lib/languages:538
 msgid "Icelandic"
@@ -14608,11 +14586,11 @@ msgstr "اليابانية (CJK)"
 
 #: lib/languages:600
 msgid "Kazakh"
-msgstr "كازاخ"
+msgstr "الكازاخستانية"
 
 #: lib/languages:610
 msgid "Korean"
-msgstr "كوري"
+msgstr "الكورية"
 
 #: lib/languages:619
 #, fuzzy
@@ -14630,11 +14608,11 @@ msgstr "اللاتينية"
 
 #: lib/languages:647
 msgid "Latvian"
-msgstr "لاتيفي"
+msgstr "اللاتيفية"
 
 #: lib/languages:659
 msgid "Lithuanian"
-msgstr "Lithuanian"
+msgstr "الليتوانية"
 
 #: lib/languages:669
 msgid "Lower Sorbian"
@@ -14646,7 +14624,7 @@ msgstr "هنغاري"
 
 #: lib/languages:688
 msgid "Marathi"
-msgstr ""
+msgstr "المراثاوية"
 
 #: lib/languages:698
 msgid "Mongolian"
@@ -14670,7 +14648,7 @@ msgstr ""
 
 #: lib/languages:753
 msgid "Polish"
-msgstr "Polish"
+msgstr "البولندية"
 
 #: lib/languages:762
 msgid "Portuguese"
@@ -14690,7 +14668,7 @@ msgstr "North Sami"
 
 #: lib/languages:798
 msgid "Sanskrit"
-msgstr ""
+msgstr "السنسكريتية"
 
 #: lib/languages:805
 msgid "Scottish"
@@ -14706,15 +14684,15 @@ msgstr "الصربية (لاتيني)"
 
 #: lib/languages:834
 msgid "Slovak"
-msgstr "السلوفاكي"
+msgstr "السلوفاكية"
 
 #: lib/languages:843
 msgid "Slovene"
-msgstr "Slovene"
+msgstr "السلوفينية"
 
 #: lib/languages:852
 msgid "Spanish"
-msgstr "اسباني"
+msgstr "الاسبانية"
 
 #: lib/languages:865
 msgid "Spanish (Mexico)"
@@ -14726,7 +14704,7 @@ msgstr "سويدي"
 
 #: lib/languages:887
 msgid "Syriac"
-msgstr ""
+msgstr "السريانية"
 
 #: lib/languages:895 src/frontends/qt4/GuiSymbols.cpp:71
 msgid "Tamil"
@@ -14751,7 +14729,7 @@ msgstr "تركي"
 
 #: lib/languages:944
 msgid "Turkmen"
-msgstr ""
+msgstr "التركمانية"
 
 #: lib/languages:954
 msgid "Ukrainian"
@@ -14763,7 +14741,7 @@ msgstr "Upper Sorbian"
 
 #: lib/languages:973
 msgid "Urdu"
-msgstr ""
+msgstr "اوردو"
 
 #: lib/languages:983
 msgid "Vietnamese"
@@ -16794,7 +16772,7 @@ msgstr "ملئ رأسي"
 
 #: lib/ui/stdcontext.inc:266
 msgid "Custom|C"
-msgstr "اختياري"
+msgstr "مخصص|C"
 
 #: lib/ui/stdcontext.inc:268
 msgid "Settings...|e"
@@ -16867,14 +16845,12 @@ msgid "Fullscreen Mode"
 msgstr "نظام كامل الشاشة"
 
 #: lib/ui/stdcontext.inc:337
-#, fuzzy
 msgid "Close Current View"
-msgstr "اغلق الشاشة الحالية|ا"
+msgstr "إغلاق العرض الحالي"
 
 #: lib/ui/stdcontext.inc:345
-#, fuzzy
 msgid "Anything|A"
-msgstr "varnothing"
+msgstr "كل شئ|A"
 
 #: lib/ui/stdcontext.inc:346
 msgid "Anything Non-Empty|o"
@@ -19628,9 +19604,8 @@ msgid "male"
 msgstr "ذكر"
 
 #: lib/ui/stdtoolbars.inc:844
-#, fuzzy
 msgid "vernal"
-msgstr "صحيفة"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:845
 msgid "ascnode"
@@ -19649,14 +19624,12 @@ msgid "newmoon"
 msgstr "هلال"
 
 #: lib/ui/stdtoolbars.inc:849
-#, fuzzy
 msgid "leftmoon"
-msgstr "leftharpoonup"
+msgstr "قمر يسار"
 
 #: lib/ui/stdtoolbars.inc:850
-#, fuzzy
 msgid "rightmoon"
-msgstr "rightharpoonup"
+msgstr "قمر يمين"
 
 #: lib/ui/stdtoolbars.inc:851
 msgid "astrosun"
@@ -19671,23 +19644,20 @@ msgid "venus"
 msgstr "الزهرة"
 
 #: lib/ui/stdtoolbars.inc:854
-#, fuzzy
 msgid "earth"
-msgstr "vartheta"
+msgstr "الارض"
 
 #: lib/ui/stdtoolbars.inc:855
 msgid "mars"
 msgstr "المريخ"
 
 #: lib/ui/stdtoolbars.inc:856
-#, fuzzy
 msgid "jupiter"
-msgstr "محرر"
+msgstr "المشتري"
 
 #: lib/ui/stdtoolbars.inc:857
-#, fuzzy
 msgid "saturn"
-msgstr "natural"
+msgstr "زحل"
 
 #: lib/ui/stdtoolbars.inc:858
 msgid "uranus"
@@ -19702,52 +19672,48 @@ msgid "pluto"
 msgstr "بلوتو"
 
 #: lib/ui/stdtoolbars.inc:861
-#, fuzzy
 msgid "aries"
-msgstr "السلسلة:"
+msgstr "الحمل"
 
 #: lib/ui/stdtoolbars.inc:862
-#, fuzzy
 msgid "taurus"
-msgstr "موسوعات"
+msgstr "الثور"
 
 #: lib/ui/stdtoolbars.inc:863
 msgid "gemini"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:864
-#, fuzzy
 msgid "cancer"
-msgstr "الغاء"
+msgstr "السرطان"
 
 #: lib/ui/stdtoolbars.inc:865
-#, fuzzy
 msgid "leo"
-msgstr "لوغاريتم"
+msgstr "الأسد"
 
 #: lib/ui/stdtoolbars.inc:866
 msgid "virgo"
-msgstr ""
+msgstr "العذراء"
 
 #: lib/ui/stdtoolbars.inc:867
 msgid "libra"
-msgstr ""
+msgstr "الميزان"
 
 #: lib/ui/stdtoolbars.inc:868
 msgid "scorpio"
-msgstr ""
+msgstr "العقرب"
 
 #: lib/ui/stdtoolbars.inc:869
 msgid "sagittarius"
-msgstr ""
+msgstr "القوس"
 
 #: lib/ui/stdtoolbars.inc:870
 msgid "capricornus"
-msgstr ""
+msgstr "الجدي"
 
 #: lib/ui/stdtoolbars.inc:871
 msgid "aquarius"
-msgstr ""
+msgstr "الدلو"
 
 #: lib/ui/stdtoolbars.inc:872
 msgid "pisces"
@@ -19957,19 +19923,16 @@ msgid "shortleftarrow"
 msgstr "سهم ايسر قصير"
 
 #: lib/ui/stdtoolbars.inc:930
-#, fuzzy
 msgid "shortrightarrow"
-msgstr "overrightarrow"
+msgstr "سهم يمين قصير"
 
 #: lib/ui/stdtoolbars.inc:931
-#, fuzzy
 msgid "shortuparrow"
-msgstr "سهم علوي"
+msgstr "سهم أعلى قصير"
 
 #: lib/ui/stdtoolbars.inc:932
-#, fuzzy
 msgid "shortdownarrow"
-msgstr "سهم سفلي"
+msgstr "سهم أسفل قصير"
 
 #: lib/ui/stdtoolbars.inc:933
 #, fuzzy
@@ -20958,24 +20921,20 @@ msgid "nplus"
 msgstr "oplus"
 
 #: lib/ui/stdtoolbars.inc:1194
-#, fuzzy
 msgid "Yup"
-msgstr "sup"
+msgstr "Yأعلى"
 
 #: lib/ui/stdtoolbars.inc:1195
-#, fuzzy
 msgid "Ydown"
-msgstr "diagdown"
+msgstr "Yأسفل"
 
 #: lib/ui/stdtoolbars.inc:1196
-#, fuzzy
 msgid "Yleft"
-msgstr "اعلى اليسار"
+msgstr "Yيسار"
 
 #: lib/ui/stdtoolbars.inc:1197
-#, fuzzy
 msgid "Yright"
-msgstr "حقوق النشر"
+msgstr "Yيمين"
 
 #: lib/ui/stdtoolbars.inc:1198
 msgid "obar"
@@ -21966,7 +21925,6 @@ msgid "PDFPages"
 msgstr "صفحات PDF"
 
 #: lib/external_templates:301 lib/external_templates:315
-#, fuzzy
 msgid "PDF pages"
 msgstr "صفحات PDF"
 
@@ -22005,14 +21963,12 @@ msgid "Dia diagram.\n"
 msgstr ""
 
 #: lib/configure.py:500
-#, fuzzy
 msgid "tgo"
-msgstr "top"
+msgstr "tgo"
 
 #: lib/configure.py:500
-#, fuzzy
 msgid "tgo|Tgif"
-msgstr "Tgif"
+msgstr "tgo|Tgif"
 
 #: lib/configure.py:503
 msgid "FIG"
@@ -22024,7 +21980,7 @@ msgstr "DIA"
 
 #: lib/configure.py:509
 msgid "sxd"
-msgstr ""
+msgstr "sxd"
 
 #: lib/configure.py:509
 msgid "sxd|OpenOffice"
@@ -22040,7 +21996,7 @@ msgstr "FEN"
 
 #: lib/configure.py:518
 msgid "SVG"
-msgstr ""
+msgstr "SVG"
 
 #: lib/configure.py:520
 msgid "BMP"
@@ -22052,12 +22008,11 @@ msgstr "GIF"
 
 #: lib/configure.py:522
 msgid "jpeg"
-msgstr ""
+msgstr "jpeg"
 
 #: lib/configure.py:522
-#, fuzzy
 msgid "jpeg|JPEG"
-msgstr "JPEG"
+msgstr "jpeg|JPEG"
 
 #: lib/configure.py:523
 msgid "PBM"
@@ -22138,9 +22093,8 @@ msgid "NoWeb|N"
 msgstr "لا ويب"
 
 #: lib/configure.py:548
-#, fuzzy
 msgid "R/S code"
-msgstr "كود"
+msgstr "كود R/S"
 
 #: lib/configure.py:550
 msgid "LilyPond music"
@@ -22148,7 +22102,7 @@ msgstr "LilyPond music"
 
 #: lib/configure.py:551
 msgid "LilyPond book (LaTeX)"
-msgstr ""
+msgstr "كتاب LilyPond (لتيك)"
 
 #: lib/configure.py:552
 msgid "LaTeX (plain)"
@@ -22550,9 +22504,9 @@ msgid "File Not Found"
 msgstr "ملف غير موجود"
 
 #: src/Buffer.cpp:1066
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to open file `%1$s'."
-msgstr "شريط ادوات مجهول \"%1$s\""
+msgstr "لا يمكن فتح الملف `%1$s'."
 
 #: src/Buffer.cpp:1089 src/Buffer.cpp:1152
 msgid "Document format failure"
@@ -24594,11 +24548,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:3264
 msgid ""
-"The LaTeX command for loading the language package. E.g. \"\\usepackage"
-"{babel}\", \"\\usepackage{omega}\"."
+"The LaTeX command for loading the language package. E.g. "
+"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"أمر LaTeX لتحميل حزمة اللغة مثل \"\\usepackage{babel}\", \"\\usepackage"
-"{omega}\"."
+"أمر LaTeX لتحميل حزمة اللغة مثل \"\\usepackage{babel}\", "
+"\"\\usepackage{omega}\"."
 
 #: src/LyXRC.cpp:3268
 #, fuzzy
@@ -25202,7 +25156,7 @@ msgstr ""
 
 #: src/VCBackend.cpp:633
 msgid "No CVS file"
-msgstr ""
+msgstr "لا يوجد ملف CVS"
 
 #: src/VCBackend.cpp:635
 msgid "Cannot retrieve CVS status"
@@ -25265,7 +25219,7 @@ msgstr "إحباط&"
 
 #: src/VCBackend.cpp:955 src/VCBackend.cpp:1514
 msgid "View &Log ..."
-msgstr ""
+msgstr "عرض سج&ل ..."
 
 #: src/VCBackend.cpp:977
 #, fuzzy, c-format
@@ -25603,9 +25557,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/GuiAbout.cpp:111
-#, fuzzy
 msgid "not released yet"
-msgstr "زيادة العمق"
+msgstr "لم يصدر حاليا"
 
 #: src/frontends/qt4/GuiAbout.cpp:116
 #, c-format
@@ -25627,12 +25580,12 @@ msgstr "مسار المستخدم:"
 #: src/frontends/qt4/GuiAbout.cpp:129
 #, c-format
 msgid "Qt Version (run-time): %1$s"
-msgstr ""
+msgstr "Qt Version (run-time): %1$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:130
 #, c-format
 msgid "Qt Version (compile-time): %1$s"
-msgstr ""
+msgstr "Qt Version (compile-time): %1$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:156
 msgid "About LyX"
@@ -26286,15 +26239,15 @@ msgstr "US executive"
 
 #: src/frontends/qt4/GuiDocument.cpp:888
 msgid "A0"
-msgstr ""
+msgstr "A0"
 
 #: src/frontends/qt4/GuiDocument.cpp:889
 msgid "A1"
-msgstr ""
+msgstr "A1"
 
 #: src/frontends/qt4/GuiDocument.cpp:890
 msgid "A2"
-msgstr ""
+msgstr "A2"
 
 #: src/frontends/qt4/GuiDocument.cpp:891
 msgid "A3"
@@ -26310,19 +26263,19 @@ msgstr "A5"
 
 #: src/frontends/qt4/GuiDocument.cpp:894
 msgid "A6"
-msgstr ""
+msgstr "A6"
 
 #: src/frontends/qt4/GuiDocument.cpp:895
 msgid "B0"
-msgstr ""
+msgstr "B0"
 
 #: src/frontends/qt4/GuiDocument.cpp:896
 msgid "B1"
-msgstr ""
+msgstr "B1"
 
 #: src/frontends/qt4/GuiDocument.cpp:897
 msgid "B2"
-msgstr ""
+msgstr "B2"
 
 #: src/frontends/qt4/GuiDocument.cpp:898
 msgid "B3"
@@ -26338,63 +26291,63 @@ msgstr "B5"
 
 #: src/frontends/qt4/GuiDocument.cpp:901
 msgid "B6"
-msgstr ""
+msgstr "B6"
 
 #: src/frontends/qt4/GuiDocument.cpp:902
 msgid "C0"
-msgstr ""
+msgstr "C0"
 
 #: src/frontends/qt4/GuiDocument.cpp:903
 msgid "C1"
-msgstr ""
+msgstr "C1"
 
 #: src/frontends/qt4/GuiDocument.cpp:904
 msgid "C2"
-msgstr ""
+msgstr "C2"
 
 #: src/frontends/qt4/GuiDocument.cpp:905
 msgid "C3"
-msgstr ""
+msgstr "C3"
 
 #: src/frontends/qt4/GuiDocument.cpp:906
 msgid "C4"
-msgstr ""
+msgstr "C4"
 
 #: src/frontends/qt4/GuiDocument.cpp:907
 msgid "C5"
-msgstr ""
+msgstr "C5"
 
 #: src/frontends/qt4/GuiDocument.cpp:908
 msgid "C6"
-msgstr ""
+msgstr "C6"
 
 #: src/frontends/qt4/GuiDocument.cpp:909
 msgid "JIS B0"
-msgstr ""
+msgstr "JIS B0"
 
 #: src/frontends/qt4/GuiDocument.cpp:910
 msgid "JIS B1"
-msgstr ""
+msgstr "JIS B1"
 
 #: src/frontends/qt4/GuiDocument.cpp:911
 msgid "JIS B2"
-msgstr ""
+msgstr "JIS B2"
 
 #: src/frontends/qt4/GuiDocument.cpp:912
 msgid "JIS B3"
-msgstr ""
+msgstr "JIS B3"
 
 #: src/frontends/qt4/GuiDocument.cpp:913
 msgid "JIS B4"
-msgstr ""
+msgstr "JIS B4"
 
 #: src/frontends/qt4/GuiDocument.cpp:914
 msgid "JIS B5"
-msgstr ""
+msgstr "JIS B5"
 
 #: src/frontends/qt4/GuiDocument.cpp:915
 msgid "JIS B6"
-msgstr ""
+msgstr "JIS B6"
 
 #: src/frontends/qt4/GuiDocument.cpp:1029
 msgid "Language Default (no inputenc)"
@@ -26569,7 +26522,7 @@ msgstr " (غير مثبت)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1942
 msgid "Non-TeX Fonts Default"
-msgstr ""
+msgstr "خط Non-TeX الافتراضي"
 
 #: src/frontends/qt4/GuiDocument.cpp:1944
 msgid " (not available)"
@@ -27084,7 +27037,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiLog.cpp:271
 msgid "lyx2lyx Error Log"
-msgstr ""
+msgstr "سجل خطأ lyx2lyx"
 
 #: src/frontends/qt4/GuiLog.cpp:273
 msgid "Version Control Log"
@@ -27110,23 +27063,23 @@ msgstr "لا يوجد ملف سجل تحكم اصدار"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:34
 msgid "[x]"
-msgstr ""
+msgstr "[x]"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:35
 msgid "(x)"
-msgstr ""
+msgstr "(x)"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:36
 msgid "{x}"
-msgstr ""
+msgstr "{x}"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:37
 msgid "|x|"
-msgstr ""
+msgstr "|x|"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:38
 msgid "||x||"
-msgstr ""
+msgstr "||x||"
 
 #: src/frontends/qt4/GuiMathMatrix.cpp:43
 #, fuzzy
@@ -28972,7 +28925,7 @@ msgstr ""
 #: src/insets/InsetFloatList.cpp:151
 #, c-format
 msgid "LyX cannot generate a list of %1$s"
-msgstr ""
+msgstr "ليك لا يستطيع إنتاج القائمة %1$s"
 
 #: src/insets/InsetFoot.cpp:113
 msgid "footnote"
