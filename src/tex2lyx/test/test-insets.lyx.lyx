@@ -6635,6 +6635,14 @@ script with
 .
 \end_layout
 
+\begin_layout Standard
+latex2writer outputs quotes in braces like 
+\begin_inset Quotes ers
+\end_inset
+
+. We swallow the, but this was one broken (bug 8903).
+\end_layout
+
 \begin_layout Section
 Mathematics
 \begin_inset Index idx

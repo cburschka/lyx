@@ -319,11 +319,10 @@ Token const Parser::next_next_token()
 		return dummy;
 	// If tokenize_one() has not been called after the last get_token() we
 	// need to tokenize two more tokens.
-	if (pos_ >= tokens_.size()) {
+	if (pos_ >= tokens_.size())
 		tokenize_one();
-		if (pos_ + 1 >= tokens_.size())
-			tokenize_one();
-	}
+	if (pos_ + 1 >= tokens_.size())
+		tokenize_one();
 	return pos_ + 1 < tokens_.size() ? tokens_[pos_ + 1] : dummy;
 }
 
