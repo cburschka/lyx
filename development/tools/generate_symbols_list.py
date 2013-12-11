@@ -25,6 +25,7 @@ def process(file):
     package, ext = os.path.splitext(os.path.basename(file))
     if ext != ".sty":
         package = ''
+    mdsymbolcode = 0
 
     n = len(lines)
     for i in xrange(n):
@@ -44,19 +45,33 @@ def process(file):
         if mo != None:
             font_names[mo.group(1)] = mo.group(3)
 
-        mo =  re.match(r'.*\\DeclareMath(Symbol|Delimiter)\s*\{?\\(\w*?)\}?\s*\{?\\(.*?)\}?\s*\{(.*?)\}\s*\{([\'"]?)(.*?)\}.*', line)
+        mo =  re.match(r'^\s*\\mdsy\@DeclareSymbolFont\s*\{(.*?)\}\s*\{(.*?)\}\s*\{(.*?)\}.*', line)
+        if mo != None:
+            font_names[mo.group(1)] = mo.group(3)
+
+        # \mdsy@setslot resets the counter for \mdsy@DeclareSymbol
+        mo =  re.match(r'^\s*\\mdsy\@setslot\s*\{(.*?)\}.*', line)
+        if mo != None:
+            mdsymbolcode = int(mo.group(1))
+
+        # \mdsy@nextslot increments the counter for \mdsy@DeclareSymbol
+        mo =  re.match(r'^\s*\\mdsy\@nextslot.*', line)
+        if mo != None:
+            mdsymbolcode = mdsymbolcode + 1
+
+        mo =  re.match(r'.*\\(\\mdsy\@)?DeclareMath(Symbol|Delimiter)\s*\{?\\(\w*?)\}?\s*\{?\\(.*?)\}?\s*\{(.*?)\}\s*\{([\'"]?)(.*?)\}.*', line)
         code = -1
         try:
             if mo != None:
-                symbol = mo.group(2)
-                type = mo.group(3)
-                font = mo.group(4)
-                if mo.group(5) == '':
-                    code = int(mo.group(6))
-                elif mo.group(5) == '"':
-                    code = int(mo.group(6), 16)
+                symbol = mo.group(3)
+                type = mo.group(4)
+                font = mo.group(5)
+                if mo.group(6) == '':
+                    code = int(mo.group(7))
+                elif mo.group(6) == '"':
+                    code = int(mo.group(7), 16)
                 else:
-                    code = int(mo.group(6), 8)
+                    code = int(mo.group(7), 8)
             else:
                 mo = re.match(r'.*\\edef\\(\w*?)\{.*?\{\\hexnumber@\\sym(.*?)\}(.*?)\}', line)
                 if mo != None:
@@ -66,6 +81,23 @@ def process(file):
                     code = int(mo.group(3), 16)
         except ValueError:
                 code = -1
+
+        if mo == None:
+            mo =  re.match(r'^\s*\\mdsy\@DeclareSymbol\s*\{(.*?)\}\s*\{(.*?)\}\s*\{\\(.*?)\}.*', line)
+            if mo != None:
+                symbol = mo.group(1)
+                type = mo.group(3)
+                font = mo.group(2)
+                code = mdsymbolcode
+                mdsymbolcode = mdsymbolcode + 1
+
+        if mo == None:
+            mo =  re.match(r'^\s*\\mdsy\@DeclareAlias\s*\{(.*?)\}\s*\{(.*?)\}\s*\{\\(.*?)\}.*', line)
+            if mo != None:
+                symbol = mo.group(1)
+                type = mo.group(3)
+                font = mo.group(2)
+                code = mdsymbolcode - 1
 
         if mo != None and symbol not in ignore_list:
             mo2 = re.match(r'\s*\\def\\(.*?)\{', next_line)
