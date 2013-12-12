@@ -49,9 +49,6 @@ Interface changes
 - The Advanced Find and Replace feature now supports cancel of a
   long search operation by hitting the ESC key.
 
-- Linux desktop file specification and scalable icon has been
-  included in the tarball.
-
 - The format pdf aka "PDF (ps2pdf)" was split in two formats: pdf aka
   "PDF (ps2pdf)" and pdf6 aka "PDF (graphics)". pdf6 is used for PDF
   files included as graphics. Custom external templates and converters
@@ -186,6 +183,15 @@ The following LyX documents have been moved:
 
 - 'AEA', 'JASA', 'springer', 'ACM-siggraph', and 'thesis' have been moved
   from templates to examples (see #8643).
+
+
+The following metadata files have been added to the tarball:
+
+- Linux desktop file specification and scalable icon has been
+  included in the tarball.
+
+- AppData file (appdata.xml). It will not be installed by default and
+  distribution maintainers need to handle this file themselves.
 
 
 Changes with respect to external programs and libraries:

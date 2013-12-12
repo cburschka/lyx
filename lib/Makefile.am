@@ -13,6 +13,7 @@ dist_pkgdata_DATA = CREDITS autocorrect chkconfig.ltx external_templates \
 dist_pkgdata_DATA += configure.py 
 
 dist_noinst_DATA = \
+	appdata.xml \
 	fonts/stmary10.sfd \
 	fonts/test/stmary10.lyx \
 	images/README \
