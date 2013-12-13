@@ -58,3 +58,8 @@ export/templates/ectaart_dvi3
 # https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
 export/examples/fa/splash_pdf5
 export/examples/fa/splash_dvi3
+#
+# There is no non-TeX support for Ukrainian with LuaTeX. See:
+# https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181690.html
+export/doc/uk/Intro_pdf5
+export/doc/uk/Intro_dvi3
