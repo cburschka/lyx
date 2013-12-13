@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.1.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2013-11-28 17:09+0100\n"
-"PO-Revision-Date: 2013-12-10 17:39+0300\n"
+"PO-Revision-Date: 2013-12-13 12:04+0300\n"
 "Last-Translator: Hatim Alahmadi <Dr.hatim@hotmail.com>\n"
 "Language-Team: LyX team <theblackdragon_100@hotmail.com>\n"
 "Language: ar\n"
@@ -20,16 +20,15 @@ msgstr ""
 
 #: src/frontends/qt4/ui/NumberingUi.ui:60
 msgid "&List in Table of Contents"
-msgstr "&ادرج في جدول المحتويات"
+msgstr "قائمة في جدول المحت&ويات"
 
 #: src/frontends/qt4/ui/NumberingUi.ui:70
 msgid "&Numbering"
 msgstr "&ترقيم"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:13 src/insets/InsetNomencl.cpp:172
-#, fuzzy
 msgid "Nomenclature"
-msgstr "مصطلح|ص"
+msgstr "مصطلح"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:28
 msgid "Sort &as:"
@@ -554,11 +553,11 @@ msgstr "النوع"
 
 #: src/frontends/qt4/ui/NoteUi.ui:60
 msgid "LyX internal only"
-msgstr ""
+msgstr "داخل ليك فقط"
 
 #: src/frontends/qt4/ui/NoteUi.ui:63
 msgid "LyX &Note"
-msgstr "ملحوظة LyX"
+msgstr "ملاحظة ليك"
 
 #: src/frontends/qt4/ui/NoteUi.ui:70
 msgid "Export to LaTeX/Docbook but don't print"
@@ -566,7 +565,7 @@ msgstr "تصدير إلى LaTeX/Docbook لكن بدون طباعة"
 
 #: src/frontends/qt4/ui/NoteUi.ui:73
 msgid "&Comment"
-msgstr "&تعليق"
+msgstr "&تلميح"
 
 #: src/frontends/qt4/ui/NoteUi.ui:80
 msgid "Print as grey text"
@@ -574,7 +573,7 @@ msgstr "طباعة رمادية"
 
 #: src/frontends/qt4/ui/NoteUi.ui:83
 msgid "&Greyed out"
-msgstr "&اقتباس"
+msgstr "ملاحظة مظ&لله"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
 #: src/frontends/qt4/GuiDocument.cpp:1420 src/frontends/qt4/GuiPrefs.cpp:255
@@ -1137,7 +1136,7 @@ msgstr "&استبدال بـ:"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:89
 msgid "Perform a case-sensitive search"
-msgstr ""
+msgstr "تنفيذ البحث بحالة الأحرف"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:92
 msgid "Case &sensitive"
@@ -1226,7 +1225,7 @@ msgstr "ف&تح مستند"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:263
 msgid "All ma&nuals"
-msgstr ""
+msgstr "كل التدر&يبات"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:281
 msgid ""
@@ -1235,9 +1234,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:284
-#, fuzzy
 msgid "Ignore &format"
-msgstr "&إلى الهيئة:"
+msgstr "تجاهل اله&يئة"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:294
 msgid ""
@@ -1322,7 +1320,7 @@ msgstr "بلا"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:119
 msgid "S&tep:"
-msgstr ""
+msgstr "الخط&وة:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:132
 msgid "Difference between two numbered lines"
@@ -1914,7 +1912,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:1147
 msgid "Use default (grid-like) border style"
-msgstr ""
+msgstr "استخدام أسلوب الجدول (grid-like) افتراضيا"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1150
 msgid "De&fault"
@@ -2079,7 +2077,7 @@ msgstr "النوع&:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:229
 msgid "decoration type / matrix border"
-msgstr ""
+msgstr "أسلوب الزخرفة / مصفوفة الإطار"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:19
 #, fuzzy
@@ -2094,7 +2092,7 @@ msgstr "&القيمة:"
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:45
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:68
 msgid "Errors reported in terminal."
-msgstr ""
+msgstr "تقرير الأخطاء في الطرفية."
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:58
 msgid "Convert"
@@ -2192,7 +2190,7 @@ msgstr "السماح بفواص&ل الصفحة"
 
 #: src/frontends/qt4/ui/BoxUi.ui:60 src/frontends/qt4/ui/BoxUi.ui:175
 msgid "Horizontal alignment of the content inside the box"
-msgstr "محاذاة افقية للمحتوى داخل الصندوق"
+msgstr "محاذاة افقيه للمحتوى داخل الصندوق"
 
 #: src/frontends/qt4/ui/BoxUi.ui:79 src/frontends/qt4/ui/BoxUi.ui:112
 msgid "Stretch"
@@ -2250,7 +2248,7 @@ msgstr "صفحة صغيرة"
 
 #: src/frontends/qt4/ui/BoxUi.ui:295
 msgid "Supported box types"
-msgstr "دعم انواع الصندوق"
+msgstr "دعم أنواع الصندوق"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:41
 msgid "If unchecked, notes and comments will be excluded from spell checking"
@@ -2274,7 +2272,7 @@ msgstr "&اقبل الكلمات المركبة"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:74
 msgid "Mark misspelled words with a underline."
-msgstr ""
+msgstr "تعليم التهجئة الخاطئة للكلمة بوضع خط تحتها."
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:77
 msgid "S&pellcheck continuously"
@@ -2361,7 +2359,7 @@ msgstr "Alt"
 
 #: src/frontends/qt4/ui/FontUi.ui:14
 msgid "FontUi"
-msgstr ""
+msgstr "خط الشاشة"
 
 #: src/frontends/qt4/ui/FontUi.ui:20
 msgid ""
@@ -2440,7 +2438,7 @@ msgstr "حدد ملف القالب"
 
 #: src/frontends/qt4/ui/FontUi.ui:211
 msgid "C&JK:"
-msgstr ""
+msgstr "C&JK:"
 
 #: src/frontends/qt4/ui/FontUi.ui:221
 msgid "Input the font to be used for Chinese, Japanese or Korean (CJK) script"
@@ -2462,7 +2460,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:241
 msgid "Use &Old Style Figures"
-msgstr ""
+msgstr "استخدام أسلوب الرسم التوضيحي الق&ديم"
 
 #: src/frontends/qt4/ui/ColorUi.ui:27
 msgid "Font colors"
@@ -2594,9 +2592,8 @@ msgid "S&elected:"
 msgstr "&المحدد:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:26
-#, fuzzy
 msgid "General Look && Feel"
-msgstr "المظهر العام"
+msgstr "المظهر العام && الإحساس"
 
 #: src/frontends/qt4/ui/PrefUi.ui:37
 msgid "&User interface file:"
@@ -2618,7 +2615,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefUi.ui:108
 msgid "Use icons from system's &theme"
-msgstr "استخدام رمز من ثيم النظام"
+msgstr "استخدام رمز من نسق النظام"
 
 #: src/frontends/qt4/ui/PrefUi.ui:120
 msgid "Context help"
@@ -2685,9 +2682,8 @@ msgid "Browse..."
 msgstr "استعراض..."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:85
-#, fuzzy
 msgid "T&hesaurus dictionaries:"
-msgstr "موسوعات"
+msgstr "قواميس الموسوعات:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:111
 msgid "&Temporary directory:"
@@ -2727,7 +2723,7 @@ msgstr "ادراج الفواصل"
 msgid ""
 "Available categories depend on the document encoding. Select UTF-8 for the "
 "full range."
-msgstr ""
+msgstr "إتاحة الأصناف المعتمد في ترميز المستند. اختر UTF-8 للمعدل الكامل."
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:86
 msgid "Ca&tegory:"
@@ -3147,9 +3143,8 @@ msgid ""
 msgstr "إضافة اسم هذا الفرع لاسم ملف الخرج, يفترض أن الفرع مفعل."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:38
-#, fuzzy
 msgid "Filename &Suffix"
-msgstr "اسم الملف"
+msgstr "اسم الملف اللاح&قة"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
 msgid "Show undefined branches used in this document."
@@ -3323,7 +3318,7 @@ msgstr "تطبيق التغييرات على الفور"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:79
 msgid "Restore initial values in dialog"
-msgstr ""
+msgstr "استعادة القيم الابتدائية في النافذة"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:92
 #, fuzzy
@@ -3380,7 +3375,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:130
 msgid "&Master's perspective"
-msgstr ""
+msgstr "المش&هد الرئيسي"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:137
 msgid "Automatic update"
@@ -3463,7 +3458,7 @@ msgstr "&ضبط العرض:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:174
 msgid "Scale image to maximum size not exceeding width and height"
-msgstr ""
+msgstr "تحجيم الصورة إلى أكبر قياس بدون إفراط في العرض والطول"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:187
 msgid "Rotate Graphics"
@@ -3471,7 +3466,7 @@ msgstr "تدوير الصورة"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:202
 msgid "Check to change the order of rotating and scaling"
-msgstr ""
+msgstr "فحص لتغيير طلب التدوير والتحجيم"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:205
 msgid "Ro&tate after scaling"
@@ -3822,9 +3817,8 @@ msgid "Format to use for math output."
 msgstr "الهيئة المستخدمة لخرج الرياضيات."
 
 #: src/frontends/qt4/ui/OutputUi.ui:158
-#, fuzzy
 msgid "MathML"
-msgstr "رياضيات|ر"
+msgstr "MathML"
 
 #: src/frontends/qt4/ui/OutputUi.ui:163
 msgid "HTML"
@@ -3848,7 +3842,7 @@ msgstr "تحجيم ص&ورة الرياضيات:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:203
 msgid "Scaling factor for images used for math output."
-msgstr ""
+msgstr "عامل تحجيم الصورة المستخدم في خرج الرياضيات."
 
 #: src/frontends/qt4/ui/OutputUi.ui:222
 msgid "Write CSS to File"
@@ -3996,7 +3990,7 @@ msgstr "البريد الالكتروني"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:28
 msgid "&Use hyperref support"
-msgstr "&استخدم دعم التفضيلات الاضافية"
+msgstr "&استخدم دعم التفضيلات الإضافية"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:53
 msgid "&General"
@@ -4041,7 +4035,7 @@ msgstr "تحميل في نظام الشاشة الكاملة"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:189
 msgid "H&yperlinks"
-msgstr "&وصلات"
+msgstr "روابط&"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:222
 msgid "Allows link text to break across lines."
@@ -4333,7 +4327,7 @@ msgstr "&مستند بعمودين"
 msgid ""
 "Justify text in the LyX editor (this does not affect whether the text is "
 "justified in the output)"
-msgstr ""
+msgstr "ضبط النص في محرر ليك (هذا لا يؤثر فيما إذا كان النص مضبوط في الخرج)"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:284
 msgid "Use &justification in LyX work area"
@@ -4443,7 +4437,7 @@ msgstr "قاعدة بيانات BibTeX"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:167
 msgid "Toggles view of the file list"
-msgstr ""
+msgstr "مفتاح عرض قائمة الملف"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:170
 msgid "Show &path"
@@ -4540,14 +4534,12 @@ msgid "Enter string to filter the label list"
 msgstr ""
 
 #: src/frontends/qt4/ui/RefUi.ui:99
-#, fuzzy
 msgid "Filter case-sensitively"
-msgstr "&حساس لحالة الأحرف"
+msgstr "مرشح حالة الأحرف"
 
 #: src/frontends/qt4/ui/RefUi.ui:102
-#, fuzzy
 msgid "Case-sensiti&ve"
-msgstr "&حساس لحالة الأحرف"
+msgstr "حالة الأح&رف"
 
 #: src/frontends/qt4/ui/RefUi.ui:127
 msgid ""
@@ -4565,9 +4557,8 @@ msgid "Sort labels case-sensitively in alphabetical order"
 msgstr "صنف العناوين ابجدياً"
 
 #: src/frontends/qt4/ui/RefUi.ui:143
-#, fuzzy
 msgid "Cas&e-sensitive"
-msgstr "&حساس لحالة الأحرف"
+msgstr "حالة الأح&رف"
 
 #: src/frontends/qt4/ui/RefUi.ui:150
 msgid "Group labels by prefix (e.g. \"sec:\")"
@@ -4618,9 +4609,8 @@ msgid "Update the label list"
 msgstr "تحديث قائمة العناوين"
 
 #: src/frontends/qt4/ui/SearchUi.ui:101
-#, fuzzy
 msgid "Case &sensitive[[search]]"
-msgstr "&حساس لحالة الأحرف"
+msgstr "حالة الأحر&ف[[search]]"
 
 #: src/frontends/qt4/ui/SearchUi.ui:108
 msgid "Match w&hole words only"
@@ -4632,7 +4622,7 @@ msgstr "انقر انتر للبحث, أوانقر اذهب!"
 
 #: src/frontends/qt4/ui/LogUi.ui:45
 msgid "Log &Type:"
-msgstr ""
+msgstr "نوع& السجل:"
 
 #: src/frontends/qt4/ui/LogUi.ui:74
 msgid "Update the display"
@@ -4748,9 +4738,8 @@ msgid ""
 msgstr "ادخل النص ثم اضغط على زر دخول أو انقر للبحث..."
 
 #: src/frontends/qt4/ui/CitationUi.ui:395
-#, fuzzy
 msgid "Click or press Enter in the search box to search"
-msgstr "يمكنك ايضاً نقر زر انتر في صندوق البحث"
+msgstr "انقر أو إدخال في نافذة البحث للبحث"
 
 #: src/frontends/qt4/ui/CitationUi.ui:398
 msgid "&Search"
@@ -5019,7 +5008,7 @@ msgid ""
 "Switch between available lists (table of contents, list of figures, list of "
 "tables, and others)"
 msgstr ""
-"الانتقال بين القوائم المتاحة (جدول المحتويات، قائمة الاشكال التوضيحية،قائمة "
+"الانتقال بين القوائم المتاحة (جدول المحتويات، قائمة الرسوم التوضيحية،قائمة "
 "الجداول ،وأخرى)"
 
 #: src/frontends/qt4/ui/TocUi.ui:90
@@ -5466,7 +5455,7 @@ msgstr "إضافي"
 #: lib/layouts/svprobth.layout:156 lib/layouts/svjog.layout:126
 #: lib/layouts/scrclass.inc:217 lib/layouts/svcommon.inc:482
 msgid "Dedication"
-msgstr ""
+msgstr "الإهداء"
 
 #: lib/layouts/svmult.layout:139 lib/layouts/svcommon.inc:502
 #: lib/layouts/svcommon.inc:506
@@ -5504,7 +5493,7 @@ msgstr "فصل"
 
 #: lib/layouts/lettre.layout:3
 msgid "French Letter (lettre)"
-msgstr ""
+msgstr "رسالة فرنسية (lettre)"
 
 #: lib/layouts/lettre.layout:31 lib/layouts/siamltex.layout:37
 #: lib/layouts/hollywood.layout:347 lib/layouts/powerdot.layout:111
@@ -5691,7 +5680,7 @@ msgstr "بوستكربت"
 
 #: lib/layouts/lettre.layout:76 lib/layouts/lettre.layout:516
 msgid "EndOfMessage"
-msgstr ""
+msgstr "نهاية الرسالة"
 
 #: lib/layouts/lettre.layout:78 lib/layouts/lettre.layout:536
 #, fuzzy
@@ -5778,7 +5767,7 @@ msgstr "إغلاق"
 
 #: lib/layouts/lettre.layout:526
 msgid "EndOfMessage."
-msgstr ""
+msgstr "نهاية الرسالة."
 
 #: lib/layouts/lettre.layout:538
 #, fuzzy
@@ -5808,7 +5797,7 @@ msgstr "التوقيع:"
 #: lib/layouts/dinbrief.layout:215 lib/layouts/scrlettr.layout:112
 #: lib/layouts/stdletter.inc:119
 msgid "encl:"
-msgstr ""
+msgstr "encl:"
 
 #: lib/layouts/lettre.layout:633 lib/layouts/g-brief.layout:229
 #: lib/layouts/scrlttr2.layout:137 lib/layouts/dinbrief.layout:230
@@ -5819,7 +5808,7 @@ msgstr "cc:"
 
 #: lib/layouts/lettre.layout:658
 msgid "P.S.:"
-msgstr ""
+msgstr "P.S.:"
 
 #: lib/layouts/jsbook.layout:3
 msgid "Japanese Book (jsbook)"
@@ -5839,7 +5828,7 @@ msgstr ""
 #: lib/layouts/scrlettr.layout:117 lib/layouts/g-brief2.layout:58
 #: lib/layouts/g-brief2.layout:64 lib/layouts/stdletter.inc:53
 msgid "Letter"
-msgstr ""
+msgstr "رسالة"
 
 #: lib/layouts/g-brief.layout:27 lib/layouts/g-brief2.layout:74
 msgid "Letter:"
@@ -6033,7 +6022,7 @@ msgstr "Encl.:"
 
 #: lib/layouts/ctex-article.layout:3
 msgid "Chinese Article (CTeX)"
-msgstr "مقالة صينية (CTeX)"
+msgstr "مقال صيني (CTeX)"
 
 #: lib/layouts/ctex-article.layout:4 lib/layouts/siamltex.layout:4
 #: lib/layouts/isprs.layout:4 lib/layouts/extarticle.layout:4
@@ -6161,12 +6150,12 @@ msgstr "نظرية*"
 #: lib/layouts/theorems-chap-bytype.module:66
 #: lib/layouts/theorems-sec-bytype.module:62
 msgid "Corollary"
-msgstr ""
+msgstr "لازمة"
 
 #: lib/layouts/siamltex.layout:84 lib/layouts/foils.layout:309
 #: lib/layouts/theorems-order.inc:16 lib/layouts/theorems-starred.inc:67
 msgid "Corollary*"
-msgstr ""
+msgstr "لازمة*"
 
 #: lib/layouts/siamltex.layout:88 lib/layouts/ijmpc.layout:368
 #: lib/layouts/elsart.layout:330 lib/layouts/beamer.layout:1219
@@ -6187,12 +6176,12 @@ msgstr ""
 #: lib/layouts/theorems-chap-bytype.module:78
 #: lib/layouts/theorems-sec-bytype.module:70
 msgid "Lemma"
-msgstr ""
+msgstr "قضية مساعدة"
 
 #: lib/layouts/siamltex.layout:94 lib/layouts/foils.layout:302
 #: lib/layouts/theorems-order.inc:22 lib/layouts/theorems-starred.inc:84
 msgid "Lemma*"
-msgstr ""
+msgstr "قضية مساعدة*"
 
 #: lib/layouts/siamltex.layout:98 lib/layouts/ijmpc.layout:372
 #: lib/layouts/elsart.layout:344 lib/layouts/AEA.layout:267
@@ -6213,12 +6202,12 @@ msgstr ""
 #: lib/layouts/theorems-chap-bytype.module:90
 #: lib/layouts/theorems-sec-bytype.module:78
 msgid "Proposition"
-msgstr ""
+msgstr "خبر"
 
 #: lib/layouts/siamltex.layout:104 lib/layouts/foils.layout:316
 #: lib/layouts/theorems-order.inc:28 lib/layouts/theorems-starred.inc:101
 msgid "Proposition*"
-msgstr ""
+msgstr "خبر*"
 
 #: lib/layouts/siamltex.layout:108 lib/layouts/ijmpc.layout:399
 #: lib/layouts/elsart.layout:379 lib/layouts/AEA.layout:201
@@ -6239,12 +6228,12 @@ msgstr ""
 #: lib/layouts/theorems-chap-bytype.module:102
 #: lib/layouts/theorems-sec-bytype.module:86
 msgid "Conjecture"
-msgstr ""
+msgstr "حدس"
 
 #: lib/layouts/siamltex.layout:113 lib/layouts/theorems-order.inc:34
 #: lib/layouts/theorems-starred.inc:118
 msgid "Conjecture*"
-msgstr ""
+msgstr "حدس*"
 
 #: lib/layouts/siamltex.layout:117 lib/layouts/powerdot.layout:526
 #: lib/layouts/elsart.layout:358 lib/layouts/sciposter.layout:87
@@ -6307,7 +6296,7 @@ msgstr "تعريف"
 #: lib/layouts/siamltex.layout:133 lib/layouts/foils.layout:323
 #: lib/layouts/theorems-order.inc:40 lib/layouts/theorems-starred.inc:152
 msgid "Definition*"
-msgstr ""
+msgstr "تعريف*"
 
 #: lib/layouts/siamltex.layout:137
 msgid "AMS"
@@ -6409,7 +6398,7 @@ msgstr "كلمات مفتاحية:"
 
 #: lib/layouts/siamltex.layout:318 lib/layouts/amsdefs.inc:192
 msgid "Subjectclass"
-msgstr ""
+msgstr "نوع الموضوع"
 
 #: lib/layouts/siamltex.layout:321
 msgid "AMS subject classifications:"
@@ -6633,7 +6622,7 @@ msgstr "متحدث"
 
 #: lib/layouts/hollywood.layout:160 lib/layouts/broadway.layout:135
 msgid "Parenthetical"
-msgstr ""
+msgstr "جملة معترضة"
 
 #: lib/layouts/hollywood.layout:171 lib/layouts/broadway.layout:146
 msgid "("
@@ -6884,15 +6873,15 @@ msgstr ""
 #: lib/layouts/stdlists.inc:38 lib/layouts/agu_stdlists.inc:21
 #: lib/layouts/db_stdlists.inc:19
 msgid "Enumerate"
-msgstr ""
+msgstr "السرد"
 
 #: lib/layouts/powerdot.layout:320 lib/layouts/powerdot.layout:344
 msgid "Enumerate Type"
-msgstr ""
+msgstr "نوع السرد"
 
 #: lib/layouts/powerdot.layout:321 lib/layouts/powerdot.layout:345
 msgid "Enumerate type specification (see powerdot manual)"
-msgstr ""
+msgstr "تعيين نوع السرد (انظر دليل powerdot)"
 
 #: lib/layouts/powerdot.layout:324 lib/layouts/enumitem.module:64
 #: lib/layouts/enumitem.module:106
@@ -6902,7 +6891,7 @@ msgstr "خيارات لتيك"
 
 #: lib/layouts/powerdot.layout:341
 msgid "EnumerateType1"
-msgstr ""
+msgstr "نوع السرد1"
 
 #: lib/layouts/powerdot.layout:375 lib/layouts/egs.layout:102
 #: lib/layouts/beamer.layout:1072 lib/layouts/stdlayouts.inc:12
@@ -6919,7 +6908,7 @@ msgstr "أدرج أقواس"
 #: lib/layouts/powerdot.layout:415 lib/layouts/egs.layout:220
 #: lib/layouts/beamer.layout:1120 lib/layouts/stdlayouts.inc:52
 msgid "Verse"
-msgstr ""
+msgstr "شعر"
 
 #: lib/layouts/powerdot.layout:437
 msgid "Twocolumn"
@@ -6931,7 +6920,7 @@ msgstr "إعدادات العمود"
 
 #: lib/layouts/powerdot.layout:452
 msgid "Twocolumn options (see powerdot manual)"
-msgstr ""
+msgstr "خيارات العمود المزدوج (انظر دليل powerdot)"
 
 #: lib/layouts/powerdot.layout:455
 msgid "Left Column"
@@ -6939,7 +6928,7 @@ msgstr "عمود ايسر"
 
 #: lib/layouts/powerdot.layout:456
 msgid "Enter the text of the left column here (right column in main paragraph)"
-msgstr ""
+msgstr "ادخل نص العمود الأيسر هنا (العمود الأيمن في الفقرة الرئيسية)"
 
 #: lib/layouts/powerdot.layout:465 lib/layouts/beamer.layout:659
 msgid "Pause"
@@ -6978,7 +6967,7 @@ msgstr "قائمة الجداول"
 #: lib/layouts/powerdot.layout:514 lib/layouts/beamer.layout:1557
 #: lib/layouts/stdfloats.inc:26
 msgid "Figure"
-msgstr "صورة توضيحية"
+msgstr "رسم توضيحي"
 
 #: lib/layouts/powerdot.layout:518 lib/layouts/beamer.layout:1562
 #: lib/layouts/tufte-book.layout:242 lib/layouts/stdfloats.inc:31
@@ -7043,7 +7032,7 @@ msgstr ""
 
 #: lib/layouts/mwrep.layout:3
 msgid "Polish Report (MW Bundle)"
-msgstr ""
+msgstr "تقرير بولندي (MW Bundle)"
 
 #: lib/layouts/mwrep.layout:4 lib/layouts/scrreprt.layout:4
 #: lib/layouts/ctex-report.layout:4 lib/layouts/extreport.layout:4
@@ -7090,7 +7079,7 @@ msgstr "استهلال#"
 #: lib/layouts/svglobal.layout:126 lib/layouts/svprobth.layout:160
 #: lib/layouts/svjog.layout:130 lib/layouts/amsdefs.inc:181
 msgid "Dedication:"
-msgstr ""
+msgstr "الإهداء:"
 
 #: lib/layouts/svglobal.layout:130 lib/layouts/svprobth.layout:164
 #: lib/layouts/aa.layout:131 lib/layouts/svjog.layout:134
@@ -7131,7 +7120,7 @@ msgstr "موضوعي"
 
 #: lib/layouts/iopart.layout:94 lib/layouts/stdinsets.inc:80
 msgid "Comment"
-msgstr "تعليق"
+msgstr "تلميح"
 
 #: lib/layouts/iopart.layout:106
 msgid "Paper"
@@ -7139,7 +7128,7 @@ msgstr "ورقة"
 
 #: lib/layouts/iopart.layout:112
 msgid "Prelim"
-msgstr ""
+msgstr "تمهيد"
 
 #: lib/layouts/iopart.layout:118
 msgid "Rapid"
@@ -7161,7 +7150,7 @@ msgstr "كلمات مفتاحية:"
 #: lib/layouts/svglobal3.layout:67 lib/layouts/svglobal3.layout:70
 #: lib/layouts/jasatex.layout:217 lib/layouts/revtex4-1.layout:185
 msgid "PACS"
-msgstr ""
+msgstr "PACS"
 
 #: lib/layouts/iopart.layout:226
 msgid "Physics and Astronomy Classification System number:"
@@ -7169,7 +7158,7 @@ msgstr "نظام تصنيف الفيزياء والفلك رقم:"
 
 #: lib/layouts/iopart.layout:230
 msgid "MSC"
-msgstr ""
+msgstr "MSC"
 
 #: lib/layouts/iopart.layout:233
 msgid "Mathematics Subject Classification number:"
@@ -7239,7 +7228,7 @@ msgstr "اسم المؤلف"
 
 #: lib/layouts/ijmpc.layout:75 lib/layouts/ijmpd.layout:80
 msgid "Author names that will appear in the header line"
-msgstr ""
+msgstr "اسم المؤلف الذي يظهر في رأس الصفحة"
 
 #: lib/layouts/ijmpc.layout:88 lib/layouts/ijmpc.layout:92
 #: lib/layouts/ijmpc.layout:100 lib/layouts/ijmpd.layout:93
@@ -7266,7 +7255,7 @@ msgstr "روجع"
 
 #: lib/layouts/ijmpc.layout:237
 msgid "Classification Codes"
-msgstr ""
+msgstr "كود التصنيف"
 
 #: lib/layouts/ijmpc.layout:244 lib/layouts/ijmpd.layout:247
 msgid "TableCaption"
@@ -7447,7 +7436,7 @@ msgstr "ملحق \\Alph{ملحق}."
 
 #: lib/layouts/scrbook.layout:3
 msgid "KOMA-Script Book"
-msgstr ""
+msgstr "كتاب KOMA-Script"
 
 #: lib/layouts/scrbook.layout:18 lib/layouts/recipebook.layout:43
 msgid "\\thechapter"
@@ -7660,7 +7649,7 @@ msgstr ""
 
 #: lib/layouts/scrreprt.layout:3
 msgid "KOMA-Script Report"
-msgstr ""
+msgstr "تقرير KOMA-Script"
 
 #: lib/layouts/jss.layout:3
 msgid "Journal of Statistical Software (JSS)"
@@ -7668,7 +7657,7 @@ msgstr ""
 
 #: lib/layouts/ctex-report.layout:3
 msgid "Chinese Report (CTeX)"
-msgstr ""
+msgstr "تقرير صيني (CTeX)"
 
 #: lib/layouts/revtex4.layout:3
 msgid "REVTeX (V. 4)"
@@ -7776,11 +7765,11 @@ msgstr ""
 
 #: lib/layouts/revtex4.layout:267
 msgid "PACS number:"
-msgstr ""
+msgstr "رقم PACS:"
 
 #: lib/layouts/amsbook.layout:3
 msgid "American Mathematical Society (AMS) Book"
-msgstr ""
+msgstr "كتاب جمعية الرياضيات الأمريكية (AMS)"
 
 #: lib/layouts/amsbook.layout:136
 msgid "Chapter Exercises"
@@ -7899,7 +7888,7 @@ msgstr "الارتفاع"
 
 #: lib/layouts/moderncv.layout:177
 msgid "Height the photo is resized to"
-msgstr ""
+msgstr "تحجيم ارتفاع الصورة إلى"
 
 #: lib/layouts/moderncv.layout:180
 msgid "Thickness"
@@ -7988,14 +7977,12 @@ msgid "Item:"
 msgstr "المادة:"
 
 #: lib/layouts/moderncv.layout:357
-#, fuzzy
 msgid "ItemWithComment"
-msgstr "ملاحظة:تعليق"
+msgstr "تعليق مع تلميح"
 
 #: lib/layouts/moderncv.layout:360
-#, fuzzy
 msgid "Item with Comment:"
-msgstr "ملاحظة:تعليق"
+msgstr "تعليق مع تلميح"
 
 #: lib/layouts/moderncv.layout:370 lib/layouts/moderncv.layout:371
 msgid "Text"
@@ -8056,14 +8043,12 @@ msgid "Double List Item:"
 msgstr "بند مزدوج:"
 
 #: lib/layouts/moderncv.layout:424
-#, fuzzy
 msgid "First Item"
-msgstr "قائمة المواد:"
+msgstr "المادة الأولى"
 
 #: lib/layouts/moderncv.layout:425
-#, fuzzy
 msgid "First item"
-msgstr "&السطر الاول:"
+msgstr "المادة الاولى"
 
 #: lib/layouts/moderncv.layout:433
 msgid "Computer"
@@ -8080,14 +8065,12 @@ msgid "Make CV Title"
 msgstr "عنوان القصيدة"
 
 #: lib/layouts/moderncv.layout:447
-#, fuzzy
 msgid "MakeLetterTitle"
-msgstr "عنوان القصيدة"
+msgstr "إنشاء عنوان رسالة"
 
 #: lib/layouts/moderncv.layout:450
-#, fuzzy
 msgid "Make Letter Title"
-msgstr "عنوان القصيدة"
+msgstr "إنشاء عنوان رسالة"
 
 #: lib/layouts/moderncv.layout:454
 msgid "MakeLetterClosing"
@@ -8139,7 +8122,7 @@ msgstr "إغلاق:"
 
 #: lib/layouts/paper.layout:3
 msgid "Paper (Standard Class)"
-msgstr ""
+msgstr "وثيقة (نوع قياسي)"
 
 #: lib/layouts/paper.layout:96 lib/layouts/egs.layout:93
 #: lib/layouts/apa.layout:343 lib/layouts/llncs.layout:85
@@ -8433,7 +8416,7 @@ msgstr ""
 
 #: lib/layouts/report.layout:3
 msgid "Report (Standard Class)"
-msgstr ""
+msgstr "تقرير (نوع قياسي)"
 
 #: lib/layouts/sciposter.layout:3
 msgid "SciPoster"
@@ -8533,18 +8516,16 @@ msgid "Most Giant Snippet"
 msgstr ""
 
 #: lib/layouts/docbook.layout:3
-#, fuzzy
 msgid "DocBook Article (SGML)"
-msgstr "Docbook (XML)"
+msgstr "DocBook مقال (SGML)"
 
 #: lib/layouts/docbook.layout:4 lib/layouts/agu-dtd.layout:4
 msgid "Articles (DocBook)"
 msgstr "مقالات (DocBook)"
 
 #: lib/layouts/docbook-book.layout:3
-#, fuzzy
 msgid "DocBook Book (SGML)"
-msgstr "Docbook (XML)"
+msgstr "DocBook كتاب (SGML)"
 
 #: lib/layouts/docbook-book.layout:4 lib/layouts/docbook-chapter.layout:4
 #: lib/layouts/docbook-section.layout:4
@@ -8572,7 +8553,7 @@ msgstr "العنوان التالي:"
 #: lib/layouts/scrlttr2.layout:125 lib/layouts/dinbrief.layout:234
 #: lib/layouts/scrlettr.layout:85
 msgid "PS"
-msgstr ""
+msgstr "PS"
 
 #: lib/layouts/scrlttr2.layout:129 lib/layouts/dinbrief.layout:236
 msgid "Post Scriptum:"
@@ -8581,7 +8562,7 @@ msgstr ""
 #: lib/layouts/scrlttr2.layout:133 lib/layouts/dinbrief.layout:388
 #: lib/layouts/scrlettr.layout:95
 msgid "CC"
-msgstr ""
+msgstr "CC"
 
 #: lib/layouts/scrlttr2.layout:141 lib/layouts/scrlettr.layout:109
 msgid "Encl"
@@ -8639,11 +8620,11 @@ msgstr ""
 
 #: lib/layouts/scrlttr2.layout:259 lib/layouts/scrlettr.layout:179
 msgid "Specialmail"
-msgstr ""
+msgstr "البريد الخاص"
 
 #: lib/layouts/scrlttr2.layout:263 lib/layouts/scrlettr.layout:182
 msgid "Specialmail:"
-msgstr ""
+msgstr "البريد الخاص:"
 
 #: lib/layouts/scrlttr2.layout:271 lib/layouts/dinbrief.layout:153
 #: lib/layouts/scrlettr.layout:189 lib/layouts/stdletter.inc:127
@@ -8686,7 +8667,7 @@ msgstr "زبون"
 
 #: lib/layouts/scrlttr2.layout:328 lib/layouts/scrlettr.layout:239
 msgid "Customer no.:"
-msgstr ""
+msgstr "رقم الزبون.:"
 
 #: lib/layouts/scrlttr2.layout:332 lib/layouts/scrlettr.layout:243
 msgid "Invoice"
@@ -8725,9 +8706,8 @@ msgid "Overlay specifications for this list"
 msgstr ""
 
 #: lib/layouts/beamer.layout:125
-#, fuzzy
 msgid "Mini Template"
-msgstr "&قالب"
+msgstr "قالب صغير"
 
 #: lib/layouts/beamer.layout:126
 msgid "Mini template for this list (see beamer manual for details)"
@@ -8860,17 +8840,15 @@ msgstr "عنوان الإطار"
 
 #: lib/layouts/beamer.layout:449
 msgid "Enter the frame title here"
-msgstr ""
+msgstr "ادخل عنوان الإطار هنا"
 
 #: lib/layouts/beamer.layout:461
-#, fuzzy
 msgid "PlainFrame"
-msgstr "ابدا اطار مبسط"
+msgstr "إطار مستوي"
 
 #: lib/layouts/beamer.layout:463
-#, fuzzy
 msgid "Frame (plain)"
-msgstr "LaTeX (plain)"
+msgstr "إطار (مستوي)"
 
 #: lib/layouts/beamer.layout:472
 #, fuzzy
@@ -8888,7 +8866,7 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:516
 msgid "Repeat frame with label"
-msgstr ""
+msgstr "تكرار الإطار مع الملصق"
 
 #: lib/layouts/beamer.layout:527
 msgid "FrameTitle"
@@ -8908,13 +8886,12 @@ msgid "Specify the overlay settings (see beamer manual)"
 msgstr ""
 
 #: lib/layouts/beamer.layout:551
-#, fuzzy
 msgid "Short Frame Title|S"
-msgstr "عنوان قصير|ع"
+msgstr "عنوان إطار قصير|S"
 
 #: lib/layouts/beamer.layout:552
 msgid "A short form of the frame title used in some themes"
-msgstr ""
+msgstr "نموذج قصير لعنوان الإطار يستخدم في بعض الأنساق"
 
 #: lib/layouts/beamer.layout:556
 msgid "FrameSubtitle"
@@ -8929,9 +8906,8 @@ msgid "Column options (see beamer manual)"
 msgstr ""
 
 #: lib/layouts/beamer.layout:625
-#, fuzzy
 msgid "Column Placement Options"
-msgstr "الخيارات المتقدمة للوضع"
+msgstr "خيارات متقدمة للعمود"
 
 #: lib/layouts/beamer.layout:626
 msgid "Column placement options (t, T, c, b)"
@@ -8947,11 +8923,11 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:646
 msgid "ColumnsTopAligned"
-msgstr ""
+msgstr "محاذاة العمود للأعلى"
 
 #: lib/layouts/beamer.layout:649
 msgid "Columns (top aligned)"
-msgstr ""
+msgstr "الأعمدة (محاذاة للأعلى)"
 
 #: lib/layouts/beamer.layout:687 lib/layouts/beamer.layout:715
 msgid "Overprint"
@@ -9058,9 +9034,8 @@ msgid "Title (Plain Frame)"
 msgstr "عنوان (اظار مبسط)"
 
 #: lib/layouts/beamer.layout:923
-#, fuzzy
 msgid "Short Subtitle|S"
-msgstr "عنوان قصير|ع"
+msgstr "عنوان فرعي قصير|S"
 
 #: lib/layouts/beamer.layout:924
 msgid "Short subtitle which appears in the sidebar/header"
@@ -9206,13 +9181,12 @@ msgid "Bold"
 msgstr "ثقيل"
 
 #: lib/layouts/beamer.layout:1350 lib/layouts/ectaart.layout:146
-#, fuzzy
 msgid "Emphasize"
-msgstr "نسق داكن|ن"
+msgstr ""
 
 #: lib/layouts/beamer.layout:1352
 msgid "Emph."
-msgstr ""
+msgstr "مائل."
 
 #: lib/layouts/beamer.layout:1367 lib/layouts/beamer.layout:1369
 msgid "Alert"
@@ -9425,18 +9399,16 @@ msgid "Name of the language"
 msgstr "اسم اللغة"
 
 #: lib/layouts/europecv.layout:252
-#, fuzzy
 msgid "Listening"
-msgstr "عمل قوائم"
+msgstr "سماع"
 
 #: lib/layouts/europecv.layout:253
 msgid "Level how good you think you can listen"
 msgstr "مستوى مدى قدرتك على الاستماع"
 
 #: lib/layouts/europecv.layout:257
-#, fuzzy
 msgid "Reading"
-msgstr "عناوين رأس الموضوع"
+msgstr "قراءة"
 
 #: lib/layouts/europecv.layout:258
 msgid "Level how good you think you can read"
@@ -9451,9 +9423,8 @@ msgid "Level how good you think you can conversate"
 msgstr "مستوى قدرتك على التحدث"
 
 #: lib/layouts/europecv.layout:267
-#, fuzzy
 msgid "Production"
-msgstr "مقدمة|I"
+msgstr "مقدمة"
 
 #: lib/layouts/europecv.layout:268
 msgid "Level how good you think you can freely talk"
@@ -9572,7 +9543,7 @@ msgstr "شروط:"
 
 #: lib/layouts/frletter.layout:3
 msgid "French Letter (frletter)"
-msgstr ""
+msgstr "رسالة فرنسية (frletter)"
 
 #: lib/layouts/elsarticle.layout:3
 msgid "Elsevier"
@@ -9692,7 +9663,7 @@ msgstr ""
 
 #: lib/layouts/AEA.layout:3
 msgid "American Economic Association (AEA)"
-msgstr ""
+msgstr "الجمعية الاقتصادية الأمريكية (AEA)"
 
 #: lib/layouts/AEA.layout:50 lib/layouts/apa.layout:96
 #: lib/layouts/apa6.layout:51
@@ -9745,15 +9716,15 @@ msgstr ""
 
 #: lib/layouts/AEA.layout:112
 msgid "Figure Notes"
-msgstr "ملاحظات الشكل"
+msgstr "ملاحظات الرسوم التوضيحية"
 
 #: lib/layouts/AEA.layout:119
 msgid "Figure Note"
-msgstr "ملاحظة الشكل"
+msgstr "ملاحظة الرسم التوضيحي"
 
 #: lib/layouts/AEA.layout:120
 msgid "Text of a note in a figure"
-msgstr ""
+msgstr "نص التعليق على الرسم التوضيحي"
 
 #: lib/layouts/AEA.layout:138
 msgid "Table Notes"
@@ -9879,9 +9850,8 @@ msgid "Inderscience Journals (Obsolete Version)"
 msgstr ""
 
 #: lib/layouts/ectaart.layout:3
-#, fuzzy
 msgid "Econometrica"
-msgstr "امريكي"
+msgstr "مقياس اقتصادي"
 
 #: lib/layouts/ectaart.layout:22
 #, fuzzy
@@ -10107,7 +10077,7 @@ msgstr "العنوان كما يظهر في الوثيقة"
 
 #: lib/layouts/apa.layout:270 lib/layouts/apa6.layout:370
 msgid "FitFigure"
-msgstr "ملائمة الشكل"
+msgstr "ملائمة الرسم التوضيحي"
 
 #: lib/layouts/apa.layout:276 lib/layouts/apa6.layout:376
 msgid "FitBitmap"
@@ -10369,7 +10339,7 @@ msgstr ""
 
 #: lib/layouts/aastex.layout:3
 msgid "American Astronomical Society (AASTeX)"
-msgstr ""
+msgstr "الجمعية الفلكية الأمريكية (AASTeX)"
 
 #: lib/layouts/aastex.layout:169
 #, fuzzy
@@ -10424,7 +10394,7 @@ msgstr ""
 
 #: lib/layouts/aastex.layout:341
 msgid "Place Figure here:"
-msgstr "مكان الصورة التوضيحية هنا:"
+msgstr "مكان الرسم التوضيحي هنا:"
 
 #: lib/layouts/aastex.layout:350
 msgid "PlaceTable"
@@ -10460,7 +10430,7 @@ msgstr "مراجع.---"
 
 #: lib/layouts/aastex.layout:470
 msgid "TableComments"
-msgstr "اوامر الجدول"
+msgstr "تلميحات الجدول"
 
 #: lib/layouts/aastex.layout:482
 msgid "Note. ---"
@@ -10651,7 +10621,7 @@ msgstr "مدونة جديدة:"
 
 #: lib/layouts/jgrga.layout:3
 msgid "American Geophysical Union (AGUPLUS JGR)"
-msgstr ""
+msgstr "نقابة الجيوفيزيائيين الأمريكية (AGUPLUS JGR)"
 
 #: lib/layouts/broadway.layout:3
 msgid "Broadway"
@@ -10769,27 +10739,27 @@ msgstr ""
 
 #: lib/layouts/aa.layout:305
 msgid "Aims"
-msgstr ""
+msgstr "الاهداف"
 
 #: lib/layouts/aa.layout:306
 msgid "Aims of your work"
-msgstr ""
+msgstr "أهداف عملك"
 
 #: lib/layouts/aa.layout:310
 msgid "Methods"
-msgstr ""
+msgstr "المناهج"
 
 #: lib/layouts/aa.layout:311
 msgid "Methods used in your work"
-msgstr ""
+msgstr "المناهج المستخدمة في عملك"
 
 #: lib/layouts/aa.layout:315
 msgid "Results"
-msgstr ""
+msgstr "النتائج"
 
 #: lib/layouts/aa.layout:316
 msgid "Results of your work"
-msgstr ""
+msgstr "نتائج عملك"
 
 #: lib/layouts/aa.layout:337
 #, fuzzy
@@ -11181,11 +11151,11 @@ msgstr ""
 
 #: lib/layouts/acmsiggraph.layout:270
 msgid "Third-level"
-msgstr ""
+msgstr "المستوى-الثالث"
 
 #: lib/layouts/acmsiggraph.layout:271
 msgid "Third-level of the category"
-msgstr ""
+msgstr "صنف من المستوى الثالث"
 
 #: lib/layouts/acmsiggraph.layout:276
 #, fuzzy
@@ -11207,7 +11177,7 @@ msgstr ""
 
 #: lib/layouts/dinbrief.layout:3
 msgid "DIN-Brief"
-msgstr ""
+msgstr "DIN-Brief"
 
 #: lib/layouts/dinbrief.layout:30
 msgid "DinBrief"
@@ -11223,9 +11193,8 @@ msgid "Return address"
 msgstr "العنوان الحالي:"
 
 #: lib/layouts/dinbrief.layout:89
-#, fuzzy
 msgid "Postal comment"
-msgstr "تعليق"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:91
 msgid "Postal Remark:"
@@ -11350,7 +11319,7 @@ msgstr ""
 
 #: lib/layouts/a0poster.layout:3
 msgid "A0 Poster"
-msgstr ""
+msgstr "ملصق A0"
 
 #: lib/layouts/latex8.layout:3
 msgid "Latex8 Article (Obsolete)"
@@ -11386,9 +11355,8 @@ msgid "Short Title (TOC)|S"
 msgstr "عنوان قصير|ع"
 
 #: lib/layouts/memoir.layout:66 lib/layouts/memoir.layout:79
-#, fuzzy
 msgid "The chapter as it appears in the table of contents"
-msgstr "العنوان كما يظهر في الوثيقة"
+msgstr "المقطع كما يظهر في جدول المحتويات"
 
 #: lib/layouts/memoir.layout:69 lib/layouts/memoir.layout:90
 #: lib/layouts/memoir.layout:103 lib/layouts/memoir.layout:116
@@ -11408,9 +11376,8 @@ msgid "Chapter*"
 msgstr "فصل*"
 
 #: lib/layouts/memoir.layout:87
-#, fuzzy
 msgid "The section as it appears in the table of contents"
-msgstr "العنوان كما يظهر في الوثيقة"
+msgstr "القسم كما يظهر في جدول المحتويات"
 
 #: lib/layouts/memoir.layout:91
 #, fuzzy
@@ -11418,9 +11385,8 @@ msgid "The section as it appears in the running headers"
 msgstr "العنوان كما يظهر في الوثيقة"
 
 #: lib/layouts/memoir.layout:100
-#, fuzzy
 msgid "The subsection as it appears in the table of contents"
-msgstr "العنوان كما يظهر في الوثيقة"
+msgstr "القسم الفرعي كما يظهر في جدول المحتويات"
 
 #: lib/layouts/memoir.layout:104
 #, fuzzy
@@ -11428,9 +11394,8 @@ msgid "The subsection as it appears in the running headers"
 msgstr "العنوان كما يظهر في الوثيقة"
 
 #: lib/layouts/memoir.layout:113
-#, fuzzy
 msgid "The subsubsection as it appears in the table of contents"
-msgstr "العنوان كما يظهر في الوثيقة"
+msgstr "القسم تحت الفرعي كما يظهر في جدول المحتويات"
 
 #: lib/layouts/memoir.layout:117
 #, fuzzy
@@ -11439,7 +11404,7 @@ msgstr "العنوان كما يظهر في الوثيقة"
 
 #: lib/layouts/memoir.layout:126
 msgid "The paragraph as it appears in the table of contents"
-msgstr "الفقرة كما تظهر في محتوى الجدول"
+msgstr "الفقرة كما تظهر في جدول المحتويات"
 
 #: lib/layouts/memoir.layout:130
 msgid "The paragraph as it appears in the running headers"
@@ -11447,7 +11412,7 @@ msgstr "الفقرة كما تظهر في الرأس"
 
 #: lib/layouts/memoir.layout:139
 msgid "The subparagraph as it appears in the table of contents"
-msgstr "الفقرة الفرعية كما تظهر في محتوى الجدول"
+msgstr "الفقرة الفرعية كما تظهر في جدول المحتويات"
 
 #: lib/layouts/memoir.layout:143
 msgid "The subparagraph as it appears in the running headers"
@@ -11886,7 +11851,7 @@ msgstr "العنوان كما يظهر في الوثيقة"
 
 #: lib/layouts/revtex4-1.layout:232
 msgid "acknowledgments"
-msgstr ""
+msgstr "إشعارات الاستلام"
 
 #: lib/layouts/revtex4-1.layout:245
 #, fuzzy
@@ -11904,18 +11869,16 @@ msgid "Turn Page"
 msgstr "صفحة فارغة"
 
 #: lib/layouts/revtex4-1.layout:261
-#, fuzzy
 msgid "Wide Text"
-msgstr "في النص"
+msgstr "نص عريض"
 
 #: lib/layouts/revtex4-1.layout:271
 msgid "Video"
 msgstr "فيديو"
 
 #: lib/layouts/revtex4-1.layout:274
-#, fuzzy
 msgid "List of Videos"
-msgstr "[قائمة الشرائح]"
+msgstr "قائمة الفيديوات"
 
 #: lib/layouts/revtex4-1.layout:283 lib/layouts/revtex4-1.layout:285
 #, fuzzy
@@ -12002,9 +11965,8 @@ msgid "Left side of the header line"
 msgstr ""
 
 #: lib/layouts/IEEEtran.layout:244
-#, fuzzy
 msgid "Publication ID"
-msgstr "النشرون"
+msgstr "معرف الناشر"
 
 #: lib/layouts/IEEEtran.layout:263
 msgid "Abstract---"
@@ -12078,7 +12040,7 @@ msgstr "موسوعات"
 
 #: lib/layouts/mwart.layout:3
 msgid "Polish Article (MW Bundle)"
-msgstr ""
+msgstr "مقال بولندي (MW Bundle)"
 
 #: lib/layouts/scrclass.inc:114
 msgid "Addpart"
@@ -12366,11 +12328,11 @@ msgstr "الكلمات:"
 
 #: lib/layouts/agu_stdtitle.inc:296
 msgid "Figures"
-msgstr "صور توضيحية"
+msgstr "رسوم توضيحية"
 
 #: lib/layouts/agu_stdtitle.inc:299
 msgid "Figures:"
-msgstr "الصور التوضيحية:"
+msgstr "الرسوم التوضيحية:"
 
 #: lib/layouts/agu_stdtitle.inc:304
 msgid "Tables"
@@ -12616,7 +12578,7 @@ msgstr ""
 #: lib/layouts/agu_stdclass.inc:109 lib/layouts/agu_stdclass.inc:111
 #: lib/layouts/logicalmkup.module:31 src/frontends/qt4/GuiCharacter.cpp:77
 msgid "Emph"
-msgstr ""
+msgstr "مائل"
 
 #: lib/layouts/agu_stdclass.inc:125 lib/layouts/agu_stdclass.inc:127
 msgid "Abbrev"
@@ -12814,7 +12776,7 @@ msgstr "بيانات المؤلف:"
 
 #: lib/layouts/svcommon.inc:387
 msgid "TOC title:"
-msgstr ""
+msgstr "عنوان TOC:"
 
 #: lib/layouts/svcommon.inc:397
 msgid "TOC author:"
@@ -12900,7 +12862,7 @@ msgstr "الكلمات و العبارات المفتاحية:"
 
 #: lib/layouts/amsdefs.inc:178
 msgid "Dedicatory"
-msgstr ""
+msgstr "الإهداء"
 
 #: lib/layouts/amsdefs.inc:185
 msgid "Translator"
@@ -12924,7 +12886,7 @@ msgstr "كود CCC:"
 
 #: lib/layouts/aguplus.inc:148
 msgid "PaperId"
-msgstr ""
+msgstr "رقم الوثيقة"
 
 #: lib/layouts/aguplus.inc:152
 msgid "Paper Id:"
@@ -13076,14 +13038,12 @@ msgid "ShapedParagraphs"
 msgstr "شكل الفقرة"
 
 #: lib/layouts/shapepar.module:39 lib/ui/stdtoolbars.inc:807
-#, fuzzy
 msgid "Circle"
-msgstr "circledS"
+msgstr "دائرة"
 
 #: lib/layouts/shapepar.module:44
-#, fuzzy
 msgid "Diamond"
-msgstr "diamond"
+msgstr "جوهرة"
 
 #: lib/layouts/shapepar.module:49
 msgid "Heart"
@@ -13099,9 +13059,8 @@ msgid "Nut"
 msgstr "قص"
 
 #: lib/layouts/shapepar.module:64 lib/ui/stdtoolbars.inc:758
-#, fuzzy
 msgid "Square"
-msgstr "square"
+msgstr "مربع"
 
 #: lib/layouts/shapepar.module:69
 msgid "Star"
@@ -13125,24 +13084,20 @@ msgid "TeX"
 msgstr "تيك"
 
 #: lib/layouts/shapepar.module:96
-#, fuzzy
 msgid "Triangle up"
-msgstr "bigtriangleup"
+msgstr "مثلث أعلى"
 
 #: lib/layouts/shapepar.module:101
-#, fuzzy
 msgid "Triangle down"
-msgstr "triangledown"
+msgstr "مثلث اسفل"
 
 #: lib/layouts/shapepar.module:106
-#, fuzzy
 msgid "Triangle left"
-msgstr "مثلث ايسر"
+msgstr "مثلث يسار"
 
 #: lib/layouts/shapepar.module:111
-#, fuzzy
 msgid "Triangle right"
-msgstr "مثلث ايمن"
+msgstr "مثلث يمين"
 
 #: lib/layouts/shapepar.module:117
 msgid "shapepar"
@@ -13194,9 +13149,8 @@ msgstr ""
 "إعادة تعريف العديد من الإعدادات (فهرس، فرع، رابط ويب) ليكون  Minimalistic."
 
 #: lib/layouts/lilypond.module:2
-#, fuzzy
 msgid "LilyPond Book"
-msgstr "LilyPond"
+msgstr "كتاب LilyPond"
 
 #: lib/layouts/lilypond.module:6
 msgid ""
@@ -13210,9 +13164,8 @@ msgid "LilyPond"
 msgstr "LilyPond"
 
 #: lib/layouts/lilypond.module:37
-#, fuzzy
 msgid "LilyPond Options"
-msgstr "LilyPond"
+msgstr "خيارات LilyPond"
 
 #: lib/layouts/lilypond.module:38
 msgid ""
@@ -13232,9 +13185,8 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/rsphrase.module:11 lib/layouts/rsphrase.module:16
-#, fuzzy
 msgid "R-S number"
-msgstr "لا رقم"
+msgstr "رقم R-S"
 
 #: lib/layouts/rsphrase.module:33 lib/layouts/rsphrase.module:36
 msgid "R-S phrase"
@@ -13245,9 +13197,8 @@ msgid "Safety phrase"
 msgstr ""
 
 #: lib/layouts/rsphrase.module:46
-#, fuzzy
 msgid "Phrase Text"
-msgstr "الشكر"
+msgstr "نص عبارة"
 
 #: lib/layouts/rsphrase.module:47
 msgid "Argument for statements that requires to specify additional information"
@@ -13258,9 +13209,8 @@ msgid "S phrase:"
 msgstr ""
 
 #: lib/layouts/sectionbox.module:2
-#, fuzzy
 msgid "Section Boxes"
-msgstr "قسم"
+msgstr "صندوق القسم"
 
 #: lib/layouts/sectionbox.module:6
 msgid ""
@@ -13268,19 +13218,16 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/sectionbox.module:11
-#, fuzzy
 msgid "SectionBox"
-msgstr "قسم"
+msgstr "صندوق القسم"
 
 #: lib/layouts/sectionbox.module:13
-#, fuzzy
 msgid "Section Box"
-msgstr "قسم"
+msgstr "صندوق القسم"
 
 #: lib/layouts/sectionbox.module:22
-#, fuzzy
 msgid "Section Box Width|S"
-msgstr "التحديد"
+msgstr "عرض صندوق القسم|S"
 
 #: lib/layouts/sectionbox.module:23
 msgid "Width of the section Box"
@@ -13381,7 +13328,7 @@ msgstr ""
 
 #: lib/layouts/figs-within-sections.module:2
 msgid "Number Figures by Section"
-msgstr "رقم الأشكال تبعاً للقسم"
+msgstr "رقم الرسم التوضيحي تبعاً للقسم"
 
 #: lib/layouts/figs-within-sections.module:6
 msgid ""
@@ -13421,7 +13368,7 @@ msgstr "ترميز منطقي"
 msgid ""
 "Defines some character styles for logical markup: noun, emph, strong, and "
 "code."
-msgstr "عرف بعض أنماط محارف الترميز المنطقي:اسم،emph,قوي و كود."
+msgstr "عرف بعض أنماط محارف الترميز المنطقي:اسم،مائل,داكن و كود."
 
 #: lib/layouts/logicalmkup.module:5
 msgid "charstyles"
@@ -13437,7 +13384,7 @@ msgstr "اسم"
 
 #: lib/layouts/logicalmkup.module:33
 msgid "emph"
-msgstr ""
+msgstr "مائل"
 
 #: lib/layouts/logicalmkup.module:44
 msgid "Strong"
@@ -13805,7 +13752,7 @@ msgstr "&رابط اللون"
 
 #: lib/layouts/tcolorbox.module:83 lib/layouts/tcolorbox.module:98
 msgid "Color Box Setup"
-msgstr ""
+msgstr "إعداد صندوق الألوان"
 
 #: lib/layouts/jurabib.module:2
 #, fuzzy
@@ -13863,9 +13810,8 @@ msgstr ""
 "'جدول 2.1'."
 
 #: lib/layouts/multicol.module:2 lib/layouts/multicol.module:11
-#, fuzzy
 msgid "Multiple Columns"
-msgstr "&اعمدة متعددة"
+msgstr "أعمدة متعددة"
 
 #: lib/layouts/multicol.module:7
 msgid ""
@@ -13875,9 +13821,8 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/multicol.module:19
-#, fuzzy
 msgid "Number of Columns"
-msgstr "عدد الاعمدة"
+msgstr "عدد الأعمدة"
 
 #: lib/layouts/multicol.module:20
 #, fuzzy
@@ -13898,7 +13843,7 @@ msgstr "اطار بسيط"
 msgid ""
 "Free space that needs to be on the page to start the multiple columns on "
 "this page"
-msgstr ""
+msgstr "المساحة الخالية في الصفحة اللازمة لبدء الأعمدة المتعددة في هذه الصفحة"
 
 #: lib/layouts/customHeadersFooters.module:2
 msgid "Custom Header/Footerlines"
@@ -14194,9 +14139,8 @@ msgstr ""
 "Sections'/'within Chapters'، على الترتيب."
 
 #: lib/layouts/fixltx2e.module:2
-#, fuzzy
 msgid "Fix LaTeX"
-msgstr "لتيك"
+msgstr "إصلاح لتيك"
 
 #: lib/layouts/fixltx2e.module:9
 msgid ""
@@ -14389,15 +14333,15 @@ msgstr "تجاهل"
 
 #: lib/languages:92
 msgid "Afrikaans"
-msgstr "افريكان"
+msgstr "الافريكانية"
 
 #: lib/languages:100
 msgid "Albanian"
-msgstr "الباني"
+msgstr "الالبانية"
 
 #: lib/languages:109
 msgid "English (USA)"
-msgstr "انجليزي (الولايات المتحدة)"
+msgstr "الانجليزية (الولايات المتحدة)"
 
 #: lib/languages:120
 msgid "Greek (ancient)"
@@ -14413,7 +14357,7 @@ msgstr "العربية (عربي)"
 
 #: lib/languages:153 src/frontends/qt4/GuiSymbols.cpp:63
 msgid "Armenian"
-msgstr "ارميني"
+msgstr "الارمينية"
 
 #: lib/languages:161
 msgid "English (Australia)"
@@ -14421,19 +14365,19 @@ msgstr "الانجليزية (استراليا)"
 
 #: lib/languages:172
 msgid "German (Austria, old spelling)"
-msgstr "ألماني(النمسا،الهجاء القديم)"
+msgstr "الألمانية (النمسا،الهجاء القديم)"
 
 #: lib/languages:181
 msgid "German (Austria)"
-msgstr "ألماني (النمسا)"
+msgstr "الألمانية (النمسا)"
 
 #: lib/languages:189
 msgid "Indonesian"
-msgstr "أندونيسي"
+msgstr "الأندونيسية"
 
 #: lib/languages:198
 msgid "Malay"
-msgstr "ملايو"
+msgstr "المالاوية"
 
 #: lib/languages:207
 msgid "Basque"
@@ -14453,7 +14397,7 @@ msgstr "Breton"
 
 #: lib/languages:247
 msgid "English (UK)"
-msgstr "انجليزي(المملكة المتحدة)"
+msgstr "الانجليزية (المملكة المتحدة)"
 
 #: lib/languages:257
 msgid "Bulgarian"
@@ -14461,11 +14405,11 @@ msgstr "البلغارية"
 
 #: lib/languages:267
 msgid "English (Canada)"
-msgstr "انجليزي(كندا)"
+msgstr "الانجليزية (كندا)"
 
 #: lib/languages:278
 msgid "French (Canada)"
-msgstr "فرنسي(كندا)"
+msgstr "الفرنسية (كندا)"
 
 #: lib/languages:288
 msgid "Catalan"
@@ -14473,7 +14417,7 @@ msgstr "Catalan"
 
 #: lib/languages:299
 msgid "Chinese (simplified)"
-msgstr "صيني(مبسط)"
+msgstr "الصينية (بسيط)"
 
 #: lib/languages:308
 msgid "Chinese (traditional)"
@@ -14505,7 +14449,7 @@ msgstr "الهولندية"
 
 #: lib/languages:369
 msgid "English"
-msgstr "انجليزي"
+msgstr "الانجليزية"
 
 #: lib/languages:380
 msgid "Esperanto"
@@ -14517,7 +14461,7 @@ msgstr "الأستونية"
 
 #: lib/languages:403
 msgid "Farsi"
-msgstr "فارسي"
+msgstr "الفارسية"
 
 #: lib/languages:416
 msgid "Finnish"
@@ -14525,7 +14469,7 @@ msgstr "الفنلندية"
 
 #: lib/languages:426
 msgid "French"
-msgstr "فرنسي"
+msgstr "الفرنسية"
 
 #: lib/languages:441
 msgid "Galician"
@@ -14546,7 +14490,7 @@ msgstr "الالمانية (Switzerland)"
 #: lib/languages:487 lib/ui/stdtoolbars.inc:300 lib/ui/stdtoolbars.inc:583
 #: src/frontends/qt4/GuiSymbols.cpp:61
 msgid "Greek"
-msgstr "يوناني"
+msgstr "اليونانية"
 
 #: lib/languages:497
 msgid "Greek (polytonic)"
@@ -14562,7 +14506,7 @@ msgstr "الهندية"
 
 #: lib/languages:538
 msgid "Icelandic"
-msgstr "الآيسلندي"
+msgstr "الآيسلندية"
 
 #: lib/languages:549
 msgid "Interlingua"
@@ -14570,15 +14514,15 @@ msgstr "Interlingua"
 
 #: lib/languages:557
 msgid "Irish"
-msgstr "آيرلندي"
+msgstr "الإيرلندية"
 
 #: lib/languages:566
 msgid "Italian"
-msgstr "ايطالي"
+msgstr "الإيطالية"
 
 #: lib/languages:580
 msgid "Japanese"
-msgstr "ياباني"
+msgstr "اليابانية"
 
 #: lib/languages:591
 msgid "Japanese (CJK)"
@@ -14620,7 +14564,7 @@ msgstr "Lower Sorbian"
 
 #: lib/languages:678
 msgid "Hungarian"
-msgstr "هنغاري"
+msgstr "الهنغارية"
 
 #: lib/languages:688
 msgid "Marathi"
@@ -14628,11 +14572,11 @@ msgstr "المراثاوية"
 
 #: lib/languages:698
 msgid "Mongolian"
-msgstr "المنغولي"
+msgstr "المنغولية"
 
 #: lib/languages:706
 msgid "English (New Zealand)"
-msgstr "الانجليزية(نيوزيلندا)"
+msgstr "الانجليزية (نيوزيلندا)"
 
 #: lib/languages:716
 msgid "Norwegian (Bokmaal)"
@@ -14652,15 +14596,15 @@ msgstr "البولندية"
 
 #: lib/languages:762
 msgid "Portuguese"
-msgstr "البرتغالي"
+msgstr "البرتغالية"
 
 #: lib/languages:771
 msgid "Romanian"
-msgstr "روماني"
+msgstr "الرومانية"
 
 #: lib/languages:780
 msgid "Russian"
-msgstr "روسي"
+msgstr "الروسية"
 
 #: lib/languages:789
 msgid "North Sami"
@@ -14672,7 +14616,7 @@ msgstr "السنسكريتية"
 
 #: lib/languages:805
 msgid "Scottish"
-msgstr "إسكتلندي"
+msgstr "الإسكتلندية"
 
 #: lib/languages:814
 msgid "Serbian"
@@ -14696,11 +14640,11 @@ msgstr "الاسبانية"
 
 #: lib/languages:865
 msgid "Spanish (Mexico)"
-msgstr "اسباني (المكسيك)"
+msgstr "الأسبانية (المكسيك)"
 
 #: lib/languages:877
 msgid "Swedish"
-msgstr "سويدي"
+msgstr "السويدية"
 
 #: lib/languages:887
 msgid "Syriac"
@@ -14708,7 +14652,7 @@ msgstr "السريانية"
 
 #: lib/languages:895 src/frontends/qt4/GuiSymbols.cpp:71
 msgid "Tamil"
-msgstr "تاميل"
+msgstr "التأميلية"
 
 #: lib/languages:903 src/frontends/qt4/GuiSymbols.cpp:72
 msgid "Telugu"
@@ -14716,7 +14660,7 @@ msgstr ""
 
 #: lib/languages:910 src/frontends/qt4/GuiSymbols.cpp:75
 msgid "Thai"
-msgstr "تايلاندي"
+msgstr "التايلاندية"
 
 #: lib/languages:923 src/frontends/qt4/GuiSymbols.cpp:77
 #, fuzzy
@@ -14725,7 +14669,7 @@ msgstr "بيتا"
 
 #: lib/languages:930
 msgid "Turkish"
-msgstr "تركي"
+msgstr "التركية"
 
 #: lib/languages:944
 msgid "Turkmen"
@@ -14733,7 +14677,7 @@ msgstr "التركمانية"
 
 #: lib/languages:954
 msgid "Ukrainian"
-msgstr "اوكراني"
+msgstr "الاكرانية"
 
 #: lib/languages:963
 msgid "Upper Sorbian"
@@ -14741,11 +14685,11 @@ msgstr "Upper Sorbian"
 
 #: lib/languages:973
 msgid "Urdu"
-msgstr "اوردو"
+msgstr "الأوردو"
 
 #: lib/languages:983
 msgid "Vietnamese"
-msgstr "فيتنامي"
+msgstr "الفيتنامية"
 
 #: lib/languages:994
 msgid "Welsh"
@@ -14905,9 +14849,8 @@ msgid "Kurier (Light Condensed)"
 msgstr ""
 
 #: lib/latexfonts:520
-#, fuzzy
 msgid "Latin Modern Sans"
-msgstr "تفعيل اللاتينية"
+msgstr "Latin Modern Sans"
 
 #: lib/latexfonts:527
 msgid "TeX Gyre Adventor"
@@ -14939,9 +14882,8 @@ msgid "Courier"
 msgstr "&الناسخ:"
 
 #: lib/latexfonts:579
-#, fuzzy
 msgid "Libertine Mono"
-msgstr "Bera Mono "
+msgstr "Libertine Mono"
 
 #: lib/latexfonts:586
 msgid "Latin Modern Typewriter"
@@ -14957,9 +14899,8 @@ msgid "TeX Gyre Cursor"
 msgstr "خطأ لتيك"
 
 #: lib/latexfonts:606
-#, fuzzy
 msgid "TX Typewriter"
-msgstr "محرر"
+msgstr "TX Typewriter"
 
 #: lib/latexfonts:618
 msgid "Euler VM"
@@ -14987,9 +14928,8 @@ msgid "Minion Pro (New TX)"
 msgstr ""
 
 #: lib/latexfonts:675
-#, fuzzy
 msgid "Times Roman (New TX)"
-msgstr "Times Roman"
+msgstr "Times Roman (New TX)"
 
 #: lib/encodings:31
 msgid "Unicode (utf8)"
@@ -15197,55 +15137,55 @@ msgstr "ASCII"
 
 #: lib/ui/stdmenus.inc:30 lib/ui/stdcontext.inc:436
 msgid "File|F"
-msgstr "ملف|م"
+msgstr "ملف|F"
 
 #: lib/ui/stdmenus.inc:31
 msgid "Edit|E"
-msgstr "تحرير|ت"
+msgstr "تحرير|E"
 
 #: lib/ui/stdmenus.inc:32
 msgid "View|V"
-msgstr "عرض|ع"
+msgstr "عرض|V"
 
 #: lib/ui/stdmenus.inc:33
 msgid "Insert|I"
-msgstr "ادراج|ا"
+msgstr "إدراج|I"
 
 #: lib/ui/stdmenus.inc:34
 msgid "Navigate|N"
-msgstr "استكشاف|ا"
+msgstr "استكشاف|N"
 
 #: lib/ui/stdmenus.inc:35
 msgid "Document|D"
-msgstr "مستند"
+msgstr "مستند|D"
 
 #: lib/ui/stdmenus.inc:36
 msgid "Tools|T"
-msgstr "ادوات"
+msgstr "أدوات|T"
 
 #: lib/ui/stdmenus.inc:37
 msgid "Help|H"
-msgstr "مساعدة|م"
+msgstr "مساعدة|H"
 
 #: lib/ui/stdmenus.inc:45
 msgid "New|N"
-msgstr "جديد|ج"
+msgstr "جديد|N"
 
 #: lib/ui/stdmenus.inc:46
 msgid "New from Template...|m"
-msgstr "جديد من قالب..."
+msgstr "جديد من قالب...|m"
 
 #: lib/ui/stdmenus.inc:47
 msgid "Open...|O"
-msgstr "فتح...|ف"
+msgstr "فتح...|O"
 
 #: lib/ui/stdmenus.inc:48
 msgid "Open Recent|t"
-msgstr "آخر ملفات"
+msgstr "آخر ملفات|t"
 
 #: lib/ui/stdmenus.inc:50
 msgid "Close|C"
-msgstr "اغلاق|ا"
+msgstr "إغلاق|C"
 
 #: lib/ui/stdmenus.inc:51
 msgid "Close All"
@@ -15253,23 +15193,23 @@ msgstr "اغلاق كل الملفات"
 
 #: lib/ui/stdmenus.inc:52
 msgid "Save|S"
-msgstr "حفظ|ح"
+msgstr "حفظ|S"
 
 #: lib/ui/stdmenus.inc:53
 msgid "Save As...|A"
-msgstr "حفظ باسم...|ح"
+msgstr "حفظ باسم...|A"
 
 #: lib/ui/stdmenus.inc:54
 msgid "Save All|l"
-msgstr "حفظ الكل"
+msgstr "حفظ الكل|l"
 
 #: lib/ui/stdmenus.inc:55
 msgid "Revert to Saved|R"
-msgstr "عودة للمحفوظ"
+msgstr "عودة للمحفوظ|R"
 
 #: lib/ui/stdmenus.inc:56
 msgid "Version Control|V"
-msgstr "تحكم الاصدار|ت"
+msgstr "تحكم الإصدار|V"
 
 #: lib/ui/stdmenus.inc:58
 msgid "Import|I"
@@ -15277,35 +15217,35 @@ msgstr "استيراد|I"
 
 #: lib/ui/stdmenus.inc:59
 msgid "Export|E"
-msgstr "تصدير|ت"
+msgstr "تصدير|E"
 
 #: lib/ui/stdmenus.inc:60
 msgid "Print...|P"
-msgstr "طباعة...|ط"
+msgstr "طباعة...|P"
 
 #: lib/ui/stdmenus.inc:61
 msgid "Fax...|F"
-msgstr "ناسوخ...|ن"
+msgstr "ناسوخ...|F"
 
 #: lib/ui/stdmenus.inc:63
 msgid "New Window|W"
-msgstr "نافذة جديدة"
+msgstr "نافذة جديدة|W"
 
 #: lib/ui/stdmenus.inc:64
 msgid "Close Window|d"
-msgstr "اغلاق النافذة"
+msgstr "إغلاق النافذة|d"
 
 #: lib/ui/stdmenus.inc:66
 msgid "Exit|x"
-msgstr "خروج|خ"
+msgstr "خروج|x"
 
 #: lib/ui/stdmenus.inc:74
 msgid "Register...|R"
-msgstr "تسجيل...|ت"
+msgstr "تسجيل...|R"
 
 #: lib/ui/stdmenus.inc:75
 msgid "Check In Changes...|I"
-msgstr "فحص التغييرات...|ح"
+msgstr "فحص التغييرات...|I"
 
 #: lib/ui/stdmenus.inc:76
 msgid "Check Out for Edit|O"
@@ -15354,11 +15294,11 @@ msgstr "صيغ أخرى & خيارات...|O"
 
 #: lib/ui/stdmenus.inc:102
 msgid "Undo|U"
-msgstr "تراجع|ت"
+msgstr "تراجع|U"
 
 #: lib/ui/stdmenus.inc:103
 msgid "Redo|R"
-msgstr "تكرار"
+msgstr "تكرار|R"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
 #: src/Text3.cpp:1277 src/mathed/InsetMathNest.cpp:596
@@ -15395,11 +15335,11 @@ msgstr "تحديد الكل"
 
 #: lib/ui/stdmenus.inc:114
 msgid "Find & Replace (Quick)...|F"
-msgstr "بحث & استبدال (سريع)...|ب"
+msgstr "بحث & استبدال (سريع)...|F"
 
 #: lib/ui/stdmenus.inc:115
 msgid "Find & Replace (Advanced)..."
-msgstr "بحث & استبدال(متقدم)...|ب"
+msgstr "بحث & استبدال(متقدم)..."
 
 #: lib/ui/stdmenus.inc:117 lib/ui/stdcontext.inc:318
 msgid "Move Paragraph Up|o"
@@ -15411,19 +15351,19 @@ msgstr "نقل الفقرة لأسفل|v"
 
 #: lib/ui/stdmenus.inc:120
 msgid "Text Style|S"
-msgstr "أسلوب النص|ن"
+msgstr "أسلوب النص|S"
 
 #: lib/ui/stdmenus.inc:122 lib/ui/stdcontext.inc:333
 msgid "Paragraph Settings...|P"
-msgstr "اعدادات الفقرة"
+msgstr "إعدادات الفقرة...|P"
 
 #: lib/ui/stdmenus.inc:125
 msgid "Table|T"
-msgstr "جدول"
+msgstr "جدول|T"
 
 #: lib/ui/stdmenus.inc:126 lib/ui/stdmenus.inc:586
 msgid "Math|M"
-msgstr "رياضيات|ر"
+msgstr "رياضيات|M"
 
 #: lib/ui/stdmenus.inc:127
 msgid "Rows & Columns|C"
@@ -15431,11 +15371,11 @@ msgstr "صفوف واعمدة"
 
 #: lib/ui/stdmenus.inc:134
 msgid "Increase List Depth|I"
-msgstr "زيادة عمق القوائم|ي"
+msgstr "زيادة عمق القوائم|I"
 
 #: lib/ui/stdmenus.inc:135
 msgid "Decrease List Depth|D"
-msgstr "تقليل عمق القوائم|ق"
+msgstr "تقليل عمق القوائم|D"
 
 #: lib/ui/stdmenus.inc:136
 #, fuzzy
@@ -15444,11 +15384,11 @@ msgstr "الغاء البرواز|غ"
 
 #: lib/ui/stdmenus.inc:137
 msgid "TeX Code Settings...|C"
-msgstr "اعدادات كود تيك..."
+msgstr "اعدادات كود تيك...|C"
 
 #: lib/ui/stdmenus.inc:139
 msgid "Float Settings...|a"
-msgstr "اعدادات التعويم"
+msgstr "إعدادات التعويم...|a"
 
 #: lib/ui/stdmenus.inc:140
 msgid "Text Wrap Settings...|W"
@@ -15456,7 +15396,7 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:141
 msgid "Note Settings...|N"
-msgstr "اعدادات المدونة..."
+msgstr "إعدادات المدونة...|N"
 
 #: lib/ui/stdmenus.inc:142
 #, fuzzy
@@ -15465,11 +15405,11 @@ msgstr "اعدادات التعويم"
 
 #: lib/ui/stdmenus.inc:143
 msgid "Branch Settings...|B"
-msgstr "اعدادات الفرع...|B"
+msgstr "إعدادات الفرع...|B"
 
 #: lib/ui/stdmenus.inc:144
 msgid "Box Settings...|x"
-msgstr "اعدادات الصندوق..."
+msgstr "اعدادات الصندوق...|x"
 
 #: lib/ui/stdmenus.inc:145
 msgid "Index Entry Settings...|y"
@@ -15489,7 +15429,7 @@ msgstr "اعدادات القوائم...|g"
 
 #: lib/ui/stdmenus.inc:152
 msgid "Table Settings...|a"
-msgstr "اعدادات الجدول..."
+msgstr "إعدادات الجدول...|a"
 
 #: lib/ui/stdmenus.inc:153
 #, fuzzy
@@ -15502,7 +15442,7 @@ msgstr "لصق من HTML|H"
 
 #: lib/ui/stdmenus.inc:158
 msgid "Paste from LaTeX|L"
-msgstr "لصق من LaTeX|L"
+msgstr "لصق من لتيك|L"
 
 #: lib/ui/stdmenus.inc:159
 msgid "Paste as LinkBack PDF"
@@ -15526,19 +15466,19 @@ msgstr "لصق كـ EMF"
 
 #: lib/ui/stdmenus.inc:165
 msgid "Plain Text|T"
-msgstr "نص مبسط|ص"
+msgstr "نص مبسط|T"
 
 #: lib/ui/stdmenus.inc:166
 msgid "Plain Text, Join Lines|J"
-msgstr "نص مبسط، ادمج السطور|ص"
+msgstr "نص مبسط، ادمج السطور|T"
 
 #: lib/ui/stdmenus.inc:168
 msgid "Selection|S"
-msgstr "التحديد"
+msgstr "التحديد|S"
 
 #: lib/ui/stdmenus.inc:169
 msgid "Selection, Join Lines|i"
-msgstr "تحديد، دمج السطور|ح"
+msgstr "تحديد، دمج السطور|i"
 
 #: lib/ui/stdmenus.inc:171
 msgid "Unformatted Text|U"
@@ -15555,23 +15495,23 @@ msgstr "إلغاء أسلوب النص"
 
 #: lib/ui/stdmenus.inc:184
 msgid "Customized...|C"
-msgstr "اختيار..."
+msgstr "اختيار...|C"
 
 #: lib/ui/stdmenus.inc:186
 msgid "Capitalize|a"
-msgstr "الاول كبير"
+msgstr "الاول كبير|a"
 
 #: lib/ui/stdmenus.inc:187
 msgid "Uppercase|U"
-msgstr "حروف كبيرة"
+msgstr "حروف كبيرة|U"
 
 #: lib/ui/stdmenus.inc:188
 msgid "Lowercase|L"
-msgstr "حروف صغيرة"
+msgstr "حروف صغيرة|L"
 
 #: lib/ui/stdmenus.inc:193
 msgid "Multicolumn|M"
-msgstr "اعمدة متعددة|أ"
+msgstr "أعمدة متعددة|M"
 
 #: lib/ui/stdmenus.inc:194
 msgid "Multirow|u"
@@ -15579,19 +15519,19 @@ msgstr "صفوف|u"
 
 #: lib/ui/stdmenus.inc:196
 msgid "Top Line|T"
-msgstr "خط اعلى"
+msgstr "خط أعلى|T"
 
 #: lib/ui/stdmenus.inc:197
 msgid "Bottom Line|B"
-msgstr "خط  اسفل"
+msgstr "خط  اسفل|B"
 
 #: lib/ui/stdmenus.inc:198 lib/ui/stdcontext.inc:404
 msgid "Left Line|L"
-msgstr "خط ايسر"
+msgstr "خط ايسر|L"
 
 #: lib/ui/stdmenus.inc:199 lib/ui/stdcontext.inc:405
 msgid "Right Line|R"
-msgstr "خط ايمن"
+msgstr "خط ايمن|R"
 
 #: lib/ui/stdmenus.inc:201
 msgid "Top|p"
@@ -15607,15 +15547,15 @@ msgstr "اسفل|o"
 
 #: lib/ui/stdmenus.inc:207
 msgid "Left|L"
-msgstr "يسار|ي"
+msgstr "يسار|L"
 
 #: lib/ui/stdmenus.inc:208 lib/ui/stdcontext.inc:408
 msgid "Center|C"
-msgstr "توسيط|ت"
+msgstr "توسيط|C"
 
 #: lib/ui/stdmenus.inc:209
 msgid "Right|R"
-msgstr "يمين|ي"
+msgstr "يمين|R"
 
 #: lib/ui/stdmenus.inc:211 lib/ui/stdcontext.inc:412
 msgid "Top|T"
@@ -15627,35 +15567,35 @@ msgstr "وسط|M"
 
 #: lib/ui/stdmenus.inc:213 lib/ui/stdcontext.inc:414
 msgid "Bottom|B"
-msgstr "اسفل|ا"
+msgstr "اسفل|B"
 
 #: lib/ui/stdmenus.inc:215
 msgid "Add Row|A"
-msgstr "اضافة صف|ا"
+msgstr "إضافة صف|A"
 
 #: lib/ui/stdmenus.inc:216 lib/ui/stdcontext.inc:417
 msgid "Delete Row|D"
-msgstr "حذف صف|ح"
+msgstr "حذف صف|D"
 
 #: lib/ui/stdmenus.inc:217 lib/ui/stdcontext.inc:418
 msgid "Copy Row|o"
-msgstr "نسخ صف"
+msgstr "نسخ صف|o"
 
 #: lib/ui/stdmenus.inc:220
 msgid "Add Column|u"
-msgstr "اضافة عمود|ا"
+msgstr "إضافة عمود|u"
 
 #: lib/ui/stdmenus.inc:221 lib/ui/stdcontext.inc:423
 msgid "Delete Column|e"
-msgstr "حذف عمود|ح"
+msgstr "حذف عمود|e"
 
 #: lib/ui/stdmenus.inc:222
 msgid "Copy Column|p"
-msgstr "نسخ عمود"
+msgstr "نسخ عمود|p"
 
 #: lib/ui/stdmenus.inc:227 lib/ui/stdcontext.inc:56
 msgid "Number Whole Formula|N"
-msgstr "رقم جميع الصيغ الرياضية|ر"
+msgstr "رقم جميع الصيغ الرياضية|p"
 
 #: lib/ui/stdmenus.inc:228 lib/ui/stdcontext.inc:57
 msgid "Number This Line|u"
@@ -15671,35 +15611,35 @@ msgstr "تعريف مختصر"
 
 #: lib/ui/stdmenus.inc:232
 msgid "Change Formula Type|F"
-msgstr "بدل نوع الصيغة الرياضية|ب"
+msgstr "بدل نوع الصيغة الرياضية|F"
 
 #: lib/ui/stdmenus.inc:234
 msgid "Text Style|T"
-msgstr "أسلوب النص|س"
+msgstr "أسلوب النص|T"
 
 #: lib/ui/stdmenus.inc:236
 msgid "Use Computer Algebra System|S"
-msgstr "استخدم نظام الجبر الحاسوبي|ا"
+msgstr "استخدم نظام الجبر الحاسوبي|S"
 
 #: lib/ui/stdmenus.inc:238 lib/ui/stdcontext.inc:61
 msgid "Split Cell|C"
-msgstr "تقسيم خلية"
+msgstr "تقسيم خلية|C"
 
 #: lib/ui/stdmenus.inc:240
 msgid "Add Line Above|A"
-msgstr "اضافة سطر اعلى"
+msgstr "إضافة سطر أعلى|A"
 
 #: lib/ui/stdmenus.inc:241 lib/ui/stdcontext.inc:66
 msgid "Add Line Below|B"
-msgstr "اضافة سطر اسفل"
+msgstr "إضافة سطر اسفل|B"
 
 #: lib/ui/stdmenus.inc:242
 msgid "Delete Line Above|D"
-msgstr "حذف سطر اعلى"
+msgstr "حذف سطر أعلى|D"
 
 #: lib/ui/stdmenus.inc:243
 msgid "Delete Line Below|e"
-msgstr "حذف سطر اسفل"
+msgstr "حذف سطر اسفل|e"
 
 #: lib/ui/stdmenus.inc:245 lib/ui/stdcontext.inc:70
 msgid "Add Line to Left"
@@ -15757,11 +15697,11 @@ msgstr "ازالة المعطى الاخير"
 
 #: lib/ui/stdmenus.inc:266
 msgid "Default|t"
-msgstr "افتراضي|ا"
+msgstr "افتراضي|t"
 
 #: lib/ui/stdmenus.inc:267
 msgid "Display|D"
-msgstr "عرض|ع"
+msgstr "عرض|D"
 
 #: lib/ui/stdmenus.inc:268
 msgid "Inline|I"
@@ -15769,7 +15709,7 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:272
 msgid "Math Normal Font|N"
-msgstr "خط الرياضيات العادي"
+msgstr "خط الرياضيات العادي|N"
 
 #: lib/ui/stdmenus.inc:274
 msgid "Math Calligraphic Family|C"
@@ -15837,15 +15777,15 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:298
 msgid "Octave|O"
-msgstr "ثماني"
+msgstr "ثماني|O"
 
 #: lib/ui/stdmenus.inc:299
 msgid "Maxima|M"
-msgstr "حدود عليا|د"
+msgstr "حدود عليا|M"
 
 #: lib/ui/stdmenus.inc:300
 msgid "Mathematica|a"
-msgstr "رياضيات"
+msgstr "رياضيات|a"
 
 #: lib/ui/stdmenus.inc:302
 msgid "Maple, Simplify|S"
@@ -15865,11 +15805,11 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:309 lib/ui/stdmenus.inc:423 lib/ui/stdcontext.inc:51
 msgid "Inline Formula|I"
-msgstr "صيغة رياضية داخلية|ص"
+msgstr "صيغة رياضية داخلية|I"
 
 #: lib/ui/stdmenus.inc:310 lib/ui/stdcontext.inc:52
 msgid "Displayed Formula|D"
-msgstr "الصيغ الرياضية المعروضة|ص"
+msgstr "الصيغ الرياضية المعروضة|D"
 
 #: lib/ui/stdmenus.inc:311 lib/ui/stdmenus.inc:426 lib/ui/stdcontext.inc:53
 msgid "Eqnarray Environment|E"
@@ -15877,7 +15817,7 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:312 lib/ui/stdmenus.inc:427 lib/ui/stdcontext.inc:43
 msgid "AMS align Environment|a"
-msgstr "صف الوحدات من النوع AMS"
+msgstr "صف الوحدات من النوع AMS|a"
 
 #: lib/ui/stdmenus.inc:313 lib/ui/stdmenus.inc:428 lib/ui/stdcontext.inc:44
 msgid "AMS alignat Environment|t"
@@ -15889,7 +15829,7 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:315 lib/ui/stdmenus.inc:430 lib/ui/stdcontext.inc:46
 msgid "AMS gather Environment|g"
-msgstr "تجميع الوحدات من النوع AMS"
+msgstr "تجميع الوحدات من النوع AMS|g"
 
 #: lib/ui/stdmenus.inc:316 lib/ui/stdmenus.inc:431 lib/ui/stdcontext.inc:47
 msgid "AMS multline Environment|m"
@@ -15897,11 +15837,11 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:324
 msgid "Open All Insets|O"
-msgstr "فتح كل الادراجات|ف"
+msgstr "فتح كل الإدراجات|O"
 
 #: lib/ui/stdmenus.inc:325
 msgid "Close All Insets|C"
-msgstr "اغلاق كل الادراجات|ا"
+msgstr "إغلاق كل الإدراجات|C"
 
 #: lib/ui/stdmenus.inc:327
 #, fuzzy
@@ -15926,11 +15866,11 @@ msgstr "نافذة التنبيهات|g"
 
 #: lib/ui/stdmenus.inc:333
 msgid "Toolbars|b"
-msgstr "اشرطة الادوات"
+msgstr "أشرطة الأدوات|b"
 
 #: lib/ui/stdmenus.inc:335
 msgid "Split View Into Left and Right Half|i"
-msgstr "تجانب الشاشات|ت"
+msgstr "تجانب الشاشات|i"
 
 #: lib/ui/stdmenus.inc:336
 msgid "Split View Into Upper and Lower Half|e"
@@ -15938,23 +15878,23 @@ msgstr "تقسيم العرض إلى نصف علوي ونصف سفلي|ت"
 
 #: lib/ui/stdmenus.inc:337
 msgid "Close Current View|w"
-msgstr "اغلق الشاشة الحالية|ا"
+msgstr "اغلق الشاشة الحالية|w"
 
 #: lib/ui/stdmenus.inc:338
 msgid "Fullscreen|l"
-msgstr "كامل الشاشة"
+msgstr "كامل الشاشة|l"
 
 #: lib/ui/stdmenus.inc:353
 msgid "Math|h"
-msgstr "رياضيات|ر"
+msgstr "رياضيات|h"
 
 #: lib/ui/stdmenus.inc:354
 msgid "Special Character|p"
-msgstr "محارف خاصة"
+msgstr "محارف خاصة|p"
 
 #: lib/ui/stdmenus.inc:355
 msgid "Formatting|o"
-msgstr "تهيئة|ت"
+msgstr "تهيئة|o"
 
 #: lib/ui/stdmenus.inc:356
 msgid "List / TOC|i"
@@ -15962,11 +15902,11 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:357
 msgid "Float|a"
-msgstr "تعويم|ت"
+msgstr "تعويم|a"
 
 #: lib/ui/stdmenus.inc:358
 msgid "Note|N"
-msgstr "ملاحظة |م"
+msgstr "ملاحظة|N"
 
 #: lib/ui/stdmenus.inc:359
 msgid "Branch|B"
@@ -15979,7 +15919,7 @@ msgstr "اختيار نقطة:"
 
 #: lib/ui/stdmenus.inc:361
 msgid "File|e"
-msgstr "ملف"
+msgstr "ملف|e"
 
 #: lib/ui/stdmenus.inc:362
 msgid "Box[[Menu]]"
@@ -15996,43 +15936,43 @@ msgstr "استشهاد...|ا"
 
 #: lib/ui/stdmenus.inc:366
 msgid "Cross-Reference...|R"
-msgstr "اسناد ترافقي..."
+msgstr "اسناد ترافقي...|R"
 
 #: lib/ui/stdmenus.inc:367
 msgid "Label...|L"
-msgstr "ملصق...|م"
+msgstr "ملصق...|L"
 
 #: lib/ui/stdmenus.inc:370
 msgid "Nomenclature Entry...|y"
-msgstr "مدخل مصطلح...|م"
+msgstr "مدخل مصطلح...|y"
 
 #: lib/ui/stdmenus.inc:372
 msgid "Table...|T"
-msgstr "جدول...|ج"
+msgstr "جدول...|T"
 
 #: lib/ui/stdmenus.inc:373
 msgid "Graphics...|G"
-msgstr "صور...|ص"
+msgstr "صور...|k"
 
 #: lib/ui/stdmenus.inc:374
 msgid "URL|U"
-msgstr "رابط...|ر"
+msgstr "رابط...|U"
 
 #: lib/ui/stdmenus.inc:375
 msgid "Hyperlink...|k"
-msgstr "وصلة...|و"
+msgstr "رابط...|k"
 
 #: lib/ui/stdmenus.inc:376
 msgid "Footnote|F"
-msgstr "تذييل|ت"
+msgstr "تذييل|F"
 
 #: lib/ui/stdmenus.inc:377
 msgid "Marginal Note|M"
-msgstr "ملاحظة هامشية |م"
+msgstr "ملاحظة هامشية|M"
 
 #: lib/ui/stdmenus.inc:379
 msgid "TeX Code|X"
-msgstr "كود تيك|ك"
+msgstr "كود تيك|X"
 
 #: lib/ui/stdmenus.inc:380
 msgid "Program Listing[[Menu]]"
@@ -16044,23 +15984,23 @@ msgstr "استعراض|w"
 
 #: lib/ui/stdmenus.inc:386
 msgid "Symbols...|b"
-msgstr "رموز..."
+msgstr "رموز...|b"
 
 #: lib/ui/stdmenus.inc:387
 msgid "Ellipsis|i"
-msgstr "ثلاث نقط"
+msgstr "ثلاث نقط|i"
 
 #: lib/ui/stdmenus.inc:388
 msgid "End of Sentence|E"
-msgstr "نقطة نهاية الجملة"
+msgstr "نقطة نهاية الجملة|E"
 
 #: lib/ui/stdmenus.inc:389
 msgid "Ordinary Quote|Q"
-msgstr "اقتباس عادي|ق"
+msgstr "اقتباس عادي|Q"
 
 #: lib/ui/stdmenus.inc:390
 msgid "Single Quote|S"
-msgstr "اقتباس فردي|ق"
+msgstr "اقتباس فردي|S"
 
 #: lib/ui/stdmenus.inc:391
 msgid "Protected Hyphen|y"
@@ -16072,7 +16012,7 @@ msgstr "شرطة كسر|a"
 
 #: lib/ui/stdmenus.inc:393
 msgid "Menu Separator|M"
-msgstr "فاصلة القوائم|ف"
+msgstr "فاصلة القوائم|M"
 
 #: lib/ui/stdmenus.inc:394
 msgid "Phonetic Symbols|P"
@@ -16080,19 +16020,19 @@ msgstr "رموز صوتية|P"
 
 #: lib/ui/stdmenus.inc:398
 msgid "Superscript|S"
-msgstr "نص علوي"
+msgstr "نص علوي|S"
 
 #: lib/ui/stdmenus.inc:399
 msgid "Subscript|u"
-msgstr "نص سفلي"
+msgstr "نص سفلي|u"
 
 #: lib/ui/stdmenus.inc:401
 msgid "Protected Space|P"
-msgstr "مسافة محمية|ب"
+msgstr "مسافة محمية|P"
 
 #: lib/ui/stdmenus.inc:402 lib/ui/stdcontext.inc:217
 msgid "Interword Space|w"
-msgstr "مسافة في وسط الكلمة|ب"
+msgstr "مسافة في وسط الكلمة|w"
 
 #: lib/ui/stdmenus.inc:403
 msgid "Visible Space|i"
@@ -16108,11 +16048,11 @@ msgstr "مسافة  أفقية...|o"
 
 #: lib/ui/stdmenus.inc:406
 msgid "Horizontal Line...|L"
-msgstr "خط  أفقي...|خ"
+msgstr "خط  أفقي...|L"
 
 #: lib/ui/stdmenus.inc:407
 msgid "Vertical Space...|V"
-msgstr "مسافة رأسية...|م"
+msgstr "مسافة رأسية...|V"
 
 #: lib/ui/stdmenus.inc:408
 msgid "Phantom|m"
@@ -16152,23 +16092,23 @@ msgstr "صفحتين فارغتين|D"
 
 #: lib/ui/stdmenus.inc:424
 msgid "Display Formula|D"
-msgstr "عرض معادلة|ع"
+msgstr "عرض معادلة|D"
 
 #: lib/ui/stdmenus.inc:425
 msgid "Numbered Formula|N"
-msgstr "الصيغ الرياضية المرقمة|ص"
+msgstr "الصيغ الرياضية المرقمة|N"
 
 #: lib/ui/stdmenus.inc:434 lib/ui/stdcontext.inc:30
 msgid "Array Environment|y"
-msgstr "وحدة مصفوفات|ح"
+msgstr "وحدة مصفوفات|y"
 
 #: lib/ui/stdmenus.inc:435 lib/ui/stdcontext.inc:31
 msgid "Cases Environment|C"
-msgstr "وحدة مغلفة |ح"
+msgstr "وحدة مغلفة|C"
 
 #: lib/ui/stdmenus.inc:436 lib/ui/stdcontext.inc:32
 msgid "Aligned Environment|l"
-msgstr "وحدات متراصة|ح"
+msgstr "وحدات متراصة|l"
 
 #: lib/ui/stdmenus.inc:437 lib/ui/stdcontext.inc:33
 msgid "AlignedAt Environment|v"
@@ -16176,35 +16116,35 @@ msgstr ""
 
 #: lib/ui/stdmenus.inc:438 lib/ui/stdcontext.inc:34
 msgid "Gathered Environment|h"
-msgstr "وحدات مجمعة|ح"
+msgstr "وحدات مجمعة|h"
 
 #: lib/ui/stdmenus.inc:439 lib/ui/stdcontext.inc:35
 msgid "Split Environment|S"
-msgstr "وحدة منفصلة|ح"
+msgstr "وحدة منفصلة|S"
 
 #: lib/ui/stdmenus.inc:441 lib/ui/stdcontext.inc:37
 msgid "Delimiters...|r"
-msgstr "فواصل...|ف"
+msgstr "فواصل...|r"
 
 #: lib/ui/stdmenus.inc:442 lib/ui/stdcontext.inc:38
 msgid "Matrix...|x"
-msgstr "مصفوفة...|ص"
+msgstr "مصفوفة...|x"
 
 #: lib/ui/stdmenus.inc:443 lib/ui/stdcontext.inc:39
 msgid "Macro|o"
-msgstr "مختصر |خ"
+msgstr "ماكرو |o"
 
 #: lib/ui/stdmenus.inc:449
 msgid "Figure Wrap Float|F"
-msgstr "التفاف صورة عائمة"
+msgstr "التفاف الرسم التوضيحي العائم|F"
 
 #: lib/ui/stdmenus.inc:450
 msgid "Table Wrap Float|T"
-msgstr "التفاف جدول عائم"
+msgstr "التفاف جدول عائم|T"
 
 #: lib/ui/stdmenus.inc:454
 msgid "Table of Contents|C"
-msgstr "جدول المحتويات"
+msgstr "جدول المحتويات|C"
 
 #: lib/ui/stdmenus.inc:457
 #, fuzzy
@@ -16221,27 +16161,27 @@ msgstr "ثبت مراجع BibTeX ...|B"
 
 #: lib/ui/stdmenus.inc:463
 msgid "LyX Document...|X"
-msgstr "مستند ليك..."
+msgstr "مستند ليك...|X"
 
 #: lib/ui/stdmenus.inc:464
 msgid "Plain Text...|T"
-msgstr "نص بسيط...|ص"
+msgstr "نص بسيط...|T"
 
 #: lib/ui/stdmenus.inc:465
 msgid "Plain Text, Join Lines...|J"
-msgstr "نص بسيط، دمج السطور...|ص"
+msgstr "نص بسيط، دمج السطور...|J"
 
 #: lib/ui/stdmenus.inc:467
 msgid "External Material...|M"
-msgstr "مادة خارجية...|م"
+msgstr "مادة خارجية...|M"
 
 #: lib/ui/stdmenus.inc:468
 msgid "Child Document...|d"
-msgstr "مستند فرعي....|م"
+msgstr "مستند فرعي...|d"
 
 #: lib/ui/stdmenus.inc:472 lib/ui/stdcontext.inc:171
 msgid "Frameless|l"
-msgstr "بدون اطار"
+msgstr "بدون إطار|l"
 
 #: lib/ui/stdmenus.inc:473 lib/ui/stdcontext.inc:172
 msgid "Simple Frame|F"
@@ -16257,7 +16197,7 @@ msgstr "بيضاوي سميك|v"
 
 #: lib/ui/stdmenus.inc:476 lib/ui/stdcontext.inc:176
 msgid "Drop Shadow|w"
-msgstr "ظل ساقط"
+msgstr "ظل ساقط|w"
 
 #: lib/ui/stdmenus.inc:477 lib/ui/stdcontext.inc:177
 msgid "Shaded Background|B"
@@ -16269,15 +16209,15 @@ msgstr "اطار مزدوج|u"
 
 #: lib/ui/stdmenus.inc:482 lib/ui/stdcontext.inc:195
 msgid "LyX Note|N"
-msgstr "مدونة ليك"
+msgstr "ملاحظة ليك|N"
 
 #: lib/ui/stdmenus.inc:483
 msgid "Comment|C"
-msgstr "تعليق|ت"
+msgstr "تلميح|C"
 
 #: lib/ui/stdmenus.inc:484 lib/ui/stdcontext.inc:197
 msgid "Greyed Out|G"
-msgstr "اقتباس|ا"
+msgstr "ملاحظة مظلله|G"
 
 #: lib/ui/stdmenus.inc:490
 msgid "Insert New Branch...|I"
@@ -16483,7 +16423,7 @@ msgstr "اختصارات"
 
 #: lib/ui/stdmenus.inc:589
 msgid "LyX Functions|y"
-msgstr "دوال LyX |د"
+msgstr "دوال ليك |د"
 
 #: lib/ui/stdmenus.inc:590
 msgid "LaTeX Configuration|L"
@@ -16594,7 +16534,7 @@ msgstr "الاسناد الترافقي التالي"
 
 #: lib/ui/stdcontext.inc:88
 msgid "Go to Label|G"
-msgstr "اذهب للملصق"
+msgstr "اذهب للملصق|G"
 
 #: lib/ui/stdcontext.inc:90
 msgid "<Reference>|R"
@@ -16602,7 +16542,7 @@ msgstr "<مرجع>|R"
 
 #: lib/ui/stdcontext.inc:91
 msgid "(<Reference>)|e"
-msgstr "|e(<مرجع>)"
+msgstr "(<مرجع>)|e"
 
 #: lib/ui/stdcontext.inc:92
 msgid "<Page>|P"
@@ -16639,16 +16579,16 @@ msgstr ""
 
 #: lib/ui/stdcontext.inc:144
 msgid "Open Inset|O"
-msgstr "فتح برواز|ف"
+msgstr "فتح برواز|e"
 
 #: lib/ui/stdcontext.inc:145
 msgid "Close Inset|C"
-msgstr "غلق برواز|غ"
+msgstr "غلق برواز|C"
 
 #: lib/ui/stdcontext.inc:147 lib/ui/stdcontext.inc:153
 #: lib/ui/stdcontext.inc:589
 msgid "Dissolve Inset|D"
-msgstr "الغاء البرواز|غ"
+msgstr "إلغاء البرواز|D"
 
 #: lib/ui/stdcontext.inc:152
 msgid "Show Label|L"
@@ -16660,7 +16600,7 @@ msgstr ""
 
 #: lib/ui/stdcontext.inc:196
 msgid "Comment|m"
-msgstr "تعليق|m"
+msgstr "تلميح|m"
 
 #: lib/ui/stdcontext.inc:199
 msgid "Open All Notes|A"
@@ -16672,7 +16612,7 @@ msgstr "اغلاق كل الملاحظات|l"
 
 #: lib/ui/stdcontext.inc:218
 msgid "Protected Space|o"
-msgstr "مسافة محمية|ب"
+msgstr "مسافة محمية|o"
 
 #: lib/ui/stdcontext.inc:219
 msgid "Visible Space|a"
@@ -16680,11 +16620,11 @@ msgstr "مسافة مرئية|a"
 
 #: lib/ui/stdcontext.inc:221 lib/ui/stdcontext.inc:246
 msgid "Negative Thin Space|N"
-msgstr "مسافة رفيعة سالبة|ب"
+msgstr "مسافة رفيعة سالبة|N"
 
 #: lib/ui/stdcontext.inc:222 lib/ui/stdcontext.inc:249
 msgid "Half Quad Space (Enskip)|k"
-msgstr ""
+msgstr "مسافة نصف كواد (Enskip)|k"
 
 #: lib/ui/stdcontext.inc:223
 msgid "Protected Half Quad Space (Enspace)|E"
@@ -16692,15 +16632,15 @@ msgstr ""
 
 #: lib/ui/stdcontext.inc:224 lib/ui/stdcontext.inc:250
 msgid "Quad Space|Q"
-msgstr ""
+msgstr "مسافة كواد|Q"
 
 #: lib/ui/stdcontext.inc:225 lib/ui/stdcontext.inc:251
 msgid "Double Quad Space|u"
-msgstr ""
+msgstr "مسافة كواد مزدوج|u"
 
 #: lib/ui/stdcontext.inc:226
 msgid "Horizontal Fill|F"
-msgstr "ملئ افقي"
+msgstr "ملئ افقي|F"
 
 #: lib/ui/stdcontext.inc:227
 msgid "Protected Horizontal Fill|i"
@@ -16708,7 +16648,7 @@ msgstr ""
 
 #: lib/ui/stdcontext.inc:228
 msgid "Horizontal Fill (Dots)|D"
-msgstr "ملئ افقي (نقط)"
+msgstr "ملئ افقي (نقط)|D"
 
 #: lib/ui/stdcontext.inc:229
 msgid "Horizontal Fill (Rule)|R"
@@ -16796,7 +16736,7 @@ msgstr ""
 
 #: lib/ui/stdcontext.inc:279 lib/ui/stdcontext.inc:540
 msgid "Listing|L"
-msgstr "عمل قائمة|ل"
+msgstr "عمل قائمة|L"
 
 #: lib/ui/stdcontext.inc:283 lib/ui/stdcontext.inc:544
 msgid "Edit Included File...|E"
@@ -16838,7 +16778,7 @@ msgstr "تطبيق أسلوب النص الأخير|ط"
 
 #: lib/ui/stdcontext.inc:332
 msgid "Text Style|x"
-msgstr "أسلوب النص|ن"
+msgstr "أسلوب النص|x"
 
 #: lib/ui/stdcontext.inc:336
 msgid "Fullscreen Mode"
@@ -16886,7 +16826,7 @@ msgstr "|Rاعادة تحميل"
 #: lib/ui/stdcontext.inc:379 lib/ui/stdcontext.inc:391
 #: lib/ui/stdcontext.inc:497
 msgid "Edit Externally...|x"
-msgstr "تم التعديل خارجياً...|م"
+msgstr "تم التعديل خارجياً...|x"
 
 #: lib/ui/stdcontext.inc:399
 msgid "Multicolumn|u"
@@ -16941,11 +16881,11 @@ msgstr "نسخ العمود|y"
 
 #: lib/ui/stdcontext.inc:425
 msgid "Move Column Right|v"
-msgstr ""
+msgstr "نقل العمود لليمين|v"
 
 #: lib/ui/stdcontext.inc:426
 msgid "Move Column Left"
-msgstr ""
+msgstr "نقل العمود لليسار"
 
 #: lib/ui/stdcontext.inc:437
 msgid "Path|P"
@@ -16953,7 +16893,7 @@ msgstr "المسار|P"
 
 #: lib/ui/stdcontext.inc:438
 msgid "Class|C"
-msgstr ""
+msgstr "النوع|C"
 
 #: lib/ui/stdcontext.inc:440
 #, fuzzy
@@ -17019,7 +16959,7 @@ msgstr ""
 
 #: lib/ui/stdcontext.inc:568
 msgid "All Indexes|A"
-msgstr "كل الفهارس|ه"
+msgstr "كل الفهارس|A"
 
 #: lib/ui/stdcontext.inc:571
 msgid "Subindex|b"
@@ -17184,7 +17124,7 @@ msgstr "قلل العمق"
 
 #: lib/ui/stdtoolbars.inc:121
 msgid "Insert figure float"
-msgstr "ادراج صورة توضيحية عائمة"
+msgstr "إدراج رسم توضيحي عائم"
 
 #: lib/ui/stdtoolbars.inc:122
 msgid "Insert table float"
@@ -17228,7 +17168,7 @@ msgstr "ادراج صندوق"
 
 #: lib/ui/stdtoolbars.inc:133
 msgid "Insert hyperlink"
-msgstr "ادراج وصلة"
+msgstr "إدراج رابط"
 
 #: lib/ui/stdtoolbars.inc:134
 msgid "Insert TeX code"
@@ -18603,13 +18543,12 @@ msgid "land"
 msgstr "الآيسلندي"
 
 #: lib/ui/stdtoolbars.inc:579
-#, fuzzy
 msgid "lor"
-msgstr "أو"
+msgstr "lor"
 
 #: lib/ui/stdtoolbars.inc:580
 msgid "lnot"
-msgstr ""
+msgstr "lnot"
 
 #: lib/ui/stdtoolbars.inc:584
 msgid "alpha"
@@ -18772,59 +18711,48 @@ msgid "Omega"
 msgstr "اوميغا"
 
 #: lib/ui/stdtoolbars.inc:624
-#, fuzzy
 msgid "varGamma"
-msgstr "جاما"
+msgstr "متغير جاما"
 
 #: lib/ui/stdtoolbars.inc:625
-#, fuzzy
 msgid "varDelta"
-msgstr "دلتا"
+msgstr "متغير دلتا"
 
 #: lib/ui/stdtoolbars.inc:626
-#, fuzzy
 msgid "varTheta"
-msgstr "vartheta"
+msgstr "متغير ثيتا"
 
 #: lib/ui/stdtoolbars.inc:627
-#, fuzzy
 msgid "varLambda"
-msgstr "لمدا"
+msgstr "متغير لمدا"
 
 #: lib/ui/stdtoolbars.inc:628
-#, fuzzy
 msgid "varXi"
-msgstr "varpi"
+msgstr "متغير ساي"
 
 #: lib/ui/stdtoolbars.inc:629
-#, fuzzy
 msgid "varPi"
-msgstr "varpi"
+msgstr "متغير باي"
 
 #: lib/ui/stdtoolbars.inc:630
-#, fuzzy
 msgid "varSigma"
-msgstr "varsigma"
+msgstr "متغير سجما"
 
 #: lib/ui/stdtoolbars.inc:631
-#, fuzzy
 msgid "varUpsilon"
-msgstr "varepsilon"
+msgstr "متغير ابسلون"
 
 #: lib/ui/stdtoolbars.inc:632
-#, fuzzy
 msgid "varPhi"
-msgstr "varphi"
+msgstr "متغير فاي"
 
 #: lib/ui/stdtoolbars.inc:633
-#, fuzzy
 msgid "varPsi"
-msgstr "فارسي"
+msgstr "متغير بساي"
 
 #: lib/ui/stdtoolbars.inc:634
-#, fuzzy
 msgid "varOmega"
-msgstr "اوميغا"
+msgstr "متغير اوميجا"
 
 #: lib/ui/stdtoolbars.inc:638
 msgid "nabla"
@@ -18924,11 +18852,11 @@ msgstr "surd"
 
 #: lib/ui/stdtoolbars.inc:662
 msgid "lhook"
-msgstr ""
+msgstr "lhook"
 
 #: lib/ui/stdtoolbars.inc:663
 msgid "rhook"
-msgstr ""
+msgstr "rhook"
 
 #: lib/ui/stdtoolbars.inc:664
 msgid "triangle"
@@ -18971,9 +18899,8 @@ msgid "textdegree"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:674
-#, fuzzy
 msgid "mathdollar"
-msgstr "مختصر رياضي"
+msgstr "دولار رياضي"
 
 #: lib/ui/stdtoolbars.inc:675
 msgid "mathparagraph"
@@ -19295,7 +19222,7 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:760 lib/ui/stdtoolbars.inc:834
 msgid "XBox"
-msgstr ""
+msgstr "XBox"
 
 #: lib/ui/stdtoolbars.inc:761
 msgid "lozenge"
@@ -19507,15 +19434,15 @@ msgstr "ACT"
 
 #: lib/ui/stdtoolbars.inc:818
 msgid "HF"
-msgstr ""
+msgstr "HF"
 
 #: lib/ui/stdtoolbars.inc:819
 msgid "VHF"
-msgstr ""
+msgstr "VHF"
 
 #: lib/ui/stdtoolbars.inc:820
 msgid "photon"
-msgstr ""
+msgstr "فوتون"
 
 #: lib/ui/stdtoolbars.inc:821
 msgid "gluon"
@@ -19724,9 +19651,8 @@ msgid "APLbox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:876
-#, fuzzy
 msgid "APLcomment"
-msgstr "تعليق"
+msgstr "APLcomment"
 
 #: lib/ui/stdtoolbars.inc:877
 msgid "APLdown"
@@ -20263,7 +20189,7 @@ msgstr "shortparallel"
 
 #: lib/ui/stdtoolbars.inc:1032
 msgid "smallsmile"
-msgstr "smallsmile"
+msgstr "ابتسامة صغيرة"
 
 #: lib/ui/stdtoolbars.inc:1033
 msgid "smallfrown"
@@ -20300,7 +20226,7 @@ msgstr "varpropto"
 
 #: lib/ui/stdtoolbars.inc:1043
 msgid "between"
-msgstr "between"
+msgstr "بين"
 
 #: lib/ui/stdtoolbars.inc:1044
 msgid "pitchfork"
@@ -20366,9 +20292,8 @@ msgid "bbslash"
 msgstr "oslash"
 
 #: lib/ui/stdtoolbars.inc:1057
-#, fuzzy
 msgid "moo"
-msgstr "mho"
+msgstr "moo"
 
 #: lib/ui/stdtoolbars.inc:1058
 msgid "merge"
@@ -20387,19 +20312,16 @@ msgid "rbag"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1062
-#, fuzzy
 msgid "interleave"
-msgstr "intercal"
+msgstr "interleave"
 
 #: lib/ui/stdtoolbars.inc:1063
-#, fuzzy
 msgid "leftslice"
-msgstr "تعيين الخط الايسر"
+msgstr "leftslice"
 
 #: lib/ui/stdtoolbars.inc:1064
-#, fuzzy
 msgid "rightslice"
-msgstr "تعيين الخط الايسر"
+msgstr "rightslice"
 
 #: lib/ui/stdtoolbars.inc:1065
 msgid "oblong"
@@ -20414,38 +20336,32 @@ msgid "fatsemi"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1068
-#, fuzzy
 msgid "fatslash"
-msgstr "oslash"
+msgstr "fatslash"
 
 #: lib/ui/stdtoolbars.inc:1069
-#, fuzzy
 msgid "fatbslash"
-msgstr "oslash"
+msgstr "fatbslash"
 
 #: lib/ui/stdtoolbars.inc:1070
-#, fuzzy
 msgid "ldotp"
-msgstr "ldots"
+msgstr "ldotp"
 
 #: lib/ui/stdtoolbars.inc:1071
-#, fuzzy
 msgid "cdotp"
-msgstr "cdot"
+msgstr "cdotp"
 
 #: lib/ui/stdtoolbars.inc:1072
-#, fuzzy
 msgid "colon"
-msgstr "بدون الوان"
+msgstr "colon"
 
 #: lib/ui/stdtoolbars.inc:1073
 msgid "dblcolon"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1074
-#, fuzzy
 msgid "vcentcolon"
-msgstr "لون الخط"
+msgstr "vcentcolon"
 
 #: lib/ui/stdtoolbars.inc:1075
 #, fuzzy
@@ -20462,29 +20378,24 @@ msgid "coloneq"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1078
-#, fuzzy
 msgid "Coloneq"
-msgstr "اللون"
+msgstr "Coloneq"
 
 #: lib/ui/stdtoolbars.inc:1079
-#, fuzzy
 msgid "coloneqq"
-msgstr "lneqq "
+msgstr "coloneqq "
 
 #: lib/ui/stdtoolbars.inc:1080
-#, fuzzy
 msgid "Coloneqq"
-msgstr "lneqq "
+msgstr "Coloneqq "
 
 #: lib/ui/stdtoolbars.inc:1081
-#, fuzzy
 msgid "colonsim"
-msgstr "lnsim "
+msgstr "colonsim "
 
 #: lib/ui/stdtoolbars.inc:1082
-#, fuzzy
 msgid "Colonsim"
-msgstr "lnsim "
+msgstr "Colonsim "
 
 #: lib/ui/stdtoolbars.inc:1083
 msgid "eqcolon"
@@ -20609,14 +20520,12 @@ msgid "nsucceq"
 msgstr "nsucceq"
 
 #: lib/ui/stdtoolbars.inc:1115
-#, fuzzy
 msgid "precneqq"
-msgstr "preceq"
+msgstr "precneqq"
 
 #: lib/ui/stdtoolbars.inc:1116
-#, fuzzy
 msgid "succneqq"
-msgstr "succeq"
+msgstr "succneqq"
 
 #: lib/ui/stdtoolbars.inc:1117
 msgid "precnsim"
@@ -20655,9 +20564,8 @@ msgid "nsubseteq"
 msgstr "nsubseteq"
 
 #: lib/ui/stdtoolbars.inc:1126
-#, fuzzy
 msgid "nsubseteqq"
-msgstr "subseteqq"
+msgstr "nsubseteqq"
 
 #: lib/ui/stdtoolbars.inc:1127
 msgid "nsupseteq"
@@ -20680,9 +20588,8 @@ msgid "nVDash"
 msgstr "nVDash "
 
 #: lib/ui/stdtoolbars.inc:1132
-#, fuzzy
 msgid "nVdash"
-msgstr "Vdash"
+msgstr "nVdash"
 
 #: lib/ui/stdtoolbars.inc:1133
 msgid "varsubsetneq"
@@ -20941,19 +20848,16 @@ msgid "obar"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1199
-#, fuzzy
 msgid "obslash"
-msgstr "oslash"
+msgstr "obslash"
 
 #: lib/ui/stdtoolbars.inc:1200
-#, fuzzy
 msgid "ocircle"
-msgstr "circledS"
+msgstr "ocircle"
 
 #: lib/ui/stdtoolbars.inc:1201
-#, fuzzy
 msgid "olessthan"
-msgstr "lessdot"
+msgstr "olessthan"
 
 #: lib/ui/stdtoolbars.inc:1202
 msgid "ogreaterthan"
@@ -20964,29 +20868,24 @@ msgid "ovee"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1204
-#, fuzzy
 msgid "owedge"
-msgstr "وتد"
+msgstr "owedge"
 
 #: lib/ui/stdtoolbars.inc:1205
-#, fuzzy
 msgid "varcurlyvee"
-msgstr "curlyvee"
+msgstr "varcurlyvee"
 
 #: lib/ui/stdtoolbars.inc:1206
-#, fuzzy
 msgid "varcurlywedge"
-msgstr "curlywedge"
+msgstr "varcurlywedge"
 
 #: lib/ui/stdtoolbars.inc:1207
-#, fuzzy
 msgid "vartimes"
-msgstr "rtimes"
+msgstr "vartimes"
 
 #: lib/ui/stdtoolbars.inc:1208
-#, fuzzy
 msgid "varotimes"
-msgstr "otimes"
+msgstr "varotimes"
 
 #: lib/ui/stdtoolbars.inc:1209
 msgid "varoast"
@@ -20997,34 +20896,28 @@ msgid "varobar"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1211
-#, fuzzy
 msgid "varodot"
-msgstr "odot"
+msgstr "varodot"
 
 #: lib/ui/stdtoolbars.inc:1212
-#, fuzzy
 msgid "varoslash"
-msgstr "oslash"
+msgstr "varoslash"
 
 #: lib/ui/stdtoolbars.inc:1213
-#, fuzzy
 msgid "varobslash"
-msgstr "oslash"
+msgstr "varobslash"
 
 #: lib/ui/stdtoolbars.inc:1214
-#, fuzzy
 msgid "varocircle"
-msgstr "circledS"
+msgstr "varocircle"
 
 #: lib/ui/stdtoolbars.inc:1215
-#, fuzzy
 msgid "varoplus"
-msgstr "oplus"
+msgstr "varoplus"
 
 #: lib/ui/stdtoolbars.inc:1216
-#, fuzzy
 msgid "varominus"
-msgstr "ominus"
+msgstr "varominus"
 
 #: lib/ui/stdtoolbars.inc:1217
 msgid "varovee"
@@ -21871,9 +21764,8 @@ msgid "XFig"
 msgstr "XFig"
 
 #: lib/external_templates:149 lib/external_templates:152
-#, fuzzy
 msgid "Xfig figure"
-msgstr "صورة توضيحية"
+msgstr "رسم توضيحي"
 
 #: lib/external_templates:151
 msgid "An Xfig figure.\n"
@@ -23911,24 +23803,24 @@ msgid "Emphasis %1$s, "
 msgstr ""
 
 #: src/Font.cpp:165
-#, fuzzy, c-format
+#, c-format
 msgid "Underline %1$s, "
-msgstr "سطر سفلي"
+msgstr "تحت السطر %1$s, "
 
 #: src/Font.cpp:168
-#, fuzzy, c-format
+#, c-format
 msgid "Strikeout %1$s, "
-msgstr "اسم %1$s, "
+msgstr "وسطه خط %1$s, "
 
 #: src/Font.cpp:171
-#, fuzzy, c-format
+#, c-format
 msgid "Double underline %1$s, "
-msgstr "سطر سفلي"
+msgstr "خط مزدوج تحت السطر %1$s, "
 
 #: src/Font.cpp:174
-#, fuzzy, c-format
+#, c-format
 msgid "Wavy underline %1$s, "
-msgstr "سطر سفلي"
+msgstr "خط موجي تحت السطر %1$s, "
 
 #: src/Font.cpp:177
 #, c-format
@@ -23999,9 +23891,8 @@ msgstr ""
 "من فضلك تأكد من عملية التنصيب."
 
 #: src/KeyMap.cpp:234
-#, fuzzy
 msgid "Could not find `cua.bind' file"
-msgstr "غير قادر على العثور على ملف الـUI الأفتراضي"
+msgstr "لم يتم العثور على ملف `cua.bind' "
 
 #: src/KeyMap.cpp:235
 #, fuzzy
@@ -24138,7 +24029,7 @@ msgstr ""
 
 #: src/LyX.cpp:541
 msgid "&Reconfigure"
-msgstr "&اعادة ضبط النظام"
+msgstr "&إعادة ضبط النظام"
 
 #: src/LyX.cpp:542
 msgid "&Without LaTeX"
@@ -24935,9 +24826,8 @@ msgid "Unknown author index for change: %1$d\n"
 msgstr ""
 
 #: src/Text.cpp:528
-#, fuzzy
 msgid "Unknown token"
-msgstr "فعل مجهول"
+msgstr "متحدث مجهول"
 
 #: src/Text.cpp:989
 msgid ""
@@ -24985,9 +24875,8 @@ msgid "Other ("
 msgstr "أخرى ("
 
 #: src/Text.cpp:1888
-#, fuzzy
 msgid ", Inset: "
-msgstr "ادراج صندوق"
+msgstr ""
 
 #: src/Text.cpp:1889
 msgid ", Paragraph: "
@@ -25654,17 +25543,16 @@ msgid "System reconfiguration failed"
 msgstr "تعذر اعادة ضبط النظام"
 
 #: src/frontends/qt4/GuiApplication.cpp:1440
-#, fuzzy
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may\n"
 "not be able to work properly.\n"
 "Please reconfigure again if needed."
 msgstr ""
-"فشل اعادة ضبط النظام.\n"
-"سيتم استخدام القسم النصي الافتراضي ولكن LyX قد يكون غير قادر على العمل "
+"فشل إعادة ضبط النظام.\n"
+"سيتم استخدام القسم النصي الافتراضي ولكن ليك قد يكون غير قادر على العمل "
 "بكفاءة.\n"
-"من فضلك أعد الضبط مرة اخرى عند الحاجة."
+"من فضلك أعد الضبط مرة أخرى عند الحاجة."
 
 #: src/frontends/qt4/GuiApplication.cpp:1445
 msgid "System reconfigured"
@@ -25800,9 +25688,8 @@ msgid "BibTeX Databases (*.bib)"
 msgstr "BibTeX قاعدة بيانات (*.bib)"
 
 #: src/frontends/qt4/GuiBibtex.cpp:439
-#, fuzzy
 msgid "Select a BibTeX database to add"
-msgstr "BibTeX يمكن استخدام قاعدة بيانات"
+msgstr "اختر قاعد بيانات BibTeX لإضافتها"
 
 #: src/frontends/qt4/GuiBibtex.cpp:447
 msgid "BibTeX Styles (*.bst)"
@@ -25866,9 +25753,8 @@ msgid "Color"
 msgstr "اللون"
 
 #: src/frontends/qt4/GuiBranches.cpp:56
-#, fuzzy
 msgid "Filename Suffix"
-msgstr "اسم الملف"
+msgstr "لاحقة اسم الملف"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
 #: src/frontends/qt4/GuiDocument.cpp:2463
@@ -25956,20 +25842,19 @@ msgstr "اعادة ضبط"
 
 #: src/frontends/qt4/GuiCharacter.cpp:78
 msgid "Underbar"
-msgstr "شريط سفلي"
+msgstr "تحته خط"
 
 #: src/frontends/qt4/GuiCharacter.cpp:79
 msgid "Double underbar"
-msgstr "شريط سفلي مزدوج"
+msgstr "تحته خط مزدوج"
 
 #: src/frontends/qt4/GuiCharacter.cpp:80
-#, fuzzy
 msgid "Wavy underbar"
-msgstr "شريط سفلي"
+msgstr "تحته خط موجي"
 
 #: src/frontends/qt4/GuiCharacter.cpp:81
 msgid "Strikeout"
-msgstr ""
+msgstr "وسطه خط"
 
 #: src/frontends/qt4/GuiCharacter.cpp:92
 msgid "No color"
@@ -26351,7 +26236,7 @@ msgstr "JIS B6"
 
 #: src/frontends/qt4/GuiDocument.cpp:1029
 msgid "Language Default (no inputenc)"
-msgstr "اللغة الافتراضية (no inputenc)"
+msgstr "اللغة الافتراضية (لا مدخلات)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1040
 msgid "``text''"
@@ -26974,9 +26859,8 @@ msgid "package"
 msgstr "مجموعة"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
-#, fuzzy
 msgid "textclass"
-msgstr "نص"
+msgstr "نوع النص"
 
 #: src/frontends/qt4/GuiInfo.cpp:47
 msgid "menu"
@@ -27162,9 +27046,8 @@ msgstr "الإكمال التلقائي للمدخلات"
 
 #: src/frontends/qt4/GuiPrefs.cpp:761 src/frontends/qt4/GuiPrefs.cpp:786
 #: src/frontends/qt4/GuiPrefs.cpp:874 src/frontends/qt4/GuiPrefs.cpp:901
-#, fuzzy
 msgid "Co&mmand:"
-msgstr "&الامر:"
+msgstr "الأم&ر:"
 
 #: src/frontends/qt4/GuiPrefs.cpp:931
 msgid "Screen Fonts"
@@ -27300,9 +27183,8 @@ msgid "Shortcut"
 msgstr "اختصار"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2871
-#, fuzzy
 msgid "Cursor, Mouse and Editing Functions"
-msgstr "المؤشر, الفارة وتحرير الدوال"
+msgstr "المؤشر, الفارة ووظائف التحرير"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2875
 msgid "Mathematical Symbols"
@@ -27679,7 +27561,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:108
 msgid "CJK Compatibility"
-msgstr ""
+msgstr "متوافق مع CJK"
 
 #: src/frontends/qt4/GuiSymbols.cpp:109
 msgid "CJK Unified Ideographs"
@@ -28482,7 +28364,7 @@ msgstr "قوائم أخرى"
 
 #: src/frontends/qt4/Menus.cpp:1341
 msgid "<Empty Table of Contents>"
-msgstr "<جدول فارغ>"
+msgstr "<جدول المحتويات فارغ>"
 
 #: src/frontends/qt4/Menus.cpp:1376
 msgid "Other Toolbars"
@@ -29067,9 +28949,8 @@ msgid ""
 msgstr ""
 
 #: src/insets/InsetIndex.cpp:144
-#, fuzzy
 msgid "Index sorting failed"
-msgstr "فشل التحويل"
+msgstr "فشل فرز الفهرس"
 
 #: src/insets/InsetIndex.cpp:145
 #, c-format
@@ -29616,7 +29497,7 @@ msgstr "ex"
 
 #: src/lengthcommon.cpp:45
 msgid "mu[[unit of measure]]"
-msgstr ""
+msgstr "mu[[unit of measure]]"
 
 #: src/lengthcommon.cpp:45
 msgid "pc"
@@ -29787,11 +29668,11 @@ msgstr "تشغيل التصحيح الآلي (<مسافة> للخروج)"
 
 #: src/mathed/InsetMathRef.cpp:225
 msgid "Standard[[mathref]]"
-msgstr ""
+msgstr "قياسي[[mathref]]"
 
 #: src/mathed/InsetMathRef.cpp:230
 msgid "PrettyRef"
-msgstr ""
+msgstr "PrettyRef"
 
 #: src/mathed/InsetMathRef.cpp:230
 #, fuzzy
@@ -29897,7 +29778,7 @@ msgstr "إيقاف&"
 
 #: src/support/Systemcall.cpp:391
 msgid "Let it &run"
-msgstr ""
+msgstr "اجع&له يعمل"
 
 #: src/support/debug.cpp:42
 msgid "No debugging messages"
