@@ -2178,6 +2178,13 @@ def convert_beamerargs(document):
                                 if document.body[p + 9].endswith(">"):
                                     # strip off the >
                                     document.body[p + 9] = document.body[p + 9][:-1]
+                        elif document.body[p + 4].startswith("<"):
+                            # This is an overlay specification (without ERT)
+                            # strip off the <
+                            document.body[p + 4] = document.body[p + 4][1:]
+                            if document.body[p + 4].endswith(">"):
+                                # strip off the >
+                                document.body[p + 4] = document.body[p + 4][:-1]
                         elif layoutname != "Itemize":
                             # Shift this one
                             document.body[p] = "\\begin_inset Argument 2"
