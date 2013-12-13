@@ -72,7 +72,7 @@ elsif ($source =~ /\/fa\//) {
   $font{typewriter} = "FreeFarsi Monospace";
 }
 elsif ($source =~ /\/zh_CN\//) {
-  $font{roman} = "FreeSans";
+  $font{roman} = "WenQuanYi Micro Hei";
   $font{sans} = "WenQuanYi Micro Hei";
   $font{typewriter} = "WenQuanYi Micro Hei";
 }
