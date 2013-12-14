@@ -354,8 +354,7 @@ void InsetIPADeco::string2params(string const & in, InsetIPADecoParams & params)
 
 void InsetIPADeco::validate(LaTeXFeatures & features) const
 {
-	if (!buffer_->params().useNonTeXFonts)
-		features.require("tipa");
+	features.require("tipa");
 	InsetText::validate(features);
 }
 
@@ -610,8 +609,7 @@ void InsetIPAChar::validate(LaTeXFeatures & features) const
 	case TONE_HIGH_RISING:
 	case TONE_LOW_RISING:
 	case TONE_HIGH_RISING_FALLING:
-		if (!buffer_->params().useNonTeXFonts)
-			features.require("tone");
+		features.require("tone");
 		break;
 	default:
 		break;

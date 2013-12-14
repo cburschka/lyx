@@ -709,9 +709,6 @@ char const * simplefeatures[] = {
 	"fancybox",
 	"calc",
 	"units",
-	"tipa",
-	"tipx",
-	"tone",
 	"framed",
 	"soul",
 	"textcomp",
@@ -858,6 +855,16 @@ string const LaTeXFeatures::getPackages() const
 
 	// The rest of these packages are somewhat more complicated
 	// than those above.
+
+	// The tipa package and its extenstions (tipx, tone) must not
+	// be loaded with non-TeX font, since fontspec includes the
+	// respective macros
+	if (mustProvide("tipa") && !params_.useNonTeXFonts)
+		packages << "\\usepackage{tipa}\n";
+	if (mustProvide("tipx") && !params_.useNonTeXFonts)
+		packages << "\\usepackage{tipx}\n";
+	if (mustProvide("tone") && !params_.useNonTeXFonts)
+		packages << "\\usepackage{tone}\n";
 
 	// if fontspec or newtxmath is used, AMS packages have to be loaded
 	// before fontspec (in BufferParams)
