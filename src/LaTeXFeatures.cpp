@@ -856,8 +856,8 @@ string const LaTeXFeatures::getPackages() const
 	// The rest of these packages are somewhat more complicated
 	// than those above.
 
-	// The tipa package and its extenstions (tipx, tone) must not
-	// be loaded with non-TeX font, since fontspec includes the
+	// The tipa package and its extensions (tipx, tone) must not
+	// be loaded with non-TeX fonts, since fontspec includes the
 	// respective macros
 	if (mustProvide("tipa") && !params_.useNonTeXFonts)
 		packages << "\\usepackage{tipa}\n";
