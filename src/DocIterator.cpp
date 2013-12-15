@@ -217,7 +217,7 @@ CursorSlice const & DocIterator::innerTextSlice() const
 		if (slices_[i].text())
 			return slices_[i];
 
-	// This case is in principe not possible. We _must_
+	// This case is in principle not possible. We _must_
 	// be inside a Text.
 	LBUFERR(false);
 	// Squash warning
