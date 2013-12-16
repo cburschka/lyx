@@ -1,48 +1,86 @@
 # Hebrew docs do not currently work with LuaTeX
-export/doc/he/Intro_pdf5
-export/doc/he/Intro_dvi3
-export/doc/he/Tutorial_pdf5
-export/doc/he/Tutorial_dvi3
-export/examples/he/example_lyxified_pdf5
-export/examples/he/example_lyxified_dvi3
-export/examples/he/example_raw_pdf5
-export/examples/he/example_raw_dvi3
-export/examples/he/splash_pdf5
-export/examples/he/splash_dvi3
+export/doc/he/Intro_pdf5_systemF
+export/doc/he/Intro_pdf5_texF
+export/doc/he/Intro_dvi3_systemF
+export/doc/he/Intro_dvi3_texF
+export/doc/he/Tutorial_pdf5_systemF
+export/doc/he/Tutorial_pdf5_texF
+export/doc/he/Tutorial_dvi3_systemF
+export/doc/he/Tutorial_dvi3_texF
+export/examples/he/example_lyxified_pdf5_systemF
+export/examples/he/example_lyxified_pdf5_texF
+export/examples/he/example_lyxified_dvi3_systemF
+export/examples/he/example_lyxified_dvi3_texF
+export/examples/he/example_raw_pdf5_systemF
+export/examples/he/example_raw_pdf5_texF
+export/examples/he/example_raw_dvi3_systemF
+export/examples/he/example_raw_dvi3_texF
+export/examples/he/splash_pdf5_systemF
+export/examples/he/splash_pdf5_texF
+export/examples/he/splash_dvi3_systemF
+export/examples/he/splash_dvi3_texF
 #
 # FIXME
 # After LyX 2.1 is released, apply the patch and remove these
 # See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
-export/doc/id/Intro_pdf5
-export/doc/id/Intro_dvi3
-export/doc/id/Shortcuts_pdf5
-export/doc/id/Shortcuts_dvi3
-export/doc/id/Tutorial_pdf5
-export/doc/id/Tutorial_dvi3
-export/doc/id/UserGuide_pdf5
-export/doc/id/UserGuide_dvi3
-export/examples/id/splash_pdf5
-export/examples/id/splash_dvi3
+export/doc/id/Intro_pdf5_systemF
+export/doc/id/Intro_pdf5_texF
+export/doc/id/Intro_dvi3_systemF
+export/doc/id/Intro_dvi3_texF
+export/doc/id/Shortcuts_pdf5_systemF
+export/doc/id/Shortcuts_pdf5_texF
+export/doc/id/Shortcuts_dvi3_systemF
+export/doc/id/Shortcuts_dvi3_texF
+export/doc/id/Tutorial_pdf5_systemF
+export/doc/id/Tutorial_pdf5_texF
+export/doc/id/Tutorial_dvi3_systemF
+export/doc/id/Tutorial_dvi3_texF
+export/doc/id/UserGuide_pdf5_systemF
+export/doc/id/UserGuide_pdf5_texF
+export/doc/id/UserGuide_dvi3_systemF
+export/doc/id/UserGuide_dvi3_texF
+export/examples/id/splash_pdf5_systemF
+export/examples/id/splash_pdf5_texF
+export/examples/id/splash_dvi3_systemF
+export/examples/id/splash_dvi3_texF
 #
 # FIXME
 # Similar to the Indonesian support, see:
 # http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
-export/doc/hu/Intro_pdf5
-export/doc/hu/Intro_dvi3
-export/examples/hu/example_lyxified_pdf5
-export/examples/hu/example_lyxified_dvi3
-export/examples/hu/example_raw_pdf5
-export/examples/hu/example_raw_dvi3
-export/examples/hu/splash_pdf5
-export/examples/hu/splash_dvi3
+export/doc/hu/Intro_pdf5_systemF
+export/doc/hu/Intro_pdf5_texF
+export/doc/hu/Intro_dvi3_systemF
+export/doc/hu/Intro_dvi3_texF
+export/examples/hu/example_lyxified_pdf5_systemF
+export/examples/hu/example_lyxified_pdf5_texF
+export/examples/hu/example_lyxified_dvi3_systemF
+export/examples/hu/example_lyxified_dvi3_texF
+export/examples/hu/example_raw_pdf5_systemF
+export/examples/hu/example_raw_pdf5_texF
+export/examples/hu/example_raw_dvi3_systemF
+export/examples/hu/example_raw_dvi3_texF
+export/examples/hu/splash_pdf5_systemF
+export/examples/hu/splash_pdf5_texF
+export/examples/hu/splash_dvi3_systemF
+export/examples/hu/splash_dvi3_texF
 #
 # Export with XeTeX and LuaTeX (with either non-tex fonts or 8-bit
 # compatibility mode) does not work because the loading of inputenc with
 # utf8x is hardcoded in europecv.cls at the time of this writing. See:
 # http://comments.gmane.org/gmane.editors.lyx.devel/145896
-export/examples/es/europeCV_pdf4
-export/examples/es/europeCV_pdf5
-export/examples/es/europeCV_dvi3
+export/examples/es/europeCV_pdf4_systemF
+export/examples/es/europeCV_pdf4_texF
+export/examples/es/europeCV_pdf5_systemF
+export/examples/es/europeCV_pdf5_texF
+export/examples/es/europeCV_dvi3_systemF
+export/examples/es/europeCV_dvi3_texF
+#
+# somehow lualatex is not able to compile with non-tex fonts
+export/doc/es/Math_dvi3_systemF
+export/doc/es/Tutorial_dvi3_systemF
+export/doc/es/UserGuide_dvi3_systemF
+export/examples/es/ejemplo_con_lyx_dvi3_systemF
+
 # See http://www.lyx.org/trac/ticket/8823
 export/examples/ja/lilypond_pdf
 export/examples/ja/sweave_pdf
@@ -51,15 +89,19 @@ export/examples/ja/knitr_pdf
 # luainputenc.sty loads luatex.sty
 # Both files (luatex.sty and ectaart.cls) define
 # the latex-command \setattribute
-export/templates/ectaart_pdf5
-export/templates/ectaart_dvi3
+export/templates/ectaart_pdf5_systemF
+export/templates/ectaart_pdf5_texF
+export/templates/ectaart_dvi3_systemF
+export/templates/ectaart_dvi3_texF
 #
 # LuaTeX does not support Farsi yet. See:
 # https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
-export/examples/fa/splash_pdf5
-export/examples/fa/splash_dvi3
+export/examples/fa/splash_pdf5_systemF
+export/examples/fa/splash_pdf5_texF
+export/examples/fa/splash_dvi3_systemF
+export/examples/fa/splash_dvi3_texF
 #
 # There is no non-TeX support for Ukrainian with LuaTeX. See:
 # https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181690.html
-export/doc/uk/Intro_pdf5
-export/doc/uk/Intro_dvi3
+export/doc/uk/Intro_pdf5_systemF
+export/doc/uk/Intro_dvi3_systemF

@@ -218,24 +218,36 @@ foreach(libsubfolder doc examples templates)
     endif()
     getoutputformats("${LIBSUB_SRC_DIR}/${f}.lyx" formatlist)
     foreach(format ${formatlist})
-      set(TestName "export/${libsubfolder}/${f}_${format}")
-      maketestname(TestName reverted revertedTests ignoredTests)
-      if(TestName)
-        add_test(NAME ${TestName}
-          WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
-          COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
+      if(format MATCHES "dvi3|pdf4|pdf5")
+        set(fonttypes "texF" "systemF")
+      else()
+        set(fonttypes "defaultF")
+      endif()
+      foreach(fonttype ${fonttypes})
+        if(fonttype MATCHES "defaultF")
+          set(TestName "export/${libsubfolder}/${f}_${format}")
+        else()
+          set(TestName "export/${libsubfolder}/${f}_${format}_${fonttype}")
+        endif()
+        maketestname(TestName reverted revertedTests ignoredTests)
+        if(TestName)
+          add_test(NAME ${TestName}
+            WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
+            COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
             -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}
             -Dlyx=$<TARGET_FILE:${_lyx}>
             -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
             -Dformat=${format}
+            -Dfonttype=${fonttype}
             -Dextension=${format}
             -Dfile=${f}
             -Dreverted=${reverted}
             -DTOP_SRC_DIR=${TOP_SRC_DIR}
             -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
             -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
-        setmarkedtestlabel(${TestName} ${reverted} "export")
-      endif()
+          setmarkedtestlabel(${TestName} ${reverted} "export")
+        endif()
+      endforeach()
     endforeach()
   endforeach()
 endforeach()

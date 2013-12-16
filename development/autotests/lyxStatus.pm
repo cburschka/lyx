@@ -15,6 +15,8 @@ BEGIN {
 
 my @stack = ();			# list of HASH-Arrays
 my $rFont = {};
+my $useNonTexFont = "true";
+
 # The elements are:
 # type (layout, inset, header, preamble, ...)
 # name
@@ -27,9 +29,15 @@ my $rFont = {};
 #              but first set the modified value into $result->[$fileidx]
 #              numerical value will be replaced with appropriate matching group value
 
-sub initLyxStack($)
+sub initLyxStack($$)
 {
   $rFont = $_[0];
+  if ($_[1] eq "systemF") {
+    $useNonTexFont = "true";
+  }
+  else {
+    $useNonTexFont = "false";
+  }
   $stack[0] = { type => "Starting"};
 }
 
@@ -168,16 +176,16 @@ sub checkForHeader($)
 			   "result" => ["\\master ", ""]);
     if (keys %{$rFont}) {
       for my $ff ( keys %{$rFont}) {
-	my $elem = &newMatch("search" => '^\\\\font_' . $ff . '\s+default',
+	my $elem = &newMatch("search" => '^\\\\font_' . $ff . '\s+',
 			     "filetype" => "replace_only",
 			     "result" => ["\\font_$ff ", $rFont->{$ff}]);
 	push(@rElems, $elem);
       }
-      my $elemntf = &newMatch("search" => '^\\\\use_non_tex_fonts\s+false',
-			      "filetype" => "replace_only",
-			      "result" => ["\\use_non_tex_fonts true"]);
-      push(@rElems, $elemntf);
     }
+    my $elemntf = &newMatch("search" => '^\\\\use_non_tex_fonts\s+(false|true)',
+			    "filetype" => "replace_only",
+			    "result" => ["\\use_non_tex_fonts $useNonTexFont"]);
+    push(@rElems, $elemntf);
     &setMatching(\@rElems);
     return(1);
   }

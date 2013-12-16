@@ -18,6 +18,7 @@
 #       -DLYX_USERDIR_VER=${LYX_USERDIR_VER} \
 #       -Dlyx=xxx \
 #       -Dformat=xxx \
+#       -Dfonttype=xxx \
 #       -Dextension=xxx \
 #       -Dfile=xxx \
 #       -Dreverted=[01] \
@@ -27,13 +28,15 @@
 #
 
 set(Perl_Script "${TOP_SRC_DIR}/development/autotests/useSystemFonts.pl")
+set(_ft ${fonttype})
+message(STATUS "using fonttype = ${_ft}")
 if(format MATCHES "dvi3|pdf4|pdf5")
   message(STATUS "LYX_TESTS_USERDIR = ${LYX_TESTS_USERDIR}")
   message(STATUS "Converting with perl ${Perl_Script}")
-  set(LYX_SOURCE "${WORKDIR}/${file}_${format}.lyx")
+  set(LYX_SOURCE "${WORKDIR}/${file}_${format}_${_ft}.lyx")
   message(STATUS "Using source \"${LYX_ROOT}/${file}.lyx\"")
   message(STATUS "Using dest \"${LYX_SOURCE}\"")
-  execute_process(COMMAND ${PERL_EXECUTABLE} "${Perl_Script}" "${LYX_ROOT}/${file}.lyx" "${LYX_SOURCE}" ${format}
+  execute_process(COMMAND ${PERL_EXECUTABLE} "${Perl_Script}" "${LYX_ROOT}/${file}.lyx" "${LYX_SOURCE}" ${format} ${_ft}
     RESULT_VARIABLE _err)
   string(COMPARE EQUAL  ${_err} 0 _erg)
   if(NOT _erg)

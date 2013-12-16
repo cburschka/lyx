@@ -49,35 +49,47 @@ use lyxStatus;
 
 # convert lyx file to be compilable with xetex
 
-my ($source, $dest, $format, $rest) = @ARGV;
+my ($source, $dest, $format, $fontT, $rest) = @ARGV;
 
 &diestack("Too many arguments") if (defined($rest));
 &diestack("Sourcefilename not defined") if (! defined($source));
 &diestack("Destfilename not defined") if (! defined($dest));
 &diestack("Format (e.g. pdf4) not defined") if (! defined($format));
+&diestack("Font type (e.g. texF) not defined") if (! defined($fontT));
 
 $source = File::Spec->rel2abs($source);
 $dest = File::Spec->rel2abs($dest);
 
 my %font = ();
-
-if ($source =~ /\/(he|el|ru|uk)\//) {
-  $font{roman} = "FreeSans";
-  $font{sans} = "FreeSans";
-  $font{typewriter} = "FreeSans";
+my $lang = "main";
+if ($source =~ /\/([a-z][a-z](_[A-Z][A-Z])?)\//) {
+  $lang = $1;
 }
-elsif ($source =~ /\/fa\//) {
-  $font{roman} = "FreeFarsi";
-  $font{sans} = "FreeFarsi";
-  $font{typewriter} = "FreeFarsi Monospace";
-}
-elsif ($source =~ /\/zh_CN\//) {
-  $font{roman} = "WenQuanYi Micro Hei";
-  $font{sans} = "WenQuanYi Micro Hei";
-  $font{typewriter} = "WenQuanYi Micro Hei";
+if ($fontT eq "systemF") {
+  if ($lang =~ /^(he|el|ru|uk|main)$/) {
+    $font{roman} = "FreeSans";
+    $font{sans} = "FreeSans";
+    $font{typewriter} = "FreeSans";
+  }
+  elsif ($lang eq "fa") {
+    $font{roman} = "FreeFarsi";
+    $font{sans} = "FreeFarsi";
+    $font{typewriter} = "FreeFarsi Monospace";
+  }
+  elsif ($lang eq "zh_CN") {
+    $font{roman} = "WenQuanYi Micro Hei";
+    $font{sans} = "WenQuanYi Micro Hei";
+    $font{typewriter} = "WenQuanYi Micro Hei";
+  }
+  else {
+    # default system fonts
+    $font{roman} = "FreeSans";
+    $font{sans} = "FreeSans";
+    $font{typewriter} = "FreeSans";
+  }
 }
 else {
-  # Nothing to do?
+  # use tex font here
 }
 
 my $sourcedir = dirname($source);
@@ -89,13 +101,7 @@ if (! -d $destdir) {
 my $destdirOfSubdocuments;
 {
   my ($name, $pat, $suffix) = fileparse($source, qr/\.[^.]*/);
-  my $ext = $format;
-  if ($source =~ /\/([a-z][a-z](_[A-Z][A-Z])?)\//) {
-    $ext .= "_$1";
-  }
-  else {
-    $ext .= "_main";
-  }
+  my $ext = $format . "_$lang";
   $destdirOfSubdocuments = "$destdir/tmp_$ext" . "_$name"; # Global var, something TODO here
 }
 
@@ -140,7 +146,7 @@ sub interpretedCopy($$$$)
   &diestack("could not read \"$source\"") if (!open(FI, $source));
   &diestack("could not write \"$dest\"") if (! open(FO, '>', $dest));
 
-  &initLyxStack(\%font);
+  &initLyxStack(\%font, $fontT);
 
   while (my $l = <FI>) {
     chomp($l);
