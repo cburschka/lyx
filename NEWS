@@ -1,6 +1,14 @@
 What's new in version 2.0.7?
 ----------------------------
 
+2.0.7 is another bug-fixing release. Most of these are minor, but there
+is one that is very ipmortant: #8854, which could lead to file corruption
+in certain cases and, more often, would lead to errors in generated
+files (e.g., PDFs). We encourage all LyX users to upgrade to this 
+version.
+
+A number of other, less critical bugs have also been fixed. Please see
+the ANNOUNCE file for details.
 
 
 What's new in version 2.0.6?

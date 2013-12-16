@@ -6,8 +6,12 @@ maintenance release in the 2.0.x series.
 
 LyX 2.0.7 is the result of on-going efforts to make our stable version
 even more reliable and stable. We have fixed a number of bugs and made
-a number of improvements. These are detailed below. We encourage all
-LyX users to upgrade to this version.
+a number of improvements. These are detailed below. 
+
+The most important bug was #8854, which could lead to file corruption
+in certain cases and, more often, would lead to errors in generated
+files (e.g., PDFs). We encourage all LyX users to upgrade to this 
+version.
 
 LyX is a document processor that encourages an approach to writing based 
 on the structure of your documents and not simply their appearance. It is
@@ -33,3 +37,112 @@ http://www.lyx.org
 What's new in LyX 2.0.7
 =======================
 
+** Updates:
+***********
+
+* DOCUMENTATION AND LOCALIZATION
+
+- Updated Interlingua, Japanese, Nynorsk, Swedish and Ukrainian user interface
+  localizations.
+
+- Revised French Intro and User Guide.
+
+
+** Bug fixes:
+*************
+
+* DOCUMENT INPUT/OUTPUT
+
+- Fix garbage in document export (and maybe other places) by making encoding
+  conversions thread-safe (bug 8854).
+
+- Fix output of ulem commands (underline etc.) which was broken as of
+  LyX 2.0.6 (bug 8733).
+
+- Fix problem with unbalanced braces in XeTeX output (bug 8765).
+
+- Fix problems with unbalanced braces with a secondary CJK language
+  (bug 8215).
+
+- Fix state of certain language packages (polyglossia, japanese) in
+  child documents (bug 8770).
+
+- Fix compilation of documents containing chemical equations and math
+  integrals (bug 8731).
+
+- Fix compilation with nested ("sub") custom floats.
+
+- Fix import of CSV-files.
+
+- Added h5 and h6 as HTML tags for Paragraph and Subparagraph.
+
+- Include alt tag when exporting math as images (bug 8746).
+
+
+* USER INTERFACE
+
+- Fix crash when saving document with module that is not present (bug
+  8523).
+
+- Fix crash when changing alignment of several cells in tabular (bug 8859).
+
+- Disable invalid actions in empty outliner that could trigger a crash
+  (bug 8885).
+ 
+- Fix warning when setting layout box when Plain Layout is used (bug 8727).
+
+- Fix bug where searching for next change may leave an empty paragraph
+  where cursor was (bug 3199).
+
+- Fix activation of branches from command line (bug 8627).
+
+- Fix display of appendix counters in some classes (bug 8666).
+
+- Fix toggling of "misc" font options (bug 8764).
+
+- Handle undo correctly when a branch is (de)activated.
+
+- Update a bibliography entry's label when it is emptied.
+
+- Insets in a bibliography entry are shown as text in the citation dialog.
+
+- Correctly detect python scripts required by the preview mechanism.
+
+- Fix display of file names with ampersands in the tab header (bug 8757).
+
+- The koma-script book class numbers equations by chapter.
+
+- Fix shortcut conflict in the citation dialog (bug 8878).
+
+- Fix wrong display of style "Description" in "article (paper)" class
+  (bug 8869).
+
+
+* DOCUMENTATION AND LOCALIZATION
+
+- Make the aa.lyx template file and the aa_sample.lyx example file compilable.
+
+- Make the AEA.lyx template file compilable.
+
+- Make the landslide example file compilable.
+
+- Fix problem that the Chinese Tutorial could not be viewed as PDF on
+  some systems. 
+
+
+* LYXHTML
+
+- Fix problem with size of superscripts and such inside footnotes (bug 8610).
+
+- Add missing space before the edition in the bibliography (part of bug 8488).
+
+- Fix random character inserted as year modifier in author-year citations.
+
+
+* BUILD/INSTALLATION
+
+- Add support for automake 1.13.
+
+- Fix compilation with clang LLVM compiler.
+
+- Fix Qt tools search when a Qt directory has been specified.
