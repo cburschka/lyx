@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-11-24 11:51-0500\n"
+"POT-Creation-Date: 2013-12-16 14:22-0500\n"
 "PO-Revision-Date: 2013-11-25 14:00+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
@@ -2923,7 +2923,7 @@ msgstr "&Найдовша мітка"
 msgid "Line &spacing"
 msgstr "Міжрядковий &проміжок"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1824
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1827
 #: src/frontends/qt4/GuiDocument.cpp:692
 msgid "Single"
 msgstr "Одинарний"
@@ -2932,7 +2932,7 @@ msgstr "Одинарний"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1830
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1833
 #: src/frontends/qt4/GuiDocument.cpp:696
 msgid "Double"
 msgstr "Подвійна"
@@ -19419,7 +19419,7 @@ msgstr "Не знайдено переліку авторів для зміни:
 msgid "Unknown token"
 msgstr "Невідома позначка"
 
-#: src/Text.cpp:949
+#: src/Text.cpp:952
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -19427,67 +19427,67 @@ msgstr ""
 "ви не можете вставляти пробіли на початку абзацу. Будь ласка, прочитайте "
 "Підручник."
 
-#: src/Text.cpp:957
+#: src/Text.cpp:960
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "ви не можете вводити два пробіли підряд таким способом. Будь ласка, "
 "прочитайте Підручник."
 
-#: src/Text.cpp:1790
+#: src/Text.cpp:1793
 msgid "[Change Tracking] "
 msgstr "[Змінити слідкування] "
 
-#: src/Text.cpp:1796
+#: src/Text.cpp:1799
 msgid "Change: "
 msgstr "Зміна: "
 
-#: src/Text.cpp:1800
+#: src/Text.cpp:1803
 msgid " at "
 msgstr " в "
 
-#: src/Text.cpp:1810
+#: src/Text.cpp:1813
 #, c-format
 msgid "Font: %1$s"
 msgstr "Шрифт: %1$s"
 
-#: src/Text.cpp:1815
+#: src/Text.cpp:1818
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Глибина: %1$d"
 
-#: src/Text.cpp:1821
+#: src/Text.cpp:1824
 msgid ", Spacing: "
 msgstr ", Проміжки: "
 
-#: src/Text.cpp:1827 src/frontends/qt4/GuiDocument.cpp:694
+#: src/Text.cpp:1830 src/frontends/qt4/GuiDocument.cpp:694
 msgid "OneHalf"
 msgstr "Півтора"
 
-#: src/Text.cpp:1833
+#: src/Text.cpp:1836
 msgid "Other ("
 msgstr "Інший ("
 
-#: src/Text.cpp:1842
+#: src/Text.cpp:1845
 msgid ", Inset: "
 msgstr ", Рівень: "
 
-#: src/Text.cpp:1843
+#: src/Text.cpp:1846
 msgid ", Paragraph: "
 msgstr ", Абзаців: "
 
-#: src/Text.cpp:1844
+#: src/Text.cpp:1847
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1845
+#: src/Text.cpp:1848
 msgid ", Position: "
 msgstr ", Позиція: "
 
-#: src/Text.cpp:1851
+#: src/Text.cpp:1854
 msgid ", Char: 0x"
 msgstr ", Симв: 0x"
 
-#: src/Text.cpp:1853
+#: src/Text.cpp:1856
 msgid ", Boundary: "
 msgstr ", Границя: "
 

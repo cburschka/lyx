@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.5.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-11-24 11:51-0500\n"
+"POT-Creation-Date: 2013-12-16 14:22-0500\n"
 "PO-Revision-Date: 2007-06-26 17:10+0100\n"
 "Last-Translator: Wei-Lun Chao <chaoweilun@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -3035,7 +3035,7 @@ msgstr "最長的標籤(&L)"
 msgid "Line &spacing"
 msgstr "列距(&I)："
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1824
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1827
 #: src/frontends/qt4/GuiDocument.cpp:692
 msgid "Single"
 msgstr "一倍"
@@ -3044,7 +3044,7 @@ msgstr "一倍"
 msgid "1.5"
 msgstr "一倍半"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1830
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1833
 #: src/frontends/qt4/GuiDocument.cpp:696
 msgid "Double"
 msgstr "雙倍"
@@ -20147,71 +20147,71 @@ msgstr "插入時不明的作者索引：%1$d\n"
 msgid "Unknown token"
 msgstr "不明的符記"
 
-#: src/Text.cpp:949
+#: src/Text.cpp:952
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr "您無法於段落開始處插入空格。請讀取教學課程。"
 
-#: src/Text.cpp:957
+#: src/Text.cpp:960
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "您無法以此方式輸入兩個空格。請讀取教學課程。"
 
-#: src/Text.cpp:1790
+#: src/Text.cpp:1793
 msgid "[Change Tracking] "
 msgstr "[變更追蹤] "
 
-#: src/Text.cpp:1796
+#: src/Text.cpp:1799
 msgid "Change: "
 msgstr "變更："
 
-#: src/Text.cpp:1800
+#: src/Text.cpp:1803
 msgid " at "
 msgstr " 於 "
 
-#: src/Text.cpp:1810
+#: src/Text.cpp:1813
 #, c-format
 msgid "Font: %1$s"
 msgstr "字型：%1$s"
 
-#: src/Text.cpp:1815
+#: src/Text.cpp:1818
 #, c-format
 msgid ", Depth: %1$d"
 msgstr "，深度：%1$d"
 
-#: src/Text.cpp:1821
+#: src/Text.cpp:1824
 msgid ", Spacing: "
 msgstr "，間隔："
 
-#: src/Text.cpp:1827 src/frontends/qt4/GuiDocument.cpp:694
+#: src/Text.cpp:1830 src/frontends/qt4/GuiDocument.cpp:694
 msgid "OneHalf"
 msgstr "一半"
 
-#: src/Text.cpp:1833
+#: src/Text.cpp:1836
 msgid "Other ("
 msgstr "其他 ("
 
-#: src/Text.cpp:1842
+#: src/Text.cpp:1845
 msgid ", Inset: "
 msgstr "，內欄："
 
-#: src/Text.cpp:1843
+#: src/Text.cpp:1846
 msgid ", Paragraph: "
 msgstr "，段落："
 
-#: src/Text.cpp:1844
+#: src/Text.cpp:1847
 msgid ", Id: "
 msgstr "，識別："
 
-#: src/Text.cpp:1845
+#: src/Text.cpp:1848
 msgid ", Position: "
 msgstr "，位置："
 
-#: src/Text.cpp:1851
+#: src/Text.cpp:1854
 msgid ", Char: 0x"
 msgstr "，字元：0x"
 
-#: src/Text.cpp:1853
+#: src/Text.cpp:1856
 msgid ", Boundary: "
 msgstr "，邊界："
 

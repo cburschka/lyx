@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-11-24 11:51-0500\n"
+"POT-Creation-Date: 2013-12-16 14:22-0500\n"
 "PO-Revision-Date: 2013-03-08 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -2912,7 +2912,7 @@ msgstr "&Nejdel¹í znaèka"
 msgid "Line &spacing"
 msgstr "Øá&dkování"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1824
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1827
 #: src/frontends/qt4/GuiDocument.cpp:692
 msgid "Single"
 msgstr "Jedna"
@@ -2921,7 +2921,7 @@ msgstr "Jedna"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1830
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1833
 #: src/frontends/qt4/GuiDocument.cpp:696
 msgid "Double"
 msgstr "Dva"
@@ -19327,7 +19327,7 @@ msgstr "Neznámý index autora pro zmìnu: %1$d\n"
 msgid "Unknown token"
 msgstr "Neznámý symbol"
 
-#: src/Text.cpp:949
+#: src/Text.cpp:952
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -19335,66 +19335,66 @@ msgstr ""
 "Nelze vlo¾it mezeru na zaèátek odstavce. Pøeètìte si prosím pøíruèku "
 "(tutorial)."
 
-#: src/Text.cpp:957
+#: src/Text.cpp:960
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Dvì mezery nelze psát tímto zpùsobem. Pøeètìte si prosím pøíruèku(tutorial)."
 
-#: src/Text.cpp:1790
+#: src/Text.cpp:1793
 msgid "[Change Tracking] "
 msgstr "[Zmìna revize] "
 
-#: src/Text.cpp:1796
+#: src/Text.cpp:1799
 msgid "Change: "
 msgstr "Zmìna: "
 
-#: src/Text.cpp:1800
+#: src/Text.cpp:1803
 msgid " at "
 msgstr " na "
 
-#: src/Text.cpp:1810
+#: src/Text.cpp:1813
 #, c-format
 msgid "Font: %1$s"
 msgstr "Font: %1$s"
 
-#: src/Text.cpp:1815
+#: src/Text.cpp:1818
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Hloubka: %1$d"
 
-#: src/Text.cpp:1821
+#: src/Text.cpp:1824
 msgid ", Spacing: "
 msgstr ", Mezery: "
 
-#: src/Text.cpp:1827 src/frontends/qt4/GuiDocument.cpp:694
+#: src/Text.cpp:1830 src/frontends/qt4/GuiDocument.cpp:694
 msgid "OneHalf"
 msgstr "Jedna a pùl"
 
-#: src/Text.cpp:1833
+#: src/Text.cpp:1836
 msgid "Other ("
 msgstr "Dal¹í ("
 
-#: src/Text.cpp:1842
+#: src/Text.cpp:1845
 msgid ", Inset: "
 msgstr ", Vlo¾ka: "
 
-#: src/Text.cpp:1843
+#: src/Text.cpp:1846
 msgid ", Paragraph: "
 msgstr ", Odstavec: "
 
-#: src/Text.cpp:1844
+#: src/Text.cpp:1847
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1845
+#: src/Text.cpp:1848
 msgid ", Position: "
 msgstr ", Pozice: "
 
-#: src/Text.cpp:1851
+#: src/Text.cpp:1854
 msgid ", Char: 0x"
 msgstr ", Znak: 0x"
 
-#: src/Text.cpp:1853
+#: src/Text.cpp:1856
 msgid ", Boundary: "
 msgstr ", Okraj: "
 

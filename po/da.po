@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-11-24 11:51-0500\n"
+"POT-Creation-Date: 2013-12-16 14:22-0500\n"
 "PO-Revision-Date: 2011-04-20 12:00+0200\n"
 "Last-Translator: Jesper Stemann Andersen <jesper@sait.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -2949,7 +2949,7 @@ msgstr "Læ&ngste mærkat"
 msgid "Line &spacing"
 msgstr "Linje&afstand"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1824
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1827
 #: src/frontends/qt4/GuiDocument.cpp:692
 msgid "Single"
 msgstr "Enkelt"
@@ -2958,7 +2958,7 @@ msgstr "Enkelt"
 msgid "1.5"
 msgstr "Halvanden (1,5)"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1830
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1833
 #: src/frontends/qt4/GuiDocument.cpp:696
 msgid "Double"
 msgstr "Dobbelt"
@@ -19927,7 +19927,7 @@ msgstr "Ukendt forfatterindeks for ændring: %1$d\n"
 msgid "Unknown token"
 msgstr "Ukendt symbol"
 
-#: src/Text.cpp:949
+#: src/Text.cpp:952
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
@@ -19935,66 +19935,66 @@ msgstr ""
 "Du kan ikke indsætte et mellemrum i begyndelsen af et tekststykke. Læs "
 "venligst Selvstudium."
 
-#: src/Text.cpp:957
+#: src/Text.cpp:960
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Du kan ikke indtaste to mellemrum på denne måde. Læs venligst Selvstudium."
 
-#: src/Text.cpp:1790
+#: src/Text.cpp:1793
 msgid "[Change Tracking] "
 msgstr "[Sporing af ændring]"
 
-#: src/Text.cpp:1796
+#: src/Text.cpp:1799
 msgid "Change: "
 msgstr "Ændring: "
 
-#: src/Text.cpp:1800
+#: src/Text.cpp:1803
 msgid " at "
 msgstr " på "
 
-#: src/Text.cpp:1810
+#: src/Text.cpp:1813
 #, c-format
 msgid "Font: %1$s"
 msgstr "Skrift: %1$s"
 
-#: src/Text.cpp:1815
+#: src/Text.cpp:1818
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Dybde: %1$d"
 
-#: src/Text.cpp:1821
+#: src/Text.cpp:1824
 msgid ", Spacing: "
 msgstr ", mellemrum: "
 
-#: src/Text.cpp:1827 src/frontends/qt4/GuiDocument.cpp:694
+#: src/Text.cpp:1830 src/frontends/qt4/GuiDocument.cpp:694
 msgid "OneHalf"
 msgstr "Halvanden"
 
-#: src/Text.cpp:1833
+#: src/Text.cpp:1836
 msgid "Other ("
 msgstr "Andet ("
 
-#: src/Text.cpp:1842
+#: src/Text.cpp:1845
 msgid ", Inset: "
 msgstr ", Indstik: "
 
-#: src/Text.cpp:1843
+#: src/Text.cpp:1846
 msgid ", Paragraph: "
 msgstr ", Tekststykke: "
 
-#: src/Text.cpp:1844
+#: src/Text.cpp:1847
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1845
+#: src/Text.cpp:1848
 msgid ", Position: "
 msgstr ", Placering: "
 
-#: src/Text.cpp:1851
+#: src/Text.cpp:1854
 msgid ", Char: 0x"
 msgstr ", Char: 0x"
 
-#: src/Text.cpp:1853
+#: src/Text.cpp:1856
 msgid ", Boundary: "
 msgstr ", Grænse: "
 
