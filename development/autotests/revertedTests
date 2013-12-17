@@ -96,12 +96,95 @@ export/templates/ectaart_dvi3_texF
 #
 # LuaTeX does not support Farsi yet. See:
 # https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
+# It also appears that XeTeX does not support using TeX fonts.
 export/examples/fa/splash_pdf5_systemF
 export/examples/fa/splash_pdf5_texF
 export/examples/fa/splash_dvi3_systemF
 export/examples/fa/splash_dvi3_texF
+export/examples/fa/splash_pdf4_texF
 #
 # There is no non-TeX support for Ukrainian with LuaTeX. See:
 # https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181690.html
 export/doc/uk/Intro_pdf5_systemF
 export/doc/uk/Intro_dvi3_systemF
+#
+# The following documents likely fail because of excessive preamble code that
+# is only targeted at (pdf)latex. TODO these .lyx files could be fixed. Although
+# it is unlikely that a user would want to use system fonts to view LyX's documents
+# fixing these would provide further tests for LyX's handling of XeTeX/LuaTeX with
+# system fonts.
+export/doc/Customization_pdf4_systemF
+export/doc/Math_dvi3_systemF
+export/doc/Math_pdf4_systemF
+export/doc/attic/eu_Additional_pdf4_systemF
+export/doc/attic/eu_UserGuide_pdf4_systemF
+export/doc/attic/pl_Additional_pdf4_systemF
+export/doc/de/Customization_pdf4_systemF
+export/doc/de/EmbeddedObjects_pdf4_systemF
+export/doc/de/Math_dvi3_systemF
+export/doc/de/Math_pdf4_systemF
+export/doc/de/UserGuide_pdf4_systemF
+export/doc/es/Customization_pdf4_systemF
+export/doc/es/EmbeddedObjects_pdf4_systemF
+export/doc/es/Math_pdf4_systemF
+export/doc/es/Tutorial_pdf4_systemF
+export/doc/es/UserGuide_pdf4_systemF
+export/doc/fr/Customization_pdf4_systemF
+export/doc/fr/EmbeddedObjects_dvi3_systemF
+export/doc/fr/EmbeddedObjects_pdf4_systemF
+export/doc/fr/Math_dvi3_systemF
+export/doc/fr/Math_pdf4_systemF
+export/doc/fr/UserGuide_pdf4_systemF
+export/doc/gl/Tutorial_dvi3_systemF
+export/doc/id/UserGuide_pdf4_systemF
+export/doc/nb/Intro_pdf4_systemF
+export/doc/ru/Intro_pdf4_texF
+export/doc/sk/Intro_pdf4_systemF
+export/doc/sv/Intro_pdf4_systemF
+export/examples/JASA_dvi3_systemF
+export/examples/JASA_pdf4_systemF
+export/examples/JASA_pdf5_systemF
+export/examples/MultilingualCaptions_pdf4_systemF
+export/examples/aas_sample_pdf4_systemF
+export/examples/simplecv_pdf4_systemF
+export/examples/de/Lebenslauf_pdf4_systemF
+export/examples/es/ejemplo_con_lyx_pdf5_systemF
+export/examples/eu/adibide_lyx-atua_dvi3_systemF
+export/examples/eu/adibide_lyx-atua_pdf5_systemF
+export/examples/fr/Foils_pdf4_systemF
+export/examples/fr/ListesPuces_pdf4_systemF
+export/examples/fr/seminar_pdf4_systemF
+export/examples/fr/simplecv_pdf4_systemF
+export/examples/gl/exemplo_lyxificado_dvi3_systemF
+export/examples/gl/exemplo_lyxificado_pdf5_systemF
+export/examples/sr/Braille_pdf4_systemF
+export/examples/sr/splash_pdf4_systemF
+export/templates/IEEEtran-CompSoc_dvi3_systemF
+export/templates/IEEEtran-CompSoc_pdf4_systemF
+export/templates/IEEEtran-CompSoc_pdf5_systemF
+export/templates/IEEEtran-Journal_dvi3_systemF
+export/templates/IEEEtran-Journal_pdf4_systemF
+export/templates/IEEEtran-Journal_pdf5_systemF
+export/templates/IEEEtran-TransMag_dvi3_systemF
+export/templates/IEEEtran-TransMag_pdf4_systemF
+export/templates/IEEEtran-TransMag_pdf5_systemF
+export/templates/RJournal_dvi3_systemF
+export/templates/RJournal_pdf4_systemF
+export/templates/RJournal_pdf5_systemF
+export/templates/kluwer_pdf4_systemF
+#
+# There is no Russian LuaTeX TeX font support yet.
+export/examples/ru/splash_dvi3_texF
+export/examples/ru/splash_pdf5_texF
+export/doc/ru/Intro_dvi3_texF
+export/doc/ru/Intro_pdf5_texF
+export/doc/ru/Tutorial_dvi3_texF
+export/doc/ru/Tutorial_pdf5_texF
+#
+# There is no Chinese LuaTeX or XeTeX TeX font support yet.
+export/doc/zh_CN/Intro_dvi3_texF
+export/doc/zh_CN/Intro_pdf4_texF
+export/doc/zh_CN/Intro_pdf5_texF
+export/doc/zh_CN/Tutorial_dvi3_texF
+export/doc/zh_CN/Tutorial_pdf4_texF
+export/doc/zh_CN/Tutorial_pdf5_texF
