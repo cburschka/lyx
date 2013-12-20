@@ -86,10 +86,12 @@ pos_type Row::Element::x2pos(double &x, bool const low) const
 		// 	lyxerr << " NOT FOUND ";
 	}
 
-	if (i == str.size())
+	if (type == STRING && i == str.size())
 		x2 = w;
-	// round to the closest side
-	else if (!low && (x2 - last_w > w - x2)) {
+	// round to the closest side. The !rtl is here to obtain the
+	// same rounding as with the old code (this is cosmetic and
+	// can be eventually removed).
+	else if (!low && (x2 - last_w + !rtl > w - x2)) {
 		x2 = w;
 		++i;
 	} else
