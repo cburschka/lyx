@@ -1114,7 +1114,7 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 // x is an absolute screen coord
 // returns the column near the specified x-coordinate of the row
 // x is set to the real beginning of this column
-pos_type TextMetrics::getColumnNearX(pit_type const pit,
+pos_type TextMetrics::getPosNearX(pit_type const pit,
 		Row const & row, int & x, bool & boundary) const
 {
 
@@ -1291,7 +1291,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 
 	if (abs(x2 - x) > 0.1 || boundary != boundary
 	    || c != pos) {
-		lyxerr << "getColumnNearX(" << x_orig << "): new=(x=" << x - xo << ", b=" << boundary << ", p=" << pos << "), "
+		lyxerr << "getPosNearX(" << x_orig << "): new=(x=" << x - xo << ", b=" << boundary << ", p=" << pos << "), "
 		       << "old=(x=" << x2 - xo << ", b=" << boundary2 << ", p=" << c << "), " << row;
 	}
 
@@ -1307,7 +1307,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	return min(col, end - 1 - row.pos());
 #endif // 0
 #endif // KEEP_OLD_METRICS_CODE
-	return pos - row.pos();
+	return pos;
 }
 
 
@@ -1322,7 +1322,7 @@ pos_type TextMetrics::x2pos(pit_type pit, int row, int x) const
 	LBUFERR(row < int(pm.rows().size()));
 	bool bound = false;
 	Row const & r = pm.rows()[row];
-	return r.pos() + getColumnNearX(pit, r, x, bound);
+	return getPosNearX(pit, r, x, bound);
 }
 
 
@@ -1482,10 +1482,9 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 
 	if (!it) {
 		// No inset, set position in the text
-		bool bound = false; // is modified by getColumnNearX
-		int xx = x; // is modified by getColumnNearX
-		cur.pos() = row.pos()
-			+ getColumnNearX(pit, row, xx, bound);
+		bool bound = false; // is modified by getPosNearX
+		int xx = x; // is modified by getPosNearX
+		cur.pos() = getPosNearX(pit, row, xx, bound);
 		cur.boundary(bound);
 		cur.setCurrentFont();
 		cur.setTargetX(xx);
@@ -1536,7 +1535,7 @@ void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const 
 
 	bool bound = false;
 	int xx = x;
-	pos_type const pos = row.pos() + getColumnNearX(pit, row, xx, bound);
+	pos_type const pos = getPosNearX(pit, row, xx, bound);
 
 	LYXERR(Debug::DEBUG, "setting cursor pit: " << pit << " pos: " << pos);
 

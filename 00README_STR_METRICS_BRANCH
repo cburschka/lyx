@@ -17,7 +17,11 @@ What is done:
   metrics are computed. The list of elements is stored in the row
   object in visual ordering, not logical.
 
-* Re-implement cursorX and getColumnNearX using row elements.
+* rename getColumnNearX to getPosNearX (and change code accordingly).
+  It does not make sense to return a position relative to the start of
+  row, since nobody needs this.
+
+* Re-implement cursorX and getPosNearX using row elements.
 
 * Implement proper string metrics computation (with cache), when
   lyxrc.force_paint_single_char is false. In this case, remove also
@@ -33,10 +37,6 @@ Next steps:
 * Get rid of old code in cursorX and getColumnNearX; it has been
   kept for comparison purpose, guarded with KEEP_OLD_METRICS_CODE in
   order to check computations.
-
-* rename getColumnNearX to getPosNearX or x2pos (and change code
-  accordingly). It does not make sense to return a position relative
-  to the start of row, since nobody needs this.
 
 * Re-implement row painting using row elements. This is not difficult
   in principle, but the code is intricate and needs some careful

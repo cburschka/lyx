@@ -104,7 +104,7 @@ pos_type Row::Element::x2pos(double &x, bool const low) const
 		x = x2;
 	}
 
-	//lyxerr << "=> p=" << i << " x=" << x << endl;
+	//lyxerr << "=> p=" << pos + i << " x=" << x << endl;
 	return pos + i;
 }
 

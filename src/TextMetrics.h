@@ -149,10 +149,10 @@ private:
 
 // Temporary public:
 public:
-	/// returns the column near the specified x-coordinate of the row.
+	/// returns the position near the specified x-coordinate of the row.
 	/// x is an absolute screen coord, it is set to the real beginning
 	/// of this column.
-	pos_type getColumnNearX(pit_type pit, Row const & row, int & x,
+	pos_type getPosNearX(pit_type pit, Row const & row, int & x,
 		bool & boundary) const;
 
 	/// returns pos in given par at given x coord.
