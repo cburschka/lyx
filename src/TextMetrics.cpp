@@ -1512,10 +1512,6 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 	Inset * inset = checkInsetHit(x, yy);
 	//lyxerr << "inset " << inset << " hit at x: " << x << " y: " << y << endl;
 	if (!inset) {
-		// Either we deconst editXY or better we move current_font
-		// and real_current_font to Cursor
-		// FIXME: what is needed now that current_font and real_current_font
-		// are transferred?
 		cur.setCurrentFont();
 		return 0;
 	}
