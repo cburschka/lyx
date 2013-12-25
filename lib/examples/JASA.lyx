@@ -75,6 +75,24 @@
 status open
 
 \begin_layout Plain Layout
+Update: the ASA does not recommend JASATeX for submission.
+ See 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://jasa.peerx-press.org/html/jasa/Using_LaTeX_for_JASA.html
+\end_layout
+
+\end_inset
+
+.
+ Note that the JASATeX .cls file has not been updated in years and that lualatex
+ and xelatex might enter into infinit loops if system fonts are used.
+\end_layout
+
+\begin_layout Plain Layout
 This is a template LyX file for articles to be submitted to the Journal
  of the Acoustical Society of America (JASA).
  How to install the JASAS LaTeX class to your LaTeX system is explained
