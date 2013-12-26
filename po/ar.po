@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.1.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2013-11-28 17:09+0100\n"
-"PO-Revision-Date: 2013-12-18 22:47+0300\n"
+"PO-Revision-Date: 2013-12-26 01:30+0300\n"
 "Last-Translator: Hatim Alahmadi <Dr.hatim@hotmail.com>\n"
 "Language-Team: LyX team <theblackdragon_100@hotmail.com>\n"
 "Language: ar\n"
@@ -1761,7 +1761,7 @@ msgstr "محاذاة رأسية للجدول"
 #: src/frontends/qt4/ui/BoxUi.ui:97 src/frontends/qt4/ui/BoxUi.ui:124
 #: src/frontends/qt4/GuiMathMatrix.cpp:52
 msgid "Top"
-msgstr "اعلى"
+msgstr "أعلى"
 
 #: src/frontends/qt4/ui/TabularUi.ui:282 src/frontends/qt4/ui/TabularUi.ui:537
 #: src/frontends/qt4/ui/BoxUi.ui:102 src/frontends/qt4/ui/BoxUi.ui:129
@@ -3863,7 +3863,7 @@ msgstr "&نوع المستند"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:44
 msgid "Click to select a local document class definition file"
-msgstr "أضغط لتحديد ملف تعريف قسم وثيقة محلية"
+msgstr "أضغط لتحديد ملف تعريف نوع المستند المحلي"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:47
 msgid "&Local Layout..."
@@ -4054,7 +4054,7 @@ msgstr "&العلامات"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:293
 msgid "G&enerate Bookmarks (ToC)"
-msgstr "إنتاج العلامات (ToC)"
+msgstr "إنتاج العلامات (جدول المحتويات)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:314
 msgid "&Numbered bookmarks"
@@ -4467,7 +4467,7 @@ msgstr "إضافة ثبت المراجع لجدول المحتويات"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:169
 msgid "Add bibliography to &TOC"
-msgstr "&أضف ثبت المراجع إلى TOC"
+msgstr "&أضف ثبت المراجع إلى جدول المحتويات"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:225
 msgid "Move the selected database downwards in the list"
@@ -4953,9 +4953,8 @@ msgid "Custom &Width:"
 msgstr "عرض& مخصص:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
-#, fuzzy
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
-msgstr "قيم يحددها المستخدم. بحاجة لتحديد نوع المسافات\"Custom\"."
+msgstr "قيم يحددها المستخدم. بحاجة لتحديد نوع المسافات\"مخصص\"."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:61
 msgid "Check if this index should be part (e.g., a section) of the former one."
@@ -5303,7 +5302,7 @@ msgstr "قائمة بأسماء المساهمين"
 
 #: lib/layouts/svmult.layout:68
 msgid "List of Contributors"
-msgstr "قائمة بأسماء المساهمين"
+msgstr "قائمة بالمساهمين"
 
 #: lib/layouts/svmult.layout:72
 #, fuzzy
@@ -6484,7 +6483,7 @@ msgstr "قسم"
 #: lib/layouts/svcommon.inc:204 lib/layouts/aguplus.inc:44
 #: lib/layouts/db_stdsections.inc:36
 msgid "Subsection"
-msgstr "قسم ثانوي"
+msgstr "قسم فرعي"
 
 #: lib/layouts/siamltex.layout:385 lib/layouts/isprs.layout:170
 #: lib/layouts/amsart.layout:128 lib/layouts/revtex4.layout:74
@@ -6500,7 +6499,7 @@ msgstr "قسم ثانوي"
 #: lib/layouts/agu_stdsections.inc:50 lib/layouts/stdsections.inc:115
 #: lib/layouts/svcommon.inc:213 lib/layouts/db_stdsections.inc:44
 msgid "Subsubsection"
-msgstr "قسم فرعي"
+msgstr "قسم تحت فرعي"
 
 #: lib/layouts/isprs.layout:3
 msgid "Int. Society f. Photogrammetry and Remote Sensing (ISPRS)"
@@ -6532,14 +6531,14 @@ msgstr "قسم*"
 #: lib/layouts/svcommon.inc:262 lib/layouts/aguplus.inc:52
 #: lib/layouts/db_stdstarsections.inc:48
 msgid "Subsection*"
-msgstr "قسم ثانوي*"
+msgstr "قسم فرعي*"
 
 #: lib/layouts/isprs.layout:200 lib/layouts/amsart.layout:138
 #: lib/layouts/amsbook.layout:101 lib/layouts/beamer.layout:386
 #: lib/layouts/stdstarsections.inc:57 lib/layouts/svcommon.inc:270
 #: lib/layouts/db_stdstarsections.inc:60
 msgid "Subsubsection*"
-msgstr "قسم فرعي*"
+msgstr "قسم تحت فرعي*"
 
 #: lib/layouts/isprs.layout:209 lib/layouts/elsart.layout:445
 #: lib/layouts/egs.layout:522 lib/layouts/apa.layout:212
@@ -6748,12 +6747,12 @@ msgstr "التقسيم"
 
 #: lib/layouts/powerdot.layout:239 lib/layouts/numarticle.inc:9
 msgid "\\arabic{section}"
-msgstr ""
+msgstr "\\عربي{قسم}"
 
 #: lib/layouts/powerdot.layout:244 lib/layouts/beamer.layout:268
 #: lib/layouts/numarticle.inc:10
 msgid "\\Alph{section}"
-msgstr "\\Alph{section}"
+msgstr "\\الفا{قسم}"
 
 #: lib/layouts/powerdot.layout:246
 msgid "Section Option"
@@ -6801,7 +6800,7 @@ msgstr ""
 #: lib/layouts/stdlists.inc:32 lib/layouts/stdlists.inc:60
 #: lib/layouts/theorems-case.inc:53
 msgid "Custom Item|s"
-msgstr ""
+msgstr "مادة مخصصة|s"
 
 #: lib/layouts/powerdot.layout:279 lib/layouts/powerdot.layout:330
 #: lib/layouts/egs.layout:172 lib/layouts/egs.layout:194
@@ -7166,7 +7165,7 @@ msgstr "مقال الجمعية الرياضية الأمريكية (AMS)"
 
 #: lib/layouts/amsart.layout:85
 msgid "SpecialSection"
-msgstr "قسم مخصص:"
+msgstr "قسم مخصص"
 
 #: lib/layouts/amsart.layout:94
 msgid "SpecialSection*"
@@ -7270,9 +7269,8 @@ msgid "RomanList"
 msgstr "قائمة الروماني"
 
 #: lib/layouts/ijmpc.layout:304 lib/layouts/ijmpd.layout:307
-#, fuzzy
 msgid "Numbering Scheme"
-msgstr "&ترقيم"
+msgstr "مخطط الترقيم"
 
 #: lib/layouts/ijmpc.layout:305 lib/layouts/ijmpd.layout:308
 msgid ""
@@ -7411,9 +7409,8 @@ msgid "\\thechapter"
 msgstr "//الفصل"
 
 #: lib/layouts/scrbook.layout:26
-#, fuzzy
 msgid "\\thechapter.\\arabic{equation}"
-msgstr "قسم \\عربي{قسم}"
+msgstr ""
 
 #: lib/layouts/elsart.layout:3
 msgid "Elsevier (Obsolete Version)"
@@ -7745,24 +7742,24 @@ msgstr "تمارين على الفصل"
 
 #: lib/layouts/moderncv.layout:3
 msgid "Modern CV"
-msgstr "جديث CV"
+msgstr "سيرة ذاتية حديثة"
 
 #: lib/layouts/moderncv.layout:4 lib/layouts/simplecv.layout:4
 #: lib/layouts/europecv.layout:4
 msgid "Curricula Vitae"
-msgstr ""
+msgstr "السيرة الذاتية"
 
 #: lib/layouts/moderncv.layout:36
 msgid "CVStyle"
-msgstr "أسلوب CV"
+msgstr "أسلوب السيرة الذاتية"
 
 #: lib/layouts/moderncv.layout:45
 msgid "CV Style:"
-msgstr "أسلوب CV:"
+msgstr "أسلوب السيرة الذاتية:"
 
 #: lib/layouts/moderncv.layout:52
 msgid "CVColor"
-msgstr ""
+msgstr "لون السيرة الذاتية"
 
 #: lib/layouts/moderncv.layout:55
 msgid "CV Color Scheme:"
@@ -7831,14 +7828,12 @@ msgid "Name of the social network"
 msgstr "اسم شبكة المجتمع"
 
 #: lib/layouts/moderncv.layout:165
-#, fuzzy
 msgid "ExtraInfo"
-msgstr "إضافي"
+msgstr "معلومات متقدمة"
 
 #: lib/layouts/moderncv.layout:168
-#, fuzzy
 msgid "Extra Info:"
-msgstr "إضافي"
+msgstr "معلومات متقدمة:"
 
 #: lib/layouts/moderncv.layout:171 lib/layouts/IEEEtran.layout:367
 msgid "Photo"
@@ -7972,14 +7967,12 @@ msgid "Double Item:"
 msgstr "بند مزدوج:"
 
 #: lib/layouts/moderncv.layout:401
-#, fuzzy
 msgid "Left Summary"
-msgstr "موجز"
+msgstr "موجز يسار"
 
 #: lib/layouts/moderncv.layout:402
-#, fuzzy
 msgid "Left summary"
-msgstr "موجز"
+msgstr "موجز يسار"
 
 #: lib/layouts/moderncv.layout:406
 msgid "Left Text"
@@ -7990,14 +7983,12 @@ msgid "Left text"
 msgstr "نص ايسر"
 
 #: lib/layouts/moderncv.layout:411
-#, fuzzy
 msgid "Right Summary"
-msgstr "موجز"
+msgstr "موجز يمين"
 
 #: lib/layouts/moderncv.layout:412
-#, fuzzy
 msgid "Right summary"
-msgstr "رأس ايمن"
+msgstr "رأس يمين"
 
 #: lib/layouts/moderncv.layout:416
 #, fuzzy
@@ -8022,14 +8013,12 @@ msgid "Computer"
 msgstr "الحاسب"
 
 #: lib/layouts/moderncv.layout:437
-#, fuzzy
 msgid "MakeCVtitle"
-msgstr "عنوان القصيدة"
+msgstr "كتابة عنوان السيرة الذاتية"
 
 #: lib/layouts/moderncv.layout:440
-#, fuzzy
 msgid "Make CV Title"
-msgstr "عنوان القصيدة"
+msgstr "كتابة عنوان السيرة الذاتية"
 
 #: lib/layouts/moderncv.layout:447
 msgid "MakeLetterTitle"
@@ -8044,9 +8033,8 @@ msgid "MakeLetterClosing"
 msgstr ""
 
 #: lib/layouts/moderncv.layout:457
-#, fuzzy
 msgid "Close Letter"
-msgstr "اغلاق اللسان"
+msgstr "إغلاق الرسالة"
 
 #: lib/layouts/moderncv.layout:485 lib/layouts/stdlayouts.inc:99
 msgid "--Separator--"
@@ -8227,7 +8215,7 @@ msgstr "كود-ليك"
 
 #: lib/layouts/simplecv.layout:3
 msgid "Simple CV"
-msgstr "بسيط CV"
+msgstr "سيرة ذاتية بسيطة"
 
 #: lib/layouts/simplecv.layout:52 lib/layouts/beamer.layout:258
 #: lib/layouts/tufte-book.layout:108 lib/layouts/scrclass.inc:139
@@ -8697,9 +8685,8 @@ msgstr "نظام"
 #: lib/layouts/beamer.layout:281 lib/layouts/beamer.layout:308
 #: lib/layouts/beamer.layout:338 lib/layouts/beamer.layout:365
 #: lib/layouts/beamer.layout:395
-#, fuzzy
 msgid "Mode Specification|S"
-msgstr "نقل القسم لأعلى|U"
+msgstr ""
 
 #: lib/layouts/beamer.layout:202 lib/layouts/beamer.layout:252
 #: lib/layouts/beamer.layout:282 lib/layouts/beamer.layout:309
@@ -8721,7 +8708,7 @@ msgstr "قسم \\عربي{قسم}"
 
 #: lib/layouts/beamer.layout:304
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
-msgstr "قسم فرعي \\arabic{section}.\\arabic{subsection}"
+msgstr ""
 
 #: lib/layouts/beamer.layout:315
 #, fuzzy
@@ -8764,9 +8751,8 @@ msgstr "الاطارات"
 #: lib/layouts/beamer.layout:1428 lib/layouts/beamer.layout:1446
 #: lib/layouts/beamer.layout:1464 lib/layouts/beamer.layout:1482
 #: lib/layouts/beamer.layout:1505
-#, fuzzy
 msgid "Action"
-msgstr "قسم"
+msgstr ""
 
 #: lib/layouts/beamer.layout:432 lib/layouts/beamer.layout:491
 msgid "Overlay specifications for this frame"
@@ -9142,7 +9128,7 @@ msgstr "ملاحظة"
 #: lib/layouts/beamer.layout:1333 lib/layouts/beamer.layout:1335
 #: src/Font.cpp:64 src/frontends/qt4/GuiCharacter.cpp:111
 msgid "Bold"
-msgstr "ثقيل"
+msgstr "ثخين"
 
 #: lib/layouts/beamer.layout:1350 lib/layouts/ectaart.layout:146
 msgid "Emphasize"
@@ -9210,7 +9196,7 @@ msgstr "عرض تقديمي"
 
 #: lib/layouts/europecv.layout:3
 msgid "Europe CV"
-msgstr "أوروبي CV"
+msgstr "سيرة ذاتية أوروبية"
 
 #: lib/layouts/europecv.layout:47
 msgid "FooterName"
@@ -9325,7 +9311,7 @@ msgstr "بداية"
 
 #: lib/layouts/europecv.layout:196
 msgid "Begin of CV"
-msgstr "ابدأ سيرة ذاتية"
+msgstr "بدء السيرة الذاتية"
 
 #: lib/layouts/europecv.layout:203
 msgid "PersonalInfo"
@@ -9877,9 +9863,8 @@ msgid "Thanks Ref"
 msgstr "الشكر"
 
 #: lib/layouts/ectaart.layout:171
-#, fuzzy
 msgid "Internet Address Reference"
-msgstr "ادراج اسناد ترافقي"
+msgstr "مرجع موقع انترنت"
 
 #: lib/layouts/ectaart.layout:174
 msgid "Internet Addess Ref"
@@ -9934,7 +9919,7 @@ msgstr ""
 
 #: lib/layouts/svglobal3.layout:73
 msgid "Subclass"
-msgstr "قسم فرعي"
+msgstr "نوع فرعي"
 
 #: lib/layouts/svglobal3.layout:76
 #, fuzzy
@@ -9946,9 +9931,8 @@ msgid "CRSC"
 msgstr ""
 
 #: lib/layouts/svglobal3.layout:82
-#, fuzzy
 msgid "CR Subject Classification"
-msgstr "2000 قسم لمواد الرياضيات:"
+msgstr ""
 
 #: lib/layouts/svglobal3.layout:87
 #, fuzzy
@@ -10088,11 +10072,11 @@ msgstr ""
 
 #: lib/layouts/llncs.layout:175 lib/layouts/svcommon.inc:376
 msgid "TOC Title"
-msgstr "عنوان TOC"
+msgstr "عنوان جدول المحتويات"
 
 #: lib/layouts/llncs.layout:179
 msgid "TOC Title:"
-msgstr "عنوان TOC:"
+msgstr "عنوان جدول المحتويات:"
 
 #: lib/layouts/llncs.layout:204
 msgid "Author Running"
@@ -10104,11 +10088,11 @@ msgstr ""
 
 #: lib/layouts/llncs.layout:212 lib/layouts/svcommon.inc:394
 msgid "TOC Author"
-msgstr "مؤلف TOC"
+msgstr "مؤلف جدول المحتويات"
 
 #: lib/layouts/llncs.layout:216
 msgid "TOC Author:"
-msgstr "مؤلف TOC:"
+msgstr "مؤلف جدول المحتويات:"
 
 #: lib/layouts/llncs.layout:308
 msgid "Case #."
@@ -10495,7 +10479,7 @@ msgstr "مخطط"
 
 #: lib/layouts/achemso.layout:170
 msgid "List of Schemes"
-msgstr "قائمة التصميمات"
+msgstr "قائمة المخططات"
 
 #: lib/layouts/achemso.layout:187 lib/layouts/achemso.layout:198
 msgid "Chart"
@@ -10523,11 +10507,11 @@ msgstr "معلومات الدعم متاحة"
 
 #: lib/layouts/achemso.layout:254
 msgid "TOC entry"
-msgstr "مدخل TOC"
+msgstr "مدخل جدول المحتويات"
 
 #: lib/layouts/achemso.layout:258
 msgid "Graphical TOC Entry"
-msgstr ""
+msgstr "مدخل جدول محتويات مصور"
 
 #: lib/layouts/achemso.layout:262
 msgid "Bibnote"
@@ -10847,9 +10831,8 @@ msgid "ListOfSlides"
 msgstr "قائمة الشرائح"
 
 #: lib/layouts/seminar.layout:61
-#, fuzzy
 msgid "List of Slides"
-msgstr "[قائمة الشرائح]"
+msgstr "قائمة الشرائح"
 
 #: lib/layouts/seminar.layout:68 lib/layouts/seminar.layout:127
 msgid "SlideContents"
@@ -11289,7 +11272,7 @@ msgstr ""
 #: lib/layouts/memoir.layout:138 lib/layouts/memoir.layout:205
 #: lib/layouts/memoir.layout:224
 msgid "Short Title (TOC)|S"
-msgstr "عنوان قصير (TOC)|S"
+msgstr "عنوان قصير (جدول المحتويات)|S"
 
 #: lib/layouts/memoir.layout:66 lib/layouts/memoir.layout:79
 msgid "The chapter as it appears in the table of contents"
@@ -11876,9 +11859,8 @@ msgid "Author Affiliation"
 msgstr "منتسب"
 
 #: lib/layouts/IEEEtran.layout:171
-#, fuzzy
 msgid "Author Mark"
-msgstr "بريد الكتروني المؤلف"
+msgstr "علامة المؤلف"
 
 #: lib/layouts/IEEEtran.layout:194
 #, fuzzy
@@ -12060,7 +12042,7 @@ msgstr "عام"
 #: lib/layouts/theorems-bytype.inc:146 lib/layouts/theorems-ams-bytype.inc:170
 #: lib/layouts/theorems-without-preamble.inc:166
 msgid "Fact \\thefact."
-msgstr "جزء //الجزء"
+msgstr "جزء //الجزء."
 
 #: lib/layouts/theorems-bytype.inc:164 lib/layouts/theorems-ams-bytype.inc:188
 #: lib/layouts/theorems-without-preamble.inc:182
@@ -12070,12 +12052,12 @@ msgstr ""
 #: lib/layouts/theorems-bytype.inc:189 lib/layouts/theorems-ams-bytype.inc:213
 #: lib/layouts/theorems-without-preamble.inc:206
 msgid "Example \\theexample."
-msgstr "مثال //المثال"
+msgstr "مثال //المثال."
 
 #: lib/layouts/theorems-bytype.inc:208 lib/layouts/theorems-ams-bytype.inc:232
 #: lib/layouts/theorems-without-preamble.inc:224
 msgid "Problem \\theproblem."
-msgstr "مشكلة //النظرية"
+msgstr "مشكلة //النظرية."
 
 #: lib/layouts/theorems-bytype.inc:227 lib/layouts/theorems-ams-bytype.inc:251
 #: lib/layouts/theorems-without-preamble.inc:301
@@ -12084,27 +12066,27 @@ msgstr ""
 
 #: lib/layouts/numrevtex.inc:9
 msgid "\\Roman{section}."
-msgstr "\\Roman{قسم}."
+msgstr "\\روماني{قسم}."
 
 #: lib/layouts/numrevtex.inc:10
 msgid "Appendix \\Alph{section}:"
-msgstr "ملحق \\Alph{قسم}:"
+msgstr "ملحق \\الفا{قسم}:"
 
 #: lib/layouts/numrevtex.inc:18
 msgid "\\Alph{subsection}."
-msgstr "\\Alph{قسم فرعي}."
+msgstr "\\الفا{قسم فرعي}."
 
 #: lib/layouts/numrevtex.inc:19
 msgid "\\arabic{subsection}."
-msgstr "\\arabic{قسم فرعي}."
+msgstr "\\عربي{قسم فرعي}."
 
 #: lib/layouts/numrevtex.inc:27
 msgid "\\arabic{subsubsection}."
-msgstr "\\arabic{فرع قسم فرعي}."
+msgstr "\\عربي{قسم تحت فرعي}."
 
 #: lib/layouts/numrevtex.inc:28
 msgid "\\alph{subsubsection}."
-msgstr "\\alph{فرع قسم فرعي}."
+msgstr "\\الفا{قسم تحت فرعي}."
 
 #: lib/layouts/numrevtex.inc:36 lib/layouts/numrevtex.inc:37
 msgid "\\alph{paragraph}."
@@ -12384,7 +12366,7 @@ msgstr "فقرة*"
 
 #: lib/layouts/stdstarsections.inc:79 lib/layouts/db_stdstarsections.inc:84
 msgid "Subparagraph*"
-msgstr "فقرة ثانوية*"
+msgstr "فقرة فرعية*"
 
 #: lib/layouts/db_stdcharstyles.inc:20 lib/layouts/db_stdcharstyles.inc:22
 msgid "Directory"
@@ -12450,9 +12432,8 @@ msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
 
 #: lib/layouts/stdcounters.inc:10
-#, fuzzy
 msgid "Part \\Roman{part}"
-msgstr "\\Roman{part}"
+msgstr "جزء \\روماني{جزء}"
 
 #: lib/layouts/stdcounters.inc:14
 msgid "Chapter ##"
@@ -12484,9 +12465,8 @@ msgid "Equation ##"
 msgstr "المعادلة ##"
 
 #: lib/layouts/stdcounters.inc:72
-#, fuzzy
 msgid "Footnote ##"
-msgstr "تذييل|ت"
+msgstr "تذييل ##"
 
 #: lib/layouts/stdsections.inc:15 lib/layouts/svcommon.inc:119
 msgid "Part \\thepart"
@@ -12554,9 +12534,8 @@ msgid "foot"
 msgstr "تذييل"
 
 #: lib/layouts/stdinsets.inc:116
-#, fuzzy
 msgid "Greyedout"
-msgstr "اقتباس"
+msgstr "ملاحظة مظللة"
 
 #: lib/layouts/stdinsets.inc:142 src/insets/InsetERT.cpp:147
 #: src/insets/InsetERT.cpp:149
@@ -12564,9 +12543,8 @@ msgid "ERT"
 msgstr "ERT"
 
 #: lib/layouts/stdinsets.inc:227 lib/layouts/stdinsets.inc:233
-#, fuzzy
 msgid "Listings[[List of Listings]]"
-msgstr "قائمة القوائم"
+msgstr "القوائم[[قائمة القوائم]]"
 
 #: lib/layouts/stdinsets.inc:259 src/frontends/qt4/GuiDocument.cpp:1417
 #, fuzzy
@@ -12713,11 +12691,11 @@ msgstr "بيانات المؤلف:"
 
 #: lib/layouts/svcommon.inc:387
 msgid "TOC title:"
-msgstr "عنوان TOC:"
+msgstr "عنوان جدول المحتويات:"
 
 #: lib/layouts/svcommon.inc:397
 msgid "TOC author:"
-msgstr "مؤلف TOC:"
+msgstr "مؤلف جدول المحتويات:"
 
 #: lib/layouts/svcommon.inc:400
 #, fuzzy
@@ -13032,9 +13010,8 @@ msgid "For scaling the <Shape specification> to positions on the page"
 msgstr ""
 
 #: lib/layouts/shapepar.module:127
-#, fuzzy
 msgid "Shape specification"
-msgstr "قسم مخصص:"
+msgstr ""
 
 #: lib/layouts/shapepar.module:128
 msgid "Specification of the shape"
@@ -13159,15 +13136,15 @@ msgstr "عرض صندوق القسم"
 
 #: lib/layouts/sectionbox.module:26
 msgid "Heading"
-msgstr "عنوان"
+msgstr "الرأس"
 
 #: lib/layouts/sectionbox.module:27
 msgid "Section Box Heading"
-msgstr "عنوان صندوق القسم"
+msgstr "رأس صندوق القسم"
 
 #: lib/layouts/sectionbox.module:31
 msgid "Insert the section box header here"
-msgstr "أدرج عنوان صندوق القسم هنا"
+msgstr "أدرج رأس صندوق القسم هنا"
 
 #: lib/layouts/sectionbox.module:39
 msgid "SubsectionBox"
@@ -13178,14 +13155,12 @@ msgid "Subsection Box"
 msgstr "صندوق القسم الفرعي"
 
 #: lib/layouts/sectionbox.module:45
-#, fuzzy
 msgid "SubsubsectionBox"
-msgstr "قسم فرعي"
+msgstr ""
 
 #: lib/layouts/sectionbox.module:47
-#, fuzzy
 msgid "Subsubsection Box"
-msgstr "قسم فرعي"
+msgstr "صندوق قسم تحت فرعي"
 
 #: lib/layouts/bicaption.module:2
 #, fuzzy
@@ -13224,9 +13199,8 @@ msgid "bilingual"
 msgstr "عنونة"
 
 #: lib/layouts/bicaption.module:44
-#, fuzzy
 msgid "Main Language Short Title"
-msgstr "إدراج عنوان قصير|T"
+msgstr "عنوان قصير للغة الرئيسية"
 
 #: lib/layouts/bicaption.module:45
 #, fuzzy
@@ -13366,7 +13340,7 @@ msgid ""
 "Numbers theorems and the like by section (i.e., the counter is reset at each "
 "section start)."
 msgstr ""
-"ترقيم النظريات وما يشبهها تبعاً للفصل(اي ان العداد يعاد ضبطه مع بداية كل قسم)."
+"ترقيم النظريات وما يشبهها تبعاً للفصل(أي أن العداد يعاد ضبطه مع بداية كل قسم)."
 
 #: lib/layouts/theorems-sec.module:8 lib/layouts/theorems-std.module:8
 #: lib/layouts/theorems-ams.module:9 lib/layouts/theorems-chap.module:9
@@ -13858,9 +13832,8 @@ msgstr ""
 "'(2.1)'."
 
 #: lib/layouts/eqs-within-sections.module:17
-#, fuzzy
 msgid "\\thesection.\\arabic{equation}"
-msgstr "قسم \\عربي{قسم}"
+msgstr ""
 
 #: lib/layouts/foottoend.module:2
 msgid "Foot to End"
@@ -14208,13 +14181,12 @@ msgid "expr."
 msgstr ""
 
 #: lib/layouts/linguistics.module:138
-#, fuzzy
 msgid "Concepts"
-msgstr "مصطلح"
+msgstr "فكرة"
 
 #: lib/layouts/linguistics.module:140
 msgid "concept"
-msgstr "مصطلح"
+msgstr "فكرة"
 
 #: lib/layouts/linguistics.module:153
 #, fuzzy
@@ -14851,15 +14823,15 @@ msgstr "أرميني (ArmSCII8)"
 
 #: lib/encodings:43
 msgid "Western European (ISO 8859-1)"
-msgstr "غرب أوربا (ISO 8859-1)"
+msgstr "غرب أوروبا (ISO 8859-1)"
 
 #: lib/encodings:46
 msgid "Central European (ISO 8859-2)"
-msgstr "وسط اوربا (ISO 8859-2)"
+msgstr "وسط اوروبا (ISO 8859-2)"
 
 #: lib/encodings:49
 msgid "South European (ISO 8859-3)"
-msgstr "جنوب أوربا (ISO 8859-16)"
+msgstr "جنوب أوروبا (ISO 8859-16)"
 
 #: lib/encodings:52
 msgid "Baltic (ISO 8859-4)"
@@ -14891,15 +14863,15 @@ msgstr "Baltic (ISO 8859-13)"
 
 #: lib/encodings:75
 msgid "Western European (ISO 8859-15)"
-msgstr "غرب أوربا (ISO 8859-15)"
+msgstr "غرب أوروبا (ISO 8859-15)"
 
 #: lib/encodings:78
 msgid "South-Eastern European (ISO 8859-16)"
-msgstr "جنوب-شرق اوربا (ISO 8859-16)"
+msgstr "جنوب-شرق اوروبا (ISO 8859-16)"
 
 #: lib/encodings:81
 msgid "Western European (Macintosh Roman)"
-msgstr "غرب أوروبا (Macintosh Roman)"
+msgstr "غرب أوروبا (روماني ماكنتوش)"
 
 #: lib/encodings:84
 msgid "DOS (CP 437)"
@@ -14911,11 +14883,11 @@ msgstr "DOS-de (CP 437-de)"
 
 #: lib/encodings:91
 msgid "Western European (CP 850)"
-msgstr "غرب أوربا (CP 850)"
+msgstr "غرب أوروبا (CP 850)"
 
 #: lib/encodings:94
 msgid "Central European (CP 852)"
-msgstr "وسط أوربا (CP 852)"
+msgstr "وسط أوروبا (CP 852)"
 
 #: lib/encodings:97
 msgid "Cyrillic (CP 855)"
@@ -14923,7 +14895,7 @@ msgstr "Cyrillic (CP 855)"
 
 #: lib/encodings:100
 msgid "Western European (CP 858)"
-msgstr "غرب اوربا (CP 858)"
+msgstr "غرب اوروبا (CP 858)"
 
 #: lib/encodings:103
 msgid "Hebrew (CP 862)"
@@ -14939,7 +14911,7 @@ msgstr "Cyrillic (CP 866)"
 
 #: lib/encodings:112
 msgid "Central European (CP 1250)"
-msgstr "وسط اوربا (CP 1250)"
+msgstr "وسط اوروبا (CP 1250)"
 
 #: lib/encodings:115
 msgid "Cyrillic (CP 1251)"
@@ -15801,7 +15773,7 @@ msgstr "تهيئة|o"
 
 #: lib/ui/stdmenus.inc:356
 msgid "List / TOC|i"
-msgstr ""
+msgstr "قائمة/جدول محتويات"
 
 #: lib/ui/stdmenus.inc:357
 msgid "Float|a"
@@ -15816,9 +15788,8 @@ msgid "Branch|B"
 msgstr "فرع|B"
 
 #: lib/ui/stdmenus.inc:360
-#, fuzzy
 msgid "Custom Insets"
-msgstr "اختيار نقطة:"
+msgstr "إدراجات مخصصة"
 
 #: lib/ui/stdmenus.inc:361
 msgid "File|e"
@@ -15839,7 +15810,7 @@ msgstr "استشهاد...|ا"
 
 #: lib/ui/stdmenus.inc:366
 msgid "Cross-Reference...|R"
-msgstr "اسناد ترافقي...|R"
+msgstr "إسناد ترافقي...|R"
 
 #: lib/ui/stdmenus.inc:367
 msgid "Label...|L"
@@ -16050,9 +16021,8 @@ msgid "Table of Contents|C"
 msgstr "جدول المحتويات|C"
 
 #: lib/ui/stdmenus.inc:457
-#, fuzzy
 msgid "List of Listings|L"
-msgstr "قائمة القوائم"
+msgstr "قائمة القوائم|L"
 
 #: lib/ui/stdmenus.inc:458
 msgid "Nomenclature|N"
@@ -16429,7 +16399,7 @@ msgstr "استخدم نظام الجبر الحاسوبي|ا"
 
 #: lib/ui/stdcontext.inc:87 lib/ui/stdcontext.inc:105
 msgid "Next Cross-Reference|N"
-msgstr "الاسناد الترافقي التالي"
+msgstr "الإسناد الترافقي التالي|N"
 
 #: lib/ui/stdcontext.inc:88
 msgid "Go to Label|G"
@@ -16478,11 +16448,11 @@ msgstr ""
 
 #: lib/ui/stdcontext.inc:144
 msgid "Open Inset|O"
-msgstr "فتح برواز|e"
+msgstr "فتح إدراج|O"
 
 #: lib/ui/stdcontext.inc:145
 msgid "Close Inset|C"
-msgstr "غلق برواز|C"
+msgstr "إغلاق إدراج|C"
 
 #: lib/ui/stdcontext.inc:147 lib/ui/stdcontext.inc:153
 #: lib/ui/stdcontext.inc:589
@@ -16555,11 +16525,11 @@ msgstr ""
 
 #: lib/ui/stdcontext.inc:230
 msgid "Horizontal Fill (Left Arrow)|L"
-msgstr "ملئ افقي (سهم ايسر)"
+msgstr "ملئ افقي (سهم ايسر)|L"
 
 #: lib/ui/stdcontext.inc:231
 msgid "Horizontal Fill (Right Arrow)|g"
-msgstr "ملئ افقي (سهم ايمن)"
+msgstr "ملئ افقي (سهم ايمن)|g"
 
 #: lib/ui/stdcontext.inc:232
 msgid "Horizontal Fill (Up Brace)|p"
@@ -16583,31 +16553,31 @@ msgstr "مسافة سميكة|h"
 
 #: lib/ui/stdcontext.inc:247
 msgid "Negative Medium Space|u"
-msgstr "مسافة متوسطة سالبة|ب"
+msgstr "مسافة متوسطة سالبة|u"
 
 #: lib/ui/stdcontext.inc:248
 msgid "Negative Thick Space|i"
-msgstr "مسافة سميكة سالبة|ب"
+msgstr "مسافة سميكة سالبة|i"
 
 #: lib/ui/stdcontext.inc:261
 msgid "DefSkip|D"
-msgstr "رفيع"
+msgstr "رفيع|D"
 
 #: lib/ui/stdcontext.inc:262
 msgid "SmallSkip|S"
-msgstr "صغير"
+msgstr "صغير|S"
 
 #: lib/ui/stdcontext.inc:263
 msgid "MedSkip|M"
-msgstr "متوسط"
+msgstr "متوسط|M"
 
 #: lib/ui/stdcontext.inc:264
 msgid "BigSkip|B"
-msgstr "كبير"
+msgstr "كبير|B"
 
 #: lib/ui/stdcontext.inc:265
 msgid "VFill|F"
-msgstr "ملئ رأسي"
+msgstr "ملئ رأسي|F"
 
 #: lib/ui/stdcontext.inc:266
 msgid "Custom|C"
@@ -16619,11 +16589,11 @@ msgstr "إعدادات...|e"
 
 #: lib/ui/stdcontext.inc:275 lib/ui/stdcontext.inc:536
 msgid "Include|c"
-msgstr "تضمين"
+msgstr "تضمين|c"
 
 #: lib/ui/stdcontext.inc:276 lib/ui/stdcontext.inc:537
 msgid "Input|p"
-msgstr "ادخل"
+msgstr "ادخل|p"
 
 #: lib/ui/stdcontext.inc:277 lib/ui/stdcontext.inc:538
 msgid "Verbatim|V"
@@ -16655,7 +16625,7 @@ msgstr ""
 
 #: lib/ui/stdcontext.inc:323
 msgid "Move Section Down|D"
-msgstr "|Dنقل القسم لأسفل"
+msgstr "نقل القسم لأسفل|D"
 
 #: lib/ui/stdcontext.inc:324 lib/ui/stdcontext.inc:609
 msgid "Move Section Up|U"
@@ -17028,7 +16998,7 @@ msgstr "إدراج ملصق"
 
 #: lib/ui/stdtoolbars.inc:124
 msgid "Insert cross-reference"
-msgstr "ادراج اسناد ترافقي"
+msgstr "إدراج إسناد ترافقي"
 
 #: lib/ui/stdtoolbars.inc:125
 msgid "Insert citation"
@@ -17403,11 +17373,11 @@ msgstr "تحديث صيغ أخرى"
 
 #: lib/ui/stdtoolbars.inc:276 src/frontends/qt4/GuiLog.cpp:245
 msgid "Version Control"
-msgstr "تحكم الاصدار"
+msgstr "التحكم بالإصدار"
 
 #: lib/ui/stdtoolbars.inc:277
 msgid "Register"
-msgstr "تسجيل..."
+msgstr "التسجيل..."
 
 #: lib/ui/stdtoolbars.inc:278
 msgid "Check-out for edit"
@@ -17457,28 +17427,28 @@ msgstr "خيارات الرياضيات"
 
 #: lib/ui/stdtoolbars.inc:293 lib/ui/stdtoolbars.inc:370
 msgid "Styles"
-msgstr "أساليب"
+msgstr "الأساليب"
 
 #: lib/ui/stdtoolbars.inc:294 lib/ui/stdtoolbars.inc:377
 msgid "Fractions"
-msgstr "كسور"
+msgstr "الكسور"
 
 #: lib/ui/stdtoolbars.inc:295 lib/ui/stdtoolbars.inc:394
 #: src/frontends/qt4/GuiDocument.cpp:1405
 msgid "Fonts"
-msgstr "خطوط"
+msgstr "الخطوط"
 
 #: lib/ui/stdtoolbars.inc:296 lib/ui/stdtoolbars.inc:313
 msgid "Functions"
-msgstr "دوال"
+msgstr "الدوال"
 
 #: lib/ui/stdtoolbars.inc:297
 msgid "Frame decorations"
-msgstr "زينات الاطار"
+msgstr "زينات الإطار"
 
 #: lib/ui/stdtoolbars.inc:298
 msgid "Big operators"
-msgstr "معاملات كبيرة"
+msgstr "العمليات الكبيرة"
 
 #: lib/ui/stdtoolbars.inc:299 lib/ui/stdtoolbars.inc:637
 msgid "Miscellaneous"
@@ -17487,7 +17457,7 @@ msgstr ""
 #: lib/ui/stdtoolbars.inc:301 lib/ui/stdtoolbars.inc:462
 #: src/frontends/qt4/GuiSymbols.cpp:89
 msgid "Arrows"
-msgstr "اسهم"
+msgstr "الأسهم"
 
 #: lib/ui/stdtoolbars.inc:302 lib/ui/stdtoolbars.inc:889
 #, fuzzy
@@ -17496,7 +17466,7 @@ msgstr "نظريات (AMS-ممتدة)"
 
 #: lib/ui/stdtoolbars.inc:303 lib/ui/stdtoolbars.inc:500
 msgid "Operators"
-msgstr "معامل رياضي"
+msgstr "العمليات الرياضية"
 
 #: lib/ui/stdtoolbars.inc:304 lib/ui/stdtoolbars.inc:1151
 #, fuzzy
@@ -17505,7 +17475,7 @@ msgstr "نظريات (AMS-ممتدة)"
 
 #: lib/ui/stdtoolbars.inc:305 lib/ui/stdtoolbars.inc:536
 msgid "Relations"
-msgstr "علاقات"
+msgstr "العلاقات"
 
 #: lib/ui/stdtoolbars.inc:306 lib/ui/stdtoolbars.inc:965
 #, fuzzy
@@ -17519,7 +17489,7 @@ msgstr "منتسب:"
 
 #: lib/ui/stdtoolbars.inc:308 lib/ui/stdtoolbars.inc:408
 msgid "Dots"
-msgstr "نقاط"
+msgstr "النقاط"
 
 #: lib/ui/stdtoolbars.inc:309 lib/ui/stdtoolbars.inc:1224
 msgid "Delimiters (fixed size)"
@@ -17532,15 +17502,15 @@ msgstr "رموز موسيقية"
 
 #: lib/ui/stdtoolbars.inc:314
 msgid "arccos"
-msgstr "معكوس جيب تمام الزاوية"
+msgstr "arccos"
 
 #: lib/ui/stdtoolbars.inc:315
 msgid "arcsin"
-msgstr "معكوس جيب الزاوية"
+msgstr "arcsin"
 
 #: lib/ui/stdtoolbars.inc:316
 msgid "arctan"
-msgstr "معكوس ظل الزاوية"
+msgstr "arctan"
 
 #: lib/ui/stdtoolbars.inc:317
 msgid "arg"
@@ -17552,7 +17522,7 @@ msgstr "bmod"
 
 #: lib/ui/stdtoolbars.inc:319
 msgid "cos"
-msgstr "جيب تمام الزاوية"
+msgstr "cos"
 
 #: lib/ui/stdtoolbars.inc:320
 msgid "cosh"
@@ -17560,7 +17530,7 @@ msgstr "cosh"
 
 #: lib/ui/stdtoolbars.inc:321
 msgid "cot"
-msgstr "مقلوب ظل الزاوية"
+msgstr "cot"
 
 #: lib/ui/stdtoolbars.inc:322
 msgid "coth"
@@ -17568,11 +17538,11 @@ msgstr "coth"
 
 #: lib/ui/stdtoolbars.inc:323
 msgid "csc"
-msgstr "مقلوب جيب الزاوية"
+msgstr "csc"
 
 #: lib/ui/stdtoolbars.inc:324
 msgid "deg"
-msgstr "درجة"
+msgstr "deg"
 
 #: lib/ui/stdtoolbars.inc:325
 msgid "det"
@@ -17584,7 +17554,7 @@ msgstr "dim"
 
 #: lib/ui/stdtoolbars.inc:327
 msgid "exp"
-msgstr "أس"
+msgstr "exp"
 
 #: lib/ui/stdtoolbars.inc:328
 msgid "gcd"
@@ -17620,27 +17590,27 @@ msgstr "limsup"
 
 #: lib/ui/stdtoolbars.inc:336
 msgid "ln"
-msgstr "لوغاريتم طبيعي"
+msgstr "ln"
 
 #: lib/ui/stdtoolbars.inc:337
 msgid "log"
-msgstr "لوغاريتم"
+msgstr "log"
 
 #: lib/ui/stdtoolbars.inc:338
 msgid "max"
-msgstr "اعلى"
+msgstr "max"
 
 #: lib/ui/stdtoolbars.inc:339
 msgid "min"
-msgstr "ادنى"
+msgstr "min"
 
 #: lib/ui/stdtoolbars.inc:340
 msgid "sec"
-msgstr "مقلوب جيب تمام الزاوية"
+msgstr "sec"
 
 #: lib/ui/stdtoolbars.inc:341
 msgid "sin"
-msgstr "جيب الزاوية"
+msgstr "sin"
 
 #: lib/ui/stdtoolbars.inc:342
 msgid "sinh"
@@ -17652,7 +17622,7 @@ msgstr "sup"
 
 #: lib/ui/stdtoolbars.inc:344
 msgid "tan"
-msgstr "ظل الزاوية"
+msgstr "tan"
 
 #: lib/ui/stdtoolbars.inc:345
 msgid "tanh"
@@ -17664,11 +17634,11 @@ msgstr "Pr"
 
 #: lib/ui/stdtoolbars.inc:349
 msgid "Spacings"
-msgstr "مباعدات"
+msgstr "المسافات"
 
 #: lib/ui/stdtoolbars.inc:350
 msgid "Thin space\t\\,"
-msgstr "مسافة رفيعة \t\\,"
+msgstr "مسافة رفيعة\t\\,"
 
 #: lib/ui/stdtoolbars.inc:351
 msgid "Medium space\t\\:"
@@ -17692,7 +17662,7 @@ msgstr "مسافة سالبة\t\\!"
 
 #: lib/ui/stdtoolbars.inc:356
 msgid "Phantom\t\\phantom"
-msgstr ""
+msgstr "طيف\t\\طيف"
 
 #: lib/ui/stdtoolbars.inc:357
 #, fuzzy
@@ -17722,7 +17692,7 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:365
 msgid "Roots"
-msgstr "جذور"
+msgstr "الجذور"
 
 #: lib/ui/stdtoolbars.inc:366
 msgid "Square root\t\\sqrt"
@@ -17738,7 +17708,7 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:372
 msgid "Normal text style\t\\textstyle"
-msgstr ""
+msgstr "أسلوب نص عادي\t\\أسلوب النص"
 
 #: lib/ui/stdtoolbars.inc:373
 msgid "Script (small) style\t\\scriptstyle"
@@ -17964,11 +17934,11 @@ msgstr "overset"
 
 #: lib/ui/stdtoolbars.inc:446
 msgid "underline"
-msgstr "سطر سفلي"
+msgstr "خط سفلي"
 
 #: lib/ui/stdtoolbars.inc:448
 msgid "underbrace"
-msgstr "underbrace"
+msgstr "خط سفلي مزدوج"
 
 #: lib/ui/stdtoolbars.inc:450
 msgid "underleftarrow"
@@ -19293,9 +19263,8 @@ msgid "LEFTcircle"
 msgstr "circledS"
 
 #: lib/ui/stdtoolbars.inc:814
-#, fuzzy
 msgid "RIGHTcircle"
-msgstr "circledS"
+msgstr "دائرة يمين"
 
 #: lib/ui/stdtoolbars.inc:815
 msgid "leftturn"
@@ -19373,9 +19342,8 @@ msgid "checkmark"
 msgstr "check"
 
 #: lib/ui/stdtoolbars.inc:837
-#, fuzzy
 msgid "eighthnote"
-msgstr "التذييل الايمن"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:838
 #, fuzzy
@@ -23544,7 +23512,7 @@ msgstr "فشل نسخ %1$s الى  %2$s ."
 #: src/frontends/qt4/GuiDocument.cpp:3587
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
-msgstr "Roman"
+msgstr "روماني"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:122
 #: src/frontends/qt4/GuiDocument.cpp:3587
@@ -23820,7 +23788,7 @@ msgstr ""
 
 #: src/LyX.cpp:536
 msgid "No textclass is found"
-msgstr "القسم النصي غير موجود"
+msgstr "نوع النص غير موجود"
 
 #: src/LyX.cpp:537
 #, fuzzy
@@ -24686,7 +24654,7 @@ msgstr ", الفصل: "
 
 #: src/Text.cpp:1890
 msgid ", Id: "
-msgstr ""
+msgstr ", معرف: "
 
 #: src/Text.cpp:1891
 msgid ", Position: "
@@ -24838,7 +24806,7 @@ msgstr "إضافة محلية"
 
 #: src/VCBackend.cpp:629
 msgid "Needs Merge"
-msgstr ""
+msgstr "يحتاج دمج"
 
 #: src/VCBackend.cpp:631
 msgid "Needs Checkout"
@@ -26066,7 +26034,7 @@ msgstr "مرقم"
 
 #: src/frontends/qt4/GuiDocument.cpp:1097
 msgid "Appears in TOC"
-msgstr "يظهر في TOC"
+msgstr "يظهر في جدول المحتويات"
 
 #: src/frontends/qt4/GuiDocument.cpp:1132
 msgid "Author-year"
@@ -26160,7 +26128,7 @@ msgstr "الالوان"
 
 #: src/frontends/qt4/GuiDocument.cpp:1411
 msgid "Numbering & TOC"
-msgstr "الترقيم و TOC"
+msgstr "الترقيم & جدول المحتويات"
 
 #: src/frontends/qt4/GuiDocument.cpp:1413
 msgid "Indexes"
@@ -26305,7 +26273,7 @@ msgstr "%1$s (غير متاح)"
 
 #: src/frontends/qt4/GuiDocument.cpp:2407
 msgid "Module provided by document class."
-msgstr "موحدة متوفرة بواسطة قسم المستند."
+msgstr "نمذجة بواسطة نوع المستند."
 
 #: src/frontends/qt4/GuiDocument.cpp:2414
 #, c-format
@@ -27092,7 +27060,7 @@ msgstr "تعيين"
 
 #: src/frontends/qt4/GuiRef.cpp:44
 msgid "Cross-reference"
-msgstr "اسناد ترافقي"
+msgstr "إسناد ترافقي"
 
 #: src/frontends/qt4/GuiRef.cpp:305
 msgid "&Go Back"
@@ -27757,15 +27725,15 @@ msgid "&Rename"
 msgstr "&إعادة تسمية"
 
 #: src/frontends/qt4/GuiView.cpp:2308
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The document %1$s is already registered.\n"
 "\n"
 "Do you want to choose a new name?"
 msgstr ""
-"المستند %1$s موجود بالفعل.\n"
+"المستند %1$s مسجل مسبقا.\n"
 "\n"
-"هل ترغب باستبدال هذا المستند؟"
+"هل ترغب باختيار اسم جديد للمستند؟"
 
 #: src/frontends/qt4/GuiView.cpp:2313
 msgid "Rename document?"
@@ -27899,9 +27867,8 @@ msgid "&Reload"
 msgstr "&اعادة تحميل"
 
 #: src/frontends/qt4/GuiView.cpp:2916
-#, fuzzy
 msgid "Document could not be checked in."
-msgstr "المدقق الاملائي لم يبدأ\n"
+msgstr "لم يتم تدقيق المستند."
 
 #: src/frontends/qt4/GuiView.cpp:2960
 msgid "Error when setting the locking property."
@@ -28103,7 +28070,7 @@ msgstr "تحديث (كل الهيئات)|p"
 #: src/frontends/qt4/Menus.cpp:1096
 #, c-format
 msgid "View [%1$s]|V"
-msgstr "عرض[%1$s]|V"
+msgstr "عرض [%1$s]|V"
 
 #: src/frontends/qt4/Menus.cpp:1097
 #, c-format
@@ -28111,9 +28078,8 @@ msgid "Update [%1$s]|U"
 msgstr "تحديث [%1$s]|U"
 
 #: src/frontends/qt4/Menus.cpp:1208
-#, fuzzy
 msgid "No Custom Insets Defined!"
-msgstr "لا اجراء محدد!"
+msgstr "لا يوجد إدراج مخصص!"
 
 #: src/frontends/qt4/Menus.cpp:1280
 msgid "<No Document Open>"
@@ -28375,7 +28341,7 @@ msgstr "القوائم:"
 
 #: src/insets/InsetBibtex.cpp:220
 msgid "included in TOC"
-msgstr ""
+msgstr "إدراج جدول محتويات"
 
 #: src/insets/InsetBibtex.cpp:325 src/insets/InsetBibtex.cpp:374
 msgid "Export Warning!"
@@ -28386,8 +28352,8 @@ msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
-"توجد مباعدات في المسار الى قاعدة بيانات BibTeX الخاصة بك.\n"
-"BibTeXلن يكون قادرا على العثور عليها."
+"توجد مسافة في المسار إلى قاعدة بيانات BibTeX الخاصة بك.\n"
+"لن يكون BibTeX قادرا على العثور عليها."
 
 #: src/insets/InsetBibtex.cpp:375
 msgid ""
@@ -28471,9 +28437,8 @@ msgid "Branch (master only): "
 msgstr "الفرع (الرئيسي فقط):"
 
 #: src/insets/InsetBranch.cpp:97
-#, fuzzy
 msgid "Branch (undefined): "
-msgstr "غير محدد"
+msgstr "فرع (غير محدد):"
 
 #: src/insets/InsetBranch.cpp:102
 #, fuzzy
@@ -28505,9 +28470,8 @@ msgid "LaTeX Command: "
 msgstr "اوامر لتيك:"
 
 #: src/insets/InsetCommandParams.cpp:268
-#, fuzzy
 msgid "InsetCommand Error: "
-msgstr "اقرأ الخطأ"
+msgstr "خطأ في الأمر المدرج:"
 
 #: src/insets/InsetCommandParams.cpp:269 src/insets/InsetCommandParams.cpp:286
 msgid "Incompatible command name."
@@ -29150,7 +29114,7 @@ msgstr "قائمة القوائم"
 
 #: src/insets/InsetTOC.cpp:78
 msgid "Unknown TOC type"
-msgstr ""
+msgstr "نوع جدول محتويات مجهول"
 
 #: src/insets/InsetTabular.cpp:4496
 msgid "Selections not supported."
@@ -29399,7 +29363,7 @@ msgstr "تعذر اضافة خطوط أفقية للشبكة في '%1$s'"
 #: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1704
 #: src/mathed/InsetMathNest.cpp:1850
 msgid "Autocorrect Off ('!' to enter)"
-msgstr ""
+msgstr "التدقيق الآلي مغلق (للإدخال '!')"
 
 #: src/mathed/InsetMathNest.cpp:1019
 msgid "create new math text environment ($...$)"
@@ -29407,7 +29371,7 @@ msgstr "انشئ نص رياضي جديد  ($...$)"
 
 #: src/mathed/InsetMathNest.cpp:1022
 msgid "entered math text mode (textrm)"
-msgstr ""
+msgstr "إدخال نظام النص الرياضي (textrm)"
 
 #: src/mathed/InsetMathNest.cpp:1044
 #, fuzzy
