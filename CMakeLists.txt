@@ -706,16 +706,17 @@ endif()
 
 # Xcode compiler
 if (CMAKE_GENERATOR MATCHES Xcode)
-	# Automatically select the Xcode compiler if not set
-	if (NOT DEFINED CMAKE_XCODE_ATTRIBUTE_GCC_VERSION)
-		# XCode >= 3.1 has gcc 4.2 (up to actual Xcode)
-		if (XCODE_VERSION VERSION_GREATER "3.1")
-			SET(CMAKE_XCODE_ATTRIBUTE_GCC_VERSION "com.apple.compilers.llvmgcc42")
-		ENDIF(XCODE_VERSION VERSION_GREATER "3.1")
-	ENDIF(NOT DEFINED CMAKE_XCODE_ATTRIBUTE_GCC_VERSION)
-
-	# Print the selected compiler version
-    MESSAGE(STATUS "---- Using XCode compiler CMAKE_XCODE_ATTRIBUTE_GCC_VERSION=${CMAKE_XCODE_ATTRIBUTE_GCC_VERSION}")
+	if (NOT XCODE_VERSION VERSION_GREATER "5.0")
+		# Automatically select the Xcode compiler if not set
+		if (NOT DEFINED CMAKE_XCODE_ATTRIBUTE_GCC_VERSION)
+			# XCode >= 3.1 has gcc 4.2 (up to actual Xcode)
+			if (XCODE_VERSION VERSION_GREATER "3.1")
+				SET(CMAKE_XCODE_ATTRIBUTE_GCC_VERSION "com.apple.compilers.llvmgcc42")
+			ENDIF(XCODE_VERSION VERSION_GREATER "3.1")
+		ENDIF(NOT DEFINED CMAKE_XCODE_ATTRIBUTE_GCC_VERSION)
+		# Print the selected compiler version
+   	MESSAGE(STATUS "---- Using XCode compiler CMAKE_XCODE_ATTRIBUTE_GCC_VERSION=${CMAKE_XCODE_ATTRIBUTE_GCC_VERSION}")
+	ENDIF(NOT XCODE_VERSION VERSION_GREATER "5.0")
 ENDIF(CMAKE_GENERATOR MATCHES Xcode)
 
 if (WIN32 AND Qt5Core_FOUND)
