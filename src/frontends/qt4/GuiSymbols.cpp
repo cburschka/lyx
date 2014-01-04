@@ -277,12 +277,16 @@ GuiSymbols::GuiSymbols(GuiView & lv)
 
 	symbolsLW->setViewMode(QListView::IconMode);
 	// increase the display size of the symbols a bit
-	QFont font= symbolsLW->font();
-	int size = font.pointSize() + 3;
+	QFont font = symbolsLW->font();
+	const int size = font.pointSize() + 3;
 	font.setPointSize(size);
 	symbolsLW->setFont(font);
 	QFontMetrics fm(font);
-	symbolsLW->setGridSize(QSize(fm.maxWidth() + 2, fm.height() + 2));
+	const int cellHeight = fm.height() + 2;
+	// FIXME: using at least cellHeight because of
+	// QFontMetrics::maxWidth() is returning 0 with Qt/Cocoa on Mac OS
+	const int cellWidth = max(cellHeight, fm.maxWidth() + 2);
+	symbolsLW->setGridSize(QSize(cellWidth, cellHeight));
 	symbolsLW->setModel(model_);
 }
 
