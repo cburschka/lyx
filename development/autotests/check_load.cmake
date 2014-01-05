@@ -17,7 +17,7 @@
 #       -P "${TOP_SRC_DIR}/development/autotests/check_load.cmake"
 #
 
-message(STATUS "Executing ${lyx} -batch ${LYXFILE}")
+message(STATUS "Executing ${lyx} -batch -userdir \"${LYX_TESTS_USERDIR}\" ${LYXFILE}")
 set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
 set(ENV{LANG} "en") # to get all error-messages in english
 
@@ -39,21 +39,18 @@ if(lyxerr)
   string(REGEX REPLACE "[\n]+" ";" foundErrors ${lyxerr})
   foreach(_l ${foundErrors})
     if(ConfigureOutput)
-      string(REGEX MATCHALL "LyX: Done!" _match ${_l})
-      if(_match)
+      if(_l MATCHES "LyX: Done!")
         set(ConfigureOutput 0)
       endif()
     else()
-      string(REGEX MATCHALL "reconfiguring user directory" _match ${_l})
-      if(_match)
+      if(_l MATCHES "reconfiguring user directory")
         set(ConfigureOutput 1)
       endif()
     endif()
     if(NOT ConfigureOutput)
       set(found 0)
       foreach(_r ${ignoreRegexp})
-        string(REGEX MATCHALL "${_r}" _match ${_l})
-        if(_match)
+        if(_l MATCHES "${_r}")
           set(found 1)
           break()
         endif()

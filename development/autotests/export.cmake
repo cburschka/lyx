@@ -6,7 +6,7 @@
 #
 # LYX_ROOT  = ${TOP_SRC_DIR}/lib/{doc,examples,templates}
 # LYX_USERDIR_VER = Name of environment variable for the user directory
-# lyx       = 
+# lyx       =
 # format    = lyx16x|xhtml
 # extension = 16.lyx|xhtml
 # file      = xxx
