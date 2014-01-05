@@ -174,6 +174,7 @@ foreach(_gmo_base ${INSTALLED_LANGUAGES})
     DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${_gmo}"
     )
   list(APPEND LYX_UPDATED_GMO_FILES "${LYX_DEST_PO}/${_gmo}")
+  ADD_CUSTOM_TARGET(update-${_gmo_base}-gmo DEPENDS "${LYX_DEST_PO}/${_gmo}")
 endforeach()
 
 set(LYX_UPDATED_PO_FILES)
