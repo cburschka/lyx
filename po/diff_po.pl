@@ -8,8 +8,9 @@
 # ./diff_po.pl cs.po.old cs.po
 # svn diff -r38367 --diff-cmd ./diff_po.pl cs.po
 # git difftool --extcmd=./diff_po.pl sk.po
-# ./diff_po.pl -r HEAD~100 cs.po	#fetch git revision and compare
+# ./diff_po.pl -rHEAD~100 cs.po	        #fetch git revision and compare
 # ./diff_po.pl -r39229 cs.po		#fetch svn revision and compare
+# ./diff_po.pl -r-1 cs.po               #fetch the previous change of cs.po and compare
 #
 # This file is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public
@@ -30,6 +31,36 @@
 # TODO:
 # 1.) Search for good correlations of deleted <==> inserted string
 #     using Text::Levenshtein or Algorithm::Diff
+#
+# val:     '0' | '1' ;
+#
+# fuzzyopt: '--display-fuzzy=' val ;
+#
+# untranslatedopt: '--display-untranslated=' val ;
+#
+# option:  fuzzyopt
+#          | untranslatedopt
+#          ;
+# options: | options option
+#          ;
+#
+# revspec: revision-tag          # e.g. 46c00bab7
+#          | 'HEAD' relative-rev # e.g. HEAD~3, HEAD-3
+#          | '-' number          # -1 == previous commit of the following po-file
+#          ;
+#
+# revision: '-r' revspec ;
+#
+# filespecold: revision | filespec ;
+#
+# filespec: # path to existing po-file
+#
+# filespecnew: filespec ;
+#
+# files:   filespecold filespecnew ;
+#
+# diff:      'diff_po.pl' ' ' options files
+#
 
 BEGIN {
     use File::Spec;
