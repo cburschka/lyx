@@ -1077,7 +1077,7 @@ int fileLock(const char * lock_file)
 	return(fd);
 }
 
-void fileUnlock(int fd, const char * lock_file)
+void fileUnlock(int fd, const char * /* lock_file*/)
 {
 #if defined(HAVE_LOCKF)
 	if ( fd >= 0) {
