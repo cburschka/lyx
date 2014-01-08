@@ -39,10 +39,12 @@ BEGIN  {
 }
 
 use CheckURL;
+use Try::Tiny;
+use locale;
+use POSIX qw(locale_h);
 
-$ENV{LC_ALL} = "en_US.UTF-8";
-$ENV{LANG} = "en_US.UTF-8";
-$ENV{LANGUAGE} = "en_US.UTF-8";
+setlocale(LC_CTYPE, "");
+setlocale(LC_MESSAGES, "en_US.UTF-8");
 
 my %URLS = ();
 my %ignoredURLS = ();
@@ -97,14 +99,22 @@ for my $u (@urls) {
   }
   next if ($checkSelectedOnly && ! defined($selectedURLS{$u}));
   $URLScount++;
-  print "Checking '$u'";
-  my $res = &check_url($u);
-  if ($res) {
-    print ": Failed\n";
+  print "Checking '$u': ";
+  my ($res, $prnt);
+  try {
+    $res = &check_url($u);
+    if ($res) {
+     $prnt = "Failed";
+    }
+    else {
+      $prnt = "OK";
+    }
   }
-  else {
-    print ": OK\n";
-  }
+  catch {
+    $prnt = "Failed, caught error: $_";
+    $res = 700;
+  };
+  print "$prnt\n";
   my $printSourceFiles = 0;
   my $err_txt = "Error url:";
 
