@@ -12,7 +12,7 @@ endif()
 find_path(ZLIB_INCLUDE_DIR zlib.h
  /usr/include
  /usr/local/include
- "${GNUWIN32_DIR}"/include)
+ "${GNUWIN32_DIR}/include")
 
 set(POTENTIAL_Z_LIBS z zlib zdll)
 
@@ -20,7 +20,7 @@ find_library(ZLIB_LIBRARY NAMES ${POTENTIAL_Z_LIBS}
 	PATHS
 	"C:\\Programme\\Microsoft Visual Studio 8\\VC\\lib"
 	${SYSTEM_LIB_DIRS}
-	"${GNUWIN32_DIR}"/lib)
+	"${GNUWIN32_DIR}/lib")
 
 if(ZLIB_INCLUDE_DIR AND ZLIB_LIBRARY)
    set(ZLIB_FOUND TRUE)
