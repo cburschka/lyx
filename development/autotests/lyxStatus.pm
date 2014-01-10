@@ -13,6 +13,26 @@ BEGIN {
   @EXPORT    = qw(initLyxStack checkLyxLine closeLyxStack diestack);
 }
 
+# Prototypes
+sub initLyxStack($$);
+sub diestack($);
+sub closeLyxStack();
+sub setMatching($);
+sub getMatching();
+sub checkForEndBlock($);
+sub newMatch(%);
+sub getSearch($);
+sub getFileType($);
+sub getFileIdx($);
+sub getExt($);
+sub getResult($);
+sub checkForHeader($);
+sub checkForPreamble($);
+sub checkForLayoutStart($);
+sub checkForInsetStart($);
+sub checkForLatexCommand($);
+sub checkLyxLine($);
+
 my @stack = ();			# list of HASH-Arrays
 my $rFont = {};
 my $useNonTexFont = "true";
@@ -77,7 +97,7 @@ sub diestack($)
 
 sub closeLyxStack()
 {
-  &diestack("Stack not OK") if ($stack[0]->{type} ne "Starting");
+  diestack("Stack not OK") if ($stack[0]->{type} ne "Starting");
 }
 
 sub setMatching($)
@@ -100,7 +120,7 @@ sub checkForEndBlock($)
 
   for my $et ( qw( layout inset preamble header)) {
     if ($l =~ /^\\end_$et$/) {
-      &diestack("Not in $et") if ($stack[0]->{type} ne "$et");
+      diestack("Not in $et") if ($stack[0]->{type} ne "$et");
       #print "End $et\n";
       shift(@stack);
       return(1);
@@ -109,7 +129,7 @@ sub checkForEndBlock($)
   return(0);
 }
 
-sub newMatch($$)
+sub newMatch(%)
 {
   my %elem = @_;
 
@@ -122,7 +142,7 @@ sub newMatch($$)
   if (! defined($elem{"fileidx"})) {
     $elem{"fileidx"} = 1;
   }
-  &diestack("No result defined") if (! defined($elem{"result"}));
+  diestack("No result defined") if (! defined($elem{"result"}));
   return(\%elem);
 }
 
@@ -171,22 +191,22 @@ sub checkForHeader($)
     $selem{name} = $1;
     unshift(@stack, \%selem);
     my @rElems = ();
-    $rElems[0] = &newMatch("search" => '^\\\\master\s+(.*\.lyx)',
+    $rElems[0] = newMatch("search" => '^\\\\master\s+(.*\.lyx)',
 			   "filetype" => "prefix_only",
 			   "result" => ["\\master ", ""]);
     if (keys %{$rFont}) {
       for my $ff ( keys %{$rFont}) {
-	my $elem = &newMatch("search" => '^\\\\font_' . $ff . '\s+',
+	my $elem = newMatch("search" => '^\\\\font_' . $ff . '\s+',
 			     "filetype" => "replace_only",
 			     "result" => ["\\font_$ff ", $rFont->{$ff}]);
 	push(@rElems, $elem);
       }
     }
-    my $elemntf = &newMatch("search" => '^\\\\use_non_tex_fonts\s+(false|true)',
+    my $elemntf = newMatch("search" => '^\\\\use_non_tex_fonts\s+(false|true)',
 			    "filetype" => "replace_only",
 			    "result" => ["\\use_non_tex_fonts $useNonTexFont"]);
     push(@rElems, $elemntf);
-    &setMatching(\@rElems);
+    setMatching(\@rElems);
     return(1);
   }
   return(0);
@@ -201,11 +221,11 @@ sub checkForPreamble($)
     $selem{type} = "preamble";
     $selem{name} = $1;
     unshift(@stack, \%selem);
-    my $rElem = &newMatch("ext" => [".eps", ".png"],
+    my $rElem = newMatch("ext" => [".eps", ".png"],
 			  "search" => '^\\\\(photo|ecvpicture)(.*\{)(.*)\}',
 			  "fileidx" => 3,
 			  "result" => ["\\", "1", "2", "3", "}"]);
-    &setMatching([$rElem]);
+    setMatching([$rElem]);
     return(1);
   }
   return(0);
@@ -222,10 +242,10 @@ sub checkForLayoutStart($)
     $selem{name} = $1;
     unshift(@stack, \%selem);
     if ($selem{name} =~ /^(Picture|Photo)$/ ) {
-      my $rElem = &newMatch("ext" => [".eps", ".png"],
+      my $rElem = newMatch("ext" => [".eps", ".png"],
 			    "search" => '^(.+)',
 			    "result" => ["", "", ""]);
-      &setMatching([$rElem]);
+      setMatching([$rElem]);
     }
     return(1);
   }
@@ -243,10 +263,10 @@ sub checkForInsetStart($)
     $selem{name} = $1;
     unshift(@stack, \%selem);
     if ($selem{name} =~ /^(Graphics|External)$/) {
-      my $rElem = &newMatch("search" => '^\s+filename\s+(.+)$',
+      my $rElem = newMatch("search" => '^\s+filename\s+(.+)$',
 			    "filetype" => "copy_only",
 			    "result" => ["\tfilename ", "", ""]);
-      &setMatching([$rElem]);
+      setMatching([$rElem]);
     }
     return(1);
   }
@@ -262,29 +282,29 @@ sub checkForLatexCommand($)
       my $param = $1;
       if ($stack[0]->{name} =~ /^CommandInset\s+bibtex$/) {
 	if ($param eq "bibtex") {
-	  my $rElem1 = &newMatch("ext" => ".bib",
+	  my $rElem1 = newMatch("ext" => ".bib",
 				 "filetype" => "prefix_for_list",
 				 "search" => '^bibfiles\s+\"(.+)\"',
 				 "result" => ["bibfiles \"", "1", "\""]);
-	  my $rElem2 = &newMatch("ext" => ".bst",
+	  my $rElem2 = newMatch("ext" => ".bst",
 				 "filetype" => "prefix_for_list",
 				 "search" => '^options\s+\"(.+)\"',
 				 "result" => ["options \"", "1", "\""]);
-	  &setMatching([$rElem1, $rElem2]);
+	  setMatching([$rElem1, $rElem2]);
 	}
       }
       elsif ($stack[0]->{name} =~ /^CommandInset\s+include$/) {
 	if ($param =~ /^(verbatiminput\*?|lstinputlisting)$/) {
-	  my $rElem = &newMatch("search" => '^filename\s+\"(.+)\"',
+	  my $rElem = newMatch("search" => '^filename\s+\"(.+)\"',
 				"filetype" => "copy_only",
 				"result" => ["filename \"", "", "\""]);
-	  &setMatching([$rElem]);
+	  setMatching([$rElem]);
 	}
 	elsif ($param =~ /^(include|input)$/) {
-	  my $rElem = &newMatch("search" => '^filename\s+\"(.+)\"',
+	  my $rElem = newMatch("search" => '^filename\s+\"(.+)\"',
 				"filetype" => "interpret",
 				"result" => ["filename \"", "", "\""]);
-	  &setMatching([$rElem]);
+	  setMatching([$rElem]);
 	}
       }
     }
@@ -306,20 +326,20 @@ sub checkLyxLine($)
 {
   my ($l) = @_;
 
-  return({"found" => 0}) if (&checkForHeader($l));
-  return({"found" => 0}) if (&checkForPreamble($l));
-  return({"found" => 0}) if (&checkForEndBlock($l));
-  return({"found" => 0}) if (&checkForLayoutStart($l));
-  return({"found" => 0}) if (&checkForInsetStart($l));
-  return({"found" => 0}) if (&checkForLatexCommand($l));
+  return({"found" => 0}) if (checkForHeader($l));
+  return({"found" => 0}) if (checkForPreamble($l));
+  return({"found" => 0}) if (checkForEndBlock($l));
+  return({"found" => 0}) if (checkForLayoutStart($l));
+  return({"found" => 0}) if (checkForInsetStart($l));
+  return({"found" => 0}) if (checkForLatexCommand($l));
   if (defined($stack[0])) {
-    my $rMatch = &getMatching();
+    my $rMatch = getMatching();
     for my $m ( @{$rMatch}) {
-      my $search = &getSearch($m);
+      my $search = getSearch($m);
       if ($l =~ /$search/) {
 	my @matches = ($1, $2, $3, $4);
-	my $filetype = &getFileType($m);
-	my @result2 = @{&getResult($m)};
+	my $filetype = getFileType($m);
+	my @result2 = @{getResult($m)};
 
 	for my $r (@result2) {
 	  if ($r =~ /^\d$/) {
@@ -334,12 +354,12 @@ sub checkLyxLine($)
 	  return(\%result);
 	}
 	else {
-	  my $fileidx = &getFileIdx($m);
+	  my $fileidx = getFileIdx($m);
 	  my $filename = $matches[$fileidx-1];
 	  if ($filename !~ /^\.*$/) {
 	    my %result = ("found" => 1,
 			  "fileidx" => $fileidx,
-			  "ext" => &getExt($m),
+			  "ext" => getExt($m),
 			  "result" => \@result2);
 	    if ($filetype eq "prefix_for_list") {
 	      # bibfiles|options in CommandInset bibtex

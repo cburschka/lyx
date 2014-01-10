@@ -47,15 +47,28 @@ use File::Copy "cp";
 use File::Temp qw/ :POSIX /;
 use lyxStatus;
 
+# Prototypes
+sub printCopiedDocuments($);
+sub interpretedCopy($$$$);
+sub copyFoundSubdocuments($);
+sub copyJob($$);
+sub isrelativeFix($$$);
+sub isrelative($$$);
+sub createTemporaryFileName($$);
+sub copyJobPending($$);
+sub addNewJob($$$$$);
+sub addFileCopyJob($$$$);
+sub getNewNameOf($$);
+
 # convert lyx file to be compilable with xetex
 
 my ($source, $dest, $format, $fontT, $rest) = @ARGV;
 
-&diestack("Too many arguments") if (defined($rest));
-&diestack("Sourcefilename not defined") if (! defined($source));
-&diestack("Destfilename not defined") if (! defined($dest));
-&diestack("Format (e.g. pdf4) not defined") if (! defined($format));
-&diestack("Font type (e.g. texF) not defined") if (! defined($fontT));
+diestack("Too many arguments") if (defined($rest));
+diestack("Sourcefilename not defined") if (! defined($source));
+diestack("Destfilename not defined") if (! defined($dest));
+diestack("Format (e.g. pdf4) not defined") if (! defined($format));
+diestack("Font type (e.g. texF) not defined") if (! defined($fontT));
 
 $source = File::Spec->rel2abs($source);
 $dest = File::Spec->rel2abs($dest);
@@ -95,7 +108,7 @@ else {
 my $sourcedir = dirname($source);
 my $destdir = dirname($dest);
 if (! -d $destdir) {
-  &diestack("could not make dir \"$destdir\"") if (! mkdir $destdir);
+  diestack("could not make dir \"$destdir\"") if (! mkdir $destdir);
 }
 
 my $destdirOfSubdocuments;
@@ -115,11 +128,11 @@ my %type2hash = (
   "copy_only" => "copyonly",
   "interpret" => "interpret");
 
-&addNewJob($source, $dest, "interpret", {}, \%IncludedFiles);
+addNewJob($source, $dest, "interpret", {}, \%IncludedFiles);
 
-&copyFoundSubdocuments(\%IncludedFiles);
+copyFoundSubdocuments(\%IncludedFiles);
 
-#&printCopiedDocuments(\%IncludedFiles);
+#printCopiedDocuments(\%IncludedFiles);
 
 exit(0);
 ###########################################################
@@ -143,14 +156,14 @@ sub interpretedCopy($$$$)
   my $sourcedir = dirname($source);
   my $res = 0;
 
-  &diestack("could not read \"$source\"") if (!open(FI, $source));
-  &diestack("could not write \"$dest\"") if (! open(FO, '>', $dest));
+  diestack("could not read \"$source\"") if (!open(FI, $source));
+  diestack("could not write \"$dest\"") if (! open(FO, '>', $dest));
 
-  &initLyxStack(\%font, $fontT);
+  initLyxStack(\%font, $fontT);
 
   while (my $l = <FI>) {
     chomp($l);
-    my $rStatus = &checkLyxLine($l);
+    my $rStatus = checkLyxLine($l);
     if ($rStatus->{found}) {
       my $rF = $rStatus->{result};
       if ($rStatus->{"filetype"} eq "replace_only") {
@@ -163,18 +176,18 @@ sub interpretedCopy($$$$)
 	my $separator = $rStatus->{"separator"};
 	my $foundrelative = 0;
 	for my $f (@{$filelist}) {
-	  my @isrel = &isrelative($f,
+	  my @isrel = isrelative($f,
 				  $sourcedir,
 				  $rStatus->{ext});
 	  if ($isrel[0]) {
 	    $foundrelative = 1;
 	    my $ext = $isrel[1];
 	    if ($rStatus->{"filetype"} eq "prefix_only") {
-	      $f = &getNewNameOf("$sourcedir/$f", $rFiles);
+	      $f = getNewNameOf("$sourcedir/$f", $rFiles);
 	    }
 	    else {
 	      my ($newname, $res1);
-	      ($newname, $res1) = &addFileCopyJob("$sourcedir/$f$ext",
+	      ($newname, $res1) = addFileCopyJob("$sourcedir/$f$ext",
 						  "$destdirOfSubdocuments",
 						  $rStatus->{"filetype"},
 						  $rFiles);
@@ -198,7 +211,7 @@ sub interpretedCopy($$$$)
   close(FI);
   close(FO);
 
-  &closeLyxStack();
+  closeLyxStack();
   return($res);
 }
 
@@ -211,12 +224,12 @@ sub copyFoundSubdocuments($)
     my %copylist = ();
 
     for my $filename (keys  %{$rFiles}) {
-      next if (! &copyJobPending($filename, $rFiles));
+      next if (! copyJobPending($filename, $rFiles));
       $copylist{$filename} = 1;
     }
     for my $f (keys %copylist) {
       # Second loop needed, because here $rFiles may change
-      my ($res1, @destfiles) = &copyJob($f, $rFiles);
+      my ($res1, @destfiles) = copyJob($f, $rFiles);
       $res += $res1;
       for my $destfile (@destfiles) {
 	print "res1 = $res1 for \"$f\" to be copied to $destfile\n";
@@ -239,10 +252,10 @@ sub copyJob($$)
 	my $dest = $rFiles->{$source}->{$k};
 	push(@dest, $dest);
 	if ($k eq "copyonly") {
-	  &diestack("Could not copy \"$source\" to \"$dest\"") if (! cp($source, $dest));
+	  diestack("Could not copy \"$source\" to \"$dest\"") if (! cp($source, $dest));
 	}
 	else {
-	  &interpretedCopy($source, $dest, $destdirOfSubdocuments, $rFiles);
+	  interpretedCopy($source, $dest, $destdirOfSubdocuments, $rFiles);
 	}
 	$res += 1;
       }
@@ -266,7 +279,7 @@ sub isrelative($$$)
 
   if (ref($ext) eq "ARRAY") {
     for my $ext2 (@{$ext}) {
-      my @res = &isrelativeFix($f, $sourcedir, $ext2);
+      my @res = isrelativeFix($f, $sourcedir, $ext2);
       if ($res[0]) {
 	return(@res);
       }
@@ -274,7 +287,7 @@ sub isrelative($$$)
     return(0,0);
   }
   else {
-    return(&isrelativeFix($f, $sourcedir, $ext));
+    return(isrelativeFix($f, $sourcedir, $ext));
   }
 }
 
@@ -307,7 +320,7 @@ sub copyJobPending($$)
   return 0;
 }
 
-sub addNewJob($$$)
+sub addNewJob($$$$$)
 {
   my ($source, $newname, $hashname, $rJob, $rFiles) = @_;
 
@@ -324,11 +337,11 @@ sub addFileCopyJob($$$$)
 
   my $hashname = $type2hash{$filetype};
   if (! defined($hashname)) {
-    &diestack("unknown filetype \"$filetype\"");
+    diestack("unknown filetype \"$filetype\"");
   }
   if (!defined($rJob->{$hashname})) {
-    &addNewJob($source,
-	       &createTemporaryFileName($source, $destdirOfSubdocuments),
+    addNewJob($source,
+	       createTemporaryFileName($source, $destdirOfSubdocuments),
 	       "$hashname", $rJob, $rFiles);
     $res = 1;
   }
