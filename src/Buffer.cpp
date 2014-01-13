@@ -2491,6 +2491,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 					msg += ("\n");
 				msg += bformat(_("Branch \"%1$s\" already exists."), branch_name);
 			} else {
+				undo().recordUndoFullDocument(CursorData());
 				branch_list.add(branch_name);
 				branch = branch_list.find(branch_name);
 				string const x11hexname = X11hexname(branch->color());
