@@ -851,6 +851,14 @@ contributors = [
                  "22 February 2005",
                  u"Danish translation"),
 
+     contributor(u"Martin Hoffmann",
+                 "hoffimar@gmail.com",
+                 "GPL",
+                 "Re: #8703: 'new shortcut' box closes if no shortcut",
+                 "m=138105799411067",
+                 "6 October 2013",
+                 u"Dialog usability fix"),
+
      contributor(u"Bernard Hurley",
                  "bernard () fong-hurley ! org ! uk",
                  "GPL",
