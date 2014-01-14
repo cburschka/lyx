@@ -2744,8 +2744,6 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form)
 	shortcut_bc_.setCancel(shortcut_->cancelPB);
 
 	connect(shortcut_->okPB, SIGNAL(clicked()),
-		shortcut_, SLOT(accept()));
-	connect(shortcut_->okPB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(shortcut_->cancelPB, SIGNAL(clicked()),
 		shortcut_, SLOT(reject()));
@@ -3118,6 +3116,8 @@ void PrefShortcuts::shortcutOkPressed()
 			_("Invalid or empty key sequence"));
 		return;
 	}
+
+	shortcut_->accept();
 
 	// check to see if there's been any change
 	FuncRequest oldBinding = system_bind_.getBinding(k);
