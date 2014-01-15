@@ -357,6 +357,8 @@ SpellChecker::Result AspellChecker::Private::check(
 {
 	SpellChecker::Result result = WORD_OK;
 	docstring w1;
+	LYXERR(Debug::GUI, "spellCheck: \"" <<
+		   word.word() << "\", lang = " << word.lang()->lang()) ;
 	docstring rest = split(word.word(), w1, '-');
 	for (; result == WORD_OK;) {
 		string const word_str = toAspellWord(w1);

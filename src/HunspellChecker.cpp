@@ -344,16 +344,18 @@ SpellChecker::Result HunspellChecker::check(WordLangTuple const & wl)
 	string const encoding = h->get_dic_encoding();
 	string const word_to_check = to_iconv_encoding(wl.word(), encoding);
 
+	LYXERR(Debug::GUI, "spellCheck: \"" <<
+		   wl.word() << "\", lang = " << wl.lang()->lang()) ;
 	if (h->spell(word_to_check.c_str(), &info))
 		return d->learned(wl) ? LEARNED_WORD : WORD_OK;
 
 	if (info & SPELL_COMPOUND) {
 		// FIXME: What to do with that?
-		LYXERR(Debug::FILES, "Hunspell compound word found " << word_to_check);
+		LYXERR(Debug::GUI, "Hunspell compound word found " << word_to_check);
 	}
 	if (info & SPELL_FORBIDDEN) {
 		// This was removed from personal dictionary
-		LYXERR(Debug::FILES, "Hunspell explicit forbidden word found " << word_to_check);
+		LYXERR(Debug::GUI, "Hunspell explicit forbidden word found " << word_to_check);
 	}
 
 	return UNKNOWN_WORD;
