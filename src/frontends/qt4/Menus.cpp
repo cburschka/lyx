@@ -1724,7 +1724,7 @@ void Menus::Impl::macxMenuBarInit(GuiView * view, QMenuBar * qmb)
 		QAction::MenuRole role;
 	};
 
-	MacMenuEntry entries[] = {
+	static MacMenuEntry entries[] = {
 		{LFUN_DIALOG_SHOW, "aboutlyx", "About LyX",
 		 QAction::AboutRole},
 		{LFUN_DIALOG_SHOW, "prefs", "Preferences",
@@ -1743,18 +1743,18 @@ void Menus::Impl::macxMenuBarInit(GuiView * view, QMenuBar * qmb)
 			mac_special_menu_.add(MenuItem(MenuItem::Command,
 				entries[i].label, func));
 		}
-	}
-	
-	// add the entries to a QMenu that will eventually be empty
-	// and therefore invisible.
-	QMenu * qMenu = qmb->addMenu("special");
-	MenuDefinition::const_iterator cit = mac_special_menu_.begin();
-	MenuDefinition::const_iterator end = mac_special_menu_.end();
-	for (size_t i = 0 ; cit != end ; ++cit, ++i) {
-		Action * action = new Action(view, QIcon(), cit->label(),
-			cit->func(), QString(), qMenu);
-		action->setMenuRole(entries[i].role);
-		qMenu->addAction(action);
+
+		// add the entries to a QMenu that will eventually be empty
+		// and therefore invisible.
+		QMenu * qMenu = qmb->addMenu("special");
+		MenuDefinition::const_iterator cit = mac_special_menu_.begin();
+		MenuDefinition::const_iterator end = mac_special_menu_.end();
+		for (size_t i = 0 ; cit != end ; ++cit, ++i) {
+			Action * action = new Action(view, QIcon(), cit->label(),
+				cit->func(), QString(), qMenu);
+			action->setMenuRole(entries[i].role);
+			qMenu->addAction(action);
+		}
 	}
 }
 

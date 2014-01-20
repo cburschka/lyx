@@ -1033,7 +1033,14 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 	case LFUN_SERVER_NOTIFY:
 		enable = true;
 		break;
-
+ 
+	case LFUN_DIALOG_SHOW: {
+		string const name = cmd.getArg(0);
+		if (name == "aboutlyx" || name == "prefs") {
+			return true;
+		}
+	}
+ 
 	default:
 		return false;
 	}
@@ -1633,6 +1640,15 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_DEBUG_LEVEL_SET:
 		lyxerr.setLevel(Debug::value(to_utf8(cmd.argument())));
 		break;
+
+	case LFUN_DIALOG_SHOW: {
+		string const name = cmd.getArg(0);
+
+		if ( name == "aboutlyx" || name == "prefs") {
+			if (current_view_ == 0)
+				createView();
+		}
+	}
 
 	default:
 		// The LFUN must be for one of GuiView, BufferView, Buffer or Cursor;

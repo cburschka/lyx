@@ -424,9 +424,14 @@ GuiView::GuiView(int id)
 	// filling, at least for the static special menu item on Mac. Otherwise
 	// they are greyed out.
 	guiApp->setCurrentView(this);
-
-	// Fill up the menu bar.
-	guiApp->menus().fillMenuBar(menuBar(), this, true);
+ 
+#if defined(Q_WS_MACX)
+	static QMenuBar * qmb = new QMenuBar(0);
+#else
+	QMenuBar * qmb = menuBar();
+#endif
+ 	// Fill up the menu bar.
+	guiApp->menus().fillMenuBar(qmb, this, true);
 
 	setCentralWidget(d.stack_widget_);
 
