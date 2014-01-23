@@ -55,7 +55,7 @@ sub check_http_url($$$$)
     }
   }
   #print " Trying to use GET  => \"$getp\"";
-  $s->write_request(GET => $getp, 'User-Agent' => "Mozilla/5.0");
+  $s->write_request(GET => $getp, 'User-Agent' => "Mozilla/6.0");
   my($code, $mess, %h) = $s->read_response_headers;
 
   # Try to read something
