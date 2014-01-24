@@ -691,6 +691,7 @@ docstring InsetSpace::xhtml(XHTMLStream & xs, OutputParams const &) const
 		break;
 	case InsetSpaceParams::QQUAD:
 		output ="&emsp;";
+		// fall through. the qquad is two spaces thick.
 	case InsetSpaceParams::THICK:
 	case InsetSpaceParams::QUAD:
 		output ="&emsp;";
