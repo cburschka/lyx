@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-12-16 14:22-0500\n"
+"POT-Creation-Date: 2014-01-24 12:45-0500\n"
 "PO-Revision-Date: 2011-04-26 06:17+0300\n"
 "Last-Translator: Richman Reuven <richman.reuven@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
@@ -184,7 +184,7 @@ msgstr "הוסף"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:110 src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1479
+#: src/frontends/qt4/GuiApplication.cpp:1486
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "ביטול"
@@ -536,11 +536,11 @@ msgstr "הוסף הכל"
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1839
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2123
-#: src/frontends/qt4/GuiView.cpp:2274 src/frontends/qt4/GuiView.cpp:2289
-#: src/frontends/qt4/GuiView.cpp:2337 src/frontends/qt4/GuiView.cpp:2552
-#: src/frontends/qt4/GuiView.cpp:2559 src/frontends/qt4/GuiView.cpp:2658
-#: src/frontends/qt4/GuiView.cpp:2686 src/frontends/qt4/GuiView.cpp:3301
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2128
+#: src/frontends/qt4/GuiView.cpp:2279 src/frontends/qt4/GuiView.cpp:2294
+#: src/frontends/qt4/GuiView.cpp:2342 src/frontends/qt4/GuiView.cpp:2557
+#: src/frontends/qt4/GuiView.cpp:2564 src/frontends/qt4/GuiView.cpp:2663
+#: src/frontends/qt4/GuiView.cpp:2691 src/frontends/qt4/GuiView.cpp:3306
 #: src/insets/InsetBibtex.cpp:152
 msgid "&Cancel"
 msgstr "ביטול"
@@ -4149,8 +4149,8 @@ msgstr ""
 msgid "&Maximum last files:"
 msgstr "מספר קבצים אחרונים:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:70 src/frontends/qt4/GuiView.cpp:2552
-#: src/frontends/qt4/GuiView.cpp:2559 src/frontends/qt4/GuiView.cpp:2658
+#: src/frontends/qt4/ui/PrefsUi.ui:70 src/frontends/qt4/GuiView.cpp:2557
+#: src/frontends/qt4/GuiView.cpp:2564 src/frontends/qt4/GuiView.cpp:2663
 msgid "&Save"
 msgstr "שמור"
 
@@ -17241,8 +17241,8 @@ msgstr "פקודת תאריך"
 msgid "Table (CSV)"
 msgstr "טבלה (CSV)"
 
-#: lib/configure.py:670 src/frontends/qt4/GuiView.cpp:1152
-#: src/frontends/qt4/GuiView.cpp:1153 src/mathed/MathMacroTemplate.cpp:543
+#: lib/configure.py:670 src/frontends/qt4/GuiView.cpp:1157
+#: src/frontends/qt4/GuiView.cpp:1158 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr "LyX"
 
@@ -17524,8 +17524,8 @@ msgid "Overwrite modified file?"
 msgstr "להחליף את הקובץ ששונה?"
 
 #: src/Buffer.cpp:1169 src/Buffer.cpp:2480 src/Exporter.cpp:50
-#: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2123
-#: src/frontends/qt4/GuiView.cpp:2289
+#: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2128
+#: src/frontends/qt4/GuiView.cpp:2294
 msgid "&Overwrite"
 msgstr "החלף"
 
@@ -17653,7 +17653,7 @@ msgstr "לא מצליח להריץ את chktex בהצלחה."
 msgid "Don't know how to export to format: %1$s"
 msgstr "לא יודע כיצד לייצא לפורמט %1$s."
 
-#: src/Buffer.cpp:2217 src/frontends/qt4/GuiView.cpp:3132
+#: src/Buffer.cpp:2217 src/frontends/qt4/GuiView.cpp:3137
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "שגיאה ביצוא לפורמט: %1$s."
@@ -17987,7 +17987,7 @@ msgid "This portion of the document is deleted."
 msgstr "חלק זה של המסמך נמחק."
 
 #: src/BufferView.cpp:1043 src/BufferView.cpp:1921
-#: src/frontends/qt4/GuiView.cpp:3188 src/frontends/qt4/GuiView.cpp:3263
+#: src/frontends/qt4/GuiView.cpp:3193 src/frontends/qt4/GuiView.cpp:3268
 #, fuzzy
 msgid "Absolute filename expected."
 msgstr "מצפה לערך."
@@ -18806,7 +18806,7 @@ msgstr "מספר %1$s"
 msgid "Cannot view file"
 msgstr "לא ניתן לצפות בקובץ"
 
-#: src/Format.cpp:266 src/Format.cpp:333 src/frontends/qt4/GuiView.cpp:2917
+#: src/Format.cpp:266 src/Format.cpp:333 src/frontends/qt4/GuiView.cpp:2922
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "הקובץ %1$s אינו קיים"
@@ -18997,7 +18997,7 @@ msgstr ""
 msgid "LyX crashed!"
 msgstr ""
 
-#: src/LyX.cpp:695 src/frontends/qt4/GuiView.cpp:989
+#: src/LyX.cpp:695 src/frontends/qt4/GuiView.cpp:994
 msgid "LyX: "
 msgstr "LyX: "
 
@@ -19663,7 +19663,7 @@ msgstr "(אין תיאור התחלתי)"
 msgid "(no log message)"
 msgstr "(אין הודעת יומן)"
 
-#: src/LyXVC.cpp:170 src/frontends/qt4/GuiView.cpp:2775
+#: src/LyXVC.cpp:170 src/frontends/qt4/GuiView.cpp:2780
 msgid "LyX VC: Log Message"
 msgstr ""
 
@@ -19683,7 +19683,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "לחזור לגרסה השמורה של המסמך?"
 
-#: src/LyXVC.cpp:224 src/frontends/qt4/GuiView.cpp:3301
+#: src/LyXVC.cpp:224 src/frontends/qt4/GuiView.cpp:3306
 msgid "&Revert"
 msgstr "חזור"
 
@@ -19833,7 +19833,7 @@ msgstr "פריסה"
 msgid " not known"
 msgstr "לא ידוע"
 
-#: src/Text3.cpp:1761 src/frontends/qt4/GuiApplication.cpp:1388
+#: src/Text3.cpp:1761 src/frontends/qt4/GuiApplication.cpp:1395
 msgid "Missing argument"
 msgstr "ארגומנט חסר"
 
@@ -19904,7 +19904,7 @@ msgstr ""
 #: src/VCBackend.cpp:805 src/VCBackend.cpp:866 src/VCBackend.cpp:927
 #: src/VCBackend.cpp:935 src/VCBackend.cpp:1143 src/VCBackend.cpp:1236
 #: src/VCBackend.cpp:1242 src/VCBackend.cpp:1263
-#: src/frontends/qt4/GuiView.cpp:2737
+#: src/frontends/qt4/GuiView.cpp:2742
 #, fuzzy
 msgid "Revision control error."
 msgstr "בקרת גרסה"
@@ -20121,7 +20121,7 @@ msgstr ""
 msgid "Reload saved document?"
 msgstr "לחזור למסמך השמור?"
 
-#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2686
+#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2691
 #, fuzzy
 msgid "&Reload"
 msgstr "החלף"
@@ -20366,19 +20366,19 @@ msgstr "הפקודה לא טופלה"
 msgid "Command disabled"
 msgstr "פקודה לא פעילה"
 
-#: src/frontends/qt4/GuiApplication.cpp:1214
+#: src/frontends/qt4/GuiApplication.cpp:1221
 msgid "Running configure..."
 msgstr "מריץ הגדרה מחדש..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1225
+#: src/frontends/qt4/GuiApplication.cpp:1232
 msgid "Reloading configuration..."
 msgstr "טוען מחדש הגדרות..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1231
+#: src/frontends/qt4/GuiApplication.cpp:1238
 msgid "System reconfiguration failed"
 msgstr "הגדרת המערכת מחדש נכשלה"
 
-#: src/frontends/qt4/GuiApplication.cpp:1232
+#: src/frontends/qt4/GuiApplication.cpp:1239
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may not be able to work properly.\n"
@@ -20388,11 +20388,11 @@ msgstr ""
 "ברירת המחדל למחלקת טקסט בשימוש, אך ייתכן ש- LyX לא יעבוד כראוי.\n"
 "אנא הגדר מחדש שוב פעם במידת הצורך."
 
-#: src/frontends/qt4/GuiApplication.cpp:1237
+#: src/frontends/qt4/GuiApplication.cpp:1244
 msgid "System reconfigured"
 msgstr "תצורת המערכת הוגדרה מחדש"
 
-#: src/frontends/qt4/GuiApplication.cpp:1238
+#: src/frontends/qt4/GuiApplication.cpp:1245
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -20402,42 +20402,42 @@ msgstr ""
 "עליך להפעיל מחדש את LyX על מנת\n"
 "להשתמש במחלקות המסמך המעודכנות."
 
-#: src/frontends/qt4/GuiApplication.cpp:1318
+#: src/frontends/qt4/GuiApplication.cpp:1325
 msgid "Exiting."
 msgstr "יוצא."
 
-#: src/frontends/qt4/GuiApplication.cpp:1400
+#: src/frontends/qt4/GuiApplication.cpp:1407
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "פותח קובץ עזרה %1$s..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1419
+#: src/frontends/qt4/GuiApplication.cpp:1426
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "תחביר: set-color <lyx_name> <x11_name>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1435
+#: src/frontends/qt4/GuiApplication.cpp:1442
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr "Set-color \"%1$s\" נכשל - הצבע אינו מוגדר או שאי-אפשר להגדירו מחדש"
 
-#: src/frontends/qt4/GuiApplication.cpp:1614
+#: src/frontends/qt4/GuiApplication.cpp:1621
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "ברירות מחדל עבור מסמך נשמרו ב- %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:1618
+#: src/frontends/qt4/GuiApplication.cpp:1625
 msgid "Unable to save document defaults"
 msgstr "לא מסוגל לשמור ברירות מחדל של המסמך"
 
-#: src/frontends/qt4/GuiApplication.cpp:1758
+#: src/frontends/qt4/GuiApplication.cpp:1774
 msgid "Unknown function."
 msgstr "פונקציה לא ידועה."
 
-#: src/frontends/qt4/GuiApplication.cpp:2184
+#: src/frontends/qt4/GuiApplication.cpp:2200
 msgid "The current document was closed."
 msgstr "המסמך הנוכחי נסגר."
 
-#: src/frontends/qt4/GuiApplication.cpp:2194
+#: src/frontends/qt4/GuiApplication.cpp:2210
 #, fuzzy
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
@@ -20449,23 +20449,23 @@ msgstr ""
 "\n"
 "חריגה: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2198
-#: src/frontends/qt4/GuiApplication.cpp:2204
+#: src/frontends/qt4/GuiApplication.cpp:2214
+#: src/frontends/qt4/GuiApplication.cpp:2220
 msgid "Software exception Detected"
 msgstr "זוהתה חריגה בתוכנה"
 
-#: src/frontends/qt4/GuiApplication.cpp:2202
+#: src/frontends/qt4/GuiApplication.cpp:2218
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr "LyX נתקל בחריגה ממש מוזרה, הוא ינסה כעת לשמור את כל המסמכים ולצאת."
 
-#: src/frontends/qt4/GuiApplication.cpp:2467
-#: src/frontends/qt4/GuiApplication.cpp:2479
+#: src/frontends/qt4/GuiApplication.cpp:2483
+#: src/frontends/qt4/GuiApplication.cpp:2495
 msgid "Could not find UI definition file"
 msgstr "כשל במציאת קובץ הגדרות הממשק"
 
-#: src/frontends/qt4/GuiApplication.cpp:2468
+#: src/frontends/qt4/GuiApplication.cpp:2484
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -20476,11 +20476,11 @@ msgstr ""
 "%1$s\n"
 "אנא בדוק את ההתקנה שלך."
 
-#: src/frontends/qt4/GuiApplication.cpp:2474
+#: src/frontends/qt4/GuiApplication.cpp:2490
 msgid "Could not find default UI file"
 msgstr "כשל במציאת קובץ ברירת המחדל עבור הממשק."
 
-#: src/frontends/qt4/GuiApplication.cpp:2475
+#: src/frontends/qt4/GuiApplication.cpp:2491
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -20488,7 +20488,7 @@ msgstr ""
 "LyX כשל במציאת קובץ ברירת המחדל עבור הממשק!\n"
 "אנא בדוק את ההתקנה שלך."
 
-#: src/frontends/qt4/GuiApplication.cpp:2480
+#: src/frontends/qt4/GuiApplication.cpp:2496
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -20506,9 +20506,9 @@ msgstr "ביבליוגרפית BibTeX"
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
 #: src/frontends/qt4/GuiDocument.cpp:1881
 #: src/frontends/qt4/GuiExternal.cpp:637 src/frontends/qt4/GuiGraphics.cpp:799
-#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1875
-#: src/frontends/qt4/GuiView.cpp:1932 src/frontends/qt4/GuiView.cpp:2073
-#: src/frontends/qt4/GuiView.cpp:2195 src/frontends/qt4/GuiView.cpp:2238
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1880
+#: src/frontends/qt4/GuiView.cpp:1937 src/frontends/qt4/GuiView.cpp:2078
+#: src/frontends/qt4/GuiView.cpp:2200 src/frontends/qt4/GuiView.cpp:2243
 msgid "Documents|#o#O"
 msgstr "מסמכים"
 
@@ -20763,10 +20763,10 @@ msgstr "%1$s קבצים"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "בחר שם קובץ לשמירת האיור המודבק"
 
-#: src/frontends/qt4/GuiClipboard.cpp:210 src/frontends/qt4/GuiView.cpp:1951
-#: src/frontends/qt4/GuiView.cpp:2093 src/frontends/qt4/GuiView.cpp:2109
-#: src/frontends/qt4/GuiView.cpp:2126 src/frontends/qt4/GuiView.cpp:2212
-#: src/frontends/qt4/GuiView.cpp:3276
+#: src/frontends/qt4/GuiClipboard.cpp:210 src/frontends/qt4/GuiView.cpp:1956
+#: src/frontends/qt4/GuiView.cpp:2098 src/frontends/qt4/GuiView.cpp:2114
+#: src/frontends/qt4/GuiView.cpp:2131 src/frontends/qt4/GuiView.cpp:2217
+#: src/frontends/qt4/GuiView.cpp:3281
 msgid "Canceled."
 msgstr "בוטל."
 
@@ -20799,9 +20799,9 @@ msgstr "השוואת קבצי LyX"
 msgid "Select document"
 msgstr "מסמך ראשי"
 
-#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1879
-#: src/frontends/qt4/GuiView.cpp:1936 src/frontends/qt4/GuiView.cpp:2201
-#: src/frontends/qt4/GuiView.cpp:2246
+#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1884
+#: src/frontends/qt4/GuiView.cpp:1941 src/frontends/qt4/GuiView.cpp:2206
+#: src/frontends/qt4/GuiView.cpp:2251
 msgid "LyX Documents (*.lyx)"
 msgstr "מסמכי LyX (*.lyx)"
 
@@ -22653,85 +22653,85 @@ msgstr "סמלים רגילים"
 msgid "Big-sized icons"
 msgstr "סמלים גדולים"
 
-#: src/frontends/qt4/GuiView.cpp:823
+#: src/frontends/qt4/GuiView.cpp:828
 msgid "Exit LyX"
 msgstr "יציאה מ- LyX"
 
-#: src/frontends/qt4/GuiView.cpp:824
+#: src/frontends/qt4/GuiView.cpp:829
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1072
+#: src/frontends/qt4/GuiView.cpp:1077
 msgid "Welcome to LyX!"
 msgstr "ברוכים הבאים ל- LyX!"
 
-#: src/frontends/qt4/GuiView.cpp:1543
+#: src/frontends/qt4/GuiView.cpp:1548
 #, fuzzy
 msgid "Automatic save done."
 msgstr "עדכון אוטומטי"
 
-#: src/frontends/qt4/GuiView.cpp:1544
+#: src/frontends/qt4/GuiView.cpp:1549
 #, fuzzy
 msgid "Automatic save failed!"
 msgstr "שמירה אוטומטית נכשלה!"
 
-#: src/frontends/qt4/GuiView.cpp:1590
+#: src/frontends/qt4/GuiView.cpp:1595
 msgid "Command not allowed without any document open"
 msgstr "הפקודה איננה אפשרית ללא מסמך פתוח"
 
-#: src/frontends/qt4/GuiView.cpp:1692
+#: src/frontends/qt4/GuiView.cpp:1697
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "סרגל כלים לא מוכר \"%1$s\""
 
-#: src/frontends/qt4/GuiView.cpp:1874
+#: src/frontends/qt4/GuiView.cpp:1879
 msgid "Select template file"
 msgstr "בחר קובץ תבנית"
 
-#: src/frontends/qt4/GuiView.cpp:1876 src/frontends/qt4/GuiView.cpp:2239
+#: src/frontends/qt4/GuiView.cpp:1881 src/frontends/qt4/GuiView.cpp:2244
 msgid "Templates|#T#t"
 msgstr "תבניות"
 
-#: src/frontends/qt4/GuiView.cpp:1903
+#: src/frontends/qt4/GuiView.cpp:1908
 msgid "Document not loaded."
 msgstr "המסמך לא טעון."
 
-#: src/frontends/qt4/GuiView.cpp:1931
+#: src/frontends/qt4/GuiView.cpp:1936
 msgid "Select document to open"
 msgstr "בחר קובץ לפתיחה"
 
-#: src/frontends/qt4/GuiView.cpp:1933 src/frontends/qt4/GuiView.cpp:2074
-#: src/frontends/qt4/GuiView.cpp:2196
+#: src/frontends/qt4/GuiView.cpp:1938 src/frontends/qt4/GuiView.cpp:2079
+#: src/frontends/qt4/GuiView.cpp:2201
 msgid "Examples|#E#e"
 msgstr "דוגמאות"
 
-#: src/frontends/qt4/GuiView.cpp:1937
+#: src/frontends/qt4/GuiView.cpp:1942
 #, fuzzy
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "מסמכי LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1938
+#: src/frontends/qt4/GuiView.cpp:1943
 #, fuzzy
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "מסמכי LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1939
+#: src/frontends/qt4/GuiView.cpp:1944
 #, fuzzy
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "מסמכי LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1940
+#: src/frontends/qt4/GuiView.cpp:1945
 #, fuzzy
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "מסמכי LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiView.cpp:1965 src/frontends/qt4/Validator.cpp:200
+#: src/frontends/qt4/GuiView.cpp:1970 src/frontends/qt4/Validator.cpp:200
 #: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:294
 #: src/insets/InsetGraphics.cpp:596 src/insets/InsetInclude.cpp:533
 msgid "Invalid filename"
 msgstr "שם קובץ לא תקין"
 
-#: src/frontends/qt4/GuiView.cpp:1966
+#: src/frontends/qt4/GuiView.cpp:1971
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -22739,41 +22739,41 @@ msgid ""
 "does not exist."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1982
+#: src/frontends/qt4/GuiView.cpp:1987
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "פותח מסמך %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1987
+#: src/frontends/qt4/GuiView.cpp:1992
 #, c-format
 msgid "Document %1$s opened."
 msgstr "המסמך %1$s פתוח."
 
-#: src/frontends/qt4/GuiView.cpp:1990
+#: src/frontends/qt4/GuiView.cpp:1995
 #, fuzzy
 msgid "Version control detected."
 msgstr "בקרת גרסה"
 
-#: src/frontends/qt4/GuiView.cpp:1992
+#: src/frontends/qt4/GuiView.cpp:1997
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "לא יכול לפתוח את הקובץ %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2021
+#: src/frontends/qt4/GuiView.cpp:2026
 msgid "Couldn't import file"
 msgstr "לא יכול לייבא קובץ"
 
-#: src/frontends/qt4/GuiView.cpp:2022
+#: src/frontends/qt4/GuiView.cpp:2027
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "אין מידע ליבוא קובץ מפורמט %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:2069
+#: src/frontends/qt4/GuiView.cpp:2074
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "בחר קובץ %1$s לייבוא"
 
-#: src/frontends/qt4/GuiView.cpp:2120 src/frontends/qt4/GuiView.cpp:2284
+#: src/frontends/qt4/GuiView.cpp:2125 src/frontends/qt4/GuiView.cpp:2289
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -22784,36 +22784,36 @@ msgstr ""
 "\n"
 "האם אתה רוצה להחליף אותו?"
 
-#: src/frontends/qt4/GuiView.cpp:2122 src/frontends/qt4/GuiView.cpp:2288
+#: src/frontends/qt4/GuiView.cpp:2127 src/frontends/qt4/GuiView.cpp:2293
 msgid "Overwrite document?"
 msgstr "להחליף את המסמך הקיים?"
 
-#: src/frontends/qt4/GuiView.cpp:2131
+#: src/frontends/qt4/GuiView.cpp:2136
 #, c-format
 msgid "Importing %1$s..."
 msgstr "מייבא %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2134
+#: src/frontends/qt4/GuiView.cpp:2139
 msgid "imported."
 msgstr "יובא."
 
-#: src/frontends/qt4/GuiView.cpp:2136
+#: src/frontends/qt4/GuiView.cpp:2141
 msgid "file not imported!"
 msgstr "יבוא הקובץ כשל!"
 
-#: src/frontends/qt4/GuiView.cpp:2161
+#: src/frontends/qt4/GuiView.cpp:2166
 msgid "newfile"
 msgstr "קובץ_חדש"
 
-#: src/frontends/qt4/GuiView.cpp:2194
+#: src/frontends/qt4/GuiView.cpp:2199
 msgid "Select LyX document to insert"
 msgstr "בחר מסמך LyX להוספה"
 
-#: src/frontends/qt4/GuiView.cpp:2236
+#: src/frontends/qt4/GuiView.cpp:2241
 msgid "Choose a filename to save document as"
 msgstr "בחר שם למסמך כדי לשמור אותו"
 
-#: src/frontends/qt4/GuiView.cpp:2269
+#: src/frontends/qt4/GuiView.cpp:2274
 #, c-format
 msgid ""
 "The file\n"
@@ -22823,16 +22823,16 @@ msgid ""
 "Do you want to choose a new filename?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2273
+#: src/frontends/qt4/GuiView.cpp:2278
 msgid "Chosen File Already Open"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2274 src/frontends/qt4/GuiView.cpp:2289
-#: src/frontends/qt4/GuiView.cpp:2337
+#: src/frontends/qt4/GuiView.cpp:2279 src/frontends/qt4/GuiView.cpp:2294
+#: src/frontends/qt4/GuiView.cpp:2342
 msgid "&Rename"
 msgstr "שנה שם"
 
-#: src/frontends/qt4/GuiView.cpp:2333
+#: src/frontends/qt4/GuiView.cpp:2338
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -22843,23 +22843,23 @@ msgstr ""
 "\n"
 "האם אתה רוצה לשנות את שמו ולנסות שוב?"
 
-#: src/frontends/qt4/GuiView.cpp:2336
+#: src/frontends/qt4/GuiView.cpp:2341
 msgid "Rename and save?"
 msgstr "לשנות שם ולשמור?"
 
-#: src/frontends/qt4/GuiView.cpp:2337
+#: src/frontends/qt4/GuiView.cpp:2342
 msgid "&Retry"
 msgstr "נסה שוב"
 
-#: src/frontends/qt4/GuiView.cpp:2443
+#: src/frontends/qt4/GuiView.cpp:2448
 msgid "Close document"
 msgstr "סגירת מסמך"
 
-#: src/frontends/qt4/GuiView.cpp:2444
+#: src/frontends/qt4/GuiView.cpp:2449
 msgid "Document could not be closed because it is being processed by LyX."
 msgstr "לא ניתן לסגור את המסמך היות והוא מעובד כרגע על ידי LyX."
 
-#: src/frontends/qt4/GuiView.cpp:2548 src/frontends/qt4/GuiView.cpp:2653
+#: src/frontends/qt4/GuiView.cpp:2553 src/frontends/qt4/GuiView.cpp:2658
 #, fuzzy, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -22870,11 +22870,11 @@ msgstr ""
 "\n"
 "האם לשמור את המסמך?"
 
-#: src/frontends/qt4/GuiView.cpp:2551 src/frontends/qt4/GuiView.cpp:2656
+#: src/frontends/qt4/GuiView.cpp:2556 src/frontends/qt4/GuiView.cpp:2661
 msgid "Save new document?"
 msgstr "לשמור את המסמך החדש?"
 
-#: src/frontends/qt4/GuiView.cpp:2556
+#: src/frontends/qt4/GuiView.cpp:2561
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -22885,15 +22885,15 @@ msgstr ""
 "\n"
 "האם אתה רוצה לשמור את השינויים במסמך או להתעלם מהם?"
 
-#: src/frontends/qt4/GuiView.cpp:2558 src/frontends/qt4/GuiView.cpp:2650
+#: src/frontends/qt4/GuiView.cpp:2563 src/frontends/qt4/GuiView.cpp:2655
 msgid "Save changed document?"
 msgstr "האם לשמור את השינויים במסמך?"
 
-#: src/frontends/qt4/GuiView.cpp:2559
+#: src/frontends/qt4/GuiView.cpp:2564
 msgid "&Discard"
 msgstr "התעלם"
 
-#: src/frontends/qt4/GuiView.cpp:2647
+#: src/frontends/qt4/GuiView.cpp:2652
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -22904,7 +22904,7 @@ msgstr ""
 "\n"
 "האם לשמור את המסמך?"
 
-#: src/frontends/qt4/GuiView.cpp:2682
+#: src/frontends/qt4/GuiView.cpp:2687
 #, fuzzy, c-format
 msgid ""
 "Document \n"
@@ -22912,104 +22912,104 @@ msgid ""
 " has been externally modified. Reload now? Any local changes will be lost."
 msgstr "המסמך %1$s שונה באופן חיצוני. האם אתה בטוח שאתה רוצה להחליף אותו?"
 
-#: src/frontends/qt4/GuiView.cpp:2685
+#: src/frontends/qt4/GuiView.cpp:2690
 #, fuzzy
 msgid "Reload externally changed document?"
 msgstr "האם לשמור את המסמך שעבר שינוי?"
 
-#: src/frontends/qt4/GuiView.cpp:2738
+#: src/frontends/qt4/GuiView.cpp:2743
 msgid "Error when setting the locking property."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2784
+#: src/frontends/qt4/GuiView.cpp:2789
 #, fuzzy
 msgid "Directory is not accessible."
 msgstr "לא יכול לקרוא את הקובץ %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:2860
+#: src/frontends/qt4/GuiView.cpp:2865
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "פותח את מסמך הבת %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2924
+#: src/frontends/qt4/GuiView.cpp:2929
 #, fuzzy, c-format
 msgid "No buffer for file: %1$s."
 msgstr "אין מידע לצפייה ב- %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2951
+#: src/frontends/qt4/GuiView.cpp:2956
 #, fuzzy, c-format
 msgid "Successful preview of format: %1$s"
 msgstr "אין מידע לייצוא לפורמט %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:2952
+#: src/frontends/qt4/GuiView.cpp:2957
 #, fuzzy, c-format
 msgid "Error while previewing format: %1$s"
 msgstr "אין מידע לייצוא לפורמט %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:2955
+#: src/frontends/qt4/GuiView.cpp:2960
 #, fuzzy, c-format
 msgid "Successful export to format: %1$s"
 msgstr "אין מידע לייצוא לפורמט %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:2956
+#: src/frontends/qt4/GuiView.cpp:2961
 #, fuzzy, c-format
 msgid "Error while exporting format: %1$s"
 msgstr "אין מידע לייצוא לפורמט %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:3140 src/frontends/qt4/GuiView.cpp:3152
+#: src/frontends/qt4/GuiView.cpp:3145 src/frontends/qt4/GuiView.cpp:3157
 #, fuzzy
 msgid "Exporting ..."
 msgstr "מייבא %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:3161
+#: src/frontends/qt4/GuiView.cpp:3166
 #, fuzzy
 msgid "Previewing ..."
 msgstr "תצוגה מקדימה נטענת"
 
-#: src/frontends/qt4/GuiView.cpp:3195
+#: src/frontends/qt4/GuiView.cpp:3200
 #, fuzzy
 msgid "Document not loaded"
 msgstr "המסמך לא טעון."
 
-#: src/frontends/qt4/GuiView.cpp:3269
+#: src/frontends/qt4/GuiView.cpp:3274
 msgid "Select file to insert"
 msgstr "בחר קובץ להוספה"
 
-#: src/frontends/qt4/GuiView.cpp:3273
+#: src/frontends/qt4/GuiView.cpp:3278
 #, fuzzy
 msgid "All Files (*)"
 msgstr "כל הקבצים"
 
-#: src/frontends/qt4/GuiView.cpp:3297
+#: src/frontends/qt4/GuiView.cpp:3302
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr "כל השינויים יאבדו. אתה בטוח שברצונך לחזור לגרסה השמורה של המסמך %1$s?"
 
-#: src/frontends/qt4/GuiView.cpp:3300
+#: src/frontends/qt4/GuiView.cpp:3305
 msgid "Revert to saved document?"
 msgstr "לחזור למסמך השמור?"
 
-#: src/frontends/qt4/GuiView.cpp:3326
+#: src/frontends/qt4/GuiView.cpp:3331
 msgid "Saving all documents..."
 msgstr "שומר את כל המסמכים..."
 
-#: src/frontends/qt4/GuiView.cpp:3336
+#: src/frontends/qt4/GuiView.cpp:3341
 msgid "All documents saved."
 msgstr "כל המסמכים נשמרו."
 
-#: src/frontends/qt4/GuiView.cpp:3436
+#: src/frontends/qt4/GuiView.cpp:3441
 #, c-format
 msgid "%1$s unknown command!"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3554
+#: src/frontends/qt4/GuiView.cpp:3559
 #, fuzzy
 msgid "Please, preview the document first."
 msgstr "חלק זה של המסמך נמחק."
 
-#: src/frontends/qt4/GuiView.cpp:3574
+#: src/frontends/qt4/GuiView.cpp:3579
 #, fuzzy
 msgid "Couldn't proceed."
 msgstr "לא יכול לייצא קובץ"

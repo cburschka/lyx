@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-12-16 14:22-0500\n"
+"POT-Creation-Date: 2014-01-24 12:45-0500\n"
 "PO-Revision-Date: 2012-02-01 07:13+0730\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
@@ -178,7 +178,7 @@ msgstr "&Gabung"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:110 src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1479
+#: src/frontends/qt4/GuiApplication.cpp:1486
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Tidak jadi"
@@ -531,11 +531,11 @@ msgstr "Tambahkan &Semua"
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1839
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2123
-#: src/frontends/qt4/GuiView.cpp:2274 src/frontends/qt4/GuiView.cpp:2289
-#: src/frontends/qt4/GuiView.cpp:2337 src/frontends/qt4/GuiView.cpp:2552
-#: src/frontends/qt4/GuiView.cpp:2559 src/frontends/qt4/GuiView.cpp:2658
-#: src/frontends/qt4/GuiView.cpp:2686 src/frontends/qt4/GuiView.cpp:3301
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2128
+#: src/frontends/qt4/GuiView.cpp:2279 src/frontends/qt4/GuiView.cpp:2294
+#: src/frontends/qt4/GuiView.cpp:2342 src/frontends/qt4/GuiView.cpp:2557
+#: src/frontends/qt4/GuiView.cpp:2564 src/frontends/qt4/GuiView.cpp:2663
+#: src/frontends/qt4/GuiView.cpp:2691 src/frontends/qt4/GuiView.cpp:3306
 #: src/insets/InsetBibtex.cpp:152
 msgid "&Cancel"
 msgstr "&Kembali"
@@ -4145,8 +4145,8 @@ msgstr "MenuGui"
 msgid "&Maximum last files:"
 msgstr "&Maksimum berkas terkini:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:70 src/frontends/qt4/GuiView.cpp:2552
-#: src/frontends/qt4/GuiView.cpp:2559 src/frontends/qt4/GuiView.cpp:2658
+#: src/frontends/qt4/ui/PrefsUi.ui:70 src/frontends/qt4/GuiView.cpp:2557
+#: src/frontends/qt4/GuiView.cpp:2564 src/frontends/qt4/GuiView.cpp:2663
 msgid "&Save"
 msgstr "&Simpan"
 
@@ -16801,8 +16801,8 @@ msgstr "Perintah tanggal"
 msgid "Table (CSV)"
 msgstr "Tabel (CSV)"
 
-#: lib/configure.py:670 src/frontends/qt4/GuiView.cpp:1152
-#: src/frontends/qt4/GuiView.cpp:1153 src/mathed/MathMacroTemplate.cpp:543
+#: lib/configure.py:670 src/frontends/qt4/GuiView.cpp:1157
+#: src/frontends/qt4/GuiView.cpp:1158 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr "LyX"
 
@@ -17095,8 +17095,8 @@ msgid "Overwrite modified file?"
 msgstr "Tindih berkas yang diubah?"
 
 #: src/Buffer.cpp:1169 src/Buffer.cpp:2480 src/Exporter.cpp:50
-#: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2123
-#: src/frontends/qt4/GuiView.cpp:2289
+#: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2128
+#: src/frontends/qt4/GuiView.cpp:2294
 msgid "&Overwrite"
 msgstr "&Tindih"
 
@@ -17227,7 +17227,7 @@ msgstr "Tidak sukses menjalankan chktex"
 msgid "Don't know how to export to format: %1$s"
 msgstr "Tidak tahu bagaimana ekspor ke format: %1$s"
 
-#: src/Buffer.cpp:2217 src/frontends/qt4/GuiView.cpp:3132
+#: src/Buffer.cpp:2217 src/frontends/qt4/GuiView.cpp:3137
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Ada kesalahan mengekspor ke format %1$s."
@@ -17571,7 +17571,7 @@ msgid "This portion of the document is deleted."
 msgstr "Bagian ini dari dokumen dihapus."
 
 #: src/BufferView.cpp:1043 src/BufferView.cpp:1921
-#: src/frontends/qt4/GuiView.cpp:3188 src/frontends/qt4/GuiView.cpp:3263
+#: src/frontends/qt4/GuiView.cpp:3193 src/frontends/qt4/GuiView.cpp:3268
 msgid "Absolute filename expected."
 msgstr "Diperlukan nama berkas absolut."
 
@@ -18367,7 +18367,7 @@ msgstr "Angka %1$s"
 msgid "Cannot view file"
 msgstr "Tidak bisa menampilkan berkas"
 
-#: src/Format.cpp:266 src/Format.cpp:333 src/frontends/qt4/GuiView.cpp:2917
+#: src/Format.cpp:266 src/Format.cpp:333 src/frontends/qt4/GuiView.cpp:2922
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Berkas tidak ada: %1$s"
@@ -18571,7 +18571,7 @@ msgstr ""
 msgid "LyX crashed!"
 msgstr "LyX gagal!"
 
-#: src/LyX.cpp:695 src/frontends/qt4/GuiView.cpp:989
+#: src/LyX.cpp:695 src/frontends/qt4/GuiView.cpp:994
 msgid "LyX: "
 msgstr "LyX: "
 
@@ -19353,7 +19353,7 @@ msgstr "(tidak ada deskripsi awal)"
 msgid "(no log message)"
 msgstr "(tidak ada catatan log)"
 
-#: src/LyXVC.cpp:170 src/frontends/qt4/GuiView.cpp:2775
+#: src/LyXVC.cpp:170 src/frontends/qt4/GuiView.cpp:2780
 msgid "LyX VC: Log Message"
 msgstr "LyX KV: Catatan Pesan"
 
@@ -19374,7 +19374,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Memanggil versi yang disimpan dari dokumen?"
 
-#: src/LyXVC.cpp:224 src/frontends/qt4/GuiView.cpp:3301
+#: src/LyXVC.cpp:224 src/frontends/qt4/GuiView.cpp:3306
 msgid "&Revert"
 msgstr "&Kembalikan"
 
@@ -19527,7 +19527,7 @@ msgstr "Tataletak "
 msgid " not known"
 msgstr "tidak dikenal"
 
-#: src/Text3.cpp:1761 src/frontends/qt4/GuiApplication.cpp:1388
+#: src/Text3.cpp:1761 src/frontends/qt4/GuiApplication.cpp:1395
 msgid "Missing argument"
 msgstr "Argumen tidak lengkap"
 
@@ -19608,7 +19608,7 @@ msgstr "Ada kesalahan membaca modul %1$s\n"
 #: src/VCBackend.cpp:805 src/VCBackend.cpp:866 src/VCBackend.cpp:927
 #: src/VCBackend.cpp:935 src/VCBackend.cpp:1143 src/VCBackend.cpp:1236
 #: src/VCBackend.cpp:1242 src/VCBackend.cpp:1263
-#: src/frontends/qt4/GuiView.cpp:2737
+#: src/frontends/qt4/GuiView.cpp:2742
 msgid "Revision control error."
 msgstr "Kesalahan Kontrol Revisi."
 
@@ -19865,7 +19865,7 @@ msgstr ""
 msgid "Reload saved document?"
 msgstr "Muat ulang dokumen yang disimpan?"
 
-#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2686
+#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2691
 msgid "&Reload"
 msgstr "&Muat Ulang"
 
@@ -20112,19 +20112,19 @@ msgstr "Perintah tidak dikerjakan"
 msgid "Command disabled"
 msgstr "Perintah dibekukan"
 
-#: src/frontends/qt4/GuiApplication.cpp:1214
+#: src/frontends/qt4/GuiApplication.cpp:1221
 msgid "Running configure..."
 msgstr "Melakukan konfigurasi..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1225
+#: src/frontends/qt4/GuiApplication.cpp:1232
 msgid "Reloading configuration..."
 msgstr "Memuat kembali konfigurasi..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1231
+#: src/frontends/qt4/GuiApplication.cpp:1238
 msgid "System reconfiguration failed"
 msgstr "Konfigurasi ulang gagal"
 
-#: src/frontends/qt4/GuiApplication.cpp:1232
+#: src/frontends/qt4/GuiApplication.cpp:1239
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may not be able to work properly.\n"
@@ -20135,11 +20135,11 @@ msgstr ""
 "dengan baik.\n"
 "Silahkan dicoba lagi konfigurasi ulang."
 
-#: src/frontends/qt4/GuiApplication.cpp:1237
+#: src/frontends/qt4/GuiApplication.cpp:1244
 msgid "System reconfigured"
 msgstr "Konfigurasi ulang selesai"
 
-#: src/frontends/qt4/GuiApplication.cpp:1238
+#: src/frontends/qt4/GuiApplication.cpp:1245
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -20149,44 +20149,44 @@ msgstr ""
 "Anda perlu jalankan ulang LyX agar kelas dokumen\n"
 "dapat berfungsi seperti yang diharapkan."
 
-#: src/frontends/qt4/GuiApplication.cpp:1318
+#: src/frontends/qt4/GuiApplication.cpp:1325
 msgid "Exiting."
 msgstr "Sedang Keluar."
 
-#: src/frontends/qt4/GuiApplication.cpp:1400
+#: src/frontends/qt4/GuiApplication.cpp:1407
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Membuka berkas bantuan %1$s..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1419
+#: src/frontends/qt4/GuiApplication.cpp:1426
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntax: set-color <lyx_name> <x11_name>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1435
+#: src/frontends/qt4/GuiApplication.cpp:1442
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" telah gagal- warna tidak terdefinisi atau sudah "
 "didefinisikan ulang"
 
-#: src/frontends/qt4/GuiApplication.cpp:1614
+#: src/frontends/qt4/GuiApplication.cpp:1621
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokumen disimpan di %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:1618
+#: src/frontends/qt4/GuiApplication.cpp:1625
 msgid "Unable to save document defaults"
 msgstr "Tidak dapat menyimpan dokumen bawaan"
 
-#: src/frontends/qt4/GuiApplication.cpp:1758
+#: src/frontends/qt4/GuiApplication.cpp:1774
 msgid "Unknown function."
 msgstr "Fungsi  tidak dikenal."
 
-#: src/frontends/qt4/GuiApplication.cpp:2184
+#: src/frontends/qt4/GuiApplication.cpp:2200
 msgid "The current document was closed."
 msgstr "Dokumen terkini sudah ditutup."
 
-#: src/frontends/qt4/GuiApplication.cpp:2194
+#: src/frontends/qt4/GuiApplication.cpp:2210
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -20198,12 +20198,12 @@ msgstr ""
 "\n"
 "Keanehan: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2198
-#: src/frontends/qt4/GuiApplication.cpp:2204
+#: src/frontends/qt4/GuiApplication.cpp:2214
+#: src/frontends/qt4/GuiApplication.cpp:2220
 msgid "Software exception Detected"
 msgstr "Keanehan software Terdeteksi"
 
-#: src/frontends/qt4/GuiApplication.cpp:2202
+#: src/frontends/qt4/GuiApplication.cpp:2218
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -20211,12 +20211,12 @@ msgstr ""
 "LyX teleh mendeteksi hal yang sangat tidak wajar,sekarang akan menyimpan "
 "perubahan kemudian keluart."
 
-#: src/frontends/qt4/GuiApplication.cpp:2467
-#: src/frontends/qt4/GuiApplication.cpp:2479
+#: src/frontends/qt4/GuiApplication.cpp:2483
+#: src/frontends/qt4/GuiApplication.cpp:2495
 msgid "Could not find UI definition file"
 msgstr "Tidak bisa menemukan berkas definisi UI"
 
-#: src/frontends/qt4/GuiApplication.cpp:2468
+#: src/frontends/qt4/GuiApplication.cpp:2484
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -20227,11 +20227,11 @@ msgstr ""
 "%1$s.\n"
 "Periksa kesempurnaan instalasi."
 
-#: src/frontends/qt4/GuiApplication.cpp:2474
+#: src/frontends/qt4/GuiApplication.cpp:2490
 msgid "Could not find default UI file"
 msgstr "Tidak bisa menemukan berkas UI bawaan"
 
-#: src/frontends/qt4/GuiApplication.cpp:2475
+#: src/frontends/qt4/GuiApplication.cpp:2491
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -20239,7 +20239,7 @@ msgstr ""
 "LyX tidak bisa menemukan berkas UI bawaan!\n"
 "Periksa kesempurnaan instalasi."
 
-#: src/frontends/qt4/GuiApplication.cpp:2480
+#: src/frontends/qt4/GuiApplication.cpp:2496
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -20262,9 +20262,9 @@ msgstr "Bibliografi BibTeX"
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
 #: src/frontends/qt4/GuiDocument.cpp:1881
 #: src/frontends/qt4/GuiExternal.cpp:637 src/frontends/qt4/GuiGraphics.cpp:799
-#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1875
-#: src/frontends/qt4/GuiView.cpp:1932 src/frontends/qt4/GuiView.cpp:2073
-#: src/frontends/qt4/GuiView.cpp:2195 src/frontends/qt4/GuiView.cpp:2238
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1880
+#: src/frontends/qt4/GuiView.cpp:1937 src/frontends/qt4/GuiView.cpp:2078
+#: src/frontends/qt4/GuiView.cpp:2200 src/frontends/qt4/GuiView.cpp:2243
 msgid "Documents|#o#O"
 msgstr "Dokumen|#o#O"
 
@@ -20513,10 +20513,10 @@ msgid "Choose a filename to save the pasted graphic as"
 msgstr ""
 "Pilih nama berkas untuk menyimpan gambar yang ditempel dengan nama lain"
 
-#: src/frontends/qt4/GuiClipboard.cpp:210 src/frontends/qt4/GuiView.cpp:1951
-#: src/frontends/qt4/GuiView.cpp:2093 src/frontends/qt4/GuiView.cpp:2109
-#: src/frontends/qt4/GuiView.cpp:2126 src/frontends/qt4/GuiView.cpp:2212
-#: src/frontends/qt4/GuiView.cpp:3276
+#: src/frontends/qt4/GuiClipboard.cpp:210 src/frontends/qt4/GuiView.cpp:1956
+#: src/frontends/qt4/GuiView.cpp:2098 src/frontends/qt4/GuiView.cpp:2114
+#: src/frontends/qt4/GuiView.cpp:2131 src/frontends/qt4/GuiView.cpp:2217
+#: src/frontends/qt4/GuiView.cpp:3281
 msgid "Canceled."
 msgstr "Dibatalkan."
 
@@ -20545,9 +20545,9 @@ msgstr "Membandingkan Berkas LyX"
 msgid "Select document"
 msgstr "Pilih dokumen"
 
-#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1879
-#: src/frontends/qt4/GuiView.cpp:1936 src/frontends/qt4/GuiView.cpp:2201
-#: src/frontends/qt4/GuiView.cpp:2246
+#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1884
+#: src/frontends/qt4/GuiView.cpp:1941 src/frontends/qt4/GuiView.cpp:2206
+#: src/frontends/qt4/GuiView.cpp:2251
 msgid "LyX Documents (*.lyx)"
 msgstr "Dokumen LyX (*.lyx)"
 
@@ -22305,80 +22305,80 @@ msgstr "Ikon ukuran normal"
 msgid "Big-sized icons"
 msgstr "Ikon ukuran besar"
 
-#: src/frontends/qt4/GuiView.cpp:823
+#: src/frontends/qt4/GuiView.cpp:828
 msgid "Exit LyX"
 msgstr "Keluar LyX"
 
-#: src/frontends/qt4/GuiView.cpp:824
+#: src/frontends/qt4/GuiView.cpp:829
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr ""
 "LyX tidak bisa ditutup karena ada dokumen yang sedang diproses oleh LyX."
 
-#: src/frontends/qt4/GuiView.cpp:1072
+#: src/frontends/qt4/GuiView.cpp:1077
 msgid "Welcome to LyX!"
 msgstr "Selamat Datang di LyX!"
 
-#: src/frontends/qt4/GuiView.cpp:1543
+#: src/frontends/qt4/GuiView.cpp:1548
 msgid "Automatic save done."
 msgstr "Simpan Otomatis selesai."
 
-#: src/frontends/qt4/GuiView.cpp:1544
+#: src/frontends/qt4/GuiView.cpp:1549
 msgid "Automatic save failed!"
 msgstr "Simpan otomatis gagal !"
 
-#: src/frontends/qt4/GuiView.cpp:1590
+#: src/frontends/qt4/GuiView.cpp:1595
 msgid "Command not allowed without any document open"
 msgstr "Perintah tidak diijinkan tanpa salah satu dokumen dibuka"
 
-#: src/frontends/qt4/GuiView.cpp:1692
+#: src/frontends/qt4/GuiView.cpp:1697
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Kotak bantuan tidak dikenal \"%1$s\""
 
-#: src/frontends/qt4/GuiView.cpp:1874
+#: src/frontends/qt4/GuiView.cpp:1879
 msgid "Select template file"
 msgstr "Pilih berkas templet"
 
-#: src/frontends/qt4/GuiView.cpp:1876 src/frontends/qt4/GuiView.cpp:2239
+#: src/frontends/qt4/GuiView.cpp:1881 src/frontends/qt4/GuiView.cpp:2244
 msgid "Templates|#T#t"
 msgstr "Templet|#T#t"
 
-#: src/frontends/qt4/GuiView.cpp:1903
+#: src/frontends/qt4/GuiView.cpp:1908
 msgid "Document not loaded."
 msgstr "Dokumen belum diunduh"
 
-#: src/frontends/qt4/GuiView.cpp:1931
+#: src/frontends/qt4/GuiView.cpp:1936
 msgid "Select document to open"
 msgstr "Pilih dokumen yang akan dibuka"
 
-#: src/frontends/qt4/GuiView.cpp:1933 src/frontends/qt4/GuiView.cpp:2074
-#: src/frontends/qt4/GuiView.cpp:2196
+#: src/frontends/qt4/GuiView.cpp:1938 src/frontends/qt4/GuiView.cpp:2079
+#: src/frontends/qt4/GuiView.cpp:2201
 msgid "Examples|#E#e"
 msgstr "Contoh|#E#e"
 
-#: src/frontends/qt4/GuiView.cpp:1937
+#: src/frontends/qt4/GuiView.cpp:1942
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "LyX-1.3.x Dokumen (*.lyx13)"
 
-#: src/frontends/qt4/GuiView.cpp:1938
+#: src/frontends/qt4/GuiView.cpp:1943
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "LyX-1.4.x Dokumen (*.lyx14)"
 
-#: src/frontends/qt4/GuiView.cpp:1939
+#: src/frontends/qt4/GuiView.cpp:1944
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "LyX-1.5.x Dokumen (*.lyx15)"
 
-#: src/frontends/qt4/GuiView.cpp:1940
+#: src/frontends/qt4/GuiView.cpp:1945
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "LyX-1.6.x Dokumen (*.lyx16)"
 
-#: src/frontends/qt4/GuiView.cpp:1965 src/frontends/qt4/Validator.cpp:200
+#: src/frontends/qt4/GuiView.cpp:1970 src/frontends/qt4/Validator.cpp:200
 #: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:294
 #: src/insets/InsetGraphics.cpp:596 src/insets/InsetInclude.cpp:533
 msgid "Invalid filename"
 msgstr "Nama berkas tidak valid"
 
-#: src/frontends/qt4/GuiView.cpp:1966
+#: src/frontends/qt4/GuiView.cpp:1971
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -22389,40 +22389,40 @@ msgstr ""
 "%1$s\n"
 "tidak ada."
 
-#: src/frontends/qt4/GuiView.cpp:1982
+#: src/frontends/qt4/GuiView.cpp:1987
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Sedang membuka dokumen %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1987
+#: src/frontends/qt4/GuiView.cpp:1992
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokumen %1$s sudah dibuka."
 
-#: src/frontends/qt4/GuiView.cpp:1990
+#: src/frontends/qt4/GuiView.cpp:1995
 msgid "Version control detected."
 msgstr "Kontrol versi terdeteksi."
 
-#: src/frontends/qt4/GuiView.cpp:1992
+#: src/frontends/qt4/GuiView.cpp:1997
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Tidak bisa membuka dokumen %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2021
+#: src/frontends/qt4/GuiView.cpp:2026
 msgid "Couldn't import file"
 msgstr "Berkas tidak bisa di impor"
 
-#: src/frontends/qt4/GuiView.cpp:2022
+#: src/frontends/qt4/GuiView.cpp:2027
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Tidak ada informasi untuk mengimpor format %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:2069
+#: src/frontends/qt4/GuiView.cpp:2074
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Pilih berkas %1$s yang di impor"
 
-#: src/frontends/qt4/GuiView.cpp:2120 src/frontends/qt4/GuiView.cpp:2284
+#: src/frontends/qt4/GuiView.cpp:2125 src/frontends/qt4/GuiView.cpp:2289
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -22433,36 +22433,36 @@ msgstr ""
 "\n"
 "Apakah dokumen yang ada akan ditindih?"
 
-#: src/frontends/qt4/GuiView.cpp:2122 src/frontends/qt4/GuiView.cpp:2288
+#: src/frontends/qt4/GuiView.cpp:2127 src/frontends/qt4/GuiView.cpp:2293
 msgid "Overwrite document?"
 msgstr "Dokumen akan ditindih?"
 
-#: src/frontends/qt4/GuiView.cpp:2131
+#: src/frontends/qt4/GuiView.cpp:2136
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Sedang mengImpor %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2134
+#: src/frontends/qt4/GuiView.cpp:2139
 msgid "imported."
 msgstr "Selesai mengimpor."
 
-#: src/frontends/qt4/GuiView.cpp:2136
+#: src/frontends/qt4/GuiView.cpp:2141
 msgid "file not imported!"
 msgstr "Berkas tidak diimpor!"
 
-#: src/frontends/qt4/GuiView.cpp:2161
+#: src/frontends/qt4/GuiView.cpp:2166
 msgid "newfile"
 msgstr "dokumen baru"
 
-#: src/frontends/qt4/GuiView.cpp:2194
+#: src/frontends/qt4/GuiView.cpp:2199
 msgid "Select LyX document to insert"
 msgstr "Pilih dokumen LyX yang akan disisipkan"
 
-#: src/frontends/qt4/GuiView.cpp:2236
+#: src/frontends/qt4/GuiView.cpp:2241
 msgid "Choose a filename to save document as"
 msgstr "Pilih lokasi penyimpanan dan tuliskan nama berkas"
 
-#: src/frontends/qt4/GuiView.cpp:2269
+#: src/frontends/qt4/GuiView.cpp:2274
 #, c-format
 msgid ""
 "The file\n"
@@ -22477,16 +22477,16 @@ msgstr ""
 "Anda perlu menutup jika tidak ingin menindihnya.\n"
 "Apakah anda akan memilih berkas baru?"
 
-#: src/frontends/qt4/GuiView.cpp:2273
+#: src/frontends/qt4/GuiView.cpp:2278
 msgid "Chosen File Already Open"
 msgstr "Berkas Yang Dipilih Sudah Dibuka"
 
-#: src/frontends/qt4/GuiView.cpp:2274 src/frontends/qt4/GuiView.cpp:2289
-#: src/frontends/qt4/GuiView.cpp:2337
+#: src/frontends/qt4/GuiView.cpp:2279 src/frontends/qt4/GuiView.cpp:2294
+#: src/frontends/qt4/GuiView.cpp:2342
 msgid "&Rename"
 msgstr "&Nama Lain"
 
-#: src/frontends/qt4/GuiView.cpp:2333
+#: src/frontends/qt4/GuiView.cpp:2338
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -22497,23 +22497,23 @@ msgstr ""
 "\n"
 "Apakah dokumen akan diberi nama lain kemudian dicoba lagi?"
 
-#: src/frontends/qt4/GuiView.cpp:2336
+#: src/frontends/qt4/GuiView.cpp:2341
 msgid "Rename and save?"
 msgstr "Ganti nama dan disimpan?"
 
-#: src/frontends/qt4/GuiView.cpp:2337
+#: src/frontends/qt4/GuiView.cpp:2342
 msgid "&Retry"
 msgstr "&Coba Lagi"
 
-#: src/frontends/qt4/GuiView.cpp:2443
+#: src/frontends/qt4/GuiView.cpp:2448
 msgid "Close document"
 msgstr "Tutup dokumen"
 
-#: src/frontends/qt4/GuiView.cpp:2444
+#: src/frontends/qt4/GuiView.cpp:2449
 msgid "Document could not be closed because it is being processed by LyX."
 msgstr "Dokumen tidak bisa ditutup karena sedang diproses oleh LyX."
 
-#: src/frontends/qt4/GuiView.cpp:2548 src/frontends/qt4/GuiView.cpp:2653
+#: src/frontends/qt4/GuiView.cpp:2553 src/frontends/qt4/GuiView.cpp:2658
 #, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -22524,11 +22524,11 @@ msgstr ""
 "\n"
 "Apakah ingin menyimpan terlebih dahulu?"
 
-#: src/frontends/qt4/GuiView.cpp:2551 src/frontends/qt4/GuiView.cpp:2656
+#: src/frontends/qt4/GuiView.cpp:2556 src/frontends/qt4/GuiView.cpp:2661
 msgid "Save new document?"
 msgstr "Perubahan dokumen disimpan?"
 
-#: src/frontends/qt4/GuiView.cpp:2556
+#: src/frontends/qt4/GuiView.cpp:2561
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -22539,15 +22539,15 @@ msgstr ""
 "\n"
 "Apakah perubahan disimpan dahulu atau tidak perlu?"
 
-#: src/frontends/qt4/GuiView.cpp:2558 src/frontends/qt4/GuiView.cpp:2650
+#: src/frontends/qt4/GuiView.cpp:2563 src/frontends/qt4/GuiView.cpp:2655
 msgid "Save changed document?"
 msgstr "Perubahan dokumen disimpan?"
 
-#: src/frontends/qt4/GuiView.cpp:2559
+#: src/frontends/qt4/GuiView.cpp:2564
 msgid "&Discard"
 msgstr "&Tidak Perlu"
 
-#: src/frontends/qt4/GuiView.cpp:2647
+#: src/frontends/qt4/GuiView.cpp:2652
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -22558,7 +22558,7 @@ msgstr ""
 "\n"
 "Apakah ingin menyimpan terlebih dahulu?"
 
-#: src/frontends/qt4/GuiView.cpp:2682
+#: src/frontends/qt4/GuiView.cpp:2687
 #, c-format
 msgid ""
 "Document \n"
@@ -22570,69 +22570,69 @@ msgstr ""
 " telah dimodifikasi dengan program luar. Apakah dokumen ini akan ditindih? "
 "Perubahan lokal akan dihapus."
 
-#: src/frontends/qt4/GuiView.cpp:2685
+#: src/frontends/qt4/GuiView.cpp:2690
 msgid "Reload externally changed document?"
 msgstr "Memuat ulang dokumen yang sudah diubah program luar?"
 
-#: src/frontends/qt4/GuiView.cpp:2738
+#: src/frontends/qt4/GuiView.cpp:2743
 msgid "Error when setting the locking property."
 msgstr "Ada kesalahan ketika mengatur properti pengunci."
 
-#: src/frontends/qt4/GuiView.cpp:2784
+#: src/frontends/qt4/GuiView.cpp:2789
 msgid "Directory is not accessible."
 msgstr "Direktori ditak bisa diakses"
 
-#: src/frontends/qt4/GuiView.cpp:2860
+#: src/frontends/qt4/GuiView.cpp:2865
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Membuka anak dokumen  %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2924
+#: src/frontends/qt4/GuiView.cpp:2929
 #, c-format
 msgid "No buffer for file: %1$s."
 msgstr "Tidak ada informasi untuk berkas: %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:2951
+#: src/frontends/qt4/GuiView.cpp:2956
 #, c-format
 msgid "Successful preview of format: %1$s"
 msgstr "Sukses menampilkan format: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2952
+#: src/frontends/qt4/GuiView.cpp:2957
 #, c-format
 msgid "Error while previewing format: %1$s"
 msgstr "Ada kesalahan ketika menampilkan format: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2955
+#: src/frontends/qt4/GuiView.cpp:2960
 #, c-format
 msgid "Successful export to format: %1$s"
 msgstr "Berhasil ekspor ke format: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2956
+#: src/frontends/qt4/GuiView.cpp:2961
 #, c-format
 msgid "Error while exporting format: %1$s"
 msgstr "Kesalahan ketika ekspor ke format: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:3140 src/frontends/qt4/GuiView.cpp:3152
+#: src/frontends/qt4/GuiView.cpp:3145 src/frontends/qt4/GuiView.cpp:3157
 msgid "Exporting ..."
 msgstr "Sedang mengekspor..."
 
-#: src/frontends/qt4/GuiView.cpp:3161
+#: src/frontends/qt4/GuiView.cpp:3166
 msgid "Previewing ..."
 msgstr "Pra tampilan ..."
 
-#: src/frontends/qt4/GuiView.cpp:3195
+#: src/frontends/qt4/GuiView.cpp:3200
 msgid "Document not loaded"
 msgstr "Dokumen belum diunduh"
 
-#: src/frontends/qt4/GuiView.cpp:3269
+#: src/frontends/qt4/GuiView.cpp:3274
 msgid "Select file to insert"
 msgstr "Pilih berkas yang akan disisipkan"
 
-#: src/frontends/qt4/GuiView.cpp:3273
+#: src/frontends/qt4/GuiView.cpp:3278
 msgid "All Files (*)"
 msgstr "Semua berkas (*)"
 
-#: src/frontends/qt4/GuiView.cpp:3297
+#: src/frontends/qt4/GuiView.cpp:3302
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -22641,28 +22641,28 @@ msgstr ""
 "Semua peruubahan akan hilang. Apakah anda yakin untuk mengembalikan ke versi "
 "dokumen yang disimpan sebelumnya %1$s?"
 
-#: src/frontends/qt4/GuiView.cpp:3300
+#: src/frontends/qt4/GuiView.cpp:3305
 msgid "Revert to saved document?"
 msgstr "Mengembalikan ke dokumen yang disimpan"
 
-#: src/frontends/qt4/GuiView.cpp:3326
+#: src/frontends/qt4/GuiView.cpp:3331
 msgid "Saving all documents..."
 msgstr "Sedang menyimpan semua dokumen..."
 
-#: src/frontends/qt4/GuiView.cpp:3336
+#: src/frontends/qt4/GuiView.cpp:3341
 msgid "All documents saved."
 msgstr "Semua dokumen sudah tersimpan."
 
-#: src/frontends/qt4/GuiView.cpp:3436
+#: src/frontends/qt4/GuiView.cpp:3441
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s perintah tidak dikenal!"
 
-#: src/frontends/qt4/GuiView.cpp:3554
+#: src/frontends/qt4/GuiView.cpp:3559
 msgid "Please, preview the document first."
 msgstr "Mohon dilihat hasil pra tampilan dahulu."
 
-#: src/frontends/qt4/GuiView.cpp:3574
+#: src/frontends/qt4/GuiView.cpp:3579
 msgid "Couldn't proceed."
 msgstr "Tidak bisa melanjutkan."
 
