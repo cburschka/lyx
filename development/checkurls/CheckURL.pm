@@ -20,6 +20,14 @@ BEGIN {
   @EXPORT = qw(check_url);
 }
 
+# Prototypes
+sub check_http_url($$$$);
+sub check_ftp_dir_entry($$);
+sub check_ftp_url($$$$);
+sub check_unknown_url($$$$);
+sub check_url($);
+################
+
 sub check_http_url($$$$)
 {
   use Net::HTTP;
@@ -134,7 +142,7 @@ sub check_ftp_url($$$$)
       my $found2 = 0;
       for my $f ( @{$rEntries}) {
 	#print "Entry: $path $f\n";
-	my ($res1,$isdir) = &check_ftp_dir_entry($file,$f);
+	my ($res1,$isdir) = check_ftp_dir_entry($file,$f);
 	if ($res1 == 1) {
 	  $found = 1;
 	  last;
@@ -220,17 +228,17 @@ sub check_url($)
     return 2;
   }
   if ($protocol =~ /^https?$/) {
-    return &check_http_url($protocol, $host, $path, $file);
+    return check_http_url($protocol, $host, $path, $file);
   }
   elsif ($protocol eq "ftp") {
     my $message;
-    ($res, $message) = &check_ftp_url($protocol, $host, $path, $file);
+    ($res, $message) = check_ftp_url($protocol, $host, $path, $file);
     return $res;
   }
   else {
     # it never should reach this point
     print " What protocol is '$protocol'?";
-    $res = &check_unknown_url($protocol, $host, $path, $file);
+    $res = check_unknown_url($protocol, $host, $path, $file);
     return $res;
   }
 }

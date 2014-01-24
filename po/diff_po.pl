@@ -69,6 +69,18 @@ BEGIN {
     unshift(@INC, "$p");
 }
 
+# Prototypes
+sub get_env_name($ );
+sub buildParentDir($$);
+sub searchRepo($);
+sub diff_po(@);
+sub check_po_file_readable($$);
+sub printDiff($$$$);
+sub printIfDiff($$$);
+sub printExtraMessages($$$);
+sub getrev($$$);
+#########
+
 use strict;
 use parsePoLine;
 use Term::ANSIColor qw(:constants);
@@ -106,7 +118,7 @@ sub get_env_name($)
 # svn: needed to pass options through --diff-cmd parameter
 # hg:  needed to pass options through extdiff parameter
 for my $opt (keys %options) {
-  my $e = &get_env_name($opt);
+  my $e = get_env_name($opt);
   if (defined($e)) {
     if (defined($ENV{$e})) {
       $options{$opt} = $ENV{$e};
@@ -118,7 +130,7 @@ while (($opt=$ARGV[0]) =~ s/=(\d+)$//) {
   $val = $1;
   if (defined($options{$opt})) {
     $options{$opt} = $val;
-    my $e = &get_env_name($opt);
+    my $e = get_env_name($opt);
     if (defined($e)) {
       $ENV{$e} = $val;
     }
@@ -153,7 +165,7 @@ if ($ARGV[0] =~ /^-r(.*)/) {
       $filedir = ".";
     }
     $filedir = getcwd();
-    my ($repo, $level) = &searchRepo($filedir);
+    my ($repo, $level) = searchRepo($filedir);
     my $relargf = $baseargf;	# argf relative to the top-most repo directory
     my $topdir;
     if (defined($level)) {
@@ -173,11 +185,11 @@ if ($ARGV[0] =~ /^-r(.*)/) {
       exit(-1);
     }
     #check po-file
-    &check_po_file_readable($baseargf, $relargf);
+    check_po_file_readable($baseargf, $relargf);
     if ($repo eq ".git") {
       my @args = ();
       my $tmpfile = File::Temp->new();
-      $rev = &getrev($repo, $rev, $argf);
+      $rev = getrev($repo, $rev, $argf);
       push(@args, "-L", $argf . "    (" . $rev . ")");
       push(@args, "-L", $argf . "    (local copy)");
       print "git show $rev:$relargf\n";
@@ -190,11 +202,11 @@ if ($ARGV[0] =~ /^-r(.*)/) {
       $tmpfile->seek( 0, SEEK_END );		# Flush()
       push(@args, $tmpfile->filename, $argf);
       print "===================================================================\n";
-      &diff_po(@args);
+      diff_po(@args);
     }
     elsif ($repo eq ".svn") {
       # program svnversion needed here
-      $rev = &getrev($repo, $rev, $argf);
+      $rev = getrev($repo, $rev, $argf);
       # call it again indirectly
       my @cmd = ("svn", "diff", "-r$rev", "--diff-cmd", $0, $relargf);
       print "cmd = " . join(' ', @cmd) . "\n";
@@ -206,7 +218,7 @@ if ($ARGV[0] =~ /^-r(.*)/) {
       #     [extensions]
       #     hgext.extdiff =
       #
-      $rev = &getrev($repo, $rev, $argf);
+      $rev = getrev($repo, $rev, $argf);
       my @cmd = ("hg", "extdiff", "-r", "$rev", "-p", $0, $relargf);
       print "cmd = " . join(' ', @cmd) . "\n";
       system(@cmd);
@@ -214,20 +226,20 @@ if ($ARGV[0] =~ /^-r(.*)/) {
   }
 }
 else {
-  &diff_po(@ARGV);
+  diff_po(@ARGV);
 }
 
 exit($result);
 #########################################################
 
 # This routine builds n-th parent-path
-# E.g. &buildParentDir("abc", 1) --> "abc/.."
-#      &buildParentDir("abc", 4) --> "abc/../../../.."
+# E.g. buildParentDir("abc", 1) --> "abc/.."
+#      buildParentDir("abc", 4) --> "abc/../../../.."
 sub buildParentDir($$)
 {
   my ($dir, $par) = @_;
   if ($par > 0) {
-    return &buildParentDir("$dir/..", $par-1);
+    return buildParentDir("$dir/..", $par-1);
   }
   else {
     return $dir;
@@ -240,7 +252,7 @@ sub searchRepo($)
 {
   my ($dir) = @_;
   for my $parent ( 0 .. 10 ) {
-    my $f = &buildParentDir($dir, $parent);
+    my $f = buildParentDir($dir, $parent);
     for my $s (".git", ".svn", ".hg") {
       if (-d "$f/$s") {
 	#print "Found repo on level $parent\n";
@@ -251,7 +263,7 @@ sub searchRepo($)
   return("");	# not found
 }
 
-sub diff_po($$)
+sub diff_po(@)
 {
   my @args = @_;
   %Messages = ();
@@ -282,13 +294,13 @@ sub diff_po($$)
     die("names = \"", join('" "', @names) . "\"... args = \"" . join('" "', @args) . "\" Expected exactly 2 parameters");
   }
 
-  &check_po_file_readable($names[0], $args[0]);
-  &check_po_file_readable($names[1], $args[1]);
+  check_po_file_readable($names[0], $args[0]);
+  check_po_file_readable($names[1], $args[1]);
 
-  &parse_po_file($args[0], \%Messages);
-  &parse_po_file($args[1], \%newMessages);
+  parse_po_file($args[0], %Messages);
+  parse_po_file($args[1], %newMessages);
 
-  my @MsgKeys = &getLineSortedKeys(\%newMessages);
+  my @MsgKeys = getLineSortedKeys(%newMessages);
 
   print RED "<<< \"$names[0]\"\n", RESET;
   print GREEN ">>> \"$names[1]\"\n", RESET;
@@ -305,7 +317,7 @@ sub diff_po($$)
       }
     }
     if (exists($Messages{$k})) {
-      &printIfDiff($k, $Messages{$k}, $newMessages{$k});
+      printIfDiff($k, $Messages{$k}, $newMessages{$k});
       delete($Messages{$k});
       delete($newMessages{$k});
     }
@@ -333,7 +345,7 @@ sub diff_po($$)
     }
   }
   else {
-    @MsgKeys = &getLineSortedKeys(\%Messages);
+    @MsgKeys = getLineSortedKeys(%Messages);
     for my $k (@MsgKeys) {
       $result |= 8;
       print "deleted message\n";
@@ -343,7 +355,7 @@ sub diff_po($$)
       print RED "< msgstr = \"" . $Messages{$k}->{msgstr} . "\"\n", RESET;
     }
 
-    @MsgKeys = &getLineSortedKeys(\%newMessages);
+    @MsgKeys = getLineSortedKeys(%newMessages);
     for my $k (@MsgKeys) {
       $result |= 16;
       print "new message\n";
@@ -354,10 +366,10 @@ sub diff_po($$)
     }
   }
   if ($options{"--display-fuzzy"}) {
-    &printExtraMessages("fuzzy", \%Fuzzy, \@names);
+    printExtraMessages("fuzzy", \%Fuzzy, \@names);
   }
   if ($options{"--display-untranslated"}) {
-    &printExtraMessages("untranslated", \%Untranslated, \@names);
+    printExtraMessages("untranslated", \%Untranslated, \@names);
   }
 }
 
@@ -407,7 +419,7 @@ sub printIfDiff($$$)
   $doprint = 1 if ($rM->{msgstr} ne $rnM->{msgstr});
   if ($doprint) {
     $result |= 4;
-    &printDiff($k, $k, $rM, $rnM);
+    printDiff($k, $k, $rM, $rnM);
   }
 }
 

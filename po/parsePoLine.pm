@@ -1,3 +1,4 @@
+# -*- mode: perl; -*-
 package parsePoLine;
 
 use strict;
@@ -6,9 +7,15 @@ our(@EXPORT, @ISA);
 
 BEGIN {
     use Exporter   ();
-    @ISA        = qw(Exporter);
-    @EXPORT     = qw(parse_po_file getLineSortedKeys);
+    @ISA       = qw(Exporter);
+    @EXPORT    = qw(parse_po_file getLineSortedKeys);
 }
+
+# Prototypes
+sub parse_po_file($\%);
+sub parse_po_line($$$$$ );
+sub getLineSortedKeys(\%);
+############
 
 my ($status, $foundline, $msgid, $msgstr, $fuzzy);
 
@@ -17,7 +24,7 @@ my $alternative = 0;
 my @entry = ();
 my %entries = ();
 
-sub parse_po_file($$)
+sub parse_po_file($\%)
 {
   $alternative = 0;
   @entry = ();
@@ -32,11 +39,11 @@ sub parse_po_file($$)
     my $lineno = 0;
     while (my $line = <FI>) {
       $lineno++;
-      &parse_po_line($line, $lineno, $rMessages, \@result, \$resindex);
+      parse_po_line($line, $lineno, $rMessages, \@result, \$resindex);
       push(@entry, $line);
 
     }
-    &parse_po_line("", $lineno + 1, $rMessages, \@result, \$resindex);
+    parse_po_line("", $lineno + 1, $rMessages, \@result, \$resindex);
     my @entr1 = @entry;
     $result[$resindex] = ["zzzzzzzzzzzz", \@entr1];
     close(FI);
@@ -44,7 +51,7 @@ sub parse_po_file($$)
   return(@result);
 }
 
-sub  parse_po_line($$$$$)
+sub parse_po_line($$$$$)
 {
   my ($line, $lineno, $rMessages, $rresult, $rresindex) = @_;
   chomp($line);
@@ -58,14 +65,14 @@ sub  parse_po_line($$$$$)
       $foundline = $lineno;
       $status = "msgid";
       $msgid = "";
-      &parse_po_line($line, $lineno, $rMessages, $rresult, $rresindex);
+      parse_po_line($line, $lineno, $rMessages, $rresult, $rresindex);
     }
     elsif ($line =~ s/^\#\~ msgid\s+//) {
       $alternative = 1;
       $foundline = $lineno;
       $status = "msgid";
       $msgid = "";
-      &parse_po_line($line, $lineno, $rMessages, $rresult, $rresindex);
+      parse_po_line($line, $lineno, $rMessages, $rresult, $rresindex);
     }
   }
   elsif ($status eq "msgid") {
@@ -80,13 +87,13 @@ sub  parse_po_line($$$$$)
       $alternative = 0;
       $status = "msgstr";
       $msgstr = "";
-      &parse_po_line($line, $lineno, $rMessages, $rresult, $rresindex);
+      parse_po_line($line, $lineno, $rMessages, $rresult, $rresindex);
     }
     elsif ($line =~ s/^\#\~ msgstr\s+//) {
       $alternative = 1;
       $status = "msgstr";
       $msgstr = "";
-      &parse_po_line($line, $lineno, $rMessages, $rresult, $rresindex);
+      parse_po_line($line, $lineno, $rMessages, $rresult, $rresindex);
     }
   }
   elsif ($status eq "msgstr") {
@@ -129,7 +136,7 @@ sub  parse_po_line($$$$$)
   }
 }
 
-sub getLineSortedKeys($)
+sub getLineSortedKeys(\%)
 {
   my ($rMessages) = @_;
 
@@ -154,7 +161,7 @@ parsePoLine
   use parsePoLine; #imports functions 'parse_po_file() and getLineSortedKeys()'
 
   my %Messages = ();
-  my @entries = parse_po_file("sk.po", \%Messages);
+  my @entries = parse_po_file("sk.po", %Messages);
 
 =head1 DESCRIPTION
 

@@ -46,6 +46,13 @@ use POSIX qw(locale_h);
 setlocale(LC_CTYPE, "");
 setlocale(LC_MESSAGES, "en_US.UTF-8");
 
+# Prototypes
+sub printNotUsedURLS($\%);
+sub readUrls($\%);
+sub parse_file($ );
+sub handle_url($$$ );
+##########
+
 my %URLS = ();
 my %ignoredURLS = ();
 my %revertedURLS = ();
@@ -61,23 +68,23 @@ for my $arg (@ARGV) {
     if (open(FLIST, $val)) {
       while (my $l = <FLIST>) {
 	chomp($l);
-	&parse_file($l);
+	parse_file($l);
       }
       close(FLIST);
     }
   }
   elsif ($type eq "ignoredURLS") {
-    &readUrls($val, \%ignoredURLS);
+    readUrls($val, %ignoredURLS);
   }
   elsif ($type eq "revertedURLS") {
-    &readUrls($val, \%revertedURLS);
+    readUrls($val, %revertedURLS);
   }
   elsif ($type eq "extraURLS") {
-    &readUrls($val,  \%extraURLS);
+    readUrls($val,  %extraURLS);
   }
   elsif ($type eq "selectedURLS") {
     $checkSelectedOnly = 1;
-    &readUrls($val,  \%selectedURLS);
+    readUrls($val,  %selectedURLS);
   }
   else {
     die("Invalid argument \"$arg\"");
@@ -102,7 +109,7 @@ for my $u (@urls) {
   print "Checking '$u': ";
   my ($res, $prnt);
   try {
-    $res = &check_url($u);
+    $res = check_url($u);
     if ($res) {
      $prnt = "Failed";
     }
@@ -142,9 +149,9 @@ for my $u (@urls) {
 }
 
 if (%URLS) {
-  &printNotUsedURLS("Ignored", \%ignoredURLS);
-  &printNotUsedURLS("Selected", \%selectedURLS);
-  &printNotUsedURLS("KnownInvalid", \%extraURLS);
+  printNotUsedURLS("Ignored", %ignoredURLS);
+  printNotUsedURLS("Selected", %selectedURLS);
+  printNotUsedURLS("KnownInvalid", %extraURLS);
 }
 
 print "\n$errorcount URL-tests failed out of $URLScount\n\n";
@@ -152,7 +159,7 @@ exit($errorcount);
 
 ###############################################################################
 
-sub printNotUsedURLS($$)
+sub printNotUsedURLS($\%)
 {
   my ($txt, $rURLS) = @_;
   my @msg = ();
@@ -171,7 +178,7 @@ sub printNotUsedURLS($$)
   }
 }
 
-sub readUrls($$)
+sub readUrls($\%)
 {
   my ($file, $rUrls) = @_;
 
@@ -212,7 +219,7 @@ sub parse_file($)
 	  # Outside of url, check also
 	  if ($l =~ /"((ftp|http|https):\/\/[^ ]+)"/) {
 	    my $url = $1;
-	    &handle_url($url, $f, "x$line");
+	    handle_url($url, $f, "x$line");
 	  }
 	}
       }
@@ -224,14 +231,14 @@ sub parse_file($)
 	  if ($l =~ /\s*([a-z]+:\/\/.+)\s*$/) {
 	    my $url = $1;
 	    $status = "out";
-	    &handle_url($url, $f, "u$line");
+	    handle_url($url, $f, "u$line");
 	  }
 	}
 	elsif ($status eq "inHrefInset") {
 	  if ($l =~ /^target\s+"([a-z]+:\/\/[^ ]+)"$/) {
 	    my $url = $1;
 	    $status = "out";
-	    &handle_url($url, $f, "h$line");
+	    handle_url($url, $f, "h$line");
 	  }
 	}
       }
@@ -246,6 +253,8 @@ sub handle_url($$$)
 
   if(!defined($URLS{$url})) {
     $URLS{$url} = {};
+  }
+  if(!defined($URLS{$url}->{$f})) {
     $URLS{$url}->{$f} = [];
   }
   push(@{$URLS{$url}->{$f}}, $line);
