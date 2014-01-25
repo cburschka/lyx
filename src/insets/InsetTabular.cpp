@@ -2447,6 +2447,14 @@ void Tabular::TeXLongtableHeaderFooter(otexstream & os,
 	if (!is_long_tabular)
 		return;
 
+	// caption handling
+	// the caption must be output before the headers
+	if (haveLTCaption()) {
+		for (row_type r = 0; r < nrows(); ++r) {
+			if (row_info[r].caption)
+				TeXRow(os, r, runparams);
+		}
+	}
 	// output first header info
 	if (haveLTFirstHead()) {
 		if (endfirsthead.topDL)
