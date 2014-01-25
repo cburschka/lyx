@@ -403,6 +403,7 @@ bool Converters::convert(Buffer const * buffer,
 			command = subst(command, token_from, "");
 			command = subst(command, token_latex_encoding, buffer ?
 				buffer->params().encoding().latexName() : string());
+			command = libScriptSearch(command);
 			LYXERR(Debug::FILES, "Running " << command);
 			if (!runLaTeX(*buffer, command, runparams, errorList))
 				return false;
