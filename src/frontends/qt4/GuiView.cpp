@@ -425,13 +425,8 @@ GuiView::GuiView(int id)
 	// they are greyed out.
 	guiApp->setCurrentView(this);
  
-#if defined(Q_WS_MACX)
-	static QMenuBar * qmb = new QMenuBar(0);
-#else
-	QMenuBar * qmb = menuBar();
-#endif
  	// Fill up the menu bar.
-	guiApp->menus().fillMenuBar(qmb, this, true);
+	guiApp->menus().fillMenuBar(menuBar(), this, true);
 
 	setCentralWidget(d.stack_widget_);
 
@@ -531,6 +526,15 @@ QVector<GuiWorkArea*> GuiView::GuiViewPrivate::guiWorkAreas()
 	}
 	return areas;
 }
+
+
+#if defined(Q_WS_MACX)
+QMenuBar * GuiView::menuBar() const
+{
+	static QMenuBar * globalMenuBar = new QMenuBar(0);
+	return globalMenuBar;
+}
+#endif
 
 
 #if QT_VERSION >= 0x040400
