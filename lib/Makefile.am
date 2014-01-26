@@ -1890,6 +1890,7 @@ dist_layouts_DATA =\
 	layouts/agu_stdtitle.inc \
 	layouts/agums.layout \
 	layouts/aguplus.inc \
+	layouts/algorithm2e.module \
 	layouts/amsart.layout \
 	layouts/amsbook.layout \
 	layouts/amsdefs.inc \

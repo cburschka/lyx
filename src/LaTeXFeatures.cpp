@@ -740,7 +740,8 @@ char const * simplefeatures[] = {
 	"multirow",
 	"tfrupee",
 	"shapepar",
-	"rsphrase"
+	"rsphrase",
+	"algorithm2e"
 };
 
 char const * bibliofeatures[] = {

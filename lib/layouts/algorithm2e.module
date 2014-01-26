@@ -1,0 +1,26 @@
+#\DeclareLyXModule[algorithm2e.sty]{Algorithm2e}
+#DescriptionBegin
+# Use the algorithm2e package for algorithm floats rather
+# then LyX's home-brewn algorithm floats.
+#DescriptionEnd
+#
+#Author: Jürgen Spitzmüller
+
+Format 35
+
+Requires algorithm2e
+
+Float
+	Type                  algorithm
+	GuiName               Algorithm
+	Placement             tbp
+	Extension             loa
+	NumberWithin          none
+	Style                 plain
+	ListName              "List of Algorithms"
+	IsPredefined          true
+	UsesFloatPkg          false
+	ListCommand           listofalgorithms
+	RefPrefix             alg
+End
+
