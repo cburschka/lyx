@@ -189,6 +189,12 @@ bool InsetFloat::getStatus(Cursor & cur, FuncRequest const & cmd,
 			return true;
 		} else
 			return false;
+	
+	case LFUN_NEWLINE_INSERT:
+		if (params_.subfloat) {
+			flag.setEnabled(false);
+			return true;
+		}
 
 	default:
 		return InsetCollapsable::getStatus(cur, cmd, flag);
