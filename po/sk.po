@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-12-02 15:00+0100\n"
+"POT-Creation-Date: 2014-01-26 19:53+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -12709,6 +12709,18 @@ msgstr "Vlastnosť \\theproperty."
 #: lib/layouts/theorems-ams-extended-bytype.module:202
 msgid "Note \\thenote."
 msgstr "Poznámka \\thenote."
+
+#: lib/layouts/algorithm2e.module:2
+msgid "Algorithm2e"
+msgstr "Algorithm2e"
+
+#: lib/layouts/algorithm2e.module:6
+msgid ""
+"Use the algorithm2e package for algorithm floats rather then LyX's home-"
+"brewn algorithm floats."
+msgstr ""
+"Použiť balík algorithm2e pre plávajúce algoritmy namiesto LyXovej samohonky "
+"plávajúcich algoritmov."
 
 #: lib/layouts/basic.module:2
 msgid "Default (basic)"
