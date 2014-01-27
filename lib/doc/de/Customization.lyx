@@ -707,7 +707,8 @@ Versionen benötigt werden.
 \family typewriter
 scripts
 \family default
-/
+/ Hier sind einige Python-Skripte abgelegt, die LyX für bestimmte interne
+ Operationen benötigt.
 \end_layout
 
 \begin_layout Labeling
@@ -906,9 +907,7 @@ latexfonts
 
 \end_inset
 
-
-\lang english
- contains information about the supported fonts.
+ Diese Datei enthält Informationen über die unterstützen LaTeX-Schriften.
 \end_layout
 
 \begin_layout Labeling
@@ -922,11 +921,8 @@ layouttranslations
 
 \end_inset
 
-
-\lang english
- this file contains translations for internationalized paragraph styles
-\lang ngerman
- (siehe 
+ Diese Datei enthält Übersetzungen für lokalisierbare Absatzstile (siehe
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:I18n"
@@ -947,10 +943,9 @@ unicodesymbols
 
 \end_inset
 
-
-\lang english
- this file contains information about unicode-encoded glyphs and the way
- they are supported by LyX via LaTeX.
+ Diese Datei enthält Informationen über Unicode-kodierte Glyphen (Zeichen)
+ und die Art und Weise, wie diese in LyX mit Hilfe von LaTeX unterstützt
+ werden.
 \end_layout
 
 \begin_layout Section
@@ -1346,15 +1341,31 @@ bearbeiten
 \end_layout
 
 \begin_layout Standard
-Der MIME-Typ 
-\lang english
-of a format is optional, but if it is specified, it must be unique across
- all formats.
- It is used to detect files of this format from the file contents.
- For some important file formats there is no MIME-Typ officially registered
- with the 
-\lang ngerman
+Der MIME-Typ
+\begin_inset Foot
+status collapsed
 
+\begin_layout Plain Layout
+MIME (
+\emph on
+\lang english
+Multipurpose Internet Mail Extensions
+\emph default
+\lang ngerman
+) ist ein Kodierstandard, der ursprünglich entwickelt wurde, um die Struktur
+ und den Aufbau von E-Mails festzulegen.
+ Er wird mittlerweile aber auch zur generellen Bestimmung von Dateiformaten
+ eingesetzt.
+\end_layout
+
+\end_inset
+
+ eines Formats muss nicht zwingend angegeben werden, wenn er aber angegeben
+ wird, dann sollte dies einheitlich über alle Formatvarianten hinweg geschehen.
+ Der MIME-Typ wird verwendet, um ein Dateiformat über den Dateiinhalt zu
+ erkennen.
+ Für einige wichtige Dateiformate wurde von der zuständigen Organisation
+ (
 \begin_inset CommandInset href
 LatexCommand href
 name "IANA"
@@ -1362,12 +1373,8 @@ target "http://www.iana.org/assignments/media-types/"
 
 \end_inset
 
-.
- 
-\lang english
-Therefore LyX uses the extended list of MIME types as specified by 
-\lang ngerman
-
+) noch kein offizielles MIME-Typ festgelegt.
+ LyX verwendet daher die erweiterte inoffizielle Liste, die von 
 \begin_inset CommandInset href
 LatexCommand href
 name "freedesktop.org"
@@ -1375,7 +1382,7 @@ target "http://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec"
 
 \end_inset
 
-.
+ festgelegt wurde.
 \end_layout
 
 \begin_layout Standard
@@ -1534,9 +1541,8 @@ $$b
 
 \end_inset
 
- 
-\lang english
-The base name (without filename extension) in the LyX temporary directory
+ Der Basisname (ohne Dateinamenerweiterung), wie er im temporären LyX-Verzeichni
+s verwendet wird.
 \end_layout
 
 \begin_layout Labeling
@@ -1550,9 +1556,7 @@ $$p
 
 \end_inset
 
- 
-\lang english
-The full directory path of the LyX temporary directory
+ ist der vollständige Dateipfad des temporären LyX-Verzeichnisses.
 \end_layout
 
 \begin_layout Labeling
@@ -1566,9 +1570,7 @@ $$r
 
 \end_inset
 
- 
-\lang english
-The full pathname to the original LyX file being processed
+ ist der vollständige Dateipfad der LyX-Datei.
 \end_layout
 
 \begin_layout Labeling
@@ -1582,9 +1584,7 @@ $$f
 
 \end_inset
 
- 
-\lang english
-The filename (without any directory path) of the LyX file.
+ ist der Dateiname der LyX-Datei (ohne Verzeichnispfad).
 \end_layout
 
 \begin_layout Labeling
@@ -1926,30 +1926,30 @@ nice
 
 \end_inset
 
- 
-\lang english
-Needs a 
+ benötigt eine 
 \begin_inset Quotes gld
 \end_inset
 
-nice
+schöne
 \begin_inset Quotes grd
 \end_inset
 
- file from the backend, which in practice means a LaTeX file like the one
- we would export, without 
+ Datei, also eine, die so aussieht, wie die, die man über das Menü exportiert
+ (ohne interne Hilfsbefehle wie 
+\lang english
+
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 input@path
 \end_layout
 
 \end_inset
 
-.
+
+\lang ngerman
+).
 \end_layout
 
 \begin_layout Labeling
