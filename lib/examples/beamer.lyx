@@ -894,7 +894,8 @@ Separating frames
 
 \begin_layout Frame
 \noindent
-Consecutive frames are separated by the 
+Consecutive frames have to be separated from each other.
+ This is done by means of the 
 \begin_inset Flex Structure
 status collapsed
 
@@ -909,42 +910,6 @@ Separator
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
-The most convenient way to insert a 
-\begin_inset Flex Structure
-status collapsed
-
-\begin_layout Plain Layout
-\noindent
-Separator
-\end_layout
-
-\end_inset
-
- and automatically start a new frame is by means of 
-\begin_inset Flex Alert
-status collapsed
-
-\begin_layout Plain Layout
-Edit\SpecialChar \menuseparator
-Split Environment
-\end_layout
-
-\end_inset
-
- while you are in a paragraph of 
-\begin_inset Flex Structure
-status collapsed
-
-\begin_layout Plain Layout
-Frame
-\end_layout
-
-\end_inset
-
- layout
-\end_layout
-
 \begin_layout Block
 \begin_inset Argument 2
 status open
@@ -959,7 +924,24 @@ Tip
 \end_layout
 
 \begin_layout Block
-To get from a nested paragraph of whatever layout to the outer 
+There is a simple automated way to start a new frame: Issue 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Edit\SpecialChar \menuseparator
+Start New Environment
+\end_layout
+
+\end_inset
+
+ (
+\begin_inset Info
+type  "shortcut"
+arg   "environment-split"
+\end_inset
+
+) if you are in a non-nested 
 \begin_inset Flex Structure
 status collapsed
 
@@ -969,13 +951,24 @@ Frame
 
 \end_inset
 
- layout, hit 
-\begin_inset Info
-type  "shortcut"
-arg   "paragraph-break inverse"
+ paragraph, or 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Edit\SpecialChar \menuseparator
+Start New Parent Environment
+\end_layout
+
 \end_inset
 
-!
+ (
+\begin_inset Info
+type  "shortcut"
+arg   "environment-split outer"
+\end_inset
+
+), respectively, if you are in a nested paragraph within the frame!
 \end_layout
 
 \end_deeper
@@ -3228,11 +3221,13 @@ In LyX, blocks have a similar user interface than frames, which means that
 \begin_layout Itemize
 Content inside blocks needs to be nested (if the paragraph layout is not
  
-\begin_inset Quotes eld
-\end_inset
+\begin_inset Flex Structure
+status collapsed
 
+\begin_layout Plain Layout
 Block
-\begin_inset Quotes erd
+\end_layout
+
 \end_inset
 
 )
@@ -3240,16 +3235,64 @@ Block
 
 \begin_layout Itemize
 Consecutive blocks of the same type must be separated by the 
-\begin_inset Quotes eld
-\end_inset
+\begin_inset Flex Structure
+status collapsed
 
+\begin_layout Plain Layout
 Separator
-\begin_inset Quotes erd
+\end_layout
+
 \end_inset
 
  paragraph style
 \end_layout
 
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+only@2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Tip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+Use 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Edit\SpecialChar \menuseparator
+Start New Environment
+\end_layout
+
+\end_inset
+
+ (
+\begin_inset Info
+type  "shortcut"
+arg   "environment-split"
+\end_inset
+
+) to quickly start a new block from within a previous block!
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Itemize
 Blocks are overlay-aware
