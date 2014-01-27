@@ -112,6 +112,10 @@ Format 1
 \bind "M-a Up"			"outline-up"
 \bind "M-a Down"		"outline-down"
 
+
+\bind "M-a Return"		"environment-split"
+\bind "M-a S-Return"		"environment-split outer"
+
 # Obsolete Tastenbelegung: in die persönliche *.bind Datei kopieren und
 # auskommentieren wenn diese Tastenbelegung gewünscht ist.
 # \bind "M-a S-quotedbl"	"layout Section*"	# M-a S-2

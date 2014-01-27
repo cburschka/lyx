@@ -3682,7 +3682,9 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_ENVIRONMENT_SPLIT
  * \li Action: Splits the current environment with a Separator.
- * \li Syntax: environment-split
+ * \li Syntax: environment-split [outer]
+ * \li Params: outer: If this is given, LyX will split the outermost environment in
+ *                    the current nesting hierarchy.
  * \li Origin: spitz, 23 Dec 2012
  * \endvar
  */

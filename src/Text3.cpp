@@ -1378,10 +1378,32 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_ENVIRONMENT_SPLIT: {
+		bool const outer = cmd.argument() == "outer";
 		Paragraph const & para = cur.paragraph();
-		docstring const layout = para.layout().name();
+		docstring layout = para.layout().name();
+		depth_type split_depth = cur.paragraph().params().depth();
+		if (outer) {
+			// check if we have an environment in our nesting hierarchy
+			pit_type pit = cur.pit();
+			Paragraph cpar = pars_[pit];
+			while (true) {
+				if (pit == 0 || cpar.params().depth() == 0)
+					break;
+				--pit;
+				cpar = pars_[pit];
+				if (cpar.params().depth() < split_depth
+				    && cpar.layout().isEnvironment()) {
+						layout = cpar.layout().name();
+						split_depth = cpar.params().depth();
+				}
+			}
+		}
 		if (cur.pos() > 0)
 			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK));
+		if (outer) {
+			while (cur.paragraph().params().depth() > split_depth)
+				lyx::dispatch(FuncRequest(LFUN_DEPTH_DECREMENT));
+		}
 		bool const morecont = cur.lastpos() > cur.pos();
 		lyx::dispatch(FuncRequest(LFUN_LAYOUT, "Separator"));
 		lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK, "inverse"));
@@ -2892,8 +2914,28 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	
 	case LFUN_ENVIRONMENT_SPLIT: {
-		if (cur.paragraph().layout().isEnvironment()
-		    && cur.buffer()->params().documentClass().hasLayout(from_ascii("Separator"))) {
+		if (!cur.buffer()->params().documentClass().hasLayout(from_ascii("Separator"))) {
+			enable = false;
+			break;
+		}
+		if (cmd.argument() == "outer") {
+			// check if we have an environment in our nesting hierarchy
+			bool res = false;
+			depth_type const current_depth = cur.paragraph().params().depth();
+			pit_type pit = cur.pit();
+			Paragraph cpar = pars_[pit];
+			while (true) {
+				if (pit == 0 || cpar.params().depth() == 0)
+					break;
+				--pit;
+				cpar = pars_[pit];
+				if (cpar.params().depth() < current_depth)
+					res = cpar.layout().isEnvironment();
+			}
+			enable = res;
+			break;
+		}
+		else if (cur.paragraph().layout().isEnvironment()) {
 			enable = true;
 			break;
 		}

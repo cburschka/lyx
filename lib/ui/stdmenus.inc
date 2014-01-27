@@ -133,6 +133,7 @@ Menuset
 # obvious what the context is for the others)
 		OptItem "Increase List Depth|I" "depth-increment"
 		OptItem "Decrease List Depth|D" "depth-decrement"
+		EnvironmentSeparators
 		OptItem "Dissolve Inset" "inset-dissolve"
 		OptItem "TeX Code Settings...|C" "inset-settings ert"
 # 'a' shortcut to match Insert entry, shouldn't clash with Table Settings
@@ -150,7 +151,6 @@ Menuset
 # This is in the Table submenu instead for now.
 #	OptItem "Table Settings...|a" "inset-settings tabular"
 		OptItem "Table Settings...|a" "layout-tabular"
-		OptItem "Split Environment|l" "environment-split"
 	End
 
 	Menu "edit_paste"

@@ -47,10 +47,12 @@
 #include "LyXRC.h"
 #include "lyxfind.h"
 #include "Paragraph.h"
+#include "ParagraphParameters.h"
 #include "ParIterator.h"
 #include "Session.h"
 #include "SpellChecker.h"
 #include "TextClass.h"
+#include "Text.h"
 #include "TocBackend.h"
 #include "Toolbars.h"
 #include "WordLangTuple.h"
@@ -185,7 +187,9 @@ public:
 		Captions,
 		/** This is the list of captions available
 		in the InsetCaption context menu. */
-		SwitchCaptions
+		SwitchCaptions,
+		/** Commands to separate environments. */
+		EnvironmentSeparation
 	};
 
 	explicit MenuItem(Kind kind) : kind_(kind), optional_(false) {}
@@ -363,6 +367,7 @@ public:
 	void expandLanguageSelector(Buffer const * buf);
 	void expandArguments(BufferView const *, bool switcharg = false);
 	void expandCaptions(Buffer const * buf, bool switchcap = false);
+	void expandEnvironmentSeparators(BufferView const *);
 	///
 	ItemList items_;
 	///
@@ -474,7 +479,8 @@ void MenuDefinition::read(Lexer & lex)
 		md_arguments,
 		md_switcharguments,
 		md_captions,
-		md_switchcaptions
+		md_switchcaptions,
+		md_env_separators
 	};
 
 	LexerKeyword menutags[] = {
@@ -488,6 +494,7 @@ void MenuDefinition::read(Lexer & lex)
 		{ "documents", md_documents },
 		{ "elements", md_elements },
 		{ "end", md_endmenu },
+		{ "environmentseparators", md_env_separators },
 		{ "exportformats", md_exportformats },
 		{ "floatinsert", md_floatinsert },
 		{ "floatlistinsert", md_floatlistinsert },
@@ -649,6 +656,10 @@ void MenuDefinition::read(Lexer & lex)
 
 		case md_switchcaptions:
 			add(MenuItem(MenuItem::SwitchCaptions));
+			break;
+
+		case md_env_separators:
+			add(MenuItem(MenuItem::EnvironmentSeparation));
 			break;
 
 		case md_optsubmenu:
@@ -1649,6 +1660,47 @@ void MenuDefinition::expandCaptions(Buffer const * buf, bool switchcap)
 	}
 }
 
+
+void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv)
+{
+	if (!bv)
+		return;
+
+	Paragraph const par = bv->cursor().paragraph();
+	docstring const curlayout = par.layout().name();
+	docstring outerlayout;
+	depth_type current_depth = par.params().depth();
+	// check if we have an environment in our nesting hierarchy
+	pit_type pit = bv->cursor().pit();
+	Paragraph cpar = bv->buffer().text().getPar(pit);
+	while (true) {
+		if (pit == 0 || cpar.params().depth() == 0)
+			break;
+		--pit;
+		cpar = bv->buffer().text().getPar(pit);
+		if (cpar.params().depth() < current_depth
+		    && cpar.layout().isEnvironment()) {
+				outerlayout = cpar.layout().name();
+				current_depth = cpar.params().depth();
+		}
+	}
+	if (par.layout().isEnvironment()) {
+		docstring const label =
+			    bformat(_("Start New Environment (%1$s)"),
+				    translateIfPossible(curlayout));
+		add(MenuItem(MenuItem::Command, toqstr(label),
+			     FuncRequest(LFUN_ENVIRONMENT_SPLIT)));
+	}
+	if (!outerlayout.empty()) {
+	    docstring const label =
+			bformat(_("Start New Parent Environment (%1$s)"),
+				translateIfPossible(outerlayout));
+	    add(MenuItem(MenuItem::Command, toqstr(label),
+			     FuncRequest(LFUN_ENVIRONMENT_SPLIT,
+					 from_ascii("outer"))));
+	}
+}
+
 } // namespace anon
 
 
@@ -1793,7 +1845,8 @@ struct Menus::Impl {
 	/** The entries with the following kind are expanded to a
 	    sequence of Command MenuItems: Lastfiles, Documents,
 	    ViewFormats, ExportFormats, UpdateFormats, Branches,
-	    Indices, Arguments, SwitchArguments, Captions, SwitchCaptions
+	    Indices, Arguments, SwitchArguments, Captions, SwitchCaptions,
+	    EnvironmentSeparation
 	*/
 	void expand(MenuDefinition const & frommenu, MenuDefinition & tomenu,
 		BufferView const *) const;
@@ -2028,6 +2081,10 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 
 		case MenuItem::SwitchCaptions:
 			tomenu.expandCaptions(buf, true);
+			break;
+
+		case MenuItem::EnvironmentSeparation:
+			tomenu.expandEnvironmentSeparators(bv);
 			break;
 
 		case MenuItem::Submenu: {

@@ -125,6 +125,9 @@ Format 1
 \bind "M-p Up"			"outline-up"
 \bind "M-p Down"		"outline-down"
 
+\bind "M-p Return"		"environment-split"
+\bind "M-p S-Return"		"environment-split outer"
+
 
 # These are kept for backwards compatibility (only make sense on US keyboard)
 \bind "M-p S-at"		"layout Section*"	# M-p S-2
