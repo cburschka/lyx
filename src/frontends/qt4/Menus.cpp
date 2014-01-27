@@ -189,7 +189,7 @@ public:
 		in the InsetCaption context menu. */
 		SwitchCaptions,
 		/** Commands to separate environments. */
-		EnvironmentSeparation
+		EnvironmentSeparators
 	};
 
 	explicit MenuItem(Kind kind) : kind_(kind), optional_(false) {}
@@ -659,7 +659,7 @@ void MenuDefinition::read(Lexer & lex)
 			break;
 
 		case md_env_separators:
-			add(MenuItem(MenuItem::EnvironmentSeparation));
+			add(MenuItem(MenuItem::EnvironmentSeparators));
 			break;
 
 		case md_optsubmenu:
@@ -1846,7 +1846,7 @@ struct Menus::Impl {
 	    sequence of Command MenuItems: Lastfiles, Documents,
 	    ViewFormats, ExportFormats, UpdateFormats, Branches,
 	    Indices, Arguments, SwitchArguments, Captions, SwitchCaptions,
-	    EnvironmentSeparation
+	    EnvironmentSeparators
 	*/
 	void expand(MenuDefinition const & frommenu, MenuDefinition & tomenu,
 		BufferView const *) const;
@@ -2083,7 +2083,7 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 			tomenu.expandCaptions(buf, true);
 			break;
 
-		case MenuItem::EnvironmentSeparation:
+		case MenuItem::EnvironmentSeparators:
 			tomenu.expandEnvironmentSeparators(bv);
 			break;
 
