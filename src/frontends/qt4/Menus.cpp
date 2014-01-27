@@ -1686,16 +1686,16 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv)
 	}
 	if (par.layout().isEnvironment()) {
 		docstring const label =
-			    bformat(_("Start New Environment (%1$s)"),
-				    translateIfPossible(curlayout));
+			bformat(_("Start New Environment (%1$s)"),
+				translateIfPossible(curlayout));
 		add(MenuItem(MenuItem::Command, toqstr(label),
 			     FuncRequest(LFUN_ENVIRONMENT_SPLIT)));
 	}
 	if (!outerlayout.empty()) {
-	    docstring const label =
+		docstring const label =
 			bformat(_("Start New Parent Environment (%1$s)"),
 				translateIfPossible(outerlayout));
-	    add(MenuItem(MenuItem::Command, toqstr(label),
+		add(MenuItem(MenuItem::Command, toqstr(label),
 			     FuncRequest(LFUN_ENVIRONMENT_SPLIT,
 					 from_ascii("outer"))));
 	}
