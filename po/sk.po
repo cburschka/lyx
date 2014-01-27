@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-01-27 08:06+0100\n"
+"POT-Creation-Date: 2014-01-27 12:36+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -27974,14 +27974,14 @@ msgid "Caption (%1$s)"
 msgstr "Popis (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:1689
-#, fuzzy, c-format
+#, c-format
 msgid "Start New Environment (%1$s)"
-msgstr "Gather prostredie"
+msgstr "Vytvoriť Nové Prostredie (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:1696
-#, fuzzy, c-format
+#, c-format
 msgid "Start New Parent Environment (%1$s)"
-msgstr "vytvoriť nové matematické textové prostredie ($...$)"
+msgstr "Vytvoriť Nové Nadriadené Prostredie (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:2326
 msgid "No Action Defined!"
@@ -28494,7 +28494,7 @@ msgid ""
 msgstr ""
 "Zahrnutý súbor `%1$s'\n"
 "má triedu (textclass) `%2$s'\n"
-"zatiaľ čo rodičovský súbor má triedu `%3$s'."
+"zatiaľ čo nadriadený súbor má triedu `%3$s'."
 
 #: src/insets/InsetInclude.cpp:650
 msgid "Different textclasses"
@@ -28509,7 +28509,7 @@ msgid ""
 msgstr ""
 "Zahrnutý súbor `%1$s'\n"
 "používa modul `%2$s',\n"
-"ktorý sa nepoužíva v rodičovskom dokumente."
+"ktorý sa nepoužíva v nadriadenom dokumente."
 
 #: src/insets/InsetInclude.cpp:669
 msgid "Module not found"
