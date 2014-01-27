@@ -55,11 +55,11 @@ What's new
 
 * USER INTERFACE
 
-- Fixed python call in listerrors script.
-
-- Fix the missing menu entry for "Insert Branch <branch name>".
+- Fix outliner-related crash when master and child are open in different
+  windows (bug 8948).
 
 - Handle undo in `branch-add' function.
+
 
 * DOCUMENTATION AND LOCALIZATION
 
@@ -79,6 +79,6 @@ What's new
 
 * BUILD/INSTALLATION
 
-- improve detection of Qt via pkg-config, especially on Mac OS.
+- Improve detection of Qt via pkg-config, especially on Mac OS.
 
-- fix a couple of compilation warnings.
+- Fix a couple of compilation warnings.
