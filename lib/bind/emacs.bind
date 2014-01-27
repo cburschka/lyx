@@ -109,6 +109,10 @@ Format 1
 \bind "C-Prior"                "buffer-previous"
 \bind "C-x 0"                  "view-close"
 
+# Window commands
+\bind "C-x 5 2"                "window-new"
+\bind "C-x 5 0"                "window-close"
+
 
 # this is "upcase-region" in emacs
 #\bind "C-x C-u"                "undo"
