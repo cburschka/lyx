@@ -960,6 +960,18 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (name == "hyperref")
 		handle_hyperref(options);
 
+	else if (name == "algorithm2e") {
+		// Load "algorithm2e" module
+		addModule("algorithm2e");
+		// Add the package options to the global document options
+		if (!options.empty()) {
+			if (h_options.empty())
+				h_options = join(options, ",");
+			else
+				h_options += ',' + join(options, ",");
+		}
+	}
+
 	else if (!in_lyx_preamble) {
 		if (options.empty())
 			h_preamble << "\\usepackage{" << name << '}';
