@@ -1240,13 +1240,6 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	// the value of rtl.
 	bool const rtl_on_lastrow = lastrow ? text_->isRTL(par) : false;
 
-	// if the first character is a separator, and we are in RTL
-	// text, this character will not be painted on screen
-	// and thus we should not count it and skip to the next. Only
-	// in freespacing paragraphs, this first character is painted.
-	if (!par.isFreeSpacing() && par.isSeparator(bidi.vis2log(vc)))
-		++vc;
-
 	while (vc < end && tmpx <= x) {
 		c = bidi.vis2log(vc);
 		last_tmpx = tmpx;
