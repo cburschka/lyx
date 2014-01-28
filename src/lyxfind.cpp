@@ -559,27 +559,6 @@ string apply_escapes(string s, Escapes const & escape_map)
 	return s;
 }
 
-/** Return the position of the closing brace matching the open one at s[pos],
- ** or s.size() if not found.
- **/
-static size_t find_matching_brace(string const & s, size_t pos)
-{
-	LASSERT(s[pos] == '{', /* */);
-	int open_braces = 1;
-	for (++pos; pos < s.size(); ++pos) {
-		if (s[pos] == '\\')
-			++pos;
-		else if (s[pos] == '{')
-			++open_braces;
-		else if (s[pos] == '}') {
-			--open_braces;
-			if (open_braces == 0)
-				return pos;
-		}
-	}
-	return s.size();
-}
-
 /// Within \regexp{} apply get_lyx_unescapes() only (i.e., preserve regexp semantics of the string),
 /// while outside apply get_lyx_unescapes()+get_regexp_escapes().
 /// If match_latex is true, then apply regexp_latex_escapes() to \regexp{} contents as well.
