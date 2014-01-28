@@ -19,7 +19,8 @@ set(_tex_tests test.ltx
                test-refstyle-theorems.tex
                test-structure.tex
                verbatim.tex
-               XeTeX-polyglossia.tex)
+               XeTeX-polyglossia.tex
+               algo2e.tex)
 
 foreach(_fl ${_tex_tests})
   set(fl ${_fl})

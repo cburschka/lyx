@@ -79,7 +79,8 @@ def main(argv):
                  'test-refstyle-theorems.tex', \
                  'test-structure.tex', \
                  'verbatim.tex', \
-                 'XeTeX-polyglossia.tex']
+                 'XeTeX-polyglossia.tex', \
+                 'algo2e.tex']
 
     errors = []
     overwrite = (outputdir == inputdir)
