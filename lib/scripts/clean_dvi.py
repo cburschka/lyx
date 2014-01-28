@@ -1,5 +1,3 @@
-#! /usr/bin/env python
-
 '''
 file clean_dvi.py
 This file is part of LyX, the document processor.
