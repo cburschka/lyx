@@ -6287,6 +6287,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 |see{
 \end_layout
 
@@ -6297,6 +6298,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -29260,6 +29262,28 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
+文書構造
+\end_layout
+
+\begin_layout Standard
+第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:移動"
+
+\end_inset
+
+節および第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:目次"
+
+\end_inset
+
+節に説明されているように、目次・文書構造ウィンドウを開きます。
+\end_layout
+
+\begin_layout Subsection
 ソースを閲覧
 \end_layout
 
@@ -29281,305 +29305,6 @@ reference "sec:文書の断片プレビュー"
 \begin_layout Standard
 コンソールメッセージを表示するウィンドウを開きます。これは、LyXのデバッグ(つまりこのプログラムのエラーを捕まえる)や、バックグラウンドでLaTeXが文書を処
 理するのに何が起こっているかを見るのに便利です。
-\end_layout
-
-\begin_layout Subsection
-表示
-\begin_inset space ~
-\end_inset
-
-[<出力形式>]
-\end_layout
-
-\begin_layout Standard
-このメニュー項目は、当該文書の既定出力形式として指定した形式(
-\family sans
-文書\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
-出力\SpecialChar \menuseparator
-既定出力形式
-\family default
-メニュー:第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:出力ファイル形式"
-
-\end_inset
-
-章参照)、若しくはLyXの設定で指定した形式で(
-\family sans
-ツール\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
-ファイル処理\SpecialChar \menuseparator
-ファイル形式\SpecialChar \menuseparator
-既定出力形式
-\family default
-メニュー:第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ファイル形式"
-
-\end_inset
-
-章参照)出力を生成した後、適切な閲覧プログラムで開きます。既定の閲覧プログラムは、LyXの初回起動設定時に設定されます。既定の出力形式は、
-\family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-(pdflatex)
-\family default
-です。
-\end_layout
-
-\begin_layout Subsection
-表示(他の形式)
-\end_layout
-
-\begin_layout Standard
-この従属メニューでは文書を他の出力形式で見ることができます。には、文書の実際の出力を、外部プログラムで閲覧することができる各ファイル形式が一覧表示されます。出力
-形式を閲覧するためのメニュー項目は、システムの導入のしかたによって異なります。これは、LyXがシステム走査をしたときに見つかったLaTeXプログラムに依存するの
-です。潜在的に出力しうる全形式は、第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:書き出し"
-
-\end_inset
-
-節に掲げてあります。少なくとも
-\family sans
-DVI
-\family default
-と
-\family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-(pdflatex)
-\family default
-のメニュー項目は、メニューに登場するはずです。これらのうち一つでも欠けているようならば、導入されているLaTeXを更新する必要があります。更新したあとにはLyX
-の環境構成を行わなくてはなりません。第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:LaTeXの設定"
-
-\end_inset
-
-節をご覧ください。
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Lyx@LyX ! のかんきょうこうせい@------の環境構成
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-メニューを実行すると、閲覧プログラムが実行されます。閲覧プログラムは、LyX設定で(
-\family sans
-ツール\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
-ファイル処理\SpecialChar \menuseparator
-ファイル形式\SpecialChar \menuseparator
-閲覧プログラム
-\family default
-メニュー:第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ファイル形式"
-
-\end_inset
-
-章参照)設定変更ができます。既定の閲覧プログラムは、LyXが最初にシステム走査をしたときに、自動的に設定されています。
-\end_layout
-
-\begin_layout Subsection
-更新
-\begin_inset space ~
-\end_inset
-
-[<出力形式>]
-\end_layout
-
-\begin_layout Standard
-このメニュー項目は、新しいビューアウィンドウを開くことなしに、既存の閲覧表示を(前節で述べられているとおり既定の出力形式で)更新します。
-\end_layout
-
-\begin_layout Subsection
-更新(他の形式)
-\end_layout
-
-\begin_layout Standard
-この従属メニューでは、新しいビューアウィンドウを開くことなしに、他の出力形式の閲覧表示を更新します。
-\end_layout
-
-\begin_layout Subsection
-親文書を表示
-\end_layout
-
-\begin_layout Standard
-このメニュー項目は、使用中の文書が他の文書、すなわちこの文書の「親」にインクルードされているときのみ表示されます(このトピックについての詳細は、取扱説明書『
-\emph on
-埋込オブジェクト篇
-\emph default
-』の「
-\emph on
-子文書
-\emph default
-」の節をご覧下さい。この項目を使用すると、子文書からその親文書を見ることができるようになります。つまり、ある書籍の一章分である子文書で作業をしている場合、
-\family sans
-表示
-\family default
-はその章だけを出力するのに対して、
-\family sans
-親文書を表示
-\family default
-は書籍全体の出力を生成します。 
-\end_layout
-
-\begin_layout Standard
-この機能で使用される形式は、文書設定(
-\family sans
-文書\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
-出力\SpecialChar \menuseparator
-既定出力形式
-\family default
-メニュー:第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:出力ファイル形式"
-
-\end_inset
-
-章参照)若しくはLyX設定で(
-\family sans
-ツール\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
-ファイル処理\SpecialChar \menuseparator
-ファイル形式\SpecialChar \menuseparator
-既定出力形式
-\family default
-メニュー:第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ファイル形式"
-
-\end_inset
-
-章参照 )指定された既定出力書式です。
-\end_layout
-
-\begin_layout Subsection
-親文書を更新
-\end_layout
-
-\begin_layout Standard
-このメニュー項目は、使用中の文書が他の文書、すなわちこの文書の「親」にインクルードされているときのみ表示されます(このトピックについての詳細は、取扱説明書『
-\emph on
-埋込オブジェクト篇
-\emph default
-』の「
-\emph on
-子文書
-\emph default
-」の節をご覧下さい。この項目を使用すると、子文書からその親文書に切り替えることなしに、その表示を更新します。
-\end_layout
-
-\begin_layout Standard
-この機能で使用される形式は、文書設定(
-\family sans
-文書\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
-出力\SpecialChar \menuseparator
-既定出力形式
-\family default
-メニュー:第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:出力ファイル形式"
-
-\end_inset
-
-章参照)若しくはLyX設定で(
-\family sans
-ツール\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
-ファイル処理\SpecialChar \menuseparator
-ファイル形式\SpecialChar \menuseparator
-既定出力形式
-\family default
-メニュー:第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ファイル形式"
-
-\end_inset
-
-章参照 )指定された既定出力書式です。
-\end_layout
-
-\begin_layout Subsection
-画面を分割
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-表示を左右半々に分割
-\family default
-は、LyXの主ウィンドウを垂直に分割し、
-\family sans
-表示を上下半々に分割
-\family default
-は、水平に分割します。これによって、異なる文書を比較するために同時に表示したり、同じ文書の違う場所を表示したりすることができます。三つ以上の文書を同時に表示する
-のに、複数回分割することもできます。分割表示をやめるには、
-\family sans
-現在の表示を閉じる
-\family default
-メニューを使用してください。
-\end_layout
-
-\begin_layout Subsection
-現在の表示を閉じる
-\end_layout
-
-\begin_layout Standard
-分割表示を閉じます。
-\end_layout
-
-\begin_layout Subsection
-全画面表示
-\end_layout
-
-\begin_layout Standard
-このメニューを使用するかF11
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-鍵
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-キー
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-を押すと、メニューバーとすべてのツールバーが消え、本文だけが表示されます。さらに、LyXメインウィンドウが全画面表示されます。全画面表示から通常の表示に戻るには
-、F11を押すか、右クリックしてコンテクスト・メニューから全画面表示を解除してください。
 \end_layout
 
 \begin_layout Subsection
@@ -29662,6 +29387,64 @@ reference "sec:ツールバー"
 \end_inset
 
 節に説明されています。
+\end_layout
+
+\begin_layout Subsection
+画面を分割
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+表示を左右半々に分割
+\family default
+は、LyXの主ウィンドウを垂直に分割し、
+\family sans
+表示を上下半々に分割
+\family default
+は、水平に分割します。これによって、異なる文書を比較するために同時に表示したり、同じ文書の違う場所を表示したりすることができます。三つ以上の文書を同時に表示する
+のに、複数回分割することもできます。分割表示をやめるには、
+\family sans
+現在の表示を閉じる
+\family default
+メニューを使用してください。
+\end_layout
+
+\begin_layout Subsection
+現在の表示を閉じる
+\end_layout
+
+\begin_layout Standard
+分割表示を閉じます。
+\end_layout
+
+\begin_layout Subsection
+全画面表示
+\end_layout
+
+\begin_layout Standard
+このメニューを使用するかF11
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+鍵
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+キー
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+を押すと、メニューバーとすべてのツールバーが消え、本文だけが表示されます。さらに、LyXメインウィンドウが全画面表示されます。全画面表示から通常の表示に戻るには
+、F11を押すか、右クリックしてコンテクスト・メニューから全画面表示を解除してください。
 \end_layout
 
 \begin_layout Section
@@ -30712,28 +30495,6 @@ eXログ
 \end_layout
 
 \begin_layout Subsection
-文書構造
-\end_layout
-
-\begin_layout Standard
-第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:移動"
-
-\end_inset
-
-節および第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:目次"
-
-\end_inset
-
-節に説明されているように、目次・文書構造ウィンドウを開きます。
-\end_layout
-
-\begin_layout Subsection
 ここから付録を開始
 \end_layout
 
@@ -30746,6 +30507,247 @@ reference "sec:付録"
 \end_inset
 
 節に説明されているように、このメニューは、現在のカーソル位置から付録を開始します。
+\end_layout
+
+\begin_layout Subsection
+表示
+\begin_inset space ~
+\end_inset
+
+[<出力形式>]
+\end_layout
+
+\begin_layout Standard
+このメニュー項目は、当該文書の既定出力形式として指定した形式(
+\family sans
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+出力\SpecialChar \menuseparator
+既定出力形式
+\family default
+メニュー:第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:出力ファイル形式"
+
+\end_inset
+
+章参照)、若しくはLyXの設定で指定した形式で(
+\family sans
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+ファイル処理\SpecialChar \menuseparator
+ファイル形式\SpecialChar \menuseparator
+既定出力形式
+\family default
+メニュー:第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ファイル形式"
+
+\end_inset
+
+章参照)出力を生成した後、適切な閲覧プログラムで開きます。既定の閲覧プログラムは、LyXの初回起動設定時に設定されます。既定の出力形式は、
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+です。
+\end_layout
+
+\begin_layout Subsection
+表示(他の形式)
+\end_layout
+
+\begin_layout Standard
+この従属メニューでは文書を他の出力形式で見ることができます。には、文書の実際の出力を、外部プログラムで閲覧することができる各ファイル形式が一覧表示されます。出力
+形式を閲覧するためのメニュー項目は、システムの導入のしかたによって異なります。これは、LyXがシステム走査をしたときに見つかったLaTeXプログラムに依存するの
+です。潜在的に出力しうる全形式は、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:書き出し"
+
+\end_inset
+
+節に掲げてあります。少なくとも
+\family sans
+DVI
+\family default
+と
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+のメニュー項目は、メニューに登場するはずです。これらのうち一つでも欠けているようならば、導入されているLaTeXを更新する必要があります。更新したあとにはLyX
+の環境構成を行わなくてはなりません。第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:LaTeXの設定"
+
+\end_inset
+
+節をご覧ください。
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Lyx@LyX ! のかんきょうこうせい@------の環境構成
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+メニューを実行すると、閲覧プログラムが実行されます。閲覧プログラムは、LyX設定で(
+\family sans
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+ファイル処理\SpecialChar \menuseparator
+ファイル形式\SpecialChar \menuseparator
+閲覧プログラム
+\family default
+メニュー:第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ファイル形式"
+
+\end_inset
+
+章参照)設定変更ができます。既定の閲覧プログラムは、LyXが最初にシステム走査をしたときに、自動的に設定されています。
+\end_layout
+
+\begin_layout Subsection
+更新
+\begin_inset space ~
+\end_inset
+
+[<出力形式>]
+\end_layout
+
+\begin_layout Standard
+このメニュー項目は、新しいビューアウィンドウを開くことなしに、既存の閲覧表示を(前節で述べられているとおり既定の出力形式で)更新します。
+\end_layout
+
+\begin_layout Subsection
+更新(他の形式)
+\end_layout
+
+\begin_layout Standard
+この従属メニューでは、新しいビューアウィンドウを開くことなしに、他の出力形式の閲覧表示を更新します。
+\end_layout
+
+\begin_layout Subsection
+親文書を表示
+\end_layout
+
+\begin_layout Standard
+このメニュー項目は、使用中の文書が他の文書、すなわちこの文書の「親」にインクルードされているときのみ表示されます(このトピックについての詳細は、取扱説明書『
+\emph on
+埋込オブジェクト篇
+\emph default
+』の「
+\emph on
+子文書
+\emph default
+」の節をご覧下さい。この項目を使用すると、子文書からその親文書を見ることができるようになります。つまり、ある書籍の一章分である子文書で作業をしている場合、
+\family sans
+表示
+\family default
+はその章だけを出力するのに対して、
+\family sans
+親文書を表示
+\family default
+は書籍全体の出力を生成します。 
+\end_layout
+
+\begin_layout Standard
+この機能で使用される形式は、文書設定(
+\family sans
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+出力\SpecialChar \menuseparator
+既定出力形式
+\family default
+メニュー:第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:出力ファイル形式"
+
+\end_inset
+
+章参照)若しくはLyX設定で(
+\family sans
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+ファイル処理\SpecialChar \menuseparator
+ファイル形式\SpecialChar \menuseparator
+既定出力形式
+\family default
+メニュー:第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ファイル形式"
+
+\end_inset
+
+章参照 )指定された既定出力書式です。
+\end_layout
+
+\begin_layout Subsection
+親文書を更新
+\end_layout
+
+\begin_layout Standard
+このメニュー項目は、使用中の文書が他の文書、すなわちこの文書の「親」にインクルードされているときのみ表示されます(このトピックについての詳細は、取扱説明書『
+\emph on
+埋込オブジェクト篇
+\emph default
+』の「
+\emph on
+子文書
+\emph default
+」の節をご覧下さい。この項目を使用すると、子文書からその親文書に切り替えることなしに、その表示を更新します。
+\end_layout
+
+\begin_layout Standard
+この機能で使用される形式は、文書設定(
+\family sans
+文書\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+出力\SpecialChar \menuseparator
+既定出力形式
+\family default
+メニュー:第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:出力ファイル形式"
+
+\end_inset
+
+章参照)若しくはLyX設定で(
+\family sans
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+ファイル処理\SpecialChar \menuseparator
+ファイル形式\SpecialChar \menuseparator
+既定出力形式
+\family default
+メニュー:第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ファイル形式"
+
+\end_inset
+
+章参照 )指定された既定出力書式です。
 \end_layout
 
 \begin_layout Subsection
@@ -38751,6 +38753,7 @@ nomname}{記号一覧}
 status open
 
 \begin_layout Plain Layout
+
 
 \backslash
 renewcommand{

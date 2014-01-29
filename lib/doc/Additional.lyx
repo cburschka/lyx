@@ -340,6 +340,10 @@ status collapsed
 \begin_layout Plain Layout
 View\SpecialChar \menuseparator
 Source
+\begin_inset space ~
+\end_inset
+
+Pane
 \end_layout
 
 \end_inset
@@ -370,7 +374,7 @@ There are several commands that automatically invoke LaTeX.
 status collapsed
 
 \begin_layout Plain Layout
-View\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 View
 \end_layout
 
@@ -384,7 +388,7 @@ View
 status collapsed
 
 \begin_layout Plain Layout
-View\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 Update
 \end_layout
 
@@ -9446,7 +9450,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://publications.agu.org/files/2013/08/AGU-LaTeX.zip
+ftp://ftp.agu.org/journals/latex/journals
 \end_layout
 
 \end_inset
@@ -18120,7 +18124,7 @@ ChkTeX
 \emph on
 is
 \emph default
- very configurable and extensible, you shouldn't expect to solve all problems
+ very configurable and extensible, you should not expect to solve all problems
  with 
 \family sans
 ChkTeX
@@ -18142,11 +18146,7 @@ chktex
 \family default
  by using 
 \family sans
-Edit\SpecialChar \menuseparator
-View
-\begin_inset space ~
-\end_inset
-
+Document\SpecialChar \menuseparator
 LaTeX
 \begin_inset space ~
 \end_inset
@@ -23081,7 +23081,7 @@ LyX has a range of buttons that are available for tool bar customization.
  In my toolbar I like to combine the six short cuts above with two more:
  One for 
 \family sans
-View
+Document
 \family default
 \SpecialChar \menuseparator
 
@@ -23095,6 +23095,7 @@ DVI
 \family default
  and the other for 
 \family sans
+Document\SpecialChar \menuseparator
 View\SpecialChar \menuseparator
 DVI
 \family default

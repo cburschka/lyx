@@ -1607,8 +1607,8 @@ Navigieren
 \begin_layout Itemize
 
 \family sans
-Dokument\SpecialChar \menuseparator
-Gliederung
+Ansicht\SpecialChar \menuseparator
+Gliederung des Dokuments
 \family default
  (Werkzeugleistenknopf 
 \begin_inset Info
@@ -32096,11 +32096,7 @@ Des Weiteren kann der LaTeX-Quellcode des gesamten Dokuments oder von Teilen
  Das Menü 
 \family sans
 Ansicht\SpecialChar \menuseparator
-Quelle
-\begin_inset space ~
-\end_inset
-
-ansehen
+Quelltext-Panel
 \family default
  öffnet ein Fenster in dem der LaTeX-Quellcode angezeigt wird.
  Das Fenster zeigt den Quellcode des gesamten Absatzes, indem sich der Cursor
@@ -33129,7 +33125,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\family typewriter
 ""
 \end_layout
 
@@ -35362,7 +35357,33 @@ Mathe
 \end_layout
 
 \begin_layout Subsection
-Quelle ansehen
+Gliederung des Dokuments
+\end_layout
+
+\begin_layout Standard
+Öffnet das Gliederungs-Fenster, das in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Navigieren"
+
+\end_inset
+
+ und 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Inhaltsverzeichnis"
+
+\end_inset
+
+ beschrieben ist.
+\end_layout
+
+\begin_layout Subsection
+Quelltext-Panel
 \end_layout
 
 \begin_layout Standard
@@ -35382,7 +35403,7 @@ reference "sec:Dokumentteile-vorschauen"
 \end_layout
 
 \begin_layout Subsection
-Meldungen anzeigen
+Statusmeldungen
 \end_layout
 
 \begin_layout Standard
@@ -35397,468 +35418,6 @@ h.
 
 nach Fehlern im Programm zu suchen) oder um zu sehen, was im Hintergrund
  vor sich geht, während LaTeX das Dokument prozessiert.
-\end_layout
-
-\begin_layout Subsection
-Ansehen
-\begin_inset space ~
-\end_inset
-
-[<Ausgabeformat>]
-\end_layout
-
-\begin_layout Standard
-Dieses Menü erzeugt die Ausgabe im dem Format, das als Voreinstellung für
- das Dokument (Menü 
-\family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Ausgabe\SpecialChar \menuseparator
-Voreingestelltes
-\begin_inset space ~
-\end_inset
-
-Ausgabeformat
-\family default
-; siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Dokument-Ausgabe"
-
-\end_inset
-
-) oder in den LyX-Grundeinstellungen (Menü 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-Einstel\SpecialChar \-
-lungen\SpecialChar \menuseparator
-Datei-Handhabung\SpecialChar \menuseparator
-Dateiformate\SpecialChar \menuseparator
-Voreingestelltes
-\begin_inset space ~
-\end_inset
-
-Ausgabeformat
-\family default
-; siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Dateiformate"
-
-\end_inset
-
-) gesetzt ist und öffnet es in einem geeigneten Betrachtungsprogramm.
- Dieses Programm kann in den LyX-Grundeinstellungen festgelegt oder geändert
- werden (Menü 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Datei-Handhabung\SpecialChar \menuseparator
-Dateiformate\SpecialChar \menuseparator
-Anzeigepro\SpecialChar \-
-gramm
-\family default
-; siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Dateiformate"
-
-\end_inset
-
-).
- Die voreingestellten Betrachtungsprogramme wurden von LyX gesetzt, als
- es zum ersten Mal konfiguriert wurde.
- Das Standard-Ausgabeformat ist 
-\family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-(pdflatex)
-\family default
-.
-\end_layout
-
-\begin_layout Subsection
-Andere Formate ansehen
-\end_layout
-
-\begin_layout Standard
-Mit diesem Untermenü können Sie Ihr Dokument in einem alternativen Ausgabeformat
- ansehen.
- Das Menü enthält eine Liste mit allen verfügbaren Formaten, in denen man
- das aktuelle Dokument mit einem externen Programm ansehen kann.
- Die Menüeinträge sind nicht bei allen Installationen die selben — sie hängen
- von den LaTeX-Programmen ab, die gefunden wurden, als LyX konfiguriert
- wurde.
- Alle möglichen Formate sind in Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub: Exportieren"
-
-\end_inset
-
- aufgelistet.
- Sie sollten mindestens den Menüeintrag 
-\family sans
-DVI
-\family default
- sehen.
- Falls er fehlt, müssen Sie Ihre LaTeX-Installation aktualisieren oder repariere
-n.
- Nach der Aktualisierung muss LyX neu konfiguriert werden, siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "LyX-Grundeinstellungen"
-
-\end_inset
-
-.
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Neukonfiguration von LyX
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Das Ausführen eines Menüeintrags öffnet ein Betrachtungsprogramm.
- Dieses kann in den LyX-Grundeinstellungen festgelegt oder geändert werden
- (Menü 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Datei-Handhabung\SpecialChar \menuseparator
-Dateiformate\SpecialChar \menuseparator
-Anzeigeprogramm
-\family default
-; siehe Abschnitt
-\begin_inset Newline linebreak
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Dateiformate"
-
-\end_inset
-
-).
- Die voreingestellten Betrachtungsprogramme wurden von LyX gesetzt, als
- es zum ersten Mal konfiguriert wurde.
-\end_layout
-
-\begin_layout Subsection
-Aktualisieren
-\begin_inset space ~
-\end_inset
-
-[<Ausgabeformat>]
-\end_layout
-
-\begin_layout Standard
-Dieses Menü erlaubt es, die Ansicht mit Ihren letzten Änderungen zu aktualisiere
-n (im voreingestellten Ausgabeformat), ohne ein neues Fenster im Betrachtungspro
-gramm zu öffnen.
-\end_layout
-
-\begin_layout Subsection
-Andere Formate aktualisieren
-\end_layout
-
-\begin_layout Standard
-Mit diesem Untermenü können Sie die Ansicht eines alternativen Ausgabeformats
- aktualisieren, ohne ein neues Fenster im Betrachtungsprogramm zu öffnen.
-\end_layout
-
-\begin_layout Subsection
-Hauptdokument ansehen
-\end_layout
-
-\begin_layout Standard
-Dieses Menü ist nur sichtbar wenn Ihr Dokument in ein anderes Dokument eingefügt
- ist.
- Das andere Dokument ist daher das Hauptdokument des aktuellen Dokuments
- (Unterdokument) (siehe Abschnitt 
-\emph on
-Unterdokumente
-\emph default
- im 
-\emph on
-Eingebettete
-\begin_inset space ~
-\end_inset
-
-Objekte
-\emph default
- Handbuch für mehr Informationen zu diesem Thema).
- Mit diesem Menü kann man das Hauptdokument vom Unterdokument aus ansehen/öffnen.
- Das bedeutet, dass wenn man an einem Unterdokument arbeitet, das z.
-\begin_inset space \thinspace{}
-\end_inset
-
-B.
- ein Kapitel eines Buches ist, erzeugt 
-\family sans
-Hauptdokument ansehen
-\family default
- die Ausgabe des kompletten Buches während 
-\family sans
-Ansehen
-\family default
- nur das Kapitel ausgibt.
-\end_layout
-
-\begin_layout Standard
-Das von dieser Funktion verwendete Format ist das, das als Voreinstellung
- in den in den Dokumenteinstellungen (Menü 
-\family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Ausgabe\SpecialChar \menuseparator
-Voreingestel\SpecialChar \-
-ltes
-\begin_inset space ~
-\end_inset
-
-Ausgabeformat
-\family default
-; siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Dokument-Ausgabe"
-
-\end_inset
-
-) oder den LyX-Grundeinstellungen (Menü 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Datei-Handhabung\SpecialChar \menuseparator
-Dateiformate\SpecialChar \menuseparator
-Voreingestel\SpecialChar \-
-ltes
-\begin_inset space ~
-\end_inset
-
-Ausgabeformat
-\family default
-; siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Dateiformate"
-
-\end_inset
-
-) oder gesetzt ist.
-\end_layout
-
-\begin_layout Subsection
-Hauptdokument aktualisieren
-\end_layout
-
-\begin_layout Standard
-Dieses Menü ist nur sichtbar wenn Ihr Dokument in ein anderes Dokument eingefügt
- ist.
- Das andere Dokument ist daher das Hauptdokument des aktuellen Dokuments
- (Unterdokument) (siehe Abschnitt 
-\emph on
-Unterdokumente
-\emph default
- im 
-\emph on
-Eingebettete
-\begin_inset space ~
-\end_inset
-
-Objekte
-\emph default
- Handbuch für mehr Informationen zu diesem Thema).
- Dieses Menü erlaubt es, die Ansicht eines Hauptdokuments vom Unterdokument
- aus zu aktualisieren, ohne zum Hauptdokument wechseln zu müssen.
-\end_layout
-
-\begin_layout Standard
-Das von dieser Funktion verwendete Format ist das, das als Voreinstellung
- in den in den Dokumenteinstellungen (Menü 
-\family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Ausgabe\SpecialChar \menuseparator
-Voreingestel\SpecialChar \-
-ltes
-\begin_inset space ~
-\end_inset
-
-Ausgabeformat
-\family default
-; siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Dokument-Ausgabe"
-
-\end_inset
-
-) oder den LyX-Grundeinstellungen (Menü 
-\family sans
-Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Datei-Handhabung\SpecialChar \menuseparator
-Dateiformate\SpecialChar \menuseparator
-Voreingestel\SpecialChar \-
-ltes
-\begin_inset space ~
-\end_inset
-
-Ausgabeformat
-\family default
-; siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Dateiformate"
-
-\end_inset
-
-) oder gesetzt ist.
-\end_layout
-
-\begin_layout Subsection
-Ansicht teilen
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-Ansicht
-\begin_inset space ~
-\end_inset
-
-in
-\begin_inset space ~
-\end_inset
-
-linke
-\begin_inset space ~
-\end_inset
-
-und
-\begin_inset space ~
-\end_inset
-
-rechte
-\begin_inset space ~
-\end_inset
-
-Hälfte
-\begin_inset space ~
-\end_inset
-
-teilen
-\family default
- teilt LyXs Hauptfenster vertikal, 
-\family sans
-Ansicht
-\begin_inset space ~
-\end_inset
-
-in
-\begin_inset space ~
-\end_inset
-
-obere
-\begin_inset space ~
-\end_inset
-
-und
-\begin_inset space ~
-\end_inset
-
-untere
-\begin_inset space ~
-\end_inset
-
-Hälfte
-\begin_inset space ~
-\end_inset
-
-teilen
-\family default
- teilt es horizontal.
- Dies erlaubt es, Dokumente gleichzeitig anzusehen um sie zu vergleichen
- oder dasselbe Dokument an verschiedenen Stellen gleichzeitig zu betrachten.
- Man kann das Hauptfenster sogar mehrfach teilen um z.
-\begin_inset space \thinspace{}
-\end_inset
-
-B.
- 3 oder mehr Dokumente gleichzeitig anzuschauen.
- Um zu einer ungeteilten Ansicht zurückzukehren, verwendet man das Menü
- 
-\family sans
-Aktuelle Ansicht schließen
-\family default
-.
-\end_layout
-
-\begin_layout Subsection
-Aktuelle Ansicht schließen
-\end_layout
-
-\begin_layout Standard
-Schließt eine geteilte Ansicht.
-\end_layout
-
-\begin_layout Subsection
-Vollbild
-\end_layout
-
-\begin_layout Standard
-Mit diesem Menü oder durch Drücken von F11 wird die Menüleiste und alle
- Werkzeugleisten ausgeblendet, so dass nur noch das Hauptfenster mit dem
- Text des Dokuments als Vollbild zu sehen ist.
- Um vom Vollbildmodus zurückzukehren, drückt man entweder wieder F11 oder
- klickt mit rechts und schaltet den Vollbildmodus im Kontextmenü ab.
 \end_layout
 
 \begin_layout Subsection
@@ -35967,6 +35526,104 @@ reference "sec:Werkzeugleisten"
 \end_inset
 
  erklärt.
+\end_layout
+
+\begin_layout Subsection
+Ansicht teilen
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Ansicht
+\begin_inset space ~
+\end_inset
+
+in
+\begin_inset space ~
+\end_inset
+
+linke
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+rechte
+\begin_inset space ~
+\end_inset
+
+Hälfte
+\begin_inset space ~
+\end_inset
+
+teilen
+\family default
+ teilt LyXs Hauptfenster vertikal, 
+\family sans
+Ansicht
+\begin_inset space ~
+\end_inset
+
+in
+\begin_inset space ~
+\end_inset
+
+obere
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+untere
+\begin_inset space ~
+\end_inset
+
+Hälfte
+\begin_inset space ~
+\end_inset
+
+teilen
+\family default
+ teilt es horizontal.
+ Dies erlaubt es, Dokumente gleichzeitig anzusehen um sie zu vergleichen
+ oder dasselbe Dokument an verschiedenen Stellen gleichzeitig zu betrachten.
+ Man kann das Hauptfenster sogar mehrfach teilen um z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 3 oder mehr Dokumente gleichzeitig anzuschauen.
+ Um zu einer ungeteilten Ansicht zurückzukehren, verwendet man das Menü
+ 
+\family sans
+Aktuelle Ansicht schließen
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Aktuelle Ansicht schließen
+\end_layout
+
+\begin_layout Standard
+Schließt eine geteilte Ansicht.
+\end_layout
+
+\begin_layout Subsection
+Vollbild
+\end_layout
+
+\begin_layout Standard
+Mit diesem Menü oder durch Drücken von F11 wird die Menüleiste und alle
+ Werkzeugleisten ausgeblendet, so dass nur noch das Hauptfenster mit dem
+ Text des Dokuments als Vollbild zu sehen ist.
+ Um vom Vollbildmodus zurückzukehren, drückt man entweder wieder F11 oder
+ klickt mit rechts und schaltet den Vollbildmodus im Kontextmenü ab.
 \end_layout
 
 \begin_layout Section
@@ -37349,32 +37006,6 @@ Nachdem LaTeX gestartet wurde, indem die Ausgabe des Dokuments erzeugt wurde
 \end_layout
 
 \begin_layout Subsection
-Gliederung
-\end_layout
-
-\begin_layout Standard
-Öffnet das Gliederungs-Fenster, das in Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Navigieren"
-
-\end_inset
-
- und 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Inhaltsverzeichnis"
-
-\end_inset
-
- beschrieben ist.
-\end_layout
-
-\begin_layout Subsection
 Anhang hier beginnen
 \end_layout
 
@@ -37392,6 +37023,370 @@ reference "sec:Anhang"
 \end_inset
 
  beschrieben.
+\end_layout
+
+\begin_layout Subsection
+Ansehen
+\begin_inset space ~
+\end_inset
+
+[<Ausgabeformat>]
+\end_layout
+
+\begin_layout Standard
+Dieses Menü erzeugt die Ausgabe im dem Format, das als Voreinstellung für
+ das Dokument (Menü 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Ausgabe\SpecialChar \menuseparator
+Voreingestelltes
+\begin_inset space ~
+\end_inset
+
+Ausgabeformat
+\family default
+; siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dokument-Ausgabe"
+
+\end_inset
+
+) oder in den LyX-Grundeinstellungen (Menü 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstel\SpecialChar \-
+lungen\SpecialChar \menuseparator
+Datei-Handhabung\SpecialChar \menuseparator
+Dateiformate\SpecialChar \menuseparator
+Voreingestelltes
+\begin_inset space ~
+\end_inset
+
+Ausgabeformat
+\family default
+; siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dateiformate"
+
+\end_inset
+
+) gesetzt ist und öffnet es in einem geeigneten Betrachtungsprogramm.
+ Dieses Programm kann in den LyX-Grundeinstellungen festgelegt oder geändert
+ werden (Menü 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Datei-Handhabung\SpecialChar \menuseparator
+Dateiformate\SpecialChar \menuseparator
+Anzeigepro\SpecialChar \-
+gramm
+\family default
+; siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dateiformate"
+
+\end_inset
+
+).
+ Die voreingestellten Betrachtungsprogramme wurden von LyX gesetzt, als
+ es zum ersten Mal konfiguriert wurde.
+ Das Standard-Ausgabeformat ist 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Andere Formate ansehen
+\end_layout
+
+\begin_layout Standard
+Mit diesem Untermenü können Sie Ihr Dokument in einem alternativen Ausgabeformat
+ ansehen.
+ Das Menü enthält eine Liste mit allen verfügbaren Formaten, in denen man
+ das aktuelle Dokument mit einem externen Programm ansehen kann.
+ Die Menüeinträge sind nicht bei allen Installationen die selben — sie hängen
+ von den LaTeX-Programmen ab, die gefunden wurden, als LyX konfiguriert
+ wurde.
+ Alle möglichen Formate sind in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: Exportieren"
+
+\end_inset
+
+ aufgelistet.
+ Sie sollten mindestens den Menüeintrag 
+\family sans
+DVI
+\family default
+ sehen.
+ Falls er fehlt, müssen Sie Ihre LaTeX-Installation aktualisieren oder repariere
+n.
+ Nach der Aktualisierung muss LyX neu konfiguriert werden, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "LyX-Grundeinstellungen"
+
+\end_inset
+
+.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Neukonfiguration von LyX
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das Ausführen eines Menüeintrags öffnet ein Betrachtungsprogramm.
+ Dieses kann in den LyX-Grundeinstellungen festgelegt oder geändert werden
+ (Menü 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Datei-Handhabung\SpecialChar \menuseparator
+Dateiformate\SpecialChar \menuseparator
+Anzeigeprogramm
+\family default
+; siehe Abschnitt
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dateiformate"
+
+\end_inset
+
+).
+ Die voreingestellten Betrachtungsprogramme wurden von LyX gesetzt, als
+ es zum ersten Mal konfiguriert wurde.
+\end_layout
+
+\begin_layout Subsection
+Aktualisieren
+\begin_inset space ~
+\end_inset
+
+[<Ausgabeformat>]
+\end_layout
+
+\begin_layout Standard
+Dieses Menü erlaubt es, die Ansicht mit Ihren letzten Änderungen zu aktualisiere
+n (im voreingestellten Ausgabeformat), ohne ein neues Fenster im Betrachtungspro
+gramm zu öffnen.
+\end_layout
+
+\begin_layout Subsection
+Andere Formate aktualisieren
+\end_layout
+
+\begin_layout Standard
+Mit diesem Untermenü können Sie die Ansicht eines alternativen Ausgabeformats
+ aktualisieren, ohne ein neues Fenster im Betrachtungsprogramm zu öffnen.
+\end_layout
+
+\begin_layout Subsection
+Hauptdokument ansehen
+\end_layout
+
+\begin_layout Standard
+Dieses Menü ist nur sichtbar wenn Ihr Dokument in ein anderes Dokument eingefügt
+ ist.
+ Das andere Dokument ist daher das Hauptdokument des aktuellen Dokuments
+ (Unterdokument) (siehe Abschnitt 
+\emph on
+Unterdokumente
+\emph default
+ im 
+\emph on
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
+\emph default
+ Handbuch für mehr Informationen zu diesem Thema).
+ Mit diesem Menü kann man das Hauptdokument vom Unterdokument aus ansehen/öffnen.
+ Das bedeutet, dass wenn man an einem Unterdokument arbeitet, das z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ ein Kapitel eines Buches ist, erzeugt 
+\family sans
+Hauptdokument ansehen
+\family default
+ die Ausgabe des kompletten Buches während 
+\family sans
+Ansehen
+\family default
+ nur das Kapitel ausgibt.
+\end_layout
+
+\begin_layout Standard
+Das von dieser Funktion verwendete Format ist das, das als Voreinstellung
+ in den in den Dokumenteinstellungen (Menü 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Ausgabe\SpecialChar \menuseparator
+Voreingestel\SpecialChar \-
+ltes
+\begin_inset space ~
+\end_inset
+
+Ausgabeformat
+\family default
+; siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dokument-Ausgabe"
+
+\end_inset
+
+) oder den LyX-Grundeinstellungen (Menü 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Datei-Handhabung\SpecialChar \menuseparator
+Dateiformate\SpecialChar \menuseparator
+Voreingestel\SpecialChar \-
+ltes
+\begin_inset space ~
+\end_inset
+
+Ausgabeformat
+\family default
+; siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dateiformate"
+
+\end_inset
+
+) oder gesetzt ist.
+\end_layout
+
+\begin_layout Subsection
+Hauptdokument aktualisieren
+\end_layout
+
+\begin_layout Standard
+Dieses Menü ist nur sichtbar wenn Ihr Dokument in ein anderes Dokument eingefügt
+ ist.
+ Das andere Dokument ist daher das Hauptdokument des aktuellen Dokuments
+ (Unterdokument) (siehe Abschnitt 
+\emph on
+Unterdokumente
+\emph default
+ im 
+\emph on
+Eingebettete
+\begin_inset space ~
+\end_inset
+
+Objekte
+\emph default
+ Handbuch für mehr Informationen zu diesem Thema).
+ Dieses Menü erlaubt es, die Ansicht eines Hauptdokuments vom Unterdokument
+ aus zu aktualisieren, ohne zum Hauptdokument wechseln zu müssen.
+\end_layout
+
+\begin_layout Standard
+Das von dieser Funktion verwendete Format ist das, das als Voreinstellung
+ in den in den Dokumenteinstellungen (Menü 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Ausgabe\SpecialChar \menuseparator
+Voreingestel\SpecialChar \-
+ltes
+\begin_inset space ~
+\end_inset
+
+Ausgabeformat
+\family default
+; siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dokument-Ausgabe"
+
+\end_inset
+
+) oder den LyX-Grundeinstellungen (Menü 
+\family sans
+Werkzeuge\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Datei-Handhabung\SpecialChar \menuseparator
+Dateiformate\SpecialChar \menuseparator
+Voreingestel\SpecialChar \-
+ltes
+\begin_inset space ~
+\end_inset
+
+Ausgabeformat
+\family default
+; siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dateiformate"
+
+\end_inset
+
+) oder gesetzt ist.
 \end_layout
 
 \begin_layout Subsection
@@ -41842,7 +41837,7 @@ Voreingestelltes
 
 Ausgabeformat: Das Format, welches verwendet wird, wenn Sie im Menü 
 \family sans
-Ansicht
+Dokument
 \family default
  oder der Werkzeugleiste 
 \begin_inset Quotes gld
@@ -44596,7 +44591,7 @@ Hauptdokument aktualisieren
 \family default
  im Menü 
 \family sans
-Ansicht
+Dokument
 \family default
  oder in der Werkzeugleiste aufruft.
 \end_layout

@@ -417,11 +417,7 @@ Das LyX-Team hat das wegen Parsing/Kodierung gemacht.
  Versuchen Sie einmal folgendes: wählen Sie 
 \family sans
 Ansicht\SpecialChar \menuseparator
-Quelle
-\begin_inset space \space{}
-\end_inset
-
-ansehen 
+Quelltext-Panel 
 \family default
 und
 \family sans
@@ -479,14 +475,14 @@ Es gibt mehrere Befehle, bei denen automatisch LaTeX gestartet wird:
 \begin_layout Itemize
 
 \family sans
-Ansicht\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 Ansehen
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Ansicht\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 Aktualisieren
 \end_layout
 

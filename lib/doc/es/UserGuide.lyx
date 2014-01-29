@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrbook
@@ -65,13 +65,13 @@ enumitem
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -96,15 +96,24 @@ enumitem
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \notefontcolor #0000ff
 \branch Pregunta
@@ -2799,7 +2808,7 @@ Cada clase tiene un conjunto de opciones predeterminadas.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -4723,7 +4732,7 @@ Encabezados de sección ! Títulos breves
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -6579,7 +6588,7 @@ Un ejemplo de lista con numeración personalizada:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -6609,7 +6618,7 @@ Nivel 1
 
 \begin_deeper
 \begin_layout Enumerate
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -6641,7 +6650,7 @@ Nivel 2
 
 \begin_deeper
 \begin_layout Enumerate
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -6669,7 +6678,7 @@ Nivel 3
 
 \begin_deeper
 \begin_layout Enumerate
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -6827,7 +6836,7 @@ Las listas numeradas se pueden reanudar después de párrafos intermedios:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -6935,7 +6944,7 @@ Enumeración comenzando con un valor dado:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -6997,7 +7006,7 @@ nolistsep
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -7065,7 +7074,7 @@ cm, con lo que el número aparece en el margen de la página:
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -7149,7 +7158,7 @@ Radiación
 \end_inset
 
 ionizante: 
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -7610,7 +7619,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -8556,7 +8565,7 @@ Esto es (a) y está anidado.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8685,7 +8694,7 @@ Esto es (a) y está anidado.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8823,7 +8832,7 @@ Esto es (a) y está anidado.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9040,7 +9049,7 @@ La mejor forma de explicar lo que podemos hacer con la anidación es practicando
 
 \begin_layout Subsubsection
 Ejemplo 1: Los seis niveles y anidación mezclada
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -9365,7 +9374,7 @@ Enumeración
 Enumeración*
 \family default
 
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -9806,7 +9815,7 @@ Ahora viene un cuadro:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -10521,7 +10530,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -10542,9 +10551,9 @@ Anchura de los distintos espacios horizontales.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -15723,10 +15732,10 @@ menos
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="3mm">
 <cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
@@ -17100,9 +17109,9 @@ En este ejemplo se ven las diferencias:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -18410,7 +18419,7 @@ Cuadro/Tabla
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0in">
@@ -18697,9 +18706,9 @@ una
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="5">
-<features firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
+<features rotate="0" firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="middle" width="0">
+<column alignment="center" valignment="middle">
 <column alignment="center" valignment="top" width="0in">
 <column alignment="center" valignment="top" width="0in">
 <column alignment="center" valignment="top" width="0pt">
@@ -19110,7 +19119,7 @@ encabezado
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="69" columns="3">
-<features islongtable="true" longtabularalignment="center">
+<features rotate="0" islongtable="true" longtabularalignment="center">
 <column alignment="block" valignment="top" width="5cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -21308,7 +21317,7 @@ nte en varias líneas y la celda se amplía verticalmente.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="block" valignment="top" width="3cm">
 <column alignment="center" valignment="top" width="0pt">
@@ -21787,7 +21796,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -21909,7 +21918,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -21949,7 +21958,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -21987,7 +21996,7 @@ Ornitorrinco
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -22070,7 +22079,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -22095,7 +22104,7 @@ Un cuadro flotante.
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -23776,7 +23785,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -23801,7 +23810,7 @@ Tipos de acentos y comandos correspondientes.
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -25168,7 +25177,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -25189,7 +25198,7 @@ Estilos del texto y comandos correspondientes.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -30280,7 +30289,7 @@ Hay que poner un espacio al final de los comandos LaTeX sin parámetros,
 
 \begin_layout Subsection
 Breve introducción a la sintaxis de LaTeX 
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -30541,7 +30550,7 @@ cambia temporalmente a un estilo de página con encabezado y pie personalizados
 \end_layout
 
 \begin_layout Left Header
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -30577,7 +30586,7 @@ define el encabezado como se describe abajo
 \end_layout
 
 \begin_layout Center Header
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -30590,7 +30599,7 @@ status open
 \end_layout
 
 \begin_layout Right Header
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -30615,7 +30624,7 @@ leftmark
 \end_layout
 
 \begin_layout Left Footer
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -30640,7 +30649,7 @@ thepage
 \end_layout
 
 \begin_layout Center Footer
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -30665,7 +30674,7 @@ Código mágico:
 \end_layout
 
 \begin_layout Right Footer
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -30843,7 +30852,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="30line%">
 <column alignment="center" valignment="top" width="30line%">
 <column alignment="right" valignment="top" width="30line%">
@@ -31030,7 +31039,7 @@ derecha
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -33159,9 +33168,9 @@ Los botones de la barra de seguimiento de cambios tienen las siguientes
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="2.5mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -35103,6 +35112,32 @@ Ecuaciones.
 \end_layout
 
 \begin_layout Subsection
+Navegador de contorno
+\end_layout
+
+\begin_layout Standard
+Abre una ventana lateral para navegar por los índices descrita en las secciónes
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Navegación"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Indice-general"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
 Ver fuente
 \end_layout
 
@@ -35131,539 +35166,6 @@ Abre una ventana en la que se muestran mensajes de consola.
  Esto es útil para operaciones de depuración (es decir, caza de errores)
  en LyX o para ver lo que sucede en segundo plano mientras LaTeX procesa
  el documento,
-\end_layout
-
-\begin_layout Subsection
-Ver
-\begin_inset space ~
-\end_inset
-
-[<formato de salida>]
-\end_layout
-
-\begin_layout Standard
-Esta entrada de menú genera la salida en el formato especificado como predetermi
-nado en el menú 
-\family sans
-Documento\SpecialChar \menuseparator
-Configuración\SpecialChar \menuseparator
-Salidas\SpecialChar \menuseparator
-Formato
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-salida
-\begin_inset space ~
-\end_inset
-
-predeterminado
-\family default
- (véase la sec.
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Salidas"
-
-\end_inset
-
-) o en el menú
-\family sans
-\lang english
- 
-\lang spanish
-Herramientas\SpecialChar \menuseparator
-Preferencias\SpecialChar \menuseparator
-Gestión
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-archivos\SpecialChar \menuseparator
-Formatos
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-archivo\SpecialChar \menuseparator
-Formato
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-salida
-\begin_inset space ~
-\end_inset
-
-predeterminado
-\family default
- (véase la sec.
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Formatos-de-archivo"
-
-\end_inset
-
-), y abre el visor apropiado, que se puede elegir y configurar en el menú
- 
-\family sans
-Herramientas\SpecialChar \menuseparator
-Preferencias\SpecialChar \menuseparator
-Gestión
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-archivos\SpecialChar \menuseparator
-Formatos
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-archivo\SpecialChar \menuseparator
-Visor
-\family default
- (véase la sec.
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Formatos-de-archivo"
-
-\end_inset
-
-).
- Los visores predeterminados son establecidos por LyX cuando se instala.
- El formato de salida por omisión es 
-\family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-(pdflatex)
-\family default
-.
-\end_layout
-
-\begin_layout Subsection
-Ver (Otros Formatos)
-\end_layout
-
-\begin_layout Standard
-Con este submenú puedes ver la salida del documento en otros formatos disponible
-s.
- El menú contiene una lista de formatos en los que puedes ver el documento
- abierto con un programa externo.
- Las opciones de este menú no son las mismas en todas las instalaciones
- —depende de los programas LaTeX que LyX encontró durante su configuración—.
- Todos los formatos posibles se describen en la sección
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Exportar"
-
-\end_inset
-
-.
- Al menos debes ver en el menú la entrada 
-\family sans
-DVI
-\family default
-.
- Si falta alguna de ellas debes actualizar o arreglar la instalación de
- LaTeX y reconfigurar LyX, como se explica en la sección
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Configuración-básica"
-
-\end_inset
-
-.
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Reconfiguración de LyX
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Al pulsar una opción del menú se iniciará un programa visor, el cuál se
- puede elegir y configurar en el menú 
-\family sans
-Herramientas\SpecialChar \menuseparator
-Preferencias\SpecialChar \menuseparator
-Gestión
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-archivos\SpecialChar \menuseparator
-Formatos
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-archivo\SpecialChar \menuseparator
-Visor
-\family default
- (véase la sección
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Formatos-de-archivo"
-
-\end_inset
-
-).
- Los visores predeterminados son establecidos por LyX cuando se instala.
-\end_layout
-
-\begin_layout Subsection
-Actualizar
-\begin_inset space ~
-\end_inset
-
-[<formato de salida>]
-\end_layout
-
-\begin_layout Standard
-Permite actualizar la vista del documento con los últimos cambios (en el
- formato predeterminado) sin necesidad de reabrir la ventana del visor.
-\end_layout
-
-\begin_layout Subsection
-Actualizar (Otros formatos)
-\end_layout
-
-\begin_layout Standard
-Con este submenú puedes actualizar la vista de formatos alternativos de
- salida sin necesidad de reabrir la ventana del visor.
-\end_layout
-
-\begin_layout Subsection
-Ver documento maestro
-\end_layout
-
-\begin_layout Standard
-Este ítem del menú solo es visible si el documento actual está incluido
- en otro que es su documento 
-\begin_inset Quotes fld
-\end_inset
-
-maestro
-\begin_inset Quotes frd
-\end_inset
-
-, (véase la sección 
-\emph on
-Documentos hijo
-\emph default
- en el manual 
-\emph on
-Objetos insertados
-\emph default
- para más información sobre este asunto).
- Esto permite ver el documento maestro desde dentro de su documento hijo,
- es decir, si estás trabajando en un documento hijo que es un capítulo de
- un libro, 
-\family sans
-Ver maestro
-\family default
- genera la salida del libro completo, mientras que 
-\family sans
-Ver
-\family default
- solo mostrará la salida del capítulo.
-\end_layout
-
-\begin_layout Standard
-El formato de salida usado por esta función es el predeterminado especificado
- en la configuración del documento (menú 
-\family sans
-Documento\SpecialChar \menuseparator
-Configuración\SpecialChar \menuseparator
-Salidas\SpecialChar \menuseparator
-Formato
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-salida
-\begin_inset space ~
-\end_inset
-
-predeterminado
-\family default
- ; véase la sec.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Salidas"
-
-\end_inset
-
-) o en las preferencias (menú 
-\family sans
-Herramientas\SpecialChar \menuseparator
-Preferencias\SpecialChar \menuseparator
-Gestión
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-archivos\SpecialChar \menuseparator
-Formatos
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-archivo\SpecialChar \menuseparator
-Formato
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-salida
-\begin_inset space ~
-\end_inset
-
-predeterminado
-\family default
-; véase la sec.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Formatos-de-archivo"
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Subsection
-Actualizar documento maestro
-\end_layout
-
-\begin_layout Standard
-Este ítem solo es visible si el documento actual está incluido en otro que
- es su documento 
-\begin_inset Quotes fld
-\end_inset
-
-maestro
-\begin_inset Quotes frd
-\end_inset
-
-, (véase la sección 
-\emph on
-Documentos hijo
-\emph default
- en el manual 
-\emph on
-Objetos insertados
-\emph default
- para más información sobre este asunto).
- Permite actualizar la vista de un documento maestro desde dentro de su
- hijo sin necesidad de abrir el propio documento maestro.
-\end_layout
-
-\begin_layout Standard
-El formato de salida usado por esta función es el predeterminado especificado
- en la configuración del documento (menú
-\family sans
- Documento\SpecialChar \menuseparator
-Configuración\SpecialChar \menuseparator
-Salidas\SpecialChar \menuseparator
-Formato
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-salida
-\begin_inset space ~
-\end_inset
-
-predeterminado
-\family default
-; véase la sec.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Salidas"
-
-\end_inset
-
-) o en las preferencias (menú
-\family sans
- Herramientas\SpecialChar \menuseparator
-Preferencias\SpecialChar \menuseparator
-Gestión
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-archivos\SpecialChar \menuseparator
-Formatos
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-archivo\SpecialChar \menuseparator
-Formato
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-salida
-\begin_inset space ~
-\end_inset
-
-predeterminado
-\family default
-; véase la sec.
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Formatos-de-archivo"
-
-\end_inset
-
-).
-\end_layout
-
-\begin_layout Subsection
-Dividir la ventana
-\end_layout
-
-\begin_layout Standard
-
-\family sans
-Dividir la ventana verticalmente
-\family default
- divide la pantalla de edición de LyX en dos mitades, izquierda y derecha,
- mientras que 
-\family sans
-Dividir la ventana horizontalmente
-\family default
- la divide en dos partes, superior e inferior.
- Así puedes ver simultáneamente varios documentos para compararlos, o ver
- el mismo documento en diferentes posiciones.
- Puedes dividir la ventana principal varias veces para ver, p.
-\begin_inset space \thinspace{}
-\end_inset
-
-ej., tres o más documentos a la vez.
- Para volver a una vista sin dividir, usa el menú 
-\family sans
-Cerrar la vista actual
-\family default
-.
-\end_layout
-
-\begin_layout Subsection
-Cerrar la vista actual
-\end_layout
-
-\begin_layout Standard
-Cierra las ventanas divididas volviendo a vista única o, si no hay ventanas
- divididas, oculta todas las pestañas.
- 
-\end_layout
-
-\begin_layout Subsection
-Pantalla completa
-\end_layout
-
-\begin_layout Standard
-Esta opción del menú o pulsando F11 muestra la ventana principal de LyX
- en modo pantalla completa, ocultando la barra de menú y las barras de herramien
-tas.
- Para volver a vista normal pulsa F11 o haz clic derecha en el ratón y desmarca
- el modo pantalla completa en el menú contextual que aparece.
 \end_layout
 
 \begin_layout Subsection
@@ -35763,6 +35265,57 @@ reference "sec:Barras-de-herramientas"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+Dividir la ventana
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Dividir la ventana verticalmente
+\family default
+ divide la pantalla de edición de LyX en dos mitades, izquierda y derecha,
+ mientras que 
+\family sans
+Dividir la ventana horizontalmente
+\family default
+ la divide en dos partes, superior e inferior.
+ Así puedes ver simultáneamente varios documentos para compararlos, o ver
+ el mismo documento en diferentes posiciones.
+ Puedes dividir la ventana principal varias veces para ver, p.
+\begin_inset space \thinspace{}
+\end_inset
+
+ej., tres o más documentos a la vez.
+ Para volver a una vista sin dividir, usa el menú 
+\family sans
+Cerrar la vista actual
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Cerrar la vista actual
+\end_layout
+
+\begin_layout Standard
+Cierra las ventanas divididas volviendo a vista única o, si no hay ventanas
+ divididas, oculta todas las pestañas.
+ 
+\end_layout
+
+\begin_layout Subsection
+Pantalla completa
+\end_layout
+
+\begin_layout Standard
+Esta opción del menú o pulsando F11 muestra la ventana principal de LyX
+ en modo pantalla completa, ocultando la barra de menú y las barras de herramien
+tas.
+ Para volver a vista normal pulsa F11 o haz clic derecha en el ratón y desmarca
+ el modo pantalla completa en el menú contextual que aparece.
 \end_layout
 
 \begin_layout Section
@@ -37194,25 +36747,6 @@ LaTeX.
 \end_layout
 
 \begin_layout Subsection
-Navegador de contorno
-\end_layout
-
-\begin_layout Standard
-Abre una ventana lateral para navegar por los índices descrita en la sección
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Indice-general"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsection
 Comenzar apéndice aquí
 \end_layout
 
@@ -37230,6 +36764,488 @@ reference "sec:Apéndices"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+Ver
+\begin_inset space ~
+\end_inset
+
+[<formato de salida>]
+\end_layout
+
+\begin_layout Standard
+Esta entrada de menú genera la salida en el formato especificado como predetermi
+nado en el menú 
+\family sans
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Salidas\SpecialChar \menuseparator
+Formato
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+salida
+\begin_inset space ~
+\end_inset
+
+predeterminado
+\family default
+ (véase la sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Salidas"
+
+\end_inset
+
+) o en el menú
+\family sans
+\lang english
+ 
+\lang spanish
+Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+Gestión
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+archivos\SpecialChar \menuseparator
+Formatos
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+archivo\SpecialChar \menuseparator
+Formato
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+salida
+\begin_inset space ~
+\end_inset
+
+predeterminado
+\family default
+ (véase la sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formatos-de-archivo"
+
+\end_inset
+
+), y abre el visor apropiado, que se puede elegir y configurar en el menú
+ 
+\family sans
+Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+Gestión
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+archivos\SpecialChar \menuseparator
+Formatos
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+archivo\SpecialChar \menuseparator
+Visor
+\family default
+ (véase la sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formatos-de-archivo"
+
+\end_inset
+
+).
+ Los visores predeterminados son establecidos por LyX cuando se instala.
+ El formato de salida por omisión es 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Ver (Otros Formatos)
+\end_layout
+
+\begin_layout Standard
+Con este submenú puedes ver la salida del documento en otros formatos disponible
+s.
+ El menú contiene una lista de formatos en los que puedes ver el documento
+ abierto con un programa externo.
+ Las opciones de este menú no son las mismas en todas las instalaciones
+ —depende de los programas LaTeX que LyX encontró durante su configuración—.
+ Todos los formatos posibles se describen en la sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Exportar"
+
+\end_inset
+
+.
+ Al menos debes ver en el menú la entrada 
+\family sans
+DVI
+\family default
+.
+ Si falta alguna de ellas debes actualizar o arreglar la instalación de
+ LaTeX y reconfigurar LyX, como se explica en la sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Configuración-básica"
+
+\end_inset
+
+.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Reconfiguración de LyX
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Al pulsar una opción del menú se iniciará un programa visor, el cuál se
+ puede elegir y configurar en el menú 
+\family sans
+Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+Gestión
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+archivos\SpecialChar \menuseparator
+Formatos
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+archivo\SpecialChar \menuseparator
+Visor
+\family default
+ (véase la sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formatos-de-archivo"
+
+\end_inset
+
+).
+ Los visores predeterminados son establecidos por LyX cuando se instala.
+\end_layout
+
+\begin_layout Subsection
+Actualizar
+\begin_inset space ~
+\end_inset
+
+[<formato de salida>]
+\end_layout
+
+\begin_layout Standard
+Permite actualizar la vista del documento con los últimos cambios (en el
+ formato predeterminado) sin necesidad de reabrir la ventana del visor.
+\end_layout
+
+\begin_layout Subsection
+Actualizar (Otros formatos)
+\end_layout
+
+\begin_layout Standard
+Con este submenú puedes actualizar la vista de formatos alternativos de
+ salida sin necesidad de reabrir la ventana del visor.
+\end_layout
+
+\begin_layout Subsection
+Ver documento maestro
+\end_layout
+
+\begin_layout Standard
+Este ítem del menú solo es visible si el documento actual está incluido
+ en otro que es su documento 
+\begin_inset Quotes fld
+\end_inset
+
+maestro
+\begin_inset Quotes frd
+\end_inset
+
+, (véase la sección 
+\emph on
+Documentos hijo
+\emph default
+ en el manual 
+\emph on
+Objetos insertados
+\emph default
+ para más información sobre este asunto).
+ Esto permite ver el documento maestro desde dentro de su documento hijo,
+ es decir, si estás trabajando en un documento hijo que es un capítulo de
+ un libro, 
+\family sans
+Ver maestro
+\family default
+ genera la salida del libro completo, mientras que 
+\family sans
+Ver
+\family default
+ solo mostrará la salida del capítulo.
+\end_layout
+
+\begin_layout Standard
+El formato de salida usado por esta función es el predeterminado especificado
+ en la configuración del documento (menú 
+\family sans
+Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Salidas\SpecialChar \menuseparator
+Formato
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+salida
+\begin_inset space ~
+\end_inset
+
+predeterminado
+\family default
+ ; véase la sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Salidas"
+
+\end_inset
+
+) o en las preferencias (menú 
+\family sans
+Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+Gestión
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+archivos\SpecialChar \menuseparator
+Formatos
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+archivo\SpecialChar \menuseparator
+Formato
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+salida
+\begin_inset space ~
+\end_inset
+
+predeterminado
+\family default
+; véase la sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formatos-de-archivo"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Actualizar documento maestro
+\end_layout
+
+\begin_layout Standard
+Este ítem solo es visible si el documento actual está incluido en otro que
+ es su documento 
+\begin_inset Quotes fld
+\end_inset
+
+maestro
+\begin_inset Quotes frd
+\end_inset
+
+, (véase la sección 
+\emph on
+Documentos hijo
+\emph default
+ en el manual 
+\emph on
+Objetos insertados
+\emph default
+ para más información sobre este asunto).
+ Permite actualizar la vista de un documento maestro desde dentro de su
+ hijo sin necesidad de abrir el propio documento maestro.
+\end_layout
+
+\begin_layout Standard
+El formato de salida usado por esta función es el predeterminado especificado
+ en la configuración del documento (menú
+\family sans
+ Documento\SpecialChar \menuseparator
+Configuración\SpecialChar \menuseparator
+Salidas\SpecialChar \menuseparator
+Formato
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+salida
+\begin_inset space ~
+\end_inset
+
+predeterminado
+\family default
+; véase la sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Salidas"
+
+\end_inset
+
+) o en las preferencias (menú
+\family sans
+ Herramientas\SpecialChar \menuseparator
+Preferencias\SpecialChar \menuseparator
+Gestión
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+archivos\SpecialChar \menuseparator
+Formatos
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+archivo\SpecialChar \menuseparator
+Formato
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+salida
+\begin_inset space ~
+\end_inset
+
+predeterminado
+\family default
+; véase la sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formatos-de-archivo"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsection
@@ -37713,9 +37729,9 @@ Objetos insertados
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -37760,9 +37776,9 @@ Menú desplegable con los entornos de párrafo
 \align left
 \begin_inset Tabular
 <lyxtabular version="3" rows="22" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="2.5mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -38505,9 +38521,9 @@ Los botones de la barra extra son, de izquierda a derecha:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="25" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="2.5mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -39426,9 +39442,9 @@ actualizar son, de izquierda a derecha:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="2.5mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -41716,7 +41732,7 @@ Actualizar documento maestro
 
  en el menú 
 \family sans
-Ver
+Documento
 \family default
  o en la barra de herramientas.
  El valor predefinido se establece en 
@@ -44664,7 +44680,11 @@ Ver, Actualizar, Ver documento maestro
 \family sans
 Actualizar documento maestro
 \family default
- en el menú Editar o en la barra de herramientas.
+ en el menú 
+\family sans
+Documento
+\family default
+ o en la barra de herramientas.
 \end_layout
 
 \begin_layout Standard
@@ -44744,7 +44764,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -44773,9 +44793,9 @@ Unidades
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
