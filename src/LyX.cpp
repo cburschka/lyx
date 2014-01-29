@@ -563,10 +563,8 @@ void LyX::execCommands()
 		// if some files were specified at command-line we assume that the
 		// user wants to edit *these* files and not to restore the session.
 		for (size_t i = 0; i != pimpl_->files_to_load_.size(); ++i) {
-			FileName const abs_path = 
-				support::makeAbsPath(pimpl_->files_to_load_[i]);
 			lyx::dispatch(
-				FuncRequest(LFUN_FILE_OPEN, abs_path.absoluteFilePath()));
+				FuncRequest(LFUN_FILE_OPEN, pimpl_->files_to_load_[i]));
 		}
 		// clear this list to save a few bytes of RAM
 		pimpl_->files_to_load_.clear();
