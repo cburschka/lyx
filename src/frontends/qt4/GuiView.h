@@ -137,7 +137,7 @@ public:
 	GuiToolbar * makeToolbar(ToolbarInfo const & tbinfo, bool newline);
 	void updateStatusBar();
 
-#if defined(Q_WS_MACX)
+#if defined(Q_WS_MACX) && defined(QT_MAC_USE_COCOA)
 	// We have to share one menu bar, so we must create a menu bar that does not have a parent.
 	// To enforce this we override the QMainWindow::menuBar() implementation.
 	// See https://bugreports.qt-project.org/browse/QTBUG-25399
