@@ -58,6 +58,9 @@ What's new
 - Fix outliner-related crash when master and child are open in different
   windows (bug 8948).
 
+- Fix problem that led to assertion in some cases when space was at
+  beginning of line (bugs 8838 and 8947).
+
 - Handle undo in `branch-add' function.
 
 
