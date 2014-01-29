@@ -144,7 +144,7 @@ End
 \begin_body
 
 \begin_layout Title
-Personnaliser LyX : fonctions pour l'utilisateur avancé
+Personnaliser LyX: fonctions pour l'utilisateur avancé
 \begin_inset Note Note
 status collapsed
 
@@ -153,16 +153,16 @@ Informations de révision :
 \end_layout
 
 \begin_layout Plain Layout
-Traduction : Mise à jour OK pour la publication 2.0.0, Date: 03/04/2011
+Traduction : remplacement de Éditer/Visionner/Insérer/Naviguer par Édition/Affic
+hage/Insertion/Navigation, 31/10/2012 (JPC)
 \end_layout
 
 \begin_layout Plain Layout
-remplacement de Éditer/Visionner/Insérer/Naviguer par Édition/Affichage/Insertio
-n/Navigation, 31/10/2012
+Mise à jour OK pour la publication 2.0.0, Date: 21/01/2014 (JPC)
 \end_layout
 
 \begin_layout Plain Layout
-Original : Révision: 37808, Date: 28/02/2011
+Original :  09/06/2013
 \end_layout
 
 \end_inset
@@ -333,7 +333,7 @@ RépLyX
 
 \end_inset
 
- ?
+?
 \end_layout
 
 \begin_layout Standard
@@ -439,7 +439,7 @@ textclass.lst
 status collapsed
 
 \begin_layout Plain Layout
-layout/
+layouts/
 \end_layout
 
 \end_inset
@@ -466,7 +466,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-layout
+layouts
 \end_layout
 
 \end_inset
@@ -648,7 +648,11 @@ $LANG
 
 \end_inset
 
-, celles-ci seront utilisées d'abord (voir le 
+, celles-ci seront utilisées d'abord (voir le
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:i18n"
@@ -820,7 +824,11 @@ templates/
 
 \end_inset
 
- contient les fichiers modèles de LyX décrits dans la 
+ contient les fichiers modèles de LyX décrits dans la
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:modeles"
@@ -926,7 +934,7 @@ Autres fichiers appelant un commentaire
 encodings
 \family default
  contient des tables de conversion faisant correspondre les différents encodages
- de caractères avec unicode.
+ de caractères avec Unicode.
 \end_layout
 
 \begin_layout Labeling
@@ -949,10 +957,10 @@ Externe
 
 \end_inset
 
+, voir
+\begin_inset space ~
+\end_inset
 
-\lang english
-, see 
-\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -983,9 +991,7 @@ latexfonts
 
 \end_inset
 
-
-\lang english
- contains information about the supported fonts.
+ contient des informations sur les différentes polices.
 \end_layout
 
 \begin_layout Labeling
@@ -999,11 +1005,11 @@ layouttranslations
 
 \end_inset
 
+ contient les traductions pour les styles de paragraphe internationalisés
+ (voir
+\begin_inset space ~
+\end_inset
 
-\lang english
- this file contains translations for internationalized paragraph styles
- (see 
-\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1025,10 +1031,8 @@ unicodesymbols
 
 \end_inset
 
-
-\lang english
- this file contains information about unicode-encoded glyphs and the way
- they are supported by LyX via LaTeX.
+ contient des informations sur les glyphes encodés en Unicode et la manière
+ dont LyX les traite via LaTeX.
 \end_layout
 
 \begin_layout Section
@@ -1107,7 +1111,7 @@ RépLyX
 \end_layout
 
 \begin_layout Standard
-Pour éclaircir la situation, voici quelques exemples :
+Pour éclaircir la situation, voici quelques exemples:
 \end_layout
 
 \begin_layout Itemize
@@ -1198,7 +1202,7 @@ MonRép/doc/
 \family sans
 Aide
 \family default
- !
+!
 \end_layout
 
 \begin_layout Section
@@ -1209,12 +1213,12 @@ Utiliser LyX avec plusieurs configurations
 La liberté offerte pour le répertoire de configuration locale peut être
  insuffisante si vous avez besoin de plusieurs configurations différentes.
  Par exemple, vous pouvez vouloir utiliser des raccourcis clavier ou des
- réglages d'imprimante différents selon les moments
+ réglages d'imprimante différents selon les circonstances
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-NdT : Ou encore vouloir écrire dans des langues différentes et adapter vos
+NdT : ou encore vouloir écrire dans des langues différentes et adapter vos
  configurations en conséquence.
 \end_layout
 
@@ -1260,7 +1264,7 @@ MonNouveauRép/layouts
 \family default
 , pour qu'il soit disponible dans toutes vos configurations, vous devez
  l'ajouter dans chaque répertoire séparément.
- Vous pouvez contourner ceci avec l'astuce suivante : après que LyX a créé
+ Vous pouvez contourner ceci avec l'astuce suivante: après que LyX a créé
  le répertoire supplémentaire, la plupart des sous-répertoires (voir plus
  haut) sont vides.
  Si vous voulez que la nouvelle configuration soit le reflet d'une déjà
@@ -1456,27 +1460,22 @@ Modifier le fichier via une application externe
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The 
+Le type 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MIME
 \end_layout
 
 \end_inset
 
- type of a format is optional, but if it is specified, it must be unique
- across all formats.
- It is used to detect files of this format from the file contents.
- For some important file formats there is no MIME type officially registered
- with the
-\lang french
- 
+ d'un format est facultatif, mais s'il est précisé, il doit être unique
+ pour l'ensemble des formats.
+ Il est utilisé pour reconnaître les fichiers de ce format à partir de leur
+ contenu.
+ Pour certains formats de fichier importants, il n'y a pas de type MIME
+ officiellement répertorié dans la base 
 \begin_inset CommandInset href
 LatexCommand href
 name "IANA"
@@ -1485,11 +1484,7 @@ target "http://www.iana.org/assignments/media-types/"
 \end_inset
 
 .
- 
-\lang english
-Therefore LyX uses the extended list of MIME types as specified by 
-\lang french
-
+ De ce fait LyX utilise la liste plus étoffée spécifiée par 
 \begin_inset CommandInset href
 LatexCommand href
 name "freedesktop.org"
@@ -1504,7 +1499,11 @@ target "http://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec"
 La case à cocher Format de document informe LyX que le format est approprié
  pour une exportation du document.
  Si la case est cochée que qu'une procédure de conversion est définie (voir
- la 
+ la
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Convertisseurs"
@@ -1524,16 +1523,9 @@ Exporter
 
 .
  Le format apparaîtra également dans le menu 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-Document\SpecialChar \menuseparator
-Visionner
-\end_layout
-
-\end_inset
-
+\family sans
+Affichage
+\family default
  si une visionneuse est définie pour lui.
  Les formats purement graphiques, comme png, ne doivent pas utiliser cette
  option.
@@ -1657,7 +1649,7 @@ Par exemple, le fichier peut référencer d'autres fichiers ― e.g.
 \end_layout
 
 \begin_layout Standard
-La définition des copieurs peut utiliser quatre variables:
+La définition des copieurs peut utiliser huit variables:
 \end_layout
 
 \begin_layout Labeling
@@ -1731,9 +1723,7 @@ $$b
 
 \end_inset
 
- 
-\lang english
-The base name (without filename extension) in the LyX temporary directory
+ la racine du nom (sans le suffixe) dans le répertoire temporaire LyX
 \end_layout
 
 \begin_layout Labeling
@@ -1747,9 +1737,7 @@ $$p
 
 \end_inset
 
- 
-\lang english
-The full directory path of the LyX temporary directory
+ la chemin d'accès complet du répertoire LyX temporaire
 \end_layout
 
 \begin_layout Labeling
@@ -1763,9 +1751,7 @@ $$r
 
 \end_inset
 
- 
-\lang english
-The full pathname to the original LyX file being processed
+ le chemin d'accès complet au ficher original LyX en cours de traitement
 \end_layout
 
 \begin_layout Labeling
@@ -1779,9 +1765,7 @@ $$f
 
 \end_inset
 
- 
-\lang english
-The filename (without any directory path) of the LyX file.
+ le nom du fichier LyX (sans chemin d'accès)
 \end_layout
 
 \begin_layout Labeling
@@ -1806,8 +1790,7 @@ nom LaTeX
  
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 Ce dernier doit être le nom du fichier tel qu'il serait spécifié dans la
  commande LaTeX 
 \series bold
@@ -1879,7 +1862,7 @@ cp $FROMFILE /home/you/pdf/$TOFILE
 \end_layout
 
 \begin_layout Standard
-Enregistrez le dans votre répertoire LyX local ― disons,
+Enregistrez-le dans votre répertoire LyX local ― disons,
 \lang english
  
 \begin_inset Flex Code
@@ -1928,7 +1911,7 @@ PDF(pdflatex)
 
 \end_inset
 
- ―ou l'un des autres formats PDF ― et saisissez 
+ ― ou l'un des autres formats PDF ― et saisissez 
 \lang english
 
 \begin_inset Flex Code
@@ -2247,9 +2230,7 @@ nice
 
 \end_inset
 
- 
-\lang english
-Needs a 
+ demande une fichier LyX 
 \begin_inset Quotes fld
 \end_inset
 
@@ -2257,8 +2238,10 @@ nice
 \begin_inset Quotes frd
 \end_inset
 
- file from the backend, which in practice means a LaTeX file like the one
- we would export, without 
+ (facile), ce qui en pratique désigne un fichier similaire au résultat d'une
+ exportation LaTeX, dans la directive 
+\lang english
+
 \begin_inset Flex Code
 status collapsed
 
@@ -2351,7 +2334,7 @@ $$s
 
 \end_inset
 
-.
+;
 \end_layout
 
 \begin_layout Labeling
@@ -2405,7 +2388,7 @@ usetempdir
 \end_inset
 
  n'a aucun sens.
- Le dernier sera ignoré si le premier est employé.
+ Ce dernier sera ignoré si le premier est employé;
 \end_layout
 
 \begin_layout Labeling
@@ -2583,26 +2566,20 @@ reference "sec:Formats"
 
 .
  Par exemple, avec la configuration standard, les formats dénommés 
-\lang english
-
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 pdf
 \end_layout
 
 \end_inset
 
- (for 
+ (pour 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ps2pdf
 \end_layout
 
@@ -2613,20 +2590,16 @@ ps2pdf
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 pdf2
 \end_layout
 
 \end_inset
 
- (for 
+ (pour 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 pdflatex
 \end_layout
 
@@ -2637,20 +2610,16 @@ pdflatex
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 pdf3
 \end_layout
 
 \end_inset
 
- (for 
+ (pour 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 dvipdfm
 \end_layout
 
@@ -2661,20 +2630,16 @@ dvipdfm
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 pdf4
 \end_layout
 
 \end_inset
 
- (for 
+ (pour 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 XeTeX
 \end_layout
 
@@ -2685,28 +2650,12 @@ XeTeX
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 pdf5
 \end_layout
 
 \end_inset
 
- (for 
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-LuaTeX
-\end_layout
-
-\end_inset
-
-)
-\lang french
- sont définis, qui correspondent tous au suffixe 
+ (pour LuaTeX) sont définis, qui correspondent tous au suffixe 
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -2848,7 +2797,7 @@ En bref, voici un résumé de ce qu'il faut faire (
 xx
 \family default
 \series default
- est le code de la langue) :
+ est le code de la langue):
 \end_layout
 
 \begin_layout Itemize
@@ -3325,7 +3274,7 @@ _NomDoc.lyx
 xx
 \family default
 \series default
- est e code pour la langue en cours d'utilisation.
+ est le code pour la langue en cours d'utilisation.
  S'il n'y a pas de traduction disponible, c'est la version anglaise qui
  est affichée.
  Notez que les versions traduites doivent avoir le même nom de fichier (ici
@@ -3341,8 +3290,8 @@ NomDoc
 
 ) que l'original.
  Si vous vous sentez de traduire la documentation (ce qui est d'ailleurs
- un excellent moyen de corriger la documentation d'origine !), il y a un
- certain nombre de choses que vous devez faire tout de suite :
+ un excellent moyen de corriger la documentation d'origine!), il y a un
+ certain nombre de choses que vous devez faire tout de suite:
 \end_layout
 
 \begin_layout Itemize
@@ -3364,11 +3313,11 @@ target "http://www.lyx.org/WebFr.Translation"
 
 \begin_layout Standard
 Une fois que vous vous y mettez pour de bon, voilà quelques conseils qui
- pourront vous éviter des ennuis :
+ pourront vous éviter des ennuis:
 \end_layout
 
 \begin_layout Itemize
-joignez-vous à l'équipe de documentation ! 
+joignez-vous à l'équipe de documentation! 
 \family typewriter
 Intro.lyx
 \family default
@@ -3378,7 +3327,7 @@ Aide\SpecialChar \menuseparator
 Introduction
 \family default
 ) explique comment faire.
- C'est d'ailleurs le premier document à traduire.
+ C'est d'ailleurs le premier document à traduire;
 \end_layout
 
 \begin_layout Itemize
@@ -3393,11 +3342,23 @@ Introduction
 \emph on
 Attention ! La typographie peut devenir une passion !
 \emph default
-) 
+);
 \end_layout
 
 \begin_layout Itemize
-faites une copie du document.
+faites une copie du document (dans les cas simples, sinon voyez la note
+ de bas de page
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fn:NdT-:-Je"
+
+\end_inset
+
+).
  Ce sera votre fichier de travail.
  Vous pouvez l'utiliser comme fichier d'aide personnel en le mettant dans
  votre répertoire 
@@ -3437,6 +3398,27 @@ status collapsed
 NdT : Je conseille très vivement de partir des fichiers disponibles sur
  Trac, et de ne pas perdre de temps à traduire la version contenue dans
  votre distribution pour s'apercevoir trop tard que tout est périmé.
+ J’ajoute que la meilleure solution est de récupérer l'image courante des
+ sources de LyX via git (cf.
+ le 
+\begin_inset CommandInset href
+LatexCommand href
+name "site LyX"
+target "http://www.lyx.org/WebFr.HowToUseGIT"
+
+\end_inset
+
+) et de modifier directement le fichier concerné dans l'arborescence importée:
+ de cette façon, les liens vers les images ne seront pas modifiés lors de
+ la sauvegarde du fichier, et la version modifiée pourra être soumise sans
+ modifications aux développeurs.
+\begin_inset CommandInset label
+LatexCommand label
+name "fn:NdT-:-Je"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5119,7 +5101,7 @@ Référence
 \end_layout
 
 \begin_layout Subsection
-Enregistrer votre Configuration Linguistique
+Enregistrer votre configuration linguistique
 \end_layout
 
 \begin_layout Standard
@@ -5194,7 +5176,7 @@ en dur
 \begin_inset Quotes frd
 \end_inset
 
- dans les sources LyX, mais les développeurs considères que c'est une mauvaise
+ dans les sources LyX, mais les développeurs considèrent que c'est une mauvaise
  chose.
 \end_layout
 
@@ -5413,8 +5395,16 @@ status collapsed
 \begin_inset Quotes frd
 \end_inset
 
- (c'est le cas pour FoilTeX), alors ouvrir une console, aller dans le répertoire
- de ce fichier et exécuter la commande 
+ (c'est le cas pour FoilTeX), c'est qu'il est 
+\begin_inset Quotes fld
+\end_inset
+
+relié
+\begin_inset Quotes frd
+\end_inset
+
+ alors ouvrir une console, aller dans le répertoire de ce fichier et exécuter
+ la commande 
 \begin_inset Flex Code
 status collapsed
 
@@ -5427,9 +5417,16 @@ latex foiltex.ins
 \end_inset
 
 .
- Vous avez ainsi déplié le paquetage et vous disposez des fichiers nécessaires
- à l'installation.
- De nombreux paquetages ne sont pas reliés et vous pouvez sauter cette étape.
+ Vous avez ainsi 
+\begin_inset Quotes fld
+\end_inset
+
+déplié
+\begin_inset Quotes frd
+\end_inset
+
+ le paquetage et vous disposez des fichiers nécessaires à l'installation.
+ De nombreux paquetages ne sont pas reliés et vous pouvez sauter cette étape;
 \end_layout
 
 \begin_layout Enumerate
@@ -5523,7 +5520,15 @@ TEXMFLOCAL
 \family sans
 /usr/local/share/texmf/
 \family default
- .
+ (installation système), 
+\family sans
+/usr/local/share/texmf/
+\family default
+ (installation utilisateur) ou 
+\family sans
+/usr/local/texlive/texmf-local
+\family default
+ (installation TexLive).
  L'emplacement de l'arborescence 
 \begin_inset Quotes fld
 \end_inset
@@ -5548,7 +5553,12 @@ TEXMFHOME
 \family sans
 $HOME/texmf/
 \family default
- (si ces variables ne sont pas prédéfinies, vous devrez le faire vous-même).
+ ou 
+\family sans
+$HOME/.texliveXXXX
+\family default
+ où XXXX est l'année de la distribution TeXLive (si ces variables ne sont
+ pas prédéfinies, vous devrez le faire vous-même).
  Vous aurez besoin d'avoir les droits d'administration système pour créer
  ou modifier l'arborescence 
 \begin_inset Quotes fld
@@ -5586,7 +5596,7 @@ home
 \end_layout
 
 \begin_layout Enumerate
-Avec Windows, si vous souhaitez que le nouveau paquetage soit disponibles
+Avec Windows, si vous souhaitez que le nouveau paquetage soit disponible
  pour tous les utilisateurs de votre système, allez dans le répertoire où
  LaTeX est installé, puis dans le sous-répertoire 
 \family sans
@@ -5787,12 +5797,14 @@ texhash
 
  dans une console.
  Si vous avez installé le paquetage pour tous les utilisateurs, vous aurez
- besoin des droits d'administration pour ce faire.
+ besoin des droits d'administration pour ce faire;
 \end_layout
 
 \begin_layout Enumerate
 Avec MiKTeX, si vous avez installé le paquetage pour tous les utilisateurs,
  démarrez le programme 
+\family sans
+
 \begin_inset Quotes fld
 \end_inset
 
@@ -5801,6 +5813,8 @@ Settings
 \end_inset
 
 (Admin)
+\family default
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -5808,7 +5822,11 @@ Settings
 \begin_inset Quotes fld
 \end_inset
 
+
+\family sans
 Refresh FNDB
+\family default
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -5817,7 +5835,11 @@ Refresh FNDB
 \begin_inset Quotes fld
 \end_inset
 
+
+\family sans
 Settings
+\family default
+
 \begin_inset Quotes frd
 \end_inset
 
@@ -5915,8 +5937,8 @@ Cette section décrit les différentes variétés de fichiers contenant les
 \end_layout
 
 \begin_layout Standard
-Nous essayons ici de donner une description complète de la procédure à suivre
- ; il y a cependant une telle variété de classes LaTeX supportant des types
+Nous essayons ici de donner une description complète de la procédure à suivre;
+ il y a cependant une telle variété de classes LaTeX supportant des types
  de document très différents que nous ne pouvons pas espérer couvrir tous
  les cas possibles ni tous les problèmes que vous pourrez rencontrer.
  La liste de messagerie des utilisateurs LyX est fréquentée par des personnes
@@ -6113,7 +6135,7 @@ Modules
 
 \end_inset
 
-, sélectionnez une module et appuyez sur 
+, sélectionnez un module et appuyez sur 
 \begin_inset Quotes fld
 \end_inset
 
@@ -6124,11 +6146,8 @@ OK
 .
  
 \emph on
-Il vous est fortement recommandé d
-\emph default
-at
-\emph on
-e sauvegarder votre travail avant de procéder ainsi
+Il vous est fortement recommandé de sauvegarder votre travail avant de procéder
+ ainsi
 \emph default
 .
  En fait, 
@@ -6143,109 +6162,103 @@ il vous est fortement recommandé de ne pas essayer de modifier des modules
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Local Layout
+Format local
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Modules are to LyX as packages are to LaTeX.
- Sometimes, however, you find yourself wanting a specific inset or character
- style just for one document and writing a module that will also be available
- to other documents makes little sense.
- What you need is LyX's 
-\begin_inset Quotes eld
+Les modules sont à LyX ce que les paquetages sont à LaTeX.
+ Cependant, il arrive que vous souhaitiez disposer d'un insert ou d'un style
+ de caractère pour un seul document, et écrire un module qui sera universel
+ n'a pas grand sens.
+ Vous avez alors besoin du 
+\begin_inset Quotes fld
 \end_inset
 
-Local Layout
-\begin_inset Quotes erd
+format local
+\begin_inset Quotes frd
 \end_inset
 
-.
+ de LyX.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You will find it under 
+Vous le trouverez via 
 \family sans
 Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-Local Layout
+Paramètres\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Format local
 \family default
 .
- The large text box allows you to enter anything that you might enter in
- a layout file or module.
- You can think of a document's local layout, in fact, as a module that belongs
- just to it.
- So, in particular, you must enter a 
+ La grande zone textuelle vous permet de saisir ce que vous mettriez dans
+ un fichier de format ou de module.
+ Vous pouvez voir le format local comme un module qui n'appartient qu'au
+ document en cours de saisie.
+ De ce fait, vous devez saisir une balise 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Format
 \end_layout
 
 \end_inset
 
- tag.
- Any format is acceptable, but one would normally use the format current
- at the time.
- (In LyX 2.1, the current layout format is 48.) You should be aware that local
- layout is not supported by versions of LyX prior to 1.6, so you should not
- use it if you want to be able to export your document to LyX 1.5 or earlier
- (without, that is, losing the local layout information).
- If you wish to be able to export to 1.6---local layout is supported in 1.6,
- though there is no UI for it---then you should use format 11 and, of course,
- use only layout constructs that were available in LyX 1.6.
+.
+ N'importe quel format est admissible, mais on utilise d'habitude le format
+ de la version de LyX utilisée (pour LyX 2.1, le format porte le numéro 48).
+ Vous devez savoir que le format local n'existe pas pour les versions de
+ LyX antérieures à 1.6, vous ne devez donc pas l'utiliser si vous envisagez
+ d'exporter votre document en version 1.5 ou antérieure (en fait, sans perdre
+ l'information de format local).
+ Si vous souhaitez exporter vers LyX version 1.6 --- le format local est
+ reconnu, mais il n'y a pas d'interface pour y accéder --- vous devez alors
+ utiliser le format 11 et bien entendu vous restreindre aux constructions
+ de format qui étaient disponibles avec LyX 1.6.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-When you have entered something in the 
+Lorsque vous avez saisi quelque chose dans la fenêtre de 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Local Layout
+Format local
 \end_layout
 
 \end_inset
 
- pane, LyX will enable the 
-\begin_inset Quotes eld
+, LyX active le bouton 
+\begin_inset Quotes fld
 \end_inset
 
-Validate
-\begin_inset Quotes erd
+
+\family sans
+Valider
+\family default
+
+\begin_inset Quotes frd
 \end_inset
 
- button at the bottom.
- Clicking this button will cause LyX to determine whether what you have
- entered is valid layout information for the chosen format.
- LyX will report the result but, unfortunately, will not tell you what errors
- there might have been.
- These will be written to the terminal, however, if LyX is started from
- a terminal.
- You will not be permitted to save your local layout until you have entered
- something valid.
+ qui se trouve en bas.
+ Cliquer sur ce bouton entraînera une vérification de la validité du code
+ que vous aurez saisi.
+ LyX vous donne cette information sans hélas l'accompagner d'un diagnostic
+ d'erreurs explicite.
+ Ces erreurs seront cependant affichées dans la fenêtre d'appel si vous
+ avez activé LyX depuis un terminal.
+ Vous ne pourrez pas appliquer ou enregistrer votre format tant qu'il n'est
+ pas valide.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The warnings at the end of the previous section apply here, too.
- Do not play with local layout while you are actually working, especially
- if you have not saved your document.
- That said, using local layout with a test document can be a very convenient
- way to try out layout ideas, or even to start developing a module.
+Les précautions indiquées à la fin de la section précédente s'appliquent
+ également ici.
+ Ne jouez pas avec un format local pendant un vrai travail, surtout si vous
+ n'avez pas enregistré votre document.
+ Ceci dit, utiliser un format local avec un document de test peut être très
+ pratique pour essayer de nouvelles choses, voire pour aborder l’écriture
+ d'un module.
 \end_layout
 
 \begin_layout Subsection
@@ -6526,7 +6539,11 @@ pour modifier la police des titres de chapitre en police sens empattements.
 Votre nouveau paquetage peut également fournir des commandes ou des environnemen
 ts qui n'existent pas dans la classe de base.
  dans ce cas, il vous faudra ajouter ceux-ci au fichier de format.
- Voir 
+ Voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Syntaxe-des"
@@ -6611,11 +6628,13 @@ EndPreamble
 \end_layout
 
 \begin_layout Standard
-
-\family typewriter
 Un module plus compliqué pourrait modifier le comportement de constructions
- es=xistantes ou den définir de nouvelles.
- De nouveau, voir 
+ existantes ou d'en définir de nouvelles.
+ De nouveau, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Syntaxe-des"
@@ -6922,9 +6941,9 @@ layout2layout.py
 \end_layout
 
 \begin_layout Enumerate
-
+renommez le fichier 
 \lang english
-rename the file 
+
 \begin_inset Flex Code
 status collapsed
 
@@ -6936,7 +6955,11 @@ myclass.layout
 
 \end_inset
 
- to 
+
+\lang french
+ comme 
+\lang english
+
 \begin_inset Flex Code
 status collapsed
 
@@ -6952,15 +6975,7 @@ myclass.old
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Call the command
-\lang french
-
-\begin_inset Newline newline
-\end_inset
-
-
+exécutez la commande 
 \begin_inset Flex Code
 status collapsed
 
@@ -6974,23 +6989,17 @@ python LyXDir/scripts/layout2layout.py myclass.old myclass.layout
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-where 
+dans laquelle 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LyXDir
 \end_layout
 
 \end_inset
 
- is
-\lang french
- le nom de votre répertoire LyX au niveau système.
+ est le nom de votre répertoire LyX au niveau système.
 \end_layout
 
 \begin_layout Standard
@@ -7018,10 +7027,8 @@ Les sections suivantes vous expliquent à quoi vous vous attaquez quand vous
  des essais.
  Ce n'est pas si dur que ça, mais il y a une multitude d'options et vous
  pouvez vous laisser submerger si vous essayez d'en faire trop d'un coup.
- 
-\lang english
-It becomes easier if you use existing layouts of LyX as examples/reference
- or if you modify an existing layout to your needs.
+ Il est plus facile d'utiliser des formats existants comme référence ou
+ modèle ou de modifier un fichier de format existant pour vos besoins.
 \end_layout
 
 \begin_layout Standard
@@ -7056,7 +7063,7 @@ StYlE
 
 \end_inset
 
- sont une seule et même commande.
+ sont une seule et même balise.
  Les valeurs possibles sont inscrites entre crochets après le nom de la
  fonction.
  La valeur implicite d'une fonction quand elle n'est pas définie dans le
@@ -7094,9 +7101,7 @@ default
 \end_layout
 
 \begin_layout Subsection
-Déclaration d'une classe de document 
-\lang english
-and classification
+Déclaration et classification d'une classe de document
 \end_layout
 
 \begin_layout Standard
@@ -7162,11 +7167,8 @@ DeclareCategory{Articles}
 \end_layout
 
 \begin_layout Standard
-La deuxième et
-\lang english
- third
-\lang french
- ligne sert quand vous (re)configurez LyX.
+Les deuxième et troisième lignes servent lors de la (re)configuration de
+ LyX.
  Le fichier de format est lu par le script LaTeX 
 \begin_inset Flex Code
 status collapsed
@@ -7188,16 +7190,9 @@ status collapsed
 \end_inset
 
  est ignoré.
- La première ligne est juste un commentaire LaTeX, et la deuxième contient
- la déclaration 
-\lang english
-mandatory
-\lang french
- de la classe de texte
-\lang english
- and the third line contains the optional classification of the class
-\lang french
-.
+ La première ligne est juste un commentaire LaTeX, la deuxième contient
+ la déclaration obligatoire de la classe de texte et la troisième contient
+ la classification facultative de la classe.
  Si ces lignes apparaissent dans un fichier appelé 
 \begin_inset Flex Code
 status collapsed
@@ -7244,94 +7239,98 @@ status collapsed
 
 \begin_layout Plain Layout
 Document\SpecialChar \menuseparator
-Paramètres
+Paramètres\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Classe de document
 \end_layout
 
 \end_inset
 
 .
- 
-\lang english
-The category (
-\begin_inset Quotes eld
+ La catégorie (
+\begin_inset Quotes fld
 \end_inset
 
 Articles
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- in the example) is also used in the 
+ dans l'exemple) est également utilisés dans la fenêtre 
+\lang english
+
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Document\SpecialChar \menuseparator
-Settings
+Paramètres\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Classe de document
 \end_layout
 
 \end_inset
 
- dialog: the text classes are grouped by these categories (which are usually
- genres, so typical categories are 
-\begin_inset Quotes eld
+
+\lang french
+: les classes sont regroupées par catégories (qui sont aussi des genres
+ de documents, les catégories typiques sont 
+\begin_inset Quotes fld
 \end_inset
 
 Articles
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
-Books
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Reports
-\begin_inset Quotes erd
+Livres
+\begin_inset Quotes frd
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
-Letters
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Presentations
-\begin_inset Quotes erd
+Rapports
+\begin_inset Quotes frd
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
-Curricula Vitae
-\begin_inset Quotes erd
+Présentations
+\begin_inset Quotes frd
 \end_inset
 
- etc.).
- If no category has been declared, the class will be put in the 
-\begin_inset Quotes eld
+, 
+\begin_inset Quotes fld
 \end_inset
 
-Uncategorized
-\begin_inset Quotes erd
+Lettres
+\begin_inset Quotes frd
 \end_inset
 
- group.
+, 
+\begin_inset Quotes fld
+\end_inset
+
+Curricula vitae
+\begin_inset Quotes frd
+\end_inset
+
+, etc.).
+ Si la troisième lignes est vide, la classe apparaîtra comme 
+\begin_inset Quotes fld
+\end_inset
+
+Sans catégorie
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -7524,11 +7523,7 @@ status collapsed
 
 \end_inset
 
-eXClass[class,package.sty]{
-\lang english
-layout description
-\lang french
-}
+eXClass[class,package.sty]{description du format}
 \end_layout
 
 \begin_layout LyX-Code
@@ -7536,11 +7531,7 @@ layout description
 \size small
 #  
 \backslash
-DeclareCategory{
-\lang english
-category
-\lang french
-}
+DeclareCategory{catégorie}
 \end_layout
 
 \begin_layout Standard
@@ -7970,7 +7961,7 @@ int
 
 \end_inset
 
-] Identification syntaxique du fichier de format
+] identification syntaxique du fichier de format
 \end_layout
 
 \begin_layout Standard
@@ -8000,7 +7991,7 @@ Format
 
 \lang french
 .
- Le numéro de format du présent fichier est le numéro 35.
+ Le numéro de format du présent fichier est le numéro 48.
  mais chaque version de LyX peut lire les fichiers de format d'une version
  plus ancienne, comme elle peut lire les documents crées avec une version
  plus ancienne.
@@ -8124,8 +8115,7 @@ AddToPreamble
 \lang french
  
 \family default
-définit le style à utiliser pour afficher les informations bibliographiques.
- Voir le paragraphe.
+ajoute une information au préambule du document.
  Doit être fermé par 
 \begin_inset Quotes fld
 \end_inset
@@ -8168,7 +8158,7 @@ CiteFormat
 \lang french
  
 \family default
-ajoute une information au préambule du document.
+définit le style à utiliser pour afficher les informations bibliographiques.
  Voir 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -8188,7 +8178,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-EndPreamble
+End
 \end_layout
 
 \end_inset
@@ -9233,7 +9223,8 @@ literate
 
 
 \lang french
- et que l'on veut définir un nouvelle sorte de document literate.
+ et que l'on veut définir un nouvelle sorte de document en programmation
+ littéraire.
  La chaîne est redéfinie comme 
 \begin_inset Quotes fld
 \end_inset
@@ -9397,13 +9388,9 @@ chaîne
 
 \end_inset
 
-] 
-\lang english
-Specifies options, given in the second string, for the package named by
- the first string.
- For example, 
-\lang french
-
+] précise les options, données par le seconde chaîne de caractères, pour
+ le paquetage nommé par le première chaîne.
+ Par exemple, 
 \begin_inset Quotes fld
 \end_inset
 
@@ -9421,11 +9408,7 @@ PackageOptions natbib square
 \begin_inset Quotes frd
 \end_inset
 
- 
-\lang english
-will cause 
-\lang french
-
+ déclenchera le chargement de 
 \begin_inset Flex Code
 status collapsed
 
@@ -9435,24 +9418,17 @@ natbib
 
 \end_inset
 
-
-\lang english
- to be loaded with the 
+ avec l'option 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 square
 \end_layout
 
 \end_inset
 
- option.
- (For TeXperts, this causes LyX to output: 
-\lang french
-
+ (pour les TeXperts, ceci force LyX à exporter 
 \begin_inset Flex Code
 status collapsed
 
@@ -9464,11 +9440,7 @@ PassOptionsToPackage{natbib}{square}
 
 \end_inset
 
- 
-\lang english
-prior to loading
-\lang french
- 
+ avant le chargement de 
 \begin_inset Flex Code
 status collapsed
 
@@ -9478,7 +9450,7 @@ natbib
 
 \end_inset
 
-.)
+).
 \end_layout
 
 \begin_layout Description
@@ -9740,16 +9712,18 @@ boldsymbol
 
 ,\SpecialChar \ldots{}
 ).
- Voir 
+ Voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:List-of-functions"
 
 \end_inset
 
-
-\lang english
- for the list of features.
+ pour une liste des fonctionnalités.
 \end_layout
 
 \begin_layout Description
@@ -9858,11 +9832,7 @@ reference "chap:List-of-functions"
 
 \end_inset
 
-
-\lang english
- for the list of features
-\lang french
-).
+ pour accéder à la liste des fonctionnalités).
 \end_layout
 
 \begin_layout Description
@@ -10658,18 +10628,17 @@ int
 
 \end_inset
 
-] 
+] définit l'argument numéro <int> d'une commande ou environnement associé
+ au style courant.
+ Ceci est utile pour des entités comme les en-têtes de section, et n'a de
+ sens qu'avec LaTeX.
+ Chaque argument (obligatoire ou facultatif) d'une commande ou d'un environnemen
+t --- sauf l'argument obligatoire correspondant au contenu du paragraphe
+ proprement dit --- est défini séparément, et le nombre précise l'ordre
+ des arguments.
+ La définition doit être close par 
 \lang english
-Defines argument number <int> of a command\SpecialChar \slash{}
-environment associated with the
- current style.
- This is useful for things like section headings, and only makes sense with
- LaTeX.
- Every (optional or required) argument of a command or environment -- except
- for the required argument that is associated with the content of the paragraph
- itself -- has a separate definition, where the number specifies the order
- of the arguments.
- The definition must end with 
+
 \begin_inset Flex Code
 status collapsed
 
@@ -10681,8 +10650,9 @@ EndArgument
 
 \end_inset
 
-.
- So a command with two optional arguments has:
+
+\lang french
+.Ainsi une commande avec deux arguments sera spécifiée comme suit: 
 \end_layout
 
 \begin_deeper
@@ -10723,21 +10693,17 @@ EndArgument
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Inside the 
+Dans la définition de l'
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Argument
 \end_layout
 
 \end_inset
 
- definition, the following specifications are possible:
+, les spécifications suivantes sont possibles:
 \end_layout
 
 \begin_layout Itemize
@@ -10766,10 +10732,11 @@ status collapsed
 
 \end_inset
 
- 
+ définit la chaîne de caractères qui apparaîtra à la fois dans le menu (pour
+ insérer cet argument) et dans le bouton d'insertion d'argument (sauf si
+ vous spécifiez également un 
 \lang english
-The string that will appear both in the menu (to insert this argument) and
- on the argument inset button (unless you also specify a separate 
+
 \begin_inset Flex Code
 status collapsed
 
@@ -10781,9 +10748,11 @@ MenuString
 
 \end_inset
 
-).
- For the menu, you can define an accelerator by appending the respective
- character to the string, divided by 
+)
+\lang french
+.
+ Pour le menu, vous pouvez définir un accélérateur en ajoutant le caractère
+ désiré à la chaîne, séparé par 
 \begin_inset Quotes fld
 \end_inset
 
@@ -10808,9 +10777,7 @@ g.
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Short Title|S
+Éléments personnalisables|é
 \end_layout
 
 \end_inset
@@ -10819,7 +10786,7 @@ Short Title|S
 \begin_inset Quotes frd
 \end_inset
 
-).
+);
 \end_layout
 
 \begin_layout Itemize
@@ -10848,11 +10815,9 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-A separate string for the menu.
- You can define an accelerator by appending the respective character to
- the string, divided by 
+ définit une chaîne particulière pour le menu.
+ Vous pouvez définir un accélérateur en ajoutant le caractère désiré à la
+ chaîne, séparé par 
 \begin_inset Quotes fld
 \end_inset
 
@@ -10877,9 +10842,7 @@ g.
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Short Title|S
+Éléments personnalisables|é
 \end_layout
 
 \end_inset
@@ -10889,20 +10852,17 @@ Short Title|S
 \end_inset
 
 ).
- This specification is optional.
- If it is not given the 
+ Cette spécification est facultative, si elle n'existe pas, la 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelString
 \end_layout
 
 \end_inset
 
- will be used instead for the menu.
+ sera utilisée pour le menu;
 \end_layout
 
 \begin_layout Itemize
@@ -10931,10 +10891,8 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-A longer explanatory text that appears in the tooltip when hovering over
- the argument inset.
+ définit un texte explicatif qui apparaît dans la bulle d'aide quand le
+ curseur passe sur l'insertion d'argument;
 \end_layout
 
 \begin_layout Itemize
@@ -10979,36 +10937,30 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Declare if this is a mandatory (1) or an optional (0) argument.
- Mandatory arguments will be output empty if not given, while optional arguments
- will not be output at all.
- By default, mandatory arguments are delimited by 
+] précise si l’argument est obligatoire (1) ou optionnel (0).
+ Les arguments obligatoires ont émis comme une chaîne vide s'ils ne sont
+ pas précisés, alors que les arguments optionnels ne sont pas émis du tout.
+ Implicitement, les arguments obligatoires sont insérés entre 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 {...}
 \end_layout
 
 \end_inset
 
-, while optional arguments are delimited by 
+, alors que les arguments optionnels sont insérés entre 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 [...]
 \end_layout
 
 \end_inset
 
-
+;
 \end_layout
 
 \begin_layout Itemize
@@ -11037,16 +10989,13 @@ status collapsed
 
 \end_inset
 
- 
+ définit une autre argument (par son numéro d'ordre) dont cet argument demande
+ l’émission s'il est lui-même émis.
+ Par exemple en LaTeX, les arguments optionnels demandent l'émission d'autres
+ arguments optionnels situés avant eux dans la liste (au moins vides), comme
+ dans
 \lang english
-defines another argument (by its number) which this argument requires to
- be output if it is itself output.
- E.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., in LaTeX commands, optional arguments often require previous optional
- arguments to be output (at least empty), as in 
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -11060,8 +11009,11 @@ command[][argument]{text}
 
 \end_inset
 
-.
- This can be achieved by the statement 
+, 
+\lang french
+ou ceci peut être précisé par la directive 
+\lang english
+
 \begin_inset Flex Code
 status collapsed
 
@@ -11073,9 +11025,9 @@ Requires 1
 
 \end_inset
 
- within
-\lang french
  
+\lang french
+dans l'
 \begin_inset Flex Code
 status collapsed
 
@@ -11085,7 +11037,7 @@ Argument 2
 
 \end_inset
 
-.
+;
 \end_layout
 
 \begin_layout Itemize
@@ -11114,36 +11066,28 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-defines a custom left delimiter (instead of 
+ définit un délimiteur gauche personnalisé (au lieu de 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 {
 \end_layout
 
 \end_inset
 
- or 
+ ou 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 [
 \end_layout
 
 \end_inset
 
 ).
- A line break in the output can be indicated by
-\lang french
- 
+ Une rupture de ligne dans la sortie peut être indiqué par 
 \begin_inset Flex Code
 status collapsed
 
@@ -11153,7 +11097,7 @@ status collapsed
 
 \end_inset
 
-.
+;
 \end_layout
 
 \begin_layout Itemize
@@ -11182,36 +11126,28 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-defines a custom right delimiter (instead of 
+ définit un délimiteur droit personnalisé (au lieu de 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 }
 \end_layout
 
 \end_inset
 
- or 
+ ou 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ]
 \end_layout
 
 \end_inset
 
 ).
- A line break in the output can be indicated by
-\lang french
- 
+ Une rupture de ligne dans la sortie peut être indiqué par 
 \begin_inset Flex Code
 status collapsed
 
@@ -11221,7 +11157,7 @@ status collapsed
 
 \end_inset
 
-.
+;
 \end_layout
 
 \begin_layout Itemize
@@ -11250,20 +11186,26 @@ status collapsed
 
 \end_inset
 
- 
+ définit un argument qui sera inséré si et seulement si aucun argument n'est
+ saisi par l'utilisateur, c'est-à-dire si aucun insert d'argument n'a été
+ spécifié (notez qu'un insert d'argument vide masque le 
 \lang english
-defines an argument that is inserted if and only if no user-specified arguments
- were given, i.
-\begin_inset space \thinspace{}
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+DefaultArg
+\end_layout
+
 \end_inset
 
-e.
-\begin_inset space \space{}
-\end_inset
-
-if no argument inset has been inserted (note that also an empty argument
- inset omits the DefaultArg).
- Multiple arguments need to be separated by comma.
+)
+\lang french
+.
+ Les arguments multiples doivent être séparés par des virgules;
 \end_layout
 
 \begin_layout Itemize
@@ -11292,11 +11234,9 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-defines an argument that is inserted in any case (alone or in addition to
- user-specified arguments).
- Multiple arguments need to be separated by comma.
+ définit un argument inséré dans tous les cas (seul ou en plus des chaîne
+ saisies par l’utilisateur).
+ Les arguments multiples doivent être séparés par des virgules;
 \end_layout
 
 \begin_layout Itemize
@@ -11313,8 +11253,9 @@ Font
 
 \end_inset
 
- The font used for the argument content,
+ 
 \lang french
+définit la police de caractères utilisée pour le contenu de l'argument,
  voir 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -11322,7 +11263,7 @@ reference "sub:polices"
 
 \end_inset
 
-.
+;
 \end_layout
 
 \begin_layout Itemize
@@ -11339,16 +11280,16 @@ LabelFont
 
 \end_inset
 
- The font used for the label; see
+
 \lang french
- 
+ définit la police de caractères utilisée pour l'étiquette, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:polices"
 
 \end_inset
 
-.
+;
 \end_layout
 
 \begin_layout Itemize
@@ -11380,7 +11321,9 @@ Classic
 
 \end_inset
 
-] describes the rendering style used for the inset's frame and buttons.
+]
+\lang french
+ précise le style de rendu utilisé pour les cadres d'insertion et les boutons;
 \end_layout
 
 \begin_layout Itemize
@@ -11409,30 +11352,17 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-If this is set to 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-1
-\end_layout
-
-\end_inset
-
-, this argument is automatically inserted when the respective style is selected.
- Currently, only one argument per style\SpecialChar \slash{}
-layout can be automatically inserted.
+ force l'insertion de l’argument lorsque le style concerné est sélectionné
+ (si sa valeur est 1).
+ Actuellement, un seul argument par style ou format peut être inséré automatique
+ment.
 \end_layout
 
 \begin_layout Standard
-
+Implicitement, le texte saisi dans la fenêtre de travail de LyX dans le
+ style considéré est le dernier argument de la commande si le 
 \lang english
-By default, the text entered in the LyX workarea in the respective layout
- is the last (mandatory) argument of a command if the 
+
 \begin_inset Flex Code
 status collapsed
 
@@ -11444,7 +11374,11 @@ LatexType
 
 \end_inset
 
- is 
+
+\lang french
+ est 
+\lang english
+
 \begin_inset Flex Code
 status collapsed
 
@@ -11457,7 +11391,11 @@ Command
 \end_inset
 
 .
- However, arguments with the prefix 
+ 
+\lang french
+Cependant, les arguments préfixés par 
+\lang english
+
 \begin_inset Flex Code
 status collapsed
 
@@ -11469,9 +11407,13 @@ post:
 
 \end_inset
 
- are output after this workarea argument.
- Note that post-argument numbering restarts at 1, so the first argument
- following the workarea argument is 
+
+\lang french
+ sont émis après cet argument de la fenêtre de travail.
+ Notez que la numérotation des post-arguments repart de 1, de sorte que
+ le premier argument suivant l’argument de la fenêtre de travail est
+\lang english
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -11483,8 +11425,12 @@ post:1
 
 \end_inset
 
+
+\lang french
 .
- Post-arguments are ignored in any other 
+ Les post-arguments sont ignorés dans tout autre 
+\lang english
+
 \begin_inset Flex Code
 status collapsed
 
@@ -11496,13 +11442,13 @@ LatexType
 
 \end_inset
 
- than 
+
+\lang french
+ que 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Command
 \end_layout
 
@@ -11512,15 +11458,11 @@ Command
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Arguments for list 
+Les arguments de liste 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 item
@@ -11528,33 +11470,29 @@ item
 
 \end_inset
 
-s (as in 
+s (comme dans 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
-
 \backslash
-item[foo]
+item[toto]
 \end_layout
 
 \end_inset
 
-) have the prefix 
+) sont préfixés par 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 item:
 \end_layout
 
 \end_inset
 
- followed by the number (e.
+ suivi par leur numéro (e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -11567,14 +11505,12 @@ g.
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Argument item:1
 \end_layout
 
 \end_inset
 
-)
+).
 \end_layout
 
 \end_deeper
@@ -12088,13 +12024,31 @@ int=0
 
 \end_inset
 
-] 
+] est utile pour forcer la portabilité de nouveaux styles vers des versions
+ stables de LyX.
+ La première version stable qui interprète cette directive est LyX 2.1.0.
+ L'argument est un nombre qui peut être 0, -1 ou n'importe quel entier positif.
+ Si 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ForceLocal
+\end_layout
+
+\end_inset
+
+ est positif, il sera toujours émis vers le préambule du document.
+ Lors de la lecture d'un fichier 
+\family typewriter
+.lyx
+\family default
+, les définitions de style du préambule du document sont ajoutées à la classe
+ du document.
+ De ce fait même les versions de LyX plus anciennes peuvent gérer ce style.
+ L'argument de
 \lang english
-Used for backporting new styles to stable LyX versions.
- The first stable version that supports this tag is LyX 2.1.0.
- The argment is a number which may either be 0, -1 or any value greater
- than zero.
- If the 
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -12106,36 +12060,14 @@ ForceLocal
 
 \end_inset
 
- flag of a style is greater than zero, it will always be written to the
- document header.
- If a .lyx file is read, the style definitions from the document header are
- added to the document class.
- Therefore even older LyX versions can handle the style.
- The argument of 
-\begin_inset Flex Code
-status collapsed
 
-\begin_layout Plain Layout
-
-\lang english
-ForceLocal
-\end_layout
-
-\end_inset
-
- is a version number: If the style is read, and the version number is less
- than the version number of the already existing style in the document class,
- the new style is ignored.
- If the version number is greater, the new style replaces the existing style.
- A value of -1 means an infinite version number, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space \space{}
-\end_inset
-
-the style is always used.
+\lang french
+ est un numéro de version : si le style est lu, et si le numéro de version
+ est inférieur au numéro de version du style existant dans la classe de
+ document, le nouveau style est ignoré.
+ Si le numéro de version est supérieur, le nouveau style remplace l'ancien.
+ La valeur -1 signifie un numéro de version infini, c'est-à-dire que le
+ style est toujours utilisé.
 \end_layout
 
 \begin_layout Description
@@ -12452,25 +12384,17 @@ chaîne="item"
 
 \end_inset
 
-] 
-\lang english
-The LaTeX command sequence declaring an item in a list.
- The command is to be defined without the preceding backslash (the default
- is
-\lang french
- 
-\begin_inset Quotes eld
+] est la commande LaTeX permettant de déclarer un élément d'une liste.
+ La commande doit être définie sans la barre oblique inverse qui la précède
+ habituellement (implicitement 
+\begin_inset Quotes fld
 \end_inset
 
 item
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
-, 
-\lang english
-resulting in 
-\lang french
-
+, qui est émis comme
 \begin_inset Flex Code
 status collapsed
 
@@ -12482,9 +12406,7 @@ item
 
 \end_inset
 
-
-\lang english
- in the LaTeX output).
+ en LaTeX).
 \end_layout
 
 \begin_layout Description
@@ -12606,9 +12528,9 @@ status collapsed
 
 \end_inset
 
-] LyX ne permet pas d'habitude de laisser un paragraphe vide, car il ne
- générerait rien en LaTeX.
- Il y a quelques cas où c'est pourtant utile : dans un modèle pour une lettre,
+] permet de laisser un paragraphe vide, ce que LyX ne permet pas d'habitude
+ car il ne générerait rien en LaTeX.
+ Il y a quelques cas où c'est pourtant utile: dans un modèle pour une lettre,
  les champs requis peuvent être laissés vides, pour que les gens ne les
  oublient pas; dans certains cas particuliers, un style peut aussi servir
  de séparateur, et ne pas contenir de texte.
@@ -12695,10 +12617,10 @@ status collapsed
 \end_inset
 
  dénomme le compteur pour la numérotation automatique.
- 
+ Pour que le compteur soit associé à votre étiquette, il vous faut le référencer
+ dans la directive 
 \lang english
-In order to have the counter appear with your label, you will need to reference
- it in the 
+
 \begin_inset Flex Code
 status collapsed
 
@@ -12711,8 +12633,12 @@ LabelString
 
 \end_inset
 
+
+\lang french
 .
- This will work with 
+ Ceci fonctionnera avec les
+\lang english
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -12760,9 +12686,9 @@ Centered
 
 \end_inset
 
-, at least.
-\lang french
 
+\lang french
+, au moins.
 \begin_inset Newline newline
 \end_inset
 
@@ -13222,18 +13148,17 @@ LabelString
 \end_inset
 
 ).
- 
-\lang english
-This will be displayed 
+ Ceci sera affiché 
 \begin_inset Quotes fld
 \end_inset
 
-inline
+en ligne
 \begin_inset Quotes frd
 \end_inset
 
-, at the beginning of the paragraph.
- If the 
+, au début du paragraphe.Si le 
+\lang english
+
 \begin_inset Flex Code
 status collapsed
 
@@ -13245,7 +13170,11 @@ LatexType
 
 \end_inset
 
- is 
+
+\lang french
+ est
+\lang english
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -13257,8 +13186,12 @@ Environment
 
 \end_inset
 
-, then it will be displayed only in the first paragraph of any sequence
- of paragraphs with the same 
+
+\lang french
+, alors il ne sera affiché que dans le premier paragraphe de toutes séquence
+ de paragraphes du même
+\lang english
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -13328,12 +13261,8 @@ Static
 \end_inset
 
 .
- Le marqueur sera imprimé au dessus du paragraphe, 
-\lang english
-either at the beginning of the line or centered
-\family sans
-\lang french
-.
+ Le marqueur sera imprimé au dessus du paragraphe, soit au début de la lignes,
+ soit centré.
 \end_layout
 
 \begin_layout Description
@@ -13409,9 +13338,9 @@ N
 \end_inset
 
  est la valeur du compteur associé au flottant.
- 
+ Au cas où une légende est insérée en dehors d'un flottant, le
 \lang english
-For the case that a caption is inserted outside of a float the 
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -13423,13 +13352,13 @@ LabelString
 
 \end_inset
 
- will appear as 
+
+\lang french
+ apparaîtra comme 
 \begin_inset Quotes fld
 \end_inset
 
-Senseless!
-\lang french
-
+Inapproprié!
 \begin_inset Quotes frd
 \end_inset
 
@@ -13626,24 +13555,7 @@ LatexName
 \end_inset
 
  correspondant.
- Ce paramètre ne peut pas être changé depuis LyX 
-\lang english
-(use 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Argument
-\end_layout
-
-\end_inset
-
- for customizable parameters).
- This will be output as is after all LaTeX
-\lang french
- 
+ Ce paramètre ne peut pas être changé depuis LyX (utiliser 
 \begin_inset Flex Code
 status collapsed
 
@@ -13653,7 +13565,18 @@ Argument
 
 \end_inset
 
-s.
+ pour les paramètres personnalisables).
+ Ceci sera émis tel quel après tous les
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Argument
+\end_layout
+
+\end_inset
+
+s LaTeX.
 \end_layout
 
 \begin_layout Description
@@ -13697,7 +13620,7 @@ List_Environment, Bib_Environment
 \lang english
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -13713,21 +13636,21 @@ LatexType
 
 \end_inset
 
- is perhaps a bit misleading, since these rules apply to DocBook classes,
- too.
- Visit the DocBook class files (filenames 
+
+\lang french
+ est peut-être trompeur, dans la mesure où ces règles s'appliquent également
+ aux classes DocBook.
+ Explorer les fichiers des classes DocBook (noms de fichiers 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 db_*.inc
 \end_layout
 
 \end_inset
 
- ) for specific examples.
+ ) pour voir des exemples particuliers.
 \end_layout
 
 \end_inset
@@ -13942,7 +13865,11 @@ Bib_Environment
 
 \end_inset
 
- is like 
+
+\lang french
+ fonctionne comme 
+\lang english
+
 \begin_inset Flex Code
 status collapsed
 
@@ -13954,8 +13881,12 @@ Environment
 
 \end_inset
 
- but adds additionally the necessary mandatory argument (the longest label)
- to the begin statement of the bibliography environment:
+
+\lang french
+, mais ajoute l'argument obligatoire nécessaire (l'étiquette la plus longue)
+ à la directive de début de l’environnement bibliographique:
+\lang english
+
 \begin_inset Newline newline
 \end_inset
 
@@ -13973,17 +13904,21 @@ begin{thebibliography}{99}
 
 \end_inset
 
- It is therefore only useful for bibliography environments.
- The default longest label 
-\begin_inset Quotes eld
+
+\lang french
+.
+ Cette directive n'est donc nécessaire que pour les environnements bibliographiq
+ues.
+ L’étiquette implicite 
+\begin_inset Quotes fld
 \end_inset
 
 99
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- can be changed by the user in the paragraph settings of a bibliography
- item.
+ peut être modifiée par l'utilisateur dans les réglages de paragraphe d'une
+ entrée bibliographique.
 \end_layout
 
 \begin_layout Standard
@@ -14045,12 +13980,8 @@ chaîne
 
 \end_inset
 
-] 
-\lang english
-A string that is put at the beginning of the style content.
- A line break in the output can be indicated by
-\lang french
- 
+] définit une chaîne de caractères insérée au début du contenu du style.
+ Une rupture de ligne dans la sortie peut être indiquée par 
 \begin_inset Flex Code
 status collapsed
 
@@ -15111,9 +15042,10 @@ status collapsed
 
 \end_inset
 
-] 
+] réinitialise les arguments LaTeX de ce style ( tels que définis par la
+ directive
 \lang english
-Resets the LaTeX arguments of this style (as defined via the 
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -15125,8 +15057,12 @@ Argument
 
 \end_inset
 
- tag).
- This is useful if you have copied a style via 
+)
+\lang french
+.
+ Ceci est utile si vous avez dupliqué un style en utilisant 
+\lang english
+
 \begin_inset Flex Code
 status collapsed
 
@@ -15138,7 +15074,10 @@ CopyStyle
 
 \end_inset
 
-, but you do not want to inherit its (required and optional) arguments.
+
+\lang french
+, et que vous ne voulez pas hériter de ses arguments (obligatoires et optionnels
+).
 \end_layout
 
 \begin_layout Description
@@ -15167,12 +15106,8 @@ chaîne
 
 \end_inset
 
-] 
-\lang english
-A string that is put at the end of the layout content.
- A line break in the output can be indicated by
-\lang french
- 
+] définit une chaîne de caractères insérée à la fin du contenu du style.
+ Une rupture de ligne dans la sortie peut être indiquée par 
 \begin_inset Flex Code
 status collapsed
 
@@ -15526,7 +15461,7 @@ Theorem 1
 \noun on
 Baum
 \noun default
-, ce n'est plus les cas.
+, ce n'est plus le cas.
 \end_layout
 
 \begin_layout Standard
@@ -15682,7 +15617,7 @@ BabelPreamble
 , mais dans la pratique elles se présenteront typiquement comme ce qui est
  montré ici.
  La clé de la traduction correcte du texte typographié est la définition
- de le commande LateX 
+ de le commande LaTeX 
 \begin_inset Flex Code
 status collapsed
 
@@ -15911,9 +15846,9 @@ babel
 
 \begin_layout Standard
 Un point important à noter est que les traductions sont celles qui sont
- fournies par LyX lui-même, via 
+ fournies par LyX lui-même, via le fichier 
 \lang english
-the file 
+
 \begin_inset Flex Code
 status collapsed
 
@@ -15950,9 +15885,9 @@ BabelPreamble
 
  ne sont effectifs que dans les fichiers de format fournis avec LyX, puisque
  les fichiers de format créés par l'utilisateur ne seront pas explorés par
- les fonction d'internationalisation 
+ les fonctions d'internationalisation, sauf si le fichier 
 \lang english
-unless the 
+
 \begin_inset Flex Code
 status collapsed
 
@@ -15964,32 +15899,18 @@ layouttranslations
 
 \end_inset
 
- file is modified accordingly
+ 
 \lang french
-.
+est modifié en conséquence.
  Ceci dit, tout fichier de format créé dans le but d'être distribué avec
  LyX doit inclure ces directives s'il y a lieu.
+ Notez bien que les traductions des styles de paragraphe ne changeront jamais
+ avec les publications de maintenance des versions de LyX (e.g.
+ de la version 2.1.x à la version 2.1.y).
+ Il est cependant très probable qu'à l'occasion d'une publication majeure
+ (e.g.
+ de 2.0.x à 2.1.0), de nouvelles traductions ou corrections soient introduites
  
-\lang english
-Please note that the paragraph style translations provided by LyX will never
- change with a minor update (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-from version 2.1.x to 2.1.y).
- It is however quite likely that a major update (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-from 2.0.x to 2.1.y) will introduce new translations or corrections.
 \end_layout
 
 \begin_layout Subsection
@@ -16833,11 +16754,7 @@ type
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 Inserts flexibles et InsetLayout
-\lang french
-
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Flex-insets-and"
@@ -16928,9 +16845,9 @@ endnote
 \end_layout
 
 \begin_layout Itemize
-
+éléments XML 
 \lang english
-éléments XML (
+(
 \begin_inset Flex Code
 status collapsed
 
@@ -16942,7 +16859,9 @@ Element
 
 \end_inset
 
-): à utiliser avec les classes DocBook.
+)
+\lang french
+: à utiliser avec les classes DocBook.
 \end_layout
 
 \begin_layout Standard
@@ -17350,12 +17269,8 @@ LyXType
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-The layout for user specific branch is being defined.
- In this case
-\lang french
-, 
+Le style d'une branche utilisateur doit être défini.
+ Dans ce cas, 
 \begin_inset Flex Code
 status collapsed
 
@@ -17365,11 +17280,7 @@ status collapsed
 
 \end_inset
 
-
-\lang english
- must be of the form
-\lang french
- 
+ doit être de la forme 
 \begin_inset Quotes fld
 \end_inset
 
@@ -17387,11 +17298,7 @@ Branch:<nom>
 \begin_inset Quotes frd
 \end_inset
 
-
-\lang english
-, where
-\lang french
- 
+, où 
 \begin_inset Flex Code
 status collapsed
 
@@ -17401,22 +17308,17 @@ nom
 
 \end_inset
 
- 
-\lang english
-may be be any valid identifier of branch defined in user's document.
- The identifier may include spaces, but in that case the whole thing must
- be wrapped in quotes.
- The main purpose of this feature is to allow LaTeX wrapping around specific
- branches as user needs.
+ peut être un identificateur de branche valide défini dans le document utilisate
+ur.
+ L'identificateur peur contenir des espaces, mais dans ce cas la chaîne
+ toute entière doit être enclose entre apostrophes.
+ Le principal intérêt de cette fonctionnalité est est de permettre l’inclusion
+ LaTeX de branches spécifiques suivant les besoins de l'utilisateur.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-The layout of a user (or class) specific caption is being defined.
- In this case
-\lang french
-, 
+Le style d'une légende utilisateur (ou de classe) doit être défini.
+ Dans ce cas, 
 \begin_inset Flex Code
 status collapsed
 
@@ -17426,11 +17328,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-must be of the form
-\lang french
- 
+ doit être de la forme 
 \begin_inset Quotes fld
 \end_inset
 
@@ -17448,11 +17346,7 @@ Caption:<nom>
 \begin_inset Quotes frd
 \end_inset
 
-, 
-\lang english
-where
-\lang french
- 
+, où 
 \begin_inset Flex Code
 status collapsed
 
@@ -17462,10 +17356,10 @@ nom
 
 \end_inset
 
- 
+ spécifie le nom de la légende tel qu'il apparaît dans le menu.
+ Voir la légende standard 
 \lang english
-specifies the name of the caption as it appears in the menu.
- Have a look at the standard caption (
+(
 \begin_inset Flex Code
 status collapsed
 
@@ -17477,7 +17371,11 @@ Caption:Standard
 
 \end_inset
 
-), the specific captions of the KOMA-Script classes (
+)
+\lang french
+, les légendes spécifiques des classes KOMA-Script
+\lang english
+ (
 \begin_inset Flex Code
 status collapsed
 
@@ -17501,15 +17399,15 @@ Caption:Below
 
 \end_inset
 
-) or the module 
+)
+\lang french
+ ou le module 
 \family sans
-Multilingual
-\begin_inset space ~
-\end_inset
-
-Captions
+Légendes multilingues
 \family default
- (
+ 
+\lang english
+(
 \begin_inset Flex Code
 status collapsed
 
@@ -17521,7 +17419,9 @@ Caption:Bicaption
 
 \end_inset
 
-) for applications.
+)
+\lang french
+ pour des applications.
 \end_layout
 
 \begin_layout Standard
@@ -17566,10 +17466,13 @@ int
 
 \end_inset
 
-] Defines argument number of a command\SpecialChar \slash{}
-environment associated with the current
- layout.
- The definition must end with 
+]
+\lang french
+ définit un numéro d'argument d'une commande ou d'un environnement associé
+ au style courant.
+ La définition doit être close par
+\lang english
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -17582,18 +17485,16 @@ EndArgument
 \end_inset
 
 .
- See 
-\lang french
 
+\lang french
+ Voir 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Styles-de-paragraphe"
 
 \end_inset
 
-
-\lang english
- for details.
+ pour les détails.
 \end_layout
 
 \begin_layout Description
@@ -17610,8 +17511,9 @@ BabelPreamble
 
 \end_inset
 
- Preamble for changing language commands; see
+, 
 \lang french
+définit un préambule pour les modifications de commandes de langue; voir
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -17660,9 +17562,8 @@ reference "chap:Names-of-colors"
 
 \end_inset
 
+ pour une liste des noms de couleur disponibles.
  
-\lang english
-for a list of the available color names.
 \end_layout
 
 \begin_layout Description
@@ -17738,11 +17639,7 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-As with paragraph styles, see
-\lang french
- 
+] fonctionne comme les styles de paragraphe, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Styles-de-paragraphe"
@@ -17750,9 +17647,7 @@ reference "sub:Styles-de-paragraphe"
 \end_inset
 
 .
- 
-\lang english
-Note that you need to specify the complete type, e.
+ Notez que vous devez spécifier le type complet, e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -17760,6 +17655,8 @@ g.
 \begin_inset space ~
 \end_inset
 
+
+\lang english
 
 \begin_inset Flex Code
 status collapsed
@@ -17901,7 +17798,7 @@ Classic
 
 \end_inset
 
-, les insert des code TeX 
+, les inserts des code TeX 
 \begin_inset Flex Code
 status collapsed
 
@@ -18078,7 +17975,11 @@ Font
 et
 \emph default
  pour le marqueur.
- Voir la 
+ Voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:polices"
@@ -18156,9 +18057,13 @@ status collapsed
 
 \end_inset
 
-] 
+] lors de l'utilisation de babel, force l'utilisation un commutateur de
+ police 
+\emph on
+local
+\emph default
 \lang english
-When using babel, always use a local font switch (
+ (
 \begin_inset Flex Code
 status collapsed
 
@@ -18172,7 +18077,15 @@ foreignlanguage
 
 \end_inset
 
-), never a global one (such as 
+)
+\lang french
+, à la place d'un commutateur 
+\emph on
+global
+\emph default
+ (comme 
+\lang english
+
 \begin_inset Flex Code
 status collapsed
 
@@ -18354,11 +18267,11 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-As with paragraph styles, see
-\lang french
- 
+] fonctionne comme les styles de paragraphe, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Styles-de-paragraphe"
@@ -18490,11 +18403,7 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-As with paragraph styles
-\lang french
-, voir 
+] fonctionne comme les styles de paragraphe, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Styles-de-paragraphe"
@@ -18611,9 +18520,13 @@ LangPreamble
 
 \end_inset
 
- Language dependent preamble; see
+
 \lang french
- 
+ définit un préambule dépendant de la langue, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:I18n"
@@ -18702,24 +18615,7 @@ status collapsed
 \end_inset
 
 .
- Ce paramètre ne peut pas être modifié depuis LyX
-\lang english
- (use 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Argument
-\end_layout
-
-\end_inset
-
- for customizable parameters).
- It will be output as is after all LaTeX
-\lang french
- 
+ Ce paramètre ne peut pas être modifié depuis LyX (utiliser 
 \begin_inset Flex Code
 status collapsed
 
@@ -18729,7 +18625,18 @@ Argument
 
 \end_inset
 
-s.
+ pour les paramètres personnalisables).
+ Il sera émis tel quel après tous les 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+Argument
+\end_layout
+
+\end_inset
+
+s LaTeX.
 \end_layout
 
 \begin_layout Description
@@ -18770,9 +18677,13 @@ status collapsed
 
 \end_inset
 
-] How the style should be translated into LaTeX.
+]
+\lang french
+ précise comment le style doit être traduit en LaTeX
+\lang english
+
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -18788,13 +18699,16 @@ LatexType
 
 \end_inset
 
- is perhaps a bit misleading, since these rules apply to SGML classes, too.
- Visit the SGML class files for specific examples.
+
+\lang french
+ est peut-être trompeur, puisque ces règles s'appliquent aussi aux classes
+ SGML.
+ Voir les fichiers de classe SGML pour des exemples spécifiques.
 \end_layout
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_deeper
@@ -18812,7 +18726,17 @@ None
 
 \end_inset
 
- means nothing special
+
+\lang french
+ signifie 
+\begin_inset Quotes fld
+\end_inset
+
+rien de particulier
+\begin_inset Quotes frd
+\end_inset
+
+;
 \end_layout
 
 \begin_layout Description
@@ -18829,7 +18753,11 @@ Command
 
 \end_inset
 
- means 
+
+\lang french
+ signifie 
+\lang english
+
 \begin_inset Flex Code
 status collapsed
 
@@ -18848,7 +18776,7 @@ LatexName
 
 \end_inset
 
-
+;
 \end_layout
 
 \begin_layout Description
@@ -18865,7 +18793,11 @@ Environment
 
 \end_inset
 
- means 
+
+\lang french
+ signifie 
+\lang english
+
 \begin_inset Flex Code
 status collapsed
 
@@ -18890,7 +18822,7 @@ LatexName
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Description
@@ -18898,9 +18830,7 @@ LatexName
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Putting the last few things together, the LaTeX output will be either: 
+En rassemblant ceci, la sortie LaTeX sera soit: 
 \end_layout
 
 \begin_layout LyX-Code
@@ -18913,9 +18843,7 @@ LatexName[LatexParam]{\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-ou: 
+soit: 
 \end_layout
 
 \begin_layout LyX-Code
@@ -18930,9 +18858,21 @@ end{LatexName}
 \end_layout
 
 \begin_layout Standard
+suivant le 
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \lang english
-depending upon the LaTeX type.
+LatexType
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \end_deeper
@@ -18962,12 +18902,8 @@ chaîne
 
 \end_inset
 
-] 
-\lang english
-A string that is put at the beginning of the layout content.
- A line break in the output can be indicated by
-\lang french
- 
+] définit une chaîne de caractères insérée au début du contenu du style.
+ Une rupture de ligne dans la sortie peut être indiquée par 
 \begin_inset Flex Code
 status collapsed
 
@@ -19296,7 +19232,11 @@ status collapsed
 
 \end_inset
 
-] Deletes an existing 
+]
+\lang french
+ supprime un 
+\lang english
+
 \begin_inset Flex Code
 status collapsed
 
@@ -19308,7 +19248,9 @@ InsetLayout
 
 \end_inset
 
-.
+
+\lang french
+ existant.
 \end_layout
 
 \begin_layout Description
@@ -19361,10 +19303,10 @@ status collapsed
 
 
 \family default
-] 
-\lang english
-As with paragraph styles, see 
-\lang french
+] fonctionne comme avec les styles de paragraphe, voir
+\begin_inset space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -19425,10 +19367,10 @@ status collapsed
 
 
 \family default
-] 
-\lang english
-As with paragraph styles, see 
-\lang french
+] fonctionne comme avec les styles de paragraphe, voir
+\begin_inset space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -19453,8 +19395,12 @@ Preamble
 
 \end_inset
 
- As with paragraph styles, see 
+
 \lang french
+ fonctionne comme avec les styles de paragraphe, voir
+\begin_inset space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -19578,22 +19524,21 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Resets the LaTeX arguments of this layout (as defined via the 
+] réinitialise les arguments LaTeX de ce style (définis via la directive
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Argument
 \end_layout
 
 \end_inset
 
- tag).
- This is useful if you have copied a style via 
+).
+ Ceci est utile si vous avez dupliqué un style via 
+\lang english
+
 \begin_inset Flex Code
 status collapsed
 
@@ -19605,7 +19550,10 @@ CopyStyle
 
 \end_inset
 
-, but you do not want to inherit its (required and optional) arguments.
+, 
+\lang french
+mais que vous ne voulez pas hériter de ses arguments (obligatoires et optionnels
+).
 \end_layout
 
 \begin_layout Description
@@ -19652,7 +19600,7 @@ status collapsed
 
 ] indique si l'insert doit utiliser la police de caractères environnante
  ou bien utiliser la sienne propre.
- Valeur implicite; vrai, utiliser sa propre police.
+ Valeur implicite: vrai, utiliser sa propre police.
 \end_layout
 
 \begin_layout Description
@@ -19681,12 +19629,8 @@ chaîne
 
 \end_inset
 
-] 
-\lang english
-A string that is put at the end of the layout content.
- A line break in the output can be indicated by
-\lang french
- 
+] définit une chaîne de caractères insérée à la fin du contenu du style.
+ Une rupture de ligne dans la sortie peut être indiquée par 
 \begin_inset Flex Code
 status collapsed
 
@@ -19742,7 +19686,7 @@ status collapsed
 \end_inset
 
 ] active le correcteur orthographique sur le contenu de cet insert.
- Valeur implicite; vrai.
+ Valeur implicite: vrai.
 \end_layout
 
 \begin_layout Subsection
@@ -19811,7 +19755,7 @@ Input stdcounters.inc
 \begin_layout Standard
 Mais si vous voulez définir des compteurs à votre guise, vous pouvez le
  faire.
- la déclaration d'un compteur doit commencer par
+ La déclaration d'un compteur doit commencer par
 \end_layout
 
 \begin_layout LyX-Code
@@ -19879,9 +19823,15 @@ int=1
 
 \end_inset
 
-] Sets the initial value for the counter, to which it will be reset whenever
- that happens.
- Normally, one will want the default, 1.
+]
+\lang french
+ positionne la valeur initiale du compteur, valeur à laquelle il sera réinitiali
+sé quand cela sera nécessaire.
+ Normalement, la valeur désirée est la valeur implicite,
+\begin_inset space ~
+\end_inset
+
+1.
 \end_layout
 
 \begin_layout Description
@@ -20056,7 +20006,7 @@ alph
 
 \end_inset
 
- pour les let tes en bas de casse: a, b, c, \SpecialChar \ldots{}
+ pour les lettres en bas de casse: a, b, c, \SpecialChar \ldots{}
 ; 
 \begin_inset Flex Code
 status collapsed
@@ -20257,7 +20207,7 @@ chaîne
 \begin_inset Quotes erd
 \end_inset
 
-] définit un format à utiliser pour les références lises en forme utilisant
+] définit un format à utiliser pour les références mises en forme utilisant
  ce compteur.
  Par exemple, on peut vouloir que les références aux numéros de section
  apparaissent comme 
@@ -20708,7 +20658,7 @@ no_emph
 \end_inset
 
  la désactive.
- Si e dernier point vous intrigue, souvenez-vous que le réglage de police
+ Si ce dernier point vous intrigue, souvenez-vous que le réglage de police
  du contexte courant est généralement hérité du contexte environnant.
  De ce fait, 
 \begin_inset Flex Code
@@ -21032,7 +20982,7 @@ misc %author%,
 \begin_inset Quotes eld
 \end_inset
 
-%title
+%title%
 \begin_inset Quotes erd
 \end_inset
 
@@ -21045,7 +20995,7 @@ Ceci imprimerait le nom de l'auteur, suivi d'une virgule, suivi du titre,
 \end_layout
 
 \begin_layout Standard
-Bine entendu, vous voudrez parfois n'imprimer une clé que si elle existe.
+Bien entendu, vous voudrez parfois n'imprimer une clé que si elle existe.
  Ceci est obtenu par une construction conditionnelle, comme: 
 \begin_inset Flex Code
 status collapsed
@@ -21279,7 +21229,7 @@ status collapsed
 
 \end_inset
 
- exactement comme s'l s'agissait de sa définition.
+ exactement comme s'il s'agissait de sa définition.
  Exprimons par conséquent un 
 \emph on
 avertissement
@@ -21310,7 +21260,7 @@ _pptext pp.
 \begin_layout Standard
 Ceci définit un segment de texte susceptible de traduction, ce qui permet
  de traduire les parties appropriées de la bibliographie.
- Cette syntaxe peut être inclue dans une définition normale en la considérant
+ Cette syntaxe peut être incluse dans une définition normale en la considérant
  comme une clé: 
 \begin_inset Flex Code
 status collapsed
@@ -21468,7 +21418,7 @@ HTMLPreamble
 
 \end_inset
 
- and 
+ et 
 \begin_inset Flex Code
 status collapsed
 
@@ -21478,8 +21428,7 @@ AddToHTMLPreamble
 
 \end_inset
 
-, qui peu\SpecialChar \-
-vent apparaître en dehors des déclarations de style et d'insert.
+, qui peuvent apparaître en dehors des déclarations de style et d'insert.
  Voir 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -21503,7 +21452,7 @@ name "sub:Styles-de-paragraphe-XHTML"
 
 \begin_layout Standard
 Le type de XHTML que LyX crée pour un paragraphe dépend s'il s'agit d'un
- paragraphe normal, d'une commande, ou d'un environnement, ce qui est déterminé
+ paragraphe normal, d'une commande ou d'un environnement, ce qui est déterminé
  par le contenu de la directive correspondante 
 \begin_inset Flex Code
 status collapsed
@@ -21857,7 +21806,7 @@ HTMLLabelFirst
 Les balises et les attributs spécifiques émis pour chaque type de paragraphe
  peuvent être contrôlés par les directives de format que nous allons décrire.
  Comme indiqué ci-dessus, cependant, LyX utilise des valeurs implicites
- raisonnables pour la plupart d'entre elles, vous n'aurez donc pas grand'chose
+ raisonnables pour la plupart d'entre elles, vous n'aurez donc pas grand-chose
  à faire pour produire un résultat XHTML satisfaisant.
  Pensez aux directives disponibles comme un supplément pour obtenir un réglage
  à votre convenance.
@@ -22486,9 +22435,9 @@ onclick
 \end_inset
 
 .
- 
+ Doit être fermé par 
 \lang english
-Must end with 
+
 \begin_inset Flex Code
 status collapsed
 
@@ -22670,7 +22619,7 @@ commande
 .
  Là encore, LyX essaie de produire implicitement un résultat raisonnable,
  et il crée des règles CSS implicites.
- Mais tout eut être personnalisé.
+ Mais tout peut être personnalisé.
 \end_layout
 
 \begin_layout Standard
@@ -22738,7 +22687,7 @@ MultiPar
 \end_inset
 
  est vrai --- alors le contenu de l'insert sera exporté également en paragraphes
- formattés en fonction des styles utilisés pour ces paragraphes (standard,
+ formatés en fonction des styles utilisés pour ces paragraphes (standard,
  citation et similaire).
  La balise d'étiquetage est bien entendu omise si la paragraphe n'a pas
  d'étiquette et, pour le moment, est toujours 
@@ -23528,7 +23477,11 @@ CiteFormat
 \end_inset
 
 .
- Voir la 
+ Voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Description citation"
@@ -23601,7 +23554,11 @@ Font
 
 \end_inset
 
- (voir 
+ (voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:polices"
@@ -23670,7 +23627,7 @@ src/FontInfo.cpp
 \end_layout
 
 \begin_layout Chapter
-Insérer un Objet externe
+Insérer un objet externe
 \begin_inset CommandInset label
 LatexCommand label
 name "chap:Insérer-un-Objet"
@@ -23694,7 +23651,7 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Avertissement: cette partie des la documentation n'a pas été mise à jour
@@ -23861,7 +23818,7 @@ En plus de supporter la génération de fichiers transformés différents selon
  aussi visualiser le fichier transformé PostScript avec Ghostview d'un autre
  clic.
  Il n'y a plus à se bagarrer avec la ligne de commande ou avec des explorateurs
- de fichier pour localiser et manipuler le fichier d'origine et le fichier
+ de fichiers pour localiser et manipuler le fichier d'origine et le fichier
  transformé.
  De cette façon, vous pouvez enfin profiter à plein des nombreuses applications
  différentes qui servent à la production de documents, et serez finalement
@@ -23869,9 +23826,7 @@ En plus de supporter la génération de fichiers transformés différents selon
 \end_layout
 
 \begin_layout Section
-
-\lang english
-The external template configuration file
+Le fichier de configuration d'un cadre externe
 \end_layout
 
 \begin_layout Standard
@@ -23882,7 +23837,11 @@ Il est assez facile de définir de nouveaux cadres externes dans LyX.
 sûrement
 \emph default
  une faille de sécurité facilement exploitable.
- Avant de commencer, lisez donc plus bas ce qui concerne la sécurité (
+ Avant de commencer, lisez donc plus bas ce qui concerne la sécurité
+\begin_inset space ~
+\end_inset
+
+(
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "sec:La-question-de"
@@ -24357,9 +24316,9 @@ true|false
 
 \end_inset
 
- 
+
 \lang french
-indique si le fichier représenté par le cadre doit être créé par LyX.
+ indique si le fichier représenté par le cadre doit être créé par LyX.
  Cette directive doit apparaître une et une seule fois.
 \end_layout
 
@@ -24376,20 +24335,16 @@ FileFilter
 \begin_inset space ~
 \end_inset
 
-<pattern>
+<patron>
 \end_layout
 
 \end_inset
 
  
 \lang french
-précise un patron gloal utilisé dans l'échange dans la spécification des
+précise un patron global utilisé dans l'échange dans la spécification des
  fichiers pour filtrer les fichiers désignés.
-
-\lang english
- 
-\lang french
-S'il y a plus d'un suffixe possible (e.g.
+ S'il y a plus d'un suffixe possible (e.g.
  pour tgif, 
 \begin_inset Flex Code
 status collapsed
@@ -24443,7 +24398,7 @@ GuiName
 \begin_inset space ~
 \end_inset
 
-<guiname>
+<nom_interface>
 \end_layout
 
 \end_inset
@@ -24467,7 +24422,7 @@ HelpText
 \begin_inset space ~
 \end_inset
 
-<text>
+<texte>
 \begin_inset space ~
 \end_inset
 
@@ -24513,7 +24468,11 @@ InputFormat
 
 \lang french
  indique le format du fichier original.
- Ce doit être le nom d'un format reconnu par LyX (voir la 
+ Ce doit être le nom d'un format reconnu par LyX (voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Formats"
@@ -24542,7 +24501,7 @@ status collapsed
 \end_inset
 
 si le cadre peut gérer des fichiers originaux dans plus d'un format.
- LyX tentera d'analyser le fichier pour ne déduire le format dans ce cas.
+ LyX tentera d'analyser le fichier pour en déduire le format dans ce cas.
  Cette directive doit apparaître une et une seule fois.
 \end_layout
 
@@ -24831,14 +24790,14 @@ Product
 \begin_inset space ~
 \end_inset
 
-<text>
+<texte>
 \end_layout
 
 \end_inset
 
 
 \lang french
- spécifie les texte inséré dans le document exporté.
+ spécifie le texte inséré dans le document exporté.
  C'est en fait la directive la plus importante et elle peut être assez compliqué
 e.
  Cette directive doit apparaître une et une seule fois.
@@ -24915,7 +24874,7 @@ ReferencedFile
 \begin_inset space ~
 \end_inset
 
-<filename>
+<nom_fichier>
 \end_layout
 
 \end_inset
@@ -24942,7 +24901,7 @@ Requirement
 \begin_inset space ~
 \end_inset
 
-<package>
+<paquetage>
 \end_layout
 
 \end_inset
@@ -25201,9 +25160,10 @@ fichier
 
  ).
  Cette directive doit apparaître une et une seule fois.
+ Si le format du fichier résultant est PDF, vous devez spécifier le format
  
 \lang english
-If the resulting file format is PDF, you need to specify the format 
+
 \begin_inset Flex Code
 status collapsed
 
@@ -25215,9 +25175,10 @@ pdf6
 
 \end_inset
 
-.
- This is the PDF format used for including graphics.
- The other defined PDF formats are for document export.
+
+\lang french
+, qui est le format PDF utilisé pour insérer des graphiques.
+ Les autres formats PDF définis servent aux exportations du document.
 \end_layout
 
 \begin_layout Description
@@ -25233,7 +25194,7 @@ UpdateResult
 \begin_inset space ~
 \end_inset
 
-<filename>
+<nom_fichier>
 \end_layout
 
 \end_inset
@@ -25448,11 +25409,7 @@ $$FName
 
 \lang french
  est le nom du fichier spécifié dans la fenêtre d'objet externe.
-
-\lang english
- 
-\lang french
-Il est soit absolu, soit relatif au document LyX.
+ Il est soit absolu, soit relatif au document LyX.
 \end_layout
 
 \begin_layout Description
@@ -25469,9 +25426,9 @@ $$FPath
 
 \end_inset
 
- 
+
 \lang french
-la partie 
+ la partie 
 \begin_inset Quotes fld
 \end_inset
 
@@ -25569,7 +25526,7 @@ $$Tempname
 
 
 \lang french
- Le nom et le chemin absolu d'un fichier temporaire qui sera automatiquement
+ est le nom et le chemin absolu d'un fichier temporaire qui sera automatiquement
  effacé quand le document sera fermé, ou l'objet externe effacé.
 \end_layout
 
@@ -25827,7 +25784,7 @@ les chemins d'accès relatifs et absolus doivent rester relatifs et absolus,
  Les utilisateurs peuvent avoir des raisons de préférer l'un ou l'autre.
  Les chemins relatifs sont utiles pour des documents portables sur différentes
  machines, par exemple.
- Les chemins absolus peuvent être requis par certains logiciels.
+ Les chemins absolus peuvent être requis par certains logiciels;
 \end_layout
 
 \begin_layout Enumerate
@@ -25945,7 +25902,7 @@ L'insertion d'objet externe crée une interface avec un paquet de programmes
  externes et le fait de manière automatique, nous devons donc en examiner
  les conséquences en matière de sécurité.
  En particulier, comme vous avez la possibilité d'inclure vos propres noms
- de fichier et/ou paramètres et qu'ils sont interprétés pour former une
+ de fichier ou de paramètres et qu'ils sont interprétés pour former une
  commande, il semble possible de créer un document malveillant qui exécute
  des commandes indésirables quand un utilisateur le visualise ou l'imprime.
  C'est quelque chose que nous voulons absolument éviter.
@@ -25982,7 +25939,7 @@ system
 \end_layout
 
 \begin_layout Standard
-Ça implique aussi qu'il y a des restrictions dans les commandes définissables
+Ceci implique aussi qu'il y a des restrictions dans les commandes définissables
  dans un cadre d'objet externe.
  En particulier, les pipes et les redirections ne sont pas disponibles.
  C'était obligatoire pour que LyX reste sûr.
@@ -25995,9 +25952,9 @@ system
 \begin_layout Standard
 Il est possible de créer un cadre qui interagit directement avec le shell,
  mais comme cela permettrait à un utilisateur malveillant d'exécuter des
- commandes arbitraires en écrivant des noms de fichier et/ou des paramètres
+ commandes arbitraires en écrivant des noms de fichier ou des paramètres
  bien choisis, nous vous recommandons d'utiliser en général des scripts
- sûrs qui marchent avec l'appel système 
+ sûrs qui fonctionnent avec l'appel système 
 \begin_inset Flex Code
 status collapsed
 
@@ -26010,7 +25967,7 @@ execvp
  d'une manière contrôlée.
  Bien sûr, si vous êtes dans un environnement dans lequel vous avez confiance,
  il est tentant de ne pas se fouler et d'utiliser des scripts shell ordinaires.
- Si vous faites ça, sachez que vous allez 
+ Si vous faites cela, sachez que vous allez 
 \emph on
 vraiment
 \emph default
@@ -26037,11 +25994,7 @@ L'insertion d'objet externe est un outil très puissant, et vous devez faire
 
 \begin_layout Chapter
 \start_of_appendix
-
-\lang english
-List of functions to be used in layouts
-\lang french
-
+Liste des fonctions utilisables dans les styles
 \begin_inset CommandInset label
 LatexCommand label
 name "chap:List-of-functions"
@@ -26886,11 +26839,7 @@ verbatim
 \end_layout
 
 \begin_layout Chapter
-
-\lang english
-Names of available colors to be used in layouts
-\lang french
-
+Noms des couleurs disponibles utilisables dans les styles
 \begin_inset CommandInset label
 LatexCommand label
 name "chap:Names-of-colors"
@@ -26901,28 +26850,16 @@ name "chap:Names-of-colors"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The colors listed here are the standard colors and the those that you can
- adjust in the LyX preferences.
+Les couleurs énumérées ci-après sont les couleurs standard et celles que
+ vous pouvez régler dans les préférences LyX.
 \end_layout
 
 \begin_layout Description
 
 \lang english
 none
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
- No particular color -- clear or default
+\lang french
+ pas de couleur particulière -- réinitialisation ou couleur implicite
 \end_layout
 
 \begin_layout Description
@@ -26976,439 +26913,585 @@ yellow
 \begin_layout Description
 
 \lang english
-added_space Added space marker color
+added_space
+\lang french
+ marqueur d'espace ajoutée
 \end_layout
 
 \begin_layout Description
 
 \lang english
-addedtext Added text color
+addedtext
+\lang french
+ texte ajouté
 \end_layout
 
 \begin_layout Description
 
 \lang english
-appendix Appendix marker color
+appendix
+\lang french
+ marque d'appendice
 \end_layout
 
 \begin_layout Description
 
 \lang english
-background Background color
+background
+\lang french
+ fond
 \end_layout
 
 \begin_layout Description
 
 \lang english
-bottomarea Bottom area color
+bottomarea
+\lang french
+ zone du bas
 \end_layout
 
 \begin_layout Description
 
 \lang english
-branchlabel Label color for branches
+branchlabel
+\lang french
+ étiquette de branche
 \end_layout
 
 \begin_layout Description
 
 \lang english
-buttonbg Color used for bottom background
+buttonbg
+\lang french
+ fond de bouton d'insert
 \end_layout
 
 \begin_layout Description
 
 \lang english
-buttonhoverbg Color used for button background under focus
+buttonhoverbg
+\lang french
+ fond du bouton d'insert (pointé)
 \end_layout
 
 \begin_layout Description
 
 \lang english
-buttonframe Color for inset button frames
+buttonframe
+\lang french
+ bordure de bouton d'insert
 \end_layout
 
 \begin_layout Description
 
 \lang english
-changebar Changebar color
+changebar
+\lang french
+ barre de modification
 \end_layout
 
 \begin_layout Description
 
 \lang english
-changedtextauthor1 Changed text color author 1
+changedtextauthor1
+\lang french
+ texte modifié auteur 1
 \end_layout
 
 \begin_layout Description
 
 \lang english
-changedtextauthor2 Changed text color author 2
+changedtextauthor2
+\lang french
+ texte modifié auteur 2
 \end_layout
 
 \begin_layout Description
 
 \lang english
-changedtextauthor3 Changed text color author 3
+changedtextauthor3
+\lang french
+ texte modifié auteur 3
 \end_layout
 
 \begin_layout Description
 
 \lang english
-changedtextauthor4 Changed text color author 4
+changedtextauthor4
+\lang french
+ texte modifié auteur 4
 \end_layout
 
 \begin_layout Description
 
 \lang english
-changedtextauthor5 Changed text color author 5
+changedtextauthor5
+\lang french
+ texte modifié auteur 5
 \end_layout
 
 \begin_layout Description
 
 \lang english
-collapsable_inset_frame Collapsable insets framecolor
+collapsable_inset_frame
+\lang french
+ cadre d'insert repliable
 \end_layout
 
 \begin_layout Description
 
 \lang english
-collapsable_inset_text Collapsable insets text color
+collapsable_inset_text
+\lang french
+ texte d'insert repliable
 \end_layout
 
 \begin_layout Description
 
 \lang english
-command Text color for command insets
+command
+\lang french
+ insert de commande
 \end_layout
 
 \begin_layout Description
 
 \lang english
-commandbg Background color for command insets
+commandbg
+\lang french
+ fond d'insert de commande
 \end_layout
 
 \begin_layout Description
 
 \lang english
-commandframe Frame color for command insets
+commandframe
+\lang french
+ cadre d'insert de commande
 \end_layout
 
 \begin_layout Description
 
 \lang english
-comment color for comments
+comment
+\lang french
+ commentaire
 \end_layout
 
 \begin_layout Description
 
 \lang english
-commentbg Background color of comments
+commentbg
+\lang french
+ fond de commentaire
 \end_layout
 
 \begin_layout Description
 
 \lang english
-cursor Cursor color
+cursor
+\lang french
+ curseur
 \end_layout
 
 \begin_layout Description
 
 \lang english
-deletedtext Deleted text color
+deletedtext
+\lang french
+ texte supprimé
 \end_layout
 
 \begin_layout Description
 
 \lang english
-deletedtextmodifier Deleted text modifying color
+deletedtextmodifier
+\lang french
+ modificateur de texte supprimé
 \end_layout
 
 \begin_layout Description
 
 \lang english
-depthbar Color for the depth bars in the margin
+depthbar
+\lang french
+ barre de profondeur
 \end_layout
 
 \begin_layout Description
 
 \lang english
-eolmarker End of line marker color
+eolmarker
+\lang french
+ marqueur de fin de ligne
 \end_layout
 
 \begin_layout Description
 
 \lang english
-error Color of the LaTeX error box
+error
+\lang french
+ erreur LaTeX
 \end_layout
 
 \begin_layout Description
 
 \lang english
-footlabel Label color for footnotes
+footlabel
+\lang french
+ étiquette de note de bas de page
 \end_layout
 
 \begin_layout Description
 
 \lang english
-graphicsbg Graphics inset background color
+graphicsbg
+\lang french
+ fond graphique
 \end_layout
 
 \begin_layout Description
 
 \lang english
-greyedout Label color for greyedout insets
+greyedout 
+\lang french
+étiquette d'insert grisé
 \end_layout
 
 \begin_layout Description
 
 \lang english
-greyedoutbg Background color of greyedout inset
+greyedoutbg
+\lang french
+ fond d'insert grisé
 \end_layout
 
 \begin_layout Description
 
 \lang english
-greyedouttext Color for greyedout inset text
+greyedouttext
+\lang french
+ texte d'insert grisé
 \end_layout
 
 \begin_layout Description
 
 \lang english
-indexlabel Label color for index insets
+indexlabel
+\lang french
+ étiquette d'index
 \end_layout
 
 \begin_layout Description
 
 \lang english
-ignore The color is ignored
+ignore
+\lang french
+ couleur ignorée
 \end_layout
 
 \begin_layout Description
 
 \lang english
-inherit The color is inherited
+inherit
+\lang french
+ couleur héritée
 \end_layout
 
 \begin_layout Description
 
 \lang english
-inlinecompletion Inline completion color
+inlinecompletion
+\lang french
+ complétion en ligne
 \end_layout
 
 \begin_layout Description
 
 \lang english
-insetbg Inset marker background color
+insetbg
+\lang french
+ fond d'insert
 \end_layout
 
 \begin_layout Description
 
 \lang english
-insetframe Inset marker frame color
+insetframe
+\lang french
+ cadre d'insert
 \end_layout
 
 \begin_layout Description
 
 \lang english
-language Color for marking foreign language words
+language
+\lang french
+ langue étrangère
 \end_layout
 
 \begin_layout Description
 
 \lang english
-latex Text color in LaTeX mode
+latex
+\lang french
+ texte LaTeX
 \end_layout
 
 \begin_layout Description
 
 \lang english
-listingsbg Background color of listings inset
+listingsbg
+\lang french
+ fond de listing
 \end_layout
 
 \begin_layout Description
 
 \lang english
-marginlabel Label color for margin notes
+marginlabel
+\lang french
+ étiquette de note en marge
 \end_layout
 
 \begin_layout Description
 
 \lang english
-math Math inset text color
+math
+\lang french
+ texte mathématique
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathbg Math inset background color
+mathbg
+\lang french
+ fond mathématique
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathcorners Math inset frame color not under focus
+mathcorners
+\lang french
+ cadre mathématique (non pointé)
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathframe Math inset frame color under focus
+mathframe
+\lang french
+ cadre mathématique (pointé)
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathline Math line color
+mathline
+\lang french
+ ligne mathématique
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathmacrobg Macro math inset background color
+mathmacrobg
+\lang french
+ fond de macro mathématique
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathmacroblend Macro math blended color
+mathmacroblend
+\lang french
+ macro mathématique désactivée
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathmacroframe Macro math frame color
+mathmacroframe
+\lang french
+ cadre de macro mathématique
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathmacrohoverbg Macro math inset background color hovered
+mathmacrohoverbg
+\lang french
+ fond dynamique de macro mathématique
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathmacrolabel Macro math label color
+mathmacrolabel
+\lang french
+ étiquette de macro mathématique
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathmacronewarg Macro template color for new parameters
+mathmacronewarg
+\lang french
+ macro mathématique : nouveau paramètre
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathmacrooldarg Macro template color for old parameters
+mathmacrooldarg
+\lang french
+ macro mathématique : ancien paramètre
 \end_layout
 
 \begin_layout Description
 
 \lang english
-newpage New page color
+newpage
+\lang french
+ saut de page
 \end_layout
 
 \begin_layout Description
 
 \lang english
-nonunique_inlinecompletion Inline completion color for the non-unique part
+nonunique_inlinecompletion
+\lang french
+ complétion en ligne (choix multiples)
 \end_layout
 
 \begin_layout Description
 
 \lang english
-notebg Background color of notes
+notebg
+\lang french
+ fond de note 
 \end_layout
 
 \begin_layout Description
 
 \lang english
-notelabel Label color for notes
+notelabel
+\lang french
+ étiquette de note
 \end_layout
 
 \begin_layout Description
 
 \lang english
-pagebreak Page break/line break color
+pagebreak
+\lang french
+ saut de page / saut de ligne
 \end_layout
 
 \begin_layout Description
 
 \lang english
-paragraphmarker Color used for the pilcrow sign to mark the end of a paragraph
+paragraphmarker
+\lang french
+ marqueur de paragraphe
 \end_layout
 
 \begin_layout Description
 
 \lang english
-phantomtext Text color for phantom insets
+phantomtext
+\lang french
+ texte d'insert fantôme
 \end_layout
 
 \begin_layout Description
 
 \lang english
-preview The color used for previews
+preview
+\lang french
+ aperçu
 \end_layout
 
 \begin_layout Description
 
 \lang english
-previewframe Preview frame color
+previewframe
+\lang french
+ cadre d'aperçu
 \end_layout
 
 \begin_layout Description
 
 \lang english
-regexpframe Color for regexp frame
+regexpframe
+\lang french
+ cadre d'expression régulière
 \end_layout
 
 \begin_layout Description
 
 \lang english
-selection Background color of selected text
+selection
+\lang french
+ sélection (fond)
 \end_layout
 
 \begin_layout Description
 
 \lang english
-selectiontext Foreground color of selected text
+selectiontext
+\lang french
+ sélection (texte)
 \end_layout
 
 \begin_layout Description
 
 \lang english
-shadedbg Background color of shaded box
+shadedbg
+\lang french
+ boîte ombrée
 \end_layout
 
 \begin_layout Description
 
 \lang english
-special Special chars text color
+special
+\lang french
+ caractère spécial
 \end_layout
 
 \begin_layout Description
 
 \lang english
-tabularline Table line color
+tabularline
+\lang french
+ ligne de tableau
 \end_layout
 
 \begin_layout Description
 
 \lang english
-tabularonoffline Table line color
+tabularonoffline
+\lang french
+ ligne on/off de tableau
 \end_layout
 
 \begin_layout Description
 
 \lang english
-urllabel Label color for URL insets
+urllabel
+\lang french
+ étiquette d'URL
 \end_layout
 
 \begin_layout Description
 
 \lang english
-urltext Color for URL inset text
+urltext
+\lang french
+ texte d'URL
 \end_layout
 
 \end_body
