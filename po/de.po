@@ -96,14 +96,14 @@ msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-01-27 08:06+0100\n"
-"PO-Revision-Date: 2014-01-27 08:11+0100\n"
-"Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
+"PO-Revision-Date: 2014-01-29 19:28+0100\n"
+"Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Poedit 1.5.7\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/frontends/qt4/ui/NumberingUi.ui:60
@@ -8840,8 +8840,8 @@ msgstr "\\arabic{section}.\\arabic{subsection}"
 msgid ""
 "Subsubsection \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 msgstr ""
-"Unterunterabschnitt \\arabic{section}.\\arabic{subsection}."
-"\\arabic{subsubsection}"
+"Unterunterabschnitt \\arabic{section}.\\arabic{subsection}.\\arabic"
+"{subsubsection}"
 
 #: lib/layouts/beamer.layout:372
 msgid ""
@@ -13321,8 +13321,8 @@ msgid ""
 "Use the algorithm2e package for algorithm floats rather then LyX's home-"
 "brewn algorithm floats."
 msgstr ""
-"Verwendet das Paket 'algorithm2e' anstelle von LyX' hausgemachter Lösung "
-"für Algorithmus-Gleitumgebungen."
+"Verwendet das Paket 'algorithm2e' anstelle von LyX' hausgemachter Lösung für "
+"Algorithmus-Gleitumgebungen."
 
 #: lib/layouts/theorems-std.module:2
 msgid "Theorems"
@@ -15610,7 +15610,7 @@ msgstr "Gliederung des Dokuments|G"
 
 #: lib/ui/stdmenus.inc:331
 msgid "Source Pane|S"
-msgstr "Quellenvorschau|Q"
+msgstr "Quelltext-Panel|Q"
 
 #: lib/ui/stdmenus.inc:332
 msgid "Messages Pane|g"
@@ -24199,11 +24199,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:3264
 msgid ""
-"The LaTeX command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The LaTeX command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"Der LaTeX-Befehl, um das Sprachpaket zu laden. Beispiel: "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"Der LaTeX-Befehl, um das Sprachpaket zu laden. Beispiel: \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 
 #: src/LyXRC.cpp:3268
 msgid ""
