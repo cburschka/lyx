@@ -1420,7 +1420,7 @@ Atajo de teclado
 status collapsed
 
 \begin_layout Plain Layout
-Alt-V D
+Ctrl+D
 \end_layout
 
 \end_inset
@@ -1430,7 +1430,12 @@ Alt-V D
 status collapsed
 
 \begin_layout Plain Layout
-Ver\SpecialChar \menuseparator
+
+\family sans
+Documento\SpecialChar \menuseparator
+Ver
+\family default
+\SpecialChar \menuseparator
 DVI
 \end_layout
 
@@ -1492,6 +1497,9 @@ te.
 status collapsed
 
 \begin_layout Plain Layout
+
+\family sans
+Documento\SpecialChar \menuseparator
 Ver
 \end_layout
 
@@ -1595,6 +1603,9 @@ Exportar
 status collapsed
 
 \begin_layout Plain Layout
+
+\family sans
+Documento\SpecialChar \menuseparator
 Ver
 \end_layout
 

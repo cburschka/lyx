@@ -241,7 +241,7 @@ Chrétien
 \begin_inset Newline newline
 \end_inset
 
-Version 2.0.x
+Version 2.1.x
 \end_layout
 
 \begin_layout Standard
@@ -1649,7 +1649,7 @@ Plan
 
  accessible par le menu 
 \family sans
-Document\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 Plan
 \family default
  ou le bouton 
@@ -5120,7 +5120,11 @@ LaTeX vous permet de donner un titre court pour une en-tête de section,
  en plus du titre normal.
  Ce titre court est utilisé dans les entêtes de pages et dans la table des
  matières, ce qui évite le problème cité.
- Pour définir un titre court, utilisez le menu 
+ Pour définir un titre court, 
+\lang english
+set the cursor behind the title
+\lang french
+ et utilisez le menu 
 \family sans
 Insertion\SpecialChar \menuseparator
 Titre court 
@@ -5130,21 +5134,24 @@ Titre court
 \begin_inset Quotes fld
 \end_inset
 
-opt
+
+\lang english
+Short
+\begin_inset space ~
+\end_inset
+
+Title
+\lang french
+
 \begin_inset Quotes frd
 \end_inset
 
- (pour 
-\begin_inset Quotes fld
-\end_inset
-
-optionnel
-\begin_inset Quotes frd
-\end_inset
-
-) dans laquelle vous pouvez saisir le texte de votre titre court.
+ dans laquelle vous pouvez saisir le texte de votre titre court.
  Cette méthode fonctionne également pour les légendes à l'intérieur des
  flottants.
+ 
+\lang english
+There can only be one short title per title.
 \end_layout
 
 \begin_layout Standard
@@ -15967,9 +15974,13 @@ Pour avoir une idée de l'aspect final de votre document, avec tous ses sauts
  de pages à la bonne place, les notes de bas de page bien numérotées et
  ainsi de suite, utilisez le menu 
 \family sans
-Affichage
+Document
 \family default
- et choisissez Visionner ou le bouton de la barre d'outils 
+ et choisissez 
+\family sans
+Visionner
+\family default
+ ou le bouton de la barre d'outils 
 \begin_inset Info
 type  "icon"
 arg   "buffer-view"
@@ -16002,7 +16013,7 @@ reference "sec:Doc-Output"
 ).
  D'autres formats de sortie peuvent être sélectionnés par 
 \family sans
-Affichage\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 Visionner (autres formats)
 \family default
  ou le bouton de la barre d'outils 
@@ -16021,7 +16032,7 @@ Si vous avez modifié votre document depuis votre dernier visionnement, inutile
  de fermer la fenêtre de la visionneuse, appuyez juste sur un des boutons
  de mise à jour ou utilisez le menu 
 \family sans
-Affichage\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 Mettre
 \begin_inset space ~
 \end_inset
@@ -16034,7 +16045,7 @@ jour
 \family default
 .ou 
 \family sans
-Affichage\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 Mettre
 \begin_inset space ~
 \end_inset
@@ -27257,7 +27268,7 @@ Plan
  et réarranger les sections de votre document.
  C'est une alternative à l'utilisation du menu 
 \family sans
-Document\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 Plan
 \family default
  qui est décrit dans la section
@@ -37679,7 +37690,13 @@ Titre court
 \end_layout
 
 \begin_layout Standard
-Insère un titre court, décrit section
+
+\lang english
+Is only visible if the cursor is in front, in or behind a section heading,
+ title or caption of a float.
+
+\lang french
+ Insère un titre court, décrit section
 \begin_inset space ~
 \end_inset
 
@@ -37937,6 +37954,10 @@ Recherche directe
 Cette fonctionnalité vous permet d'aller directement au même endroit du
  texte dans la sortie, voir la section 
 \emph on
+\lang english
+The LyX Server
+\lang french
+\SpecialChar \menuseparator
 Recherche directe
 \emph default
  du manuel des 
@@ -39591,7 +39612,7 @@ Tableau
 \begin_layout Plain Layout
 Active ou désactive la fenêtre Plan, 
 \family sans
-Document\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 Plan
 \end_layout
 
@@ -40602,7 +40623,7 @@ arg   "buffer-view"
 \begin_layout Plain Layout
 
 \family sans
-Affichage\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 Visionner
 \end_layout
 
@@ -40632,7 +40653,7 @@ arg   "buffer-update"
 \begin_layout Plain Layout
 
 \family sans
-Affichage\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 Mettre à jour
 \end_layout
 
@@ -40662,7 +40683,7 @@ arg   "master-buffer-view"
 \begin_layout Plain Layout
 
 \family sans
-Affichage\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 Visionner le document maître
 \end_layout
 
@@ -40692,7 +40713,7 @@ arg   "master-buffer-update"
 \begin_layout Plain Layout
 
 \family sans
-Affichage\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 Mettre à jour le document maître
 \end_layout
 
@@ -40756,7 +40777,7 @@ Synchroniser avec le résultat imprimable
 \begin_layout Plain Layout
 
 \family sans
-Affichage\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 Visionner (autres formats)
 \end_layout
 
@@ -40786,7 +40807,7 @@ Visionner (autres formats)
 \begin_layout Plain Layout
 
 \family sans
-Affichage\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 Mettre à jour (autres formats)
 \end_layout
 
@@ -40910,6 +40931,31 @@ Valeurs implicites de la classe
 \begin_layout Standard
 Les différents sous-menus de cette fenêtre de dialogue sont décrits dans
  ce qui suit.
+ 
+\lang english
+There are so many document settings available that it might take a while
+ to find the one you are looking for.
+ To find a setting quicker, you can use the search field which is above
+ the submenus of the dialog.
+ If you search e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+for 
+\begin_inset Quotes eld
+\end_inset
+
+page
+\begin_inset Quotes erd
+\end_inset
+
+, you will see that some submenus will be grayed-out and disabled.
+ Only the submenus with page settings stay enabled.
+ The found page settings are labeled red in these submenus.
 \end_layout
 
 \begin_layout Section

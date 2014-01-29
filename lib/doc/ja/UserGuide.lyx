@@ -1168,7 +1168,7 @@ LyXでは、文書内を動き回るのに二つの方法があります。
 \begin_layout Itemize
 
 \family sans
-文書\SpecialChar \menuseparator
+表示\SpecialChar \menuseparator
 文書構造
 \family default
 メニューかツールバーボタン
@@ -4136,6 +4136,8 @@ LaTeXは、節見出しに短縮タイトルを設定することを容認して
 \family default
 メニューを使用してください。このメニューは、「オプション」というラベルのついたボックスを挿入し、短縮タイトルの文字列を入力できるようになります。これは、フロート
 内のキャプションにも使うことができます。
+\lang english
+There can only be one short title per title.
 \end_layout
 
 \begin_layout Standard
@@ -30239,7 +30241,13 @@ reference "sec:傍注"
 \end_layout
 
 \begin_layout Standard
-第
+
+\lang english
+Is only visible if the cursor is in front, in or behind a section heading,
+ title or caption of a float.
+
+\lang japanese
+ 第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:短縮タイトル"
@@ -31772,7 +31780,7 @@ arg   "dialog-toggle toc"
 \begin_layout Plain Layout
 文書構造ウィンドウの入切切替(
 \family sans
-文書\SpecialChar \menuseparator
+表示\SpecialChar \menuseparator
 文書構造
 \family default
 )
@@ -32729,7 +32737,7 @@ arg   "buffer-view"
 \begin_layout Plain Layout
 
 \family sans
-表示\SpecialChar \menuseparator
+文書\SpecialChar \menuseparator
 表示
 \end_layout
 
@@ -32759,7 +32767,7 @@ arg   "buffer-update"
 \begin_layout Plain Layout
 
 \family sans
-表示\SpecialChar \menuseparator
+文書\SpecialChar \menuseparator
 更新
 \end_layout
 
@@ -32789,7 +32797,7 @@ arg   "master-buffer-view"
 \begin_layout Plain Layout
 
 \family sans
-表示\SpecialChar \menuseparator
+文書\SpecialChar \menuseparator
 親文書を表示
 \end_layout
 
@@ -32819,7 +32827,7 @@ arg   "master-buffer-update"
 \begin_layout Plain Layout
 
 \family sans
-表示\SpecialChar \menuseparator
+文書\SpecialChar \menuseparator
 親文書を更新
 \end_layout
 
@@ -32881,7 +32889,7 @@ arg   "buffer-toggle-output-sync"
 \begin_layout Plain Layout
 
 \family sans
-表示\SpecialChar \menuseparator
+文書\SpecialChar \menuseparator
 表示(他の形式)
 \end_layout
 
@@ -32911,7 +32919,7 @@ arg   "buffer-toggle-output-sync"
 \begin_layout Plain Layout
 
 \family sans
-表示\SpecialChar \menuseparator
+文書\SpecialChar \menuseparator
 更新(他の形式)
 \end_layout
 
@@ -33020,6 +33028,30 @@ defaults.lyx
 
 \begin_layout Standard
 ダイアログ中の各従属メニューを以下に説明します。
+\lang english
+There are so many document settings available that it might take a while
+ to find the one you are looking for.
+ To find a setting quicker, you can use the search field which is above
+ the submenus of the dialog.
+ If you search e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+for 
+\begin_inset Quotes eld
+\end_inset
+
+page
+\begin_inset Quotes erd
+\end_inset
+
+, you will see that some submenus will be grayed-out and disabled.
+ Only the submenus with page settings stay enabled.
+ The found page settings are labeled red in these submenus.
 \end_layout
 
 \begin_layout Section

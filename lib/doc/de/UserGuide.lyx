@@ -211,9 +211,9 @@ type "mailto:"
 \begin_inset Newline newline
 \end_inset
 
-Version 2.0.x
+Version 2.1.x
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Die neueste PDF-Version dieses Dokuments kann von hier heruntergeladen werden:
@@ -5071,7 +5071,16 @@ name "sec:Kurztitel"
 Einige Kapitel oder Abschnittsüberschriften wie diese können sehr lang werden.
  Wenn sie als Seitenüberschriften benutzt werden, können sie über den Blattrand
  ragen, was sehr hässlich aussieht.
- Deswegen kann man mit 
+\end_layout
+
+\begin_layout Standard
+LaTeX erlaubt es, einen Kurztitel für Abschnittsüberschriften zu definieren.
+ Dieser Kurztitel wird im Inhaltsverzeichnis und in Gleitobjekten benutzt,
+ wenn es nötig ist.
+ Im Dokument selber wird immer die lange Überschrift benutzt und nötigenfalls
+ umgebrochen.
+ Um einen Kurztitel hinzuzufügen, setzt man den Cursor hinter die Überschrift
+ und verwendet das Menü 
 \family sans
 Einfügen
 \family default
@@ -5080,12 +5089,22 @@ Einfügen
 \family sans
 Kurztitel
 \family default
- eine alternative Überschrift definieren, die dann benutzt wird, wenn die
- lange nicht in die Zeile passt.
- Dieser Kurztitel wird im Inhaltsverzeichnis und in Gleitobjekten benutzt,
- wenn es nötig ist.
- Im Dokument selber wird immer die lange Überschrift benutzt und nötigenfalls
- umgebrochen.
+.
+ Dies fügt eine mit 
+\begin_inset Quotes gld
+\end_inset
+
+Kurztitel
+\begin_inset Quotes grd
+\end_inset
+
+ beschriftete Box ein, in die man den Kurztitel eingeben kann.
+ Dies funktioniert auch für Beschriftungen innerhalb von Gleitumgebungen.
+ Pro Überschrift ist nur ein Kurztitel zulässig.
+\end_layout
+
+\begin_layout Standard
+Der Kurztitel dieser Abschnittsüberschrift ist ein gutes Beispiel.
 \end_layout
 
 \begin_layout Subsubsection
@@ -15982,7 +16001,7 @@ Um das fertige Dokument mit allen Seitenumbrüchen, Fußnoten usw.
 
 anzusehen, verwenden Sie das Menü 
 \family sans
-Ansicht
+Dokument
 \family default
  und wählen 
 \family sans
@@ -16022,7 +16041,7 @@ reference "sec:Dokument-Ausgabe"
 .
  Weitere Ausgabeformate können über 
 \family sans
-Ansicht\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 Andere Formate ansehen
 \family default
  oder den Werkzeugleistenknopf 
@@ -16040,7 +16059,7 @@ Andere Formate ansehen
 Wenn Sie Ihr Dokument geändert haben, können Sie die Ansicht mit dem Menü
  
 \family sans
-Ansicht\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 Aktualisieren
 \family default
  bzw.
@@ -16049,7 +16068,7 @@ Aktualisieren
 
 
 \family sans
-Ansicht\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 Andere Formate aktualisieren
 \family default
  aktualisieren.
@@ -36678,7 +36697,9 @@ Kurztitel
 \end_layout
 
 \begin_layout Standard
-Fügt einen Kurztitel ein, siehe Abschnitt
+Ist nur sichtbar, wenn der Cursor vor, in oder hinter einer Abschnittsüberschrif
+t, einem Titel oder einer Beschriftung einer Gleitumgebung ist.
+ Fügt einen Kurztitel ein, siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -36939,6 +36960,7 @@ Vorwärtssuche
 Dieses Feature erlaubt es, direkt an die entsprechende Stelle in der Ausgabe
  zu springen, siehe Abschnitt 
 \emph on
+Der LyX Server\SpecialChar \menuseparator
 Vorwärtssuche
 \emph default
  in den 
@@ -38539,7 +38561,7 @@ arg   "dialog-toggle toc"
 \begin_layout Plain Layout
 Gliederung an/aus, 
 \family sans
-Dokument\SpecialChar \menuseparator
+Ansicht\SpecialChar \menuseparator
 Gliederung
 \end_layout
 
@@ -39509,7 +39531,7 @@ arg   "buffer-view"
 \begin_layout Plain Layout
 
 \family sans
-Ansicht\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 Ansehen
 \end_layout
 
@@ -39539,7 +39561,7 @@ arg   "buffer-update"
 \begin_layout Plain Layout
 
 \family sans
-Ansicht\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 Aktualisieren
 \end_layout
 
@@ -39569,7 +39591,7 @@ arg   "master-buffer-view"
 \begin_layout Plain Layout
 
 \family sans
-Ansicht\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 Hauptdokument
 \begin_inset space ~
 \end_inset
@@ -39603,7 +39625,7 @@ arg   "master-buffer-update"
 \begin_layout Plain Layout
 
 \family sans
-Ansicht\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 Hauptdokument
 \begin_inset space ~
 \end_inset
@@ -39683,7 +39705,7 @@ synchronisieren
 \begin_layout Plain Layout
 
 \family sans
-Ansicht\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 Andere
 \begin_inset space ~
 \end_inset
@@ -39721,7 +39743,7 @@ ansehen
 \begin_layout Plain Layout
 
 \family sans
-Ansicht\SpecialChar \menuseparator
+Dokument\SpecialChar \menuseparator
 Andere
 \begin_inset space ~
 \end_inset
@@ -39855,6 +39877,29 @@ Klassen-Voreinstellungen verwenden
 
 \begin_layout Standard
 Die verschiedenen Untermenüs des Dialogs sind im Folgenden erklärt.
+ Es gibt sehr viele Dokumenteinstellungen, so dass es etwas dauern kann,
+ bis man weiß, wo man was einstellen kann.
+ Um Einstellungen schneller zu finden, können Sie das Feld 
+\family sans
+Suchen
+\family default
+ verwenden, das sich über den Untermenüs befindet.
+ Wenn Sie z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ nach 
+\begin_inset Quotes gld
+\end_inset
+
+Seite
+\begin_inset Quotes grd
+\end_inset
+
+ suchen, werden einige Untermenüs ausgegraut und deaktiviert.
+ Nur Untermenüs mit Seiteneinstellungen bleiben aktiviert.
+ In diesen Untermenüs werden die Seiteneinstellungen rot hervorgehoben.
 \end_layout
 
 \begin_layout Section

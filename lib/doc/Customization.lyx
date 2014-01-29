@@ -917,7 +917,7 @@ configure.py
 
 \end_inset
 
- this is the script that is used to re-configure LyX.
+ this is a Python script that is used to re-configure LyX.
  It creates configuration files in the directory it was run from.
 \end_layout
 
@@ -1439,7 +1439,7 @@ Shortcut
 status collapsed
 
 \begin_layout Plain Layout
-Alt-V F D
+Ctrl+D
 \end_layout
 
 \end_inset
@@ -1449,7 +1449,7 @@ Alt-V F D
 status collapsed
 
 \begin_layout Plain Layout
-View\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 View (Other Formats)\SpecialChar \menuseparator
 DVI
 \end_layout
@@ -1501,6 +1501,7 @@ Ghostview
 status collapsed
 
 \begin_layout Plain Layout
+Document\SpecialChar \menuseparator
 View
 \end_layout
 
@@ -1592,6 +1593,7 @@ Export
 status collapsed
 
 \begin_layout Plain Layout
+Document\SpecialChar \menuseparator
 View
 \end_layout
 

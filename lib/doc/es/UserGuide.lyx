@@ -180,7 +180,7 @@ type "mailto:"
 \begin_inset Newline newline
 \end_inset
 
-Versión 2.0.x
+Versión 2.1.x
 \end_layout
 
 \begin_layout Standard
@@ -1380,7 +1380,7 @@ Navegar
 \begin_layout Itemize
 El menú 
 \family sans
-Documento\SpecialChar \menuseparator
+Ver\SpecialChar \menuseparator
 Navegador de contorno
 \family default
  o el botón de herramientas 
@@ -4764,7 +4764,11 @@ Algunos títulos de capítulo o sección, como el presente, pueden resultar
 LaTeX permite especificar un título breve para encabezados de sección.
  Este se usa en el encabezado de página y en el índice general actual, evitando
  el problema mencionado.
- Para poner un título breve, usa el menú 
+ Para poner un título breve
+\lang english
+, set the cursor behind the title 
+\lang spanish
+y usa el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Título
@@ -4778,12 +4782,23 @@ breve
 \begin_inset Quotes fld
 \end_inset
 
-opt
+
+\lang english
+Short
+\begin_inset space ~
+\end_inset
+
+Title
+\lang spanish
+
 \begin_inset Quotes frd
 \end_inset
 
- (por «optativo») que te permite introducir el texto del título.
+ que te permite introducir el texto del título.
  Esto también trabaja para encabezados en flotantes.
+ 
+\lang english
+There can only be one short title per title.
 \end_layout
 
 \begin_layout Standard
@@ -15429,7 +15444,7 @@ Documentos ! Vista preliminar
 Para echar un vistazo a tu documento, o ver su versión final con sus saltos
  de página, notas bien numeradas, y demás, usa el menú 
 \family sans
-Ver
+Documento
 \family default
  y elige el tipo de archivo o el botón 
 \emph on
@@ -15470,7 +15485,7 @@ reference "sec:Salidas"
 ).
  Se pueden seleccionar otros formatos de salida en el menú 
 \family sans
-Ver\SpecialChar \menuseparator
+Documento\SpecialChar \menuseparator
 Ver (Otros formatos)
 \family default
  o con el botón 
@@ -15488,12 +15503,12 @@ Ver (Otros formatos)
 Si has hecho cambios en tu documento, puedes refrescar la salida en la misma
  ventana del visor usando el menú 
 \family sans
-Ver\SpecialChar \menuseparator
+Documento\SpecialChar \menuseparator
 Actualizar
 \family default
  o 
 \family sans
-Ver\SpecialChar \menuseparator
+Documento\SpecialChar \menuseparator
 Actualizar (Otros formatos)
 \family default
 , respectivamente.
@@ -26733,7 +26748,7 @@ Navegador de contorno
  las secciones.
  Esta operación es una alternativa al menú 
 \family sans
-Documento\SpecialChar \menuseparator
+Ver\SpecialChar \menuseparator
 Navegador de contorno
 \family default
 , como se describe en la sección
@@ -36426,7 +36441,13 @@ Título breve
 \end_layout
 
 \begin_layout Standard
-Inserta un título breve, véase la sección
+
+\lang english
+Is only visible if the cursor is in front, in or behind a section heading,
+ title or caption of a float.
+
+\lang spanish
+ Inserta un título breve, véase la sección
 \begin_inset space ~
 \end_inset
 
@@ -36658,6 +36679,10 @@ Búsqueda directa
 Esta función permite ir directamente, en el documento de salida, a la parte
  correspondiente del documento en LyX; véase la sección 
 \emph on
+\lang english
+The LyX Server
+\lang spanish
+\SpecialChar \menuseparator
 Búsqueda directa
 \emph default
  en el manual 
@@ -38400,7 +38425,7 @@ arg   "dialog-toggle toc"
 \begin_layout Plain Layout
 Muestra/oculta la ventana del navegador, 
 \family sans
-Documento\SpecialChar \menuseparator
+Ver\SpecialChar \menuseparator
 Navegador
 \begin_inset space ~
 \end_inset
@@ -39468,7 +39493,7 @@ arg   "buffer-view"
 \begin_layout Plain Layout
 
 \family sans
-Ver\SpecialChar \menuseparator
+Documento\SpecialChar \menuseparator
 Ver
 \end_layout
 
@@ -39498,7 +39523,7 @@ arg   "buffer-update"
 \begin_layout Plain Layout
 
 \family sans
-Ver\SpecialChar \menuseparator
+Documento\SpecialChar \menuseparator
 Actualizar
 \end_layout
 
@@ -39528,7 +39553,7 @@ arg   "master-buffer-view"
 \begin_layout Plain Layout
 
 \family sans
-Ver\SpecialChar \menuseparator
+Documento\SpecialChar \menuseparator
 Documento Maestro
 \end_layout
 
@@ -39558,7 +39583,7 @@ arg   "master-buffer-update"
 \begin_layout Plain Layout
 
 \family sans
-Ver\SpecialChar \menuseparator
+Documento\SpecialChar \menuseparator
 Actualizar Maestro
 \end_layout
 
@@ -39622,7 +39647,7 @@ Sincronizar con salida
 \begin_layout Plain Layout
 
 \family sans
-Ver\SpecialChar \menuseparator
+Documento\SpecialChar \menuseparator
 Ver (Otros Formatos)
 \end_layout
 
@@ -39652,7 +39677,7 @@ Ver (Otros Formatos)
 \begin_layout Plain Layout
 
 \family sans
-Ver\SpecialChar \menuseparator
+Documento\SpecialChar \menuseparator
 Actualizar (Otros Formatos)
 \end_layout
 
@@ -39800,6 +39825,31 @@ Usar predeterminados de clase
 
 \begin_layout Standard
 Los submenús del diálogo se explican a continuación.
+ 
+\lang english
+There are so many document settings available that it might take a while
+ to find the one you are looking for.
+ To find a setting quicker, you can use the search field which is above
+ the submenus of the dialog.
+ If you search e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+for 
+\begin_inset Quotes eld
+\end_inset
+
+page
+\begin_inset Quotes erd
+\end_inset
+
+, you will see that some submenus will be grayed-out and disabled.
+ Only the submenus with page settings stay enabled.
+ The found page settings are labeled red in these submenus.
 \end_layout
 
 \begin_layout Section

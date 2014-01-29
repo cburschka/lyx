@@ -180,7 +180,7 @@ type "mailto:"
 \begin_inset Newline newline
 \end_inset
 
-Version 2.0.x
+Version 2.1.x
 \begin_inset Note Note
 status collapsed
 
@@ -15072,7 +15072,7 @@ To get a look at the final version of your document, with all of the page
  breaks in place, the footnotes correctly numbered, and so on, use the menu
  
 \family sans
-View
+Document
 \family default
  and choose 
 \family sans
@@ -15112,7 +15112,7 @@ reference "sec:Doc-Output"
 ).
  Further output formats can be selected via 
 \family sans
-View\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 View (Other Formats)
 \family default
  or the toolbar button 
@@ -15130,12 +15130,12 @@ View (Other Formats)
 If you have changed your document, you can refresh the output in the same
  viewer window using the menu 
 \family sans
-View\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 Update
 \family default
  or 
 \family sans
-View\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 Update (Other Formats)
 \family default
 , respectively.
@@ -36298,7 +36298,7 @@ Short Title
 \end_layout
 
 \begin_layout Standard
-Is only visible if the cursor is in front in or behind a section heading,
+Is only visible if the cursor is in front, in or behind a section heading,
  title or caption of a float.
  Inserts a short title as described in section
 \begin_inset space ~
@@ -38243,7 +38243,7 @@ arg   "dialog-toggle toc"
 \begin_layout Plain Layout
 Toggle outline window on/off, 
 \family sans
-Document\SpecialChar \menuseparator
+View\SpecialChar \menuseparator
 Outline
 \end_layout
 
@@ -39253,7 +39253,7 @@ arg   "buffer-view"
 \begin_layout Plain Layout
 
 \family sans
-View\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 View
 \end_layout
 
@@ -39283,7 +39283,7 @@ arg   "buffer-update"
 \begin_layout Plain Layout
 
 \family sans
-View\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 Update
 \end_layout
 
@@ -39313,7 +39313,7 @@ arg   "master-buffer-view"
 \begin_layout Plain Layout
 
 \family sans
-View\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 Master
 \begin_inset space ~
 \end_inset
@@ -39347,7 +39347,7 @@ arg   "master-buffer-update"
 \begin_layout Plain Layout
 
 \family sans
-View\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 Update
 \begin_inset space ~
 \end_inset
@@ -39419,7 +39419,7 @@ Synchronize with Output
 \begin_layout Plain Layout
 
 \family sans
-View\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 View (Other Formats)
 \end_layout
 
@@ -39449,7 +39449,7 @@ View (Other Formats)
 \begin_layout Plain Layout
 
 \family sans
-View\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
 Update (Other Formats)
 \end_layout
 
@@ -39580,12 +39580,9 @@ Use Class Defaults
 
 \begin_layout Standard
 The different submenus of the dialog are explained in the following sections.
-\end_layout
-
-\begin_layout Standard
-There are so many document settings available that it might take a while
+ There are so many document settings available that it might take a while
  to find the one you are looking for.
- To find a setting quicker, you can sue the search field which is above
+ To find a setting quicker, you can use the search field which is above
  the submenus of the dialog.
  If you search e.
 \begin_inset space \thinspace{}
@@ -41842,44 +41839,6 @@ In this text field you can enter commands to load special LaTeX-packages
  or to define LaTeX-commands.
  The preamble is a thing for LaTeX-experts.
  You should not enter commands here until you know exactly what you are
- doing.
-\end_layout
-
-\begin_layout Standard
-An introduction to the LaTeX-syntax is given in section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:LaTeX-Syntax"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Section
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX Preamble
-\end_layout
-
-\begin_layout Standard
-In this text field you can enter commands to load special LaTeX-packages
- or to define LaTeX-commands.
- The preamble is a thing for LaTeX-experts.
- You should not enter commands here until you exactly know what you are
  doing.
 \end_layout
 

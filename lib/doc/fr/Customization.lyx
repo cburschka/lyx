@@ -1382,7 +1382,7 @@ Raccourci
 status collapsed
 
 \begin_layout Plain Layout
-Alt-V a D
+Ctrl+D
 \end_layout
 
 \end_inset
@@ -1392,16 +1392,8 @@ Alt-V a D
 status collapsed
 
 \begin_layout Plain Layout
-Affichage
-\lang english
-\SpecialChar \menuseparator
-
-\lang french
-Visionner (autres formats)
-\lang english
-\SpecialChar \menuseparator
-
-\lang french
+Document\SpecialChar \menuseparator
+Visionner (autres formats)\SpecialChar \menuseparator
 DVI
 \end_layout
 
@@ -1442,7 +1434,8 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Affichage
+Document\SpecialChar \menuseparator
+Visionner
 \end_layout
 
 \end_inset
@@ -1531,9 +1524,16 @@ Exporter
 
 .
  Le format apparaîtra également dans le menu 
-\family sans
-Affichage
-\family default
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+Document\SpecialChar \menuseparator
+Visionner
+\end_layout
+
+\end_inset
+
  si une visionneuse est définie pour lui.
  Les formats purement graphiques, comme png, ne doivent pas utiliser cette
  option.
