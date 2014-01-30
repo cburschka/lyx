@@ -4131,9 +4131,15 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 		if (master != this) {
 			bufToUpdate.insert(this);
 			master->updateBuffer(UpdateMaster, utype);
-			// Do this here in case the master has no gui associated with it. Then, 
-			// the TocModel is not updated and TocModel::toc_ is invalid (bug 5699).
-			if (!master->d->gui_)
+			// If the master buffer has no gui associated with it, then the TocModel is 
+			// not updated during the updateBuffer call and TocModel::toc_ is invalid 
+			// (bug 5699). The same happens if the master buffer is open in a different 
+			// window. This test catches both possibilities.
+			// See: http://marc.info/?l=lyx-devel&m=138590578911716&w=2
+			// There remains a problem here: If there is another child open in yet a third
+			// window, that TOC is not updated. So some more general solution is needed at
+			// some point.
+			if (master->d->gui_ != d->gui_)
 				structureChanged();
 
 			// was buf referenced from the master (i.e. not in bufToUpdate anymore)?

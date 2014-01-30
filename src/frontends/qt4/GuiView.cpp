@@ -528,7 +528,7 @@ QVector<GuiWorkArea*> GuiView::GuiViewPrivate::guiWorkAreas()
 }
 
 
-#if defined(Q_WS_MACX)
+#if defined(Q_WS_MACX) && defined(QT_MAC_USE_COCOA)
 QMenuBar * GuiView::menuBar() const
 {
 	static QMenuBar * globalMenuBar = new QMenuBar(0);

@@ -1355,6 +1355,7 @@ void MenuDefinition::expandBranches(Buffer const * buf)
 	BufferParams const & master_params = buf->masterBuffer()->params();
 	BufferParams const & params = buf->params();
 	if (params.branchlist().empty() && master_params.branchlist().empty() ) {
+		LYXERR(Debug::GUI, "No Branches set for Document");
 		add(MenuItem(MenuItem::Help, qt_("No Branches Set for Document!")));
 		return;
 	}
@@ -1368,6 +1369,7 @@ void MenuDefinition::expandBranches(Buffer const * buf)
 			label = convert<docstring>(ii) + ". " + label
 				+ char_type('|') + convert<docstring>(ii);
 		}
+		LYXERR(Debug::GUI, "Add item for branch " << label);
 		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
 				    FuncRequest(LFUN_BRANCH_INSERT,
 						cit->branch())));
@@ -1737,24 +1739,25 @@ void Menus::Impl::macxMenuBarInit(GuiView * view, QMenuBar * qmb)
 
 	// the special menu for Menus. Fill it up only once.
 	if (mac_special_menu_.size() == 0) {
+		LYXERR(Debug::GUI, "Prepare Mac OS X special menu");
 		for (size_t i = 0 ; i < num_entries ; ++i) {
 			FuncRequest const func(entries[i].action,
 				from_utf8(entries[i].arg));
 			mac_special_menu_.add(MenuItem(MenuItem::Command,
 				entries[i].label, func));
 		}
-
-		// add the entries to a QMenu that will eventually be empty
-		// and therefore invisible.
-		QMenu * qMenu = qmb->addMenu("special");
-		MenuDefinition::const_iterator cit = mac_special_menu_.begin();
-		MenuDefinition::const_iterator end = mac_special_menu_.end();
-		for (size_t i = 0 ; cit != end ; ++cit, ++i) {
-			Action * action = new Action(view, QIcon(), cit->label(),
-				cit->func(), QString(), qMenu);
-			action->setMenuRole(entries[i].role);
-			qMenu->addAction(action);
-		}
+	}
+	// add the entries to a QMenu that will eventually be empty
+	// and therefore invisible.
+	QMenu * qMenu = qmb->addMenu("special");
+	MenuDefinition::const_iterator cit = mac_special_menu_.begin();
+	MenuDefinition::const_iterator end = mac_special_menu_.end();
+	for (size_t i = 0 ; cit != end ; ++cit, ++i) {
+		Action * action = new Action(view, QIcon(), cit->label(),
+			cit->func(), QString(), qMenu);
+		action->setMenuRole(entries[i].role);
+		qMenu->addAction(action);
+		LYXERR(Debug::GUI, "Add special menu item " << cit->label());
 	}
 }
 
