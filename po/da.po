@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2013-12-16 14:22-0500\n"
+"POT-Creation-Date: 2014-01-31 09:13-0500\n"
 "PO-Revision-Date: 2011-04-20 12:00+0200\n"
 "Last-Translator: Jesper Stemann Andersen <jesper@sait.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -181,7 +181,7 @@ msgstr "&Tilføj"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:110 src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1479
+#: src/frontends/qt4/GuiApplication.cpp:1486
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Annullér"
@@ -533,11 +533,11 @@ msgstr "Tilføj alle"
 #: src/frontends/qt4/GuiClipboard.cpp:242
 #: src/frontends/qt4/GuiDocument.cpp:1839
 #: src/frontends/qt4/GuiParagraph.cpp:69
-#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2123
-#: src/frontends/qt4/GuiView.cpp:2274 src/frontends/qt4/GuiView.cpp:2289
-#: src/frontends/qt4/GuiView.cpp:2337 src/frontends/qt4/GuiView.cpp:2552
-#: src/frontends/qt4/GuiView.cpp:2559 src/frontends/qt4/GuiView.cpp:2658
-#: src/frontends/qt4/GuiView.cpp:2686 src/frontends/qt4/GuiView.cpp:3301
+#: src/frontends/qt4/GuiParagraph.cpp:159 src/frontends/qt4/GuiView.cpp:2132
+#: src/frontends/qt4/GuiView.cpp:2283 src/frontends/qt4/GuiView.cpp:2298
+#: src/frontends/qt4/GuiView.cpp:2346 src/frontends/qt4/GuiView.cpp:2561
+#: src/frontends/qt4/GuiView.cpp:2568 src/frontends/qt4/GuiView.cpp:2667
+#: src/frontends/qt4/GuiView.cpp:2695 src/frontends/qt4/GuiView.cpp:3310
 #: src/insets/InsetBibtex.cpp:152
 msgid "&Cancel"
 msgstr "&Annullér"
@@ -4240,8 +4240,8 @@ msgstr ""
 msgid "&Maximum last files:"
 msgstr "Højeste &antal sidste filer:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:70 src/frontends/qt4/GuiView.cpp:2552
-#: src/frontends/qt4/GuiView.cpp:2559 src/frontends/qt4/GuiView.cpp:2658
+#: src/frontends/qt4/ui/PrefsUi.ui:70 src/frontends/qt4/GuiView.cpp:2561
+#: src/frontends/qt4/GuiView.cpp:2568 src/frontends/qt4/GuiView.cpp:2667
 msgid "&Save"
 msgstr "&Gem"
 
@@ -17423,8 +17423,8 @@ msgstr "datokommando"
 msgid "Table (CSV)"
 msgstr "Tabel (CSV)"
 
-#: lib/configure.py:670 src/frontends/qt4/GuiView.cpp:1152
-#: src/frontends/qt4/GuiView.cpp:1153 src/mathed/MathMacroTemplate.cpp:543
+#: lib/configure.py:670 src/frontends/qt4/GuiView.cpp:1161
+#: src/frontends/qt4/GuiView.cpp:1162 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr "LyX"
 
@@ -17711,8 +17711,8 @@ msgid "Overwrite modified file?"
 msgstr "Overskriv ændret fil?"
 
 #: src/Buffer.cpp:1169 src/Buffer.cpp:2480 src/Exporter.cpp:50
-#: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2123
-#: src/frontends/qt4/GuiView.cpp:2289
+#: src/frontends/qt4/GuiClipboard.cpp:242 src/frontends/qt4/GuiView.cpp:2132
+#: src/frontends/qt4/GuiView.cpp:2298
 msgid "&Overwrite"
 msgstr "&Overskriv"
 
@@ -17828,7 +17828,7 @@ msgstr "Kunne ikke køre chktex."
 msgid "Don't know how to export to format: %1$s"
 msgstr "Ved ikke hvordan man eksporterer til format: %1$s"
 
-#: src/Buffer.cpp:2217 src/frontends/qt4/GuiView.cpp:3132
+#: src/Buffer.cpp:2217 src/frontends/qt4/GuiView.cpp:3141
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Fejl under eksport til format: %1$s"
@@ -18146,7 +18146,7 @@ msgid "This portion of the document is deleted."
 msgstr "Denne del af dokumentet er slettet."
 
 #: src/BufferView.cpp:1043 src/BufferView.cpp:1921
-#: src/frontends/qt4/GuiView.cpp:3188 src/frontends/qt4/GuiView.cpp:3263
+#: src/frontends/qt4/GuiView.cpp:3197 src/frontends/qt4/GuiView.cpp:3272
 msgid "Absolute filename expected."
 msgstr "Absolut filnavn forventet."
 
@@ -18938,7 +18938,7 @@ msgstr "Antal %1$s"
 msgid "Cannot view file"
 msgstr "Kan ikke vise filen"
 
-#: src/Format.cpp:266 src/Format.cpp:333 src/frontends/qt4/GuiView.cpp:2917
+#: src/Format.cpp:266 src/Format.cpp:333 src/frontends/qt4/GuiView.cpp:2926
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Fil eksisterer ikke: %1$s"
@@ -19136,7 +19136,7 @@ msgstr ""
 msgid "LyX crashed!"
 msgstr "LyX gik ned!"
 
-#: src/LyX.cpp:695 src/frontends/qt4/GuiView.cpp:989
+#: src/LyX.cpp:695 src/frontends/qt4/GuiView.cpp:998
 msgid "LyX: "
 msgstr "LyX: "
 
@@ -19862,7 +19862,7 @@ msgstr "(ingen beskrivelse)"
 msgid "(no log message)"
 msgstr "(ingen log-besked)"
 
-#: src/LyXVC.cpp:170 src/frontends/qt4/GuiView.cpp:2775
+#: src/LyXVC.cpp:170 src/frontends/qt4/GuiView.cpp:2784
 msgid "LyX VC: Log Message"
 msgstr "LyX-versionsstyring: Beskrivelse til log"
 
@@ -19884,7 +19884,7 @@ msgid "Revert to stored version of document?"
 msgstr "Gendan den gemte udgave af dokumentet?"
 
 # , c-format
-#: src/LyXVC.cpp:224 src/frontends/qt4/GuiView.cpp:3301
+#: src/LyXVC.cpp:224 src/frontends/qt4/GuiView.cpp:3310
 msgid "&Revert"
 msgstr "&Gendan"
 
@@ -20034,7 +20034,7 @@ msgstr "Layout "
 msgid " not known"
 msgstr " ikke kendt"
 
-#: src/Text3.cpp:1761 src/frontends/qt4/GuiApplication.cpp:1388
+#: src/Text3.cpp:1761 src/frontends/qt4/GuiApplication.cpp:1395
 msgid "Missing argument"
 msgstr "Mangler parameter"
 
@@ -20103,7 +20103,7 @@ msgstr "Fejl under læsning af modul %1$s\n"
 #: src/VCBackend.cpp:805 src/VCBackend.cpp:866 src/VCBackend.cpp:927
 #: src/VCBackend.cpp:935 src/VCBackend.cpp:1143 src/VCBackend.cpp:1236
 #: src/VCBackend.cpp:1242 src/VCBackend.cpp:1263
-#: src/frontends/qt4/GuiView.cpp:2737
+#: src/frontends/qt4/GuiView.cpp:2746
 msgid "Revision control error."
 msgstr "Versionsstyringsfejl."
 
@@ -20319,7 +20319,7 @@ msgstr ""
 msgid "Reload saved document?"
 msgstr "Genindlæs gemte dokument?"
 
-#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2686
+#: src/buffer_funcs.cpp:76 src/frontends/qt4/GuiView.cpp:2695
 msgid "&Reload"
 msgstr "&Genindlæs"
 
@@ -20561,30 +20561,30 @@ msgstr "Kommando ikke håndteret"
 msgid "Command disabled"
 msgstr "Kommando deaktiveret"
 
-#: src/frontends/qt4/GuiApplication.cpp:1214
+#: src/frontends/qt4/GuiApplication.cpp:1221
 msgid "Running configure..."
 msgstr "Kører \"configure\"..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1225
+#: src/frontends/qt4/GuiApplication.cpp:1232
 msgid "Reloading configuration..."
 msgstr "Genindlæser konfiguration..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1231
+#: src/frontends/qt4/GuiApplication.cpp:1238
 msgid "System reconfiguration failed"
 msgstr "System-genkonfiguration mislykkedes"
 
-#: src/frontends/qt4/GuiApplication.cpp:1232
+#: src/frontends/qt4/GuiApplication.cpp:1239
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may not be able to work properly.\n"
 "Please reconfigure again if needed."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1237
+#: src/frontends/qt4/GuiApplication.cpp:1244
 msgid "System reconfigured"
 msgstr "Systemet genkonfigureret"
 
-#: src/frontends/qt4/GuiApplication.cpp:1238
+#: src/frontends/qt4/GuiApplication.cpp:1245
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -20594,45 +20594,45 @@ msgstr ""
 "De er nødt til at genstarte LyX før de opdaterede \n"
 "dokumentklasse-specifikationer kan benyttes."
 
-#: src/frontends/qt4/GuiApplication.cpp:1318
+#: src/frontends/qt4/GuiApplication.cpp:1325
 msgid "Exiting."
 msgstr "Afslutter."
 
-#: src/frontends/qt4/GuiApplication.cpp:1400
+#: src/frontends/qt4/GuiApplication.cpp:1407
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Åbner hjælpefilen %1$s..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1419
+#: src/frontends/qt4/GuiApplication.cpp:1426
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntaks: set-color <lyx_navn> <x11_navn>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1435
+#: src/frontends/qt4/GuiApplication.cpp:1442
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Angivelse af farven \"%1$s\" mislykkedes - farven er udefineret eller måske "
 "ikke gendefineret"
 
-#: src/frontends/qt4/GuiApplication.cpp:1614
+#: src/frontends/qt4/GuiApplication.cpp:1621
 #, fuzzy, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokument ikke gemt"
 
-#: src/frontends/qt4/GuiApplication.cpp:1618
+#: src/frontends/qt4/GuiApplication.cpp:1625
 #, fuzzy
 msgid "Unable to save document defaults"
 msgstr "Gem som dokumentstandarder"
 
-#: src/frontends/qt4/GuiApplication.cpp:1758
+#: src/frontends/qt4/GuiApplication.cpp:1774
 msgid "Unknown function."
 msgstr "Ukendt funktion."
 
-#: src/frontends/qt4/GuiApplication.cpp:2184
+#: src/frontends/qt4/GuiApplication.cpp:2200
 msgid "The current document was closed."
 msgstr "Det nuværende dokument blev lukket."
 
-#: src/frontends/qt4/GuiApplication.cpp:2194
+#: src/frontends/qt4/GuiApplication.cpp:2210
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -20640,23 +20640,23 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:2198
-#: src/frontends/qt4/GuiApplication.cpp:2204
+#: src/frontends/qt4/GuiApplication.cpp:2214
+#: src/frontends/qt4/GuiApplication.cpp:2220
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:2202
+#: src/frontends/qt4/GuiApplication.cpp:2218
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:2467
-#: src/frontends/qt4/GuiApplication.cpp:2479
+#: src/frontends/qt4/GuiApplication.cpp:2483
+#: src/frontends/qt4/GuiApplication.cpp:2495
 msgid "Could not find UI definition file"
 msgstr "Kunne ikke finde UI-definitionfil"
 
-#: src/frontends/qt4/GuiApplication.cpp:2468
+#: src/frontends/qt4/GuiApplication.cpp:2484
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -20667,11 +20667,11 @@ msgstr ""
 "%1$s\n"
 "Kontrollér venligst Deres installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:2474
+#: src/frontends/qt4/GuiApplication.cpp:2490
 msgid "Could not find default UI file"
 msgstr "Kunne ikke finde standard-UI-fil"
 
-#: src/frontends/qt4/GuiApplication.cpp:2475
+#: src/frontends/qt4/GuiApplication.cpp:2491
 #, fuzzy
 msgid ""
 "LyX could not find the default UI file!\n"
@@ -20680,7 +20680,7 @@ msgstr ""
 "LyX kunne ikke finde den normale UI-fil!\n"
 "Kontrollér venligst Deres installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:2480
+#: src/frontends/qt4/GuiApplication.cpp:2496
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -20698,9 +20698,9 @@ msgstr "BibTeX-litteraturliste"
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
 #: src/frontends/qt4/GuiDocument.cpp:1881
 #: src/frontends/qt4/GuiExternal.cpp:637 src/frontends/qt4/GuiGraphics.cpp:799
-#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1875
-#: src/frontends/qt4/GuiView.cpp:1932 src/frontends/qt4/GuiView.cpp:2073
-#: src/frontends/qt4/GuiView.cpp:2195 src/frontends/qt4/GuiView.cpp:2238
+#: src/frontends/qt4/GuiInclude.cpp:332 src/frontends/qt4/GuiView.cpp:1884
+#: src/frontends/qt4/GuiView.cpp:1941 src/frontends/qt4/GuiView.cpp:2082
+#: src/frontends/qt4/GuiView.cpp:2204 src/frontends/qt4/GuiView.cpp:2247
 msgid "Documents|#o#O"
 msgstr "Dokumenter|#d#D"
 
@@ -20950,10 +20950,10 @@ msgstr ""
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Vælg et filnavn, som den indsatte grafik skal gemmes som"
 
-#: src/frontends/qt4/GuiClipboard.cpp:210 src/frontends/qt4/GuiView.cpp:1951
-#: src/frontends/qt4/GuiView.cpp:2093 src/frontends/qt4/GuiView.cpp:2109
-#: src/frontends/qt4/GuiView.cpp:2126 src/frontends/qt4/GuiView.cpp:2212
-#: src/frontends/qt4/GuiView.cpp:3276
+#: src/frontends/qt4/GuiClipboard.cpp:210 src/frontends/qt4/GuiView.cpp:1960
+#: src/frontends/qt4/GuiView.cpp:2102 src/frontends/qt4/GuiView.cpp:2118
+#: src/frontends/qt4/GuiView.cpp:2135 src/frontends/qt4/GuiView.cpp:2221
+#: src/frontends/qt4/GuiView.cpp:3285
 msgid "Canceled."
 msgstr "Annulleret."
 
@@ -20982,9 +20982,9 @@ msgstr "Sammenlign LyX-filer"
 msgid "Select document"
 msgstr "Vælg dokument"
 
-#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1879
-#: src/frontends/qt4/GuiView.cpp:1936 src/frontends/qt4/GuiView.cpp:2201
-#: src/frontends/qt4/GuiView.cpp:2246
+#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:1888
+#: src/frontends/qt4/GuiView.cpp:1945 src/frontends/qt4/GuiView.cpp:2210
+#: src/frontends/qt4/GuiView.cpp:2255
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX-dokumenter (*.lyx)"
 
@@ -21164,7 +21164,7 @@ msgid "Document Settings"
 msgstr "Dokumentindstillinger"
 
 #: src/frontends/qt4/GuiDocument.cpp:720 src/frontends/qt4/GuiInclude.cpp:48
-#: src/frontends/qt4/Menus.cpp:1398
+#: src/frontends/qt4/Menus.cpp:1400
 msgid "Child Document"
 msgstr "Barnedokument"
 
@@ -22751,79 +22751,79 @@ msgstr "Normal-størrelse ikoner"
 msgid "Big-sized icons"
 msgstr "Store ikoner"
 
-#: src/frontends/qt4/GuiView.cpp:823
+#: src/frontends/qt4/GuiView.cpp:832
 msgid "Exit LyX"
 msgstr "Afslut LyX"
 
-#: src/frontends/qt4/GuiView.cpp:824
+#: src/frontends/qt4/GuiView.cpp:833
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr "LyX kunne ikke lukkes, idet dokumenter er under behandling af LyX."
 
-#: src/frontends/qt4/GuiView.cpp:1072
+#: src/frontends/qt4/GuiView.cpp:1081
 msgid "Welcome to LyX!"
 msgstr "Velkommen til LyX!"
 
-#: src/frontends/qt4/GuiView.cpp:1543
+#: src/frontends/qt4/GuiView.cpp:1552
 msgid "Automatic save done."
 msgstr "Automatisk arkivering udført."
 
-#: src/frontends/qt4/GuiView.cpp:1544
+#: src/frontends/qt4/GuiView.cpp:1553
 msgid "Automatic save failed!"
 msgstr "Automatisk arkivering mislykkedes!"
 
-#: src/frontends/qt4/GuiView.cpp:1590
+#: src/frontends/qt4/GuiView.cpp:1599
 msgid "Command not allowed without any document open"
 msgstr "Kommandoen er ikke tilladt uden et åbent dokument"
 
-#: src/frontends/qt4/GuiView.cpp:1692
+#: src/frontends/qt4/GuiView.cpp:1701
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Ukendt værktøjslinje \"%1$s\""
 
-#: src/frontends/qt4/GuiView.cpp:1874
+#: src/frontends/qt4/GuiView.cpp:1883
 msgid "Select template file"
 msgstr "Vælg skabelonfil"
 
-#: src/frontends/qt4/GuiView.cpp:1876 src/frontends/qt4/GuiView.cpp:2239
+#: src/frontends/qt4/GuiView.cpp:1885 src/frontends/qt4/GuiView.cpp:2248
 msgid "Templates|#T#t"
 msgstr "Skabeloner|#S#s"
 
-#: src/frontends/qt4/GuiView.cpp:1903
+#: src/frontends/qt4/GuiView.cpp:1912
 msgid "Document not loaded."
 msgstr "Dokument ikke indlæst."
 
-#: src/frontends/qt4/GuiView.cpp:1931
+#: src/frontends/qt4/GuiView.cpp:1940
 msgid "Select document to open"
 msgstr "Vælg dokument, som skal åbnes"
 
-#: src/frontends/qt4/GuiView.cpp:1933 src/frontends/qt4/GuiView.cpp:2074
-#: src/frontends/qt4/GuiView.cpp:2196
+#: src/frontends/qt4/GuiView.cpp:1942 src/frontends/qt4/GuiView.cpp:2083
+#: src/frontends/qt4/GuiView.cpp:2205
 msgid "Examples|#E#e"
 msgstr "Eksempler|#E#e"
 
-#: src/frontends/qt4/GuiView.cpp:1937
+#: src/frontends/qt4/GuiView.cpp:1946
 msgid "LyX-1.3.x Documents (*.lyx13)"
 msgstr "LyX-1.3.x-dokumenter (*.lyx13)"
 
-#: src/frontends/qt4/GuiView.cpp:1938
+#: src/frontends/qt4/GuiView.cpp:1947
 msgid "LyX-1.4.x Documents (*.lyx14)"
 msgstr "LyX-1.4.x-dokumenter (*.lyx14)"
 
-#: src/frontends/qt4/GuiView.cpp:1939
+#: src/frontends/qt4/GuiView.cpp:1948
 msgid "LyX-1.5.x Documents (*.lyx15)"
 msgstr "LyX-1.5.x-dokumenter (*.lyx15)"
 
-#: src/frontends/qt4/GuiView.cpp:1940
+#: src/frontends/qt4/GuiView.cpp:1949
 msgid "LyX-1.6.x Documents (*.lyx16)"
 msgstr "LyX-1.6.x-dokumenter (*.lyx16)"
 
-#: src/frontends/qt4/GuiView.cpp:1965 src/frontends/qt4/Validator.cpp:200
+#: src/frontends/qt4/GuiView.cpp:1974 src/frontends/qt4/Validator.cpp:200
 #: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:294
 #: src/insets/InsetGraphics.cpp:596 src/insets/InsetInclude.cpp:533
 msgid "Invalid filename"
 msgstr "Ugyldigt filnavn"
 
-#: src/frontends/qt4/GuiView.cpp:1966
+#: src/frontends/qt4/GuiView.cpp:1975
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -22831,40 +22831,40 @@ msgid ""
 "does not exist."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1982
+#: src/frontends/qt4/GuiView.cpp:1991
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Åbner dokument %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:1987
+#: src/frontends/qt4/GuiView.cpp:1996
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokumentet %1$s blev åbnet."
 
-#: src/frontends/qt4/GuiView.cpp:1990
+#: src/frontends/qt4/GuiView.cpp:1999
 msgid "Version control detected."
 msgstr "Versionsstyring opfanget."
 
-#: src/frontends/qt4/GuiView.cpp:1992
+#: src/frontends/qt4/GuiView.cpp:2001
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunne ikke åbne dokument %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2021
+#: src/frontends/qt4/GuiView.cpp:2030
 msgid "Couldn't import file"
 msgstr "Kunne ikke importere fil"
 
-#: src/frontends/qt4/GuiView.cpp:2022
+#: src/frontends/qt4/GuiView.cpp:2031
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Ingen oplysninger om import af formatet %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:2069
+#: src/frontends/qt4/GuiView.cpp:2078
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Vælg %1$s-fil at importere"
 
-#: src/frontends/qt4/GuiView.cpp:2120 src/frontends/qt4/GuiView.cpp:2284
+#: src/frontends/qt4/GuiView.cpp:2129 src/frontends/qt4/GuiView.cpp:2293
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -22875,37 +22875,37 @@ msgstr ""
 "\n"
 "Vil De overskrive dette dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:2122 src/frontends/qt4/GuiView.cpp:2288
+#: src/frontends/qt4/GuiView.cpp:2131 src/frontends/qt4/GuiView.cpp:2297
 msgid "Overwrite document?"
 msgstr "Overskriv dokument?"
 
 # , c-format
-#: src/frontends/qt4/GuiView.cpp:2131
+#: src/frontends/qt4/GuiView.cpp:2140
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Importerer %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2134
+#: src/frontends/qt4/GuiView.cpp:2143
 msgid "imported."
 msgstr "importeret."
 
-#: src/frontends/qt4/GuiView.cpp:2136
+#: src/frontends/qt4/GuiView.cpp:2145
 msgid "file not imported!"
 msgstr "fil ikke importeret!"
 
-#: src/frontends/qt4/GuiView.cpp:2161
+#: src/frontends/qt4/GuiView.cpp:2170
 msgid "newfile"
 msgstr "ny-fil"
 
-#: src/frontends/qt4/GuiView.cpp:2194
+#: src/frontends/qt4/GuiView.cpp:2203
 msgid "Select LyX document to insert"
 msgstr "Vælg LyX-dokument som skal indsættes"
 
-#: src/frontends/qt4/GuiView.cpp:2236
+#: src/frontends/qt4/GuiView.cpp:2245
 msgid "Choose a filename to save document as"
 msgstr "Vælg et filnavn, som dokumentet skal som"
 
-#: src/frontends/qt4/GuiView.cpp:2269
+#: src/frontends/qt4/GuiView.cpp:2278
 #, c-format
 msgid ""
 "The file\n"
@@ -22915,16 +22915,16 @@ msgid ""
 "Do you want to choose a new filename?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2273
+#: src/frontends/qt4/GuiView.cpp:2282
 msgid "Chosen File Already Open"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2274 src/frontends/qt4/GuiView.cpp:2289
-#: src/frontends/qt4/GuiView.cpp:2337
+#: src/frontends/qt4/GuiView.cpp:2283 src/frontends/qt4/GuiView.cpp:2298
+#: src/frontends/qt4/GuiView.cpp:2346
 msgid "&Rename"
 msgstr "&Omdøb"
 
-#: src/frontends/qt4/GuiView.cpp:2333
+#: src/frontends/qt4/GuiView.cpp:2342
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -22935,23 +22935,23 @@ msgstr ""
 "\n"
 "Vil De omdøbe dokumentet og prøve igen?"
 
-#: src/frontends/qt4/GuiView.cpp:2336
+#: src/frontends/qt4/GuiView.cpp:2345
 msgid "Rename and save?"
 msgstr "Omdøb og gem?"
 
-#: src/frontends/qt4/GuiView.cpp:2337
+#: src/frontends/qt4/GuiView.cpp:2346
 msgid "&Retry"
 msgstr "&Forsøg igen"
 
-#: src/frontends/qt4/GuiView.cpp:2443
+#: src/frontends/qt4/GuiView.cpp:2452
 msgid "Close document"
 msgstr "Luk dokument"
 
-#: src/frontends/qt4/GuiView.cpp:2444
+#: src/frontends/qt4/GuiView.cpp:2453
 msgid "Document could not be closed because it is being processed by LyX."
 msgstr "Dokument kunne ikke lukkes fordi det er under behandling af LyX."
 
-#: src/frontends/qt4/GuiView.cpp:2548 src/frontends/qt4/GuiView.cpp:2653
+#: src/frontends/qt4/GuiView.cpp:2557 src/frontends/qt4/GuiView.cpp:2662
 #, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -22962,11 +22962,11 @@ msgstr ""
 "\n"
 "Ønsker De at gemme dokumentet?"
 
-#: src/frontends/qt4/GuiView.cpp:2551 src/frontends/qt4/GuiView.cpp:2656
+#: src/frontends/qt4/GuiView.cpp:2560 src/frontends/qt4/GuiView.cpp:2665
 msgid "Save new document?"
 msgstr "Gem nyt dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:2556
+#: src/frontends/qt4/GuiView.cpp:2565
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -22977,15 +22977,15 @@ msgstr ""
 "\n"
 "Ønsker du at gemme dokumentet eller at skrotte ændringerne?"
 
-#: src/frontends/qt4/GuiView.cpp:2558 src/frontends/qt4/GuiView.cpp:2650
+#: src/frontends/qt4/GuiView.cpp:2567 src/frontends/qt4/GuiView.cpp:2659
 msgid "Save changed document?"
 msgstr "Gem ændret dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:2559
+#: src/frontends/qt4/GuiView.cpp:2568
 msgid "&Discard"
 msgstr "&Skrot"
 
-#: src/frontends/qt4/GuiView.cpp:2647
+#: src/frontends/qt4/GuiView.cpp:2656
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -22996,7 +22996,7 @@ msgstr ""
 "\n"
 "Vil du gemme dokumentet?"
 
-#: src/frontends/qt4/GuiView.cpp:2682
+#: src/frontends/qt4/GuiView.cpp:2691
 #, fuzzy, c-format
 msgid ""
 "Document \n"
@@ -23007,69 +23007,69 @@ msgstr ""
 "\n"
 "Vil du overskrive dette dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:2685
+#: src/frontends/qt4/GuiView.cpp:2694
 msgid "Reload externally changed document?"
 msgstr "Genindlæs eksternt-ændret dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:2738
+#: src/frontends/qt4/GuiView.cpp:2747
 msgid "Error when setting the locking property."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2784
+#: src/frontends/qt4/GuiView.cpp:2793
 msgid "Directory is not accessible."
 msgstr "Mappe er utilgængelig"
 
-#: src/frontends/qt4/GuiView.cpp:2860
+#: src/frontends/qt4/GuiView.cpp:2869
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Åbner barnedokument %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2924
+#: src/frontends/qt4/GuiView.cpp:2933
 #, fuzzy, c-format
 msgid "No buffer for file: %1$s."
 msgstr "Ingen oplysninger om visning af %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2951
+#: src/frontends/qt4/GuiView.cpp:2960
 #, c-format
 msgid "Successful preview of format: %1$s"
 msgstr "Succesfuldt prøvetryk af format: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2952
+#: src/frontends/qt4/GuiView.cpp:2961
 #, c-format
 msgid "Error while previewing format: %1$s"
 msgstr "Fejl under prøvetrykning af format: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2955
+#: src/frontends/qt4/GuiView.cpp:2964
 #, c-format
 msgid "Successful export to format: %1$s"
 msgstr "Succesfuld eksport til format: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2956
+#: src/frontends/qt4/GuiView.cpp:2965
 #, c-format
 msgid "Error while exporting format: %1$s"
 msgstr "Fejl under eksport til format: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:3140 src/frontends/qt4/GuiView.cpp:3152
+#: src/frontends/qt4/GuiView.cpp:3149 src/frontends/qt4/GuiView.cpp:3161
 msgid "Exporting ..."
 msgstr "Eksporterer ..."
 
-#: src/frontends/qt4/GuiView.cpp:3161
+#: src/frontends/qt4/GuiView.cpp:3170
 msgid "Previewing ..."
 msgstr "Prøvetrykker ..."
 
-#: src/frontends/qt4/GuiView.cpp:3195
+#: src/frontends/qt4/GuiView.cpp:3204
 msgid "Document not loaded"
 msgstr "Dokument ikke indlæst"
 
-#: src/frontends/qt4/GuiView.cpp:3269
+#: src/frontends/qt4/GuiView.cpp:3278
 msgid "Select file to insert"
 msgstr "Vælg fil som skal indsættes"
 
-#: src/frontends/qt4/GuiView.cpp:3273
+#: src/frontends/qt4/GuiView.cpp:3282
 msgid "All Files (*)"
 msgstr "Alle filer (*)"
 
-#: src/frontends/qt4/GuiView.cpp:3297
+#: src/frontends/qt4/GuiView.cpp:3306
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -23078,28 +23078,28 @@ msgstr ""
 "Alle ændringer vil gå tabt. Er De sikker på at De vil gendanne den gemte "
 "udgave af dokumentet %1$s?"
 
-#: src/frontends/qt4/GuiView.cpp:3300
+#: src/frontends/qt4/GuiView.cpp:3309
 msgid "Revert to saved document?"
 msgstr "Gendan gemte dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:3326
+#: src/frontends/qt4/GuiView.cpp:3335
 msgid "Saving all documents..."
 msgstr "Gemmer alle dokumenter..."
 
-#: src/frontends/qt4/GuiView.cpp:3336
+#: src/frontends/qt4/GuiView.cpp:3345
 msgid "All documents saved."
 msgstr "Alle dokumenter gemt."
 
-#: src/frontends/qt4/GuiView.cpp:3436
+#: src/frontends/qt4/GuiView.cpp:3445
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s ukendt kommando!"
 
-#: src/frontends/qt4/GuiView.cpp:3554
+#: src/frontends/qt4/GuiView.cpp:3563
 msgid "Please, preview the document first."
 msgstr "Prøvetryk venligst dokumentet først."
 
-#: src/frontends/qt4/GuiView.cpp:3574
+#: src/frontends/qt4/GuiView.cpp:3583
 msgid "Couldn't proceed."
 msgstr "Kunne ikke fortsætte."
 
@@ -23257,33 +23257,33 @@ msgstr "<Tom indholdsfortegnelse>"
 msgid "Other Toolbars"
 msgstr "Andre værktøjslinjer"
 
-#: src/frontends/qt4/Menus.cpp:1358
+#: src/frontends/qt4/Menus.cpp:1359
 msgid "No Branches Set for Document!"
 msgstr "Ingen grene angivet for dokument!"
 
-#: src/frontends/qt4/Menus.cpp:1414
+#: src/frontends/qt4/Menus.cpp:1416
 msgid "Index List|I"
 msgstr "Register-/Indeksliste|R"
 
-#: src/frontends/qt4/Menus.cpp:1419
+#: src/frontends/qt4/Menus.cpp:1421
 msgid "Index Entry|d"
 msgstr "Register-/Indeksord|d"
 
-#: src/frontends/qt4/Menus.cpp:1434
+#: src/frontends/qt4/Menus.cpp:1436
 #, c-format
 msgid "Index: %1$s"
 msgstr "Register/Indeks: %1$s"
 
-#: src/frontends/qt4/Menus.cpp:1439 src/frontends/qt4/Menus.cpp:1468
+#: src/frontends/qt4/Menus.cpp:1441 src/frontends/qt4/Menus.cpp:1470
 #, c-format
 msgid "Index Entry (%1$s)"
 msgstr "Register-/Indeksord (%1$s)"
 
-#: src/frontends/qt4/Menus.cpp:1485
+#: src/frontends/qt4/Menus.cpp:1487
 msgid "No Citation in Scope!"
 msgstr "Ingen litteraurreference i område!"
 
-#: src/frontends/qt4/Menus.cpp:2093
+#: src/frontends/qt4/Menus.cpp:2096
 msgid "No Action Defined!"
 msgstr "Ingen handling angivet!"
 
