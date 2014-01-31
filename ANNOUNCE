@@ -1,25 +1,27 @@
-Public release of LyX version 2.0.7
-===================================
+Public release of LyX version 2.0.7.1
+=====================================
 
-We are pleased to announce the release of LyX 2.0.7. This is the seventh
-maintenance release in the 2.0.x series.
+We are pleased to announce the release of LyX 2.0.7.1. This is a bugfix
+release that affects Mac OSX only. Users of other operating systems do
+*not* need to update to this version.
 
-LyX 2.0.7 is the result of on-going efforts to make our stable version
-even more reliable and stable. We have fixed a number of bugs and made
-a number of improvements. These are detailed below. 
+There were some issues with the menus in LyX 2.0.7 on OSX. Specifically,
+"dynamic" menu items were lost, and there was a problem restoring the
+menus from full-screen operation. Both issues are fixed in 2.0.7.1.
 
-The most important bug was #8854, which could lead to file corruption
-in certain cases and, more often, would lead to errors in generated
-files (e.g., PDFs). We encourage all LyX users to upgrade to this 
-version.
+Other bugs fixed since LyX 2.0.6 are detailed below. 
+
+The most important of these was #8854, which could lead to file corruption
+in certain cases and, more often, would lead to errors in generated files 
+(e.g., PDFs). We encourage all LyX users to upgrade from 2.0.6.
 
 LyX is a document processor that encourages an approach to writing based 
 on the structure of your documents and not simply their appearance. It is
 released under a Free and Open Source Software license.
 
-You can download LyX 2.0.7 from http://www.lyx.org/Download/.
+You can download LyX 2.0.7.1 from http://www.lyx.org/Download/.
 
-If you think you found a bug in LyX 2.0.7, either e-mail the LyX
+If you think you found a bug in LyX 2.0.7.1, either e-mail the LyX
 developers' mailing list (lyx-devel <at> lists.lyx.org), or open a bug
 report at http://www.lyx.org/trac/wiki/BugTrackerHome.
 
@@ -28,24 +30,25 @@ documentation that comes with LyX and the LyX wiki, which lives at
 http://wiki.lyx.org/. If you can't find the answer there, e-mail the LyX 
 users' list (lyx-users at lists.lyx.org).
 
-We hope you enjoy using LyX 2.0.7.
+We hope you enjoy using LyX 2.0.7.1.
 
 The LyX team.
 http://www.lyx.org
 
 
-What's new in LyX 2.0.7
-=======================
+What's new in LyX 2.0.7.1
+=========================
 
 ** Updates:
 ***********
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Updated Interlingua, Japanese, Nynorsk, Swedish and Ukrainian user interface
-  localizations.
+- Updated Arabic, French, Interlingua, Japanese, Nynorsk, Swedish and
+  Ukrainian user interface localizations.
 
 - Revised French Intro and User Guide.
+
 
 
 ** Bug fixes:
@@ -117,6 +120,10 @@ What's new in LyX 2.0.7
 - Fix wrong display of style "Description" in "article (paper)" class
   (bug 8869).
 
+- Fix the missing menu entry for "Insert Branch <branch name>".
+
+
+- Fix the missing dynamic menus in general and restore correctly from fullscreen.
 
 * DOCUMENTATION AND LOCALIZATION
 
