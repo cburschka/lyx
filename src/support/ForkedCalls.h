@@ -158,7 +158,8 @@ public:
 
 	/** Start the child process.
 	 *
-	 *  The command "what" is passed to execvp() for execution.
+	 *  The command "what" is passed to execvp() for execution. "$$s" is
+	 *  replaced accordingly by libScriptSearch().
 	 *
 	 *  There are two startScript commands available. They differ in that
 	 *  the second receives a signal that is executed on completion of

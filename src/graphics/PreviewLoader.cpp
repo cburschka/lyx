@@ -615,7 +615,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	if (buffer_.params().bufferFormat() == "lilypond-book")
 		cs << " --lilypond";
 
-	string const command = libScriptSearch(cs.str());
+	string const command = cs.str();
 
 	if (wait) {
 		ForkedCall call(buffer_.filePath());

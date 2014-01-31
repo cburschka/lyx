@@ -324,8 +324,7 @@ static void build_script(string const & from_file,
 
 		ostringstream os;
 		os << os::python() << ' '
-		   << libScriptSearch("$$s/scripts/convertDefault.py",
-				      quote_python) << ' ';
+		   << "$$s/scripts/convertDefault.py" << ' ';
 		if (!from_format.empty())
 			os << strip_digit(from_format) << ':';
 		// The extra " quotes around infile and outfile are needed
@@ -387,7 +386,6 @@ static void build_script(string const & from_file,
 		command = subst(command, token_base,  "' + '\"' + infile_base + '\"' + '");
 		command = subst(command, token_to,    "' + '\"' + outfile + '\"' + '");
 		command = subst(command, token_todir, "' + '\"' + outdir + '\"' + '");
-		command = libScriptSearch(command, quote_python);
 
 		build_conversion_command(command, script);
 	}

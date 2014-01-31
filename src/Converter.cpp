@@ -403,7 +403,6 @@ bool Converters::convert(Buffer const * buffer,
 			command = subst(command, token_from, "");
 			command = subst(command, token_latex_encoding, buffer ?
 				buffer->params().encoding().latexName() : string());
-			command = libScriptSearch(command);
 			LYXERR(Debug::FILES, "Running " << command);
 			if (!runLaTeX(*buffer, command, runparams, errorList))
 				return false;
@@ -451,7 +450,6 @@ bool Converters::convert(Buffer const * buffer,
 			command = subst(command, token_orig_path, quoteName(onlyPath(orig_from.absFileName())));
 			command = subst(command, token_orig_from, quoteName(onlyFileName(orig_from.absFileName())));
 			command = subst(command, token_encoding, buffer ? buffer->params().encoding().iconvName() : string());
-			command = libScriptSearch(command);
 
 			if (!conv.parselog.empty())
 				command += " 2> " + quoteName(infile2 + ".out");
@@ -495,8 +493,7 @@ bool Converters::convert(Buffer const * buffer,
   
 				if (!conv.parselog.empty()) {
 					string const logfile =  infile2 + ".log";
-					string const script = libScriptSearch(conv.parselog);
-					string const command2 = script +
+					string const command2 = conv.parselog +
 						" < " + quoteName(infile2 + ".out") +
 						" > " + quoteName(logfile);
 					one.startscript(Systemcall::Wait,

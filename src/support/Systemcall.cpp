@@ -105,11 +105,12 @@ int Systemcall::startscript(Starttype how, string const & what,
 {
 	string const python_call = "python -tt";
 	string command = to_filesystem8bit(from_utf8(latexEnvCmdPrefix(path)));
+	string what_ss = libScriptSearch(what);
 
-	if (prefixIs(what, python_call))
-		command += os::python() + what.substr(python_call.length());
+	if (prefixIs(what_ss, python_call))
+		command += os::python() + what_ss.substr(python_call.length());
 	else
-		command += what;
+		command += what_ss;
 
 	if (how == DontWait) {
 		switch (os::shell()) {
@@ -240,13 +241,14 @@ string const parsecmd(string const & incmd, string & infile, string & outfile,
 int Systemcall::startscript(Starttype how, string const & what,
 			    string const & path, bool process_events)
 {
-	LYXERR(Debug::INFO,"Running: " << what);
+	string const what_ss = libScriptSearch(what);
+	LYXERR(Debug::INFO,"Running: " << what_ss);
 
 	string infile;
 	string outfile;
 	string errfile;
 	QString const cmd = QString::fromLocal8Bit(
-			parsecmd(what, infile, outfile, errfile).c_str());
+			parsecmd(what_ss, infile, outfile, errfile).c_str());
 
 	SystemcallPrivate d(infile, outfile, errfile);
 

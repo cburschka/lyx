@@ -282,7 +282,7 @@ int ForkedCall::startScript(Starttype wait, string const & what)
 		return retval_;
 	}
 
-	command_ = trim(what);
+	command_ = libScriptSearch(trim(what));
 	signal_.reset();
 	return run(Wait);
 }
@@ -290,7 +290,7 @@ int ForkedCall::startScript(Starttype wait, string const & what)
 
 int ForkedCall::startScript(string const & what, SignalTypePtr signal)
 {
-	command_ = trim(what);
+	command_ = libScriptSearch(trim(what));
 	signal_  = signal;
 
 	return run(DontWait);

@@ -59,7 +59,7 @@ bool SpecialisedMover::do_copy(FileName const & from, FileName const & to,
 	if (command_.empty())
 		return Mover::do_copy(from, to, latex);
 
-	string command = libScriptSearch(command_);
+	string command = command_;
 	command = subst(command, "$$i", quoteName(from.toFilesystemEncoding()));
 	command = subst(command, "$$o", quoteName(to.toFilesystemEncoding()));
 	command = subst(command, "$$l", quoteName(latex));
