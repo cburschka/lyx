@@ -4222,7 +4222,7 @@ def revert_tibetan(document):
 # we want to convert them to paragraphs in a chunk inset
 # the last will be discarded
 # the first should look like: <<FROGS>>=
-# will will discard the delimiters, and put the contents into the
+# we will discard the delimiters, and put the contents into the
 # optional argument of the inset
 def convert_chunks(document):
     first_re = re.compile(r'<<(.*)>>=')
