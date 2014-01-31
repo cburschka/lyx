@@ -192,16 +192,21 @@ foreach(libsubfolder doc examples templates)
             -P "${TOP_SRC_DIR}/development/autotests/export.cmake")
       setmarkedtestlabel(${TestName} ${reverted} "export")
     endif()
-    set(TestName "lyx2lyx/${libsubfolder}/${f}")
-    maketestname(TestName reverted revertedTests ignoredTests)
-    if(TestName)
-      add_test(NAME ${TestName}
-        WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
-        COMMAND ${CMAKE_COMMAND} -DLYX2LYX=${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx
-          -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}
-          -DLYXFILE=${LIBSUB_SRC_DIR}/${f}.lyx
-          -P "${TOP_SRC_DIR}/development/autotests/lyx2lyxtest.cmake")
-      setmarkedtestlabel(${TestName} ${reverted} "export")
+    if(LYX_PYTHON_EXECUTABLE)
+      # For use of lyx2lyx we need the python executable
+      set(TestName "lyx2lyx/${libsubfolder}/${f}")
+      maketestname(TestName reverted revertedTests ignoredTests)
+      if(TestName)
+        add_test(NAME ${TestName}
+          WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
+          COMMAND ${CMAKE_COMMAND}
+            "-DLYX_PYTHON_EXECUTABLE=${LYX_PYTHON_EXECUTABLE}"
+            "-DLYX2LYX=${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx"
+            "-DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}"
+            "-DLYXFILE=${LIBSUB_SRC_DIR}/${f}.lyx"
+            -P "${TOP_SRC_DIR}/development/autotests/lyx2lyxtest.cmake")
+        setmarkedtestlabel(${TestName} ${reverted} "export")
+      endif()
     endif()
     set(TestName "check_load/${libsubfolder}/${f}")
     maketestname(TestName reverted revertedTests ignoredTests)

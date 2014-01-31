@@ -8,7 +8,8 @@
 # LYXFILE  = xxx
 #
 # Script should be called like:
-# cmake -DLYX2LYX=xxx \
+# cmake -DLYX_PYTHON_EXECUTABLE=xxx \
+#       -DLYX2LYX=xxx \
 #       -DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR} \
 #       -DWORKDIR=${BUILD_DIR}/autotests/out-home \
 #       -DLYXFILE=xxx \
@@ -17,9 +18,9 @@
 
 string(RANDOM LENGTH 5 errorfile)
 string(RANDOM LENGTH 6 outputfile)
-message(STATUS "Executing ${LYX2LYX} -e ${errorfile} -o ${outputfile} ${LYXFILE}")
+message(STATUS "Executing ${LYX_PYTHON_EXECUTABLE} ${LYX2LYX} -e ${errorfile} -o ${outputfile} ${LYXFILE}")
 execute_process(
-  COMMAND ${LYX2LYX} -e ${errorfile} -o ${outputfile} ${LYXFILE}
+  COMMAND ${LYX_PYTHON_EXECUTABLE} ${LYX2LYX} -e ${errorfile} -o ${outputfile} ${LYXFILE}
   RESULT_VARIABLE _err)
 
 message(STATUS "Error output of lyx2lyx = ${_err}")
