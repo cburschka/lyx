@@ -88,16 +88,22 @@ fi
 
 if [ ! -d $BASE/lyx-patch/lyx-$LAST ]; then 
   echo "Can't find directory for last version $LAST.";
-  echo "Will try to download from LyX site....";
+  echo "See if you can fix this in $BASE/lyx-patch/.";
+  echo "Try that, if you like, and then we'll continue.";
+  echo "We'll try to download from the LyX site if that does not work.";
   read;
-  pushd $BASE/lyx-patch/;
-  wget ftp://ftp.lyx.org/pub/lyx/stable/${FIRST}x/lyx-$LAST.tar.gz;
-  tar -zxvf lyx-$LAST.tar.gz;
-  if [ ! -f lyx-$LAST.tar.gz ]; then
-    echo "Still unable to find directory for last version $LAST.";
-    exit 1;
+
+  if [ ! -d $BASE/lyx-patch/lyx-$LAST ]; then 
+    echo "Will try to download from LyX site....";
+    pushd $BASE/lyx-patch/;
+    wget ftp://ftp.lyx.org/pub/lyx/stable/${FIRST}x/lyx-$LAST.tar.gz;
+    tar -zxvf lyx-$LAST.tar.gz;
+    if [ ! -f lyx-$LAST.tar.gz ]; then
+      echo "Still unable to find directory for last version $LAST.";
+      exit 1;
+    fi
+    popd;
   fi
-  popd;
 fi
 
 echo -n "Ready to make patch against $LAST...";
@@ -126,7 +132,7 @@ read
 $EDITOR patch-preamble;
 
 PATCH="patch-$VERSION";
-cat patch-preamble patch >$PATCH;
+cat patch-preamble $BASE/lyx-export/ANNOUNCE patch >$PATCH;
 gzip -c $PATCH > $PATCH.gz
 if [ -f $PATCH.gz.sig ]; then
   rm $PATCH.gz.sig;
