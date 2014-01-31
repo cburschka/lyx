@@ -1,6 +1,8 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 2.0.7.
+This file describes what has been done in the preparation of LyX 2.0.7.1
+since LyX 2.0.6. So this file includes changes made in 2.0.7.
+
 All comments are welcome.
 
 We try to group things by topic and in decreasing order of importance. 
@@ -13,7 +15,7 @@ For more details on how to use the repository, please visit:
   http://wiki.lyx.org/Devel/LyXGit
 A list of bugs fixed for this release can also be found at:
   http://www.lyx.org/trac/wiki/BugTrackerHome
-as well as a list of bugs still targeted to the 2.0.6 release.
+as well as a list of bugs still targeted to the 2.0.8 release.
 
 Richard Heck
 Branch Maintainer
@@ -26,27 +28,12 @@ What's new
 ** Updates:
 ***********
 
-* DOCUMENT INPUT/OUTPUT
-
-
-
-* TEX2LYX IMPROVEMENTS
-
-
-
-* USER INTERFACE
-
-
-
 * DOCUMENTATION AND LOCALIZATION
 
 - Updated Arabic, French, Interlingua, Japanese, Nynorsk, Swedish and
   Ukrainian user interface localizations.
 
 - Revised French Intro and User Guide.
-
-
-* BUILD/INSTALLATION
 
 
 
@@ -143,14 +130,6 @@ What's new
 - Add missing space before the edition in the bibliography (part of bug 8488).
 
 - Fix random character inserted as year modifier in author-year citations.
-
-
-* TEX2LYX
-
-
-
-* ADVANCED FIND AND REPLACE
-
 
 
 * BUILD/INSTALLATION
