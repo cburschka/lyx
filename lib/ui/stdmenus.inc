@@ -390,6 +390,7 @@ Menuset
 		Item "Single Quote|S" "quote-insert single"
 		Item "Protected Hyphen|y" "specialchar-insert nobreakdash"
 		Item "Breakable Slash|a" "specialchar-insert slash"
+		Item "Visible Space|V" "space-insert visible"
 		Item "Menu Separator|M" "specialchar-insert menu-separator"
 		Item "Phonetic Symbols|P" "ipa-insert"
 	End
@@ -400,7 +401,6 @@ Menuset
 		Separator
 		Item "Protected Space|P" "space-insert protected"
 		Item "Interword Space|w" "space-insert normal"
-		Item "Visible Space|i" "space-insert visible"
 		Item "Thin Space|T" "space-insert thin"
 		Item "Horizontal Space...|o" "command-alternatives dialog-show-new-inset space;dialog-show-new-inset mathspace"
 		Item "Horizontal Line...|L" "dialog-show-new-inset line"
