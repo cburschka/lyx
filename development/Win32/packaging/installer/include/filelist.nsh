@@ -48,11 +48,6 @@ Lists of files to include in the installer
   ${FILE}intl.dll"
   ${FILE}libhunspell.dll"
   ${FILE}zlibwapi.dll"
-  ${FILE}biblio.exe"
-  ${FILE}check_convert.exe"
-  ${FILE}check_filetools.exe"
-  ${FILE}check_layout.exe"
-  ${FILE}check_lstrings.exe"
 
 !macroend
 
