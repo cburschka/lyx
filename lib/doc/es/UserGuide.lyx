@@ -33,9 +33,6 @@
   \myTOC
   \mainmatter }
 
-% define a short command for \textvisiblespace
-\newcommand{\spce}{\textvisiblespace}
-
 % macro for italic page numbers in the index
 \newcommand{\IndexDef}[1]{\textit{#1}}
 
@@ -22778,31 +22775,11 @@ Espacio
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
 \begin_inset Quotes frd
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-En la salida, este comando aparece como su carácter correspondiente, el
- que identifica un espacio (espacio visible).
-\end_layout
-
 \end_inset
 
 , parece que no hace nada en una ecuación, puesto que no añade espacio,
@@ -22821,16 +22798,7 @@ Espacio
 
 \backslash
 sqrt
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 2x+1
@@ -22844,29 +22812,11 @@ spce
 
 \backslash
 sqrt
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 2x
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 +1
@@ -22965,16 +22915,7 @@ arg   "math-subscript"
 , teclea en una ecuación 
 \series bold
 x^2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -23001,16 +22942,7 @@ x^2y
 , teclea 
 \series bold
 x^2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 y
@@ -23037,16 +22969,7 @@ Espacio
  teclea 
 \series bold
 x^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 a
@@ -23087,16 +23010,7 @@ _
 , teclea 
 \series bold
 a_1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -23764,16 +23678,7 @@ ej.,
 
 \backslash
 hat
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 a
@@ -35527,6 +35432,25 @@ oblicua
 
 frágil Inserta una barra oblicua donde también se puede producir un salto
  de línea: \SpecialChar \slash{}
+
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Visible
+\begin_inset space ~
+\end_inset
+
+Space Inserts a character representing a single space (the one you get when
+ pressing the 
+\family sans
+Space
+\family default
+ key): 
+\begin_inset space \textvisiblespace{}
+\end_inset
+
 
 \end_layout
 

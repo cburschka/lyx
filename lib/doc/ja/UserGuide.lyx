@@ -41,9 +41,6 @@
   \myTOC
   \mainmatter }
 
-% define a short command for \textvisiblespace
-\newcommand{\spce}{\textvisiblespace}
-
 % macro for italic page numbers in the index
 \newcommand{\IndexDef}[1]{\textit{#1}}
 
@@ -113,7 +110,7 @@ End
 \font_sf_scale 100
 \font_tt_scale 100
 \graphics default
-\default_output_format pdf
+\default_output_format default
 \output_sync 0
 \bibtex_command bibtex
 \index_command default
@@ -18756,38 +18753,10 @@ Tab
 スペース
 \family default
 —本文書では「 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
- 」
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-このコマンドは、出力では空白文字(可視空白)を表す標準的な文字で表現されます。
-\end_layout
-
-\end_inset
-
-と印刷されます—は、数式中では何もしないように見えますが、実は入れ子構造から脱出するのに使われるのです。このため、
+ 」と印刷されます—は、数式中では何もしないように見えますが、実は入れ子構造から脱出するのに使われるのです。このため、
 \family sans
 スペース
 \family default
@@ -18802,16 +18771,7 @@ status open
 sqrt
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -18825,16 +18785,7 @@ spce
 sqrt
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -18842,16 +18793,7 @@ spce
 2x
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -18964,16 +18906,7 @@ arg   "math-subscript"
  x^2
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
  と入力すればよいのです。最後の
@@ -18998,16 +18931,7 @@ x^2y
 \family typewriter
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -19028,16 +18952,7 @@ y
  x^a
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
  と入力します。下付き文字も同様です。
@@ -19049,16 +18964,7 @@ spce
  a_1
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
  と入力します。
@@ -19621,16 +19527,7 @@ status collapsed
 hat
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -29590,6 +29487,27 @@ reference "sub:略語"
 \begin_layout Description
 可改行スラッシュ 改行を許可されたスラッシュ「\SpecialChar \slash{}
 」を挿入する。
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Visible
+\begin_inset space ~
+\end_inset
+
+Space Inserts a character representing a single space (the one you get when
+ pressing the 
+\family sans
+Space
+\family default
+ key): 
+\lang japanese
+「
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+」
 \end_layout
 
 \begin_layout Description

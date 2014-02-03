@@ -85,8 +85,6 @@
 \DeclareMathOperator*{\Raute}{\blacklozenge}
 \DeclareMathOperator{\sgn}{sgn}
 
-\newcommand{\leer}{\textvisiblespace}
-
 % Beispielbefehle aus Kap. 20.1 
 \newcommand{\gr}{\Longrightarrow}
 \newcommand{\us}[1]{\underline{#1}}
@@ -967,52 +965,11 @@ Zeichenerklärung
 \end_layout
 
 \begin_layout Itemize
-Das Symbol
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Dieses sichtbare Leerzeichen erhält man über den Befehl 
-\series bold
-
-\backslash
-textvisiblespace
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Befehle ! T ! 
-\backslash
-textvisiblespace
-\end_layout
-
+Das Symbol 
+\begin_inset space \textvisiblespace{}
 \end_inset
 
-, der im TeX-Modus einzugeben ist.
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-steht für ein einzugebendes Leerzeichen.
+ steht für ein einzugebendes Leerzeichen.
 \end_layout
 
 \begin_layout Itemize
@@ -1657,16 +1614,7 @@ B^V
 
 \begin_layout Plain Layout
 B^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -1893,16 +1841,7 @@ raisebox
 
 \backslash
 frac
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -1935,16 +1874,7 @@ B
 
 \backslash
 dfrac
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -1977,31 +1907,13 @@ B
 
 \backslash
 dfrac
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 e^
 \backslash
 frac
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 1
@@ -2093,16 +2005,7 @@ Der Befehl für obiges Beispiel lautet:
 
 \backslash
 cfrac
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -2112,31 +2015,13 @@ A
 B+
 \backslash
 cfrac
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 C+
 \backslash
 cfrac
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 E
@@ -2500,16 +2385,7 @@ raisebox
 
 \backslash
 sqrt
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A-B
@@ -2538,16 +2414,7 @@ A-B
 
 \backslash
 root
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 3
@@ -2695,16 +2562,7 @@ uproot{2
 
 \backslash
 beta
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -2904,16 +2762,7 @@ raisebox
 
 \backslash
 binom
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -2946,16 +2795,7 @@ B
 
 \backslash
 dbinom
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -2988,16 +2828,7 @@ B
 
 \backslash
 tbinom
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -3030,16 +2861,7 @@ B
 
 \backslash
 brack
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -3072,16 +2894,7 @@ B
 
 \backslash
 brace
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -3162,16 +2975,7 @@ Ergebnis
 
 \backslash
 cases
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -3217,16 +3021,7 @@ A & B>0\end{cases}$
 
 \backslash
 cases
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 Strg+Enter
@@ -3769,31 +3564,13 @@ raisebox
 
 \begin_layout Plain Layout
 ^19
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 _
 \backslash
 phantom
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 1
@@ -3801,16 +3578,7 @@ leer
 \end_inset
 
 9
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 F
@@ -3837,31 +3605,13 @@ F
 
 \begin_layout Plain Layout
 ^235
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 _
 \backslash
 phantom
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 23
@@ -3869,16 +3619,7 @@ leer
 \end_inset
 
 9
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 F
@@ -3907,31 +3648,13 @@ F
 
 \backslash
 Lambda^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
 \backslash
 phantom
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 ii
@@ -3939,16 +3662,7 @@ ii
 \end_inset
 
 t
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 _MMt
@@ -4062,16 +3776,7 @@ Zum Beispiel erzeugt
 vphantom
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -4218,16 +3923,7 @@ raisebox
 
 \backslash
 overline
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A+B
@@ -4268,16 +3964,7 @@ overline
 
 \backslash
 underline
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A+B
@@ -4318,31 +4005,13 @@ underline
 
 \backslash
 overline
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
 \backslash
 underline
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A+B
@@ -4640,31 +4309,13 @@ Ergebnis
 
 \begin_layout Plain Layout
 A_1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 ,
 \backslash
 dots
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 ,A_n
@@ -4691,31 +4342,13 @@ leer
 
 \begin_layout Plain Layout
 A_1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 +
 \backslash
 dots
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 +A_n
@@ -4742,31 +4375,13 @@ leer
 
 \begin_layout Plain Layout
 A_1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 ,
 \backslash
 ldots
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 ,A_n
@@ -4793,31 +4408,13 @@ leer
 
 \begin_layout Plain Layout
 A_1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 +
 \backslash
 cdots
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 +A_n
@@ -5122,16 +4719,7 @@ B.
 A
 \backslash
 dotfill
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 B
@@ -5479,16 +5067,7 @@ Ergebnis
 
 \backslash
 bmatrix
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 2
@@ -5528,16 +5107,7 @@ Matrix
 
 \backslash
 Bmatrix
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 2
@@ -5577,16 +5147,7 @@ Matrix
 
 \backslash
 pmatrix
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 2
@@ -5660,16 +5221,7 @@ Ergebnis
 
 \backslash
 vmatrix
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 2
@@ -5709,16 +5261,7 @@ Matrix
 
 \backslash
 Vmatrix
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 2
@@ -5758,16 +5301,7 @@ Matrix
 
 \backslash
 matrix
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 2
@@ -6723,16 +6257,7 @@ Für die zweite Formel wurde der Befehl
 Big((A+B)(A-B)
 \backslash
 Big)^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 C
@@ -6761,16 +6286,7 @@ big{
 ln(3x)
 \backslash
 big}^2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -6778,29 +6294,11 @@ leer
 sin(x)
 \backslash
 Big]^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -6952,16 +6450,7 @@ bigm(
 ln(3x)
 \backslash
 bigm)^2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -6998,16 +6487,7 @@ big(
 ln(3x)
 \backslash
 big)^2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -7044,16 +6524,7 @@ bigl(
 ln(3x)
 \backslash
 bigr)^2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -7207,16 +6678,7 @@ normale Klammer: Der Befehl
 ln(
 \backslash
 frac
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -7224,16 +6686,7 @@ A
 \end_inset
 
 C
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 )
@@ -7260,16 +6713,7 @@ ln
 left(
 \backslash
 frac
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -7277,16 +6721,7 @@ A
 \end_inset
 
 C
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -7342,16 +6777,7 @@ ln Alt+M
 (
 \backslash
 frac
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -7376,16 +6802,7 @@ B.
 left.
 \backslash
 frac
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -7393,16 +6810,7 @@ A
 \end_inset
 
 B
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -7568,42 +6976,15 @@ raisebox{2.3mm}{
 
 \backslash
 overbrace
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A+B
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 ^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 3
@@ -7667,29 +7048,11 @@ raisebox{-2.2mm}{
 
 \backslash
 underbrace
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A+B
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 _5
@@ -7741,96 +7104,33 @@ underbrace
 
 \backslash
 overbrace
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
 \backslash
 underbrace
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A+B_w
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 _7
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 ^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 C
@@ -9031,16 +8331,7 @@ raisebox
 F(a)
 \backslash
 xleftarrow
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 x=a
@@ -9077,16 +8368,7 @@ F(x)
 F(x)
 \backslash
 xrightarrow
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 x=a
@@ -9675,16 +8957,7 @@ raisebox
 
 \backslash
 dot
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -9713,16 +8986,7 @@ A
 
 \backslash
 ddot
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -9751,16 +9015,7 @@ A
 
 \backslash
 dddot
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -9789,16 +9044,7 @@ A
 
 \backslash
 ddddot
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -9827,16 +9073,7 @@ A
 
 \backslash
 vec
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -9875,16 +9112,7 @@ Vektoren
 
 \backslash
 bar
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -9913,16 +9141,7 @@ A
 
 \backslash
 mathring
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -9985,16 +9204,7 @@ Ergebnis
 
 \backslash
 tilde
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -10023,16 +9233,7 @@ A
 
 \backslash
 hat
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -10061,16 +9262,7 @@ A
 
 \backslash
 check
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -10099,16 +9291,7 @@ A
 
 \backslash
 acute
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -10137,16 +9320,7 @@ A
 
 \backslash
 grave
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -10175,16 +9349,7 @@ A
 
 \backslash
 breve
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -10340,16 +9505,7 @@ i
 
 \backslash
 ddot
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 i
@@ -10474,16 +9630,7 @@ raisebox
 
 \backslash
 overleftarrow
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -10512,16 +9659,7 @@ A=B
 
 \backslash
 underleftarrow
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -10550,16 +9688,7 @@ A=B
 
 \backslash
 overleftrightarrow
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -10588,16 +9717,7 @@ A=B
 
 \backslash
 underleftrightarrow
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -10660,16 +9780,7 @@ Ergebnis
 
 \backslash
 overrightarrow
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -10698,16 +9809,7 @@ A=B
 
 \backslash
 underrightarrow
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -10736,16 +9838,7 @@ A=B
 
 \backslash
 widetilde
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -10774,16 +9867,7 @@ A=B
 
 \backslash
 widehat
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -10891,16 +9975,7 @@ underset
 
 \backslash
 underset
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -10972,16 +10047,7 @@ Ab und an ist es notwendig in einer Formel horizontalen Leerraum einzufügen.
 
 \color blue
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -11434,16 +10500,7 @@ raisebox
 sum
 \backslash
 sum
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 f_kl
@@ -11476,16 +10533,7 @@ sum
 negmedspace
 \backslash
 sum
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 f_kl
@@ -11830,16 +10878,7 @@ hspace
 
 \color blue
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -11857,16 +10896,7 @@ leer
 
 \color blue
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -12013,16 +11043,7 @@ mm)
 A=A
 \backslash
 hfill
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 B=B
@@ -12614,16 +11635,7 @@ raisebox
 
 \backslash
 fbox
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -12633,16 +11645,7 @@ Strg+M
  
 \backslash
 int
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -12671,31 +11674,13 @@ A=B
 
 \backslash
 boxed
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
 \backslash
 int
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -12724,16 +11709,7 @@ A=B
 A+
 \backslash
 fbox
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 B
@@ -12762,16 +11738,7 @@ B
 
 \backslash
 framebox
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 20mm
@@ -12789,16 +11756,7 @@ Strg+M
  
 \backslash
 frac
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -13259,16 +12217,7 @@ Strg+M Strg+M
  
 \backslash
 sqrt
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 B 
@@ -13614,16 +12563,7 @@ colorbox{green
 {
 \backslash
 fbox
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -13652,16 +12592,7 @@ A=B
 
 \backslash
 fbox
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -13679,16 +12610,7 @@ Strg+M Strg+M
  
 \backslash
 int
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 C=D
@@ -15946,16 +14868,7 @@ raisebox
 prod^
 \backslash
 infty
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -16148,16 +15061,7 @@ sum
 ^
 \series bold
 n
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 _
@@ -16169,16 +15073,7 @@ _
 
 \backslash
 subarray
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -16222,16 +15117,7 @@ Zeilen & Spalten
 
 \backslash
 hfill
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -16374,16 +15260,7 @@ sum_
 mathclap{
 \backslash
 substack
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 0<k<1000 Strg+Enter
@@ -16566,16 +15443,7 @@ sideset{
 
 \backslash
 sum_k=1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -16638,31 +15506,13 @@ underset
 
 \backslash
 overset
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
 \backslash
 maltese
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -18068,16 +16918,7 @@ negmedspace
 sum
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -18089,16 +16930,7 @@ leer
 ^N
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -18204,16 +17036,7 @@ Tastenkürzel
 mathbb
 \series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -18255,16 +17078,7 @@ Alt+Z K
 mathbf
 \series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -18306,16 +17120,7 @@ Strg+B
 boldsymbol
 \series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -18357,16 +17162,7 @@ Alt+Z F oder Strg+Alt+B
 mathcal
 \series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -18408,16 +17204,7 @@ Alt+Z H
 mathfrak
 \series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -18459,16 +17246,7 @@ AbC
 mathscr
 \series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -18554,16 +17332,7 @@ Tastenkürzel
 mathit
 \series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -18605,16 +17374,7 @@ AbC
 mathrm
 \series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -18656,16 +17416,7 @@ Alt+Z R
 mathsf
 \series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -18707,16 +17458,7 @@ Alt+Z S
 mathtt
 \series bold
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -19522,61 +18264,25 @@ huge
 
 \backslash
 maltese
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A M-m m 
 \backslash
 Large
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
 \backslash
 maltese
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
 \backslash
 textit
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -19603,46 +18309,19 @@ M-m
 m 
 \backslash
 tiny
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
 \backslash
 maltese
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
 \backslash
 textit
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
@@ -24813,16 +23492,7 @@ raisebox
 A(r)
 \backslash
 stackrel
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 r
@@ -24830,16 +23500,7 @@ r
 to
 \backslash
 infty
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -24849,29 +23510,11 @@ leer
 
 \backslash
 approx
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 B
@@ -25976,29 +24619,11 @@ raisebox
 lim_x
 \backslash
 to
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 x=B
@@ -26062,10 +24687,10 @@ Die Varianten in einer abgesetzten Formel:
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{Befehl}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Ergebnis}}\\
-\mathrm{a\backslash mod\textrm{\leer}b} &  & a\mod b\\
-\mathrm{a\backslash pmod\textrm{\leer}b} &  & a\pmod b\\
-\mathrm{a\backslash bmod\textrm{\leer}b} &  & a\bmod b\\
-\mathrm{a\backslash pod\textrm{\leer}b} &  & a\pod b
+\mathrm{a\backslash mod\textrm{\textvisiblespace}b} &  & a\mod b\\
+\mathrm{a\backslash pmod\textrm{\textvisiblespace}b} &  & a\pmod b\\
+\mathrm{a\backslash bmod\textrm{\textvisiblespace}b} &  & a\bmod b\\
+\mathrm{a\backslash pod\textrm{\textvisiblespace}b} &  & a\pod b
 \end{align*}
 
 \end_inset
@@ -26081,7 +24706,7 @@ In einer eingebetteten Formel wird bei allen Varianten vor den Funktionsnamen
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{Befehl}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Ergebnis}}\\
-\mathrm{a\backslash pod\textrm{\leer}bcd} &  & a\pod bcd\\
+\mathrm{a\backslash pod\textrm{\textvisiblespace}bcd} &  & a\pod bcd\\
 \mathrm{a\backslash pod\backslash\{bc\to d} &  & a\pod{bc}d
 \end{align*}
 
@@ -26508,16 +25133,7 @@ L
 \end_inset
 
 `
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -26549,16 +25165,7 @@ leer
 \end_inset
 
 `
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -26792,16 +25399,7 @@ status collapsed
 
 \backslash
 ^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 e
@@ -26873,16 +25471,7 @@ status collapsed
 
 \backslash
 u
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 e
@@ -26920,16 +25509,7 @@ u e
 
 \backslash
 b
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 e
@@ -26967,16 +25547,7 @@ b e
 
 \backslash
 t
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 ee
@@ -27048,16 +25619,7 @@ Ergebnis
 
 \backslash
 H
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 e
@@ -27207,16 +25769,7 @@ status collapsed
 
 \backslash
 v
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 e
@@ -27254,16 +25807,7 @@ v e
 
 \backslash
 d
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 e
@@ -27301,16 +25845,7 @@ d e
 
 \backslash
 c
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 e
@@ -27367,16 +25902,7 @@ t
 
 \backslash
 t
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 sz
@@ -28808,16 +27334,7 @@ left.
 vphantom
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -28827,16 +27344,7 @@ leer
 prod
 \series default
 ^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -28846,16 +27354,7 @@ leer
 infty
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -30519,16 +29018,7 @@ A+B=C\tag{etwas}\label{eq:tag}
 tag
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -30546,16 +29036,7 @@ Gibt man stattdessen
 tag*
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -31765,16 +30246,7 @@ raisebox
 
 \backslash
 ce
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 H2CO3
@@ -31803,16 +30275,7 @@ H2CO3
 
 \backslash
 ce
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 SO4^2-
@@ -31841,16 +30304,7 @@ SO4^2-
 
 \backslash
 ce
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 (NH4)2S
@@ -31879,16 +30333,7 @@ leer
 
 \backslash
 ce
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 KCr(SO4)2.12H2O
@@ -31917,46 +30362,19 @@ KCr(SO4)2.12H2O
 
 \backslash
 ce
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A-B
 \backslash
 dbond
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 C
 \backslash
 tbond
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 D
@@ -31985,16 +30403,7 @@ D
 
 \backslash
 ce
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 ^227
@@ -32031,68 +30440,23 @@ Th+
 
 \backslash
 ce
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 CO2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 +
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 C
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 <=>
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 2CO
@@ -32121,55 +30485,19 @@ leer
 
 \backslash
 ce
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 CO2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 +
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 C
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 ->[
@@ -32177,16 +30505,7 @@ leer
 alpha][
 \backslash
 beta]
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 2CO}
@@ -32343,16 +30662,7 @@ reference "eq:chemische-Reaktion"
 ce
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -32360,16 +30670,7 @@ leer
 2Na+
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -32377,16 +30678,7 @@ leer
 +
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -32394,29 +30686,11 @@ leer
 SO4^2-
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -32424,16 +30698,7 @@ leer
 ->
 \series default
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -32747,16 +31012,7 @@ Der Befehl dazu lautet:
 
 \backslash
 CD
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A@>j>>B@>>k>C@=F Strg+Enter
@@ -32773,16 +31029,7 @@ status open
 
 \backslash
 CD
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -32814,16 +31061,7 @@ status open
 
 \backslash
 CD
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -33415,16 +31653,7 @@ raisebox
 A
 \backslash
 gr
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 B
@@ -33492,16 +31721,7 @@ fb{[2cm]
 {
 \backslash
 int
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -33538,16 +31758,7 @@ cb{red
 {
 \backslash
 int
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -33586,16 +31797,7 @@ cb[green]
 {
 \backslash
 int
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -35626,16 +33828,7 @@ raisebox
 cancel{
 \backslash
 int
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -35666,16 +33859,7 @@ A=B
 bcancel{
 \backslash
 int
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -35706,16 +33890,7 @@ A=B
 xcancel{
 \backslash
 int
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -35752,16 +33927,7 @@ cancelto{1
 {
 \backslash
 int
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
@@ -37322,16 +35488,7 @@ Fourier
 
 \backslash
 mathscr
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 F

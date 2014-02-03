@@ -33,9 +33,6 @@
   \myTOC
   \mainmatter }
 
-% define a short command for \textvisiblespace
-\newcommand{\spce}{\textvisiblespace}
-
 % macro for italic page numbers in the index
 \newcommand{\IndexDef}[1]{\textit{#1}}
 
@@ -23390,16 +23387,7 @@ Espace
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -23418,16 +23406,7 @@ spce
 
 \backslash
 sqrt
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 2x+1
@@ -23437,42 +23416,15 @@ spce
 
 \backslash
 sqrt
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 2x
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 +
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 1
@@ -23581,16 +23533,7 @@ arg   "math-subscript"
 , tapez (dans une formule) 
 \series bold
 x^2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -23617,16 +23560,7 @@ x^2y
 , tapez 
 \series bold
 x^2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 y
@@ -23653,16 +23587,7 @@ espace
 , tapez 
 \series bold
 x^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 a
@@ -23675,16 +23600,7 @@ a
 , faites (dans une formule) 
 \series bold
 a_1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -24316,16 +24232,7 @@ Vous insérez des caractères accentués dans une formule de la même façon
 
 \backslash
 hat
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 a 
@@ -36710,6 +36617,25 @@ oblique
 
 sécable Insère une barre oblique là où un saut de ligne peut aussi se produire
  : \SpecialChar \slash{}
+
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Visible
+\begin_inset space ~
+\end_inset
+
+Space Inserts a character representing a single space (the one you get when
+ pressing the 
+\family sans
+Space
+\family default
+ key): 
+\begin_inset space \textvisiblespace{}
+\end_inset
+
 
 \end_layout
 

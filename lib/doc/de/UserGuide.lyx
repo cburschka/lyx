@@ -36,9 +36,6 @@
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
 
-% define a short command for \textvisiblespace
-\newcommand{\leer}{\textvisiblespace}
-
 % macro for italic page numbers in the index
 \newcommand{\IndexDef}[1]{\textit{#1}}
 
@@ -22831,7 +22828,19 @@ Die
 \family sans
 Leertaste
 \family default
- scheint nichts innerhalb von Formeln zu bewirken, weil sie wirklich keinen
+, in diesem Dokument als 
+\begin_inset Quotes gld
+\end_inset
+
+
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\begin_inset Quotes grd
+\end_inset
+
+ gedruckt, scheint nichts innerhalb von Formeln zu bewirken, weil sie keinen
  Zwischenraum zwischen Zeichen hinzufügt, aber sie verlässt eine geschachtelte
  Struktur.
  Deshalb muss man mit der 
@@ -22851,16 +22860,7 @@ Wenn man zum Beispiel
 
 \backslash
 sqrt
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 2x+1 
@@ -22870,42 +22870,15 @@ eingeben und nicht
 
 \backslash
 sqrt
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 2x
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 +
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 1
@@ -22920,64 +22893,6 @@ leer
 \family default
  unter dem Wurzelzeichen stehen würden: 
 \begin_inset Formula $\sqrt{2x}+1$
-\end_inset
-
-.
- Diejenigen, die es gewohnt sind, Ausdrücke auf diese Weise mit Zwischenräumen
- zu versehen, müssen ein wenig umlernen.
-\end_layout
-
-\begin_layout Standard
-Da wir über die 
-\family sans
-Leertaste
-\family default
- sprechen: es mag sein, dass Sie Leerzeichen erzeugen wollen, die über das
- hinausgehen, was LaTeX normalerweise erzeugt.
- Wir empfehlen das natürlich nicht, weil das WYSIWYM-Prinzip bedeutet, dass
- Sie nicht über den Schriftsatz nachdenken sollen, sondern über den Inhalt.
- Es mag aber Situationen geben, in denen Sie wirklich Leerzeichen hinzufügen
- wollen.
-\end_layout
-
-\begin_layout Standard
-Das kann man mit 
-\family sans
-Strg+Leertaste
-\family default
- machen.
- Das erzeugt einen kleinen Zwischenraum und zeigt ihn auf dem Bildschirm
- wie eine auf dem Rücken liegende eckige rote Klammer an: 
-\begin_inset Formula $a\text{{\color{red}\leer}}b$
-\end_inset
-
-.
- Gedruckt sieht das so aus: 
-\begin_inset Formula $a\, b$
-\end_inset
-
-.
- Mit dem nächstes Trick ändert man die Größe.
- 
-\emph on
-Bevor
-\emph default
- Sie nach 
-\family sans
-Strg+Leertaste
-\family default
- den Cursor bewegen, drücken Sie die 
-\family sans
-Leertaste
-\family default
- erneut ein- oder mehrere Male, das vergrößert den Zwischenraum auf unterschiedl
-iche Größen: 
-\begin_inset Formula $a\quad b$
-\end_inset
-
-.
- Als letztes gibt es den roten, negativen Zwischenraum: 
-\begin_inset Formula $a\! b$
 \end_inset
 
 .
@@ -23085,16 +23000,7 @@ arg   "math-subscript"
  zu erhalten, geben Sie 
 \series bold
 x^2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -23120,16 +23026,7 @@ x^2y
  zu erhalten, müssen Sie 
 \series bold
 x^2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 y
@@ -23160,16 +23057,7 @@ B.
  haben wollen, geben Sie 
 \series bold
 x^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 a
@@ -23182,16 +23070,7 @@ a
  zu erhalten, müssen Sie in eine Formel 
 \series bold
 a_1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-leer 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -35818,6 +35697,23 @@ Umbruchfähiger
 
 Schrägstrich Fügt einen Schrägstrich ein, an dessen Stelle ein Zeilenumbruch
  möglich ist: \SpecialChar \slash{}
+
+\end_layout
+
+\begin_layout Description
+Sichtbares
+\begin_inset space ~
+\end_inset
+
+Leerzeichen Fügt ein Zeichen ein, das ein Leerzeichen repräsentiert (das
+ man erhält wenn man die Taste 
+\family sans
+Leertaste
+\family default
+ drückt): 
+\begin_inset space \textvisiblespace{}
+\end_inset
+
 
 \end_layout
 

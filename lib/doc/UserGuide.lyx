@@ -33,9 +33,6 @@
   \myTOC
   \mainmatter }
 
-% define a short command for \textvisiblespace
-\newcommand{\spce}{\textvisiblespace}
-
 % macro for italic page numbers in the index
 \newcommand{\IndexDef}[1]{\textit{#1}}
 
@@ -22345,31 +22342,11 @@ Space
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
 \begin_inset Quotes erd
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-This command will appear in the output as an official character denoting
- the space character (visible space).
-\end_layout
-
 \end_inset
 
 , seems to do nothing in a formula, since it does not add a space between
@@ -22388,16 +22365,7 @@ Space
 
 \backslash
 sqrt
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 2x+1
@@ -22407,29 +22375,11 @@ spce
 
 \backslash
 sqrt
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 2x
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 +1
@@ -22529,16 +22479,7 @@ arg   "math-subscript"
 , type in a formula 
 \series bold
 x^2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -22564,16 +22505,7 @@ x^2y
 , type 
 \series bold
 x^2
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 y
@@ -22600,16 +22532,7 @@ Space
 , type 
 \series bold
 x^
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 a
@@ -22622,16 +22545,7 @@ a
 , type 
 \series bold
 a_1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
@@ -23213,16 +23127,7 @@ In a formula you can insert accented characters in the same way as in text
 
 \backslash
 hat
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-spce 
-\end_layout
-
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 a
@@ -35310,6 +35215,23 @@ Breakable
 \end_inset
 
 Slash Inserts a slash where a line break can also occur: \SpecialChar \slash{}
+
+\end_layout
+
+\begin_layout Description
+Visible
+\begin_inset space ~
+\end_inset
+
+Space Inserts a character representing a single space (the one you get when
+ pressing the 
+\family sans
+Space
+\family default
+ key): 
+\begin_inset space \textvisiblespace{}
+\end_inset
+
 
 \end_layout
 
