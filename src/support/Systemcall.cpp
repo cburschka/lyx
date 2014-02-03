@@ -103,14 +103,8 @@ ProgressInterface * ProgressInterface::instance()
 int Systemcall::startscript(Starttype how, string const & what,
 			    std::string const & path, bool /*process_events*/)
 {
-	string const python_call = "python -tt";
-	string command = to_filesystem8bit(from_utf8(latexEnvCmdPrefix(path)));
-	string what_ss = libScriptSearch(what);
-
-	if (prefixIs(what_ss, python_call))
-		command += os::python() + what_ss.substr(python_call.length());
-	else
-		command += what_ss;
+	string command = to_filesystem8bit(from_utf8(latexEnvCmdPrefix(path)))
+		       + commandPrep(what);
 
 	if (how == DontWait) {
 		switch (os::shell()) {
@@ -241,7 +235,7 @@ string const parsecmd(string const & incmd, string & infile, string & outfile,
 int Systemcall::startscript(Starttype how, string const & what,
 			    string const & path, bool process_events)
 {
-	string const what_ss = libScriptSearch(what);
+	string const what_ss = commandPrep(what);
 	LYXERR(Debug::INFO,"Running: " << what_ss);
 
 	string infile;

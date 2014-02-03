@@ -337,11 +337,15 @@ FileName const imageLibFileSearch(string & dir, string const & name,
 }
 
 
-string const libScriptSearch(string const & command_in)
+string const commandPrep(string const & command_in)
 {
 	static string const token_scriptpath = "$$s/";
+	string const python_call = "python -tt";
 
 	string command = command_in;
+	if (prefixIs(command_in, python_call))
+		command = os::python() + command_in.substr(python_call.length());
+
 	// Find the starting position of "$$s/"
 	string::size_type const pos1 = command.find(token_scriptpath);
 	if (pos1 == string::npos)
@@ -362,8 +366,7 @@ string const libScriptSearch(string const & command_in)
 		command.erase(pos1, 4);
 	} else {
 		quote_style style = quote_shell;
-		string const python_call = "python -tt";
-		if (prefixIs(command, python_call) || prefixIs(command, os::python()))
+		if (prefixIs(command, os::python()))
 			style = quote_python;
 
 		// Replace "$$s/foo/some_script" with "<path to>/some_script".

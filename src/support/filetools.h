@@ -125,7 +125,7 @@ enum quote_style {
  *  command will still fail, but the error message will make some sort of
  *  sense ;-)
  */
-std::string const libScriptSearch(std::string const & command);
+std::string const commandPrep(std::string const & command);
 
 enum latex_path_extension {
 	PROTECT_EXTENSION,
