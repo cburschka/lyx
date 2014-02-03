@@ -165,16 +165,29 @@ foreach(_pofile ${LYX_BASE_PO_FILES})
   list(APPEND LYX_PO_FILES ${CMAKE_CURRENT_BINARY_DIR}/${_pofile})
 endforeach(_pofile)
 
+FIND_PROGRAM(LYX_GITVERSION git)
 set(LYX_UPDATED_GMO_FILES)
 foreach(_gmo_base ${INSTALLED_LANGUAGES})
   set(_gmo ${_gmo_base}.gmo)
-  add_custom_command(
-    OUTPUT "${LYX_DEST_PO}/${_gmo}"
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_BINARY_DIR}/${_gmo}" "${LYX_DEST_PO}/${_gmo}"
-    DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${_gmo}"
-    )
   list(APPEND LYX_UPDATED_GMO_FILES "${LYX_DEST_PO}/${_gmo}")
-  ADD_CUSTOM_TARGET(update-${_gmo_base}-gmo DEPENDS "${LYX_DEST_PO}/${_gmo}")
+  if(LYX_GITVERSION)
+    add_custom_command(
+      OUTPUT "${LYX_DEST_PO}/${_gmo}"
+	  COMMAND "${LYX_GITVERSION}" "status" "--porcelain" "${_gmo_base}.po" ">" "${CMAKE_CURRENT_BINARY_DIR}/${_gmo}.tobeupdated"
+	  COMMAND ${LYX_PYTHON_EXECUTABLE} "${TOP_CMAKE_PATH}/po/update-gmo.py" 
+		"${CMAKE_CURRENT_BINARY_DIR}/${_gmo}.tobeupdated"
+		"${CMAKE_CURRENT_BINARY_DIR}/${_gmo}"
+		"${LYX_DEST_PO}/${_gmo}"
+	  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+      DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${_gmo}"
+      )
+  else()
+    add_custom_command(
+      OUTPUT "${LYX_DEST_PO}/${_gmo}"
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_BINARY_DIR}/${_gmo}" "${LYX_DEST_PO}/${_gmo}"
+      DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${_gmo}"
+    )
+  endif()
 endforeach()
 
 set(LYX_UPDATED_PO_FILES)
@@ -206,7 +219,8 @@ GETTEXT_CREATE_TRANSLATIONS(${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot ${_addAL
 
 # Create a new target to remerge po files
 # ALL omitted here, to prevent from automatic creation
+ADD_CUSTOM_TARGET(update-gmo DEPENDS ${LYX_UPDATED_GMO_FILES})
 ADD_CUSTOM_TARGET(update-po DEPENDS ${LYX_UPDATED_PO_FILES} ${LYX_UPDATED_GMO_FILES})
-set_target_properties(update-po PROPERTIES FOLDER "i18n")
+set_target_properties(update-po update-gmo PROPERTIES FOLDER "i18n")
 add_dependencies(update-po translations)
 
