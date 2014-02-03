@@ -48,3 +48,6 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/LFUNs.lyx" DESTINATION "${LYX_DATA_SU
 ADD_CUSTOM_TARGET(doc ALL DEPENDS ${_docs})
 
 ADD_CUSTOM_TARGET(lfundoc DEPENDS LFUNs.lyx)
+
+set_target_properties(doc lfundoc PROPERTIES FOLDER "doc")
+
