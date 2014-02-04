@@ -169,13 +169,14 @@ FIND_PROGRAM(LYX_GITVERSION git)
 set(LYX_UPDATED_GMO_FILES)
 foreach(_gmo_base ${INSTALLED_LANGUAGES})
   set(_gmo ${_gmo_base}.gmo)
-  list(APPEND LYX_UPDATED_GMO_FILES "${LYX_DEST_PO}/${_gmo}")
+  set(_tobeupdated "${CMAKE_CURRENT_BINARY_DIR}/${_gmo}.tobeupdated")
+  list(APPEND LYX_UPDATED_GMO_FILES "${_tobeupdated}")
   if(LYX_GITVERSION)
     add_custom_command(
-      OUTPUT "${LYX_DEST_PO}/${_gmo}"
-	  COMMAND "${LYX_GITVERSION}" "status" "--porcelain" "${_gmo_base}.po" ">" "${CMAKE_CURRENT_BINARY_DIR}/${_gmo}.tobeupdated"
+      OUTPUT "${_tobeupdated}"
+	  COMMAND "${LYX_GITVERSION}" "status" "--porcelain" "${_gmo_base}.po" ">" "${_tobeupdated}"
 	  COMMAND ${LYX_PYTHON_EXECUTABLE} "${TOP_CMAKE_PATH}/po/update-gmo.py" 
-		"${CMAKE_CURRENT_BINARY_DIR}/${_gmo}.tobeupdated"
+		"${_tobeupdated}"
 		"${CMAKE_CURRENT_BINARY_DIR}/${_gmo}"
 		"${LYX_DEST_PO}/${_gmo}"
 	  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
@@ -183,8 +184,9 @@ foreach(_gmo_base ${INSTALLED_LANGUAGES})
       )
   else()
     add_custom_command(
-      OUTPUT "${LYX_DEST_PO}/${_gmo}"
+      OUTPUT "${_tobeupdated}"
       COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_BINARY_DIR}/${_gmo}" "${LYX_DEST_PO}/${_gmo}"
+      COMMAND ${CMAKE_COMMAND} -E touch "${_tobeupdated}"
       DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${_gmo}"
     )
   endif()
