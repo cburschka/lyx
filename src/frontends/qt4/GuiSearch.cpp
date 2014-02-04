@@ -120,15 +120,15 @@ void GuiSearch::replaceallClicked()
 }
 
 
-void GuiSearch::wrap_dispatch(const FuncRequest & func, bool forward) {
+void GuiSearch::wrap_dispatch(const FuncRequest & func, bool forward)
+{
 	dispatch(func);
 
 	BufferView * bv = const_cast<BufferView *>(bufferview());
-	GuiView & lv = *const_cast<GuiView *>(&lyxview());
-
-	DocIterator cur_orig(bv->cursor());
 
 	if (!bv->cursor().result().dispatched()) {
+		GuiView & lv = *const_cast<GuiView *>(&lyxview());
+		DocIterator cur_orig(bv->cursor());
 		docstring q;
 		if (forward)
 			q = _("End of file reached while searching forward.\n"
