@@ -1222,7 +1222,8 @@ void LyXAction::init()
 		{ LFUN_PASTE, "paste", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_CLIPBOARD_PASTE
- * \li Action: Pastes text from the active clipboard. Pastes plain text if plain text is
+ * \li Action: Pastes text from the active clipboard (retains formatting if the
+               clipboard contains formatted text). Pastes plain text if plain text is
                on the clipboard, but tries to interpret it in special ways for certain
                insets, e.g. converting csv data to rows and colums if tha paste happens
                in a tabular inset.
@@ -1256,8 +1257,11 @@ void LyXAction::init()
 		{ LFUN_SELECTION_PASTE, "selection-paste", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_CLIPBOARD_PASTE_SIMPLE
- * \li Action: Pastes simple unformatted text from the active clipboard even
-               if formatted LyX content is in the clipboard.
+ * \li Action: Pastes plain text from the active clipboard even if formatted
+               LyX content is in the clipboard. Pastes plain text if plain text
+               is on the clipboard, without trying to interpret it in special
+               ways for certain insets, e.g. converting csv data to rows and
+               colums if the paste happens in a tabular inset.
  * \li Syntax: clipboard-paste-simple [<ARG>]
  * \li Params: <ARG>: "paragraph" will cause pasting as one paragraph, i.e. "Join lines".
  * \endvar
