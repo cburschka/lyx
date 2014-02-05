@@ -3788,9 +3788,13 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 
 	// Right
 	x -= tabular.interColumnSpace(cell);
+	col_type next_cell_col = col + 1;
+	while (next_cell_col < tabular.ncols() 
+		&& tabular.isMultiColumn(tabular.cellIndex(row, next_cell_col)))
+		next_cell_col++;
 	drawline = tabular.rightLine(cell)
-		   || (col + 1 < tabular.ncols()
-		       && tabular.leftLine(tabular.cellIndex(row, col + 1)));
+		   || (next_cell_col < tabular.ncols()
+		       && tabular.leftLine(tabular.cellIndex(row, next_cell_col)));
 	pi.pain.line(x + w, y, x + w, y + h,
 		drawline ? linecolor : gridcolor,
 		drawline ? Painter::line_solid : Painter::line_onoffdash);
