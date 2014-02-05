@@ -946,6 +946,26 @@ Paste
 \end_inset
 
 You can also copy text between LyX and other programs by cut, copy and paste.
+ 
+\family sans
+Cut
+\family default
+ and 
+\family sans
+Copy
+\family default
+ put text in two versions into the clipboard (formatted and unformatted),
+ so that the recieving program may choose the most suitable form.
+ 
+\family sans
+Paste
+\family default
+ supports formatted and unformatted text as well, and additionally graphics.
+ It will try to interpret the clipboard contents in an intelligent way,
+ e.g.
+ if the clipboard contains text as in comma separated values format (CSV),
+ and the cursor is inside a table, the text will be placed into individual
+ cells according to the separators.
  The submenu of 
 \family sans
 Paste
@@ -958,7 +978,33 @@ Recent
 \end_layout
 
 \begin_layout Standard
-The menu 
+The submenu 
+\family sans
+Edit\SpecialChar \menuseparator
+Paste
+\begin_inset space ~
+\end_inset
+
+Special
+\family default
+ contains optional items for specific formats, depending on the clipboard
+ contents.
+ These include HTML, LaTeX, Linkback PDF
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+OS X only
+\end_layout
+
+\end_inset
+
+, PDF, PNG, JPEG and EMF.
+ These menu items are useful if the clipboard contains the same contents
+ in different formats, and you want to select one format explicitly (e.g.
+ some programs put an image into the clipboard both as graphics contents,
+ and as a short text which is often meaningless).
+ The menu item 
 \family sans
 Edit\SpecialChar \menuseparator
 Paste
@@ -980,7 +1026,13 @@ Join
 
 Lines
 \family default
- will insert the text in the clipboard so that the whole text is inserted
+ is equivalent to 
+\family sans
+Edit\SpecialChar \menuseparator
+Paste
+\family default
+, with the only difference that it acts on text only.
+ It will insert the text in the clipboard so that the whole text is inserted
  as one paragraph.
  A new paragraph is started when there is a blank line in the file.
  Without 
@@ -993,6 +1045,38 @@ Lines
 \family default
 , the text is inserted as Paragraphs, where the line breaks of the text
  will start a new paragraph.
+ The items 
+\family sans
+Edit\SpecialChar \menuseparator
+Paste
+\begin_inset space ~
+\end_inset
+
+Special\SpecialChar \menuseparator
+Selection,
+\begin_inset space \thinspace{}
+\end_inset
+
+Join
+\begin_inset space ~
+\end_inset
+
+Lines
+\family default
+ and 
+\family sans
+Edit\SpecialChar \menuseparator
+Paste
+\begin_inset space ~
+\end_inset
+
+Special\SpecialChar \menuseparator
+Selection
+\family default
+ paste from the primary selection.
+ It contains the currently selected text.
+ This works across different programs if LyX runs on the X Window system
+ (usually if LyX is compiled for unix or cygwin), otherwise it is LyX internal.
 \end_layout
 
 \begin_layout Standard

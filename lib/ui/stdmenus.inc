@@ -167,9 +167,11 @@ Menuset
 		Separator
 		Item "Selection|S" "primary-selection-paste"
 		Item "Selection, Join Lines|i" "primary-selection-paste paragraph"
-		Separator
-		Item "Unformatted Text|U" "clipboard-paste-simple"
-		Item "Unformatted, Join Lines|o" "clipboard-paste-simple paragraph"
+# clipboard-paste-simple is commented because it is irritating (bug 8749)
+# until somebody can explain why it is needed in addition to clipboard-paste
+#		Separator
+#		Item "Unformatted Text|U" "clipboard-paste-simple"
+#		Item "Unformatted, Join Lines|o" "clipboard-paste-simple paragraph"
 	End
 
 	Menu "edit_pasterecent"
