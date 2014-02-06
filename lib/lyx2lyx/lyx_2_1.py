@@ -4218,14 +4218,16 @@ def revert_tibetan(document):
 #
 #############
 
-# the idea here is that we will have a sequence of chunk paragraphs
-# we want to convert them to paragraphs in a chunk inset
-# the last will be discarded
-# the first should look like: <<FROGS>>=
-# we will discard the delimiters, and put the contents into the
-# optional argument of the inset
+# The idea here is that we will have a sequence of chunk paragraphs.
+# We want to convert them to paragraphs in one or several chunk insets.
+# Individual chunks are terminated by the character @ on the last line.
+# This line will be discarded, and following lines are treated as new
+# chunks, which go into their own insets.
+# The first line of a chunk should look like: <<CONTENT>>=
+# We will discard the delimiters, and put the CONTENT into the
+# optional argument of the inset, if the CONTENT is non-empty.
 def convert_chunks(document):
-    first_re = re.compile(r'<<(.*)>>=')
+    first_re = re.compile(r'<<(.*)>>=(.*)')
     k = 0
     while True:
         # the beginning of this sequence
@@ -4237,6 +4239,7 @@ def convert_chunks(document):
         start = i
         end = -1
         contents = []
+        chunk_started = False
 
         while True:
             # process the one we just found
@@ -4244,46 +4247,77 @@ def convert_chunks(document):
             if j == -1:
                 document.warning("Malformed LyX documents. Can't find end of Chunk layout!")
                 break
-            thischunk = "".join(document.body[i + 1:j])
-            contents.append(document.body[i + 1:j])
+            this_chunk = "".join(document.body[i + 1:j])
             
-            if thischunk == "@":
+            # there may be empty lines between chunks
+            # we just skip them.
+            if not chunk_started:
+                if this_chunk != "":
+                    # new chunk starts
+                    chunk_started = True
+            
+            if chunk_started:
+                contents.append(document.body[i + 1:j])
+
+            # look for potential chunk terminator
+            # on the last line of the chunk paragraph            
+            if document.body[j - 1] == "@":
                 break
 
-            # look for the next one
+            # look for subsequent chunk paragraph
             i = j
             i = find_token(document.body, "\\begin_layout", i)
             if i == -1:
                 break
 
-            layout = get_value(document.body, "\\begin_layout", i)
-            #sys.stderr.write(layout+ '\n')
-            if layout != "Chunk":
+            if get_value(document.body, "\\begin_layout", i) != "Chunk":
                 break
 
         if j == -1:
             # error, but we can try to continue
+            # FIXME: Why not simply k = 0? (spitz)
             k = j + 1
             continue
 
         end = j + 1
         k = end
         
-        # the last chunk should simply have an "@" in it
-        
-        if ''.join(contents[-1]) != "@":
-            document.warning("Unexpected chunk contents.")
+        # The last chunk should simply have an "@" in it
+        # or at least end with "@" (can happen if @ is
+        # preceded by a newline)
+        lastpar = ''.join(contents[-1])
+        if not lastpar.endswith("@"):
+            document.warning("Unexpected chunk content: chunk not terminated by '@'!")
             continue
 
-        contents.pop()
+        if lastpar == "@":
+            # chunk par only contains "@". Just drop it.
+            contents.pop()
+        else:
+            # chunk par contains more. Only drop the "@".
+            contents[-1].pop()
 
-        # the first item should look like: <<FROGS>>=
-        # we want the inside
+        # The first line should look like: <<CONTENT>>=
+        # We want the CONTENT
         optarg = ' '.join(contents[0])
         optarg.strip()
+        # We can already have real chunk content in
+        # the first par (separated from the options by a newline).
+        # We collect such stuff to re-insert it later.
+        postoptstuff = []
+        
         match = first_re.search(optarg)
         if match:
             optarg = match.groups()[0]
+            if match.groups()[1] != "":
+                postopt = False
+                for c in contents[0]:
+                    if c.endswith(">>="):
+                        postopt = True
+                        continue
+                    if postopt:
+                        postoptstuff.append(c)
+            # We have stripped everything. This can be deleted.
             contents.pop(0)
 
         newstuff = ['\\begin_layout Standard',
@@ -4291,7 +4325,8 @@ def convert_chunks(document):
                     'status open', '',
                     '\\begin_layout Plain Layout', '']
 
-        if match:
+        # If we have a non-empty optional argument, insert it.
+        if match and optarg != "":
             newstuff.extend(
                 ['\\begin_inset Argument 1',
                  'status open', '',
@@ -4300,12 +4335,18 @@ def convert_chunks(document):
                  '\\end_layout', '',
                  '\\end_inset', ''])
 
-        didone = False
+        # Since we already opened a Plain layout, the first paragraph
+        # does not need to do that.
+        did_one_par = False
+        if postoptstuff:
+            newstuff.extend(postoptstuff)
+            newstuff.append('\\end_layout')
+            did_one_par = True
         for c in contents:
-            if didone:
+            if did_one_par:
                 newstuff.extend(['', '\\begin_layout Plain Layout', ''])
             else:
-                didone = True
+                did_one_par = True
             newstuff.extend(c)
             newstuff.append('\\end_layout')
 
