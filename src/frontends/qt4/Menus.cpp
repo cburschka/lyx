@@ -1666,13 +1666,13 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv)
 	if (!bv)
 		return;
 
-	Paragraph const par = bv->cursor().paragraph();
+	pit_type pit = bv->cursor().pit();
+	Paragraph const & par = bv->buffer().text().getPar(pit);
 	docstring const curlayout = par.layout().name();
 	docstring outerlayout;
 	depth_type current_depth = par.params().depth();
 	// check if we have an environment in our nesting hierarchy
-	pit_type pit = bv->cursor().pit();
-	Paragraph cpar = bv->buffer().text().getPar(pit);
+	Paragraph cpar = par;
 	while (true) {
 		if (pit == 0 || cpar.params().depth() == 0)
 			break;
