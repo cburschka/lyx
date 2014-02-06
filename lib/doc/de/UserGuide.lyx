@@ -601,14 +601,14 @@ Datei
 \begin_layout Itemize
 
 \family sans
-Neu (Strg+N)
+Neu, Strg+N
 \family default
  oder 
-\begin_inset Graphics
-	filename ../../images/buffer-new.png
-	scale 85
-	groupId Icon
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "buffer-new"
 \end_inset
 
 
@@ -621,20 +621,20 @@ Neu von
 \family default
  
 \family sans
-Vorlage (Strg+Umschalt+N)
+Vorlage, Strg+Umschalt+N
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Öffnen (Strg+O)
+Öffnen, Strg+O
 \family default
  oder 
-\begin_inset Graphics
-	filename ../../images/file-open.png
-	scale 85
-	groupId Icon
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "file-open"
 \end_inset
 
 
@@ -643,20 +643,20 @@ Vorlage (Strg+Umschalt+N)
 \begin_layout Itemize
 
 \family sans
-Schließen (Strg+W)
+Schließen, Strg+W
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Speichern (Strg+S)
+Speichern, Strg+S
 \family default
  oder 
-\begin_inset Graphics
-	filename ../../images/buffer-write.png
-	scale 85
-	groupId Icon
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "buffer-write"
 \end_inset
 
 
@@ -669,7 +669,7 @@ Speichern
 \family default
  
 \family sans
-unter (Strg+Umschalt+S)
+unter, Strg+Umschalt+S
 \end_layout
 
 \begin_layout Itemize
@@ -687,14 +687,14 @@ Speicherung wieder herstellen
 \begin_layout Itemize
 
 \family sans
-Drucken (Strg+P)
+Drucken, Strg+P
 \family default
  oder 
-\begin_inset Graphics
-	filename ../../images/dialog-show_print.png
-	scale 85
-	groupId Icon
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show print"
 \end_inset
 
 
@@ -703,7 +703,7 @@ Drucken (Strg+P)
 \begin_layout Itemize
 
 \family sans
-Beenden (Strg+Q)
+Beenden, Strg+Q
 \end_layout
 
 \begin_layout Standard
@@ -858,11 +858,9 @@ Ausschneiden
 , Strg+X
 \family default
  oder 
-\begin_inset Graphics
-	filename ../../images/cut.png
-	scale 85
-	groupId Icon
-
+\begin_inset Info
+type  "icon"
+arg   "cut"
 \end_inset
 
 
@@ -888,11 +886,9 @@ Kopieren
 , Strg+C
 \family default
  oder 
-\begin_inset Graphics
-	filename ../../images/copy.png
-	scale 85
-	groupId Icon
-
+\begin_inset Info
+type  "icon"
+arg   "copy"
 \end_inset
 
 
@@ -918,11 +914,9 @@ Einfugen@Einfügen
 Strg+V
 \family default
  oder 
-\begin_inset Graphics
-	filename ../../images/paste.png
-	scale 85
-	groupId Icon
-
+\begin_inset Info
+type  "icon"
+arg   "paste"
 \end_inset
 
 
@@ -988,11 +982,9 @@ Ersetzen
  Strg+F
 \family default
  oder 
-\begin_inset Graphics
-	filename ../../images/dialog-show_findreplace.png
-	scale 85
-	groupId Icon
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show findreplace"
 \end_inset
 
 
@@ -1000,9 +992,46 @@ Ersetzen
 
 \begin_layout Standard
 Die ersten drei sind selbsterklärend.
- Unter 
+ Sie können auch Text zwischen LyX und anderen Programmen durch 
 \family sans
-Bearbeiten\SpecialChar \menuseparator
+Ausschneiden
+\family default
+,
+\family sans
+ Kopieren
+\family default
+ und 
+\family sans
+Einfügen
+\family default
+ kopieren.
+ 
+\family sans
+Ausschneiden
+\family default
+ und 
+\family sans
+Kopieren
+\family default
+ laden Text in zwei Versionen in die Zwischenablage (formatiert und unformatiert
+), so dass andere Programme die geeignete Version wählen kann.
+ 
+\family sans
+Einfügen
+\family default
+ unterstützt ebenfalls formatierten und unformatierten Text und zusätzlich
+ Bilder.
+ Es wird versucht, die Einfügung intelligent zu interpretieren.
+ Wenn z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ die Zwischenablage Text im Format CSV enthält und sich der Cursor in einer
+ Tabelle befindet, wird versucht den Text in separate Tabellenzellen zu
+ kopieren.
+ Das Submenü 
+\family sans
 Einfügen
 \begin_inset space \space{}
 \end_inset
@@ -1013,9 +1042,115 @@ Einfügen
 
 Auswahl)
 \family default
- finden Sie eine Liste der letzten eingefügten Textstücke.
+ listet die zuletzt eingefügten Textstücke auf.
  Durch anklicken können Sie eins davon an der momentanen Cursorposition
  einfügen.
+\end_layout
+
+\begin_layout Standard
+Das Untermenü 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Einfügen
+\begin_inset space \space{}
+\end_inset
+
+(speziell)
+\family default
+ enthält Einträge für spezielle Formate, abhängig vom Inhalt der Zwischenablage.
+ Dies können HTML, LaTeX, Linkback
+\begin_inset space ~
+\end_inset
+
+PDF
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+nur OS X
+\end_layout
+
+\end_inset
+
+, PDF, PNG, JPEG und EMF sein.
+ Diese Menüeinträge sind nützlich wenn die Zwischenablage denselben Inhalt
+ in verschiedenen Formaten enthält und man explizit ein bestimmtes Format
+ einfügen möchte.
+ (Zum Beispiel kopieren einige Programme Bilder als Grafik und als kryptischen
+ Text in die Zwischenablage).
+ Das Menü 
+\family sans
+Einfügen
+\begin_inset space \space{}
+\end_inset
+
+(speziell)\SpecialChar \menuseparator
+Einfacher
+\begin_inset space ~
+\end_inset
+
+Text,
+\begin_inset space \thinspace{}
+\end_inset
+
+Zeilen
+\begin_inset space ~
+\end_inset
+
+verbinden
+\family default
+ ist äquivalent zu 
+\family sans
+Einfügen
+\family default
+, mit dem einzigen Unterschied dass es nur Text einfügt.
+ Es fügt den Text aus der Zwischenablage so ein, dass der komplette Text
+ einen Absatz bildet.
+ Ein neuer Absatz wird nur begonnen wenn der Text eine Leerzeile enthält.
+ Ohne 
+\family sans
+Zeilen
+\begin_inset space ~
+\end_inset
+
+verbinden
+\family default
+ wird der Text als Absätze eingefügt, wobei die Zeilenumbrüche des Texts
+ einen neuen Absatz beginnen.
+ Dies ist z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ nützlich um Inhalte von Tabellen aus Webseiten in Tabellen von LyX einzufügen.
+ Die Untermenüs 
+\family sans
+Einfügen
+\begin_inset space \space{}
+\end_inset
+
+(speziell)\SpecialChar \menuseparator
+Auswahl,
+\begin_inset space \thinspace{}
+\end_inset
+
+Zeilen
+\begin_inset space ~
+\end_inset
+
+verbinden
+\family default
+ und 
+\family sans
+Einfügen
+\begin_inset space \space{}
+\end_inset
+
+(speziell)\SpecialChar \menuseparator
+Auswahl
+\family default
+ fügen von der aktuellen Auswahl ein.
+ Dies ist normalerweise der aktuell ausgewählte Text.
 \end_layout
 
 \begin_layout Standard

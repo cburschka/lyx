@@ -682,7 +682,17 @@ Fichier
 \begin_layout Itemize
 
 \family sans
-Nouveau 
+Nouveau, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "buffer-new"
+\end_inset
+
+ ou
+\family sans
+ 
 \begin_inset Info
 type  "icon"
 arg   "buffer-new"
@@ -702,13 +712,31 @@ avec
 \begin_inset space ~
 \end_inset
 
-modèle
+modèle, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "buffer-new-template"
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Ouvrir 
+Ouvrir, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "file-open"
+\end_inset
+
+ ou
+\family sans
+ 
 \begin_inset Info
 type  "icon"
 arg   "file-open"
@@ -730,13 +758,31 @@ récents
 \begin_layout Itemize
 
 \family sans
-Fermer
+Fermer, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "view-close"
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Enregistrer 
+Enregistrer, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "buffer-write"
+\end_inset
+
+ ou
+\family sans
+ 
 \begin_inset Info
 type  "icon"
 arg   "buffer-write"
@@ -752,7 +798,15 @@ Enregistrer
 \begin_inset space ~
 \end_inset
 
-sous
+sous, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "buffer-write-as"
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -786,33 +840,17 @@ sauvegarde
 \begin_layout Itemize
 
 \family sans
-Contrôle
-\begin_inset space ~
+Imprimer, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "dialog-show print"
 \end_inset
 
-de
-\begin_inset space ~
-\end_inset
-
-version
-\end_layout
-
-\begin_layout Itemize
-
+ ou
 \family sans
-Importer
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Exporter
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Imprimer 
+ 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show print"
@@ -824,27 +862,15 @@ arg   "dialog-show print"
 \begin_layout Itemize
 
 \family sans
-Nouvelle fenêtre
-\end_layout
+Quitter, 
+\family default
 
-\begin_layout Itemize
-
-\family sans
-Fermer
-\begin_inset space ~
+\begin_inset Info
+type  "shortcut"
+arg   "lyx-quit"
 \end_inset
 
-la
-\begin_inset space ~
-\end_inset
 
-fenêtre
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Quitter
 \end_layout
 
 \begin_layout Standard
@@ -1058,7 +1084,33 @@ Comme vous pouvez vous y attendre, le menu
 \begin_layout Itemize
 
 \family sans
-Couper 
+Couper
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\family sans
+Couper
+\end_layout
+
+\end_inset
+
+
+\family sans
+, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "cut"
+\end_inset
+
+ ou
+\family sans
+ 
 \family default
 
 \begin_inset Info
@@ -1072,7 +1124,33 @@ arg   "cut"
 \begin_layout Itemize
 
 \family sans
-Copier 
+Copier
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\family sans
+Copier
+\end_layout
+
+\end_inset
+
+
+\family sans
+, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "cut"
+\end_inset
+
+ ou
+\family sans
+ 
 \family default
 
 \begin_inset Info
@@ -1086,7 +1164,29 @@ arg   "copy"
 \begin_layout Itemize
 
 \family sans
-Coller 
+Coller
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\family sans
+Coller
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Info
+type  "shortcut"
+arg   "cut"
+\end_inset
+
+ ou
+\family sans
+ 
 \family default
 
 \begin_inset Info
@@ -1136,7 +1236,45 @@ et
 \begin_inset space ~
 \end_inset
 
-Remplacer 
+Remplacer
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\family sans
+Rechercher
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\family sans
+Remplacer
+\end_layout
+
+\end_inset
+
+
+\family sans
+, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "dialog-show findreplaceadv"
+\end_inset
+
+ ou
+\family sans
+ 
 \family default
 
 \begin_inset Info
@@ -1149,8 +1287,46 @@ arg   "dialog-show findreplace"
 
 \begin_layout Standard
 Les trois premières s'expliquent d'elles-mêmes.
- Vous pouvez aussi copier du texte entre LyX et d'autres programmes par
- coupé-copié-collé.
+ 
+\lang english
+You can also copy text between LyX and other programs by
+\lang french
+ 
+\family sans
+Couper
+\family default
+, 
+\family sans
+Copier
+\family default
+ et 
+\family sans
+Coller
+\family default
+.
+ 
+\family sans
+Couper
+\family default
+ et 
+\family sans
+Copier
+\family default
+ 
+\lang english
+put text in two versions into the clipboard (formatted and unformatted),
+ so that other programs can choose the most suitable form.
+ 
+\family sans
+Paste
+\family default
+ supports formatted and unformatted text as well, and additionally graphics.
+ It tries to interpret the clipboard contents in an intelligent way.
+ For example if the clipboard contains text in the format of comma separated
+ values (CSV) and the cursor is inside a table, the text will be pasted
+ into individual cells.
+
+\lang french
  Le sous-menu 
 \family sans
 Coller
@@ -1169,46 +1345,135 @@ Récente
 \family default
  vous montre une liste des dernières chaînes de caractères que vous avez
  collé.
+ 
+\lang english
+You can insert one at the current cursor position by clicking on a list
+ entry.
 \end_layout
 
 \begin_layout Standard
-Le menu 
+
+\lang english
+The submenu 
 \family sans
-Édition\SpecialChar \menuseparator
-Collage
+\lang french
+Coller
 \begin_inset space ~
 \end_inset
 
-spécial\SpecialChar \menuseparator
-Texte
-\begin_inset space ~
-\end_inset
-
-brut
-\begin_inset space ~
-\end_inset
-
-par
-\begin_inset space ~
-\end_inset
-
-lignes
+Spécial
 \family default
- va insérer le texte du presse-papier de façon à ce qu'il ne forme qu'
-\emph on
-un seul
-\emph default
- paragraphe.
- Avec 
+\lang english
+ contains optional items for specific formats, depending on the clipboard
+ contents.
+ These include HTML, LaTeX, Linkback
+\begin_inset space ~
+\end_inset
+
+PDF
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+OS X only
+\end_layout
+
+\end_inset
+
+, PDF, PNG, JPEG and EMF.
+ These menu items are useful if the clipboard contains the same contents
+ in different formats, and you want to select one format explicitly.
+ (E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+some programs put an image into the clipboard as graphics and as a short
+ text which is often meaningless.) The menu item 
 \family sans
-Texte
+\lang french
+Coller
 \begin_inset space ~
 \end_inset
 
-brut
+Spécial\SpecialChar \menuseparator
+
+\lang english
+Plain
+\begin_inset space ~
+\end_inset
+
+Text,
+\begin_inset space \thinspace{}
+\end_inset
+
+Join
+\begin_inset space ~
+\end_inset
+
+Lines
 \family default
- seul, le texte est inséré comme une suite de paragraphes, chaque saut de
- ligne commençant un nouveau paragraphe.
+ is equivalent to 
+\family sans
+\lang french
+Coller
+\family default
+\lang english
+, with the only difference that it acts on text only.
+ It will insert the text in the clipboard so that the whole text is inserted
+ as one paragraph.
+ A new paragraph is only started when there is a blank line in the text.
+ Without 
+\family sans
+Join
+\begin_inset space ~
+\end_inset
+
+Lines
+\family default
+ the text is inserted as paragraphs where the line breaks of the text will
+ start a new paragraph.
+ This is for example useful to copy contents of tables from webpages to
+ a table in LyX.
+ The items 
+\family sans
+\lang french
+Coller
+\begin_inset space ~
+\end_inset
+
+Spécial\SpecialChar \menuseparator
+Sélection
+\lang english
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+Join
+\begin_inset space ~
+\end_inset
+
+Lines
+\family default
+ and
+\lang french
+ 
+\family sans
+Coller
+\begin_inset space ~
+\end_inset
+
+Spécial\SpecialChar \menuseparator
+Sélection
+\family default
+\lang english
+ paste from the primary selection.
+ This is normally the currently selected text.
 \end_layout
 
 \begin_layout Standard

@@ -518,7 +518,17 @@ Archivo
 \begin_layout Itemize
 
 \family sans
-Nuevo 
+Nuevo, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "buffer-new"
+\end_inset
+
+ o
+\family sans
+ 
 \begin_inset Info
 type  "icon"
 arg   "buffer-new"
@@ -538,13 +548,31 @@ desde
 \begin_inset space ~
 \end_inset
 
-plantilla
+plantilla, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "buffer-new-template"
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Abrir 
+Abrir, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "file-open"
+\end_inset
+
+ o
+\family sans
+ 
 \begin_inset Info
 type  "icon"
 arg   "file-open"
@@ -566,13 +594,31 @@ reciente
 \begin_layout Itemize
 
 \family sans
-Cerrar
+Cerrar, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "view-close"
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Guardar 
+Guardar, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "buffer-write"
+\end_inset
+
+ o
+\family sans
+ 
 \begin_inset Info
 type  "icon"
 arg   "buffer-write"
@@ -588,7 +634,15 @@ Guardar
 \begin_inset space ~
 \end_inset
 
-como
+como, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "buffer-write-as"
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -608,36 +662,20 @@ guardado
 \begin_layout Itemize
 
 \family sans
-Control
-\begin_inset space ~
+Imprimir, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "dialog-show print"
 \end_inset
 
-de
-\begin_inset space ~
-\end_inset
-
-versiones
-\end_layout
-
-\begin_layout Itemize
-
+ o
 \family sans
-Importar
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Exportar
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Imprimir 
+ 
 \begin_inset Info
 type  "icon"
-arg   "buffer-write"
+arg   "dialog-show print"
 \end_inset
 
 
@@ -646,27 +684,15 @@ arg   "buffer-write"
 \begin_layout Itemize
 
 \family sans
-Ventana
-\begin_inset space ~
+Salir, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "lyx-quit"
 \end_inset
 
-nueva
-\end_layout
 
-\begin_layout Itemize
-
-\family sans
-Cerrar
-\begin_inset space ~
-\end_inset
-
-ventana
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Salir
 \end_layout
 
 \begin_layout Standard
@@ -836,7 +862,33 @@ Editar
 \begin_layout Itemize
 
 \family sans
-Cortar 
+Cortar
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\family sans
+Cortar
+\end_layout
+
+\end_inset
+
+
+\family sans
+, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "cut"
+\end_inset
+
+ o
+\family sans
+ 
 \family default
 
 \begin_inset Info
@@ -850,7 +902,33 @@ arg   "cut"
 \begin_layout Itemize
 
 \family sans
-Copiar 
+Copiar
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\family sans
+Copiar
+\end_layout
+
+\end_inset
+
+
+\family sans
+, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "cut"
+\end_inset
+
+ o
+\family sans
+ 
 \family default
 
 \begin_inset Info
@@ -864,7 +942,29 @@ arg   "copy"
 \begin_layout Itemize
 
 \family sans
-Pegar 
+Pegar
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\family sans
+Pegar
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Info
+type  "shortcut"
+arg   "cut"
+\end_inset
+
+ o
+\family sans
+ 
 \family default
 
 \begin_inset Info
@@ -906,90 +1006,9 @@ y
 \begin_inset space ~
 \end_inset
 
-reemplazar 
+reemplazar
 \family default
 
-\begin_inset Info
-type  "icon"
-arg   "dialog-show findreplace"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Los tres primeros son evidentes.
- 
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Pegar
-\end_layout
-
-\end_inset
-
-También puedes copiar texto entre LyX y otros programas con cortar, copiar
- y pegar.
- El submenú 
-\family sans
-Pegar
-\begin_inset space ~
-\end_inset
-
-reciente
-\family default
- muestra una lista con los últimos términos copiados.
-\end_layout
-
-\begin_layout Standard
-Con el menú 
-\family sans
-Editar\SpecialChar \menuseparator
-Pegado
-\begin_inset space ~
-\end_inset
-
-Especial\SpecialChar \menuseparator
-Texto
-\begin_inset space ~
-\end_inset
-
-simple 
-\family default
-el texto del portapapeles se inserta como párrafos, de manera que cada salto
- de línea del texto inicia un párrafo nuevo.
- El menú 
-\family sans
-Editar\SpecialChar \menuseparator
-Pegado
-\begin_inset space ~
-\end_inset
-
-Especial\SpecialChar \menuseparator
-Texto
-\begin_inset space ~
-\end_inset
-
-simple,
-\begin_inset space ~
-\end_inset
-
-líneas
-\begin_inset space ~
-\end_inset
-
-juntas
-\family default
- insertará todo el texto del portapapeles como 
-\emph on
-un solo
-\emph default
- párrafo.
- Si en el texto hay una línea en blanco se iniciará un nuevo párrafo.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Index idx
 status collapsed
 
@@ -1009,6 +1028,208 @@ Encontrar
 
 \end_inset
 
+
+\family sans
+, 
+\family default
+
+\begin_inset Info
+type  "shortcut"
+arg   "dialog-show findreplaceadv"
+\end_inset
+
+ o
+\family sans
+ 
+\family default
+
+\begin_inset Info
+type  "icon"
+arg   "dialog-show findreplace"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Los tres primeros son evidentes.
+ 
+\lang english
+You can also copy text between LyX and other programs by 
+\family sans
+Cut
+\family default
+, 
+\family sans
+Copy
+\family default
+ and 
+\family sans
+Paste
+\family default
+.
+ 
+\family sans
+Cut
+\family default
+ and 
+\family sans
+Copy
+\family default
+ put text in two versions into the clipboard (formatted and unformatted),
+ so that other programs can choose the most suitable form.
+ 
+\family sans
+Paste
+\family default
+ supports formatted and unformatted text as well, and additionally graphics.
+ It tries to interpret the clipboard contents in an intelligent way.
+ For example if the clipboard contains text in the format of comma separated
+ values (CSV) and the cursor is inside a table, the text will be pasted
+ into individual cells.
+ 
+\lang spanish
+El submenú 
+\family sans
+Pegar
+\begin_inset space ~
+\end_inset
+
+reciente
+\family default
+ muestra una lista con los últimos términos copiados.
+
+\lang english
+ You can insert one at the current cursor position by clicking on a list
+ entry.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The submenu 
+\family sans
+\lang spanish
+Pegado
+\begin_inset space ~
+\end_inset
+
+especial
+\family default
+\lang english
+ contains optional items for specific formats, depending on the clipboard
+ contents.
+ These include HTML, LaTeX, Linkback
+\begin_inset space ~
+\end_inset
+
+PDF
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+OS X only
+\end_layout
+
+\end_inset
+
+, PDF, PNG, JPEG and EMF.
+ These menu items are useful if the clipboard contains the same contents
+ in different formats, and you want to select one format explicitly.
+ (E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+some programs put an image into the clipboard as graphics and as a short
+ text which is often meaningless.) The menu item 
+\family sans
+\lang spanish
+Pegado
+\begin_inset space ~
+\end_inset
+
+especial\SpecialChar \menuseparator
+
+\lang english
+Plain
+\begin_inset space ~
+\end_inset
+
+Text,
+\begin_inset space \thinspace{}
+\end_inset
+
+Join
+\begin_inset space ~
+\end_inset
+
+Lines
+\family default
+ is equivalent to 
+\family sans
+\lang spanish
+Pegar
+\family default
+\lang english
+, with the only difference that it acts on text only.
+ It will insert the text in the clipboard so that the whole text is inserted
+ as one paragraph.
+ A new paragraph is only started when there is a blank line in the text.
+ Without 
+\family sans
+Join
+\begin_inset space ~
+\end_inset
+
+Lines
+\family default
+ the text is inserted as paragraphs where the line breaks of the text will
+ start a new paragraph.
+ This is for example useful to copy contents of tables from webpages to
+ a table in LyX.
+ The items 
+\family sans
+\lang spanish
+Pegado
+\begin_inset space ~
+\end_inset
+
+especial\SpecialChar \menuseparator
+
+\lang english
+Selection,
+\begin_inset space \thinspace{}
+\end_inset
+
+Join
+\begin_inset space ~
+\end_inset
+
+Lines
+\family default
+ and 
+\family sans
+\lang spanish
+Pegado
+\begin_inset space ~
+\end_inset
+
+especial\SpecialChar \menuseparator
+
+\lang english
+Selection
+\family default
+ paste from the primary selection.
+ This is normally the currently selected text.
+\end_layout
+
+\begin_layout Standard
 La opción 
 \family sans
 Editar\SpecialChar \menuseparator
