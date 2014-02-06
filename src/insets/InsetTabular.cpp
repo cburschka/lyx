@@ -1682,8 +1682,7 @@ Tabular::idx_type Tabular::setMultiColumn(idx_type cell, idx_type number,
 	cs.multicolumn = CELL_BEGIN_OF_MULTICOLUMN;
 	if (column_info[col].alignment != LYX_ALIGN_DECIMAL)
 		cs.alignment = column_info[col].alignment;
-	if (col > 0)
-		setRightLine(cell, right_border);
+	setRightLine(cell, right_border);
 
 	for (idx_type i = 1; i < number; ++i) {
 		CellData & cs1 = cellInfo(cell + i);
