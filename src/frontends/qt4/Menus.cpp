@@ -1666,7 +1666,7 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv)
 	if (!bv)
 		return;
 
-	pit_type pit = bv->cursor().pit();
+	pit_type pit = bv->cursor().selBegin().pit();
 	Paragraph const & par = bv->buffer().text().getPar(pit);
 	docstring const curlayout = par.layout().name();
 	docstring outerlayout;
