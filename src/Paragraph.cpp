@@ -3216,8 +3216,7 @@ int Paragraph::fixBiblio(Buffer const & buffer)
 		// these, which there should be.
 		// FIXME: why does it make sense to do that rather
 		// than keep the first? (JMarc)
-		Inset * inset = d->insetlist_.release(bibitem_pos);
-		eraseChar(bibitem_pos, track_changes);
+		Inset * inset = releaseInset(bibitem_pos);
 		d->insetlist_.begin()->inset = inset;
 		return -bibitem_pos;
 	}
