@@ -620,10 +620,13 @@ void MathMacroTemplate::edit(Cursor & cur, bool front, EntryDirection entry_from
 
 bool MathMacroTemplate::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
+	unsigned int const nargs_before = nargs();
 	commitEditChanges(cur, old);
 	updateLook();
 	cur.screenUpdateFlags(Update::Force);
-	return InsetMathNest::notifyCursorLeaves(old, cur);
+	// If we have removed a cell, we might have invalidated the cursor
+	return InsetMathNest::notifyCursorLeaves(old, cur)
+		|| nargs() < nargs_before;
 }
 
 
