@@ -12,6 +12,7 @@
 
 #include "Compare.h"
 
+#include "Author.h"
 #include "BufferParams.h"
 #include "Changes.h"
 #include "Font.h"
@@ -375,9 +376,16 @@ void Compare::run()
 	if (!dest_buffer || !new_buffer || !old_buffer)
 		return;
 
-	// Copy the buffer params to the new buffer
+	// Copy the buffer params to the destination buffer
 	dest_buffer->params() = options_.settings_from_new
 		? new_buffer->params() : old_buffer->params();
+	
+	// Copy extra authors to the destination buffer
+	AuthorList const & extra_authors = options_.settings_from_new ?
+		old_buffer->params().authors() : new_buffer->params().authors();
+	AuthorList::Authors::const_iterator it = extra_authors.begin();
+	for (; it != extra_authors.end(); it++)
+		dest_buffer->params().authors().record(*it);
 	
 	doStatusMessage();
 
