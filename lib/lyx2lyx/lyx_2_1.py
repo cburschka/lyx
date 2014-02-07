@@ -4228,12 +4228,10 @@ def revert_tibetan(document):
 # optional argument of the inset, if the CONTENT is non-empty.
 def convert_chunks(document):
     first_re = re.compile(r'<<(.*)>>=(.*)')
-    k = 0
+    file_pos = 0
     while True:
-        # the beginning of this sequence
-        i = k
         # find start of a block of chunks
-        i = find_token(document.body, "\\begin_layout Chunk", i)
+        i = find_token(document.body, "\\begin_layout Chunk", file_pos)
         if i == -1:
             return
         start = i
@@ -4246,7 +4244,8 @@ def convert_chunks(document):
             j = find_end_of_layout(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX documents. Can't find end of Chunk layout!")
-                break
+                # there is no point continuing, as we will run into the same error again.
+                return
             this_chunk = "".join(document.body[i + 1:j])
             
             # there may be empty lines between chunks
@@ -4265,22 +4264,14 @@ def convert_chunks(document):
                 break
 
             # look for subsequent chunk paragraph
-            i = j
-            i = find_token(document.body, "\\begin_layout", i)
+            i = find_token(document.body, "\\begin_layout", j)
             if i == -1:
                 break
 
             if get_value(document.body, "\\begin_layout", i) != "Chunk":
                 break
 
-        if j == -1:
-            # error, but we can try to continue
-            # FIXME: Why not simply k = 0? (spitz)
-            k = j + 1
-            continue
-
-        end = j + 1
-        k = end
+        file_pos = end = j + 1
         
         # The last chunk should simply have an "@" in it
         # or at least end with "@" (can happen if @ is
@@ -4354,7 +4345,7 @@ def convert_chunks(document):
 
         document.body[start:end] = newstuff
 
-        k += len(newstuff) - (end - start)
+        file_pos += len(newstuff) - (end - start)
 
 
 def revert_chunks(document):
