@@ -59,13 +59,21 @@ What's new
 - Fix outliner-related crash when master and child are open in different
   windows (bug 8948).
 
+- Correctly compare documents with different author sets (bug 8769).
+
+- Fix crash with changetracking in bibliography environment (bug 8646).
+
+- Fix crash when optional argument inside inside a math macro was deleted (bug 8329).
+
 - Fix problem that led to assertion in some cases when space was at
   beginning of line (bugs 8838 and 8947).
 
+- Fix drawing of table lines of multicolumns (bug 8082).
+
 - Handle undo in `branch-add' function.
 
-
 - Fix the missing dynamic menus in general and restore correctly from fullscreen.
+
 
 * DOCUMENTATION AND LOCALIZATION
 
