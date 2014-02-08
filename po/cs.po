@@ -12143,13 +12143,12 @@ msgid "# [number of Prob]"
 msgstr "# [počet prob]"
 
 #: lib/layouts/theorems-without-preamble.inc:289
-#, fuzzy
 msgid "Label of Problem"
-msgstr "Úloha"
+msgstr "Značka problému"
 
 #: lib/layouts/theorems-without-preamble.inc:290
 msgid "Label of the corresponding problem"
-msgstr ""
+msgstr "Značka odpovídajícího problému"
 
 #: lib/layouts/theorems-without-preamble.inc:365
 msgid "Property \\theproperty."
@@ -12700,9 +12699,8 @@ msgid "Case \\arabic{caseiv}."
 msgstr "Případ \\arabic{caseiv}."
 
 #: lib/layouts/shapepar.module:2
-#, fuzzy
 msgid "Custom Paragraph Shapes"
-msgstr "Současný odstavec"
+msgstr "Volitelné tvary odstavce"
 
 #: lib/layouts/shapepar.module:7
 msgid ""
@@ -12710,106 +12708,95 @@ msgid ""
 "shapes. For a description see LyX's Additional features manual, section 'Non-"
 "standard Paragraph Shapes'."
 msgstr ""
+"Obsahuje několik tvarů pro odstavce a pokytuje příkazy pro tvorbu nových. Bližší informace v manuálu 'Rozšířené vlasnosti LyXu.'"
 
 #: lib/layouts/shapepar.module:26
-#, fuzzy
 msgid "CD label"
-msgstr "značka URL"
+msgstr "CD obal"
 
 #: lib/layouts/shapepar.module:30
-#, fuzzy
 msgid "ShapedParagraphs"
-msgstr "Odstavec"
+msgstr "TvarovanéOdstavce"
 
 #: lib/layouts/shapepar.module:39 lib/ui/stdtoolbars.inc:807
-#, fuzzy
 msgid "Circle"
-msgstr "circledS"
+msgstr "Kružnice"
 
 #: lib/layouts/shapepar.module:44
 msgid "Diamond"
-msgstr "Diamond"
+msgstr "Diamant"
 
 #: lib/layouts/shapepar.module:49
 msgid "Heart"
-msgstr ""
+msgstr "Srdce"
 
 #: lib/layouts/shapepar.module:54
 msgid "Hexagon"
-msgstr ""
+msgstr "Hexagon"
 
 #: lib/layouts/shapepar.module:59
-#, fuzzy
 msgid "Nut"
-msgstr "Vyjmout"
+msgstr "Ořech"
 
 #: lib/layouts/shapepar.module:64 lib/ui/stdtoolbars.inc:758
-#, fuzzy
 msgid "Square"
-msgstr "square"
+msgstr "Čtverec"
 
 #: lib/layouts/shapepar.module:69
 msgid "Star"
-msgstr ""
+msgstr "Hvězda"
 
 #: lib/layouts/shapepar.module:76
 msgid "Candle"
-msgstr ""
+msgstr "Svíce"
 
 #: lib/layouts/shapepar.module:81
-#, fuzzy
 msgid "Drop down"
-msgstr "Se stínem"
+msgstr "Kapka (dolů)"
 
 #: lib/layouts/shapepar.module:86
 msgid "Drop up"
-msgstr ""
+msgstr "Kapka (nahoru)"
 
 #: lib/layouts/shapepar.module:91 src/mathed/MathMacroTemplate.cpp:538
 msgid "TeX"
 msgstr "TeX"
 
 #: lib/layouts/shapepar.module:96
-#, fuzzy
 msgid "Triangle up"
-msgstr "bigtriangleup"
+msgstr "Trojúhelník (nahoru)"
 
 #: lib/layouts/shapepar.module:101
-#, fuzzy
 msgid "Triangle down"
-msgstr "triangledown"
+msgstr "Trojúhelník (dolů)"
 
 #: lib/layouts/shapepar.module:106
-#, fuzzy
 msgid "Triangle left"
-msgstr "triangleleft"
+msgstr "Trojúhelník (levý)"
 
 #: lib/layouts/shapepar.module:111
-#, fuzzy
 msgid "Triangle right"
-msgstr "triangleright"
+msgstr "Trojúhelník (pravý)"
 
 #: lib/layouts/shapepar.module:117
 msgid "shapepar"
-msgstr ""
+msgstr "shapepar"
 
 #: lib/layouts/shapepar.module:123
 msgid "For scaling the <Shape specification> to positions on the page"
-msgstr ""
+msgstr "Změnu měřítka tvaru pro umístění na stránce"
 
 #: lib/layouts/shapepar.module:127
-#, fuzzy
 msgid "Shape specification"
-msgstr "SpecialSection"
+msgstr "Volba tvaru"
 
 #: lib/layouts/shapepar.module:128
 msgid "Specification of the shape"
-msgstr ""
+msgstr "Volba tvaru"
 
 #: lib/layouts/shapepar.module:132
-#, fuzzy
 msgid "Shapepar"
-msgstr "Ře&z:"
+msgstr "Shapepar"
 
 #: lib/layouts/theorems-chap-bytype.module:2
 msgid "Theorems (Numbered by Type within Chapters)"
