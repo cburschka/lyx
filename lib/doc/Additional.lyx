@@ -20060,7 +20060,7 @@ Control
  submenu.
  Please note that if you use password protected access to repository via
  ssh, you will be asked in terminal window.
- LyX was tested against SVN 1.5 and 1.6
+ LyX was tested against SVN 1.5, 1.6, 1.7 and 1.8
 \begin_inset Foot
 status open
 
@@ -20073,6 +20073,8 @@ reference "sub:SVN-Repo-Update"
 \end_inset
 
 .
+ There seems to be currently unresolved permissions problem under SVN 1.8
+ with reverting changes when file is locked.
 \end_layout
 
 \end_inset
