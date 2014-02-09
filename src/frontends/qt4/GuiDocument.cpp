@@ -2491,7 +2491,7 @@ void GuiDocument::updateDefaultFormat()
 	if (idx >= 0) {
 		string const classname = fromqstr(latexModule->classCO->getData(idx));
 		param_copy.setBaseClass(classname);
-		param_copy.makeDocumentClass();
+		param_copy.makeDocumentClass(true);
 	}
 	outputModule->defaultFormatCO->blockSignals(true);
 	outputModule->defaultFormatCO->clear();

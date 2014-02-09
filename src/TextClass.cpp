@@ -1489,7 +1489,8 @@ Layout TextClass::createBasicLayout(docstring const & name, bool unknown) const
 
 
 DocumentClassPtr getDocumentClass(
-		LayoutFile const & baseClass, LayoutModuleList const & modlist)
+		LayoutFile const & baseClass, LayoutModuleList const & modlist,
+		bool const clone)
 {
 	DocumentClassPtr doc_class =
 	    DocumentClassPtr(new DocumentClass(baseClass));
@@ -1504,10 +1505,11 @@ DocumentClassPtr getDocumentClass(
 						"this document but has not been found in the list of\n"
 						"available modules. If you recently installed it, you\n"
 						"probably need to reconfigure LyX.\n"), from_utf8(modName));
-			frontend::Alert::warning(_("Module not available"), msg);
+			if (!clone)
+				frontend::Alert::warning(_("Module not available"), msg);
 			continue;
 		}
-		if (!lm->isAvailable()) {
+		if (!lm->isAvailable() && !clone) {
 			docstring const prereqs = from_utf8(getStringFromVector(lm->prerequisites(), "\n\t"));
 			docstring const msg =
 				bformat(_("The module %1$s requires a package that is not\n"

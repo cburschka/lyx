@@ -491,7 +491,8 @@ private:
 	/// The only class that can create a DocumentClass is
 	/// DocumentClassBundle, which calls the protected constructor.
 	friend DocumentClassPtr
-		getDocumentClass(LayoutFile const &, LayoutModuleList const &);
+		getDocumentClass(LayoutFile const &, LayoutModuleList const &,
+				 bool const clone);
 	///
 	static InsetLayout plain_insetlayout_;
 };
@@ -502,7 +503,8 @@ private:
 /// in memory long after their associated Buffer is destroyed, mostly
 /// on the CutStack.
 DocumentClassPtr getDocumentClass(LayoutFile const & baseClass,
-			LayoutModuleList const & modlist);
+			LayoutModuleList const & modlist,
+			bool const clone = false);
 
 /// convert page sides option to text 1 or 2
 std::ostream & operator<<(std::ostream & os, PageSides p);
