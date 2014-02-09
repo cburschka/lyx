@@ -464,7 +464,7 @@ Preamble::Preamble() : one_language(true), title_layout_found(false)
 	//h_pdf_author;
 	//h_pdf_subject;
 	//h_pdf_keywords;
-	h_pdf_bookmarks           = "1";
+	h_pdf_bookmarks           = "0";
 	h_pdf_bookmarksnumbered   = "0";
 	h_pdf_bookmarksopen       = "0";
 	h_pdf_bookmarksopenlevel  = "1";
@@ -472,7 +472,7 @@ Preamble::Preamble() : one_language(true), title_layout_found(false)
 	h_pdf_pdfborder           = "0";
 	h_pdf_colorlinks          = "0";
 	h_pdf_backref             = "section";
-	h_pdf_pdfusetitle         = "1";
+	h_pdf_pdfusetitle         = "0";
 	//h_pdf_pagemode;
 	//h_pdf_quoted_options;
 	h_quotes_language         = "english";
