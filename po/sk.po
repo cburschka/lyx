@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-01-27 12:36+0100\n"
+"POT-Creation-Date: 2014-02-09 11:21+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -2635,7 +2635,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefUi.ui:108
 msgid "Use icons from system's &theme"
-msgstr "Použiť ikony zo systémovej &témy"
+msgstr "Použiť s&ystémové ikony"
 
 #: src/frontends/qt4/ui/PrefUi.ui:120
 msgid "Context help"
@@ -15068,14 +15068,6 @@ msgstr "Výber"
 msgid "Selection, Join Lines|i"
 msgstr "Výber, spojiť riadky"
 
-#: lib/ui/stdmenus.inc:171
-msgid "Unformatted Text|U"
-msgstr "Neformátovaný Text"
-
-#: lib/ui/stdmenus.inc:172
-msgid "Unformatted, Join Lines|o"
-msgstr "Neformátované, Riadky Spojiť"
-
 #: lib/ui/stdmenus.inc:180
 msgid "Dissolve Text Style"
 msgstr "Rozpustiť štýl znakov do textu"
@@ -15564,41 +15556,45 @@ msgstr "Výpis Zdrojového Kódu"
 msgid "Preview|w"
 msgstr "Náhľad"
 
-#: lib/ui/stdmenus.inc:386
-msgid "Symbols...|b"
-msgstr "Symboly..."
-
-#: lib/ui/stdmenus.inc:387
-msgid "Ellipsis|i"
-msgstr "Trojbodka"
-
 #: lib/ui/stdmenus.inc:388
-msgid "End of Sentence|E"
-msgstr "Koniec vety"
+msgid "Symbols...|b"
+msgstr "Symboly...|S"
 
 #: lib/ui/stdmenus.inc:389
-msgid "Ordinary Quote|Q"
-msgstr "Obyčajná úvodzovka"
+msgid "Ellipsis|i"
+msgstr "Vypustenie"
 
 #: lib/ui/stdmenus.inc:390
-msgid "Single Quote|S"
-msgstr "Jednoduchá úvodzovka"
+msgid "End of Sentence|E"
+msgstr "Koniec vety|K"
 
 #: lib/ui/stdmenus.inc:391
-msgid "Protected Hyphen|y"
-msgstr "Chránené Spojovacie Znamienko"
+msgid "Ordinary Quote|Q"
+msgstr "Dvojitá Úvodzovka|D"
 
 #: lib/ui/stdmenus.inc:392
-msgid "Breakable Slash|a"
-msgstr "Nechránené lomítko"
+msgid "Single Quote|S"
+msgstr "Jednoduchá Úvodzovka|J"
 
 #: lib/ui/stdmenus.inc:393
-msgid "Menu Separator|M"
-msgstr "Oddeľovač v menu"
+msgid "Protected Hyphen|y"
+msgstr "Chránené Spojovacie Znamienko|C"
 
 #: lib/ui/stdmenus.inc:394
+msgid "Breakable Slash|a"
+msgstr "Nechránené Lomítko|L"
+
+#: lib/ui/stdmenus.inc:395
+msgid "Visible Space|V"
+msgstr "Viditeľná Medzera|M"
+
+#: lib/ui/stdmenus.inc:396
+msgid "Menu Separator|M"
+msgstr "Oddeľovač v Menu|O"
+
+#: lib/ui/stdmenus.inc:397
 msgid "Phonetic Symbols|P"
-msgstr "Fonetické symboly"
+msgstr "Fonetické Symboly|F"
 
 #: lib/ui/stdmenus.inc:398
 msgid "Superscript|S"
@@ -15615,10 +15611,6 @@ msgstr "Chránená Medzera"
 #: lib/ui/stdmenus.inc:402 lib/ui/stdcontext.inc:217
 msgid "Interword Space|w"
 msgstr "Medzislovná medzera"
-
-#: lib/ui/stdmenus.inc:403
-msgid "Visible Space|i"
-msgstr "Viditeľná Medzera|i"
 
 #: lib/ui/stdmenus.inc:404 lib/ui/stdcontext.inc:220 lib/ui/stdcontext.inc:243
 msgid "Thin Space|T"
@@ -15860,33 +15852,33 @@ msgstr "Komprimované|m"
 msgid "Settings...|S"
 msgstr "Nastavenia...|a"
 
-#: lib/ui/stdmenus.inc:523
-msgid "Track Changes|T"
-msgstr "Sledovať Zmeny"
-
-#: lib/ui/stdmenus.inc:524
-msgid "Merge Changes...|M"
-msgstr "Zlúčiť Zmeny..."
-
 #: lib/ui/stdmenus.inc:525
-msgid "Accept Change|A"
-msgstr "Akceptovať Zmenu"
+msgid "Track Changes|T"
+msgstr "Sledovať Zmeny|S"
 
-#: lib/ui/stdmenus.inc:526 lib/ui/stdcontext.inc:601
-msgid "Reject Change|R"
-msgstr "Odmietnuť zmenu"
+#: lib/ui/stdmenus.inc:526
+msgid "Merge Changes...|M"
+msgstr "Zlúčiť Zmeny...|Z"
 
 #: lib/ui/stdmenus.inc:527
-msgid "Accept All Changes|c"
-msgstr "Akceptovať Všetky Zmeny"
+msgid "Accept Change|A"
+msgstr "Akceptovať Zmenu|A"
 
-#: lib/ui/stdmenus.inc:528
-msgid "Reject All Changes|e"
-msgstr "Odhodiť Všetky Zmeny"
+#: lib/ui/stdcontext.inc:601 lib/ui/stdmenus.inc:528
+msgid "Reject Change|R"
+msgstr "Odmietnuť Zmenu"
 
 #: lib/ui/stdmenus.inc:529
+msgid "Accept All Changes|c"
+msgstr "Akceptovať Všetky Zmeny|V"
+
+#: lib/ui/stdmenus.inc:530
+msgid "Reject All Changes|e"
+msgstr "Odhodiť Všetky Zmeny|O"
+
+#: lib/ui/stdmenus.inc:531
 msgid "Show Changes in Output|S"
-msgstr "Zobraziť Zmeny vo Výstupe"
+msgstr "Zobraziť Zmeny vo Výstupe|V"
 
 #: lib/ui/stdmenus.inc:536
 msgid "Bookmarks|B"
@@ -29605,6 +29597,12 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "Unformatted Text|U"
+#~ msgstr "Neformátovaný Text"
+
+#~ msgid "Unformatted, Join Lines|o"
+#~ msgstr "Neformátované, Riadky Spojiť"
+
 #~ msgid "Split Environment|l"
 #~ msgstr "Rozdeliť prostredie|d"
 
@@ -32311,3 +32309,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "&Keep Changes"
 #~ msgstr "&Držať Zmeny"
+
+#~ msgid "Visible Space|i"
+#~ msgstr "Viditeľná Medzera|i"
