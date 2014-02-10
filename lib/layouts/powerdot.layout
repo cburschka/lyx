@@ -5,7 +5,7 @@
 # Created: 29-Aug-05 by Mael Hilléreau
 # Modified: 20-May-06 by Uwe Stöhr, 18-Mar-2013 Jürgen Spitzmüller
 
-Format 48
+Format 49
 
 Input stdcounters.inc
 Input stdinsets.inc
@@ -578,6 +578,7 @@ InsetLayout Flex:Onslide
     Mandatory      1
     DefaultArg     "1-"
   EndArgument
+	ResetsFont true
 End
 
 InsetLayout Flex:Onslide+

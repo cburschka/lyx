@@ -534,17 +534,18 @@ public:
 	/**
 	 * If this method returns true all explicitly set font attributes
 	 * are reset during editing operations.
-	 * For copy/paste the operations the language is never changed, since
+	 * For copy/paste operations the language is never changed, since
 	 * the language of a given text never changes if the text is
 	 * formatted differently, while other font attribues like size may
 	 * need to change if the text is copied from one environment to
 	 * another one.
-	 * If it returns false no font attribute is reset.
-	 * The default implementation returns the negation of inheritFont(),
+	 * If this method returns false no font attribute is reset.
+	 * The default implementation returns true if the resetFont layout
+	 * tag is set and otherwise the negation of inheritFont(),
 	 * since inherited inset font attributes do not need to be changed,
 	 * and non-inherited ones need to be set explicitly.
 	 */
-	virtual bool resetFontEdit() const { return !inheritFont(); }
+	virtual bool resetFontEdit() const;
 
 	/// set the change for the entire inset
 	virtual void setChange(Change const &) {}

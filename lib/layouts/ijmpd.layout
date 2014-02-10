@@ -17,7 +17,7 @@
 # Author: Uwe Stöhr (uwestoehr@web.de)
 
 
-Format 48
+Format 49
 
 Sides		1
 Columns		1
@@ -175,6 +175,7 @@ InsetLayout Flex:Received
     Color	green
     Size	Small
   EndFont
+	ResetsFont true
 End
 
 InsetLayout Flex:Revised
@@ -192,6 +193,7 @@ InsetLayout Flex:Revised
     Color	green
     Size	Small
   EndFont
+	ResetsFont true
 End
 
 InsetLayout Flex:Comby
@@ -209,6 +211,7 @@ InsetLayout Flex:Comby
     Color	green
     Size	Small
   EndFont
+	ResetsFont true
 End
 
 Style Abstract
@@ -259,6 +262,7 @@ InsetLayout Flex:TableCaption
     Color	green
     Size	Small
   EndFont
+	ResetsFont true
 End
 
 InsetLayout Flex:Refcite
@@ -276,6 +280,7 @@ InsetLayout Flex:Refcite
     Color	green
     Size	Small
   EndFont
+	ResetsFont true
 End
 
 Style ItemList

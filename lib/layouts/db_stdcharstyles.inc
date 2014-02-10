@@ -2,7 +2,7 @@
 # Author : José Abílio Oliveira Matos <jamatos@lyx.org>
 # Character Styles definition
 
-Format 48
+Format 49
 InsetLayout Flex:Filename
 	LyXType element
 	LabelString Filename
@@ -15,6 +15,7 @@ InsetLayout Flex:Filename
 	  Family              Roman
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 InsetLayout Flex:Directory
@@ -30,6 +31,7 @@ InsetLayout Flex:Directory
 	  Family              Roman
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 InsetLayout Flex:Firstname
@@ -41,6 +43,7 @@ InsetLayout Flex:Firstname
 	  Shape               Up
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 InsetLayout Flex:Surname
@@ -52,6 +55,7 @@ InsetLayout Flex:Surname
 	  Shape               Up
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 InsetLayout Flex:Literal
@@ -66,6 +70,7 @@ InsetLayout Flex:Literal
 	  Family              Roman
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 InsetLayout Flex:Email
@@ -80,6 +85,7 @@ InsetLayout Flex:Email
           Family              Roman
           Color               blue
         EndFont
+	ResetsFont true
 End
 
 InsetLayout Flex:KeyCombo
@@ -94,6 +100,7 @@ InsetLayout Flex:KeyCombo
           Family              Roman
           Color               blue
         EndFont
+	ResetsFont true
 End
 
 InsetLayout Flex:KeyCap
@@ -108,6 +115,7 @@ InsetLayout Flex:KeyCap
           Family              Roman
           Color               blue
         EndFont
+	ResetsFont true
 End
 
 InsetLayout Flex:GuiMenu
@@ -122,6 +130,7 @@ InsetLayout Flex:GuiMenu
           Family              Roman
           Color               blue
         EndFont
+	ResetsFont true
 End
 
 InsetLayout Flex:GuiMenuItem
@@ -136,6 +145,7 @@ InsetLayout Flex:GuiMenuItem
           Family              Roman
           Color               blue
         EndFont
+	ResetsFont true
 End
 
 InsetLayout Flex:GuiButton
@@ -150,6 +160,7 @@ InsetLayout Flex:GuiButton
           Family              Roman
           Color               blue
         EndFont
+	ResetsFont true
 End
 
 InsetLayout Flex:MenuChoice
@@ -164,4 +175,5 @@ InsetLayout Flex:MenuChoice
           Family              Roman
           Color               blue
         EndFont
+	ResetsFont true
 End

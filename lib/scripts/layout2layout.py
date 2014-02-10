@@ -162,6 +162,9 @@ import os, re, string, sys
 # Incremented to format 48, 31 May 2013 by rgh
 # Add InitialValue tag for counters
 
+# Incremented to format 49, 10 Feb 2014 by gb
+# Change default of "ResetsFont" tag to false
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -169,7 +172,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 48
+currentFormat = 49
 
 
 def usage(prog_name):
@@ -255,6 +258,7 @@ def convert(lines):
     re_Builtin = re.compile(r'^(\s*)LaTeXBuiltin\s+(\w*)', re.IGNORECASE)
     re_True = re.compile(r'^\s*(?:true|1)\s*$', re.IGNORECASE)
     re_InsetLayout = re.compile(r'^\s*InsetLayout\s+(?:Custom|CharStyle|Element):(\S+)\s*$', re.IGNORECASE)
+    re_ResetsFont = re.compile(r'^(\s*)ResetsFont(\s+)(\S+)$', re.IGNORECASE)
     # with quotes
     re_QInsetLayout = re.compile(r'^\s*InsetLayout\s+"(?:Custom|CharStyle|Element):([^"]+)"\s*$', re.IGNORECASE)
     re_InsetLayout_CopyStyle = re.compile(r'^\s*CopyStyle\s+(?:Custom|CharStyle|Element):(\S+)\s*$', re.IGNORECASE)
@@ -330,6 +334,11 @@ def convert(lines):
     opts = 0
     reqs = 0
     inchapter = False
+    isflexlayout = False         # only used for 48 -> 49
+    # Whether a style is inherited (works only for CopyStyle currently,
+    # not for true inherited styles, see bug 8920
+    inherited = False        # only used for 48 -> 49
+    resetsfont_found = False # only used for 48 -> 49
 
     while i < len(lines):
         # Skip comments and empty lines
@@ -384,6 +393,42 @@ def convert(lines):
             i += 1
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
+            continue
+
+        if format == 48:
+            # The default of ResetsFont in LyX changed from true to false,
+            # because it is now used for all InsetLayouts, not only flex ones.
+            # Therefore we need to set it to true for all flex insets which do
+            # do not already have a ResetsFont.
+            match = re_InsetLayout2.match(lines[i])
+            if match:
+                resetsfont_found = False
+                inherited = False
+                name = string.lower(match.group(1))
+                if name == "flex" or name[:5] == "flex:":
+                    isflexlayout = True
+                else:
+                    isflexlayout = False
+            match = re_ResetsFont.match(lines[i])
+            if match:
+                resetsfont_found = True
+            match = re_End.match(lines[i])
+            if match:
+                if isflexlayout and not resetsfont_found and not inherited:
+                    lines.insert(i, "\tResetsFont true")
+                    i += 1
+            match = re_Style.match(lines[i])
+            if match:
+                isflexlayout = False
+                inherited = False
+            match = re_Counter.match(lines[i])
+            if match:
+                isflexlayout = False
+                inherited = False
+            match = re_CopyStyle.match(lines[i])
+            if match:
+                inherited = True
+            i += 1
             continue
 
         if format >= 44 and format <= 47:

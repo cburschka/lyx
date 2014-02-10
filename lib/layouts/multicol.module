@@ -6,7 +6,7 @@
 #DescriptionEnd
 #Authors: Uwe Stöhr and Jürgen Spitzmüller
 
-Format 48
+Format 49
 
 InsetLayout Flex:Multiple_Columns
   LyXType               custom
@@ -30,5 +30,6 @@ InsetLayout Flex:Multiple_Columns
     Tooltip             "Free space that needs to be on the page to start the multiple columns on this page"
     Requires            2
   EndArgument
+	ResetsFont true
 End
 

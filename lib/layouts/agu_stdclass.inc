@@ -6,7 +6,7 @@
 # It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
-Format 48
+Format 49
 OutputType              docbook
 
 Columns                 1
@@ -44,6 +44,7 @@ InsetLayout Flex:Firstname
 	  Shape               Up
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 InsetLayout Flex:Fname
@@ -58,6 +59,7 @@ InsetLayout Flex:Fname
 	  Shape               Up
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -73,6 +75,7 @@ InsetLayout Flex:Surname
 	  Shape               Up
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -88,6 +91,7 @@ InsetLayout Flex:Filename
 	  Family              Roman
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -103,6 +107,7 @@ InsetLayout Flex:Literal
 	  Family              Roman
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -119,6 +124,7 @@ InsetLayout Flex:Emph
 	  Shape               Up
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -130,6 +136,7 @@ InsetLayout Flex:Abbrev
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -141,6 +148,7 @@ InsetLayout Flex:Citation-number
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -152,6 +160,7 @@ InsetLayout Flex:Volume
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -163,6 +172,7 @@ InsetLayout Flex:Day
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -174,6 +184,7 @@ InsetLayout Flex:Month
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -185,6 +196,7 @@ InsetLayout Flex:Year
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -196,6 +208,7 @@ InsetLayout Flex:Issue-number
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -207,6 +220,7 @@ InsetLayout Flex:Issue-day
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -218,6 +232,7 @@ InsetLayout Flex:Issue-months
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 

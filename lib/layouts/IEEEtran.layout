@@ -9,7 +9,7 @@
 # IEEtran textclass definition file.
 
 
-Format 48
+Format 49
 
 Sides		1
 SecNumDepth	3
@@ -100,6 +100,7 @@ InsetLayout Flex:IEEE_membership
     Color	green
     Size	Small
   EndFont
+	ResetsFont true
 End
 
 
@@ -151,6 +152,7 @@ InsetLayout Flex:Author_Name
     Color	blue
     Size	Small
   EndFont
+	ResetsFont true
 End
 
 
@@ -188,6 +190,7 @@ InsetLayout Flex:Author_Mark
 	  Color		latex
 	  Size		Small
 	EndFont
+	ResetsFont true
 End
 
 
@@ -294,6 +297,7 @@ InsetLayout Flex:Paragraph_Start
   Font
     Size	Small
   EndFont
+	ResetsFont true
 End
 
 

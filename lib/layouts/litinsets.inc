@@ -6,7 +6,7 @@
 # Note that this file is included in sweave.module,
 # knitr.module and noweb.module.
 
-Format 48
+Format 49
 
 Counter chunk
     PrettyFormat "Chunk ##"
@@ -43,4 +43,5 @@ InsetLayout "Flex:Chunk"
             LeftDelim     <<
             RightDelim    >>=<br/>
     EndArgument
+    ResetsFont false
 End

@@ -6,7 +6,7 @@
 
 # Author : Martin vermeer <martin.vermeer@hut.fi>
 
-Format 48
+Format 49
 
 InsetLayout Flex:Noun
 	LyxType               charstyle
@@ -25,6 +25,7 @@ InsetLayout Flex:Noun
 			font-family: sans-serif;
 		}
 	EndHTMLStyle
+	ResetsFont true
 End
 
 
@@ -38,6 +39,7 @@ InsetLayout Flex:Emph
 	EndFont
 	InToc                 true
 	HTMLTag               em
+	ResetsFont true
 End
 
 
@@ -54,6 +56,7 @@ InsetLayout Flex:Strong
 	EndPreamble
 	InToc                 true
 	HTMLTag               strong
+	ResetsFont true
 End
 
 
@@ -70,4 +73,5 @@ InsetLayout Flex:Code
 	EndPreamble
 	InToc                 true
 	HTMLTag               code
+	ResetsFont true
 End

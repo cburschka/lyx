@@ -2,7 +2,7 @@
 # Author : Martin vermeer <martin.vermeer@hut.fi>
 # Character Styles definition
 
-Format 48
+Format 49
 
 # Error fallback:
 InsetLayout Flex
@@ -11,4 +11,5 @@ InsetLayout Flex
 	Font
 	  Color               error
 	EndFont
+	ResetsFont true
 End

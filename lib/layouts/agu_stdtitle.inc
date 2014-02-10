@@ -6,7 +6,7 @@
 # It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
-Format 48
+Format 49
 Input stdtitle.inc
 
 
@@ -327,6 +327,7 @@ InsetLayout Flex:ISSN
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -338,6 +339,7 @@ InsetLayout Flex:CODEN
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 # Inside Special-section:
@@ -350,6 +352,7 @@ InsetLayout Flex:SS-Code
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -361,6 +364,7 @@ InsetLayout Flex:SS-Title
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 # Inside Copyright:
@@ -373,6 +377,7 @@ InsetLayout Flex:CCC-Code
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -386,6 +391,7 @@ InsetLayout Flex:Code
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -397,6 +403,7 @@ InsetLayout Flex:Dscr
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 # Inside Keywords:
@@ -409,6 +416,7 @@ InsetLayout Flex:Keyword
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 #inside Affiliation:
@@ -421,6 +429,7 @@ InsetLayout Flex:Orgdiv
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -432,6 +441,7 @@ InsetLayout Flex:Orgname
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -443,6 +453,7 @@ InsetLayout Flex:Street
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -454,6 +465,7 @@ InsetLayout Flex:City
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -465,6 +477,7 @@ InsetLayout Flex:State
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -476,6 +489,7 @@ InsetLayout Flex:Postcode
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -487,6 +501,7 @@ InsetLayout Flex:Country
 	LabelFont
 	  Color               blue
 	EndFont
+	ResetsFont true
 End
 
 

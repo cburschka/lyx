@@ -3,7 +3,7 @@
 #  \DeclareCategory{Articles}
 # Author : Koji Yokota <yok...@res.otaru-uc.ac.jp>
 
-Format 48
+Format 49
 Input article.layout
 
 TitleLatexType		Environment
@@ -166,6 +166,7 @@ InsetLayout Flex:Thanks_Reference
 	LabelString	"Thanks Ref"
 	ForcePlain	1
 	BgColor		background
+	ResetsFont true
 End
 
 InsetLayout Flex:Internet_Address_Reference

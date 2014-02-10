@@ -30,8 +30,6 @@ public:
 	InsetLayout const & getLayout() const;
 	///
 	InsetCode lyxCode() const { return FLEX_CODE; }
-	///
-	bool resetFontEdit() const;
 	/// Default looks
 	InsetLayout::InsetDecoration decoration() const;
 	///

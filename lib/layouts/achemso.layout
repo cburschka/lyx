@@ -4,7 +4,7 @@
 # textclass definition file for achemso 3.7c
 # Author: Uwe Stöhr (uwestoehr@web.de)
 
-Format 48
+Format 49
 
 Columns			1
 Sides			1
@@ -279,6 +279,7 @@ InsetLayout Flex:Bibnote
 	  Size		Small
 	EndFont
 	MultiPar	true
+	ResetsFont true
 End
 
 

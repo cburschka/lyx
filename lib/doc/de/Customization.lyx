@@ -17022,8 +17022,8 @@ status collapsed
 
 \end_inset
 
-] Ob die Einfügung die Schrift der benachbarten Umgebungen verwenden soll
- oder seine eigene.
+] Ob die Einfügung die Schrift der übergeordneten Umgebung verwenden soll
+ oder ihre eigene.
  Voreinstellung ist 
 \begin_inset Flex Code
 status collapsed
@@ -17031,12 +17031,12 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-1
+0
 \end_layout
 
 \end_inset
 
-: verwendet seine Eigene.
+: verwendet die Schrift der übergeordneten Umgebung.
 \end_layout
 
 \begin_layout Description

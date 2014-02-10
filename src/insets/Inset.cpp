@@ -642,6 +642,12 @@ Buffer const * Inset::updateFrontend() const
 }
 
 
+bool Inset::resetFontEdit() const
+{
+	return getLayout().resetsFont() || !inheritFont();
+}
+
+
 docstring Inset::completionPrefix(Cursor const &) const 
 {
 	return docstring();

@@ -6,7 +6,7 @@
 #   Richard Heck <rgheck@lyx.org>, Martin Vermeer <martin.vermeer@hut.fi> and probably others.
 
 
-Format 48
+Format 49
 
 #
 # GLOBAL SETTINGS
@@ -1339,6 +1339,7 @@ InsetLayout Flex:Bold
     LeftDelim      <
     RightDelim     >
   EndArgument
+	ResetsFont true
 End
 
 InsetLayout Flex:Emphasize
@@ -1356,6 +1357,7 @@ InsetLayout Flex:Emphasize
     LeftDelim      <
     RightDelim     >
   EndArgument
+	ResetsFont true
 End
 
 InsetLayout Flex:Alert
@@ -1373,6 +1375,7 @@ InsetLayout Flex:Alert
     LeftDelim      <
     RightDelim     >
   EndArgument
+	ResetsFont true
 End
 
 InsetLayout Flex:Structure
@@ -1390,6 +1393,7 @@ InsetLayout Flex:Structure
     LeftDelim      <
     RightDelim     >
   EndArgument
+	ResetsFont true
 End
 
 InsetLayout Flex:Only
@@ -1408,6 +1412,7 @@ InsetLayout Flex:Only
     RightDelim     >
     AutoInsert     1
   EndArgument
+	ResetsFont true
 End
 
 InsetLayout Flex:Uncover
@@ -1426,6 +1431,7 @@ InsetLayout Flex:Uncover
     RightDelim     >
     AutoInsert     1
   EndArgument
+	ResetsFont true
 End
 
 InsetLayout Flex:Visible
@@ -1444,6 +1450,7 @@ InsetLayout Flex:Visible
     RightDelim     >
     AutoInsert     1
   EndArgument
+	ResetsFont true
 End
 
 InsetLayout Flex:Invisible
@@ -1462,6 +1469,7 @@ InsetLayout Flex:Invisible
     RightDelim     >
     AutoInsert     1
   EndArgument
+	ResetsFont true
 End
 
 InsetLayout Flex:Alternative
@@ -1484,6 +1492,7 @@ InsetLayout Flex:Alternative
     Tooltip        "Enter the default text here"
     Mandatory      1
   EndArgument
+	ResetsFont true
 End
 
 InsetLayout Flex:Beamer_Note
@@ -1506,6 +1515,7 @@ InsetLayout Flex:Beamer_Note
     LabelString    "Note Options"
     Tooltip        "Specifiy note options (see beamer manual)"
   EndArgument
+	ResetsFont true
 End
 
 InsetLayout Flex:ArticleMode
@@ -1516,6 +1526,7 @@ InsetLayout Flex:ArticleMode
    Decoration      classic
    LabelString     Article
    MultiPar        true
+	ResetsFont true
 End
 
 InsetLayout Flex:PresentationMode
@@ -1526,6 +1537,7 @@ InsetLayout Flex:PresentationMode
    Decoration      classic
    LabelString     Presentation
    MultiPar        true
+	ResetsFont true
 End
 
 

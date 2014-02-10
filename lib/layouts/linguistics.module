@@ -7,7 +7,7 @@
 
 # Author: Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 48
+Format 49
 
 # single numbered example with covington.sty
 Style Numbered_Example_(multiline)
@@ -87,6 +87,7 @@ InsetLayout Flex:Glosse
 		{\glend}}{}
 	EndPreamble
 	InToc                 true
+	ResetsFont true
 End
 
 
@@ -116,6 +117,7 @@ InsetLayout Flex:Tri-Glosse
 			\glll #1}
 		{\glend}}{}
 	EndPreamble
+	ResetsFont true
 End
 
 
@@ -132,6 +134,7 @@ InsetLayout Flex:Expression
 		\newcommand{\lingexpr}[1]{\emph{#1}}
 	EndPreamble
 	InToc                 true
+	ResetsFont true
 End
 
 
@@ -147,6 +150,7 @@ InsetLayout Flex:Concepts
 		\newcommand{\lingconcept}[1]{\textsc{#1}}
 	EndPreamble
 	InToc                 true
+	ResetsFont true
 End
 
 
@@ -160,6 +164,7 @@ InsetLayout Flex:Meaning
 		\newcommand{\lingmeaning}[1]{\enquote*{#1}}
 	EndPreamble
 	InToc                 true
+	ResetsFont true
 End
 
 

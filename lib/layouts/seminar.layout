@@ -11,7 +11,7 @@
 #   1.4 2008-10-08 Günter Milde (use --Separator-- "look")
 #   1.5 2011-06-09 Günter Milde (Use Flex insets)
 
-Format 48
+Format 49
 Sides	1
 Columns	1
 
@@ -34,6 +34,7 @@ InsetLayout Flex:LandscapeSlide
 	LabelFont
 		Size	Small
 	EndFont
+	ResetsFont true
 End
 
 InsetLayout Flex:PortraitSlide

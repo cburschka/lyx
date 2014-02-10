@@ -19,7 +19,7 @@
 # see http://www.springer.com/authors for class files and further instructions
 
 
-Format 48
+Format 49
 PageStyle		Plain
 
 
@@ -693,5 +693,6 @@ InsetLayout Flex:Email
 	  Color		urltext
 	  Size		Small
 	EndFont
+	ResetsFont true
 End
 

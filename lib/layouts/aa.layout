@@ -18,7 +18,7 @@
 # 2013-05-26  Updated for aa.cls version 8.2
 
 
-Format 48
+Format 49
 Columns		2
 Sides		2
 SecNumDepth	3
@@ -355,6 +355,7 @@ InsetLayout Flex:Institute
 	Font
 	  Color		blue
 	EndFont
+	ResetsFont true
 End
 
 
@@ -366,6 +367,7 @@ InsetLayout Flex:E-Mail
 	  Family	Typewriter
 	  Color		blue
 	EndFont
+	ResetsFont true
 End
 
 

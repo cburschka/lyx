@@ -4,7 +4,7 @@
 #
 # Detailed format description is available in the customization manual
 
-Format 48
+Format 49
 
 Provides stdinsets 1
 
@@ -433,7 +433,6 @@ InsetLayout "Flex:URL"
 	PassThru              true
 	FreeSpacing           true
 	ForceLTR              true
-	ResetsFont            false
 	Font
 	  Family              Typewriter
 	  Color               urltext

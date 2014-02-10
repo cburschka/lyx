@@ -26,7 +26,7 @@
 # - Note
 
 
-Format 48
+Format 49
 
 
 Counter		theorem

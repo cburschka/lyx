@@ -12,7 +12,7 @@
 #   - We provide natbib-internal according to LyX bug #5182.
 #   - The command \lovname is missing from the class file.
 
-Format 48
+Format 49
 
 Input stdclass.inc
 Input numrevtex.inc
@@ -299,6 +299,7 @@ InsetLayout Flex:Lowercase
 	    # Keep empty to preserve font settings
 	    # from the surrounding environment
 	EndFont
+	ResetsFont true
 End
 
 
@@ -312,6 +313,7 @@ InsetLayout Flex:Surname
 	    # Keep empty to preserve font settings
 	    # from the surrounding environment
 	EndFont
+	ResetsFont true
 End
 
 
