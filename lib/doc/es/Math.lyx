@@ -25058,10 +25058,10 @@ En una ecuación presentada:
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{Comando}} &  & \underline{\textrm{Resultado}}\\
-\mathrm{a\backslash mod\textrm{\textvisiblespace}b} &  & a\mod b\\
-\mathrm{a\backslash pmod\textrm{\textvisiblespace}b} &  & a\pmod b\\
-\mathrm{a\backslash bmod\textrm{\textvisiblespace}b} &  & a\bmod b\\
-\mathrm{a\backslash pod\textrm{\textvisiblespace}b} &  & a\pod b
+\mathrm{a\backslash mod\textrm{␣}b} &  & a\mod b\\
+\mathrm{a\backslash pmod\textrm{␣}b} &  & a\pmod b\\
+\mathrm{a\backslash bmod\textrm{␣}b} &  & a\bmod b\\
+\mathrm{a\backslash pod\textrm{␣}b} &  & a\pod b
 \end{align*}
 
 \end_inset
@@ -25074,7 +25074,7 @@ En una ecuación en línea se pone menos espacio delante del nombre de la
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{Comando}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Resultado}}\\
-\mathrm{a\backslash pod\textrm{\textvisiblespace}bcd} &  & a\pod bcd\\
+\mathrm{a\backslash pod\textrm{␣}bcd} &  & a\pod bcd\\
 \mathrm{a\backslash pod\backslash\{bc\to d} &  & a\pod{bc}d
 \end{align*}
 
@@ -34137,30 +34137,7 @@ Ecuación ! cancelada
 \end_layout
 
 \begin_layout Standard
-Para cancelar ecuaciones o partes de ellas hay que cargar el paquete LaTeX
- 
-\series bold
-cancel
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Paquetes ! cancel
-\end_layout
-
-\end_inset
-
- con la línea de preámbulo LaTeX
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-usepackage{cancel}
+Hay cuatro formas de cancelar ecuaciones o partes de ellas:
 \end_layout
 
 \begin_layout Standard
@@ -34191,10 +34168,6 @@ cancel
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Hay cuatro formas de cancelar ecuaciones:
 \end_layout
 
 \begin_layout Standard
@@ -34251,7 +34224,11 @@ raisebox
 \begin_layout Plain Layout
 
 \backslash
-cancel{
+cancel
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
 \backslash
 int
 \begin_inset space \textvisiblespace{}
@@ -34282,7 +34259,11 @@ A=B
 \begin_layout Plain Layout
 
 \backslash
-bcancel{
+bcancel
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
 \backslash
 int
 \begin_inset space \textvisiblespace{}
@@ -34313,7 +34294,11 @@ A=B
 \begin_layout Plain Layout
 
 \backslash
-xcancel{
+xcancel
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
 \backslash
 int
 \begin_inset space \textvisiblespace{}
@@ -34344,19 +34329,21 @@ A=B
 \begin_layout Plain Layout
 
 \backslash
-cancelto{1
-\begin_inset Formula $\to$
+cancelto
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
-\backslash
-{
 \backslash
 int
 \begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
+\begin_inset Formula $\to$
+\end_inset
+
+1
 \end_layout
 
 \end_inset
@@ -34407,25 +34394,9 @@ Para cambiar el tamaño del valor subscrito por
 \backslash
 cancelto
 \series default
- se puede cargar el paquete 
-\series bold
-cancel
-\series default
- con la opción 
-\series bold
-samesize
-\series default
-, que da el mismo tamaño que para el valor cancelado, o con la opción 
-\series bold
-Smaller
-\series default
-, que da un tamaño un poco más pequeño que el que se obtiene sin usar ninguna
- opción.
- En este documento, 
-\series bold
-cancel
-\series default
- se ha cargado con la línea 
+ se puede 
+\lang english
+add the LaTeX-preamble line
 \end_layout
 
 \begin_layout Standard
@@ -34433,7 +34404,27 @@ cancel
 \series bold
 
 \backslash
-usepackage[samesize]{cancel}
+PassOptionsToPackage{option}{cancel}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+where 
+\series bold
+option
+\series default
+ is either
+\lang spanish
+ 
+\series bold
+samesize
+\series default
+, que da el mismo tamaño que para el valor cancelado, o 
+\series bold
+Smaller
+\series default
+, que da un tamaño un poco más pequeño que normal.
 \end_layout
 
 \begin_layout Standard
@@ -34536,6 +34527,16 @@ key "cancel"
 \end_inset
 
 .
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetes ! cancel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

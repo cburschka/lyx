@@ -24620,10 +24620,10 @@ The modulo-function is special, because it exists in four variants.
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{Command}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Result}}\\
-\mathrm{a\backslash mod\textrm{\textvisiblespace}b} &  & a\mod b\\
-\mathrm{a\backslash pmod\textrm{\textvisiblespace}b} &  & a\pmod b\\
-\mathrm{a\backslash bmod\textrm{\textvisiblespace}b} &  & a\bmod b\\
-\mathrm{a\backslash pod\textrm{\textvisiblespace}b} &  & a\pod b
+\mathrm{a\backslash mod\textrm{␣}b} &  & a\mod b\\
+\mathrm{a\backslash pmod\textrm{␣}b} &  & a\pmod b\\
+\mathrm{a\backslash bmod\textrm{␣}b} &  & a\bmod b\\
+\mathrm{a\backslash pod\textrm{␣}b} &  & a\pod b
 \end{align*}
 
 \end_inset
@@ -24640,7 +24640,7 @@ In an inline formula less space is set before the function names for all
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{Command}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Result}}\\
-\mathrm{a\backslash pod\textrm{\textvisiblespace}bcd} &  & a\pod bcd\\
+\mathrm{a\backslash pod\textrm{␣}bcd} &  & a\pod bcd\\
 \mathrm{a\backslash pod\backslash\{bc\to d} &  & a\pod{bc}d
 \end{align*}
 
@@ -33611,29 +33611,7 @@ Formula ! canceled
 \end_layout
 
 \begin_layout Standard
-To cancel formulas or formula parts, the LaTeX-package 
-\series bold
-cancel
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Packages ! cancel
-\end_layout
-
-\end_inset
-
- has to be loaded with the LaTeX-preamble line
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-usepackage{cancel}
+There are four ways to cancel formulas or parts of formulas:
 \end_layout
 
 \begin_layout Standard
@@ -33664,10 +33642,6 @@ cancel
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-There are four ways to cancel formulas:
 \end_layout
 
 \begin_layout Standard
@@ -33720,7 +33694,11 @@ raisebox
 \begin_layout Plain Layout
 
 \backslash
-cancel{
+cancel
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
 \backslash
 int
 \begin_inset space \textvisiblespace{}
@@ -33751,7 +33729,11 @@ A=B
 \begin_layout Plain Layout
 
 \backslash
-bcancel{
+bcancel
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
 \backslash
 int
 \begin_inset space \textvisiblespace{}
@@ -33782,7 +33764,11 @@ A=B
 \begin_layout Plain Layout
 
 \backslash
-xcancel{
+xcancel
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
 \backslash
 int
 \begin_inset space \textvisiblespace{}
@@ -33813,19 +33799,21 @@ A=B
 \begin_layout Plain Layout
 
 \backslash
-cancelto{1
-\begin_inset Formula $\to$
+cancelto
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
-\backslash
-{
 \backslash
 int
 \begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
+\begin_inset Formula $\to$
+\end_inset
+
+1
 \end_layout
 
 \end_inset
@@ -33883,26 +33871,7 @@ subscript
 \begin_inset Quotes erd
 \end_inset
 
- value one can load the package 
-\series bold
-cancel
-\series default
- with either the option 
-\series bold
-samesize
-\series default
- which leads to the same size as for the canceled value or with the option
- 
-\series bold
-Smaller
-\series default
- which makes is it a bit smaller than the size one gets without using a
- package option.
- In this document 
-\series bold
-cancel
-\series default
- was loaded with this line:
+ value one can add the LaTeX-preamble line
 \end_layout
 
 \begin_layout Standard
@@ -33910,7 +33879,23 @@ cancel
 \series bold
 
 \backslash
-usepackage[samesize]{cancel}
+PassOptionsToPackage{option}{cancel}
+\end_layout
+
+\begin_layout Standard
+where 
+\series bold
+option
+\series default
+ is either 
+\series bold
+samesize
+\series default
+ which leads to the same size as for the canceled value, or 
+\series bold
+Smaller
+\series default
+ which makes is it a bit smaller than normal.
 \end_layout
 
 \begin_layout Standard
@@ -34011,6 +33996,16 @@ key "cancel"
 \end_inset
 
 .
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Packages ! cancel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

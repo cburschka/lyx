@@ -24601,10 +24601,10 @@ status collapsed
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{コマンド}\raisebox{-0.9mm}{}} &  & \underline{\textrm{出力}}\\
-\mathrm{a\backslash mod\textrm{\textvisiblespace}b} &  & a\mod b\\
-\mathrm{a\backslash pmod\textrm{\textvisiblespace}b} &  & a\pmod b\\
-\mathrm{a\backslash bmod\textrm{\textvisiblespace}b} &  & a\bmod b\\
-\mathrm{a\backslash pod\textrm{\textvisiblespace}b} &  & a\pod b
+\mathrm{a\backslash mod\textrm{␣}b} &  & a\mod b\\
+\mathrm{a\backslash pmod\textrm{␣}b} &  & a\pmod b\\
+\mathrm{a\backslash bmod\textrm{␣}b} &  & a\bmod b\\
+\mathrm{a\backslash pod\textrm{␣}b} &  & a\pod b
 \end{align*}
 
 \end_inset
@@ -24618,7 +24618,7 @@ status collapsed
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{コマンド}\raisebox{-0.9mm}{}} &  & \underline{\textrm{出力}}\\
-\mathrm{a\backslash pod\textrm{\textvisiblespace}bcd} &  & a\pod bcd\\
+\mathrm{a\backslash pod\textrm{␣}bcd} &  & a\pod bcd\\
 \mathrm{a\backslash pod\backslash\{bc\backslash\}d} &  & a\pod{bc}d
 \end{align*}
 
@@ -33502,50 +33502,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-数式あるいはその一部を消去するには、
-\series bold
-cancel
-\series default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-cancel
-\series default
-は、標準的なLaTeX頒布版のすべてに含まれています。
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-ぱっけーじ@パッケージ ! cancel
-\end_layout
-
-\end_inset
-
- LaTeXパッケージを、LaTeXプリアンブル行に
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-usepackage{cancel}
-\end_layout
-
-\begin_layout Standard
-と書いて読み込む必要があります。
-\end_layout
-
-\begin_layout Standard
 数式を消去するには、4つの方法があります。
 \end_layout
 
@@ -33599,8 +33555,10 @@ raisebox
 \begin_layout Plain Layout
 
 \backslash
-cancel{
-\backslash
+cancel
+\begin_inset space \textvisiblespace{}
+\end_inset
+
 int
 \begin_inset space \textvisiblespace{}
 \end_inset
@@ -33630,7 +33588,11 @@ A=B
 \begin_layout Plain Layout
 
 \backslash
-bcancel{
+bcancel
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
 \backslash
 int
 \begin_inset space \textvisiblespace{}
@@ -33661,7 +33623,11 @@ A=B
 \begin_layout Plain Layout
 
 \backslash
-xcancel{
+xcancel
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
 \backslash
 int
 \begin_inset space \textvisiblespace{}
@@ -33692,19 +33658,21 @@ A=B
 \begin_layout Plain Layout
 
 \backslash
-cancelto{1
-\begin_inset Formula $\to$
+cancelto
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
-\backslash
-{
 \backslash
 int
 \begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
+\begin_inset Formula $\to$
+\end_inset
+
+1
 \end_layout
 
 \end_inset
@@ -33749,28 +33717,22 @@ cancelto
 
 \begin_layout Standard
 
+\lang english
+To change the size of 
 \series bold
 
 \backslash
 cancelto
 \series default
-の「下付き」数字の寸法を変更するには、
-\series bold
-cancel
-\series default
-パッケージを
-\series bold
-samesize
-\series default
-オプションをつけて読み込んで、消去された数字と同じ大きさにするか、
-\series bold
-Smaller
-\series default
-オプションをつけて、オプションを付けなかった時よりも少し小さな大きさにするかの2つの方法があります。この文書では、
-\series bold
-cancel
-\series default
-は
+'s 
+\begin_inset Quotes eld
+\end_inset
+
+subscript
+\begin_inset Quotes erd
+\end_inset
+
+ value one can add the LaTeX-preamble line
 \end_layout
 
 \begin_layout Standard
@@ -33778,7 +33740,25 @@ cancel
 \series bold
 
 \backslash
-usepackage[samesize]{cancel}
+PassOptionsToPackage{option}{cancel}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+where 
+\series bold
+option
+\series default
+ is either 
+\series bold
+samesize
+\series default
+ which leads to the same size as for the canceled value, or 
+\series bold
+Smaller
+\series default
+ which makes is it a bit smaller than normal.
 \end_layout
 
 \begin_layout Standard
@@ -33879,6 +33859,16 @@ key "cancel"
 \end_inset
 
 をご覧ください。
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ぱっけーじ@パッケージ ! cancel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection

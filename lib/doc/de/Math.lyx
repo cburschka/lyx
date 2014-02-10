@@ -24687,10 +24687,10 @@ Die Varianten in einer abgesetzten Formel:
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{Befehl}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Ergebnis}}\\
-\mathrm{a\backslash mod\textrm{\textvisiblespace}b} &  & a\mod b\\
-\mathrm{a\backslash pmod\textrm{\textvisiblespace}b} &  & a\pmod b\\
-\mathrm{a\backslash bmod\textrm{\textvisiblespace}b} &  & a\bmod b\\
-\mathrm{a\backslash pod\textrm{\textvisiblespace}b} &  & a\pod b
+\mathrm{a\backslash mod\textrm{␣}b} &  & a\mod b\\
+\mathrm{a\backslash pmod\textrm{␣}b} &  & a\pmod b\\
+\mathrm{a\backslash bmod\textrm{␣}b} &  & a\bmod b\\
+\mathrm{a\backslash pod\textrm{␣}b} &  & a\pod b
 \end{align*}
 
 \end_inset
@@ -24706,7 +24706,7 @@ In einer eingebetteten Formel wird bei allen Varianten vor den Funktionsnamen
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{Befehl}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Ergebnis}}\\
-\mathrm{a\backslash pod\textrm{\textvisiblespace}bcd} &  & a\pod bcd\\
+\mathrm{a\backslash pod\textrm{␣}bcd} &  & a\pod bcd\\
 \mathrm{a\backslash pod\backslash\{bc\to d} &  & a\pod{bc}d
 \end{align*}
 
@@ -33712,33 +33712,7 @@ Formel ! durchgestrichene
 \end_layout
 
 \begin_layout Standard
-Um Formeln oder Formelteile durchzustreichen, muss das LaTeX-Paket 
-\series bold
-cancel
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Pakete ! cancel
-\end_layout
-
-\end_inset
-
- mit der LaTeX-Vorspannzeile
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-usepackage{cancel}
-\end_layout
-
-\begin_layout Standard
-geladen werden.
+Es gibt vier verschiedene Arten Formeln oder Formelteile durchzustreichen:
 \end_layout
 
 \begin_layout Standard
@@ -33769,10 +33743,6 @@ cancel
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Es gibt vier verschiedene Arten durchzustreichen:
 \end_layout
 
 \begin_layout Standard
@@ -33825,7 +33795,11 @@ raisebox
 \begin_layout Plain Layout
 
 \backslash
-cancel{
+cancel
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
 \backslash
 int
 \begin_inset space \textvisiblespace{}
@@ -33856,7 +33830,11 @@ A=B
 \begin_layout Plain Layout
 
 \backslash
-bcancel{
+bcancel
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
 \backslash
 int
 \begin_inset space \textvisiblespace{}
@@ -33887,7 +33865,11 @@ A=B
 \begin_layout Plain Layout
 
 \backslash
-xcancel{
+xcancel
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
 \backslash
 int
 \begin_inset space \textvisiblespace{}
@@ -33918,19 +33900,21 @@ A=B
 \begin_layout Plain Layout
 
 \backslash
-cancelto{1
-\begin_inset Formula $\to$
+cancelto
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
-\backslash
-{
 \backslash
 int
 \begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
+\begin_inset Formula $\to$
+\end_inset
+
+1
 \end_layout
 
 \end_inset
@@ -33989,25 +33973,7 @@ hochgestellten
 \backslash
 cancelto
 \series default
- zu ändern, kann man das Paket 
-\series bold
-cancel
-\series default
- entweder mit der Option 
-\series bold
-samesize
-\series default
-, die zur selben Größe wie die der durchgestrichenen Zeichen führt, oder
- mit der Option 
-\series bold
-Smaller
-\series default
-, die zu einer etwas kleineren Größe führt als es ohne Option der Fall ist.
- In diesem Dokument wurde 
-\series bold
-cancel
-\series default
- mit der Zeile
+ zu ändern, kann man die LaTeX-Vorspannzeile
 \end_layout
 
 \begin_layout Standard
@@ -34015,12 +33981,29 @@ cancel
 \series bold
 
 \backslash
-usepackage[samesize]{cancel}
+PassOptionsToPackage{Option}{cancel}
 \end_layout
 
 \begin_layout Standard
-geladen.
- Um den Durchstrich zu färben, verwendet man den Befehl
+hinzufügen.
+ 
+\series bold
+Option
+\series default
+ ist entweder 
+\series bold
+samesize
+\series default
+, das zur selben Größe wie die der durchgestrichenen Zeichen führt, oder
+ 
+\series bold
+Smaller
+\series default
+, das zu einer etwas kleineren Größe als die Voreinstellung führt.
+\end_layout
+
+\begin_layout Standard
+Um den Durchstrich zu färben, verwendet man den Befehl
 \end_layout
 
 \begin_layout Standard
@@ -34118,6 +34101,16 @@ key "cancel"
 \end_inset
 
 .
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Pakete ! cancel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

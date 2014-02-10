@@ -24667,10 +24667,10 @@ Les variantes pour une formule hors ligne:
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{Commande}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Résultat}}\\
-\mathrm{a\backslash mod\textrm{\textvisiblespace}b} &  & a\mod b\\
-\mathrm{a\backslash pmod\textrm{\textvisiblespace}b} &  & a\pmod b\\
-\mathrm{a\backslash bmod\textrm{\textvisiblespace}b} &  & a\bmod b\\
-\mathrm{a\backslash pod\textrm{\textvisiblespace}b} &  & a\pod b
+\mathrm{a\backslash mod\textrm{␣}b} &  & a\mod b\\
+\mathrm{a\backslash pmod\textrm{␣}b} &  & a\pmod b\\
+\mathrm{a\backslash bmod\textrm{␣}b} &  & a\bmod b\\
+\mathrm{a\backslash pod\textrm{␣}b} &  & a\pod b
 \end{align*}
 
 \end_inset
@@ -24691,7 +24691,7 @@ By default the modulo-functions take only the first following character
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{Commande}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Résultat}}\\
-\mathrm{a\backslash pod\textrm{\textvisiblespace}bcd} &  & a\pod bcd\\
+\mathrm{a\backslash pod\textrm{␣}bcd} &  & a\pod bcd\\
 \mathrm{a\backslash pod\backslash\{bc\to d} &  & a\pod{bc}d
 \end{align*}
 
@@ -33901,33 +33901,6 @@ Formules ! barrées
 \end_layout
 
 \begin_layout Standard
-Pour barrer une formule ou une portion de formule, on doit charger le paquetage
- LaTeX 
-\series bold
-cancel
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Paquetages ! cancel
-\end_layout
-
-\end_inset
-
- dans le préambule LaTeX avec la ligne
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-usepackage{cancel}
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -33958,7 +33931,7 @@ cancel
 \end_layout
 
 \begin_layout Standard
-Il y a quatre façon de barrer une formule:
+Il y a quatre façon de barrer une formule u une portion de formule:
 \end_layout
 
 \begin_layout Standard
@@ -34011,7 +33984,11 @@ sont seulement utilisées pour faire de la place.
 \begin_layout Plain Layout
 
 \backslash
-cancel{
+cancel
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
 \backslash
 int
 \begin_inset space \textvisiblespace{}
@@ -34042,7 +34019,11 @@ A=B
 \begin_layout Plain Layout
 
 \backslash
-bcancel{
+bcancel
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
 \backslash
 int
 \begin_inset space \textvisiblespace{}
@@ -34073,8 +34054,10 @@ A=B
 \begin_layout Plain Layout
 
 \backslash
-xcancel{
-\backslash
+xcancel
+\begin_inset space \textvisiblespace{}
+\end_inset
+
 int
 \begin_inset space \textvisiblespace{}
 \end_inset
@@ -34104,19 +34087,21 @@ A=B
 \begin_layout Plain Layout
 
 \backslash
-cancelto{1
-\begin_inset Formula $\to$
+cancelto
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
-\backslash
-{
 \backslash
 int
 \begin_inset space \textvisiblespace{}
 \end_inset
 
 A=B
+\begin_inset Formula $\to$
+\end_inset
+
+1
 \end_layout
 
 \end_inset
@@ -34175,25 +34160,9 @@ indice
 \backslash
 cancelto
 \series default
- , il est possible de charger le paquetage 
-\series bold
-cancel
-\series default
- soit avec l'option 
-\series bold
-samesize
-\series default
- qui laissera la valeur barrée avec la même taille, soit avec l'option 
-\series bold
-Smaller
-\series default
- qui la met dans une taille un peu plus petite que la taille obtenue sans
- aucune option.
- Dans ce document, 
-\series bold
-cancel
-\series default
- a été chargé avec cette ligne:
+ , il est possible de 
+\lang english
+add the LaTeX-preamble line
 \end_layout
 
 \begin_layout Standard
@@ -34201,7 +34170,26 @@ cancel
 \series bold
 
 \backslash
-usepackage[samesize]{cancel}
+PassOptionsToPackage{option}{cancel}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+where 
+\series bold
+option
+\series default
+ is either 
+\series bold
+\lang french
+samesize
+\series default
+ qui laissera la valeur barrée avec la même taille, ou 
+\series bold
+Smaller
+\series default
+ qui la met dans une taille un peu plus petite que la taille normale.
 \end_layout
 
 \begin_layout Standard
@@ -34309,6 +34297,16 @@ key "cancel"
 \end_inset
 
 .
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages ! cancel
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
