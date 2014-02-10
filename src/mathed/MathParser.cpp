@@ -1528,6 +1528,13 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		else if (t.cs() == "begin") {
 			docstring const name = getArg('{', '}');
+			
+			if (name.empty()) {
+				success_ = false;
+				error("found invalid environment");
+				return success_;
+			}
+			
 			environments_.push_back(name);
 
 			if (name == "array" || name == "subarray") {
