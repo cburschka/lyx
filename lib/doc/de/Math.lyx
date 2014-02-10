@@ -63,9 +63,6 @@
 % provides caption formatting
 \setkomafont{captionlabel}{\bfseries}
 
-% benutzt in Kap. 24.5
-\usepackage[samesize]{cancel}
-
 % enables calculation of values
 \usepackage{calc}
 
@@ -128,8 +125,7 @@
 % testen ob Paket cancel installiert ist
 \newboolean{cancel}
 \IfFileExists{cancel.sty}
- {\usepackage{cancel}
-  \setboolean{cancel}{true}}
+ {\setboolean{cancel}{true}}
  {\setboolean{cancel}{false}}
 
 % testen ob Paket upgreek installiert ist
@@ -186,7 +182,7 @@
 \use_geometry false
 \use_package amsmath 2
 \use_package amssymb 2
-\use_package cancel 0
+\use_package cancel 1
 \use_package esint 1
 \use_package mathdots 1
 \use_package mathtools 0
