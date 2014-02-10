@@ -1079,13 +1079,19 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.recordUndo();
 		unsigned int m = 1;
 		unsigned int n = 1;
-		docstring name;
+		docstring name = from_ascii("matrix");
 		idocstringstream is(cmd.argument());
 		is >> m >> n >> name;
 		if (m < 1)
 			m = 1;
 		if (n < 1)
 			n = 1;
+		// check if we have a valid decoration
+		if (name != "pmatrix" && name != "bmatrix"
+			&& name != "Bmatrix" && name != "vmatrix"
+			&& name != "Vmatrix" && name != "matrix")
+			name = from_ascii("matrix");
+		
 		cur.niceInsert(
 			MathAtom(new InsetMathAMSArray(buffer_, name, m, n)));
 		break;

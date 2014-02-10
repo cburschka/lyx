@@ -1732,10 +1732,12 @@ void LyXAction::init()
 		{ LFUN_MATH_MATRIX, "math-matrix", Noop, Math },
 /*!
  * \var lyx::FuncCode lyx::LFUN_MATH_AMS_MATRIX
- * \li Action: Inserts a matrix.
+ * \li Action: Inserts an extended matrix as provided by the amsmath package.
  * \li Syntax: math-matrix <COLS> <ROWS> [<DECORATION>]
  * \li Params: <DECORATION>: Decoration determines the LaTeX name of the matrix
-                             that should be created.
+                             that should be created. Possible values include
+                             pmatrix, bmatrix, Bmatrix, vmatrix, Vmatrix and
+                             matrix. The default is 'matrix'.
  * \li Sample: math-ams-matrix 3 3 bmatrix
  * \endvar
  */
