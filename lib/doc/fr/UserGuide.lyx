@@ -17860,7 +17860,6 @@ commande
 
  apparaisse comme un nom propre dans la sortie finale, voir le dernier paragraph
 e de cette section.
- Pour créer des noms propres ne mettez pas les accolades.
 \end_layout
 
 \end_inset
@@ -18188,13 +18187,36 @@ LyX peut éviter de changer de page juste après un en-tête de section.
  ne laissent qu'une ligne d'un paragraphe toute seule au sommet ou au bas
  d'une page ? LaTeX suit des règles concernant les sauts de page, et certaines
  d'entre elles sont spécialement destinées à éviter les veuves et les orphelins.
- C'est l'avantage d'utiliser LaTeX en interne.
-\end_layout
+ 
+\lang english
+If they appear nevertheless and you don't like them, you can add the commands
+\lang french
 
-\begin_layout Standard
-Nous n'allons pas traiter de la façon de décider TeX ou LaTeX à changer
- de page, ou de la façon d'influencer ce comportement.
- Quelques livres sur LaTeX cités dans la bibliographie (comme
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+widowpenalty=10000
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+clubpenalty=10000
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+to the LaTeX preamble of your document to avoid them
+\lang french
+.
+ Quelques livres sur LaTeX (comme
 \begin_inset space ~
 \end_inset
 
@@ -18216,9 +18238,9 @@ key "latexguide"
 
 \end_inset
 
-) peuvent contenir plus d'informations.
- De toutes façons, vous n'aurez presque jamais à vous inquiéter de tout
- cela.
+) peuvent contenir plus d'informations 
+\lang english
+about the technical details of LaTeX's page break mechanism.
 \end_layout
 
 \begin_layout Chapter

@@ -17127,7 +17127,6 @@ status collapsed
 \begin_layout Plain Layout
 Las llaves en código TeX impiden que «comando» aparezca como nombre propio
  en la salida; véase el último párrafo de esta sección.
- Para generar nombres propios omite el código TeX.
 \end_layout
 
 \end_inset
@@ -17448,13 +17447,36 @@ Sin duda, LyX puede impedir los saltos de página detrás de un encabezado
  deja una línea de un párrafo aislada al principio o al final de una página?
  LaTeX incorpora reglas que gobiernan los saltos de página, y algunas de
  ellas están pensadas precisamente para evitar las líneas viudas o huérfanas.
- Esta es una de las ventajas que obtiene LyX del empleo de LaTeX como soporte.
-\end_layout
+ 
+\lang english
+If they appear nevertheless and you don't like them, you can add the commands
+\lang spanish
 
-\begin_layout Standard
-No es posible explicar aquí la forma en que TeX y LaTeX deciden dónde saltar
- una página , o en cómo ajustar esta característica.
- Algunos libros sobre LaTeX listados en la bibliografía [como
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+widowpenalty=10000
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+clubpenalty=10000
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+to the LaTeX preamble of your document to avoid them
+\lang spanish
+.
+ Algunos libros sobre LaTeX [como
 \begin_inset space ~
 \end_inset
 
@@ -17476,8 +17498,9 @@ key "latexguide"
 
 \end_inset
 
-] tienen más información.
- Sin embargo, no deberías preocuparte por este asunto.
+] tienen más información sobre 
+\lang english
+the technical details of LaTeX's page break mechanism.
 \end_layout
 
 \begin_layout Chapter

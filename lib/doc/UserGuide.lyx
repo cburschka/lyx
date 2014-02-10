@@ -16689,7 +16689,7 @@ name "sub:LyX's-Proper-Names"
 
 \begin_layout Standard
 You will certainly have noticed that the word “LaTeX” always appears with
- characters in different sizes and heights.
+ characters in different sizes and positions.
  LaTeX is the name of the program used by LyX and is therefore recognized
  as a proper name when you type it in LyX as 
 \begin_inset Quotes eld
@@ -16715,16 +16715,8 @@ eX
 status collapsed
 
 \begin_layout Plain Layout
-The braces in TeX Code are here to avoid that the 
-\begin_inset Quotes eld
-\end_inset
-
-command
-\begin_inset Quotes erd
-\end_inset
-
- appear as proper name in the output, see the last paragraph of this section.
- To create proper names omit the TeX Code.
+The braces in TeX Code are here to avoid that the Text appears as proper
+ name in the output, see the last paragraph of this section.
 \end_layout
 
 \end_inset
@@ -17028,10 +17020,9 @@ Typography ! Widows and orphans
 In the early days of word processors, page breaks went wherever the page
  happened to end.
  There was no regard for what was actually going on in the text.
- You may remember once printing out a document, only to find the heading
- for a new section printed at the very bottom of the page, the first line
- of a new paragraph all alone at the bottom of a page, or the last line
- of a paragraph at the top of a new page.
+ For example the heading for a new section was printed at the very bottom
+ of the page, the first line of a new paragraph all alone at the bottom
+ of a page, or the last line of a paragraph at the top of a new page.
  These bits of text became known as 
 \emph on
 widows
@@ -17050,13 +17041,28 @@ Clearly, LyX can avoid breaking pages after a section heading.
  of a paragraph all alone at the top or bottom of a page? There are rules
  built into LaTeX governing page breaks, and some of those rules are there
  specifically to prevent widows and orphans.
- This is the advantage LyX has in using LaTeX as its backend.
-\end_layout
+ If they appear nevertheless and you don't like them, you can add the commands
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
-We cannot go into how TeX and LaTeX decide to break a page, or how you can
- tweak that behavior.
- Some LaTeX books listed in the bibliography (such as
+
+\series bold
+
+\backslash
+widowpenalty=10000
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+clubpenalty=10000
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+to the LaTeX preamble of your document to avoid them.
+ Some LaTeX books (such as
 \begin_inset space ~
 \end_inset
 
@@ -17078,8 +17084,8 @@ key "latexguide"
 
 \end_inset
 
-) may have more information.
- You will almost never need to worry about this, however.
+) have more information about the technical details of LaTeX's page break
+ mechanism.
 \end_layout
 
 \begin_layout Chapter

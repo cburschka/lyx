@@ -14389,11 +14389,36 @@ status collapsed
 \begin_layout Standard
 LyXでは原理的に、節見出しの直後に改頁が起こることを避けることができることはあきらかです。これは段落環境を採用していることの利点なのです。しかし、改頁によって
 段落のうち一行だけをページの冒頭や末尾に取り残してしまう、孤立行に関してはどうでしょう。実はLaTeXには、改頁を制御する規則が埋め込まれていて、これらに含まれ
-ている規則の一部が、孤立行の発生を明示的に防いでいるのです。これは、LaTeXをバックエンドとして使うことによって、LyXが獲得している利点です。
-\end_layout
+ている規則の一部が、孤立行の発生を明示的に防いでいるのです。
+\lang english
+If they appear nevertheless and you don't like them, you can add the commands
+\lang japanese
 
-\begin_layout Standard
-ここでは、TeXやLaTeXが改頁を決定する方法や、その挙動の変更方法について、詳述する紙幅がありません。参考文献に引用してあるLaTeX関連書籍(
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+widowpenalty=10000
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+clubpenalty=10000
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+to the LaTeX preamble of your document to avoid them.
+ Some LaTeX books
+\lang japanese
+(
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion"
@@ -14407,7 +14432,10 @@ key "latexguide"
 
 \end_inset
 
-)などに詳しい説明をしているものがあります。しかしながら、この点を気にしなくてはならなくなることは、まずないでしょう。
+)
+\lang english
+have more information about the technical details of LaTeX's page break
+ mechanism.
 \end_layout
 
 \begin_layout Chapter
