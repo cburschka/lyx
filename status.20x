@@ -52,6 +52,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Do not crash when loading documents with empty (invalid) math environments
+  (part of bug 8359).
+
 - Rerun makeindex if all nomencl entries have been removed (bug 8905).
 
 
@@ -65,6 +68,9 @@ What's new
 - Fix crash with changetracking in bibliography environment (bug 8646).
 
 - Fix crash when optional argument inside a math macro was deleted (bug 8329).
+
+- Fix math-ams-matrix function that could corrupt documents if not used properly
+  (part of bug 8359).
 
 - Fix problem that led to assertion in some cases when space was at
   beginning of line (bugs 8838 and 8947).
