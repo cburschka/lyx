@@ -71,6 +71,8 @@ What's new
 
 - Fix drawing of table lines of multicolumns (bug 8082).
 
+- Correct language for textual references in multi-language documents (bug 8613).
+
 - Handle undo in `branch-add' function.
 
 - Fix the missing dynamic menus in general and restore correctly from fullscreen.
@@ -86,6 +88,7 @@ What's new
 
 * TEX2LYX
 
+- Don't automatically turn on PDF bookmarks when importing TeX files (bug 8723).
 
 
 * ADVANCED FIND AND REPLACE
