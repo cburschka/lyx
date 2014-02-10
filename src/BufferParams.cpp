@@ -2044,12 +2044,12 @@ LayoutFileIndex const & BufferParams::baseClassID() const
 }
 
 
-void BufferParams::makeDocumentClass()
+void BufferParams::makeDocumentClass(bool const clone)
 {
 	if (!baseClass())
 		return;
 
-	doc_class_ = &(DocumentClassBundle::get().makeDocumentClass(*baseClass(), layout_modules_));
+	doc_class_ = &(DocumentClassBundle::get().makeDocumentClass(*baseClass(), layout_modules_, clone));
 
 	if (!local_layout.empty()) {
 		if (!doc_class_->read(local_layout, TextClass::MODULE)) {

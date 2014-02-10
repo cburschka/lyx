@@ -467,7 +467,8 @@ public:
 	/// \return A new DocumentClass based on baseClass, with info added
 	/// from the modules in modlist.
 	DocumentClass & makeDocumentClass(LayoutFile const & baseClass, 
-			LayoutModuleList const & modlist);
+			LayoutModuleList const & modlist,
+			bool const clone = false);
 private:
 	/// control instantiation
 	DocumentClassBundle() {}

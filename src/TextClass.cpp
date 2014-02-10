@@ -1313,7 +1313,7 @@ DocumentClassBundle & DocumentClassBundle::get()
 
 
 DocumentClass & DocumentClassBundle::makeDocumentClass(
-		LayoutFile const & baseClass, LayoutModuleList const & modlist)
+		LayoutFile const & baseClass, LayoutModuleList const & modlist, bool const clone)
 {
 	DocumentClass & doc_class = newClass(baseClass);
 	LayoutModuleList::const_iterator it = modlist.begin();
@@ -1327,10 +1327,11 @@ DocumentClass & DocumentClassBundle::makeDocumentClass(
 						"this document but has not been found in the list of\n"
 						"available modules. If you recently installed it, you\n"
 						"probably need to reconfigure LyX.\n"), from_utf8(modName));
-			frontend::Alert::warning(_("Module not available"), msg);
+			if (!clone)
+				frontend::Alert::warning(_("Module not available"), msg);
 			continue;
 		}
-		if (!lm->isAvailable()) {
+		if (!lm->isAvailable() && !clone) {
 			docstring const prereqs = from_utf8(getStringFromVector(lm->prerequisites(), "\n\t"));
 			docstring const msg =
 				bformat(_("The module %1$s requires a package that is not\n"
@@ -1343,7 +1344,7 @@ DocumentClass & DocumentClassBundle::makeDocumentClass(
 			frontend::Alert::warning(_("Package not available"), msg, true);
 		}
 		FileName layout_file = libFileSearch("layouts", lm->getFilename());
-		if (!doc_class.read(layout_file, TextClass::MODULE)) {
+		if (!doc_class.read(layout_file, TextClass::MODULE) && !clone) {
 			docstring const msg =
 						bformat(_("Error reading module %1$s\n"), from_utf8(modName));
 			frontend::Alert::warning(_("Read Error"), msg);

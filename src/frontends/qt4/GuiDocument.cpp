@@ -2151,7 +2151,7 @@ void GuiDocument::updateDefaultFormat()
 	if (idx >= 0) {
 		string const classname = classes_model_.getIDString(idx);
 		param_copy.setBaseClass(classname);
-		param_copy.makeDocumentClass();
+		param_copy.makeDocumentClass(true);
 	}
 	outputModule->defaultFormatCO->blockSignals(true);
 	outputModule->defaultFormatCO->clear();

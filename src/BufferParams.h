@@ -123,7 +123,7 @@ public:
 	bool setBaseClass(std::string const & classname);
 	/// Adds the module information to the baseClass information to
 	/// create our local DocumentClass.
-	void makeDocumentClass();
+	void makeDocumentClass(bool const clone = false);
 	/// Returns the DocumentClass currently in use: the BaseClass as modified
 	/// by modules.
 	DocumentClass const & documentClass() const;
