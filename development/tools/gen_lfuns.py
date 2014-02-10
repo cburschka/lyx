@@ -44,7 +44,7 @@ ID_DICT = dict(name=LFUN_NAME_ID, action=LFUN_ACTION_ID, notion=LFUN_NOTION_ID,
                 syntax=LFUN_SYNTAX_ID, params=LFUN_PARAMS_ID, sample=LFUN_SAMPLE_ID, origin=LFUN_ORIGIN_ID)
 
 LFUNS_HEADER = """# gen_lfuns.py generated this file. For more info see http://www.lyx.org/
-\\lyxformat 345
+\\lyxformat 474
 \\begin_document
 \\begin_header
 \\textclass article
@@ -59,49 +59,84 @@ LFUNS_HEADER = """# gen_lfuns.py generated this file. For more info see http://w
 }
 \\end_preamble
 \\use_default_options false
+\\maintain_unincluded_children false
 \\language english
+\\language_package default
 \\inputencoding auto
+\\fontencoding global
 \\font_roman default
 \\font_sans default
 \\font_typewriter default
+\\font_math auto
 \\font_default_family default
+\\use_non_tex_fonts false
 \\font_sc false
 \\font_osf false
 \\font_sf_scale 100
 \\font_tt_scale 100
-
 \\graphics default
+\\default_output_format default
+\\output_sync 0
+\\bibtex_command default
+\\index_command default
 \\paperfontsize default
 \\spacing single
 \\use_hyperref false
 \\papersize default
 \\use_geometry true
-\\use_amsmath 1
-\\use_esint 1
+\\use_package amsmath 1
+\\use_package amssymb 1
+\\use_package cancel 0
+\\use_package esint 1
+\\use_package mathdots 0
+\\use_package mathtools 0
+\\use_package mhchem 1
+\\use_package stackrel 0
+\\use_package stmaryrd 0
+\\use_package undertilde 0
 \\cite_engine basic
+\\cite_engine_type default
+\\biblio_style plain
 \\use_bibtopic false
+\\use_indices false
 \\paperorientation portrait
+\\suppress_date false
+\\justification true
+\\use_refstyle 0
+\\index Index
+\\shortcut idx
+\\color #008000
+\\end_index
 \\leftmargin 2.5cm
 \\topmargin 2cm
 \\rightmargin 3cm
-\\bottommargin 1cm
+\\bottommargin 2.5cm
 \\secnumdepth 3
 \\tocdepth 3
 \\paragraph_separation indent
-\\defskip medskip
+\\paragraph_indentation default
 \\quotes_language english
 \\papercolumns 1
 \\papersides 1
 \\paperpagestyle default
 \\tracking_changes false
 \\output_changes false
-\\author "" 
-\\author "" 
+\\html_math_output 0
+\\html_css_as_file 0
+\\html_be_strict false
 \\end_header
 
 \\begin_body
 
-\\begin_layout Section*""" + "\nLFUNs documentation automatically generated " + str(date.today()) + """
+\\begin_layout Title
+LyX Functions (LFUNs)
+\\end_layout
+
+\\begin_layout Author
+The LyX Team
+\\end_layout
+
+\\begin_layout Date""" + "\n" + str(date.today()) + """
 \\end_layout
 
 \\begin_layout Standard
@@ -326,6 +361,8 @@ def main(argv):
 
     done = count = 0
 
+    lfun_list_unsorted = []
+
     while done == 0:
         # look for a doxygen comment
         start = lyxaction_text.find(DOXYGEN_START, start)
@@ -334,16 +371,22 @@ def main(argv):
         if start > 0:
             count = count + 1
             lfun = parse_lfun(lyxaction_text[start:end])
-            # write the lfun to the file
-            write_fields(lfuns_file, lfun)
-            # done adding current lfun to LFUNs.lyx so get the next one
+            # save the lfun (we sort it before writing)
+            lfun_list_unsorted.append(lfun)
+            # get the next one
             start = end
         else:
             # if no more lfuns are found, EOF reached
             done = 1
-            
-    sys.stderr.write(script_name + ": Created documentation for " + str(count) + " LFUNs\n")
+
+    lfun_list = sorted(lfun_list_unsorted, key=lambda k: k['name'])
     
+    # write the lfuns to the file
+    for lf in lfun_list:
+        write_fields(lfuns_file, lf)
+
+    sys.stderr.write(script_name + ": Created documentation for " + str(count) + " LFUNs\n")
+
     # write the last part of LFUNs.lyx
     lfuns_file.write(LFUNS_FOOTER)
     
