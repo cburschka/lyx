@@ -106,6 +106,13 @@
 % used to check for needed LaTeX packages
 \usepackage{ifthen}
 
+% testen ob das Paket undertilde installiert ist
+% wird benutzt für den Befehl \utilde
+\newboolean{undertilde}
+\IfFileExists{undertilde.sty}
+ {\setboolean{undertilde}{true}}
+ {\setboolean{undertilde}{false}}
+
 % testen ob das Paket eurosym installiert ist
 % wird benutzt für das Euro-Symbol
 \newboolean{eurosym}
@@ -189,7 +196,7 @@
 \use_package mhchem 1
 \use_package stackrel 0
 \use_package stmaryrd 0
-\use_package undertilde 0
+\use_package undertilde 1
 \cite_engine basic
 \cite_engine_type default
 \biblio_style plain
@@ -291,7 +298,7 @@ status open
 Um diese Datei als PDF, PS oder DVI zu exportieren, sollten die LaTeX-Pakete
  
 \series bold
-braket, cancel, eurosym, mathdots, mhchem
+braket, cancel, eurosym, mathdots, mhchem, undertilde
 \series default
  und 
 \series bold
@@ -9556,6 +9563,180 @@ B.
 \begin_layout Standard
 Im mathematischen Textmodus können Umlaute und andere akzentuierten Zeichen
  direkt eingegeben werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LyX unterstützt auch eine Tilde unter einem Zeichen, wenn das LaTeX-Paket
+ 
+\series bold
+undertilde
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Pakete ! undertilde
+\end_layout
+
+\end_inset
+
+ auf Ihrem System installiert ist:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifundertilde 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Die folgende Tabelle erscheint nur im Ausdruck wenn das LaTeX-Paket 
+\series bold
+undertilde
+\series default
+ installiert ist:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Befehl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ergebnis
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+utilde
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{5mm}{}\utilde{A}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Folgendes erscheint im Ausdruck wenn das LaTeX-Paket 
+\series bold
+undertilde
+\series default
+ nicht installiert ist:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Das LaTeX-Paket 
+\series bold
+undertilde 
+\series default
+muss installiert sein, um den Rest dieses Abschnitts im Ausdruck zu sehen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection

@@ -110,6 +110,13 @@
 % used to check for needed LaTeX packages
 \usepackage{ifthen}
 
+% check for package undertilde
+% used for the command \utilde
+\newboolean{undertilde}
+\IfFileExists{undertilde.sty}
+ {\setboolean{undertilde}{true}}
+ {\setboolean{undertilde}{false}}
+
 % check for package eurosym
 % used for the Euro symbol
 \newboolean{eurosym}
@@ -221,7 +228,7 @@ End
 \use_package mhchem 1
 \use_package stackrel 0
 \use_package stmaryrd 0
-\use_package undertilde 0
+\use_package undertilde 1
 \cite_engine basic
 \cite_engine_type default
 \biblio_style plain
@@ -342,6 +349,10 @@ mathdots
 ・
 \series bold
 mhchem
+\series default
+・
+\series bold
+undertilde
 \series default
 ・
 \series bold
@@ -9565,6 +9576,185 @@ ddot
 
 \begin_layout Standard
 ウムラウトと他のアクセント付き文字は、数式中テキストに直接入れることができます。
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+LyX also supports a tilde under the character if the LaTeX-package
+\lang japanese
+ 
+\series bold
+undertilde
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ぱっけーじ@パッケージ ! upgreek
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+is installed on your system:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifundertilde 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+以下の表は、
+\series bold
+undertilde
+\series default
+ LaTeXパッケージが導入済みのときのみ表示されます。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+コマンド
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+出力
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+utilde
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{5mm}{}\utilde{A}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+以下は、
+\series bold
+undertilde
+\series default
+ LaTeXパッケージが導入されていないときのみ表示されます。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+この小節のすべてを出力で見るには、
+\series bold
+undertilde
+\series default
+ LaTeXパッケージを導入する必要があります。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection

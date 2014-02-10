@@ -102,6 +102,13 @@
 % used to check for needed LaTeX packages
 \usepackage{ifthen}
 
+% check for package undertilde
+% used for the command \utilde
+\newboolean{undertilde}
+\IfFileExists{undertilde.sty}
+ {\setboolean{undertilde}{true}}
+ {\setboolean{undertilde}{false}}
+
 % check for package eurosym
 % used for the Euro symbol
 \newboolean{eurosym}
@@ -181,7 +188,7 @@
 \use_package mhchem 1
 \use_package stackrel 0
 \use_package stmaryrd 0
-\use_package undertilde 0
+\use_package undertilde 1
 \cite_engine basic
 \cite_engine_type default
 \biblio_style plain
@@ -284,7 +291,7 @@ status open
 Para exportar este documento a PDF, PS o DVI deberían estar instalados los
  paquetes LaTeX 
 \series bold
-braket, cancel, eurosym, mathdots, mhchem
+braket, cancel, eurosym, mathdots, mhchem, undertilde
 \series default
  y 
 \series bold
@@ -9642,6 +9649,185 @@ cursiva o negrita.
 
 \begin_layout Standard
 En texto matemático, la diéresis y otros acentos pueden insertarse directamente.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+LyX also supports a tilde under the character if the LaTeX-package
+\lang spanish
+ 
+\series bold
+undertilde
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetes ! undertilde
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+is installed on your system:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifundertilde 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+El cuadro siguiente sólo se mostrará en la salida si el paquete LaTeX 
+\series bold
+undertilde
+\series default
+ está instalado.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Comando
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Resultado
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+utilde
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{5mm}{}\utilde{A}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Lo que sigue se verá en la salida si el paquete LaTeX 
+\series bold
+undertilde
+\series default
+ no está instalado:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Debes instalar el paquete LaTeX 
+\series bold
+undertilde
+\series default
+ para ver en la salida el resto de esta subsección.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
