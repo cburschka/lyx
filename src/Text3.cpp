@@ -567,7 +567,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		finishChange(cur, false);
 		break;
 
-	case LFUN_LINE_DELETE:
+	case LFUN_LINE_DELETE_FORWARD:
 		if (cur.selection())
 			cutSelection(cur, true, false);
 		else
@@ -1667,7 +1667,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_HYPERLINK_INSERT: {
+	case LFUN_HREF_INSERT: {
 		InsetCommandParams p(HYPERLINK_CODE);
 		docstring content;
 		if (cur.selection()) {
@@ -2003,14 +2003,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_FONT_UULINE: {
+	case LFUN_FONT_UNDERUNDERLINE: {
 		Font font(ignore_font, ignore_language);
 		font.fontInfo().setUuline(FONT_TOGGLE);
 		toggleAndShow(cur, this, font);
 		break;
 	}
 
-	case LFUN_FONT_UWAVE: {
+	case LFUN_FONT_UNDERWAVE: {
 		Font font(ignore_font, ignore_language);
 		font.fontInfo().setUwave(FONT_TOGGLE);
 		toggleAndShow(cur, this, font);
@@ -2667,7 +2667,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		// not allowed in description items
 		enable = !inDescriptionItem(cur);
 		break;
-	case LFUN_HYPERLINK_INSERT:
+	case LFUN_HREF_INSERT:
 		if (cur.selIsMultiCell() || cur.selIsMultiLine()) {
 			enable = false;
 			break;
@@ -2973,8 +2973,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FONT_STATE:
 	case LFUN_FONT_UNDERLINE:
 	case LFUN_FONT_STRIKEOUT:
-	case LFUN_FONT_UULINE:
-	case LFUN_FONT_UWAVE:
+	case LFUN_FONT_UNDERUNDERLINE:
+	case LFUN_FONT_UNDERWAVE:
 	case LFUN_TEXTSTYLE_APPLY:
 	case LFUN_TEXTSTYLE_UPDATE:
 		enable = !cur.paragraph().isPassThru();
@@ -2982,7 +2982,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_WORD_DELETE_FORWARD:
 	case LFUN_WORD_DELETE_BACKWARD:
-	case LFUN_LINE_DELETE:
+	case LFUN_LINE_DELETE_FORWARD:
 	case LFUN_WORD_FORWARD:
 	case LFUN_WORD_BACKWARD:
 	case LFUN_WORD_RIGHT:

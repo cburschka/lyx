@@ -1778,7 +1778,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			enable = false;
 		break;
 
-	case LFUN_COMPLETION_COMPLETE:
+	case LFUN_COMPLETE:
 		if (!d.current_work_area_
 			|| !d.current_work_area_->completer().inlinePossible(
 			currentBufferView()->cursor()))
@@ -3693,7 +3693,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 
 
-		case LFUN_COMPLETION_COMPLETE:
+		case LFUN_COMPLETE:
 			if (d.current_work_area_)
 				d.current_work_area_->completer().tab();
 			break;

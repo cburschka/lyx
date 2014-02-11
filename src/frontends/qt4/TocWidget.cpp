@@ -155,9 +155,9 @@ bool TocWidget::getStatus(Cursor & cur, FuncRequest const & cmd,
 		status.setEnabled(item.dit() != 0);
 		return true;
 
-	case LFUN_LABEL_COPY_AS_REF: {
+	case LFUN_LABEL_COPY_AS_REFERENCE: {
 		// For labels in math, we need to supply the label as a string
-		FuncRequest label_copy(LFUN_LABEL_COPY_AS_REF, item.asString());
+		FuncRequest label_copy(LFUN_LABEL_COPY_AS_REFERENCE, item.asString());
 		if (inset)
 			return inset->getStatus(cur, label_copy, status);
 	}
@@ -192,14 +192,14 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 		cur.dispatch(tmpcmd);
 		break;
 
-	case LFUN_LABEL_COPY_AS_REF: {
+	case LFUN_LABEL_COPY_AS_REFERENCE: {
 		// For labels in math, we need to supply the label as a string
-		FuncRequest label_copy(LFUN_LABEL_COPY_AS_REF, item.asString());
+		FuncRequest label_copy(LFUN_LABEL_COPY_AS_REFERENCE, item.asString());
 		if (inset)
 			inset->dispatch(cur, label_copy);
 		break;
 	}
-	
+
 	case LFUN_OUTLINE_UP:
 	case LFUN_OUTLINE_DOWN:
 	case LFUN_OUTLINE_IN:

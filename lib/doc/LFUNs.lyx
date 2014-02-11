@@ -1338,22 +1338,6 @@ Syntax copy
 \end_layout
 
 \begin_layout Subsection*
-copy-label-as-reference
-\end_layout
-\begin_layout Description
-Action Copies the label at the cursor as a cross-reference to be pasted elsewhere.
-\end_layout
-\begin_layout Description
-Syntax copy-label-as-reference <LABEL>
-\end_layout
-\begin_layout Description
-Params <LABEL>: The label to copy (for multi-line math)
-\end_layout
-\begin_layout Description
-Origin sts, 16 Nov 2008
-\end_layout
-
-\begin_layout Subsection*
 cut
 \end_layout
 \begin_layout Description
@@ -2321,6 +2305,22 @@ Syntax keymap-toggle
 \end_layout
 \begin_layout Description
 Origin leeming, 30 Mar 2004
+\end_layout
+
+\begin_layout Subsection*
+label-copy-as-reference
+\end_layout
+\begin_layout Description
+Action Copies the label at the cursor as a cross-reference to be pasted elsewhere.
+\end_layout
+\begin_layout Description
+Syntax copy-label-as-reference <LABEL>
+\end_layout
+\begin_layout Description
+Params <LABEL>: The label to copy (for multi-line math)
+\end_layout
+\begin_layout Description
+Origin sts, 16 Nov 2008
 \end_layout
 
 \begin_layout Subsection*

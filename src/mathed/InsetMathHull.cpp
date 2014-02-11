@@ -1434,7 +1434,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_LABEL_COPY_AS_REF: {
+	case LFUN_LABEL_COPY_AS_REFERENCE: {
 		row_type row;
 		if (cmd.argument().empty() && &cur.inset() == this)
 			// if there is no argument and we're inside math, we retrieve
@@ -1630,7 +1630,7 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 		status.setEnabled(type_ != hullSimple);
 		return true;
 
-	case LFUN_LABEL_COPY_AS_REF: {
+	case LFUN_LABEL_COPY_AS_REFERENCE: {
 		bool enabled = false;
 		row_type row;
 		if (cmd.argument().empty() && &cur.inset() == this) {

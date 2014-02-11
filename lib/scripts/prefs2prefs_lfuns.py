@@ -154,6 +154,9 @@ def tab_group_close(line):
 def view_split(line):
 	return simple_renaming(line, "split-view", "view-split")
 
+def label_copy_as_reference(line):
+	return simple_renaming(line, "copy-label-as-reference", "label-copy-as-reference")
+
 #
 #
 ###########################################################
@@ -177,7 +180,8 @@ conversions = [
 	[  2, [ # list of conversions to format 2, LyX 2.1
 		paragraph_break,
 		tab_group_close,
-		view_split
+		view_split,
+		label_copy_as_reference
 	]],
 ]
 

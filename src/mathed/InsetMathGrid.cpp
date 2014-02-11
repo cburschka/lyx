@@ -1142,7 +1142,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (act) {
 
 	// insert file functions
-	case LFUN_LINE_DELETE:
+	case LFUN_LINE_DELETE_FORWARD:
 		cur.recordUndoInset();
 		//autocorrect_ = false;
 		//macroModeClose();
