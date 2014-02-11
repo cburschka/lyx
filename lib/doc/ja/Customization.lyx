@@ -16239,7 +16239,7 @@ CopyStyle
 status collapsed
 
 \begin_layout Plain Layout
-ResetFont
+ResetsFont
 \end_layout
 
 \end_inset
@@ -16271,6 +16271,16 @@ status collapsed
 \end_inset
 
 ] この差込枠が周囲の環境と同じフォントを用いるか、独自のフォントを用いるか。既定値は真、すなわち独自のフォントを用います。
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This is outdated: The default changed from 1 to 0
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
