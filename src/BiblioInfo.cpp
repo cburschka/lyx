@@ -271,9 +271,9 @@ docstring const BibTeXInfo::getAbbreviatedAuthor(bool jurabib_style) const
 		return authors;
 	}
 
-	docstring author = convertLaTeXCommands(operator[]("author"));
+	docstring author = operator[]("author");
 	if (author.empty()) {
-		author = convertLaTeXCommands(operator[]("editor"));
+		author = operator[]("editor");
 		if (author.empty())
 			return author;
 	}
@@ -291,18 +291,20 @@ docstring const BibTeXInfo::getAbbreviatedAuthor(bool jurabib_style) const
 			+ "/" + familyName(authors[1]);
 		if (authors.size() == 3)
 			shortauthor += "/" + familyName(authors[2]);
-		return shortauthor;
+		return convertLaTeXCommands(shortauthor);
 	}
 
+	docstring retval = familyName(authors[0]);
+
 	if (authors.size() == 2 && authors[1] != "others")
-		return bformat(from_ascii("%1$s and %2$s"),
+		retval = bformat(from_ascii("%1$s and %2$s"),
 			familyName(authors[0]), familyName(authors[1]));
 
 	if (authors.size() >= 2)
-		return bformat(from_ascii("%1$s et al."),
+		retval = bformat(from_ascii("%1$s et al."),
 			familyName(authors[0]));
 
-	return familyName(authors[0]);
+	return convertLaTeXCommands(retval);
 }
 
 
@@ -471,6 +473,11 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 {
 	// incorrect use of macros could put us in an infinite loop
 	static int max_passes = 5000;
+	// the use of overly large keys can lead to performance problems, due
+	// to eventual attempts to convert LaTeX macros to unicode. See bug
+	// #8944. This is perhaps not the best solution, but it will have to
+	// do for now.
+	static size_t max_keysize = 128;
 	odocstringstream ret; // return value
 	string key;
 	bool scanning_key = false;
@@ -509,7 +516,7 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 					ret << trans;
 				} else {
 					docstring const val =
-						getValueForKey(key, buf, before, after, dialog, xref);
+						getValueForKey(key, buf, before, after, dialog, xref, max_keysize);
 					if (!scanning_rich)
 						ret << from_ascii("{!<span class=\"bib-" + key + "\">!}");
 					ret << val;
@@ -664,8 +671,10 @@ docstring const & BibTeXInfo::operator[](string const & field) const
 
 docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 	docstring const & before, docstring const & after, docstring const & dialog,
-	BibTeXInfo const * const xref) const
+	BibTeXInfo const * const xref, size_t maxsize) const
 {
+	// anything less is pointless
+	LASSERT(maxsize >= 16, maxsize = 16);
 	string key = oldkey;
 	bool cleanit = false;
 	if (prefixIs(oldkey, "clean:")) {
@@ -724,9 +733,13 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 		else if (key == "year")
 			ret = getYear();
 	}
-	if (cleanit)
-		return html::cleanAttr(ret);
 
+	if (cleanit)
+		ret = html::cleanAttr(ret);
+
+	// make sure it is not too big
+	if (ret.size() > maxsize)
+		ret = ret.substr(0, maxsize - 3) + from_ascii("...");
 	return ret;
 }
 

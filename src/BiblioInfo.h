@@ -114,7 +114,7 @@ private:
 	/// be the one referenced in the crossref field.
 	docstring getValueForKey(std::string const & key, Buffer const & buf,
 		docstring const & before, docstring const & after, docstring const & dialog,
-		BibTeXInfo const * const xref = 0) const;
+		BibTeXInfo const * const xref, size_t maxsize = 1024) const;
 	/// replace %keys% in a format string with their values
 	/// called from getInfo()
 	/// format strings may contain:
