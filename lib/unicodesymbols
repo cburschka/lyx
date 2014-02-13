@@ -1993,13 +1993,13 @@
 0x2651 "\\capricornus"            "wasysym" "" "\\capricornus" "wasysym" # CAPRICORNUS
 0x2652 "\\aquarius"               "wasysym" "" "\\aquarius" "wasysym" # AQUARIUS
 0x2653 "\\pisces"                 "wasysym" "" "\\pisces" "wasysym" # PISCES
-0x2660 ""                         "" "" "\\spadesuit" # BLACK SPADE SUIT
+0x2660 "\\ding{171}"              "pifont" "" "\\spadesuit" # BLACK SPADE SUIT
 0x2661 ""                         "" "" "\\heartsuit" # WHITE HEART SUIT
 0x2662 ""                         "" "" "\\diamondsuit" # WHITE DIAMOND SUIT
-0x2663 ""                         "" "" "\\clubsuit" # BLACK CLUB SUIT
+0x2663 "\\ding{168}"              "pifont" "" "\\clubsuit" # BLACK CLUB SUIT
 #0x2664 ""                         "" "" "\\varspadesuit" "txfonts|pxfonts" # WHITE SPADE SUIT
-#0x2665 ""                         "" "" "\\varheartsuit" "txfonts|pxfonts" # BLACK HEART SUIT
-#0x2666 ""                         "" "" "\\vardiamondsuit" "txfonts|pxfonts" # BLACK DIAMOND SUIT
+0x2665 "\\ding{170}"              "pifont" "" "" "" # BLACK HEART SUIT
+0x2666 "\\ding{169}"              "pifont" "" "" "" # BLACK DIAMOND SUIT
 #0x2667 ""                         "" "" "\\varclubsuit" "txfonts|pxfonts" # WHITE CLUB SUIT
 0x2669 "\\quarternote"            "wasysym" "" "\\quarternote" "wasysym" # QUARTER NOTE
 0x266a "\\textmusicalnote"        "textcomp" "" # EIGHTH NOTE
