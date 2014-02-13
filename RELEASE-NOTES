@@ -1,4 +1,4 @@
-This file lists interface changes that might affect users in 2.1.0, some 
+This file lists interface changes that might affect users in 2.1.0, some
 known problems in LyX 2.1.0 and some things you have to take into account
 when upgrading from earlier versions to a version of the 2.1.x series.
 
@@ -8,7 +8,7 @@ Interface changes
 
 - There have been changes to some often used menu items.
 
-  The following menu items moved from View to Document: 
+  The following menu items moved from View to Document:
     * View (Default format)
     * View (Other formats)
     * Update (Default format)
@@ -34,12 +34,12 @@ Interface changes
   --export-to <format> <dest>    (-E <format> <dest>)
 
     Allows one to perform a batch export of the LyX file that is
-    opened to the specified destination file <dest> and format 
+    opened to the specified destination file <dest> and format
     <format>. For example, to create a PDF of a LyX document,
     you can run:
       lyx --export-to pdf /path/to/dest.pdf /path/to/source.lyx
     See the manual page for details.
-  
+
     This functionality is also available via a new menu voice
     Export->Export As..., that pops up a dialog allowing one to
     choose the export format, as well as the destination pathname.
@@ -69,7 +69,7 @@ The following pref variables were added in 2.1:
   the user ("ask").
 
 - \\completion_minlength
-  Defines the minimal length of a word to be added to the list of 
+  Defines the minimal length of a word to be added to the list of
   words for text completion.
 
 - \\default_length_unit
@@ -83,20 +83,20 @@ The following pref variables were added in 2.1:
   Defines the prefix for the TEXINPUTS environment variable. A
   single '.' in the paths will get replaced with the current
   document dir and also non-absolute paths will be prefixed with
-  that dir. 
+  that dir.
 
   The default semantics of TEXINPUTS apply, such that, for example,
   if a path is terminated with a double slash, all subdirectories
   will also be searched by both the TeX engine and ancillary programs
-  such as dvi previewers or dvips. 
-  
+  such as dvi previewers or dvips.
+
   (see also commit 1717ef20)
 
 - \\use_qimage
   See Caveats section below.
 
 - \\use_system_theme_icons
-  If set to true, LyX tries to use the theme icons as defined by 
+  If set to true, LyX tries to use the theme icons as defined by
   the OS.
 
 
@@ -117,61 +117,57 @@ The following pref variables are obsoleted in 2.1:
 
 The following new LyX functions have been introduced:
 
-- LFUN_IPA_INSERT
+- ipa-insert
   Inserts an IPA (International Phonetic Alphabet) inset.
 
-- LFUN_IPAMACRO_INSERT <char>
-  Inserts special IPA macros into the document. <char> can be 
+- ipamacro-insert <char>
+  Inserts special IPA macros into the document. <char> can be
   one of 'tone-falling', 'tone-rising', 'tone-high-rising',
   'tone-low-rising', 'tone-high-rising-falling', 'deco bottomtiebar',
   'deco toptiebar'.
 
-- LFUN_SPELLING_CONTINUOUSLY
+- spelling-continuously
   Toggles continuous spell-checking.
 
-- LFUN_VC_RENAME
-- LFUN_VC_COPY
+- vc-rename
+- vc-copy
   Renames or copies a file under version control.
 
-- LFUN_BUFFER_FORALL <command>
+- buffer-forall <command>
   Applies <command> to all non-hidden buffers.
 
-- LFUN_ENVIRONMENT_SPLIT
+- environment-split
   Splits the current environment with a Separator.
 
-- LFUN_BRANCH_MASTER_ACTIVATE <branch>
-  LFUN_BRANCH_MASTER_DEACTIVATE <branch>
+- branch-master-activate <branch>
+- branch-master-deactivate <branch>
   Activates or deactivates a branch in a master document from within
-  a child (as opposed to the existing LFUN_BRANCH_[DE]ACTIVATE, which
+  a child (as opposed to the existing branch-[de]activate, which
   toggle the branch in the document itself).
 
-- LFUN_BUFFER_EXPORT_AS <format> <filename>
+- buffer-export-as <format> <filename>
   Equivalent to the new -export-to command-line switch (see above).
 
-- LFUN_CLIPBOARD_PASTE_SIMPLE ("clipboard-paste-simple")
+- clipboard-paste-simple
   Paste the clipboard contents as simple unformatted text.
   This is also available through a new menu voice within the
   [Edit]->[Paste Special...] sub-menu.
 
-- LFUN_VIEW_CLOSE
+- view-close
   Close the current document view only, if there are no more views
   on the document, either close or hide it (see the new preference
   option \\close_buffer_with_last_view)
 
 
 The following LyX functions have been changed:
- 
-- LFUN_CLOSE_TAB_GROUP ("close-tab-group") was renamed to
-  LFUN_TAB_GROUP_CLOSE ("tab-group-close").
 
-- LFUN_SPIT_VIEW ("split-view") was renamed to
-  LFUN_VIEW_SPLIT ("view-split").
+- close-tab-group was renamed to tab-group-close.
 
-- LFUN_BREAK_PARAGRAPH ("break-paragraph") was renamed to
-  LFUN_PARAGRAPH_BREAK ("paragraph-break").
+- split-view was renamed to view-split.
 
-- LFUN_COPY_LABEL_AS_REF ("copy-label-as-reference") has been renamed to
-  LFUN_LABEL_COPY_AS_REFERENCE ("label-copy-as-reference").
+- break-paragraph was renamed to paragraph-break.
+
+- copy-label-as-reference was renamed to label-copy-as-reference.
 
 
 The following LyX key bindings have been changed:
@@ -205,9 +201,8 @@ Changes with respect to external programs and libraries:
   included graphics and other files. The old builtin format detection code
   is used if libmagic is not available.
 
-- LyX no longer uses gettext for reading the translation files. This
-  especially has an advantage on Windows, reducing the time it takes to 
-  find the correct translation.
+- LyX no longer uses gettext for handling the translation files. This
+  especially is an advantage on Windows, where translating strings is faster.
 
 
 Known issues in version 2.1.0
@@ -224,6 +219,6 @@ Caveats when upgrading from earlier versions to 2.1.x
 
 - In order to improve reported scrolling slowness, we changed the way
   screen painting is done. This, however, can slow down the performance
-  on remote X connections and we provide the \\use_qimage preference 
+  on remote X connections and we provide the \\use_qimage preference
   variable, which brings back the old way of painting (when set to false).
 
