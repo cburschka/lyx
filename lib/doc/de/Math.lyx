@@ -110,7 +110,8 @@
 % wird benutzt für den Befehl \utilde
 \newboolean{undertilde}
 \IfFileExists{undertilde.sty}
- {\setboolean{undertilde}{true}}
+ {\usepackage{undertilde}
+  \setboolean{undertilde}{true}}
  {\setboolean{undertilde}{false}}
 
 % testen ob das Paket eurosym installiert ist
@@ -132,7 +133,8 @@
 % testen ob Paket cancel installiert ist
 \newboolean{cancel}
 \IfFileExists{cancel.sty}
- {\setboolean{cancel}{true}}
+ {\usepackage{cancel}
+  \setboolean{cancel}{true}}
  {\setboolean{cancel}{false}}
 
 % testen ob Paket upgreek installiert ist
@@ -189,14 +191,14 @@
 \use_geometry false
 \use_package amsmath 2
 \use_package amssymb 2
-\use_package cancel 1
+\use_package cancel 0
 \use_package esint 1
 \use_package mathdots 1
 \use_package mathtools 0
 \use_package mhchem 1
 \use_package stackrel 0
 \use_package stmaryrd 0
-\use_package undertilde 1
+\use_package undertilde 0
 \cite_engine basic
 \cite_engine_type default
 \biblio_style plain
