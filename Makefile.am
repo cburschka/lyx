@@ -48,8 +48,10 @@ rpmdist: dist
 doxydoc:
 	cd sourcedoc; $(MAKE) doxydoc
 
-lfundoc:
-	development/tools/gen_lfuns.py src/LyXAction.cpp > lib/doc/LFUNs.lyx
+lfundoc: $(srcdir)/lib/doc/LFUNs.lyx
+
+$(srcdir)/lib/doc/LFUNs.lyx: $(srcdir)/development/tools/gen_lfuns.py $(srcdir)/src/LyXAction.cpp
+	$(AM_V_GEN)$(PYTHON) $^ >$@ 2>/dev/null
 
 keystest:
 	development/keystest/lyx_make.sh

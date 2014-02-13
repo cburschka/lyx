@@ -377,14 +377,14 @@ def write_sections(file,lfuns):
                 write_fields(file, lf)
     
 def main(argv):
-    # parse command line arguments   
+    # parse command line arguments
     script_path, script_name = os.path.split(argv[0])
     if len(argv) < 2:
         error(usage(script_name))
     # input file
     lyxaction_path = argv[1]
-    if not os.path.exists(lyxaction_path):
-        error(script_name + ": %s is not a valid path" % lyxaction_path, usage(argv[0]))
+    if not os.path.isfile(lyxaction_path):
+        error(script_name + ": %s is not a valid path" % lyxaction_path)
 
     # output file
     if len(argv) == 3:
