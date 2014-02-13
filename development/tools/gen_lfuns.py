@@ -364,7 +364,7 @@ def write_sections(file,lfuns):
         "Edit":  "Editing Functions (Cursor and Mouse Movement, Copy/Paste etc.)",
         "Math":  "Math Editor Functions",
         "Buffer":  "Buffer Fuctions (File and Window related)",
-        "System":  "System Funtions (Preferences, LyX Server etc.)",
+        "System":  "System Functions (Preferences, LyX Server etc.)",
         "Hidden":  "Hidden Functions (not listed for configuration)"
         }
         # write the lfuns to the file

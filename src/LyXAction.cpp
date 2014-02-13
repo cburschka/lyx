@@ -1225,7 +1225,7 @@ void LyXAction::init()
  * \li Action: Pastes text from the active clipboard (retains formatting if the
                clipboard contains formatted text). Pastes plain text if plain text is
                on the clipboard, but tries to interpret it in special ways for certain
-               insets, e.g. converting csv data to rows and colums if tha paste happens
+               insets, e.g. converting csv data to rows and columns if the paste happens
                in a tabular inset.
  * \li Notion: Historically, LFUN_CLIPBOARD_PASTE was introduced as a counterpart of
                LFUN_PRIMARY_SELECTION_PASTE: It behaved exactly the same, but the source
@@ -1261,7 +1261,7 @@ void LyXAction::init()
                LyX content is in the clipboard. Pastes plain text if plain text
                is on the clipboard, without trying to interpret it in special
                ways for certain insets, e.g. converting csv data to rows and
-               colums if the paste happens in a tabular inset.
+               columns if the paste happens in a tabular inset.
  * \li Syntax: clipboard-paste-simple [<ARG>]
  * \li Params: <ARG>: "paragraph" will cause pasting as one paragraph, i.e. "Join lines".
  * \endvar
@@ -2300,7 +2300,7 @@ void LyXAction::init()
 		{ LFUN_CHANGES_TRACK, "changes-track", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_CHANGES_OUTPUT
- * \li Action: Toggles showing of change tracking in typesetted output.
+ * \li Action: Toggles showing of change tracking in typeset output.
  * \li Syntax: changes-output
  * \li Origin: jspitzm, 21 Jan 2005
  * \endvar
@@ -3385,7 +3385,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_META_PREFIX
  * \li Action: Simulate halting Meta key (Alt key on PCs).
- * \li Notion: Used for buffer editation not for GUI control.
+ * \li Notion: Used for buffer edition not for GUI control.
  * \li Syntax: meta-prefix
  * \endvar
  */

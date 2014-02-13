@@ -1038,7 +1038,7 @@ Origin Levon, 16 Oct 2002
 changes-output
 \end_layout
 \begin_layout Description
-Action Toggles showing of change tracking in typesetted output.
+Action Toggles showing of change tracking in typeset output.
 \end_layout
 \begin_layout Description
 Syntax changes-output
@@ -1221,7 +1221,7 @@ Origin AAS, 97-02-23
 clipboard-paste
 \end_layout
 \begin_layout Description
-Action Pastes text from the active clipboard (retains formatting if the clipboard contains formatted text). Pastes plain text if plain text is on the clipboard, but tries to interpret it in special ways for certain insets, e.g. converting csv data to rows and colums if tha paste happens in a tabular inset.
+Action Pastes text from the active clipboard (retains formatting if the clipboard contains formatted text). Pastes plain text if plain text is on the clipboard, but tries to interpret it in special ways for certain insets, e.g. converting csv data to rows and columns if the paste happens in a tabular inset.
 \end_layout
 \begin_layout Description
 Notion Historically, LFUN_CLIPBOARD_PASTE was introduced as a counterpart of LFUN_PRIMARY_SELECTION_PASTE: It behaved exactly the same, but the source is the clipboard, not the selection.
@@ -1240,7 +1240,7 @@ Origin Georg, 10 Jul 2006
 clipboard-paste-simple
 \end_layout
 \begin_layout Description
-Action Pastes plain text from the active clipboard even if formatted LyX content is in the clipboard. Pastes plain text if plain text is on the clipboard, without trying to interpret it in special ways for certain insets, e.g. converting csv data to rows and colums if the paste happens in a tabular inset.
+Action Pastes plain text from the active clipboard even if formatted LyX content is in the clipboard. Pastes plain text if plain text is on the clipboard, without trying to interpret it in special ways for certain insets, e.g. converting csv data to rows and columns if the paste happens in a tabular inset.
 \end_layout
 \begin_layout Description
 Syntax clipboard-paste-simple [<ARG>]
@@ -5088,7 +5088,7 @@ Origin Abdel, 21 Oct 2006
 \end_layout
 
 \begin_layout Section
-System Funtions (Preferences, LyX Server etc.)
+System Functions (Preferences, LyX Server etc.)
 \end_layout
 \begin_layout Subsection*
 buffer-toggle-output-sync
@@ -5268,7 +5268,7 @@ meta-prefix
 Action Simulate halting Meta key (Alt key on PCs).
 \end_layout
 \begin_layout Description
-Notion Used for buffer editation not for GUI control.
+Notion Used for buffer edition not for GUI control.
 \end_layout
 \begin_layout Description
 Syntax meta-prefix
