@@ -477,7 +477,7 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 	// to eventual attempts to convert LaTeX macros to unicode. See bug
 	// #8944. This is perhaps not the best solution, but it will have to
 	// do for now.
-	static size_t max_keysize = 128;
+	static size_t const max_keysize = 128;
 	odocstringstream ret; // return value
 	string key;
 	bool scanning_key = false;
