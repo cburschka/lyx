@@ -59,6 +59,12 @@ LFUNS_HEADER = """# gen_lfuns.py generated this file. For more info see http://w
 \\end_preamble
 \\use_default_options false
 \\maintain_unincluded_children false
+\\begin_local_layout
+Style Description
+LabelIndent           MM
+LeftMargin            MMMMMxx
+End
+\\end_local_layout
 \\language english
 \\language_package default
 \\inputencoding auto
