@@ -12,8 +12,7 @@
 # Usage:
 # gen_lfuns.py <path/to/LyXAction.cpp> <where/to/save/LFUNs.lyx>
 
-import sys
-import os.path
+import sys,re,os.path
 from datetime import date
 
 def error(message):
@@ -24,7 +23,7 @@ def usage(prog_name):
     return "Usage: %s <path/to/LyXAction.cpp> [<where/to/save/LFUNs.lyx>]" % prog_name
 
 DOXYGEN_START = "/*!"
-DOXYGEN_END = "*/"
+DOXYGEN_END = "},"
 
 LYX_NEWLINE = "\n\\begin_inset Newline newline\n\\end_inset\n\n"
 LYX_BACKSLASH = "\n\\backslash\n"
@@ -139,26 +138,59 @@ The LyX Team
 \\begin_layout Date""" + "\n" + str(date.today()) + """
 \\end_layout
 
-\\begin_layout Standard
-\\begin_inset ERT
-status collapsed
-
-\\begin_layout Plain Layout
-
-
-\\backslash
-thispagestyle{empty}
-\\end_layout
-
-\\end_inset
-
-
-\\begin_inset VSpace 1cm
-\\end_inset
-
-
-\\end_layout
 """
+
+LFUNS_INTRO ="""\\begin_layout Section*
+About this manual
+\\end_layout
+
+\\begin_layout Standard
+This manual documents the 
+\\begin_inset Quotes eld
+\\end_inset
+
+LyX Functions
+\\begin_inset Quotes erd
+\\end_inset
+
+ (abbreviated LFUNs).
+ These are commands that are used to make LyX perform specific actions.
+ LyX itself uses these functions internally, and every internal action is
+ bound to an LFUN.
+\\end_layout
+
+\\begin_layout Standard
+LFUNs are also used in the files that define keyboard shortcuts, menu or
+ toolbar items.
+ So if you want to change\\SpecialChar \\slash{}
+customize the user interface, you need to deal
+ with LFUNs.
+ Furthermore, external programs can use LFUNs to communicate with and 
+\\begin_inset Quotes eld
+\\end_inset
+
+remote-control
+\\begin_inset Quotes erd
+\\end_inset
+
+ LyX.
+ Finally, you can also issue LFUNs directly via the so called mini-buffer
+ which can be opened via 
+\\begin_inset Info
+type  "shortcuts"
+arg   "command-execute"
+\\end_inset
+
+.
+\\end_layout
+
+\\begin_layout Standard
+In the following, all LFUNs are listed, categorized by function.
+\\end_layout
+
+"""
+
+
 LFUNS_FOOTER = """\\end_body
 \\end_document
 """
@@ -166,7 +198,7 @@ LFUNS_FOOTER = """\\end_body
 def parse_lfun(str):
     """Takes a comment block (str) and parses it for fields describing the LFUN. Returns a dict containing the fields."""
     
-    lfun = dict(name="", action="", notion="", syntax="", params="", sample="", origin="")
+    lfun = dict(action="", notion="", syntax="", params="", sample="", origin="")
     field = ""
     lines = str.splitlines()
     # strip leading whitespace and * from the lines of the comment to get 
@@ -181,11 +213,7 @@ def parse_lfun(str):
         #     nothing as an existing field is being added to
         # if a field id is found, then its the first line of the field so set the pre_space to ""
         #     so that the first line isn't prespaced
-        if lines[i].startswith(LFUN_NAME_ID):
-            field = "name"
-            pre_space = ""
-            skip = len(ID_DICT[field])
-        elif lines[i].startswith(LFUN_ACTION_ID):
+        if lines[i].startswith(LFUN_ACTION_ID):
             field = "action"
             pre_space = ""
             skip = len(ID_DICT[field])
@@ -320,7 +348,27 @@ def write_fields(file, lfun):
         file.write("Origin " + lfun["origin"] + "\n")
         file.write("\\end_layout\n")
         #file.write("\n")
-    file.write("\n")        
+    file.write("\n")
+
+def write_sections(file,lfuns):
+    """Write sections of LFUNs"""
+    sections = ["Layout", "Edit", "Math", "Buffer", "System", "Hidden"]
+    section_headings = {
+        "Layout":  "Layout Functions (Font, Layout and Textclass related)",
+        "Edit":  "Editing Functions (Cursor and Mouse Movement, Copy/Paste etc.)",
+        "Math":  "Math Editor Functions",
+        "Buffer":  "Buffer Fuctions (File and Window related)",
+        "System":  "System Funtions (Preferences, LyX Server etc.)",
+        "Hidden":  "Hidden Functions (not listed for configuration)"
+        }
+        # write the lfuns to the file
+    for val in sections:
+        file.write("\\begin_layout Section\n")
+        file.write(section_headings[val] + "\n")
+        file.write("\\end_layout\n")
+        for lf in lfuns:
+            if lf["type"] == val:
+                write_fields(file, lf)
     
 def main(argv):
     # parse command line arguments   
@@ -346,12 +394,15 @@ def main(argv):
     sys.stderr.write(script_name + ": Start processing " + argv[1] + '\n')
     # Read the input file and write the output file
     lyxaction_file = open(lyxaction_path, 'rb')
-	
+
     lyxaction_text = lyxaction_file.read()
-	
+
     lfuns_file.write(LFUNS_HEADER)
-	
-	# seek to the important bit of LyXAction.cpp
+    
+    # An introductory section
+    lfuns_file.write(LFUNS_INTRO)
+
+    # seek to the important bit of LyXAction.cpp
     try:
         start = lyxaction_text.index("ev_item const items[] = {")
     except ValueError:
@@ -367,12 +418,23 @@ def main(argv):
         # look for a doxygen comment
         start = lyxaction_text.find(DOXYGEN_START, start)
         end = lyxaction_text.find(DOXYGEN_END, start) + len(DOXYGEN_END)
+        name = ""
+        atype = ""
+        snippet = lyxaction_text[start:end]
+        defline = snippet.replace("\n", "")
+        match = re.match(r'.*\s*\{\s*(.+),\s*"(.*)",\s*([\w\|\s]+),\s*(\w+)\s*\},.*$', defline)
+        if match:
+            name = match.group(2)
+            atype = match.group(4)
         # parse the lfun if it is found
         if start > 0:
-            count = count + 1
-            lfun = parse_lfun(lyxaction_text[start:end])
-            # save the lfun (we sort it before writing)
-            lfun_list_unsorted.append(lfun)
+            if name:
+                count = count + 1
+                lfun = parse_lfun(snippet)
+                lfun["name"] = name
+                lfun["type"] = atype
+                # save the lfun (we sort it before writing)
+                lfun_list_unsorted.append(lfun)
             # get the next one
             start = end
         else:
@@ -382,8 +444,7 @@ def main(argv):
     lfun_list = sorted(lfun_list_unsorted, key=lambda k: k['name'])
     
     # write the lfuns to the file
-    for lf in lfun_list:
-        write_fields(lfuns_file, lf)
+    write_sections(lfuns_file, lfun_list)
 
     sys.stderr.write(script_name + ": Created documentation for " + str(count) + " LFUNs\n")
 
