@@ -109,7 +109,7 @@ private:
 	/// to get the data from xref BibTeXInfo object, which would normally
 	/// be the one referenced in the crossref field.
 	docstring getValueForKey(std::string const & key, 
-			BibTeXInfo const * const xref = 0) const;
+			BibTeXInfo const * const xref, size_t maxsize = 4096) const;
 	/// replace %keys% in a format string with their values
 	/// called from getInfo()
 	/// format strings may contain:

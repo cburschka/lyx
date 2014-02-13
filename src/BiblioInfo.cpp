@@ -228,9 +228,9 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 		return authors;
 	}
 
-	docstring author = convertLaTeXCommands(operator[]("author"));
+	docstring author = operator[]("author");
 	if (author.empty()) {
-		author = convertLaTeXCommands(operator[]("editor"));
+		author = operator[]("editor");
 		if (author.empty())
 			return bib_key_;
 	}
@@ -243,15 +243,17 @@ docstring const BibTeXInfo::getAbbreviatedAuthor() const
 	vector<docstring> const authors =
 		getVectorFromString(author, from_ascii(" and "));
 
+	docstring retval = familyName(authors[0]);
+
 	if (authors.size() == 2 && authors[1] != "others")
-		return bformat(from_ascii("%1$s and %2$s"),
+		retval = bformat(from_ascii("%1$s and %2$s"),
 			familyName(authors[0]), familyName(authors[1]));
 
 	if (authors.size() >= 2)
-		return bformat(from_ascii("%1$s et al."),
+		retval = bformat(from_ascii("%1$s et al."),
 			familyName(authors[0]));
 
-	return familyName(authors[0]);
+	return convertLaTeXCommands(retval);
 }
 
 
@@ -417,6 +419,13 @@ docstring BibTeXInfo::expandFormat(string const & format,
 {
 	// incorrect use of macros could put us in an infinite loop
 	static int max_passes = 5000;
+
+	// the use of overly large keys can lead to performance problems, due
+	// to eventual attempts to convert LaTeX macros to unicode. See bug
+	// #8944. This is perhaps not the best solution, but it will have to
+	// do for now.
+	static size_t const max_keysize = 128;
+
 	docstring ret; // return value
 	string key;
 	bool scanning_key = false;
@@ -453,7 +462,7 @@ docstring BibTeXInfo::expandFormat(string const & format,
 						translateIfPossible(from_utf8(val), buf.params().language->code());
 					ret += trans;
 				} else {
-					docstring const val = getValueForKey(key, xref);
+					docstring const val = getValueForKey(key, xref, max_keysize);
 					if (richtext && !scanning_rich)
 						ret += from_ascii("<span class=\"bib-" + key + "\">");
 					ret += val;
@@ -588,12 +597,17 @@ docstring const & BibTeXInfo::operator[](string const & field) const
 
 
 docstring BibTeXInfo::getValueForKey(string const & key, 
-		BibTeXInfo const * const xref) const
+		BibTeXInfo const * const xref, size_t maxsize) const
 {
-	docstring const ret = operator[](key);
-	if (!ret.empty() || !xref)
-		return ret;
-	return (*xref)[key];
+	// anything less is pointless
+	LASSERT(maxsize >= 16, maxsize = 16);
+	docstring ret = operator[](key);
+	if (ret.empty() && xref)
+		ret = (*xref)[key];
+	// make sure it is not too big
+	if (ret.size() > maxsize)
+		ret = ret.substr(0, maxsize - 3) + from_ascii("...");
+	return ret;
 }
 
 
