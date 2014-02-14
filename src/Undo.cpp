@@ -61,15 +61,15 @@ structure ('Undo') _before_ it is changed in some edit operation.
 Obviously, the stored range should be as small as possible. However,
 there is a lower limit: The StableDocIterator stored in the undo class
 must be valid after the changes, too, as it will used as a pointer
-where to insert the stored bits when performining undo. 
+where to insert the stored bits when performining undo.
 */
 struct UndoElement
 {
 	///
-	UndoElement(UndoKind kin, CursorData const & cb, 
+	UndoElement(UndoKind kin, CursorData const & cb,
 	            StableDocIterator const & cel,
-	            pit_type fro, pit_type en, ParagraphList * pl, 
-	            MathData * ar, BufferParams const & bp, 
+	            pit_type fro, pit_type en, ParagraphList * pl,
+	            MathData * ar, BufferParams const & bp,
 	            bool ifb, bool lc, size_t gid) :
 	        kind(kin), cur_before(cb), cell(cel), from(fro), end(en),
 	        pars(pl), array(ar), bparams(0), isFullBuffer(ifb),
@@ -127,11 +127,11 @@ struct UndoElement
 	size_t group_id;
 private:
 	/// Protect construction
-	UndoElement();	
+	UndoElement();
 };
 
 
-class UndoElementStack 
+class UndoElementStack
 {
 public:
 	/// limit is the maximum size of the stack
@@ -173,7 +173,7 @@ public:
 	void markDirty() {
 		for (size_t i = 0; i != c_.size(); ++i)
 			c_[i].lyx_clean = false;
-	}		
+	}
 
 private:
 	/// Internal contents.
@@ -185,11 +185,11 @@ private:
 
 struct Undo::Private
 {
-	Private(Buffer & buffer) : buffer_(buffer), undo_finished_(true), 
+	Private(Buffer & buffer) : buffer_(buffer), undo_finished_(true),
 				   group_id(0), group_level(0) {}
-	
+
 	// Do one undo/redo step
-	void doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack, 
+	void doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack,
 			      UndoElementStack & otherStack);
 	// Apply one undo/redo group. Returns false if no undo possible.
 	bool textUndoOrRedo(CursorData & cur, bool isUndoOperation);
@@ -273,7 +273,7 @@ void Undo::markDirty()
 {
 	d->undo_finished_ = true;
 	d->undostack_.markDirty();
-	d->redostack_.markDirty();	
+	d->redostack_.markDirty();
 }
 
 
@@ -328,7 +328,7 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 	else
 		LYXERR(Debug::UNDO, "Create undo element of group " << group_id);
 	// create the position information of the Undo entry
-	UndoElement undo(kind, cur_before, cell, from, end, 0, 0, 
+	UndoElement undo(kind, cur_before, cell, from, end, 0, 0,
 	                 buffer_.params(), isFullBuffer, buffer_.isClean(), group_id);
 
 	// fill in the real data to be saved
@@ -578,7 +578,7 @@ void Undo::recordUndoFullDocument(CursorData const & cur)
 	// This one may happen outside of the main undo group, so we
 	// put it in its own subgroup to avoid complaints.
 	beginUndoGroup();
-	d->recordUndo(ATOMIC_UNDO, doc_iterator_begin(&d->buffer_), 
+	d->recordUndo(ATOMIC_UNDO, doc_iterator_begin(&d->buffer_),
 		      0, d->buffer_.paragraphs().size() - 1, cur, true);
 	endUndoGroup();
 }
