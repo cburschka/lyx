@@ -525,7 +525,8 @@ public:
 	bool hasMultiRow(row_type r) const;
 	///
 	idx_type setMultiRow(idx_type cell, idx_type number,
-			     bool const bottom_border);
+			     bool const bottom_border,
+			     LyXAlignment const halign);
 	///
 	void unsetMultiRow(idx_type cell);
 	///

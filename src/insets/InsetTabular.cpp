@@ -1154,7 +1154,7 @@ void Tabular::setColumnPWidth(Cursor & cur, idx_type cell,
 	col_type const c = cellColumn(cell);
 
 	column_info[c].p_width = width;
-	// reset the vertical alignment to top if the fixed with
+	// reset the vertical alignment to top if the fixed width
 	// is removed or zero because only fixed width columns can
 	// have a vertical alignment
 	if (column_info[c].p_width.zero())
@@ -1164,6 +1164,8 @@ void Tabular::setColumnPWidth(Cursor & cur, idx_type cell,
 		// because of multicolumns
 		toggleFixedWidth(cur, cellInset(cell).get(),
 				 !getPWidth(cell).zero());
+		if (isMultiRow(cell))
+			setAlignment(cell, LYX_ALIGN_LEFT, false);
 	}
 	// cur paragraph can become invalid after paragraphs were merged
 	if (cur.pit() > cur.lastpit())
@@ -1718,7 +1720,8 @@ bool Tabular::hasMultiRow(row_type r) const
 }
 
 Tabular::idx_type Tabular::setMultiRow(idx_type cell, idx_type number,
-				       bool const bottom_border)
+				       bool const bottom_border,
+				       LyXAlignment const halign)
 {
 	idx_type const col = cellColumn(cell);
 	idx_type const row = cellRow(cell);
@@ -1734,10 +1737,10 @@ Tabular::idx_type Tabular::setMultiRow(idx_type cell, idx_type number,
 	// be changed for the whole table row,
 	// support changing this only for the multirow cell can be done via
 	// \multirowsetup
-	// this feature would be a fileformat change
-	// until LyX supports this, use the deault alignment of multirow
-	// cells: left
-	cs.alignment = LYX_ALIGN_LEFT;
+	if (getPWidth(cell).zero())
+		cs.alignment = halign;
+	else
+		cs.alignment = LYX_ALIGN_LEFT;
 
 	// set the bottom line of the last selected cell
 	setBottomLine(cell, bottom_border);
@@ -5707,7 +5710,8 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 			// check whether we are completely in a multirow
 			if (!tabular.isMultiRow(cur.idx()))
 				tabular.setMultiRow(cur.idx(), 1,
-						    tabular.bottomLine(cur.idx()));
+						    tabular.bottomLine(cur.idx()),
+						    tabular.getAlignment(cur.idx()));
 			break;
 		}
 		// we have a selection so this means we just add all this
@@ -5716,7 +5720,8 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		row_type const row_start = tabular.cellRow(s_start);
 		row_type const row_end = tabular.cellRow(cur.selEnd().idx());
 		cur.idx() = tabular.setMultiRow(s_start, row_end - row_start + 1,
-						tabular.bottomLine(cur.selEnd().idx()));
+						tabular.bottomLine(cur.selEnd().idx()),
+						tabular.getAlignment(cur.selEnd().idx()));
 		cur.pit() = 0;
 		cur.pos() = 0;
 		cur.setSelection(false);
