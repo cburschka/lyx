@@ -352,7 +352,7 @@ Format 1
 \bind "M-Return"                     "paragraph-break inverse"
 \bind "C-Return"                     "newline-insert newline"
 \bind "C-S-Return"                   "newline-insert linebreak"
-\bind "A-space"                      "command-alternatives space-insert protected ; math-space"
+\bind "A-space"                      "command-alternatives math-space ; space-insert protected"
 \bind "nobreakspace"                 "space-insert protected"
 \bind "C-A-space"                    "space-insert normal"
 \bind "S-A-space"                    "space-insert thin"

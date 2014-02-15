@@ -227,7 +227,7 @@ Format 1
 \bind "C-Return"		"newline-insert newline"
 \bind "C-S-Return"		"newline-insert linebreak"
 \bind "C-S-L"			"specialchar-insert ligature-break"
-\bind "C-space"			"command-alternatives space-insert protected ; math-space"
+\bind "C-space"			"command-alternatives math-space ; space-insert protected"
 \bind "nobreakspace"		"space-insert protected"
 \bind "C-M-space"		"space-insert normal"
 \bind "S-C-space"		"space-insert thin"
