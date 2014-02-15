@@ -15612,40 +15612,73 @@ sideset
 \end_inset
 
  se pueden poner caracteres delante y detrás de un operador grande.
- El esquema del comando es:
 \end_layout
 
 \begin_layout Standard
 
-\series bold
+\lang english
+There are 4
+\begin_inset space ~
+\end_inset
 
-\backslash
-sideset{carácter
-\series default
- 
-\series bold
-anterior}{carácter posterior}
-\end_layout
-
-\begin_layout Standard
-
+variants of 
 \series bold
 
 \backslash
 sideset
 \series default
- siempre debe estar delante del operador.
- Se puede decorar con varios caracteres e incluso con otros operadores y
- símbolos.
- Para colocar con
+:
+\end_layout
+
+\begin_layout Itemize
+
 \series bold
- 
+\lang english
+
 \backslash
 sideset
 \series default
- caracteres sólo detrás del operador grande, por ejemplo, no se escribe
- nada en el primer par de llaves, pero sin quitarlas.
- 
+ is used to set characters at the corners of the operator
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+
+\backslash
+sidesetn
+\series default
+ is used to set characters before and/or behind the operator (this variant
+ represents LaTeX's original 
+\series bold
+
+\backslash
+sideset
+\series default
+ command)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+
+\backslash
+sidesetl
+\series default
+ is used to set characters at the left corners and/or behind the operator
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+
+\backslash
+sidesetr
+\series default
+ is used to set characters at the right corners and/or before the operator
 \end_layout
 
 \begin_layout Standard
@@ -15653,23 +15686,25 @@ Por ejemplo, el comando
 \series bold
 
 \backslash
-sideset{
-\begin_inset Formula $\to$
+sidesetn
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
 \backslash
-{
-\series default
+sum
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\begin_inset Formula $\to$
+\end_inset
+
 '
-\series bold
-
 \begin_inset Formula $\to$
 \end_inset
 
-
-\backslash
-sum_k=1
+_k=1
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -15677,10 +15712,6 @@ sum_k=1
 \series default
 ^
 \series bold
-
-\begin_inset space \textvisiblespace{}
-\end_inset
-
 n
 \series default
  genera:

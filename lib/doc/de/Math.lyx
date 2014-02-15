@@ -15551,48 +15551,67 @@ sideset
 \end_inset
 
  können Zeichen vor und nach einen großen Operator gesetzt werden.
- Das Befehlsschema lautet:
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-
-\backslash
-sideset{Zeichen
-\series default
- 
-\series bold
-davor}{Zeichen
-\series default
- 
-\series bold
-dahinter}
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-sideset
-\series default
- muss immer vor dem Operator stehen.
- Es kann auch mit mehreren Zeichen und sogar mit anderen Operatoren und
- Symbolen dekoriert werden.
- Will man mit 
-\series bold
-
-\backslash
-sideset
-\series default
- z.
-\begin_inset space \thinspace{}
+Es gibt 4
+\begin_inset space ~
 \end_inset
 
-B.
- nur Zeichen hinter einen großen Operator setzen, schreibt man nichts zwischen
- die ersten geschweiften Klammern, lässt die Klammern aber nicht weg.
+Varianten von 
+\series bold
+
+\backslash
+sideset
+\series default
+:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\backslash
+sideset
+\series default
+ zum Setzen von Zeichen an die Ecken des Operators
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\backslash
+sidesetn
+\series default
+ zum Setzen von Zeichen vor und/oder nach den Operator (diese Variante entsprich
+t LaTeXs originalem 
+\series bold
+
+\backslash
+sideset
+\series default
+ Befehl)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\backslash
+sidesetl
+\series default
+ zum Setzen von Zeichen an die linken Ecken und/oder nach den Operator
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\backslash
+sidesetr
+\series default
+ zum Setzen von Zeichen an die rechten Ecken und/oder vor den Operator
 \end_layout
 
 \begin_layout Standard
@@ -15605,23 +15624,25 @@ B.
 \series bold
 
 \backslash
-sideset{
-\begin_inset Formula $\to$
+sidesetn
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
 \backslash
-{
-\series default
+sum
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\begin_inset Formula $\to$
+\end_inset
+
 '
-\series bold
-
 \begin_inset Formula $\to$
 \end_inset
 
-
-\backslash
-sum_k=1
+_k=1
 \begin_inset space \textvisiblespace{}
 \end_inset
 

@@ -15541,30 +15541,73 @@ sideset
 \end_inset
 
 , on peut placer des caractères avant ou après un grand opérateur.
- La syntaxe de la commande est:
-\series bold
-
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-sideset{caractère avant}{caractère après}
 \end_layout
 
 \begin_layout Standard
 
+\lang english
+There are 4
+\begin_inset space ~
+\end_inset
+
+variants of 
 \series bold
 
 \backslash
 sideset
 \series default
- doit toujours se trouver avant l'opérateur.
-  Vous pouvez utiliser pour l'accentuation plusieurs caractères et même
- d'autres opérateurs ou des symboles.
- Pour placer par exemple seulement des caractères derrière un grand opérateur,
- ne mettez rien entre les deux premières accolades, mais ne les omettez
- pas.
+:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+
+\backslash
+sideset
+\series default
+ is used to set characters at the corners of the operator
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+
+\backslash
+sidesetn
+\series default
+ is used to set characters before and/or behind the operator (this variant
+ represents LaTeX's original 
+\series bold
+
+\backslash
+sideset
+\series default
+ command)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+
+\backslash
+sidesetl
+\series default
+ is used to set characters at the left corners and/or behind the operator
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\lang english
+
+\backslash
+sidesetr
+\series default
+ is used to set characters at the right corners and/or before the operator
 \end_layout
 
 \begin_layout Standard
@@ -15572,23 +15615,25 @@ Par exemple la commande
 \series bold
 
 \backslash
-sideset{
-\begin_inset Formula $\to$
+sidesetn
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
 \backslash
-{
-\series default
+sum
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\begin_inset Formula $\to$
+\end_inset
+
 '
-\series bold
-
 \begin_inset Formula $\to$
 \end_inset
 
-
-\backslash
-sum_k=1
+_k=1
 \begin_inset space \textvisiblespace{}
 \end_inset
 

@@ -15542,37 +15542,67 @@ sideset
 \end_inset
 
  characters can be set before and behind a big operator.
- The command scheme is:
 \end_layout
 
 \begin_layout Standard
+There are 4
+\begin_inset space ~
+\end_inset
 
+variants of 
 \series bold
 
 \backslash
-sideset{character
+sideset
 \series default
- 
-\series bold
-before}{character
-\series default
- 
-\series bold
-behind}
+:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 
 \series bold
 
 \backslash
 sideset
 \series default
- must always be before the operator.
- You can decorate with several characters and even with other operators
- and symbols.
- To place for example only characters behind a big operator, write nothing
- between the first braces but don't omit the braces.
+ is used to set characters at the corners of the operator
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\backslash
+sidesetn
+\series default
+ is used to set characters before and/or behind the operator (this variant
+ represents LaTeX's original 
+\series bold
+
+\backslash
+sideset
+\series default
+ command)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\backslash
+sidesetl
+\series default
+ is used to set characters at the left corners and/or behind the operator
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\backslash
+sidesetr
+\series default
+ is used to set characters at the right corners and/or before the operator
 \end_layout
 
 \begin_layout Standard
@@ -15580,23 +15610,25 @@ For example the command
 \series bold
 
 \backslash
-sideset{
-\begin_inset Formula $\to$
+sidesetn
+\begin_inset space \textvisiblespace{}
 \end_inset
 
 
 \backslash
-{
-\series default
+sum
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\begin_inset Formula $\to$
+\end_inset
+
 '
-\series bold
-
 \begin_inset Formula $\to$
 \end_inset
 
-
-\backslash
-sum_k=1
+_k=1
 \begin_inset space \textvisiblespace{}
 \end_inset
 
