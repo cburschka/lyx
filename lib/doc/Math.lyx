@@ -15651,6 +15651,84 @@ k\,\in\,\mathbb{N}
 \begin_inset VSpace bigskip
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+When several consecutive operators have limits the typesetting of the limits
+ looks often imperfect in the output, see this example:
+\begin_inset Formula 
+\[
+\text{a)}\lim_{n\to\infty}\max_{p\ge n}\quad\text{b)}\lim_{n\to\infty}\max_{p^{2}\ge n}\quad\text{c)}\lim_{n\to\infty}\sup_{p^{2}\ge nK}\quad\text{d)}\limsup_{n\to\infty}\max_{p\ge n}
+\]
+
+\end_inset
+
+To improve the typesetting set in the document settings under 
+\family sans
+Math
+\begin_inset space ~
+\end_inset
+
+Options
+\family default
+ for the package 
+\series bold
+mathtools
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Packages ! mathtools
+\end_layout
+
+\end_inset
+
+ the option 
+\family sans
+Load
+\begin_inset space ~
+\end_inset
+
+always
+\family default
+.
+ Then insert into your formula the command 
+\series bold
+
+\backslash
+adjustlimits
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Commands ! A ! 
+\backslash
+adjustlimits
+\end_layout
+
+\end_inset
+
+ directly before the first operator.
+ The example will then look like this:
+\begin_inset Formula 
+\[
+\text{a)}\adjustlimits\lim_{n\to\infty}\max_{p\ge n}\quad\text{b)}\adjustlimits\lim_{n\to\infty}\max_{p^{2}\ge n}\quad\text{c)}\adjustlimits\lim_{n\to\infty}\sup_{p^{2}\ge nK}\quad\text{d)}\adjustlimits\limsup_{n\to\infty}\max_{p\ge n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
 How to use one limit for several operators is described in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -24998,6 +25076,24 @@ In a displayed formula the limit is set below the formula, as usual:
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+How to adjust the typesetting of the limits see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Operator-Limits"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
