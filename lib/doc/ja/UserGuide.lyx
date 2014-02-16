@@ -9452,7 +9452,7 @@ em
 \begin_layout Subsubsection
 水平フィル
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 くうはく@空白!ふぃる@フィル
@@ -22328,7 +22328,11 @@ reference "sub:番号の付け方-深度"
 \end_layout
 
 \begin_layout Subsection
-図・表・アルゴリズム一覧
+図・表・
+\lang english
+Listings
+\lang japanese
+・アルゴリズム一覧
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:図・表・アルゴリズム一覧"
@@ -22339,7 +22343,11 @@ name "sec:図・表・アルゴリズム一覧"
 \end_layout
 
 \begin_layout Standard
-図・表・アルゴリズム一覧は目次によく似ています。これらは、
+図・表・
+\lang english
+Listings
+\lang japanese
+・アルゴリズム一覧は目次によく似ています。これらは、
 \family sans
 挿入\SpecialChar \menuseparator
 一覧／目次
@@ -30168,7 +30176,11 @@ reference "sub:改段改頁"
 \end_layout
 
 \begin_layout Standard
-このメニューでは、さまざまな一覧を挿入することができます。目次およびアルゴリズム・図・表一覧に関しては、第
+このメニューでは、さまざまな一覧を挿入することができます。目次およびアルゴリズム・図・
+\lang english
+Listings
+\lang japanese
+・表一覧に関しては、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:目次と一覧"

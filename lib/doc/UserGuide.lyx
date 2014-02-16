@@ -26365,7 +26365,7 @@ reference "sub:Numbering-depth"
 \end_layout
 
 \begin_layout Subsection
-List of Figures, Tables, and Algorithms
+List of Figures, Tables, Listings and Algorithms
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:List-of-Figures"
@@ -26376,7 +26376,8 @@ name "sub:List-of-Figures"
 \end_layout
 
 \begin_layout Standard
-Table, figure, and algorithm lists are very much like the table of contents.
+Table, figure, listings and algorithm lists are very much like the table
+ of contents.
  You can insert them via the 
 \family sans
 Insert\SpecialChar \menuseparator
@@ -36050,11 +36051,15 @@ List of Algorithms
 \family default
 , 
 \family sans
-List of Figures
+List of Figures,
+\family default
+ 
+\family sans
+List of Tables
 \family default
  and 
 \family sans
-List of Tables
+List of Listings
 \family default
  are described in section
 \begin_inset space ~
