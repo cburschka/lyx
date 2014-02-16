@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-02-16 16:29+0100\n"
-"PO-Revision-Date: 2014-02-16 20:26+0100\n"
+"POT-Creation-Date: 2014-02-16 20:30+0100\n"
+"PO-Revision-Date: 2014-02-16 20:31+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "Language: it\n"
@@ -17358,11 +17358,11 @@ msgid "Delete Line Below|e"
 msgstr "Elimina linea in basso|b"
 
 #: lib/ui/stdmenus.inc:257
-msgid "Make First Non-Optional into Optional Argument"
+msgid "Transform First Non-Optional to Optional Argument"
 msgstr "Cambia il primo argomento non-opzionale in opzionale"
 
 #: lib/ui/stdmenus.inc:258
-msgid "Make Last Optional into Non-Optional Argument"
+msgid "Transform Last Optional to Non-Optional Argument"
 msgstr "Cambia l'ultimo argomento opzionale in non-opzionale"
 
 #: lib/ui/stdmenus.inc:268
@@ -30972,6 +30972,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Utente sconosciuto"
+
+#~ msgid "Make First Non-Optional into Optional Argument"
+#~ msgstr "Cambia il primo argomento non-opzionale in opzionale"
+
+#~ msgid "Make Last Optional into Non-Optional Argument"
+#~ msgstr "Cambia l'ultimo argomento opzionale in non-opzionale"
 
 #~ msgid "Unformatted Text|U"
 #~ msgstr "Testo non formattato, per linee|n"
