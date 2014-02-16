@@ -164,21 +164,21 @@ if options.column_sep == 't':
 
 # when no special column separator is given, try to detect it:
 if options.column_sep and dialect :
-    reader = csv.reader(open(infile, "rb"), dialect = dialect, delimiter = options.column_sep)
+    reader = csv.reader(open(infile, "rU"), dialect = dialect, delimiter = options.column_sep)
 else:
     guesser = csv.Sniffer()
-    input_file = "".join(open(infile,'rb').readlines())
+    input_file = "".join(open(infile,'rU').readlines())
     try:
         dialect = guesser.sniff(input_file)
-        reader = csv.reader(open(infile, "rb"), dialect = dialect)
+        reader = csv.reader(open(infile, "rU"), dialect = dialect)
     except:
         # older versions (python < 2.5) of csv have problems (bugs)
         # that is why we try harder to get a result, this should work on most cases
         # as it assumes that the separator is a comma (the c in csv :-) )
         try:
-            reader = csv.reader(open(infile, "rb"), dialect = dialect, delimiter = ',')
+            reader = csv.reader(open(infile, "rU"), dialect = dialect, delimiter = ',')
         except:
-            reader = csv.reader(open(infile, "rb"), delimiter = ',')
+            reader = csv.reader(open(infile, "rU"), delimiter = ',')
 
 # read input
 num_cols = 1 # max columns
