@@ -6034,7 +6034,7 @@ Protected Space
  (Use either 
 \begin_inset Info
 type  "shortcut"
-arg   "command-alternatives space-insert protected ; math-space"
+arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
  or the menu 
@@ -7869,33 +7869,15 @@ arg   "newline-insert newline"
 \family sans
 Space
 \family default
-.
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Use a 
-\family sans
-Return
-\family default
- to begin a new paragraph, then you can use a 
-\family sans
-Space
-\family default
-.
-\end_layout
-
-\begin_layout Itemize
-Or: use 
+ but with a 
 \begin_inset Info
 type  "shortcut"
-arg   "command-alternatives space-insert protected ; math-space"
+arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
- instead.
+.
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 You can't have an empty paragraph or an empty line.
  You must put at least one 
@@ -10151,7 +10133,7 @@ Space
  (shortcut 
 \begin_inset Info
 type  "shortcut"
-arg   "command-alternatives space-insert protected ; math-space"
+arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
 ).
@@ -23274,7 +23256,7 @@ You may want to create spaces that differ from the standard spacing that
  To do this, press 
 \begin_inset Info
 type  "shortcut"
-arg   "command-alternatives space-insert protected ; math-space"
+arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
  or use the 

@@ -96,7 +96,8 @@ dist_declipartdoc_DATA = \
 	de/clipart/Marke.png \
 	de/clipart/Querverweis.png \
 	de/clipart/StandardBoxQt4.png \
-	de/clipart/UnterdokumentQt4.png
+	de/clipart/UnterdokumentQt4.png \
+	de/clipart/Zusammenfassung.pdf
 
 eldocdir = $(docdir)/el
 dist_eldoc_DATA = \

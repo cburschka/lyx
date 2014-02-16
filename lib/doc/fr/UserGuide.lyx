@@ -6336,7 +6336,7 @@ Insécable
  (Soit avec 
 \begin_inset Info
 type  "shortcut"
-arg   "command-alternatives space-insert protected ; math-space"
+arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
  soit avec 
@@ -8021,7 +8021,7 @@ name "fig:Paragraphe-dans-l'environnement"
 
 Paragraphe dans l'environnement 
 \family sans
-Résumé
+Résumé.
 \end_layout
 
 \end_inset
@@ -8305,31 +8305,17 @@ arg   "newline-insert newline"
 
  d'une 
 \family sans
-Espace;
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-utilisez 
-\family sans
-Entrée
+Espace 
 \family default
- pour commencer un nouveau paragraphe, vous pourrez alors utiliser une 
-\family sans
-Espace,
-\end_layout
-
-\begin_layout Itemize
-ou utilisez 
+mais d'une 
 \begin_inset Info
 type  "shortcut"
-arg   "command-alternatives space-insert protected ; math-space"
+arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
- à la place,
+.
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 vous ne pouvez pas avoir un paragraphe vide ou une ligne vide.
  Vous devez mettre au moins une 
@@ -10753,7 +10739,7 @@ insécable
  (raccourci 
 \begin_inset Info
 type  "shortcut"
-arg   "command-alternatives space-insert protected ; math-space"
+arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
 ).
@@ -24416,15 +24402,11 @@ Math ! Espacement
 Vous voudrez peut-être créer des espaces qui soient différents de l'espacement
  proposé implicitement par LaTeX.
  Pour cela, tapez 
-\family sans
-
 \begin_inset Info
 type  "shortcut"
-arg   "command-alternatives space-insert protected ; math-space"
+arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
-
-\family default
  ou utilisez le bouton 
 \family sans
 

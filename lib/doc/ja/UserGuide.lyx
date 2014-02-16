@@ -5179,7 +5179,7 @@ status collapsed
 を使用します(
 \begin_inset Info
 type  "shortcut"
-arg   "command-alternatives space-insert protected ; math-space"
+arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
 と入力するか、
@@ -6485,7 +6485,7 @@ Return
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -6511,7 +6511,7 @@ name "fig:概要環境内の段落"
 \family sans
 概要
 \family default
-環境内の段落
+環境内の段落。
 \end_layout
 
 \end_inset
@@ -6777,37 +6777,19 @@ arg   "newline-insert newline"
 \family sans
 Space
 \family default
-を入れることができません。
-\end_layout
+を入れることができません
+\lang english
+ but by a 
+\lang japanese
 
-\begin_deeper
-\begin_layout Itemize
-
-\family sans
-Return
-\family default
-を使って新しい段落を始めて、それから
-\family sans
-Space
-\family default
-を使って下さい。
-\end_layout
-
-\begin_layout Itemize
-または、
-\family sans
-Space
-\family default
-の代わりに
 \begin_inset Info
 type  "shortcut"
-arg   "command-alternatives space-insert protected ; math-space"
+arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
-を使って下さい。
+。
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 何も入っていない段落や何も入っていない行を作ることはできません。空白にしたい行には、少なくとも一つの
 \family sans
@@ -8767,15 +8749,11 @@ status collapsed
 \end_inset
 
 は
-\family sans
-
 \begin_inset Info
 type  "shortcut"
-arg   "command-alternatives space-insert protected ; math-space"
+arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
-
-\family default
 )で挿入することができます。
 \end_layout
 
@@ -19699,15 +19677,11 @@ status collapsed
 
 \begin_layout Standard
 LaTeXの提供する標準的な余白取りとは異なる余白を使いたいことがあるかもしれません。この場合は、
-\family sans
-
 \begin_inset Info
 type  "shortcut"
-arg   "command-alternatives space-insert protected ; math-space"
+arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
-
-\family default
 を押すか、
 \family sans
 数式パネル
