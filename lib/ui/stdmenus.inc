@@ -254,8 +254,8 @@ Menuset
 		Item "Append Argument" "math-macro-add-param"
 		Item "Remove Last Argument" "math-macro-remove-param"
 		Separator
-		Item "Make First Non-Optional into Optional Argument" "math-macro-make-optional"
-		Item "Make Last Optional into Non-Optional Argument" "math-macro-make-nonoptional"
+		Item "Transform First Non-Optional to Optional Argument" "math-macro-make-optional"
+		Item "Transform Last Optional to Non-Optional Argument" "math-macro-make-nonoptional"
 		Item "Insert Optional Argument" "math-macro-add-optional-param"
 		Item "Remove Optional Argument" "math-macro-remove-optional-param"
 		Separator
