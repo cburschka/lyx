@@ -89,12 +89,7 @@ void InsetCaption::cursorPos(BufferView const & bv,
 
 void InsetCaption::setCustomLabel(docstring const & label)
 {
-	if (!isAscii(label) || label.empty())
-		// This must be a user defined layout. We cannot translate
-		// this, since gettext accepts only ascii keys.
-		custom_label_ = label;
-	else
-		custom_label_ = _(to_ascii(label));
+	custom_label_ = translateIfPossible(label);
 }
 
 
