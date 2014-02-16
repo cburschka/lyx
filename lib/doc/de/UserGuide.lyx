@@ -45,6 +45,11 @@
 % change header rule width
 \renewcommand{\headrulewidth}{2pt}
 
+% um mehr Raum in Tabellenzeilen zu haben
+\@ifundefined{extrarowheight}
+ {\usepackage{array}}{}
+\setlength{\extrarowheight}{2pt}
+
 %für deutsche Nomenlatur
 \renewcommand{\eqdeclaration}[1]{, siehe Gleichung\nobreakspace(#1)}
 \renewcommand{\pagedeclaration}[1]{, Seite\nobreakspace{}#1}
@@ -11147,7 +11152,7 @@ Negatives
 \begin_inset space ~
 \end_inset
 
-Halbes
+halbes
 \begin_inset space ~
 \end_inset
 
@@ -11164,6 +11169,54 @@ Leerzeichen Eine Zeile mit einem
 \end_inset
 
  Negatives, halbes Leerzeichen zwischen den Pfeilen.
+\end_layout
+
+\begin_layout Description
+Negatives
+\begin_inset space ~
+\end_inset
+
+medium
+\begin_inset space ~
+\end_inset
+
+Leerzeichen Eine Zeile mit einem 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset space \negmedspace{}
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ Negatives, medium Leerzeichen zwischen den Pfeilen.
+\end_layout
+
+\begin_layout Description
+Negatives
+\begin_inset space ~
+\end_inset
+
+dickes
+\begin_inset space ~
+\end_inset
+
+Leerzeichen Eine Zeile mit einem 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset space \negthickspace{}
+\end_inset
+
+
+\begin_inset Formula $\gets$
+\end_inset
+
+ Negatives, dickes Leerzeichen zwischen den Pfeilen.
 \end_layout
 
 \begin_layout Description
@@ -11263,7 +11316,7 @@ em) zwischen den Pfeilen.
 \end_layout
 
 \begin_layout Description
-Benutzerdefiniert Eine Zeile mit
+Benutzerdefiniert Eine Zeile mit 
 \begin_inset Formula $\to$
 \end_inset
 
@@ -11326,7 +11379,7 @@ Breite der verschiedenen horizontalen Lerräume.
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="2">
+<lyxtabular version="3" rows="10" columns="2">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -11427,16 +11480,16 @@ em
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Negativ Halb
+Negativ halb
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -11445,6 +11498,62 @@ Negativ Halb
 \end_inset
 
 em
+\begin_inset Formula $\thinspace=\thinspace$
+\end_inset
+
+-3
+\begin_inset space \thinspace{}
+\end_inset
+
+mu
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Negativ medium
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-4
+\begin_inset space \thinspace{}
+\end_inset
+
+mu
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Negativ dick
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-5
+\begin_inset space \thinspace{}
+\end_inset
+
+mu
 \end_layout
 
 \end_inset
