@@ -503,10 +503,9 @@ Formules ! en ligne
 Ctrl+M, Alt+C M, Alt+M M
 \family default
  ou sur le bouton 
-\begin_inset Graphics
-	filename ../../images/math-mode.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-mode"
 \end_inset
 
  de la barre d'outils
@@ -647,10 +646,9 @@ Mode TeX
 \end_inset
 
  est activé en appuyant sur le bouton 
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
 \end_inset
 
  de la barre d'outils ou en utilisant le menu 
@@ -1434,13 +1432,12 @@ _
 \end_inset
 
  ou avec le bouton 
-\begin_inset Graphics
-	filename ../../images/math-subscript.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-subscript"
 \end_inset
 
-de la barre d'outils mathématique, les exposants avec un accent circonflexe
+ de la barre d'outils mathématique, les exposants avec un accent circonflexe
  
 \begin_inset Quotes eld
 \end_inset
@@ -1450,10 +1447,9 @@ de la barre d'outils mathématique, les exposants avec un accent circonflexe
 \end_inset
 
  ou avec le bouton 
-\begin_inset Graphics
-	filename ../../images/math-superscript.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-superscript"
 \end_inset
 
 .
@@ -1633,20 +1629,18 @@ frac
 \end_inset
 
  ou avec le bouton 
-\begin_inset Graphics
-	filename ../../images/math/frac.png
-	scale 50
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac"
 \end_inset
 
  de la barre d'outils mathématique.
  La taille de la police est ajustée automatiquement selon que l'on se trouve
  dans une formule en ligne ou hors ligne.
  Avec le bouton 
-\begin_inset Graphics
-	filename ../../images/math/frac-square.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac-square"
 \end_inset
 
  de la barre d'outils mathématique, vous pouvez choisir entre différents
@@ -2236,10 +2230,9 @@ sqrt
 \end_inset
 
  ou avec le bouton 
-\begin_inset Graphics
-	filename ../../images/math/sqrt.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\sqrt"
 \end_inset
 
  de la barre d'outils mathématique, et toutes les autres racines avec la
@@ -2262,10 +2255,9 @@ root
 \end_inset
 
  ou avec le bouton 
-\begin_inset Graphics
-	filename ../../images/math/root.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\root"
 \end_inset
 
 .
@@ -2545,13 +2537,12 @@ binom
 \end_inset
 
  ou avec le bouton 
-\begin_inset Graphics
-	filename ../../images/math/frac-square.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac-square"
 \end_inset
 
-de la barre d'outils mathématique.
+ de la barre d'outils mathématique.
  Comme pour les fraction (
 \series bold
 
@@ -2992,11 +2983,9 @@ Après avoir inséré
 cases
 \series default
  ou avoir utilisé le bouton 
-\begin_inset Graphics
-	filename ../../images/math/cases.png
-	lyxscale 50
-	scale 50
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\cases"
 \end_inset
 
  de la barre d'outils mathématique, vous pouvez ajouter de nouvelles lignes
@@ -3005,10 +2994,9 @@ cases
 Ctrl+Entrée
 \family default
  ou avec le bouton 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-row.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
 .
@@ -3405,10 +3393,32 @@ phantom
 \end_inset
 
  ou le bouton
-\begin_inset space ~
+\begin_inset space \thinspace{}
 \end_inset
 
 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+can be found in the submenu of the toolbar button
+\lang french
+ 
+\family sans
+
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\space"
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset Graphics
 	filename ../../images/math/phantom.png
 	scale 85
@@ -4138,10 +4148,9 @@ status collapsed
 
 \begin_layout Plain Layout
 Dans la barre d'outils mathématique dans le sous-menu du bouton 
-\begin_inset Graphics
-	filename ../../images/math/ldots.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\ldots"
 \end_inset
 
 
@@ -4732,10 +4741,9 @@ Matrices
 
 \begin_layout Standard
 On peut insérer des matrices avec le bouton 
-\begin_inset Graphics
-	filename ../../images/dialog-show_mathmatrix.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathmatrix"
 \end_inset
 
  de la barre d'outils mathématique ou en utilisant le menu
@@ -4869,17 +4877,15 @@ C & F & 10000
 \begin_layout Standard
 Pour ajouter ou supprimer des lignes ou des colonnes après coup, on peut
  utiliser les boutons 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-row.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
 , 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-row.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-row"
 \end_inset
 
 , etc.
@@ -6557,10 +6563,9 @@ right
 \end_inset
 
 
-\begin_inset Graphics
-	filename ../../images/dialog-show_mathdelimiter.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
 \end_inset
 
  de la barre d'outils mathématique.
@@ -7347,10 +7352,9 @@ Flèches
 
 \begin_layout Standard
 On peut insérer des flèches avec le bouton 
-\begin_inset Graphics
-	filename ../../images/math/leftarrow.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\leftarrow"
 \end_inset
 
  de la barre d'outils mathématique ou en insérant une des commandes listées

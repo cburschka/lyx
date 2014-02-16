@@ -491,10 +491,9 @@ arg   "math-mode"
 \end_inset
 
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/math-mode.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-mode"
 \end_inset
 
 .
@@ -644,10 +643,9 @@ T@TeX-mode
 \end_inset
 
  is invoked by pressing the toolbar button 
-\begin_inset Graphics
-	filename ../images/ert-insert.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
 \end_inset
 
  or by using the menu 
@@ -1500,10 +1498,9 @@ _
 \end_inset
 
  or via the math toolbar button 
-\begin_inset Graphics
-	filename ../images/math-subscript.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-subscript"
 \end_inset
 
 , exponents with a caret 
@@ -1515,10 +1512,9 @@ _
 \end_inset
 
  or via the math toolbar button 
-\begin_inset Graphics
-	filename ../images/math-superscript.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-superscript"
 \end_inset
 
 .
@@ -1709,20 +1705,18 @@ frac
 \end_inset
 
  or via the math toolbar button 
-\begin_inset Graphics
-	filename ../images/math/frac.png
-	scale 50
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac"
 \end_inset
 
 .
  The font size is adjusted automatically, depending on whether the fraction
  is in an inline or display style formula.
  With the math toolbar button 
-\begin_inset Graphics
-	filename ../images/math/frac-square.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac-square"
 \end_inset
 
  you can select different fraction types.
@@ -2308,10 +2302,9 @@ sqrt
 \end_inset
 
  or the math toolbar button 
-\begin_inset Graphics
-	filename ../images/math/sqrt.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\sqrt"
 \end_inset
 
 , all other roots with the command 
@@ -2333,10 +2326,9 @@ root
 \end_inset
 
  or with the math toolbar button 
-\begin_inset Graphics
-	filename ../images/math/root.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\root"
 \end_inset
 
 .
@@ -2616,10 +2608,9 @@ binom
 \end_inset
 
  or with the submenu of the math toolbar button 
-\begin_inset Graphics
-	filename ../images/math/frac-square.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac-square"
 \end_inset
 
 .
@@ -3066,10 +3057,9 @@ After inserting
 cases
 \series default
  or pressing the math toolbar button 
-\begin_inset Graphics
-	filename ../images/math/cases.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\cases"
 \end_inset
 
  you can create new lines with the shortcut 
@@ -3079,10 +3069,9 @@ arg   "newline-insert newline"
 \end_inset
 
  or the table toolbar button 
-\begin_inset Graphics
-	filename ../images/tabular-feature_append-row.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
 .
@@ -3472,10 +3461,11 @@ status collapsed
 
 \begin_layout Plain Layout
 can be found in the submenu of the toolbar button 
-\begin_inset Graphics
-	filename ../images/math/space.png
-	scale 85
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\space"
 \end_inset
 
 
@@ -4185,10 +4175,9 @@ status collapsed
 
 \begin_layout Plain Layout
 In the math toolbar in the submenu of the button 
-\begin_inset Graphics
-	filename ../images/math/ldots.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\ldots"
 \end_inset
 
 
@@ -4771,10 +4760,9 @@ Matrices
 
 \begin_layout Standard
 Matrices can be inserted via the math toolbar button 
-\begin_inset Graphics
-	filename ../images/dialog-show_mathmatrix.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathmatrix"
 \end_inset
 
  or the menu 
@@ -4903,17 +4891,15 @@ C & F & 10000
 \begin_layout Standard
 To add or delete rows and columns subsequently, the math toolbar buttons
  
-\begin_inset Graphics
-	filename ../images/tabular-feature_append-row.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
 , 
-\begin_inset Graphics
-	filename ../images/tabular-feature_delete-row.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-row"
 \end_inset
 
 , etc.
@@ -6613,10 +6599,9 @@ right
 \end_inset
 
  or via the math toolbar button 
-\begin_inset Graphics
-	filename ../images/dialog-show_mathdelimiter.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
 \end_inset
 
 .
@@ -7392,10 +7377,9 @@ Arrows
 
 \begin_layout Standard
 Arrows can be inserted via the math toolbar button 
-\begin_inset Graphics
-	filename ../images/math/leftarrow.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\leftarrow"
 \end_inset
 
  or the commands listed in the following subsections.
@@ -22493,7 +22477,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-All relations can also be inserted via the toolbar button 
+All following relations can also be inserted via the toolbar button 
 \begin_inset Graphics
 	filename ../images/math/leq.png
 	scale 85
@@ -23962,6 +23946,25 @@ B
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+LyX supports also many special relations.
+ Use the toolbar button 
+\begin_inset Graphics
+	filename ../images/math/leq.png
+	scale 85
+
+\end_inset
+
+ to see a list of possible relations.
 \end_layout
 
 \begin_layout Section

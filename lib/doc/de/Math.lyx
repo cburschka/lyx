@@ -498,10 +498,9 @@ Formel ! eingebettete
 Strg+M
 \family default
  oder den Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/math-mode.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-mode"
 \end_inset
 
 .
@@ -649,10 +648,9 @@ T@TeX-Modus
 \end_inset
 
  gelangt man über den Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
 \end_inset
 
  oder das Menü 
@@ -1503,18 +1501,16 @@ status collapsed
 \begin_layout Standard
 Indizes werden mit dem Unterstrich _ oder mit dem Mathe-Werkzeugleistenknopf
  
-\begin_inset Graphics
-	filename ../../images/math-subscript.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-subscript"
 \end_inset
 
 , Exponenten mit dem Zirkumflexzeichen ^ oder mit dem Mathe-Werkzeugleistenknopf
  
-\begin_inset Graphics
-	filename ../../images/math-superscript.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-superscript"
 \end_inset
 
  erzeugt.
@@ -1701,20 +1697,18 @@ frac
 \end_inset
 
  oder mit dem Mathe-Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/math/frac.png
-	scale 50
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac"
 \end_inset
 
  erstellt.
  Die Zeichengröße wird automatisch angepasst, je nachdem, ob sich der Bruch
  in einer eingebetteten oder abgesetzten Formel befindet.
  Mit dem Mathe-Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/math/frac-square.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac-square"
 \end_inset
 
  können verschieden Bruchtypen gewählt werden.
@@ -2301,10 +2295,9 @@ sqrt
 \end_inset
 
  oder dem Mathe-Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/math/sqrt.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\sqrt"
 \end_inset
 
  gesetzt, alle anderen Wurzeln mit dem Befehl 
@@ -2326,10 +2319,9 @@ root
 \end_inset
 
  oder dem Mathe-Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/math/root.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\root"
 \end_inset
 
 .
@@ -2617,13 +2609,12 @@ binom
 \end_inset
 
  oder über das Untermenü des Mathe-Werkzeugleistenknopfs 
-\begin_inset Graphics
-	filename ../../images/math/frac-square.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac-square"
 \end_inset
 
-eingefügt werden.
+ eingefügt werden.
  Analog zu Brüchen (
 \series bold
 
@@ -3061,10 +3052,9 @@ Nach der Eingabe von
 cases
 \series default
  oder der Benutzung des Mathe-Werkzeugleistenknopfs 
-\begin_inset Graphics
-	filename ../../images/math/cases.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\cases"
 \end_inset
 
  können mit 
@@ -3072,10 +3062,9 @@ cases
 Strg+Enter
 \family default
  oder dem Tabellen-Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-row.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
  neue Zeilen erstellt werden.
@@ -3483,10 +3472,11 @@ status collapsed
 
 \begin_layout Plain Layout
 zu finden im Untermenü des Mathe-Werkzeugleistenknopfs 
-\begin_inset Graphics
-	filename ../../images/math/space.png
-	scale 85
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\space"
 \end_inset
 
 
@@ -4206,10 +4196,9 @@ status collapsed
 
 \begin_layout Plain Layout
 In der Mathe-Werkzeugleiste zu finden im Untermenü des Knopfs 
-\begin_inset Graphics
-	filename ../../images/math/ldots.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\ldots"
 \end_inset
 
 
@@ -4794,10 +4783,9 @@ Matrizen können über den Mathe-Werkzeugleistenknopf
  
 \family default
 
-\begin_inset Graphics
-	filename ../../images/dialog-show_mathmatrix.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathmatrix"
 \end_inset
 
  oder das Menü 
@@ -4933,17 +4921,15 @@ C & F & 10000
 \begin_layout Standard
 Um nachträglich Zeilen und Spalten hinzuzufügen oder zu entfernen, kann
  man die Mathe-Werkzeugleistenknöpfe 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-row.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
 , 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-row.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-row"
 \end_inset
 
 , usw.
@@ -6647,10 +6633,9 @@ right
  
 \family default
 
-\begin_inset Graphics
-	filename ../../images/dialog-show_mathdelimiter.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
 \end_inset
 
  eingefügt werden.
@@ -7439,10 +7424,9 @@ Pfeile
 
 \begin_layout Standard
 Pfeile können über den Mathe-Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/math/leftarrow.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\leftarrow"
 \end_inset
 
  oder mit den Befehlen eingefügt werden, die in den folgenden Unterkapiteln

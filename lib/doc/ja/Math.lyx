@@ -552,10 +552,9 @@ arg   "math-mode"
 \end_inset
 
 のうちのいずれか、あるいはツールバーボタン
-\begin_inset Graphics
-	filename ../../images/math-mode.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-mode"
 \end_inset
 
 を使用してください。
@@ -699,10 +698,9 @@ T@TeXモード
 \end_inset
 
 は、ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/ert-insert.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
 \end_inset
 
 を押すか、
@@ -1482,17 +1480,15 @@ status collapsed
 
 \begin_layout Standard
 添字は、アンダースコア「_」を打鍵するか、数式ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/math-subscript.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-subscript"
 \end_inset
 
 を使って入力することができ、指数は、キャレット「^」を打鍵するか、数式ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/math-superscript.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-superscript"
 \end_inset
 
 を使って入力することができます。
@@ -1681,17 +1677,15 @@ frac
 \end_inset
 
 か数式ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/math/frac.png
-	scale 50
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac"
 \end_inset
 
 で作ることができます。フォント寸法は、分数が行内数式にあるか別行立て数式にあるかに応じて、自動的に調整されます。数式ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/math/frac-square.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac-square"
 \end_inset
 
 を使えば、分数の種類を選ぶことができます。
@@ -2327,10 +2321,9 @@ sqrt
 \end_inset
 
 か数式ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/math/sqrt.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\sqrt"
 \end_inset
 
 で作成することができ、他のすべての根号は、コマンド
@@ -2352,10 +2345,9 @@ root
 \end_inset
 
 か数式ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/math/root.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\root"
 \end_inset
 
 で作成することができます。
@@ -2630,10 +2622,9 @@ binom
 \end_inset
 
 か数式ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/math/frac-square.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\frac-square"
 \end_inset
 
 の小メニューを使って挿入することができます。分数(
@@ -3082,10 +3073,9 @@ B & \textrm{for }x=0
 cases
 \series default
 を挿入するか数式ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/math/cases.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\cases"
 \end_inset
 
 を使用した後では、
@@ -3115,10 +3105,9 @@ arg   "newline-insert newline"
 \end_inset
 
 か表ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-row.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
 を使えば、新しい行を作ることができます。
@@ -3524,12 +3513,15 @@ status collapsed
 
 \begin_layout Plain Layout
 ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/math/space.png
-	scale 85
+\family sans
 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\space"
 \end_inset
 
+
+\family default
 の小メニューに入っています。
 \end_layout
 
@@ -4267,10 +4259,9 @@ status collapsed
 
 \begin_layout Plain Layout
 数式ツールバー中の
-\begin_inset Graphics
-	filename ../../images/math/ldots.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\ldots"
 \end_inset
 
 ボタンで表示されている小メニューです。
@@ -4837,10 +4828,9 @@ status collapsed
 
 \begin_layout Standard
 行列は、数式ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/dialog-show_mathmatrix.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathmatrix"
 \end_inset
 
 か
@@ -4954,17 +4944,15 @@ C & F & 10000
 
 \begin_layout Standard
 つづいて行や列を追加したり削除したりするには、数式ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-row.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
 や
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-row.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-row"
 \end_inset
 
 などや
@@ -6656,10 +6644,9 @@ right
 \end_inset
 
 コマンド、あるいは数式ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/dialog-show_mathdelimiter.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
 \end_inset
 
 で挿入することができます。
@@ -7454,10 +7441,9 @@ status collapsed
 
 \begin_layout Standard
 矢印は、数式ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/math/leftarrow.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\leftarrow"
 \end_inset
 
 か、以下の各小節に列挙してあるコマンドで挿入することができます。
