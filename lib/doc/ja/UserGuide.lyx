@@ -4592,8 +4592,6 @@ status collapsed
 
 \begin_layout Subsubsection
 詩句
-\family sans
-
 \begin_inset Index idx
 status collapsed
 
@@ -4613,6 +4611,8 @@ status collapsed
 
 \end_inset
 
+
+\family sans
 
 \begin_inset CommandInset label
 LatexCommand label
@@ -19687,15 +19687,11 @@ arg   "command-alternatives math-space ; space-insert protected"
 数式パネル
 \family default
 のボタン
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\space"
 \end_inset
 
-
-\family default
 を使用してください。これは小さな空白を追加するもので、画面上には小さなマーカーが表示されます。例えば、
 \series bold
 a Ctrl+Space b
@@ -19793,15 +19789,11 @@ name "sub:関数"
 数式パネル
 \family default
 の
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\functions"
 \end_inset
 
-
-\family default
 ボタンの中には、
 \begin_inset Formula $\sin$
 \end_inset
@@ -20552,15 +20544,11 @@ status collapsed
 
 \begin_layout Standard
 LyXでは、行列は数式パネルの行列ボタン
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathmatrix"
 \end_inset
 
-
-\family default
 を使用して入力します。これを押すとダイアログが表示されますので、行数と列数を指定してください。以下が作例です。 
 \begin_inset Formula 
 \[
@@ -20974,15 +20962,11 @@ status collapsed
 
 \begin_layout Standard
 文字の標準フォントはイタリック体であり、数字の標準フォントはローマン体です。数式中でフォントを指定するには、数式パネルの
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\font"
 \end_inset
 
-
-\family default
 ボタンを使用するか、第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -21392,49 +21376,17 @@ status collapsed
 数式パネル
 \family default
 の中の
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\font"
 \end_inset
 
-
-\family default
 ボタンにある項目「
 \family sans
 標準テキストモード
 \family default
-」(あるいは
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\family sans
-Alt-M
-\begin_inset space ~
-\end_inset
-
-M
-\family default
-)を選択して得られる、数式内文章を使用してください。LyX内では、数式内文章は、青色ではなく黒色で表示されます。数式内文章では、通常の本文と同様に空白やアクセン
-トが使用できます。以下の例をご覧ください。
+」(あるいを選択して得られる、数式内文章を使用してください。LyX内では、数式内文章は、青色ではなく黒色で表示されます。数式内文章では、通常の本文と同様に空白や
+アクセントが使用できます。以下の例をご覧ください。
 \begin_inset Formula 
 \[
 f(x)=\begin{cases}

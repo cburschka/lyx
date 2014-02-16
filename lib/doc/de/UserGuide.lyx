@@ -5626,6 +5626,20 @@ Zitat
 
 \family sans
 Gedicht
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Absatz ! Gedicht
+\end_layout
+
+\end_inset
+
+
+\family sans
+
 \begin_inset Index idx
 status collapsed
 
@@ -8328,7 +8342,7 @@ yX-Code
 status collapsed
 
 \begin_layout Plain Layout
-Ly
+Absatz ! Ly
 \begin_inset ERT
 status collapsed
 
@@ -23989,15 +24003,11 @@ Strg+Leertaste
 Mathe
 \family default
  Werkzeugleistenknopf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\space"
 \end_inset
 
-
-\family default
 .
  Dies erzeugt einen kleinen Leerraum mit einer Marke zur Visualisierung.
  Zum Beispiel erscheint die Sequenz 
@@ -24090,15 +24100,11 @@ Die Funktionen wie
 \end_inset
 
 kann man entweder mit dem Werkzeugleistenknopf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\functions"
 \end_inset
 
-
-\family default
  oder mit Befehlen wie 
 \series bold
 
@@ -24832,15 +24838,11 @@ Array-Umgebung
 Mathe-Werkzeugleiste
 \family default
  den Knopf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathmatrix"
 \end_inset
 
-
-\family default
  an, der das Menü 
 \family sans
 Mathe-Matrix
@@ -25405,15 +25407,11 @@ Schriftstile
 
 \begin_layout Standard
 Sie können verschiedene Schriftstile benutzen, die Sie über den Knopf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\font"
 \end_inset
 
-
-\family default
  auf der 
 \family sans
 Mathe-Werkzeugleiste
@@ -25875,47 +25873,29 @@ Die verschiedenen Schriftstile sind hilfreich, um Variablennamen in einem
  bestimmten Zeichensatz einzugeben, aber sicherlich nicht, um damit normalen
  Text zu schreiben.
  Verwenden Sie deshalb zum Schreiben von längeren Textstücken den mathematischen
- Textmodus, den Sie durch 
+ Textmodus, den Sie über den Eintrag 
 \family sans
-Alt+M
+Normaler
 \begin_inset space ~
 \end_inset
 
-M
+Textmodus
 \family default
- aktivieren, wenn Sie sich bereits im Mathematikmodus befinden.
- Der mathematische Textmodus wird am Bildschirm in Schwarz anstelle des
- üblichen Blau dargestellt.
- Sie können in diesem Modus allerdings nicht den Zeichensatz wechseln oder
- Satzzeichen verwenden,
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Außerdem gibt der mathematische Textmodus den Text in einer 
-\family typewriter
-
-\backslash
-textrm{}
-\family default
--Umgebung aus, obwohl eigentlich 
-\family typewriter
-
-\backslash
-mbox
-\family default
- (oder das 
-\family typewriter
-
-\backslash
-text
-\family default
- von AMS-LaTeX) die bessere Wahl wäre.
-\end_layout
-
+ des Knopfs 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\font"
 \end_inset
 
- doch für einfache Texte ist das ausreichend.
+ der 
+\family sans
+Mathe-Werkzeugleiste
+\family default
+ aktivieren.
+ Mathematischer Text wird am Bildschirm in Schwarz anstelle des üblichen
+ Blau dargestellt.
+ Sie können in diesem Modus Leerzeichen und Akzente wie im normalen Text
+ verwenden.
  Hier ist ein Beispiel:
 \end_layout
 
@@ -25984,15 +25964,11 @@ displaystyle
  Außer einigen Operatoren, die ihre Größe an die jeweilige Situation anpassen,
  werden die Texte in der Größe gesetzt, die LaTeX für geeignet hält.
  Diese Größe kann mit dem Knopf 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\style"
 \end_inset
 
-
-\family default
  der 
 \family sans
 Mathe-Werkzeugleiste

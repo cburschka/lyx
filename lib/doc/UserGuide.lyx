@@ -3739,8 +3739,6 @@ Document ! Layout
 \end_inset
 
 
-\family sans
-
 \begin_inset Index idx
 status collapsed
 
@@ -3935,8 +3933,6 @@ Document\SpecialChar \menuseparator
 Settings
 \family default
  dialog:
-\family sans
-
 \begin_inset Index idx
 status collapsed
 
@@ -5391,8 +5387,6 @@ Paragraph ! Verse
 \end_inset
 
 
-\family sans
-
 \begin_inset Index idx
 status collapsed
 
@@ -5402,6 +5396,8 @@ Poetry
 
 \end_inset
 
+
+\family sans
 
 \begin_inset CommandInset label
 LatexCommand label
@@ -23268,15 +23264,11 @@ Math
 Panel
 \family default
  button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\space"
 \end_inset
 
-
-\family default
 .
  This generates a small space, and shows a small marker on the screen.
  For example, the sequence 
@@ -23365,15 +23357,11 @@ Math
 Panel
 \family default
  contains under the button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\functions"
 \end_inset
 
-
-\family default
  a number of function macros, such as 
 \begin_inset Formula $\sin$
 \end_inset
@@ -24289,15 +24277,11 @@ Math
 Panel
 \family default
  matrix button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathmatrix"
 \end_inset
 
-
-\family default
 .
  It will open a dialog for you to choose the number of rows/columns.
  Here is an example:
@@ -24830,15 +24814,11 @@ Math
 Panel
 \family default
  button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\font"
 \end_inset
 
-
-\family default
 , or enter its command, listed in table
 \begin_inset space ~
 \end_inset
@@ -25314,22 +25294,12 @@ Math
 Panel
 \family default
  button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\font"
 \end_inset
 
-
-\family default
- (shortcut 
-\begin_inset Info
-type  "shortcut"
-arg   "font-default"
-\end_inset
-
-).
+.
  Math text appears in LyX in black instead of blue.
  You can use spaces and accents in math text as in normal text.
  Here is an example:
@@ -25398,15 +25368,11 @@ displaystyle
  situations, all text will be set in the styles that LaTeX thinks are appropriat
 e.
  These choices can be overridden by using the math panel button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\style"
 \end_inset
 
-
-\family default
 .
  A box for the size will be created in which you can insert the math structure.
  For example, you can set 

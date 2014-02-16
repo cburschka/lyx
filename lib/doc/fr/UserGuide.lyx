@@ -4129,8 +4129,6 @@ Document\SpecialChar \menuseparator
 Paramètres
 \family default
  :
-\family sans
-
 \begin_inset Index idx
 status collapsed
 
@@ -24408,15 +24406,11 @@ arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
  ou utilisez le bouton 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\space"
 \end_inset
 
-
-\family default
  de la 
 \family sans
 Palette
@@ -24516,15 +24510,11 @@ Palette
 mathématique
 \family default
  contient sous le bouton 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\functions"
 \end_inset
 
-
-\family default
  un certain nombre de 
 \begin_inset Quotes fld
 \end_inset
@@ -25138,9 +25128,9 @@ Il y a plusieurs délimiteurs disponibles avec LyX.
 <>
 \family default
  devraient suffire, mais l'effet est meilleur avec l'icône 
-\begin_inset Graphics
-	filename ../../images/math/delim.png
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show mathdelimiter"
 \end_inset
 
  de la barre d'outils math, surtout si vous voulez encadrer une grande structure
@@ -25163,7 +25153,7 @@ Il y a plusieurs délimiteurs disponibles avec LyX.
 
 pour rendre plus visibles les niveaux de parenthèses.
  Ci-dessous, l'expression de gauche a été saisie en utilisant l'icône de
- délimitation
+ délimitation 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathdelimiter"
@@ -25269,18 +25259,14 @@ mathématique
 \family default
 : il y a un bouton 
 \family sans
-Matrice
+Mat
 \family default
- 
-\family sans
-
+rice 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathmatrix"
 \end_inset
 
-
-\family default
 , qui ouvre une fenêtre pour choisir le nombre de lignes et de colonnes.
  Voici un exemple :
 \end_layout
@@ -25864,15 +25850,11 @@ La police standard pour du texte est l'italique,
 , mais pour les nombres le standard est le romain.
  Pour obtenir une police donnée dans une formule, choisissez-la dans la
  palette mathématique en utilisant le bouton 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\font"
 \end_inset
 
-
-\family default
 , ou entrez la commande LaTeX directement, comme c'est indiqué dans la table
 \begin_inset space ~
 \end_inset
@@ -26394,16 +26376,12 @@ texte
 normal
 \family default
  sous le bouton 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\font"
 \end_inset
 
- 
-\family default
-de la
+ de la
 \family sans
  Palette
 \begin_inset space ~
@@ -26411,15 +26389,7 @@ de la
 
 mathématique
 \family default
- (vous pouvez aussi utiliser le raccourci clavier 
-\family sans
-Alt-M
-\begin_inset space ~
-\end_inset
-
-M
-\family default
-).
+.
  Le texte mathématique apparaît dans LyX en noir plutôt qu'en bleu comme
  les autres éléments de formules.
  Dans le texte mathématique, vous pouvez utiliser des espaces et des accents
@@ -26527,15 +26497,11 @@ ligne
  aux différentes situations, tous le texte va être mis dans le style que
  LaTeX juge approprié.
  On peut passer outre ces choix en utilisant le bouton 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\style"
 \end_inset
 
-
-\family default
  de la palette mathématique.
  Une boîte va être insérée dans laquelle vous pouvez utiliser la taille
  choisie.

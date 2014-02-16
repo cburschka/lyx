@@ -3544,6 +3544,13 @@ reference "sub:Encabezados"
 
 \begin_layout Subsection
 Formato de un documento
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Formato-de-documento"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
@@ -3553,15 +3560,6 @@ Documentos ! Formato
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Formato-de-documento"
-
-\end_inset
-
-
-\family sans
 
 \begin_inset Index idx
 status collapsed
@@ -3788,8 +3786,6 @@ de
 página
 \family default
  encontrarás las siguientes opciones:
-\family sans
-
 \begin_inset Index idx
 status collapsed
 
@@ -5237,8 +5233,6 @@ Párrafos ! Verso
 \end_inset
 
 
-\family sans
-
 \begin_inset Index idx
 status collapsed
 
@@ -5248,6 +5242,8 @@ Poesía
 
 \end_inset
 
+
+\family sans
 
 \begin_inset CommandInset label
 LatexCommand label
@@ -23733,15 +23729,11 @@ El espacio estándar provisto por LaTeX se puede cambiar.
 Ctrl+Espacio
 \family default
  o usa el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\space"
 \end_inset
 
-
-\family default
  de los 
 \family sans
 Paneles de ecuaciones
@@ -23836,15 +23828,11 @@ name "sub:Funciones"
 
 \begin_layout Standard
 El botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\functions"
 \end_inset
 
-
-\family default
  abre el 
 \family sans
 Panel
@@ -24838,15 +24826,11 @@ Matemáticas ! Ecuaciones multilínea
 
 \begin_layout Standard
 Las matrices se introducen con el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathmatrix"
 \end_inset
 
-
-\family default
  de la 
 \family sans
 Barra
@@ -25397,18 +25381,14 @@ Matemáticas ! Estilos de la tipografía
 \begin_layout Standard
 La tipografía estándar para el texto es cursiva, y para números es romana.
  Para establecer una tipografía en una ecuación usa el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\font"
 \end_inset
 
-
-\family default
- de 
+ de Pa
 \family sans
-Paneles de ecuaciones
+neles de ecuaciones
 \family default
 , o introduce directamente el comando adecuado, según el cuadro
 \begin_inset space ~
@@ -25876,28 +25856,16 @@ Modo texto
 normal
 \family default
  en la lista desplegable que surge al pulsar el botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\font"
 \end_inset
 
-
-\family default
  de los 
 \family sans
 Paneles de ecuaciones
 \family default
- (o bien el atajo 
-\family sans
-Alt+C
-\begin_inset space ~
-\end_inset
-
-Espacio
-\family default
-).
+.
  En LyX, el texto normal dentro de una ecuación aparece en negro, no en
  azul.
  Puedes usar espacios y acentos de la manera habitual.
@@ -25994,15 +25962,11 @@ presentación.
 Panel de ecuaciones con el
 \family default
  botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\style"
 \end_inset
 
-
-\family default
 .
  Aparece un rectángulo de tamaño adecuado al estilo elegido en el que puedes
  insertar la estructura matemática.
