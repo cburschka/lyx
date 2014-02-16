@@ -91,11 +91,6 @@
 % example macro from sec. 19.4
 %\def\tagform@#1{\maketag@@@{|#1|}}
 
-% macro from sec. 10.2
-\def\clap#1{\hbox to 0pt{\hss #1\hss}}
-\def\mathclap {\mathpalette \mathclapinternal}
-\def\mathclapinternal #1#2{\clap{$\mathsurround =0pt #1{#2}$}}
-
 
 % ------------------------------------
 % used to check for needed LaTeX packages
@@ -185,7 +180,7 @@
 \use_package cancel 0
 \use_package esint 1
 \use_package mathdots 1
-\use_package mathtools 0
+\use_package mathtools 1
 \use_package mhchem 1
 \use_package stackrel 0
 \use_package stmaryrd 0
@@ -291,7 +286,7 @@ status open
 \begin_layout Plain Layout
 To export this document to PDF, PS or DVI the LaTeX-packages 
 \series bold
-braket, cancel, eurosym, mathdots, mhchem, undertilde
+braket, cancel, eurosym, mathdots, mathtools, mhchem, undertilde
 \series default
  and 
 \series bold
@@ -15582,54 +15577,7 @@ reference "eq:substack"
 
  there can be too much space beside an operator, because the characters
  following the operator are set beside the limits.
-\end_layout
-
-\begin_layout Standard
-To avoid this, the following macro can be used in the LaTeX-preamble:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-def
-\backslash
-clap#1{
-\backslash
-hbox to 0pt{
-\backslash
-hss #1
-\backslash
-hss}}
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-def
-\backslash
-mathclap {
-\backslash
-mathpalette 
-\backslash
-mathclapinternal}
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-def
-\backslash
-mathclapinternal #1#2{
-\backslash
-clap{$
-\backslash
-mathsurround =0pt #1{#2}$}}
-\end_layout
-
-\begin_layout Standard
-This defines the command 
+ To avoid this the command 
 \series bold
 
 \backslash
@@ -15647,27 +15595,15 @@ mathclap
 
 \end_inset
 
- that sets the width of the limit to 0
+ can be used.
+ It sets the width of its content to 0
 \begin_inset space \thinspace{}
 \end_inset
 
 pt.
- The command scheme is
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
-
-\series bold
-
-\backslash
-mathclap{limit}
-\end_layout
-
-\begin_layout Standard
-where the limit can consist of several conditions.
-\end_layout
-
-\begin_layout Standard
 Applied on formula 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -15685,7 +15621,7 @@ reference "eq:substack"
 \backslash
 sum_
 \backslash
-mathclap{
+mathclap
 \backslash
 substack
 \begin_inset space \textvisiblespace{}

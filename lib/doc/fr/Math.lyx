@@ -92,11 +92,6 @@
 % example macro from sec. 19.4
 %\def\tagform@#1{\maketag@@@{|#1|}}
 
-% macro from sec. 10.2
-\def\clap#1{\hbox to 0pt{\hss #1\hss}}
-\def\mathclap {\mathpalette \mathclapinternal}
-\def\mathclapinternal #1#2{\clap{$\mathsurround =0pt #1{#2}$}}
-
 
 % ------------------------------------
 % used to check for needed LaTeX packages
@@ -189,7 +184,7 @@
 \use_package cancel 0
 \use_package esint 1
 \use_package mathdots 1
-\use_package mathtools 0
+\use_package mathtools 1
 \use_package mhchem 1
 \use_package stackrel 0
 \use_package stmaryrd 0
@@ -306,7 +301,7 @@ status open
 Pour pouvoir exporter ce document en PDF, PS, ou DVI les paquetages LaTeX
  
 \series bold
-braket, cancel, eurosym, mathdots, mhchem, undertilde
+braket, cancel, eurosym, mathdots, mathtools, mhchem, undertilde
 \series default
  et 
 \series bold
@@ -15169,13 +15164,6 @@ dotsint
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Limites des opérateurs
 \begin_inset CommandInset label
@@ -15580,54 +15568,7 @@ reference "eq:substack"
 
 , il se peut qu'il y ait trop d'espace après un opérateur, puisque les caractère
 s qui suivent l'opérateur se trouvent après la limite.
-\end_layout
-
-\begin_layout Standard
-Pour éviter cela, on peut utiliser la macro suivante dans le préambule LaTeX:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-def
-\backslash
-clap#1{
-\backslash
-hbox to 0pt{
-\backslash
-hss #1
-\backslash
-hss}}
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-def
-\backslash
-mathclap {
-\backslash
-mathpalette 
-\backslash
-mathclapinternal}
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-def
-\backslash
-mathclapinternal #1#2{
-\backslash
-clap{$
-\backslash
-mathsurround =0pt #1{#2}$}}
-\end_layout
-
-\begin_layout Standard
-Elle définit la commande 
+ Pour éviter cela, on peut utiliser la commande 
 \series bold
 
 \backslash
@@ -15645,27 +15586,18 @@ mathclap
 
 \end_inset
 
- qui met la largeur de la limite à 0
+ qui met la largeur 
+\lang english
+of its content
+\lang french
+ à 0
 \begin_inset space \thinspace{}
 \end_inset
 
 pt.
- La syntaxe de la commande est:
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
-
-\series bold
-
-\backslash
-mathclap{limite}
-\end_layout
-
-\begin_layout Standard
-où la limite peut être composée de plusieurs conditions.
-\end_layout
-
-\begin_layout Standard
 Appliqué à la formule 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -15683,7 +15615,7 @@ reference "eq:substack"
 \backslash
 sum_
 \backslash
-mathclap{
+mathclap
 \backslash
 substack
 \begin_inset space \textvisiblespace{}

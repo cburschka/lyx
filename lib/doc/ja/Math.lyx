@@ -100,11 +100,6 @@
 % example macro from sec. 19.4
 %\def\tagform@#1{\maketag@@@{|#1|}}
 
-% macro from sec. 10.2
-\def\clap#1{\hbox to 0pt{\hss #1\hss}}
-\def\mathclap {\mathpalette \mathclapinternal}
-\def\mathclapinternal #1#2{\clap{$\mathsurround =0pt #1{#2}$}}
-
 
 % ------------------------------------
 % used to check for needed LaTeX packages
@@ -226,7 +221,7 @@ End
 \use_package cancel 0
 \use_package esint 1
 \use_package mathdots 1
-\use_package mathtools 0
+\use_package mathtools 1
 \use_package mhchem 1
 \use_package stackrel 0
 \use_package stmaryrd 0
@@ -15402,59 +15397,10 @@ reference "eq:substack"
 \end_inset
 
 式のように、演算子の横の余白が大きくなりすぎることがあります。
-\end_layout
-
-\begin_layout Standard
-これを避けるには、LaTeXプリアンブルに以下のようなマクロを指定する方法があります。
-\end_layout
-
-\begin_layout Standard
-
+\lang english
+To avoid this the command 
 \series bold
-
-\backslash
-def
-\backslash
-clap#1{
-\backslash
-hbox to 0pt{
-\backslash
-hss #1
-\backslash
-hss}}
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-def
-\backslash
-mathclap {
-\backslash
-mathpalette 
-\backslash
-mathclapinternal}
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-def
-\backslash
-mathclapinternal #1#2{
-\backslash
-clap{$
-\backslash
-mathsurround =0pt #1{#2}$}}
-\end_layout
-
-\begin_layout Standard
-これは、範囲の幅を0
-\begin_inset space \thinspace{}
-\end_inset
-
-ptに設定する
-\series bold
+\lang japanese
 
 \backslash
 mathclap
@@ -15471,22 +15417,19 @@ mathclap
 
 \end_inset
 
-コマンドを定義しています。このコマンドの書式は、
-\end_layout
 
-\begin_layout Standard
+\lang english
+ can be used.
+ It sets the width of its content to 0
+\begin_inset space \thinspace{}
+\end_inset
 
-\series bold
+pt.
+\begin_inset Newline newline
+\end_inset
 
-\backslash
-mathclap{範囲}
-\end_layout
 
-\begin_layout Standard
-となっていて、「範囲」には複数の条件を入れることができます。
-\end_layout
-
-\begin_layout Standard
+\lang japanese
 これを
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -15504,7 +15447,7 @@ reference "eq:substack"
 \backslash
 sum_
 \backslash
-mathclap{
+mathclap
 \backslash
 substack
 \begin_inset space \textvisiblespace{}
