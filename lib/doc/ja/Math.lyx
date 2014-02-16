@@ -18344,7 +18344,17 @@ normalsize
 \end_layout
 
 \begin_layout Standard
-数式内では、以下の寸法コマンドを使用して、寸法を変更することができます。
+数式内では、以下の寸法コマンドを使用して、寸法を変更することができます
+\lang english
+or the toolbar button
+\lang japanese
+ 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\style"
+\end_inset
+
+。
 \end_layout
 
 \begin_layout Standard
@@ -24531,10 +24541,9 @@ gcd
 
 \begin_layout Standard
 上記は、数式ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/math/functions.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\functions"
 \end_inset
 
 でも挿入することができます。
@@ -25677,10 +25686,9 @@ j
 \end_inset
 
 の各文字は、数式ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/math/digamma.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\digamma"
 \end_inset
 
 からも挿入することができます。
@@ -27126,15 +27134,11 @@ status collapsed
 
 \begin_layout Standard
 LyXでは、多行数式は、数式中で
-\series bold
-
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
 \end_inset
 
-
-\series default
 を押すことで作られます。この操作によって、第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -27181,17 +27185,15 @@ arg   "newline-insert newline"
 \end_inset
 
 を押すことによって作られます。行を足したり削ったりするには、数式ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-row.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
 や
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-row.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-row"
 \end_inset
 
 を使うか、
@@ -28032,17 +28034,15 @@ align環境は、
 
 \begin_layout Standard
 列を追加したり削除したりするには、数式ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-column.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-column"
 \end_inset
 
 や
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-column.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-column"
 \end_inset
 
 を使うか、
@@ -28955,10 +28955,9 @@ status collapsed
 ラベル
 \family default
 メニューか、ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/label-insert.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
 で付けることができます。このとき、カーソルは別行立て数式の中になくてはなりません。すると、テキストフィールドの中に
@@ -28985,10 +28984,9 @@ LyX中でラベル名は、数式の後ろに、二つの括弧に囲まれて�
 相互参照
 \family default
 メニューかツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
 を使って挿入します。数式相互参照は、出力では数式番号として表示されます。相互参照ダイアログで「
@@ -32265,10 +32263,9 @@ newcommand
 マクロ
 \family default
 メニューか、ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/math-macro_newmacroname_newcommand.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro newmacroname_newcommand"
 \end_inset
 
 で作ることができます。すると、数式マクロツールバーが表示されるとともに、マクロを定義した箇所に以下のようなボックスが現れます。
@@ -32281,7 +32278,7 @@ newcommand
 
 
 \begin_inset Graphics
-	filename clipart/macrobox.png
+	filename ../clipart/macrobox.png
 
 \end_inset
 
@@ -32313,24 +32310,21 @@ newmacronameが既定のマクロ名として現れますが、意味のある�
 #引数番号
 \series default
 というコマンドで入力するか、マクロツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/math-macro-add-param.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-add-param"
 \end_inset
 
 を使用します。引数位置は赤で表示されます。引数は、最大で9つまでとることができます。非必須引数は、ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/math-macro-add-optional-param.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-add-optional-param"
 \end_inset
 
 で作ることができます。最初の必須引数は、ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/math-macro-make-optional.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-make-optional"
 \end_inset
 
 を使って、非必須引数にすることができます。二つ目の青枠には、LyX中でのマクロの表示のしかたを定義することができます。通常は、定義したとおりに表示された方が便利
@@ -32600,10 +32594,9 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-macro-remove-param.png
-	rotateOrigin center
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-remove-param"
 \end_inset
 
 
@@ -32631,10 +32624,9 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-macro-add-param.png
-	rotateOrigin center
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-add-param"
 \end_inset
 
 
@@ -32662,10 +32654,9 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-macro-make-optional.png
-	rotateOrigin center
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-make-optional"
 \end_inset
 
 
@@ -32712,10 +32703,9 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-macro-make-nonoptional.png
-	rotateOrigin center
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-make-nonoptional"
 \end_inset
 
 
@@ -32762,10 +32752,9 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-macro-remove-optional-param.png
-	rotateOrigin center
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-remove-optional-param"
 \end_inset
 
 
@@ -32793,10 +32782,9 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-macro-add-optional-param.png
-	rotateOrigin center
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-add-optional-param"
 \end_inset
 
 
@@ -32824,10 +32812,9 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-macro-remove-greedy-param.png
-	rotateOrigin center
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-remove-greedy-param"
 \end_inset
 
 
@@ -32874,10 +32861,9 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-macro-append-greedy-param.png
-	rotateOrigin center
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-append-greedy-param"
 \end_inset
 
 
@@ -32924,10 +32910,9 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-macro-add-greedy-optional-param.png
-	rotateOrigin center
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-add-greedy-optional-param"
 \end_inset
 
 

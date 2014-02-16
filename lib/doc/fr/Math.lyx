@@ -18514,7 +18514,14 @@ normalsize
 \end_layout
 
 \begin_layout Standard
-Dans un formule, la taille peut être modifiée grâce aux commandes suivantes:
+Dans un formule, la taille peut être modifiée grâce aux commandes suivantes
+ ou le bouton 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\style"
+\end_inset
+
+ de la barre d'outils mathématique:
 \end_layout
 
 \begin_layout Standard
@@ -24617,10 +24624,9 @@ gcd
 
 \begin_layout Standard
 Elles peuvent aussi être insérées en utilisant le bouton 
-\begin_inset Graphics
-	filename ../../images/math/functions.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\functions"
 \end_inset
 
  de la barre d'outils mathématique.
@@ -25752,10 +25758,9 @@ Les caractères
 \end_inset
 
  peuvent aussi être insérés avec le bouton 
-\begin_inset Graphics
-	filename ../../images/math/digamma.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\digamma"
 \end_inset
 
  de la barre d'outils mathématique.
@@ -27091,17 +27096,15 @@ Ctrl+Entrée
 .
  Pour ajouter ou supprimer des lignes, on peut utiliser respectivement les
  boutons 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-row.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-row"
 \end_inset
 
  ou 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-row.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-row"
 \end_inset
 
  de la barre d'outils mathématique ou bien le menu 
@@ -28007,17 +28010,15 @@ Change le type de formule
 \begin_layout Standard
 Pour ajouter ou supprimer des colonnes, on peut utiliser soit les boutons
  
-\begin_inset Graphics
-	filename ../../images/tabular-feature_append-column.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular append-column"
 \end_inset
 
  ou 
-\begin_inset Graphics
-	filename ../../images/tabular-feature_delete-column.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular delete-column"
 \end_inset
 
 , respectivement, soit le menu 
@@ -29022,10 +29023,9 @@ Insertion\SpecialChar \menuseparator
 Étiquette
 \family default
  ou avec le bouton 
-\begin_inset Graphics
-	filename ../../images/label-insert.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
 \end_inset
 
  de la barre d'outils.
@@ -29086,10 +29086,9 @@ Référence
 croisée
 \family default
  ou avec le bouton 
-\begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_ref.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
 \end_inset
 
  de la barre d'outils.
@@ -32476,10 +32475,9 @@ Math\SpecialChar \menuseparator
 Macro
 \family default
  ou le bouton 
-\begin_inset Graphics
-	filename ../../images/math-macro_newmacroname_newcommand.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro newmacroname_newcommand"
 \end_inset
 
  de la barre d'outils.
@@ -32529,10 +32527,9 @@ newmacroname est le nom qui est donné implicitement à la macro et qui doit
 #1
 \series default
 , ou en utilisant le bouton 
-\begin_inset Graphics
-	filename ../../images/math-macro-add-param.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-add-param"
 \end_inset
 
  de la barre d'outils macro.
@@ -32542,19 +32539,17 @@ newmacroname est le nom qui est donné implicitement à la macro et qui doit
 
 arguments.
  Les arguments optionnels sont créés avec le bouton 
-\begin_inset Graphics
-	filename ../../images/math-macro-add-optional-param.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-add-optional-param"
 \end_inset
 
-de la barre d'outils.
+ de la barre d'outils.
  Le prenier argument non optionnel peut être transformé en argument optionnel
  avec le bouton 
-\begin_inset Graphics
-	filename ../../images/math-macro-make-optional.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-make-optional"
 \end_inset
 
 .
@@ -32849,10 +32844,9 @@ La barre d'outils macro contient de la gauche vers la droite les boutons
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-macro-remove-param.png
-	rotateOrigin center
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-remove-param"
 \end_inset
 
 
@@ -32900,10 +32894,9 @@ argument
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-macro-add-param.png
-	rotateOrigin center
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-add-param"
 \end_inset
 
 
@@ -32947,10 +32940,9 @@ argument
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-macro-make-optional.png
-	rotateOrigin center
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-make-optional"
 \end_inset
 
 
@@ -33021,10 +33013,9 @@ optionnel
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-macro-make-nonoptional.png
-	rotateOrigin center
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-make-nonoptional"
 \end_inset
 
 
@@ -33091,10 +33082,9 @@ optionnel
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-macro-remove-optional-param.png
-	rotateOrigin center
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-remove-optional-param"
 \end_inset
 
 
@@ -33142,10 +33132,9 @@ optionnel
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-macro-add-optional-param.png
-	rotateOrigin center
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-add-optional-param"
 \end_inset
 
 
@@ -33193,10 +33182,9 @@ optionnel
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-macro-remove-greedy-param.png
-	rotateOrigin center
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-remove-greedy-param"
 \end_inset
 
 
@@ -33287,10 +33275,9 @@ droite
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-macro-append-greedy-param.png
-	rotateOrigin center
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-append-greedy-param"
 \end_inset
 
 
@@ -33373,10 +33360,9 @@ droite
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../images/math-macro-add-greedy-optional-param.png
-	rotateOrigin center
-
+\begin_inset Info
+type  "icon"
+arg   "math-macro-add-greedy-optional-param"
 \end_inset
 
 
