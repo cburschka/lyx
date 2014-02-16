@@ -400,10 +400,12 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	for (; depth(); pop(), boundary(false)) {
 		LYXERR(Debug::DEBUG, "Cursor::dispatch: cmd: "
 			<< cmd0 << endl << *this);
-		// LASSERT: Is it safe to continue here, or should we return?
-		LASSERT(pos() <= lastpos(), /**/);
-		LASSERT(idx() <= lastidx(), /**/);
-		LASSERT(pit() <= lastpit(), /**/);
+
+		// In any of these cases, the cursor is invalid, and we should
+		// try to save this document rather than crash.
+		LBUFERR(pos() <= lastpos());
+		LBUFERR(idx() <= lastidx());
+		LBUFERR(pit() <= lastpit());
 
 		// The common case is 'LFUN handled, need update', so make the
 		// LFUN handler's life easier by assuming this as default value.
