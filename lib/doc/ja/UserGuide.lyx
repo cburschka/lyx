@@ -4612,8 +4612,6 @@ status collapsed
 \end_inset
 
 
-\family sans
-
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:詩句"
@@ -4763,11 +4761,7 @@ reference "sec:入れ子"
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
 箇条書き(記号)
-\family default
-
 \begin_inset Index idx
 status collapsed
 
@@ -4943,8 +4937,6 @@ reference "sec:入れ子"
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
 箇条書き(連番)
 \begin_inset Index idx
 status collapsed
@@ -4955,8 +4947,6 @@ status collapsed
 
 \end_inset
 
-
-\family default
 
 \begin_inset CommandInset label
 LatexCommand label
@@ -5112,8 +5102,6 @@ reference "sec:入れ子"
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
 箇条書き(記述)
 \begin_inset Index idx
 status collapsed
@@ -5251,9 +5239,7 @@ Example: これは
 \end_layout
 
 \begin_layout Subsubsection
-LyX
-\family sans
-リスト
+LyXリスト
 \begin_inset Index idx
 status collapsed
 
@@ -5353,7 +5339,7 @@ M」はアルファベット中でもっとも幅の広い文字なので、LaTe
 
 
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 ラベル幅を変えるためだけにリスト項目にカーソルを設定しても、LyX内での幅が変わるだけで、出力には変わりありません。
