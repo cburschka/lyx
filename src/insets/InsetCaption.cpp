@@ -400,14 +400,17 @@ void InsetCaption::updateBuffer(ParIterator const & it, UpdateType utype)
 				       master.B_(tclass.floats().getType(type).name()));
 		}
 		docstring sec;
+		docstring const lstring = getLayout().labelstring();
+		docstring const labelstring = isAscii(lstring) ?
+				master.B_(to_ascii(lstring)) : lstring;
 		if (cnts.hasCounter(counter)) {
 			cnts.step(counter, utype);
 			sec = cnts.theCounter(counter, lang);
 		}
-		if (getLayout().labelstring() != master.B_("standard")) {
+		if (labelstring != master.B_("standard")) {
 			if (!sec.empty())
 				sec += from_ascii(" ");
-			sec += bformat(from_ascii("(%1$s)"), getLayout().labelstring());
+			sec += bformat(from_ascii("(%1$s)"), labelstring);
 		}
 		if (!sec.empty())
 			full_label_ = bformat(from_ascii("%1$s %2$s:"), name, sec);
