@@ -3406,8 +3406,6 @@ status open
 can be found in the submenu of the toolbar button
 \lang french
  
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\space"
@@ -8711,10 +8709,9 @@ On peut ajouter des accents avec le bouton
 \end_inset
 
 
-\begin_inset Graphics
-	filename ../../images/math/hat.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\hat"
 \end_inset
 
  de la barre d'outils mathématique ou en utilisant les commandes listées
@@ -10213,10 +10210,9 @@ Espace
 \family default
  on peut choisir l'une des huit différentes tailles d'espaces disponibles.
  On peut aussi insérer ces espaces en utilisant le bouton 
-\begin_inset Graphics
-	filename ../../images/math/space.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\space"
 \end_inset
 
  de la barre d'outils mathématique.
@@ -13074,10 +13070,9 @@ texte
 \family default
 .
  Cette fenêtre de dialogue peut être appelée avec le bouton 
-\begin_inset Graphics
-	filename ../../images/dialog-show_character.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
 \end_inset
 
  de la barre d'outils, ou avec le menu 
@@ -13527,10 +13522,9 @@ Insertion\SpecialChar \menuseparator
 Boîte
 \family default
  ou le bouton 
-\begin_inset Graphics
-	filename ../../images/box-insert.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "box-insert"
 \end_inset
 
  de la barre d'outils.
@@ -14781,10 +14775,9 @@ biguplus
 \begin_layout Standard
 Tous les grands opérateurs peuvent aussi être insérés en utilisant le bouton
  
-\begin_inset Graphics
-	filename ../../images/math/intop.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\intop"
 \end_inset
 
  de la barre d'outils mathématique.
@@ -17080,10 +17073,9 @@ triangleright
 
 \begin_layout Standard
 Tous les opérateurs binaires peuvent être insérés avec le bouton 
-\begin_inset Graphics
-	filename ../../images/math/pm.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\pm"
 \end_inset
 
  de la barre d'outils mathématique.
@@ -18079,10 +18071,9 @@ de
 Texte
 \family default
  ou le bouton 
-\begin_inset Graphics
-	filename ../../images/math/font.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\font"
 \end_inset
 
  de la barre d'outils mathématique.
@@ -18858,10 +18849,9 @@ Lettres grecques
 
 \begin_layout Standard
 On peut insérer toutes les lettres grecques avec le bouton 
-\begin_inset Graphics
-	filename ../../images/math/alpha.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\alpha"
 \end_inset
 
  de la barre d'outils mathématiques.
@@ -20465,17 +20455,15 @@ Symboles
 \begin_layout Standard
 Plusieurs symboles listés dans cette section peuvent aussi être insérés
  grâce aux boutons 
-\begin_inset Graphics
-	filename ../../images/math/nabla.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\nabla"
 \end_inset
 
  et 
-\begin_inset Graphics
-	filename ../../images/math/digamma.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\digamma"
 \end_inset
 
  de la barre d'outils mathématique.
@@ -22556,10 +22544,9 @@ status collapsed
 \begin_layout Standard
 Tous les opérateurs de relation peuvent aussi être insérés en passant par
  le bouton 
-\begin_inset Graphics
-	filename ../../images/math/leq.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\leq"
 \end_inset
 
  de la barre d'outils.
@@ -23901,6 +23888,23 @@ triangleleft
 triangleright
 \series default
  auxquels ils ressemblent.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+LyX supports also many special relations.
+ Use the toolbar button
+\lang french
+ 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\leqq"
+\end_inset
+
+ 
+\lang english
+to see a list of these relations.
 \end_layout
 
 \begin_layout Standard

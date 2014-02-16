@@ -3513,15 +3513,11 @@ status collapsed
 
 \begin_layout Plain Layout
 ツールバーボタン
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\space"
 \end_inset
 
-
-\family default
 の小メニューに入っています。
 \end_layout
 
@@ -8799,10 +8795,9 @@ status collapsed
 
 \begin_layout Standard
 アクセントは、数式ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/math/hat.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\hat"
 \end_inset
 
 か、以下の各小節に列挙してあるコマンドで入力することができます。
@@ -10248,10 +10243,9 @@ arg   "space-insert protected"
 Space
 \family default
 を何回か押すことによって、8種の異なる長さの空白のうち一つを選択することができます。空白は、数式ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/math/space.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\space"
 \end_inset
 
 を押すか、特定のコマンドを入力することで、挿入することができます。挿入したコマンド如何に関わらず、直後に
@@ -13041,10 +13035,9 @@ colorbox
 文字様式
 \family default
 ダイアログで欲しい色を選択します。このダイアログは、ツールバーボタン
-\begin_inset Graphics
-	filename ../../images/dialog-show_character.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
 \end_inset
 
 か
@@ -13505,10 +13498,9 @@ status collapsed
 ボックス
 \family default
 メニューかツールバーボタン
-\begin_inset Graphics
-	filename ../../images/box-insert.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "box-insert"
 \end_inset
 
 で作成することができます。
@@ -14620,10 +14612,9 @@ biguplus
 
 \begin_layout Standard
 すべての大演算子は、数式ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/math/intop.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\intop"
 \end_inset
 
 でも挿入することができます。
@@ -16899,10 +16890,9 @@ triangleright
 
 \begin_layout Standard
 二項演算子は、すべて数式ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/math/pm.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\pm"
 \end_inset
 
 から挿入することもできます。
@@ -17954,10 +17944,9 @@ target "http://www.lyx.org/trac/ticket/4629"
 文字様式
 \family default
 ダイアログや、
-\begin_inset Graphics
-	filename ../../images/math/font.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\font"
 \end_inset
 
 を使用することもできます。
@@ -18687,10 +18676,9 @@ status collapsed
 
 \begin_layout Standard
 すべてのギリシャ文字は、ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/math/alpha.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\alpha"
 \end_inset
 
 からでも挿入することができます。各国の組版規則では、数式内のギリシャ文字はどれもイタリック体か斜体で組版されなくてはならないことになっていますが、フランス語やロ
@@ -20313,17 +20301,15 @@ status collapsed
 
 \begin_layout Standard
 本節に掲げてある各記号の多くは、ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/math/nabla.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\nabla"
 \end_inset
 
 や
-\begin_inset Graphics
-	filename ../../images/math/digamma.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\digamma"
 \end_inset
 
 でも挿入することができます。
@@ -22456,10 +22442,9 @@ status collapsed
 
 \begin_layout Standard
 関係子はすべて、ツールバーボタンの
-\begin_inset Graphics
-	filename ../../images/math/leq.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\leq"
 \end_inset
 
 でも挿入することができます。
@@ -23821,6 +23806,25 @@ triangleleft
 triangleright
 \series default
 よりも大きくなっています。
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+LyX supports also many special relations.
+ Use the toolbar button
+\lang japanese
+ 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\leqq"
+\end_inset
+
+ 
+\lang english
+to see a list of these relations
+\lang japanese
+。
 \end_layout
 
 \begin_layout Standard

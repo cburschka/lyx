@@ -3424,15 +3424,11 @@ status collapsed
 
 \begin_layout Plain Layout
 Botón 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\space"
 \end_inset
 
-
-\family default
  de la barra de ecuaciones
 \end_layout
 
@@ -8811,10 +8807,9 @@ Acentos
 
 \begin_layout Standard
 Los acentos se pueden insertar con el botón 
-\begin_inset Graphics
-	filename ../../images/math/hat.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\hat"
 \end_inset
 
  o mediante los comandos listados en las siguientes subsecciones.
@@ -10335,10 +10330,9 @@ Espacio
  sucesivas veces se pueden seleccionar hasta ocho diferentes tamaños de
  espacio.
  También se pueden insertar espacios mediante el botón 
-\begin_inset Graphics
-	filename ../../images/math/space.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\space"
 \end_inset
 
  de la barra de ecuaciones o con comandos especiales.
@@ -13166,10 +13160,9 @@ texto
 \family default
 .
  El diálogo puede abrirse con el botón 
-\begin_inset Graphics
-	filename ../../images/dialog-show_character.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
 \end_inset
 
  de la barra de herramientas o con el menú 
@@ -13611,10 +13604,9 @@ Insertar\SpecialChar \menuseparator
 Marco
 \family default
  o con el botón 
-\begin_inset Graphics
-	filename ../../images/box-insert.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "box-insert"
 \end_inset
 
  de la barra de herramientas.
@@ -14883,10 +14875,9 @@ biguplus
 
 \begin_layout Standard
 Todos los operadores grandes se pueden insertar con el botón 
-\begin_inset Graphics
-	filename ../../images/math/intop.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\intop"
 \end_inset
 
  de la barra de ecuaciones.
@@ -17143,10 +17134,9 @@ triangleright
 
 \begin_layout Standard
 Todos los operadores binarios se pueden insertar también con el botón 
-\begin_inset Graphics
-	filename ../../images/math/pm.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\pm"
 \end_inset
 
  de la barra de ecuaciones.
@@ -18091,7 +18081,7 @@ textrm
  Este estilo no se puede poner correctamente con el diálogo de estilo de
  texto por un fallo de LyX.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset CommandInset href
@@ -18117,10 +18107,9 @@ Ecuación\SpecialChar \menuseparator
 Estilo del texto
 \family default
  o el botón 
-\begin_inset Graphics
-	filename ../../images/math/font.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\font"
 \end_inset
 
 .
@@ -18873,10 +18862,9 @@ Letras griegas
 
 \begin_layout Standard
 Las letras griegas se pueden insertar además mediante el botón 
-\begin_inset Graphics
-	filename ../../images/math/alpha.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\alpha"
 \end_inset
 
  de la barra de ecuaciones.
@@ -20487,17 +20475,15 @@ Símbolos
 \begin_layout Standard
 Muchos de los símbolos listados en esta sección se pueden insertar además
  mediante los botones 
-\begin_inset Graphics
-	filename ../../images/math/nabla.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\nabla"
 \end_inset
 
  y 
-\begin_inset Graphics
-	filename ../../images/math/digamma.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\digamma"
 \end_inset
 
  de la barra de ecuaciones.
@@ -22587,11 +22573,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Todas las relaciones se pueden insertar también con el botón 
-\begin_inset Graphics
-	filename ../../images/math/leq.png
-	scale 85
-
+Todas las relaciones siguientes se pueden insertar también con el botón
+ 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\leq"
 \end_inset
 
  de la barra de ecuaciones.
@@ -23933,6 +23919,23 @@ triangleleft
 triangleright
 \series default
 , respectivamente.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+LyX supports also many special relations.
+ Use the toolbar button
+\lang spanish
+ 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\leqq"
+\end_inset
+
+ 
+\lang english
+to see a list of these relations.
 \end_layout
 
 \begin_layout Standard

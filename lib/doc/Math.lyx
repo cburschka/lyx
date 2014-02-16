@@ -3461,8 +3461,6 @@ status collapsed
 
 \begin_layout Plain Layout
 can be found in the submenu of the toolbar button 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\space"
@@ -8738,10 +8736,9 @@ Accents
 
 \begin_layout Standard
 Accents can be inserted via the math toolbar button 
-\begin_inset Graphics
-	filename ../images/math/hat.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\hat"
 \end_inset
 
  or the commands listed in the following subsections.
@@ -10206,10 +10203,9 @@ Space
 \family default
  several times one can select one of eight different space sizes.
  The spaces can also be inserted using the math toolbar button 
-\begin_inset Graphics
-	filename ../images/math/space.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\space"
 \end_inset
 
  or special commands.
@@ -13077,10 +13073,9 @@ Style
 \family default
  dialog.
  The dialog can be called with the toolbar button 
-\begin_inset Graphics
-	filename ../images/dialog-show_character.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
 \end_inset
 
  or the menu 
@@ -13539,10 +13534,9 @@ Insert\SpecialChar \menuseparator
 Box
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/box-insert.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "box-insert"
 \end_inset
 
 .
@@ -14804,10 +14798,9 @@ biguplus
 
 \begin_layout Standard
 All big operators can also be inserted via the math toolbar button 
-\begin_inset Graphics
-	filename ../images/math/intop.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\intop"
 \end_inset
 
 .
@@ -17043,10 +17036,9 @@ triangleright
 
 \begin_layout Standard
 All binary operators can also be inserted via the math toolbar button 
-\begin_inset Graphics
-	filename ../images/math/pm.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\pm"
 \end_inset
 
 .
@@ -18040,10 +18032,9 @@ Math\SpecialChar \menuseparator
 Text Style
 \family default
  or the toolbar button 
-\begin_inset Graphics
-	filename ../images/math/font.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\font"
 \end_inset
 
  can be used.
@@ -18795,10 +18786,9 @@ Greek letters
 
 \begin_layout Standard
 Greek letters can also be inserted via the toolbar button 
-\begin_inset Graphics
-	filename ../images/math/alpha.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\alpha"
 \end_inset
 
 .
@@ -20390,17 +20380,15 @@ Symbols
 \begin_layout Standard
 Many of the symbols listed in this section can also be inserted via the
  toolbar buttons 
-\begin_inset Graphics
-	filename ../images/math/nabla.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\nabla"
 \end_inset
 
  and 
-\begin_inset Graphics
-	filename ../images/math/digamma.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\digamma"
 \end_inset
 
 .
@@ -22478,10 +22466,9 @@ status collapsed
 
 \begin_layout Standard
 All following relations can also be inserted via the toolbar button 
-\begin_inset Graphics
-	filename ../images/math/leq.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\leq"
 \end_inset
 
 .
@@ -23822,6 +23809,17 @@ triangleright
 \end_layout
 
 \begin_layout Standard
+LyX supports also many special relations.
+ Use the toolbar button 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\leqq"
+\end_inset
+
+ to see a list of these relations.
+\end_layout
+
+\begin_layout Standard
 Relations are, in contrary to symbols, always surrounded by space.
 \end_layout
 
@@ -23946,25 +23944,6 @@ B
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-LyX supports also many special relations.
- Use the toolbar button 
-\begin_inset Graphics
-	filename ../images/math/leq.png
-	scale 85
-
-\end_inset
-
- to see a list of possible relations.
 \end_layout
 
 \begin_layout Section

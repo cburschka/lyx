@@ -3472,8 +3472,6 @@ status collapsed
 
 \begin_layout Plain Layout
 zu finden im Untermenü des Mathe-Werkzeugleistenknopfs 
-\family sans
-
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\space"
@@ -8783,10 +8781,9 @@ Akzente
 
 \begin_layout Standard
 Akzente können über den Mathe-Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/math/hat.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\hat"
 \end_inset
 
  oder mit den Befehlen eingefügt werden, die in den folgenden Unterkapiteln
@@ -10218,10 +10215,9 @@ Ab und an ist es notwendig in einer Formel horizontalen Leerraum einzufügen.
  und man kann durch mehrfaches Drücken der Leertaste aus acht verschiedenen
  Leerraum-Größen wählen.
  Man kann die Leerräume auch über den Mathe-Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/math/space.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\space"
 \end_inset
 
  oder mit einzelnen Befehlen aufrufen.
@@ -13074,10 +13070,9 @@ Textstil
 \family default
  die gewünschte Farbe aus.
  Der Dialog kann mit dem Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/dialog-show_character.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
 \end_inset
 
  oder dem Menü 
@@ -13558,10 +13553,9 @@ Einfügen\SpecialChar \menuseparator
 Box
 \family default
  oder dem Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/box-insert.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "box-insert"
 \end_inset
 
  kann man eine Box erstellen, die mehrere Zeilen und Absätze enthalten kann,
@@ -14825,10 +14819,9 @@ biguplus
 
 \begin_layout Standard
 Alle großen Operatoren können auch über den Mathe-Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/math/intop.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\intop"
 \end_inset
 
  eingefügt werden.
@@ -17068,10 +17061,9 @@ triangleright
 \begin_layout Standard
 Alle binären Operatoren können auch über den Mathe-Werkzeugleistenknopf
  
-\begin_inset Graphics
-	filename ../../images/math/pm.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\pm"
 \end_inset
 
  eingefügt werden.
@@ -18043,10 +18035,9 @@ Mathe\SpecialChar \menuseparator
 Text-Stil
 \family default
  oder den Mathe-Werkzeugleistenknopf 
-\begin_inset Graphics
-	filename ../../images/math/font.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\font"
 \end_inset
 
  verwenden.
@@ -18806,10 +18797,9 @@ griechische Buchstaben
 \begin_layout Standard
 Griechischen Buchstaben können auch über den Mathe-Werkzeugleistenknopf
  
-\begin_inset Graphics
-	filename ../../images/math/alpha.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\alpha"
 \end_inset
 
  eingefügt werden.
@@ -20418,17 +20408,15 @@ Symbole
 Viele der im Folgenden aufgelisteten Symbole können auch über die Mathe-Werkzeug\SpecialChar \-
 
 leistenknöpfe 
-\begin_inset Graphics
-	filename ../../images/math/nabla.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\nabla"
 \end_inset
 
  und 
-\begin_inset Graphics
-	filename ../../images/math/digamma.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\digamma"
 \end_inset
 
  eingefügt werden.
@@ -22515,12 +22503,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Alle griechischen Buchstaben können auch über den Mathe-Werkzeugleistenknopf
+Alle folgenden Relationen können auch über den Mathe-Werkzeugleistenknopf
  
-\begin_inset Graphics
-	filename ../../images/math/leq.png
-	scale 85
-
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\leq"
 \end_inset
 
  eingefügt werden.
@@ -23870,6 +23857,17 @@ triangleleft
 triangleright
 \series default
 .
+\end_layout
+
+\begin_layout Standard
+LyX unterstützt auch viele spezielle Relationen.
+ Drücken Sie den Mathe-Werkzeugleistenknopf 
+\begin_inset Info
+type  "icon"
+arg   "math-insert \\leqq"
+\end_inset
+
+ um eine Liste dieser Relationen zu sehen.
 \end_layout
 
 \begin_layout Standard
