@@ -852,7 +852,7 @@ contributors = [
                  u"Danish translation"),
 
      contributor(u"Martin Hoffmann",
-                 "hoffimar@gmail.com",
+                 "hoffimar () gmail ! com",
                  "GPL",
                  "Re: #8703: 'new shortcut' box closes if no shortcut",
                  "m=138105799411067",
@@ -1194,6 +1194,14 @@ contributors = [
                  "m=122398147620761",
                  "14 October 2008",
                  u"Unicode and layout file fixes"),
+
+      contributor(u"Dustin J. Mitchell",
+                 "dustin () v ! igoro ! us",
+                 "GPL",
+                 "Fwd: Your patch for LyX",
+                 "m=139255709609015",
+                 "16 February 2014",
+                 u"Fix for csv2lyx"),
 
      contributor(u"Joan Montané",
                  "jmontane () gmail ! com",
