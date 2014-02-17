@@ -51,13 +51,12 @@ void InsetMathXArrow::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathXArrow::draw(PainterInfo & pi, int x, int y) const
 {
 	ScriptChanger dummy(pi.base);
-	Dimension const dim00 = dimension(*pi.base.bv);
-	Dimension const & dim01 = cell(0).dimension(*pi.base.bv);
-	// center the cells with the decoration
-	cell(0).draw(pi, x + dim00.width()/2 - dim01.width()/2, y - 10);
-	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);
-	cell(1).draw(pi, x + dim00.width()/2 - dim1.width()/2, y + dim1.height());
 	Dimension const dim = dimension(*pi.base.bv);
+	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
+	// center the cells with the decoration
+	cell(0).draw(pi, x + dim.width()/2 - dim0.width()/2, y - 10);
+	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);
+	cell(1).draw(pi, x + dim.width()/2 - dim1.width()/2, y + dim1.height());
 	mathed_draw_deco(pi, x + 1, y - 7, dim.wid - 2, 5, name_);
 	drawMarkers(pi, x, y);
 }
