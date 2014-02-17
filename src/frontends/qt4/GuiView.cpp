@@ -2889,7 +2889,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 		if (!buffer->lyxvc().inUse()) {
 			if (buffer->lyxvc().registrer()) {
 				reloadBuffer(*buffer);
-				dr.suppressMessageUpdate();
+				dr.clearMessageUpdate();
 			}
 		}
 		break;
@@ -2969,7 +2969,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 		LASSERT(buffer, return);
 		if (buffer->lyxvc().revert()) {
 			reloadBuffer(*buffer);
-			dr.suppressMessageUpdate();
+			dr.clearMessageUpdate();
 		}
 		break;
 
@@ -2977,7 +2977,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 		LASSERT(buffer, return);
 		buffer->lyxvc().undoLast();
 		reloadBuffer(*buffer);
-		dr.suppressMessageUpdate();
+		dr.clearMessageUpdate();
 		break;
 
 	case LFUN_VC_REPO_UPDATE:

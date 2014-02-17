@@ -63,12 +63,12 @@ public:
 	void forceBufferUpdate() { need_buf_update_ = true; }
 	/// Clear the flag indicating we need an update
 	void clearBufferUpdate() { need_buf_update_ = false; }
-	///
+	/// Do we need to display a message in the status bar?
 	bool needMessageUpdate() const { return need_msg_update_; }
-	/// Force the buffer to be updated
+	/// Force the message to be displayed
 	void forceMessageUpdate() { need_msg_update_ = true; }
-	/// Clear the flag indicating we need an update
-	void suppressMessageUpdate() { need_msg_update_ = false; }
+	/// Clear the flag indicating we need to display the message
+	void clearMessageUpdate() { need_msg_update_ = false; }
 
 private:
 	/// was the event fully dispatched?
