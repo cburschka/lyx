@@ -1677,7 +1677,18 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 
 		actOnUpdatedPrefs(lyxrc_orig, lyxrc);
-		resetGui();
+
+		// If the request comes from the minibuffer, then we can't reset
+		// the GUI, since that would destory the minibuffer itself and
+		// cause a crash, since we are currently in one of the methods of 
+		// GuiCommandBuffer. See bug #8540. 
+		if (cmd.origin() != FuncRequest::COMMANDBUFFER)
+			resetGui();
+		// else
+		//   FIXME Unfortunately, that leaves a bug here, since we cannot
+		//   reset the GUI in this case. If the changes to lyxrc affected the
+		//   UI, then, nothing would happen. This seems fairly unlikely, but 
+		//   it definitely is a bug.
 
 		break;
 	}
