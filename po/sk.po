@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-02-09 11:21+0100\n"
+"POT-Creation-Date: 2014-02-17 10:19+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -15220,6 +15220,14 @@ msgstr "Zmazať riadok nad"
 msgid "Delete Line Below|e"
 msgstr "Zmazať riadok pod"
 
+#: lib/ui/stdmenus.inc:257
+msgid "Transform First Non-Optional to Optional Argument"
+msgstr "Zmeniť Prvý Povinný Argument na Nepovinný"
+
+#: lib/ui/stdmenus.inc:258
+msgid "Transform Last Optional to Non-Optional Argument"
+msgstr "Zmeniť Posledný Nepovinný Argument na Povinný"
+
 #: lib/ui/stdmenus.inc:245 lib/ui/stdcontext.inc:70
 msgid "Add Line to Left"
 msgstr "Pridať líniu vľavo"
@@ -15243,14 +15251,6 @@ msgstr "Pridať Argument"
 #: lib/ui/stdmenus.inc:253 lib/ui/stdcontext.inc:361
 msgid "Remove Last Argument"
 msgstr "Zmazať Posledný Argument"
-
-#: lib/ui/stdmenus.inc:255
-msgid "Make First Non-Optional into Optional Argument"
-msgstr "Zmeniť prvý povinný argument na nepovinný"
-
-#: lib/ui/stdmenus.inc:256
-msgid "Make Last Optional into Non-Optional Argument"
-msgstr "Zmeniť posledný nepovinný argument na povinný"
 
 #: lib/ui/stdmenus.inc:257 lib/ui/stdcontext.inc:365
 msgid "Insert Optional Argument"
@@ -29596,6 +29596,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Make First Non-Optional into Optional Argument"
+#~ msgstr "Zmeniť prvý povinný argument na nepovinný"
+
+#~ msgid "Make Last Optional into Non-Optional Argument"
+#~ msgstr "Zmeniť posledný nepovinný argument na povinný"
 
 #~ msgid "Unformatted Text|U"
 #~ msgstr "Neformátovaný Text"
