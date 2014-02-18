@@ -22,6 +22,8 @@ Section -InstallData
   
   # Start Menu shortcut
   SetOutPath "$INSTDIR\bin" # this is the folder in which the shortcut is executed
+  IfSilent 0 +2
+  StrCpy $StartmenuFolder "${APP_DIR}"
   CreateDirectory "$SMPROGRAMS\$StartmenuFolder"
   CreateShortCut "$SMPROGRAMS\$StartmenuFolder\${APP_NAME}.lnk" "$INSTDIR\${APP_RUN}" "" "$INSTDIR\${APP_RUN}" "" "" "" "${APP_INFO}"
   # Link to www.lyx.org and to the Wiki
@@ -170,7 +172,7 @@ Section -Configure
   ${endif}
   FileClose $R1
   IfErrors 0 +2
-   MessageBox MB_OK|MB_ICONEXCLAMATION "$(ModifyingConfigureFailed)"
+   MessageBox MB_OK|MB_ICONEXCLAMATION "$(ModifyingConfigureFailed)" /SD IDOK
   ClearErrors
 
 SectionEnd
@@ -187,7 +189,7 @@ Section -PSPrinter
    # Install printer and driver
    ExecWait '$PrinterConf /if /f "$WINDIR\inf\ntprint.inf" /b "Metafile to EPS Converter" /r "FILE:" /m "MS Publisher Imagesetter"'
   ${else}
-   MessageBox MB_OK|MB_ICONINFORMATION "$(MetafileNotAvailable)"
+   MessageBox MB_OK|MB_ICONINFORMATION "$(MetafileNotAvailable)" /SD IDOK
   ${endif}
 
 SectionEnd

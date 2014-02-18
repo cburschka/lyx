@@ -207,7 +207,7 @@ FunctionEnd
   
   ${if} $PathLaTeX == ""
    # launch MiKTeX's installer
-   MessageBox MB_OK|MB_ICONINFORMATION "$(LatexInfo)"
+   MessageBox MB_OK|MB_ICONINFORMATION "$(LatexInfo)" /SD IDOK
    ExecWait ${MiKTeXInstall}
    # test if MiKTeX is installed
    Call LaTeXActions
@@ -225,7 +225,7 @@ FunctionEnd
     StrCpy $LaTeXInstalled "MiKTeX"
     StrCpy $MiKTeXVersion ${MiKTeXDeliveredVersion}
    ${else}
-    MessageBox MB_OK|MB_ICONSTOP "$(LatexError1)"
+    MessageBox MB_OK|MB_ICONSTOP "$(LatexError1)" /SD IDOK
     SetOutPath $TEMP # to be able to delete the $INSTDIR
     RMDir /r $INSTDIR
     Abort
@@ -286,7 +286,7 @@ Function ConfigureMiKTeX
   ${andif} $MultiUser.Privileges != "Power"
    ${if} $0 == ""
     ${ifnot} ${FileExists} "$PathLaTeX\perl.exe"
-     MessageBox MB_OK|MB_ICONINFORMATION "$(MultipleIndexesNotAvailable)"
+     MessageBox MB_OK|MB_ICONINFORMATION "$(MultipleIndexesNotAvailable)" /SD IDOK
     ${endif}
    ${else}
     # ${FileExists} is disabled for now to repair existing LyX installations using 64bit MiKTeX
@@ -413,7 +413,7 @@ FunctionEnd
 Function UpdateMiKTeX
  # asks to update MiKTeX
 
-  MessageBox MB_YESNO|MB_ICONINFORMATION "$(MiKTeXInfo)" IDYES UpdateNow IDNO UpdateLater
+  MessageBox MB_YESNO|MB_ICONINFORMATION "$(MiKTeXInfo)" /SD IDNO IDYES UpdateNow IDNO UpdateLater
   UpdateNow:
   # the update wizard is started by the miktex-update.exe
   ${if} $MultiUser.Privileges != "Admin"

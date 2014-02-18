@@ -585,7 +585,7 @@ Function .onInit
 
   ${IfNot} ${IsNT}
   ${OrIfNot} ${AtLeastWinXP}
-    MessageBox MB_OK|MB_ICONSTOP "${APP_NAME} ${APP_VERSION} requires Windows XP or later."
+    MessageBox MB_OK|MB_ICONSTOP "${APP_NAME} ${APP_VERSION} requires Windows XP or later." /SD IDOK
     Quit
   ${EndIf}
   
@@ -593,13 +593,13 @@ Function .onInit
   System::Call 'kernel32::CreateMutexA(i 0, i 0, t "${BundleExeFile}.Instance") i .r1 ?e'
   Pop $R0
   ${if} $R0 != "0"
-   MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)"
+   MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)" /SD IDOK
    Abort
   ${endif}
   System::Call 'kernel32::CreateMutexA(i 0, i 0, t "${ExeFile}.Instance") i .r1 ?e'
   Pop $R0
   ${if} $R0 != "0"
-   MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)"
+   MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)" /SD IDOK
    Abort
   ${endif}
   
@@ -626,7 +626,7 @@ Function .onInit
    ${endif}
   ${endif}
   ${if} $0 != ""
-   MessageBox MB_OK|MB_ICONSTOP "$(StillInstalled)"
+   MessageBox MB_OK|MB_ICONSTOP "$(StillInstalled)" /SD IDOK
    Abort
   ${endif}
   
@@ -659,7 +659,7 @@ Function .onInit
    # store the version number and reformat it temporarily for the error message
    StrCpy $R0 $OldVersionNumber
    StrCpy $OldVersionNumber $R5
-   MessageBox MB_OK|MB_ICONSTOP "$(NewerInstalled)"
+   MessageBox MB_OK|MB_ICONSTOP "$(NewerInstalled)" /SD IDOK
    StrCpy $OldVersionNumber $R0
    Abort
   ${endif}
@@ -1359,7 +1359,7 @@ Function un.onInit
   # Check that LyX is not currently running
   FindProcDLL::FindProc "lyx.exe"
   ${if} $R0 == "1"
-   MessageBox MB_OK|MB_ICONSTOP "$(UnInstallRunning)"
+   MessageBox MB_OK|MB_ICONSTOP "$(UnInstallRunning)" /SD IDOK
    Abort
   ${endif}
 
@@ -1377,14 +1377,14 @@ Function un.onInit
   ${if} $0 != ""
   ${andif} $MultiUser.Privileges != "Admin"
   ${andif} $MultiUser.Privileges != "Power"
-   MessageBox MB_OK|MB_ICONSTOP "$(UnNotAdminLabel)"
+   MessageBox MB_OK|MB_ICONSTOP "$(UnNotAdminLabel)" /SD IDOK
    Abort
   ${endif}
   # warning when LyX couldn't be found in the registry
   ${if} $0 == "" # check in HKCU
    ReadRegStr $0 HKCU "${APP_UNINST_KEY}" "DisplayVersion"
    ${if} $0 == ""
-     MessageBox MB_OK|MB_ICONEXCLAMATION "$(UnNotInRegistryLabel)"
+     MessageBox MB_OK|MB_ICONEXCLAMATION "$(UnNotInRegistryLabel)" /SD IDOK
    ${endif}
   ${endif}
   
@@ -1410,7 +1410,7 @@ Function un.onInit
   ${endif}
 
   # question message if the user really wants to uninstall LyX
-  MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "$(UnReallyRemoveLabel)" IDYES +2 # continue if yes
+  MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "$(UnReallyRemoveLabel)" /SD IDYES IDYES +2 # continue if yes
   Abort
 
 FunctionEnd

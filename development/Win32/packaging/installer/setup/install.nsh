@@ -114,7 +114,9 @@ Section -ProgramFiles SecProgramFiles
    ${if} $PathBibTeXEditor == ""
    ${andif} $InstallJabRef == "true"
     # launch installer
-    MessageBox MB_OK|MB_ICONINFORMATION "$(JabRefInfo)"
+    MessageBox MB_OK|MB_ICONINFORMATION "$(JabRefInfo)" /SD IDOK
+    IfSilent 0 +2
+    ExecWait "$INSTDIR\${JabRefInstall} /S"
     ExecWait "$INSTDIR\${JabRefInstall}"
     # test if JabRef is now installed
     StrCpy $PathBibTeXEditor ""
@@ -127,7 +129,7 @@ Section -ProgramFiles SecProgramFiles
      ReadRegStr $PathBibTeXEditor HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "StartMenu"
     ${endif}
     ${if} $PathBibTeXEditor == ""
-     MessageBox MB_OK|MB_ICONEXCLAMATION "$(JabRefError)"
+     MessageBox MB_OK|MB_ICONEXCLAMATION "$(JabRefError)" /SD IDOK
     ${else}
      # special entry that it was installed together with LyX
      # so that we can later uninstall it together with LyX
