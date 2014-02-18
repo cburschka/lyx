@@ -780,6 +780,8 @@ void Tabular::moveColumn(col_type col, ColDirection direction)
 	if (direction == Tabular::LEFT)
 		col = col - 1;
 
+	std::swap(column_info[col], column_info[col + 1]);
+
 	for (row_type r = 0; r < nrows(); ++r) {
 		std::swap(cell_info[r][col], cell_info[r][col + 1]);
 		std::swap(cell_info[r][col].left_line, cell_info[r][col + 1].left_line);
@@ -801,6 +803,8 @@ void Tabular::moveRow(row_type row, RowDirection direction)
 {
 	if (direction == Tabular::UP)
 		row = row - 1;
+
+	std::swap(row_info[row], row_info[row + 1]);
 
 	for (col_type c = 0; c < ncols(); ++c) {
 		std::swap(cell_info[row][c], cell_info[row + 1][c]);
