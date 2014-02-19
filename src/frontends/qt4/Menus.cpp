@@ -1214,7 +1214,7 @@ void MenuDefinition::expandFlexInsert(
 		}
 	}
 	// FIXME This is a little clunky.
-	if (items_.empty() && type == InsetLayout::CUSTOM)
+	if (items_.empty() && type == InsetLayout::CUSTOM && !buf->isReadonly())
 		add(MenuItem(MenuItem::Help, qt_("No Custom Insets Defined!")));
 }
 
