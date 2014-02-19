@@ -22,8 +22,10 @@ Section -InstallData
   
   # Start Menu shortcut
   SetOutPath "$INSTDIR\bin" # this is the folder in which the shortcut is executed
-  IfSilent 0 +2
-  StrCpy $StartmenuFolder "${APP_DIR}"
+  # we must assure that the folder is not empty (happens on silent install and can accidentally happen)
+  ${if} $StartmenuFolder == ""
+   StrCpy $StartmenuFolder "${APP_DIR}"
+  ${endif}
   CreateDirectory "$SMPROGRAMS\$StartmenuFolder"
   CreateShortCut "$SMPROGRAMS\$StartmenuFolder\${APP_NAME}.lnk" "$INSTDIR\${APP_RUN}" "" "$INSTDIR\${APP_RUN}" "" "" "" "${APP_INFO}"
   # Link to www.lyx.org and to the Wiki
