@@ -1831,6 +1831,27 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 		}
 
+		else if (t.cs() == "smash") {
+			skipSpaces();
+			if (nextToken().asInput() == "[") {
+				// Since the phantom inset cannot handle optional arguments
+				// we must not create an InsetMathPhantom (bug 8967).
+				docstring const opt = parse_verbatim_option();
+				docstring const arg = parse_verbatim_item();
+				cell->push_back(MathAtom(new MathMacro(buf, t.cs())));
+				MathData ar;
+				mathed_parse_cell(ar, '[' + opt + ']', mode_);
+				cell->append(ar);
+				ar = MathData();
+				mathed_parse_cell(ar, '{' + arg + '}', mode_);
+				cell->append(ar);
+			}
+			else {
+				cell->push_back(createInsetMath(t.cs(), buf));
+				parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
+			}
+		}
+
 #if 0
 		else if (t.cs() == "infer") {
 			MathData ar;
