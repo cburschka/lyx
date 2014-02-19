@@ -356,7 +356,7 @@ def read_unicodesymbols():
 
 def revert_unicode_line(document, i, insets, spec_chars, replacement_character = '???'):
     # Define strings to start and end ERT and math insets
-    ert_intro='\n\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout %s\n\\backslash\n' % document.default_layout
+    ert_intro='\n\n\\begin_inset ERT\nstatus collapsed\n\\begin_layout %s' % document.default_layout
     ert_outro='\n\\end_layout\n\n\\end_inset\n'
     math_intro='\n\\begin_inset Formula $'
     math_outro='$\n\\end_inset'
@@ -415,8 +415,8 @@ def revert_unicode_line(document, i, insets, spec_chars, replacement_character =
                             command = command + '}'
                         elif not insets or insets[-1] != "ERT":
                             # add an ERT inset with the replacement character
-                            command = command.replace('\\\\', ert_intro)
-                            command = command + ert_outro
+                            command = command.replace('\\\\', '\n\\backslash\n')
+                            command = ert_intro + command + ert_outro
                         else:
                             command = command.replace('\\\\', '\n\\backslash\n')
                     last_char = '' # indicate that the character should not be removed
