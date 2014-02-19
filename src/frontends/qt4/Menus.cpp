@@ -1392,7 +1392,7 @@ void MenuDefinition::expandToolbars()
 
 void MenuDefinition::expandBranches(Buffer const * buf)
 {
-	if (!buf)
+	if (!buf || buf->isReadonly())
 		return;
 
 	BufferParams const & master_params = buf->masterBuffer()->params();
