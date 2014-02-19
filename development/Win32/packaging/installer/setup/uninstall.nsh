@@ -126,6 +126,8 @@ Section "un.JabRef" un.SecUnJabRef
   ${If} $MultiUser.Privileges == "Admin"
   ${OrIf} $MultiUser.Privileges == "Power"
    ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "UninstallString"
+   IfSilent 0 +2
+   ExecWait "$1 /S" # run JabRef's uninstaller
    ExecWait "$1" # run JabRef's uninstaller
   ${else}
    # in this case we can only read the start menu location and then start the linked uninstaller
