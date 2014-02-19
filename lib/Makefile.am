@@ -1371,6 +1371,8 @@ dist_imagesmath_DATA = \
 	images/math/xcancel.png \
 	images/math/xi.png \
 	images/math/xi2.png \
+	images/math/xleftarrow.png \
+	images/math/xrightarrow.png \
 	images/math/Ydown.png \
 	images/math/yen.png \
 	images/math/Yleft.png \

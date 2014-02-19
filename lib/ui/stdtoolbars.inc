@@ -948,6 +948,8 @@ ToolbarSet
 		Item "Longmapsto" "math-insert \Longmapsto"
 		Item "longmapsfrom" "math-insert \longmapsfrom"
 		Item "Longmapsfrom" "math-insert \Longmapsfrom"
+		Item "xleftarrow" "math-insert \xleftarrow"
+		Item "xrightarrow" "math-insert \xrightarrow"
 #		Item "mapstochar" "math-insert \mapstochar"
 #		Item "Mapstochar" "math-insert \Mapstochar"
 #		Item "mapsfromchar" "math-insert \mapsfromchar"
