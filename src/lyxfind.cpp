@@ -232,7 +232,9 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 		if (!cur.inTexted())
 			// bail in math
 			return make_pair(false, 0);
-		// select current word and treat it as the search string
+		// select current word and treat it as the search string.
+		// This causes a minor bug as undo will restore this selection,
+		// which the user did not create (#8986).
 		cur.innerText()->selectWord(cur, WHOLE_WORD);
 		searchstr = cur.selectionAsString(false);
 	}
