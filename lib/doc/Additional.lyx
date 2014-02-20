@@ -6077,7 +6077,26 @@ scr-specials
 \emph default
  approach.
  You need at least TeXLive 2008 or a recent MikTeX distribution in order
- to use it.
+ to use it
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+For some reason, MikTeX does not understand/obey the command LyX inserts
+ into the preamble when you check the "Enable Forward/Reverse Search" button
+ in the toolbar and does not generate the necessary info.
+\end_layout
+
+\begin_layout Plain Layout
+The generation of the required info can be forced by changing the converter
+ "LaTeX (pdflatex) -> PDF (pdflatex)" in Preferences->File handling->Converters
+ from the default "pdflatex $$i" to "pdflatex -synctex=1 $$i" (i.e., by adding
+ the -synctex=1 switch).
+\end_layout
+
+\end_inset
+
+.
  Also note that only a few PDF viewers (Skim on the Mac, SumatraPDF on Windows)
  already provide SyncTeX support.
 \end_layout
