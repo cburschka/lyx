@@ -1686,6 +1686,13 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 					new InsetMathBig(name.substr(1), delim)));
 				return true;
 			}
+		} else if (name == "\\smash" && c == '[') {
+			// We can't use cur.macroModeClose() because
+			// it would create an InsetMathPhantom
+			InsetMathUnknown * p = cur.activeMacro();
+			p->finalize();
+			interpretChar(cur, c);
+			return true;
 		}
 
 		// leave macro mode and try again if necessary
