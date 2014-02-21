@@ -227,6 +227,7 @@ dist_jaclipartdoc_DATA = \
 	ja/clipart/floatQt4.png \
 	ja/clipart/footnoteQt4.png \
 	ja/clipart/referenceQt4.png \
+	ja/clipart/StandardToolbar.png \
 	ja/clipart/ToolbarEnvBox.png
 
 nldocdir = $(docdir)/nl

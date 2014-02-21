@@ -170,8 +170,14 @@ jaexamplesdir = $(pkgdatadir)/examples/ja
 dist_jaexamples_DATA = \
 	examples/ja/Braille.lyx \
 	examples/ja/FeynmanDiagrams.lyx \
+	examples/ja/MultilingualCaptions.lyx \
+	examples/ja/R-S-statements.lyx \
+	examples/ja/beamer.lyx \
+	examples/ja/knitr.lyx \
+	examples/ja/lilypond.lyx \
 	examples/ja/linguistics.lyx \
 	examples/ja/splash.lyx \
+	examples/ja/sweave.lyx \
 	examples/ja/xyfigure.png \
 	examples/ja/xypic.lyx
 
