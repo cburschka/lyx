@@ -61,7 +61,9 @@ What's new
 
 - Support (black) card suites in text mode (bug 8971).
 
-- Use universal newlines when reading CSVs
+- Use universal newlines when reading CSVs.
+
+- Fix bug where depth of pasted text was incorrectly set (bug 8891).
 
 
 * USER INTERFACE

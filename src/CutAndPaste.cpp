@@ -196,10 +196,8 @@ pasteSelectionHelper(Cursor const & cur, ParagraphList const & parlist,
 		if (tmpbuf->params().depth() > max_depth)
 			tmpbuf->params().depth(max_depth);
 
-		// Only set this from the 2nd on as the 2nd depends
-		// for maxDepth still on pit.
-		if (tmpbuf != insertion.begin())
-			max_depth = tmpbuf->getMaxDepthAfter();
+		// Set max_depth for the next paragraph
+		max_depth = tmpbuf->getMaxDepthAfter();
 
 		// Set the inset owner of this paragraph.
 		tmpbuf->setInsetOwner(target_inset);
