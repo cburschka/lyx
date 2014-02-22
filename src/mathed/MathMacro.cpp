@@ -707,8 +707,8 @@ void MathMacro::write(WriteStream & os) const
 	// we should be ok to continue even if this fails.
 	LATTEST(macro_);
 
-	// optional arguments make macros fragile
-	if (optionals_ > 0 && os.fragile())
+	// Always protect macros in a fragile environment
+	if (os.fragile())
 		os << "\\protect";
 	
 	os << "\\" << name();
