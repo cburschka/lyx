@@ -704,8 +704,8 @@ void MathMacro::write(WriteStream & os) const
 	// normal mode
 	LASSERT(macro_, /**/);
 
-	// optional arguments make macros fragile
-	if (optionals_ > 0 && os.fragile())
+	// Always protect macros in a fragile environment
+	if (os.fragile())
 		os << "\\protect";
 	
 	os << "\\" << name();

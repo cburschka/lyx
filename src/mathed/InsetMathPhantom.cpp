@@ -120,6 +120,8 @@ void InsetMathPhantom::draw(PainterInfo & pi, int x, int y) const
 void InsetMathPhantom::write(WriteStream & os) const
 {
 	MathEnsurer ensurer(os);
+	if (os.fragile())
+		os << "\\protect";
 	switch (kind_) {
 	case phantom:
 		os << "\\phantom{";
