@@ -595,21 +595,18 @@ void InsetMathScript::mathematica(MathematicaStream & os) const
 }
 
 
-// FIXME XHTML
-// It may be worth trying to output munder, mover, and munderover
-// in certain cases, e.g., for display formulas. But then we would
-// need to know if we're in a display formula.
 void InsetMathScript::mathmlize(MathStream & os) const
 {
 	bool d = hasDown() && !down().empty();
 	bool u = hasUp() && !up().empty();
+	bool l = hasLimits();
 
 	if (u && d)
-		os << MTag("msubsup");
+		os << MTag(l ? "munderover" : "msubsup");
 	else if (u)
-		os << MTag("msup");
+		os << MTag(l ? "mover" : "msup");
 	else if (d)
-		os << MTag("msub");
+		os << MTag(l ? "munder" : "msub");
 
 	if (!nuc().empty())
 		os << MTag("mrow") << nuc() << ETag("mrow");
@@ -619,11 +616,11 @@ void InsetMathScript::mathmlize(MathStream & os) const
 	if (u && d)
 		os << MTag("mrow") << down() << ETag("mrow") 
 		   << MTag("mrow") << up() << ETag("mrow") 
-		   << ETag("msubsup");
+		   << ETag(l ? "munderover" : "msubsup");
 	else if (u)
-		os << MTag("mrow") << up() << ETag("mrow") << ETag("msup");
+		os << MTag("mrow") << up() << ETag("mrow") << ETag(l ? "mover" : "msup");
 	else if (d)
-		os << MTag("mrow") << down() << ETag("mrow") << ETag("msub");
+		os << MTag("mrow") << down() << ETag("mrow") << ETag(l ? "munder" : "msub");
 }
 
 
