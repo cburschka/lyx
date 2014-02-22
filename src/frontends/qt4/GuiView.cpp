@@ -3821,8 +3821,6 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	if (isFullScreen()) {
 		if (menuBar()->isVisible() && lyxrc.full_screen_menubar)
 			menuBar()->hide();
-		if (statusBar()->isVisible())
-			statusBar()->hide();
 	}
 }
 
