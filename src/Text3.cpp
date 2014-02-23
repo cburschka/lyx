@@ -1689,11 +1689,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			// invalid after regex_match returns, since it is then
 			// being given a temporary object. (Thanks to Georg for
 			// figuring that out.)
-			regex const link_re("^([a-zA-Z]+):.*");
+			regex const link_re("^([a-z]+):.*");
 			smatch matches;
-			string const c = to_utf8(content);
+			string const c = to_utf8(lowercase(content));
 
-			if (content.substr(0,7) == "mailto:") {
+			if (c.substr(0,7) == "mailto:") {
 				p["target"] = content;
 				p["type"] = from_ascii("mailto:");
 			} else if (regex_match(c, matches, link_re)) {

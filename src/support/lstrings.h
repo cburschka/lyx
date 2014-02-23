@@ -96,8 +96,9 @@ docstring const ascii_lowercase(docstring const &);
 
 /// Changes the case of \p s to lowercase.
 /// Does not depend on the locale.
-std::string const lowercase(std::string const & s);
 docstring const lowercase(docstring const & s);
+// Currently unused, but the code is there if needed.
+// std::string const lowercase(std::string const & s);
 
 /// Changes the case of \p s to uppercase.
 /// Does not depend on the locale.

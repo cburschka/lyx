@@ -481,12 +481,14 @@ docstring const lowercase(docstring const & a)
 }
 
 
+/* Uncomment here and in lstrings.h if you should need this.
 string const lowercase(string const & a)
 {
 	string tmp(a);
 	transform(tmp.begin(), tmp.end(), tmp.begin(), local_lowercase());
 	return tmp;
 }
+*/
 
 
 docstring const uppercase(docstring const & a)
