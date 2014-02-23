@@ -481,6 +481,14 @@ docstring const lowercase(docstring const & a)
 }
 
 
+string const lowercase(string const & a)
+{
+	string tmp(a);
+	transform(tmp.begin(), tmp.end(), tmp.begin(), local_lowercase());
+	return tmp;
+}
+
+
 docstring const uppercase(docstring const & a)
 {
 	docstring tmp(a);

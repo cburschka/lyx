@@ -68,6 +68,23 @@ void GuiHyperlink::paramsToDialog(Inset const * inset)
 }
 
 
+bool GuiHyperlink::initialiseParams(std::string const & data)
+{
+	InsetCommandParams params(insetCode());
+	if (!InsetCommand::string2params(data, params))
+		return false;
+	targetED->setText(toqstr(params["target"]));
+	nameED->setText(toqstr(params["name"]));
+	if (params["type"] == from_utf8("mailto:"))
+		emailRB->setChecked(true);
+	else if (params["type"] == from_utf8("file:"))
+		fileRB->setChecked(true);
+	else
+		webRB->setChecked(true);
+	return true;
+}
+
+
 docstring GuiHyperlink::dialogToParams() const
 {
 	InsetCommandParams params(insetCode());
@@ -75,11 +92,11 @@ docstring GuiHyperlink::dialogToParams() const
 	params["target"] = qstring_to_ucs4(targetED->text());
 	params["name"] = qstring_to_ucs4(nameED->text());
 	if (webRB->isChecked())
-		params["type"] = qstring_to_ucs4("");
+		params["type"] = from_utf8("");
 	else if (emailRB->isChecked())
-		params["type"] = qstring_to_ucs4("mailto:");
+		params["type"] = from_utf8("mailto:");
 	else if (fileRB->isChecked())
-		params["type"] = qstring_to_ucs4("file:");
+		params["type"] = from_utf8("file:");
 	params.setCmdName("href");
 	return from_utf8(InsetHyperlink::params2string(params));
 }

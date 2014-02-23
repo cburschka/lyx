@@ -35,6 +35,7 @@ private:
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
 	bool checkWidgets() const;
+	bool initialiseParams(std::string const & data);
 	//@}
 };
 

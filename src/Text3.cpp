@@ -73,6 +73,7 @@
 #include "support/lstrings.h"
 #include "support/lyxtime.h"
 #include "support/os.h"
+#include "support/regex.h"
 
 #include "mathed/InsetMathHull.h"
 #include "mathed/MathMacroTemplate.h"
@@ -1668,15 +1669,46 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_HREF_INSERT: {
-		InsetCommandParams p(HYPERLINK_CODE);
-		docstring content;
+		// FIXME If we're actually given an argument, shouldn't
+		// we use it, whether or not we have a selection?
+		docstring content = cmd.argument();
 		if (cur.selection()) {
 			content = cur.selectionAsString(false);
 			cutSelection(cur, true, false);
 		}
-		p["target"] = (cmd.argument().empty()) ?
-			content : cmd.argument();
+
+		InsetCommandParams p(HYPERLINK_CODE);
+		if (!content.empty()){
+			// if it looks like a link, we'll put it as target,
+			// otherwise as name (bug #8792).
+
+			// We can't do:
+			//   regex_match(to_utf8(content), matches, link_re)
+			// because smatch stores pointers to the substrings rather
+			// than making copies of them. And those pointers become
+			// invalid after regex_match returns, since it is then
+			// being given a temporary object. (Thanks to Georg for
+			// figuring that out.)
+			regex const link_re("^([a-zA-Z]+):.*");
+			smatch matches;
+			string const c = to_utf8(content);
+
+			if (content.substr(0,7) == "mailto:") {
+				p["target"] = content;
+				p["type"] = from_ascii("mailto:");
+			} else if (regex_match(c, matches, link_re)) {
+				p["target"] = content;
+				string protocol = matches.str(1);
+				if (protocol == "file")
+					p["type"] = from_ascii("file:");
+			} else
+				p["name"] = content;
+		}
 		string const data = InsetCommand::params2string(p);
+
+		// we need to have a target. if we already have one, then
+		// that gets used at the default for the name, too, which
+		// is probably what is wanted.
 		if (p["target"].empty()) {
 			bv->showDialog("href", data);
 		} else {
