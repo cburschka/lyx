@@ -851,8 +851,12 @@ public:
 		case QEvent::Show:
 		case QEvent::Hide:
 		case QEvent::Resize:
+		case QEvent::UpdateRequest:
+		case QEvent::CursorChange:
+		case QEvent::ActionChanged:
 			return QObject::eventFilter(obj, event);
 		default:
+			// FIXME Blocking all these events is a bad idea.
 			QKeyEvent *keyEvent = dynamic_cast<QKeyEvent*>(event);
 			if (keyEvent && keyEvent->key() == Qt::Key_Escape)
 				pressed_ = true;
