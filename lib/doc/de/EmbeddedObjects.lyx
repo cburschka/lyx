@@ -7536,12 +7536,12 @@ caption
 \end_layout
 
 \begin_layout Subsubsection
-Unterschiedliche Titel für Tabellenseiten
+Unterschiedliche Beschriftung für Tabellenseiten
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Tabellen ! lange ! mehrere Titel
+Tabellen ! lange ! mehrere Beschriftungen
 \end_layout
 
 \end_inset
@@ -7550,25 +7550,20 @@ Tabellen ! lange ! mehrere Titel
 \end_layout
 
 \begin_layout Standard
-Wenn die anderen Tabellenseiten einen anderen Titel bekommen sollen als
- die erste, müssen Sie die Beschriftung in eine leere Zeile, die als Kopfzeile
- definiert wurde, mit diesem TeX-Code Befehl einfügen:
-\end_layout
+Wenn die Tabellenbeschriftung der folgenden Seiten anders sein soll, als
+ die der ersten Seite, markieren Sie eine leere Zeile als Kopfzeile, die
+ eine Beschriftung enthält.
+ Dann klicken Sie mit rechts auf die Beschriftung und wählen im Kontext-Menü
+ 
+\family sans
+Legende
+\begin_inset space ~
+\end_inset
 
-\begin_layout Standard
-
-\series bold
-
-\backslash
-caption*{Beschriftung}
-\backslash
-
-\backslash
-%
-\end_layout
-
-\begin_layout Standard
-Tabelle
+(Lange Tabelle (unnummeriert))
+\family default
+ aus.
+ Tabelle
 \begin_inset space ~
 \end_inset
 
@@ -7587,8 +7582,8 @@ reference "tab:DiffCaptions"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="59" columns="3">
-<features rotate="0" islongtable="true" lastFootEmpty="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0cm">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
 <row endfirsthead="true" caption="true">
@@ -7709,23 +7704,15 @@ TEL.
 \end_inset
 </cell>
 </row>
-<row endhead="true">
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<row endhead="true" caption="true">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
+\begin_inset Caption LongTableNoNumber
 
 \begin_layout Plain Layout
-
-
-\backslash
-caption*{Fortsetzung der Telefonliste}
-\backslash
-
-\backslash
-%
+Fortsetzung der Telefonliste
 \end_layout
 
 \end_inset
@@ -7735,7 +7722,7 @@ caption*{Fortsetzung der Telefonliste}
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7744,7 +7731,7 @@ caption*{Fortsetzung der Telefonliste}
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7849,7 +7836,7 @@ wird fortgesetzt\SpecialChar \ldots{}
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7880,7 +7867,7 @@ Silvia
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7911,7 +7898,7 @@ Stefano
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7942,7 +7929,7 @@ Walter
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7973,7 +7960,7 @@ Maria
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8004,7 +7991,7 @@ Maurizio
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8035,7 +8022,7 @@ Giusi
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8066,7 +8053,7 @@ Bernard
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8097,7 +8084,7 @@ Gianfranco
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8128,7 +8115,7 @@ Carolina
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8159,7 +8146,7 @@ Annamaria
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8190,7 +8177,7 @@ Domenico
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8221,7 +8208,7 @@ Paola
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8252,7 +8239,7 @@ Oreste
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8283,7 +8270,7 @@ Franca
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8326,7 +8313,7 @@ Paola
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8357,7 +8344,7 @@ Giancarlo
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8388,7 +8375,7 @@ Luciano
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8419,7 +8406,7 @@ Valeriano
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8450,7 +8437,7 @@ Roberto
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8481,7 +8468,7 @@ Roberto
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8512,7 +8499,7 @@ Erich
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8543,7 +8530,7 @@ Paolo
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8574,7 +8561,7 @@ Claudio
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8605,7 +8592,7 @@ Oskar
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8636,7 +8623,7 @@ Ugo
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8667,7 +8654,7 @@ Margit
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8698,7 +8685,7 @@ Frieda
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8729,7 +8716,7 @@ Hilde
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8760,7 +8747,7 @@ Jürgen
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8791,7 +8778,7 @@ Maurizio
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
