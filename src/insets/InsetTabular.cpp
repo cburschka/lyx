@@ -2451,10 +2451,12 @@ void Tabular::TeXLongtableHeaderFooter(otexstream & os,
 		return;
 
 	// caption handling
-	// the caption must be output before the headers
+	// output caption which is in no header or footer
 	if (haveLTCaption()) {
 		for (row_type r = 0; r < nrows(); ++r) {
-			if (row_info[r].caption)
+			if (row_info[r].caption &&
+			    !row_info[r].endfirsthead && !row_info[r].endhead &&
+			    !row_info[r].endfoot && !row_info[r].endlastfoot)
 				TeXRow(os, r, runparams);
 		}
 	}
