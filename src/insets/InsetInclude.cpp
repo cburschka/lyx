@@ -407,7 +407,9 @@ Buffer * InsetInclude::getChildBuffer() const
 {
 	Buffer * childBuffer = loadIfNeeded(); 
 
-	// FIXME: recursive includes
+	// FIXME RECURSIVE INCLUDE
+	// This isn't sufficient, as the inclusion could be downstream.
+	// But it'll have to do for now.
 	return (childBuffer == &buffer()) ? 0 : childBuffer;
 }
 
@@ -971,6 +973,11 @@ void InsetInclude::collectBibKeys(InsetIterator const & /*di*/) const
 {
 	Buffer * child = loadIfNeeded();
 	if (!child)
+		return;
+	// FIXME RECURSIVE INCLUDE
+	// This isn't sufficient, as the inclusion could be downstream.
+	// But it'll have to do for now.
+	if (child == &buffer())
 		return;
 	child->collectBibKeys();
 }
