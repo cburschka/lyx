@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 459
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrbook
@@ -164,10 +164,6 @@
 
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
-
-% workaround for a bug in KOMA-script 3.10a
-% remove this if a newer KOMA-script version is released!
-\usepackage{everysel,sidecap}
 \end_preamble
 \options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames
 \use_default_options false
@@ -215,6 +211,7 @@ initials
 \use_geometry false
 \use_package amsmath 2
 \use_package amssymb 2
+\use_package cancel 0
 \use_package esint 0
 \use_package mathdots 1
 \use_package mathtools 0
@@ -223,7 +220,7 @@ initials
 \use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
-\cite_engine_type numerical
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -1662,10 +1659,10 @@ In der so erstellten Tabelle ist jede Zelle umrandet.
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="4">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -2076,7 +2073,7 @@ Zeile mit Tabellen mit verschiedenen Ausrichtungen:
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="top">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -2125,8 +2122,8 @@ A
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -2176,7 +2173,7 @@ A
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="bottom">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -5557,11 +5554,11 @@ columnwidth}
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
 <features rotate="0" islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -5891,7 +5888,8 @@ reference "abs:Lange-Tabellen"
 \end_inset
 
  erklärt.
- Nur eine Tabellenzeile kann eine Beschriftung enthalten.
+ Nur eine Tabellenzeile kann eine Beschriftung enthalten, entweder eine
+ Kopf- oder eine Fußzeile.
 \end_layout
 
 \begin_layout Standard
@@ -5902,11 +5900,11 @@ Hier ist eine kurze lange Tabelle, die zeigt, wie das funktioniert:
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
 <features rotate="0" islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row endfirsthead="true" caption="true">
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -6355,11 +6353,11 @@ Tabellen ! lange ! Querverweis
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
 <features rotate="0" islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row endfirsthead="true" caption="true">
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -6785,11 +6783,11 @@ Die beiden folgenden Tabellen zeigen den Unterschied:
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
 <features rotate="0" islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row endfirsthead="true" caption="true">
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -7116,11 +7114,11 @@ LTcapwidth}{5cm}
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
 <features rotate="0" islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row endfirsthead="true" caption="true">
 <cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -11644,7 +11642,7 @@ Mehrfachspalten haben ihre eigenen Einstellungen.
 <lyxtabular version="3" rows="3" columns="4">
 <features rotate="0" firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="middle" width="0">
+<column alignment="center" valignment="middle">
 <column alignment="center" valignment="top" width="0in">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -11854,9 +11852,9 @@ Eine Mehrfachspalten-Tabelle
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="middle" width="0" special=">{\centering}m{1.25cm-6.2pt}">
-<column alignment="center" valignment="middle" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="middle" special=">{\centering}m{1.25cm-6.2pt}">
+<column alignment="center" valignment="middle">
+<column alignment="center" valignment="top">
 <row>
 <cell multicolumn="1" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none" special=">{\centering}m{2.5cm}">
 \begin_inset Text
@@ -12073,8 +12071,8 @@ Eine unvollkommene Mehrfachspalten-Tabelle
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="1.25cm">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none" width="2.5cm">
 \begin_inset Text
@@ -12528,8 +12526,8 @@ Hier ist eine Beispieltabelle mit einer Mehrfachzeile in der ersten Spalte:
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -12725,8 +12723,8 @@ raggedleft}
 <lyxtabular version="3" rows="4" columns="3">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="3cm">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -12884,7 +12882,7 @@ Strg+Enter
 <lyxtabular version="3" rows="3" columns="2">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="left" valignment="middle" width="2cm">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell multirow="3" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -13075,10 +13073,10 @@ im 2-Argument Schema in der ersten Zelle verwendet wird:
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -13298,9 +13296,9 @@ B: für Kreuztabellen von Sportligen oder Entfernungen nützlich:
 <lyxtabular version="3" rows="4" columns="4">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -13517,10 +13515,10 @@ Für größere Kreuztabellen möchte man vielleicht geteilte Zellen in 2 oder
 <lyxtabular version="3" rows="5" columns="5">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -14009,7 +14007,7 @@ e ist, ragt der Inhalt über die Zelle hinaus:
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="3cm">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -14232,7 +14230,7 @@ in der ersten Zelle verwenden:
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="4cm">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -14330,7 +14328,7 @@ Man beachte, dass die geteilte Zelle die breiteste Zelle in der Spalte sein
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -14442,7 +14440,7 @@ cm verwendet:
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -14590,8 +14588,8 @@ Strg+Enter
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -14860,10 +14858,10 @@ Formale Tabelle
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="4">
 <features rotate="0" booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="right" valignment="top" width="0">
-<column alignment="right" valignment="top" width="0">
-<column alignment="right" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="right" valignment="top">
+<column alignment="right" valignment="top">
+<column alignment="right" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -15644,10 +15642,10 @@ Eine spezielle formale Tabelle
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="4">
 <features rotate="0" booktabs="true" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="right" valignment="top" width="0">
-<column alignment="right" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="right" valignment="top">
+<column alignment="right" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
@@ -16133,9 +16131,9 @@ status collapsed
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -16265,9 +16263,9 @@ status collapsed
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -16397,9 +16395,9 @@ status collapsed
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -16518,9 +16516,9 @@ status collapsed
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -16650,9 +16648,9 @@ status collapsed
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -16966,9 +16964,9 @@ colortbl
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -17609,9 +17607,9 @@ colortbl
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0" special=">{\columncolor{dunkelgruen}\centering}c">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" special=">{\columncolor{dunkelgruen}\centering}c">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -18057,7 +18055,7 @@ Tabelle bei der jede zweite Zeile grau gefärbt ist.
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -18237,8 +18235,8 @@ Tabelle bei der jede zweite Zeile cyan gefärbt ist und bei der sich eine
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
@@ -18588,9 +18586,9 @@ Tabelle mit farbigen vertikalen Linien
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0" special="Wc">
-<column alignment="center" valignment="top" width="0" special="Wc">
-<column alignment="center" valignment="top" width="0" special="WcW">
+<column alignment="center" valignment="top" special="Wc">
+<column alignment="center" valignment="top" special="Wc">
+<column alignment="center" valignment="top" special="WcW">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -18821,9 +18819,9 @@ Tabelle mit farbigen horizontalen Linien
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -18985,9 +18983,9 @@ Tabelle mit farbigen Linien
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0" special="Wc">
-<column alignment="center" valignment="top" width="0" special="Wc">
-<column alignment="center" valignment="top" width="0" special="WcW">
+<column alignment="center" valignment="top" special="Wc">
+<column alignment="center" valignment="top" special="Wc">
+<column alignment="center" valignment="top" special="WcW">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -19286,9 +19284,9 @@ Tabelle mit rotierten Zellen in der ersten Zeile.
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -19539,9 +19537,9 @@ Tabelle mit rotierter Zelle mit Zeilenumbruch.
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -20070,7 +20068,7 @@ em Leerraum ein.
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="1">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -20191,7 +20189,7 @@ em Leerraum ein.
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="1">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -20413,7 +20411,7 @@ Normale Tabelle.
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="1">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -20533,7 +20531,7 @@ strut
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="1">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -21077,12 +21075,12 @@ Verschiedene Ausrichtungen
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="6">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="right" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0" special="@{}l">
-<column alignment="right" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0" special="@{}l">
-<column alignment="right" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0" special="@{}l">
+<column alignment="right" valignment="top">
+<column alignment="left" valignment="top" special="@{}l">
+<column alignment="right" valignment="top">
+<column alignment="left" valignment="top" special="@{}l">
+<column alignment="right" valignment="top">
+<column alignment="left" valignment="top" special="@{}l">
 <row>
 <cell multicolumn="1" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -21733,9 +21731,9 @@ Tabelle mit benutzerdefinierten Formaten
 <lyxtabular version="3" rows="3" columns="4">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="2.5cm" special="M{2.5cm}">
-<column alignment="center" valignment="middle" width="0" special="S{2.5cm}{2}">
-<column alignment="center" valignment="middle" width="0">
-<column alignment="center" valignment="middle" width="0" special="K{red}">
+<column alignment="center" valignment="middle" special="S{2.5cm}{2}">
+<column alignment="center" valignment="middle">
+<column alignment="center" valignment="middle" special="K{red}">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -21988,9 +21986,9 @@ pt Liniendicke
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -22272,9 +22270,9 @@ pt dicken horizontalen Linien
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -22495,9 +22493,9 @@ pt dicken vertikalen Linien
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0" special="Vc">
-<column alignment="center" valignment="top" width="0" special="Vc">
-<column alignment="center" valignment="top" width="0" special="VcV">
+<column alignment="center" valignment="top" special="Vc">
+<column alignment="center" valignment="top" special="Vc">
+<column alignment="center" valignment="top" special="VcV">
 <row>
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
@@ -22671,11 +22669,11 @@ Tabelle mit gestrichelten Linien
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0" special=":c">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" special=":c">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -23321,8 +23319,8 @@ Farbige Tabelle mit gestrichelten Linien
 <column alignment="center" valignment="top" width="0pt" special=">{\columncolor{dunkelgruen}\centering}c">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt" special=":c">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -26248,11 +26246,11 @@ Gedrehte Tabelle
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -26448,11 +26446,11 @@ Dies ist Untertabelle a.
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -26542,11 +26540,11 @@ Dies ist Untertabelle b.
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -26664,10 +26662,10 @@ status collapsed
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="4">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -26742,11 +26740,11 @@ status collapsed
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -27517,11 +27515,11 @@ Dies ist ein Beispiel einer Beschriftung, die länger als eine Zeile lang
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -28549,11 +28547,11 @@ Dies ist eine Beschriftung neben einer Tabelle.
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="5">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -28910,11 +28908,11 @@ reference "tab:Beschriftung-neben"
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="5">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -29686,7 +29684,7 @@ Gedruckte Tabellenfußnote.
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="1">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -35286,9 +35284,9 @@ Eine weitere Fußnote
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -35753,8 +35751,8 @@ rotatebox[origin=l]{-90}{
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -36324,8 +36322,8 @@ reflectbox{
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -36744,8 +36742,8 @@ reference "abs:Umflossene-Gleitobjekte"
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -36801,8 +36799,8 @@ Text
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -36877,8 +36875,8 @@ B.
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -36934,8 +36932,8 @@ Text
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -36991,9 +36989,9 @@ Text
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -37067,9 +37065,9 @@ Text
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -37148,8 +37146,8 @@ Text
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -37225,9 +37223,9 @@ Text
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -37330,8 +37328,8 @@ Text
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -38766,10 +38764,10 @@ Vergleich der Datums-Eingaben
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -39682,6 +39680,22 @@ reference "lst:Gleitendes-Programm-Listing"
 \end_inset
 
 .
+ Mit dem Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Liste
+\begin_inset space ~
+\end_inset
+
+/
+\begin_inset space ~
+\end_inset
+
+Inhaltsverzeichnis\SpecialChar \menuseparator
+Listings Verzeichnis
+\family default
+ kann ein Verzeichnis aller Listings eingefügt werden.
+ Die Verzeichniseinträge sind die Nummer des Listings und dessen Beschriftung.
 \end_layout
 
 \begin_layout Standard
@@ -40315,8 +40329,8 @@ Maßeinheiten
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
