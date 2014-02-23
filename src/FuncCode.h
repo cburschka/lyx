@@ -205,7 +205,7 @@ enum FuncCode
 	LFUN_PARAGRAPH_DOWN,            // Asger 1996-10-01
 	// 145
 	LFUN_PARAGRAPH_DOWN_SELECT,     // Asger 1996-10-01
-	LFUN_INSET_FORALL,		// lasgouttes, 20091127
+	LFUN_INSET_FORALL,		          // lasgouttes, 20091127
 	LFUN_BUFFER_NEW_TEMPLATE,       // Asger 1997-02-02
 	LFUN_BUFFER_RELOAD,             // Asger 1997-02-02
 	LFUN_RECONFIGURE,
@@ -230,7 +230,7 @@ enum FuncCode
 	// 165
 	LFUN_VC_REPO_UPDATE,
 	LFUN_VC_COMPARE,
-	LFUN_HREF_INSERT,          // CFO-G 971121
+	LFUN_HREF_INSERT,               // CFO-G 971121
 	LFUN_WORD_FIND_FORWARD,         // Etienne 980216
 	LFUN_WORD_FIND_BACKWARD,        // Etienne 980220
 	// 170
@@ -414,8 +414,8 @@ enum FuncCode
 	LFUN_REGEXP_MODE,               // Tommaso, 20081003
 	LFUN_LABEL_GOTO,                // Ale 970806
 	// 320
-	LFUN_LABEL_COPY_AS_REFERENCE,         // sts, 20081116
-	LFUN_LABEL_INSERT_AS_REFERENCE,       // vfr, 20090407
+	LFUN_LABEL_COPY_AS_REFERENCE,   // sts, 20081116
+	LFUN_LABEL_INSERT_AS_REFERENCE, // vfr, 20090407
 	LFUN_PHANTOM_INSERT,            // uwestoehr, 20090130
 	LFUN_INSET_BEGIN,               // JMarc, 20090316
 	LFUN_INSET_END,                 // JMarc, 20090316
