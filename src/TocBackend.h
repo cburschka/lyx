@@ -43,7 +43,7 @@ public:
 	TocItem(DocIterator const & dit,
 		int depth,
 		docstring const & s,
-	  bool output_active,
+		bool output_active,
 		docstring const & t = docstring()
 		);
 	///
