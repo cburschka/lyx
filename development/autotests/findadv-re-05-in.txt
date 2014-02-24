@@ -1,4 +1,12 @@
 # Finding regexps within \frac{}
+# From what I understand, the point of the test is that search should _not_
+# match in this case because "ignore format" is checked by default.  Thus, a
+# way of testing that there was no match is to check whether the wrap around
+# message shows up, because the cursor is initially at the beginning so that
+# would mean that the entire buffer was checked. This test is still fragile:
+# It will fail if the Italian translation changes, if "ignore format" is
+# unchecked by default, or if the wrap-around mechanism changes (e.g. does not
+# ask if the cursor started at the beginning of the buffer).
 
 Lang it_IT.utf8
 TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
@@ -6,4 +14,4 @@ KK: \Cm\\frac 1-x\[Down]1+x^2 \C\[Home]
 KK: \CF
 KK: \Cm\\frac \Axregexp-mode\[Return].* \[Down]1+x^2 \[Return]
 TestEnd
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n .*idx: 0 par: 0 pos: 0\n with len: 1' lyx-log.txt
+Assert pcregrep 'raggiunta la fine cercando in avanti' lyx-log.txt
