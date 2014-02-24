@@ -70,6 +70,8 @@ public:
 	docstring asString(bool intoInsets = true);
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
+	///
+	void addToToc(DocIterator const & di, bool output_active) const;
 private:
 	/// unimplemented
 	InsetTableCell();

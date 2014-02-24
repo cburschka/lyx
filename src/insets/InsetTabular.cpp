@@ -3432,6 +3432,12 @@ docstring InsetTableCell::asString(bool intoInsets)
 }
 
 
+void InsetTableCell::addToToc(DocIterator const & di, bool output_active) const
+{
+	InsetText::iterateForToc(di, output_active);
+}
+
+
 docstring InsetTableCell::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 {
 	if (!isFixedWidth)
