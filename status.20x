@@ -73,6 +73,8 @@ What's new
 - Fix outliner-related crash when master and child are open in different
   windows (bug 8948).
 
+- Fix outliner-related crash involving captions in long tables (bug 8997).
+
 - Fix hang when using BibTeX files with really long author lists (bug 8944).
 
 - Fix crash with changetracking in bibliography environment (bug 8646).

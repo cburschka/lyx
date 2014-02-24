@@ -727,6 +727,13 @@ void InsetText::addToToc(DocIterator const & cdit) const
 {
 	DocIterator dit = cdit;
 	dit.push_back(CursorSlice(const_cast<InsetText &>(*this)));
+	iterateForToc(dit, output_active);
+}
+
+
+void InsetText::iterateForToc(DocIterator const & cdit, bool output_active) const
+{
+	DocIterator dit = cdit;
 	Toc & toc = buffer().tocBackend().toc("tableofcontents");
 
 	BufferParams const & bufparams = buffer_->params();
