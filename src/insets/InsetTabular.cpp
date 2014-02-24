@@ -4752,7 +4752,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::UNSET_LTFIRSTHEAD:
-			status.setEnabled(sel_row_start == sel_row_end && !tabular.ltCaption(sel_row_start));
+			status.setEnabled(sel_row_start == sel_row_end);
 			status.setOnOff(!tabular.getRowOfLTFirstHead(sel_row_start, dummyltt));
 			break;
 
@@ -4762,7 +4762,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::UNSET_LTHEAD:
-			status.setEnabled(sel_row_start == sel_row_end && !tabular.ltCaption(sel_row_start));
+			status.setEnabled(sel_row_start == sel_row_end);
 			status.setOnOff(!tabular.getRowOfLTHead(sel_row_start, dummyltt));
 			break;
 
@@ -4772,7 +4772,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::UNSET_LTFOOT:
-			status.setEnabled(sel_row_start == sel_row_end && !tabular.ltCaption(sel_row_start));
+			status.setEnabled(sel_row_start == sel_row_end);
 			status.setOnOff(!tabular.getRowOfLTFoot(sel_row_start, dummyltt));
 			break;
 
@@ -4782,7 +4782,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::UNSET_LTLASTFOOT:
-			status.setEnabled(sel_row_start == sel_row_end && !tabular.ltCaption(sel_row_start));
+			status.setEnabled(sel_row_start == sel_row_end);
 			status.setOnOff(!tabular.getRowOfLTLastFoot(sel_row_start, dummyltt));
 			break;
 
