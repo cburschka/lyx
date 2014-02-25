@@ -587,13 +587,13 @@ void InsetMathHull::addPreview(DocIterator const & inset_pos,
 
 
 void InsetMathHull::preparePreview(DocIterator const & pos,
-                                   bool forexport) const  
+                                   bool forexport) const
 {
 	// there is no need to do all the macro stuff if we're not
 	// actually going to generate the preview.
 	if (RenderPreview::status() != LyXRC::PREVIEW_ON && !forexport)
 		return;
-	
+
 	Buffer const * buffer = pos.buffer();
 
 	// collect macros at this position
@@ -752,7 +752,7 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 	if (features.runparams().isLaTeX()) {
 		if (ams())
 			features.require("amsmath");
-	
+
 		if (type_ == hullRegexp) {
 			features.require("color");
 			string frcol = lcolor.getLaTeXName(Color_regexpframe);
@@ -764,12 +764,12 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 			features.addPreambleSnippet(
 				string("\\newcommand{\\endregexp}{}"));
 		}
-	
+
 		// Validation is necessary only if not using AMS math.
 		// To be safe, we will always run mathedvalidate.
 		//if (features.amsstyle)
 		//  return;
-	
+
 		//features.binom      = true;
 	} else if (features.runparams().math_flavor == OutputParams::MathAsHTML) {
 		// it would be better to do this elsewhere, but we can't validate in
@@ -1642,7 +1642,7 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 			// if there is an argument, find the corresponding label, else
 			// check whether there is at least one label.
 			for (row_type row = 0; row != nrows(); ++row) {
-				if (numbered_[row] && label_[row] && 
+				if (numbered_[row] && label_[row] &&
 					(cmd.argument().empty() || label(row) == cmd.argument())) {
 						enabled = true;
 						break;
@@ -2122,7 +2122,7 @@ void InsetMathHull::mathAsLatex(WriteStream & os) const
 
 docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 {
-	BufferParams::MathOutput const mathtype = 
+	BufferParams::MathOutput const mathtype =
 		buffer().masterBuffer()->params().html_math_output;
 
 	bool success = false;
@@ -2146,10 +2146,10 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		} catch (MathExportException const &) {}
 		if (success) {
 			if (getType() == hullSimple)
-				xs << html::StartTag("math", 
+				xs << html::StartTag("math",
 							"xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
-			else 
-				xs << html::StartTag("math", 
+			else
+				xs << html::StartTag("math",
 				      "display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"", true);
 			xs << XHTMLStream::ESCAPE_NONE
 				 << os.str()
@@ -2170,14 +2170,14 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 			   << html::EndTag(tag);
 		}
 	}
-	
+
 	// what we actually want is this:
 	// if (
-	//     ((mathtype == BufferParams::MathML || mathtype == BufferParams::HTML) 
+	//     ((mathtype == BufferParams::MathML || mathtype == BufferParams::HTML)
 	//       && !success)
 	//     || mathtype == BufferParams::Images
 	//    )
-	// but what follows is equivalent, since we'll enter only if either (a) we 
+	// but what follows is equivalent, since we'll enter only if either (a) we
 	// tried and failed with MathML or HTML or (b) didn't try yet at all but
 	// aren't doing LaTeX, in which case we are doing Images.
 	if (!success && mathtype != BufferParams::LaTeX) {
@@ -2213,7 +2213,7 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 			success = true;
 		}
 	}
-	
+
 	// so we'll pass this test if we've failed everything else, or
 	// if mathtype was LaTeX, since we won't have entered any of the
 	// earlier branches
@@ -2225,14 +2225,14 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		ModeSpecifier specifier(wi, MATH_MODE);
 		mathAsLatex(wi);
 		docstring const latex = ls.str();
-		
+
 		// class='math' allows for use of jsMath
 		// http://www.math.union.edu/~dpvc/jsMath/
 		// FIXME XHTML
 		// probably should allow for some kind of customization here
 		string const tag = (getType() == hullSimple) ? "span" : "div";
 		xs << html::StartTag(tag, "class='math'")
-		   << latex 
+		   << latex
 		   << html::EndTag(tag)
 		   << html::CR();
 	}
