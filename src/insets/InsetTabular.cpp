@@ -3897,8 +3897,12 @@ void InsetTabular::updateBuffer(ParIterator const & it, UpdateType utype)
 	// In a longtable, tell captions what the current float is
 	Counters & cnts = buffer().masterBuffer()->params().documentClass().counters();
 	string const saveflt = cnts.current_float();
-	if (tabular.is_long_tabular)
+	if (tabular.is_long_tabular) {
 		cnts.current_float("table");
+		// in longtables, we only step the counter once
+		cnts.step(from_ascii("table"), utype);
+		cnts.isLongtable(true);
+	}
 
 	ParIterator it2 = it;
 	it2.forwardPos();
@@ -3907,8 +3911,10 @@ void InsetTabular::updateBuffer(ParIterator const & it, UpdateType utype)
 		buffer().updateBuffer(it2, utype);
 
 	//reset afterwards
-	if (tabular.is_long_tabular)
+	if (tabular.is_long_tabular) {
 		cnts.current_float(saveflt);
+		cnts.isLongtable(false);
+	}
 }
 
 

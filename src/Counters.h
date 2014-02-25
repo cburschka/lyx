@@ -172,6 +172,10 @@ public:
 	bool isSubfloat() const { return subfloat_; }
 	/// Set the state variable indicating whether we are in a subfloat.
 	void isSubfloat(bool s) { subfloat_ = s; }
+	/// Are we in a longtable?
+	bool isLongtable() const { return longtable_; }
+	/// Set the state variable indicating whether we are in a longtable.
+	void isLongtable(bool s) { longtable_ = s; }
 	
 	/// \name refstepcounter	
 	// @{
@@ -225,6 +229,8 @@ private:
 	std::string current_float_;
 	/// Are we in a subfloat?
 	bool subfloat_;
+	/// Are we in a longtable?
+	bool longtable_;
 	/// Used to keep track of active counters.
 	std::vector<docstring> counter_stack_;
 	/// Same, but for last layout.

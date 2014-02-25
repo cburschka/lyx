@@ -404,7 +404,9 @@ void InsetCaption::updateBuffer(ParIterator const & it, UpdateType utype)
 		docstring const labelstring = isAscii(lstring) ?
 				master.B_(to_ascii(lstring)) : lstring;
 		if (cnts.hasCounter(counter)) {
-			cnts.step(counter, utype);
+			// for longtables, we step the counter upstream
+			if (!cnts.isLongtable())
+				cnts.step(counter, utype);
 			sec = cnts.theCounter(counter, lang);
 		}
 		if (labelstring != master.B_("standard")) {
