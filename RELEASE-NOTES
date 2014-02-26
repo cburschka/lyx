@@ -79,6 +79,9 @@ The following pref variables were added in 2.1:
   Defines the default output format for documents with non-tex
   fonts (OpenType fonts).
 
+- \\fullscreen_statusbar
+  Controls whether the statusbar is shown in fullscreen mode.
+
 - \\texinputs_prefix
   Defines the prefix for the TEXINPUTS environment variable. A
   single '.' in the paths will get replaced with the current
