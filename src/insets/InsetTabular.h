@@ -69,7 +69,7 @@ public:
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
-	void addToToc(DocIterator const & di, bool output_active) const;
+	void addToToc(DocIterator const & di) const;
 private:
 	/// unimplemented
 	InsetTableCell();

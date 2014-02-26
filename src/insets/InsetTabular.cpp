@@ -3373,9 +3373,9 @@ docstring InsetTableCell::asString(bool intoInsets)
 }
 
 
-void InsetTableCell::addToToc(DocIterator const & di, bool output_active) const
+void InsetTableCell::addToToc(DocIterator const & di) const
 {
-	InsetText::iterateForToc(di, output_active);
+	InsetText::iterateForToc(di);
 }
 
 

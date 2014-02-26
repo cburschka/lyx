@@ -216,7 +216,7 @@ protected:
 	///
 	docstring getCaptionHTML(OutputParams const &) const;
 	///
-	void iterateForToc(DocIterator const & cdit, bool output_active) const;
+	void iterateForToc(DocIterator const & cdit) const;
 private:
 	///
 	bool drawFrame_;
