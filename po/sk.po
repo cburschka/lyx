@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-02-22 19:43+0100\n"
+"POT-Creation-Date: 2014-02-26 10:07+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -121,7 +121,7 @@ msgstr "Štandardný výstupný formát pre dokumenty používajúce TeX fonty"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:244
 msgid "With n&on-TeX fonts:"
-msgstr "Pre nie-TeX fonty:"
+msgstr "Pre ni&e-TeX fonty:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:254
 msgid "The default output format for documents using non-TeX fonts"
@@ -5191,6 +5191,10 @@ msgstr "Skryť lištu &dokumentov"
 #: src/frontends/qt4/ui/PrefEditUi.ui:195
 msgid "Hide &menubar"
 msgstr "Skryť ponukovú &lištu"
+
+#: src/frontends/qt4/ui/PrefEditUi.ui:202
+msgid "Hide sta&tusbar"
+msgstr "Skryť stavový p&ruh"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:202
 msgid "&Limit text width"
@@ -12417,13 +12421,9 @@ msgstr "Argument"
 msgid "LongTableNoNumber"
 msgstr "DlháTabuľkaNečíslovaná"
 
-#: lib/layouts/stdinsets.inc:543
-msgid "Long Table Caption (unnumbered)"
-msgstr "Popis Dlhej Tabuľky (neočíslovanej)"
-
-#: lib/layouts/stdinsets.inc:544
-msgid "The caption as it appears in the list of tables"
-msgstr "Popis ako sa zobrazí v zozname tabuliek"
+#: lib/layouts/stdinsets.inc:540
+msgid "unlabelled"
+msgstr "beznávestné"
 
 #: lib/layouts/stdinsets.inc:550
 msgid "Preview"
@@ -29604,6 +29604,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Long Table Caption (unnumbered)"
+#~ msgstr "Popis Dlhej Tabuľky (neočíslovanej)"
+
+#~ msgid "The caption as it appears in the list of tables"
+#~ msgstr "Popis ako sa zobrazí v zozname tabuliek"
 
 #~ msgid "Make First Non-Optional into Optional Argument"
 #~ msgstr "Zmeniť prvý povinný argument na nepovinný"
