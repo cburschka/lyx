@@ -1280,6 +1280,15 @@ void BufferParams::validate(LaTeXFeatures & features) const
 		if (pdfoptions().colorlinks)
 			features.require("color");
 	}
+	if (!listings_params.empty()) {
+		// do not test validity because listings_params is
+		// supposed to be valid
+		string par =
+			InsetListingsParams(listings_params).separatedParams(true);
+		// we can't support all packages, but we should load the color package
+		if (par.find("\\color", 0) != string::npos)
+			features.require("color");
+	}
 
 	// some languages are only available via polyglossia
 	if (features.runparams().flavor == OutputParams::XETEX
@@ -1530,21 +1539,6 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		os << "}\n";
 	}
 
-	if (!listings_params.empty() || features.isRequired("listings"))
-		os << "\\usepackage{listings}\n";
-
-	if (!listings_params.empty()) {
-		os << "\\lstset{";
-		// do not test validity because listings_params is
-		// supposed to be valid
-		string par =
-			InsetListingsParams(listings_params).separatedParams(true);
-		// we can't support all packages, but we should load the color package
-		if (par.find("\\color", 0) != string::npos)
-			features.require("color");
-		os << from_utf8(par)
-		   << "}\n";
-	}
 	if (!features.isProvided("geometry")
 	    && (use_geometry || nonstandard_papersize)) {
 		odocstringstream ods;
@@ -1943,7 +1937,8 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			+ atlyxpreamble + "\\makeatother\n\n";
 
 	// We try to load babel late, in case it interferes with other packages.
-	// Jurabib, hyperref and varioref have to be called after babel, though.
+	// Jurabib, hyperref, varioref and listings (bug 8995) have to be
+	// called after babel, though.
 	if (use_babel && !features.isRequired("jurabib")
 	    && !features.isRequired("hyperref")
 		&& !features.isRequired("varioref")
@@ -1954,6 +1949,17 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		lyxpreamble += from_utf8(babelCall(language_options.str(),
 						   features.needBabelLangOptions())) + '\n';
 		lyxpreamble += from_utf8(features.getBabelPostsettings());
+	}
+	if (!listings_params.empty() || features.isRequired("listings"))
+		lyxpreamble += "\\usepackage{listings}\n";
+	if (!listings_params.empty()) {
+		lyxpreamble += "\\lstset{";
+		// do not test validity because listings_params is
+		// supposed to be valid
+		string par =
+			InsetListingsParams(listings_params).separatedParams(true);
+		lyxpreamble += from_utf8(par);
+		lyxpreamble += "}\n";
 	}
 
 	// xunicode needs to be loaded at least after amsmath, amssymb,
