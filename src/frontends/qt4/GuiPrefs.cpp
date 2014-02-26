@@ -2723,6 +2723,8 @@ PrefEdit::PrefEdit(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(toggleScrollbarCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
+	connect(toggleStatusbarCB, SIGNAL(toggled(bool)),
+		this, SIGNAL(changed()));
 	connect(toggleToolbarsCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
 }
@@ -2743,6 +2745,7 @@ void PrefEdit::apply(LyXRC & rc) const
 	rc.cursor_width = cursorWidthSB->value();
 	rc.full_screen_toolbars = toggleToolbarsCB->isChecked();
 	rc.full_screen_scrollbar = toggleScrollbarCB->isChecked();
+	rc.full_screen_statusbar = toggleStatusbarCB->isChecked();
 	rc.full_screen_tabbar = toggleTabbarCB->isChecked();
 	rc.full_screen_menubar = toggleMenubarCB->isChecked();
 	rc.full_screen_width = fullscreenWidthSB->value();
@@ -2760,6 +2763,7 @@ void PrefEdit::update(LyXRC const & rc)
 	macroEditStyleCO->setCurrentIndex(rc.macro_edit_style);
 	cursorWidthSB->setValue(rc.cursor_width);
 	toggleScrollbarCB->setChecked(rc.full_screen_scrollbar);
+	toggleScrollbarCB->setChecked(rc.full_screen_statusbar);
 	toggleToolbarsCB->setChecked(rc.full_screen_toolbars);
 	toggleTabbarCB->setChecked(rc.full_screen_tabbar);
 	toggleMenubarCB->setChecked(rc.full_screen_menubar);

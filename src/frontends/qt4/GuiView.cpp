@@ -3879,7 +3879,8 @@ void GuiView::toggleFullScreen()
 		setContentsMargins(-2, -2, -2, -2);
 		saveLayout();
 		setWindowState(windowState() ^ Qt::WindowFullScreen);
-		statusBar()->hide();
+		if (lyxrc.full_screen_statusbar)
+			statusBar()->hide();
 		if (lyxrc.full_screen_menubar)
 			menuBar()->hide();
 		if (lyxrc.full_screen_toolbars) {

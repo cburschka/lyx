@@ -86,6 +86,7 @@ public:
 		RC_FORWARD_SEARCH_PDF,
 		RC_FULL_SCREEN_LIMIT,
 		RC_FULL_SCREEN_SCROLLBAR,
+		RC_FULL_SCREEN_STATUSBAR,
 		RC_FULL_SCREEN_TABBAR,
 		RC_FULL_SCREEN_MENUBAR,
 		RC_FULL_SCREEN_TOOLBARS,
@@ -499,6 +500,8 @@ public:
 	bool full_screen_tabbar;
 	/// Toggle menubar in fullscreen mode?
 	bool full_screen_menubar;
+	/// Toggle statusbar in fullscreen mode?
+	bool full_screen_statusbar;
 	/// Limit the text width?
 	bool full_screen_limit;
 	/// Width of limited screen (in pixels) in fullscreen mode

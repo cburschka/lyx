@@ -1339,6 +1339,14 @@ contributors = [
                  "6 April 2005",
                  u"Better support for serbian and serbocroatian"),
 
+     contributor(u"Prannoy Pilligundla",
+                 "prannoy.bits () gmail ! com",
+                 "GPL",
+                 "Contribution license",
+                 "m=139332446711707",
+                 "25 February 2014",
+                 u"Full screen statusbar toggling"),
+
      contributor(u"Geoffroy Piroux",
                  "piroux () fyma ! ucl ! ac ! be",
                  "",

@@ -197,6 +197,13 @@
        </widget>
       </item>
       <item row="4" column="0">
+       <widget class="QCheckBox" name="toggleStatusbarCB">
+        <property name="text">
+         <string>Hide sta&amp;tusbar</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
        <widget class="QGroupBox" name="fullscreenLimitGB">
         <property name="title">
          <string>&amp;Limit text width</string>

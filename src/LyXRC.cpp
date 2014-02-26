@@ -110,6 +110,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\fullscreen_limit", LyXRC::RC_FULL_SCREEN_LIMIT },
 	{ "\\fullscreen_menubar", LyXRC::RC_FULL_SCREEN_MENUBAR },
 	{ "\\fullscreen_scrollbar", LyXRC::RC_FULL_SCREEN_SCROLLBAR },
+	{ "\\fullscreen_statusbar", LyXRC::RC_FULL_SCREEN_STATUSBAR },
 	{ "\\fullscreen_tabbar", LyXRC::RC_FULL_SCREEN_TABBAR },
 	{ "\\fullscreen_toolbars", LyXRC::RC_FULL_SCREEN_TOOLBARS },
 	{ "\\fullscreen_width", LyXRC::RC_FULL_SCREEN_WIDTH },
@@ -1237,6 +1238,9 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 		case RC_FULL_SCREEN_SCROLLBAR:
 			lexrc >> full_screen_scrollbar;
 			break;
+		case RC_FULL_SCREEN_STATUSBAR:
+			lexrc >> full_screen_statusbar;
+			break;
 		case RC_FULL_SCREEN_TABBAR:
 			lexrc >> full_screen_tabbar;
 			break;
@@ -1941,6 +1945,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    full_screen_scrollbar != system_lyxrc.full_screen_scrollbar) {
 			os << "\\fullscreen_scrollbar "
 			   << convert<string>(full_screen_scrollbar)
+			   << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_FULL_SCREEN_STATUSBAR:
+		if (ignore_system_lyxrc ||
+		    full_screen_statusbar != system_lyxrc.full_screen_statusbar) {
+			os << "\\fullscreen_statusbar "
+			   << convert<string>(full_screen_statusbar)
 			   << '\n';
 		}
 		if (tag != RC_LAST)
@@ -3061,6 +3074,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_FULL_SCREEN_LIMIT:
 	case LyXRC::RC_FULL_SCREEN_SCROLLBAR:
 	case LyXRC::RC_FULL_SCREEN_MENUBAR:
+	case LyXRC::RC_FULL_SCREEN_STATUSBAR:
 	case LyXRC::RC_FULL_SCREEN_TABBAR:
 	case LyXRC::RC_FULL_SCREEN_TOOLBARS:
 	case LyXRC::RC_FULL_SCREEN_WIDTH:
