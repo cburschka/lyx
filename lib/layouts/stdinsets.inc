@@ -537,11 +537,9 @@ End
 
 InsetLayout Caption:LongTableNoNumber
 	CopyStyle            Caption:Standard
+	LabelString          unlabelled
 	LatexName            caption*
-	Argument 1
-		LabelString   "Long Table Caption (unnumbered)"
-		Tooltip       "The caption as it appears in the list of tables"
-	EndArgument
+	ResetArgs            1
 End
 
 
