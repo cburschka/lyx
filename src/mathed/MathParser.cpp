@@ -861,7 +861,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					} else {
 						// This is not an outer hull and display math is
 						// not allowed inside text mode environments.
-						error("bad math environment");
+						error("bad math environment $$");
 						break;
 					}
 				} else {
@@ -1240,13 +1240,19 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "(") {
-			cell->push_back(MathAtom(new InsetMathEnsureMath(buf)));
-			parse(cell->back().nucleus()->cell(0), FLAG_SIMPLE2, InsetMath::MATH_MODE);
+			if (mode == InsetMath::UNDECIDED_MODE) {
+				cell->push_back(MathAtom(new InsetMathHull(buf, hullSimple)));
+				parse2(cell->back(), FLAG_SIMPLE2, InsetMath::MATH_MODE, false);
+			} else {
+				// Don't create nested math hulls (bug #5392)
+				cell->push_back(MathAtom(new InsetMathEnsureMath(buf)));
+				parse(cell->back().nucleus()->cell(0), FLAG_SIMPLE2, InsetMath::MATH_MODE);
+			}
 		}
 
 		else if (t.cs() == "[") {
 			if (mode != InsetMath::UNDECIDED_MODE) {
-				error("bad math environment");
+				error("bad math environment [");
 				break;
 			}
 			cell->push_back(MathAtom(new InsetMathHull(buf, hullEquation)));
@@ -1567,14 +1573,20 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 
 			else if (name == "math") {
-				cell->push_back(MathAtom(new InsetMathEnsureMath(buf)));
-				parse(cell->back().nucleus()->cell(0), FLAG_END, InsetMath::MATH_MODE);
+				if (mode == InsetMath::UNDECIDED_MODE) {
+					cell->push_back(MathAtom(new InsetMathHull(buf, hullSimple)));
+					parse2(cell->back(), FLAG_END, InsetMath::MATH_MODE, false);
+				} else {
+					// Don't create nested math hulls (bug #5392)
+					cell->push_back(MathAtom(new InsetMathEnsureMath(buf)));
+					parse(cell->back().nucleus()->cell(0), FLAG_END, InsetMath::MATH_MODE);
+				}
 			}
 
 			else if (name == "equation" || name == "equation*"
 					|| name == "displaymath") {
 				if (mode != InsetMath::UNDECIDED_MODE) {
-					error("bad math environment");
+					error("bad math environment " + name);
 					break;
 				}
 				cell->push_back(MathAtom(new InsetMathHull(buf, hullEquation)));
@@ -1583,7 +1595,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 			else if (name == "eqnarray" || name == "eqnarray*") {
 				if (mode != InsetMath::UNDECIDED_MODE) {
-					error("bad math environment");
+					error("bad math environment " + name);
 					break;
 				}
 				cell->push_back(MathAtom(new InsetMathHull(buf, hullEqnArray)));
@@ -1592,7 +1604,9 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 			else if (name == "align" || name == "align*") {
 				if (mode != InsetMath::UNDECIDED_MODE) {
-					error("bad math environment");
+					// FIXME this is wrong: amsmath supports
+					//       align* inside gather, see testmath.tex.
+					error("bad math environment " + name);
 					break;
 				}
 				cell->push_back(MathAtom(new InsetMathHull(buf, hullAlign)));
@@ -1601,7 +1615,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 			else if (name == "flalign" || name == "flalign*") {
 				if (mode != InsetMath::UNDECIDED_MODE) {
-					error("bad math environment");
+					error("bad math environment " + name);
 					break;
 				}
 				cell->push_back(MathAtom(new InsetMathHull(buf, hullFlAlign)));
@@ -1610,7 +1624,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 			else if (name == "alignat" || name == "alignat*") {
 				if (mode != InsetMath::UNDECIDED_MODE) {
-					error("bad math environment");
+					error("bad math environment " + name);
 					break;
 				}
 				// ignore this for a while
@@ -1621,7 +1635,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 			else if (name == "xalignat" || name == "xalignat*") {
 				if (mode != InsetMath::UNDECIDED_MODE) {
-					error("bad math environment");
+					error("bad math environment " + name);
 					break;
 				}
 				// ignore this for a while
@@ -1632,7 +1646,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 			else if (name == "xxalignat") {
 				if (mode != InsetMath::UNDECIDED_MODE) {
-					error("bad math environment");
+					error("bad math environment " + name);
 					break;
 				}
 				// ignore this for a while
@@ -1643,7 +1657,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 			else if (name == "multline" || name == "multline*") {
 				if (mode != InsetMath::UNDECIDED_MODE) {
-					error("bad math environment");
+					error("bad math environment " + name);
 					break;
 				}
 				cell->push_back(MathAtom(new InsetMathHull(buf, hullMultline)));
@@ -1652,7 +1666,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 			else if (name == "gather" || name == "gather*") {
 				if (mode != InsetMath::UNDECIDED_MODE) {
-					error("bad math environment");
+					error("bad math environment " + name);
 					break;
 				}
 				cell->push_back(MathAtom(new InsetMathHull(buf, hullGather)));
