@@ -34133,11 +34133,7 @@ box
 \family sans
 Makebox
 \family default
- and its width to 1
-\begin_inset space \thinspace{}
-\end_inset
-
-Width.
+ and use no explicit width.
 \end_layout
 
 \begin_layout Standard
@@ -34153,8 +34149,8 @@ has_inner_box 1
 inner_pos "t"
 use_parbox 0
 use_makebox 1
-width "1in"
-special "width"
+width ""
+special "none"
 height "1in"
 height_special "totalheight"
 status open
@@ -34256,8 +34252,8 @@ has_inner_box 1
 inner_pos "t"
 use_parbox 0
 use_makebox 1
-width "1in"
-special "width"
+width ""
+special "none"
 height "1in"
 height_special "totalheight"
 status open

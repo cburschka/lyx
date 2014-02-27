@@ -35097,11 +35097,11 @@ intérieure
 \family sans
 Makebox
 \family default
- et sa largeur à 1
-\begin_inset space \thinspace{}
-\end_inset
-
-Largeur.
+ et 
+\lang english
+use no explicit
+\lang french
+ largeur.
 \end_layout
 
 \begin_layout Standard
@@ -35117,14 +35117,21 @@ has_inner_box 1
 inner_pos "t"
 use_parbox 0
 use_makebox 1
-width "1in"
-special "width"
+width ""
+special "none"
 height "1in"
 height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
+\begin_inset Quotes fld
+\end_inset
+
 motTrèsTrèsLong
+\begin_inset Quotes frd
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -35152,7 +35159,7 @@ Une autre méthode consiste à mettre la commande
 
 \begin_layout Standard
 Cette ligne est un exemple comment vous pouvez empêcher une césure: 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -35169,7 +35176,7 @@ status collapsed
 \end_inset
 
 motTrèsTrèsLong
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
@@ -35219,18 +35226,18 @@ has_inner_box 1
 inner_pos "t"
 use_parbox 0
 use_makebox 1
-width "1in"
-special "width"
+width ""
+special "none"
 height "1in"
 height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 motTrèsTrèsLong
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 

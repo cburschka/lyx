@@ -7585,7 +7585,7 @@ reference "tab:DiffCaptions"
 <features rotate="0" islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
-<column alignment="right" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
 <row endfirsthead="true" caption="true">
 <cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
@@ -7856,7 +7856,7 @@ Silvia
 
 \end_inset
 </cell>
-<cell alignment="right" valignment="top" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -34230,11 +34230,7 @@ Um das zu verhindern, fügen Sie das Wort in eine Box ein, setzen Sie die
 \begin_inset space ~
 \end_inset
 
-Box auf Makebox und deren Breite auf 1
-\begin_inset space \thinspace{}
-\end_inset
-
-Width.
+Box auf Makebox und verwenden keine explizite Breite.
 \end_layout
 
 \begin_layout Standard
@@ -34250,8 +34246,8 @@ has_inner_box 1
 inner_pos "t"
 use_parbox 0
 use_makebox 1
-width "1in"
-special "width"
+width ""
+special "none"
 height "1in"
 height_special "totalheight"
 status open
@@ -34337,8 +34333,8 @@ has_inner_box 1
 inner_pos "t"
 use_parbox 0
 use_makebox 1
-width "1in"
-special "width"
+width ""
+special "none"
 height "1in"
 height_special "totalheight"
 status open
