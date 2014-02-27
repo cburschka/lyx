@@ -22,7 +22,7 @@ class InsetMathSplit : public InsetMathGrid {
 public:
 	///
 	explicit InsetMathSplit(Buffer * buf, docstring const & name,
-		char valign = 'c');
+		char valign = 'c', bool numbered = false);
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
@@ -50,6 +50,8 @@ private:
 	virtual Inset * clone() const;
 	///
 	docstring name_;
+	///
+	bool numbered_;
 };
 
 

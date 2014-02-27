@@ -1603,14 +1603,14 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 
 			else if (name == "align" || name == "align*") {
-				if (mode != InsetMath::UNDECIDED_MODE) {
-					// FIXME this is wrong: amsmath supports
-					//       align* inside gather, see testmath.tex.
-					error("bad math environment " + name);
-					break;
+				if (mode == InsetMath::UNDECIDED_MODE) {
+					cell->push_back(MathAtom(new InsetMathHull(buf, hullAlign)));
+					parse2(cell->back(), FLAG_END, InsetMath::MATH_MODE, !stared(name));
+				} else {
+					cell->push_back(MathAtom(new InsetMathSplit(buf, name,
+							'c', !stared(name))));
+					parse2(cell->back(), FLAG_END, mode, !stared(name));
 				}
-				cell->push_back(MathAtom(new InsetMathHull(buf, hullAlign)));
-				parse2(cell->back(), FLAG_END, InsetMath::MATH_MODE, !stared(name));
 			}
 
 			else if (name == "flalign" || name == "flalign*") {

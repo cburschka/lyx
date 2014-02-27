@@ -32,9 +32,12 @@ namespace lyx {
 using support::bformat;
 
 
+// FIXME: handle numbers in gui, currently they are only read and written
+
 InsetMathSplit::InsetMathSplit(Buffer * buf, docstring const & name,
-	char valign)
-	: InsetMathGrid(buf, 1, 1, valign, docstring()), name_(name)
+	char valign, bool numbered)
+	: InsetMathGrid(buf, 1, 1, valign, docstring()), name_(name),
+	  numbered_(numbered)
 {
 }
 
@@ -51,7 +54,7 @@ char InsetMathSplit::defaultColAlign(col_type col)
 		return 'l';
 	if (name_ == "gathered")
 		return 'c';
-	if (name_ == "aligned")
+	if (name_ == "aligned" || name_ == "align")
 		return (col & 1) ? 'l' : 'r';
 	if (name_ == "alignedat")
 		return (col & 1) ? 'l' : 'r';
@@ -97,15 +100,18 @@ void InsetMathSplit::write(WriteStream & ws) const
 	MathEnsurer ensurer(ws);
 	if (ws.fragile())
 		ws << "\\protect";
-	ws << "\\begin{" << name_ << '}';
-	if (name_ != "split" && verticalAlignment() != 'c')
+	docstring suffix;
+	if (!numbered_ && name_ == "align")
+		suffix = from_ascii("*");
+	ws << "\\begin{" << name_ << suffix << '}';
+	if (name_ != "split" && name_ != "align" && verticalAlignment() != 'c')
 		ws << '[' << verticalAlignment() << ']';
 	if (name_ == "alignedat")
 		ws << '{' << static_cast<unsigned int>((ncols() + 1)/2) << '}';
 	InsetMathGrid::write(ws);
 	if (ws.fragile())
 		ws << "\\protect";
-	ws << "\\end{" << name_ << "}\n";
+	ws << "\\end{" << name_ << suffix << "}\n";
 }
 
 
@@ -113,7 +119,10 @@ void InsetMathSplit::infoize(odocstream & os) const
 {
 	docstring name = name_;
 	name[0] = support::uppercase(name[0]);
-	os << name << ' ';
+	if (name_ == "align" && !numbered_)
+		os << name << "* ";
+	else
+		os << name << ' ';
 }
 
 
@@ -127,6 +136,7 @@ void InsetMathSplit::mathmlize(MathStream & ms) const
 	// it's not clear how to do that without copying a lot of code.
 	// One idea would be to wrap the table in an <mrow>, and set the
 	// alignment there via CSS.
+	// FIXME how to handle numbered and unnumbered align?
 	InsetMathGrid::mathmlize(ms);
 }
 
@@ -138,6 +148,7 @@ void InsetMathSplit::htmlize(HtmlStream & ms) const
 	// special treatment.
 	// FIXME
 	// lgathered and rgathered could use the proper alignment.
+	// FIXME how to handle numbered and unnumbered align?
 	InsetMathGrid::htmlize(ms);
 }
 
@@ -145,7 +156,7 @@ void InsetMathSplit::htmlize(HtmlStream & ms) const
 void InsetMathSplit::validate(LaTeXFeatures & features) const
 {
 	if (name_ == "split" || name_ == "gathered" || name_ == "aligned" ||
-	    name_ == "alignedat")
+	    name_ == "alignedat" || name_ == "align")
 		features.require("amsmath");
 	else if (name_ == "lgathered" || name_ == "rgathered")
 		features.require("mathtools");
