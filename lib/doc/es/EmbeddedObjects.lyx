@@ -167,10 +167,6 @@
  {\usepackage{diagbox}
   \setboolean{diagbox}{true}}
  {\setboolean{diagbox}{false}}
-
-% to translate the listing label
-% para traducir la etiqueta listing
-\renewcommand{\lstlistingname}{Listado}
 \end_preamble
 \options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames
 \use_default_options false
@@ -39126,42 +39122,6 @@ Se puede añadir una leyenda a un listado de programa con el menú
 Insertar\SpecialChar \menuseparator
 Leyenda
 \family default
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Para traducir la etiqueta 
-\begin_inset Quotes eld
-\end_inset
-
-Listado
-\begin_inset Quotes erd
-\end_inset
-
- de la leyenda en la salida, se añade al preámbulo LaTeX del documento el
- comando 
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-lstlistingname}{Listado}
-\series default
-.
- (
-\emph on
-N.
-\begin_inset space \thinspace{}
-\end_inset
-
-del t.
-\emph default
-)
-\end_layout
-
-\end_inset
-
 .
  Los listados de programa se pueden referenciar como los flotantes: Listado
 \begin_inset space ~
