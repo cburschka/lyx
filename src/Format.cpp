@@ -402,11 +402,19 @@ string Formats::getFormatFromFile(FileName const & filename) const
 					<< "\tCouldn't load magic database - "
 					<< magic_error(magic_cookie));
 			} else {
-				string mime = magic_file(magic_cookie,
+				char const * result = magic_file(magic_cookie,
 					filename.toFilesystemEncoding().c_str());
-				mime = token(mime, ';', 0);
+				string mime;
+				if (result)
+					mime = token(result, ';', 0);
+				else {
+					LYXERR(Debug::GRAPHICS, "Formats::getFormatFromFile\n"
+						<< "\tCouldn't query magic database - "
+						<< magic_error(magic_cookie));
+				}
 				// we need our own ps/eps detection
-				if ((mime != "application/postscript") && (mime != "text/plain")) {
+				if (!mime.empty() && mime != "application/postscript" &&
+				    mime != "text/plain") {
 					Formats::const_iterator cit =
 						find_if(formatlist.begin(), formatlist.end(),
 							FormatMimeEqual(mime));
