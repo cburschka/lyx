@@ -673,7 +673,7 @@ Translations = translations
 EOF
 	if [ ! -d "${condir}/PlugIns" ]; then
 		mkdir -p "${condir}/PlugIns"
-		find "${source}/plugins" -name \*.dylib -print | while read libname ; do
+		find "${source}/plugins" -name \*.dylib -print | grep -v _debug.dylib | while read libname ; do
 			echo Copy plugin "${libname}"
 			dylib=$(basename "${libname}")
 			dirname=$(dirname "${libname}")
