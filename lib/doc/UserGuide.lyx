@@ -12047,7 +12047,7 @@ Traditionally, LaTeX used its own fonts.
  Also, the range of fonts supported by traditional LaTeX has increased a
  lot in the meantime; so you can find packages for many free and commercial
  fonts.
- In LyX, only a subset of these are directly selectable via the user interface
+ LyX supports the fonts that are under a free license via the user interface
  (see section
 \begin_inset space ~
 \end_inset
@@ -12060,9 +12060,8 @@ reference "sub:Document-Font"
 \end_inset
 
  for details).
- However, all the others are available if you enter the relevant LaTeX code
- in the document preamble (please refer to the documentation of your desired
- font).
+ Other fonts are available if you enter the relevant LaTeX code in the document
+ preamble (please refer to the documentation of your desired font).
 \end_layout
 
 \begin_layout Standard
@@ -12177,8 +12176,11 @@ serif
 typewriter
 \family default
  (monospaced) — and you can specify the base font size and scaling factors
- for (some) sans serif and typewriter fonts if this is necessary to fit
- with the roman font.
+ for (some) sans
+\begin_inset space ~
+\end_inset
+
+serif and typewriter fonts if this is necessary to fit with the roman font.
 \end_layout
 
 \begin_layout Standard
@@ -12342,7 +12344,7 @@ ec
 status collapsed
 
 \begin_layout Plain Layout
-This problem doesn't appear if you read PDFs in 
+This problem does not appear if you read PDFs in 
 \family typewriter
 Adobe
 \begin_inset space ~
@@ -12976,6 +12978,139 @@ reference "sub:Screen-Fonts"
 \end_layout
 
 \begin_layout Subsection
+Math Fonts
+\end_layout
+
+\begin_layout Standard
+In LaTeX the font used for characters in equations is different from the
+ document font.
+ For the case that you use TeX fonts for your document, you can explicitly
+ choose a math font in the dialog 
+\family sans
+Document\SpecialChar \menuseparator
+Settings
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Document ! Settings
+\end_layout
+
+\end_inset
+
+.
+ The default setting is that LyX automatically selects a math font.
+ For most cases this will be LaTeX's default -- the math variant of LaTeX's
+ default font family 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+Computer
+\begin_inset space ~
+\end_inset
+
+Modern
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ LyX will automatically only load another math font if a math variant of
+ the document font is available.
+\end_layout
+
+\begin_layout Standard
+Note that the math font will not be used for 
+\emph on
+mathematical text
+\emph default
+ (which is inserted with the shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "font-default"
+\end_inset
+
+ or by the insertion of the command 
+\series bold
+
+\backslash
+text
+\series default
+ into a formula).
+ Also note that some math fonts are sans
+\begin_inset space ~
+\end_inset
+
+serif.
+ Your document might therefore look strange when the document text has serifs
+ while the math characters do not.
+ Sans
+\begin_inset space ~
+\end_inset
+
+serif math fonts make therefore in most cases only sense if you select 
+\family sans
+Sans
+\begin_inset space ~
+\end_inset
+
+Serif
+\family default
+ for the 
+\family sans
+Default
+\begin_inset space ~
+\end_inset
+
+family
+\family default
+ in the document font settings.
+\end_layout
+
+\begin_layout Standard
+If you use non-TeX fonts for the document, you can only choose for math
+ to use either the document's class default TeX font (in most cases 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+Computer
+\begin_inset space ~
+\end_inset
+
+Modern
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+) or to use the non-TeX variant of the document's class default font (in
+ most cases 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
 Using Different Character Styles
 \begin_inset Index idx
 status collapsed
@@ -13011,8 +13146,8 @@ Emphasized
 Noun
 \family default
 .
- You can activate both of these styles via keybindings, the menus, and the
- toolbar.
+ You can activate both of these styles via key bindings, the menus, and
+ the toolbar.
 \end_layout
 
 \begin_layout Standard

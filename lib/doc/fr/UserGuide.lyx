@@ -12883,8 +12883,11 @@ D'habitude, LaTeX utilise ses propres polices de caractères.
  De plus, le nombre de polices acceptées par le LaTeX traditionnel a augmenté
  de façon importante ce qui fait que vous pouvez trouver des paquetages
  pour plusieurs polices libres et commerciales.
- Du côté de LyX, seule une partie de ces dernières est directement accessible
- grâce à l'interface utilisateur (voir la section
+ LyX
+\lang english
+ supports the fonts that are under a free license
+\lang french
+ directement à l'interface utilisateur (voir la section
 \begin_inset space ~
 \end_inset
 
@@ -13215,12 +13218,12 @@ sélectionnez les polices
 status collapsed
 
 \begin_layout Plain Layout
-Latin Modern (lm):
+Latin Modern
 \end_layout
 
 \end_inset
 
- ceci est le choix recommandé si vous souhaitez conserver l'apparence de
+: ceci est le choix recommandé si vous souhaitez conserver l'apparence de
  polices 
 \begin_inset Flex Code
 status collapsed
@@ -13684,7 +13687,7 @@ script characters
 \begin_inset Quotes frd
 \end_inset
 
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -13704,7 +13707,7 @@ CJK
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -13750,6 +13753,150 @@ reference "cha:Fenêtre-Préférences"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Math Fonts
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In LaTeX the font used for characters in equations is different from the
+ document font.
+ For the case that you use TeX fonts for your document, you can explicitly
+ choose a math font in the dialog 
+\family sans
+\lang french
+Document\SpecialChar \menuseparator
+Paramètres
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Document ! Paramètres
+\end_layout
+
+\end_inset
+
+
+\lang english
+.
+ The default setting is that LyX automatically selects a math font.
+ For most cases this will be LaTeX's default -- the math variant of LaTeX's
+ default font family 
+\begin_inset Quotes fld
+\end_inset
+
+
+\family typewriter
+Computer
+\begin_inset space ~
+\end_inset
+
+Modern
+\family default
+
+\begin_inset Quotes frd
+\end_inset
+
+.
+ LyX will automatically only load another math font if a math variant of
+ the document font is available.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note that the math font will not be used for 
+\emph on
+mathematical text
+\emph default
+ (which is inserted with the shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "font-default"
+\end_inset
+
+ or by the insertion of the command 
+\series bold
+
+\backslash
+text
+\series default
+ into a formula).
+ Also note that some math fonts are sans
+\begin_inset space ~
+\end_inset
+
+serif.
+ Your document might therefore look strange when the document text has serifs
+ while the math characters do not.
+ Sans
+\begin_inset space ~
+\end_inset
+
+serif math fonts make therefore in most cases only sense if you select 
+\family sans
+Sans
+\begin_inset space ~
+\end_inset
+
+Serif
+\family default
+ for the 
+\family sans
+Default
+\begin_inset space ~
+\end_inset
+
+family
+\family default
+ in the document font settings.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you use non-TeX fonts for the document, you can only choose for math
+ to use either the document's class default TeX font (in most cases 
+\begin_inset Quotes fld
+\end_inset
+
+
+\family typewriter
+Computer
+\begin_inset space ~
+\end_inset
+
+Modern
+\family default
+
+\begin_inset Quotes frd
+\end_inset
+
+) or to use the non-TeX variant of the document's class default font (in
+ most cases 
+\begin_inset Quotes fld
+\end_inset
+
+
+\family typewriter
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
+\family default
+
+\begin_inset Quotes frd
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsection

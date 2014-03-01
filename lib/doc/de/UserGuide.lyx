@@ -12904,8 +12904,8 @@ Traditionell verwendet LaTeX seine eigenen Schriften.
  aussehen.
  Mittlerweile gibt es eine recht große Zahl an LaTeX-Schriften, freie und
  kommerzielle.
- In LyX sind nur einige davon direkt über die Dokumenteinstellungen auswählbar
- (siehe Abschnitt
+ LyX unterstützt die Schriften, die eine freie Lizentz haben, direkt über
+ die Dokumenteinstellungen (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -12917,9 +12917,9 @@ reference "sub:Dokumentschrift-und-Schriftgröße"
 \end_inset
 
  für Details).
- Es sind dennoch alle verfügbar wenn man den entsprechenden LaTeX-Code in
- den LaTeX-Vorspann einfügt (bitte lesen Sie dazu die Dokumentation der
- gewünschten Schrift).
+ Alle anderen Schriften sind dennoch alle verfügbar wenn man den entsprechenden
+ LaTeX-Code in den LaTeX-Vorspann einfügt (bitte lesen Sie dazu die Dokumentatio
+n der gewünschten Schrift).
 \end_layout
 
 \begin_layout Standard
@@ -13797,6 +13797,126 @@ reference "sub:Bildschirmschriften"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Mathe-Schriften
+\end_layout
+
+\begin_layout Standard
+In LaTeX ist die Schrift für Formeln nicht dieselbe wie die für den Dokumenttext.
+ Für den Fall, dass Sie TeX-Schriften für Ihr Dokument verwenden, können
+ Sie daher explizit eine Mathe-Schrift im Dialog 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen
+\family default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Dokument ! Einstellungen
+\end_layout
+
+\end_inset
+
+ vorgeben.
+ Die Voreinstellung ist, dass LyX automatisch eine Mathe-Schrift auswählt.
+ In den allermeisten Fällen ist das die Mathe-Variante der LaTeX-Standardschrift
+familie 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+Computer
+\begin_inset space ~
+\end_inset
+
+Modern
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+ LyX verwendet nur dann eine andere Mathe-Schrift, wenn es eine Mathe-Variante
+ der Dokumentschrift gibt.
+\end_layout
+
+\begin_layout Standard
+Beachten Sie, dass die Mathe-Schrift nicht für 
+\emph on
+Mathematischen Text
+\emph default
+ verwendet wird (der mit dem Tastenkürzel 
+\family sans
+Alt+Z
+\begin_inset space ~
+\end_inset
+
+Leertaste
+\family default
+ oder durch Eingabe des Befehls 
+\series bold
+
+\backslash
+text
+\series default
+ in eine Formel eingefügt wird).
+ Beachten Sie ebenfalls, dass einige Mathe-Schriften serifenlos sind.
+ Ihr Dokument würde daher etwas seltsam aussehen, wenn der Dokumenttext
+ Serifen hat, Formelzeichen aber nicht.
+ Serifenlose Mathe-Schriften ergeben daher in den meisten Fällen nur Sinn,
+ wenn Sie 
+\family sans
+Serifenlos
+\family default
+ für die 
+\family sans
+Standard-Familie
+\family default
+ in den Dokument-Schrifteinstellungen ausgewählt haben.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie keine TeX-Schriften für Ihr Dokument verwenden, können Sie nur
+ wählen, dass für Mathe entweder die Standard-Schriftart der Dokumentklasse
+ verwendet wird (in den meisten Fällen 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+Computer
+\begin_inset space ~
+\end_inset
+
+Modern
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+) oder die Nicht-TeX-Variante der Standard-Schriftart (in den meisten Fällen
+ 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+Latin
+\begin_inset space ~
+\end_inset
+
+Modern
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsection
