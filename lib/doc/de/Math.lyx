@@ -7163,6 +7163,445 @@ underbrace
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wenn man in den Dokumenteinstellungen unter 
+\family sans
+Mathe-Optionen
+\family default
+ für das Paket 
+\series bold
+mathtools
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Pakete ! mathtools
+\end_layout
+
+\end_inset
+
+ die Option 
+\family sans
+Immer
+\begin_inset space ~
+\end_inset
+
+laden
+\family default
+ einstellt, hat man Zugriff auf eckige Klammern:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Befehl
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+raisebox
+\series default
+ dient nur als Abstandhalter.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ergebnis
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisebox{2.3mm}{
+\end_layout
+
+\end_inset
+
+
+\backslash
+overbracket{A+B
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+^3
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Befehle ! O ! 
+\backslash
+overbracket
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\overbracket{A+B}^{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisebox{-2.2mm}{
+\end_layout
+
+\end_inset
+
+
+\backslash
+underbracket{A+B
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+_5
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Befehle ! U ! 
+\backslash
+under
+\size normal
+bracket
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\underbracket{A+B}_{5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+overbracket{
+\backslash
+underbracket{A+B_w
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+_7
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+^
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\overbracket{\underbracket{A+B_{w}}_{7}}^{C}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Für 
+\series bold
+
+\backslash
+overbracket
+\series default
+ und 
+\series bold
+
+\backslash
+underbracket
+\series default
+ kann die Strichstärke der Klammer verändert werden, indem man die gewünschte
+ Stärke in eckigen Klammern hinter dem Befehl angibt:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Befehl
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+
+\backslash
+raisebox
+\series default
+ dient nur als Abstandhalter.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ergebnis
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisebox{2.3mm}{
+\end_layout
+
+\end_inset
+
+
+\backslash
+overbracket[3pt]
+\backslash
+{A+B
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+^3
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\overbracket[3pt]{A+B}^{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+raisebox{-2.2mm}{
+\end_layout
+
+\end_inset
+
+
+\backslash
+underbracket[1pt]
+\backslash
+{A+B
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+_5
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\underbracket[1pt]{A+B}_{5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -8429,13 +8868,6 @@ laden
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \align center
 \begin_inset space \hspace*{\fill}
 \end_inset
@@ -8467,12 +8899,11 @@ status collapsed
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 raisebox
 \series default
- is only used as spacer.
+ dient nur als Abstandhalter.
 \end_layout
 
 \end_inset
@@ -8668,12 +9099,11 @@ status collapsed
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 raisebox
 \series default
- is only used as spacer.
+ dient nur als Abstandhalter.
 \end_layout
 
 \end_inset
@@ -8877,12 +9307,11 @@ status collapsed
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 raisebox
 \series default
- is only used as spacer.
+ dient nur als Abstandhalter.
 \end_layout
 
 \end_inset
@@ -8926,6 +9355,13 @@ F(x)
 </row>
 </lyxtabular>
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -11230,6 +11666,10 @@ reference "sub:Variabler-Leerraum"
  Er ist in LyX allerdings auch im Gegensatz zu allen anderen rot eingefärbt,
  denn er erstellt negativen Leerraum.
  Es gibt noch zwei weitere negative Leerräume:
+\begin_inset VSpace -4mm
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -11351,7 +11791,11 @@ Negative Leerräume bewirken, dass sich benachbarte Zeichen überschneiden.
 \end_inset
 
 B.
- für Summenzeichen von Nutzen ist: 
+ für Summenzeichen von Nutzen ist:
+\begin_inset VSpace -4mm
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -11487,6 +11931,10 @@ B.
  Will man dies unterdrücken, schreibt man das Gleichheitszeichen in eine
  TeX-Klammer.
  Die Wirkung kann man an folgendem Beispiel gut erkennen:
+\begin_inset VSpace -4mm
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -11667,13 +12115,6 @@ kleinster Leerraum zwischen Wert und Einheit
 </row>
 </lyxtabular>
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
@@ -14667,13 +15108,6 @@ kommentiert
 5x-7b=3b\textrm{Dies ist eine Beschreibung. Sie ist nicht von der Formel getrennt ...}
 \]
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
