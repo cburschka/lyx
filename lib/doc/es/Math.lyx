@@ -29133,9 +29133,86 @@ I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \end_layout
 
 \begin_layout Standard
-\noindent
-\align center
-\begin_inset Newpage newpage
+
+\series bold
+
+\backslash
+intertext
+\series default
+ 
+\lang english
+always creates some vertical space between the text and the formula lines.
+ To avoid this space, set in the document settings under 
+\family sans
+Math
+\begin_inset space ~
+\end_inset
+
+Options
+\family default
+ for the package 
+\series bold
+\lang spanish
+mathtools
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetes ! mathtools
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+the option 
+\family sans
+Load
+\begin_inset space ~
+\end_inset
+
+always
+\family default
+.
+ Then you can use the command
+\lang spanish
+ 
+\series bold
+
+\backslash
+shortintertext
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Comandos ! S ! 
+\backslash
+shortintertext
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+instead of 
+\series bold
+
+\backslash
+intertext
+\series default
+:
+\lang spanish
+
+\begin_inset Formula 
+\begin{align}
+I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
+\shortintertext{\text{el integrando es simétrico para \ensuremath{\phi=\pi}, por tanto}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi
+\end{align}
+
 \end_inset
 
 

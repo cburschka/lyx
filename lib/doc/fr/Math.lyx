@@ -28829,10 +28829,103 @@ intertext
  doit être au début d'une ligne pour se trouver dans la sortie final au
  dessus de celle-ci.
  Un exemple où le texte a été inséré au début de la deuxième ligne:
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{align}
 I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \intertext{\text{l'intégrande est symétrique autour de \ensuremath{\phi=\pi}, donc}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+intertext
+\series default
+ 
+\lang english
+always creates some vertical space between the text and the formula lines.
+ To avoid this space, set in the document settings under 
+\family sans
+Math
+\begin_inset space ~
+\end_inset
+
+Options
+\family default
+ for the package 
+\series bold
+\lang french
+mathtools
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages ! mathtools
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+the option 
+\family sans
+Load
+\begin_inset space ~
+\end_inset
+
+always
+\family default
+.
+ Then you can use the command
+\lang french
+ 
+\series bold
+
+\backslash
+shortintertext
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Commandes ! S ! 
+\backslash
+shortintertext
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+instead of 
+\series bold
+
+\backslash
+intertext
+\series default
+:
+\lang french
+
+\begin_inset Formula 
+\begin{align}
+I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
+\shortintertext{\text{l'intégrande est symétrique autour de \ensuremath{\phi=\pi}, donc}} & =2a\sqrt{2}\int_{0}^{\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi
 \end{align}
 
 \end_inset
