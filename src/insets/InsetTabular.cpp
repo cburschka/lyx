@@ -4328,8 +4328,16 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (cur.selIsMultiCell()) {
 			cur.recordUndoInset(DELETE_UNDO);
 			cutSelection(cur);
-		}
-		cell(cur.idx())->dispatch(cur, cmd);
+			BufferView * bv = &cur.bv();
+			docstring::const_iterator cit = cmd.argument().begin();
+			docstring::const_iterator const end = cmd.argument().end();
+			for (; cit != end; ++cit)
+				bv->translateAndInsert(*cit, getText(cur.idx()), cur);
+	
+			cur.resetAnchor();
+			bv->bookmarkEditPosition();
+		} else
+			cell(cur.idx())->dispatch(cur, cmd);
 		break;
 
 	case LFUN_CHAR_DELETE_BACKWARD:
