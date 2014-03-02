@@ -2190,10 +2190,18 @@ reference "sub:Fractions-personnalisées"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
+
+\lang english
+Multiline fractions are explained in
+\lang french
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Fractions-multilignes"
+
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsection
@@ -27785,6 +27793,147 @@ reference "sub:Portions-de-formules-en-multiligne"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsubsection
+Fractions sur plusieurs lignes
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Fractions-multilignes"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Fractions ! multi-lignes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+There are cases where the denominator and/or the numerator of a fraction
+ is so long that the fraction does not fit into one line.
+ It is then necessary to add a line break within the fraction.
+ This can be done using the command
+\lang french
+ 
+\series bold
+
+\backslash
+splitfrac
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Commandes ! S ! 
+\backslash
+splitfrac
+\end_layout
+
+\end_inset
+
+.
+ 
+\lang english
+To activate it, set in the document settings under 
+\family sans
+Math
+\begin_inset space ~
+\end_inset
+
+Options
+\family default
+ for the package 
+\series bold
+\lang french
+mathtools
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages ! mathtools
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+the option 
+\family sans
+Load
+\begin_inset space ~
+\end_inset
+
+always
+\family default
+.
+ 
+\series bold
+
+\backslash
+splitfrac
+\series default
+ has the scheme
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+
+\backslash
+splitfrac{first line}{second line}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+and is used as denominator and/or numerator:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a=\frac{\splitfrac{xy+xy+xy+xy+xy}{+wy+wy+wy+wy}}{z}\ne\frac{\splitdfrac{xy+\frac{xy}{z}+xy+xy+xy}{+xy+xy+xy+xy}}{z}
+\]
+
+\end_inset
+
+
+\lang english
+The command for the first numerator above is:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+splitfrac
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\backslash
+{xy+xy+xy+xy+xy
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\backslash
+{+wy+wy+wy+wy
 \end_layout
 
 \begin_layout Subsubsection

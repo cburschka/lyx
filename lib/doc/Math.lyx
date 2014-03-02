@@ -2262,10 +2262,14 @@ reference "sub:Self-defined-Fractions"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
+Multiline fractions are explained in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Multiline-Fractions"
+
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsection
@@ -27623,6 +27627,133 @@ reference "sub:Multiline-Formula-Parts"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsubsection
+Multiline Fractions
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Multiline-Fractions"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Fractions ! multiline
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are cases where the denominator and/or the numerator of a fraction
+ is so long that the fraction does not fit into one line.
+ It is then necessary to add a line break within the fraction.
+ This can be done using the command 
+\series bold
+
+\backslash
+splitfrac
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Commands ! S ! 
+\backslash
+splitfrac
+\end_layout
+
+\end_inset
+
+.
+ To activate it, set in the document settings under 
+\family sans
+Math
+\begin_inset space ~
+\end_inset
+
+Options
+\family default
+ for the package 
+\series bold
+mathtools
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Packages ! mathtools
+\end_layout
+
+\end_inset
+
+ the option 
+\family sans
+Load
+\begin_inset space ~
+\end_inset
+
+always
+\family default
+.
+ 
+\series bold
+
+\backslash
+splitfrac
+\series default
+ has the scheme
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+splitfrac{first line}{second line}
+\end_layout
+
+\begin_layout Standard
+and is used as denominator and/or numerator:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a=\frac{\splitfrac{xy+xy+xy+xy+xy}{+wy+wy+wy+wy}}{z}\ne\frac{\splitdfrac{xy+\frac{xy}{z}+xy+xy+xy}{+xy+xy+xy+xy}}{z}
+\]
+
+\end_inset
+
+The command for the first numerator above is:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+splitfrac
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\backslash
+{xy+xy+xy+xy+xy
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\backslash
+{+wy+wy+wy+wy
 \end_layout
 
 \begin_layout Subsubsection

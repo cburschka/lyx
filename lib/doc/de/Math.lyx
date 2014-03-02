@@ -2255,10 +2255,14 @@ reference "sub:Selbstdefinierte-Brüche"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
+Mehrzeilige Brüche sind in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Mehrzeilige-Brüche"
+
 \end_inset
 
-
+ erklärt.
 \end_layout
 
 \begin_layout Subsection
@@ -27684,6 +27688,129 @@ reference "sub:Mehrzeilige-Formelteile"
 \end_inset
 
  beschriebenen Umgebungen.
+\end_layout
+
+\begin_layout Subsubsection
+Mehrzeilige Brüche
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Mehrzeilige-Brüche"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Brüche ! mehrzeilige
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es gibt Fälle, in denen der Zähler und/oder Nenner eines Bruches zu lang
+ ist als dass der Bruch auf eine Zeile passt.
+ Es ist dann notwendig einen Zeilenumbruch innerhalb des Bruches einzufügen.
+ Dazu gibt es den Befehl 
+\series bold
+
+\backslash
+splitfrac
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Befehle ! S ! 
+\backslash
+splitfrac
+\end_layout
+
+\end_inset
+
+.
+ Um ihn zu aktivieren, stellt man in den Dokumenteinstellungen unter 
+\family sans
+Mathe-Optionen
+\family default
+ für das Paket 
+\series bold
+mathtools
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Pakete ! mathtools
+\end_layout
+
+\end_inset
+
+ die Option 
+\family sans
+Immer
+\begin_inset space ~
+\end_inset
+
+laden
+\family default
+ ein.
+ 
+\series bold
+
+\backslash
+splitfrac
+\series default
+ hat das Schema
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+splitfrac{erste Zeile}{zweite Zeile}
+\end_layout
+
+\begin_layout Standard
+und wird als Zähler und/oder Nenner verwendet:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a=\frac{\splitfrac{xy+xy+xy+xy+xy}{+wy+wy+wy+wy}}{z}\ne\frac{\splitdfrac{xy+\frac{xy}{z}+xy+xy+xy}{+xy+xy+xy+xy}}{z}
+\]
+
+\end_inset
+
+Der Befehl für den ersten Zähler in obiger Formel lautet:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+splitfrac
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\backslash
+{xy+xy+xy+xy+xy
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\backslash
+{+wy+wy+wy+wy
 \end_layout
 
 \begin_layout Subsubsection
