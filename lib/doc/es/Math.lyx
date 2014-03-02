@@ -181,7 +181,7 @@
 \use_package cancel 0
 \use_package esint 1
 \use_package mathdots 1
-\use_package mathtools 1
+\use_package mathtools 2
 \use_package mhchem 1
 \use_package stackrel 0
 \use_package stmaryrd 0
@@ -16643,23 +16643,64 @@ reference "eq:substack"
 \series bold
 
 \backslash
-mathclap
+smashoperator
 \series default
 
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Comandos ! M ! 
+Comandos ! S ! 
 \backslash
-mathclap
+smashoperator
 \end_layout
 
 \end_inset
 
- que 
+.
+ 
 \lang english
-sets the width of its content to
+To activate it, set in the document settings under 
+\family sans
+Math
+\begin_inset space ~
+\end_inset
+
+Options
+\family default
+ for the package 
+\series bold
+\lang spanish
+mathtools
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetes ! mathtools
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+the option 
+\family sans
+Load
+\begin_inset space ~
+\end_inset
+
+always
+\family default
+.
+ 
+\series bold
+
+\backslash
+smashoperator
+\series default
+ sets the space besides the operator to
 \lang spanish
  0
 \begin_inset space \thinspace{}
@@ -16684,27 +16725,75 @@ reference "eq:substack"
 \series bold
 
 \backslash
-sum_
-\backslash
-mathclap
-\backslash
-substack
-\begin_inset space \textvisiblespace{}
-\end_inset
-
-0<k<1000 Ctrl+Entrar
+smashoperator{
 \end_layout
 
 \begin_layout Standard
-para componer el límite inferior.
- Ahora el sumando está junto al sumatorio:
+
+\lang english
+and inserts the operator with its limits into the braces.
+ Behind the brace one continues the formula:
+\lang spanish
+
 \begin_inset Formula 
 \[
-\sum_{\mathclap{\substack{0<k<1000\\
+\smashoperator{\sum_{\begin{subarray}{c}
+0<k<1000\\
 \\
 k\,\in\,\mathbb{N}
-}
-}}^{n}k^{-2}
+\end{subarray}}^{n}}k^{-2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+It is possible to set the space of only one side of the operator to 0
+\begin_inset space \thinspace{}
+\end_inset
+
+pt.
+ To do this write either 
+\series bold
+[l]
+\series default
+ or 
+\series bold
+[r]
+\series default
+ between 
+\series bold
+
+\backslash
+smashoperator
+\series default
+ and its brace.
+ 
+\series bold
+l
+\series default
+ stands for the left and 
+\series bold
+r
+\series default
+ for the right side of the operator.
+ Here is an example of the possible 
+\series bold
+
+\backslash
+smashoperator
+\series default
+ forms:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Y\smashoperator{\sum_{1\le i\le j\le n}^{n=3456}}X_{ij}=Y\smashoperator[l]{\sum_{1\le i\le j\le n}^{n=3456}}X_{ij}=Y\smashoperator[r]{\sum_{1\le i\le j\le n}^{n=3456}}X_{ij}
 \]
 
 \end_inset
@@ -17067,6 +17156,13 @@ a
 \overset{a}{\maltese}
 \]
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -18452,13 +18548,6 @@ sum
 
 \series bold
 _i,j=1
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -22352,15 +22441,6 @@ bot
 
 \end_layout
 
-\begin_layout Standard
-\noindent
-\align center
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Símbolos misceláneos
 \begin_inset CommandInset label
@@ -26217,15 +26297,6 @@ A
 El primer método es preferible si la función se va a usar varias veces.
 \end_layout
 
-\begin_layout Standard
-\noindent
-\align center
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Límites
 \begin_inset Index idx
@@ -26623,6 +26694,105 @@ status collapsed
 \begin_layout Plain Layout
 Caracteres especiales
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The characters ^ and _ would normally create a subscript and subscript,
+ respectively.
+ To get these characters you have to insert them with a leading 
+\backslash
+:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="block" valignment="top">
+<column alignment="block" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Comando
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Resultado
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+^
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathcircumflex$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+_
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\_$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
 
 \end_inset
 
@@ -33561,15 +33731,6 @@ primer
 \end_layout
 
 \begin_layout Standard
-\noindent
-\align center
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Veamos unos ejemplos:
 \end_layout
 
@@ -37231,22 +37392,8 @@ fi
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Caracteres de texto en ecuaciones
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Caracteres-de-texto"
-
-\end_inset
-
-
 \begin_inset Index idx
 status collapsed
 
@@ -38522,49 +38669,6 @@ status collapsed
 
 \begin_layout Plain Layout
 Paquetes ! mhchem
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Mathclap"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Descripción"
-target "http://www.tug.org/TUGboat/Articles/tb22-4/tb72perlS.pdf"
-
-\end_inset
-
- del comando 
-\series bold
-
-\backslash
-mathclap
-\series default
-, descrito en 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Límites-de-operadores"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Comandos ! M ! 
-\backslash
-mathclap
 \end_layout
 
 \end_inset

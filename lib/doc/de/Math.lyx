@@ -190,7 +190,7 @@
 \use_package cancel 0
 \use_package esint 1
 \use_package mathdots 1
-\use_package mathtools 1
+\use_package mathtools 2
 \use_package mhchem 1
 \use_package stackrel 0
 \use_package stmaryrd 0
@@ -16550,25 +16550,59 @@ reference "eq:substack"
 \series bold
 
 \backslash
-mathclap
+smashoperator
 \series default
 
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Befehle ! M ! 
+Befehle ! S ! 
 \backslash
-mathclap
+smashoperator
 \end_layout
 
 \end_inset
 
- verwenden, der die Breite seines Inhalts auf 0
+ verwenden.
+ Um ihn zu aktivieren, stellt man in den Dokumenteinstellungen unter 
+\family sans
+Mathe-Optionen
+\family default
+ für das Paket 
+\series bold
+mathtools
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Pakete ! mathtools
+\end_layout
+
+\end_inset
+
+ die Option 
+\family sans
+Immer
+\begin_inset space ~
+\end_inset
+
+laden
+\family default
+ ein.
+ 
+\series bold
+
+\backslash
+smashoperator
+\series default
+ setzt den Leerraum um den Operator auf 0
 \begin_inset space \thinspace{}
 \end_inset
 
-pt setzt.
+pt.
 \begin_inset Newline newline
 \end_inset
 
@@ -16579,7 +16613,7 @@ reference "eq:substack"
 
 \end_inset
 
- angewandt, gibt man den Befehl
+ angewandt, verwendet man den Befehl
 \end_layout
 
 \begin_layout Standard
@@ -16587,27 +16621,69 @@ reference "eq:substack"
 \series bold
 
 \backslash
-sum_
-\backslash
-mathclap
-\backslash
-substack
-\begin_inset space \textvisiblespace{}
-\end_inset
-
-0<k<1000 Strg+Enter
+smashoperator{
 \end_layout
 
 \begin_layout Standard
-ein, um die untere Grenze zu erstellen.
- Der Summand befindet sich nun direkt hinter dem Summenzeichen:
+und fügt den Operator mit seinen Grenze in die geschweifte Klammer ein.
+ Nach der geschweiften Klammer setzt man die Formel fort:
 \begin_inset Formula 
 \[
-\sum_{\mathclap{\substack{0<k<1000\\
+\smashoperator{\sum_{\begin{subarray}{c}
+0<k<1000\\
 \\
 k\,\in\,\mathbb{N}
-}
-}}^{n}k^{-2}
+\end{subarray}}^{n}}k^{-2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es ist möglich den Leerraum auf nur einer Seite des Operators auf 0
+\begin_inset space \thinspace{}
+\end_inset
+
+pt zu setzen.
+ Dazu schreibt man entweder 
+\series bold
+[l]
+\series default
+ oder 
+\series bold
+[r]
+\series default
+ zwischen 
+\series bold
+
+\backslash
+smashoperator
+\series default
+ und seine geschweifte Klammer.
+ 
+\series bold
+l
+\series default
+ steht dabei für die linke und 
+\series bold
+r
+\series default
+ für die rechten Seite des Operators.
+ Hier ist ein Beispiel der möglichen Formen von 
+\series bold
+
+\backslash
+smashoperator
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Y\smashoperator{\sum_{1\le i\le j\le n}^{n=3456}}X_{ij}=Y\smashoperator[l]{\sum_{1\le i\le j\le n}^{n=3456}}X_{ij}=Y\smashoperator[r]{\sum_{1\le i\le j\le n}^{n=3456}}X_{ij}
 \]
 
 \end_inset
@@ -26185,6 +26261,106 @@ Sonderzeichen
 
 \end_layout
 
+\begin_layout Standard
+Die Zeichen ^ und _ erzeugen normalerweise Exponenten bzw.
+\begin_inset space \space{}
+\end_inset
+
+Indizes.
+ Um diese Zeichen zu erhalten, müssen sie mit einem 
+\backslash
+ eingegeben werden:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="block" valignment="top">
+<column alignment="block" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Befehl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ergebnis
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+^
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathcircumflex$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+_
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\_$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Sonderzeichen im mathematischen Text
 \end_layout
@@ -32836,13 +33012,6 @@ Handbücher
  zu finden ist.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Benutzerdefinierte Befehle
 \begin_inset CommandInset label
@@ -36705,13 +36874,6 @@ fi
 
 \begin_layout Subsection
 Textzeichen in Formeln
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Textzeichen-in-Formeln"
-
-\end_inset
-
-
 \begin_inset Index idx
 status collapsed
 
@@ -37966,49 +38128,6 @@ status collapsed
 
 \begin_layout Plain Layout
 Pakete ! mhchem
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Mathclap"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Beschreibung"
-target "http://www.tug.org/TUGboat/Articles/tb22-4/tb72perlS.pdf"
-
-\end_inset
-
- des in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Operatorgrenzen"
-
-\end_inset
-
- vorgestellten Befehls 
-\series bold
-
-\backslash
-mathclap
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Befehle ! M ! 
-\backslash
-mathclap
 \end_layout
 
 \end_inset
