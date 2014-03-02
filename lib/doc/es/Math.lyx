@@ -37529,6 +37529,80 @@ textdegree
 \backslash
 f\SpecialChar \textcompwordmark{}
 i}
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+LaTeX-comments in formulas
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In text you can insert a comment that will only be visible in the LaTeX
+ source code of your file with the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Note\SpecialChar \menuseparator
+Comment
+\family default
+.
+ This is not possible in a formula but you can insert LaTeX-comments with
+ the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+%
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This creates a box in which you can write your comment.
+ Due to a bug in LyX
+\lang spanish
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-bug #9002"
+target "http://www.lyx.org/trac/ticket/9002"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+you cannot write normal text into the comment, even when you use mathematical
+ text, you will see its LaTeX-commands in the LaTeX-output.
+\begin_inset Newline newline
+\end_inset
+
+This a formula with a LaTeX-comment:
+\lang spanish
+
+\begin_inset Formula 
+\[
+A=B%\text{This is the comment}
+\]
+
+\end_inset
+
+
+\series bold
+
 \begin_inset Newpage newpage
 \end_inset
 

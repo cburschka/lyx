@@ -7779,7 +7779,7 @@ Die erste Formelzeile ist gleich der zweiten Zeile des vorigen Beispiels,
  Damit sich zwischen oberer Klammer in der ersten Zeile und der Formel in
  der zweiten Zeile kein Leerraum befindet, muss der Zeilenabstand verändert
  werden.
- Aufgrund eines Fehlers in LyX ist dies nicht ohne Weiteres möglich
+ Aufgrund eines Fehlers in LyX ist dies nicht ohne Weiteres möglich.
 \begin_inset Foot
 status collapsed
 
@@ -7796,7 +7796,6 @@ target "http://www.lyx.org/trac/ticket/1505"
 
 \end_inset
 
-.
  Es muss als Lösung des Problems der globale Formelzeilenabstand 
 \series bold
 
@@ -37013,6 +37012,77 @@ textdegree
 \backslash
 f\SpecialChar \textcompwordmark{}
 i}
+\end_layout
+
+\begin_layout Subsection
+LaTeX-Kommentare in Formeln
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Kommentare
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Im Text können Kommentare, die nur in der LaTeX-Ausgabe sichtbar sind, mit
+ dem Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Notiz\SpecialChar \menuseparator
+Kommentar
+\family default
+ eingefügt werden.
+ Dies ist in einer Formel nicht möglich, aber man kann mit dem Befehl
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+%
+\end_layout
+
+\begin_layout Standard
+LaTeX-Kommentare einfügen.
+ Der Befehl erzeugt eine Box, in die man den Kommentar schreiben kann.
+ Aufgrund eines Fehlers in LyX
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "LyX-bug #9002"
+target "http://www.lyx.org/trac/ticket/9002"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ kann man keinen normalen Text verwenden.
+ Selbst wenn man mathematischen Text verwendet, sieht man dessen LaTeX-Befehle
+ in der LaTeX-Ausgabe.
+\begin_inset Newline newline
+\end_inset
+
+Dies ist eine Formel mit einem LaTeX-Kommentar:
+\begin_inset Formula 
+\[
+A=B%\text{Dies ist der Kommentar}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
