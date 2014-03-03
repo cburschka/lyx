@@ -352,6 +352,10 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	// same as that of a soft-hyphen (0x00ad), unless it
 	// occurs at a line-break. As a kludge, we force Qt to
 	// render this glyph using a one-column line.
+	// FIXME In texted, this behaves differently depending
+	// on lyxrc.force_paint_single_char status.
+	// Should the soft hyphen char be displayed at all?
+	// I don't think so (i.e., Qt is correct here). /spitz
 	if (s.size() == 1 && str[0].unicode() == 0x00ad) {
 		setQPainterPen(computeColor(f.realColor()));
 		QTextLayout adsymbol(str);
