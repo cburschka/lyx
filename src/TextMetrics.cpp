@@ -15,7 +15,7 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#define KEEP_OLD_METRICS_CODE 1
+//#define KEEP_OLD_METRICS_CODE 1
 
 #include <config.h>
 
@@ -1601,15 +1601,12 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 		bool boundary) const
 {
 	LASSERT(sl.text() == text_, return 0);
-	pit_type const pit = sl.pit();
-	pos_type pos = sl.pos();
 
-	ParagraphMetrics const & pm = par_metrics_[pit];
+	ParagraphMetrics const & pm = par_metrics_[sl.pit()];
 	if (pm.rows().empty())
 		return 0;
 	Row const & row = pm.getRow(sl.pos(), boundary);
-
-	double x = row.x;
+	pos_type const pos = sl.pos();
 
 	/**
 	 * When boundary is true, position i is in the row element (pos, endpos)
@@ -1625,9 +1622,10 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	if (row.empty()
 	    || (row.begin()->font.isVisibleRightToLeft()
 		&& pos == row.begin()->endpos))
-		return int(x);
+		return int(row.x);
 
 	Row::const_iterator cit = row.begin();
+	double x = row.x;
 	for ( ; cit != row.end() ; ++cit) {
 		if (pos + boundary_corr >= cit->pos
 		    && pos + boundary_corr < cit->endpos) {
@@ -1643,6 +1641,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 			<< ", " << boundary_corr << "): NOT FOUND! " << row);
 
 #ifdef KEEP_OLD_METRICS_CODE
+	pit_type const pit = sl.pit();
 	Paragraph const & par = text_->paragraphs()[pit];
 
 	// Correct position in front of big insets

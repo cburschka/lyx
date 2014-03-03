@@ -1,21 +1,34 @@
-This branch is where I (jmarc) try to implement string_wise metrics
-computation. This is done through a series of cleanups. The goal is to
-have both good metrics computation (and font with proper kerning and
-ligatures) and better performance than what we have with
-force_paint_single_char.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+PLEASE DO NOT DO WORK ON TOP OF THIS BRANCH.
+I INTEND TO REWRITE HISTORY LATER!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+This branch is where I (jmarc) try to implement string-wise metrics
+computation. The goal is to have both good metrics computation (and
+font with proper kerning and ligatures) and better performance than
+what we have with force_paint_single_char. Moreover there has been
+some code factorization in TextMetrics, where the same row-breaking
+algorithm was basically implemented 3 times.
 
 Currently everything is supposed to work for LTR text, and RTL text
 should work too except possibly metrics with Arabic and Hebrew fonts.
-We'll see what to do after some feedback.
+
+When KEEP_OLD_METRICS_CODE is defined in TextMetrics.cpp, the new code
+is tested against the old one in getPosNearX and cursorX. This can be
+helpful when looking for discrepancies between the algorithms. Note
+that this only makes sense when force_paint_single_char=true, since
+this enforces char-by-char metrics computation.
 
 What is done:
 
 * Make TextMetrics methods operate on Row objects: breakRow and
   setRowHeight instead of rowBreakPoint and rowHeight.
 
-* Change breakRow operation to operate on text strings on which
-  metrics are computed. The list of elements is stored in the row
-  object in visual ordering, not logical.
+* Change breakRow operation to operate at strings level to compute
+  metrics The list of elements is stored in the row object in visual
+  ordering, not logical. This will eventually allow to get rid of the
+  Bidi class.
 
 * rename getColumnNearX to getPosNearX (and change code accordingly).
   It does not make sense to return a position relative to the start of
@@ -30,38 +43,58 @@ What is done:
 
 Next steps:
 
-* check what happens with arabic and/or hebrew text. There may be some
+* check what happens with Arabic and/or Hebrew text. There may be some
   problems related to compose characters. I suspect that some code is
   needed in FontMetrics::width.
+
+* investigate whether RtL strings could be drawn on a string-wise basis.
+
+* investigate whether Row::SEPARATOR elements could be used only in
+  justified text. This would speed-up painting in other cases by
+  lowering the number of strings to draw.
+
+* get lots of testing.
 
 * Get rid of old code in cursorX and getColumnNearX; it has been
   kept for comparison purpose, guarded with KEEP_OLD_METRICS_CODE in
   order to check computations.
 
-* Re-implement row painting using row elements. This is not difficult
-  in principle, but the code is intricate and needs some careful
-  analysis. First thing that needs to be done is to break row elements
-  with the same criterions. Currently TextMetrics::breakRow does not
-  consider on-the-fly spellchecking and selection changes, but it is
-  not clear to me that it is required.
-
 * Profile and see how performance can be improved.
 
 
-Difference in behavior (aka bug fixes)
+Steps for later (aka out of the scope of this branch):
+
+* Re-implement row painting using row elements. This is not difficult
+  in principle, but the code is intricate and needs some careful
+  analysis. The first thing that needs to be done is to break row
+  elements with the same criteria. Currently TextMetrics::breakRow
+  does not consider on-the-fly spell-checking and selection changes,
+  but it is not clear to me that it is required. Moreover, this thing
+  would only work if we are sure that the Row object is up-to-date
+  when drawing happens. This depends on the update machinery.
+
+  This would allow to get rid of the Bidi code.
+
+
+Known bugs:
+
+* in RtL paragraphs, the end-of-paragraph marker moves the row to the
+  right (ticket #9040, already present in master).
+
+* there are still difference in what breaks words. In particular,
+  RowPainter breaks strings at: selection end, spell-checking
+  extremities. This seems to be harmless.
+
+* when clicking in the right margin, GetColumnNearX does not return
+  the same value as before. I am not sure whether this is important.
+
+
+Other differences in behavior (aka bug fixes):
 
 * end of paragraph markers metrics are computed with the font of the
   actual text, not default font.
 
-* When cursor is after a LTR separator just before a RTL chunk, the
+* When cursor is after a LtR separator just before a RtL chunk, the
   cursor position is computed better with the new code.
 
 
-Other differences (aka real bugs)
-
-* there are still difference in what breaks words. In particular,
-  RowPainter breaks strings at: selection end, spellchecking
-  extremities.
-
-* when clicking in the right margin, GetColumnNearX does not return
-  the same value as before.
