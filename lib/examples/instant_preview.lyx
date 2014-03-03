@@ -4,6 +4,7 @@
 \begin_header
 \textclass article
 \begin_preamble
+\usepackage{etex}
 \usepackage[all, knot]{xy}
 \xyoption{arc} 
 \usepackage{qtree}
@@ -90,7 +91,7 @@ In order to properly typeset the document and have instant preview working,
 \end_layout
 
 \begin_layout LyX-Code
-xy, qtree, tipa, pstricks, pst-plot, rotating, tikz, pgf
+xy, qtree, tipa, pstricks, pst-plot, rotating, tikz, pgf, etex
 \end_layout
 
 \begin_layout Standard
