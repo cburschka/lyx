@@ -47,6 +47,7 @@
 #include "qt_helpers.h"
 #include "Spacing.h"
 #include "TextClass.h"
+#include "Undo.h"
 
 #include "insets/InsetListingsParams.h"
 
@@ -3328,6 +3329,11 @@ static void dispatch_bufferparams(Dialog const & dialog,
 
 void GuiDocument::dispatchParams()
 {
+	// We need a non-const buffer object.
+	Buffer & buf = const_cast<BufferView *>(bufferview())->buffer();
+	// There may be several undo records; group them (bug #8998)
+	buf.undo().beginUndoGroup();
+
 	// This must come first so that a language change is correctly noticed
 	setLanguage();
 
@@ -3397,6 +3403,10 @@ void GuiDocument::dispatchParams()
 	// If we used an LFUN, we would not need these two lines:
 	BufferView * bv = const_cast<BufferView *>(bufferview());
 	bv->processUpdateFlags(Update::Force | Update::FitCursor);
+
+	// Don't forget to close the group. Note that it is important
+	// to check that there is no early return in the method.
+	buf.undo().endUndoGroup();
 }
 
 

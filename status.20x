@@ -95,6 +95,8 @@ What's new
 
 - Handle undo in `branch-add' function.
 
+- Avoid multiple undo steps when changing document settings (bug 8998).
+
 - Prevent recurrent pop-up of "missing module requirements" warning (bug 8864).
 
 - Do not close shortcut box if we receive bad input (bug 8703).
