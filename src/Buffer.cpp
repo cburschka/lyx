@@ -994,7 +994,8 @@ bool Buffer::importString(string const & format, docstring const & contents, Err
 	TempFile const tempfile("Buffer_importStringXXXXXX." + fmt->extension());
 	FileName const name(tempfile.name());
 	ofdocstream os(name.toFilesystemEncoding().c_str());
-	bool const success = (os << contents);
+	// Do not convert os implicitly to bool, since that is forbidden in C++11.
+	bool const success = !(os << contents).fail();
 	os.close();
 
 	bool converted = false;

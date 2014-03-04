@@ -1472,7 +1472,8 @@ bool extractNumber(MathData const & ar, int & i)
 {
 	idocstringstream is(charSequence(ar.begin(), ar.end()));
 	is >> i;
-	return is;
+	// Do not convert is implicitly to bool, since that is forbidden in C++11.
+	return !is.fail();
 }
 
 
@@ -1480,7 +1481,8 @@ bool extractNumber(MathData const & ar, double & d)
 {
 	idocstringstream is(charSequence(ar.begin(), ar.end()));
 	is >> d;
-	return is;
+	// Do not convert is implicitly to bool, since that is forbidden in C++11.
+	return !is.fail();
 }
 
 

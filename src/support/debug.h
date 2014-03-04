@@ -17,6 +17,10 @@
 
 #include "support/strfwd.h"
 
+// Forward definitions do not work with libc++
+// but ios_base has already been defined in strfwd
+// if compiling with it
+#ifndef  _LIBCPP_VERSION
 namespace std {
 
 class ios_base;
@@ -25,6 +29,7 @@ template<typename CharT, typename Traits> class basic_streambuf;
 typedef basic_streambuf<char, char_traits<char> > streambuf;
 
 }
+#endif
 
 
 namespace lyx {
