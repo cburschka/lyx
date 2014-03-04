@@ -81,10 +81,8 @@ Style Verbatim
 	PassThru		1
 	KeepEmpty		1
 	NewLine			0
-	ParSkip			0.4
 	TopSep			0.7
 	BottomSep		0.7
-	ParSep			0.5
 	Align			Block
 	AlignPossible		Block
 	LabelType		No_Label
