@@ -1732,7 +1732,8 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		else if (name == "print")
 			enable = doc_buffer->params().isExportable("dvi")
 				&& lyxrc.print_command != "none";
-		else if (name == "character" || name == "symbols") {
+		else if (name == "character" || name == "symbols"
+			|| name == "mathdelimiter" || name == "mathmatrix") {
 			if (!buf || buf->isReadonly())
 				enable = false;
 			else {

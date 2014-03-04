@@ -1472,12 +1472,12 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		bool const hebrew = 
 			par.getFontSettings(bufparams, pos).language()->lang() == "hebrew";
 		bool const allow_inset_quote = !(par.isPassThru() || hebrew);
-		
+
+		string const arg = to_utf8(cmd.argument());
 		if (allow_inset_quote) {
 			char_type c = ' ';
 			if (pos > 0 && (!cur.prevInset() || !cur.prevInset()->isSpace()))
 				c = par.getChar(pos - 1);
-			string const arg = to_utf8(cmd.argument());
 			InsetQuotes::QuoteTimes const quote_type = (arg == "single")
 				? InsetQuotes::SingleQuotes : InsetQuotes::DoubleQuotes;
 			cur.insert(new InsetQuotes(cur.buffer(), c, quote_type));
@@ -1485,8 +1485,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		} else {
 			// The cursor might have been invalidated by the replaceSelection.
 			cur.buffer()->changed(true);
-			lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, "\""));
-		}			
+			string const quote_string = (arg == "single") ? "'" : "\"";
+			lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, quote_string));
+		}
 		break;
 	}
 
@@ -2472,6 +2473,10 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			code = INDEX_CODE;
 		else if (cmd.argument() == "index_print")
 			code = INDEX_PRINT_CODE;
+		else if (cmd.argument() == "listings")
+			code = LISTINGS_CODE;
+		else if (cmd.argument() == "mathspace")
+			code = MATH_HULL_CODE;
 		else if (cmd.argument() == "nomenclature")
 			code = NOMENCL_CODE;
 		else if (cmd.argument() == "nomencl_print")
@@ -2494,8 +2499,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			code = VSPACE_CODE;
 		else if (cmd.argument() == "wrap")
 			code = WRAP_CODE;
-		else if (cmd.argument() == "listings")
-			code = LISTINGS_CODE;
 		break;
 
 	case LFUN_ERT_INSERT:
@@ -2896,7 +2899,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_NEWLINE_INSERT:
 		// LaTeX restrictions (labels or empty par)
-		enable = (cur.pos() > cur.paragraph().beginOfBody());
+		enable = !cur.paragraph().isPassThru()
+			&& cur.pos() > cur.paragraph().beginOfBody();
 		break;
 
 	case LFUN_TAB_INSERT:

@@ -1079,7 +1079,6 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_BIBTEX_DATABASE_ADD:
 	case LFUN_BIBTEX_DATABASE_DEL:
 	case LFUN_STATISTICS:
-	case LFUN_BRANCH_ADD_INSERT:
 	case LFUN_KEYMAP_OFF:
 	case LFUN_KEYMAP_PRIMARY:
 	case LFUN_KEYMAP_SECONDARY:
@@ -1152,6 +1151,10 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_LAYOUT_PARAGRAPH:
 		flag.setEnabled(cur.inset().allowParagraphCustomization(cur.idx()));
+		break;
+
+	case LFUN_BRANCH_ADD_INSERT:
+		flag.setEnabled(!(cur.inTexted() && cur.paragraph().isPassThru()));
 		break;
 
 	case LFUN_DIALOG_SHOW_NEW_INSET:
