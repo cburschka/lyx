@@ -47,6 +47,7 @@ HunspellConfigureOptions="--with-warnings --disable-nls --disable-static"
 Qt4ConfigureOptions="${QtConfigureOptions} -opensource -silent -shared -fast -no-exceptions"
 Qt4ConfigureOptions="${Qt4ConfigureOptions} -no-webkit -no-qt3support -no-javascript-jit -no-dbus"
 Qt4ConfigureOptions="${Qt4ConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
+Qt4DmgSuffix=qt4${Qt4API}.dmg
 
 # stupid special case...
 case "${Qt4Version}:${Qt4API}" in
@@ -56,6 +57,10 @@ case "${Qt4Version}:${Qt4API}" in
 	Qt4ConfigureOptions="${QtConfigureOptions} -opensource -silent -shared -fast -no-strip"
 	Qt4ConfigureOptions="${Qt4ConfigureOptions} -no-javascript-jit -no-pkg-config"
 	Qt4ConfigureOptions="${Qt4ConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
+	Qt4DmgSuffix=qt5${Qt4API}.dmg
+	;;
+5.*)
+	Qt4DmgSuffix=qt5${Qt4API}.dmg
 	;;
 *)
 	Qt4ConfigureOptions="${Qt4ConfigureOptions} ${Qt4API}"
@@ -288,8 +293,12 @@ LyxAppPrefix="${LyxAppDir}.app"
 
 # don't change order here...
 case "${Qt4Version}" in
-5*)
+5.0.*|5.1.*)
 	QtLibraries="QtSvg QtXml QtPrintSupport QtWidgets QtGui QtNetwork QtConcurrent QtCore"
+	QtFrameworkVersion="5"
+	;;
+5*)
+	QtLibraries="QtSvg QtXml QtPrintSupport QtMacExtras QtWidgets QtGui QtNetwork QtConcurrent QtCore"
 	QtFrameworkVersion="5"
 	;;
 *)
@@ -881,9 +890,9 @@ build_package() {
 	test -n "${DMGLocation}" && (
 		make_dmg "${DMGLocation}"
 		if [ -d "${QtInstallDir}/lib/QtCore.framework/Versions/${QtFrameworkVersion}" -a "yes" = "${qt4_deployment}" ]; then
-			rm -f "${DMGLocation}/${DMGNAME}+qt4.dmg"
-			echo move to "${DMGLocation}/${DMGNAME}+qt4${Qt4API}.dmg"
-			mv "${DMGLocation}/${DMGNAME}.dmg" "${DMGLocation}/${DMGNAME}+qt4${Qt4API}.dmg"
+			rm -f "${DMGLocation}/${DMGNAME}+${Qt4DmgSuffix}"
+			echo move to "${DMGLocation}/${DMGNAME}+${Qt4DmgSuffix}"
+			mv "${DMGLocation}/${DMGNAME}.dmg" "${DMGLocation}/${DMGNAME}+${Qt4DmgSuffix}"
 		fi
 	)
 }
