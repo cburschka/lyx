@@ -8163,16 +8163,19 @@ Besondere Umgebungen
 \end_layout
 
 \begin_layout Standard
-Es gibt drei Absatzumgebungen, die einfach in keine Kategorie passen, weil
- sie für besondere Zwecke benutzt werden.
- Wir werden das Wichtigste von ihnen und ihren Gebrauch erklären.
+LyX stellt zwei Umgebungen bereit, die dazu genutzt werden können, das Verhalten
+ einer Computer-Konsole/Terminal und einer Schreibmaschine zu emulieren.
 \end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
 
 \begin_layout Subsubsection
 Legende, Legende oben, Legende unten
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Die 
 \family sans
 Legende
@@ -8200,7 +8203,7 @@ Nr:
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Man kann in die 
 \family sans
 Legende
@@ -8221,7 +8224,7 @@ Legende
 nur aus einem Absatz besteht.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Außerhalb von Gleitobjekten kann man die 
 \family sans
 Legende
@@ -8248,7 +8251,7 @@ reference "sec:Tabellen"
  für weitere Informationen über Gleitobjekt-Abbildungen und -Tabellen.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family sans
 Legende
@@ -8272,6 +8275,11 @@ KOMA-Script
 -Version.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 
 \family sans
@@ -8282,18 +8290,7 @@ yX-Code
 status collapsed
 
 \begin_layout Plain Layout
-Absatz ! Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X!-Code
+LyX-Code
 \end_layout
 
 \end_inset
@@ -8314,8 +8311,11 @@ Die
 LyX-Code
 \family default
 -Umgebung ist noch eine LyX-Erweiterung von LaTeX.
- Sie setzt Text in einem Schreibmaschinenschriftart.
- Außerdem kann die Leertaste mehrfach hintereinander benutzt werden;
+ Sie setzt Text in einem Schreibmaschinenschriftart und behandelt 
+\family sans
+Leertaste
+\family default
+ wie ein festes Leerzeichen.
 \begin_inset Foot
 status collapsed
 
@@ -8338,25 +8338,27 @@ end-of-word
 
 \end_inset
 
- dies ist einer der wenigen Fälle in LyX.
+ 
+\family sans
+LyX-Code
+\family default
+ und 
+\family sans
+Verbatim
+\family default
+ sind die einzigen Umgebungenm in denen die Leertaste mehrfach hintereinander
+ benutzt werden kann.
  Für Leerzeilen muss man 
 \family sans
 Strg+Eingabe
 \family default
- eingeben (die 
-\family typewriter
-break-line
-\family default
--Funktion).
+ eingeben (die Zeilenumbruch-Funktion).
  
 \family sans
 Eingabe
 \family default
  beendet Absätze.
-\end_layout
-
-\begin_layout Standard
-Beachten Sie aber, dass 
+ Beachten Sie aber, dass 
 \family sans
 Eingabe
 \family default
@@ -8379,11 +8381,7 @@ LyX-Code
 \end_layout
 
 \begin_layout Standard
-Diese Umgebung hat ein paar Marotten:
-\end_layout
-
-\begin_layout Standard
-a
+Diese Umgebung hat ein paar Besonderheiten:
 \end_layout
 
 \begin_layout Itemize
@@ -8424,28 +8422,23 @@ In der Druckausgabe gibt es keine leeren Absätze und keine leeren Zeilen.
 \end_layout
 
 \begin_layout Itemize
-Anführungszeichen erreichen Sie nicht durch Eingabe von 
+Ein Schreibmaschinen-Anführungszeichen erreichen Sie nicht durch Eingabe
+ von 
 \family sans
 ",
 \family default
- weil das `
-\begin_inset space \thinspace{}
+ weil das ein reales Anführungszeichen erzeugt.
+ Sie erhalten es stattdessen über das Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Sonderzeichen\SpecialChar \menuseparator
+Nicht-typographisches
+\begin_inset space ~
 \end_inset
 
-` erzeugt.
- Die Anführungszeichen erhalten Sie durch 
-\family sans
-Strg+", 
+Anführungszeichen
 \family default
-eigentlich
-\family sans
- Strg+Umschalt+2
-\family default
- (oder 
-\family sans
-Strg+Q
-\family default
-, wenn Sie die Emacs-Tastaturbelegung verwenden).
+.
 \end_layout
 
 \begin_layout Standard
@@ -8499,8 +8492,8 @@ Hallo Welt!
 \family sans
 LyX-Code
 \family default
- hat einen Zweck: Code zu schreiben, zum Beispiel Quellprogramme, Shell-Skripte,
- rc-Dateien usw.
+ hat einen Zweck: Code zu schreiben, zum Beispiel Quellcode, Shell-Skripte,
+ usw..
  Benutzen Sie diese Umgebung nur in diesen Spezialfällen, wenn der Text
  aussehen soll, als wäre er mit einer Schreibmaschine geschrieben worden.
 \begin_inset Index idx
@@ -8526,6 +8519,110 @@ Eingebettete
 Objekte
 \emph default
  Handbuchs erklärt.
+\end_layout
+
+\begin_layout Subsubsection
+Verbatim
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Verbatim
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die 
+\family sans
+Verbatim
+\family default
+ Umgebung ist ähnlich zur 
+\family sans
+LyX-Code
+\family default
+ Umgebung, mit dem Unterschied, dass sein Inhalt wie ein Computer-Konsolentext
+ behandelt wird.
+ 
+\family sans
+Verbatim
+\family default
+ hat daher keine Absätze so dass 
+\family sans
+Eingabe
+\family default
+ Zeilen umbricht.
+ Verglichen mit 
+\family sans
+LyX-Code
+\family default
+ wird die 
+\family sans
+Leertaste
+\family default
+ wie ein normales Leerzeichen im Text behandelt (nicht als geschütztes Leerzeich
+en) und man kann leere Zeilen haben.
+ Im Gegensatz zu 
+\family sans
+LyX-Code
+\family default
+ kann 
+\family sans
+Verbatim
+\family default
+ keine
+\end_layout
+
+\begin_layout Itemize
+bestimmte Sprache und einen Textstil haben
+\end_layout
+
+\begin_layout Itemize
+Hyperlinks, Boxen, Fußnoten, (Rand)notizen, Formeln, Zitate, Stichworte,
+ Nomenklatureinträge, Marken, Tabellen, Abbildungen, Programmlistings, Gleitumge
+bungen und TeX-Code enthalten
+\end_layout
+
+\begin_layout Itemize
+der folgenden Zeichen enthalten (würde zu LaTeX-Fehlern führen): µ ; ´ ;
+ ³ ; ²
+\end_layout
+
+\begin_layout Standard
+Aufgrund dieser Eigenschaften funktioniert 
+\family sans
+Verbatim
+\family default
+ wie eine Schreibmaschine.
+ Hier ist ein Beispiel:
+\end_layout
+
+\begin_layout Verbatim
+
+Dies ist Verbatim.
+\end_layout
+
+\begin_layout Verbatim
+
+Die folgenden 2 Zeilen sind leer:
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+Fast alles ist in Verbatim erlaubt:"%&$§#~'`
+\backslash
+}][{|
 \end_layout
 
 \begin_layout Section

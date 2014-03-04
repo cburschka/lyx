@@ -6628,13 +6628,26 @@ reference "sec:書誌情報"
 
 \begin_layout Subsection
 
+\lang english
+Special environments
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+LyX provides two environments that can be used to emulate the behavior of
+ a computer console/terminal and a typewriter.
+\end_layout
+
+\begin_layout Subsubsection
+
 \family sans
 LyXコード
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-だんらく@段落!lyxこと@LyXコード
+LyXコード
 \end_layout
 
 \end_inset
@@ -6654,11 +6667,15 @@ name "sub:LyXコード"
 \family sans
 LyXコード
 \family default
-環境はLaTeXのLyXでの拡張です。これはテキストをtypewriterフォントでタイプセットします。またこの環境の中では、
+環境はLaTeXのLyXでの拡張です。これはテキストをtypewriterフォントでタイプセットします。
+\lang english
+It also treats the 
 \family sans
-スペース
+Space
 \family default
-は固定した長さを持つ空白として扱われます
+ key as a fixed whitespace
+\lang japanese
+
 \begin_inset Foot
 status collapsed
 
@@ -6700,7 +6717,19 @@ status collapsed
 
 \end_inset
 
-。この環境がLyXの中でいくつも空白を入れることのできる唯一の環境です。ただし空白行を入れたい場合には
+。
+\family sans
+\lang english
+LyX-Code
+\family default
+ and 
+\family sans
+Verbatim
+\family default
+ are the only environments in which you can type multiple whitespaces in
+ LyX
+\lang japanese
+。ただし空白行を入れたい場合には
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -6848,8 +6877,8 @@ n");
 \family sans
 LyXコード
 \family default
-の目的はただ一つ、プログラムソースやシェルスクリプト、rcファイルなどのコードを植字することです。この環境は、タイプライタを使ったような文字列を生成する必要があ
-るような、非常に特別な場合にのみ使って下さい。長いプログラムコードについては、取扱説明書『埋込オブジェクト篇』の「
+の目的はただ一つ、プログラムソースやシェルスクリプト、ファイルなどのコードを植字することです。この環境は、タイプライタを使ったような文字列を生成する必要があるよ
+うな、非常に特別な場合にのみ使って下さい。長いプログラムコードについては、取扱説明書『埋込オブジェクト篇』の「
 \emph on
 プログラムコードリスト
 \emph default
@@ -6884,6 +6913,128 @@ status collapsed
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Verbatim
+\family sans
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Verbatim
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The 
+\family sans
+Verbatim
+\family default
+ environment is similar to the 
+\family sans
+LyX-Code
+\family default
+ environment with the difference that its content will be treated like a
+ computer console text.
+ 
+\family sans
+Verbatim
+\family default
+ does therefore not have paragraphs so that 
+\family sans
+Return
+\family default
+ breaks lines.
+ Compared to 
+\family sans
+LyX-Code
+\family default
+ the 
+\family sans
+Space
+\family default
+ key is treated like a normal space in text (not as a protected space) and
+ you can have empty lines.
+ In contrary to 
+\family sans
+LyX-Code,
+\family default
+ 
+\family sans
+Verbatim
+\family default
+ cannot
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+have a certain language and a text style
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+contain hyperlinks, boxes, foot- and margin notes, notes, math, citations,
+ index- and nomenclature entries, labels, tables, graphics, listings, floats
+ and TeX-Code
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+contain the following characters (you will get LaTeX errors): µ ; ´ ; ³
+ ; ²
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Because of these properties 
+\family sans
+Verbatim
+\family default
+ works like a typewriter.
+ Here is an example:
+\end_layout
+
+\begin_layout Verbatim
+
+This is verbatim.
+\end_layout
+
+\begin_layout Verbatim
+\noindent
+\align block
+
+The following 2 lines are empty:
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+Almost everything is allowed in verbatim:"%&$§#~'`
+\backslash
+}][{|
 \end_layout
 
 \begin_layout Section

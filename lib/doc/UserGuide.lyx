@@ -5182,7 +5182,7 @@ You can use labels and cross-references to refer to their numbers.
 \end_layout
 
 \begin_layout Subsection
-Quotes and Poetry line spacing
+Quotes and Poetry
 \end_layout
 
 \begin_layout Standard
@@ -7689,6 +7689,15 @@ reference "sec:Bibliography"
 \end_layout
 
 \begin_layout Subsection
+Special Environments
+\end_layout
+
+\begin_layout Standard
+LyX provides two environments that can be used to emulate the behavior of
+ a computer console/terminal and a typewriter.
+\end_layout
+
+\begin_layout Subsubsection
 LyX
 \family sans
 -Code
@@ -7696,7 +7705,7 @@ LyX
 status collapsed
 
 \begin_layout Plain Layout
-Paragraph ! LyX code
+LyX-Code
 \end_layout
 
 \end_inset
@@ -7716,13 +7725,13 @@ The
 \family sans
 LyX-Code
 \family default
- environment is another LyX extension.
+ environment is a LyX extension.
  It type-sets text in a typewriter-style font.
  It also treats the 
 \family sans
 Space
 \family default
- key as a fixed whitespace;
+ key as a fixed whitespace.
 \begin_inset Foot
 status collapsed
 
@@ -7748,7 +7757,16 @@ Blank
 
 \end_inset
 
- this is the only case in which you can type multiple whitespaces in LyX.
+ 
+\family sans
+LyX-Code
+\family default
+ and 
+\family sans
+Verbatim
+\family default
+ are the only environments in which you can type multiple whitespaces in
+ LyX.
  If you need to insert blank lines, you will still need to use 
 \begin_inset Info
 type  "shortcut"
@@ -7815,7 +7833,7 @@ arg   "newline-insert newline"
 \end_layout
 
 \begin_layout Itemize
-You can't follow a 
+You cannot follow a 
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -7835,7 +7853,7 @@ arg   "command-alternatives math-space ; space-insert protected"
 \end_layout
 
 \begin_layout Itemize
-You can't have an empty paragraph or an empty line.
+You cannot have an empty paragraph or an empty line.
  You must put at least one 
 \family sans
 Space
@@ -7915,8 +7933,8 @@ Hello world!
 \family sans
 LyX-Code
 \family default
- has one purpose: to typeset code, such as program source, shell scripts,
- rc-files, and so on.
+ has one purpose: to typeset code, such as program source, shell scripts
+ and so on.
  Use it only in those very special cases where you need to generate text
  as if you used a typewriter.
 \begin_inset Index idx
@@ -7942,6 +7960,111 @@ Embedded
 Objects
 \emph default
  manual.
+\end_layout
+
+\begin_layout Subsubsection
+Verbatim
+\family sans
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Verbatim
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\family sans
+Verbatim
+\family default
+ environment is similar to the 
+\family sans
+LyX-Code
+\family default
+ environment with the difference that its content will be treated like a
+ computer console text.
+ 
+\family sans
+Verbatim
+\family default
+ does therefore not have paragraphs so that 
+\family sans
+Return
+\family default
+ breaks lines.
+ Compared to 
+\family sans
+LyX-Code
+\family default
+ the 
+\family sans
+Space
+\family default
+ key is treated like a normal space in text (not as a protected space) and
+ you can have empty lines.
+ In contrary to 
+\family sans
+LyX-Code,
+\family default
+ 
+\family sans
+Verbatim
+\family default
+ cannot
+\end_layout
+
+\begin_layout Itemize
+have a certain language and a text style
+\end_layout
+
+\begin_layout Itemize
+contain hyperlinks, boxes, foot- and margin notes, notes, math, citations,
+ index- and nomenclature entries, labels, tables, graphics, listings, floats
+ and TeX-Code
+\end_layout
+
+\begin_layout Itemize
+contain the following characters (you will get LaTeX errors): µ ; ´ ; ³
+ ; ²
+\end_layout
+
+\begin_layout Standard
+Because of these properties 
+\family sans
+Verbatim
+\family default
+ works like a typewriter.
+ Here is an example:
+\end_layout
+
+\begin_layout Verbatim
+This is verbatim.
+\end_layout
+
+\begin_layout Verbatim
+\noindent
+\align block
+The following 2 lines are empty:
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+Almost everything is allowed in verbatim:"%&$§#~'`
+\backslash
+}][{|
 \end_layout
 
 \begin_layout Section

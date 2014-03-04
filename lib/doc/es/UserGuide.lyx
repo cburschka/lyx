@@ -5049,7 +5049,7 @@ Puedes usar etiquetas y referencias cruzadas a sus números.
 \end_layout
 
 \begin_layout Subsection
-Espacios para Citas y Versos
+Citas y Versos
 \end_layout
 
 \begin_layout Standard
@@ -7996,6 +7996,19 @@ reference "sec:Bibliografía"
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
+Special environments
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+LyX provides two environments that can be used to emulate the behavior of
+ a computer console/terminal and a typewriter.
+\end_layout
+
+\begin_layout Subsubsection
 Código LyX
 \family sans
 
@@ -8003,7 +8016,7 @@ Código LyX
 status collapsed
 
 \begin_layout Plain Layout
-Párrafos! Código LyX
+Código LyX
 \end_layout
 
 \end_inset
@@ -8023,13 +8036,13 @@ El entorno
 \family sans
 Código-LyX
 \family default
- es otra extensión de LyX.
+ es una extensión de LyX.
  Escribe el texto en estilo máquina de escribir.
  Trata la tecla 
 \family sans
 Espacio
 \family default
- como espacio fijo
+ como espacio fijo.
 \begin_inset Foot
 status collapsed
 
@@ -8055,7 +8068,18 @@ protegido
 
 \end_inset
 
-; es el único caso en LyX en que puedes teclear múltiples espacios.
+ 
+\family sans
+\lang english
+LyX-Code
+\family default
+ and 
+\family sans
+Verbatim
+\family default
+ are the only environments
+\lang spanish
+ en que puedes teclear múltiples espacios.
  Si necesitas insertar líneas en blanco debes usar 
 \family sans
 Ctrl+Entrar
@@ -8203,7 +8227,7 @@ Hello world!
 Código-LyX
 \family default
  tiene un propósito: escribir lenguaje informático, tales como código de
- programa, guiones de shell, archivos rc, y otros.
+ programa, guiones de shell, y otros.
  Úsalo solo en casos muy especiales en los que necesites generar texto como
  en una máquina de escribir.
 \begin_inset Index idx
@@ -8225,6 +8249,124 @@ del manual
 Objetos insertados
 \emph default
 .
+\end_layout
+
+\begin_layout Subsubsection
+Verbatim
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Verbatim
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The 
+\family sans
+Verbatim
+\family default
+ environment is similar to the 
+\family sans
+LyX-Code
+\family default
+ environment with the difference that its content will be treated like a
+ computer console text.
+ 
+\family sans
+Verbatim
+\family default
+ does therefore not have paragraphs so that 
+\family sans
+Return
+\family default
+ breaks lines.
+ Compared to 
+\family sans
+LyX-Code
+\family default
+ the 
+\family sans
+Space
+\family default
+ key is treated like a normal space in text (not as a protected space) and
+ you can have empty lines.
+ In contrary to 
+\family sans
+LyX-Code,
+\family default
+ 
+\family sans
+Verbatim
+\family default
+ cannot
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+have a certain language and a text style
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+contain hyperlinks, boxes, foot- and margin notes, notes, math, citations,
+ index- and nomenclature entries, labels, tables, graphics, listings, floats
+ and TeX-Code
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+contain the following characters (you will get LaTeX errors): µ ; ´ ; ³
+ ; ²
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Because of these properties 
+\family sans
+Verbatim
+\family default
+ works like a typewriter.
+ Here is an example:
+\end_layout
+
+\begin_layout Verbatim
+
+This is verbatim.
+\end_layout
+
+\begin_layout Verbatim
+\noindent
+\align block
+
+The following 2 lines are empty:
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+\end_layout
+
+\begin_layout Verbatim
+
+Almost everything is allowed in verbatim:"%&$§#~'`
+\backslash
+}][{|
 \end_layout
 
 \begin_layout Section
