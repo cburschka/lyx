@@ -415,7 +415,7 @@ Style Question
 	LabelString           "Question \thequestion."
 	Preamble
 	  \theoremstyle{plain}
-	  \newtheorem{question}[thm]{\protect\questionname}
+	  \newtheorem{question}{\protect\questionname}
 	EndPreamble
 	LangPreamble
 	  \providecommand{\questionname}{_(Question)}
