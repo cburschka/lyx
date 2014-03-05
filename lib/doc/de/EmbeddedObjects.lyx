@@ -27039,7 +27039,7 @@ xyz
  die von LyX vergebene Nummer ist.
  Standardmäßig werden die Marke und der Beschriftungstext im selben Font
  gedruckt.
- Dies ist nicht immer brauchbar.
+ Dieses Format ist für die meisten aber nicht alle Dokumente geeignet.
 \end_layout
 
 \begin_layout Standard
@@ -27070,8 +27070,9 @@ usepackage[Format-Definition]{caption}
 \end_layout
 
 \begin_layout Standard
-Wenn zum Beispiel Name und Nummer serifenfrei und fett gedruckt werden und
- die Beschriftung immer über der Tabelle, müssen Sie folgenden Befehl benutzen:
+Soll zum Beispiel Name und Nummer serifenlos und fett gedruckt werden und
+ die Beschriftung immer über der Tabelle stehen, müssen Sie folgenden Befehl
+ verwenden:
 \end_layout
 
 \begin_layout Standard
@@ -27618,11 +27619,21 @@ letter
 report
 \family default
  benutzen, wird zwischen Beschriftung und Tabelle kein Zwischenraum gedruckt.
- Um das zu erreichen, müssen Sie beim Lade-Befehl des LaTeX-Pakets 
+ Um das zu erreichen, , laden Sie das LaTeX-Paket 
 \series bold
 caption
 \series default
- im LaTeX-Vorspann folgendes schreiben:
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pakete ! caption
+\end_layout
+
+\end_inset
+
+ im LaTeX-Vorspann mit der Option
 \begin_inset Foot
 status collapsed
 
@@ -27691,11 +27702,346 @@ report (KOMA-Script)
 \series bold
 caption
 \series default
--Paket die Option 
+-Paket die Dokumentklassen-Option
+\end_layout
+
+\begin_layout Standard
+
 \series bold
 captions=tableheading
-\series default
- benutzen.
+\end_layout
+
+\begin_layout Standard
+benutzen.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Diese Option wird in diesem Dokument verwendet.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In Dokumenten, die eine KOMA-Script Klasse verwenden, können Sie auch mit
+ rechts auf eine Beschriftung klicken und im Kontextmenü markieren, ob diese
+ Beschriftung über oder unter der Tabelle/Abbildung sein soll.
+ Auf diese Weise kann die dokumentweite Beschriftungs-Platzierung für bestimmte
+ Beschriftungen überschrieben werden.
+ Tabelle
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Eine-Beschriftung-unterhalb"
+
+\end_inset
+
+ ist ein Beispiel, bei dem die Beschriftung als unterhalb der Tabelle markiert
+ wurde, obwohl sie über der Tabelle steht.
+ Zum Vergleich ist die Beschriftung von Tabelle
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Eine-normale-Tabellen-Beschriftu"
+
+\end_inset
+
+ nicht markiert.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Below
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Eine-Beschriftung-unterhalb"
+
+\end_inset
+
+Eine Beschriftung, die als unterhalb der der Tabelle markiert wurde.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Joe
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ted
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\int x^{2}dx$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\begin{array}{cc}
+a & b\\
+c & d
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1+1=2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Eine-normale-Tabellen-Beschriftu"
+
+\end_inset
+
+Eine normale Tabellen-Beschriftung.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Joe
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ted
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\int x^{2}dx$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left[\begin{array}{cc}
+a & b\\
+c & d
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1+1=2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -27780,6 +28126,13 @@ sidecap
 \begin_layout Standard
 Um die Beschriftung mit LyX seitlich zu drucken, müssen Sie folgende Befehle
  in den LaTeX-Vorspann schreiben:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -28305,17 +28658,6 @@ reference "tab:Beschriftung-neben-breiter"
 
 \end_inset
 
- und Abbildung
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "abb:cap-beside-fig-2"
-
-\end_inset
-
  wurde der Faktor 5 verwendet.
 \end_layout
 
@@ -28763,7 +29105,7 @@ status collapsed
 
 
 \backslash
-FigBesBeg[5] 
+FigBesBeg 
 \end_layout
 
 \end_inset
