@@ -34,8 +34,14 @@
   NSString *message = [NSString stringWithCString:result.message encoding:NSUTF8StringEncoding];
   free(result.message); 
   
-  NSDictionary *objcResult = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:result.code], @"code", message, @"message", nil];
-  return objcResult;
+  if (result.code != 0) {
+    NSScriptCommand* c = [NSScriptCommand currentCommand]; 
+    [c setScriptErrorNumber:result.code]; 
+    [c setScriptErrorString:message];
+    return NULL;
+  }
+ 
+  return message;
 }
 
 @end
