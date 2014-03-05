@@ -199,9 +199,7 @@ void InsetCaption::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY: {
-		string const first_arg = cmd.getArg(0);
-		bool const change_type = first_arg == "changetype";
-		if (change_type) {
+		if (cmd.getArg(0) == "changetype") {
 			cur.recordUndoInset(ATOMIC_UNDO, this);
 			type_ = cmd.getArg(1);
 			cur.forceBufferUpdate();

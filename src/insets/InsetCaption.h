@@ -23,8 +23,6 @@ public:
 	///
 	InsetCaption(Buffer *, std::string const &);
 	///
-	std::string const & type() const { return type_; }
-	///
 	std::string const & floattype() const { return floattype_; }
 	///
 	docstring layoutName() const;
