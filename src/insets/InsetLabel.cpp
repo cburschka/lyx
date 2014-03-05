@@ -218,6 +218,8 @@ void InsetLabel::doDispatch(Cursor & cur, FuncRequest & cmd)
 	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY: {
+		// the only other option here is "changetype", and we
+		// do not have different types.
 		if (cmd.getArg(0) != "label") {
 			cur.undispatched();
 			return;
