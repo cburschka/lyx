@@ -183,6 +183,10 @@ private:
 	std::string requires_;
 	/// update macro representation
 	bool needsUpdate_;
+	/// update lock to avoid loops
+	class UpdateLocker;
+	friend class UpdateLocker;
+	bool isUpdating_;
 	/// maximal number of arguments the macro is greedy for
 	size_t appetite_;
 

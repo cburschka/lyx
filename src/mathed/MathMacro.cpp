@@ -312,9 +312,27 @@ void MathMacro::updateMacro(MacroContext const & mc)
 }
 
 
+class MathMacro::UpdateLocker
+{
+public:
+	explicit UpdateLocker(MathMacro & mm) : mac(mm)
+	{
+		mac.isUpdating_ = true;
+	}
+	~UpdateLocker() { mac.isUpdating_ = false; }
+private:
+	MathMacro & mac;
+};
+
+
 void MathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 		UpdateType utype)
 {
+	if (isUpdating_)
+		return;
+
+	UpdateLocker(*this);
+
 	// known macro?
 	if (macro_ == 0)
 		return;
