@@ -89,3 +89,8 @@ End
 IfStyle Assumption
 	RefPrefix assu
 End
+
+
+IfStyle Question
+	RefPrefix que
+End
