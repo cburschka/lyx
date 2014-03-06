@@ -5301,11 +5301,7 @@ Verso
 \family default
  no sangra los márgenes.
  Cada estrofa del poema está en su propio párrafo.
- Para separar las líneas individuales de una estrofa, usa la función 
-\family typewriter
-salto-de-línea,
-\family default
- 
+ Para separar las líneas individuales de una estrofa, usa el atajo 
 \family sans
 Ctrl+Entrar
 \family default
@@ -5920,7 +5916,7 @@ reference "sec:Enumeración*"
 
  
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -8343,12 +8339,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8361,6 +8359,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|

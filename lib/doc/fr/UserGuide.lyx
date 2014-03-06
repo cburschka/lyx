@@ -5733,11 +5733,7 @@ Vers
 \family default
  n'indente pas les deux marges.
  Chaque strophe d'un poème est dans son propre paragraphe.
- Pour séparer les vers, utilisez la fonction 
-\family typewriter
-break-line
-\family default
-, 
+ Pour séparer les vers, utilisez le raccourci 
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -8510,12 +8506,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8528,6 +8526,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
