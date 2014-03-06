@@ -334,11 +334,14 @@ def layouts_l10n(input_files, output, base, layouttranslations):
                 continue
             res = End.search(line)
             if res != None:
-                # If a float is predefined by the package and it does not need
-                # the float package then it uses the standard babel translations.
-                # This is even true for MarginFigure, MarginTable (both from
+                # We have four combinations of the flags usesFloatPkg and isPredefined:
+                #     usesFloatPkg and     isPredefined: might use standard babel translations
+                #     usesFloatPkg and not isPredefined: does not use standard babel translations
+                # not usesFloatPkg and     isPredefined: uses standard babel translations
+                # not usesFloatPkg and not isPredefined: not supported by LyX
+                # The third combination is even true for MarginFigure, MarginTable (both from
                 # tufte-book.layout) and Planotable, Plate (both from aguplus.inc).
-                if layouttranslations and readingFloat and usesFloatPkg and not isPredefined:
+                if layouttranslations and readingFloat and usesFloatPkg:
                     if floatname != '':
                         keyset.add(floatname)
                     if listname != '':
