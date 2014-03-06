@@ -404,6 +404,9 @@ def layouts_l10n(input_files, output, base, layouttranslations):
             for key in keys:
                 if key in trans.keys():
                     val = trans[key].replace('\\', '\\\\').replace('"', '\\"')
+                    res = ContextRe.search(val)
+                    if res != None:
+                        val = res.group(1)
                     key = key.replace('\\', '\\\\').replace('"', '\\"')
                     print >> out, '\t"%s" "%s"' % \
                              (key.encode('utf-8'), val.encode('utf-8'))
