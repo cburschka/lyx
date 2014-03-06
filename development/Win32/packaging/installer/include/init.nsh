@@ -238,12 +238,12 @@ SectionEnd
 
 Section /o "Gàidhlig" SecDScottish
  StrCpy $DictCodes "gd_GB,$DictCodes"
- AddSize 1819
+ AddSize 2504
 SectionEnd
 
 Section /o "Galego" SecDGalician
  StrCpy $DictCodes "gl_ES,$DictCodes"
- AddSize 916
+ AddSize 3911
 SectionEnd
 
 Section /o "Hebrew" SecDHebrew
@@ -268,7 +268,7 @@ SectionEnd
 
 Section /o "Interlingua" SecDInterlingua
  StrCpy $DictCodes "ia_IA,$DictCodes"
- AddSize 556
+ AddSize 613
 SectionEnd
 
 Section /o "Íslenska" SecDIcelandic
@@ -278,7 +278,7 @@ SectionEnd
 
 Section /o "Italiano" SecDItalian
  StrCpy $DictCodes "it_IT,$DictCodes"
- AddSize 1340
+ AddSize 1380
 SectionEnd
 
 Section /o "Kazakh" SecDKazakh
@@ -343,12 +343,12 @@ SectionEnd
 
 Section /o "Português (PT)" SecDPortuguesePT
  StrCpy $DictCodes "pt_PT,$DictCodes"
- AddSize 1530
+ AddSize 1595
 SectionEnd
 
 Section /o "Româna" SecDRomanian
  StrCpy $DictCodes "ro_RO,$DictCodes"
- AddSize 2200
+ AddSize 2255
 SectionEnd
 
 Section /o "Russian" SecDRussian
@@ -358,7 +358,7 @@ SectionEnd
 
 Section /o "Serbšcina (Dolno)" SecDSorbianD
  StrCpy $DictCodes "dsb_DE,$DictCodes"
- AddSize 904
+ AddSize 1035
 SectionEnd
 
 Section /o "Serbšcina (Horno)" SecDSorbianH
@@ -383,12 +383,12 @@ SectionEnd
 
 Section /o "Srpski (Cirilica)" SecDSerbianC
  StrCpy $DictCodes "sr_RS,$DictCodes"
- AddSize 3560
+ AddSize 4401
 SectionEnd
 
 Section /o "Srpski (Latinica)" SecDSerbianL
  StrCpy $DictCodes "sr_RS-Latin,$DictCodes"
- AddSize 2000
+ AddSize 2843
 SectionEnd
 
 Section /o "Svenska" SecDSwedish
@@ -411,9 +411,14 @@ Section /o "Thai" SecDThai
  AddSize 351
 SectionEnd
 
+Section /o "Türkmençe" SecDTurkmen
+ StrCpy $DictCodes "tk_TM,$DictCodes"
+ AddSize 950
+SectionEnd
+
 Section /o "Ukrainian" SecDUkrainian
  StrCpy $DictCodes "uk_UA,$DictCodes"
- AddSize 2620
+ AddSize 3077
 SectionEnd
 
 Section /o "Urdu" SecDUrdu
@@ -486,6 +491,11 @@ Section /o "Gaeilge" SecTGaelic
  AddSize 30600
 SectionEnd
 
+Section /o "Galego" SecTGalician
+ StrCpy $ThesCodes "gl_ES,$ThesCodes"
+ AddSize 510
+SectionEnd
+
 Section /o "Greek" SecTGreek
  StrCpy $ThesCodes "el_GR,$ThesCodes"
  AddSize 903
@@ -533,7 +543,7 @@ SectionEnd
 
 Section /o "Slovenšcina" SecTSlovenian
  StrCpy $ThesCodes "sl_SI,$ThesCodes"
- AddSize 1037
+ AddSize 1121
 SectionEnd
 
 Section /o "Slovenský" SecTSlovakian
@@ -1150,6 +1160,13 @@ Function .onInit
    SectionSetFlags ${SecDThai} $0
    SectionSetSize ${SecDThai} 0
   ${endif}
+  StrCpy $Search "tk_TM"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDTurkmen} $0
+   SectionSetSize ${SecDTurkmen} 0
+  ${endif}
   StrCpy $Search "uk_UA"
   Call StrPoint
   ${if} $Pointer != "-1"
@@ -1251,6 +1268,13 @@ Function .onInit
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
    SectionSetFlags ${SecTGaelic} $0
    SectionSetSize ${SecTGaelic} 0
+  ${endif}
+  StrCpy $Search "gl_ES"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTGalician} $0
+   SectionSetSize ${SecTGalician} 0
   ${endif}
   StrCpy $Search "el_GR"
   Call StrPoint
