@@ -204,6 +204,13 @@ bool InsetLabel::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_LABEL_COPY_AS_REFERENCE:
 		enabled = true;
 		break;
+	case LFUN_INSET_MODIFY:
+		if (cmd.getArg(0) == "changetype") {
+			// this is handled by InsetCommand,
+			// but not by InsetLabel.
+			enabled = false;
+			break;
+		}
 	default:
 		return InsetCommand::getStatus(cur, cmd, status);
 	}
