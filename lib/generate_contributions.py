@@ -1891,6 +1891,14 @@ contributors = [
                  "1 January 2009",
                  u"question layout environment"),
 
+     contributor(u"Mingyi Wu",
+                 "mingi.eo97g () g2 ! nctu ! edu ! tw",
+                 "GPL",
+                 "newcomer",
+                 "m=139389779502232",
+                 "3 March 2014",
+                 u"Chinese (traditional) translations"),
+
      contributor(u"Yihui Xie",
                  "xie () yihui ! name",
                  "GPL",
