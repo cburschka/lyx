@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-02-26 10:07+0100\n"
+"POT-Creation-Date: 2014-03-07 11:40+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -6881,25 +6881,25 @@ msgstr "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
 msgid "Table"
 msgstr "Tabuľka"
 
-#: lib/layouts/powerdot.layout:506 lib/layouts/beamer.layout:1543
-#: lib/layouts/tufte-book.layout:229 lib/layouts/stdfloats.inc:16
+#: lib/layouts/beamer.layout:1555 lib/layouts/powerdot.layout:506
+#: lib/layouts/tufte-book.layout:231 lib/layouts/stdfloats.inc:16
 msgid "List of Tables"
-msgstr "Zoznam tabuliek"
+msgstr "Zoznam Tabuliek"
 
 #: lib/layouts/powerdot.layout:514 lib/layouts/beamer.layout:1551
 #: lib/layouts/stdfloats.inc:26
 msgid "Figure"
 msgstr "Obrázok"
 
-#: lib/layouts/powerdot.layout:518 lib/layouts/beamer.layout:1556
-#: lib/layouts/tufte-book.layout:242 lib/layouts/stdfloats.inc:31
+#: lib/layouts/beamer.layout:1568 lib/layouts/powerdot.layout:518
+#: lib/layouts/tufte-book.layout:244 lib/layouts/stdfloats.inc:31
 msgid "List of Figures"
-msgstr "Zoznam obrázkov"
+msgstr "Zoznam Obrázkov"
 
 #: lib/layouts/powerdot.layout:530 lib/layouts/stdfloats.inc:46
 #: lib/layouts/algorithm2e.module:20
 msgid "List of Algorithms"
-msgstr "Zoznam algoritmov"
+msgstr "Zoznam Algoritmov"
 
 #: lib/layouts/powerdot.layout:569
 msgid "Onslide"
@@ -10377,7 +10377,7 @@ msgstr "Náčrtok"
 
 #: lib/layouts/achemso.layout:170
 msgid "List of Schemes"
-msgstr "Zoznam náčrtkov"
+msgstr "Zoznam Náčrtkov"
 
 #: lib/layouts/achemso.layout:187 lib/layouts/achemso.layout:198
 msgid "Chart"
@@ -10393,7 +10393,7 @@ msgstr "Grafika"
 
 #: lib/layouts/achemso.layout:214
 msgid "List of Graphs"
-msgstr "Zoznam grafík"
+msgstr "Zoznam Grafík"
 
 #: lib/layouts/achemso.layout:248
 msgid "SupplementalInfo"
@@ -11719,7 +11719,7 @@ msgstr "Prispievatelia"
 
 #: lib/layouts/svmult.layout:68
 msgid "List of Contributors"
-msgstr "Zoznam prispievateľov"
+msgstr "Zoznam Prispievateľov"
 
 #: lib/layouts/svmult.layout:72
 msgid "Contributor List"
@@ -12403,7 +12403,7 @@ msgstr "ERT"
 
 #: lib/layouts/stdinsets.inc:227 lib/layouts/stdinsets.inc:233
 msgid "Listings[[List of Listings]]"
-msgstr "Zoznam výpisov"
+msgstr "Zoznam Výpisov"
 
 #: lib/layouts/stdinsets.inc:259 src/frontends/qt4/GuiDocument.cpp:1417
 msgid "Listings[[inset]]"
@@ -13924,9 +13924,9 @@ msgstr "význam"
 msgid "Tableau"
 msgstr "Tablo"
 
-#: lib/layouts/linguistics.module:174
+#: lib/layouts/linguistics.module:179
 msgid "List of Tableaux"
-msgstr "Zoznam tablov"
+msgstr "Zoznam Tablov"
 
 #: lib/layouts/basic.module:2
 msgid "Default (basic)"
