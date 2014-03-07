@@ -1406,7 +1406,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				lyx::dispatch(FuncRequest(LFUN_DEPTH_DECREMENT));
 		}
 		bool const morecont = cur.lastpos() > cur.pos();
-		lyx::dispatch(FuncRequest(LFUN_LAYOUT, "Separator"));
+		// FIXME This hardcoding is bad
+		docstring const sep =
+				cur.buffer()->params().documentClass().hasLayout(from_ascii("Separator"))
+					? from_ascii("Separator") : from_ascii("--Separator--");
+		lyx::dispatch(FuncRequest(LFUN_LAYOUT, sep));
 		lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK, "inverse"));
 		if (morecont) 
 			lyx::dispatch(FuncRequest(LFUN_DOWN));
@@ -2950,7 +2954,9 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 	
 	case LFUN_ENVIRONMENT_SPLIT: {
-		if (!cur.buffer()->params().documentClass().hasLayout(from_ascii("Separator"))) {
+		// FIXME This hardcoding is bad
+		if (!cur.buffer()->params().documentClass().hasLayout(from_ascii("Separator"))
+		    && !cur.buffer()->params().documentClass().hasLayout(from_ascii("--Separator--"))) {
 			enable = false;
 			break;
 		}
