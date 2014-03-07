@@ -468,12 +468,12 @@ SectionEnd
 
 Section /o "English (GB)" SecTEnglishGB
  StrCpy $ThesCodes "en_GB,$ThesCodes"
- AddSize 20600
+ AddSize 14300
 SectionEnd
 
 Section /o "English (US/AU)" SecTEnglishUSAU
  StrCpy $ThesCodes "en_US,$ThesCodes"
- AddSize 20600
+ AddSize 21600
 SectionEnd
 
 Section /o "Español" SecTSpanish
