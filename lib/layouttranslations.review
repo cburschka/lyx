@@ -28,12 +28,15 @@ all languages:
 "Listings"
 
 new or changed translations for individual languages:
+da: "Note" (not changed, but da.po does not translate this anymore?)
 de: "Chart", "Graph", "List of Charts", "List of Graphs", "List of Schemes"
 ia: "Graph", "List of Graphs", "Listings"
 ja: "Conjecture", "Question", "Remark"
-nl: "Acknowledgement", "Case", "Claim", "Condition", "Conjecture", "Corollary",
-    "Criterion", "List of Algorithms", "List of Charts", "List of Graphs",
+nl: "Acknowledgement", "Case", "Chart", (same translation as "Graph") "Claim",
+    "Condition", "Conjecture", "Corollary", "Criterion", "Graph",
+    "List of Algorithms", "List of Charts", "List of Graphs",
     "List of Schemes", "Note", "Problem", "Property", "Proposition",
-    "Solution", "Theorem" in nl
-sk: "Chart", "List of Charts"
+    "Solution", "Theorem"
+sk: "Chart", "List of Algorithms", "List of Charts", "List of Graphs",
+    "List of Schemes", "List of Tableaux"
 
