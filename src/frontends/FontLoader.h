@@ -12,6 +12,8 @@
 #ifndef FONTLOADER_H
 #define FONTLOADER_H
 
+#include "support/strfwd.h"
+
 namespace lyx {
 
 class FontInfo;
@@ -35,6 +37,9 @@ public:
 
 	/// Is the given font available ?
 	bool available(FontInfo const & f);
+
+	/// Can the given symbol be displayed in general?
+	bool canBeDisplayed(char_type c);
 
 	/// Get the Font metrics for this FontInfo
 	FontMetrics const & metrics(FontInfo const & f);

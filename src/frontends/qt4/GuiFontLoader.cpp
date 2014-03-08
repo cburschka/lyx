@@ -368,6 +368,21 @@ bool FontLoader::available(FontInfo const & f)
 }
 
 
+bool FontLoader::canBeDisplayed(char_type c)
+{
+	// bug 8493
+	if (c == 0x0009)
+		// FIXME check whether this is still needed for Qt5
+		return false;
+#if QT_VERSION < 0x050000 && defined(QT_MAC_USE_COCOA) && (QT_MAC_USE_COCOA > 0)
+	// bug 7954, see also comment in GuiPainter::text()
+	if (c == 0x00ad)
+		return false;
+#endif
+	return true;
+}
+
+
 FontMetrics const & FontLoader::metrics(FontInfo const & f)
 {
 	return fontinfo(f).metrics;

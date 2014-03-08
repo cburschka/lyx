@@ -110,6 +110,32 @@ bool isMathFontAvailable(docstring & name)
 }
 
 
+bool canBeDisplayed(char_type c)
+{
+	if (!use_gui)
+		return true;
+	return theFontLoader().canBeDisplayed(c);
+}
+
+
+bool isUnicodeSymbolAvailable(docstring const & name, char_type & c)
+{
+	docstring cmd(from_ascii("\\") + name);
+	bool is_combining;
+	bool termination;
+	c = Encodings::fromLaTeXCommand(cmd, Encodings::MATH_CMD,
+	                                is_combining, termination);
+	if (c == 0 && name == "varOmega") {
+		// fallback for bug 7954, unicodesymbols does not list
+		// \\varOmega because of requirements, but this might change
+		cmd = from_ascii("\\mathit{\\Omega}");
+		c = Encodings::fromLaTeXCommand(cmd, Encodings::MATH_CMD,
+		                                is_combining, termination);
+	}
+	return c != 0 && !is_combining;
+}
+
+
 void initSymbols()
 {
 	FileName const filename = libFileSearch(string(), "symbols");
@@ -201,20 +227,26 @@ void initSymbols()
 
 			// symbol font is not available sometimes
 			docstring symbol_font = from_ascii("lyxsymbol");
+			char_type unicodesymbol = 0;
 
 			if (tmp.extra == "func" || tmp.extra == "funclim" || tmp.extra == "special") {
 				LYXERR(Debug::MATHED, "symbol abuse for " << to_utf8(tmp.name));
 				tmp.draw = tmp.name;
-			} else if (isMathFontAvailable(tmp.inset)) {
+			} else if (isMathFontAvailable(tmp.inset) && canBeDisplayed(charid)) {
 				LYXERR(Debug::MATHED, "symbol available for " << to_utf8(tmp.name));
 				tmp.draw.push_back(char_type(charid));
-			} else if (fallbackid && isMathFontAvailable(symbol_font)) {
+			} else if (fallbackid && isMathFontAvailable(symbol_font) &&
+			           canBeDisplayed(fallbackid)) {
 				if (tmp.inset == "cmex")
 					tmp.inset = from_ascii("lyxsymbol");
 				else
 					tmp.inset = from_ascii("lyxboldsymbol");
 				LYXERR(Debug::MATHED, "symbol fallback for " << to_utf8(tmp.name));
 				tmp.draw.push_back(char_type(fallbackid));
+			} else if (isUnicodeSymbolAvailable(tmp.name, unicodesymbol)) {
+				LYXERR(Debug::MATHED, "unicode fallback for " << to_utf8(tmp.name));
+				tmp.inset = from_ascii("mathnormal");
+				tmp.draw.push_back(unicodesymbol);
 			} else {
 				LYXERR(Debug::MATHED, "faking " << to_utf8(tmp.name));
 				tmp.draw = tmp.name;
