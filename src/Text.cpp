@@ -383,10 +383,10 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 			// in this case only the empty layout is allowed
 			layoutname = tclass.plainLayoutName();
 		} else if (par.usePlainLayout()) {
-			// in this case, default layout maps to empty layout 
+			// in this case, default layout maps to empty layout
 			if (layoutname == tclass.defaultLayoutName())
 				layoutname = tclass.plainLayoutName();
-		} else { 
+		} else {
 			// otherwise, the empty layout maps to the default
 			if (layoutname == tclass.plainLayoutName())
 				layoutname = tclass.defaultLayoutName();
@@ -571,7 +571,7 @@ void Text::readParagraph(Paragraph & par, Lexer & lex,
 
 	// Initialize begin_of_body_ on load; redoParagraph maintains
 	par.setBeginOfBody();
-	
+
 	// mark paragraph for spell checking on load
 	// par.requestSpellCheck();
 }
@@ -586,7 +586,7 @@ public:
 	{}
 	///
 	virtual ~TextCompletionList() {}
-	
+
 	///
 	virtual bool sorted() const { return true; }
 	///
@@ -599,7 +599,7 @@ public:
 	{
 		return list_->word(idx);
 	}
-	
+
 private:
 	///
 	Buffer const * buffer_;
@@ -611,7 +611,7 @@ private:
 bool Text::empty() const
 {
 	return pars_.empty() || (pars_.size() == 1 && pars_[0].empty()
-		// FIXME: Should we consider the labeled type as empty too? 
+		// FIXME: Should we consider the labeled type as empty too?
 		&& pars_[0].layout().labeltype == LABEL_NO_LABEL);
 }
 
@@ -628,10 +628,10 @@ double Text::spacing(Paragraph const & par) const
  * This breaks a paragraph at the specified position.
  * The new paragraph will:
  * - Decrease depth by one (or change layout to default layout) when
- *    keep_layout == false  
+ *    keep_layout == false
  * - keep current depth and layout when keep_layout == true
  */
-static void breakParagraph(Text & text, pit_type par_offset, pos_type pos, 
+static void breakParagraph(Text & text, pit_type par_offset, pos_type pos,
 		    bool keep_layout)
 {
 	BufferParams const & bparams = text.inset().buffer().params();
@@ -751,7 +751,7 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 		cpar.eraseChar(cur.pos(), cur.buffer()->params().trackChanges);
 
 	// What should the layout for the new paragraph be?
-	bool keep_layout = layout.isEnvironment() 
+	bool keep_layout = layout.isEnvironment()
 		|| (layout.isParagraph() && layout.parbreak_is_newline);
 	if (inverse_logic)
 		keep_layout = !keep_layout;
@@ -935,40 +935,40 @@ void Text::insertChar(Cursor & cur, char_type c)
 	}
 
 	// In Bidi text, we want spaces to be treated in a special way: spaces
-	// which are between words in different languages should get the 
-	// paragraph's language; otherwise, spaces should keep the language 
+	// which are between words in different languages should get the
+	// paragraph's language; otherwise, spaces should keep the language
 	// they were originally typed in. This is only in effect while typing;
 	// after the text is already typed in, the user can always go back and
 	// explicitly set the language of a space as desired. But 99.9% of the
 	// time, what we're doing here is what the user actually meant.
-	// 
+	//
 	// The following cases are the ones in which the language of the space
 	// should be changed to match that of the containing paragraph. In the
-	// depictions, lowercase is LTR, uppercase is RTL, underscore (_) 
+	// depictions, lowercase is LTR, uppercase is RTL, underscore (_)
 	// represents a space, pipe (|) represents the cursor position (so the
 	// character before it is the one just typed in). The different cases
 	// are depicted logically (not visually), from left to right:
-	// 
+	//
 	// 1. A_a|
 	// 2. a_A|
 	//
 	// Theoretically, there are other situations that we should, perhaps, deal
-	// with (e.g.: a|_A, A|_a). In practice, though, there really isn't any 
+	// with (e.g.: a|_A, A|_a). In practice, though, there really isn't any
 	// point (to understand why, just try to create this situation...).
 
 	if ((cur.pos() >= 2) && (par.isLineSeparator(cur.pos() - 1))) {
-		// get font in front and behind the space in question. But do NOT 
+		// get font in front and behind the space in question. But do NOT
 		// use getFont(cur.pos()) because the character c is not inserted yet
 		Font const pre_space_font  = tm.displayFont(cur.pit(), cur.pos() - 2);
 		Font const & post_space_font = cur.real_current_font;
 		bool pre_space_rtl  = pre_space_font.isVisibleRightToLeft();
 		bool post_space_rtl = post_space_font.isVisibleRightToLeft();
-		
+
 		if (pre_space_rtl != post_space_rtl) {
-			// Set the space's language to match the language of the 
+			// Set the space's language to match the language of the
 			// adjacent character whose direction is the paragraph's
 			// direction; don't touch other properties of the font
-			Language const * lang = 
+			Language const * lang =
 				(pre_space_rtl == par.isRTL(buffer.params())) ?
 				pre_space_font.language() : post_space_font.language();
 
@@ -977,7 +977,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 			par.setFont(cur.pos() - 1, space_font);
 		}
 	}
-	
+
 	// Next check, if there will be two blanks together or a blank at
 	// the beginning of a paragraph.
 	// I decided to handle blanks like normal characters, the main
@@ -1083,7 +1083,7 @@ bool Text::cursorForwardOneWord(Cursor & cur)
 
 		// Skip over white space
 		while (pos != lastpos && par.isSpace(pos))
-			     ++pos;		
+			     ++pos;
 	}
 
 	return setCursor(cur, pit, pos);
@@ -1145,9 +1145,9 @@ bool Text::cursorVisLeftOneWord(Cursor & cur)
 
 		// collect some information about current cursor position
 		temp_cur.getSurroundingPos(left_pos, right_pos);
-		left_is_letter = 
+		left_is_letter =
 			(left_pos > -1 ? !temp_cur.paragraph().isWordSeparator(left_pos) : false);
-		right_is_letter = 
+		right_is_letter =
 			(right_pos > -1 ? !temp_cur.paragraph().isWordSeparator(right_pos) : false);
 
 		// if we're not at a letter/non-letter boundary, continue moving
@@ -1163,7 +1163,7 @@ bool Text::cursorVisLeftOneWord(Cursor & cur)
 			break;
 	}
 
-	return setCursor(cur, temp_cur.pit(), temp_cur.pos(), 
+	return setCursor(cur, temp_cur.pit(), temp_cur.pos(),
 					 true, temp_cur.boundary());
 }
 
@@ -1182,9 +1182,9 @@ bool Text::cursorVisRightOneWord(Cursor & cur)
 
 		// collect some information about current cursor position
 		temp_cur.getSurroundingPos(left_pos, right_pos);
-		left_is_letter = 
+		left_is_letter =
 			(left_pos > -1 ? !temp_cur.paragraph().isWordSeparator(left_pos) : false);
-		right_is_letter = 
+		right_is_letter =
 			(right_pos > -1 ? !temp_cur.paragraph().isWordSeparator(right_pos) : false);
 
 		// if we're not at a letter/non-letter boundary, continue moving
@@ -1194,15 +1194,15 @@ bool Text::cursorVisRightOneWord(Cursor & cur)
 		// we should stop when we have an LTR word on our right or an RTL word
 		// on our left
 		if ((left_is_letter && temp_cur.paragraph().getFontSettings(
-				temp_cur.buffer()->params(), 
+				temp_cur.buffer()->params(),
 				left_pos).isRightToLeft())
 			|| (right_is_letter && !temp_cur.paragraph().getFontSettings(
-				temp_cur.buffer()->params(), 
+				temp_cur.buffer()->params(),
 				right_pos).isRightToLeft()))
 			break;
 	}
 
-	return setCursor(cur, temp_cur.pit(), temp_cur.pos(), 
+	return setCursor(cur, temp_cur.pit(), temp_cur.pos(),
 					 true, temp_cur.boundary());
 }
 
@@ -1234,7 +1234,7 @@ void Text::selectAll(Cursor & cur)
 	if (cur.pit() == 0 && cur.pos() == 0) {
 		setCursor(cur, cur.lastpit(), getPar(cur.lastpit()).size());
 		cur.resetAnchor();
-		setCursor(cur, 0, 0);		
+		setCursor(cur, 0, 0);
 	} else {
 		setCursor(cur, 0, 0);
 		cur.resetAnchor();
@@ -1297,11 +1297,11 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 
 		pos_type left  = (pit == begPit ? begPos : 0);
 		pos_type right = (pit == endPit ? endPos : parSize);
-		
+
 		if (left == right)
 			// there is no change here
 			continue;
-		
+
 		if (op == ACCEPT) {
 			pars_[pit].acceptChanges(left, right);
 		} else {
@@ -1518,7 +1518,7 @@ bool Text::handleBibitems(Cursor & cur)
 		setCursorIntern(cur, prevcur.pit(), prevcur.pos());
 		cur.screenUpdateFlags(Update::Force);
 		return true;
-	} 
+	}
 
 	// otherwise reset to default
 	cur.paragraph().setPlainOrDefaultLayout(bufparams.documentClass());
@@ -1760,7 +1760,7 @@ void Text::write(ostream & os) const
 }
 
 
-bool Text::read(Lexer & lex, 
+bool Text::read(Lexer & lex,
 		ErrorList & errorList, InsetText * insetPtr)
 {
 	Buffer const & buf = owner_->buffer();
@@ -1817,12 +1817,12 @@ bool Text::read(Lexer & lex,
 		Paragraph par;
 		par.setInsetOwner(insetPtr);
 		par.params().depth(depth);
-		par.setFont(0, Font(inherit_font, 
+		par.setFont(0, Font(inherit_font,
 				    buf.params().language));
 		par.setPlainOrDefaultLayout(buf.params().documentClass());
 		pars_.push_back(par);
 	}
-	
+
 	return res;
 }
 
@@ -1929,7 +1929,7 @@ docstring Text::getPossibleLabel(Cursor const & cur) const
 			text += '-';
 		text += head;
 	}
-	
+
 	// Make sure it isn't too long
 	unsigned int const max_label_length = 32;
 	if (text.size() > max_label_length)
@@ -2092,7 +2092,7 @@ docstring Text::previousWord(CursorSlice const & sl) const
 	getWord(from, to, PREVIOUS_WORD);
 	if (sl == from || to == from)
 		return docstring();
-	
+
 	Paragraph const & par = sl.paragraph();
 	return par.asString(from.pos(), to.pos());
 }
@@ -2115,7 +2115,7 @@ CompletionList const * Text::createCompletionList(Cursor const & cur) const
 
 
 bool Text::insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/)
-{	
+{
 	LBUFERR(cur.bv().cursor() == cur);
 	cur.insert(s);
 	cur.bv().cursor() = cur;
@@ -2123,8 +2123,8 @@ bool Text::insertCompletion(Cursor & cur, docstring const & s, bool /*finished*/
 		cur.screenUpdateFlags(cur.result().screenUpdate() | Update::SinglePar);
 	return true;
 }
-	
-	
+
+
 docstring Text::completionPrefix(Cursor const & cur) const
 {
 	return previousWord(cur.top());

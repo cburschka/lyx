@@ -266,21 +266,6 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	LYXERR(Debug::ACTION, "InsetText::doDispatch(): cmd: " << cmd);
 
-#if 0
-// FIXME: This code does not seem to be necessary anymore
-// Remove for 2.1 if no counter-evidence is found.
-	if (isPassThru() && lyxCode() != ARG_CODE) {
-		// Force any new text to latex_language FIXME: This
-		// should only be necessary in constructor, but new
-		// paragraphs that are created by pressing enter at
-		// the start of an existing paragraph get the buffer
-		// language and not latex_language, so we take this
-		// brute force approach.
-		cur.current_font.setLanguage(latex_language);
-		cur.real_current_font.setLanguage(latex_language);
-	}
-#endif
-
 	switch (cmd.action()) {
 	case LFUN_PASTE:
 	case LFUN_CLIPBOARD_PASTE:
