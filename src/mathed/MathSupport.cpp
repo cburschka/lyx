@@ -575,7 +575,7 @@ fontinfo fontinfos[] = {
 	{"mathit",        inh_family, inh_series,
 			  ITALIC_SHAPE, Color_math},
 	{"mathscr",       RSFS_FAMILY, inh_series,
-	          inh_shape, Color_math}, 
+			  inh_shape, Color_math},
 	{"cmex",          CMEX_FAMILY, inh_series,
 			  inh_shape, Color_math},
 	{"cmm",           CMM_FAMILY, inh_series,
