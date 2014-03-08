@@ -1,7 +1,27 @@
-﻿Changelog for LyX-206-3:
+﻿Changelog for LyX-207-2:
+- LyX can now be installed and uninstalled silently
+  (administrators can start the installer with "LyX-207-Installer-2.exe /S")
+- updated to Python 2.7.6
+- new spell checker for Turkmen
+- new thesaurus for Galician
+- updated spell-checker dictionaries for Gaelic, Galician, Interlingua,
+  Italian, Lower Sorbian, Portuguese (Portugal), Romanian, serbian (Latin and Cyrillic) and Ukrainian
+  (To benefit from them you must uninstall an already installed LyX 2.0.x and
+   then use this installer.)
+- updated thesaurus for Slovenian and Ukrainian
+  (need to reinstall LyX to benefit from this)
+
+
+Changelog for LyX-207:
+- installs LyX 2.0.7
+- updated to GhostScript 9.10
+- updated to MiKTeX 2.9 build 5105
+
+
+Changelog for LyX-206-3:
 - XeTeX support for Arabic and Farsi will now
   automatically be installed to MiKTeX
-- updated spell-checker dictionaries for Norwegian(Bokmal)
+- updated spell-checker dictionary for Norwegian(Bokmal)
 
 
 Changelog for LyX-206-2:
