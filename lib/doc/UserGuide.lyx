@@ -10129,6 +10129,13 @@ Nesting ! Separation
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Separate-Nestings"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -35298,8 +35305,8 @@ Increase/Decrease List Depth
 \end_layout
 
 \begin_layout Standard
-These menu entries are only active if the cursor is in an environment that
- can be nested.
+These menus are only active if the cursor is in an environment that can
+ be nested.
  They increase/decrease the environment nesting level as explained in section
 \begin_inset space ~
 \end_inset
@@ -35319,6 +35326,29 @@ reference "sub:Numbering-depth"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+
+\family sans
+Start New Environment/Start New Parent Environment
+\end_layout
+
+\begin_layout Standard
+These menus are only visible if it is possible to have two consecutive environme
+nts of the same type.
+ See section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Separate-Nestings"
+
+\end_inset
+
+ for an explanation.
 \end_layout
 
 \begin_layout Section

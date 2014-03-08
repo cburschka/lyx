@@ -7011,12 +7011,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -7029,6 +7031,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8781,6 +8784,13 @@ status open
 \lang english
 Nesting ! Separation
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Separate-Nestings"
 
 \end_inset
 
@@ -29836,6 +29846,32 @@ reference "sub:番号の付け方-深度"
 \end_inset
 
 節に説明されているように、環境の入れ子の階層を上げたり下げたりします。
+\end_layout
+
+\begin_layout Subsection
+
+\family sans
+\lang english
+Start New Environment/Start New Parent Environment
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+These menus are only visible if it is possible to have two consecutive environme
+nts of the same type.
+ See section
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Separate-Nestings"
+
+\end_inset
+
+
+\lang english
+ for an explanation.
 \end_layout
 
 \begin_layout Section
