@@ -8484,12 +8484,10 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Verbatim.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8502,7 +8500,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Verbatim erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -10805,6 +10802,27 @@ Bearbeiten\SpecialChar \menuseparator
 Neue Umgebung
 \family default
  wird ebenfalls eine neue Liste eingefügt, aber in derselben Schachtelungstiefe.
+\end_layout
+
+\begin_layout Standard
+Um eine bestehende Liste in zwei Listen zu teilen, setzt man den Cursor
+ ans Ende eines Listeneintrags, drückt 
+\family sans
+Eingabe
+\family default
+ und wählt im 
+\begin_inset Quotes gld
+\end_inset
+
+pull-down
+\begin_inset Quotes grd
+\end_inset
+
+-Menü am Anfang der Standard-Werkzeugleiste 
+\family sans
+--Trenner--
+\family default
+ aus.
 \end_layout
 
 \begin_layout Section
