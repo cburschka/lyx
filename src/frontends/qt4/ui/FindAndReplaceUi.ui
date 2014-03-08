@@ -203,7 +203,7 @@
        <bool>false</bool>
       </property>
       <property name="title">
-       <string>Sco&amp;pe</string>
+       <string>Scope</string>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -215,7 +215,7 @@
           <bool>true</bool>
          </property>
          <property name="text">
-          <string>Current &amp;document</string>
+          <string>C&amp;urrent document</string>
          </property>
          <property name="checked">
           <bool>true</bool>
@@ -260,7 +260,7 @@
           <bool>true</bool>
          </property>
          <property name="text">
-          <string>All ma&amp;nuals</string>
+          <string>&amp;All manuals</string>
          </property>
         </widget>
        </item>
@@ -281,7 +281,7 @@
          <string>If unchecked, the search will be limited to occurrences of the selected text and paragraph style</string>
         </property>
         <property name="text">
-         <string>Ignore &amp;format</string>
+         <string>I&amp;gnore format</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -311,7 +311,7 @@
       <item row="3" column="0">
        <widget class="QCheckBox" name="OnlyMaths">
         <property name="text">
-         <string>Search only in mat&amp;hs</string>
+         <string>Search on&amp;ly in maths</string>
         </property>
         <property name="toolTip">
          <string>Restrict search to math environments only</string>
