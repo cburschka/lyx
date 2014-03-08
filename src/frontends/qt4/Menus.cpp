@@ -1930,8 +1930,11 @@ void Menus::Impl::macxMenuBarInit(QMenuBar * qmb)
 		 QAction::AboutRole},
 		{LFUN_DIALOG_SHOW, "prefs", "Preferences",
 		 QAction::PreferencesRole},
-		/* {LFUN_RECONFIGURE, "", "Reconfigure",
-		 QAction::ApplicationSpecificRole}, */
+#if !(defined(QT_MAC_USE_COCOA) || (QT_VERSION >= 0x050000))
+		/* This doesn't work with Cocoa. */
+		{LFUN_RECONFIGURE, "", "Reconfigure",
+		 QAction::ApplicationSpecificRole},
+#endif
 		{LFUN_LYX_QUIT, "", "Quit LyX", QAction::QuitRole}
 	};
 	const size_t num_entries = sizeof(entries) / sizeof(entries[0]);
@@ -1953,19 +1956,10 @@ void Menus::Impl::macxMenuBarInit(QMenuBar * qmb)
 	MenuDefinition::const_iterator cit = mac_special_menu_.begin();
 	MenuDefinition::const_iterator end = mac_special_menu_.end();
 	for (size_t i = 0 ; cit != end ; ++cit, ++i) {
-#if defined(QT_MAC_USE_COCOA) && (QT_MAC_USE_COCOA > 0)
-		if (first_call || entries[i].role != QAction::ApplicationSpecificRole) {
-			Action * action = new Action(QIcon(), cit->label(),
-				 cit->func(), QString(), qMenu);
-			action->setMenuRole(entries[i].role);
-			qMenu->addAction(action);
-		}
-#else
 		Action * action = new Action(QIcon(), cit->label(),
 			cit->func(), QString(), qMenu);
 		action->setMenuRole(entries[i].role);
 		qMenu->addAction(action);
-#endif
 	}
 }
 
@@ -2283,6 +2277,14 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 
 		Menu * menu = new Menu(view, m->submenuname(), true);
 		menu->setTitle(label(*m));
+
+#if defined(Q_WS_MACX) && (defined(QT_MAC_USE_COCOA) || (QT_VERSION >= 0x050000))
+		// On Mac OS with QT/cocoa, the menu is not displayed if there is no action
+		// so we create a temporary one here
+		QAction * action = new QAction(menu);
+		menu->addAction(action);
+#endif
+
 		qmb->addMenu(menu);
 
 		d->name_map_[view][name] = menu;
