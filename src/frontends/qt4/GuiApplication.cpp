@@ -1245,6 +1245,14 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 		break;
 	}
 
+	case LFUN_DIALOG_SHOW: {
+		string const name = cmd.getArg(0);
+		return name == "aboutlyx"
+			|| name == "prefs"
+			|| name == "texinfo"
+			|| name == "progress"
+			|| name == "compare";
+	}
 
 	default:
 		return false;
@@ -1936,6 +1944,24 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_DEBUG_LEVEL_SET:
 		lyxerr.setLevel(Debug::value(to_utf8(cmd.argument())));
 		break;
+
+	case LFUN_DIALOG_SHOW: {
+		string const name = cmd.getArg(0);
+
+		if ( name == "aboutlyx"
+			|| name == "prefs"
+			|| name == "texinfo"
+			|| name == "progress"
+			|| name == "compare")
+		{
+			// work around: on Mac OS the application
+			// is not terminated when closing the last view.
+			// Create a new one to be able to dispatch the
+			// LFUN_DIALOG_SHOW to this view.
+			if (current_view_ == 0)
+				createView();
+		}
+	}
 
 	default:
 		// The LFUN must be for one of GuiView, BufferView, Buffer or Cursor;
