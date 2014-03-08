@@ -5814,7 +5814,7 @@ Standard
  la profondeur d'emboîtement courante, vous pouvez utiliser 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 .
@@ -8933,6 +8933,12 @@ Liste
 LyX-Code
 \end_layout
 
+\begin_layout Itemize
+
+\family sans
+Verbatim
+\end_layout
+
 \end_deeper
 \begin_layout Description
 Emboîtables
@@ -9757,7 +9763,7 @@ Liste;
  Nous l'avons obtenu avec 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  suivi de 
@@ -9777,7 +9783,11 @@ arg   "depth-increment"
 \family sans
 Entrée
 \family default
-, puis 
+, puis
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "depth-increment"
@@ -9787,10 +9797,14 @@ arg   "depth-increment"
  Nous aurions pu le créer de la même manière que le précédent, avec 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
- suivi de 
+ suivi de
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "depth-increment"
@@ -9818,10 +9832,14 @@ Standard
  Nous l'avons obtenu avec 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
-, puis 
+, puis
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "depth-increment"
@@ -9856,7 +9874,7 @@ Standard
 , également au niveau n°4, obtenu juste avec 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 .
@@ -9868,7 +9886,7 @@ arg   "break-paragraph inverse"
  Nous avons tapé 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  et remis l'environnement de paragraphe à 
@@ -9916,7 +9934,7 @@ pouvons
  Tapez 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  puis 
@@ -9934,7 +9952,7 @@ arg   "depth-decrement"
 4-b Après un autre 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  suivi de 
@@ -10125,7 +10143,7 @@ Voici le niveau n°2.
  Nous avons fait 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  suivi de 
@@ -10162,7 +10180,7 @@ ListePuces
  
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 , puis 
@@ -10183,7 +10201,7 @@ ListePuces
 Voici le niveau n°4, obtenu avec 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 , puis 
@@ -10245,7 +10263,7 @@ pas
 Au fait, vous aurez deviné que nous utilisons 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  pour conserver le même environnement et la même profondeur mais créer un
@@ -10262,7 +10280,7 @@ arg   "depth-decrement"
  pour diminuer la profondeur après le prochain 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 .
@@ -10301,7 +10319,7 @@ toujours
 Après un autre 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  suivi de 
@@ -10326,7 +10344,7 @@ Gauche
 Nous obtenons la même chose avec une autre suite 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 
@@ -10460,7 +10478,7 @@ PooPooPiDoo !
 (
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 )
@@ -10537,7 +10555,7 @@ poisson bleu
 (
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 , 
@@ -10553,14 +10571,18 @@ arg   "depth-increment"
  3 fois, 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 , 
 \family sans
 Vers
 \family default
-, 
+,
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "depth-decrement"
@@ -10630,7 +10652,7 @@ Citation
  Nous utilisons 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  pour préserver la profondeur.
@@ -10732,6 +10754,107 @@ ListePuces
 \family default
 .
  Vous avez une énorme variété d'options à votre disposition.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Separate Nestings
+\lang french
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Emboîtements ! 
+\lang english
+Separation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+It is sometimes necessary to have two consecutive environments of the same
+ type.
+ For example you need two different enumerations:
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Hello
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\lang english
+this is an
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\lang english
+enumeration
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+itemize list
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Hi
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+this is another
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+enumeration
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To tell LyX that there are two lists an not one, set the cursor at the end
+ of the last item and use the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Start New Parent Environment
+\family default
+.
+ This adds an environment separator and a new list behind it.
+ If you use instead the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Start New Environment
+\family default
+ a new list will also be created, but in the same besting level.
 \end_layout
 
 \begin_layout Standard

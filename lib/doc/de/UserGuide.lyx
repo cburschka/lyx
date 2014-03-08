@@ -8484,10 +8484,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Verbatim.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8500,6 +8502,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Verbatim erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8511,7 +8514,7 @@ Umgebungen schachteln
 status collapsed
 
 \begin_layout Plain Layout
-Umgebungen schachteln
+Schachtelung ! Umgebungen
 \end_layout
 
 \end_inset
@@ -8756,75 +8759,39 @@ Nicht
 \begin_inset space ~
 \end_inset
 
-schachtelbar
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-schachtelbar!nicht
-\end_layout
-
-\end_inset
-
- Man kann sie nicht schachteln.
+schachtelbar Man kann sie nicht schachteln.
  Man kann nichts in sie hineinschachteln.
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Itemize
 
 \family sans
-Literaturverzeichnis,
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
 Literaturverzeichnis
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
- Zusammenfassung,
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Zusammenfassung
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
- Titel,
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Titel
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
- Autor,
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Autor
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
- Datum.
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Datum
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -8833,35 +8800,71 @@ Vollständig
 \begin_inset space ~
 \end_inset
 
-schachtelbar
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-schachtelbar!vollstandig@vollständig
-\end_layout
-
-\end_inset
-
- Man kann sie schachteln.
+schachtelbar Man kann sie schachteln.
  Man kann andere Dinge in sie hineinschachteln.
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Itemize
 
 \family sans
-Gedicht, Zitat
+Gedicht
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Zitat
 \begin_inset space ~
 \end_inset
 
-(kurz), Zitat
+(kurz)
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Zitat
 \begin_inset space ~
 \end_inset
 
-(lang), Auflistung, Aufzählung, Beschreibung, Liste, LyX-Code
-\family default
-.
+(lang)
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Auflistung
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Aufzählung
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Beschreibung
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Liste
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+LyX-Code
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Verbatim
 \end_layout
 
 \end_deeper
@@ -8870,183 +8873,113 @@ Teilweise
 \begin_inset space ~
 \end_inset
 
-schachtelbar
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-schachtelbar!teilweise
-\end_layout
-
-\end_inset
-
- Man kann sie in andere Dinge schachteln.
+schachtelbar Man kann sie in andere Dinge schachteln.
  Man kann nichts in sie hineinschachteln.
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Itemize
 
 \family sans
-Standard,
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
 Standard
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
-, Teil
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Teil
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
-, Kapitel,
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Kapitel
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
- Abschnitt,
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Abschnitt
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
- Unterabschnitt,
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Unterabschnitt
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
- Unterunterabschn.,
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Unterunterabschn.
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
- Paragraph,
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Paragraph
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
- Unterparagraph,
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Unterparagraph
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
- Teil*,
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Teil*
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
- Kapitel*,
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Kapitel*
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
- Abschnitt*,
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Abschnitt*
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
- Unterabschnitt*,
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Unterabschnitt*
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
- Unterunterabschn.*,
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Unterunterabschn.*
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
- Adresse
+\family sans
+Adresse
 \begin_inset space ~
 \end_inset
 
-rechts,
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Rechte Adresse
+rechts
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
- Adresse.
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Adresse
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
 \begin_layout Standard
+
+\series bold
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
 
 \series bold
 Anmerkung:
@@ -9069,43 +9002,28 @@ in zum Beispiel Listen zu schachteln, wird dringend davon abgeraten.
  verstoßen dagegen.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
-Andere Dinge schachteln: Tabellen
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Tabellen
-\end_layout
-
-\end_inset
-
-, Mathematik
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Mathematik
-\end_layout
-
-\end_inset
-
-, Gleitobjekte
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Gleitobjekte
-\end_layout
-
-\end_inset
-
- usw.
+Andere Dinge schachteln: Tabellen, Mathematik, Gleitobjekte usw.
 \begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
 Andere Dinge schachteln
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Schachtelung ! Tabellen usw.
 \end_layout
 
 \end_inset
@@ -9741,6 +9659,16 @@ Noch einmal: LyX kümmert sich nicht um die Grenze, sondern LaTeX produziert
 
 \begin_layout Subsection
 Einige Beispiele
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Schachtelung ! Beispiele
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -9753,16 +9681,6 @@ Der beste Weg zu erklären, was Sie mit schachteln erreichen können, sind
 
 \begin_layout Subsubsection
 Beispiel 1: Sechsfache und gemischte Schachtelung
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Schachtelungs!-beispiele
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Labeling
@@ -10046,16 +9964,6 @@ Liste
 
 \begin_layout Subsubsection
 Beispiel 2: Vererbung
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Schachtelungs!-beispiele
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout LyX-Code
@@ -10143,16 +10051,6 @@ Aufzählung
 Auflistung
 \family default
 -Umgebungen
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Schachtelungs!-beispiele
-\end_layout
-
-\end_inset
-
-
 \begin_inset Argument 1
 status collapsed
 
@@ -10441,16 +10339,6 @@ Auflistung
 
 \begin_layout Subsubsection
 Beispiel 4: Übergeschnappt
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Schachtelungs!-beispiele
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -10835,12 +10723,89 @@ Auflistung
  Sie haben jede Menge Möglichkeiten zur Auswahl.
 \end_layout
 
+\begin_layout Subsection
+Schachtelungen trennen
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Schachtelung ! trennen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es ist manchmal notwendig zwei aufeinanderfolgende Umgebungen gleichen Typs
+ zu haben.
+ Zum Beispiel benötigt man zwei verschiedenen Aufzählungen:
+\end_layout
+
+\begin_layout Enumerate
+Hallo
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+dies ist eine
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Aufzählung
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Itemize
+Auflistung
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Enumerate
+Servus
+\end_layout
+
+\begin_layout Enumerate
+dies ist eine andere
+\end_layout
+
+\begin_layout Enumerate
+Aufzählung
+\end_layout
+
+\begin_layout Standard
+Um LyX zu sagen, dass es zwei Listen sind und nicht eine, setzt man den
+ Cursor ans Ende des letzten Listeneintrags und verwendet das Menü 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Neue äußere Umgebung
+\family default
+.
+ Dies fügt einen Umgebungstrenner und dahinter eine neue Liste ein.
+ Verwendet man stattdessen das Menü 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Neue Umgebung
+\family default
+ wird ebenfalls eine neue Liste eingefügt, aber in derselben Schachtelungstiefe.
+\end_layout
+
 \begin_layout Section
 Abstände, Seiten- und Zeilenumbrüche
 \end_layout
 
 \begin_layout Standard
-Was ist ein Abstand? Während es andere Programme erleuben, mehrfach hintereinand
+Was ist ein Abstand? Während es andere Programme erlauben, mehrfach hintereinand
 er Leerzeichen zu verwenden, bietet LyX stattdessen verschiedene Leerräume/Abstä
 nde an: Abstände mit verschiedener Breite und Leerzeichen, die am Zeilenende
  umgebrochen werden können oder davor geschützt sind.

@@ -5527,7 +5527,7 @@ Standard
  depth, you can use 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 .
@@ -8040,12 +8040,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8058,6 +8060,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8337,6 +8340,12 @@ List
 
 \family sans
 LyX-Code
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Verbatim
 \end_layout
 
 \end_deeper
@@ -9103,7 +9112,7 @@ List
  We created it by using 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  followed by 
@@ -9134,7 +9143,7 @@ arg   "depth-increment"
  by entering 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  followed by 
@@ -9165,7 +9174,7 @@ Standard
  We did this by entering 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 , then 
@@ -9203,7 +9212,7 @@ Standard
  paragraph, also at level #4, made with just a 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 .
@@ -9215,7 +9224,7 @@ arg   "break-paragraph inverse"
  We enter 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  and changed the paragraph environment back to 
@@ -9265,7 +9274,7 @@ and this is level #6.
  Just enter 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  followed by a 
@@ -9283,7 +9292,7 @@ arg   "depth-decrement"
 #4-b After another 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  followed by a 
@@ -9458,7 +9467,7 @@ This is level #2.
  We used 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  followed by 
@@ -9492,7 +9501,7 @@ Itemize
  (We got here by using 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 , then 
@@ -9513,7 +9522,7 @@ Itemize
 Here's level #4, produced using 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 , then 
@@ -9576,7 +9585,7 @@ don't
 Oh, as if you couldn't guess by now, we're just using 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  to keep the current environment and depth but create a new item.
@@ -9592,7 +9601,7 @@ arg   "depth-decrement"
  to decrease the depth after the next 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 .
@@ -9633,7 +9642,7 @@ did
 Another 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  
@@ -9656,7 +9665,7 @@ Enumerate
 The same thing happens if we do another 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  
@@ -9787,7 +9796,7 @@ Bippitey boppitey boo!
 (
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 
@@ -9902,7 +9911,7 @@ blue-fish
 (
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 
@@ -9918,12 +9927,16 @@ arg   "depth-increment"
  3 times, 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 
 \family sans
-, Verse, 
+, Verse,
+\begin_inset Newline newline
+\end_inset
+
+
 \family default
 
 \begin_inset Info
@@ -9994,7 +10007,7 @@ Quotation
  We will use 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
  to preserve the depth.
@@ -10102,6 +10115,83 @@ Itemize
 \family default
  list.
  You have a huge variety of options at your disposal.
+\end_layout
+
+\begin_layout Subsection
+Separate Nestings
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Nesting ! Separation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is sometimes necessary to have two consecutive environments of the same
+ type.
+ For example you need two different enumerations:
+\end_layout
+
+\begin_layout Enumerate
+Hello
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+this is an
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+enumeration
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Itemize
+itemize list
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Enumerate
+Hi
+\end_layout
+
+\begin_layout Enumerate
+this is another
+\end_layout
+
+\begin_layout Enumerate
+enumeration
+\end_layout
+
+\begin_layout Standard
+To tell LyX that there are two lists an not one, set the cursor at the end
+ of the last item and use the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Start New Parent Environment
+\family default
+.
+ This adds an environment separator and a new list behind it.
+ If you use instead the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Start New Environment
+\family default
+ a new list will also be created, but in the same besting level.
 \end_layout
 
 \begin_layout Section
@@ -32053,7 +32143,7 @@ Next
  button at the bottom of the dialog (or just press the 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph"
+arg   "paragraph-break"
 \end_inset
 
  key).
@@ -32062,7 +32152,7 @@ arg   "break-paragraph"
  Pressing 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph"
+arg   "paragraph-break"
 \end_inset
 
  repeatedly keeps searching forward while pressing 
@@ -32195,7 +32285,7 @@ Replace
  button or alternatively press 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph"
+arg   "paragraph-break"
 \end_inset
 
  or 

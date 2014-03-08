@@ -4736,7 +4736,7 @@ Return
 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 
@@ -7284,6 +7284,13 @@ LyXは、入れ子の階層を変えることが有効な場合にしか、変�
 LyXコード
 \end_layout
 
+\begin_layout Itemize
+
+\family sans
+\lang english
+Verbatim
+\end_layout
+
 \end_deeper
 \begin_layout Description
 他の環境に入れるもの 他の環境には入れるが、他の環境を入れることができないもの。
@@ -7897,7 +7904,7 @@ arg   "depth-increment"
 を2回続けて押しました。前の階層で行ったように、
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 を押してから
@@ -7918,7 +7925,7 @@ arg   "depth-increment"
 環境です。つまり第4階層になります。私たちはこれを作るのに、
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 を押してから
@@ -7954,7 +7961,7 @@ arg   "depth-increment"
 環境です。
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 を押して作りました。
@@ -7965,7 +7972,7 @@ arg   "break-paragraph inverse"
 #4-a ここは第4階層です。
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 を押してから、段落環境を
@@ -8004,7 +8011,7 @@ arg   "break-paragraph inverse"
 #5-b 第5階層に戻りました。
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 を押した後に
@@ -8022,7 +8029,7 @@ arg   "depth-decrement"
 #4-b もう一度
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 を押した後に
@@ -8178,7 +8185,7 @@ status collapsed
 ここは第2階層です。
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 の後に
@@ -8207,7 +8214,7 @@ arg   "depth-increment"
 環境なので、ラベルが黒丸になるのです(ここに来るには、
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 の後に
@@ -8228,7 +8235,7 @@ arg   "depth-increment"
 ここは第4階層です。
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 の後に
@@ -8281,7 +8288,7 @@ arg   "depth-increment"
 おっと、その前に
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 だけを押して現在の環境と階層を維持しながら新しい項目を作ってみましょう。
@@ -8291,7 +8298,7 @@ arg   "break-paragraph inverse"
 次に
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 と押してから
@@ -8333,7 +8340,7 @@ arg   "depth-increment"
 もう一度
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 と
@@ -8354,7 +8361,7 @@ arg   "depth-decrement"
 もう一度
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 と
@@ -8497,7 +8504,7 @@ arg   "depth-increment"
 (
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 )
@@ -8574,7 +8581,7 @@ arg   "break-paragraph inverse"
 (
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 、
@@ -8590,7 +8597,7 @@ arg   "depth-increment"
 を3回、
 \begin_inset Info
 type  "shortcut"
-arg   "depth-increment"
+arg   "paragraph-break inverse"
 \end_inset
 
 、
@@ -8652,7 +8659,7 @@ Return
 環境を使います。階層を保持するためには
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 を使うことにします。
@@ -8758,6 +8765,107 @@ status collapsed
 引用(字下げなし)
 \family default
 を入れることも簡単にできます。膨大な選択肢を自由にお使いいただけるのです。
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Separate Nestings
+\lang japanese
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Nesting ! Separation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+It is sometimes necessary to have two consecutive environments of the same
+ type.
+ For example you need two different enumerations:
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Hello
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\lang english
+this is an
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\lang english
+enumeration
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+itemize list
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Hi
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+this is another
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+enumeration
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To tell LyX that there are two lists an not one, set the cursor at the end
+ of the last item and use the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Start New Parent Environment
+\family default
+.
+ This adds an environment separator and a new list behind it.
+ If you use instead the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Start New Environment
+\family default
+ a new list will also be created, but in the same besting level.
 \end_layout
 
 \begin_layout Section

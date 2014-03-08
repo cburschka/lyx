@@ -8643,6 +8643,12 @@ Lista
 Código-LyX
 \end_layout
 
+\begin_layout Itemize
+
+\family sans
+Verbatim
+\end_layout
+
 \end_deeper
 \begin_layout Description
 Parcialmente
@@ -9742,7 +9748,11 @@ Este es el nivel #2.
 \family sans
 Alt+Entrar
 \family default
- seguido de 
+ seguido de
+\begin_inset Newline newline
+\end_inset
+
+
 \family sans
 Mayúsculas+Alt+Derecha
 \family default
@@ -10408,6 +10418,110 @@ Enumeración*
 \family default
 .
  Tienes a tu disposición una amplia variedad de opciones.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Separate Nestings
+\lang spanish
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Anidación
+\noun on
+ ! 
+\noun default
+\lang english
+Separation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+It is sometimes necessary to have two consecutive environments of the same
+ type.
+ For example you need two different enumerations:
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Hello
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\lang english
+this is an
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\lang english
+enumeration
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+itemize list
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Hi
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+this is another
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+enumeration
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+To tell LyX that there are two lists an not one, set the cursor at the end
+ of the last item and use the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Start New Parent Environment
+\family default
+.
+ This adds an environment separator and a new list behind it.
+ If you use instead the menu 
+\family sans
+Edit\SpecialChar \menuseparator
+Start New Environment
+\family default
+ a new list will also be created, but in the same besting level.
 \end_layout
 
 \begin_layout Section
