@@ -38,6 +38,8 @@ file(MAKE_DIRECTORY "${LYX_TESTS_USERDIR}")
 if(COMMAND cmake_policy)
 	cmake_policy(SET CMP0003 OLD)
 	cmake_policy(SET CMP0005 OLD)
+	# Installing MACOSX_BUNDLE targets requires a BUNDLE DESTINATION
+	cmake_policy(SET CMP0006 NEW)
 endif()
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
@@ -297,41 +299,66 @@ else()
 	set(LYX_REVISION_VERSION ${LYX_PATCH_VERSION})
 endif()
 
-if(LYX_PROGRAM_SUFFIX)
-	set(PROGRAM_SUFFIX "${LYX_INSTALL_SUFFIX}")
-else()
+# Set the programs (lyx, tex2lyx, etc.) suffix 
+# When building an OS X bundle, we will append
+# the suffix only to the bundle, not to the programs
 	set(PROGRAM_SUFFIX "")
+if(LYX_PROGRAM_SUFFIX AND NOT (APPLE AND LYX_BUNDLE))
+	set(PROGRAM_SUFFIX "${LYX_INSTALL_SUFFIX}")
 endif()
+set(_lyx "${PACKAGE_BASE}${PROGRAM_SUFFIX}")
+set(_tex2lyx tex2lyx${PROGRAM_SUFFIX})
 
 add_custom_target(lyx_version ALL
   COMMAND ${CMAKE_COMMAND} -DTOP_SRC_DIR=${TOP_SRC_DIR} -DTOP_CMAKE_PATH=${TOP_CMAKE_PATH} -DTOP_BINARY_DIR=${TOP_BINARY_DIR} -DLYX_DATE=${LYX_DATE} -P ${TOP_SCRIPT_PATH}/LyXGetVersion.cmake
   )
 set_target_properties(lyx_version PROPERTIES FOLDER "applications")
 
-if(APPLE)
-	set(osx_bundle_program_name ${PACKAGE_BASE}${PROGRAM_SUFFIX})
-	configure_file("${CMAKE_CURRENT_SOURCE_DIR}/development/MacOSX/Info.plist.in" "${CMAKE_CURRENT_BINARY_DIR}/Info.plist")
-endif()
+# Default paths for installed utilities (tex2lyx, lyxclient, etc.)
+set(LYX_UTILITIES_INSTALL_PATH bin)
 
 if(LYX_BUNDLE)
 	set(LYX_CPACK ON)
+
 	message(STATUS)
 	message(STATUS "Bundle creation is enabled (experimental):")
 	message(STATUS "    make")
 	message(STATUS "    make install/strip")
 	message(STATUS "    make package")
 	if(APPLE)
+		set(MACOSX_BUNDLE TRUE)
+		# This sets the bundle + executable names
+		set(_lyx "${PACKAGE_BASE}${LYX_INSTALL_SUFFIX}")
+		# This sets the Info.plist executable name
+		set(osx_bundle_program_name ${_lyx})
+		# Bundle name
+		set(LYX_BUNDLE_NAME ${_lyx})
+
+		# This will contain the list of files that need to be included
+		# in the bundle and their location within the bundle
+		set(OSX_BUNDLE_FILES "${TOP_SRC_DIR}/development/MacOSX/LyX.sdef;${TOP_SRC_DIR}/development/MacOSX/LyXapp.icns;${CMAKE_BINARY_DIR}/lyxrc.dist")
+		set(OSX_BUNDLE_DIRS "Resources;Resources;Resources")
+
+		# Process Info.plist and lyxrc.dist
+		configure_file("${CMAKE_CURRENT_SOURCE_DIR}/development/MacOSX/Info.plist.in" "${CMAKE_CURRENT_BINARY_DIR}/Info.plist")
+		configure_file("${CMAKE_CURRENT_SOURCE_DIR}/development/MacOSX/lyxrc.dist.in" "${CMAKE_CURRENT_BINARY_DIR}/lyxrc.dist")
+
 		set(LYX_BUILD_BUNDLE MACOSX_BUNDLE)
-		set(CPACK_BUNDLE_NAME ${PACKAGE_BASE}${PROGRAM_SUFFIX})
+		set(LYX_DATA_SUBDIR ${LYX_BUNDLE_NAME}.app/Contents/Resources/ CACHE STRING "Bundle Contents dir" FORCE)
+
+		# Variables used by CPack
+		set(CPACK_BUNDLE_NAME ${LYX_BUNDLE_NAME})
 		set(CPACK_BUNDLE_PLIST "${CMAKE_CURRENT_BINARY_DIR}/Info.plist")
-		set(LYX_DATA_SUBDIR ${PACKAGE_BASE}${PROGRAM_SUFFIX}.app/Contents/Resources/ CACHE STRING "Bundle Contents dir" FORCE)
-		set(MACOSX_BUNDLE_STARTUP_COMMAND ${PACKAGE_BASE}${PROGRAM_SUFFIX}.app)
+		set(MACOSX_BUNDLE_STARTUP_COMMAND ${LYX_BUNDLE_NAME}.app)
+
+		# Set the install paths
+		set(LYX_UTILITIES_INSTALL_PATH ${LYX_BUNDLE_NAME}.app/Contents/MacOS)
 		if(NOT LYX_INSTALL_PREFIX)
 			set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/LyX CACHE PATH "Mac bundle dir" FORCE)
 			set(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 		endif()
 		# Change the owner so that the install can work
-		install(CODE "set(BU_CHMOD_BUNDLE_ITEMS 1)")
+		install(CODE "set(BU_CHMOD_BUNDLE_ITEMS 1)" COMPONENT Runtime)
 	elseif(UNIX)
 		message(STATUS "To embed Qt in this bundle don't build with your system Qt:")
 		message(STATUS "  - fix PATH so a other qmake is found by cmake")
@@ -390,8 +417,11 @@ set(LYX_LOCALEDIR "locale")
 set(LYX_ABS_INSTALLED_LOCALEDIR "${LYX_ABS_INSTALLED_DATADIR}/${LYX_DATA_SUBDIR}${LYX_LOCALEDIR}")
 set(LYX_ABS_TOP_SRCDIR "${TOP_SRC_DIR}")
 
-set(LYX_MAN_DIR "/usr/local/man" CACHE STRING
-  "Install location for man pages.")
+if(LYX_BUNDLE AND APPLE)
+	set(LYX_MAN_DIR "${LYX_DATA_SUBDIR}" CACHE STRING "Install location for man pages.")
+else()
+	set(LYX_MAN_DIR "/usr/local/man/man1" CACHE STRING "Install location for man pages.")
+endif()
 mark_as_advanced(LYX_MAN_DIR)
 
 if(LYX_INSTALL AND WIN32)
@@ -738,8 +768,6 @@ if(QTVERSION MATCHES "^([0-9]+)\\.([0-9]+)\\.([0-9]+).*")
 	MATH(EXPR QT4_VERSION "(${CMAKE_MATCH_1}<<16)|(${CMAKE_MATCH_2}<<8)|${CMAKE_MATCH_3}")
 endif()
 
-set(_lyx "${PACKAGE_BASE}${PROGRAM_SUFFIX}")
-set(_tex2lyx tex2lyx${PROGRAM_SUFFIX})
 
 set (cmd ${CMAKE_CTEST_COMMAND})
 if (MSVC)
@@ -751,12 +779,6 @@ add_custom_target (lyx_run_tests COMMAND ${cmd})
 set_target_properties(lyx_run_tests PROPERTIES FOLDER "tests")
 
 
-add_subdirectory(src "${TOP_BINARY_DIR}/src")
-add_subdirectory(lib/lyx2lyx "${TOP_BINARY_DIR}/lyx2lyx")
-add_subdirectory(lib/scripts "${TOP_BINARY_DIR}/scripts")
-add_subdirectory(lib/examples "${TOP_BINARY_DIR}/lib/examples")
-
-
 if(LYX_INSTALL)
 	if(${LYX_PYTHON_EXECUTABLE} MATCHES "-NOTFOUND")
 		message(STATUS "Python required to create doc!")
@@ -764,11 +786,13 @@ if(LYX_INSTALL)
 		add_subdirectory(${LYX_CMAKE_DIR}/man "${TOP_BINARY_DIR}/man")
 		add_subdirectory(${LYX_CMAKE_DIR}/doc "${TOP_BINARY_DIR}/doc")
 	endif()
-	if(NOT(LYX_BUNDLE AND APPLE))
 		include(../Install)
 	endif()
-endif()
 
+add_subdirectory(src "${TOP_BINARY_DIR}/src")
+add_subdirectory(lib/lyx2lyx "${TOP_BINARY_DIR}/lyx2lyx")
+add_subdirectory(lib/scripts "${TOP_BINARY_DIR}/scripts")
+add_subdirectory(lib/examples "${TOP_BINARY_DIR}/lib/examples")
 add_subdirectory(sourcedoc "${TOP_BINARY_DIR}/sourcedoc")
 add_subdirectory(development/autotests "${TOP_BINARY_DIR}/autotests")
 if(LYX_ENABLE_URLTESTS)
@@ -812,5 +836,9 @@ if(ENABLE_DIST)
     WORKING_DIRECTORY ${TOP_SRC_DIR})
   add_custom_target(git-archive DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${DIST_NAME})
 endif()
+
+# Last directory to be included so that the fixup code (OS X)
+# can be run last
+add_subdirectory(development/cmake/post_install)
 
 message(STATUS)

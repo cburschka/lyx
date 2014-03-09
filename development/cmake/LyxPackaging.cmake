@@ -6,6 +6,8 @@
 if(LYX_BUNDLE)
 	if(APPLE)
 		set(CPACK_GENERATOR DragNDrop)
+		set(CPACK_DMG_BACKGROUND_IMAGE "${TOP_CMAKE_PATH}/../MacOSX/dmg-background.png")
+		set(CPACK_DMG_DS_STORE "${CMAKE_BINARY_DIR}/ds_store/.DS_Store")
 	elseif(UNIX)
 		set(CPACK_GENERATOR STGZ)
 	elseif(WIN32)
@@ -32,7 +34,10 @@ FILE(STRINGS "${TOP_CMAKE_PATH}/LyX_summary.txt" CPACK_PACKAGE_DESCRIPTION_SUMMA
 
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${LYX_INSTALL_SUFFIX}")
 
-if (NOT WIN32)
+if (APPLE)
+	# We don't need absolute paths
+	set(CPACK_SET_DESTDIR "OFF")
+elseif (NOT WIN32)
 	# needed by rpm
 	set(CPACK_SET_DESTDIR "ON")
 endif()
@@ -54,7 +59,7 @@ set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
 #
 # for the next ones, cpack insists on data with values in some file
 set(CPACK_PACKAGE_DESCRIPTION_FILE "${TOP_CMAKE_PATH}/LyX_description.txt")
-set(CPACK_RESOURCE_FILE_LICENSE "${TOP_CMAKE_PATH}/LyX_license.txt")
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/COPYING")
 
 # Use the revision number saved in ${LYX_PACKAGE_RELEASE}
 # as the release in rpm-package-build.

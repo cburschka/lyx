@@ -40,12 +40,5 @@ if(APPLE)
 	target_link_libraries(${_lyxclient} "-framework AppKit")
 endif()
 
-if(LYX_BUNDLE)
-	install(TARGETS ${_lyxclient}
-		RUNTIME DESTINATION bin
-		BUNDLE DESTINATION .)
-else()
-	install(TARGETS ${_lyxclient} DESTINATION bin)
-endif()
-
+install(TARGETS ${_lyxclient} DESTINATION ${LYX_UTILITIES_INSTALL_PATH})
 

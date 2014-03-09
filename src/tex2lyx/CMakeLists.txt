@@ -65,11 +65,5 @@ project_source_group("${GROUP_CODE}" tex2lyx_sources tex2lyx_headers)
 
 add_subdirectory(test)
 
-if(LYX_BUNDLE)
-	install(TARGETS ${_tex2lyx}
-		RUNTIME DESTINATION bin
-		BUNDLE DESTINATION .)
-else()
-	install(TARGETS ${_tex2lyx} DESTINATION bin)
-endif()
+install(TARGETS ${_tex2lyx} DESTINATION ${LYX_UTILITIES_INSTALL_PATH})
 

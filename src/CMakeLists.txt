@@ -107,10 +107,6 @@ lyx_find_info_files(LyXCMakeFiles ${TOP_MODULE_PATH}/*)
 lyx_find_info_files(LyXCMakeFiles ${TOP_SCRIPT_PATH}/*)
 lyx_find_info_files(LyXUiFiles ${TOP_SRC_DIR}/lib/ui/*)
 
-if (APPLE AND LYX_BUNDLE)
-        include(../Install)
-endif()
-
 add_executable(${_lyx}
 	${WIN32_CONSOLE}
 	${LYX_BUILD_BUNDLE}
@@ -170,22 +166,26 @@ endif()
 
 project_source_group("${GROUP_CODE}" lyx_sources lyx_headers)
 
-
-install(TARGETS ${_lyx}
-	RUNTIME DESTINATION bin
-	BUNDLE DESTINATION .)
+install(TARGETS ${_lyx} 
+    BUNDLE DESTINATION . COMPONENT Runtime
+    RUNTIME DESTINATION bin COMPONENT Runtime)
 
 if(LYX_BUNDLE)
-	if(NOT APPLE)
-		set(installed_lyx ${CMAKE_INSTALL_PREFIX}/bin/${_lyx}${CMAKE_EXECUTABLE_SUFFIX})
-	else()
+	if(APPLE)
+		# Now that lyx executable is defined, we can the files that should be included
+		# directly in the bundle. Note that resources are not copied with this mechanism:
+		# only the files necessary to run the executable are processed here (LyX.sdef, LyX.icns, etc.)
+		list(LENGTH OSX_BUNDLE_FILES OSX_BUNDLE_LAST_INDEX)
+		math(EXPR OSX_BUNDLE_LAST_INDEX "${OSX_BUNDLE_LAST_INDEX} - 1")
+		foreach(_i RANGE ${OSX_BUNDLE_LAST_INDEX})
+		    list(GET OSX_BUNDLE_FILES ${_i} _file)
+		    list(GET OSX_BUNDLE_DIRS ${_i} _directory)
+		    # Sets the location of the file into the OS X bundle
+			set_source_files_properties("${_file}" PROPERTIES MACOSX_PACKAGE_LOCATION "${_directory}")
+		endforeach()
+
 		set_target_properties(${_lyx} PROPERTIES MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_BINARY_DIR}/../Info.plist")
-		set(installed_lyx ${CMAKE_INSTALL_PREFIX}/${_lyx}.app)
-		set(LYX_BUNDLE_PROPERTY_MODE "ON")
-		include("../Install")
 	endif()
-	install(CODE "include(BundleUtilities)
-			fixup_bundle(\"${installed_lyx}\" \"\" \"\") " COMPONENT RUNTIME)
 endif()
 
 add_subdirectory(tests)
