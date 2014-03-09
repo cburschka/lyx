@@ -10,7 +10,7 @@ nodist_bundle_DATA = Info.plist
 
 dist_bin_SCRIPTS = lyxeditor
 
-dist_pkgdata_DATA = COPYING LyXapp.icns LyX.icns LyX.sdef
+dist_pkgdata_DATA = COPYING LyXapp.icns LyX.icns LyX.sdef dmg-background.png
 nodist_pkgdata_DATA = lyxrc.dist
 
 
