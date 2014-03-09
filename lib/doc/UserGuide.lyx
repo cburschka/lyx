@@ -15510,6 +15510,24 @@ PDF
 \begin_inset space ~
 \end_inset
 
+(cropped) This is the same as 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+ but the result is a PDF with cropped page margins.
+ This is for example useful if you want to use LyX to generate good-looking
+ formulas to use them in other programs like for presentations.
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
 (dvipdfm) This uses the program 
 \family typewriter
 dvipdfm
@@ -34485,6 +34503,18 @@ Note:
 \end_layout
 
 \begin_layout Description
+EPS
+\begin_inset space ~
+\end_inset
+
+(cropped) the same as 
+\family sans
+PostScript
+\family default
+ but with cropped page margins.
+\end_layout
+
+\begin_layout Description
 Graphviz
 \begin_inset space ~
 \end_inset
@@ -34719,13 +34749,35 @@ yX
 \begin_inset space ~
 \end_inset
 
-Archive
+z.y.x LyX-Document in a format readable by the LyX versions z.y.x (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+"LyX
 \begin_inset space ~
 \end_inset
 
-(zip|tar.gz) creates a zip-archive or a tar.gz-archive file (depending upon
- your system) that contains your document and all files that are necessary
- to compile it (images, child documents, BibTeX files, etc.)
+2.1.x"; 
+\begin_inset Quotes eld
+\end_inset
+
+z
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+y
+\begin_inset Quotes erd
+\end_inset
+
+ represent the version number)
 \end_layout
 
 \begin_layout Description
@@ -34748,23 +34800,13 @@ yX
 \begin_inset space ~
 \end_inset
 
-z.y.x LyX-Document in a format readable by the LyX versions z.y.x (
-\begin_inset Quotes eld
+Archive
+\begin_inset space ~
 \end_inset
 
-z
-\begin_inset Quotes erd
-\end_inset
-
- and 
-\begin_inset Quotes eld
-\end_inset
-
-y
-\begin_inset Quotes erd
-\end_inset
-
- represent the version number)
+(zip|tar.gz) creates a zip-archive or a tar.gz-archive file (depending upon
+ your system) that contains your document and all files that are necessary
+ to compile it (images, child documents, BibTeX files, etc.)
 \end_layout
 
 \begin_layout Description
@@ -34800,6 +34842,22 @@ LibreOffice, OpenOffice, KOffice, Abiword
 , etc.
  (The OpenDocument-converter is a third-party product and may not work in
  all cases)
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(cropped) the same as 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+ but with cropped page margins.
 \end_layout
 
 \begin_layout Description

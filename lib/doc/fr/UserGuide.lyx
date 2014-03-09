@@ -8499,12 +8499,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8517,6 +8519,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -16532,6 +16535,26 @@ reference "sub:LaTeX-font-support"
 
 ).
  Il est particulièrement adapté à la typographie de différentes écritures;
+\end_layout
+
+\begin_layout Description
+
+\lang english
+PDF
+\begin_inset space ~
+\end_inset
+
+(cropped) This is the same as 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+ but the result is a PDF with cropped page margins.
+ This is for example useful if you want to use LyX to generate good-looking
+ formulas to use them in other programs like for presentations;
 \end_layout
 
 \begin_layout Description
@@ -36082,6 +36105,20 @@ ent.
 \end_layout
 
 \begin_layout Description
+
+\lang english
+EPS
+\begin_inset space ~
+\end_inset
+
+(cropped) the same as 
+\family sans
+PostScript
+\family default
+ but with cropped page margins.
+\end_layout
+
+\begin_layout Description
 Graphviz
 \begin_inset space ~
 \end_inset
@@ -36373,6 +36410,24 @@ Abiword
 , etc.
  (le convertisseur OpenDocument est une application indépendante de LyX
  qui peut ne pas fonctionner dans tous les cas);
+\end_layout
+
+\begin_layout Description
+
+\lang english
+PDF
+\begin_inset space ~
+\end_inset
+
+(cropped) the same as 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+ but with cropped page margins;
 \end_layout
 
 \begin_layout Description

@@ -8479,10 +8479,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Verbatim.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8495,6 +8497,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Verbatim erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -16199,6 +16202,34 @@ reference "sub:LaTeX-Schriftunterstützung"
 ).
  Er ist besonders geeignet für die Verwendung verschiedener Schriftsysteme
  (Arabisch, Lateinisch, Japanisch, usw.).
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(beschnitten) Dies ist dasselbe wie 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+ aber das Ergebnis ist ein PDF mit beschnittenen Seitenrändern.
+ Das ist z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ nützlich wenn man LyX dazu benutzt, um gutaussehende Formeln zu erstellen,
+ die man in anderen Programmen z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ für Präsentationen verwenden kann.
 \end_layout
 
 \begin_layout Description
@@ -35042,6 +35073,18 @@ Achtung:
 \end_layout
 
 \begin_layout Description
+EPS
+\begin_inset space ~
+\end_inset
+
+(beschnitten) wie 
+\family sans
+PostScript
+\family default
+ aber mit beschnittenen Seitenrändern.
+\end_layout
+
+\begin_layout Description
 Graphviz
 \begin_inset space ~
 \end_inset
@@ -35325,6 +35368,22 @@ Abiword
 zu öffnen.
  (Der OpenDocument-Konverter ist kein Bestandteil von LyX und funktioniert
  eventuell nicht in allen Fällen.)
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(beschnitten) wie 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+ aber mit beschnittenen Seitenrändern.
 \end_layout
 
 \begin_layout Description
