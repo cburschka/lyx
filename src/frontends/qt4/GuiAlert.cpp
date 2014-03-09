@@ -161,6 +161,11 @@ void doWarning(docstring const & title0, docstring const & message,
 		return;
 	}
 
+	/// Long operation in progress prevents user from Ok-ing the error dialog
+	bool long_op = theApp()->longOperationStarted();
+	if (long_op)
+		theApp()->stopLongOperation();
+
 	// Don't use a hourglass cursor while displaying the alert
 	qApp->setOverrideCursor(Qt::ArrowCursor);
 
@@ -176,6 +181,9 @@ void doWarning(docstring const & title0, docstring const & message,
 	}
 
 	qApp->restoreOverrideCursor();
+
+	if (long_op)
+		theApp()->startLongOperation();
 }
 
 void warning(docstring const & title0, docstring const & message,
@@ -250,6 +258,11 @@ void doInformation(docstring const & title0, docstring const & message)
 		return;
 	}
 
+	/// Long operation in progress prevents user from Ok-ing the error dialog
+	bool long_op = theApp()->longOperationStarted();
+	if (long_op)
+		theApp()->stopLongOperation();
+
 	// Don't use a hourglass cursor while displaying the alert
 	qApp->setOverrideCursor(Qt::ArrowCursor);
 
@@ -258,6 +271,9 @@ void doInformation(docstring const & title0, docstring const & message)
 		toqstr(message));
 
 	qApp->restoreOverrideCursor();
+
+	if (long_op)
+		theApp()->startLongOperation();
 }
 
 void information(docstring const & title0, docstring const & message)
@@ -286,12 +302,20 @@ bool doAskForText(docstring & response, docstring const & msg,
 
 	docstring const title = bformat(_("LyX: %1$s"), msg);
 
+	/// Long operation in progress prevents user from Ok-ing the error dialog
+	bool long_op = theApp()->longOperationStarted();
+	if (long_op)
+		theApp()->stopLongOperation();
+
 	bool ok;
 	QString text = QInputDialog::getText(qApp->focusWidget(),
 		toqstr(title),
 		toqstr(char_type('&') + msg),
 		QLineEdit::Normal,
 		toqstr(dflt), &ok);
+
+	if (long_op)
+		theApp()->startLongOperation();
 
 	if (ok) {
 		response = qstring_to_ucs4(text);
