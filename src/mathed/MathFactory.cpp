@@ -118,7 +118,7 @@ bool canBeDisplayed(char_type c)
 }
 
 
-bool isUnicodeSymbolAvailable(docstring const & name, char_type & c)
+bool isUnicodeSymbolAvailable(docstring const & /*name*/, char_type & /*c*/)
 {
 	// this is too fragile, e.g. prodes W instead of capital omega on OS X
 #if 0
