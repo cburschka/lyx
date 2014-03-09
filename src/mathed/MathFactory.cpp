@@ -135,6 +135,8 @@ bool isUnicodeSymbolAvailable(docstring const & name, char_type & c)
 		                                is_combining, termination);
 	}
 	return c != 0 && !is_combining;
+#else
+	return false;
 #endif
 }
 
