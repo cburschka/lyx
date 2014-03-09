@@ -302,7 +302,7 @@ endif()
 # Set the programs (lyx, tex2lyx, etc.) suffix 
 # When building an OS X bundle, we will append
 # the suffix only to the bundle, not to the programs
-	set(PROGRAM_SUFFIX "")
+set(PROGRAM_SUFFIX "")
 if(LYX_PROGRAM_SUFFIX AND NOT (APPLE AND LYX_BUNDLE))
 	set(PROGRAM_SUFFIX "${LYX_INSTALL_SUFFIX}")
 endif()
@@ -541,7 +541,7 @@ endif()
 include_directories(${TOP_BINARY_DIR} ${TOP_SRC_DIR}/src)
 
 if(LYX_ASPELL)
-	find_package(ASPELL)
+	find_package(ASPELL REQUIRED)
 	include_directories(${ASPELL_INCLUDE_DIR})
 endif()
 
@@ -786,8 +786,8 @@ if(LYX_INSTALL)
 		add_subdirectory(${LYX_CMAKE_DIR}/man "${TOP_BINARY_DIR}/man")
 		add_subdirectory(${LYX_CMAKE_DIR}/doc "${TOP_BINARY_DIR}/doc")
 	endif()
-		include(../Install)
-	endif()
+	include(../Install)
+endif()
 
 add_subdirectory(src "${TOP_BINARY_DIR}/src")
 add_subdirectory(lib/lyx2lyx "${TOP_BINARY_DIR}/lyx2lyx")
