@@ -1307,6 +1307,14 @@ contributors = [
                  "24 December 2007",
                  u"Russian translation of the user interface"),
 
+     contributor(u'Dal Ho Park',
+                 "airdalho () gmail ! com",
+                 "GPL",
+                 "splash.lyx translation (Korean)",
+                 "m=139436383128181",
+                 "9 March 2014",
+                 u"Korean translation"),
+
      contributor(u'Bo Peng',
                  "ben.bob () gmail ! com",
                  "GPL",
