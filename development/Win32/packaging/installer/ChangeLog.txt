@@ -1,6 +1,10 @@
 ﻿Changelog for LyX-207-3:
 - fix serious bug that LyX could directly be installed to c:\programs
   the uninstaller would then delete the whole c:\programs folder
+- install a stripped-down version of Perl to be able to use LyX's feature
+  to have several indexe also when LyX is installed without admin privileges
+- updated to Qt 4.8.5
+- updated to Perl 5.18
 
 
 Changelog for LyX-207-2:
