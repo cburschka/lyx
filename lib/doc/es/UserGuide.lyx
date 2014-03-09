@@ -8320,13 +8320,6 @@ contain hyperlinks, boxes, foot- and margin notes, notes, math, citations,
  and TeX-Code
 \end_layout
 
-\begin_layout Itemize
-
-\lang english
-contain the following characters (you will get LaTeX errors): µ ; ´ ; ³
- ; ²
-\end_layout
-
 \begin_layout Standard
 
 \lang english
@@ -8339,14 +8332,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8359,7 +8350,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
