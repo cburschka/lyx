@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-03-09 10:36+0100\n"
-"PO-Revision-Date: 2014-02-26 08:42+0100\n"
+"PO-Revision-Date: 2014-03-09 10:43+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitzmueller@ds.uzh.ch>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -1013,12 +1013,11 @@ msgstr "Der Bereich, auf den die Suche sich erstreckt"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:206
 msgid "Scope"
-msgstr ""
+msgstr "Bereich"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:218
-#, fuzzy
 msgid "C&urrent document"
-msgstr "Aktuelles &Dokument"
+msgstr "Aktuelles Dok&ument"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:237
 msgid ""
@@ -1028,7 +1027,7 @@ msgstr "Alle Dokumente, die zum selben Hauptdokument wie das aktuelle gehören"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:240
 msgid "&Master document"
-msgstr "&Hauptdokument"
+msgstr "Hau&ptdokument"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:250
 msgid "All open documents"
@@ -1039,9 +1038,8 @@ msgid "&Open documents"
 msgstr "&Geöffnete Dokumente"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:263
-#, fuzzy
 msgid "&All manuals"
-msgstr "Alle LyX-Handb&ücher"
+msgstr "&Alle LyX-Handbücher"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:281
 msgid ""
@@ -1052,7 +1050,6 @@ msgstr ""
 "die den ausgewählten Text- und Absatzstil verwenden."
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:284
-#, fuzzy
 msgid "I&gnore format"
 msgstr "Ignoriere For&mat"
 
@@ -1073,7 +1070,6 @@ msgid "&Expand macros"
 msgstr "&Makros ausklappen"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:314
-#, fuzzy
 msgid "Search on&ly in maths"
 msgstr "Nur im Ma&the-Umfeld"
 
@@ -24653,7 +24649,7 @@ msgstr ""
 
 #: src/Text.cpp:1013
 msgid "Character is uncodable in verbatim paragraphs."
-msgstr ""
+msgstr "Das Zeichen ist in unformatierten Absätzen nicht kodierbar."
 
 #: src/Text.cpp:1850
 msgid "[Change Tracking] "
