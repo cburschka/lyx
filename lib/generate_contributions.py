@@ -315,14 +315,6 @@ def main(argv, contributors):
 # Store the raw data.
 contributors = [
 
-     contributor(u"Ramanathan Vishnampet",
-                 "rvishnampet () gmail ! com",
-                 "GPL",
-                 "Re: [Patch] -fobjc-exceptions for compiling linkback sources with g++ on Mac",
-                 "",
-                 "17 February 2014",
-                 u"Support for g++ on 4.8 Mac"),
-
      contributor(u"Ronen Abravanel",
                  "ronena () gmail ! com",
                  "GPL",
@@ -1818,6 +1810,14 @@ contributors = [
                  "m=110918662408397",
                  "23 February 2005",
                  u"Finnish localization of the interface"),
+
+     contributor(u"Ramanathan Vishnampet",
+                 "rvishnampet () gmail ! com",
+                 "GPL",
+                 "Re: [Patch] -fobjc-exceptions for compiling linkback sources with g++ on Mac",
+                 "",
+                 "17 February 2014",
+                 u"Support for g++ on 4.8 Mac"),
 
      contributor(u"Herbert Voß",
                  "herbert.voss () alumni ! tu-berlin ! de",
