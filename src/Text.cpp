@@ -30,6 +30,7 @@
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "DispatchResult.h"
+#include "Encoding.h"
 #include "ErrorList.h"
 #include "FuncRequest.h"
 #include "factory.h"
@@ -1000,6 +1001,16 @@ void Text::insertChar(Cursor & cur, char_type c)
 			cur.message(_(
 					"You cannot type two spaces this way. "
 					"Please read the Tutorial."));
+			return;
+		}
+	}
+
+	// Prevent to insert uncodable characters in verbatim and ERT
+	// (workaround for bug 9012)
+	if (cur.paragraph().isPassThru() && cur.current_font.language()) {
+		Encoding const * e = cur.current_font.language()->encoding();
+		if (!e->encodable(c)) {
+			cur.message(_("Character is uncodable in verbatim paragraphs."));
 			return;
 		}
 	}
