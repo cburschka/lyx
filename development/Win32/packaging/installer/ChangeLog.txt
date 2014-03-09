@@ -1,4 +1,9 @@
-﻿Changelog for LyX-207-2:
+﻿Changelog for LyX-207-3:
+- fix serious bug that LyX could directly be installed to c:\programs
+  the uninstaller would then delete the whole c:\programs folder
+
+
+Changelog for LyX-207-2:
 - LyX can now be installed and uninstalled silently
   (administrators can start the installer with "LyX-207-Installer-2.exe /S")
 - updated to Python 2.7.6

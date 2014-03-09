@@ -14,6 +14,16 @@ Var PythonCompileReturn
 
 Section -ProgramFiles SecProgramFiles
 
+  # if the $INSTDIR does not contain "LyX" we must add a subfolder to avoid that LyX will e.g.
+  # be installed directly to C:\programs - the uninstaller will then delete the whole
+  # C:\programs directory
+  StrCpy $String $INSTDIR
+  StrCpy $Search "LyX"
+  Call StrPoint # function from LyXUtils.nsh
+  ${if} $Pointer == "-1"
+   StrCpy $INSTDIR "$INSTDIR\${APP_DIR}"
+  ${endif}
+
  !if ${SETUPTYPE} != BUNDLE
   # abort the installation if no LaTeX was found but should be used
   ${if} $PathLaTeX == ""
