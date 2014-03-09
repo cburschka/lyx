@@ -181,6 +181,10 @@ dist_jaexamples_DATA = \
 	examples/ja/xyfigure.png \
 	examples/ja/xypic.lyx
 
+koexamplesdir = $(pkgdatadir)/examples/ko
+dist_koexamples_DATA = \
+	examples/ko/splash.lyx
+
 nlexamplesdir = $(pkgdatadir)/examples/nl
 dist_nlexamples_DATA = \
 	examples/nl/opsommingstekens.lyx \

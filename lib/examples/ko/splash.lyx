@@ -1,0 +1,185 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options false
+\maintain_unincluded_children false
+\language korean
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+LyX에 오신 것을 환영합니다!
+\end_layout
+
+\begin_layout Section*
+LyX 사용시 알아야되는 가장 중요한 것들
+\end_layout
+
+\begin_layout Enumerate
+LyX는 훌륭한 문서를 동반합니다 - 사용하세요! 문서에 대한 간략한 소개를 제공하는
+\family sans
+ 도움말\SpecialChar \menuseparator
+소개
+\family default
+ 메뉴에서 시작하세요.
+ 그 다음
+\family sans
+ 도움말\SpecialChar \menuseparator
+자습서
+\family default
+를 통해 LyX 사용법을 익히세요.
+ 
+\end_layout
+
+\begin_layout Enumerate
+우리는 LyX를 
+\begin_inset Quotes eld
+\end_inset
+
+문서 처리기
+\begin_inset Quotes erd
+\end_inset
+
+라고 부릅니다.
+ 설계상 문서 작성을 쉽게 만든다는 측면에서 일반 워드 프로세서와는 다릅니다.
+ 차이점은 아주 적으니 겁부터 먹진 마세요.
+ 문서를 보면 확실해질 것입니다.
+\end_layout
+
+\begin_layout Enumerate
+LyX의 출력물은 아주 훌륭합니다! 메뉴에서 
+\family sans
+보기\SpecialChar \menuseparator
+
+\begin_inset space ~
+\end_inset
+
+[PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)]로 보기
+\family default
+를 선택하거나 툴바에서 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+ 버튼을 선택해서 직접 보세요.
+\end_layout
+
+\begin_layout Enumerate
+그렇습니다, LyX는 (거의) 모든 LaTeX 기능들을 흉내낼 수 있습니다.
+ 그리고 또한 LyX는 LaTeX 파일들을 가져올 수 있습니다.
+ LaTeX 사용 경험이 있는 사용자들은 나머지 
+\emph on
+자습서
+\emph default
+를 생략하고, 
+\begin_inset Quotes eld
+\end_inset
+
+LaTeX 사용자를 위한 LyX
+\begin_inset Quotes erd
+\end_inset
+
+ 장을 읽어주세요.
+ (해당되지 않는 모든 사람들: 걱정 마시압, LyX 사용을 위해 LaTeX를 꼭 알아야할 필요는 없습니다.) 
+\end_layout
+
+\begin_layout Enumerate
+LyX는 영어 이외의 언어를 읽고 쓰는 사람들을 위한 많은 기능을 가지고 있습니다.
+ 덧붙여, 키바인딩, 툴바, 다른 많은 특성들이 설정 변경 가능합니다.
+ 자세한 것은
+\family sans
+ 도움말(Help)\SpecialChar \menuseparator
+Customization
+\family default
+을 보세요.
+\end_layout
+
+\begin_layout Enumerate
+LyX 홈페이지는
+\family typewriter
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.lyx.org/
+\end_layout
+
+\end_inset
+
+
+\family default
+입니다.
+ LyX에 대한 정보를 얻고, LyX 메일링 리스트에 가입하고, LyX 그림으로 배우기(Graphical Tour) 등 많은 것을 할 수 있습니다.
+\end_layout
+
+\end_body
+\end_document
