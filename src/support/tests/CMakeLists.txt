@@ -6,6 +6,8 @@
 
 project(supporttest)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${LYX_CXX_SPECIFIC_FLAGS}")
+
 macro(sources _program)
 	set(_tmplist)
 	foreach(_tmp ${ARGN})
