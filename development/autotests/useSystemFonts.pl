@@ -67,7 +67,7 @@ my ($source, $dest, $format, $fontT, $rest) = @ARGV;
 diestack("Too many arguments") if (defined($rest));
 diestack("Sourcefilename not defined") if (! defined($source));
 diestack("Destfilename not defined") if (! defined($dest));
-diestack("FoNamunrmat (e.g. pdf4) not defined") if (! defined($format));
+diestack("Format (e.g. pdf4) not defined") if (! defined($format));
 diestack("Font type (e.g. texF) not defined") if (! defined($fontT));
 
 $source = File::Spec->rel2abs($source);
