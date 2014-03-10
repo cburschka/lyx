@@ -67,7 +67,7 @@ my ($source, $dest, $format, $fontT, $rest) = @ARGV;
 diestack("Too many arguments") if (defined($rest));
 diestack("Sourcefilename not defined") if (! defined($source));
 diestack("Destfilename not defined") if (! defined($dest));
-diestack("Format (e.g. pdf4) not defined") if (! defined($format));
+diestack("FoNamunrmat (e.g. pdf4) not defined") if (! defined($format));
 diestack("Font type (e.g. texF) not defined") if (! defined($fontT));
 
 $source = File::Spec->rel2abs($source);
@@ -93,6 +93,11 @@ if ($fontT eq "systemF") {
     $font{roman} = "WenQuanYi Micro Hei";
     $font{sans} = "WenQuanYi Micro Hei";
     $font{typewriter} = "WenQuanYi Micro Hei";
+  }
+  elsif ($lang eq "ko" ) {
+    $font{roman} = "NanumGothic"; # NanumMyeongjo, NanumGothic Eco, NanumGothicCoding
+    $font{sans} = "NanumGothic";
+    $font{typewriter} = "NanumGothic";
   }
   else {
     # default system fonts
