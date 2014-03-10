@@ -28,8 +28,8 @@ Function FindDictionaries
   
   # read out the possible spell-checker filenames from the file	
   FileOpen $R5 "$INSTDIR\Resources\HunspellDictionaryNames.txt" r
-  ${for} $5 1 69
-   # the file has 138 lines, but we only need to check for one of the 2 dictionary files per language
+  ${for} $5 1 70
+   # the file has 140 lines, but we only need to check for one of the 2 dictionary files per language
    # therefore check only for every second line
    FileRead $R5 $String   # skip the .aff file
    FileRead $R5 $String   # $String is now the .dic filename
@@ -43,8 +43,8 @@ Function FindDictionaries
   
   # read out the possible thesaurus filenames from the file	
   FileOpen $R5 "$INSTDIR\Resources\ThesaurusDictionaryNames.txt" r
-  ${for} $5 1 24
-   # the file has 48 lines, but we only need to check for one of the 2 dictionary files per language
+  ${for} $5 1 25
+   # the file has 50 lines, but we only need to check for one of the 2 dictionary files per language
    # therefore check only for every second line
    FileRead $R5 $String   # $String is now the dictionary name
    FileRead $R5 $String   # $String is now the dictionary name
@@ -66,7 +66,7 @@ Function DownloadHunspellDictionaries
  
  # read out the locations from the file	
  FileOpen $R5 "$INSTDIR\Resources\HunspellDictionaryNames.txt" r
- ${For} $5 1 138       # the file has 138 lines
+ ${For} $5 1 140       # the file has 140 lines
  
   FileRead $R5 $String # $String is now the dictionary name
   StrCpy $R3 $String -6 # $R3 is now the dictionary language code
@@ -77,7 +77,7 @@ Function DownloadHunspellDictionaries
    # if first download repository is not available try the other ones listed in "DictionaryMirrors.txt"
    FileOpen $R4 "$INSTDIR\Resources\DictionaryMirrors.txt" r
    
-   ${For} $4 1 8 # we know about 8 mirrors
+   ${For} $4 1 29 # there are 29 mirrors in the file
     FileRead $R4 $Search # $Search is now the mirror
     StrCpy $Search $Search -2 # delete the linebreak characters at the end
     Push $R0
@@ -112,7 +112,7 @@ Function DownloadThesaurusDictionaries
  
  # read out the locations from the file	
  FileOpen $R5 "$INSTDIR\Resources\ThesaurusDictionaryNames.txt" r
- ${For} $5 1 48          # the file has 48 lines
+ ${For} $5 1 50          # the file has 50 lines
  
   FileRead $R5 $String   # $String is now the dictionary name
   StrCpy $R3 $String 5 3 # $R3 is now the dictionary language code
@@ -123,7 +123,7 @@ Function DownloadThesaurusDictionaries
    # if first download repository is not available try the other ones listed in "DictionaryMirrors.txt"
    FileOpen $R4 "$INSTDIR\Resources\DictionaryMirrors.txt" r
    
-   ${For} $4 1 8
+   ${For} $4 1 29 # there are 29 mirrors in the file
     FileRead $R4 $Search # $Search is now the mirror
     StrCpy $Search $Search -2 # delete the linebreak characters at the end
     Push $R0
