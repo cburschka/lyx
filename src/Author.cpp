@@ -118,8 +118,8 @@ void AuthorList::recordCurrentAuthor(Author const & a)
 
 Author const & AuthorList::get(int id) const
 {
-	// LASSERT: What should we do here?
-	LASSERT(id < (int)authors_.size() , /**/);
+	// authors_[0] is guaranteed to exist
+	LASSERT(id < (int)authors_.size() , return authors_[0]);
 	return authors_[id];
 }
 
