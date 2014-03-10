@@ -854,6 +854,13 @@ public:
 		case QEvent::UpdateRequest:
 		case QEvent::CursorChange:
 		case QEvent::ActionChanged:
+		case QEvent::EnabledChange:
+		case QEvent::SockAct:
+		case QEvent::Timer:
+		case QEvent::Paint:
+		case QEvent::ToolTipChange:
+		case QEvent::LayoutRequest:
+		case QEvent::MetaCall:
 			return QObject::eventFilter(obj, event);
 		default:
 			// FIXME Blocking all these events is a bad idea.
