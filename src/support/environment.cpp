@@ -71,6 +71,10 @@ bool setEnv(string const & name, string const & value)
 #if defined (HAVE_SETENV)
 	return ::setenv(name.c_str(), encoded.c_str(), 1) == 0;
 #elif defined (HAVE_PUTENV)
+	// According to http://pubs.opengroup.org/onlinepubs/9699919799/functions/putenv.html
+	// the argument of putenv() needs to be static, because changing its
+	// value will change the environment. Therefore we need a different static
+	// storage for each variable.
 	static map<string, string> varmap;
 	varmap[name] = name + '=' + encoded;
 	return ::putenv(const_cast<char*>(varmap[name].c_str())) == 0;
@@ -132,6 +136,8 @@ bool unsetEnv(string const & name)
 	return ::unsetenv(name.c_str()) == 0;
 #elif defined(HAVE_PUTENV)
 	// This is OK with MSVC and MinGW at least.
+	// FIXME: According to http://pubs.opengroup.org/onlinepubs/9699919799/functions/putenv.html
+	//        the argument of putenv() needs to be static, see setEnv().
 	return ::putenv(const_cast<char*>((name + "=").c_str())) == 0;
 #else
 #error No environment-unsetting function has been defined.
