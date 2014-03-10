@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-03-09 10:36+0100\n"
+"POT-Creation-Date: 2014-03-10 10:43+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -913,10 +913,9 @@ msgstr "Rozsah v ktorom sa má hľadať"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:206
 msgid "Scope"
-msgstr ""
+msgstr "Oblasť"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:218
-#, fuzzy
 msgid "C&urrent document"
 msgstr "&Aktuálny dokument"
 
@@ -941,7 +940,6 @@ msgid "&Open documents"
 msgstr "&Otvorené dokumenty"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:263
-#, fuzzy
 msgid "&All manuals"
 msgstr "Všetky &príručky"
 
@@ -954,7 +952,6 @@ msgstr ""
 "v štýle odstavca"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:284
-#, fuzzy
 msgid "I&gnore format"
 msgstr "&Ignorovať formát"
 
@@ -973,7 +970,6 @@ msgid "&Expand macros"
 msgstr "Rozvinúť &makrá"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:314
-#, fuzzy
 msgid "Search on&ly in maths"
 msgstr "Prehľadať len mat. vzork&y"
 
@@ -24388,7 +24384,7 @@ msgstr ""
 
 #: src/Text.cpp:1013
 msgid "Character is uncodable in verbatim paragraphs."
-msgstr ""
+msgstr "Znak je v doslovných(verbatim) odstavcoch nekódovateľný."
 
 #: src/Text.cpp:1850
 msgid "[Change Tracking] "
