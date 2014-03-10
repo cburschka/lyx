@@ -844,6 +844,7 @@ bool LyX::init()
 		lyxrc.print();
 
 	os::windows_style_tex_paths(lyxrc.windows_style_tex_paths);
+	// Prepend path prefix a second time to take the user preferences into a account
 	if (!lyxrc.path_prefix.empty())
 		prependEnvPath("PATH", replaceEnvironmentPath(lyxrc.path_prefix));
 
