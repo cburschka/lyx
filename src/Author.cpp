@@ -116,7 +116,7 @@ void AuthorList::recordCurrentAuthor(Author const & a)
 
 Author const & AuthorList::get(int id) const
 {
-	LBUFERR(id < (int)authors_.size());
+	LASSERT(id < (int)authors_.size() , return authors_[0]);
 	return authors_[id];
 }
 
