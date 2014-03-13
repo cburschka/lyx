@@ -136,8 +136,8 @@ bool unsetEnv(string const & name)
 	return ::unsetenv(name.c_str()) == 0;
 #elif defined(HAVE_PUTENV)
 	// This is OK with MSVC and MinGW at least.
-	// FIXME: According to http://pubs.opengroup.org/onlinepubs/9699919799/functions/putenv.html
-	//        the argument of putenv() needs to be static, see setEnv().
+	// The argument of putenv() does not need to be a static variable in this
+	// case, since the variable is removed from the environment.
 	return ::putenv(const_cast<char*>((name + "=").c_str())) == 0;
 #else
 #error No environment-unsetting function has been defined.
