@@ -10,7 +10,7 @@
  */
 
 #ifndef _CONFIG_FUNCTIONS_H
-#define _CONFIG_FUNCTION_H
+#define _CONFIG_FUNCTIONS_H
 
 ${Function_Defines}
 
