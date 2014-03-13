@@ -524,7 +524,7 @@ void TeXOnePar(Buffer const & buf,
 	       int start_pos, int end_pos)
 {
 	BufferParams const & bparams = runparams_in.is_child
-		? buf.masterBuffer()->params() : buf.params();
+		? buf.masterParams() : buf.params();
 	ParagraphList const & paragraphs = text.paragraphs();
 	Paragraph const & par = paragraphs.at(pit);
 	// FIXME This check should not really be needed.

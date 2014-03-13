@@ -510,6 +510,8 @@ public:
 	///
 	BufferParams & params();
 	BufferParams const & params() const;
+	///
+	BufferParams const & masterParams() const;
 
 	/** The list of paragraphs.
 	    This is a linked list of paragraph, this list holds the

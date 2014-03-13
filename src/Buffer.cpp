@@ -636,6 +636,21 @@ BufferParams const & Buffer::params() const
 }
 
 
+BufferParams const & Buffer::masterParams() const
+{
+	if (masterBuffer() == this)
+		return params();
+
+	BufferParams & mparams = const_cast<Buffer *>(masterBuffer())->params();
+	// Copy child authors to the params. We need those pointers.
+	AuthorList const & child_authors = params().authors();
+	AuthorList::Authors::const_iterator it = child_authors.begin();
+	for (; it != child_authors.end(); it++)
+		mparams.authors().record(*it);
+	return mparams;
+}
+
+
 ParagraphList & Buffer::paragraphs()
 {
 	return text().paragraphs();
