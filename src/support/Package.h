@@ -144,7 +144,7 @@ public:
 	 *  Caution: This is "ready-to-run", i.e. in the locale encoding, not
 	 *  utf8.
 	 */
-	std::string const & configure_command() const { return configure_command_; }
+	std::string const & configure_command() const;
 
 private:
 	FileName binary_dir_;
