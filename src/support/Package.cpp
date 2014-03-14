@@ -138,11 +138,6 @@ Package::Package(string const & command_line_arg0,
 	explicit_user_support_dir_ = userSupportDir(default_user_support_dir,
 				     command_line_user_support_dir, user_support_dir_);
 
-	FileName const configure_script(addName(system_support().absFileName(), "configure.py"));
-	configure_command_ = os::python() + ' ' +
-			quoteName(configure_script.toFilesystemEncoding()) +
-			with_version_suffix() + " --binary-dir=" +
-			quoteName(FileName(binary_dir().absFileName()).toFilesystemEncoding());
 
 	LYXERR(Debug::INIT, "<package>\n"
 		<< "\tbinary_dir " << binary_dir().absFileName() << '\n'
@@ -154,6 +149,18 @@ Package::Package(string const & command_line_arg0,
 		<< "\ttemp_dir " << temp_dir().absFileName() << '\n'
 		<< "\thome_dir " << get_home_dir().absFileName() << '\n'
 		<< "</package>\n");
+}
+
+std::string const & Package::configure_command() const
+{
+	if (configure_command_.empty()) {
+		FileName const configure_script(addName(system_support().absFileName(), "configure.py"));
+		configure_command_ = os::python() + ' ' +
+			quoteName(configure_script.toFilesystemEncoding()) +
+			with_version_suffix() + " --binary-dir=" +
+			quoteName(FileName(binary_dir().absFileName()).toFilesystemEncoding());
+	}
+	return configure_command_;
 }
 
 

@@ -60,10 +60,13 @@ int timeout_min()
 }
 
 
-string const python()
+string const python(bool reset)
 {
 	// Check whether the first python in PATH is the right one.
 	static string command = python2("python -tt");
+	if (reset) {
+		command = python2("python -tt");
+	}
 
 	if (command.empty()) {
 		// It was not, so check whether we can find it elsewhere in
