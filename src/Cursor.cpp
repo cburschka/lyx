@@ -277,7 +277,7 @@ CursorData::CursorData(DocIterator const & dit)
 // be careful: this is called from the bv's constructor, too, so
 // bv functions are not yet available!
 Cursor::Cursor(BufferView & bv)
-	: CursorData(&bv.buffer()), bv_(&bv), 
+	: CursorData(&bv.buffer()), bv_(&bv),
 	  x_target_(-1), textTargetOffset_(0)
 {}
 
@@ -416,7 +416,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 		if (disp_.dispatched())
 			break;
 	}
-	
+
 	// it completely to get a 'bomb early' behaviour in case this
 	// object will be used again.
 	if (!disp_.dispatched()) {
@@ -424,7 +424,7 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 		// We might have invalidated the cursor when removing an empty
 		// paragraph while the cursor could not be moved out the inset
 		// while we initially thought we could. This might happen when
-		// a multiline inset becomes an inline inset when the second 
+		// a multiline inset becomes an inline inset when the second
 		// paragraph is removed.
 		if (safe.pit() > safe.lastpit()) {
 			safe.pit() = safe.lastpit();
@@ -654,17 +654,17 @@ bool Cursor::posVisRight(bool skip_inset)
 
 	// Are we already at rightmost pos in row?
 	else if (text()->empty() || right_pos == -1) {
-		
+
 		new_cur = *this;
 		if (!new_cur.posVisToNewRow(false)) {
 			LYXERR(Debug::RTL, "not moving!");
 			return false;
 		}
-		
+
 		// we actually move the cursor at the end of this
 		// function, for now just keep track of the new
 		// position in new_cur...
-		LYXERR(Debug::RTL, "right edge, moving: " << int(new_cur.pit()) << "," 
+		LYXERR(Debug::RTL, "right edge, moving: " << int(new_cur.pit()) << ","
 			<< int(new_cur.pos()) << "," << (new_cur.boundary() ? 1 : 0));
 
 	}
@@ -712,16 +712,16 @@ bool Cursor::posVisRight(bool skip_inset)
 			new_cur.pos() = right_pos;
 			new_cur.boundary(false);
 		}
-	
+
 	}
 
 	bool moved = (new_cur.pos() != pos()
 				  || new_cur.pit() != pit()
 				  || new_cur.boundary() != boundary()
 				  || &new_cur.inset() != &inset());
-	
+
 	if (moved) {
-		LYXERR(Debug::RTL, "moving to: " << new_cur.pos() 
+		LYXERR(Debug::RTL, "moving to: " << new_cur.pos()
 			<< (new_cur.boundary() ? " (boundary)" : ""));
 		*this = new_cur;
 	}
@@ -744,7 +744,7 @@ bool Cursor::posVisLeft(bool skip_inset)
 	// Are we at an inset?
 	new_cur.pos() = left_pos;
 	new_cur.boundary(false);
-	if (!skip_inset && 
+	if (!skip_inset &&
 		text()->checkAndActivateInsetVisual(new_cur, left_pos >= pos(), true)) {
 		// we actually move the cursor at the end of this
 		// function, for now we just keep track of the new
@@ -754,17 +754,17 @@ bool Cursor::posVisLeft(bool skip_inset)
 
 	// Are we already at leftmost pos in row?
 	else if (text()->empty() || left_pos == -1) {
-		
+
 		new_cur = *this;
 		if (!new_cur.posVisToNewRow(true)) {
 			LYXERR(Debug::RTL, "not moving!");
 			return false;
 		}
-		
+
 		// we actually move the cursor at the end of this
 		// function, for now just keep track of the new
 		// position in new_cur...
-		LYXERR(Debug::RTL, "left edge, moving: " << int(new_cur.pit()) << "," 
+		LYXERR(Debug::RTL, "left edge, moving: " << int(new_cur.pit()) << ","
 			<< int(new_cur.pos()) << "," << (new_cur.boundary() ? 1 : 0));
 
 	}
@@ -812,19 +812,19 @@ bool Cursor::posVisLeft(bool skip_inset)
 			new_cur.pos() = left_pos;
 			new_cur.boundary(false);
 		}
-	
+
 	}
 
-	bool moved = (new_cur.pos() != pos() 
+	bool moved = (new_cur.pos() != pos()
 				  || new_cur.pit() != pit()
 				  || new_cur.boundary() != boundary());
 
 	if (moved) {
-		LYXERR(Debug::RTL, "moving to: " << new_cur.pos() 
+		LYXERR(Debug::RTL, "moving to: " << new_cur.pos()
 			<< (new_cur.boundary() ? " (boundary)" : ""));
 		*this = new_cur;
 	}
-		
+
 	return moved;
 }
 
@@ -845,7 +845,7 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 	// 1). So we already have one known position around the
 	// cursor:
 	pos_type const known_pos = boundary() && pos() > 0 ? pos() - 1 : pos();
-	
+
 	// edge case: if we're at the end of the paragraph, things are
 	// a little different (because lastpos is a position which
 	// does not really "exist" --- there's no character there
@@ -854,17 +854,17 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 		if (par.isRTL(buf.params())) {
 			left_pos = -1;
 			right_pos = bidi.vis2log(row.pos());
-		} else { 
+		} else {
 			// LTR paragraph
 			right_pos = -1;
 			left_pos = bidi.vis2log(row.endpos() - 1);
 		}
 		return;
 	}
-	
+
 	// Whether 'known_pos' is to the left or to the right of the
 	// cursor depends on whether it is an RTL or LTR character...
-	bool const cur_is_RTL = 
+	bool const cur_is_RTL =
 		par.getFontSettings(buf.params(), known_pos).isVisibleRightToLeft();
 	// ... in the following manner:
 	// For an RTL character, "before"
@@ -887,8 +887,8 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 		// such a separator could appear visually in the
 		// middle of a row), set 'left_pos' to the *next*
 		// position to the left.
-		if (bidi.inRange(v_left_pos) 
-				&& bidi.vis2log(v_left_pos) + 1 == row.endpos() 
+		if (bidi.inRange(v_left_pos)
+				&& bidi.vis2log(v_left_pos) + 1 == row.endpos()
 				&& row.endpos() < lastpos()
 				&& par.isSeparator(bidi.vis2log(v_left_pos)))
 			--v_left_pos;
@@ -901,7 +901,7 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 		// If the position we identified as 'right_pos' is a
 		// "skipped separator", set 'right_pos' to the *next*
 		// position to the right.
-		if (right_pos + 1 == row.endpos() && row.endpos() < lastpos() 
+		if (right_pos + 1 == row.endpos() && row.endpos() < lastpos()
 				&& par.isSeparator(right_pos)) {
 			pos_type const v_right_pos = bidi.log2vis(right_pos) + 1;
 			if (!bidi.inRange(v_right_pos))
@@ -909,7 +909,7 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 			else
 				right_pos = bidi.vis2log(v_right_pos);
 		}
-	} else { 
+	} else {
 		// known_pos is on the left
 		left_pos = known_pos;
 		// *visual* position of 'right_pos'
@@ -917,21 +917,21 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 		// If the position we just identified as 'right_pos'
 		// is a "skipped separator", set 'right_pos' to the
 		// *next* position to the right.
-		if (bidi.inRange(v_right_pos) 
-				&& bidi.vis2log(v_right_pos) + 1 == row.endpos() 
+		if (bidi.inRange(v_right_pos)
+				&& bidi.vis2log(v_right_pos) + 1 == row.endpos()
 				&& row.endpos() < lastpos()
 				&& par.isSeparator(bidi.vis2log(v_right_pos)))
 			++v_right_pos;
 
 		// calculate the logical position of 'right_pos', if in row
-		if (!bidi.inRange(v_right_pos)) 
+		if (!bidi.inRange(v_right_pos))
 			right_pos = -1;
 		else
 			right_pos = bidi.vis2log(v_right_pos);
 		// If the position we identified as 'left_pos' is a
 		// "skipped separator", set 'left_pos' to the *next*
 		// position to the left.
-		if (left_pos + 1 == row.endpos() && row.endpos() < lastpos() 
+		if (left_pos + 1 == row.endpos() && row.endpos() < lastpos()
 				&& par.isSeparator(left_pos)) {
 			pos_type const v_left_pos = bidi.log2vis(left_pos) - 1;
 			if (!bidi.inRange(v_left_pos))
@@ -958,7 +958,7 @@ bool Cursor::posVisToNewRow(bool movingLeft)
 		par_is_LTR = !(*this)[s].inset().asInsetTabular()->isRightToLeft(*this);
 		LYXERR(Debug::RTL, "Inside table! par_is_LTR=" << (par_is_LTR ? 1 : 0));
 	}
-	
+
 	// if moving left in an LTR paragraph or moving right in an
 	// RTL one, move to previous row
 	if (par_is_LTR == movingLeft) {
@@ -989,7 +989,7 @@ bool Cursor::posVisToNewRow(bool movingLeft)
 			boundary(false);
 		}
 	}
-	
+
 	// make sure we're at left-/right-most pos in new row
 	posVisToRowExtremity(!movingLeft);
 
@@ -997,7 +997,7 @@ bool Cursor::posVisToNewRow(bool movingLeft)
 }
 
 
-void Cursor::posVisToRowExtremity(bool left)  
+void Cursor::posVisToRowExtremity(bool left)
 {
 	// prepare bidi tables
 	Paragraph const & par = paragraph();
@@ -1051,10 +1051,10 @@ void Cursor::posVisToRowExtremity(bool left)
 			// is an inset, then we *do* want to stay to
 			// the left of it anyway: this is the
 			// "boundary" which we simulate at insets.
-			
+
 			// Another exception is when row.endpos() is
 			// 0.
-			
+
 			// do we want to be to the right of pos?
 			// as explained above, if at last pos in row, stay to the right
 			bool const right_of_pos = row.endpos() > 0
@@ -1062,7 +1062,7 @@ void Cursor::posVisToRowExtremity(bool left)
 
 			// Now we know if we want to be to the left or to the right of pos,
 			// let's make sure we are where we want to be.
-			bool const new_pos_is_RTL = 
+			bool const new_pos_is_RTL =
 				par.getFontSettings(buf.params(), pos()).isVisibleRightToLeft();
 
 			if (new_pos_is_RTL != right_of_pos) {
@@ -1070,7 +1070,7 @@ void Cursor::posVisToRowExtremity(bool left)
 				boundary(true);
 			}
 		}
-	} else { 
+	} else {
 		// move to rightmost position
 		// if this is an LTR paragraph, and we're at the last row in the
 		// paragraph, move to lastpos
@@ -1114,7 +1114,7 @@ void Cursor::posVisToRowExtremity(bool left)
 			// right of it anyway: this is the "boundary"
 			// which we simulate at insets. Another
 			// exception is when row.endpos() is 0.
-			
+
 			// do we want to be to the left of pos?
 			// as explained above, if at last pos in row, stay to the left,
 			// unless the last position is the same as the first.
@@ -1123,7 +1123,7 @@ void Cursor::posVisToRowExtremity(bool left)
 
 			// Now we know if we want to be to the left or to the right of pos,
 			// let's make sure we are where we want to be.
-			bool const new_pos_is_RTL = 
+			bool const new_pos_is_RTL =
 				par.getFontSettings(buf.params(), pos()).isVisibleRightToLeft();
 
 			if (new_pos_is_RTL == left_of_pos) {
@@ -1144,7 +1144,7 @@ CursorSlice Cursor::normalAnchor() const
 	// LASSERT: There have been several bugs around this code, that seem
 	// to involve failures to reset the anchor. We can at least not crash
 	// in release mode by resetting it ourselves.
-	LASSERT(anchor_.depth() >= depth(), 
+	LASSERT(anchor_.depth() >= depth(),
 		const_cast<DocIterator &>(anchor_) = *this);
 
 	CursorSlice normal = anchor_[depth() - 1];
@@ -1221,8 +1221,8 @@ void Cursor::setSelection()
 	setSelection(true);
 	// A selection with no contents is not a selection
 	// FIXME: doesnt look ok
-	if (idx() == normalAnchor().idx() && 
-	    pit() == normalAnchor().pit() && 
+	if (idx() == normalAnchor().idx() &&
+	    pit() == normalAnchor().pit() &&
 	    pos() == normalAnchor().pos())
 		setSelection(false);
 }
@@ -1702,7 +1702,7 @@ bool Cursor::macroModeClose()
 	// insert remembered selection into first argument of a non-macro
 	else if (atom.nucleus()->nargs() > 0)
 		atom.nucleus()->cell(0).append(selection);
-	
+
 	plainInsert(atom);
 
 	// finally put the macro argument behind, if needed
@@ -1712,7 +1712,7 @@ bool Cursor::macroModeClose()
 		else
 			insert(selection);
 	}
-	
+
 	return true;
 }
 
@@ -1849,7 +1849,7 @@ bool Cursor::upDownInMath(bool up)
 	else if (inset().asInsetText() && xo - textTargetOffset() != x_target()) {
 		// In text mode inside the line (not left or right) possibly set a new target_x,
 		// but only if we are somewhere else than the previous target-offset.
-		
+
 		// We want to keep the x-target on subsequent up/down movements
 		// that cross beyond the end of short lines. Thus a special
 		// handling when the cursor is at the end of line: Use the new
@@ -1885,7 +1885,7 @@ bool Cursor::upDownInMath(bool up)
 				push(*const_cast<InsetMathScript*>(p));
 				idx() = p->idxOfScript(up);
 				pos() = lastpos();
-				
+
 				// we went in the right direction? Otherwise don't jump into the script
 				int x;
 				int y;
@@ -1898,7 +1898,7 @@ bool Cursor::upDownInMath(bool up)
 					return true;
 			}
 		}
-		
+
 		// try right
 		if (pos() != lastpos()) {
 			InsetMathScript const * p = nextAtom()->asScriptInset();
@@ -1906,7 +1906,7 @@ bool Cursor::upDownInMath(bool up)
 				push(*const_cast<InsetMathScript*>(p));
 				idx() = p->idxOfScript(up);
 				pos() = 0;
-				
+
 				// we went in the right direction? Otherwise don't jump into the script
 				int x;
 				int y;
@@ -1920,7 +1920,7 @@ bool Cursor::upDownInMath(bool up)
 			}
 		}
 	}
-		
+
 	// try to find an inset that knows better then we,
 	if (inset().idxUpDown(*this, up)) {
 		//lyxerr << "idxUpDown triggered" << endl;
@@ -1929,7 +1929,7 @@ bool Cursor::upDownInMath(bool up)
 			setCursor(bruteFind2(*this, xo, yo));
 		return true;
 	}
-	
+
 	// any improvement going just out of inset?
 	if (popBackward() && inMathed()) {
 		//lyxerr << "updown: popBackward succeeded" << endl;
@@ -1940,7 +1940,7 @@ bool Cursor::upDownInMath(bool up)
 		if (up ? ynew < yold : ynew > yold)
 			return true;
 	}
-	
+
 	// no success, we are probably at the document top or bottom
 	operator=(old);
 	return false;
@@ -1951,13 +1951,13 @@ bool Cursor::atFirstOrLastRow(bool up)
 {
 	TextMetrics const & tm = bv_->textMetrics(text());
 	ParagraphMetrics const & pm = tm.parMetrics(pit());
-	
+
 	int row;
 	if (pos() && boundary())
 		row = pm.pos2row(pos() - 1);
 	else
 		row = pm.pos2row(pos());
-	
+
 	if (up) {
 		if (pit() == 0 && row == 0)
 			return true;
@@ -1990,7 +1990,7 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		// In text mode inside the line (not left or right)
 		// possibly set a new target_x, but only if we are
 		// somewhere else than the previous target-offset.
-		
+
 		// We want to keep the x-target on subsequent up/down
 		// movements that cross beyond the end of short lines.
 		// Thus a special handling when the cursor is at the
@@ -2015,7 +2015,7 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 			xo = targetX();
 	} else
 		xo = targetX();
-		
+
 	// first get the current line
 	TextMetrics & tm = bv_->textMetrics(text());
 	ParagraphMetrics const & pm = tm.parMetrics(pit());
@@ -2024,7 +2024,7 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		row = pm.pos2row(pos() - 1);
 	else
 		row = pm.pos2row(pos());
-		
+
 	if (atFirstOrLastRow(up)) {
 		// Is there a place for the cursor to go ? If yes, we
 		// can execute the DEPM, otherwise we should keep the
@@ -2037,11 +2037,11 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 				break;
 			}
 
-		// will a next dispatch follow and if there is a new 
+		// will a next dispatch follow and if there is a new
 		// dispatch will it move the cursor out ?
 		if (depth() > 1 && valid_destination) {
 			// The cursor hasn't changed yet. This happens when
-			// you e.g. move out of an inset. And to give the 
+			// you e.g. move out of an inset. And to give the
 			// DEPM the possibility of doing something we must
 			// provide it with two different cursors. (Lgb, vfr)
 			dummy = *this;
@@ -2066,17 +2066,17 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		else
 			tm.editXY(*this, xo, yo + textRow().descent() + 1);
 		clearSelection();
-		
-		// This happens when you move out of an inset.  
-		// And to give the DEPM the possibility of doing  
-		// something we must provide it with two different  
-		// cursors. (Lgb)  
+
+		// This happens when you move out of an inset.
+		// And to give the DEPM the possibility of doing
+		// something we must provide it with two different
+		// cursors. (Lgb)
 		Cursor dummy = *this;
 		if (dummy == old)
 			++dummy.pos();
 		if (bv().checkDepm(dummy, old)) {
 			updateNeeded = true;
-			// Make sure that cur gets back whatever happened to dummy (Lgb) 
+			// Make sure that cur gets back whatever happened to dummy (Lgb)
 			operator=(dummy);
 		}
 	} else {
@@ -2125,7 +2125,7 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		forceBufferUpdate();
 	updateTextTargetOffset();
 	return true;
-}	
+}
 
 
 void Cursor::handleFont(string const & font)
@@ -2186,7 +2186,7 @@ docstring parbreak(Cursor const * cur)
 	odocstringstream os;
 	os << '\n';
 	// only add blank line if we're not in a ParbreakIsNewline situation
-	if (!cur->inset().getLayout().parbreakIsNewline() 
+	if (!cur->inset().getLayout().parbreakIsNewline()
 	    && !cur->paragraph().layout().parbreak_is_newline)
 		os << '\n';
 	return os.str();
@@ -2324,27 +2324,27 @@ Font Cursor::getFont() const
 	// The logic here should more or less match to the
 	// Cursor::setCurrentFont logic, i.e. the cursor height should
 	// give a hint what will happen if a character is entered.
-	
+
 	// HACK. far from being perfect...
 
 	CursorSlice const & sl = innerTextSlice();
 	Text const & text = *sl.text();
 	Paragraph const & par = text.getPar(sl.pit());
-	
+
 	// on boundary, so we are really at the character before
 	pos_type pos = sl.pos();
 	if (pos > 0 && boundary())
 		--pos;
-	
+
 	// on space? Take the font before (only for RTL boundary stay)
 	if (pos > 0) {
 		TextMetrics const & tm = bv().textMetrics(&text);
 		if (pos == sl.lastpos()
-			|| (par.isSeparator(pos) 
+			|| (par.isSeparator(pos)
 			&& !tm.isRTLBoundary(sl.pit(), pos)))
 			--pos;
 	}
-	
+
 	// get font at the position
 	Font font = par.getFont(buffer()->params(), pos,
 		text.outerFont(sl.pit()));
@@ -2357,7 +2357,7 @@ bool Cursor::fixIfBroken()
 {
 	bool const broken_cursor = DocIterator::fixIfBroken();
 	bool const broken_anchor = anchor_.fixIfBroken();
-	
+
 	if (broken_cursor || broken_anchor) {
 		clearNewWordPosition();
 		clearSelection();
@@ -2407,7 +2407,7 @@ bool notifyCursorLeavesOrEnters(Cursor const & old, Cursor & cur)
 		if (cur[i].inset().notifyCursorEnters(cur))
 			return true;
 	}
-	
+
 	return false;
 }
 
@@ -2543,7 +2543,7 @@ void Cursor::checkBufferStructure()
 	Buffer const * master = buffer()->masterBuffer();
 	master->tocBackend().updateItem(*this);
 	if (master != buffer() && !master->hasGuiDelegate())
-		// In case the master has no gui associated with it, 
+		// In case the master has no gui associated with it,
 		// the TocItem is not updated (part of bug 5699).
 		buffer()->tocBackend().updateItem(*this);
 }

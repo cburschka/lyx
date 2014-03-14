@@ -502,7 +502,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		LyXAction::NoUpdate) || singleParUpdate);
 	bool const last_misspelled = lyxrc.spellcheck_continuously
 		&& cur.paragraph().isMisspelled(cur.pos(), true);
-	
+
 	FuncCode const act = cmd.action();
 	switch (act) {
 
@@ -623,7 +623,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			needsUpdate |= cursorTop(cur);
 			needsUpdate |= cur.selHandle(true);
 			needsUpdate |= cursorBottom(cur);
-		} else 
+		} else
 			cur.undispatched();
 		cur.screenUpdateFlags(Update::FitCursor);
 		break;
@@ -638,13 +638,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				&& cur.boundary() == oldBoundary) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
-		
+
 			// we will probably be moving out the inset, so we should execute
-			// the depm-mechanism, but only when the cursor has a place to 
+			// the depm-mechanism, but only when the cursor has a place to
 			// go outside this inset, i.e. in a slice above.
-			if (cur.depth() > 1 && cur.pos() == cur.lastpos() 
+			if (cur.depth() > 1 && cur.pos() == cur.lastpos()
 				  && cur.pit() == cur.lastpit()) {
-				// The cursor hasn't changed yet. To give the 
+				// The cursor hasn't changed yet. To give the
 				// DEPM the possibility of doing something we must
 				// provide it with two different cursors.
 				Cursor dummy = cur;
@@ -667,10 +667,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
 
 			// we will probably be moving out the inset, so we should execute
-			// the depm-mechanism, but only when the cursor has a place to 
+			// the depm-mechanism, but only when the cursor has a place to
 			// go outside this inset, i.e. in a slice above.
 			if (cur.depth() > 1 && cur.pos() == 0 && cur.pit() == 0) {
-				// The cursor hasn't changed yet. To give the 
+				// The cursor hasn't changed yet. To give the
 				// DEPM the possibility of doing something we must
 				// provide it with two different cursors.
 				Cursor dummy = cur;
@@ -742,7 +742,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		bool const atFirstOrLastRow = cur.atFirstOrLastRow(up);
 
 		if (!atFirstOrLastRow) {
-			needsUpdate |= cur.selHandle(select);	
+			needsUpdate |= cur.selHandle(select);
 			cur.selHandle(select);
 			cur.upDownInText(up, needsUpdate);
 			needsUpdate |= cur.beforeDispatchCursor().inMathed();
@@ -750,7 +750,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			// if the cursor cannot be moved up or down do not remove
 			// the selection right now, but wait for the next dispatch.
 			if (select)
-				needsUpdate |= cur.selHandle(select);	
+				needsUpdate |= cur.selHandle(select);
 			cur.upDownInText(up, needsUpdate);
 			cur.undispatched();
 		}
@@ -812,7 +812,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				break;
 		}
 		cur.pos() = cur.lastpos();
-		
+
 		needsUpdate |= cur != old_cur;
 		break;
 	}
@@ -849,13 +849,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				&& cur.boundary() == oldBoundary) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
-		
+
 			// we will probably be moving out the inset, so we should execute
-			// the depm-mechanism, but only when the cursor has a place to 
+			// the depm-mechanism, but only when the cursor has a place to
 			// go outside this inset, i.e. in a slice above.
-			if (cur.depth() > 1 && cur.pos() == cur.lastpos() 
+			if (cur.depth() > 1 && cur.pos() == cur.lastpos()
 				  && cur.pit() == cur.lastpit()) {
-				// The cursor hasn't changed yet. To give the 
+				// The cursor hasn't changed yet. To give the
 				// DEPM the possibility of doing something we must
 				// provide it with two different cursors.
 				Cursor dummy = cur;
@@ -893,18 +893,18 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_BACKWARD_SELECT:
 		needsUpdate |= cur.selHandle(cmd.action() == LFUN_WORD_BACKWARD_SELECT);
 		needsUpdate |= cursorBackwardOneWord(cur);
-	
+
 		if (!needsUpdate && oldTopSlice == cur.top()
 				&& cur.boundary() == oldBoundary) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
-		
+
 			// we will probably be moving out the inset, so we should execute
-			// the depm-mechanism, but only when the cursor has a place to 
+			// the depm-mechanism, but only when the cursor has a place to
 			// go outside this inset, i.e. in a slice above.
-			if (cur.depth() > 1 && cur.pos() == 0 
+			if (cur.depth() > 1 && cur.pos() == 0
 				  && cur.pit() == 0) {
-				// The cursor hasn't changed yet. To give the 
+				// The cursor hasn't changed yet. To give the
 				// DEPM the possibility of doing something we must
 				// provide it with two different cursors.
 				Cursor dummy = cur;
@@ -946,7 +946,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cur.recordUndoSelection();
 			pit_type const pit_end = cur.selEnd().pit();
 			for (pit_type pit = cur.selBegin().pit(); pit <= pit_end; pit++) {
-				pars_[pit].insertChar(0, '\t', 
+				pars_[pit].insertChar(0, '\t',
 						      bv->buffer().params().trackChanges);
 				// Update the selection pos to make sure the selection does not
 				// change as the inserted tab will increase the logical pos.
@@ -960,7 +960,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			// Maybe we shouldn't allow tabs within a line, because they
 			// are not (yet) aligned as one might do expect.
 			FuncRequest cmd(LFUN_SELF_INSERT, from_ascii("\t"));
-			dispatch(cur, cmd);	
+			dispatch(cur, cmd);
 		}
 		break;
 	}
@@ -980,11 +980,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				if (c == '\t' || c == ' ') {
 					// remove either 1 tab or 4 spaces.
 					int const n = (c == ' ' ? 4 : 1);
-					for (int i = 0; i < n 
+					for (int i = 0; i < n
 						  && !par.empty() && par.getChar(0) == c; ++i) {
 						if (cur.pit() == pit)
 							cur.posBackward();
-						if (cur.realAnchor().pit() == pit 
+						if (cur.realAnchor().pit() == pit
 							  && cur.realAnchor().pos() > 0 )
 							cur.realAnchor().backwardPos();
 						par.eraseChar(0, tc);
@@ -993,23 +993,23 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 			cur.finishUndo();
 		} else {
-			// If there is no selection, try to remove a tab or some spaces 
+			// If there is no selection, try to remove a tab or some spaces
 			// before the position of the cursor.
 			Paragraph & par = paragraphs()[cur.pit()];
 			pos_type const pos = cur.pos();
-			
+
 			if (pos == 0)
 				break;
-			
+
 			char_type const c = par.getChar(pos - 1);
 			cur.recordUndo();
 			if (c == '\t') {
 				cur.posBackward();
 				par.eraseChar(cur.pos(), tc);
 			} else
-				for (int n_spaces = 0; 
+				for (int n_spaces = 0;
 				     cur.pos() > 0
-					     && par.getChar(cur.pos() - 1) == ' ' 
+					     && par.getChar(cur.pos() - 1) == ' '
 					     && n_spaces < 4;
 				     ++n_spaces) {
 					cur.posBackward();
@@ -1412,7 +1412,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 					? from_ascii("Separator") : from_ascii("--Separator--");
 		lyx::dispatch(FuncRequest(LFUN_LAYOUT, sep));
 		lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK, "inverse"));
-		if (morecont) 
+		if (morecont)
 			lyx::dispatch(FuncRequest(LFUN_DOWN));
 		lyx::dispatch(FuncRequest(LFUN_LAYOUT, layout));
 
@@ -1473,7 +1473,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			--pos;
 
 		BufferParams const & bufparams = bv->buffer().params();
-		bool const hebrew = 
+		bool const hebrew =
 			par.getFontSettings(bufparams, pos).language()->lang() == "hebrew";
 		bool const allow_inset_quote = !(par.isPassThru() || hebrew);
 
@@ -1896,7 +1896,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		dispatch(cur, fr);
 		break;
 	}
-	
+
 	case LFUN_NOMENCL_PRINT:
 	case LFUN_NEWPAGE_INSERT:
 		// do nothing fancy
@@ -2442,7 +2442,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_APPENDIX:
 		// FIXME We really should not allow this to be put, e.g.,
-		// in a footnote, or in ERT. But it would make sense in a 
+		// in a footnote, or in ERT. But it would make sense in a
 		// branch, so I'm not sure what to do.
 		flag.setOnOff(cur.paragraph().params().startOfAppendix());
 		break;
@@ -2942,7 +2942,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_PARAGRAPH_BREAK:
 		enable = cur.inset().getLayout().isMultiPar();
 		break;
-	
+
 	case LFUN_SPELLING_ADD:
 	case LFUN_SPELLING_IGNORE:
 	case LFUN_SPELLING_REMOVE:
@@ -2952,7 +2952,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_LAYOUT:
 		enable = !cur.inset().forcePlainLayout();
 		break;
-	
+
 	case LFUN_ENVIRONMENT_SPLIT: {
 		// FIXME This hardcoding is bad
 		if (!cur.buffer()->params().documentClass().hasLayout(from_ascii("Separator"))
@@ -3099,7 +3099,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 
 	if (code != NO_CODE
-	    && (cur.empty() 
+	    && (cur.empty()
 		|| !cur.inset().insetAllowed(code)
 		|| (cur.paragraph().layout().pass_thru && !allow_in_passthru)))
 		enable = false;

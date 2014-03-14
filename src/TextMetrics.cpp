@@ -234,7 +234,7 @@ void TextMetrics::applyOuterFont(Font & font) const
 {
 	FontInfo lf(font_.fontInfo());
 	lf.reduce(bv_->buffer().params().getFont().fontInfo());
-	font.fontInfo().realize(lf); 
+	font.fontInfo().realize(lf);
 }
 
 
@@ -346,19 +346,19 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 	// no RTL boundary at line break:
 	// abc|\n    -> move right ->   abc\n       (and not:    abc\n|
 	// FED                          FED|                     FED     )
-	if (startpos == pos && endpos == pos && endpos != par.size() 
-		&& (par.isNewline(pos - 1) 
-			|| par.isLineSeparator(pos - 1) 
+	if (startpos == pos && endpos == pos && endpos != par.size()
+		&& (par.isNewline(pos - 1)
+			|| par.isLineSeparator(pos - 1)
 			|| par.isSeparator(pos - 1)))
 		return false;
-	
+
 	bool left = font.isVisibleRightToLeft();
 	bool right;
 	if (pos == par.size())
 		right = par.isRTL(bv_->buffer().params());
 	else
 		right = displayFont(pit, pos).isVisibleRightToLeft();
-	
+
 	return left != right;
 }
 
@@ -581,7 +581,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			case LYX_ALIGN_CENTER:
 			case LYX_ALIGN_LEFT:
 			case LYX_ALIGN_RIGHT:
-				if (align == LYX_ALIGN_NONE 
+				if (align == LYX_ALIGN_NONE
 				    || align == LYX_ALIGN_BLOCK)
 					align = owner.contentAlignment();
 				break;
@@ -718,7 +718,7 @@ int TextMetrics::labelFill(pit_type const pit, Row const & row) const
 
 
 #if 0
-// Not used, see TextMetrics::rowBreakPoint. 
+// Not used, see TextMetrics::rowBreakPoint.
 // this needs special handling - only newlines count as a break point
 static pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 {
@@ -812,7 +812,7 @@ pos_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 	Layout const & layout = par.layout();
 
 #if 0
-	//FIXME: As long as leftMargin() is not correctly implemented for 
+	//FIXME: As long as leftMargin() is not correctly implemented for
 	// MARGIN_RIGHT_ADDRESS_BOX, we should also not do this here.
 	// Otherwise, long rows will be painted off the screen.
 	if (layout.margintype == MARGIN_RIGHT_ADDRESS_BOX)
@@ -853,10 +853,10 @@ pos_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 	ParagraphList const & pars_ = text_->paragraphs();
 	bool const draw_par_end_marker = lyxrc.paragraph_markers
 		&& size_type(pit + 1) < pars_.size();
-				
+
 	for ( ; i < end; ++i, ++fi) {
 		int thiswidth = pm.singleWidth(i, *fi);
-		
+
 		if (draw_par_end_marker && i == end - 1)
 			// enlarge the last character to hold the end-of-par marker
 			thiswidth += par_marker_width;
@@ -973,8 +973,8 @@ int TextMetrics::rowWidth(int right_margin, pit_type const pit,
 					w -= singleWidth(pit, i - 1);
 				w = max(w, label_end);
 			}
-			
-			// a line separator at the end of a line (but not at the end of a 
+
+			// a line separator at the end of a line (but not at the end of a
 			// paragraph) will not be drawn and should therefore not count for
 			// the row width.
 			if (!par.isLineSeparator(i) || i != end - 1 || end == par.size())
@@ -1488,7 +1488,7 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 	}
 	pit_type pit = getPitNearY(y);
 	LASSERT(pit != -1, return 0);
-	
+
 	int yy = y; // is modified by getPitAndRowNearY
 	Row const & row = getPitAndRowNearY(yy, pit, assert_in_view, up);
 
@@ -1514,7 +1514,7 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 
 	// This should be just before or just behind the
 	// cursor position set above.
-	LASSERT(inset == inset_before 
+	LASSERT(inset == inset_before
 		|| inset == pars[pit].getInset(pos), return 0);
 
 	// Make sure the cursor points to the position before
@@ -1971,7 +1971,7 @@ int TextMetrics::leftMargin(int max_width,
 		// The left margin depends on the widest row in this paragraph.
 		// This code is wrong because it depends on the rows, but at the
 		// same time this function is used in redoParagraph to construct
-		// the rows. 
+		// the rows.
 		ParagraphMetrics const & pm = par_metrics_[pit];
 		RowList::const_iterator rit = pm.rows().begin();
 		RowList::const_iterator end = pm.rows().end();
@@ -2016,7 +2016,7 @@ int TextMetrics::leftMargin(int max_width,
 		    && par.getInset(pos)->display())
 			&& (!(tclass.isDefaultLayout(par.layout())
 	         || tclass.isPlainLayout(par.layout()))
-	        || buffer.params().paragraph_separation 
+	        || buffer.params().paragraph_separation
 				== BufferParams::ParagraphIndentSeparation)
 	    )
 		{
@@ -2028,7 +2028,7 @@ int TextMetrics::leftMargin(int max_width,
 			else
 				l_margin += buffer.params().getIndentation().inPixels(*bv_);
 		}
-	
+
 	return l_margin;
 }
 
@@ -2089,7 +2089,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 	// We store the begin and end pos of the selection relative to this par
 	DocIterator sel_beg_par = cur.selectionBegin();
 	DocIterator sel_end_par = cur.selectionEnd();
-	
+
 	// We care only about visible selection.
 	if (selection) {
 		if (pit != sel_beg.pit()) {
@@ -2118,7 +2118,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 			row.setSelectionAndMargins(sel_beg_par, sel_end_par);
 		else
 			row.setSelection(-1, -1);
-		
+
 		// The row knows nothing about the paragraph, so we have to check
 		// whether this row is the first or last and update the margins.
 		if (row.selection()) {
@@ -2153,7 +2153,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 			pi.pain.fillRectangle(x, y - row.ascent(),
 				width(), row.height(), pi.background_color);
 		}
-		
+
 		// Instrumentation for testing row cache (see also
 		// 12 lines lower):
 		if (lyxerr.debugging(Debug::PAINTING) && inside
