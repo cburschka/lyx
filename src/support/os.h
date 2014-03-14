@@ -59,7 +59,8 @@ shell_type shell();
 int timeout_min();
 
 /// Name of the python interpreter
-std::string const python();
+/// @param reset True if the python path should be recomputed
+std::string const python(bool reset = false);
 
 ///
 bool isFilesystemCaseSensitive();
