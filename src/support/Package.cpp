@@ -154,8 +154,9 @@ Package::Package(string const & command_line_arg0,
 std::string const & Package::configure_command() const
 {
 	if (configure_command_.empty()) {
+		std::string &command = const_cast<std::string&>(configure_command_);
 		FileName const configure_script(addName(system_support().absFileName(), "configure.py"));
-		configure_command_ = os::python() + ' ' +
+		command = os::python() + ' ' +
 			quoteName(configure_script.toFilesystemEncoding()) +
 			with_version_suffix() + " --binary-dir=" +
 			quoteName(FileName(binary_dir().absFileName()).toFilesystemEncoding());
