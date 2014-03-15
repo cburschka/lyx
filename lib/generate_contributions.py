@@ -1907,6 +1907,14 @@ contributors = [
                  "3 March 2014",
                  u"Chinese (traditional) translations"),
 
+     contributor(u"Roy Xia",
+                 "royxia062 () gmail ! com",
+                 "GPL",
+                 "GPL Statement",
+                 "m=139434481324689",
+                 "9 March 2014",
+                 u"Bugfixing"),
+
      contributor(u"Yihui Xie",
                  "xie () yihui ! name",
                  "GPL",

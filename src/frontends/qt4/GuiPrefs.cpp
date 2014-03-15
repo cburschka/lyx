@@ -3182,8 +3182,6 @@ void PrefShortcuts::shortcutOkPressed()
 		return;
 	}
 
-	shortcut_->accept();
-
 	// check to see if there's been any change
 	FuncRequest oldBinding = system_bind_.getBinding(k);
 	if (oldBinding.action() == LFUN_UNKNOWN_ACTION)
@@ -3192,19 +3190,39 @@ void PrefShortcuts::shortcutOkPressed()
 		// nothing has changed
 		return;
 	
-	// make sure this key isn't already bound---and, if so, not unbound
+	// make sure this key isn't already bound---and, if so, prompt user
 	FuncCode const unbind = user_unbind_.getBinding(k).action();
 	docstring const action_string = makeCmdString(oldBinding);
 	if (oldBinding.action() > LFUN_NOACTION && unbind == LFUN_UNKNOWN_ACTION
 		  && save_lfun_ != toqstr(action_string)) {
-		// FIXME Perhaps we should offer to over-write the old shortcut?
-		// If so, we'll need to remove it from our list, etc.
-		Alert::error(_("Failed to create shortcut"),
-			bformat(_("Shortcut `%1$s' is already bound to:\n%2$s\n"
-			  "You need to remove that binding before creating a new one."), 
-			k.print(KeySequence::ForGui), action_string));
-		return;
+		docstring const new_action_string = makeCmdString(func);
+		docstring const text = bformat(_("Shortcut `%1$s' is already bound to "
+						 "%2$s.\n"
+						 "Are you sure you want to unbind the "
+						 "current shortcut and bind it to %3$s?"),
+					       k.print(KeySequence::ForGui), action_string,
+					       new_action_string);
+		int ret = Alert::prompt(_("Redefine shortcut?"),
+					text, 0, 1, _("&Redefine"), _("&Cancel"));
+		if (ret != 0)
+			return;
+		QString const sequence_text = toqstr(k.print(KeySequence::ForGui));
+		QList<QTreeWidgetItem*> items = shortcutsTW->findItems(sequence_text,
+			Qt::MatchFlags(Qt::MatchExactly | Qt::MatchRecursive), 1);
+		if (items.size() > 0) {
+			// should always happen
+			bool expanded = items[0]->parent()->isExpanded();
+			shortcutsTW->setCurrentItem(items[0]);
+			removeShortcut();
+			shortcutsTW->setCurrentItem(0);
+			// make sure user doesn't see tree expansion if
+			// old binding wasn't in an expanded tree
+			if (!expanded)
+				items[0]->parent()->setExpanded(false);
+		}
 	}
+
+	shortcut_->accept();
 
 	if (!save_lfun_.isEmpty())
 		// real modification of the lfun's shortcut,
