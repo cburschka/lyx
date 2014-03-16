@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-03-10 10:43+0100\n"
+"POT-Creation-Date: 2014-03-16 09:18+0100\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -26801,16 +26801,23 @@ msgstr "Neznáma alebo neplatná LyX funkcia"
 msgid "Invalid or empty key sequence"
 msgstr "Chybná alebo prázdna sekvencia kláves"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3203
+#: src/frontends/qt4/GuiPrefs.cpp:3199
 #, c-format
 msgid ""
-"Shortcut `%1$s' is already bound to:\n"
-"%2$s\n"
-"You need to remove that binding before creating a new one."
+"Shortcut `%1$s' is already bound to %2$s.\n"
+"Are you sure you want to unbind the current shortcut and bind it to %3$s?"
 msgstr ""
 "Skratka `%1$s' je už viazaná k:\n"
 "%2$s\n"
-"Pred vytvorením novej musíte túto väzbu zmazať."
+"Naozaj chcete túto väzbu zmazať a zato vytvoriť novú skratku %3$s?"
+
+#: src/frontends/qt4/GuiPrefs.cpp:3205
+msgid "Redefine shortcut?"
+msgstr "Obnoviť skratku?"
+
+#: src/frontends/qt4/GuiPrefs.cpp:3206
+msgid "&Redefine"
+msgstr "&Obnoviť"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3222
 msgid "Can not insert shortcut to the list"
@@ -32332,3 +32339,12 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Visible Space|i"
 #~ msgstr "Viditeľná Medzera|i"
+
+#~ msgid ""
+#~ "Shortcut `%1$s' is already bound to:\n"
+#~ "%2$s\n"
+#~ "You need to remove that binding before creating a new one."
+#~ msgstr ""
+#~ "Skratka `%1$s' je už viazaná k:\n"
+#~ "%2$s\n"
+#~ "Pred vytvorením novej musíte túto väzbu zmazať."
