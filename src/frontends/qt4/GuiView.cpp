@@ -1002,6 +1002,9 @@ void GuiView::updateWindowTitle(GuiWorkArea * wa)
 		return;
 	setWindowTitle(qt_("LyX: ") + wa->windowTitle());
 	setWindowIconText(wa->windowIconText());
+#if (QT_VERSION >= 0x040400)
+	setWindowFilePath(wa->bufferView().buffer().absFileName().c_str());
+#endif
 }
 
 
