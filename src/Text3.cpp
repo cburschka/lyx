@@ -743,7 +743,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		if (!atFirstOrLastRow) {
 			needsUpdate |= cur.selHandle(select);
-			cur.selHandle(select);
 			cur.upDownInText(up, needsUpdate);
 			needsUpdate |= cur.beforeDispatchCursor().inMathed();
 		} else {
