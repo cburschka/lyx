@@ -1324,7 +1324,8 @@ ostream & operator<<(ostream & os, Cursor const & cur)
 		os << "------------------------------- | " << cur.anchor_[i] << "\n";
 	}
 	os << " selection: " << cur.selection_
-	   << " x_target: " << cur.x_target_ << endl;
+	   << " x_target: " << cur.x_target_
+	   << " boundary: " << cur.boundary() << endl;
 	return os;
 }
 
