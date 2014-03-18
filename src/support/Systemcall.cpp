@@ -250,17 +250,29 @@ int Systemcall::startscript(Starttype how, string const & what,
 
 	SystemcallPrivate d(infile, outfile, errfile);
 
-
-	d.startProcess(cmd, path, how == DontWait);
-	if (how == DontWait && d.state == SystemcallPrivate::Running) {
+#ifdef Q_OS_WIN32
+	d.startProcess(cmd, path, false);
+	if (!d.waitWhile(SystemcallPrivate::Starting, process_events, -1)) {
+		LYXERR0("Systemcall: '" << cmd << "' did not start!");
+		LYXERR0("error " << d.errorMessage());
+		return 10;
+	}
+	if (how == DontWait) {
+		d.releaseProcess();
 		return 0;
 	}
+#else
+	d.startProcess(cmd, path, how == DontWait);
+	if (how == DontWait && d.state == SystemcallPrivate::Running)
+		return 0;
+
 	if (d.state == SystemcallPrivate::Error
 			|| !d.waitWhile(SystemcallPrivate::Starting, process_events, -1)) {
 		LYXERR0("Systemcall: '" << cmd << "' did not start!");
 		LYXERR0("error " << d.errorMessage());
 		return 10;
 	}
+#endif
 
 	if (!d.waitWhile(SystemcallPrivate::Running, process_events,
 			 os::timeout_min() * 60 * 1000)) {
