@@ -148,7 +148,6 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 	if (image) {
 		pi.pain.image(x, y - dim_.asc, dim_.wid, dim_.height(),
 			      *image);
-
 	} else {
 		int const offset = Inset::TEXT_TO_INSET_OFFSET;
 
