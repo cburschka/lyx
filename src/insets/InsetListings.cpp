@@ -203,7 +203,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 	}
 	if (isInline) {
 		char const * delimiter = lstinline_delimiters;
-		for (; delimiter != '\0'; ++delimiter)
+		for (; *delimiter != '\0'; ++delimiter)
 			if (!contains(code, *delimiter))
 				break;
 		// This code piece contains all possible special character? !!!
