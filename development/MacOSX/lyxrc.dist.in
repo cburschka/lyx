@@ -84,7 +84,7 @@
 # FORMATS SECTION ##########################
 #
 
-\format "fig" "fig" "FIG" "" "open -a X11; export DISPLAY=:0.0; xfig" "open -a X11; export DISPLAY=:0.0; xfig" "vector"
+\format "fig" "fig" "FIG" "" "open -a X11; export DISPLAY=:0.0; xfig" "open -a X11; export DISPLAY=:0.0; xfig" "vector"	"application/x-xfig"
 
 
 #
