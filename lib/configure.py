@@ -8,7 +8,7 @@
 # \author Bo Peng
 # Full author contact details are available in file CREDITS.
 
-import glob, logging, os, re, shutil, subprocess, sys
+import glob, logging, os, re, shutil, subprocess, sys, stat
 
 # set up logging
 logging.basicConfig(level = logging.DEBUG,
@@ -102,6 +102,73 @@ def setEnviron():
     os.environ['LC'] = os.getenv('LC_ALL', 'C')
     os.environ['LC_MESSAGE'] = os.getenv('LC_MESSAGE', 'C')
     os.environ['LC_CTYPE'] = os.getenv('LC_CTYPE', 'C')
+
+
+def copy_tree(src, dst, preserve_symlinks=False, level=0):
+    ''' Copy an entire directory tree 'src' to a new location 'dst'.
+ 
+    Code inspired from distutils.copy_tree.
+	 Copying ignores non-regular files and the cache directory.
+    Pipes may be present as leftovers from LyX for lyx-server.
+
+    If 'preserve_symlinks' is true, symlinks will be
+    copied as symlinks (on platforms that support them!); otherwise
+    (the default), the destination of the symlink will be copied.
+    '''
+ 
+    if not os.path.isdir(src):
+        raise FileError, \
+              "cannot copy tree '%s': not a directory" % src
+    try:
+        names = os.listdir(src)
+    except os.error, (errno, errstr):
+        raise FileError, \
+              "error listing files in '%s': %s" % (src, errstr)
+ 
+    if not os.path.isdir(dst):
+        os.makedirs(dst)
+ 
+    outputs = []
+ 
+    for name in names:
+        src_name = os.path.join(src, name)
+        dst_name = os.path.join(dst, name)
+        if preserve_symlinks and os.path.islink(src_name):
+            link_dest = os.readlink(src_name)
+            os.symlink(link_dest, dst_name)
+            outputs.append(dst_name)
+        elif level == 0 and name == 'cache':
+            logger.info("Skip cache %s", src_name)
+        elif os.path.isdir(src_name):
+            outputs.extend(
+                copy_tree(src_name, dst_name, preserve_symlinks, level=(level + 1)))
+        elif stat.S_ISREG(os.stat(src_name).st_mode) or os.path.islink(src_name):
+            shutil.copy2(src_name, dst_name)
+            outputs.append(dst_name)
+        else:
+            logger.info("Ignore non-regular file %s", src_name)
+ 
+    return outputs
+
+
+def checkUpgrade():
+    ''' Check for upgrade from previous version '''
+    cwd = os.getcwd()
+    basename = os.path.basename( cwd )
+    lyxrc = os.path.join(cwd, outfile)
+    if not os.path.isfile( lyxrc ) and basename.endswith( version_suffix ) :
+        logger.info('Checking for upgrade from previous version.')
+        parent = os.path.dirname(cwd)
+        appname = basename[:(-len(version_suffix))]
+        for version in ['-2.0', '-1.6' ]:
+            logger.debug('Checking for upgrade from previous version ' + version)
+            previous = os.path.join(parent, appname + version)
+            logger.debug('previous = ' + previous)
+            if os.path.isdir( previous ):
+                logger.info('Found directory "%s".', previous)
+                copy_tree( previous, cwd )
+                logger.info('Content copied to directory "%s".', cwd)
+                return
 
 
 def createDirectories():
@@ -1450,6 +1517,8 @@ Options:
         logger.error("configure: error: cannot find chkconfig.ltx script")
         sys.exit(1)
     setEnviron()
+    if sys.platform == 'darwin' and len(version_suffix) > 0:
+        checkUpgrade()
     createDirectories()
     dtl_tools = checkDTLtools()
     ## Write the first part of outfile
