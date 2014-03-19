@@ -64,27 +64,26 @@ pos_type Row::Element::x2pos(double &x, bool const low) const
 	FontMetrics const & fm = theFontMetrics(font);
 	double last_w = 0;
 	double w = 0;
-	size_t i = 1;
+	size_t i = 0;
 	// non-STRING element only contain one position
 	if (type != STRING) {
-		i = 0;
 		w = width();
 	} else {
 		// FIXME: implement dichotomy search?
-		for ( ; i <= str.size() ; ++i) {
+		for ( ; i < str.size() ; ++i) {
 			last_w = w;
-			w = fm.width(str.substr(0,i));
-			if (w > x2) {
-				--i;
+			w = fm.width(str.substr(0, i + 1));
+			if (w > x2)
 				break;
-			}
 		}
 		// if (i == str.size())
 		// 	lyxerr << " NOT FOUND ";
 	}
 
+	if (i == str.size())
+		x2 = w;
 	// round to the closest side
-	if (!low && (x2 - last_w > w - x2)) {
+	else if (!low && (x2 - last_w > w - x2)) {
 		x2 = w;
 		++i;
 	} else
@@ -214,6 +213,7 @@ ostream & operator<<(ostream & os, Row const & row)
 	os << " pos: " << row.pos_ << " end: " << row.end_
 	   << " x: " << row.x
 	   << " width: " << row.dim_.wid
+	   << " right_margin: " << row.right_margin
 	   << " ascent: " << row.dim_.asc
 	   << " descent: " << row.dim_.des
 	   << " separator: " << row.separator

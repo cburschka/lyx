@@ -15,7 +15,7 @@
  * Full author contact details are available in file CREDITS.
  */
 
-//#define KEEP_OLD_METRICS_CODE 1
+#define KEEP_OLD_METRICS_CODE 1
 
 #include <config.h>
 
@@ -810,8 +810,8 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	int const width = max_width_ - right_margin;
 	pos_type const body_pos = par.beginOfBody();
 	row.clear();
-	row.dimension().wid = leftMargin(max_width_, pit, pos);
-	row.x = row.width();
+	row.x = leftMargin(max_width_, pit, pos);
+	row.dimension().wid = row.x;
 	row.right_margin = right_margin;
 
 	if (pos >= end || row.width() > width) {
@@ -1129,11 +1129,16 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 
 	pos_type pos = row.pos();
 	boundary = false;
-	if (row.x >= x || row.empty())
+	if (row.empty())
 		x = row.x;
-	else if (x >= row.width() - row.right_margin) {
+	else if (x < row.x) {
+		pos = row.front().font.isVisibleRightToLeft() ?
+			row.front().endpos : row.front().pos;
+		x = row.x;
+	} else if (x > row.width() - row.right_margin) {
+		pos = row.back().font.isVisibleRightToLeft() ?
+			row.back().pos : row.back().endpos;
 		x = row.width() - row.right_margin;
-		pos = row.back().endpos;
 	} else {
 		double w = row.x;
 		Row::const_iterator cit = row.begin();
@@ -1170,9 +1175,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 		boundary = row.right_boundary();
 
 	x += xo;
-#if !defined(KEEP_OLD_METRICS_CODE)
-	return pos - row.pos();
-#else
+#ifdef KEEP_OLD_METRICS_CODE
 	Buffer const & buffer = bv_->buffer();
 
 	int x2 = x_orig;
@@ -1284,14 +1287,15 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 #endif
 
 	x2 = int(tmpx) + xo;
-	pos_type const col = c - row.pos();
+	//pos_type const col = c - row.pos();
 
 	if (abs(x2 - x) > 0.1 || boundary != boundary
 	    || c != pos) {
-		lyxerr << "getColumnNearX: new=(x=" << x - xo << ", b=" << boundary << ", p=" << pos << "), "
+		lyxerr << "getColumnNearX(" << x_orig << "): new=(x=" << x - xo << ", b=" << boundary << ", p=" << pos << "), "
 		       << "old=(x=" << x2 - xo << ", b=" << boundary2 << ", p=" << c << "), " << row;
 	}
 
+#if 0
 	if (!c || end == par.size())
 		return col;
 
@@ -1301,7 +1305,9 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	}
 
 	return min(col, end - 1 - row.pos());
-#endif
+#endif // 0
+#endif // KEEP_OLD_METRICS_CODE
+	return pos - row.pos();
 }
 
 
@@ -1617,7 +1623,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	int const boundary_corr = (boundary && pos) ? -1 : 0;
 
 	if (row.empty()
-	    || (row.begin()->font.isRightToLeft()
+	    || (row.begin()->font.isVisibleRightToLeft()
 		&& pos == row.begin()->endpos))
 		return int(x);
 
@@ -1632,10 +1638,9 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	}
 
 	if (cit == row.end()
-	    && (row.back().font.isRightToLeft() || pos != row.back().endpos))
-		lyxerr << "NOT FOUND!"
-		       << "pos=" << pos << "(" << boundary_corr << ")" << "\n"
-		       << row;
+	    && (row.back().font.isVisibleRightToLeft() || pos != row.back().endpos))
+		LYXERR0("cursorX(" << pos - boundary_corr
+			<< ", " << boundary_corr << "): NOT FOUND! " << row);
 
 #ifdef KEEP_OLD_METRICS_CODE
 	Paragraph const & par = text_->paragraphs()[pit];
@@ -1774,18 +1779,16 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	}
 
 	if (abs(x2 - x) > 0.01) {
-		lyxerr << "cursorX: x2=" << x2 << ", x=" << x;
+		lyxerr << "cursorX(" << pos - boundary_corr << ", " << boundary_corr
+		       << "): old=" << x2 << ", new=" << x;
 		if (cit == row.end())
-			lyxerr << "Element not found for "
-			       << pos - boundary_corr << "(" << boundary_corr << ")";
+			lyxerr << "Element not found\n";
 		else
-			lyxerr << " in [" << cit->pos << "/"
-			       << pos - boundary_corr << "(" << boundary_corr << ")"
-			       << "/" << cit->endpos << "] of " << *cit << "\n";
+			lyxerr << " found in " << *cit << "\n";
 		lyxerr << row <<endl;
 	}
-#endif
 
+#endif // KEEP_OLD_METRICS_CODE
 	return int(x);
 }
 

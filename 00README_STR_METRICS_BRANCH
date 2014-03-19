@@ -24,21 +24,26 @@ What is done:
   useless workarounds which disable kerning and ligatures.
 
 
-Next steps needed:
+Next steps:
 
 * check what happens with arabic and/or hebrew text. There may be some
   problems related to compose characters. I suspect that some code is
   needed in FontMetrics::width.
 
-Next possible steps:
-
 * Get rid of old code in cursorX and getColumnNearX; it has been
   kept for comparison purpose, guarded with KEEP_OLD_METRICS_CODE in
   order to check computations.
 
+* rename getColumnNearX to getPosNearX or x2pos (and change code
+  accordingly). It does not make sense to return a position relative
+  to the start of row, since nobody needs this.
+
 * Re-implement row painting using row elements. This is not difficult
   in principle, but the code is intricate and needs some careful
-  analysis.
+  analysis. First thing that needs to be done is to break row elements
+  with the same criterions. Currently TextMetrics::breakRow does not
+  consider on-the-fly spellchecking and selection changes, but it is
+  not clear to me that it is required.
 
 * Profile and see how performance can be improved.
 
@@ -56,4 +61,7 @@ Other differences (aka real bugs)
 
 * there are still difference in what breaks words. In particular,
   RowPainter breaks strings at: selection end, spellchecking
-  extremity.
+  extremities.
+
+* when clicking in the right margin, GetColumnNearX does not return
+  the same value as before.

@@ -186,6 +186,10 @@ public:
 	///
 	bool empty() const { return elements_.empty(); }
 	///
+	Element & front() { return elements_.front(); }
+	///
+	Element const & front() const { return elements_.front(); }
+	///
 	Element & back() { return elements_.back(); }
 	///
 	Element const & back() const { return elements_.back(); }
