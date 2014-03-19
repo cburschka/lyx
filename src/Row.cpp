@@ -382,24 +382,25 @@ void Row::shorten_if_needed(pos_type const keep, int const w)
 }
 
 
-void Row::reverseRTL()
+void Row::reverseRTL(bool const rtl_par)
 {
 	pos_type i = 0;
 	pos_type const end = elements_.size();
 	while (i < end) {
-		// skip LtR elements
-		while (i < end && !elements_[i].font.isRightToLeft())
-			++i;
-		if (i >= end)
-			break;
-
-		// look for a RTL sequence
+		// gather a sequence of elements with the same direction
+		bool const rtl = elements_[i].font.isVisibleRightToLeft();
 		pos_type j = i;
-		while (j < end && elements_[j].font.isRightToLeft())
+		while (j < end && elements_[j].font.isVisibleRightToLeft() == rtl)
 			++j;
-		reverse(elements_.begin() + i, elements_.begin() + j);
+		// if the direction is not the same as the paragraph
+		// direction, the sequence has to be reverted.
+		if (rtl != rtl_par)
+			reverse(elements_.begin() + i, elements_.begin() + j);
 		i = j;
 	}
+	// If the paragraph itself is RTL, reverse everything
+	if (rtl_par)
+		reverse(elements_.begin(), elements_.end());
 }
 
 } // namespace lyx

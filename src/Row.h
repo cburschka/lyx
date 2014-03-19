@@ -212,7 +212,7 @@ public:
 	 * Find sequences of right-to-left elements and reverse them.
 	 * This should be called once the row is completely built.
 	 */
-	void reverseRTL();
+	void reverseRTL(bool rtl_par);
 
 	friend std::ostream & operator<<(std::ostream & os, Row const & row);
 

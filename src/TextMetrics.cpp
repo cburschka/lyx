@@ -929,7 +929,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 		row.pop_back();
 
 	// make sure that the RTL elements are in reverse ordering
-	row.reverseRTL();
+	row.reverseRTL(text_->isRTL(par));
 
 	row.dimension().wid += right_margin;
 }
