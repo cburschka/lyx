@@ -63,6 +63,9 @@
 #   New RC default_otf_view_format
 #   No conversion necessary.
 
+# NOTE: The format should also be updated in LYXRC.cpp and
+# in configure.py.
+
 import re
 
 ###########################################################
