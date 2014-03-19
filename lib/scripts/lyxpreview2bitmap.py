@@ -409,6 +409,8 @@ def main(argv):
 
     # Compile the latex file.
     latex_status, latex_stdout = run_latex(latex, latex_file, bibtex)
+    if latex_status:
+      return (latex_status, [])
 
     # The dvi output file name
     dvi_file = latex_file_re.sub(".dvi", latex_file)
