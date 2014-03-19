@@ -271,7 +271,9 @@ protected:
 	///
 	void handleFont2(Cursor & cur, docstring const & arg);
 	///
-	bool previewState(BufferView * bv) const;
+	bool previewState(BufferView const * const bv) const;
+	///
+	bool previewTooSmall(Dimension const & dim) const;
 };
 
 

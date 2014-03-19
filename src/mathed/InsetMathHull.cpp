@@ -44,6 +44,7 @@
 #include "insets/InsetRef.h"
 #include "insets/RenderPreview.h"
 
+#include "graphics/GraphicsImage.h"
 #include "graphics/PreviewImage.h"
 #include "graphics/PreviewLoader.h"
 
@@ -410,7 +411,7 @@ ColorCode InsetMathHull::standardColor() const
 }
 
 
-bool InsetMathHull::previewState(BufferView * bv) const
+bool InsetMathHull::previewState(const BufferView *const bv) const
 {
 	if (!editing(bv) && RenderPreview::status() == LyXRC::PREVIEW_ON
 		&& type_ != hullRegexp)
@@ -423,14 +424,24 @@ bool InsetMathHull::previewState(BufferView * bv) const
 }
 
 
+namespace {
+static const int ERROR_FRAME_WIDTH = 2;
+}
+
 void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (previewState(mi.base.bv)) {
 		preview_->metrics(mi, dim);
-		// insert a one pixel gap in front of the formula
-		dim.wid += 1;
-		if (display())
-			dim.des += displayMargin();
+		if (previewTooSmall(dim)) {
+			// preview image is too small
+			dim.wid += 2 * ERROR_FRAME_WIDTH;
+			dim.asc += 2 * ERROR_FRAME_WIDTH;
+		} else {
+			// insert a one pixel gap in front of the formula
+			dim.wid += 1;
+			if (display())
+				dim.des += displayMargin();
+		}
 		// Cache the inset dimension.
 		setDimCache(mi, dim);
 		return;
@@ -471,10 +482,21 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
+bool InsetMathHull::previewTooSmall(Dimension const & dim) const
+{
+	return dim.width() <= 10 && dim.height() <= 10;
+}
+
+
 ColorCode InsetMathHull::backgroundColor(PainterInfo const & pi) const
 {
-	if (previewState(pi.base.bv))
+	BufferView const * const bv = pi.base.bv;
+	if (previewState(bv)) {
+		Dimension const dim = dimension(*pi.base.bv);
+		if (previewTooSmall(dim))
+			return Color_error;
 		return graphics::PreviewLoader::backgroundColor();
+	}
 	return Color_mathbg;
 }
 
@@ -482,23 +504,36 @@ ColorCode InsetMathHull::backgroundColor(PainterInfo const & pi) const
 void InsetMathHull::drawBackground(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
+	if (previewTooSmall(dim)) {
+		pi.pain.fillRectangle(x, y - 2 * ERROR_FRAME_WIDTH, 
+		    dim.wid, dim.asc + dim.des, backgroundColor(pi));
+		return;
+	} 
 	pi.pain.fillRectangle(x + 1, y - dim.asc + 1, dim.wid - 2,
-		dim.asc + dim.des - 1, pi.backgroundColor(this));
+			dim.asc + dim.des - 1, backgroundColor(pi));
 }
 
 
 void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 {
-	use_preview_ = previewState(pi.base.bv);
+	BufferView const * const bv = pi.base.bv;
+	use_preview_ = previewState(bv);
 
 	if (type_ == hullRegexp) {
-		Dimension const dim = dimension(*pi.base.bv);
+		Dimension const dim = dimension(*bv);
 		pi.pain.rectangle(x + 1, y - dim.ascent() + 1,
 			dim.width() - 2, dim.height() - 2, Color_regexpframe);
 	}
+
 	if (use_preview_) {
-		// one pixel gap in front
-		preview_->draw(pi, x + 1, y);
+		Dimension const dim = dimension(*bv);
+		if (previewTooSmall(dim)) {
+			// we have an extra frame
+			preview_->draw(pi, x + ERROR_FRAME_WIDTH, y);
+		} else {
+			// one pixel gap in front
+			preview_->draw(pi, x + 1, y);
+		}
 		setPosCache(pi, x, y);
 		return;
 	}
