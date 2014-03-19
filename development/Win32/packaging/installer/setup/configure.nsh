@@ -166,7 +166,7 @@ Section -Configure
   # we need to add these entris because python scripts can only be executed
   # if the full path is given
   ${if} $LilyPondPath != ""
-   FileWrite $R1 '\format "lilypond-book" "lytex" "LilyPond book (LaTeX)" "" "" "auto" "document,menu=export"$\r$\n\
+   FileWrite $R1 '\format "lilypond-book" "lytex" "LilyPond book (LaTeX)" "" "" "auto" "document,menu=export" ""$\r$\n\
 		  \converter "lilypond-book" "pdflatex" "python \"$LilyPondPath\\lilypond-book.py\" --safe --pdf --latex-program=pdflatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
 		  \converter "lilypond-book" "xetex" "python \"$LilyPondPath\\lilypond-book.py\" --safe --pdf --latex-program=xelatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
 		  \converter "lilypond-book" "luatex" "python \"$LilyPondPath\\lilypond-book.py\" --safe --pdf --latex-program=lualatex --lily-output-dir=ly-pdf $$$$i" ""$\r$\n\
