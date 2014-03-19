@@ -251,6 +251,11 @@ int Systemcall::startscript(Starttype how, string const & what,
 	SystemcallPrivate d(infile, outfile, errfile);
 
 #ifdef Q_OS_WIN32
+	// QProcess::startDetached cannot provide environment variables. When the
+	// environment variables are set using the latexEnvCmdPrefix and the process
+	// is started with QProcess::startDetached, a console window is shown every 
+	// time a viewer is started. To avoid this, we fall back on Windows to the 
+	// original implementation that creates a QProcess object.
 	d.startProcess(cmd, path, false);
 	if (!d.waitWhile(SystemcallPrivate::Starting, process_events, -1)) {
 		LYXERR0("Systemcall: '" << cmd << "' did not start!");
