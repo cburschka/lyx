@@ -3962,7 +3962,7 @@ Return
 
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 
@@ -6375,7 +6375,7 @@ Return
 \family default
 とは
 \family typewriter
-break-paragraph
+paragraph-break
 \family default
 関数のことであって、一方で住所の各行は段落ではありませんから、これは自然な挙動です。したがって、もし
 \family sans
@@ -7868,7 +7868,7 @@ status collapsed
 #2-a ここは第2階層です。
 \begin_inset Info
 type  "shortcut"
-arg   "break-paragraph inverse"
+arg   "paragraph-break inverse"
 \end_inset
 
 を押してそれから
