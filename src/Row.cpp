@@ -282,7 +282,6 @@ void Row::add(pos_type const pos, char_type const c,
 		Element e(STRING, pos, f, ch);
 		elements_.push_back(e);
 	}
-	//lyxerr << "FONT " <<back().font.language() << endl;
 	back().str += c;
 	back().endpos = pos + 1;
 }
@@ -294,7 +293,8 @@ void Row::addVirtual(pos_type const pos, docstring const & s,
 	finalizeLast();
 	Element e(VIRTUAL, pos, f, ch);
 	e.str = s;
-	// A completion has no size
+	e.dim.wid = theFontMetrics(f).width(s);
+	dim_.wid += e.dim.wid;
 	e.endpos = pos;
 	elements_.push_back(e);
 	finalizeLast();
