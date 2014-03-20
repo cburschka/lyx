@@ -62,7 +62,7 @@
 #
 # This is the default toolbar:
 
-Format 1
+Format 2
 
 ToolbarSet
 

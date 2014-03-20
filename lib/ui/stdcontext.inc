@@ -19,7 +19,7 @@
 #   (except when the preposition is part of a verb phrase, such as "Check In")
 # (http://library.gnome.org/devel/hig-book/stable/design-text-labels.html.en)
 
-Format 1
+Format 2
 
 Menuset
 
@@ -56,7 +56,7 @@ Menuset
 		OptItem "Number Whole Formula|N" "math-number-toggle"
 		OptItem "Number This Line|u" "math-number-line-toggle"
 		OptItem "Equation Label|L" "label-insert"
-		OptItem "Copy as Reference|R" "copy-label-as-reference"
+		OptItem "Copy as Reference|R" "label-copy-as-reference"
 		Separator
 		Item "Split Cell|C" "cell-split"
 		Separator
@@ -105,7 +105,7 @@ Menuset
 		Item "Next Cross-Reference|N" "reference-next"
 		Item "Go Back|G" "bookmark-goto 0"
 		Separator
-		Item "Copy as Reference|C" "copy-label-as-reference"
+		Item "Copy as Reference|C" "label-copy-as-reference"
 		Separator
 		Item "Settings...|S" "inset-settings"
 	End
@@ -472,7 +472,7 @@ Menuset
 #
 
 	Menu "context-toc-label"
-		OptItem "Copy as Reference|C" "copy-label-as-reference"
+		OptItem "Copy as Reference|C" "label-copy-as-reference"
 		OptItem "Insert Reference at Cursor Position|I" "label-insert-as-reference"
 		Separator
 		Item "Settings...|S" "inset-settings"
