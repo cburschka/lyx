@@ -326,5 +326,6 @@ conversions = [
 	[ 11, [split_pdf_format]],
 	[ 12, []],
 	[ 13, [mac_cursor_movement]],
-	[ 14, []]
+	[ 14, []],
+	[ 15, []]
 ]
