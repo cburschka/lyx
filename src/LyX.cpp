@@ -33,6 +33,7 @@
 #include "FuncStatus.h"
 #include "HunspellChecker.h"
 #include "KeyMap.h"
+#include "Language.h"
 #include "LaTeXFonts.h"
 #include "LayoutFile.h"
 #include "Lexer.h"

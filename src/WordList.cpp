@@ -12,14 +12,11 @@
 
 #include "WordList.h"
 
-#include "Language.h"
-
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstring.h"
-#include "support/weighted_btree.h"
-
 #include "support/lassert.h"
+#include "support/weighted_btree.h"
 
 #include <map>
 
@@ -28,12 +25,13 @@ using namespace std;
 namespace lyx {
 
 ///
-map<Language, WordList *> theGlobalWordList;
+typedef map<string, WordList *> GlobalWordList;
+GlobalWordList theGlobalWordList;
 
 
-WordList * theWordList(Language const & lang)
+WordList * theWordList(string const & lang)
 {
-	map<Language, WordList *>::iterator it = theGlobalWordList.find(lang);
+	GlobalWordList::iterator it = theGlobalWordList.find(lang);
 	if (it != theGlobalWordList.end())
 		return it->second;
 	else
@@ -44,7 +42,7 @@ WordList * theWordList(Language const & lang)
 
 void WordList::cleanupWordLists()
 {
-	map<Language, WordList *>::const_iterator it = theGlobalWordList.begin();
+	GlobalWordList::const_iterator it = theGlobalWordList.begin();
 	for (; it != theGlobalWordList.end(); ++it)
 		delete it->second;
 	theGlobalWordList.clear();

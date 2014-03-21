@@ -2120,7 +2120,7 @@ bool Text::completionSupported(Cursor const & cur) const
 
 CompletionList const * Text::createCompletionList(Cursor const & cur) const
 {
-	WordList const * list = theWordList(*cur.getFont().language());
+	WordList const * list = theWordList(cur.getFont().language()->lang());
 	return new TextCompletionList(cur, list);
 }
 
