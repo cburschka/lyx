@@ -187,9 +187,15 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 	{
 	case LFUN_CHANGE_ACCEPT:
 	case LFUN_CHANGE_REJECT:
+		dispatch(item.action());
+		cur.dispatch(tmpcmd);
+		break;
+
 	case LFUN_SECTION_SELECT:
 		dispatch(item.action());
 		cur.dispatch(tmpcmd);
+		// necessary to get the selection drawn.
+		cur.buffer()->changed(true);
 		break;
 
 	case LFUN_LABEL_COPY_AS_REF: {
