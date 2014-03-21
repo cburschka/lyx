@@ -1006,7 +1006,7 @@ void GuiView::updateWindowTitle(GuiWorkArea * wa)
 	// Sets the path for the window: this is used by OSX to 
 	// allow a context click on the title bar showing a menu
 	// with the path up to the file
-	setWindowFilePath(toqstr(wa->bufferView().buffer().absFileName().c_str()));
+	setWindowFilePath(toqstr(wa->bufferView().buffer().absFileName()));
 #endif
 }
 
