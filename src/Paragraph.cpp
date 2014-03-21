@@ -499,7 +499,7 @@ public:
 	TextContainer text_;
 
 	typedef set<docstring> Words;
-	typedef map<Language, Words> LangWordsMap;
+	typedef map<string, Words> LangWordsMap;
 	///
 	LangWordsMap words_;
 	///
@@ -3867,7 +3867,7 @@ void Paragraph::collectWords()
 			if (cit == d->fontlist_.end())
 				return;
 			Language const * lang = cit->font().language();
-			d->words_[*lang].insert(word);
+			d->words_[lang->lang()].insert(word);
 		}
 	}
 }
