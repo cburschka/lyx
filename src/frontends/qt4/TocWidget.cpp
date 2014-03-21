@@ -196,6 +196,7 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 		cur.dispatch(tmpcmd);
 		// necessary to get the selection drawn.
 		cur.buffer()->changed(true);
+		gui_view_.setFocus();
 		break;
 
 	case LFUN_LABEL_COPY_AS_REF: {
