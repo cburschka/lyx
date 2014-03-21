@@ -63,18 +63,19 @@ double Row::Element::pos2x(pos_type const i) const
 pos_type Row::Element::x2pos(double &x, bool const low) const
 {
 	//lyxerr << "x2pos: x=" << x << " w=" << width() << " " << *this;
-	// if element is rtl, flip x value
+	// If element is rtl, flip x value
 	bool const rtl = font.isVisibleRightToLeft();
 	double x2 = rtl ? (width() - x) : x;
 
-	FontMetrics const & fm = theFontMetrics(font);
 	double last_w = 0;
 	double w = 0;
 	size_t i = 0;
-	// non-STRING element only contain one position
-	if (type != STRING) {
-		w = width();
-	} else {
+	switch (type) {
+	case VIRTUAL:
+		// those elements are actually empty (but they have a width)
+		break;
+	case STRING: {
+		FontMetrics const & fm = theFontMetrics(font);
 		// FIXME: implement dichotomy search?
 		for ( ; i < str.size() ; ++i) {
 			last_w = w;
@@ -82,8 +83,13 @@ pos_type Row::Element::x2pos(double &x, bool const low) const
 			if (w > x2)
 				break;
 		}
-		// if (i == str.size())
-		// 	lyxerr << " NOT FOUND ";
+		break;
+	}
+	case SEPARATOR:
+	case INSET:
+	case SPACE:
+		// those elements contain only one position
+		w = width();
 	}
 
 	if (type == STRING && i == str.size())
@@ -91,22 +97,31 @@ pos_type Row::Element::x2pos(double &x, bool const low) const
 	// round to the closest side. The !rtl is here to obtain the
 	// same rounding as with the old code (this is cosmetic and
 	// can be eventually removed).
-	else if (!low && (x2 - last_w + !rtl > w - x2)) {
+	else if (type != VIRTUAL && !low && (x2 - last_w + !rtl > w - x2)) {
 		x2 = w;
 		++i;
 	} else
 		x2 = last_w;
 
-	// is element is rtl, flip values
-	if (rtl) {
-		x = width() - x2;
-	} else {
-		x = x2;
-	}
+	// is element is rtl, flip values back
+	x = rtl ? width() - x2 : x2;
 
 	//lyxerr << "=> p=" << pos + i << " x=" << x << endl;
 	return pos + i;
 }
+
+
+pos_type Row::Element::left_pos() const
+{
+	return font.isVisibleRightToLeft() ? endpos : pos;
+}
+
+
+pos_type Row::Element::right_pos() const
+{
+	return font.isVisibleRightToLeft() ? pos : endpos;
+}
+
 
 
 Row::Row()
@@ -197,21 +212,22 @@ ostream & operator<<(ostream & os, Row::Element const & e)
 
 	switch (e.type) {
 	case Row::STRING:
-		os << "STRING: `" << to_utf8(e.str) << "' " << e.dim.wid;
+		os << "STRING: `" << to_utf8(e.str) << "', ";
 		break;
 	case Row::VIRTUAL:
-		os << "VIRTUAL: `" << to_utf8(e.str) << "'";
+		os << "VIRTUAL: `" << to_utf8(e.str) << "', ";
 		break;
 	case Row::INSET:
-		os << "INSET: " << to_utf8(e.inset->layoutName());
+		os << "INSET: " << to_utf8(e.inset->layoutName()) << ", ";
 		break;
 	case Row::SEPARATOR:
-		os << "SEPARATOR: " << e.dim.wid << "+" << e.extra;
+		os << "SEPARATOR: extra=" << e.extra << ", ";
 		break;
 	case Row::SPACE:
-		os << "SPACE: " << e.dim.wid;
+		os << "SPACE: ";
 		break;
 	}
+	os << "width=" << e.width();
 	return os;
 }
 

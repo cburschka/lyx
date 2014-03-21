@@ -66,7 +66,7 @@ public:
 		// returns total width of element, including separator overhead
 		double width() const { return dim.wid + extra; };
 		// returns position in pixels (from the left) of position
-		// \param i in the row element
+		// \param i in the row element.
 		double pos2x(pos_type const i) const;
 
 		/** Return character position that is the closest to
@@ -76,6 +76,11 @@ public:
 		 *  default.
 		*/
 		pos_type x2pos(double &x, bool low = false) const;
+
+		// Returns the position on left side of the element.
+		pos_type left_pos() const;
+		// Returns the position on right side of the element.
+		pos_type right_pos() const;
 
 		// The kind of row element
 		Type type;
@@ -200,7 +205,7 @@ public:
 	/**
 	 * if row width is too large, remove all elements after last
 	 * separator and update endpos if necessary. If all that
-	 * rename is a large word, cut it to \param width.
+	 * remains is a large word, cut it to \param width.
 	 * \param body_pos minimum amount of text to keep.
 	 * \param width maximum width of the row
 	 */

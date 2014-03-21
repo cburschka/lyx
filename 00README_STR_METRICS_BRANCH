@@ -44,18 +44,16 @@ What is done:
 Next steps:
 
 * check what happens with Arabic and/or Hebrew text. There may be some
-  problems related to compose characters. I suspect that some code is
-  needed in FontMetrics::width.
+  problems related to compose characters. Investigate whether RtL
+  strings could be drawn on a string-wise basis.
 
-* investigate whether RtL strings could be drawn on a string-wise basis.
-
-* investigate whether Row::SEPARATOR elements could be used only in
-  justified text. This would speed-up painting in other cases by
-  lowering the number of strings to draw.
+* investigate whether strings could be cut at separators in RowPainter
+  only in justified text. This would speed-up painting in other cases
+  by lowering the number of strings to draw.
 
 * get lots of testing.
 
-* Get rid of old code in cursorX and getColumnNearX; it has been
+* Get rid of old code in cursorX and getPosNearX; it has been
   kept for comparison purpose, guarded with KEEP_OLD_METRICS_CODE in
   order to check computations.
 
@@ -67,32 +65,37 @@ Steps for later (aka out of the scope of this branch):
 * Re-implement row painting using row elements. This is not difficult
   in principle, but the code is intricate and needs some careful
   analysis. The first thing that needs to be done is to break row
-  elements with the same criteria. Currently TextMetrics::breakRow
-  does not consider on-the-fly spell-checking and selection changes,
-  but it is not clear to me that it is required. Moreover, this thing
-  would only work if we are sure that the Row object is up-to-date
-  when drawing happens. This depends on the update machinery.
+  elements with the same criteria. Currently breakRow does not
+  consider on-the-fly spell-checking and selection changes, but it is
+  not clear to me that it is required. Moreover, this thing would only
+  work if we are sure that the Row object is up-to-date when drawing
+  happens. This depends on the update machinery.
 
   This would allow to get rid of the Bidi code.
 
 
 Known bugs:
 
-* in RtL paragraphs, the end-of-paragraph marker moves the row to the
-  right (ticket #9040, already present in master).
-
 * there are still difference in what breaks words. In particular,
   RowPainter breaks strings at: selection end, spell-checking
   extremities. This seems to be harmless.
 
-* when clicking in the right margin, GetColumnNearX does not return
+* when clicking in the right margin, getPosNearX does not return
   the same value as before. I am not sure whether this is important.
+
+* When selecting text, the display seems to move around. This is
+  because partly selected words are drawn in two parts, and in case
+  like "ef|fort" or "V|AN", there are some ligature or kerning effects
+  that change the display. I am not sure yet how to fix that.
 
 
 Other differences in behavior (aka bug fixes):
 
 * end of paragraph markers metrics are computed with the font of the
   actual text, not default font.
+
+* in RtL paragraphs, the end-of-paragraph marker does not move the row
+  to the right anymore (ticket #9040).
 
 * When cursor is after a LtR separator just before a RtL chunk, the
   cursor position is computed better with the new code.

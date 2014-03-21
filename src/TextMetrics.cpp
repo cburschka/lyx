@@ -570,13 +570,9 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 
 	Paragraph const & par = text_->getPar(pit);
 
-	double w = width - row.width();
+	double w = width - row.right_margin - row.width();
 	// FIXME: put back this assertion when the crash on new doc is solved.
 	//LASSERT(w >= 0, /**/);
-
-	//lyxerr << "\ndim_.wid " << dim_.wid << endl;
-	//lyxerr << "row.width() " << row.width() << endl;
-	//lyxerr << "w " << w << endl;
 
 	bool const is_rtl = text_->isRTL(par);
 	if (is_rtl)
@@ -628,8 +624,6 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			    && row.endpos() != par.size()) {
 				setSeparatorWidth(row, w / ns);
 				row.dimension().wid = width;
-				//lyxerr << "row.separator " << row.separator << endl;
-				//lyxerr << "ns " << ns << endl;
 			} else if (is_rtl) {
 				row.dimension().wid = width;
 				row.x += w;
@@ -637,11 +631,10 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			break;
 		}
 		case LYX_ALIGN_RIGHT:
-			row.dimension().wid = width;
 			row.x += w;
 			break;
 		case LYX_ALIGN_CENTER:
-			row.dimension().wid += w / 2;
+			row.dimension().wid = width - w / 2;
 			row.x += w / 2;
 			break;
 		}
@@ -852,6 +845,15 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 			Inset const * ins = par.getInset(i);
 			Dimension dim = pm.insetDimension(ins);
 			row.add(i, ins, dim, *fi, par.lookupChange(i));
+		} else if (c == ' ' && i + 1 == body_pos) {
+			// There is a space at i, but it should not be
+			// added as a separator, because it is just
+			// before body_pos. Instead, insert some spacing to
+			// align text
+			FontMetrics const & fm = theFontMetrics(text_->labelFont(par));
+			int const add = max(fm.width(par.layout().labelsep),
+					    labelEnd(pit) - row.width());
+			row.addSpace(i, add, *fi, par.lookupChange(i));
 		} else if (par.isLineSeparator(i)) {
 			// In theory, no inset has this property. If
 			// this is done, a new addSeparator which
@@ -864,15 +866,6 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 				     *fi, par.lookupChange(i));
 		else
 			row.add(i, c, *fi, par.lookupChange(i));
-
-		// end of paragraph marker
-		if (lyxrc.paragraph_markers
-		    && i == end - 1 && size_type(pit + 1) < pars.size()) {
-			// enlarge the last character to hold the end-of-par marker
-			Font f(text_->layoutFont(pit));
-			f.fontInfo().setColor(Color_paragraphmarker);
-			row.addVirtual(i + 1, docstring(1, char_type(0x00B6)), f, Change());
-		}
 
 		// add inline completion width
 		if (inlineCompletionLPos == i &&
@@ -900,21 +893,20 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 
 		++i;
 		++fi;
+	}
 
-		// add the auto-hfill from label end to the body
-		if (body_pos && i == body_pos) {
-			FontMetrics const & fm = theFontMetrics(text_->labelFont(par));
-			pos_type j = i;
-			if (!row.empty()
-			    && row.back().type == Row::SEPARATOR) {
-				row.pop_back();
-				--j;
-			}
-			int const add = max(fm.width(par.layout().labelsep),
-					    labelEnd(pit) - row.width());
-			row.addSpace(j, add, *fi, par.lookupChange(i));
-		}
-
+	// End of paragraph marker
+	if (lyxrc.paragraph_markers
+	    && i == end && size_type(pit + 1) < pars.size()) {
+		// add a virtual element for the end-of-paragraph
+		// marker; it is shown on screen, but does not exist
+		// in the paragraph.
+		Font f(text_->layoutFont(pit));
+		f.fontInfo().setColor(Color_paragraphmarker);
+		BufferParams const & bparams
+			= text_->inset().buffer().params();
+		f.setLanguage(par.getParLanguage(bparams));
+		row.addVirtual(end, docstring(1, char_type(0x00B6)), f, Change());
 	}
 
 	row.finalizeLast();
@@ -930,8 +922,6 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 
 	// make sure that the RTL elements are in reverse ordering
 	row.reverseRTL(text_->isRTL(par));
-
-	row.dimension().wid += right_margin;
 }
 
 
@@ -1117,7 +1107,6 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 pos_type TextMetrics::getPosNearX(pit_type const pit,
 		Row const & row, int & x, bool & boundary) const
 {
-
 	/// For the main Text, it is possible that this pit is not
 	/// yet in the CoordCache when moving cursor up.
 	/// x Paragraph coordinate is always 0 for main text anyway.
@@ -1131,13 +1120,11 @@ pos_type TextMetrics::getPosNearX(pit_type const pit,
 	boundary = false;
 	if (row.empty())
 		x = row.x;
-	else if (x < row.x) {
-		pos = row.front().font.isVisibleRightToLeft() ?
-			row.front().endpos : row.front().pos;
+	else if (x <= row.x) {
+		pos = row.front().left_pos();
 		x = row.x;
-	} else if (x > row.width() - row.right_margin) {
-		pos = row.back().font.isVisibleRightToLeft() ?
-			row.back().pos : row.back().endpos;
+	} else if (x >= row.width() - row.right_margin) {
+		pos = row.back().right_pos();
 		x = row.width() - row.right_margin;
 	} else {
 		double w = row.x;
@@ -1152,13 +1139,14 @@ pos_type TextMetrics::getPosNearX(pit_type const pit,
 			}
 			w += cit->width();
 		}
-		if (cit == row.end())
-			lyxerr << "NOT FOUND!! x=" << x
-			       << ", wid=" << row.width() << endl;
+		if (cit == row.end()) {
+			pos = row.back().right_pos();
+			x = row.width() - row.right_margin;
+		}
 		/** This tests for the case where the cursor is placed
 		 * just before a font direction change. See comment on
 		 * the boundary_ member in DocIterator.h to understand
-		 * how bounddary helps here.
+		 * how boundary helps here.
 		 */
 		else if (pos == cit->endpos
 			 && cit + 1 != row.end()
@@ -1618,27 +1606,34 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	*/
 	int const boundary_corr = (boundary && pos) ? -1 : 0;
 
-	//?????
+	/** Early return in trivial cases
+	 * 1) the row is empty
+	 * 2) the position is the left-most position of the row; there
+	 * is a quirck herehowever: if the first element is virtual
+	 * (end-of-par marker for example), then we have to look
+	 * closer
+	 */
 	if (row.empty()
-	    || (row.begin()->font.isVisibleRightToLeft()
-		&& pos == row.begin()->endpos))
+	    || (pos == row.begin()->left_pos()
+		&& pos != row.begin()->right_pos()))
 		return int(row.x);
 
 	Row::const_iterator cit = row.begin();
 	double x = row.x;
 	for ( ; cit != row.end() ; ++cit) {
+		/** Look whether the cursor is inside the element's
+		 * span. Note that it is necessary to take the
+		 * boundary in account, and to accept virtual
+		 * elements, which have pos == endpos.
+		 */
 		if (pos + boundary_corr >= cit->pos
-		    && pos + boundary_corr < cit->endpos) {
+		    && (pos + boundary_corr < cit->endpos
+			|| cit->pos == cit->endpos)) {
 				x += cit->pos2x(pos);
 				break;
 		}
 		x += cit->width();
 	}
-
-	if (cit == row.end()
-	    && (row.back().font.isVisibleRightToLeft() || pos != row.back().endpos))
-		LYXERR0("cursorX(" << pos - boundary_corr
-			<< ", " << boundary_corr << "): NOT FOUND! " << row);
 
 #ifdef KEEP_OLD_METRICS_CODE
 	pit_type const pit = sl.pit();
