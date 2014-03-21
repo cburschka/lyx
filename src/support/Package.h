@@ -157,7 +157,7 @@ private:
 	mutable FileName document_dir_;
 	mutable FileName temp_dir_;
 	FileName system_temp_dir_;
-	std::string configure_command_;
+	mutable std::string configure_command_;
 	bool explicit_user_support_dir_;
 };
 
