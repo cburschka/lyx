@@ -62,6 +62,8 @@
 #include "insets/InsetRef.h"
 #include "insets/InsetText.h"
 
+#include "mathed/MathData.h"
+
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 #include "frontends/Delegates.h"
@@ -2460,7 +2462,8 @@ void BufferView::putSelectionAt(DocIterator const & cur,
 
 bool BufferView::selectIfEmpty(DocIterator & cur)
 {
-	if (!cur.paragraph().empty())
+	if ((cur.inTexted() && !cur.paragraph().empty())
+	    || cur.inMathed() && !cur.cell().empty())
 		return false;
 
 	pit_type const beg_pit = cur.pit();
