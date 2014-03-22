@@ -2501,7 +2501,7 @@ void BufferView::putSelectionAt(DocIterator const & cur,
 bool BufferView::selectIfEmpty(DocIterator & cur)
 {
 	if ((cur.inTexted() && !cur.paragraph().empty())
-	    || cur.inMathed() && !cur.cell().empty())
+	    || (cur.inMathed() && !cur.cell().empty()))
 		return false;
 
 	pit_type const beg_pit = cur.pit();

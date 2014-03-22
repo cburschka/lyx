@@ -63,6 +63,8 @@ What's new
 - Fix crash when entering math in change-tracking mode while merge changes
   dialog is open (bug 7685).
 
+- Fix crash when CheckTeX hits mathed (bug 8798).
+
 - Failed instant preview compilation now returns an error. And a red box is 
   drawn around very small preview imagines, so they can be seen (bug 7522).
 
