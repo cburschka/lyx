@@ -50,9 +50,6 @@ using namespace lyx::support;
 namespace lyx {
 
 
-char const lstinline_delimiters[] =
-	"!*()-=+|;:'\"`,<.>/?QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
-
 InsetListings::InsetListings(Buffer * buf, InsetListingsParams const & par)
 	: InsetCollapsable(buf)
 {
@@ -202,17 +199,18 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 			code += "\n";
 	}
 	if (isInline) {
-		char const * delimiter = lstinline_delimiters;
-		for (; delimiter != '\0'; ++delimiter)
-			if (!contains(code, *delimiter))
-				break;
+		static const docstring delimiters =
+				from_utf8("!*()-=+|;:'\"`,<.>/?QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm");
+
+		size_t pos = delimiters.find_first_not_of(code);
+
 		// This code piece contains all possible special character? !!!
 		// Replace ! with a warning message and use ! as delimiter.
-		if (*delimiter == '\0') {
+		if (pos == string::npos) {
 			docstring delim_error = "<" + _("LyX Warning: ")
 				+ _("no more lstline delimiters available") + ">";
 			code = subst(code, from_ascii("!"), delim_error);
-			delimiter = lstinline_delimiters;
+			pos = 0;
 			if (!runparams.dryrun) {
 				// FIXME: warning should be passed to the error dialog
 				frontend::Alert::warning(_("Running out of delimiters"),
@@ -223,12 +221,14 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 				  "must investigate!"));
 			}
 		}
-		if (param_string.empty())
-			os << "\\lstinline" << *delimiter;
-		else
-			os << "\\lstinline[" << from_utf8(param_string) << "]" << *delimiter;
-                os << code
-                   << *delimiter;
+		docstring const delim(1, delimiters[pos]);
+		os << "\\lstinline";
+		if (!param_string.empty())
+			os << "[" << from_utf8(param_string) << "]";
+		else if (pos >= delimiters.find('Q'))
+			// We need to terminate the command before the delimiter
+			os << " ";
+                os << delim << code << delim;
 	} else {
 		OutputParams rp = runparams;
 		rp.moving_arg = true;

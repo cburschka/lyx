@@ -70,6 +70,9 @@ What's new
 
 - Fix problem with export of LyX archive when bibtotoc is used (bug 9044).
 
+- Fix LaTeX error with alphabetic delimiters in inline Listings (part of bug
+  8985).
+
 
 * USER INTERFACE
 
@@ -144,4 +147,7 @@ What's new
 
 - Improve detection of Qt via pkg-config, especially on Mac OS.
 
+- Fix bad compare of pointer vs. character (part of bug 8985).
+
 - Fix a couple of compilation warnings.
+
