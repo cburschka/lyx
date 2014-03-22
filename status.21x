@@ -51,6 +51,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix LaTeX error with alphabetic delimiters in inline Listings (part of bug
+  8985).
+
 
 
 * USER INTERFACE
@@ -78,4 +81,6 @@ What's new
 
 
 * BUILD/INSTALLATION
+
+- Fix bad compare of pointer vs. character (part of bug 8985).
 
