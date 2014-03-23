@@ -98,6 +98,8 @@ What's new
 
 - Fix hang when selecting text (bug 8837).
 
+- Fix assertion when entering a path into the import dialog (bug 7437).
+
 - Fix math-ams-matrix function that could corrupt documents if not used properly
   (part of bug 8359).
 
