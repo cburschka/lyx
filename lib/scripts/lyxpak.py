@@ -146,6 +146,8 @@ def gather_files(curfile, incfiles, lyx2lyx):
         match = re_options.match(lines[i])
         if match:
             file = match.group(3).strip('"')
+            if file.startswith("bibtotoc,"):
+                file = file[9:]
             if not os.path.isabs(file):
                 file = os.path.join(curdir, file + '.bst')
             if os.path.exists(file):
