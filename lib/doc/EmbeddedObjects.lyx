@@ -1782,7 +1782,7 @@ Table
 \begin_inset Newline newline
 \end_inset
 
- The default table has lines around any cell and the first row appears separated
+The default table has lines around any cell and the first row appears separated
  from the rest of the table.
  This separation occurs due to a double line: The cells of the first row
  have a line below them and the cells of the second row have a line above
@@ -2010,9 +2010,19 @@ Table ! Dialog
 
 \begin_layout Standard
 You can alter a table by clicking on it with the right mouse button, which
- brings up the table dialog.
- Here you can adjust the settings of that cell and row/column respectively
- where the cursor is currently placed.
+ brings up the context menu.
+ Under the menu entry 
+\family sans
+More
+\family default
+ you can adjust the settings of that cell and row/column respectively where
+ the cursor is currently placed.
+ The context menu 
+\family sans
+More\SpecialChar \menuseparator
+Settings
+\family default
+ opens the table dialog where you can adjust more things.
  Most of the dialog options also work on selections.
  This means if you select more cells, columns or rows, the action is done
  for the whole selection.
@@ -2035,8 +2045,11 @@ Apply
  every change you make in the dialog is directly applied.
  If you move the cursor to another table cell the dialog will then also
  be updated with the parameters of the new cell.
- If you change length values in the dialog you must press return to get
- the change applied.
+ If you change length values in the dialog you must press 
+\family sans
+Return
+\family default
+ to get the change applied.
 \begin_inset Newline newline
 \end_inset
 
@@ -2554,6 +2567,46 @@ arg   "inset-modify tabular delete-column"
 \end_inset
 
  deletes the current column or selection
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-row-up"
+\end_inset
+
+ moves the row up
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-column-left"
+\end_inset
+
+ moves the column to the left
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-row-down"
+\end_inset
+
+ moves the row down
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-column-right"
+\end_inset
+
+ moves the column to the right
 \end_layout
 
 \begin_layout Labeling

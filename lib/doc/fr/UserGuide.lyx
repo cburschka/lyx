@@ -8499,14 +8499,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8519,7 +8517,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -20453,12 +20450,7 @@ Objets
 insérés
 \emph default
 .
- Vous pouvez aussi faire tourner la cellule courante ou même tout le tableau
- de 90
-\begin_inset space \thinspace{}
-\end_inset
-
-degrés dans le sens inverse des aiguilles d'une montre.
+ Vous pouvez aussi faire tourner la cellule courante ou même tout le tableau.
  Ces rotations ne sont pas visibles dans LyX, mais devraient l'être dans
  la sortie finale.
 \end_layout

@@ -1910,10 +1910,27 @@ Cuadros ! Configuración
 \end_layout
 
 \begin_layout Standard
-Un cuadro se puede cambiar mediante el diálogo que aparece al pulsar sobre
- ella con el botón derecho del ratón.
- Se pueden ajustar los parámetros de la celda y fila/columna en la que se
+
+\lang english
+You can alter a table by clicking on it with the right mouse button, which
+ brings up the context menu.
+ Under the menu entry 
+\family sans
+More
+\family default
+\lang spanish
+ se pueden ajustar los parámetros de la celda y fila/columna en la que se
  encuentra el cursor.
+ 
+\lang english
+The context menu 
+\family sans
+More\SpecialChar \menuseparator
+Settings
+\family default
+ opens the table dialog where you can adjust more things
+\lang spanish
+.
  La mayoría de opciones también trabajan sobre una selección de celdas,
  de filas o de columnas.
  Observa que hay que diferenciar entre seleccionar una celda o seleccionar
@@ -2390,6 +2407,54 @@ arg   "inset-modify tabular delete-column"
 \end_inset
 
  borra la columna actual o selección
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-row-up"
+\end_inset
+
+
+\lang english
+ moves the row up
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-column-left"
+\end_inset
+
+
+\lang english
+ moves the column to the left
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-row-down"
+\end_inset
+
+
+\lang english
+ moves the row down
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-column-right"
+\end_inset
+
+
+\lang english
+ moves the column to the right
 \end_layout
 
 \begin_layout Labeling

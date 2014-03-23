@@ -8332,14 +8332,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8352,7 +8350,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -19692,11 +19689,7 @@ Cuadros y tablas
 Objetos insertados
 \emph default
 .
- También puedes girar la celda actual o todo el cuadro 90
-\begin_inset space \thinspace{}
-\end_inset
-
-grados hacia la derecha.
+ También puedes girar la celda actual o todo el cuadro.
  Estas rotaciones no se ven en LyX, solo en la salida.
  
 \end_layout

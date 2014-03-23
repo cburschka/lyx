@@ -8035,14 +8035,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8055,7 +8053,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -19179,11 +19176,7 @@ Embedded
 Objects
 \emph default
  manual.
- You can also rotate the current cell or the whole table 90
-\begin_inset space \thinspace{}
-\end_inset
-
-degrees counterclockwise.
+ You can also rotate the current cell or the whole table.
  These rotations are not visible in LyX but are visible in the output.
 \end_layout
 

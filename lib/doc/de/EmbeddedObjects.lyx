@@ -1912,16 +1912,21 @@ Tabellen ! Einstellungen
 
 \begin_layout Standard
 Sie können das Aussehen einer Tabelle ändern, indem Sie mit der rechten
- Maustaste draufklicken.
- Dadurch wird ein Kontextmenü angezeigt, an dessem Ende 
+ Maustaste darauf klicken.
+ Dadurch wird ein Kontextmenü angezeigt, in dem Sie im Eintrag 
 \family sans
+Mehr
+\family default
+ Eigenschaften der Zelle und Zeile/Spalte, in der der Mauszeiger gerade
+ ist, geändert werden können.
+ Das Kontextmenü 
+\family sans
+Mehr\SpecialChar \menuseparator
 Einstellungen
 \family default
- steht.
- Ein Klick darauf öffnet den Tabellen-Dialog.
- Hier können die Einstellungen der Zelle, in der der Mauszeiger beim Rechtsklick
- gerade war, geändert werden und auch die der zugehörigen Zeile und Spalte.
- Viele Optionen sind auch für eine Zellenauswahl wirksam.
+ öffnet den Tabellen-Dialog wo weitere Einstellungen vorgenommen werden
+ können.
+ Viele der Optionen im Dialog sind auch für eine Zellenauswahl wirksam.
  Das bedeutet, wenn Sie mehrere Zellen, Zeilen oder Spalten markiert haben
  – sie sind dann hellblau hinterlegt – gilt eine Aktion für die gesamte
  Auswahl.
@@ -1944,8 +1949,11 @@ Direkt
  wird jede Änderung, die Sie machen, direkt übernommen.
  Wenn Sie den Cursor in eine andere Tabellenzelle setzen, zeigt der Dialog
  dann auch die Parameter der neuen Zelle an.
- Wenn Sie Längenwerte im Dialog ändern, müssen Sie Enter drücken, um die
- Änderung zu übernehmen.
+ Wenn Sie Längenwerte im Dialog ändern, müssen Sie 
+\family sans
+Enter
+\family default
+ drücken, um die Änderung zu übernehmen.
 \begin_inset Newline newline
 \end_inset
 
@@ -2393,6 +2401,46 @@ arg   "inset-modify tabular delete-column"
 \end_inset
 
  Löscht die ausgewählte(n) Spalte(n)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-row-up"
+\end_inset
+
+ verschiebt die ausgewählte Zeile nach oben
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-column-left"
+\end_inset
+
+ verschiebt die ausgewählte Spalte nach links
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-row-down"
+\end_inset
+
+ verschiebt die ausgewählte Zeile nach unten
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-column-right"
+\end_inset
+
+ verschiebt die ausgewählte Spalte nach rechts
 \end_layout
 
 \begin_layout Labeling
