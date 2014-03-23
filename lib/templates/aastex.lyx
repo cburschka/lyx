@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 447
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass aastex
@@ -36,10 +36,13 @@
 \use_geometry false
 \use_package amsmath 0
 \use_package amssymb 0
+\use_package cancel 0
 \use_package esint 0
 \use_package mathdots 1
 \use_package mathtools 0
 \use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine natbib
 \cite_engine_type authoryear
@@ -286,7 +289,10 @@ apj
 
 \end_layout
 
-\begin_layout FigCaption
+\begin_layout Standard
+\begin_inset Caption FigCaption
+
+\begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
 name "fig1"
@@ -295,6 +301,11 @@ name "fig1"
 
 This is the first figure.
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

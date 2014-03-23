@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass iopart
@@ -24,6 +24,7 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
@@ -40,15 +41,24 @@
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 0
-\use_esint 1
-\use_mathdots 1
-\use_mhchem 1
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -145,7 +155,7 @@ footnotes
 
 \begin_layout Title
 Your Title
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -405,7 +415,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -426,9 +436,9 @@ Abbreviations for the IOP journals.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="28" columns="2">
-<features tabularvalignment="middle">
-<column alignment="none" valignment="top" width="0" special="@{}l">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="none" valignment="top" special="@{}l">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text

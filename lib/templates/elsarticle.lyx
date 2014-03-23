@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass elsarticle
@@ -22,6 +22,7 @@ theorems-std
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
@@ -38,15 +39,24 @@ theorems-std
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 0
-\use_esint 1
-\use_mathdots 1
-\use_mhchem 1
-\cite_engine natbib_authoryear
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -170,7 +180,7 @@ tnoteref
 
 \begin_layout Title footnote
 This document is a collaborative effort.
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -185,7 +195,7 @@ t1
 \begin_layout Title footnote
 The second title footnote which is a longer longer than the first one and
  with an intention to fill in up more than one line while formatting.
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -329,7 +339,7 @@ cor2
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -371,7 +381,7 @@ fn2
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -405,7 +415,7 @@ fnref
 
 \begin_layout Email
 http://www.elsevier.com
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -419,7 +429,7 @@ url
 
 \begin_layout Author footnote
 This is the specimen author footnote.
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -433,7 +443,7 @@ fn1
 
 \begin_layout Author footnote
 Another author footnote, but a little more longer.
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -447,7 +457,7 @@ fn2
 
 \begin_layout Corresponding author
 Corresponding author
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -461,7 +471,7 @@ cor1
 
 \begin_layout Corresponding author
 Principal corresponding author
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -476,7 +486,7 @@ cor2
 \begin_layout Address
 River Valley Technologies, SJP Building, Cotton Hills, Trivandrum, Kerala,
  India 695014
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -490,7 +500,7 @@ rvt
 
 \begin_layout Address
 River Valley Technologies, 9, Browns Court, Kennford, Exeter, United Kingdom
-\begin_inset Argument
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
@@ -534,7 +544,7 @@ Bazargan
 
 \begin_layout Email
 http://www.elsevier.com
-\begin_inset Argument
+\begin_inset Argument 2
 status collapsed
 
 \begin_layout Plain Layout
