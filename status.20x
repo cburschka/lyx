@@ -131,6 +131,12 @@ What's new
 - Fix select-by-doubleclick in mathed (bug 8829).
 
 
+* INTERNALS
+
+- Fix a problem when PATH changes and python command is relative (bug 8950).
+
+
+
 * DOCUMENTATION AND LOCALIZATION
 
 
