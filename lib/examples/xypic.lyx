@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 462
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -87,6 +87,7 @@
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
+\use_package cancel 0
 \use_package esint 0
 \use_package mathdots 1
 \use_package mathtools 0
@@ -95,7 +96,7 @@
 \use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
-\cite_engine_type numerical
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -1249,7 +1250,7 @@ ar@{^(->}[r].
 <lyxtabular version="3" rows="11" columns="2">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1570,8 +1571,8 @@ Following the @-character by either a 2, 3, _ or a ^, we can produce arrows
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -3750,10 +3751,7 @@ key "AUCTeX"
 
 \end_inset
 
-
-Homepage of 
-\lang english
-AUCTeX: 
+Homepage of AUCTeX: 
 \begin_inset Flex URL
 status collapsed
 

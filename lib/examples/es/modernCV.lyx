@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass moderncv
@@ -54,13 +54,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -71,15 +71,24 @@
 \use_hyperref false
 \papersize a4paper
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -172,13 +181,11 @@ Estudios.
 \end_layout
 
 \begin_layout Item
-2001--2005
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+2001--2005
 \end_layout
 
 \end_inset
@@ -187,13 +194,11 @@ Licenciatura en Economía, Institución, Ciudad, País, Descripción
 \end_layout
 
 \begin_layout Item
-2005--2006
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+2005--2006
 \end_layout
 
 \end_inset
@@ -208,13 +213,11 @@ Tesis, Tesina\SpecialChar \ldots{}
 \end_layout
 
 \begin_layout Item
-Título
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+Título
 \end_layout
 
 \end_inset
@@ -241,13 +244,11 @@ añade espacio negativo o positivo a voluntad
 \end_layout
 
 \begin_layout Item
-Supervisores
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+Supervisores
 \end_layout
 
 \end_inset
@@ -256,13 +257,11 @@ Nombres de los supervisores
 \end_layout
 
 \begin_layout Item
-Descripción
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+Descripción
 \end_layout
 
 \end_inset
@@ -277,61 +276,55 @@ Experiencia
 \end_layout
 
 \begin_layout Entry
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Febrero 2006--
 \begin_inset Newline newline
 \end_inset
 
 actual
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
 Mantenedor de proyectos Open Source
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 3
+status open
 
 \begin_layout Plain Layout
 
-}{
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 4
+status open
 
 \begin_layout Plain Layout
 
-}{
 \end_layout
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 5
+status open
 
 \begin_layout Plain Layout
 
-}{
 \end_layout
 
 \end_inset
@@ -340,57 +333,51 @@ Mantenedor de la documentación xxx
 \end_layout
 
 \begin_layout Entry
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 2005--2006
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
 Empleador
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
 Nombre Corp.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Ciudad
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
-País
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 5
+status open
 
 \begin_layout Plain Layout
-
-}{
+País
 \end_layout
 
 \end_inset
@@ -402,25 +389,22 @@ Descripción
 Idiomas
 \end_layout
 
-\begin_layout Language
+\begin_layout ItemWithComment
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Español
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
 Nativo
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
@@ -428,25 +412,22 @@ status collapsed
 
 \end_layout
 
-\begin_layout Language
+\begin_layout ItemWithComment
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Holandés
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
 \end_layout
 
 \end_inset
 
-Casi nativo
-\begin_inset ERT
-status collapsed
+
+\begin_inset Argument 2
+status open
 
 \begin_layout Plain Layout
-
-}{
+Casi nativo
 \end_layout
 
 \end_inset
@@ -458,7 +439,7 @@ Título en educación primaria en un colegio holandés
 Conocimientos de informática
 \end_layout
 
-\begin_layout Computer
+\begin_layout DoubleItem
 Sistemas
 \begin_inset ERT
 status collapsed
@@ -495,7 +476,7 @@ status collapsed
 Apache, Mailman
 \end_layout
 
-\begin_layout Computer
+\begin_layout DoubleItem
 Programación
 \begin_inset ERT
 status collapsed
@@ -536,7 +517,7 @@ status collapsed
 PHP, Shell, Ruby
 \end_layout
 
-\begin_layout Computer
+\begin_layout DoubleItem
 Científicos
 \begin_inset ERT
 status collapsed
@@ -573,7 +554,7 @@ status collapsed
 LaTeX, ConTeXt, Scribus, QuarkXPress
 \end_layout
 
-\begin_layout Computer
+\begin_layout DoubleItem
 Diseño
 \begin_inset space ~
 \end_inset
@@ -619,13 +600,11 @@ Aficiones
 \end_layout
 
 \begin_layout Item
-Deportes
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+Deportes
 \end_layout
 
 \end_inset
@@ -637,13 +616,11 @@ Practico deportes como esquí, montañismo y submarinismo; he sido boy scout
 \end_layout
 
 \begin_layout Item
-Viajes
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+Viajes
 \end_layout
 
 \end_inset
@@ -694,14 +671,12 @@ end{itemize}
 \end_layout
 
 \begin_layout DoubleItem
-Doble\SpecialChar \ldots{}
-
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
+Doble\SpecialChar \ldots{}
 
-}{
 \end_layout
 
 \end_inset
@@ -735,7 +710,7 @@ Subsección
 ítem en una subsección
 \end_layout
 
-\begin_layout CloseSection
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -789,13 +764,11 @@ Crea una sección sin encabezado.
 \end_layout
 
 \begin_layout Item
-Ahora
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-}{
+Ahora
 \end_layout
 
 \end_inset
@@ -803,7 +776,7 @@ status collapsed
 Volvemos al formato moderncv, sin poner sección nueva
 \end_layout
 
-\begin_layout CloseSection
+\begin_layout Standard
 
 \end_layout
 

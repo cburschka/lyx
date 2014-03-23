@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 462
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass chess
@@ -35,6 +35,7 @@
 \use_geometry true
 \use_package amsmath 0
 \use_package amssymb 0
+\use_package cancel 0
 \use_package esint 0
 \use_package mathdots 1
 \use_package mathtools 0
@@ -43,7 +44,7 @@
 \use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
-\cite_engine_type numerical
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false

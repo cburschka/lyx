@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -35,13 +35,13 @@
 \font_roman lmodern
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -66,15 +66,24 @@
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true,pdfstartview=XYZ, plainpages=false, pdfpagelabels"
 \papersize a4paper
 \use_geometry false
-\use_amsmath 2
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -1247,9 +1256,9 @@ ar@{^(->}[r].
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1275,7 +1284,7 @@ Code source LyX
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar[r] & \ }
 $
 \end_inset
 
@@ -1303,7 +1312,7 @@ ar
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{-->}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{-->}[r] & \ }
 $
 \end_inset
 
@@ -1331,7 +1340,7 @@ ar@{-->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{..>}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{..>}[r] & \ }
 $
 \end_inset
 
@@ -1359,7 +1368,7 @@ ar@{..>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{~>}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{~>}[r] & \ }
 $
 \end_inset
 
@@ -1387,7 +1396,7 @@ ar@{~>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{->>}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{->>}[r] & \ }
 $
 \end_inset
 
@@ -1415,7 +1424,7 @@ ar@{->>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{-->>}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{-->>}[r] & \ }
 $
 \end_inset
 
@@ -1443,7 +1452,7 @@ ar@{-->>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{>->>}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{>->>}[r] & \ }
 $
 \end_inset
 
@@ -1471,7 +1480,7 @@ ar@{>->>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{_{(}->}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{_{(}->}[r] & \ }
 $
 \end_inset
 
@@ -1499,7 +1508,7 @@ ar@{_(->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{^{(}->}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{^{(}->}[r] & \ }
 $
 \end_inset
 
@@ -1527,7 +1536,7 @@ ar@{^(->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{|-|}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{|-|}[r] & \ }
 $
 \end_inset
 
@@ -1593,9 +1602,9 @@ _, ou bien un chapeau
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1621,7 +1630,7 @@ Source code for LyX
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@2[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@2[r] & \ }
 $
 \end_inset
 
@@ -1649,7 +1658,7 @@ ar@2
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@3[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@3[r] & \ }
 $
 \end_inset
 
@@ -1677,7 +1686,7 @@ ar@3
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@_{->}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@_{->}[r] & \ }
 $
 \end_inset
 
@@ -1705,7 +1714,7 @@ ar@_{->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@^{->}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@^{->}[r] & \ }
 $
 \end_inset
 
@@ -1733,7 +1742,7 @@ ar@^{->}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@^{>>->>}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@^{>>->>}[r] & \ }
 $
 \end_inset
 
@@ -1761,7 +1770,7 @@ ar@^{>>->>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@{^{<}-_{>}}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@{^{<}-_{>}}[r] & \ }
 $
 \end_inset
 
@@ -1789,7 +1798,7 @@ ar@{^<-_>}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{\ \ar@2{--}[r]  &  \ }
+\begin_inset Formula $\xymatrix{\ \ar@2{--}[r] & \ }
 $
 \end_inset
 
