@@ -88,6 +88,9 @@ What's new
 
 - Fix crash when navigating to next change (bug 8684).
 
+- Fix crash when entering math in change-tracking mode while merge changes
+  dialog is open (bug 7685).
+
 - Fix crash when optional argument inside a math macro was deleted
   (bug 8329).
 
