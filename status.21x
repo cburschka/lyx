@@ -65,6 +65,8 @@ What's new
 
 - Fix crash when CheckTeX hits mathed (bug 8798).
 
+- Fix assertion when entering a path into the import dialog (bug 7437).
+
 - Failed instant preview compilation now returns an error. And a red box is 
   drawn around very small preview imagines, so they can be seen (bug 7522).
 
