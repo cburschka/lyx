@@ -3236,7 +3236,7 @@ usepackage{foo}
 \end_layout
 
 \begin_layout Subsection
-LaTeXの文章の読み込み—
+LaTeX文書を読み込む—
 \family typewriter
 tex2lyx
 \family default
@@ -3251,7 +3251,7 @@ name "sec:tex2lyx"
 \end_layout
 
 \begin_layout Standard
-
+LyXから
 \family sans
 ファイル\SpecialChar \menuseparator
 読み込み\SpecialChar \menuseparator
@@ -3261,19 +3261,12 @@ LaTeX
 
 (plain)
 \family default
-メニューを使えば、LaTeXファイルをLyXに読み込むことができます。このコマンドは、
-\family typewriter
-foo.tex
-\family default
-ファイルから
-\family typewriter
-foo.lyx
-\family default
-ファイルを生成するプログラム
+メニューを使えば、LaTeXファイルをLyXに読み込むことができます。このメニューは、
 \family typewriter
 tex2lyx
 \family default
-を呼び出した後に、このファイルを開きます。もしこの変換がうまく行かない場合には、オプションを工夫して、コマンドラインから
+プログラムを呼び出し、foo.texファイルからfoo.lyxファイルを生成した後、LyXでこのファイルを開くことになります。もしこの変換がうまく行かない場合には、
+オプションを工夫して、コマンドラインから
 \family typewriter
 tex2lyx
 \family default
@@ -3285,7 +3278,7 @@ tex2lyx
 \family typewriter
 tex2lyx
 \family default
-は、正しい文法で書かれた、ほとんどのLaTeXを変換できますが、完全ではありません。
+は、正しい文法で書かれたLaTeXのほとんどを変換することができますが、変換できる場合でも、文書の一部を変換し残す場合もあります。
 \family typewriter
 tex2lyx
 \family default
@@ -3293,7 +3286,7 @@ tex2lyx
 \family typewriter
 tex2lyx
 \family default
-に変換させた後、赤の文字を探して手動で修正するとよいでしょう。
+に変換させた後、赤い文字列を探し出して、手動で正しく編集するとよいでしょう。
 \end_layout
 
 \begin_layout Standard
@@ -3301,12 +3294,41 @@ tex2lyx
 \family typewriter
 tex2lyx
 \family default
-には、それ自身のmanページがあります。サポートされていないLaTeXコマンド・環境や、バグ（そしてその回避のしかた）、さまざまなオプションの使い方などについて
-は、それを読んでください。
+には、それ自身の取扱説明書(manページ)があり、Unix/Linuxユーザーは、コンソールコマンド
+\family typewriter
+man
+\begin_inset space ~
+\end_inset
+
+tex2lyx
+\family default
+でアクセスすることができます。manページは、サポートされていないLaTeXコマンド・環境や、遭遇しうるバグ（およびその回避のしかた）、さまざまなオプションの使
+い方などを説明しています。
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+tex2lyx
+\family default
+は、LyXが「知っている」文書クラスのファイルしか変換できないことを理解しておくことは重要です。つまり、対応するLyX
+\family sans
+レイアウトファイル
+\family default
+がなくてはなりません。レイアウトファイルがない場合には、変換を実行することができなかったという旨のエラーが発生します。LaTeXファイルの文書クラスに対応したレ
+イアウトがない限り、
+\family typewriter
+tex2lyx
+\family default
+は、ファイル中のLaTeXを、LyXが理解できる形に変換する方法がわからないのです。レイアウトファイルについての詳細と、その作成の仕方については、取扱説明書『
+\emph on
+カスタマイズ篇
+\emph default
+』の第5章に説明があります。
 \end_layout
 
 \begin_layout Subsection
-LyXの文章をLaTeXに変換
+LyX文書をLaTeXに変換する
 \end_layout
 
 \begin_layout Standard

@@ -1709,29 +1709,31 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-表を右クリックすると、表ダイアログが表示されて、表を変更することができます。ここでは、現在カーソルが置かれているセルないし行・列の設定を調節することができます。
-また、ダイアログオプションのほとんどは、選択範囲に対しても動作します。つまり、複数のセルや行・列を選択していれば、操作は選択範囲の全てに対して行われます。
+\lang english
+You can alter a table by clicking on it with the right mouse button, which
+ brings up the context menu.
+ Under the menu entry 
+\family sans
+More
 \family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-セルの
+ you can adjust the settings of that cell and row/column respectively where
+ the cursor is currently placed.
+ The context menu 
+\family sans
+More\SpecialChar \menuseparator
+Settings
+\family default
+ opens the table dialog where you can adjust more things.
+ Most of the dialog options also work on selections.
+ This means if you select more cells, columns or rows, the action is done
+ for the whole selection.
+ Note that there is a difference between selecting the 
 \emph on
-内容
+contents
 \emph default
-を選択するのと、セル自体を選択するのは違うことに注意して下さい。
+ of the cell, and the cell itself.
+\lang japanese
+
 \begin_inset Newline newline
 \end_inset
 
@@ -2127,6 +2129,54 @@ arg   "inset-modify tabular delete-column"
 
 \family default
  は、現在列あるいは選択範囲列を削除します。
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-row-up"
+\end_inset
+
+
+\lang english
+ moves the row up
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-column-left"
+\end_inset
+
+
+\lang english
+ moves the column to the left
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-row-down"
+\end_inset
+
+
+\lang english
+ moves the row down
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-column-right"
+\end_inset
+
+
+\lang english
+ moves the column to the right
 \end_layout
 
 \begin_layout Labeling
@@ -7203,19 +7253,12 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-次頁以降の表のキャプションを、
-\lang english
-mark a empty row as header which contains a caption.
- Then right-click on the caption and select in the context menu 
+次頁以降の表キャプションを、1頁めとは異なるものにしたい場合には、キャプションを入れる空行をヘッダに指定して下さい。それから、キャプションを右クリックして、文脈
+依存メニューから
 \family sans
-Caption
-\begin_inset space ~
-\end_inset
-
-(LongTableNoNumber)
+キャプション(無番長尺表)
 \family default
-\lang japanese
-。表
+を選択してください。表
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:別キャプション"
@@ -7229,8 +7272,8 @@ reference "tab:別キャプション"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="59" columns="3">
-<features rotate="0" islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0pt">
+<features rotate="0" islongtable="true" lastFootEmpty="true" longtabularalignment="center">
+<column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row endfirsthead="true" caption="true">
@@ -7351,15 +7394,23 @@ TEL.
 \end_inset
 </cell>
 </row>
-<row endhead="true" caption="true">
-<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+<row endhead="true">
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Caption LongTableNoNumber
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-例示用電話帳の続き
+
+
+\backslash
+caption*{例示用電話帳の続き}
+\backslash
+
+\backslash
+%
 \end_layout
 
 \end_inset
@@ -7369,7 +7420,7 @@ TEL.
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7378,7 +7429,7 @@ TEL.
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7482,7 +7533,7 @@ TEL.
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7513,7 +7564,7 @@ Silvia
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7544,7 +7595,7 @@ Stefano
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7575,7 +7626,7 @@ Walter
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7606,7 +7657,7 @@ Maria
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7637,7 +7688,7 @@ Maurizio
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7668,7 +7719,7 @@ Giusi
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7699,7 +7750,7 @@ Bernard
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7730,7 +7781,7 @@ Gianfranco
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7761,7 +7812,7 @@ Carolina
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7792,7 +7843,7 @@ Annamaria
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7823,7 +7874,7 @@ Domenico
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7854,7 +7905,7 @@ Paola
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7885,7 +7936,7 @@ Oreste
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7916,7 +7967,7 @@ Franca
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7959,7 +8010,7 @@ Paola
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7990,7 +8041,7 @@ Giancarlo
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8021,7 +8072,7 @@ Luciano
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8052,7 +8103,7 @@ Valeriano
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8083,7 +8134,7 @@ Roberto
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8114,7 +8165,7 @@ Roberto
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8145,7 +8196,7 @@ Erich
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8176,7 +8227,7 @@ Paolo
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8207,7 +8258,7 @@ Claudio
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8238,7 +8289,7 @@ Oskar
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8269,7 +8320,7 @@ Ugo
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8300,7 +8351,7 @@ Margit
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8331,7 +8382,7 @@ Frieda
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8362,7 +8413,7 @@ Hilde
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8393,7 +8444,7 @@ Jürgen
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8424,7 +8475,7 @@ Maurizio
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -16614,7 +16665,11 @@ cellcolor{色彩名}
 status open
 
 \begin_layout Plain Layout
-【註】DVIビューアーのすべてが自己定義の色を表示できるわけではありません。
+
+\series bold
+【註】
+\series default
+DVIビューアーのすべてが自己定義の色を表示できるわけではありません。
 \end_layout
 
 \end_inset
@@ -17177,7 +17232,7 @@ name "tab:表-行色"
 \begin_inset Text
 
 \begin_layout Plain Layout
-X
+せ
 \end_layout
 
 \end_inset
@@ -17186,7 +17241,7 @@ X
 \begin_inset Text
 
 \begin_layout Plain Layout
-Y
+す
 \end_layout
 
 \end_inset
@@ -17195,7 +17250,7 @@ Y
 \begin_inset Text
 
 \begin_layout Plain Layout
-Z
+ん
 \end_layout
 
 \end_inset
@@ -17356,7 +17411,7 @@ name "tab:表-行色-2"
 \begin_inset Text
 
 \begin_layout Plain Layout
-X
+せ
 \end_layout
 
 \end_inset
@@ -17365,7 +17420,7 @@ X
 \begin_inset Text
 
 \begin_layout Plain Layout
-Y
+す
 \end_layout
 
 \end_inset
@@ -17374,7 +17429,7 @@ Y
 \begin_inset Text
 
 \begin_layout Plain Layout
-Z
+ん
 \end_layout
 
 \end_inset
@@ -18225,6 +18280,497 @@ arrayrulewidth}{0.4pt}
 \end_layout
 
 \begin_layout Section
+表セルの回転
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:表セルの回転"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ひょう@表 ! せるのかいてん@セルの回転
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+かいてん@回転 ! そざいの@素材の---
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+【註】
+\series default
+すべてのDVIビューアが回転表示できるわけではありません。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+いまのところ、LyXでは、表セルは、反時計回りに90
+\begin_inset space \thinspace{}
+\end_inset
+
+°毎に回転させることしかできません。これ以外の角度にセルを回転させたい場合には、文書プリアンブルに
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+@ifundefined{turnbox}{
+\backslash
+usepackage{rotating}}{}
+\end_layout
+
+\begin_layout Standard
+と書き加えなくてはなりません。回転させる表セルの冒頭に、TeXコードで
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+begin{turn}{角度}
+\end_layout
+
+\begin_layout Standard
+というコマンドを書き加えてください。ここで角度は、°での回転角です。さらに、セルの終わりで、TeXコードで
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+end{turn}
+\end_layout
+
+\begin_layout Standard
+と入れてください。表
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:表多行回転"
+
+\end_inset
+
+は、3つのセルを45°回転させた用例です。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:回転表"
+
+\end_inset
+
+1行目に回転セルのある表
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{turn}{45}
+\end_layout
+
+\end_inset
+
+コップ
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{turn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{turn}{45}
+\end_layout
+
+\end_inset
+
+皿
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{turn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{turn}{45}
+\end_layout
+
+\end_inset
+
+受け皿
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{turn}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+45
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+33
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+21
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+【註】
+\series default
+回転セル中では、改行(
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Info
+type  "shortcut"
+arg   "newline-insert newline"
+\end_inset
+
+)はできません。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+改行を含むセルを回転させたい場合には、セルの内容をminipageかparboxに置かなくてはなりません
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+これらのボックスについて詳しくは、第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ミニページ"
+
+\end_inset
+
+節および第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Parboxes"
+
+\end_inset
+
+節をご覧ください。
+\end_layout
+
+\end_inset
+
+。このセルを90
+\begin_inset space \thinspace{}
+\end_inset
+
+°回転させると、ボックス幅はセルの高さになります。表
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:表多行回転"
+
+\end_inset
+
+は、ボックス幅が3
+\begin_inset space \thinspace{}
+\end_inset
+
+cmの、多行セルを回転させる例です。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:表多行回転"
+
+\end_inset
+
+多行セルを回転させた表
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+い
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "3cm"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+改行を含む
+\begin_inset Newline newline
+\end_inset
+
+回転
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ほ
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ろ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+は
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+に
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 表幅の計算
 \begin_inset CommandInset label
 LatexCommand label
@@ -18919,7 +19465,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-Normal, g
+ふつう, g
 \end_layout
 
 \end_inset
@@ -18932,7 +19478,7 @@ Normal, g
 \begin_layout Plain Layout
 
 \size large
-Large
+やや大
 \end_layout
 
 \end_inset
@@ -18945,7 +19491,7 @@ Large
 \begin_layout Plain Layout
 
 \size larger
-Larger
+大
 \end_layout
 
 \end_inset
@@ -18958,7 +19504,7 @@ Larger
 \begin_layout Plain Layout
 
 \size largest
-Largest
+極大
 \end_layout
 
 \end_inset
@@ -18971,7 +19517,7 @@ Largest
 \begin_layout Plain Layout
 
 \size huge
-Huge
+極々大
 \end_layout
 
 \end_inset
@@ -18984,7 +19530,7 @@ Huge
 \begin_layout Plain Layout
 
 \size giant
-Huger
+最大
 \end_layout
 
 \end_inset
@@ -19039,7 +19585,7 @@ strut
 \begin_inset Text
 
 \begin_layout Plain Layout
-Normal, g
+ふつう, g
 \end_layout
 
 \end_inset
@@ -19064,7 +19610,7 @@ strut
 
 \end_inset
 
-Large
+やや大
 \end_layout
 
 \end_inset
@@ -19089,7 +19635,7 @@ strut
 
 \end_inset
 
-Larger
+大
 \end_layout
 
 \end_inset
@@ -19114,7 +19660,7 @@ strut
 
 \end_inset
 
-Largest
+極大
 \end_layout
 
 \end_inset
@@ -19139,7 +19685,7 @@ strut
 
 \end_inset
 
-Huge
+極々大
 \end_layout
 
 \end_inset
@@ -19164,7 +19710,7 @@ strut
 
 \end_inset
 
-Huger
+最大
 \end_layout
 
 \end_inset
@@ -19222,7 +19768,7 @@ reference "tab:表セル"
 
 の小数点のように、同一列の各セルの内容が、特定の文字で揃えられた方が見栄えの良いことがあります。この揃え方は、当該列にカーソルを置いて、ツールバーボタン
 \begin_inset Graphics
-	filename ../../images/tabular-feature_align-decimal.png
+	filename ../../trunk/lib/images/tabular-feature_align-decimal.png
 	scale 85
 	scaleBeforeRotation
 
@@ -20183,7 +20729,7 @@ name "tab:ユーザー定義の表書式"
 \begin_inset Text
 
 \begin_layout Plain Layout
-c
+は
 \end_layout
 
 \end_inset
@@ -20194,7 +20740,7 @@ c
 \begin_inset Text
 
 \begin_layout Plain Layout
-d
+に
 \end_layout
 
 \end_inset
@@ -20203,7 +20749,7 @@ d
 \begin_inset Text
 
 \begin_layout Plain Layout
-e
+ほ
 \end_layout
 
 \end_inset
@@ -20212,7 +20758,7 @@ e
 \begin_inset Text
 
 \begin_layout Plain Layout
-f
+へ
 \end_layout
 
 \end_inset
@@ -20221,7 +20767,7 @@ f
 \begin_inset Text
 
 \begin_layout Plain Layout
-g
+と
 \end_layout
 
 \end_inset
@@ -20232,7 +20778,7 @@ g
 \begin_inset Text
 
 \begin_layout Plain Layout
-h
+ち
 \end_layout
 
 \end_inset
@@ -20241,7 +20787,7 @@ h
 \begin_inset Text
 
 \begin_layout Plain Layout
-i
+り
 \end_layout
 
 \end_inset
@@ -20250,7 +20796,7 @@ i
 \begin_inset Text
 
 \begin_layout Plain Layout
-j
+ぬ
 \end_layout
 
 \end_inset
@@ -20259,7 +20805,7 @@ j
 \begin_inset Text
 
 \begin_layout Plain Layout
-k
+る
 \end_layout
 
 \end_inset
@@ -21652,7 +22198,7 @@ name "tab:Colored-table-with"
 \begin_inset Text
 
 \begin_layout Plain Layout
-a
+い
 \end_layout
 
 \end_inset
@@ -21661,7 +22207,7 @@ a
 \begin_inset Text
 
 \begin_layout Plain Layout
-b
+ろ
 \end_layout
 
 \end_inset
@@ -21670,7 +22216,7 @@ b
 \begin_inset Text
 
 \begin_layout Plain Layout
-c
+は
 \end_layout
 
 \end_inset
@@ -21679,7 +22225,7 @@ c
 \begin_inset Text
 
 \begin_layout Plain Layout
-d
+に
 \end_layout
 
 \end_inset
@@ -21688,7 +22234,7 @@ d
 \begin_inset Text
 
 \begin_layout Plain Layout
-e
+ほ
 \end_layout
 
 \end_inset
@@ -21699,7 +22245,7 @@ e
 \begin_inset Text
 
 \begin_layout Plain Layout
-f
+へ
 \end_layout
 
 \end_inset
@@ -21708,7 +22254,7 @@ f
 \begin_inset Text
 
 \begin_layout Plain Layout
-g
+と
 \end_layout
 
 \end_inset
@@ -21717,7 +22263,7 @@ g
 \begin_inset Text
 
 \begin_layout Plain Layout
-h
+ち
 \end_layout
 
 \end_inset
@@ -21726,7 +22272,7 @@ h
 \begin_inset Text
 
 \begin_layout Plain Layout
-i
+り
 \end_layout
 
 \end_inset
@@ -21735,7 +22281,7 @@ i
 \begin_inset Text
 
 \begin_layout Plain Layout
-j
+ぬ
 \end_layout
 
 \end_inset
@@ -21771,7 +22317,7 @@ rowcolor{Gray}
 
 \end_inset
 
-k
+る
 \end_layout
 
 \end_inset
@@ -21780,7 +22326,7 @@ k
 \begin_inset Text
 
 \begin_layout Plain Layout
-l
+を
 \end_layout
 
 \end_inset
@@ -21789,7 +22335,7 @@ l
 \begin_inset Text
 
 \begin_layout Plain Layout
-m
+わ
 \end_layout
 
 \end_inset
@@ -21798,7 +22344,7 @@ m
 \begin_inset Text
 
 \begin_layout Plain Layout
-n
+か
 \end_layout
 
 \end_inset
@@ -21807,7 +22353,7 @@ n
 \begin_inset Text
 
 \begin_layout Plain Layout
-o
+よ
 \end_layout
 
 \end_inset
@@ -21830,7 +22376,7 @@ cdashline{4-5}
 
 \end_inset
 
-p
+た
 \end_layout
 
 \end_inset
@@ -21839,7 +22385,7 @@ p
 \begin_inset Text
 
 \begin_layout Plain Layout
-q
+れ
 \end_layout
 
 \end_inset
@@ -21848,7 +22394,7 @@ q
 \begin_inset Text
 
 \begin_layout Plain Layout
-r
+そ
 \end_layout
 
 \end_inset
@@ -21857,7 +22403,7 @@ r
 \begin_inset Text
 
 \begin_layout Plain Layout
-s
+つ
 \end_layout
 
 \end_inset
@@ -21877,7 +22423,7 @@ s
 \begin_inset Text
 
 \begin_layout Plain Layout
-t
+ね
 \end_layout
 
 \end_inset
@@ -21886,7 +22432,7 @@ t
 \begin_inset Text
 
 \begin_layout Plain Layout
-u
+な
 \end_layout
 
 \end_inset
@@ -21895,7 +22441,7 @@ u
 \begin_inset Text
 
 \begin_layout Plain Layout
-v
+ら
 \end_layout
 
 \end_inset
@@ -21904,7 +22450,7 @@ v
 \begin_inset Text
 
 \begin_layout Plain Layout
-w
+む
 \end_layout
 
 \end_inset
@@ -21925,7 +22471,7 @@ cellcolor{Maroon}
 
 \end_inset
 
-i
+う
 \end_layout
 
 \end_inset
@@ -22275,7 +22821,11 @@ dashgapcolor
 status open
 
 \begin_layout Plain Layout
-【註】1つのセル中に複数のコマンドがある場合、
+
+\series bold
+【註】
+\series default
+1つのセル中に複数のコマンドがある場合、
 \series bold
 arydshln
 \series default
@@ -22488,7 +23038,19 @@ reference "sec:フロートの参照"
 挿入\SpecialChar \menuseparator
 フロート
 \family default
-メニューを使えば、ラベルのついたボックスすなわち
+メニュー(
+\begin_inset Info
+type  "icon"
+arg   "float-insert figure"
+\end_inset
+
+または
+\begin_inset Info
+type  "icon"
+arg   "float-insert table"
+\end_inset
+
+ツールバーボタン)を使えば、ラベルのついたボックスすなわち
 \family sans
 キャプション
 \family default
@@ -22503,7 +23065,7 @@ reference "sec:キャプションの配置"
 節に述べられています。また、LyX文書を読みやすくするために、ボックスラベルを左クリックすれば、フロートボックスを広げたり畳んだりすることができるようになってい
 ます。畳んだフロートボックスは、
 \begin_inset Graphics
-	filename clipart/floatQt4.png
+	filename ../../trunk/lib/doc/ja/clipart/floatQt4.png
 	scale 70
 	scaleBeforeRotation
 
@@ -22885,7 +23447,6 @@ status collapsed
 メニューかツールバーボタンを使用して、フロートのキャプションにラベルを挿入してください。
 \begin_inset Graphics
 	filename clipart/labelQt4.png
-	scale 85
 	scaleBeforeRotation
 
 \end_inset
@@ -23064,7 +23625,11 @@ reference "fig:歪められた二つの像"
 status open
 
 \begin_layout Plain Layout
-【註】この機能は、LaTeXパッケージ
+
+\series bold
+【註】
+\series default
+この機能は、LaTeXパッケージ
 \series bold
 prettyref
 \series default
@@ -23154,7 +23719,11 @@ key "prettyref,refstyle"
 \end_layout
 
 \begin_layout Description
-名称参照: これは、右のように参照のキャプションを出力します。 
+名称参照: これは、下のような参照のキャプションを出力します。
+\begin_inset Newline newline
+\end_inset
+
+ 
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "fig:歪められた二つの像"
@@ -23193,7 +23762,11 @@ on this page
 status open
 
 \begin_layout Plain Layout
-【註】LaTeXパッケージ
+
+\series bold
+【註】
+\series default
+LaTeXパッケージ
 \series bold
 prettyref
 \series default
@@ -23280,6 +23853,39 @@ LaTeXぱっけーじ@LaTeXパッケージ ! refstyle
 \end_inset
 
 を使用することを推奨します。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+【註】
+\series default
+LaTeXパッケージvarioref第1.4w版のバグによって、終止符を活用する言語(仏語等)を文書言語にすると、相互参照形式の一部でLaTeXエラーが発生します
+。回避策については、
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+target "http://wiki.lyx.org/LaTeX/LatexBugs#toc5"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+を参照してください。
 \end_layout
 
 \end_inset
@@ -25442,28 +26048,22 @@ letter
 \family sans
 report
 \family default
-といった文書クラスを使用している時には、キャプションと表の間に余白が置かれなくなってしまいます。本来あるべき余白を挿入するには、
-\lang english
- load the LaTeX-package 
+といった文書クラスを使用している時には、キャプションと表の間に余白が置かれなくなってしまいます。本来あるべき余白を挿入するには、お使いの文書プリアンブルでLaT
+eXパッケージ
 \series bold
-\lang japanese
 caption
 \series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-LaTeXぱっけーじ@LaTeXパッケージ ! caption
+を読み込むコマンドに
 \end_layout
 
-\end_inset
+\begin_layout Standard
 
+\series bold
+tableposition=top
+\end_layout
 
-\lang english
-in your document preamble with the option
-\lang japanese
-
+\begin_layout Standard
+というオプションを追加してください
 \begin_inset Foot
 status collapsed
 
@@ -25484,17 +26084,7 @@ reference "sec:キャプションの書式設定"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-tableposition=top
-\end_layout
-
-\begin_layout Standard
-
+。
 \series bold
 KOMA-script
 \series default
@@ -25542,54 +26132,36 @@ captions=tableheading
 \end_layout
 
 \begin_layout Standard
-を設定することもできます。
+を設定することもできます
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-That option is used in this document.
+このオプションは本文書で使用されています。
 \end_layout
 
 \end_inset
 
-
+。
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In documents with a KOMA-Script document class you can also right-click
- on a caption and mark in the context menu if this should be a caption above
- or below the table/figure.
- This way you can override the document-wide caption placement for certain
- captions.
- Table
-\lang japanese
-
+KOMA-Script文書クラスの文書では、キャプションを右クリックして、文脈依存メニューから、これが図表の上または下に来るべきキャプションかを指定することもで
+きます。これによって、文書全体のキャプション配置指定にかかわらず、特定のキャプションの配置を変えることができます。表
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:A-caption-marked"
+reference "tab:指定付きキャプション"
 
 \end_inset
 
-
-\lang english
- is an example where the caption is marked a being below the table while
- it is above.
- For comparison the caption in Table
-\lang japanese
-
+は、キャプションは、LyX中では上に置かれているけれども、表の下に来るように指定されている例です。比較のために、表
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:A-standard-table"
+reference "tab:標準表"
 
 \end_inset
 
-
-\lang english
- is not marked.
+のキャプションでは、指定が為されていません。
 \end_layout
 
 \begin_layout Standard
@@ -25604,13 +26176,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:A-caption-marked"
+name "tab:指定付きキャプション"
 
 \end_inset
 
-
-\lang english
-A caption marked as being below the table.
+表下に来るように指定されたキャプション
 \end_layout
 
 \end_inset
@@ -25660,7 +26230,7 @@ A caption marked as being below the table.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Joe
+森嶋
 \end_layout
 
 \end_inset
@@ -25669,7 +26239,7 @@ Joe
 \begin_inset Text
 
 \begin_layout Plain Layout
-Mary
+宇沢
 \end_layout
 
 \end_inset
@@ -25678,7 +26248,7 @@ Mary
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ted
+二階堂
 \end_layout
 
 \end_inset
@@ -25749,13 +26319,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:A-standard-table"
+name "tab:標準表"
 
 \end_inset
 
-
-\lang english
-A standard table caption.
+標準の表キャプション
 \end_layout
 
 \end_inset
@@ -25805,7 +26373,7 @@ A standard table caption.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Joe
+森嶋
 \end_layout
 
 \end_inset
@@ -25814,7 +26382,7 @@ Joe
 \begin_inset Text
 
 \begin_layout Plain Layout
-Mary
+宇沢
 \end_layout
 
 \end_inset
@@ -25823,7 +26391,7 @@ Mary
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ted
+二階堂
 \end_layout
 
 \end_inset
@@ -25959,10 +26527,6 @@ sidecap
 
 \begin_layout Standard
 LyXでフロートのキャプションを横に配置するには、以下のコマンド群を文書プリアンブルに追加する必要があります。
-\begin_inset Newpage pagebreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -26452,7 +27016,11 @@ reference "tab:図横幅広"
 status open
 
 \begin_layout Plain Layout
-【註】キャプションを横につけたフロートでは、フロート配置オプションの
+
+\series bold
+【註】
+\series default
+キャプションを横につけたフロートでは、フロート配置オプションの
 \family sans
 何としても現在地に置く
 \family default
@@ -26912,9 +27480,6 @@ FigBesBeg
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -27395,7 +27960,7 @@ LyX注釈 この注釈型は、内部用途の注釈で出力には現れませ�
 \begin_inset Graphics
 	filename clipart/LyXNoteImageQt4.png
 	display false
-	scale 85
+	scale 50
 	scaleBeforeRotation
 
 \end_inset
@@ -27418,7 +27983,18 @@ status open
 \family sans
 ファイル\SpecialChar \menuseparator
 書き出し\SpecialChar \menuseparator
-LaTeX (pdflatex) / (平文)
+LaT
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+eX (pdflatex) / (平文)
 \family default
  メニューを使って文書をLaTeXにエクスポートする際には、LaTeXコメントとして出力されます。注釈ボックスは、以下のように表示されます。
 \begin_inset Newline newline
@@ -27432,7 +28008,7 @@ LaTeX (pdflatex) / (平文)
 \begin_inset Graphics
 	filename clipart/CommentNoteImageQt4.png
 	display false
-	scale 85
+	scale 50
 	scaleBeforeRotation
 
 \end_inset
@@ -27463,7 +28039,7 @@ status open
 \begin_inset Graphics
 	filename clipart/GreyedOutNoteImageQt4.png
 	display false
-	scale 85
+	scale 50
 	scaleBeforeRotation
 
 \end_inset
@@ -28993,7 +29569,11 @@ status open
 status open
 
 \begin_layout Plain Layout
-【註】内側余白には充分な空白がないことがよくあり、出力で傍注が正しく表示されないことがあります。
+
+\series bold
+【註】
+\series default
+内側余白には充分な空白がないことがよくあり、出力で傍注が正しく表示されないことがあります。
 \end_layout
 
 \end_inset
@@ -29797,7 +30377,11 @@ reference "sec:ハイフネーションの回避"
 status open
 
 \begin_layout Plain Layout
-【註】ボックスは、
+
+\series bold
+【註】
+\series default
+ボックスは、
 \family sans
 箇条書き（記号）
 \family default
@@ -29818,7 +30402,11 @@ status open
 status open
 
 \begin_layout Plain Layout
-【註】理由は不明ですが、枠付きボックスを使用している場合には、
+
+\series bold
+【註】
+\series default
+理由は不明ですが、枠付きボックスを使用している場合には、
 \family sans
 内部ボックス
 \family default
@@ -31771,10 +32359,7 @@ veryverylongword
 \family sans
 makebox
 \family default
-\lang english
-and use no explicit width
-\lang japanese
-。
+コマンドに設定し、幅は指定しません。
 \end_layout
 
 \begin_layout Standard
@@ -34145,7 +34730,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -34211,7 +34796,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -34292,7 +34877,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -34358,7 +34943,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -34396,7 +34981,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -34501,7 +35086,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -34563,7 +35148,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -34659,7 +35244,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -34754,7 +35339,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -35590,7 +36175,7 @@ target "http://en.wikipedia.org/wiki/XBoard"
 の書式で日付を挿入します。右は、外部素材として挿入された日付です：
 \begin_inset External
 	template Date
-	filename .
+	filename ../../trunk/lib/doc/ja
 
 \end_inset
 
@@ -35861,7 +36446,11 @@ setbeamertemplate{background canvas}{}
 status open
 
 \begin_layout Plain Layout
-【訳註】LaTeXパッケージ
+
+\series bold
+【訳註】
+\series default
+LaTeXパッケージ
 \series bold
 pdfpages
 \series default
@@ -36235,8 +36824,8 @@ status collapsed
 
 \begin_layout Standard
 子文書は、大きな部や節を複数含む長大な文書を作成するときに使われます。メンテナンス上の理由から、文書をいくつかのファイルに分割して、個別に修正できるようにした方
-が便利なことはよくあり、場合によってはそうすることが必要な場合さえあります。こうした個別文書がいわゆる子文書であり、親文書はこれら子文書を連結して、文書全体やそ
-の一部を印刷できるようにします。子文書は、LaTeXプリアンブルや書誌情報や相互参照用ラベルなどの親文書の内容を引き継ぎます。
+が便利なことはよくあり、場合によってはそうすることが必要な場合さえあります。こうした個別文書がいわゆる「子文書」であり、親文書はこれら子文書を連結して、文書全体
+やその一部を印刷できるようにします。子文書は、LaTeXプリアンブルや書誌情報や相互参照用ラベルなどの親文書の内容を引き継ぎます。
 \end_layout
 
 \begin_layout Standard
@@ -36722,27 +37311,21 @@ reference "lst:リストフロート"
 
 \end_inset
 
-のように参照することができます。
-\lang english
-A list of listings which contains all listings with captions can be created
- via the menu 
+のように参照することができます。キャプションのついたプログラムリストの全一覧を、
 \family sans
-Insert\SpecialChar \menuseparator
-List
-\begin_inset space ~
-\end_inset
+挿入
+\lang english
+\SpecialChar \menuseparator
 
-/
-\begin_inset space ~
-\end_inset
-
-TOC\SpecialChar \menuseparator
-List of Listings
-\family default
-.
- The list entries are the listing caption and the listing number
 \lang japanese
-。
+一覧/目次
+\lang english
+\SpecialChar \menuseparator
+
+\lang japanese
+プログラムリスト一覧
+\family default
+で作成することができます。一覧の項目には、プログラムリストのキャプションとプログラムリスト番号が入ります。
 \end_layout
 
 \begin_layout Standard
@@ -37828,7 +38411,11 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-【註】DVIファイルには画像は含まれていません。画像はリンクされているだけです。
+
+\series bold
+【註】
+\series default
+DVIファイルには画像は含まれていません。画像はリンクされているだけです。
 \end_layout
 
 \end_inset
@@ -37983,7 +38570,7 @@ Postscript
 \family default
 メニューかツールバーボタン
 \begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
+	filename ../../trunk/lib/images/buffer-view_ps.png
 	scale 85
 	scaleBeforeRotation
 
@@ -38127,7 +38714,7 @@ dvipdfm
 \family default
 メニューかツールバーボタン
 \begin_inset Graphics
-	filename ../../images/buffer-view_pdf2.png
+	filename ../../trunk/lib/images/buffer-view_pdf2.png
 	scale 85
 	scaleBeforeRotation
 
