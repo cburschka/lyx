@@ -8479,10 +8479,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Verbatim.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8495,6 +8497,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Verbatim erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -40758,6 +40761,15 @@ tände darstellt.
  In der Ausgabe erscheint der Text natürlich wie eingestellt.
 \end_layout
 
+\begin_layout Standard
+Mit der Option 
+\family sans
+Blocksatz im LyX-Arbeitsbereich verwenden
+\family default
+ kann man festlegen, ob LyX den Text im Blocksatz anzeigt.
+ Dies betrifft nur den Text innerhalb von LyX, nicht den der Ausgabe.
+\end_layout
+
 \begin_layout Section
 Seitenlayout
 \end_layout
@@ -40821,26 +40833,6 @@ Hier werden die Grundsprache des Dokuments und der Stil der Anführungszeichen
  LyX versucht, alle Zeichen, die in der ausgewählten Kodierung nicht enthalten
  sind, in LaTeX-Befehle umzuwandeln; falls für ein bestimmtes Zeichen kein
  LaTeX-Befehl bekannt ist, wird eine Fehlermeldung ausgegeben.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-LyX schaut die Befehle in einer Textdatei (
-\emph on
-unicodesymbols
-\emph default
-) nach, denen Sie leicht auch selbst fehlende Zeichen hinzufügen können,
- wenn Sie den entsprechenden LaTeX-Befehl kennen.
- Im Handbuch 
-\emph on
-Anpassung
-\emph default
- ist dies genauer beschrieben.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -41824,20 +41816,6 @@ Standard
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-Die Farben werden in LyX nicht angezeigt, nur in der Ausgabe.
- (Diese Grauschrift-Notiz erscheint in der Ausgabe blau.)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Beachten Sie, dass wenn Sie die Farbe ändern und die Option 
 \family sans
 Links
@@ -41935,7 +41913,7 @@ white
 \series bold
 yellow
 \series default
- solange man keine eigene Farbe definiert hat (siehe Abschnitt 
+ solange man keine eigene Farbe definiert hat (siehe den Abschnitt 
 \emph on
 Farbige Tabellen
 \emph default
@@ -42180,7 +42158,35 @@ LaTeX-Paket ! amsmath
 
 , 
 \series bold
-esint
+amssymb
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! amssymb
+\end_layout
+
+\end_inset
+
+,
+\series bold
+ cancel
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! cancel
+\end_layout
+
+\end_inset
+
+,
+\series bold
+ esint
 \series default
 
 \begin_inset Index idx
@@ -42206,7 +42212,21 @@ LaTeX-Paket ! mathdots
 
 \end_inset
 
- und 
+ 
+\series bold
+mathtools
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Pake ! mathtools
+\end_layout
+
+\end_inset
+
+, 
 \series bold
 mhchem
 \series default
@@ -42220,19 +42240,78 @@ LaTeX-Paket ! mhchem
 
 \end_inset
 
-, direkt zu benutzen oder automatisch, wenn sie benötigt werden.
+, 
+\series bold
+stackrel
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! stackrel
+\end_layout
+
+\end_inset
+
+, 
+\series bold
+stmaryrd
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! stmaryrd
+\end_layout
+
+\end_inset
+
+ und 
+\series bold
+undertilde
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-Paket ! undertilde
+\end_layout
+
+\end_inset
+
+ direkt zu benutzen oder automatisch, wenn sie benötigt werden.
 \end_layout
 
 \begin_layout Description
 amsmath wird für viele Konstrukte benötigt.
- Wenn Sie viele LaTeX-Fehlermeldungen in Formeln bekommen, vergewissern
- Sie sich, dass Sie
-\family typewriter
- 
-\family sans
-AMS-Mathe
-\family default
- aktiviert haben.
+ Wenn Sie LaTeX-Fehlermeldungen in Formeln bekommen, vergewissern Sie sich,
+ dass Sie es aktiviert haben.
+\end_layout
+
+\begin_layout Description
+amssymb wird für spezielle Symbole wie fette oder aufrechte griechische
+ Buchstaben benötigt.
+ Wenn Sie LaTeX-Fehlermeldungen in Formeln bekommen, vergewissern Sie sich,
+ dass Sie es aktiviert haben.
+\end_layout
+
+\begin_layout Description
+cancel wird für durchgestrichene Formeln benötigt, siehe Abschnitt 
+\emph on
+Durchgestrichene
+\begin_inset space ~
+\end_inset
+
+Formeln
+\emph default
+ des 
+\emph on
+Mathe
+\emph default
+ Handbuchs.
 \end_layout
 
 \begin_layout Description
@@ -42265,9 +42344,94 @@ Mathe
 \end_layout
 
 \begin_layout Description
+mathtools wird für die Mathe-Befehle 
+\series bold
+
+\backslash
+overbracket
+\series default
+, 
+\series bold
+
+\backslash
+underbracket
+\series default
+, 
+\series bold
+
+\backslash
+smashoperator
+\series default
+, 
+\series bold
+
+\backslash
+adjustlimits
+\series default
+, 
+\series bold
+
+\backslash
+splitfrac
+\series default
+, 
+\series bold
+
+\backslash
+shortintertext
+\series default
+ und für beschriftete Pfeile benötigt, siehe die entsprechenden Abschnitte
+ im 
+\emph on
+Mathe
+\emph default
+ Handbuch.
+\end_layout
+
+\begin_layout Description
 mhchem wird für chemische Gleichungen benötigt, siehe Abschnitt 
 \emph on
 Chemische Symbole und Reaktionsgleichungen
+\emph default
+ des 
+\emph on
+Mathe
+\emph default
+ Handbuchs.
+\end_layout
+
+\begin_layout Description
+stackrel wird für den Mathe-Befehl 
+\series bold
+
+\backslash
+stackrel
+\series default
+ benötigt, siehe Abschnitt 
+\emph on
+Relationen
+\emph default
+ des 
+\emph on
+Mathe
+\emph default
+ Handbuchs.
+\end_layout
+
+\begin_layout Description
+stmaryrd wird für wenige, spezielle Mathe-Symbole benötigt.
+\end_layout
+
+\begin_layout Description
+undertilde wird für den Mathe-Befehl 
+\series bold
+
+\backslash
+utilde
+\series default
+ benötigt, siehe Abschnitt 
+\emph on
+Akzente für ein Zeichen
 \emph default
  des 
 \emph on
@@ -42432,7 +42596,7 @@ Zweige
 
 \begin_layout Standard
 Zweige sind in Abschnitt
-\begin_inset space \space{}
+\begin_inset space ~
 \end_inset
 
 

@@ -8332,12 +8332,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8350,6 +8352,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -40799,6 +40802,17 @@ También el espacio entre líneas y el número de columnas, pero ten en cuenta
  Sí se verá en la salida.
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+With the option 
+\family sans
+Use justification in LyX work area
+\family default
+ you can decide if LyX justifies the text on screen.
+ This only affects the text inside LyX not in the output.
+\end_layout
+
 \begin_layout Section
 Diseño de página
 \end_layout
@@ -40876,27 +40890,6 @@ Aquí se determina el idioma del documento y el estilo de las comillas.
  Todos los caracteres que no puedan codificarse en la codificación especificada
  se exportan como comandos LaTeX (esto puede fallar si el comando para algún
  carácter es desconocido).
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Los comandos conocidos se definen en un archivo de texto (
-\emph on
-unicodesymbols
-\emph default
-).
- Puedes añadir comandos para símbolos desconocidos en ese archivo, como
- se explica en el manual 
-\emph on
-Personalización
-\emph default
-.
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -41772,7 +41765,7 @@ Color ! Fondo
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Color ! Marcos sombreados
@@ -41782,7 +41775,7 @@ Color ! Marcos sombreados
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Color ! Notas en gris
@@ -41819,28 +41812,6 @@ Cambiar
  También hay la opción de añadir colores personalizados para reutilizarlos
  después rápidamente.
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-Los colores no se muestran en LyX sino en la salida.
- Esta nota Resaltado
-\begin_inset space ~
-\end_inset
-
-en
-\begin_inset space ~
-\end_inset
-
-gris se ve azul en la salida.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -42173,6 +42144,34 @@ LaTeX, paquetes ! amsmath
 
 , 
 \series bold
+amssymb
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX, paquetes ! amssymb
+\end_layout
+
+\end_inset
+
+,
+\series bold
+ cancel
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX, paquetes ! cancel
+\end_layout
+
+\end_inset
+
+, 
+\series bold
 esint
 \series default
 
@@ -42199,7 +42198,21 @@ LaTeX, paquetes ! mathdots
 
 \end_inset
 
- y 
+, 
+\series bold
+mathtools
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX, paquetes ! mathtools
+\end_layout
+
+\end_inset
+
+, 
 \series bold
 mhchem
 \series default
@@ -42213,6 +42226,48 @@ LaTeX, paquetes ! mhchem
 
 \end_inset
 
+, 
+\series bold
+stackrel
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX, paquetes ! stackrel
+\end_layout
+
+\end_inset
+
+, 
+\series bold
+stmaryrd
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX, paquetes ! stmaryrd
+\end_layout
+
+\end_inset
+
+ y 
+\series bold
+undertilde
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX, paquetes ! undertilde
+\end_layout
+
+\end_inset
+
 , o si usarlos automáticamente.
 \end_layout
 
@@ -42222,7 +42277,33 @@ amsmath
  
 \series default
 es necesario para numerosas estructuras; si recibes mensajes de error en
- ecuaciones comprueba que has habilitado el uso de AMS.
+ ecuaciones comprueba que lo has habilitado.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+amssymb is needed for some special math symbols like bold or upright Greek
+ letters, so when you get LaTeX-errors in formulas, ensure that you have
+ this enabled.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+cancel is used for canceled formulas, see section 
+\emph on
+Canceled
+\begin_inset space ~
+\end_inset
+
+Formulas
+\emph default
+ of the 
+\emph on
+Math
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Description
@@ -42246,6 +42327,52 @@ Ecuaciones.
 \end_layout
 
 \begin_layout Description
+
+\lang english
+mathtools is used for the math commands 
+\series bold
+
+\backslash
+overbracket
+\series default
+, 
+\series bold
+
+\backslash
+underbracket
+\series default
+, 
+\series bold
+
+\backslash
+smashoperator
+\series default
+, 
+\series bold
+
+\backslash
+adjustlimits
+\series default
+, 
+\series bold
+
+\backslash
+splitfrac
+\series default
+, 
+\series bold
+
+\backslash
+shortintertext
+\series default
+ and labeled arrows, see the corresponding sections in the 
+\emph on
+Math
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Description
 mhchem para escribir ecuaciones químicas, véase 
 \emph on
 Símbolos y ecuaciones químicas
@@ -42253,6 +42380,52 @@ Símbolos y ecuaciones químicas
  en el manual 
 \emph on
 Ecuaciones.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+stackrel is used for the math command 
+\series bold
+
+\backslash
+stackrel
+\series default
+, see section 
+\emph on
+Relations 
+\emph default
+of the 
+\emph on
+Math
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+stmaryrd is used for a few special math symbols.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+undertilde is used for the math command 
+\series bold
+
+\backslash
+utilde
+\series default
+, see section 
+\emph on
+Accents for one Character 
+\emph default
+of the 
+\emph on
+Math
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -47346,16 +47519,12 @@ Esta bibliografía se ha generado a partir de una base de datos BibTeX.
 \end_layout
 
 \begin_layout Standard
-
-\series bold
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
 set_width "auto"
 
 \end_inset
 
-
-\series default
 
 \begin_inset CommandInset index_print
 LatexCommand printindex
