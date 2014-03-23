@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 469
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrbook
@@ -86,7 +86,7 @@
 \use_package stmaryrd 0
 \use_package undertilde 0
 \cite_engine basic
-\cite_engine_type numerical
+\cite_engine_type default
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -13479,8 +13479,8 @@ Unità per impostare la dimensione dell'immagine
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -16534,7 +16534,7 @@ Segue una tabella d'esempio:
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
 <column alignment="block" valignment="top" width="4cm">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -21671,9 +21671,9 @@ Altri spazi
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text

@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrbook
@@ -59,13 +59,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -90,15 +90,24 @@
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \notefontcolor #0000ff
 \branch galdera
@@ -2553,7 +2562,7 @@ Klase bakoitzak bere lehenetsitako aukera-multzoa dauka.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -4211,7 +4220,7 @@ Atalen izenburuak ! Titulu laburrak
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -5888,7 +5897,7 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -6688,7 +6697,7 @@ Habiaratzea ! Taulak e.a.
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -6802,7 +6811,7 @@ Hau
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -6943,7 +6952,7 @@ Hau
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -7095,7 +7104,7 @@ Hau
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -7629,7 +7638,7 @@ Alt+Maius+Ezkerrera
 \begin_layout Subsubsection
 3.
  adibidea: etiketak, mailak eta Zenbatuta eta Elementua inguruneak
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -7988,7 +7997,7 @@ Zuretzat jarri dugu taula:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8698,7 +8707,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -8719,9 +8728,9 @@ Tarte horizontal desberdinen zabalerak
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -12636,10 +12645,10 @@ marra luzea
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row interlinespace="3mm">
 <cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
@@ -14024,9 +14033,9 @@ Hona hemen adibide bat desberdintasunak erakusteko:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -15094,7 +15103,7 @@ ta-koadro bat agertuko zaizu.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0in">
@@ -15384,9 +15393,9 @@ anitza
 \family sans
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
-<features firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
+<features rotate="0" firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="middle" width="0">
+<column alignment="center" valignment="middle">
 <column alignment="center" valignment="top" width="0in">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -15730,7 +15739,7 @@ goiburukoa
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="69" columns="3">
-<features islongtable="true" longtabularalignment="center">
+<features rotate="0" islongtable="true" longtabularalignment="center">
 <column alignment="block" valignment="top" width="5cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -17929,7 +17938,7 @@ Taulako gelaxketan lerro anitzeko sarrerak edukitzeko, zutabearen zabalera
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features islongtable="true" longtabularalignment="center">
+<features rotate="0" islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="block" valignment="top" width="3cm">
 <column alignment="center" valignment="top" width="0pt">
@@ -18389,7 +18398,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -18441,7 +18450,7 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -18576,7 +18585,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 
@@ -18620,7 +18629,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 
@@ -18662,7 +18671,7 @@ Zapal-ornitorrinkoa
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 
@@ -18765,7 +18774,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 
@@ -18792,7 +18801,7 @@ Taula mugikor bat
 \lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -19076,7 +19085,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 
@@ -19343,7 +19352,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 
@@ -19370,12 +19379,12 @@ Biratutako taula
 \lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -21024,7 +21033,7 @@ status open
 \begin_layout Plain Layout
 
 \lang english
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 
@@ -21051,7 +21060,7 @@ Azentuen izenak eta dagokien komandoak.
 \lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -22318,7 +22327,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 
@@ -22343,7 +22352,7 @@ Letra-tipoak eta dagokien komandoak.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -26945,7 +26954,7 @@ LaTeX sintaxia
 \end_inset
 
 
-\begin_inset Argument
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
@@ -27844,9 +27853,9 @@ berrikusi
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="2.5mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -28503,7 +28512,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -28528,7 +28537,7 @@ latin1
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="17">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -34080,9 +34089,9 @@ Kapsulatutako objektuak
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -34127,9 +34136,9 @@ paragrafo-inguruneen goitibeherako zerrenda
 \align left
 \begin_inset Tabular
 <lyxtabular version="3" rows="21" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="2.5mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -34799,9 +34808,9 @@ Gehigarria
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="25" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="2.5mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -35585,9 +35594,9 @@ Ikusi/eguneratu tresna-barrak honako botoiak ditu (ezkerretik eskuinera):
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0">
-<column alignment="left" valignment="top" width="0">
+<features rotate="0" islongtable="true" longtabularalignment="center">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row interlinespace="2.5mm">
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -39358,7 +39367,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -39379,9 +39388,9 @@ Unitateak
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text

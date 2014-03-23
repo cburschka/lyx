@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrbook
@@ -46,13 +46,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -77,15 +77,24 @@
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \notefontcolor #0000ff
 \index Index
@@ -3367,7 +3376,7 @@ preddefinované hodnoty
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="5">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -4993,7 +5002,7 @@ Hĺbka číslovania odsekov
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8061,7 +8070,7 @@ Toto je (a) a je vnorené.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8154,7 +8163,7 @@ Toto je (a) a je vnorené.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8250,7 +8259,7 @@ Toto je (a) a je vnorené.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9196,7 +9205,7 @@ A máme tu tabuľku:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -13058,7 +13067,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -13108,7 +13117,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -13721,7 +13730,7 @@ Vložiť
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -14051,7 +14060,7 @@ Viac stĺpcov môžete použiť ak potrebujete samostatnú bunku zvlášť nafor
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
@@ -14319,7 +14328,7 @@ to nebute fungovať.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="12">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -14342,7 +14351,7 @@ Popis
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -14351,7 +14360,7 @@ Príznak 1
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -14360,7 +14369,7 @@ Príznak 2
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -14369,7 +14378,7 @@ Príznak 3
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -14378,7 +14387,7 @@ Príznak 4
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -14387,7 +14396,7 @@ Príznak 5
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -14396,7 +14405,7 @@ Príznak 6
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -14405,7 +14414,7 @@ Príznak 7
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -14414,7 +14423,7 @@ Príznak 8
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -14423,7 +14432,7 @@ Príznak 9
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" rotate="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" rotate="90" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -15072,7 +15081,7 @@ Shift
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -15188,7 +15197,7 @@ Shift
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -15396,7 +15405,7 @@ Tu je príklad:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="block" valignment="top" width="6.5cm">
 <column alignment="center" valignment="top" width="0pt">
@@ -15808,7 +15817,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -15829,7 +15838,7 @@ Inset s tabuľkou.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -15994,7 +16003,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -16093,7 +16102,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -16179,7 +16188,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -17631,7 +17640,7 @@ kom režime:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -18878,7 +18887,7 @@ i nefunguje.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="3">
-<features tabularvalignment="middle">
+<features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">

@@ -1,42 +1,70 @@
-#LyX 1.6.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 345
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
 \use_default_options false
+\maintain_unincluded_children false
 \language english
-\inputencoding latin1
+\language_package default
+\inputencoding iso8859-1
+\fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
+\use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
 \graphics dvips
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
 \paperfontsize 12
 \spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 0
-\use_esint 0
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
+\use_indices false
 \paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
-\defskip medskip
+\paragraph_indentation default
 \quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
 \tracking_changes false
 \output_changes false
-\author ""
-\author ""
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
 \end_header
 
 \begin_body
@@ -114,7 +142,7 @@ We'll start with the easiest section, yet also the most important.
 This is how you should fontify text in the manuals:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 
 \emph on
@@ -130,7 +158,7 @@ Do not overemphasize your text.
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 
 \family typewriter
@@ -144,7 +172,7 @@ man
  and functions
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 
 \family sans
@@ -166,7 +194,7 @@ special terms
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 
 \noun on
@@ -179,7 +207,7 @@ Style
  people's names
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 
 \family sans
@@ -256,7 +284,7 @@ Serif
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 
 \series bold
@@ -1629,7 +1657,7 @@ Cross-References and Labels
 Use the following labelling conventions:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 sec:xxx Use this for 
 \family sans
@@ -1650,17 +1678,17 @@ Subsubsection
 s, etc.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 eqn:xxx Use this for Equations, should you need to create any.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 tbl:xxxx Use this for tables inside of a table float.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 fig:xxx Use this for figures inside of figure floats.
 \end_layout
@@ -1736,7 +1764,7 @@ In the dim and distant past, whenever someone wanted to document a new feature
 With that in mind, I have some instructions for how to keep things organized:
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -1750,7 +1778,7 @@ Intro.lyx
  only when a new maintainer comes along.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -1768,7 +1796,7 @@ only
 
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -1807,7 +1835,7 @@ Extended.lyx
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -1818,7 +1846,7 @@ Tutorial.lyx
  Editor.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -1854,7 +1882,7 @@ Customization.lyx
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
@@ -4388,14 +4416,14 @@ What to do when a font doesn't exist:
 \end_layout
 
 \begin_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 Roman Use the font that typesetters in your language use for printing books,
  manuals, etc.
  This will typically be the default font LyX (and LaTeX) uses in your language.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 
 \noun on
@@ -4412,7 +4440,7 @@ Style
  of your language.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 
 \emph on
@@ -4449,7 +4477,7 @@ Emphasized
 \end_layout
 
 \end_deeper
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 
 \family typewriter
@@ -4465,7 +4493,7 @@ Typewriter
 .
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 
 \family sans
@@ -4499,7 +4527,7 @@ Typewriter
  to pick from.
 \end_layout
 
-\begin_layout List
+\begin_layout Labeling
 \labelwidthstring MMMMMMMM
 
 \family sans

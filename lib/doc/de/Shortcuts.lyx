@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
@@ -12,13 +12,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -38,15 +38,24 @@
 \pdf_pdfusetitle true
 \papersize default
 \use_geometry false
-\use_amsmath 2
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Stichwortverzeichnis
 \shortcut idx
@@ -110,7 +119,7 @@ Speicher
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="6">
-<features booktabs="true" tabularvalignment="middle">
+<features rotate="0" booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -471,7 +480,7 @@ Editieren
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="15" columns="4">
-<features booktabs="true" tabularvalignment="middle">
+<features rotate="0" booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -1195,7 +1204,7 @@ Griechische Symbole
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="14" columns="6">
-<features booktabs="true" tabularvalignment="middle">
+<features rotate="0" booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -2315,7 +2324,7 @@ Mathematische Symbole
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="15" columns="6">
-<features booktabs="true" tabularvalignment="middle">
+<features rotate="0" booktabs="true" tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -3507,7 +3516,7 @@ Delimiters
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="6">
-<features booktabs="true" tabularvalignment="middle">
+<features rotate="0" booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
