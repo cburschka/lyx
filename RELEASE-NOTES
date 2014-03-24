@@ -207,6 +207,9 @@ Changes with respect to external programs and libraries:
 - LyX no longer uses gettext for handling the translation files. This
   especially is an advantage on Windows, where translating strings is faster.
 
+- LyX is not yet supposed to work with Qt5. It is advised to compile and 
+  run LyX against Qt 4.8.x.
+
 
 Known issues in version 2.1.0
 -----------------------------
