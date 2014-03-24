@@ -2314,8 +2314,12 @@ Indicateur curseur
 \family default
 .
  Au moyen des options générales, vous pouvez définir la temporisation d'affichag
-e de chacun des deux modes d'affichage et décider si les complétions longues
- doivent tronquées.
+e de chacun des deux modes d'affichage
+\lang english
+, set the minimal number of characters a word must have that it will be
+ taken into account for a completion
+\lang french
+ et décider si les complétions longues doivent tronquées.
 \end_layout
 
 \begin_layout Standard
@@ -44394,7 +44398,9 @@ target "http://wiki.lyx.org/uploads/LyX/NewInLyX20/themes.png"
 \end_layout
 
 \begin_layout Subsubsection
-Aide automatique
+
+\lang english
+Context help
 \end_layout
 
 \begin_layout Standard
@@ -44412,7 +44418,38 @@ tooltips
 \end_layout
 
 \begin_layout Subsubsection
-Session
+
+\lang english
+Menus
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Nombre maximum de fichiers récents
+\family default
+ est le nombre de fichiers récents que LyX doit afficher dans le menu 
+\family sans
+Fichier\SpecialChar \menuseparator
+Documents
+\begin_inset space ~
+\end_inset
+
+récents
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Document Handling
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Session handling
 \end_layout
 
 \begin_layout Standard
@@ -44451,7 +44488,11 @@ Effacer toutes les informations sur la session
 \end_layout
 
 \begin_layout Subsubsection
-Documents
+
+\lang english
+Backup & saving
+\lang french
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Documents de sauvegarde"
@@ -44529,21 +44570,10 @@ Enregistrer les documents sous forme compressée
  enregistre toujours dans un format compressé.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection
 
-\family sans
-Nombre maximum de fichiers récents
-\family default
- est le nombre de fichiers récents que LyX doit afficher dans le menu 
-\family sans
-Fichier\SpecialChar \menuseparator
-Documents
-\begin_inset space ~
-\end_inset
-
-récents
-\family default
-.
+\lang english
+Windows & work area
 \end_layout
 
 \begin_layout Standard
@@ -44560,7 +44590,7 @@ L'option
 \family sans
 Une seule instance
 \family default
- n'est active que si un tube de service pour LyX est spécifié
+ n'est active que si un tube de service pour LyX est spécifié.
 \begin_inset Foot
 status collapsed
 
@@ -44581,7 +44611,6 @@ reference "sec:Répertoires"
 
 \end_inset
 
-.
  Si la case est cochée, les documents seront ouverts dans la même instance
  active de LyX.
  Sinon, une nouvelle instance de LyX est activée pour chaque document.
@@ -44616,13 +44645,30 @@ status open
 \series bold
 Note: 
 \series default
-pour la dernière option, il vous faut redémarrer LyX pour que la modification
+pour cette option, il vous faut redémarrer LyX pour que la modification
  soit prise en compte
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With the setting 
+\family sans
+Closing last view
+\family default
+ you one can decide if a document is closed or hidden when its tab or view
+ is closed.
+ Hidden documents are accessible via the menu 
+\family sans
+View\SpecialChar \menuseparator
+Hidden
+\family default
+.
 \end_layout
 
 \begin_layout Subsection

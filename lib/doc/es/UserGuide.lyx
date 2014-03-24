@@ -1945,8 +1945,12 @@ Indicador en el cursor
 \family default
 .
  Con las opciones generales puedes definir el tiempo de retardo para la
- visualización en línea y para el recuadro emergente, y elegir si las finalizaci
-ones largas deberían abreviarse.
+ visualización en línea y para el recuadro emergente,
+\lang english
+ set the minimal number of characters a word must have that it will be taken
+ into account for a completion
+\lang spanish
+ y elegir si las finalizaciones largas deberían abreviarse.
 \end_layout
 
 \begin_layout Standard
@@ -43080,7 +43084,9 @@ target "http://wiki.lyx.org/uploads/LyX/NewInLyX20/themes.png"
 \end_layout
 
 \begin_layout Subsubsection
-Ayuda automática
+
+\lang english
+Context help
 \end_layout
 
 \begin_layout Standard
@@ -43093,7 +43099,36 @@ Habilitar los recuadros emergentes en el área de trabajo principal
 \end_layout
 
 \begin_layout Subsubsection
-Sesión
+
+\lang english
+Menus
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Documentos recientes
+\family default
+ es el número de últimos archivos abiertos que LyX mostrará en el menú 
+\family sans
+Archivo\SpecialChar \menuseparator
+Abrir
+\begin_inset space ~
+\end_inset
+
+reciente.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Document Handling
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Session handling
 \end_layout
 
 \begin_layout Standard
@@ -43133,7 +43168,11 @@ Limpiar la información de todas las sesiones
 \end_layout
 
 \begin_layout Subsubsection
-Documentos
+
+\lang english
+Backup & saving
+\lang spanish
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Copias-de-seguridad"
@@ -43207,19 +43246,10 @@ Guardar los documentos comprimidos por omisión
  guarda siempre los archivos en formato comprimido.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection
 
-\family sans
-Documentos recientes
-\family default
- es el número de últimos archivos abiertos que LyX mostrará en el menú 
-\family sans
-Archivo\SpecialChar \menuseparator
-Abrir
-\begin_inset space ~
-\end_inset
-
-reciente.
+\lang english
+Windows & work area
 \end_layout
 
 \begin_layout Standard
@@ -43289,12 +43319,29 @@ status open
 \series bold
 Nota:
 \series default
- la última opción requiere reiniciar LyX para que el cambio funcione.
+ este opción requiere reiniciar LyX para que el cambio funcione.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With the setting 
+\family sans
+Closing last view
+\family default
+ you one can decide if a document is closed or hidden when its tab or view
+ is closed.
+ Hidden documents are accessible via the menu 
+\family sans
+View\SpecialChar \menuseparator
+Hidden
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -44042,7 +44089,7 @@ Autocompletar
 
 \begin_layout Standard
 La finalización de entradas se describe en la sección
-\begin_inset space \thinspace{}
+\begin_inset space ~
 \end_inset
 
 

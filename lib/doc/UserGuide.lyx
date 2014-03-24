@@ -2052,7 +2052,9 @@ indicator
 \family default
 .
  With the general options you can define the delay time for the inline and
- popup completion and choose if long completions should be abbreviated.
+ popup completion, you can set the minimal number of characters a word must
+ have that it will be taken into account for a completion and you can choose
+ if long completions should be abbreviated.
 \end_layout
 
 \begin_layout Standard
@@ -42941,7 +42943,7 @@ target "http://wiki.lyx.org/uploads/LyX/NewInLyX20/themes.png"
 \end_layout
 
 \begin_layout Subsubsection
-Automatic help
+Context help
 \end_layout
 
 \begin_layout Standard
@@ -42954,7 +42956,33 @@ Enable tool tips in main work area
 \end_layout
 
 \begin_layout Subsubsection
-Session
+Menus
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Maximum last files
+\family default
+ is the number of last opened files that LyX should display in the menu
+ 
+\family sans
+File\SpecialChar \menuseparator
+Open
+\begin_inset space ~
+\end_inset
+
+Recent
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Document Handling
+\end_layout
+
+\begin_layout Subsubsection
+Session handling
 \end_layout
 
 \begin_layout Standard
@@ -42993,7 +43021,7 @@ Clear all session information
 \end_layout
 
 \begin_layout Subsubsection
-Documents
+Backup & saving
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Backup documents"
@@ -43079,22 +43107,8 @@ Save documents compressed by default
  always saves files in a compressed format.
 \end_layout
 
-\begin_layout Standard
-
-\family sans
-Maximum last files
-\family default
- is the number of last opened files that LyX should display in the menu
- 
-\family sans
-File\SpecialChar \menuseparator
-Open
-\begin_inset space ~
-\end_inset
-
-Recent
-\family default
-.
+\begin_layout Subsubsection
+Windows & work area
 \end_layout
 
 \begin_layout Standard
@@ -43166,12 +43180,27 @@ status open
 \series bold
 Note:
 \series default
- For the last option you have to restart LyX before the change takes effect.
+ For this option you have to restart LyX before the change takes effect.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+With the setting 
+\family sans
+Closing last view
+\family default
+ you one can decide if a document is closed or hidden when its tab or view
+ is closed.
+ Hidden documents are accessible via the menu 
+\family sans
+View\SpecialChar \menuseparator
+Hidden
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
