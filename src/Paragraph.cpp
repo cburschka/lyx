@@ -3670,7 +3670,9 @@ void Paragraph::changeCase(BufferParams const & bparams, pos_type pos,
 	// process sequences of modified characters; in change
 	// tracking mode, this approach results in much better
 	// usability than changing case on a char-by-char basis
-	docstring changes;
+	// We also need to track the current font, since font
+	// changes within sequences can occur.
+	vector<pair<char_type, Font> > changes;
 
 	bool const trackChanges = bparams.trackChanges;
 
@@ -3704,7 +3706,7 @@ void Paragraph::changeCase(BufferParams const & bparams, pos_type pos,
 		}
 
 		if (oldChar != newChar) {
-			changes += newChar;
+			changes.push_back(make_pair(newChar, getFontSettings(bparams, pos)));
 			if (pos != right - 1)
 				continue;
 			// step behind the changing area
@@ -3713,9 +3715,8 @@ void Paragraph::changeCase(BufferParams const & bparams, pos_type pos,
 
 		int erasePos = pos - changes.size();
 		for (size_t i = 0; i < changes.size(); i++) {
-			insertChar(pos, changes[i],
-				   getFontSettings(bparams,
-						   erasePos),
+			insertChar(pos, changes[i].first,
+				   changes[i].second,
 				   trackChanges);
 			if (!eraseChar(erasePos, trackChanges)) {
 				++erasePos;
