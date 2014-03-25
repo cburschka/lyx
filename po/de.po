@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-03-25 09:21+0100\n"
+"POT-Creation-Date: 2014-03-25 11:04-0400\n"
 "PO-Revision-Date: 2014-03-25 09:24+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-devel@lists.lyx.org>\n"
@@ -6840,19 +6840,21 @@ msgstr "Latein aus"
 msgid "BeginFrame"
 msgstr "BeginneRahmen"
 
-#: lib/layouts/article.layout:19 lib/layouts/beamer.layout:109
-#: lib/layouts/beamer.layout:124 lib/layouts/memoir.layout:52
-#: lib/layouts/mwart.layout:24 lib/layouts/paper.layout:46
-#: lib/layouts/scrartcl.layout:21 lib/layouts/svmult.layout:102
-#: lib/layouts/tufte-handout.layout:22 lib/layouts/agu_stdsections.inc:12
-#: lib/layouts/db_stdsections.inc:12 lib/layouts/scrclass.inc:51
-#: lib/layouts/stdsections.inc:12 lib/layouts/svcommon.inc:107
+#: lib/layouts/article.layout:19 lib/layouts/asme2e.layout:19
+#: lib/layouts/beamer.layout:109 lib/layouts/beamer.layout:124
+#: lib/layouts/memoir.layout:52 lib/layouts/mwart.layout:24
+#: lib/layouts/paper.layout:46 lib/layouts/scrartcl.layout:21
+#: lib/layouts/svmult.layout:102 lib/layouts/tufte-handout.layout:22
+#: lib/layouts/agu_stdsections.inc:12 lib/layouts/db_stdsections.inc:12
+#: lib/layouts/scrclass.inc:51 lib/layouts/stdsections.inc:12
+#: lib/layouts/svcommon.inc:107
 msgid "Part"
 msgstr "Teil"
 
-#: lib/layouts/article.layout:30 lib/layouts/mwart.layout:34
-#: lib/layouts/scrartcl.layout:30 lib/layouts/db_stdstarsections.inc:13
-#: lib/layouts/stdstarsections.inc:13 lib/layouts/svcommon.inc:240
+#: lib/layouts/article.layout:30 lib/layouts/asme2e.layout:30
+#: lib/layouts/mwart.layout:34 lib/layouts/scrartcl.layout:30
+#: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
+#: lib/layouts/svcommon.inc:240
 msgid "Part*"
 msgstr "Teil*"
 
@@ -6877,8 +6879,8 @@ msgstr "\\arabic{section}.\\arabic{subsection}"
 msgid ""
 "Subsubsection \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 msgstr ""
-"Unterunterabschnitt \\arabic{section}.\\arabic{subsection}."
-"\\arabic{subsubsection}"
+"Unterunterabschnitt \\arabic{section}.\\arabic{subsection}.\\arabic"
+"{subsubsection}"
 
 #: lib/layouts/beamer.layout:257
 msgid "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
@@ -18848,7 +18850,7 @@ msgstr ""
 "zusammen.\n"
 "Weitere Optionen sind in der LyX man Datei aufgeführt."
 
-#: src/LyX.cpp:1067 src/support/Package.cpp:570
+#: src/LyX.cpp:1067 src/support/Package.cpp:569
 msgid "No system directory"
 msgstr "Kein Systemverzeichnis"
 
@@ -19158,11 +19160,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:3262
 msgid ""
-"The LaTeX command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The LaTeX command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"Der LaTeX-Befehl, um das Sprachpaket zu laden. Beispiel: "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"Der LaTeX-Befehl, um das Sprachpaket zu laden. Beispiel: \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 
 #: src/LyXRC.cpp:3266
 msgid ""
@@ -24358,11 +24360,11 @@ msgstr "Referenzen: "
 msgid "[[Replace with the code of your language]]"
 msgstr "de"
 
-#: src/support/Package.cpp:451
+#: src/support/Package.cpp:450
 msgid "LyX binary not found"
 msgstr "LyX-Binärdatei nicht gefunden"
 
-#: src/support/Package.cpp:452
+#: src/support/Package.cpp:451
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1$s"
@@ -24370,7 +24372,7 @@ msgstr ""
 "Der Pfad zum LyX-Programm kann nicht von der Kommandozeile %1$s gefunden "
 "werden."
 
-#: src/support/Package.cpp:571
+#: src/support/Package.cpp:570
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -24385,11 +24387,11 @@ msgstr ""
 "%2$s auf das Systemverzeichnis von LyX, das die Datei `chkconfig.ltx' "
 "enthält."
 
-#: src/support/Package.cpp:652 src/support/Package.cpp:679
+#: src/support/Package.cpp:651 src/support/Package.cpp:678
 msgid "File not found"
 msgstr "Datei nicht gefunden"
 
-#: src/support/Package.cpp:653
+#: src/support/Package.cpp:652
 #, c-format
 msgid ""
 "Invalid %1$s switch.\n"
@@ -24398,7 +24400,7 @@ msgstr ""
 "Ungültiger Schalter %1$s.\n"
 "Verzeichnis %2$s enthält %3$s nicht."
 
-#: src/support/Package.cpp:680
+#: src/support/Package.cpp:679
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
@@ -24407,7 +24409,7 @@ msgstr ""
 "Ungültige Umgebungsvariable %1$s.\n"
 "Verzeichnis %2$s enthält %3$s nicht."
 
-#: src/support/Package.cpp:704
+#: src/support/Package.cpp:703
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
@@ -24416,7 +24418,7 @@ msgstr ""
 "Ungültige Umgebungsvariable %1$s.\n"
 "%2$s ist kein Verzeichnis."
 
-#: src/support/Package.cpp:706
+#: src/support/Package.cpp:705
 msgid "Directory not found"
 msgstr "Verzeichnis nicht gefunden"
 
