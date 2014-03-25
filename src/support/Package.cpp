@@ -177,8 +177,7 @@ std::string const & Package::configure_command() const
 		FileName const configure_script(addName(system_support().absFileName(), "configure.py"));
 		configure_command_ = os::python() + ' ' +
 			quoteName(configure_script.toFilesystemEncoding()) +
-			with_version_suffix() + " --binary-dir=" +
-			quoteName(FileName(binary_dir().absFileName()).toFilesystemEncoding());
+			with_version_suffix();
 	}
 	return configure_command_;
 }
