@@ -221,11 +221,17 @@ dist_jadoc_DATA = \
 
 jaclipartdocdir = $(jadocdir)/clipart
 dist_jaclipartdoc_DATA = \
+	ja/clipart/BoxInsetDefaultQt4.png \
 	ja/clipart/ChildDocumentQt4.png \
+	ja/clipart/CommentNoteImageQt4.png \
 	ja/clipart/ERT.png \
 	ja/clipart/ExternalMaterialQt4.png \
 	ja/clipart/floatQt4.png \
 	ja/clipart/footnoteQt4.png \
+	ja/clipart/GreyedOutNoteImageQt4.png \
+	ja/clipart/labelQt4.png \
+	ja/clipart/LyXNoteImageQt4.png \
+	ja/clipart/macrobox.png \
 	ja/clipart/referenceQt4.png \
 	ja/clipart/StandardToolbar.png \
 	ja/clipart/ToolbarEnvBox.png
