@@ -21,7 +21,7 @@ namespace lyx {
 
 /******************************************************************************
 
-LyX has five different macros that can be used to make assertions. The behave
+LyX has five different macros that can be used to make assertions. They behave
 the same way in devel mode: They assert. The differences between them are how
 they behave in release mode.
 
