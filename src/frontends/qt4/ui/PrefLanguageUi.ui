@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>PrefLanguageUi</class>
  <widget class="QWidget" name="PrefLanguageUi">
@@ -131,7 +132,7 @@
    <item row="4" column="0">
     <widget class="QLabel" name="decimalPointL">
      <property name="text">
-      <string>Default Decimal &amp;Separator:</string>
+      <string>Default decimal &amp;separator:</string>
      </property>
      <property name="buddy">
       <cstring>defaultDecimalPointLE</cstring>
@@ -154,20 +155,20 @@
      </property>
     </widget>
    </item>
-    <item row="5" column="0">
-      <widget class="QLabel" name="defaultLengthUnitLA">
-        <property name="text">
-          <string>Default length &amp;unit:</string>
-        </property>
-        <property name="buddy">
-          <cstring>defaultLengthUnitCO</cstring>
-        </property>
-      </widget>
-    </item>
-    <item row="5" column="1">
-      <widget class="QComboBox" name="defaultLengthUnitCO" />
-    </item>
-    <item row="6" column="0" colspan="2">
+   <item row="5" column="0">
+    <widget class="QLabel" name="defaultLengthUnitLA">
+     <property name="text">
+      <string>Default length &amp;unit:</string>
+     </property>
+     <property name="buddy">
+      <cstring>defaultLengthUnitCO</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QComboBox" name="defaultLengthUnitCO"/>
+   </item>
+   <item row="6" column="0" colspan="2">
     <widget class="QCheckBox" name="globalCB">
      <property name="toolTip">
       <string>Check to pass the language globally (to the document class), not locally (to the language package)</string>
