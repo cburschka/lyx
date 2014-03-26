@@ -493,8 +493,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
 表示\SpecialChar \menuseparator
 
 \emph on
@@ -514,7 +512,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\bar under
+\bar no
 表示\SpecialChar \menuseparator
 更新\SpecialChar \menuseparator
 
@@ -534,13 +532,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-ファイル
-\bar default
-\SpecialChar \menuseparator
-
-\bar under
+ファイル\SpecialChar \menuseparator
 印刷
 \end_layout
 
@@ -556,13 +548,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\bar under
-ファイル
-\bar default
-\SpecialChar \menuseparator
-
-\bar under
+ファイル\SpecialChar \menuseparator
 ファックス
 \end_layout
 
@@ -4123,18 +4109,30 @@ status collapsed
 独でも出力したり印刷したりすることのできる完全なLyXファイルであるように注意することが重要です。しかも、これらの各ファイルは、同じ文書クラスでなくてはなりませ
 ん。articleクラスとbookクラスを混在させるようなことはなさらないでください。LaTeXファイルをインクルードすることもできますが、このファイルにはプリ
 アンブルがあってはなりません(
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 begin{document}
-\family default
+\end_layout
+
+\end_inset
+
 行とその前のすべて、および
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
-end{documen
-\family default
-t}行は削除しておかなければなりません)。さもないと、DVIファイルを作成する際にエラーが発生するでしょう。
+end{document}行
+\end_layout
+
+\end_inset
+
+は削除しておかなければなりません)。さもないと、DVIファイルを作成する際にエラーが発生するでしょう。
 \end_layout
 
 \begin_layout Standard
@@ -4294,6 +4292,157 @@ http://wiki.lyx.org/FAQ/Unsorted#toc31
 \end_inset
 
 も参照してください。
+\end_layout
+
+\begin_layout Section
+LyX書庫
+\end_layout
+
+\begin_layout Standard
+しばしばユーザーは、出版社に送ったり、共著者とやりとりするために、LyXファイルを、その依存する全画像(及び他のファイル)と「同梱」する必要に迫られることがあり
+ます。LyX 2.0には、この過程を自動化するPythonスクリプト(
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxpak.py
+\end_layout
+
+\end_inset
+
+)が含まれています。これを使うには、
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+zipfile
+\end_layout
+
+\end_inset
+
+ pythonモジュールまたは
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tarfile
+\end_layout
+
+\end_inset
+
+ pythonモジュールが、システムに導入済みであることが必要です。既定設定では、Unix系システムでは、
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+gzip
+\end_layout
+
+\end_inset
+
+圧縮
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tar
+\end_layout
+
+\end_inset
+
+ファイル形式が優先され、Windowsでは
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+zip
+\end_layout
+
+\end_inset
+
+形式が優先されます。
+\end_layout
+
+\begin_layout Standard
+LyXの環境構成時には、「LyX書庫」を書き出すことができるようにスクリプトが準備され、
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+ファイル\SpecialChar \menuseparator
+書き出し
+\end_layout
+
+\end_inset
+
+の下で利用可能となります。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+ファイル処理\SpecialChar \menuseparator
+変換子
+\end_layout
+
+\end_inset
+
+の
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+LyX\SpecialChar \menuseparator
+LyX書庫
+\end_layout
+
+\end_inset
+
+変換子に、
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-t
+\end_layout
+
+\end_inset
+
+スイッチや
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-z
+\end_layout
+
+\end_inset
+
+スイッチを加えることで、プラットホームとは独立に、
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+tar
+\end_layout
+
+\end_inset
+
+形式や
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+zip
+\end_layout
+
+\end_inset
+
+形式を強制することができます(スイッチは、スクリプト名の前ではなく、後ろに加えてください)。
 \end_layout
 
 \begin_layout Section
@@ -4730,7 +4879,7 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-インタフェース
+外見
 \end_layout
 
 \begin_layout Standard
@@ -4759,7 +4908,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-そのダイアログに、ブリットの形の一覧表があります。
+このダイアログは、ブリット形の一覧表を提示します。
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -5082,7 +5231,11 @@ LyXが、パッケージがなくてもブリットを使用することを許�
 \end_layout
 
 \begin_layout Standard
-変更したいブリット階層を選んで、ブリットの形と大きさを選んでください。何らかの変更を加えたとしても、LyX上には反映されませんが、文書の表示を行えば確認されます
+変更したいブリット階層を選んで、ブリット形と寸法を選択してください。何らかの変更を加えたとしても、LyX上には反映されませんが、文書の表示を行えば確認されます。
+\end_layout
+
+\begin_layout Standard
+ブリット形は、適切な階層のブリットボタンをマウスで右クリックすれば、簡単に既定値に初期化することができます
 \begin_inset Foot
 status collapsed
 
@@ -7573,6 +7726,32 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+順検索とは、名前が示すとおり、いわば遡及検索の「逆」を意味します。すなわち、LyX内部から、ビューアに特定の箇所を表示させることを可能にします。(以下に説明する
+ように)もし順検索の準備ができていれば、カーソルをLyX文書の好きなところに置いて、
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+移動\SpecialChar \menuseparator
+順検索
+\end_layout
+
+\end_inset
+
+を選択すると(あるいはマウスの右クリックで表示される文脈依存メニューから
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+順検索
+\end_layout
+
+\end_inset
+
+を選択してもよい)、ビューアも同じ箇所に移動します。もちろん、使用しているビューアが、この機能をサポートしていなくてはなりません。
+\end_layout
+
+\begin_layout Standard
 順検索を有効にするためには、生成されたPDF/DVI出力ファイルに、TeXソースに関する情報を追加する必要があります。これは、第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -7589,6 +7768,7 @@ reference "sub:遡及検索"
 status collapsed
 
 \begin_layout Plain Layout
+ツール\SpecialChar \menuseparator
 設定\SpecialChar \menuseparator
 出力\SpecialChar \menuseparator
 一般
@@ -7596,19 +7776,12 @@ status collapsed
 
 \end_inset
 
-で自分の使うビューアを利用するように、LyXを設定する必要があります。ただし、yap・xdvi・okular・Sumatra PDFなど、一部のビューアしかこの
-操作は利用できません
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Sumatraの場合には、http://www.istri.fr/zip/CMCDDE.zipからダウンロードできるCMCDDEが必要です。
+で自分の使うビューアを利用するように、LyXを設定する必要があります。いくつかのビューアについては、試験済みの設定が前もって準備されており、ドロップダウンリスト
+から選択することができます。これらの設定の何れも意にそぐわない場合には、ご自身で適切な設定を見つけ出して入力しなくてはなりません。定義文法は、以下の変数を使用し
+ます。
 \end_layout
 
-\end_inset
-
-。Evinceやxpdfなどの他のビューアでは、少なくとも、ファイルの特定頁を読み込み直したり、指し示したりすることができますが、これらの場合にはsynctex
-の外部コールを使用することができます。設定ダイアログに用意されている用例をよく研究してください。設定中で置き換えられる値は以下の通りです。
+\begin_layout Itemize
 \begin_inset Flex Code
 status collapsed
 
@@ -7618,7 +7791,10 @@ $$n
 
 \end_inset
 
-は行番号を指し、
+:行番号
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Flex Code
 status collapsed
 
@@ -7628,7 +7804,23 @@ $$t
 
 \end_inset
 
-は書き出された一時.texファイル、
+:書き出された(一時).texファイル名(パスを除く)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$$f
+\end_layout
+
+\end_inset
+
+:書き出された(一時).texファイル名(パスを含む)
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Flex Code
 status collapsed
 
@@ -7638,12 +7830,67 @@ $$o
 
 \end_inset
 
-は書き出された出力ファイルを指します(一時ディレクトリにどちらが存在するかに依存してdviあるいはpdf)。
+:書き出された出力ファイル名(どちらが一時ディレクトリに存在するかに依存して、dviあるいはpdf)。
 \end_layout
 
 \begin_layout Standard
-閲覧時には、一時ディレクトリに.dviファイルがあるか.pdfファイルがあるか(特定の文書を閲覧するのにどの書式を使用したか)によって、適当なプレビュー書式をLyX
-が動的に選択します。
+yap・xdvi・okular
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+ツール\SpecialChar \menuseparator
+設定\SpecialChar \menuseparator
+ファイル処理\SpecialChar \menuseparator
+ファイル形式
+\end_layout
+
+\end_inset
+
+で
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+okular --unique
+\end_layout
+
+\end_inset
+
+と設定すると良いかもしれません。
+\end_layout
+
+\end_inset
+
+・Sumatra PDFなど、一部のビューアでしか、完全な順検索機能は提供されていないことに注意してください
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Sumatraの場合には、
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.istri.fr/zip/CMCDDE.zip"
+
+\end_inset
+
+からダウンロードできるCMCDDEが必要です。
+\end_layout
+
+\end_inset
+
+。広く使われているPDFビューアの多く(特にAdobe Reader)は、順検索を全く提供していませんが、他の一部のビューア(たとえばEvinceやxpdf)で
+は、少なくとも、文書を読み込み直したり、ファイルの特定ページに移動することはできますので、少なくとも「近く」には移動することができます。この後者の機能は、syn
+ctexの外部コールで提供されています(事前に用意されている用例をご覧ください)。
+\end_layout
+
+\begin_layout Standard
+順検索は、DVI出力とPDF出力の双方で動作します。LyXは、過去にあなたが使用したプレビュー形式をチェックして(つまり、一時ディレクトリにどちらの形式が存在す
+るかをチェックして)、その形式に適切な設定を選択します。
 \end_layout
 
 \begin_layout Chapter
@@ -16601,7 +16848,7 @@ LaTeXログ
 
 \family sans
 \begin_inset Flex MenuItem
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -17502,7 +17749,7 @@ co -f -u<バージョン> <ファイル名>
 \labelwidthstring 00.00.0000
 RCSコマンド：
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 "ファイル名"
@@ -17520,7 +17767,7 @@ status open
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 ci -q -u -i "<新ファイル名>"
@@ -17878,7 +18125,7 @@ CVSコマンド：
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 "ファイル名"
@@ -17888,7 +18135,7 @@ status open
 
 を
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 "新ファイル名"
@@ -17902,7 +18149,7 @@ status open
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 cvs -q add "<新ファイル名>"
@@ -17938,7 +18185,7 @@ CVSコマンド：
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 "ファイル名"
@@ -17948,7 +18195,7 @@ status open
 
 を
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 "新ファイル名"
@@ -17962,7 +18209,7 @@ status open
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 cvs -q add "<新ファイル名>"
@@ -17976,7 +18223,7 @@ cvs -q add "<新ファイル名>"
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 cvs -q remove "<ファイル名>"
@@ -18401,7 +18648,7 @@ SVNコマンド：
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 svn copy -q "<ファイル名>" "<新ファイル名>"
@@ -18415,7 +18662,7 @@ svn copy -q "<ファイル名>" "<新ファイル名>"
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 svn commit
@@ -18450,7 +18697,7 @@ SVNコマンド：
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 svn move -q add "<ファイル名>" "<新ファイル名>"
@@ -18464,7 +18711,7 @@ svn move -q add "<ファイル名>" "<新ファイル名>"
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 svn commit
@@ -19892,7 +20139,7 @@ GITコマンド：
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 git mv "<ファイル名>" "<新ファイル名>"
@@ -19906,7 +20153,7 @@ git mv "<ファイル名>" "<新ファイル名>"
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Flex Code
-status open
+status collapsed
 
 \begin_layout Plain Layout
 git commit
@@ -20226,7 +20473,7 @@ http://www.cs.virginia.edu/~nr/noweb/
 \end_layout
 
 \begin_layout Subsection
-LyXと文芸プログラミング
+LyXとNowebを使った文芸プログラミング
 \end_layout
 
 \begin_layout Standard
@@ -20495,11 +20742,15 @@ build-script
 \end_layout
 
 \begin_layout Standard
-以下にbuild-scriptの一例を書いておきます。パスが通っているディレクトリに置いて使います。
+以下に「build-script」の一例を書いておきます。パスが通っているディレクトリに置いて使います。
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Newpage pagebreak
 \end_inset
 
 

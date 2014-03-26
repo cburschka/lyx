@@ -13,9 +13,6 @@
 % the documentation team
 % email: lyx-docs@lists.lyx.org
 
-\ifnum 42146=\euc"A4A2 \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}\else
-\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}\fi
-
 % if pdflatex is used
 \usepackage{ifpdf}
 \ifpdf
@@ -146,7 +143,8 @@
 
 % make pdf bookmark sane with Japanese
 \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}
-% Added by lyx2lyx
+
+\renewcommand{\seename}{→}
 \end_preamble
 \options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,samesize
 \use_default_options true
@@ -202,7 +200,7 @@ End
 \use_hyperref true
 \pdf_title "LyX数式説明書"
 \pdf_author "LyXプロジェクトチーム・Uwe Stohr"
-\pdf_subject "LyXの数式機能に関する説明書"
+\pdf_subject "LyXの数式機能説明書"
 \pdf_keywords "LyX, Mathed"
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
@@ -253,7 +251,7 @@ End
 \papersides 2
 \paperpagestyle plain
 \tracking_changes false
-\output_changes false
+\output_changes true
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
@@ -520,7 +518,7 @@ target "ftp://ftp.ams.org/pub/tex/doc/amstex/amsguide.pdf"
 status collapsed
 
 \begin_layout Plain Layout
-すうしき ! ぎょうない @ 数式 ! 行内
+すうしき @ 数式 ! ぎょうない @ 行内
 \end_layout
 
 \end_inset
@@ -566,7 +564,7 @@ arg   "math-mode"
 status collapsed
 
 \begin_layout Plain Layout
-すうしき ! べつぎょうだてようしき @ 数式 ! 別行立て様式
+すうしき @ 数式 ! べつぎょうだてようしき @ 別行立て様式
 \end_layout
 
 \end_inset
@@ -577,27 +575,7 @@ type  "shortcuts"
 arg   "math-display"
 \end_inset
 
-のうちいずれかの
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-を使用して下さい。
+のうちいずれかの捷径を使用して下さい。
 \end_layout
 
 \begin_layout Standard
@@ -607,27 +585,7 @@ type  "shortcuts"
 arg   "math-mode"
 \end_inset
 
-のいずれかの
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-か、
+のいずれかの捷径か、
 \family sans
 編集\SpecialChar \menuseparator
 数式\SpecialChar \menuseparator
@@ -692,7 +650,7 @@ TeXモード
 status collapsed
 
 \begin_layout Plain Layout
-T@TeXモード
+T exもーど@TeXモード
 \end_layout
 
 \end_inset
@@ -719,27 +677,7 @@ status collapsed
 
 Xコード
 \family default
-(
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+(捷径：
 \begin_inset Info
 type  "shortcut"
 arg   "ert-insert"
@@ -765,7 +703,7 @@ LaTeXプリアンブル
 status collapsed
 
 \begin_layout Plain Layout
-L@LaTeXプリアンブル
+L atexぷりあんぶる@LaTeXプリアンブル
 \end_layout
 
 \end_inset
@@ -838,7 +776,7 @@ reference "sub:多行数式中のテキスト"
 status collapsed
 
 \begin_layout Plain Layout
-てきすと ! すうしきないの @ テキスト ! 数式内の
+てきすと @ テキスト ! すうしきちゅうの @ 数式中の
 \end_layout
 
 \end_inset
@@ -853,27 +791,7 @@ status collapsed
 
 \end_inset
 
-が使用されます。このモードには、
-\begin_inset Flex Ruby
-status collapsed
-
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+が使用されます。このモードには、捷径
 \begin_inset Info
 type  "shortcut"
 arg   "math-mode"
@@ -929,7 +847,7 @@ text
 status collapsed
 
 \begin_layout Plain Layout
-T@TeX括弧
+T exかっこ@TeX括弧
 \end_layout
 
 \end_inset
@@ -956,8 +874,28 @@ T@TeX括弧
 \begin_layout Standard
 保護された空白は、
 \begin_inset Info
-type  "shortcut"
-arg   "space-insert protected"
+type  "shortcuts"
+arg   "command-alternatives space-insert protected ; math-space"
+\end_inset
+
+ 
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+鍵
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+キー
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 で入力できます。
@@ -1416,13 +1354,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-うえつきもじ@上付き文字|see
+うえつきもじ@上付き文字
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -1448,13 +1386,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-したつきもじ@下付き文字|see
+したつきもじ@下付き文字
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -2075,21 +2013,13 @@ cfracright
 cfrac
 \series default
 は中央揃えです。以下の各分数は、それぞれの揃え位置を示しています。
-\begin_inset Newline newline
-\end_inset
-
-
 \series bold
 
-\begin_inset Formula $\cfrac[l]{A}{B+C}$
-\end_inset
+\begin_inset Formula 
+\[
+\cfrac[l]{A}{B+C}\,,\,\cfrac{A}{B+C}\,,\,\cfrac[r]{A}{B+C}
+\]
 
-, 
-\begin_inset Formula $\cfrac{A}{B+C}$
-\end_inset
-
-, 
-\begin_inset Formula $\cfrac[r]{A}{B+C}$
 \end_inset
 
 
@@ -2256,18 +2186,14 @@ reference "sub:自己定義の分数"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Multiline fractions are explained in
-\lang japanese
- 
+多行分数の説明は、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Multiline-Fractions"
 
 \end_inset
 
-。
+節にあります。
 \end_layout
 
 \begin_layout Subsection
@@ -2286,13 +2212,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-るーと@ルート|see
+るーと@ルート
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -3344,13 +3270,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-どういたい@同位体|see
+どういたい@同位体
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -3376,13 +3302,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-あいそとーぷ@アイソトープ|see
+あいそとーぷ@アイソトープ
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -3540,7 +3466,7 @@ arg   "math-insert \\space"
 
 
 \begin_inset Graphics
-	filename ../../images/math/phantom.png
+	filename ../../trunk/lib/images/math/phantom.png
 	scale 85
 
 \end_inset
@@ -3761,7 +3687,7 @@ vphantom
 
 
 \begin_inset Graphics
-	filename ../../images/math/vphantom.png
+	filename ../../trunk/lib/images/math/vphantom.png
 	scale 85
 
 \end_inset
@@ -3790,7 +3716,7 @@ hphantom
 
 
 \begin_inset Graphics
-	filename ../../images/math/hphantom.png
+	filename ../../trunk/lib/images/math/hphantom.png
 	scale 85
 
 \end_inset
@@ -3914,13 +3840,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ぼうせん@棒線|see
+ぼうせん@棒線
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -4145,7 +4071,7 @@ underline
 \begin_inset VSpace bigskip
 \end_inset
 
-自製の線は、以下の書式を持つ
+自己定義の線は、以下の書式を持つ
 \series bold
 
 \backslash
@@ -4156,7 +4082,7 @@ rule
 status collapsed
 
 \begin_layout Plain Layout
-こまんど@こまんど ! R ! 
+こまんど@コマンド ! R ! 
 \backslash
 rule
 \end_layout
@@ -5048,7 +4974,7 @@ status collapsed
 
 \end_inset
 
-
+：
 \family sans
 Alt+M
 \begin_inset space ~
@@ -5552,6 +5478,10 @@ status collapsed
 
 \begin_layout Plain Layout
 かっこ@括弧 ! すいちょく@垂直
+\begin_inset space \thinspace{}
+\end_inset
+
+------
 \end_layout
 
 \end_inset
@@ -6892,7 +6822,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \series bold
-(訳註)
+【訳註】
 \series default
 pLaTeXでは、標準では
 \series bold
@@ -6950,6 +6880,10 @@ status collapsed
 
 \begin_layout Plain Layout
 かっこ@括弧 ! すいへい@水平
+\begin_inset space \thinspace{}
+\end_inset
+
+------
 \end_layout
 
 \end_inset
@@ -7226,19 +7160,11 @@ underbrace
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you set in the document settings under 
+文書設定の
 \family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Options
+数式オプション
 \family default
- for the package
-\lang japanese
- 
+で、
 \series bold
 mathtools
 \series default
@@ -7252,17 +7178,11 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-the option 
+パッケージに
 \family sans
-Load
-\begin_inset space ~
-\end_inset
-
-always
+常に読み込み
 \family default
-, you have access to square backets:
+オプションを設定すると、以下のような角括弧が利用可能になります。
 \end_layout
 
 \begin_layout Standard
@@ -7282,13 +7202,13 @@ always
 status collapsed
 
 \begin_layout Plain Layout
-ここで
+
 \series bold
 
 \backslash
 raisebox
 \series default
-はスペーサーとして使用しているだけです。
+はスペーサーとして使われているだけです。
 \end_layout
 
 \end_inset
@@ -7302,7 +7222,7 @@ raisebox
 \begin_inset Text
 
 \begin_layout Plain Layout
-出力
+結果
 \end_layout
 
 \end_inset
@@ -7494,21 +7414,18 @@ C
 
 \begin_layout Standard
 
-\lang english
-For 
 \series bold
 
 \backslash
 overbracket
 \series default
- and 
+と
 \series bold
 
 \backslash
 underbracket
 \series default
- you can change the thickness of the bracket's stroke by specifying the
- desired thickness in square brackets behind the command:
+に関しては、コマンドに続く角括弧中に、希望する厚みを指定すれば、以下のように、角括弧の筆跡の厚みに変更を加えることができます。
 \end_layout
 
 \begin_layout Standard
@@ -7528,13 +7445,13 @@ underbracket
 status collapsed
 
 \begin_layout Plain Layout
-ここで
+
 \series bold
 
 \backslash
 raisebox
 \series default
-はスペーサーとして使用しているだけです。
+はスペーサーとして使われているだけです。
 \end_layout
 
 \end_inset
@@ -7548,7 +7465,7 @@ raisebox
 \begin_inset Text
 
 \begin_layout Plain Layout
-出力
+結果
 \end_layout
 
 \end_inset
@@ -8811,7 +8728,7 @@ F(x)
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox{5.5mm}{}F(a)\xleftarrow[x>0]{x=a}F(x)\raisebox{-4mm}{}$
+\begin_inset Formula $\raisebox{5mm}{}F(a)\xleftarrow[x>0]{x=a}F(x)\raisebox{-4mm}{}$
 \end_inset
 
 
@@ -8852,7 +8769,7 @@ F(a)
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\raisebox{5.5mm}{}F(x)\xrightarrow[x>0]{x=a}F(a)\raisebox{-4mm}{}$
+\begin_inset Formula $\raisebox{5mm}{}F(x)\xrightarrow[x>0]{x=a}F(a)\raisebox{-4mm}{}$
 \end_inset
 
 
@@ -8876,19 +8793,11 @@ F(a)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you set in the document settings under 
+文書設定の
 \family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Options
+数式オプション
 \family default
- for the package
-\lang japanese
- 
+で、
 \series bold
 mathtools
 \series default
@@ -8902,17 +8811,18 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-the option 
+パッケージに
 \family sans
-Load
-\begin_inset space ~
+常に読み込み
+\family default
+オプションを設定すると、以下のようなラベル付き矢印が利用可能になります。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
-always
-\family default
-, you have access to the following labeled arrows:
+
 \end_layout
 
 \begin_layout Standard
@@ -8940,11 +8850,7 @@ always
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Example
-\lang japanese
-
+用例
 \begin_inset Note Note
 status collapsed
 
@@ -9144,11 +9050,7 @@ xhookrightarrow
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Example
-\lang japanese
-
+用例
 \begin_inset Note Note
 status collapsed
 
@@ -9332,9 +9234,7 @@ xrightleftharpoons
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The command scheme is for all these arrows:
+これらの矢印は、すべて以下のようなコマンドスキームを取ります。
 \end_layout
 
 \begin_layout Standard
@@ -9358,7 +9258,7 @@ The command scheme is for all these arrows:
 \begin_inset Text
 
 \begin_layout Plain Layout
-出力
+用例
 \begin_inset Note Note
 status collapsed
 
@@ -9785,7 +9685,7 @@ reference "sub:自動の括弧丈"
 
 \end_inset
 
-節に述べられているコマンドを使うと、区分記号として使用することもできます。伊藤の公式を用いて
+節に述べられているコマンドを使うと、区分記号として使用することもできます。
 \end_layout
 
 \begin_layout Section
@@ -10092,9 +9992,7 @@ A
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Vectors
+べくとる@ベクトル
 \end_layout
 
 \end_inset
@@ -10580,11 +10478,7 @@ ddot
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-LyX also supports a tilde under the character if the LaTeX-package
-\lang japanese
- 
+LyXは、LaTeXパッケージ
 \series bold
 undertilde
 \series default
@@ -10598,9 +10492,7 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-is installed on your system:
+がシステム上に導入されていれば、文字下のティルダもサポートします。
 \end_layout
 
 \begin_layout Standard
@@ -10746,6 +10638,13 @@ status collapsed
 fi 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -11191,6 +11090,10 @@ status collapsed
 
 \begin_layout Plain Layout
 くうはく@空白 ! すいへい@水平
+\begin_inset space \thinspace{}
+\end_inset
+
+------
 \end_layout
 
 \end_inset
@@ -11211,7 +11114,11 @@ name "sub:定義済みの空白"
 status collapsed
 
 \begin_layout Plain Layout
-くうはく@空白 ! すいへい@水平 ! ていぎずみ@定義済み
+くうはく@空白 ! すいへい@水平
+\begin_inset space \thinspace{}
+\end_inset
+
+------ ! ていぎずみ@定義済み
 \end_layout
 
 \end_inset
@@ -11240,10 +11147,10 @@ status collapsed
 
 \end_inset
 
-
+：
 \begin_inset Info
 type  "shortcut"
-arg   "space-insert protected"
+arg   "command-alternatives space-insert protected ; math-space"
 \end_inset
 
 )を挿入することで実現できます。「
@@ -11713,31 +11620,35 @@ hspace{1em}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Space
-\begin_inset space ~
-\end_inset
-
 5
+\lang english
+
 \begin_inset space \thinspace{}
 \end_inset
 
---
-\begin_inset space \thinspace{}
-\end_inset
 
-7 are variable spaces which are explained in
 \lang japanese
- 
+--
+\lang english
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\lang japanese
+7回
+\family sans
+Space
+\family default
+を押した場合は、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:可変長の空白"
 
 \end_inset
 
-.一番右の長さは、一見、空白を生まないように見えます。実はこれは負の長さなので、他の長さと異なり、LyX中では赤で表示されます。以下のように、他にもう二つ、負の長
-さの空白があります。
+節に説明されているように、可変空白となります。9回押した場合は、一見、空白を生まないように見えます。実はこれは負の長さなので、他の長さと異なり、LyX中では赤で
+表示されます。以下のように、他にもう二つ、負の長さの空白があります。
 \end_layout
 
 \begin_layout Standard
@@ -12107,7 +12018,7 @@ status collapsed
 
 \end_inset
 
-
+：
 \begin_inset Info
 type  "shortcut"
 arg   "space-insert thin"
@@ -12264,7 +12175,11 @@ name "sub:可変長の空白"
 status collapsed
 
 \begin_layout Plain Layout
-くうはく@空白 ! すいへいほうこう@水平方向 ! かへんちょう@可変長
+くうはく@空白 ! すいへい@水平
+\begin_inset space \thinspace{}
+\end_inset
+
+------ ! かへんちょう@可変長
 \end_layout
 
 \end_inset
@@ -12307,44 +12222,34 @@ hspace
 
 
 \color inherit
-」を左クリックすることによって指定することができます。長さは負の値でも構いません。
-\lang english
-When a space would be the first character in a line it would be omitted.
- To force its output use the command 
-\series bold
-
-\backslash
-hspace*
-\series default
- instead of 
+」を左クリックすることによって指定することができます。長さは負の値でも構いません。空白が行冒頭の文字である場合、それは無視されます。この場合でも、空白出力を強制
+させたいときには、
 \series bold
 
 \backslash
 hspace
 \series default
- or left-click on the 
-\begin_inset Quotes eld
-\end_inset
+コマンドの代わりに
+\series bold
 
-
+\backslash
+hspace*
+\series default
+コマンドを使用するか、「
 \color blue
+\lang english
 
 \begin_inset space \textvisiblespace{}
 \end_inset
 
 
 \color inherit
-
-\begin_inset Quotes erd
-\end_inset
-
- and check the option 
-\family sans
-Protect
-\family default
-.
 \lang japanese
-
+」の上を左クリックして、
+\family sans
+保護
+\family default
+オプションをチェックしてください。
 \begin_inset Newline newline
 \end_inset
 
@@ -12768,13 +12673,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-わく@枠 | see
+わく@枠
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -12805,16 +12710,16 @@ status collapsed
 \family default
 の
 \family typewriter
-Boxes
+ボックス
 \family default
 の章に述べられています。
 \end_layout
 
 \begin_layout Subsection
-縁付きボックス
+枠付きボックス
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:縁付きボックス"
+name "sub:枠付きボックス"
 
 \end_inset
 
@@ -12823,7 +12728,11 @@ name "sub:縁付きボックス"
 status collapsed
 
 \begin_layout Plain Layout
-ぼっくす@ボックス ! ふちつき@縁付き
+ぼっくす@ボックス ! わくつき@枠付き
+\begin_inset space \thinspace{}
+\end_inset
+
+------
 \end_layout
 
 \end_inset
@@ -13357,7 +13266,7 @@ fboxsep 3pt
 \end_layout
 
 \begin_layout Subsection
-縁なしボックス
+枠なしボックス
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:枠なしボックス"
@@ -13370,6 +13279,10 @@ status collapsed
 
 \begin_layout Plain Layout
 ぼっくす@ボックス ! わくなし@枠なし
+\begin_inset space \thinspace{}
+\end_inset
+
+------
 \end_layout
 
 \end_inset
@@ -13378,7 +13291,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-縁のないボックスを作るには、
+枠のないボックスを作るには、
 \series bold
 
 \backslash
@@ -13645,7 +13558,7 @@ B
 \end_layout
 
 \begin_layout Standard
-縁がないことを除けば、
+枠がないことを除けば、
 \series bold
 
 \backslash
@@ -13686,6 +13599,10 @@ status collapsed
 
 \begin_layout Plain Layout
 ぼっくす@ボックス ! いろつき@色付き
+\begin_inset space \thinspace{}
+\end_inset
+
+------
 \end_layout
 
 \end_inset
@@ -14119,7 +14036,7 @@ reference "eq:redgreen"
 \begin_inset VSpace bigskip
 \end_inset
 
-ボックスの縁だけ別の色にするには、
+ボックスの枠だけ別の色にするには、
 \series bold
 
 \backslash
@@ -14145,7 +14062,7 @@ fcolorbox
 \series bold
 
 \backslash
-fcolorbox{縁の色}{色}{ボックスの内容}
+fcolorbox{枠の色}{色}{ボックスの内容}
 \end_layout
 
 \begin_layout Standard
@@ -14167,7 +14084,7 @@ colorbox
 \backslash
 framebox
 \series default
-と同様に、縁の厚みは
+と同様に、枠の厚みは
 \series bold
 
 \backslash
@@ -14368,7 +14285,7 @@ yellow
 \series bold
 darkgreen
 \series default
-という色を持つ縁付きボックスを挙げておきます。
+という色を持つ枠付きボックスを挙げておきます。
 \begin_inset Formula 
 \begin{equation}
 \colorbox{darkgreen}{\color{yellow}\boxed{\int A\,\mathrm{d}x=\frac{\sqrt[5]{B}}{\ln\left(\frac{1}{3}\right)}}}
@@ -14468,38 +14385,10 @@ status collapsed
 
 \begin_layout Plain Layout
 ぼっくす@ボックス ! だんらく@段落
-\end_layout
-
+\begin_inset space \thinspace{}
 \end_inset
 
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-ぼっくす@ボックス ! parbox|see
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-ボックス ! 段落ボックス
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
+------
 \end_layout
 
 \end_inset
@@ -14523,7 +14412,7 @@ arg   "box-insert"
 \end_layout
 
 \begin_layout Standard
-以下の例は、行中の縁付きparboxを示したものです。
+以下の例は、行中の枠付きparboxを示したものです。
 \end_layout
 
 \begin_layout Standard
@@ -14652,7 +14541,7 @@ t
 \bar default
 op)は、これを最初の行に合わせます。位置を指定しない時には、ボックスは事実上中央揃えになります。用例については、取扱説明書埋込オブジェクト篇の
 \emph on
-Boxes
+ボックス
 \emph default
 の節をご参照下さい。
 \end_layout
@@ -14661,7 +14550,7 @@ Boxes
 \begin_inset VSpace bigskip
 \end_inset
 
-数式番号を含めて、数式を完全に縁で囲むためには、数式をparbox内に収めなくてはなりません。こうするには、数式前にTeXモードで
+数式番号を含めて、数式を完全に枠で囲むためには、数式をparbox内に収めなくてはなりません。こうするには、数式前にTeXモードで
 \series bold
 parbox{
 \backslash
@@ -14689,7 +14578,7 @@ linewidth
 
 
 \series default
-は、使用中の文書に設定されている行幅です。縁は、parboxの外側にあるので、縁余白と縁幅の2倍を行幅から差し引かなくてはなりません。バグ
+は、使用中の文書に設定されている行幅です。枠は、parboxの外側にあるので、枠余白と枠幅の2倍を行幅から差し引かなくてはなりません。バグ
 \begin_inset Foot
 status collapsed
 
@@ -14876,7 +14765,7 @@ tag
 についての詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:ユーザー定義番号"
+reference "sub:自己定義番号"
 
 \end_inset
 
@@ -15051,6 +14940,10 @@ status collapsed
 
 \begin_layout Plain Layout
 えんざんし@演算子 ! だい@大
+\begin_inset space \thinspace{}
+\end_inset
+
+------
 \end_layout
 
 \end_inset
@@ -15096,7 +14989,7 @@ esintパッケージを自動的に使う
 
 
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="2">
+<lyxtabular version="3" rows="11" columns="2">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -15115,43 +15008,6 @@ esintパッケージを自動的に使う
 
 \begin_layout Plain Layout
 出力
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\backslash
-sum
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-こまんど@コマンド ! S ! 
-\backslash
-sum
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\sum$
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -15301,6 +15157,84 @@ sqint
 \begin_layout Plain Layout
 
 \backslash
+fint
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ 
+\begin_inset Formula $\fint$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+landupint
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ 
+\begin_inset Formula $\landupint$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+landdownint
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ 
+\begin_inset Formula $\landdownint$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
 bigcap
 \end_layout
 
@@ -15354,7 +15288,7 @@ bigcup
 
 
 \begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="2">
+<lyxtabular version="3" rows="11" columns="2">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -15373,6 +15307,43 @@ bigcup
 
 \begin_layout Plain Layout
 出力
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+sum
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+こまんど@コマンド ! S ! 
+\backslash
+sum
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sum$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16162,7 +16133,7 @@ status collapsed
 
 \end_inset
 
-
+：
 \begin_inset Info
 type  "shortcut"
 arg   "math-limits"
@@ -16389,11 +16360,8 @@ reference "eq:substack"
 
 \end_inset
 
-式のように、演算子の横の余白が大きくなりすぎることがあります。
-\lang english
-To avoid this the command 
+式のように、演算子の横の余白が大きくなりすぎることがあります。これを防ぐには、コマンド
 \series bold
-\lang japanese
 
 \backslash
 smashoperator
@@ -16410,24 +16378,15 @@ smashoperator
 
 \end_inset
 
-
-\lang english
- can be used.
- To activate it, set in the document settings under 
+を使うことができます。これを有効化するには、文書設定の
 \family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Options
+数式オプション
 \family default
- for the package
-\lang japanese
- 
+で、
 \series bold
 mathtools
 \series default
-
+パッケージ
 \begin_inset Index idx
 status collapsed
 
@@ -16437,28 +16396,27 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-the option 
+の
 \family sans
-Load
-\begin_inset space ~
-\end_inset
-
-always
+常に読み込み
 \family default
-.
- 
+オプションを指定してください。
 \series bold
 
 \backslash
 smashoperator
 \series default
- sets the space besides the operator to 0
+は、内容物の幅を0
+\lang english
+
 \begin_inset space \thinspace{}
 \end_inset
 
-pt.
+
+\lang japanese
+ptに設定します。
+\lang english
+
 \begin_inset Newline newline
 \end_inset
 
@@ -16471,7 +16429,7 @@ reference "eq:substack"
 
 \end_inset
 
-式に応用すると、以下のようなコマンド
+式に応用してみると、コマンド
 \end_layout
 
 \begin_layout Standard
@@ -16483,65 +16441,47 @@ smashoperator{
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-and inserts the operator with its limits into the braces.
- Behind the brace one continues the formula:
-\lang japanese
-
+の波括弧の中に、範囲付きの演算子を挿入することになります。波括弧を閉じた後に、数式を続けます。例：
 \begin_inset Formula 
 \[
-\smashoperator{\sum_{\begin{subarray}{c}
-0<k<1000\\
+\sum_{\mathclap{\substack{0<k<1000\\
 \\
 k\,\in\,\mathbb{N}
-\end{subarray}}^{n}}k^{-2}
+}
+}}^{n}k^{-2}
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-
+演算子の片側だけ、空白を0
 \lang english
-It is possible to set the space of only one side of the operator to 0
+
 \begin_inset space \thinspace{}
 \end_inset
 
-pt.
- To do this write either 
+
+\lang japanese
+ptにすることも可能です。そのためには、
+\series bold
+
+\backslash
+smashoperator
+\series default
+と付属する波括弧の間に、
 \series bold
 [l]
 \series default
- or 
+または
 \series bold
 [r]
 \series default
- between 
+と書き込みます。下記は、
 \series bold
 
 \backslash
 smashoperator
 \series default
- and its brace.
- 
-\series bold
-l
-\series default
- stands for the left and 
-\series bold
-r
-\series default
- for the right side of the operator.
- Here is an example of the possible 
-\series bold
-
-\backslash
-smashoperator
-\series default
- forms:
+のとりうる形の例です。
 \end_layout
 
 \begin_layout Standard
@@ -16563,12 +16503,7 @@ Y\smashoperator{\sum_{1\le i\le j\le n}^{n=3456}}X_{ij}=Y\smashoperator[l]{\sum_
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-When several consecutive operators have limits the typesetting of the limits
- looks often imperfect in the output, see this example:
-\lang japanese
-
+範囲を持つ演算子が続くとき、出力での、範囲の組版は出来が良くないものになることがあります。下記をご覧ください。
 \begin_inset Formula 
 \[
 \text{a)}\lim_{n\to\infty}\max_{p\ge n}\quad\text{b)}\lim_{n\to\infty}\max_{p^{2}\ge n}\quad\text{c)}\lim_{n\to\infty}\sup_{p^{2}\ge nK}\quad\text{d)}\limsup_{n\to\infty}\max_{p\ge n}
@@ -16576,23 +16511,15 @@ When several consecutive operators have limits the typesetting of the limits
 
 \end_inset
 
-
-\lang english
-To improve the typesetting set in the document settings under 
+組版を改善するには、文書設定の
 \family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Options
+数式オプション
 \family default
- for the package
-\lang japanese
- 
+で、
 \series bold
 mathtools
 \series default
-
+パッケージ
 \begin_inset Index idx
 status collapsed
 
@@ -16602,25 +16529,17 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-the option 
+の
 \family sans
-Load
-\begin_inset space ~
-\end_inset
-
-always
+常に読み込み
 \family default
-.
- Then insert into your formula the command 
+オプションを指定してください。その上で、数式中の最初の演算子の前に直接、
 \series bold
-\lang japanese
 
 \backslash
 adjustlimits
 \series default
-
+コマンド
 \begin_inset Index idx
 status collapsed
 
@@ -16632,12 +16551,7 @@ adjustlimits
 
 \end_inset
 
- 
-\lang english
-directly before the first operator.
- The example will then look like this:
-\lang japanese
-
+を置いてください。そうすると、上記の例はこのようになります。
 \begin_inset Formula 
 \[
 \text{a)}\adjustlimits\lim_{n\to\infty}\max_{p\ge n}\quad\text{b)}\adjustlimits\lim_{n\to\infty}\max_{p^{2}\ge n}\quad\text{c)}\adjustlimits\lim_{n\to\infty}\sup_{p^{2}\ge nK}\quad\text{d)}\adjustlimits\limsup_{n\to\infty}\max_{p\ge n}
@@ -16668,10 +16582,7 @@ reference "sub:自己定義演算子"
 status collapsed
 
 \begin_layout Plain Layout
-えんざんし@演算子 ! 
-\family sans
-\series bold
-しゅうしょく@修飾
+えんざんし@演算子 ! しゅうしょく@修飾
 \end_layout
 
 \end_inset
@@ -16739,69 +16650,58 @@ sideset
 
 \begin_layout Standard
 
-\lang english
-There are 4
-\begin_inset space ~
-\end_inset
-
-variants of 
 \series bold
 
 \backslash
 sideset
 \series default
-:
+には4つの派生版があります。
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-\lang english
 
 \backslash
 sideset
 \series default
- is used to set characters at the corners of the operator
+は、演算子の隅に文字を置くのに用います。
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-\lang english
 
 \backslash
 sidesetn
 \series default
- is used to set characters before and/or behind the operator (this variant
- represents LaTeX's original 
+は、演算子の前後に文字を置くのに用います(この派生版は、LaTeXの元々の
 \series bold
 
 \backslash
 sideset
 \series default
- command)
+コマンドを表します)。
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-\lang english
 
 \backslash
 sidesetl
 \series default
- is used to set characters at the left corners and/or behind the operator
+は、演算子の左隅と後ろに文字を置くのに用います。
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-\lang english
 
 \backslash
 sidesetr
 \series default
- is used to set characters at the right corners and/or before the operator
+は、演算子の右隅と前に文字を置くのに用います。
 \end_layout
 
 \begin_layout Standard
@@ -16929,6 +16829,10 @@ status collapsed
 
 \begin_layout Plain Layout
 えんざんし@演算子 ! にこう@二項
+\begin_inset space \thinspace{}
+\end_inset
+
+------
 \end_layout
 
 \end_inset
@@ -18059,6 +17963,10 @@ status collapsed
 
 \begin_layout Plain Layout
 えんざんし@演算子 ! じこていぎ@自己定義
+\begin_inset space \thinspace{}
+\end_inset
+
+------
 \end_layout
 
 \end_inset
@@ -18087,7 +17995,7 @@ DeclareMathOperator
 
 \end_inset
 
-コマンドを使用すると、自製演算子を定義することができます。このコマンドの書式は
+コマンドを使用すると、自己定義演算子を定義することができます。このコマンドの書式は
 \end_layout
 
 \begin_layout Standard
@@ -18320,13 +18228,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ふぉんと@フォント | see
+ふぉんと@フォント
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -19219,7 +19127,7 @@ reference "sub:色付きボックス"
 
 \end_inset
 
-節に述べられているように、自製の色を定義することもできます。自製の色は、以下の書式を持つ
+節に述べられているように、自己定義の色を定義することもできます。自己定義の色は、以下の書式を持つ
 \series bold
 
 \backslash
@@ -19288,7 +19196,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-LyXのバグのため、自製色は数式全体に対してしか使用することができません
+LyXのバグのため、自己定義色は数式全体に対してしか使用することができません
 \begin_inset Foot
 status collapsed
 
@@ -19442,17 +19350,13 @@ normalsize
 \end_layout
 
 \begin_layout Standard
-数式内では、以下の寸法コマンドを使用して、寸法を変更することができます
-\lang english
-or the toolbar button
-\lang japanese
- 
+数式内では、以下の寸法コマンドまたはツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\style"
 \end_inset
 
-。
+を使用して、寸法を変更することができます。
 \end_layout
 
 \begin_layout Standard
@@ -21321,10 +21225,6 @@ theta
 \end_inset
 
 
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -23150,9 +23050,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\backslash
-@
+E@
 \begin_inset ERT
 status collapsed
 
@@ -23518,13 +23416,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ひかくし@比較子|see
+ひかくし@比較子
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -24917,22 +24815,13 @@ triangleright
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-LyX supports also many special relations.
- Use the toolbar button
-\lang japanese
- 
+LyXは、特殊な関係子を多くサポートしています。これらの関係子一覧を見るには、ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\leqq"
 \end_inset
 
- 
-\lang english
-to see a list of these relations
-\lang japanese
-。
+をご覧ください。
 \end_layout
 
 \begin_layout Standard
@@ -26176,18 +26065,14 @@ x=B
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-How to adjust the typesetting of the limits see 
-\lang japanese
-
+極限の組版を調整する仕方については、第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:演算子の範囲"
 
 \end_inset
 
-。
+節をご覧ください。
 \end_layout
 
 \begin_layout Subsection
@@ -26206,13 +26091,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-かんすう@関数 ! もじゅらす@モジュラス | see
+かんすう@関数 ! もじゅらす@モジュラス
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -26286,13 +26171,9 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The characters ^ and _ would normally create a subscript and subscript,
- respectively.
- To get these characters you have to insert them with a leading 
+^および_の各文字は、通常、上付き文字や下付き文字を生成してしまいます。これらの文字自体を得るには、その前に
 \backslash
-:
+を付けなくてはなりません。
 \end_layout
 
 \begin_layout Standard
@@ -26559,11 +26440,7 @@ AA
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-
-\backslash
-@
+A@
 \begin_inset ERT
 status collapsed
 
@@ -26926,7 +26803,7 @@ name "sub:文章中のアクセント"
 status collapsed
 
 \begin_layout Plain Layout
-あくせんと@アクセント ! ぶんしょうちゅうの@文章中の---
+あくせんと@アクセント ! ぶんしょうちゅうの@文章中の
 \end_layout
 
 \end_inset
@@ -27344,9 +27221,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Tilde
+ちるだ@チルダ
 \end_layout
 
 \end_inset
@@ -27888,12 +27763,12 @@ reference "sub:枠なしボックス"
 \end_layout
 
 \begin_layout Subsection
-小数字
+古式数字
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-しょうすうじ@小数字
+こしきすうじ@古式数字
 \end_layout
 
 \end_inset
@@ -27902,7 +27777,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-小数字(minuscule number)は、
+古式数字は、
 \series bold
 
 \backslash
@@ -28115,6 +27990,10 @@ status collapsed
 
 \begin_layout Plain Layout
 すうしき@数式 ! たぎょう@多行
+\begin_inset space \thinspace{}
+\end_inset
+
+------
 \end_layout
 
 \end_inset
@@ -28211,7 +28090,11 @@ name "sub:行間"
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 ! たぎょう@多行 ! ぎょうかん@行間
+すうしき@数式 ! たぎょう@多行
+\begin_inset space \thinspace{}
+\end_inset
+
+------ ! ぎょうかん@行間
 \end_layout
 
 \end_inset
@@ -28472,7 +28355,11 @@ name "sub:列間"
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 ! たぎょうすうしき@多行数式 ! れつかん@列間
+すうしき@数式 ! たぎょう@多行
+\begin_inset space \thinspace{}
+\end_inset
+
+------ ! れつかん@列間
 \end_layout
 
 \end_inset
@@ -28824,23 +28711,19 @@ reference "sub:数式の一部の多行化"
 \end_layout
 
 \begin_layout Subsubsection
-
-Multiline Fractions
+多行にわたる分数
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Multiline-Fractions"
+name "sub:多行にわたる分数"
 
 \end_inset
-
 
 
 \begin_inset Index idx
 status open
 
 \begin_layout Plain Layout
-ぶんすう@分数 ! 
-\lang english
-Multiline
+ぶんすう@分数 ! たぎょうにわたる@多行にわたる
 \end_layout
 
 \end_inset
@@ -28849,20 +28732,13 @@ Multiline
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are cases where the denominator and/or the numerator of a fraction
- is so long that the fraction does not fit into one line.
- It is then necessary to add a line break within the fraction.
- This can be done using the command
-\lang japanese
- 
+分数の分母もしくは分子が長すぎて、一行に入りきらないことがあります。この場合には、分数内で改行をしなくてはなりません。これを行うには、
 \series bold
 
 \backslash
 splitfrac
 \series default
-
+コマンド
 \begin_inset Index idx
 status collapsed
 
@@ -28874,22 +28750,15 @@ splitfrac
 
 \end_inset
 
-。 
-\lang english
-To activate it, set in the document settings under 
+を使うことができます。これを有効化するには、文書設定の
 \family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Options
+数式オプション
 \family default
- for the package 
+で、
 \series bold
-\lang japanese
 mathtools
 \series default
-
+パッケージ
 \begin_inset Index idx
 status collapsed
 
@@ -28899,39 +28768,29 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-the option 
+の
 \family sans
-Load
-\begin_inset space ~
-\end_inset
-
-always
+常に読み込み
 \family default
-.
- 
+オプションを指定してください。
 \series bold
 
 \backslash
 splitfrac
 \series default
- has the scheme
+のスキームは
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-splitfrac{first line}{second line}
+splitfrac{1行目}{2行目}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-and is used as denominator and/or numerator:
+となっており、分母にも分子にも使うことができます。
 \end_layout
 
 \begin_layout Standard
@@ -28942,9 +28801,7 @@ a=\frac{\splitfrac{xy+xy+xy+xy+xy}{+wy+wy+wy+wy}}{z}\ne\frac{\splitdfrac{xy+\fra
 
 \end_inset
 
-
-\lang english
-The command for the first numerator above is:
+上記の最初の分子に使われているコマンドは、
 \end_layout
 
 \begin_layout Standard
@@ -28959,6 +28816,10 @@ splitfrac{xy+xy+xy+xy+xy
 
 \backslash
 {+wy+wy+wy+wy
+\end_layout
+
+\begin_layout Standard
+です。
 \end_layout
 
 \begin_layout Subsubsection
@@ -29198,7 +29059,11 @@ name "sub:標準align環境"
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 ! たぎょう@多行 ! alignかんきょう@align環境
+すうしき@数式 ! たぎょう@多行
+\begin_inset space \thinspace{}
+\end_inset
+
+------ ! alignかんきょう@align環境
 \end_layout
 
 \end_inset
@@ -29301,7 +29166,11 @@ alignat環境
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 ! たぎょう@多行 ! alignatかんきょう@alignat環境
+すうしき@数式 ! たぎょう@多行
+\begin_inset space \thinspace{}
+\end_inset
+
+------ ! alignatかんきょう@alignat環境
 \end_layout
 
 \end_inset
@@ -29350,7 +29219,11 @@ name "sub:flalign環境"
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 ! たぎょう@多行 ! flalignかんきょう@flalign環境
+すうしき@数式 ! たぎょう@多行
+\begin_inset space \thinspace{}
+\end_inset
+
+------ ! flalignかんきょう@flalign環境
 \end_layout
 
 \end_inset
@@ -29411,7 +29284,11 @@ name "sub:eqnarray環境"
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 ! たぎょう@多行 ! eqnarrayかんきょう@eqnarray環境
+すうしき@数式 ! たぎょう@多行
+\begin_inset space \thinspace{}
+\end_inset
+
+------ ! eqnarrayかんきょう@eqnarray環境
 \end_layout
 
 \end_inset
@@ -29440,7 +29317,11 @@ gather環境
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 ! たぎょう@多行 ! gatherかんきょう@gather環境
+すうしき@数式 ! たぎょう@多行
+\begin_inset space \thinspace{}
+\end_inset
+
+------ ! gatherかんきょう@gather環境
 \end_layout
 
 \end_inset
@@ -29474,7 +29355,11 @@ name "sub:multline環境"
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 ! たぎょう@多行 ! multlineかんきょう@multpline環境
+すうしき@数式 ! たぎょう@多行
+\begin_inset space \thinspace{}
+\end_inset
+
+------ ! multlineかんきょう@multpline環境
 \end_layout
 
 \end_inset
@@ -29681,7 +29566,11 @@ name "sub:数式の一部の多行化"
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 ! たぎょう@多行 ! すうしきのいちぶ@数式の一部
+すうしき@数式 ! たぎょう@多行
+\begin_inset space \thinspace{}
+\end_inset
+
+------ ! すうしきのいちぶ@数式の一部
 \end_layout
 
 \end_inset
@@ -29861,7 +29750,7 @@ name "sub:多行数式中のテキスト"
 status collapsed
 
 \begin_layout Plain Layout
-てきすと@テキスト ! すうしきちゅうの@数式中の
+てきすと @ テキスト ! すうしきちゅうの @ 数式中の
 \end_layout
 
 \end_inset
@@ -29871,7 +29760,11 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 ! たぎょう@多行 ! てきすと@テキスト
+すうしき @ 数式 ! たぎょう @ 多行
+\begin_inset space \thinspace{}
+\end_inset
+
+------ ! てきすと @ テキスト
 \end_layout
 
 \end_inset
@@ -29942,20 +29835,12 @@ I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \backslash
 intertext
 \series default
- 
-\lang english
-always creates some vertical space between the text and the formula lines.
- To avoid this space, set in the document settings under 
+は、文と数式行の間に、常に縦空白を生み出します。この空白を抑制するには、文書設定の
 \family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Options
+数式オプション
 \family default
- for the package 
+で
 \series bold
-\lang japanese
 mathtools
 \series default
 
@@ -29968,20 +29853,17 @@ status collapsed
 
 \end_inset
 
- 
-\lang english
-the option 
+パッケージを
 \family sans
-Load
-\begin_inset space ~
-\end_inset
-
-always
+常に読み込み
 \family default
-.
- Then you can use the command
-\lang japanese
- 
+に設定してください。そうすると、以下のように、
+\series bold
+
+\backslash
+intertext
+\series default
+の代わりに
 \series bold
 
 \backslash
@@ -29999,17 +29881,7 @@ shortintertext
 
 \end_inset
 
- 
-\lang english
-instead of 
-\series bold
-
-\backslash
-intertext
-\series default
-:
-\lang japanese
-
+コマンドを使うことができます。
 \begin_inset Formula 
 \begin{align}
 I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
@@ -30037,13 +29909,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 ! ばんごう@番号|see
+すうしき@数式 ! ばんごう@番号
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -30098,7 +29970,7 @@ status collapsed
 
 \end_inset
 
-
+：
 \family sans
 Ctrl+Alt
 \begin_inset space ~
@@ -30112,7 +29984,7 @@ N
 数式\SpecialChar \menuseparator
 数式全体を付番
 \family default
-メニュー(捷径
+メニュー(捷径：
 \begin_inset Info
 type  "shortcut"
 arg   "math-number-toggle"
@@ -30128,7 +30000,7 @@ arg   "math-number-toggle"
 数式\SpecialChar \menuseparator
 この行を付番
 \family default
-メニュー(捷径
+メニュー(捷径：
 \begin_inset Info
 type  "shortcut"
 arg   "math-number-line-toggle"
@@ -30281,7 +30153,7 @@ tag
 は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:ユーザー定義番号"
+reference "sub:自己定義番号"
 
 \end_inset
 
@@ -30625,10 +30497,10 @@ end{subequations}
 \end_layout
 
 \begin_layout Subsection
-ユーザー定義番号
+自己定義番号
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:ユーザー定義番号"
+name "sub:自己定義番号"
 
 \end_inset
 
@@ -30637,7 +30509,7 @@ name "sub:ユーザー定義番号"
 status collapsed
 
 \begin_layout Plain Layout
-すうしきばんごう@数式番号 ! ゆーざーていぎ@ユーザー定義
+すうしきばんごう@数式番号 ! じこていぎ@自己定義
 \end_layout
 
 \end_inset
@@ -30791,28 +30663,8 @@ status collapsed
 
 \begin_layout Plain Layout
 こまんど@コマンド ! 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-@
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
- ! 
+\backslash
+@記号 ! 
 \backslash
 
 \begin_inset ERT
@@ -30997,28 +30849,8 @@ status collapsed
 
 \begin_layout Plain Layout
 こまんど@コマンド ! 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
-@
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
-\end_inset
-
- ! 
+\backslash
+@記号 ! 
 \backslash
 
 \begin_inset ERT
@@ -31501,6 +31333,10 @@ status open
 ラテン文字を使うと、一つの文書の中で、最大26個の数式しか番号を振ることができません。
 \end_layout
 
+\end_inset
+
+
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -32223,6 +32059,36 @@ hyphen$Cl}
 \end_inset
 
 
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+【註】
+\series default
+LyXでは、
+\series bold
+mhchem
+\series default
+の説明書通りに上矢印を得ようと^文字を使用しても、うまく行きません。代わりに、次のように、負の小空白の後に
+\series bold
+
+\backslash
+uparrow
+\series default
+コマンドを続けます。
+\color none
+
+\begin_inset Formula $\ce{Fe + 2H+ -> Fe^{2+} + H2\negthinspace\uparrow}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -32738,12 +32604,12 @@ LyXでのファインマン図の作り方は、メニュー
 \end_layout
 
 \begin_layout Section
-ユーザー定義コマンド
+自己定義コマンド
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-ゆーざーていぎこまんど@ユーザー定義コマンド
+じこていぎこまんど@自己定義コマンド
 \end_layout
 
 \end_inset
@@ -32756,7 +32622,7 @@ status collapsed
 status open
 
 \begin_layout Plain Layout
-【註】ユーザー定義コマンド名及びマクロ名には、ラテン文字しか使用することができません。
+【註】自己定義コマンド名及びマクロ名には、ラテン文字しか使用することができません。
 \end_layout
 
 \end_inset
@@ -32779,7 +32645,7 @@ name "sub:newcommandコマンド"
 status collapsed
 
 \begin_layout Plain Layout
-ゆーざーていぎこまんど@ユーザー定義コマンド ! 
+じこていぎこまんど@自己定義コマンド ! 
 \backslash
 newcommand
 \end_layout
@@ -33041,7 +32907,7 @@ framebox
 が必要とする内部の数式を作り出します。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:縁付きボックス"
+reference "sub:枠付きボックス"
 
 \end_inset
 
@@ -33327,7 +33193,7 @@ A=B
 status collapsed
 
 \begin_layout Plain Layout
-ゆーざーていぎこまんど@ユーザー定義コマンド ! すうしきまくろ@数式マクロ
+じこていぎこまんど@自己定義コマンド ! すうしきまくろ@数式マクロ
 \end_layout
 
 \end_inset
@@ -33346,8 +33212,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-ユーザー定義コマンドは、複雑な表現を使うときに特に便利です。たとえば、文書中で二次方程式を扱っているとすると、同じような解の形が何度も出てきます。二次方程式の一
-般型は、
+自己定義コマンドは、複雑な表現を使うときに特に便利です。たとえば、文書中で二次方程式を扱っているとすると、同じような解の形が何度も出てきます。二次方程式の一般型
+は、
 \begin_inset Formula 
 \[
 0=\lambda^{2}+p\lambda+q
@@ -33493,6 +33359,7 @@ arg   "math-macro newmacroname_newcommand"
 
 \begin_inset Graphics
 	filename ../clipart/macrobox.png
+	scale 50
 
 \end_inset
 
@@ -34352,7 +34219,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-かず@数 ! ふの@負の ---
+かず@数 ! ふの@負の
 \end_layout
 
 \end_inset
@@ -34469,13 +34336,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-かんま@カンマ|see
+かんま@カンマ
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-{
+|see{
 \end_layout
 
 \end_inset
@@ -34524,7 +34391,7 @@ status collapsed
 
 \end_inset
 
-
+：
 \begin_inset Info
 type  "shortcut"
 arg   "math-mode"
@@ -34617,7 +34484,11 @@ name "sub:物理ベクトル"
 status collapsed
 
 \begin_layout Plain Layout
-Vectors ! physical
+べくとる@ベクトル ! ぶつり@物理
+\begin_inset space \thinspace{}
+\end_inset
+
+------
 \end_layout
 
 \end_inset
@@ -34925,7 +34796,7 @@ name "sub:自己定義の分数"
 status collapsed
 
 \begin_layout Plain Layout
-ぶんすう@分数 ! じこていぎの@自己定義の ---
+ぶんすう@分数 ! じこていぎの@自己定義の
 \end_layout
 
 \end_inset
@@ -34934,7 +34805,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-分数用の自製コマンドを定義するには、以下の書式を持つ
+分数用の自己定義コマンドを定義するには、以下の書式を持つ
 \series bold
 
 \backslash
@@ -35204,10 +35075,6 @@ genfrac{}{}{#1}{}{#2}{#3}}
 
 \begin_layout Standard
 という行を入れます。
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -35238,7 +35105,38 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-数式を消去するには、4つの方法があります。
+数式の全体もしくは一部を消去するには、4つの方法があります。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifcancel 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+下記の表は、LaTeXパッケージ
+\series bold
+cancel
+\series default
+が導入済みの時のみ表示されます。
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -35440,7 +35338,7 @@ A=B
 \backslash
 cancelto
 \series default
-は、以下のように、とくに数式中の分数を約分を表示するのに適しています。
+は、以下のように、とくに数式中の分数の約分を表示するのに適しています。
 \begin_inset Formula 
 \[
 \frac{\left(x_{0}+bB\right)^{2}}{\left(1+b^{2}\right)^{\cancelto{2}{3}}}=\frac{x_{0}^{2}+B^{2}-r_{g}^{2}}{\cancel{1+b^{2}}}
@@ -35453,22 +35351,12 @@ cancelto
 
 \begin_layout Standard
 
-\lang english
-To change the size of 
 \series bold
 
 \backslash
 cancelto
 \series default
-'s 
-\begin_inset Quotes eld
-\end_inset
-
-subscript
-\begin_inset Quotes erd
-\end_inset
-
- value one can add the LaTeX-preamble line
+の「下付き文字」寸法の大きさを変えるには、
 \end_layout
 
 \begin_layout Standard
@@ -35476,29 +35364,27 @@ subscript
 \series bold
 
 \backslash
-PassOptionsToPackage{option}{cancel}
+PassOptionsToPackage{オプション}{cancel}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-where 
+という行をLaTeXプリアンブルに書き加えてください。ここで、
 \series bold
-option
+オプション
 \series default
- is either 
+を
 \series bold
 samesize
 \series default
- which leads to the same size as for the canceled value, or 
+にすると、取り消した部分と同じ寸法になり、
 \series bold
 Smaller
 \series default
- which makes is it a bit smaller than normal.
+にすると、通常よりも少し小さくなります。
 \end_layout
 
 \begin_layout Standard
-という行で読み込まれています。取り消し線に色を付けるには、TeXコードで以下のコマンドを書き加えてください。
+取り消し線に色を付けるには、TeXコードで以下のコマンドを書き加えてください。
 \end_layout
 
 \begin_layout Standard
@@ -35607,6 +35493,60 @@ status collapsed
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+下記の表は、LaTeXパッケージ
+\series bold
+cancel
+\series default
+が導入済みの時のみ表示されます。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+本小節の続きを見るには、LaTeXパッケージ
+\series bold
+cancel
+\series default
+を導入する必要があります。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 節見出し中の数式
 \begin_inset CommandInset label
@@ -35620,7 +35560,7 @@ name "sub:節見出し中の数式"
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 ! せつみだしちゅうの@節見出し中の ---
+すうしき@数式 ! せつみだしちゅうの@節見出し中の
 \end_layout
 
 \end_inset
@@ -35835,7 +35775,7 @@ reference "sub:ボールド体の数式"
 status collapsed
 
 \begin_layout Plain Layout
-すうしき@数式 ! ただんくみぶんちゅうの@多段組文中の ---
+すうしき@数式 ! ただんくみぶんちゅうの@多段組文中の
 \end_layout
 
 \end_inset
@@ -35965,11 +35905,7 @@ mmの垂直空白を入れて下さい。数式様式
 status collapsed
 
 \begin_layout Plain Layout
-
-\series bold
 数式様式に関しては、第
-\series default
-
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:数式様式"
@@ -36194,11 +36130,7 @@ reference "sub:書体寸法"
 status collapsed
 
 \begin_layout Plain Layout
-
-\series bold
 数式様式に関しては、第
-\series default
-
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:数式様式"
@@ -36491,19 +36423,22 @@ fi
 \end_inset
 
 
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
 数式中のテキスト文字
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:数式中のテキスト文字"
+
+\end_inset
+
+
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-てきすと@テキスト ! すうしきちゅうの@数式中の ---
+てきすと @ テキスト ! すうしきちゅうの @ 数式中の
 \end_layout
 
 \end_inset
@@ -36628,7 +36563,7 @@ latin9.def
 status collapsed
 
 \begin_layout Plain Layout
-(訳註)pLaTeXでは、これらの定義は必要ないので、コメントアウトして無効にしてあります。
+【訳註】pLaTeXでは、これらの定義は必要ないので、コメントアウトして無効にしてあります。
 \end_layout
 
 \end_inset
@@ -36656,24 +36591,35 @@ i}
 \end_layout
 
 \begin_layout Subsection
+数式中のLaTeXコメント
+\begin_inset Index idx
+status collapsed
 
-\lang english
-LaTeX-comments in formulas
+\begin_layout Plain Layout
+L atexこめんと@LaTeXコメント
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In text you can insert a comment that will only be visible in the LaTeX
- source code of your file with the menu 
+本文中では、ファイルのLaTeXソースコードでのみ見ることのできるコメントを、
 \family sans
-Insert\SpecialChar \menuseparator
-Note\SpecialChar \menuseparator
-Comment
+挿入
+\lang english
+\SpecialChar \menuseparator
+
+\lang japanese
+注釈
+\lang english
+\SpecialChar \menuseparator
+
+\lang japanese
+コメント
 \family default
-.
- This is not possible in a formula but you can insert LaTeX-comments with
- the command
+メニューで挿入することができます。これと同じことは、数式中ではできませんが、
 \end_layout
 
 \begin_layout Standard
@@ -36685,12 +36631,8 @@ Comment
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This creates a box in which you can write your comment.
- Due to a bug in LyX
-\lang japanese
-
+というコマンドを使えば、LaTeXコメントを挿入することができます。このコマンドを打ち込むと、コメントを書き込むことのできるボックスが生成されます。LyXのバグ
+のせいで
 \begin_inset Foot
 status collapsed
 
@@ -36707,28 +36649,20 @@ target "http://www.lyx.org/trac/ticket/9002"
 
 \end_inset
 
- 
+、コメント中に、通常の本文や数式内本文そのものを書くことはできませんが、LaTeX出力中に、LaTeXコマンドの形では見ることができます。
 \lang english
-you cannot write normal text into the comment, even when you use mathematical
- text, you will see its LaTeX-commands in the LaTeX-output.
+
 \begin_inset Newline newline
 \end_inset
 
-This a formula with a LaTeX-comment:
-\lang japanese
 
+\lang japanese
+下記は、LaTeXコメントを持つ数式の例です。
 \begin_inset Formula 
 \[
-A=B%\text{This is the comment}
+A=B%\text{これはコメントです。}
 \]
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
@@ -37866,7 +37800,7 @@ target "http://physics.nist.gov/Document/checklist.pdf"
 
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Standard
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"

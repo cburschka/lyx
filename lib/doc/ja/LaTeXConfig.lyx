@@ -936,7 +936,11 @@ psnfss
 \family sans
 avant
 \family default
- (Avant Garde).
+ (
+\emph on
+Avant Garde
+\emph default
+).
  
 \series bold
 検出：
@@ -955,7 +959,11 @@ arg   "avant"
 \family sans
 bookman
 \family default
- (Bookman).
+ (
+\emph on
+Bookman
+\emph default
+).
  
 \series bold
 検出：
@@ -974,7 +982,11 @@ arg   "bookman"
 \family sans
 chancery
 \family default
- (Zapf Chancery).
+ (
+\emph on
+Zapf Chancery
+\emph default
+).
  
 \series bold
 検出：
@@ -993,7 +1005,11 @@ arg   "chancery"
 \family sans
 charter
 \family default
- (Charter).
+ (
+\emph on
+Charter
+\emph default
+).
  
 \series bold
 検出：
@@ -1058,7 +1074,11 @@ arg   "helvet"
 \family sans
 mathpazo
 \family default
- (最新Palatinoサポート).
+ (数式フォントマッチングを含む最新
+\emph on
+Palatino
+\emph default
+サポート).
  
 \series bold
 検出：
@@ -1077,7 +1097,15 @@ arg   "mathpazo"
 \family sans
 mathpple
 \family default
- (旧版Palatinoサポート).
+ (旧版
+\emph on
+Palatino
+\emph default
+サポート; 代わりに
+\family sans
+mathpazo
+\family default
+の使用を推奨).
  
 \series bold
 検出：
@@ -1096,7 +1124,15 @@ arg   "mathpple"
 \family sans
 mathptm
 \family default
- (旧版Timesサポート).
+ (旧版
+\emph on
+Times
+\emph default
+サポート; 代わりに
+\family sans
+mathptmx
+\family default
+の使用を推奨).
  
 \series bold
 検出：
@@ -1115,7 +1151,11 @@ arg   "mathptm"
 \family sans
 mathptmx
 \family default
- (最新Timesサポート).
+ (数式フォントマッチングを含む最新
+\emph on
+Times
+\emph default
+サポート).
  
 \series bold
 検出：
@@ -1134,7 +1174,11 @@ arg   "mathptmx"
 \family sans
 newcent
 \family default
- (New Century Gothic).
+ (
+\emph on
+New Century Gothic
+\emph default
+).
  
 \series bold
 検出：
@@ -1230,7 +1274,19 @@ arg   "psnfss"
 \family sans
 utopia
 \family default
- (Utopia).
+ (旧版
+\emph on
+Utopia
+\emph default
+サポート; 代わりに
+\family sans
+fourier
+\family default
+または
+\family sans
+mathdesign
+\family default
+の使用を推奨).
  
 \series bold
 検出：
@@ -3798,7 +3854,7 @@ svglobal.layout
 \family typewriter
 sv<学術誌名>
 \family default
-をお作りになることもできます（意味はお分かりですね？）。クラスの既定として含まれている
+をお作りになることもできます（え〜、ただのヒントです）。クラスの既定として含まれている
 \family typewriter
 global
 \family default
@@ -5613,6 +5669,45 @@ algorithm
 \family default
 パッケージは、LyXが「アルゴリズム」フロートを出力できるようにするために必要です。このパッケージは、短いアルゴリズムを複数ページにわたって配置したり、「アルゴ
 リズム目次」をサポートするために使われます。
+\end_layout
+
+\begin_layout Subsection
+algorithm2e
+\end_layout
+
+\begin_layout Description
+検出： 
+\begin_inset Info
+type  "package"
+arg   "algorithm2e"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN： 
+\family typewriter
+macros/latex/contrib/algorithm2e/
+\end_layout
+
+\begin_layout Description
+備考： 
+\family sans
+algorithm2e
+\family default
+パッケージは、「アルゴリズム」フロートを出力するための、もう一つの、少し強力なパッケージです。これを標準の
+\family sans
+algorithm
+\family default
+パッケージの代わりに用いたい場合には、
+\family sans
+文書\SpecialChar \menuseparator
+設定\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+モジュール
+\family default
+で「Algorithm2e」モジュールを選択してください。
 \end_layout
 
 \begin_layout Subsection

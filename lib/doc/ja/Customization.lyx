@@ -1008,7 +1008,7 @@ configure.py
 
 \end_inset
 
- これは、LyXの再設定によって使用されるスクリプトです。これは、このスクリプトを実行したディレクトリに設定ファイルを生成します。
+ これは、LyXの環境構成によって使用されるスクリプトです。これは、このスクリプトを実行したディレクトリに設定ファイルを生成します。
 \end_layout
 
 \begin_layout Subsection
@@ -1271,12 +1271,12 @@ status collapsed
 
 \begin_layout Plain Layout
 ツール\SpecialChar \menuseparator
-再設定
+環境構成
 \end_layout
 
 \end_inset
 
-を使用して再設定を行うと、LyXは
+を使用して環境構成を行うと、LyXは
 \begin_inset Flex Code
 status collapsed
 
@@ -1414,7 +1414,7 @@ status collapsed
 
 \begin_layout Plain Layout
 ツール\SpecialChar \menuseparator
-再設定
+環境構成
 \end_layout
 
 \end_inset
@@ -5443,7 +5443,7 @@ latex
 
 です）
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 これは、英語版でのみ正しいパスになっています。独語版では
@@ -5849,8 +5849,8 @@ layout/
 
 \end_inset
 
-フォルダにコピーした後、モジュールがメニューに現れるようにするためには、LyXの再設定を行って再起動しなくてはなりません。しかしながら、モジュールの修正の場合に
-は、
+フォルダにコピーした後、モジュールがメニューに現れるようにするためには、LyXの環境構成を行って再起動しなくてはなりません。しかしながら、モジュールの修正の場合
+には、
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -6105,7 +6105,7 @@ status collapsed
 
 \begin_layout Plain Layout
 ツール\SpecialChar \menuseparator
-再設定
+環境構成
 \end_layout
 
 \end_inset
@@ -7933,69 +7933,6 @@ EndPreamble
 status collapsed
 
 \begin_layout Plain Layout
-HTMLStyles
-\end_layout
-
-\end_inset
-
- CSSスタイル情報を指定します。これは、「
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-<style>
-\end_layout
-
-\end_inset
-
-」ブロック内か、ユーザーがそのように選択すれば、独立したCSSファイル内に出力されます。これは、これより以前に宣言された
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-HTMLStyles
-\end_layout
-
-\end_inset
-
-や
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-AddToHTMLStyles
-\end_layout
-
-\end_inset
-
-をすべて完全に上書きしてしまうことに注意してください(追加をしたい時には`
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-AddToHTMLStyles
-\end_layout
-
-\end_inset
-
-を使用してください)。これは「
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-EndStyles
-\end_layout
-
-\end_inset
-
-」で閉じる必要があります。
-\end_layout
-
-\begin_layout Description
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
 HTMLTOCSection
 \end_layout
 
@@ -9239,6 +9176,39 @@ Header
 status collapsed
 
 \begin_layout Plain Layout
+PageStyle
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+文字列="empty|plain|headings|fancy"
+\end_layout
+
+\end_inset
+
+] 使用できるページ様式の一覧です。「
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+|
+\end_layout
+
+\end_inset
+
+」で区切ります。
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 Other
 \end_layout
 
@@ -9267,39 +9237,6 @@ documentclass
 \end_inset
 
 コマンドの非必須パラメータとして付け加える文書クラスオプションです。コンマで区切ります。
-\end_layout
-
-\begin_layout Description
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-PageStyle
-\end_layout
-
-\end_inset
-
- [
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-文字列="empty|plain|headings|fancy"
-\end_layout
-
-\end_inset
-
-] 使用できるページ様式の一覧です。「
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-|
-\end_layout
-
-\end_inset
-
-」で区切ります。
 \end_layout
 
 \begin_layout Standard

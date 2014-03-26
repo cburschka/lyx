@@ -2052,7 +2052,9 @@ indicator
 \family default
 .
  With the general options you can define the delay time for the inline and
- popup completion and choose if long completions should be abbreviated.
+ popup completion, you can set the minimal number of characters a word must
+ have that it will be taken into account for a completion and you can choose
+ if long completions should be abbreviated.
 \end_layout
 
 \begin_layout Standard
@@ -19179,11 +19181,7 @@ Embedded
 Objects
 \emph default
  manual.
- You can also rotate the current cell or the whole table 90
-\begin_inset space \thinspace{}
-\end_inset
-
-degrees counterclockwise.
+ You can also rotate the current cell or the whole table.
  These rotations are not visible in LyX but are visible in the output.
 \end_layout
 
@@ -40523,6 +40521,15 @@ Note that LyX will not show two columns or the specified line spacing on
  However, it will be as you specified in the output.
 \end_layout
 
+\begin_layout Standard
+With the option 
+\family sans
+Use justification in LyX work area
+\family default
+ you can decide if LyX justifies the text on screen.
+ This only affects the text inside LyX not in the output.
+\end_layout
+
 \begin_layout Section
 Page Layout
 \end_layout
@@ -40596,26 +40603,6 @@ The document language and quote styles are set here.
  All characters that cannot be encoded using the specified encoding will
  be exported as LaTeX-commands (this can fail if a LaTeX-command is not
  known for a particular character).
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-The known commands are defined in a text file (
-\emph on
-unicodesymbols
-\emph default
-).
- You can add commands for unknown symbols to that file yourself, see the
- 
-\emph on
-Customization
-\emph default
- manual for details.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -41567,24 +41554,6 @@ Change
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-The colors are not shown within LyX, only in the output.
- (This Greyed
-\begin_inset space ~
-\end_inset
-
-out note appears blue in the output.)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Note, if you change the 
 \family sans
 Main
@@ -41712,11 +41681,11 @@ yellow
 \series bold
 color name
 \series default
- unless you have defined your own color (see the 
+ unless you have defined your own color (see the section 
 \emph on
 Colored Tables
 \emph default
- section of the 
+ of the 
 \emph on
 Embedded
 \begin_inset space ~
@@ -41801,15 +41770,23 @@ note_fontcolor
 \end_layout
 
 \begin_layout Standard
-To see how to define and use custom colors, see section Colored
+To see how to define and use custom colors, see section 
+\emph on
+Colored
 \begin_inset space ~
 \end_inset
 
-Cells of the Embedded
+Cells
+\emph default
+ of the 
+\emph on
+Embedded
 \begin_inset space ~
 \end_inset
 
-Objects manual.
+Objects
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -41974,7 +41951,35 @@ LaTeX-packages ! amsmath
 
 , 
 \series bold
-esint
+amssymb
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! amssymb
+\end_layout
+
+\end_inset
+
+,
+\series bold
+ cancel
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! cancel
+\end_layout
+
+\end_inset
+
+,
+\series bold
+ esint
 \series default
 
 \begin_inset Index idx
@@ -42000,7 +42005,21 @@ LaTeX-packages ! mathdots
 
 \end_inset
 
- und 
+, 
+\series bold
+mathtools
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! mathtools
+\end_layout
+
+\end_inset
+
+, 
 \series bold
 mhchem
 \series default
@@ -42014,20 +42033,76 @@ LaTeX-packages ! mhchem
 
 \end_inset
 
- or to use them automatically when they are needed.
+, 
+\series bold
+stackrel
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! stackrel
+\end_layout
+
+\end_inset
+
+, 
+\series bold
+stmaryrd
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! stmaryrd
+\end_layout
+
+\end_inset
+
+ and 
+\series bold
+undertilde
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX-packages ! undertilde
+\end_layout
+
+\end_inset
+
+, or to use them automatically when they are needed.
 \end_layout
 
 \begin_layout Description
 amsmath is needed for many constructs, so when you get LaTeX-errors in formulas,
- ensure that you have enabled 
-\family sans
-AMS
+ ensure that you have this enabled.
+\end_layout
+
+\begin_layout Description
+amssymb is needed for some special math symbols like bold or upright Greek
+ letters, so when you get LaTeX-errors in formulas, ensure that you have
+ this enabled.
+\end_layout
+
+\begin_layout Description
+cancel is used for canceled formulas, see section 
+\emph on
+Canceled
 \begin_inset space ~
 \end_inset
 
-math
-\family default
-.
+Formulas
+\emph default
+ of the 
+\emph on
+Math
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Description
@@ -42059,11 +42134,95 @@ Math
 \end_layout
 
 \begin_layout Description
+mathtools is used for the math commands 
+\series bold
+
+\backslash
+overbracket
+\series default
+, 
+\series bold
+
+\backslash
+underbracket
+\series default
+, 
+\series bold
+
+\backslash
+smashoperator
+\series default
+, 
+\series bold
+
+\backslash
+adjustlimits
+\series default
+, 
+\series bold
+
+\backslash
+splitfrac
+\series default
+, 
+\series bold
+
+\backslash
+shortintertext
+\series default
+ and labeled arrows, see the corresponding sections in the 
+\emph on
+Math
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Description
 mhchem is used for chemical equations, see section 
 \emph on
 Chemical Symbols and Equations
 \emph default
  of the 
+\emph on
+Math
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Description
+stackrel is used for the math command 
+\series bold
+
+\backslash
+stackrel
+\series default
+, see section 
+\emph on
+Relations 
+\emph default
+of the 
+\emph on
+Math
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Description
+stmaryrd is used for a few special math symbols.
+\end_layout
+
+\begin_layout Description
+undertilde is used for the math command 
+\series bold
+
+\backslash
+utilde
+\series default
+, see section 
+\emph on
+Accents for one Character 
+\emph default
+of the 
 \emph on
 Math
 \emph default
@@ -42784,7 +42943,7 @@ target "http://wiki.lyx.org/uploads/LyX/NewInLyX20/themes.png"
 \end_layout
 
 \begin_layout Subsubsection
-Automatic help
+Context help
 \end_layout
 
 \begin_layout Standard
@@ -42797,7 +42956,33 @@ Enable tool tips in main work area
 \end_layout
 
 \begin_layout Subsubsection
-Session
+Menus
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Maximum last files
+\family default
+ is the number of last opened files that LyX should display in the menu
+ 
+\family sans
+File\SpecialChar \menuseparator
+Open
+\begin_inset space ~
+\end_inset
+
+Recent
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Document Handling
+\end_layout
+
+\begin_layout Subsubsection
+Session handling
 \end_layout
 
 \begin_layout Standard
@@ -42836,7 +43021,7 @@ Clear all session information
 \end_layout
 
 \begin_layout Subsubsection
-Documents
+Backup & saving
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Backup documents"
@@ -42922,22 +43107,8 @@ Save documents compressed by default
  always saves files in a compressed format.
 \end_layout
 
-\begin_layout Standard
-
-\family sans
-Maximum last files
-\family default
- is the number of last opened files that LyX should display in the menu
- 
-\family sans
-File\SpecialChar \menuseparator
-Open
-\begin_inset space ~
-\end_inset
-
-Recent
-\family default
-.
+\begin_layout Subsubsection
+Windows & work area
 \end_layout
 
 \begin_layout Standard
@@ -43009,12 +43180,29 @@ status open
 \series bold
 Note:
 \series default
- For the last option you have to restart LyX before the change takes effect.
+ For this option you have to restart LyX before the change takes effect.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+With the setting 
+\family sans
+Closing last view
+\family default
+ you one can decide if a document is closed or hidden when its tab or view
+ is closed.
+ Hidden documents are accessible via the menu 
+\family sans
+View\SpecialChar \menuseparator
+Hidden
+\family default
+.
+ Not to close documents can be useful if you open files parallel in several
+ instances of LyX and only want to close the view in once instance.
 \end_layout
 
 \begin_layout Subsection
@@ -44364,12 +44552,24 @@ Default
 \begin_inset space ~
 \end_inset
 
-Decimal
+decimal
 \begin_inset space ~
 \end_inset
 
-Point Define the default decimal point for use in tables (decimal point
+separator Defines the default decimal point for use in tables (decimal point
  alignment).
+\end_layout
+
+\begin_layout Description
+Default
+\begin_inset space ~
+\end_inset
+
+length
+\begin_inset space ~
+\end_inset
+
+unit Defines the unit that is used as default for lengths in LyX's dialogs.
 \end_layout
 
 \begin_layout Description

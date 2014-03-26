@@ -1945,8 +1945,12 @@ Indicador en el cursor
 \family default
 .
  Con las opciones generales puedes definir el tiempo de retardo para la
- visualización en línea y para el recuadro emergente, y elegir si las finalizaci
-ones largas deberían abreviarse.
+ visualización en línea y para el recuadro emergente,
+\lang english
+ set the minimal number of characters a word must have that it will be taken
+ into account for a completion
+\lang spanish
+ y elegir si las finalizaciones largas deberían abreviarse.
 \end_layout
 
 \begin_layout Standard
@@ -19692,11 +19696,7 @@ Cuadros y tablas
 Objetos insertados
 \emph default
 .
- También puedes girar la celda actual o todo el cuadro 90
-\begin_inset space \thinspace{}
-\end_inset
-
-grados hacia la derecha.
+ También puedes girar la celda actual o todo el cuadro.
  Estas rotaciones no se ven en LyX, solo en la salida.
  
 \end_layout
@@ -40806,6 +40806,17 @@ También el espacio entre líneas y el número de columnas, pero ten en cuenta
  Sí se verá en la salida.
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+With the option 
+\family sans
+Use justification in LyX work area
+\family default
+ you can decide if LyX justifies the text on screen.
+ This only affects the text inside LyX not in the output.
+\end_layout
+
 \begin_layout Section
 Diseño de página
 \end_layout
@@ -40883,27 +40894,6 @@ Aquí se determina el idioma del documento y el estilo de las comillas.
  Todos los caracteres que no puedan codificarse en la codificación especificada
  se exportan como comandos LaTeX (esto puede fallar si el comando para algún
  carácter es desconocido).
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Los comandos conocidos se definen en un archivo de texto (
-\emph on
-unicodesymbols
-\emph default
-).
- Puedes añadir comandos para símbolos desconocidos en ese archivo, como
- se explica en el manual 
-\emph on
-Personalización
-\emph default
-.
- 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -41779,7 +41769,7 @@ Color ! Fondo
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Color ! Marcos sombreados
@@ -41789,7 +41779,7 @@ Color ! Marcos sombreados
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Color ! Notas en gris
@@ -41826,28 +41816,6 @@ Cambiar
  También hay la opción de añadir colores personalizados para reutilizarlos
  después rápidamente.
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-Los colores no se muestran en LyX sino en la salida.
- Esta nota Resaltado
-\begin_inset space ~
-\end_inset
-
-en
-\begin_inset space ~
-\end_inset
-
-gris se ve azul en la salida.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -42180,6 +42148,34 @@ LaTeX, paquetes ! amsmath
 
 , 
 \series bold
+amssymb
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX, paquetes ! amssymb
+\end_layout
+
+\end_inset
+
+,
+\series bold
+ cancel
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX, paquetes ! cancel
+\end_layout
+
+\end_inset
+
+, 
+\series bold
 esint
 \series default
 
@@ -42206,7 +42202,21 @@ LaTeX, paquetes ! mathdots
 
 \end_inset
 
- y 
+, 
+\series bold
+mathtools
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX, paquetes ! mathtools
+\end_layout
+
+\end_inset
+
+, 
 \series bold
 mhchem
 \series default
@@ -42220,6 +42230,48 @@ LaTeX, paquetes ! mhchem
 
 \end_inset
 
+, 
+\series bold
+stackrel
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX, paquetes ! stackrel
+\end_layout
+
+\end_inset
+
+, 
+\series bold
+stmaryrd
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX, paquetes ! stmaryrd
+\end_layout
+
+\end_inset
+
+ y 
+\series bold
+undertilde
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+LaTeX, paquetes ! undertilde
+\end_layout
+
+\end_inset
+
 , o si usarlos automáticamente.
 \end_layout
 
@@ -42229,7 +42281,33 @@ amsmath
  
 \series default
 es necesario para numerosas estructuras; si recibes mensajes de error en
- ecuaciones comprueba que has habilitado el uso de AMS.
+ ecuaciones comprueba que lo has habilitado.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+amssymb is needed for some special math symbols like bold or upright Greek
+ letters, so when you get LaTeX-errors in formulas, ensure that you have
+ this enabled.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+cancel is used for canceled formulas, see section 
+\emph on
+Canceled
+\begin_inset space ~
+\end_inset
+
+Formulas
+\emph default
+ of the 
+\emph on
+Math
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Description
@@ -42253,6 +42331,52 @@ Ecuaciones.
 \end_layout
 
 \begin_layout Description
+
+\lang english
+mathtools is used for the math commands 
+\series bold
+
+\backslash
+overbracket
+\series default
+, 
+\series bold
+
+\backslash
+underbracket
+\series default
+, 
+\series bold
+
+\backslash
+smashoperator
+\series default
+, 
+\series bold
+
+\backslash
+adjustlimits
+\series default
+, 
+\series bold
+
+\backslash
+splitfrac
+\series default
+, 
+\series bold
+
+\backslash
+shortintertext
+\series default
+ and labeled arrows, see the corresponding sections in the 
+\emph on
+Math
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Description
 mhchem para escribir ecuaciones químicas, véase 
 \emph on
 Símbolos y ecuaciones químicas
@@ -42260,6 +42384,52 @@ Símbolos y ecuaciones químicas
  en el manual 
 \emph on
 Ecuaciones.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+stackrel is used for the math command 
+\series bold
+
+\backslash
+stackrel
+\series default
+, see section 
+\emph on
+Relations 
+\emph default
+of the 
+\emph on
+Math
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+stmaryrd is used for a few special math symbols.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+undertilde is used for the math command 
+\series bold
+
+\backslash
+utilde
+\series default
+, see section 
+\emph on
+Accents for one Character 
+\emph default
+of the 
+\emph on
+Math
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -42914,7 +43084,9 @@ target "http://wiki.lyx.org/uploads/LyX/NewInLyX20/themes.png"
 \end_layout
 
 \begin_layout Subsubsection
-Ayuda automática
+
+\lang english
+Context help
 \end_layout
 
 \begin_layout Standard
@@ -42927,7 +43099,36 @@ Habilitar los recuadros emergentes en el área de trabajo principal
 \end_layout
 
 \begin_layout Subsubsection
-Sesión
+
+\lang english
+Menus
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+Documentos recientes
+\family default
+ es el número de últimos archivos abiertos que LyX mostrará en el menú 
+\family sans
+Archivo\SpecialChar \menuseparator
+Abrir
+\begin_inset space ~
+\end_inset
+
+reciente.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Document Handling
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Session handling
 \end_layout
 
 \begin_layout Standard
@@ -42967,7 +43168,11 @@ Limpiar la información de todas las sesiones
 \end_layout
 
 \begin_layout Subsubsection
-Documentos
+
+\lang english
+Backup & saving
+\lang spanish
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Copias-de-seguridad"
@@ -43041,19 +43246,10 @@ Guardar los documentos comprimidos por omisión
  guarda siempre los archivos en formato comprimido.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection
 
-\family sans
-Documentos recientes
-\family default
- es el número de últimos archivos abiertos que LyX mostrará en el menú 
-\family sans
-Archivo\SpecialChar \menuseparator
-Abrir
-\begin_inset space ~
-\end_inset
-
-reciente.
+\lang english
+Windows & work area
 \end_layout
 
 \begin_layout Standard
@@ -43123,12 +43319,31 @@ status open
 \series bold
 Nota:
 \series default
- la última opción requiere reiniciar LyX para que el cambio funcione.
+ este opción requiere reiniciar LyX para que el cambio funcione.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With the setting 
+\family sans
+Closing last view
+\family default
+ you one can decide if a document is closed or hidden when its tab or view
+ is closed.
+ Hidden documents are accessible via the menu 
+\family sans
+View\SpecialChar \menuseparator
+Hidden
+\family default
+.
+ Not to close documents can be useful if you open files parallel in several
+ instances of LyX and only want to close the view in once instance.
 \end_layout
 
 \begin_layout Subsection
@@ -43876,7 +44091,7 @@ Autocompletar
 
 \begin_layout Standard
 La finalización de entradas se describe en la sección
-\begin_inset space \thinspace{}
+\begin_inset space ~
 \end_inset
 
 
@@ -44505,6 +44720,20 @@ decimal
 
 predeterminado Define el símbolo por omisión para separar decimales en cuadros
  (alineación del separador decimal).
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Default
+\begin_inset space ~
+\end_inset
+
+length
+\begin_inset space ~
+\end_inset
+
+unit Defines the unit that is used as default for lengths in LyX's dialogs.
 \end_layout
 
 \begin_layout Description
@@ -47353,16 +47582,12 @@ Esta bibliografía se ha generado a partir de una base de datos BibTeX.
 \end_layout
 
 \begin_layout Standard
-
-\series bold
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
 set_width "auto"
 
 \end_inset
 
-
-\series default
 
 \begin_inset CommandInset index_print
 LatexCommand printindex

@@ -2097,10 +2097,27 @@ Tableau ! Fenêtre de dialogue
 \end_layout
 
 \begin_layout Standard
-Vous pouvez agir sur un tableau en cliquant dessus avec le bouton droit
- de la souris, ce qui fait apparaître une fenêtre avec des options.
- Dans cette fenêtre vous pouvez modifier les réglages concernant la cellule,
- la colonne et la ligne dans laquelle le curseur se trouve.
+
+\lang english
+You can alter a table by clicking on it with the right mouse button, which
+ brings up the context menu.
+ Under the menu entry 
+\family sans
+More
+\family default
+\lang french
+ vous pouvez modifier les réglages concernant la cellule, la colonne et
+ la ligne dans laquelle le curseur se trouve.
+ 
+\lang english
+The context menu 
+\family sans
+More\SpecialChar \menuseparator
+Settings
+\family default
+ opens the table dialog where you can adjust more things
+\lang french
+.
  La plupart des options peuvent s'appliquer à des sélections.
  Ce qui signifie que si vous avez sélectionné plus d'une cellule, plus d'une
  ligne ou plus d'une colonne, l'action demandée prendra en compte toute
@@ -2647,6 +2664,54 @@ arg   "inset-modify tabular delete-column"
 \end_inset
 
  supprime la colonne ou la sélection courante
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-row-up"
+\end_inset
+
+
+\lang english
+ moves the row up
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-column-left"
+\end_inset
+
+
+\lang english
+ moves the column to the left
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-row-down"
+\end_inset
+
+
+\lang english
+ moves the row down
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Info
+type  "icon"
+arg   "inset-modify tabular move-column-right"
+\end_inset
+
+
+\lang english
+ moves the column to the right
 \end_layout
 
 \begin_layout Labeling
