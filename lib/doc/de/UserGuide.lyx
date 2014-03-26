@@ -43338,6 +43338,9 @@ Ansicht\SpecialChar \menuseparator
 Versteckt
 \family default
  aufrufbar.
+ Dokumente nicht zu schließen kann nützlich sein, wenn man Dateien parallel
+ in mehreren Instanzen von LyX öffnet und nur die Ansicht in einer Instanz
+ schließen möchte.
 \end_layout
 
 \begin_layout Subsection
@@ -44594,10 +44597,15 @@ l das Paket an- und abschaltet.
 \end_layout
 
 \begin_layout Description
-Standard-Dezimalzeichen Legen Sie hier den Standard-Dezimaltrenner fest,
+Standard-Dezimaltrenner Legen Sie hier den Standard-Dezimaltrenner fest,
  welcher für die Ausrichtung am Dezimalzeichen in Tabellen verwendet wird.
  Voreingestellt ist der Punkt, im Deutschen wird in der Regel aber ein Komma
  verwendet.
+\end_layout
+
+\begin_layout Description
+Standard-Längeneinheit Legt die Einheit fest, die als Voreinstellung für
+ Längen in LyXs Dialogen verwendet wird.
 \end_layout
 
 \begin_layout Description

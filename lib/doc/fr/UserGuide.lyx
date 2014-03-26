@@ -44669,6 +44669,8 @@ View\SpecialChar \menuseparator
 Hidden
 \family default
 .
+ Not to close documents can be useful if you open files parallel in several
+ instances of LyX and only want to close the view in once instance.
 \end_layout
 
 \begin_layout Subsection
@@ -46156,6 +46158,20 @@ décimal
 
 implicite définit le caractère à utiliser pour les chiffres en tableau (aligneme
 nt sur les décimales).
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Default
+\begin_inset space ~
+\end_inset
+
+length
+\begin_inset space ~
+\end_inset
+
+unit Defines the unit that is used as default for lengths in LyX's dialogs.
 \end_layout
 
 \begin_layout Description

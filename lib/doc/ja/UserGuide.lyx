@@ -36308,6 +36308,25 @@ status open
 
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+With the setting 
+\family sans
+Closing last view
+\family default
+ you one can decide if a document is closed or hidden when its tab or view
+ is closed.
+ Hidden documents are accessible via the menu 
+\family sans
+View\SpecialChar \menuseparator
+Hidden
+\family default
+.
+ Not to close documents can be useful if you open files parallel in several
+ instances of LyX and only want to close the view in once instance.
+\end_layout
+
 \begin_layout Subsection
 画面フォント
 \begin_inset Index idx
@@ -37534,6 +37553,20 @@ selectlanguage{$$lang}
 
 \begin_layout Description
 既定小数点 表で使用する小数点を定義します(小数点揃え用)。
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Default
+\begin_inset space ~
+\end_inset
+
+length
+\begin_inset space ~
+\end_inset
+
+unit Defines the unit that is used as default for lengths in LyX's dialogs.
 \end_layout
 
 \begin_layout Description
