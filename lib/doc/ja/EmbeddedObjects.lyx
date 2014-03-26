@@ -1708,41 +1708,23 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can alter a table by clicking on it with the right mouse button, which
- brings up the context menu.
- Under the menu entry 
+表を右クリックすると、文脈依存メニューが表示されて、表を変更することができます。メニュー項目詳細以下では、現在カーソルが置かれているセルないし行・列の設定を調節
+することができます。文脈依存メニュー
 \family sans
-More
+詳細\SpecialChar \menuseparator
+設定
 \family default
- you can adjust the settings of that cell and row/column respectively where
- the cursor is currently placed.
- The context menu 
-\family sans
-More\SpecialChar \menuseparator
-Settings
-\family default
- opens the table dialog where you can adjust more things.
- Most of the dialog options also work on selections.
- This means if you select more cells, columns or rows, the action is done
- for the whole selection.
- Note that there is a difference between selecting the 
+を選ぶと、ダイアログボックスが開いて、更に詳細な設定を行うことができます。また、ダイアログオプションのほとんどは、選択範囲に対しても動作します。つまり、複数のセ
+ルや行・列を選択していれば、操作は選択範囲の全てに対して行われます。セルの
 \emph on
-contents
+内容
 \emph default
- of the cell, and the cell itself.
-\lang japanese
-
+を選択するのと、セル自体を選択するのは異なることに注意して下さい。
 \begin_inset Newline newline
 \end_inset
 
-ダイアログオプションの
-\family sans
-直ちに適用
-\family default
-を使用すると、ダイアログ中に行った変更が直ちに適用されるようになります。カーソルを別のセルに移動すると、ダイアログも新しいセルのパラメーターに更新されます。ダイ
-アログ中の長さの値を変更した場合には、リターンを押さないと変更が適用されません。
+ダイアログオプションの直ちに適用を使用すると、ダイアログ中に行った変更が直ちに適用されるようになります。カーソルを別のセルに移動すると、ダイアログも新しいセルの
+パラメーターに更新されます。ダイアログ中の長さの値を変更した場合には、リターンを押さないと変更が適用されません。
 \begin_inset Newline newline
 \end_inset
 
@@ -2138,9 +2120,7 @@ type  "icon"
 arg   "inset-modify tabular move-row-up"
 \end_inset
 
-
-\lang english
- moves the row up
+ は、行を上に移動します。
 \end_layout
 
 \begin_layout Labeling
@@ -2150,9 +2130,7 @@ type  "icon"
 arg   "inset-modify tabular move-column-left"
 \end_inset
 
-
-\lang english
- moves the column to the left
+ は、列を左に移動します。
 \end_layout
 
 \begin_layout Labeling
@@ -2162,9 +2140,7 @@ type  "icon"
 arg   "inset-modify tabular move-row-down"
 \end_inset
 
-
-\lang english
- moves the row down
+ は、行を下に移動します。
 \end_layout
 
 \begin_layout Labeling
@@ -2174,9 +2150,7 @@ type  "icon"
 arg   "inset-modify tabular move-column-right"
 \end_inset
 
-
-\lang english
- moves the column to the right
+ は、列を右に移動します。
 \end_layout
 
 \begin_layout Labeling
@@ -19768,7 +19742,7 @@ reference "tab:表セル"
 
 の小数点のように、同一列の各セルの内容が、特定の文字で揃えられた方が見栄えの良いことがあります。この揃え方は、当該列にカーソルを置いて、ツールバーボタン
 \begin_inset Graphics
-	filename ../../trunk/lib/images/tabular-feature_align-decimal.png
+	filename ../../images/tabular-feature_align-decimal.png
 	scale 85
 	scaleBeforeRotation
 
@@ -23065,7 +23039,7 @@ reference "sec:キャプションの配置"
 節に述べられています。また、LyX文書を読みやすくするために、ボックスラベルを左クリックすれば、フロートボックスを広げたり畳んだりすることができるようになってい
 ます。畳んだフロートボックスは、
 \begin_inset Graphics
-	filename ../../trunk/lib/doc/ja/clipart/floatQt4.png
+	filename clipart/floatQt4.png
 	scale 70
 	scaleBeforeRotation
 
@@ -34730,7 +34704,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
+	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -34796,7 +34770,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
+	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -34877,7 +34851,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
+	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -34943,7 +34917,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
+	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -34981,7 +34955,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
+	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -35086,7 +35060,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
+	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -35148,7 +35122,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
+	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -35244,7 +35218,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
+	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -35339,7 +35313,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
+	filename ../../images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -36175,7 +36149,7 @@ target "http://en.wikipedia.org/wiki/XBoard"
 の書式で日付を挿入します。右は、外部素材として挿入された日付です：
 \begin_inset External
 	template Date
-	filename ../../trunk/lib/doc/ja
+	filename ../../trunk/lib/trunk/lib/doc/ja
 
 \end_inset
 
@@ -38570,7 +38544,7 @@ Postscript
 \family default
 メニューかツールバーボタン
 \begin_inset Graphics
-	filename ../../trunk/lib/images/buffer-view_ps.png
+	filename ../../images/buffer-view_ps.png
 	scale 85
 	scaleBeforeRotation
 
@@ -38714,7 +38688,7 @@ dvipdfm
 \family default
 メニューかツールバーボタン
 \begin_inset Graphics
-	filename ../../trunk/lib/images/buffer-view_pdf2.png
+	filename ../../images/buffer-view_pdf2.png
 	scale 85
 	scaleBeforeRotation
 
