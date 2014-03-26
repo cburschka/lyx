@@ -2,13 +2,13 @@
 # Copyright (C) 2008 LyX Developers
 # This file is distributed under the same license as the LyX package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2007, 2008, 2009, 2010, 2011, 2012, 2013.
+# Yuri Chornoivan <yurchor@ukr.net>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-03-20 11:00+0100\n"
-"PO-Revision-Date: 2013-11-17 12:09+0200\n"
+"PO-Revision-Date: 2014-03-26 19:37+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
@@ -1408,12 +1408,11 @@ msgstr "Діапазон, яким буде обмежено пошук"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:206
 msgid "Scope"
-msgstr ""
+msgstr "Діапазон"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:218
-#, fuzzy
 msgid "C&urrent document"
-msgstr "Поточний &документ"
+msgstr "Пото&чний документ"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:237
 msgid ""
@@ -1436,7 +1435,6 @@ msgid "&Open documents"
 msgstr "&Відкриті документи"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:263
-#, fuzzy
 msgid "&All manuals"
 msgstr "Всі пі&дручники"
 
@@ -1449,9 +1447,8 @@ msgstr ""
 "позначеного фрагмента тексту та абзацу цього фрагмента"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:284
-#, fuzzy
 msgid "I&gnore format"
-msgstr "Ігнорувати &формат"
+msgstr "І&гнорувати формат"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:294
 msgid ""
@@ -1470,7 +1467,6 @@ msgid "&Expand macros"
 msgstr "&Розгорнути макрос"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:314
-#, fuzzy
 msgid "Search on&ly in maths"
 msgstr "Шукати лише у &формулах"
 
@@ -3358,9 +3354,8 @@ msgid "Hide &menubar"
 msgstr "Сховати смужку &меню"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:202
-#, fuzzy
 msgid "Hide sta&tusbar"
-msgstr "Сховати панель &вкладок"
+msgstr "Сховати панель с&тану"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:209
 msgid "&Limit text width"
@@ -12465,9 +12460,8 @@ msgid "LongTableNoNumber"
 msgstr "Довга таблиця без нумерації"
 
 #: lib/layouts/stdinsets.inc:540
-#, fuzzy
 msgid "unlabelled"
-msgstr "мітка нотатки"
+msgstr "без мітки"
 
 #: lib/layouts/stdinsets.inc:547
 msgid "Preview"
@@ -12760,15 +12754,16 @@ msgid "Note \\thenote."
 msgstr "Примітка \\thenote."
 
 #: lib/layouts/algorithm2e.module:2
-#, fuzzy
 msgid "Algorithm2e"
-msgstr "Алгоритм"
+msgstr "Algorithm2e"
 
 #: lib/layouts/algorithm2e.module:6
 msgid ""
-"Use the algorithm2e package for algorithm floats rather then LyX's home-"
+"Use the algorithm2e package for algorithm floats rather than LyX's home-"
 "brewn algorithm floats."
 msgstr ""
+"Використовувати пакунок algorithm2e для вставок алгоритмів, замість власних "
+"вставок алгоритмів LyX."
 
 #: lib/layouts/basic.module:2
 msgid "Default (basic)"
@@ -15978,14 +15973,12 @@ msgid "Delete Line Below|e"
 msgstr "Вилучити рядок нижче|н"
 
 #: lib/ui/stdmenus.inc:257
-#, fuzzy
 msgid "Transform First Non-Optional to Optional Argument"
 msgstr "Зробити перший необов’язковий параметр обов’язковим"
 
 #: lib/ui/stdmenus.inc:258
-#, fuzzy
 msgid "Transform Last Optional to Non-Optional Argument"
-msgstr "Зробити останній необов’язковий параметр обов’язковим"
+msgstr "Зробити останній обов’язковий параметр необов’язковим"
 
 #: lib/ui/stdmenus.inc:268
 msgid "Default|t"
@@ -16264,7 +16257,6 @@ msgid "Breakable Slash|a"
 msgstr "Розбивна риска|а"
 
 #: lib/ui/stdmenus.inc:395
-#, fuzzy
 msgid "Visible Space|V"
 msgstr "Видимий інтервал|и"
 
@@ -19459,14 +19451,12 @@ msgid "Longmapsfrom"
 msgstr "Longmapsfrom"
 
 #: lib/ui/stdtoolbars.inc:951
-#, fuzzy
 msgid "xleftarrow"
-msgstr "leftarrow"
+msgstr "xleftarrow"
 
 #: lib/ui/stdtoolbars.inc:952
-#, fuzzy
 msgid "xrightarrow"
-msgstr "rightarrow"
+msgstr "xrightarrow"
 
 #: lib/ui/stdtoolbars.inc:968
 msgid "leqq"
@@ -24478,7 +24468,7 @@ msgstr ""
 
 #: src/Text.cpp:1013
 msgid "Character is uncodable in verbatim paragraphs."
-msgstr ""
+msgstr "Символ не можна закодувати у абзацах verbatim."
 
 #: src/Text.cpp:1850
 msgid "[Change Tracking] "
@@ -24915,14 +24905,12 @@ msgid "Reload saved document?"
 msgstr "Перезавантажити збережений документ?"
 
 #: src/buffer_funcs.cpp:77
-#, fuzzy
 msgid "Yes, &Reload"
-msgstr "&Перезавантажити"
+msgstr "Так, &перезавантажити"
 
 #: src/buffer_funcs.cpp:77
-#, fuzzy
 msgid "No, &Keep Changes"
-msgstr "&Зберегти зміни"
+msgstr "Ні, &зберегти зміни"
 
 #: src/buffer_funcs.cpp:98
 #, c-format
@@ -26914,24 +26902,21 @@ msgid "Invalid or empty key sequence"
 msgstr "Некоректна або порожня послідовність клавіш"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3199
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to %2$s.\n"
 "Are you sure you want to unbind the current shortcut and bind it to %3$s?"
 msgstr ""
-"Скорочення `%1$s' вже пов’язано з:\n"
-"%2$s\n"
-"Вам слід вилучити цю прив’язку до створення нової."
+"Скорочення «%1$s» вже пов’язано з %2$s.\n"
+"Хочете розірвати поточну прив’язку і пов’язати його з %3$s?"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3205
-#, fuzzy
 msgid "Redefine shortcut?"
-msgstr "Змінити клавіатурне скорочення"
+msgstr "Змінити призначення скорочення?"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3206
-#, fuzzy
 msgid "&Redefine"
-msgstr "Попередньо &визначений:"
+msgstr "П&еревизначити"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3240
 msgid "Can not insert shortcut to the list"
@@ -28099,14 +28084,14 @@ msgid "Caption (%1$s)"
 msgstr "Підпис (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:1689
-#, fuzzy, c-format
+#, c-format
 msgid "Start New Environment (%1$s)"
-msgstr "Середовище Gather"
+msgstr "Почати нове середовище (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:1696
-#, fuzzy, c-format
+#, c-format
 msgid "Start New Parent Environment (%1$s)"
-msgstr "створити нове математичне середовище ($…$)"
+msgstr "Почати нове батьківське середовище (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:2328
 msgid "No Action Defined!"
