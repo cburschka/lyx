@@ -1080,8 +1080,9 @@ int fileLock(const char * lock_file)
 void fileUnlock(int fd, const char * /* lock_file*/)
 {
 #if defined(HAVE_LOCKF)
-	if ( fd >= 0) {
-		(void) lockf(fd, F_ULOCK, 0);
+	if (fd >= 0) {
+		if (lockf(fd, F_ULOCK, 0))
+			LYXERR0("Can't unlock the file.");
 		close(fd);
 	}
 #endif
