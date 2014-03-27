@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Lyx 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-03-20 11:00+0100\n"
-"PO-Revision-Date: 2013-06-15 01:09-0800\n"
+"PO-Revision-Date: 2013-03-26 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
 "Language: cs\n"
@@ -1396,7 +1396,6 @@ msgid "Scope"
 msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:218
-#, fuzzy
 msgid "C&urrent document"
 msgstr "Aktuální &dokument"
 
@@ -1421,7 +1420,6 @@ msgid "&Open documents"
 msgstr "&Otevřené dokumenty"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:263
-#, fuzzy
 msgid "&All manuals"
 msgstr "Všechny &manuály"
 
@@ -1434,7 +1432,6 @@ msgstr ""
 "ve zvoleném stylu"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:284
-#, fuzzy
 msgid "I&gnore format"
 msgstr "Ignorovat &formát"
 
@@ -1453,7 +1450,6 @@ msgid "&Expand macros"
 msgstr "Rozvinout &makra"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:314
-#, fuzzy
 msgid "Search on&ly in maths"
 msgstr "&Hledat pouze ve vzorcích"
 
@@ -3336,9 +3332,8 @@ msgid "Hide &menubar"
 msgstr "Skrýt &menu"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:202
-#, fuzzy
 msgid "Hide sta&tusbar"
-msgstr "&Skrýt lištu s dokumenty"
+msgstr "S&krýt stavový řádek"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:209
 msgid "&Limit text width"
@@ -12406,9 +12401,8 @@ msgid "LongTableNoNumber"
 msgstr "LongTableNoNumber"
 
 #: lib/layouts/stdinsets.inc:540
-#, fuzzy
 msgid "unlabelled"
-msgstr "značka poznámky"
+msgstr "neoznačeno"
 
 #: lib/layouts/stdinsets.inc:547
 msgid "Preview"
@@ -12632,9 +12626,8 @@ msgid "Claim*"
 msgstr "Tvrzení*"
 
 #: lib/layouts/theorems-proof.inc:22
-#, fuzzy
 msgid "Alternative proof string"
-msgstr "Alternative Affiliation"
+msgstr "Alternativní jmenovka důkazu"
 
 #: lib/layouts/theorems-starred.inc:121
 msgid "Conjecture."
