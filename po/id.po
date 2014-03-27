@@ -8,13 +8,14 @@ msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-03-25 11:04-0400\n"
-"PO-Revision-Date: 2012-02-01 07:13+0730\n"
+"PO-Revision-Date: 2014-03-27 18:25+0800\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -1471,13 +1472,12 @@ msgid "FontUi"
 msgstr "HurufUi"
 
 #: src/frontends/qt4/ui/FontUi.ui:19
-#, fuzzy
 msgid ""
 "Use OpenType and TrueType fonts with the fontspec package (requires XeTeX or "
 "LuaTeX)"
 msgstr ""
-"Langsung menggunakan huruf OpenType dan TrueType  (memerlukan XeTeX atau "
-"LuaTeX)"
+"Menggunakan huruf OpenType dan TrueType dengan paket fontspec (memerlukan "
+"XeTeX atau LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:22
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
@@ -3184,9 +3184,8 @@ msgid "&Mark end of paragraphs"
 msgstr "&Tandai semua akhir paragraf"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:26
-#, fuzzy
 msgid "Session handling"
-msgstr "Penanganan Huruf"
+msgstr "Penanganan Sesi"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:38
 msgid "Restore window layouts and &geometries"
@@ -3209,21 +3208,18 @@ msgid "&Clear all session information"
 msgstr "Hapus semua informasi sesi"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:85
-#, fuzzy
 msgid "Backup && saving"
-msgstr "Backup gagal"
+msgstr "Cadangan dan simpan"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:94
-#, fuzzy
 msgid "Backup &original documents when saving"
-msgstr "Simpan cadangan dokumen ketika menyimpan"
+msgstr "Membuat cadangan dokumen asli ketika menyimpan"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:103
 msgid "&Backup documents, every"
 msgstr "Simp&an dokumen, setiap"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:120
-#, fuzzy
 msgid "&minutes"
 msgstr "menit"
 
@@ -3233,17 +3229,15 @@ msgstr "Simpan dokumen termampatkan sebagai bawaan"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
 msgid "Windows && work area"
-msgstr ""
+msgstr "Windows dan area kerja"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:164
-#, fuzzy
 msgid "Open documents in &tabs"
-msgstr "Buka dokumen dalam ta&b"
+msgstr "Buka dokumen dalam tab"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:175
-#, fuzzy
 msgid "Use s&ingle instance"
-msgstr "Men&jadi satu"
+msgstr "Gunakan satu tampilan"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:182
 msgid "Whether to place close button on each tab or only one in the top left."
@@ -3252,9 +3246,8 @@ msgstr ""
 "atas."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:185
-#, fuzzy
 msgid "Displa&y single close-tab button"
-msgstr "&Satu tombol penutup tab"
+msgstr "Tampilkan satu tombol penutup tab"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:25 src/frontends/qt4/GuiPrefs.cpp:252
 msgid "Editing"
@@ -4107,9 +4100,8 @@ msgid "Al&ternative language:"
 msgstr "Bahasa &Alternatif:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:25
-#, fuzzy
 msgid "General Look && Feel"
-msgstr "Penampilan"
+msgstr "Tampilan Umum dan Seni"
 
 #: src/frontends/qt4/ui/PrefUi.ui:36
 msgid "&User interface file:"
@@ -4120,9 +4112,8 @@ msgid "&Icon Set:"
 msgstr "Ukuran Ikon:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:109
-#, fuzzy
 msgid "Context help"
-msgstr "Isi"
+msgstr "Bantuan isi"
 
 #: src/frontends/qt4/ui/PrefUi.ui:127
 msgid ""
@@ -4137,9 +4128,8 @@ msgid "&Enable tool tips in main work area"
 msgstr "Diberikan petunjuk di area kerja utama"
 
 #: src/frontends/qt4/ui/PrefUi.ui:140
-#, fuzzy
 msgid "Menus"
-msgstr "MenuGui"
+msgstr "Berbagai Menu"
 
 #: src/frontends/qt4/ui/PrefUi.ui:149
 msgid "&Maximum last files:"
@@ -5095,7 +5085,6 @@ msgid "VFill"
 msgstr "Lompat Variabel"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:32
-#, fuzzy
 msgid "F&ormat:"
 msgstr "&Format:"
 
@@ -5104,23 +5093,20 @@ msgid "Select the output format"
 msgstr "Pilih format keluaran"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:56
-#, fuzzy
 msgid "Current Paragraph"
-msgstr "Paragraf &Masuk"
+msgstr "Paragraf Sekarang"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:61
-#, fuzzy
 msgid "Complete Source"
-msgstr "Keseluruhan"
+msgstr "Sumber Lengkap"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:66
 msgid "Preamble Only"
-msgstr ""
+msgstr "Hanya Preambel"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:71
-#, fuzzy
 msgid "Body Only"
-msgstr "Hanya"
+msgstr "Hanya Bodi"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:89
 msgid "Automatic update"
@@ -6595,34 +6581,28 @@ msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
 
 #: lib/layouts/apa6.layout:111
-#, fuzzy
 msgid "FiveAuthors"
-msgstr "Penulis"
+msgstr "LimaPenulis"
 
 #: lib/layouts/apa6.layout:118
-#, fuzzy
 msgid "SixAuthors"
-msgstr "Penulis"
+msgstr "EnamPenulis"
 
 #: lib/layouts/apa6.layout:125
-#, fuzzy
 msgid "LeftHeader"
-msgstr "Kepala Kiri"
+msgstr "KepalaKiri"
 
 #: lib/layouts/apa6.layout:134
-#, fuzzy
 msgid "Left header:"
-msgstr "Kepala Kiri:"
+msgstr "Kepala kiri:"
 
 #: lib/layouts/apa6.layout:189
-#, fuzzy
 msgid "FiveAffiliations"
-msgstr "Afiliasi"
+msgstr "LimaAfiliasi"
 
 #: lib/layouts/apa6.layout:196
-#, fuzzy
 msgid "SixAffiliations"
-msgstr "Afiliasi"
+msgstr "EnamAfiliasi"
 
 #: lib/layouts/apa6.layout:204 lib/layouts/elsart.layout:392
 #: lib/layouts/iopart.layout:95 lib/layouts/llncs.layout:362
@@ -6658,14 +6638,12 @@ msgid "Keywords:"
 msgstr "Katakunci:"
 
 #: lib/layouts/apa6.layout:272
-#, fuzzy
 msgid "AuthorNote"
-msgstr "Penulis"
+msgstr "NotaPenulis"
 
 #: lib/layouts/apa6.layout:291
-#, fuzzy
 msgid "Author Note:"
-msgstr "Penulis catatankaki:"
+msgstr "Nota Penulis:"
 
 #: lib/layouts/apa6.layout:305 lib/layouts/egs.layout:335
 msgid "Journal"
@@ -6673,9 +6651,8 @@ msgstr "Jurnal"
 
 #: lib/layouts/apa6.layout:306 lib/layouts/apa6.layout:314
 #: lib/layouts/apa6.layout:323 lib/layouts/apa6.layout:331
-#, fuzzy
 msgid "Preamble"
-msgstr "LaTeX Preamble"
+msgstr "Preambel"
 
 #: lib/layouts/apa6.layout:322
 msgid "CopNum"
@@ -6747,15 +6724,14 @@ msgid "\\arabic{section}.\\arabic{subsection}"
 msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:243
-#, fuzzy
 msgid ""
 "Subsubsection \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
-msgstr "SubSubBab \\arabic{section}.\\arabic{subsection}"
+msgstr ""
+"Subsubseksi \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 
 #: lib/layouts/beamer.layout:257
-#, fuzzy
 msgid "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
-msgstr "SubSubBab \\arabic{section}.\\arabic{subsection}"
+msgstr "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 
 #: lib/layouts/beamer.layout:273 lib/layouts/beamer.layout:315
 #: lib/layouts/beamer.layout:353 lib/layouts/beamer.layout:392
@@ -8971,9 +8947,8 @@ msgid "Legend"
 msgstr "Keterangan"
 
 #: lib/layouts/moderncv.layout:35
-#, fuzzy
 msgid "Sectioning"
-msgstr "SubBab"
+msgstr "Pembagian Bab"
 
 #: lib/layouts/moderncv.layout:68
 msgid "Entry"
@@ -9137,9 +9112,8 @@ msgid "PACS number:"
 msgstr "Nomor PACS:"
 
 #: lib/layouts/scrbook.layout:25
-#, fuzzy
 msgid "\\thechapter.\\arabic{equation}"
-msgstr "\\thesection.\\arabic{equation}"
+msgstr "\\thechapter.\\arabic{equation}"
 
 #: lib/layouts/scrlettr.layout:24 lib/layouts/scrlttr2.layout:28
 #: lib/layouts/scrclass.inc:42 lib/layouts/stdlyxlist.inc:6
@@ -9256,18 +9230,16 @@ msgid "LandscapeSlide"
 msgstr "SlideLansekap"
 
 #: lib/layouts/seminar.layout:26
-#, fuzzy
 msgid "Landscape Slide"
-msgstr "Slide Lansekap:"
+msgstr "Slide Lansekap"
 
 #: lib/layouts/seminar.layout:38 lib/layouts/seminar.layout:100
 msgid "PortraitSlide"
 msgstr "Slide Potret"
 
 #: lib/layouts/seminar.layout:40
-#, fuzzy
 msgid "Portrait Slide"
-msgstr "Slide Potret:"
+msgstr "Slide Potret"
 
 #: lib/layouts/seminar.layout:45
 msgid "SlideHeading"
@@ -9282,27 +9254,24 @@ msgid "ListOfSlides"
 msgstr "DaftarDariSlide"
 
 #: lib/layouts/seminar.layout:60
-#, fuzzy
 msgid "List of Slides"
-msgstr "[Daftar Slide]"
+msgstr "Daftar Slide"
 
 #: lib/layouts/seminar.layout:67 lib/layouts/seminar.layout:126
 msgid "SlideContents"
 msgstr "DaftarIsiSlide"
 
 #: lib/layouts/seminar.layout:69
-#, fuzzy
 msgid "Slide Contents"
-msgstr "DaftarIsiSlide"
+msgstr "Daftar Isi Slide"
 
 #: lib/layouts/seminar.layout:73 lib/layouts/seminar.layout:132
 msgid "ProgressContents"
 msgstr "ProgressContents"
 
 #: lib/layouts/seminar.layout:75
-#, fuzzy
 msgid "Progress Contents"
-msgstr "ProgressContents"
+msgstr "Daftar Isi Progres"
 
 #: lib/layouts/seminar.layout:94
 msgid "Landscape Slide:"
@@ -10388,24 +10357,20 @@ msgid "Claim \\thetheorem."
 msgstr "Klaim \\thetheorem."
 
 #: lib/layouts/theorems-case.inc:12
-#, fuzzy
 msgid "Case \\arabic{casei}."
-msgstr "Kasus \\arabic{case}"
+msgstr "Kasus \\arabic{casei}."
 
 #: lib/layouts/theorems-case.inc:16
-#, fuzzy
 msgid "Case \\roman{caseii}."
-msgstr "Kasus \\arabic{case}"
+msgstr "Kasus \\roman{caseii}."
 
 #: lib/layouts/theorems-case.inc:20
-#, fuzzy
 msgid "Case \\alph{caseiii}."
-msgstr "Kasus \\thecase."
+msgstr "Kasus \\alph{caseiii}."
 
 #: lib/layouts/theorems-case.inc:24
-#, fuzzy
 msgid "Case \\arabic{caseiv}."
-msgstr "Kasus \\arabic{case}"
+msgstr "Kasus \\arabic{caseiv}."
 
 #: lib/layouts/theorems-order.inc:46 lib/layouts/theorems-starred.inc:173
 msgid "Example*"
@@ -10722,7 +10687,6 @@ msgid "Rnw (knitr)"
 msgstr "Rnw (knitr)"
 
 #: lib/layouts/knitr.module:6
-#, fuzzy
 msgid ""
 "Uses the knitr package in R for dynamic report generation. This R package "
 "has to be installed for this module to work: install.packages('knitr'). Note "
@@ -10731,7 +10695,7 @@ msgstr ""
 "Menggunakan paket knitr pada R untuk membuat laporan dinamik. Paket R harus "
 "dipasang agar modul ini dapat berfungsi: install.packages('knitr'). Ini "
 "tergantung dari R >= 2.14.1. Untuk penjelasan lanjut lihat di  http://yihui."
-"github.com/knitr"
+"name/knitr"
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:6
@@ -10915,6 +10879,9 @@ msgid ""
 "bibliography style need not be apacite--it could be apacite, apacitex, or "
 "any bibliography that works with both the natbib and apacite packages.)"
 msgstr ""
+"Modul ini mendukung penggunaan natbib yang dipakai dengan apacite (gaya "
+"bibliografi harus keluarga apacite--bisa apacite, apacitex, atau sembarang "
+"bibliografi yang bisa menggunakan natbib dan paket apacite.)"
 
 #: lib/layouts/noweb.module:2
 msgid "Noweb"
@@ -12370,9 +12337,8 @@ msgid "Apply Last Text Style|A"
 msgstr "Gunakan model teks terakhir|G"
 
 #: lib/ui/stdcontext.inc:314
-#, fuzzy
 msgid "Text Style|x"
-msgstr "Corak dan Gaya Teks|C"
+msgstr "Corak Teks|C"
 
 #: lib/ui/stdcontext.inc:315 lib/ui/stdmenus.inc:119
 msgid "Paragraph Settings...|P"
@@ -12612,9 +12578,8 @@ msgid "Select Section|S"
 msgstr "Pilih SubBab|S"
 
 #: lib/ui/stdcontext.inc:596
-#, fuzzy
 msgid "Wrap by Preview|y"
-msgstr "Lipat menurut Pratampilan...|p"
+msgstr "Lipat menurut Pratampilan|p"
 
 #: lib/ui/stdmenus.inc:31
 msgid "Edit|E"
@@ -13569,14 +13534,12 @@ msgid "Feynman-diagram Manual|F"
 msgstr "Petunjuk Penggunaan diagram Feynman|F"
 
 #: lib/ui/stdmenus.inc:587
-#, fuzzy
 msgid "Knitr Manual|K"
-msgstr "Petunjuk Penggunaan  Linguistik|L"
+msgstr "Manual Knitr"
 
 #: lib/ui/stdmenus.inc:588
-#, fuzzy
 msgid "LilyPond Manual|P"
-msgstr "LilyPond musik"
+msgstr "Manual LilyPond"
 
 #: lib/ui/stdmenus.inc:589
 msgid "Linguistics Manual|L"
@@ -16635,9 +16598,8 @@ msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
 #: lib/configure.py:604
-#, fuzzy
 msgid "LaTeX (dviluatex)"
-msgstr "LaTeX (pdflatex)"
+msgstr "LaTeX (dviluatex)"
 
 #: lib/configure.py:605
 msgid "LaTeX (XeTeX)"
@@ -16669,7 +16631,7 @@ msgstr "Plain Text, Join Lines"
 
 #: lib/configure.py:611
 msgid "Info (Beamer)"
-msgstr ""
+msgstr "Info (Beamer)"
 
 #: lib/configure.py:614
 msgid "Gnumeric spreadsheet"
@@ -17292,18 +17254,16 @@ msgid "Preview source code"
 msgstr "Tampilan program asal"
 
 #: src/Buffer.cpp:3363
-#, fuzzy
 msgid "Preview preamble"
-msgstr "Pra tampilan sudah siap"
+msgstr "Pratampilan preambel"
 
 #: src/Buffer.cpp:3365
-#, fuzzy
 msgid "Preview body"
-msgstr "Pra tampilan sudah siap"
+msgstr "Pratampilan bodi"
 
 #: src/Buffer.cpp:3380
 msgid "Plain text does not have a preamble."
-msgstr ""
+msgstr "Teks biasa tanpa preambel"
 
 #: src/Buffer.cpp:3492
 #, c-format
@@ -18999,8 +18959,8 @@ msgstr ""
 
 #: src/LyXRC.cpp:3262
 msgid ""
-"The LaTeX command for loading the language package. E.g. \"\\usepackage"
-"{babel}\", \"\\usepackage{omega}\"."
+"The LaTeX command for loading the language package. E.g. "
+"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 "Perintah LaTeX untuk memuat paket bahasa. Misalnya \"\\usepackage{babel}\", "
 "\"\\usepackage{omega}\"."
@@ -21703,9 +21663,8 @@ msgid "Oxygen"
 msgstr "Oxygen"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2550
-#, fuzzy
 msgid "Document Handling"
-msgstr "Dokumen dan Jendela"
+msgstr "Penanganan Dokumen"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2637
 msgid "Control"
@@ -21877,7 +21836,7 @@ msgstr "Kesalahan -> Tidak dapat memuat berkas!"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:252
 msgid "Spell check of the selection done, did not find any errors."
-msgstr ""
+msgstr "Cek ejaan dari yang dipilih selesai, tidak ditemukan kesalahan."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:259
 msgid ""
@@ -22430,6 +22389,8 @@ msgid ""
 "The file name '%1$s' is invalid!\n"
 "Aborting import."
 msgstr ""
+"Nama berkas '%1$s' tidak sah!\n"
+"Impor dibatalkan."
 
 #: src/frontends/qt4/GuiView.cpp:2141 src/frontends/qt4/GuiView.cpp:2305
 #, c-format
@@ -23268,15 +23229,15 @@ msgid "Graphics file: %1$s"
 msgstr "Berkas gambar: %1$s"
 
 #: src/insets/InsetHyperlink.cpp:221
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The following characters that are used in the href inset are not\n"
 "representable in the current encoding and therefore have been omitted:\n"
 "%1$s."
 msgstr ""
-"Karakter berikut yang digunakan di sisipan %1$s tidak dapat\n"
+"Karakter berikut yang digunakan di sisipan href tidak dapat\n"
 "diwakili dengan enkoding sekarang sehingga akan diabaikan:\n"
-"%2$s."
+"%1$s."
 
 #: src/insets/InsetHyperlink.cpp:296
 msgid "www"
@@ -24208,7 +24169,7 @@ msgid "Directory not found"
 msgstr "Direktori tidak ditemukan!"
 
 #: src/support/Systemcall.cpp:374
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The command\n"
 "%1$s\n"
@@ -24216,23 +24177,23 @@ msgid ""
 "\n"
 "Do you want to stop it?"
 msgstr ""
-"Dokumen %1$s ada perubahan.\n"
+"Perintah\n"
+"%1$s\n"
+"belum selesai dilaksanakan.\n"
 "\n"
-"Apakah ingin menyimpan terlebih dahulu?"
+"Anda ingin menghentikannya?"
 
 #: src/support/Systemcall.cpp:376
-#, fuzzy
 msgid "Stop command?"
-msgstr "Perintah tanggal"
+msgstr "Perintah berhenti?"
 
 #: src/support/Systemcall.cpp:377
-#, fuzzy
 msgid "&Stop it"
-msgstr "Abai&kan saja"
+msgstr "Hentikan"
 
 #: src/support/Systemcall.cpp:377
 msgid "Let it &run"
-msgstr ""
+msgstr "Terus dijalankan"
 
 #: src/support/debug.cpp:42
 msgid "No debugging messages"
