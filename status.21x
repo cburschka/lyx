@@ -106,3 +106,6 @@ What's new
 
 - Fix bad compare of pointer vs. character (part of bug 8985).
 
+- With autotools, avoid installing in Windows and MacOS some files intented
+  for the unix builds.
+
