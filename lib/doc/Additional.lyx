@@ -131,12 +131,11 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author -1762856967 "Benjamin Piwowarski" 
 \end_header
 
 \begin_body
@@ -5508,19 +5507,13 @@ read a <~/.lyxpipe.out
 \end_inset
 
 echo $a
-\change_inserted -1762856967 1393941760
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -1762856967 1393941776
 AppleScript (Mac OS X)
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -1762856967 1393941776
 Since LyX 2.1, LyX supports basic interactions with AppleScript for normal
  communication through the command run.
  This command takes a direct argument (the 
@@ -5533,66 +5526,44 @@ function
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -1762856967 1393941776
 Example:
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_inserted -1762856967 1393941776
 tell application "LyX"
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_inserted -1762856967 1393941776
   try
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_inserted -1762856967 1393941776
     -- Stores the current file name into f
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_inserted -1762856967 1393941776
     set f to (run "server-get-filename" with argument "")
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_inserted -1762856967 1393941776
     on error the error_message number the error_number
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_inserted -1762856967 1393941776
       display dialog "Error: " & the error_number & ".
  " ¬
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_inserted -1762856967 1393941776
               & the error_message buttons {"OK"} default button 1
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_inserted -1762856967 1393941776
   end try
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_inserted -1762856967 1393941776
 end tell
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
