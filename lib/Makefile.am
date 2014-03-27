@@ -2207,6 +2207,6 @@ dist_noinst_DATA += lyx.desktop.in images/lyx.svg images/lyx.png
 
 install-data-hook:
 	$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/configure.py
-	for i in $(scriptsdir)/*.py $(scriptsdir)/listerrors ; do \
-		$(CHMOD) 755 $(DESTDIR)/$$i; \
+	for i in $(DESTDIR)$(scriptsdir)/*.py $(DESTDIR)$(scriptsdir)/listerrors ; do \
+		$(CHMOD) 755 $$i; \
 	done
