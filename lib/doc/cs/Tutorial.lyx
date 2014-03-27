@@ -1317,7 +1317,7 @@ latex
 \begin_layout Enumerate
 Proběhlo-li vše bez chyb, v menu 
 \family typewriter
-Prohlížet
+Dokument
 \family default
  by se měla objevit nová položka 
 \family typewriter
@@ -1419,9 +1419,9 @@ xdvi
  Poté můžete použít příkaz 
 \family sans
 \bar under
-Prohlížet
+Dokument
 \bar default
-->Aktualizovat->Dvi
+->Aktualizuj->Dvi
 \family default
  a jen aktivujte okno s 
 \family typewriter
@@ -1524,14 +1524,18 @@ nekonečného návratu
 \begin_inset space ~
 \end_inset
 
-změnu znovu a znovu.
+
+\family sans
+změnu
+\family default
+ znovu a znovu.
  Jestli jste přeskočili příliš daleko, zvolte pouze 
 \family sans
 Úpravy->Znovu
 \begin_inset space ~
 \end_inset
 
-měnu
+změnu
 \family default
  pro krok zpátky.
  
@@ -1544,9 +1548,9 @@ Vyjmout/Vložit/Zkopírovat Použijte
 \family default
  
 \family sans
-Úpravy->Vlož
+Úpravy->Vložit
 \family default
-it, a 
+, a 
 \family sans
 Úpravy->Zkopírovat
 \family default
@@ -1701,7 +1705,7 @@ Mean
  Vy se staráte o obsah a LyX se stará o to, aby výstup dobře vypadal.
  Klávesa 
 \family sans
-Return
+Enter
 \family default
  odděluje odstavce a 
 \family sans
@@ -2038,9 +2042,9 @@ Subsubsekce
 \family default
 , 
 \family sans
-Odstav
+Odstavec
 \family default
-ec a 
+ a 
 \family sans
 Pododstavec
 \family default
@@ -2212,13 +2216,9 @@ Enter
 .
  Nyní zvolte 
 \family sans
-Itemize
+Položka
 \family default
- 
-\family sans
-z nabídky Environment
-\family default
-.
+ z nabídky stylů.
  LyX napíše 
 \begin_inset Quotes gld
 \end_inset
@@ -2359,9 +2359,9 @@ Seznam
 \begin_inset space ~
 \end_inset
 
-Space
+Spaces
 \family default
-s), které získáte stiskem 
+), které získáte stiskem 
 \family sans
 C-Mezera,
 \family default
@@ -2399,16 +2399,16 @@ Ostatní styly: Verše, citace, a jiné
 \begin_layout Standard
 LyX předdefinovává dva styly pro odlišení citace od okolního textu: 
 \family sans
-Quote
+Citace
 \family default
  pro kratší a 
 \family sans
-Quotation
+Citát
 \family default
  pro delší.
  Programy (styl 
 \family sans
-LyX-Code
+LyX-Kód
 \family default
 , použitý v 
 \emph on
@@ -2433,7 +2433,7 @@ předpokládáme, že jste tak dobrý básník, že píšete poezii zpatra.
 
  ve stylu 
 \family sans
-Verse
+Verš
 \family default
 , přičemž 
 \family sans
@@ -2916,11 +2916,7 @@ Address
 , abyste jej mohli nahradit svým — a pak posunete kurzor bez psaní textu,
  styl může zmizet.
  To proto, že styl nemůže existovat bez napojení na text.
- Obnovíte jej ručním znovunastavením z nabídky 
-\family sans
-Environment
-\family default
- menu.
+ Obnovíte jej ručním znovunastavením z nabídky stylů.
 \end_layout
 
 \end_inset
@@ -3133,7 +3129,7 @@ LyX umístí odkazovací obdélníček na místo, kde byl kurzor.
  přesune na odkazované místo.
  Zvolte 
 \family sans
-Prohlížet->Aktualizovat->DVI
+Dokument->Aktualizuj->DVI
 \family default
 , a uvidíte odkaz na sekci 2 a stranu 1 (nebo na tu, kde sekce 2 momentálně
  je).
@@ -3577,15 +3573,8 @@ LaTeX je používán mnoha vědci, protože umí tisknout velmi dobře vypadají
  Naštěstí LyX podporuje WYSIWYM pro rovnice.
  Jestliže ovládáte LaTeX, můžete zde přímo psát všechny obvyklé matematické
  příkazy, ale uvidíte je jako WYSIWYM.
- Jestliže naopak, jste nikdy v LaTeXu nepsali, tak potom vám 
-\family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Panel
-\family default
- umožní psát profesionálně vypadající text jednoduše a rychle
+ Jestliže naopak, jste nikdy v LaTeXu nepsali, tak potom vám matematický
+ panel umožní psát profesionálně vypadající text jednoduše a rychle
 \begin_inset Foot
 status collapsed
 
@@ -4878,7 +4867,7 @@ LyX podporuje program pro správu verzí RCS (
 \family typewriter
 man rcsintro
 \family default
- pro další informace), CVS, SVN.
+ pro další informace), CVS, SVN, GIT.
 \end_layout
 
 \begin_layout Itemize
