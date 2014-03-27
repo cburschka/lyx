@@ -782,14 +782,17 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 		runparams.flavor = OutputParams::LATEX;
 		runparams.linelen = 100000; //lyxrc.plaintext_linelen;
 		runparams.dryrun = true;
+		runparams.for_search = true;
 		for (pos_type pit = pos_type(0); pit < (pos_type)buffer.paragraphs().size(); ++pit) {
 			Paragraph const & par = buffer.paragraphs().at(pit);
 			LYXERR(Debug::FIND, "Adding to search string: '"
-			       << par.stringify(pos_type(0), par.size(),
-						AS_STR_INSETS, runparams)
+			       << par.asString(pos_type(0), par.size(),
+					       AS_STR_INSETS | AS_STR_PLAINTEXT,
+					       &runparams)
 			       << "'");
-			str += par.stringify(pos_type(0), par.size(),
-					     AS_STR_INSETS, runparams);
+			str += par.asString(pos_type(0), par.size(),
+					    AS_STR_INSETS | AS_STR_PLAINTEXT,
+					    &runparams);
 		}
 	}
 	return str;
@@ -1040,7 +1043,9 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		runparams.dryrun = true;
 		LYXERR(Debug::FIND, "Stringifying with cur: "
 		       << cur << ", from pos: " << cur.pos() << ", end: " << end);
-		return par.stringify(cur.pos(), end, AS_STR_INSETS, runparams);
+		return par.asString(cur.pos(), end,
+			AS_STR_INSETS | AS_STR_PLAINTEXT,
+			&runparams);
 	} else if (cur.inMathed()) {
 		docstring s;
 		CursorSlice cs = cur.top();

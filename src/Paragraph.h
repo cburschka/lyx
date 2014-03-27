@@ -127,7 +127,8 @@ enum AsStringParameter
 	AS_STR_LABEL = 1, ///< Prefix with paragraph label.
 	AS_STR_INSETS = 2, ///< Go into insets.
 	AS_STR_NEWLINES = 4, ///< Get also newline characters.
-	AS_STR_SKIPDELETE = 8 ///< Skip deleted text in change tracking.
+	AS_STR_SKIPDELETE = 8, ///< Skip deleted text in change tracking.
+	AS_STR_PLAINTEXT = 16 ///< Don't export formatting when descending into insets.
 };
 
 
@@ -173,16 +174,14 @@ public:
 	///		asString(AS_STR_LABEL | AS_STR_INSETS)
 	///		asString(AS_STR_INSETS)
 	docstring asString(int options = AS_STR_NONE) const;
-	///
+
+	/// Convert the paragraph to a string.
+	/// \note If options includes AS_STR_PLAINTEXT, then runparams must be != 0
 	docstring asString(pos_type beg, pos_type end,
-		int options = AS_STR_NONE) const;
+			   int options = AS_STR_NONE,
+			   const OutputParams *runparams = 0) const;
 	///
 	void forOutliner(docstring &, size_t maxlen) const;
-
-	/// Extract only the explicitly visible text (without any formatting),
-	/// descending into insets
-	docstring stringify(pos_type beg, pos_type end, int options,
-		OutputParams const & runparams) const;
 
 	///
 	void write(std::ostream &, BufferParams const &,
