@@ -3347,7 +3347,7 @@ docstring Paragraph::asString(int options) const
 }
 
 
-docstring Paragraph::asString(pos_type beg, pos_type end, int options) const
+docstring Paragraph::asString(pos_type beg, pos_type end, int options, const OutputParams *p_runparams) const
 {
 	odocstringstream os;
 
@@ -3364,9 +3364,14 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options) const
 		    || (c == '\n' && (options & AS_STR_NEWLINES)))
 			os.put(c);
 		else if (c == META_INSET && (options & AS_STR_INSETS)) {
-			getInset(i)->toString(os);
-			if (getInset(i)->asInsetMath())
-				os << " ";
+			if (options & AS_STR_PLAINTEXT) {
+				LASSERT(p_runparams != 0, return docstring());
+				getInset(i)->plaintext(os, *p_runparams);
+			} else {
+				getInset(i)->toString(os);
+				if (getInset(i)->asInsetMath())
+					os << " ";
+			}
 		}
 	}
 
@@ -3389,33 +3394,6 @@ void Paragraph::forToc(docstring & os, size_t maxlen) const
 		else if (c == META_INSET)
 			getInset(i)->forToc(os, maxlen);
 	}
-}
-
-
-docstring Paragraph::stringify(pos_type beg, pos_type end, int options,
-        OutputParams const & runparams) const
-{
-	odocstringstream os;
-
-	if (beg == 0
-		&& options & AS_STR_LABEL
-		&& !d->params_.labelString().empty())
-		os << d->params_.labelString() << ' ';
-
-	OutputParams op = runparams;
-	op.for_search = true;
-
-	for (pos_type i = beg; i < end; ++i) {
-		char_type const c = d->text_[i];
-		if (isPrintable(c) || c == '\t'
-		    || (c == '\n' && (options & AS_STR_NEWLINES)))
-			os.put(c);
-		else if (c == META_INSET && (options & AS_STR_INSETS)) {
-			getInset(i)->plaintext(os, op);
-		}
-	}
-
-	return os.str();
 }
 
 
