@@ -48,6 +48,17 @@ GuiProgressView::~GuiProgressView()
 }
 
 
+namespace{
+typedef pair<int, QString> DebugMap;
+typedef vector<DebugMap> DebugVector;
+
+bool DebugSorter(DebugMap const & a, DebugMap const & b)
+{
+	return a.second < b.second;
+}
+}
+
+
 GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area, 
 	Qt::WindowFlags flags)
 	: DockView(parent, "progress", qt_("Progress/Debug Messages"), area, flags)
@@ -77,15 +88,25 @@ GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,
 
 	// ignore Debug::NONE and Debug::ANY
 	int const level_count = Debug::levelCount() - 1;
+	DebugVector dmap;
+	for (int i = 1 ; i < level_count; i++) {
+		Debug::Type const level = Debug::value(i);
+		QString const desc = qt_(Debug::description(level));
+		dmap.push_back(DebugMap(level, desc));
+	}
+	sort(dmap.begin(), dmap.end(), DebugSorter);
+
 	QTreeWidgetItem * item = 0;
 	widget_->debugMessagesTW->setColumnCount(2);
 	widget_->debugMessagesTW->headerItem()->setText(0, qt_("Debug Level"));
 	widget_->debugMessagesTW->headerItem()->setText(1, qt_("Set"));
-	for (int i = 1 ; i < level_count; i++) {
+
+	DebugVector::const_iterator dit = dmap.begin();
+	DebugVector::const_iterator const den = dmap.end();
+	for (; dit != den; ++dit) {
 		item = new QTreeWidgetItem(widget_->debugMessagesTW);
-		Debug::Type const level = Debug::value(i);
-		item->setText(0, qt_(Debug::description(level)));
-		item->setData(0, Qt::UserRole, int(level));
+		item->setText(0, dit->second);
+		item->setData(0, Qt::UserRole, int(dit->first));
 		item->setText(1, qt_("No"));
 	}
 	widget_->debugMessagesTW->resizeColumnToContents(0);
