@@ -787,11 +787,11 @@ static docstring stringifySearchBuffer(Buffer & buffer, FindAndReplaceOptions co
 			Paragraph const & par = buffer.paragraphs().at(pit);
 			LYXERR(Debug::FIND, "Adding to search string: '"
 			       << par.asString(pos_type(0), par.size(),
-					       AS_STR_INSETS | AS_STR_PLAINTEXT,
+					       AS_STR_INSETS | AS_STR_SKIPDELETE | AS_STR_PLAINTEXT,
 					       &runparams)
 			       << "'");
 			str += par.asString(pos_type(0), par.size(),
-					    AS_STR_INSETS | AS_STR_PLAINTEXT,
+					    AS_STR_INSETS | AS_STR_SKIPDELETE | AS_STR_PLAINTEXT,
 					    &runparams);
 		}
 	}
@@ -1044,7 +1044,7 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		LYXERR(Debug::FIND, "Stringifying with cur: "
 		       << cur << ", from pos: " << cur.pos() << ", end: " << end);
 		return par.asString(cur.pos(), end,
-			AS_STR_INSETS | AS_STR_PLAINTEXT,
+			AS_STR_INSETS | AS_STR_SKIPDELETE | AS_STR_PLAINTEXT,
 			&runparams);
 	} else if (cur.inMathed()) {
 		docstring s;
