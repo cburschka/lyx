@@ -730,8 +730,8 @@ Introduction
 \begin_layout Standard
 Bla bla, as listed in 
 \begin_inset CommandInset citation
-LatexCommand cite
-key "Parkin2005,LComp2004"
+LatexCommand citet
+key "article-full,booklet-full"
 
 \end_inset
 
@@ -895,7 +895,7 @@ elsarticle-num
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "../examples/biblioExample"
+bibfiles "xampl"
 options "bibtotoc,elsarticle-harv"
 
 \end_inset
