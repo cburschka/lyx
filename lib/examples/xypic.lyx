@@ -3475,11 +3475,19 @@ Xy
 
 -commands via 
 \family typewriter
-ERT
+TeX
+\begin_inset space ~
+\end_inset
+
+Code
 \family default
  and 
 \family typewriter
-Instant preview
+Instant
+\begin_inset space ~
+\end_inset
+
+preview
 \family default
  insets.
 \end_layout
