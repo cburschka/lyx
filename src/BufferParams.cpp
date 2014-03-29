@@ -371,8 +371,8 @@ BufferParams::BufferParams()
 	biblio_style = "plain";
 	use_bibtopic = false;
 	use_indices = false;
-	trackChanges = false;
-	outputChanges = false;
+	track_changes = false;
+	output_changes = false;
 	use_default_options = true;
 	maintain_unincluded_children = false;
 	secnumdepth = 3;
@@ -752,9 +752,9 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\use_indices") {
 		lex >> use_indices;
 	} else if (token == "\\tracking_changes") {
-		lex >> trackChanges;
+		lex >> track_changes;
 	} else if (token == "\\output_changes") {
-		lex >> outputChanges;
+		lex >> output_changes;
 	} else if (token == "\\branch") {
 		lex.eatLine();
 		docstring branch = lex.getDocString();
@@ -1178,8 +1178,8 @@ void BufferParams::writeFile(ostream & os) const
 		}
 	}
 
-	os << "\\tracking_changes " << convert<string>(trackChanges) << '\n'
-	   << "\\output_changes " << convert<string>(outputChanges) << '\n'
+	os << "\\tracking_changes " << convert<string>(track_changes) << '\n'
+	   << "\\output_changes " << convert<string>(output_changes) << '\n'
 	   << "\\html_math_output " << html_math_output << '\n'
 	   << "\\html_css_as_file " << html_css_as_file << '\n'
 	   << "\\html_be_strict " << convert<string>(html_be_strict) << '\n';
@@ -1202,7 +1202,7 @@ void BufferParams::validate(LaTeXFeatures & features) const
 	if (columns > 1 && language->rightToLeft())
 		features.require("rtloutputdblcol");
 
-	if (outputChanges) {
+	if (output_changes) {
 		bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
 		bool xcolorulem = LaTeXFeatures::isAvailable("ulem") &&
 				  LaTeXFeatures::isAvailable("xcolor");

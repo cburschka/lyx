@@ -120,7 +120,7 @@ public:
 	/// Set the LyX layout file this document is using.
 	/// NOTE: This does not call makeDocumentClass() to update the local
 	/// DocumentClass. That needs to be done manually.
-	/// \param filename the name of the layout file
+	/// \param classname: the name of the layout file
 	bool setBaseClass(std::string const & classname);
 	/// Adds the module information to the baseClass information to
 	/// create our local DocumentClass.
@@ -369,12 +369,12 @@ public:
 	/// Split the index?
 	bool use_indices;
 	/// revision tracking for this buffer ?
-	bool trackChanges;
+	bool track_changes;
 	/** This param decides whether change tracking marks should be used
 	 *  in output (irrespective of how these marks are actually defined;
 	 *  for instance, they may differ for DVI and PDF generation)
 	 */
-	bool outputChanges;
+	bool output_changes;
 	///
 	bool compressed;
 

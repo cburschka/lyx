@@ -1108,12 +1108,12 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_CHANGES_TRACK:
 		flag.setEnabled(true);
-		flag.setOnOff(buffer_.params().trackChanges);
+		flag.setOnOff(buffer_.params().track_changes);
 		break;
 
 	case LFUN_CHANGES_OUTPUT:
 		flag.setEnabled(true);
-		flag.setOnOff(buffer_.params().outputChanges);
+		flag.setOnOff(buffer_.params().output_changes);
 		break;
 
 	case LFUN_CHANGES_MERGE:
@@ -1430,12 +1430,12 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_CHANGES_TRACK:
-		buffer_.params().trackChanges = !buffer_.params().trackChanges;
+		buffer_.params().track_changes = !buffer_.params().track_changes;
 		break;
 
 	case LFUN_CHANGES_OUTPUT:
-		buffer_.params().outputChanges = !buffer_.params().outputChanges;
-		if (buffer_.params().outputChanges) {
+		buffer_.params().output_changes = !buffer_.params().output_changes;
+		if (buffer_.params().output_changes) {
 			bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
 			bool xcolorulem = LaTeXFeatures::isAvailable("ulem") &&
 					  LaTeXFeatures::isAvailable("xcolor");

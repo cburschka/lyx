@@ -182,9 +182,9 @@ int replaceAll(BufferView * bv,
 		cur.recordUndo();
 		int striked = ssize -
 			cur.paragraph().eraseChars(pos, pos + match_len,
-						   buf.params().trackChanges);
+						   buf.params().track_changes);
 		cur.paragraph().insert(pos, replacestr, font,
-				       Change(buf.params().trackChanges
+				       Change(buf.params().track_changes
 					      ? Change::INSERTED
 					      : Change::UNCHANGED));
 		for (int i = 0; i < rsize + striked; ++i)

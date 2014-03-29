@@ -748,7 +748,7 @@ void Tabular::insertRow(row_type const row, bool copy)
 	for (col_type c = 0; c < ncols(); ++c) {
 		cell_info[row + 1].insert(cell_info[row + 1].begin() + c,
 			copy ? CellData(cell_info[row][c]) : CellData(buffer_));
-		if (buffer().params().trackChanges)
+		if (buffer().params().track_changes)
 			cell_info[row + 1][c].inset->setChange(Change(Change::INSERTED));
 		if (cell_info[row][c].multirow == CELL_BEGIN_OF_MULTIROW)
 			cell_info[row + 1][c].multirow = CELL_PART_OF_MULTIROW;
@@ -769,7 +769,7 @@ void Tabular::insertRow(row_type const row, bool copy)
 			setBottomLine(j, false);
 		}
 		// mark track changes
-		if (buffer().params().trackChanges)
+		if (buffer().params().track_changes)
 			cellInfo(i).inset->setChange(Change(Change::INSERTED));
 	}
 }
@@ -790,7 +790,7 @@ void Tabular::moveColumn(col_type col, ColDirection direction)
 		// FIXME track changes is broken for tabular features (#8469)
 		idx_type const i = cellIndex(r, col);
 		idx_type const j = cellIndex(r, col + 1);
-		if (buffer().params().trackChanges) {
+		if (buffer().params().track_changes) {
 			cellInfo(i).inset->setChange(Change(Change::INSERTED));
 			cellInfo(j).inset->setChange(Change(Change::INSERTED));
 		}
@@ -814,7 +814,7 @@ void Tabular::moveRow(row_type row, RowDirection direction)
 		// FIXME track changes is broken for tabular features (#8469)
 		idx_type const i = cellIndex(row, c);
 		idx_type const j = cellIndex(row + 1, c);
-		if (buffer().params().trackChanges) {
+		if (buffer().params().track_changes) {
 			cellInfo(i).inset->setChange(Change(Change::INSERTED));
 			cellInfo(j).inset->setChange(Change(Change::INSERTED));
 		}
@@ -863,7 +863,7 @@ void Tabular::insertColumn(col_type const col, bool copy)
 	for (row_type r = 0; r < nrows(); ++r) {
 		cell_info[r].insert(cell_info[r].begin() + col + 1,
 			copy ? CellData(cell_info[r][col]) : CellData(buffer_));
-		if (bp.trackChanges)
+		if (bp.track_changes)
 			cell_info[r][col + 1].inset->setChange(Change(Change::INSERTED));
 		if (cell_info[r][col].multicolumn == CELL_BEGIN_OF_MULTICOLUMN)
 			cell_info[r][col + 1].multicolumn = CELL_PART_OF_MULTICOLUMN;
@@ -880,7 +880,7 @@ void Tabular::insertColumn(col_type const col, bool copy)
 			setRightLine(i, true);
 			setRightLine(j, false);
 		}
-		if (buffer().params().trackChanges)
+		if (buffer().params().track_changes)
 			cellInfo(i).inset->setChange(Change(Change::INSERTED));
 	}
 }
@@ -6097,7 +6097,7 @@ bool InsetTabular::pasteClipboard(Cursor & cur)
 			tabular.cellInset(r2, c2)->setBuffer(tabular.buffer());
 
 			// FIXME: change tracking (MG)
-			inset->setChange(Change(buffer().params().trackChanges ?
+			inset->setChange(Change(buffer().params().track_changes ?
 						Change::INSERTED : Change::UNCHANGED));
 			cur.pos() = 0;
 		}
@@ -6118,7 +6118,7 @@ void InsetTabular::cutSelection(Cursor & cur)
 		for (col_type c = cs; c <= ce; ++c) {
 			shared_ptr<InsetTableCell> t
 				= cell(tabular.cellIndex(r, c));
-			if (buffer().params().trackChanges)
+			if (buffer().params().track_changes)
 				// FIXME: Change tracking (MG)
 				t->setChange(Change(Change::DELETED));
 			else
@@ -6288,7 +6288,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 				Font const font = bv.textMetrics(&inset->text()).
 					displayFont(0, 0);
 				inset->setText(buf.substr(op, p - op), font,
-					       buffer().params().trackChanges);
+					       buffer().params().track_changes);
 				++cols;
 				++cell;
 			}
@@ -6300,7 +6300,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 				Font const font = bv.textMetrics(&inset->text()).
 					displayFont(0, 0);
 				inset->setText(buf.substr(op, p - op), font,
-					       buffer().params().trackChanges);
+					       buffer().params().track_changes);
 			}
 			cols = ocol;
 			++row;
@@ -6316,7 +6316,7 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 		shared_ptr<InsetTableCell> inset = loctab->cellInset(cell);
 		Font const font = bv.textMetrics(&inset->text()).displayFont(0, 0);
 		inset->setText(buf.substr(op, len - op), font,
-			buffer().params().trackChanges);
+			buffer().params().track_changes);
 	}
 	return true;
 }

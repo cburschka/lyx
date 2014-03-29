@@ -946,7 +946,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			pit_type const pit_end = cur.selEnd().pit();
 			for (pit_type pit = cur.selBegin().pit(); pit <= pit_end; pit++) {
 				pars_[pit].insertChar(0, '\t',
-						      bv->buffer().params().trackChanges);
+						      bv->buffer().params().track_changes);
 				// Update the selection pos to make sure the selection does not
 				// change as the inserted tab will increase the logical pos.
 				if (cur.realAnchor().pit() == pit)
@@ -965,7 +965,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_TAB_DELETE: {
-		bool const tc = bv->buffer().params().trackChanges;
+		bool const tc = bv->buffer().params().track_changes;
 		if (cur.selection()) {
 			// If there is a selection, a tab (if present) is removed from
 			// the beginning of each paragraph.

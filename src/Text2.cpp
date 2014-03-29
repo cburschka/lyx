@@ -539,7 +539,7 @@ void Text::insertInset(Cursor & cur, Inset * inset)
 	LBUFERR(this == cur.text());
 	LBUFERR(inset);
 	cur.paragraph().insertInset(cur.pos(), inset, cur.current_font,
-		Change(cur.buffer()->params().trackChanges
+		Change(cur.buffer()->params().track_changes
 		? Change::INSERTED : Change::UNCHANGED));
 }
 
@@ -855,7 +855,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		    && oldpar.isLineSeparator(old.pos() - 1)
 		    && !oldpar.isDeleted(old.pos() - 1)
 		    && !oldpar.isDeleted(old.pos())) {
-			oldpar.eraseChar(old.pos() - 1, cur.buffer()->params().trackChanges);
+			oldpar.eraseChar(old.pos() - 1, cur.buffer()->params().track_changes);
 // FIXME: This will not work anymore when we have multiple views of the same buffer
 // In this case, we will have to correct also the cursors held by
 // other bufferviews. It will probably be easier to do that in a more
@@ -910,7 +910,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		return true;
 	}
 
-	if (oldpar.stripLeadingSpaces(cur.buffer()->params().trackChanges)) {
+	if (oldpar.stripLeadingSpaces(cur.buffer()->params().track_changes)) {
 		need_anchor_change = true;
 		// We return true here because the Paragraph contents changed and
 		// we need a redraw before further action is processed.

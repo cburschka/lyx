@@ -389,7 +389,7 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 			     Change const & oldChange, Change const & change,
 			     OutputParams const & runparams)
 {
-	if (!bparams.outputChanges || oldChange == change)
+	if (!bparams.output_changes || oldChange == change)
 		return 0;
 
 	int column = 0;

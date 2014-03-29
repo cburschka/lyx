@@ -157,7 +157,7 @@ void breakParagraphConservative(BufferParams const & bparams,
 		}
 		// Move over the end-of-par change information
 		tmp.setChange(tmp.size(), par.lookupChange(par.size()));
-		par.setChange(par.size(), Change(bparams.trackChanges ?
+		par.setChange(par.size(), Change(bparams.track_changes ?
 					   Change::INSERTED : Change::UNCHANGED));
 	}
 }
@@ -691,7 +691,7 @@ static void breakParagraph(Text & text, pit_type par_offset, pos_type pos,
 
 	// Move over the end-of-par change information
 	tmp->setChange(tmp->size(), par.lookupChange(par.size()));
-	par.setChange(par.size(), Change(bparams.trackChanges ?
+	par.setChange(par.size(), Change(bparams.track_changes ?
 					   Change::INSERTED : Change::UNCHANGED));
 
 	if (pos) {
@@ -749,7 +749,7 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 	// Always break behind a space
 	// It is better to erase the space (Dekel)
 	if (cur.pos() != cur.lastpos() && cpar.isLineSeparator(cur.pos()))
-		cpar.eraseChar(cur.pos(), cur.buffer()->params().trackChanges);
+		cpar.eraseChar(cur.pos(), cur.buffer()->params().track_changes);
 
 	// What should the layout for the new paragraph be?
 	bool keep_layout = layout.isEnvironment()
@@ -784,7 +784,7 @@ void Text::breakParagraph(Cursor & cur, bool inverse_logic)
 	}
 
 	while (!pars_[next_par].empty() && pars_[next_par].isNewline(0)) {
-		if (!pars_[next_par].eraseChar(0, cur.buffer()->params().trackChanges))
+		if (!pars_[next_par].eraseChar(0, cur.buffer()->params().track_changes))
 			break; // the character couldn't be deleted physically due to change tracking
 	}
 
@@ -831,11 +831,11 @@ void Text::insertStringAsLines(Cursor & cur, docstring const & str,
 		} else if (*cit == '\t') {
 			if (!par.isFreeSpacing()) {
 				// tabs are like spaces here
-				par.insertChar(pos, ' ', font, bparams.trackChanges);
+				par.insertChar(pos, ' ', font, bparams.track_changes);
 				++pos;
 				space_inserted = true;
 			} else {
-				par.insertChar(pos, *cit, font, bparams.trackChanges);
+				par.insertChar(pos, *cit, font, bparams.track_changes);
 				++pos;
 				space_inserted = true;
 			}
@@ -844,7 +844,7 @@ void Text::insertStringAsLines(Cursor & cur, docstring const & str,
 			continue;
 		} else {
 			// just insert the character
-			par.insertChar(pos, *cit, font, bparams.trackChanges);
+			par.insertChar(pos, *cit, font, bparams.track_changes);
 			++pos;
 			space_inserted = (*cit == ' ');
 		}
@@ -1016,7 +1016,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 	}
 
 	par.insertChar(cur.pos(), c, cur.current_font,
-		cur.buffer()->params().trackChanges);
+		cur.buffer()->params().track_changes);
 	cur.checkBufferStructure();
 
 //		cur.screenUpdateFlags(Update::Force);
@@ -1366,7 +1366,7 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 
 	// finally, invoke the DEPM
 
-	deleteEmptyParagraphMechanism(begPit, endPit, cur.buffer()->params().trackChanges);
+	deleteEmptyParagraphMechanism(begPit, endPit, cur.buffer()->params().track_changes);
 
 	//
 
@@ -1382,7 +1382,7 @@ void Text::acceptChanges()
 {
 	BufferParams const & bparams = owner_->buffer().params();
 	lyx::acceptChanges(pars_, bparams);
-	deleteEmptyParagraphMechanism(0, pars_.size() - 1, bparams.trackChanges);
+	deleteEmptyParagraphMechanism(0, pars_.size() - 1, bparams.track_changes);
 }
 
 
@@ -1418,7 +1418,7 @@ void Text::rejectChanges()
 	}
 
 	// finally, invoke the DEPM
-	deleteEmptyParagraphMechanism(0, pars_size - 1, bparams.trackChanges);
+	deleteEmptyParagraphMechanism(0, pars_size - 1, bparams.track_changes);
 }
 
 
@@ -1548,7 +1548,7 @@ bool Text::erase(Cursor & cur)
 		// any paragraphs
 		cur.recordUndo(DELETE_UNDO);
 		bool const was_inset = cur.paragraph().isInset(cur.pos());
-		if(!par.eraseChar(cur.pos(), cur.buffer()->params().trackChanges))
+		if(!par.eraseChar(cur.pos(), cur.buffer()->params().track_changes))
 			// the character has been logically deleted only => skip it
 			cur.top().forwardPos();
 
@@ -1561,7 +1561,7 @@ bool Text::erase(Cursor & cur)
 		if (cur.pit() == cur.lastpit())
 			return dissolveInset(cur);
 
-		if (!par.isMergedOnEndOfParDeletion(cur.buffer()->params().trackChanges)) {
+		if (!par.isMergedOnEndOfParDeletion(cur.buffer()->params().track_changes)) {
 			par.setChange(cur.pos(), Change(Change::DELETED));
 			cur.forwardPos();
 			needsUpdate = true;
@@ -1648,7 +1648,7 @@ bool Text::backspace(Cursor & cur)
 		Cursor prev_cur = cur;
 		--prev_cur.pit();
 
-		if (!prev_cur.paragraph().isMergedOnEndOfParDeletion(cur.buffer()->params().trackChanges)) {
+		if (!prev_cur.paragraph().isMergedOnEndOfParDeletion(cur.buffer()->params().track_changes)) {
 			cur.recordUndo(ATOMIC_UNDO, prev_cur.pit(), prev_cur.pit());
 			prev_cur.paragraph().setChange(prev_cur.lastpos(), Change(Change::DELETED));
 			setCursorIntern(cur, prev_cur.pit(), prev_cur.lastpos());
@@ -1669,7 +1669,7 @@ bool Text::backspace(Cursor & cur)
 		setCursorIntern(cur, cur.pit(), cur.pos() - 1,
 				false, cur.boundary());
 		bool const was_inset = cur.paragraph().isInset(cur.pos());
-		cur.paragraph().eraseChar(cur.pos(), cur.buffer()->params().trackChanges);
+		cur.paragraph().eraseChar(cur.pos(), cur.buffer()->params().track_changes);
 		if (was_inset)
 			cur.forceBufferUpdate();
 		else
@@ -1711,7 +1711,7 @@ bool Text::dissolveInset(Cursor & cur)
 		spos += cur.pos();
 	spit += cur.pit();
 	Buffer & b = *cur.buffer();
-	cur.paragraph().eraseChar(cur.pos(), b.params().trackChanges);
+	cur.paragraph().eraseChar(cur.pos(), b.params().track_changes);
 
 	if (!plist.empty()) {
 		// see bug 7319
@@ -1846,7 +1846,7 @@ docstring Text::currentState(Cursor const & cur) const
 	Paragraph const & par = cur.paragraph();
 	odocstringstream os;
 
-	if (buf.params().trackChanges)
+	if (buf.params().track_changes)
 		os << _("[Change Tracking] ");
 
 	Change change = par.lookupChange(cur.pos());
@@ -2067,7 +2067,7 @@ void Text::charsTranspose(Cursor & cur)
 
 	// And finally, we are ready to perform the transposition.
 	// Track the changes if Change Tracking is enabled.
-	bool const trackChanges = cur.buffer()->params().trackChanges;
+	bool const trackChanges = cur.buffer()->params().track_changes;
 
 	cur.recordUndo();
 

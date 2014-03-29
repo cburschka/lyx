@@ -221,7 +221,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 					tmpbuf->eraseChar(i--, false);
 		}
 
-		tmpbuf->setChange(Change(buffer.params().trackChanges ?
+		tmpbuf->setChange(Change(buffer.params().track_changes ?
 					 Change::INSERTED : Change::UNCHANGED));
 	}
 
@@ -423,7 +423,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 			pars[last_paste].makeSameLayout(pars[last_paste + 1]);
 			mergeParagraph(buffer.params(), pars, last_paste);
 		} else {
-			pars[last_paste + 1].stripLeadingSpaces(buffer.params().trackChanges);
+			pars[last_paste + 1].stripLeadingSpaces(buffer.params().track_changes);
 			++last_paste;
 		}
 	}
@@ -444,17 +444,17 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 
 	// Start and end is inside same paragraph
 	if (endpit == pit_type(pars.size()) || startpit == endpit) {
-		endpos -= pars[startpit].eraseChars(startpos, endpos, params.trackChanges);
+		endpos -= pars[startpit].eraseChars(startpos, endpos, params.track_changes);
 		return PitPosPair(endpit, endpos);
 	}
 
 	for (pit_type pit = startpit; pit != endpit + 1;) {
 		pos_type const left  = (pit == startpit ? startpos : 0);
 		pos_type right = (pit == endpit ? endpos : pars[pit].size() + 1);
-		bool const merge = pars[pit].isMergedOnEndOfParDeletion(params.trackChanges);
+		bool const merge = pars[pit].isMergedOnEndOfParDeletion(params.track_changes);
 
 		// Logically erase only, including the end-of-paragraph character
-		pars[pit].eraseChars(left, right, params.trackChanges);
+		pars[pit].eraseChars(left, right, params.track_changes);
 
 		// Separate handling of paragraph break:
 		if (merge && pit != endpit &&
@@ -857,7 +857,7 @@ void cutSelection(Cursor & cur, bool doclear, bool realcut)
 
 		// sometimes necessary
 		if (doclear
-			&& text->paragraphs()[begpit].stripLeadingSpaces(bp.trackChanges))
+			&& text->paragraphs()[begpit].stripLeadingSpaces(bp.track_changes))
 			cur.fixIfBroken();
 
 		// need a valid cursor. (Lgb)
@@ -1223,7 +1223,7 @@ void replaceSelectionWithString(Cursor & cur, docstring const & str)
 	docstring::const_iterator cit = str.begin();
 	docstring::const_iterator end = str.end();
 	for (; cit != end; ++cit, ++pos)
-		par.insertChar(pos, *cit, font, cur.buffer()->params().trackChanges);
+		par.insertChar(pos, *cit, font, cur.buffer()->params().track_changes);
 
 	// Cut the selection
 	cutSelection(cur, true, false);

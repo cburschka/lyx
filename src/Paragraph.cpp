@@ -2475,7 +2475,7 @@ void Paragraph::latex(BufferParams const & bparams,
 		Change const & change = runparams.inDeletedInset
 			? runparams.changeOfDeletedInset : lookupChange(i);
 
-		if (bparams.outputChanges && runningChange != change) {
+		if (bparams.output_changes && runningChange != change) {
 			if (open_font) {
 				column += running_font.latexWriteEndChanges(
 						os, bparams, runparams, basefont, basefont);
@@ -2491,7 +2491,7 @@ void Paragraph::latex(BufferParams const & bparams,
 
 		// do not output text which is marked deleted
 		// if change tracking output is disabled
-		if (!bparams.outputChanges && change.deleted()) {
+		if (!bparams.output_changes && change.deleted()) {
 			continue;
 		}
 
@@ -3566,7 +3566,7 @@ int Paragraph::fixBiblio(Buffer const & buffer)
 	if (d->layout_->labeltype != LABEL_BIBLIO)
 		return 0;
 
-	bool const track_changes = buffer.params().trackChanges;
+	bool const track_changes = buffer.params().track_changes;
 	int bibitem_pos = d->insetlist_.find(BIBITEM_CODE);
 	bool const hasbibitem0 = bibitem_pos == 0;
 
@@ -3674,7 +3674,7 @@ void Paragraph::changeCase(BufferParams const & bparams, pos_type pos,
 	// changes within sequences can occur.
 	vector<pair<char_type, Font> > changes;
 
-	bool const trackChanges = bparams.trackChanges;
+	bool const trackChanges = bparams.track_changes;
 
 	bool capitalize = true;
 

@@ -929,7 +929,7 @@ bool Buffer::readDocument(Lexer & lex)
 
 	readHeader(lex);
 
-	if (params().outputChanges) {
+	if (params().output_changes) {
 		bool dvipost    = LaTeXFeatures::isAvailable("dvipost");
 		bool xcolorulem = LaTeXFeatures::isAvailable("ulem") &&
 				  LaTeXFeatures::isAvailable("xcolor");

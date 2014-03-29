@@ -92,7 +92,7 @@ size_t ParagraphMetrics::computeRowSignature(Row const & row,
 	for (pos_type i = row.pos(); i < row.endpos(); ++i) {
 		char_type const b[] = { par_->getChar(i) };
 		crc.process_bytes(b, sizeof(char_type));
-		if (bparams.trackChanges) {
+		if (bparams.track_changes) {
 			Change change = par_->lookupChange(i);
 			char_type const b[] = { static_cast<char_type>(change.type) };
 			// 1 byte is enough to encode Change::Type
