@@ -69,7 +69,7 @@ SectionEnd
 
 Section -Configure
 
-  # Associate .lyx files with LyX for current user of all users
+  # Associate .lyx files with LyX for current user or all users
 
   ${if} $CreateFileAssociations == "true"
    WriteRegStr SHCTX "${APP_DIR_REGKEY}" "" "$INSTDIR\${APP_RUN}"

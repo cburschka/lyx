@@ -48,9 +48,8 @@ Section "!${APP_NAME}" SecCore
  SectionIn RO
 SectionEnd
 
-Section /o "$(SecFileAssocTitle)" SecFileAssoc
- SectionIn RO # remove this line LyX 2.1 final!
- #StrCpy $CreateFileAssociations "true" 
+Section "$(SecFileAssocTitle)" SecFileAssoc
+ StrCpy $CreateFileAssociations "true" 
 SectionEnd
 
 Section "$(SecDesktopTitle)" SecDesktop
