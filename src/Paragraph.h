@@ -177,7 +177,7 @@ public:
 	docstring asString(pos_type beg, pos_type end,
 		int options = AS_STR_NONE) const;
 	///
-	void forToc(docstring &, size_t maxlen) const;
+	void forOutliner(docstring &, size_t maxlen) const;
 
 	/// Extract only the explicitly visible text (without any formatting),
 	/// descending into insets

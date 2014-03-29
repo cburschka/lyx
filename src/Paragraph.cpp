@@ -3374,7 +3374,7 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options) const
 }
 
 
-void Paragraph::forToc(docstring & os, size_t maxlen) const
+void Paragraph::forOutliner(docstring & os, size_t maxlen) const
 {
 	if (!d->params_.labelString().empty())
 		os += d->params_.labelString() + ' ';
@@ -3387,7 +3387,7 @@ void Paragraph::forToc(docstring & os, size_t maxlen) const
 		else if (c == '\t' || c == '\n')
 			os += ' ';
 		else if (c == META_INSET)
-			getInset(i)->forToc(os, maxlen);
+			getInset(i)->forOutliner(os, maxlen);
 	}
 }
 

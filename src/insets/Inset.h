@@ -333,7 +333,7 @@ public:
 	virtual void toString(odocstream &) const {}
 	/// Appends a potentially abbreviated version of the inset to
 	/// \param str. Intended for use by the TOC.
-	virtual void forToc(docstring & str,
+	virtual void forOutliner(docstring & str,
 	                    size_t maxlen = TOC_ENTRY_LENGTH) const;
 
 	/// can the contents of the inset be edited on screen ?

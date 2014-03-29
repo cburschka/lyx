@@ -2283,7 +2283,7 @@ void InsetMathHull::toString(odocstream & os) const
 }
 
 
-void InsetMathHull::forToc(docstring & os, size_t) const
+void InsetMathHull::forOutliner(docstring & os, size_t) const
 {
 	odocstringstream ods;
 	OutputParams op(0);

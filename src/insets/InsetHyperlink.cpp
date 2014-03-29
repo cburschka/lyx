@@ -257,7 +257,7 @@ void InsetHyperlink::toString(odocstream & os) const
 }
 
 
-void InsetHyperlink::forToc(docstring & os, size_t) const
+void InsetHyperlink::forOutliner(docstring & os, size_t) const
 {
 	docstring const & n = getParam("name");
 	if (!n.empty()) {

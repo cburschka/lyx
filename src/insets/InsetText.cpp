@@ -800,11 +800,11 @@ void InsetText::toString(odocstream & os) const
 }
 
 
-void InsetText::forToc(docstring & os, size_t maxlen) const
+void InsetText::forOutliner(docstring & os, size_t maxlen) const
 {
 	if (!getLayout().isInToc())
 		return;
-	text().forToc(os, maxlen, false);
+	text().forOutliner(os, maxlen, false);
 }
 
 
@@ -856,9 +856,9 @@ void InsetText::iterateForToc(DocIterator const & cdit, bool output_active) cons
 				tocstring = par.labelString();
 				if (!tocstring.empty())
 					tocstring += ' ';
-				arginset->text().forToc(tocstring, length);
+				arginset->text().forOutliner(tocstring, length);
 			} else
-				par.forToc(tocstring, length);
+				par.forOutliner(tocstring, length);
 			dit.pos() = 0;
 			toc.push_back(TocItem(dit, toclevel - min_toclevel,
 				tocstring, doing_output, tocstring));

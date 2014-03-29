@@ -2012,14 +2012,14 @@ docstring Text::asString(pit_type beg, pit_type end, int options) const
 }
 
 
-void Text::forToc(docstring & os, size_t maxlen, bool shorten) const
+void Text::forOutliner(docstring & os, size_t maxlen, bool shorten) const
 {
 	if (maxlen == 0)
 		maxlen = std::numeric_limits<std::size_t>::max();
 	else
 		LASSERT(maxlen >= 8, maxlen = TOC_ENTRY_LENGTH);
 	for (size_t i = 0; i != pars_.size() && os.length() < maxlen; ++i)
-		pars_[i].forToc(os, maxlen);
+		pars_[i].forOutliner(os, maxlen);
 	if (shorten && os.length() >= maxlen)
 		os = os.substr(0, maxlen - 3) + from_ascii("...");
 }

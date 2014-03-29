@@ -170,7 +170,7 @@ public:
 	///
 	void toString(odocstream &) const;
 	///
-	void forToc(docstring &, size_t) const;
+	void forOutliner(docstring &, size_t) const;
 	///
 	void addToToc(DocIterator const & di, bool output_active) const;
 	///

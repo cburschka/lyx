@@ -403,7 +403,7 @@ void InsetCitation::toString(odocstream & os) const
 }
 
 
-void InsetCitation::forToc(docstring & os, size_t) const
+void InsetCitation::forOutliner(docstring & os, size_t) const
 {
 	os += screenLabel();
 }

@@ -260,7 +260,7 @@ void InsetRef::toString(odocstream & os) const
 }
 
 
-void InsetRef::forToc(docstring & os, size_t) const
+void InsetRef::forOutliner(docstring & os, size_t) const
 {
 	// There's no need for details in the TOC, and a long label
 	// will just get in the way.

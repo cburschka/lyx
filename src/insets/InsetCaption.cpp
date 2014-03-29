@@ -104,7 +104,7 @@ void InsetCaption::addToToc(DocIterator const & cpit, bool output_active) const
 	Toc & toc = buffer().tocBackend().toc(floattype_);
 	docstring str = full_label_;
 	int length = output_active ? INT_MAX : TOC_ENTRY_LENGTH;
-	text().forToc(str, length);
+	text().forOutliner(str, length);
 	toc.push_back(TocItem(pit, 0, str, output_active));
 
 	// Proceed with the rest of the inset.

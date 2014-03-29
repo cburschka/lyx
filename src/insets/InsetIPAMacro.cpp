@@ -596,7 +596,7 @@ void InsetIPAChar::toString(odocstream & os) const
 }
 
 
-void InsetIPAChar::forToc(docstring & os, size_t) const
+void InsetIPAChar::forOutliner(docstring & os, size_t) const
 {
 	odocstringstream ods;
 	plaintext(ods, OutputParams(0));
