@@ -56,9 +56,10 @@ Configuration of LyX installer
 !define APP_WEBPAGE_INFO "${APP_NAME} Website"
 !define APP_WIKI "http://wiki.lyx.org"
 !define APP_WIKI_INFO "${APP_NAME} Wiki"
-!define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2012 by the LyX Team"
+!define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2014 by the LyX Team"
 
 !define APP_RUN "bin\lyx.exe"
+!define BIN_LYX "lyx.exe"
 
 !define APP_REGKEY "Software\${APP_NAME}${APP_SERIES_KEY}" # like "LyX200"
 !define APP_REGKEY_SETUP "${APP_REGKEY}\Setup"
@@ -95,7 +96,7 @@ Configuration of LyX installer
 !define SETUP_UNINSTALLER_KEY "${APP_NAME}${APP_SERIES_KEY}"
 
 #--------------------------------
-# Names of binaries to identify compontents
+# Names of binaries to identify components
 
 !define BIN_LATEX "latex.exe"
 !define BIN_BIBTEXEDITOR "JabRef.exe"
