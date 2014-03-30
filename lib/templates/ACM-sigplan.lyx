@@ -329,7 +329,7 @@ Introduction
 Bla bla, as listed in 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Parkin2005,LComp2004"
+key "article-minimal,book-crossref"
 
 \end_inset
 
@@ -402,7 +402,7 @@ natbib
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "../examples/biblioExample"
+bibfiles "xampl"
 options "bibtotoc,plainnat"
 
 \end_inset

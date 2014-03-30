@@ -378,7 +378,7 @@ A & = & \prod_{i=1}^{\infty}B\nonumber \\
 ...as shown by 
 \begin_inset CommandInset citation
 LatexCommand citet
-key "jskilby,Arduengo1992"
+key "jskilby,inproceedings-minimal"
 
 \end_inset
 
@@ -533,7 +533,7 @@ Run LaTeX on your new file before submitting.
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "../examples/biblioExample"
+bibfiles "xampl"
 options "agu"
 
 \end_inset

@@ -125,7 +125,7 @@ Write something here.
  A sample citation is 
 \begin_inset CommandInset citation
 LatexCommand citet
-key "Lam94"
+key "article-minimal"
 
 \end_inset
 
@@ -295,7 +295,7 @@ abbrvnat
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "biblio"
+bibfiles "xampl"
 
 \end_inset
 

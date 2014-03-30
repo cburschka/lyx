@@ -886,12 +886,30 @@ options "IEEEtran"
 status open
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../examples/CV-image.png
-	width 1in
-	height 1.25in
-	keepAspectRatio
-	clip
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "1in"
+special "none"
+height "1.25in"
+height_special "none"
+status open
+
+\begin_layout Plain Layout
+Replace this box by an image with a width of 1
+\begin_inset space \thinspace{}
+\end_inset
+
+in and a height of 1.25
+\begin_inset space \thinspace{}
+\end_inset
+
+in!
+\end_layout
 
 \end_inset
 
