@@ -214,34 +214,6 @@ dist_slexamples_DATA = \
 	examples/sl/primer_surov.lyx \
 	examples/sl/splash.lyx
 
-springerexamplesdir = $(pkgdatadir)/examples/springer
-dist_springerexamples_DATA = \
-	examples/springer/svjour3.lyx \
-	examples/springer/svmono_acknow.lyx \
-	examples/springer/svmono_acronym.lyx \
-	examples/springer/svmono_appendix.lyx \
-	examples/springer/svmono_book-master.lyx \
-	examples/springer/svmono_chapter.lyx \
-	examples/springer/svmono_dedication.lyx \
-	examples/springer/svmono_foreword.lyx \
-	examples/springer/svmono_glossary.lyx \
-	examples/springer/svmono_part.lyx \
-	examples/springer/svmono_preface.lyx \
-	examples/springer/svmono_referenc.lyx \
-	examples/springer/svmono_solutions.lyx \
-	examples/springer/svmult_acknow.lyx \
-	examples/springer/svmult_acronym.lyx \
-	examples/springer/svmult_appendix.lyx \
-	examples/springer/svmult_author.lyx \
-	examples/springer/svmult_cblist.lyx \
-	examples/springer/svmult_dedication.lyx \
-	examples/springer/svmult_editor-master.lyx \
-	examples/springer/svmult_foreword.lyx \
-	examples/springer/svmult_glossary.lyx \
-	examples/springer/svmult_part.lyx \
-	examples/springer/svmult_preface.lyx \
-	examples/springer/svmult_referenc.lyx
-
 skexamplesdir = $(pkgdatadir)/examples/sk
 dist_skexamples_DATA = \
 	examples/sk/splash.lyx
@@ -272,14 +244,11 @@ dist_ukexamples_DATA = \
 
 examplesdir = $(pkgdatadir)/examples
 dist_examples_DATA = \
-	examples/ACM-siggraph.lyx \
-	examples/AEA.lyx \
 	examples/Braille.lyx \
 	examples/CV-image.eps \
 	examples/CV-image.png \
 	examples/Foils.lyx \
 	examples/ItemizeBullets.lyx \
-	examples/JASA.lyx \
 	examples/Literate.lyx \
 	examples/aa_sample.lyx \
 	examples/aas_sample.lyx \
@@ -2123,7 +2092,9 @@ templatesdir = $(pkgdatadir)/templates
 dist_templates_DATA = \
 	templates/aa.lyx \
 	templates/aastex.lyx \
+	templates/ACM-siggraph.lyx \
 	templates/ACM-sigplan.lyx \
+	templates/AEA.lyx \
 	templates/AGUTeX.lyx \
 	templates/APA.lyx \
 	templates/APA6.lyx \
@@ -2148,6 +2119,7 @@ dist_templates_DATA = \
 	templates/IJMPC.lyx \
 	templates/IJMPD.lyx \
 	templates/IOP-article.lyx \
+	templates/JASA.lyx \
 	templates/JSS-article.lyx \
 	templates/kluwer.lyx \
 	templates/koma-letter2.lyx \
@@ -2158,6 +2130,34 @@ dist_templates_DATA = \
 	templates/revtex4.lyx \
 	templates/revtex4-1.lyx \
 	templates/slides.lyx
+
+springertemplatesdir = $(pkgdatadir)/templates/springer
+dist_springertemplates_DATA = \
+	templates/springer/svjour3.lyx \
+	templates/springer/svmono_acknow.lyx \
+	templates/springer/svmono_acronym.lyx \
+	templates/springer/svmono_appendix.lyx \
+	templates/springer/svmono_book-master.lyx \
+	templates/springer/svmono_chapter.lyx \
+	templates/springer/svmono_dedication.lyx \
+	templates/springer/svmono_foreword.lyx \
+	templates/springer/svmono_glossary.lyx \
+	templates/springer/svmono_part.lyx \
+	templates/springer/svmono_preface.lyx
+	templates/springer/svmono_referenc.lyx \
+	templates/springer/svmono_solutions.lyx \
+	templates/springer/svmult_acknow.lyx \
+	templates/springer/svmult_acronym.lyx \
+	templates/springer/svmult_appendix.lyx \
+	templates/springer/svmult_author.lyx \
+	templates/springer/svmult_cblist.lyx \
+	templates/springer/svmult_dedication.lyx \
+	templates/springer/svmult_editor-master.lyx \
+	templates/springer/svmult_foreword.lyx \
+	templates/springer/svmult_glossary.lyx \
+	templates/springer/svmult_part.lyx \
+	templates/springer/svmult_preface.lyx \
+	templates/springer/svmult_referenc.lyx
 
 texdir = $(pkgdatadir)/tex
 dist_tex_DATA = \

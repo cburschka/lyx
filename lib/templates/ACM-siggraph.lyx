@@ -387,9 +387,22 @@ radiosity, global illumination, constant time
 \end_layout
 
 \begin_layout Teaser
-\begin_inset Graphics
-	filename beamer-icsi-logo.pdf
-	width 40col%
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+remove this box by an image
+\end_layout
 
 \end_inset
 
@@ -467,7 +480,7 @@ Citations can be done this way
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Jobs95"
+key "proceedings-full"
 
 \end_inset
 
@@ -480,7 +493,7 @@ key "Jobs95"
 status open
 
 \begin_layout Plain Layout
-Jobs95
+proceedings-full
 \end_layout
 
 \end_inset
@@ -498,7 +511,7 @@ Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Pellacini:2005:LAH"
+key "incollection-full"
 
 \end_inset
 
@@ -509,7 +522,7 @@ key "Pellacini:2005:LAH"
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "notes2002"
+key "booklet-full"
 
 \end_inset
 
@@ -522,7 +535,7 @@ key "notes2002"
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Park:2006:DSI"
+key "whole-set"
 
 \end_inset
 
@@ -815,7 +828,7 @@ To Robert, for all the bagels.
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "../examples/biblioExample"
+bibfiles "xampl"
 options "acmsiggraph"
 
 \end_inset

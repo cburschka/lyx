@@ -328,7 +328,7 @@ Introduction
 Bla bla, as listed in 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Parkin2005,LComp2004"
+key "whole-collection,proceedings-full"
 
 \end_inset
 
@@ -458,7 +458,7 @@ jasanum
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "../examples/biblioExample"
+bibfiles "xampl"
 options "jasaauthyear"
 
 \end_inset

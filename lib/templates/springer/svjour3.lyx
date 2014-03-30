@@ -504,14 +504,14 @@ name "sec:Section-title"
 Text with citations 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Bringhurst2005"
+key "whole-collection"
 
 \end_inset
 
 , 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Jobs95"
+key "techreport-full"
 
 \end_inset
 
@@ -915,7 +915,7 @@ ftp://ftp.springer.de/pub/tex/latex/svjour3/bibtex
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "../../examples/biblioExample"
+bibfiles "xampl"
 options "bibtotoc,spbasic"
 
 \end_inset

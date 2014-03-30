@@ -597,7 +597,7 @@ all cited references
 s put one in: 
 \begin_inset CommandInset citation
 LatexCommand citet
-key "Cotton1999"
+key "techreport-full"
 
 \end_inset
 
@@ -607,7 +607,7 @@ key "Cotton1999"
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "../examples/biblioExample"
+bibfiles "xampl"
 options "aea"
 
 \end_inset

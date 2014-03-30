@@ -192,8 +192,22 @@ sidecaption[t]
 \end_inset
 
 
-\begin_inset Graphics
-	filename ../CV-image.png
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "25col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+replace this box by an image
+\end_layout
 
 \end_inset
 
