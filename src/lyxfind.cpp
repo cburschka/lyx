@@ -1377,7 +1377,8 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 	DocIterator sel_beg = cur.selectionBegin();
 	DocIterator sel_end = cur.selectionEnd();
 	if (&sel_beg.inset() != &sel_end.inset()
-	    || sel_beg.pit() != sel_end.pit())
+	    || sel_beg.pit() != sel_end.pit()
+	    || sel_beg.idx() != sel_end.idx())
 		return;
 	int sel_len = sel_end.pos() - sel_beg.pos();
 	LYXERR(Debug::FIND, "sel_beg: " << sel_beg << ", sel_end: " << sel_end
