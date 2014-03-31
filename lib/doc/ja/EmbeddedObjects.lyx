@@ -2059,57 +2059,41 @@ status collapsed
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-row"
 \end_inset
 
-
-\family default
  は、現在セルあるいは選択範囲の下に行を追加します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-column"
 \end_inset
 
-
-\family default
  は、現在セルあるいは選択範囲の右に列を追加します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-row"
 \end_inset
 
-
-\family default
  は、現在行あるいは選択範囲行を削除します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-column"
 \end_inset
 
-
-\family default
  は、現在列あるいは選択範囲列を削除します。
 \end_layout
 
@@ -2155,239 +2139,171 @@ arg   "inset-modify tabular move-column-right"
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-top"
 \end_inset
 
-
-\family default
  は、現在セルや現在行、あるいは選択範囲の上部に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-bottom"
 \end_inset
 
-
-\family default
  は、現在セルや現在行、あるいは選択範囲の下部に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-left"
 \end_inset
 
-
-\family default
  は、現在セルや現在行、あるいは選択範囲の左側に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-right"
 \end_inset
 
-
-\family default
  は、現在セルや現在行、あるいは選択範囲の右側に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-all-lines"
 \end_inset
 
-
-\family default
  は、現在セルあるいは選択範囲の周囲に罫線を描画します。現在セルが連結列でなければ、現在行と現在列にも影響します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular unset-all-lines"
 \end_inset
 
-
-\family default
  は、現在セルあるいは選択範囲のすべての罫線を消去します。現在セルが連結列でなければ、現在行と現在列にも影響します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-left"
 \end_inset
 
-
-\family default
  は、現在セルあるいは現在列の内容を左揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-center"
 \end_inset
 
-
-\family default
  は、現在セルあるいは現在列の内容を水平方向中央揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-right"
 \end_inset
 
-
-\family default
  は、現在セルあるいは現在列の内容を右揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular align-decimal"
 \end_inset
 
-
-\family default
  は、現在セルの内容を特定文字位置で揃えます。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-top"
 \end_inset
 
-
-\family default
  は、現在セルの内容を垂直方向上揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-middle"
 \end_inset
 
-
-\family default
  は、現在セルの内容を垂直方向中央揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-bottom"
 \end_inset
 
-
-\family default
  は、現在セルの内容を垂直方向下揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-rotate-cell"
 \end_inset
 
-
-\family default
  は、現在セルあるいは選択範囲を反時計廻りに90度回転します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-rotate-tabular"
 \end_inset
 
-
-\family default
  は、表全体を反時計廻りに90度回転します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multicolumn"
 \end_inset
 
-
-\family default
  は、現在セルあるいは選択範囲を連結列にします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multirow"
 \end_inset
 
-
-\family default
  は、現在セルあるいは選択範囲を連結行にします。
 \end_layout
 
