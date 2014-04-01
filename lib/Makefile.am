@@ -505,6 +505,10 @@ dist_images_DATA = \
 	images/tabular-feature_m-valign-bottom.png \
 	images/tabular-feature_m-valign-middle.png \
 	images/tabular-feature_m-valign-top.png \
+	images/tabular-feature_move-column-left.png \
+	images/tabular-feature_move-column-right.png \
+	images/tabular-feature_move-row-down.png \
+	images/tabular-feature_move-row-up.png \
 	images/tabular-feature_multicolumn.png \
 	images/tabular-feature_multirow.png \
 	images/tabular-feature_set-all-lines.png \
