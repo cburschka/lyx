@@ -229,3 +229,9 @@ Caveats when upgrading from earlier versions to 2.1.x
   on remote X connections and we provide the \\use_qimage preference
   variable, which brings back the old way of painting (when set to false).
 
+- BibTeX errors are now processed and cause the document to fail
+  compilation. Before, these errors were ignored, which means that it 
+  may happen that documents that did compile with a previous version
+  do not compile anymore with LyX 2.1.x. To solve this, one needs to 
+  fix the offending BibTeX errors in the document.
+
