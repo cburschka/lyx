@@ -1951,11 +1951,7 @@ void GuiView::openDocument(string const & fname)
 		dlg.setButton2(qt_("Examples|#E#e"),
 				toqstr(addPath(package().system_support().absFileName(), "examples")));
 
-		QStringList filter(qt_("LyX Documents (*.lyx)"));
-		filter << qt_("LyX-1.3.x Documents (*.lyx13)")
-			<< qt_("LyX-1.4.x Documents (*.lyx14)")
-			<< qt_("LyX-1.5.x Documents (*.lyx15)")
-			<< qt_("LyX-1.6.x Documents (*.lyx16)");
+		QStringList const filter(qt_("LyX Documents (*.lyx)"));
 		FileDialog::Result result =
 			dlg.open(toqstr(initpath), filter);
 
