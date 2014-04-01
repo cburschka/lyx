@@ -182,7 +182,7 @@ Counter::StringMap & Counter::flatLabelStrings(bool in_appendix) const
 }
 
 
-Counters::Counters() : appendix_(false), subfloat_(false)
+Counters::Counters() : appendix_(false), subfloat_(false), longtable_(false)
 {
 	layout_stack_.push_back(0);
 	counter_stack_.push_back(from_ascii(""));
