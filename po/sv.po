@@ -1,14 +1,14 @@
 # Swedish translation of LyX / Svensk lokalisering för LyX
-# Copyright (C) 1997, 1998, 2010-2013 LyX Team
+# Copyright (C) 1997, 1998, 2010-2014 LyX Team
 #
 # Joacim Persson <sp2joap@ida.his.se> 1997, 1998.
-# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2013.
+# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2014.
 #
-# Information 2013-12-03:
+# Information 2014-04-01:
 #   Bad Qt shortcuts: 124
-#   Inconsistent translations: 6
+#   Inconsistent translations: 10
 #   Bad menu shortcuts: 136
-#   Total warnings: 266
+#   Total warnings: 270
 #
 # Behöver förbättras:
 #   Alla genvägar (snabbkommandon, kortkommandon)
@@ -208,13 +208,13 @@
 #   view(er)             -> visa(re)
 #   wrap               ? -> svep, varva? bryt? (automatisk) radbrytning? linda in? att svepa runt
 #
-# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2013.
+# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2014.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 2.0.7\n"
+"Project-Id-Version: LyX 2.0.8\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-03-25 11:04-0400\n"
-"PO-Revision-Date: 2013-12-03 21:12+0100\n"
+"POT-Creation-Date: 2014-04-01 12:21+0200\n"
+"PO-Revision-Date: 2014-04-01 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
 "Language: sv\n"
@@ -646,7 +646,7 @@ msgstr "Välj din gren"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
-msgstr "&Ny:[[gren]]"
+msgstr "&Ny:"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:35
 msgid ""
@@ -2138,7 +2138,7 @@ msgstr "An&vänd flera index"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:[[index]]"
-msgstr "&Ny:[[index]]"
+msgstr "&Ny:"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
@@ -3697,7 +3697,7 @@ msgstr "Alltid Babel"
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:70
 #: src/frontends/qt4/GuiDocument.cpp:1023
 msgid "None[[language package]]"
-msgstr "Inget[[språkpaket]]"
+msgstr "Inget"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:87
 msgid "Command s&tart:"
@@ -4381,7 +4381,7 @@ msgstr "Sidnummer att skriva ut från"
 
 #: src/frontends/qt4/ui/PrintUi.ui:66
 msgid "&To:[[as in 'From page x to page y']]"
-msgstr "&Till:[[som i 'Från sida x till sida y']]"
+msgstr "&Till:"
 
 #: src/frontends/qt4/ui/PrintUi.ui:79
 msgid "Page number to print to"
@@ -4620,7 +4620,7 @@ msgstr "Uppdatera etikettlistan"
 
 #: src/frontends/qt4/ui/SearchUi.ui:101
 msgid "Case &sensitive[[search]]"
-msgstr "&Skiftlägeskänslig[[sök]]"
+msgstr "&Skiftlägeskänslig"
 
 #: src/frontends/qt4/ui/SearchUi.ui:108
 msgid "Match w&hole words only"
@@ -6893,21 +6893,19 @@ msgstr "Latin av"
 msgid "BeginFrame"
 msgstr "BörjaRam"
 
-#: lib/layouts/article.layout:19 lib/layouts/asme2e.layout:19
-#: lib/layouts/beamer.layout:109 lib/layouts/beamer.layout:124
-#: lib/layouts/memoir.layout:52 lib/layouts/mwart.layout:24
-#: lib/layouts/paper.layout:46 lib/layouts/scrartcl.layout:21
-#: lib/layouts/svmult.layout:102 lib/layouts/tufte-handout.layout:22
-#: lib/layouts/agu_stdsections.inc:12 lib/layouts/db_stdsections.inc:12
-#: lib/layouts/scrclass.inc:51 lib/layouts/stdsections.inc:12
-#: lib/layouts/svcommon.inc:107
+#: lib/layouts/article.layout:19 lib/layouts/beamer.layout:109
+#: lib/layouts/beamer.layout:124 lib/layouts/memoir.layout:52
+#: lib/layouts/mwart.layout:24 lib/layouts/paper.layout:46
+#: lib/layouts/scrartcl.layout:21 lib/layouts/svmult.layout:102
+#: lib/layouts/tufte-handout.layout:22 lib/layouts/agu_stdsections.inc:12
+#: lib/layouts/db_stdsections.inc:12 lib/layouts/scrclass.inc:51
+#: lib/layouts/stdsections.inc:12 lib/layouts/svcommon.inc:107
 msgid "Part"
 msgstr "Del"
 
-#: lib/layouts/article.layout:30 lib/layouts/asme2e.layout:30
-#: lib/layouts/mwart.layout:34 lib/layouts/scrartcl.layout:30
-#: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
-#: lib/layouts/svcommon.inc:240
+#: lib/layouts/article.layout:30 lib/layouts/mwart.layout:34
+#: lib/layouts/scrartcl.layout:30 lib/layouts/db_stdstarsections.inc:13
+#: lib/layouts/stdstarsections.inc:13 lib/layouts/svcommon.inc:240
 msgid "Part*"
 msgstr "Del*"
 
@@ -13360,7 +13358,7 @@ msgstr "Fil"
 
 #: lib/ui/stdmenus.inc:355
 msgid "Box[[Menu]]"
-msgstr "Ruta[[Meny]]"
+msgstr "Ruta"
 
 #: lib/ui/stdmenus.inc:358
 msgid "Citation...|C"
@@ -13412,7 +13410,7 @@ msgstr "TeX-kod|X"
 
 #: lib/ui/stdmenus.inc:373
 msgid "Program Listing[[Menu]]"
-msgstr "Programlistning[[Meny]]"
+msgstr "Programlistning"
 
 #: lib/ui/stdmenus.inc:375
 msgid "Preview|w"
@@ -14152,7 +14150,7 @@ msgstr "Kommandobuffert"
 
 #: lib/ui/stdtoolbars.inc:217
 msgid "Review[[Toolbar]]"
-msgstr "Granska[[Verktygsrad]]"
+msgstr "Granska"
 
 #: lib/ui/stdtoolbars.inc:218
 msgid "Track changes"
@@ -20070,7 +20068,7 @@ msgstr "Kunde inte läsa mall"
 
 #: src/frontends/qt4/BulletsModule.cpp:41
 msgid "Standard[[Bullets]]"
-msgstr "Standard[[Bomber]]"
+msgstr "Standard"
 
 #: src/frontends/qt4/BulletsModule.cpp:42
 msgid "Maths"
@@ -22571,6 +22569,8 @@ msgid ""
 "The file name '%1$s' is invalid!\n"
 "Aborting import."
 msgstr ""
+"Filnamnet '%1$s' är ogiltigt!\n"
+"Avbryter import."
 
 #: src/frontends/qt4/GuiView.cpp:2141 src/frontends/qt4/GuiView.cpp:2305
 #, c-format
