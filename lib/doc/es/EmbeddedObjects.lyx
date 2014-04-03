@@ -1910,27 +1910,23 @@ Cuadros ! Configuración
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can alter a table by clicking on it with the right mouse button, which
- brings up the context menu.
- Under the menu entry 
+Un cuadro o tabla se puede cambiar en el menú contextual que aparece con
+ un clic del botón derecho del ratón.
+ En la opción 
 \family sans
-More
+Más...
+
 \family default
-\lang spanish
  se pueden ajustar los parámetros de la celda y fila/columna en la que se
  encuentra el cursor.
- 
-\lang english
-The context menu 
+ La entrada del menú contextual 
 \family sans
-More\SpecialChar \menuseparator
-Settings
+Más...\SpecialChar \menuseparator
+Configuración...
+
 \family default
- opens the table dialog where you can adjust more things
-\lang spanish
-.
+ abre una ventana de diálogo donde se pueden ajustar más parámetros del
+ cuadro.
  La mayoría de opciones también trabajan sobre una selección de celdas,
  de filas o de columnas.
  Observa que hay que diferenciar entre seleccionar una celda o seleccionar
@@ -2418,7 +2414,9 @@ arg   "inset-modify tabular move-row-up"
 
 
 \lang english
- moves the row up
+ 
+\lang spanish
+desplaza la fila arriba
 \end_layout
 
 \begin_layout Labeling
@@ -2428,9 +2426,7 @@ type  "icon"
 arg   "inset-modify tabular move-column-left"
 \end_inset
 
-
-\lang english
- moves the column to the left
+ desplaza la columna a la izquierda
 \end_layout
 
 \begin_layout Labeling
@@ -2440,9 +2436,7 @@ type  "icon"
 arg   "inset-modify tabular move-row-down"
 \end_inset
 
-
-\lang english
- moves the row down
+ desplaza la fila abajo
 \end_layout
 
 \begin_layout Labeling
@@ -2452,9 +2446,7 @@ type  "icon"
 arg   "inset-modify tabular move-column-right"
 \end_inset
 
-
-\lang english
- moves the column to the right
+ desplaza la columna a la derecha
 \end_layout
 
 \begin_layout Labeling
@@ -7610,20 +7602,17 @@ Cuadros largos ! Leyendas ! distintas para cada página
 
 \begin_layout Standard
 Cuando las leyendas para las páginas siguientes hayan de ser diferentes
- de la leyenda de la primera página del cuadro, 
-\lang english
-mark a empty row as header which contains a caption.
- Then right-click on the caption and select in the context menu 
+ de la leyenda de la primera página del cuadro, marca una fila vacía como
+ cabecera que contiene una leyenda.
+ Después, clic derecho sobre la leyenda y selecciona 
 \family sans
-Caption
+Leyenda
 \begin_inset space ~
 \end_inset
 
-(LongTableNoNumber
-\lang spanish
-)
+(CuadroLargoSinNúmero)
 \family default
-.
+ en el menú contextual.
  El cuadro
 \begin_inset space ~
 \end_inset
@@ -24063,7 +24052,7 @@ Algoritmo
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Listado-de-programa"
+reference "cap:Listado-de-código"
 
 \end_inset
 
@@ -24126,8 +24115,8 @@ algoritmo
 Para insertar el índice de algoritmos puedes usar el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Índice\SpecialChar \menuseparator
-Índice de algoritmos
+Índices\SpecialChar \menuseparator
+Algoritmos
 \family default
 , si el documento está en el mismo idioma que los menús de LyX.
  Para documentos en otro idioma usa en su lugar el comando en código TeX:
@@ -26961,7 +26950,7 @@ thefigure
 \begin_inset VSpace bigskip
 \end_inset
 
-Si estás usando la clase de documento 
+Si estás usando una clase de documento 
 \series bold
 KOMA-Script
 \series default
@@ -27285,16 +27274,16 @@ La norma habitual para colocar las leyendas es:
 \end_layout
 
 \begin_layout Description
-Figura: La leyenda al pie de la figura
+Figura: La leyenda al pie de las figuras
 \end_layout
 
 \begin_layout Description
-Cuadro: La leyenda sobre el cuadro
+Cuadro: La leyenda sobre los cuadros
 \end_layout
 
 \begin_layout Standard
 Desafortunadamente, las clases estándar de LaTeX no soportan leyendas sobre
- el cuadro.
+ un cuadro.
  Esto implica que si usas las clases de documento 
 \family sans
 article
@@ -27312,11 +27301,7 @@ letter
 report
 \family default
  no habrá espacio entre la leyenda y el cuadro.
- Para insertar el espacio adecuado, 
-\lang english
-load
-\lang spanish
- el paquete LaTeX 
+ Para insertar el espacio adecuado, carga el paquete LaTeX 
 \series bold
 caption
 \series default
@@ -27407,7 +27392,7 @@ report (KOMA-Script)
 \series bold
 caption
 \series default
- puedes poner la opción
+ puedes poner
 \end_layout
 
 \begin_layout Standard
@@ -27417,14 +27402,12 @@ captions=tableheading
 \end_layout
 
 \begin_layout Standard
-de la clase de documento.
+en las opciones de clase del documento.
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-That option is used in this document.
+Esta opción se usa en este documento.
 \end_layout
 
 \end_inset
@@ -27433,46 +27416,36 @@ That option is used in this document.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In documents with a KOMA-Script document class you can also right-click
- on a caption and mark in the context menu if this should be a caption above
- or below the table/figure.
- This way you can override the document-wide caption placement for certain
- captions.
- Table
-\lang spanish
-
+En documentos de clases Koma-Script también puedes hacer clic derecho sobre
+ una leyenda y marcar en el menú contextual si la quieres encima o debajo
+ del cuadro o la figura.
+ De esta forma puedes sobrescribir para ciertas leyendas su colocación predeterm
+inada por el documento.
+ El cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:A-caption-marked"
+reference "tab:Una-leyenda-marcada"
 
 \end_inset
 
-
-\lang english
- is an example where the caption is marked a being below the table while
- it is above.
- For comparison the caption in Table
-\lang spanish
-
+ es un ejemplo en el que la leyenda se marca para situar bajo el cuadro
+ aunque esté encima.
+ Se puede comparar con la leyenda sin marcar del cuadro
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:A-standard-table"
+reference "tab:Leyenda-estándar"
 
 \end_inset
 
-
-\lang english
- is not marked.
+.
 \end_layout
 
 \begin_layout Standard
@@ -27487,13 +27460,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:A-caption-marked"
+name "tab:Una-leyenda-marcada"
 
 \end_inset
 
-
-\lang english
-A caption marked as being below the table.
+Leyenda marcada para colocar bajo el cuadro.
 \end_layout
 
 \end_inset
@@ -27632,13 +27603,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:A-standard-table"
+name "tab:Leyenda-estándar"
 
 \end_inset
 
-
-\lang english
-A standard table caption.
+Leyenda de cuadro estándar.
 \end_layout
 
 \end_inset
@@ -29240,7 +29209,7 @@ Igual que en el índice general se listan las secciones del documento, hay
 Insertar\SpecialChar \menuseparator
 Índice
 \family default
-.
+s.
 \end_layout
 
 \begin_layout Standard
@@ -34259,11 +34228,7 @@ Marco interior
 \family sans
 Marco de línea
 \family default
- y 
-\lang english
-use no explicit
-\lang spanish
- ancho.
+ y no pongas ancho explícito.
 \end_layout
 
 \begin_layout Standard
@@ -39278,7 +39243,7 @@ programa Este tipo se describe en el capítulo
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "cap:Listado-de-programa"
+reference "cap:Listado-de-código"
 
 \end_inset
 
@@ -39379,26 +39344,26 @@ Incorporar
 \end_layout
 
 \begin_layout Chapter
-Listado de programa
+Listado de código
 \begin_inset CommandInset label
 LatexCommand label
-name "cap:Listado-de-programa"
+name "cap:Listado-de-código"
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Listado de programa
+Listado de código
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Código de programa
@@ -39408,10 +39373,10 @@ Código de programa
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Flotantes ! Listado de programa
+Flotantes ! Listado de código
 \end_layout
 
 \end_inset
@@ -39432,7 +39397,7 @@ de
 \begin_inset space ~
 \end_inset
 
-programa.
+código.
  
 \family default
 El paquete LaTeX 
@@ -39557,50 +39522,44 @@ h
 \family sans
 Flotante
 \family default
- en ese caso puesto que los listados de programa no flotantes también pueden
+ en ese caso puesto que los listados de código no flotantes también pueden
  tener leyendas y ser referenciadas.
 \end_layout
 
 \begin_layout Standard
-Se puede añadir una leyenda a un listado de programa con el menú 
+Se puede añadir una leyenda a un listado de código con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Leyenda
 \family default
 .
- Los listados de programa se pueden referenciar como los flotantes: Listado
+ Los listados de código se pueden referenciar como los flotantes: Listado
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "lst:Ejemplo-de-listado-de-programa"
+reference "lst:Ejemplo-de-listado-de-código"
 
 \end_inset
 
- 
-\lang english
-A list of listings which contains all listings with captions can be created
- via the menu 
+ Con el menú 
 \family sans
-\lang spanish
 Insertar\SpecialChar \menuseparator
-
-\lang english
-List
+Índices\SpecialChar \menuseparator
+Listados
 \begin_inset space ~
 \end_inset
 
-/
+de
 \begin_inset space ~
 \end_inset
 
-TOC\SpecialChar \menuseparator
-List of Listings
+código
 \family default
-.
- The list entries are the listing caption and the listing number.
+ se crea un índice de todos los listados de código con leyenda insertados.
+ Las entradas del índice son la leyenda y el número de cada listado de código.
 \end_layout
 
 \begin_layout Standard
@@ -39616,11 +39575,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "lst:Ejemplo-de-listado-de-programa"
+name "lst:Ejemplo-de-listado-de-código"
 
 \end_inset
 
-Ejemplo de listado de programa flotante
+Ejemplo de listado de código flotante
 \end_layout
 
 \end_inset
@@ -39650,7 +39609,7 @@ def func(param):
 
 \begin_layout Standard
 Una vez que has escogido un lenguaje de programación en el cuadro de diálogo
- de listado de programa, las palabras clave de ese lenguaje serán reconocidas
+ de listado de código, las palabras clave de ese lenguaje serán reconocidas
  y tipografiadas de manera especial en la salida.
  En el ejemplo, la clave de Python «def» es reconocida y se imprimirá en
  negrita.
@@ -39838,7 +39797,7 @@ listings
 \end_layout
 
 \begin_layout Standard
-También es posible imprimir como listado de programa líneas de un archivo.
+También es posible imprimir como listado de código líneas de un archivo.
  Para hacer esto, usa el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
@@ -39851,7 +39810,7 @@ hijo
 \family default
 y elige el tipo 
 \family sans
-Listado de programa
+Listado de código
 \family default
 .
 \begin_inset Foot
@@ -40046,7 +40005,15 @@ Los parámetros globales para listados de programa se pueden establecer en
 \family sans
 Documento\SpecialChar \menuseparator
 Configuración\SpecialChar \menuseparator
-Listados.
+Listado
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+código.
  
 \family default
 Para ver ahí una lista de las opciones disponibles, escribe una interrogación
