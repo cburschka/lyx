@@ -8037,14 +8037,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8057,7 +8055,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -10182,8 +10179,8 @@ enumeration
 \end_layout
 
 \begin_layout Standard
-To tell LyX that there are two lists an not one, set the cursor at the end
- of the last item and use the menu 
+To tell LyX that there are two lists and not one, set the cursor at the
+ end of the last item and use the menu 
 \family sans
 Edit\SpecialChar \menuseparator
 Start New Parent Environment
@@ -10195,7 +10192,7 @@ Start New Parent Environment
 Edit\SpecialChar \menuseparator
 Start New Environment
 \family default
- a new list will also be created, but in the same besting level.
+ a new list will also be created, but in the same nesting level.
 \end_layout
 
 \begin_layout Standard
