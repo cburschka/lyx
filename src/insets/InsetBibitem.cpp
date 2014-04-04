@@ -78,12 +78,10 @@ void InsetBibitem::initView()
 void InsetBibitem::updateCommand(docstring const & new_key, bool)
 {
 	docstring key = new_key;
-
 	vector<docstring> bibkeys = buffer().masterBibInfo().getKeys();
 
-	int i = 1;
-
 	if (find(bibkeys.begin(), bibkeys.end(), key) != bibkeys.end()) {
+		int i = 1;
 		// generate unique label
 		key = new_key + '-' + convert<docstring>(i);
 		while (find(bibkeys.begin(), bibkeys.end(), key) != bibkeys.end()) {
@@ -131,7 +129,6 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 		docstring label = p["label"];
 
 		// definitions for escaping
-		int previous;
 		static docstring const backslash = from_ascii("\\");
 		static docstring const lbrace = from_ascii("{");
 		static docstring const rbrace = from_ascii("}");
@@ -140,6 +137,7 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 		static char_type const brackets_escape[2] = {'[', ']'};
 
 		if (!label.empty()) {
+			int previous;
 			// The characters in chars_name[] need to be changed to a command when
 			// they are in the name field.
 			for (int k = 0; k < 6; k++)

@@ -41,8 +41,8 @@ public:
 		int x1, int y1,
 		int x2, int y2,
 		Color,
-		line_style = line_solid,
-		float line_width = thin_line);
+		line_style ls = line_solid,
+		float lw = thin_line);
 
 	/**
 	 * lines -  draw a set of lines
@@ -55,8 +55,8 @@ public:
 		int const * yp,
 		int np,
 		Color,
-		line_style = line_solid,
-		float line_width = thin_line);
+		line_style ls = line_solid,
+		float lw = thin_line);
 
 	/// draw a rectangle
 	virtual void rectangle(
@@ -64,7 +64,7 @@ public:
 		int w, int h,
 		Color,
 		line_style = line_solid,
-		float line_width = thin_line);
+		float lw = thin_line);
 
 	/// draw a filled rectangle
 	virtual void fillRectangle(

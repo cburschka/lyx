@@ -151,7 +151,7 @@ static InsetLabel * dummy_pointer = 0;
 InsetMathHull::InsetMathHull(Buffer * buf)
 	: InsetMathGrid(buf, 1, 1), type_(hullNone), numbered_(1, true),
     numbers_(1, empty_docstring()), label_(1, dummy_pointer),
-    preview_(new RenderPreview(this))
+    preview_(new RenderPreview(this)), use_preview_(false)
 {
 	//lyxerr << "sizeof InsetMath: " << sizeof(InsetMath) << endl;
 	//lyxerr << "sizeof MetricsInfo: " << sizeof(MetricsInfo) << endl;
@@ -166,7 +166,7 @@ InsetMathHull::InsetMathHull(Buffer * buf)
 InsetMathHull::InsetMathHull(Buffer * buf, HullType type)
 	: InsetMathGrid(buf, getCols(type), 1), type_(type), numbered_(1, true),
     numbers_(1, empty_docstring()), label_(1, dummy_pointer),
-    preview_(new RenderPreview(this))
+    preview_(new RenderPreview(this)), use_preview_(false)
 {
 	buffer_ = buf;
 	initMath();

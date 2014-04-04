@@ -635,7 +635,6 @@ bool Cursor::posVisRight(bool skip_inset)
 	Cursor new_cur = *this; // where we will move to
 	pos_type left_pos; // position visually left of current cursor
 	pos_type right_pos; // position visually right of current cursor
-	bool new_pos_is_RTL; // is new position we're moving to RTL?
 
 	getSurroundingPos(left_pos, right_pos);
 
@@ -679,7 +678,7 @@ bool Cursor::posVisRight(bool skip_inset)
 		// we're currently to the left of 'right_pos'). In
 		// order to move to the right, it depends whether or
 		// not the character at 'right_pos' is RTL.
-		new_pos_is_RTL = paragraph().getFontSettings(
+		bool const new_pos_is_RTL = paragraph().getFontSettings(
 			buffer()->params(), right_pos).isVisibleRightToLeft();
 		// If the character at 'right_pos' *is* LTR, then in
 		// order to move to the right of it, we need to be
@@ -735,7 +734,6 @@ bool Cursor::posVisLeft(bool skip_inset)
 	Cursor new_cur = *this; // where we will move to
 	pos_type left_pos; // position visually left of current cursor
 	pos_type right_pos; // position visually right of current cursor
-	bool new_pos_is_RTL; // is new position we're moving to RTL?
 
 	getSurroundingPos(left_pos, right_pos);
 
@@ -779,7 +777,7 @@ bool Cursor::posVisLeft(bool skip_inset)
 		// currently to the right of 'left_pos'). In order to
 		// move to the left, it depends whether or not the
 		// character at 'left_pos' is RTL.
-		new_pos_is_RTL = paragraph().getFontSettings(
+		bool const new_pos_is_RTL = paragraph().getFontSettings(
 			buffer()->params(), left_pos).isVisibleRightToLeft();
 		// If the character at 'left_pos' *is* RTL, then in
 		// order to move to the left of it, we need to be

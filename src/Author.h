@@ -67,9 +67,9 @@ public:
 	///
 	Author const & get(int id) const;
 	///
-	typedef std::vector<Author> Authors;
-	///
 	void sort();
+	///
+	typedef std::vector<Author> Authors;
 	///
 	Authors::const_iterator begin() const;
 	///

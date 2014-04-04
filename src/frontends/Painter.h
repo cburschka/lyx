@@ -54,7 +54,6 @@ class Painter {
 public:
 	Painter() : drawing_enabled_(true) {}
 
-	float line_width;
 	static const float thin_line;
 
 	/// possible line styles

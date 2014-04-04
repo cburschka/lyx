@@ -77,7 +77,7 @@ FileName imageLibFileSearch(QString & dir, QString const & name,
 
 namespace {
 
-double locstringToDouble(QString const str)
+double locstringToDouble(QString const & str)
 {
 	QLocale loc;
 	bool ok;

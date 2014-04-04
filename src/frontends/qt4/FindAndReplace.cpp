@@ -110,8 +110,8 @@ bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 		// back to how it was
 		searchbackCB->setChecked(searchback);
 		return true;
-		break;
-		}
+	}
+
 	case Qt::Key_Tab:
 		if (e->modifiers() == Qt::NoModifier) {
 			if (obj == find_work_area_){

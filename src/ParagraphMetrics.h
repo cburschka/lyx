@@ -45,7 +45,7 @@ class PainterInfo;
 class ParagraphMetrics {
 public:
 	/// Default constructor (only here for STL containers).
-	ParagraphMetrics() : par_(0) {}
+	ParagraphMetrics() : position_(0), par_(0) {}
 	/// The only useful constructor.
 	explicit ParagraphMetrics(Paragraph const & par);
 

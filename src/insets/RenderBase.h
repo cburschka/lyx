@@ -53,7 +53,7 @@ public:
 
 protected:
 	RenderBase() : state_(false) {}
-	RenderBase(RenderBase const &x) : state_(x.state_){}
+	RenderBase(RenderBase const & x) : state_(x.state_) {}
 	RenderBase & operator=(RenderBase const &) { return *this; }
 
 	/// render state. currently, render_button uses this to store mouse_hover_

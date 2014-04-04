@@ -29,17 +29,18 @@
 namespace lyx {
 
 InsetMathSymbol::InsetMathSymbol(latexkeys const * l)
-	: sym_(l), h_(0), scriptable_(false)
+  : sym_(l), h_(0), kerning_(0), scriptable_(false)
 {}
 
 
 InsetMathSymbol::InsetMathSymbol(char const * name)
-	: sym_(in_word_set(from_ascii(name))), h_(0), scriptable_(false)
+	: sym_(in_word_set(from_ascii(name))), h_(0),
+    kerning_(0), scriptable_(false)
 {}
 
 
 InsetMathSymbol::InsetMathSymbol(docstring const & name)
-	: sym_(in_word_set(name)), h_(0), scriptable_(false)
+	: sym_(in_word_set(name)), h_(0), kerning_(0), scriptable_(false)
 {}
 
 

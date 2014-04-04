@@ -108,8 +108,6 @@ public:
 
 	/// change associated Buffer
 	virtual void setBuffer(Buffer & buffer);
-	/// remove the buffer reference
-	void resetBuffer() { setBuffer( *static_cast<Buffer *>(0)); }
 	/// retrieve associated Buffer
 	virtual Buffer & buffer();
 	virtual Buffer const & buffer() const;

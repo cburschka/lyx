@@ -1152,11 +1152,10 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 		pit_type nextpit = pit + 1;
 		if (nextpit != pit_type(pars.size())) {
 			pit_type cpit = pit;
-			double usual = 0;
-			double unusual = 0;
 
 			if (pars[cpit].getDepth() > pars[nextpit].getDepth()) {
-				usual = pars[cpit].layout().bottomsep * dh;
+				double usual = pars[cpit].layout().bottomsep * dh;
+				double unusual = 0;
 				cpit = text_->depthHook(cpit, pars[nextpit].getDepth());
 				if (pars[cpit].layout() != pars[nextpit].layout()
 					|| pars[nextpit].getLabelWidthString() != pars[cpit].getLabelWidthString())

@@ -174,8 +174,6 @@ private:
 	///
 	std::string defaultCSSClass() const;
 	///
-	std::string defaultCSSLabelClass() const { return defaultCSSClass() + "_label"; }
-	///
 	void readArgument(Lexer &);
 	///
 	docstring name_;

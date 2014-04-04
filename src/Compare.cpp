@@ -384,7 +384,7 @@ void Compare::run()
 	AuthorList const & extra_authors = options_.settings_from_new ?
 		old_buffer->params().authors() : new_buffer->params().authors();
 	AuthorList::Authors::const_iterator it = extra_authors.begin();
-	for (; it != extra_authors.end(); it++)
+	for (; it != extra_authors.end(); ++it)
 		dest_buffer->params().authors().record(*it);
 	
 	doStatusMessage();

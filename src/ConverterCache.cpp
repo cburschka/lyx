@@ -56,8 +56,7 @@ static FileName cache_dir;
 
 class CacheItem {
 public:
-	CacheItem()
-	{}
+	CacheItem() {}
 	CacheItem(FileName const & orig_from, string const & to_format,
 		  time_t t, unsigned long c)
 		: timestamp(t), checksum(c)

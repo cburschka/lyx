@@ -24,7 +24,7 @@ namespace lyx {
 class PersonalWordList {
 public:
 	/// the word list has an associated language
-	PersonalWordList(std::string lang) { lang_ = lang; }
+	PersonalWordList(std::string lang) : lang_(lang), dirty_(false) {}
 	/// the location of the file to hold to word list
 	lyx::support::FileName dictfile() const;
 	/// (re)load the word list from file
@@ -44,11 +44,17 @@ public:
 	/// end of word list
 	docstring_list::const_iterator end() const;
 private:
+	///
 	docstring_list words_;
+	///
 	std::string lang_;
+	///
 	bool dirty_;
+	///
 	bool equalwords(docstring const & w1, docstring const & w2) const;
+	///
 	std::string header() const { return "# personal word list"; }
+	///
 	void dirty(bool flag) { dirty_ = flag; }
 };
 

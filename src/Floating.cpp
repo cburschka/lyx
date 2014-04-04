@@ -24,10 +24,6 @@ using namespace std;
 namespace lyx {
 
 
-Floating::Floating()
-{}
-
-
 Floating::Floating(string const & type, string const & placement,
 		   string const & ext, string const & within,
 		   string const & style, string const & name,
