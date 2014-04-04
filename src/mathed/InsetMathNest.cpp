@@ -730,8 +730,8 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.idx() = 0;
 		cur.resetAnchor();
 		cur.setSelection(true);
-		cur.pos() = cur.lastpos();
 		cur.idx() = cur.lastidx();
+		cur.pos() = cur.lastpos();
 		cur.bv().cursor() = cur;
 		break;
 
