@@ -346,7 +346,7 @@ void InsetMathPhantom::validate(LaTeXFeatures & features) const
 
 bool InsetMathPhantom::visibleContents() const 
 { 
-	return kind_ == phantom || kind_ == vphantom || kind_ == vphantom;
+	return kind_ == phantom || kind_ == vphantom || kind_ == hphantom;
 }
 
 
