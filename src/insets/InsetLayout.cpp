@@ -596,8 +596,9 @@ Layout::LaTeXArgMap InsetLayout::args() const
 unsigned int InsetLayout::optArgs() const
 {
 	unsigned int nr = 0;
-	Layout::LaTeXArgMap::const_iterator it = args().begin();
-	for (; it != args().end(); ++it) {
+	Layout::LaTeXArgMap const args = InsetLayout::args();
+	Layout::LaTeXArgMap::const_iterator it = args.begin();
+	for (; it != args.end(); ++it) {
 		if (!(*it).second.mandatory)
 			++nr;
 	}
@@ -608,8 +609,9 @@ unsigned int InsetLayout::optArgs() const
 unsigned int InsetLayout::requiredArgs() const
 {
 	unsigned int nr = 0;
-	Layout::LaTeXArgMap::const_iterator it = args().begin();
-	for (; it != args().end(); ++it) {
+	Layout::LaTeXArgMap const args = InsetLayout::args();
+	Layout::LaTeXArgMap::const_iterator it = args.begin();
+	for (; it != args.end(); ++it) {
 		if ((*it).second.mandatory)
 			++nr;
 	}
