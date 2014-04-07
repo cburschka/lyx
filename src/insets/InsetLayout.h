@@ -85,12 +85,17 @@ public:
 	FontInfo labelfont() const { return labelfont_; }
 	///
 	ColorCode bgcolor() const { return bgcolor_; }
+	/// 
+	Layout::LaTeXArgMap const & latexargs() const { return latexargs_; }
 	///
+	Layout::LaTeXArgMap const & postcommandargs() const { return postcommandargs_; }
+	/// Returns latexargs() + postcommandargs().
+	/// But note that it returns a *copy*, not a reference, so do not do 
+	/// anything like:
+	///   Layout::LaTeXArgMap it = args().begin();
+	///   Layout::LaTeXArgMap en = args().end();
+	/// Those are iterators for different containers.
 	Layout::LaTeXArgMap args() const;
-	///
-	Layout::LaTeXArgMap latexargs() const { return latexargs_; }
-	///
-	Layout::LaTeXArgMap postcommandargs() const { return postcommandargs_; }
 	///
 	unsigned int optArgs() const;
 	///
