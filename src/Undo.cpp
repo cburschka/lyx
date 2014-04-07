@@ -160,13 +160,17 @@ public:
 	/// Push an item on to the stack, deleting the bottom group on
 	/// overflow.
 	void push(UndoElement const & v) {
-		c_.push_front(v);
-		if (c_.size() > limit_) {
+		// Remove some entries if the limit has been reached.
+		// However, if the only group on the stack is the one
+		// we are currently populating, do nothing.
+		if (c_.size() >= limit_
+		    && c_.front().group_id != v.group_id) {
 			// remove a whole group at once.
 			const size_t gid = c_.back().group_id;
 			while (!c_.empty() && c_.back().group_id == gid)
 				c_.pop_back();
 		}
+		c_.push_front(v);
 	}
 
 	/// Mark all the elements of the stack as dirty

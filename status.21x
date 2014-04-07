@@ -80,6 +80,8 @@ What's new
 
 - Fix select-by-doubleclick in mathed (bug 8829).
 
+- Fix undo with many individual changes (e.g. with replace all)
+  (bug #7079).
 
 
 * INTERNALS
