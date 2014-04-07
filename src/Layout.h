@@ -108,13 +108,18 @@ public:
 	///
 	typedef std::map<std::string, latexarg> LaTeXArgMap;
 	///
-	LaTeXArgMap args() const;
-	///
 	LaTeXArgMap const & latexargs() const { return latexargs_; }
 	///
 	LaTeXArgMap const & postcommandargs() const { return postcommandargs_; }
 	///
 	LaTeXArgMap const & itemargs() const { return itemargs_; }
+	/// Returns latexargs() + postcommandargs() + itemargs().
+	/// But note that it returns a *copy*, not a reference, so do not do
+	/// anything like:
+	///   Layout::LaTeXArgMap it = args().begin();
+	///   Layout::LaTeXArgMap en = args().end();
+	/// Those are iterators for different containers.
+	LaTeXArgMap args() const;
 	///
 	int optArgs() const;
 	///
