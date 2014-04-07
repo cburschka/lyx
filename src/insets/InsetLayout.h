@@ -92,8 +92,8 @@ public:
 	/// Returns latexargs() + postcommandargs().
 	/// But note that it returns a *copy*, not a reference, so do not do 
 	/// anything like:
-	///   Layout::LaTeXArgMap it = args().begin();
-	///   Layout::LaTeXArgMap en = args().end();
+	///   Layout::LaTeXArgMap::iterator it = args().begin();
+	///   Layout::LaTeXArgMap::iterator en = args().end();
 	/// Those are iterators for different containers.
 	Layout::LaTeXArgMap args() const;
 	///
