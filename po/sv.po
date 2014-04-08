@@ -4,7 +4,7 @@
 # Joacim Persson <sp2joap@ida.his.se> 1997, 1998.
 # Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2014.
 #
-# Information 2014-04-01:
+# Information 2014-04-04:
 #   Bad Qt shortcuts: 129
 #   Inconsistent translations: 16
 #   Bad menu shortcuts: 159
@@ -213,8 +213,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-04-01 12:21+0200\n"
-"PO-Revision-Date: 2014-04-01 21:12+0100\n"
+"POT-Creation-Date: 2014-04-04 12:21+0200\n"
+"PO-Revision-Date: 2014-04-04 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
 "Language: sv\n"
@@ -3452,7 +3452,7 @@ msgstr "Visa enkel &stängknapp för flikar"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:193
 msgid "Closing last &view:"
-msgstr "Stänger senaste &vy:"
+msgstr "Stängning av senaste &vy:"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:204
 msgid "Closes document"
@@ -3612,7 +3612,7 @@ msgstr "Standardformat för utmatning"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:214
 msgid "With &TeX fonts:"
-msgstr "Med &Tex-typsnitt:"
+msgstr "Med &TeX-typsnitt:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:224
 msgid "The default output format for documents (except with non-TeX fonts)"
@@ -3844,11 +3844,11 @@ msgstr "Använd LaTe&X typsnittskodning:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:41
 msgid "&DVI viewer paper size options:"
-msgstr "&DVI-visarens alternativ för papperstorlek:"
+msgstr "&DVI-visarens alternativ för pappersstorlek:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:51
 msgid "Optional paper size flag (-paper) for some DVI viewers"
-msgstr "Alternativ papperstorleksflagga (-paper) för vissa DVI-visare"
+msgstr "Alternativ pappersstorleksflagga (-paper) för vissa DVI-visare"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:108
 msgid "BibTeX command and options"
