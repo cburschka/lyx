@@ -287,7 +287,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-04-03 17:39+0200\n"
-"PO-Revision-Date: 2014-04-03 23:23+0200\n"
+"PO-Revision-Date: 2014-04-08 17:24+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -20158,7 +20158,7 @@ msgstr "LyX normalement ne change pas la position du curseur quand vous vous dé
 
 #: src/LyXRC.cpp:3149
 msgid "LyX normally doesn't allow the user to scroll further than the bottom of the document. Set to true if you prefer to scroll the bottom of the document to the top of the screen"
-msgstr "LyX ne permet pas normalement le défilement au-delà de la fin du document. Positionnez sur « vrai » si vous préférez voir la fin du document en haut de la fenêtre."
+msgstr "LyX ne permet pas normalement le défilement au-delà de la fin du document. Cochez si vous préférez voir la fin du document en haut de la fenêtre."
 
 #: src/LyXRC.cpp:3153
 msgid "Make Apple key act as Meta and Control key as Ctrl."
@@ -24741,11 +24741,11 @@ msgstr "Accolades non appariées !"
 # A condition que ce soit traduit !
 #: src/insets/InsetListingsParams.cpp:132
 msgid "Please specify true or false."
-msgstr "Veuillez répondre par vrai ou faux."
+msgstr "Veuillez répondre par « true » or  « false »."
 
 #: src/insets/InsetListingsParams.cpp:135
 msgid "Only true or false is allowed."
-msgstr "Seuls vrai ou faux sont autorisés."
+msgstr "Seuls « true » ou « false » sont autorisés."
 
 #: src/insets/InsetListingsParams.cpp:145
 msgid "Please specify an integer value."
