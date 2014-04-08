@@ -298,7 +298,8 @@ n/Navigation, 31/10/2012, JPChrétien
 \end_layout
 
 \begin_layout Plain Layout
-version 2.0.x novembre 2011
+version initiale 2.1.x avril 2014, mise à jour J.P.
+ Chrétien
 \end_layout
 
 \end_inset
@@ -313,7 +314,7 @@ version 2.0.x novembre 2011
 
 
 \family sans
-Version 2.0.x
+Version 2.1.x
 \end_layout
 
 \begin_layout Standard
@@ -1902,7 +1903,7 @@ Tableau
 \begin_inset Newline newline
 \end_inset
 
-Le tableau a implicitementune bordure au dessus et à gauche de chaque case,
+Le tableau a implicitement une bordure au dessus et à gauche de chaque case,
  une à droite de la colonne la plus à droite et une en bas de la rangée
  du bas, qui forment une boîte autour du tableau.
  En plus, la rangée supérieure a aussi une bordure en bas, ce qui fait qu'elle
@@ -2097,27 +2098,23 @@ Tableau ! Fenêtre de dialogue
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can alter a table by clicking on it with the right mouse button, which
- brings up the context menu.
- Under the menu entry 
+Vous pouvez modifier un tableau en cliquant dedans avec la touche droite
+ de la souris, qui ouvre le menu contextuel.
+ A l'aide du choix de menu 
 \family sans
-More
+Plus...
+
 \family default
-\lang french
  vous pouvez modifier les réglages concernant la cellule, la colonne et
  la ligne dans laquelle le curseur se trouve.
- 
-\lang english
-The context menu 
+ Le menu contextuel 
 \family sans
-More\SpecialChar \menuseparator
-Settings
+Plus...\SpecialChar \menuseparator
+Paramètres...
+
 \family default
- opens the table dialog where you can adjust more things
-\lang french
-.
+ ouvre la fenêtre de dialogue de tableau dans laquelle d'autres réglages
+ sont possibles.
  La plupart des options peuvent s'appliquer à des sélections.
  Ce qui signifie que si vous avez sélectionné plus d'une cellule, plus d'une
  ligne ou plus d'une colonne, l'action demandée prendra en compte toute
@@ -2673,9 +2670,7 @@ type  "icon"
 arg   "inset-modify tabular move-row-up"
 \end_inset
 
-
-\lang english
- moves the row up
+ déplace la ligne vers le haut
 \end_layout
 
 \begin_layout Labeling
@@ -2685,9 +2680,7 @@ type  "icon"
 arg   "inset-modify tabular move-column-left"
 \end_inset
 
-
-\lang english
- moves the column to the left
+ déplace la colonne vers la gauche
 \end_layout
 
 \begin_layout Labeling
@@ -2697,9 +2690,7 @@ type  "icon"
 arg   "inset-modify tabular move-row-down"
 \end_inset
 
-
-\lang english
- moves the row down
+ déplace la ligne vers le bas
 \end_layout
 
 \begin_layout Labeling
@@ -2709,9 +2700,7 @@ type  "icon"
 arg   "inset-modify tabular move-column-right"
 \end_inset
 
-
-\lang english
- moves the column to the right
+ déplace la colonne vers la droite
 \end_layout
 
 \begin_layout Labeling
@@ -7842,18 +7831,12 @@ Tableaux longs ! Legendes@Légendes différentes par page
 
 \begin_layout Standard
 Quand la légende du tableau pour les pages suivantes doit être différente
- de celle de la première page, 
-\lang english
-mark a empty row as header which contains a caption.
- Then right-click on the caption and select in the context menu 
+ de celle de la première page, marquer une ligne vide en tant qu'en-tête
+ contenant une légende, puis effectuer un clic droit sur la légende et cocher
+ dans le menu contextuel
 \family sans
-Caption
-\begin_inset space ~
-\end_inset
-
-(LongTableNoNumber)
+ Légende (TableauLongSansNuméro)
 \family default
-\lang french
 .
  Le tableau
 \begin_inset space ~
@@ -17689,11 +17672,19 @@ definecolor{vertfonce}{cmyk}{0.5, 0, 1, 0.5}
 \end_layout
 
 \begin_layout Standard
-et la couleur "
+et la couleur 
 \emph on
+
+\begin_inset Quotes fld
+\end_inset
+
 grisclair
 \emph default
-" avec
+
+\begin_inset Quotes frd
+\end_inset
+
+ avec
 \end_layout
 
 \begin_layout Standard
@@ -18810,9 +18801,9 @@ fi
 \end_layout
 
 \begin_layout Subsection
-Les filets colorées
+Les filets colorés
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Tableau Coloré ! Pour les filets
@@ -22107,11 +22098,11 @@ hspace{0pt}}c}
 
 \begin_layout Standard
 Le 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 c
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  à la fin crée une colonne de largeur variable dont le texte est centré
@@ -23450,11 +23441,11 @@ usepackage{arydshln}
 \begin_layout Standard
 Pour faire un filet vertical avec un trait interrompu, mettez deux points
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 :
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  avec le caractère décrivant l'alignement horizontal comme paramètre LaTeX
@@ -25391,11 +25382,19 @@ arg   "label-insert"
  LyX propose comme texte pour l'étiquette les premiers mots de la légendes
  précédés d'un préfixe.
  Ce préfixe dépend du type de flottant, par exemple, pour une figure le
- préfixe sera "
+ préfixe sera 
+\begin_inset Quotes fld
+\end_inset
+
+
 \family sans
 fig:
 \family default
-".
+
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -35511,11 +35510,11 @@ Cette ligne est un exemple comment vous pouvez empêcher une césure
 \end_inset
 
 : 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 motTrèsTrèsLong
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
@@ -35523,11 +35522,11 @@ motTrèsTrèsLong
 
 \begin_layout Standard
 Pour empêcher que le mot 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 motTrèsTrèsLong
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  soit coupé, mettez le mot dans une boîte, mettez 
@@ -35542,11 +35541,7 @@ intérieure
 \family sans
 Makebox
 \family default
- et 
-\lang english
-use no explicit
-\lang french
- largeur.
+ sans spécifier de largeur.
 \end_layout
 
 \begin_layout Standard
@@ -35554,7 +35549,8 @@ Voici le résultat :
 \end_layout
 
 \begin_layout Standard
-Cette ligne est un exemple comment vous pouvez empêcher une césure: 
+Cette ligne est un exemple montrant comment vous pouvez empêcher une césure:
+ 
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -35586,24 +35582,25 @@ motTrèsTrèsLong
 
 \begin_layout Standard
 Une autre méthode consiste à mettre la commande 
-\begin_inset Quotes eld
+\series bold
+
+\begin_inset Quotes fld
 \end_inset
 
-
-\series bold
 
 \backslash
 -
 \series default
 
-\begin_inset Quotes grd
+\begin_inset Quotes frd
 \end_inset
 
  en code TeX, juste avant le mot :
 \end_layout
 
 \begin_layout Standard
-Cette ligne est un exemple comment vous pouvez empêcher une césure: 
+Cette ligne est un exemple montrant comment vous pouvez empêcher une césure:
+ 
 \begin_inset Quotes fld
 \end_inset
 
@@ -35659,7 +35656,7 @@ Ctrl-Entrée
 \end_layout
 
 \begin_layout Standard
-Cette ligne est un exemple comment vous pouvez empêcher une césure:
+Cette ligne est un exemple montrant comment vous pouvez empêcher une césure:
 \begin_inset Newline newline
 \end_inset
 
@@ -41227,29 +41224,23 @@ reference "lst:Listing-exemple"
 \end_inset
 
 .
- 
-\lang english
-A list of listings which contains all listings with captions can be created
- via the menu
-\lang french
- 
+ Une liste des listings qui contient tous les listings légendés peut être
+ créée par le menu 
 \family sans
 Insertion\SpecialChar \menuseparator
-
-\lang english
-List
+Listes
 \begin_inset space ~
 \end_inset
 
-/
+&
 \begin_inset space ~
 \end_inset
 
-TOC\SpecialChar \menuseparator
-List of Listings
+TdM\SpecialChar \menuseparator
+Liste des listings
 \family default
 .
- The list entries are the listing caption and the listing number.
+ Les éléments de la liste sont les légendes et le numéro de listing.
 \end_layout
 
 \begin_layout Standard
@@ -41302,11 +41293,11 @@ Quand vous avez choisi un langage de programmation dans la fenêtre de dialogue
  de listing, les mots-clés de ce langage seront reconnus et mis en forme
  de manière particulière dans la sortie imprimée.
  Dans l'exemple de listing, le mot clé Python 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 def
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  est reconnu et imprimé en caractères gras dans la sortie.
@@ -41371,11 +41362,11 @@ Pas
 \family default
  pour désigner les lignes qui seront numérotées.
  Par exemple, si vous mettez 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 3
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , seule une ligne sur trois sera numérotée.
@@ -41407,7 +41398,7 @@ Caractères
 
 Voici un exemple de listing avec la numérotation des lignes à gauche par
  pas de 3, en langage Python, avec les options 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Table
@@ -41423,11 +41414,11 @@ caractères
 \end_inset
 
 étendue
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  et 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Espace
@@ -41447,7 +41438,7 @@ un
 \end_inset
 
 symbole
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , l'intervalle de ligne étant 3
@@ -41612,11 +41603,11 @@ reference "sec:Sous-documents"
  à utiliser pour le listing dans une zone de texte.
  Pour avoir une liste des paramètres disponibles, tapez un point d'interrogation
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 ?
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  dans la zone de texte.
@@ -41649,7 +41640,7 @@ reference "lst:listing-fichier"
 
 \end_inset
 
- est une exemple de listing issu d'un fichier ; ici les lignes 10
+ est un exemple de listing issu d'un fichier ; ici les lignes 10
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -41809,11 +41800,11 @@ Listings
 .
  Pour avoir la liste des options disponibles, tapez un point d'interrogation
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 ?
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  dans le champ.
