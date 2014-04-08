@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-docs@lists.lyx.org\n"
 "POT-Creation-Date: 2014-03-20 11:00+0100\n"
-"PO-Revision-Date: 2014-03-25 01:33+0900\n"
+"PO-Revision-Date: 2014-04-04 01:25+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
-"Language-Team: Japanese <kde-i18n-doc@kde.org>\n"
+"Language-Team: Japanese <lyx-docs@lists.lyx.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1930,7 +1930,7 @@ msgstr "Input"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:303 lib/layouts/stdlayouts.inc:74
 msgid "Verbatim"
-msgstr "Verbatim"
+msgstr "無調整(Verbatim)"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1196
 #: src/insets/InsetInclude.cpp:1202
@@ -15085,11 +15085,11 @@ msgstr "Input|p"
 
 #: lib/ui/stdcontext.inc:277 lib/ui/stdcontext.inc:540
 msgid "Verbatim|V"
-msgstr "Verbatim|V"
+msgstr "無調整(Verbatim)|V"
 
 #: lib/ui/stdcontext.inc:278 lib/ui/stdcontext.inc:541
 msgid "Verbatim (marked blanks)|b"
-msgstr "Verbatim (marked blanks)|b"
+msgstr "無調整(Verbatim) (空白記号付き)|b"
 
 #: lib/ui/stdcontext.inc:279 lib/ui/stdcontext.inc:542
 msgid "Listing|L"
@@ -15522,7 +15522,7 @@ msgstr "保存(S)|S"
 
 #: lib/ui/stdmenus.inc:53
 msgid "Save As...|A"
-msgstr "名前を付けて保存(A),,,|A"
+msgstr "名前を付けて保存(A)...|A"
 
 #: lib/ui/stdmenus.inc:54
 msgid "Save All|l"
@@ -15618,11 +15618,11 @@ msgstr "他の形式とオプション(O)...|O"
 
 #: lib/ui/stdmenus.inc:102
 msgid "Undo|U"
-msgstr "元に戻す(U)|U"
+msgstr "操作を取り消す(U)|U"
 
 #: lib/ui/stdmenus.inc:103
 msgid "Redo|R"
-msgstr "やり直す(R)|R"
+msgstr "同じ操作を繰り返す(R)|R"
 
 #: lib/ui/stdmenus.inc:109
 msgid "Paste Special"
@@ -16498,11 +16498,11 @@ msgstr "連続スペルチェック"
 
 #: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1333
 msgid "Undo"
-msgstr "元に戻す"
+msgstr "操作を取り消す"
 
 #: lib/ui/stdtoolbars.inc:80 src/BufferView.cpp:1343
 msgid "Redo"
-msgstr "やり直す"
+msgstr "同じ操作を繰り返す"
 
 #: lib/ui/stdtoolbars.inc:84
 msgid "Find and replace"
@@ -22454,11 +22454,11 @@ msgstr "文書クラス「%1$s」を読み込むことができませんでし�
 
 #: src/BufferView.cpp:1336
 msgid "No further undo information"
-msgstr "これ以上元に戻すことはできません"
+msgstr "これ以上操作を取り消すことはできません"
 
 #: src/BufferView.cpp:1346
 msgid "No further redo information"
-msgstr "これ以上やり直すことはできません"
+msgstr "これ以上同じ操作を繰り返すことはできません"
 
 #: src/BufferView.cpp:1593
 msgid "Mark off"
@@ -24324,7 +24324,7 @@ msgstr ""
 
 #: src/Text.cpp:1013
 msgid "Character is uncodable in verbatim paragraphs."
-msgstr "verbatim環境では文字をコード化できません。"
+msgstr "無調整(verbatim)環境では文字をコード化できません。"
 
 #: src/Text.cpp:1850
 msgid "[Change Tracking] "
@@ -29404,7 +29404,7 @@ msgstr "外部制御インタフェース"
 
 #: src/support/debug.cpp:56
 msgid "Undo/Redo mechanism"
-msgstr "元に戻す/やり直すの動作"
+msgstr "操作の取消/繰返機構"
 
 #: src/support/debug.cpp:57
 msgid "User commands"
@@ -29493,9 +29493,8 @@ msgid ""
 "Assertion %1$s violated in\n"
 "file: %2$s, line: %3$s"
 msgstr ""
-"アサーション %1$s が\n"
-"ファイル: %2$s, 行: %3$s\n"
-"で満たされていません。"
+"アサーション %1$s 違反です。\n"
+"ファイル: %2$s, 行: %3$s"
 
 #: src/support/lassert.cpp:62
 msgid ""
@@ -29555,441 +29554,4 @@ msgstr ""
 
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
-msgstr "未知の"
-
-#~ msgid "Sco&pe"
-#~ msgstr "範囲(&P)"
-
-#~ msgid "Long Table Caption (unnumbered)"
-#~ msgstr "長尺表キャプション(無番)"
-
-#~ msgid "The caption as it appears in the list of tables"
-#~ msgstr "表一覧に表示するキャプション"
-
-#~ msgid "Unformatted Text|U"
-#~ msgstr "書式なし平文(U)|U"
-
-#~ msgid "Unformatted, Join Lines|o"
-#~ msgstr "書式なし平文(行を連結して)(O)|O"
-
-#~ msgid "&Down"
-#~ msgstr "下へ(&D)"
-
-#~ msgid "Split Environment|l"
-#~ msgstr "Split環境|l"
-
-#, fuzzy
-#~ msgid "%1$s (*.%2$s)"
-#~ msgstr "%1$s (%2$s)"
-
-#~ msgid "report (R Journal)"
-#~ msgstr "report (R Journal)"
-
-#~ msgid "Alternative Theorem String|S"
-#~ msgstr "追加の定理見出し文(S)|S"
-
-#~ msgid "Alternative theorem string"
-#~ msgstr "追加の定理見出し文"
-
-#~ msgid "Default Format"
-#~ msgstr "既定形式"
-
-#~ msgid "Key Words."
-#~ msgstr "キーワード."
-
-#~ msgid "Scrap"
-#~ msgstr "スクラップ"
-
-#~ msgid "Begin Multiple Columns"
-#~ msgstr "多段組始まり"
-
-#~ msgid "---Begin Multiple Columns---"
-#~ msgstr "―――多段組始まり―――"
-
-#~ msgid "End Multiple Columns"
-#~ msgstr "多段組終わり"
-
-#~ msgid "---End Multiple Columns---"
-#~ msgstr "―――多段組終わり―――"
-
-#~ msgid " Macro: %1$s: "
-#~ msgstr "マクロ: %1$s："
-
-#~ msgid "[[Replace with the code of your language]]"
-#~ msgstr "ja"
-
-#~ msgid "&Use AMS math package automatically"
-#~ msgstr "自動的にAMS mathパッケージを使う(&U)"
-
-#~ msgid "Use AMS &math package"
-#~ msgstr "AMS &mathパッケージを使う"
-
-#~ msgid "Use esint package &automatically"
-#~ msgstr "自動的にesintパッケージを使う(&A)"
-
-#~ msgid "Use &esint package"
-#~ msgstr "&esintパッケージを使う"
-
-#~ msgid "Use math&dots package automatically"
-#~ msgstr "自動的にmath&dotsパッケージを使う"
-
-#~ msgid "Use mathdo&ts package"
-#~ msgstr "mathdo&tsパッケージを使う"
-
-#~ msgid "Use mhchem &package automatically"
-#~ msgstr "自動的にmhchemパッケージを使う(&P)"
-
-#~ msgid "The LaTeX package mhchem is always used"
-#~ msgstr "LaTeXパッケージmhchemをつねに使用します"
-
-#~ msgid "Use mh&chem package"
-#~ msgstr "mh&chemパッケージを使う"
-
-#~ msgid "&First:"
-#~ msgstr "第1(&F):"
-
-#~ msgid "Default Decimal &Point:"
-#~ msgstr "既定の小数点(&S):"
-
-#~ msgid "Default paper si&ze:"
-#~ msgstr "既定の用紙寸法(&Z):"
-
-#~ msgid ""
-#~ "Setting causes printer command to print to file and then use this "
-#~ "actually to print."
-#~ msgstr ""
-#~ "設定すると，いったん印刷コマンドが印刷を書き出したファイルを実際の印刷に使"
-#~ "うようになります。"
-
-#~ msgid "Rotate &cell 90 degrees"
-#~ msgstr "セルを90度回転させる(&C)"
-
-#~ msgid "Table w&idth:"
-#~ msgstr "表幅(&I):"
-
-#~ msgid "&Rotate table 90 degrees"
-#~ msgstr "表を90度回転させる(&R)"
-
-#~ msgid "institute mark"
-#~ msgstr "所属機関マーク"
-
-#~ msgid "Fig. ---"
-#~ msgstr "図 ---"
-
-#~ msgid "Computing Review Categories"
-#~ msgstr "Computing Review カテゴリ"
-
-#~ msgid "CenteredCaption"
-#~ msgstr "中央揃えキャプション"
-
-#~ msgid "Senseless!"
-#~ msgstr "意味を成しません！"
-
-#~ msgid "LatinOn"
-#~ msgstr "ラテン入"
-
-#~ msgid "Latin on"
-#~ msgstr "ラテン入"
-
-#~ msgid "LatinOff"
-#~ msgstr "ラテン切"
-
-#~ msgid "Latin off"
-#~ msgstr "ラテン切"
-
-#~ msgid "Frame (no head/foot/sidebars)"
-#~ msgstr "フレーム（ヘッダ・フッタ・サイドバー無し）"
-
-#~ msgid "EndFrame"
-#~ msgstr "フレーム終了"
-
-#~ msgid "________________________________"
-#~ msgstr "________________________________"
-
-#~ msgid "Institute mark"
-#~ msgstr "所属機関マーク"
-
-#~ msgid "Maintext"
-#~ msgstr "本文"
-
-#~ msgid "Space"
-#~ msgstr "空白"
-
-#~ msgid "Space:"
-#~ msgstr "空白:"
-
-#~ msgid "Computer:"
-#~ msgstr "コンピューター:"
-
-#~ msgid "Close Section"
-#~ msgstr "節終了"
-
-#~ msgid "Table Caption"
-#~ msgstr "表キャプション"
-
-#~ msgid "Captionabove"
-#~ msgstr "上部キャプション"
-
-#~ msgid "Captionbelow"
-#~ msgstr "下部キャプション"
-
-#~ msgid "opt"
-#~ msgstr "オプション"
-
-#~ msgid "Japanese (non-CJK) (EUC-JP)"
-#~ msgstr "日本語(pLaTeX) (EUC-JP)"
-
-#~ msgid "Japanese (non-CJK) (JIS)"
-#~ msgstr "日本語(pLaTeX) (JIS)"
-
-#~ msgid "Japanese (non-CJK) (SJIS)"
-#~ msgstr "日本語(pLaTeX) (SJIS)"
-
-#~ msgid "Settings...|g"
-#~ msgstr "設定(G)...|G"
-
-#~ msgid "Outline|O"
-#~ msgstr "文書構造(O)|O"
-
-#~ msgid "Save in Bundled Format|F"
-#~ msgstr "同梱形式で保存(F)|F"
-
-#~ msgid "Braille Manual|B"
-#~ msgstr "点字用説明書(B)|B"
-
-#, fuzzy
-#~ msgid "LilyPond Manual|P"
-#~ msgstr "LilyPond説明書(M)|M"
-
-#~ msgid "Linguistics Manual|L"
-#~ msgstr "言語学向け説明書(L)|L"
-
-#~ msgid "Multicolumn Manual|M"
-#~ msgstr "連結列説明書(M)|M"
-
-#~ msgid "Sweave Manual|S"
-#~ msgstr "Sweave説明書|S"
-
-#~ msgid "Rotate cell"
-#~ msgstr "セルを回転"
-
-#~ msgid "Rotate table"
-#~ msgstr "表を回転"
-
-#~ msgid "AMS arrows"
-#~ msgstr "AMS矢印"
-
-#~ msgid "AMS relations"
-#~ msgstr "AMS関係子"
-
-#~ msgid "AMS operators"
-#~ msgstr "AMS演算子"
-
-#~ msgid "AMS miscellaneous"
-#~ msgstr "AMSその他"
-
-#~ msgid "AMS Miscellaneous"
-#~ msgstr "AMSその他"
-
-#~ msgid "AMS Arrows"
-#~ msgstr "AMS矢印"
-
-#~ msgid "AMS Relations"
-#~ msgstr "AMS関係子"
-
-#~ msgid "AMS Operators"
-#~ msgstr "AMS演算子"
-
-#~ msgid "Bitmap: $$AbsOrRelPathParent$$Basename"
-#~ msgstr "ビットマップ: $$AbsOrRelPathParent$$Basename"
-
-#~ msgid "Xfig: $$AbsOrRelPathParent$$Basename"
-#~ msgstr "Xfig: $$AbsOrRelPathParent$$Basename"
-
-#~ msgid "Chess: $$AbsOrRelPathParent$$Basename"
-#~ msgstr "チェス: $$AbsOrRelPathParent$$Basename"
-
-#~ msgid "PDF pages: $$AbsOrRelPathParent$$Basename"
-#~ msgstr "PDFページ: $$AbsOrRelPathParent$$Basename"
-
-#~ msgid "Dia: $$AbsOrRelPathParent$$Basename"
-#~ msgstr "Dia: $$AbsOrRelPathParent$$Basename"
-
-#~ msgid "HTML|H"
-#~ msgstr "HTML|H"
-
-#~ msgid "LyX Preview (LilyPond book)"
-#~ msgstr "LyXプレビュー(LilyPond book)"
-
-#~ msgid "LyX Preview (pLaTeX)"
-#~ msgstr "LyXプレビュー(pLaTeX)"
-
-#~ msgid "HTML (MS Word)"
-#~ msgstr "HTML (MS Word)"
-
-#~ msgid "New documents will be assigned this language."
-#~ msgstr "新しい文書は、この言語に割り当てられます。"
-
-#~ msgid "Specify the default paper size."
-#~ msgstr "既定の用紙寸法を指定してください。"
-
-#~ msgid "Memory problem"
-#~ msgstr "メモリ障害"
-
-#~ msgid "Paragraph not properly initialized"
-#~ msgstr "段落が正しく初期化されていません"
-
-#~ msgid "Utopia"
-#~ msgstr "Utopia"
-
-#~ msgid "List of Graphics"
-#~ msgstr "画像一覧"
-
-#~ msgid "List of Equations"
-#~ msgstr "数式一覧"
-
-#~ msgid "List of Footnotes"
-#~ msgstr "脚注一覧"
-
-#~ msgid "List of Index Entries"
-#~ msgstr "索引一覧"
-
-#~ msgid "List of Marginal notes"
-#~ msgstr "傍注一覧"
-
-#~ msgid "List of Notes"
-#~ msgstr "注釈一覧"
-
-#~ msgid "List of Citations"
-#~ msgstr "引用一覧"
-
-#~ msgid "List of Branches"
-#~ msgstr "派生枝一覧"
-
-#~ msgid "List of Changes"
-#~ msgstr "変更一覧"
-
-#~ msgid "Automatic help"
-#~ msgstr "自動ヘルプ"
-
-#~ msgid "Session"
-#~ msgstr "セッション"
-
-#~ msgid "Documents"
-#~ msgstr "文書"
-
-#, fuzzy
-#~ msgid "Japanese (non-CJK) (utf8)"
-#~ msgstr "日本語(pLaTeX) (JIS)"
-
-#~ msgid "elsewhere"
-#~ msgstr "他の箇所"
-
-#~ msgid "Noweb Article"
-#~ msgstr "Noweb Article"
-
-#~ msgid "Noweb Book"
-#~ msgstr "Noweb Book"
-
-#~ msgid "Noweb Report"
-#~ msgstr "Noweb Report"
-
-#~ msgid "Multilingual caption:"
-#~ msgstr "多言語キャプション:"
-
-#~ msgid "Multilingual Captions Manual|C"
-#~ msgstr "多言語キャプション説明書(C)|C"
-
-#~ msgid "Risk and Safety Statements Manual|R"
-#~ msgstr "リスクと安全性に関する表示の説明書(R)|R"
-
-#~ msgid "&Use amsmath package automatically"
-#~ msgstr "自動的にamsmathパッケージを使う(&U)"
-
-#~ msgid "&Use amssymb package automatically"
-#~ msgstr "自動的にamssymbパッケージを使う(&U)"
-
-#~ msgid "Use amssymb package"
-#~ msgstr "amssymbパッケージを使う"
-
-#~ msgid "Use mathtools package automatically"
-#~ msgstr "自動的にmathtoolsパッケージを使う"
-
-#~ msgid "Use mathtools package"
-#~ msgstr "mathtoolsパッケージを使う"
-
-#~ msgid "Use u&ndertilde package automatically"
-#~ msgstr "自動的にu&ndertildeパッケージを使う"
-
-#~ msgid "Use undertilde pac&kage"
-#~ msgstr "undertildeパッケージを使う(&K)"
-
-#~ msgid "Error exporting to format: %1$s"
-#~ msgstr "%1$s形式への書き出し時にエラーが起こりました"
-
-#~ msgid "&New:"
-#~ msgstr "新規(&N):"
-
-#~ msgid "The LaTeX package undertilde is always used"
-#~ msgstr "LaTeXパッケージundertildeをつねに使用します"
-
-#~ msgid "&Output Format:"
-#~ msgstr "出力形式(&O):"
-
-#~ msgid "MM"
-#~ msgstr "MM"
-
-#~ msgid "MMMMM"
-#~ msgstr "MMMMM"
-
-#~ msgid "Theorem \\thetheorem"
-#~ msgstr "定理 \\thetheorem"
-
-#~ msgid "Corollary \\thecorollary"
-#~ msgstr "系 \\thecorollary"
-
-#~ msgid "Lemma \\thelemma"
-#~ msgstr "補題 \\thelemma"
-
-#~ msgid "Proposition \\theproposition"
-#~ msgstr "命題 \\theproposition"
-
-#~ msgid "Conjecture \\theconjecture"
-#~ msgstr "推論 \\theconjecture"
-
-#~ msgid "Definition \\thedefinition"
-#~ msgstr "定義 \\thedefinition"
-
-#~ msgid "Example \\theexample"
-#~ msgstr "例 \\theexample"
-
-#~ msgid "Problem \\theproblem"
-#~ msgstr "問題 \\theproblem"
-
-#~ msgid "Exercise \\theexercise"
-#~ msgstr "演習 \\theexercise"
-
-#~ msgid "Remark \\theremark"
-#~ msgstr "所見 \\theremark"
-
-#~ msgid "Case \\thecase"
-#~ msgstr "ケース \\thecase"
-
-#~ msgid "Question \\thequestion"
-#~ msgstr "問題 \\thequestion"
-
-#~ msgid "Note \\thenote"
-#~ msgstr "注釈 \\thenote"
-
-#~ msgid "View Outline|u"
-#~ msgstr "文書構造を表示(U)|U"
-
-#, fuzzy
-#~ msgid ""
-#~ "Command not allowed without any visible document in the active window"
-#~ msgstr ""
-#~ "文書が一つも開かれていないときには、このコマンドは使うことができません"
-
-#, fuzzy
-#~ msgid "%1$s%2$s"
-#~ msgstr "%1$s、%2$s"
+msgstr "知らないユーザー"
