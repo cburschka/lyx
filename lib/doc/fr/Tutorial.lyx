@@ -97,6 +97,8 @@
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author -495245474 "Jean-Marc Lasgouttes" 
+\author 2090807402 "usti" 
 \end_header
 
 \begin_body
@@ -425,7 +427,7 @@ de
 \begin_inset space ~
 \end_inset
 
-l'Utilisateur
+l'utilisateur
 \emph default
  quand vous voulez de telles explications.
 \end_layout
@@ -489,7 +491,7 @@ de
 \begin_inset space ~
 \end_inset
 
-l'Utilisateur
+l'utilisateur
 \emph default
  dans le menu 
 \family sans
@@ -1090,7 +1092,7 @@ de
 \begin_inset space ~
 \end_inset
 
-l'Utilisateur
+l'utilisateur
 \emph default
  toutes les informations nécessaires.
  Font partie de ces moyens les remplissages horizontaux et espacements verticaux
@@ -1514,7 +1516,7 @@ de
 \begin_inset space ~
 \end_inset
 
-l'Utilisateur
+l'utilisateur
 \emph default
  pour une explication et pour modifier ce comportement.
  Le chapitre (
@@ -1934,7 +1936,7 @@ de
 \begin_inset space ~
 \end_inset
 
-l'Utilisateur
+l'utilisateur
 \emph default
  pour les détails des différents types de listes, ainsi que des exemples
  d'emboîtements.
@@ -2006,7 +2008,7 @@ de
 \begin_inset space ~
 \end_inset
 
-l'Utilisateur
+l'utilisateur
 \emph default
  pour une description complète de tous les environnements disponibles dans
  LyX.
@@ -3114,7 +3116,7 @@ de
 \begin_inset space ~
 \end_inset
 
-l'Utilisateur
+l'utilisateur
 \emph default
  dans le presse-papier, et les 
 \family sans
@@ -3590,7 +3592,7 @@ de
 \begin_inset space ~
 \end_inset
 
-l'Utilisateur
+l'utilisateur
 \emph default
  pour de plus amples informations sur le sujet.
 \end_layout
@@ -4848,7 +4850,7 @@ de
 \begin_inset space ~
 \end_inset
 
-l'Utilisateur
+l'utilisateur
 \emph default
  pour découvrir comment changer l'alignement horizontal de chaque colonne,
  et changer la position verticale de l'ensemble de la matrice.
@@ -4896,7 +4898,7 @@ de
 \begin_inset space ~
 \end_inset
 
-l'Utilisateur
+l'utilisateur
 \emph default
 ).
  Les équations multi-lignes doivent également être traitées de cette façon.
@@ -5092,7 +5094,13 @@ de
 \begin_inset space ~
 \end_inset
 
-l'Utilisateur
+l'
+\change_inserted -495245474 1396946439
+u
+\change_deleted -495245474 1396946439
+U
+\change_unchanged
+tilisateur
 \emph default
  pour découvrir la façon de :
 \end_layout
@@ -5155,7 +5163,7 @@ de
 \begin_inset space ~
 \end_inset
 
-l'Utilisateur
+l'utilisateur
 \emph default
  et le manuel 
 \emph on
@@ -5300,8 +5308,8 @@ s.
  le français, le grec, le tchèque, le turc, \SpecialChar \ldots{}
 ).
  Il sait même gérer certaines langues qui s'écrivent de droite à gauche,
- comme l'arabe, le farsi et l'hébreu et aussi les langues asiatiques comme
- le chinois, le japonnais et le coréen.
+ comme l'arabe, le persan (farsi) et l'hébreu et aussi les langues asiatiques
+ comme le chinois, le japonnais et le coréen.
  Vous pouvez écrire des documents dans des langues différentes, mais également
  configurer LyX pour afficher les menus et les messages dans une autre langue;
 \end_layout
@@ -5944,7 +5952,7 @@ Français
 \begin_inset space ~
 \end_inset
 
-canadien
+(Canadien)
 \family default
 ) dans la rubrique 
 \family sans
@@ -5956,15 +5964,13 @@ Document\SpecialChar \menuseparator
 Paramètres
 \family default
 .
-  Ce choix vous permet d'obtenir les règles de césure françaises, la gestion
+
+\change_deleted 2090807402 1396989173
+ 
+\change_unchanged
+ Ce choix vous permet d'obtenir les règles de césure françaises, la gestion
  des espacements des ponctuations hautes, les traductions des étiquettes
- de champs prédéfinies (Chapitre pour Chapter, Auteur pour Author, etc.),
- ainsi que, pour les lettres, le placement adéquat des adresses d'expéditeur
- et de destinataire.
- Il est important de noter que ce choix n'a pour l'instant aucun effet visuel
- dans la fenêtre de LyX.
- C'est dans la sortie PDF ou à l'impression que vous pourrez constater l'effet
- recherché.
+ de champs prédéfinies (Chapitre pour Chapter, Auteur pour Author, etc.).
 \end_layout
 
 \begin_layout Standard
@@ -5979,82 +5985,97 @@ Paramètres\SpecialChar \menuseparator
 Langue.
 
 \family default
- 
-\family typewriter
-iso-8859-1 (latin1)
+ Le réglage 
+\begin_inset Quotes fld
+\end_inset
+
+
+\family sans
+implicite
 \family default
- est l'encodage le plus couramment utilisé, qui contient tous les caractères
- accentués utilisés en français.
- 
+
+\begin_inset Quotes frd
+\end_inset
+
+ sélectionne l'encodage 
 \family typewriter
 iso-8859-15 (latin9)
 \family default
- donne en plus accès aux ligatures œ et Œ et au symbole de l'euro (à condition
+, qui donne l'accès aux ligatures œ et Œ et au symbole de l'euro (à condition
  d'avoir installé les polices euro).
+ Vous pouvez sélectionner un encodage différent via le menu déroulant.
 \end_layout
 
 \begin_layout Standard
-L'o e dans l'o s'obtient avec 
+En ce qui concerne les ligatures, la manière de saisir 
+\family sans
+œ
+\family default
+ et 
+\family sans
+Œ
+\family default
+ dépend de votre système et de votre clavier, ou s'obtient en code TeX avec
+ la saisie 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-oe{}
-\end_layout
-
-\end_inset
-
-, c'est à dire 
+verb+
 \backslash
-oe{} en mode TeX, ou bien en utilisant l'encodage 
-\family typewriter
-latin9
-\family default
- avec un clavier correctement configuré
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Sous Windows vous pouvez utiliser la touche 
-\family sans
-Alt
-\family default
- et le pavé numérique ( 
-\family sans
-Alt-0156
-\family default
- donne œ ).
+oe{}+
 \end_layout
 
 \end_inset
 
 .
- Dans ce dernier cas, pour qu'il apparaisse à l'écran, il faut aller dans
+
+\change_deleted 2090807402 1396989173
  
-\family sans
-Document\SpecialChar \menuseparator
-Paramètres, 
-\family default
-rubrique
-\family sans
- Langue
-\family default
- et choisir l'encodage 
-\family typewriter
-iso8859-15
-\family default
- (et bien sûr choisir des polices disponibles dans cet encodage).
+\change_unchanged
+ Quel que soit l'encodage LaTeX de votre document, les ligatures seront
+ correctement traitées, car LyX exporte soit le caractère correspondant
+ s'il existe dans l'encodage (par exemple latin9), soit le code TeX.
 \end_layout
 
 \begin_layout Standard
-Le choix du format de papier A4 se fait au travers de l'onglet 
+Le choix du format de papier se fait au travers de l'onglet 
 \family sans
-Papier
+Document\SpecialChar \menuseparator
+Paramètres\SpecialChar \menuseparator
+Format
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+la
+\begin_inset space ~
+\end_inset
+
+page\SpecialChar \menuseparator
+Format papier
 \family default
-, toujours dans la même fenêtre.
+.
+ Les distributions TeX usuelles sont en général positionnées implicitement
+ au format A4, laisser le réglage à 
+\begin_inset Quotes fld
+\end_inset
+
+
+\family sans
+implicite
+\family default
+
+\begin_inset Quotes frd
+\end_inset
+
+ est donc en général satisfaisant.
 \end_layout
 
 \begin_layout Standard
@@ -6090,7 +6111,11 @@ Les guillemets français sont les suivants :
 \end_inset
 
  .
- Vous les obtiendrez avec la touche ".
+ Vous les obtiendrez avec la touche 
+\family sans
+"
+\family default
+.
  Il faut auparavant les avoir configurés dans 
 \family sans
 Document\SpecialChar \menuseparator
@@ -6130,18 +6155,29 @@ texte
 \end_layout
 
 \begin_layout Standard
-Les points de suspension s'obtiennent quant à eux avec trois points ordinaires
- successifs et les tirets longs – comme ici – avec deux tirets juxtaposés
- (ou via 
+Les points de suspension s'obtiennent via 
 \family sans
 Insertion\SpecialChar \menuseparator
 Caractère
 \begin_inset space ~
 \end_inset
 
-spécial
+spécial.
+ 
 \family default
-).
+Les tirets demi-cadratin – comme ici – et cadratin --- comme là --- s'obtiennent
+ via 
+\family sans
+Insertion\SpecialChar \menuseparator
+Caractère
+\begin_inset space ~
+\end_inset
+
+spécial\SpecialChar \menuseparator
+Symboles\SpecialChar \menuseparator
+Ponctuation générale
+\family default
+ ou bien, plus rapidement, en saisissant deux ou trois tirets successifs..
 \end_layout
 
 \end_body
