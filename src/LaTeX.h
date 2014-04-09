@@ -139,7 +139,10 @@ public:
 		///
 		BIBTEX_ERROR = 16384,
 		///
-		ERRORS = TEX_ERROR + LATEX_ERROR + BIBTEX_ERROR,
+		//FIXME: BIBTEX_ERROR has been removed from ERRORS for now, since users were irritated
+		//       about those errors which prevented compilation ofpreviously compiling documents.
+		//       Think about a "gentle" transfer to BibTeX error reporting.
+		ERRORS = TEX_ERROR + LATEX_ERROR,
 		///
 		WARNINGS = TEX_WARNING + LATEX_WARNING + PACKAGE_WARNING
 	};
