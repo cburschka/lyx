@@ -2237,7 +2237,7 @@ msgstr "Resultatenvenster"
 #: lib/layouts/stdinsets.inc:253 src/insets/InsetCaption.cpp:389
 #: src/insets/InsetListings.cpp:365 src/insets/InsetListings.cpp:367
 msgid "Listing"
-msgstr "Opsomming"
+msgstr "Listing"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:23
 msgid "&Main Settings"
@@ -6250,16 +6250,15 @@ msgstr "Schema"
 
 #: lib/layouts/achemso.layout:170
 msgid "List of Schemes"
-msgstr "Schema-lijst"
+msgstr "Lijst van Schema's"
 
 #: lib/layouts/achemso.layout:187 lib/layouts/achemso.layout:198
-#, fuzzy
 msgid "Chart"
-msgstr "Grafiek"
+msgstr "Diagram"
 
 #: lib/layouts/achemso.layout:192
 msgid "List of Charts"
-msgstr "Kaartenlijst"
+msgstr "Lijst van Diagrammen"
 
 #: lib/layouts/achemso.layout:209 lib/layouts/achemso.layout:220
 msgid "Graph"
@@ -6267,7 +6266,7 @@ msgstr "Grafiek"
 
 #: lib/layouts/achemso.layout:214
 msgid "List of Graphs"
-msgstr "Grafiekenlijst"
+msgstr "Lijst van Grafieken"
 
 #: lib/layouts/achemso.layout:248
 msgid "SupplementalInfo"
@@ -6719,7 +6718,7 @@ msgstr "Vermoeden"
 #: lib/layouts/theorems-chap-bytype.module:66
 #: lib/layouts/theorems-sec-bytype.module:62
 msgid "Corollary"
-msgstr "Gevolg"
+msgstr "Corollarium"
 
 #: lib/layouts/AEA.layout:215 lib/layouts/elsart.layout:351
 #: lib/layouts/theorems-ams-extended-bytype.module:60
@@ -6733,7 +6732,7 @@ msgstr "Gevolg"
 #: lib/layouts/theorems-ams-extended.module:62
 #: lib/layouts/theorems-ams-extended.module:65
 msgid "Criterion"
-msgstr "Kriterium"
+msgstr "Criterium"
 
 #: lib/layouts/AEA.layout:223 lib/layouts/beamer.layout:1185
 #: lib/layouts/elsart.layout:365 lib/layouts/foils.layout:267
@@ -11326,7 +11325,7 @@ msgstr ""
 #: lib/layouts/powerdot.layout:530 lib/layouts/stdfloats.inc:46
 #: lib/layouts/algorithm2e.module:20
 msgid "List of Algorithms"
-msgstr "Algoritmelijst"
+msgstr "Lijst van Algoritmen"
 
 #: lib/layouts/powerdot.layout:569
 #, fuzzy
@@ -12822,7 +12821,7 @@ msgstr ""
 #: lib/layouts/stdinsets.inc:227 lib/layouts/stdinsets.inc:233
 #, fuzzy
 msgid "Listings[[List of Listings]]"
-msgstr "Lijst van programmacodes"
+msgstr "Lijst van Listings"
 
 #: lib/layouts/stdinsets.inc:259 src/frontends/qt4/GuiDocument.cpp:1418
 #, fuzzy
@@ -16756,9 +16755,8 @@ msgid "Table of Contents|C"
 msgstr "Inhoudsopgave|I"
 
 #: lib/ui/stdmenus.inc:459
-#, fuzzy
 msgid "List of Listings|L"
-msgstr "Lijst van programmacodes"
+msgstr "Lijst van Listings"
 
 #: lib/ui/stdmenus.inc:460
 msgid "Nomenclature|N"
@@ -29300,7 +29298,7 @@ msgstr "Niet-afbreekbare horizontale ruimte (%1$s)"
 
 #: src/insets/InsetTOC.cpp:77
 msgid "List of Listings"
-msgstr "Lijst van programmacodes"
+msgstr "Lijst van Listings"
 
 #: src/insets/InsetTOC.cpp:78
 msgid "Unknown TOC type"
