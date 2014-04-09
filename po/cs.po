@@ -23396,19 +23396,16 @@ msgid "Running MakeIndex for nomencl."
 msgstr "Spouštím MakeIndex pro nomencl."
 
 #: src/LaTeX.cpp:1286 src/LaTeX.cpp:1292 src/LaTeX.cpp:1301
-#, fuzzy
 msgid "BibTeX error: "
-msgstr "chyba LaTeX-u"
+msgstr "Chyba BibTeX-u"
 
 #: src/LaTeX.cpp:1308
-#, fuzzy
 msgid "Biber error: "
-msgstr "Chyba Disku: "
+msgstr "Chyba Biber-u: "
 
 #: src/LaTeXFonts.cpp:220 src/LaTeXFonts.cpp:289
-#, fuzzy
 msgid "Font not available"
-msgstr "Modul není dostupný"
+msgstr "Font není dostupný"
 
 #: src/LaTeXFonts.cpp:221 src/LaTeXFonts.cpp:290
 #, c-format
@@ -23468,14 +23465,13 @@ msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Chybný parametr příkazové řádky `%1$s'. Konec."
 
 #: src/LyX.cpp:471
-#, fuzzy
 msgid "Missing filename for this operation."
-msgstr "Chybí jméno souboru za přepínačem --import"
+msgstr "Chybí jméno souboru pro požadovanou operaci."
 
 #: src/LyX.cpp:510
 #, c-format
 msgid "LyX failed to load the following file: %1$s"
-msgstr ""
+msgstr "LyX nemohl načíst následující soubor: %1$s"
 
 #: src/LyX.cpp:536
 msgid "No textclass is found"
@@ -23598,7 +23594,6 @@ msgid "Setting debug level to %1$s"
 msgstr "Ladící úroveň nastavena na %1$s"
 
 #: src/LyX.cpp:1046
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -23715,14 +23710,12 @@ msgid "Missing command string after --execute switch"
 msgstr "Chybí příkaz za přepínačem --execute"
 
 #: src/LyX.cpp:1139
-#, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export-to switch"
-msgstr "Chybí typ souboru [např. latex, ps...] za přepínačem --export"
+msgstr "Chybí typ souboru [např. latex, ps...] za přepínačem --export-to"
 
 #: src/LyX.cpp:1144
-#, fuzzy
 msgid "Missing destination filename after --export-to switch"
-msgstr "Chybí typ souboru [např. latex, ps...] za přepínačem --export"
+msgstr "Chybí jméno cílového souboru za přepínačem --export-to"
 
 #: src/LyX.cpp:1157
 msgid "Missing file type [eg latex, ps...] after --export switch"
@@ -23835,9 +23828,8 @@ msgstr ""
 "Nastavte pro změnu kláves na Applu: Apple key -> Meta, Control -> Ctrl."
 
 #: src/LyXRC.cpp:3179
-#, fuzzy
 msgid "Use the Mac OS X conventions for cursor movement"
-msgstr "Použít konvence Mac OS X pro pohyb kurzoru po slovech"
+msgstr "Použít konvence Mac OS X pro pohyb kurzoru"
 
 #: src/LyXRC.cpp:3183
 msgid ""
@@ -25887,48 +25879,44 @@ msgid "Numerical"
 msgstr "Numerický"
 
 #: src/frontends/qt4/GuiDocument.cpp:1156
-#, fuzzy
 msgid "Package"
-msgstr "balíček"
+msgstr "Balíček"
 
 #: src/frontends/qt4/GuiDocument.cpp:1156
-#, fuzzy
 msgid "Load automatically"
-msgstr "automaticky"
+msgstr "Automaticky načíst"
 
 #: src/frontends/qt4/GuiDocument.cpp:1157
 msgid "Load always"
-msgstr ""
+msgstr "Načíst vždy"
 
 #: src/frontends/qt4/GuiDocument.cpp:1157
-#, fuzzy
 msgid "Do not load"
-msgstr "Dokument nenačten"
+msgstr "Nenačítat"
 
 #: src/frontends/qt4/GuiDocument.cpp:1170
 msgid "The AMS LaTeX packages are always used"
 msgstr "LaTeX-ové AMS balíčky jsou použity vždy"
 
 #: src/frontends/qt4/GuiDocument.cpp:1173
-#, fuzzy, c-format
+#, c-format
 msgid "The LaTeX package %1$s is always used"
-msgstr "LaTeX-ový balíček esint je použit vždy"
+msgstr "LaTeX-ový balíček %1$s je použit vždy"
 
 #: src/frontends/qt4/GuiDocument.cpp:1178
-#, fuzzy
 msgid "The AMS LaTeX packages are never used"
-msgstr "LaTeX-ové AMS balíčky jsou použity vždy"
+msgstr "LaTeX-ové AMS balíčky nejsou nikdy použity"
 
 #: src/frontends/qt4/GuiDocument.cpp:1181
-#, fuzzy, c-format
+#, c-format
 msgid "The LaTeX package %1$s is never used"
-msgstr "LaTeX-ový balíček mathdots je použit"
+msgstr "LaTeX-ový balíček %1$s není nikdy použit"
 
 #: src/frontends/qt4/GuiDocument.cpp:1270
 #: src/frontends/qt4/GuiDocument.cpp:2134
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s [Class '%2$s']"
-msgstr "%1$s a %2$s"
+msgstr "%1$s [Třída '%2$s']"
 
 #: src/frontends/qt4/GuiDocument.cpp:1273
 #, c-format
@@ -25936,6 +25924,7 @@ msgid ""
 "Class not found by LyX. Please check if you have the matching %1$s class and "
 "all required packages (%2$s) installed."
 msgstr ""
+"LyX nenalezl požadovanou třídu. Prosím zkontrolujte máte-li nainstalovánu odpovídající třídu %1$s a všechny vyžadované balíčky (%2$s)."
 
 #: src/frontends/qt4/GuiDocument.cpp:1398
 #: src/frontends/qt4/GuiDocument.cpp:1499
@@ -26017,23 +26006,20 @@ msgstr " (není instalován)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1943
 msgid "Non-TeX Fonts Default"
-msgstr ""
+msgstr "Standardní neTeX-ové fonty"
 
 #: src/frontends/qt4/GuiDocument.cpp:1945
-#, fuzzy
 msgid " (not available)"
-msgstr "Modul není dostupný"
+msgstr " (nedostupný)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1946
-#, fuzzy
 msgid "Class Default (TeX Fonts)"
-msgstr "Použít standardní nastavení třídy"
+msgstr "Standardní nastavení třídy (TeX-ové fonty)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1984
 #: src/frontends/qt4/GuiDocument.cpp:2011
-#, fuzzy
 msgid "Class Default"
-msgstr "Použít standardní nastavení třídy"
+msgstr "Standardní nastavení třídy"
 
 #: src/frontends/qt4/GuiDocument.cpp:2088
 msgid "Layouts|#o#O"
@@ -26069,9 +26055,8 @@ msgid "Unable to read local layout file."
 msgstr "Nepodařilo se načíst lokální soubor s rozvržením dokumentu."
 
 #: src/frontends/qt4/GuiDocument.cpp:2135
-#, fuzzy
 msgid "This is a local layout file."
-msgstr "Nepodařilo se načíst lokální soubor s rozvržením dokumentu."
+msgstr "Toto je lokální soubor s rozvržením dokumentu."
 
 #: src/frontends/qt4/GuiDocument.cpp:2149
 msgid "Select master document"
@@ -26125,16 +26110,15 @@ msgid "Module provided by document class."
 msgstr "Modul dodán třídou dokumentu."
 
 #: src/frontends/qt4/GuiDocument.cpp:2415
-#, fuzzy, c-format
+#, c-format
 msgid "Category: %1$s."
-msgstr "K&ategorie:"
+msgstr "Kategorie: %1$s."
 
 #: src/frontends/qt4/GuiDocument.cpp:2423
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr "Vyžadované balíčky: %1$s."
 
-# TODO
 #: src/frontends/qt4/GuiDocument.cpp:2429
 msgid "or"
 msgstr "nebo"
@@ -26411,9 +26395,8 @@ msgid "Horizontal Fill"
 msgstr "Horizontální výplň"
 
 #: src/frontends/qt4/GuiHSpace.cpp:68 src/insets/InsetSpace.cpp:74
-#, fuzzy
 msgid "Visible Space"
-msgstr "VisibleText"
+msgstr "Viditelná mezera"
 
 #: src/frontends/qt4/GuiHSpace.cpp:217
 msgid ""
@@ -26843,24 +26826,22 @@ msgid "Invalid or empty key sequence"
 msgstr "Chybná nebo prázdná sekvence kláves"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3199
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Shortcut `%1$s' is already bound to %2$s.\n"
 "Are you sure you want to unbind the current shortcut and bind it to %3$s?"
 msgstr ""
-"Zkratka `%1$s' je již použita pro:\n"
-"%2$s\n"
-"Musíte toto přiřazení smazat před vytvořením nového."
+"Zkratka `%1$s' je již použita pro "
+"%2$s.\n"
+"Opravdu chcete toto přiřazení změnit na %3$s?"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3205
-#, fuzzy
 msgid "Redefine shortcut?"
-msgstr "Editovat zkratku"
+msgstr "Změnit zkratku?"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3206
-#, fuzzy
 msgid "&Redefine"
-msgstr "Před&definováno:"
+msgstr "&Změnit"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3240
 msgid "Can not insert shortcut to the list"
@@ -27604,15 +27585,15 @@ msgid "&Rename"
 msgstr "Pře&jmenovat"
 
 #: src/frontends/qt4/GuiView.cpp:2309
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The document %1$s is already registered.\n"
 "\n"
 "Do you want to choose a new name?"
 msgstr ""
-"Dokument %1$s již existuje.\n"
+"Dokument %1$s je již registrován.\n"
 "\n"
-"Chcete jej přepsat ?"
+"Chcete zvolit nové jméno?"
 
 #: src/frontends/qt4/GuiView.cpp:2314
 msgid "Rename document?"
@@ -29595,31 +29576,30 @@ msgid ""
 msgstr ""
 
 #: src/support/lassert.cpp:65
-#, fuzzy
 msgid "Warning!"
-msgstr "Export-varování!"
+msgstr "Varování!"
 
 #: src/support/lassert.cpp:72
 msgid ""
 "There has been an error with this document.\n"
 "LyX will attempt to close it safely."
 msgstr ""
+"Vznikla chyba při práci s dokumentem.\nLyX se ho pokusí bezpečně zavřít."
 
 #: src/support/lassert.cpp:75
-#, fuzzy
 msgid "Buffer Error!"
-msgstr "Chyba čtení"
+msgstr "Chyba dokumentu!"
 
 #: src/support/lassert.cpp:82
 msgid ""
 "LyX has encountered an application error\n"
 "and will now shut down."
 msgstr ""
+"Nastala chyba a LyX bude uzavřen."
 
 #: src/support/lassert.cpp:85
-#, fuzzy
 msgid "Fatal Exception!"
-msgstr "Table caption"
+msgstr "Fatální chyba!"
 
 #: src/support/os_win32.cpp:482
 msgid "System file not found"
