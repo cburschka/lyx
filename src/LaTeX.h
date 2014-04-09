@@ -140,7 +140,7 @@ public:
 		BIBTEX_ERROR = 16384,
 		///
 		//FIXME: BIBTEX_ERROR has been removed from ERRORS for now, since users were irritated
-		//       about those errors which prevented compilation ofpreviously compiling documents.
+		//       about those errors which prevented compilation of previously compiling documents.
 		//       Think about a "gentle" transfer to BibTeX error reporting.
 		ERRORS = TEX_ERROR + LATEX_ERROR,
 		///
