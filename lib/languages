@@ -883,13 +883,13 @@ Language swedish
 End
 
 # not supported by babel
-Language syriac
-	GuiName          "Syriac"
-	PolyglossiaName  syriac
-	Encoding         utf8
-	RTL              true
-	LangCode         syr_SY
-End
+#Language syriac
+#	GuiName          "Syriac"
+#	PolyglossiaName  syriac
+#	Encoding         utf8
+#	RTL              true
+#	LangCode         syr_SY
+#End
 
 # not supported by babel
 Language tamil
@@ -970,13 +970,13 @@ Language uppersorbian
 End
 
 # not supported by babel
-Language urdu
-	GuiName          "Urdu"
-	PolyglossiaName  urdu
-	Encoding         utf8
-	RTL              true
-	LangCode         ur_PK
-End
+#Language urdu
+#	GuiName          "Urdu"
+#	PolyglossiaName  urdu
+#	Encoding         utf8
+#	RTL              true
+#	LangCode         ur_PK
+#End
 
 # vietnam must be loaded locally with babel options,
 # not globally via class options, see
