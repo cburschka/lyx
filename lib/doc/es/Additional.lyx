@@ -136,7 +136,6 @@ End
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author 5862389 "IG" 
 \end_header
 
 \begin_body
@@ -146,7 +145,7 @@ Características adicionales de LyX
 \end_layout
 
 \begin_layout Subtitle
-Version 2.0.x
+Version 2.1.x
 \end_layout
 
 \begin_layout Author
@@ -17515,13 +17514,7 @@ línea ASCII
 \begin_inset Quotes fld
 \end_inset
 
-
-\change_deleted 5862389 1371738263
-transparencia
-\change_inserted 5862389 1371738267
-Nueva Diap.
-\change_unchanged
-:
+Nueva Diap.:
 \begin_inset Quotes frd
 \end_inset
 
@@ -22823,13 +22816,7 @@ Usualmente toma tiempo conseguir el comando exacto y depende de muchas cosas.
 
 \end_deeper
 \begin_layout Enumerate
-
-\change_deleted 5862389 1371550029
-Descarg
-\change_inserted 5862389 1371550031
-Reserv
-\change_unchanged
-a el archivo SVN, p.
+Reserva el archivo SVN, p.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -23709,11 +23696,8 @@ He de apuntar que también puedes usar la estructura
 \begin_inset Quotes frd
 \end_inset
 
- de Noweb en tus 
-\lang english
-chunks
-\lang spanish
- de código para añadir identificadores de referencias cruzadas:
+ de Noweb en tus trozos de código para añadir identificadores de referencias
+ cruzadas:
 \end_layout
 
 \begin_layout LyX-Code
@@ -23974,13 +23958,7 @@ build-script
 \begin_inset Quotes frd
 \end_inset
 
- (un programa o un
-\change_inserted 5862389 1371639218
-a secuencia
-\change_deleted 5862389 1371639221
- script
-\change_unchanged
-) con el nombre del archivo Noweb (
+ (un programa o una secuencia) con el nombre del archivo Noweb (
 \family typewriter
 $$i
 \family default
@@ -24098,11 +24076,7 @@ Instrucciones de compilación en el documento
 \end_layout
 
 \begin_layout Standard
-La última parte de la integración entre LyX y noweb es el 
-\lang english
-chunk
-\lang spanish
- 
+La última parte de la integración entre LyX y noweb es el trozo 
 \begin_inset Quotes fld
 \end_inset
 
@@ -24112,11 +24086,7 @@ build-script
 
 .
  Generalmente, las instrucciones para compilar tu programa deberían incluirse
- en un 
-\lang english
-chunk
-\lang spanish
- propio.
+ en un trozo propio.
  El 
 \family typewriter
 build-script
@@ -24125,11 +24095,7 @@ build-script
 \family typewriter
 notangle
 \family default
- para buscar ese 
-\lang english
-chunk
-\lang spanish
- (llamado 
+ para buscar ese trozo (llamado 
 \begin_inset Quotes fld
 \end_inset
 
@@ -24145,11 +24111,7 @@ sh
 \end_layout
 
 \begin_layout Standard
-Típicamente, un 
-\lang english
-chunk
-\lang spanish
- 
+Típicamente, un trozo 
 \begin_inset Quotes fld
 \end_inset
 
@@ -24647,10 +24609,8 @@ Código-LyX
 \family default
 , y 
 \family sans
-\lang english
-Chunk
+Trozo
 \family default
-\lang spanish
 .
  El otro es un atajo a la entrada 
 \begin_inset Quotes fld
@@ -27267,7 +27227,7 @@ Shapepar
 \family default
  que se pueden usar para definir formas coordenada a coordenada.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Estos comandos se usan internamente para todas las formas que se han descrito

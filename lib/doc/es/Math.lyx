@@ -2212,11 +2212,7 @@ reference "sub:Fracciones-personalizadas"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Multiline fractions are explained in
-\lang spanish
- 
+Las fracciones con varias líneas se explican en 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Fracciones-multilínea"
@@ -7183,19 +7179,27 @@ underbrace
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you set in the document settings under 
+Si en la configuración del documento, en 
 \family sans
-Math
+Opciones
 \begin_inset space ~
 \end_inset
 
-Options
+de
+\begin_inset space ~
+\end_inset
+
+ecuación
 \family default
- for the package
-\lang spanish
- 
+, marcas la opción 
+\family sans
+Cargar
+\begin_inset space ~
+\end_inset
+
+siempre
+\family default
+ el paquete 
 \series bold
 mathtools
 \series default
@@ -7209,17 +7213,7 @@ Paquetes ! mathtools
 
 \end_inset
 
- 
-\lang english
-the option 
-\family sans
-Load
-\begin_inset space ~
-\end_inset
-
-always
-\family default
-, you have access to square backets:
+, tendrás acceso a los corchetes:
 \end_layout
 
 \begin_layout Standard
@@ -7450,22 +7444,20 @@ C
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For 
+Para 
 \series bold
 
 \backslash
 overbracket
 \series default
- and 
+ y 
 \series bold
 
 \backslash
 underbracket
 \series default
- you can change the thickness of the bracket's stroke by specifying the
- desired thickness in square brackets behind the command:
+ puedes cambiar el grosor de los corchetes especificándolo entre corchetes
+ tras el nombre del comando:
 \end_layout
 
 \begin_layout Standard
@@ -8883,19 +8875,27 @@ F(a)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you set in the document settings under 
+Si en las 
 \family sans
-Math
+Opciones
 \begin_inset space ~
 \end_inset
 
-Options
+para
+\begin_inset space ~
+\end_inset
+
+ecuaciones
 \family default
- for the package
-\lang spanish
- 
+ de la configuración del documento se marca 
+\family sans
+Cargar
+\begin_inset space ~
+\end_inset
+
+siempre
+\family default
+ el paquete 
 \series bold
 mathtools
 \series default
@@ -8909,17 +8909,7 @@ Paquetes ! mathtools
 
 \end_inset
 
- 
-\lang english
-the option 
-\family sans
-Load
-\begin_inset space ~
-\end_inset
-
-always
-\family default
-, you have access to the following labeled arrows:
+, estarán disponibles las siguientes flechas etiquetadas:
 \end_layout
 
 \begin_layout Standard
@@ -9331,9 +9321,7 @@ xrightleftharpoons
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The command scheme is for all these arrows:
+La sintaxis del comando para todas estas flechas es:
 \end_layout
 
 \begin_layout Standard
@@ -10649,10 +10637,7 @@ En texto matemático, la diéresis y otros acentos pueden insertarse directament
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-LyX also supports a tilde under the character if the LaTeX-package
-\lang spanish
+LyX también soporta tilde bajo un carácter si está instalado el paquete
  
 \series bold
 undertilde
@@ -10667,9 +10652,7 @@ Paquetes ! undertilde
 
 \end_inset
 
- 
-\lang english
-is installed on your system:
+:
 \end_layout
 
 \begin_layout Standard
@@ -11793,9 +11776,7 @@ hspace{1em}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Space
+Los espacios
 \begin_inset space ~
 \end_inset
 
@@ -11807,9 +11788,7 @@ Space
 \begin_inset space \thinspace{}
 \end_inset
 
-7 are variable spaces which are explained in
-\lang spanish
- 
+7 son variables; se describen en 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Espacio-variable"
@@ -12410,22 +12389,20 @@ hspace
 
 .
  La longitud también puede ser negativa.
- 
-\lang english
-When a space would be the first character in a line it would be omitted.
- To force its output use the command 
+ Si se pone un espacio como primer carácter de una línea es omitido.
+ Para forzar su presencia usa el comando 
 \series bold
 
 \backslash
 hspace*
 \series default
- instead of 
+ en lugar de 
 \series bold
 
 \backslash
 hspace
 \series default
- or left-click on the 
+ o haz clic izquierdo sobre 
 \begin_inset Quotes eld
 \end_inset
 
@@ -12441,13 +12418,11 @@ hspace
 \begin_inset Quotes erd
 \end_inset
 
- and check the option 
+ y marca la opción 
 \family sans
-Protect
+Proteger
 \family default
 .
-\lang spanish
-
 \begin_inset Newline newline
 \end_inset
 
@@ -16639,7 +16614,7 @@ reference "eq:substack"
 \end_inset
 
 , porque éstos se colocan junto a los límites.
- Para evitarlo se puede usar comando 
+ Para evitarlo se puede usar el comando 
 \series bold
 
 \backslash
@@ -16658,19 +16633,28 @@ smashoperator
 \end_inset
 
 .
- 
-\lang english
-To activate it, set in the document settings under 
+ Para esto, en 
 \family sans
-Math
+Opciones
 \begin_inset space ~
 \end_inset
 
-Options
+para
+\begin_inset space ~
+\end_inset
+
+ecuaciones
 \family default
- for the package 
+ de la configuración del documento debe estar marcado 
+\family sans
+Cargar
+\begin_inset space ~
+\end_inset
+
+siempre
+\family default
+ el paquete 
 \series bold
-\lang spanish
 mathtools
 \series default
 
@@ -16683,26 +16667,16 @@ Paquetes ! mathtools
 
 \end_inset
 
- 
-\lang english
-the option 
-\family sans
-Load
-\begin_inset space ~
-\end_inset
 
-always
-\family default
-.
+\lang english
  
 \series bold
+\lang spanish
 
 \backslash
 smashoperator
 \series default
- sets the space besides the operator to
-\lang spanish
- 0
+ establece el espacio junto al operador en 0
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -16729,12 +16703,8 @@ smashoperator{
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-and inserts the operator with its limits into the braces.
- Behind the brace one continues the formula:
-\lang spanish
-
+e inserta el operador con sus límites entre las llaves.
+ A continuación sigue el resto de la ecuación:
 \begin_inset Formula 
 \[
 \smashoperator{\sum_{\begin{subarray}{c}
@@ -16750,44 +16720,42 @@ k\,\in\,\mathbb{N}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-It is possible to set the space of only one side of the operator to 0
+Es posible establecer el espacio de 0
 \begin_inset space \thinspace{}
 \end_inset
 
-pt.
- To do this write either 
+pt en un solo lado de la expresión.
+ Para eso escribe 
 \series bold
 [l]
 \series default
- or 
+ o 
 \series bold
 [r]
 \series default
- between 
+ entre 
 \series bold
 
 \backslash
 smashoperator
 \series default
- and its brace.
+ y su llave.
  
 \series bold
 l
 \series default
- stands for the left and 
+ es para el lado izquierdo y 
 \series bold
 r
 \series default
- for the right side of the operator.
- Here is an example of the possible 
+ para el derecho.
+ Un ejemplo de dichas posibilidades para 
 \series bold
 
 \backslash
 smashoperator
 \series default
- forms:
+:
 \end_layout
 
 \begin_layout Standard
@@ -16809,12 +16777,8 @@ Y\smashoperator{\sum_{1\le i\le j\le n}^{n=3456}}X_{ij}=Y\smashoperator[l]{\sum_
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-When several consecutive operators have limits the typesetting of the limits
- looks often imperfect in the output, see this example:
-\lang spanish
-
+Cuando hay varios operadores consecutivos con límites, éstos pueden resultar
+ mal alineados en la salida, como se ve en este ejemplo:
 \begin_inset Formula 
 \[
 \text{a)}\lim_{n\to\infty}\max_{p\ge n}\quad\text{b)}\lim_{n\to\infty}\max_{p^{2}\ge n}\quad\text{c)}\lim_{n\to\infty}\sup_{p^{2}\ge nK}\quad\text{d)}\limsup_{n\to\infty}\max_{p\ge n}
@@ -16822,19 +16786,27 @@ When several consecutive operators have limits the typesetting of the limits
 
 \end_inset
 
-
-\lang english
-To improve the typesetting set in the document settings under 
+Para mejorar este aspecto, en 
 \family sans
-Math
+Opciones
 \begin_inset space ~
 \end_inset
 
-Options
+para
+\begin_inset space ~
+\end_inset
+
+ecuaciones
 \family default
- for the package
-\lang spanish
- 
+ de la configuración del documento debe estar marcado 
+\family sans
+Cargar
+\begin_inset space ~
+\end_inset
+
+siempre
+\family default
+ el paquete 
 \series bold
 mathtools
 \series default
@@ -16848,20 +16820,9 @@ Paquetes ! mathtools
 
 \end_inset
 
- 
-\lang english
-the option 
-\family sans
-Load
-\begin_inset space ~
-\end_inset
-
-always
-\family default
 .
- Then insert into your formula the command 
+ Después inserta en la ecuación el comando 
 \series bold
-\lang spanish
 
 \backslash
 adjustlimits
@@ -16878,12 +16839,8 @@ adjustlimits
 
 \end_inset
 
- 
-\lang english
-directly before the first operator.
- The example will then look like this:
-\lang spanish
-
+ delante de cada operador.
+ El ejemplo anterior tendrá ahora este aspecto:
 \begin_inset Formula 
 \[
 \text{a)}\adjustlimits\lim_{n\to\infty}\max_{p\ge n}\quad\text{b)}\adjustlimits\lim_{n\to\infty}\max_{p^{2}\ge n}\quad\text{c)}\adjustlimits\lim_{n\to\infty}\sup_{p^{2}\ge nK}\quad\text{d)}\adjustlimits\limsup_{n\to\infty}\max_{p\ge n}
@@ -16982,13 +16939,7 @@ sideset
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are 4
-\begin_inset space ~
-\end_inset
-
-variants of 
+Hay cuatro variantes de 
 \series bold
 
 \backslash
@@ -17000,52 +16951,48 @@ sideset
 \begin_layout Itemize
 
 \series bold
-\lang english
 
 \backslash
 sideset
 \series default
- is used to set characters at the corners of the operator
+ para poner caracteres en las esquinas del operador
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-\lang english
 
 \backslash
 sidesetn
 \series default
- is used to set characters before and/or behind the operator (this variant
- represents LaTeX's original 
+ para poner caracteres delante y/o detrás del operador (esta variante representa
+ el comando original de LaTeX 
 \series bold
 
 \backslash
 sideset
 \series default
- command)
+)
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-\lang english
 
 \backslash
 sidesetl
 \series default
- is used to set characters at the left corners and/or behind the operator
+ para poner caracteres en las esquinas de la izquierda y/o detrás del operador
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-\lang english
 
 \backslash
 sidesetr
 \series default
- is used to set characters at the right corners and/or before the operator
+ para poner caracteres en las esquinas de la derecha y/o delante del operador
 \end_layout
 
 \begin_layout Standard
@@ -25020,20 +24967,14 @@ triangleright
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-LyX supports also many special relations.
- Use the toolbar button
-\lang spanish
- 
+LyX soporta muchas otras relaciones especiales que se pueden ver pulsando
+ el botón 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\leqq"
 \end_inset
 
- 
-\lang english
-to see a list of these relations.
+ de la barra de herramientas de ecuaciones.
 \end_layout
 
 \begin_layout Standard
@@ -26624,11 +26565,7 @@ En una ecuación presentada el límite se imprime debajo, como es habitual:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-How to adjust the typesetting of the limits see
-\lang spanish
- 
+Para el ajuste de la presentación de límites véase 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Límites-de-operadores"
@@ -26701,11 +26638,8 @@ Caracteres especiales
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The characters ^ and _ would normally create a subscript and subscript,
- respectively.
- To get these characters you have to insert them with a leading 
+Las teclas ^ y _ generan normalmente un exponente y un subíndice respectivamente.
+ Para insertar estos caracteres como tales deben ir precedidos por 
 \backslash
 :
 \end_layout
@@ -29313,14 +29247,9 @@ Fracciones ! multilínea
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are cases where the denominator and/or the numerator of a fraction
- is so long that the fraction does not fit into one line.
- It is then necessary to add a line break within the fraction.
- This can be done using the command
-\lang spanish
- 
+Hay casos en que el denominador y/o el numerador de una fracción son tan
+ largos que no caben en una línea.
+ Es necesario añadir un salto de línea mediante el comando 
 \series bold
 
 \backslash
@@ -29339,19 +29268,16 @@ splitfrac
 \end_inset
 
 .
- 
-\lang english
-To activate it, set in the document settings under 
+ Para utilizarlo debe estar marcada la opción 
 \family sans
-Math
+Cargar
 \begin_inset space ~
 \end_inset
 
-Options
+siempre
 \family default
- for the package 
+ el paquete 
 \series bold
-\lang spanish
 mathtools
 \series default
 
@@ -29364,39 +29290,38 @@ Paquetes ! mathtools
 
 \end_inset
 
- 
-\lang english
-the option 
+ en las 
 \family sans
-Load
+Opciones
 \begin_inset space ~
 \end_inset
 
-always
-\family default
-.
- 
-\series bold
+para
+\begin_inset space ~
+\end_inset
 
+ecuaciones
+\family default
+ en la configuración del documento.
+
+\series bold
+ 
 \backslash
 splitfrac
 \series default
- has the scheme
+ se usa con la sintaxis
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-splitfrac{first line}{second line}
+splitfrac{primera línea}{segunda línea}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-and is used as denominator and/or numerator:
+en el denominador y/o en el numerador.
 \end_layout
 
 \begin_layout Standard
@@ -29407,9 +29332,7 @@ a=\frac{\splitfrac{xy+xy+xy+xy+xy}{+wy+wy+wy+wy}}{z}\ne\frac{\splitdfrac{xy+\fra
 
 \end_inset
 
-
-\lang english
-The command for the first numerator above is:
+El comando para el primer numerador es:
 \end_layout
 
 \begin_layout Standard
@@ -30456,20 +30379,18 @@ I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \backslash
 intertext
 \series default
- 
-\lang english
-always creates some vertical space between the text and the formula lines.
- To avoid this space, set in the document settings under 
+ siempre genera algo de espacio vertical entre el texto y las líneas de
+ la ecuación.
+ Para evitarlo, si está activa la opción 
 \family sans
-Math
+Cargar
 \begin_inset space ~
 \end_inset
 
-Options
+siempre
 \family default
- for the package 
+ el paquete 
 \series bold
-\lang spanish
 mathtools
 \series default
 
@@ -30482,20 +30403,19 @@ Paquetes ! mathtools
 
 \end_inset
 
- 
-\lang english
-the option 
+ en las 
 \family sans
-Load
+Opciones
 \begin_inset space ~
 \end_inset
 
-always
+para
+\begin_inset space ~
+\end_inset
+
+ecuaciones
 \family default
-.
- Then you can use the command
-\lang spanish
- 
+ en la configuración del documento, se puede usar el comando 
 \series bold
 
 \backslash
@@ -30513,17 +30433,16 @@ shortintertext
 
 \end_inset
 
- 
+ en lugar de
 \lang english
-instead of 
+ 
 \series bold
+\lang spanish
 
 \backslash
 intertext
 \series default
 :
-\lang spanish
-
 \begin_inset Formula 
 \begin{align}
 I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
@@ -35163,12 +35082,12 @@ command-alternatives paragraph-break;math-extern maxima
 \end_layout
 
 \begin_layout Section
-Consejos prácticos
+Miscelánea
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Consejos prácticos
+Miscelánea
 \end_layout
 
 \end_inset
@@ -36268,15 +36187,13 @@ cancelto
 \end_layout
 
 \begin_layout Standard
-Para cambiar el tamaño del valor subscrito por 
+Se puede cambiar el tamaño del valor impreso por 
 \series bold
 
 \backslash
 cancelto
 \series default
- se puede 
-\lang english
-add the LaTeX-preamble line
+ añadiendo en el preámbulo LaTeX la línea
 \end_layout
 
 \begin_layout Standard
@@ -36288,23 +36205,19 @@ PassOptionsToPackage{option}{cancel}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-where 
+donde 
 \series bold
 option
 \series default
- is either
-\lang spanish
- 
+ puede ser 
 \series bold
 samesize
 \series default
-, que da el mismo tamaño que para el valor cancelado, o 
+, que da el mismo tamaño que el valor cancelado, o 
 \series bold
 Smaller
 \series default
-, que da un tamaño un poco más pequeño que normal.
+, que da un tamaño un poco más pequeño que el normal.
 \end_layout
 
 \begin_layout Standard
@@ -37532,24 +37445,20 @@ i}
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-LaTeX-comments in formulas
+Comentarios de LaTeX en ecuaciones
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In text you can insert a comment that will only be visible in the LaTeX
- source code of your file with the menu 
+En texto se pueden insertar comentarios que sólo son visibles en el código
+ fuente de LaTeX con el menú 
 \family sans
-Insert\SpecialChar \menuseparator
-Note\SpecialChar \menuseparator
-Comment
+Insertar\SpecialChar \menuseparator
+Nota\SpecialChar \menuseparator
+Comentario
 \family default
 .
- This is not possible in a formula but you can insert LaTeX-comments with
- the command
+ Esto no es posible en ecuaciones, pero puedes insertar comentarios en LaTeX
+ con el comando
 \end_layout
 
 \begin_layout Standard
@@ -37561,12 +37470,8 @@ Comment
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This creates a box in which you can write your comment.
- Due to a bug in LyX
-\lang spanish
-
+Este comando crea un marco en el que puedes escribir el comentario.
+ Debido a un fallo de LyX
 \begin_inset Foot
 status collapsed
 
@@ -37583,19 +37488,15 @@ target "http://www.lyx.org/trac/ticket/9002"
 
 \end_inset
 
- 
-\lang english
-you cannot write normal text into the comment, even when you use mathematical
- text, you will see its LaTeX-commands in the LaTeX-output.
+ no puedes escribir texto normal en el comentario, incluso si usas texto
+ matemático verás sus comandos LaTeX en la salida LaTeX.
 \begin_inset Newline newline
 \end_inset
 
-This a formula with a LaTeX-comment:
-\lang spanish
-
+Una ecuación con un comentario en LaTeX:
 \begin_inset Formula 
 \[
-A=B%\text{This is the comment}
+A=B%\text{Esto es el comentario}
 \]
 
 \end_inset
@@ -37891,7 +37792,7 @@ Símbolos de letra
 \end_layout
 
 \begin_layout Section
-Sinónimos
+Comandos sinónimos
 \begin_inset Index idx
 status collapsed
 
