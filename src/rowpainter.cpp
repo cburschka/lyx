@@ -161,72 +161,7 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 }
 
 
-void RowPainter::paintHebrewComposeChar(pos_type & vpos, FontInfo const & font)
-{
-	pos_type pos = bidi_.vis2log(vpos);
-
-	docstring str;
-
-	// first char
-	char_type c = par_.getChar(pos);
-	str += c;
-	++vpos;
-
-	int const width = theFontMetrics(font).width(c);
-	int dx = 0;
-
-	for (pos_type i = pos - 1; i >= 0; --i) {
-		c = par_.getChar(i);
-		if (!Encodings::isHebrewComposeChar(c)) {
-			if (isPrintableNonspace(c)) {
-				int const width2 = pm_.singleWidth(i,
-					text_metrics_.displayFont(pit_, i));
-				dx = (c == 0x05e8 || // resh
-				      c == 0x05d3)   // dalet
-					? width2 - width
-					: (width2 - width) / 2;
-			}
-			break;
-		}
-	}
-
-	// Draw nikud
-	pi_.pain.text(int(x_) + dx, yo_, str, font);
-}
-
-
-void RowPainter::paintArabicComposeChar(pos_type & vpos, FontInfo const & font)
-{
-	pos_type pos = bidi_.vis2log(vpos);
-	docstring str;
-
-	// first char
-	char_type c = par_.getChar(pos);
-	c = par_.transformChar(c, pos);
-	str += c;
-	++vpos;
-
-	int const width = theFontMetrics(font).width(c);
-	int dx = 0;
-
-	for (pos_type i = pos - 1; i >= 0; --i) {
-		c = par_.getChar(i);
-		if (!Encodings::isArabicComposeChar(c)) {
-			if (isPrintableNonspace(c)) {
-				int const width2 = pm_.singleWidth(i,
-						text_metrics_.displayFont(pit_, i));
-				dx = (width2 - width) / 2;
-			}
-			break;
-		}
-	}
-	// Draw nikud
-	pi_.pain.text(int(x_) + dx, yo_, str, font);
-}
-
-
-void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
-			    bool hebrew, bool arabic)
+void RowPainter::paintChars(pos_type & vpos, Font const & font)
 {
 	// This method takes up 70% of time when typing
 	pos_type pos = bidi_.vis2log(vpos);
@@ -236,15 +171,21 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	str.reserve(100);
 	str.push_back(prev_char);
 
+	// special case for arabic
+	string const & lang = font.language()->lang();
+	bool const swap_paren = lang == "arabic_arabtex"
+		|| lang == "arabic_arabi"
+		|| lang == "farsi";
+
 	// FIXME: Why only round brackets and why the difference to
 	// Hebrew? See also Paragraph::getUChar
-	if (arabic) {
+	if (swap_paren) {
 		char_type c = str[0];
 		if (c == '(')
 			c = ')';
 		else if (c == ')')
 			c = '(';
-		str[0] = par_.transformChar(c, pos);
+		str[0] = c;
 	}
 
 	pos_type const end = row_.endpos();
@@ -259,6 +200,12 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 	// spelling correct?
 	bool const spell_state =
 		lyxrc.spellcheck_continuously && par_.isMisspelled(pos);
+
+	// are we building a RtL string? 
+	//FIXME: I would like to use the new isRTL() from textutils.h,
+	// but it does not give the same results for some reason I do
+	// not understand.
+	bool const rtl = Encodings::isArabicChar(str[0]) || Encodings::isHebrewChar(str[0]);
 
 	// collect as much similar chars as we can
 	for (++vpos ; vpos < end ; ++vpos) {
@@ -287,48 +234,27 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 
 		char_type c = par_.getChar(pos);
 
+		//FIXME: I would like to use the new isRTL() from textutils.h,
+		// but it does not give the same results for some reason I do
+		// not understand.
+		bool const new_rtl = Encodings::isArabicChar(c) || Encodings::isHebrewChar(c);
+		if (new_rtl != rtl)
+			// String direction has changed
+			break;
+
 		if (c == '\t')
 			break;
 
 		if (!isPrintableNonspace(c))
 			break;
 
-		/* Because we do our own bidi, at this point the strings are
-		 * already in visual order. However, Qt also applies its own
-		 * bidi algorithm to strings that it paints to the screen.
-		 * Therefore, if we were to paint Hebrew/Arabic words as a
-		 * single string, the letters in the words would get reversed
-		 * again. In order to avoid that, we don't collect Hebrew/
-		 * Arabic characters, but rather paint them one at a time.
-		 * See also http://thread.gmane.org/gmane.editors.lyx.devel/79740
-		 */
-		if (hebrew)
-			break;
-
-		/* FIXME: these checks are irrelevant, since 'arabic' and
-		 * 'hebrew' alone are already going to trigger a break.
-		 * However, this should not be removed completely, because
-		 * if an alternative solution is found which allows grouping
-		 * of arabic and hebrew characters, then these breaks may have
-		 * to be re-applied.
-
-		if (arabic && Encodings::isArabicComposeChar(c))
-			break;
-
-		if (hebrew && Encodings::isHebrewComposeChar(c))
-			break;
-		*/
-
 		// FIXME: Why only round brackets and why the difference to
 		// Hebrew? See also Paragraph::getUChar
-		if (arabic) {
+		if (swap_paren) {
 			if (c == '(')
 				c = ')';
 			else if (c == ')')
 				c = '(';
-			c = par_.transformChar(c, pos);
-			/* see comment in hebrew, explaining why we break */
-			break;
 		}
 
 		str.push_back(c);
@@ -337,15 +263,27 @@ void RowPainter::paintChars(pos_type & vpos, FontInfo const & font,
 
 	docstring s(&str[0], str.size());
 
+	/* Because we do our own bidi, at this point the strings are
+	 * already in visual order. However, Qt also applies its own
+	 * bidi algorithm to strings that it paints to the screen.
+	 * Therefore, if we were to paint Hebrew/Arabic words as a
+	 * single string, the letters in the words would get reversed
+	 * again. In order to avoid that, we reverse the string in advance.
+	 * See also http://thread.gmane.org/gmane.editors.lyx.devel/79740
+	 * for an earlier thread on the subject
+	 */
+	if (rtl)
+		reverse(s.begin(), s.end());
+
 	if (s[0] == '\t')
 		s.replace(0,1,from_ascii("    "));
 
 	if (!selection && !change_running.changed()) {
-		x_ += pi_.pain.text(int(x_), yo_, s, font);
+		x_ += pi_.pain.text(int(x_), yo_, s, font.fontInfo());
 		return;
 	}
 
-	FontInfo copy = font;
+	FontInfo copy = font.fontInfo();
 	if (change_running.changed())
 		copy.setPaintColor(change_running.color());
 	else if (selection)
@@ -394,36 +332,14 @@ void RowPainter::paintMisspelledMark(double orig_x, bool changed)
 void RowPainter::paintFromPos(pos_type & vpos, bool changed)
 {
 	pos_type const pos = bidi_.vis2log(vpos);
-	Font const orig_font = text_metrics_.displayFont(pit_, pos);
+	Font const font = text_metrics_.displayFont(pit_, pos);
 	double const orig_x = x_;
 
-	// usual characters, no insets
-	char_type const c = par_.getChar(pos);
+	paintChars(vpos, font);
+	paintForeignMark(orig_x, font.language());
 
-	// special case languages
-	string const & lang = orig_font.language()->lang();
-	bool const hebrew = lang == "hebrew";
-	bool const arabic = lang == "arabic_arabtex" || lang == "arabic_arabi" ||
-						lang == "farsi";
-
-	// spelling correct?
-	bool const misspelled =
-		lyxrc.spellcheck_continuously && par_.isMisspelled(pos);
-
-	// draw as many chars as we can
-	if ((!hebrew && !arabic)
-		|| (hebrew && !Encodings::isHebrewComposeChar(c))
-		|| (arabic && !Encodings::isArabicComposeChar(c))) {
-		paintChars(vpos, orig_font.fontInfo(), hebrew, arabic);
-	} else if (hebrew) {
-		paintHebrewComposeChar(vpos, orig_font.fontInfo());
-	} else if (arabic) {
-		paintArabicComposeChar(vpos, orig_font.fontInfo());
-	}
-
-	paintForeignMark(orig_x, orig_font.language());
-
-	if (lyxrc.spellcheck_continuously && misspelled) {
+	// Paint the spelling mark if needed.
+	if (lyxrc.spellcheck_continuously && par_.isMisspelled(pos)) {
 		// check for cursor position
 		// don't draw misspelled marker for words at cursor position
 		// we don't want to disturb the process of text editing

@@ -11,7 +11,7 @@ what we have with force_paint_single_char. Moreover there has been
 some code factorization in TextMetrics, where the same row-breaking
 algorithm was basically implemented 3 times.
 
-Currently everything is supposed to work for LTR text, and RTL text
+Currently everything is supposed to work for LTR text, and RtL text
 should work too except possibly metrics with Arabic and Hebrew fonts.
 
 When KEEP_OLD_METRICS_CODE is defined in TextMetrics.cpp, the new code
@@ -40,12 +40,13 @@ What is done:
   lyxrc.force_paint_single_char is false. In this case, remove also
   useless workarounds which disable kerning and ligatures.
 
+* when lyxrc.force_paint_single_char is false, draw also RtL text
+  string-wise. This both speed-up drawing and prepare for code
+  removal, since we now rely on Qt to do things we use to do by
+  ourselves (see isArabic* and isHebrew* code in Encodings.cpp).
+
 
 Next steps:
-
-* check what happens with Arabic and/or Hebrew text. There may be some
-  problems related to compose characters. Investigate whether RtL
-  strings could be drawn on a string-wise basis.
 
 * investigate whether strings could be cut at separators in RowPainter
   only in justified text. This would speed-up painting in other cases
@@ -76,17 +77,17 @@ Steps for later (aka out of the scope of this branch):
 
 Known bugs:
 
-* there are still difference in what breaks words. In particular,
-  RowPainter breaks strings at: selection end, spell-checking
-  extremities. This seems to be harmless.
-
-* when clicking in the right margin, getPosNearX does not return
-  the same value as before. I am not sure whether this is important.
-
 * When selecting text, the display seems to move around. This is
   because partly selected words are drawn in two parts, and in case
   like "ef|fort" or "V|AN", there are some ligature or kerning effects
   that change the display. I am not sure yet how to fix that.
+
+* there are other differences in what breaks words. In particular,
+  RowPainter breaks strings at spell-checking extremities. This seems
+  to be harmless.
+
+* when clicking in the right margin, getPosNearX does not return
+  the same value as before. I am not sure whether this is important.
 
 
 Other differences in behavior (aka bug fixes):

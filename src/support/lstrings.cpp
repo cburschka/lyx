@@ -161,6 +161,29 @@ bool isNumber(char_type c)
 }
 
 
+bool isRTL(char_type c)
+{
+	if (!is_utf16(c))
+		// assume that no non-utf16 character is right-to-left
+		// c outside the UCS4 range is catched as well
+		return false;
+	QChar::Direction direction = ucs4_to_qchar(c).direction();
+	/**
+	 * See for example:
+	 *  http://en.wikipedia.org/wiki/Template:Bidi_Class_%28Unicode%29.
+	 * Here we only handle the easy cases:
+	 *  * R:  Hebrew alphabet and related punctuation
+	 *  * AL: Arabic, Thaana and Syriac alphabets, and most
+	 *        punctuation specific to those scripts
+	 *
+	 * FIXME: testing show that this does not work (see
+	 * RowPainter::paintChars), but my knowledge of unicode is too
+	 * poor to understand why.
+	 */
+	return direction == QChar::DirR || direction ==QChar::DirAL;
+}
+
+
 bool isDigitASCII(char_type c)
 {
 	return '0' <= c && c <= '9';
