@@ -1393,7 +1393,7 @@ msgstr "Rozsah na kterém je hledání prováděno"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:206
 msgid "Scope"
-msgstr ""
+msgstr "Rozsah"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:218
 msgid "C&urrent document"
@@ -5741,7 +5741,7 @@ msgstr "Email"
 
 #: lib/layouts/aapaper.layout:3 lib/layouts/aapaper.layout:14
 msgid "Astronomy & Astrophysics (V. 4, Obsolete)"
-msgstr ""
+msgstr "Astronomy & Astrophysics (V. 4, Obsolete)"
 
 #: lib/layouts/aapaper.layout:50 lib/layouts/apa6.layout:454
 #: lib/layouts/apa.layout:354 lib/layouts/beamer.layout:80
@@ -5818,7 +5818,7 @@ msgstr "Literatura"
 
 #: lib/layouts/aastex.layout:3
 msgid "American Astronomical Society (AASTeX)"
-msgstr ""
+msgstr "American Astronomical Society (AASTeX)"
 
 #: lib/layouts/aastex.layout:152 lib/layouts/achemso.layout:104
 #: lib/layouts/apa6.layout:149 lib/layouts/apa.layout:159
@@ -5841,7 +5841,7 @@ msgstr "Číslo"
 
 #: lib/layouts/aastex.layout:179
 msgid "Consecutive number for the alternative affiliations"
-msgstr ""
+msgstr "Consecutive number for the alternative affiliations"
 
 #: lib/layouts/aastex.layout:183
 msgid "Alternative affiliation:"
@@ -5974,7 +5974,7 @@ msgstr "FigCaption"
 
 #: lib/layouts/aastex.layout:528
 msgid "fig."
-msgstr ""
+msgstr "fig."
 
 #: lib/layouts/aastex.layout:532 lib/layouts/achemso.layout:77
 #: lib/layouts/apa6.layout:355 lib/layouts/apa.layout:255
@@ -6016,11 +6016,11 @@ msgstr "Obj:"
 
 #: lib/layouts/aastex.layout:588 lib/layouts/aastex.layout:618
 msgid "Recognized Name"
-msgstr ""
+msgstr "Recognized Name"
 
 #: lib/layouts/aastex.layout:589
 msgid "Separate the recognized name of an object from text"
-msgstr ""
+msgstr "Separate the recognized name of an object from text"
 
 #: lib/layouts/aastex.layout:604
 msgid "Dataset"
@@ -6032,7 +6032,7 @@ msgstr "Dataset:"
 
 #: lib/layouts/aastex.layout:619
 msgid "Separate the dataset ID from text"
-msgstr ""
+msgstr "Separate the dataset ID from text"
 
 #: lib/layouts/achemso.layout:3
 msgid "American Chemical Society (ACS)"
@@ -6158,11 +6158,11 @@ msgstr "chemistry"
 
 #: lib/layouts/acmsiggraph.layout:3
 msgid "ACM SIGGRAPH"
-msgstr ""
+msgstr "ACM SIGGRAPH"
 
 #: lib/layouts/acmsiggraph.layout:66
 msgid "TOG online ID"
-msgstr ""
+msgstr "TOG online ID"
 
 #: lib/layouts/acmsiggraph.layout:77
 msgid "Online ID:"
@@ -6799,11 +6799,11 @@ msgstr "Články (DocBook)"
 
 #: lib/layouts/agums.layout:3
 msgid "American Geophysical Union (AGUPLUS Manuscript)"
-msgstr ""
+msgstr "American Geophysical Union (AGUPLUS Manuscript)"
 
 #: lib/layouts/agutex.layout:3
 msgid "American Geophysical Union (AGUTeX)"
-msgstr ""
+msgstr "American Geophysical Union (AGUTeX)"
 
 #: lib/layouts/agutex.layout:74
 msgid "Authors"
@@ -6819,7 +6819,7 @@ msgstr "Author affiliation"
 
 #: lib/layouts/agutex.layout:125
 msgid "Consecutive number for the author affiliations"
-msgstr ""
+msgstr "Consecutive number for the author affiliations"
 
 #: lib/layouts/agutex.layout:129
 msgid "Author affiliation:"
@@ -6852,7 +6852,7 @@ msgstr "Acknowledgments."
 
 #: lib/layouts/amsart.layout:3
 msgid "American Mathematical Society (AMS) Article"
-msgstr ""
+msgstr "American Mathematical Society (AMS) Article"
 
 #: lib/layouts/amsart.layout:75 lib/layouts/amsbook.layout:84
 #: lib/layouts/beamer.layout:272 lib/layouts/egs.layout:598
@@ -6897,7 +6897,7 @@ msgstr "Podpodsekce*"
 
 #: lib/layouts/amsbook.layout:3
 msgid "American Mathematical Society (AMS) Book"
-msgstr ""
+msgstr "American Mathematical Society (AMS) Book"
 
 #: lib/layouts/amsbook.layout:4 lib/layouts/book.layout:4
 #: lib/layouts/ctex-book.layout:4 lib/layouts/extbook.layout:4
@@ -6915,7 +6915,7 @@ msgstr "Chapter Exercises"
 
 #: lib/layouts/apa6.layout:3
 msgid "American Psychological Association (APA), v. 6"
-msgstr ""
+msgstr "American Psychological Association (APA), v. 6"
 
 #: lib/layouts/apa6.layout:60 lib/layouts/apa.layout:105
 msgid "Short title:"
@@ -7117,11 +7117,11 @@ msgstr "Arabic Article"
 
 #: lib/layouts/article-beamer.layout:3
 msgid "Beamer Article (Standard Class)"
-msgstr ""
+msgstr "Beamer Article (Standard Class)"
 
 #: lib/layouts/article.layout:3
 msgid "Article (Standard Class)"
-msgstr ""
+msgstr "Article (Standard Class)"
 
 #: lib/layouts/article.layout:20 lib/layouts/beamer.layout:194
 #: lib/layouts/beamer.layout:219 lib/layouts/memoir.layout:54
@@ -7184,7 +7184,7 @@ msgstr "On Slide"
 #: lib/layouts/beamer.layout:170 lib/layouts/beamer.layout:701
 #: lib/layouts/powerdot.layout:284 lib/layouts/powerdot.layout:335
 msgid "Overlay specifications for this item"
-msgstr ""
+msgstr "Overlay specifications for this item"
 
 #: lib/layouts/beamer.layout:125
 msgid "Mini Template"
@@ -7282,6 +7282,7 @@ msgstr ""
 msgid ""
 "The subsubsection as it appears in the table of contents/running headers"
 msgstr ""
+"Susubbsekce tak, jak se objeví v obsahu/hlavičkách"
 
 #: lib/layouts/beamer.layout:382
 msgid "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
@@ -7858,11 +7859,11 @@ msgstr "Seznam obrázků"
 
 #: lib/layouts/book.layout:3
 msgid "Book (Standard Class)"
-msgstr ""
+msgstr "Book (Standard Class)"
 
 #: lib/layouts/broadway.layout:3
 msgid "Broadway"
-msgstr ""
+msgstr "Broadway"
 
 #: lib/layouts/broadway.layout:4 lib/layouts/hollywood.layout:4
 msgid "Scripts"
@@ -8036,7 +8037,7 @@ msgstr "KnightMove:"
 
 #: lib/layouts/cl2emult.layout:3
 msgid "Springer cl2emult"
-msgstr ""
+msgstr "Springer cl2emult"
 
 #: lib/layouts/ctex-article.layout:3
 msgid "Chinese Article (CTeX)"
@@ -8296,7 +8297,7 @@ msgstr "Signature|S"
 
 #: lib/layouts/dinbrief.layout:207
 msgid "Here you can insert a signature scan"
-msgstr ""
+msgstr "Here you can insert a signature scan"
 
 #: lib/layouts/dinbrief.layout:212 lib/layouts/lettre.layout:70
 #: lib/layouts/lettre.layout:606 lib/layouts/stdletter.inc:116
@@ -8813,7 +8814,7 @@ msgstr "Thanks Option"
 
 #: lib/layouts/elsart.layout:208
 msgid "Optional argument for the thanks statement"
-msgstr ""
+msgstr "Optional argument for the thanks statement"
 
 #: lib/layouts/elsart.layout:289
 msgid "Theorem \\arabic{theorem}"
@@ -8881,7 +8882,7 @@ msgstr "Case \\arabic{case}"
 
 #: lib/layouts/entcs.layout:3
 msgid "Electronic Notes in Theor. Comp. Sc. (ENTCS)"
-msgstr ""
+msgstr "Electronic Notes in Theor. Comp. Sc. (ENTCS)"
 
 #: lib/layouts/entcs.layout:111 lib/layouts/siamltex.layout:314
 msgid "Key words:"
@@ -9127,19 +9128,19 @@ msgstr "Vertical space"
 
 #: lib/layouts/extarticle.layout:3
 msgid "Article (Standard Class with Extra Font Sizes)"
-msgstr ""
+msgstr "Article (Standard Class with Extra Font Sizes)"
 
 #: lib/layouts/extbook.layout:3
 msgid "Book (Standard Class with Extra Font Sizes)"
-msgstr ""
+msgstr "Book (Standard Class with Extra Font Sizes)"
 
 #: lib/layouts/extletter.layout:3
 msgid "Letter (Standard Class with Extra Font Sizes)"
-msgstr ""
+msgstr "Letter (Standard Class with Extra Font Sizes)"
 
 #: lib/layouts/extreport.layout:3
 msgid "Report (Standard Class with Extra Font Sizes)"
-msgstr ""
+msgstr "Report (Standard Class with Extra Font Sizes)"
 
 #: lib/layouts/foils.layout:3
 msgid "FoilTeX"
@@ -9280,11 +9281,11 @@ msgstr "Definice*"
 
 #: lib/layouts/frletter.layout:3
 msgid "French Letter (frletter)"
-msgstr ""
+msgstr "French Letter (frletter)"
 
 #: lib/layouts/g-brief2.layout:3
 msgid "G-Brief (V. 2)"
-msgstr ""
+msgstr "G-Brief (V. 2)"
 
 #: lib/layouts/g-brief2.layout:42 lib/layouts/g-brief2.layout:753
 #: lib/layouts/g-brief.layout:175
@@ -9694,7 +9695,7 @@ msgstr "Hebrew Letter"
 
 #: lib/layouts/hollywood.layout:3
 msgid "Hollywood"
-msgstr ""
+msgstr "Hollywood"
 
 #: lib/layouts/hollywood.layout:56
 msgid "More"
@@ -9750,7 +9751,7 @@ msgstr "Scene"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:3
 msgid "IEEE Transactions Computer Society"
-msgstr ""
+msgstr "IEEE Transactions Computer Society"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:19
 #: lib/layouts/IEEEtran-TransMag.layout:20
@@ -9830,7 +9831,7 @@ msgstr "Left Side"
 
 #: lib/layouts/IEEEtran.layout:228
 msgid "Left side of the header line"
-msgstr ""
+msgstr "Left side of the header line"
 
 #: lib/layouts/IEEEtran.layout:242 lib/layouts/ijmpc.layout:65
 #: lib/layouts/ijmpd.layout:70
@@ -9984,6 +9985,8 @@ msgid ""
 "Use the largest item number in your list, e.g. '(iv)' for 4 Roman numbered "
 "items"
 msgstr ""
+"Use the largest item number in your list, e.g. '(iv)' for 4 Roman numbered "
+"items"
 
 #: lib/layouts/ijmpc.layout:352 lib/layouts/ijmpd.layout:358
 #: lib/layouts/theorems-ams-bytype.inc:72 lib/layouts/theorems-ams.inc:46
@@ -10048,7 +10051,7 @@ msgstr "Appendix \\Alph{appendix}."
 
 #: lib/layouts/ijmpd.layout:3
 msgid "Int. Journal of Modern Physics D"
-msgstr ""
+msgstr "Int. Journal of Modern Physics D"
 
 #: lib/layouts/ijmpd.layout:199 lib/layouts/ijmpd.layout:203
 msgid "Comby"
@@ -10060,7 +10063,7 @@ msgstr ""
 
 #: lib/layouts/iopart.layout:66 lib/layouts/jasatex.layout:75
 msgid "Short title that will appear in header line"
-msgstr ""
+msgstr "Short title that will appear in header line"
 
 #: lib/layouts/iopart.layout:82
 msgid "Review"
@@ -10122,7 +10125,7 @@ msgstr "Bibliography heading"
 
 #: lib/layouts/isprs.layout:3
 msgid "Int. Society f. Photogrammetry and Remote Sensing (ISPRS)"
-msgstr ""
+msgstr "Int. Society f. Photogrammetry and Remote Sensing (ISPRS)"
 
 #: lib/layouts/isprs.layout:39
 msgid "ABSTRACT:"
@@ -10142,11 +10145,11 @@ msgstr "ACKNOWLEDGEMENTS"
 
 #: lib/layouts/jarticle.layout:3
 msgid "Japanese Article (jarticle)"
-msgstr ""
+msgstr "Japanese Article (jarticle)"
 
 #: lib/layouts/jasatex.layout:3
 msgid "Journal of the Acoustical Society of America (JASA)"
-msgstr ""
+msgstr "Journal of the Acoustical Society of America (JASA)"
 
 #: lib/layouts/jasatex.layout:121
 msgid "Alternative Affiliation"
@@ -10158,7 +10161,7 @@ msgstr "Affiliation Prefix"
 
 #: lib/layouts/jasatex.layout:127
 msgid "A prefix like 'Also at '"
-msgstr ""
+msgstr "A prefix like 'Also at '"
 
 #: lib/layouts/jasatex.layout:132 lib/layouts/moderncv.layout:149
 msgid "Homepage"
@@ -10234,7 +10237,7 @@ msgstr "Running author:"
 
 #: lib/layouts/latex8.layout:3
 msgid "Latex8 Article (Obsolete)"
-msgstr ""
+msgstr "Latex8 Article (Obsolete)"
 
 #: lib/layouts/letter.layout:3
 msgid "Letter (Standard Class)"
@@ -10521,7 +10524,7 @@ msgstr "Legenda"
 
 #: lib/layouts/moderncv.layout:3
 msgid "Modern CV"
-msgstr ""
+msgstr "Modern CV"
 
 #: lib/layouts/moderncv.layout:36
 msgid "CVStyle"
@@ -10605,7 +10608,7 @@ msgstr "Photo:"
 
 #: lib/layouts/moderncv.layout:177
 msgid "Height the photo is resized to"
-msgstr ""
+msgstr "Height the photo is resized to"
 
 #: lib/layouts/moderncv.layout:180
 msgid "Thickness"
@@ -10849,7 +10852,7 @@ msgstr "Slide Option"
 
 #: lib/layouts/powerdot.layout:142
 msgid "Optional arguments to the slide command (see powerdot manual)"
-msgstr ""
+msgstr "Optional arguments to the slide command (see powerdot manual)"
 
 #: lib/layouts/powerdot.layout:151
 msgid "EndSlide"
@@ -10915,7 +10918,7 @@ msgstr "Enumerate Type"
 
 #: lib/layouts/powerdot.layout:321 lib/layouts/powerdot.layout:345
 msgid "Enumerate type specification (see powerdot manual)"
-msgstr ""
+msgstr "Enumerate type specification (see powerdot manual)"
 
 #: lib/layouts/powerdot.layout:324 lib/layouts/enumitem.module:64
 #: lib/layouts/enumitem.module:106
@@ -10940,7 +10943,7 @@ msgstr "Left Column"
 
 #: lib/layouts/powerdot.layout:456
 msgid "Enter the text of the left column here (right column in main paragraph)"
-msgstr ""
+msgstr "Enter the text of the left column here (right column in main paragraph)"
 
 #: lib/layouts/powerdot.layout:530 lib/layouts/stdfloats.inc:46
 #: lib/layouts/algorithm2e.module:20
@@ -12088,7 +12091,7 @@ msgstr "Postcode"
 
 #: lib/layouts/amsdefs.inc:39
 msgid "Short title which appears in the running headers"
-msgstr ""
+msgstr "Short title which appears in the running headers"
 
 #: lib/layouts/amsdefs.inc:141
 msgid "Current Address"
@@ -14006,7 +14009,7 @@ msgstr "Čínština (tradiční)"
 
 #: lib/languages:317
 msgid "Coptic"
-msgstr ""
+msgstr "Koptština"
 
 #: lib/languages:324
 msgid "Croatian"
@@ -14022,7 +14025,7 @@ msgstr "Dánština"
 
 #: lib/languages:352
 msgid "Divehi (Maldivian)"
-msgstr ""
+msgstr "Divehi (Maledivština)"
 
 #: lib/languages:359
 msgid "Dutch"
@@ -14083,7 +14086,7 @@ msgstr "Hebrejština"
 
 #: lib/languages:520
 msgid "Hindi"
-msgstr ""
+msgstr "Hindština"
 
 #: lib/languages:538
 msgid "Icelandic"
@@ -14167,7 +14170,7 @@ msgstr "Norština (Nynorsk)"
 
 #: lib/languages:735
 msgid "Occitan"
-msgstr ""
+msgstr "Okcitánština"
 
 #: lib/languages:753
 msgid "Polish"
@@ -14227,7 +14230,7 @@ msgstr "Švédština"
 
 #: lib/languages:887
 msgid "Syriac"
-msgstr ""
+msgstr "Syrština"
 
 #: lib/languages:895 src/frontends/qt4/GuiSymbols.cpp:71
 msgid "Tamil"
@@ -15396,11 +15399,11 @@ msgstr "Zkopírovat sloupec|o"
 
 #: lib/ui/stdcontext.inc:427
 msgid "Move Column Right|v"
-msgstr ""
+msgstr "Přesun sloupce doprava|v"
 
 #: lib/ui/stdcontext.inc:428
 msgid "Move Column Left"
-msgstr ""
+msgstr "Přesun sloupce doleva"
 
 #: lib/ui/stdcontext.inc:438 lib/ui/stdmenus.inc:30
 msgid "File|F"
@@ -15760,11 +15763,11 @@ msgstr "Nastavení tabulky...|b"
 
 #: lib/ui/stdmenus.inc:157
 msgid "Paste from HTML|H"
-msgstr ""
+msgstr "Vložit z HTML|H"
 
 #: lib/ui/stdmenus.inc:158
 msgid "Paste from LaTeX|L"
-msgstr ""
+msgstr "Vložit z LaTeXu|X"
 
 #: lib/ui/stdmenus.inc:159
 msgid "Paste as LinkBack PDF"
@@ -16729,19 +16732,19 @@ msgstr "Smazat sloupec"
 
 #: lib/ui/stdtoolbars.inc:148
 msgid "Move row up"
-msgstr ""
+msgstr "Přesuň řádek nahoru"
 
 #: lib/ui/stdtoolbars.inc:149
 msgid "Move column left"
-msgstr ""
+msgstr "Přesuň sloupec doleva"
 
 #: lib/ui/stdtoolbars.inc:150
 msgid "Move row down"
-msgstr ""
+msgstr "Přesuň řádek dolů"
 
 #: lib/ui/stdtoolbars.inc:151
 msgid "Move column right"
-msgstr ""
+msgstr "Přesuň sloupec doprava"
 
 #: lib/ui/stdtoolbars.inc:153
 msgid "Set top line"
@@ -21296,23 +21299,20 @@ msgid "Dia"
 msgstr "Dia"
 
 #: lib/external_templates:376 lib/external_templates:379
-#, fuzzy
 msgid "Dia diagram"
-msgstr "Diagram programu Dia.\n"
+msgstr "Diagram programu Dia."
 
 #: lib/external_templates:378
 msgid "Dia diagram.\n"
 msgstr "Diagram programu Dia.\n"
 
 #: lib/configure.py:567
-#, fuzzy
 msgid "tgo"
-msgstr "top"
+msgstr "tgo"
 
 #: lib/configure.py:567
-#, fuzzy
 msgid "tgo|Tgif"
-msgstr "Tgif"
+msgstr "tgo|Tgif"
 
 #: lib/configure.py:570
 msgid "FIG"
@@ -21324,11 +21324,11 @@ msgstr "DIA"
 
 #: lib/configure.py:576
 msgid "sxd"
-msgstr ""
+msgstr "sxd"
 
 #: lib/configure.py:576
 msgid "sxd|OpenOffice"
-msgstr ""
+msgstr "sxd|OpenOffice"
 
 #: lib/configure.py:579
 msgid "Grace"
@@ -21352,12 +21352,11 @@ msgstr "GIF"
 
 #: lib/configure.py:589
 msgid "jpeg"
-msgstr ""
+msgstr "jpeg"
 
 #: lib/configure.py:589
-#, fuzzy
 msgid "jpeg|JPEG"
-msgstr "JPEG"
+msgstr "jpeg|JPEG"
 
 #: lib/configure.py:590
 msgid "PBM"
@@ -21469,9 +21468,8 @@ msgid "LaTeX (XeTeX)"
 msgstr "LaTeX (XeTeX)"
 
 #: lib/configure.py:623
-#, fuzzy
 msgid "LaTeX (clipboard)"
-msgstr "LaTeX (prostý)"
+msgstr "LaTeX (schránka)"
 
 #: lib/configure.py:624
 msgid "Plain text"
@@ -21531,11 +21529,11 @@ msgstr "EPS"
 
 #: lib/configure.py:651
 msgid "EPS (uncropped)"
-msgstr ""
+msgstr "EPS (neořezaný)"
 
 #: lib/configure.py:652
 msgid "EPS (cropped)"
-msgstr ""
+msgstr "EPS (ořezaný)"
 
 #: lib/configure.py:653
 msgid "Postscript"
@@ -23683,7 +23681,7 @@ msgstr ""
 #: src/LyX.cpp:1091 src/frontends/qt4/GuiAbout.cpp:141
 #, c-format
 msgid "Built on %1$s[[date]], %2$s[[time]]"
-msgstr ""
+msgstr "Sestaven %1$s[[date]], %2$s[[time]]"
 
 #: src/LyX.cpp:1103 src/support/Package.cpp:621
 msgid "No system directory"
@@ -24400,7 +24398,7 @@ msgstr ""
 
 #: src/Text.cpp:1013
 msgid "Character is uncodable in verbatim paragraphs."
-msgstr ""
+msgstr "Znak je nekódovatelný v prostředí doslovných odstavců"
 
 #: src/Text.cpp:1850
 msgid "[Change Tracking] "
@@ -24970,11 +24968,11 @@ msgstr ""
 
 #: src/frontends/qt4/FindAndReplace.cpp:313
 msgid "Advanced search in progress (press ESC to cancel) . . ."
-msgstr ""
+msgstr "Probíhá vyhledávání (pro přerušení stiskněte ESC) . . ."
 
 #: src/frontends/qt4/FindAndReplace.cpp:357
 msgid "Advanced search cancelled by user"
-msgstr ""
+msgstr "Pokročilé vyhledávání zrušeno uživatelem"
 
 #: src/frontends/qt4/FindAndReplace.cpp:375
 #: src/frontends/qt4/GuiSearch.cpp:139
@@ -25067,12 +25065,12 @@ msgstr "Uživatelský adresář: "
 #: src/frontends/qt4/GuiAbout.cpp:129
 #, c-format
 msgid "Qt Version (run-time): %1$s"
-msgstr ""
+msgstr "Qt Verze (za běhu): %1$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:130
 #, c-format
 msgid "Qt Version (compile-time): %1$s"
-msgstr ""
+msgstr "Qt Verze (při kompilaci): %1$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:156
 msgid "About LyX"
