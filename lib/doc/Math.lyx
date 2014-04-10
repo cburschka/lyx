@@ -26450,7 +26450,7 @@ Special characters
 \end_layout
 
 \begin_layout Standard
-The characters ^ and _ would normally create a subscript and subscript,
+The characters ^ and _ would normally create a superscript and subscript,
  respectively.
  To get these characters you have to insert them with a leading 
 \backslash
@@ -37225,7 +37225,7 @@ target "http://www.lyx.org/trac/ticket/9002"
 
 \end_inset
 
- you cannot write normal text into the comment, even when you use mathematical
+ you cannot write normal text inside the comment, even when you use mathematical
  text, you will see its LaTeX-commands in the LaTeX-output.
 \begin_inset Newline newline
 \end_inset
