@@ -261,10 +261,22 @@ traducteur: Siegfried Meunier-Guttin-Cluzel
 \end_layout
 
 \begin_layout Plain Layout
-Dernière revue : 31/10/2012 pour 2.0.5 (quelques mises à jour de Uwe -> 19/10/2012
- + remplacement de Éditer/Visionner/Insérer/Naviguer par Édition/Affichage/Inser
-tion/Navigation) par J.P.
+Revues : 
+\end_layout
+
+\begin_layout Itemize
+31/10/2012 pour 2.0.5 (quelques mises à jour de Uwe -> 19/10/2012 + remplacement
+ de Éditer/Visionner/Insérer/Naviguer par Édition/Affichage/Insertion/Navigation
+) par J.P.
  Chrétien
+\end_layout
+
+\begin_layout Itemize
+03/04/2014 pour 2.0.8 (traduction d'un paragraphe d'allemand en français dans
+ l'espoir de supprimer le besoin du paquetage de langue allemande, suite
+ à une suggestion de D.
+ Clément.
+ Il reste un passage en allemand indispensable au paragraphe 7.1)
 \end_layout
 
 \end_inset
@@ -305,7 +317,7 @@ braket, cancel, eurosym, mathdots, mhchem
 \series bold
 was
 \series default
- devraient être installés.
+ et le paquetage de langue allemande devraient être installés.
  Si les ne sont pas installés, vous pouvez quand même exporter votre document,
  mais les sections où ces paquetages sont nécessaires ne seront pas visibles
  sur la sortie finale.
@@ -10186,11 +10198,11 @@ caractère par LaTeX si la portion de formule avec le tréma est marqué comme
 ddot
 \series default
 , on crée de 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 vrais
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  umlauts, comme le montre l'exemple suivant:
@@ -36869,8 +36881,6 @@ Comme exemple, un texte multi-colonne avec une formule hors-ligne:
 \end_layout
 
 \begin_layout Standard
-
-\lang german
 \begin_inset ERT
 status collapsed
 
@@ -36883,22 +36893,21 @@ begin{multicols}{2}
 
 \end_inset
 
-Das Spektrum wird fouriertransformiert.
- Die Fouriertransformation wird verwendet, um die überlagerten Signale (Netzwerk
-, Lösungsmittel) zu trennen.
- Nachdem wir die Phasenverschiebung bestimmen konnten, interessiert uns
- nun das Aussehen des Ausgangssignals.
- Im Experiment haben wir es mit sehr vielen Teilchen zu tun, so dass man
- über alle Phasen integrieren muss.
- Sei nun 
+On applique au spectre la transformation de Fourier.
+ Celle-ci est utilisée pour séparer les signaux superposés (réseau, solvants).
+ Après avoir déterminé les décalages de phase, on s'intéresse uniquement
+ à l'aspect du signal de sortie.
+ Expérimentalement, nous sommes confrontés à de très nombreuses particules,
+ de sorte que l'on doit intégrer sur toutes les phases.
+ Soient alors 
 \begin_inset Formula $S$
 \end_inset
 
- unser normiertes Ausgangssignal und 
+ notre signal de sortie normalisé et 
 \begin_inset Formula $P$
 \end_inset
 
- die Phasenverteilungsfunktion, so ergibt sich die Beziehung
+ la fonction de distribution des phases ; on obtient la relation suivante
 \begin_inset ERT
 status collapsed
 
@@ -36936,37 +36945,30 @@ begin{multicols}{2}
 
 \end_inset
 
-wobei 
+où 
 \begin_inset Formula $S_{0}$
 \end_inset
 
- das Signal ohne Gradient ist und die Normierungsbedingung 
+ est le signal sans gradient et les conditions de normalisation 
 \begin_inset Formula $\int_{-\infty}^{\infty}P(\phi,t)\,\mathrm{d}\phi=1$
 \end_inset
 
- gilt.
- Nun dürfen wir aber nicht den Relaxationsprozess außer Acht lassen.
- Direkt nach dem 
+ s'appliquent.
+ Toutefois, nous devons garder à l'esprit le processus de relaxation.
+ Juste après l'impulsion 
 \begin_inset Formula $\nicefrac{\pi}{2}$
 \end_inset
 
-
-\begin_inset space \thinspace{}
-\end_inset
-
--rf-Puls beginnt sich die Magnetisierung zu entfokussieren, wodurch sich
- das Signal zusätzlich abschwächt.
- Diese Abschwächung verläuft exponentiell in Abhängigkeit der so genannten
- 
+-rf, la magnétisation commence à se défocaliser, ce qui provoque en outre
+ l'atténuation du signal.
+ Cette atténuation dépend exponentiellement de ladite durée 
 \begin_inset Formula $T_{2}$
 \end_inset
 
--Zeit.
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang german
 \begin_inset ERT
 status collapsed
 
