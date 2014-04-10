@@ -717,7 +717,7 @@ zgrep %%Bounding x.eps.gz > x.eps.bb
 
 La seconde commande va créer le fichier contenant la description de la boîte
  de délimitation 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -725,7 +725,7 @@ La seconde commande va créer le fichier contenant la description de la boîte
 x.eps.bb
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  qui est indispensable pour que LaTeX puisse traiter un fichier compressé.
@@ -899,7 +899,7 @@ Flottant\SpecialChar \menuseparator
 Figure
 \family default
  insèrent un flottant avec l'étiquette 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -911,7 +911,7 @@ Figure
 #:
 \series default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  (# est le numéro réel de l'image).
@@ -1103,11 +1103,11 @@ arg   "dialog-show-new-inset ref"
  de la barre d'outils.
  Il est important d'utiliser des références pour les flottants de figures
  plutôt que des locutions vagues du genre 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 la figure ci-dessous
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , puisque LaTeX va repositionner la figure dans le document final.
@@ -1280,11 +1280,11 @@ name "fig:Deux-images-déformées"
 
 Deux images déformées.
  Les deux images font partie du groupe de paramétrisation 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 déformés
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -1394,24 +1394,24 @@ bitmap) l'image est décomposée en une mosaïque de points (ou pixels), souvent
  Elles ne sont pas facilement redimensionnables et on voit apparaître des
  petits carrés quand on utilise des agrandissements trop importants (aspect
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 pixellisé
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 ).
  Les formats matriciels les plus connus sont le GIF (
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Graphics Interchange Format
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
-, avec comme extension de fichier 
-\begin_inset Quotes eld
+, avec comme suffixe de fichier 
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -1419,7 +1419,7 @@ Graphics Interchange Format
 .gif
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 )
@@ -1455,11 +1455,15 @@ status collapsed
 \end_inset
 
 , le PNG (
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
-Portable Network Graphics, extension 
-\begin_inset Quotes eld
+Portable Network Graphics
+\begin_inset Quotes frd
+\end_inset
+
+, suffixe 
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -1467,7 +1471,7 @@ Portable Network Graphics, extension
 .png
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 )
@@ -1503,11 +1507,15 @@ status collapsed
 \end_inset
 
  et le JPG (
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
-Joint Photographic Expert Group, extension 
-\begin_inset Quotes eld
+Joint Photographic Expert Group
+\begin_inset Quotes frd
+\end_inset
+
+, suffixe 
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -1515,11 +1523,11 @@ Joint Photographic Expert Group, extension
 .jpg
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  ou 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -1527,7 +1535,7 @@ Joint Photographic Expert Group, extension
 .jpeg
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 )
@@ -1595,15 +1603,15 @@ nnement.
 \end_inset
 
 Les principaux formats vectoriels sont le SVG (
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Scalable Vector Graphics
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
-, extension
-\begin_inset Quotes eld
+, suffixe 
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -1611,7 +1619,7 @@ Scalable Vector Graphics
 .svg
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 )
@@ -1647,15 +1655,15 @@ status collapsed
 \end_inset
 
 , l'EPS ( 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 encapsulated PostScript
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
-, extension
-\begin_inset Quotes eld
+, suffixe 
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -1663,7 +1671,7 @@ encapsulated PostScript
 .eps
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 )
@@ -1699,15 +1707,15 @@ status collapsed
 \end_inset
 
 , le PDF (
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Portable Document Format
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
-, extension
-\begin_inset Quotes eld
+, suffixe 
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -1715,7 +1723,7 @@ Portable Document Format
 .pdf
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 )
@@ -1751,15 +1759,15 @@ status collapsed
 \end_inset
 
  et le WMF (
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Windows Metafile
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
-, extension 
-\begin_inset Quotes eld
+, suffixe 
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -1767,11 +1775,11 @@ Windows Metafile
 .wfm
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  ou 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -1779,7 +1787,7 @@ Windows Metafile
 .emf
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 )
@@ -2208,7 +2216,7 @@ reference "sub:Lignes-multiple-dans-cellule"
 \end_inset
 
 Vous pouvez aussi marquer une ou plusieurs cellules d'une ligne comme étant
- un multicolonne, voir la section
+ un multi-colonnes, voir la section
 \begin_inset space ~
 \end_inset
 
@@ -2219,7 +2227,7 @@ reference "sub:Multicolonnes"
 
 \end_inset
 
- ou une cellule d'une colonne comme cellule multiligne, voir la section
+ ou une cellule d'une colonne comme cellule multi-lignes, voir la section
 \begin_inset space ~
 \end_inset
 
@@ -2553,7 +2561,7 @@ Tableau
 
 long Cet onglet est utilisé pour transformer un tableau en ce que l'on nomme
  un 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -2561,7 +2569,7 @@ long Cet onglet est utilisé pour transformer un tableau en ce que l'on nomme
 tableau long
 \emph default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  qui peut continuer sur plusieurs pages.
@@ -2886,7 +2894,7 @@ type  "icon"
 arg   "inset-modify tabular multicolumn"
 \end_inset
 
- transforme en multi-colonne la cellule ou la sélection courante
+ transforme en multi-colonnes la cellule ou la sélection courante
 \end_layout
 
 \begin_layout Labeling
@@ -2896,7 +2904,7 @@ type  "icon"
 arg   "inset-modify tabular multirow"
 \end_inset
 
- transforme en multi-ligne la cellule ou la sélection courante
+ transforme en multi-lignes la cellule ou la sélection courante
 \end_layout
 
 \begin_layout Standard
@@ -2940,7 +2948,7 @@ Tableau
 \family default
  vous permet d'ajouter ou de supprimer les lignes de bordure de la colonne
  ou de la ligne courante et aussi de transformer la sélection courante en
- multi-colonne.
+ multi-colonnes.
  Ce menu n'est accessible que si le curseur se trouve dans un tableau.
 \end_layout
 
@@ -3153,7 +3161,7 @@ arg   "float-insert table"
 \begin_layout Standard
 Le flottant apparaît à l'écran comme une boîte repliable avec une légende
  qui a comme étiquette 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Tableau
@@ -3161,7 +3169,7 @@ Tableau
 \end_inset
 
 #:
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  (où # est le numéro du tableau).
@@ -3473,7 +3481,7 @@ reference "sub:Tableaux-longs-légende"
 \end_layout
 
 \begin_layout Standard
-Vous pouvez aussi préciser une ligne où la table devra être coupée.
+Vous pouvez aussi préciser une ligne où le tableau devra être coupé.
  Voyez le tableau long qui suit pour voir comment ça marche :
 \end_layout
 
@@ -9849,7 +9857,7 @@ Implicitement les tableaux ne peuvent être coupés qu'entre deux lignes.
  Si vous avez une cellule avec plusieurs lignes et que vous voulez avoir
  un saut de page à l'intérieur de cette cellule, insérez la commande LaTeX
  de saut de ligne 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -9857,12 +9865,12 @@ Implicitement les tableaux ne peuvent être coupés qu'entre deux lignes.
 
 \backslash
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  en code TeX à l'endroit de la cellule où vous voulez qu'elle soit coupée.
  Avant la commande 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -9870,33 +9878,33 @@ Implicitement les tableaux ne peuvent être coupés qu'entre deux lignes.
 
 \backslash
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , vous devez insérer en code TeX, autant de caractères 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 &
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  qu'il y a de colonnes après la cellule concernée.
  Le caractère 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 &
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  sert à séparer les colonnes d'un tableau.
  Écrivez en code-TeX, après chaque 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 &
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  le contenu des cellules correspondantes et en même temps supprimez le contenu
@@ -9910,11 +9918,11 @@ Après la commande
 
 \backslash
 , insérez autant de caractères 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 &
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  qu'il y a de colonnes avant la colonne traitée.
@@ -9933,7 +9941,7 @@ reference "tab:Tableau-saut-de-page"
  suivie par une autre colonne.
  La commande suivante a donc été insérée en code TeX dans la cellule après
  le mot 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -9941,7 +9949,7 @@ reference "tab:Tableau-saut-de-page"
 Castelchiodato,
 \emph default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 :
@@ -9965,11 +9973,11 @@ newpage
 
 \begin_layout Standard
 Le 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 111
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  dans la troisième colonne de la ligne a été supprimé.
@@ -11831,8 +11839,8 @@ Multi-colonnes
 \begin_layout Standard
 Les multi-colonnes ont leurs propres paramètres de cellule.
  Ce qui veut dire que si on change les bordures, l'alignement ou la largeur
- de la cellule, cela n'affecte que la cellule multi-colonne.
- Voici un exemple de tableau avec une cellule multi-colonne dans la première
+ de la cellule, cela n'affecte que la cellule multi-colonnes.
+ Voici un exemple de tableau avec une cellule multi-colonnes dans la première
  ligne et une cellule sans bordure supérieure dans la dernière ligne :
 \end_layout
 
@@ -11989,7 +11997,7 @@ Multi-colonnes ! Calculs
 
 \begin_layout Standard
 LyX gère directement les multi-colonnes, mais nous devons faire attention
- à la largeur des cellules couvertes par la cellule multi-colonne.
+ à la largeur des cellules couvertes par la cellule multi-colonnes.
 \end_layout
 
 \begin_layout Standard
@@ -12009,13 +12017,13 @@ name "tab:Tableau-multicolonne-parfaite"
 
 \end_inset
 
-Tableau avec un texte centré dans une case multi-colonne au-dessus de deux
- colonnes qui ont exactement la moitié de la largeur de la case multicolonne.
+Tableau avec un texte centré dans une case multi-colonnes au-dessus de deux
+ colonnes qui ont exactement la moitié de la largeur de la case multi-colonnes.
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Tableau avec multicolonne parfaite
+Tableau avec multi-colonnes parfaite
 \end_layout
 
 \end_inset
@@ -12041,7 +12049,7 @@ Tableau avec multicolonne parfaite
 \begin_inset Text
 
 \begin_layout Plain Layout
-multi-colonne sur plusieurs lignes
+multi-colonnes sur plusieurs lignes
 \end_layout
 
 \end_inset
@@ -12155,7 +12163,7 @@ reference "tab:Tableau-multicolonne-parfaite"
 \emph default
  dans la fenêtre de dialogue de tableau, 
 \emph on
-multi-colonne
+multi-colonnes
 \emph default
 , 
 \emph on
@@ -12175,7 +12183,7 @@ centré
 
 cm.
  Les colonnes couvertes doivent avoir exactement la moitié de la largeur
- de la cellule multi-colonne, vous devez donc donner une largeur de 1.25
+ de la cellule multi-colonnes, vous devez donc donner une largeur de 1.25
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -12184,7 +12192,7 @@ cm pour la première colonne.
 \begin_inset space \thinspace{}
 \end_inset
 
-cm (la largeur de la multi-colonne moins la largeur de la première colonne).
+cm (la largeur de la multi-colonnes moins la largeur de la première colonne).
  C'est ce qui a été fait pour le tableau
 \begin_inset space ~
 \end_inset
@@ -12216,12 +12224,12 @@ name "tab:Tableau-multicolonne-imparfait"
 \end_inset
 
 Tableau où la largeur de colonnes couvertes n'est pas exactement la moitié
- de la largeur de la cellule multi-colonne.
+ de la largeur de la cellule multi-colonnes.
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Tableau avec multi-colonne pas parfaite
+Tableau avec multi-colonnes pas parfaite
 \end_layout
 
 \end_inset
@@ -12247,7 +12255,7 @@ Tableau avec multi-colonne pas parfaite
 \begin_inset Text
 
 \begin_layout Plain Layout
-multi-colonne sur plusieurs lignes
+multi-colonnes sur plusieurs lignes
 \end_layout
 
 \end_inset
@@ -12343,7 +12351,7 @@ i
 
 \begin_layout Standard
 Vous pouvez voir que la première colonne n'a pas la moitié de la largeur
- de la cellule multi-colonne, elle est un peu plus large.
+ de la cellule multi-colonnes, elle est un peu plus large.
  La raison est que la taille que l'on donne à une cellule, 
 \begin_inset Formula $W_{g}$
 \end_inset
@@ -12540,10 +12548,10 @@ La commande
 
 \begin_layout Standard
 Bien que nous ayons choisi un alignement centré pour le texte de la cellule
- multi-colonne, il est toujours aligné à gauche.
+ multi-colonnes, il est toujours aligné à gauche.
  Cela vient du fait que LyX applique l'alignement seulement à des colonnes
  isolées.
- Nous devons donc utiliser le paramètre LaTeX suivant pour la multi-colonne
+ Nous devons donc utiliser le paramètre LaTeX suivant pour la multi-colonnes
 \end_layout
 
 \begin_layout Standard
@@ -12577,7 +12585,7 @@ Multi-lignes
 status collapsed
 
 \begin_layout Plain Layout
-Tableau ! Multi-ligne
+Tableau ! multi-lignes
 \end_layout
 
 \end_inset
@@ -12608,7 +12616,7 @@ Multi-lignes
 \end_layout
 
 \begin_layout Standard
-Voici un exemple de tableau avec une cellule multi-ligne en première colonne:
+Voici un exemple de tableau avec une cellule multi-lignes en première colonne:
 \end_layout
 
 \begin_layout Standard
@@ -12653,7 +12661,7 @@ c
 \begin_inset Text
 
 \begin_layout Plain Layout
-multi-ligne
+multi-lignes
 \end_layout
 
 \end_inset
@@ -12714,7 +12722,7 @@ i
 \end_layout
 
 \begin_layout Standard
-La largeur de la cellule multi-ligne est déterminée par la largeur de toute
+La largeur de la cellule multi-lignes est déterminée par la largeur de toute
  la colonne.
  L'
 \family sans
@@ -12729,8 +12737,8 @@ vertical
 \end_layout
 
 \begin_layout Standard
-Si la colonne dans laquelle se trouve la multiligne n'a pas de largeur fixée
- explicitement, la cellule hérite de l'alignement de la colonne.
+Si la colonne dans laquelle se trouve la multi-lignes n'a pas de largeur
+ fixée explicitement, la cellule hérite de l'alignement de la colonne.
  Sinon, elle est alignée par défaut à gauche.Pour passer outre le comportement
  implicite, vous devez redéfinir la commande 
 \series bold
@@ -12783,7 +12791,7 @@ raggedright
 \end_layout
 
 \begin_layout Standard
-Voici un exemple de tableau avec une cellule multi-ligne alignée à droite
+Voici un exemple de tableau avec une cellule multi-lignes alignée à droite
  avec un décalage vertical de -4
 \begin_inset space \thinspace{}
 \end_inset
@@ -12888,7 +12896,7 @@ m
 \begin_inset Text
 
 \begin_layout Plain Layout
-multi-ligne
+multi-lignes
 \end_layout
 
 \end_inset
@@ -12966,7 +12974,7 @@ raggedright}
 \end_layout
 
 \begin_layout Standard
-Pour commencer une nouvelle ligne dans une cellule multi-ligne vous pouvez
+Pour commencer une nouvelle ligne dans une cellule multi-lignes vous pouvez
  utiliser un saut de ligne forcé (
 \begin_inset space ~
 \end_inset
@@ -13071,20 +13079,18 @@ Vous devez donc faire attention avec les saut de lignes forcés.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Cells with diagonal line(s)
+Cellules avec ligne(s) diagonale(s)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To tell the reader what is meant by column and row headings in a table,
- it is helpful to split the first cell of the table by one or two diagonal
- lines.
- This can be achieved by loading the LaTeX-package 
+Pour instruire le lecteur de la signification ds titres de lignes et de
+ colonnes dans un tableau, il est pratique de partager le première cellule
+ du tableau à l'aide d'une ou deux lignes diagonales.
+ Ceci peut être obtenu ne chargeant dans le préambule du document les paquetage
+ LaTeX
 \series bold
-diagbox
+\lang english
+ diagbox
 \series default
 \lang french
 
@@ -13097,20 +13103,16 @@ Paquetages LaTeX ! diagbox
 
 \end_inset
 
- 
-\lang english
-in the document preamble.
- The package provides the command 
+.
+ Ce paquetage inclut la commande 
 \series bold
+\lang english
 
 \backslash
 diagbox
 \series default
- that is inserted as TeX-Code and that can take 2 or 3
-\begin_inset space ~
-\end_inset
-
-arguments:
+\lang french
+ que l'on peut insérer en mode TeX et qui peut avoir 2 ou 3 arguments:
 \end_layout
 
 \begin_layout Standard
@@ -13119,7 +13121,9 @@ arguments:
 \lang english
 
 \backslash
-diagbox[options]{lower left}{upper right}
+diagbox[options]
+\lang french
+{inférieur gauche}{supérieur droit}
 \end_layout
 
 \begin_layout Standard
@@ -13128,19 +13132,15 @@ diagbox[options]{lower left}{upper right}
 \lang english
 
 \backslash
-diagbox[options]{lower left}{upper left}{upper right}
+diagbox[options]
+\lang french
+{inférieur gauche}{supérieur gauche}{supérieur droit}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The first scheme divides the cell by a single diagonal line and the arguments
- are placed below and above this line.
- The second scheme divides the cell by 2
-\begin_inset space ~
-\end_inset
-
-lines.
+Dans le premier cas, la cellule est partagée par une seule ligne diagonale
+ et les arguments sont placés au-dessus et en-dessous de cette ligne.
+ Dans le second cas, la cellule est partagée par deux lignes.
 \end_layout
 
 \begin_layout Standard
@@ -13175,15 +13175,22 @@ diagbox
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is an example table where 
+Voici un exemple de tableau où 
 \series bold
+\lang english
 
 \backslash
-diagbox 
+diagbox
+\lang french
+ 
 \series default
-is used in the 2-argument scheme in the first cell:
+est utilisé avec 2 arguments
+\begin_inset space ~
+\end_inset
+
+dans la première cellule:
+\lang english
+
 \begin_inset VSpace medskip
 \end_inset
 
@@ -13206,8 +13213,6 @@ is used in the 2-argument scheme in the first cell:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -13220,7 +13225,7 @@ diagbox{
 
 \end_inset
 
-Name
+Nom
 \begin_inset ERT
 status collapsed
 
@@ -13231,7 +13236,7 @@ status collapsed
 
 \end_inset
 
-Parameter
+Paramètre
 \begin_inset ERT
 status collapsed
 
@@ -13251,9 +13256,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Thickness in nm
+Épaisseur en nm
 \end_layout
 
 \end_inset
@@ -13262,9 +13265,7 @@ Thickness in nm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Transparency in %
+Transparence en %
 \end_layout
 
 \end_inset
@@ -13273,9 +13274,7 @@ Transparency in %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Hardness in MPa
+Dureté en MPa
 \end_layout
 
 \end_inset
@@ -13286,9 +13285,7 @@ Hardness in MPa
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Perfect Green
+Vert parfait
 \end_layout
 
 \end_inset
@@ -13297,8 +13294,6 @@ Perfect Green
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 45
 \end_layout
 
@@ -13308,8 +13303,6 @@ Perfect Green
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 80
 \end_layout
 
@@ -13319,8 +13312,6 @@ Perfect Green
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 504
 \end_layout
 
@@ -13332,9 +13323,7 @@ Perfect Green
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Dark Multi-P
+Multi-P foncé
 \end_layout
 
 \end_inset
@@ -13343,8 +13332,6 @@ Dark Multi-P
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 60
 \end_layout
 
@@ -13354,8 +13341,6 @@ Dark Multi-P
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 72
 \end_layout
 
@@ -13365,8 +13350,6 @@ Dark Multi-P
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 982
 \end_layout
 
@@ -13378,9 +13361,7 @@ Dark Multi-P
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Crystal Clear Pro
+Pro transparent
 \end_layout
 
 \end_inset
@@ -13389,8 +13370,6 @@ Crystal Clear Pro
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 18
 \end_layout
 
@@ -13400,8 +13379,6 @@ Crystal Clear Pro
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 86
 \end_layout
 
@@ -13411,8 +13388,6 @@ Crystal Clear Pro
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 374
 \end_layout
 
@@ -13431,17 +13406,13 @@ Crystal Clear Pro
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The 3-argument scheme is for example useful for cross-tables of sports leagues
- or distances:
+La forme à 3 arguments est utile par exemple pour les tableaux croisés de
+ sport ou les distances:
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
 <features rotate="0" tabularvalignment="middle">
@@ -13454,8 +13425,6 @@ The 3-argument scheme is for example useful for cross-tables of sports leagues
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -13468,7 +13437,7 @@ diagbox{
 
 \end_inset
 
-Team home
+À domicile
 \begin_inset ERT
 status collapsed
 
@@ -13479,9 +13448,9 @@ status collapsed
 
 \end_inset
 
-Result
+Résultat
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -13490,7 +13459,7 @@ status collapsed
 
 \end_inset
 
-Team away
+À l'extérieur
 \begin_inset ERT
 status collapsed
 
@@ -13510,9 +13479,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Tigers
+Tigres
 \end_layout
 
 \end_inset
@@ -13521,9 +13488,7 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Panthers
+Panthères
 \end_layout
 
 \end_inset
@@ -13532,9 +13497,7 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Falcons
+Faucons
 \end_layout
 
 \end_inset
@@ -13545,9 +13508,7 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Tigers
+Tigres
 \end_layout
 
 \end_inset
@@ -13556,8 +13517,6 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ---
 \end_layout
 
@@ -13567,8 +13526,6 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 1:3
 \end_layout
 
@@ -13578,8 +13535,6 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 0:1
 \end_layout
 
@@ -13591,9 +13546,7 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Panthers
+Panthères
 \end_layout
 
 \end_inset
@@ -13602,8 +13555,6 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 3:1
 \end_layout
 
@@ -13613,8 +13564,6 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ---
 \end_layout
 
@@ -13624,8 +13573,6 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 0:0
 \end_layout
 
@@ -13637,9 +13584,7 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Falcons
+Faucons
 \end_layout
 
 \end_inset
@@ -13648,8 +13593,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 1:0
 \end_layout
 
@@ -13659,8 +13602,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 0:0
 \end_layout
 
@@ -13670,8 +13611,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ---
 \end_layout
 
@@ -13686,17 +13625,13 @@ Falcons
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For larger cross-tables one might use split cells in 2 or every corner of
- the table like in this example:
+Pour des tableaux croisés plus grands on peut utiliser des diagonales dans
+ 2 coins ou plus du tableau comme ici:
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
 <features rotate="0" tabularvalignment="middle">
@@ -13710,8 +13645,6 @@ For larger cross-tables one might use split cells in 2 or every corner of
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -13724,7 +13657,7 @@ diagbox{
 
 \end_inset
 
-Team home
+À domicile}{Résultat
 \begin_inset ERT
 status collapsed
 
@@ -13735,20 +13668,9 @@ status collapsed
 
 \end_inset
 
-Result
+À l'extérieur
 \begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}{
-\end_layout
-
-\end_inset
-
-Team away
-\begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -13766,9 +13688,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Tigers
+Tigres
 \end_layout
 
 \end_inset
@@ -13777,9 +13697,7 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Panthers
+Panthères
 \end_layout
 
 \end_inset
@@ -13788,9 +13706,7 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Falcons
+Faucons
 \end_layout
 
 \end_inset
@@ -13799,8 +13715,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -13813,7 +13727,7 @@ diagbox[dir=NE]{
 
 \end_inset
 
-Team home
+À domicile
 \begin_inset ERT
 status collapsed
 
@@ -13824,7 +13738,7 @@ status collapsed
 
 \end_inset
 
-Result
+Résultat
 \begin_inset ERT
 status collapsed
 
@@ -13835,7 +13749,7 @@ status collapsed
 
 \end_inset
 
-Team away
+À l'extérieur
 \begin_inset ERT
 status collapsed
 
@@ -13857,9 +13771,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Tigers
+Tigres
 \end_layout
 
 \end_inset
@@ -13868,8 +13780,6 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ---
 \end_layout
 
@@ -13879,8 +13789,6 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 1:3
 \end_layout
 
@@ -13890,8 +13798,6 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 0:1
 \end_layout
 
@@ -13901,9 +13807,7 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Tigers
+Tigres
 \end_layout
 
 \end_inset
@@ -13914,9 +13818,7 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Panthers
+Panthères
 \end_layout
 
 \end_inset
@@ -13925,8 +13827,6 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 3:1
 \end_layout
 
@@ -13936,8 +13836,6 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ---
 \end_layout
 
@@ -13947,8 +13845,6 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 0:0
 \end_layout
 
@@ -13958,9 +13854,7 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Panthers
+Panthères
 \end_layout
 
 \end_inset
@@ -13971,9 +13865,7 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Falcons
+Faucons
 \end_layout
 
 \end_inset
@@ -13982,8 +13874,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 1:0
 \end_layout
 
@@ -13993,8 +13883,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 0:0
 \end_layout
 
@@ -14004,8 +13892,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ---
 \end_layout
 
@@ -14015,9 +13901,7 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Falcons
+Faucons
 \end_layout
 
 \end_inset
@@ -14028,8 +13912,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -14042,7 +13924,7 @@ diagbox[dir=SW]{
 
 \end_inset
 
-Team home
+À domicile
 \begin_inset ERT
 status collapsed
 
@@ -14053,7 +13935,7 @@ status collapsed
 
 \end_inset
 
-Result
+Résultat
 \begin_inset ERT
 status collapsed
 
@@ -14064,9 +13946,9 @@ status collapsed
 
 \end_inset
 
-Team away
+À l'extérieur
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -14084,9 +13966,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Tigers
+Tigres
 \end_layout
 
 \end_inset
@@ -14095,9 +13975,7 @@ Tigers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Panthers
+Panthères
 \end_layout
 
 \end_inset
@@ -14106,9 +13984,7 @@ Panthers
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Falcons
+Faucons
 \end_layout
 
 \end_inset
@@ -14117,8 +13993,6 @@ Falcons
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -14131,7 +14005,7 @@ diagbox[dir=SE]{
 
 \end_inset
 
-Team home
+À domicile
 \begin_inset ERT
 status collapsed
 
@@ -14142,9 +14016,9 @@ status collapsed
 
 \end_inset
 
-Result
+Résultat
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -14153,7 +14027,7 @@ status collapsed
 
 \end_inset
 
-Team away
+À l'extérieur
 \begin_inset ERT
 status collapsed
 
@@ -14178,40 +14052,38 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To rotate the diagonal lines, the command option 
+Pour faire pivoter les diagonales, il faut utiliser l'option de commande
+ 
 \series bold
 dir=direction
 \series default
- is used.
- 
+: 
 \emph on
 direction
 \emph default
- is either 
+ est à choisir parmi 
 \series bold
 NE
 \series default
 , 
 \series bold
-DE
+SE
 \series default
 , 
 \series bold
 SW
 \series default
- or 
+ et 
 \series bold
 NW
 \series default
- and represent a point of a compass.
+ comme sur une rose des vents.
  
 \series bold
 SW
 \series default
- is for example the south-west corner.
- Thus in the lower left cell of the above table the command
+ est par exemple le coin sud-ouest, c'est à-dire le coin inférieur gauche
+ du tableau ci-dessus, désigné via la commande:
 \end_layout
 
 \begin_layout Standard
@@ -14220,29 +14092,44 @@ SW
 \lang english
 
 \backslash
-diagbox[dir=SW]{Team home}{Result}{Team away}
+diagbox[dir=SW]{
+\series default
+\lang french
+À domicile
+\series bold
+\lang english
+}{
+\series default
+\lang french
+Résultat
+\series bold
+\lang english
+}{
+\series default
+\lang french
+À l'extérieur
+\series bold
+\lang english
+}
+\series default
+\lang french
+.
+ 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-is used.
- If no direction is given, it will be NW.
+Si aucune direction n'est spécifiée, elle est implicitement NW.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The necessary width of split cells is automatically calculated.
- Thus if you set a fixed column width smaller than the calculated one, the
- cell's content will protrude the cell borders:
+La largeur nécessaire pour le partage des cellules est calculée automatiquement.
+ De ce fait, si vous fixez une largeur de colonne plus petite que nécessaire,
+ le contenu de la cellule va déborder:
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
@@ -14253,8 +14140,6 @@ The necessary width of split cells is automatically calculated.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -14267,7 +14152,7 @@ diagbox{
 
 \end_inset
 
-Name
+Nom
 \begin_inset ERT
 status collapsed
 
@@ -14278,7 +14163,7 @@ status collapsed
 
 \end_inset
 
-Parameter
+Paramètre
 \begin_inset ERT
 status collapsed
 
@@ -14298,9 +14183,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Thickness in nm
+Épaisseur en nm
 \end_layout
 
 \end_inset
@@ -14311,9 +14194,7 @@ Thickness in nm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Perfect Green
+Vert parfait
 \end_layout
 
 \end_inset
@@ -14322,8 +14203,6 @@ Perfect Green
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 45
 \end_layout
 
@@ -14338,26 +14217,33 @@ Perfect Green
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you need a certain width for columns with a split cell, use the command
- option 
+Si vous avez besoin d'une certaine largeur pour des colonnes incluant une
+ cellule partagée, utilisez l'option de commande 
 \series bold
+\lang english
 width=3cm
 \series default
- (replace '3cm' by the width you need).
- In the following table the width of the first column is set to 4
-\begin_inset space \thinspace{}
+\lang french
+ (remplacez 
+\begin_inset Quotes fld
 \end_inset
 
-cm.
- For 
+3cm
+\begin_inset Quotes frd
+\end_inset
+
+par la largeur désirée).
+ Dans le tableau qui suit, la largeur de la première colonne est réglée
+ à 4cm.
+ Pour 
 \series bold
+\lang english
 
 \backslash
 diagbox
 \series default
- a width of 4
+\lang french
+ une largeur de 4
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -14367,20 +14253,21 @@ cm + 2
 
 
 \backslash
-tabcolsep is necessary because the overall width is the width for the text
- (in this case the 4
-\begin_inset space \thinspace{}
-\end_inset
-
-cm) plus two times the separation of the text and the cell border.
- The calculation of the width cannot be done in the command option of 
+tabcolsep est nécessaire puisque la largeur globale est celle du texte (dans
+ ce cas, les 4cm) plus deux lignes de séparation entre le texte et le bord
+ de la cellule.
+ Le calcul de la largeur ne peut pas être fait directement dans l'option
+ de la commande 
 \series bold
+\lang english
 
 \backslash
 diagbox
 \series default
- so one needs to create a new length which can be used later.
- This is done with the TeX-Code commands
+\lang french
+, il faut donc créer une nouvelle longueur qui pourra être utilisée dans
+ la suite.
+ Ceci se fait via les commandes en code TeX:
 \end_layout
 
 \begin_layout Standard
@@ -14433,13 +14320,11 @@ tabcolsep}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To enable calculations in LaTeX one needs to load the package 
+Pour permettre les calculs en LaTeX, il faut charger dans le préambule du
+ document le paquetage 
 \series bold
 calc
 \series default
-\lang french
 
 \begin_inset Index idx
 status collapsed
@@ -14450,15 +14335,11 @@ Paquetages LaTeX ! calc
 
 \end_inset
 
- 
-\lang english
-in the document preamble.
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In this table you can now use the command
+Dans le tableau vous pouvez maintenant utiliser la commande
 \end_layout
 
 \begin_layout Standard
@@ -14472,16 +14353,12 @@ diagtest]{A}{B}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-in the first cell:
+dans la première cellule:
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
@@ -14537,9 +14414,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Thickness in nm
+Épaisseur en nm
 \end_layout
 
 \end_inset
@@ -14550,9 +14425,7 @@ Thickness in nm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Perfect Green
+Vert parfait
 \end_layout
 
 \end_inset
@@ -14561,8 +14434,6 @@ Perfect Green
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 45
 \end_layout
 
@@ -14577,18 +14448,14 @@ Perfect Green
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Note that the split cell needs to be the widest one in the column.
- Otherwise the length of the diagonal line cannot be calculated correctly
- like in this table:
+Noter que la cellule partagée doit être la plus large de la colonne, sinon
+ la longueur de la diagonale ne peut pas être calculée correctement comme
+ dans ce tableau:
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
@@ -14642,9 +14509,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Thickness in nm
+Épaisseur en nm
 \end_layout
 
 \end_inset
@@ -14655,9 +14520,7 @@ Thickness in nm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Perfect Green
+Vert parfait
 \end_layout
 
 \end_inset
@@ -14666,8 +14529,6 @@ Perfect Green
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 45
 \end_layout
 
@@ -14682,34 +14543,31 @@ Perfect Green
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In this case use the 
+Dans ce cas, vous pouvez utiliser directement
 \series bold
+ 
+\lang english
 width
 \series default
- option of the 
+\lang french
+ dans l'option de 
 \series bold
+\lang english
 
 \backslash
 diagbox
 \series default
- command.
- It is then not necessary to add 2
+\lang french
+, il n'est plus nécessaire d’ajouter 2
 \backslash
-tabcolsep because the cell width is now the width of the column.
- In this table a width of 3
-\begin_inset space \thinspace{}
-\end_inset
-
-cm is used:
+tabcolsep puisque la largeur de cellule est maintenant la largeur de la
+ colonne.
+ Ici une largeur de 3cm est utilisée:
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
@@ -14763,9 +14621,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Thickness in nm
+Épaisseur en nm
 \end_layout
 
 \end_inset
@@ -14776,9 +14632,7 @@ Thickness in nm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Perfect Green
+Vert parfait
 \end_layout
 
 \end_inset
@@ -14787,8 +14641,6 @@ Perfect Green
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 45
 \end_layout
 
@@ -14803,22 +14655,26 @@ Perfect Green
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For multiple text lines in split cells one needs some extra height to fit
- the text to the cell.
- This can be achieved with the 
+Pour les lignes multiples dans une cellule partagée, il faut une hauteur
+ supplémentaire pour placer le texte dans la cellule.
+ Ceci peut être obtenu avec l'option
 \series bold
+ 
+\lang english
+height
+\lang french
+=3cm
+\series default
+ de la commande 
+\series bold
+\lang english
 
 \backslash
 diagbox
 \series default
- option 
-\series bold
-height=3cm
-\series default
- (replace '3cm' by the height you need).
- In the following table the command
+\lang french
+ (remplacer « 3cm » par la hauteur désirée).
+ Dans le tableau qui suit, la commande
 \end_layout
 
 \begin_layout Standard
@@ -14838,41 +14694,28 @@ D}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-is used in the first cell.
- The command 
-\series bold
-
+est utilisée dans la première cellule.
+ La commande 
 \backslash
 
 \backslash
-
-\series default
- creates hereby the line break.
+ crée le saut de ligne
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-
-\lang english
-Breaking lines with 
-\family sans
-Ctrl+Return
-\family default
- is only possible when the column has a fixed width.
+Couper les lignes via Ctrl+Entrée n'est possible que pour des colonnes de
+ largeur fixée.
 \end_layout
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features rotate="0" tabularvalignment="middle">
@@ -14956,9 +14799,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Thickness in nm
+Épaisseur en nm
 \end_layout
 
 \end_inset
@@ -14969,9 +14810,7 @@ Thickness in nm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Perfect Green
+Vert parfait
 \end_layout
 
 \end_inset
@@ -14980,8 +14819,6 @@ Perfect Green
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 45
 \end_layout
 
@@ -15030,7 +14867,7 @@ Vous devez installer le paquetage LaTeX
 \series bold
 diagbox
 \series default
- pour voir le contenu des cette section dans la sortie imprimée.
+ pour voir le contenu de cette section dans la sortie imprimée.
 \end_layout
 
 \begin_layout Standard
@@ -15050,15 +14887,13 @@ fi
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For more info about the LaTeX-package 
+Pour en savoir plus sur le paquetage LaTeX 
 \series bold
+\lang english
 diagbox
 \series default
-, see its documentation
 \lang french
-, 
+, voir sa documentation, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "diagbox"
@@ -15658,7 +15493,7 @@ reference "cha:Unités-de-longueur"
 
 \begin_layout Standard
 On peut aussi créer des lignes qui ne font pas toute la largeur du tableau
- en mettant une ligne pour une cellule multi-colonne.
+ en mettant une ligne pour une cellule multi-colonnes.
  LyX va utiliser en interne la commande 
 \series bold
 
@@ -17651,13 +17486,13 @@ et les valeurs de couleur sont des nombres compris entre 0 et 1, séparés
 
 \begin_layout Standard
 Vous pouvez par exemple définir la couleur 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
 \emph on
 vertfonce
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  dans le préambule avec la ligne
@@ -18096,18 +17931,12 @@ fi
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Colored Rows
-\lang french
-
+Lignes colorées
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Tableau Coloré ! pour
-\lang english
- Rows
+Tableau Coloré ! Pour les lignes
 \end_layout
 
 \end_inset
@@ -18117,9 +17946,7 @@ Tableau Coloré ! pour
 status collapsed
 
 \begin_layout Plain Layout
-Couleur ! Pour les 
-\lang english
-Table Rows
+Couleur ! Pour les lignes de tableau
 \end_layout
 
 \end_inset
@@ -18128,12 +17955,9 @@ Table Rows
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In case every second table row needs to be colored there is an alternative
- to the method described in the previous section: One loads the package
-\lang french
- 
+Dans le cas où on désire qu'une ligne sur deux soit colorée, il existe une
+ alternative à la méthode décrite dans le paragraphe précédent: il faut
+ charger le paquetage 
 \series bold
 xcolor
 \series default
@@ -18160,9 +17984,7 @@ vspace{4mm}
 
 \end_inset
 
- 
-\lang english
-in the document preamble with the command
+ dans le préambule du document avec la commande
 \end_layout
 
 \begin_layout Standard
@@ -18176,12 +17998,9 @@ usepackage[table]{xcolor}
 \begin_layout Standard
 
 \series bold
-\lang english
 xcolor
 \series default
- automatically loads also the package
-\lang french
- 
+ charge automatiquement le paquetage 
 \series bold
 colortbl
 \series default
@@ -18195,13 +18014,11 @@ Paquetages LaTeX ! colortbl
 
 \end_inset
 
-
-\lang english
-, so 
+, il faut donc que
 \series bold
-colortbl
+ colortbl
 \series default
- must be installed in your LaTeX-distribution, otherwise you get LaTeX-errors.
+ existe dans votre distribution LaTeX, sinon vous aurez des erreurs.
 \end_layout
 
 \begin_layout Standard
@@ -18236,34 +18053,35 @@ colortbl
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The table rows are colored with the command
+Les lignes de tableau sont colorées par la commande
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-rowcolors[commands]{row number}{odd row color}{even row color}
+rowcolors[commandes]{numéro de ligne}{couleur ligne impaire}{couleur ligne
+ paire}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-that is either inserted in the document preamble or as TeX-Code before the
- first table to be colored.
- row
-\begin_inset space ~
-\end_inset
-
-number is the number of the first row which should be colored according
- to the odd row color.
- commands can be additional commands that are executed before every table
- row.
- So for example the command
+insérée soit dans le préambule du document, soit en code TeX avant le premier
+ tableau nécessitant la coloration alternative des lignes.
+ 
+\series bold
+numéro de ligne
+\series default
+ est le numéro de la première ligne à colorer avec la couleur de ligne impaire.
+ 
+\series bold
+commandes
+\series default
+\emph on
+ 
+\emph default
+désigne des commandes additionnelles exécutées avant chaque ligne du tableau.
+ Par exemple la commande
 \end_layout
 
 \begin_layout Standard
@@ -18275,9 +18093,7 @@ rowcolors{1}{white}{lightgray}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-leads to the coloring scheme of Table
+donne le schéma de couleurs du tableau
 \begin_inset space ~
 \end_inset
 
@@ -18289,7 +18105,7 @@ reference "tab:Table-rowcolors"
 \end_inset
 
 .
- The command
+ La commande
 \end_layout
 
 \begin_layout Standard
@@ -18303,9 +18119,7 @@ hline]{1}{lightgray}{cyan}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-leads to the coloring scheme of Table
+donne le schéma de couleurs du tableau
 \begin_inset space ~
 \end_inset
 
@@ -18317,23 +18131,15 @@ reference "tab:Table-rowcolors-2"
 \end_inset
 
 .
- If odd
-\begin_inset space ~
-\end_inset
-
-row
-\begin_inset space ~
-\end_inset
-
-color and/or even
-\begin_inset space ~
-\end_inset
-
-row
-\begin_inset space ~
-\end_inset
-
-color are left empty, no color will be used so that the command
+ Si 
+\series bold
+couleur ligne impaire
+\series default
+ ou 
+\series bold
+couleur ligne paire
+\series default
+ est vide, aucune couleur n'est utilisée, donc la commande
 \end_layout
 
 \begin_layout Standard
@@ -18345,16 +18151,14 @@ rowcolors{1}{}{}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-deletes all colors.
+supprime toutes les couleurs.
  
 \series bold
 
 \backslash
 rowcolors
 \series default
- affects all tables following that command.
+ s'applique aux tableaux qui suivent cette commande.
 \end_layout
 
 \begin_layout Standard
@@ -18392,7 +18196,9 @@ name "tab:Table-rowcolors"
 
 \end_inset
 
-Table where every second row is colored light gray.
+
+\lang french
+Tableau avec une colonne sur deux en gris clair.
 \end_layout
 
 \end_inset
@@ -18573,8 +18379,10 @@ name "tab:Table-rowcolors-2"
 
 \end_inset
 
-Table where every second row is colored cyan and at which there is a line
- between each row.
+
+\lang french
+Tableau avec une colonne sur deux en cyan et avec un filet entre chaque
+ ligne
 \end_layout
 
 \end_inset
@@ -19500,11 +19308,7 @@ arrayrulewidth}{0.4pt}
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Rotated Table Cells
-\lang french
-
+Pivotement des cellules
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Rotated-Table-Cells"
@@ -19516,16 +19320,14 @@ name "sec:Rotated-Table-Cells"
 status open
 
 \begin_layout Plain Layout
-Tableau ! 
-\lang english
-Rotated Cells
+Tableau ! Pivotement des cellules
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Pivoter des objets
@@ -19537,18 +19339,15 @@ Pivoter des objets
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- Not all DVI-viewers are able to display rotations.
+ toutes les visionneuses DVI n'affichent pas les rotations.
 \end_layout
 
 \end_inset
@@ -19557,15 +19356,10 @@ Note:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Currently LyX only offers to rotate table cells by 90
-\begin_inset space \thinspace{}
-\end_inset
-
-° counter-clockwise.
- To rotate cells by an angle of your choice, you have to add this to the
- document preamble:
+Actuellement LyX ne propose de rotations des cellules que de 90° dans le
+ sens anti-horaire.
+ Pour obtenir des rotations d'un angle quelconque, il faut ajouter dans
+ le préambule:
 \end_layout
 
 \begin_layout Standard
@@ -19579,10 +19373,7 @@ usepackage{rotating}}{}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In the table cell that should be rotated, add at the beginning this command
- as TeX-code:
+Dans la cellule du tableau qui doit pivoter, ajouter au début en code TeX:
 \end_layout
 
 \begin_layout Standard
@@ -19594,10 +19385,12 @@ begin{turn}{angle}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-where angle is the rotation angle in °.
- At the end of the cell the command
+où 
+\series bold
+angle
+\series default
+ est l'angle de rotation en degrés.
+ À la fin de la cellule la commande
 \end_layout
 
 \begin_layout Standard
@@ -19609,15 +19402,11 @@ end{turn}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-is inserted as TeX-code.
+doit être insérée en code TeX.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Table
+Le tableau
 \begin_inset space ~
 \end_inset
 
@@ -19628,11 +19417,7 @@ reference "tab:Table-with-rotated-multi"
 
 \end_inset
 
- is an example where 3
-\begin_inset space ~
-\end_inset
-
-cells were rotated by 45
+ est un exemple dans lequel 3 cellules pivotent de 45
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -19662,7 +19447,9 @@ name "tab:Table-with-rotated"
 
 \end_inset
 
-Table with rotated cells in the first row.
+
+\lang french
+Tableau incluant des cellules pivotées dans la première ligne.
 \end_layout
 
 \end_inset
@@ -19673,8 +19460,6 @@ Table with rotated cells in the first row.
 \begin_layout Plain Layout
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
 <features rotate="0" tabularvalignment="middle">
@@ -19686,8 +19471,6 @@ Table with rotated cells in the first row.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -19700,7 +19483,7 @@ begin{turn}{45}
 
 \end_inset
 
-cups
+soucoupes
 \begin_inset ERT
 status collapsed
 
@@ -19722,8 +19505,6 @@ end{turn}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -19736,7 +19517,7 @@ begin{turn}{45}
 
 \end_inset
 
-plates
+assiettes
 \begin_inset ERT
 status collapsed
 
@@ -19758,8 +19539,6 @@ end{turn}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -19772,7 +19551,7 @@ begin{turn}{45}
 
 \end_inset
 
-saucers
+plats
 \begin_inset ERT
 status collapsed
 
@@ -19796,8 +19575,6 @@ end{turn}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 45
 \end_layout
 
@@ -19807,8 +19584,6 @@ end{turn}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 33
 \end_layout
 
@@ -19818,8 +19593,6 @@ end{turn}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 21
 \end_layout
 
@@ -19847,16 +19620,15 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- Line breaks (shortcut 
+ les ruptures de ligne (raccourci 
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
 \end_inset
 
-) are not allowed in rotated cells.
+) ne sont pas autorisées dans les cellules pivotées
 \end_layout
 
 \end_inset
@@ -19865,19 +19637,13 @@ arg   "newline-insert newline"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you want to rotate table cells containing line breaks, you have to put
- the cell content into a minipage or a parbox.
+Si vous voulez faire pivoter des cellules avec des ruptures de ligne, il
+ faut encapsuler le contenu de la cellule dans une minipage ou une parbox.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-
-\lang english
-For more about these boxes
-\lang french
- voir la section
+Pour en savoir plus sur ces boîtes, voir les sections
 \begin_inset space ~
 \end_inset
 
@@ -19900,12 +19666,9 @@ reference "sec:Parboxes"
 
 \end_inset
 
- If you rotate this cell by 90
-\begin_inset space \thinspace{}
-\end_inset
-
-° the width of the box is the height of the cell.
- Table
+ Si vous faites pivoter cette cellule de 90°, la largeur de la boîte est
+ la hauteur de la cellule.
+ Le tableau
 \begin_inset space ~
 \end_inset
 
@@ -19916,8 +19679,8 @@ reference "tab:Table-with-rotated-multi"
 
 \end_inset
 
- is an example for a rotated multiline cell where the box width was set
- to 3
+ donne un exemple d'une cellule multi-lignes où la largeur de boîte a été
+ réglée à 3
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -19947,7 +19710,9 @@ name "tab:Table-with-rotated-multi"
 
 \end_inset
 
-Table with rotated multiline cell.
+
+\lang french
+Tableau incluant une cellule multi-lignes pivotée.
 \end_layout
 
 \end_inset
@@ -19998,13 +19763,11 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-rotated cell
+cellule pivotée
 \begin_inset Newline newline
 \end_inset
 
-with line break
+avec saut de ligne
 \end_layout
 
 \end_inset
@@ -20074,9 +19837,7 @@ d
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Table Width Calculation
+Calcul de la largeur du tableau
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Table-Width-Calculation"
@@ -20087,48 +19848,45 @@ name "sec:Table-Width-Calculation"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For wide tables it is sometimes difficult to assure that the table does
- not protrude over the page margin.
- Setting a fixed width for every column of the table is the solution, but
- what amount of space is needed for each column?
+Pour les tableaux un peu larges il est parfois difficile de garantir que
+ le tableau ne déborde pas dans la marge.
+ Fixer une largeur pour chaque colonne est une solution, mais quelle est
+ la valeur à donner à chacune?
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The table width 
-\begin_inset Formula $W_{\mathrm{table}}$
+La largeur du tableau 
+\begin_inset Formula $L_{\mathrm{tableau}}$
 \end_inset
 
- can be calculated: Every column has the width of the specified column width
- 
-\begin_inset Formula $W_{\mathrm{column}}$
+ peut se calculer précisément: chaque colonne contribue pour sa largeur
+ propre 
+\begin_inset Formula $L_{\mathrm{colonne}}$
 \end_inset
 
- (that the content of the column can consume) plus two times the separation
- between the column content and the column border (LaTeX length
+ (que le contenu est autorisé à occuper), plus deux fois la largeur de la
+ séparation entre le contenu de la colonne et sa bordure (la longueur LaTeX
 \series bold
  
 \backslash
 tabcolsep
 \series default
-, default 6
+, implicitement 6
 \begin_inset space \thinspace{}
 \end_inset
 
-pt) plus the width of a border line (LaTeX length 
+pt), plus la largeur du filet de bordure (la longueur LaTeX 
 \series bold
 
 \backslash
 arrayrulewidth
 \series default
-, default 0.4
+, implicitement 0.4
 \begin_inset space \thinspace{}
 \end_inset
 
-pt): So if all 
+pt).
+ Donc si les 
 \begin_inset Formula $n$
 \end_inset
 
@@ -20136,12 +19894,10 @@ pt): So if all
 \begin_inset space ~
 \end_inset
 
-columns have the same width, the table width is
-\lang french
-
+colonnes ont la même largeur, la largeur du tableau est
 \begin_inset Formula 
 \begin{equation}
-W_{\mathrm{table}}=n\left(W_{\mathrm{column}}+2\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}\right)+\backslash\mbox{arrayrulewidth}
+L_{\mathrm{tableau}}=n\left(L_{\mathrm{colonne}}+2\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}\right)+\backslash\mbox{arrayrulewidth}
 \end{equation}
 
 \end_inset
@@ -20150,41 +19906,37 @@ W_{\mathrm{table}}=n\left(W_{\mathrm{column}}+2\backslash\mbox{tabcolsep}+\backs
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The available width for a table is the space between the page margins or
- the width of a text column (for a two-column document) (LaTeX length 
+La largeur disponible pour placer un tableau est la distance entre les marges
+ de la page ou la largeur de la colonne de texte (pour un document présenté
+ sur 2 colonnes), c'est-à-dire la longueur LaTeX 
 \series bold
 
 \backslash
 columnwidth
 \series default
-).
- If all table columns should have the same width and 
-\begin_inset Formula $W_{\mathrm{table}}$
+.
+ Si toutes le colonnes ont la même largeur et que 
+\begin_inset Formula $L_{\mathrm{tableau}}$
 \end_inset
 
- should be 1
+ doit valoir 1
 \begin_inset space \thinspace{}
 \end_inset
 
 
 \backslash
 columnwidth, 
-\begin_inset Formula $W_{\mathrm{column}}$
+\begin_inset Formula $L_{\mathrm{colonne}}$
 \end_inset
 
- can easily be calculated.
+ se calcule facilement.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To be able to perform calculations you need to load the LaTeX-package 
+Pour pouvoir faire des calculs, il faut charger le paquetage LaTeX 
 \series bold
 calc
 \series default
-\lang french
 
 \begin_inset Index idx
 status collapsed
@@ -20195,20 +19947,18 @@ Paquetages LaTeX ! calc
 
 \end_inset
 
-
-\lang english
- in the document preamble.
- To set the width in the table dialog you have to use the field 
+ dans le préambule du document.
+ Pour fixer la largeur d'une colonne dans la fenêtre de dialogue du tableau,
+ il faut utiliser le champ
 \family sans
-LaTeX argument
+ Argument LaTeX
 \family default
 .
- The command scheme for this field is the same that is explained in section
+ Le principe des commandes qui peuvent être saisies dans ce champ est celui
+ qui est expliqué dans la section
 \begin_inset space ~
 \end_inset
 
-
-\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -20216,15 +19966,9 @@ reference "sub:Calculs-multicolonnes"
 
 \end_inset
 
-
-\lang english
 .
- For a table with 5
-\begin_inset space \thinspace{}
-\end_inset
-
-columns with an uniform width and centered text, enter there for each column
- the command
+ Pour un tableau avec 5 colonnes de largeur identique et un texte centré,
+ saisir pour chaque colonne la commande
 \end_layout
 
 \begin_layout Standard
@@ -20238,26 +19982,20 @@ columnwidth-62.4pt)/5}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For a table with 5
-\begin_inset space \thinspace{}
-\end_inset
-
-columns where 2 should have 0.75
+Pour un tableau avec 5 colonnes dont deux de largeur 0.75
 \begin_inset space ~
 \end_inset
 
-times the width than the 3 others, the calculation is
+fois celle des 3 autres, le calcul est le suivant:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-\backslash\mbox{columnwidth} & =3\, W_{\mathrm{column}}+2\cdot0.75\, W_{\mathrm{column}}+\backslash\mbox{arrayrulewidth}\nonumber \\
+\backslash\mbox{columnwidth} & =3\, L_{\mathrm{colonne}}+2\cdot0.75\, L_{\mathrm{colonne}}+\backslash\mbox{arrayrulewidth}\nonumber \\
  & \phantom{=\,}+5\left(2\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}\right)\nonumber \\
- & =4.5\, W_{\mathrm{column}}+62.4\,\mathrm{pt}\nonumber \\
-W_{\mathrm{column}} & =\frac{\backslash\mbox{columnwidth}-62.4\,\mathrm{pt}}{4.5}
+ & =4.5\, L_{\mathrm{colonne}}+62.4\,\mathrm{pt}\nonumber \\
+L_{\mathrm{colonne}} & =\frac{\backslash\mbox{columnwidth}-62.4\,\mathrm{pt}}{4.5}
 \end{align}
 
 \end_inset
@@ -20266,9 +20004,7 @@ W_{\mathrm{column}} & =\frac{\backslash\mbox{columnwidth}-62.4\,\mathrm{pt}}{4.5
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In the table therefore the command
+Par conséquent, dans le tableau, la commande
 \end_layout
 
 \begin_layout Standard
@@ -20284,9 +20020,7 @@ real{4.5}}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-is used for the wider columns and
+est utilisée pour les colonnes les plus larges, et la commande
 \end_layout
 
 \begin_layout Standard
@@ -20304,9 +20038,7 @@ real{0.75}}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-for the smaller ones:
+est utilisée pour les plus étroites:
 \end_layout
 
 \begin_layout Standard
@@ -21484,7 +21216,7 @@ reference "tab:Tableau-centré-sur-séparateur-2"
 
 .
  Ce tableau a été créé comme un tableau 4×2.
- L'en-tête est une cellule multi-colonne centrée.
+ L'en-tête est une cellule multi-colonnes centrée.
  La première colonne est alignée à droite et contient la première partie
  et inclue l'opérateur.
  La seconde colonne contient le reste de la cellule aligné à gauche.
@@ -21882,7 +21614,7 @@ reference "sec:Table-Width-Calculation"
 
 \end_inset
 
- et pour des colonnes couvertes par un cellule multi-colonne comme dans
+ et pour des colonnes couvertes par un cellule multi-colonnes comme dans
  la section
 \begin_inset space ~
 \end_inset
@@ -21994,7 +21726,7 @@ M{width}
 
 \begin_layout Standard
 comme paramètre LaTeX dans la fenêtre de dialogue de tableau pour créer
- une multi-colonne.
+ une multi-colonnes.
 \end_layout
 
 \begin_layout Standard
@@ -22005,7 +21737,7 @@ comme paramètre LaTeX dans la fenêtre de dialogue de tableau pour créer
 \end_layout
 
 \begin_layout Standard
-Pour les cellules qui sont couvertes par la cellule multi-colonne, vous
+Pour les cellules qui sont couvertes par la cellule multi-colonnes, vous
  pouvez définir le format
 \end_layout
 
@@ -22056,7 +21788,7 @@ reference "eq:Wgn"
 \end_inset
 
  pour calculer la largeur que doit avoir chacune des cellules couverte par
- la cellule multi-colonne pour qu'elles aient toutes la même largeur.
+ la cellule multi-colonnes pour qu'elles aient toutes la même largeur.
 \end_layout
 
 \begin_layout Standard
@@ -22066,7 +21798,7 @@ Ensuite, vous pouvez entrer
 \begin_layout Standard
 
 \series bold
-S{largeur de la cellule multi-colonne}{nombre de colonnes couvertes}
+S{largeur de la cellule multi-colonnes}{nombre de colonnes couvertes}
 \end_layout
 
 \begin_layout Standard
@@ -22149,7 +21881,7 @@ M{2.5cm}
 \end_layout
 
 \begin_layout Standard
-pour la première colonne et la multi-colonne,
+pour la première colonne et la multi-colonnes,
 \end_layout
 
 \begin_layout Standard
@@ -22220,7 +21952,7 @@ motTrèsLongDansUneCellule
 \begin_inset Text
 
 \begin_layout Plain Layout
-multi-colonne avec multi-ligne
+multi-colonnes avec multi-lignes
 \end_layout
 
 \end_inset
@@ -23486,7 +23218,7 @@ numéros de colonnes}
 
 \begin_layout Standard
 en code TeX comme premier élément de la première cellule de la ligne.
- Si par exemple, vous avez une cellule multi-colonne qui couvre les colonnes
+ Si par exemple, vous avez une cellule multi-colonnes qui couvre les colonnes
  2 à 4 et que vous voulez un filet interrompu au dessus, ajoutez la commande
 \end_layout
 
@@ -23500,7 +23232,7 @@ cdashline{2-4}
 
 \begin_layout Standard
 comme premier élément de la première cellule de la ligne contenant la multi-colo
-nne.
+nnes.
 \end_layout
 
 \begin_layout Standard
@@ -23523,7 +23255,7 @@ reference "tab:Tableau-filets-tirets"
 \end_inset
 
  a été créé en utilisant 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -23531,7 +23263,7 @@ reference "tab:Tableau-filets-tirets"
 :c
 \series default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  comme paramètre LaTeX pour la troisième colonne.
@@ -23555,15 +23287,7 @@ cdashline{4-5}
 \begin_inset VSpace bigskip
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Tables with dashed lines can also be colored as shown by
-\lang french
- tableau
+Les filets interrompus peuvent également colorés comme indiqué tableau
 \begin_inset space ~
 \end_inset
 
@@ -23593,15 +23317,13 @@ arrayrulewidth}{1pt}
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
+filets épaissis pour un meilleur affichage de la couleur du file
 \lang english
-thicker lines for better visualization of the line color
+t
 \end_layout
 
 \end_inset
@@ -23623,15 +23345,11 @@ dashgapcolor{green}
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-color gaps between dashes green
+espaces entre les tirets en vert
 \end_layout
 
 \end_inset
@@ -23677,15 +23395,11 @@ arrayrulecolor{black}}
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-color horizontal, dashed lines red
+filets interrompus horizontaux en rouge
 \end_layout
 
 \end_inset
@@ -23731,15 +23445,11 @@ arrayrulecolor{black}}
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-color partial horizontal, dashed lines yellow
+filets interrompus horizontaux en jaune, partiellement
 \end_layout
 
 \end_inset
@@ -23764,9 +23474,7 @@ name "tab:Colored-table-with"
 
 \end_inset
 
-
-\lang english
-Colored table with dashed lines
+Tableau coloré avec filets interropus
 \end_layout
 
 \end_inset
@@ -24104,9 +23812,7 @@ myHdashline}
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-reset to default
+retour à la valeur implicite
 \end_layout
 
 \end_inset
@@ -24138,9 +23844,7 @@ myCdashline}
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-reset to default
+retour à la valeur implicite
 \end_layout
 
 \end_inset
@@ -24168,9 +23872,7 @@ nodashgapcolor
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-reset to default
+retour à la valeur implicite
 \end_layout
 
 \end_inset
@@ -24200,9 +23902,7 @@ arrayrulewidth}{0.4pt}
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-reset to default
+retour à la valeur implicite
 \end_layout
 
 \end_inset
@@ -24211,14 +23911,11 @@ reset to default
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The coloring of lines, columns and lines works as decribed in section
+La coloration des lignes, des colonnes et des filets fonctionne comme il
+ est décrit section
 \begin_inset space ~
 \end_inset
 
-
-\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -24226,35 +23923,34 @@ reference "sec:Tableaux-Colorés"
 
 \end_inset
 
-
-\lang english
 .
- Coloring horizontal lines works analogically as described there as well,
- one only needs to replace in the commands 
+ Coloret les filets horizontaux fonctionne de manière analogue comme il
+ est décrit ici, il suffit de remplacer la commande 
 \series bold
 
 \backslash
 myHlineC
 \series default
- by 
+ par 
 \series bold
 
 \backslash
 myHdashline
 \series default
- and 
+ et la commande 
 \backslash
 
 \series bold
-hline
+hlinepar
 \series default
- by 
+ 
 \series bold
 
 \backslash
 hdashline
 \series default
-; so one uses the command
+.
+ On utilise donc les commandes:
 \end_layout
 
 \begin_layout Standard
@@ -24301,15 +23997,13 @@ arrayrulecolor{black}}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To color 
+Pour colorer 
 \series bold
 
 \backslash
 cdashline
 \series default
-, the command is
+, la commande est:
 \end_layout
 
 \begin_layout Standard
@@ -24356,20 +24050,16 @@ arrayrulecolor{black}}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To get back the black line color, one needs to insert the following commands
- as TeX-Code behind the table:
+Pour revenir à un filet noir, il faut insérer les commandes suivantes en
+ code TeX après le tableau,
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For 
+pour 
 \series bold
 
 \backslash
-hdashline
+hdashline:
 \end_layout
 
 \begin_layout Standard
@@ -24385,9 +24075,7 @@ myHdashline}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-and for 
+et pour 
 \series bold
 
 \backslash
@@ -24407,26 +24095,25 @@ myCdashline}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To color the gaps between the dashes the command
+Pour colorer les espaces entre les tirets la commande
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 
 \backslash
-dashgapcolor{color}
+dashgapcolor{couleur}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-can be used in front of a table as TeX-Code.
- color is hereby the name of a defined color.
- The command
+peut être insérée en code TeX avant un tableau.
+ 
+\series bold
+couleur
+\series default
+ est ici le nom d'une couleur définie précédemment.
+ La commande
 \end_layout
 
 \begin_layout Standard
@@ -24438,9 +24125,7 @@ nodashgapcolor
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-unsets the changes made by 
+annule les changements induits par 
 \series bold
 
 \backslash
@@ -24450,28 +24135,25 @@ dashgapcolor
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\color none
-\lang english
-Note
+Not
 \series default
-: If there are multiple commands in a cell, the command of 
+a: s'il y a plusieurs commandes dans une cellule, Il faut placer la commande
+ de 
 \series bold
 arydshln
 \series default
- needs to be the first one in the cell.
- Therefore in cell 
+ en premier.
+ Donc dans la cellule 
 \emph on
 k
 \emph default
- of Table
+ du tableau
 \begin_inset space ~
 \end_inset
 
@@ -24482,13 +24164,13 @@ reference "tab:Colored-table-with"
 
 \end_inset
 
- the command 
+ , la commande 
 \series bold
 
 \backslash
 hdashline
 \series default
- is before 
+ est placée avant 
 \series bold
 
 \backslash
@@ -24503,29 +24185,26 @@ rowcolor
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\color none
-\lang english
-Note:
+Nota:
 \series default
- The LaTeX-package 
+ le paquetage LaTeX 
 \series bold
 arydshln
 \series default
- must be loaded in the document preamble before the LaTeX-package
-\lang french
- 
+ doit être chargé dans le préambule 
+\emph on
+avant
+\emph default
+ le paquetage 
 \series bold
 colortbl
 \series default
-\color inherit
 
 \begin_inset Index idx
 status collapsed
@@ -24536,8 +24215,6 @@ Paquetages LaTeX ! colortbl
 
 \end_inset
 
-
-\color none
 .
 \end_layout
 
@@ -24601,11 +24278,8 @@ fi
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For more information about dashed lines see the documentation of
-\lang french
- 
+Pour les détails concernant les filets colorés, voir la documentation du
+ paquetage 
 \series bold
 arydshln
 \series default
@@ -24665,11 +24339,11 @@ Flottants ! Introduction
 Un flottant est une portion de document, qui peut être associé à une étiquette
  et dont la position n'est pas fixée.
  Il peut 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 flotter
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  d'une page ou deux en avant ou en arrière, pour trouver l'emplacement le
@@ -24754,7 +24428,7 @@ arg   "float-insert table"
 ).
  Une boîte va être insérée dans votre document avec par exemple une étiquette
  du genre 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Figure
@@ -24762,7 +24436,7 @@ Figure
 \end_inset
 
 #:
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  (où # est un numéro).
@@ -25008,7 +24682,7 @@ où
 nom
 \family default
  est le mot 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -25016,7 +24690,7 @@ nom
 algorithme
 \emph default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  dans votre langue.
@@ -25072,7 +24746,7 @@ votre
 nom
 \family default
  est la traduction de 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -25080,7 +24754,7 @@ nom
 List of Algorithm
 \emph default
 s
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  dans votre langue.
@@ -25089,11 +24763,11 @@ s
 \begin_layout Standard
 Les flottants d'algorithme ne sont pas numérotés implicitement en suivant
  le schéma 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 chapitre.algorithme
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  comme c'est le cas pour les tableaux dans plusieurs classes de documents.
@@ -25180,19 +24854,19 @@ Flottants ! Numérotation
 \begin_layout Standard
 Les flottant sont soit numérotés indépendamment des sections dans lesquelles
  ils se trouvent, soit en utilisant un format du genre 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 chapitre.numéro
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  ou 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 section.numéro
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -25244,11 +24918,11 @@ roman
 
 \begin_layout Standard
 Pour changer le type de numérotation pour par exemple 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 sous-section.numéro
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , utilisez la commande suivante dans le préambule du document :
@@ -25521,11 +25195,11 @@ reference "fig:Deux-images-déformées"
 : affiche le numéro de l'élément entre parenthèses, c'est le style utilisé
  normalement pour faire référence à des formules mathématiques, en particulier
  quand le mot 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Équation
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  est omis : 
@@ -25575,11 +25249,11 @@ page
 \end_inset
 
 : affiche le mot 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 page
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  suivi du numéro de la page sur laquelle se trouve l'élément : 
@@ -25606,11 +25280,11 @@ page
 \end_inset
 
 : affiche le numéro de l'élément, le mot 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 page
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  et le numéro de la page : 
@@ -25775,7 +25449,7 @@ reference "fig:Deux-images-déformées"
  n'imprimera pas le numéro de la page si l'étiquette se trouve sur la page
  précédente, la même page ou la page suivante.
  Vous verrez par exemple un texte du genre 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -25783,7 +25457,7 @@ reference "fig:Deux-images-déformées"
 sur cette page
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  à la place.
@@ -25853,11 +25527,11 @@ Paquetages LaTeX ! prettyref
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 fig:
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  est par exemple le raccourci LyX pour les étiquettes dans les légendes
@@ -25953,11 +25627,11 @@ Paramètres du document
  croisées, en incluant le nom du flottant référencé (ou d'une partie comme
  une section).
  Par exemple pour vous éviter de devoir écrire le mot 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Figure
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  devant chaque référence à une figure.
@@ -25988,23 +25662,19 @@ autoref{#1}}}}
 \begin_layout Standard
 Si vous préférez d'autres noms de référence que ceux qui sont proposés par
  défaut, par exemple vous préférez le nom 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 sec.
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset Quotes eld
+\begin_inset Quotes frd
 \end_inset
 
  plutôt que 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 section
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , vous pouvez redéfinir ce nom en insérant ceci dans le préambule:
@@ -26624,11 +26294,11 @@ Prix
  Utilisez cette option le moins souvent possible et seulement quand le document
  est presque prêt à être imprimé.
  En effet, le flottant n'est plus capable de 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 flotter
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , ce qui peut perturber toutes les mises en page.
@@ -26719,7 +26389,7 @@ Paquetages LaTeX ! endfloat
  document dans leurs propres sections.
  À la position d'origine du flottant, une indication textuelle du genre
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -26735,7 +26405,7 @@ about here.
 ]
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  est insérée.
@@ -26817,16 +26487,16 @@ Note:
 endfloat
 \series default
  quand la légende contient un 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 ß
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  allemand.
  Utilisez dans ce cas la commande 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -26836,15 +26506,15 @@ endfloat
 ss
 \series default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  en code TeX à la place du 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 ß
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -27800,7 +27470,7 @@ flottants
 .
  Dans la fenêtre de LyX les légendes apparaissent comme une étiquette comme
  par exemple 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -27808,16 +27478,16 @@ flottants
 Figure #:
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  suivi par le texte de la légende.
  Le 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 #
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  étant remplacé par le numéro de référence réel.
@@ -28014,19 +27684,19 @@ key "caption"
 
 \begin_layout Standard
 Pour changer le nom de l'étiquette, par exemple de 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Figure
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  à 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Image
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , utilisez la commande suivante dans le préambule :
@@ -28054,13 +27724,13 @@ thefigure
  insère le numéro de la figure et
 \series bold
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 ~
 \series default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  ajoute une espace insécable.
@@ -28516,9 +28186,7 @@ de la classe de document.
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-That option is used in this document.
+Cette option est utilisée dans le document
 \end_layout
 
 \end_inset
@@ -28527,16 +28195,12 @@ That option is used in this document.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In documents with a KOMA-Script document class you can also right-click
- on a caption and mark in the context menu if this should be a caption above
- or below the table/figure.
- This way you can override the document-wide caption placement for certain
- captions.
- Table
-\lang french
-
+Dans les documents utilisant la classe KOMA-Script, vous pouvez aussi ouvrir
+ le menu contextuel dans une légende avec un clic droit et indiquer si la
+ légende doit être au-dessus ou au-dessous du tableau ou de la figure.
+ Vous pouvez de cette façon écraser le réglage global de placement des légendes
+ pour certaines d'entre elles.
+ Le tableau
 \begin_inset space ~
 \end_inset
 
@@ -28547,13 +28211,9 @@ reference "tab:A-caption-marked"
 
 \end_inset
 
-
-\lang english
- is an example where the caption is marked a being below the table while
- it is above.
- For comparison the caption in Table
-\lang french
-
+ donne un exemple dans lequel la légende est positionnée au-dessous du tableau
+ alors qu'elle est insérée au-dessus.
+ Par comparaison, la légende du tableau
 \begin_inset space ~
 \end_inset
 
@@ -28564,9 +28224,7 @@ reference "tab:A-standard-table"
 
 \end_inset
 
-
-\lang english
- is not marked.
+ n'est pas repositionnée.
 \end_layout
 
 \begin_layout Standard
@@ -28585,9 +28243,9 @@ name "tab:A-caption-marked"
 
 \end_inset
 
-
+Une légende positionnée sous le tableau par le menu contextuel
 \lang english
-A caption marked as being below the table.
+.
 \end_layout
 
 \end_inset
@@ -28637,7 +28295,7 @@ A caption marked as being below the table.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Joe
+Jean
 \end_layout
 
 \end_inset
@@ -28646,7 +28304,7 @@ Joe
 \begin_inset Text
 
 \begin_layout Plain Layout
-Mary
+Marie
 \end_layout
 
 \end_inset
@@ -28655,7 +28313,7 @@ Mary
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ted
+Pierre
 \end_layout
 
 \end_inset
@@ -28730,9 +28388,7 @@ name "tab:A-standard-table"
 
 \end_inset
 
-
-\lang english
-A standard table caption.
+Une légende de tableau standard
 \end_layout
 
 \end_inset
@@ -28782,7 +28438,7 @@ A standard table caption.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Joe
+Jean
 \end_layout
 
 \end_inset
@@ -28791,7 +28447,7 @@ Joe
 \begin_inset Text
 
 \begin_layout Plain Layout
-Mary
+Marie
 \end_layout
 
 \end_inset
@@ -28800,7 +28456,7 @@ Mary
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ted
+Pierre
 \end_layout
 
 \end_inset
@@ -29347,7 +29003,7 @@ figure
 table
 \family default
 , le placement peut être 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -29355,11 +29011,11 @@ table
 t
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  pour haut (top), 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -29367,11 +29023,15 @@ t
 c
 \family default
 
+\begin_inset Quotes frd
+\end_inset
+
+
 \begin_inset Quotes erd
 \end_inset
 
  pour centre (center), ou 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -29379,7 +29039,7 @@ c
 b
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  pour bas (bottom).
@@ -31389,11 +31049,11 @@ alph
 \series default
 .
  Pour les 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 numéroter
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  avec des symboles, utilisez 
@@ -31485,11 +31145,11 @@ arabic{footnote}}
 \begin_layout Standard
 Si vous voulez que vos notes de bas de pages soient numérotées en suivant
  le schéma 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 chapitre.note
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , ajoutez la commande suivante au préambule de votre document :
@@ -31628,13 +31288,13 @@ numberwithin
 
 \begin_layout Standard
 Donc pour avoir par exemple le schéma 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 chapitre.
 \backslash
 Roman{note}
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , utilisez la commande suivante plutôt que 
@@ -31918,11 +31578,11 @@ reference "fig:Notes-de-fin"
 
 .
  On les appelle 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 notes de fin
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -32035,11 +31695,11 @@ L'entête de paragraphe pour les notes de fin n'est pas traduit automatiquement
  dans la langue du document, cela doit être fait manuellement.
  Les lignes de préambule suivantes traduisent implicitement le nom en anglais
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Notes
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  en sa traduction Allemande
@@ -32048,11 +31708,11 @@ status collapsed
 
 \begin_layout Plain Layout
 En français, 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Notes
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  peut être conservé.
@@ -32061,11 +31721,11 @@ Notes
 \end_inset
 
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Anmerkungen
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  :
@@ -32295,11 +31955,11 @@ Les notes en marge apparaissent dans la marge de droite dans les documents
  imprimées sur une seule face.
  Dans les documents imprimés recto-verso, elles apparaissent dans la marge
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 extérieure
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  – la gauche sur les pages paires et la droite sur les pages impaires.
@@ -32625,7 +32285,7 @@ reference "cha:Unités-de-longueur"
 \end_inset
 
 cm avec la commande en code TeX 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -32633,7 +32293,7 @@ cm avec la commande en code TeX
 [-1.5cm]
 \series default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
@@ -32826,7 +32486,7 @@ Vous pouvez changer la mise en forme d'une note en marge en changeant sa
  définition.
  Pour créer par exemple une entête pour toutes les notes en marge avec le
  texte 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -32838,7 +32498,7 @@ Attention!
 \series default
 \bar default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  écrit en souligné, sans-sérif et en gras, ajoutez ce qui suit dans le préambule
@@ -33077,7 +32737,7 @@ fi
 \end_layout
 
 \begin_layout Chapter
-Les boîtes
+Boîtes
 \end_layout
 
 \begin_layout Section
@@ -33416,11 +33076,11 @@ Hauteur
 
 \begin_layout Description
 Profondeur C'est simplement la 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 hauteur
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  du texte.
@@ -35254,35 +34914,27 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-
-\lang ngerman
-Dies ist ein deutscher Text.
- Dies ist ein deutscher Text.
- Dies ist ein deutscher Text.
- Dies ist ein deutscher Text.
- Dies ist ein deutscher Text.
- Dies ist ein deutscher Text.
- Dies ist ein deutscher Text.
- Dies ist ein deutscher Text.
- Dies ist ein deutscher Text.
- Dies ist ein deutscher Text.
- Dies ist ein deutscher Text.
- Dies ist ein deutscher Text.
- Dies ist ein deutscher Text
+Ceci est un texte en français.
+ Ceci est un texte en français.
+ Ceci est un texte en français.
+ Ceci est un texte en français.
+ Ceci est un texte en français.
+ Ceci est un texte en français.
+ Ceci est un texte en français.
+ Ceci est un texte en français.Ceci est un texte en français.
+ Ceci est un texte en français.
+ Ceci est un texte en français.
+ Ceci est un texte en français
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang ngerman
-Dies ist eine deutsche Fußnote.
+Ceci est une note de bas de page en français.
 \end_layout
 
 \end_inset
 
-.
- Dies ist ein deutscher Text.
- Dies ist ein deutscher Text.
+.Ceci est un texte en français
 \end_layout
 
 \end_inset
@@ -35786,27 +35438,27 @@ Le déplacement peut être une valeur positive pour élever la boîte ou négati
 
 \begin_layout Standard
 Pour aligner le mot 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 empêcher
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  de façon à ce que le point le plus bas du caractère le plus 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 profond
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , le 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 p
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , soit au niveau de la ligne de base, insérez la commande 
@@ -35825,7 +35477,7 @@ depth}{
 \begin_layout Standard
 en code TeX avant le mot.
  Insérez après le mot l'accolade fermante 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -35833,7 +35485,7 @@ en code TeX avant le mot.
 }
 \series default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  en code TeX.
@@ -35846,7 +35498,7 @@ Voici le résultat :
 \begin_layout Standard
 Cette ligne de texte contient le mot 
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -35860,11 +35512,11 @@ depth}{
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 empêcher
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
@@ -35906,11 +35558,11 @@ depth}{
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 empêcher
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
@@ -35942,11 +35594,11 @@ raisebox{0.5cm}{
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 tester
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
@@ -35996,11 +35648,11 @@ depth}[0pt]{
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 empêcher
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
@@ -36032,11 +35684,11 @@ raisebox{0.5cm}[0pt]{
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 tester
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
@@ -36091,11 +35743,11 @@ Couleur ! Pour le texte
 \begin_layout Standard
 Pour pouvoir colorer la couleur de fond d'un texte, il faut le mettre dans
  une boîte appelée 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 colorbox
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -36271,11 +35923,11 @@ colorbox{red}{
 \begin_layout Standard
 avant le mot en code TeX.
  Insérez l'accolade fermante 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 }
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  après le mot, en code TeX.
@@ -36300,11 +35952,11 @@ colorbox{red}{
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Attention!
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
@@ -36575,11 +36227,11 @@ colorbox{color}{
 \begin_layout Standard
 en code TeX.
  Après la minipage, insérez l'accolade fermante 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 }
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  en code TeX.
@@ -36958,20 +36610,20 @@ Dans l'exemple qui suit, la commande
 rotatebox[origin=c]{60}{
 \series default
  a été insérée en code TeX juste avant le texte 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 pivoté de 90°
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  ; la boîte est refermée juste après le texte par une accolade fermante
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 }
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  en code TeX.
@@ -37827,11 +37479,11 @@ status collapsed
 
 \begin_layout Plain Layout
 Quand 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 fleqn
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  est ajouté aux options de la classe de document.
@@ -40757,7 +40409,7 @@ espaces
 \family default
  qui matérialise chaque espace présente dans le code source par un caractère
  
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -40774,7 +40426,7 @@ textvisiblespace
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  .
@@ -41114,7 +40766,7 @@ Flottant
 \family default
  crée un flottant de listing pour lequel vous pouvez préciser les options
  classiques d'emplacement : 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -41122,11 +40774,11 @@ Flottant
 h
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -41134,11 +40786,11 @@ h
 t
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -41146,11 +40798,11 @@ t
 b
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 , et 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -41158,7 +40810,7 @@ b
 p
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  correspondant aux emplacement décrits dans la section
@@ -41175,7 +40827,7 @@ reference "sec:Placement-flottants"
 .
  Les options de positionnement peuvent être mélangées et doivent être saisies
  sans séparation, par exemple, on peut taper 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -41183,16 +40835,16 @@ reference "sec:Placement-flottants"
 htbp
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
- L' option 
-\begin_inset Quotes eld
+ L'option 
+\begin_inset Quotes fld
 \end_inset
 
 h
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  a parfois aucun effet, mais vous n'avez pas besoin d'utiliser l'option
@@ -41714,7 +41366,7 @@ arg   "copy"
 
 \begin_layout Enumerate
 Dans le listing écrivez 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -41722,7 +41374,7 @@ Dans le listing écrivez
 $$
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  et copiez le contenu du presse-papier entre les deux signes dollar (raccourci
@@ -46391,13 +46043,13 @@ La largeur totale de
 n
 \emph default
  cellules de tableau 
-\begin_inset Formula $W_{\mathrm{tot\, n}}$
+\begin_inset Formula $L_{\mathrm{tot\, n}}$
 \end_inset
 
  peut être calculée avec
 \begin_inset Formula 
 \begin{equation}
-W_{\mathrm{tot}\, n}=n\cdot(W_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}
+L_{\mathrm{tot}\, n}=n\cdot(L_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}
 \end{equation}
 
 \end_inset
@@ -46406,8 +46058,8 @@ W_{\mathrm{tot}\, n}=n\cdot(W_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cd
 \end_layout
 
 \begin_layout Standard
-Où 
-\begin_inset Formula $W_{g\, n}$
+où 
+\begin_inset Formula $L_{g\, n}$
 \end_inset
 
  est la largeur fixe de toutes les cellules.
@@ -46448,14 +46100,14 @@ reference "eq:Wtot_n"
 
 \end_inset
 
-, la largeur totale d'une multicolonne, 
-\begin_inset Formula $W_{\mathrm{tot\, mult}}$
+, la largeur totale d'une multi-colonnes, 
+\begin_inset Formula $L_{\mathrm{tot\, mult}}$
 \end_inset
 
  est
 \begin_inset Formula 
 \begin{equation}
-W_{\mathrm{tot\, mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}
+L_{\mathrm{tot\, mult}}=L_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}
 \end{equation}
 
 \end_inset
@@ -46483,7 +46135,7 @@ reference "eq:Wtot_mult"
 \end_inset
 
  sont égales, on peut calculer la largeur nécessaire 
-\begin_inset Formula $W_{g\, n}$
+\begin_inset Formula $L_{g\, n}$
 \end_inset
 
  quand 
@@ -46492,13 +46144,13 @@ n
 \emph default
  colonnes sont couvertes, de façon à ce que chaque colonne ait une largeur
  de 
-\begin_inset Formula $W_{\mathrm{tot\, mult}}/n$
+\begin_inset Formula $L_{\mathrm{tot\, mult}}/n$
 \end_inset
 
 :
 \begin_inset Formula 
 \begin{equation}
-W_{g\, n}=\frac{W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth})}{n}
+L_{g\, n}=\frac{L_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth})}{n}
 \end{equation}
 
 \end_inset
