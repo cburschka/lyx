@@ -37,8 +37,7 @@ Note for Git checkouts
 
 If you have checked this out from Git, you need to have:
 * automake >= 1.8
-* autoconf >= 2.59d
-* gettext >= 0.16.1
+* autoconf >= 2.60
 Then type "./autogen.sh" to build the needed configuration
 files and proceed as stated above/below.
 
@@ -66,12 +65,6 @@ libraries. See the RELEASE-NOTES for details.
 
 
 * Other things to note
-
-If you make modifications to files in src/ (for example by applying a
-patch), you will need to have the GNU gettext package installed, due
-to some dependencies in the makefiles. You can get the latest version
-from:
-	ftp://ftp.gnu.org/gnu/gettext/
 
 The two following programs should be available at configuration time:
 
