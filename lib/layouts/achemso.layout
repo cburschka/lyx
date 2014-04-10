@@ -205,19 +205,21 @@ End
 
 
 Float
+	# We need the [[mathematical]] context, since graph in the sense of
+	# diagram is not meant (chart is used for this, see above).
 	Type		graph
-	GuiName		Graph
+	GuiName		Graph[[mathematical]]
 	Placement	tbp
 	Extension	loh
 	NumberWithin	none
 	Style		plain
-	ListName	"List of Graphs"
+	ListName	"List of Graphs[[mathematical]]"
 	IsPredefined	true
 	UsesFloatPkg	true
 End
 
 InsetLayout graph
-	LabelString	Graph
+	LabelString	Graph[[mathematical]]
 	LabelFont
 	  Color		collapsable
 	  Size		Small
