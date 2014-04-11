@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-03-20 11:00+0100\n"
+"POT-Creation-Date: 2014-04-11 08:59+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -6132,13 +6132,13 @@ msgstr "Diagram"
 msgid "List of Charts"
 msgstr "Zoznam Diagramov"
 
-#: lib/layouts/achemso.layout:209 lib/layouts/achemso.layout:220
+#: lib/layouts/achemso.layout:211 lib/layouts/achemso.layout:222
 msgid "Graph[[mathematical]]"
-msgstr "Grafika"
+msgstr "Graf"
 
-#: lib/layouts/achemso.layout:214
+#: lib/layouts/achemso.layout:216
 msgid "List of Graphs[[mathematical]]"
-msgstr "Zoznam Grafík"
+msgstr "Zoznam Grafov"
 
 #: lib/layouts/achemso.layout:248
 msgid "SupplementalInfo"
@@ -14247,10 +14247,6 @@ msgstr "Španielsky (Mexiko)"
 msgid "Swedish"
 msgstr "Švédsky"
 
-#: lib/languages:887
-msgid "Syriac"
-msgstr "Syriac (stredoveká hebrejčina)"
-
 #: lib/languages:895 src/frontends/qt4/GuiSymbols.cpp:71
 msgid "Tamil"
 msgstr "Tamilsky"
@@ -14282,10 +14278,6 @@ msgstr "Ukrajinsky"
 #: lib/languages:963
 msgid "Upper Sorbian"
 msgstr "Srbsky (Hornolužicky)"
-
-#: lib/languages:973
-msgid "Urdu"
-msgstr "Urdsky"
 
 #: lib/languages:983
 msgid "Vietnamese"
@@ -16874,7 +16866,7 @@ msgstr "Vložiť integrál"
 
 #: lib/ui/stdtoolbars.inc:186
 msgid "Insert product"
-msgstr "Vložiť produkt"
+msgstr "Vložiť súčin"
 
 #: lib/ui/stdtoolbars.inc:188
 msgid "Insert ( )"
@@ -27427,22 +27419,6 @@ msgstr "Vyberte dokument pre otvorenie"
 msgid "Examples|#E#e"
 msgstr "Príklady"
 
-#: src/frontends/qt4/GuiView.cpp:1955
-msgid "LyX-1.3.x Documents (*.lyx13)"
-msgstr "LyX-1.3.x dokumenty (*.lyx13)"
-
-#: src/frontends/qt4/GuiView.cpp:1956
-msgid "LyX-1.4.x Documents (*.lyx14)"
-msgstr "LyX-1.4.x dokumenty (*.lyx14)"
-
-#: src/frontends/qt4/GuiView.cpp:1957
-msgid "LyX-1.5.x Documents (*.lyx15)"
-msgstr "LyX-1.5.x dokumenty (*.lyx15)"
-
-#: src/frontends/qt4/GuiView.cpp:1958
-msgid "LyX-1.6.x Documents (*.lyx16)"
-msgstr "LyX-1.6.x dokumenty (*.lyx16)"
-
 #: src/frontends/qt4/GuiView.cpp:1983 src/frontends/qt4/Validator.cpp:200
 #: src/insets/ExternalSupport.cpp:368 src/insets/InsetBibtex.cpp:297
 #: src/insets/InsetGraphics.cpp:596 src/insets/InsetInclude.cpp:544
@@ -29611,6 +29587,24 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Syriac"
+#~ msgstr "Syriac (stredoveká hebrejčina)"
+
+#~ msgid "Urdu"
+#~ msgstr "Urdsky"
+
+#~ msgid "LyX-1.3.x Documents (*.lyx13)"
+#~ msgstr "LyX-1.3.x dokumenty (*.lyx13)"
+
+#~ msgid "LyX-1.4.x Documents (*.lyx14)"
+#~ msgstr "LyX-1.4.x dokumenty (*.lyx14)"
+
+#~ msgid "LyX-1.5.x Documents (*.lyx15)"
+#~ msgstr "LyX-1.5.x dokumenty (*.lyx15)"
+
+#~ msgid "LyX-1.6.x Documents (*.lyx16)"
+#~ msgstr "LyX-1.6.x dokumenty (*.lyx16)"
 
 #~ msgid "Sco&pe"
 #~ msgstr "Rozsah"
