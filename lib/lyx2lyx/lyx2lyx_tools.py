@@ -17,7 +17,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 '''
-This modules offer several free functions to help with lyx2lyx'ing. 
+This module offers several free functions to help with lyx2lyx'ing. 
 More documentaton is below, but here is a quick guide to what 
 they do. Optional arguments are marked by brackets.
 
