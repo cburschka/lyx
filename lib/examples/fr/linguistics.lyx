@@ -809,13 +809,13 @@ textwidth
 
 \end_deeper
 \begin_layout Section
-Tableaux résultant de la théorie de l'optimalité (TO)
+Tableaux résultant de la théorie de l'optimalité (OT en anglais)
 \end_layout
 
 \begin_layout Standard
-Un tableau TO peut bien évidemment être inséré comme un tableau ordinaire
- (pour ce qui concerne les saisies spécifiques comme les lignes tiretées
- et les cellules ombrées, voir le manuel 
+Un tableau de ce type peut bien évidemment être inséré comme un tableau
+ ordinaire (pour ce qui concerne les saisies spécifiques comme les lignes
+ tiretées et les cellules ombrées, voir le manuel 
 \emph on
 Objets
 \emph default
@@ -827,7 +827,7 @@ insérés
  Cependant, vous pouvez souhaiter numéroter ces tableaux à part dans le
  document, avec une 
 \emph on
-Liste des tableaux TO
+Liste des tableaux
 \emph default
 , semblable à la 
 \emph on
@@ -1128,7 +1128,7 @@ a.ti.kap
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Exemple tableau (TO)
+Exemple de tableau utilisé dans la théorie de l'optimalité
 \end_layout
 
 \end_inset
@@ -1145,7 +1145,7 @@ Exemple tableau (TO)
 Noter que, de manière implicite, la légende est toujours placée au-dessous
  des tableaux dans le résultat imprimé, quel que soit le positionnement
  choisi dans la fenêtre LyX.
- Pour mettre les légendes des tableaux (TO) au-dessus, insérer le code suivant
+ Pour mettre les légendes des tableaux au-dessus, insérer le code suivant
  dans 
 \family sans
 Document\SpecialChar \menuseparator
@@ -1187,14 +1187,26 @@ restylefloat{tableau}
 \begin_layout Standard
 Un insert pour la 
 \emph on
-Liste des tableaux (TO)
+Liste des tableaux 
 \emph default
- est accessible via 
+est accessible via 
 \family sans
 Insertion\SpecialChar \menuseparator
 Listes & TdM
 \family default
-.
+ (il y a deux occurrences dans le menu, c'est la seconde qui est la bonne
+ en principe
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Au cas où vous auriez en même temps des tableaux ordinaires et des tableaux
+ linguistiques, il vous faudra lever l’ambiguïté en modifiant l'un des intitulés
+\end_layout
+
+\end_inset
+
+).
  Bien que celle-ci soit placée d'habitude au début ou à la fin du document,
  nous l'insérons ici à titre d'exemple:
 \end_layout
