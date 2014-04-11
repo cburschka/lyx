@@ -1009,7 +1009,6 @@ def checkConverterEntries():
 \converter lyx        lyx14x     "python -tt $$s/lyx2lyx/lyx2lyx -t 245 $$i > $$o"	""
 \converter lyx        lyx15x     "python -tt $$s/lyx2lyx/lyx2lyx -t 276 $$i > $$o"	""
 \converter lyx        lyx16x     "python -tt $$s/lyx2lyx/lyx2lyx -t 345 $$i > $$o"	""
-\converter lyx        lyx21x     "python -tt $$s/lyx2lyx/lyx2lyx -t 474 $$i > $$o"	""
 \converter lyx        clyx       "python -tt $$s/lyx2lyx/lyx2lyx -c big5 -t 245 $$i > $$o"	""
 \converter lyx        jlyx       "python -tt $$s/lyx2lyx/lyx2lyx -c euc_jp -t 245 $$i > $$o"	""
 \converter lyx        klyx       "python -tt $$s/lyx2lyx/lyx2lyx -c euc_kr -t 245 $$i > $$o"	""
