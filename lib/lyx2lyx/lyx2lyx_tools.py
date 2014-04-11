@@ -14,10 +14,10 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 '''
-This modules offer several free functions to help with lyx2lyx'ing. 
+This module offers several free functions to help with lyx2lyx'ing. 
 More documentaton is below, but here is a quick guide to what 
 they do. Optional arguments are marked by brackets.
 
@@ -60,7 +60,7 @@ latex_length(slen):
 '''
 
 import string
-from parser_tools import find_token
+from parser_tools import find_token, find_end_of_inset
 from unicode_symbols import unicode_reps
 
 
@@ -117,7 +117,7 @@ def put_cmd_in_ert(arg):
     Returns a list of strings, with the lines so wrapped.
     '''
     
-    ret = ["\\begin_inset ERT", "status collapsed", "\\begin_layout Plain Layout", ""]
+    ret = ["\\begin_inset ERT", "status collapsed", "", "\\begin_layout Plain Layout", ""]
     # It will be faster for us to work with a single string internally. 
     # That way, we only go through the unicode_reps loop once.
     if type(arg) is list:
@@ -128,10 +128,41 @@ def put_cmd_in_ert(arg):
       s = s.replace(rep[1], rep[0].replace('\\\\', '\\'))
     s = s.replace('\\', "\\backslash\n")
     ret += s.splitlines()
-    ret += ["\\end_layout", "\\end_inset"]
+    ret += ["\\end_layout", "", "\\end_inset"]
     return ret
 
-            
+
+def get_ert(lines, i):
+    'Convert an ERT inset into LaTeX.'
+    if not lines[i].startswith("\\begin_inset ERT"):
+        return ""
+    j = find_end_of_inset(lines, i)
+    if j == -1:
+        return ""
+    while i < j and not lines[i].startswith("status"):
+        i = i + 1
+    i = i + 1
+    ret = ""
+    first = True
+    while i < j:
+        if lines[i] == "\\begin_layout Plain Layout":
+            if first:
+                first = False
+            else:
+                ret = ret + "\n"
+            while i + 1 < j and lines[i+1] == "":
+                i = i + 1
+        elif lines[i] == "\\end_layout":
+            while i + 1 < j and lines[i+1] == "":
+                i = i + 1
+        elif lines[i] == "\\backslash":
+            ret = ret + "\\"
+        else:
+            ret = ret + lines[i]
+        i = i + 1
+    return ret
+
+
 def lyx2latex(document, lines):
     'Convert some LyX stuff into corresponding LaTeX stuff, as best we can.'
 

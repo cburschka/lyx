@@ -45,17 +45,6 @@ def remove_option(lines, m, option):
     return True
 
 
-# DO NOT USE THIS ROUTINE ANY MORE. Better yet, replace the uses that
-# have been made of it with uses of put_cmd_in_ert.
-def old_put_cmd_in_ert(string):
-    for rep in unicode_reps:
-        string = string.replace(rep[1], rep[0].replace('\\\\', '\\'))
-    string = string.replace('\\', "\\backslash\n")
-    string = "\\begin_inset ERT\nstatus collapsed\n\\begin_layout Plain Layout\n" \
-      + string + "\n\\end_layout\n\\end_inset"
-    return string
-
-
 ###############################################################################
 ###
 ### Conversion and reversion routines
@@ -994,7 +983,6 @@ def revert_multirow(document):
           numrows = int(numrows)
           numcols = int(numcols)
         except:
-          document.warning(numrows)
           document.warning("Unable to determine rows and columns!")
           begin_table = end_table
           continue
@@ -1829,9 +1817,16 @@ def convert_mathdots(document):
     " Load mathdots automatically "
     i = find_token(document.header, "\\use_mhchem" , 0)
     if i == -1:
-      i = find_token(document.header, "\\use_esint" , 0)
-    if i != -1:
-      document.header.insert(i + 1, "\\use_mathdots 1")
+        i = find_token(document.header, "\\use_esint" , 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Can't find \\use_mhchem.")
+        return;
+    j = find_token(document.preamble, "\\usepackage{mathdots}", 0)
+    if j == -1:
+        document.header.insert(i + 1, "\\use_mathdots 0")
+    else:
+        document.header.insert(i + 1, "\\use_mathdots 2")
+        del document.preamble[j]
 
 
 def revert_mathdots(document):
@@ -2233,7 +2228,6 @@ def revert_multirowOffset(document):
           numrows = int(numrows)
           numcols = int(numcols)
         except:
-          document.warning(numrows)
           document.warning("Unable to determine rows and columns!")
           begin_table = end_table
           continue

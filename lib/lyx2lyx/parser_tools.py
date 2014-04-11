@@ -19,7 +19,7 @@
 
 
 ''' 
-This modules offer several free functions to help parse lines.
+This module offers several free functions to help parse lines.
 More documentaton is below, but here is a quick guide to what 
 they do. Optional arguments are marked by brackets.
 
@@ -32,11 +32,11 @@ find_token(lines, token, start[, end[, ignorews]]):
   extra whitespace following token itself.
 
 find_token_exact(lines, token, start[, end]):
-  As find_token, but with ignorews True.
+  As find_token, but with ignorews set to True.
 
 find_tokens(lines, tokens, start[, end[, ignorews]]):
   Returns the first line i, start <= i < end, on which
-  oen of the tokens in tokens is found at the beginning. 
+  one of the tokens in tokens is found at the beginning.
   Returns -1 if not found. 
   If ignorews is (given and) True, then differences
   in whitespace do not count, except that there must be no 
@@ -104,6 +104,12 @@ find_end_of_inset(lines, i):
 find_end_of_layout(lines, i):
   Specialization of find_end_of for layouts.
 
+find_end_of_sequence(lines, i):
+  Find the end of the sequence of layouts of the same kind.
+  Considers nesting. If the last paragraph in sequence is nested,
+  the position of the last \end_deeper is returned, else
+  the position of the last \end_layout.
+
 is_in_inset(lines, i, inset):
   Checks if line i is in an inset of the given type.
   If so, returns starting and ending lines. Otherwise, 
@@ -119,7 +125,7 @@ is_in_inset(lines, i, inset):
 
 get_containing_inset(lines, i):
   Finds out what kind of inset line i is within. Returns a 
-  list containing what follows \begin_inset on the the line 
+  list containing what follows \begin_inset on the line
   on which the inset begins, plus the starting and ending line.
   Returns False on any kind of error or if it isn't in an inset.
   So get_containing_inset(document.body, i) might return:
@@ -128,8 +134,8 @@ get_containing_inset(lines, i):
   on line 306.
 
 get_containing_layout(lines, i):
-  As get_containing_inset, but for layout.
-
+  As get_containing_inset, but for layout. Additionally returns the
+  position of real paragraph start (after par params) as 4th value.
 
 find_nonempty_line(lines, start[, end):
   Finds the next non-empty line.
@@ -139,6 +145,9 @@ check_token(line, token):
 
 is_nonempty_line(line):
   Does line contain something besides whitespace?
+
+count_pars_in_inset(lines, i):
+  Counts the paragraphs inside an inset.
 
 '''
 
@@ -307,12 +316,21 @@ def get_quoted_value(lines, token, start, end = 0, default = ""):
 
 
 def get_option_value(line, option):
-    rx = option + '\s*=\s*"([^"+])"'
+    rx = option + '\s*=\s*"([^"]+)"'
     rx = re.compile(rx)
     m = rx.search(line)
     if not m:
       return ""
     return m.group(1)
+
+
+def set_option_value(line, option, value):
+    rx = '(' + option + '\s*=\s*")[^"]+"'
+    rx = re.compile(rx)
+    m = rx.search(line)
+    if not m:
+        return line
+    return re.sub(rx, '\g<1>' + value + '"', line)
 
 
 def del_token(lines, token, start, end = 0):
@@ -407,16 +425,20 @@ def is_in_inset(lines, i, inset):
 def get_containing_inset(lines, i):
   ''' 
   Finds out what kind of inset line i is within. Returns a 
-  list containing (i) what follows \begin_inset on the the line 
+  list containing (i) what follows \begin_inset on the line
   on which the inset begins, plus the starting and ending line.
   Returns False on any kind of error or if it isn't in an inset.
   '''
-  stins = find_token_backwards(lines, i, "\\begin_inset")
-  if stins == -1:
-      return False
-  endins = find_end_of_inset(lines, stins)
-  if endins < i:
-      return False
+  j = i
+  while True:
+      stins = find_token_backwards(lines, "\\begin_inset", j)
+      if stins == -1:
+          return False
+      endins = find_end_of_inset(lines, stins)
+      if endins > j:
+          break
+      j = stins - 1
+
   inset = get_value(lines, "\\begin_inset", stins)
   if inset == "":
       # shouldn't happen
@@ -427,18 +449,81 @@ def get_containing_inset(lines, i):
 def get_containing_layout(lines, i):
   ''' 
   Finds out what kind of layout line i is within. Returns a 
-  list containing (i) what follows \begin_layout on the the line 
-  on which the layout begins, plus the starting and ending line.
+  list containing what follows \begin_layout on the line
+  on which the layout begins, plus the starting and ending line
+  and the start of the paragraph (after all params). I.e, returns:
+    (layoutname, layoutstart, layoutend, startofcontent)
   Returns False on any kind of error.
   '''
-  stins = find_token_backwards(lines, i, "\\begin_layout")
-  if stins == -1:
-      return False
-  endins = find_end_of_layout(lines, stins)
-  if endins < i:
-      return False
-  lay = get_value(lines, "\\begin_layout", stins)
+  j = i
+  while True:
+      stlay = find_token_backwards(lines, "\\begin_layout", j)
+      if stlay == -1:
+          return False
+      endlay = find_end_of_layout(lines, stlay)
+      if endlay > i:
+          break
+      j = stlay - 1
+
+  lay = get_value(lines, "\\begin_layout", stlay)
   if lay == "":
       # shouldn't happen
       return False
-  return (lay, stins, endins)
+  par_params = ["\\noindent", "\\indent", "\\indent-toggle", "\\leftindent",
+                "\\start_of_appendix", "\\paragraph_spacing single",
+                "\\paragraph_spacing onehalf", "\\paragraph_spacing double",
+                "\\paragraph_spacing other", "\\align", "\\labelwidthstring"]
+  stpar = stlay
+  while True:
+      stpar += 1
+      if lines[stpar] not in par_params:
+          break
+  return (lay, stlay, endlay, stpar)
+
+
+def count_pars_in_inset(lines, i):
+  '''
+  Counts the paragraphs within this inset
+  '''
+  ins = get_containing_inset(lines, i)
+  if ins == -1:
+      return -1
+  pars = 0
+  for j in range(ins[1], ins[2]):
+      m = re.match(r'\\begin_layout (.*)', lines[j])
+      if m and get_containing_inset(lines, j)[0] == ins[0]:
+          pars += 1
+
+  return pars
+
+
+def find_end_of_sequence(lines, i):
+  '''
+  Returns the end of a sequence of identical layouts.
+  '''
+  lay = get_containing_layout(lines, i)
+  if lay == False:
+      return -1
+  layout = lay[0]
+  endlay = lay[2]
+  i = endlay
+  while True:
+      m = re.match(r'\\begin_layout (.*)', lines[i])
+      if m and m.group(1) != layout:
+          return endlay
+      elif lines[i] == "\\begin_deeper":
+          j = find_end_of(lines, i, "\\begin_deeper", "\\end_deeper")
+          if j != -1:
+              i = j
+              endlay = j
+              continue
+      if m and m.group(1) == layout:
+          endlay = find_end_of_layout(lines, i)
+          i = endlay
+          continue
+      if i == len(lines) - 1:
+          break
+      i = i + 1
+
+  return endlay
+
