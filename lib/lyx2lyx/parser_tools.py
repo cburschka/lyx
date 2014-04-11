@@ -425,7 +425,7 @@ def is_in_inset(lines, i, inset):
 def get_containing_inset(lines, i):
   ''' 
   Finds out what kind of inset line i is within. Returns a 
-  list containing (i) what follows \begin_inset on the line 
+  list containing (i) what follows \begin_inset on the line
   on which the inset begins, plus the starting and ending line.
   Returns False on any kind of error or if it isn't in an inset.
   '''
@@ -438,7 +438,7 @@ def get_containing_inset(lines, i):
       if endins > j:
           break
       j = stins - 1
-  
+
   inset = get_value(lines, "\\begin_inset", stins)
   if inset == "":
       # shouldn't happen
@@ -449,7 +449,7 @@ def get_containing_inset(lines, i):
 def get_containing_layout(lines, i):
   ''' 
   Finds out what kind of layout line i is within. Returns a 
-  list containing what follows \begin_layout on the line 
+  list containing what follows \begin_layout on the line
   on which the layout begins, plus the starting and ending line
   and the start of the paragraph (after all params). I.e, returns:
     (layoutname, layoutstart, layoutend, startofcontent)
@@ -464,7 +464,7 @@ def get_containing_layout(lines, i):
       if endlay > i:
           break
       j = stlay - 1
-  
+
   lay = get_value(lines, "\\begin_layout", stlay)
   if lay == "":
       # shouldn't happen
@@ -482,7 +482,7 @@ def get_containing_layout(lines, i):
 
 
 def count_pars_in_inset(lines, i):
-  ''' 
+  '''
   Counts the paragraphs within this inset
   '''
   ins = get_containing_inset(lines, i)
@@ -493,12 +493,12 @@ def count_pars_in_inset(lines, i):
       m = re.match(r'\\begin_layout (.*)', lines[j])
       if m and get_containing_inset(lines, j)[0] == ins[0]:
           pars += 1
-  
+
   return pars
 
 
 def find_end_of_sequence(lines, i):
-  ''' 
+  '''
   Returns the end of a sequence of identical layouts.
   '''
   lay = get_containing_layout(lines, i)
