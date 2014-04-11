@@ -741,10 +741,11 @@ def revert_verbatim(document):
                  '\\end_layout', '', '\\end_inset',
                  '', '', '\\end_layout']
     subst_begin = ['\\begin_layout Standard', '\\noindent',
-                   '\\begin_inset ERT', 'status collapsed', '',
+                   '\\begin_inset ERT', 'status open', '',
                    '\\begin_layout Plain Layout', '', '', '\\backslash',
                    'begin{verbatim}',
                    '\\end_layout', '', '\\begin_layout Plain Layout', '']
+
     while 1:
         i = find_token(document.body, "\\begin_layout Verbatim", i)
         if i == -1:
@@ -757,16 +758,17 @@ def revert_verbatim(document):
         # delete all line breaks insets (there are no other insets)
         l = i
         while 1:
-            n = find_token(document.body, "\\begin_inset Newline newline", l)
+            n = find_token(document.body, "\\begin_inset Newline newline", l, j)
             if n == -1:
-                n = find_token(document.body, "\\begin_inset Newline linebreak", l)
+                n = find_token(document.body, "\\begin_inset Newline linebreak", l, j)
                 if n == -1:
                     break
             m = find_end_of_inset(document.body, n)
             del(document.body[m:m+1])
             document.body[n:n+1] = ['\end_layout', '', '\\begin_layout Plain Layout']
             l += 1
-            j += 1
+            # we deleted a line, so the end of the inset moved forward.
+            j -= 1
         # consecutive verbatim environments need to be connected
         k = find_token(document.body, "\\begin_layout Verbatim", j)
         if k == j + 2 and consecutive == False:
