@@ -36,9 +36,8 @@ Note for Git checkouts
 -----------------------------
 
 If you have checked this out from Git, you need to have:
-* automake >= 1.8
-* autoconf >= 2.59d
-* gettext >= 0.16.1
+* automake (supported versions are 1.8--1.14)
+* autoconf (supported versions are 2.60--2.69)
 Then type "./autogen.sh" to build the needed configuration
 files and proceed as stated above/below.
 
@@ -55,10 +54,11 @@ LyX makes great use of the C++ Standard Template Library (STL).
 This means that gcc users will have to install the relevant libstdc++
 library to be able to compile this version of LyX.
 
-For full LyX usability we suggest to use at least Qt 4.8 which has been
-widely tested. For compilation you need to compile against at least
-Qt 4.5.0. The only special point to make is that you must ensure that both
-LyX and the Qt libraries are compiled with the same C++ compiler.
+For full LyX usability we suggest to use Qt 4.x and at least Qt 4.8 which 
+has been widely tested. For compilation you need to compile against at
+least Qt 4.5.0 and at Windows we advise at highest Qt 4.8.4. The only
+special point to make is that you must ensure that both LyX and the 
+Qt libraries are compiled with the same C++ compiler.
 
 To build LyX with spell checking capabilities included you have to
 install at least one of the development packages of the spell checker
@@ -67,10 +67,11 @@ libraries. See the RELEASE-NOTES for details.
 
 * Other things to note
 
-If you make modifications to files in src/ (for example by applying a
-patch), you will need to have the GNU gettext package installed, due
-to some dependencies in the makefiles. You can get the latest version
-from:
+If you make modifications to the source that affect any of the
+translations or you change the translation files themselves (po/*.po)
+files, you will need to have the GNU gettext package installed to 
+compile LyX with up-to-date translations (at least gettext version
+0.16.1 is needed). You can get the latest version from:
 	ftp://ftp.gnu.org/gnu/gettext/
 
 The two following programs should be available at configuration time:
