@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-03-25 11:04-0400\n"
+"POT-Creation-Date: 2014-04-11 14:31-0400\n"
 "PO-Revision-Date: 2011-09-06 22:48+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
@@ -6574,21 +6574,19 @@ msgstr ""
 msgid "BeginFrame"
 msgstr ""
 
-#: lib/layouts/article.layout:19 lib/layouts/asme2e.layout:19
-#: lib/layouts/beamer.layout:109 lib/layouts/beamer.layout:124
-#: lib/layouts/memoir.layout:52 lib/layouts/mwart.layout:24
-#: lib/layouts/paper.layout:46 lib/layouts/scrartcl.layout:21
-#: lib/layouts/svmult.layout:102 lib/layouts/tufte-handout.layout:22
-#: lib/layouts/agu_stdsections.inc:12 lib/layouts/db_stdsections.inc:12
-#: lib/layouts/scrclass.inc:51 lib/layouts/stdsections.inc:12
-#: lib/layouts/svcommon.inc:107
+#: lib/layouts/article.layout:19 lib/layouts/beamer.layout:109
+#: lib/layouts/beamer.layout:124 lib/layouts/memoir.layout:52
+#: lib/layouts/mwart.layout:24 lib/layouts/paper.layout:46
+#: lib/layouts/scrartcl.layout:21 lib/layouts/svmult.layout:102
+#: lib/layouts/tufte-handout.layout:22 lib/layouts/agu_stdsections.inc:12
+#: lib/layouts/db_stdsections.inc:12 lib/layouts/scrclass.inc:51
+#: lib/layouts/stdsections.inc:12 lib/layouts/svcommon.inc:107
 msgid "Part"
 msgstr ""
 
-#: lib/layouts/article.layout:30 lib/layouts/asme2e.layout:30
-#: lib/layouts/mwart.layout:34 lib/layouts/scrartcl.layout:30
-#: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
-#: lib/layouts/svcommon.inc:240
+#: lib/layouts/article.layout:30 lib/layouts/mwart.layout:34
+#: lib/layouts/scrartcl.layout:30 lib/layouts/db_stdstarsections.inc:13
+#: lib/layouts/stdstarsections.inc:13 lib/layouts/svcommon.inc:240
 msgid "Part*"
 msgstr ""
 
@@ -16523,62 +16521,66 @@ msgid "LyX 1.6.x"
 msgstr ""
 
 #: lib/configure.py:675
-msgid "CJK LyX 1.4.x (big5)"
+msgid "LyX 2.1.x"
 msgstr ""
 
 #: lib/configure.py:676
-msgid "CJK LyX 1.4.x (euc-jp)"
+msgid "CJK LyX 1.4.x (big5)"
 msgstr ""
 
 #: lib/configure.py:677
-msgid "CJK LyX 1.4.x (euc-kr)"
+msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr ""
 
 #: lib/configure.py:678
-msgid "LyX Preview"
+msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr ""
 
 #: lib/configure.py:679
-msgid "LyX Preview (LilyPond book)"
+msgid "LyX Preview"
 msgstr ""
 
 #: lib/configure.py:680
-msgid "LyX Preview (pLaTeX)"
+msgid "LyX Preview (LilyPond book)"
 msgstr ""
 
 #: lib/configure.py:681
-msgid "PDFTEX"
+msgid "LyX Preview (pLaTeX)"
 msgstr ""
 
 #: lib/configure.py:682
-msgid "Program"
+msgid "PDFTEX"
 msgstr ""
 
 #: lib/configure.py:683
+msgid "Program"
+msgstr ""
+
+#: lib/configure.py:684
 msgid "PSTEX"
 msgstr ""
 
-#: lib/configure.py:684 src/frontends/qt4/GuiClipboard.cpp:168
+#: lib/configure.py:685 src/frontends/qt4/GuiClipboard.cpp:168
 msgid "Windows Metafile"
 msgstr ""
 
-#: lib/configure.py:685 src/frontends/qt4/GuiClipboard.cpp:167
+#: lib/configure.py:686 src/frontends/qt4/GuiClipboard.cpp:167
 msgid "Enhanced Metafile"
 msgstr ""
 
-#: lib/configure.py:686
+#: lib/configure.py:687
 msgid "HTML (MS Word)"
 msgstr ""
 
-#: lib/configure.py:782
+#: lib/configure.py:783
 msgid "LyXBlogger"
 msgstr ""
 
-#: lib/configure.py:991
+#: lib/configure.py:992
 msgid "LyX Archive (zip)"
 msgstr ""
 
-#: lib/configure.py:994
+#: lib/configure.py:995
 msgid "LyX Archive (tar.gz)"
 msgstr ""
 

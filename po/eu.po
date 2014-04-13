@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_2.0.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-03-25 11:04-0400\n"
+"POT-Creation-Date: 2014-04-11 14:31-0400\n"
 "PO-Revision-Date: 2012-06-21 12:33+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -6741,21 +6741,19 @@ msgstr "Latina inaktibo"
 msgid "BeginFrame"
 msgstr "HasierakoMarkoa"
 
-#: lib/layouts/article.layout:19 lib/layouts/asme2e.layout:19
-#: lib/layouts/beamer.layout:109 lib/layouts/beamer.layout:124
-#: lib/layouts/memoir.layout:52 lib/layouts/mwart.layout:24
-#: lib/layouts/paper.layout:46 lib/layouts/scrartcl.layout:21
-#: lib/layouts/svmult.layout:102 lib/layouts/tufte-handout.layout:22
-#: lib/layouts/agu_stdsections.inc:12 lib/layouts/db_stdsections.inc:12
-#: lib/layouts/scrclass.inc:51 lib/layouts/stdsections.inc:12
-#: lib/layouts/svcommon.inc:107
+#: lib/layouts/article.layout:19 lib/layouts/beamer.layout:109
+#: lib/layouts/beamer.layout:124 lib/layouts/memoir.layout:52
+#: lib/layouts/mwart.layout:24 lib/layouts/paper.layout:46
+#: lib/layouts/scrartcl.layout:21 lib/layouts/svmult.layout:102
+#: lib/layouts/tufte-handout.layout:22 lib/layouts/agu_stdsections.inc:12
+#: lib/layouts/db_stdsections.inc:12 lib/layouts/scrclass.inc:51
+#: lib/layouts/stdsections.inc:12 lib/layouts/svcommon.inc:107
 msgid "Part"
 msgstr "Zatia"
 
-#: lib/layouts/article.layout:30 lib/layouts/asme2e.layout:30
-#: lib/layouts/mwart.layout:34 lib/layouts/scrartcl.layout:30
-#: lib/layouts/db_stdstarsections.inc:13 lib/layouts/stdstarsections.inc:13
-#: lib/layouts/svcommon.inc:240
+#: lib/layouts/article.layout:30 lib/layouts/mwart.layout:34
+#: lib/layouts/scrartcl.layout:30 lib/layouts/db_stdstarsections.inc:13
+#: lib/layouts/stdstarsections.inc:13 lib/layouts/svcommon.inc:240
 msgid "Part*"
 msgstr "Zatia*"
 
@@ -16852,62 +16850,67 @@ msgid "LyX 1.6.x"
 msgstr "LyX 1.6.x"
 
 #: lib/configure.py:675
+#, fuzzy
+msgid "LyX 2.1.x"
+msgstr "LyX 2.0.x"
+
+#: lib/configure.py:676
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
-#: lib/configure.py:676
+#: lib/configure.py:677
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:677
+#: lib/configure.py:678
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:678
+#: lib/configure.py:679
 msgid "LyX Preview"
 msgstr "LyX aurrebista"
 
-#: lib/configure.py:679
+#: lib/configure.py:680
 msgid "LyX Preview (LilyPond book)"
 msgstr "LyX aurrebista (LilyPond liburua)"
 
-#: lib/configure.py:680
+#: lib/configure.py:681
 msgid "LyX Preview (pLaTeX)"
 msgstr "LyX aurrebista (pLaTeX)"
 
-#: lib/configure.py:681
+#: lib/configure.py:682
 msgid "PDFTEX"
 msgstr "PDFTEX"
 
-#: lib/configure.py:682
+#: lib/configure.py:683
 msgid "Program"
 msgstr "Programa"
 
-#: lib/configure.py:683
+#: lib/configure.py:684
 msgid "PSTEX"
 msgstr "PSTEX"
 
-#: lib/configure.py:684 src/frontends/qt4/GuiClipboard.cpp:168
+#: lib/configure.py:685 src/frontends/qt4/GuiClipboard.cpp:168
 msgid "Windows Metafile"
 msgstr "Windows-eko metafitxategia"
 
-#: lib/configure.py:685 src/frontends/qt4/GuiClipboard.cpp:167
+#: lib/configure.py:686 src/frontends/qt4/GuiClipboard.cpp:167
 msgid "Enhanced Metafile"
 msgstr "Hobetutako metafitxategia"
 
-#: lib/configure.py:686
+#: lib/configure.py:687
 msgid "HTML (MS Word)"
 msgstr "HTML (MS Word)"
 
-#: lib/configure.py:782
+#: lib/configure.py:783
 msgid "LyXBlogger"
 msgstr "LyX blogeatzailea"
 
-#: lib/configure.py:991
+#: lib/configure.py:992
 msgid "LyX Archive (zip)"
 msgstr "LyX artxiboa (zip)"
 
-#: lib/configure.py:994
+#: lib/configure.py:995
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX artxiboa (tar.gz)"
 
@@ -24873,9 +24876,6 @@ msgstr "Erabiltzaile ezezaguna"
 
 #~ msgid "htm|HTML"
 #~ msgstr "htm|HTML"
-
-#~ msgid "LyX 2.0.x"
-#~ msgstr "LyX 2.0.x"
 
 #~ msgid "Bibliography entry not found!"
 #~ msgstr "Ez da bibliografiaren sarrera aurkitu."
