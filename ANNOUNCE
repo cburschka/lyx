@@ -1,25 +1,25 @@
-Public release of LyX version 2.0.7
+Public release of LyX version 2.0.8
 ===================================
 
-We are pleased to announce the release of LyX 2.0.7. This is the seventh
-maintenance release in the 2.0.x series.
+We are pleased to announce the release of LyX 2.0.8. This is the eighth
+and final maintenance release in the 2.0.x series.
 
-LyX 2.0.7 is the result of on-going efforts to make our stable version
+LyX 2.0.8 is the result of on-going efforts to make our stable version
 even more reliable and stable. We have fixed a number of bugs and made
-a number of improvements. These are detailed below. 
+a number of improvements. 
 
-The most important bug was #8854, which could lead to file corruption
-in certain cases and, more often, would lead to errors in generated
-files (e.g., PDFs). We encourage all LyX users to upgrade to this 
-version.
+The main "feature" of LyX 2.0.8 is the ability to read and write LyX
+files in the 2.1.x format. Users who do not wish to upgrade to 2.1.0,
+which is being released simultaneously, are encouraged to upgrade to
+2.0.8.
 
 LyX is a document processor that encourages an approach to writing based 
 on the structure of your documents and not simply their appearance. It is
 released under a Free and Open Source Software license.
 
-You can download LyX 2.0.7 from http://www.lyx.org/Download/.
+You can download LyX 2.0.8 from http://www.lyx.org/Download/.
 
-If you think you found a bug in LyX 2.0.7, either e-mail the LyX
+If you think you found a bug in LyX 2.0.8, either e-mail the LyX
 developers' mailing list (lyx-devel <at> lists.lyx.org), or open a bug
 report at http://www.lyx.org/trac/wiki/BugTrackerHome.
 
@@ -28,24 +28,23 @@ documentation that comes with LyX and the LyX wiki, which lives at
 http://wiki.lyx.org/. If you can't find the answer there, e-mail the LyX 
 users' list (lyx-users at lists.lyx.org).
 
-We hope you enjoy using LyX 2.0.7.
+We hope you enjoy using LyX 2.0.8.
 
 The LyX team.
 http://www.lyx.org
 
 
-What's new in LyX 2.0.7
+What's new in LyX 2.0.8
 =======================
 
 ** Updates:
 ***********
 
-* DOCUMENTATION AND LOCALIZATION
+* DOCUMENT INPUT/OUTPUT
 
-- Updated Interlingua, Japanese, Nynorsk, Swedish and Ukrainian user interface
-  localizations.
-
-- Revised French Intro and User Guide.
+- Updated Chinese (simplified), Chinese (traditional), French,
+  Indonesian, Japanese, Spanish, Swedish and Ukrainian user
+  interface localization.
 
 
 ** Bug fixes:
@@ -53,96 +52,112 @@ What's new in LyX 2.0.7
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix garbage in document export (and maybe other places) by making encoding
-  conversions thread-safe (bug 8854).
+- Do not crash when loading documents with empty (invalid) math environments
+  (part of bug 8359).
 
-- Fix output of ulem commands (underline etc.) which was broken as of
-  LyX 2.0.6 (bug 8733).
+- Rerun makeindex if all nomencl entries have been removed (bug 8905).
 
-- Fix problem with unbalanced braces in XeTeX output (bug 8765).
+- Correct language code of traditional Chinese (bug 8970).
 
-- Fix problems with unbalanced braces with a secondary CJK language
-  (bug 8215).
+- Support (black) card suites in text mode (bug 8971).
 
-- Fix state of certain language packages (polyglossia, japanese) in
-  child documents (bug 8770).
+- Use universal newlines when reading CSVs.
 
-- Fix compilation of documents containing chemical equations and math
-  integrals (bug 8731).
+- Fix bug where depth of pasted text was incorrectly set (bug 8891).
 
-- Fix compilation with nested ("sub") custom floats.
+- Fix clash between \protect and \ensuremath (bug 8889).
 
-- Fix import of CSV-files.
+- Fix problem with export of LyX archive when bibtotoc is used (bug 9044).
 
-- Added h5 and h6 as HTML tags for Paragraph and Subparagraph.
-
-- Include alt tag when exporting math as images (bug 8746).
+- Fix LaTeX error with alphabetic delimiters in inline Listings (part of bug
+  8985).
 
 
 * USER INTERFACE
 
-- Fix crash when saving document with module that is not present (bug
-  8523).
+- Fix outliner-related crash when master and child are open in different
+  windows (bug 8948).
 
-- Fix crash when changing alignment of several cells in tabular (bug 8859).
+- Fix outliner-related crash involving captions in long tables (bug 8997).
 
-- Disable invalid actions in empty outliner that could trigger a crash
-  (bug 8885).
- 
-- Fix warning when setting layout box when Plain Layout is used (bug 8727).
+- Fix hang when using BibTeX files with really long author lists (bug 8944).
 
-- Fix bug where searching for next change may leave an empty paragraph
-  where cursor was (bug 3199).
+- Fix crash with changetracking in bibliography environment (bug
+  8646).
 
-- Fix activation of branches from command line (bug 8627).
+- Fix crash when navigating to next change (bug 8684).
 
-- Fix display of appendix counters in some classes (bug 8666).
+- Fix crash when entering math in change-tracking mode while merge changes
+  dialog is open (bug 7685).
 
-- Fix toggling of "misc" font options (bug 8764).
+- Fix crash when optional argument inside a math macro was deleted
+  (bug 8329).
 
-- Handle undo correctly when a branch is (de)activated.
+- Fix crash when CheckTeX hits mathed (bug 8798).
 
-- Update a bibliography entry's label when it is emptied.
+- Fix crash when performing "Change Case" operation on a selection with font
+  changes (bug 7943).
 
-- Insets in a bibliography entry are shown as text in the citation dialog.
+- Fix crash when performing selection in math insets (bug 9076).
 
-- Correctly detect python scripts required by the preview mechanism.
+- Fix hang when selecting text (bug 8837).
 
-- Fix display of file names with ampersands in the tab header (bug 8757).
+- Fix assertion when entering a path into the import dialog (bug 7437).
 
-- The koma-script book class numbers equations by chapter.
+- Fix math-ams-matrix function that could corrupt documents if not used properly
+  (part of bug 8359).
 
-- Fix shortcut conflict in the citation dialog (bug 8878).
+- Fix problem that led to assertion in some cases when space was at beginning of
+  line (bugs 8838 and 8947).
 
-- Fix wrong display of style "Description" in "article (paper)" class
-  (bug 8869).
+- Correctly compare documents with different author sets (bug 8769).
+
+- Fix drawing of table lines of multicolumns (bug 8082).
+
+- Correct language for textual references in multi-language documents (bug 8613).
+
+- Handle undo in `branch-add' function.
+
+- Avoid multiple undo steps when changing document settings (bug 8998).
+
+- Prevent recurrent pop-up of "missing module requirements" warning (bug 8864).
+
+- Do not close shortcut box if we receive bad input (bug 8703).
+
+- Fix problem with numbering of some child documents when instant preview
+  is active (bug 8673).
+
+- Fix instant preview when document contains math macro with optional
+  arguments (bug 8445).
+
+- Made change-next work properly in tables (bug 6055).
+
+- Fix "Select Section" function in the Outliner (bug 8936).
+
+- Fix select-by-doubleclick in mathed (bug 8829).
 
 
-* DOCUMENTATION AND LOCALIZATION
+* INTERNALS
 
-- Make the aa.lyx template file and the aa_sample.lyx example file compilable.
-
-- Make the AEA.lyx template file compilable.
-
-- Make the landslide example file compilable.
-
-- Fix problem that the Chinese Tutorial could not be viewed as PDF on
-  some systems. 
+- Fix a problem when PATH changes and python command is relative (bug 8950).
 
 
 * LYXHTML
 
-- Fix problem with size of superscripts and such inside footnotes (bug 8610).
+- Fix mathml output of display style scripts (bug 8784).
 
-- Add missing space before the edition in the bibliography (part of bug 8488).
 
-- Fix random character inserted as year modifier in author-year citations.
+
+* TEX2LYX
+
+- Don't automatically turn on PDF bookmarks when importing TeX files (bug 8723).
 
 
 * BUILD/INSTALLATION
 
-- Add support for automake 1.13.
+- Improve detection of Qt via pkg-config, especially on Mac OS.
 
-- Fix compilation with clang LLVM compiler.
+- Fix bad compare of pointer vs. character (part of bug 8985).
 
-- Fix Qt tools search when a Qt directory has been specified.
+- Fix a couple of compilation warnings.
+
