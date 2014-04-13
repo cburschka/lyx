@@ -213,7 +213,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-04-04 12:21+0200\n"
+"POT-Creation-Date: 2014-04-13 19:22+0200\n"
 "PO-Revision-Date: 2014-04-04 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
@@ -5644,7 +5644,7 @@ msgid "Correspondence to:"
 msgstr "Korrespondens till:"
 
 #: lib/layouts/aa.layout:154 lib/layouts/aapaper.layout:105
-#: lib/layouts/achemso.layout:231 lib/layouts/achemso.layout:238
+#: lib/layouts/achemso.layout:233 lib/layouts/achemso.layout:240
 #: lib/layouts/AEA.layout:105 lib/layouts/egs.layout:548
 #: lib/layouts/elsart.layout:439 lib/layouts/svmult.layout:147
 #: lib/layouts/aapaper.inc:80 lib/layouts/svcommon.inc:543
@@ -5663,7 +5663,7 @@ msgstr "Tacksägelse"
 
 #: lib/layouts/aa.layout:158 lib/layouts/aastex.layout:310
 #: lib/layouts/aastex.layout:374 lib/layouts/aastex.layout:406
-#: lib/layouts/achemso.layout:234 lib/layouts/acmsiggraph.layout:299
+#: lib/layouts/achemso.layout:236 lib/layouts/acmsiggraph.layout:299
 #: lib/layouts/agutex.layout:158 lib/layouts/agutex.layout:168
 #: lib/layouts/agutex.layout:188 lib/layouts/agutex.layout:211
 #: lib/layouts/apa.layout:213 lib/layouts/beamer.layout:1046
@@ -6333,43 +6333,43 @@ msgstr "Diagram"
 msgid "List of Charts"
 msgstr "Lista över diagram"
 
-#: lib/layouts/achemso.layout:209 lib/layouts/achemso.layout:220
+#: lib/layouts/achemso.layout:211 lib/layouts/achemso.layout:222
 msgid "Graph[[mathematical]]"
 msgstr "Graf"
 
-#: lib/layouts/achemso.layout:214
+#: lib/layouts/achemso.layout:216
 msgid "List of Graphs[[mathematical]]"
 msgstr "Lista över grafer"
 
-#: lib/layouts/achemso.layout:248
+#: lib/layouts/achemso.layout:250
 msgid "SupplementalInfo"
 msgstr "Komplementerande info"
 
-#: lib/layouts/achemso.layout:251
+#: lib/layouts/achemso.layout:253
 msgid "Supporting Information Available"
 msgstr "Stödjande information tillgänglig"
 
-#: lib/layouts/achemso.layout:254
+#: lib/layouts/achemso.layout:256
 msgid "TOC entry"
 msgstr "Innehållsförteckningspost"
 
-#: lib/layouts/achemso.layout:258
+#: lib/layouts/achemso.layout:260
 msgid "Graphical TOC Entry"
 msgstr "Grafisk innehållsförteckningspost"
 
-#: lib/layouts/achemso.layout:262
+#: lib/layouts/achemso.layout:264
 msgid "Bibnote"
 msgstr "Bibnot"
 
-#: lib/layouts/achemso.layout:266
+#: lib/layouts/achemso.layout:268
 msgid "bibnote"
 msgstr "bibnot"
 
-#: lib/layouts/achemso.layout:286
+#: lib/layouts/achemso.layout:288
 msgid "Chemistry"
 msgstr "Kemi"
 
-#: lib/layouts/achemso.layout:289
+#: lib/layouts/achemso.layout:291
 msgid "chemistry"
 msgstr "kemi"
 
@@ -14450,51 +14450,43 @@ msgstr "Spanska (Mexiko)"
 msgid "Swedish"
 msgstr "Svenska"
 
-#: lib/languages:887
-msgid "Syriac"
-msgstr "Syriska"
-
-#: lib/languages:895 src/frontends/qt4/GuiSymbols.cpp:71
+#: lib/languages:896 src/frontends/qt4/GuiSymbols.cpp:71
 msgid "Tamil"
 msgstr "Tamil"
 
-#: lib/languages:903 src/frontends/qt4/GuiSymbols.cpp:72
+#: lib/languages:904 src/frontends/qt4/GuiSymbols.cpp:72
 msgid "Telugu"
 msgstr "Telugu"
 
-#: lib/languages:910 src/frontends/qt4/GuiSymbols.cpp:75
+#: lib/languages:911 src/frontends/qt4/GuiSymbols.cpp:75
 msgid "Thai"
 msgstr "Thailändska"
 
-#: lib/languages:923 src/frontends/qt4/GuiSymbols.cpp:77
+#: lib/languages:924 src/frontends/qt4/GuiSymbols.cpp:77
 msgid "Tibetan"
 msgstr "Tibetanska"
 
-#: lib/languages:930
+#: lib/languages:931
 msgid "Turkish"
 msgstr "Turkiska"
 
-#: lib/languages:944
+#: lib/languages:945
 msgid "Turkmen"
 msgstr "Turkmeniska"
 
-#: lib/languages:954
+#: lib/languages:955
 msgid "Ukrainian"
 msgstr "Ukrainska"
 
-#: lib/languages:963
+#: lib/languages:964
 msgid "Upper Sorbian"
 msgstr "Högsorbiska"
 
-#: lib/languages:973
-msgid "Urdu"
-msgstr "Urdu"
-
-#: lib/languages:983
+#: lib/languages:985
 msgid "Vietnamese"
 msgstr "Vietnamesiska"
 
-#: lib/languages:994
+#: lib/languages:996
 msgid "Welsh"
 msgstr "Kymriska"
 
@@ -29828,6 +29820,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Okänd användare"
+
+#~ msgid "Syriac"
+#~ msgstr "Syriska"
+
+#~ msgid "Urdu"
+#~ msgstr "Urdu"
 
 #~ msgid "LyX-1.3.x Documents (*.lyx13)"
 #~ msgstr "LyX-1.3.x-dokument (*.lyx13)"
