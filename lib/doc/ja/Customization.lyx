@@ -34,12 +34,6 @@
 % Added only for Japanese translation
 % This is needed to use \textquotedbl (this doesn't exist in OT1 encoding)
 \usepackage[T1]{fontenc}
-% Below is to correct PDF bookmarks
-% but doesn't work because hyperref is automatically called.
-% Modify \usepackage{hyperref} line manually
-%\usepackage[dvipdfm,bookmarks=true,bookmarksnumbered=true,bookmarkstype=toc]{hyperref}
-%\ifnum 42146=\euc"A4A2 \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}\else
-%\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}\fi
 \end_preamble
 \options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
@@ -122,7 +116,7 @@ End
 \pdf_author "LyX Team"
 \pdf_subject "LyX-Documentation Customization"
 \pdf_keywords "LyX, documentation, customization"
-\pdf_bookmarks true
+\pdf_bookmarks false
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
@@ -131,7 +125,7 @@ End
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\pdf_quoted_options "driverfallback=dvipdfmx, linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
 \use_package amsmath 0
@@ -151,7 +145,7 @@ End
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
+\justification false
 \use_refstyle 0
 \branch OutDated
 \selected 0

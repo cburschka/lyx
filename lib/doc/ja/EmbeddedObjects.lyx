@@ -237,7 +237,7 @@ End
 \pdf_author "LyX Team, Uwe Stohr"
 \pdf_subject "LyX-documentation about figures, tables, floats, notes, and boxes"
 \pdf_keywords "LyX, Tables, Figures, Floats, Boxes, Notes"
-\pdf_bookmarks true
+\pdf_bookmarks false
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
@@ -247,8 +247,8 @@ End
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options " linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabels"
-\papersize a4paper
-\use_geometry true
+\papersize default
+\use_geometry false
 \use_package amsmath 2
 \use_package amssymb 2
 \use_package cancel 0
@@ -1708,14 +1708,63 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-表を右クリックすると、文脈依存メニューが表示されて、表を変更することができます。メニュー項目詳細以下では、現在カーソルが置かれているセルないし行・列の設定を調節
-することができます。文脈依存メニュー
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+表を右クリックすると、文脈依存メニューが表示されて、表を変更することができます。メニュー項目
 \family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+詳細
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+以下では、現在カーソルが置かれているセルないし行・列の設定を調節することができます。文脈依存メニュー
+\family sans
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
 詳細\SpecialChar \menuseparator
 設定
-\family default
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
 を選ぶと、ダイアログボックスが開いて、更に詳細な設定を行うことができます。また、ダイアログオプションのほとんどは、選択範囲に対しても動作します。つまり、複数のセ
-ルや行・列を選択していれば、操作は選択範囲の全てに対して行われます。セルの
+ルや行・列を選択していれば、操作は選択範囲の全てに対して行われます。
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+セルの
 \emph on
 内容
 \emph default
@@ -1723,8 +1772,12 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
-ダイアログオプションの直ちに適用を使用すると、ダイアログ中に行った変更が直ちに適用されるようになります。カーソルを別のセルに移動すると、ダイアログも新しいセルの
-パラメーターに更新されます。ダイアログ中の長さの値を変更した場合には、リターンを押さないと変更が適用されません。
+ダイアログオプションの
+\family sans
+直ちに適用
+\family default
+を使用すると、ダイアログ中に行った変更が直ちに適用されるようになります。カーソルを別のセルに移動すると、ダイアログも新しいセルのパラメーターに更新されます。ダイ
+アログ中の長さの値を変更した場合には、リターンを押さないと変更が適用されません。
 \begin_inset Newline newline
 \end_inset
 
@@ -2059,41 +2112,57 @@ status collapsed
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-row"
 \end_inset
 
+
+\family default
  は、現在セルあるいは選択範囲の下に行を追加します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular append-column"
 \end_inset
 
+
+\family default
  は、現在セルあるいは選択範囲の右に列を追加します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-row"
 \end_inset
 
+
+\family default
  は、現在行あるいは選択範囲行を削除します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular delete-column"
 \end_inset
 
+
+\family default
  は、現在列あるいは選択範囲列を削除します。
 \end_layout
 
@@ -2139,171 +2208,239 @@ arg   "inset-modify tabular move-column-right"
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-top"
 \end_inset
 
+
+\family default
  は、現在セルや現在行、あるいは選択範囲の上部に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-bottom"
 \end_inset
 
+
+\family default
  は、現在セルや現在行、あるいは選択範囲の下部に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-left"
 \end_inset
 
+
+\family default
  は、現在セルや現在行、あるいは選択範囲の左側に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular toggle-line-right"
 \end_inset
 
+
+\family default
  は、現在セルや現在行、あるいは選択範囲の右側に罫線を描画します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-all-lines"
 \end_inset
 
+
+\family default
  は、現在セルあるいは選択範囲の周囲に罫線を描画します。現在セルが連結列でなければ、現在行と現在列にも影響します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular unset-all-lines"
 \end_inset
 
+
+\family default
  は、現在セルあるいは選択範囲のすべての罫線を消去します。現在セルが連結列でなければ、現在行と現在列にも影響します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-left"
 \end_inset
 
+
+\family default
  は、現在セルあるいは現在列の内容を左揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-center"
 \end_inset
 
+
+\family default
  は、現在セルあるいは現在列の内容を水平方向中央揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-align-right"
 \end_inset
 
+
+\family default
  は、現在セルあるいは現在列の内容を右揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular align-decimal"
 \end_inset
 
+
+\family default
  は、現在セルの内容を特定文字位置で揃えます。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-top"
 \end_inset
 
+
+\family default
  は、現在セルの内容を垂直方向上揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-middle"
 \end_inset
 
+
+\family default
  は、現在セルの内容を垂直方向中央揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular m-valign-bottom"
 \end_inset
 
+
+\family default
  は、現在セルの内容を垂直方向下揃えにします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-rotate-cell"
 \end_inset
 
+
+\family default
  は、現在セルあるいは選択範囲を反時計廻りに90度回転します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular set-rotate-tabular"
 \end_inset
 
+
+\family default
  は、表全体を反時計廻りに90度回転します。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multicolumn"
 \end_inset
 
+
+\family default
  は、現在セルあるいは選択範囲を連結列にします。
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\family sans
 \begin_inset Info
 type  "icon"
 arg   "inset-modify tabular multirow"
 \end_inset
 
+
+\family default
  は、現在セルあるいは選択範囲を連結行にします。
 \end_layout
 
@@ -16424,40 +16561,40 @@ definecolor{色彩名}{色彩モデル}{色彩値}
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-cmyk： シアン（
+cmyk： シアン(
 \bar under
 c
 \bar default
-yan）・マゼンタ（
+yan)・マゼンタ(
 \bar under
 m
 \bar default
-agenta）・黄（
+agenta)・黄(
 \bar under
 y
 \bar default
-ellow）・黒（blac
+ellow)・黒(blac
 \bar under
 k
 \bar default
-）
+)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-rgb： 赤（
+rgb： 赤(
 \bar under
 r
 \bar default
-ed）・緑（
+ed)・緑(
 \bar under
 g
 \bar default
-reen）・青（
+reen)・青(
 \bar under
 b
 \bar default
-lue）
+lue)
 \end_layout
 
 \begin_layout Labeling
@@ -37350,6 +37487,24 @@ status open
 拡張文字コード表を使う
 \family default
 オプションを使用しなくてはなりません。
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+【訳註】
+\series default
+これは、pLaTeXではうまく動作しません。
+\end_layout
+
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 

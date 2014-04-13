@@ -97,8 +97,8 @@ EndPreamble
 End
 \end_local_layout
 \language japanese
-\language_package default
-\inputencoding utf8-platex
+\language_package auto
+\inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -122,7 +122,7 @@ End
 \pdf_author "LyX Team"
 \pdf_subject "LyX"
 \pdf_keywords "LyX"
-\pdf_bookmarks true
+\pdf_bookmarks false
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
@@ -1155,12 +1155,12 @@ arg   "command-sequence buffer-begin ; buffer-end-select"
 \end_layout
 
 \begin_layout Section
-元に戻すとやり直す
+操作を取り消す・繰り返す
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-もとにもどす@元に戻す
+そうさ@操作 ! をとりけす@------を取り消す
 \end_layout
 
 \end_inset
@@ -1170,7 +1170,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-やりなおす@やり直す
+そうさ @ 操作 ! おなじをくりかえす@同じ------を繰り返す
 \end_layout
 
 \end_inset
@@ -1178,7 +1178,7 @@ status collapsed
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:元に戻すとやり直す"
+name "sec:操作を取り消す・繰り返す"
 
 \end_inset
 
@@ -1186,11 +1186,10 @@ name "sec:元に戻すとやり直す"
 \end_layout
 
 \begin_layout Standard
-LyXでは、何か失敗をしても、簡単にもとに戻すことができます。LyXは大容量のUndo (元に戻す)／Redo (やり直す)バッファを持っています。失敗を元に戻
-すときには、
+LyXでは、何か失敗をしても、簡単に取り消して元に戻すことができます。LyXは大容量の操作取消／繰返バッファを持っています。失敗を元に戻すときには、
 \family sans
 編集\SpecialChar \menuseparator
-元に戻す
+操作を取り消す
 \family default
 かツールバーボタン
 \begin_inset Info
@@ -1198,10 +1197,10 @@ type  "icon"
 arg   "undo"
 \end_inset
 
-を選択して下さい。もし元に戻しすぎた場合には、「元に戻すのを元に戻す」ために
+を選択して下さい。もし元に戻しすぎた場合には、「操作を取り消すのを取り消す」ために
 \family sans
 編集\SpecialChar \menuseparator
-やり直す
+同じ操作を繰り返す
 \family default
 あるいはツールバーボタン
 \begin_inset Info
@@ -1209,22 +1208,22 @@ type  "icon"
 arg   "redo"
 \end_inset
 
-を使って下さい。元に戻すメカニズムは、メモリーオーバーへッドを押さえるために100ステップに制限されています。
+を使って下さい。操作取消メカニズムは、メモリーオーバーへッドを押さえるために100ステップに制限されています。
 \end_layout
 
 \begin_layout Standard
-またファイルを開いてから行ったすべての変更を無効にしても、「変更された」という文章の状態はかわらないことに注意して下さい。これは元に戻すのを上記のように100ス
-テップに制限したためです。
+またファイルを開いてから行ったすべての変更を無効にしても、「変更された」という文章の状態はかわらないことに注意して下さい。これは操作を取り消すのを上記のように1
+00ステップに制限したためです。
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-元に戻す
+操作を取り消す
 \family default
 と
 \family sans
-やり直す
+同じ操作を繰り返す
 \family default
 は、LyXの中のほとんどすべてのものについて働きます。しかしながら、入力された文章については、文字単位ではなくて文字の塊ごとに元に戻したりやり直したりすることが
 できます。
@@ -6357,7 +6356,7 @@ arg   "newline-insert newline"
 \end_layout
 
 \begin_layout Standard
-ほとんどの学術論文は、概要に始まり参考文献で終わります。LyXには、この2つのための段落環境もあります。
+ほとんどの学術論文は、概要に始まり書誌情報で終わります。LyXには、この2つのための段落環境もあります。
 \end_layout
 
 \begin_layout Subsubsection
@@ -28108,7 +28107,7 @@ Linuxでは、頒布版や辞書の導入の仕方によって、典型的な場
 \backslash
 Program Files
 \backslash
-LibreOffice-<Version>
+LibreOffice-<バージョン>
 \backslash
 share
 \backslash
@@ -29968,14 +29967,14 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-元に戻すとやり直す
+操作を取り消す・同じ操作を繰り返す
 \end_layout
 
 \begin_layout Standard
 第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:元に戻すとやり直す"
+reference "sec:操作を取り消す・繰り返す"
 
 \end_inset
 
@@ -32341,7 +32340,7 @@ arg   "undo"
 
 \family sans
 編集\SpecialChar \menuseparator
-元に戻す
+操作を取り消す
 \end_layout
 
 \end_inset
@@ -32371,7 +32370,7 @@ arg   "redo"
 
 \family sans
 編集\SpecialChar \menuseparator
-やり直す
+同じ操作を繰り返す
 \end_layout
 
 \end_inset
@@ -36254,21 +36253,16 @@ status open
 
 \begin_layout Standard
 
-\lang english
-With the setting 
 \family sans
-Closing last view
+最後の表示窓を閉じる際
 \family default
- you one can decide if a document is closed or hidden when its tab or view
- is closed.
- Hidden documents are accessible via the menu 
+の設定では、文書のタブもしくは表示窓を閉じるとき、文書を閉じるのか非表示にするのかを指定することができます。非表示になっている文書は、
 \family sans
-View\SpecialChar \menuseparator
-Hidden
+表示\SpecialChar \menuseparator
+非表示分
 \family default
-.
- Not to close documents can be useful if you open files parallel in several
- instances of LyX and only want to close the view in once instance.
+メニューで見ることができます。ファイルをいくつかのLyXインスタンスで並行して開いていて、1つのインスタンスでのみ表示窓を閉じたい時には、文書を閉じないようにす
+る選択は便利です。
 \end_layout
 
 \begin_layout Subsection
@@ -37500,17 +37494,7 @@ selectlanguage{$$lang}
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Default
-\begin_inset space ~
-\end_inset
-
-length
-\begin_inset space ~
-\end_inset
-
-unit Defines the unit that is used as default for lengths in LyX's dialogs.
+長さ単位の既定値 LyXのダイアログ内で用いる、長さの単位の既定値を指定します。
 \end_layout
 
 \begin_layout Description
