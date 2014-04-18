@@ -736,6 +736,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.setSelection(true);
 		cur.idx() = cur.lastidx();
 		cur.pos() = cur.lastpos();
+		cur.bv().cursor() = cur;
 		break;
 
 	case LFUN_PARAGRAPH_UP:

@@ -463,6 +463,7 @@ AC_ARG_WITH(packaging,
                   *) lyx_use_packaging=posix;;
   esac])
 AC_MSG_RESULT($lyx_use_packaging)
+lyx_install_posix=false
 lyx_install_macosx=false
 lyx_install_cygwin=false
 lyx_install_windows=false

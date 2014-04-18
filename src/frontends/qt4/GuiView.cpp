@@ -2115,6 +2115,18 @@ void GuiView::importDocument(string const & argument)
 	// get absolute path of file
 	FileName const fullname(support::makeAbsPath(filename));
 
+	// Can happen if the user entered a path into the dialog
+	// (see bug #7437)
+	if (fullname.onlyFileName().empty()) {
+		docstring msg = bformat(_("The file name '%1$s' is invalid!\n"
+					  "Aborting import."),
+					from_utf8(fullname.absFileName()));
+		frontend::Alert::error(_("File name error"), msg);
+		message(_("Canceled."));
+		return;
+	}
+
+
 	FileName const lyxfile(support::changeExtension(fullname.absFileName(), ".lyx"));
 
 	// Check if the document already is open

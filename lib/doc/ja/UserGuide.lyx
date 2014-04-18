@@ -61,6 +61,10 @@
 \usepackage{subfig}
 \DeclareCaptionOption{large}[]{\def\captionfont{\large}}
 \DeclareCaptionOption{Large}[]{\def\captionfont{\Large}}
+
+%\ifnum 42146=\euc"A4A2 \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}\else
+%\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}\fi
+%\AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}
 \end_preamble
 \options refpage,intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
 \use_default_options false
@@ -97,8 +101,8 @@ EndPreamble
 End
 \end_local_layout
 \language japanese
-\language_package auto
-\inputencoding auto
+\language_package default
+\inputencoding utf8-platex
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -122,7 +126,7 @@ End
 \pdf_author "LyX Team"
 \pdf_subject "LyX"
 \pdf_keywords "LyX"
-\pdf_bookmarks false
+\pdf_bookmarks true
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
@@ -151,7 +155,7 @@ End
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification false
+\justification true
 \use_refstyle 0
 \notefontcolor #0000ff
 \branch 質問
@@ -1155,12 +1159,12 @@ arg   "command-sequence buffer-begin ; buffer-end-select"
 \end_layout
 
 \begin_layout Section
-操作を取り消す・繰り返す
+元に戻すとやり直す
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-そうさ@操作 ! をとりけす@------を取り消す
+もとにもどす@元に戻す
 \end_layout
 
 \end_inset
@@ -1170,7 +1174,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-そうさ @ 操作 ! おなじをくりかえす@同じ------を繰り返す
+やりなおす@やり直す
 \end_layout
 
 \end_inset
@@ -1178,7 +1182,7 @@ status collapsed
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:操作を取り消す・繰り返す"
+name "sec:元に戻すとやり直す"
 
 \end_inset
 
@@ -1186,10 +1190,11 @@ name "sec:操作を取り消す・繰り返す"
 \end_layout
 
 \begin_layout Standard
-LyXでは、何か失敗をしても、簡単に取り消して元に戻すことができます。LyXは大容量の操作取消／繰返バッファを持っています。失敗を元に戻すときには、
+LyXでは、何か失敗をしても、簡単にもとに戻すことができます。LyXは大容量のUndo (元に戻す)／Redo (やり直す)バッファを持っています。失敗を元に戻
+すときには、
 \family sans
 編集\SpecialChar \menuseparator
-操作を取り消す
+元に戻す
 \family default
 かツールバーボタン
 \begin_inset Info
@@ -1197,10 +1202,10 @@ type  "icon"
 arg   "undo"
 \end_inset
 
-を選択して下さい。もし元に戻しすぎた場合には、「操作を取り消すのを取り消す」ために
+を選択して下さい。もし元に戻しすぎた場合には、「元に戻すのを元に戻す」ために
 \family sans
 編集\SpecialChar \menuseparator
-同じ操作を繰り返す
+やり直す
 \family default
 あるいはツールバーボタン
 \begin_inset Info
@@ -1208,22 +1213,22 @@ type  "icon"
 arg   "redo"
 \end_inset
 
-を使って下さい。操作取消メカニズムは、メモリーオーバーへッドを押さえるために100ステップに制限されています。
+を使って下さい。元に戻すメカニズムは、メモリーオーバーへッドを押さえるために100ステップに制限されています。
 \end_layout
 
 \begin_layout Standard
-またファイルを開いてから行ったすべての変更を無効にしても、「変更された」という文章の状態はかわらないことに注意して下さい。これは操作を取り消すのを上記のように1
-00ステップに制限したためです。
+またファイルを開いてから行ったすべての変更を無効にしても、「変更された」という文章の状態はかわらないことに注意して下さい。これは元に戻すのを上記のように100ス
+テップに制限したためです。
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-操作を取り消す
+元に戻す
 \family default
 と
 \family sans
-同じ操作を繰り返す
+やり直す
 \family default
 は、LyXの中のほとんどすべてのものについて働きます。しかしながら、入力された文章については、文字単位ではなくて文字の塊ごとに元に戻したりやり直したりすることが
 できます。
@@ -1474,13 +1479,13 @@ reference "sec:書誌情報"
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename ../../images/reload.png
+	filename ../../trunk/lib/images/reload.png
 
 \end_inset
 
 ボタンは、(通常必要でないはずですが)目次を再描画します。その隣のボタンは、節の文書中の位置を変えるためのボタンです。
 \begin_inset Graphics
-	filename ../../images/down.png
+	filename ../../trunk/lib/images/down.png
 	scale 85
 	groupId toolbarbuttons
 
@@ -1488,7 +1493,7 @@ reference "sec:書誌情報"
 
 および
 \begin_inset Graphics
-	filename ../../images/up.png
+	filename ../../trunk/lib/images/up.png
 	scale 85
 	groupId toolbarbuttons
 
@@ -1497,7 +1502,7 @@ reference "sec:書誌情報"
 を使うと、節の文書中の位置が、前方に移動したり後方に移動したりします。つまり、例えば第2.5節を、第2.4節の前に持っていったり第2.6節の後に移動したりすることがで
 きるわけです。それに伴い、LyXは、節番号を自動的に新しい順序に振り直してくれます。
 \begin_inset Graphics
-	filename ../../images/promote.png
+	filename ../../trunk/lib/images/promote.png
 	scale 85
 	groupId toolbarbuttons
 
@@ -1505,7 +1510,7 @@ reference "sec:書誌情報"
 
 ないし
 \begin_inset Graphics
-	filename ../../images/demote.png
+	filename ../../trunk/lib/images/demote.png
 	scale 85
 	groupId toolbarbuttons
 
@@ -1623,8 +1628,12 @@ LyXは、現在開かれている全ての文書を走査して、単語の補�
 \family sans
 カーソル表示器
 \family default
-オプションを無効にすれば、表示されなくなります。一般オプションでは、補完入力やポップアップ補完の遅延時間を設定したり、単語の補完を開始するまでに最低限なくてはな
-らない文字数を指定したり、長い補完の切り詰めを行うかどうかを選択することができます。
+オプションを無効にすれば、表示されなくなります。
+\lang english
+With the general options you can define the delay time for the inline and
+ popup completion, you can set the minimal number of characters a word must
+ have that it will be taken into account for a completion and you can choose
+ if long completions should be abbreviated.
 \end_layout
 
 \begin_layout Standard
@@ -4318,7 +4327,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-せつみだし@節見出し!のたんしゅくけい@------の短縮形
+せつみだし@節見出し!のたんしゅく形@------の短縮形
 \end_layout
 
 \end_inset
@@ -6356,7 +6365,7 @@ arg   "newline-insert newline"
 \end_layout
 
 \begin_layout Standard
-ほとんどの学術論文は、概要に始まり書誌情報で終わります。LyXには、この2つのための段落環境もあります。
+ほとんどの学術論文は、概要に始まり参考文献で終わります。LyXには、この2つのための段落環境もあります。
 \end_layout
 
 \begin_layout Subsubsection
@@ -6920,12 +6929,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 これは無調整(verbatim)環境です。
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 この下の2行は空白行です。
 \end_layout
 
@@ -6938,6 +6949,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 右記の各文字を始め、ほぼすべての文字が使えます。例："%&$§#~'`
 \backslash
 }][{|
@@ -13457,7 +13469,7 @@ reference "sec:出力"
 \family default
 かツールバーボタン
 \begin_inset Graphics
-	filename ../../images/view-others.png
+	filename ../../trunk/lib/images/view-others.png
 	scale 85
 	groupId toolbarbuttons
 
@@ -15130,7 +15142,7 @@ status collapsed
 \begin_layout Standard
 注釈は、ツールバーボタン
 \begin_inset Graphics
-	filename ../../images/note-insert.png
+	filename ../../trunk/lib/images/note-insert.png
 	scale 85
 	scaleBeforeRotation
 
@@ -16076,8 +16088,11 @@ reference "sub:表のセル"
 \emph on
 表
 \emph default
-」の節に説明されているように、連結行セルのように表に特別な整形を行うときに必要になるでしょう。また、カーソル位置のセルや表全体も回転させることができます。この回
-転はLyX上には表示されませんが、出力では正しく表示されます。
+」の節に説明されているように、連結行セルのように表に特別な整形を行うときに必要になるでしょう。
+\lang english
+You can also rotate the current cell or the whole table
+\lang japanese
+。この回転はLyX上には表示されませんが、出力では正しく表示されます。
 \end_layout
 
 \begin_layout Standard
@@ -23752,7 +23767,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \series bold
-【訳註】
+訳註：
 \series default
 文書言語が「日本語」になっているときは、アクセント付き文字を、アクセントを直接入力できる欧州言語用のキーボードなどで直接入力して使用することはできません。その代
 わりに、この小節で行っているように、LaTeXコマンドを使用してアクセントを入力してやる必要があります。しかし、ここで書かれていることは、漢字コード順と索引順が
@@ -27576,10 +27591,6 @@ status collapsed
 
 \begin_layout Plain Layout
 正規表現のよい説明がWikipediaの以下の項目にあります。
-\begin_inset Newline newline
-\end_inset
-
-
 \begin_inset CommandInset href
 LatexCommand href
 target "http://en.wikipedia.org/wiki/Regular_expression"
@@ -28107,7 +28118,7 @@ Linuxでは、頒布版や辞書の導入の仕方によって、典型的な場
 \backslash
 Program Files
 \backslash
-LibreOffice-<バージョン>
+LibreOffice-<Version>
 \backslash
 share
 \backslash
@@ -28979,7 +28990,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \series bold
-【訳註】
+(訳註)
 \series default
 よくわからない人は『Star Trek』を参照のこと。
 \end_layout
@@ -29967,14 +29978,14 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-操作を取り消す・同じ操作を繰り返す
+元に戻すとやり直す
 \end_layout
 
 \begin_layout Standard
 第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:操作を取り消す・繰り返す"
+reference "sec:元に戻すとやり直す"
 
 \end_inset
 
@@ -32340,7 +32351,7 @@ arg   "undo"
 
 \family sans
 編集\SpecialChar \menuseparator
-操作を取り消す
+元に戻す
 \end_layout
 
 \end_inset
@@ -32370,7 +32381,7 @@ arg   "redo"
 
 \family sans
 編集\SpecialChar \menuseparator
-同じ操作を繰り返す
+やり直す
 \end_layout
 
 \end_inset
@@ -33866,7 +33877,7 @@ arg   "buffer-toggle-output-sync"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/view-others.png
+	filename ../../trunk/lib/images/view-others.png
 	scale 85
 	groupId toolbarbuttons
 
@@ -33896,7 +33907,7 @@ arg   "buffer-toggle-output-sync"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/update-others.png
+	filename ../../trunk/lib/images/update-others.png
 	scale 85
 	groupId toolbarbuttons
 
@@ -34256,7 +34267,14 @@ LyXは、二段組や行間を画面には反映しないことに注意して�
 \end_layout
 
 \begin_layout Standard
-LyX作業域で整形を行うオプションを使うと、LyX画面上で文を整形するかどうか指定することができます。これは、LyX内部の文にのみ影響し，出力には影響しません。
+
+\lang english
+With the option 
+\family sans
+Use justification in LyX work area
+\family default
+ you can decide if LyX justifies the text on screen.
+ This only affects the text inside LyX not in the output.
 \end_layout
 
 \begin_layout Section
@@ -35382,20 +35400,29 @@ amsmath これは、多くの数式要素に必要とされているので、数
 \end_layout
 
 \begin_layout Description
-amssymb これは、ボールド体ギリシャ文字やアップライト体ギリシャ文字など、特殊な数学記号に必要です。数式でLaTeXエラーが出る場合には、これが有効になっ
-ているか確認してください。
+
+\lang english
+amssymb is needed for some special math symbols like bold or upright Greek
+ letters, so when you get LaTeX-errors in formulas, ensure that you have
+ this enabled.
 \end_layout
 
 \begin_layout Description
-cancel これは、数式の取り消しに使われます。取扱説明書『
+
+\lang english
+cancel is used for canceled formulas, see section 
 \emph on
-数式篇
+Canceled
+\begin_inset space ~
+\end_inset
+
+Formulas
 \emph default
-』の「
+ of the 
 \emph on
-数式の消去
+Math
 \emph default
-」の節をご覧ください。
+ manual.
 \end_layout
 
 \begin_layout Description
@@ -35423,47 +35450,49 @@ mathdots これは、特殊な省略符号に用いられます。取扱説明�
 \end_layout
 
 \begin_layout Description
-mathtools これは、
+
+\lang english
+mathtools is used for the math commands 
 \series bold
 
 \backslash
 overbracket
 \series default
-・
+, 
 \series bold
 
 \backslash
 underbracket
 \series default
-・
+, 
 \series bold
 
 \backslash
 smashoperator
 \series default
-・
+, 
 \series bold
 
 \backslash
 adjustlimits
 \series default
-・
+, 
 \series bold
 
 \backslash
 splitfrac
 \series default
-・
+, 
 \series bold
 
 \backslash
 shortintertext
 \series default
-の各数式コマンドとラベル付き矢印に使われます。取扱説明書『
+ and labeled arrows, see the corresponding sections in the 
 \emph on
-数式篇
+Math
 \emph default
-』の対応する節をご覧ください。
+ manual.
 \end_layout
 
 \begin_layout Description
@@ -35479,39 +35508,49 @@ mhchem これは、化学式に用いられます。取扱説明書『
 \end_layout
 
 \begin_layout Description
-stackrel これは、数式コマンド
+
+\lang english
+stackrel is used for the math command 
 \series bold
 
 \backslash
 stackrel
 \series default
-のために用いられます。取扱説明書『
+, see section 
 \emph on
-数式篇
+Relations 
 \emph default
-』の「
+of the 
 \emph on
-関係子
+Math
 \emph default
-」の節をご覧ください。
+ manual.
 \end_layout
 
 \begin_layout Description
-stmaryrd これは、特殊な数式記号のために用いられます。
+
+\lang english
+stmaryrd is used for a few special math symbols.
 \end_layout
 
 \begin_layout Description
-undertilde これは、数式コマンド
+
+\lang english
+undertilde is used for the math command 
 \series bold
 
 \backslash
 utilde
 \series default
-のために用いられます。取扱説明書『
+, see section 
 \emph on
-数式篇
+Accents for one Character 
 \emph default
-』の「アクセント」の節をご覧ください。
+of the 
+\emph on
+Math
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -36044,7 +36083,9 @@ target "http://wiki.lyx.org/uploads/LyX/NewInLyX20/themes.png"
 \end_layout
 
 \begin_layout Subsubsection
-文脈依存ヘルプ
+
+\lang english
+Context help
 \end_layout
 
 \begin_layout Standard
@@ -36056,24 +36097,34 @@ target "http://wiki.lyx.org/uploads/LyX/NewInLyX20/themes.png"
 \end_layout
 
 \begin_layout Subsubsection
-メニュー
+
+\lang english
+Menus
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-直近のファイルの数
+\lang english
+Maximum last files
 \family default
-は、メニュー
+ is the number of last opened files that LyX should display in the menu
+ 
 \family sans
-ファイル\SpecialChar \menuseparator
-直近のファイルを開く
+File\SpecialChar \menuseparator
+Open
+\begin_inset space ~
+\end_inset
+
+Recent
 \family default
-に表示される直近に開かれたファイルの数です。
+.
 \end_layout
 
 \begin_layout Subsection
-文書処理
+
+\lang english
+Document Handling
 \end_layout
 
 \begin_layout Subsubsection
@@ -36113,7 +36164,11 @@ target "http://wiki.lyx.org/uploads/LyX/NewInLyX20/themes.png"
 \end_layout
 
 \begin_layout Subsubsection
-バックアップと保存
+
+\lang english
+Backup & saving
+\lang japanese
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:文書のバックアップ"
@@ -36178,7 +36233,9 @@ reference "sec:パス"
 \end_layout
 
 \begin_layout Subsubsection
-ウィンドウと作業領域
+
+\lang english
+Windows & work area
 \end_layout
 
 \begin_layout Standard
@@ -36253,16 +36310,21 @@ status open
 
 \begin_layout Standard
 
+\lang english
+With the setting 
 \family sans
-最後の表示窓を閉じる際
+Closing last view
 \family default
-の設定では、文書のタブもしくは表示窓を閉じるとき、文書を閉じるのか非表示にするのかを指定することができます。非表示になっている文書は、
+ you one can decide if a document is closed or hidden when its tab or view
+ is closed.
+ Hidden documents are accessible via the menu 
 \family sans
-表示\SpecialChar \menuseparator
-非表示分
+View\SpecialChar \menuseparator
+Hidden
 \family default
-メニューで見ることができます。ファイルをいくつかのLyXインスタンスで並行して開いていて、1つのインスタンスでのみ表示窓を閉じたい時には、文書を閉じないようにす
-る選択は便利です。
+.
+ Not to close documents can be useful if you open files parallel in several
+ instances of LyX and only want to close the view in once instance.
 \end_layout
 
 \begin_layout Subsection
@@ -37494,7 +37556,17 @@ selectlanguage{$$lang}
 \end_layout
 
 \begin_layout Description
-長さ単位の既定値 LyXのダイアログ内で用いる、長さの単位の既定値を指定します。
+
+\lang english
+Default
+\begin_inset space ~
+\end_inset
+
+length
+\begin_inset space ~
+\end_inset
+
+unit Defines the unit that is used as default for lengths in LyX's dialogs.
 \end_layout
 
 \begin_layout Description
@@ -39014,7 +39086,7 @@ target "http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxdoc.pdf"
 
 \end_inset
 
-:
+
 \begin_inset Newline newline
 \end_inset
 
@@ -39049,10 +39121,6 @@ LatexCommand href
 name "取扱説明書"
 target "http://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf"
 
-\end_inset
-
-:
-\begin_inset Newline newline
 \end_inset
 
 
@@ -39158,7 +39226,7 @@ target "http://www.ams.org/publications/authors/tex/amslatex"
 
 \end_inset
 
-:
+
 \begin_inset Newline newline
 \end_inset
 
@@ -39432,7 +39500,7 @@ latexはつけじ@LaTeXパッケージ ! prettyref
 
 \end_inset
 
-の
+:の
 \begin_inset CommandInset href
 LatexCommand href
 name "取扱説明書"
@@ -39440,7 +39508,7 @@ target "http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref
 
 \end_inset
 
-:
+
 \begin_inset Newline newline
 \end_inset
 
@@ -39479,7 +39547,7 @@ latexはつけじ@LaTeXパッケージ ! refstyle
 
 \end_inset
 
-の
+:の
 \begin_inset CommandInset href
 LatexCommand href
 name "取扱説明書"
@@ -39487,7 +39555,7 @@ target "http://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf"
 
 \end_inset
 
-:
+
 \begin_inset Newline newline
 \end_inset
 

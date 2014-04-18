@@ -418,22 +418,22 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 	if (f.underbar() == FONT_ON) {
 		os << "\\uline{";
 		count += 10;
-		runparams.inulemcmd = true;
+		++runparams.inulemcmd;
 	}
 	if (f.strikeout() == FONT_ON) {
 		os << "\\sout{";
 		count += 9;
-		runparams.inulemcmd = true;
+		++runparams.inulemcmd;
 	}
 	if (f.uuline() == FONT_ON) {
 		os << "\\uuline{";
 		count += 11;
-		runparams.inulemcmd = true;
+		++runparams.inulemcmd;
 	}
 	if (f.uwave() == FONT_ON) {
 		os << "\\uwave{";
 		count += 10;
-		runparams.inulemcmd = true;
+		++runparams.inulemcmd;
 	}
 	return count;
 }
@@ -497,22 +497,22 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 	if (f.underbar() == FONT_ON) {
 		os << '}';
 		++count;
-		runparams.inulemcmd = false;
+		--runparams.inulemcmd;
 	}
 	if (f.strikeout() == FONT_ON) {
 		os << '}';
 		++count;
-		runparams.inulemcmd = false;
+		--runparams.inulemcmd;
 	}
 	if (f.uuline() == FONT_ON) {
 		os << '}';
 		++count;
-		runparams.inulemcmd = false;
+		--runparams.inulemcmd;
 	}
 	if (f.uwave() == FONT_ON) {
 		os << '}';
 		++count;
-		runparams.inulemcmd = false;
+		--runparams.inulemcmd;
 	}
 
 	// If the current language is Hebrew, Arabic, or Farsi

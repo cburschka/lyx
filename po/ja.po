@@ -923,8 +923,7 @@ msgstr "検索フィールド(&H):"
 #: src/frontends/qt4/ui/CitationUi.ui:382
 msgid ""
 "Enter the text to search for and press Enter or click the button to search"
-msgstr ""
-"検索する語句を入力してEnterを押すか、ボタンをクリックして検索してください"
+msgstr "検索する語句を入力してEnterを押すか、ボタンをクリックして検索してください"
 
 #: src/frontends/qt4/ui/CitationUi.ui:395
 msgid "Click or press Enter in the search box to search"
@@ -1445,8 +1444,7 @@ msgstr "様式を無視(&G)"
 msgid ""
 "Keep the case of the replacement's first letter as in each matching text "
 "first letter"
-msgstr ""
-"置換後の語句の最初の文字の大小を、置換前の語句の最初の文字の大小に合わせる。"
+msgstr "置換後の語句の最初の文字の大小を、置換前の語句の最初の文字の大小に合わせる。"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:297
 msgid "&Preserve first case on replace"
@@ -3031,8 +3029,7 @@ msgstr "一般"
 msgid ""
 "After the cursor has not moved for this time, the inline completion is shown "
 "if it is available."
-msgstr ""
-"これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
+msgstr "これだけの時間カーソルを動かさなかったとき、可能ならば補完入力を表示します。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:154
 msgid "s inline completion dela&y"
@@ -3062,8 +3059,7 @@ msgstr "補完を開始する最小文字数"
 msgid ""
 "When the TAB completion is not unique, there won't be a delay of the popup. "
 "It will be shown right away."
-msgstr ""
-"タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
+msgstr "タブ補完に複数候補がある場合、ポップアップに遅延を置かず、直ちに表示する。"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:277
 msgid "Sho&w popup without delay for non-unique completions"
@@ -3343,8 +3339,7 @@ msgstr "文書形式(&D)"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:80
 msgid "Check this to show the current format in the File > Export menu"
-msgstr ""
-"この形式をファイル→書き出しメニューに表示させたいときには有効にしてください"
+msgstr "この形式をファイル→書き出しメニューに表示させたいときには有効にしてください"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:83
 msgid "Sho&w in export menu"
@@ -4175,8 +4170,7 @@ msgstr "ユーザー設定幅(&W):"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
-msgstr ""
-"任意設定の値。「リストの行頭下げ」を「任意設定」に設定する必要があります。"
+msgstr "任意設定の値。「リストの行頭下げ」を「任意設定」に設定する必要があります。"
 
 #: src/frontends/qt4/ui/PrintUi.ui:28
 msgid "Pages"
@@ -4959,8 +4953,7 @@ msgstr "二段組文書(&C)"
 msgid ""
 "Justify text in the LyX editor (this does not affect whether the text is "
 "justified in the output)"
-msgstr ""
-"LyXエディタ中で整形を行う(出力中で文書が整形されるかどうかには影響しません)"
+msgstr "LyXエディタ中で整形を行う(出力中で文書が整形されるかどうかには影響しません)"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:284
 msgid "Use &justification in LyX work area"
@@ -5001,8 +4994,7 @@ msgstr "見出しを選択語で置換"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:102
 msgid "Click to select a proposal, double click to look it up."
-msgstr ""
-"クリックすれば候補が選択されます。ダブルクリックするとその意味を引きます。"
+msgstr "クリックすれば候補が選択されます。ダブルクリックするとその意味を引きます。"
 
 #: src/frontends/qt4/ui/TocUi.ui:36
 msgid "Filter:"
@@ -5066,8 +5058,7 @@ msgstr "LyX: 入力して下さい"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:44
 msgid "If you check this, LyX will not warn you again in the given case."
-msgstr ""
-"これを有効にすると、LyXは当該ケースについて今後警告することはなくなります。"
+msgstr "これを有効にすると、LyXは当該ケースについて今後警告することはなくなります。"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:47
 msgid "&Do not show this warning again!"
@@ -21837,16 +21828,14 @@ msgstr "変換スクリプトが失敗しました"
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
 "convert it."
-msgstr ""
-"%1$s は旧版のLyXで作成されており，スクリプトlyx2lyxは変換に失敗 しました。"
+msgstr "%1$s は旧版のLyXで作成されており，スクリプトlyx2lyxは変換に失敗 しました。"
 
 #: src/Buffer.cpp:1237
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
 "it."
-msgstr ""
-"%1$s は新版のLyXファイルなので，スクリプトlyx2lyxが変換に失敗しました。"
+msgstr "%1$s は新版のLyXファイルなので，スクリプトlyx2lyxが変換に失敗しました。"
 
 #: src/Buffer.cpp:1258 src/Buffer.cpp:4169 src/Buffer.cpp:4232
 msgid "File is read-only"
@@ -22280,8 +22269,7 @@ msgstr ""
 msgid ""
 "The LaTeX package cancel is only used if \\cancel commands are used in "
 "formulas"
-msgstr ""
-"数式に\\cancelが挿入されたときに限り、LaTeXパッケージcancelが読み込まれます"
+msgstr "数式に\\cancelが挿入されたときに限り、LaTeXパッケージcancelが読み込まれます"
 
 #: src/BufferParams.cpp:458
 msgid ""
@@ -22295,8 +22283,7 @@ msgstr ""
 msgid ""
 "The LaTeX package mathdots is only used if the command \\iddots is inserted "
 "into formulas"
-msgstr ""
-"数式に\\iddotsが挿入されたときに限り、LaTeXパッケージmathdotsが読み込まれます"
+msgstr "数式に\\iddotsが挿入されたときに限り、LaTeXパッケージmathdotsが読み込まれます"
 
 #: src/BufferParams.cpp:462
 msgid ""
@@ -23080,8 +23067,7 @@ msgstr "レイアウトが見つかりません"
 #: src/CutAndPaste.cpp:753
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
-msgstr ""
-"「%2$s」レイアウトを読み込み直したため自由差込枠%1$sは未定義になりました。"
+msgstr "「%2$s」レイアウトを読み込み直したため自由差込枠%1$sは未定義になりました。"
 
 #: src/CutAndPaste.cpp:756
 #, c-format
@@ -23712,8 +23698,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3143
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
-msgstr ""
-"pLaTeX(日本語LaTeX)用のbibtexプログラムのオプションを定義してください。"
+msgstr "pLaTeX(日本語LaTeX)用のbibtexプログラムのオプションを定義してください。"
 
 #: src/LyXRC.cpp:3147
 msgid ""
@@ -23725,8 +23710,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3151
 msgid "Select to check whether the lastfiles still exist."
-msgstr ""
-"最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
+msgstr "最後のファイルがまだ存在するかどうかをチェックするときには選んでください。"
 
 #: src/LyXRC.cpp:3155
 msgid ""
@@ -23755,8 +23739,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3177
 msgid "Make Apple key act as Meta and Control key as Ctrl."
-msgstr ""
-"アップルキーをMetaキーとして、コントロールキーをCtrlキーとして動作させます。"
+msgstr "アップルキーをMetaキーとして、コントロールキーをCtrlキーとして動作させます。"
 
 #: src/LyXRC.cpp:3181
 msgid "Use the Mac OS X conventions for cursor movement"
@@ -23766,8 +23749,7 @@ msgstr "カーソル移動はMac OS Xの慣習に従う。"
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
-msgstr ""
-"カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
+msgstr "カーソルが内部にある時に、数式マクロをマクロ名のついた小さなボックスで囲む。"
 
 #: src/LyXRC.cpp:3190
 #, no-c-format
@@ -23811,8 +23793,7 @@ msgstr "LyX が画像をどのように表示するかを選びます。"
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
-msgstr ""
-"文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
+msgstr "文書への既定パス。空の値は，LyX を開始したディレクトリを選ぶことになります。"
 
 #: src/LyXRC.cpp:3218
 msgid "Specify additional chars that can be part of a word."
@@ -23923,8 +23904,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3290
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr ""
-"LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
+msgstr "LyXが保存位置までスクロールしないようにしたいときは，非選択にしてください。"
 
 #: src/LyXRC.cpp:3294
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -23971,8 +23951,7 @@ msgstr "複数の補完候補がある際、遅延なしに補完ポップアッ
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
-msgstr ""
-"補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
+msgstr "補完が利用可能であることを示すためにカーソル上に小さな三角形を表示します。"
 
 #: src/LyXRC.cpp:3331
 msgid "The inline completion delay."
@@ -23997,8 +23976,7 @@ msgstr "=>を\\Rightarrowに変換するなどのTeXMacs用簡略記法を許可
 #: src/LyXRC.cpp:3351
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
-msgstr ""
-"最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
+msgstr "最後に使ったファイルの最大表示数。%1$d までファイルメニューに表示できます。"
 
 #: src/LyXRC.cpp:3362
 msgid "Shows a typeset preview of things such as math"
@@ -24328,8 +24306,7 @@ msgstr "未知のトークン"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr ""
-"空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
+msgstr "空白を段落の先頭に挿入することはできません。LyX入門篇を読んでください。"
 
 #: src/Text.cpp:1002
 msgid "You cannot type two spaces this way. Please read the Tutorial."
@@ -24465,8 +24442,7 @@ msgstr "破損ファイル"
 
 #: src/TextClass.cpp:833
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
-msgstr ""
-"stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
+msgstr "stdinsets.incを読むことができません！データ喪失につながる可能性があります！"
 
 #: src/TextClass.cpp:1504
 #, c-format
@@ -29268,8 +29244,7 @@ msgstr "LyXバイナリが見つかりません！"
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1$s"
-msgstr ""
-"コマンドライン %1$s からは、LyXバイナリへのパスを特定することができません。"
+msgstr "コマンドライン %1$s からは、LyXバイナリへのパスを特定することができません。"
 
 #: src/support/Package.cpp:629
 #, c-format
@@ -29502,8 +29477,7 @@ msgstr ""
 msgid ""
 "It should be safe to continue, but you\n"
 "may wish to save your work and restart LyX."
-msgstr ""
-"続けても安全ですが、作業を保存してLyXを再起動するのが望ましいでしょう。"
+msgstr "続けても安全ですが、作業を保存してLyXを再起動するのが望ましいでしょう。"
 
 #: src/support/lassert.cpp:65
 msgid "Warning!"

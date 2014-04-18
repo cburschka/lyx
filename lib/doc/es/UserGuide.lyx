@@ -1058,38 +1058,43 @@ arg   "dialog-show findreplace"
 
 \begin_layout Standard
 Los tres primeros son evidentes.
- También se puede transferir texto entre LyX y otros programas con 
+ 
+\lang english
+You can also copy text between LyX and other programs by 
 \family sans
-Cortar
+Cut
 \family default
 , 
 \family sans
-Copiar
+Copy
 \family default
- y 
+ and 
 \family sans
-Pegar
+Paste
 \family default
 .
  
 \family sans
-Cortar
+Cut
 \family default
- y 
+ and 
 \family sans
-Copiar
+Copy
 \family default
- guardan el texto en el portapapeles en dos versiones (con y sin formato),
- de modo que en otros programas puedes elegir el más adecuado.
+ put text in two versions into the clipboard (formatted and unformatted),
+ so that other programs can choose the most suitable form.
  
 \family sans
-Pegar
+Paste
 \family default
- también permite texto con o sin formato y además gráficos; intenta interpretar
- el contenido del portapapeles de forma inteligente.
- Por ejemplo, si el portapapeles contiene texto con formato de valores separados
- por comas (CSV) y el cursor está dentro de un cuadro o tabla, al pegar
- el texto se distribuirá en celdas.El submenú 
+ supports formatted and unformatted text as well, and additionally graphics.
+ It tries to interpret the clipboard contents in an intelligent way.
+ For example if the clipboard contains text in the format of comma separated
+ values (CSV) and the cursor is inside a table, the text will be pasted
+ into individual cells.
+ 
+\lang spanish
+El submenú 
 \family sans
 Pegar
 \begin_inset space ~
@@ -1098,88 +1103,135 @@ Pegar
 reciente
 \family default
  muestra una lista con los últimos términos copiados.
- Al hacer clic en una entrada de la lista se insertará en la posición actual
- del cursor.
+
+\lang english
+ You can insert one at the current cursor position by clicking on a list
+ entry.
 \end_layout
 
 \begin_layout Standard
-El submenú 
+
+\lang english
+The submenu 
 \family sans
+\lang spanish
 Pegado
 \begin_inset space ~
 \end_inset
 
 especial
 \family default
- contiene opciones de formatos específicos en función del contenido del
- portapapeles: HTML, LaTeX, Linkback
+\lang english
+ contains optional items for specific formats, depending on the clipboard
+ contents.
+ These include HTML, LaTeX, Linkback
 \begin_inset space ~
 \end_inset
 
 PDF
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-OS X sólo
+
+\lang english
+OS X only
 \end_layout
 
 \end_inset
 
-, PDF, PNG, JPEG y EMF.
- Estas opciones son útiles si en el portapapeles hay el mismo contenido
- en formatos diferentes y quieres seleccionar un formato concreto.
- (Por ejemplo, algunos programas ponen una imagen en el portapapeles como
- gráfico y como un corto texto que a veces no tiene sentido).
- La opción de menú 
+, PDF, PNG, JPEG and EMF.
+ These menu items are useful if the clipboard contains the same contents
+ in different formats, and you want to select one format explicitly.
+ (E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+some programs put an image into the clipboard as graphics and as a short
+ text which is often meaningless.) The menu item 
 \family sans
+\lang spanish
 Pegado
 \begin_inset space ~
 \end_inset
 
 especial\SpecialChar \menuseparator
-Texto simple, líneas juntas 
+
+\lang english
+Plain
+\begin_inset space ~
+\end_inset
+
+Text,
+\begin_inset space \thinspace{}
+\end_inset
+
+Join
+\begin_inset space ~
+\end_inset
+
+Lines
 \family default
-es equivalente a 
+ is equivalent to 
 \family sans
+\lang spanish
 Pegar
 \family default
-, con la diferencia de que sólo actúa sobre texto.
- Insertará el texto del portapapeles como un solo párrafo.
- Sólo se inicia un nuevo párrafo cuando en el texto hay una línea vacía.
- Sin 
-\family sans
-líneas juntas
-\family default
- el texto se inserta de modo que cada salto de línea inicia un párrafo nuevo.
- Esto es útil, por ejemplo, para copiar contenido de cuadros o tablas de
- páginas web en un cuadro en LyX.
- Las opciones 
-\family sans
-Pegado
-\begin_inset space ~
-\end_inset
-
-especial\SpecialChar \menuseparator
-Selección, líneas juntas
-\family default
 \lang english
- 
-\lang spanish
-y 
+, with the only difference that it acts on text only.
+ It will insert the text in the clipboard so that the whole text is inserted
+ as one paragraph.
+ A new paragraph is only started when there is a blank line in the text.
+ Without 
 \family sans
+Join
+\begin_inset space ~
+\end_inset
+
+Lines
+\family default
+ the text is inserted as paragraphs where the line breaks of the text will
+ start a new paragraph.
+ This is for example useful to copy contents of tables from webpages to
+ a table in LyX.
+ The items 
+\family sans
+\lang spanish
 Pegado
 \begin_inset space ~
 \end_inset
 
 especial\SpecialChar \menuseparator
-Selección
-\family default
- pega desde la selección primaria.
- Normalmente esto es el texto actualmente seleccionado.
 
+\lang english
+Selection,
+\begin_inset space \thinspace{}
+\end_inset
+
+Join
+\begin_inset space ~
+\end_inset
+
+Lines
+\family default
+ and 
 \family sans
- 
+\lang spanish
+Pegado
+\begin_inset space ~
+\end_inset
+
+especial\SpecialChar \menuseparator
+
+\lang english
+Selection
+\family default
+ paste from the primary selection.
+ This is normally the currently selected text.
 \end_layout
 
 \begin_layout Standard
@@ -1552,15 +1604,7 @@ Navegar
 El menú 
 \family sans
 Ver\SpecialChar \menuseparator
-Panel
-\begin_inset space ~
-\end_inset
-
-del
-\begin_inset space ~
-\end_inset
-
-esquema
+Navegador de contorno
 \family default
  o el botón de herramientas 
 \begin_inset Info
@@ -1609,30 +1653,11 @@ F5
 \end_layout
 
 \begin_layout Subsection
-El 
-\family sans
-Panel
-\begin_inset space ~
-\end_inset
-
-del
-\begin_inset space ~
-\end_inset
-
-esquema
-\family default
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Panel-del-esquema"
-
-\end_inset
-
-
+El navegador de contorno
 \end_layout
 
 \begin_layout Standard
-El panel del esquema es el equivalente actual del llamado 
+El navegador de contorno es el equivalente actual del llamado 
 \begin_inset Quotes fld
 \end_inset
 
@@ -1642,10 +1667,10 @@ El panel del esquema es el equivalente actual del llamado
 
  en versiones anteriores de LyX, puesto que su propósito original era mostrar
  el índice del contenido del documento.
- Sin embargo, el actual panel del esquema es mucho más versátil.
- En el cuadro desplegable de la parte superior de la ventana del panel se
- puede elegir entre varias listas e índices diferentes de una variedad de
- objetos, tales como índices de cuadros y figuras, listas de varios tipos
+ Sin embargo, el actual Navegador de contorno es mucho más versátil.
+ En el cuadro desplegable de la parte superior de la ventana de contorno
+ se puede elegir entre varias listas e índices diferentes de una variedad
+ de objetos, tales como índices de cuadros y figuras, listas de varios tipos
  de notas, etiquetas y referencias (véase la sección 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1688,7 +1713,7 @@ Filtro
 \begin_inset Quotes frd
 \end_inset
 
- permite restringir las entradas que deben aparecer en el Esquema.
+ permite restringir las entradas que deben aparecer en el Navegador.
  Por ejemplo, si está abierta la lista de Etiquetas y referencias y quieres
  ver solamente las referencias a subsecciones, introduce el texto 
 \begin_inset Quotes fld
@@ -1703,7 +1728,7 @@ sub:
 \end_layout
 
 \begin_layout Standard
-En la parte inferior del panel hay varios botones y similares que permiten
+En la parte inferior del Contorno hay varios botones y similares que permiten
  controlar otros aspectos.
  La opción 
 \family sans
@@ -1853,7 +1878,7 @@ Mayúsculas+Tab
 \end_layout
 
 \begin_layout Section
-Finalización automática de entradas / palabras
+Finalización de entradas / palabras
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Finalización-de-entradas/palabras"
@@ -1920,9 +1945,7 @@ Indicador en el cursor
 \family default
 .
  Con las opciones generales puedes definir el tiempo de retardo para la
- visualización en línea y para el recuadro emergente, establecer el número
- mínimo de caracteres que una palabra debe tener para ser tenida en cuenta
- para la terminación automática
+ visualización en línea y para el recuadro emergente,
 \lang english
  set the minimal number of characters a word must have that it will be taken
  into account for a completion
@@ -4921,22 +4944,22 @@ Numeración
 \end_layout
 
 \begin_layout Subsubsection
-Encabezados con Título corto
+Encabezados con Título breve
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Encabezados de sección ! Títulos cortos
+Encabezados de sección ! Títulos breves
 \end_layout
 
 \end_inset
 
 
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Títulos cortos
+Títulos breves
 \end_layout
 
 \end_inset
@@ -4944,7 +4967,7 @@ Títulos cortos
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Títulos-cortos"
+name "sec:Títulos-breves"
 
 \end_inset
 
@@ -4961,31 +4984,44 @@ Algunos títulos de capítulo o sección, como el presente, pueden resultar
 \end_layout
 
 \begin_layout Standard
-LaTeX permite especificar un título abreviado para encabezados de sección.
+LaTeX permite especificar un título breve para encabezados de sección.
  Este se usa en el encabezado de página y en el índice general actual, evitando
  el problema mencionado.
- Para poner un título más corto, pon el cursor tras el título y usa el menú
- 
+ Para poner un título breve
+\lang english
+, set the cursor behind the title 
+\lang spanish
+y usa el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Título
 \begin_inset space ~
 \end_inset
 
-corto
+breve
 \family default
 .
  Así se inserta un cuadro etiquetado 
 \begin_inset Quotes fld
 \end_inset
 
-Título corto
+
+\lang english
+Short
+\begin_inset space ~
+\end_inset
+
+Title
+\lang spanish
+
 \begin_inset Quotes frd
 \end_inset
 
  que te permite introducir el texto del título.
- Esto también funciona para encabezados en flotantes.
- Sólo puede haber un título corto por encabezado.
+ Esto también trabaja para encabezados en flotantes.
+ 
+\lang english
+There can only be one short title per title.
 \end_layout
 
 \begin_layout Standard
@@ -7960,12 +7996,16 @@ reference "sec:Bibliografía"
 \end_layout
 
 \begin_layout Subsection
-Entornos especiales
+
+\lang english
+Special environments
 \end_layout
 
 \begin_layout Standard
-LyX proporciona dos entornos que pueden usarse para emular el comportamiento
- de una consola o terminal de un ordenador y una máquina de escribir.
+
+\lang english
+LyX provides two environments that can be used to emulate the behavior of
+ a computer console/terminal and a typewriter.
 \end_layout
 
 \begin_layout Subsubsection
@@ -7997,7 +8037,7 @@ El entorno
 Código-LyX
 \family default
  es una extensión de LyX.
- Escribe el texto en estilo ancho fijo.
+ Escribe el texto en estilo máquina de escribir.
  Trata la tecla 
 \family sans
 Espacio
@@ -8030,13 +8070,16 @@ protegido
 
  
 \family sans
-Código-LyX
+\lang english
+LyX-Code
 \family default
- y 
+ and 
 \family sans
-Literal
+Verbatim
 \family default
- son los únicos entornos en que puedes insertar más de un espacio.
+ are the only environments
+\lang spanish
+ en que puedes teclear múltiples espacios.
  Si necesitas insertar líneas en blanco debes usar 
 \family sans
 Ctrl+Entrar
@@ -8115,7 +8158,7 @@ Espacio
 \end_layout
 
 \begin_layout Itemize
-No puedes poner comillas dobles tipo ancho fijo con la tecla 
+No puedes poner comillas dobles tipo máquina de escribir con la tecla 
 \family sans
 "
 \family default
@@ -8196,10 +8239,10 @@ Entornos de párrafo|)
 
 \end_inset
 
- Para partes más largas de código, inserta un recuadro Listado de código,
+ Para partes más largas de código, usa el recuadro Listado de programa,
  que se describe en el capítulo 
 \emph on
-Listado de código 
+Listado de programa 
 \emph default
 del manual 
 \emph on
@@ -8209,15 +8252,14 @@ Objetos insertados
 \end_layout
 
 \begin_layout Subsubsection
-Literal
+Verbatim
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
-\family sans
-\series bold
-Literal
+\lang english
+Verbatim
 \end_layout
 
 \end_inset
@@ -8226,72 +8268,83 @@ Literal
 \end_layout
 
 \begin_layout Standard
-El entorno 
+
+\lang english
+The 
 \family sans
-Literal
+Verbatim
 \family default
- es similar al entorno 
+ environment is similar to the 
 \family sans
-Código-LyX
+LyX-Code
 \family default
- excepto en que su contenido se tratará como texto de una consola de ordenador.
- Por lo tanto, 
+ environment with the difference that its content will be treated like a
+ computer console text.
+ 
 \family sans
-Literal
+Verbatim
 \family default
- implica no tener párrafos y que 
+ does therefore not have paragraphs so that 
 \family sans
-Entrar
+Return
 \family default
- rompa las líneas.
- Comparado con 
+ breaks lines.
+ Compared to 
 \family sans
-Código-LyX
+LyX-Code
 \family default
-, la tecla 
+ the 
 \family sans
-Espacio
+Space
 \family default
- se trata como un espacio normal en texto (no como espacio protegido) y
- se pueden tener líneas vacías.
- Al contrario que 
+ key is treated like a normal space in text (not as a protected space) and
+ you can have empty lines.
+ In contrary to 
 \family sans
-Código-LyX
+LyX-Code,
 \family default
-, 
+ 
 \family sans
-Literal
+Verbatim
 \family default
- no puede
+ cannot
 \end_layout
 
 \begin_layout Itemize
-tener un idioma determinado ni estilo de texto
+
+\lang english
+have a certain language and a text style
 \end_layout
 
 \begin_layout Itemize
-contener hiperenlaces, marcos, notas, ecuaciones, citas, referencias, entradas
- de índice o de nomenclatura, etiquetas, cuadros, gráficos, listados de
- código, flotantes y código TeX.
+
+\lang english
+contain hyperlinks, boxes, foot- and margin notes, notes, math, citations,
+ index- and nomenclature entries, labels, tables, graphics, listings, floats
+ and TeX-Code
 \end_layout
 
 \begin_layout Standard
-Debido a estas características 
+
+\lang english
+Because of these properties 
 \family sans
-Literal
+Verbatim
 \family default
- trabaja como una máquina de escribir.
- Aquí un ejemplo:
+ works like a typewriter.
+ Here is an example:
 \end_layout
 
 \begin_layout Verbatim
-Esto es entorno literal.
+
+This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-Las dos  líneas siguientes están vacías:
+
+The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
@@ -8303,7 +8356,8 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
-Casi todo está permitido en entorno literal:"%&$§#~'`
+
+Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
 \end_layout
@@ -10364,7 +10418,11 @@ Enumeración*
 \end_layout
 
 \begin_layout Subsection
-Anidaciones separadas
+
+\lang english
+Separate Nestings
+\lang spanish
+
 \begin_inset Index idx
 status open
 
@@ -10373,7 +10431,8 @@ Anidación
 \noun on
  ! 
 \noun default
-Separación
+\lang english
+Separation
 \end_layout
 
 \end_inset
@@ -10381,7 +10440,7 @@ Separación
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Anidación-separada"
+name "sub:Separate-Anidación"
 
 \end_inset
 
@@ -10389,22 +10448,31 @@ name "sub:Anidación-separada"
 \end_layout
 
 \begin_layout Standard
-A veces es necesario tener dos entornos consecutivos del mismo tipo.
- Por ejemplo, dos enumeraciones distintas:
+
+\lang english
+It is sometimes necessary to have two consecutive environments of the same
+ type.
+ For example you need two different enumerations:
 \end_layout
 
 \begin_layout Enumerate
-Hola
+
+\lang english
+Hello
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-esto es una
+
+\lang english
+this is an
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-enumeración (lista numerada)
+
+\lang english
+enumeration
 \end_layout
 
 \begin_layout --Separator--
@@ -10412,7 +10480,9 @@ enumeración (lista numerada)
 \end_layout
 
 \begin_layout Itemize
-enumeración* (lista sin numerar)
+
+\lang english
+itemize list
 \end_layout
 
 \end_deeper
@@ -10422,46 +10492,57 @@ enumeración* (lista sin numerar)
 \end_layout
 
 \begin_layout Enumerate
-Hola
+
+\lang english
+Hi
 \end_layout
 
 \begin_layout Enumerate
-esto es otra
+
+\lang english
+this is another
 \end_layout
 
 \begin_layout Enumerate
-enumeración
+
+\lang english
+enumeration
 \end_layout
 
 \begin_layout Standard
-Para indicar a LyX que hay dos listas y no una, pon el cursor al final del
- último ítem y usa el menú 
+
+\lang english
+To tell LyX that there are two lists an not one, set the cursor at the end
+ of the last item and use the menu 
 \family sans
-Editar\SpecialChar \menuseparator
-Iniciar nuevo entorno padre
+Edit\SpecialChar \menuseparator
+Start New Parent Environment
 \family default
 .
- Esto añade un separador de entornos y una nueva lista tras él.
- El menú 
+ This adds an environment separator and a new list behind it.
+ If you use instead the menu 
 \family sans
-Editar\SpecialChar \menuseparator
-Iniciar nuevo entorno
+Edit\SpecialChar \menuseparator
+Start New Environment
 \family default
- también crea una nueva lista pero en el mismo nivel de anidación.
+ a new list will also be created, but in the same besting level.
 \end_layout
 
 \begin_layout Standard
-Para dividir una lista existente en dos, pon el cursor al final de un ítem,
- pulsa la tecla 
+
+\lang english
+To split an existing list into two lists, set the cursor at the end of a
+ list item, press 
 \family sans
+\lang spanish
 Entrar
 \family default
- y selecciona 
+\lang english
+ and select 
 \family sans
---Separador--
+--Separator--
 \family default
- en el cuadro desplegable de entornos en la barra de herramientas principal
- de LyX.
+ in the pull-down box for environments in LyX's main toolbar.
 \end_layout
 
 \begin_layout Section
@@ -10677,19 +10758,19 @@ reference "sub:Abreviaturas"
 \end_layout
 
 \begin_layout Subsubsection
-Espacio fino
+Espacio delgado
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Espacio-fino"
+name "sub:Espacio-delgado"
 
 \end_inset
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Espacios ! Fino
+Espacios ! Delgado
 \end_layout
 
 \end_inset
@@ -10698,8 +10779,8 @@ Espacios ! Fino
 \end_layout
 
 \begin_layout Standard
-Un «espacio fino» es un espacio con la mitad de la longitud normal (y también
- es «protegido»).
+Un «espacio delgado» es un espacio con la mitad de la longitud normal (y
+ también es «protegido»).
  Las convenciones tipográficas en muchos idiomas proponen el uso de espacios
  menores en los casos en que un espacio normal resultaría demasiado amplio,
  por ejemplo en las abreviaturas:
@@ -10727,7 +10808,7 @@ O entre valores y unidades.
 \begin_inset space \thinspace{}
 \end_inset
 
-kg (espacio fino)
+kg (espacio delgado)
 \begin_inset Newline newline
 \end_inset
 
@@ -10735,7 +10816,7 @@ kg (espacio fino)
 \end_layout
 
 \begin_layout Standard
-Los espacios finos se insertan con el menú 
+Los espacios delgados se insertan con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Formato\SpecialChar \menuseparator
@@ -10743,7 +10824,7 @@ Espacio
 \begin_inset space ~
 \end_inset
 
-fino
+delgado
 \family default
  (atajo 
 \family sans
@@ -10765,11 +10846,11 @@ Espacio
 \begin_inset space ~
 \end_inset
 
-fino
+delgado
 \begin_inset space ~
 \end_inset
 
-negativo Espacio fino negativo 
+negativo Espacio delgado negativo 
 \begin_inset Formula $\rightarrow$
 \end_inset
 
@@ -10813,11 +10894,11 @@ Espacio
 \begin_inset space ~
 \end_inset
 
-ancho
+gordo
 \begin_inset space ~
 \end_inset
 
-negativo Espacio ancho negativo 
+negativo Espacio gordo negativo 
 \begin_inset Formula $\rightarrow$
 \end_inset
 
@@ -11072,7 +11153,7 @@ em
 \begin_inset Text
 
 \begin_layout Plain Layout
-Fino
+Delgado
 \end_layout
 
 \end_inset
@@ -11096,7 +11177,7 @@ em
 \begin_inset Text
 
 \begin_layout Plain Layout
-Fino negativo
+Delgado negativo
 \end_layout
 
 \end_inset
@@ -11152,7 +11233,7 @@ mu
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ancho negativo
+Gordo negativo
 \end_layout
 
 \end_inset
@@ -11488,7 +11569,7 @@ Espacios ! fantasma
 
 \begin_layout Standard
 A veces querrás insertar espacios con, exactamente, la longitud de una frase.
- P.ej., puedes crear la siguiente pregunta de elección múltiple:
+ P.e., puedes crear la siguiente pregunta de elección múltiple:
 \end_layout
 
 \begin_layout Standard
@@ -12571,8 +12652,11 @@ Tradicionalmente, LaTeX usa sus propias tipografías.
  Además, el rango de tipografías soportadas por el tradicional LaTeX ha
  ido aumentando considerablemente y se pueden encontrar paquetes para muchas
  tipografías libres y comerciales.
- LyX soporta las tipografías con licencia libre directamente en la interfaz
- de usuario, (véase la sección
+ LyX 
+\lang english
+supports the fonts that are under a free license
+\lang spanish
+ directamente en la interfaz de usuario, (véase la sección
 \begin_inset space ~
 \end_inset
 
@@ -12693,22 +12777,18 @@ Tipografías
  se puede especificar la tipografía a usar para cada forma ―romana (serif),
  
 \family sans
-palo seco (sans
+sans
 \begin_inset space ~
 \end_inset
 
-serif) 
+serif
 \family default
-y 
+ (palo seco) y 
 \family typewriter
 ancho fijo
 \family default
- 
-\family typewriter
-(typewriter)
-\family default
 ―, el tamaño base de la tipografía y factores de escala para determinadas
- tipografías palo seco y ancho fijo por si fuera necesario ajustarlas a
+ tipografías sans serif y ancho fijo por si fuera necesario ajustarlas a
  la tipografía romana.
 \end_layout
 
@@ -12790,7 +12870,7 @@ reference "sub:Soporte-de-tipografías-LaTeX"
  En ese caso no habrá acceso a las tipografías propias de TeX (la selección
  que se describe más abajo).
  Hay que señalar que LyX lista todas las tipografías disponibles en cualquiera
- de las tres listas (romana, palo seco y ancho fijo), puesto que LyX no
+ de las tres listas (romana, sans serif y ancho fijo), puesto que LyX no
  puede determinar la familia.
  Además, la salida podría fallar con algunas de las tipografías listadas,
  debido a la codificación o a fallos de las propias tipografías.
@@ -13107,7 +13187,7 @@ Palatino
 \family default
 .
  La mayoría de tipografías romanas vectoriales seleccionarán automáticamente
- las correspondientes tipografías palo seco (sans serif) y ancho fijo
+ las correspondientes tipografías sans serif y ancho fijo
 \begin_inset Foot
 status collapsed
 
@@ -13128,7 +13208,7 @@ Roman
 \family sans
 Helvetica
 \family default
- para palos seco), o diferentes formas de la misma letra, o sea, una 
+ para sans serif), o diferentes formas de la misma letra, o sea, una 
 \emph on
 familia
 \emph default
@@ -13172,7 +13252,11 @@ Las diferencias entre las tipografías romana
 \family default
  
 \family sans
-palo seco 
+sans
+\begin_inset space ~
+\end_inset
+
+serif 
 \family default
 y 
 \family typewriter
@@ -13280,7 +13364,7 @@ La selección
 Familia predeterminada
 \family default
  permite especificar si la tipografía base del documento debe ser romana,
- palo seco (sans serif) o ancho fijo.
+ sans serif o ancho fijo.
  La opción 
 \family sans
 Predeterminado
@@ -13464,15 +13548,20 @@ reference "sub:Tipografías-en-pantalla"
 \end_layout
 
 \begin_layout Subsection
-Tipografías para ecuaciones
+
+\lang english
+Math Fonts
 \end_layout
 
 \begin_layout Standard
-En LaTeX, la tipografía que se usa para los caracteres en las ecuaciones
- es diferente de la del texto normal.
- En caso de usar tipografías TeX para el documento, puedes elegir explícitamente
- una tipografía para ecuaciones en el diálogo 
+
+\lang english
+In LaTeX the font used for characters in equations is different from the
+ document font.
+ For the case that you use TeX fonts for your document, you can explicitly
+ choose a math font in the dialog 
 \family sans
+\lang spanish
 Documento\SpecialChar \menuseparator
 Configuración
 \family default
@@ -13487,9 +13576,11 @@ Documentos ! Configuración
 \end_inset
 
 .
- Por omisión, LyX selecciona una automáticamente.
- En la mayoría de los casos será la predeterminada por LaTeX: la variante
- para ecuaciones de la familia tipográfica 
+
+\lang english
+ The default setting is that LyX automatically selects a math font.
+ For most cases this will be LaTeX's default -- the math variant of LaTeX's
+ default font family 
 \begin_inset Quotes fld
 \end_inset
 
@@ -13506,57 +13597,65 @@ Modern
 \end_inset
 
 .
- LyX sólo cargará automáticamente otra tipografía para ecuaciones si la
- variante matemática de la tipografía del documento no está disponible.
+ LyX will automatically only load another math font if a math variant of
+ the document font is available.
 \end_layout
 
 \begin_layout Standard
-Hay que tener en cuenta que la tipografía para ecuaciones no se usará si
- en la ecuación se escribe en estilo 
+
+\lang english
+Note that the math font will not be used for 
 \emph on
-texto matemático normal
+mathematical text
 \emph default
- (atajo 
-\family sans
-Alt+C Espacio
-\family default
- o con el comando
-\family sans
- 
-\family default
+ (which is inserted with the shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "font-default"
+\end_inset
+
+ or by the insertion of the command 
 \series bold
 
 \backslash
 text
 \series default
- dentro de la ecuación).
- Además, como algunos tipos de letra para matemáticas son palo seco (sans
- serif), podría verse extraño que el texto del documento esté en tipo romano
- mientras que el de las ecuaciones no.
- Por tanto el tipo de letra palo seco en ecuaciones sólo tiene sentido si
- se selecciona también 
-\family sans
-Palo
+ into a formula).
+ Also note that some math fonts are sans
 \begin_inset space ~
 \end_inset
 
-seco
-\family default
- como 
-\family sans
-Familia
+serif.
+ Your document might therefore look strange when the document text has serifs
+ while the math characters do not.
+ Sans
 \begin_inset space ~
 \end_inset
 
-prederminada
+serif math fonts make therefore in most cases only sense if you select 
+\family sans
+Sans
+\begin_inset space ~
+\end_inset
+
+Serif
 \family default
- en la configuración del documento.
+ for the 
+\family sans
+Default
+\begin_inset space ~
+\end_inset
+
+family
+\family default
+ in the document font settings.
 \end_layout
 
 \begin_layout Standard
-Si usas tipografías no TeX, sólo puedes escoger la tipografía para ecuaciones
- el tipo de letra TeX predeterminada de la clase de documento (en la mayoría
- de los casos 
+
+\lang english
+If you use non-TeX fonts for the document, you can only choose for math
+ to use either the document's class default TeX font (in most cases 
 \begin_inset Quotes fld
 \end_inset
 
@@ -13572,8 +13671,8 @@ Modern
 \begin_inset Quotes frd
 \end_inset
 
-) o usar la variante no TeX de la tipografía predeterminada de la clase
- de documento (en la mayoría de los casos 
+) or to use the non-TeX variant of the document's class default font (in
+ most cases 
 \begin_inset Quotes fld
 \end_inset
 
@@ -13794,7 +13893,7 @@ Estilo del texto
 Siempre hay ocasiones en las que necesitas afinar el estilo del texto, por
  eso LyX permite crear estilos personalizados.
  Por ejemplo, una publicación académica o corporativa que tienen una hoja
- de estilo que requiere una letra palo seco (sans serif) en ciertas situaciones.
+ de estilo que requiere una letra sans serif en ciertas situaciones.
  También, escritores que a veces usan letra diferente para distinguir reflexione
 s del diálogo ordinario.
 \end_layout
@@ -13880,10 +13979,10 @@ Familia
 \family sans
 Romana
 \family default
- Esta es la familia de tipografías romanas.
- Normalmente se trata de tipos con remates (serif).
+ Esta es la familia de tipos romanos.
+ Normalmente una tipografía serif (con remates).
  Es la familia predeterminada.
- (Combinación 
+ (combinación 
 \family sans
 Alt+C
 \begin_inset space ~
@@ -13898,18 +13997,18 @@ R
 \labelwidthstring 00.00.0000
 
 \family sans
-Palo
+Sans
 \begin_inset space ~
 \end_inset
 
-seco
+Serif
 \family default
- Esta es la familia de tipos sin remates, (
+ Esta es la familia de tipografías 
 \family sans
 Sans Serif
 \family default
-).
- (Combinación 
+, (palo seco).
+ (combinación 
 \family sans
 Alt+C
 \begin_inset space ~
@@ -13924,26 +14023,14 @@ S
 \labelwidthstring 00.00.0000
 
 \family sans
-Ancho
-\begin_inset space ~
-\end_inset
-
-fijo
+Ancho fijo
 \family default
-Esta es la familia de tipos de 
+ Esta es la familia de tipografías de 
 \family typewriter
-Ancho fijo 
-\family default
-(
-\family typewriter
-Typewriter
-\family sans
-)
-\family typewriter
-.
+Ancho fijo.
 
 \family default
- (Combinación 
+ (combinación 
 \family sans
 Control+Mayúsculas+P)
 \end_layout
@@ -14908,19 +14995,11 @@ Aceptar
 
 \begin_layout Standard
 Deberías también saber un poco sobre las diferencias entre los tres tipos
- principales de tipografías: 
-\family sans
-romana 
-\family default
-(
+ principales de tipografías 
 \family sans
 serif
 \family default
-), 
-\family sans
-palo seco 
-\family default
-(
+, 
 \family sans
 sans
 \begin_inset space ~
@@ -14928,15 +15007,11 @@ sans
 
 serif
 \family default
-), y 
+, y 
 \family sans
 ancho fijo
 \family default
- (
-\family sans
-typewriter
-\family default
-):
+:
 \end_layout
 
 \begin_layout Itemize
@@ -15020,7 +15095,7 @@ sin texto en ancho fijo
 \begin_layout Itemize
 
 \family sans
-Romana
+Serif
 \family default
  son tipografías formadas por caracteres con pequeños 
 \begin_inset Quotes fld
@@ -15043,20 +15118,20 @@ remates
 \begin_inset Newline newline
 \end_inset
 
-texto con tipos romanos, con remates
+texto con letras serif, con remates
 \begin_inset Newline newline
 \end_inset
 
 
 \family sans
-texto con tipos no romanos, sin remates
+texto con letras no serif, sin remates
 \family default
 
 \begin_inset Newline newline
 \end_inset
 
-Los caracteres romanos facilitan una cómoda y ágil lectura.
- Por esto se usan como tipografía predeterminada (
+Los caracteres serif facilitan una cómoda y ágil lectura.
+ Por esto se usan como tipografía predeterminada (conocida por 
 \family sans
 roman
 \family default
@@ -15066,9 +15141,9 @@ a).
 \begin_layout Itemize
 Las tipografías 
 \family sans
-Palo seco
+Sans serif
 \family default
- (Sans serif) no tienen apéndices.
+ (palo seco) no tienen apéndices.
  Por eso este tipo de letra se suele usar para encabezados y textos cortos.
  En este documento la usamos para resaltar nombres de menú.
 \end_layout
@@ -15371,7 +15446,6 @@ Este tipo de archivo tiene extensión
  El archivo LaTeX se crea automáticamente en el directorio temporal de LyX
  siempre que veas (menú 
 \family sans
-Documento\SpecialChar \menuseparator
 Ver
 \family default
 ) o exportes el documento.
@@ -15880,11 +15954,13 @@ reference "sub:Soporte-de-tipografías-LaTeX"
 \end_layout
 
 \begin_layout Description
+
+\lang english
 PDF
 \begin_inset space ~
 \end_inset
 
-(recortado) Es como 
+(cropped) This is the same as 
 \family sans
 PDF
 \begin_inset space ~
@@ -15892,10 +15968,9 @@ PDF
 
 (pdflatex)
 \family default
- pero el resultado es un PDF con márgenes de página recortados.
- Esto es útil, por ejemplo, para generar ecuaciones con su magnífico aspecto
- en LyX y usarlas después en otros programas como pueden ser los de presentacion
-es.
+ but the result is a PDF with cropped page margins.
+ This is for example useful if you want to use LyX to generate good-looking
+ formulas to use them in other programs like for presentations.
 \end_layout
 
 \begin_layout Description
@@ -16099,10 +16174,9 @@ Documentos ! Vista preliminar
 Para echar un vistazo a tu documento, o ver su versión final con sus saltos
  de página, notas bien numeradas, y demás, usa el menú 
 \family sans
-Documento\SpecialChar \menuseparator
-Ver
+Documento
 \family default
- y elige el tipo de archivo o usa el botón 
+ y elige el tipo de archivo o el botón 
 \emph on
 
 \begin_inset Info
@@ -16921,12 +16995,12 @@ Espacio
 \begin_inset space ~
 \end_inset
 
-fino 
+delgado 
 \family default
 entre los caracteres abreviados (véase sección 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Espacio-fino"
+reference "sub:Espacio-delgado"
 
 \end_inset
 
@@ -16935,7 +17009,7 @@ reference "sub:Espacio-fino"
 status collapsed
 
 \begin_layout Plain Layout
-Espacios ! Fino
+Espacios ! Delgado
 \end_layout
 
 \end_inset
@@ -17763,7 +17837,7 @@ Espacio
 \begin_inset space ~
 \end_inset
 
-fino
+delgado
 \family default
  (atajo 
 \family sans
@@ -17885,7 +17959,11 @@ Sin duda, LyX puede impedir los saltos de página detrás de un encabezado
  deja una línea de un párrafo aislada al principio o al final de una página?
  LaTeX incorpora reglas que gobiernan los saltos de página, y algunas de
  ellas están pensadas precisamente para evitar las líneas viudas o huérfanas.
- Si aparecen de todas formas y no te gustan, para evitarlo añade los comandos
+ 
+\lang english
+If they appear nevertheless and you don't like them, you can add the commands
+\lang spanish
+
 \begin_inset Newline newline
 \end_inset
 
@@ -17905,7 +17983,11 @@ clubpenalty=10000
 \begin_inset Newline newline
 \end_inset
 
-en el preámbulo LaTeX del documento.
+
+\lang english
+to the LaTeX preamble of your document to avoid them
+\lang spanish
+.
  Algunos libros sobre LaTeX [como
 \begin_inset space ~
 \end_inset
@@ -17928,8 +18010,9 @@ key "latexguide"
 
 \end_inset
 
-] tienen más información sobre detalles técnicos del mecanismo de los saltos
- de línea en LaTeX.
+] tienen más información sobre 
+\lang english
+the technical details of LaTeX's page break mechanism.
 \end_layout
 
 \begin_layout Chapter
@@ -27235,10 +27318,10 @@ Indi@Índice general
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Panel del esquema
+Navegador de contorno
 \end_layout
 
 \end_inset
@@ -27268,38 +27351,26 @@ name "sub:Indice-general"
 El índice general (IG) se inserta con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Índices\SpecialChar \menuseparator
-General
+Índice\SpecialChar \menuseparator
+Índice
+\begin_inset space ~
+\end_inset
+
+general
 \family default
 .
  En LyX se muestra un cuadro gris.
  Si pulsas en él, aparece en una ventana lateral el 
 \family sans
-Panel
-\begin_inset space ~
-\end_inset
-
-del
-\begin_inset space ~
-\end_inset
-
-esquema
+Navegador de contorno
 \family default
  con las entradas del IG.
- Puedes ir a cualquier parte del documento pulsando su entrada y también
- puedes reorganizar las secciones.
+ Puedes ir a cualquier parte del documento pulsando su entrada y reorganizar
+ las secciones.
  Esta operación es una alternativa al menú 
 \family sans
 Ver\SpecialChar \menuseparator
-Panel
-\begin_inset space ~
-\end_inset
-
-del
-\begin_inset space ~
-\end_inset
-
-esquema
+Navegador de contorno
 \family default
 , como se describe en la sección
 \begin_inset space ~
@@ -27308,7 +27379,7 @@ esquema
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Panel-del-esquema"
+reference "sec:Navegación"
 
 \end_inset
 
@@ -27364,7 +27435,7 @@ Los índices de cuadros, figuras, listados de código y algoritmos son muy
 Insertar\SpecialChar \menuseparator
 Índice
 \family default
-s.
+.
  Las entradas del índice son el número del flotante correspondiente y su
  leyenda.
 \end_layout
@@ -27517,7 +27588,7 @@ En la salida PDF los enlaces se partirán con un guión si es necesario, y
  se puede hacer clic sobre ellos en las salidas DVI y PDF.
  Para cambiar el formato del texto selecciona el enlace insertado y usa
  el diálogo de estilo del texto.
- Este es un ejemplo de hiperenlace con texto en palo seco negrita: 
+ Este es un ejemplo de hiperenlace con texto en sans serif negrita: 
 \family sans
 \series bold
 
@@ -27950,7 +28021,7 @@ http://wiki.lyx.org/BibTeX/Programs
 Para usar una base de datos está el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Índices\SpecialChar \menuseparator
+Índice\SpecialChar \menuseparator
 Bibliografía
 \begin_inset space ~
 \end_inset
@@ -28262,7 +28333,7 @@ name "sec:Indice-alfabético"
 \end_layout
 
 \begin_layout Standard
-Para crear una entrada en el índice alfabético usa el menú 
+Para crear una entrada en el índice usa el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
 Entrada
@@ -28292,8 +28363,12 @@ arg   "index-insert"
 El índice alfabético se inserta en el documento con el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Índices\SpecialChar \menuseparator
-Alfabético
+Índice\SpecialChar \menuseparator
+Índice
+\begin_inset space ~
+\end_inset
+
+alfabético
 \family default
 .
  En LyX se muestra un cuadro azul claro con la etiqueta 
@@ -29257,7 +29332,7 @@ Una vez aplicados los cambios, encontrarás el nuevo índice definido en una
  nueva entrada en el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Índices
+Índice
 \family default
  y el menú 
 \family sans
@@ -29541,11 +29616,11 @@ textsf
 \series default
  pone el texto en estilo 
 \family sans
-palo
+sans
 \begin_inset space ~
 \end_inset
 
-seco
+serif
 \family default
 .
  Para estilo 
@@ -29898,7 +29973,7 @@ Nomenclatura ! Impresión
 Para imprimir la nomenclatura usa el menú 
 \family sans
 Insertar\SpecialChar \menuseparator
-Índices\SpecialChar \menuseparator
+Índice\SpecialChar \menuseparator
 Nomenclatura
 \family default
 .
@@ -32486,15 +32561,7 @@ Por otra parte, puedes ver el código LaTeX de todo el documento o de partes
  Con el menú 
 \family sans
 Ver\SpecialChar \menuseparator
-Panel
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-código
+Ver
 \begin_inset space ~
 \end_inset
 
@@ -34780,7 +34847,7 @@ DraftDVI formato DVI nativo de LaTeX.
 
 \begin_layout Description
 DVI formato DVI que permite el uso de caracteres especiales o espacios en
- rutas y nombres de archivo.
+ rutas y nombres de archivo
 \end_layout
 
 \begin_layout Description
@@ -34824,15 +34891,17 @@ Nota:
 \end_layout
 
 \begin_layout Description
+
+\lang english
 EPS
 \begin_inset space ~
 \end_inset
 
-(recortado) igual que 
+(cropped) the same as 
 \family sans
 PostScript
 \family default
- pero con márgenes de página recortados.
+ but with cropped page margins.
 \end_layout
 
 \begin_layout Description
@@ -34846,12 +34915,12 @@ Dot
 \family default
 , usado para dibujar gráficos mediante el programa 
 \family typewriter
-Graphviz.
+Graphviz
 \end_layout
 
 \begin_layout Description
 HTML formato HTML (el convertidor HTML es un programa externo que no siempre
- funciona).
+ funciona)
 \end_layout
 
 \begin_layout Description
@@ -34871,6 +34940,8 @@ MS Word
  formato 
 \family sans
 MathML
+\family default
+.
 \end_layout
 
 \begin_layout Description
@@ -34902,7 +34973,7 @@ status collapsed
 
 eX) archivo de texto con el código LaTeX compilable con el programa 
 \family typewriter
-LuaTeX.
+LuaTeX
 \end_layout
 
 \begin_layout Description
@@ -34930,7 +35001,7 @@ eX
 \family typewriter
 pdflatex
 \family default
- (GIF, JPG, PDF, PNG).
+ (GIF, JPG, PDF, PNG)
 \end_layout
 
 \begin_layout Description
@@ -34956,7 +35027,7 @@ eX
  archivo de texto en código LaTeX, y todas las imágenes del documento se
  convierten al formato EPS, único legible por el programa 
 \family typewriter
-latex.
+latex
 \end_layout
 
 \begin_layout Description
@@ -34988,7 +35059,7 @@ status collapsed
 
 eX) archivo de texto con el código LaTeX compilable con el programa 
 \family typewriter
-XeTeX.
+XeTeX
 \end_layout
 
 \begin_layout Description
@@ -35014,7 +35085,7 @@ status collapsed
 TeX) archivo de texto con el código LaTeX y además código en la sintaxis
  del software de notación musical
 \family typewriter
- LilyPond.
+ LilyPond
 \end_layout
 
 \begin_layout Description
@@ -35039,7 +35110,7 @@ Archivo
 
 (zip|tar.gz) crea un contenedor de archivos zip o tar.gz (dependiendo del
  sistema) con el documento y todos los archivos necesarios para compilarlo
- (imágenes, documentos hijo, archivos BibTeX, etc.).
+ (imágenes, documentos hijo, archivos BibTeX, etc.)
 \end_layout
 
 \begin_layout Description
@@ -35063,7 +35134,7 @@ yX
 \end_inset
 
 z.y.x documento LyX en formato legible para las versiones correspondientes
- de LyX («z.y.» es el número de versión).
+ de LyX («z.y.» es el número de versión)
 \end_layout
 
 \begin_layout Description
@@ -35082,7 +35153,7 @@ status collapsed
 
 
 \family default
-yXHTML formato HTML, usando un ingenio XHTML interno de LyX.
+yXHTML formato HTML, usando un ingenio XHTML interno de LyX
 \end_layout
 
 \begin_layout Description
@@ -35103,11 +35174,13 @@ LibreOffice, OpenOffice, KOffice, Abiword
 \end_layout
 
 \begin_layout Description
+
+\lang english
 PDF
 \begin_inset space ~
 \end_inset
 
-(cropped) igual que 
+(cropped) the same as 
 \family sans
 PDF
 \begin_inset space ~
@@ -35115,7 +35188,7 @@ PDF
 
 (pdflatex)
 \family default
- pero con márgenes de página recortados
+ but with cropped page margins.
 \end_layout
 
 \begin_layout Description
@@ -35131,7 +35204,7 @@ PDF
 \family typewriter
 dvipdfm
 \family default
-, produce internamente un archivo DVI que es convertido después a PDF.
+, produce internamente un archivo DVI que es convertido después a PDF
 \end_layout
 
 \begin_layout Description
@@ -35158,7 +35231,7 @@ eX) formato PDF usando el programa
 \family typewriter
 LuaTeX
 \family default
-, produce directamente archivos PDF.
+, produce directamente archivos PDF
 \end_layout
 
 \begin_layout Description
@@ -35174,7 +35247,7 @@ PDF
 \family typewriter
 pdflatex
 \family default
-, produce directamente archivos PDF.
+, produce directamente archivos PDF
 \end_layout
 
 \begin_layout Description
@@ -35191,7 +35264,7 @@ PDF
 ps2pdf
 \family default
 , produce internamente un archivo PostScript que es convertido después a
- PDF.
+ PDF
 \end_layout
 
 \begin_layout Description
@@ -35218,7 +35291,7 @@ eX) formato PDF usando el programa
 \family typewriter
 XeTeX
 \family default
-, produce directamente archivos PDF.
+, produce directamente archivos PDF
 \end_layout
 
 \begin_layout Description
@@ -35230,7 +35303,7 @@ Texto
 
 simple
 \family default
- formato de texto.
+ formato de texto
 \end_layout
 
 \begin_layout Description
@@ -35249,7 +35322,7 @@ simple
  formato de texto, el documento se convierte a Postscript y luego se exporta
  a texto con el programa 
 \family sans
-ps2ascii.
+ps2ascii
 \end_layout
 
 \begin_layout Description
@@ -35259,7 +35332,7 @@ Postscript
 \family default
  formato PostScript usando el programa 
 \family typewriter
-dvips.
+dvips
 \end_layout
 
 \begin_layout Description
@@ -35281,7 +35354,7 @@ Sweave
 \family typewriter
 R
 \family default
- en LaTeX.
+ en LaTeX
 \end_layout
 
 \begin_layout Standard
@@ -35663,24 +35736,33 @@ reference "sub:Profundidad-de-numeración"
 \end_layout
 
 \begin_layout Subsection
-Iniciar nuevo entorno/Iniciar nuevo entorno padre
+
+\family sans
+\lang english
+Start New Environment/Start New Parent Environment
 \end_layout
 
 \begin_layout Standard
-Estos menús sólo están visibles si es posible tener dos entornos consecutivos
- del mismo tipo.
- Véase la sección
+
+\lang english
+These menus are only visible if it is possible to have two consecutive environme
+nts of the same type.
+ See section
+\lang spanish
+
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Anidación-separada"
+reference "sub:Separate-Anidación"
 
 \end_inset
 
- para la descripción.
+ 
+\lang english
+for an explanation.
 \end_layout
 
 \begin_layout Section
@@ -35728,19 +35810,25 @@ Ecuaciones.
 \end_layout
 
 \begin_layout Subsection
-Panel del esquema
+Navegador de contorno
 \end_layout
 
 \begin_layout Standard
-Abre una ventana lateral para navegar por los índices; se describe en la
- sección
+Abre una ventana lateral para navegar por los índices descrita en las secciónes
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Panel-del-esquema"
+reference "sec:Navegación"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Indice-general"
 
 \end_inset
 
@@ -35748,7 +35836,7 @@ reference "sub:Panel-del-esquema"
 \end_layout
 
 \begin_layout Subsection
-Panel de código fuente
+Ver fuente
 \end_layout
 
 \begin_layout Standard
@@ -35768,14 +35856,14 @@ reference "sec:Vista-preliminar-inmediata"
 \end_layout
 
 \begin_layout Subsection
-Panel de mensajes
+Ver mensajes
 \end_layout
 
 \begin_layout Standard
 Abre una ventana en la que se muestran mensajes de consola.
  Esto es útil para operaciones de depuración (es decir, caza de errores)
  en LyX o para ver lo que sucede en segundo plano mientras LaTeX procesa
- el documento.
+ el documento,
 \end_layout
 
 \begin_layout Subsection
@@ -36067,7 +36155,7 @@ Comillas
 \begin_inset space ~
 \end_inset
 
-rectas Inserta estas comillas: ", independientemente del tipo de comillas
+dobles Inserta estas comillas: ", independientemente del tipo de comillas
  que hayas seleccionado en el diálogo 
 \family sans
 Documento\SpecialChar \menuseparator
@@ -36086,8 +36174,11 @@ Comillas
 \begin_inset space ~
 \end_inset
 
-simples Inserta una comilla en el estilo que hayas seleccionado en el diálogo
- 
+simples Inserta esta comilla: 
+\begin_inset Quotes frs
+\end_inset
+
+, con el tipo de comillas que hayas seleccionado en el diálogo 
 \family sans
 Documento\SpecialChar \menuseparator
 Configuración
@@ -36123,16 +36214,18 @@ frágil Inserta una barra oblicua donde también se puede producir un salto
 \end_layout
 
 \begin_layout Description
-Espacio
+
+\lang english
+Visible
 \begin_inset space ~
 \end_inset
 
-visible Inserta un carácter representando un espacio normal (el que se obtiene
- al pulsar la tecla 
+Space Inserts a character representing a single space (the one you get when
+ pressing the 
 \family sans
-Espacio
+Space
 \family default
-): 
+ key): 
 \begin_inset space \textvisiblespace{}
 \end_inset
 
@@ -36291,14 +36384,14 @@ Espacio
 \begin_inset space ~
 \end_inset
 
-fino Inserta un espacio fino, descrito en la sección
+delgado Inserta un espacio delgado, descrito en la sección
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Espacio-fino"
+reference "sub:Espacio-delgado"
 
 \end_inset
 
@@ -36560,7 +36653,7 @@ reference "sub:Salto-de-página-limpia"
 \end_layout
 
 \begin_layout Subsection
-Índices
+Índice
 \end_layout
 
 \begin_layout Standard
@@ -37046,20 +37139,24 @@ reference "sec:Notas-al-margen"
 \end_layout
 
 \begin_layout Subsection
-Título corto
+Título breve
 \end_layout
 
 \begin_layout Standard
-Sólo es visible si el cursor está en un encabezado de sección o en un título
- o leyenda de un flotante.
- Inserta un título corto; véase la sección
+
+\lang english
+Is only visible if the cursor is in front, in or behind a section heading,
+ title or caption of a float.
+
+\lang spanish
+ Inserta un título breve, véase la sección
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Títulos-cortos"
+reference "sec:Títulos-breves"
 
 \end_inset
 
@@ -37086,12 +37183,12 @@ reference "sub:Cuadros-TeX"
 \end_layout
 
 \begin_layout Subsection
-Listado de código
+Listado de programa
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Listado de código
+Listado de programa
 \end_layout
 
 \end_inset
@@ -37103,7 +37200,7 @@ Listado de código
 Inserta un cuadro para escribir código de programa.
  Se describe en el capítulo 
 \emph on
-Listado de código 
+Listado de programa 
 \emph default
 del manual 
 \emph on
@@ -37284,7 +37381,10 @@ Búsqueda directa
 Esta función permite ir directamente, en el documento de salida, a la parte
  correspondiente del documento en LyX; véase la sección 
 \emph on
-El servidor LyX\SpecialChar \menuseparator
+\lang english
+The LyX Server
+\lang spanish
+\SpecialChar \menuseparator
 Búsqueda directa
 \emph default
  en el manual 
@@ -39025,10 +39125,18 @@ arg   "dialog-toggle toc"
 \begin_inset Text
 
 \begin_layout Plain Layout
-Muestra/oculta el panel del esquema del documento, 
+Muestra/oculta la ventana del navegador, 
 \family sans
 Ver\SpecialChar \menuseparator
-Panel del esquema
+Navegador
+\begin_inset space ~
+\end_inset
+
+de
+\begin_inset space ~
+\end_inset
+
+contorno
 \end_layout
 
 \end_inset
@@ -39853,7 +39961,7 @@ arg   "math-macro newmacroname newcommand"
 
 \family sans
 Insertar\SpecialChar \menuseparator
-Ecuación\SpecialChar \menuseparator
+Ecuaciones\SpecialChar \menuseparator
 Macro
 \end_layout
 
@@ -40419,23 +40527,31 @@ Usar predeterminados de clase
 
 \begin_layout Standard
 Los submenús del diálogo se explican a continuación.
- Hay tantas opciones de configuración que encontrar la que se está buscando
- puede llevar su tiempo.
- Para encontrar rápidamente una determinada configuración puedes usar el
- campo de búsqueda que hay sobre los submenús del diálogo.
- Si escribes ahí 
-\begin_inset Quotes fld
+ 
+\lang english
+There are so many document settings available that it might take a while
+ to find the one you are looking for.
+ To find a setting quicker, you can use the search field which is above
+ the submenus of the dialog.
+ If you search e.
+\begin_inset space \thinspace{}
 \end_inset
 
-página
-\begin_inset Quotes frd
+g.
+\begin_inset space \space{}
 \end_inset
 
-, por ej., verás cómo algunos submenús se difuminan y deshabilitan, mientras
- que sólo quedan activos los submenús que afectan a la configuración de
- páginas.
- En dichos submenús se mostrarán en rojo las opciones relacionadas con el
- término buscado.
+for 
+\begin_inset Quotes eld
+\end_inset
+
+page
+\begin_inset Quotes erd
+\end_inset
+
+, you will see that some submenus will be grayed-out and disabled.
+ Only the submenus with page settings stay enabled.
+ The found page settings are labeled red in these submenus.
 \end_layout
 
 \begin_layout Section
@@ -40691,12 +40807,14 @@ También el espacio entre líneas y el número de columnas, pero ten en cuenta
 \end_layout
 
 \begin_layout Standard
-Con la opción 
+
+\lang english
+With the option 
 \family sans
-Usar justificación en el área de trabajo de LyX
+Use justification in LyX work area
 \family default
- puedes decidir justificar el texto en pantalla.
- Esto no afecta al texto en el documento de salida.
+ you can decide if LyX justifies the text on screen.
+ This only affects the text inside LyX not in the output.
 \end_layout
 
 \begin_layout Section
@@ -42167,22 +42285,29 @@ es necesario para numerosas estructuras; si recibes mensajes de error en
 \end_layout
 
 \begin_layout Description
-amssymb es necesario para ciertos símbolos matemáticos como letras griegas
- verticales o en negrita, de modo que que si aparecen errores LaTeX en ecuacione
-s, hay que activar esta opción.
+
+\lang english
+amssymb is needed for some special math symbols like bold or upright Greek
+ letters, so when you get LaTeX-errors in formulas, ensure that you have
+ this enabled.
 \end_layout
 
 \begin_layout Description
-cancel se usa para expresiones matemáticas canceladas; véase la sección
- 
+
+\lang english
+cancel is used for canceled formulas, see section 
 \emph on
-Ecuaciones canceladas 
+Canceled
+\begin_inset space ~
+\end_inset
+
+Formulas
 \emph default
-en el manual 
+ of the 
 \emph on
-Ecuaciones
+Math
 \emph default
-.
+ manual.
 \end_layout
 
 \begin_layout Description
@@ -42206,7 +42331,9 @@ Ecuaciones.
 \end_layout
 
 \begin_layout Description
-mathtools se usa para los comandos 
+
+\lang english
+mathtools is used for the math commands 
 \series bold
 
 \backslash
@@ -42242,10 +42369,11 @@ splitfrac
 \backslash
 shortintertext
 \series default
- y flechas etiquetadas; véanse las secciones correspondientes en el manual
- 
+ and labeled arrows, see the corresponding sections in the 
 \emph on
-Ecuaciones.
+Math
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Description
@@ -42259,39 +42387,49 @@ Ecuaciones.
 \end_layout
 
 \begin_layout Description
-stackrel se usa para el comando 
+
+\lang english
+stackrel is used for the math command 
 \series bold
 
 \backslash
 stackrel
 \series default
-, véase la sección 
+, see section 
 \emph on
-Relaciones
+Relations 
 \emph default
- en el manual 
+of the 
 \emph on
-Ecuaciones.
+Math
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Description
-stmaryrd se usa para algunos símbolos matemáticos especiales.
+
+\lang english
+stmaryrd is used for a few special math symbols.
 \end_layout
 
 \begin_layout Description
-undertilde se usa para el comando 
+
+\lang english
+undertilde is used for the math command 
 \series bold
 
 \backslash
 utilde
 \series default
-; véase la sección 
+, see section 
 \emph on
-Acentos para un carácter
+Accents for one Character 
 \emph default
- en el manual 
+of the 
 \emph on
-Ecuaciones.
+Math
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Section
@@ -42311,13 +42449,13 @@ Objetos insertados
 \end_layout
 
 \begin_layout Section
-Listado de código
+Listado de programa
 \end_layout
 
 \begin_layout Standard
 La configuración de listados se explica en el capítulo 
 \emph on
-Listado de código
+Listado de programa
 \emph default
  del manual 
 \emph on
@@ -42946,7 +43084,9 @@ target "http://wiki.lyx.org/uploads/LyX/NewInLyX20/themes.png"
 \end_layout
 
 \begin_layout Subsubsection
-Ayuda contextual
+
+\lang english
+Context help
 \end_layout
 
 \begin_layout Standard
@@ -42959,7 +43099,9 @@ Habilitar los recuadros emergentes en el área de trabajo principal
 \end_layout
 
 \begin_layout Subsubsection
-Menús
+
+\lang english
+Menus
 \end_layout
 
 \begin_layout Standard
@@ -42978,11 +43120,15 @@ reciente.
 \end_layout
 
 \begin_layout Subsection
-Gestión de documentos
+
+\lang english
+Document Handling
 \end_layout
 
 \begin_layout Subsubsection
-Gestión de sesión
+
+\lang english
+Session handling
 \end_layout
 
 \begin_layout Standard
@@ -43022,7 +43168,11 @@ Limpiar la información de todas las sesiones
 \end_layout
 
 \begin_layout Subsubsection
-Copias de seguridad y guardar
+
+\lang english
+Backup & saving
+\lang spanish
+
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Copias-de-seguridad"
@@ -43097,7 +43247,9 @@ Guardar los documentos comprimidos por omisión
 \end_layout
 
 \begin_layout Subsubsection
-Ventanas y áreas de trabago
+
+\lang english
+Windows & work area
 \end_layout
 
 \begin_layout Standard
@@ -43176,20 +43328,22 @@ Nota:
 \end_layout
 
 \begin_layout Standard
-En la opción 
+
+\lang english
+With the setting 
 \family sans
-Cerrar última vista
+Closing last view
 \family default
- puedes escoger si cerrar u ocultar un documento cuando su pestaña o vista
- se cierra.
- Los documentos ocultos son accesibles mediante el menú 
+ you one can decide if a document is closed or hidden when its tab or view
+ is closed.
+ Hidden documents are accessible via the menu 
 \family sans
-Ver\SpecialChar \menuseparator
-Oculto
+View\SpecialChar \menuseparator
+Hidden
 \family default
 .
- No cerrar los documentos puede ser útil si abres archivos paralelos en
- varias ventanas de LyX y sólo quieres ocultar la vista en una ventana.
+ Not to close documents can be useful if you open files parallel in several
+ instances of LyX and only want to close the view in once instance.
 \end_layout
 
 \begin_layout Subsection
@@ -43259,11 +43413,11 @@ Arial
 \family typewriter
 Helvetica
 \family default
- (depende del sistema) como tipografía palo seco (sans serif), y 
+ (depende del sistema) como tipografía sans serif, y 
 \family typewriter
 Courier
 \family default
- como tipo ancho fijo(typewriter).
+ como tipo máquina de escribir.
 \end_layout
 
 \begin_layout Standard
@@ -44569,20 +44723,17 @@ predeterminado Define el símbolo por omisión para separar decimales en cuadros
 \end_layout
 
 \begin_layout Description
-Unidad
+
+\lang english
+Default
 \begin_inset space ~
 \end_inset
 
-de
+length
 \begin_inset space ~
 \end_inset
 
-longitud
-\begin_inset space ~
-\end_inset
-
-predeterminada Define la unidad que se usa por omisión para las longitudes
- en los diálogos de LyX.
+unit Defines the unit that is used as default for lengths in LyX's dialogs.
 \end_layout
 
 \begin_layout Description
@@ -45494,15 +45645,7 @@ Copiadores
 
 \begin_layout Standard
 Aquí está la lista de los formatos de archivo que LyX puede manejar.
- Puedes modificar los programas 
-\family sans
-Visor
-\family default
- y 
-\family sans
-Editor
-\family default
- para determinados formatos.
+ Puedes modificar los programas visor y editor para determinados formatos.
 \end_layout
 
 \begin_layout Standard

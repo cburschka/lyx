@@ -422,7 +422,7 @@ void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 	// FIXME UNICODE
 	docstring const cite_str = from_utf8(citationStyleToString(cs));
 
-	if (runparams.inulemcmd)
+	if (runparams.inulemcmd > 0)
 		os << "\\mbox{";
 
 	os << "\\" << cite_str;

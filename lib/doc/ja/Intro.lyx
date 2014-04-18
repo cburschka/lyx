@@ -61,8 +61,8 @@ EndPreamble
 End
 \end_local_layout
 \language japanese
-\language_package auto
-\inputencoding auto
+\language_package default
+\inputencoding utf8-platex
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -86,7 +86,7 @@ End
 \pdf_author "LyX Team"
 \pdf_subject "LyX-documentation Intro"
 \pdf_keywords "LyX, documentation"
-\pdf_bookmarks false
+\pdf_bookmarks true
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 2
@@ -650,7 +650,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 texorpdfstring{
 \end_layout
@@ -662,7 +661,6 @@ LyX
 status collapsed
 
 \begin_layout Plain Layout
-
 }{LyX}
 \end_layout
 

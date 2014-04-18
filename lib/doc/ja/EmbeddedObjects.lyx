@@ -237,7 +237,7 @@ End
 \pdf_author "LyX Team, Uwe Stohr"
 \pdf_subject "LyX-documentation about figures, tables, floats, notes, and boxes"
 \pdf_keywords "LyX, Tables, Figures, Floats, Boxes, Notes"
-\pdf_bookmarks false
+\pdf_bookmarks true
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
@@ -247,8 +247,8 @@ End
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options " linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true,  pdfstartview=XYZ, plainpages=false, pdfpagelabels"
-\papersize default
-\use_geometry false
+\papersize a4paper
+\use_geometry true
 \use_package amsmath 2
 \use_package amssymb 2
 \use_package cancel 0
@@ -1709,66 +1709,31 @@ status collapsed
 
 \begin_layout Standard
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-表を右クリックすると、文脈依存メニューが表示されて、表を変更することができます。メニュー項目
+\lang english
+You can alter a table by clicking on it with the right mouse button, which
+ brings up the context menu.
+ Under the menu entry 
 \family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-詳細
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-以下では、現在カーソルが置かれているセルないし行・列の設定を調節することができます。文脈依存メニュー
-\family sans
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-詳細\SpecialChar \menuseparator
-設定
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-を選ぶと、ダイアログボックスが開いて、更に詳細な設定を行うことができます。また、ダイアログオプションのほとんどは、選択範囲に対しても動作します。つまり、複数のセ
-ルや行・列を選択していれば、操作は選択範囲の全てに対して行われます。
+More
 \family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
-セルの
+ you can adjust the settings of that cell and row/column respectively where
+ the cursor is currently placed.
+ The context menu 
+\family sans
+More\SpecialChar \menuseparator
+Settings
+\family default
+ opens the table dialog where you can adjust more things.
+ Most of the dialog options also work on selections.
+ This means if you select more cells, columns or rows, the action is done
+ for the whole selection.
+ Note that there is a difference between selecting the 
 \emph on
-内容
+contents
 \emph default
-を選択するのと、セル自体を選択するのは異なることに注意して下さい。
+ of the cell, and the cell itself.
+\lang japanese
+
 \begin_inset Newline newline
 \end_inset
 
@@ -2173,7 +2138,9 @@ type  "icon"
 arg   "inset-modify tabular move-row-up"
 \end_inset
 
- は、行を上に移動します。
+
+\lang english
+ moves the row up
 \end_layout
 
 \begin_layout Labeling
@@ -2183,7 +2150,9 @@ type  "icon"
 arg   "inset-modify tabular move-column-left"
 \end_inset
 
- は、列を左に移動します。
+
+\lang english
+ moves the column to the left
 \end_layout
 
 \begin_layout Labeling
@@ -2193,7 +2162,9 @@ type  "icon"
 arg   "inset-modify tabular move-row-down"
 \end_inset
 
- は、行を下に移動します。
+
+\lang english
+ moves the row down
 \end_layout
 
 \begin_layout Labeling
@@ -2203,7 +2174,9 @@ type  "icon"
 arg   "inset-modify tabular move-column-right"
 \end_inset
 
- は、列を右に移動します。
+
+\lang english
+ moves the column to the right
 \end_layout
 
 \begin_layout Labeling
@@ -16561,40 +16534,40 @@ definecolor{色彩名}{色彩モデル}{色彩値}
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-cmyk： シアン(
+cmyk： シアン（
 \bar under
 c
 \bar default
-yan)・マゼンタ(
+yan）・マゼンタ（
 \bar under
 m
 \bar default
-agenta)・黄(
+agenta）・黄（
 \bar under
 y
 \bar default
-ellow)・黒(blac
+ellow）・黒（blac
 \bar under
 k
 \bar default
-)
+）
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-rgb： 赤(
+rgb： 赤（
 \bar under
 r
 \bar default
-ed)・緑(
+ed）・緑（
 \bar under
 g
 \bar default
-reen)・青(
+reen）・青（
 \bar under
 b
 \bar default
-lue)
+lue）
 \end_layout
 
 \begin_layout Labeling
@@ -19795,7 +19768,7 @@ reference "tab:表セル"
 
 の小数点のように、同一列の各セルの内容が、特定の文字で揃えられた方が見栄えの良いことがあります。この揃え方は、当該列にカーソルを置いて、ツールバーボタン
 \begin_inset Graphics
-	filename ../../images/tabular-feature_align-decimal.png
+	filename ../../trunk/lib/images/tabular-feature_align-decimal.png
 	scale 85
 	scaleBeforeRotation
 
@@ -23092,7 +23065,7 @@ reference "sec:キャプションの配置"
 節に述べられています。また、LyX文書を読みやすくするために、ボックスラベルを左クリックすれば、フロートボックスを広げたり畳んだりすることができるようになってい
 ます。畳んだフロートボックスは、
 \begin_inset Graphics
-	filename clipart/floatQt4.png
+	filename ../../trunk/lib/doc/ja/clipart/floatQt4.png
 	scale 70
 	scaleBeforeRotation
 
@@ -34757,7 +34730,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -34823,7 +34796,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -34904,7 +34877,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -34970,7 +34943,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -35008,7 +34981,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -35113,7 +35086,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -35175,7 +35148,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -35271,7 +35244,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -35366,7 +35339,7 @@ reference "sec:折返しフロート"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../images/dialog-show-new-inset_graphics.png
+	filename ../../trunk/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -36202,7 +36175,7 @@ target "http://en.wikipedia.org/wiki/XBoard"
 の書式で日付を挿入します。右は、外部素材として挿入された日付です：
 \begin_inset External
 	template Date
-	filename ../../trunk/lib/trunk/lib/doc/ja
+	filename ../../trunk/lib/doc/ja
 
 \end_inset
 
@@ -37490,24 +37463,6 @@ status open
 \begin_inset Newline newline
 \end_inset
 
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-【訳註】
-\series default
-これは、pLaTeXではうまく動作しません。
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
 以下は、左側の行番号・行間「3」・言語「Python」・「拡張文字コード表を使う」オプション・「空白を記号で表示」オプション・行範囲「3
 \begin_inset space \thinspace{}
 \end_inset
@@ -38615,7 +38570,7 @@ Postscript
 \family default
 メニューかツールバーボタン
 \begin_inset Graphics
-	filename ../../images/buffer-view_ps.png
+	filename ../../trunk/lib/images/buffer-view_ps.png
 	scale 85
 	scaleBeforeRotation
 
@@ -38759,7 +38714,7 @@ dvipdfm
 \family default
 メニューかツールバーボタン
 \begin_inset Graphics
-	filename ../../images/buffer-view_pdf2.png
+	filename ../../trunk/lib/images/buffer-view_pdf2.png
 	scale 85
 	scaleBeforeRotation
 
