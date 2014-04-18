@@ -13,8 +13,8 @@
 % the documentation team
 % email: lyx-docs@lists.lyx.org
 
-\ifnum 42146=\euc"A4A2 \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}\else
-\AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}\fi
+\IfFileExists{pxjahyper.sty}
+{\usepackage{pxjahyper}}
 
 % if pdflatex is used
 \usepackage{ifpdf}
@@ -93,7 +93,7 @@ End
 \end_local_layout
 \language japanese
 \language_package default
-\inputencoding jis-platex
+\inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -113,11 +113,11 @@ End
 \paperfontsize 12
 \spacing single
 \use_hyperref true
-\pdf_title "LyX拡張機能篇"
-\pdf_author "LyXプロジェクトチーム"
-\pdf_subject "LyX拡張機能取扱説明書"
-\pdf_keywords "LyX、取扱説明書、文書化、拡張"
-\pdf_bookmarks true
+\pdf_title "LyX's Additional Features manual"
+\pdf_author "LyX Team"
+\pdf_subject "LyX's additional features documentation"
+\pdf_keywords "LyX, Documentation, Additional"
+\pdf_bookmarks false
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
@@ -126,7 +126,7 @@ End
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\pdf_quoted_options "pdfencoding=pdfdoc, linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
 \use_package amsmath 1
@@ -8726,157 +8726,157 @@ aasguide.tex
 \backslash
 documentclass
 \family default
-(2.1.1)・
+ (2.1.1)・
 \family typewriter
 
 \backslash
 begin{document}
 \family default
-(2.2)・
+ (2.2)・
 \family typewriter
 
 \backslash
 title
 \family default
-(2.3)・
+ (2.3)・
 \family typewriter
 
 \backslash
 author
 \family default
-(2.3)・
+ (2.3)・
 \family typewriter
 
 \backslash
 affil
 \family default
-(2.3)・
+ (2.3)・
 \family typewriter
 
 \backslash
 abstract
 \family default
-(2.4)・
+ (2.4)・
 \family typewriter
 
 \backslash
 keywords
 \family default
-(2.5)・
+ (2.5)・
 \family typewriter
 
 \backslash
 section
 \family default
-(2.7)・
+ (2.7)・
 \family typewriter
 
 \backslash
 subsection
 \family default
-(2.7)・
+ (2.7)・
 \family typewriter
 
 \backslash
 subsubsection
 \family default
-(2.7)・
+ (2.7)・
 \family typewriter
 
 \backslash
 paragraph
 \family default
-(2.7)・
+ (2.7)・
 \family typewriter
 
 \backslash
 facility
 \family default
-(2.10)・
+ (2.10)・
 \family typewriter
 
 \backslash
 begin{displaymath}
 \family default
-(2.12)・
+ (2.12)・
 \family typewriter
 
 \backslash
 begin{equation}
 \family default
-(2.12)・
+ (2.12)・
 \family typewriter
 
 \backslash
 begin{eqnarray}
 \family default
-(2.12)・
+ (2.12)・
 \family typewriter
 
 \backslash
 begin{mathletters}
 \family default
-(2.12)・
+ (2.12)・
 \family typewriter
 
 \backslash
 begin{thebibliography}
 \family default
-(2.13.1)・
+ (2.13.1)・
 \family typewriter
 
 \backslash
 bibitem
 \family default
-(2.13.2)・全引用コマンドとその派生(2.13.2)・一般的なgraphicx図コマンド(2.14.1)・
+ (2.13.2)・全引用コマンドとその派生(2.13.2)・一般的なgraphicx図コマンド(2.14.1)・
 \family typewriter
 
 \backslash
 begin{table}
 \family default
-(2.15.4)・
+ (2.15.4)・
 \family typewriter
 
 \backslash
 begin{tabular}
 \family default
-(2.15.4)・
+ (2.15.4)・
 \family typewriter
 
 \backslash
 caption
 \family default
-(2.15.4)・
+ (2.15.4)・
 \family typewriter
 
 \backslash
 label
 \family default
-(他にもあるが特に2.15.4)・
+ (他にもあるが特に2.15.4)・
 \family typewriter
 
 \backslash
 tablerefs
 \family default
-(2.15.5)・
+ (2.15.5)・
 \family typewriter
 
 \backslash
 tablecomments
 \family default
-(2.15.5)・
+ (2.15.5)・
 \family typewriter
 
 \backslash
 url
 \family default
-(2.17.4)・
+ (2.17.4)・
 \family typewriter
 
 \backslash
 end{document}
 \family default
-(2.18)。
+ (2.18)。
 \end_layout
 
 \begin_layout Standard
@@ -8884,23 +8884,23 @@ end{document}
 \family typewriter
 longabstract
 \family default
-(2.4)・
+ (2.4)・
 \family typewriter
 preprint
 \family default
-(3.2.1)・
+ (3.2.1)・
 \family typewriter
 preprint2
 \family default
-(3.2.2)・
+ (3.2.2)・
 \family typewriter
 eqsecnum
 \family default
-(3.3)・
+ (3.3)・
 \family typewriter
 flushrt
 \family default
-(3.4)。これらは、
+ (3.4)。これらは、
 \begin_inset Flex MenuItem
 status collapsed
 
