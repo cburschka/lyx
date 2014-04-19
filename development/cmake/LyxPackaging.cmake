@@ -17,12 +17,12 @@ endif()
 # (Ignores the top project)
 if(APPLE)
 	# true on all systems whre __APPLE__ is defined in header files
-	set(CPACK_PACKAGE_NAME LyX)
+	set(CPACK_PACKAGE_NAME "LyX${LYX_MAJOR_VERSION}${LYX_MINOR_VERSION}")
 elseif(UNIX)
 	# True also for cygwin
-	set(CPACK_PACKAGE_NAME lyx)
+	set(CPACK_PACKAGE_NAME "lyx${LYX_MAJOR_VERSION}${LYX_MINOR_VERSION}")
 else()
-	set(CPACK_PACKAGE_NAME LyX)
+	set(CPACK_PACKAGE_NAME "LyX${LYX_MAJOR_VERSION}${LYX_MINOR_VERSION}")
 endif()
 
 set(CPACK_PACKAGE_VERSION_MAJOR "${LYX_MAJOR_VERSION}")
