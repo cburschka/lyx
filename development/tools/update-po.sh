@@ -23,7 +23,7 @@ done
 
 if [ -z "$FARM" ]; then
   echo "You must set the FARM variable to run this script, e.g.:";
-  echo "# FARM=/cvs/lyx-www/ bash check-po.sh";
+  echo "# FARM=/cvs/lyx-www/ bash update-po.sh";
   exit 1;
 fi
 
@@ -102,7 +102,7 @@ if [ -z "$COMMIT" ]; then
   exit 0;
 fi
 
-$DEBUG git commit *.po -m "Remerge strings.";
+$DEBUG git commit *.po *.gmo -m "Remerge strings.";
 COMMITS=$(git push -n 2>&1 | tail -n 1 | grep -v "Everything" | sed -e 's/^ *//' -e 's/ .*//');
 
 if [ -z "$COMMITS" ]; then
