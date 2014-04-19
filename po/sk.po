@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-04-13 19:22+0200\n"
+"POT-Creation-Date: 2014-04-19 08:43+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -3070,13 +3070,15 @@ msgstr ""
 msgid "s popup d&elay"
 msgstr "Sek. - zdržať pre v&yťahovacie menu"
 
-#: src/frontends/qt4/ui/PrefCompletionUi.ui:233
-msgid "."
-msgstr "."
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:234
+msgid ""
+"Words with less than the specified number of characters will not be "
+"completed."
+msgstr "Slová kratšie ako zadané dľžkou sa nebudú doplňovať."
 
-#: src/frontends/qt4/ui/PrefCompletionUi.ui:249
-msgid "Minimum word length for completion"
-msgstr "Minimálna dĺžka slova pre doplňovanie"
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:250
+msgid "Minimum characters for words that should be completed"
+msgstr "Minimálny počet písmen pre doplňovanie slov"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:274
 msgid ""
@@ -12720,8 +12722,8 @@ msgstr "Algorithm2e"
 
 #: lib/layouts/algorithm2e.module:6
 msgid ""
-"Use the algorithm2e package for algorithm floats rather then LyX's home-"
-"brewn algorithm floats."
+"Use the algorithm2e package for algorithm floats rather than LyX's home-"
+"brewed algorithm floats."
 msgstr ""
 "Použiť balík algorithm2e pre plávajúce algoritmy namiesto LyXovej samohonky "
 "plávajúcich algoritmov."
@@ -27469,6 +27471,15 @@ msgstr "Žiadne informácie pre import formátu %1$s."
 msgid "Select %1$s file to import"
 msgstr "Vyberte súbor %1$s na import"
 
+#: src/frontends/qt4/GuiView.cpp:2121
+#, c-format
+msgid ""
+"The file name '%1$s' is invalid!\n"
+"Aborting import."
+msgstr ""
+"Meno súboru '%1$s' je neplatné!\n"
+"Ruším import."
+
 #: src/frontends/qt4/GuiView.cpp:2136 src/frontends/qt4/GuiView.cpp:2322
 #: src/frontends/qt4/GuiView.cpp:2436
 #, c-format
@@ -29587,6 +29598,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "."
+#~ msgstr "."
+
+#~ msgid "Minimum word length for completion"
+#~ msgstr "Minimálna dĺžka slova pre doplňovanie"
 
 #~ msgid "Syriac"
 #~ msgstr "Syriac (stredoveká hebrejčina)"
@@ -32345,3 +32362,10 @@ msgstr "Neznámy používateľ"
 #~ "Skratka `%1$s' je už viazaná k:\n"
 #~ "%2$s\n"
 #~ "Pred vytvorením novej musíte túto väzbu zmazať."
+
+#~ msgid ""
+#~ "Use the algorithm2e package for algorithm floats rather then LyX's home-"
+#~ "brewn algorithm floats."
+#~ msgstr ""
+#~ "Použiť balík algorithm2e pre plávajúce algoritmy namiesto LyXovej samohonky "
+#~ "plávajúcich algoritmov."
