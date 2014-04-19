@@ -83,7 +83,11 @@ ${LangFileString} ModifyingConfigureFailed "configureスクリプト中で'path_prefix'
 ${LangFileString} RunConfigureFailed "configureスクリプトを実行することができませんでした"
 ${LangFileString} NotAdmin "LyXを導入するには、管理者権限を持っていなくてはなりません！"
 ${LangFileString} InstallRunning "導入プログラムは既に動作中です！"
-${LangFileString} StillInstalled "LyX${APP_SERIES_KEY2}は既に導入済みです！先にLyXの導入を解除してください。"
+${LangFileString} AlreadyInstalled "LyX${APP_SERIES_KEY2}は既に導入済みです！$\r$\n\
+				Installing over existing installations is not recommended if the installed version$\r$\n\
+				is a test release or if you have problems with your existing LyX installation.$\r$\n\
+				In these cases better reinstall LyX.$\r$\n\
+				Dou you nevertheles want to install LyX over the existing version?。"
 ${LangFileString} NewerInstalled "あなたは、既に導入済みのLyXよりも古い版を導入しようとしています。$\r$\n\
 				  本当にそうしたいのであれば、既存の LyX $OldVersionNumber をまず導入解除してください。"
 

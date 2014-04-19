@@ -83,7 +83,11 @@ ${LangFileString} ModifyingConfigureFailed 'Der $\"PATH_präfix$\" (Liste mit Pro
 #${LangFileString} RunConfigureFailed "Konnte das Konfigurationsskript nicht ausführen."
 ${LangFileString} NotAdmin "Sie benötigen Administratorrechte um LyX zu installieren!"
 ${LangFileString} InstallRunning "Der Installer läuft bereits!"
-${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} ist bereits installiert! Deinstallieren Sie LyX zuerst."
+${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} ist bereits installiert!$\r$\n\
+				Das Installieren über bestehende Installationen ist nicht empfohlen, wenn die installierte Version$\r$\n\
+				eine Testversion ist oder wenn es Probleme mit der bestehenden LyX-Installation gibt.$\r$\n\
+				Besser Sie deinstallieren in diesen Fällen LyX zuerst.$\r$\n\
+				Wollen Sie LyX dennoch über die bestehende Version installieren?"
 ${LangFileString} NewerInstalled "Sie versuchen eine Vesion von LyX zu installieren, die älter als die derzeit installierte ist.$\r$\n\
 				  Wenn Sie das wirklich wollen, müssen Sie erst das existierende LyX $OldVersionNumber deinstallieren."
 

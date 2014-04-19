@@ -77,7 +77,11 @@ ${LangFileString} ModifyingConfigureFailed "No es pot establir 'path_prefix' dur
 ${LangFileString} RunConfigureFailed "No es pot executar el programa de configuració"
 ${LangFileString} NotAdmin "Necessiteu drets d'administrador per instal·lar el LyX!"
 ${LangFileString} InstallRunning "L'instal·lador ja s'està executant!"
-${LangFileString} StillInstalled "El LyX ${APP_SERIES_KEY2} ja es troba instal·lat! Desinstal·leu-lo primer."
+${LangFileString} AlreadyInstalled "El LyX ${APP_SERIES_KEY2} ja es troba instal·lat!$\r$\n\
+				Installing over existing installations is not recommended if the installed version$\r$\n\
+				is a test release or if you have problems with your existing LyX installation.$\r$\n\
+				In these cases better reinstall LyX.$\r$\n\
+				Dou you nevertheles want to install LyX over the existing version?"
 ${LangFileString} NewerInstalled "You are trying to install an older version of LyX than what you have installed.$\r$\n\
 				  If you really want this, you must uninstall the existing LyX $OldVersionNumber before."
 

@@ -77,7 +77,11 @@ ${LangFileString} ModifyingConfigureFailed "Mislukte poging om 'path_prefix' te 
 ${LangFileString} RunConfigureFailed "Mislukte configuratie poging"
 ${LangFileString} NotAdmin "U heeft systeem-beheerrechten nodig om LyX te installeren!"
 ${LangFileString} InstallRunning "Het installatieprogramma is al gestart!"
-${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} is reeds geinstalleerd! Verwijder LyX eerst."
+${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} is reeds geinstalleerd!$\r$\n\
+				Installing over existing installations is not recommended if the installed version$\r$\n\
+				is a test release or if you have problems with your existing LyX installation.$\r$\n\
+				In these cases better reinstall LyX.$\r$\n\
+				Dou you nevertheles want to install LyX over the existing version?"
 ${LangFileString} NewerInstalled "You are trying to install an older version of LyX than what you have installed.$\r$\n\
 				  If you really want this, you must uninstall the existing LyX $OldVersionNumber before."
 

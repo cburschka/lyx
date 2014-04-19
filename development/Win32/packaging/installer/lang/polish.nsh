@@ -77,7 +77,11 @@ ${LangFileString} ModifyingConfigureFailed "Nieudana próba ustawienia zmiennej '
 ${LangFileString} RunConfigureFailed "Niedana próba wykonania skryptu konfiguracyjnego"
 ${LangFileString} NotAdmin "Musisz mieæ prawa administratora aby zainstalowaæ LyX$\'a!"
 ${LangFileString} InstallRunning "Instalator jest ju¿ uruchomiony!"
-${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} jest ju¿ zainstalowany! Aby kontynowaæ musisz go najpierw usun¹æ."
+${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} jest ju¿ zainstalowany!$\r$\n\
+				Installing over existing installations is not recommended if the installed version$\r$\n\
+				is a test release or if you have problems with your existing LyX installation.$\r$\n\
+				In these cases better reinstall LyX.$\r$\n\
+				Dou you nevertheles want to install LyX over the existing version?"
 ${LangFileString} NewerInstalled "Próbujesz zainstalowaæ starsz¹ wersjê LyX, ni¿ ta która jest ju¿ zainstalowana.$\r$\n\
 				  Je¿eli naprawdê chcesz tego dokonaæ, musisz wpierw odinstalowaæ LyX $OldVersionNumber."
 

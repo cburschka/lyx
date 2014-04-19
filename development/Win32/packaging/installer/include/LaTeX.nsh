@@ -306,6 +306,11 @@ Function ConfigureMiKTeX
    SetRegView 32
   ${endif}
   ${if} $MiKTeXUser == "HKCU" # if only for current user
+   # if AutoInstall is set to "0" we can assume that this was set purposly since the default is "1"
+   ReadRegStr $2 HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall"
+   ${if} $2 == "0"
+    Goto NoAutoInstall
+   ${endif}
    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1"
    ReadRegStr $1 HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository"
    ${if} $1 == ""
@@ -313,6 +318,11 @@ Function ConfigureMiKTeX
     WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RepositoryType" "remote"
    ${endif}
   ${else}
+   # if AutoInstall is set to "0" we can assume that this was set purposly since the default is "1"
+   ReadRegStr $2 HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall"
+   ${if} $2 == "0"
+    Goto NoAutoInstall
+   ${endif}
    WriteRegStr HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoInstall" "1"
    ReadRegStr $1 HKLM "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "RemoteRepository"
    ${if} $1 == ""
@@ -322,6 +332,7 @@ Function ConfigureMiKTeX
    # we need to state that missing packages should be installed for all users too
    WriteRegStr HKCU "SOFTWARE\MiKTeX.org\MiKTeX\$MiKTeXVersion\MPM" "AutoAdmin" "t"
   ${endif}
+  NoAutoInstall:
   
   # update MiKTeX's package file list
   ExecWait '$PathLaTeX\mpm.exe --update-fndb'

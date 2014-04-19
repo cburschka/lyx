@@ -83,7 +83,11 @@ ${LangFileString} ModifyingConfigureFailed "Forsøket på å stille inn 'path_prefi
 ${LangFileString} RunConfigureFailed "Fikk ikke kjørt konfigurasjonsscriptet"
 ${LangFileString} NotAdmin "Du trenger administratorrettigheter for å installere LyX!"
 ${LangFileString} InstallRunning "Installasjonsprogrammet er allerede i gang!"
-${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} er allerede installert! Fjern LyX først."
+${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} er allerede installert!$\r$\n\
+				Installing over existing installations is not recommended if the installed version$\r$\n\
+				is a test release or if you have problems with your existing LyX installation.$\r$\n\
+				In these cases better reinstall LyX.$\r$\n\
+				Dou you nevertheles want to install LyX over the existing version?"
 ${LangFileString} NewerInstalled "Du prøver å installere en eldre versjon av Lyx enn den du har installert fra før.$\r$\n\
 				  Dersom du ønsker dette må du avinstallere LyX $OldVersionNumber først."
 

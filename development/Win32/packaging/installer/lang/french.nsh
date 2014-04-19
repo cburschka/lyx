@@ -83,7 +83,11 @@ ${LangFileString} ModifyingConfigureFailed "Échec de l$\'allocation 'path_prefix
 ${LangFileString} RunConfigureFailed "Échec de la tentative de configuration initiale de LyX."
 ${LangFileString} NotAdmin "Vous devez avoir les droits d$\'administration pour installer LyX !"
 ${LangFileString} InstallRunning "Le programme d$\'installation est toujours en cours !"
-${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} est déjà installé ! Le désinstaller d'abord."
+${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} est déjà installé !$\r$\n\
+				Installing over existing installations is not recommended if the installed version$\r$\n\
+				is a test release or if you have problems with your existing LyX installation.$\r$\n\
+				In these cases better reinstall LyX.$\r$\n\
+				Dou you nevertheles want to install LyX over the existing version ?"
 ${LangFileString} NewerInstalled "Vous essayez d$\'installer une version de LyX plus ancienne que celle qui est déjà installée.$\r$\n\
 				  Si c$\'est ce qu vous voulez, vous devez d$\'abord désinstaller LyX $OldVersionNumber."
 

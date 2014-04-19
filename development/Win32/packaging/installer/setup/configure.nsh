@@ -55,8 +55,8 @@ Section -InstallData
   WriteRegDWORD SHCTX ${APP_UNINST_KEY} "NoRepair" 0x00000001
   WriteRegStr SHCTX ${APP_UNINST_KEY} "StartMenu" "$SMPROGRAMS\$StartmenuFolder"
   
-  # if we install over an existing version, remove the old uninstaller information
-  ${if} $OldVersionNumber != ""
+  # if we install over an older existing version, remove the old uninstaller information
+  ${if} $OldVersionNumber < ${APP_SERIES_KEY}
    DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}$OldVersionNumber"
    # also delete in the case of an emergency release
    DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}$OldVersionNumber1"

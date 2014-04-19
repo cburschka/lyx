@@ -635,8 +635,13 @@ Function .onInit
    ${endif}
   ${endif}
   ${if} $0 != ""
-   MessageBox MB_OK|MB_ICONSTOP "$(StillInstalled)" /SD IDOK
+   # installing over an existing installation of the same LyX release is not necessary
+   # if the users does this he most probably has a problem with LyX that can better be solved
+   # by reinstalling LyX
+   # for beta and other test releases over-installing can even cause errors
+   MessageBox MB_YESNO|MB_DEFBUTTON2|MB_ICONEXCLAMATION "$(AlreadyInstalled)" /SD IDNO IDYES ForceInstallation 
    Abort
+   ForceInstallation:
   ${endif}
   
   # check if there is an existing LyX installation of the same LyX series

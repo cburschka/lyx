@@ -83,7 +83,11 @@ ${LangFileString} MiKTeXInfo 'LaTeX-en $\"MiKTeX$\" banaketa LyX-ekin batera era
 ${LangFileString} ModifyingConfigureFailed "Ezin izan da 'path_prefix' ezarri konfigurazioaren script-ean"
 #${LangFileString} RunConfigureFailed "Ezin izan da konfigurazioaren script-a exekutatu"
 ${LangFileString} InstallRunning "Instalatzailea jadanik exekutatzen ari da."
-${LangFileString} StillInstalled "LyX ${APP_SERIES_KEY2} jadanik instalatuta dago. Aurrenik LyX desinstalatu."
+${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} jadanik instalatuta dago!$\r$\n\
+				Installing over existing installations is not recommended if the installed version$\r$\n\
+				is a test release or if you have problems with your existing LyX installation.$\r$\n\
+				In these cases better reinstall LyX.$\r$\n\
+				Dou you nevertheles want to install LyX over the existing version?"
 ${LangFileString} NewerInstalled "Instalatuta dagoen LyX baino bertsio zaharragoa instalatzen saiatzen ari zara.$\r$\n\
 				  Hori egitea nahi baduzu, lehenbizi existitzen den LyX $OldVersionNumber desinstalatu beharko duzu."
 

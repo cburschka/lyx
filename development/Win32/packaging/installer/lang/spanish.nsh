@@ -83,7 +83,11 @@ ${LangFileString} ModifyingConfigureFailed "Error al intentar añadir 'path_prefi
 ${LangFileString} RunConfigureFailed "Error al intentar ejecutar el programa de configuración"
 ${LangFileString} NotAdmin "Necesita privilegios de administrador para instalar LyX!"
 ${LangFileString} InstallRunning "El instalador ya esta siendo ejecutado!"
-${LangFileString} StillInstalled "¡LyX ${APP_SERIES_KEY2} ya esta instalado! Antes desinstale LyX."
+${LangFileString} AlreadyInstalled "¡LyX ${APP_SERIES_KEY2} ya esta instalado!$\r$\n\
+				Installing over existing installations is not recommended if the installed version$\r$\n\
+				is a test release or if you have problems with your existing LyX installation.$\r$\n\
+				In these cases better reinstall LyX.$\r$\n\
+				Dou you nevertheles want to install LyX over the existing version?"
 ${LangFileString} NewerInstalled "Está tratando de instalar una versión de LyX más antigua que la que tiene instalada.$\r$\n\
 				  Si realmente lo desea, debe desinstalar antes la versión de LyX instalada $OldVersionNumber."
 

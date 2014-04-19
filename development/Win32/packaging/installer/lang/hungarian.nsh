@@ -83,7 +83,11 @@ ${LangFileString} ModifyingConfigureFailed "Nem tudom beállítani a 'path_prefix'
 ${LangFileString} RunConfigureFailed "Nem tudom végrehajtani a configure parancsfájlt!"
 ${LangFileString} NotAdmin "A LyX telepítéséhez rendszergazdai jogok szükségesek!"
 ${LangFileString} InstallRunning "A telepítõ már fut!"
-${LangFileString} StillInstalled "A LyX ${APP_SERIES_KEY2} már teleptve van! Elõször távolítsa el a régit."
+${LangFileString} AlreadyInstalled "A LyX ${APP_SERIES_KEY2} már teleptve van!$\r$\n\
+				Installing over existing installations is not recommended if the installed version$\r$\n\
+				is a test release or if you have problems with your existing LyX installation.$\r$\n\
+				In these cases better reinstall LyX.$\r$\n\
+				Dou you nevertheles want to install LyX over the existing version?"
 ${LangFileString} NewerInstalled "A jelenleg telepítettnél régebbi LyX verziót próbál telepíteni.$\r$\n\
 				  Ha valóban ezt akarja, elõször el kell távolítania a meglévõ LyX $OldVersionNumber változatot."
 
