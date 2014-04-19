@@ -236,7 +236,7 @@ void closeAllLinkBackLinks()
 	[linkBackClient release];
 	linkBackClient = nil;
 	
-	[pool release];
+	[pool drain];
 	pool = nil;
 }
 
