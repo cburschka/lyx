@@ -708,7 +708,7 @@ check_layout_SOURCES = \
 	Spacing.cpp \
 	TextClass.cpp \
 	tests/check_layout.cpp \
-	support/tests/boost.cpp \
-	support/tests/dummy_functions.cpp
+	tests/boost.cpp \
+	tests/dummy_functions.cpp
 
 .PHONY: alltests alltests-recursive updatetests
