@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-04-21 12:11-0400\n"
+"POT-Creation-Date: 2014-04-21 19:31+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -335,9 +335,8 @@ msgid "The LaTeX command that ends a switch to a foreign language"
 msgstr "LaTeXovský príkaz na zakončenie zmeny jazyka"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:135
-#, fuzzy
 msgid "Default decimal &separator:"
-msgstr "Štandardný Decimálny &Oddeľovač:"
+msgstr "Štandardný decimálny &oddeľovač:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:161
 msgid "Default length &unit:"
@@ -3171,11 +3170,11 @@ msgstr "Sek. - zdržať pre v&yťahovacie menu"
 msgid ""
 "Words with less than the specified number of characters will not be "
 "completed."
-msgstr ""
+msgstr "Slová kratšie ako zadané dľžkou sa nebudú doplňovať."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:250
 msgid "Minimum characters for words that should be completed"
-msgstr ""
+msgstr "Minimálny počet písmen pre doplňovanie slov"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:275
 msgid ""
@@ -13278,7 +13277,6 @@ msgid "Algorithm2e"
 msgstr "Algorithm2e"
 
 #: lib/layouts/algorithm2e.module:6
-#, fuzzy
 msgid ""
 "Use the algorithm2e package for algorithm floats rather than LyX's home-"
 "brewed algorithm floats."
@@ -27479,6 +27477,8 @@ msgid ""
 "The file name '%1$s' is invalid!\n"
 "Aborting import."
 msgstr ""
+"Meno súboru '%1$s' je neplatné!\n"
+"Ruším import."
 
 #: src/frontends/qt4/GuiView.cpp:2154 src/frontends/qt4/GuiView.cpp:2340
 #: src/frontends/qt4/GuiView.cpp:2454
