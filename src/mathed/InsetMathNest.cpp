@@ -1771,7 +1771,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 			// but suppress direct insertion of two spaces in a row
 			// the still allows typing  '<space>a<space>' and deleting the 'a', but
 			// it is better than nothing...
-			if (!cur.pos() != 0 || cur.prevAtom()->getChar() != ' ') {
+			if (cur.pos() == 0 || cur.prevAtom()->getChar() != ' ') {
 				cur.insert(c);
 				// FIXME: we have to enable full redraw here because of the
 				// visual box corners that define the inset. If we know for

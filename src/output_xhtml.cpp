@@ -742,35 +742,15 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 	// curtag is now the one we actually want.
 	os_ << curtag->writeEndTag();
 	tag_stack_.pop_back();
-	
+
 	return *this;
 }
 
 // End code for XHTMLStream
 
 namespace {
-	
+
 // convenience functions
-
-inline void openTag(XHTMLStream & xs, Layout const & lay)
-{
-	xs << html::StartTag(lay.htmltag(), lay.htmlattr());
-}
-
-
-void openTag(XHTMLStream & xs, Layout const & lay, 
-             ParagraphParameters const & params)
-{
-	// FIXME Are there other things we should handle here?
-	string const align = alignmentToCSS(params.align());
-	if (align.empty()) {
-		openTag(xs, lay);
-		return;
-	}
-	string attrs = lay.htmlattr() + " style='text-align: " + align + ";'";
-	xs << html::StartTag(lay.htmltag(), attrs);
-}
-
 
 inline void openParTag(XHTMLStream & xs, Layout const & lay,
                        std::string parlabel)

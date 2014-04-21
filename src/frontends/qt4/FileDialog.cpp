@@ -55,8 +55,8 @@ public:
 };
 
 
-FileDialog::FileDialog(QString const & t, FuncCode s)
-	: private_(new FileDialog::Private), title_(t), success_(s)
+FileDialog::FileDialog(QString const & t)
+	: private_(new FileDialog::Private), title_(t)
 {}
 
 

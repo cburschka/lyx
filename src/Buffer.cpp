@@ -58,7 +58,6 @@
 #include "SpellChecker.h"
 #include "sgml.h"
 #include "TexRow.h"
-#include "TexStream.h"
 #include "Text.h"
 #include "TextClass.h"
 #include "TocBackend.h"
@@ -1555,7 +1554,6 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 	if (!openFileWrite(ofs, fname))
 		return false;
 
-	//TexStream ts(ofs.rdbuf(), &texrow());
 	ErrorList & errorList = d->errorLists["Export"];
 	errorList.clear();
 	bool failed_export = false;

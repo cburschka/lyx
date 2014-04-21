@@ -328,7 +328,7 @@ int InsetQuotes::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-docstring InsetQuotes::xhtml(XHTMLStream & xs, OutputParams const & op) const
+docstring InsetQuotes::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
 	xs << XHTMLStream::ESCAPE_NONE << getQuoteEntity();
 	return docstring();

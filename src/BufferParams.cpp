@@ -88,11 +88,6 @@ static char const * const string_orientation[] = {
 };
 
 
-static char const * const string_footnotekinds[] = {
-	"footnote", "margin", "fig", "tab", "alg", "wide-fig", "wide-tab", ""
-};
-
-
 static char const * const tex_graphics[] = {
 	"default", "dvialw", "dvilaser", "dvipdf", "dvipdfm", "dvipdfmx",
 	"dvips", "dvipsone", "dvitops", "dviwin", "dviwindo", "dvi2ps", "emtex",

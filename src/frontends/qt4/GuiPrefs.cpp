@@ -112,7 +112,7 @@ QString browseFile(QString const & filename,
 	else if(!fallback_dir.isEmpty())
 		lastPath = fallback_dir;
 
-	FileDialog dlg(title, LFUN_SELECT_FILE_SYNC);
+	FileDialog dlg(title);
 	dlg.setButton2(label1, dir1);
 	dlg.setButton2(label2, dir2);
 
@@ -183,7 +183,7 @@ QString browseDir(QString const & pathname,
 	if (!pathname.isEmpty())
 		lastPath = onlyPath(pathname);
 
-	FileDialog dlg(title, LFUN_SELECT_FILE_SYNC);
+	FileDialog dlg(title);
 	dlg.setButton1(label1, dir1);
 	dlg.setButton2(label2, dir2);
 

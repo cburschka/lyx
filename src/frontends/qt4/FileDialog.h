@@ -13,8 +13,6 @@
 #ifndef FILEDIALOG_H
 #define FILEDIALOG_H
 
-#include "FuncCode.h"
-
 #include <QString>
 
 #include <utility>
@@ -42,16 +40,12 @@ public:
 
 	/**
 	 * Constructs a file dialog with title \param title.
-	 * If \param a is \const LFUN_SELECT_FILE_SYNC then a value
-	 * will be returned immediately upon performing a open(),
-	 * otherwise a callback Dispatch() will be invoked with the filename as
-	 * argument, of action \param a.
 	 *
 	 * Up to two optional extra buttons are allowed for specifying
 	 * additional directories in the navigation (an empty
 	 * directory is interpreted as FileName::getcwd())
 	 */
-	FileDialog(QString const & title, FuncCode a = LFUN_SELECT_FILE_SYNC);
+	FileDialog(QString const & title);
 
 	~FileDialog();
 
@@ -83,8 +77,6 @@ private:
 	/// the dialog title
 	QString title_;
 
-	/// success action to perform if not synchronous
-	FuncCode success_;
 };
 
 } // namespace lyx

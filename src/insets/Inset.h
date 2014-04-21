@@ -263,10 +263,6 @@ public:
 	virtual row_type row(idx_type) const { return 0; }
 	/// cell index corresponding to row and column;
 	virtual idx_type index(row_type row, col_type col) const;
-	/// any additional x-offset when drawing a cell?
-	virtual int cellXOffset(idx_type) const { return 0; }
-	/// any additional y-offset when drawing a cell?
-	virtual int cellYOffset(idx_type) const { return 0; }
 	/// number of embedded cells
 	virtual size_t nargs() const { return 0; }
 	/// number of rows in gridlike structures
