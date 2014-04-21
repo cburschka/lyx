@@ -1,79 +1,21 @@
 # Hebrew docs do not currently work with LuaTeX
-export/doc/he/Intro_pdf5_systemF
-export/doc/he/Intro_pdf5_texF
-export/doc/he/Intro_dvi3_systemF
-export/doc/he/Intro_dvi3_texF
-export/doc/he/Tutorial_pdf5_systemF
-export/doc/he/Tutorial_pdf5_texF
-export/doc/he/Tutorial_dvi3_systemF
-export/doc/he/Tutorial_dvi3_texF
-export/examples/he/example_lyxified_pdf5_systemF
-export/examples/he/example_lyxified_pdf5_texF
-export/examples/he/example_lyxified_dvi3_systemF
-export/examples/he/example_lyxified_dvi3_texF
-export/examples/he/example_raw_pdf5_systemF
-export/examples/he/example_raw_pdf5_texF
-export/examples/he/example_raw_dvi3_systemF
-export/examples/he/example_raw_dvi3_texF
-export/examples/he/splash_pdf5_systemF
-export/examples/he/splash_pdf5_texF
-export/examples/he/splash_dvi3_systemF
-export/examples/he/splash_dvi3_texF
+export/.*/he/.*(pdf5|dvi3)_.*
 #
 # FIXME
 # After LyX 2.1 is released, apply the patch and remove these
 # See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
-export/doc/id/Intro_pdf5_systemF
-export/doc/id/Intro_pdf5_texF
-export/doc/id/Intro_dvi3_systemF
-export/doc/id/Intro_dvi3_texF
-export/doc/id/Shortcuts_pdf5_systemF
-export/doc/id/Shortcuts_pdf5_texF
-export/doc/id/Shortcuts_dvi3_systemF
-export/doc/id/Shortcuts_dvi3_texF
-export/doc/id/Tutorial_pdf5_systemF
-export/doc/id/Tutorial_pdf5_texF
-export/doc/id/Tutorial_dvi3_systemF
-export/doc/id/Tutorial_dvi3_texF
-export/doc/id/UserGuide_pdf5_systemF
-export/doc/id/UserGuide_pdf5_texF
-export/doc/id/UserGuide_dvi3_systemF
-export/doc/id/UserGuide_dvi3_texF
-export/examples/id/splash_pdf5_systemF
-export/examples/id/splash_pdf5_texF
-export/examples/id/splash_dvi3_systemF
-export/examples/id/splash_dvi3_texF
+export/.*/id/.*(pdf5|dvi3)_.*
 #
 # FIXME
 # Similar to the Indonesian support, see:
 # http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
-export/doc/hu/Intro_pdf5_systemF
-export/doc/hu/Intro_pdf5_texF
-export/doc/hu/Intro_dvi3_systemF
-export/doc/hu/Intro_dvi3_texF
-export/examples/hu/example_lyxified_pdf5_systemF
-export/examples/hu/example_lyxified_pdf5_texF
-export/examples/hu/example_lyxified_dvi3_systemF
-export/examples/hu/example_lyxified_dvi3_texF
-export/examples/hu/example_raw_pdf5_systemF
-export/examples/hu/example_raw_pdf5_texF
-export/examples/hu/example_raw_dvi3_systemF
-export/examples/hu/example_raw_dvi3_texF
-export/examples/hu/splash_pdf5_systemF
-export/examples/hu/splash_pdf5_texF
-export/examples/hu/splash_dvi3_systemF
-export/examples/hu/splash_dvi3_texF
+export/.*/hu/.*(pdf5|dvi3)_.*
 #
 # Export with XeTeX and LuaTeX (with either non-tex fonts or 8-bit
 # compatibility mode) does not work because the loading of inputenc with
 # utf8x is hardcoded in europecv.cls at the time of this writing. See:
 # http://comments.gmane.org/gmane.editors.lyx.devel/145896
-export/examples/es/europeCV_pdf4_systemF
-export/examples/es/europeCV_pdf4_texF
-export/examples/es/europeCV_pdf5_systemF
-export/examples/es/europeCV_pdf5_texF
-export/examples/es/europeCV_dvi3_systemF
-export/examples/es/europeCV_dvi3_texF
+export/.*/es/europeCV_(pdf[45]|dvi3)_.*
 #
 # somehow lualatex is not able to compile with non-tex fonts
 export/doc/es/Math_dvi3_systemF
@@ -178,12 +120,7 @@ export/doc/ru/Tutorial_dvi3_texF
 export/doc/ru/Tutorial_pdf5_texF
 #
 # There is no Chinese LuaTeX or XeTeX TeX font support yet.
-export/doc/zh_CN/Intro_dvi3_texF
-export/doc/zh_CN/Intro_pdf4_texF
-export/doc/zh_CN/Intro_pdf5_texF
-export/doc/zh_CN/Tutorial_dvi3_texF
-export/doc/zh_CN/Tutorial_pdf4_texF
-export/doc/zh_CN/Tutorial_pdf5_texF
+export/.*/zh_CN/.*(pdf[45]|dvi3)_texF
 export/templates/ctex_pdf4_texF
 #
 # These started failing after we implemented tests for formats
@@ -191,92 +128,8 @@ export/templates/ctex_pdf4_texF
 # TODO it might be worth it to take a look at each individually and
 # see whether they are supposed to fail or if there is something LyX
 # can do to add support for exporting them.
-export/doc/hu/Tutorial_dvi3_texF
-export/doc/hu/Tutorial_dvi3_systemF
-export/doc/ja/Additional_dvi3_texF
-export/doc/ja/Additional_dvi3_systemF
-export/doc/ja/Additional_pdf2
-export/doc/ja/Additional_pdf4_texF
-export/doc/ja/Additional_pdf4_systemF
-export/doc/ja/Additional_pdf5_texF
-export/doc/ja/Additional_pdf5_systemF
-export/doc/ja/Customization_dvi3_texF
-export/doc/ja/Customization_dvi3_systemF
-export/doc/ja/Customization_pdf2
-export/doc/ja/Customization_pdf4_texF
-export/doc/ja/Customization_pdf4_systemF
-export/doc/ja/Customization_pdf5_texF
-export/doc/ja/Customization_pdf5_systemF
-export/doc/ja/DummyDocument1_dvi3_texF
-export/doc/ja/DummyDocument1_dvi3_systemF
-export/doc/ja/DummyDocument1_pdf2
-export/doc/ja/DummyDocument1_pdf4_texF
-export/doc/ja/DummyDocument1_pdf4_systemF
-export/doc/ja/DummyDocument1_pdf5_texF
-export/doc/ja/DummyDocument1_pdf5_systemF
-export/doc/ja/DummyDocument2_dvi3_texF
-export/doc/ja/DummyDocument2_dvi3_systemF
-export/doc/ja/DummyDocument2_pdf2
-export/doc/ja/DummyDocument2_pdf4_texF
-export/doc/ja/DummyDocument2_pdf4_systemF
-export/doc/ja/DummyDocument2_pdf5_texF
-export/doc/ja/DummyDocument2_pdf5_systemF
-export/doc/ja/EmbeddedObjects_dvi3_texF
-export/doc/ja/EmbeddedObjects_dvi3_systemF
-export/doc/ja/EmbeddedObjects_pdf2
-export/doc/ja/EmbeddedObjects_pdf4_texF
-export/doc/ja/EmbeddedObjects_pdf4_systemF
-export/doc/ja/EmbeddedObjects_pdf5_texF
-export/doc/ja/EmbeddedObjects_pdf5_systemF
-export/doc/ja/Formula-numbering_dvi3_texF
-export/doc/ja/Formula-numbering_dvi3_systemF
-export/doc/ja/Formula-numbering_pdf2
-export/doc/ja/Formula-numbering_pdf4_texF
-export/doc/ja/Formula-numbering_pdf4_systemF
-export/doc/ja/Formula-numbering_pdf5_texF
-export/doc/ja/Formula-numbering_pdf5_systemF
-export/doc/ja/Intro_dvi3_texF
-export/doc/ja/Intro_dvi3_systemF
-export/doc/ja/Intro_pdf2
-export/doc/ja/Intro_pdf4_texF
-export/doc/ja/Intro_pdf4_systemF
-export/doc/ja/Intro_pdf5_texF
-export/doc/ja/Intro_pdf5_systemF
-export/doc/ja/LaTeXConfig_dvi3_texF
-export/doc/ja/LaTeXConfig_dvi3_systemF
-export/doc/ja/LaTeXConfig_pdf2
-export/doc/ja/LaTeXConfig_pdf4_texF
-export/doc/ja/LaTeXConfig_pdf4_systemF
-export/doc/ja/LaTeXConfig_pdf5_texF
-export/doc/ja/LaTeXConfig_pdf5_systemF
-export/doc/ja/Math_dvi3_texF
-export/doc/ja/Math_dvi3_systemF
-export/doc/ja/Math_pdf2
-export/doc/ja/Math_pdf4_texF
-export/doc/ja/Math_pdf4_systemF
-export/doc/ja/Math_pdf5_texF
-export/doc/ja/Math_pdf5_systemF
-export/doc/ja/Shortcuts_dvi3_texF
-export/doc/ja/Shortcuts_dvi3_systemF
-export/doc/ja/Shortcuts_pdf2
-export/doc/ja/Shortcuts_pdf4_texF
-export/doc/ja/Shortcuts_pdf4_systemF
-export/doc/ja/Shortcuts_pdf5_texF
-export/doc/ja/Shortcuts_pdf5_systemF
-export/doc/ja/Tutorial_dvi3_texF
-export/doc/ja/Tutorial_dvi3_systemF
-export/doc/ja/Tutorial_pdf2
-export/doc/ja/Tutorial_pdf4_texF
-export/doc/ja/Tutorial_pdf4_systemF
-export/doc/ja/Tutorial_pdf5_texF
-export/doc/ja/Tutorial_pdf5_systemF
-export/doc/ja/UserGuide_dvi3_texF
-export/doc/ja/UserGuide_dvi3_systemF
-export/doc/ja/UserGuide_pdf2
-export/doc/ja/UserGuide_pdf4_texF
-export/doc/ja/UserGuide_pdf4_systemF
-export/doc/ja/UserGuide_pdf5_texF
-export/doc/ja/UserGuide_pdf5_systemF
+export/doc/hu/Tutorial_dvi3_.*F
+export/doc/ja/.*_(pdf[245]|dvi3).*
 export/examples/chess-article_pdf2
 export/examples/chess-article_pdf5_texF
 export/examples/chess-article_pdf5_systemF
