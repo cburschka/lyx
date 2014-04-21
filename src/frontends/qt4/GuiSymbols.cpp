@@ -199,7 +199,7 @@ class GuiSymbols::Model : public QAbstractItemModel
 {
 public:
 	Model(GuiSymbols * parent)
-		: QAbstractItemModel(parent), parent_(parent)
+		: QAbstractItemModel(parent)
 	{}
 
 	QModelIndex index(int row, int column, QModelIndex const &) const
@@ -257,8 +257,7 @@ public:
 
 private:
 	friend class GuiSymbols;
-	GuiSymbols * parent_;
-	
+
 	QList<char_type> symbols_;
 };
 

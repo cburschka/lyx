@@ -65,22 +65,6 @@ namespace lyx {
 
 namespace {
 
-bool positionable(DocIterator const & cursor, DocIterator const & anchor)
-{
-	// avoid deeper nested insets when selecting
-	if (cursor.depth() > anchor.depth())
-		return false;
-
-	// anchor might be deeper, should have same path then
-	for (size_t i = 0; i < cursor.depth(); ++i)
-		if (&cursor[i].inset() != &anchor[i].inset())
-			return false;
-
-	// position should be ok.
-	return true;
-}
-
-
 // Find position closest to (x, y) in cell given by iter.
 // Used only in mathed
 DocIterator bruteFind2(Cursor const & c, int x, int y)

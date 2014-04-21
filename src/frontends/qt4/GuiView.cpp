@@ -1952,7 +1952,7 @@ void GuiView::openDocument(string const & fname)
 	string filename;
 
 	if (fname.empty()) {
-		FileDialog dlg(qt_("Select document to open"), LFUN_FILE_OPEN);
+		FileDialog dlg(qt_("Select document to open"));
 		dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 		dlg.setButton2(qt_("Examples|#E#e"),
 				toqstr(addPath(package().system_support().absFileName(), "examples")));
@@ -2091,7 +2091,7 @@ void GuiView::importDocument(string const & argument)
 		docstring const text = bformat(_("Select %1$s file to import"),
 			formats.prettyName(format));
 
-		FileDialog dlg(toqstr(text), LFUN_BUFFER_IMPORT);
+		FileDialog dlg(toqstr(text));
 		dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 		dlg.setButton2(qt_("Examples|#E#e"),
 			toqstr(addPath(package().system_support().absFileName(), "examples")));
@@ -2225,7 +2225,7 @@ void GuiView::insertLyXFile(docstring const & fname)
 			initpath = trypath;
 
 		// FIXME UNICODE
-		FileDialog dlg(qt_("Select LyX document to insert"), LFUN_FILE_INSERT);
+		FileDialog dlg(qt_("Select LyX document to insert"));
 		dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 		dlg.setButton2(qt_("Examples|#E#e"),
 			toqstr(addPath(package().system_support().absFileName(),
@@ -2267,8 +2267,7 @@ bool GuiView::renameBuffer(Buffer & b, docstring const & newname, RenameKind kin
 
 		// No argument? Ask user through dialog.
 		// FIXME UNICODE
-		FileDialog dlg(qt_("Choose a filename to save document as"),
-				   LFUN_BUFFER_WRITE_AS);
+		FileDialog dlg(qt_("Choose a filename to save document as"));
 		dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 		dlg.setButton2(qt_("Templates|#T#t"), toqstr(lyxrc.template_path));
 
@@ -3473,7 +3472,6 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		case LFUN_FILE_INSERT_PLAINTEXT:
 		case LFUN_FILE_INSERT_PLAINTEXT_PARA: {
-			bool const as_paragraph = (cmd.action() == LFUN_FILE_INSERT_PLAINTEXT_PARA);
 			string const fname = to_utf8(cmd.argument());
 			if (!fname.empty() && !FileName::isAbsolute(fname)) {
 				dr.setMessage(_("Absolute filename expected."));
@@ -3482,8 +3480,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			
 			FileName filename(fname);
 			if (fname.empty()) {
-				FileDialog dlg(qt_("Select file to insert"), (as_paragraph ?
-					LFUN_FILE_INSERT_PLAINTEXT_PARA : LFUN_FILE_INSERT_PLAINTEXT));
+				FileDialog dlg(qt_("Select file to insert"));
 
 				FileDialog::Result result = dlg.open(toqstr(bv->buffer().filePath()),
 					QStringList(qt_("All Files (*)")));
