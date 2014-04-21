@@ -12,6 +12,8 @@ foreach(_f insets/InsetLayout.cpp Color.cpp Counters.cpp Floating.cpp
   list(APPEND check_layout_SOURCES "${TOP_SRC_DIR}/src/${_f}")
 endforeach()
 
+include_directories(${TOP_SRC_DIR}/src/support/tests)
+
 add_executable(check_layout ${check_layout_SOURCES})
 
 target_link_libraries(check_layout support
