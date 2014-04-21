@@ -28,14 +28,4 @@ endif
 
 SUFFIXES = .gch
 
-if USE_INCLUDED_BOOST
-BOOST_INCLUDES = -I$(top_srcdir)/boost
-BOOST_LIBS = $(top_builddir)/boost/liblyxboost.a
-else
-BOOST_INCLUDES =
-BOOST_REGEX = -lboost_regex$(BOOST_MT)
-BOOST_SIGNALS = -lboost_signals$(BOOST_MT)
-BOOST_LIBS = $(BOOST_REGEX) $(BOOST_SIGNALS)
-endif
-
 LIBS =

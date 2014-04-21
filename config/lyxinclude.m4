@@ -311,28 +311,39 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 	    [lyx_cv_with_included_boost=yes])
 	AM_CONDITIONAL(USE_INCLUDED_BOOST, test x$lyx_cv_with_included_boost = xyes)
 	AC_MSG_RESULT([$lyx_cv_with_included_boost])
-	if test x$lyx_cv_with_included_boost != xyes ; then
-		AC_LANG_PUSH(C++)
-		save_LIBS=$LIBS
+	if test x$lyx_cv_with_included_boost = xyes ; then
+	    BOOST_INCLUDES='-I$(top_srcdir)/boost'
+	    BOOST_LIBS='$(top_builddir)/boost/liblyxboost.a'
+	else
+	    AC_LANG_PUSH(C++)
+	    save_LIBS=$LIBS
 
-		LIBS="$save_LIBS -lboost_signals -lm"
-		AC_LINK_IFELSE([AC_LANG_PROGRAM([#include <boost/signal.hpp>], [boost::signal<void ()> s;])], [lyx_boost_plain=yes], [])
-		LIBS="$save_LIBS -lboost_signals-mt -lm $LIBTHREAD"
-		AC_LINK_IFELSE([AC_LANG_PROGRAM([#include <boost/signal.hpp>], [boost::signal<void ()> s;])], [lyx_boost_mt=yes], [])
-
-		LIBS=$save_LIBS
-		AC_LANG_POP(C++)
-
-		if test x$lyx_boost_mt = xyes ; then
-			BOOST_MT="-mt"
-		else
-			BOOST_MT=""
-			if test x$lyx_boost_plain != xyes ; then
-				AC_MSG_ERROR([cannot find suitable boost library (do not use --without-included-boost)])
-			fi
-		fi
-		AC_SUBST(BOOST_MT)
+	    AC_MSG_CHECKING([for multithreaded boost libraries])
+	    LIBS="$save_LIBS -lboost_signals-mt -lm $LIBTHREAD"
+	    AC_LINK_IFELSE(
+		[AC_LANG_PROGRAM([#include <boost/signal.hpp>],
+			[boost::signal<void ()> s;])],
+		[AC_MSG_RESULT([yes])
+		 BOOST_MT="-mt"],
+		[AC_MSG_RESULT([no])
+		 AC_MSG_CHECKING([for plain boost libraries])
+		 LIBS="$save_LIBS -lboost_signals -lm"
+		 AC_LINK_IFELSE(
+		     [AC_LANG_PROGRAM([#include <boost/signal.hpp>],
+			     [boost::signal<void ()> s;])],
+		     [AC_MSG_RESULT([yes])
+		      BOOST_MT=""],
+		     [AC_MSG_RESULT([no])
+		      AC_MSG_ERROR([cannot find suitable boost library (do not use --without-included-boost)])
+		 ])
+	    ])
+	    LIBS=$save_LIBS
+	    AC_LANG_POP(C++)
+	    BOOST_INCLUDES=
+	    BOOST_LIBS="-lboost_regex${BOOST_MT} -lboost_signals${BOOST_MT}"
 	fi
+	AC_SUBST(BOOST_INCLUDES)
+	AC_SUBST(BOOST_LIBS)
 ])
 
 
