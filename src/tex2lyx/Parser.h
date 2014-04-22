@@ -125,10 +125,15 @@ public:
 
 	iparserdocstream(idocstream & is) : is_(is) {}
 
-	/// Like std::istream::operator void*()
+#if (__cplusplus > 19971L)
+	/// Like std::istream::operator bool()
 	/// Do not convert is_ implicitly to bool, since that is forbidden in C++11.
-	/// FIXME: Convert to operator void*() in LyX 2.2
-	operator bool() const { return s_.empty() ? !is_.fail() : true; }
+	explicit operator bool() const { return s_.empty() ? !is_.fail() : true; }
+#else
+	/// Like std::istream::operator void*()
+	operator void*() const { return (s_.empty() && is_.fail()) ?
+			0 : const_cast<iparserdocstream *>(this); }
+#endif
 
 	/// change the encoding of the input stream to \p e (iconv name)
 	void setEncoding(std::string const & e);
