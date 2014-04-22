@@ -338,7 +338,7 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 	if (style == "default")
 		style = buffer().params().biblio_style;
 
-	if (!style.empty()) {
+	if (!style.empty() && !buffer().params().use_bibtopic) {
 		string base = normalizeName(buffer(), runparams, style, ".bst");
 		FileName const try_in_file =
 			makeAbsPath(base + ".bst", buffer().filePath());
@@ -377,7 +377,10 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 	}
 
 	if (!db_out.empty() && buffer().params().use_bibtopic) {
-		os << "\\begin{btSect}{" << db_out << "}\n";
+		os << "\\begin{btSect}";
+		if (!style.empty())
+			os << "[" << style << "]";
+		os << "{" << db_out << "}\n";
 		docstring btprint = getParam("btprint");
 		if (btprint.empty())
 			// default
