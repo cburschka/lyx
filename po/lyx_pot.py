@@ -500,7 +500,7 @@ def external_l10n(input_files, output, base):
     Template = re.compile(r'^Template\s+(.*)', re.IGNORECASE)
     GuiName = re.compile(r'\s*GuiName\s+(.*)', re.IGNORECASE)
     HelpTextStart = re.compile(r'\s*HelpText\s', re.IGNORECASE)
-    HelpTextSection = re.compile(r'\s*(\S.*\S)\s*$')
+    HelpTextSection = re.compile(r'\s*(\S.*)\s*$')
     HelpTextEnd = re.compile(r'\s*HelpTextEnd\s', re.IGNORECASE)
     i = -1
     for src in input_files:
