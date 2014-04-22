@@ -22,7 +22,6 @@ file(GLOB support_mythes_headers ${TOP_SRC_DIR}/src/support/mythes/*.hxx)
 file(GLOB support_linkback_sources ${TOP_SRC_DIR}/src/support/linkback/*.m*)
 file(GLOB support_linkback_headers ${TOP_SRC_DIR}/src/support/linkback/*.h)
 
-set_source_files_properties(${support_sources} ${support_mythes_sources} PROPERTIES COMPILE_FLAGS "${LYX_CXX_SPECIFIC_FLAGS}")
 list(REMOVE_ITEM support_sources
 	${TOP_SRC_DIR}/src/support/os_win32.cpp
 	${TOP_SRC_DIR}/src/support/os_unix.cpp

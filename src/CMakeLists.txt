@@ -11,15 +11,11 @@ include_directories(${TOP_SRC_DIR}/src)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "CMakeTargets")
 
-# support is the only directory containing objective-c files...
-add_subdirectory(support)
-# ...so we can add all the c++ specific flags after
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${LYX_CXX_SPECIFIC_FLAGS}")
-
 add_subdirectory(frontends)
 add_subdirectory(graphics)
 add_subdirectory(insets)
 add_subdirectory(mathed)
+add_subdirectory(support)
 add_subdirectory(tex2lyx)
 if (UNIX)
 	add_subdirectory(client)
