@@ -401,34 +401,34 @@ def convert(lines):
             # Therefore we need to set it to true for all flex insets which do
             # do not already have a ResetsFont.
             match = re_InsetLayout2.match(lines[i])
-            if match:
-                resetsfont_found = False
-                inherited = False
-                name = string.lower(match.group(1))
-                if name == "flex" or name[:5] == "flex:":
-                    isflexlayout = True
+            if not match:
+                i += 1
+                continue
+
+            name = string.lower(match.group(1))
+            if name != "flex" and name != "\"flex\"" and name[0:5] != "flex:" and name [0:6] != "\"flex:":
+                i += 1
+                continue
+
+            resetsfont_found = False
+            inherited = False
+            notdone = True
+            while i < len(lines):
+              match = re_ResetsFont.match(lines[i])
+              if match:
+                  resetsfont_found = True
+              else:
+                match = re_CopyStyle.match(lines[i])
+                if match:
+                  inherited = True
                 else:
-                    isflexlayout = False
-            match = re_ResetsFont.match(lines[i])
-            if match:
-                resetsfont_found = True
-            match = re_End.match(lines[i])
-            if match:
-                if isflexlayout and not resetsfont_found and not inherited:
-                    lines.insert(i, "\tResetsFont true")
-                    i += 1
-            match = re_Style.match(lines[i])
-            if match:
-                isflexlayout = False
-                inherited = False
-            match = re_Counter.match(lines[i])
-            if match:
-                isflexlayout = False
-                inherited = False
-            match = re_CopyStyle.match(lines[i])
-            if match:
-                inherited = True
-            i += 1
+                  match = re_End.match(lines[i])
+                  if match:
+                    break
+              i += 1
+            if not resetsfont_found and not inherited:
+              lines.insert(i, "\tResetsFont true")
+
             continue
 
         if format >= 44 and format <= 47:
