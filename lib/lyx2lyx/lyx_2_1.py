@@ -546,18 +546,26 @@ def convert_use_packages(document):
 
 def revert_use_packages(document):
     "use_package xxx yyy => use_xxx yyy"
-    packages = ["amsmath", "esint", "mathdots", "mhchem", "undertilde"]
+    packages = ["amsmath", "esint", "mhchem", "mathdots", "undertilde"]
     # the order is arbitrary for the use_package version, and not all packages need to be given.
     # Ensure a complete list and correct order (important for older LyX versions and especially lyx2lyx)
-    j = 0
+    # first loop: find line with first package
+    j = -1
     for p in packages:
         regexp = re.compile(r'(\\use_package\s+%s)' % p)
-        i = find_re(document.header, regexp, j)
+        i = find_re(document.header, regexp, 0)
+        if i != -1 and (j < 0 or i < j):
+            j = i
+    # second loop: replace or insert packages in front of all existing ones
+    for p in packages:
+        regexp = re.compile(r'(\\use_package\s+%s)' % p)
+        i = find_re(document.header, regexp, 0)
         if i != -1:
             value = get_value(document.header, "\\use_package %s" % p, i).split()[1]
             del document.header[i]
-            j = i
-            document.header.insert(j, "\\use_%s %s"  % (p, value))
+            document.header.insert(j, "\\use_%s %s" % (p, value))
+        else:
+            document.header.insert(j, "\\use_%s 1" % p)
         j += 1
 
 
