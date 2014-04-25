@@ -1552,12 +1552,18 @@ def revert_latexargs(document):
             continue
         parbeg = parent[1]
         parend = parent[2]
-        realparbeg = parent[3]
-        # Collect all arguments in this paragraph 
+        # Do not set realparbeg to parent[3], since this does not work if we
+        # have another inset (e.g. label or index) before the first argument
+        # inset (this is the case in the user guide of LyX 2.0.8)
+        realparbeg = -1
+        # Collect all arguments in this paragraph
         realparend = parend
         for p in range(parbeg, parend):
             m = rx.match(document.body[p])
             if m:
+                if realparbeg < 0:
+                    # This is the first argument inset
+                    realparbeg = p
                 val = int(m.group(1))
                 j = find_end_of_inset(document.body, p)
                 # Revert to old syntax
@@ -1573,8 +1579,11 @@ def revert_latexargs(document):
                 del document.body[p : j + 1]
             if p >= realparend:
                 break
+        if realparbeg < 0:
+            # No argument inset found
+            realparbeg = parent[3]
         # Now sort the arg insets
-        subst = [""]
+        subst = []
         for f in sorted(args):
             subst += args[f]
             del args[f]
