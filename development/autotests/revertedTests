@@ -18,15 +18,10 @@ export/.*/hu/.*(pdf5|dvi3)_.*
 export/.*/es/europeCV_(pdf[45]|dvi3)_.*
 #
 # somehow lualatex is not able to compile with non-tex fonts
-export/doc/es/Math_dvi3_systemF
-export/doc/es/Tutorial_dvi3_systemF
-export/doc/es/UserGuide_dvi3_systemF
-export/examples/es/ejemplo_con_lyx_dvi3_systemF
+export/.*/es/(Math|Tutorial|UserGuide|ejemplo_con_lyx)_dvi3_systemF
 
 # See http://www.lyx.org/trac/ticket/8823
-export/examples/ja/lilypond_pdf
-export/examples/ja/sweave_pdf
-export/examples/ja/knitr_pdf
+export/examples/ja/(lilypond|sweave|knitr)_pdf
 # Incompatibility between luainputenc.sty and ectaart.cls
 # luainputenc.sty loads luatex.sty
 # Both files (luatex.sty and ectaart.cls) define
@@ -48,46 +43,21 @@ export/doc/uk/Intro_(pdf5|dvi3)_systemF
 # it is unlikely that a user would want to use system fonts to view LyX's documents
 # fixing these would provide further tests for LyX's handling of XeTeX/LuaTeX with
 # system fonts.
-export/doc/Customization_pdf4_systemF
-export/doc/Math_dvi3_systemF
-export/doc/Math_pdf4_systemF
-export/doc/attic/eu_Additional_pdf4_systemF
-export/doc/attic/eu_UserGuide_pdf4_systemF
-export/doc/attic/pl_Additional_pdf4_systemF
-export/doc/de/Customization_pdf4_systemF
-export/doc/de/EmbeddedObjects_pdf4_systemF
-export/doc/de/Math_dvi3_systemF
-export/doc/de/Math_pdf4_systemF
-export/doc/de/UserGuide_pdf4_systemF
-export/doc/es/Customization_pdf4_systemF
-export/doc/es/EmbeddedObjects_pdf4_systemF
-export/doc/es/Math_pdf4_systemF
+export/doc/(|de/|es/|fr/)Customization_pdf4_systemF
+export/doc/(|de/|es/|fr/)Math_(dvi3|pdf4)_systemF
+export/doc/attic/(eu|pl)_Additional_pdf4_systemF
+export/doc/(de|es|fr)/EmbeddedObjects_pdf4_systemF
+export/doc/(de|es|fr|id)/UserGuide_pdf4_systemF
 export/doc/es/Tutorial_pdf4_systemF
-export/doc/es/UserGuide_pdf4_systemF
-export/doc/fr/Customization_pdf4_systemF
-export/doc/fr/EmbeddedObjects_pdf4_systemF
-export/doc/fr/Math_dvi3_systemF
-export/doc/fr/Math_pdf4_systemF
-export/doc/fr/UserGuide_pdf4_systemF
 export/doc/gl/Tutorial_dvi3_systemF
-export/doc/id/UserGuide_pdf4_systemF
-export/doc/nb/Intro_pdf4_systemF
+export/doc/(nb|sk|sv)/Intro_pdf4_systemF
 export/doc/ru/Intro_pdf4_texF
-export/doc/sk/Intro_pdf4_systemF
-export/doc/sv/Intro_pdf4_systemF
-export/examples/MultilingualCaptions_pdf4_systemF
-export/examples/aas_sample_pdf4_systemF
-export/examples/simplecv_pdf4_systemF
+export/examples/(MultilingualCaptions|aas_sample|simplecv)_pdf4_systemF
 export/examples/de/Lebenslauf_pdf4_systemF
 export/examples/es/ejemplo_con_lyx_pdf5_systemF
-export/examples/eu/adibide_lyx-atua_dvi3_systemF
-export/examples/eu/adibide_lyx-atua_pdf5_systemF
-export/examples/fr/Foils_pdf4_systemF
-export/examples/fr/ListesPuces_pdf4_systemF
-export/examples/fr/seminar_pdf4_systemF
-export/examples/fr/simplecv_pdf4_systemF
-export/examples/gl/exemplo_lyxificado_dvi3_systemF
-export/examples/gl/exemplo_lyxificado_pdf5_systemF
+export/examples/eu/adibide_lyx-atua_(dvi3|pdf5)_systemF
+export/examples/fr/(Foils|ListesPuces|seminar|simplecv)_pdf4_systemF
+export/examples/gl/exemplo_lyxificado_(dvi3|pdf5)_systemF
 export/examples/sr/Braille_pdf4_systemF
 export/examples/sr/splash_pdf4_systemF
 export/templates/(IEEEtran-(CompSoc|Journal|TransMag)|RJournal)_(dvi3|pdf[45])_systemF
