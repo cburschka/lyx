@@ -2978,7 +2978,16 @@ def convert_beamerblocks(document):
             if i != -1:
                 if document.body[parbeg] == "\\begin_inset ERT":
                     ertcontfirstline = parbeg + 5
-                    ertcontlastline = parend - 6
+                    # Find the last ERT in this paragraph (which might also be the first)
+                    lastertbeg = find_token_backwards(document.body, "\\begin_inset ERT", j)
+                    if lastertbeg == -1:
+                        document.warning("Last ERT not found!")
+                        break
+                    lastertend = find_end_of_inset(document.body, lastertbeg)
+                    if lastertend == -1:
+                        document.warning("End of last ERT not found!")
+                        break
+                    ertcontlastline = lastertend - 3
                     while True:
                         if document.body[ertcontfirstline].startswith("<"):
                             # This is an overlay specification
