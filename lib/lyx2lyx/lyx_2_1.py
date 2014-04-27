@@ -387,6 +387,15 @@ def revert_japanese_encodings(document):
         document.header[i] = "\\inputencoding %s" % jap_enc_dict[val]
 
 
+def convert_justification(document):
+    " Add the \\justification buffer param"
+    i = find_token(document.header, "\\use_indices" , 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\use_indices.")
+        return
+    document.header.insert(i + 1, "\\justification true")
+
+
 def revert_justification(document):
     " Revert the \\justification buffer param"
     if not del_token(document.header, '\\justification', 0):
@@ -4432,7 +4441,7 @@ convert = [
            [415, [convert_undertilde]],
            [416, []],
            [417, [convert_japanese_encodings]],
-           [418, []],
+           [418, [convert_justification]],
            [419, []],
            [420, [convert_biblio_style]],
            [421, [convert_longtable_captions]],
