@@ -626,15 +626,24 @@ Function .onInit
   # check if this LyX version is already installed
   ${if} $MultiUser.Privileges == "Admin"
   ${orif} $MultiUser.Privileges == "Power"
-   ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "Publisher"
+   ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "DisplayIcon"
   ${else}
-   ReadRegStr $0 HKCU "${APP_UNINST_KEY}" "Publisher"
+   ReadRegStr $0 HKCU "${APP_UNINST_KEY}" "DisplayIcon"
    # handle also the case that LyX is already installed in HKLM
    ${if} $0 == ""
-    ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "Publisher"
+    ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "DisplayIcon"
    ${endif}
   ${endif}
   ${if} $0 != ""
+   # check if the uninstaller was acidentally deleted
+   # if so don't bother the user if he realy wants to install a new LyX over an existing one
+   # because he won't have a chance to deny this
+   StrCpy $4 $0 -10 # remove '\bin\lyx,0'
+   # (for FileCheck the variables $0 and $1 cannot be used)
+   !insertmacro FileCheck $5 "Uninstall-LyX.exe" "$4" # macro from LyXUtils.nsh
+   ${if} $5 == "False"
+    Goto ForceInstallation
+   ${endif}
    # installing over an existing installation of the same LyX release is not necessary
    # if the users does this he most probably has a problem with LyX that can better be solved
    # by reinstalling LyX
