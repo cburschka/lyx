@@ -253,6 +253,7 @@ def revert_visible_space(document):
       document.body[i:end + 1] = subst
 
 
+undertilde_commands = ["utilde"]
 def convert_undertilde(document):
     " Load undertilde automatically "
     i = find_token(document.header, "\\use_mathdots" , 0)
@@ -264,52 +265,60 @@ def convert_undertilde(document):
         document.warning("Malformed LyX document: Can't find \\use_mathdots.")
         return;
     j = find_token(document.preamble, "\\usepackage{undertilde}", 0)
-    if j == -1:
-        document.header.insert(i + 1, "\\use_undertilde 0")
-    else:
-        document.header.insert(i + 1, "\\use_undertilde 2")
+    if j != -1:
+        # package was loaded in the preamble, convert this to header setting for round trip
+        document.header.insert(i + 1, "\\use_undertilde 2") # on
         del document.preamble[j]
+    else:
+        j = 0
+        while True:
+            j = find_token(document.body, '\\begin_inset Formula', j)
+            if j == -1:
+                break
+            k = find_end_of_inset(document.body, j)
+            if k == -1:
+                document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(j))
+                j += 1
+                continue
+            code = "\n".join(document.body[j:k])
+            for c in undertilde_commands:
+                if code.find("\\%s" % c) != -1:
+                    # at least one of the commands was found - need to switch package off
+                    document.header.insert(i + 1, "\\use_undertilde 0") # off
+                    return
+            j = k
+        # no command was found - set to auto (bug 9069)
+        document.header.insert(i + 1, "\\use_undertilde 1") # auto
+
 
 
 def revert_undertilde(document):
     " Load undertilde if used in the document "
-    undertilde = find_token(document.header, "\\use_undertilde" , 0)
-    if undertilde == -1:
-      document.warning("No \\use_undertilde line. Assuming auto.")
-    else:
-      val = get_value(document.header, "\\use_undertilde", undertilde)
-      del document.header[undertilde]
-      try:
-        usetilde = int(val)
-      except:
-        document.warning("Invalid \\use_undertilde value: " + val + ". Assuming auto.")
-        # probably usedots has not been changed, but be safe.
-        usetilde = 1
-
-      if usetilde == 0:
-        # do not load case
-        return
-      if usetilde == 2:
-        # force load case
+    regexp = re.compile(r'(\\use_undertilde)')
+    i = find_re(document.header, regexp, 0)
+    value = "1" # default is auto
+    if i != -1:
+        value = get_value(document.header, "\\use_undertilde" , i).split()[0]
+        del document.header[i]
+    if value == "2": # on
         add_to_preamble(document, ["\\usepackage{undertilde}"])
-        return
-
-    # so we are in the auto case. we want to load undertilde if \utilde is used.
-    i = 0
-    while True:
-      i = find_token(document.body, '\\begin_inset Formula', i)
-      if i == -1:
-        return
-      j = find_end_of_inset(document.body, i)
-      if j == -1:
-        document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(i))
-        i += 1
-        continue
-      code = "\n".join(document.body[i:j])
-      if code.find("\\utilde") != -1:
-        add_to_preamble(document, ["\\@ifundefined{utilde}{\\usepackage{undertilde}}"])
-        return
-      i = j
+    elif value == "1": # auto
+        i = 0
+        while True:
+            i = find_token(document.body, '\\begin_inset Formula', i)
+            if i == -1:
+                return
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(i))
+                i += 1
+                continue
+            code = "\n".join(document.body[i:j])
+            for c in undertilde_commands:
+                if code.find("\\%s" % c) != -1:
+                    add_to_preamble(document, ["\\usepackage{undertilde}"])
+                    return
+            i = j
 
 
 def revert_negative_space(document):
@@ -385,6 +394,15 @@ def revert_japanese_encodings(document):
     val = get_value(document.header, "\\inputencoding", i)
     if val in jap_enc_dict.keys():
         document.header[i] = "\\inputencoding %s" % jap_enc_dict[val]
+
+
+def convert_justification(document):
+    " Add the \\justification buffer param"
+    i = find_token(document.header, "\\use_indices" , 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\use_indices.")
+        return
+    document.header.insert(i + 1, "\\justification true")
 
 
 def revert_justification(document):
@@ -537,32 +555,73 @@ def convert_use_packages(document):
 
 def revert_use_packages(document):
     "use_package xxx yyy => use_xxx yyy"
-    packages = ["amsmath", "esint", "mathdots", "mhchem", "undertilde"]
+    packages = ["amsmath", "esint", "mhchem", "mathdots", "undertilde"]
     # the order is arbitrary for the use_package version, and not all packages need to be given.
     # Ensure a complete list and correct order (important for older LyX versions and especially lyx2lyx)
-    j = 0
+    # first loop: find line with first package
+    j = -1
     for p in packages:
         regexp = re.compile(r'(\\use_package\s+%s)' % p)
-        i = find_re(document.header, regexp, j)
+        i = find_re(document.header, regexp, 0)
+        if i != -1 and (j < 0 or i < j):
+            j = i
+    # second loop: replace or insert packages in front of all existing ones
+    for p in packages:
+        regexp = re.compile(r'(\\use_package\s+%s)' % p)
+        i = find_re(document.header, regexp, 0)
         if i != -1:
             value = get_value(document.header, "\\use_package %s" % p, i).split()[1]
             del document.header[i]
-            j = i
-            document.header.insert(j, "\\use_%s %s"  % (p, value))
+            document.header.insert(j, "\\use_%s %s" % (p, value))
+        else:
+            document.header.insert(j, "\\use_%s 1" % p)
         j += 1
 
 
-def convert_use_package(document, pkg):
+def convert_use_package(document, pkg, commands, oldauto):
+    # oldauto defines how the version we are converting from behaves:
+    # if it is true, the old version uses the package automatically.
+    # if it is false, the old version never uses the package.
     i = find_token(document.header, "\\use_package", 0)
     if i == -1:
         document.warning("Malformed LyX document: Can't find \\use_package.")
         return;
     j = find_token(document.preamble, "\\usepackage{" + pkg + "}", 0)
-    if j == -1:
-        document.header.insert(i + 1, "\\use_package " + pkg + " 0")
-    else:
-        document.header.insert(i + 1, "\\use_package " + pkg + " 2")
+    if j != -1:
+        # package was loaded in the preamble, convert this to header setting for round trip
+        document.header.insert(i + 1, "\\use_package " + pkg + " 2") # on
         del document.preamble[j]
+    # If oldauto is true we have two options:
+    # We can either set the package to auto - this is correct for files in
+    # format 425 to 463, and may create a conflict for older files which use
+    # any command in commands with a different definition.
+    # Or we can look whether any command in commands is used, and set it to
+    # auto if not and to off if yes. This will not create a conflict, but will
+    # create uncompilable documents for files in format 425 to 463, which use
+    # any command in commands.
+    # We choose the first option since its error is less likely.
+    elif oldauto:
+        document.header.insert(i + 1, "\\use_package " + pkg + " 1") # auto
+    else:
+        j = 0
+        while True:
+            j = find_token(document.body, '\\begin_inset Formula', j)
+            if j == -1:
+                break
+            k = find_end_of_inset(document.body, j)
+            if k == -1:
+                document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(j))
+                j += 1
+                continue
+            code = "\n".join(document.body[j:k])
+            for c in commands:
+                if code.find("\\%s" % c) != -1:
+                    # at least one of the commands was found - need to switch package off
+                    document.header.insert(i + 1, "\\use_package " + pkg + " 0") # off
+                    return
+            j = k
+        # no command was found - set to auto (bug 9069)
+        document.header.insert(i + 1, "\\use_package " + pkg + " 1") # auto
 
 
 def revert_use_package(document, pkg, commands, oldauto):
@@ -596,31 +655,24 @@ def revert_use_package(document, pkg, commands, oldauto):
             i = j
 
 
-def convert_use_mathtools(document):
-    "insert use_package mathtools"
-    convert_use_package(document, "mathtools")
-
-
-def revert_use_mathtools(document):
-    "remove use_package mathtools"
-    commands = ["mathclap", "mathllap", "mathrlap", \
+mathtools_commands = ["mathclap", "mathllap", "mathrlap", \
                 "lgathered", "rgathered", "vcentcolon", "dblcolon", \
                 "coloneqq", "Coloneqq", "coloneq", "Coloneq", "eqqcolon", \
                 "Eqqcolon", "eqcolon", "Eqcolon", "colonapprox", \
                 "Colonapprox", "colonsim", "Colonsim"]
-    revert_use_package(document, "mathtools", commands, False)
+def convert_use_mathtools(document):
+    "insert use_package mathtools"
+    convert_use_package(document, "mathtools", mathtools_commands, False)
 
 
-def convert_use_stmaryrd(document):
-    "insert use_package stmaryrd"
-    convert_use_package(document, "stmaryrd")
+def revert_use_mathtools(document):
+    "remove use_package mathtools"
+    revert_use_package(document, "mathtools", mathtools_commands, False)
 
 
-def revert_use_stmaryrd(document):
-    "remove use_package stmaryrd"
-    # commands provided by stmaryrd.sty but LyX uses other packages:
-    # boxdot lightning, bigtriangledown, bigtriangleup
-    commands = ["shortleftarrow", "shortrightarrow", "shortuparrow", \
+# commands provided by stmaryrd.sty but LyX uses other packages:
+# boxdot lightning, bigtriangledown, bigtriangleup
+stmaryrd_commands = ["shortleftarrow", "shortrightarrow", "shortuparrow", \
                     "shortdownarrow", "Yup", "Ydown", "Yleft", "Yright", \
                     "varcurlyvee", "varcurlywedge", "minuso", "baro", \
                     "sslash", "bbslash", "moo", "varotimes", "varoast", \
@@ -651,19 +703,25 @@ def revert_use_stmaryrd(document):
                     "varcopyright", "longarrownot", "Longarrownot", \
                     "Mapsto", "mapsfrom", "Mapsfrom" "Longmapsto", \
                     "longmapsfrom", "Longmapsfrom"]
-    revert_use_package(document, "stmaryrd", commands, False)
+def convert_use_stmaryrd(document):
+    "insert use_package stmaryrd"
+    convert_use_package(document, "stmaryrd", stmaryrd_commands, False)
 
 
+def revert_use_stmaryrd(document):
+    "remove use_package stmaryrd"
+    revert_use_package(document, "stmaryrd", stmaryrd_commands, False)
 
+
+stackrel_commands = ["stackrel"]
 def convert_use_stackrel(document):
     "insert use_package stackrel"
-    convert_use_package(document, "stackrel")
+    convert_use_package(document, "stackrel", stackrel_commands, False)
 
 
 def revert_use_stackrel(document):
     "remove use_package stackrel"
-    commands = ["stackrel"]
-    revert_use_package(document, "stackrel", commands, False)
+    revert_use_package(document, "stackrel", stackrel_commands, False)
 
 
 def convert_cite_engine_type(document):
@@ -722,11 +780,11 @@ def revert_cite_engine_type_default(document):
     document.header[i] = "\\cite_engine_type " + engine_type
 
 
+cancel_commands = ["cancel", "bcancel", "xcancel", "cancelto"]
 # this is the same, as revert_use_cancel() except for the default
 def revert_cancel(document):
     "add cancel to the preamble if necessary"
-    commands = ["cancelto", "cancel", "bcancel", "xcancel"]
-    revert_use_package(document, "cancel", commands, False)
+    revert_use_package(document, "cancel", cancel_commands, False)
 
 
 def revert_verbatim(document):
@@ -1030,13 +1088,12 @@ def revert_use_amssymb(document):
 
 def convert_use_cancel(document):
     "insert use_package cancel"
-    convert_use_package(document, "cancel")
+    convert_use_package(document, "cancel", cancel_commands, True)
 
 
 def revert_use_cancel(document):
     "remove use_package cancel"
-    commands = ["cancel", "bcancel", "xcancel", "cancelto"]
-    revert_use_package(document, "cancel", commands, True)
+    revert_use_package(document, "cancel", cancel_commands, True)
 
 
 def revert_ancientgreek(document):
@@ -1543,12 +1600,18 @@ def revert_latexargs(document):
             continue
         parbeg = parent[1]
         parend = parent[2]
-        realparbeg = parent[3]
-        # Collect all arguments in this paragraph 
+        # Do not set realparbeg to parent[3], since this does not work if we
+        # have another inset (e.g. label or index) before the first argument
+        # inset (this is the case in the user guide of LyX 2.0.8)
+        realparbeg = -1
+        # Collect all arguments in this paragraph
         realparend = parend
         for p in range(parbeg, parend):
             m = rx.match(document.body[p])
             if m:
+                if realparbeg < 0:
+                    # This is the first argument inset
+                    realparbeg = p
                 val = int(m.group(1))
                 j = find_end_of_inset(document.body, p)
                 # Revert to old syntax
@@ -1564,8 +1627,11 @@ def revert_latexargs(document):
                 del document.body[p : j + 1]
             if p >= realparend:
                 break
+        if realparbeg < 0:
+            # No argument inset found
+            realparbeg = parent[3]
         # Now sort the arg insets
-        subst = [""]
+        subst = []
         for f in sorted(args):
             subst += args[f]
             del args[f]
@@ -4432,13 +4498,16 @@ convert = [
            [415, [convert_undertilde]],
            [416, []],
            [417, [convert_japanese_encodings]],
-           [418, []],
+           [418, [convert_justification]],
            [419, []],
            [420, [convert_biblio_style]],
            [421, [convert_longtable_captions]],
            [422, [convert_use_packages]],
            [423, [convert_use_mathtools]],
            [424, [convert_cite_engine_type]],
+           # No convert_cancel, since cancel will be loaded automatically
+           # in format 425 without any possibility to switch it off.
+           # This has been fixed in format 464.
            [425, []],
            [426, []],
            [427, []],

@@ -65,6 +65,15 @@ What's new
 
 - Fix conversion of beamer block titles ending with non-ERT insets to 2.1 format.
 
+- Add \justification parameter when converting to 2.1 format (avoids when
+  converting back to 2.0 format).
+
+- Fix conversion of argument insets from 2.1 to 2.0 format.
+
+- Fix use math package settings conversion from 2.1 to 2.0 format.
+
+- Fix use math package settings conversion from 2.0 to 2.1 format (bug 9069).
+
 
 * USER INTERFACE
 
