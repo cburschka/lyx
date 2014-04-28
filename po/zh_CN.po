@@ -4,13 +4,14 @@
 # This file is distributed under the same license as the LyX package.
 #
 # Bo Peng <ben.bob@gmail.com>, 2007.
-# lyx <po-updates@lyx.org>, 2009.
+# Min Ding <u5032331@uds.anu.edu.au>, 2014.
+
 msgid ""
 msgstr ""
 "Project-Id-Version: zh_CN\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-04-21 12:11-0400\n"
-"PO-Revision-Date: 2011-06-02 23:49-0600\n"
+"PO-Revision-Date: 2014-04-28 10:00+1000\n"
 "Last-Translator: Yihui Xie <xie@yihui.name>\n"
 "Language-Team: 简体中文 <lyx-docs@lists.lyx.org>\n"
 "Language: zh_CN\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Poedit 1.6.4\n"
 "X-Poedit-Basepath: ../\n"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:13 src/insets/InsetNomencl.cpp:172
@@ -101,7 +102,6 @@ msgid "Specify the default output format when using (PDF)LaTeX"
 msgstr "指定缺省纸张大小."
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:205
-#, fuzzy
 msgid "Default Output Formats"
 msgstr "默认输出格式"
 
@@ -1198,7 +1198,7 @@ msgstr "覆盖文件?"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:115
 msgid "Ask permission"
-msgstr ""
+msgstr "征得同意"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:120
 msgid "Main file only"
@@ -1214,7 +1214,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:151
 msgid "Forward search"
-msgstr ""
+msgstr "正向搜索"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:171
 #, fuzzy
@@ -2601,7 +2601,7 @@ msgstr "在主工作区启用提示(&E)"
 
 #: src/frontends/qt4/ui/PrefUi.ui:151
 msgid "Menus"
-msgstr ""
+msgstr "菜单"
 
 #: src/frontends/qt4/ui/PrefUi.ui:162
 msgid "&Maximum last files:"
@@ -3402,7 +3402,7 @@ msgstr "新建文档"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:214
 msgid "Ask the user"
-msgstr ""
+msgstr "询问用户"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:16
 #, fuzzy
@@ -5246,8 +5246,9 @@ msgid "&Numbering"
 msgstr "编号(&N)"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:3
+#, fuzzy
 msgid "IEEE Transactions Computer Society"
-msgstr ""
+msgstr "IEEE交易计算机学会"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:4 lib/layouts/isprs.layout:4
 #: lib/layouts/ijmpc.layout:4 lib/layouts/extarticle.layout:4
@@ -5778,7 +5779,7 @@ msgstr "表格标题"
 
 #: lib/layouts/ijmpc.layout:265 lib/layouts/ijmpd.layout:268
 msgid "Refcite"
-msgstr ""
+msgstr "参考引用"
 
 #: lib/layouts/ijmpc.layout:269 lib/layouts/ijmpd.layout:272
 #, fuzzy
@@ -6432,7 +6433,7 @@ msgstr ""
 #: lib/layouts/RJournal.layout:4 lib/layouts/scrreprt.layout:4
 #: lib/layouts/jreport.layout:4 lib/layouts/treport.layout:4
 msgid "Reports"
-msgstr ""
+msgstr "报告"
 
 #: lib/layouts/book.layout:3
 msgid "Book (Standard Class)"
@@ -6794,7 +6795,7 @@ msgstr ""
 
 #: lib/layouts/acmsiggraph.layout:110
 msgid "Project URL:"
-msgstr ""
+msgstr "项目URL"
 
 #: lib/layouts/acmsiggraph.layout:114
 msgid "TOG video URL"
@@ -7833,21 +7834,18 @@ msgid "Institute Mark"
 msgstr "Institute"
 
 #: lib/layouts/aa.layout:262
-#, fuzzy
 msgid "Abstract (unstructured)"
-msgstr " (没有安装)"
+msgstr " 摘要(没有安装)"
 
 #: lib/layouts/aa.layout:278 lib/layouts/spie.layout:81
 msgid "ABSTRACT"
 msgstr "摘要"
 
 #: lib/layouts/aa.layout:296
-#, fuzzy
 msgid "Abstract (structured)"
-msgstr " (没有安装)"
+msgstr " 摘要(没有安装)"
 
 #: lib/layouts/aa.layout:300
-#, fuzzy
 msgid "Context"
 msgstr "内容"
 
@@ -7873,14 +7871,13 @@ msgstr ""
 
 #: lib/layouts/aa.layout:315
 msgid "Results"
-msgstr ""
+msgstr "结果"
 
 #: lib/layouts/aa.layout:316
 msgid "Results of your work"
 msgstr ""
 
 #: lib/layouts/aa.layout:337
-#, fuzzy
 msgid "Key words."
 msgstr "关键词:"
 
@@ -7896,7 +7893,7 @@ msgstr "E-Mail"
 
 #: lib/layouts/ctex-book.layout:3
 msgid "Chinese Book (CTeX)"
-msgstr ""
+msgstr "中文书(CTeX)"
 
 #: lib/layouts/chess.layout:3
 #, fuzzy
@@ -8033,7 +8030,7 @@ msgstr "Send To Address"
 
 #: lib/layouts/beamer.layout:3
 msgid "Beamer"
-msgstr ""
+msgstr "Beamer"
 
 #: lib/layouts/beamer.layout:86 lib/layouts/beamer.layout:119
 #: lib/layouts/beamer.layout:158 lib/layouts/beamer.layout:431
@@ -8228,7 +8225,7 @@ msgstr "FrameSubtitle"
 
 #: lib/layouts/beamer.layout:449
 msgid "Enter the frame title here"
-msgstr ""
+msgstr "在此处输入框标题"
 
 #: lib/layouts/beamer.layout:461
 #, fuzzy
@@ -8774,7 +8771,7 @@ msgstr "Facility:"
 
 #: lib/layouts/europecv.layout:59
 msgid "Birthday"
-msgstr ""
+msgstr "生日"
 
 #: lib/layouts/europecv.layout:62
 #, fuzzy
@@ -10089,7 +10086,7 @@ msgstr "附件:"
 
 #: lib/layouts/paper.layout:3
 msgid "Paper (Standard Class)"
-msgstr ""
+msgstr "论文(标准)"
 
 #: lib/layouts/paper.layout:149
 msgid "SubTitle"
@@ -10563,7 +10560,7 @@ msgstr "infty"
 
 #: lib/layouts/achemso.layout:291
 msgid "chemistry"
-msgstr ""
+msgstr "化学"
 
 #: lib/layouts/cl2emult.layout:3
 msgid "Springer cl2emult"
@@ -10669,7 +10666,7 @@ msgstr "Transition"
 
 #: lib/layouts/IEEEtran.layout:86 lib/layouts/IEEEtran.layout:91
 msgid "IEEE membership"
-msgstr ""
+msgstr "IEEE 会员"
 
 #: lib/layouts/IEEEtran.layout:107 lib/layouts/revtex4-1.layout:292
 #: lib/layouts/revtex4-1.layout:294
@@ -11464,7 +11461,7 @@ msgstr "查找下一个(&N)"
 
 #: lib/layouts/revtex4-1.layout:271
 msgid "Video"
-msgstr ""
+msgstr "视屏"
 
 #: lib/layouts/revtex4-1.layout:274
 #, fuzzy
@@ -11597,7 +11594,7 @@ msgstr "行上(T)|T"
 
 #: lib/layouts/moderncv.layout:115 lib/layouts/moderncv.layout:121
 msgid "Optional address line"
-msgstr ""
+msgstr "可选地址栏"
 
 #: lib/layouts/moderncv.layout:120
 #, fuzzy
@@ -11693,7 +11690,7 @@ msgstr "项"
 
 #: lib/layouts/moderncv.layout:297 lib/layouts/moderncv.layout:298
 msgid "Time"
-msgstr ""
+msgstr "时间"
 
 #: lib/layouts/moderncv.layout:302 lib/layouts/moderncv.layout:303
 msgid "What?"
@@ -12866,7 +12863,7 @@ msgstr "Cap"
 
 #: lib/layouts/db_stdcharstyles.inc:121 lib/layouts/db_stdcharstyles.inc:123
 msgid "GuiMenu"
-msgstr ""
+msgstr "GUI菜单"
 
 #: lib/layouts/db_stdcharstyles.inc:136 lib/layouts/db_stdcharstyles.inc:138
 msgid "GuiMenuItem"
@@ -19445,8 +19442,9 @@ msgid "CheckedBox"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:760 lib/ui/stdtoolbars.inc:834
+#, fuzzy
 msgid "XBox"
-msgstr ""
+msgstr "XBox(微软游戏机)"
 
 #: lib/ui/stdtoolbars.inc:761
 msgid "lozenge"
@@ -22112,7 +22110,6 @@ msgid "PDFPages"
 msgstr "PDF页面"
 
 #: lib/external_templates:301 lib/external_templates:315
-#, fuzzy
 msgid "PDF pages"
 msgstr "PDF页面"
 
@@ -22439,9 +22436,8 @@ msgid "PDF (LuaTeX)|u"
 msgstr "PDF (LuaTeX)|u"
 
 #: lib/configure.py:663
-#, fuzzy
 msgid "PDF (graphics)"
-msgstr "图形"
+msgstr "PDF(图形)"
 
 #: lib/configure.py:664
 #, fuzzy
@@ -23795,23 +23791,23 @@ msgstr "添加的文本"
 
 #: src/Color.cpp:270
 msgid "changed text 1st author"
-msgstr ""
+msgstr "更改文本第一作者"
 
 #: src/Color.cpp:271
 msgid "changed text 2nd author"
-msgstr ""
+msgstr "更改文本第二作者"
 
 #: src/Color.cpp:272
 msgid "changed text 3rd author"
-msgstr ""
+msgstr "更改文本第三作者"
 
 #: src/Color.cpp:273
 msgid "changed text 4th author"
-msgstr ""
+msgstr "更改文本第四作者"
 
 #: src/Color.cpp:274
 msgid "changed text 5th author"
-msgstr ""
+msgstr "更改文本第五作者"
 
 #: src/Color.cpp:275
 #, fuzzy
@@ -24789,11 +24785,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:3282
 msgid ""
-"The LaTeX command for loading the language package. E.g. \"\\usepackage"
-"{babel}\", \"\\usepackage{omega}\"."
+"The LaTeX command for loading the language package. E.g. "
+"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"The LaTeX command for loading the language package. E.g. \"\\usepackage"
-"{babel}\", \"\\usepackage{omega}\"."
+"The LaTeX command for loading the language package. E.g. "
+"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 
 #: src/LyXRC.cpp:3286
 msgid ""
@@ -25409,7 +25405,7 @@ msgstr ""
 
 #: src/VCBackend.cpp:633
 msgid "No CVS file"
-msgstr ""
+msgstr "无CVS文件"
 
 #: src/VCBackend.cpp:635
 msgid "Cannot retrieve CVS status"
@@ -30226,9 +30222,8 @@ msgid ""
 msgstr ""
 
 #: src/support/Package.cpp:698 src/support/Package.cpp:725
-#, fuzzy
 msgid "File not found"
-msgstr "文件没有找到"
+msgstr "找不到文件"
 
 #: src/support/Package.cpp:699
 #, c-format
@@ -30252,9 +30247,8 @@ msgid ""
 msgstr ""
 
 #: src/support/Package.cpp:752
-#, fuzzy
 msgid "Directory not found"
-msgstr "未找到搜索词"
+msgstr "找不到目录"
 
 #: src/support/Systemcall.cpp:405
 #, fuzzy, c-format
@@ -30281,10 +30275,9 @@ msgstr "保留(&K)"
 
 #: src/support/Systemcall.cpp:408
 msgid "Let it &run"
-msgstr ""
+msgstr "让它运行"
 
 #: src/support/debug.cpp:42
-#, fuzzy
 msgid "No debugging messages"
 msgstr "无调试信息"
 
