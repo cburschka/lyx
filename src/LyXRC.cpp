@@ -2829,8 +2829,9 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			break;
 	}
 	case RC_DEFAULT_OTF_VIEW_FORMAT:
-		if (ignore_system_lyxrc ||
-		    default_otf_view_format != system_lyxrc.default_otf_view_format) {
+        if ((ignore_system_lyxrc ||
+            default_otf_view_format != system_lyxrc.default_otf_view_format)
+            && !default_otf_view_format.empty()) {
 			os << "\\default_otf_view_format " << default_otf_view_format << '\n';
 		}
 		if (tag != RC_LAST)
