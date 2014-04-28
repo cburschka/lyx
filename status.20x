@@ -36,6 +36,20 @@ What's new
 ** Bug fixes:
 *************
 
+* LYX2LYX FIXES FOR 2.0.8.1
+
+- Fix conversion of beamer block titles ending with non-ERT insets to 2.1 format.
+
+- Add \justification parameter when converting to 2.1 format (avoids when
+  converting back to 2.0 format).
+
+- Fix conversion of argument insets fromn 2.1 to 2.0 format.
+
+- Fix use math package settings conversion from 2.1 to 2.0 format.
+
+- Fix use math package settings conversion from 2.0 to 2.1 format (bug 9069).
+
+
 * DOCUMENT INPUT/OUTPUT
 
 - Do not crash when loading documents with empty (invalid) math environments
@@ -57,6 +71,11 @@ What's new
 
 - Fix LaTeX error with alphabetic delimiters in inline Listings (part of bug
   8985).
+
+- Add \justification parameter when converting to 2.1 format (avoids when
+  converting back to 2.0 format).
+
+- Fix conversion of argument insets fromn 2.1 to 2.0 format.
 
 
 * USER INTERFACE
