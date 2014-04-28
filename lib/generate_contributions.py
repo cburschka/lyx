@@ -611,6 +611,14 @@ contributors = [
                  "30 March 2010",
                  u"Patches for configure.py"),
 
+     contributor(u"Min Ding",
+                 "u5032331 () uds ! anu ! edu ! au",
+                 "GPL",
+                 "Accept GUN GPL",
+                 "m=139864105011133",
+                 "27 April 2014",
+                 u"Chinese (simplified) translations"),
+
      contributor(u"Anders Ekberg",
                  "anek () chalmers ! se",
                  "GPL",
@@ -618,7 +626,7 @@ contributors = [
                  "m=113725822602516",
                  "14 January 2006",
                  u"Improvements to the Swedish translation of the Windows Installer"),
-     
+
      contributor(u"Martin Engbers",
                  "martin.engbers () gmx ! de",
                  "GPL",
