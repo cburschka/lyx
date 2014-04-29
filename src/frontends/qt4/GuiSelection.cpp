@@ -39,7 +39,7 @@ GuiSelection::GuiSelection()
 
 void GuiSelection::haveSelection(bool own)
 {
-	if (!qApp->clipboard()->supportsSelection())
+	if (!selection_supported_)
 		return;
 
 	// Tell qt that we have a selection by setting a dummy selection.
