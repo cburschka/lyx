@@ -160,7 +160,7 @@ def checkUpgrade():
         logger.info('Checking for upgrade from previous version.')
         parent = os.path.dirname(cwd)
         appname = basename[:(-len(version_suffix))]
-        for version in ['-2.0', '-1.6' ]:
+        for version in ['-2.1', '-2.0', '-1.6' ]:
             logger.debug('Checking for upgrade from previous version ' + version)
             previous = os.path.join(parent, appname + version)
             logger.debug('previous = ' + previous)
