@@ -17,7 +17,7 @@
 // if libc++ is used (rather than libstdc++) - we first
 // check if we have at least a c++03 standard before
 // including the file
-#if (__cplusplus > 19971L)
+#if (__cplusplus > 199711L)
 #include <ciso646>
 #endif
 
