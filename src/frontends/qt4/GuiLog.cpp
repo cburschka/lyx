@@ -18,6 +18,8 @@
 #include "qt_helpers.h"
 #include "Lexer.h"
 
+#include "frontends/Clipboard.h"
+
 #include "support/docstring.h"
 #include "support/FileName.h"
 #include "support/gettext.h"
@@ -313,7 +315,7 @@ void GuiLog::getContents(ostream & ss) const
 
 void GuiLog::on_copyPB_clicked()
 {
-	qApp->clipboard()->setText(logTB->toPlainText());
+	theClipboard().put(fromqstr(logTB->toPlainText()));
 }
 
 

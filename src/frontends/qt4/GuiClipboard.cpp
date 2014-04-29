@@ -413,6 +413,12 @@ docstring const GuiClipboard::getAsText(TextType type) const
 }
 
 
+void GuiClipboard::put(string const & text) const
+{
+	qApp->clipboard()->setText(toqstr(text));
+}
+
+
 void GuiClipboard::put(string const & lyx, docstring const & html, docstring const & text)
 {
 	LYXERR(Debug::ACTION, "GuiClipboard::put(`" << lyx << "' `"

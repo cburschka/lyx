@@ -75,6 +75,9 @@ public:
 	 */
 	virtual void put(std::string const & lyx, docstring const & html, docstring const & text) = 0;
 
+	/// Put a general string on the system clipboard (not LyX text)
+	virtual void put(std::string const & text) const = 0;
+
 	/// Does the clipboard contain text contents?
 	virtual bool hasTextContents(TextType type = AnyTextType) const = 0;
 	/// Does the clipboard contain graphics contents of a certain type?
