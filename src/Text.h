@@ -293,7 +293,7 @@ public:
 	void write(std::ostream & os) const;
 	/// returns true if \end_document has not been read
 	/// insetPtr is the containing Inset
-	bool read(Lexer & lex, ErrorList & errorList, 
+	bool read(Lexer & lex, ErrorList & errorList,
 	          InsetText * insetPtr);
 
 	/// delete double spaces, leading spaces, and empty paragraphs around old cursor.
@@ -309,7 +309,7 @@ public:
 
 	/// To resolve macros properly the texts get their DocIterator.
 	/// Every macro definition is stored with its DocIterator
-	/// as well. Only those macros with a smaller iterator become 
+	/// as well. Only those macros with a smaller iterator become
 	/// visible in a paragraph.
 	DocIterator macrocontextPosition() const;
 	///
@@ -371,7 +371,7 @@ private:
 	///
 	void readParagraph(Paragraph & par, Lexer & lex, ErrorList & errorList);
 	/// Set Label Width string to all paragraphs of the same layout
-    /// and depth in a sequence.
+	/// and depth in a sequence.
 	void setLabelWidthStringToSequence(Cursor const & cur, docstring const & s);
 
 	/// Owner Inset.
