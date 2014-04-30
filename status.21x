@@ -104,6 +104,8 @@ What's new
 
 - Do not spellcheck "code" style in logical markup module.
 
+- Fix invalid writing of default_otf_view_format preference (bug 9100).
+
 
 * INTERNALS
 
@@ -134,4 +136,6 @@ What's new
 
 - With autotools, avoid installing in Windows and MacOS some files intented
   for the unix builds.
+
+- Fix minor issue in script that extracts strings for GUI translation (bug 9054).
 
