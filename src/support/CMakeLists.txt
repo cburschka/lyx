@@ -25,7 +25,7 @@ file(GLOB support_linkback_headers ${TOP_SRC_DIR}/src/support/linkback/*.h)
 set_source_files_properties(${support_linkback_sources} 
 	${TOP_SRC_DIR}/src/support/AppleSpeller.m
 	${TOP_SRC_DIR}/src/support/AppleScript.m
-		PROPERTIES COMPILE_FLAGS "-ansi")
+		PROPERTIES COMPILE_FLAGS "-std=c99")
 
 list(REMOVE_ITEM support_sources
 	${TOP_SRC_DIR}/src/support/os_win32.cpp
