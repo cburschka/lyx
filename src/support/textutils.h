@@ -44,9 +44,6 @@ bool isSpace(char_type c);
 /// return true if a unicode char is a numeral.
 bool isNumber(char_type c);
 
-/// return true is a unicode char uses a right-to-left direction for layout
-bool isRTL(char_type c);
-
 /// return whether \p c is a digit in the ASCII range
 bool isDigitASCII(char_type c);
 

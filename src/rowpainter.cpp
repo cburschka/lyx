@@ -20,7 +20,6 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Changes.h"
-#include "Encoding.h"
 #include "Language.h"
 #include "Layout.h"
 #include "LyXRC.h"
@@ -201,12 +200,6 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 	bool const spell_state =
 		lyxrc.spellcheck_continuously && par_.isMisspelled(pos);
 
-	// are we building a RtL string? 
-	//FIXME: I would like to use the new isRTL() from textutils.h,
-	// but it does not give the same results for some reason I do
-	// not understand.
-	bool const rtl = Encodings::isArabicChar(str[0]) || Encodings::isHebrewChar(str[0]);
-
 	// collect as much similar chars as we can
 	for (++vpos ; vpos < end ; ++vpos) {
 		if (lyxrc.force_paint_single_char)
@@ -234,14 +227,6 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 
 		char_type c = par_.getChar(pos);
 
-		//FIXME: I would like to use the new isRTL() from textutils.h,
-		// but it does not give the same results for some reason I do
-		// not understand.
-		bool const new_rtl = Encodings::isArabicChar(c) || Encodings::isHebrewChar(c);
-		if (new_rtl != rtl)
-			// String direction has changed
-			break;
-
 		if (c == '\t')
 			break;
 
@@ -263,20 +248,29 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 
 	docstring s(&str[0], str.size());
 
+	if (s[0] == '\t')
+		s.replace(0,1,from_ascii("    "));
+
 	/* Because we do our own bidi, at this point the strings are
 	 * already in visual order. However, Qt also applies its own
 	 * bidi algorithm to strings that it paints to the screen.
 	 * Therefore, if we were to paint Hebrew/Arabic words as a
 	 * single string, the letters in the words would get reversed
-	 * again. In order to avoid that, we reverse the string in advance.
+	 * again. In order to avoid that, we force LTR drawing.
 	 * See also http://thread.gmane.org/gmane.editors.lyx.devel/79740
 	 * for an earlier thread on the subject
 	 */
-	if (rtl)
+	// Left-to-right override: forces to draw text left-to-right
+	char_type const LRO = 0x202D;
+	// Right-to-left override: forces to draw text right-to-left
+	char_type const RLO = 0x202E;
+	// Pop directional formatting: return to previous state
+	char_type const PDF = 0x202C;
+	if (font.isVisibleRightToLeft()) {
 		reverse(s.begin(), s.end());
-
-	if (s[0] == '\t')
-		s.replace(0,1,from_ascii("    "));
+		s = RLO + s + PDF;
+	} else
+		s = LRO + s + PDF;
 
 	if (!selection && !change_running.changed()) {
 		x_ += pi_.pain.text(int(x_), yo_, s, font.fontInfo());

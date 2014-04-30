@@ -711,12 +711,6 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 }
 
 
-bool Encodings::isHebrewChar(char_type c)
-{
-	return c >= 0x0590 && c <= 0x05ff;
-}
-
-
 bool Encodings::isHebrewComposeChar(char_type c)
 {
 	return c <= 0x05c2 && c >= 0x05b0 && c != 0x05be && c != 0x05c0;

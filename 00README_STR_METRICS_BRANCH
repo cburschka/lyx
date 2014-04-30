@@ -11,8 +11,7 @@ what we have with force_paint_single_char. Moreover there has been
 some code factorization in TextMetrics, where the same row-breaking
 algorithm was basically implemented 3 times.
 
-Currently everything is supposed to work for LTR text, and RtL text
-should work too except possibly metrics with Arabic and Hebrew fonts.
+Currently everything is supposed to work for both LTR and RTL text.
 
 When KEEP_OLD_METRICS_CODE is defined in TextMetrics.cpp, the new code
 is tested against the old one in getPosNearX and cursorX. This can be

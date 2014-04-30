@@ -269,8 +269,6 @@ public:
 	///
 	static bool isHebrewComposeChar(char_type c);
 	///
-	static bool isHebrewChar(char_type c);
-	///
 	static bool isArabicComposeChar(char_type c);
 	///
 	static bool isArabicSpecialChar(char_type c);
