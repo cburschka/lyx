@@ -45,7 +45,7 @@ struct StartTag
 		bool keepempty = false) 
 		: tag_(tag), attr_(attr), keepempty_(keepempty) {}
 	///
-	~StartTag() {}
+	virtual ~StartTag() {}
 	/// <tag_ attr_>
 	virtual docstring writeTag() const;
 	/// </tag_>
