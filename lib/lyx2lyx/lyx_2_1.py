@@ -911,7 +911,7 @@ def revert_cell_rotation(document):
           document.body[i] = rgx.sub('', document.body[i])
         elif value == "90":
           rgx = re.compile(r' rotate="[^"]+?"')
-          document.body[i] = rgx.sub('rotate="true"', document.body[i])
+          document.body[i] = rgx.sub(' rotate="true"', document.body[i])
         else:
           rgx = re.compile(r' rotate="[^"]+?"')
           load_rotating = True
