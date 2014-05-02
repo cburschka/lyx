@@ -105,8 +105,6 @@ public:
 
 	///
 	int maxWidth() const { return max_width_; }
-	///
-	int singleWidth(pit_type const pit,	pos_type pos) const;
 
 	///
 	int rightMargin(ParagraphMetrics const & pm) const;
@@ -152,8 +150,7 @@ public:
 	/// returns the position near the specified x-coordinate of the row.
 	/// x is an absolute screen coord, it is set to the real beginning
 	/// of this column.
-	pos_type getPosNearX(pit_type pit, Row const & row, int & x,
-		bool & boundary) const;
+	pos_type getPosNearX(Row const & row, int & x, bool & boundary) const;
 
 	/// returns pos in given par at given x coord.
 	pos_type x2pos(pit_type pit, int row, int x) const;

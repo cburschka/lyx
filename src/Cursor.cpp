@@ -2090,7 +2090,7 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 
 		Row const & real_next_row = tm.parMetrics(pit()).rows()[next_row];
 		bool bound = false;
-		top().pos() = tm.getPosNearX(pit(), real_next_row, xo, bound);
+		top().pos() = tm.getPosNearX(real_next_row, xo, bound);
 		boundary(bound);
 
 		updateNeeded |= bv().checkDepm(*this, old);
