@@ -108,6 +108,9 @@ What's new
 
 - Fix invalid writing of default_otf_view_format preference (bug 9100).
 
+- Open View > Source Pane at a reasonable size (bug 9084). The downside of
+  this fix is that the Source Pane cannot be shrunken ad infinitum anymore.
+
 
 * INTERNALS
 
