@@ -165,10 +165,9 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 	// This method takes up 70% of time when typing
 	pos_type pos = bidi_.vis2log(vpos);
 	// first character
-	char_type prev_char = par_.getChar(pos);
-	vector<char_type> str;
+	char_type c = par_.getChar(pos);
+	docstring str;
 	str.reserve(100);
-	str.push_back(prev_char);
 
 	// special case for arabic
 	string const & lang = font.language()->lang();
@@ -179,13 +178,12 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 	// FIXME: Why only round brackets and why the difference to
 	// Hebrew? See also Paragraph::getUChar
 	if (swap_paren) {
-		char_type c = str[0];
 		if (c == '(')
 			c = ')';
 		else if (c == ')')
 			c = '(';
-		str[0] = c;
 	}
+	str.push_back(c);
 
 	pos_type const end = row_.endpos();
 	FontSpan const font_span = par_.fontSpan(pos);
@@ -230,7 +228,8 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 		if (c == '\t')
 			break;
 
-		if (!isPrintableNonspace(c))
+		if (!isPrintableNonspace(c)
+		    && (c != ' ' || row_.separator > 0))
 			break;
 
 		// FIXME: Why only round brackets and why the difference to
@@ -243,13 +242,10 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 		}
 
 		str.push_back(c);
-		prev_char = c;
 	}
 
-	docstring s(&str[0], str.size());
-
-	if (s[0] == '\t')
-		s.replace(0,1,from_ascii("    "));
+	if (str[0] == '\t')
+		str.replace(0,1,from_ascii("    "));
 
 	/* Because we do our own bidi, at this point the strings are
 	 * already in visual order. However, Qt also applies its own
@@ -267,13 +263,13 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 	// Pop directional formatting: return to previous state
 	char_type const PDF = 0x202C;
 	if (font.isVisibleRightToLeft()) {
-		reverse(s.begin(), s.end());
-		s = RLO + s + PDF;
+		reverse(str.begin(), str.end());
+		str = RLO + str + PDF;
 	} else
-		s = LRO + s + PDF;
+		str = LRO + str + PDF;
 
 	if (!selection && !change_running.changed()) {
-		x_ += pi_.pain.text(int(x_), yo_, s, font.fontInfo());
+		x_ += pi_.pain.text(int(x_), yo_, str, font.fontInfo());
 		return;
 	}
 
@@ -283,7 +279,7 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 	else if (selection)
 		copy.setPaintColor(Color_selectiontext);
 
-	x_ += pi_.pain.text(int(x_), yo_, s, copy);
+	x_ += pi_.pain.text(int(x_), yo_, str, copy);
 }
 
 

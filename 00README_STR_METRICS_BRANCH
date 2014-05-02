@@ -40,16 +40,16 @@ What is done:
   useless workarounds which disable kerning and ligatures.
 
 * when lyxrc.force_paint_single_char is false, draw also RtL text
-  string-wise. This both speed-up drawing and prepare for code
+  string-wise. This both speeds-up drawing and prepares for code
   removal, since we now rely on Qt to do things we use to do by
   ourselves (see isArabic* and isHebrew* code in Encodings.cpp).
 
+* Do not cut strings at separators in RowPainter when text is not
+  justified. This speeds-up painting by reducing the number of strings
+  to draw.
+
 
 Next steps:
-
-* investigate whether strings could be cut at separators in RowPainter
-  only in justified text. This would speed-up painting in other cases
-  by lowering the number of strings to draw.
 
 * get lots of testing.
 
