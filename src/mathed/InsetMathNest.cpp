@@ -1567,16 +1567,29 @@ void InsetMathNest::lfunMousePress(Cursor & cur, FuncRequest & cmd)
 void InsetMathNest::lfunMouseMotion(Cursor & cur, FuncRequest & cmd)
 {
 	// only select with button 1
-	if (cmd.button() == mouse_button::button1) {
-		Cursor & bvcur = cur.bv().cursor();
-		if (bvcur.realAnchor().hasPart(cur)) {
-			//lyxerr << "## lfunMouseMotion: cursor: " << cur << endl;
-			bvcur.setCursor(cur);
-			bvcur.setSelection(true);
-			//lyxerr << "MOTION " << bvcur << endl;
-		} else
-			cur.undispatched();
+	if (cmd.button() != mouse_button::button1)
+		return;
+
+	Cursor & bvcur = cur.bv().cursor();
+
+	// ignore motions deeper nested than the real anchor
+	if (!bvcur.realAnchor().hasPart(cur)) {
+		cur.undispatched();
+		return;
 	}
+
+	CursorSlice old = bvcur.top();
+
+	// We continue with our existing selection or start a new one, so don't
+	// reset the anchor.
+	bvcur.setCursor(cur);
+	// Did we actually move?
+	if (cur.top() == old)
+		// We didn't move one iota, so no need to change selection status
+		// or update the screen.
+		cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
+	else
+		bvcur.setSelection();
 }
 
 
