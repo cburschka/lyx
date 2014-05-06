@@ -83,8 +83,15 @@ private:
 	/// inline or normal listings
 	bool inline_;
 
+	/// Do we have a param with the given \c key?
+	bool hasParam(std::string const & key) const;
+	/// return the value for the given \c key, if avaible, else empty string
+	std::string getValue(std::string const & key) const;
+
 	/// key-value pairs of the parameters
-	std::map<std::string, std::string> params_;
+	// Use a vector of pairs in order to maintain the order of insertion.
+	typedef std::vector<std::pair<std::string, std::string> > keyValuePair;
+	keyValuePair params_;
 
 	/// collapsable status
 	InsetCollapsable::CollapseStatus status_;

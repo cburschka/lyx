@@ -728,17 +728,39 @@ void InsetListingsParams::read(Lexer & lex)
 string InsetListingsParams::params(string const & sep) const
 {
 	string par;
-	for (map<string, string>::const_iterator it = params_.begin();
-		it != params_.end(); ++it) {
+	keyValuePair::const_iterator it = params_.begin();
+	for (; it != params_.end(); ++it) {
 		if (!par.empty())
 			par += sep;
-		// key=value,key=value1 is stored in params_ as key=value,key_=value1. 
+		// key=value,key=value1 is stored in params_ as key=value,key_=value1.
 		if (it->second.empty())
 			par += rtrim(it->first, "_");
 		else
 			par += rtrim(it->first, "_") + '=' + it->second;
 	}
 	return par;
+}
+
+
+bool InsetListingsParams::hasParam(string const & key) const
+{
+	keyValuePair::const_iterator it = params_.begin();
+	for (; it != params_.end(); ++it) {
+		if (it->first == key)
+			return true;
+	}
+	return false;
+}
+
+
+string InsetListingsParams::getValue(string const & key) const
+{
+	keyValuePair::const_iterator it = params_.begin();
+	for (; it != params_.end(); ++it) {
+		if (it->first == key)
+			return it->second;
+	}
+	return string();
 }
 
 
@@ -750,19 +772,19 @@ void InsetListingsParams::addParam(string const & key,
 
 	// duplicate parameters!
 	string keyname = key;
-	if (!replace && params_.find(key) != params_.end())
+	if (!replace && hasParam(key))
 		// key=value,key=value1 is allowed in listings
 		// use key_, key__, key___ etc to avoid name conflict
-		while (params_.find(keyname += '_') != params_.end()) { }
+		while (hasParam(keyname += '_')) { }
 	// check onoff flag
 	// onoff parameter with value false
 	if (!par_validator)
 		par_validator = new ParValidator;
 	if (par_validator->onoff(key) && (value == "false" || value == "{false}"))
-		params_[keyname] = string();
+		params_.push_back(make_pair(keyname, string()));
 	// if the parameter is surrounded with {}, good
 	else if (prefixIs(value, "{") && suffixIs(value, "}"))
-		params_[keyname] = value;
+		params_.push_back(make_pair(keyname, value));
 	// otherwise, check if {} is needed. Add {} to all values with
 	// non-ascii/number characters, just to be safe
 	else {
@@ -773,9 +795,9 @@ void InsetListingsParams::addParam(string const & key,
 				break;
 			}
 		if (has_special_char)
-			params_[keyname] = "{" + value + "}";
+			params_.push_back(make_pair(keyname, "{" + value + "}"));
 		else
-			params_[keyname] = value;
+			params_.push_back(make_pair(keyname, value));
 	}
 }
 
@@ -864,15 +886,14 @@ void InsetListingsParams::fromEncodedString(string const & in)
 
 bool InsetListingsParams::isFloat() const
 {
-	return params_.find("float") != params_.end();
+	return hasParam("float");
 }
 
 
 string InsetListingsParams::getParamValue(string const & param) const
 {
 	// is this parameter defined?
-	map<string, string>::const_iterator it = params_.find(param);
-	string par = (it == params_.end()) ? string() : it->second;
+	string par = (hasParam(param)) ? getValue(param) : string();
 	if (prefixIs(par, "{") && suffixIs(par, "}"))
 		return par.substr(1, par.size() - 2);
 	else
@@ -885,9 +906,11 @@ docstring InsetListingsParams::validate() const
 	docstring msg;
 	if (!par_validator)
 		par_validator = new ParValidator;
-	for (map<string, string>::const_iterator it = params_.begin();
-		it != params_.end(); ++it) {
-		msg = par_validator->validate(it->first, it->second);
+	// return msg for first key=value pair which is incomplete or has an error
+	keyValuePair::const_iterator it = params_.begin();
+	for (; it != params_.end(); ++it) {
+		// key trimmed
+		msg = par_validator->validate(rtrim(it->first, "_"), it->second);
 		if (!msg.empty())
 			return msg;
 	}
