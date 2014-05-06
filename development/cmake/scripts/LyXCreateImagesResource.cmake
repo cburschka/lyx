@@ -65,6 +65,11 @@ foreach (_current_FILE ${images})
   file(APPEND ${RESOURCE_NAME} "	 <file alias=\"${_file_name}\">${_abs_FILE}</file>\n")
 endforeach (_current_FILE)
 
+# copy lyx.svg too (and use versioning)
+get_filename_component(_abs_FILE "${IMAGES_DIR}/lyx.svg" ABSOLUTE)
+string(REGEX REPLACE "${MAPPED_DIR}" "" _file_name ${_abs_FILE})
+file(APPEND ${RESOURCE_NAME} "         <file alias=\"lyx${SUFFIX}\">${_abs_FILE}</file>\n")
+
 file(APPEND ${RESOURCE_NAME} "</qresource>\n")
 file(APPEND ${RESOURCE_NAME} "</RCC>\n")
 
