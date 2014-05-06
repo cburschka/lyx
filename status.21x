@@ -117,6 +117,9 @@ What's new
 - Fix a problem when PATH changes and python command is relative (bug 8950).
 
 - Reduce memory use with large documents.
+
+- Disable a console message when loading a document in a language for
+  which the UI is not translated.
  
 
 * DOCUMENTATION AND LOCALIZATION

@@ -250,7 +250,7 @@ bool Messages::readMoFile()
 
 	string const code = realCode(lang_);
 	if (code.empty()) {
-		LYXERR0("Cannot find translation for language " << lang_);
+		LYXERR(Debug::LOCALE, "Cannot find translation for language " << lang_);
 		return false;
 	}
 
