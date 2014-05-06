@@ -500,11 +500,9 @@ ParValidator::ParValidator()
 		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_["escapeinside"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["escepeinside"] =
+	all_params_["escapebegin"] =
 		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["escepebegin"] =
-		ListingsParam("", false, ALL, "", empty_hint);
-	all_params_["escepeend"] =
+	all_params_["escapeend"] =
 		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_["fancyvrb"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);

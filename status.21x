@@ -51,6 +51,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Do not sort advanced listings settings, since their insertion order is
+  relevant (bug 5203).
+
 
 
 * LYX2LYX
@@ -64,6 +67,11 @@ What's new
 
 - Do not forget last words of paragraphs in completion possibilities.
 - Select word on double click even when at boundary (#9159).
+
+- Fix listings inset parameter validation when font size is selected
+  (bug 8144).
+
+- Fix listings validator with regard to aboveskip and belowskip (bug 7373).
 
 
 * INTERNALS
