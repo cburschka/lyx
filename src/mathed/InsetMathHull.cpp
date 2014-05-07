@@ -510,7 +510,7 @@ void InsetMathHull::drawBackground(PainterInfo & pi, int x, int y) const
 		return;
 	} 
 	pi.pain.fillRectangle(x + 1, y - dim.asc + 1, dim.wid - 2,
-			dim.asc + dim.des - 1, backgroundColor(pi));
+			dim.asc + dim.des - 1, pi.backgroundColor(this));
 }
 
 

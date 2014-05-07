@@ -113,6 +113,8 @@ What's new
 - Open View > Source Pane at a reasonable size (bug 9084). The downside of
   this fix is that the Source Pane cannot be shrunken ad infinitum anymore.
 
+- Fix problem with drawing of background in math when selection is active.
+
 
 * INTERNALS
 
