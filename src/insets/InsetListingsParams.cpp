@@ -35,6 +35,7 @@ enum param_type {
 	TRUEFALSE, // accept 'true' or 'false'
 	INTEGER, // accept an integer
 	LENGTH,  // accept a latex length
+	SKIP,    // accept a skip or a length
 	ONEOF,  // accept one of a few values
 	SUBSETOF // accept a string composed of given characters
 };
@@ -91,6 +92,9 @@ private:
 	/// a help message that is displayed in the gui.
 	docstring hint_;
 };
+
+
+char const * allowed_skips = "\\smallskipamount,\\medskipamount,\\bigskipamount";
 
 
 docstring ListingsParam::validate(string const & par) const
@@ -159,6 +163,20 @@ docstring ListingsParam::validate(string const & par) const
 		}
 		if (!isValidLength(par2))
 			return _("Invalid LaTeX length expression.");
+		if (unclosed)
+			return _("Unbalanced braces!");
+		return docstring();
+
+	case SKIP:
+		if (par2.empty() && !onoff_) {
+			if (!hint_.empty())
+				return hint_;
+			else
+				return bformat(_("Please specify a LaTeX length expression or a skip amount (%1$s)"),
+					       from_ascii(subst(allowed_skips, ",", ", ")));
+		}
+		if (!isValidLength(par2) && tokenPos(allowed_skips, ',', par2) == -1)
+			return _("Not a valid LaTeX length expression or skip amount.");
 		if (unclosed)
 			return _("Unbalanced braces!");
 		return docstring();
@@ -296,11 +314,11 @@ ParValidator::ParValidator()
 	all_params_["floatplacement"] =
 		ListingsParam("tbp", false, SUBSETOF, "tbp", empty_hint);
 	all_params_["aboveskip"] =
-		ListingsParam("\\medskipamount", false, LENGTH, "", empty_hint);
+		ListingsParam("\\medskipamount", false, SKIP, "", empty_hint);
 	all_params_["belowskip"] =
-		ListingsParam("\\medskipamount", false, LENGTH, "", empty_hint);
+		ListingsParam("\\medskipamount", false, SKIP, "", empty_hint);
 	all_params_["lineskip"] =
-		ListingsParam("", false, LENGTH, "", empty_hint);
+		ListingsParam("", false, SKIP, "", empty_hint);
 	all_params_["boxpos"] =
 		ListingsParam("", false, SUBSETOF, "bct", empty_hint);
 	all_params_["print"] =
@@ -423,9 +441,9 @@ ParValidator::ParValidator()
 	all_params_["captionpos"] =
 		ListingsParam("", false, SUBSETOF, "tb", empty_hint);
 	all_params_["abovecaptionskip"] =
-		ListingsParam("", false, LENGTH, "", empty_hint);
+		ListingsParam("", false, SKIP, "", empty_hint);
 	all_params_["belowcaptionskip"] =
-		ListingsParam("", false, LENGTH, "", empty_hint);
+		ListingsParam("", false, SKIP, "", empty_hint);
 	all_params_["linewidth"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
 	all_params_["xleftmargin"] =
