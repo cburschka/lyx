@@ -304,8 +304,13 @@ GuiFontInfo::GuiFontInfo(FontInfo const & f)
 
 	switch (f.realShape()) {
 		case ITALIC_SHAPE:
+			font.setStyle(QFont::StyleItalic);
+			break;
 		case SLANTED_SHAPE:
-			font.setItalic(true);
+			font.setStyle(QFont::StyleOblique);
+			break;
+		case SMALLCAPS_SHAPE:
+			font.setCapitalization(QFont::SmallCaps);
 			break;
 		default:
 			break;
@@ -327,19 +332,7 @@ GuiFontInfo::GuiFontInfo(FontInfo const & f)
 
 	LYXERR(Debug::FONT, "The font has size: " << font.pointSizeF());
 
-	if (f.realShape() != SMALLCAPS_SHAPE) {
-		metrics = GuiFontMetrics(font);
-	} else {
-		// handle small caps ourselves ...
-		FontInfo smallfont = f;
-		smallfont.decSize().decSize().setShape(UP_SHAPE);
-		QFont font2(font);
-		font2.setKerning(false);
-		font2.setPointSizeF(convert<double>(lyxrc.font_sizes[smallfont.size()])
-			       * lyxrc.zoom / 100.0);
-
-		metrics = GuiFontMetrics(font, font2);
-	}
+	metrics = GuiFontMetrics(font);
 }
 
 

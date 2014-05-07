@@ -144,13 +144,6 @@ private:
 	/// draw a bevelled button border
 	void buttonFrame(int x, int y, int w, int h);
 
-	/// draw small caps text
-	/**
-	\return width of the drawn text.
-	*/
-	int smallCapsText(int x, int y,
-		QString const & str, FontInfo const & f);
-
 	/// set pen parameters
 	void setQPainterPen(QColor const & col,
 		line_style ls = line_solid, float lw = thin_line);

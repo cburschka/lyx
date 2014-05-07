@@ -40,7 +40,7 @@ namespace {
  * these are not real ucs4 characters. These are codepoints in the
  * computer modern fonts used, nothing unicode related.
  * See comment in QLPainter::text() for more explanation.
- **/	
+ **/
 inline QChar const ucs4_to_qchar(char_type const ucs4)
 {
 	LATTEST(is_utf16(ucs4));
@@ -49,14 +49,7 @@ inline QChar const ucs4_to_qchar(char_type const ucs4)
 } // anon namespace
 
 
-GuiFontMetrics::GuiFontMetrics(QFont const & font)
-: metrics_(font, 0), smallcaps_metrics_(font), smallcaps_shape_(false)
-{
-}
-
-
-GuiFontMetrics::GuiFontMetrics(QFont const & font, QFont const & smallcaps_font)
-: metrics_(font, 0), smallcaps_metrics_(smallcaps_font), smallcaps_shape_(true)
+GuiFontMetrics::GuiFontMetrics(QFont const & font) : metrics_(font, 0)
 {
 }
 
@@ -115,27 +108,6 @@ int GuiFontMetrics::rbearing(char_type c) const
 }
 
 
-int GuiFontMetrics::smallcapsWidth(char_type c) const
-{
-	// FIXME: Optimisation probably needed: we don't use the width cache.
-	if (is_utf16(c)) {
-		QChar const qc = ucs4_to_qchar(c);
-		QChar const uc = qc.toUpper();
-		if (qc != uc)
-			return smallcaps_metrics_.width(uc);
-		else
-			return metrics_.width(qc);
-	} else {
-		QString const s = toqstr(docstring(1, c));
-		QString const us = s.toUpper();
-		if (s != us)
-			return smallcaps_metrics_.width(us);
-		else
-			return metrics_.width(s);
-	}
-}
-
-
 int GuiFontMetrics::width(docstring const & s) const
 {
 	size_t ls = s.size();
@@ -145,10 +117,7 @@ int GuiFontMetrics::width(docstring const & s) const
 		/**
 		if isSurrogateBase(s[i]) {
 			docstring c = s[i];
-			if (smallcaps_shape_)
-				w += metrics_.width(toqstr(c + s[i + 1]));
-			else
-				w += smallcaps_metrics_.width(toqstr(c + s[i + 1]));
+			w += metrics_.width(toqstr(c + s[i + 1]));
 			++i;
 		}
 		else
@@ -230,9 +199,6 @@ GuiFontMetrics::AscendDescend const GuiFontMetrics::fillMetricsCache(
 
 int GuiFontMetrics::width(char_type c) const
 {
-	if (smallcaps_shape_)
-		return smallcapsWidth(c);
-
 	int value = width_cache_.value(c, outOfLimitMetric);
 	if (value != outOfLimitMetric)
 		return value;
@@ -250,7 +216,7 @@ int GuiFontMetrics::width(char_type c) const
 
 int GuiFontMetrics::ascent(char_type c) const
 {
-	static AscendDescend const outOfLimitAD = 
+	static AscendDescend const outOfLimitAD =
 		{outOfLimitMetric, outOfLimitMetric};
 	AscendDescend value = metrics_cache_.value(c, outOfLimitAD);
 	if (value.ascent != outOfLimitMetric)
@@ -263,7 +229,7 @@ int GuiFontMetrics::ascent(char_type c) const
 
 int GuiFontMetrics::descent(char_type c) const
 {
-	static AscendDescend const outOfLimitAD = 
+	static AscendDescend const outOfLimitAD =
 		{outOfLimitMetric, outOfLimitMetric};
 	AscendDescend value = metrics_cache_.value(c, outOfLimitAD);
 	if (value.descent != outOfLimitMetric)

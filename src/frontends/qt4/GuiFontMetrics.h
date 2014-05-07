@@ -26,7 +26,6 @@ class GuiFontMetrics : public FontMetrics
 {
 public:
 	GuiFontMetrics(QFont const & font);
-	GuiFontMetrics(QFont const & font, QFont const & smallcaps_font);
 
 	virtual ~GuiFontMetrics() {}
 
@@ -54,13 +53,8 @@ public:
 	int width(QString const & str) const;
 
 private:
-	int smallcapsWidth(char_type c) const;
-
 	/// Metrics on the font
 	QFontMetrics metrics_;
-	QFontMetrics smallcaps_metrics_;
-
-	bool smallcaps_shape_;
 
 	/// Cache of char widths
 	mutable QHash<char_type, int> width_cache_;

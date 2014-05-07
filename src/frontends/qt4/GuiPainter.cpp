@@ -276,33 +276,6 @@ int GuiPainter::text(int x, int y, char_type c, FontInfo const & f)
 }
 
 
-int GuiPainter::smallCapsText(int x, int y,
-	QString const & s, FontInfo const & f)
-{
-	FontInfo smallfont(f);
-	smallfont.decSize().decSize().setShape(UP_SHAPE);
-
-	QFont const & qfont = getFont(f);
-	QFont const & qsmallfont = getFont(smallfont);
-
-	setQPainterPen(computeColor(f.realColor()));
-	int textwidth = 0;
-	size_t const ls = s.length();
-	for (unsigned int i = 0; i < ls; ++i) {
-		QChar const c = s[i].toUpper();
-		if (c != s.at(i)) {
-			setFont(qsmallfont);
-		} else {
-			setFont(qfont);
-		}
-		if (isDrawingEnabled())
-			drawText(x + textwidth, y, c);
-		textwidth += fontMetrics().width(c);
-	}
-	return textwidth;
-}
-
-
 int GuiPainter::text(int x, int y, docstring const & s,
 		FontInfo const & f)
 {
@@ -333,12 +306,6 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	GuiFontMetrics const & fm = getFontMetrics(f); 
 
 	int textwidth;
-
-	if (f.realShape() == SMALLCAPS_SHAPE) {
-		textwidth = smallCapsText(x, y, str, f);
-		textDecoration(f, x, y, textwidth);
-		return textwidth;
-	}
 
 	// Here we use the font width cache instead of
 	//   textwidth = fontMetrics().width(str);
