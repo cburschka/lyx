@@ -890,8 +890,7 @@ bool InsetListingsParams::isFloat() const
 
 string InsetListingsParams::getParamValue(string const & param) const
 {
-	// is this parameter defined?
-	string par = (hasParam(param)) ? getValue(param) : string();
+	string par = getValue(param);
 	if (prefixIs(par, "{") && suffixIs(par, "}"))
 		return par.substr(1, par.size() - 2);
 	else
