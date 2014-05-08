@@ -2989,18 +2989,18 @@ def convert_beamerblocks(document):
                         break
                     ertcontlastline = lastertend - 3
                     while True:
-                        if document.body[ertcontfirstline].startswith("<"):
+                        if document.body[ertcontfirstline].lstrip().startswith("<"):
                             # This is an overlay specification
                             # strip off the <
-                            document.body[ertcontfirstline] = document.body[ertcontfirstline][1:]
-                            if document.body[ertcontlastline].endswith(">"):
+                            document.body[ertcontfirstline] = document.body[ertcontfirstline].lstrip()[1:]
+                            if document.body[ertcontlastline].rstrip().endswith(">"):
                                 # strip off the >
-                                document.body[ertcontlastline] = document.body[ertcontlastline][:-1]
+                                document.body[ertcontlastline] = document.body[ertcontlastline].rstrip()[:-1]
                                 # Convert to ArgInset
                                 document.body[parbeg] = "\\begin_inset Argument 1"
-                            elif document.body[ertcontlastline].endswith("}"):
+                            elif document.body[ertcontlastline].rstrip().endswith("}"):
                                 # strip off the }
-                                document.body[ertcontlastline] = document.body[ertcontlastline][:-1]
+                                document.body[ertcontlastline] = document.body[ertcontlastline].rstrip()[:-1]
                                 # divide the args
                                 ertcontdivline = ertcontfirstline
                                 tok = document.body[ertcontdivline].find('>{')
@@ -3025,12 +3025,12 @@ def convert_beamerblocks(document):
                                                                             document.body[ertcontdivline][tok + 2:]]
                             # Convert to ArgInset
                             document.body[parbeg] = "\\begin_inset Argument 1"
-                        elif document.body[ertcontfirstline].startswith("{"):
+                        elif document.body[ertcontfirstline].lstrip().startswith("{"):
                             # This is the block title
-                            if document.body[ertcontlastline].endswith("}"):
+                            if document.body[ertcontlastline].rstrip().endswith("}"):
                                 # strip off the braces
-                                document.body[ertcontfirstline] = document.body[ertcontfirstline][1:]
-                                document.body[ertcontlastline] = document.body[ertcontlastline][:-1]
+                                document.body[ertcontfirstline] = document.body[ertcontfirstline].lstrip()[1:]
+                                document.body[ertcontlastline] = document.body[ertcontlastline].rstrip()[:-1]
                                 if ertcontfirstline < ertcontlastline:
                                     # Multiline ERT. Might contain TeX code.  Embrace in ERT.
                                     document.body[parend : parend + 1] = [
