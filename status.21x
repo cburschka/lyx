@@ -91,6 +91,8 @@ What's new
 - Fix crash when performing "Change Case" operation on a selection with font
   changes (bug 7943).
 
+- Fix crash involving certain sorts of BibTeX files (bug 9112).
+
 - Fix assertion when entering a path into the import dialog (bug 7437).
 
 - Fix assertion when doing advanced replace with table cells selected (bug

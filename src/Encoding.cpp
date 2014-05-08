@@ -537,8 +537,11 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 		if (j + 1 < cmdend && cmd[j + 1] == '{') {
 			size_t k = j + 1;
 			int count = 1;
-			while (k < cmdend && count && k != docstring::npos) {
+			while (k < cmdend && count) {
 				k = cmd.find_first_of(from_ascii("{}"), k + 1);
+				// braces may not be balanced
+				if (k == docstring::npos)
+					break;
 				if (cmd[k] == '{')
 					++count;
 				else
@@ -603,8 +606,11 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 			    k < cmdend && cmd[k] == '{') {
 				size_t l = k;
 				int count = 1;
-				while (l < cmdend && count && l != docstring::npos) {
+				while (l < cmdend && count) {
 					l = cmd.find_first_of(from_ascii("{}"), l + 1);
+					// braces may not be balanced
+					if (l == docstring::npos)
+						break;
 					if (cmd[l] == '{')
 						++count;
 					else
