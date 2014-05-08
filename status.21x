@@ -67,6 +67,8 @@ What's new
 
 - Fix conversion of beamer block titles ending with non-ERT insets to 2.1 format.
 
+- Fix conversion of beamer blocks with preceding or trailing blanks.
+
 - Add \justification parameter when converting to 2.1 format (avoids when
   converting back to 2.0 format).
 
