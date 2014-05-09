@@ -373,12 +373,13 @@ if(LYX_INSTALL_PREFIX)
 endif()
 set(LYX_INSTALL_PREFIX ${LYX_INSTALL_PREFIX} CACHE PATH "LyX user's choice install prefix" FORCE)
 
+string(REGEX REPLACE "/lyx${LYX_INSTALL_SUFFIX}$" "/share" SYSTEM_DATADIR ${CMAKE_INSTALL_PREFIX})
+
 if(LYX_PACKAGE_SUFFIX)
 	set(PACKAGE ${PACKAGE_BASE}${LYX_INSTALL_SUFFIX})
 else()
 	set(PACKAGE ${PACKAGE_BASE})
 endif()
-
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 	# see http://www.cmake.org/pipermail/cmake/2006-October/011559.html
