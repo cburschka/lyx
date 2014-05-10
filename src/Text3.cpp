@@ -1021,11 +1021,20 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_CHAR_DELETE_FORWARD:
 		if (!cur.selection()) {
+			bool was_separator = cur.paragraph().isEnvSeparator(cur.pos());
 			if (cur.pos() == cur.paragraph().size())
 				// Par boundary, force full-screen update
 				singleParUpdate = false;
 			needsUpdate |= erase(cur);
 			cur.resetAnchor();
+			if (was_separator && cur.pos() == cur.paragraph().size()
+			    && (!cur.paragraph().layout().isEnvironment()
+				|| cur.paragraph().size() > 0)) {
+				// Force full-screen update
+				singleParUpdate = false;
+				needsUpdate |= erase(cur);
+				cur.resetAnchor();
+			}
 			// It is possible to make it a lot faster still
 			// just comment out the line below...
 		} else {
@@ -1038,11 +1047,17 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_DELETE_BACKWARD:
 		if (!cur.selection()) {
 			if (bv->getIntl().getTransManager().backspace()) {
+				bool par_boundary = cur.pos() == 0;
 				// Par boundary, full-screen update
-				if (cur.pos() == 0)
+				if (par_boundary)
 					singleParUpdate = false;
 				needsUpdate |= backspace(cur);
 				cur.resetAnchor();
+				if (par_boundary && cur.pos() > 0
+				    && cur.paragraph().isEnvSeparator(cur.pos() - 1)) {
+					needsUpdate |= backspace(cur);
+					cur.resetAnchor();
+				}
 				// It is possible to make it a lot faster still
 				// just comment out the line below...
 			}
@@ -1052,11 +1067,33 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_PARAGRAPH_BREAK:
+	case LFUN_PARAGRAPH_BREAK: {
 		cap::replaceSelection(cur);
-		breakParagraph(cur, cmd.argument() == "inverse");
+		pit_type pit = cur.pit();
+		Paragraph const & par = pars_[pit];
+		Paragraph const & prevpar = pit > 0 ? pars_[pit - 1] : par;
+		if (pit > 0 && cur.pos() == par.beginOfBody()
+		    && ((prevpar.getDepth() > par.getDepth()
+			 && !par.layout().isEnvironment())
+			|| (prevpar.layout() != par.layout()
+			    && prevpar.layout().isEnvironment()))) {
+			if (par.layout().isEnvironment()) {
+				docstring const layout = par.layout().name();
+				DocumentClass const & tc = bv->buffer().params().documentClass();
+				lyx::dispatch(FuncRequest(LFUN_LAYOUT, tc.plainLayout().name()));
+				lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "parbreak"));
+				breakParagraph(cur, true);
+				lyx::dispatch(FuncRequest(LFUN_LAYOUT, layout));
+			} else {
+				lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "parbreak"));
+				breakParagraph(cur);
+			}
+		} else {
+			breakParagraph(cur, cmd.argument() == "inverse");
+		}
 		cur.resetAnchor();
 		break;
+	}
 
 	case LFUN_INSET_INSERT: {
 		cur.recordUndo();
@@ -1404,15 +1441,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			while (cur.paragraph().params().depth() > split_depth)
 				lyx::dispatch(FuncRequest(LFUN_DEPTH_DECREMENT));
 		}
-		bool const morecont = cur.lastpos() > cur.pos();
-		// FIXME This hardcoding is bad
-		docstring const sep =
-				cur.buffer()->params().documentClass().hasLayout(from_ascii("Separator"))
-					? from_ascii("Separator") : from_ascii("--Separator--");
-		lyx::dispatch(FuncRequest(LFUN_LAYOUT, sep));
+		DocumentClass const & tc = bv->buffer().params().documentClass();
+		lyx::dispatch(FuncRequest(LFUN_LAYOUT, tc.plainLayout().name()));
+		lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "plain"));
 		lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK, "inverse"));
-		if (morecont)
-			lyx::dispatch(FuncRequest(LFUN_DOWN));
 		lyx::dispatch(FuncRequest(LFUN_LAYOUT, layout));
 
 		break;
@@ -1902,6 +1934,16 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		doInsertInset(cur, this, cmd, false, false);
 		cur.posForward();
 		break;
+
+	case LFUN_SEPARATOR_INSERT: {
+		doInsertInset(cur, this, cmd, false, false);
+		cur.posForward();
+		// remove a following space
+		Paragraph & par = cur.paragraph();
+		if (cur.pos() != cur.lastpos() && par.isLineSeparator(cur.pos()))
+		    par.eraseChar(cur.pos(), cur.buffer()->params().track_changes);
+		break;
+	}
 
 	case LFUN_DEPTH_DECREMENT:
 		changeDepth(cur, DEC_DEPTH);
@@ -2906,6 +2948,11 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			&& cur.pos() > cur.paragraph().beginOfBody();
 		break;
 
+	case LFUN_SEPARATOR_INSERT:
+		// Always enabled for now
+		enable = true;
+		break;
+
 	case LFUN_TAB_INSERT:
 	case LFUN_TAB_DELETE:
 		enable = cur.paragraph().isPassThru();
@@ -2953,12 +3000,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_ENVIRONMENT_SPLIT: {
-		// FIXME This hardcoding is bad
-		if (!cur.buffer()->params().documentClass().hasLayout(from_ascii("Separator"))
-		    && !cur.buffer()->params().documentClass().hasLayout(from_ascii("--Separator--"))) {
-			enable = false;
-			break;
-		}
 		if (cmd.argument() == "outer") {
 			// check if we have an environment in our nesting hierarchy
 			bool res = false;

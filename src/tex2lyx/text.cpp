@@ -1599,24 +1599,13 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		if (last_env == name) {
 			// we need to output a separator since LyX would export
 			// the two environments as one otherwise (bug 5716)
-			docstring const sep = from_ascii("--Separator--");
 			TeX2LyXDocClass const & textclass(parent_context.textclass);
-			if (textclass.hasLayout(sep)) {
-				Context newcontext(parent_context);
-				newcontext.layout = &(textclass[sep]);
-				newcontext.check_layout(os);
-				newcontext.check_end_layout(os);
-			} else {
-				parent_context.check_layout(os);
-				begin_inset(os, "Note Note\n");
-				os << "status closed\n";
-				Context newcontext(true, textclass,
-						&(textclass.defaultLayout()));
-				newcontext.check_layout(os);
-				newcontext.check_end_layout(os);
-				end_inset(os);
-				parent_context.check_end_layout(os);
-			}
+			Context newcontext(true, textclass,
+					&(textclass.defaultLayout()));
+			newcontext.check_layout(os);
+			begin_inset(os, "Separator plain\n");
+			end_inset(os);
+			newcontext.check_end_layout(os);
 		}
 		switch (context.layout->latextype) {
 		case  LATEX_LIST_ENVIRONMENT:

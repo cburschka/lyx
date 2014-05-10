@@ -108,6 +108,7 @@ void Bidi::computeTables(Paragraph const & par,
 		pos_type const pos =
 			(is_space && lpos + 1 <= end_ &&
 			 !par.isLineSeparator(lpos + 1) &&
+			 !par.isEnvSeparator(lpos + 1) &&
 			 !par.isNewline(lpos + 1))
 			? lpos + 1 : lpos;
 

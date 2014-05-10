@@ -165,6 +165,9 @@ import os, re, string, sys
 # Incremented to format 49, 10 Feb 2014 by gb
 # Change default of "ResetsFont" tag to false
 
+# Incremented to format 50, 9 May 2014 by forenr
+# Removal of "Separator" layouts
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -172,7 +175,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 49
+currentFormat = 50
 
 
 def usage(prog_name):
@@ -270,6 +273,7 @@ def convert(lines):
     re_QInsetLayout2 = re.compile(r'^\s*InsetLayout\s+"([^"]+)"\s*$', re.IGNORECASE)
     re_IsFlex = re.compile(r'\s*LyXType.*$', re.IGNORECASE)
     re_CopyStyle2 = re.compile(r'(\s*CopyStyle\s+)"?([^"]+)"?\s*$')
+    re_Separator = re.compile(r'^(?:(-*)|(\s*))(Separator|EndOfSlide)(?:(-*)|(\s*))$', re.IGNORECASE)
     # for categories
     re_Declaration = re.compile(r'^#\s*\\Declare\w+Class.*$')
     re_ExtractCategory = re.compile(r'^(#\s*\\Declare\w+Class(?:\[[^]]*?\])?){([^(]+?)\s+\(([^)]+?)\)\s*}\s*$')
@@ -393,6 +397,63 @@ def convert(lines):
             i += 1
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
+            continue
+
+        if format == 49:
+            separator = []
+
+            # delete separator styles
+            match = re_Style.match(lines[i])
+            if match:
+                style = string.lower(match.group(4))
+                if re_Separator.match(style):
+                    del lines[i]
+                    while i < len(lines) and not re_End.match(lines[i]):
+                        separator.append(lines[i])
+                        del lines[i]
+                    if i == len(lines):
+                        error('Incomplete separator style.')
+                    else:
+                        del lines[i]
+                        continue
+
+            # delete undefinition of separator styles
+            match = re_NoStyle.match(lines[i])
+            if match:
+                style = string.lower(match.group(4))
+                if re_Separator.match(style):
+                    del lines[i]
+                    continue
+
+            # replace the CopyStyle statement with the definition of the real
+            # style. This may result in duplicate statements, but that is OK
+            # since the second one will overwrite the first one.
+            match = re_CopyStyle.match(lines[i])
+            if match:
+                style = string.lower(match.group(4))
+                if re_Separator.match(style):
+                    if len(separator) > 0:
+                        lines[i:i+1] = separator
+                    else:
+                        # FIXME: If this style was redefined in an include file,
+                        # we should replace the real style and not this default.
+                        lines[i:i+1] = ['	Category              MainText',
+                                        '	KeepEmpty             1',
+                                        '	Margin                Dynamic',
+                                        '	LatexType             Paragraph',
+                                        '	LatexName             dummy',
+                                        '	ParIndent             MM',
+                                        '	Align                 Block',
+                                        '	LabelType             Static',
+                                        '	LabelString           "--- Separate Environment ---"',
+                                        '	LabelFont',
+                                        '	  Family              Roman',
+                                        '	  Series              Medium',
+                                        '	  Size                Normal',
+                                        '	  Color               Blue',
+                                        '	EndFont',
+                                        '	HTMLLabel             NONE']
+            i += 1
             continue
 
         if format == 48:

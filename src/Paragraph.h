@@ -404,6 +404,8 @@ public:
 	bool isInset(pos_type pos) const;
 	///
 	bool isNewline(pos_type pos) const;
+	///
+	bool isEnvSeparator(pos_type pos) const;
 	/// return true if the char is a word separator
 	bool isSeparator(pos_type pos) const;
 	///

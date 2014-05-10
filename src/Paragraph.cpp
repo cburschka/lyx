@@ -1054,7 +1054,7 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	}
 
 	// FIXME: move this to InsetNewline::latex
-	if (inset->lyxCode() == NEWLINE_CODE) {
+	if (inset->lyxCode() == NEWLINE_CODE || inset->lyxCode() == SEPARATOR_CODE) {
 		// newlines are handled differently here than
 		// the default in simpleTeXSpecialChars().
 		if (!style.newline_allowed) {
@@ -2132,17 +2132,17 @@ void Paragraph::setBeginOfBody()
 	// remove unnecessary getChar() calls
 	pos_type i = 0;
 	pos_type end = size();
-	if (i < end && !isNewline(i)) {
+	if (i < end && !(isNewline(i) || isEnvSeparator(i))) {
 		++i;
 		char_type previous_char = 0;
 		char_type temp = 0;
 		if (i < end) {
 			previous_char = d->text_[i];
-			if (!isNewline(i)) {
+			if (!(isNewline(i) || isEnvSeparator(i))) {
 				++i;
 				while (i < end && previous_char != ' ') {
 					temp = d->text_[i];
-					if (isNewline(i))
+					if (isNewline(i) || isEnvSeparator(i))
 						break;
 					++i;
 					previous_char = temp;
@@ -3202,6 +3202,13 @@ bool Paragraph::isNewline(pos_type pos) const
 {
 	Inset const * inset = getInset(pos);
 	return inset && inset->lyxCode() == NEWLINE_CODE;
+}
+
+
+bool Paragraph::isEnvSeparator(pos_type pos) const
+{
+	Inset const * inset = getInset(pos);
+	return inset && inset->lyxCode() == SEPARATOR_CODE;
 }
 
 

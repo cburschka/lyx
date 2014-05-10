@@ -269,7 +269,7 @@ bool ParagraphMetrics::hfillExpansion(Row const & row, pos_type pos) const
 	// the specified position that is neither a newline nor an hfill,
 	// the hfill will be expanded, otherwise it won't
 	for (pos_type i = row.pos(); i < pos; i++) {
-		if (!par_->isNewline(i) && !par_->isHfill(i))
+		if (!par_->isNewline(i) && !par_->isEnvSeparator(i) && !par_->isHfill(i))
 			return true;
 	}
 	return false;

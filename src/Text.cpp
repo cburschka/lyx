@@ -921,6 +921,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 				if (contains(number_unary_operators, c) &&
 				    (cur.pos() == 1
 				     || par.isSeparator(cur.pos() - 2)
+				     || par.isEnvSeparator(cur.pos() - 2)
 				     || par.isNewline(cur.pos() - 2))
 				  ) {
 					setCharFont(pit, cur.pos() - 1, cur.current_font,

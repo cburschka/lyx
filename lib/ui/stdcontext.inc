@@ -302,6 +302,14 @@ Menuset
 	End
 
 #
+# InsetNewline context menu
+#
+	Menu "context-separator"
+		Item "Plain Separator|P" "inset-modify separator plain"
+		Item "Paragraph Break|B" "inset-modify separator parbreak"
+	End
+
+#
 # Edit context menu
 #
 	Menu "context-edit"

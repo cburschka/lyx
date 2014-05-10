@@ -52,6 +52,7 @@
 #include "insets/InsetPreview.h"
 #include "insets/InsetRef.h"
 #include "insets/InsetScript.h"
+#include "insets/InsetSeparator.h"
 #include "insets/InsetSpace.h"
 #include "insets/InsetTabular.h"
 #include "insets/InsetTOC.h"
@@ -97,6 +98,20 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			else if (name == "cleardoublepage")
 				inp.kind = InsetNewpageParams::CLEARDOUBLEPAGE;
 			return new InsetNewpage(inp);
+		}
+
+		case LFUN_SEPARATOR_INSERT: {
+			string const name = cmd.getArg(0);
+			InsetSeparatorParams inp;
+			if (name.empty() || name == "plain")
+				inp.kind = InsetSeparatorParams::PLAIN;
+			else if (name == "parbreak")
+				inp.kind = InsetSeparatorParams::PARBREAK;
+			else {
+				lyxerr << "Wrong argument for LyX function 'separator-insert'." << endl;
+				break;
+			}
+			return new InsetSeparator(inp);
 		}
 
 		case LFUN_FLEX_INSERT: {
@@ -627,6 +642,8 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 			inset.reset(new InsetNewpage);
 		} else if (tmptok == "Newline") {
 			inset.reset(new InsetNewline);
+		} else if (tmptok == "Separator") {
+			inset.reset(new InsetSeparator);
 		} else if (tmptok == "Argument") {
 			inset.reset(new InsetArgument(buf, tmptok));
 		} else if (tmptok == "Float") {

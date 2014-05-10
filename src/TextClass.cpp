@@ -61,7 +61,7 @@ namespace lyx {
 // development/tools/updatelayouts.sh script, to update the format of
 // all of our layout files.
 //
-int const LAYOUT_FORMAT = 49; //gb: change default of ResetsFont
+int const LAYOUT_FORMAT = 50; //ef: removal of separator layout
 
 namespace {
 

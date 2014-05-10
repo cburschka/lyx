@@ -656,6 +656,7 @@ bool Text::cursorBackward(Cursor & cur)
 				cur.textRow().pos() == cur.pos() &&
 				!cur.paragraph().isLineSeparator(cur.pos() - 1) &&
 				!cur.paragraph().isNewline(cur.pos() - 1) &&
+				!cur.paragraph().isEnvSeparator(cur.pos() - 1) &&
 				!cur.paragraph().isSeparator(cur.pos() - 1)) {
 			return setCursor(cur, cur.pit(), cur.pos(), true, true);
 		}
@@ -669,8 +670,14 @@ bool Text::cursorBackward(Cursor & cur)
 	}
 
 	// move to the previous paragraph or do nothing
-	if (cur.pit() > 0)
-		return setCursor(cur, cur.pit() - 1, getPar(cur.pit() - 1).size(), true, false);
+	if (cur.pit() > 0) {
+		Paragraph & par = getPar(cur.pit() - 1);
+		pos_type lastpos = par.size();
+		if (lastpos > 0 && par.isEnvSeparator(lastpos - 1))
+			return setCursor(cur, cur.pit() - 1, lastpos - 1, true, false);
+		else
+			return setCursor(cur, cur.pit() - 1, lastpos, true, false);
+	}
 	return false;
 }
 
@@ -734,12 +741,19 @@ bool Text::cursorForward(Cursor & cur)
 			bool sep2 = cur.paragraph().isSeparator(cur.pos()+1);
 		}
 #endif
-		if (cur.textRow().endpos() == cur.pos() + 1 &&
-		    cur.textRow().endpos() != cur.lastpos() &&
-				!cur.paragraph().isNewline(cur.pos()) &&
-				!cur.paragraph().isLineSeparator(cur.pos()) &&
-				!cur.paragraph().isSeparator(cur.pos())) {
-			return setCursor(cur, cur.pit(), cur.pos() + 1, true, true);
+		if (cur.textRow().endpos() == cur.pos() + 1) {
+			if (cur.paragraph().isEnvSeparator(cur.pos()) &&
+			    cur.pos() + 1 == cur.lastpos() &&
+			    cur.pit() != cur.lastpit()) {
+				// move to next paragraph
+				return setCursor(cur, cur.pit() + 1, 0, true, false);
+			} else if (cur.textRow().endpos() != cur.lastpos() &&
+				   !cur.paragraph().isNewline(cur.pos()) &&
+				   !cur.paragraph().isEnvSeparator(cur.pos()) &&
+				   !cur.paragraph().isLineSeparator(cur.pos()) &&
+				   !cur.paragraph().isSeparator(cur.pos())) {
+				return setCursor(cur, cur.pit(), cur.pos() + 1, true, true);
+			}
 		}
 		
 		// in front of RTL boundary? Stay on this side of the boundary because:

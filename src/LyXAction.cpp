@@ -626,6 +626,15 @@ void LyXAction::init()
  */
 		{ LFUN_NEWLINE_INSERT, "newline-insert", Noop, Edit },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_SEPARATOR_INSERT
+ * \li Action: Inserts an environment separator or paragraph break.
+ * \li Syntax: separator-insert [<ARG>]
+ * \li Params: <ARG>: <plain|parbreak> default: plain
+ * \li Origin: ef, 2 May 2014
+ * \endvar
+ */
+		{ LFUN_SEPARATOR_INSERT, "separator-insert", Noop, Edit },
+/*!
  * \var lyx::FuncCode lyx::LFUN_ESCAPE
  * \li Action: Clears the selection. If no text is selected call #LFUN_FINISHED_FORWARD.
                Inside math mode jumps out of the math inset.

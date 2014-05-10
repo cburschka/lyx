@@ -34,6 +34,9 @@ import sys, os
 #  put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
 #  revert_font_attrs, hex2ratio, str2bool
 
+from parser_tools import find_token, find_token_backwards, find_re, \
+     find_end_of_inset, find_end_of_layout, find_nonempty_line, \
+     get_containing_layout, get_value, check_token
 
 ###############################################################################
 ###
@@ -41,16 +44,208 @@ import sys, os
 ###
 ###############################################################################
 
+def convert_separator(document):
+    """
+    Convert layout separators to separator insets and add (LaTeX) paragraph
+    breaks in order to mimic previous LaTeX export.
+    """
+
+    parins = ["\\begin_inset Separator parbreak", "\\end_inset", ""]
+    parlay = ["\\begin_layout Standard", "\\begin_inset Separator parbreak",
+              "\\end_inset", "", "\\end_layout", ""]
+    sty_dict = {
+        "family" : "default",
+        "series" : "default",
+        "shape"  : "default",
+        "size"   : "default",
+        "bar"    : "default",
+        "color"  : "inherit"
+        }
+
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_deeper", i)
+        if i == -1:
+            break
+
+        j = find_token_backwards(document.body, "\\end_layout", i-1)
+        if j != -1:
+            # reset any text style before inserting the inset
+            lay = get_containing_layout(document.body, j-1)
+            if lay != False:
+                content = "\n".join(document.body[lay[1]:lay[2]])
+                for val in sty_dict.keys():
+                    if content.find("\\%s" % val) != -1:
+                        document.body[j:j] = ["\\%s %s" % (val, sty_dict[val])]
+                        i = i + 1
+                        j = j + 1
+            document.body[j:j] = parins
+            i = i + len(parins) + 1
+        else:
+            i = i + 1
+
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\align", i)
+        if i == -1:
+            break
+
+        lay = get_containing_layout(document.body, i)
+        if lay != False and lay[0] == "Plain Layout":
+            i = i + 1
+            continue
+
+        j = find_token_backwards(document.body, "\\end_layout", i-1)
+        if j != -1:
+            lay = get_containing_layout(document.body, j-1)
+            if lay != False and lay[0] == "Standard" \
+               and find_token(document.body, "\\align", lay[1], lay[2]) == -1 \
+               and find_token(document.body, "\\begin_inset VSpace", lay[1], lay[2]) == -1:
+                # reset any text style before inserting the inset
+                content = "\n".join(document.body[lay[1]:lay[2]])
+                for val in sty_dict.keys():
+                    if content.find("\\%s" % val) != -1:
+                        document.body[j:j] = ["\\%s %s" % (val, sty_dict[val])]
+                        i = i + 1
+                        j = j + 1
+                document.body[j:j] = parins
+                i = i + len(parins) + 1
+            else:
+                i = i + 1
+        else:
+            i = i + 1
+
+    regexp = re.compile(r'^\\begin_layout (?:(-*)|(\s*))(Separator|EndOfSlide)(?:(-*)|(\s*))$', re.IGNORECASE)
+
+    i = 0
+    while 1:
+        i = find_re(document.body, regexp, i)
+        if i == -1:
+            return
+
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Missing `\\end_layout'.")
+            return
+
+        lay = get_containing_layout(document.body, j-1)
+        if lay != False:
+            lines = document.body[lay[3]:lay[2]]
+        else:
+            lines = []
+
+        document.body[i:j+1] = parlay
+        if len(lines) > 0:
+            document.body[i+1:i+1] = lines
+
+        i = i + len(parlay) + len(lines) + 1
+
+
+def revert_separator(document):
+    " Revert separator insets to layout separators "
+
+    parsep = ["\\begin_layout --Separator--", "", "\\end_layout", ""]
+    comert = ["\\begin_inset ERT", "status collapsed", "",
+              "\\begin_layout Plain Layout", "%", "\\end_layout",
+              "", "\\end_inset", ""]
+    empert = ["\\begin_inset ERT", "status collapsed", "",
+              "\\begin_layout Plain Layout", " ", "\\end_layout",
+              "", "\\end_inset", ""]
+
+    i = 0
+    while 1:
+        i = find_token(document.body, "\\begin_inset Separator", i)
+        if i == -1:
+            return
+
+        lay = get_containing_layout(document.body, i)
+        if lay == False:
+            document.warning("Malformed LyX document: Can't convert separator inset at line " + str(i))
+            i = i + 1
+            continue
+
+        layoutname = lay[0]
+        beg = lay[1]
+        end = lay[2]
+        kind = get_value(document.body, "\\begin_inset Separator", i, i+1, "plain").split()[1]
+        before = document.body[beg+1:i]
+        something_before = len(before) > 0 and len("".join(before)) > 0
+        j = find_end_of_inset(document.body, i)
+        after = document.body[j+1:end]
+        something_after = len(after) > 0 and len("".join(after)) > 0
+        if kind == "plain":
+            beg = beg + len(before) + 1
+        elif something_before:
+            document.body[i:i] = ["\\end_layout", ""]
+            i = i + 2
+            j = j + 2
+            beg = i
+            end = end + 2
+
+        if kind == "plain":
+            if something_after:
+                document.body[beg:j+1] = empert
+                i = i + len(empert)
+            else:
+                document.body[beg:j+1] = comert
+                i = i + len(comert)
+        else:
+            if something_after:
+                if layoutname == "Standard":
+                    if not something_before:
+                        document.body[beg:j+1] = parsep
+                        i = i + len(parsep)
+                        document.body[i:i] = ["", "\\begin_layout Standard"]
+                        i = i + 2
+                    else:
+                        document.body[beg:j+1] = ["\\begin_layout Standard"]
+                        i = i + 1
+                else:
+                    document.body[beg:j+1] = ["\\begin_deeper"]
+                    i = i + 1
+                    end = end + 1 - (j + 1 - beg)
+                    if not something_before:
+                        document.body[i:i] = parsep
+                        i = i + len(parsep)
+                        end = end + len(parsep)
+                    document.body[i:i] = ["\\begin_layout Standard"]
+                    document.body[end+2:end+2] = ["", "\\end_deeper", ""]
+                    i = i + 4
+            else:
+                next_par_is_aligned = False
+                k = find_nonempty_line(document.body, end+1)
+                if k != -1 and check_token(document.body[k], "\\begin_layout"):
+                    lay = get_containing_layout(document.body, k)
+                    next_par_is_aligned = lay != False and \
+                            find_token(document.body, "\\align", lay[1], lay[2]) != -1
+                if k != -1 and not next_par_is_aligned \
+                        and not check_token(document.body[k], "\\end_deeper") \
+                        and not check_token(document.body[k], "\\begin_deeper"):
+                    if layoutname == "Standard":
+                        document.body[beg:j+1] = ["\\begin_layout --Separator--"]
+                        i = i + 1
+                    else:
+                        document.body[beg:j+1] = ["\\begin_deeper", "\\begin_layout --Separator--"]
+                        end = end + 2 - (j + 1 - beg)
+                        document.body[end+1:end+1] = ["", "\\end_deeper", ""]
+                        i = i + 3
+                else:
+                    del document.body[i:end+1]
+
+        i = i + 1
+
 
 ##
 # Conversion hub
 #
 
 supported_versions = ["2.2.0","2.2"]
-convert = [#[475, []]
+convert = [
+           [475, [convert_separator]],
           ]
 
-revert =  [#[474, []]
+revert =  [
+           [474, [revert_separator]]
           ]
 
 

@@ -213,7 +213,8 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 	}
 
 	if (data.style->isEnvironment()) {
-		os << "\\end{" << from_ascii(data.style->latexname()) << "}\n";
+		os << breakln
+		   << "\\end{" << from_ascii(data.style->latexname()) << "}\n";
 		prev_env_language_ = data.par_language;
 		if (runparams.encoding != data.prev_encoding) {
 			runparams.encoding = data.prev_encoding;
@@ -223,7 +224,7 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 	}
 
 	if (data.leftindent_open) {
-		os << "\\end{LyXParagraphLeftIndent}\n";
+		os << breakln << "\\end{LyXParagraphLeftIndent}\n";
 		prev_env_language_ = data.par_language;
 		if (runparams.encoding != data.prev_encoding) {
 			runparams.encoding = data.prev_encoding;
@@ -277,21 +278,6 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 		// Or     par->params().depth() > current_depth
 		// Or     par->params().leftIndent() != current_left_indent)
 
-		if (par->layout().isParagraph()) {
-			// FIXME (Lgb): How to handle this?
-			//&& !suffixIs(os, "\n\n")
-
-			// (ARRae) There should be at least one '\n' already but we need there to
-			// be two for Standard paragraphs that are depth-increment'ed to be
-			// output correctly. However, tables can also be paragraphs so
-			// don't adjust them.
-
-			// FIXME (Lgb): Will it ever harm to have one '\n' too
-			// many? i.e. that we sometimes will have
-			// three in a row.
-			os << '\n';
-		}
-
 		// FIXME This test should not be necessary.
 		// We should perhaps issue an error if it is.
 		bool const force_plain_layout = text.inset().forcePlainLayout();
@@ -302,6 +288,21 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 		if (!style.isEnvironment()) {
 			// This is a standard paragraph, no need to call TeXEnvironment.
 			TeXOnePar(buf, text, pit, os, runparams);
+			// Unless the current or following paragraph are inside
+			// \begin..\end tags and the nesting layout is not of
+			// an itemize kind, we have to output a paragraph break
+			// (we already are at the beginning of a new line)
+			if (pit + 1 < runparams.par_end) {
+				ParagraphList::const_iterator nextpar =
+					paragraphs.constIterator(pit + 1);
+				if (nextpar->layout() == current_layout
+				    && nextpar->getDepth() == current_depth
+				    && current_layout.latextype != LATEX_ITEM_ENVIRONMENT
+				    && current_layout.latextype != LATEX_LIST_ENVIRONMENT
+				    && par->getAlign() == style.align
+				    && nextpar->getAlign() == nextpar->layout().align)
+					os << '\n';
+			}
 			continue;
 		}
 
@@ -858,7 +859,9 @@ void TeXOnePar(Buffer const & buf,
 	switch (style.latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
-		if (nextpar && (par.params().depth() < nextpar->params().depth()))
+		if (nextpar
+		    && (par.params().depth() < nextpar->params().depth())
+		    && !par.isEnvSeparator(par.size() - 1))
 			pending_newline = true;
 		break;
 	case LATEX_ENVIRONMENT: {
@@ -873,7 +876,8 @@ void TeXOnePar(Buffer const & buf,
 	// fall through possible
 	default:
 		// we don't need it for the last paragraph!!!
-		if (nextpar)
+		// or if the last thing is an environment separator
+		if (nextpar && !par.isEnvSeparator(par.size() - 1))
 			pending_newline = true;
 	}
 
@@ -882,7 +886,13 @@ void TeXOnePar(Buffer const & buf,
 			&& (runparams.isLastPar || !nextpar->hasSameLayout(par))) {
 			if (pending_newline)
 				os << '\n';
-			os << from_ascii(par.params().spacing().writeEnvirEnd(useSetSpace));
+
+			string const endtag =
+				par.params().spacing().writeEnvirEnd(useSetSpace);
+			if (prefixIs(endtag, "\\end{"))
+				os << breakln;
+
+			os << from_ascii(endtag);
 			pending_newline = true;
 		}
 	}
@@ -1013,19 +1023,29 @@ void TeXOnePar(Buffer const & buf,
 	// we don't need a newline for the last paragraph!!!
 	// Note from JMarc: we will re-add a \n explicitly in
 	// TeXEnvironment, because it is needed in this case
-	if (nextpar) {
+	if (nextpar && !par.isEnvSeparator(par.size() - 1)) {
+		// Make sure to start a new line
+		os << breakln;
+		// Here we now try to avoid spurious empty lines by outputting
+		// a paragraph break only if: (case 1) the paragraph style
+		// allows parbreaks and no \begin, \end or \item tags are
+		// going to follow (i.e., if the next isn't the first
+		// or the current isn't the last paragraph of an environment
+		// or itemize) and the depth and alignment of the following
+		// paragraph is unchanged, or (case 2) the following is a
+		// non-environment paragraph whose depth is increased but
+		// whose alignment is unchanged.
 		Layout const & next_layout = nextpar->layout();
-		if (style == next_layout
-		    // no blank lines before environments!
-		    || !next_layout.isEnvironment()
-		    // unless there's a depth change
-		    // FIXME What we really want to do here is put every \begin and \end
-		    // tag on a new line (which was not the case with nested environments).
-		    // But in the present state of play, we don't have access to the
-		    // information whether the current TeX row is empty or not.
-		    // For some ideas about how to fix this, see this thread:
-		    // http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg145787.html
-		    || nextpar->params().depth() != par.params().depth()) {
+		if ((style == next_layout
+		     && !style.parbreak_is_newline
+		     && style.latextype != LATEX_ITEM_ENVIRONMENT
+		     && style.latextype != LATEX_LIST_ENVIRONMENT
+		     && style.align == par.getAlign()
+		     && nextpar->getDepth() == par.getDepth()
+		     && nextpar->getAlign() == par.getAlign())
+		    || (!next_layout.isEnvironment()
+			&& nextpar->getDepth() > par.getDepth()
+			&& nextpar->getAlign() == par.getAlign())) {
 			os << '\n';
 		}
 	}

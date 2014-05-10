@@ -11,6 +11,14 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2014-05-05 Enrico Forestieri <forenr@lyx.org>
+	* Format incremented to 475
+	  New Separator insets. The parbreak separator introduces a LaTeX
+	  paragraph break in the output. The plain separator does nothing
+	  and its purpose is replacing the Separator layout for separating
+	  environments. The new parbreak separator is roughly equivalent
+	  to the old Separator layout.
+
 2013-05-30 Richard Heck <rgheck@lyx.org>
 	* Format increments to 474: dummy format for conversion of Chunk layouts
 	  to insets

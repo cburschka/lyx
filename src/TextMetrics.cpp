@@ -348,6 +348,7 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 	// FED                          FED|                     FED     )
 	if (startpos == pos && endpos == pos && endpos != par.size()
 		&& (par.isNewline(pos - 1)
+			|| par.isEnvSeparator(pos - 1)
 			|| par.isLineSeparator(pos - 1)
 			|| par.isSeparator(pos - 1)))
 		return false;
@@ -628,6 +629,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			if (ns
 			    && row.endpos() < par.size()
 			    && !par.isNewline(row.endpos() - 1)
+			    && !par.isEnvSeparator(row.endpos() - 1)
 			    && !disp_inset
 				) {
 				row.separator = w / ns;
@@ -897,7 +899,7 @@ pos_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 			break;
 		}
 
-		if (par.isNewline(i)) {
+		if (par.isNewline(i) || par.isEnvSeparator(i)) {
 			point = i + 1;
 			break;
 		}
@@ -1269,7 +1271,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	if (lastrow &&
 	    ((rtl_on_lastrow  &&  left_side && vc == row.pos() && x < tmpx - 5) ||
 	     (!rtl_on_lastrow && !left_side && vc == end  && x > tmpx + 5))) {
-		if (!par.isNewline(end - 1))
+		if (!(par.isNewline(end - 1) || par.isEnvSeparator(end - 1)))
 			c = end;
 	} else if (vc == row.pos()) {
 		c = bidi.vis2log(vc);
@@ -1318,7 +1320,9 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	if (!c || end == par.size())
 		return col;
 
-	if (c==end && !par.isLineSeparator(c-1) && !par.isNewline(c-1)) {
+	if (c==end && !par.isLineSeparator(c-1)
+		   && !par.isNewline(c-1)
+		   && !par.isEnvSeparator(c-1)) {
 		boundary = true;
 		return col;
 	}
@@ -1810,7 +1814,8 @@ bool TextMetrics::cursorEnd(Cursor & cur)
 	bool boundary = false;
 	if (end != cur.lastpos()) {
 		if (!cur.paragraph().isLineSeparator(end-1)
-		    && !cur.paragraph().isNewline(end-1))
+		    && !cur.paragraph().isNewline(end-1)
+		    && !cur.paragraph().isEnvSeparator(end-1))
 			boundary = true;
 		else
 			--end;
