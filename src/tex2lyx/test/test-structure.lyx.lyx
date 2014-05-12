@@ -1,5 +1,5 @@
-#LyX file created by tex2lyx 2.1
-\lyxformat 474
+#LyX file created by tex2lyx 2.2
+\lyxformat 475
 \begin_document
 \begin_header
 \textclass article
@@ -772,7 +772,12 @@ with a command inside it
 \end_layout
 
 \end_deeper
-\begin_layout --Separator--
+\begin_layout Standard
+
+\begin_inset Separator plain
+
+\end_inset
+
 
 \end_layout
 
@@ -822,7 +827,12 @@ Item1.b.*
 Item2 
 \end_layout
 
-\begin_layout --Separator--
+\begin_layout Standard
+
+\begin_inset Separator plain
+
+\end_inset
+
 
 \end_layout
 
