@@ -64,6 +64,7 @@ def minor_versions(major, last_minor_version):
 format_re = re.compile(r"(\d)[\.,]?(\d\d)")
 fileformat = re.compile(r"\\lyxformat\s*(\S*)")
 original_version = re.compile(r".*?LyX ([\d.]*)")
+original_tex2lyx_version = re.compile(r".*?tex2lyx ([\d.]*)")
 
 ##
 # file format information:
@@ -413,12 +414,16 @@ class LyX_base:
                 return None
 
             line = line.replace("fix",".")
-            result = original_version.match(line)
+            # need to test original_tex2lyx_version first because tex2lyx
+            # writes "#LyX file created by tex2lyx 2.2"
+            result = original_tex2lyx_version.match(line)
+            if not result:
+                result = original_version.match(line)
+                if result:
+                    # Special know cases: reLyX and KLyX
+                    if line.find("reLyX") != -1 or line.find("KLyX") != -1:
+                        return "0.12"
             if result:
-                # Special know cases: reLyX and KLyX
-                if line.find("reLyX") != -1 or line.find("KLyX") != -1:
-                    return "0.12"
-
                 res = result.group(1)
                 if not res:
                     self.warning(line)
