@@ -13,11 +13,8 @@ algorithm was basically implemented 3 times.
 
 Currently everything is supposed to work for both LTR and RTL text.
 
-When KEEP_OLD_METRICS_CODE is defined in TextMetrics.cpp, the new code
-is tested against the old one in getPosNearX and cursorX. This can be
-helpful when looking for discrepancies between the algorithms. Note
-that this only makes sense when force_paint_single_char=true, since
-this enforces char-by-char metrics computation.
+The bugs fixed and caused by this branch are tracked at ticket #9003:
+http://www.lyx.org/trac/ticket/9003
 
 What is done:
 
@@ -51,11 +48,11 @@ What is done:
 
 Next steps:
 
-* get lots of testing.
+* Fix bugs uncovered by testing.
 
-* Get rid of old code in cursorX and getPosNearX; it has been
-  kept for comparison purpose, guarded with KEEP_OLD_METRICS_CODE in
-  order to check computations.
+* Get rid of LyXRC::force_paint_single_char, which is only a workaround.
+
+* Maybe get rid of LyXRC::rtl_support, which does not have a real use case.
 
 * Profile and see how performance can be improved.
 
@@ -71,33 +68,6 @@ Steps for later (aka out of the scope of this branch):
   work if we are sure that the Row object is up-to-date when drawing
   happens. This depends on the update machinery.
 
-  This would allow to get rid of the Bidi code.
-
-
-Known bugs:
-
-* When selecting text, the display seems to move around. This is
-  because partly selected words are drawn in two parts, and in case
-  like "ef|fort" or "V|AN", there are some ligature or kerning effects
-  that change the display. I am not sure yet how to fix that.
-
-* there are other differences in what breaks words. In particular,
-  RowPainter breaks strings at spell-checking extremities. This seems
-  to be harmless.
-
-* when clicking in the right margin, getPosNearX does not return
-  the same value as before. I am not sure whether this is important.
-
-
-Other differences in behavior (aka bug fixes):
-
-* end of paragraph markers metrics are computed with the font of the
-  actual text, not default font.
-
-* in RtL paragraphs, the end-of-paragraph marker does not move the row
-  to the right anymore (ticket #9040).
-
-* When cursor is after a LtR separator just before a RtL chunk, the
-  cursor position is computed better with the new code.
+  This would allow to get rid of the Bidi.cpp code.
 
 
