@@ -542,6 +542,8 @@ endif()
 include_directories(${TOP_BINARY_DIR} ${TOP_SRC_DIR}/src)
 
 set(Spelling_FOUND OFF)
+set(Include_used_spellchecker)   # String will be inserted into config.h
+
 foreach(_spell "ASPELL" "Enchant" "Hunspell")
   string(TOUPPER ${_spell} _upspell)
   find_package(${_spell})
@@ -549,6 +551,7 @@ foreach(_spell "ASPELL" "Enchant" "Hunspell")
     include_directories(${${_upspell}_INCLUDE_DIR})
     set(Spelling_FOUND ON)
     message(STATUS "Building with USE_${_upspell}")
+    set(Include_used_spellchecker "${Include_used_spellchecker}#define USE_${_upspell} 1\n")
   else()
     if(LYX_${_upspell})
       message(FATAL_ERROR "Required ${_spell} devel package not found")

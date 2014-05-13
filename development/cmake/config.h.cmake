@@ -59,25 +59,12 @@
 
 #cmakedefine Z_PREFIX 1
 
-#cmakedefine ASPELL_FOUND 1
-#ifdef ASPELL_FOUND
-#define USE_ASPELL 1
-#endif
+${Include_used_spellchecker}
 
 #cmakedefine AIKSAURUSLIB_FOUND 1
 #ifdef AIKSAURUSLIB_FOUND
 #define HAVE_LIBAIKSAURUS 1
 #define AIKSAURUS_H_LOCATION "${AIKSAURUSLIB_H}"
-#endif
-
-#cmakedefine ENCHANT_FOUND 1
-#ifdef ENCHANT_FOUND
-#define USE_ENCHANT 1
-#endif
-
-#cmakedefine HUNSPELL_FOUND 1
-#ifdef HUNSPELL_FOUND
-#define USE_HUNSPELL 1
 #endif
 
 #cmakedefine LYX_NLS 1
