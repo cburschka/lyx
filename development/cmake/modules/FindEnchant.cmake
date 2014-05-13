@@ -14,21 +14,9 @@ else()
 		/opt/local/include/enchant)
 endif()
 
-if (ENCHANT_LIBRARY AND ENCHANT_INCLUDE_DIR)
-	set(ENCHANT_FOUND TRUE)
-	message(STATUS "Building with USE_ENCHANT")
-else()
-	message(STATUS "Enchant not found, building without enchant support")
-endif()
-
-
-# handle the QUIETLY and REQUIRED arguments and 
+# handle the QUIETLY and REQUIRED arguments and
 # set ENCHANT_FOUND to TRUE if all listed variables are TRUE
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(ENCHANT DEFAULT_MSG ENCHANT_LIBRARY ENCHANT_INCLUDE_DIR)
-
-if(Enchant_FIND_REQUIRED AND NOT ENCHANT_FOUND)
-	message(FATAL_ERROR "Could not find Enchant library")
-endif()
 
 mark_as_advanced(ENCHANT_LIBRARY ENCHANT_INCLUDE_DIR)
