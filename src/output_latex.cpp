@@ -288,21 +288,6 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 		if (!style.isEnvironment()) {
 			// This is a standard paragraph, no need to call TeXEnvironment.
 			TeXOnePar(buf, text, pit, os, runparams);
-			// Unless the current or following paragraph are inside
-			// \begin..\end tags and the nesting layout is not of
-			// an itemize kind, we have to output a paragraph break
-			// (we already are at the beginning of a new line)
-			if (pit + 1 < runparams.par_end) {
-				ParagraphList::const_iterator nextpar =
-					paragraphs.constIterator(pit + 1);
-				if (nextpar->layout() == current_layout
-				    && nextpar->getDepth() == current_depth
-				    && current_layout.latextype != LATEX_ITEM_ENVIRONMENT
-				    && current_layout.latextype != LATEX_LIST_ENVIRONMENT
-				    && par->getAlign() == style.align
-				    && nextpar->getAlign() == nextpar->layout().align)
-					os << '\n';
-			}
 			continue;
 		}
 
@@ -1026,27 +1011,39 @@ void TeXOnePar(Buffer const & buf,
 	if (nextpar && !par.isEnvSeparator(par.size() - 1)) {
 		// Make sure to start a new line
 		os << breakln;
-		// Here we now try to avoid spurious empty lines by outputting
-		// a paragraph break only if: (case 1) the paragraph style
-		// allows parbreaks and no \begin, \end or \item tags are
-		// going to follow (i.e., if the next isn't the first
-		// or the current isn't the last paragraph of an environment
-		// or itemize) and the depth and alignment of the following
-		// paragraph is unchanged, or (case 2) the following is a
-		// non-environment paragraph whose depth is increased but
-		// whose alignment is unchanged.
 		Layout const & next_layout = nextpar->layout();
-		if ((style == next_layout
-		     && !style.parbreak_is_newline
-		     && style.latextype != LATEX_ITEM_ENVIRONMENT
-		     && style.latextype != LATEX_LIST_ENVIRONMENT
-		     && style.align == par.getAlign()
-		     && nextpar->getDepth() == par.getDepth()
-		     && nextpar->getAlign() == par.getAlign())
-		    || (!next_layout.isEnvironment()
-			&& nextpar->getDepth() > par.getDepth()
-			&& nextpar->getAlign() == par.getAlign())) {
-			os << '\n';
+		// A newline '\n' is always output before a command,
+		// so avoid doubling it.
+		if (!next_layout.isCommand()) {
+			// Here we now try to avoid spurious empty lines by
+			// outputting a paragraph break only if: (case 1) the
+			// paragraph style allows parbreaks and no \begin, \end
+			// or \item tags are going to follow (i.e., if the next
+			// isn't the first or the current isn't the last
+			// paragraph of an environment or itemize) and the
+			// depth and alignment of the following paragraph is
+			// unchanged, or (case 2) the following is a
+			// non-environment paragraph whose depth is increased
+			// but whose alignment is unchanged, or (case 3) the
+			// paragraph is a command not followed by an environment
+			// and the alignment of the current and next paragraph
+			// is unchanged.
+			if ((style == next_layout
+			     && !style.parbreak_is_newline
+			     && style.latextype != LATEX_ITEM_ENVIRONMENT
+			     && style.latextype != LATEX_LIST_ENVIRONMENT
+			     && style.align == par.getAlign()
+			     && nextpar->getDepth() == par.getDepth()
+			     && nextpar->getAlign() == par.getAlign())
+			    || (!next_layout.isEnvironment()
+				&& nextpar->getDepth() > par.getDepth()
+				&& nextpar->getAlign() == par.getAlign())
+			    || (style.isCommand()
+				&& !next_layout.isEnvironment()
+				&& style.align == par.getAlign()
+				&& next_layout.align == nextpar->getAlign())) {
+				os << '\n';
+			}
 		}
 	}
 
