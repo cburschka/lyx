@@ -145,8 +145,8 @@ public:
 	/// returns position of given x coordinate
 	int pos2x(BufferView const * bv, size_type pos, int glue) const;
 	/// returns position of given x coordinate
-	size_type x2pos(BufferView const * bv, int pos) const;
-	/// returns position of given x coordinate fstarting from a certain pos
+	size_type x2pos(BufferView const * bv, int targetx) const;
+	/// returns position of given x coordinate starting from a certain pos
 	size_type x2pos(BufferView const * bv, int targetx, int glue) const;
 	/// returns distance of this cell to the point given by x and y
 	// assumes valid position and size cache
@@ -165,7 +165,7 @@ public:
 	///
 	void swap(MathData & ar) { base_type::swap(ar); }
 
-	/// attach/detach arguments to macros, updating the cur to 
+	/// attach/detach arguments to macros, updating the cur to
 	/// stay visually at the same position (cur==0 is allowed)
 	void updateMacros(Cursor * cur, MacroContext const & mc, UpdateType);
 	///
