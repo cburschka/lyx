@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-04-21 19:31+0200\n"
+"POT-Creation-Date: 2014-05-13 14:46+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -324,7 +324,7 @@ msgstr "Počia&točný príkaz:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:98
 msgid "The LaTeX command that starts a switch to a foreign language"
-msgstr "LaTeXovský príkaz na začatie zmeny jazyka"
+msgstr "LaTeX-ov príkaz na začatie zmeny jazyka"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:118
 msgid "Command e&nd:"
@@ -332,7 +332,7 @@ msgstr "&Ukončovací príkaz:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:128
 msgid "The LaTeX command that ends a switch to a foreign language"
-msgstr "LaTeXovský príkaz na zakončenie zmeny jazyka"
+msgstr "LaTeX-ov príkaz na zakončenie zmeny jazyka"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:135
 msgid "Default decimal &separator:"
@@ -3637,7 +3637,7 @@ msgstr "x:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:460
 msgid "Don't uncompress image before exporting to LaTeX"
-msgstr "Nedekomprimovať obrázok pred exportom do LaTeXu"
+msgstr "Nedekomprimovať obrázok pred exportom do LaTeX-u"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:463
 msgid "Don't un&zip on export"
@@ -3938,7 +3938,7 @@ msgstr "&Vlastné Makro:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:98
 msgid "Custom LaTeX preamble macro"
-msgstr "Vlastné makro do preambuly LaTeXu"
+msgstr "Vlastné makro do preambuly LaTeX-u"
 
 #: src/frontends/qt4/ui/OutputUi.ui:113
 msgid "XHTML Output Options"
@@ -4951,8 +4951,8 @@ msgid ""
 "Turns on the change tracking and showing changes in LaTeX output for the "
 "resulting document"
 msgstr ""
-"Zapne sledovanie zmien a ukazovanie zmien v LaTeXovom výstupe pre nasledovný "
-"dokument"
+"Zapne sledovanie zmien a ukazovanie zmien v LaTeX-ovom výstupe pre "
+"nasledovný dokument"
 
 #: src/frontends/qt4/ui/CompareUi.ui:181
 msgid "Enable &change tracking features in the output"
@@ -13763,10 +13763,10 @@ msgid ""
 "different when you process it with future LaTeX versions, because fixltx2e "
 "may provide more bugfixes in future versions."
 msgstr ""
-"Nahrá LaTeXovský balík fixltx2e ktorý obsahuje pár korektúr pre LaTeX. Tieto "
-"korektúry nie sú časťou LaTeXovho jadra kvôli spätnej kompatibilite. "
+"Nahrá LaTeX-ov balík fixltx2e ktorý obsahuje pár korektúr pre LaTeX. Tieto "
+"korektúry nie sú časťou LaTeX-ovho jadra kvôli spätnej kompatibilite. "
 "Použitím tohto modulu môžu vaše vytlačené dokumenty vyzerať ináč pri "
-"spracovaní s budúcimi verziami LaTeXu, lebo fixltx2e vtedy môže poskytovať "
+"spracovaní s budúcimi verziami LaTeX-u, lebo fixltx2e vtedy môže poskytovať "
 "aj viac korektúr."
 
 #: lib/layouts/endnotes.module:2 lib/layouts/endnotes.module:13
@@ -15651,6 +15651,14 @@ msgstr "Normálne Zalomenie Riadku"
 msgid "Justified Line Break|J"
 msgstr "Zarovnané Zalomenie Riadku Sprava"
 
+#: lib/ui/stdcontext.inc:308
+msgid "Plain Separator|P"
+msgstr "Jednoduchý Oddeľovač|J"
+
+#: lib/ui/stdcontext.inc:309
+msgid "Paragraph Break|B"
+msgstr "Zlomiť Odstavec|Z"
+
 #: lib/ui/stdmenus.inc:421 lib/ui/stdcontext.inc:290
 msgid "New Page|N"
 msgstr "Nová stránka"
@@ -16001,7 +16009,7 @@ msgstr "LyX Funkcie|y"
 
 #: lib/ui/stdmenus.inc:596
 msgid "LaTeX Configuration|L"
-msgstr "Konfigurácia LaTeXu|K"
+msgstr "Konfigurácia LaTeX-u|K"
 
 #: lib/ui/stdmenus.inc:597
 msgid "Specific Manuals|p"
@@ -21986,10 +21994,10 @@ msgstr ""
 "Skontrolujte prosím či softvér pre podporu vášho kódovania (%1$s) je správne "
 "inštalovaná"
 
-#: src/Buffer.cpp:1526
+#: src/Buffer.cpp:1524
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
-msgstr "Nedá sa nájsť LaTeXov príkaz pre znak '%1$s' (hodnota %2$s)"
+msgstr "Nedá sa nájsť LaTeX-ov príkaz pre znak '%1$s' (hodnota %2$s)"
 
 #: src/Buffer.cpp:1529
 msgid ""
@@ -23085,7 +23093,7 @@ msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
 "log %1$s."
 msgstr ""
-"LaTeX neprebehol úspešne. Čo viac, LyX nenašiel výstup pre protokol LaTeXu "
+"LaTeX neprebehol úspešne. Čo viac, LyX nenašiel výstup pre protokol LaTeX-u "
 "%1$s."
 
 #: src/Converter.cpp:664
@@ -23359,7 +23367,7 @@ msgstr "   voľby: "
 #: src/LaTeX.cpp:57
 #, c-format
 msgid "Waiting for LaTeX run number %1$d"
-msgstr "Čakanie na %1$d spracovanie LaTeXu"
+msgstr "Čakanie na %1$d spracovanie LaTeX-u"
 
 #: src/LaTeX.cpp:265 src/LaTeX.cpp:381
 msgid "Running Index Processor."
@@ -23391,7 +23399,7 @@ msgid ""
 "The LaTeX package `%1$s' needed for the font `%2$s'\n"
 "is not available on your system. LyX will fall back to the default font."
 msgstr ""
-"Balík LaTeXa `%1$s' ktorý font `%2$s potrebuje\n"
+"Balík LaTeX-a `%1$s' ktorý font `%2$s potrebuje\n"
 "nie je dostupný na vašom systéme. LyX sa stiahne na štandardný font."
 
 #: src/LyX.cpp:121
@@ -23944,13 +23952,13 @@ msgstr ""
 "LaTeX príkaz pre zmenu z jazyka dokumentu do iného jazyka. Napr. "
 "\\selectlanguage{$$lang}, kde $$lang je nahradené názvom druhého jazyka."
 
-#: src/LyXRC.cpp:3270
+#: src/LyXRC.cpp:3271
 msgid "The LaTeX command for changing back to the language of the document."
-msgstr "LaTeXovský príkaz pre návrat k pôvodnému jazyku dokumentu."
+msgstr "LaTeX-ov príkaz pre návrat k pôvodnému jazyku dokumentu."
 
-#: src/LyXRC.cpp:3274
+#: src/LyXRC.cpp:3275
 msgid "The LaTeX command for local changing of the language."
-msgstr "LaTeXovský príkaz pre lokálnu zmenu jazyka."
+msgstr "LaTeX-ov príkaz pre lokálnu zmenu jazyka."
 
 #: src/LyXRC.cpp:3278
 msgid ""
@@ -23959,12 +23967,12 @@ msgid ""
 msgstr ""
 "Zrušte výber ak nechcete použiť jazyk(y) ako argument k \\documentclass."
 
-#: src/LyXRC.cpp:3282
+#: src/LyXRC.cpp:3283
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"Príkaz LaTeXu pre načítanie jazykového balíka. Napr. \"\\usepackage"
+"Príkaz LaTeX-u pre načítanie jazykového balíka. Napr. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 
 #: src/LyXRC.cpp:3286
@@ -24538,7 +24546,7 @@ msgid ""
 msgstr ""
 "Modul %1$s vyžaduje balík, ktorý je nedostupný vo vašej\n"
 "LaTeX-ovej inštalácii, alebo vyžaduje konvertor\n"
-"ktorý nemáte inštalovaný. Nezaistený výstup z LaTeXa.\n"
+"ktorý nemáte inštalovaný. Nezaistený výstup z LaTeX-a.\n"
 "Chýbajúce predpoklady:\n"
 "\t%2$s\n"
 "Pozri sekciu 3.1.2.3 (Moduly) Užívateľskej Príručky pre viac informácií."
@@ -25960,7 +25968,7 @@ msgstr "Vetvy"
 
 #: src/frontends/qt4/GuiDocument.cpp:1422
 msgid "LaTeX Preamble"
-msgstr "Preambula LaTeXu"
+msgstr "Preambula LaTeX-u"
 
 #: src/frontends/qt4/GuiDocument.cpp:1654
 #: src/frontends/qt4/GuiDocument.cpp:1684
@@ -28516,7 +28524,7 @@ msgid ""
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
 "Zahrnutý súbor `%1$s' nebol správne exportovaný.\n"
-"Upozornenie: LaTeXov export asi nie je úplný."
+"Upozornenie: LaTeX-ov export asi nie je úplný."
 
 #: src/insets/InsetInclude.cpp:710 src/insets/InsetInclude.cpp:734
 msgid "Export failure"
@@ -28694,6 +28702,15 @@ msgstr "Prosím uveďte dĺžku (LaTeX-ový výraz)."
 #: src/insets/InsetListingsParams.cpp:161
 msgid "Invalid LaTeX length expression."
 msgstr "Neplatná dĺžka."
+
+#: src/insets/InsetListingsParams.cpp:175
+#, c-format
+msgid "Please specify a LaTeX length expression or a skip amount (%1$s)"
+msgstr "Prosím uveďte LaTeX-ový výraz.pre dĺžku alebo veľkosť medzery (%1$s)"
+
+#: src/insets/InsetListingsParams.cpp:179
+msgid "Not a valid LaTeX length expression or skip amount."
+msgstr "Neplatný výraz LaTeX-ovej dĺžky alebo veľkosti medzere."
 
 #: src/insets/InsetListingsParams.cpp:171
 #, c-format
@@ -29419,7 +29436,7 @@ msgstr "Vlastná definícia klávesnice"
 
 #: src/support/debug.cpp:50
 msgid "LaTeX generation/execution"
-msgstr "Spúšťanie/generovanie LaTeXu"
+msgstr "Spúšťanie/generovanie LaTeX-u"
 
 #: src/support/debug.cpp:51
 msgid "Math editor"
