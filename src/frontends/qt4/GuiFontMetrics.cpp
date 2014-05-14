@@ -23,6 +23,8 @@
 
 #include "support/lassert.h"
 
+#include <QTextLayout>
+
 using namespace std;
 
 namespace lyx {
@@ -50,7 +52,7 @@ inline QChar const ucs4_to_qchar(char_type const ucs4)
 } // anon namespace
 
 
-GuiFontMetrics::GuiFontMetrics(QFont const & font) : metrics_(font, 0)
+GuiFontMetrics::GuiFontMetrics(QFont const & font) : font_(font), metrics_(font, 0)
 {
 }
 
@@ -138,6 +140,58 @@ int GuiFontMetrics::signedWidth(docstring const & s) const
 		return -width(s.substr(1, s.size() - 1));
 	else
 		return width(s);
+}
+
+namespace {
+void setTextLayout(QTextLayout & tl, docstring const & s, QFont const & font,
+			     bool const rtl)
+{
+	QString qs;
+	/* In LyX, the character direction is forced by the language.
+	 * Therefore, we have to signal that fact to Qt.
+	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
+	 */
+	// Left-to-right override: forces to draw text left-to-right
+	char_type const LRO = 0x202D;
+	// Right-to-left override: forces to draw text right-to-left
+	char_type const RLO = 0x202E;
+	// Pop directional formatting: return to previous state
+	char_type const PDF = 0x202C;
+	if (rtl)
+		qs = toqstr(RLO + s + PDF);
+	else
+		qs = toqstr(LRO + s + PDF);
+
+	tl.setText(qs);
+	tl.setFont(font);
+	tl.beginLayout();
+	tl.createLine();
+	tl.endLayout();
+}
+}
+
+
+int GuiFontMetrics::pos2x(docstring const & s, int const pos, bool const rtl) const
+{
+	QTextLayout tl;
+	setTextLayout(tl, s, font_, rtl);
+	return tl.lineForTextPosition(pos + 1).cursorToX(pos + 1);
+}
+
+
+int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl) const
+{
+	QTextLayout tl;
+	setTextLayout(tl, s, font_, rtl);
+	int pos = tl.lineForTextPosition(0).xToCursor(x);
+	// take into account the unicode formatting characters
+	if (pos > 0)
+		--pos;
+	if (pos > int(s.length()))
+		pos = s.length();
+	// correct x value to the actual cursor position.
+	x = tl.lineForTextPosition(0).cursorToX(pos + 1);
+	return pos;
 }
 
 

@@ -71,11 +71,9 @@ public:
 
 		/** Return character position that is the closest to
 		 *  pixel position \param x. The value \param x is
-		 *  rounded to the actual pixel position. If \param
-		 *  short is true, the pixel value is rounded by
-		 *  default.
+		 *  adjusted to the actual pixel position.
 		*/
-		pos_type x2pos(double &x, bool low = false) const;
+		pos_type x2pos(double &x) const;
 
 		// Returns the position on left side of the element.
 		pos_type left_pos() const;

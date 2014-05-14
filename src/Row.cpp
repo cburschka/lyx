@@ -36,78 +36,65 @@ using frontend::FontMetrics;
 
 double Row::Element::pos2x(pos_type const i) const
 {
-	LASSERT(i >= pos && i <= endpos, return 0);
+	// This can happen with inline completion when clicking on the
+	// row after the completion.
+	if (i < pos || i > endpos)
+		return 0;
 
 	bool const rtl = font.isVisibleRightToLeft();
 
 	int w = 0;
 	//handle first the two bounds of the element
-	if (i == pos)
-		w = 0;
+	if (i == pos || type != STRING)
+		w = rtl ? width() : 0;
 	else if (i == endpos)
-		w = width();
+		w = rtl ? 0 : width();
 	else {
-		LASSERT(type == STRING, return 0);
 		FontMetrics const & fm = theFontMetrics(font);
-		// FIXME Avoid caching of metrics there?
-		w = fm.width(str.substr(0, i - pos));
+		w = fm.pos2x(str, i - pos, font.isVisibleRightToLeft());
 	}
 
-	if (rtl)
-		return width() - w;
-	else
-		return w;
+	return w;
 }
 
 
-pos_type Row::Element::x2pos(double &x, bool const low) const
+pos_type Row::Element::x2pos(double &x) const
 {
 	//lyxerr << "x2pos: x=" << x << " w=" << width() << " " << *this;
-	// If element is rtl, flip x value
 	bool const rtl = font.isVisibleRightToLeft();
-	double x2 = rtl ? (width() - x) : x;
-
-	double last_w = 0;
-	double w = 0;
 	size_t i = 0;
+
 	switch (type) {
-	case VIRTUAL:
-		// those elements are actually empty (but they have a width)
-		break;
 	case STRING: {
 		FontMetrics const & fm = theFontMetrics(font);
-		// FIXME: implement dichotomy search?
-		for ( ; i < str.size() ; ++i) {
-			last_w = w;
-			w = fm.width(str.substr(0, i + 1));
-			if (w > x2)
-				break;
-		}
+		// FIXME: is it really necessary for x to be a double?
+		int xx = x;
+		i = fm.x2pos(str, xx, rtl);
+		x = xx;
 		break;
 	}
+	case VIRTUAL:
+		// those elements are actually empty (but they have a width)
+		i = 0;
+		x = rtl ? width() : 0;
+		break;
 	case SEPARATOR:
 	case INSET:
 	case SPACE:
-		// those elements contain only one position
-		w = width();
+		// those elements contain only one position. Round to
+		// the closest side.
+		if (x > width()) {
+			x = width();
+			i = !rtl;
+		} else {
+			x = 0;
+			i = rtl;
+		}
+
 	}
-
-	if (type == STRING && i == str.size())
-		x2 = w;
-	// round to the closest side. The !rtl is here to obtain the
-	// same rounding as with the old code (this is cosmetic and
-	// can be eventually removed).
-	else if (type != VIRTUAL && !low && (x2 - last_w + !rtl > w - x2)) {
-		x2 = w;
-		++i;
-	} else
-		x2 = last_w;
-
-	// is element is rtl, flip values back
-	x = rtl ? width() - x2 : x2;
-
 	//lyxerr << "=> p=" << pos + i << " x=" << x << endl;
 	return pos + i;
+
 }
 
 
@@ -389,7 +376,8 @@ void Row::shorten_if_needed(pos_type const keep, int const w)
 		// If there is a paragraph marker, it should be taken in account
 		if (elements_.size() == 2)
 			xstr -= back().width();
-		pos_type new_pos = front.x2pos(xstr, true);
+		//FIXME: use FontMetrics::x2pos here?? handle rtl?
+		pos_type new_pos = front.x2pos(xstr);
 		front.str = front.str.substr(0, new_pos - pos_);
 		front.dim.wid = xstr;
 		front.endpos = new_pos;
