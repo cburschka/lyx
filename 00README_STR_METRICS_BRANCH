@@ -32,14 +32,16 @@ What is done:
 
 * Re-implement cursorX and getPosNearX using row elements.
 
-* Implement proper string metrics computation (with cache), when
-  lyxrc.force_paint_single_char is false. In this case, remove also
+* Do not honor lyxrc.force_paint_single_char anymore. This is a
+  workaround that is not necessary anymore.
+
+* Implement proper string metrics computation (with cache). Remove
   useless workarounds which disable kerning and ligatures.
 
-* when lyxrc.force_paint_single_char is false, draw also RtL text
-  string-wise. This both speeds-up drawing and prepares for code
-  removal, since we now rely on Qt to do things we use to do by
-  ourselves (see isArabic* and isHebrew* code in Encodings.cpp).
+* Draw also RtL text string-wise. This both speeds-up drawing and
+  prepares for code removal, since we now rely on Qt to do things we
+  use to do by ourselves (see isArabic* and isHebrew* code in
+  Encodings.cpp).
 
 * Do not cut strings at separators in RowPainter when text is not
   justified. This speeds-up painting by reducing the number of strings
@@ -50,7 +52,8 @@ Next steps:
 
 * Fix bugs uncovered by testing.
 
-* Get rid of LyXRC::force_paint_single_char, which is only a workaround.
+* Get rid of LyXRC::force_paint_single_char, which is not used anymore
+  in the source.
 
 * Maybe get rid of LyXRC::rtl_support, which does not have a real use case.
 

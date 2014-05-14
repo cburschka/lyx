@@ -200,9 +200,6 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 
 	// collect as much similar chars as we can
 	for (++vpos ; vpos < end ; ++vpos) {
-		if (lyxrc.force_paint_single_char)
-			break;
-
 		pos = bidi_.vis2log(vpos);
 		if (pos < font_span.first || pos > font_span.last)
 			break;

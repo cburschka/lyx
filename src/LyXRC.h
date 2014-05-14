@@ -551,7 +551,8 @@ public:
 	};
 	///
 	ScrollWheelZoom scroll_wheel_zoom;
-	///
+	/// FIXME: this shall be removed, as the source does not refer
+	/// to it anymore.
 	bool force_paint_single_char;
 	///
 	int cursor_width;

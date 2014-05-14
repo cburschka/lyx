@@ -112,18 +112,12 @@ int GuiFontMetrics::rbearing(char_type c) const
 int GuiFontMetrics::width(docstring const & s) const
 {
 	int w = 0;
-	if (lyxrc.force_paint_single_char) {
-		size_t const ls = s.size();
-		for (size_t i = 0; i < ls; ++i)
-			w += width(s[i]);
+	map<docstring, int>::const_iterator it = strwidth_cache_.find(s);
+	if (it != strwidth_cache_.end()) {
+		w = it->second;
 	} else {
-		map<docstring, int>::const_iterator it = strwidth_cache_.find(s);
-		if (it != strwidth_cache_.end()) {
-			w = it->second;
-		} else {
-			w = metrics_.width(toqstr(s));
-			strwidth_cache_[s] = w;
-		}
+		w = metrics_.width(toqstr(s));
+		strwidth_cache_[s] = w;
 	}
 	return w;
 }

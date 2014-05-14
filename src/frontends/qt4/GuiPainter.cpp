@@ -321,8 +321,6 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	// occurs at a line-break. As a kludge, we force Qt to
 	// render this glyph using a one-column line.
 	// This is needed for some math glyphs.
-	// FIXME In texted, this behaves differently depending
-	// on lyxrc.force_paint_single_char status.
 	// Should the soft hyphen char be displayed at all?
 	// I don't think so (i.e., Qt is correct as far as
 	// texted is concerned). /spitz
