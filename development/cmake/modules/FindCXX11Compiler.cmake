@@ -2,7 +2,7 @@
 #
 # The module comes from the enblend project, slightly modified.
 #
-# Check if compiler supports C++11 features 
+# Check if compiler supports C++11 features
 # and which compiler switches are necessary
 # CXX11_FLAG : contains the necessary compiler flag
 
@@ -77,6 +77,8 @@ int main() {
 ")
 
 # check c compiler
+set(SAFE_CMAKE_REQUIRED_QUIET ${CMAKE_REQUIRED_QUIET})
+set(CMAKE_REQUIRED_QUIET ON)
 FOREACH(FLAG ${CXX11_FLAG_CANDIDATES})
   SET(SAFE_CMAKE_REQUIRED_FLAGS "${CMAKE_REQUIRED_FLAGS}")
   SET(CMAKE_REQUIRED_FLAGS "${FLAG}")
@@ -85,9 +87,11 @@ FOREACH(FLAG ${CXX11_FLAG_CANDIDATES})
   SET(CMAKE_REQUIRED_FLAGS "${SAFE_CMAKE_REQUIRED_FLAGS}")
   IF(CXX11_FLAG_DETECTED)
     SET(CXX11_FLAG "${FLAG}")
+    message(STATUS "CXX11_FLAG_DETECTED = \"${FLAG}\"")
     BREAK()
   ENDIF()
 ENDFOREACH()
+set(CMAKE_REQUIRED_QUIET ${SAFE_CMAKE_REQUIRED_QUIET})
 
 # handle the standard arguments for find_package
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(CXX11Compiler DEFAULT_MSG CXX11_FLAG)
