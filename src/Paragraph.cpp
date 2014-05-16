@@ -3861,20 +3861,19 @@ void Paragraph::locateWord(pos_type & from, pos_type & to,
 
 void Paragraph::collectWords()
 {
-	pos_type n = size();
-	for (pos_type pos = 0; pos < n; ++pos) {
+	for (pos_type pos = 0; pos < size(); ++pos) {
 		if (isWordSeparator(pos))
 			continue;
 		pos_type from = pos;
 		locateWord(from, pos, WHOLE_WORD);
-		if ((pos - from) >= (int)lyxrc.completion_minlength) {
-			docstring word = asString(from, pos, AS_STR_NONE);
-			FontList::const_iterator cit = d->fontlist_.fontIterator(pos);
-			if (cit == d->fontlist_.end())
-				return;
-			Language const * lang = cit->font().language();
-			d->words_[lang->lang()].insert(word);
-		}
+		if (pos < from + lyxrc.completion_minlength)
+			continue;
+		FontList::const_iterator cit = d->fontlist_.fontIterator(from);
+		if (cit == d->fontlist_.end())
+			return;
+		Language const * lang = cit->font().language();
+		docstring const word = asString(from, pos, AS_STR_NONE);
+		d->words_[lang->lang()].insert(word);
 	}
 }
 
