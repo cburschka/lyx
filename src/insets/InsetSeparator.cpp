@@ -137,7 +137,7 @@ ColorCode InsetSeparator::ColorName() const
 }
 
 
-void InsetSeparator::latex(otexstream & os, OutputParams const & rp) const
+void InsetSeparator::latex(otexstream & os, OutputParams const &) const
 {
 	switch (params_.kind) {
 		case InsetSeparatorParams::PLAIN:
