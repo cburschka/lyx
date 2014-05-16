@@ -202,8 +202,10 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 }
 
 
-static void finishEnvironment(otexstream & os, OutputParams const & runparams,
-			       TeXEnvironmentData const & data)
+static void finishEnvironment(Buffer const & buf, Text const & text,
+			      pit_type nextpit, otexstream & os,
+			      OutputParams const & runparams,
+			      TeXEnvironmentData const & data)
 {
 	if (open_encoding_ == CJK && data.cjk_nested) {
 		// We need to close the encoding even if it does not change
@@ -232,6 +234,14 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 				os << setEncoding(data.prev_encoding->iconvName());
 		}
 	}
+
+	// Check whether we should output a blank line after the environment
+	DocumentClass const & tclass = buf.params().documentClass();
+	ParagraphList const & pars = text.paragraphs();
+	bool next_style_is_default = (nextpit >= runparams.par_end) ? false
+		: tclass.isDefaultLayout(pars.constIterator(nextpit)->layout());
+	if (!data.style->nextnoindent && next_style_is_default)
+		os << '\n';
 }
 
 
@@ -296,7 +306,7 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 			prepareEnvironment(buf, text, par, os, runparams);
 		// Recursive call to TeXEnvironment!
 		TeXEnvironment(buf, text, runparams, pit, os);
-		finishEnvironment(os, runparams, data);
+		finishEnvironment(buf, text, pit + 1, os, runparams, data);
 	}
 
 	if (pit != runparams.par_end)
@@ -785,7 +795,7 @@ void TeXOnePar(Buffer const & buf,
 	bool const useSetSpace = bparams.documentClass().provides("SetSpace");
 	if (par.allowParagraphCustomization()) {
 		if (par.params().startOfAppendix()) {
-			os << "\\appendix\n";
+			os << "\n\\appendix\n";
 		}
 
 		if (!par.params().spacing().isDefault()
@@ -1027,7 +1037,9 @@ void TeXOnePar(Buffer const & buf,
 			// but whose alignment is unchanged, or (case 3) the
 			// paragraph is a command not followed by an environment
 			// and the alignment of the current and next paragraph
-			// is unchanged.
+			// is unchanged, or (case 4) the current alignment is
+			// changed and a standard paragraph follows.
+			DocumentClass const & tclass = bparams.documentClass();
 			if ((style == next_layout
 			     && !style.parbreak_is_newline
 			     && style.latextype != LATEX_ITEM_ENVIRONMENT
@@ -1041,7 +1053,9 @@ void TeXOnePar(Buffer const & buf,
 			    || (style.isCommand()
 				&& !next_layout.isEnvironment()
 				&& style.align == par.getAlign()
-				&& next_layout.align == nextpar->getAlign())) {
+				&& next_layout.align == nextpar->getAlign())
+			    || (style.align != par.getAlign()
+				&& tclass.isDefaultLayout(next_layout))) {
 				os << '\n';
 			}
 		}
@@ -1163,7 +1177,7 @@ void latexParagraphs(Buffer const & buf,
 			prepareEnvironment(buf, text, par, os, runparams);
 		// pit can be changed in TeXEnvironment.
 		TeXEnvironment(buf, text, runparams, pit, os);
-		finishEnvironment(os, runparams, data);
+		finishEnvironment(buf, text, pit + 1, os, runparams, data);
 	}
 
 	if (pit == runparams.par_end) {
