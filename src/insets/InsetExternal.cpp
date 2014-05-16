@@ -673,21 +673,19 @@ void InsetExternal::latex(otexstream & os, OutputParams const & runparams) const
 			et.formats.find("PDFLaTeX");
 
 		if (cit != et.formats.end()) {
-			int l = external::writeExternal(params_, "PDFLaTeX",
-						        buffer(), os.os(),
-						        *(runparams.exportdata),
-						        external_in_tmpdir,
-						        dryrun);
-			os.texrow().newlines(l);
+			external::writeExternal(params_, "PDFLaTeX",
+						buffer(), os,
+						*(runparams.exportdata),
+						external_in_tmpdir,
+						dryrun);
 			return;
 		}
 	}
 
-	int l = external::writeExternal(params_, "LaTeX", buffer(), os.os(),
-					*(runparams.exportdata),
-					external_in_tmpdir,
-					dryrun);
-	os.texrow().newlines(l);
+	external::writeExternal(params_, "LaTeX", buffer(), os,
+				*(runparams.exportdata),
+				external_in_tmpdir,
+				dryrun);
 }
 
 
@@ -698,8 +696,10 @@ int InsetExternal::plaintext(odocstringstream & os,
 	if (runparams.for_tooltip)
 		return 0;
 
-	os << '\n'; // output external material on a new line
-	external::writeExternal(params_, "Ascii", buffer(), os,
+	TexRow texrow;
+	otexstream ots(os, texrow);
+	ots << '\n'; // output external material on a new line
+	external::writeExternal(params_, "Ascii", buffer(), ots,
 				*(runparams.exportdata), false,
 				runparams.dryrun || runparams.inComment);
 	return PLAINTEXT_NEWLINE;
@@ -709,9 +709,14 @@ int InsetExternal::plaintext(odocstringstream & os,
 int InsetExternal::docbook(odocstream & os,
 			   OutputParams const & runparams) const
 {
-	return external::writeExternal(params_, "DocBook", buffer(), os,
-				       *(runparams.exportdata), false,
-				       runparams.dryrun || runparams.inComment);
+	TexRow texrow;
+	odocstringstream ods;
+	otexstream ots(ods, texrow);
+	external::writeExternal(params_, "DocBook", buffer(), ots,
+				*(runparams.exportdata), false,
+				runparams.dryrun || runparams.inComment);
+	os << ods.str();
+	return int(count(ods.str().begin(), ods.str().end(), '\n'));
 }
 
 

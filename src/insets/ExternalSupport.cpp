@@ -333,23 +333,23 @@ string const substituteOptions(InsetExternalParams const & params,
 } // namespace anon
 
 
-int writeExternal(InsetExternalParams const & params,
-		  string const & format,
-		  Buffer const & buffer, odocstream & os,
-		  ExportData & exportdata,
-		  bool external_in_tmpdir,
-		  bool dryrun)
+void writeExternal(InsetExternalParams const & params,
+		   string const & format,
+		   Buffer const & buffer, otexstream & os,
+		   ExportData & exportdata,
+		   bool external_in_tmpdir,
+		   bool dryrun)
 {
 	Template const * const et_ptr = getTemplatePtr(params);
 	if (!et_ptr)
-		return 0;
+		return;
 	Template const & et = *et_ptr;
 
 	Template::Formats::const_iterator cit = et.formats.find(format);
 	if (cit == et.formats.end()) {
 		LYXERR(Debug::EXTERNAL, "External template format '" << format
 			<< "' not specified in template " << params.templatename());
-		return 0;
+		return;
 	}
 
 	if (!dryrun || contains(cit->second.product, "$$Contents"))
@@ -383,7 +383,7 @@ int writeExternal(InsetExternalParams const & params,
 	str = substituteOptions(params, str, format);
 	// FIXME UNICODE
 	os << from_utf8(str);
-	return int(count(str.begin(), str.end(),'\n'));
+	return;
 }
 
 namespace {

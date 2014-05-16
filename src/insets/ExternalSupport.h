@@ -60,13 +60,13 @@ std::string const doSubstitution(InsetExternalParams const & params,
     If \p external_in_tmpdir == true, then the generated file is
     place in the buffer's temporary directory.
 */
-int writeExternal(InsetExternalParams const &,
-		  std::string const & format,
-		  Buffer const &,
-		  odocstream &,
-		  ExportData &,
-		  bool external_in_tmpdir,
-		  bool dryrun);
+void writeExternal(InsetExternalParams const &,
+		   std::string const & format,
+		   Buffer const &,
+		   otexstream &,
+		   ExportData &,
+		   bool external_in_tmpdir,
+		   bool dryrun);
 
 } // namespace external
 } // namespace lyx
