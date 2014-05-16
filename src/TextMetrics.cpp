@@ -1907,12 +1907,13 @@ int TextMetrics::leftMargin(int max_width,
 		}
 	}
 
-	// This happens after sections in standard classes. The 1.3.x
-	// code compared depths too, but it does not seem necessary
-	// (JMarc)
-	if (tclass.isDefaultLayout(par.layout())
-	    && pit > 0 && pars[pit - 1].layout().nextnoindent)
-		parindent.erase();
+	// This happens after sections or environments in standard classes.
+	// We have to check the previous layout at same depth.
+	if (tclass.isDefaultLayout(par.layout()) && pit > 0) {
+	    pit_type prev = text_->depthHook(pit, par.getDepth());
+	    if (pars[prev < pit ? prev : pit - 1].layout().nextnoindent)
+		    parindent.erase();
+	}
 
 	FontInfo const labelfont = text_->labelFont(par);
 	FontMetrics const & labelfont_metrics = theFontMetrics(labelfont);
