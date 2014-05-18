@@ -1076,6 +1076,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		    && ((prevpar.getDepth() > par.getDepth()
 			 && !par.layout().isEnvironment())
 			|| (prevpar.layout() != par.layout()
+			    && !par.layout().isCommand()
 			    && prevpar.layout().isEnvironment()))) {
 			if (par.layout().isEnvironment()) {
 				docstring const layout = par.layout().name();
