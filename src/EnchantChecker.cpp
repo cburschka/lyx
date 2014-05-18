@@ -69,21 +69,17 @@ EnchantChecker::Private::~Private()
 enchant::Dict * EnchantChecker::Private::addSpeller(string const & lang)
 {
 	enchant::Broker * instance = enchant::Broker::instance();
+	Speller m;
 
-	if (!instance->dict_exists(lang))
-		// FIXME error handling?
-		return 0;
-
-	enchant::Dict * dict = instance->request_dict(lang);
-
-	if (dict) {
-		Speller m;
-		m.speller = dict;
-		spellers_[lang] = m;
-		return m.speller;
+	try {
+		m.speller = instance->request_dict(lang);
 	}
-	// FIXME error handling?
-	return 0;
+	catch (const enchant::Exception & e) {
+		// FIXME error handling?
+		m.speller = 0;
+	}
+	spellers_[lang] = m;
+	return m.speller;
 }
 
 
@@ -135,9 +131,9 @@ void EnchantChecker::advanceChangeNumber()
 
 void EnchantChecker::insert(WordLangTuple const & word)
 {
-	Spellers::iterator it = d->spellers_.find(word.lang()->code());
-	if (it != d->spellers_.end()) {
-		it->second.speller->add(to_utf8(word.word()));
+	enchant::Dict * m = d->speller(word.lang()->code());
+	if (m) {
+		m->add(to_utf8(word.word()));
 		advanceChangeNumber();
 	}
 }
@@ -145,9 +141,9 @@ void EnchantChecker::insert(WordLangTuple const & word)
 	
 void EnchantChecker::remove(WordLangTuple const & word)
 {
-	Spellers::iterator it = d->spellers_.find(word.lang()->code());
-	if (it != d->spellers_.end()) {
-		it->second.speller->remove(to_utf8(word.word()));
+	enchant::Dict * m = d->speller(word.lang()->code());
+	if (m) {
+		m->remove(to_utf8(word.word()));
 		advanceChangeNumber();
 	}
 }
@@ -155,9 +151,9 @@ void EnchantChecker::remove(WordLangTuple const & word)
 
 void EnchantChecker::accept(WordLangTuple const & word)
 {
-	Spellers::iterator it = d->spellers_.find(word.lang()->code());
-	if (it != d->spellers_.end()) {
-		it->second.speller->add_to_session(to_utf8(word.word()));
+	enchant::Dict * m = d->speller(word.lang()->code());
+	if (m) {
+		m->add_to_session(to_utf8(word.word()));
 		advanceChangeNumber();
 	}
 }
