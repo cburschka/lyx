@@ -246,8 +246,10 @@ bool InsetGraphics::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY:
-		if (cmd.getArg(0) != "graphics")
+		if (cmd.getArg(0) != "graphics") {
+			// fall through
 			return Inset::getStatus(cur, cmd, flag);
+		}
 	case LFUN_INSET_EDIT:
 	case LFUN_INSET_DIALOG_UPDATE:
 	case LFUN_GRAPHICS_RELOAD:
