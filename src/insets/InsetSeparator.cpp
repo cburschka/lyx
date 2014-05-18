@@ -139,16 +139,19 @@ ColorCode InsetSeparator::ColorName() const
 
 void InsetSeparator::latex(otexstream & os, OutputParams const &) const
 {
-	switch (params_.kind) {
-		case InsetSeparatorParams::PLAIN:
-			os << breakln << "%\n";
-			break;
-		case InsetSeparatorParams::PARBREAK:
-			os << breakln << "\n";
-			break;
-		default:
-			os << breakln << "%\n";
-			break;
+	// Do nothing if a paragraph break was just output
+	if (!os.afterParbreak()) {
+		switch (params_.kind) {
+			case InsetSeparatorParams::PLAIN:
+				os << breakln << "%\n";
+				break;
+			case InsetSeparatorParams::PARBREAK:
+				os << breakln << "\n";
+				break;
+			default:
+				os << breakln << "%\n";
+				break;
+		}
 	}
 }
 
