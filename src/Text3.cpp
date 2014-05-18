@@ -1073,6 +1073,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		Paragraph const & par = pars_[pit];
 		Paragraph const & prevpar = pit > 0 ? pars_[pit - 1] : par;
 		if (pit > 0 && cur.pos() == par.beginOfBody()
+		    && !par.isEnvSeparator(cur.pos())
 		    && ((prevpar.getDepth() > par.getDepth()
 			 && !par.layout().isEnvironment())
 			|| (prevpar.layout() != par.layout()
