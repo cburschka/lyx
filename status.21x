@@ -87,6 +87,9 @@ What's new
 
 * USER INTERFACE
 
+- Fix crash when right-clicking into an insets with more paragraphs than the
+  main text (bug 9123).
+
 - Fix crash when entering math in change-tracking mode while merge changes
   dialog is open (bug 7685).
 
