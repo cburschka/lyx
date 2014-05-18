@@ -1089,6 +1089,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "parbreak"));
 				breakParagraph(cur);
 			}
+			Font const f(inherit_font, cur.current_font.language());
+			pars_[cur.pit() - 1].resetFonts(f);
 		} else {
 			breakParagraph(cur, cmd.argument() == "inverse");
 		}
