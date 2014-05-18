@@ -90,15 +90,16 @@ typedef odocstream & (*odocstream_manip)(odocstream &);
     they were iomanip's to ensure that the next output will start at the
     beginning of a line. Using "breakln", a '\n' char will be output if needed,
     while using "safebreakln", "%\n" will be output if needed.
-    The class also records the last output character.
+    The class also records the last output character and can tell whether
+    a paragraph break was just output.
   */
 
 class otexstream {
 public:
 	///
 	otexstream(odocstream & os, TexRow & texrow)
-		: os_(os), texrow_(texrow),
-		  canbreakline_(false), protectspace_(false), lastchar_(0) {}
+		: os_(os), texrow_(texrow), canbreakline_(false),
+		  protectspace_(false), parbreak_(true), lastchar_(0) {}
 	///
 	odocstream & os() { return os_; }
 	///
@@ -114,9 +115,16 @@ public:
 	///
 	bool protectSpace() const { return protectspace_; }
 	///
-	void lastChar(char_type const & c) { lastchar_ = c; }
+	void lastChar(char_type const & c)
+	{
+		parbreak_ = (!canbreakline_ && c == '\n');
+		canbreakline_ = (c != '\n');
+		lastchar_ = c;
+	}
 	///
 	char_type lastChar() const { return lastchar_; }
+	///
+	bool afterParbreak() const { return parbreak_; }
 private:
 	///
 	odocstream & os_;
@@ -126,6 +134,8 @@ private:
 	bool canbreakline_;
 	///
 	bool protectspace_;
+	///
+	bool parbreak_;
 	///
 	char_type lastchar_;
 };
