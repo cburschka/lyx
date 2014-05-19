@@ -25,6 +25,7 @@
 #include <cstdio>
 #include <cstring>
 #include <algorithm>
+#include <typeinfo>
 
 using namespace std;
 
