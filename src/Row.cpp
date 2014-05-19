@@ -28,6 +28,8 @@
 #include <algorithm>
 #include <ostream>
 
+#include <boost/next_prior.hpp>
+
 using namespace std;
 
 namespace lyx {
@@ -98,6 +100,27 @@ pos_type Row::Element::x2pos(double &x) const
 }
 
 
+bool Row::Element::breakAt(double w)
+{
+	if (type != STRING || width() <= w)
+		return false;
+
+	bool const rtl = font.isVisibleRightToLeft();
+	if (rtl)
+		w = width() - w;
+	pos_type new_pos = x2pos(w);
+	if (new_pos == pos)
+		return false;
+	str = str.substr(0, new_pos - pos);
+	if (rtl)
+		dim.wid -= w;
+	else
+		dim.wid = w;
+	endpos = new_pos;
+	return true;
+}
+
+
 pos_type Row::Element::left_pos() const
 {
 	return font.isVisibleRightToLeft() ? endpos : pos;
@@ -108,7 +131,6 @@ pos_type Row::Element::right_pos() const
 {
 	return font.isVisibleRightToLeft() ? pos : endpos;
 }
-
 
 
 Row::Row()
@@ -334,63 +356,63 @@ void Row::pop_back()
 }
 
 
-void Row::shorten_if_needed(pos_type const keep, int const w)
+void Row::shortenIfNeeded(pos_type const keep, int const w)
 {
-	if (empty() || width() < w)
+	if (empty() || width() <= w)
 		return;
 
 	/** First, we try to remove elements one by one from the end
-	 * until a separator is found.
+	 * until a separator is found. cit points to the first element
+	 * we want to remove from the row.
 	 */
-	int i = elements_.size();
+	Elements::iterator const beg = elements_.begin();
+	Elements::iterator const end = elements_.end();
+	Elements::iterator cit = end;
+	Elements::iterator first_below = end;
 	int new_end = end_;
 	int new_wid = dim_.wid;
-	if (i > 0 && elements_[i - 1].type == SEPARATOR && new_end > keep) {
-		--i;
-		new_end = elements_[i].pos;
-		new_wid -= elements_[i].dim.wid;
+	// if the row ends with a separator, skip it.
+	if (cit != beg && boost::prior(cit)->type == SEPARATOR && new_end > keep) {
+		--cit;
+		new_end = cit->pos;
+		new_wid -= cit->dim.wid;
 	}
 
-	while (i > 0 && elements_[i - 1].type != SEPARATOR && new_end > keep) {
-		--i;
-		new_end = elements_[i].pos;
-		new_wid -= elements_[i].dim.wid;
+	// Search for a separator where the row can be broken.
+	while (cit != beg && boost::prior(cit)->type != SEPARATOR && new_end > keep) {
+		--cit;
+		new_end = cit->pos;
+		new_wid -= cit->dim.wid;
+		if (new_wid < w && first_below == end)
+			first_below = cit;
 	}
-	if (i == 0) {
-		/* If we are here, it means that we have not found a
-		 * separator to shorten the row. There is one case
-		 * where we can do something: when we have one big
-		 * string, maybe with a paragraph marker after it.
-		 */
-		Element & front = elements_.front();
-		if (!(front.type == STRING
-		      && (elements_.size() == 1
-			  || (elements_.size() == 2
-			      && back().type == VIRTUAL))))
-			return;
 
-		// If this is a string element, we can try to split it.
-		if (front.type != STRING)
-			return;
-		double xstr = w - x;
-		// If there is a paragraph marker, it should be taken in account
-		if (elements_.size() == 2)
-			xstr -= back().width();
-		//FIXME: use FontMetrics::x2pos here?? handle rtl?
-		pos_type new_pos = front.x2pos(xstr);
-		front.str = front.str.substr(0, new_pos - pos_);
-		front.dim.wid = xstr;
-		front.endpos = new_pos;
-		end_ = new_pos;
-		dim_.wid = x + xstr;
-		// If there is a paragraph marker, it should be removed.
-		if (elements_.size() == 2)
-			elements_.pop_back();
+	if (cit != beg) {
+		// We have found a suitable separator. This is the
+		// common case.
+		end_ = new_end;
+		dim_.wid = new_wid;
+		elements_.erase(cit, end);
 		return;
 	}
-	end_ = new_end;
-	dim_.wid = new_wid;
-	elements_.erase(elements_.begin() + i, elements_.end());
+
+	/* If we are here, it means that we have not found a separator
+	 * to shorten the row. There is one case where we can do
+	 * something: when we have one big string, maybe with some
+	 * other things after it.
+	 */
+	double max_w = w - x;
+	if (first_below->breakAt(max_w)) {
+		end_ = first_below->endpos;
+		dim_.wid = x + first_below->width();
+		// If there are other elements, they should be removed.
+		elements_.erase(boost::next(first_below), end);
+	} else if (first_below->pos > pos_) {
+		end_ = first_below->pos;
+		dim_.wid = new_wid;
+		// Remove all elements from first_below.
+		elements_.erase(first_below, end);
+	}
 }
 
 

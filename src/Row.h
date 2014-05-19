@@ -63,17 +63,21 @@ public:
 			: type(t), pos(p), endpos(p + 1), inset(0),
 			  extra(0), font(f), change(ch), final(false) {}
 
-		// returns total width of element, including separator overhead
+		// Return total width of element, including separator overhead
 		double width() const { return dim.wid + extra; };
-		// returns position in pixels (from the left) of position
-		// \param i in the row element.
+		/** Return position in pixels (from the left) of position
+		 * \param i in the row element.
+		 */
 		double pos2x(pos_type const i) const;
-
 		/** Return character position that is the closest to
 		 *  pixel position \param x. The value \param x is
 		 *  adjusted to the actual pixel position.
 		*/
 		pos_type x2pos(double &x) const;
+		/** Break the element if possible, so that its width is
+		 * less then \param w. Returns true on success.
+		 */
+		bool breakAt(double w);
 
 		// Returns the position on left side of the element.
 		pos_type left_pos() const;
@@ -207,7 +211,7 @@ public:
 	 * \param body_pos minimum amount of text to keep.
 	 * \param width maximum width of the row
 	 */
-	void shorten_if_needed(pos_type const body_pos, int const width);
+	void shortenIfNeeded(pos_type const body_pos, int const width);
 
 	/**
 	 * If last element of the row is a string, compute its width

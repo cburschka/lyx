@@ -889,6 +889,8 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 		++i;
 		++fi;
 	}
+	row.finalizeLast();
+	row.endpos(i);
 
 	// End of paragraph marker
 	if (lyxrc.paragraph_markers
@@ -904,10 +906,8 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 		row.addVirtual(end, docstring(1, char_type(0x00B6)), f, Change());
 	}
 
-	row.finalizeLast();
-	row.endpos(i);
 	// if the row is too large, try to cut at last separator.
-	row.shorten_if_needed(body_pos, width);
+	row.shortenIfNeeded(body_pos, width);
 
 	// if the row ends with a separator that is not at end of
 	// paragraph, remove it
