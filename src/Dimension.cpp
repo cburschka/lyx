@@ -12,6 +12,8 @@
 
 #include "Dimension.h"
 
+#include "support/lassert.h"
+
 namespace lyx {
 
 void Dimension::operator+=(Dimension const & dim)
@@ -21,6 +23,15 @@ void Dimension::operator+=(Dimension const & dim)
 	if (des < dim.des)
 		des = dim.des;
 	wid += dim.wid;
+}
+
+
+Point::Point(int x, int y) : x_(x), y_(y)
+{
+	LASSERT(x > -1000000, x = -1000000);
+	LASSERT(x <  1000000, x =  1000000);
+	LASSERT(y > -1000000, y = -1000000);
+	LASSERT(y <  1000000, y =  1000000);
 }
 
 } // namespace lyx

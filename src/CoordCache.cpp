@@ -23,16 +23,6 @@
 
 namespace lyx {
 
-Point::Point(int x, int y)
-	: x_(x), y_(y)
-{
-	LASSERT(x > -1000000, x = -1000000);
-	LASSERT(x <  1000000, x =  1000000);
-	LASSERT(y > -1000000, y = -1000000);
-	LASSERT(y <  1000000, y =  1000000);
-}
-
-
 // just a helper to be able to set a breakpoint
 void lyxbreaker(void const * data, const char * hint, int size)
 {
