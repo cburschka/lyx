@@ -569,7 +569,7 @@ void Lexer::Pimpl::pushToken(string const & pt)
 //////////////////////////////////////////////////////////////////////
 
 Lexer::Lexer()
-	: pimpl_(new Pimpl(0, 0))
+	: pimpl_(new Pimpl(0, 0)), lastReadOk_(false)
 {}
 
 
