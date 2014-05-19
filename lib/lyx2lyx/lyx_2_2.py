@@ -144,7 +144,13 @@ def convert_separator(document):
 def revert_separator(document):
     " Revert separator insets to layout separators "
 
-    parsep = ["\\begin_layout --Separator--", "", "\\end_layout", ""]
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass in beamer_classes:
+        beglaysep = "\\begin_layout Separator"
+    else:
+        beglaysep = "\\begin_layout --Separator--"
+
+    parsep = [beglaysep, "", "\\end_layout", ""]
     comert = ["\\begin_inset ERT", "status collapsed", "",
               "\\begin_layout Plain Layout", "%", "\\end_layout",
               "", "\\end_inset", ""]
@@ -222,15 +228,18 @@ def revert_separator(document):
                         and not check_token(document.body[k], "\\end_deeper") \
                         and not check_token(document.body[k], "\\begin_deeper"):
                     if layoutname == "Standard":
-                        document.body[beg:j+1] = ["\\begin_layout --Separator--"]
+                        document.body[beg:j+1] = [beglaysep]
                         i = i + 1
                     else:
-                        document.body[beg:j+1] = ["\\begin_deeper", "\\begin_layout --Separator--"]
+                        document.body[beg:j+1] = ["\\begin_deeper", beglaysep]
                         end = end + 2 - (j + 1 - beg)
                         document.body[end+1:end+1] = ["", "\\end_deeper", ""]
                         i = i + 3
                 else:
-                    del document.body[i:end+1]
+                    if something_before:
+                        del document.body[i:end+1]
+                    else:
+                        del document.body[i:end-1]
 
         i = i + 1
 
