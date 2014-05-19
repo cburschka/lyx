@@ -209,7 +209,7 @@ FontLoader::FontLoader()
 		toqstr(addPath(package().system_support().absFileName(), "fonts"));
 
 	for (int i = 0 ; i < num_math_fonts; ++i) {
-		QString const font_file = fonts_dir + '/' + math_fonts[i] + ".ttf";
+		QString const font_file = fonts_dir + math_fonts[i] + ".ttf";
 		int fontID = QFontDatabase::addApplicationFont(font_file);
 
 		LYXERR(Debug::FONT, "Adding font " << font_file
