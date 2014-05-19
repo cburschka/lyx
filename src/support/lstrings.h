@@ -28,6 +28,9 @@ namespace support {
 /// Does not depend on the locale.
 int compare_no_case(docstring const & s, docstring const & s2);
 
+/// Compare \p s and \p s2 using the collating rules of the current locale.
+int compare_locale(docstring const & s, docstring const & s2);
+
 /// Compare \p s and \p s2, ignoring the case of ASCII characters only.
 int compare_ascii_no_case(std::string const & s, std::string const & s2);
 

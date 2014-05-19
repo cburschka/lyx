@@ -104,12 +104,12 @@ private:
 
 bool Format::formatSorter(Format const * lhs, Format const * rhs)
 {
-	return _(lhs->prettyname()) < _(rhs->prettyname());
+	return compare_locale(_(lhs->prettyname()), _(rhs->prettyname())) < 0;
 }
 
 bool operator<(Format const & a, Format const & b)
 {
-	return _(a.prettyname()) < _(b.prettyname());
+	return compare_locale(_(a.prettyname()), _(b.prettyname())) < 0;
 }
 
 
