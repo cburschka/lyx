@@ -168,8 +168,9 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment, o
           n += 1
           endn = end
           loop += 1
-        # now check the case that we have "}" + "{" in two ERTs
-        else: # no brace pair found
+        else: 
+          # no brace pair found
+          # now check the case that we have "}" + "{" in two ERTs
           if opt:
             endBrace = find_token(document.body, "]", lineERT, end_layout)
           else:
@@ -232,7 +233,7 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment, o
           n += 1
           lineERT2 = find_token(document.body, "\\begin_inset ERT", end_ERT, end_layout)
           if lineERT2 != -1:
-            end_ERT2 = find_end_of_inset(document.body, lineERT)
+            end_ERT2 = find_end_of_inset(document.body, lineERT2)
             if end_ERT2 == -1:
               document.warning("Can't find end of second ERT!!")
               break
