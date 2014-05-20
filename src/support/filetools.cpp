@@ -840,7 +840,7 @@ bool readLink(FileName const & file, FileName & link)
 	string const encoded = file.toFilesystemEncoding();
 #ifdef HAVE_DEF_PATH_MAX
 	char linkbuffer[PATH_MAX + 1];
-	int const nRead = ::readlink(encoded.c_str(),
+	ssize_t const nRead = ::readlink(encoded.c_str(),
 				     linkbuffer, sizeof(linkbuffer) - 1);
 	if (nRead <= 0)
 		return false;
@@ -854,7 +854,7 @@ bool readLink(FileName const & file, FileName & link)
 		if (nRead < 0) {
 			return false;
 		}
-		if (nRead < buf.size() - 1) {
+		if (static_cast<size_t>(nRead) < buf.size() - 1) {
 			break;
 		}
 		buf.resize(buf.size() * 2);
