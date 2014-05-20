@@ -39,9 +39,33 @@ using namespace lyx::support;
 namespace lyx {
 
 
-LyXRC_PreviewStatus RenderPreview::status()
+bool RenderPreview::previewText()
 {
-	return lyxrc.preview;
+	// Use a switch to trigger a warning if the enum is changed.
+	switch(lyxrc.preview) {
+	case LyXRC::PREVIEW_ON:
+	case LyXRC::PREVIEW_NO_MATH:
+		return true;
+	case LyXRC::PREVIEW_OFF:
+		break;
+	}
+
+	return false;
+}
+
+
+bool RenderPreview::previewMath()
+{
+	// Use a switch to trigger a warning if the enum is changed.
+	switch(lyxrc.preview) {
+	case LyXRC::PREVIEW_ON:
+		return true;
+	case LyXRC::PREVIEW_NO_MATH:
+	case LyXRC::PREVIEW_OFF:
+		break;
+	}
+
+	return false;
 }
 
 
@@ -171,7 +195,7 @@ void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 
 void RenderPreview::startLoading(Buffer const & buffer, bool forexport) const
 {
-	if (!forexport && (status() == LyXRC::PREVIEW_OFF || snippet_.empty()))
+	if (!forexport && (lyxrc.preview == LyXRC::PREVIEW_OFF || snippet_.empty()))
 		return;
 
 	graphics::PreviewLoader * loader = buffer.loader();
@@ -184,7 +208,7 @@ void RenderPreview::addPreview(docstring const & latex_snippet,
                                Buffer const & buffer, 
                                bool ignore_lyxrc)
 {
-	if (status() == LyXRC::PREVIEW_OFF && !ignore_lyxrc)
+	if (lyxrc.preview == LyXRC::PREVIEW_OFF && !ignore_lyxrc)
 		return;
 
 	graphics::PreviewLoader * loader = buffer.loader();
@@ -197,7 +221,7 @@ void RenderPreview::addPreview(docstring const & latex_snippet,
                                graphics::PreviewLoader & ploader, 
                                bool ignore_lyxrc)
 {
-	if (status() == LyXRC::PREVIEW_OFF && !ignore_lyxrc)
+	if (lyxrc.preview == LyXRC::PREVIEW_OFF && !ignore_lyxrc)
 		return;
 
 	// FIXME UNICODE

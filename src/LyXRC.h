@@ -560,17 +560,6 @@ public:
 };
 
 
-/** \c LyXRC_PreviewStatus is a wrapper for LyXRC::PreviewStatus.
- *  It can be forward-declared and passed as a function argument without
- *  having to expose LyXRC.h.
- */
-class LyXRC_PreviewStatus {
-	LyXRC::PreviewStatus val_;
-public:
-	LyXRC_PreviewStatus(LyXRC::PreviewStatus val) : val_(val) {}
-	operator LyXRC::PreviewStatus() const { return val_; }
-};
-
 void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new);
 
 ///

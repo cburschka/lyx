@@ -542,8 +542,7 @@ static void add_preview_and_start_loading(RenderMonitoredPreview & renderer,
 {
 	InsetExternalParams const & params = inset.params();
 
-	if (RenderPreview::status() != LyXRC::PREVIEW_OFF &&
-	    isPreviewWanted(params)) {
+	if (RenderPreview::previewText() && isPreviewWanted(params)) {
 		renderer.setAbsFile(params.filename);
 		docstring const snippet = latexString(inset);
 		renderer.addPreview(snippet, buffer);
@@ -577,7 +576,7 @@ void InsetExternal::setParams(InsetExternalParams const & p)
 		|| !lyxrc.display_graphics
 		|| params_.preview_mode == PREVIEW_OFF
 		|| (params_.preview_mode == PREVIEW_INSTANT
-		    && RenderPreview::status() == LyXRC::PREVIEW_OFF)) {
+		    && !RenderPreview::previewText())) {
 		RenderButton * button_ptr = renderer_->asButton();
 		if (!button_ptr) {
 			renderer_.reset(new RenderButton);

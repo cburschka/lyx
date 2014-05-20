@@ -44,8 +44,10 @@ class PreviewLoader;
 
 class RenderPreview : public RenderBase, public boost::signals::trackable {
 public:
-	/// a wrapper for lyxrc.preview
-	static LyXRC_PreviewStatus status();
+	/// Return true if preview is enabled in text (from LyXRC::preview)
+	static bool previewText();
+	/// Return true if preview is enabled in mathed (from LyXRC::preview)
+	static bool previewMath();
 
 	RenderPreview(Inset const *);
 	RenderPreview(RenderPreview const &, Inset const *);

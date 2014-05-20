@@ -413,8 +413,8 @@ ColorCode InsetMathHull::standardColor() const
 
 bool InsetMathHull::previewState(const BufferView *const bv) const
 {
-	if (!editing(bv) && RenderPreview::status() == LyXRC::PREVIEW_ON
-		&& type_ != hullRegexp)
+	if (!editing(bv) && RenderPreview::previewMath()
+	    && type_ != hullRegexp)
 	{
 		graphics::PreviewImage const * pimage =
 			preview_->getPreviewImage(bv->buffer());
@@ -615,7 +615,7 @@ void InsetMathHull::initUnicodeMath() const
 void InsetMathHull::addPreview(DocIterator const & inset_pos,
 	graphics::PreviewLoader & /*ploader*/) const
 {
-	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
+	if (RenderPreview::previewMath()) {
 		preparePreview(inset_pos);
 	}
 }
@@ -626,7 +626,7 @@ void InsetMathHull::preparePreview(DocIterator const & pos,
 {
 	// there is no need to do all the macro stuff if we're not
 	// actually going to generate the preview.
-	if (RenderPreview::status() != LyXRC::PREVIEW_ON && !forexport)
+	if (!RenderPreview::previewMath() && !forexport)
 		return;
 
 	Buffer const * buffer = pos.buffer();
@@ -690,7 +690,7 @@ void InsetMathHull::loadPreview(DocIterator const & pos) const
 
 bool InsetMathHull::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
-	if (RenderPreview::status() == LyXRC::PREVIEW_ON) {
+	if (RenderPreview::previewMath()) {
 		reloadPreview(old);
 		cur.screenUpdateFlags(Update::Force);
 	}

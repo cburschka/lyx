@@ -31,7 +31,6 @@
 #include "LayoutFile.h"
 #include "LayoutModuleList.h"
 #include "LyX.h"
-#include "LyXRC.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "output_plaintext.h"
@@ -989,7 +988,7 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 	LBUFERR(mi.base.bv);
 
 	bool use_preview = false;
-	if (RenderPreview::status() != LyXRC::PREVIEW_OFF) {
+	if (RenderPreview::previewText()) {
 		graphics::PreviewImage const * pimage =
 			preview_->getPreviewImage(mi.base.bv->buffer());
 		use_preview = pimage && pimage->image();
@@ -1015,7 +1014,7 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 	LBUFERR(pi.base.bv);
 
 	bool use_preview = false;
-	if (RenderPreview::status() != LyXRC::PREVIEW_OFF) {
+	if (RenderPreview::previewText()) {
 		graphics::PreviewImage const * pimage =
 			preview_->getPreviewImage(pi.base.bv->buffer());
 		use_preview = pimage && pimage->image();
@@ -1094,8 +1093,7 @@ void add_preview(RenderMonitoredPreview & renderer, InsetInclude const & inset,
 		 Buffer const & buffer)
 {
 	InsetCommandParams const & params = inset.params();
-	if (RenderPreview::status() != LyXRC::PREVIEW_OFF &&
-	    preview_wanted(params, buffer)) {
+	if (RenderPreview::previewText() && preview_wanted(params, buffer)) {
 		renderer.setAbsFile(includedFileName(buffer, params));
 		docstring const snippet = latexString(inset);
 		renderer.addPreview(snippet, buffer);

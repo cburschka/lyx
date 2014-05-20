@@ -19,7 +19,6 @@
 #include "FuncStatus.h"
 #include "LaTeXFeatures.h"
 #include "Lexer.h"
-#include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "RenderPreview.h"
@@ -122,8 +121,7 @@ void InsetIPA::preparePreview(DocIterator const & pos) const
 
 bool InsetIPA::previewState(BufferView * bv) const
 {
-	if (!editing(bv) && (RenderPreview::status() == LyXRC::PREVIEW_ON ||
-			     RenderPreview::status() == LyXRC::PREVIEW_NO_MATH)) {
+	if (!editing(bv) && RenderPreview::previewText()) {
 		graphics::PreviewImage const * pimage =
 			preview_->getPreviewImage(bv->buffer());
 		return pimage && pimage->image();

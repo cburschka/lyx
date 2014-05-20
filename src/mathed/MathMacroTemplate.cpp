@@ -34,7 +34,6 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "Lexer.h"
-#include "LyXRC.h" 
 
 #include "frontends/Painter.h"
 
@@ -833,7 +832,7 @@ void fixMacroInstances(Cursor & cur, DocIterator const & inset_pos,
 		MathMacro * macro = insetMath->asMacro();
 		if (macro && macro->name() == name && macro->folded()) {
 			fix(macro);
-			if (RenderPreview::status() == LyXRC::PREVIEW_ON)
+			if (RenderPreview::previewMath())
 				preview_reload_needed = true;
 		}
 	}
