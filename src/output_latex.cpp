@@ -854,9 +854,7 @@ void TeXOnePar(Buffer const & buf,
 	switch (style.latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
-		if (nextpar
-		    && (par.params().depth() < nextpar->params().depth())
-		    && !os.afterParbreak())
+		if (nextpar && par.params().depth() < nextpar->params().depth())
 			pending_newline = true;
 		break;
 	case LATEX_ENVIRONMENT: {
@@ -871,8 +869,7 @@ void TeXOnePar(Buffer const & buf,
 	// fall through possible
 	default:
 		// we don't need it for the last paragraph!!!
-		// or if the last thing is an environment separator
-		if (nextpar && !os.afterParbreak())
+		if (nextpar)
 			pending_newline = true;
 	}
 
@@ -950,11 +947,15 @@ void TeXOnePar(Buffer const & buf,
 	if (closing_rtl_ltr_environment)
 		os << "}";
 
+	bool const last_was_separator =
+		par.size() > 0 && par.isEnvSeparator(par.size() - 1);
+
 	if (pending_newline) {
 		if (unskip_newline)
 			// prevent unwanted whitespace
 			os << '%';
-		os << '\n';
+		if (!os.afterParbreak() && !last_was_separator)
+			os << '\n';
 	}
 
 	// if this is a CJK-paragraph and the next isn't, close CJK
@@ -1018,7 +1019,7 @@ void TeXOnePar(Buffer const & buf,
 	// we don't need a newline for the last paragraph!!!
 	// Note from JMarc: we will re-add a \n explicitly in
 	// TeXEnvironment, because it is needed in this case
-	if (nextpar && !os.afterParbreak()) {
+	if (nextpar && !os.afterParbreak() && !last_was_separator) {
 		// Make sure to start a new line
 		os << breakln;
 		Layout const & next_layout = nextpar->layout();
