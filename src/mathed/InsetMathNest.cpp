@@ -402,6 +402,8 @@ void InsetMathNest::latex(otexstream & os, OutputParams const & runparams) const
 		       runparams.encoding);
 	wi.canBreakLine(os.canBreakLine());
 	write(wi);
+	// Reset parbreak status after a math inset.
+	os.lastChar(0);
 	os.canBreakLine(wi.canBreakLine());
 
 	int lf = wi.line();

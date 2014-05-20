@@ -856,7 +856,7 @@ void TeXOnePar(Buffer const & buf,
 	case LATEX_LIST_ENVIRONMENT:
 		if (nextpar
 		    && (par.params().depth() < nextpar->params().depth())
-		    && !par.isEnvSeparator(par.size() - 1))
+		    && !os.afterParbreak())
 			pending_newline = true;
 		break;
 	case LATEX_ENVIRONMENT: {
@@ -872,7 +872,7 @@ void TeXOnePar(Buffer const & buf,
 	default:
 		// we don't need it for the last paragraph!!!
 		// or if the last thing is an environment separator
-		if (nextpar && par.size() > 0 && !par.isEnvSeparator(par.size() - 1))
+		if (nextpar && !os.afterParbreak())
 			pending_newline = true;
 	}
 
@@ -1018,7 +1018,7 @@ void TeXOnePar(Buffer const & buf,
 	// we don't need a newline for the last paragraph!!!
 	// Note from JMarc: we will re-add a \n explicitly in
 	// TeXEnvironment, because it is needed in this case
-	if (nextpar && par.size() > 0 && !par.isEnvSeparator(par.size() - 1)) {
+	if (nextpar && !os.afterParbreak()) {
 		// Make sure to start a new line
 		os << breakln;
 		Layout const & next_layout = nextpar->layout();
