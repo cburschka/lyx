@@ -3149,12 +3149,12 @@ def revert_overprint(document):
             continue
         endseq = j
         subst = ["\\begin_layout Standard"] + put_cmd_in_ert("\\begin{overprint}")
-        esubst = ["\\end_layout", "", "\\begin_layout Standard"] + put_cmd_in_ert("\\end{overprint}")
+        esubst = ["\\begin_layout Standard"] + put_cmd_in_ert("\\end{overprint}")
         endseq = endseq + len(esubst) - len(document.body[j : j])
         if document.body[j] == "\\end_deeper":
-            document.body[j : j] = ["\\end_deeper", ""] + esubst
+            document.body[j : j] = [""] + esubst + ["", "\\end_layout"]
         else:
-            document.body[j : j] = esubst
+            document.body[j : j] = ["\\end_layout", ""] + esubst
         r = i
         while r < j:
             if document.body[r] == "\\begin_deeper":
@@ -3519,10 +3519,10 @@ def revert_fragileframe(document):
             continue
         endseq = j
         subst = ["\\begin_layout Standard"] + put_cmd_in_ert("\\begin{frame}")
-        esubst = ["\\end_layout", "", "\\begin_layout Standard"] + put_cmd_in_ert("\\end{frame}")
+        esubst = ["\\begin_layout Standard"] + put_cmd_in_ert("\\end{frame}")
         endseq = endseq + len(esubst) - len(document.body[j : j])
         if document.body[j] == "\\end_deeper":
-            document.body[j : j] = ["\\end_deeper", ""] + esubst
+            document.body[j : j] = [""] + esubst + ["", "\\end_layout"]
         else:
             document.body[j : j] = esubst
         for q in range(i, j):
@@ -3622,10 +3622,10 @@ def revert_newframes(document):
             continue
         endseq = j
         subst = ["\\begin_layout %s" % frame_dict[val]]
-        esubst = ["\\end_layout", "", "\\begin_layout EndFrame", "", "\\end_layout"]
+        esubst = ["\\begin_layout EndFrame", "", "\\end_layout"]
         endseq = endseq + len(esubst) - len(document.body[j : j])
         if document.body[j] == "\\end_deeper":
-            document.body[j : j] = ["\\end_deeper", ""] + esubst
+            document.body[j : j] = [""] + esubst
         else:
             document.body[j : j] = esubst
         for q in range(i, j):
