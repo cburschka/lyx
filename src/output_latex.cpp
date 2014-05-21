@@ -321,6 +321,18 @@ void getArgInsets(otexstream & os, OutputParams const & runparams, Layout::LaTeX
 	if (argnr == 0)
 		return;
 
+	// Default and preset args are always output, so if they require
+	// other arguments, consider this.
+	Layout::LaTeXArgMap::const_iterator lit = latexargs.begin();
+	Layout::LaTeXArgMap::const_iterator const lend = latexargs.end();
+	for (; lit != lend; ++lit) {
+		Layout::latexarg arg = (*lit).second;
+		if ((!arg.presetarg.empty() || !arg.defaultarg.empty()) && !arg.requires.empty()) {
+				vector<string> req = getVectorFromString(arg.requires);
+				required.insert(required.end(), req.begin(), req.end());
+			}
+	}
+
 	for (unsigned int i = 1; i <= argnr; ++i) {
 		map<int, InsetArgument const *>::const_iterator lit = ilist.find(i);
 		bool inserted = false;
