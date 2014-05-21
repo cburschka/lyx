@@ -3156,19 +3156,22 @@ def revert_overprint(document):
             r = r + 1
         argbeg = find_token(document.body, "\\begin_inset Argument 1", i, j)
         if argbeg != -1:
-            argend = find_end_of_inset(document.body, argbeg)
-            if argend == -1:
-                document.warning("Malformed LyX document. Cannot find end of Overprint argument!")
-                i += 1
-                continue
-            beginPlain = find_token(document.body, "\\begin_layout Plain Layout", argbeg)
-            endPlain = find_end_of_layout(document.body, beginPlain)
-            content = document.body[beginPlain + 1 : endPlain]
-            # Adjust range end
-            endseq = endseq - len(document.body[argbeg : argend])
-            # Remove arg inset
-            del document.body[argbeg : argend + 1]
-            subst += put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
+            # Is this really our argument?
+            nested = find_token(document.body, "\\begin_deeper", i, argbeg)
+            if nested != -1:
+                argend = find_end_of_inset(document.body, argbeg)
+                if argend == -1:
+                    document.warning("Malformed LyX document. Cannot find end of Overprint argument!")
+                    i += 1
+                    continue
+                beginPlain = find_token(document.body, "\\begin_layout Plain Layout", argbeg)
+                endPlain = find_end_of_layout(document.body, beginPlain)
+                content = document.body[beginPlain + 1 : endPlain]
+                # Adjust range end
+                endseq = endseq - len(document.body[argbeg : argend])
+                # Remove arg inset
+                del document.body[argbeg : argend + 1]
+                subst += put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
             
         endseq = endseq - len(document.body[i : i])
         document.body[i : i] = subst + ["\\end_layout"]
