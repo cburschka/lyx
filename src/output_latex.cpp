@@ -1048,9 +1048,11 @@ void TeXOnePar(Buffer const & buf,
 			// unchanged, or (case 2) the following is a
 			// non-environment paragraph whose depth is increased
 			// but whose alignment is unchanged, or (case 3) the
+			// paragraph is not an environment and the next one is a
+			// non-itemize-like env at lower depth, or (case 4) the
 			// paragraph is a command not followed by an environment
 			// and the alignment of the current and next paragraph
-			// is unchanged, or (case 4) the current alignment is
+			// is unchanged, or (case 5) the current alignment is
 			// changed and a standard paragraph follows.
 			DocumentClass const & tclass = bparams.documentClass();
 			if ((style == next_layout
@@ -1063,6 +1065,9 @@ void TeXOnePar(Buffer const & buf,
 			    || (!next_layout.isEnvironment()
 				&& nextpar->getDepth() > par.getDepth()
 				&& nextpar->getAlign() == par.getAlign())
+			    || (!style.isEnvironment()
+				&& next_layout.latextype == LATEX_ENVIRONMENT
+				&& nextpar->getDepth() < par.getDepth())
 			    || (style.isCommand()
 				&& !next_layout.isEnvironment()
 				&& style.align == par.getAlign()
