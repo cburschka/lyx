@@ -21632,6 +21632,24 @@ Control
  Please note that if you use password protected access to repository via
  ssh, you will be asked in terminal window.
  LyX was tested against GIT 1.7.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Windows users please note that you need to ensure that git is on the path.
+ This can be set from within LyX at 
+\family sans
+Tools\SpecialChar \menuseparator
+Preferences\SpecialChar \menuseparator
+Paths\SpecialChar \menuseparator
+PATH prefix
+\family default
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
