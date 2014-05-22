@@ -1071,14 +1071,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cap::replaceSelection(cur);
 		pit_type pit = cur.pit();
 		Paragraph const & par = pars_[pit];
-		Paragraph const & prevpar = pit > 0 ? pars_[pit - 1] : par;
-		if (pit > 0 && cur.pos() == par.beginOfBody()
+		pit_type prev =
+			pit > 0 && pars_[pit - 1].getDepth() >= par.getDepth() ?
+			depthHook(pit, par.getDepth()) : pit;
+		if (prev < pit && cur.pos() == par.beginOfBody()
 		    && !par.isEnvSeparator(cur.pos())
 		    && !par.layout().isCommand()
-		    && ((prevpar.getDepth() > par.getDepth()
-			 && !par.layout().isEnvironment())
-			|| (prevpar.layout() != par.layout()
-			    && prevpar.layout().isEnvironment()))) {
+		    && pars_[prev].layout() != par.layout()
+		    && pars_[prev].layout().isEnvironment()) {
 			if (par.layout().isEnvironment()) {
 				docstring const layout = par.layout().name();
 				DocumentClass const & tc = bv->buffer().params().documentClass();
