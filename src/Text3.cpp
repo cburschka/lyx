@@ -1074,10 +1074,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		Paragraph const & prevpar = pit > 0 ? pars_[pit - 1] : par;
 		if (pit > 0 && cur.pos() == par.beginOfBody()
 		    && !par.isEnvSeparator(cur.pos())
+		    && !par.layout().isCommand()
 		    && ((prevpar.getDepth() > par.getDepth()
 			 && !par.layout().isEnvironment())
 			|| (prevpar.layout() != par.layout()
-			    && !par.layout().isCommand()
 			    && prevpar.layout().isEnvironment()))) {
 			if (par.layout().isEnvironment()) {
 				docstring const layout = par.layout().name();
