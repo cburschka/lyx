@@ -1665,9 +1665,13 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv)
 {
 	if (!bv)
 		return;
+	Text const * text = bv->cursor().text();
+	// no paragraphs and no separators exist in math
+	if (!text)
+		return;
 
 	pit_type pit = bv->cursor().selBegin().pit();
-	Paragraph const & par = bv->cursor().text()->getPar(pit);
+	Paragraph const & par = text->getPar(pit);
 	docstring const curlayout = par.layout().name();
 	docstring outerlayout;
 	depth_type current_depth = par.params().depth();
@@ -1677,7 +1681,7 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv)
 		if (pit == 0 || cpar.params().depth() == 0)
 			break;
 		--pit;
-		cpar = bv->cursor().text()->getPar(pit);
+		cpar = text->getPar(pit);
 		if (cpar.params().depth() < current_depth
 		    && cpar.layout().isEnvironment()) {
 				outerlayout = cpar.layout().name();
