@@ -1084,7 +1084,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				DocumentClass const & tc = bv->buffer().params().documentClass();
 				lyx::dispatch(FuncRequest(LFUN_LAYOUT, tc.plainLayout().name()));
 				lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "parbreak"));
-				breakParagraph(cur, true);
+				lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK, "inverse"));
 				lyx::dispatch(FuncRequest(LFUN_LAYOUT, layout));
 			} else {
 				lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "parbreak"));
