@@ -33,6 +33,7 @@
 #include "support/lstrings.h"
 
 #include <algorithm>
+#include <climits>
 
 using namespace std;
 using namespace lyx::support;
@@ -273,8 +274,8 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 	buffer().params().documentClass().addCiteMacro("!textafter", to_utf8(after));
 	*/
 	docstring label;
-	vector<docstring> const keys = getVectorFromString(key);
-	label = biblist.getLabel(keys, buffer(), cite_type, for_xhtml, before, after);
+	vector<docstring> keys = getVectorFromString(key);
+	label = biblist.getLabel(keys, buffer(), cite_type, for_xhtml, UINT_MAX, before, after);
 	return label;
 }
 

@@ -119,7 +119,10 @@ What's new
 - Make selection by mouse drag more reliable in mathed (bug 9074).
 
 - Fix undo with many individual changes (e.g. with replace all)
-  (bug #7079).
+  (bug 7079).
+
+- Fix problem with display of citation information when a whole lot of
+  entries are cited at once (bug 9131).
 
 - Do not spellcheck "code" style in logical markup module.
 

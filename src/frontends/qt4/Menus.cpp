@@ -1554,9 +1554,10 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 	vector<docstring> const keys = getVectorFromString(key);
 
 	vector<CitationStyle> const citeStyleList = buf->params().citeStyles();
+	static const size_t max_length = 40;
 	vector<docstring> citeStrings =
 		buf->masterBibInfo().getCiteStrings(keys, citeStyleList, bv->buffer(),
-		false, before, after, from_utf8("dialog"));
+		before, after, from_utf8("dialog"), max_length);
 
 	vector<docstring>::const_iterator cit = citeStrings.begin();
 	vector<docstring>::const_iterator end = citeStrings.end();

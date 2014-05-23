@@ -636,7 +636,8 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref,
 
 docstring const BibTeXInfo::getLabel(BibTeXInfo const * const xref,
 	Buffer const & buf, docstring const & format, bool richtext,
-	docstring before, docstring after, docstring dialog, bool next) const
+	docstring const & before, docstring const & after,
+	docstring const & dialog, bool next) const
 {
 	docstring loclabel;
 
@@ -872,10 +873,19 @@ docstring const BiblioInfo::getInfo(docstring const & key,
 }
 
 
-docstring const BiblioInfo::getLabel(vector<docstring> const & keys,
-	Buffer const & buf, string const & style, bool richtext,
-	docstring const & before, docstring const & after, docstring const & dialog) const
+docstring const BiblioInfo::getLabel(vector<docstring> keys,
+	Buffer const & buf, string const & style, bool for_xhtml,
+	size_t max_size, docstring const & before, docstring const & after,
+	docstring const & dialog) const
 {
+	// shorter makes no sense
+	LASSERT(max_size >= 16, max_size = 16);
+
+	// we can't display more than 10 of these, anyway
+	bool const too_many_keys = keys.size() > 10;
+	if (too_many_keys)
+		keys.resize(10);
+
 	CiteEngineType const engine_type = buf.params().citeEngineType();
 	DocumentClass const & dc = buf.params().documentClass();
 	docstring const & format = from_utf8(dc.getCiteFormat(engine_type, style, "cite"));
@@ -897,8 +907,17 @@ docstring const BiblioInfo::getLabel(vector<docstring> const & keys,
 					xrefptr = &(xrefit->second);
 			}
 		}
-		ret = data.getLabel(xrefptr, buf, ret, richtext,
-			before, after, dialog, key+1 != ken);
+		ret = data.getLabel(xrefptr, buf, ret, for_xhtml,
+			before, after, dialog, key + 1 != ken);
+	}
+
+	if (ret.size() > max_size) {
+		ret.resize(max_size - 3);
+		ret += "...";
+	} else if (too_many_keys) {
+		if (ret.size() > max_size - 3)
+			ret.resize(max_size - 3);
+		ret += "...";
 	}
 	return ret;
 }
@@ -915,8 +934,8 @@ bool BiblioInfo::isBibtex(docstring const & key) const
 
 vector<docstring> const BiblioInfo::getCiteStrings(
 	vector<docstring> const & keys, vector<CitationStyle> const & styles,
-	Buffer const & buf, bool richtext, docstring const & before,
-	docstring const & after, docstring const & dialog) const
+	Buffer const & buf, docstring const & before,
+	docstring const & after, docstring const & dialog, size_t max_size) const
 {
 	if (empty())
 		return vector<docstring>();
@@ -925,7 +944,7 @@ vector<docstring> const BiblioInfo::getCiteStrings(
 	vector<docstring> vec(styles.size());
 	for (size_t i = 0; i != vec.size(); ++i) {
 		style = styles[i].cmd;
-		vec[i] = getLabel(keys, buf, style, richtext, before, after, dialog);
+		vec[i] = getLabel(keys, buf, style, false, max_size, before, after, dialog);
 	}
 
 	return vec;

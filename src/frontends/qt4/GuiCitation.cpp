@@ -250,7 +250,8 @@ void GuiCitation::updateStyles(BiblioInfo const & bi)
 	if (!selectedLV->selectionModel()->selectedIndexes().empty())
 		curr = selectedLV->selectionModel()->selectedIndexes()[0].row();
 
-	QStringList sty = citationStyles(bi);
+	static const size_t max_length = 80;
+	QStringList sty = citationStyles(bi, max_length);
 
 	if (sty.isEmpty()) {
 		// some error
@@ -587,7 +588,7 @@ void GuiCitation::findKey(BiblioInfo const & bi,
 }
 
 
-QStringList GuiCitation::citationStyles(BiblioInfo const & bi)
+QStringList GuiCitation::citationStyles(BiblioInfo const & bi, size_t max_size)
 {
 	docstring const before = qstring_to_ucs4(textBeforeED->text());
 	docstring const after = qstring_to_ucs4(textAfterED->text());
@@ -595,7 +596,7 @@ QStringList GuiCitation::citationStyles(BiblioInfo const & bi)
 	vector<CitationStyle> styles = citeStyles_;
 	// FIXME: pass a dictionary instead of individual before, after, dialog, etc.
 	vector<docstring> ret = bi.getCiteStrings(keys, styles, documentBuffer(),
-		false, before, after, from_utf8("dialog"));
+		before, after, from_utf8("dialog"), max_size);
 	return to_qstring_list(ret);
 }
 
