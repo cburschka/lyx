@@ -488,7 +488,7 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 	// we'll remove characters from the front of fmt as we
 	// deal with them
 	while (!fmt.empty()) {
-		if (counter++ > max_passes) {
+		if (counter > max_passes) {
 			LYXERR0("Recursion limit reached while parsing `"
 			        << format << "'.");
 			return _("ERROR!");
@@ -506,6 +506,7 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 					string const val =
 						buf.params().documentClass().getCiteMacro(engine_type, key);
 					fmt = from_utf8(val) + fmt.substr(1);
+					counter += 1;
 					continue;
 				} else if (key[0] == '_') {
 					// a translatable bit
@@ -550,12 +551,15 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 						getValueForKey(optkey, buf, before, after, dialog, xref);
 					if (optkey == "next" && next)
 						ret << ifpart; // without expansion
-					else if (!val.empty())
-						ret << expandFormat(ifpart, xref, counter, buf,
+					else if (!val.empty()) {
+						int newcounter = 0;
+						ret << expandFormat(ifpart, xref, newcounter, buf,
 							before, after, dialog, next);
-					else if (!elsepart.empty())
-						ret << expandFormat(elsepart, xref, counter, buf,
+					} else if (!elsepart.empty()) {
+						int newcounter = 0;
+						ret << expandFormat(elsepart, xref, newcounter, buf,
 							before, after, dialog, next);
+					}
 					// fmt will have been shortened for us already
 					continue;
 				}
