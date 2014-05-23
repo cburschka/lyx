@@ -86,9 +86,25 @@ public:
 	virtual void image(int x, int y, int w, int h,
 		lyx::graphics::Image const & image);
 
-	/// draw a string at position x, y (y is the baseline)
-	virtual int text(int x, int y,
-		docstring const & str, FontInfo const & f);
+	/** draw a string at position x, y (y is the baseline). The
+	 * text direction is deduced from \c str.
+	 * \return the width of the drawn text.
+	 */
+	virtual int text(int x, int y, docstring const & str, FontInfo const & f);
+
+	/** draw a string at position x, y (y is the baseline). The
+	 * text direction is enforced by the \c Font.
+	 * \return the width of the drawn text.
+	 */
+	virtual int text(int x, int y, docstring const & str, Font const & f);
+
+	/** draw a string at position x, y (y is the baseline), but
+	 * make sure that the part between \c from and \c to is in
+	 * \c other color. The text direction is enforced by the \c Font.
+	 * \return the width of the drawn text.
+	 */
+	virtual int text(int x, int y, docstring const & str, Font const & f,
+			 Color other, size_type from, size_type to);
 
 	/// draw a char at position x, y (y is the baseline)
 	virtual int text(int x, int y, char_type c, FontInfo const & f);

@@ -164,6 +164,7 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 {
 	// This method takes up 70% of time when typing
 	pos_type pos = bidi_.vis2log(vpos);
+	pos_type start_pos = pos;
 	// first character
 	char_type c = par_.getChar(pos);
 	docstring str;
@@ -190,10 +191,6 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 	// Track-change status.
 	Change const & change_running = par_.lookupChange(pos);
 
-	// selected text?
-	bool const selection = (pos >= row_.sel_beg && pos < row_.sel_end)
-		|| pi_.selected;
-
 	// spelling correct?
 	bool const spell_state =
 		lyxrc.spellcheck_continuously && par_.isMisspelled(pos);
@@ -201,12 +198,8 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 	// collect as much similar chars as we can
 	for (++vpos ; vpos < end ; ++vpos) {
 		pos = bidi_.vis2log(vpos);
-		if (pos < font_span.first || pos > font_span.last)
-			break;
 
-		bool const new_selection = pos >= row_.sel_beg && pos < row_.sel_end;
-		if (new_selection != selection)
-			// Selection ends or starts here.
+		if (!font_span.inside(pos))
 			break;
 
 		bool const new_spell_state =
@@ -225,6 +218,9 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 		if (c == '\t')
 			break;
 
+		// When row_.separator == 0, it is possible to print a
+		// string longer than a word in one fell swoop.
+		// Therefore there is no need to break at spaces.
 		if (!isPrintableNonspace(c)
 		    && (c != ' ' || row_.separator > 0))
 			break;
@@ -241,6 +237,19 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 		str.push_back(c);
 	}
 
+	// Make pos point to the last character in the string.
+	// Using "pos = bidi_.vis2log(vpos)" does not work for some reason.
+	if (vpos < end)
+		pos = bidi_.vis2log(vpos - 1);
+
+	// Now make pos point to the position _after_ the string.
+	// Using vis2log for that is not a good idea in general, we
+	// want logical ordering.
+	if (font.isVisibleRightToLeft())
+		--pos;
+	else
+		++pos;
+
 	if (str[0] == '\t')
 		str.replace(0,1,from_ascii("    "));
 
@@ -253,30 +262,36 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 	 * See also http://thread.gmane.org/gmane.editors.lyx.devel/79740
 	 * for an earlier thread on the subject
 	 */
-	// Left-to-right override: forces to draw text left-to-right
-	char_type const LRO = 0x202D;
-	// Right-to-left override: forces to draw text right-to-left
-	char_type const RLO = 0x202E;
-	// Pop directional formatting: return to previous state
-	char_type const PDF = 0x202C;
 	if (font.isVisibleRightToLeft()) {
 		reverse(str.begin(), str.end());
-		str = RLO + str + PDF;
-	} else
-		str = LRO + str + PDF;
+		// If the string is reversed, the positions need to be adjusted
+		++pos;
+		++start_pos;
+		swap(start_pos, pos);
+	} 
 
-	if (!selection && !change_running.changed()) {
-		x_ += pi_.pain.text(int(x_), yo_, str, font.fontInfo());
-		return;
+	// at least part of text selected?
+	bool const some_sel = (pos >= row_.sel_beg && start_pos < row_.sel_end)
+		|| pi_.selected;
+	// all the text selected?
+	bool const all_sel = (start_pos >= row_.sel_beg && pos < row_.sel_end)
+		|| pi_.selected;
+
+	if (all_sel) {
+		Font copy = font;
+		copy.fontInfo().setPaintColor(Color_selectiontext);
+		x_ += pi_.pain.text(int(x_), yo_, str, copy);
+	} else if (change_running.changed()) {
+		Font copy = font;
+		copy.fontInfo().setPaintColor(change_running.color());
+		x_ += pi_.pain.text(int(x_), yo_, str, copy);
+	} else if (!some_sel) {
+		x_ += pi_.pain.text(int(x_), yo_, str, font);
+	} else {
+		x_ += pi_.pain.text(int(x_), yo_, str, font, Color_selectiontext,
+				    max(row_.sel_beg, start_pos) - start_pos,
+				    min(row_.sel_end, pos) - start_pos);
 	}
-
-	FontInfo copy = font.fontInfo();
-	if (change_running.changed())
-		copy.setPaintColor(change_running.color());
-	else if (selection)
-		copy.setPaintColor(Color_selectiontext);
-
-	x_ += pi_.pain.text(int(x_), yo_, str, copy);
 }
 
 

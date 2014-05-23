@@ -14,9 +14,11 @@
 #define PAINTER_H
 
 #include "support/strfwd.h"
+#include "support/types.h"
 
 namespace lyx {
 
+class Font;
 class FontInfo;
 
 namespace graphics { class Image; }
@@ -106,11 +108,25 @@ public:
 	virtual void image(int x, int y, int w, int h,
 		graphics::Image const & image) = 0;
 
-	/// draw a string at position x, y (y is the baseline)
-	/**
-	* \return the width of the drawn text.
-	*/
+	/** draw a string at position x, y (y is the baseline). The
+	 * text direction is deduced from \c str.
+	 * \return the width of the drawn text.
+	 */
 	virtual int text(int x, int y, docstring const & str, FontInfo const & f) = 0;
+
+	/** draw a string at position x, y (y is the baseline). The
+	 * text direction is enforced by the \c Font.
+	 * \return the width of the drawn text.
+	 */
+	virtual int text(int x, int y, docstring const & str, Font const & f) = 0;
+
+	/** draw a string at position x, y (y is the baseline), but
+	 * make sure that the part between \c from and \c to is in
+	 * \c other color. The text direction is enforced by the \c Font.
+	 * \return the width of the drawn text.
+	 */
+	virtual int text(int x, int y, docstring const & str, Font const & f,
+			 Color other, size_type from, size_type to) = 0;
 
 	void setDrawingEnabled(bool drawing_enabled)
 	{ drawing_enabled_ = drawing_enabled; }

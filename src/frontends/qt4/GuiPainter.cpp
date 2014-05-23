@@ -20,13 +20,14 @@
 #include "GuiImage.h"
 #include "qt_helpers.h"
 
-#include "FontInfo.h"
+#include "Font.h"
 #include "Language.h"
 #include "LyXRC.h"
 
 #include "insets/Inset.h"
 
 #include "support/lassert.h"
+#include "support/lstrings.h"
 #include "support/debug.h"
 
 #include <QPixmapCache>
@@ -41,6 +42,7 @@
 #endif
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
@@ -305,16 +307,15 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	QFont const & ff = getFont(f); 
 	GuiFontMetrics const & fm = getFontMetrics(f); 
 
-	int textwidth;
-
 	// Here we use the font width cache instead of
 	//   textwidth = fontMetrics().width(str);
 	// because the above is awfully expensive on MacOSX
-	textwidth = fm.width(s);
-	textDecoration(f, x, y, textwidth);
+	int const textwidth = fm.width(s);
 
 	if (!isDrawingEnabled())
 		return textwidth;
+
+	textDecoration(f, x, y, textwidth);
 
 	// Qt4 does not display a glyph whose codepoint is the
 	// same as that of a soft-hyphen (0x00ad), unless it
@@ -389,11 +390,51 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	setQPainterPen(computeColor(f.realColor()));
 	if (font() != ff)
 		setFont(ff);
-	// We need to draw the text as LTR as we use our own bidi code.
-	QPainter::setLayoutDirection(Qt::LeftToRight);
 	drawText(x, y, str);
 	//LYXERR(Debug::PAINTING, "draw " << string(str.toUtf8())
 	//	<< " at " << x << "," << y);
+	return textwidth;
+}
+
+
+int GuiPainter::text(int x, int y, docstring const & str, Font const & f)
+{
+	docstring const dstr = directedString(str, f.isVisibleRightToLeft());
+	return text(x, y, dstr, f.fontInfo());
+}
+
+
+int GuiPainter::text(int x, int y, docstring const & str, Font const & f,
+		     Color other, size_type from, size_type to)
+{
+	GuiFontMetrics const & fm = getFontMetrics(f.fontInfo());
+	FontInfo fi = f.fontInfo();
+	bool const rtl = f.isVisibleRightToLeft();
+	docstring const dstr = directedString(str, rtl);
+
+	// dimensions
+	int const ascent = fm.maxAscent();
+	int const height = fm.maxAscent() + fm.maxDescent();
+	int xmin = fm.pos2x(str, from, rtl);
+	int xmax = fm.pos2x(str, to, rtl);
+	if (xmin > xmax)
+		swap(xmin, xmax);
+
+	// First the part in other color
+	Color const orig = fi.realColor();
+	fi.setPaintColor(other);
+	setClipRect(QRect(x + xmin, y - ascent, xmax - xmin, height));
+	int const textwidth = text(x, y, dstr, fi);
+
+	// Then the part in normal color
+	// Note that in Qt5, it is not possible to use Qt::UniteClip
+	fi.setPaintColor(orig);
+	setClipRect(QRect(x, y - ascent, xmin, height));
+	text(x, y, dstr, fi);
+	setClipRect(QRect(x + xmax, y - ascent, textwidth - xmax, height));
+	text(x, y, dstr, fi);
+	setClipping(false);
+
 	return textwidth;
 }
 

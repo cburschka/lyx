@@ -47,6 +47,10 @@ What is done:
   justified. This speeds-up painting by reducing the number of strings
   to draw.
 
+* Do not cut strings at selection boundary in RowPainter. This avoids
+  ligature/kerning breaking in latin text, and bad rendering problems
+  in Arabic.
+
 
 Next steps:
 
@@ -72,5 +76,3 @@ Steps for later (aka out of the scope of this branch):
   happens. This depends on the update machinery.
 
   This would allow to get rid of the Bidi.cpp code.
-
-

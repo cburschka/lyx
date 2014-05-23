@@ -1502,5 +1502,23 @@ docstring bformat(docstring const & fmt,
 	return subst(str, from_ascii("%%"), from_ascii("%"));
 }
 
+
+docstring directedString(docstring const & s, bool const rtl)
+{
+	/* In LyX, the character direction is forced by the language.
+	 * Therefore, we have to signal that fact to Qt.
+	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
+	 */
+	// Left-to-right override: forces to draw text left-to-right
+	char_type const LRO = 0x202D;
+	// Right-to-left override: forces to draw text right-to-left
+	char_type const RLO = 0x202E;
+	// Pop directional formatting: return to previous state
+	char_type const PDF = 0x202C;
+	return (rtl ? RLO : LRO) + s + PDF;
+}
+
+
+
 } // namespace support
 } // namespace lyx

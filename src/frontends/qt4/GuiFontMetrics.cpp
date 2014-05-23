@@ -22,10 +22,12 @@
 #include "insets/Inset.h"
 
 #include "support/lassert.h"
+#include "support/lstrings.h"
 
 #include <QTextLayout>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
@@ -42,7 +44,7 @@ namespace {
  * why this works well for symbol fonts used in mathed too, even though
  * these are not real ucs4 characters. These are codepoints in the
  * computer modern fonts used, nothing unicode related.
- * See comment in QLPainter::text() for more explanation.
+ * See comment in GuiPainter::text() for more explanation.
  **/
 inline QChar const ucs4_to_qchar(char_type const ucs4)
 {
@@ -146,22 +148,7 @@ namespace {
 void setTextLayout(QTextLayout & tl, docstring const & s, QFont const & font,
 			     bool const rtl)
 {
-	QString qs;
-	/* In LyX, the character direction is forced by the language.
-	 * Therefore, we have to signal that fact to Qt.
-	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
-	 */
-	// Left-to-right override: forces to draw text left-to-right
-	char_type const LRO = 0x202D;
-	// Right-to-left override: forces to draw text right-to-left
-	char_type const RLO = 0x202E;
-	// Pop directional formatting: return to previous state
-	char_type const PDF = 0x202C;
-	if (rtl)
-		qs = toqstr(RLO + s + PDF);
-	else
-		qs = toqstr(LRO + s + PDF);
-
+	QString const qs = toqstr(directedString(s, rtl));
 	tl.setText(qs);
 	tl.setFont(font);
 	tl.beginLayout();
@@ -175,6 +162,7 @@ int GuiFontMetrics::pos2x(docstring const & s, int const pos, bool const rtl) co
 {
 	QTextLayout tl;
 	setTextLayout(tl, s, font_, rtl);
+	// we take into account the unicode formatting characters
 	return tl.lineForTextPosition(pos + 1).cursorToX(pos + 1);
 }
 
