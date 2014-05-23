@@ -624,12 +624,17 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref,
 	info_ = expandFormat(format, xref, counter, buf,
 		docstring(), docstring(), docstring(), false);
 
-	if (!info_.empty()) {
-		info_richtext_ = convertLaTeXCommands(processRichtext(info_, true));
-		info_ = convertLaTeXCommands(processRichtext(info_, false));
-		if (richtext)
-			return info_richtext_;
+	if (info_.empty()) {
+		// this probably shouldn't happen
+		return info_;
 	}
+
+	if (richtext) {
+		info_richtext_ = convertLaTeXCommands(processRichtext(info_, true));
+		return info_richtext_;
+	}
+
+	info_ = convertLaTeXCommands(processRichtext(info_, false));
 	return info_;
 }
 
