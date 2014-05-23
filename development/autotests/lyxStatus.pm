@@ -235,7 +235,7 @@ sub checkForLayoutStart($)
 {
   my ($l) = @_;
 
-  if ($l =~ /^\\begin_layout\s+(.+)$/) {
+  if ($l =~ /^\\begin_layout\s+(.*)$/) {
     #print "started layout\n";
     my %selem = ();
     $selem{type} = "layout";
