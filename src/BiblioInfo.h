@@ -19,9 +19,9 @@
 
 #include "Citation.h"
 
-#include <vector>
 #include <map>
 #include <set>
+#include <vector>
 
 
 namespace lyx {
@@ -67,7 +67,7 @@ public:
 	/// \return formatted BibTeX data for a citation label
 	docstring const getLabel(BibTeXInfo const * const xref,
 		Buffer const & buf, docstring const & format, bool richtext,
-		const docstring & before, const docstring & after, 
+		const docstring & before, const docstring & after,
 		const docstring & dialog, bool next = false) const;
 	///
 	const_iterator find(docstring const & f) const { return bimap_.find(f); }
@@ -203,9 +203,9 @@ public:
 			bool richtext = false) const;
 	/// \return formatted BibTeX data for citation labels.
 	/// Citation labels can have more than one key.
-	docstring const getLabel(std::vector<docstring> const & keys,
-		Buffer const & buf, std::string const & style, bool richtext,
-		docstring const & before, docstring const & after,
+	docstring const getLabel(std::vector<docstring> keys,
+		Buffer const & buf, std::string const & style, bool for_xhtml,
+		size_t max_size, docstring const & before, docstring const & after,
 		docstring const & dialog = docstring()) const;
 	/// Is this a reference from a bibtex database
 	/// or from a bibliography environment?
@@ -214,9 +214,9 @@ public:
 	/// list of keys, using either numerical or author-year style depending
 	/// upon the active engine.
 	std::vector<docstring> const getCiteStrings(std::vector<docstring> const & keys,
-		std::vector<CitationStyle> const & styles, Buffer const & buf, bool richtext,
-		docstring const & before, docstring const & after,
-		docstring const & dialog = docstring()) const;
+		std::vector<CitationStyle> const & styles, Buffer const & buf,
+		docstring const & before, docstring const & after, docstring const & dialog,
+	  size_t max_size) const;
 	/// Collects the cited entries from buf.
 	void collectCitedEntries(Buffer const & buf);
 	/// A list of BibTeX keys cited in the current document, sorted by
