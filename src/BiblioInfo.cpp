@@ -641,7 +641,8 @@ docstring const & BibTeXInfo::getInfo(BibTeXInfo const * const xref,
 
 docstring const BibTeXInfo::getLabel(BibTeXInfo const * const xref,
 	Buffer const & buf, docstring const & format, bool richtext,
-	docstring before, docstring after, docstring dialog, bool next) const
+	docstring const & before, docstring const & after, 
+	docstring const & dialog, bool next) const
 {
 	docstring loclabel;
 

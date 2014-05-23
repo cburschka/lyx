@@ -67,7 +67,8 @@ public:
 	/// \return formatted BibTeX data for a citation label
 	docstring const getLabel(BibTeXInfo const * const xref,
 		Buffer const & buf, docstring const & format, bool richtext,
-		docstring before, docstring after, docstring dialog, bool next = false) const;
+		const docstring & before, const docstring & after, 
+		const docstring & dialog, bool next = false) const;
 	///
 	const_iterator find(docstring const & f) const { return bimap_.find(f); }
 	///
@@ -203,9 +204,8 @@ public:
 	/// \return formatted BibTeX data for citation labels.
 	/// Citation labels can have more than one key.
 	docstring const getLabel(std::vector<docstring> const & keys,
-		Buffer const & buf, std::string const & style, bool richtext = false,
-		docstring const & before = docstring(),
-		docstring const & after = docstring(),
+		Buffer const & buf, std::string const & style, bool richtext,
+		docstring const & before, docstring const & after,
 		docstring const & dialog = docstring()) const;
 	/// Is this a reference from a bibtex database
 	/// or from a bibliography environment?
@@ -214,9 +214,8 @@ public:
 	/// list of keys, using either numerical or author-year style depending
 	/// upon the active engine.
 	std::vector<docstring> const getCiteStrings(std::vector<docstring> const & keys,
-		std::vector<CitationStyle> const & styles, Buffer const & buf, bool richtext = false,
-		docstring const & before = docstring(),
-		docstring const & after = docstring(),
+		std::vector<CitationStyle> const & styles, Buffer const & buf, bool richtext,
+		docstring const & before, docstring const & after,
 		docstring const & dialog = docstring()) const;
 	/// Collects the cited entries from buf.
 	void collectCitedEntries(Buffer const & buf);
