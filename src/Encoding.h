@@ -57,7 +57,7 @@ enum CharInfoFlags {
 /// Information about a single UCS4 character
 class CharInfo {
 public:
-	CharInfo() {}
+	CharInfo() : flags_(0) {}
 	CharInfo(
 		docstring const textcommand, docstring const mathcommand,
 		std::string const textpreamble, std::string const mathpreamble,
@@ -121,7 +121,7 @@ public:
 	/// Represent any of the above packages
 	static int const any;
 	///
-	Encoding() {}
+	Encoding() : fixedwidth_(true), unsafe_(false), complete_(false) {}
 	///
 	Encoding(std::string const & n, std::string const & l,
 		 std::string const & g, std::string const & i,
