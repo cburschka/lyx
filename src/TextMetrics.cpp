@@ -1892,6 +1892,13 @@ int TextMetrics::leftMargin(int max_width,
 		if (newpar != pit_type(pars.size())) {
 			if (pars[newpar].layout().isEnvironment()) {
 				l_margin = leftMargin(max_width, newpar);
+				// Remove the parindent that has been added
+				// if the paragraph was empty.
+				if (pars[newpar].empty()) {
+					docstring pi = pars[newpar].layout().parindent;
+					l_margin -= theFontMetrics(
+						buffer.params().getFont()).signedWidth(pi);
+				}
 			}
 			if (tclass.isDefaultLayout(par.layout())
 			    || tclass.isPlainLayout(par.layout())) {
