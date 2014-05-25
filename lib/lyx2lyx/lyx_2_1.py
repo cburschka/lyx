@@ -3065,8 +3065,43 @@ def convert_beamerblocks(document):
                                                                             '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
                                                                             'status collapsed', '', '\\begin_layout Plain Layout',
                                                                             document.body[ertcontdivline][tok + 2:]]
-                            # Convert to ArgInset
-                            document.body[parbeg] = "\\begin_inset Argument 1"
+                                else:
+                                    # check if have delimiters in two different ERTs
+                                    tok = document.body[ertcontdivline].find('>')
+                                    if tok == -1:
+                                        regexp = re.compile(r'.*>', re.IGNORECASE)
+                                        ertcontdivline = find_re(document.body, regexp, ertcontfirstline, ertcontlastline)
+                                        tok = document.body[ertcontdivline].find('>')
+                                        if tok != -1:
+                                            tokk = document.body[ertcontdivline].find('{')
+                                            if tokk == -1:
+                                                regexp = re.compile(r'.*\{', re.IGNORECASE)
+                                                ertcontdivlinetwo = find_re(document.body, regexp, ertcontfirstline, ertcontlastline)
+                                                tokk = document.body[ertcontdivlinetwo].find('{')
+                                                if tokk != -1:
+                                                    if ertcontfirstline < ertcontlastline:
+                                                        # Multiline ERT. Might contain TeX code.  Embrace in ERT.
+                                                        document.body[ertcontlastline : ertcontlastline + 1] = [
+                                                                                            document.body[ertcontlastline], '\\end_layout', '', '\\end_inset']
+                                                        document.body[ertcontdivline : ertcontdivlinetwo + 1] = [document.body[ertcontdivline][:tok],
+                                                                                            '\\end_layout', '', '\\end_inset', '', '\\end_layout', '', 
+                                                                                            '\\end_inset', '', '', '\\begin_inset Argument 2',
+                                                                                            'status collapsed', '', '\\begin_layout Plain Layout',
+                                                                                            '\\begin_inset ERT', '', 'status open' '', '\\begin_layout Plain Layout',
+                                                                                            document.body[ertcontdivlinetwo][tokk + 1:]]
+                                                    else:
+                                                        document.body[ertcontdivline : ertcontdivlinetwo + 1] = [document.body[ertcontdivline][:tok],
+                                                                                            '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
+                                                                                            'status collapsed', '', '\\begin_layout Plain Layout',
+                                                                                            document.body[ertcontdivlinetwo][tokk + 1:]]
+                                # Convert to ArgInset
+                                if ertcontfirstline < ertcontlastline:
+                                    # Multiline ERT. Might contain TeX code.  Embrace in ERT.
+                                    document.body[parbeg : parbeg + 1] = ['\\begin_inset Argument 1',
+                                                                        'status collapsed', '', '\\begin_layout Plain Layout',
+                                                                        '\\begin_inset ERT', '']
+                                else:
+                                    document.body[parbeg] = "\\begin_inset Argument 1"
                         elif document.body[ertcontfirstline].lstrip().startswith("{"):
                             # This is the block title
                             if document.body[ertcontlastline].rstrip().endswith("}"):
@@ -3083,7 +3118,10 @@ def convert_beamerblocks(document):
                                 else:
                                     # Convert to ArgInset
                                     document.body[parbeg] = "\\begin_inset Argument 2"
+                            # the overlay argument can also follow the title, so ...
                             elif document.body[ertcontlastline].rstrip().endswith(">"):
+                                # strip off the {
+                                document.body[ertcontfirstline] = document.body[ertcontfirstline].lstrip()[1:]
                                 # strip off the >
                                 document.body[ertcontlastline] = document.body[ertcontlastline].rstrip()[:-1]
                                 # divide the args
@@ -3108,8 +3146,43 @@ def convert_beamerblocks(document):
                                                                             '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 1',
                                                                             'status collapsed', '', '\\begin_layout Plain Layout',
                                                                             document.body[ertcontdivline][tok + 2:]]
+                                else:
+                                    # check if have delimiters in two different ERTs
+                                    tok = document.body[ertcontdivline].find('}')
+                                    if tok == -1:
+                                        regexp = re.compile(r'.*\}', re.IGNORECASE)
+                                        ertcontdivline = find_re(document.body, regexp, ertcontfirstline, ertcontlastline)
+                                        tok = document.body[ertcontdivline].find('}')
+                                        if tok != -1:
+                                            tokk = document.body[ertcontdivline].find('<')
+                                            if tokk == -1:
+                                                regexp = re.compile(r'.*<', re.IGNORECASE)
+                                                ertcontdivlinetwo = find_re(document.body, regexp, ertcontfirstline, ertcontlastline)
+                                                tokk = document.body[ertcontdivlinetwo].find('<')
+                                                if tokk != -1:
+                                                    if ertcontfirstline < ertcontlastline:
+                                                        # Multiline ERT. Might contain TeX code.  Embrace in ERT.
+                                                        document.body[ertcontlastline : ertcontlastline + 1] = [
+                                                                                            document.body[ertcontlastline], '\\end_layout', '', '\\end_inset']
+                                                        document.body[ertcontdivline : ertcontdivlinetwo + 1] = [document.body[ertcontdivline][:tok],
+                                                                                            '\\end_layout', '', '\\end_inset', '', '\\end_layout', '', 
+                                                                                            '\\end_inset', '', '', '\\begin_inset Argument 1',
+                                                                                            'status collapsed', '', '\\begin_layout Plain Layout',
+                                                                                            '\\begin_inset ERT', '', 'status open' '', '\\begin_layout Plain Layout',
+                                                                                            document.body[ertcontdivlinetwo][tokk + 1:]]
+                                                    else:
+                                                        document.body[ertcontdivline : ertcontdivlinetwo + 1] = [document.body[ertcontdivline][:tok],
+                                                                                            '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 1',
+                                                                                            'status collapsed', '', '\\begin_layout Plain Layout',
+                                                                                            document.body[ertcontdivlinetwo][tokk + 1:]]
                                 # Convert to ArgInset
-                                document.body[parbeg] = "\\begin_inset Argument 1"
+                                if ertcontfirstline < ertcontlastline:
+                                    # Multiline ERT. Might contain TeX code.  Embrace in ERT.
+                                    document.body[parbeg : parbeg + 1] = ['\\begin_inset Argument 2',
+                                                                        'status collapsed', '', '\\begin_layout Plain Layout',
+                                                                        '\\begin_inset ERT', '']
+                                else:
+                                    document.body[parbeg] = "\\begin_inset Argument 2"
                             elif count_pars_in_inset(document.body, ertcontfirstline) > 1:
                                 # Multipar ERT. Skip this.
                                 break
