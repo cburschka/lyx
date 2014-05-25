@@ -3045,13 +3045,40 @@ def convert_beamerblocks(document):
                                 if ertcontfirstline < ertcontlastline:
                                     # Multiline ERT. Might contain TeX code.  Embrace in ERT.
                                     document.body[parend : parend + 1] = [
-                                                                        document.body[parend], '\\end_layout', '', '\\end_inset']
+                                                                        document.body[parend], '\\end_inset', '', '\\end_layout']
                                     document.body[parbeg : parbeg + 1] = ['\\begin_inset Argument 2',
                                                                         'status collapsed', '', '\\begin_layout Plain Layout',
                                                                         '\\begin_inset ERT', '']
                                 else:
                                     # Convert to ArgInset
                                     document.body[parbeg] = "\\begin_inset Argument 2"
+                            elif document.body[ertcontlastline].rstrip().endswith(">"):
+                                # strip off the >
+                                document.body[ertcontlastline] = document.body[ertcontlastline].rstrip()[:-1]
+                                # divide the args
+                                ertcontdivline = ertcontfirstline
+                                tok = document.body[ertcontdivline].find('}<')
+                                if tok == -1:
+                                    regexp = re.compile(r'.*\}<', re.IGNORECASE)
+                                    ertcontdivline = find_re(document.body, regexp, ertcontfirstline, ertcontlastline)
+                                    tok = document.body[ertcontdivline].find('}<')
+                                if tok != -1:
+                                    if ertcontfirstline < ertcontlastline:
+                                        # Multiline ERT. Might contain TeX code.  Embrace in ERT.
+                                        document.body[ertcontlastline : ertcontlastline + 1] = [
+                                                                            document.body[ertcontlastline], '\\end_layout', '', '\\end_inset']
+                                        document.body[ertcontdivline : ertcontdivline + 1] = [document.body[ertcontdivline][:tok],
+                                                                            '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 1',
+                                                                            'status collapsed', '', '\\begin_layout Plain Layout',
+                                                                            '\\begin_inset ERT', '', 'status open' '', '\\begin_layout Plain Layout',
+                                                                            document.body[ertcontdivline][tok + 2:]]
+                                    else:
+                                        document.body[ertcontdivline : ertcontdivline + 1] = [document.body[ertcontdivline][:tok],
+                                                                            '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 1',
+                                                                            'status collapsed', '', '\\begin_layout Plain Layout',
+                                                                            document.body[ertcontdivline][tok + 2:]]
+                                # Convert to ArgInset
+                                document.body[parbeg] = "\\begin_inset Argument 1"
                             elif count_pars_in_inset(document.body, ertcontfirstline) > 1:
                                 # Multipar ERT. Skip this.
                                 break
