@@ -2413,34 +2413,65 @@ def convert_corollary_args(document):
             parbeg = parent[3]
             if i != -1:
                 if document.body[parbeg] == "\\begin_inset ERT":
-                    ertcont = parbeg + 5
-                    if document.body[ertcont].startswith("<"):
+                    ertcontfirstline = parbeg + 5
+                    # Find the last ERT in this paragraph (which might also be the first)
+                    lastertbeg = find_token_backwards(document.body, "\\begin_inset ERT", j)
+                    if lastertbeg == -1:
+                        document.warning("Last ERT not found!")
+                        break
+                    lastertend = find_end_of_inset(document.body, lastertbeg)
+                    if lastertend == -1:
+                        document.warning("End of last ERT not found!")
+                        break
+                    ertcontlastline = lastertend - 3
+                    if document.body[ertcontfirstline].startswith("<"):
                         # This is an overlay specification
                         # strip off the <
-                        document.body[ertcont] = document.body[ertcont][1:]
-                        if document.body[ertcont].endswith(">"):
+                        document.body[ertcontfirstline] = document.body[ertcontfirstline][1:]
+                        if document.body[ertcontlastline].endswith(">"):
                             # strip off the >
-                            document.body[ertcont] = document.body[ertcont][:-1]
-                        elif document.body[ertcont].endswith("]"):
+                            document.body[ertcontlastline] = document.body[ertcontlastline][:-1]
+                            if ertcontfirstline < ertcontlastline:
+                                # Multiline ERT. Might contain TeX code.  Embrace in ERT.
+                                document.body[ertcontlastline : ertcontlastline + 1] = [
+                                                                    document.body[ertcontlastline], '\\end_layout', '', '\\end_inset']
+                                document.body[ertcontfirstline : ertcontfirstline + 1] = [
+                                                                    '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 1',
+                                                                    'status collapsed', '', '\\begin_layout Plain Layout',
+                                                                    '\\begin_inset ERT', '', 'status open' '', '\\begin_layout Plain Layout',
+                                                                    document.body[ertcontfirstline]]
+                            else:
+                                # Convert to ArgInset
+                                document.body[parbeg] = "\\begin_inset Argument 1"
+                        elif document.body[ertcontlastline].endswith("]"):
                             # divide the args
-                            tok = document.body[ertcont].find('>[')
-                            if tok != -1:
-                                subst = [document.body[ertcont][:tok],
-                                         '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
-                                         'status collapsed', '', '\\begin_layout Plain Layout',
-                                         document.body[ertcont][tok + 2:-1]]
-                                document.body[ertcont : ertcont + 1] = subst
-                        # Convert to ArgInset
-                        document.body[parbeg] = "\\begin_inset Argument 1"
+                            ertcontdivline = document.body[ertcontfirstline].find('>[')
+                            if ertcontdivline != -1:
+                                if ertcontfirstline < ertcontlastline:
+                                    # Multiline ERT. Might contain TeX code.  Embrace in ERT.
+                                    document.body[ertcontlastline : ertcontlastline + 1] = [
+                                                                        document.body[ertcontlastline], '\\end_layout', '', '\\end_inset']
+                                    document.body[ertcontdivline : ertcontdivline + 1] = [document.body[ertcontdivline][:tok],
+                                                                        '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
+                                                                        'status collapsed', '', '\\begin_layout Plain Layout',
+                                                                        '\\begin_inset ERT', '', 'status open' '', '\\begin_layout Plain Layout',
+                                                                        document.body[ertcontdivline][tok + 2:]]
+                                else:
+                                    document.body[ertcontdivline : ertcontdivline + 1] = [document.body[ertcontdivline][:tok],
+                                                                        '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
+                                                                        'status collapsed', '', '\\begin_layout Plain Layout',
+                                                                        document.body[ertcontdivline][tok + 2:]]
+                            # Convert to ArgInset
+                            document.body[parbeg] = "\\begin_inset Argument 1"
                         i = j
                         continue
-                    elif document.body[ertcont].startswith("["):
-                        if document.body[ertcont].endswith("]"):
+                    elif document.body[ertcontlastline].startswith("["):
+                        if document.body[ertcontlastline].endswith("]"):
                             # This is an ERT option
                             # strip off the [
-                            document.body[ertcont] = document.body[ertcont][1:]
+                            document.body[ertcontlastline] = document.body[ertcontlastline][1:]
                             # strip off the ]
-                            document.body[ertcont] = document.body[ertcont][:-1]
+                            document.body[ertcontlastline] = document.body[ertcontlastline][:-1]
                             # Convert to ArgInset
                             document.body[parbeg] = "\\begin_inset Argument 2"
                         else:
