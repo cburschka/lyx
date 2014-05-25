@@ -2515,6 +2515,42 @@ def convert_quote_args(document):
             i = j
 
 
+def cleanup_beamerargs(document):
+    " Clean up empty ERTs (conversion artefacts) "
+
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Argument", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of Argument inset")
+            i += 1
+            continue
+        while True:
+            ertbeg = find_token(document.body, "\\begin_inset ERT", i, j)
+            if ertbeg == -1:
+                break
+            ertend = find_end_of_inset(document.body, ertbeg)
+            if ertend == -1:
+                document.warning("Malformed LyX document: Can't find end of ERT inset")
+                break
+            stripped = [line for line in document.body[ertbeg : ertend + 1] if line.strip()]
+            if len(stripped) == 5:
+                # This is an empty ERT
+                offset = len(document.body[ertbeg : ertend + 1])
+                del document.body[ertbeg : ertend + 1]
+                j = j - offset
+            else:
+                i = ertend
+        i += 1
+
+
 def revert_beamerargs(document):
     " Reverts beamer arguments to old layout "
     
@@ -4702,7 +4738,7 @@ convert = [
            [471, [convert_cite_engine_type_default]],
            [472, []],
            [473, []],
-           [474, [convert_chunks]],
+           [474, [convert_chunks, cleanup_beamerargs]],
           ]
 
 revert =  [
