@@ -1071,15 +1071,20 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cap::replaceSelection(cur);
 		pit_type pit = cur.pit();
 		Paragraph const & par = pars_[pit];
-		pit_type prev =
-			pit > 0 && pars_[pit - 1].getDepth() >= par.getDepth() ?
-			depthHook(pit, par.getDepth()) : pit;
+		pit_type prev = pit;
+		if (pit > 0) {
+			if (!pars_[pit - 1].layout().isEnvironment())
+				prev = depthHook(pit, par.getDepth());
+			else if (pars_[pit - 1].getDepth() >= par.getDepth())
+				prev = pit - 1;
+		}
 		if (prev < pit && cur.pos() == par.beginOfBody()
 		    && !par.isEnvSeparator(cur.pos())
 		    && !par.layout().isCommand()
 		    && pars_[prev].layout() != par.layout()
 		    && pars_[prev].layout().isEnvironment()) {
-			if (par.layout().isEnvironment()) {
+			if (par.layout().isEnvironment()
+			    && pars_[prev].getDepth() == par.getDepth()) {
 				docstring const layout = par.layout().name();
 				DocumentClass const & tc = bv->buffer().params().documentClass();
 				lyx::dispatch(FuncRequest(LFUN_LAYOUT, tc.plainLayout().name()));
