@@ -92,6 +92,9 @@
            <height>20</height>
           </size>
          </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Minimum</enum>
+         </property>
         </spacer>
        </item>
        <item>
