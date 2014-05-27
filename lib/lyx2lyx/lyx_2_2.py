@@ -244,6 +244,37 @@ def revert_separator(document):
         i = i + 1
 
 
+def revert_smash(document):
+    " Set amsmath to on if smash commands are used "
+
+    commands = ["smash[t]", "smash[b]"]
+    i = find_token(document.header, "\\use_package amsmath", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Can't find \\use_package amsmath.")
+        return;
+    value = get_value(document.header, "\\use_package amsmath", i).split()[1]
+    if value != "1":
+        # nothing to do if package is not auto but on or off
+        return;
+    j = 0
+    while True:
+        j = find_token(document.body, '\\begin_inset Formula', j)
+        if j == -1:
+            return
+        k = find_end_of_inset(document.body, j)
+        if k == -1:
+            document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(j))
+            j += 1
+            continue
+        code = "\n".join(document.body[j:k])
+        for c in commands:
+            if code.find("\\%s" % c) != -1:
+                # set amsmath to on, since it is loaded by the newer format
+                document.header[i] = "\\use_package amsmath 2"
+                return
+        j = k
+
+
 ##
 # Conversion hub
 #
@@ -251,9 +282,14 @@ def revert_separator(document):
 supported_versions = ["2.2.0","2.2"]
 convert = [
            [475, [convert_separator]],
+           # nothing to do for 476: We consider it a bug that older versions
+           # did not load amsmath automatically for these commands, and do not
+           # want to hardcode amsmath off.
+           [476, []],
           ]
 
 revert =  [
+           [475, [revert_smash]],
            [474, [revert_separator]]
           ]
 

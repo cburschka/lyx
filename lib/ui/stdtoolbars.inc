@@ -353,6 +353,8 @@ ToolbarSet
 		Item "Horizontal phantom	\\hphantom" "math-insert \hphantom"
 		Item "Vertical phantom	\\vphantom" "math-insert \vphantom"
 		Item "Smash \\smash" "math-insert \smash"
+		Item "Top smash \\smasht" "math-insert \smasht"
+		Item "Bottom smash \\smashb" "math-insert \smashb"
 		Item "Left overlap \\mathllap" "math-insert \mathllap"
 		Item "Center overlap \\mathclap" "math-insert \mathclap"
 		Item "Right overlap \\mathrlap" "math-insert \mathrlap"

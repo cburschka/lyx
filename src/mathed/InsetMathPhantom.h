@@ -25,6 +25,8 @@ public:
 		vphantom,
 		hphantom,
 		smash,
+		smasht,
+		smashb,
 		mathclap,
 		mathllap,
 		mathrlap

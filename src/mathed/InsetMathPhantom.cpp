@@ -197,7 +197,7 @@ void InsetMathPhantom::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.line(x1, y2, x3, y2, Color_added_space);
 	}
 
-	else if (kind_ == smash) {
+	else if (kind_ == smash || kind_ == smasht || kind_ == smashb) {
 		// y1---------
 		//            |
 		// y2-----  \ | /
@@ -222,15 +222,24 @@ void InsetMathPhantom::draw(PainterInfo & pi, int x, int y) const
 		int const y4 = std::min(y5, y3 + arrow_size);
 
 		// top arrow
-		pi.pain.line(x1, y2, x2, y3, Color_added_space);
-		pi.pain.line(x3, y2, x2, y3, Color_added_space);
+		if (kind_ != smashb) {
+			pi.pain.line(x1, y2, x2, y3, Color_added_space);
+			pi.pain.line(x3, y2, x2, y3, Color_added_space);
+		}
 
 		// bottom arrow
-		pi.pain.line(x1, y4, x2, y3, Color_added_space);
-		pi.pain.line(x3, y4, x2, y3, Color_added_space);
+		if (kind_ != smasht) {
+			pi.pain.line(x1, y4, x2, y3, Color_added_space);
+			pi.pain.line(x3, y4, x2, y3, Color_added_space);
+		}
 
 		// joining line
-		pi.pain.line(x2, y1, x2, y5, Color_added_space);
+		if (kind_ == smasht)
+			pi.pain.line(x2, y1, x2, y3, Color_added_space);
+		else if (kind_ == smashb)
+			pi.pain.line(x2, y3, x2, y5, Color_added_space);
+		else
+			pi.pain.line(x2, y1, x2, y5, Color_added_space);
 	}
 
 	drawMarkers(pi, x, y);
@@ -254,6 +263,12 @@ void InsetMathPhantom::write(WriteStream & os) const
 		break;
 	case smash:
 		os << "\\smash{";
+		break;
+	case smasht:
+		os << "\\smash[t]{";
+		break;
+	case smashb:
+		os << "\\smash[b]{";
 		break;
 	case mathclap:
 		os << "\\mathclap{";
@@ -284,6 +299,12 @@ void InsetMathPhantom::normalize(NormalStream & os) const
 	case smash:
 		os << "[smash ";
 		break;
+	case smasht:
+		os << "[smasht ";
+		break;
+	case smashb:
+		os << "[smashb ";
+		break;
 	case mathclap:
 		os << "[mathclap ";
 		break;
@@ -313,6 +334,12 @@ void InsetMathPhantom::infoize(odocstream & os) const
 	case smash:
 		os << "Smash";
 		break;
+	case smasht:
+		os << "Smashtop";
+		break;
+	case smashb:
+		os << "Smashbottom";
+		break;
 	case mathllap:
 		os << "Mathllap";
 		break;
@@ -334,6 +361,10 @@ void InsetMathPhantom::validate(LaTeXFeatures & features) const
 	case vphantom:
 	case hphantom:
 	case smash:
+		break;
+	case smasht:
+	case smashb:
+		features.require("amsmath");
 		break;
 	case mathclap:
 	case mathllap:

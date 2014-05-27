@@ -1180,6 +1180,8 @@ dist_imagesmath_DATA = \
 	images/math/smallsetminus.png \
 	images/math/smallsmile.png \
 	images/math/smash.png \
+	images/math/smashb.png \
+	images/math/smasht.png \
 	images/math/smile.png \
 	images/math/smiley.png \
 	images/math/space.png \

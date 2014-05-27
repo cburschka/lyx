@@ -561,6 +561,11 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 		return MathAtom(new InsetMathCancelto(buf));
 	if (s == "smash")
 		return MathAtom(new InsetMathPhantom(buf, InsetMathPhantom::smash));
+	// The following 2 string values are only for math toolbar use, no LaTeX names
+	if (s == "smashb")
+		return MathAtom(new InsetMathPhantom(buf, InsetMathPhantom::smashb));
+	if (s == "smasht")
+		return MathAtom(new InsetMathPhantom(buf, InsetMathPhantom::smasht));
 	if (s == "mathclap")
 		return MathAtom(new InsetMathPhantom(buf, InsetMathPhantom::mathclap));
 	if (s == "mathllap")
