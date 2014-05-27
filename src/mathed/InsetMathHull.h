@@ -30,6 +30,15 @@ class RenderPreview;
 /// This provides an interface between "LyX insets" and "LyX math insets"
 class InsetMathHull : public InsetMathGrid {
 public:
+	/// How a line is numbered
+	enum Numbered {
+		/// not numbered, LaTeX code \\nonumber if line differs from inset
+		NONUMBER,
+		/// numbered, LaTeX code \\number if line differs from inset
+		NUMBER,
+		/// not numbered, LaTeX code \\notag if line differs from inset
+		NOTAG
+	};
 	///
 	InsetMathHull(Buffer * buf);
 	///
@@ -65,7 +74,9 @@ public:
 	///
 	ColorCode backgroundColor(PainterInfo const &) const;
 	///
-	void numbered(row_type row, bool num);
+	void numbered(row_type row, bool num) { numbered(row, num ? NUMBER : NONUMBER); }
+	///
+	void numbered(row_type row, Numbered num);
 	///
 	bool numbered(row_type row) const;
 	///
@@ -231,7 +242,7 @@ private:
 	/// "none", "simple", "display", "eqnarray",...
 	HullType type_;
 	///
-	std::vector<bool> numbered_;
+	std::vector<Numbered> numbered_;
 	///
 	std::vector<docstring> numbers_;
 	///

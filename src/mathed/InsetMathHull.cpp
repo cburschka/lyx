@@ -149,7 +149,7 @@ docstring hullName(HullType type)
 static InsetLabel * dummy_pointer = 0;
 
 InsetMathHull::InsetMathHull(Buffer * buf)
-	: InsetMathGrid(buf, 1, 1), type_(hullNone), numbered_(1, true),
+	: InsetMathGrid(buf, 1, 1), type_(hullNone), numbered_(1, NUMBER),
     numbers_(1, empty_docstring()), label_(1, dummy_pointer),
     preview_(new RenderPreview(this)), use_preview_(false)
 {
@@ -164,7 +164,7 @@ InsetMathHull::InsetMathHull(Buffer * buf)
 
 
 InsetMathHull::InsetMathHull(Buffer * buf, HullType type)
-	: InsetMathGrid(buf, getCols(type), 1), type_(type), numbered_(1, true),
+	: InsetMathGrid(buf, getCols(type), 1), type_(type), numbered_(1, NUMBER),
     numbers_(1, empty_docstring()), label_(1, dummy_pointer),
     preview_(new RenderPreview(this)), use_preview_(false)
 {
@@ -297,7 +297,7 @@ void InsetMathHull::addToToc(DocIterator const & pit, bool output_active) const
 	Toc & toc = buffer().tocBackend().toc("equation");
 
 	for (row_type row = 0; row != nrows(); ++row) {
-		if (!numbered_[row])
+		if (!numbered(row))
 			continue;
 		if (label_[row])
 			label_[row]->addToToc(pit, output_active);
@@ -730,10 +730,10 @@ void InsetMathHull::label(row_type row, docstring const & label)
 }
 
 
-void InsetMathHull::numbered(row_type row, bool num)
+void InsetMathHull::numbered(row_type row, Numbered num)
 {
 	numbered_[row] = num;
-	if (!numbered_[row] && label_[row]) {
+	if (!numbered(row) && label_[row]) {
 		delete label_[row];
 		label_[row] = 0;
 	}
@@ -742,19 +742,32 @@ void InsetMathHull::numbered(row_type row, bool num)
 
 bool InsetMathHull::numbered(row_type row) const
 {
-	return numbered_[row];
+	return numbered_[row] == NUMBER;
 }
 
 
 bool InsetMathHull::ams() const
 {
-	return type_ == hullAlign
-		|| type_ == hullFlAlign
-		|| type_ == hullMultline
-		|| type_ == hullGather
-		|| type_ == hullAlignAt
-		|| type_ == hullXAlignAt
-		|| type_ == hullXXAlignAt;
+	switch (type_) {
+		case hullAlign:
+		case hullFlAlign:
+		case hullMultline:
+		case hullGather:
+		case hullAlignAt:
+		case hullXAlignAt:
+		case hullXXAlignAt:
+			return true;
+		case hullNone:
+		case hullSimple:
+		case hullEquation:
+		case hullEqnArray:
+		case hullRegexp:
+			break;
+	}
+	for (size_t row = 0; row < numbered_.size(); ++row)
+		if (numbered_[row] == NOTAG)
+			return true;
+	return false;
 }
 
 
@@ -776,7 +789,7 @@ bool InsetMathHull::numberedType() const
 	if (type_ == hullRegexp)
 		return false;
 	for (row_type row = 0; row < nrows(); ++row)
-		if (numbered_[row])
+		if (numbered(row))
 			return true;
 	return false;
 }
@@ -946,14 +959,14 @@ void InsetMathHull::addRow(row_type row)
 	docstring number = empty_docstring();
 	if (type_ == hullMultline) {
 		if (row + 1 == nrows())  {
-			numbered_[row] = false;
+			numbered_[row] = NONUMBER;
 			swap(label, label_[row]);
 			swap(number, numbers_[row]);
 		} else
 			numbered = false;
 	}
 
-	numbered_.insert(numbered_.begin() + row + 1, numbered);
+	numbered_.insert(numbered_.begin() + row + 1, numbered ? NUMBER : NONUMBER);
 	numbers_.insert(numbers_.begin() + row + 1, number);
 	label_.insert(label_.begin() + row + 1, label);
 	InsetMathGrid::addRow(row);
@@ -966,14 +979,7 @@ void InsetMathHull::swapRow(row_type row)
 		return;
 	if (row + 1 == nrows())
 		--row;
-	// gcc implements the standard std::vector<bool> which is *not* a container:
-	//   http://www.gotw.ca/publications/N1185.pdf
-	// As a results, it doesn't like this:
-	//	swap(numbered_[row], numbered_[row + 1]);
-	// so we do it manually:
-	bool const b = numbered_[row];
-	numbered_[row] = numbered_[row + 1];
-	numbered_[row + 1] = b;
+	swap(numbered_[row], numbered_[row + 1]);
 	swap(numbers_[row], numbers_[row + 1]);
 	swap(label_[row], label_[row + 1]);
 	InsetMathGrid::swapRow(row);
@@ -985,9 +991,7 @@ void InsetMathHull::delRow(row_type row)
 	if (nrows() <= 1 || !rowChangeOK())
 		return;
 	if (row + 1 == nrows() && type_ == hullMultline) {
-		bool const b = numbered_[row - 1];
-		numbered_[row - 1] = numbered_[row];
-		numbered_[row] = b;
+		swap(numbered_[row - 1], numbered_[row]);
 		swap(numbers_[row - 1], numbers_[row]);
 		swap(label_[row - 1], label_[row]);
 		InsetMathGrid::delRow(row);
@@ -1023,7 +1027,7 @@ void InsetMathHull::delCol(col_type col)
 
 docstring InsetMathHull::nicelabel(row_type row) const
 {
-	if (!numbered_[row])
+	if (!numbered(row))
 		return docstring();
 	docstring const & val = numbers_[row];
 	if (!label_[row])
@@ -1260,14 +1264,18 @@ docstring InsetMathHull::eolString(row_type row, bool fragile, bool latex,
 {
 	docstring res;
 	if (numberedType()) {
-		if (label_[row] && numbered_[row]) {
+		if (label_[row] && numbered(row)) {
 			docstring const name =
 				latex ? escape(label_[row]->getParam("name"))
 				      : label_[row]->getParam("name");
 			res += "\\label{" + name + '}';
 		}
-		if (!numbered_[row] && (type_ != hullMultline))
-			res += "\\nonumber ";
+		if (type_ != hullMultline) {
+			if (numbered_[row]  == NONUMBER)
+				res += "\\nonumber ";
+			else if (numbered_[row]  == NOTAG)
+				res += "\\notag ";
+		}
 	}
 	// Never add \\ on the last empty line of eqnarray and friends
 	last_eoln = false;
@@ -1479,7 +1487,7 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// if there is an argument, find the corresponding label, else
 			// check whether there is at least one label.
 			for (row = 0; row != nrows(); ++row)
-				if (numbered_[row] && label_[row]
+				if (numbered(row) && label_[row]
 					  && (cmd.argument().empty() || label(row) == cmd.argument()))
 					break;
 		}
@@ -1672,12 +1680,12 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 			// if there is no argument and we're inside math, we retrieve
 			// the row number from the cursor position.
 			row = (type_ == hullMultline) ? nrows() - 1 : cur.row();
-			enabled = numberedType() && label_[row] && numbered_[row];
+			enabled = numberedType() && label_[row] && numbered(row);
 		} else {
 			// if there is an argument, find the corresponding label, else
 			// check whether there is at least one label.
 			for (row_type row = 0; row != nrows(); ++row) {
-				if (numbered_[row] && label_[row] &&
+				if (numbered(row) && label_[row] &&
 					(cmd.argument().empty() || label(row) == cmd.argument())) {
 						enabled = true;
 						break;
@@ -2038,7 +2046,7 @@ bool InsetMathHull::haveNumbers() const
 	if (getType() == hullSimple)
 		return havenumbers;
 	for (size_t i = 0; i != numbered_.size(); ++i) {
-		if (numbered_[i]) {
+		if (numbered(i)) {
 			havenumbers = true;
 			break;
 		}

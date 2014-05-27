@@ -247,7 +247,7 @@ def revert_separator(document):
 def revert_smash(document):
     " Set amsmath to on if smash commands are used "
 
-    commands = ["smash[t]", "smash[b]"]
+    commands = ["smash[t]", "smash[b]", "notag"]
     i = find_token(document.header, "\\use_package amsmath", 0)
     if i == -1:
         document.warning("Malformed LyX document: Can't find \\use_package amsmath.")

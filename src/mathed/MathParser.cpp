@@ -1368,15 +1368,13 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 		}
 
-		else if (t.cs() == "nonumber") {
-			if (grid.asHullInset())
-				grid.asHullInset()->numbered(cellrow, false);
-		}
+		// \notag is the same as \nonumber if amsmath is used
+		else if ((t.cs() == "nonumber" || t.cs() == "notag") &&
+		         grid.asHullInset())
+			grid.asHullInset()->numbered(cellrow, false);
 
-		else if (t.cs() == "number") {
-			if (grid.asHullInset())
-				grid.asHullInset()->numbered(cellrow, true);
-		}
+		else if (t.cs() == "number" && grid.asHullInset())
+			grid.asHullInset()->numbered(cellrow, true);
 
 		else if (t.cs() == "hline") {
 			grid.rowinfo(cellrow).lines_ ++;
