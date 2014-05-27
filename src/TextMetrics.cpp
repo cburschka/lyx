@@ -1495,37 +1495,30 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 	int yy = y; // is modified by getPitAndRowNearY
 	Row const & row = getPitAndRowNearY(yy, pit, assert_in_view, up);
 
-	bool bound = false; // is modified by getColumnNearX
-	int xx = x; // is modified by getColumnNearX
-	pos_type const pos = row.pos()
-		+ getColumnNearX(pit, row, xx, bound);
 	cur.pit() = pit;
-	cur.pos() = pos;
-	cur.boundary(bound);
-	cur.setTargetX(x);
 
-	// try to descend into nested insets
-	Inset * inset = checkInsetHit(x, yy);
-	//lyxerr << "inset " << inset << " hit at x: " << x << " y: " << y << endl;
-	if (!inset) {
+	// Do we cover an inset?
+	InsetList::InsetTable * it = checkInsetHit(pit, x, yy);
+
+	if (!it) {
+		// No inset, set position in the text
+		bool bound = false; // is modified by getColumnNearX
+		int xx = x; // is modified by getColumnNearX
+		cur.pos() = row.pos()
+			+ getColumnNearX(pit, row, xx, bound);
+		cur.boundary(bound);
 		cur.setCurrentFont();
+		cur.setTargetX(xx);
 		return 0;
 	}
 
-	ParagraphList const & pars = text_->paragraphs();
-	Inset const * inset_before = pos ? pars[pit].getInset(pos - 1) : 0;
+	Inset * inset = it->inset;
+	//lyxerr << "inset " << inset << " hit at x: " << x << " y: " << y << endl;
 
-	// This should be just before or just behind the
-	// cursor position set above.
-	LASSERT(inset == inset_before
-		|| inset == pars[pit].getInset(pos), return 0);
-
-	// Make sure the cursor points to the position before
-	// this inset.
-	if (inset == inset_before) {
-		--cur.pos();
-		cur.boundary(false);
-	}
+	// Set position in front of inset
+	cur.pos() = it->pos;
+	cur.boundary(false);
+	cur.setTargetX(x);
 
 	// Try to descend recursively inside the inset.
 	inset = inset->editXY(cur, x, yy);
@@ -1574,11 +1567,8 @@ void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const 
 
 
 //takes screen x,y coordinates
-Inset * TextMetrics::checkInsetHit(int x, int y)
+InsetList::InsetTable * TextMetrics::checkInsetHit(pit_type pit, int x, int y)
 {
-	pit_type pit = getPitNearY(y);
-	LASSERT(pit != -1, return 0);
-
 	Paragraph const & par = text_->paragraphs()[pit];
 	ParagraphMetrics const & pm = par_metrics_[pit];
 
@@ -1607,12 +1597,26 @@ Inset * TextMetrics::checkInsetHit(int x, int y)
 			&& y >= p.y_ - dim.asc
 			&& y <= p.y_ + dim.des) {
 			LYXERR(Debug::DEBUG, "Hit inset: " << inset);
-			return inset;
+			return const_cast<InsetList::InsetTable *>(&(*iit));
 		}
 	}
 
 	LYXERR(Debug::DEBUG, "No inset hit. ");
 	return 0;
+}
+
+
+//takes screen x,y coordinates
+Inset * TextMetrics::checkInsetHit(int x, int y)
+{
+	pit_type const pit = getPitNearY(y);
+	LASSERT(pit != -1, return 0);
+	InsetList::InsetTable * it = checkInsetHit(pit, x, y);
+
+	if (!it)
+		return 0;
+
+	return it->inset;
 }
 
 
