@@ -202,9 +202,7 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 }
 
 
-static void finishEnvironment(Buffer const & buf, Text const & text,
-			      pit_type nextpit, otexstream & os,
-			      OutputParams const & runparams,
+static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 			      TeXEnvironmentData const & data)
 {
 	if (open_encoding_ == CJK && data.cjk_nested) {
@@ -236,11 +234,7 @@ static void finishEnvironment(Buffer const & buf, Text const & text,
 	}
 
 	// Check whether we should output a blank line after the environment
-	DocumentClass const & tclass = buf.params().documentClass();
-	ParagraphList const & pars = text.paragraphs();
-	bool next_style_is_default = (nextpit >= runparams.par_end) ? false
-		: tclass.isDefaultLayout(pars.constIterator(nextpit)->layout());
-	if (!data.style->nextnoindent && next_style_is_default)
+	if (!data.style->nextnoindent)
 		os << '\n';
 }
 
@@ -306,7 +300,7 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 			prepareEnvironment(buf, text, par, os, runparams);
 		// Recursive call to TeXEnvironment!
 		TeXEnvironment(buf, text, runparams, pit, os);
-		finishEnvironment(buf, text, pit + 1, os, runparams, data);
+		finishEnvironment(os, runparams, data);
 	}
 
 	if (pit != runparams.par_end)
@@ -1195,7 +1189,7 @@ void latexParagraphs(Buffer const & buf,
 			prepareEnvironment(buf, text, par, os, runparams);
 		// pit can be changed in TeXEnvironment.
 		TeXEnvironment(buf, text, runparams, pit, os);
-		finishEnvironment(buf, text, pit + 1, os, runparams, data);
+		finishEnvironment(os, runparams, data);
 	}
 
 	if (pit == runparams.par_end) {
