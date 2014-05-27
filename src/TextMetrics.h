@@ -15,6 +15,7 @@
 #define TEXT_METRICS_H
 
 #include "Font.h"
+#include "InsetList.h"
 #include "ParagraphMetrics.h"
 
 #include "support/types.h"
@@ -36,7 +37,7 @@ public:
 	TextMetrics() : text_(0) {}
 	/// The only useful constructor.
 	TextMetrics(BufferView *, Text *);
-	
+
 	///
 	bool contains(pit_type pit) const;
 	///
@@ -154,6 +155,10 @@ private:
 		pos_type const first,
 		pos_type const end
 		) const;
+
+	// Helper function for the other checkInsetHit method.
+	InsetList::InsetTable * checkInsetHit(pit_type pit, int x, int y);
+
 
 // Temporary public:
 public:

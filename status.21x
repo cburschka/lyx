@@ -57,6 +57,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix assertion when selecting in document with bi-directional text (bug 9142).
+
 - Fix LaTeX error with alphabetic delimiters in inline Listings (part of bug
   8985).
 
