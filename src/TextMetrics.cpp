@@ -695,13 +695,13 @@ int TextMetrics::labelFill(pit_type const pit, Row const & row) const
 	Paragraph const & par = text_->getPar(pit);
 
 	pos_type last = par.beginOfBody();
-	LBUFERR(last > 0);
+	LBUFERR(last > 0 || par.isEnvSeparator(0));
 
 	// -1 because a label ends with a space that is in the label
 	--last;
 
 	// a separator at this end does not count
-	if (par.isLineSeparator(last))
+	if (last >= 0 && par.isLineSeparator(last))
 		--last;
 
 	int w = 0;
