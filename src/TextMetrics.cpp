@@ -1894,7 +1894,9 @@ int TextMetrics::leftMargin(int max_width,
 				l_margin = leftMargin(max_width, newpar);
 				// Remove the parindent that has been added
 				// if the paragraph was empty.
-				if (pars[newpar].empty()) {
+				if (pars[newpar].empty() &&
+				    buffer.params().paragraph_separation ==
+				    BufferParams::ParagraphIndentSeparation) {
 					docstring pi = pars[newpar].layout().parindent;
 					l_margin -= theFontMetrics(
 						buffer.params().getFont()).signedWidth(pi);
@@ -1912,10 +1914,16 @@ int TextMetrics::leftMargin(int max_width,
 
 	// This happens after sections or environments in standard classes.
 	// We have to check the previous layout at same depth.
-	if (tclass.isDefaultLayout(par.layout()) && pit > 0
-	    && pars[pit - 1].getDepth() >= par.getDepth()) {
+	if (buffer.params().paragraph_separation ==
+			BufferParams::ParagraphSkipSeparation)
+		parindent.erase();
+	else if (pit > 0 && pars[pit - 1].getDepth() >= par.getDepth()) {
 		pit_type prev = text_->depthHook(pit, par.getDepth());
-		if (pars[prev < pit ? prev : pit - 1].layout().nextnoindent)
+		if (par.layout() == pars[prev].layout()) {
+			if (prev != pit - 1
+			    && pars[pit - 1].layout().nextnoindent)
+				parindent.erase();
+		} else if (pars[prev].layout().nextnoindent)
 			parindent.erase();
 	}
 
