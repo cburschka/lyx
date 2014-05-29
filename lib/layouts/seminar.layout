@@ -11,7 +11,7 @@
 #   1.4 2008-10-08 Günter Milde (use --Separator-- "look")
 #   1.5 2011-06-09 Günter Milde (Use Flex insets)
 
-Format 49
+Format 50
 Sides	1
 Columns	1
 
@@ -84,7 +84,22 @@ End
 # It is recommended to use the custom insets instead of paragraph styles.
 
 Style LandscapeSlide
-	CopyStyle		--Separator-- 
+	Category              MainText
+	KeepEmpty             1
+	Margin                Dynamic
+	LatexType             Paragraph
+	LatexName             dummy
+	ParIndent             MM
+	Align                 Block
+	LabelType             Static
+	LabelString           "--- Separate Environment ---"
+	LabelFont
+	  Family              Roman
+	  Series              Medium
+	  Size                Normal
+	  Color               Blue
+	EndFont
+	HTMLLabel             NONE
 	LatexType		Environment
 	LatexName		slide
 	NextNoIndent		1
@@ -111,12 +126,24 @@ End
 # EndOfSlide was a dummy style whose main purpose is to separate subsequent
 # Slide environments. Nowadays lyx has the special --Separator-- style as
 # workaround:
-Style EndOfSlide
-	ObsoletedBy		--Separator--
-End
 
 Style ListOfSlides
-	CopyStyle		--Separator--
+	Category              MainText
+	KeepEmpty             1
+	Margin                Dynamic
+	LatexType             Paragraph
+	LatexName             dummy
+	ParIndent             MM
+	Align                 Block
+	LabelType             Static
+	LabelString           "--- Separate Environment ---"
+	LabelFont
+	  Family              Roman
+	  Series              Medium
+	  Size                Normal
+	  Color               Blue
+	EndFont
+	HTMLLabel             NONE
 	LatexType		Command
 	LatexName		listofslides
 	TopSep			0.5

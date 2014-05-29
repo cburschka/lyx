@@ -6,7 +6,7 @@
 #   Richard Heck <rgheck@lyx.org>, Martin Vermeer <martin.vermeer@hut.fi> and probably others.
 
 
-Format 49
+Format 50
 
 #
 # GLOBAL SETTINGS
@@ -1243,29 +1243,6 @@ End
 # MISC.
 #
 
-Style Separator
-  Category         MainText
-  LatexType        Paragraph
-  LatexName        dummy
-  ParIndent        MM
-  ParSkip          0.4
-  Align            Left
-  AlignPossible    Block, Left, Right, Center
-  Margin           First_Dynamic
-  TopSep           0
-  BottomSep        0
-  ParSep           0
-  LabelType        Static
-  LabelBottomSep   0
-  LabelString      "___"
-  KeepEmpty        1
-  LabelFont 
-    Series         Medium
-    Size           Normal
-    Color          latex
-  EndFont
-End
- 
 Style LyX-Code
   Category         MainText
   Margin           Static

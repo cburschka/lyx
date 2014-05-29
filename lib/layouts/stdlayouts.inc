@@ -7,7 +7,7 @@
 # quotations and such.
 
 
-Format 49
+Format 50
 
 Style Quotation
 	Category              MainText
@@ -95,22 +95,3 @@ Style Verbatim
 	HTMLItem		p
 End
 
-
-Style --Separator--
-	Category              MainText
-	KeepEmpty             1
-	Margin                Dynamic
-	LatexType             Paragraph
-	LatexName             dummy
-	ParIndent             MM
-	Align                 Block
-	LabelType             Static
-	LabelString           "--- Separate Environment ---"
-	LabelFont
-	  Family              Roman
-	  Series              Medium
-	  Size                Normal
-	  Color               Blue
-	EndFont
-	HTMLLabel             NONE
-End

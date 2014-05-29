@@ -6,7 +6,7 @@
 #          Thomas Hartkens <thomas@hartkens.de>
 
 # Input general definitions
-Format 49
+Format 50
 Input stdfloats.inc
 Input stdcounters.inc
 Input stdinsets.inc
@@ -1018,7 +1018,6 @@ End
 Input stdlists.inc
 Input stdlayouts.inc
 NoStyle			Verse
-NoStyle			--Separator--
 
 # Input lyxmacros.inc
 
