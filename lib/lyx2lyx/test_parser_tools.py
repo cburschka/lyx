@@ -78,8 +78,8 @@ class TestParserTools(unittest.TestCase):
     def test_find_token(self):
         self.assertEquals(find_token(lines, '\\emph', 0), 7)
         self.assertEquals(find_token(lines, '\\emph', 0, 5), -1)
-        self.assertEquals(find_token(lines, '\\emp', 0, exact = True), -1)
-        self.assertEquals(find_token(lines, '\\emp', 0, exact = False), 7)
+        self.assertEquals(find_token(lines, '\\emp', 0, 0, True), -1)
+        self.assertEquals(find_token(lines, '\\emp', 0, 0, False), 7)
         self.assertEquals(find_token(lines, 'emph', 0), -1)
 
 

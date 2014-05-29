@@ -2219,3 +2219,9 @@ install-data-hook:
 	for i in $(DESTDIR)$(scriptsdir)/*.py $(DESTDIR)$(scriptsdir)/listerrors ; do \
 		$(CHMOD) 755 $$i; \
 	done
+
+alltests: check alltests-recursive
+
+alltests-recursive:
+	cd lyx2lyx; $(MAKE) alltests-recursive
+

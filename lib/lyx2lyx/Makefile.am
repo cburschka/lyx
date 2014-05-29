@@ -38,3 +38,14 @@ dist_lyx2lyx_PYTHON = \
 
 install-data-hook:
 	$(CHMOD) 755 $(DESTDIR)$(lyx2lyxdir)/lyx2lyx
+
+alltests: check alltests-recursive
+
+alltests-recursive:
+	@$(PYTHON) "$(srcdir)/test_parser_tools.py"; \
+	if test $$? -eq 0; then \
+		echo -e "=====================\nlyx2lyx tests passed.\n====================="; \
+	else \
+		echo -e "=====================\nlyx2lyx tests failed.\n====================="; \
+	fi
+

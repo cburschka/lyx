@@ -59,6 +59,7 @@ keystest:
 alltests: check alltests-recursive
 
 alltests-recursive:
+	cd lib; $(MAKE) alltests-recursive
 	cd src; $(MAKE) alltests-recursive
 
 updatetests:
