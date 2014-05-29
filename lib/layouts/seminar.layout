@@ -84,22 +84,8 @@ End
 # It is recommended to use the custom insets instead of paragraph styles.
 
 Style LandscapeSlide
-	Category              MainText
-	KeepEmpty             1
-	Margin                Dynamic
-	LatexType             Paragraph
-	LatexName             dummy
-	ParIndent             MM
-	Align                 Block
-	LabelType             Static
-	LabelString           "--- Separate Environment ---"
-	LabelFont
-	  Family              Roman
-	  Series              Medium
-	  Size                Normal
-	  Color               Blue
-	EndFont
-	HTMLLabel             NONE
+	Category		MainText
+	KeepEmpty		1
 	LatexType		Environment
 	LatexName		slide
 	NextNoIndent		1
@@ -107,9 +93,18 @@ Style LandscapeSlide
 	LeftMargin		N
 	ParIndent		""
 	TopSep			0.4
+	Align			Block
 	LabelType		Above
 	LabelString		"Landscape Slide:"
+	LabelFont
+	  Family		Roman
+	  Series		Medium
+	  Size			Normal
+	  Color			Blue
+	EndFont
+	HTMLLabel		NONE
 End
+
 Style Slide
 	Obsoletedby		LandscapeSlide
 End
@@ -123,35 +118,27 @@ Style Slide*
 	ObsoletedBy		PortraitSlide
 End
 
-# EndOfSlide was a dummy style whose main purpose is to separate subsequent
-# Slide environments. Nowadays lyx has the special --Separator-- style as
-# workaround:
-
 Style ListOfSlides
-	Category              MainText
-	KeepEmpty             1
-	Margin                Dynamic
-	LatexType             Paragraph
-	LatexName             dummy
-	ParIndent             MM
-	Align                 Block
-	LabelType             Static
-	LabelString           "--- Separate Environment ---"
-	LabelFont
-	  Family              Roman
-	  Series              Medium
-	  Size                Normal
-	  Color               Blue
-	EndFont
-	HTMLLabel             NONE
+	Category		MainText
+	KeepEmpty		1
 	LatexType		Command
 	LatexName		listofslides
+	Margin			Dynamic
+	ParIndent		MM
 	TopSep			0.5
 	BottomSep		0.5
 	Align			Center
-#	BottomSep		0
+	LabelType		Static
 	LabelString		"[List Of Slides]"
+	LabelFont
+	  Family		Roman
+	  Series		Medium
+	  Size			Normal
+	  Color			Blue
+	EndFont
+	HTMLLabel		NONE
 End
+
 Style SlideContents
 	CopyStyle		ListOfSlides
 	LatexName		slidecontents
