@@ -3611,12 +3611,12 @@ def revert_newframes(document):
             continue
         endseq = j
         subst = ["\\begin_layout %s" % frame_dict[val]]
-        esubst = ["\\begin_layout EndFrame", "", "\\end_layout"]
+        esubst = ["", "\\begin_layout EndFrame", "", "\\end_layout"]
         endseq = endseq + len(esubst) - len(document.body[j : j])
         if document.body[j] == "\\end_deeper":
-            document.body[j : j] = [""] + esubst
-        else:
             document.body[j : j] = esubst
+        else:
+            document.body[j+1 : j+1] = esubst
         for q in range(i, j):
             if document.body[q] == "\\begin_layout %s" % val:
                 document.body[q] = "\\begin_layout %s" % document.default_layout
