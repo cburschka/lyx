@@ -178,7 +178,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.sh script to update all
 # layout files to the new format.
 
-currentFormat = 50
+currentFormat = 51
 
 
 def usage(prog_name):
