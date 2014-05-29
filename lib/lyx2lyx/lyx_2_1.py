@@ -4365,7 +4365,7 @@ def revert_mbox_fbox(document):
             i += 1
             continue
         BeginLayout = find_token(document.body, "\\begin_layout Plain Layout", j)
-        EndLayout = find_token(document.body, "\\end_layout", BeginLayout)
+        EndLayout = find_end_of_layout(document.body, BeginLayout)
         # replace if width is ""
         if (width == '""'):
             document.body[EndLayout:k + 1] = put_cmd_in_ert("}")
