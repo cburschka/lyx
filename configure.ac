@@ -295,6 +295,12 @@ char * strerror(int n);
 #  define BOOST_POSIX_PATH 1
 #endif
 
+#ifdef __sparc__
+#  ifndef __BIG_ENDIAN__
+#    define __BIG_ENDIAN__ 1
+#  endif
+#endif
+
 #if defined(HAVE_WCHAR_T) && SIZEOF_WCHAR_T == 4
 #  define USE_WCHAR_T
 #endif

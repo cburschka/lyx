@@ -37,7 +37,7 @@ http://www.boost.org/LICENSE_1_0.txt)
 #   if !defined(BOOST_ARCH_SPARC) &&  defined(__sparcv8)
 #       define BOOST_ARCH_SPARC BOOST_VERSION_NUMBER(8,0,0)
 #   endif
-#   if !defined(BOOST_ARCH_SPARC) &&
+#   if !defined(BOOST_ARCH_SPARC)
 #       define BOOST_ARCH_SPARC BOOST_VERSION_NUMBER_AVAILABLE
 #   endif
 #endif
