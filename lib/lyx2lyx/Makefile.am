@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 CLEANFILES += *.pyc *.pyo
 
-EXTRA_DIST = lyx2lyx_version.py.in
+EXTRA_DIST = lyx2lyx_version.py.in test_parser_tools.py
 
 CHMOD = chmod
 
