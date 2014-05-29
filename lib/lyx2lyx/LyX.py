@@ -145,6 +145,9 @@ def get_backend(textclass):
 
 def trim_eol(line):
     " Remove end of line char(s)."
+    if line[-1] != '\n' and line[-1] != '\r':
+        # May happen for the last line of a document
+        return line
     if line[-2:-1] == '\r':
         return line[:-2]
     else:
