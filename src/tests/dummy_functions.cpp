@@ -1,6 +1,6 @@
 #include <config.h>
 
-#include "../Messages.h"
+#include "../support/Messages.h"
 
 using namespace std;
 
