@@ -1573,7 +1573,7 @@ def convert_latexargs(document):
                     if argnr > allowed_opts and argnr < first_req:
                         argnr = first_req
                 document.body[p] = "\\begin_inset Argument %d" % argnr
-        i += 1
+        i = parend + 1
 
 
 def revert_latexargs(document):
