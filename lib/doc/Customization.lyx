@@ -1,5 +1,5 @@
 #LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+\lyxformat 476
 \begin_document
 \begin_header
 \textclass scrbook
@@ -145,11 +145,12 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller" 
 \end_header
 
 \begin_body
@@ -5850,6 +5851,10 @@ latex foiltex.ins
 \begin_layout Enumerate
 Now you need to decide if the package should be available for all users
  or only for you.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -6144,6 +6149,10 @@ latex
 \begin_layout Enumerate
 Now one only need to tell LaTeX that there are new files.
  This depends on the used LaTeX-Distribution:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -10495,6 +10504,10 @@ EndArgument
 
 .
  So a command with two optional arguments has:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -12553,6 +12566,10 @@ Itemize, Bibliography
 \end_inset
 
 ]
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -12970,6 +12987,10 @@ LatexType
  Visit the SGML class files for specific examples.
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator parbreak
 \end_inset
 
 
@@ -13430,6 +13451,10 @@ Static
 \end_inset
 
 The kind of margin that the style has on the left side.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -14504,6 +14529,128 @@ int=3
 \series default
  The level of the style in the table of contents.
  This is used for automatic numbering of section headings.
+\change_inserted -712698321 1401363541
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1401363906
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1401363547
+ToggleIndent
+\end_layout
+
+\end_inset
+
+ [
+\emph on
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1401363664
+
+\emph on
+default
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\emph default
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1401363669
+always
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1401363675
+never
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+] This tag determines whether the first line indentation of this paragraph
+ can be toggled via the Paragraph settings dialog.
+ If 
+\emph on
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1401363761
+
+\emph off
+default
+\end_layout
+
+\end_inset
+
+
+\emph default
+ is set, indentation can be toggled if the document settings use 
+\begin_inset Quotes eld
+\end_inset
+
+indent
+\begin_inset Quotes erd
+\end_inset
+
+ paragraph style, with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1401363844
+always
+\end_layout
+
+\end_inset
+
+, indentation can always be toggled, notwithstanding the document settings,
+ with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1401363901
+never
+\end_layout
+
+\end_inset
+
+, indentation can never be toggled.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -14602,6 +14749,10 @@ theorems-ams.inc
 
 \begin_layout LyX-Code
 Preamble
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -17314,6 +17465,10 @@ LatexType
 \end_inset
 
 
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -18249,6 +18404,10 @@ LabelStringAppendix
 
  to the same value.
  The following special constructs can be used in the string:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper

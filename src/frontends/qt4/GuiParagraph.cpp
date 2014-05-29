@@ -227,7 +227,7 @@ void GuiParagraph::applyView()
 
 	// label width
 	params_.labelWidthString(qstring_to_ucs4(labelWidth->text()));
-	// indendation
+	// indentation
 	params_.noindent(!indentCB->isChecked());
 
 	dispatchParams();
@@ -336,8 +336,11 @@ bool GuiParagraph::haveMultiParSelection() const
 	
 bool GuiParagraph::canIndent() const
 {
-	return buffer().params().paragraph_separation
-		== BufferParams::ParagraphIndentSeparation;
+	Layout const lay = bufferview()->cursor().innerParagraph().layout();
+	if (buffer().params().paragraph_separation
+		== BufferParams::ParagraphIndentSeparation)
+		return (lay.toggle_indent != ITOGGLE_NEVER);
+	return (lay.toggle_indent == ITOGGLE_ALWAYS);
 }
 
 

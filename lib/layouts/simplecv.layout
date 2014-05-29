@@ -89,6 +89,7 @@ Style Itemize
 	LatexType             Item_Environment
 	LatexName             itemize
 	NextNoIndent          1
+	ToggleIndent          Never
 	LeftMargin            MMN
 	LabelSep              xx
 	ItemSep               0.2
@@ -157,6 +158,7 @@ Style Bibliography
 	LatexType             Bib_Environment
 	LabelType             Bibliography
 	LabelBottomSep        0.7
+	ToggleIndent          Never
 	LabelFont
 	  Size                Tiny
 	EndFont

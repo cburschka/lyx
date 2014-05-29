@@ -272,6 +272,7 @@ Style Bibliography
 	LatexType             Bib_Environment
 	LatexName             thebibliography
 	NextNoIndent          1
+	ToggleIndent          Never
 	LeftMargin            MM
 	ParSkip               0.4
 	ItemSep               0
@@ -282,7 +283,7 @@ Style Bibliography
 	AlignPossible         Block, Left
 	LabelType             Bibliography
 	LabelString           "References"
-	LabelBottomSep    0.7
+	LabelBottomSep        0.7
 	LabelFont
 	  Series              Bold
 	EndFont

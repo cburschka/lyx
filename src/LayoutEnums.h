@@ -64,6 +64,17 @@ enum LyXAlignment {
 	LYX_ALIGN_DECIMAL = 64
 };
 
+
+/// Paragraph indendation control
+enum ToggleIndentation {
+	/// Indentation can be toggled if document uses "indent" paragraph style
+	ITOGGLE_DOCUMENT_DEFAULT = 1,
+	/// Indentation cannot be toggled
+	ITOGGLE_NEVER,
+	/// Indentation can always be toggled
+	ITOGGLE_ALWAYS
+};
+
 ///
 inline void operator|=(LyXAlignment & la1, LyXAlignment la2)
 {

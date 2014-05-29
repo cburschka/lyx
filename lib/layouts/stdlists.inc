@@ -16,6 +16,7 @@ Style Itemize
 	LatexType             Item_Environment
 	LatexName             itemize
 	NextNoIndent          1
+	ToggleIndent          Never
 	LeftMargin            MMN
 	LabelSep              xx
 	ItemSep               0.2
@@ -41,6 +42,7 @@ Style Enumerate
 	LatexType             Item_Environment
 	LatexName             enumerate
 	NextNoIndent          1
+	ToggleIndent          Never
 	LeftMargin            MMN
 	LabelSep              xx
 	ParSkip               0.0

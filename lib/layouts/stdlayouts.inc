@@ -15,6 +15,7 @@ Style Quotation
 	LatexType             Environment
 	LatexName             quotation
 	NextNoIndent          1
+	ToggleIndent          Always
 	LeftMargin            MMM
 	RightMargin           MMM
 	ParIndent             MM
@@ -36,6 +37,7 @@ Style Quote
 	LatexType             Environment
 	LatexName             quote
 	NextNoIndent          1
+	ToggleIndent          Never
 	LeftMargin            MMM
 	RightMargin           MMM
 	TopSep                0.5

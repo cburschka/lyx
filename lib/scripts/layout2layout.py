@@ -168,6 +168,9 @@ import os, re, string, sys
 # Incremented to format 50, 9 May 2014 by forenr
 # Removal of "Separator" layouts
 
+# Incremented to format 51, 29 May 2014 by spitz
+# New Style tag "ToggleIndent"
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -397,6 +400,11 @@ def convert(lines):
             i += 1
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
+            continue
+
+        if format == 50:
+            # nothing to do.
+            i += 1
             continue
 
         if format == 49:

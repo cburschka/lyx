@@ -2237,7 +2237,8 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 {
 	int column = 0;
 
-	if (params_.noindent() && !layout_->pass_thru) {
+	if (params_.noindent() && !layout_->pass_thru
+	    && (layout_->toggle_indent != ITOGGLE_NEVER)) {
 		os << "\\noindent ";
 		column += 10;
 	}

@@ -286,6 +286,7 @@ Style ItemList
   LatexType	Item_Environment
   LatexName	itemlist
   NextNoIndent	1
+  ToggleIndent	Never
   LeftMargin	MMN
   LabelSep	xx
   ItemSep	0.2
@@ -449,6 +450,7 @@ Style Bibliography
   LatexName	thebibliography
   Category	BackMatter
   NextNoIndent	1
+  ToggleIndent	Never
   LeftMargin	MM
   ParSkip	0.4
   ItemSep	0

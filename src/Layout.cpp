@@ -105,6 +105,7 @@ enum LayoutTags {
 	LT_RESETARGS,
 	LT_RIGHTDELIM,
 	LT_FORCELOCAL,
+	LT_TOGGLE_INDENT,
 	LT_INTITLE // keep this last!
 };
 
@@ -148,6 +149,7 @@ Layout::Layout()
 	spellcheck = true;
 	forcelocal = 0;
 	itemcommand_ = "item";
+	toggle_indent = ITOGGLE_DOCUMENT_DEFAULT;
 }
 
 
@@ -243,6 +245,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		{ "spellcheck",     LT_SPELLCHECK },
 		{ "textfont",       LT_TEXTFONT },
 		{ "toclevel",       LT_TOCLEVEL },
+		{ "toggleindent",   LT_TOGGLE_INDENT },
 		{ "topsep",         LT_TOPSEP }
 	};
 
@@ -382,6 +385,19 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		case LT_NEXTNOINDENT:
 			lex >> nextnoindent;
 			break;
+
+		case LT_TOGGLE_INDENT: {
+			string tog;
+			lex >> tog;
+			tog = support::ascii_lowercase(tog);
+			if (tog == "always")
+				toggle_indent = ITOGGLE_ALWAYS;
+			else if (tog == "never")
+				toggle_indent = ITOGGLE_NEVER;
+			else
+				toggle_indent = ITOGGLE_DOCUMENT_DEFAULT;
+			break;
+		}
 
 		case LT_COMMANDDEPTH:
 			lex >> commanddepth;

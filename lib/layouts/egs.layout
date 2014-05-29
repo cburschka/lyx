@@ -104,6 +104,7 @@ Style Quotation
 	LatexType             Environment
 	LatexName             quotation
 	NextNoIndent          1
+	ToggleIndent          Always
 	LeftMargin            MMM
 	RightMargin           MMM
 	ParIndent             MM
@@ -122,6 +123,7 @@ Style Quote
 	LatexType             Environment
 	LatexName             quote
 	NextNoIndent          1
+	ToggleIndent          Never
 	LeftMargin            MMM
 	RightMargin           MMM
 	TopSep                0.5
@@ -180,6 +182,7 @@ Style Itemize
 	LatexType             Item_Environment
 	LatexName             itemize
 	NextNoIndent          1
+	ToggleIndent          Never
 	LeftMargin            MMN
 	LabelSep              xx
 	ItemSep               0.2
@@ -201,6 +204,7 @@ Style Description
 	LatexType             Item_environment
 	LatexName             description
 	NextNoIndent          1
+	ToggleIndent          Never
 	LeftMargin            MM
 	LabelSep              xxx
 	ParSkip               0.4
@@ -576,6 +580,7 @@ Style Bibliography
 	LatexType             Bib_Environment
 	LatexName             thebibliography
 	NextNoIndent          1
+	ToggleIndent          Never
 	LeftMargin            MM
 	ParSkip               0.4
 	ItemSep               0
@@ -586,7 +591,7 @@ Style Bibliography
 	AlignPossible         Block, Left
 	LabelType             Bibliography
 	LabelString           "References"
-	LabelBottomSep    0.7
+	LabelBottomSep        0.7
 	LabelFont
 	  Series              Bold
 	EndFont

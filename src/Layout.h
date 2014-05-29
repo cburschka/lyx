@@ -280,6 +280,8 @@ public:
 	///
 	bool nextnoindent;
 	///
+	ToggleIndentation toggle_indent;
+	///
 	bool free_spacing;
 	///
 	bool pass_thru;

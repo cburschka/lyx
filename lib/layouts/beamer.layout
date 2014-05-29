@@ -100,6 +100,7 @@ Style Itemize
     RightDelim     >
   EndArgument
   NextNoIndent     1
+  ToggleIndent     Never
   LeftMargin       MMN
   LabelSep         xx
   ItemSep          0.2
@@ -137,6 +138,7 @@ Style Enumerate
     RightDelim     >
   EndArgument
   NextNoIndent     1
+  ToggleIndent     Never
   LeftMargin       MMN
   LabelSep         xx
   ParSkip          0.0
@@ -209,6 +211,7 @@ Style Part
   EndArgument
   NeedProtect      1
   NextNoIndent     1
+  ToggleIndent     Never
   Labelsep         xx
   ParSkip          0.4
   TopSep           4
@@ -236,6 +239,7 @@ Style Section
   LatexName        section
   NeedProtect      1
   NextNoIndent     1
+  ToggleIndent     Never
   LabelSep         xx
   ParSkip          0.4
   TopSep           2
@@ -293,6 +297,7 @@ Style Subsection
   LatexName        subsection
   NeedProtect      1
   NextNoIndent     1
+  ToggleIndent     Never
   LabelSep         xx
   ParSkip          0.4
   TopSep           2
@@ -350,6 +355,7 @@ Style Subsubsection
   LatexName        subsubsection
   NeedProtect      1
   NextNoIndent     1
+  ToggleIndent     Never
   LabelSep         xx
   ParSkip          0.4
   TopSep           2
@@ -596,6 +602,7 @@ Style Column
   LabelType        Static
   LabelSep         xx
   LabelString      "Start column (increase depth!), width:"
+  ToggleIndent     Never
   Argument 1
     MenuString     "Column Options"
     LabelString    "Options"
@@ -1048,6 +1055,7 @@ Style Bibliography
   LatexType        Bib_Environment
   LatexName        thebibliography
   NextNoIndent     1
+  ToggleIndent     Never
   LeftMargin       MM
   ParSkip          0.4
   ItemSep          0
@@ -1075,6 +1083,7 @@ Style Quotation
   LatexType        Environment
   LatexName        quotation
   NextNoIndent     1
+  ToggleIndent     Always
   LeftMargin       MMM
   RightMargin      MMM
   ParIndent        MM
@@ -1100,6 +1109,7 @@ Style Quote
   LatexType        Environment
   LatexName        quote
   NextNoIndent     1
+  ToggleIndent     Never
   LeftMargin       MMM
   RightMargin      MMM
   TopSep           0.5

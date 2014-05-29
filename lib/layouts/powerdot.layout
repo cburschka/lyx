@@ -257,6 +257,7 @@ Style Itemize
   LatexType     Item_Environment
   LatexName     itemize
   NextNoIndent  1
+  ToggleIndent  Never
   LeftMargin    MMN
   LabelSep      xx
   ItemSep       0.2
@@ -305,6 +306,7 @@ Style Enumerate
   LatexType     Item_Environment
   LatexName     enumerate
   NextNoIndent  1
+  ToggleIndent  Never
   LeftMargin    MMN
   LabelSep      xx
   ParSkip       0.0
@@ -356,6 +358,7 @@ Style Bibliography
   LatexType     Bib_Environment
   LatexName     thebibliography
   NextNoIndent  1
+  ToggleIndent  Never
   LeftMargin    MM
   ParSkip       0.4
   ItemSep       0
@@ -378,6 +381,7 @@ Style Quotation
   LatexType     Environment
   LatexName     quotation
   NextNoIndent  1
+  ToggleIndent  Always
   LeftMargin    MMM
   RightMargin   MMM
   ParIndent     MM
@@ -399,6 +403,7 @@ Style Quote
   LatexType     Environment
   LatexName     quote
   NextNoIndent  1
+  ToggleIndent  Never
   LeftMargin    MMM
   RightMargin   MMM
   TopSep        0.5

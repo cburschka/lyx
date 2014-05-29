@@ -15,6 +15,7 @@ Style Abstract
 	LatexName             abstract
 	Category              FrontMatter
 	NextNoIndent          1
+	ToggleIndent          Always
 	LeftMargin            MMM
 	RightMargin           MMM
 	ParIndent             MM
@@ -56,6 +57,7 @@ Style Bibliography
 	LatexName             thebibliography
 	Category              BackMatter
 	NextNoIndent          1
+	ToggleIndent          Never
 	LeftMargin            MM
 	ParSkip               0.4
 	ItemSep               0

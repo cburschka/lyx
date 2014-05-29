@@ -20,6 +20,7 @@ Style Part
 	LatexName             part
 	NeedProtect           1
 	NextNoIndent          1
+	ToggleIndent          Never
 	Labelsep              xxx
 	ParSkip               0.4
 	TopSep                4
@@ -51,6 +52,7 @@ Style Chapter
 	LatexName             chapter
 	NeedProtect           1
 	NextNoIndent          1
+	ToggleIndent          Never
 	ParSkip               0.4
 	TopSep                4
 	BottomSep             0.8
@@ -78,6 +80,7 @@ Style Section
 	LatexName             section
 	NeedProtect           1
 	NextNoIndent          1
+	ToggleIndent          Never
 	LabelSep              xxx
 	ParSkip               0.4
 	TopSep                1.3
