@@ -1445,7 +1445,7 @@ void Tabular::write(ostream & os) const
 	   << ">\n";
 	// global longtable options
 	os << "<features"
-	   << write_attribute("rotate", convert<string>(rotate))
+	   << write_attribute("rotate", rotate)
 	   << write_attribute("booktabs", use_booktabs)
 	   << write_attribute("islongtable", is_long_tabular)
 	   << write_attribute("firstHeadTopDL", endfirsthead.topDL)
