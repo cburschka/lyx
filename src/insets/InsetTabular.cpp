@@ -1460,12 +1460,11 @@ void Tabular::write(ostream & os) const
 	   << write_attribute("lastFootEmpty", endlastfoot.empty);
 	// longtables cannot be aligned vertically
 	if (!is_long_tabular) {
-	   os << write_attribute("tabularvalignment", tabular_valignment);
-	   os << write_attribute("tabularwidth", tabular_width);
+		os << write_attribute("tabularvalignment", tabular_valignment);
+		os << write_attribute("tabularwidth", tabular_width);
 	}
 	if (is_long_tabular)
-	   os << write_attribute("longtabularalignment",
-	                         longtabular_alignment);
+		os << write_attribute("longtabularalignment", longtabular_alignment);
 	os << ">\n";
 	for (col_type c = 0; c < ncols(); ++c) {
 		os << "<column"
