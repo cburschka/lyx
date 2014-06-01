@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-05-13 14:46+0200\n"
+"POT-Creation-Date: 2014-05-31 11:46+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -8441,14 +8441,6 @@ msgstr "Fakt."
 msgid "Theorem."
 msgstr "Teoréma."
 
-#: lib/layouts/beamer.layout:1236
-msgid "Separator"
-msgstr "Oddeľovač"
-
-#: lib/layouts/beamer.layout:1250
-msgid "___"
-msgstr "___"
-
 #: lib/layouts/beamer.layout:1293
 msgid "NoteItem"
 msgstr "PoznámkovýObjekt"
@@ -10657,10 +10649,6 @@ msgstr "Fólia na výšku:"
 msgid "Slide*"
 msgstr "Fólia*"
 
-#: lib/layouts/seminar.layout:114
-msgid "EndOfSlide"
-msgstr "KoniecFólie"
-
 #: lib/layouts/seminar.layout:126
 msgid "[List Of Slides]"
 msgstr "[Zoznam Fólií]"
@@ -11404,14 +11392,6 @@ msgstr "VydaťZáverListu"
 #: lib/layouts/moderncv.layout:458
 msgid "Close Letter"
 msgstr "Záver listu"
-
-#: lib/layouts/moderncv.layout:486 lib/layouts/stdlayouts.inc:97
-msgid "--Separator--"
-msgstr "--Oddeľovač--"
-
-#: lib/layouts/moderncv.layout:494 lib/layouts/stdlayouts.inc:106
-msgid "--- Separate Environment ---"
-msgstr "-- Oddeliť Prostredie --"
 
 #: lib/layouts/moderncv.layout:504
 msgid "Recipient"
@@ -15889,7 +15869,7 @@ msgstr "Odhodiť Všetky Zmeny|O"
 
 #: lib/ui/stdmenus.inc:535
 msgid "Show Changes in Output|S"
-msgstr "Zobraziť Zmeny vo Výstupe|V"
+msgstr "Zobraziť Zmeny vo Výstupe|i"
 
 #: lib/ui/stdmenus.inc:542
 msgid "Bookmarks|B"
@@ -15945,11 +15925,11 @@ msgstr "Choď späť"
 
 #: lib/ui/stdmenus.inc:569
 msgid "Spellchecker...|S"
-msgstr "Kontrola pravopisu...|K"
+msgstr "Kontrola Pravopisu...|K"
 
 #: lib/ui/stdmenus.inc:570
 msgid "Thesaurus...|T"
-msgstr "Slovník synoným..."
+msgstr "Slovník Synoným...|S"
 
 #: lib/ui/stdmenus.inc:571
 msgid "Statistics...|a"
@@ -15957,19 +15937,19 @@ msgstr "Štatistika...|Š"
 
 #: lib/ui/stdmenus.inc:572
 msgid "Check TeX|h"
-msgstr "Kontrola TeXu"
+msgstr "Kontrola TeXu|X"
 
 #: lib/ui/stdmenus.inc:573
 msgid "TeX Information|I"
-msgstr "TeX informácia|X"
+msgstr "TeX Informácia|I"
 
 #: lib/ui/stdmenus.inc:574
 msgid "Compare...|C"
-msgstr "Porovnávať..."
+msgstr "Porovnávať...|o"
 
 #: lib/ui/stdmenus.inc:579
 msgid "Reconfigure|R"
-msgstr "Rekonfigurácia"
+msgstr "Rekonfigurácia|R"
 
 #: lib/ui/stdmenus.inc:580
 msgid "Preferences...|P"
@@ -17327,6 +17307,14 @@ msgstr "Vertikálny fantóm\t\\vphantom"
 #: lib/ui/stdtoolbars.inc:355
 msgid "Smash \\smash"
 msgstr "Nulovať(výšku a hĺbku) \\smash"
+
+#: lib/ui/stdtoolbars.inc:356
+msgid "Top smash \\smasht"
+msgstr "Nulovať nahor \\smasht"
+
+#: lib/ui/stdtoolbars.inc:357
+msgid "Bottom smash \\smashb"
+msgstr "Nulovať nadol \\smashb"
 
 #: lib/ui/stdtoolbars.inc:356
 msgid "Left overlap \\mathllap"
@@ -29615,6 +29603,21 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Separator"
+#~ msgstr "Oddeľovač"
+
+#~ msgid "___"
+#~ msgstr "___"
+
+#~ msgid "--Separator--"
+#~ msgstr "--Oddeľovač--"
+
+#~ msgid "--- Separate Environment ---"
+#~ msgstr "-- Oddeliť Prostredie --"
+
+#~ msgid "EndOfSlide"
+#~ msgstr "KoniecFólie"
 
 #~ msgid "."
 #~ msgstr "."
