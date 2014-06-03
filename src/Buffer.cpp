@@ -1276,12 +1276,38 @@ bool Buffer::save() const
 	// We don't need autosaves in the immediate future. (Asger)
 	resetAutosaveTimers();
 
-	FileName backupName;
-	bool madeBackup = false;
+	// if the file does not yet exist, none of the backup activity
+	// that follows is necessary
+	if (!fileName().exists())
+		return writeFile(fileName());
 
-	// make a backup if the file already exists
-	if (lyxrc.make_backup && fileName().exists()) {
-		backupName = FileName(absFileName() + '~');
+	// we first write the file to a new name, then move it to its
+	// proper location once that has been done successfully. that
+	// way we preserve the original file if something goes wrong.
+	string const savepath = fileName().onlyPath().absFileName();
+	string savename = "tmp-" + fileName().onlyFileName();
+	FileName savefile(addName(savepath, savename));
+	while (savefile.exists()) {
+		if (savefile.absFileName().size() > 1024) {
+			Alert::error(_("Write failure"),
+				     bformat(_("Cannot find temporary filename for:\n  %1$s.\n"
+			                 "Even %2$s exists!"),
+					     from_utf8(fileName().absFileName()),
+			         from_utf8(savefile.absFileName())));
+			return false;
+		}
+		savename = "tmp-" + savename;
+		savefile.set(addName(savepath, savename));
+	}
+
+	LYXERR(Debug::FILES, "Saving to " << savefile.absFileName());
+	if (!writeFile(savefile))
+		return false;
+
+	// we will set this to false if we fail
+	bool made_backup = true;
+	if (lyxrc.make_backup) {
+		FileName backupName(absFileName() + '~');
 		if (!lyxrc.backupdir_path.empty()) {
 			string const mangledName =
 				subst(subst(backupName.absFileName(), '/', '!'), ':', '!');
@@ -1291,12 +1317,11 @@ bool Buffer::save() const
 
 		// Except file is symlink do not copy because of #6587.
 		// Hard links have bad luck.
-		if (fileName().isSymLink())
-			madeBackup = fileName().copyTo(backupName);
-		else
-			madeBackup = fileName().moveTo(backupName);
+		made_backup = fileName().isSymLink() ?
+			fileName().copyTo(backupName):
+			fileName().moveTo(backupName);
 
-		if (!madeBackup) {
+		if (!made_backup) {
 			Alert::error(_("Backup failure"),
 				     bformat(_("Cannot create backup file %1$s.\n"
 					       "Please check whether the directory exists and is writable."),
@@ -1304,16 +1329,18 @@ bool Buffer::save() const
 			//LYXERR(Debug::DEBUG, "Fs error: " << fe.what());
 		}
 	}
-
-	if (writeFile(d->filename)) {
+	
+	if (made_backup && savefile.moveTo(fileName())) {
 		markClean();
 		return true;
-	} else {
-		// Saving failed, so backup is not backup
-		if (madeBackup)
-			backupName.moveTo(d->filename);
-		return false;
 	}
+	// else
+	Alert::error(_("Write failure"),
+		     bformat(_("Cannot move saved file to:\n  %1$s.\n"
+			       "But the file has successfully been saved as:\n  %2$s."),
+			     from_utf8(fileName().absFileName()),
+	         from_utf8(savefile.absFileName())));
+	return false;
 }
 
 

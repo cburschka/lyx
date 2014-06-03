@@ -28,6 +28,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- When saving a file, LyX now writes the saved file first to a temporary
+  filename (tmp-oldfile.lyx) and only deletes the original file once the
+  new file has successfully been written. 
 
 
 * TEX2LYX IMPROVEMENTS
