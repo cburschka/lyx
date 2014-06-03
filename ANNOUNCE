@@ -1,32 +1,47 @@
-Public release of LyX version 2.1.0
-========================================
+Public release of LyX version 2.1.1
+===================================
 
-We are proud to announce the release of LyX 2.1.0.
+We are proud to announce the release of LyX 2.1.1.  This is the first 
+maintenance release in the 2.1.x series.
 
-With this release, LyX celebrates 18 years of existence. The 2.1 series
-has a rich set of new features compared to the current stable series.
+LyX 2.1.1 is the result of on-going efforts to make our stable version
+even more reliable and stable. We have fixed a number of bugs and made
+a number of improvements. These are detailed below. We strongly encourage 
+all LyX users to upgrade to this version.
 
-LyX 2.1.0 is the culmination of three years of hard work. An overview
-of the new features can be found here:
-  http://wiki.lyx.org/LyX/NewInLyX21
+Several users have reported seemingly random crashes with 2.1.0, sometimes 
+resulting in dataloss. These crashes appear to happen when the user attempts 
+to save a file, and the dataloss occurs because the original LyX file is over-
+written by a corrupt file that then cannot be opened. The seemingly random
+crashes, we believe, are due to auto-save, which is enabled or disabled in
+Tools> Preferences> Document Handling > "Backup documents every...minutes".
 
-You can download LyX 2.1.0 from http://www.lyx.org/Download.
+Unfortunately, we have been unable to find the cause of this bug, though all
+known reports seem to involve documents that contain tables, and the corrupt 
+file always ends with: \begin_inset Tabular. Users who work with tables a lot
+may therefore wish to disable auto-save.
 
-We hope you will enjoy the result!
+To prevent dataloss, we have changed the way LyX saves files. Rather than
+over-write the original file immediately, LyX now saves the new file to a
+temporary name and then renames the new file to the original filename only
+after it has been written successfully. 
 
-The file RELEASE-NOTES lists some known issues and problems compared
-to the current stable releases (LyX 2.0.x). We strongly recommend that 
-packagers of LyX on various platforms and distributions read this file.
+LyX is a document processor that encourages an approach to writing based 
+on the structure of your documents and not simply their appearance. It is
+released under a Free and Open Source Software license.
 
-As with any major release, this one comes with lot of new features but 
-also some bugs. If you think you have found a bug in LyX 2.1.0, either
-email the LyX developers' mailing list (lyx-devel at lists.lyx.org),
-or open a bug report at http://www.lyx.org/trac/wiki/BugTrackerHome.
+You can download LyX 2.1.1 from http://www.lyx.org/Download/.
+
+If you think you found a bug in LyX 2.1.1, either e-mail the LyX
+developers' mailing list (lyx-devel <at> lists.lyx.org), or open a bug
+report at http://www.lyx.org/trac/wiki/BugTrackerHome.
 
 If you have trouble using LyX or have a question, consult the
-documentation that comes with LyX (under Help) and the LyX wiki, which you 
-will find at http://wiki.lyx.org/. You can also send email to the LyX users' 
-list (lyx-users at lists.lyx.org).
+documentation that comes with LyX and the LyX wiki, which lives at
+http://wiki.lyx.org/. If you can't find the answer there, e-mail the LyX 
+users' list (lyx-users at lists.lyx.org).
+
+We hope you enjoy using LyX 2.1.1.
 
 The LyX team.
 http://www.lyx.org
