@@ -32,6 +32,9 @@ What's new
   filename (tmp-oldfile.lyx) and only deletes the original file once the
   new file has successfully been written. 
 
+- We now flush the output stream more frequently, as a temporary measure
+  to help us gather information about the crash mentioned above.
+
 
 * TEX2LYX IMPROVEMENTS
 

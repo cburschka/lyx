@@ -1517,6 +1517,9 @@ void Tabular::write(ostream & os) const
 			cell_info[r][c].inset->write(os);
 			os << "\n\\end_inset\n"
 			   << "</cell>\n";
+			// FIXME This can be removed again once the mystery
+			// crash has been resolved.
+			os << flush;
 		}
 		os << "</row>\n";
 	}
