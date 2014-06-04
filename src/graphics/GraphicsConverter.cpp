@@ -324,7 +324,7 @@ static void build_script(string const & from_file,
 
 		ostringstream os;
 		os << os::python() << ' '
-		   << "$$s/scripts/convertDefault.py" << ' ';
+		   << commandPrep("$$s/scripts/convertDefault.py") << ' ';
 		if (!from_format.empty())
 			os << strip_digit(from_format) << ':';
 		// The extra " quotes around infile and outfile are needed
