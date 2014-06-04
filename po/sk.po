@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-05-31 11:46+0200\n"
+"POT-Creation-Date: 2014-06-04 11:58+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -21921,6 +21921,21 @@ msgstr "Prepísať modifikovaný súbor?"
 msgid "&Overwrite"
 msgstr "&Prepísať"
 
+#: src/Buffer.cpp:1292 src/Buffer.cpp:1338
+msgid "Write failure"
+msgstr "Písanie zlyhalo"
+
+#: src/Buffer.cpp:1293
+#, c-format
+msgid ""
+"Cannot find temporary filename for:\n"
+"  %1$s.\n"
+"Even %2$s exists!"
+msgstr ""
+"Nenašiel som pomocný súbor pre:\n"
+"  %1$\n"
+"Dokonca ani %2$s neexistuje!"
+
 #: src/Buffer.cpp:1301
 msgid "Backup failure"
 msgstr "Založenie zlyhalo"
@@ -21933,6 +21948,19 @@ msgid ""
 msgstr ""
 "LyX nemohol vytvoriť záložnú kópiu v %1$s.\n"
 "Skontrolujte, či daný adresár existuje a je možné do neho zapisovať."
+
+#: src/Buffer.cpp:1339
+#, c-format
+msgid ""
+"Cannot move saved file to:\n"
+"  %1$s.\n"
+"But the file has successfully been saved as:\n"
+"  %2$s."
+msgstr ""
+"Nemôžem premiestniť uložený súbor na:\n"
+"  %1$\n"
+"Zato bol súbor ale úspešne uložený ako:\n"
+"  %2$s."
 
 #: src/Buffer.cpp:1328
 #, c-format
