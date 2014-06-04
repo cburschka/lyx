@@ -233,6 +233,10 @@ string guessFormatFromContents(FileName const & fn)
 	// compress
 	static string const compressStamp = "\037\235";
 
+	// DOS binary EPS according to Adobe TN-5002
+	static string const binEPSStamp = "\xC5\xD0\xD3\xC6";
+
+
 	// Maximum strings to read
 	int const max_count = 50;
 	int count = 0;
@@ -272,6 +276,8 @@ string guessFormatFromContents(FileName const & fn)
 
 			} else if (stamp == "\001\332") {
 				format =  "sgi";
+			} else if (prefixIs(str, binEPSStamp)) {
+				format =  "eps";
 
 			// PBM family
 			// Don't need to use str.at(0), str.at(1) because
@@ -392,6 +398,7 @@ string Formats::getFormatFromFile(FileName const & filename) const
 	if (filename.empty())
 		return string();
 
+	string psformat;
 #ifdef HAVE_MAGIC_H
 	if (filename.exists()) {
 		magic_t magic_cookie = magic_open(MAGIC_MIME);
@@ -412,8 +419,9 @@ string Formats::getFormatFromFile(FileName const & filename) const
 						<< "\tCouldn't query magic database - "
 						<< magic_error(magic_cookie));
 				}
-				// we need our own ps/eps detection
-				if (!mime.empty() && mime != "application/postscript" &&
+				// our own detection is better for binary files (can be anything)
+				// and different plain text formats
+				if (!mime.empty() && mime != "application/octet-stream" &&
 				    mime != "text/plain") {
 					Formats::const_iterator cit =
 						find_if(formatlist.begin(), formatlist.end(),
@@ -421,7 +429,11 @@ string Formats::getFormatFromFile(FileName const & filename) const
 					if (cit != formats.end()) {
 						LYXERR(Debug::GRAPHICS, "\tgot format from MIME type: "
 							<< mime << " -> " << cit->name());
-						format = cit->name();
+						// See special eps/ps handling below
+						if (mime == "application/postscript")
+							psformat = cit->name();
+						else
+							format = cit->name();
 					}
 				}
 			}
@@ -432,7 +444,18 @@ string Formats::getFormatFromFile(FileName const & filename) const
 	}
 #endif
 
+	// libmagic does not distinguish eps and ps.
+	// Therefore we need to use our own detection here, but only if it
+	// recognizes either ps or eps. Otherwise the libmagic guess will
+	// be better (bug 9146).
 	string const format = guessFormatFromContents(filename);
+	if (!psformat.empty()) {
+		if (isPostScriptFileFormat(format))
+			return format;
+		else
+			return psformat;
+	}
+
 	string const ext = getExtension(filename.absFileName());
 	if (isZippedFileFormat(format) && !ext.empty()) {
 		string const & fmt_name = formats.getFormatFromExtension(ext);
