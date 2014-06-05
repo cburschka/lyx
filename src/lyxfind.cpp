@@ -400,7 +400,7 @@ bool findChange(DocIterator & cur, bool next)
 			if (!next)
 				// if we search backwards, take a step forward
 				// to correctly set the anchor
-				cur.forwardPos();
+				cur.top().forwardPos();
 			return true;
 		}
 

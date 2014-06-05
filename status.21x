@@ -62,6 +62,8 @@ What's new
 
 - Fix assertion when selecting in document with bi-directional text (bug 9142).
 
+- Fix assertion when accepting change (bug 9145).
+
 - Fix LaTeX error with alphabetic delimiters in inline Listings (part of bug
   8985).
 
@@ -80,22 +82,23 @@ What's new
 
 * LYX2LYX
 
-- We have fixed several significant issues involving conversion of 2.0 format 
-  into   2.1 format, and conversely. This mostly affects the new argument insets 
-  and, in particular, beamer documents. These are detailed below.
+We have fixed several significant issues involving conversion of 2.0
+  format into 2.1 format, and conversely. This mostly affects the new
+  argument insets and, in particular, beamer documents. These are
+  detailed below.
 
 - Fix conversion of beamer block titles ending with non-ERT insets to 2.1 format.
 
 - Fix conversion of beamer blocks with preceding or trailing blanks.
 
-- Add \justification parameter when converting to 2.1 format (avoids when
-  converting back to 2.0 format).
+- Add \justification parameter when converting to 2.1 format (avoids
+  warning when converting back to 2.0 format).
 
 - Fix conversion of argument insets from 2.1 to 2.0 format.
 
-- Fix use math package settings conversion from 2.1 to 2.0 format.
+- Fix "use math package" settings conversion from 2.1 to 2.0 format.
 
-- Fix use math package settings conversion from 2.0 to 2.1 format (bug 9069).
+- Fix "use math package" settings conversion from 2.0 to 2.1 format (bug 9069).
 
 - Fix table cell rotation conversion from 2.1 to 2.0 format.
 
