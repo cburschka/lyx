@@ -2295,7 +2295,12 @@ void BufferView::setCursorFromRow(int row)
 		DocIterator const dit = buffer_.getParFromID(tmpid);
 		if (dit == doc_iterator_end(&buffer_))
 			posvalid = false;
-		else {
+		else if (dit.depth() > 1) {
+			// We are an inset.
+			setCursor(dit);
+			recenter();
+			return;
+		} else {
 			newpit = dit.pit();
 			// now have to check pos.
 			newpos = tmppos;
