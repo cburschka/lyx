@@ -63,6 +63,11 @@ GuiMathMatrix::GuiMathMatrix(GuiView & lv)
 {
 	setupUi(this);
 
+	for (int i = 0; *VertAligns[i]; ++i)
+		valignCO->addItem(qt_(VertAligns[i]));
+	for (int i = 0; *DecoChars[i]; ++i)
+		decorationCO->addItem(qt_(DecoChars[i]));
+
 	table->setMinimumSize(100, 100);
 	rowsSB->setValue(5);
 	columnsSB->setValue(5);
@@ -90,11 +95,6 @@ GuiMathMatrix::GuiMathMatrix(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(decorationCO, SIGNAL(activated(int)),
 		this, SLOT(decorationChanged(int)));
-
-	for (int i = 0; *VertAligns[i]; ++i)
-		valignCO->addItem(qt_(VertAligns[i]));
-	for (int i = 0; *DecoChars[i]; ++i)
-		decorationCO->addItem(qt_(DecoChars[i]));
 
 	bc().setPolicy(ButtonPolicy::IgnorantPolicy);
 }
