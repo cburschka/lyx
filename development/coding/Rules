@@ -289,6 +289,10 @@ Formatting
   - Members variables are underscored ('enable_this_feature_flag_') with a final '_'
   
   - private/protected functions are also camel-case
+  
+  - Each class is implemented in a separate pair of .h/.cpp files named like
+    the class. Exceptions are tiny helper classes which are closely tied to
+    the main class.
 
 
   New types are capitalized, so this goes for typedefs, classes, structs
