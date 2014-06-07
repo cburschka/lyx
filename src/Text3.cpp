@@ -409,25 +409,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 			cur.pit() = newpit - len;
 			break;
 		}
-		case OutlineIn: {
-			pit_type const len = distance(start, finish);
-			buf.undo().recordUndo(cur, ATOMIC_UNDO, pit, pit + len - 1);
-			for (; start != finish; ++start) {
-				toclevel = buf.text().getTocLevel(distance(bgn, start));
-				if (toclevel == Layout::NOT_IN_TOC)
-					continue;
-				DocumentClass::const_iterator lit = tc.begin();
-				DocumentClass::const_iterator len = tc.end();
-				for (; lit != len; ++lit) {
-					if (lit->toclevel == toclevel + 1 &&
-					    start->layout().labeltype == lit->labeltype) {
-						start->setLayout(*lit);
-						break;
-					}
-				}
-			}
-			break;
-		}
+		case OutlineIn:
 		case OutlineOut: {
 			pit_type const len = distance(start, finish);
 			buf.undo().recordUndo(cur, ATOMIC_UNDO, pit, pit + len - 1);
@@ -438,10 +420,11 @@ static void outline(OutlineOp mode, Cursor & cur)
 				DocumentClass::const_iterator lit = tc.begin();
 				DocumentClass::const_iterator len = tc.end();
 				for (; lit != len; ++lit) {
-					if (lit->toclevel == toclevel - 1 &&
-						start->layout().labeltype == lit->labeltype) {
-							start->setLayout(*lit);
-							break;
+					if (lit->toclevel == (mode == OutlineIn ?
+							      toclevel + 1 : toclevel - 1) &&
+					    start->layout().labeltype == lit->labeltype) {
+						start->setLayout(*lit);
+						break;
 					}
 				}
 			}
