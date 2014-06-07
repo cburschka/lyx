@@ -840,7 +840,7 @@ if(LYX_ENABLE_URLTESTS)
 endif()
 
 message(STATUS)
-message(STATUS "Build options, switch LYX_* variables by -DLYX_*=ON or OFF:")
+message(STATUS "Build params, switch LYX_* options by -DLYX_*=ON or OFF, LYX_* combos by -DLYX_*=value:")
 message(STATUS)
 
 LYX_OPTION_LIST_ALL(used)
