@@ -15,7 +15,7 @@
 #include "CursorSlice.h"
 
 #include <vector>
-
+#include <algorithm>
 
 namespace lyx {
 

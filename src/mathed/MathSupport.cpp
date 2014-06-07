@@ -27,6 +27,7 @@
 #include "support/docstream.h"
 
 #include <map>
+#include <algorithm>
 
 using namespace std;
 

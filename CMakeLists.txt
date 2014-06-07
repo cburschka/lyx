@@ -205,6 +205,10 @@ if(LYX_DEPENDENCIES_DOWNLOAD)
 		endif()
 	endforeach()
 	set(GNUWIN32_DIR ${LYX_DEPENDENCIES_DIR}/deps20)
+    if(MSVC12)
+        # handle error in msvc12 when linking against msvc10 libs
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /vd2")
+    endif()
 endif()
 
 

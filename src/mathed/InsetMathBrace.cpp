@@ -21,6 +21,7 @@
 #include "frontends/Painter.h"
 
 #include <ostream>
+#include <algorithm>
 
 using namespace std;
 
