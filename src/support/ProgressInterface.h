@@ -36,7 +36,7 @@ public:
 	/// Alert interface
 	virtual void warning(QString const & title, QString const & message) = 0;
 	virtual void toggleWarning(QString const & title, QString const & msg, QString const & formatted) = 0;
-	virtual void error(QString const & title, QString const & message) = 0;
+	virtual void error(QString const & title, QString const & message, QString const & details) = 0;
 	virtual void information(QString const & title, QString const & message) = 0;
 	virtual int prompt(docstring const & title, docstring const & question,
 			   int default_button, int cancel_button,

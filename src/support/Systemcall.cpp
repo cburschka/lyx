@@ -71,7 +71,7 @@ public:
 
 	void warning(QString const &, QString const &) {}
 	void toggleWarning(QString const &, QString const &, QString const &) {}
-	void error(QString const &, QString const &) {}
+	void error(QString const &, QString const &, QString const &) {}
 	void information(QString const &, QString const &) {}
 	int prompt(docstring const &, docstring const &, int default_but, int,
 		   docstring const &, docstring const &) { return default_but; }
