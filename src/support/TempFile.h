@@ -33,7 +33,7 @@ public:
 	 * relative path, the template file will be created in the global
 	 * temporary directory as given by 'package().temp_dir()'.
 	 * If the mask contains "XXXXXX" this portion will be replaced by
-	 * a uniquely generetd string. If it does not contain this portion,
+	 * a uniquely generated string. If it does not contain this portion,
 	 * it will be automatically appended using a dot. Therefore, please
 	 * specify the "XXXXXX" portion if the extension of the generated
 	 * name is important (e.g. for the converter machinery).
