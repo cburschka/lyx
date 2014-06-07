@@ -114,8 +114,8 @@ SIZEOF_WCHAR_T_IS_4)
 
 if (Qt5X11Extras_FOUND)
   get_target_property(_x11extra_prop Qt5::X11Extras IMPORTED_CONFIGURATIONS)
-  get_target_property(_x11extra_lib Qt5::X11Extras IMPORTED_SONAME_${_x11extra_prop})
-  set(CMAKE_REQUIRED_LIBRARIES ${_x11extra_lib})
+  get_target_property(_x11extra_link_libraries Qt5::X11Extras IMPORTED_LOCATION_${_x11extra_prop})
+  set(CMAKE_REQUIRED_LIBRARIES ${_x11extra_link_libraries})
   set(CMAKE_REQUIRED_INCLUDES ${Qt5X11Extras_INCLUDE_DIRS})
   set(CMAKE_REQUIRED_FLAGS ${Qt5X11Extras_EXECUTABLE_COMPILE_FLAGS})
   check_cxx_source_compiles(
