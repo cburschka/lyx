@@ -89,6 +89,11 @@ include(LyXMacros)
 # 3. parameter: default value, ON or OFF
 # 4. parameter: system on which option is used: ALL, GCC, MSVC, ...
 
+# Usage LYX_COMBO
+# 1. parameter: name without prefix 'LYX_'
+# 2. parameter: description
+# 3. parameter: default value
+# 4-n parameter: possible other string values
 
 LYX_OPTION_INIT()
 
@@ -135,6 +140,7 @@ LYX_OPTION(DEPENDENCIES_DOWNLOAD "Download dependencies for MSVC 10" OFF MSVC)
 # APPLE specific
 LYX_OPTION(DMG                   "Build as Mac bundle, needed for .dmg  (experimental) " OFF MAC)
 LYX_OPTION(COCOA                 "Use Cocoa on Mac" OFF MAC)
+LYX_COMBO(USE_QT                 "Use Qt version as frontend (QT4 QT5)" QT4 QT5)
 
 
 if(help OR HELP)
@@ -836,6 +842,7 @@ endif()
 message(STATUS)
 message(STATUS "Build options, switch LYX_* variables by -DLYX_*=ON or OFF:")
 message(STATUS)
+
 LYX_OPTION_LIST_ALL(used)
 
 

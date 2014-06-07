@@ -174,7 +174,7 @@ macro(lyx_const_touched_files _allinone_name _list)
 	else()
 		lyx_add_info_files(MergedFiles ${${_list}})
 	endif()
-	
+
 	set(${_file_list} ${_file_const} ${_file_touched} ${lyx_${groupname}_info_files})
 
 	foreach (_current_FILE ${${_list}})
@@ -233,6 +233,11 @@ macro(LYX_OPTION _name _description _default _sys)
 	set(LYX_${_name}_show_message ${_msg})
 endmacro()
 
+macro(LYX_COMBO _name _description _default)
+  set(LYX_${_name} ${_default} CACHE STRING "${_description}")
+  set_property(CACHE LYX_${_name} PROPERTY STRINGS ${_default} ${ARGN})
+  list(APPEND LYX_OPTIONS LYX_${_name})
+endmacro()
 
 macro(LYX_OPTION_LIST_ALL)
 	if(UNIX)
