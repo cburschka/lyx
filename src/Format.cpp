@@ -379,6 +379,12 @@ string guessFormatFromContents(FileName const & fn)
 				maybelatex = true;
 		}
 
+		// Note that this is formally not correct, since count_bin_chars
+		// expects utf8, and str can be anything: plain text in any
+		// encoding, or really binary data. In practice it works, since
+		// QString::fromUtf8() drops invalid utf8 sequences, and while
+		// the exact number may not be correct, we still get a high
+		// number for truly binary files.
 		binchars += count_bin_chars(str);
 	}
 
