@@ -24,6 +24,7 @@
 #include "support/debug.h"
 #include "support/docstring.h"
 #include "support/lstrings.h"
+#include "support/lassert.h"
 #include "support/ProgressInterface.h"
 
 #include <QApplication>
@@ -197,11 +198,16 @@ void warning(docstring const & title0, docstring const & message,
 				title0, message, askshowagain);
 }
 
-void doError(docstring const & title0, docstring const & message)
+void doError(docstring const & title0, docstring const & message, bool backtrace)
 {
 	lyxerr << "Error: " << title0 << '\n'
 	       << "----------------------------------------\n"
 	       << message << endl;
+
+	QString details;
+	if (backtrace) {
+		details = QString::fromLocal8Bit(to_local8bit(printCallStack()).c_str());
+	}
 
 	if (!use_gui)
 		return;
@@ -223,7 +229,8 @@ void doError(docstring const & title0, docstring const & message)
 
 	ProgressInterface::instance()->error(
 		toqstr(title),
-		toqstr(message));
+		toqstr(message),
+		details);
 
 	qApp->restoreOverrideCursor();
 
@@ -231,14 +238,14 @@ void doError(docstring const & title0, docstring const & message)
 		theApp()->startLongOperation();
 }
 
-void error(docstring const & title0, docstring const & message)
+void error(docstring const & title0, docstring const & message, bool backtrace)
 {
 #ifdef EXPORT_in_THREAD
 	InGuiThread<void>().call(&doError, 
 #else
 	doError(
 #endif
-				title0, message);
+				title0, message, backtrace);
 }
 
 void doInformation(docstring const & title0, docstring const & message)

@@ -62,7 +62,7 @@ Q_SIGNALS:
 	// Alert interface
 	void warning(QString const & title, QString const & message);
 	void toggleWarning(QString const & title, QString const & msg, QString const & formatted);
-	void error(QString const & title, QString const & message);
+	void error(QString const & title, QString const & message, QString const & details = QString());
 	void information(QString const & title, QString const & message);
 
 private Q_SLOTS:
@@ -74,7 +74,7 @@ private Q_SLOTS:
 
 	void doWarning(QString const &, QString const &);
 	void doToggleWarning(QString const & title, QString const & msg, QString const & formatted);
-	void doError(QString const &, QString const &);
+	void doError(QString const &, QString const &, QString const &);
 	void doInformation(QString const &, QString const &);
 
 	void updateWithLyXErr();

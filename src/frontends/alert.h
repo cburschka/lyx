@@ -48,8 +48,9 @@ void warning(docstring const & title, docstring const & message,
 /**
  * Display a warning to the user. Title should be a short (general) summary.
  * Only use this if the user cannot perform some remedial action.
+ * On some systems it is possible to show a backtrace.
  */
-void error(docstring const & title, docstring const & message);
+void error(docstring const & title, docstring const & message, bool backtrace = false);
 
 /**
  * Informational message. Use very very sparingly. That is, you must

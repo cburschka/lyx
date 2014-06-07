@@ -66,7 +66,7 @@ void doBufErr(char const * expr, char const * file, long line);
 void doAppErr(char const * expr, char const * file, long line);
 
 /// Print demangled callstack to stderr
-void printCallStack();
+docstring printCallStack();
 
 
 } // namespace lyx

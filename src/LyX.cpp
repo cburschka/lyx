@@ -667,7 +667,7 @@ static void error_handler(int err_sig)
 	if (!msg.empty()) {
 		lyxerr << "\nlyx: " << msg << endl;
 		// try to make a GUI message
-		Alert::error(_("LyX crashed!"), msg);
+		Alert::error(_("LyX crashed!"), msg, true);
 	}
 
 	// Deinstall the signal handlers

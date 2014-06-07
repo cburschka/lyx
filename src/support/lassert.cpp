@@ -20,9 +20,8 @@
 
 #include <boost/assert.hpp>
 
+#include <QString>
 
-//#define LYX_CALLSTACK_PRINTING
-// must be linked with -rdynamic
 #ifdef LYX_CALLSTACK_PRINTING
 #include <cstdio>
 #include <cstdlib>
@@ -87,11 +86,12 @@ void doAppErr(char const * expr, char const * file, long line)
 }
 
 
-//TODO Return as string, so call stack could be used in dialogs.
-void printCallStack()
+docstring printCallStack()
 {
-#ifdef LYX_CALLSTACK_PRINTING
-	const int depth = 50;
+#ifndef LYX_CALLSTACK_PRINTING
+	return docstring();
+#else
+	const int depth = 200;
 	
 	// get void*'s for all entries on the stack
 	void* array[depth];
@@ -99,9 +99,9 @@ void printCallStack()
 	
 	char** messages = backtrace_symbols(array, size);
 	
-	for (size_t i = 0; i < size && messages != NULL; i++) {
-		std::string orig(messages[i]);
-		// extract mangled: bin/lyx2.0(_ZN3lyx7support7packageEv+0x32) [0x8a2e02b]
+	docstring bt;
+	for (size_t i = 1; i < size && messages != NULL; i++) {
+		const std::string orig(messages[i]);
 		char* mangled = 0;
 		for (char *p = messages[i]; *p; ++p) {
 			if (*p == '(') {
@@ -112,15 +112,16 @@ void printCallStack()
 				break;
 			}
 		}
-		int err = 0;
-		char* demangled = abi::__cxa_demangle(mangled, 0, 0, &err);
-		if (err == 0) {
-			fprintf(stderr, "[bt]: (%d) %s %s\n", i, messages[i], demangled);
-			free((void*)demangled);
-		} else {
-			fprintf(stderr, "[bt]: (%d) %s\n", i, orig.c_str());
-		}		
+		int status = 0;
+		const char* demangled = abi::__cxa_demangle(mangled, 0, 0, &status);
+		const QByteArray line = QString("(%1) %2: %3\n").arg(i, 3).arg(messages[i])
+								.arg(demangled ? demangled : orig.c_str()).toLocal8Bit();
+		free((void*)demangled);
+
+		fprintf(stderr, "%s", line.constData());
+		bt += from_local8bit(line.constData());
 	}
+		return bt;
 #endif
 }
 

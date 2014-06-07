@@ -56,8 +56,8 @@ GuiProgress::GuiProgress()
 		SLOT(doWarning(QString const &, QString const &)));
 	connect(this, SIGNAL(toggleWarning(QString const &, QString const &, QString const &)),
 		SLOT(doToggleWarning(QString const &, QString const &, QString const &)));
-	connect(this, SIGNAL(error(QString const &, QString const &)),
-		SLOT(doError(QString const &, QString const &)));
+	connect(this, SIGNAL(error(QString const &, QString const &, QString const &)),
+		SLOT(doError(QString const &, QString const &, QString const &)));
 	connect(this, SIGNAL(information(QString const &, QString const &)),
 		SLOT(doInformation(QString const &, QString const &)));
 	connect(this, SIGNAL(triggerFlush()),
@@ -183,9 +183,13 @@ void GuiProgress::doToggleWarning(QString const & title, QString const & msg, QS
 }
 
 
-void GuiProgress::doError(QString const & title, QString const & message)
+void GuiProgress::doError(QString const & title, QString const & message, QString const & details)
 {
-	QMessageBox::critical(qApp->focusWidget(), title, message);
+	QMessageBox box(QMessageBox::Critical, title, message, QMessageBox::Ok, qApp->focusWidget());
+	if (!details.isEmpty()) {
+		box.setDetailedText(details);
+	}
+	box.exec();
 }
 
 

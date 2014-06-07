@@ -36,6 +36,10 @@ else()
 	set(support_linkback_headers "")
 endif()
 
+if(UNIX AND CMAKE_COMPILER_IS_GNUCC AND NOT APPLE)
+	add_definitions(-DLYX_CALLSTACK_PRINTING)
+endif()
+
 add_subdirectory(tests)
 
 # needed to compile tex2lyx in merged mode
