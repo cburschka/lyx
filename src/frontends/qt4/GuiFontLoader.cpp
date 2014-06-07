@@ -343,6 +343,16 @@ bool FontLoader::available(FontInfo const & f)
 	static vector<int> cache(NUM_FAMILIES, false);
 
 	FontFamily family = f.family();
+#ifdef Q_WS_MACX
+	// Apple ships a font name "Symbol", which has more or less the same
+	// glyphs as the original PostScript Symbol font, but it uses a different
+	// encoding (see https://en.wikipedia.org/wiki/Symbol_(typeface)#cite_note-2).
+	// Since we expect the font specific encoding of the original
+	// PostScript Symbol font, we can't use the one provided on OS X.
+	// See also the discussion in bug 7954.
+	if (f.family() == SYMBOL_FAMILY)
+		return false;
+#endif
 	if (cache_set[family])
 		return cache[family];
 	cache_set[family] = true;

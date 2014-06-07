@@ -1173,6 +1173,8 @@ lyxsurd               cmsy        112 0 mathord  &radic;
 \def\surd{^\lyxsurd}
 \def\textdegree{\kern-1mu^{\circ}\kern-4mu}
 else
+# FIXME: These don't work on OS X, since the Symbol font uses a different
+#        encoding and is therefore disabled in FontLoader::available().
 cong               lyxsymbol             64  0 mathrel  &cong;
 surd               lyxsymbol             214 0 mathord  &radic;
 textdegree         lyxsymbol             176 0 mathord  &deg;
