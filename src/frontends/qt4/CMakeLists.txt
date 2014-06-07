@@ -68,7 +68,7 @@ target_link_libraries(frontend_qt4
 lyx_add_gcc_pch(frontend_qt4)
 
 if(WIN32)
-	target_link_libraries(frontend_qt4 Gdi32)
+	target_link_libraries(frontend_qt4 gdi32)
 endif()
 
 project_source_group("${GROUP_CODE}" frontends_qt4_sources frontends_qt4_headers)

@@ -89,7 +89,7 @@ if (LYX_VLD)
 	lyx_add_info_files(VLD ${vld_files})
 endif()
 
-if(WIN32)
+if(WIN32 AND NOT MINGW)
 	set(FILE_RC ${TOP_CMAKE_PATH}/lyx.rc)
 	message(STATUS "Using icon defined in resource file: ${FILE_RC}")
 endif()

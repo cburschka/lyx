@@ -37,7 +37,46 @@ set(CPACK_PACKAGE_INSTALL_DIRECTORY "CMake ${LYX_INSTALL_SUFFIX}")
 if (APPLE)
 	# We don't need absolute paths
 	set(CPACK_SET_DESTDIR "OFF")
-elseif (NOT WIN32)
+elseif(WIN32)
+    set(CPACK_GENERATOR ZIP)
+    set(CPACK_BINARY_ZIP 1)
+    if(MINGW)
+        get_filename_component(MINGW_BIN_PATH ${CMAKE_CXX_COMPILER} PATH)
+        if(LYX_XMINGW)
+                get_filename_component(mingw_name ${LYX_XMINGW} NAME)
+                set(MINGW_BIN_PATH ${MINGW_BIN_PATH}/../${mingw_name}/lib)
+        endif()
+        if(EXISTS ${MINGW_BIN_PATH}/libgcc_s_sjlj-1.dll)
+            list(APPEND runtime ${MINGW_BIN_PATH}/libgcc_s_sjlj-1.dll)
+        elseif(EXISTS ${MINGW_BIN_PATH}/libgcc_s_seh-1.dll)
+            list(APPEND runtime ${MINGW_BIN_PATH}/libgcc_s_seh-1.dll)
+        elseif(EXISTS ${MINGW_BIN_PATH}/libgcc_s_dw2-1.dll)
+            list(APPEND runtime ${MINGW_BIN_PATH}/libgcc_s_dw2-1.dll)
+        endif()
+        if(EXISTS ${MINGW_BIN_PATH}/libstdc++-6.dll)
+            list(APPEND runtime ${MINGW_BIN_PATH}/libstdc++-6.dll)
+        endif()
+        if(EXISTS ${MINGW_BIN_PATH}/libwinpthread-1.dll)
+            list(APPEND runtime ${MINGW_BIN_PATH}/libwinpthread-1.dll)
+        endif()
+        if(NOT runtime)
+                message(FATAL_ERROR "No mingw runtime found in ${MINGW_BIN_PATH}")
+        endif()
+
+        install(FILES
+                    ${runtime}
+                    ${QT_BINARY_DIR}/QtCore4.dll
+                    ${QT_BINARY_DIR}/QtGui4.dll
+                    ${QT_BINARY_DIR}/QtNetwork4.dll
+                    ${QT_PLUGINS_DIR}/imageformats/qgif4.dll
+                    ${QT_PLUGINS_DIR}/imageformats/qico4.dll
+                    ${QT_PLUGINS_DIR}/imageformats/qmng4.dll
+                    ${QT_PLUGINS_DIR}/imageformats/qsvg4.dll
+                    ${QT_PLUGINS_DIR}/imageformats/qtga4.dll
+                    ${QT_PLUGINS_DIR}/imageformats/qtiff4.dll
+                DESTINATION bin CONFIGURATIONS Release)
+    endif()
+else()
 	# needed by rpm
 	set(CPACK_SET_DESTDIR "ON")
 endif()

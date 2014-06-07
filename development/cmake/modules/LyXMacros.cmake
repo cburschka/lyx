@@ -41,9 +41,9 @@ endmacro(lyx_add_path _out _prefix)
 #create the implementation files from the ui files and add them
 #to the list of sources
 #usage: LYX_ADD_QT4_UI_FILES(foo_SRCS ${ui_files})
-macro(LYX_ADD_UI_FILES _sources _ui)
+macro(LYX_ADD_UI_FILES _sources _ui_files)
+	set(uifiles})
 	foreach (_current_FILE ${ARGN})
-
 		get_filename_component(_tmp_FILE ${_current_FILE} ABSOLUTE)
 		get_filename_component(_basename ${_tmp_FILE} NAME_WE)
 		set(_header ${CMAKE_CURRENT_BINARY_DIR}/ui_${_basename}.h)
@@ -54,8 +54,9 @@ macro(LYX_ADD_UI_FILES _sources _ui)
 		# Latest test showed on linux and windows show no bad consequeces,
 		# so we removed the call to LyXuic.cmake
 		qt_wrap_uifiles(${_header} ${_tmp_FILE} OPTIONS -tr lyx::qt_)
-		set(${_ui} ${${_ui}} ${_header})
-	endforeach (_current_FILE)
+		list(APPEND uifiles ${_header})
+	endforeach()
+	set(${_ui_files} ${uifiles})
 endmacro(LYX_ADD_UI_FILES)
 
 
