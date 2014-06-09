@@ -217,9 +217,26 @@ void FileName::erase()
 }
 
 
-bool FileName::copyTo(FileName const & name) const
+bool FileName::copyTo(FileName const & name, bool keepsymlink) const
 {
-	LYXERR(Debug::FILES, "Copying " << name);
+	FileNameSet visited;
+	visited.insert(*this);
+	return copyTo(name, keepsymlink, visited);
+}
+
+
+bool FileName::copyTo(FileName const & name, bool keepsymlink,
+                      FileName::FileNameSet & visited) const
+{
+	LYXERR(Debug::FILES, "Copying " << name << " keep symlink: " << keepsymlink);
+	if (keepsymlink && name.isSymLink()) {
+		FileName const target(fromqstr(name.d->fi.symLinkTarget()));
+		if (visited.find(target) != visited.end()) {
+			LYXERR(Debug::FILES, "Found circular symlink: " << target);
+			return false;
+		}
+		return copyTo(target, true);
+	}
 	QFile::remove(name.d->fi.absoluteFilePath());
 	bool success = QFile::copy(d->fi.absoluteFilePath(), name.d->fi.absoluteFilePath());
 	if (!success)
@@ -231,6 +248,7 @@ bool FileName::copyTo(FileName const & name) const
 
 bool FileName::renameTo(FileName const & name) const
 {
+	LYXERR(Debug::FILES, "Renaming " << name);
 	bool success = QFile::rename(d->fi.absoluteFilePath(), name.d->fi.absoluteFilePath());
 	if (!success)
 		LYXERR0("Could not rename file " << *this << " to " << name);
@@ -240,6 +258,7 @@ bool FileName::renameTo(FileName const & name) const
 
 bool FileName::moveTo(FileName const & name) const
 {
+	LYXERR(Debug::FILES, "Moving " << name);
 	QFile::remove(name.d->fi.absoluteFilePath());
 
 	bool success = QFile::rename(d->fi.absoluteFilePath(),

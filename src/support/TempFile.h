@@ -46,6 +46,13 @@ public:
 	 * This is empty if the file could not be created.
 	 */
 	FileName name() const;
+	/**
+	 * Set whether the file should be automatically deleted in the
+	 * destructor.
+	 * Automatic deletion is the default, but it can be switched off if
+	 * the file should be kept, because it should be renamed afterwards.
+	 */
+	void setAutoRemove(bool autoremove);
 private:
 	///
 	struct Private;

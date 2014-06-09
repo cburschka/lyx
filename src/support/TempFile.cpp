@@ -74,5 +74,10 @@ FileName TempFile::name() const
 }
 
 
+void TempFile::setAutoRemove(bool autoremove)
+{
+	d->f.setAutoRemove(autoremove);
+}
+
 } // namespace support
 } // namespace lyx

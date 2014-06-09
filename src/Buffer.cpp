@@ -1284,25 +1284,8 @@ bool Buffer::save() const
 	// we first write the file to a new name, then move it to its
 	// proper location once that has been done successfully. that
 	// way we preserve the original file if something goes wrong.
-	string const savepath = fileName().onlyPath().absFileName();
-	int fnum = 1;
-	string const fname = fileName().onlyFileName();
-	string savename = "tmp-" + convert<string>(fnum) + "-" + fname;
-	FileName savefile(addName(savepath, savename));
-	while (savefile.exists()) {
-		// surely that is enough tries?
-		if (fnum > 100) {
-			Alert::error(_("Write failure"),
-				     bformat(_("Cannot find temporary filename for:\n  %1$s.\n"
-			                 "Even %2$s exists!"),
-					     from_utf8(fileName().absFileName()),
-			         from_utf8(savefile.absFileName())));
-			return false;
-		}
-		fnum += 1;
-		savename = "tmp-" + convert<string>(fnum) + "-" + fname;
-		savefile.set(addName(savepath, savename));
-	}
+	TempFile tempfile(fileName().onlyPath(), "tmpXXXXXX.lyx");
+	FileName savefile(tempfile.name());
 
 	LYXERR(Debug::FILES, "Saving to " << savefile.absFileName());
 	if (!writeFile(savefile))
@@ -1310,6 +1293,7 @@ bool Buffer::save() const
 
 	// we will set this to false if we fail
 	bool made_backup = true;
+	bool const symlink = fileName().isSymLink();
 	if (lyxrc.make_backup) {
 		FileName backupName(absFileName() + '~');
 		if (!lyxrc.backupdir_path.empty()) {
@@ -1321,7 +1305,7 @@ bool Buffer::save() const
 
 		// Except file is symlink do not copy because of #6587.
 		// Hard links have bad luck.
-		made_backup = fileName().isSymLink() ?
+		made_backup = symlink ?
 			fileName().copyTo(backupName):
 			fileName().moveTo(backupName);
 
@@ -1333,8 +1317,13 @@ bool Buffer::save() const
 			//LYXERR(Debug::DEBUG, "Fs error: " << fe.what());
 		}
 	}
-	
-	if (made_backup && savefile.moveTo(fileName())) {
+
+	// If we have no symlink, we can simply rename the temp file.
+	// Otherwise, we need to copy it so the symlink stays intact.
+	if (!symlink)
+		tempfile.setAutoRemove(false);
+	if (made_backup &&
+	    (symlink ? savefile.copyTo(fileName(), true) : savefile.moveTo(fileName()))) {
 		markClean();
 		return true;
 	}

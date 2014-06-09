@@ -16,6 +16,7 @@
 #include "support/strfwd.h"
 
 #include <ctime>
+#include <set>
 
 
 namespace lyx {
@@ -123,7 +124,9 @@ public:
 	/// \return true when file/directory is writable (write test file)
 	/// \warning This methods has different semantics when system level
 	/// copy command, it will overwrite the \c target file if it exists,
-	bool copyTo(FileName const & target) const;
+	/// If \p keepsymlink is true, the copy will be written to the symlink
+	/// target. Otherwise, the symlink will be destroyed.
+	bool copyTo(FileName const & target, bool keepsymlink = false) const;
 
 	/// remove pointed file.
 	/// \return true on success.
@@ -136,6 +139,8 @@ public:
 	bool renameTo(FileName const & target) const;
 
 	/// move pointed file to \param target.
+	/// If \p target exists it will be overwritten (if it is a symlink,
+	/// the symlink will be destroyed).
 	/// \return true on success.
 	bool moveTo(FileName const & target) const;
 
@@ -212,6 +217,12 @@ public:
 
 private:
 	friend bool equivalent(FileName const &, FileName const &);
+	/// Set for tracking of already visited file names.
+	/// Uses operator==() (which may be case insensitive), and not
+	/// equvalent(), so that symlinks are not resolved.
+	typedef std::set<FileName> FileNameSet;
+	/// Helper for public copyTo() to find circular symlink chains
+	bool copyTo(FileName const &, bool, FileNameSet &) const;
 	///
 	struct Private;
 	Private * const d;
