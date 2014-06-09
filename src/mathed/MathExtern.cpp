@@ -40,6 +40,7 @@
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
+#include "support/TempFile.h"
 
 #include <algorithm>
 #include <sstream>
@@ -995,7 +996,8 @@ namespace {
 	{
 		// In order to avoid parsing problems with command interpreters
 		// we pass input data through a file
-		FileName const cas_tmpfile = FileName::tempName("casinput");
+		TempFile tempfile("casinput");
+		FileName const cas_tmpfile = tempfile.name();
 		if (cas_tmpfile.empty()) {
 			lyxerr << "Warning: cannot create temporary file."
 			       << endl;
@@ -1009,7 +1011,6 @@ namespace {
 		lyxerr << "calling: " << cmd
 		       << "\ninput: '" << data << "'" << endl;
 		cmd_ret const ret = runCommand(command);
-		cas_tmpfile.removeFile();
 		return ret.second;
 	}
 

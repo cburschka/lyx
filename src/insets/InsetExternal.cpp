@@ -45,6 +45,7 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
+#include "support/TempFile.h"
 
 #include <sstream>
 #include <vector>
@@ -67,31 +68,37 @@ namespace Alert = frontend::Alert;
 
 namespace external {
 
-TempName::TempName()
+TempName::TempName() : tempfile_(new support::TempFile("lyxextXXXXXX.tmp"))
 {
-	FileName const tempname = FileName::tempName("lyxext");
 	// must have an extension for the converter code to work correctly.
-	tempname_ = FileName(tempname.absFileName() + ".tmp");
 }
 
 
-TempName::TempName(TempName const &)
+TempName::TempName(TempName const & that) : tempfile_(0)
 {
-	tempname_ = TempName()();
+	*this = that;
 }
 
 
 TempName::~TempName()
 {
-	tempname_.removeFile();
+	delete tempfile_;
 }
 
 
 TempName & TempName::operator=(TempName const & other)
 {
-	if (this != &other)
-		tempname_ = TempName()();
+	if (this != &other) {
+		delete tempfile_;
+		tempfile_ = new support::TempFile("lyxextXXXXXX.tmp");
+	}
 	return *this;
+}
+
+
+support::FileName TempName::operator()() const
+{
+	return tempfile_->name();
 }
 
 } // namespace external

@@ -70,6 +70,7 @@
 #include "support/Package.h"
 #include "support/PathChanger.h"
 #include "support/Systemcall.h"
+#include "support/TempFile.h"
 
 #ifdef Q_WS_MACX
 #include "support/AppleScript.h"
@@ -2827,14 +2828,14 @@ bool GuiApplication::readUIFile(QString const & name, bool include)
 
 	if (retval == FormatMismatch) {
 		LYXERR(Debug::FILES, "Converting ui file to format " << LFUN_FORMAT);
-		FileName const tempfile = FileName::tempName("convert_ui");
+		TempFile tmp("convertXXXXXX.ui");
+		FileName const tempfile = tmp.name();
 		bool const success = prefs2prefs(ui_path, tempfile, true);
 		if (!success) {
 			LYXERR0("Unable to convert " << ui_path.absFileName() <<
 				" to format " << LFUN_FORMAT << ".");
 		} else {
 			retval = readUIFile(tempfile);
-			tempfile.removeFile();
 		}
 	}
 

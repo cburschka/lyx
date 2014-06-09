@@ -25,6 +25,7 @@
 #include "support/os.h"
 
 #include "support/bind.h"
+#include "support/TempFile.h"
 
 #include <sstream>
 #include <fstream>
@@ -292,7 +293,9 @@ static void build_script(string const & from_file,
 	// FIXME THREAD
 	static int counter = 0;
 	string const tmp = "gconvert" + convert<string>(counter++);
-	string const to_base = FileName::tempName(tmp).toFilesystemEncoding();
+	TempFile tempfile(tmp);
+	tempfile.setAutoRemove(false);
+	string const to_base = tempfile.name().toFilesystemEncoding();
 
 	// Create a copy of the file in case the original name contains
 	// problematic characters like ' or ". We can work around that problem
@@ -366,7 +369,9 @@ static void build_script(string const & from_file,
 
 		// If two formats share the same extension we may get identical names
 		if (outfile == infile && conv.result_file.empty()) {
-			string const new_base = FileName::tempName(tmp).toFilesystemEncoding();
+			TempFile tempfile(tmp);
+			tempfile.setAutoRemove(false);
+			string const new_base = tempfile.name().toFilesystemEncoding();
 			outfile = addExtension(new_base, conv.To->extension());
 		}
 

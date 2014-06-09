@@ -454,40 +454,6 @@ FileNameList FileName::dirList(string const & ext) const
 }
 
 
-static string createTempFile(QString const & mask)
-{
-	// FIXME: This is not safe. QTemporaryFile creates a file in open(),
-	//        but the file is deleted when qt_tmp goes out of scope.
-	//        Therefore the next call to createTempFile() may create the
-	//        same file again. To make this safe the QTemporaryFile object
-	//        needs to be kept for the whole life time of the temp file name.
-	//        This can be achieved by using the TempFile class.
-	QTemporaryFile qt_tmp(mask + ".XXXXXXXXXXXX");
-	if (qt_tmp.open()) {
-		string const temp_file = fromqstr(qt_tmp.fileName());
-		LYXERR(Debug::FILES, "Temporary file `" << temp_file << "' created.");
-		return temp_file;
-	}
-	LYXERR(Debug::FILES, "Unable to create temporary file with following template: "
-		<< qt_tmp.fileTemplate());
-	return string();
-}
-
-
-FileName FileName::tempName(FileName const & temp_dir, string const & mask)
-{
-	QFileInfo tmp_fi(QDir(temp_dir.d->fi.absoluteFilePath()), toqstr(mask));
-	LYXERR(Debug::FILES, "Temporary file in " << tmp_fi.absoluteFilePath());
-	return FileName(createTempFile(tmp_fi.absoluteFilePath()));
-}
-
-
-FileName FileName::tempName(string const & mask)
-{
-	return tempName(package().temp_dir(), mask);
-}
-
-
 FileName FileName::getcwd()
 {
 	// return makeAbsPath("."); would create an infinite loop

@@ -36,6 +36,7 @@
 #include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/os.h"
+#include "support/TempFile.h"
 
 #include <algorithm>
 #include <fstream>
@@ -278,22 +279,24 @@ LexerKeyword textClassTags[] = {
 bool TextClass::convertLayoutFormat(support::FileName const & filename, ReadType rt)
 {
 	LYXERR(Debug::TCLASS, "Converting layout file to " << LAYOUT_FORMAT);
-	FileName const tempfile = FileName::tempName("convert_layout");
+	TempFile tmp("convertXXXXXX.layout");
+	FileName const tempfile = tmp.name();
 	bool success = layout2layout(filename, tempfile);
 	if (success)
 		success = readWithoutConv(tempfile, rt) == OK;
-	tempfile.removeFile();
 	return success;
 }
 
 
 std::string TextClass::convert(std::string const & str)
 {
-	FileName const fn = FileName::tempName("locallayout");
+	TempFile tmp1("localXXXXXX.layout");
+	FileName const fn = tmp1.name();
 	ofstream os(fn.toFilesystemEncoding().c_str());
 	os << str;
 	os.close();
-	FileName const tempfile = FileName::tempName("convert_locallayout");
+	TempFile tmp2("convert_localXXXXXX.layout");
+	FileName const tempfile = tmp2.name();
 	bool success = layout2layout(fn, tempfile);
 	if (!success)
 		return "";
@@ -305,7 +308,6 @@ std::string TextClass::convert(std::string const & str)
 		ret += tmp + '\n';
 	}
 	is.close();
-	tempfile.removeFile();
 	return ret;
 }
 
@@ -370,7 +372,8 @@ TextClass::ReturnValues TextClass::read(std::string const & str, ReadType rt)
 		return retval;
 
 	// write the layout string to a temporary file
-	FileName const tempfile = FileName::tempName("TextClass_read");
+	TempFile tmp("TextClass_read");
+	FileName const tempfile = tmp.name();
 	ofstream os(tempfile.toFilesystemEncoding().c_str());
 	if (!os) {
 		LYXERR0("Unable to create temporary file");
@@ -386,7 +389,6 @@ TextClass::ReturnValues TextClass::read(std::string const & str, ReadType rt)
 			<< LAYOUT_FORMAT);
 		return ERROR;
 	}
-	tempfile.removeFile();
 	return OK_OLDFORMAT;
 }
 

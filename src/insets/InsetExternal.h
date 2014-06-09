@@ -31,6 +31,10 @@
  */
 namespace lyx {
 
+namespace support {
+class TempFile;
+}
+
 namespace external {
 
 class TempName {
@@ -39,9 +43,9 @@ public:
 	TempName(TempName const &);
 	~TempName();
 	TempName & operator=(TempName const &);
-	support::FileName const & operator()() const { return tempname_; }
+	support::FileName operator()() const;
 private:
-	support::FileName tempname_;
+	support::TempFile * tempfile_;
 };
 
 } // namespace external
@@ -56,7 +60,7 @@ public:
 	bool read(Buffer const &, Lexer &);
 
 	/// The name of the tempfile used for manipulations.
-	support::FileName const & tempname() const { return tempname_(); }
+	support::FileName tempname() const { return tempname_(); }
 
 	/// The template currently in use.
 	void settemplate(std::string const &);

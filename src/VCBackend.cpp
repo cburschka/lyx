@@ -27,6 +27,7 @@
 #include "support/PathChanger.h"
 #include "support/Systemcall.h"
 #include "support/regex.h"
+#include "support/TempFile.h"
 
 #include <fstream>
 
@@ -292,7 +293,8 @@ bool RCS::isCheckInWithConfirmation()
 	// if (getDiff(file, diff) && diff.empty())
 	//	return false;
 
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvcout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return true;
@@ -303,7 +305,6 @@ bool RCS::isCheckInWithConfirmation()
 		FileName(owner_->filePath()));
 
 	docstring diff = tmpf.fileContents("UTF-8");
-	tmpf.removeFile();
 
 	if (diff.empty())
 		return false;
@@ -433,7 +434,8 @@ string RCS::revisionInfo(LyXVC::RevisionInfo const info)
 
 bool RCS::getRevisionInfo()
 {
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvcout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return false;
@@ -480,7 +482,9 @@ bool RCS::prepareFileRevision(string const &revis, string & f)
 	if (!VCS::makeRCSRevision(version_, rev))
 		return false;
 
-	FileName tmpf = FileName::tempName("lyxvcrev_" + rev + "_");
+	TempFile tempfile("lyxvcrev_" + rev + "_");
+	tempfile.setAutoRemove(false);
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return false;
@@ -657,7 +661,8 @@ int CVS::doVCCommandCallWithOutput(std::string const & cmd,
 
 CVS::CvsStatus CVS::getStatus()
 {
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return StatusError;
@@ -665,7 +670,6 @@ CVS::CvsStatus CVS::getStatus()
 
 	if (doVCCommandCallWithOutput("cvs status " + getTarget(File),
 		FileName(owner_->filePath()), tmpf)) {
-		tmpf.removeFile();
 		return StatusError;
 	}
 
@@ -689,7 +693,6 @@ CVS::CvsStatus CVS::getStatus()
 				status = NeedsCheckout;
 		}
 	}
-	tmpf.removeFile();
 	return status;
 }
 
@@ -698,7 +701,8 @@ void CVS::getRevisionInfo()
 	if (have_rev_info_)
 		return;
 	have_rev_info_ = true;
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return;
@@ -708,7 +712,6 @@ void CVS::getRevisionInfo()
 		+ " " + getTarget(File),
 		FileName(owner_->filePath()), tmpf);
 	if (rc) {
-		tmpf.removeFile();
 		LYXERR(Debug::LYXVC, "cvs log failed with exit code " << rc);
 		return;
 	}
@@ -731,7 +734,6 @@ void CVS::getRevisionInfo()
 			break;
 		}
 	}
-	tmpf.removeFile();
 	if (rev_author_cache_.empty())
 		LYXERR(Debug::LYXVC,
 		   "Could not retrieve revision info for " << version_ <<
@@ -902,7 +904,8 @@ string CVS::checkOut()
 {
 	if (vcstatus != NOLOCKING && edit())
 		return string();
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return string();
@@ -920,7 +923,6 @@ string CVS::checkOut()
 		rc = 0;
 	}
 	
-	tmpf.removeFile();
 	return rc ? string() : log.empty() ? "CVS: Proceeded" : "CVS: " + log;
 }
 
@@ -936,7 +938,8 @@ bool CVS::checkOutEnabled()
 
 string CVS::repoUpdate()
 {
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return string();
@@ -959,10 +962,8 @@ string CVS::repoUpdate()
 				text, 0, 1, _("&Continue"), _("&Abort"));
 			hideDialogs("file", 0);
 		}
-		if (ret == 1 ) {
-			tmpf.removeFile();
+		if (ret == 1 )
 			return string();
-		}
 	}
 
 	int rc = update(Directory, tmpf);
@@ -980,8 +981,6 @@ string CVS::repoUpdate()
 				file, from_local8bit(sres)));
 		rc = 0;
 	}
-	
-	tmpf.removeFile();
 
 	return rc ? string() : log.empty() ? "CVS: Proceeded" : "CVS: " + log;
 }
@@ -1108,7 +1107,9 @@ bool CVS::prepareFileRevision(string const & revis, string & f)
 	if (!VCS::makeRCSRevision(version_, rev))
 		return false;
 
-	FileName tmpf = FileName::tempName("lyxvcrev_" + rev + "_");
+	TempFile tempfile("lyxvcrev_" + rev + "_");
+	tempfile.setAutoRemove(false);
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return false;
@@ -1156,7 +1157,8 @@ FileName const SVN::findFile(FileName const & file)
 	}
 
 	// Now we check the status of the file.
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvcout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return FileName();
@@ -1167,7 +1169,6 @@ FileName const SVN::findFile(FileName const & file)
 	bool found = 0 == doVCCommandCall("svn info " + quoteName(fname)
 						+ " > " + quoteName(tmpf.toFilesystemEncoding()),
 						file.onlyPath());
-	tmpf.removeFile();
 	LYXERR(Debug::LYXVC, "SVN control: " << (found ? "enabled" : "disabled"));
 	return found ? file : FileName();
 }
@@ -1189,7 +1190,8 @@ void SVN::scanMaster()
 
 bool SVN::checkLockMode()
 {
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvcout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()){
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return false;
@@ -1319,7 +1321,8 @@ LyXVC::CommandResult SVN::checkIn(string const & msg, string & log)
 LyXVC::CommandResult
 SVN::checkIn(vector<support::FileName> const & f, string const & msg, string & log)
 {
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvcout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()){
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		log = N_("Error: Could not generate logfile.");
@@ -1347,7 +1350,6 @@ SVN::checkIn(vector<support::FileName> const & f, string const & msg, string & l
 		if (!fileLock(false, tmpf, log))
 			ret = LyXVC::ErrorCommand;
 
-	tmpf.removeFile();
 	if (!log.empty())
 		log.insert(0, "SVN: ");
 	if (ret == LyXVC::VCSuccess && log.empty())
@@ -1369,7 +1371,8 @@ bool SVN::isCheckInWithConfirmation()
 {
 	// FIXME one day common getDiff and perhaps OpMode for all backends
 
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvcout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return true;
@@ -1380,7 +1383,6 @@ bool SVN::isCheckInWithConfirmation()
 		FileName(owner_->filePath()));
 
 	docstring diff = tmpf.fileContents("UTF-8");
-	tmpf.removeFile();
 
 	if (diff.empty())
 		return false;
@@ -1455,7 +1457,8 @@ bool SVN::fileLock(bool lock, FileName const & tmpf, string &status)
 
 string SVN::checkOut()
 {
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvcout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return N_("Error: Could not generate logfile.");
@@ -1476,7 +1479,6 @@ string SVN::checkOut()
 
 	fileLock(true, tmpf, log);
 
-	tmpf.removeFile();
 	return log.empty() ? string() : "SVN: " + log;
 }
 
@@ -1492,7 +1494,8 @@ bool SVN::checkOutEnabled()
 
 string SVN::repoUpdate()
 {
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvcout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return N_("Error: Could not generate logfile.");
@@ -1518,10 +1521,8 @@ string SVN::repoUpdate()
 				text, 0, 1, _("&Yes"), _("&No"));
 			hideDialogs("file", 0);
 		}
-		if (ret == 1 ) {
-			tmpf.removeFile();
+		if (ret == 1 )
 			return string();
-		}
 	}
 
 	// Reverting looks too harsh, see bug #6255.
@@ -1535,7 +1536,6 @@ string SVN::repoUpdate()
 	res += "Update log:\n" + tmpf.fileContents("UTF-8");
 
 	LYXERR(Debug::LYXVC, res);
-	tmpf.removeFile();
 	return to_utf8(res);
 }
 
@@ -1548,7 +1548,8 @@ bool SVN::repoUpdateEnabled()
 
 string SVN::lockingToggle()
 {
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvcout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return N_("Error: Could not generate logfile.");
@@ -1576,7 +1577,6 @@ string SVN::lockingToggle()
 	if (ret)
 		return string();
 
-	tmpf.removeFile();
 	frontend::Alert::warning(_("SVN File Locking"),
 		(locking ? _("Locking property unset.") : _("Locking property set.")) + "\n"
 		+ _("Do not forget to commit the locking property into the repository."),
@@ -1667,7 +1667,8 @@ string SVN::revisionInfo(LyXVC::RevisionInfo const info)
 
 bool SVN::getFileRevisionInfo()
 {
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvcout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return false;
@@ -1713,14 +1714,14 @@ bool SVN::getFileRevisionInfo()
 	}
 
 	ifs.close();
-	tmpf.removeFile();
 	return !rev.empty();
 }
 
 
 bool SVN::getTreeRevisionInfo()
 {
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvcout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return false;
@@ -1737,7 +1738,6 @@ bool SVN::getTreeRevisionInfo()
 	string line;
 	getline(ifs, line);
 	ifs.close();
-	tmpf.removeFile();
 
 	rev_tree_cache_ = line;
 	return !line.empty();
@@ -1771,7 +1771,9 @@ bool SVN::prepareFileRevision(string const & revis, string & f)
 	}
 
 	string revname = convert<string>(rev);
-	FileName tmpf = FileName::tempName("lyxvcrev_" + revname + "_");
+	TempFile tempfile("lyxvcrev_" + revname + "_");
+	tempfile.setAutoRemove(false);
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return false;
@@ -1826,7 +1828,8 @@ FileName const GIT::findFile(FileName const & file)
 	}
 
 	// Now we check the status of the file.
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvcout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return FileName();
@@ -1840,7 +1843,6 @@ FileName const GIT::findFile(FileName const & file)
 			quoteName(tmpf.toFilesystemEncoding()),
 			file.onlyPath());
 	bool found = !tmpf.isFileEmpty();
-	tmpf.removeFile();
 	LYXERR(Debug::LYXVC, "GIT control: " << (found ? "enabled" : "disabled"));
 	return found ? file : FileName();
 }
@@ -1934,7 +1936,8 @@ LyXVC::CommandResult GIT::checkIn(string const & msg, string & log)
 LyXVC::CommandResult
 GIT::checkIn(vector<support::FileName> const & f, string const & msg, string & log)
 {
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvcout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()){
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		log = N_("Error: Could not generate logfile.");
@@ -1959,7 +1962,6 @@ GIT::checkIn(vector<support::FileName> const & f, string const & msg, string & l
 		ret = LyXVC::ErrorCommand;
 	}
 
-	tmpf.removeFile();
 	if (!log.empty())
 		log.insert(0, "GIT: ");
 	if (ret == LyXVC::VCSuccess && log.empty())
@@ -1978,7 +1980,8 @@ bool GIT::isCheckInWithConfirmation()
 {
 	// FIXME one day common getDiff and perhaps OpMode for all backends
 
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvcout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return true;
@@ -1989,7 +1992,6 @@ bool GIT::isCheckInWithConfirmation()
 		FileName(owner_->filePath()));
 
 	docstring diff = tmpf.fileContents("UTF-8");
-	tmpf.removeFile();
 
 	if (diff.empty())
 		return false;
@@ -2132,7 +2134,8 @@ string GIT::revisionInfo(LyXVC::RevisionInfo const info)
 
 bool GIT::getFileRevisionInfo()
 {
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvcout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return false;
@@ -2158,14 +2161,14 @@ bool GIT::getFileRevisionInfo()
 	}
 
 	ifs.close();
-	tmpf.removeFile();
 	return !rev_file_cache_.empty();
 }
 
 
 bool GIT::getTreeRevisionInfo()
 {
-	FileName tmpf = FileName::tempName("lyxvcout");
+	TempFile tempfile("lyxvcout");
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return false;
@@ -2181,7 +2184,6 @@ bool GIT::getTreeRevisionInfo()
 	ifstream ifs(tmpf.toFilesystemEncoding().c_str());
 	getline(ifs, rev_tree_cache_);
 	ifs.close();
-	tmpf.removeFile();
 
 	return !rev_tree_cache_.empty();
 }
@@ -2218,7 +2220,9 @@ bool GIT::prepareFileRevision(string const & revis, string & f)
 
 	pointer += ":";
 
-	FileName tmpf = FileName::tempName("lyxvcrev_" + revis + "_");
+	TempFile tempfile("lyxvcrev_" + revis + "_");
+	tempfile.setAutoRemove(false);
+	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return false;

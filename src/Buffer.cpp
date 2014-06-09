@@ -1050,7 +1050,8 @@ bool Buffer::readString(string const & s)
 	Lexer lex;
 	istringstream is(s);
 	lex.setStream(is);
-	FileName const fn = FileName::tempName("Buffer_readString");
+	TempFile tempfile("Buffer_readStringXXXXXX.lyx");
+	FileName const fn = tempfile.name();
 
 	int file_format;
 	bool success = parseLyXFormat(lex, fn, file_format) == ReadSuccess;
@@ -1067,8 +1068,6 @@ bool Buffer::readString(string const & s)
 	else if (success)
 		if (readDocument(lex))
 			success = false;
-	if (fn.exists())
-		fn.removeFile();
 	return success;
 }
 
@@ -1189,7 +1188,9 @@ Buffer::ReadStatus Buffer::parseLyXFormat(Lexer & lex,
 Buffer::ReadStatus Buffer::convertLyXFormat(FileName const & fn,
 	FileName & tmpfile, int from_format)
 {
-	tmpfile = FileName::tempName("Buffer_convertLyXFormatXXXXXX.lyx");
+	TempFile tempfile("Buffer_convertLyXFormatXXXXXX.lyx");
+	tempfile.setAutoRemove(false);
+	tmpfile = tempfile.name();
 	if(tmpfile.empty()) {
 		Alert::error(_("Conversion failed"),
 			bformat(_("%1$s is from a different"
@@ -3730,7 +3731,9 @@ int AutoSaveBuffer::generateChild()
 	// to fork. But we will do the save
 	// anyway.
 	bool failed = false;
-	FileName const tmp_ret = FileName::tempName("lyxauto");
+	TempFile tempfile("lyxautoXXXXXX.lyx");
+	tempfile.setAutoRemove(false);
+	FileName const tmp_ret = tempfile.name();
 	if (!tmp_ret.empty()) {
 		buffer_.writeFile(tmp_ret);
 		// assume successful write of tmp_ret
@@ -3814,7 +3817,9 @@ bool Buffer::autoSave() const
 
 	// If this buffer is cloned, we assume that
 	// we are running in a separate thread already.
-	FileName const tmp_ret = FileName::tempName("lyxauto");
+	TempFile tempfile("lyxautoXXXXXX.lyx");
+	tempfile.setAutoRemove(false);
+	FileName const tmp_ret = tempfile.name();
 	if (!tmp_ret.empty()) {
 		writeFile(tmp_ret);
 		// assume successful write of tmp_ret

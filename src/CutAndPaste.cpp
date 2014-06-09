@@ -60,6 +60,7 @@
 #include "support/lassert.h"
 #include "support/limited_stack.h"
 #include "support/lstrings.h"
+#include "support/TempFile.h"
 
 #include "frontends/alert.h"
 #include "frontends/Clipboard.h"
@@ -484,8 +485,10 @@ void putClipboard(ParagraphList const & paragraphs,
 	// new temporary directory, etc) every time, and then to destroy it. So maybe
 	// it's worth just keeping this one around.
 	// FIXME THREAD
+	static TempFile tempfile("clipboard.internal");
+	tempfile.setAutoRemove(false);
 	static Buffer * staticbuffer = theBufferList().newInternalBuffer(
-		FileName::tempName("clipboard.internal").absFileName());
+			tempfile.name().absFileName());
 
 	// These two things only really need doing the first time.
 	staticbuffer->setUnnamed(true);

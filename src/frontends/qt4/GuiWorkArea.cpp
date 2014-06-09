@@ -49,6 +49,7 @@
 #include "support/gettext.h"
 #include "support/FileName.h"
 #include "support/lassert.h"
+#include "support/TempFile.h"
 
 #include "frontends/Application.h"
 #include "frontends/FontMetrics.h"
@@ -1426,8 +1427,9 @@ GuiView & GuiWorkArea::view()
 
 EmbeddedWorkArea::EmbeddedWorkArea(QWidget * w): GuiWorkArea(w)
 {
-	buffer_ = theBufferList().newInternalBuffer(
-		support::FileName::tempName("embedded.internal").absFileName());
+	support::TempFile tempfile("embedded.internal");
+	tempfile.setAutoRemove(false);
+	buffer_ = theBufferList().newInternalBuffer(tempfile.name().absFileName());
 	buffer_->setUnnamed(true);
 	buffer_->setFullyLoaded(true);
 	setBuffer(*buffer_);

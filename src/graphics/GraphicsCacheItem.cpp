@@ -28,6 +28,7 @@
 #include "support/lassert.h"
 
 #include "support/bind.h"
+#include "support/TempFile.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -361,8 +362,9 @@ bool CacheItem::Impl::tryDisplayFormat(FileName & filename, string & from)
 
 	zipped_ = formats.isZippedFile(filename_);
 	if (zipped_) {
-		unzipped_filename_ = FileName::tempName(
-			filename_.toFilesystemEncoding());
+		TempFile tempfile(filename_.toFilesystemEncoding());
+		tempfile.setAutoRemove(false);
+		unzipped_filename_ = tempfile.name();
 		if (unzipped_filename_.empty()) {
 			status_ = ErrorConverting;
 			LYXERR(Debug::GRAPHICS, "\tCould not create temporary file.");
@@ -422,7 +424,9 @@ void CacheItem::Impl::convertToDisplayFormat()
 
 	// Add some stuff to create a uniquely named temporary file.
 	// This file is deleted in loadImage after it is loaded into memory.
-	FileName const to_file_base = FileName::tempName("CacheItem");
+	TempFile tempfile("CacheItem");
+	tempfile.setAutoRemove(false);
+	FileName const to_file_base = tempfile.name();
 	remove_loaded_file_ = true;
 
 	// Connect a signal to this->imageConverted and pass this signal to

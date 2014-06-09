@@ -25,6 +25,7 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/TempFile.h"
 
 #include "frontends/alert.h"
 
@@ -254,7 +255,8 @@ bool KeyMap::read(FileName const & bind_file, KeyMap * unbind_map)
 		return retval == ReadOK;
 
 	LYXERR(Debug::FILES, "Converting bind file to " << LFUN_FORMAT);
-	FileName const tempfile = FileName::tempName("convert_bind");
+	TempFile tmp("convert_bind");
+	FileName const tempfile = tmp.name();
 	bool const success = prefs2prefs(bind_file, tempfile, true);
 	if (!success) {
 		LYXERR0 ("Unable to convert " << bind_file <<
@@ -262,7 +264,6 @@ bool KeyMap::read(FileName const & bind_file, KeyMap * unbind_map)
 		return false;
 	}
 	retval = readWithoutConv(tempfile, unbind_map);
-	tempfile.removeFile();
 	return retval == ReadOK;
 }
 

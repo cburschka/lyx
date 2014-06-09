@@ -175,15 +175,6 @@ public:
 	void changeExtension(std::string const & extension);
 
 	static FileName fromFilesystemEncoding(std::string const & name);
-	/// Create a temporary file with the given mask.
-	/// \p mask must be in filesystem encoding, if it contains a
-	/// relative path, the template file will be created in the global
-	/// temporary directory as given by 'package().temp_dir()'.
-	/// CAUTION: This method may create race conditions.
-	///          Do not use, use the TempFile class instead.
-	static FileName tempName(std::string const & mask);
-	static FileName tempName(FileName const & temp_dir,
-		std::string const & mask);
 
 	/// get the current working directory
 	static FileName getcwd();

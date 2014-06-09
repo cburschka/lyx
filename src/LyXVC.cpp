@@ -25,6 +25,7 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/TempFile.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -362,7 +363,9 @@ string const LyXVC::getLogFile() const
 	if (!vcs)
 		return string();
 
-	FileName const tmpf = FileName::tempName("lyxvclog");
+	TempFile tempfile("lyxvclog");
+	tempfile.setAutoRemove(false);
+	FileName const tmpf = tempfile.name();
 	if (tmpf.empty()) {
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return string();

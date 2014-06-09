@@ -40,6 +40,7 @@
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Package.h"
+#include "support/TempFile.h"
 #include "support/userinfo.h"
 
 #include <fstream>
@@ -407,7 +408,8 @@ bool LyXRC::read(FileName const & filename, bool check_format)
 		return retval == ReadOK;
 
 	LYXERR(Debug::FILES, "Converting LyXRC file to " << LYXRC_FILEFORMAT);
-	FileName const tempfile = FileName::tempName("convert_lyxrc");
+	TempFile tmp("convert_lyxrc");
+	FileName const tempfile = tmp.name();
 	bool const success = prefs2prefs(filename, tempfile, false);
 	if (!success) {
 		LYXERR0 ("Unable to convert " << filename.absFileName() <<
@@ -422,7 +424,6 @@ bool LyXRC::read(FileName const & filename, bool check_format)
 		LYXERR(Debug::LYXRC, "Reading '" << tempfile << "'...");
 		retval = read(lexrc2, check_format);
 	}
-	tempfile.removeFile();
 	return retval == ReadOK;
 }
 

@@ -29,6 +29,7 @@
 
 #include "support/bind.h"
 #include "support/regex.h"
+#include "support/TempFile.h"
 
 #include <fstream>
 
@@ -224,8 +225,9 @@ string layoutpost =
 LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 {
 	// FIXME This could be simplified a bit to call TextClass::read(string, ReadType).
-	
-	FileName const tempLayout = FileName::tempName("basic_layout");
+
+	TempFile tempfile("basicXXXXXX.layout");
+	FileName const tempLayout = tempfile.name();
 	ofstream ofs(tempLayout.toFilesystemEncoding().c_str());
 	// This writes a very basic class, but it also attempts to include 
 	// stdclass.inc. That would give us something moderately usable.
