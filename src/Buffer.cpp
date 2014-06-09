@@ -1276,44 +1276,90 @@ bool Buffer::save() const
 	// We don't need autosaves in the immediate future. (Asger)
 	resetAutosaveTimers();
 
+	// none of the backup activity that follows is necessary if the
+	// file does not exist
+	if (!fileName().exists())
+		return writeFile(fileName());
+
+	// this will hold the name of the location to which we backup
+	// the existing file, if we do that.
 	FileName backupName;
-	bool madeBackup = false;
 
 	// make a backup if the file already exists
-	if (lyxrc.make_backup && fileName().exists()) {
+	if (lyxrc.make_backup) {
 		backupName = FileName(absFileName() + '~');
 		if (!lyxrc.backupdir_path.empty()) {
 			string const mangledName =
 				subst(subst(backupName.absFileName(), '/', '!'), ':', '!');
 			backupName = FileName(addName(lyxrc.backupdir_path,
-						      mangledName));
+									mangledName));
 		}
+	} else {
+		// we make a backup anyway, to avoid over-writing the original file
+		// before the new one has been saved.
+		//
+		// FIXME A more sophisticated approach is in master and should
+		// be moved into 2.1.x once it has been properly tested.
+		string const savepath = fileName().onlyPath().absFileName();
+		string const fname = fileName().onlyFileName();
+		string savename;
+		int fnum = 0;
 
-		// Except file is symlink do not copy because of #6587.
-		// Hard links have bad luck.
-		if (fileName().isSymLink())
-			madeBackup = fileName().copyTo(backupName);
-		else
-			madeBackup = fileName().moveTo(backupName);
+		// try to find a temporary filename to which we can backup the
+		// existing  LyX file
+		do {
+			fnum += 1;
+			if (fnum > 1024) {
+				Alert::error(_("Write failure"),
+					bformat(_("Cannot find temporary filename for:\n  %1$s.\n"
+					          "Even %2$s exists!"),
+						from_utf8(fileName().absFileName()),
+						from_utf8(backupName.absFileName())));
+				return false;
+			}
+			savename = "lyxbak-" + convert<string>(fnum) + "-" + fname;
+			backupName.set(addName(savepath, savename));
+		} while (backupName.exists());
+	}
 
-		if (!madeBackup) {
-			Alert::error(_("Backup failure"),
-				     bformat(_("Cannot create backup file %1$s.\n"
-					       "Please check whether the directory exists and is writable."),
-					     from_utf8(backupName.absFileName())));
-			//LYXERR(Debug::DEBUG, "Fs error: " << fe.what());
-		}
+	LYXERR(Debug::FILES, "Backup being made at " << backupName);
+	// We make the backup by moving the original file unless it is
+	// a symlink, in which case we copy it because of #6587. 
+	// Hard links are broken: The new file we write will not be hard
+	// linked as the original file was. Sorry!
+	bool const madeBackup = fileName().isSymLink() ?
+	      fileName().copyTo(backupName) :
+				fileName().moveTo(backupName);
+
+	if (!madeBackup) {
+		int const ret = Alert::prompt(_("Backup failure"),
+			bformat(_("Cannot create backup file:\n  %1$s.\n"
+			          "Do you want to try to save the file anyway?\n"
+		            "This will over-write the original file."),
+		          from_utf8(backupName.absFileName())),
+			1, 1, _("&Overwrite"), _("&Cancel"));
+		if (ret != 0)
+			return false;
 	}
 
 	if (writeFile(d->filename)) {
 		markClean();
+		if (madeBackup && !lyxrc.make_backup)
+			backupName.removeFile();
 		return true;
-	} else {
-		// Saving failed, so backup is not backup
-		if (madeBackup)
-			backupName.moveTo(d->filename);
-		return false;
 	}
+
+	// else saving failed, so backup is not backup
+	if (madeBackup) {
+		if (!backupName.moveTo(d->filename)) {
+			Alert::error(_("Write failure"),
+				 bformat(_("Cannot restore original file to:\n  %1$s.\n"
+						 "But it can be found at:\n  %2$s."),
+					 from_utf8(fileName().absFileName()),
+					 from_utf8(backupName.absFileName())));
+		}
+	}
+	return false;
 }
 
 

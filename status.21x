@@ -28,9 +28,13 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-
 - We now flush the output stream more frequently, as a temporary measure
   to help us gather information about the crash mentioned above.
+
+- To prevent dataloss, we have changed the way LyX saves files if the user
+  has not enabled backups. LyX now renames the existing file before 
+  attempting to save the new one (in effect, making a temporary backup). 
+  Then, if the save fails, the original file can be restored.
 
 
 * TEX2LYX IMPROVEMENTS
@@ -82,10 +86,9 @@ What's new
 
 * LYX2LYX
 
-We have fixed several significant issues involving conversion of 2.0
-  format into 2.1 format, and conversely. This mostly affects the new
-  argument insets and, in particular, beamer documents. These are
-  detailed below.
+We have fixed several significant issues involving conversion of 2.0 format into 
+2.1 format, and conversely. This mostly affects the new argument insets and, in 
+particular, beamer documents. These are detailed below.
 
 - Fix conversion of beamer block titles ending with non-ERT insets to 2.1 format.
 
