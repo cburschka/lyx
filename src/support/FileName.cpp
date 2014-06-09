@@ -220,7 +220,6 @@ void FileName::erase()
 bool FileName::copyTo(FileName const & name, bool keepsymlink) const
 {
 	FileNameSet visited;
-	visited.insert(*this);
 	return copyTo(name, keepsymlink, visited);
 }
 
@@ -230,6 +229,7 @@ bool FileName::copyTo(FileName const & name, bool keepsymlink,
 {
 	LYXERR(Debug::FILES, "Copying " << name << " keep symlink: " << keepsymlink);
 	if (keepsymlink && name.isSymLink()) {
+		visited.insert(*this);
 		FileName const target(fromqstr(name.d->fi.symLinkTarget()));
 		if (visited.find(target) != visited.end()) {
 			LYXERR(Debug::FILES, "Found circular symlink: " << target);
