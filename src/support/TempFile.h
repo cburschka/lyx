@@ -26,6 +26,10 @@ class FileName;
  * of this class must stay alive as long as the file is needed.
  */
 class TempFile {
+	/// noncopyable
+	TempFile(TempFile const &);
+	/// nonassignable
+	TempFile & operator=(TempFile const &);
 public:
 	/**
 	 *Create a temporary file with the given mask.
