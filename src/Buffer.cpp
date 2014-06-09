@@ -1325,6 +1325,9 @@ bool Buffer::save() const
 		tempfile.setAutoRemove(false);
 	if (made_backup &&
 	    (symlink ? savefile.copyTo(fileName(), true) : savefile.moveTo(fileName()))) {
+		// saveCheckSum() was already called by writeFile(), but the
+		// time stamp is invalidated by copying/moving
+		saveCheckSum();
 		markClean();
 		return true;
 	}
