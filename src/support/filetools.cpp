@@ -43,6 +43,9 @@
 #include "support/regex.h"
 
 #include <fcntl.h>
+#ifdef HAVE_MAGIC_H
+#include <magic.h>
+#endif
 
 #include <cerrno>
 #include <cstdlib>
@@ -88,6 +91,60 @@ bool isValidDVIFileName(string const & filename)
 {
 	string const invalid_chars("${}()[]^");
 	return filename.find_first_of(invalid_chars) == string::npos;
+}
+
+
+bool isBinaryFile(FileName const & filename)
+{
+	bool isbinary = false;
+	if (filename.empty() || !filename.exists())
+		return isbinary;
+
+#ifdef HAVE_MAGIC_H
+	magic_t magic_cookie = magic_open(MAGIC_MIME_ENCODING);
+	if (magic_cookie) {
+		bool detected = true;
+		if (magic_load(magic_cookie, NULL) != 0) {
+			LYXERR(Debug::FILES, "isBinaryFile: "
+				"Could not load magic database - "
+				<< magic_error(magic_cookie));
+			detected = false;
+		} else {
+			char const *charset = magic_file(magic_cookie,
+					filename.toFilesystemEncoding().c_str());
+			isbinary = contains(charset, "binary");
+		}
+		magic_close(magic_cookie);
+		if (detected)
+			return isbinary;
+	}
+#endif
+	// Try by looking for binary chars at the beginning of the file.
+	// Note that this is formally not correct, since count_bin_chars
+	// expects utf8, and the passed string can be anything: plain text
+	// in any encoding, or really binary data. In practice it works,
+	// since QString::fromUtf8() drops invalid utf8 sequences, and
+	// while the exact number may not be correct, we still get a high
+	// number for truly binary files.
+
+	ifstream ifs(filename.toFilesystemEncoding().c_str());
+	if (!ifs)
+		return isbinary;
+
+	// Maximum strings to read
+	int const max_count = 50;
+
+	// Maximum number of binary chars allowed
+	int const max_bin = 5;
+
+	int count = 0;
+	int binchars = 0;
+	string str;
+	while (count++ < max_count && !ifs.eof()) {
+		getline(ifs, str);
+		binchars += count_bin_chars(str);
+	}
+	return binchars > max_bin;
 }
 
 

@@ -78,6 +78,9 @@ bool isValidLaTeXFileName(std::string const & filename);
 */
 bool isValidDVIFileName(std::string const & filename);
 
+/// check whether the file has binary contents
+bool isBinaryFile(FileName const & filename);
+
 /** Returns the path of a library data file.
     Search the file name.ext in the subdirectory dir of
       -# user_lyxdir

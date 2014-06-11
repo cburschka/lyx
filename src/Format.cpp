@@ -241,17 +241,13 @@ string guessFormatFromContents(FileName const & fn)
 	int const max_count = 50;
 	int count = 0;
 
-	// Maximum number of binary chars allowed for latex detection
-	int const max_bin = 5;
-
 	string str;
 	string format;
 	bool firstLine = true;
 	bool backslash = false;
 	bool maybelatex = false;
-	int binchars = 0;
 	int dollars = 0;
-	while ((count++ < max_count) && format.empty() && binchars <= max_bin) {
+	while ((count++ < max_count) && format.empty() && !maybelatex) {
 		if (ifs.eof())
 			break;
 
@@ -378,17 +374,9 @@ string guessFormatFromContents(FileName const & fn)
 				// inline equation
 				maybelatex = true;
 		}
-
-		// Note that this is formally not correct, since count_bin_chars
-		// expects utf8, and str can be anything: plain text in any
-		// encoding, or really binary data. In practice it works, since
-		// QString::fromUtf8() drops invalid utf8 sequences, and while
-		// the exact number may not be correct, we still get a high
-		// number for truly binary files.
-		binchars += count_bin_chars(str);
 	}
 
-	if (format.empty() && binchars <= max_bin && maybelatex)
+	if (format.empty() && maybelatex && !isBinaryFile(fn))
 		format = "latex";
 
 	if (format.empty()) {
