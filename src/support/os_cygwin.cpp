@@ -215,6 +215,9 @@ void init(int argc, char * argv[])
 	argc_ = argc;
 	argv_ = argv;
 
+	// Set environment's default locale
+	setlocale(LC_ALL, "");
+
 	// Make sure that the TEMP variable is set
 	// and sync the Windows environment.
 	setenv("TEMP", "/tmp", false);

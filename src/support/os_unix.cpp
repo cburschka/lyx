@@ -46,6 +46,9 @@ void init(int argc, char * argv[])
 {
 	argc_ = argc;
 	argv_ = argv;
+
+	// Set environment's default locale
+	setlocale(LC_ALL, "");
 }
 
 
