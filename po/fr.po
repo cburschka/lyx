@@ -291,12 +291,14 @@
 # ------------------------------------------------------------------
 # 31 mai 2014 : mise à jour pour 2.1.1
 # ------------------------------------------------------------------
+# 8 juin 2014 : correction traduction incorrecte de PDF (cropped)
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-04-21 12:11-0400\n"
-"PO-Revision-Date: 2014-05-31 18:21+0200\n"
+"PO-Revision-Date: 2014-06-08 19:03+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -23307,7 +23309,7 @@ msgstr "PDF (graphiques)"
 
 #: lib/configure.py:664
 msgid "PDF (cropped)"
-msgstr "EPS (rogné)"
+msgstr "PDF (rogné)"
 
 #: lib/configure.py:667
 msgid "DVI"
