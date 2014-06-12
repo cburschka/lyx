@@ -866,7 +866,7 @@ if(LYX_NLS)
 	message(STATUS)
 endif()
 
-if(NOT Spelling_FOUND)
+if(NOT Spelling_FOUND AND NOT APPLE)
   if(LYX_REQUIRE_SPELLCHECK)
     set(_mode "FATAL_ERROR")
   else()
