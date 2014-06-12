@@ -229,7 +229,7 @@ foreach(libsubfolder doc examples templates)
             "-DLYX_TESTS_USERDIR=${LYX_TESTS_USERDIR}"
             "-DLYXFILE=${LIBSUB_SRC_DIR}/${f}.lyx"
             -P "${TOP_SRC_DIR}/development/autotests/lyx2lyxtest.cmake")
-        setmarkedtestlabel(${TestName} ${reverted} "export")
+        setmarkedtestlabel(${TestName} ${reverted} "lyx2lyx")
       endif()
     endif()
     set(TestName "check_load/${libsubfolder}/${f}")

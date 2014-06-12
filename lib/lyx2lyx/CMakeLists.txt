@@ -14,4 +14,10 @@ if (UNIX)
 	# include(../PyCompile)
 endif()
 
+set(_testname "lyx2lyx/parser_tools")
+add_test(NAME ${_testname}
+  COMMAND ${LYX_PYTHON_EXECUTABLE} "${TOP_SRC_DIR}/lib/lyx2lyx/test_parser_tools.py"
+  )
+settestlabel(${_testname} "lyx2lyx")
+
 install(PROGRAMS ${TOP_SRC_DIR}/lib/lyx2lyx/lyx2lyx DESTINATION ${LYX_DATA_SUBDIR}lyx2lyx)
