@@ -274,6 +274,11 @@ Avril 2014 : avertissement du besoin du paquetage de langue allemande, mise
  à jour pour 2.1.0 à faire
 \end_layout
 
+\begin_layout Plain Layout
+Juin 2014 : relecture complète du document pour 2.1 par J.-P.
+ Chrétien
+\end_layout
+
 \end_inset
 
 
@@ -376,12 +381,12 @@ barre d'outils mathématique.
 Mais quand on tape beaucoup de formules, on constate vite qu'il est plus
  rapide d'utiliser une commande plutôt que la barre d'outils.
  C'est pourquoi ce manuel se focalise sur les commandes tout en mentionnant
- les boutons correspondants quand il y en a de disponibles.
+ les boutons correspondants quand ils sont disponibles.
 \end_layout
 
 \begin_layout Standard
-Sauf mention contraire les commandes ne sont disponibles qu'au sein d'une
- formule.
+Sauf mention contraire les commandes ne peuvent être saisies qu'au sein
+ d'une formule.
  Pour pouvoir utiliser toutes les commandes expliquées dans ce document
  il faut utiliser l'option 
 \family sans
@@ -400,7 +405,15 @@ status collapsed
 \begin_layout Plain Layout
 L'option 
 \family sans
+
+\begin_inset Quotes fld
+\end_inset
+
 Utiliser automatiquement le paquetage math AMS
+\begin_inset Quotes frd
+\end_inset
+
+
 \family default
  n'utilise les maths-
 \begin_inset ERT
@@ -513,7 +526,7 @@ type  "icon"
 arg   "math-mode"
 \end_inset
 
- de la barre d'outils
+ de la barre d'outils.
 \begin_inset Newline newline
 \end_inset
 
@@ -588,16 +601,16 @@ Seules les formules en ligne sont autorisées dans les tableaux.
 \begin_layout Standard
 La barre d'outils mathématique peut être activée avec le menu 
 \family sans
-Visualiser\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 Barres d'outils
 \family default
 .
- Quand vous y cliquez sur 
-\begin_inset Quotes eld
+ Quand vous cliquez sur 
+\begin_inset Quotes fld
 \end_inset
 
 Math
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  la barre d'outils s'affiche de façon permanente en bas de l'interface;
@@ -611,29 +624,29 @@ d'outils
 \family default
 par une coche.
  Si, dans cet état, vous cliquez une nouvelle fois sur 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Math
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  la barre d'outils ne s'affichera plus que lorsque le curseur se trouvera
  à l'intérieur d'une formule; cet état est visualisé en changeant l'entrée
  de menu de 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Math
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  en 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Math (auto)
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -686,15 +699,15 @@ status collapsed
 
 \begin_layout Plain Layout
 Dans LyX il y a trois 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
-nom propres
-\begin_inset Quotes erd
+noms propres
+\begin_inset Quotes frd
 \end_inset
 
  qui apparaissent dans la sortie finale avec des lettres mises en indice
- ou en exposant: TeX, LaTeX, et LyX
+ ou en exposant: TeX, LaTeX, et LyX.
 \end_layout
 
 \begin_layout Plain Layout
@@ -743,13 +756,13 @@ eX
 \end_layout
 
 \begin_layout Standard
-Pour éditer des matrices, des différentiations de cas et des formules multiligne
-s après coup, on peut utiliser les menus 
+Pour éditer des matrices, des différentiations de cas et des formules multi-lign
+es après coup, on peut utiliser les menus 
 \family sans
 Édition\SpecialChar \menuseparator
 Math
 \family default
- and 
+ et 
 \family sans
 Édition\SpecialChar \menuseparator
 Lignes
@@ -780,7 +793,7 @@ Quand on veut écrire du texte dans des formules
 status collapsed
 
 \begin_layout Plain Layout
-Pour les formules multilignes, on utilise la commande 
+Pour les formules multi-lignes, on utilise la commande 
 \series bold
 
 \backslash
@@ -872,7 +885,7 @@ nomdelacommande[argument optionnel]{argument obligatoire}
 \begin_layout Standard
 Une commande commence toujours par une barre de fraction inverse (anti-slash)
  
-\begin_inset Quotes gld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -882,12 +895,12 @@ Une commande commence toujours par une barre de fraction inverse (anti-slash)
 
 \series default
 
-\begin_inset Quotes grd
+\begin_inset Quotes frd
 \end_inset
 
 .
  Pour omettre l'argument optionnel, il faut aussi omettre les crochets qui
- vont avec.
+ l'enserrent.
  Les accolades placées autour des arguments obligatoires seront nommées
  accolade TeX dans ce document
 \begin_inset Index idx
@@ -906,9 +919,17 @@ Accolades TeX
  avec la commande 
 \series bold
 
+\begin_inset Quotes fld
+\end_inset
+
+
 \backslash
 {
 \series default
+
+\begin_inset Quotes frd
+\end_inset
+
 .
  Les accolades TeX apparaissent en rouge dans LyX, contrairement aux accolades
  normales qui apparaissent en bleu.
@@ -1182,7 +1203,11 @@ sp
 \begin_inset Text
 
 \begin_layout Plain Layout
-scaled point (65536
+
+\emph on
+scaled
+\emph default
+ point (65536
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1210,7 +1235,11 @@ bp
 \begin_inset Text
 
 \begin_layout Plain Layout
-big point (72
+
+\emph on
+big
+\emph default
+ point (72
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1671,7 +1700,7 @@ dfrac
 
 \end_inset
 
- on peut créer une fraction qui a dans tous les cas la taille d'une fraction
+, on peut créer une fraction qui a dans tous les cas la taille d'une fraction
  qui se trouverait dans une formule hors ligne.
  Avec 
 \series bold
@@ -1691,7 +1720,7 @@ tfrac
 
 \end_inset
 
- la fraction aura toujours la taille d'une formule en ligne.
+, la fraction aura toujours la taille d'une formule en ligne.
  Un exemple:
 \end_layout
 
@@ -2030,7 +2059,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Notez:
+Nota:
 \series default
  
 \series bold
@@ -2042,7 +2071,8 @@ cfracleft
 \series bold
 cfracright
 \series default
- ne sont pas des commandes LaTeX réelle, mais représentent la commande 
+ ne sont pas des commandes LaTeX réelles, mais représentent la commande
+ 
 \series bold
 
 \backslash
@@ -2155,7 +2185,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Notez:
+Nota:
 \series default
  
 \series bold
@@ -2195,11 +2225,11 @@ reference "sub:Fractions-personnalisées"
 \end_layout
 
 \begin_layout Standard
+Les fractions multi-lignes sont détaillées à la section
+\begin_inset space ~
+\end_inset
 
-\lang english
-Multiline fractions are explained in
-\lang french
- 
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Fractions-multilignes"
@@ -2466,7 +2496,18 @@ uproot{distance}
 \end_layout
 
 \begin_layout Standard
-Distance est le nombre de Big Points (unité bp; 
+\begin_inset Quotes fld
+\end_inset
+
+distance
+\begin_inset Quotes frd
+\end_inset
+
+ est le nombre de 
+\emph on
+Big
+\emph default
+ Points (unité bp; 
 \begin_inset Formula $\mathrm{72\, bp=1\, pouce}$
 \end_inset
 
@@ -3048,7 +3089,7 @@ Environnement
 \begin_inset space ~
 \end_inset
 
-Cas
+cas
 \family default
 .
 \end_layout
@@ -3207,14 +3248,22 @@ parallel
 Le dernier exemple montre que toutes les négations n'ont pas forcément un
  bel aspect.
  C'est pourquoi il existe des commandes spéciales pour certaines négations
- (voir 
+ (voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Symboles-mathématiques"
 
 \end_inset
 
- et 
+ et
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Relations"
@@ -3386,7 +3435,7 @@ raisebox
 
 \begin_layout Standard
 L'indice le plus petit est placé implicitement au dessus ou en dessous du
- premier caractère le l'indice le plus long.
+ premier caractère de l'indice le plus long.
  Pour éviter ce problème il y a la commande 
 \series bold
 
@@ -3411,7 +3460,7 @@ phantom
 
 
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 on peut le trouver dans le sous-menu du bouton 
@@ -3726,7 +3775,7 @@ a
 \backslash
 int
 \series default
- crée de l'espace pour la hauteur du signe intégral
+ crée de l'espace pour la hauteur du signe intégrale
 \begin_inset Foot
 status collapsed
 
@@ -3749,8 +3798,12 @@ reference "sub:Grands-opérateurs"
 
 \end_inset
 
-, vu que c'est le plus haut caractère.
- Voir un exemple d'application dans 
+, du fait que c'est le caractère le plus haut.
+ Voir un exemple d'application à la section
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Crochets-multilignes"
@@ -4007,7 +4060,7 @@ underline deux fois.
 \end_layout
 
 \begin_layout Standard
-Il est possible de mettre jusqu'à 6 lignes au dessus ou en dessous de caractères.
+Il est possible de mettre jusqu'à 6 lignes au-dessus ou en-dessous de caractères.
 \end_layout
 
 \begin_layout Standard
@@ -4149,7 +4202,7 @@ Points de suspension
 \end_layout
 
 \begin_layout Standard
-Différents types de points de suspension sont disponibles.
+Différents types de points de suspension sont disponibles
 \begin_inset Foot
 status collapsed
 
@@ -4165,8 +4218,9 @@ arg   "math-insert \\ldots"
 
 \end_inset
 
- Les points utilisés pour les listes et qui se trouvent sur la ligne de
- base, on utilise (
+.
+ Pour les points utilisés pour les listes, qui se trouvent sur la ligne
+ de base, on utilise (
 \series bold
 
 \backslash
@@ -4184,7 +4238,7 @@ ldots
 
 \end_inset
 
-), alors que pour les points utilisé pour les opérations et qui se trouvent
+), alors que pour les points utilisés pour les opérations, qui se trouvent
  à la même hauteur que les opérateurs, on utilise (
 \series bold
 
@@ -4222,7 +4276,7 @@ dots
 
 \end_inset
 
-, LaTeX décide en fonction du caractère qui suit, quel type utiliser.
+, LaTeX décide quel type utilise en fonction du caractère qui suit.
 \end_layout
 
 \begin_layout Standard
@@ -4558,8 +4612,8 @@ Utiliser le paquetage mathdots
 \begin_inset VSpace medskip
 \end_inset
 
-Spécialement pour les matrices, il y a des points de suspension qui peuvent
- couvrir plusieurs colonnes.
+En ce qui concerne spécifiquement les matrices, il y a des points de suspension
+ qui peuvent couvrir plusieurs colonnes.
  Il sont créés avec la commande 
 \series bold
 
@@ -4590,8 +4644,24 @@ hdotsfor[distance]{nombre de colonnes}
 \end_layout
 
 \begin_layout Standard
-Le nombre de colonnes précise combien de colonnes doivent être couvertes.
- La distance est un facteur donnant la distance entre les points.
+Le 
+\begin_inset Quotes fld
+\end_inset
+
+nombre de colonnes
+\begin_inset Quotes frd
+\end_inset
+
+ précise combien de colonnes doivent être couvertes.
+ La 
+\begin_inset Quotes fld
+\end_inset
+
+distance
+\begin_inset Quotes frd
+\end_inset
+
+ est un facteur donnant la distance entre les points.
 \end_layout
 
 \begin_layout Standard
@@ -4654,7 +4724,11 @@ dotfill
 \backslash
 hfill
 \series default
-, voir 
+, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Espace-variable"
@@ -4675,7 +4749,7 @@ dotfill
 
 B
 \series default
- produit
+ produit:
 \end_layout
 
 \begin_layout Standard
@@ -4758,11 +4832,8 @@ arg   "dialog-show mathmatrix"
  Insertion\SpecialChar \menuseparator
 Math\SpecialChar \menuseparator
 Matrice
-\begin_inset space ~
-\end_inset
-
-mathématique
 \family default
+\SpecialChar \ldots{}
 .
  On vous demande alors le nombre de lignes et de colonnes de la matrice,
  de leur alignement et de la décoration.
@@ -4801,12 +4872,15 @@ C & F & I & L
 \begin_layout Standard
 L'alignement horizontal précise comment le contenu des colonnes doit être
  aligné.
- On le choisit en entrant une lettre pour chaque colonne.
- 
+ On le choisit en entrant une lettre pour chaque colonne: 
 \emph on
 l
 \emph default
- pour un alignement à gauche (left) , 
+ pour un alignement à gauche (
+\emph on
+left
+\emph default
+) , 
 \emph on
 c
 \emph default
@@ -4814,7 +4888,11 @@ c
 \emph on
  r
 \emph default
- à droite (right).
+ à droite (
+\emph on
+right
+\emph default
+).
  Par exemple, pour créer une matrice
 \begin_inset space ~
 \end_inset
@@ -4824,7 +4902,7 @@ c
 ×
 \series default
 4 où la première colonne est alignée à gauche, la deuxième et la troisième
- sont centrées et la dernière est alignée à gauche, on va entrer 
+ sont centrées et la dernière est alignée à droite, on va entrer 
 \series bold
 lccr
 \series default
@@ -4974,7 +5052,11 @@ Alt-m
 
 parenthèse
 \family default
-), voir 
+), voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Taille-parenthèses-automatique"
@@ -5328,7 +5410,11 @@ arraycolsep
 
 \end_inset
 
- qui est décrite dans 
+ qui est décrite dans
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Séparation-des-colonnes"
@@ -5970,7 +6056,7 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Notez:
+Nota:
 \series default
  En mode TeX, on doit utiliser la commande 
 \series bold
@@ -6265,7 +6351,7 @@ bigm
 
 \end_inset
 
- qui ajoute un peu plus d'espace entre la parenthèse et son contenu, et
+, qui ajoute un peu plus d'espace entre la parenthèse et son contenu, et
  la variante 
 \series bold
 
@@ -6314,7 +6400,7 @@ r
 \end_layout
 
 \begin_layout Standard
-Dans le tableau qui suit il y a une comparaison des différentes variantes:
+Dans le tableau qui suit figure une comparaison entre les différentes variantes:
 \end_layout
 
 \begin_layout Standard
@@ -6595,7 +6681,7 @@ right
 
 \begin_layout Standard
 \align center
-parenthèse normale: La commande 
+parenthèse normale: la commande 
 \series bold
 
 \backslash
@@ -6628,7 +6714,7 @@ C
 
 \begin_layout Standard
 \align center
-parenthèse adaptable: La commande 
+parenthèse adaptable: la commande 
 \series bold
 
 \backslash
@@ -6801,7 +6887,11 @@ middle
 \end_inset
 
 Pour les vecteurs physiques, il existe un paquetage LaTeX spécialisé décrit
- en 
+ section
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Vecteurs-physiques"
@@ -7094,15 +7184,15 @@ underbrace
 \end_layout
 
 \begin_layout Standard
-Si vous avez choisi dans les paramètres du document dans l'onglet 
+Si vous avez choisi dans les paramètres du document, dans l'onglet 
 \family sans
 Options du mode math
 \family default
 , l'option 
 \family sans
-Utiliser le paquetage maths mathtools
+Toujours charger 
 \family default
- pour la paquetage 
+pour la paquetage 
 \series bold
 mathtools
 \series default
@@ -7116,7 +7206,7 @@ Paquetages ! mathtools
 
 \end_inset
 
- Vous avez accès aux crochets :
+, vous avez accès aux crochets :
 \end_layout
 
 \begin_layout Standard
@@ -7541,7 +7631,11 @@ Dans la première ligne la formule est insérée avec l'accolade.
 status collapsed
 
 \begin_layout Plain Layout
-Les commandes concernant les espaces sont expliquées dans 
+Les commandes concernant les espaces sont expliquées dans
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Espace-prédéfini"
@@ -7556,8 +7650,16 @@ reference "sub:Espace-prédéfini"
  
 \series bold
 
+\begin_inset Quotes fld
+\end_inset
+
+
 \backslash
 :
+\begin_inset Quotes frd
+\end_inset
+
+
 \series default
  soit insérée avant le premier 
 \begin_inset Formula $d$
@@ -7568,11 +7670,11 @@ reference "sub:Espace-prédéfini"
 \end_inset
 
  empêche que le 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 +
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  qui suit soit entouré par des espaces
@@ -7580,7 +7682,11 @@ reference "sub:Espace-prédéfini"
 status collapsed
 
 \begin_layout Plain Layout
-parce que l'accolade n'est pas traitée comme un caractère, voir 
+Parce que l'accolade n'est pas traitée comme un caractère, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Opérateurs-binaires"
@@ -7611,13 +7717,17 @@ hphantom{gggg+
 status collapsed
 
 \begin_layout Plain Layout
-plus au sujet de 
+Pour en savoir plus au sujet de 
 \series bold
 
 \backslash
 hphantom
 \series default
-, voir 
+, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Garnitures"
@@ -7631,11 +7741,11 @@ reference "sub:Garnitures"
 
 .
  Cet espace est nécessaire puisque le 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 +
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  est aussi entouré d'espace dans la formule.
@@ -7690,13 +7800,13 @@ jot}{3pt}
 \end_inset
 
 La première ligne de la formule est la même que la deuxième ligne de l'exemple
- précédent, à la différence que l'accolade se trouve maintenant au dessus.
+ précédent, sauf que l'accolade se trouve maintenant au dessus.
  La seconde ligne contient la formule avec la deuxième accolade.
  Pour éviter qu'il y ait trop d'espace entre l'accolade de la première ligne
  et la formule, on doit réduire l'espacement entre les lignes.
- Ce n'est pas facile à cause d'un bug de LyX.
+ Ce n'est pas facile à cause d'un bug de LyX
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset CommandInset href
@@ -7711,6 +7821,7 @@ target "http://www.lyx.org/trac/ticket/1505"
 
 \end_inset
 
+.
  Comme solution à ce problème, on peut mettre à -6
 \begin_inset space \thinspace{}
 \end_inset
@@ -7746,7 +7857,7 @@ vspace{4mm}
 
 \end_inset
 
-, juste avant la formule en utilisant la commande 
+, juste avant la formule, en utilisant la commande 
 \series bold
 
 \backslash
@@ -7767,7 +7878,11 @@ jot
 
 pt juste après la formule, en utilisant la même commande.
  Vous trouverez plus d'explications sur la séparation des lignes dans les
- formules dans 
+ formules dans
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Séparation-des-lignes"
@@ -8762,15 +8877,15 @@ F(a)
 \end_layout
 
 \begin_layout Standard
-Si vous avez choisi dans les paramètres du document dans l'onglet 
+Si vous avez choisi dans les paramètres du document, dans l'onglet 
 \family sans
 Options du mode math
 \family default
 , l'option 
 \family sans
-Utiliser le paquetage maths mathtools
+Toujours charger
 \family default
- pour la paquetage 
+ pour le paquetage 
 \series bold
 mathtools
 \series default
@@ -8784,7 +8899,7 @@ Paquetages ! mathtools
 
 \end_inset
 
- Vous avez accès aux flèches avec étiquettes suivantes :
+, vous avez accès aux flèches avec étiquettes suivantes :
 \end_layout
 
 \begin_layout Standard
@@ -9634,14 +9749,22 @@ nwarrow
 \end_inset
 
 Les flèches verticales peuvent aussi être utilisées comme séparateurs en
- même temps que les commandes décrites dans 
+ même temps que les commandes décrites dans
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Taille-parenthèses-manuelle"
 
 \end_inset
 
- et 
+ et
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Taille-parenthèses-automatique"
@@ -10267,8 +10390,12 @@ A
 
 Vous pouvez insérer directement des caractères accentués comme un é dans
  des formules.
- LyX va les transformer en la commande correspondante.
- Pour créer des trémas (umlauts en allemand)
+ LyX va invoquer la commande correspondante.
+ Pour créer des trémas dans des formules (
+\emph on
+umlauts
+\emph default
+ en allemand)
 \begin_inset Index idx
 status collapsed
 
@@ -10310,8 +10437,7 @@ Trémas
 
 \end_inset
 
- dans des formules, il est préférable d'insérer des guillemets devant la
- voyelle.
+ , il est préférable d'insérer des guillemets devant la voyelle.
  Ces deux caractères sont alors traités comme 
 \emph on
 un seul 
@@ -10325,14 +10451,18 @@ caractère par LaTeX si la portion de formule avec le tréma est marqué comme
 ddot
 \series default
 , on crée de 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 vrais
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- umlauts, comme le montre l'exemple suivant:
+ 
+\emph on
+umlauts
+\emph default
+, comme le montre l'exemple suivant:
 \end_layout
 
 \begin_layout Standard
@@ -11103,7 +11233,7 @@ A=B
 \end_layout
 
 \begin_layout Section
-Espace
+Espacement
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Espace"
@@ -11124,7 +11254,7 @@ Espace ! horizontal
 \end_layout
 
 \begin_layout Subsection
-Espace prédéfini
+Espacement prédéfini
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Espace-prédéfini"
@@ -11145,14 +11275,14 @@ Espace ! horizontal ! prédéfini
 \end_layout
 
 \begin_layout Standard
-Il es parfois nécessaire d'insérer un espace horizontal dans une formule.
+Il es parfois nécessaire d'insérer un espacement horizontal dans une formule.
  On le fait en utilisant une espace insécable (raccourci 
 \family sans
 Ctrl-Espace
 \family default
 ).
  Un 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -11164,7 +11294,7 @@ Ctrl-Espace
 
 \color inherit
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  apparaît et en appuyant plusieurs fois sur 
@@ -11211,7 +11341,7 @@ Commande
 \begin_inset Text
 
 \begin_layout Plain Layout
-Nombre de fois où on appuye la barre d'
+Nombre de fois où on appuie sur la barre 
 \family sans
 Espace
 \end_layout
@@ -11427,7 +11557,7 @@ Commande
 \begin_inset Text
 
 \begin_layout Plain Layout
-Nombre de fois où on appuye la barre d'
+Nombre de fois où on appuie sur la barre 
 \family sans
 Espace
 \end_layout
@@ -11634,7 +11764,7 @@ Les tailles 5
 \begin_inset space \thinspace{}
 \end_inset
 
-7 sont des espaces variables qui sont décrits en 
+7 sont des espaces variables qui sont décrites en 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Espace-variable"
@@ -11646,7 +11776,7 @@ reference "sub:Espace-variable"
 \begin_inset space ~
 \end_inset
 
-9 n'a pas l'air de produire une espace.
+9 ne semble pas produire une espace.
  Elle est affichée en rouge dans LyX, contrairement aux autres espaces,
  parce que c'est une espace négative.
  Il y a deux autres espaces négatives:
@@ -11771,7 +11901,7 @@ Résultat
 \begin_layout Standard
 Les espaces négatives peuvent faire que les caractères se chevauchent.
  Elles peuvent être utilisée pour forcer des ligatures, par exemple pour
- les opérateurs de somme:
+ les opérateurs de sommation:
 \end_layout
 
 \begin_layout Standard
@@ -11898,7 +12028,7 @@ f_kl
 
 \begin_layout Standard
 \noindent
-Les opérateur de relations comme par exemple le signe égal, sont toujours
+Les opérateurs de relations comme par exemple le signe égal, sont toujours
  entourés par des espaces.
  Pour les supprimer, le signe égal est mis entre deux accolades TeX.
  L'exemple suivant donne une illustration:
@@ -12094,7 +12224,7 @@ espace fine entre l'unité et la valeur
 \end_layout
 
 \begin_layout Subsection
-Espace variable
+Espacement variable
 \begin_inset ERT
 status collapsed
 
@@ -12203,7 +12333,7 @@ hspace
 
 .
  Un 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -12215,12 +12345,12 @@ hspace
 
 \color inherit
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  long apparaît.
  La longueur peut être précisée en faisant un clic gauche sur le 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -12231,6 +12361,10 @@ hspace
 
 
 \color inherit
+
+\begin_inset Quotes frd
+\end_inset
+
 
 \begin_inset Quotes erd
 \end_inset
@@ -12252,7 +12386,7 @@ hspace*
 hspace
 \series default
  o faites un clic droit sur le 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -12264,7 +12398,7 @@ hspace
 
 \color inherit
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  et activez l'option 
@@ -12440,7 +12574,7 @@ B=B
 \end_layout
 
 \begin_layout Standard
-Dans le dernier exemple, l'espace disponible est déterminé par le contenu
+Dans le dernier exemple, l'espacement disponible est déterminé par le contenu
  de colonne le plus long du tableau.
  Dans une formule en ligne l'espace dépend de la longueur de la ligne dans
  laquelle 
@@ -12539,7 +12673,7 @@ espace maximum.
 \end_layout
 
 \begin_layout Subsection
-Espace après les formules en ligne
+Espacement après les formules en ligne
 \begin_inset Index idx
 status collapsed
 
@@ -12811,7 +12945,7 @@ boxed
 \end_layout
 
 \begin_layout Standard
-Quand on insère une de ces commandes dans un formule, une boîte bleue apparaît
+Quand on insère une de ces commandes dans une formule, une boîte bleue apparaît
  à l'intérieur d'un cadre pour que l'on puisse entrer des portions de formules.
  Pour 
 \series bold
@@ -12819,7 +12953,7 @@ Quand on insère une de ces commandes dans un formule, une boîte bleue apparaî
 \backslash
 fbox
 \series default
- on doit créer à l'intérieur de cette boîte, une formule supplémentaire
+ on doit créer, à l'intérieur de cette boîte, une formule supplémentaire
  avec 
 \family sans
 Ctrl+M
@@ -12938,7 +13072,7 @@ Quand on insère la commande
 framebox
 \series default
 , une boîte apparaît contenant trois boîtes bleues.
- Les deux premières sont entourées de crochets pour signales des arguments
+ Les deux premières sont entourées de crochets pour identifier des arguments
  optionnels.
  La troisième boîte est là pour contenir les portions de formules, comme
  pour 
@@ -13178,11 +13312,11 @@ fboxrule
  
 \series bold
 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 épaisseur
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
@@ -13196,22 +13330,22 @@ fboxsep
  
 \series bold
 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 distance
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 distance
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  précise la distance minimale entre le cadre et le premier caractère de
@@ -13438,19 +13572,19 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Nota:
 \series default
- Pour 
+ pour 
 \series bold
 
 \backslash
 raisebox
 \series default
- cette formule supplémentaire esr créée en appuyant sur 
+ cette formule supplémentaire est créée en appuyant sur 
 \family sans
 Ctrl+M
 \family default
- deux fois au lieu d'une parceque LyX ne supporte pas encore directement
+ deux fois au lieu d'une parce que LyX ne supporte pas encore directement
  la commande 
 \series bold
 
@@ -13777,7 +13911,7 @@ colorbox
 \backslash
 fraisebox
 \series default
-.
+
 \begin_inset Foot
 status collapsed
 
@@ -13793,7 +13927,7 @@ fcolorbox
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -14041,6 +14175,7 @@ de
 texte\SpecialChar \menuseparator
 Personnalisé
 \family default
+\SpecialChar \ldots{}
 .
  Le numéro de la formule prendra la même couleur que la formule.
  Si le numéro doit avoir une couleur différente de celle des caractères
@@ -14241,11 +14376,11 @@ Si on veut utiliser d'autres couleurs que celles qui sont prédéfinies, il
 
 \begin_layout Standard
 On peut par exemple définir la couleur 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 vertfonce
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  avec la ligne suivante dans le préambule LaTeX:
@@ -14395,11 +14530,11 @@ textcolor{vertfonce}{
 \end_inset
 
 cette phrase est en 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 vertfonce
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -14554,7 +14689,7 @@ cm,
 \emph on
 Alignement vertical boîte
 \emph default
-: milieu
+: Au milieu
 \end_layout
 
 \begin_layout Standard
@@ -14684,7 +14819,7 @@ linewidth
  et l'épaisseur du cadre.
  Comme cela n'est pas fait automatiquement par LyX, à cause d'un bug
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset CommandInset href
@@ -14919,7 +15054,7 @@ parbox{5cm}{
 \end_inset
 
 Ceci est une description.
- Elle est clairement séparée de la formule et est multi-ligne.
+ Elle est clairement séparée de la formule et est multi-lignes.
 \begin_inset ERT
 status collapsed
 
@@ -14947,8 +15082,8 @@ parbox
  On crée la formule avec la suite de commandes suivante:
 \end_layout
 
-\begin_layout Standard
-On insère la commande 
+\begin_layout Itemize
+on insère la commande 
 \series bold
 
 \backslash
@@ -14996,14 +15131,26 @@ reference "sec:Styles-de-formules"
 
 \end_inset
 
- Ensuite la description suit en texte normal et enfin on insère 
+ 
+\end_layout
+
+\begin_layout Itemize
+ensuite la description suit en texte normal 
+\end_layout
+
+\begin_layout Itemize
+enfin on insère 
 \series bold
 }}
 \backslash
 ]
 \series default
  en mode TeX.
- Dans ces commandes, 
+ 
+\end_layout
+
+\begin_layout Standard
+Dans ces commandes, 
 \series bold
 
 \backslash
@@ -15028,7 +15175,7 @@ parbox
  dans cet exemple qui a été commenté en utilisant du texte mathématique:
 \begin_inset Formula 
 \[
-5x-7b=3b\textrm{Ceci est une description. Elle n'est pas séparée de la formule ...}
+5x-7b=3b\textrm{Ceci est une description. Elle n'est pas séparée de la formule...}
 \]
 
 \end_inset
@@ -15737,16 +15884,16 @@ arg   "math-insert \\intop"
 
 \begin_layout Standard
 On nomme ces opérateurs 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 grands
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  parce qu'ils sont plus grands que les opérateurs binaires qui leur ressemblent
  parfois.
- Tous les grands opérateur peuvent avoir des limites comme c'est décrit
+ Tous les grands opérateurs peuvent avoir des limites comme il est décrit
  dans la section qui suit.
 \end_layout
 
@@ -16228,7 +16375,7 @@ A(x)
 \end_layout
 
 \begin_layout Standard
-Pour les formules en lignes, les limites sont placées juste après l'opérateur.
+Pour les formules en ligne, les limites sont placées juste après l'opérateur.
  Pour les formules hors ligne, les limites sont placées au dessus ou en
  dessous de l'opérateur, sauf pour les limites des intégrales.
 \end_layout
@@ -16508,7 +16655,11 @@ subarray
 \begin_inset VSpace bigskip
 \end_inset
 
-Comme dans le cas de la formule 
+Comme dans le cas de la formule
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:substack"
@@ -16542,9 +16693,9 @@ Options du mode math
 \family default
 , l'option 
 \family sans
-Utiliser le paquetage maths mathtools
+Toujours charger
 \family default
- pour la paquetage 
+ pour le paquetage 
 \series bold
 mathtools
 \series default
@@ -16573,7 +16724,11 @@ pt.
 \begin_inset Newline newline
 \end_inset
 
-Appliqué à la formule 
+Appliqué à la formule
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:substack"
@@ -16631,8 +16786,7 @@ pt que sur un côté de l'opérateur.
 \backslash
 smashoperator
 \series default
- et l'accolade.
- 
+ et l'accolade, 
 \series bold
 l
 \series default
@@ -16669,7 +16823,7 @@ Y\smashoperator{\sum_{1\le i\le j\le n}^{n=3456}}X_{ij}=Y\smashoperator[l]{\sum_
 \end_layout
 
 \begin_layout Standard
-Quand plusieurs opérateurs on des limites, la typographie des limites est
+Quand plusieurs opérateurs ont des limites, la typographie des limites est
  souvent imparfaite à l'impression, voyez cet exemple :
 \end_layout
 
@@ -16692,9 +16846,9 @@ Options du mode math
 \family default
 , l'option 
 \family sans
-Utiliser le paquetage maths mathtools
+Toujours charger
 \family default
- pour la paquetage 
+ pour le paquetage 
 \series bold
 mathtools
 \series default
@@ -16742,7 +16896,11 @@ adjustlimits
 \begin_inset VSpace bigskip
 \end_inset
 
-On décrit comment utiliser une limite pour plusieurs opérateurs dans 
+On décrit comment utiliser une limite pour plusieurs opérateurs dans
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Opérateurs-personnalisés"
@@ -16843,7 +17001,7 @@ sideset
 \backslash
 sideset
 \series default
- est utilisé pour placer des caractères au niveau des coins de l'opérateur
+ est utilisé pour placer des caractères au niveau des coins de l'opérateur;
 \end_layout
 
 \begin_layout Itemize
@@ -16853,14 +17011,14 @@ sideset
 \backslash
 sidesetn
 \series default
- est utilisé pour placer des caractères avant et/ou après l'opérateur (
- cette variante représente la commande LaTeX 
+ est utilisé pour placer des caractères avant et/ou après l'opérateur (cette
+ variante représente la commande LaTeX 
 \series bold
 
 \backslash
 sideset
 \series default
- cd'origine )
+ d'origine);
 \end_layout
 
 \begin_layout Itemize
@@ -16871,7 +17029,7 @@ sideset
 sidesetl
 \series default
  est utilisé pour placer des caractères dans les angles gauches et/ou après
- l'opérateur
+ l'opérateur;
 \end_layout
 
 \begin_layout Itemize
@@ -16882,7 +17040,7 @@ sidesetl
 sidesetr
 \series default
  est utilisé pour placer des caractères dans les angles droits et/ou avant
- l'opérateur
+ l'opérateur.
 \end_layout
 
 \begin_layout Standard
@@ -16963,7 +17121,7 @@ overset
 underset
 \series default
  on peut aussi décorer des symboles et des caractères.
- Pour exemple la commande 
+ Par exemple la commande 
 \series bold
 
 \backslash
@@ -18200,7 +18358,11 @@ L'affichage peut être composé de caractères ou de symboles qui définissent
  comment l'opérateur doit apparaître dans la sortie finale.
  Pour définir un grand opérateur, on met une * après la commande.
  Tous les grands opérateurs personnalisés peuvent avoir des limites comme
- c'est décrit dans 
+ il est décrit dans
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Limites-des-opérateurs"
@@ -18234,7 +18396,11 @@ dans le préambule LaTeX définit la commande
 Losange
 \series default
 , qui insère un grand opérateur qui consiste en un symbole losange venant
- de 
+ de
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Symboles-divers"
@@ -18972,9 +19138,9 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Nota:
 \series default
- Les styles 
+ les styles 
 \series bold
 
 \backslash
@@ -19027,7 +19193,7 @@ textrm
 \series default
 .
  Le fait que l'on ne puisse pas changer leur style avec la fenêtre de dialogue
- de style est un bug de LyX.
+ de style est un bug de LyX
 \begin_inset Foot
 status collapsed
 
@@ -19044,7 +19210,7 @@ target "http://www.lyx.org/trac/ticket/4629"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -19100,8 +19266,8 @@ Pour mettre toute une formule en gras, on ne peut pas utiliser la commande
 \backslash
 mathbf
 \series default
- de la sous-section précédente, parce qu'elle ne marche pas avec les lettres
- grecques minuscules.
+ de la sous-section précédente, parce qu'elle ne fonctionne pas avec les
+ lettres grecques minuscules.
  En plus elle affiche toujours les lettres latines en caractères droits,
  comme dans l'équation suivante:
 \end_layout
@@ -19248,7 +19414,7 @@ Style de texte
 \end_layout
 
 \begin_layout Standard
-Vous pouvez aussi définir vos propres couleurs comme c'est expliqué dans
+Vous pouvez aussi définir vos propres couleurs comme il est expliqué dans
 \begin_inset space ~
 \end_inset
 
@@ -19266,7 +19432,7 @@ reference "sub:Boîtes-colorées"
 \backslash
 textcolor
 \series default
- 
+
 \begin_inset Index idx
 status collapsed
 
@@ -19330,8 +19496,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-A cause d'un bug de LyX, on peut colorer seulement des formules complètes
- avec des couleurs personnalisées.
+Du fait d'un bug de LyX, on peut colorer seulement des formules complètes
+ avec des couleurs personnalisées
 \begin_inset Foot
 status collapsed
 
@@ -19348,7 +19514,7 @@ target "http://www.lyx.org/trac/ticket/5269"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsection
@@ -20765,7 +20931,10 @@ omega
 
 \begin_layout Standard
 On explique comment obtenir des lettres grecques droites spéciales dans
- 
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:minuscules-grecques-droites"
@@ -23101,7 +23270,11 @@ diagdown
 \end_layout
 
 \begin_layout Standard
-Certains symboles peuvent être affichés dans plusieurs tailles, voir 
+Certains symboles peuvent être affichés dans plusieurs tailles, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Tailles-polices"
@@ -25050,7 +25223,7 @@ Fonctions ! prédéfinies
 \begin_layout Standard
 En général, les variables sont écrites en 
 \emph on
-italiques
+italique
 \emph default
  dans les expressions mathématiques, mais pas les noms des fonctions, puisque
  
@@ -25631,7 +25804,7 @@ Pour utiliser une fonction qui n'est pas prédéfinie, comme par exemple la
 \end_layout
 
 \begin_layout Itemize
-Définir la fonction en insérant la ligne suivante dans le préambule LaTeX
+définir la fonction en insérant la ligne suivante dans le préambule LaTeX
 \begin_inset Foot
 status collapsed
 
@@ -25707,11 +25880,11 @@ Maintenant la fonction qui vient d'être définie peut être appelée avec la
 \backslash
 sgn
 \series default
-.
+;
 \end_layout
 
 \begin_layout Itemize
-Écrire la formule comme d'habitude, marquer le nom de la fonction -- dans
+écrire la formule comme d'habitude, marquer le nom de la fonction -- dans
  notre exemple les lettres 
 \emph on
 sgn
@@ -26153,18 +26326,18 @@ Dans une formule hors ligne la valeur de la limite est placée comme d'habitude,
 \end_layout
 
 \begin_layout Standard
+Voir
+\begin_inset space ~
+\end_inset
 
-\lang english
-How to adjust the typesetting of the limits see
-\lang french
- 
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Limites-des-opérateurs"
 
 \end_inset
 
-.
+ pour les détails concernant le réglage de la typographie des limites.
 \end_layout
 
 \begin_layout Subsection
@@ -26182,7 +26355,7 @@ Fonctions ! modulo
 \end_layout
 
 \begin_layout Standard
-La fonction modulo est un peu spéciale, vu qu'il en existe quatre variantes.
+La fonction modulo est un peu spéciale, du fait qu'il en existe quatre variantes.
 \end_layout
 
 \begin_layout Standard
@@ -26234,7 +26407,7 @@ Caractères spéciaux
 \end_layout
 
 \begin_layout Standard
-Les acaractères ^ et _ doivent normalement créer respectivement un exposant
+Les caractères ^ et _ doivent normalement créer respectivement un exposant
  ou un indice.
  Pour obtenir les caractères eux-mêmes, vous devez les insérer avec un 
 \backslash
@@ -27612,7 +27785,11 @@ v
 , et les accents qui sont insérés directement au clavier sont aussi disponibles
  en texte mathématique.
  Pour les autres accents, il y a des commandes mathématiques spéciales à
- utiliser dans les formules, voir 
+ utiliser dans les formules, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Accents-sur-un-caractère"
@@ -27791,7 +27968,7 @@ raisebox{-1.5pt}W}
 \end_layout
 
 \begin_layout Standard
-On doit faire attentions à ce que le caractère tienne dans le cercle.
+On doit faire attention à ce que le caractère tienne dans le cercle.
  
 \series bold
 
@@ -27803,7 +27980,11 @@ Large
 status collapsed
 
 \begin_layout Plain Layout
-voir 
+Voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Tailles-polices"
@@ -27827,7 +28008,11 @@ raisebox
 status collapsed
 
 \begin_layout Plain Layout
-voir 
+Voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Boîtes-sans-cadre"
@@ -27839,7 +28024,7 @@ reference "sub:Boîtes-sans-cadre"
 
 \end_inset
 
- .
+.
 \end_layout
 
 \begin_layout Subsection
@@ -27929,11 +28114,11 @@ Il y a deux styles d'alignements différents:
 
 \begin_deeper
 \begin_layout Description
-Centré est le standard prédéfini
+Centré est le standard prédéfini;
 \end_layout
 
 \begin_layout Description
-Indenté pour ce style, l'option 
+Indenté: pour ce style, l'option 
 \series bold
 fleqn
 \series default
@@ -27952,7 +28137,7 @@ de
 \begin_inset space ~
 \end_inset
 
-Document
+Document.
 \end_layout
 
 \begin_layout Standard
@@ -28012,11 +28197,11 @@ Et deux styles différents de numérotation:
 
 \begin_deeper
 \begin_layout Description
-Droite est le standard prédéfini
+Droite est le standard prédéfini;
 \end_layout
 
 \begin_layout Description
-Gauche pour ce style, l'option 
+Gauche: pour ce style, l'option 
 \series bold
 leqno
 \series default
@@ -28048,7 +28233,7 @@ fleqn
 \series bold
 leqno
 \series default
- peuvent être utilisés ensembles.
+ peuvent être utilisés ensemble.
  Dans ce cas les deux options sont insérées, séparées par une virgule.
 \end_layout
 
@@ -28064,7 +28249,11 @@ Centré
 \series bold
 falign, 
 \series default
-voir 
+voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Environnement-Flalign"
@@ -28107,7 +28296,7 @@ Ctrl+Entrée
  à l'intérieur d'une formule.
  Cela crée soit un environnement 
 \series bold
-equnarray 
+eqnarray 
 \series default
 qui est décrit dans
 \begin_inset space ~
@@ -28120,19 +28309,23 @@ reference "sub:Environnement-eqnarray"
 
 \end_inset
 
- 
+
 \series bold
 ,
 \series default
  soit dans le cas où l'option 
 \family sans
-Utilise le paquetage math AMS
+Utiliser le paquetage math AMS
 \family default
- est activé dans les préférences du document, un environnement 
+ est activée dans les préférences du document, un environnement 
 \series bold
 align 
 \series default
-qui est décrit dans 
+qui est décrit dans
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Environnement-align-standard"
@@ -28160,7 +28353,7 @@ Math
 \end_layout
 
 \begin_layout Standard
-Dans tous les environnements de formules multi-ligne, une nouvelle ligne
+Dans tous les environnements de formules multi-lignes, une nouvelle ligne
  est créée en appuyant sur 
 \family sans
 Ctrl+Entrée
@@ -28352,7 +28545,7 @@ vspace{4mm}
 \end_inset
 
 .
- La définition est : 
+ La définition est: 
 \begin_inset Formula $\mathrm{interligne}=6\,\mathrm{pt}+\backslash\mathrm{jot}$
 \end_inset
 
@@ -28386,7 +28579,7 @@ jot}{3mm+3pt}
 \end_layout
 
 \begin_layout Standard
-en Code TeX avant la formule.
+en code TeX avant la formule.
  Cela exige que le paquetage LaTeX 
 \series bold
 calc
@@ -28505,8 +28698,11 @@ Formules ! multi-lignes ! Séparation des colonnes
 
 \begin_layout Standard
 Les formules multi-lignes forment une matrice.
- Une formule dans un environnement eqnarray est par exemple une matrice
- à trois colonnes.
+ Une formule dans un environnement 
+\series bold
+eqnarray
+\series default
+ est par exemple une matrice à trois colonnes.
  En changeant l'espacement des colonnes de cet environnement, on peut modifier
  l'espace à côté du symbole de relation.
 \end_layout
@@ -28562,7 +28758,7 @@ arraycolsep}{1cm}
 \end_layout
 
 \begin_layout Standard
-insérée en mode TeX, met pour toutes les formules qui la suivent, l'espacement
+insérée en mode TeX met, pour toutes les formules qui la suivent, l'espacement
  des colonnes à 2
 \begin_inset space \thinspace{}
 \end_inset
@@ -28661,7 +28857,7 @@ Les formules longues peuvent être mises en forme en utilisant une de ces
 \end_layout
 
 \begin_layout Itemize
-Quand un des membres de l'équation est beaucoup plus court que la largeur
+quand un des membres de l'équation est beaucoup plus court que la largeur
  de la ligne, c'est lui qui est choisi comme membre de gauche et le membre
  de droite est écrit sur deux lignes: 
 \begin_inset Formula 
@@ -28686,18 +28882,22 @@ pt a été insérée après les signe moins avec la commande
 \backslash
 hspace
 \series default
-.
+
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-plus au sujet de la commande 
+Pour en savoir plus au sujet de la commande 
 \series bold
 
 \backslash
 hspace
 \series default
-, voir 
+, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Espace-variable"
@@ -28709,7 +28909,7 @@ reference "sub:Espace-variable"
 
 \end_inset
 
-
+;
 \begin_inset Index idx
 status collapsed
 
@@ -28725,7 +28925,7 @@ hspace
 \end_layout
 
 \begin_layout Itemize
-Quand les deux membre de l'équation sont trop longs, on utilise la commande
+quand les deux membres de l'équation sont trop longs, on utilise la commande
  
 \series bold
 
@@ -28770,7 +28970,7 @@ lefteqn
 
 Le contenu des lignes suivantes est inséré dans la deuxième colonne ou dans
  celles d'après.
- Plus le numéro de la colonne sera élevé, plus l'indentation sera importante.
+ Plus le numéro de la colonne sera élevé, plus l'indentation sera importante;
 \begin_inset VSpace medskip
 \end_inset
 
@@ -28793,7 +28993,7 @@ lefteqn
 \end_layout
 
 \begin_layout Itemize
-La formule n'utilise pas la totalité de la largeur de la page.
+la formule n'utilise pas la totalité de la largeur de la page.
  Quand par exemple on a ajouté le terme 
 \begin_inset Formula $-B^{2}$
 \end_inset
@@ -28805,7 +29005,7 @@ La formule n'utilise pas la totalité de la largeur de la page.
 \end_layout
 
 \begin_layout Itemize
-À cause d'un bug dans LyX le curseur ne peut pas être positionné sur la
+à cause d'un bug dans LyX le curseur ne peut pas être positionné sur la
  première ligne avec la souris
 \begin_inset Foot
 status collapsed
@@ -28834,15 +29034,23 @@ target "http://www.lyx.org/trac/ticket/1429"
 \end_layout
 
 \begin_layout Itemize
-D'autres méthodes pour créer des formules longues sont offertes par les
- environnements décrits dans 
+d'autres méthodes pour créer des formules longues sont offertes par les
+ environnements décrits dans
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Environnement-Multline"
 
 \end_inset
 
- et 
+ et
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Portions-de-formules-en-multiligne"
@@ -28874,7 +29082,7 @@ Fractions ! multi-lignes
 \end_layout
 
 \begin_layout Standard
-Il y a des cas où le dénominateur et/ou le numérateur sont si long que la
+Il y a des cas où le dénominateur ou le numérateur sont si longs que la
  fraction ne tient pas sur une ligne.
  Il est alors nécessaire d'introduire un saut de ligne au milieu de la fraction.
  On le fait en utilisant la commande 
@@ -28896,15 +29104,15 @@ splitfrac
 \end_inset
 
 .
- Pour l'activer mettez dans les paramètres du document dans l'onglet 
+ Pour l'activer mettez dans les paramètres du document, dans l'onglet 
 \family sans
 Options du mode math
 \family default
 , l'option 
 \family sans
-Utiliser le paquetage maths mathtools
+Toujours charger
 \family default
- pour la paquetage 
+ pour le paquetage 
 \series bold
 mathtools
 \series default
@@ -28936,7 +29144,7 @@ splitfrac{première ligne}{seconde ligne}
 \end_layout
 
 \begin_layout Standard
-et est utilisée comme dénominateur et/ou numérateur :
+et est utilisée comme dénominateur ou numérateur :
 \end_layout
 
 \begin_layout Standard
@@ -29033,7 +29241,7 @@ left.
 status collapsed
 
 \begin_layout Plain Layout
-pour plus au sujet des commandes 
+Pour en savoir plus au sujet des commandes 
 \series bold
 
 \backslash
@@ -29045,7 +29253,11 @@ left
 \backslash
 right
 \series default
- voir 
+ voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Taille-parenthèses-automatique"
@@ -29077,9 +29289,8 @@ left
 
 \backslash
 left.
-
 \series default
- on insère la commande 
+, on insère la commande 
 \series bold
 
 \backslash
@@ -29129,7 +29340,7 @@ vphantom
 
 \end_inset
 
- , puisque l'opérateur produit avec ses limites est le symbole le plus grand
+, puisque l'opérateur produit avec ses limites est le symbole le plus grand
  de la première ligne, c'est donc lui qui doit imposer la taille du crochet
  de la deuxième ligne.
 \end_layout
@@ -29155,21 +29366,36 @@ Les environnements align
 \end_layout
 
 \begin_layout Standard
-Les environnements align peuvent être utilisés pour tous les cas de formules
- multi-lignes.
+Les environnements 
+\series bold
+align
+\series default
+ peuvent être utilisés pour tous les cas de formules multi-lignes.
  Ils sont particulièrement utiles pour positionner plusieurs formules côte-à-côt
 e.
 \end_layout
 
 \begin_layout Standard
-Les environnement Align sont composés de colonnes.
+Les environnement 
+\series bold
+align
+\series default
+ sont composés de colonnes.
  Les colonnes impaires sont alignées à gauche alors que les colonnes paires
  sont alignées à droite.
- Chaque ligne d'un environnement Align peut être numérotée.
+ Chaque ligne d'un environnement 
+\series bold
+align
+\series default
+ peut être numérotée.
 \end_layout
 
 \begin_layout Standard
-Les environnement Align sont créés avec le menu 
+Les environnement 
+\series bold
+align
+\series default
+ sont créés avec le menu 
 \family sans
 Insertion\SpecialChar \menuseparator
 Math
@@ -29181,7 +29407,11 @@ Math
 Math\SpecialChar \menuseparator
 Change le type de formule
 \family default
- on peut convertir des formules existantes en environnement Align.
+ on peut convertir des formules existantes en environnement 
+\series bold
+align
+\series default
+.
 \end_layout
 
 \begin_layout Standard
@@ -29201,7 +29431,15 @@ arg   "inset-modify tabular delete-column"
 , respectivement, soit le menu 
 \family sans
 Édition\SpecialChar \menuseparator
-Lignes & colonnes
+Lignes
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
+colonnes
 \family default
 .
 \end_layout
@@ -29228,7 +29466,11 @@ Formules ! multi-lignes ! environnement align
 \end_layout
 
 \begin_layout Standard
-Cet environnement align est créé en appuyant sur 
+Cet environnement 
+\series bold
+align
+\series default
+ est créé en appuyant sur 
 \family sans
 Ctrl+Entrée
 \family default
@@ -29250,8 +29492,12 @@ align
 \end_layout
 
 \begin_layout Standard
-Un exemple avec deux formules mises côte-à-côte, créé avec un environnement
- align à quatre colonnes:
+Voici un exemple avec deux formules mises côte-à-côte, créé avec un environnemen
+t 
+\series bold
+align
+\series default
+ à quatre colonnes:
 \begin_inset Formula 
 \begin{align*}
 A & =\sin(B) & C & =D\\
@@ -29270,13 +29516,17 @@ hfill
 status collapsed
 
 \begin_layout Plain Layout
-pour plus d'information au sujet de 
+Pour plus d'information au sujet de 
 \series bold
 
 \backslash
 hfill
 \series default
- voir 
+ voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Espace-variable"
@@ -29298,7 +29548,11 @@ Indenté
 status collapsed
 
 \begin_layout Plain Layout
-pour les styles de formules, voir 
+Pour les styles de formules, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Styles-de-formules"
@@ -29336,8 +29590,16 @@ Formules ! multi-lignes ! environnement alignat
 \end_layout
 
 \begin_layout Standard
-L'environnement alignat n'a pas d'espacement de colonne prédéfini.
- Il peut être inséré manuellement avec les espaces qui sont décrits en 
+L'environnement 
+\series bold
+alignat
+\series default
+ n'a pas d'espacement de colonne prédéfini.
+ Il peut être inséré manuellement avec les espaces qui sont décrits en
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Espace"
@@ -29348,8 +29610,11 @@ reference "sub:Espace"
 \end_layout
 
 \begin_layout Standard
-Voici l'exemple précédent dans un environnement alignat où on a inséré une
- espace de 1
+Voici l'exemple précédent dans un environnement 
+\series bold
+alignat
+\series default
+ où on a inséré une espace de 1
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -29405,15 +29670,22 @@ X & =\textrm{-}1 & Y & =\textrm{-}2 & Z & =4
 \end_layout
 
 \begin_layout Standard
-En créant un environnement flalign avec un nombre impair de colonnes et
- en insérant des accolades TeX vides dans la dernière colonne, plusieurs
- formules d'un document peuvent être mises à gauche, bien que le style de
- formules 
+En créant un environnement 
+\series bold
+flalign
+\series default
+ avec un nombre impair de colonnes et en insérant des accolades TeX vides
+ dans la dernière colonne, plusieurs formules d'un document peuvent être
+ mises à gauche, bien que le style de formules 
 \series bold
 Centré 
 \series default
 soit utilisé.
- Comme exemple la formule 
+ Comme exemple, voici la formule
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:VolInt"
@@ -29529,19 +29801,34 @@ Formules ! multi-lignes ! environnement multline
 \end_layout
 
 \begin_layout Standard
-L'environnement multline consiste, comme l'environnement gather en une seule
- colonne.
+L'environnement 
+\series bold
+multline
+\series default
+ consiste, comme l'environnement 
+\series bold
+gather
+\series default
+, en une seule colonne.
  Mais la première ligne est alignée à gauche, la dernière est alignée à
  droite et toutes les autres sont centrées.
  Cet environnement est donc particulièrement adapté aux formules très longues.
- Comme exemple, voici la formule 
+ Comme exemple, voici la formule
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:lefteqn"
 
 \end_inset
 
- dans un environnement multline:
+ dans un environnement 
+\series bold
+multline
+\series default
+:
 \begin_inset Formula 
 \begin{multline}
 4x^{2}\left(B^{2}+x_{0}^{2}\right)+4x_{0}x\left(D-B^{2}\right)+B^{2}\left(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2}\right)+D^{2}\\
@@ -29557,12 +29844,16 @@ reference "eq:lefteqn"
 \begin_layout Standard
 Dans la sortie finale, seule la dernière ligne d'un environnement multline
  apparaît numérotée si le document est numéroté à droite, la première s'il
- est numéroté à gauche.
+ est numéroté à gauche
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-pour les styles de numérotation, voir 
+Pour les styles de numérotation, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Styles-de-formules"
@@ -29574,7 +29865,7 @@ reference "sec:Styles-de-formules"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -29614,7 +29905,7 @@ shoveleft
 
 \end_inset
 
- une ligne centrée peut être alignée respectivement à droite ou à gauche.
+, une ligne centrée peut être alignée respectivement à droite ou à gauche.
  Les commandes sont utilisées de la façon suivante:
 \end_layout
 
@@ -29664,7 +29955,8 @@ pt.
 \end_layout
 
 \begin_layout Standard
-Comme exemple, la formule précédente en ajoutant avant en mode TeX
+Comme exemple, voici la formule précédente modifiée en ajoutant avant en
+ mode TeX
 \end_layout
 
 \begin_layout Standard
@@ -29727,7 +30019,7 @@ shoveleft
 \end_layout
 
 \begin_layout Subsection
-Portions de formules en multi-ligne
+Portions de formules en multi-lignes
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:Portions-de-formules-en-multiligne"
@@ -29775,7 +30067,7 @@ Math
 \end_layout
 
 \begin_layout Standard
-Les trois premier ont les mêmes propriétés que les environnements de formules
+Les trois premiers ont les mêmes propriétés que les environnements de formules
  correspondants, à part le fait que l'on peut ajouter d'autres portions
  de formules après eux.
  Un exemple:
@@ -29815,23 +30107,35 @@ aligned
 .
  Une boîte violette apparaît autour de la boîte de formule dans laquelle
  on peut ajouter des lignes et des colonnes.
- En dehors de l'environnement multiligne, on peut mettre d'autres portions
+ En dehors de l'environnement multi-lignes, on peut mettre d'autres portions
  de formules, comme des accolades.
 \end_layout
 
 \begin_layout Standard
-L'environnement aligned est aussi utilisable pour de longues formules dont
- les lignes sont alignées horizontalement.
- Un avantage d'utiliser l'environnement aligned avec des formules hors-lignes
- est que le numéro des formules est centré verticalement après les formules.
- Un exemple, la formule
+L'environnement 
+\series bold
+aligned
+\series default
+ est aussi utilisable pour de longues formules dont les lignes sont alignées
+ horizontalement.
+ Un avantage d'utiliser l'environnement 
+\series bold
+aligned
+\series default
+ avec des formules hors ligne est que le numéro des formules est centré
+ verticalement après les formules.
+ Comme exemple, voici la formule
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:courtlong"
 
 \end_inset
 
- dans l'environnement aligned:
+ dans l'environnement 
+\series bold
+aligned
+\series default
+:
 \begin_inset Formula 
 \begin{equation}
 \begin{aligned}H=\; & W_{SB}+W_{mv}+W_{D}-\frac{\hbar^{2}}{2m_{0}}\Delta-\frac{\hbar^{2}}{2m_{1}}\Delta_{1}-\frac{\hbar^{2}}{2m_{2}}\Delta_{2}-\frac{e^{2}}{4\pi\varepsilon_{0}|\mathbf{r}-\mathbf{R}_{1}|}\\
@@ -29912,8 +30216,15 @@ split
 \end_inset
 
 .
- L'environnement split a les mêmes propriétés que l'environnement aligned,
- mais il ne peut avoir que deux colonnes.
+ L'environnement 
+\series bold
+split
+\series default
+ a les mêmes propriétés que l'environnement 
+\series bold
+aligned
+\series default
+, mais il ne peut avoir que deux colonnes.
 \end_layout
 
 \begin_layout Subsection
@@ -29948,9 +30259,20 @@ Formules ! multi-lignes ! texte
 \end_layout
 
 \begin_layout Standard
-Dans les environnements align, multline et gather, on peut insérer du texte
- qui apparaîtra sur une ligne séparée et donc, n'affectera pas l'alignement
- des colonnes.
+Dans les environnements 
+\series bold
+align
+\series default
+, 
+\series bold
+multline
+\series default
+ et 
+\series bold
+gather
+\series default
+, on peut insérer du texte qui apparaîtra sur une ligne séparée et donc,
+ n'affectera pas l'alignement des colonnes.
  Pour faire cela, on utilise la commande 
 \series bold
 
@@ -29999,10 +30321,6 @@ intertext
  doit être au début d'une ligne pour se trouver dans la sortie final au
  dessus de celle-ci.
  Un exemple où le texte a été inséré au début de la deuxième ligne:
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -30024,17 +30342,17 @@ I & =a\sqrt{2}\int_{0}^{2\pi}\sqrt{1+\cos(\phi)}\;\mathrm{d}\phi\\
 \backslash
 intertext
 \series default
- crée toujours un espace vertical entre le texte et les lignes de formules.
- Pour éviter cet espace mettez dans les paramètres du document dans l'onglet
+ crée toujours un espacement vertical entre le texte et les lignes de formules.
+ Pour éviter cet espace mettez dans les paramètres du document, dans l'onglet
  
 \family sans
 Options du mode math
 \family default
 , l'option 
 \family sans
-Utiliser le paquetage maths mathtools
+Toujours charger
 \family default
- pour la paquetage 
+ pour le paquetage 
 \series bold
 mathtools
 \series default
@@ -30048,6 +30366,7 @@ Paquetages ! mathtools
 
 \end_inset
 
+.
  Vous pouvez ensuite utiliser la commande 
 \series bold
 
@@ -30234,8 +30553,12 @@ Shift+N
 \end_layout
 
 \begin_layout Standard
-À part pour les formules en ligne, toutes les formules peuvent être numérotées
- avec deux styles différents, voir 
+Sauf pour les formules en ligne, toutes les formules peuvent être numérotées
+ avec deux styles différents, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Styles-de-formules"
@@ -30291,15 +30614,15 @@ eq:
  dans un champ de texte.
  L'étiquette est insérée à cet endroit, juste après le préfixe.
  Le préfixe prédéfini signifie 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 équation
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- et rend plus facile la recherche d'une étiquette dans les grand documents
- en l'identifiant comme une étiquette de formule et pas, par exemple comme
+ et rend plus facile la recherche d'une étiquette dans les grands documents
+ en l'identifiant comme une étiquette de formule et pas, par exemple, comme
  une étiquette de section.
  Pour modifier l'étiquette vous devez repasser par le menu 
 \family sans
@@ -30368,14 +30691,22 @@ Noter les différents types de références croisées.
 \end_layout
 
 \begin_layout Standard
-Les équations 
+Les équations
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:tag"
 
 \end_inset
 
- et 
+ et
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:c"
@@ -30383,7 +30714,11 @@ reference "eq:c"
 \end_inset
 
  sont équivalentes.
- Dans (
+ Dans
+\begin_inset space ~
+\end_inset
+
+(
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:Lat"
@@ -30391,7 +30726,11 @@ reference "eq:Lat"
 \end_inset
 
 ) on a utilisé de grosses lettres latines pour la numérotation, contrairement
- à  (
+ à
+\begin_inset space ~
+\end_inset
+
+(
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:Rom"
@@ -30434,7 +30773,11 @@ reference "sub:Numérotation-personnalisée"
 
 
 \series default
- contient une boîte comme dans 
+ contient une boîte comme dans
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Boîtes-de-paragraphes"
@@ -30554,7 +30897,7 @@ Pour créer cet exemple, on fait ce qui suit:
 \end_layout
 
 \begin_layout Enumerate
-on insère la première formule
+on insère la première formule;
 \end_layout
 
 \begin_layout Enumerate
@@ -30581,14 +30924,16 @@ addtocounter
 \end_inset
 
 
+\series default
+;
 \end_layout
 
 \begin_layout Enumerate
-on insère la deuxième formule
+on insère la deuxième formule;
 \end_layout
 
 \begin_layout Enumerate
-on insère la troisième formule
+on insère la troisième formule;
 \end_layout
 
 \begin_layout Enumerate
@@ -30598,7 +30943,7 @@ on insère
 \backslash
 end{subequations}
 \series default
- après la troisième formule
+ après la troisième formule.
 \end_layout
 
 \begin_layout Standard
@@ -30636,7 +30981,11 @@ equation
 addtocounter
 \series default
  pour le décrémenter.
- Sinon les formules 
+ Sinon les formules
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:a"
@@ -30657,7 +31006,11 @@ reference "eq:c"
 
 \end_inset
 
- seraient numérotées comme 
+ seraient numérotées comme
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:a"
@@ -30702,7 +31055,11 @@ Indenté
 status collapsed
 
 \begin_layout Plain Layout
-pour les styles de formules, voir 
+Pour les styles de formules, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Styles-de-formules"
@@ -30716,7 +31073,7 @@ reference "sec:Styles-de-formules"
 
 , 
 \series default
-on insère un espace de -7
+on insère une espace de -7
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -31004,19 +31361,19 @@ ou
 
 \begin_layout Standard
 Pour pouvoir utiliser ces commandes en mode TeX, le caractère 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 @
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  doit être rendu 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 actif
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  pour LaTeX en utilisant la commande 
@@ -31069,7 +31426,7 @@ makeatletter
 \backslash
 makeatother
 \series default
-, vu que LyX les insère automatiquement en interne.
+, du fait que LyX les insère automatiquement en interne.
 \end_layout
 
 \begin_layout Standard
@@ -31219,11 +31576,11 @@ On doit parfois numéroter les formules de la façon suivante
 
 \begin_layout Standard
 Le numéro de formule repart à 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 1
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  à chaque nouvelle section
@@ -31849,14 +32206,14 @@ E=\textrm{Arabes}
 \begin_inset VSpace medskip
 \end_inset
 
-Comme vous pouvez le voir, les numéros d'équation se suivent, indépendemment
+Comme vous pouvez le voir, les numéros d'équation se suivent indépendamment
  du style de numérotation.
  Si l'on veut que la numérotation reparte à 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 1
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  quand on change de style de numérotation, on doit définir de nouveaux compteurs.
@@ -31943,7 +32300,7 @@ Alt+C
 
 R
 \family default
- .
+
 \begin_inset Foot
 status collapsed
 
@@ -31960,7 +32317,7 @@ reference "sub:Styles-de-polices"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -32354,9 +32711,9 @@ status open
 
 \series bold
 \color none
-Note:
+Nota:
 \series default
- L'insertion d'une formule mathématique dans une boîte 
+ l'insertion d'une formule mathématique dans une boîte 
 \series bold
 
 \backslash
@@ -32488,8 +32845,12 @@ Na2SO4
 \end_layout
 
 \begin_layout Standard
-Pour créer des équations chimiques multilignes, on crée d'abord une formule
- multiligne comme cela est décrit dans 
+Pour créer des équations chimiques multi-lignes, on crée d'abord une formule
+ multi-lignes comme cela est décrit dans
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Formules-multi-lignes"
@@ -32504,22 +32865,30 @@ reference "sec:Formules-multi-lignes"
 ce
 \series default
  dans chaque petite boîte bleue de la formule.
- 
+ Les équations
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:TEOS-reaction-1"
 
 \end_inset
 
- et 
+ et
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:TEOS-reaction-2"
 
 \end_inset
 
- sont un exemple d'une réaction chimique multi-étape où chaque équation
- a son propre numéro.
+ illustrent une réaction chimique multi-étapes où chaque équation a son
+ propre numéro.
 \begin_inset Formula 
 \begin{eqnarray}
 \ce{TEOS + 4O} & \ce{->} & \ce{Si(OH)4 + 4C2H4O}\label{eq:TEOS-reaction-1}\\
@@ -32567,7 +32936,7 @@ cf
 \backslash
 cf
 \series default
- et plus d'exemples, jetez un coup d'oeil à la documentation de 
+ et plus d'exemples, jetez un coup d'œil à la documentation de 
 \series bold
 mhchem
 \series default
@@ -32675,7 +33044,7 @@ Pour créer les relations, il y a les commandes suivantes:
 \series bold
 @=
 \series default
- un long signe égal
+ un long signe égal;
 \end_layout
 
 \begin_layout Itemize
@@ -32691,7 +33060,7 @@ Pour créer les relations, il y a les commandes suivantes:
 \series bold
 @|
 \series default
- un signe égal vertical
+ un signe égal vertical;
 \end_layout
 
 \begin_layout Itemize
@@ -32700,7 +33069,7 @@ Pour créer les relations, il y a les commandes suivantes:
 @.
 
 \series default
- sert de remplissage pour une relation inexistante
+ sert de remplissage pour une relation inexistante.
 \end_layout
 
 \begin_layout Standard
@@ -32708,14 +33077,14 @@ Toutes les flèches peuvent être étiquetées de la façon suivante:
 \end_layout
 
 \begin_layout Itemize
-Si le texte est inséré entre les deux premiers < ou >, il est placé au dessus
+si le texte est inséré entre les deux premiers < ou >, il est placé au dessus
  de la flèche.
- Quand il est placé entre le deuxième et le troisième, il apparaît sou la
- flèche.
+ Quand il est placé entre le deuxième et le troisième, il apparaît sous
+ la flèche;
 \end_layout
 
 \begin_layout Itemize
-Quand le texte destiné à une flèche verticale est inséré entre le premier
+quand le texte destiné à une flèche verticale est inséré entre le premier
  et le second A ou V, il est placé sur le côté gauche de la flèche.
  Si il est inséré entre le deuxième et le troisième, il apparaît à droite
  de la flèche.
@@ -32840,7 +33209,11 @@ xymatrix
 \series default
  dans une formule.
  Ensuite vous pouvez ajouter de nouvelles lignes et de nouvelles colonnes
- comme pour une matrice normale, voir 
+ comme pour une matrice normale, voi
+\begin_inset space ~
+\end_inset
+
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Matrices"
@@ -32856,7 +33229,7 @@ Contrairement aux diagrammes amscd, les xymatrices acceptent les flèches
  Toutes les possibilités pour créer des diagrammes commutatifs et leurs
  décorations sont expliquées en détail dans ce 
 \emph on
-manuel pour XY-pic 
+Manuel pour XY-pic 
 \emph default
 que vous trouverez dans le menu 
 \family sans
@@ -32902,7 +33275,7 @@ feyn
 \noun on
 Feynman
 \noun default
- est créée en insérant la commande 
+ est créé en insérant la commande 
 \series bold
 
 \backslash
@@ -32910,7 +33283,11 @@ Diagram
 \series default
  dans une formule.
  Ensuite vous pouvez ajouter de nouvelles lignes et de nouvelles colonnes
- comme pour une matrice normale, voir 
+ comme pour une matrice normale, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Matrices"
@@ -32969,9 +33346,9 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Nota:
 \series default
- Les noms des commandes personnalisées ne peuvent contenir que des lettres
+ lLes noms des commandes personnalisées ne peuvent contenir que des lettres
  latines.
 \end_layout
 
@@ -33038,7 +33415,7 @@ newcommand
 
 \end_inset
 
- .
+.
 \end_layout
 
 \begin_layout Standard
@@ -33084,9 +33461,9 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Nota:
 \series default
- Vérifiez que le nom de la nouvelle commande n'est pas déjà utilisé par
+ vérifiez que le nom de la nouvelle commande n'est pas déjà utilisé par
  votre document ou par un des paquetages LaTeX que vous utilisez.
  Si par exemple, vous tentez de définir la commande 
 \series bold
@@ -33107,7 +33484,7 @@ Leftarrow
 le
 \series default
  est déjà définie comme étant la commande pour le symbole 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 
@@ -33115,7 +33492,7 @@ le
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -33128,7 +33505,7 @@ le
 
 \begin_layout Standard
 Le nombre d'arguments est un entier entre 0 et 9 et il précise le nombre
- d'argument que la commande doit avoir.
+ d'arguments que la commande doit avoir.
  Avec la valeur optionnelle, on peut prédéfinir une valeur pour un argument
  optionnel.
  Quand on utilise cette valeur, le 
@@ -33143,7 +33520,7 @@ Voici quelques exemples:
 \end_layout
 
 \begin_layout Itemize
-Pour définir la commande 
+pour définir la commande 
 \series bold
 
 \backslash
@@ -33175,7 +33552,7 @@ Longrightarrow}
 \end_layout
 
 \begin_layout Itemize
-Pour définir la commande
+pour définir la commande
 \series bold
  
 \backslash
@@ -33222,11 +33599,11 @@ Le caractère
 \series bold
 1
 \series default
- derrière lui indique qu'il représente le premier argument.
+ derrière lui indique qu'il représente le premier argument;
 \end_layout
 
 \begin_layout Itemize
-Pour remplacer la commande 
+pour remplacer la commande 
 \series bold
 
 \backslash
@@ -33270,18 +33647,22 @@ Les deux dollars créent une formule supplémentaire pour la commande
 \backslash
 framebox
 \series default
-, voir 
+, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Boîtes-avec-cadre"
 
 \end_inset
 
-.
+;
 \end_layout
 
 \begin_layout Itemize
-Pour créer une nouvelle commande pour remplacer 
+pour créer une nouvelle commande pour remplacer 
 \series bold
 
 \backslash
@@ -33579,7 +33960,7 @@ Macros
 \end_layout
 
 \begin_layout Standard
-LyX permet la définition de macros pour les formules, ce qui est parciculièremen
+LyX permet la définition de macros pour les formules, ce qui est particulièremen
 t utile pour les expressions complexes.
  Par exemple, supposons que les solutions de l'équation du second degré
  apparaissent souvent dans votre document sous des formes variées.
@@ -33756,7 +34137,7 @@ arg   "math-macro newmacroname_newcommand"
 
 \backslash
 newmacroname est le nom qui est donné implicitement à la macro et qui doit
- être remplacé par quelquechose de raisonable.
+ être remplacé par quelque chose de raisonnable.
  La formule voulue est insérée dans la première boîte bleue.
  On insère une réservation pour un argument avec la commande 
 \series bold
@@ -33789,7 +34170,7 @@ arg   "math-macro-add-optional-param"
 \end_inset
 
  de la barre d'outils.
- Le prenier argument non optionnel peut être transformé en argument optionnel
+ Le premier argument non optionnel peut être transformé en argument optionnel
  avec le bouton 
 \begin_inset Info
 type  "icon"
@@ -33802,7 +34183,7 @@ arg   "math-macro-make-optional"
  En principe, vous voudrez la voir comme vous l'avez définie, la boîte est
  alors laissée vide.
  Mais quand vous avez créé une macro qui demande beaucoup de place à l'écran,
- vous pouvez par exemple, insérer dans la boîte quelquechose comme ceci
+ vous pouvez par exemple, insérer dans la boîte quelque chose comme ceci
 \begin_inset Newline newline
 \end_inset
 
@@ -33848,7 +34229,7 @@ Au niveau de la macro on n'affichera que les arguments, précédés du nom
 L'apparence d'une macro dans une formule peut être modifiée en déplaçant
  le curseur dans la macro et en utilisant le menu 
 \family sans
-Visualiser\SpecialChar \menuseparator
+Affichage\SpecialChar \menuseparator
 Déplier/Replier la macro mathématique
 \family default
 .
@@ -33912,7 +34293,7 @@ Voici notre exemple avec les arguments
 \end_layout
 
 \begin_layout Standard
-LyX propose dans le menu 
+LyX propose, dans le menu 
 \family sans
 Outils
 \family default
@@ -33920,22 +34301,10 @@ Outils
 
 \family sans
 Préférences\SpecialChar \menuseparator
-En
-\begin_inset space ~
-\end_inset
-
-cours
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-modification\SpecialChar \menuseparator
+Saisie\SpecialChar \menuseparator
 Contrôle
 \family default
- different styles pour éditer les macros.
+, différents styles pour éditer les macros.
  Pour trouver le style qui vous convient le mieux, choisissez un style et
  placez le curseur dans une macro pour voir la différence.
 \end_layout
@@ -34004,7 +34373,7 @@ newcommand
 \end_layout
 
 \begin_layout Standard
-Les macro mathématiques ont encore actuellement un problème qui fait que
+Les macro mathématiques ont encore actuellement un problème du fait que
  les formules supplémentaires dans une définition de macro ne sont pas gérées
  correctement.
  Ce qui fait que l'exemple 
@@ -34720,7 +35089,7 @@ Maxima
 Octave
 \family default
 .
- Notez que les constructions mathematiques qui sont acceptées sont limitées
+ Notez que les constructions mathématiques qui sont acceptées sont limitées
  à des cas très simples.
 \end_layout
 
@@ -34739,7 +35108,7 @@ Maths
 \family sans
 Appel à un logiciel de calcul formel
 \family default
-, choisissez une des applications que vous avez installé sur votre ordinateur.
+, choisissez une des applications que vous avez installée sur votre ordinateur.
  Après cela, le résultat du calcul devrait apparaître sur le côté droit
  de l'expression avec l'opérateur 
 \begin_inset Quotes fld
@@ -34753,11 +35122,11 @@ Appel à un logiciel de calcul formel
 \end_layout
 
 \begin_layout Standard
-Voici quelques exemples très simples ( avec les résultats de 
+Voici quelques exemples très simples (avec les résultats de 
 \family sans
 Maxima
 \family default
- ) pour montrer quel genre de calculs on peut effectuer :
+) pour montrer quel genre de calculs on peut effectuer :
 \end_layout
 
 \begin_layout Itemize
@@ -34807,13 +35176,13 @@ Raccourci clavier
 Actuellement, il n'y a pas de raccourci clavier pour appeler les applications
  algébriques.
  On peut facilement attacher un raccourci à la fonction math-extern de LyX
- ( voir le manuel 
+ (voir le manuel 
 \family sans
 \emph on
 Fonctions LyX
 \family default
 \emph default
- ).
+).
  On peut par exemple attacher la touche 
 \family sans
 Entrée
@@ -35309,7 +35678,7 @@ Vous avez besoin du paquetage LaTeX
 \series bold
 braket
 \series default
- pour voir le reste de cette sous section dans la sortie finale.
+ pour voir le reste de cette sous-section dans la sortie finale.
 \end_layout
 
 \begin_layout Standard
@@ -35341,7 +35710,11 @@ Braket
 \backslash
 middle
 \series default
-, qui est décrite dans 
+, qui est décrite dans
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Taille-parenthèses-automatique"
@@ -35575,7 +35948,11 @@ dfrac
 \backslash
 tbinom
 \series default
- vues en 
+ vues en
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Fractions"
@@ -35907,7 +36284,7 @@ cancelto
 \end_layout
 
 \begin_layout Standard
-Pour modifier la taille de la valeur d' 
+Pour modifier la taille de la valeur d'
 \begin_inset Quotes fld
 \end_inset
 
@@ -35970,7 +36347,7 @@ où
 \series bold
 red
 \series default
- peut être remplacé par ma couleur de votre choix.
+ peut être remplacé par la couleur de votre choix.
 \end_layout
 
 \begin_layout Standard
@@ -36114,7 +36491,7 @@ fi
 \end_layout
 
 \begin_layout Subsection
-Formules dans les entêtes de section
+Formules dans les en-têtes de section
 \begin_inset CommandInset label
 LatexCommand label
 name "sub:formules-dans-les-entêtes"
@@ -36135,8 +36512,8 @@ Formules ! dans les entêtes de section
 \end_layout
 
 \begin_layout Standard
-Quand des formules sont utilisées dans des entêtes de section, on doit prendre
- en compte les points suivants:
+Quand des formules sont utilisées dans des en-têtes de section, on doit
+ prendre en compte les points suivants:
 \end_layout
 
 \begin_layout Standard
@@ -36158,7 +36535,11 @@ Paquetages ! hyperref
 
 \end_inset
 
- est activée dans le dialogue paramètres du document dans la rubrique 
+ est activée dans le dialogue 
+\family sans
+Paramètres
+\family default
+ du document dans la rubrique 
 \family sans
 Propriétés du PDF
 \family default
@@ -36176,7 +36557,7 @@ Propriétés du PDF
 \end_layout
 
 \begin_layout Standard
-Les deux problèmes peuvent être résolus en insérant à la fin de l'entête
+Les deux problèmes peuvent être résolus en insérant à la fin de l'en-tête
  de section un titre court avec le menu 
 \family sans
 Insertion\SpecialChar \menuseparator
@@ -36187,7 +36568,7 @@ Titre
 court
 \family default
 .
- Les titres courts sont en général utilisés avec des entêtes de section
+ Les titres courts sont en général utilisés avec des en-têtes de section
  couvrant plusieurs lignes pour garder une table des matière bien ordonnée.
  Seul le titre court apparaît dans la table des matières et donc dans les
  signets PDF.
@@ -36223,37 +36604,37 @@ texorpdfstring
 \end_layout
 
 \begin_layout Standard
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 Partie à problème
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  est la partie de l'entête qui ne doit pas apparaître dans les signets PDF.
  Cela peut être des caractères, des formules, des notes de bas de page,
  mais aussi des références croisées.
  L'
-\begin_inset Quotes erd
+\begin_inset Quotes fld
 \end_inset
 
 alternative
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  est utilisée à la place de la 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 partie à problème
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
  pour les signets.
 \end_layout
 
 \begin_layout Standard
-Voici deux exemples d'entêtes de section:
+Voici deux exemples d'en-têtes de section:
 \begin_inset VSpace -3mm
 \end_inset
 
@@ -36336,8 +36717,8 @@ unboldmath
 
 \end_inset
 
-Dans le premier entête, on a utilisé un titre court, dans le second la commande
- 
+Dans le premier en-tête, on a utilisé un titre court, dans le second la
+ commande 
 \series bold
 
 \backslash
@@ -36347,17 +36728,21 @@ texorpdfstring
 \end_layout
 
 \begin_layout Standard
-Pour avoir la même mise en forme que les autres entêtes, toute l'entête
+Pour avoir la même mise en forme que les autres en-têtes, toute l'en-tête
  a été placée dans un environnement  
 \series bold
 boldmath
 \series default
-.
+
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-voir 
+Voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Formules-en-gras"
@@ -36369,7 +36754,7 @@ reference "sub:Formules-en-gras"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsection
@@ -36512,7 +36897,7 @@ en mode TeX.
 \begin_layout Standard
 À cause de la commande, un peu d'espace est ajouté automatiquement avant
  la formule.
- Pour le supprimer, on peut insérer avant la formule un espace vertical
+ Pour le supprimer, on peut insérer avant la formule un espacement vertical
  de -6
 \begin_inset space \thinspace{}
 \end_inset
@@ -36547,7 +36932,7 @@ mm à la place.
 \end_layout
 
 \begin_layout Standard
-Comme exemple, un texte multi-colonnes avec une formule hors-ligne:
+Comme exemple, voici un texte multi-colonnes avec une formule hors-ligne:
 \end_layout
 
 \begin_layout Standard
@@ -36669,7 +37054,11 @@ Formules ! avec description des variables
 \end_layout
 
 \begin_layout Standard
-Pour décrire les variable au sein d'une formule, comme dans la formule 
+Pour décrire les variables au sein d'une formule, comme dans la formule
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:within"
@@ -36692,12 +37081,12 @@ reference "eq:within"
 \begin_inset Formula $n$
 \end_inset
 
- variables utilisées.
+ variables utilisées
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-pour les matrices, voir 
+Pour les matrices, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Matrices"
@@ -36709,6 +37098,7 @@ reference "sec:Matrices"
 
 \end_inset
 
+.
  Pour mettre la description en plus petits caractères, on peut insérer par
  exemple la commande 
 \series bold
@@ -36716,12 +37106,16 @@ reference "sec:Matrices"
 \backslash
 footnotesize
 \series default
- avant la matrice.
+ avant la matrice
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-pour les tailles de polices, voir 
+Pour les tailles de polices, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Tailles-polices"
@@ -36733,7 +37127,7 @@ reference "sub:Tailles-polices"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -36800,7 +37194,11 @@ Quand on utilise le style de formules
 \series bold
  Centré
 \series default
-, on utilise la méthode décrite dans 
+, on utilise la méthode décrite dans
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Environnement-Flalign"
@@ -36808,7 +37206,11 @@ reference "sub:Environnement-Flalign"
 \end_inset
 
  pour indenter les formules.
- La formule 
+ La formule
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:within"
@@ -36985,11 +37387,11 @@ Avec ces commandes, on peut typographier des réactions entre particules
 \begin_layout Standard
 Les lettres droites sont plus grasses et plus larges que les italiques.
  On ne doit donc pas les utiliser pour des unités comme 
-\begin_inset Quotes eld
+\begin_inset Quotes fld
 \end_inset
 
 µm
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
@@ -37082,7 +37484,11 @@ cdot
 status collapsed
 
 \begin_layout Plain Layout
-voir 
+Voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Opérateurs-binaires"
@@ -37119,7 +37525,7 @@ i}
 \end_layout
 
 \begin_layout Standard
-En plus du point centré, dans ce document on a défini le symbole degré °
+En plus du point centré, on a défini dans ce document le symbole degré °
  pour qu'il puisse être inséré directement dans une formule grâce à la ligne
  suivante dans le préambule LaTeX:
 \end_layout
@@ -37150,8 +37556,6 @@ Commentaires LaTeX dans les formules
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 Dans le texte, vous pouvez insérer un commentaire qui ne sera lisible que
  dans le code source de votre fichier avec le menu 
 \family sans
@@ -37173,7 +37577,7 @@ Commentaire
 \end_layout
 
 \begin_layout Standard
-Cela crée une boite dans laquelle vous pouvez écrire votre commentaire.
+Cela crée une boîte dans laquelle vous pouvez écrire votre commentaire.
  A cause d'un bogue de LyX
 \begin_inset Foot
 status collapsed
@@ -37192,7 +37596,7 @@ target "http://www.lyx.org/trac/ticket/9002"
 \end_inset
 
  vous ne pouvez pas écrire du texte normal à l'intérieur du commentaire,
- même en utilisant du texte mathématique, vous verrez ses commandes LaTeX
+ même en utilisant du texte mathématique, vous verrez les commandes LaTeX
  dans la sortie LaTeX.
 \lang english
 
@@ -37236,13 +37640,13 @@ Typographiques, conseils
 
 \begin_layout Standard
 Ce paragraphe est un résumé des usages typographiques les plus importants,
- documentés dans les normes ISO.
+ documentés dans les normes ISO
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Cette collection a été extraite partiellement du dictionnaire allmend semi-offic
-iel dénommé 
+Cette collection a été extraite partiellement du dictionnaire allemand semi-offi
+ciel dénommé 
 \begin_inset Quotes fld
 \end_inset
 
@@ -37270,11 +37674,11 @@ key "Checklist"
 
 \end_inset
 
-
+:
 \end_layout
 
 \begin_layout Itemize
-Les symboles d'unités sont 
+les symboles d'unités sont 
 \emph on
 toujours
 \emph default
@@ -37283,7 +37687,11 @@ toujours
 status collapsed
 
 \begin_layout Plain Layout
-obtenu avec les styles de polices, voir 
+Obtenus avec les styles de polices, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Styles-de-polices"
@@ -37303,7 +37711,11 @@ km/h
 \begin_inset Newline newline
 \end_inset
 
-Entre la valeur numérique et l'unité on a la plus petite espace, voir 
+Entre la valeur numérique et l'unité on a la plus petite espace, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Espace-prédéfini"
@@ -37345,12 +37757,19 @@ unittwo
 \backslash
 unit[valeur]{unité}
 \series default
-, vous ne pouvez donc pas l'insérer en code TeX.
+, vous ne pouvez donc pas l'insérer en code TeX;
 \end_layout
 
 \begin_layout Itemize
-Les symboles pourcent et les pour mille sont présentés comme les symboles
- d'unités:
+les symboles pourcentage et 
+\begin_inset Quotes fld
+\end_inset
+
+pour mille
+\begin_inset Quotes frd
+\end_inset
+
+ sont présentés comme les symboles d'unités:
 \begin_inset Newline newline
 \end_inset
 
@@ -37368,20 +37787,20 @@ Le symbole pour mille est déconseillé par l'AFNOR (NdT).
 
 \end_inset
 
-
+;
 \end_layout
 
 \begin_layout Itemize
-Le symbole degré suit directement la valeur numérique: 15°, sauf quand il
+le symbole degré suit directement la valeur numérique: 15°, sauf quand il
  est utilisé dans une unité: 15
 \begin_inset space \thinspace{}
 \end_inset
 
-°C
+°C;
 \end_layout
 
 \begin_layout Itemize
-Dans les nombres de plus de quatre chiffres, une espace fine est insérée
+dans les nombres de plus de quatre chiffres, une espace fine est insérée
  tous les trois chiffres pour les grouper: 18
 \begin_inset space \thinspace{}
 \end_inset
@@ -37390,11 +37809,11 @@ Dans les nombres de plus de quatre chiffres, une espace fine est insérée
 \begin_inset space \thinspace{}
 \end_inset
 
-588
+588;
 \end_layout
 
 \begin_layout Itemize
-Pour exprimer des dimensions comme par exemple 120×90×40
+pour exprimer des dimensions comme par exemple 120×90×40
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -37413,7 +37832,7 @@ cm on utilise le signe de la multiplication
 \backslash
 times
 \series default
- ou par le menu 
+, soit par le menu 
 \family sans
 Insertion\SpecialChar \menuseparator
 Caractère
@@ -37423,7 +37842,7 @@ Caractère
 spécial\SpecialChar \menuseparator
 Symboles,
 \family default
- mais il peut aussi être accessible directement sur certains claviers.
+ mais il peut aussi être accessible directement sur certains claviers
 \begin_inset Foot
 status collapsed
 
@@ -37437,25 +37856,29 @@ Alt-0215
 
 \end_inset
 
-
+;
 \end_layout
 
 \begin_layout Itemize
-Les fonctions mathématiques dont le nom est composé de plusieurs lettres
- sont écrites en caractères droits pour éviter toute confusion, voir 
+les fonctions mathématiques dont le nom est composé de plusieurs lettres
+ sont écrites en caractères droits pour éviter toute confusion, voir
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Fonctions-prédéfinies"
 
 \end_inset
 
-.
+;
 \end_layout
 
 \begin_layout Itemize
-Les indices composés de plusieurs caractères sont écrits en caractères droits:
+les indices composés de plusieurs caractères sont écrits en caractères droits:
  
-\begin_inset Formula $E_{\mathrm{kin}}$
+\begin_inset Formula $E_{\mathrm{kin}}.$
 \end_inset
 
 
@@ -37466,11 +37889,11 @@ Les composants de matrices sont en italiques:
 \begin_inset Formula $\hat{H}_{kl}$
 \end_inset
 
-
+;
 \end_layout
 
 \begin_layout Itemize
-L'opérateur 
+l'opérateur 
 \begin_inset Quotes fld
 \end_inset
 
@@ -37495,11 +37918,11 @@ i
 \end_inset
 
  devraient être écrits en caractères droits pour éviter de les mélanger
- avec les autres variables.
+ avec les autres variables;
 \end_layout
 
 \begin_layout Itemize
-Le caractère qui représente une transformation de Fourier peut être obtenu
+le caractère qui représente une transformation de Fourier peut être obtenu
  soit avec la commande 
 \series bold
 
