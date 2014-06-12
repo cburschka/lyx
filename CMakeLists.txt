@@ -866,13 +866,15 @@ if(LYX_NLS)
 	message(STATUS)
 endif()
 
+# Apple has builtin native spell checker,
+# no need to warn for missing Aspell, Hunspell or Enchant
 if(NOT Spelling_FOUND AND NOT APPLE)
   if(LYX_REQUIRE_SPELLCHECK)
     set(_mode "FATAL_ERROR")
   else()
     set(_mode "STATUS")
   endif()
-  message(${_mode} "No spellcheck libraries found. Lyx will be unable use spellchecking")
+  message(${_mode} "No spellcheck libraries found. LyX will be unable use spellchecking")
 endif()
 
 include("${TOP_CMAKE_PATH}/LyxPackaging.cmake")
