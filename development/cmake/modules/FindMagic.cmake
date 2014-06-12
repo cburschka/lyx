@@ -55,22 +55,8 @@ find_library(Magic_LIBRARY NAMES "magic")
 	
 check_magic_functions_exists(HAS_MAGIC_FUNCTIONS)
 
-if(Magic_INCLUDE_DIR AND Magic_LIBRARY AND HAS_MAGIC_FUNCTIONS)
-	set(Magic_FOUND TRUE)
-endif()
+# handle the QUIET and REQUIRED arguments and DEFAULT_MSG
+# set Magic_FOUND to TRUE if all listed variables are TRUE
 
-if(Magic_FOUND)
-   if(NOT Magic_FIND_QUIETLY)
-      message(STATUS "Found magic library: ${Magic_LIBRARY}")
-   endif()
-else()
-   if(Magic_FIND_REQUIRED)
-      message(STATUS "Looked for magic library named magic.")
-      message(STATUS "Found no acceptable magic library. This is fatal.")
-      message(STATUS "magic header: ${Magic_INCLUDE_DIR}")
-      message(STATUS "magic lib   : ${Magic_LIBRARY}")
-      message(FATAL_ERROR "Could NOT find magic library")
-   endif()
-endif()
-
-mark_as_advanced(Magic_LIBRARY Magic_INCLUDE_DIR)
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(Magic DEFAULT_MSG Magic_INCLUDE_DIR Magic_LIBRARY HAS_MAGIC_FUNCTIONS)

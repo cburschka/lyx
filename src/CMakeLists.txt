@@ -134,18 +134,7 @@ target_link_libraries(${_lyx}
 	${QT_QTMAIN_LIBRARY}
 	${vld_dll})
 
-if(HUNSPELL_FOUND)
-	target_link_libraries(${_lyx} ${HUNSPELL_LIBRARY})
-endif()
-if(ASPELL_FOUND)
-	target_link_libraries(${_lyx} ${ASPELL_LIBRARY})
-endif()
-if(ENCHANT_FOUND)
-	target_link_libraries(${_lyx} ${ENCHANT_LIBRARY})
-endif()
-if(Magic_FOUND)
-	target_link_libraries(${_lyx} ${Magic_LIBRARY})
-endif()
+lyx_target_link_libraries(${_lyx} HUNSPELL ASPELL ENCHANT Magic)
 
 if(APPLE)
 	target_link_libraries(${_lyx} "-bind_at_load")

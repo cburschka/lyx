@@ -30,12 +30,9 @@ target_link_libraries(${_lyxclient}
 	${Lyx_Boost_Libraries}
 	${ICONV_LIBRARY}
 	${QT_QTCORE_LIBRARY}
-	${QT_QTGUI_LIBRARY}
-        ${Magic_LIBRARY})
+	${QT_QTGUI_LIBRARY})
 
-if(ASPELL_FOUND)
-	target_link_libraries(${_lyxclient} ${ASPELL_LIBRARY})
-endif()
+lyx_target_link_libraries(${_lyxclient} Magic ASPELL)
 
 if(APPLE)
 	target_link_libraries(${_lyxclient} "-framework AppKit")

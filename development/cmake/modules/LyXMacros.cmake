@@ -329,3 +329,14 @@ macro(setmarkedtestlabel testname reverted)
   endif()
 endmacro()
 
+
+macro(lyx_target_link_libraries _target)
+  foreach(_lib ${ARGN})
+    string(TOUPPER ${_lib} _ulib)
+    if(${_ulib}_FOUND)
+      #message(STATUS "target_link_libraries(${_target} ${${_lib}_LIBRARY})")
+      target_link_libraries(${_target} ${${_lib}_LIBRARY})
+    endif()
+  endforeach()
+endmacro()
+
