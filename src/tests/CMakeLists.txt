@@ -18,7 +18,7 @@ add_executable(check_layout ${check_layout_SOURCES})
 
 target_link_libraries(check_layout support
   ${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY}
-  ${ZLIB_LIBRARY} ${ICONV_LIBRARY})
+  ${ZLIB_LIBRARY} ${ICONV_LIBRARY} ${Magic_LIBRARY})
 
 add_dependencies(lyx_run_tests check_layout)
 set_target_properties(check_layout PROPERTIES FOLDER "tests/src")

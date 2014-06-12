@@ -15,7 +15,7 @@ macro(sources _program)
 	add_executable(${_program} ${_tmplist})
 	target_link_libraries(${_program} support
 		${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY}
-		${ZLIB_LIBRARY} ${ICONV_LIBRARY})
+		${ZLIB_LIBRARY} ${ICONV_LIBRARY} ${Magic_LIBRARY})
 endmacro()
 
 file(GLOB test_sources ${TOP_SRC_DIR}/src/support/tests/${LYX_CPP_FILES})
