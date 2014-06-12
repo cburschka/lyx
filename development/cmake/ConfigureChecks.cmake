@@ -112,22 +112,24 @@ check_cxx_source_compiles(
 	"
 SIZEOF_WCHAR_T_IS_4)
 
-if (Qt5X11Extras_FOUND)
-  get_target_property(_x11extra_prop Qt5::X11Extras IMPORTED_CONFIGURATIONS)
-  get_target_property(_x11extra_link_libraries Qt5::X11Extras IMPORTED_LOCATION_${_x11extra_prop})
-  set(CMAKE_REQUIRED_LIBRARIES ${_x11extra_link_libraries})
-  set(CMAKE_REQUIRED_INCLUDES ${Qt5X11Extras_INCLUDE_DIRS})
-  set(CMAKE_REQUIRED_FLAGS ${Qt5X11Extras_EXECUTABLE_COMPILE_FLAGS})
-  check_cxx_source_compiles(
-          "
-          #include <QtX11Extras/QX11Info>
-          int main()
-          {
-            bool isX11 = QX11Info::isPlatformX11();
-          }
-          "
-  QT_USES_X11)
-elseif(QT4_FOUND)
+if(LYX_USE_QT MATCHES "QT5")
+  if (Qt5X11Extras_FOUND)
+    get_target_property(_x11extra_prop Qt5::X11Extras IMPORTED_CONFIGURATIONS)
+    get_target_property(_x11extra_link_libraries Qt5::X11Extras IMPORTED_LOCATION_${_x11extra_prop})
+    set(CMAKE_REQUIRED_LIBRARIES ${_x11extra_link_libraries})
+    set(CMAKE_REQUIRED_INCLUDES ${Qt5X11Extras_INCLUDE_DIRS})
+    set(CMAKE_REQUIRED_FLAGS ${Qt5X11Extras_EXECUTABLE_COMPILE_FLAGS})
+    check_cxx_source_compiles(
+            "
+            #include <QtX11Extras/QX11Info>
+            int main()
+            {
+              bool isX11 = QX11Info::isPlatformX11();
+            }
+            "
+    QT_USES_X11)
+  endif()
+elseif(LYX_USE_QT MATCHES "QT4")
   set(CMAKE_REQUIRED_LIBRARIES ${QT_QTGUI_LIBRARY})
   set(CMAKE_REQUIRED_INCLUDES ${QT_INCLUDES})
   check_cxx_source_compiles(
@@ -140,5 +142,7 @@ elseif(QT4_FOUND)
           }
           "
   QT_USES_X11)
+else()
+  message(FATAL_ERROR "Check for QT_USES_X11: Not handled LYX_USE_QT (= ${LYX_USE_QT})")
 endif()
 
