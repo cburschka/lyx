@@ -1514,7 +1514,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_DOUBLE:
 		if (cmd.button() == mouse_button::button1) {
-			selectWord(cur, WHOLE_WORD_STRICT);
+			selectWord(cur, WHOLE_WORD);
 			bv->cursor() = cur;
 		}
 		break;
