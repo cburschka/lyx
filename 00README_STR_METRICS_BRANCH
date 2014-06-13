@@ -16,6 +16,7 @@ Currently everything is supposed to work for both LTR and RTL text.
 The bugs fixed and caused by this branch are tracked at ticket #9003:
 http://www.lyx.org/trac/ticket/9003
 
+
 What is done:
 
 * Make TextMetrics methods operate on Row objects: breakRow and
@@ -38,10 +39,7 @@ What is done:
 * Implement proper string metrics computation (with cache). Remove
   useless workarounds which disable kerning and ligatures.
 
-* Draw also RtL text string-wise. This both speeds-up drawing and
-  prepares for code removal, since we now rely on Qt to do things we
-  use to do by ourselves (see isArabic* and isHebrew* code in
-  Encodings.cpp).
+* Draw also RtL text string-wise. This speeds-up drawing.
 
 * Do not cut strings at separators in RowPainter when text is not
   justified. This speeds-up painting by reducing the number of strings
@@ -51,15 +49,18 @@ What is done:
   ligature/kerning breaking in latin text, and bad rendering problems
   in Arabic.
 
+* Remove homebrew Arabic and Hebrew support from Encoding.cpp. We now
+  rely on Qt to do handle complex scripts.
+
 
 Next steps:
-
-* Fix bugs uncovered by testing.
 
 * Get rid of LyXRC::force_paint_single_char, which is not used anymore
   in the source.
 
 * Maybe get rid of LyXRC::rtl_support, which does not have a real use case.
+
+* Fix bugs uncovered by testing.
 
 * Profile and see how performance can be improved.
 
@@ -70,9 +71,14 @@ Steps for later (aka out of the scope of this branch):
   in principle, but the code is intricate and needs some careful
   analysis. The first thing that needs to be done is to break row
   elements with the same criteria. Currently breakRow does not
-  consider on-the-fly spell-checking and selection changes, but it is
-  not clear to me that it is required. Moreover, this thing would only
-  work if we are sure that the Row object is up-to-date when drawing
-  happens. This depends on the update machinery.
+  consider on-the-fly spell-checking, but it is not clear to me that
+  it is required. Moreover, this thing would only work if we are sure
+  that the Row object is up-to-date when drawing happens. This depends
+  on the update machinery.
 
   This would allow to get rid of the Bidi.cpp code.
+
+* Change Row object to operate only on integers and not doubles. Then,
+  rewrite the computation of spacing in justified paragraphs so that
+  strings can be drawn without cutting at separators. This will improve
+  performance.

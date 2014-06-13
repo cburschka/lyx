@@ -774,13 +774,11 @@ void RowPainter::paintText()
 				font_span.last = inlineCompletionVPos;
 		}
 
+		// Note that this value will only be used in
+		// situations where no ligature of composition of
+		// characters is needed. (see comments alginuses of width_pos).
 		const int width_pos = pm_.singleWidth(pos, font);
 
-		if (x_ + width_pos < 0) {
-			x_ += width_pos;
-			++vpos;
-			continue;
-		}
 		Change const & change = par_.lookupChange(pos);
 		if (change.changed() && !change_running.changed()) {
 			change_running = change;
@@ -815,6 +813,7 @@ void RowPainter::paintText()
 			int const lwidth = theFontMetrics(labelFont())
 				.width(layout.labelsep);
 
+			// width_pos is either the width of a space or an inset
 			x_ += row_.label_hfill + lwidth - width_pos;
 		}
 
@@ -825,6 +824,7 @@ void RowPainter::paintText()
 		if (par_.isSeparator(pos)) {
 			Font const orig_font = text_metrics_.displayFont(pit_, pos);
 			double const orig_x = x_;
+			// width_pos is the width of a space
 			double separator_width = width_pos;
 			if (pos >= body_pos)
 				separator_width += row_.separator;

@@ -255,29 +255,8 @@ public:
 	///
 	const_iterator end() const { return encodinglist.end(); }
 
-	///
-	enum LetterForm {
-		///
-		FORM_ISOLATED,
-		///
-		FORM_FINAL,
-		///
-		FORM_INITIAL,
-		///
-		FORM_MEDIAL
-	};
-	///
-	static bool isHebrewComposeChar(char_type c);
-	///
-	static bool isArabicComposeChar(char_type c);
-	///
-	static bool isArabicSpecialChar(char_type c);
-	///
-	static bool isArabicChar(char_type c);
 	/// Accessor for the unicode information table.
 	static CharInfo const & unicodeCharInfo(char_type c);
-	///
-	static char_type transformChar(char_type c, LetterForm form);
 	/// Is this a combining char?
 	static bool isCombiningChar(char_type c);
 	/// Return the TIPA shortcut
