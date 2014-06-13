@@ -60,7 +60,7 @@ void InsetSeparatorParams::read(Lexer & lex)
 {
 	string token;
 	lex.setContext("InsetSeparatorParams::read");
-	lex >> token;	
+	lex >> token;
 	if (token == "plain")
 		kind = InsetSeparatorParams::PLAIN;
 	else if (token == "parbreak")
@@ -108,17 +108,19 @@ bool InsetSeparator::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action()) {
 	// we handle these
-	case LFUN_INSET_MODIFY:
-		if (cmd.getArg(0) == "plain") {
-			InsetSeparatorParams params;
-			string2params(to_utf8(cmd.argument()), params);
-			status.setOnOff(params_.kind == params.kind);
-		}
+	case LFUN_INSET_MODIFY: {
+		if (cmd.getArg(0) != "separator")
+			break;
+		InsetSeparatorParams params;
+		string2params(to_utf8(cmd.argument()), params);
+		status.setOnOff(params_.kind == params.kind);
 		status.setEnabled(true);
 		return true;
+	}
 	default:
 		return Inset::getStatus(cur, cmd, status);
 	}
+	return false;
 }
 
 
