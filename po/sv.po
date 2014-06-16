@@ -213,7 +213,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-04-19 11:46-0400\n"
+"POT-Creation-Date: 2014-06-16 17:17-0400\n"
 "PO-Revision-Date: 2014-04-04 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
@@ -403,8 +403,8 @@ msgid "Remove the selected index"
 msgstr "Ta bort valt index"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:165
-#: src/frontends/qt4/ui/BranchesUi.ui:136 src/Buffer.cpp:4185
-#: src/Buffer.cpp:4198
+#: src/frontends/qt4/ui/BranchesUi.ui:136 src/Buffer.cpp:4231
+#: src/Buffer.cpp:4244
 msgid "&Remove"
 msgstr "Ta bo&rt"
 
@@ -447,9 +447,9 @@ msgstr "Lägg till a&lla"
 #: src/frontends/qt4/ui/DocumentUi.ui:84
 #: src/frontends/qt4/ui/CitationUi.ui:220
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1271
-#: src/Buffer.cpp:2657 src/Buffer.cpp:4159 src/Buffer.cpp:4223
-#: src/LyXVC.cpp:107 src/LyXVC.cpp:297 src/buffer_funcs.cpp:77
-#: src/frontends/qt4/GuiBranches.cpp:219
+#: src/Buffer.cpp:1340 src/Buffer.cpp:2703 src/Buffer.cpp:4205
+#: src/Buffer.cpp:4269 src/LyXVC.cpp:107 src/LyXVC.cpp:297
+#: src/buffer_funcs.cpp:77 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:246
 #: src/frontends/qt4/GuiDocument.cpp:2106
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -600,7 +600,7 @@ msgstr "Märk &främmande språk"
 msgid "Right-to-left language support"
 msgstr "Stöd för höger-till-vänster-språk (HTV)"
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:228 src/LyXRC.cpp:3446
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:228 src/LyXRC.cpp:3447
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
@@ -2194,7 +2194,7 @@ msgstr "Redigering"
 msgid "Cursor &follows scrollbar"
 msgstr "Markören &följer rullningslist"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:3169
+#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:3170
 msgid ""
 "Configure the width of the text cursor. Automatic zoom-controlled cursor "
 "width used when set to 0."
@@ -2830,7 +2830,7 @@ msgstr "Valda:"
 msgid "&PATH prefix:"
 msgstr "&PATH-prefix:"
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3356
+#: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3357
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable.\n"
@@ -2843,7 +2843,7 @@ msgstr ""
 msgid "TEX&INPUTS prefix:"
 msgstr "TEX&INPUTS-prefix:"
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3519
+#: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3520
 msgid ""
 "Specify those directories which should be prepended to the TEXINPUTS "
 "environment variable.\n"
@@ -3476,7 +3476,7 @@ msgstr "Lä&ngsta etikett"
 msgid "Line &spacing"
 msgstr "Radavstånd"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1884
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1887
 #: src/frontends/qt4/GuiDocument.cpp:713
 msgid "Single"
 msgstr "Enkel"
@@ -3485,7 +3485,7 @@ msgstr "Enkel"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1890
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1893
 #: src/frontends/qt4/GuiDocument.cpp:717
 msgid "Double"
 msgstr "Dubbel"
@@ -4983,7 +4983,7 @@ msgid "Search field:"
 msgstr "Sökfält:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:428
-#: src/frontends/qt4/GuiCitation.cpp:285
+#: src/frontends/qt4/GuiCitation.cpp:286
 msgid "All fields"
 msgstr "Alla fält"
 
@@ -5000,7 +5000,7 @@ msgid "Entry types:"
 msgstr "Posttyper:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:480
-#: src/frontends/qt4/GuiCitation.cpp:300
+#: src/frontends/qt4/GuiCitation.cpp:301
 msgid "All entry types"
 msgstr "Alla posttyper"
 
@@ -5092,7 +5092,7 @@ msgstr "&Inkludera alla barn"
 msgid "Output &line length:"
 msgstr "Utmatningens rad&längd:"
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3116
+#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3117
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -6271,8 +6271,8 @@ msgstr "Bibliografi"
 #: lib/layouts/IEEEtran.layout:357 lib/layouts/agutex.layout:222
 #: lib/layouts/jasatex.layout:284 lib/layouts/moderncv.layout:477
 #: lib/layouts/stdstruct.inc:68 lib/layouts/svcommon.inc:589
-#: lib/layouts/amsdefs.inc:214 src/insets/InsetBibtex.cpp:934
-#: src/insets/InsetBibtex.cpp:983 src/output_plaintext.cpp:153
+#: lib/layouts/amsdefs.inc:214 src/insets/InsetBibtex.cpp:937
+#: src/insets/InsetBibtex.cpp:986 src/output_plaintext.cpp:153
 msgid "References"
 msgstr "Referenser"
 
@@ -9399,8 +9399,8 @@ msgstr "Lösning"
 msgid "Solution \\thesolution."
 msgstr "Lösning \\thesolution."
 
-#: lib/layouts/AEA.layout:300 src/frontends/qt4/Menus.cpp:1628
-#: src/frontends/qt4/Menus.cpp:1657
+#: lib/layouts/AEA.layout:300 src/frontends/qt4/Menus.cpp:1629
+#: src/frontends/qt4/Menus.cpp:1658
 msgid "Caption"
 msgstr "Bildtext"
 
@@ -21917,16 +21917,16 @@ msgstr "%1$s och %2$s"
 msgid "%1$s et al."
 msgstr "%1$s et al."
 
-#: src/BiblioInfo.cpp:494 src/BiblioInfo.cpp:536 src/BiblioInfo.cpp:547
-#: src/BiblioInfo.cpp:595 src/BiblioInfo.cpp:599
+#: src/BiblioInfo.cpp:494 src/BiblioInfo.cpp:537 src/BiblioInfo.cpp:548
+#: src/BiblioInfo.cpp:599 src/BiblioInfo.cpp:603
 msgid "ERROR!"
 msgstr "FEL!"
 
-#: src/BiblioInfo.cpp:852
+#: src/BiblioInfo.cpp:857
 msgid "No year"
 msgstr "Inget år"
 
-#: src/BiblioInfo.cpp:862
+#: src/BiblioInfo.cpp:867
 msgid "Bibliography entry not found!"
 msgstr "Bibliografipost hittades inte!"
 
@@ -22102,7 +22102,7 @@ msgstr ""
 "%1$s är från en nyare version av LyX och lyx2lyx-skriptet misslyckades med "
 "att omvandla den."
 
-#: src/Buffer.cpp:1258 src/Buffer.cpp:4169 src/Buffer.cpp:4232
+#: src/Buffer.cpp:1258 src/Buffer.cpp:4215 src/Buffer.cpp:4278
 msgid "File is read-only"
 msgstr "Filen är skrivskyddad"
 
@@ -22124,65 +22124,88 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Skriv över modifierad fil?"
 
-#: src/Buffer.cpp:1271 src/Buffer.cpp:2657 src/Exporter.cpp:50
-#: src/frontends/qt4/GuiClipboard.cpp:246 src/frontends/qt4/GuiView.cpp:2151
-#: src/frontends/qt4/GuiView.cpp:2339 src/frontends/qt4/GuiView.cpp:2453
+#: src/Buffer.cpp:1271 src/Buffer.cpp:1340 src/Buffer.cpp:2703
+#: src/Exporter.cpp:50 src/frontends/qt4/GuiClipboard.cpp:246
+#: src/frontends/qt4/GuiView.cpp:2151 src/frontends/qt4/GuiView.cpp:2339
+#: src/frontends/qt4/GuiView.cpp:2453
 msgid "&Overwrite"
 msgstr "Skriv över"
 
-#: src/Buffer.cpp:1300
+#: src/Buffer.cpp:1313 src/Buffer.cpp:1355
+#, fuzzy
+msgid "Write failure"
+msgstr "chktex-misslyckande"
+
+#: src/Buffer.cpp:1314
+#, c-format
+msgid ""
+"Cannot find temporary filename for:\n"
+"  %1$s.\n"
+"Even %2$s exists!"
+msgstr ""
+
+#: src/Buffer.cpp:1335
 msgid "Backup failure"
 msgstr "Säkerhetskopieringsmisslyckande"
 
-#: src/Buffer.cpp:1301
+#: src/Buffer.cpp:1336
 #, c-format
 msgid ""
-"Cannot create backup file %1$s.\n"
-"Please check whether the directory exists and is writable."
+"Cannot create backup file:\n"
+"  %1$s.\n"
+"Do you want to try to save the file anyway?\n"
+"This will over-write the original file."
 msgstr ""
-"Kan inte skapa säkerhetskopierad fil %1$s.\n"
-"Vänligen kontrollera huruvida katalogen finns och är skrivbar."
 
-#: src/Buffer.cpp:1327
+#: src/Buffer.cpp:1356
+#, c-format
+msgid ""
+"Cannot restore original file to:\n"
+"  %1$s.\n"
+"But it can be found at:\n"
+"  %2$s."
+msgstr ""
+
+#: src/Buffer.cpp:1373
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Sparar dokument %1$s..."
 
-#: src/Buffer.cpp:1342
+#: src/Buffer.cpp:1388
 msgid " could not write file!"
 msgstr " kunde inte skriva fil!"
 
-#: src/Buffer.cpp:1350
+#: src/Buffer.cpp:1396
 msgid " done."
 msgstr " färdig."
 
-#: src/Buffer.cpp:1365
+#: src/Buffer.cpp:1411
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Försöker att spara dokument %1$s\n"
 
-#: src/Buffer.cpp:1375 src/Buffer.cpp:1388 src/Buffer.cpp:1402
+#: src/Buffer.cpp:1421 src/Buffer.cpp:1434 src/Buffer.cpp:1448
 #, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr "Sparad till %1$s.\n"
 
-#: src/Buffer.cpp:1378
+#: src/Buffer.cpp:1424
 msgid "Save failed! Trying again...\n"
 msgstr "Sparning misslyckades! Provar igen...\n"
 
-#: src/Buffer.cpp:1392
+#: src/Buffer.cpp:1438
 msgid "Save failed! Trying yet again...\n"
 msgstr "Sparning misslyckades! Provar än en gång...\n"
 
-#: src/Buffer.cpp:1406
+#: src/Buffer.cpp:1452
 msgid "Save failed! Bummer. Document is lost."
 msgstr "Sparning misslyckades! Dokument förlorat."
 
-#: src/Buffer.cpp:1495
+#: src/Buffer.cpp:1541
 msgid "Iconv software exception Detected"
 msgstr "Iconv mjukvaruundantag upptäckt!"
 
-#: src/Buffer.cpp:1495
+#: src/Buffer.cpp:1541
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
@@ -22191,12 +22214,12 @@ msgstr ""
 "Vänligen verifiera att stödmjukvaran för din kodning (%1$s) är korrekt "
 "installerad"
 
-#: src/Buffer.cpp:1525
+#: src/Buffer.cpp:1571
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr "Kunde inte hitta LaTeX-kommando för tecken '%1$s' (kodpunkt %2$s)"
 
-#: src/Buffer.cpp:1528
+#: src/Buffer.cpp:1574
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -22205,19 +22228,19 @@ msgstr ""
 "Några tecken i ditt dokument kanske inte kan visas i vald kodning.\n"
 "Att ändra dokumentkodningen till utf8 kan hjälpa."
 
-#: src/Buffer.cpp:1535
+#: src/Buffer.cpp:1581
 msgid "iconv conversion failed"
 msgstr "iconv omvandling misslyckades"
 
-#: src/Buffer.cpp:1540
+#: src/Buffer.cpp:1586
 msgid "conversion failed"
 msgstr "omvandling misslyckades"
 
-#: src/Buffer.cpp:1643
+#: src/Buffer.cpp:1689
 msgid "Uncodable character in file path"
 msgstr "Okodbart tecken i filsökväg"
 
-#: src/Buffer.cpp:1645
+#: src/Buffer.cpp:1691
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -22241,57 +22264,57 @@ msgstr ""
 "Vid problem, välj en lämplig dokumentkodning\n"
 "(som utf8) eller ändra filens sökväg."
 
-#: src/Buffer.cpp:1998
+#: src/Buffer.cpp:2044
 msgid "Running chktex..."
 msgstr "Chktex körs..."
 
-#: src/Buffer.cpp:2012
+#: src/Buffer.cpp:2058
 msgid "chktex failure"
 msgstr "chktex-misslyckande"
 
-#: src/Buffer.cpp:2013
+#: src/Buffer.cpp:2059
 msgid "Could not run chktex successfully."
 msgstr "Kunde inte köra chktex framgångsrikt."
 
-#: src/Buffer.cpp:2305
+#: src/Buffer.cpp:2351
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Vet inte hur man exporterar till format: %1$s"
 
-#: src/Buffer.cpp:2385
+#: src/Buffer.cpp:2431
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Fel vid export till format: %1$s."
 
-#: src/Buffer.cpp:2394
+#: src/Buffer.cpp:2440
 msgid "Error generating literate programming code."
 msgstr "Fel vid generering av literat programmeringskod."
 
-#: src/Buffer.cpp:2473
+#: src/Buffer.cpp:2519
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "Gren \"%1$s\" finns inte."
 
-#: src/Buffer.cpp:2508
+#: src/Buffer.cpp:2554
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Gren \"%1$s\" finns redan."
 
-#: src/Buffer.cpp:2574
+#: src/Buffer.cpp:2620
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Kan inte tolka \"%1$s\""
 
-#: src/Buffer.cpp:2581
+#: src/Buffer.cpp:2627
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Okänt mål \"%1$s\""
 
-#: src/Buffer.cpp:2588
+#: src/Buffer.cpp:2634
 msgid "Error exporting to DVI."
 msgstr "Fel vid export till DVI."
 
-#: src/Buffer.cpp:2653 src/Exporter.cpp:45
+#: src/Buffer.cpp:2699 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -22302,85 +22325,85 @@ msgstr ""
 "\n"
 "Vill du skriva över den filen?"
 
-#: src/Buffer.cpp:2656 src/Exporter.cpp:48
+#: src/Buffer.cpp:2702 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Skriv över fil?"
 
-#: src/Buffer.cpp:2673
+#: src/Buffer.cpp:2719
 msgid "Error running external commands."
 msgstr "Fel vid körning av externa kommandon."
 
-#: src/Buffer.cpp:3495
+#: src/Buffer.cpp:3541
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Förhandsgranska källkod för stycke %1$d"
 
-#: src/Buffer.cpp:3499
+#: src/Buffer.cpp:3545
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Förhandsgranska källkod från stycke %1$s till %2$s"
 
-#: src/Buffer.cpp:3553
+#: src/Buffer.cpp:3599
 msgid "Preview source code"
 msgstr "Förhandsgranska källkod"
 
-#: src/Buffer.cpp:3555
+#: src/Buffer.cpp:3601
 msgid "Preview preamble"
 msgstr "Förhandsgranska ingress"
 
-#: src/Buffer.cpp:3557
+#: src/Buffer.cpp:3603
 msgid "Preview body"
 msgstr "Förhandsgranska kropp"
 
-#: src/Buffer.cpp:3572
+#: src/Buffer.cpp:3618
 msgid "Plain text does not have a preamble."
 msgstr "Vanlig text har inte en ingress."
 
-#: src/Buffer.cpp:3675
+#: src/Buffer.cpp:3721
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Autosparar %1$s"
 
-#: src/Buffer.cpp:3729
+#: src/Buffer.cpp:3775
 msgid "Autosave failed!"
 msgstr "Autosparning misslyckades!"
 
-#: src/Buffer.cpp:3790
+#: src/Buffer.cpp:3836
 msgid "Autosaving current document..."
 msgstr "Autosparar aktuellt dokument..."
 
-#: src/Buffer.cpp:3911
+#: src/Buffer.cpp:3957
 msgid "Couldn't export file"
 msgstr "Kunde inte exportera fil"
 
-#: src/Buffer.cpp:3912
+#: src/Buffer.cpp:3958
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Ingen information för att exportera formatet %1$s."
 
-#: src/Buffer.cpp:3973 src/frontends/qt4/GuiView.cpp:2124
+#: src/Buffer.cpp:4019 src/frontends/qt4/GuiView.cpp:2124
 msgid "File name error"
 msgstr "Filnamnsfel"
 
-#: src/Buffer.cpp:3974
+#: src/Buffer.cpp:4020
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Katalogsökvägen till dokumentet kan inte innehålla mellanslag."
 
-#: src/Buffer.cpp:4076 src/Buffer.cpp:4090 src/frontends/qt4/GuiView.cpp:548
+#: src/Buffer.cpp:4122 src/Buffer.cpp:4136 src/frontends/qt4/GuiView.cpp:548
 msgid "Document export cancelled."
 msgstr "Dokumentexport avbruten."
 
-#: src/Buffer.cpp:4093
+#: src/Buffer.cpp:4139
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument exporterat som %1$s till fil `%2$s'"
 
-#: src/Buffer.cpp:4100
+#: src/Buffer.cpp:4146
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument exporterat som %1$s"
 
-#: src/Buffer.cpp:4155
+#: src/Buffer.cpp:4201
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -22391,19 +22414,19 @@ msgstr ""
 "\n"
 "Återhämta nödsparning?"
 
-#: src/Buffer.cpp:4158
+#: src/Buffer.cpp:4204
 msgid "Load emergency save?"
 msgstr "Ladda nödsparning?"
 
-#: src/Buffer.cpp:4159
+#: src/Buffer.cpp:4205
 msgid "&Recover"
 msgstr "Åte&rhämta"
 
-#: src/Buffer.cpp:4159
+#: src/Buffer.cpp:4205
 msgid "&Load Original"
 msgstr "&Ladda original"
 
-#: src/Buffer.cpp:4170
+#: src/Buffer.cpp:4216
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -22412,15 +22435,15 @@ msgstr ""
 "En nödfil laddades framgångsrikt, men originalfilen %1$s är märkt "
 "skrivskyddad. Vänligen se till att spara dokumentet som en annan fil."
 
-#: src/Buffer.cpp:4177
+#: src/Buffer.cpp:4223
 msgid "Document was successfully recovered."
 msgstr "Dokument återhämtades framgångsrikt."
 
-#: src/Buffer.cpp:4179
+#: src/Buffer.cpp:4225
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument återhämtades INTE framgångsrikt."
 
-#: src/Buffer.cpp:4180
+#: src/Buffer.cpp:4226
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -22429,27 +22452,27 @@ msgstr ""
 "Ta bort nödfil nu?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:4184 src/Buffer.cpp:4196
+#: src/Buffer.cpp:4230 src/Buffer.cpp:4242
 msgid "Delete emergency file?"
 msgstr "Radera nödfil?"
 
-#: src/Buffer.cpp:4185 src/Buffer.cpp:4198
+#: src/Buffer.cpp:4231 src/Buffer.cpp:4244
 msgid "&Keep"
 msgstr "Behåll"
 
-#: src/Buffer.cpp:4189
+#: src/Buffer.cpp:4235
 msgid "Emergency file deleted"
 msgstr "Nödfil raderad"
 
-#: src/Buffer.cpp:4190
+#: src/Buffer.cpp:4236
 msgid "Do not forget to save your file now!"
 msgstr "Glöm inte att spara din fil nu!"
 
-#: src/Buffer.cpp:4197
+#: src/Buffer.cpp:4243
 msgid "Remove emergency file now?"
 msgstr "Ta bort nödfil nu?"
 
-#: src/Buffer.cpp:4220
+#: src/Buffer.cpp:4266
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -22460,19 +22483,19 @@ msgstr ""
 "\n"
 "Ladda säkerhetskopian i stället?"
 
-#: src/Buffer.cpp:4222
+#: src/Buffer.cpp:4268
 msgid "Load backup?"
 msgstr "Ladda säkerhetskopia?"
 
-#: src/Buffer.cpp:4223
+#: src/Buffer.cpp:4269
 msgid "&Load backup"
 msgstr "&Ladda säkerhetskopia"
 
-#: src/Buffer.cpp:4223
+#: src/Buffer.cpp:4269
 msgid "Load &original"
 msgstr "Ladda &original"
 
-#: src/Buffer.cpp:4233
+#: src/Buffer.cpp:4279
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -22481,25 +22504,25 @@ msgstr ""
 "En säkerhetskopierad fil laddades framgångsrikt, men originalfilen %1$s är "
 "märkt skrivskyddad. Vänligen se till att spara dokumentet som en annan fil."
 
-#: src/Buffer.cpp:4573 src/insets/InsetCaption.cpp:383
+#: src/Buffer.cpp:4619 src/insets/InsetCaption.cpp:383
 msgid "Senseless!!! "
 msgstr "Meningslöst!!! "
 
-#: src/Buffer.cpp:4793
+#: src/Buffer.cpp:4839
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s laddades om."
 
-#: src/Buffer.cpp:4796
+#: src/Buffer.cpp:4842
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Kunde inte ladda om dokument %1$s."
 
-#: src/Buffer.cpp:4863
+#: src/Buffer.cpp:4909
 msgid "Included File Invalid"
 msgstr "Inkluderad fil ogiltig"
 
-#: src/Buffer.cpp:4864
+#: src/Buffer.cpp:4910
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -23347,14 +23370,14 @@ msgstr ""
 msgid "Undefined flex inset"
 msgstr "Odefinierad flex-insättning"
 
-#: src/Encoding.cpp:408 src/Paragraph.cpp:2613
+#: src/Encoding.cpp:408 src/Paragraph.cpp:2619
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:179
 #: src/insets/InsetListings.cpp:187 src/insets/InsetListings.cpp:210
 #: src/mathed/InsetMathString.cpp:162
 msgid "LyX Warning: "
 msgstr "LyX-varning: "
 
-#: src/Encoding.cpp:409 src/Paragraph.cpp:2614
+#: src/Encoding.cpp:409 src/Paragraph.cpp:2620
 #: src/insets/InsetListings.cpp:180 src/insets/InsetListings.cpp:188
 #: src/mathed/InsetMathString.cpp:163
 msgid "uncodable character"
@@ -23911,7 +23934,7 @@ msgstr "Saknar filtyp [t.ex. latex, ps...] efter --import växel"
 msgid "Missing filename for --import"
 msgstr "Saknar filnamn för --import"
 
-#: src/LyXRC.cpp:3108
+#: src/LyXRC.cpp:3109
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -23919,14 +23942,14 @@ msgstr ""
 "Anse sammansatta ord, som \"iochförsig\" för \"i och för sig\" som "
 "godtagbara ord?"
 
-#: src/LyXRC.cpp:3112
+#: src/LyXRC.cpp:3113
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr ""
 "Specificera ett alternativt språk. Standard är att använda dokumentets språk."
 
-#: src/LyXRC.cpp:3120
+#: src/LyXRC.cpp:3121
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -23934,7 +23957,7 @@ msgstr ""
 "Välj bort om du inte vill att aktuellt urval ska ersättas automatiskt med "
 "vad du skriver."
 
-#: src/LyXRC.cpp:3124
+#: src/LyXRC.cpp:3125
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -23942,14 +23965,14 @@ msgstr ""
 "Välj bort om du inte vill att klassalternativen ska återställas till "
 "standardvärden efter klassändring."
 
-#: src/LyXRC.cpp:3128
+#: src/LyXRC.cpp:3129
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Tidsintervallet mellan autosparningar (i sekunder). 0 betyder ingen "
 "autosparning."
 
-#: src/LyXRC.cpp:3135
+#: src/LyXRC.cpp:3136
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -23958,7 +23981,7 @@ msgstr ""
 "kommer LyX att spara den säkerhetskopierade filen i samma katalog som "
 "originalfilen."
 
-#: src/LyXRC.cpp:3139
+#: src/LyXRC.cpp:3140
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -23966,12 +23989,12 @@ msgstr ""
 "Definiera alternativen för bibtex (jfr. man bibtex) eller välj en alternativ "
 "kompilator (t.ex. mlbibtex eller bibulus)."
 
-#: src/LyXRC.cpp:3143
+#: src/LyXRC.cpp:3144
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 "Definiera alternativen för bibtex-programmet för PLaTeX (japansk LaTeX)."
 
-#: src/LyXRC.cpp:3147
+#: src/LyXRC.cpp:3148
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -23979,11 +24002,11 @@ msgstr ""
 "Tangentbindningsfil. Kan antingen specificera en absolut sökväg, eller så "
 "tittar LyX i dess globala och lokala bind/ kataloger."
 
-#: src/LyXRC.cpp:3151
+#: src/LyXRC.cpp:3152
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Välj för att kontrollera huruvida senaste-filer fortfarande finns."
 
-#: src/LyXRC.cpp:3155
+#: src/LyXRC.cpp:3156
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -23991,7 +24014,7 @@ msgstr ""
 "Definiera hur chktex körs. T.ex. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 "
 "-n38\" Se dokumentationen för ChkTeX."
 
-#: src/LyXRC.cpp:3165
+#: src/LyXRC.cpp:3166
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -23999,7 +24022,7 @@ msgstr ""
 "LyX uppdaterar normalt inte markörpositionen om du flyttar rullningslisten. "
 "Sätt till sant om du föredrar att alltid ha markören på skärmen."
 
-#: src/LyXRC.cpp:3173
+#: src/LyXRC.cpp:3174
 msgid ""
 "LyX normally doesn't allow the user to scroll further than the bottom of the "
 "document. Set to true if you prefer to scroll the bottom of the document to "
@@ -24009,15 +24032,15 @@ msgstr ""
 "dokumentet. Sätt till sant om du föredrar att rulla botten av dokumentet "
 "till toppen av skärmen"
 
-#: src/LyXRC.cpp:3177
+#: src/LyXRC.cpp:3178
 msgid "Make Apple key act as Meta and Control key as Ctrl."
 msgstr "Använd Apple-tangent som Meta och Control-tangent som Ctrl."
 
-#: src/LyXRC.cpp:3181
+#: src/LyXRC.cpp:3182
 msgid "Use the Mac OS X conventions for cursor movement"
 msgstr "Använd Mac OS X-konventioner för markörförflyttning"
 
-#: src/LyXRC.cpp:3185
+#: src/LyXRC.cpp:3186
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
@@ -24025,7 +24048,7 @@ msgstr ""
 "Visa en liten ruta runt ett matematikmakro med makronamnet när markören är "
 "inuti."
 
-#: src/LyXRC.cpp:3190
+#: src/LyXRC.cpp:3191
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -24034,7 +24057,7 @@ msgstr ""
 "Detta godtar normala strftime format; se \"man strftime\" för fullständiga "
 "detaljer. T.ex. \"%A, %e. %B %Y\"."
 
-#: src/LyXRC.cpp:3194
+#: src/LyXRC.cpp:3195
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
@@ -24042,18 +24065,18 @@ msgstr ""
 "Kommandodefinitionsfil. Kan antingen specificera en absolut sökväg, eller så "
 "tittar LyX i dess globala och lokala commands/ kataloger."
 
-#: src/LyXRC.cpp:3198
+#: src/LyXRC.cpp:3199
 msgid ""
 "The default format used with LFUN_BUFFER_[VIEW|UPDATE] with non-TeX fonts."
 msgstr ""
 "Standardformatet som används med LFUN_BUFFER_[VIEW|UPDATE] med icke-TeX-"
 "typsnitt."
 
-#: src/LyXRC.cpp:3202
+#: src/LyXRC.cpp:3203
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
 msgstr "Standardformatet som används med LFUN_BUFFER_[VIEW|UPDATE]."
 
-#: src/LyXRC.cpp:3206
+#: src/LyXRC.cpp:3207
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -24061,11 +24084,11 @@ msgstr ""
 "Ikonifiera dialogerna när huvudfönstret ikonifieras. (Påverkar endast "
 "dialoger som visas efter ändringen är gjord.)"
 
-#: src/LyXRC.cpp:3210
+#: src/LyXRC.cpp:3211
 msgid "Select how LyX will display any graphics."
 msgstr "Välj hur LyX visar grafik."
 
-#: src/LyXRC.cpp:3214
+#: src/LyXRC.cpp:3215
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -24073,11 +24096,11 @@ msgstr ""
 "Standardsökvägen för dina dokument. Ett tomt värde väljer katalogen som LyX "
 "startade från."
 
-#: src/LyXRC.cpp:3218
+#: src/LyXRC.cpp:3219
 msgid "Specify additional chars that can be part of a word."
 msgstr "Specificera ytterligare tecken som kan vara del av ett ord."
 
-#: src/LyXRC.cpp:3222
+#: src/LyXRC.cpp:3223
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
@@ -24085,7 +24108,7 @@ msgstr ""
 "Sökvägen som LyX sätter när den erbjuder att välja ett exempel. Ett tomt "
 "värde väljer katalogen som LyX startade från."
 
-#: src/LyXRC.cpp:3226
+#: src/LyXRC.cpp:3227
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -24093,11 +24116,11 @@ msgstr ""
 "Typsnittskodningen som används för LaTeX2e-paketet fontenc. T1 är högst "
 "rekommenderad för icke-engelska språk."
 
-#: src/LyXRC.cpp:3230
+#: src/LyXRC.cpp:3231
 msgid "Disable any kerning and ligatures for text drawing on screen."
 msgstr "Inaktivera all kerning och alla ligaturer för textritning på skärm."
 
-#: src/LyXRC.cpp:3237
+#: src/LyXRC.cpp:3238
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -24107,11 +24130,11 @@ msgstr ""
 "alternativ kompilator. T.ex., genom att använda xindy/make-regler skulle "
 "kommandosträngen bli \"makeindex.sh -m $$lang\"."
 
-#: src/LyXRC.cpp:3241
+#: src/LyXRC.cpp:3242
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr "Definiera alternativen för indexprogrammet för PLaTeX (japansk LaTeX)."
 
-#: src/LyXRC.cpp:3245
+#: src/LyXRC.cpp:3246
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
@@ -24120,7 +24143,7 @@ msgstr ""
 "för nomenklaturer. Detta kan skilja sig från alternativen för "
 "indexbehandling."
 
-#: src/LyXRC.cpp:3254
+#: src/LyXRC.cpp:3255
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -24129,18 +24152,18 @@ msgstr ""
 "behöver detta om du t.ex. vill skriva tyska dokument på ett amerikanskt "
 "tangentbord."
 
-#: src/LyXRC.cpp:3258
+#: src/LyXRC.cpp:3259
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr "Välj om ett språkväxlingskommando behövs vid början av dokumentet."
 
-#: src/LyXRC.cpp:3262
+#: src/LyXRC.cpp:3263
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "Välj om ett språkväxlingskommando behövs vid slutet av dokumentet."
 
-#: src/LyXRC.cpp:3266
+#: src/LyXRC.cpp:3267
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -24150,15 +24173,15 @@ msgstr ""
 "ex. \\selectlanguage{$$lang} där $$lang ersätts med namnet på det andra "
 "språket."
 
-#: src/LyXRC.cpp:3270
+#: src/LyXRC.cpp:3271
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "LaTeX-kommandot för att byta tillbaka till dokumentets språk."
 
-#: src/LyXRC.cpp:3274
+#: src/LyXRC.cpp:3275
 msgid "The LaTeX command for local changing of the language."
 msgstr "LaTeX-kommandot för lokal ändring av språket."
 
-#: src/LyXRC.cpp:3278
+#: src/LyXRC.cpp:3279
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -24166,7 +24189,7 @@ msgstr ""
 "Välj bort om du inte vill att språket/språken används som argument till "
 "\\documentclass."
 
-#: src/LyXRC.cpp:3282
+#: src/LyXRC.cpp:3283
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -24174,7 +24197,7 @@ msgstr ""
 "LaTeX-kommandot för att ladda språkpaketet. T.ex. \"\\usepackage{babel}\", "
 "\"\\usepackage{omega}\"."
 
-#: src/LyXRC.cpp:3286
+#: src/LyXRC.cpp:3287
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -24182,21 +24205,21 @@ msgstr ""
 "Välj bort om du inte vill att babel ska användas när dokumentets språk är "
 "standardspråket."
 
-#: src/LyXRC.cpp:3290
+#: src/LyXRC.cpp:3291
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr "Välj bort om du inte vill att LyX rullar till sparad position."
 
-#: src/LyXRC.cpp:3294
+#: src/LyXRC.cpp:3295
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 "Välj bort för att förhindra laddning av filer öppnade från den senaste LyX-"
 "sessionen."
 
-#: src/LyXRC.cpp:3298
+#: src/LyXRC.cpp:3299
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "Välj bort om du inte vill att LyX ska skapa säkerhetskopierade filer."
 
-#: src/LyXRC.cpp:3302
+#: src/LyXRC.cpp:3303
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
@@ -24204,30 +24227,30 @@ msgstr ""
 "Välj för att styra belysningen av ord med ett språk som är främmande för "
 "dokumentet."
 
-#: src/LyXRC.cpp:3306
+#: src/LyXRC.cpp:3307
 msgid "The scrolling speed of the mouse wheel."
 msgstr "Rullningshastigheten för mushjulet."
 
-#: src/LyXRC.cpp:3311
+#: src/LyXRC.cpp:3312
 msgid "The completion popup delay."
 msgstr "Fördröjning för kompletteringspopup."
 
-#: src/LyXRC.cpp:3315
+#: src/LyXRC.cpp:3316
 msgid "Select to display the completion popup in math mode."
 msgstr "Välj för att visa kompletteringspopup i matematikläge."
 
-#: src/LyXRC.cpp:3319
+#: src/LyXRC.cpp:3320
 msgid "Select to display the completion popup in text mode."
 msgstr "Välj för att visa kompletteringspopup i textläge."
 
-#: src/LyXRC.cpp:3323
+#: src/LyXRC.cpp:3324
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 "Visa kompletteringspopup utan fördröjning efter icke-unikt "
 "kompletteringsförsök."
 
-#: src/LyXRC.cpp:3327
+#: src/LyXRC.cpp:3328
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
@@ -24235,54 +24258,54 @@ msgstr ""
 "Visa en liten triangel på markören för att indikera att en komplettering "
 "finns tillgänglig."
 
-#: src/LyXRC.cpp:3331
+#: src/LyXRC.cpp:3332
 msgid "The inline completion delay."
 msgstr "Fördröjning för platskomplettering."
 
-#: src/LyXRC.cpp:3335
+#: src/LyXRC.cpp:3336
 msgid "Select to display the inline completion in math mode."
 msgstr "Välj för att visa platskompletteringen i matematikläge."
 
-#: src/LyXRC.cpp:3339
+#: src/LyXRC.cpp:3340
 msgid "Select to display the inline completion in text mode."
 msgstr "Välj för att visa platskompletteringen i textläge."
 
-#: src/LyXRC.cpp:3343
+#: src/LyXRC.cpp:3344
 msgid "Use \"...\" to shorten long completions."
 msgstr "Använd \"...\" för att korta av långa kompletteringar."
 
-#: src/LyXRC.cpp:3347
+#: src/LyXRC.cpp:3348
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
 msgstr "Tillåt TeXMacs snabbskrift, som => omvandlas till \\Rightarrow."
 
-#: src/LyXRC.cpp:3351
+#: src/LyXRC.cpp:3352
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr "Max antal senaste-filer. Upp till %1$d kan visas i arkivmenyn."
 
-#: src/LyXRC.cpp:3362
+#: src/LyXRC.cpp:3363
 msgid "Shows a typeset preview of things such as math"
 msgstr "Visar en typsättningsförhandsgranskning för sådana saker som matematik"
 
-#: src/LyXRC.cpp:3366
+#: src/LyXRC.cpp:3367
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 "Förhandsgranskade ekvationer kommer att ha \"(#)\"-etiketter i stället för "
 "numrerade sådana"
 
-#: src/LyXRC.cpp:3370
+#: src/LyXRC.cpp:3371
 msgid "Scale the preview size to suit."
 msgstr "Skala förhandsgranskningens storlek så den passar."
 
-#: src/LyXRC.cpp:3374
+#: src/LyXRC.cpp:3375
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Alternativet för att specificera huruvida kopiorna ska kollationeras."
 
-#: src/LyXRC.cpp:3378
+#: src/LyXRC.cpp:3379
 msgid "The option for specifying the number of copies to print."
 msgstr "Alternativet för att specificera antalet kopior att skriva ut."
 
-#: src/LyXRC.cpp:3382
+#: src/LyXRC.cpp:3383
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -24290,11 +24313,11 @@ msgstr ""
 "Standardskrivare att skriva ut på. Om ingen specificeras kommer LyX att "
 "använda miljövariabeln PRINTER."
 
-#: src/LyXRC.cpp:3386
+#: src/LyXRC.cpp:3387
 msgid "The option to print only even pages."
 msgstr "Alternativet för att skriva ut endast jämna sidor."
 
-#: src/LyXRC.cpp:3390
+#: src/LyXRC.cpp:3391
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -24302,37 +24325,37 @@ msgstr ""
 "Extra alternativ att förmedla till utskriftsprogrammet efter allt annat, men "
 "före filnamnet för DVI-filen som ska skrivas ut."
 
-#: src/LyXRC.cpp:3394
+#: src/LyXRC.cpp:3395
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Ändelse för utskriftsprogrammets utmatningsfil. Vanligen \".ps\"."
 
-#: src/LyXRC.cpp:3398
+#: src/LyXRC.cpp:3399
 msgid "The option to print out in landscape."
 msgstr "Alternativet för att skriva ut i landskap."
 
-#: src/LyXRC.cpp:3402
+#: src/LyXRC.cpp:3403
 msgid "The option to print only odd pages."
 msgstr "Alternativet för att skriva ut endast udda sidor."
 
-#: src/LyXRC.cpp:3406
+#: src/LyXRC.cpp:3407
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
 "Alternativet för att specificera en kommaseparerad lista över sidor att "
 "skriva ut."
 
-#: src/LyXRC.cpp:3410
+#: src/LyXRC.cpp:3411
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Alternativ för att specificera dimensionerna för utskriftspapperet."
 
-#: src/LyXRC.cpp:3414
+#: src/LyXRC.cpp:3415
 msgid "The option to specify paper type."
 msgstr "Alternativet för att specificera papperstyp."
 
-#: src/LyXRC.cpp:3418
+#: src/LyXRC.cpp:3419
 msgid "The option to reverse the order of the pages printed."
 msgstr "Alternativet för att göra omvänd följd av sidorna som skrivs ut."
 
-#: src/LyXRC.cpp:3422
+#: src/LyXRC.cpp:3423
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -24342,7 +24365,7 @@ msgstr ""
 "sedan ett separat utskriftspoolingprogram på den filen med det givna namnet "
 "och de givna argumenten."
 
-#: src/LyXRC.cpp:3426
+#: src/LyXRC.cpp:3427
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -24350,18 +24373,18 @@ msgstr ""
 "Om du specificerar ett skrivarnamn i utskriftsdialogen föregås följande "
 "argument tillsammans med skrivarnamnet efter spoolkommandot."
 
-#: src/LyXRC.cpp:3430
+#: src/LyXRC.cpp:3431
 msgid "Option to pass to the print program to print to a file."
 msgstr ""
 "Alternativ att förmedla till utskriftsprogrammet för att skriva till en fil."
 
-#: src/LyXRC.cpp:3434
+#: src/LyXRC.cpp:3435
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 "Alternativ att förmedla till utskriftsprogrammet för att skriva ut på en "
 "specifik skrivare."
 
-#: src/LyXRC.cpp:3438
+#: src/LyXRC.cpp:3439
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
@@ -24369,18 +24392,18 @@ msgstr ""
 "Välj för LyX att förmedla namnet på destinationsskrivaren till ditt "
 "utskriftskommando."
 
-#: src/LyXRC.cpp:3442
+#: src/LyXRC.cpp:3443
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Ditt favoritutskriftsprogram, t.ex. \"dvips\", \"dvilj4\"."
 
-#: src/LyXRC.cpp:3450
+#: src/LyXRC.cpp:3451
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 "Välj för att ha bidi visuell markörförflyttning, välj bort för logisk "
 "förflyttning."
 
-#: src/LyXRC.cpp:3454
+#: src/LyXRC.cpp:3455
 msgid ""
 "Specify whether, closing the last view of an open document, LyX should close "
 "the document (yes), hide it (no), or ask the user (ask)."
@@ -24389,7 +24412,7 @@ msgstr ""
 "LyX bör stänga dokumentet (ja), dölja det (nej), eller fråga användaren "
 "(fråga)."
 
-#: src/LyXRC.cpp:3458
+#: src/LyXRC.cpp:3459
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -24397,11 +24420,11 @@ msgstr ""
 "DPI (dots per inch) för din skärm upptäcks automatiskt av LyX. Om det blir "
 "fel, överskrid inställningen här."
 
-#: src/LyXRC.cpp:3464
+#: src/LyXRC.cpp:3465
 msgid "The screen fonts used to display the text while editing."
 msgstr "Skärmtypsnitten som används för att visa texten vid redigering."
 
-#: src/LyXRC.cpp:3473
+#: src/LyXRC.cpp:3474
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -24412,13 +24435,13 @@ msgstr ""
 "ut i LyX. Att välja bort detta val gör så att LyX använder den närmsta "
 "storleken för bitmaptypsnitt tillgänglig, i stället för skalning."
 
-#: src/LyXRC.cpp:3477
+#: src/LyXRC.cpp:3478
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 "Typsnittsstorlekarna som används för att beräkna skalningen för "
 "skärmtypsnitten."
 
-#: src/LyXRC.cpp:3482
+#: src/LyXRC.cpp:3483
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -24427,11 +24450,11 @@ msgstr ""
 "Zoomningsprocenten för skärmtypsnitt. En inställning på 100% gör typsnitten "
 "ungefär samma storlek som på papper."
 
-#: src/LyXRC.cpp:3486
+#: src/LyXRC.cpp:3487
 msgid "Allow session manager to save and restore windows geometry."
 msgstr "Tillåt sessionshanterare att spara och återställa fönstergeometri."
 
-#: src/LyXRC.cpp:3490
+#: src/LyXRC.cpp:3491
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -24439,11 +24462,11 @@ msgstr ""
 "Detta startar lyxservern. Slussarna får en ytterligare ändelse \".in\" och "
 "\".out\". Endast för avancerade användare."
 
-#: src/LyXRC.cpp:3497
+#: src/LyXRC.cpp:3498
 msgid "De-select if you don't want the startup banner."
 msgstr "Välj bort om du inte vill ha logotypen vid start."
 
-#: src/LyXRC.cpp:3501
+#: src/LyXRC.cpp:3502
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -24451,11 +24474,11 @@ msgstr ""
 "LyX kommer att placera sina tillfälliga kataloger i denna sökväg. De kommer "
 "att raderas när du avslutar LyX."
 
-#: src/LyXRC.cpp:3505
+#: src/LyXRC.cpp:3506
 msgid "This is the place where the files of the thesaurus library reside."
 msgstr "Detta är platsen där synonymordboksbibliotekets filer håller hus."
 
-#: src/LyXRC.cpp:3509
+#: src/LyXRC.cpp:3510
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -24463,7 +24486,7 @@ msgstr ""
 "Sökvägen som kommer att sättas när LyX erbjuder att välja en mall. Ett tomt "
 "värde väljer katalogen som LyX startades från."
 
-#: src/LyXRC.cpp:3526
+#: src/LyXRC.cpp:3527
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -24471,7 +24494,7 @@ msgstr ""
 "Användargränssnittsfilen (UI). Kan antingen specificera en absolut sökväg, "
 "eller så tittar LyX i dess globala och lokala ui/ kataloger."
 
-#: src/LyXRC.cpp:3536
+#: src/LyXRC.cpp:3537
 msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
@@ -24479,17 +24502,17 @@ msgstr ""
 "Aktivera användning av systemfärger för saker som huvudfönstrets bakgrund "
 "och urval."
 
-#: src/LyXRC.cpp:3540
+#: src/LyXRC.cpp:3541
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr "Aktivera automatiskt uppdykande av verktygstips i arbetsområdet."
 
-#: src/LyXRC.cpp:3544
+#: src/LyXRC.cpp:3545
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "Aktivera pixmapgömman (cache) som kan öka prestanda på Mac och Windows."
 
-#: src/LyXRC.cpp:3548
+#: src/LyXRC.cpp:3549
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Specificera papperskommandot till DVI-visaren (lämna tom eller använd \"-"
@@ -24558,15 +24581,15 @@ msgstr "Återgå till lagrad version av dokument?"
 msgid "&Revert"
 msgstr "Åte&rgå"
 
-#: src/Paragraph.cpp:2049
+#: src/Paragraph.cpp:2055
 msgid "Senseless with this layout!"
 msgstr "Meningslöst med denna utformning!"
 
-#: src/Paragraph.cpp:2110
+#: src/Paragraph.cpp:2116
 msgid "Alignment not permitted"
 msgstr "Justering inte tillåten"
 
-#: src/Paragraph.cpp:2111
+#: src/Paragraph.cpp:2117
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -24603,65 +24626,65 @@ msgstr ""
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Du kan inte skriva två mellanslag i rad. Vänligen läs Nybörjarkursen."
 
-#: src/Text.cpp:1013
+#: src/Text.cpp:1016
 msgid "Character is uncodable in verbatim paragraphs."
 msgstr "Tecken är okodbart i ordagranna stycken."
 
-#: src/Text.cpp:1850
+#: src/Text.cpp:1853
 msgid "[Change Tracking] "
 msgstr "[Ändringsspårning] "
 
-#: src/Text.cpp:1856
+#: src/Text.cpp:1859
 msgid "Change: "
 msgstr "Ändring: "
 
-#: src/Text.cpp:1860
+#: src/Text.cpp:1863
 msgid " at "
 msgstr " vid "
 
-#: src/Text.cpp:1870
+#: src/Text.cpp:1873
 #, c-format
 msgid "Font: %1$s"
 msgstr "Typsnitt: %1$s"
 
-#: src/Text.cpp:1875
+#: src/Text.cpp:1878
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Djup: %1$d"
 
-#: src/Text.cpp:1881
+#: src/Text.cpp:1884
 msgid ", Spacing: "
 msgstr ", Avstånd: "
 
-#: src/Text.cpp:1887 src/frontends/qt4/GuiDocument.cpp:715
+#: src/Text.cpp:1890 src/frontends/qt4/GuiDocument.cpp:715
 msgid "OneHalf"
 msgstr "EnHalv"
 
-#: src/Text.cpp:1893
+#: src/Text.cpp:1896
 msgid "Other ("
 msgstr "Annan ("
 
-#: src/Text.cpp:1902
+#: src/Text.cpp:1905
 msgid ", Inset: "
 msgstr ", Insättning: "
 
-#: src/Text.cpp:1903
+#: src/Text.cpp:1906
 msgid ", Paragraph: "
 msgstr ", Stycke: "
 
-#: src/Text.cpp:1904
+#: src/Text.cpp:1907
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1905
+#: src/Text.cpp:1908
 msgid ", Position: "
 msgstr ", Position: "
 
-#: src/Text.cpp:1911
+#: src/Text.cpp:1914
 msgid ", Char: 0x"
 msgstr ", Tecken: 0x"
 
-#: src/Text.cpp:1913
+#: src/Text.cpp:1916
 msgid ", Boundary: "
 msgstr ", Gräns: "
 
@@ -25275,9 +25298,9 @@ msgstr "Qt-version (kompileringstid): %1$s"
 msgid "About LyX"
 msgstr "Om LyX"
 
-#: src/frontends/qt4/GuiAlert.cpp:93 src/frontends/qt4/GuiAlert.cpp:157
-#: src/frontends/qt4/GuiAlert.cpp:209 src/frontends/qt4/GuiAlert.cpp:254
-#: src/frontends/qt4/GuiAlert.cpp:303
+#: src/frontends/qt4/GuiAlert.cpp:94 src/frontends/qt4/GuiAlert.cpp:158
+#: src/frontends/qt4/GuiAlert.cpp:215 src/frontends/qt4/GuiAlert.cpp:261
+#: src/frontends/qt4/GuiAlert.cpp:310
 #, c-format
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
@@ -25697,7 +25720,7 @@ msgstr "Gul"
 msgid "Text Style"
 msgstr "Textstil"
 
-#: src/frontends/qt4/GuiCitation.cpp:286
+#: src/frontends/qt4/GuiCitation.cpp:287
 msgid "Keys"
 msgstr "Nycklar"
 
@@ -28185,27 +28208,27 @@ msgstr "Indexpost (%1$s)"
 msgid "No Citation in Scope!"
 msgstr "Inget citat i omfång!"
 
-#: src/frontends/qt4/Menus.cpp:1542 src/insets/InsetCitation.cpp:164
-#: src/insets/InsetCitation.cpp:256
+#: src/frontends/qt4/Menus.cpp:1542 src/insets/InsetCitation.cpp:165
+#: src/insets/InsetCitation.cpp:257
 msgid "No citations selected!"
 msgstr "Inga citat valda!"
 
-#: src/frontends/qt4/Menus.cpp:1642
+#: src/frontends/qt4/Menus.cpp:1643
 #, c-format
 msgid "Caption (%1$s)"
 msgstr "Bildtext (%1$s)"
 
-#: src/frontends/qt4/Menus.cpp:1689
+#: src/frontends/qt4/Menus.cpp:1694
 #, c-format
 msgid "Start New Environment (%1$s)"
 msgstr "Starta ny miljö (%1$s)"
 
-#: src/frontends/qt4/Menus.cpp:1696
+#: src/frontends/qt4/Menus.cpp:1701
 #, c-format
 msgid "Start New Parent Environment (%1$s)"
 msgstr "Starta ny föräldermiljö (%1$s)"
 
-#: src/frontends/qt4/Menus.cpp:2328
+#: src/frontends/qt4/Menus.cpp:2333
 msgid "No Action Defined!"
 msgstr "Ingen handling definierad!"
 
@@ -28536,7 +28559,7 @@ msgstr ""
 msgid "Sub-%1$s"
 msgstr "Under-%1$s"
 
-#: src/insets/InsetCitation.cpp:160
+#: src/insets/InsetCitation.cpp:161
 msgid "No bibliography defined!"
 msgstr "Ingen bibliografi definierad!"
 
@@ -29223,19 +29246,19 @@ msgstr "Lista över listningar"
 msgid "Unknown TOC type"
 msgstr "Okänd innehållsförteckningstyp"
 
-#: src/insets/InsetTabular.cpp:4533
+#: src/insets/InsetTabular.cpp:4536
 msgid "Selections not supported."
 msgstr "Urval stöds inte."
 
-#: src/insets/InsetTabular.cpp:4555
+#: src/insets/InsetTabular.cpp:4558
 msgid "Multi-column in current or destination column."
 msgstr "Multikolumn i aktuell eller destinationskolumn."
 
-#: src/insets/InsetTabular.cpp:4567
+#: src/insets/InsetTabular.cpp:4570
 msgid "Multi-row in current or destination row."
 msgstr "Multirad i aktuell eller destinationsrad."
 
-#: src/insets/InsetTabular.cpp:4959
+#: src/insets/InsetTabular.cpp:4962
 msgid "Selection size should match clipboard content."
 msgstr "Urvalets storlek bör matcha klippbordets innehåll."
 
@@ -29464,8 +29487,8 @@ msgstr "Kan inte ändra antal kolumner i '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Kan inte lägga till horisontella rutnätslinjer i '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1718
-#: src/mathed/InsetMathNest.cpp:1864
+#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1731
+#: src/mathed/InsetMathNest.cpp:1877
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Autokorrigering av ('!' för att starta)"
 
@@ -29481,7 +29504,7 @@ msgstr "gick in i matematiktextläge (textrm)"
 msgid "Regular expression editor mode"
 msgstr "Redigeringsläge för reguljära uttryck"
 
-#: src/mathed/InsetMathNest.cpp:1723 src/mathed/InsetMathNest.cpp:1866
+#: src/mathed/InsetMathNest.cpp:1736 src/mathed/InsetMathNest.cpp:1879
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Autokorrigering på (<mellanslag> för att avsluta)"
 
@@ -29753,7 +29776,7 @@ msgstr "Alla avlusningsmeddelanden"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Avlusar `%1$s' (%2$s)"
 
-#: src/support/lassert.cpp:52
+#: src/support/lassert.cpp:51
 #, c-format
 msgid ""
 "Assertion %1$s violated in\n"
@@ -29762,7 +29785,7 @@ msgstr ""
 "Påstående %1$s överträdde i\n"
 "fil: %2$s, linje: %3$s"
 
-#: src/support/lassert.cpp:62
+#: src/support/lassert.cpp:61
 msgid ""
 "It should be safe to continue, but you\n"
 "may wish to save your work and restart LyX."
@@ -29770,11 +29793,11 @@ msgstr ""
 "Det bör vara säkert att fortsätta, men du\n"
 "kanske vill spara ditt arbete och starta om LyX."
 
-#: src/support/lassert.cpp:65
+#: src/support/lassert.cpp:64
 msgid "Warning!"
 msgstr "Varning!"
 
-#: src/support/lassert.cpp:72
+#: src/support/lassert.cpp:71
 msgid ""
 "There has been an error with this document.\n"
 "LyX will attempt to close it safely."
@@ -29782,11 +29805,11 @@ msgstr ""
 "Det har skett ett fel med detta dokument.\n"
 "LyX kommer att försöka att stänga det på ett säkert sätt."
 
-#: src/support/lassert.cpp:75
+#: src/support/lassert.cpp:74
 msgid "Buffer Error!"
 msgstr "Buffertfel!"
 
-#: src/support/lassert.cpp:82
+#: src/support/lassert.cpp:81
 msgid ""
 "LyX has encountered an application error\n"
 "and will now shut down."
@@ -29794,7 +29817,7 @@ msgstr ""
 "LyX har stött på ett programfel\n"
 "och kommer nu att stängas ned."
 
-#: src/support/lassert.cpp:85
+#: src/support/lassert.cpp:84
 msgid "Fatal Exception!"
 msgstr "Allvarligt undantag!"
 
@@ -29825,6 +29848,13 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Okänd användare"
+
+#~ msgid ""
+#~ "Cannot create backup file %1$s.\n"
+#~ "Please check whether the directory exists and is writable."
+#~ msgstr ""
+#~ "Kan inte skapa säkerhetskopierad fil %1$s.\n"
+#~ "Vänligen kontrollera huruvida katalogen finns och är skrivbar."
 
 #~ msgid "."
 #~ msgstr "."

@@ -71,7 +71,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-04-19 11:46-0400\n"
+"POT-Creation-Date: 2014-06-16 17:17-0400\n"
 "PO-Revision-Date: 2007-07-14 16:48+0100\n"
 "Last-Translator: Martin Vermeer <martin.vermeer@tkk.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -273,8 +273,8 @@ msgid "Remove the selected index"
 msgstr "Poista valittu tietokanta"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:165
-#: src/frontends/qt4/ui/BranchesUi.ui:136 src/Buffer.cpp:4185
-#: src/Buffer.cpp:4198
+#: src/frontends/qt4/ui/BranchesUi.ui:136 src/Buffer.cpp:4231
+#: src/Buffer.cpp:4244
 msgid "&Remove"
 msgstr "&Poista"
 
@@ -323,9 +323,9 @@ msgstr ""
 #: src/frontends/qt4/ui/DocumentUi.ui:84
 #: src/frontends/qt4/ui/CitationUi.ui:220
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1271
-#: src/Buffer.cpp:2657 src/Buffer.cpp:4159 src/Buffer.cpp:4223
-#: src/LyXVC.cpp:107 src/LyXVC.cpp:297 src/buffer_funcs.cpp:77
-#: src/frontends/qt4/GuiBranches.cpp:219
+#: src/Buffer.cpp:1340 src/Buffer.cpp:2703 src/Buffer.cpp:4205
+#: src/Buffer.cpp:4269 src/LyXVC.cpp:107 src/LyXVC.cpp:297
+#: src/buffer_funcs.cpp:77 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:246
 #: src/frontends/qt4/GuiDocument.cpp:2106
 #: src/frontends/qt4/GuiParagraph.cpp:69
@@ -483,7 +483,7 @@ msgstr "Merkitse &vieraat kielet"
 msgid "Right-to-left language support"
 msgstr "O-V-kir&joitussuuntatuki"
 
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:228 src/LyXRC.cpp:3446
+#: src/frontends/qt4/ui/PrefLanguageUi.ui:228 src/LyXRC.cpp:3447
 msgid ""
 "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 msgstr ""
@@ -2159,7 +2159,7 @@ msgstr "Lopetan."
 msgid "Cursor &follows scrollbar"
 msgstr "Koh&distin seuraa vierityspalkkia"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:3169
+#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:3170
 msgid ""
 "Configure the width of the text cursor. Automatic zoom-controlled cursor "
 "width used when set to 0."
@@ -2824,7 +2824,7 @@ msgstr "&Poista"
 msgid "&PATH prefix:"
 msgstr "&PATH-etuliite:"
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3356
+#: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3357
 #, fuzzy
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
@@ -2839,7 +2839,7 @@ msgstr ""
 msgid "TEX&INPUTS prefix:"
 msgstr "&PATH-etuliite:"
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3519
+#: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3520
 #, fuzzy
 msgid ""
 "Specify those directories which should be prepended to the TEXINPUTS "
@@ -3488,7 +3488,7 @@ msgstr "&Pisin nimike"
 msgid "Line &spacing"
 msgstr "Rivi&välit:"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1884
+#: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1887
 #: src/frontends/qt4/GuiDocument.cpp:713
 msgid "Single"
 msgstr "Yksink."
@@ -3497,7 +3497,7 @@ msgstr "Yksink."
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1890
+#: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1893
 #: src/frontends/qt4/GuiDocument.cpp:717
 msgid "Double"
 msgstr "Kaksink."
@@ -5091,7 +5091,7 @@ msgid "Search field:"
 msgstr "Etsintävirhe"
 
 #: src/frontends/qt4/ui/CitationUi.ui:428
-#: src/frontends/qt4/GuiCitation.cpp:285
+#: src/frontends/qt4/GuiCitation.cpp:286
 #, fuzzy
 msgid "All fields"
 msgstr "Kaikki tiedostot (*)"
@@ -5112,7 +5112,7 @@ msgid "Entry types:"
 msgstr "Kohta:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:480
-#: src/frontends/qt4/GuiCitation.cpp:300
+#: src/frontends/qt4/GuiCitation.cpp:301
 #, fuzzy
 msgid "All entry types"
 msgstr "Kohta:"
@@ -5211,7 +5211,7 @@ msgstr "Sisällytä tiedosto"
 msgid "Output &line length:"
 msgstr "Tuotettava rivi&pituus:"
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3116
+#: src/frontends/qt4/ui/PrefOutputUi.ui:37 src/LyXRC.cpp:3117
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -6431,8 +6431,8 @@ msgstr "Viitteet"
 #: lib/layouts/IEEEtran.layout:357 lib/layouts/agutex.layout:222
 #: lib/layouts/jasatex.layout:284 lib/layouts/moderncv.layout:477
 #: lib/layouts/stdstruct.inc:68 lib/layouts/svcommon.inc:589
-#: lib/layouts/amsdefs.inc:214 src/insets/InsetBibtex.cpp:934
-#: src/insets/InsetBibtex.cpp:983 src/output_plaintext.cpp:153
+#: lib/layouts/amsdefs.inc:214 src/insets/InsetBibtex.cpp:937
+#: src/insets/InsetBibtex.cpp:986 src/output_plaintext.cpp:153
 msgid "References"
 msgstr "Viitteet"
 
@@ -9775,8 +9775,8 @@ msgstr "Ratkaisu"
 msgid "Solution \\thesolution."
 msgstr "Päätelmä."
 
-#: lib/layouts/AEA.layout:300 src/frontends/qt4/Menus.cpp:1628
-#: src/frontends/qt4/Menus.cpp:1657
+#: lib/layouts/AEA.layout:300 src/frontends/qt4/Menus.cpp:1629
+#: src/frontends/qt4/Menus.cpp:1658
 msgid "Caption"
 msgstr "Kuvateksti"
 
@@ -23178,16 +23178,16 @@ msgstr "%1$s ja %2$s"
 msgid "%1$s et al."
 msgstr "%1$s ym."
 
-#: src/BiblioInfo.cpp:494 src/BiblioInfo.cpp:536 src/BiblioInfo.cpp:547
-#: src/BiblioInfo.cpp:595 src/BiblioInfo.cpp:599
+#: src/BiblioInfo.cpp:494 src/BiblioInfo.cpp:537 src/BiblioInfo.cpp:548
+#: src/BiblioInfo.cpp:599 src/BiblioInfo.cpp:603
 msgid "ERROR!"
 msgstr ""
 
-#: src/BiblioInfo.cpp:852
+#: src/BiblioInfo.cpp:857
 msgid "No year"
 msgstr "Ei vuotta"
 
-#: src/BiblioInfo.cpp:862
+#: src/BiblioInfo.cpp:867
 #, fuzzy
 msgid "Bibliography entry not found!"
 msgstr "Viitteiden otsikko"
@@ -23364,7 +23364,7 @@ msgstr ""
 "Tiedosto %1$s on tehty aiemmalla LyXin versiolla, mutta lyx2lyx-"
 "skriptiepäonnistui muuntamaan sitä."
 
-#: src/Buffer.cpp:1258 src/Buffer.cpp:4169 src/Buffer.cpp:4232
+#: src/Buffer.cpp:1258 src/Buffer.cpp:4215 src/Buffer.cpp:4278
 #, fuzzy
 msgid "File is read-only"
 msgstr "Asiakirja on kirjoitussuojattu"
@@ -23387,81 +23387,104 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Kirjoitetaanko muutetun tiedoston päälle?"
 
-#: src/Buffer.cpp:1271 src/Buffer.cpp:2657 src/Exporter.cpp:50
-#: src/frontends/qt4/GuiClipboard.cpp:246 src/frontends/qt4/GuiView.cpp:2151
-#: src/frontends/qt4/GuiView.cpp:2339 src/frontends/qt4/GuiView.cpp:2453
+#: src/Buffer.cpp:1271 src/Buffer.cpp:1340 src/Buffer.cpp:2703
+#: src/Exporter.cpp:50 src/frontends/qt4/GuiClipboard.cpp:246
+#: src/frontends/qt4/GuiView.cpp:2151 src/frontends/qt4/GuiView.cpp:2339
+#: src/frontends/qt4/GuiView.cpp:2453
 msgid "&Overwrite"
 msgstr "Päällekirjoitus"
 
-#: src/Buffer.cpp:1300
+#: src/Buffer.cpp:1313 src/Buffer.cpp:1355
+#, fuzzy
+msgid "Write failure"
+msgstr "chktex epäonnistui"
+
+#: src/Buffer.cpp:1314
+#, c-format
+msgid ""
+"Cannot find temporary filename for:\n"
+"  %1$s.\n"
+"Even %2$s exists!"
+msgstr ""
+
+#: src/Buffer.cpp:1335
 msgid "Backup failure"
 msgstr "Varmuuskopiointi epäonnistui"
 
-#: src/Buffer.cpp:1301
-#, fuzzy, c-format
+#: src/Buffer.cpp:1336
+#, c-format
 msgid ""
-"Cannot create backup file %1$s.\n"
-"Please check whether the directory exists and is writable."
+"Cannot create backup file:\n"
+"  %1$s.\n"
+"Do you want to try to save the file anyway?\n"
+"This will over-write the original file."
 msgstr ""
-"En voi luoda varmuuskopiotiedostoa %1$s.\n"
-"Tarkista, onko hakemisto olemassa ja onko lupaa kirjoittaa."
 
-#: src/Buffer.cpp:1327
+#: src/Buffer.cpp:1356
+#, c-format
+msgid ""
+"Cannot restore original file to:\n"
+"  %1$s.\n"
+"But it can be found at:\n"
+"  %2$s."
+msgstr ""
+
+#: src/Buffer.cpp:1373
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Asiakirja %1$s tallentuu..."
 
-#: src/Buffer.cpp:1342
+#: src/Buffer.cpp:1388
 #, fuzzy
 msgid " could not write file!"
 msgstr "Ei voitu lukea tiedostoa"
 
-#: src/Buffer.cpp:1350
+#: src/Buffer.cpp:1396
 msgid " done."
 msgstr " valmis."
 
-#: src/Buffer.cpp:1365
+#: src/Buffer.cpp:1411
 #, fuzzy, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX yrittää tallentaa asiakirjaa %1$s"
 
-#: src/Buffer.cpp:1375 src/Buffer.cpp:1388 src/Buffer.cpp:1402
+#: src/Buffer.cpp:1421 src/Buffer.cpp:1434 src/Buffer.cpp:1448
 #, fuzzy, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr "  Tallennus ilmeisesti onnistui. Huh."
 
-#: src/Buffer.cpp:1378
+#: src/Buffer.cpp:1424
 #, fuzzy
 msgid "Save failed! Trying again...\n"
 msgstr "  Tallennus epäonnistui! Yritän..."
 
-#: src/Buffer.cpp:1392
+#: src/Buffer.cpp:1438
 #, fuzzy
 msgid "Save failed! Trying yet again...\n"
 msgstr "  Tallennus epäonnistui! Yritän..."
 
-#: src/Buffer.cpp:1406
+#: src/Buffer.cpp:1452
 #, fuzzy
 msgid "Save failed! Bummer. Document is lost."
 msgstr "  Tallennus epäonnistui! Voi itku. Asiakirja on hävinnyt."
 
-#: src/Buffer.cpp:1495
+#: src/Buffer.cpp:1541
 msgid "Iconv software exception Detected"
 msgstr ""
 
-#: src/Buffer.cpp:1495
+#: src/Buffer.cpp:1541
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr ""
 
-#: src/Buffer.cpp:1525
+#: src/Buffer.cpp:1571
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 
-#: src/Buffer.cpp:1528
+#: src/Buffer.cpp:1574
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -23471,22 +23494,22 @@ msgstr ""
 "valitussasi merkistössä.\n"
 "merkistön muuttaminen tuf8:ksi auttanee."
 
-#: src/Buffer.cpp:1535
+#: src/Buffer.cpp:1581
 #, fuzzy
 msgid "iconv conversion failed"
 msgstr "Muuntaminen epäonnistui"
 
-#: src/Buffer.cpp:1540
+#: src/Buffer.cpp:1586
 #, fuzzy
 msgid "conversion failed"
 msgstr "Muuntaminen epäonnistui"
 
-#: src/Buffer.cpp:1643
+#: src/Buffer.cpp:1689
 #, fuzzy
 msgid "Uncodable character in file path"
 msgstr "erikoismerkki"
 
-#: src/Buffer.cpp:1645
+#: src/Buffer.cpp:1691
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -23500,59 +23523,59 @@ msgid ""
 "(such as utf8) or change the file path name."
 msgstr ""
 
-#: src/Buffer.cpp:1998
+#: src/Buffer.cpp:2044
 msgid "Running chktex..."
 msgstr "chktex on käynnissä..."
 
-#: src/Buffer.cpp:2012
+#: src/Buffer.cpp:2058
 msgid "chktex failure"
 msgstr "chktex epäonnistui"
 
-#: src/Buffer.cpp:2013
+#: src/Buffer.cpp:2059
 msgid "Could not run chktex successfully."
 msgstr "Chktex-ajo epäonnistui"
 
-#: src/Buffer.cpp:2305
+#: src/Buffer.cpp:2351
 #, fuzzy, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Ei tietoa, miten tuoda formaattia %1$s"
 
-#: src/Buffer.cpp:2385
+#: src/Buffer.cpp:2431
 #, fuzzy, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Ei tietoa, miten tuoda formaattia %1$s"
 
-#: src/Buffer.cpp:2394
+#: src/Buffer.cpp:2440
 #, fuzzy
 msgid "Error generating literate programming code."
 msgstr "Literate-ohjelmoinnin käännöslokitiedostoa ei löydy."
 
-#: src/Buffer.cpp:2473
+#: src/Buffer.cpp:2519
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr ""
 
-#: src/Buffer.cpp:2508
+#: src/Buffer.cpp:2554
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr ""
 
-#: src/Buffer.cpp:2574
+#: src/Buffer.cpp:2620
 #, fuzzy, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Tuntematon työkalupalkki \"%1$s\""
 
-#: src/Buffer.cpp:2581
+#: src/Buffer.cpp:2627
 #, fuzzy, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Tuntematon työkalupalkki \"%1$s\""
 
-#: src/Buffer.cpp:2588
+#: src/Buffer.cpp:2634
 #, fuzzy
 msgid "Error exporting to DVI."
 msgstr "Virhe pikselikartan luomisessa"
 
-#: src/Buffer.cpp:2653 src/Exporter.cpp:45
+#: src/Buffer.cpp:2699 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -23562,88 +23585,88 @@ msgstr ""
 "Tiedosto %1$s on jo olemassa.\n"
 "Haluatko kirjoittaa sen päälle?"
 
-#: src/Buffer.cpp:2656 src/Exporter.cpp:48
+#: src/Buffer.cpp:2702 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Kirjoitetaanko tiedoston päälle?"
 
-#: src/Buffer.cpp:2673
+#: src/Buffer.cpp:2719
 #, fuzzy
 msgid "Error running external commands."
 msgstr "Yleisiä tietoja"
 
-#: src/Buffer.cpp:3495
+#: src/Buffer.cpp:3541
 #, fuzzy, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Kappaleen %1$s lähdekoodin esikatselu"
 
-#: src/Buffer.cpp:3499
+#: src/Buffer.cpp:3545
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Lähdekoodin esikatselu, kappaleet %1$s -- %2$s"
 
-#: src/Buffer.cpp:3553
+#: src/Buffer.cpp:3599
 msgid "Preview source code"
 msgstr "Lähdekoodin esikatselu"
 
-#: src/Buffer.cpp:3555
+#: src/Buffer.cpp:3601
 #, fuzzy
 msgid "Preview preamble"
 msgstr "Esikatselu valmis"
 
-#: src/Buffer.cpp:3557
+#: src/Buffer.cpp:3603
 #, fuzzy
 msgid "Preview body"
 msgstr "Esikatselu valmis"
 
-#: src/Buffer.cpp:3572
+#: src/Buffer.cpp:3618
 msgid "Plain text does not have a preamble."
 msgstr ""
 
-#: src/Buffer.cpp:3675
+#: src/Buffer.cpp:3721
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "%1$s tallentuu itsestään"
 
-#: src/Buffer.cpp:3729
+#: src/Buffer.cpp:3775
 msgid "Autosave failed!"
 msgstr "Automaattinen tallennus epäonnistui!"
 
-#: src/Buffer.cpp:3790
+#: src/Buffer.cpp:3836
 msgid "Autosaving current document..."
 msgstr "Asiakirjan automaattinen tallennus käynnissä..."
 
-#: src/Buffer.cpp:3911
+#: src/Buffer.cpp:3957
 msgid "Couldn't export file"
 msgstr "Ei voitu viedä tiedostoa"
 
-#: src/Buffer.cpp:3912
+#: src/Buffer.cpp:3958
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Ei tietoa, miten tuoda formaattia %1$s"
 
-#: src/Buffer.cpp:3973 src/frontends/qt4/GuiView.cpp:2124
+#: src/Buffer.cpp:4019 src/frontends/qt4/GuiView.cpp:2124
 msgid "File name error"
 msgstr "Tiedostonimessä virhe"
 
-#: src/Buffer.cpp:3974
+#: src/Buffer.cpp:4020
 msgid "The directory path to the document cannot contain spaces."
 msgstr "LyX-tiedoston polussa ei voi olla välilyöntejä."
 
-#: src/Buffer.cpp:4076 src/Buffer.cpp:4090 src/frontends/qt4/GuiView.cpp:548
+#: src/Buffer.cpp:4122 src/Buffer.cpp:4136 src/frontends/qt4/GuiView.cpp:548
 msgid "Document export cancelled."
 msgstr "Asiakirja vienti peruutettu."
 
-#: src/Buffer.cpp:4093
+#: src/Buffer.cpp:4139
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Asiakirja viety nimellä %1$s tiedostoon `%2$s'"
 
-#: src/Buffer.cpp:4100
+#: src/Buffer.cpp:4146
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Asiakirja viety nimellä %1$s"
 
-#: src/Buffer.cpp:4155
+#: src/Buffer.cpp:4201
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -23653,65 +23676,65 @@ msgstr ""
 "Asiakirjasta %1$s on olemassa hätätallennusversio.\n"
 "Ladataanko hätätallennus?"
 
-#: src/Buffer.cpp:4158
+#: src/Buffer.cpp:4204
 msgid "Load emergency save?"
 msgstr "Ladataanko hätätallennus?"
 
-#: src/Buffer.cpp:4159
+#: src/Buffer.cpp:4205
 msgid "&Recover"
 msgstr "Pelasta"
 
-#: src/Buffer.cpp:4159
+#: src/Buffer.cpp:4205
 #, fuzzy
 msgid "&Load Original"
 msgstr "Lataa alkuperäinen"
 
-#: src/Buffer.cpp:4170
+#: src/Buffer.cpp:4216
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4177
+#: src/Buffer.cpp:4223
 msgid "Document was successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:4179
+#: src/Buffer.cpp:4225
 msgid "Document was NOT successfully recovered."
 msgstr ""
 
-#: src/Buffer.cpp:4180
+#: src/Buffer.cpp:4226
 #, fuzzy, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr "Ladataanko hätätallennus?"
 
-#: src/Buffer.cpp:4184 src/Buffer.cpp:4196
+#: src/Buffer.cpp:4230 src/Buffer.cpp:4242
 #, fuzzy
 msgid "Delete emergency file?"
 msgstr "Valitse ulkoinen tiedosto"
 
-#: src/Buffer.cpp:4185 src/Buffer.cpp:4198
+#: src/Buffer.cpp:4231 src/Buffer.cpp:4244
 #, fuzzy
 msgid "&Keep"
 msgstr "&Säilytä vastaavat"
 
-#: src/Buffer.cpp:4189
+#: src/Buffer.cpp:4235
 msgid "Emergency file deleted"
 msgstr ""
 
-#: src/Buffer.cpp:4190
+#: src/Buffer.cpp:4236
 msgid "Do not forget to save your file now!"
 msgstr ""
 
-#: src/Buffer.cpp:4197
+#: src/Buffer.cpp:4243
 #, fuzzy
 msgid "Remove emergency file now?"
 msgstr "Ladataanko hätätallennus?"
 
-#: src/Buffer.cpp:4220
+#: src/Buffer.cpp:4266
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -23722,45 +23745,45 @@ msgstr ""
 "\n"
 "Ladataanko mieluummin varmuuskopio?"
 
-#: src/Buffer.cpp:4222
+#: src/Buffer.cpp:4268
 msgid "Load backup?"
 msgstr "Ladataanko varmuuskopio?"
 
-#: src/Buffer.cpp:4223
+#: src/Buffer.cpp:4269
 msgid "&Load backup"
 msgstr "Lataa varmuuskopio"
 
-#: src/Buffer.cpp:4223
+#: src/Buffer.cpp:4269
 msgid "Load &original"
 msgstr "Lataa alkuperäinen"
 
-#: src/Buffer.cpp:4233
+#: src/Buffer.cpp:4279
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4573 src/insets/InsetCaption.cpp:383
+#: src/Buffer.cpp:4619 src/insets/InsetCaption.cpp:383
 msgid "Senseless!!! "
 msgstr "Järjetöntä!!! "
 
-#: src/Buffer.cpp:4793
+#: src/Buffer.cpp:4839
 #, fuzzy, c-format
 msgid "Document %1$s reloaded."
 msgstr "Asiakirja %1$s avautui."
 
-#: src/Buffer.cpp:4796
+#: src/Buffer.cpp:4842
 #, fuzzy, c-format
 msgid "Could not reload document %1$s."
 msgstr "Asiakirjan lukeminen epäonnistui"
 
-#: src/Buffer.cpp:4863
+#: src/Buffer.cpp:4909
 #, fuzzy
 msgid "Included File Invalid"
 msgstr "Sisällytä tiedosto...|y"
 
-#: src/Buffer.cpp:4864
+#: src/Buffer.cpp:4910
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -24600,7 +24623,7 @@ msgstr ""
 msgid "Undefined flex inset"
 msgstr "Tekstiupote avattiin"
 
-#: src/Encoding.cpp:408 src/Paragraph.cpp:2613
+#: src/Encoding.cpp:408 src/Paragraph.cpp:2619
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:179
 #: src/insets/InsetListings.cpp:187 src/insets/InsetListings.cpp:210
 #: src/mathed/InsetMathString.cpp:162
@@ -24608,7 +24631,7 @@ msgstr "Tekstiupote avattiin"
 msgid "LyX Warning: "
 msgstr "LyX-versio "
 
-#: src/Encoding.cpp:409 src/Paragraph.cpp:2614
+#: src/Encoding.cpp:409 src/Paragraph.cpp:2620
 #: src/insets/InsetListings.cpp:180 src/insets/InsetListings.cpp:188
 #: src/mathed/InsetMathString.cpp:163
 #, fuzzy
@@ -25153,7 +25176,7 @@ msgstr ""
 msgid "Missing filename for --import"
 msgstr "Valitsimelle --import ei annettu tiedostoa"
 
-#: src/LyXRC.cpp:3108
+#: src/LyXRC.cpp:3109
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -25161,13 +25184,13 @@ msgstr ""
 "Pidetäänkö yhdyssanoja, kuten \"tämäpäivä\" vs. \"tämä päivä\", oikein "
 "kirjoitettuina?"
 
-#: src/LyXRC.cpp:3112
+#: src/LyXRC.cpp:3113
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr "Anna vaihtoehtoinen kieli. Asiakirjan kieltä käytetään oletuksena."
 
-#: src/LyXRC.cpp:3120
+#: src/LyXRC.cpp:3121
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -25175,7 +25198,7 @@ msgstr ""
 "Poista tämä käytöstä, jos et halua valitsemasi tekstin korvautuvan, kun alat "
 "kirjoittaa."
 
-#: src/LyXRC.cpp:3124
+#: src/LyXRC.cpp:3125
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -25183,14 +25206,14 @@ msgstr ""
 "Poista tämä käytöstä, jos et halua asiakirjan luokka-asetusten palautuvan "
 "oletuksiksi, kun vaihdat sen luokkaa."
 
-#: src/LyXRC.cpp:3128
+#: src/LyXRC.cpp:3129
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Määrittää automaattisten tallennusten välisen ajan sekunteina. 0 tarkoittaa, "
 "että automaattitallennus ei ole käytössä."
 
-#: src/LyXRC.cpp:3135
+#: src/LyXRC.cpp:3136
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -25198,17 +25221,17 @@ msgstr ""
 "Hakemisto, johon varmuuskopiot tallentuvat. Jos et anna hakemistoa, niin LyX "
 "tallentaa varmuuskopion hakemistoon, jossa alkuperäinen tiedosto on."
 
-#: src/LyXRC.cpp:3139
+#: src/LyXRC.cpp:3140
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
 msgstr ""
 
-#: src/LyXRC.cpp:3143
+#: src/LyXRC.cpp:3144
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 
-#: src/LyXRC.cpp:3147
+#: src/LyXRC.cpp:3148
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -25216,11 +25239,11 @@ msgstr ""
 "Pikanäppäintiedosto. Voit joko antaa sen koko polun, tai LyX etsii sitä sen "
 "sekä yleisestä että paikallisesta bind/-hakemistosta."
 
-#: src/LyXRC.cpp:3151
+#: src/LyXRC.cpp:3152
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Määritä, tarkistetaanko viimeisimpien tiedostojen olemassaolo."
 
-#: src/LyXRC.cpp:3155
+#: src/LyXRC.cpp:3156
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -25228,7 +25251,7 @@ msgstr ""
 "Määrittele, miten ChkTeX-ohjelma ajetaan. Esim. \"chktex -n11 -n1 -n3 -n6 -"
 "n9 -22 -n25 -n30 -n38\". Lisätietoja saat ChkTeXin ohjeista."
 
-#: src/LyXRC.cpp:3165
+#: src/LyXRC.cpp:3166
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -25236,7 +25259,7 @@ msgstr ""
 "LyX ei siirrä tavallisesti kohdistinta, kun liikutat vierityspalkkia. Aseta "
 "todeksi, jos haluat kohdistimen olevan aina näkyvissä."
 
-#: src/LyXRC.cpp:3173
+#: src/LyXRC.cpp:3174
 #, fuzzy
 msgid ""
 "LyX normally doesn't allow the user to scroll further than the bottom of the "
@@ -25246,21 +25269,21 @@ msgstr ""
 "LyX ei siirrä tavallisesti kohdistinta, kun liikutat vierityspalkkia. Aseta "
 "todeksi, jos haluat kohdistimen olevan aina näkyvissä."
 
-#: src/LyXRC.cpp:3177
+#: src/LyXRC.cpp:3178
 msgid "Make Apple key act as Meta and Control key as Ctrl."
 msgstr ""
 
-#: src/LyXRC.cpp:3181
+#: src/LyXRC.cpp:3182
 msgid "Use the Mac OS X conventions for cursor movement"
 msgstr ""
 
-#: src/LyXRC.cpp:3185
+#: src/LyXRC.cpp:3186
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
 msgstr ""
 
-#: src/LyXRC.cpp:3190
+#: src/LyXRC.cpp:3191
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -25269,7 +25292,7 @@ msgstr ""
 "Tähän käy tavallinen funktion strftime hyväksymä muoto, esimerkiksi \"%A %e. "
 "%Bta %Y\". Katso lisätietoja strftimen manuaalisivuilta."
 
-#: src/LyXRC.cpp:3194
+#: src/LyXRC.cpp:3195
 #, fuzzy
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
@@ -25278,16 +25301,16 @@ msgstr ""
 "Pikanäppäintiedosto. Voit joko antaa sen koko polun, tai LyX etsii sitä sen "
 "sekä yleisestä että paikallisesta bind/-hakemistosta."
 
-#: src/LyXRC.cpp:3198
+#: src/LyXRC.cpp:3199
 msgid ""
 "The default format used with LFUN_BUFFER_[VIEW|UPDATE] with non-TeX fonts."
 msgstr ""
 
-#: src/LyXRC.cpp:3202
+#: src/LyXRC.cpp:3203
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
 msgstr ""
 
-#: src/LyXRC.cpp:3206
+#: src/LyXRC.cpp:3207
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -25295,11 +25318,11 @@ msgstr ""
 "Pienennä valintaikkunat, kun pääikkuna pienennetään. Tämä vaikuttaa vain "
 "uusiin valintaikkunoihin."
 
-#: src/LyXRC.cpp:3210
+#: src/LyXRC.cpp:3211
 msgid "Select how LyX will display any graphics."
 msgstr "Miten LyX näyttää kuvat."
 
-#: src/LyXRC.cpp:3214
+#: src/LyXRC.cpp:3215
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -25307,13 +25330,13 @@ msgstr ""
 "Oletushakemisto asiakirjojasi varten. Tyhjä tarkoittaa hakemistoa, josta LyX "
 "käynnistettiin."
 
-#: src/LyXRC.cpp:3218
+#: src/LyXRC.cpp:3219
 msgid "Specify additional chars that can be part of a word."
 msgstr ""
 "Anna merkkejä, jotka voivat esiintyä sanan osana tavallisten\n"
 "merkkien lisäksi."
 
-#: src/LyXRC.cpp:3222
+#: src/LyXRC.cpp:3223
 #, fuzzy
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
@@ -25322,7 +25345,7 @@ msgstr ""
 "Hakemisto, jonka LyX näyttää, kun valitset asiakirjamallia. Tyhjä merkitsee "
 "LyXin käynnistyshakemistoa."
 
-#: src/LyXRC.cpp:3226
+#: src/LyXRC.cpp:3227
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -25330,28 +25353,28 @@ msgstr ""
 "Kirjasinmerkistö, jota LaTeX2e fontenc-paketti käyttää. T1 on suositeltu "
 "valinta ei-englantilaisille kielille."
 
-#: src/LyXRC.cpp:3230
+#: src/LyXRC.cpp:3231
 msgid "Disable any kerning and ligatures for text drawing on screen."
 msgstr ""
 
-#: src/LyXRC.cpp:3237
+#: src/LyXRC.cpp:3238
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
 "\"makeindex.sh -m $$lang\"."
 msgstr ""
 
-#: src/LyXRC.cpp:3241
+#: src/LyXRC.cpp:3242
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr ""
 
-#: src/LyXRC.cpp:3245
+#: src/LyXRC.cpp:3246
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
 msgstr ""
 
-#: src/LyXRC.cpp:3254
+#: src/LyXRC.cpp:3255
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -25359,18 +25382,18 @@ msgstr ""
 "Määrittele mitä merkkejä eri näppäimet tuottavat. Tarvitset tätä, jos "
 "esimerkiksi haluat kirjoittaa suomea amerikkalaisella näppäimistöllä."
 
-#: src/LyXRC.cpp:3258
+#: src/LyXRC.cpp:3259
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr "Käytä tätä, jos asiakirjan alussa täytyy olla kielenvaihtokomento."
 
-#: src/LyXRC.cpp:3262
+#: src/LyXRC.cpp:3263
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr "Käytä tätä, jos asiakirjan lopussa täytyy olla kielenvaihtokomento."
 
-#: src/LyXRC.cpp:3266
+#: src/LyXRC.cpp:3267
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -25380,15 +25403,15 @@ msgstr ""
 "\"\\selectlanguage{$$lang}\", jossa \"$$lang\" korvautuu toisen kielen "
 "nimellä."
 
-#: src/LyXRC.cpp:3270
+#: src/LyXRC.cpp:3271
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "LaTeX-komento, joka vaihtaa kielen takaisin asiakirjan kieleksi."
 
-#: src/LyXRC.cpp:3274
+#: src/LyXRC.cpp:3275
 msgid "The LaTeX command for local changing of the language."
 msgstr "LaTeX-komento kielen paikalliseen vaihtamiseen."
 
-#: src/LyXRC.cpp:3278
+#: src/LyXRC.cpp:3279
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -25396,7 +25419,7 @@ msgstr ""
 "Aseta epätodeksi, jos et halua kielen tai kielien olevan \\documentclassin "
 "parametreja."
 
-#: src/LyXRC.cpp:3282
+#: src/LyXRC.cpp:3283
 msgid ""
 "The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
@@ -25404,7 +25427,7 @@ msgstr ""
 "LaTeX-komento, joka lataa kielipaketin. Esimerkiksi \"\\usepackage{babel}\" "
 "tai \"\\usepackage{omega}\"."
 
-#: src/LyXRC.cpp:3286
+#: src/LyXRC.cpp:3287
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -25412,102 +25435,102 @@ msgstr ""
 "Aseta epätodeksi, jos et halua, että babelia käytetään, kun asiakirjan kieli "
 "on oletuskieli."
 
-#: src/LyXRC.cpp:3290
+#: src/LyXRC.cpp:3291
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 "Aseta pois päältä, jos et halua LyXin rullaavan sen muistamaan paikkaan."
 
-#: src/LyXRC.cpp:3294
+#: src/LyXRC.cpp:3295
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr "Aseta pois päältä, jos et halua ladata viimeisen istunnon tiedostot."
 
-#: src/LyXRC.cpp:3298
+#: src/LyXRC.cpp:3299
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "Aseta pois päältä, jos et halua LyXin luovan varmuuskopioita."
 
-#: src/LyXRC.cpp:3302
+#: src/LyXRC.cpp:3303
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr "Muuta muiden kuin asiakirjan kielellä kirjoitettujen osien merkintää."
 
-#: src/LyXRC.cpp:3306
+#: src/LyXRC.cpp:3307
 msgid "The scrolling speed of the mouse wheel."
 msgstr ""
 
-#: src/LyXRC.cpp:3311
+#: src/LyXRC.cpp:3312
 #, fuzzy
 msgid "The completion popup delay."
 msgstr "Tekstin &seassa"
 
-#: src/LyXRC.cpp:3315
+#: src/LyXRC.cpp:3316
 msgid "Select to display the completion popup in math mode."
 msgstr ""
 
-#: src/LyXRC.cpp:3319
+#: src/LyXRC.cpp:3320
 msgid "Select to display the completion popup in text mode."
 msgstr ""
 
-#: src/LyXRC.cpp:3323
+#: src/LyXRC.cpp:3324
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 
-#: src/LyXRC.cpp:3327
+#: src/LyXRC.cpp:3328
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
 msgstr ""
 
-#: src/LyXRC.cpp:3331
+#: src/LyXRC.cpp:3332
 #, fuzzy
 msgid "The inline completion delay."
 msgstr "Tekstin &seassa"
 
-#: src/LyXRC.cpp:3335
+#: src/LyXRC.cpp:3336
 msgid "Select to display the inline completion in math mode."
 msgstr ""
 
-#: src/LyXRC.cpp:3339
+#: src/LyXRC.cpp:3340
 msgid "Select to display the inline completion in text mode."
 msgstr ""
 
-#: src/LyXRC.cpp:3343
+#: src/LyXRC.cpp:3344
 msgid "Use \"...\" to shorten long completions."
 msgstr ""
 
-#: src/LyXRC.cpp:3347
+#: src/LyXRC.cpp:3348
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
 msgstr ""
 
-#: src/LyXRC.cpp:3351
+#: src/LyXRC.cpp:3352
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 "Suurin muistettu viimeisimpien tiedostojen määrä. Enintään %1$d voi näkyä\n"
 "valikossa."
 
-#: src/LyXRC.cpp:3362
+#: src/LyXRC.cpp:3363
 msgid "Shows a typeset preview of things such as math"
 msgstr "Näyttää taitetun esikatselun esimerkiksi matematiikasta"
 
-#: src/LyXRC.cpp:3366
+#: src/LyXRC.cpp:3367
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr "Esikatseltavissa yhtälöissä on numerointina vain \"(#)\"."
 
-#: src/LyXRC.cpp:3370
+#: src/LyXRC.cpp:3371
 msgid "Scale the preview size to suit."
 msgstr "Skaalaa esikatselunäkymä sopivan kokoiseksi."
 
-#: src/LyXRC.cpp:3374
+#: src/LyXRC.cpp:3375
 msgid "The option for specifying whether the copies should be collated."
 msgstr "Valitsin, jolla määritetään, tulostuvatko kopiot järjestyksessä."
 
-#: src/LyXRC.cpp:3378
+#: src/LyXRC.cpp:3379
 msgid "The option for specifying the number of copies to print."
 msgstr "Valitsin, jolla asetetaan tulostettavien kopioiden määrä."
 
-#: src/LyXRC.cpp:3382
+#: src/LyXRC.cpp:3383
 msgid ""
 "The default printer to print on. If none is specified, LyX will use the "
 "environment variable PRINTER."
@@ -25515,11 +25538,11 @@ msgstr ""
 "Oletustulostin. Jos tätä ei ole määritelty, niin LyX käyttää "
 "ympäristömuuttujan PRINTER arvoa."
 
-#: src/LyXRC.cpp:3386
+#: src/LyXRC.cpp:3387
 msgid "The option to print only even pages."
 msgstr "Valitsin, jolla saadaan vain parilliset sivut tulostumaan."
 
-#: src/LyXRC.cpp:3390
+#: src/LyXRC.cpp:3391
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
@@ -25527,37 +25550,37 @@ msgstr ""
 "Lisävalitsimia, jotka välittyvät tulostusohjelmalle muiden valitsimien "
 "jälkeen, mutta ennen tulostettavan tiedoston nimeä."
 
-#: src/LyXRC.cpp:3394
+#: src/LyXRC.cpp:3395
 msgid "Extension of printer program output file. Usually \".ps\"."
 msgstr "Tulostusohjelman luomien tiedostojen pääte. Yleensä \".ps\""
 
-#: src/LyXRC.cpp:3398
+#: src/LyXRC.cpp:3399
 msgid "The option to print out in landscape."
 msgstr "Valitsin, jolla tuloste saadaan vaakasuuntaiseksi."
 
-#: src/LyXRC.cpp:3402
+#: src/LyXRC.cpp:3403
 msgid "The option to print only odd pages."
 msgstr "Valitsin, jolla saadaan vain parittomat sivut tulostumaan."
 
-#: src/LyXRC.cpp:3406
+#: src/LyXRC.cpp:3407
 msgid "The option for specifying a comma-separated list of pages to print."
 msgstr ""
 "Valitsin, jolle annetaan tulostettavien sivujen numerot pilkuilla "
 "erotettuina."
 
-#: src/LyXRC.cpp:3410
+#: src/LyXRC.cpp:3411
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Valitsin, jolla määritetään paperin mitat."
 
-#: src/LyXRC.cpp:3414
+#: src/LyXRC.cpp:3415
 msgid "The option to specify paper type."
 msgstr "Valitsin, jolla määritetään paperityyppi."
 
-#: src/LyXRC.cpp:3418
+#: src/LyXRC.cpp:3419
 msgid "The option to reverse the order of the pages printed."
 msgstr "Valitsin, jolla tulostusjärjestys muutetaan käänteiseksi."
 
-#: src/LyXRC.cpp:3422
+#: src/LyXRC.cpp:3423
 msgid ""
 "When set, this printer option automatically prints to a file and then calls "
 "a separate print spooling program on that file with the given name and "
@@ -25567,7 +25590,7 @@ msgstr ""
 "Tämän jälkeen kutsutaan annettua erillistä kirjoittimen jonokomentoa "
 "annettujen valitsimien kanssa."
 
-#: src/LyXRC.cpp:3426
+#: src/LyXRC.cpp:3427
 msgid ""
 "If you specify a printer name in the print dialog, the following argument is "
 "prepended along with the printer name after the spool command."
@@ -25575,38 +25598,38 @@ msgstr ""
 "Jos annat tulostimen nimet Tulosta-valintaikkunassa, niin seuraava valitsin "
 "liitetään tulostimen nimen kanssa jonokomennon perään."
 
-#: src/LyXRC.cpp:3430
+#: src/LyXRC.cpp:3431
 msgid "Option to pass to the print program to print to a file."
 msgstr "Valitsin, jolla tulostusohjelma saadaan tulostamaan tiedostoon."
 
-#: src/LyXRC.cpp:3434
+#: src/LyXRC.cpp:3435
 msgid "Option to pass to the print program to print on a specific printer."
 msgstr ""
 "Valitsin, joka määrää tulostusohjelman tulostamaan tietyllä tulostimella."
 
-#: src/LyXRC.cpp:3438
+#: src/LyXRC.cpp:3439
 msgid ""
 "Select for LyX to pass the name of the destination printer to your print "
 "command."
 msgstr "Määritä, antaako LyX tulostimen nimen tulostuskomennolle."
 
-#: src/LyXRC.cpp:3442
+#: src/LyXRC.cpp:3443
 msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr ""
 "Mieluiten käyttämäsi tulostinohjelma. Esimerkiksi \"dvips\" tai \"dvilj4\"."
 
-#: src/LyXRC.cpp:3450
+#: src/LyXRC.cpp:3451
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 
-#: src/LyXRC.cpp:3454
+#: src/LyXRC.cpp:3455
 msgid ""
 "Specify whether, closing the last view of an open document, LyX should close "
 "the document (yes), hide it (no), or ask the user (ask)."
 msgstr ""
 
-#: src/LyXRC.cpp:3458
+#: src/LyXRC.cpp:3459
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -25614,11 +25637,11 @@ msgstr ""
 "Näyttösi tarkkuus pisteinä tuumalle (DPI). LyX määrittää tämän "
 "automaattisesti, mutta jos tulos on väärin, niin laita oikea arvo tähän."
 
-#: src/LyXRC.cpp:3464
+#: src/LyXRC.cpp:3465
 msgid "The screen fonts used to display the text while editing."
 msgstr "Näyttökirjasimet, joilla muokattava teksti piirretään."
 
-#: src/LyXRC.cpp:3473
+#: src/LyXRC.cpp:3474
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -25629,12 +25652,12 @@ msgstr ""
 "jättäminen saa LyXin käyttämään lähintä kirjasimessa valmiina olevaa kokoa "
 "skaalauksen sijasta."
 
-#: src/LyXRC.cpp:3477
+#: src/LyXRC.cpp:3478
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 "Kirjasinkoot, joita käytetään näyttökirjasinten skaalaamisen laskemiseen."
 
-#: src/LyXRC.cpp:3482
+#: src/LyXRC.cpp:3483
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -25643,11 +25666,11 @@ msgstr ""
 "Näyttökirjasinten suurennusprosentti. Arvolla 100% kirjasimet ovat "
 "suunnilleen saman kokoisia kuin paperilla."
 
-#: src/LyXRC.cpp:3486
+#: src/LyXRC.cpp:3487
 msgid "Allow session manager to save and restore windows geometry."
 msgstr ""
 
-#: src/LyXRC.cpp:3490
+#: src/LyXRC.cpp:3491
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -25655,11 +25678,11 @@ msgstr ""
 "Tämä käynnistää lyxserverin. Putket saavat liitteet \".in\" ja \".out\". "
 "Suositellaan vain edistyneille käyttäjille."
 
-#: src/LyXRC.cpp:3497
+#: src/LyXRC.cpp:3498
 msgid "De-select if you don't want the startup banner."
 msgstr "Aseta epätodeksi, jos et halua avauskuvan ilmestyvän."
 
-#: src/LyXRC.cpp:3501
+#: src/LyXRC.cpp:3502
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -25667,11 +25690,11 @@ msgstr ""
 "LyX käyttää tätä hakemistoa väliaikaisten tiedostojensa tallentamiseen. Se "
 "myös poistaa ne, kun lopetat sen."
 
-#: src/LyXRC.cpp:3505
+#: src/LyXRC.cpp:3506
 msgid "This is the place where the files of the thesaurus library reside."
 msgstr ""
 
-#: src/LyXRC.cpp:3509
+#: src/LyXRC.cpp:3510
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -25679,7 +25702,7 @@ msgstr ""
 "Hakemisto, jonka LyX näyttää, kun valitset asiakirjamallia. Tyhjä merkitsee "
 "LyXin käynnistyshakemistoa."
 
-#: src/LyXRC.cpp:3526
+#: src/LyXRC.cpp:3527
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -25687,22 +25710,22 @@ msgstr ""
 "Käyttöliittymätiedosto. Voit joko antaa sen koko polun, tai LyX etsii sitä "
 "sen sekä yleisestä että paikallisesta ui/-hakemistosta."
 
-#: src/LyXRC.cpp:3536
+#: src/LyXRC.cpp:3537
 msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
 msgstr ""
 
-#: src/LyXRC.cpp:3540
+#: src/LyXRC.cpp:3541
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr ""
 
-#: src/LyXRC.cpp:3544
+#: src/LyXRC.cpp:3545
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 
-#: src/LyXRC.cpp:3548
+#: src/LyXRC.cpp:3549
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Komentoriviparametri, joka kertoo DVI-katselimelle paperikoon. (Jätä "
@@ -25768,15 +25791,15 @@ msgstr "Ladataanko levyllä oleva versio muistissa olevan asiakirjan päälle?"
 msgid "&Revert"
 msgstr "Hylkää muutokset"
 
-#: src/Paragraph.cpp:2049
+#: src/Paragraph.cpp:2055
 msgid "Senseless with this layout!"
 msgstr "Järjetöntä tällä kappaletyylillä!"
 
-#: src/Paragraph.cpp:2110
+#: src/Paragraph.cpp:2116
 msgid "Alignment not permitted"
 msgstr ""
 
-#: src/Paragraph.cpp:2111
+#: src/Paragraph.cpp:2117
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -25809,65 +25832,65 @@ msgstr "Kappaleen alkuun ei voi lisätä välilyöntiä. Ks. Opastus."
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Kahta perättäistä välilyöntiä ei voi lisätä näin. Ks. Opastus."
 
-#: src/Text.cpp:1013
+#: src/Text.cpp:1016
 msgid "Character is uncodable in verbatim paragraphs."
 msgstr ""
 
-#: src/Text.cpp:1850
+#: src/Text.cpp:1853
 msgid "[Change Tracking] "
 msgstr "[Muutostenseuranta]"
 
-#: src/Text.cpp:1856
+#: src/Text.cpp:1859
 msgid "Change: "
 msgstr "Muutos: "
 
-#: src/Text.cpp:1860
+#: src/Text.cpp:1863
 msgid " at "
 msgstr " hetkellä "
 
-#: src/Text.cpp:1870
+#: src/Text.cpp:1873
 #, c-format
 msgid "Font: %1$s"
 msgstr "Kirjasin: %1$s"
 
-#: src/Text.cpp:1875
+#: src/Text.cpp:1878
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Syvyys: %1$d"
 
-#: src/Text.cpp:1881
+#: src/Text.cpp:1884
 msgid ", Spacing: "
 msgstr ", Välit: "
 
-#: src/Text.cpp:1887 src/frontends/qt4/GuiDocument.cpp:715
+#: src/Text.cpp:1890 src/frontends/qt4/GuiDocument.cpp:715
 msgid "OneHalf"
 msgstr "Puolikas"
 
-#: src/Text.cpp:1893
+#: src/Text.cpp:1896
 msgid "Other ("
 msgstr "Muu ("
 
-#: src/Text.cpp:1902
+#: src/Text.cpp:1905
 msgid ", Inset: "
 msgstr ", Upote: "
 
-#: src/Text.cpp:1903
+#: src/Text.cpp:1906
 msgid ", Paragraph: "
 msgstr ", Kappale: "
 
-#: src/Text.cpp:1904
+#: src/Text.cpp:1907
 msgid ", Id: "
 msgstr ", Tunnus:"
 
-#: src/Text.cpp:1905
+#: src/Text.cpp:1908
 msgid ", Position: "
 msgstr ", Paikka: "
 
-#: src/Text.cpp:1911
+#: src/Text.cpp:1914
 msgid ", Char: 0x"
 msgstr ", Merkki: 0x"
 
-#: src/Text.cpp:1913
+#: src/Text.cpp:1916
 msgid ", Boundary: "
 msgstr ", Raja: "
 
@@ -26450,9 +26473,9 @@ msgstr ""
 msgid "About LyX"
 msgstr "LyXistä"
 
-#: src/frontends/qt4/GuiAlert.cpp:93 src/frontends/qt4/GuiAlert.cpp:157
-#: src/frontends/qt4/GuiAlert.cpp:209 src/frontends/qt4/GuiAlert.cpp:254
-#: src/frontends/qt4/GuiAlert.cpp:303
+#: src/frontends/qt4/GuiAlert.cpp:94 src/frontends/qt4/GuiAlert.cpp:158
+#: src/frontends/qt4/GuiAlert.cpp:215 src/frontends/qt4/GuiAlert.cpp:261
+#: src/frontends/qt4/GuiAlert.cpp:310
 #, c-format
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
@@ -26881,7 +26904,7 @@ msgstr "Keltainen"
 msgid "Text Style"
 msgstr "Asiakirjan tyyli"
 
-#: src/frontends/qt4/GuiCitation.cpp:286
+#: src/frontends/qt4/GuiCitation.cpp:287
 #, fuzzy
 msgid "Keys"
 msgstr "&Avain:"
@@ -29537,28 +29560,28 @@ msgstr "Hakemistoviite"
 msgid "No Citation in Scope!"
 msgstr "Ei kirjasinvuorottelua tarjolla."
 
-#: src/frontends/qt4/Menus.cpp:1542 src/insets/InsetCitation.cpp:164
-#: src/insets/InsetCitation.cpp:256
+#: src/frontends/qt4/Menus.cpp:1542 src/insets/InsetCitation.cpp:165
+#: src/insets/InsetCitation.cpp:257
 #, fuzzy
 msgid "No citations selected!"
 msgstr "Ei kirjasinvuorottelua tarjolla."
 
-#: src/frontends/qt4/Menus.cpp:1642
+#: src/frontends/qt4/Menus.cpp:1643
 #, fuzzy, c-format
 msgid "Caption (%1$s)"
 msgstr "Kuvateksti"
 
-#: src/frontends/qt4/Menus.cpp:1689
+#: src/frontends/qt4/Menus.cpp:1694
 #, fuzzy, c-format
 msgid "Start New Environment (%1$s)"
 msgstr "Koontiympäristö"
 
-#: src/frontends/qt4/Menus.cpp:1696
+#: src/frontends/qt4/Menus.cpp:1701
 #, fuzzy, c-format
 msgid "Start New Parent Environment (%1$s)"
 msgstr "luo uusi matematiikkatekstiympäristö ($...$)"
 
-#: src/frontends/qt4/Menus.cpp:2328
+#: src/frontends/qt4/Menus.cpp:2333
 #, fuzzy
 msgid "No Action Defined!"
 msgstr "Ei kirjasinvuorottelua tarjolla."
@@ -29908,7 +29931,7 @@ msgstr ""
 msgid "Sub-%1$s"
 msgstr ""
 
-#: src/insets/InsetCitation.cpp:160
+#: src/insets/InsetCitation.cpp:161
 #, fuzzy
 msgid "No bibliography defined!"
 msgstr "Lähdeviitteen avain"
@@ -30610,20 +30633,20 @@ msgstr "Listausten luettelo"
 msgid "Unknown TOC type"
 msgstr "Tuntematon sisällysluettelotyyppi"
 
-#: src/insets/InsetTabular.cpp:4533
+#: src/insets/InsetTabular.cpp:4536
 #, fuzzy
 msgid "Selections not supported."
 msgstr "Tiedostoa ei löydy"
 
-#: src/insets/InsetTabular.cpp:4555
+#: src/insets/InsetTabular.cpp:4558
 msgid "Multi-column in current or destination column."
 msgstr ""
 
-#: src/insets/InsetTabular.cpp:4567
+#: src/insets/InsetTabular.cpp:4570
 msgid "Multi-row in current or destination row."
 msgstr ""
 
-#: src/insets/InsetTabular.cpp:4959
+#: src/insets/InsetTabular.cpp:4962
 msgid "Selection size should match clipboard content."
 msgstr ""
 
@@ -30856,8 +30879,8 @@ msgstr "En voi muuttaa sarakkeiden määrä kohteessa '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "En voi lisätä vaakaviivat kohteeseen '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1718
-#: src/mathed/InsetMathNest.cpp:1864
+#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1731
+#: src/mathed/InsetMathNest.cpp:1877
 msgid "Autocorrect Off ('!' to enter)"
 msgstr ""
 
@@ -30874,7 +30897,7 @@ msgstr "siirryttiin matikkamoodiin (textrm)"
 msgid "Regular expression editor mode"
 msgstr "Jokerikortti-ilmaisu"
 
-#: src/mathed/InsetMathNest.cpp:1723 src/mathed/InsetMathNest.cpp:1866
+#: src/mathed/InsetMathNest.cpp:1736 src/mathed/InsetMathNest.cpp:1879
 msgid "Autocorrect On (<space> to exit)"
 msgstr ""
 
@@ -31159,42 +31182,42 @@ msgstr "Kaikki virheviestit"
 msgid "Debugging `%1$s' (%2$s)"
 msgstr "Virheiden seuranta: \"%1$s\" (%2$s)"
 
-#: src/support/lassert.cpp:52
+#: src/support/lassert.cpp:51
 #, c-format
 msgid ""
 "Assertion %1$s violated in\n"
 "file: %2$s, line: %3$s"
 msgstr ""
 
-#: src/support/lassert.cpp:62
+#: src/support/lassert.cpp:61
 msgid ""
 "It should be safe to continue, but you\n"
 "may wish to save your work and restart LyX."
 msgstr ""
 
-#: src/support/lassert.cpp:65
+#: src/support/lassert.cpp:64
 #, fuzzy
 msgid "Warning!"
 msgstr "Vientivaroitus!"
 
-#: src/support/lassert.cpp:72
+#: src/support/lassert.cpp:71
 msgid ""
 "There has been an error with this document.\n"
 "LyX will attempt to close it safely."
 msgstr ""
 
-#: src/support/lassert.cpp:75
+#: src/support/lassert.cpp:74
 #, fuzzy
 msgid "Buffer Error!"
 msgstr "Etsintävirhe"
 
-#: src/support/lassert.cpp:82
+#: src/support/lassert.cpp:81
 msgid ""
 "LyX has encountered an application error\n"
 "and will now shut down."
 msgstr ""
 
-#: src/support/lassert.cpp:85
+#: src/support/lassert.cpp:84
 #, fuzzy
 msgid "Fatal Exception!"
 msgstr "Taulukon_teksti"
@@ -31226,6 +31249,14 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Tuntematon käyttäjä"
+
+#, fuzzy
+#~ msgid ""
+#~ "Cannot create backup file %1$s.\n"
+#~ "Please check whether the directory exists and is writable."
+#~ msgstr ""
+#~ "En voi luoda varmuuskopiotiedostoa %1$s.\n"
+#~ "Tarkista, onko hakemisto olemassa ja onko lupaa kirjoittaa."
 
 #~ msgid "."
 #~ msgstr "."
