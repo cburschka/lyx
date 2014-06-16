@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-06-04 12:18+0200\n"
+"POT-Creation-Date: 2014-06-15 11:06+0200\n"
 "PO-Revision-Date: 2013-01-16 12:46+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -21940,26 +21940,30 @@ msgstr ""
 msgid "Backup failure"
 msgstr "Založenie zlyhalo"
 
-#: src/Buffer.cpp:1301
+#: src/Buffer.cpp:1336
 #, c-format
 msgid ""
-"Cannot create backup file %1$s.\n"
-"Please check whether the directory exists and is writable."
-msgstr ""
-"LyX nemohol vytvoriť záložnú kópiu v %1$s.\n"
-"Skontrolujte, či daný adresár existuje a je možné do neho zapisovať."
-
-#: src/Buffer.cpp:1339
-#, c-format
-msgid ""
-"Cannot move saved file to:\n"
+"Cannot create backup file:\n"
 "  %1$s.\n"
-"But the file has successfully been saved as:\n"
+"Do you want to try to save the file anyway?\n"
+"This will over-write the original file."
+msgstr ""
+"Nedá sa vytvoriť zálohový súbor:\n"
+"  %1$s.\n"
+"Chcete sa pokúsiť uložiť ten súbor aj napriek tomu?\n"
+"Toto prepíše originány súbor."
+
+#: src/Buffer.cpp:1356
+#, c-format
+msgid ""
+"Cannot restore original file to:\n"
+"  %1$s.\n"
+"But it can be found at:\n"
 "  %2$s."
 msgstr ""
-"Nemôžem premiestniť uložený súbor na:\n"
+"Nemôžem obnoviť originálny súbor na:\n"
 "  %1$s$\n"
-"Zato bol súbor ale úspešne uložený ako:\n"
+"Ale dá sa násť pod:\n"
 "  %2$s."
 
 #: src/Buffer.cpp:1327
@@ -29623,6 +29627,13 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid ""
+#~ "Cannot create backup file %1$s.\n"
+#~ "Please check whether the directory exists and is writable."
+#~ msgstr ""
+#~ "LyX nemohol vytvoriť záložnú kópiu v %1$s.\n"
+#~ "Skontrolujte, či daný adresár existuje a je možné do neho zapisovať."
+
 #~ msgid "E&xtension:"
 #~ msgstr "Prípon&y:"
 
@@ -32634,3 +32645,14 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Použiť balík algorithm2e pre plávajúce algoritmy namiesto LyXovej "
 #~ "samohonky plávajúcich algoritmov."
+
+#~ msgid ""
+#~ "Cannot move saved file to:\n"
+#~ "  %1$s.\n"
+#~ "But the file has successfully been saved as:\n"
+#~ "  %2$s."
+#~ msgstr ""
+#~ "Nemôžem premiestniť uložený súbor na:\n"
+#~ "  %1$s$\n"
+#~ "Zato bol súbor ale úspešne uložený ako:\n"
+#~ "  %2$s."
