@@ -4,6 +4,12 @@ Public release of LyX version 2.1.1
 We are proud to announce the release of LyX 2.1.1.  This is the first 
 maintenance release in the 2.1.x series.
 
+LyX is a document processor that encourages an approach to writing based 
+on the structure of your documents and not simply their appearance. It is
+released under a Free and Open Source Software license.
+
+You can download LyX 2.1.1 from http://www.lyx.org/Download/.
+
 LyX 2.1.1 is the result of on-going efforts to make our stable version
 even more reliable and stable. We have fixed a number of bugs and made
 a number of improvements. These are detailed below. We strongly encourage 
@@ -18,22 +24,15 @@ Tools> Preferences> Document Handling > "Backup documents every...minutes".
 
 Unfortunately, we have been unable to find the cause of this bug, though all
 known reports seem to involve documents that contain tables, and the corrupt 
-file always ends with: \begin_inset Tabular. Users who work with tables a lot
-may therefore wish to disable auto-save.
+file always ends with: \begin_inset Tabular.
 
 To prevent dataloss, we have changed the way LyX saves files if the user
 has not enabled backups. LyX now renames the existing file before 
 attempting to save the new one (in effect, making a temporary backup). 
 Then, if the save fails, the original file can be restored.
-  
-LyX is a document processor that encourages an approach to writing based 
-on the structure of your documents and not simply their appearance. It is
-released under a Free and Open Source Software license.
 
-You can download LyX 2.1.1 from http://www.lyx.org/Download/.
-
-If you think you found a bug in LyX 2.1.1, either e-mail the LyX
-developers' mailing list (lyx-devel <at> lists.lyx.org), or open a bug
+If you think you have found a bug in LyX 2.1.1, either e-mail the LyX
+developers' mailing list (lyx-devel <at> lists.lyx.org) or open a bug
 report at http://www.lyx.org/trac/wiki/BugTrackerHome.
 
 If you have trouble using LyX or have a question, consult the
