@@ -3,20 +3,20 @@
 # Zdenko Podobný <zdpo@mailbox.sk>
 #
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
-# Kornel Benko <kornel@lyx.org>, 2009-2013
+# Kornel Benko <kornel@lyx.org>, 2009-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-06-16 17:17-0400\n"
-"PO-Revision-Date: 2013-01-16 12:46+0100\n"
+"POT-Creation-Date: 2014-06-15 11:06+0200\n"
+"PO-Revision-Date: 2014-06-18 16:10+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 1.5\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
 "X-Language: sk_SK\n"
 "X-Source-Language: en_US\n"
@@ -2376,7 +2376,7 @@ msgid ""
 "time LyX is launched."
 msgstr ""
 "Špeciálne nastavenia pre MAC OS X na používanie skratiek v emacs. Zmeny sa "
-"aktivujú pri nasledujúcom vyvolaní lyx-a."
+"aktivujú pri nasledujúcom vyvolaní LyX-a."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:124
 msgid "Do not swap Apple and Control keys"
@@ -2400,7 +2400,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:203
 msgid "Scroll wheel zoom"
-msgstr "Lupa pomocou skrolovacieho tlačítka"
+msgstr "Lupa pomocou rolovacieho tlačítka"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:236
 msgid "Enable"
@@ -3190,7 +3190,7 @@ msgstr "Sek. - zdržať pre v&yťahovacie menu"
 msgid ""
 "Words with less than the specified number of characters will not be "
 "completed."
-msgstr "Slová kratšie ako zadané dľžkou sa nebudú doplňovať."
+msgstr "Slová kratšie ako zadané dĺžkou sa nebudú doplňovať."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:250
 msgid "Minimum characters for words that should be completed"
@@ -4359,7 +4359,7 @@ msgid ""
 "select/deselect."
 msgstr ""
 "Voľby, ktoré sú preddefinované v súbore so schémou. Kliknite vľavo pre "
-"aktiváciu/deaktiváciu."
+"aktiváciu/de-aktiváciu."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:83
 msgid "Cus&tom:"
@@ -5043,7 +5043,7 @@ msgid ""
 "Turns on the change tracking and showing changes in LaTeX output for the "
 "resulting document"
 msgstr ""
-"Zapne sledovanie zmien a ukazovanie zmien v LaTeX-ovom výstupe pre "
+"Zapne sledovanie zmien a ukazovanie zmien v LaTeXovom výstupe pre "
 "nasledovný dokument"
 
 #: src/frontends/qt4/ui/CompareUi.ui:181
@@ -5784,19 +5784,19 @@ msgstr ""
 msgid "Proof"
 msgstr "Dôkaz"
 
-#: lib/layouts/ijmpc.layout:333 lib/layouts/siamltex.layout:118
+#: lib/layouts/IEEEtran.layout:405 lib/layouts/beamer.layout:1152
 #: lib/layouts/elsart.layout:273 lib/layouts/elsart.layout:303
-#: lib/layouts/beamer.layout:1152 lib/layouts/llncs.layout:294
-#: lib/layouts/ijmpd.layout:336 lib/layouts/IEEEtran.layout:405
 #: lib/layouts/foils.layout:221 lib/layouts/heb-article.layout:30
-#: lib/layouts/heb-article.layout:108 lib/layouts/theorems-ams.inc:25
-#: lib/layouts/theorems-bytype.inc:27 lib/layouts/theorems-proof.inc:14
-#: lib/layouts/theorems-ams-bytype.inc:51 lib/layouts/theorems-case.inc:28
-#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:25
-#: lib/layouts/svcommon.inc:637 lib/layouts/theorems-without-preamble.inc:35
+#: lib/layouts/heb-article.layout:108 lib/layouts/ijmpc.layout:333
+#: lib/layouts/ijmpd.layout:336 lib/layouts/llncs.layout:294
+#: lib/layouts/siamltex.layout:118 lib/layouts/svcommon.inc:637
+#: lib/layouts/theorems-ams-bytype.inc:51 lib/layouts/theorems-ams.inc:25
+#: lib/layouts/theorems-bytype.inc:27 lib/layouts/theorems-case.inc:28
+#: lib/layouts/theorems-proof.inc:14 lib/layouts/theorems-starred.inc:24
+#: lib/layouts/theorems-without-preamble.inc:35 lib/layouts/theorems.inc:25
 #: lib/layouts/theorems-named.module:13
 msgid "Reasoning"
-msgstr "Dôvodnenie"
+msgstr "Dôvodenie"
 
 #: lib/layouts/ijmpc.layout:339 lib/layouts/ijmpd.layout:342
 #: lib/layouts/heb-article.layout:123
@@ -7693,7 +7693,7 @@ msgstr "SÚHRN"
 
 #: lib/layouts/aa.layout:296
 msgid "Abstract (structured)"
-msgstr "Súhrn (štrukturovaný)"
+msgstr "Súhrn (štruktúrovaný)"
 
 #: lib/layouts/aa.layout:300
 msgid "Context"
@@ -7705,11 +7705,11 @@ msgstr "Kontext vašej práce (nepovinný, môže sa vynechať)"
 
 #: lib/layouts/aa.layout:305
 msgid "Aims"
-msgstr "Cieľe"
+msgstr "Ciele"
 
 #: lib/layouts/aa.layout:306
 msgid "Aims of your work"
-msgstr "Cieľe vašej práce"
+msgstr "Ciele vašej práce"
 
 #: lib/layouts/aa.layout:310
 msgid "Methods"
@@ -7827,7 +7827,7 @@ msgstr "ŠachovnicaStredená"
 
 #: lib/layouts/chess.layout:146
 msgid "[centered board]"
-msgstr "[stredená šachovnica]"
+msgstr "[centrovaná šachovnica]"
 
 #: lib/layouts/chess.layout:156
 msgid "HighLight"
@@ -11148,7 +11148,7 @@ msgstr "Verzálky"
 
 #: lib/layouts/tufte-book.layout:181
 msgid "allcaps"
-msgstr "versálky"
+msgstr "verzálky"
 
 #: lib/layouts/tufte-book.layout:191
 msgid "SmallCaps"
@@ -11554,7 +11554,7 @@ msgstr "DvaStĺpce"
 
 #: lib/layouts/powerdot.layout:452
 msgid "Twocolumn options (see powerdot manual)"
-msgstr "Voľby pre Dvastĺpce (viď powerdot manuál)"
+msgstr "Voľby pre Dva stĺpce (viď powerdot manuál)"
 
 #: lib/layouts/powerdot.layout:455
 msgid "Left Column"
@@ -11575,7 +11575,7 @@ msgstr "Zobrazené na fólii (onslide)"
 
 #: lib/layouts/powerdot.layout:575
 msgid "On Slides"
-msgstr "Na fóliach"
+msgstr "Na fóliách"
 
 #: lib/layouts/powerdot.layout:576
 msgid "Overlay Specification|S"
@@ -12266,7 +12266,7 @@ msgstr "e-mail:"
 
 #: lib/layouts/aapaper.inc:114
 msgid "Thesaurus not supported in recent A&A:"
-msgstr "Thesaurus nepodporované v recentnom A&A:"
+msgstr "Thesaurus nepodporované v súčasnom A&A:"
 
 #: lib/layouts/numrevtex.inc:9
 msgid "\\Roman{section}."
@@ -12483,7 +12483,7 @@ msgstr "--- Vstupná Časť ---"
 
 #: lib/layouts/svcommon.inc:94
 msgid "Main Matter"
-msgstr "Hlavná Casť"
+msgstr "Hlavná Časť"
 
 #: lib/layouts/svcommon.inc:98
 msgid "--- Main Matter ---"
@@ -12491,11 +12491,11 @@ msgstr "--- Hlavná Časť ---"
 
 #: lib/layouts/svcommon.inc:101
 msgid "Back Matter"
-msgstr "Zaverečná Časť"
+msgstr "Záverečná Časť"
 
 #: lib/layouts/svcommon.inc:105
 msgid "--- Back Matter ---"
-msgstr "--- Zaverečná Časť ---"
+msgstr "--- Záverečná Časť ---"
 
 #: lib/layouts/svcommon.inc:119 lib/layouts/stdsections.inc:15
 msgid "Part \\thepart"
@@ -12700,7 +12700,7 @@ msgstr "Návestie Problému"
 
 #: lib/layouts/theorems-without-preamble.inc:290
 msgid "Label of the corresponding problem"
-msgstr "Návestie korešpondujúceho problému"
+msgstr "Návestie korešpondujúce problému"
 
 #: lib/layouts/theorems-without-preamble.inc:365
 msgid "Property \\theproperty."
@@ -12824,10 +12824,10 @@ msgid ""
 "Summary, Acknowledgement, Conclusion, Fact, Assumption, Case, and Question, "
 "in both numbered and non-numbered forms."
 msgstr ""
-"Definuje niektoré prídavné prostredie teorémov pre použitie s balíkmi AMS. "
+"Definuje niektoré prídavné prostredie teorémou pre použitie s balíkmi AMS. "
 "Zahrňuje Kritérium, Algoritmus, Axióma, Podmienka, Poznámka, Notácia, Súhrn, "
 "Poďakovania, Záver, Fakt, Predpoklad, Prípad a Otázka v oboch formách "
-"(číslované/nečíslované)."
+"(číslované/neočíslované)."
 
 #: lib/layouts/theorems-ams-extended.module:10
 #: lib/layouts/theorems-sec.module:8 lib/layouts/theorems-std.module:8
@@ -13062,7 +13062,7 @@ msgstr "Dvoj-jazykový popis"
 
 #: lib/layouts/bicaption.module:40
 msgid "bilingual"
-msgstr "dvoj-jazyčne"
+msgstr "dvojjazyčne"
 
 #: lib/layouts/bicaption.module:44
 msgid "Main Language Short Title"
@@ -13114,7 +13114,7 @@ msgid ""
 msgstr ""
 "Tento modul pridáva podporu na používanie natbib spolu s apacite (štýl "
 "bibliografie nemusí byť apacite--môže byť apacite, apacitex,, alebo "
-"ktorákoľvek iná bibliografia ktorá spolupracuje s natbib i apacite balíkamy.)"
+"ktorákoľvek iná bibliografia ktorá spolupracuje s natbib i apacite balíkmi.)"
 
 #: lib/layouts/logicalmkup.module:2
 msgid "Logical Markup"
@@ -13266,7 +13266,7 @@ msgid ""
 "proposition 4, ...). The numbering is reset at each section start."
 msgstr ""
 "Definuje niektoré prostredia mat. viet nepoužívajúce AMS. Opačne k "
-"jednoduchému modulu teorémov, má tu každý poskytnutý typ teorémov svoje "
+"jednoduchému modulu teorémou, má tu každý poskytnutý typ teorémou svoje "
 "vlastné číslovanie (čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma "
 "2, ..., oproti veta 1, veta 2, lemma 3, tvrdenie 4...). Číslovanie sa nuluje "
 "na začiatku každej sekcie."
@@ -13346,11 +13346,11 @@ msgid ""
 "criterion 1, criterion 2, axiom 1, assumption 1, criterion 3, ..., as "
 "opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
 msgstr ""
-"Definuje niektoré prídavné prostredie teorémov pre použitie s balíkmi AMS. "
+"Definuje niektoré prídavné prostredie teorémou pre použitie s balíkmi AMS. "
 "Zahrňuje Kritérium, Algoritmus, Axióma, Podmienka,Poznámka, Notácia, Súhrn, "
 "Poďakovania, Záver, Predpoklad, a Prípad v oboch formách (číslované/"
-"nečíslované). Opačne k jednoduchému modulu rozšírenia AMS, má tu každý "
-"poskytnutý typ teorémov svoje vlastné číslovanie (čiže kritérium 1, "
+"neočíslované). Opačne k jednoduchému modulu rozšírenia AMS, má tu každý "
+"poskytnutý typ teorémou svoje vlastné číslovanie (čiže kritérium 1, "
 "kritérium 2, axióma 1, predpoklad 1, kritérium 3, ..., oproti kritérium 1, "
 "kritérium 2, axióma 3, predpoklad 4, ...)."
 
@@ -13399,7 +13399,7 @@ msgid ""
 "Facilitates the use of named theorems. The name of the theorem goes into the "
 "'Short Title' inset."
 msgstr ""
-"Umožnuje používanie menovaných teorém. Meno teorému ide do vložky 'Krátky "
+"Umožňuje používanie menovaných teorém. Meno teorému ide do vložky 'Krátky "
 "Titul'."
 
 #: lib/layouts/theorems-named.module:11
@@ -13532,8 +13532,8 @@ msgid ""
 "Sections'/'within Chapters' modules, respectively."
 msgstr ""
 "Definuje prostredie mat. viet a dôkazov používajúce rozšírenie AMS. K "
-"dispozícii sú číslované a nečíslované typy. Opačne k jednoduchému modulu "
-"rozšírenia AMS, má tu každý poskytnutý typ teorémov svoje vlastné číslovanie "
+"dispozícii sú číslované a neočíslované typy. Opačne k jednoduchému modulu "
+"rozšírenia AMS, má tu každý poskytnutý typ teorémou svoje vlastné číslovanie "
 "(čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma 2, ..., oproti veta "
 "1, veta 2, lemma 3, tvrdenie 4...). Číslovanie je postupne bez ohľadu na "
 "štruktúru dokumentu. To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované "
@@ -13667,7 +13667,7 @@ msgid ""
 "Sections'/'within Chapters' modules, respectively."
 msgstr ""
 "Definuje niektoré prostredia mat. viet nepoužívajúce AMS. Opačne k "
-"jednoduchému modulu teorémov, má tu každý poskytnutý typ teorémov svoje "
+"jednoduchému modulu teorémou, má tu každý poskytnutý typ teorémou svoje "
 "vlastné číslovanie (čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma "
 "2, ..., oproti veta 1, veta 2, lemma 3, tvrdenie 4...). Číslovanie je "
 "usporiadané bez ohľadu na štruktúru dokumentu. To sa dá zmeniť voľbou "
@@ -13765,7 +13765,7 @@ msgid ""
 "in which the first line is set to the left margin, but all subsequent lines "
 "are indented."
 msgstr ""
-"Pridáva prostredie pre \"visiace\" odstavce. Visiacy odstavec začína na "
+"Pridáva prostredie pre \"visiace\" odstavce. Visiaci odstavec začína na "
 "prvom riadku bez zasunutia, nasledujúce riadky sú naopak zasunuté."
 
 #: lib/layouts/endnotes.module:2 lib/layouts/endnotes.module:13
@@ -13811,7 +13811,7 @@ msgstr "Pokračovať číslovaním"
 
 #: lib/layouts/theorems-starred.module:2
 msgid "Theorems (Unnumbered)"
-msgstr "Teorémy (Nečíslované)"
+msgstr "Teorémy (Neočíslované)"
 
 #: lib/layouts/theorems-starred.module:6
 msgid ""
@@ -13841,7 +13841,7 @@ msgid ""
 "examples."
 msgstr ""
 "Definuje špeciálne prostredie užitočné pre lingvistiku (číslované príklady, "
-"glosy, semantické štýly znakov (markup), plávajúce tabuľky). Pozri na súbor "
+"glosy, sémantické štýly znakov (markup), plávajúce tabuľky). Pozri na súbor "
 "linguistics.lyx v príkladoch."
 
 #: lib/layouts/linguistics.module:13
@@ -13906,11 +13906,11 @@ msgstr "Tablo"
 
 #: lib/layouts/linguistics.module:179
 msgid "List of Tableaux"
-msgstr "Zoznam Tablov"
+msgstr "Zoznam Tablou"
 
 #: lib/layouts/theorems-chap-bytype.module:2
 msgid "Theorems (Numbered by Type within Chapters)"
-msgstr "Teorémy (Číslované podľa Typu vnútri Kapitôl)"
+msgstr "Teorémy (Číslované podľa Typu vnútri Kapitol)"
 
 #: lib/layouts/theorems-chap-bytype.module:9
 msgid ""
@@ -13921,7 +13921,7 @@ msgid ""
 "proposition 4, ...). The numbering is reset at each chapter start."
 msgstr ""
 "Definuje niektoré prostredia mat. viet nepoužívajúce AMS. Opačne k "
-"jednoduchému modulu teorémov, má tu každý poskytnutý typ teorémov svoje "
+"jednoduchému modulu teorémou, má tu každý poskytnutý typ teorémou svoje "
 "vlastné číslovanie (čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma "
 "2, ..., oproti veta 1, veta 2, lemma 3, tvrdenie 4...). Číslovanie sa nuluje "
 "na začiatku každej kapitoly."
@@ -15610,9 +15610,9 @@ msgstr "Dolný index"
 msgid "Protected Space|P"
 msgstr "Chránená Medzera"
 
-#: lib/ui/stdmenus.inc:409 lib/ui/stdcontext.inc:217
+#: lib/ui/stdcontext.inc:217 lib/ui/stdmenus.inc:409
 msgid "Interword Space|w"
-msgstr "Medzislovná medzera"
+msgstr "Medzi-slovná Medzera"
 
 #: lib/ui/stdmenus.inc:410 lib/ui/stdcontext.inc:220 lib/ui/stdcontext.inc:243
 msgid "Thin Space|T"
@@ -16819,7 +16819,7 @@ msgstr "Otočiť túto bunku o 90 stupňov alebo vymazať rotáciu"
 
 #: lib/ui/stdtoolbars.inc:172
 msgid "Set multi-column"
-msgstr "Zvoliť viacstĺpcovú"
+msgstr "Zvoliť viac-stĺpcovú"
 
 #: lib/ui/stdtoolbars.inc:173
 msgid "Set multi-row"
@@ -20869,7 +20869,7 @@ msgstr "Trvanie dlhé"
 
 #: lib/ui/stdtoolbars.inc:1377
 msgid "Half-long"
-msgstr "Polodlhé"
+msgstr "Polo-dlhé"
 
 #: lib/ui/stdtoolbars.inc:1378
 msgid "Extra short"
@@ -20917,7 +20917,7 @@ msgstr "Šepkaným hlasom"
 
 #: lib/ui/stdtoolbars.inc:1392
 msgid "Creaky voiced"
-msgstr "Vŕzganým hlasom"
+msgstr "Vŕzgavým hlasom"
 
 #: lib/ui/stdtoolbars.inc:1393
 msgid "Linguolabial"
@@ -21017,15 +21017,15 @@ msgstr "Nazalisovane"
 
 #: lib/ui/stdtoolbars.inc:1417
 msgid "Nasal release"
-msgstr "Uvolnenie oklúzie"
+msgstr "Uvoľnenie oklúzie"
 
 #: lib/ui/stdtoolbars.inc:1418
 msgid "Lateral release"
-msgstr "Laterálne uvolnenie"
+msgstr "Laterálne uvoľnenie"
 
 #: lib/ui/stdtoolbars.inc:1419
 msgid "No audible release"
-msgstr "Nezvučné uvolnenie"
+msgstr "Nezvučné uvoľnenie"
 
 #: lib/ui/stdtoolbars.inc:1423
 msgid "Extra high (accent)"
@@ -23663,10 +23663,10 @@ msgstr ""
 "                  Nástroje->Preferencie...->Obsluha súborov->Formáty Súborov-"
 ">Skratka\n"
 "                  aby ste videli, ktoré parametre sú vhodné.\\n\n"
-"                 (Líšia sa od mena formátu v menu Súbor->Exprotovať).\n"
+"                 (Líšia sa od mena formátu v menu Súbor->Exportovať).\n"
 "                  Všimnite si že poradie prepínačov -e a -x je významné.\n"
 "\t-E [--export-to] fmt názov\n"
-"                  kde fmt je vybraný exportný formát (pozrite --expot),\n"
+"                  kde fmt je vybraný exportný formát (pozrite --export),\n"
 "                  a názov je meno výsledného súboru.\n"
 "\ti [--import] fmt file.xxx\n"
 "                  kde fmt je vybraný formát k importu\n"
@@ -23800,7 +23800,7 @@ msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 msgstr ""
-"Súbor s klávesnými skratkami. Môžete použiť absolútnu cestu, ináč bude LyX "
+"Súbor s klávesovými skratkami. Môžete použiť absolútnu cestu, ináč bude LyX "
 "hľadať v globálnych a lokálnych bind/ adresároch."
 
 #: src/LyXRC.cpp:3152
@@ -25893,7 +25893,7 @@ msgstr "Nepoužívať"
 
 #: src/frontends/qt4/GuiDocument.cpp:1170
 msgid "The AMS LaTeX packages are always used"
-msgstr "AMS a LeTeX-ové balíky každopádne použiť"
+msgstr "AMS a LaTeX-ové balíky každopádne použiť"
 
 #: src/frontends/qt4/GuiDocument.cpp:1173
 #, c-format
@@ -25902,7 +25902,7 @@ msgstr "LaTeX balík %1$s sa vždy použije"
 
 #: src/frontends/qt4/GuiDocument.cpp:1178
 msgid "The AMS LaTeX packages are never used"
-msgstr "AMS a LeTeX-ové balíky sa nikdy nepoužívajú"
+msgstr "AMS a LaTeX-ové balíky sa nikdy nepoužívajú"
 
 #: src/frontends/qt4/GuiDocument.cpp:1181
 #, c-format
@@ -26346,7 +26346,7 @@ msgstr "Klipart|#K#k"
 #: src/frontends/qt4/GuiHSpace.cpp:45 src/frontends/qt4/GuiHSpace.cpp:58
 #: src/insets/InsetSpace.cpp:68
 msgid "Interword Space"
-msgstr "Medzislovná medzera"
+msgstr "Medzi-slovná Medzera"
 
 #: src/frontends/qt4/GuiHSpace.cpp:46 src/frontends/qt4/GuiHSpace.cpp:59
 #: src/insets/InsetSpace.cpp:77
@@ -27220,7 +27220,7 @@ msgstr "Arabská Prezentácia formy-B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:122
 msgid "Halfwidth and Fullwidth Forms"
-msgstr "Pološiroké a Plnoširoké formy"
+msgstr "Polo-široké a Plno-široké formy"
 
 #: src/frontends/qt4/GuiSymbols.cpp:124
 msgid "Linear B Syllabary"
@@ -29028,7 +29028,7 @@ msgstr "Výbery nie sú podporované."
 
 #: src/insets/InsetTabular.cpp:4558
 msgid "Multi-column in current or destination column."
-msgstr "Viacstĺpcové v aktuálnom alebo cieľovom stĺpci."
+msgstr "Viac-stĺpcové v aktuálnom alebo cieľovom stĺpci."
 
 #: src/insets/InsetTabular.cpp:4570
 msgid "Multi-row in current or destination row."
