@@ -15,7 +15,8 @@ export/.*/hu/.*(pdf5|dvi3)_.*
 # compatibility mode) does not work because the loading of inputenc with
 # utf8x is hardcoded in europecv.cls at the time of this writing. See:
 # http://comments.gmane.org/gmane.editors.lyx.devel/145896
-export/.*/es/europeCV_(pdf[45]|dvi3)_.*
+# TODO If David Carlisle takes over ownership, report these to him.
+export/.*/es/europeCV_(pdf[5]|dvi3)_texF
 #
 # somehow lualatex is not able to compile with non-tex fonts
 export/.*/es/(Math|Tutorial|UserGuide|ejemplo_con_lyx)_dvi3_systemF
@@ -30,9 +31,7 @@ export/templates/ectaart_(pdf5|dvi3)_.*
 #
 # LuaTeX does not support Farsi yet. See:
 # https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
-# It also appears that XeTeX does not support using TeX fonts.
 export/examples/fa/splash_(pdf5|dvi3)_.*
-export/examples/fa/splash_pdf4_texF
 #
 # There is no non-TeX support for Ukrainian with LuaTeX. See:
 # https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181690.html
@@ -61,7 +60,10 @@ export/examples/fr/(Foils|ListesPuces|seminar|simplecv)_pdf4_systemF
 export/examples/gl/exemplo_lyxificado_(dvi3|pdf5)_systemF
 export/examples/sr/Braille_pdf4_systemF
 export/examples/sr/splash_pdf4_systemF
-export/templates/(IEEEtran-(CompSoc|Journal|TransMag)|RJournal)_(dvi3|pdf[45])_systemF
+export/templates/RJournal_(dvi3|pdf[45])_systemF
+# Changes in TeX Live 2014 (see git blame for info) fixed IEEEtran-CompSoc
+# pdf4_systemF but not others. TODO Investigate if others can be fixed?
+export/templates/IEEEtran-(Journal|TransMag)_pdf4_systemF
 export/templates/kluwer_pdf4_systemF
 #
 # There is no Russian LuaTeX TeX font support yet.
@@ -93,3 +95,35 @@ export/templates/DocBook_article_(dvi3_|pdf2|pdf[45]_).*
 export/templates/JSS-article_(dvi|dvi3_.*|pdf3?)
 export/templates/attic/latex8_(dvi|dvi3_.*)
 export/templates/ctex_pdf[23]?
+#
+# The following exports worked with TeX Live 2013, but not in 2014.
+# For a workaround, see:
+# https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg184435.html
+# David Carlisle might fix the europeCV package.
+export/examples/Foils_dvi3_systemF
+export/examples/Foils_pdf4_systemF
+export/examples/Foils_pdf5_systemF
+export/examples/fr/Foils_dvi3_systemF
+export/examples/fr/Foils_pdf5_systemF
+export/examples/aa_sample_dvi3_texF
+export/examples/aa_sample_dvi3_systemF
+export/examples/aa_sample_pdf4_texF
+export/examples/aa_sample_pdf4_systemF
+export/examples/aa_sample_pdf5_texF
+export/examples/aa_sample_pdf5_systemF
+export/examples/europeCV_dvi3_texF
+export/examples/europeCV_pdf5_texF
+export/templates/aa_dvi3_texF
+export/templates/aa_dvi3_systemF
+export/templates/aa_pdf4_texF
+export/templates/aa_pdf4_systemF
+export/templates/aa_pdf5_texF
+export/templates/aa_pdf5_systemF
+#
+# These exports correctly fail now on TeX Live 2014. Although they compiled
+# without error on TeX Live 2013, the resulting PDFs had gibberish.
+export/doc/he/Intro_pdf4_texF
+export/doc/he/Tutorial_pdf4_texF
+export/examples/he/example_lyxified_pdf4_texF
+export/examples/he/example_raw_pdf4_texF
+export/examples/he/splash_pdf4_texF
