@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 476
 \begin_document
 \begin_header
 \textclass article-beamer
@@ -82,7 +82,7 @@
 \begin_inset Note Note
 status open
 
-\begin_layout Plain Layout
+\begin_layout Itemize
 This is an accompanying document to the beamer example (see 
 \family sans
 Help\SpecialChar \menuseparator
@@ -101,7 +101,18 @@ article
  mode.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Itemize
+Except for the document class, you probably want most of the same document
+ settings as the included document.
+ For example, if you have Natbib author-year in child, you should have it
+ here as well.
+ If you use a module in the child, include it here also.
+ You might not need to copy some parts of the preamble, for example 
+\backslash
+setbeamertemplate{...}.
+\end_layout
+
+\begin_layout Itemize
 If you get a warning message about different text classes when you view
  PDF, you can safely click 
 \begin_inset Quotes eld
