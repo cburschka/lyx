@@ -40,9 +40,9 @@ export/doc/uk/Intro_(pdf5|dvi3)_systemF
 #
 # The following documents likely fail because of excessive preamble code that
 # is only targeted at (pdf)latex. TODO these .lyx files could be fixed. Although
-# it is unlikely that a user would want to use system fonts to view LyX's documents
-# fixing these would provide further tests for LyX's handling of XeTeX/LuaTeX with
-# system fonts.
+# it is unlikely that a user would want to use system fonts to view LyX's
+# documents, fixing these would provide further tests for LyX's handling of
+# XeTeX/LuaTeX with system fonts.
 export/doc/(|de/|es/|fr/)Customization_pdf4_systemF
 export/doc/(|de/|es/|fr/)Math_(dvi3|pdf4)_systemF
 export/doc/attic/(eu|pl)_Additional_pdf4_systemF
