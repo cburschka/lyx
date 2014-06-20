@@ -11,14 +11,14 @@ msgstr ""
 "Project-Id-Version: LyX 2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-06-16 17:17-0400\n"
-"PO-Revision-Date: 2014-04-03 13:04+0100\n"
+"PO-Revision-Date: 2014-06-17 10:09+0100\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: Spanish <lyx-docs@lists.lyx.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: src/frontends/qt4/ui/NumberingUi.ui:60
 msgid "&List in Table of Contents"
@@ -3221,10 +3221,11 @@ msgid ""
 "Words with less than the specified number of characters will not be "
 "completed."
 msgstr ""
+"Palabras con menos caracteres que el número especificado no se completarán."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:250
 msgid "Minimum characters for words that should be completed"
-msgstr ""
+msgstr "Caracteres mínimos para palabras que deberían completarse"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:275
 msgid ""
@@ -13318,7 +13319,6 @@ msgid "Algorithm2e"
 msgstr "Algorithm2e"
 
 #: lib/layouts/algorithm2e.module:6
-#, fuzzy
 msgid ""
 "Use the algorithm2e package for algorithm floats rather than LyX's home-"
 "brewed algorithm floats."
@@ -21976,9 +21976,8 @@ msgid "&Overwrite"
 msgstr "&Sobrescribir"
 
 #: src/Buffer.cpp:1313 src/Buffer.cpp:1355
-#, fuzzy
 msgid "Write failure"
-msgstr "fallo de chktex"
+msgstr "Fallo de escritura"
 
 #: src/Buffer.cpp:1314
 #, c-format
@@ -21987,6 +21986,9 @@ msgid ""
 "  %1$s.\n"
 "Even %2$s exists!"
 msgstr ""
+"No es posible encontrar nombre de archivo temporal para:\n"
+"  %1$s.\n"
+"¡Aún si existe %2$s!"
 
 #: src/Buffer.cpp:1335
 msgid "Backup failure"
@@ -22000,6 +22002,10 @@ msgid ""
 "Do you want to try to save the file anyway?\n"
 "This will over-write the original file."
 msgstr ""
+"No es posible crear el archivo de respaldo:\n"
+"  %1$s.\n"
+"¿Desea intentar guardar el archivo de todos modos?\n"
+"Se sobrescribirá el archivo original."
 
 #: src/Buffer.cpp:1356
 #, c-format
@@ -22009,6 +22015,10 @@ msgid ""
 "But it can be found at:\n"
 "  %2$s."
 msgstr ""
+"No es posible restaurar el archivo original a:\n"
+"  %1$s.\n"
+"Pero se puede encontrar en:\n"
+"  %2$s."
 
 #: src/Buffer.cpp:1373
 #, c-format
@@ -24046,11 +24056,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:3283
 msgid ""
-"The LaTeX command for loading the language package. E.g. \"\\usepackage"
-"{babel}\", \"\\usepackage{omega}\"."
+"The LaTeX command for loading the language package. E.g. "
+"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"Comando LaTex para cargar el paquete del idioma. P. ej. \"\\usepackage"
-"{babel}\", \"\\usepackage{omega}\"."
+"Comando LaTex para cargar el paquete del idioma. P. ej. "
+"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 
 #: src/LyXRC.cpp:3287
 msgid ""
@@ -27605,6 +27615,8 @@ msgid ""
 "The file name '%1$s' is invalid!\n"
 "Aborting import."
 msgstr ""
+"¡El nombre de archivo '%1$s' no es válido!\n"
+"Se aborta la importación."
 
 #: src/frontends/qt4/GuiView.cpp:2148 src/frontends/qt4/GuiView.cpp:2334
 #: src/frontends/qt4/GuiView.cpp:2448

@@ -32,12 +32,12 @@ set CALLED_FROM=%CD%
 
 
 REM Add path to qmake here or set PATH correctly on your system.
-set PATH="D:\Qt\bin";%PATH%
+set PATH="C:\Qt\4.8.6\bin";%PATH%
 
 REM Edit pathes here or set the environment variables on you system.
 set GNUWIN32_DIR=D:\LyXGit\Master\lyx-windows-deps-msvc2010
-set LYX_SOURCE=D:\LyXGit\Master\
-set LYX_BUILD=D:\LyXGit\Master\compile-result
+set LYX_SOURCE=D:\LyXGit\2.1.x\
+set LYX_BUILD=D:\LyXGit\2.1.x\compile-result
 
 if [%LYX_SOURCE%]==[] (
 	set LYX_SOURCE=%~DP0\..\..
@@ -85,7 +85,7 @@ if "%1%" == "devel" (
 if "%1%" == "install" (
 	REM Build solution to develop LyX
 	REM set -DLYX_MERGE_REBUILD and -DLYX_MERGE_FILES to 1 for a version released with an installer
-	cmake %LYX_SOURCE% -G%USED_STUDIO% -DLYX_MERGE_REBUILD=0 -DLYX_MERGE_FILES=0 -DLYX_NLS=1 -DLYX_INSTALL=1 -DLYX_RELEASE=1 -DLYX_CONSOLE=OFF %DEPENDENCIES_DOWNLOAD% 
+	cmake %LYX_SOURCE% -G%USED_STUDIO% -DLYX_MERGE_REBUILD=1 -DLYX_MERGE_FILES=1 -DLYX_NLS=1 -DLYX_INSTALL=1 -DLYX_RELEASE=1 -DLYX_CONSOLE=OFF %DEPENDENCIES_DOWNLOAD% 
 	msbuild lyx.sln         /p:Configuration=Release /t:ALL_BUILD
 	msbuild INSTALL.vcxproj /p:Configuration=Release
 )
