@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-06-16 17:17-0400\n"
-"PO-Revision-Date: 2014-03-26 19:37+0200\n"
+"PO-Revision-Date: 2014-06-17 08:27+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
@@ -3219,10 +3219,12 @@ msgid ""
 "Words with less than the specified number of characters will not be "
 "completed."
 msgstr ""
+"Слова, що складаються з меншої за вказану кількість літер, не "
+"доповнюватимуться."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:250
 msgid "Minimum characters for words that should be completed"
-msgstr ""
+msgstr "Мінімальна кількість символів у слові, яке слід доповнювати"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:275
 msgid ""
@@ -13322,7 +13324,6 @@ msgid "Algorithm2e"
 msgstr "Algorithm2e"
 
 #: lib/layouts/algorithm2e.module:6
-#, fuzzy
 msgid ""
 "Use the algorithm2e package for algorithm floats rather than LyX's home-"
 "brewed algorithm floats."
@@ -21983,9 +21984,8 @@ msgid "&Overwrite"
 msgstr "&Перезаписати"
 
 #: src/Buffer.cpp:1313 src/Buffer.cpp:1355
-#, fuzzy
 msgid "Write failure"
-msgstr "chktex помилка"
+msgstr "Помилка під час запису"
 
 #: src/Buffer.cpp:1314
 #, c-format
@@ -21994,6 +21994,9 @@ msgid ""
 "  %1$s.\n"
 "Even %2$s exists!"
 msgstr ""
+"Не вдалося підшукати тимчасову назву файла для\n"
+"  %1$s.\n"
+"Існує навіть %2$s!"
 
 #: src/Buffer.cpp:1335
 msgid "Backup failure"
@@ -22007,6 +22010,10 @@ msgid ""
 "Do you want to try to save the file anyway?\n"
 "This will over-write the original file."
 msgstr ""
+"Не вдалося створити файл резервної копії:\n"
+"  %1$s.\n"
+"Хочете спробувати зберегти файл попри це?\n"
+"У результаті початковий файл буде перезаписано."
 
 #: src/Buffer.cpp:1356
 #, c-format
@@ -22016,6 +22023,10 @@ msgid ""
 "But it can be found at:\n"
 "  %2$s."
 msgstr ""
+"Не вдалося відновити початковий файл до:\n"
+"  %1$s.\n"
+"Втім, його можна знайти тут:\n"
+"  %2$s."
 
 #: src/Buffer.cpp:1373
 #, c-format
@@ -27593,6 +27604,8 @@ msgid ""
 "The file name '%1$s' is invalid!\n"
 "Aborting import."
 msgstr ""
+"Назва файла «%1$s» є некоректною!\n"
+"Перериваємо імпортування."
 
 #: src/frontends/qt4/GuiView.cpp:2148 src/frontends/qt4/GuiView.cpp:2334
 #: src/frontends/qt4/GuiView.cpp:2448
