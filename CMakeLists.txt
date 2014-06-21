@@ -118,6 +118,7 @@ LYX_OPTION(QUIET            "Don't generate verbose makefiles" OFF ALL)
 LYX_OPTION(INSTALL_PREFIX   "Install path for LyX" OFF ALL)
 LYX_OPTION(BUNDLE           "Build bundle  (experimental) " OFF ALL)
 LYX_OPTION(ENABLE_URLTESTS  "Enable for URL tests" OFF ALL)
+LYX_OPTION(ENABLE_EXPORT_TESTS "Enable for export tests" OFF ALL)
 
 # GCC specific
 LYX_OPTION(PROFILE              "Build profile version" OFF GCC)
