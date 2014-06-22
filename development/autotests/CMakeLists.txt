@@ -102,5 +102,5 @@ if(QT_USES_X11)
 endif()
 
 if (LYX_ENABLE_EXPORT_TESTS)
-  include(ExportTests)
+  include(${TOP_SRC_DIR}/development/autotests/ExportTests.cmake)
 endif()
