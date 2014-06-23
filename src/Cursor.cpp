@@ -1201,8 +1201,6 @@ DocIterator Cursor::selectionEnd() const
 void Cursor::setSelection()
 {
 	setSelection(true);
-	// A selection with no contents is not a selection
-	// FIXME: doesnt look ok
 	if (idx() == normalAnchor().idx() &&
 	    pit() == normalAnchor().pit() &&
 	    pos() == normalAnchor().pos())
