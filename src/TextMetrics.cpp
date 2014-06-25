@@ -348,7 +348,6 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 	// FED                          FED|                     FED     )
 	if (startpos == pos && endpos == pos && endpos != par.size()
 		&& (par.isNewline(pos - 1)
-			|| par.isEnvSeparator(pos - 1)
 			|| par.isLineSeparator(pos - 1)
 			|| par.isSeparator(pos - 1)))
 		return false;
@@ -629,7 +628,6 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			if (ns
 			    && row.endpos() < par.size()
 			    && !par.isNewline(row.endpos() - 1)
-			    && !par.isEnvSeparator(row.endpos() - 1)
 			    && !disp_inset
 				) {
 				row.separator = w / ns;
@@ -695,13 +693,13 @@ int TextMetrics::labelFill(pit_type const pit, Row const & row) const
 	Paragraph const & par = text_->getPar(pit);
 
 	pos_type last = par.beginOfBody();
-	LBUFERR(last > 0 || par.isEnvSeparator(0));
+	LBUFERR(last > 0);
 
 	// -1 because a label ends with a space that is in the label
 	--last;
 
 	// a separator at this end does not count
-	if (last >= 0 && par.isLineSeparator(last))
+	if (par.isLineSeparator(last))
 		--last;
 
 	int w = 0;
@@ -899,7 +897,7 @@ pos_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 			break;
 		}
 
-		if (par.isNewline(i) || par.isEnvSeparator(i)) {
+		if (par.isNewline(i)) {
 			point = i + 1;
 			break;
 		}
@@ -1271,7 +1269,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	if (lastrow &&
 	    ((rtl_on_lastrow  &&  left_side && vc == row.pos() && x < tmpx - 5) ||
 	     (!rtl_on_lastrow && !left_side && vc == end  && x > tmpx + 5))) {
-		if (!(par.isNewline(end - 1) || par.isEnvSeparator(end - 1)))
+		if (!par.isNewline(end - 1))
 			c = end;
 	} else if (vc == row.pos()) {
 		c = bidi.vis2log(vc);
@@ -1320,9 +1318,7 @@ pos_type TextMetrics::getColumnNearX(pit_type const pit,
 	if (!c || end == par.size())
 		return col;
 
-	if (c==end && !par.isLineSeparator(c-1)
-		   && !par.isNewline(c-1)
-		   && !par.isEnvSeparator(c-1)) {
+	if (c==end && !par.isLineSeparator(c-1) && !par.isNewline(c-1)) {
 		boundary = true;
 		return col;
 	}
@@ -1818,8 +1814,7 @@ bool TextMetrics::cursorEnd(Cursor & cur)
 	bool boundary = false;
 	if (end != cur.lastpos()) {
 		if (!cur.paragraph().isLineSeparator(end-1)
-		    && !cur.paragraph().isNewline(end-1)
-		    && !cur.paragraph().isEnvSeparator(end-1))
+		    && !cur.paragraph().isNewline(end-1))
 			boundary = true;
 		else
 			--end;
@@ -1902,9 +1897,7 @@ int TextMetrics::leftMargin(int max_width,
 				l_margin = leftMargin(max_width, newpar);
 				// Remove the parindent that has been added
 				// if the paragraph was empty.
-				if (pars[newpar].empty() &&
-				    buffer.params().paragraph_separation ==
-				    BufferParams::ParagraphIndentSeparation) {
+				if (pars[newpar].empty()) {
 					docstring pi = pars[newpar].layout().parindent;
 					l_margin -= theFontMetrics(
 						buffer.params().getFont()).signedWidth(pi);
@@ -1922,16 +1915,10 @@ int TextMetrics::leftMargin(int max_width,
 
 	// This happens after sections or environments in standard classes.
 	// We have to check the previous layout at same depth.
-	if (buffer.params().paragraph_separation ==
-			BufferParams::ParagraphSkipSeparation)
-		parindent.erase();
-	else if (pit > 0 && pars[pit - 1].getDepth() >= par.getDepth()) {
+	if (tclass.isDefaultLayout(par.layout()) && pit > 0
+	    && pars[pit - 1].getDepth() >= par.getDepth()) {
 		pit_type prev = text_->depthHook(pit, par.getDepth());
-		if (par.layout() == pars[prev].layout()) {
-			if (prev != pit - 1
-			    && pars[pit - 1].layout().nextnoindent)
-				parindent.erase();
-		} else if (pars[prev].layout().nextnoindent)
+		if (pars[prev < pit ? prev : pit - 1].layout().nextnoindent)
 			parindent.erase();
 	}
 
