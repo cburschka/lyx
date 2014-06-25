@@ -295,12 +295,15 @@
 # ------------------------------------------------------------------
 # 19 juin 2014 : mise à jour pour 2.1.1 (modif sauvegarde fichiers suite au « crash mystérieux »)
 # ------------------------------------------------------------------
+# 25 juin 2014 : résolution de conflits de raccourcis suite au début de traduction du manuel beamer
+#                       « raccourci » pour les titres remplacé par « court »
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-06-16 17:17-0400\n"
-"PO-Revision-Date: 2014-06-19 18:16+0200\n"
+"PO-Revision-Date: 2014-06-25 09:58+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -7890,7 +7893,7 @@ msgstr "Institute of Physics (IOP)"
 #: lib/layouts/iopart.layout:66
 #: lib/layouts/jasatex.layout:75
 msgid "Short title that will appear in header line"
-msgstr "Titre raccourci apparaissant dans la ligne d'en-tête"
+msgstr "Titre court apparaissant dans la ligne d'en-tête"
 
 #: lib/layouts/iopart.layout:82
 msgid "Review"
@@ -9694,7 +9697,7 @@ msgstr "Titrage"
 
 #: lib/layouts/beamer.layout:892
 msgid "Short title which appears in the sidebar/header"
-msgstr "Titre raccourci apparaissant dans la colonne latérale ou l'en-tête"
+msgstr "Titre court apparaissant dans la colonne latérale ou l'en-tête"
 
 # Cadre pour Frame et Diapositive pour Slide ?
 # Oui JOC
@@ -9704,28 +9707,28 @@ msgstr "Titre (Cadre Simple)"
 
 #: lib/layouts/beamer.layout:923
 msgid "Short Subtitle|S"
-msgstr "Sous-titre raccourci|c"
+msgstr "Sous-titre court|c"
 
 #: lib/layouts/beamer.layout:924
 msgid "Short subtitle which appears in the sidebar/header"
-msgstr "Sous-titre raccourci apparaissant dans la colonne latérale ou l'en-tête"
+msgstr "Sous-titre court apparaissant dans la colonne latérale ou l'en-tête"
 
 #: lib/layouts/beamer.layout:946
 #: lib/layouts/IEEEtran.layout:124
 msgid "Short Author|S"
-msgstr "Nom d'auteur raccourcis|a"
+msgstr "Nom d'auteur court|c"
 
 #: lib/layouts/beamer.layout:947
 msgid "Short author which appears in the sidebar/header"
-msgstr "Nom d'auteur raccourci apparaissant dans la colonne latérale ou l'en-tête"
+msgstr "Nom d'auteur court apparaissant dans la colonne latérale ou l'en-tête"
 
 #: lib/layouts/beamer.layout:968
 msgid "Short Institute|S"
-msgstr "Nom d'institution raccourci|i"
+msgstr "Nom d'institution court|c"
 
 #: lib/layouts/beamer.layout:969
 msgid "Short institute which appears in the sidebar/header"
-msgstr "Nom d'institution raccourcie  apparaissant dans la colonne latérale ou l'en-tête"
+msgstr "Nom d'institution court apparaissant dans la colonne latérale ou l'en-tête"
 
 #: lib/layouts/beamer.layout:977
 msgid "InstituteMark"
@@ -9733,11 +9736,11 @@ msgstr "MarqueInstitution"
 
 #: lib/layouts/beamer.layout:1011
 msgid "Short Date|S"
-msgstr "Date raccourcie|d"
+msgstr "Date courte|c"
 
 #: lib/layouts/beamer.layout:1012
 msgid "Short date which appears in the sidebar/header"
-msgstr "Date raccourcie apparaissant dans la colonne latérale ou l'en-tête"
+msgstr "Date courte apparaissant dans la colonne latérale ou l'en-tête"
 
 #: lib/layouts/beamer.layout:1020
 msgid "TitleGraphic"
@@ -9761,7 +9764,7 @@ msgstr "Corollaire."
 #: lib/layouts/beamer.layout:1485
 #: lib/layouts/beamer.layout:1509
 msgid "Action Specifications|S"
-msgstr "Spécification d'action|S"
+msgstr "Spécification d'action|c"
 
 #: lib/layouts/beamer.layout:1180
 #: lib/layouts/theorems-ams.inc:32
@@ -11708,11 +11711,11 @@ msgstr "Titre court qui apparaîtra dans l'en-tête courant"
 
 #: lib/layouts/achemso.layout:111
 msgid "Short name"
-msgstr "Nom raccourci"
+msgstr "Nom court"
 
 #: lib/layouts/achemso.layout:112
 msgid "Short name which appears in the footer of the title page"
-msgstr "Nom raccourci tel qu'il apparaîtra dans le pied de la page de titre"
+msgstr "Nom court tel qu'il apparaîtra dans le pied de la page de titre"
 
 #: lib/layouts/achemso.layout:116
 msgid "Alt Affiliation"
@@ -11907,7 +11910,7 @@ msgstr "minuscules"
 
 #: lib/layouts/IEEEtran.layout:125
 msgid "A short version of the author name"
-msgstr "Une version raccourcie du nom d'auteur"
+msgstr "Une version courte du nom d'auteur"
 
 #: lib/layouts/IEEEtran.layout:141
 msgid "Author Name"
@@ -11994,7 +11997,7 @@ msgstr "Titre court"
 
 #: lib/layouts/IEEEtran.layout:337
 msgid "Short title for the appendix"
-msgstr "Titre raccourci pour l'annexe"
+msgstr "Titre court pour l'annexe"
 
 #: lib/layouts/IEEEtran.layout:366
 msgid "Biography"
@@ -12556,7 +12559,7 @@ msgstr "Memoir"
 #: lib/layouts/memoir.layout:205
 #: lib/layouts/memoir.layout:224
 msgid "Short Title (TOC)|S"
-msgstr "Titre raccourci (TdM)|c"
+msgstr "Titre court (TdM)|c"
 
 #: lib/layouts/memoir.layout:66
 #: lib/layouts/memoir.layout:79
@@ -12571,7 +12574,7 @@ msgstr "Le titre du chapitre tel qu'il apparaîtra dans la table des matières"
 #: lib/layouts/memoir.layout:142
 #: lib/layouts/memoir.layout:209
 msgid "Short Title (Header)"
-msgstr "Titre raccourci (en-tête)"
+msgstr "Titre court (en-tête)"
 
 #: lib/layouts/memoir.layout:70
 msgid "The chapter as it appears in the running headers"
@@ -12675,7 +12678,7 @@ msgstr "REVTeX (V. 4.1)"
 
 #: lib/layouts/revtex4-1.layout:215
 msgid "Short title as it appears in the running headers"
-msgstr "Titre raccourci tel qu'il apparaîtra dans les en-têtes courants"
+msgstr "Titre court tel qu'il apparaîtra dans les en-têtes courants"
 
 #: lib/layouts/revtex4-1.layout:232
 msgid "acknowledgments"
@@ -14345,7 +14348,7 @@ msgstr "Mois de publication"
 
 #: lib/layouts/amsdefs.inc:39
 msgid "Short title which appears in the running headers"
-msgstr "Titre raccourci apparaissant dans les en-tête courants"
+msgstr "Titre court apparaissant dans les en-tête courants"
 
 #: lib/layouts/amsdefs.inc:141
 msgid "Current Address"
@@ -14776,11 +14779,11 @@ msgstr "bilingue"
 
 #: lib/layouts/bicaption.module:44
 msgid "Main Language Short Title"
-msgstr "Titre raccourci dans le langage principal"
+msgstr "Titre court dans le langage principal"
 
 #: lib/layouts/bicaption.module:45
 msgid "Short title for the main(document) language"
-msgstr "Titre raccourci pour le langage du document maître"
+msgstr "Titre court pour le langage du document maître"
 
 #: lib/layouts/bicaption.module:49
 msgid "Main Language Text"
@@ -14792,11 +14795,11 @@ msgstr "Ttexte dans le langage du document maître"
 
 #: lib/layouts/bicaption.module:53
 msgid "Second Language Short Title"
-msgstr "Titre raccourci dans la seconde langue"
+msgstr "Titre court dans la seconde langue"
 
 #: lib/layouts/bicaption.module:54
 msgid "Short title for the second language"
-msgstr "Titre raccourci pour le langage secondaire"
+msgstr "Titre court pour la seconde langue"
 
 #: lib/layouts/fix-cm.module:2
 msgid "Fix cm"
