@@ -3852,7 +3852,16 @@ void Paragraph::collectWords()
 			continue;
 		pos_type from = pos;
 		locateWord(from, pos, WHOLE_WORD);
-		if (pos < from + lyxrc.completion_minlength)
+		// Work around MSVC warning: The statement
+		// if (pos < from + lyxrc.completion_minlength)
+		// triggers a signed vs. unsigned warning.
+		// I don't know why this happens, it could be a MSVC bug, or
+		// related to LLP64 (windows) vs. LP64 (unix) programming
+		// model, or the C++ standard might be ambigous in the section
+		// defining the "usual arithmetic conversions". However, using
+		// a temporary variable is safe and works on all compilers.
+		pos_type const endpos = from + lyxrc.completion_minlength;
+		if (pos < endpos)
 			continue;
 		FontList::const_iterator cit = d->fontlist_.fontIterator(from);
 		if (cit == d->fontlist_.end())
