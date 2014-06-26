@@ -1,5 +1,5 @@
 #
-#  Copyright (c) 2006-2011 Peter Kümmel, <syntheticpp@gmx.net>
+#  Copyright (c) 2006-2011 Peter Kï¿½mmel, <syntheticpp@gmx.net>
 #
 #  Redistribution and use in source and binary forms, with or without
 #  modification, are permitted provided that the following conditions
@@ -173,7 +173,7 @@ macro(lyx_const_touched_files _allinone_name _list)
 	else()
 		lyx_add_info_files(MergedFiles ${${_list}})
 	endif()
-	
+
 	set(${_file_list} ${_file_const} ${_file_touched} ${lyx_${groupname}_info_files})
 
 	foreach (_current_FILE ${${_list}})
@@ -232,6 +232,21 @@ macro(LYX_OPTION _name _description _default _sys)
 	set(LYX_${_name}_show_message ${_msg})
 endmacro()
 
+macro(LYX_COMBO _name _description _default)
+  set(_lyx_name "LYX_${_name}")
+  set(${_lyx_name} ${_default} CACHE STRING "${_description}")
+  set(_combo_list ${_default} ${ARGN})
+  set_property(CACHE ${_lyx_name} PROPERTY STRINGS ${_combo_list})
+  list(APPEND LYX_OPTIONS ${_lyx_name})
+  set(${_lyx_name}_show_message ON)
+  string(REGEX REPLACE ";" " " _use_list "${_combo_list}")
+  set(${_lyx_name}_description "${_description} (${_use_list})")
+  # Now check the value
+  list(FIND _combo_list ${${_lyx_name}} _idx)
+  if (_idx LESS 0)
+    message(FATAL_ERROR "${_lyx_name} set to \"${${_lyx_name}}\", but has to be only one of (${_use_list})")
+  endif()
+endmacro()
 
 macro(LYX_OPTION_LIST_ALL)
 	if(UNIX)
@@ -249,7 +264,10 @@ macro(LYX_OPTION_LIST_ALL)
 	foreach(_option ${LYX_OPTIONS})
 		if(${_option}_show_message OR ${ARGV0} STREQUAL "help")
 			string(SUBSTRING "${_option}                            " 0 25 _var)
-			if(${_option})
+                        get_property(_prop CACHE ${_option} PROPERTY STRINGS)
+                        if(_prop)
+                          set(_isset ${${_option}})
+			elseif(${_option})
 				set(_isset ON)
 			else()
 				set(_isset OFF)

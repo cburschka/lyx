@@ -74,6 +74,11 @@ include(LyXMacros)
 # 3. parameter: default value, ON or OFF
 # 4. parameter: system on which option is used: ALL, GCC, MSVC, ...
 
+# Usage LYX_COMBO
+# 1. parameter: name without prefix 'LYX_'
+# 2. parameter: description
+# 3. parameter: default value
+# 4-n parameter: possible other string values
 
 LYX_OPTION_INIT()
 
@@ -119,7 +124,7 @@ LYX_OPTION(DEPENDENCIES_DOWNLOAD "Download dependencies for MSVC 10" OFF MSVC)
 # APPLE specific
 LYX_OPTION(DMG                   "Build as Mac bundle, needed for .dmg  (experimental) " OFF MAC)
 LYX_OPTION(COCOA                 "Use Cocoa on Mac" OFF MAC)
-
+LYX_COMBO(USE_QT                 "Use Qt version as frontend" QT4 QT5)
 
 if(help OR HELP)
 	message(STATUS)
@@ -477,9 +482,11 @@ if(LYX_CXX_FLAGS_EXTRA)
 	endforeach()
 endif()
 
-find_package(Qt5Core QUIET)
-if (Qt5Core_FOUND)
+if(LYX_USE_QT MATCHES "QT5")
+  find_package(Qt5Core REQUIRED)
+  if (Qt5Core_FOUND)
 	find_package(Qt5Widgets REQUIRED)
+        find_package(Qt5X11Extras)
 	set(QTVERSION ${Qt5Core_VERSION})
 	macro (qt_use_modules)
 		qt5_use_modules(${ARGN})
@@ -490,7 +497,8 @@ if (Qt5Core_FOUND)
 	macro (qt_wrap_uifiles)
 		qt5_wrap_ui(${ARGN})
 	endmacro()
-else()
+  endif()
+elseif(LYX_USE_QT MATCHES "QT4")
 	find_package(Qt4 "4.5.0" REQUIRED)
 	macro (qt_use_modules)
 	endmacro()
@@ -500,6 +508,8 @@ else()
 	macro (qt_wrap_uifiles)
 		qt4_wrap_ui(${ARGN})
 	endmacro()
+else()
+  message(FATAL_ERROR "Unhandled value for LYX_USE_QT (${LYX_USE_QT})")
 endif()
 
 find_package(Magic)
@@ -517,12 +527,12 @@ endif()
 if(LYX_ENCHANT)
 	find_package(Enchant REQUIRED)
 	include_directories(${ENCHANT_INCLUDE_DIR})
-endif()
+    endif()
 
 if(LYX_HUNSPELL)
 	find_package(Hunspell REQUIRED)
 	include_directories(${HUNSPELL_INCLUDE_DIR})
-endif()
+  endif()
 
 if(LYX_NLS)
 	FIND_PROGRAM(LYX_PYTHON_EXECUTABLE python2 python HINTS ${GNUWIN32_DIR}/python)
@@ -760,12 +770,12 @@ if(LYX_INSTALL)
 	if(${LYX_PYTHON_EXECUTABLE} MATCHES "-NOTFOUND")
 		message(STATUS "Python required to create doc!")
 	else()
-		add_subdirectory(${LYX_CMAKE_DIR}/man "${TOP_BINARY_DIR}/man")
+			add_subdirectory(${LYX_CMAKE_DIR}/man "${TOP_BINARY_DIR}/man")
 		add_subdirectory(${LYX_CMAKE_DIR}/doc "${TOP_BINARY_DIR}/doc")
 	endif()
 	if(NOT(LYX_BUNDLE AND APPLE))
-		include(../Install)
-	endif()
+	include(../Install)
+endif()
 endif()
 
 add_subdirectory(sourcedoc "${TOP_BINARY_DIR}/sourcedoc")
@@ -775,7 +785,7 @@ if(LYX_ENABLE_URLTESTS)
 endif()
 
 message(STATUS)
-message(STATUS "Build options, switch LYX_* variables by -DLYX_*=ON or OFF:")
+message(STATUS "Build params, switch LYX_* options by -DLYX_*=ON or OFF, LYX_* combos by -DLYX_*=value:")
 message(STATUS)
 LYX_OPTION_LIST_ALL(used)
 
