@@ -611,7 +611,7 @@ all cited references
 s put one in: 
 \begin_inset CommandInset citation
 LatexCommand citet
-key "techreport-full"
+key "GSM97"
 
 \end_inset
 
@@ -621,7 +621,7 @@ key "techreport-full"
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "xampl"
+bibfiles "biblio"
 options "aea"
 
 \end_inset
