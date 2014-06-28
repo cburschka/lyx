@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 476
 \begin_document
 \begin_header
 \textclass AEA
@@ -121,6 +121,10 @@ Custom
 \family default
 .
  Available options are:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -153,6 +157,10 @@ If one of these is not explicitly given to the class option, the default
 \begin_layout Enumerate
 Also, choose typesetting mode as the class option.
  Available options are:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -399,7 +407,10 @@ Caption for figure below.
 Figure notes without optional leadin.
 \end_layout
 
-\begin_layout --Separator--
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -446,7 +457,7 @@ Caption for table above.
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
@@ -548,7 +559,10 @@ Row 2
 Table notes environment without optional leadin.
 \end_layout
 
-\begin_layout --Separator--
+\begin_layout Plain Layout
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
