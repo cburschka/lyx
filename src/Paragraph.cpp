@@ -1669,11 +1669,11 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 					os << "\\begin_inset ";
 					inset->write(os);
 					os << "\n\\end_inset\n\n";
-					// FIXME This can be removed again once the mystery
-					// crash has been resolved.
-					os << flush;
 					column = 0;
 				}
+				// FIXME This can be removed again once the mystery
+				// crash has been resolved.
+				os << flush;
 			}
 			break;
 		case '\\':
