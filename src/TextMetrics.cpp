@@ -346,6 +346,7 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 	// FED                          FED|                     FED     )
 	if (startpos == pos && endpos == pos && endpos != par.size()
 		&& (par.isNewline(pos - 1)
+			|| par.isEnvSeparator(pos - 1)
 			|| par.isLineSeparator(pos - 1)
 			|| par.isSeparator(pos - 1)))
 		return false;
@@ -680,7 +681,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 int TextMetrics::labelFill(pit_type const pit, Row const & row) const
 {
 	Paragraph const & par = text_->getPar(pit);
-	LBUFERR(par.beginOfBody() > 0);
+	LBUFERR(par.beginOfBody() > 0 || par.isEnvSeparator(0));
 
 	int w = 0;
 	Row::const_iterator cit = row.begin();
@@ -876,7 +877,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 		// - Before a display inset
 		// - After a display inset
 		Inset const * inset = 0;
-		if (par.isNewline(i)
+		if (par.isNewline(i) || par.isEnvSeparator(i)
 		    || (i + 1 < end && (inset = par.getInset(i + 1))
 			&& inset->display())
 		    || (!row.empty() && row.back().inset
@@ -1547,7 +1548,8 @@ bool TextMetrics::cursorEnd(Cursor & cur)
 	bool boundary = false;
 	if (end != cur.lastpos()) {
 		if (!cur.paragraph().isLineSeparator(end-1)
-		    && !cur.paragraph().isNewline(end-1))
+		    && !cur.paragraph().isNewline(end-1)
+		    && !cur.paragraph().isEnvSeparator(end-1))
 			boundary = true;
 		else
 			--end;
@@ -1630,7 +1632,9 @@ int TextMetrics::leftMargin(int max_width,
 				l_margin = leftMargin(max_width, newpar);
 				// Remove the parindent that has been added
 				// if the paragraph was empty.
-				if (pars[newpar].empty()) {
+				if (pars[newpar].empty() &&
+				    buffer.params().paragraph_separation ==
+				    BufferParams::ParagraphIndentSeparation) {
 					docstring pi = pars[newpar].layout().parindent;
 					l_margin -= theFontMetrics(
 						buffer.params().getFont()).signedWidth(pi);
@@ -1648,10 +1652,16 @@ int TextMetrics::leftMargin(int max_width,
 
 	// This happens after sections or environments in standard classes.
 	// We have to check the previous layout at same depth.
-	if (tclass.isDefaultLayout(par.layout()) && pit > 0
-	    && pars[pit - 1].getDepth() >= par.getDepth()) {
+	if (buffer.params().paragraph_separation ==
+			BufferParams::ParagraphSkipSeparation)
+		parindent.erase();
+	else if (pit > 0 && pars[pit - 1].getDepth() >= par.getDepth()) {
 		pit_type prev = text_->depthHook(pit, par.getDepth());
-		if (pars[prev < pit ? prev : pit - 1].layout().nextnoindent)
+		if (par.layout() == pars[prev].layout()) {
+			if (prev != pit - 1
+			    && pars[pit - 1].layout().nextnoindent)
+				parindent.erase();
+		} else if (pars[prev].layout().nextnoindent)
 			parindent.erase();
 	}
 
