@@ -11,8 +11,6 @@ what we have with force_paint_single_char. Moreover there has been
 some code factorization in TextMetrics, where the same row-breaking
 algorithm was basically implemented 3 times.
 
-Currently everything is supposed to work for both LTR and RTL text.
-
 The bugs fixed and caused by this branch are tracked at ticket #9003:
 http://www.lyx.org/trac/ticket/9003
 
@@ -59,26 +57,3 @@ Next steps:
   in the source.
 
 * Maybe get rid of LyXRC::rtl_support, which does not have a real use case.
-
-* Fix bugs uncovered by testing.
-
-* Profile and see how performance can be improved.
-
-
-Steps for later (aka out of the scope of this branch):
-
-* Re-implement row painting using row elements. This is not difficult
-  in principle, but the code is intricate and needs some careful
-  analysis. The first thing that needs to be done is to break row
-  elements with the same criteria. Currently breakRow does not
-  consider on-the-fly spell-checking, but it is not clear to me that
-  it is required. Moreover, this thing would only work if we are sure
-  that the Row object is up-to-date when drawing happens. This depends
-  on the update machinery.
-
-  This would allow to get rid of the Bidi.cpp code.
-
-* Change Row object to operate only on integers and not doubles. Then,
-  rewrite the computation of spacing in justified paragraphs so that
-  strings can be drawn without cutting at separators. This will improve
-  performance.

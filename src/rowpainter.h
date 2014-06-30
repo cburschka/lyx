@@ -37,6 +37,21 @@ class TextMetrics;
 namespace frontend { class Painter; }
 
 /**
+ * FIXME: Re-implement row painting using row elements.
+ *
+ * This is not difficult in principle, but the code is intricate and
+ * needs some careful analysis. The first thing that needs to be done
+ * is to break row elements with the same criteria. Currently breakRow
+ * does not consider on-the-fly spell-checking, but it is not clear to
+ * me that it is required. Moreover, this thing would only work if we
+ * are sure that the Row object is up-to-date when drawing happens.
+ * This depends on the update machinery.
+ *
+ * This would allow to get rid of the Bidi class.
+ */
+
+
+/**
  * A class used for painting an individual row of text.
  * FIXME: get rid of that class.
  */
