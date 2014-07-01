@@ -68,7 +68,7 @@ private:
 	/// \return true if the processor is ready to use.
 	bool init();
 	/// hide internals
-	struct Impl;
+	class Impl;
 	Impl * pimpl_;
 };
 

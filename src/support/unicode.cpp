@@ -52,8 +52,12 @@ namespace lyx {
 static const iconv_t invalid_cd = (iconv_t)(-1);
 
 
-struct IconvProcessor::Impl
+class IconvProcessor::Impl
 {
+	// noncopyable because iconv_close() is called in destructor
+	Impl(Impl const &);
+	Impl & operator=(Impl const &);
+public:
 	Impl(string const & to, string const & from)
 		: cd(invalid_cd), tocode_(to), fromcode_(from)
 	{}
