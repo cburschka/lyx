@@ -61,7 +61,7 @@ struct IconvProcessor::Impl
 	~Impl()
 	{
 		if (cd != invalid_cd && iconv_close(cd) == -1)
-				LYXERR0("Error returned from iconv_close(" << errno << ")");
+			LYXERR0("Error returned from iconv_close(" << errno << ')');
 	}
 
 	iconv_t cd;
@@ -88,10 +88,13 @@ IconvProcessor::~IconvProcessor()
 }
 
 
-void IconvProcessor::operator=(IconvProcessor const & other)
+IconvProcessor & IconvProcessor::operator=(IconvProcessor const & other)
 {
-	if (&other != this)
+	if (&other != this) {
+		delete pimpl_;
 		pimpl_ = new Impl(other.pimpl_->tocode_, other.pimpl_->fromcode_);
+	}
+	return *this;
 }
 
 

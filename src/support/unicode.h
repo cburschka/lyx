@@ -49,7 +49,7 @@ public:
 	/// copy constructor needed because of pimpl_
 	IconvProcessor(IconvProcessor const &);
 	/// assignment operator needed because of pimpl_
-	void operator=(IconvProcessor const &);
+	IconvProcessor & operator=(IconvProcessor const &);
 	/// destructor
 	~IconvProcessor();
 
