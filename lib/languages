@@ -167,19 +167,21 @@ Language australian
 	LangCode         en_AU
 End
 
-# not yet supported by polyglossia
 Language austrian
 	GuiName          "German (Austria, old spelling)"
 	BabelName        austrian
+	PolyglossiaName  german
+	PolyglossiaOpts  "variant=austrian,spelling=old,babelshorthands=true"
 	QuoteStyle       german
 	Encoding         iso8859-15
 	LangCode         de_AT
 End
 
-# not yet supported by polyglossia
 Language naustrian
 	GuiName          "German (Austria)"
 	BabelName        naustrian
+	PolyglossiaName  german
+	PolyglossiaOpts  "variant=austrian,babelshorthands=true"
 	QuoteStyle       german
 	Encoding         iso8859-15
 	LangCode         de_AT
