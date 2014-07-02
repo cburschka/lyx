@@ -167,6 +167,8 @@ Language australian
 	LangCode         en_AU
 End
 
+# In polyglossia, this is supported since release 1.33.4 (May 2014)
+# We introduce it with LyX 2.2 to give the support time to settle.
 Language austrian
 	GuiName          "German (Austria, old spelling)"
 	BabelName        austrian
@@ -177,6 +179,8 @@ Language austrian
 	LangCode         de_AT
 End
 
+# In polyglossia, this is supported since release 1.33.4 (May 2014)
+# We introduce it with LyX 2.2 to give the support time to settle.
 Language naustrian
 	GuiName          "German (Austria)"
 	BabelName        naustrian
@@ -473,6 +477,8 @@ Language ngerman
 	LangCode         de_DE
 End
 
+# In Babel, this is supported since release 2.7 of babel-german (Dec 2013)
+# We introduce it with LyX 2.2 to give the support time to settle.
 # Polyglossia does not yet support Swiss German. We use ngerman for now.
 Language german-ch
 	GuiName          "German (Switzerland)"
