@@ -1,0 +1,148 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[sciposter,sectionbox.sty,wallpaper.sty]{SciPoster}
+#  \DeclareCategory{Posters}
+# Wrapper layout for the sciposter.cls poster class
+#
+# Authors: Günter Milde, Jürgen Spitzmüller (spitz@lyx.org)
+#
+# Input general definitions
+
+Format 48
+
+Input stdclass.inc
+
+DefaultModule multicol
+DefaultModule sectionbox
+
+SecNumDepth	3
+TocDepth	3
+
+ClassOptions
+	FontSize              14|17|20|25|30|36 
+End
+
+Style Institute
+  CopyStyle        Author
+  LatexName        institute
+End
+
+Style E-Mail
+  CopyStyle        Author
+  LatexName        email
+End
+
+Style Conference
+  CopyStyle        Author
+  InTitle          0
+  LatexName        conference
+End
+
+Style LeftLogo
+  Category         FrontMatter
+  Margin           Dynamic
+  LatexType        Command
+  InTitle          1
+  LatexName        leftlogo
+  LabelString     "Left logo:"
+  ParSkip          0.4
+  TopSep           0.9
+  BottomSep        0.5
+  ParSep           1
+  ParIndent       MM
+  Align           Left
+  LabelType       Static
+  LabelSep        xx
+  LabelFont
+    Series        Bold
+    Color         Blue
+  EndFont
+  Argument 1
+    LabelString   "Logo Size"
+    Tooltip       "Relative logo size (0 through 1)"
+  EndArgument
+End
+
+Style RightLogo
+  CopyStyle        LeftLogo
+  LatexName        rightlogo
+  LabelString     "Right logo:"
+End
+
+# There are no chapters in a poster.
+NoStyle Chapter
+NoStyle Chapter*
+# Nor are there parts
+NoStyle Part
+NoStyle Part*
+
+InsetLayout Caption:Standard
+	Argument 1
+		LabelString   "Caption Width"
+		Tooltip       "The caption width relative to the column (0 through 1)"
+	EndArgument
+End
+
+Float
+	Type                  algorithm
+	GuiName               Algorithm
+	Placement             tbp
+	Extension             loa
+	NumberWithin          none
+	Style                 none
+	IsPredefined          true
+	UsesFloatPkg          false
+	RefPrefix             alg
+End
+
+InsetLayout "Flex:Giant"
+	LyXType               custom
+	Decoration            classic
+	LabelString           Giant
+	LatexType             None
+	LeftDelim             {\veryHuge{}
+	RightDelim            \par}
+	Font
+	  Size                giant
+	EndFont
+	LabelFont
+	  Size                normal
+	EndFont
+End
+
+InsetLayout "Flex:More_Giant"
+	CopyStyle             Flex:Giant
+	LeftDelim             {\VeryHuge{}
+	LabelString           "More Giant"
+End
+
+InsetLayout "Flex:Most_Giant"
+	CopyStyle             Flex:Giant
+	LeftDelim             {\VERYHuge{}
+	LabelString           "Most Giant"
+End
+
+InsetLayout Flex:Giant_Snippet
+	LyXType               charstyle
+	LabelString           Giant
+	LatexType             None
+	LeftDelim             {\veryHuge{}
+	RightDelim            }
+	Font
+	  Size                giant
+	EndFont
+	LabelFont
+	  Size                normal
+	EndFont
+End
+
+InsetLayout Flex:More_Giant_Snippet
+	CopyStyle             Flex:Giant_Snippet
+	LabelString           "More Giant"
+	LeftDelim             {\VeryHuge{}
+End
+
+InsetLayout Flex:Most_Giant_Snippet
+	CopyStyle             Flex:Giant_Snippet
+	LabelString           "Most Giant"
+	LeftDelim             {\VERYHuge{}
+End

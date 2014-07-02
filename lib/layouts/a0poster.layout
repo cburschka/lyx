@@ -1,0 +1,92 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[a0poster]{A0 Poster}
+#  \DeclareCategory{Posters}
+# Wrapper layout for the a0poster poster class
+
+Format 48
+
+# Authors: Günter Milde, Jürgen Spitzmüller
+
+# Recognized Options
+# ------------------
+
+# landscape   landscape format, is default
+# portrait    portrait format
+# a0b         "DIN A0 big" - that's a somewhat widened DIN A0 format that uses
+#             the full width of an HP Designjet 650C. This is also default.
+# a0          DIN A0
+# a1          DIN A1
+# a2          DIN A2
+# a3          DIN A3
+# posterdraft reduces the postscript output to DIN A4 size, so test printings
+#             can be made with ordinary DIN A4 printers.
+# draft       obsolete­does the same as posterdraft, but while options are
+# 	      passed to other packages, this can lead to collisions with other
+#             packages (e. g. graphics).
+# final       makes postscript output in original size; is default.
+
+# Input general definitions
+Input stdclass.inc
+
+SecNumDepth	3
+TocDepth	3
+
+# There are no chapters in a poster.
+NoStyle Chapter
+NoStyle Chapter*
+# Nor are there parts
+NoStyle Part
+NoStyle Part*
+
+InsetLayout "Flex:Giant"
+	LyXType               custom
+	Decoration            classic
+	LabelString           Giant
+	LatexType             None
+	LeftDelim             {\veryHuge{}
+	RightDelim            \par}
+	Font
+	  Size                giant
+	EndFont
+	LabelFont
+	  Size                normal
+	EndFont
+End
+
+InsetLayout "Flex:More_Giant"
+	CopyStyle             Flex:Giant
+	LeftDelim             {\VeryHuge{}
+	LabelString           "More Giant"
+End
+
+InsetLayout "Flex:Most_Giant"
+	CopyStyle             Flex:Giant
+	LeftDelim             {\VERYHuge{}
+	LabelString           "Most Giant"
+End
+
+InsetLayout Flex:Giant_Snippet
+	LyXType               charstyle
+	LabelString           Giant
+	LatexType             None
+	LeftDelim             {\veryHuge{}
+	RightDelim            }
+	Font
+	  Size                giant
+	EndFont
+	LabelFont
+	  Size                normal
+	EndFont
+End
+
+InsetLayout Flex:More_Giant_Snippet
+	CopyStyle             Flex:Giant_Snippet
+	LabelString           "More Giant"
+	LeftDelim             {\VeryHuge{}
+End
+
+InsetLayout Flex:Most_Giant_Snippet
+	CopyStyle             Flex:Giant_Snippet
+	LabelString           "Most Giant"
+	LeftDelim             {\VERYHuge{}
+End

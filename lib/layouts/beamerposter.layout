@@ -1,0 +1,104 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[beamer,beamerposter.sty]{Beamerposter}
+#  \DeclareCategory{Posters}
+# Wrapper layout for the beamer class with beamerposter style
+#
+# Authors: Jürgen Spitzmüller (spitz@lyx.org)
+#
+# Input general definitions
+
+Format 48
+
+Input beamer.layout
+
+Preamble
+	\usepackage{etoolbox}
+	\AtEndPreamble{%
+	   \usepackage{beamerposter}
+	}
+EndPreamble
+
+Style Title
+	InPreamble 1
+	InTitle    0
+End
+
+Style Subtitle
+	InPreamble 1
+	InTitle    0
+End
+
+Style Author
+	InPreamble 1
+	InTitle    0
+End
+
+Style Institute
+	InPreamble 1
+	InTitle    0
+End
+
+Style Date
+	InPreamble 1
+	InTitle    0
+End
+
+Style TitleGraphic
+	InPreamble 1
+	InTitle    0
+End
+
+NoStyle Title_(Plain_Frame)
+
+InsetLayout "Flex:Giant"
+	LyXType               custom
+	Decoration            classic
+	LabelString           Giant
+	LatexType             None
+	LeftDelim             {\veryHuge{}
+	RightDelim            \par}
+	Font
+	  Size                giant
+	EndFont
+	LabelFont
+	  Size                normal
+	EndFont
+End
+
+InsetLayout "Flex:More_Giant"
+	CopyStyle             Flex:Giant
+	LeftDelim             {\VeryHuge{}
+	LabelString           "More Giant"
+End
+
+InsetLayout "Flex:Most_Giant"
+	CopyStyle             Flex:Giant
+	LeftDelim             {\VERYHuge{}
+	LabelString           "Most Giant"
+End
+
+InsetLayout Flex:Giant_Snippet
+	LyXType               charstyle
+	LabelString           Giant
+	LatexType             None
+	LeftDelim             {\veryHuge{}
+	RightDelim            }
+	Font
+	  Size                giant
+	EndFont
+	LabelFont
+	  Size                normal
+	EndFont
+End
+
+InsetLayout Flex:More_Giant_Snippet
+	CopyStyle             Flex:Giant_Snippet
+	LabelString           "More Giant"
+	LeftDelim             {\VeryHuge{}
+End
+
+InsetLayout Flex:Most_Giant_Snippet
+	CopyStyle             Flex:Giant_Snippet
+	LabelString           "Most Giant"
+	LeftDelim             {\VERYHuge{}
+End

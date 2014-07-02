@@ -1885,6 +1885,7 @@ dist_kbd_DATA = \
 
 layoutsdir = $(pkgdatadir)/layouts
 dist_layouts_DATA =\
+	layouts/a0poster.layout \
 	layouts/aa.layout \
 	layouts/aapaper.inc \
 	layouts/aapaper.layout \
@@ -1915,6 +1916,7 @@ dist_layouts_DATA =\
 	layouts/article-beamer.layout \
 	layouts/basic.module \
 	layouts/beamer.layout \
+	layouts/beamerposter.layout \
 	layouts/bicaption.module \
 	layouts/book.layout \
 	layouts/braille.module \
@@ -2019,6 +2021,7 @@ dist_layouts_DATA =\
 	layouts/revtex4.layout \
 	layouts/revtex4-1.layout \
 	layouts/rsphrase.module \
+	layouts/sciposter.layout \
 	layouts/scrartcl.layout \
 	layouts/scrarticle-beamer.layout \
 	layouts/scrbook.layout \
@@ -2161,6 +2164,10 @@ dist_templates_DATA = \
 	templates/koma-letter2.lyx \
 	templates/letter.lyx \
 	templates/lettre.lyx \
+	templates/poster-a0poster-colored.lyx \
+	templates/poster-a0poster-simple.lyx \
+	templates/poster-beamerposter.lyx \
+	templates/poster-sciposter.lyx \
 	templates/README.new_templates \
 	templates/RJournal.lyx \
 	templates/revtex4.lyx \
