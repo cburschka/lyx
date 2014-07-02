@@ -1,3 +1,27 @@
+What's new in version 2.1.1?
+----------------------------
+
+LyX 2.1.1 is the first maintenance release in the 2.1.x series. It is bug-
+fixing release, and a whole lot of bugs have been fixed. Please see the
+release announcement for the details.
+
+Several users have reported seemingly random crashes with 2.1.0, sometimes 
+resulting in dataloss. These crashes appear to happen when the user attempts 
+to save a file, and the dataloss occurs because the original LyX file is over-
+written by a corrupt file that then cannot be opened. The seemingly random
+crashes, we believe, are due to auto-save, which is enabled or disabled in
+Tools> Preferences> Document Handling > "Backup documents every...minutes".
+
+Unfortunately, we have been unable to find the cause of this bug, though all
+known reports seem to involve documents that contain tables, and the corrupt 
+file always ends with: \begin_inset Tabular.
+
+To prevent dataloss, we have changed the way LyX saves files if the user
+has not enabled backups. LyX now renames the existing file before 
+attempting to save the new one (in effect, making a temporary backup). 
+Then, if the save fails, the original file can be restored.
+
+
 What's new in version 2.1.0?
 ----------------------------
 
