@@ -11,12 +11,7 @@ export/.*/id/.*(pdf5|dvi3)_.*
 # http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
 export/.*/hu/.*(pdf5|dvi3)_.*
 #
-# Export with XeTeX and LuaTeX (with either non-tex fonts or 8-bit
-# compatibility mode) does not work because the loading of inputenc with
-# utf8x is hardcoded in europecv.cls at the time of this writing. See:
-# http://comments.gmane.org/gmane.editors.lyx.devel/145896
-# TODO If David Carlisle takes over ownership, report these to him.
-export/.*/es/europeCV_(pdf[5]|dvi3)_texF
+export/.*/es/europeCV_pdf_texF
 #
 # somehow lualatex is not able to compile with non-tex fonts
 export/.*/es/(Math|Tutorial|UserGuide|ejemplo_con_lyx)_dvi3_systemF
@@ -43,7 +38,8 @@ export/doc/uk/Intro_(pdf5|dvi3)_systemF
 # documents, fixing these would provide further tests for LyX's handling of
 # XeTeX/LuaTeX with system fonts.
 export/doc/(|de/|es/|fr/)Customization_pdf4_systemF
-export/doc/(|de/|es/|fr/)Math_(dvi3|pdf4)_systemF
+export/doc/es/Math_dvi3_systemF
+export/doc/(|de/|es/|fr/)Math_pdf4_systemF
 export/doc/attic/eu_Additional_pdf4_systemF
 export/doc/attic/pl_Additional_pdf4_systemF
 export/doc/(de|es|fr)/EmbeddedObjects_pdf4_systemF
@@ -100,11 +96,7 @@ export/templates/ctex_pdf[23]?
 # The following exports worked with TeX Live 2013, but not in 2014.
 # For a workaround, see:
 # https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg184435.html
-# David Carlisle might fix the europeCV package.
-export/examples/Foils_(dvi3|pdf4|pdf5)_systemF
-export/examples/fr/Foils_(dvi3|pdf5)_systemF
 export/examples/aa_sample_(dvi3|pdf4|pdf5)_(texF|systemF)
-export/examples/europeCV_(dvi3|pdf5)_texF
 export/templates/aa_(dvi3|pdf4|pdf5)_(texF|systemF)
 #
 # These exports correctly fail now on TeX Live 2014. Although they compiled
