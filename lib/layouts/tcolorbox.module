@@ -1,0 +1,110 @@
+#\DeclareLyXModule[tcolorbox.sty]{Fancy Colored Boxes}
+#DescriptionBegin
+#Adds custom insets that support colored boxes via the tcolorbox package.
+#See the tcolorbox documentation for details.
+#DescriptionEnd
+#Authors: Jürgen Spitzmüller
+
+Format 48
+
+InsetLayout Flex:Color_Box
+  LyXType               custom
+  Decoration            classic
+  LabelString           "Color Box"
+  LatexType             environment
+  LatexName             tcolorbox
+  Requires              tcolorbox
+  Argument 1
+    LabelString         "Color Box Options"
+    Tooltip             "Insert the color box options here (see tcolorbox manual)"
+  EndArgument
+End
+
+InsetLayout Flex:Dynamic_Color_Box
+  LyXType               custom
+  Decoration            classic
+  LabelString           "Color Box (Dynamic)"
+  LatexType             command
+  LatexName             tcbox
+  Requires              tcolorbox
+  Argument 1
+    LabelString         "Color Box Options"
+    Tooltip             "Insert the color box options here (see tcolorbox manual)"
+  EndArgument
+End
+
+InsetLayout Flex:Fit_Color_Box
+  LyXType               custom
+  Decoration            classic
+  LabelString           "Color Box (Fit Contents)"
+  LatexType             command
+  LatexName             tcboxfit
+  Requires              tcolorbox
+  Argument 1
+    LabelString         "Color Box Options"
+    Tooltip             "Insert the color box options here (see tcolorbox manual)"
+  EndArgument
+End
+
+Style Color_Box_Separator
+  Category         "Color Boxes"
+  LatexType        command
+  LatexName        tcblower
+  ParIndent        MM
+  ParSkip          0.4
+  Align            Left
+  AlignPossible    Block, Left, Right, Center
+  Margin           First_Dynamic
+  TopSep           0
+  BottomSep        0
+  ParSep           0
+  LabelType        Static
+  LabelBottomSep   0
+  LabelString      "-----"
+  KeepEmpty        1
+  LabelFont 
+    Series         medium
+    Size           normal
+    Color          latex
+    Series         bold
+  EndFont
+  Requires         tcolorbox
+End
+
+Style Color_Box_Line
+  CopyStyle        Color_Box_Separator
+  LatexName        tcbline
+  LabelFont 
+    Color          blue
+  EndFont
+  Requires         tcolorbox
+End
+
+Style Color_Box_Setup
+  Category         "Color Boxes"
+  LatexName        tcbset
+  LatexType        command
+  PassThru         1
+  Margin           Dynamic
+  LabelSep         xx
+  ParSkip          0.0
+  ItemSep          0.2
+  TopSep           0.7
+  BottomSep        0.7
+  ParSep           0.3
+  Align            Block
+  AlignPossible    Block
+  LabelType        Static
+  LabelString      "Color Box Setup"
+  Font
+    Color          latex
+    Family         typewriter
+  EndFont
+  LabelFont
+    Color          green
+    Family         roman
+  EndFont
+  Requires         tcolorbox
+  Spellcheck       0
+End
+
