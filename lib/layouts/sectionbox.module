@@ -1,0 +1,50 @@
+#\DeclareLyXModule[sectionbox.sty]{Section Boxes}
+#DescriptionBegin
+#Defines Boxes with section header. Mainly intended for
+#the SciPoster class.
+#DescriptionEnd
+
+# Author: Jürgen Spitzmüller <spitz@lyx.org>
+
+Format 45
+
+InsetLayout Flex:SectionBox
+	LyXType               custom
+	LabelString           "Section Box"
+	LatexType             environment
+	LatexName             sectionbox
+	Decoration            classic
+	MultiPar              true
+	CustomPars            true
+	Requires	      sectionbox
+	Argument 1
+		LabelString    "Width"
+		MenuString     "Section Box Width|S"
+		Tooltip        "Width of the section Box"
+	EndArgument
+	Argument 2
+		LabelString    "Heading"
+		MenuString     "Section Box Heading"
+		Mandatory      1
+		Decoration     conglomerate
+		AutoInsert     1
+		Tooltip        "Insert the section box header here"
+		Font
+			Size   Large
+			Series Bold
+		EndFont
+	EndArgument
+End
+
+InsetLayout Flex:SubsectionBox
+	CopyStyle             Flex:SectionBox
+	LabelString           "Subsection Box"
+	LatexName             subsectionbox
+End
+
+InsetLayout Flex:SubsubsectionBox
+	CopyStyle             Flex:SectionBox
+	LabelString           "Subsubsection Box"
+	LatexName             subsubsectionbox
+End
+

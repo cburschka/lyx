@@ -742,7 +742,9 @@ char const * simplefeatures[] = {
 	"tfrupee",
 	"shapepar",
 	"rsphrase",
-	"algorithm2e"
+	"algorithm2e",
+	"sectionbox",
+	"tcolorbox"
 };
 
 char const * bibliofeatures[] = {

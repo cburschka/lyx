@@ -2025,6 +2025,7 @@ dist_layouts_DATA =\
 	layouts/scrlettr.layout \
 	layouts/scrlttr2.layout \
 	layouts/scrreprt.layout \
+	layouts/sectionbox.module \
 	layouts/seminar.layout \
 	layouts/shapepar.module \
 	layouts/siamltex.layout \
@@ -2061,6 +2062,7 @@ dist_layouts_DATA =\
 	layouts/tabs-within-sections.module \
 	layouts/tarticle.layout \
 	layouts/tbook.layout \
+	layouts/tcolorbox.module \
 	layouts/theorems-ams.inc \
 	layouts/theorems-ams.module \
 	layouts/theorems-ams-bytype.inc \
