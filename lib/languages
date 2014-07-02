@@ -473,17 +473,29 @@ Language ngerman
 	LangCode         de_DE
 End
 
-# Swiss German is not supported by babel and polyglossia yet
-# We use ngerman for now (spellchecking is supported though!)
+# Polyglossia does not yet support Swiss German. We use ngerman for now.
 Language german-ch
 	GuiName          "German (Switzerland)"
-	BabelName        ngerman
+	BabelName        nswissgerman
 	PolyglossiaName  german
 	PolyglossiaOpts  "babelshorthands=true"
+#	PolyglossiaOpts  "variant=swiss,babelshorthands=true"
 	QuoteStyle       danish
 	Encoding         iso8859-15
 	LangCode         de_CH
 End
+
+# This is now supported, but requires a file format change
+# Language german-ch-old
+# 	GuiName          "German (Switzerland, old spelling)"
+# 	BabelName        swissgerman
+# 	PolyglossiaName  german
+# 	PolyglossiaOpts  "spelling=old,babelshorthands=true"
+## 	PolyglossiaOpts  "variant=swiss,spelling=old,babelshorthands=true"
+# 	QuoteStyle       danish
+# 	Encoding         iso8859-15
+# 	LangCode         de_CH
+# End
 
 Language greek
 	GuiName           "Greek"
