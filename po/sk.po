@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-06-14 11:35+0200\n"
-"PO-Revision-Date: 2014-06-18 15:29+0200\n"
+"POT-Creation-Date: 2014-07-02 18:44+0200\n"
+"PO-Revision-Date: 2014-07-02 19:56+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -6576,6 +6576,54 @@ msgstr "Domáca stránka"
 msgid "Email"
 msgstr "E-mail"
 
+#: lib/layouts/a0poster.layout:3
+msgid "A0 Poster"
+msgstr "A0 Plagát"
+
+#: lib/layouts/a0poster.layout:4 lib/layouts/beamerposter.layout:4
+#: lib/layouts/sciposter.layout:4
+msgid "Posters"
+msgstr "Plagáty"
+
+#: lib/layouts/a0poster.layout:41 lib/layouts/a0poster.layout:44
+#: lib/layouts/a0poster.layout:70 lib/layouts/beamerposter.layout:53
+#: lib/layouts/beamerposter.layout:56 lib/layouts/beamerposter.layout:82
+#: lib/layouts/sciposter.layout:97 lib/layouts/sciposter.layout:100
+#: lib/layouts/sciposter.layout:126
+msgid "Giant"
+msgstr "Gigantický"
+
+#: lib/layouts/a0poster.layout:56 lib/layouts/a0poster.layout:59
+#: lib/layouts/a0poster.layout:84 lib/layouts/beamerposter.layout:68
+#: lib/layouts/beamerposter.layout:71 lib/layouts/beamerposter.layout:96
+#: lib/layouts/sciposter.layout:112 lib/layouts/sciposter.layout:115
+#: lib/layouts/sciposter.layout:140
+msgid "More Giant"
+msgstr "Viac Gigantický"
+
+#: lib/layouts/a0poster.layout:62 lib/layouts/a0poster.layout:65
+#: lib/layouts/a0poster.layout:90 lib/layouts/beamerposter.layout:74
+#: lib/layouts/beamerposter.layout:77 lib/layouts/beamerposter.layout:102
+#: lib/layouts/sciposter.layout:118 lib/layouts/sciposter.layout:121
+#: lib/layouts/sciposter.layout:146
+msgid "Most Giant"
+msgstr "Najviac Gigantický"
+
+#: lib/layouts/a0poster.layout:68 lib/layouts/beamerposter.layout:80
+#: lib/layouts/sciposter.layout:124
+msgid "Giant Snippet"
+msgstr "Gigantický Kúsok"
+
+#: lib/layouts/a0poster.layout:82 lib/layouts/beamerposter.layout:94
+#: lib/layouts/sciposter.layout:138
+msgid "More Giant Snippet"
+msgstr "Väčší Gigantický Kúsok"
+
+#: lib/layouts/a0poster.layout:88 lib/layouts/beamerposter.layout:100
+#: lib/layouts/sciposter.layout:144
+msgid "Most Giant Snippet"
+msgstr "Najväčší Gigantický Kúsok"
+
 #: lib/layouts/jasatex.layout:209 lib/layouts/acmsiggraph.layout:167
 #: lib/layouts/iopart.layout:215 lib/layouts/revtex4.layout:276
 #: lib/layouts/apa6.layout:266 lib/layouts/elsarticle.layout:299
@@ -7372,6 +7420,10 @@ msgstr "Nepovinný argument pre referenciu na domácu stránku"
 #: lib/layouts/revtex4.layout:267
 msgid "PACS number:"
 msgstr "PACS-číslo:"
+
+#: lib/layouts/sciposter.layout:3
+msgid "SciPoster"
+msgstr "Sci-plagát"
 
 #: lib/layouts/amsbook.layout:3
 msgid "American Mathematical Society (AMS) Book"
@@ -8538,6 +8590,10 @@ msgstr "Obrázok"
 msgid "List of Figures"
 msgstr "Zoznam Obrázkov"
 
+#: lib/layouts/beamerposter.layout:3
+msgid "Beamerposter"
+msgstr "Beamer-plagát"
+
 #: lib/layouts/docbook.layout:3
 msgid "DocBook Article (SGML)"
 msgstr "DocBook Článok (SGML)"
@@ -8912,6 +8968,38 @@ msgstr "ACM SIGPLAN"
 #: lib/layouts/sigplanconf.layout:69
 msgid "Conference"
 msgstr "Konferencia"
+
+#: lib/layouts/sciposter.layout:40
+msgid "LeftLogo"
+msgstr "ĽavéLogo"
+
+#: lib/layouts/sciposter.layout:46
+msgid "Left logo:"
+msgstr "Ľavé logo:"
+
+#: lib/layouts/sciposter.layout:60
+msgid "Logo Size"
+msgstr "Veľkosť Loga"
+
+#: lib/layouts/sciposter.layout:61
+msgid "Relative logo size (0 through 1)"
+msgstr "Relatívna veľkosť loga (0 až 1)"
+
+#: lib/layouts/sciposter.layout:65
+msgid "RightLogo"
+msgstr "PravéLogo"
+
+#: lib/layouts/sciposter.layout:68
+msgid "Right logo:"
+msgstr "Pravé logo:"
+
+#: lib/layouts/sciposter.layout:80
+msgid "Caption Width"
+msgstr "Šírka Popisu"
+
+#: lib/layouts/sciposter.layout:81
+msgid "The caption width relative to the column (0 through 1)"
+msgstr "Šírka popisu pomerná ku stĺpcu (0 až 1)"
 
 #: lib/layouts/sigplanconf.layout:82
 msgid "Name of the conference"
@@ -13010,6 +13098,60 @@ msgstr "Argument pre príkazy ktoré vyžadujú špecifikáciu prídavnej inform
 msgid "S phrase:"
 msgstr "P zvrat:"
 
+#: lib/layouts/sectionbox.module:2
+msgid "Section Boxes"
+msgstr "Sekciové Rámčeky"
+
+#: lib/layouts/sectionbox.module:6
+msgid ""
+"Defines Boxes with section header. Mainly intended for the SciPoster class."
+msgstr ""
+"Definuje Rámiky s hlavičkou sekcie. Hlavne myslené pre Sci-Plagát triedu."
+
+#: lib/layouts/sectionbox.module:11
+msgid "SectionBox"
+msgstr "SekciaRámik"
+
+#: lib/layouts/sectionbox.module:13
+msgid "Section Box"
+msgstr "Sekcia Rámik"
+
+#: lib/layouts/sectionbox.module:22
+msgid "Section Box Width|S"
+msgstr "Šírka Rámiku Sekcie|S"
+
+#: lib/layouts/sectionbox.module:23
+msgid "Width of the section Box"
+msgstr "Šírka Rámiku sekcie"
+
+#: lib/layouts/sectionbox.module:26
+msgid "Heading"
+msgstr "Záhlavie"
+
+#: lib/layouts/sectionbox.module:27
+msgid "Section Box Heading"
+msgstr "Záhlavie Rámiku Sekcie"
+
+#: lib/layouts/sectionbox.module:31
+msgid "Insert the section box header here"
+msgstr "Vložiť sem návestie rámiku sekcie"
+
+#: lib/layouts/sectionbox.module:39
+msgid "SubsectionBox"
+msgstr "PodsekciaRámik"
+
+#: lib/layouts/sectionbox.module:41
+msgid "Subsection Box"
+msgstr "Podsekcia Rámik"
+
+#: lib/layouts/sectionbox.module:45
+msgid "SubsubsectionBox"
+msgstr "PodpodsekciaRámik"
+
+#: lib/layouts/sectionbox.module:47
+msgid "Subsubsection Box"
+msgstr "Podpodsekcia Rámik"
+
 #: lib/layouts/bicaption.module:2
 msgid "Multilingual Captions"
 msgstr "Viac-jazykové Popisy"
@@ -13450,6 +13592,68 @@ msgid ""
 msgstr ""
 "Vynuluje číslovanie tabuliek na začiatku sekcie a predčísli ich sekciou, ako "
 "pri 'Tabuľka 2.1'."
+
+#: lib/layouts/tcolorbox.module:2
+msgid "Fancy Colored Boxes"
+msgstr "Pestro Zafarbené Rámiky"
+
+#: lib/layouts/tcolorbox.module:6
+msgid ""
+"Adds custom insets that support colored boxes via the tcolorbox package. See "
+"the tcolorbox documentation for details."
+msgstr ""
+"Pridáva vlastné vložky podporujúce farebné rámiky pomocou balíka tcolorbox. "
+"Viď dokumentáciu tcolorbox."
+
+#: lib/layouts/tcolorbox.module:10 lib/layouts/tcolorbox.module:13
+msgid "Color Box"
+msgstr "Farebný Rámik"
+
+#: lib/layouts/tcolorbox.module:18 lib/layouts/tcolorbox.module:31
+#: lib/layouts/tcolorbox.module:44
+msgid "Color Box Options"
+msgstr "Voľby pre Farebný Rámik"
+
+#: lib/layouts/tcolorbox.module:19 lib/layouts/tcolorbox.module:32
+#: lib/layouts/tcolorbox.module:45
+msgid "Insert the color box options here (see tcolorbox manual)"
+msgstr "Tu sa vložia voľby pre farebný rámik (viď tcolorbox manuál)"
+
+#: lib/layouts/tcolorbox.module:23
+msgid "Dynamic Color Box"
+msgstr "Dynamický Farebný Rámik"
+
+#: lib/layouts/tcolorbox.module:26
+msgid "Color Box (Dynamic)"
+msgstr "Farebný Rámik (Dynamický)"
+
+#: lib/layouts/tcolorbox.module:36
+msgid "Fit Color Box"
+msgstr "Prispôsobiť Farebný Rámik"
+
+#: lib/layouts/tcolorbox.module:39
+msgid "Color Box (Fit Contents)"
+msgstr "Farebný Rámik (Prispôsobiť Obsah)"
+
+#: lib/layouts/tcolorbox.module:49
+msgid "Color Box Separator"
+msgstr "Farebný Rámik Oddeľovač"
+
+#: lib/layouts/tcolorbox.module:50 lib/layouts/tcolorbox.module:84
+msgid "Color Boxes"
+msgstr "Farebné Rámiky"
+
+#: lib/layouts/tcolorbox.module:63
+msgid "-----"
+msgstr "-----"
+
+#: lib/layouts/tcolorbox.module:74
+msgid "Color Box Line"
+msgstr "Farebný Rámik Čiarka"
+
+#: lib/layouts/tcolorbox.module:83 lib/layouts/tcolorbox.module:98
+msgid "Color Box Setup"
+msgstr "Farebný Rámik Nastavenie"
 
 #: lib/layouts/sweave.module:2 lib/configure.py:614
 msgid "Sweave"
