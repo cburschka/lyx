@@ -1,0 +1,1220 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass beamerposter
+\begin_preamble
+% You can select your theme here. Any beamer theme without a sidebar should work:
+\usetheme{Berlin}
+% Note, however, that only dedicated beamerposter themes also generate
+% a suitable poster title automatically (we do this manually, see the notes
+% in the document). 
+% Dedicated beamerposter themes are available at 
+% http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php
+
+% Here you can set the options (note that the example content is made for the given setup. 
+% With different orientation or poster size, the content probably won't fit on the poster):
+\PassOptionsToPackage{%
+   orientation=portrait, % possible: portrait, landscape
+    size=a0,% possible: a0b, a0, a1, a2, a3, a4, custom (with width=<val>,height=<val>)
+    scale=1.4,% scaling of fonts
+    debug% give verbose warnings and error messages
+}{beamerposter}
+
+% This produces a grid which might be useful when positioning things
+%\beamertemplategridbackground[0.5cm]
+%\setbeamertemplate{background canvas}[vertical shading][bottom=gray,top=white]
+\end_preamble
+\options final
+\use_default_options false
+\begin_modules
+multicol
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman utopia
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family rmdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+Short
+\begin_inset Quotes erd
+\end_inset
+
+ forms go into the poster footer.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Sh.
+ Title
+\end_layout
+
+\end_inset
+
+The Poster Title
+\end_layout
+
+\begin_layout Subtitle
+Optional Poster Subtitle
+\end_layout
+
+\begin_layout Author
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Sh.
+ auth.
+\end_layout
+
+\end_inset
+
+Poster Author
+\end_layout
+
+\begin_layout Institute
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Sh.
+ Inst.
+\end_layout
+
+\end_inset
+
+Institute
+\end_layout
+
+\begin_layout Date
+Date
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+On the following line (
+\series bold
+TitleGraphics
+\series default
+ style), you can insert a logo (image file or text):
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout TitleGraphic
+\begin_inset Flex Most Giant
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+[LyX]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The whole poster is a 
+\series bold
+single (huge) beamer frame
+\series default
+!
+\end_layout
+
+\begin_layout Plain Layout
+You can use any beamer element, especially the use of blocks is advisable.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+In the following two boxes, the 
+\series bold
+poster heading
+\series default
+ is set manually via TeX mode, using the title information given above.
+ This is necessary for 
+\begin_inset Quotes eld
+\end_inset
+
+normal
+\begin_inset Quotes erd
+\end_inset
+
+ (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+ presentation) beamer themes.
+ If you use a 
+\series bold
+dedicated beamerposter theme*
+\series default
+, the title will be generated automatically, and the boxes below can/should
+ be removed.
+\end_layout
+
+\begin_layout Plain Layout
+* You have to query the Internet for them, as there are no beamerposter
+ themes yet available on CTAN or in the TeX distributions.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 1
+use_makebox 0
+width "80col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Output title
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+VERYHuge
+\backslash
+textbf{
+\backslash
+inserttitle}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifx
+\backslash
+insertsubtitle
+\backslash
+empty
+\backslash
+else%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+par
+\backslash
+vspace{1.2cm}{
+\backslash
+veryHuge
+\backslash
+insertsubtitle}
+\backslash
+fi
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace 1.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Output author and date
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+veryHuge
+\backslash
+insertauthor
+\backslash
+ $
+\backslash
+cdot$ 
+\backslash
+insertdate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 1
+use_makebox 0
+width "20col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Logo
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+raggedleft
+\backslash
+inserttitlegraphic
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 1.7cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+The poster can be structured in blocks of different width
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+This block spans the whole width of the poster.
+\end_layout
+
+\begin_layout Block
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ 
+\end_layout
+
+\begin_layout Block
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+ consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et
+ accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit
+ augue duis dolore te feugait nulla facilisi.
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Get reasonable line lengths
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+columnsep}{2.2cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(adjusts column distance)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Wide blocks on a poster usually have too long lines (more than 60 characters
+ per line is difficult to read).
+ One way to solve this is using columns.
+ For this, you can use the 
+\begin_inset Quotes eld
+\end_inset
+
+Multiple Columns
+\begin_inset Quotes erd
+\end_inset
+
+ module, as done here.
+ It provides the 
+\begin_inset Quotes eld
+\end_inset
+
+Columns
+\begin_inset Quotes erd
+\end_inset
+
+ inset this text is written in.
+ The space between the columns can be adjusted via the LaTeX code 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+setlength{
+\backslash
+columnsep}
+\end_layout
+
+\end_inset
+
+ (see above in the LyX work area).
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+Multiple Columns
+\begin_inset Quotes erd
+\end_inset
+
+ module is documented in 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Help\SpecialChar \menuseparator
+Additional Features
+\end_layout
+
+\end_inset
+
+.
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+\end_layout
+
+\begin_layout Plain Layout
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+ consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et
+ accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit
+ augue duis dolore te feugait nulla facilisi.
+ Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+ nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+\end_layout
+
+\begin_layout Plain Layout
+Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Another option is to set the blocks themselves in columns.
+ This can be done by means of beamer's column paragraphs style.
+\end_layout
+
+\begin_layout Plain Layout
+Alas, beamer columns do not align very well with the rest of the frame by
+ default.
+ This can be fixed by fiddling with the 
+\emph on
+totalwidth
+\emph default
+ column option value.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Columns
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+t, totalwidth=
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+1.0105
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+.49
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+linewidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Fontsizes: From tiny to most giant!
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The extra sizes (
+\begin_inset Quotes eld
+\end_inset
+
+Giant
+\begin_inset Quotes erd
+\end_inset
+
+ etc.) are available at at 
+\family sans
+Insert\SpecialChar \menuseparator
+Custom Insets
+\family default
+.
+ For small inline snippets, there are variants at 
+\family sans
+Edit\SpecialChar \menuseparator
+Text Style.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size tiny
+Tiny
+\end_layout
+
+\begin_layout Standard
+
+\size scriptsize
+Smallest
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Smaller
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+Normal
+\end_layout
+
+\begin_layout Standard
+
+\size large
+Large
+\end_layout
+
+\begin_layout Standard
+
+\size larger
+Larger
+\end_layout
+
+\begin_layout Standard
+
+\size largest
+Largest
+\end_layout
+
+\begin_layout Standard
+
+\size huge
+Huge
+\end_layout
+
+\begin_layout Standard
+
+\size giant
+Huger
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Giant
+status open
+
+\begin_layout Plain Layout
+Giant
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex More Giant
+status open
+
+\begin_layout Plain Layout
+More Giant
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Most Giant
+status open
+
+\begin_layout Plain Layout
+Most Giant
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout AlertBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Blocks in different colors
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout AlertBlock
+Beamer provides special blocks with specific colors that can also be used
+ for posters.
+ This one is an 
+\begin_inset Quotes eld
+\end_inset
+
+alert
+\begin_inset Quotes erd
+\end_inset
+
+ block.
+ Its main purpose is to highlight important things.
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Blocks in different colors
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+This is an 
+\begin_inset Quotes eld
+\end_inset
+
+example block
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout ExampleBlock
+Yet another color.
+\end_layout
+
+\begin_layout Column
+.49
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+linewidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Enumerated Lists
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+some items 
+\end_layout
+
+\begin_layout Enumerate
+some items 
+\end_layout
+
+\begin_layout Enumerate
+some items 
+\end_layout
+
+\begin_layout Enumerate
+some items 
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Some items and some math
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+some items and 
+\begin_inset Formula $\alpha=\gamma,\sum_{i}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+some items 
+\end_layout
+
+\begin_layout Itemize
+some items 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\alpha=\gamma,\sum_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+More items \SpecialChar \ldots{}
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+some items
+\end_layout
+
+\begin_layout Itemize
+some items
+\end_layout
+
+\begin_layout Itemize
+some items
+\end_layout
+
+\begin_layout Itemize
+some items
+\end_layout
+
+\begin_layout Itemize
+some items
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar \ldots{}
+ and yet more!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+some items 
+\end_layout
+
+\begin_layout Itemize
+some items 
+\end_layout
+
+\begin_layout Itemize
+some items 
+\end_layout
+
+\begin_layout Itemize
+some items 
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Contact
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+An example for displaying your address.
+ The X's represent the space that can be used for a photo.
+ if you use a real photo (image), you might need to insert some negative
+ vertical space (ca.
+ -36pt, protected) to align the image properly with the text.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "20col%"
+special "none"
+height "6cm"
+height_special "none"
+status open
+
+\begin_layout Plain Layout
+XXXXXXXXX
+\end_layout
+
+\begin_layout Plain Layout
+XXXXXXXXX
+\end_layout
+
+\begin_layout Plain Layout
+XXXXXXXXX
+\end_layout
+
+\begin_layout Plain Layout
+XXXXXXXXX
+\end_layout
+
+\begin_layout Plain Layout
+XXXXXXXXX
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "60col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+John Doe
+\end_layout
+
+\begin_layout Plain Layout
+University of Nowhere
+\end_layout
+
+\begin_layout Plain Layout
+0000 Nowhere
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+doe@uon.edu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.uon.edu/doe
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Columns
+
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

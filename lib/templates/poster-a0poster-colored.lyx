@@ -1,0 +1,1536 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass a0poster
+\begin_preamble
+\usepackage{tcolorbox}
+% tcolorbox skins support
+\tcbuselibrary{skins}
+
+% define the box color
+\colorlet{myboxcolor}{red!50!black} 
+
+% For \arrayrulecolor
+\usepackage{colortbl}
+\end_preamble
+\options a0,portrait
+\use_default_options false
+\begin_modules
+tcolorbox
+multicol
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding iso8859-1
+\fontencoding global
+\font_roman palatino
+\font_sans berasans
+\font_typewriter beramono
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 1cm
+\rightmargin 1cm
+\bottommargin 1cm
+\secnumdepth 0
+\tocdepth 0
+\paragraph_separation skip
+\defskip bigskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This template uses the 
+\family sans
+a0poster
+\family default
+ class, which itself offers no specific options to display text blocks,
+ and the 
+\family sans
+tcolorbox
+\family default
+ package (via the 
+\begin_inset Quotes eld
+\end_inset
+
+Colored Boxes
+\begin_inset Quotes erd
+\end_inset
+
+ module), which provides nice-looking, adjustable boxes that are highly
+ suited for conference posters.
+ Please refer to the 
+\family sans
+tcolorbox
+\family default
+ documentation for details on how to alter the look: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/tcolorbox/tcolorbox.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Use the 
+\family sans
+Color Box Setup
+\family default
+ paragraph style to adjust the default appearance of (subsequent) color
+ boxes (the custom color 
+\family typewriter
+myboxcolor
+\family default
+ is defined in 
+\family sans
+Document\SpecialChar \menuseparator
+Settings \SpecialChar \ldots{}
+ \SpecialChar \menuseparator
+LaTeX Preamble
+\family default
+): 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Color Box Setup
+colframe=myboxcolor, fonttitle=
+\backslash
+Large
+\backslash
+bfseries, boxsep=5mm
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Flex Dynamic Color Box
+status open
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=myboxcolor, coltext=white
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This is a hand-crafted poster heading with two potential logo placeholders.
+ Adjust to your needs.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top" width="19line%">
+<column alignment="center" valignment="top" width="58.1line%">
+<column alignment="right" valignment="top" width="19line%">
+<row>
+<cell multirow="3" alignment="left" valignment="middle" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[Logo?]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Flex Most Giant Snippet
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Poster Heading
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" usebox="none" width="19line%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\align center
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+[Logo?]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset Flex Giant Snippet
+status open
+
+\begin_layout Plain Layout
+\noindent
+Sub-Heading
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=A Color Box
+\end_layout
+
+\end_inset
+
+This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ This is a color box.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -42pt*
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If you need several color boxes next to each other, put them in minipages:
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "49col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+Left text
+\end_layout
+
+\begin_layout Plain Layout
+with several paragraphs
+\end_layout
+
+\begin_layout Plain Layout
+with several paragraphs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "49col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+Right text
+\end_layout
+
+\begin_layout Plain Layout
+with several paragraphs
+\end_layout
+
+\begin_layout Plain Layout
+with several paragraphs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Columns inside a color box, on the other hand, can be set with the 
+\begin_inset Quotes eld
+\end_inset
+
+Multiple Columns
+\begin_inset Quotes erd
+\end_inset
+
+ module:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Multiple Columns with the 
+\begin_inset Quotes eld
+\end_inset
+
+Multiple Columns
+\begin_inset Quotes erd
+\end_inset
+
+ Module
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setlength{
+\backslash
+columnsep}{2.2cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(adjusts the space between columns)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Wide blocks on a poster usually have too long lines (more than 60 letters
+ per line is difficult to read).
+\end_layout
+
+\begin_layout Plain Layout
+One way to solve this is using columns.
+ To this end, you can use the 
+\begin_inset Quotes eld
+\end_inset
+
+Multiple Columns
+\begin_inset Quotes erd
+\end_inset
+
+ module, as done here.
+ It provides the 
+\begin_inset Quotes eld
+\end_inset
+
+Columns
+\begin_inset Quotes erd
+\end_inset
+
+ inset this text is written in.
+ The space between the columns can be adjusted via the LaTeX code 
+\family typewriter
+
+\backslash
+setlength{
+\backslash
+columnsep}
+\family default
+ (see above in the LyX work area).
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+Multiple Columns
+\begin_inset Quotes erd
+\end_inset
+
+ module is documented in detail in 
+\family sans
+Help\SpecialChar \menuseparator
+Additional Features
+\family default
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+columnbreak
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+\end_layout
+
+\begin_layout Plain Layout
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+ consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et
+ accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit
+ augue duis dolore te feugait nulla facilisi.
+ Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+ nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+\end_layout
+
+\begin_layout Plain Layout
+Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
+ lobortis nisl ut aliquip ex ea commodo consequat.
+ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+ consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et
+ accumsan et iusto odio dignissim.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\series medium
+title=Available Font Sizes 
+\series default
+(with corresponding 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\backslash
+
+\end_layout
+
+\end_inset
+
+ command)
+\series medium
+, enhanced, watermark text=Font Sizes
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The extra sizes (
+\begin_inset Quotes eld
+\end_inset
+
+Giant
+\begin_inset Quotes erd
+\end_inset
+
+ etc.) are available at at 
+\family sans
+Insert\SpecialChar \menuseparator
+Custom Insets
+\family default
+.
+ For small inline snippets, there are variants at 
+\family sans
+Edit\SpecialChar \menuseparator
+Text Style.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size tiny
+Tiny (
+\family typewriter
+
+\backslash
+tiny
+\family default
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Smallest (
+\family typewriter
+
+\backslash
+scriptsize
+\family default
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Smaller (
+\family typewriter
+
+\backslash
+footnotesize
+\family default
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\size normal
+Normal (
+\family typewriter
+\size default
+
+\backslash
+normalsize
+\family default
+\size normal
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\size large
+Large (
+\family typewriter
+
+\backslash
+large
+\family default
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\size larger
+Larger (
+\family typewriter
+
+\backslash
+Large
+\family default
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\size largest
+Largest (
+\family typewriter
+
+\backslash
+LARGE
+\family default
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\size huge
+Huge (
+\family typewriter
+
+\backslash
+huge
+\family default
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\size giant
+Huger (
+\family typewriter
+
+\backslash
+Huge
+\family default
+)
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex Giant
+status open
+
+\begin_layout Plain Layout
+Giant (
+\family typewriter
+
+\backslash
+veryHuge
+\family default
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex More Giant
+status open
+
+\begin_layout Plain Layout
+More Giant (
+\family typewriter
+
+\backslash
+VeryHuge
+\family default
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex Most Giant
+status open
+
+\begin_layout Plain Layout
+Most Giant (
+\family typewriter
+
+\backslash
+VERYHuge
+\family default
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Boxes with Two Levels, collower=myboxcolor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+By means of the 
+\family sans
+Color Box Separator
+\family default
+ paragraph style, a color box can be split in an upper \SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+\SpecialChar \ldots{}
+ and a lower part.
+ This can only done once per box.
+ The 
+\family sans
+Color Box Line
+\family default
+ paragraph style, which just draws the separation line without actually
+ separating the box, can be used repeatedly.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Flex Dynamic Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Look: A Table!, left=0mm, right=0mm, top=0mm, bottom=0mm, boxsep=0mm,
+ toptitle=5mm, lefttitle=3mm, bottomtitle=5mm
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+arrayrulecolor{myboxcolor}
+\backslash
+renewcommand{
+\backslash
+arraystretch}{1.2}%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Large
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="12">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+One 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Two 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Three 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Four
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Five
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Six
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Seven
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eight
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nine
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ten
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eleven
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Twelve
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+B 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+E
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+G
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+H
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+I
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+J
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+K
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+L
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+I 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+II
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+III 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IV
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VII
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VIII
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IX
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XII
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Themes, skin=beamer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Color boxes can be themed (
+\begin_inset Quotes eld
+\end_inset
+
+skinned
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Color Box Separator
+
+\end_layout
+
+\begin_layout Plain Layout
+This is the 
+\begin_inset Quotes eld
+\end_inset
+
+beamer
+\begin_inset Quotes erd
+\end_inset
+
+ skin.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+title=Tweaking the Boxes, leftrule=13mm, colback=red!5!white, colframe=myboxcolo
+r, arc=14mm, boxsep=1cm, height=10cm, valign=center, enhanced, interior
+ style=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+left color=myboxcolor!10, right color=myboxcolor
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, frame style=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+right color=myboxcolor!10, left color=myboxcolor
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, coltext=white, fontupper=
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Large
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\color black
+Color box appearance can be customized in many different ways.
+\family sans
+\color white
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\family default
+\color inherit
+Please refer to the 
+\family sans
+tcolorbox
+\family default
+ manual for details.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Flex Color Box
+status open
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+colback=myboxcolor, coltext=white
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+Poster Footer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

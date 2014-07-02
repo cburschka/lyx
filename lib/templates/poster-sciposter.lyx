@@ -1,0 +1,857 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass sciposter
+\begin_preamble
+%% Comment this out and adapt if you want a poster background
+%\usepackage{wallpaper}
+%\CenterWallPaper{1.1}{poster-background}
+
+% Set all margins to 1cm
+\setmargins[1cm]
+
+% Set up column layout
+\setlength\columnseprule{0pt}
+\setlength\columnsep{4.5pc}
+
+% Color settings:
+\usepackage{sectionbox}
+% a.) background color
+%\definecolor{mainCol}{RGB}{255,237,208}
+% b.) text color (mainly subsection headers)
+\definecolor{TextCol}{RGB}{128,0,0}
+% c.) section header color
+\definecolor{SectionCol}{RGB}{0,0,255}
+% d.) color of section boxes
+\definecolor{sectboxfillcol}{RGB}{255,220,168}
+\definecolor{subsectboxfillcol}{RGB}{255,245,198}
+
+% Large section titles
+\renewcommand{\sectionsize}{\Large}
+\end_preamble
+\options landscape,a0,largefonts,plainsections
+\use_default_options false
+\begin_modules
+multicol
+sectionbox
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 0
+\tocdepth -1
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Poster Title
+\end_layout
+
+\begin_layout Author
+Author One and Author Two
+\end_layout
+
+\begin_layout Institute
+The University, Some address, Postal Code
+\end_layout
+
+\begin_layout E-Mail
+author1@somewhere and author2@elsewhere
+\end_layout
+
+\begin_layout Conference
+The Conference
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+appears in footer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Section*
+Some advices
+\end_layout
+
+\begin_layout Subsubsection*
+Appearance
+\end_layout
+
+\begin_layout Itemize
+See 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+LaTeX Preamble
+\family default
+ for some possibilities to adjust the appearance of your poster.
+ Also check 
+\family sans
+Document\SpecialChar \menuseparator
+Settings\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Document Class\SpecialChar \menuseparator
+Class Options
+\family default
+ for some general settings.
+ Please refer to the 
+\family sans
+sciposter
+\family default
+ manual for possible values.
+\end_layout
+
+\begin_layout Subsubsection*
+Logo
+\end_layout
+
+\begin_layout Itemize
+You can use the 
+\family sans
+LeftLogo
+\family default
+ and 
+\family sans
+RightLogo
+\family default
+ style to insert graphic logos in the header of your poster.
+ The logos need to be given as file names (with our without extension) and
+ with full path, if the files are not in the TEXMF directory.
+\end_layout
+
+\begin_layout Itemize
+Note that the logos only appear if you do not specify a 
+\begin_inset Quotes eld
+\end_inset
+
+Conference
+\begin_inset Quotes erd
+\end_inset
+
+ (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., no foot line).
+\end_layout
+
+\begin_layout Subsubsection*
+Columns and Boxes
+\end_layout
+
+\begin_layout Itemize
+The 
+\family sans
+Columns
+\family default
+ and 
+\family sans
+(Section) Box
+\family default
+ insets can be found at 
+\family sans
+Insert\SpecialChar \menuseparator
+Custom Insets.
+\end_layout
+
+\begin_layout Itemize
+Instead of the Section Boxes, you can also use the differently looking Color
+ Boxes via the 
+\begin_inset Quotes eld
+\end_inset
+
+Color Boxes
+\begin_inset Quotes erd
+\end_inset
+
+ module.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Multiple Columns
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex SectionBox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Abstract
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\emph on
+This is my special abstract This is my special abstract This is my special
+ abstract This is my special abstract This is my special abstract This is
+ my special abstract This is my special abstract This is my special abstract
+ This is my special abstract This is my special abstract.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex SectionBox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Background
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This is the background and our hypothesis.
+ This is the background and our hypothesis.
+ This is the background and our hypothesis.
+ This is the background and our hypothesis.
+ This is the background and our hypothesis.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Flex SectionBox
+status open
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "One/Two(2010)"
+key "key-1"
+
+\end_inset
+
+Author One & Author Two (2010): Our Great Book.
+ Somewhere.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "Two/One(2011)"
+key "key-2"
+
+\end_inset
+
+Author Two & Author One (2011): Our Even Greater Book.
+ Somewhere.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+columnbreak
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex SectionBox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Findings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex SubsectionBox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Some evidence
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+point one
+\end_layout
+
+\begin_layout Itemize
+point two
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex SubsectionBox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+More evidence
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+point three
+\end_layout
+
+\begin_layout Itemize
+point four
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex SubsectionBox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Other issues
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Really have to fill in this
+\end_layout
+
+\begin_layout Itemize
+Really have to fill in this
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+columnbreak
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex SectionBox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Experiment
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This is the experiment.
+ This is the experiment.
+ This is the experiment.
+ This is the experiment.
+ This is the experiment.
+ This is the experiment.
+ This is the experiment.
+ This is the experiment.
+ This is the experiment.
+ This is the experiment.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex SectionBox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+result
+\end_layout
+
+\begin_layout Itemize
+result
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex SectionBox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Conclusions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+first conclusion
+\end_layout
+
+\begin_layout Enumerate
+second conclusion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex SectionBox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status collapsed
+
+\begin_layout Plain Layout
+Available font size (and corresponding 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+LaTeX
+\backslash
+
+\end_layout
+
+\end_inset
+
+ commands)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\paragraph_spacing single
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The extra sizes (
+\begin_inset Quotes eld
+\end_inset
+
+Giant
+\begin_inset Quotes erd
+\end_inset
+
+ etc.) are available at 
+\family sans
+Insert\SpecialChar \menuseparator
+Custom Insets
+\family default
+.
+ For small inline snippets, there are variants at 
+\family sans
+Edit\SpecialChar \menuseparator
+Text Style.
+\end_layout
+
+\begin_layout Plain Layout
+Note that for some paper sizes and font settings, 
+\begin_inset Quotes eld
+\end_inset
+
+More Giant
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Most Giant
+\begin_inset Quotes erd
+\end_inset
+
+ are equal.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\size tiny
+Tiny (
+\family typewriter
+
+\backslash
+tiny
+\family default
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Smallest (
+\family typewriter
+
+\backslash
+scriptsize
+\family default
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Smaller (
+\family typewriter
+
+\backslash
+footnotesize
+\family default
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\size normal
+Normal (
+\family typewriter
+\size default
+
+\backslash
+normalsize
+\family default
+\size normal
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\size large
+Large (
+\family typewriter
+
+\backslash
+large
+\family default
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\size larger
+Larger (
+\family typewriter
+
+\backslash
+Large
+\family default
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\size largest
+Largest (
+\family typewriter
+
+\backslash
+LARGE
+\family default
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\size huge
+Huge (
+\family typewriter
+
+\backslash
+huge
+\family default
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+\size giant
+Huger (
+\family typewriter
+
+\backslash
+Huge
+\family default
+)
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex Giant
+status open
+
+\begin_layout Plain Layout
+Giant (
+\family typewriter
+
+\backslash
+veryHuge
+\family default
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex More Giant
+status open
+
+\begin_layout Plain Layout
+More Giant (
+\family typewriter
+
+\backslash
+VeryHuge
+\family default
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex Most Giant
+status open
+
+\begin_layout Plain Layout
+Most Giant (
+\family typewriter
+
+\backslash
+VERYHuge
+\family default
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
