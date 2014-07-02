@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-06-15 11:06+0200\n"
+"POT-Creation-Date: 2014-06-16 17:17-0400\n"
 "PO-Revision-Date: 2014-06-18 16:10+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -5043,8 +5043,8 @@ msgid ""
 "Turns on the change tracking and showing changes in LaTeX output for the "
 "resulting document"
 msgstr ""
-"Zapne sledovanie zmien a ukazovanie zmien v LaTeXovom výstupe pre "
-"nasledovný dokument"
+"Zapne sledovanie zmien a ukazovanie zmien v LaTeXovom výstupe pre nasledovný "
+"dokument"
 
 #: src/frontends/qt4/ui/CompareUi.ui:181
 msgid "Enable &change tracking features in the output"
@@ -5784,16 +5784,16 @@ msgstr ""
 msgid "Proof"
 msgstr "Dôkaz"
 
-#: lib/layouts/IEEEtran.layout:405 lib/layouts/beamer.layout:1152
+#: lib/layouts/ijmpc.layout:333 lib/layouts/siamltex.layout:118
 #: lib/layouts/elsart.layout:273 lib/layouts/elsart.layout:303
+#: lib/layouts/beamer.layout:1152 lib/layouts/llncs.layout:294
+#: lib/layouts/ijmpd.layout:336 lib/layouts/IEEEtran.layout:405
 #: lib/layouts/foils.layout:221 lib/layouts/heb-article.layout:30
-#: lib/layouts/heb-article.layout:108 lib/layouts/ijmpc.layout:333
-#: lib/layouts/ijmpd.layout:336 lib/layouts/llncs.layout:294
-#: lib/layouts/siamltex.layout:118 lib/layouts/svcommon.inc:637
-#: lib/layouts/theorems-ams-bytype.inc:51 lib/layouts/theorems-ams.inc:25
-#: lib/layouts/theorems-bytype.inc:27 lib/layouts/theorems-case.inc:28
-#: lib/layouts/theorems-proof.inc:14 lib/layouts/theorems-starred.inc:24
-#: lib/layouts/theorems-without-preamble.inc:35 lib/layouts/theorems.inc:25
+#: lib/layouts/heb-article.layout:108 lib/layouts/theorems-ams.inc:25
+#: lib/layouts/theorems-bytype.inc:27 lib/layouts/theorems-proof.inc:14
+#: lib/layouts/theorems-ams-bytype.inc:51 lib/layouts/theorems-case.inc:28
+#: lib/layouts/theorems-starred.inc:24 lib/layouts/theorems.inc:25
+#: lib/layouts/svcommon.inc:637 lib/layouts/theorems-without-preamble.inc:35
 #: lib/layouts/theorems-named.module:13
 msgid "Reasoning"
 msgstr "Dôvodenie"
@@ -15610,7 +15610,7 @@ msgstr "Dolný index"
 msgid "Protected Space|P"
 msgstr "Chránená Medzera"
 
-#: lib/ui/stdcontext.inc:217 lib/ui/stdmenus.inc:409
+#: lib/ui/stdmenus.inc:409 lib/ui/stdcontext.inc:217
 msgid "Interword Space|w"
 msgstr "Medzi-slovná Medzera"
 
