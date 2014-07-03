@@ -1,0 +1,151 @@
+#\DeclareLyXModule{PDF Comments}
+#DescriptionBegin
+#Provides various kinds of annotations for the PDF output. The module uses
+#the pdcomment package. Please consult the package documentation for details.
+#DescriptionEnd
+# Author: Juergen Spitzmueller <spitz@lyx.org>
+
+Format 48
+
+#
+# Annotation insets
+#
+
+InsetLayout "Flex:PDF-Annotation"
+	LyXType               custom
+	LatexType             command
+	Decoration            classic
+	LabelString           PDF
+	LatexName             pdfcomment
+	LabelFont
+	  Color               magenta
+	  Size                Small
+	EndFont
+	MultiPar              false
+	Argument 1
+	  MenuString          "PDFComment Options"
+	  LabelString         "Opts"
+	  ToolTip             "Insert PDFComment options here (see pdfcomment manual)"
+	EndArgument
+	Requires              pdfcomment
+End
+
+InsetLayout "Flex:PDF-Margin"
+	CopyStyle             "Flex:PDF-Annotation"
+	LabelString           "PDF (Margin)"
+	LatexName             pdfmargincomment
+	LabelFont
+	  Color               green
+	  Size                Small
+	EndFont
+End
+
+InsetLayout "Flex:PDF-Markup"
+	CopyStyle             "Flex:PDF-Margin"
+	LabelString           "PDF (Markup)"
+	LatexName             pdfmarkupcomment
+	Argument post:1
+	  LabelString         "Comment"
+	  Mandatory           1
+	  ToolTip             "Insert the comment to the marked-up text here"
+	EndArgument
+End
+
+InsetLayout "Flex:PDF-Freetext"
+	CopyStyle             "Flex:PDF-Margin"
+	LabelString           "PDF (Freetext)"
+	LatexName             pdffreetextcomment
+End
+
+InsetLayout "Flex:PDF-Square"
+	CopyStyle             "Flex:PDF-Margin"
+	LabelString           "PDF (Square)"
+	LatexName             pdfsquarecomment
+End
+
+InsetLayout "Flex:PDF-Circle"
+	CopyStyle             "Flex:PDF-Margin"
+	LabelString           "PDF (Circle)"
+	LatexName             pdfcirclecomment
+End
+
+InsetLayout "Flex:PDF-Line"
+	CopyStyle             "Flex:PDF-Margin"
+	LabelString           "PDF (Line)"
+	LatexName             pdflinecomment
+End
+
+InsetLayout "Flex:PDF-Sideline"
+	CopyStyle             "Flex:PDF-Margin"
+	LabelString           "PDF (Sideline)"
+	LatexType             environment
+	LatexName             pdfsidelinecomment
+	MultiPar              true
+	Argument 2
+	  LabelString         "Comment"
+	  Mandatory           1
+	  ToolTip             "Insert the comment here"
+	EndArgument
+End
+
+InsetLayout "Flex:PDF-Reply"
+	CopyStyle             "Flex:PDF-Margin"
+	LabelString           "PDF (Reply)"
+	LatexName             pdfreply
+	LabelFont
+	  Color               blue
+	  Size                Small
+	EndFont
+End
+
+InsetLayout "Flex:PDF-Tooltip"
+	CopyStyle             "Flex:PDF-Markup"
+	LabelString           "PDF (Tooltip)"
+	LatexName             pdftooltip
+	LabelFont
+	  Color               red
+	  Size                Small
+	EndFont
+	Argument post:1
+	  MenuString          "Tooltip Text"
+	  LabelString         "Tooltip"
+	  Mandatory           1
+	  ToolTip             "Insert the tooltip text here"
+	EndArgument
+End
+
+
+#
+# List of Annotations
+#
+
+Style List_of_PDF_Comments
+	KeepEmpty	1
+	LatexType	Command
+	LatexName	listofpdfcomments
+	Margin		First_Dynamic
+	NextNoIndent	1
+	ParSkip		0
+	TopSep		0
+	BottomSep	0.25
+	ParSep		0
+	Align		Center
+	LabelType	Static
+	LabelBottomSep	0
+	LeftMargin	MMMMM
+	LabelString	"[LIST of PDF Comments]"
+
+	LabelFont 
+	    Family	typewriter
+	    Series	Medium
+	    Size	Small
+	    Color	latex
+	EndFont
+
+	Argument 1
+		LabelString	"Opts"
+		MenuString	"List Options|s"
+		Tooltip		"Insert list options here (see pdfcomment manual)"
+	EndArgument
+	Requires              pdfcomment
+End
