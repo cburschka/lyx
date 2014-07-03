@@ -2010,6 +2010,7 @@ dist_layouts_DATA =\
 	layouts/numreport.inc \
 	layouts/numrevtex.inc \
 	layouts/paper.layout \
+	layouts/pdfcomment.module \
 	layouts/powerdot.layout \
 	layouts/RJournal.layout \
 	layouts/recipebook.layout \
