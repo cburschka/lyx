@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-07-02 18:44+0200\n"
-"PO-Revision-Date: 2014-07-02 19:56+0200\n"
+"POT-Creation-Date: 2014-07-03 13:41+0200\n"
+"PO-Revision-Date: 2014-07-03 17:23+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -3741,7 +3741,7 @@ msgstr "&Strana:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:94
 msgid "On which side should line numbers be printed?"
-msgstr "Na ktorej strane by mali byť vytlačené čísla riadkov ?"
+msgstr "Na ktorej strane by mali byť vytlačené čísla riadkov?"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:119
 msgid "S&tep:"
@@ -9035,7 +9035,7 @@ msgstr "Titul záhlavia:"
 
 #: lib/layouts/sigplanconf.layout:116
 msgid "PreprintFooter"
-msgstr "PredtlačPäta"
+msgstr "PredtlačPäty"
 
 #: lib/layouts/sigplanconf.layout:119
 msgid "Preprint footer:"
@@ -9132,7 +9132,7 @@ msgstr "Logo:"
 
 #: lib/layouts/scrlttr2.layout:340
 msgid "EndLetter"
-msgstr "KoniecDopis"
+msgstr "KoniecDopisu"
 
 #: lib/layouts/scrlttr2.layout:353
 msgid "End of letter"
@@ -10218,7 +10218,7 @@ msgstr "Kluwer"
 
 #: lib/layouts/kluwer.layout:202
 msgid "AddressForOffprints"
-msgstr "Adresa_pre_výtlačky"
+msgstr "AdresaPreVýtlačky"
 
 #: lib/layouts/kluwer.layout:210
 msgid "Address for Offprints:"
@@ -11387,7 +11387,7 @@ msgstr "Záznam:"
 
 #: lib/layouts/moderncv.layout:358
 msgid "ItemWithComment"
-msgstr "Prvok:Komentár"
+msgstr "PrvokSKomentárom"
 
 #: lib/layouts/moderncv.layout:361
 msgid "Item with Comment:"
@@ -11459,23 +11459,23 @@ msgstr "Počítač"
 
 #: lib/layouts/moderncv.layout:438
 msgid "MakeCVtitle"
-msgstr "VydaťCVTitul"
+msgstr "VytvoriťCVTitul"
 
 #: lib/layouts/moderncv.layout:441
 msgid "Make CV Title"
-msgstr "Vydať CV Titul"
+msgstr "Vytvoriť CV Titul"
 
 #: lib/layouts/moderncv.layout:448
 msgid "MakeLetterTitle"
-msgstr "VydaťTitulListu"
+msgstr "VytvoriťTitulListu"
 
 #: lib/layouts/moderncv.layout:451
 msgid "Make Letter Title"
-msgstr "Vydať Titul Listu"
+msgstr "Vytvoriť Titul Listu"
 
 #: lib/layouts/moderncv.layout:455
 msgid "MakeLetterClosing"
-msgstr "VydaťZáverListu"
+msgstr "VytvoriťZáverListu"
 
 #: lib/layouts/moderncv.layout:458
 msgid "Close Letter"
@@ -12146,11 +12146,11 @@ msgstr "Identifikačný riadok:"
 
 #: lib/layouts/agu_stdtitle.inc:231
 msgid "Runhead"
-msgstr "HlavičkaStĺpcu"
+msgstr "HlavičkaStĺpca"
 
 #: lib/layouts/agu_stdtitle.inc:234
 msgid "Runhead:"
-msgstr "HlavičkaStĺpcu:"
+msgstr "HlavičkaStĺpca:"
 
 #: lib/layouts/agu_stdtitle.inc:242
 msgid "Published-online:"
@@ -13134,7 +13134,7 @@ msgstr "Záhlavie Rámiku Sekcie"
 
 #: lib/layouts/sectionbox.module:31
 msgid "Insert the section box header here"
-msgstr "Vložiť sem návestie rámiku sekcie"
+msgstr "Vložte sem návestie rámiku sekcie"
 
 #: lib/layouts/sectionbox.module:39
 msgid "SubsectionBox"
@@ -13375,6 +13375,22 @@ msgstr "Noweb"
 #: lib/layouts/noweb.module:5
 msgid "Allows to use Noweb as a literate programming tool."
 msgstr "Dovoľuje použiť Noweb ako nástroj pre \"literate programming\"."
+
+#: lib/layouts/pdfcomment.module:2
+msgid "PDF Comments"
+msgstr "PDF Komentáre"
+
+#: lib/layouts/pdfcomment.module:6
+msgid ""
+"Provides various kinds of annotations for the PDF output. The module uses "
+"the pdcomment package. Please consult the package documentation for details."
+msgstr ""
+"Poskytuje rôzne druhy poznámok pre PDF výstup. Tento modul používa balík "
+"pdfcomment. Pre detaily pozrite na dokumentáciu balíka."
+
+#: lib/layouts/pdfcomment.module:14
+msgid "PDF-Annotation"
+msgstr "PDF-Anotácie"
 
 #: lib/layouts/theorems-sec-bytype.module:2
 msgid "Theorems (Numbered by Type within Sections)"
@@ -14889,7 +14905,7 @@ msgstr "Japonsky (pLaTeX) (SJIS)"
 
 #: lib/encodings:206
 msgid "Japanese (pLaTeX) (UTF8)"
-msgstr "Japonsky (pLaTeX) (EUC-JP)"
+msgstr "Japonsky (pLaTeX) (UTF8)"
 
 #: lib/encodings:213
 msgid "Thai (TIS 620-0)"
@@ -22603,7 +22619,7 @@ msgstr ""
 "LaTeX balík undertilde použiť len v prípade, keď sa vo formulách nájdu aj "
 "dekorácie 'utilde'"
 
-#: src/BufferParams.cpp:624
+#: src/BufferParams.cpp:619
 #, c-format
 msgid ""
 "The selected document class\n"
@@ -22619,7 +22635,7 @@ msgstr ""
 "Vybraná trieda dokumentu\n"
 "\t%1$s\n"
 "požaduje nedostupné externé súbory.\n"
-"Dokumentná trieda sa stále dá používať, ale LyX\n"
+"Dokumentová trieda sa stále dá používať, ale LyX\n"
 "nebude schopný zrobiť výstup pokiaľ sú\n"
 "nasledujúce predpoklady neinštalované:\n"
 "\t%2$s\n"
@@ -25702,6 +25718,126 @@ msgstr "LinkBack PDF"
 #: src/frontends/qt4/GuiClipboard.cpp:174
 msgid "PDF"
 msgstr "PDF"
+
+#: lib/layouts/pdfcomment.module:26
+msgid "PDFComment Options"
+msgstr "Voľby PDFKomentárov"
+
+#: lib/layouts/pdfcomment.module:27 lib/layouts/pdfcomment.module:146
+msgid "Opts"
+msgstr "Voľby"
+
+#: lib/layouts/pdfcomment.module:28
+msgid "Insert PDFComment options here (see pdfcomment manual)"
+msgstr "Tu sa vložia voľby pre PDFKomentáre (viď pdfcomment manuál)"
+
+#: lib/layouts/pdfcomment.module:33
+msgid "PDF-Margin"
+msgstr "PDF-Okraj"
+
+#: lib/layouts/pdfcomment.module:35
+msgid "PDF (Margin)"
+msgstr "PDF (Okraj)"
+
+#: lib/layouts/pdfcomment.module:43
+msgid "PDF-Markup"
+msgstr "PDF-Prirážka"
+
+#: lib/layouts/pdfcomment.module:45
+msgid "PDF (Markup)"
+msgstr "PDF (Prirážka)"
+
+#: lib/layouts/pdfcomment.module:50
+msgid "Insert the comment to the marked-up text here"
+msgstr "Vložte sem komentár prirážky"
+
+#: lib/layouts/pdfcomment.module:54
+msgid "PDF-Freetext"
+msgstr "PDF-Voľnýtext"
+
+#: lib/layouts/pdfcomment.module:56
+msgid "PDF (Freetext)"
+msgstr "PDF (Voľnýtext)"
+
+#: lib/layouts/pdfcomment.module:60
+msgid "PDF-Square"
+msgstr "PDF-Kocka"
+
+#: lib/layouts/pdfcomment.module:62
+msgid "PDF (Square)"
+msgstr "PDF (Kocka)"
+
+#: lib/layouts/pdfcomment.module:66
+msgid "PDF-Circle"
+msgstr "PDF-Kruh"
+
+#: lib/layouts/pdfcomment.module:68
+msgid "PDF (Circle)"
+msgstr "PDF (Kruh)"
+
+#: lib/layouts/pdfcomment.module:72
+msgid "PDF-Line"
+msgstr "PDF-Čiarka"
+
+#: lib/layouts/pdfcomment.module:74
+msgid "PDF (Line)"
+msgstr "PDF (Čiarka)"
+
+#: lib/layouts/pdfcomment.module:78
+msgid "PDF-Sideline"
+msgstr "PDF-Postrannáčiarka"
+
+#: lib/layouts/pdfcomment.module:80
+msgid "PDF (Sideline)"
+msgstr "PDF (Postrannáčiarka)"
+
+#: lib/layouts/pdfcomment.module:87
+msgid "Insert the comment here"
+msgstr "Vložte sem komentár"
+
+#: lib/layouts/pdfcomment.module:91
+msgid "PDF-Reply"
+msgstr "PDF-Odpoveď"
+
+#: lib/layouts/pdfcomment.module:93
+msgid "PDF (Reply)"
+msgstr "PDF (Odpoveď)"
+
+#: lib/layouts/pdfcomment.module:101
+msgid "PDF-Tooltip"
+msgstr "PDF-PomocnýNávrh"
+
+#: lib/layouts/pdfcomment.module:103
+msgid "PDF (Tooltip)"
+msgstr "PDF (PomocnýNávrh)"
+
+#: lib/layouts/pdfcomment.module:110
+msgid "Tooltip Text"
+msgstr "PomocnýNávrh Text"
+
+#: lib/layouts/pdfcomment.module:111
+msgid "Tooltip"
+msgstr "PomocnýNávrh"
+
+#: lib/layouts/pdfcomment.module:113
+msgid "Insert the tooltip text here"
+msgstr "Vložte sem text pre pomocný návrh"
+
+#: lib/layouts/pdfcomment.module:122
+msgid "List of PDF Comments"
+msgstr "Zoznam PDF Komentárov"
+
+#: lib/layouts/pdfcomment.module:136
+msgid "[LIST of PDF Comments]"
+msgstr "[Zoznam PDF Komentárov]"
+
+#: lib/layouts/pdfcomment.module:147
+msgid "List Options|s"
+msgstr "Voľby Listiny"
+
+#: lib/layouts/pdfcomment.module:148
+msgid "Insert list options here (see pdfcomment manual)"
+msgstr "Vložte sem voľby listiny (viď pdfcomment manuál)"
 
 #: src/frontends/qt4/GuiClipboard.cpp:176
 msgid "JPEG"
@@ -29824,6 +29960,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "text here"
+#~ msgstr "Vložte sem text pre pomocný návrh"
 
 #~ msgid ""
 #~ "Cannot find temporary filename for:\n"
