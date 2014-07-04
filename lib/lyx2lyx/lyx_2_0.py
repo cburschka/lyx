@@ -317,11 +317,33 @@ def revert_backgroundcolor(document):
         '\\pagecolor{page_backgroundcolor}'])
 
 
-def revert_splitindex(document):
-    " Reverts splitindex-aware documents "
+def add_use_indices(document):
+    " Add \\use_indices if it is missing "
     i = find_token(document.header, '\\use_indices', 0)
+    if i != -1:
+        return i
+    i = find_token(document.header, '\\use_bibtopic', 0)
+    if i == -1:
+        i = find_token(document.header, '\\cite_engine', 0)
+    if i == -1:
+        i = find_token(document.header, '\\use_mathdots', 0)
+    if i == -1:
+        i = find_token(document.header, '\\use_mhchem', 0)
+    if i == -1:
+        i = find_token(document.header, '\\use_esint', 0)
+    if i == -1:
+        i = find_token(document.header, '\\use_amsmath', 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\use_indices.")
+        return -1
+    document.header.insert(i + 1, '\\use_indices 0')
+    return i + 1
+
+
+def revert_splitindex(document):
+    " Reverts splitindex-aware documents "
+    i = add_use_indices(document)
+    if i == -1:
         return
     useindices = str2bool(get_value(document.header, "\\use_indices", i))
     del document.header[i]
@@ -398,6 +420,7 @@ def revert_splitindex(document):
 
 def convert_splitindex(document):
     " Converts index and printindex insets to splitindex-aware format "
+    add_use_indices(document)
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset Index", i)
@@ -422,9 +445,8 @@ def convert_splitindex(document):
 
 def revert_subindex(document):
     " Reverts \\printsubindex CommandInset types "
-    i = find_token(document.header, '\\use_indices', 0)
+    i = add_use_indices(document)
     if i == -1:
-        document.warning("Malformed LyX document: Missing \\use_indices.")
         return
     useindices = str2bool(get_value(document.header, "\\use_indices", i))
     i = 0
@@ -448,9 +470,8 @@ def revert_subindex(document):
 
 def revert_printindexall(document):
     " Reverts \\print[sub]index* CommandInset types "
-    i = find_token(document.header, '\\use_indices', 0)
+    i = add_use_indices(document)
     if i == -1:
-        document.warning("Malformed LyX document: Missing \\use_indices.")
         return
     useindices = str2bool(get_value(document.header, "\\use_indices", i))
     i = 0

@@ -409,9 +409,15 @@ def revert_japanese_encodings(document):
 
 def convert_justification(document):
     " Add the \\justification buffer param"
-    i = find_token(document.header, "\\use_indices" , 0)
+    i = find_token(document.header, "\\suppress_date" , 0)
     if i == -1:
-        document.warning("Malformed LyX document: Missing \\use_indices.")
+        i = find_token(document.header, "\\paperorientation" , 0)
+    if i == -1:
+        i = find_token(document.header, "\\use_indices" , 0)
+    if i == -1:
+        i = find_token(document.header, "\\use_bibtopic" , 0)
+    if i == -1:
+        document.warning("Malformed LyX document: Missing \\suppress_date.")
         return
     document.header.insert(i + 1, "\\justification true")
 

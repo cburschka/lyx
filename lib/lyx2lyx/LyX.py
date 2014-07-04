@@ -720,6 +720,7 @@ class File(LyX_base):
         self.read()
 
 
+# FIXME: header settings are completely outdated, don't use like this
 #class NewFile(LyX_base):
 #    " This class is to create new LyX files."
 #    def set_header(self, **params):
@@ -748,6 +749,7 @@ class File(LyX_base):
 #            "\\use_amsmath 1",
 #            "\\cite_engine basic",
 #            "\\use_bibtopic false",
+#            "\\use_indices false",
 #            "\\paperorientation portrait",
 #            "\\secnumdepth 3",
 #            "\\tocdepth 3",
