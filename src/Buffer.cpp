@@ -3738,9 +3738,9 @@ int AutoSaveBuffer::generateChild()
 	tempfile.setAutoRemove(false);
 	FileName const tmp_ret = tempfile.name();
 	if (!tmp_ret.empty()) {
-		buffer_.writeFile(tmp_ret);
-		// assume successful write of tmp_ret
-		if (!tmp_ret.moveTo(fname_))
+		if (!buffer_.writeFile(tmp_ret))
+			failed = true;
+		else if (!tmp_ret.moveTo(fname_))
 			failed = true;
 	} else
 		failed = true;
