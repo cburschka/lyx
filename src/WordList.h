@@ -17,6 +17,9 @@
 namespace lyx {
 
 class WordList {
+	// noncopyable because of pimpl
+	WordList(WordList const &);
+	WordList & operator=(WordList const &);
 public:
 	///
 	WordList();
