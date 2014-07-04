@@ -18,6 +18,8 @@
 #include "support/lassert.h"
 #include "support/weighted_btree.h"
 
+#include <QThreadStorage>
+
 #include <map>
 
 using namespace std;
@@ -26,26 +28,37 @@ namespace lyx {
 
 ///
 typedef map<string, WordList *> GlobalWordList;
-GlobalWordList theGlobalWordList;
+// Each thread uses its own word list, but only the one of the GUI thread is
+// used to do real work. The others are only neded to prevent simultanous
+// write access e.g. from a cloned buffer and a true document buffer.
+QThreadStorage<GlobalWordList *> theGlobalWordList;
 
 
 WordList * theWordList(string const & lang)
 {
-	GlobalWordList::iterator it = theGlobalWordList.find(lang);
-	if (it != theGlobalWordList.end())
+	if (!theGlobalWordList.hasLocalData())
+		theGlobalWordList.setLocalData(new GlobalWordList);
+	GlobalWordList * globalWordList = theGlobalWordList.localData();
+	GlobalWordList::iterator it = globalWordList->find(lang);
+	if (it != globalWordList->end())
 		return it->second;
-	else
-		theGlobalWordList[lang] = new WordList;
-	return theGlobalWordList[lang];
+	else {
+		WordList * wl = new WordList;
+		(*globalWordList)[lang] = wl;
+		return wl;
+	}
 }
 
 
 void WordList::cleanupWordLists()
 {
-	GlobalWordList::const_iterator it = theGlobalWordList.begin();
-	for (; it != theGlobalWordList.end(); ++it)
+	if (!theGlobalWordList.hasLocalData())
+		return;
+	GlobalWordList * globalWordList = theGlobalWordList.localData();
+	GlobalWordList::const_iterator it = globalWordList->begin();
+	for (; it != globalWordList->end(); ++it)
 		delete it->second;
-	theGlobalWordList.clear();
+	globalWordList->clear();
 }
 
 
