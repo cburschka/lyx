@@ -27,6 +27,7 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
+#include "support/mutex.h"
 
 #include "frontends/alert.h"
 
@@ -348,9 +349,7 @@ docstring getLaTeXMarkup(docstring const & macro, docstring const & author,
 	if (macro.empty())
 		return docstring();
 
-	// FIXME THREAD
-	static docstring warned_author = docstring();
-	docstring uncodable_author = warned_author;
+	docstring uncodable_author;
 	odocstringstream ods;
 
 	ods << macro;
@@ -367,8 +366,12 @@ docstring getLaTeXMarkup(docstring const & macro, docstring const & author,
 	ods << author_latexed.first << "}{" << chgTime << "}{";
 
 	// warn user (once) if we found uncodable glyphs.
-	if (uncodable_author != warned_author) {
-		frontend::Alert::warning(_("Uncodable character in author name"),
+	if (!uncodable_author.empty()) {
+		static std::set<docstring> warned_authors;
+		static Mutex warned_mutex;
+		Mutex::Locker locker(&warned_mutex);
+		if (warned_authors.find(uncodable_author) == warned_authors.end()) {
+			frontend::Alert::warning(_("Uncodable character in author name"),
 				support::bformat(_("The author name '%1$s',\n"
 				  "used for change tracking, contains the following glyphs that\n"
 				  "cannot be represented in the current encoding: %2$s.\n"
@@ -376,7 +379,8 @@ docstring getLaTeXMarkup(docstring const & macro, docstring const & author,
 				  "Choose an appropriate document encoding (such as utf8)\n"
 				  "or change the spelling of the author name."),
 				uncodable_author, author_latexed.second));
-		warned_author = uncodable_author;
+			warned_authors.insert(uncodable_author);
+		}
 	}
 
 	return ods.str();
