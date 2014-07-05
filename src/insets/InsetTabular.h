@@ -610,7 +610,7 @@ public:
 		///
 		CellData(CellData const &);
 		///
-		CellData & operator=(CellData);
+		CellData & operator=(CellData const &);
 		///
 		void swap(CellData & rhs);
 		///

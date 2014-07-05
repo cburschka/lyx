@@ -602,9 +602,29 @@ Tabular::CellData::CellData(CellData const & cs)
 {
 }
 
-Tabular::CellData & Tabular::CellData::operator=(CellData cs)
+Tabular::CellData & Tabular::CellData::operator=(CellData const & cs)
 {
-	swap(cs);
+	if (&cs == this)
+		return *this;
+	cellno = cs.cellno;
+	width = cs.width;
+	multicolumn = cs.multicolumn;
+	multirow = cs.multirow;
+	mroffset = cs.mroffset;
+	alignment = cs.alignment;
+	valignment = cs.valignment;
+	decimal_hoffset = cs.decimal_hoffset;
+	decimal_width = cs.decimal_width;
+	voffset = cs.voffset;
+	top_line = cs.top_line;
+	bottom_line = cs.bottom_line;
+	left_line = cs.left_line;
+	right_line = cs.right_line;
+	usebox = cs.usebox;
+	rotate = cs.rotate;
+	align_special = cs.align_special;
+	p_width = cs.p_width;
+	inset.reset(static_cast<InsetTableCell *>(cs.inset->clone()));
 	return *this;
 }
 
