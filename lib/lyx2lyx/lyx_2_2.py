@@ -275,6 +275,23 @@ def revert_smash(document):
         j = k
 
 
+def revert_swissgerman(document):
+    " Set language german-ch-old to german "
+    i = 0
+    if document.language == "german-ch-old":
+        document.language = "german"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language german"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang german-ch-old", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang german-ch-old", "\\lang german")
+        j = j + 1
+
+
 ##
 # Conversion hub
 #
@@ -286,9 +303,11 @@ convert = [
            # did not load amsmath automatically for these commands, and do not
            # want to hardcode amsmath off.
            [476, []],
+           [477, []],
           ]
 
 revert =  [
+           [476, [revert_swissgerman]],
            [475, [revert_smash]],
            [474, [revert_separator]]
           ]

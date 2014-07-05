@@ -491,17 +491,18 @@ Language german-ch
 	LangCode         de_CH
 End
 
-# This is now supported, but requires a file format change
-# Language german-ch-old
-# 	GuiName          "German (Switzerland, old spelling)"
-# 	BabelName        swissgerman
-# 	PolyglossiaName  german
-# 	PolyglossiaOpts  "spelling=old,babelshorthands=true"
-## 	PolyglossiaOpts  "variant=swiss,spelling=old,babelshorthands=true"
-# 	QuoteStyle       danish
-# 	Encoding         iso8859-15
-# 	LangCode         de_CH
-# End
+# In Babel, this is supported since release 2.7 of babel-german (Dec 2013)
+# Polyglossia does not yet support Swiss German. We use german for now.
+Language german-ch-old
+	GuiName          "German (Switzerland, old spelling)"
+ 	BabelName        swissgerman
+ 	PolyglossiaName  german
+ 	PolyglossiaOpts  "spelling=old,babelshorthands=true"
+# 	PolyglossiaOpts  "variant=swiss,spelling=old,babelshorthands=true"
+ 	QuoteStyle       danish
+ 	Encoding         iso8859-15
+ 	LangCode         de_CH
+End
 
 Language greek
 	GuiName           "Greek"
