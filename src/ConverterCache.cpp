@@ -223,6 +223,7 @@ ConverterCache::~ConverterCache()
 }
 
 
+// FIXME THREAD
 ConverterCache & ConverterCache::get()
 {
 	// Now return the cache
