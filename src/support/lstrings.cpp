@@ -1458,7 +1458,7 @@ docstring bformat(docstring const & fmt, char const * arg1, docstring arg2)
 	LATTEST(contains(fmt, from_ascii("%1$s")));
 	LATTEST(contains(fmt, from_ascii("%2$s")));
 	docstring str = subst(fmt, from_ascii("%1$s"), from_ascii(arg1));
-	str = subst(fmt, from_ascii("%2$s"), arg2);
+	str = subst(str, from_ascii("%2$s"), arg2);
 	return subst(str, from_ascii("%%"), from_ascii("%"));
 }
 
