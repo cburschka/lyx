@@ -97,6 +97,7 @@
 #include "support/gzstream.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
+#include "support/mutex.h"
 #include "support/os.h"
 #include "support/Package.h"
 #include "support/PathChanger.h"
@@ -353,13 +354,20 @@ private:
 /// Creates the per buffer temporary directory
 static FileName createBufferTmpDir()
 {
-	// FIXME THREAD
-	static int count;
+	// FIXME This would be the ideal application for a TempDir class (like
+	//       TempFile but for directories) 
+	string counter;
+	{
+		static int count;
+		static Mutex mutex;
+		Mutex::Locker locker(&mutex);
+		counter = convert<string>(count++);
+	}
 	// We are in our own directory.  Why bother to mangle name?
 	// In fact I wrote this code to circumvent a problematic behaviour
 	// (bug?) of EMX mkstemp().
 	FileName tmpfl(package().temp_dir().absFileName() + "/lyx_tmpbuf" +
-		convert<string>(count++));
+		counter);
 
 	if (!tmpfl.createDirectory(0777)) {
 		throw ExceptionMessage(WarningException, _("Disk Error: "), bformat(
