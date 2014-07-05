@@ -1904,7 +1904,7 @@ PrefFileformats::PrefFileformats(GuiPreferences * form)
 
 namespace {
 
-string const l10n_shortcut(string const prettyname, string const shortcut)
+string const l10n_shortcut(string const & prettyname, string const & shortcut)
 {
 	if (shortcut.empty())
 		return string();

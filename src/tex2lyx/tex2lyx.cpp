@@ -205,7 +205,7 @@ typedef map<string, DocumentClassPtr> ModuleMap;
 ModuleMap modules;
 
 
-bool addModule(string const module, LayoutFile const & baseClass, LayoutModuleList & m, vector<string> & visited)
+bool addModule(string const & module, LayoutFile const & baseClass, LayoutModuleList & m, vector<string> & visited)
 {
 	// avoid endless loop for circular dependency
 	vector<string>::const_iterator const vb = visited.begin();

@@ -831,7 +831,7 @@ ParagraphList::const_iterator findLastParagraph(
 
 
 ParagraphList::const_iterator findEndOfEnvironment(
-		ParagraphList::const_iterator const pstart,
+		ParagraphList::const_iterator const & pstart,
 		ParagraphList::const_iterator const & pend)
 {
 	ParagraphList::const_iterator p = pstart;

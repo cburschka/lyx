@@ -141,7 +141,7 @@ public:
 		* Returns repaired string. For the time being only newlines
 		* are checked.
 		*/
-	std::string quoted_options_check(std::string const str) const;
+	std::string quoted_options_check(std::string const & str) const;
 	
 	
 	/**

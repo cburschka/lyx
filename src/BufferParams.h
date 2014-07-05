@@ -180,7 +180,7 @@ public:
 	std::string getDefaultOutputFormat() const;
 	/// return the output flavor of \p format or the default
 	OutputParams::FLAVOR getOutputFlavor(
-		  std::string const format = std::string()) const;
+		  std::string const & format = std::string()) const;
 	///
 	bool isExportable(std::string const & format) const;
 	///
@@ -207,7 +207,7 @@ public:
 	Font const getFont() const;
 
 	/// translate quote style string to enum value
-	InsetQuotes::QuoteLanguage getQuoteStyle(std::string const qs) const;
+	InsetQuotes::QuoteLanguage getQuoteStyle(std::string const & qs) const;
 
 	/* these are for the PaperLayout */
 	/// the papersize

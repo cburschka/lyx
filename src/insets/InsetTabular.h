@@ -770,9 +770,9 @@ public:
 	///
 	// helper function for Latex
 	///
-	void TeXTopHLine(otexstream &, row_type row, std::string const lang) const;
+	void TeXTopHLine(otexstream &, row_type row, std::string const & lang) const;
 	///
-	void TeXBottomHLine(otexstream &, row_type row, std::string const lang) const;
+	void TeXBottomHLine(otexstream &, row_type row, std::string const & lang) const;
 	///
 	void TeXCellPreamble(otexstream &, idx_type cell, bool & ismulticol, bool & ismultirow) const;
 	///
@@ -1029,7 +1029,7 @@ private:
 std::string const featureAsString(Tabular::Feature feature);
 
 /// Split cell on decimal symbol
-InsetTableCell splitCell(InsetTableCell & head, docstring const decimal_sym, bool & hassep);
+InsetTableCell splitCell(InsetTableCell & head, docstring const & decimal_sym, bool & hassep);
 
 } // namespace lyx
 

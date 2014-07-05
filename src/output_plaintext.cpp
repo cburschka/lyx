@@ -217,7 +217,7 @@ void writePlaintextParagraph(Buffer const & buf,
 		switch (c) {
 		case ' ':
 			os << ' ';
-			currlinelen++;
+			++currlinelen;
 			break;
 
 		case '\0':

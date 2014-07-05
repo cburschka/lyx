@@ -653,7 +653,7 @@ BufferParams const & Buffer::masterParams() const
 	// Copy child authors to the params. We need those pointers.
 	AuthorList const & child_authors = params().authors();
 	AuthorList::Authors::const_iterator it = child_authors.begin();
-	for (; it != child_authors.end(); it++)
+	for (; it != child_authors.end(); ++it)
 		mparams.authors().record(*it);
 	return mparams;
 }
@@ -3507,7 +3507,7 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to)
 }
 
 
-void Buffer::getSourceCode(odocstream & os, string const format,
+void Buffer::getSourceCode(odocstream & os, string const & format,
 			   pit_type par_begin, pit_type par_end,
 			   OutputWhat output, bool master) const
 {

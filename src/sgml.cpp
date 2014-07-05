@@ -102,7 +102,7 @@ docstring sgml::escapeString(docstring const & raw)
 }
 
 
-docstring const sgml::uniqueID(docstring const label)
+docstring const sgml::uniqueID(docstring const & label)
 {
 	// FIXME THREAD
 	// It seems unlikely there could be a problem here,

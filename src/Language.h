@@ -64,11 +64,11 @@ public:
 	/// language code
 	std::string const & code() const { return code_; }
 	/// set code (needed for rc.spellchecker_alt_lang)
-	void setCode(std::string const c) { code_ = c; }
+	void setCode(std::string const & c) { code_ = c; }
 	/// language variety (needed by aspell checker)
 	std::string const & variety() const { return variety_; }
 	/// set variety (needed for rc.spellchecker_alt_lang)
-	void setVariety(std::string const v) { variety_ = v; }
+	void setVariety(std::string const & v) { variety_ = v; }
 	/// preamble settings after babel was called
 	std::string const & babel_postsettings() const { return babel_postsettings_; }
 	/// preamble settings before babel is called

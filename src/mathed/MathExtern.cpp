@@ -1197,7 +1197,7 @@ namespace {
 			istringstream is(out);
 			string line;
 			getline(is, line);
-			if (line.find("on line") != 0)
+			if (!prefixIs(line, "on line"))
 				break; // error message not identified
 			getline(is, line);
 			size_t pos = line.find('^');

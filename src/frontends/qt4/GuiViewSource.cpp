@@ -94,7 +94,7 @@ static size_t crcCheck(docstring const & s)
 	\return true if the content has changed since last call.
  */
 static bool getContent(BufferView const * view, Buffer::OutputWhat output,
-		       QString & qstr, string const format, bool force_getcontent,
+		       QString & qstr, string const & format, bool force_getcontent,
 		       bool master)
 {
 	// get the *top* level paragraphs that contain the cursor,

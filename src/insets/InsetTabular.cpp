@@ -262,7 +262,7 @@ string const tostr(Tabular::BoxType const & num)
 
 
 // I would have liked a fromstr template a lot better. (Lgb)
-bool string2type(string const str, LyXAlignment & num)
+bool string2type(string const & str, LyXAlignment & num)
 {
 	if (str == "none")
 		num = LYX_ALIGN_NONE;
@@ -282,7 +282,7 @@ bool string2type(string const str, LyXAlignment & num)
 }
 
 
-bool string2type(string const str, Tabular::HAlignment & num)
+bool string2type(string const & str, Tabular::HAlignment & num)
 {
 	if (str == "left")
 		num = Tabular::LYX_LONGTABULAR_ALIGN_LEFT;
@@ -296,7 +296,7 @@ bool string2type(string const str, Tabular::HAlignment & num)
 }
 
 
-bool string2type(string const str, Tabular::VAlignment & num)
+bool string2type(string const & str, Tabular::VAlignment & num)
 {
 	if (str == "top")
 		num = Tabular::LYX_VALIGN_TOP;
@@ -310,7 +310,7 @@ bool string2type(string const str, Tabular::VAlignment & num)
 }
 
 
-bool string2type(string const str, Tabular::BoxType & num)
+bool string2type(string const & str, Tabular::BoxType & num)
 {
 	if (str == "none")
 		num = Tabular::BOX_NONE;
@@ -324,7 +324,7 @@ bool string2type(string const str, Tabular::BoxType & num)
 }
 
 
-bool string2type(string const str, bool & num)
+bool string2type(string const & str, bool & num)
 {
 	if (str == "true")
 		num = true;
@@ -534,7 +534,7 @@ DocIterator separatorPos(InsetTableCell * cell, docstring const & align_d)
 }
 
 
-InsetTableCell splitCell(InsetTableCell & head, docstring const align_d, bool & hassep)
+InsetTableCell splitCell(InsetTableCell & head, docstring const & align_d, bool & hassep)
 {
 	InsetTableCell tail = InsetTableCell(head);
 	DocIterator const dit = separatorPos(&head, align_d);
@@ -2164,7 +2164,7 @@ bool Tabular::isPartOfMultiRow(row_type row, col_type column) const
 }
 
 
-void Tabular::TeXTopHLine(otexstream & os, row_type row, string const lang) const
+void Tabular::TeXTopHLine(otexstream & os, row_type row, string const & lang) const
 {
 	// we only output complete row lines and the 1st row here, the rest
 	// is done in Tabular::TeXBottomHLine(...)
@@ -2226,7 +2226,7 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, string const lang) cons
 }
 
 
-void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const lang) const
+void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const & lang) const
 {
 	// we output bottomlines of row r and the toplines of row r+1
 	// if the latter do not span the whole tabular

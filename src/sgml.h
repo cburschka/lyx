@@ -37,7 +37,7 @@ docstring cleanID(Buffer const & buf, OutputParams const & runparams,
 		    docstring const & orig);
 
 /// returns a unique numeric id
-docstring const uniqueID(docstring const label);
+docstring const uniqueID(docstring const & label);
 
 /// Opens tag
 void openTag(odocstream & os, std::string const & name,

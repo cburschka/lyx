@@ -34,7 +34,7 @@ public:
 	///
 	typedef std::string base_type;
 	///
-	LayoutFileIndex(base_type t) { data_ = t; }
+	LayoutFileIndex(base_type const & t) : data_(t) { }
 	///
 	operator base_type() const { return data_; }
 	///

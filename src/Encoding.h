@@ -59,9 +59,9 @@ class CharInfo {
 public:
 	CharInfo() : flags_(0) {}
 	CharInfo(
-		docstring const textcommand, docstring const mathcommand,
-		std::string const textpreamble, std::string const mathpreamble,
-		std::string const tipashortcut, unsigned int flags);
+		docstring const & textcommand, docstring const & mathcommand,
+		std::string const & textpreamble, std::string const & mathpreamble,
+		std::string const & tipashortcut, unsigned int flags);
 	// we assume that at least one command is nonempty when using unicodesymbols
 	bool isUnicodeSymbol() const { return !textcommand_.empty() || !mathcommand_.empty(); }
 	/// LaTeX command (text mode) for this character
@@ -164,7 +164,7 @@ public:
 	 * \p dryrun specifies whether the string is used within source
 	 * preview (which yields a special warning).
 	 */
-	std::pair<docstring, docstring> latexString(docstring const input,
+	std::pair<docstring, docstring> latexString(docstring const & input,
 						    bool dryrun = false) const;
 	/// Which LaTeX package handles this encoding?
 	Package package() const { return package_; }

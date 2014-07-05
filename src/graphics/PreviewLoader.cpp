@@ -68,7 +68,7 @@ FileName const unique_tex_filename(FileName const & bufferpath)
 }
 
 
-lyx::Converter const * setConverter(string const from)
+lyx::Converter const * setConverter(string const & from)
 {
 	typedef vector<string> FmtList;
 	typedef lyx::graphics::Cache GCache;

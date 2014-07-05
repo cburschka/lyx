@@ -36,7 +36,7 @@ using namespace lyx::support;
 
 namespace {
 
-string const guiErrorType(string const s)
+string const guiErrorType(string const & s)
 {
 	if (s == "docbook")
 		return N_("DocBook");

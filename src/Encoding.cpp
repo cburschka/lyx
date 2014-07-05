@@ -257,9 +257,9 @@ const char * EncodingException::what() const throw()
 
 
 CharInfo::CharInfo(
-	docstring const textcommand, docstring const mathcommand,
-	std::string const textpreamble, std::string const mathpreamble,
-	std::string const tipashortcut, unsigned int flags)
+	docstring const & textcommand, docstring const & mathcommand,
+	std::string const & textpreamble, std::string const & mathpreamble,
+	std::string const & tipashortcut, unsigned int flags)
 	: textcommand_(textcommand), mathcommand_(mathcommand),
 	  textpreamble_(textpreamble), mathpreamble_(mathpreamble),
 	  tipashortcut_(tipashortcut), flags_(flags)
@@ -380,7 +380,7 @@ pair<docstring, bool> Encoding::latexChar(char_type c) const
 }
 
 
-pair<docstring, docstring> Encoding::latexString(docstring const input, bool dryrun) const
+pair<docstring, docstring> Encoding::latexString(docstring const & input, bool dryrun) const
 {
 	docstring result;
 	docstring uncodable;

@@ -2280,7 +2280,7 @@ vector<string> BufferParams::backends() const
 }
 
 
-OutputParams::FLAVOR BufferParams::getOutputFlavor(string const format) const
+OutputParams::FLAVOR BufferParams::getOutputFlavor(string const & format) const
 {
 	string const dformat = (format.empty() || format == "default") ?
 		getDefaultOutputFormat() : format;
@@ -2362,7 +2362,7 @@ Font const BufferParams::getFont() const
 }
 
 
-InsetQuotes::QuoteLanguage BufferParams::getQuoteStyle(string const qs) const
+InsetQuotes::QuoteLanguage BufferParams::getQuoteStyle(string const & qs) const
 {
 	return quoteslangtranslator().find(qs);
 }
