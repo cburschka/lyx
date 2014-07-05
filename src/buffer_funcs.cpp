@@ -47,6 +47,7 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/mutex.h"
 #include "support/textutils.h"
 
 using namespace std;
@@ -172,9 +173,10 @@ Buffer * newFile(string const & filename, string const & templatename,
 Buffer * newUnnamedFile(FileName const & path, string const & prefix,
 						string const & templatename)
 {
-	// FIXME THREAD
 	static map<string, int> file_number;
+	static Mutex mutex;
 
+	Mutex::Locker locker(&mutex);
 	FileName filename;
 
 	do {
