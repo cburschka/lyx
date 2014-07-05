@@ -66,7 +66,7 @@ public:
 	void closeAll();
 
 	/// returns a vector with all the buffers filenames
-	support::FileNameList const & fileNames() const;
+	support::FileNameList fileNames() const;
 
 	/// return true if no buffers loaded
 	bool empty() const;
