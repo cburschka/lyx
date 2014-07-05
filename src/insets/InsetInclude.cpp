@@ -60,6 +60,7 @@
 #include "support/lassert.h"
 #include "support/lstrings.h" // contains
 #include "support/lyxalgo.h"
+#include "support/mutex.h"
 
 #include "support/bind.h"
 
@@ -75,8 +76,9 @@ namespace {
 
 docstring const uniqueID()
 {
-	// FIXME THREAD
 	static unsigned int seed = 1000;
+	static Mutex mutex;
+	Mutex::Locker lock(&mutex);
 	return "file" + convert<docstring>(++seed);
 }
 
