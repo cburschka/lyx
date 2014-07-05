@@ -332,7 +332,7 @@ void MathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 	if (isUpdating_)
 		return;
 
-	UpdateLocker(*this);
+	UpdateLocker locker(*this);
 
 	// known macro?
 	if (macro_ == 0)
