@@ -1,6 +1,6 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 2.1.1.
+This file describes what has been done in the preparation of LyX 2.1.2.
 All comments are welcome.
 
 We try to group things by topic and in decreasing order of importance. 
@@ -13,7 +13,7 @@ For more details on how to use the repository, please visit:
   http://wiki.lyx.org/Devel/LyXGit
 A list of bugs fixed for this release can also be found at:
   http://www.lyx.org/trac/wiki/BugTrackerHome
-as well as a list of bugs still targeted to the 2.1.1 release.
+as well as a list of bugs still targeted to the 2.1.2 release.
 
 Richard Heck
 Branch Maintainer
@@ -28,13 +28,6 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- We now flush the output stream more frequently, as a temporary measure
-  to help us gather information about the crash mentioned above.
-
-- To prevent dataloss, we have changed the way LyX saves files if the user
-  has not enabled backups. LyX now renames the existing file before 
-  attempting to save the new one (in effect, making a temporary backup). 
-  Then, if the save fails, the original file can be restored.
 
 
 * TEX2LYX IMPROVEMENTS
@@ -47,10 +40,6 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Updated Chinese (simplified), French, Interlingua, Japanese, Spanish,
-  Swedish and Ukrainian user interface localizations.
-
-- updated French translation of thr UserGuide and the Math manual
 
 
 * BUILD/INSTALLATION
@@ -62,115 +51,18 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix assertion when selecting in document with bi-directional text (bug 9142).
-
-- Fix assertion when accepting change (bug 9145).
-
-- Fix LaTeX error with alphabetic delimiters in inline Listings (part of bug
-  8985).
-
-- Fix output of deleted citations in change tracking mode (bug 8806).
-
-- Fix handling of multiple bibliography styles when using sectioned bibliography
-  (bug 9060).
-
-- Fix problem converting layout files and modules when Flex inset names are
-  quoted.
-
-- Honor the NextNoIndent layout parameter also in the exported output.
-
-- Output arguments required by arguments with DefaultArg or PresetArg (bug 9128).
-
-- Fix export from command line when included files have names with non-ascii
-  characters.
 
 
 * LYX2LYX
 
-We have fixed several significant issues involving conversion of 2.0 format into 
-2.1 format, and conversely. This mostly affects the new argument insets and, in 
-particular, beamer documents. These are detailed below.
-
-- Fix conversion of beamer block titles ending with non-ERT insets to 2.1 format.
-
-- Fix conversion of beamer blocks with preceding or trailing blanks.
-
-- Add \justification parameter when converting to 2.1 format (avoids
-  warning when converting back to 2.0 format).
-
-- Fix conversion of argument insets from 2.1 to 2.0 format.
-
-- Fix "use math package" settings conversion from 2.1 to 2.0 format.
-
-- Fix "use math package" settings conversion from 2.0 to 2.1 format (bug 9069).
-
-- Fix table cell rotation conversion from 2.1 to 2.0 format.
-
-- Fix import of some argument insets.
-
-- Fix some nesting problems in reversion of some beamer environments to 2.0 format.
 
 
 * USER INTERFACE
 
-- Fix crash when right-clicking into an insets with more paragraphs than the
-  main text (bug 9123).
-
-- Fix crash when entering math in change-tracking mode while merge changes
-  dialog is open (bug 7685).
-
-- Fix crash when CheckTeX hits mathed (bug 8798).
-
-- Fix crash when performing "Change Case" operation on a selection with font
-  changes (bug 7943).
-
-- Fix crash involving certain sorts of BibTeX files (bug 9112).
-
-- Fix assertion when entering a path into the import dialog (bug 7437).
-
-- Fix assertion when doing advanced replace with table cells selected (bug
-  7944).
-
-- Failed instant preview compilation now returns an error. And a red box is 
-  drawn around very small preview images, so they can be seen (bug 7522).
-
-- Fix "Select Section" function in the Outliner (bug 8936).
-
-- Fix select-by-doubleclick in mathed (bug 8829).
-
-- Make selection by mouse drag more reliable in mathed (bug 9074).
-
-- Fix undo with many individual changes (e.g. with replace all)
-  (bug 7079).
-
-- Fix problem with display of citation information when a whole lot of
-  entries are cited at once (bug 9131).
-
-- Do not spellcheck "code" style in logical markup module.
-
-- Fix invalid writing of default_otf_view_format preference (bug 9100).
-
-- Open View > Source Pane at a reasonable size (bug 9084). The downside of
-  this fix is that the Source Pane cannot be shrunken ad infinitum anymore.
-
-- Fix problem with drawing of background in math when selection is active.
-
-- Fix wrong on-screen indentation of a paragraph occurring in some cases.
-
-- Fix keyborad input of cyrillic characters in program listings (bug 9102).
-
-- Fix default vertical alignment when inserting a math matrix through the
-  math toolbar or context menu (bug 9153).
 
 
 * INTERNALS
 
-- Fix a problem when PATH changes and python command is relative (bug 8950).
-
-- Reduce memory use with large documents.
-
-- Disable a console message when loading a document in a language for
-  which the UI is not translated.
  
 
 * DOCUMENTATION AND LOCALIZATION
@@ -191,10 +83,4 @@ particular, beamer documents. These are detailed below.
 
 * BUILD/INSTALLATION
 
-- Fix bad compare of pointer vs. character (part of bug 8985).
-
-- With autotools, avoid installing in Windows and MacOS some files intented
-  for the unix builds.
-
-- Fix minor issue in script that extracts strings for GUI translation (bug 9054).
 
