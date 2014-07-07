@@ -427,8 +427,13 @@ void LaTeXFeatures::require(set<string> const & names)
 
 void LaTeXFeatures::useLayout(docstring const & layoutname)
 {
+	useLayout(layoutname, 0);
+}
+
+
+void LaTeXFeatures::useLayout(docstring const & layoutname, int level)
+{
 	// Some code to avoid loops in dependency definition
-	static int level = 0;
 	const int maxlevel = 30;
 	if (level > maxlevel) {
 		lyxerr << "LaTeXFeatures::useLayout: maximum level of "
@@ -448,9 +453,7 @@ void LaTeXFeatures::useLayout(docstring const & layoutname)
 		require(layout.requires());
 
 		if (!layout.depends_on().empty()) {
-			++level;
-			useLayout(layout.depends_on());
-			--level;
+			useLayout(layout.depends_on(), level + 1);
 		}
 		usedLayouts_.push_back(layoutname);
 	} else {
@@ -458,8 +461,6 @@ void LaTeXFeatures::useLayout(docstring const & layoutname)
 		       << to_utf8(layoutname) << "' does not exist in this class"
 		       << endl;
 	}
-
-	--level;
 }
 
 
