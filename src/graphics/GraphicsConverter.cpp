@@ -25,6 +25,7 @@
 #include "support/os.h"
 
 #include "support/bind.h"
+#include "support/TempFile.h"
 
 #include <sstream>
 #include <fstream>
@@ -142,9 +143,9 @@ Converter::Impl::Impl(FileName const & from_file, string const & to_file_base,
 		<< "\n--------------------------------------\n");
 
 	// Output the script to file.
-	static int counter = 0;
-	script_file_ = FileName(onlyPath(to_file_base) + "lyxconvert" +
-		convert<string>(counter++) + ".py");
+	TempFile tempfile(to_file_.onlyPath(), "lyxconvertXXXXXX.py");
+	tempfile.setAutoRemove(false);
+	script_file_ = tempfile.name();
 
 	ofstream fs(script_file_.toFilesystemEncoding().c_str());
 	if (!fs.good()) {
@@ -288,15 +289,16 @@ static void build_script(string const & from_file,
 
 	// Create a temporary base file-name for all intermediate steps.
 	// Remember to remove the temp file because we only want the name...
-	static int counter = 0;
-	string const tmp = "gconvert" + convert<string>(counter++);
-	string const to_base = FileName::tempName(tmp).toFilesystemEncoding();
+	string const from_ext = getExtension(from_file);
+	TempFile tempfile(addExtension("gconvertXXXXXX", from_ext));
+	tempfile.setAutoRemove(false);
+	string outfile = tempfile.name().toFilesystemEncoding();
+	string const to_base = from_ext.empty() ? outfile : removeExtension(outfile);
 
 	// Create a copy of the file in case the original name contains
 	// problematic characters like ' or ". We can work around that problem
 	// in python, but the converters might be shell scripts and have more
 	// troubles with it.
-	string outfile = addExtension(to_base, getExtension(from_file));
 	script << "infile = "
 			<< quoteName(from_file, quote_python)
 			<< "\n"
@@ -365,8 +367,9 @@ static void build_script(string const & from_file,
 
 		// If two formats share the same extension we may get identical names
 		if (outfile == infile && conv.result_file.empty()) {
-			string const new_base = FileName::tempName(tmp).toFilesystemEncoding();
-			outfile = addExtension(new_base, conv.To->extension());
+			TempFile tempfile(addExtension("gconvertXXXXXX", conv.To->extension()));
+			tempfile.setAutoRemove(false);
+			outfile = tempfile.name().toFilesystemEncoding();
 		}
 
 		// Store these names in the python script
