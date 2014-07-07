@@ -68,8 +68,6 @@ public:
 	explicit Length(std::string const & data);
 
 	///
-	void swap(Length & rhs);
-	///
 	double value() const;
 	///
 	Length::UNIT unit() const;

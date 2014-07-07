@@ -612,8 +612,6 @@ public:
 		///
 		CellData & operator=(CellData const &);
 		///
-		void swap(CellData & rhs);
-		///
 		idx_type cellno;
 		///
 		int width;

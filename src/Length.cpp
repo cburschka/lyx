@@ -57,13 +57,6 @@ Length::Length(string const & data)
 }
 
 
-void Length::swap(Length & rhs)
-{
-	std::swap(val_, rhs.val_);
-	std::swap(unit_, rhs.unit_);
-}
-
-
 string const Length::asString() const
 {
 	ostringstream os;

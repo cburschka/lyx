@@ -628,30 +628,6 @@ Tabular::CellData & Tabular::CellData::operator=(CellData const & cs)
 	return *this;
 }
 
-void Tabular::CellData::swap(CellData & rhs)
-{
-	std::swap(cellno, rhs.cellno);
-	std::swap(width, rhs.width);
-	std::swap(multicolumn, rhs.multicolumn);
-	std::swap(multirow, rhs.multirow);
-	std::swap(mroffset, rhs.mroffset);
-	std::swap(alignment, rhs.alignment);
-	std::swap(valignment, rhs.valignment);
-	std::swap(decimal_hoffset, rhs.decimal_hoffset);
-	std::swap(decimal_width, rhs.decimal_width);
-	std::swap(voffset, rhs.voffset);
-	std::swap(top_line, rhs.top_line);
-	std::swap(bottom_line, rhs.bottom_line);
-	std::swap(left_line, rhs.left_line);
-	std::swap(right_line, rhs.right_line);
-	std::swap(usebox, rhs.usebox);
-	std::swap(rotate, rhs.rotate);
-	std::swap(align_special, rhs.align_special);
-	p_width.swap(rhs.p_width);
-	inset.swap(rhs.inset);
-}
-
-
 Tabular::RowData::RowData()
 	: ascent(0),
 	  descent(0),
