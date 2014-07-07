@@ -35,6 +35,8 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
+#include <QThreadStorage>
+
 #include <algorithm>
 #include <boost/next_prior.hpp>
 #include <list>
@@ -53,9 +55,28 @@ enum OpenEncoding {
 	CJK
 };
 
-static int open_encoding_ = none;
-static int cjk_inherited_ = 0;
-Language const * prev_env_language_ = 0;
+
+struct OutputState
+{
+	OutputState() : open_encoding_(none), cjk_inherited_(0),
+		        prev_env_language_(0)
+	{
+	}
+	int open_encoding_;
+	int cjk_inherited_;
+	Language const * prev_env_language_;
+};
+
+
+OutputState * getOutputState()
+{
+	// FIXME An instance of OutputState should be kept around for each export
+	//       instead of using local thread storage
+	static QThreadStorage<OutputState *> outputstate;
+	if (!outputstate.hasLocalData())
+		outputstate.setLocalData(new OutputState);
+	return outputstate.localData();
+}
 
 
 string const getPolyglossiaEnvName(Language const * lang)
@@ -97,7 +118,8 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 	ParagraphList::const_iterator const priorpit =
 		pit == paragraphs.begin() ? pit : boost::prior(pit);
 
-	bool const use_prev_env_language = prev_env_language_ != 0
+	OutputState * state = getOutputState();
+	bool const use_prev_env_language = state->prev_env_language_ != 0
 			&& priorpit->layout().isEnvironment()
 			&& (priorpit->getDepth() > pit->getDepth()
 			    || (priorpit->getDepth() == pit->getDepth()
@@ -108,7 +130,7 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 	Language const * const doc_language = bparams.language;
 	Language const * const prev_par_language =
 		(pit != paragraphs.begin())
-		? (use_prev_env_language ? prev_env_language_
+		? (use_prev_env_language ? state->prev_env_language_
 					 : priorpit->getParLanguage(bparams))
 		: doc_language;
 
@@ -187,11 +209,11 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 	// in multilingual environments, the CJK tags have to be nested properly
 	data.cjk_nested = false;
 	if (data.par_language->encoding()->package() == Encoding::CJK &&
-	    open_encoding_ != CJK && pit->isMultiLingual(bparams)) {
+	    state->open_encoding_ != CJK && pit->isMultiLingual(bparams)) {
 		if (prev_par_language->encoding()->package() == Encoding::CJK)
 			os << "\\begin{CJK}{" << from_ascii(data.par_language->encoding()->latexName())
 			   << "}{" << from_ascii(bparams.fonts_cjk) << "}%\n";
-		open_encoding_ = CJK;
+		state->open_encoding_ = CJK;
 		data.cjk_nested = true;
 	}
 	return data;
@@ -201,16 +223,17 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 			      TeXEnvironmentData const & data)
 {
-	if (open_encoding_ == CJK && data.cjk_nested) {
+	OutputState * state = getOutputState();
+	if (state->open_encoding_ == CJK && data.cjk_nested) {
 		// We need to close the encoding even if it does not change
 		// to do correct environment nesting
 		os << "\\end{CJK}\n";
-		open_encoding_ = none;
+		state->open_encoding_ = none;
 	}
 
 	if (data.style->isEnvironment()) {
 		os << "\\end{" << from_ascii(data.style->latexname()) << "}\n";
-		prev_env_language_ = data.par_language;
+		state->prev_env_language_ = data.par_language;
 		if (runparams.encoding != data.prev_encoding) {
 			runparams.encoding = data.prev_encoding;
 			if (!runparams.isFullUnicode())
@@ -220,7 +243,7 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 
 	if (data.leftindent_open) {
 		os << "\\end{LyXParagraphLeftIndent}\n";
-		prev_env_language_ = data.par_language;
+		state->prev_env_language_ = data.par_language;
 		if (runparams.encoding != data.prev_encoding) {
 			runparams.encoding = data.prev_encoding;
 			if (!runparams.isFullUnicode())
@@ -565,10 +588,11 @@ void TeXOnePar(Buffer const & buf,
 	bool const maintext = text.isMainText();
 	// we are at the beginning of an inset and CJK is already open;
 	// we count inheritation levels to get the inset nesting right.
+	OutputState * state = getOutputState();
 	if (pit == 0 && !maintext
-	    && (cjk_inherited_ > 0 || open_encoding_ == CJK)) {
-		cjk_inherited_ += 1;
-		open_encoding_ = none;
+	    && (state->cjk_inherited_ > 0 || state->open_encoding_ == CJK)) {
+		state->cjk_inherited_ += 1;
+		state->open_encoding_ = none;
 	}
 
 	if (text.inset().isPassThru()) {
@@ -631,7 +655,7 @@ void TeXOnePar(Buffer const & buf,
 	// environment with nesting depth greater than (or equal to, but with
 	// a different layout) the current one. If there is no previous
 	// paragraph, the previous language is the outer language.
-	bool const use_prev_env_language = prev_env_language_ != 0
+	bool const use_prev_env_language = state->prev_env_language_ != 0
 			&& priorpar
 			&& priorpar->layout().isEnvironment()
 			&& (priorpar->getDepth() > par.getDepth()
@@ -639,7 +663,7 @@ void TeXOnePar(Buffer const & buf,
 				    && priorpar->layout() != par.layout()));
 	Language const * const prev_language =
 		(pit != 0)
-		? (use_prev_env_language ? prev_env_language_
+		? (use_prev_env_language ? state->prev_env_language_
 					 : priorpar->getParLanguage(bparams))
 		: outer_language;
 
@@ -780,10 +804,10 @@ void TeXOnePar(Buffer const & buf,
 			// the following is necessary after a CJK environment in a multilingual
 			// context (nesting issue).
 			if (par_language->encoding()->package() == Encoding::CJK
-				&& open_encoding_ != CJK && cjk_inherited_ == 0) {
+				&& state->open_encoding_ != CJK && state->cjk_inherited_ == 0) {
 				os << "\\begin{CJK}{" << from_ascii(par_language->encoding()->latexName())
 				   << "}{" << from_ascii(bparams.fonts_cjk) << "}%\n";
-				open_encoding_ = CJK;
+				state->open_encoding_ = CJK;
 			}
 			if (encoding->package() != Encoding::none && enc_switch.first) {
 				if (enc_switch.second > 0) {
@@ -967,19 +991,19 @@ void TeXOnePar(Buffer const & buf,
 	// if this is a CJK-paragraph and the next isn't, close CJK
 	// also if the next paragraph is a multilingual environment (because of nesting)
 	if (nextpar
-		&& open_encoding_ == CJK
+		&& state->open_encoding_ == CJK
 		&& (nextpar->getParLanguage(bparams)->encoding()->package() != Encoding::CJK
 		   || (nextpar->layout().isEnvironment() && nextpar->isMultiLingual(bparams)))
 		// inbetween environments, CJK has to be closed later (nesting!)
 		&& (!style.isEnvironment() || !nextpar->layout().isEnvironment())) {
 		os << "\\end{CJK}\n";
-		open_encoding_ = none;
+		state->open_encoding_ = none;
 	}
 
 	// If this is the last paragraph, close the CJK environment
 	// if necessary. If it's an environment, we'll have to \end that first.
 	if (runparams.isLastPar && !style.isEnvironment()) {
-		switch (open_encoding_) {
+		switch (state->open_encoding_) {
 			case CJK: {
 				// do nothing at the end of child documents
 				if (maintext && buf.masterBuffer() != &buf)
@@ -990,12 +1014,12 @@ void TeXOnePar(Buffer const & buf,
 				// end of an inset
 				} else
 					os << "\\end{CJK}";
-				open_encoding_ = none;
+				state->open_encoding_ = none;
 				break;
 			}
 			case inputenc: {
 				os << "\\egroup";
-				open_encoding_ = none;
+				state->open_encoding_ = none;
 				break;
 			}
 			case none:
@@ -1067,11 +1091,12 @@ void latexParagraphs(Buffer const & buf,
 	// Open a CJK environment at the beginning of the main buffer
 	// if the document's language is a CJK language
 	// (but not in child documents)
+	OutputState * state = getOutputState();
 	if (maintext && !is_child
 	    && bparams.encoding().package() == Encoding::CJK) {
 		os << "\\begin{CJK}{" << from_ascii(bparams.encoding().latexName())
 		<< "}{" << from_ascii(bparams.fonts_cjk) << "}%\n";
-		open_encoding_ = CJK;
+		state->open_encoding_ = CJK;
 	}
 	// if "auto begin" is switched off, explicitly switch the
 	// language on at start
@@ -1193,16 +1218,16 @@ void latexParagraphs(Buffer const & buf,
 
 	// If the last paragraph is an environment, we'll have to close
 	// CJK at the very end to do proper nesting.
-	if (maintext && !is_child && open_encoding_ == CJK) {
+	if (maintext && !is_child && state->open_encoding_ == CJK) {
 		os << "\\end{CJK}\n";
-		open_encoding_ = none;
+		state->open_encoding_ = none;
 	}
 
 	// reset inherited encoding
-	if (cjk_inherited_ > 0) {
-		cjk_inherited_ -= 1;
-		if (cjk_inherited_ == 0)
-			open_encoding_ = CJK;
+	if (state->cjk_inherited_ > 0) {
+		state->cjk_inherited_ -= 1;
+		if (state->cjk_inherited_ == 0)
+			state->open_encoding_ = CJK;
 	}
 }
 
@@ -1241,6 +1266,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 		return make_pair(true, 0);
 
 	docstring const inputenc_arg(from_ascii(newEnc.latexName()));
+	OutputState * state = getOutputState();
 	switch (newEnc.package()) {
 		case Encoding::none:
 		case Encoding::japanese:
@@ -1249,15 +1275,15 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 		case Encoding::inputenc: {
 			int count = inputenc_arg.length();
 			if (oldEnc.package() == Encoding::CJK &&
-			    open_encoding_ == CJK) {
+			    state->open_encoding_ == CJK) {
 				os << "\\end{CJK}";
-				open_encoding_ = none;
+				state->open_encoding_ = none;
 				count += 9;
 			}
 			else if (oldEnc.package() == Encoding::inputenc &&
-				 open_encoding_ == inputenc) {
+				 state->open_encoding_ == inputenc) {
 				os << "\\egroup";
-				open_encoding_ = none;
+				state->open_encoding_ = none;
 				count += 7;
 			}
 			if (runparams.local_font != 0
@@ -1267,7 +1293,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 				// else CJK fails.
 				os << "\\bgroup";
 				count += 7;
-				open_encoding_ = inputenc;
+				state->open_encoding_ = inputenc;
 			}
 			// with the japanese option, inputenc is omitted.
 			if (runparams.use_japanese)
@@ -1278,18 +1304,18 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 		case Encoding::CJK: {
 			int count = inputenc_arg.length();
 			if (oldEnc.package() == Encoding::CJK &&
-			    open_encoding_ == CJK) {
+			    state->open_encoding_ == CJK) {
 				os << "\\end{CJK}";
 				count += 9;
 			}
 			if (oldEnc.package() == Encoding::inputenc &&
-			    open_encoding_ == inputenc) {
+			    state->open_encoding_ == inputenc) {
 				os << "\\egroup";
 				count += 7;
 			}
 			os << "\\begin{CJK}{" << inputenc_arg << "}{"
 			   << from_ascii(bparams.fonts_cjk) << "}";
-			open_encoding_ = CJK;
+			state->open_encoding_ = CJK;
 			return make_pair(true, count + 15);
 		}
 	}
