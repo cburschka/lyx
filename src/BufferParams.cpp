@@ -52,6 +52,7 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/Messages.h"
+#include "support/mutex.h"
 #include "support/Translator.h"
 #include "support/lstrings.h"
 
@@ -447,6 +448,14 @@ map<string, string> const & BufferParams::auto_packages()
 {
 	static map<string, string> packages;
 	if (packages.empty()) {
+		// We could have a race condition here that two threads
+		// discover an empty map at the same time and want to fill
+		// it, but that is no problem, since the same contents is
+		// filled in twice then. Having the locker inside the
+		// packages.empty() condition has the advantage that we
+		// don't need the mutex overhead for simple reading.
+		static Mutex mutex;
+		Mutex::Locker locker(&mutex);
 		// adding a package here implies a file format change!
 		packages["amsmath"] =
 			N_("The LaTeX package amsmath is only used if AMS formula types or symbols from the AMS math toolbars are inserted into formulas");
