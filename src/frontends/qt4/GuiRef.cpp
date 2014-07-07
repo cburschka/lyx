@@ -251,7 +251,7 @@ void GuiRef::updateContents()
 
 	// insert buffer list
 	bufferCO->clear();
-	FileNameList const & buffers = theBufferList().fileNames();
+	FileNameList const buffers(theBufferList().fileNames());
 	for (FileNameList::const_iterator it = buffers.begin();
 	     it != buffers.end(); ++it) {
 		bufferCO->addItem(toqstr(makeDisplayPath(it->absFileName())));
@@ -455,7 +455,8 @@ void GuiRef::updateRefs()
 	refs_.clear();
 	int const the_buffer = bufferCO->currentIndex();
 	if (the_buffer != -1) {
-		FileName const & name = theBufferList().fileNames()[the_buffer];
+		FileNameList const names(theBufferList().fileNames());
+		FileName const & name = names[the_buffer];
 		Buffer const * buf = theBufferList().getBuffer(name);
 		buf->getLabelList(refs_);
 	}

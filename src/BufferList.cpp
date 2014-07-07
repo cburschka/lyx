@@ -154,10 +154,9 @@ void BufferList::closeAll()
 }
 
 
-FileNameList const & BufferList::fileNames() const
+FileNameList BufferList::fileNames() const
 {
-	static FileNameList nvec;
-	nvec.clear();
+	FileNameList nvec;
 	BufferStorage::const_iterator it = bstore.begin();
 	BufferStorage::const_iterator end = bstore.end();
 	for (; it != end; ++it) {
@@ -347,7 +346,7 @@ void BufferList::recordCurrentAuthor(Author const & author)
 
 int BufferList::bufferNum(FileName const & fname) const
 {
-	FileNameList const & buffers = fileNames();
+	FileNameList const buffers(fileNames());
 	FileNameList::const_iterator cit =
 		find(buffers.begin(), buffers.end(), fname);
 	if (cit == buffers.end())
