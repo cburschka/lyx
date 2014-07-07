@@ -41,6 +41,7 @@
 #include "support/docstream.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/mutex.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -49,6 +50,7 @@ namespace lyx {
 
 
 int InsetBibitem::key_counter = 0;
+static Mutex counter_mutex;
 docstring const key_prefix = from_ascii("key-");
 
 
@@ -56,8 +58,10 @@ InsetBibitem::InsetBibitem(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p)
 {
 	buffer().invalidateBibinfoCache();
-	if (getParam("key").empty())
+	if (getParam("key").empty()) {
+		Mutex::Locker lock(&counter_mutex);
 		setParam("key", key_prefix + convert<docstring>(++key_counter));
+	}
 }
 
 
@@ -197,6 +201,7 @@ void InsetBibitem::read(Lexer & lex)
 
 	if (prefixIs(getParam("key"), key_prefix)) {
 		int const key = convert<int>(getParam("key").substr(key_prefix.length()));
+		Mutex::Locker lock(&counter_mutex);
 		key_counter = max(key_counter, key);
 	}
 }
