@@ -17,6 +17,7 @@
 #include "support/filetools.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
+#include "support/mutex.h"
 #include "support/qstring_helpers.h"
 #include "support/os.h"
 #include "support/Package.h"
@@ -929,6 +930,9 @@ string DocFileName::mangledFileName(string const & dir) const
 	// filename returns the same mangled name.
 	typedef map<string, string> MangledMap;
 	static MangledMap mangledNames;
+	static Mutex mangledMutex;
+	// this locks both access to mangledNames and counter below 
+	Mutex::Locker lock(&mangledMutex);
 	MangledMap::const_iterator const it = mangledNames.find(absFileName());
 	if (it != mangledNames.end())
 		return (*it).second;
