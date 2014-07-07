@@ -38,6 +38,7 @@
 #include "support/lstrings.h"
 
 #include "support/bind.h"
+#include "support/TempFile.h"
 
 #include <sstream>
 #include <fstream>
@@ -59,11 +60,11 @@ typedef list<string> PendingSnippets;
 typedef vector<SnippetPair> BitmapFile;
 
 
-string const unique_filename(string const & bufferpath)
+FileName const unique_tex_filename(FileName const & bufferpath)
 {
-	static int theCounter = 0;
-	string const filename = lyx::convert<string>(theCounter++) + "lyxpreview";
-	return addName(bufferpath, filename);
+	TempFile tempfile(bufferpath, "lyxpreviewXXXXXX.tex");
+	tempfile.setAutoRemove(false);
+	return tempfile.name();
 }
 
 
@@ -529,9 +530,10 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	LYXERR(Debug::GRAPHICS, "PreviewLoader::startLoading()");
 
 	// As used by the LaTeX file and by the resulting image files
-	string const directory = buffer_.temppath();
+	FileName const directory(buffer_.temppath());
 
-	string const filename_base = unique_filename(directory);
+	FileName const latexfile = unique_tex_filename(directory);
+	string const filename_base = removeExtension(latexfile.absFileName());
 
 	// Create an InProgress instance to place in the map of all
 	// such processes if it starts correctly.
@@ -541,8 +543,6 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	pending_.clear();
 
 	// Output the LaTeX file.
-	FileName const latexfile(filename_base + ".tex");
-
 	// we use the encoding of the buffer
 	Encoding const & enc = buffer_.params().encoding();
 	ofdocstream of;
