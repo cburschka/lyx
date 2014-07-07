@@ -22,6 +22,7 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/mutex.h"
 #include "support/os.h"
 #include "support/PathChanger.h"
 #include "support/Systemcall.h"
@@ -479,11 +480,13 @@ struct ZippedInfo {
 
 /// Mapping absolute pathnames of files to their ZippedInfo metadata.
 static std::map<std::string, ZippedInfo> zipped_;
+static Mutex zipped_mutex;
 
 
 bool Formats::isZippedFile(support::FileName const & filename) const {
 	string const & fname = filename.absFileName();
 	time_t timestamp = filename.lastModified();
+	Mutex::Locker lock(&zipped_mutex);
 	map<string, ZippedInfo>::iterator it = zipped_.find(fname);
 	if (it != zipped_.end() && it->second.timestamp == timestamp)
 		return it->second.zipped;
