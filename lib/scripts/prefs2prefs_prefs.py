@@ -63,6 +63,13 @@
 #   New RC default_otf_view_format
 #   No conversion necessary.
 
+# Incremented to format 15, by prannoy
+#   Add fullscreen_statusbar
+#   No conversion necessary.
+
+# Incremented to format 16, by lasgouttes
+#  Remove force_paint_single_char rc.
+
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
 
@@ -306,6 +313,17 @@ def mac_cursor_movement(line):
 ####################################
 
 
+#################################
+# Conversions from LyX 2.1 to 2.2
+
+def remove_force_paint_single_char(line):
+	if not line.lower().startswith("\\force_paint_single_char"):
+		return no_match
+	return (True, "")
+
+# End conversions for LyX 2.1 to 2.2
+####################################
+
 conversions = [
 	[  1, [ # there were several conversions for format 1
 		export_menu,
@@ -327,5 +345,6 @@ conversions = [
 	[ 12, []],
 	[ 13, [mac_cursor_movement]],
 	[ 14, []],
-	[ 15, []]
+	[ 15, []],
+	[ 16, [remove_force_paint_single_char]]
 ]
