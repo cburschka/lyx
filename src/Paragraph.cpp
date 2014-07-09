@@ -1928,7 +1928,7 @@ FontSize Paragraph::highestFontInRange
 char_type Paragraph::getUChar(BufferParams const & bparams, pos_type pos) const
 {
 	char_type c = d->text_[pos];
-	if (!lyxrc.rtl_support || !getFontSettings(bparams, pos).isRightToLeft())
+	if (!getFontSettings(bparams, pos).isRightToLeft())
 		return c;
 
 	// FIXME: The arabic special casing is due to the difference of arabic
@@ -3304,8 +3304,7 @@ Paragraph::getParLanguage(BufferParams const & bparams) const
 
 bool Paragraph::isRTL(BufferParams const & bparams) const
 {
-	return lyxrc.rtl_support
-		&& getParLanguage(bparams)->rightToLeft()
+	return getParLanguage(bparams)->rightToLeft()
 		&& !inInset().getLayout().forceLTR();
 }
 

@@ -290,7 +290,7 @@ Font TextMetrics::displayFont(pit_type pit, pos_type pos) const
 
 bool TextMetrics::isRTL(CursorSlice const & sl, bool boundary) const
 {
-	if (!lyxrc.rtl_support || !sl.text())
+	if (!sl.text())
 		return false;
 
 	int correction = 0;
@@ -304,7 +304,7 @@ bool TextMetrics::isRTL(CursorSlice const & sl, bool boundary) const
 bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos) const
 {
 	// no RTL boundary at paragraph start
-	if (!lyxrc.rtl_support || pos == 0)
+	if (pos == 0)
 		return false;
 
 	Font const & left_font = displayFont(pit, pos - 1);
@@ -319,9 +319,8 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos) const
 bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 		Font const & font) const
 {
-	if (!lyxrc.rtl_support
-	    // no RTL boundary at paragraph start
-	    || pos == 0
+	if (// no RTL boundary at paragraph start
+	    pos == 0
 	    // if the metrics have not been calculated, then we are not
 	    // on screen and can safely ignore issues about boundaries.
 	    || !contains(pit))

@@ -146,7 +146,6 @@ public:
 		RC_PRINTTOPRINTER,
 		RC_PRINT_ADAPTOUTPUT,
 		RC_PRINT_COMMAND,
-		RC_RTL_SUPPORT,
 		RC_SAVE_COMPRESSED,
 		RC_SCREEN_DPI,
 		RC_SCREEN_FONT_ROMAN,
@@ -410,8 +409,6 @@ public:
 	};
 	///
 	LangPackageSelection language_package_selection;
-	///
-	bool rtl_support;
 	/// bidi cursor movement: true = visual, false = logical
 	bool visual_cursor;
 	///

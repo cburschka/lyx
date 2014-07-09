@@ -58,7 +58,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 16; // lasgouttes: remove \\force_paint_single_char
+static unsigned int const LYXRC_FILEFORMAT = 17; // lasgouttes: remove \\rtl
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
@@ -170,7 +170,6 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\print_to_file", LyXRC::RC_PRINTTOFILE },
 	{ "\\print_to_printer", LyXRC::RC_PRINTTOPRINTER },
 	{ "\\printer", LyXRC::RC_PRINTER },
-	{ "\\rtl", LyXRC::RC_RTL_SUPPORT },
 	{ "\\save_compressed", LyXRC::RC_SAVE_COMPRESSED },
 	{ "\\screen_dpi", LyXRC::RC_SCREEN_DPI },
 	{ "\\screen_font_roman", LyXRC::RC_SCREEN_FONT_ROMAN },
@@ -313,7 +312,6 @@ void LyXRC::setDefaults()
 	completion_minlength = 6;
 	spellcheck_notes = true;
 	use_kbmap = false;
-	rtl_support = true;
 	visual_cursor = false;
 	auto_number = true;
 	mark_foreign_language = true;
@@ -1041,9 +1039,6 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			break;
 		case RC_LANGUAGE_COMMAND_LOCAL:
 			lexrc >> language_command_local;
-			break;
-		case RC_RTL_SUPPORT:
-			lexrc >> rtl_support;
 			break;
 		case RC_VISUAL_CURSOR:
 			lexrc >> visual_cursor;
@@ -2537,13 +2532,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 
-	case RC_RTL_SUPPORT:
-		if (ignore_system_lyxrc ||
-		    rtl_support != system_lyxrc.rtl_support) {
-			os << "\\rtl " << convert<string>(rtl_support) << '\n';
-		}
-		if (tag != RC_LAST)
-			break;
 	case RC_VISUAL_CURSOR:
 		if (ignore_system_lyxrc ||
 			visual_cursor != system_lyxrc.visual_cursor) {
@@ -3015,7 +3003,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_PRINTTOPRINTER:
 	case LyXRC::RC_PRINT_ADAPTOUTPUT:
 	case LyXRC::RC_PRINT_COMMAND:
-	case LyXRC::RC_RTL_SUPPORT:
 	case LyXRC::RC_SAVE_COMPRESSED:
 	case LyXRC::RC_SCREEN_DPI:
 	case LyXRC::RC_SCREEN_FONT_ROMAN:
@@ -3421,10 +3408,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_PRINT_COMMAND:
 		str = _("Your favorite print program, e.g. \"dvips\", \"dvilj4\".");
-		break;
-
-	case RC_RTL_SUPPORT:
-		str = _("Select to enable support of right-to-left languages (e.g. Hebrew, Arabic).");
 		break;
 
 	case RC_VISUAL_CURSOR:

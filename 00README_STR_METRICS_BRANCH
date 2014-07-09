@@ -50,7 +50,4 @@ What is done:
 * Remove homebrew Arabic and Hebrew support from Encoding.cpp. We now
   rely on Qt to do handle complex scripts.
 
-
-Next steps:
-
-* Maybe get rid of LyXRC::rtl_support, which does not have a real use case.
+* Get rid of LyXRC::rtl_support, which does not have a real use case.
