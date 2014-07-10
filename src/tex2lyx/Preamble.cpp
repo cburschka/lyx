@@ -62,11 +62,12 @@ const char * const known_languages[] = {"acadian", "afrikaans", "albanian",
 "greek", "hebrew", "hungarian", "icelandic", "indon", "indonesian", "interlingua",
 "irish", "italian", "japanese", "kazakh", "kurmanji", "latin", "latvian", "lithuanian",
 "lowersorbian", "lsorbian", "magyar", "malay", "meyalu", "mongolian", "naustrian",
-"newzealand", "ngerman", "ngermanb", "norsk", "nynorsk", "polutonikogreek", "polish",
-"portuges", "portuguese", "romanian", "russian", "russianb", "samin",
-"scottish", "serbian", "serbian-latin", "slovak", "slovene", "spanish",
-"swedish", "thai", "turkish", "turkmen", "ukraineb", "ukrainian",
-"uppersorbian", "UKenglish", "USenglish", "usorbian", "vietnam", "welsh",
+"newzealand", "ngerman", "ngermanb", "norsk", "nswissgerman", "nynorsk",
+"polutonikogreek", "polish", "portuges", "portuguese", "romanian", "russian",
+"russianb", "samin", "scottish", "serbian", "serbian-latin", "slovak",
+"slovene", "spanish", "swedish", "swissgerman", "thai", "turkish", "turkmen",
+"ukraineb", "ukrainian", "uppersorbian", "UKenglish", "USenglish", "usorbian",
+"vietnam", "welsh",
 0};
 
 /**
@@ -82,11 +83,12 @@ const char * const known_coded_languages[] = {"french", "afrikaans", "albanian",
 "greek", "hebrew", "magyar", "icelandic", "bahasa", "bahasa", "interlingua",
 "irish", "italian", "japanese", "kazakh", "kurmanji", "latin", "latvian", "lithuanian",
 "lowersorbian", "lowersorbian", "magyar", "bahasam", "bahasam", "mongolian", "naustrian",
-"newzealand", "ngerman", "ngerman", "norsk", "nynorsk", "polutonikogreek", "polish",
-"portuguese", "portuguese", "romanian", "russian", "russian", "samin",
-"scottish", "serbian", "serbian-latin", "slovak", "slovene", "spanish",
-"swedish", "thai", "turkish", "turkmen", "ukrainian", "ukrainian",
-"uppersorbian", "uppersorbian", "english", "english", "vietnamese", "welsh",
+"newzealand", "ngerman", "ngerman", "norsk", "german-ch", "nynorsk",
+"polutonikogreek", "polish", "portuguese", "portuguese", "romanian", "russian",
+"russian", "samin", "scottish", "serbian", "serbian-latin", "slovak",
+"slovene", "spanish", "swedish", "german-ch-old", "thai", "turkish", "turkmen",
+"ukrainian", "ukrainian", "uppersorbian", "english", "english", "uppersorbian",
+"vietnamese", "welsh",
 0};
 
 /// languages with danish quotes (.lyx names)
@@ -295,6 +297,7 @@ string process_keyval_opt(vector<string> & options, string name)
 
 /**
  * known polyglossia language names (including variants)
+ * FIXME: support spelling=old for german variants (german vs. ngerman LyX names etc)
  */
 const char * const Preamble::polyglossia_languages[] = {
 "albanian", "croatian", "hebrew", "norsk", "swedish", "amharic", "czech", "hindi",
@@ -306,7 +309,7 @@ const char * const Preamble::polyglossia_languages[] = {
 "brazil", "brazilian", "finnish", "lithuanian", "scottish", "usorbian", "breton", 
 "french", "lsorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar",
 "slovak", "welsh", "catalan", "german", "malayalam", "slovenian", "coptic", "greek",
-"marathi", "spanish",
+"marathi", "spanish", "austrian",
 "american", "ancient", "australian", "british", "monotonic", "newzealand",
 "polytonic", 0};
 
@@ -324,7 +327,7 @@ const char * const Preamble::coded_polyglossia_languages[] = {
 "brazilian", "brazilian", "finnish", "lithuanian", "scottish", "uppersorbian", "breton",
 "french", "lowersorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar",
 "slovak", "welsh", "catalan", "ngerman", "malayalam", "slovene", "coptic", "greek",
-"marathi", "spanish",
+"marathi", "spanish", "naustrian",
 "american", "ancientgreek", "australian", "british", "greek", "newzealand",
 "polutonikogreek", 0};
 
