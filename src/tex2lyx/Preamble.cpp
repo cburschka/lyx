@@ -424,7 +424,8 @@ bool scale_as_percentage(string const & scale, string & percentage)
 	if (pos != string::npos) {
 		string value = scale.substr(pos + 1);
 		if (isStrDbl(value)) {
-			percentage = convert<string>(100 * convert<double>(value));
+			percentage = convert<string>(
+				static_cast<int>(100 * convert<double>(value)));
 			return true;
 		}
 	}

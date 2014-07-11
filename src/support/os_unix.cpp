@@ -49,6 +49,7 @@ void init(int argc, char * argv[])
 
 	// Set environment's default locale
 	setlocale(LC_ALL, "");
+	setlocale(LC_NUMERIC, "C");
 }
 
 
