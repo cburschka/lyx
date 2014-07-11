@@ -259,8 +259,9 @@ string const LaTeXFont::getPackageOptions(bool ot1, bool complete, bool sc, bool
 	    && providesScale(ot1, complete, nomath)) {
 		if (!os.str().empty())
 			os << ',';
-		os << subst(to_ascii(scaleoption_), "$$val",
-			    convert<std::string>(float(scale) / 100));
+		ostringstream value;
+		value << float(scale) / 100;
+		os << subst(to_ascii(scaleoption_), "$$val", value.str());
 	}
 	return os.str();
 }
