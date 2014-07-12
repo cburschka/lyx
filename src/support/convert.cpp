@@ -17,6 +17,7 @@
 #include <boost/lexical_cast.hpp>
 
 #include <string>
+#include <sstream>
 //needed for Mac OSX 10.5.2 Leopard
 #include <cstdlib>
 
@@ -106,14 +107,18 @@ docstring convert<docstring>(long l)
 template<>
 string convert<string>(float f)
 {
-	return lexical_cast<string>(f);
+	std::ostringstream val;
+	val << f;
+	return val.str();
 }
 
 
 template<>
 string convert<string>(double d)
 {
-	return lexical_cast<string>(d);
+	std::ostringstream val;
+	val << d;
+	return val.str();
 }
 
 
