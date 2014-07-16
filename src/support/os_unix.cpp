@@ -23,6 +23,7 @@
 #include "support/lassert.h"
 
 #include <limits.h>
+#include <locale.h>
 #include <stdlib.h>
 
 #ifdef __APPLE__
