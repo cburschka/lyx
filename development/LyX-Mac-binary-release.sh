@@ -47,7 +47,7 @@ HunspellConfigureOptions="--with-warnings --disable-nls --disable-static"
 Qt4ConfigureOptions="${QtConfigureOptions} -opensource -silent -shared -fast -no-exceptions"
 Qt4ConfigureOptions="${Qt4ConfigureOptions} -no-webkit -no-qt3support -no-javascript-jit -no-dbus"
 Qt4ConfigureOptions="${Qt4ConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
-Qt4DmgSuffix=qt4${Qt4API}.dmg
+QtMajorVersion=qt4
 
 # stupid special case...
 case "${Qt4Version}:${Qt4API}" in
@@ -57,10 +57,10 @@ case "${Qt4Version}:${Qt4API}" in
 	Qt4ConfigureOptions="${QtConfigureOptions} -opensource -silent -shared -fast -no-strip"
 	Qt4ConfigureOptions="${Qt4ConfigureOptions} -no-javascript-jit -no-pkg-config"
 	Qt4ConfigureOptions="${Qt4ConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
-	Qt4DmgSuffix=qt5${Qt4API}.dmg
+	QtMajorVersion=qt5
 	;;
 5.*)
-	Qt4DmgSuffix=qt5${Qt4API}.dmg
+	QtMajorVersion=qt5
 	;;
 *)
 	Qt4ConfigureOptions="${Qt4ConfigureOptions} ${Qt4API}"
@@ -123,15 +123,21 @@ usage() {
 	echo " --with-arch=ARCH ..........." default ppc,i386
 	echo " --with-build-path=PATH ....." default \${lyx-src-dir}/../lyx-build
 	echo " --with-dmg-location=PATH ..." default \${build-path}
+	echo " --with-binary-strip=yes ...." default no
 	echo
 	echo "All other arguments with -- are passed to configure"
 	echo "including the defaults: ${LyXConfigureOptions}"
-	if [ -x "${LyxSourceDir}/configure" ]; then
-		echo
-		echo "*" Configure options of LyX
-		echo
-		"${LyxSourceDir}/configure" --help
-	fi
+	case "${1}" in
+	--help=short)
+		;;
+	*)
+		if [ -x "${LyxSourceDir}/configure" ]; then
+			echo
+			echo "*" Configure options of LyX
+			echo
+			"${LyxSourceDir}/configure" --help
+		fi
+	esac
 	exit 0
 }
 
@@ -208,12 +214,16 @@ while [ $# -gt 0 ]; do
 		DMGLocation=$(echo ${1}|cut -d= -f2)
 		shift
 		;;
+	--with-binary-strip=yes)
+		strip="-strip"
+		shift
+		;;
 	--with-build-path=*)
 		LyxBuildDir=$(echo ${1}|cut -d= -f2)
 		shift
 		;;
 	--help|--help=*)
-		usage
+		usage "${1}"
 		;;
 	--without-aspell)
 		LyXConfigureOptions="${LyXConfigureOptions} ${1}"
@@ -245,7 +255,6 @@ fi
 
 ARCH_LIST=${ARCH_LIST:-"ppc i386"}
 
-strip="-strip"
 aspellstrip=
 
 LyxBuildDir=${LyxBuildDir:-$(dirname "${LyxSourceDir}")/lyx-build}
@@ -887,12 +896,18 @@ build_package() {
 		cd "${LyxAppPrefix}" && zip -r "${LyxAppZip}" .
 	)
 
+	DMGARCH=""
+	for arch in ${ARCH_LIST} ; do
+		DMGARCH="${DMGARCH}-${arch}"
+	done
+	QtDmgArchSuffix=${QtMajorVersion}${DMGARCH}${Qt4API}.dmg
+
 	test -n "${DMGLocation}" && (
 		make_dmg "${DMGLocation}"
 		if [ -d "${QtInstallDir}/lib/QtCore.framework/Versions/${QtFrameworkVersion}" -a "yes" = "${qt4_deployment}" ]; then
-			rm -f "${DMGLocation}/${DMGNAME}+${Qt4DmgSuffix}"
-			echo move to "${DMGLocation}/${DMGNAME}+${Qt4DmgSuffix}"
-			mv "${DMGLocation}/${DMGNAME}.dmg" "${DMGLocation}/${DMGNAME}+${Qt4DmgSuffix}"
+			rm -f "${DMGLocation}/${DMGNAME}+${QtDmgArchSuffix}"
+			echo move to "${DMGLocation}/${DMGNAME}+${QtDmgArchSuffix}"
+			mv "${DMGLocation}/${DMGNAME}.dmg" "${DMGLocation}/${DMGNAME}+${QtDmgArchSuffix}"
 		fi
 	)
 }
