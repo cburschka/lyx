@@ -111,7 +111,7 @@ tex2lyx_SOURCES = \
 tex2lyx_LDADD = \
 	$(top_builddir)/src/support/liblyxsupport.a \
 	$(LIBICONV) $(BOOST_LIBS) \
-	$(QT4_LIB) $(QT4_LDFLAGS) \
+	$(QT_LIB) $(QT_LDFLAGS) \
 	@LIBS@ $(LIBSHLWAPI) $(LIBPSAPI)
 
 if INSTALL_MACOSX

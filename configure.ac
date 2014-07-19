@@ -36,7 +36,7 @@ m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 PACKAGE=$save_PACKAGE
 
 # Allow to build some parts of the code as one big chunk
-m4_define([ALLPARTS],[boost,client,insets,mathed,core,tex2lyx,frontend_qt4])
+m4_define([ALLPARTS],[boost,client,insets,mathed,core,tex2lyx,frontend_qt])
 AC_ARG_ENABLE(monolithic-build,
   AC_HELP_STRING([--enable-monolithic-build@<:@=LIST@:>@],
 		[Use monolithic build for modules in LIST (default: ALLPARTS)]),
@@ -55,7 +55,7 @@ AM_CONDITIONAL(MONOLITHIC_INSETS, test "x$enable_monolithic_insets" = "xyes")
 AM_CONDITIONAL(MONOLITHIC_MATHED, test "x$enable_monolithic_mathed" = "xyes")
 AM_CONDITIONAL(MONOLITHIC_CORE, test "x$enable_monolithic_core" = "xyes")
 AM_CONDITIONAL(MONOLITHIC_TEX2LYX, test "x$enable_monolithic_tex2lyx" = "xyes")
-AM_CONDITIONAL(MONOLITHIC_FRONTEND_QT4, test "x$enable_monolithic_frontend_qt4" = "xyes")
+AM_CONDITIONAL(MONOLITHIC_FRONTEND_QT, test "x$enable_monolithic_frontend_qt" = "xyes")
 
 ### Set the execute permissions of the various scripts correctly
 for file in config/install-sh ; do
@@ -128,14 +128,14 @@ AC_CHECK_HEADERS(magic.h,
    is correctly installed on your system.
    Falling back to builtin file format detection.])])
 
-### setup the qt4 frontend.
+### setup the qt frontend.
 dnl The code below is not in a macro, because this would cause big
-dnl problems with the AC_REQUIRE contained in QT4_DO_IT_ALL.
-QT4_DO_IT_ALL([4.5.0])
+dnl problems with the AC_REQUIRE contained in QT_DO_IT_ALL.
+QT_DO_IT_ALL([4.5.0])
 AC_SUBST([FRONTENDS_SUBDIRS], [qt4])
 FRONTEND_INFO="${FRONTEND_INFO}\
-  Qt 4 Frontend:\n\
-      Qt 4 version:\t\t${QT4_VERSION}\n"
+  Qt Frontend:\n\
+      Qt version:\t\t${QTLIB_VERSION}\n"
 
 # fix the value of the prefixes.
 test "x$prefix" = xNONE && prefix=$default_prefix

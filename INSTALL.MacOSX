@@ -166,10 +166,10 @@ adjust some environment variables to do so.
 
    The required compiler flags to compile a Qt4 application has to be provided.
 
-   export QT4_CORE_CFLAGS="-FQtCore"
-   export QT4_CORE_LIBS="-framework QtCore"
-   export QT4_FRONTEND_CFLAGS="-FQtGui"
-   export QT4_FRONTEND_LIBS="-framework QtGui"
+   export QT_CORE_CFLAGS="-FQtCore"
+   export QT_CORE_LIBS="-framework QtCore"
+   export QT_FRONTEND_CFLAGS="-FQtGui"
+   export QT_FRONTEND_LIBS="-framework QtGui"
 
    Depending on the architecture and target os add the compiler flags:
 
@@ -202,7 +202,7 @@ adjust some environment variables to do so.
          --with-libiconv-prefix=/usr \
          --with-x=no \
          --prefix=/path/to/LyX.app \
-         --with-qt4-dir=/path/to/Qt4
+         --with-qt-dir=/path/to/Qt4
      make
      make install-strip
 
@@ -224,7 +224,7 @@ Instead of the instructions above, do the following:
          --with-x=no \
          --disable-stdlib-debug \
          --prefix=/path/to/LyX.app \
-         --with-qt4-dir=/path/to/Qt4
+         --with-qt-dir=/path/to/Qt4
      make
      make install-strip
 
@@ -239,7 +239,7 @@ Please read the script if you're about to make a distributable disk image.
 
 To use it, cd to the top of the LyX source hierarchy, and enter:
 
-   sh development/LyX-Mac-binary-release.sh --with-qt4-dir=/path/to/Qt4
+   sh development/LyX-Mac-binary-release.sh --with-qt-dir=/path/to/Qt4
 
 This script automates all steps of the build process.
 It detects the sources for Qt4, Aspell and Hunspell when placed in a

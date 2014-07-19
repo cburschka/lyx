@@ -8,20 +8,20 @@ CLEANFILES += $(BUILT_SOURCES)
 
 #########################  Qt stuff  #############################
 # Use _() for localization instead of tr() or trUtf8()
-UIC4FLAGS=-tr lyx::qt_
+UICFLAGS=-tr lyx::qt_
 
 # The ui_%.h pattern must match the filter in ../../../po/Rules-lyx
 ui_%.h: ui/%.ui
-	$(AM_V_GEN)$(UIC4) $(UIC4FLAGS) $< -o $@
+	$(AM_V_GEN)$(QT_UIC) $(UICFLAGS) $< -o $@
 
 MOCEDFILES = $(MOCHEADER:%.h=moc_%.cpp)
 
-QT_VERSION = $(shell IFS=.; set -- `echo $(QT4_VERSION)`; \
+QT_VERSION = $(shell IFS=.; set -- `echo $(QTLIB_VERSION)`; \
 	     echo 0x0`echo "obase=16; $$1*65536+$$2*256+$$3" | bc`)
 
 # The moc_%.cpp pattern must match the filter in ../../../po/Rules-lyx
 moc_%.cpp: %.h
-	$(AM_V_GEN)$(MOC4) -DQT_VERSION=$(QT_VERSION) -o $@ $<
+	$(AM_V_GEN)$(QT_MOC) -DQT_VERSION=$(QT_VERSION) -o $@ $<
 
 Resources.qrc: Makefile
 	$(AM_V_GEN)echo "<!DOCTYPE RCC><RCC version='1.0'><qresource>" > $@ ; \
@@ -31,7 +31,7 @@ Resources.qrc: Makefile
 	echo "</qresource></RCC>" >> $@
 
 Resources.cpp: Resources.qrc
-	$(AM_V_GEN)$(RCC4) $< -name Resources -o $@
+	$(AM_V_GEN)$(QT_RCC) $< -name Resources -o $@
 
 
 #########################  LIBRARIES  #############################
@@ -41,13 +41,13 @@ noinst_LIBRARIES = liblyxqt4.a
 liblyxqt4_a_DEPENDENCIES = $(MOCEDFILES)
 
 AM_CPPFLAGS += \
-	$(QT4_CPPFLAGS) \
+	$(QT_CPPFLAGS) \
 	-DQT_NO_CAST_TO_ASCII \
 	-DQT_NO_STL \
 	-I$(top_srcdir)/src \
 	-I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/images \
-	$(QT4_INCLUDES) $(BOOST_INCLUDES)
+	$(QT_INCLUDES) $(BOOST_INCLUDES)
 
 SOURCEFILES = \
 	ButtonPolicy.cpp \
@@ -361,7 +361,7 @@ UIFILES = \
 liblyxqt4.cpp:
 	@echo -e '$(SOURCEFILES:%=\n#include "%")\n' > $@
 
-if MONOLITHIC_FRONTEND_QT4
+if MONOLITHIC_FRONTEND_QT
 
 liblyxqt4_a_SOURCES = \
 	liblyxqt4.cpp \

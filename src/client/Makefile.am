@@ -13,7 +13,7 @@ AM_CPPFLAGS += -I$(srcdir)/.. $(BOOST_INCLUDES)
 lyxclient_LDADD = \
 	$(top_builddir)/src/support/liblyxsupport.a \
 	$(BOOST_LIBS) @LIBS@ $(SOCKET_LIBS) \
-	$(QT4_LIB) $(QT4_LDFLAGS) $(LIBSHLWAPI) $(LIBPSAPI)
+	$(QT_LIB) $(QT_LDFLAGS) $(LIBSHLWAPI) $(LIBPSAPI)
 
 if INSTALL_MACOSX
 lyxclient_LDFLAGS = -framework AppKit

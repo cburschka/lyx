@@ -20,7 +20,7 @@ CLEANFILES += $(MOCEDFILES)
 BUILT_SOURCES += $(MOCEDFILES)
 
 moc_%.cpp: %.h
-	$(MOC4) -o $@ $<
+	$(QT_MOC) -o $@ $<
 
 liblyxsupport_a_DEPENDENCIES = $(MOCEDFILES)
 
@@ -28,7 +28,7 @@ liblyxsupport_a_DEPENDENCIES = $(MOCEDFILES)
 ##################################################################
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
-AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_INCLUDES)
+AM_CPPFLAGS += $(QT_CPPFLAGS) $(QT_INCLUDES)
 
 liblyxsupport_a_SOURCES = \
 	FileMonitor.h \
@@ -159,22 +159,22 @@ if INSTALL_MACOSX
 ADD_FRAMEWORKS = -framework QtGui -framework QtCore -framework AppKit -framework ApplicationServices
 endif
 
-check_convert_LDADD = liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) $(QT4_CORE_LIBS) $(LIBSHLWAPI) @LIBS@
-check_convert_LDFLAGS = $(QT4_LDFLAGS) $(ADD_FRAMEWORKS)
+check_convert_LDADD = liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) $(QT_CORE_LIBS) $(LIBSHLWAPI) @LIBS@
+check_convert_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_convert_SOURCES = \
 	tests/check_convert.cpp \
 	tests/dummy_functions.cpp \
 	tests/boost.cpp
 
-check_filetools_LDADD = liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) $(QT4_CORE_LIBS) $(LIBSHLWAPI) @LIBS@
-check_filetools_LDFLAGS = $(QT4_CORE_LDFLAGS) $(ADD_FRAMEWORKS)
+check_filetools_LDADD = liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) $(QT_CORE_LIBS) $(LIBSHLWAPI) @LIBS@
+check_filetools_LDFLAGS = $(QT_CORE_LDFLAGS) $(ADD_FRAMEWORKS)
 check_filetools_SOURCES = \
 	tests/check_filetools.cpp \
 	tests/dummy_functions.cpp \
 	tests/boost.cpp
 
-check_lstrings_LDADD = liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) $(QT4_CORE_LIBS) $(LIBSHLWAPI) @LIBS@
-check_lstrings_LDFLAGS = $(QT4_CORE_LDFLAGS) $(ADD_FRAMEWORKS)
+check_lstrings_LDADD = liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) $(QT_CORE_LIBS) $(LIBSHLWAPI) @LIBS@
+check_lstrings_LDFLAGS = $(QT_CORE_LDFLAGS) $(ADD_FRAMEWORKS)
 check_lstrings_SOURCES = \
 	tests/check_lstrings.cpp \
 	tests/dummy_functions.cpp \

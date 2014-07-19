@@ -3,7 +3,7 @@ include $(top_srcdir)/config/common.am
 ############################### Core  ##############################
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES) $(ENCHANT_CFLAGS) $(HUNSPELL_CFLAGS)
-AM_CPPFLAGS += $(QT4_CPPFLAGS) $(QT4_CORE_INCLUDES)
+AM_CPPFLAGS += $(QT_CPPFLAGS) $(QT_CORE_INCLUDES)
 
 if BUILD_CLIENT_SUBDIR
 CLIENT = client
@@ -28,8 +28,8 @@ lyx_LDADD = \
 	liblyxgraphics.a \
 	support/liblyxsupport.a \
 	$(OTHERLIBS) \
-	$(QT4_LDFLAGS) \
-	$(QT4_LIB)
+	$(QT_LDFLAGS) \
+	$(QT_LIB)
 
 if LYX_WIN_RESOURCE
 .rc.o:
@@ -331,7 +331,7 @@ BUILT_SOURCES += $(MOCEDFILES)
 CLEANFILES += $(MOCEDFILES)
 
 moc_%.cpp: %.h
-	$(MOC4) $(MOCFLAG) -o $@ $<
+	$(QT_MOC) $(MOCFLAG) -o $@ $<
 
 liblyxcore_a_DEPENDENCIES = $(MOCEDFILES)
 
@@ -692,8 +692,8 @@ ADD_FRAMEWORKS = -framework QtGui -framework QtCore -framework AppKit -framework
 endif
 
 check_layout_CPPFLAGS = $(AM_CPPFLAGS)
-check_layout_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ $(QT4_CORE_LIBS) $(LIBSHLWAPI)
-check_layout_LDFLAGS = $(QT4_CORE_LDFLAGS) $(ADD_FRAMEWORKS)
+check_layout_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ $(QT_CORE_LIBS) $(LIBSHLWAPI)
+check_layout_LDFLAGS = $(QT_CORE_LDFLAGS) $(ADD_FRAMEWORKS)
 check_layout_SOURCES = \
 	insets/InsetLayout.cpp \
 	Color.cpp \

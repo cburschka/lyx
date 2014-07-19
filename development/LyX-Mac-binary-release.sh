@@ -157,7 +157,7 @@ while [ $# -gt 0 ]; do
 		fi
 		shift
 		;;
-	--with-qt4-dir=*)
+	--with-qt-dir=*)
 		QTDIR=$(echo ${1}|cut -d= -f2)
 		shift
 		;;
@@ -624,10 +624,10 @@ build_lyx() {
 		HOSTSYSTEM=$(eval "echo \\$HostSystem_$arch")
 
 		if [ "$configure_qt4_frameworks" = "yes" ]; then
-			export QT4_CORE_CFLAGS="-FQtCore"
-			export QT4_CORE_LIBS="-framework QtCore"
-			export QT4_FRONTEND_CFLAGS="-FQtGui"
-			export QT4_FRONTEND_LIBS="-framework QtGui"
+			export QT_CORE_CFLAGS="-FQtCore"
+			export QT_CORE_LIBS="-framework QtCore"
+			export QT_FRONTEND_CFLAGS="-FQtGui"
+			export QT_FRONTEND_LIBS="-framework QtGui"
 			CPPFLAGS="${CPPFLAGS} -I${SDKROOT}/Library/Frameworks/QtCore.framework/Headers"
 			CPPFLAGS="${CPPFLAGS} -I${SDKROOT}/Library/Frameworks/QtGui.framework/Headers"
 		fi
@@ -636,10 +636,10 @@ build_lyx() {
 		export LDFLAGS
 		echo CPPFLAGS="${CPPFLAGS}"
 		export CPPFLAGS
-		echo CONFIGURE_OPTIONS="${LyXConfigureOptions}" ${QtInstallDir:+"--with-qt4-dir=${QtInstallDir}"}
+		echo CONFIGURE_OPTIONS="${LyXConfigureOptions}" ${QtInstallDir:+"--with-qt-dir=${QtInstallDir}"}
 		"${LyxSourceDir}/configure"\
 			--prefix="${LyxAppPrefix}" --with-version-suffix="-${LyXVersionSuffix}"\
-			${QtInstallDir:+"--with-qt4-dir=${QtInstallDir}"} \
+			${QtInstallDir:+"--with-qt-dir=${QtInstallDir}"} \
 			${LyXConfigureOptions}\
 			--enable-build-type=rel && \
 		make ${MAKEJOBS} && make install${strip}

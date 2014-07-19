@@ -8,15 +8,15 @@ CLEANFILES += $(BUILT_SOURCES)
 
 #########################  Qt stuff  #############################
 # Use _() for localization instead of tr() or trUtf8()
-UIC4FLAGS=-tr lyx::qt_
+UICFLAGS=-tr lyx::qt_
 
 ui_%.h: ui/%.ui
-	$(UIC4) $(UIC4FLAGS) $< -o $@
+	$(QT_UIC) $(UICFLAGS) $< -o $@
 
 MOCEDFILES = $(MOCHEADER:%.h=%_moc.cpp)
 
 %_moc.cpp: %.h
-	$(MOC4) -o $@ $<
+	$(QT_MOC) -o $@ $<
 
 #Resources.qrc: Makefile
 #	echo "<!DOCTYPE RCC><RCC version='1.0'><qresource>" > $@
@@ -26,21 +26,21 @@ MOCEDFILES = $(MOCHEADER:%.h=%_moc.cpp)
 #	echo "</qresource></RCC>" >> $@
 #
 #Resources.cpp: Resources.qrc
-#	$(RCC4) $< -name Resources -o $@
+#	$(QT_RCC) $< -name Resources -o $@
 
 
 #########################  LIBRARIES  #############################
 
 bin_PROGRAMS = lyxled
 
-lyxled_LDADD = $(QT4_LIB)
+lyxled_LDADD = $(QT_LIB)
 lyxled_DEPENDENCIES = $(MOCEDFILES)
 
 AM_CPPFLAGS += \
-	$(QT4_CPPFLAGS) \
+	$(QT_CPPFLAGS) \
 	-UQT_NO_KEYWORDS \
 	-I$(top_srcdir)/src \
-	$(QT4_INCLUDES)
+	$(QT_INCLUDES)
 
 SOURCEFILES = \
 	main.cpp \
@@ -74,15 +74,15 @@ CLEANFILES += $(BUILT_SOURCES)
 
 #########################  Qt stuff  #############################
 # Use _() for localization instead of tr() or trUtf8()
-UIC4FLAGS=-tr lyx::qt_
+UICFLAGS=-tr lyx::qt_
 
 ui_%.h: ui/%.ui
-	$(UIC4) $(UIC4FLAGS) $< -o $@
+	$(QT_UIC) $(UICFLAGS) $< -o $@
 
 MOCEDFILES = $(MOCHEADER:%.h=%_moc.cpp)
 
 %_moc.cpp: %.h
-	$(MOC4) -o $@ $<
+	$(QT_MOC) -o $@ $<
 
 #Resources.qrc: Makefile
 #	echo "<!DOCTYPE RCC><RCC version='1.0'><qresource>" > $@
@@ -92,21 +92,21 @@ MOCEDFILES = $(MOCHEADER:%.h=%_moc.cpp)
 #	echo "</qresource></RCC>" >> $@
 #
 #Resources.cpp: Resources.qrc
-#	$(RCC4) $< -name Resources -o $@
+#	$(QT_RCC) $< -name Resources -o $@
 
 
 #########################  LIBRARIES  #############################
 
 bin_PROGRAMS = lyxled
 
-lyxled_LDADD = $(QT4_LIB)
+lyxled_LDADD = $(QT_LIB)
 lyxled_DEPENDENCIES = $(MOCEDFILES)
 
 AM_CPPFLAGS += \
-	$(QT4_CPPFLAGS) \
+	$(QT_CPPFLAGS) \
 	-UQT_NO_KEYWORDS \
 	-I$(top_srcdir)/src \
-	$(QT4_INCLUDES)
+	$(QT_INCLUDES)
 
 SOURCEFILES = \
 	main.cpp \
