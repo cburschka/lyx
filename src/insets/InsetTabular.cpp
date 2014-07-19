@@ -4303,7 +4303,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				FileName(to_utf8(cmd.argument())));
 			if (tmpstr.empty())
 				break;
-			cur.recordUndoInset(INSERT_UNDO);
+			cur.recordUndoInset();
 			if (insertPlaintextString(cur.bv(), tmpstr, false)) {
 				// content has been replaced,
 				// so cursor might be invalid
@@ -4318,7 +4318,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CUT:
 		if (cur.selIsMultiCell()) {
 			if (copySelection(cur)) {
-				cur.recordUndoInset(DELETE_UNDO);
+				cur.recordUndoInset();
 				cutSelection(cur);
 			}
 		} else
@@ -4327,7 +4327,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_SELF_INSERT:
 		if (cur.selIsMultiCell()) {
-			cur.recordUndoInset(DELETE_UNDO);
+			cur.recordUndoInset();
 			cutSelection(cur);
 			BufferView * bv = &cur.bv();
 			docstring::const_iterator cit = cmd.argument().begin();
@@ -4344,7 +4344,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_DELETE_BACKWARD:
 	case LFUN_CHAR_DELETE_FORWARD:
 		if (cur.selIsMultiCell()) {
-			cur.recordUndoInset(DELETE_UNDO);
+			cur.recordUndoInset();
 			cutSelection(cur);
 		} else
 			cell(cur.idx())->dispatch(cur, cmd);
@@ -4370,7 +4370,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// pass to InsertPlaintextString, but
 		// only if we have multi-cell content
 		if (clip.find_first_of(from_ascii("\t\n")) != docstring::npos) {
-			cur.recordUndoInset(INSERT_UNDO);
+			cur.recordUndoInset();
 			if (insertPlaintextString(cur.bv(), clip, false)) {
 				// content has been replaced,
 				// so cursor might be invalid
@@ -4392,7 +4392,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		}
 		if (theClipboard().isInternal()) {
-			cur.recordUndoInset(INSERT_UNDO);
+			cur.recordUndoInset();
 			pasteClipboard(cur);
 		}
 		break;
