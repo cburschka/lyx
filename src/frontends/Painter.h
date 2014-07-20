@@ -109,10 +109,10 @@ public:
 		graphics::Image const & image) = 0;
 
 	/** draw a string at position x, y (y is the baseline). The
-	 * text direction is deduced from \c str.
+	 * text direction is given by \c rtl.
 	 * \return the width of the drawn text.
 	 */
-	virtual int text(int x, int y, docstring const & str, FontInfo const & f) = 0;
+	virtual int text(int x, int y, docstring const & str, FontInfo const & f, bool rtl = false) = 0;
 
 	/** draw a string at position x, y (y is the baseline). The
 	 * text direction is enforced by the \c Font.

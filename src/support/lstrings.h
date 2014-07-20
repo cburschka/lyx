@@ -327,9 +327,6 @@ template<> docstring bformat(docstring const & fmt, int arg1, int arg2);
 template<> docstring bformat(docstring const & fmt, docstring arg1, docstring arg2, docstring arg3);
 template<> docstring bformat(docstring const & fmt, docstring arg1, docstring arg2, docstring arg3, docstring arg4);
 
-/// Return a string with Unicode overrides to enforce the writing direction
-docstring directedString(docstring const & s, bool rtl);
-
 
 } // namespace support
 } // namespace lyx

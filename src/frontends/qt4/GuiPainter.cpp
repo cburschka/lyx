@@ -9,6 +9,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#ifdef Q_WS_MAC
+#define USE_RTL_OVERRIDE 1
+#endif
+
 #include <config.h>
 
 #include "GuiPainter.h"
@@ -27,7 +31,6 @@
 #include "insets/Inset.h"
 
 #include "support/lassert.h"
-#include "support/lstrings.h"
 #include "support/debug.h"
 
 #include <QPixmapCache>
@@ -278,7 +281,7 @@ int GuiPainter::text(int x, int y, char_type c, FontInfo const & f)
 
 
 int GuiPainter::text(int x, int y, docstring const & s,
-		FontInfo const & f)
+		     FontInfo const & f, bool const rtl)
 {
 	//LYXERR0("text: x=" << x << ", s=" << s);
 	if (s.empty())
@@ -304,8 +307,8 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		str = ' ' + str;
 #endif
 
-	QFont const & ff = getFont(f); 
-	GuiFontMetrics const & fm = getFontMetrics(f); 
+	QFont const & ff = getFont(f);
+	GuiFontMetrics const & fm = getFontMetrics(f);
 
 	// Here we use the font width cache instead of
 	//   textwidth = fontMetrics().width(str);
@@ -390,7 +393,32 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	setQPainterPen(computeColor(f.realColor()));
 	if (font() != ff)
 		setFont(ff);
+
+	 /* In LyX, the character direction is forced by the language.
+	  * Therefore, we have to signal that fact to Qt.
+	  */
+#ifdef USE_RTL_OVERRIDE
+	/* Use unicode override characters to enforce drawing direction
+	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
+	 */
+	if (rtl)
+		// Right-to-left override: forces to draw text right-to-left
+		str = QChar(0x202E) + str;
+	else
+		// Left-to-right override: forces to draw text left-to-right
+		str =  QChar(0x202D) + str;
 	drawText(x, y, str);
+#else
+	/* This is a cleanr solution, but it has two drawbacks
+	 * - it seems that it does not work under Mac OS X
+	 * - it is not really documented
+	 */
+	//This is much stronger than setLayoutDirection.
+	int flag = rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight;
+	drawText(x + (rtl ? textwidth : 0), y - fm.maxAscent(), 0, 0,
+		 flag | Qt::TextDontClip,
+		 str);
+#endif
 	//LYXERR(Debug::PAINTING, "draw " << string(str.toUtf8())
 	//	<< " at " << x << "," << y);
 	return textwidth;
@@ -399,8 +427,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 
 int GuiPainter::text(int x, int y, docstring const & str, Font const & f)
 {
-	docstring const dstr = directedString(str, f.isVisibleRightToLeft());
-	return text(x, y, dstr, f.fontInfo());
+	return text(x, y, str, f.fontInfo(), f.isVisibleRightToLeft());
 }
 
 
@@ -410,7 +437,6 @@ int GuiPainter::text(int x, int y, docstring const & str, Font const & f,
 	GuiFontMetrics const & fm = getFontMetrics(f.fontInfo());
 	FontInfo fi = f.fontInfo();
 	bool const rtl = f.isVisibleRightToLeft();
-	docstring const dstr = directedString(str, rtl);
 
 	// dimensions
 	int const ascent = fm.maxAscent();
@@ -424,15 +450,15 @@ int GuiPainter::text(int x, int y, docstring const & str, Font const & f,
 	Color const orig = fi.realColor();
 	fi.setPaintColor(other);
 	setClipRect(QRect(x + xmin, y - ascent, xmax - xmin, height));
-	int const textwidth = text(x, y, dstr, fi);
+	int const textwidth = text(x, y, str, fi, rtl);
 
 	// Then the part in normal color
 	// Note that in Qt5, it is not possible to use Qt::UniteClip
 	fi.setPaintColor(orig);
 	setClipRect(QRect(x, y - ascent, xmin, height));
-	text(x, y, dstr, fi);
+	text(x, y, str, fi, rtl);
 	setClipRect(QRect(x + xmax, y - ascent, textwidth - xmax, height));
-	text(x, y, dstr, fi);
+	text(x, y, str, fi, rtl);
 	setClipping(false);
 
 	return textwidth;

@@ -22,7 +22,6 @@
 #include "insets/Inset.h"
 
 #include "support/lassert.h"
-#include "support/lstrings.h"
 
 #include <QTextLayout>
 
@@ -148,9 +147,10 @@ namespace {
 void setTextLayout(QTextLayout & tl, docstring const & s, QFont const & font,
 			     bool const rtl)
 {
-	QString const qs = toqstr(directedString(s, rtl));
-	tl.setText(qs);
+	tl.setText(toqstr(s));
 	tl.setFont(font);
+	// Note that both setFlags and the enums are undocumented
+	tl.setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
 	tl.beginLayout();
 	tl.createLine();
 	tl.endLayout();
@@ -162,8 +162,7 @@ int GuiFontMetrics::pos2x(docstring const & s, int const pos, bool const rtl) co
 {
 	QTextLayout tl;
 	setTextLayout(tl, s, font_, rtl);
-	// we take into account the unicode formatting characters
-	return tl.lineForTextPosition(pos + 1).cursorToX(pos + 1);
+	return tl.lineForTextPosition(pos).cursorToX(pos);
 }
 
 
@@ -172,13 +171,8 @@ int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl) const
 	QTextLayout tl;
 	setTextLayout(tl, s, font_, rtl);
 	int pos = tl.lineForTextPosition(0).xToCursor(x);
-	// take into account the unicode formatting characters
-	if (pos > 0)
-		--pos;
-	if (pos > int(s.length()))
-		pos = s.length();
 	// correct x value to the actual cursor position.
-	x = tl.lineForTextPosition(0).cursorToX(pos + 1);
+	x = tl.lineForTextPosition(0).cursorToX(pos);
 	return pos;
 }
 
