@@ -5,13 +5,13 @@
 # This script automates creating universal binaries of LyX on Mac.
 # Author: Bennett Helm (and extended by Konrad Hofbauer)
 # latest changes by Stephan Witt
-# Last modified: January 2013
+# Last modified: July 2014
 
-Qt4API=${Qt4API:-"-cocoa"}
-Qt4Version=${Qt4Version:-"4.6.3"}
-Qt4SourceVersion="qt-everywhere-opensource-src-${Qt4Version}"
-Qt4BuildSubDir="qt-${Qt4Version}-build${Qt4API}"
-Qt4ConfigureOptions=${Qt4ConfigureOptions:-"-release"}
+QtAPI=${QtAPI:-"-cocoa"}
+QtVersion=${QtVersion:-"4.6.3"}
+QtSourceVersion="qt-everywhere-opensource-src-${QtVersion}"
+QtBuildSubDir="qt-${QtVersion}-build${QtAPI}"
+QtConfigureOptions=${QtConfigureOptions:-"-release"}
 
 GettextVersion=${GettextVersion:-"0.18.2"}
 GettextSource="gettext-${GettextVersion}"
@@ -29,8 +29,8 @@ unset DYLD_LIBRARY_PATH LD_LIBRARY_PATH
 
 # Prerequisite:
 # * a decent checkout of LyX sources (probably you have it already)
-# * Qt4 - build with shared or static libraries for the used platforms (default: i386 and ppc)
-#    or - an unpacked source tree of Qt4 in $QT4SOURCEDIR or in the sibling directory (variable Qt4SourceVersion)
+# * Qt - build with shared or static libraries for the used platforms (default: i386 and ppc)
+#   or - an unpacked source tree of Qt in $QTSOURCEDIR or in the sibling directory (variable QtSourceVersion)
 # * for aspell support:
 #   the aspell sources placed in a sibling directory (variable ASpellSource)
 # * for hunspell support:
@@ -44,26 +44,26 @@ LyXConfigureOptions="--enable-warnings --enable-optimization=-Os --with-x=no"
 LyXConfigureOptions="${LyXConfigureOptions} --disable-stdlib-debug"
 AspellConfigureOptions="--enable-warnings --enable-optimization=-O0 --enable-debug --disable-nls --enable-compile-in-filters --disable-pspell-compatibility"
 HunspellConfigureOptions="--with-warnings --disable-nls --disable-static"
-Qt4ConfigureOptions="${QtConfigureOptions} -opensource -silent -shared -fast -no-exceptions"
-Qt4ConfigureOptions="${Qt4ConfigureOptions} -no-webkit -no-qt3support -no-javascript-jit -no-dbus"
-Qt4ConfigureOptions="${Qt4ConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
+QtConfigureOptions="${QtConfigureOptions} -opensource -silent -shared -fast -no-exceptions"
+QtConfigureOptions="${QtConfigureOptions} -no-webkit -no-qt3support -no-javascript-jit -no-dbus"
+QtConfigureOptions="${QtConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
 QtMajorVersion=qt4
 
 # stupid special case...
-case "${Qt4Version}:${Qt4API}" in
+case "${QtVersion}:${QtAPI}" in
 4.6*:-carbon)
 	;;
 5.0*)
-	Qt4ConfigureOptions="${QtConfigureOptions} -opensource -silent -shared -fast -no-strip"
-	Qt4ConfigureOptions="${Qt4ConfigureOptions} -no-javascript-jit -no-pkg-config"
-	Qt4ConfigureOptions="${Qt4ConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
+	QtConfigureOptions="${QtConfigureOptions} -opensource -silent -shared -fast -no-strip"
+	QtConfigureOptions="${QtConfigureOptions} -no-javascript-jit -no-pkg-config"
+	QtConfigureOptions="${QtConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
 	QtMajorVersion=qt5
 	;;
 5.*)
 	QtMajorVersion=qt5
 	;;
 *)
-	Qt4ConfigureOptions="${Qt4ConfigureOptions} ${Qt4API}"
+	QtConfigureOptions="${QtConfigureOptions} ${QtAPI}"
 	;;
 esac
 
@@ -75,7 +75,7 @@ aspell_deployment="yes"
 hunspell_deployment="yes"
 thesaurus_deployment="yes"
 
-qt4_deployment="yes"
+qt_deployment="yes"
 
 # auto detect Xcode location
 if [ -d "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs" ]; then
@@ -116,8 +116,8 @@ usage() {
 	echo
 	echo Optional arguments:
 	echo " --aspell-deployment=yes|no ." default yes
-	echo " --with-qt4-frameworks=yes|no" default no
-	echo " --qt4-deployment=yes|no ...." default yes
+	echo " --with-qt-frameworks=yes|no." default no
+	echo " --qt-deployment=yes|no ....." default yes
 	echo " --with-macosx-target=TARGET " default 10.4 "(Tiger)"
 	echo " --with-sdkroot=SDKROOT ....." default 10.5 "(Leopard)"
 	echo " --with-arch=ARCH ..........." default ppc,i386
@@ -149,11 +149,11 @@ fi
 
 while [ $# -gt 0 ]; do
 	case "${1}" in
-	--with-qt4-frameworks=*)
-		configure_qt4_frameworks=$(echo ${1}|cut -d= -f2)
-		if [ "$configure_qt4_frameworks" = "yes" ]; then
+	--with-qt-frameworks=*)
+		configure_qt_frameworks=$(echo ${1}|cut -d= -f2)
+		if [ "$configure_qt_frameworks" = "yes" ]; then
 			unset QTDIR
-			qt4_deployment="no"
+			qt_deployment="no"
 		fi
 		shift
 		;;
@@ -201,8 +201,8 @@ while [ $# -gt 0 ]; do
 		thesaurus_deployment=$(echo ${1}|cut -d= -f2)
 		shift
 		;;
-	--qt4-deployment=*)
-		qt4_deployment=$(echo ${1}|cut -d= -f2)
+	--qt-deployment=*)
+		qt_deployment=$(echo ${1}|cut -d= -f2)
 		shift
 		;;
 	--with-arch=*)
@@ -249,7 +249,7 @@ while [ $# -gt 0 ]; do
 	esac
 done
 
-if [ "${configure_qt4_frameworks}" != "yes" ]; then
+if [ "${configure_qt_frameworks}" != "yes" ]; then
 	QtInstallDir=${QTDIR:-"/opt/qt4"}
 fi
 
@@ -275,8 +275,8 @@ HunSpellBuildDir="${HunSpellSourceDir}"
 HunSpellInstallDir=${HunSpellInstallDir:-"${LyxBuildDir}"/utilities}
 HunSpellInstallHdr="${HunSpellInstallDir}/include/hunspell/hunspell.h"
 
-Qt4SourceDir=${QT4SOURCEDIR:-$(dirname "${LyxSourceDir}")/${Qt4SourceVersion}}
-Qt4BuildDir=${Qt4BuildDir:-"${LyxBuildDir}"/${Qt4BuildSubDir:-"qt4-build"}}
+QtSourceDir=${QTSOURCEDIR:-$(dirname "${LyxSourceDir}")/${QtSourceVersion}}
+QtBuildDir=${QtBuildDir:-"${LyxBuildDir}"/${QtBuildSubDir:-"qt-build"}}
 
 DictionarySourceDir=${DICTIONARYDIR:-$(dirname "${LyxSourceDir}")/dictionaries}
 DocumentationDir=$(dirname "${LyxSourceDir}")/Documents
@@ -301,7 +301,7 @@ LyxAppPrefix="${LyxAppDir}.app"
 # ---------------------------------
 
 # don't change order here...
-case "${Qt4Version}" in
+case "${QtVersion}" in
 5.0.*|5.1.*)
 	QtLibraries="QtSvg QtXml QtPrintSupport QtWidgets QtGui QtNetwork QtConcurrent QtCore"
 	QtFrameworkVersion="5"
@@ -357,21 +357,21 @@ export PKG_CONFIG=""
 HostSystem_i386="i686-apple-darwin8"
 HostSystem_ppc="powerpc-apple-darwin8"
 
-if [ "${configure_qt4_frameworks}" != "yes" -a -d "${Qt4SourceDir}" -a ! \( -d "${Qt4BuildDir}" -a -d "${QtInstallDir}" \) ]; then
-	echo Build Qt4 library ${Qt4SourceDir}
-	if [ "${QtInstallDir}" = "${Qt4BuildDir}" ]; then
+if [ "${configure_qt_frameworks}" != "yes" -a -d "${QtSourceDir}" -a ! \( -d "${QtBuildDir}" -a -d "${QtInstallDir}" \) ]; then
+	echo Build Qt library ${QtSourceDir}
+	if [ "${QtInstallDir}" = "${QtBuildDir}" ]; then
 		echo Bad install directory for Qt.
-		echo Must be different from build directory "${Qt4BuildDir}".
+		echo Must be different from build directory "${QtBuildDir}".
 		exit 1
 	fi
 	(
-		mkdir -p "${Qt4BuildDir}" && cd "${Qt4BuildDir}"
+		mkdir -p "${QtBuildDir}" && cd "${QtBuildDir}"
 		for arch in ${ARCH_LIST} ; do
 			ARCHS="${ARCHS} -arch ${arch}"
 		done
 		echo configure options:
-		echo ${Qt4ConfigureOptions} ${ARCHS} -prefix "${QtInstallDir}"
-		echo yes | "${Qt4SourceDir}"/configure ${Qt4ConfigureOptions} ${ARCHS} -prefix "${QtInstallDir}"
+		echo ${QtConfigureOptions} ${ARCHS} -prefix "${QtInstallDir}"
+		echo yes | "${QtSourceDir}"/configure ${QtConfigureOptions} ${ARCHS} -prefix "${QtInstallDir}"
 		make ${MAKEJOBS} && make install
 	)
 	cd "${QtInstallDir}" && (
@@ -623,7 +623,7 @@ build_lyx() {
 		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"
 		HOSTSYSTEM=$(eval "echo \\$HostSystem_$arch")
 
-		if [ "$configure_qt4_frameworks" = "yes" ]; then
+		if [ "$configure_qt_frameworks" = "yes" ]; then
 			export QT_CORE_CFLAGS="-FQtCore"
 			export QT_CORE_LIBS="-framework QtCore"
 			export QT_FRONTEND_CFLAGS="-FQtGui"
@@ -713,7 +713,7 @@ EOF
 			find "${condir}/PlugIns" "${condir}/"$(dirname "${fwdir}") -name Headers -prune -o -type f -print | while read filename ; do
 				if [ "${filename}" != "${target}" ]; then
 					otool -L "${filename}" 2>/dev/null | sort -u | while read library ; do
-						# pattern match for: /path/to/qt4/lib/QtGui.framework/Versions/4/QtGui (compatibility version 4.6.0, current version 4.6.2)
+						# pattern match for: /path/to/qt/lib/QtGui.framework/Versions/4/QtGui (compatibility version 4.6.0, current version 4.6.2)
 						case "${library}" in
 						*"${libnm}"*"("*version*")"*)
 							echo Correct library id reference to "${libnm}" in "${filename}"
@@ -764,7 +764,7 @@ convert_universal() {
 		if [ -f "${HunSpellInstallDir}/lib/${HunSpellLibrary}" -a "yes" = "${hunspell_deployment}" ]; then
 			private_framework Hunspell "${HunSpellInstallDir}/lib/${HunSpellLibrary}" "${LYX_BUNDLE_PATH}/${file}"
 		fi
-		if [ -d "${QtInstallDir}/lib/QtCore.framework/Versions/${QtFrameworkVersion}" -a "yes" = "${qt4_deployment}" ]; then
+		if [ -d "${QtInstallDir}/lib/QtCore.framework/Versions/${QtFrameworkVersion}" -a "yes" = "${qt_deployment}" ]; then
 			deploy_qtlibs "${LYX_BUNDLE_PATH}/${file}"
 		fi
 		otool -L "${BUNDLE_PATH}/${file}" | while read reference ; do
@@ -900,11 +900,11 @@ build_package() {
 	for arch in ${ARCH_LIST} ; do
 		DMGARCH="${DMGARCH}-${arch}"
 	done
-	QtDmgArchSuffix=${QtMajorVersion}${DMGARCH}${Qt4API}.dmg
+	QtDmgArchSuffix=${QtMajorVersion}${DMGARCH}${QtAPI}.dmg
 
 	test -n "${DMGLocation}" && (
 		make_dmg "${DMGLocation}"
-		if [ -d "${QtInstallDir}/lib/QtCore.framework/Versions/${QtFrameworkVersion}" -a "yes" = "${qt4_deployment}" ]; then
+		if [ -d "${QtInstallDir}/lib/QtCore.framework/Versions/${QtFrameworkVersion}" -a "yes" = "${qt_deployment}" ]; then
 			rm -f "${DMGLocation}/${DMGNAME}+${QtDmgArchSuffix}"
 			echo move to "${DMGLocation}/${DMGNAME}+${QtDmgArchSuffix}"
 			mv "${DMGLocation}/${DMGNAME}.dmg" "${DMGLocation}/${DMGNAME}+${QtDmgArchSuffix}"
