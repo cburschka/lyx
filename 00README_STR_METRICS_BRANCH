@@ -39,10 +39,6 @@ What is done:
 
 * Draw also RtL text string-wise. This speeds-up drawing.
 
-* Do not cut strings at separators in RowPainter when text is not
-  justified. This speeds-up painting by reducing the number of strings
-  to draw.
-
 * Do not cut strings at selection boundary in RowPainter. This avoids
   ligature/kerning breaking in latin text, and bad rendering problems
   in Arabic.

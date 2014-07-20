@@ -273,14 +273,14 @@ void GuiPainter::image(int x, int y, int w, int h, graphics::Image const & i)
 
 int GuiPainter::text(int x, int y, char_type c, FontInfo const & f)
 {
-	docstring s(1, c);
-	return text(x, y, s, f);
+	return text(x, y, docstring(1, c), f);
 }
 
 
 int GuiPainter::text(int x, int y, docstring const & s,
 		FontInfo const & f)
 {
+	//LYXERR0("text: x=" << x << ", s=" << s);
 	if (s.empty())
 		return 0;
 

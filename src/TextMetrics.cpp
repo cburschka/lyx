@@ -565,7 +565,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 
 	Paragraph const & par = text_->getPar(pit);
 
-	double w = width - row.right_margin - row.width();
+	double const w = width - row.right_margin - row.width();
 	// FIXME: put back this assertion when the crash on new doc is solved.
 	//LASSERT(w >= 0, /**/);
 
@@ -607,9 +607,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	} else if (int(row.width()) < max_width_) {
 		// is it block, flushleft or flushright?
 		// set x how you need it
-		int const align = getAlign(par, row.pos());
-
-		switch (align) {
+		switch (getAlign(par, row.pos())) {
 		case LYX_ALIGN_BLOCK: {
 			int const ns = numberOfSeparators(row);
 			/** If we have separators, and this row has
@@ -650,12 +648,12 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	}
 #endif
 
+	// Finally,  handle hfill insets
 	pos_type const endpos = row.endpos();
 	pos_type body_pos = par.beginOfBody();
 	if (body_pos > 0
 	    && (body_pos > endpos || !par.isLineSeparator(body_pos - 1)))
 		body_pos = 0;
-
 	ParagraphMetrics & pm = par_metrics_[pit];
 	Row::iterator cit = row.begin();
 	Row::iterator const cend = row.end();
@@ -798,8 +796,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	int const width = max_width_ - right_margin;
 	pos_type const body_pos = par.beginOfBody();
 	row.clear();
-	row.x = leftMargin(max_width_, pit, pos);
-	row.dimension().wid = row.x;
+	row.dimension().wid = leftMargin(max_width_, pit, pos);
 	row.right_margin = right_margin;
 
 	if (pos >= end || row.width() > width) {

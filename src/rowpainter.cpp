@@ -186,16 +186,15 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 	}
 	str.push_back(c);
 
-	pos_type const end = row_.endpos();
 	FontSpan const font_span = par_.fontSpan(pos);
 	// Track-change status.
 	Change const & change_running = par_.lookupChange(pos);
-
 	// spelling correct?
 	bool const spell_state =
 		lyxrc.spellcheck_continuously && par_.isMisspelled(pos);
 
 	// collect as much similar chars as we can
+	pos_type const end = row_.endpos();
 	for (++vpos ; vpos < end ; ++vpos) {
 		pos = bidi_.vis2log(vpos);
 
@@ -218,11 +217,7 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 		if (c == '\t')
 			break;
 
-		// When row_.separator == 0, it is possible to print a
-		// string longer than a word in one fell swoop.
-		// Therefore there is no need to break at spaces.
-		if (!isPrintableNonspace(c)
-		    && (c != ' ' || row_.separator > 0))
+		if (!isPrintableNonspace(c))
 			break;
 
 		// FIXME: Why only round brackets and why the difference to
@@ -707,6 +702,7 @@ void RowPainter::paintOnlyInsets()
 
 void RowPainter::paintText()
 {
+	//LYXERR0("-------------------------------------------------------");
 	pos_type const end = row_.endpos();
 	// Spaces at logical line breaks in bidi text must be skipped during
 	// painting. However, they may appear visually in the middle
