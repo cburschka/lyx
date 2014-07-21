@@ -40,7 +40,7 @@ endmacro(lyx_add_path _out _prefix)
 
 #create the implementation files from the ui files and add them
 #to the list of sources
-#usage: LYX_ADD_QT4_UI_FILES(foo_SRCS ${ui_files})
+#usage: LYX_ADD_UI_FILES(foo_SRCS ${ui_files})
 macro(LYX_ADD_UI_FILES _sources _ui_files)
 	set(uifiles})
 	foreach (_current_FILE ${ARGN})
