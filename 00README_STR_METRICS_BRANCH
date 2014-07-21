@@ -47,3 +47,5 @@ What is done:
   rely on Qt to do handle complex scripts.
 
 * Get rid of LyXRC::rtl_support, which does not have a real use case.
+
+* Fix display of [] and {} delimiters in Arabic scripts.

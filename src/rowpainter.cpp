@@ -166,24 +166,9 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 	pos_type pos = bidi_.vis2log(vpos);
 	pos_type start_pos = pos;
 	// first character
-	char_type c = par_.getChar(pos);
 	docstring str;
 	str.reserve(100);
-
-	// special case for arabic
-	string const & lang = font.language()->lang();
-	bool const swap_paren = lang == "arabic_arabtex"
-		|| lang == "arabic_arabi"
-		|| lang == "farsi";
-
-	// FIXME: Why only round brackets and why the difference to
-	// Hebrew? See also Paragraph::getUChar
-	if (swap_paren) {
-		if (c == '(')
-			c = ')';
-		else if (c == ')')
-			c = '(';
-	}
+	char_type const c = par_.getChar(pos);
 	str.push_back(c);
 
 	FontSpan const font_span = par_.fontSpan(pos);
@@ -212,22 +197,13 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 			// Track change type or author has changed.
 			break;
 
-		char_type c = par_.getChar(pos);
+		char_type const c = par_.getChar(pos);
 
 		if (c == '\t')
 			break;
 
 		if (!isPrintableNonspace(c))
 			break;
-
-		// FIXME: Why only round brackets and why the difference to
-		// Hebrew? See also Paragraph::getUChar
-		if (swap_paren) {
-			if (c == '(')
-				c = ')';
-			else if (c == ')')
-				c = '(';
-		}
 
 		str.push_back(c);
 	}
