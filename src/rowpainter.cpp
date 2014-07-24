@@ -736,19 +736,19 @@ void RowPainter::paintText()
 		}
 
 		// Use font span to speed things up, see above
-		if (vpos < font_span.first || vpos > font_span.last) {
-			font_span = par_.fontSpan(vpos);
-			font = text_metrics_.displayFont(pit_, vpos);
+		if (!font_span.inside(pos)) {
+			font_span = par_.fontSpan(pos);
+			font = text_metrics_.displayFont(pit_, pos);
 
 			// split font span if inline completion is inside
-			if (font_span.first <= inlineCompletionVPos
-			    && font_span.last > inlineCompletionVPos)
-				font_span.last = inlineCompletionVPos;
+			if (inlineCompletionVPos != -1
+			    && font_span.inside(inlineCompletionPos.pos()))
+				font_span.last = inlineCompletionPos.pos();
 		}
 
 		// Note that this value will only be used in
 		// situations where no ligature of composition of
-		// characters is needed. (see comments alginuses of width_pos).
+		// characters is needed. (see comments in uses of width_pos).
 		const int width_pos = pm_.singleWidth(pos, font);
 
 		Change const & change = par_.lookupChange(pos);
