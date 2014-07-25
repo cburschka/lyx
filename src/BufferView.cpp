@@ -118,12 +118,12 @@ bool findNextInset(DocIterator & dit, vector<InsetCode> const & codes,
 	while (tmpdit) {
 		Inset const * inset = tmpdit.nextInset();
 		if (inset) {
-			bool const valid_code = std::find(codes.begin(), codes.end(), 
+			bool const valid_code = std::find(codes.begin(), codes.end(),
 				inset->lyxCode()) != codes.end();
 			InsetCommand const * ic = inset->asInsetCommand();
 			bool const same_or_no_contents =  contents.empty()
 				|| (ic && (ic->getFirstNonOptParam() == contents));
-			
+
 			if (valid_code && same_or_no_contents) {
 				dit = tmpdit;
 				return true;
@@ -228,7 +228,7 @@ struct BufferView::Private
 	Private(BufferView & bv): wh_(0), cursor_(bv),
 		anchor_pit_(0), anchor_ypos_(0),
 		inlineCompletionUniqueChars_(0),
-		last_inset_(0), clickable_inset_(false), 
+		last_inset_(0), clickable_inset_(false),
 		mouse_position_cache_(),
 		bookmark_edit_position_(-1), gui_(0)
 	{}
@@ -325,9 +325,9 @@ BufferView::~BufferView()
 	fp.pit = d->cursor_.bottom().pit();
 	fp.pos = d->cursor_.bottom().pos();
 	theSession().lastFilePos().save(buffer_.fileName(), fp);
-	
+
 	if (d->last_inset_)
-		d->last_inset_->setMouseHover(this, false);	
+		d->last_inset_->setMouseHover(this, false);
 
 	delete d;
 }
@@ -498,7 +498,7 @@ void BufferView::updateScrollbar()
 	d->scrollbarParameters_.page_step = height_;
 
 	Text & t = buffer_.text();
-	TextMetrics & tm = d->text_metrics_[&t];		
+	TextMetrics & tm = d->text_metrics_[&t];
 
 	LYXERR(Debug::GUI, " Updating scrollbar: height: "
 		<< t.paragraphs().size()
@@ -658,7 +658,7 @@ void BufferView::setCursorFromScrollbar()
 	case CUR_INSIDE:
 		int const y = getPos(oldcur).y_;
 		newy = min(last, max(y, first));
-		if (y == newy) 
+		if (y == newy)
 			return;
 	}
 	// We reset the cursor because cursorStatus() does not
@@ -778,7 +778,7 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 	// the bookmark.
 	if (bottom_pit < int(buffer_.paragraphs().size())) {
 		dit = doc_iterator_begin(&buffer_);
-				
+
 		dit.pit() = bottom_pit;
 		dit.pos() = min(bottom_pos, dit.paragraph().size());
 		success = true;
@@ -958,7 +958,7 @@ void BufferView::makeDocumentClass()
 void BufferView::updateDocumentClass(DocumentClassConstPtr olddc)
 {
 	message(_("Converting document to new document class..."));
-	
+
 	StableDocIterator backcur(d->cursor_);
 	ErrorList & el = buffer_.errorList("Class Switch");
 	cap::switchBetweenClasses(
@@ -1222,7 +1222,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	Cursor & cur = d->cursor_;
 
 	// Don't dispatch function that does not apply to internal buffers.
-	if (buffer_.isInternal() 
+	if (buffer_.isInternal()
 	    && lyxaction.funcHasFlag(cmd.action(), LyXAction::NoInternal))
 		return;
 
@@ -1246,7 +1246,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 						<< (unknown_tokens == 1 ? "" : "s"));
 		}
 		updateDocumentClass(olddc);
-			
+
 		// We are most certainly here because of a change in the document
 		// It is then better to make sure that all dialogs are in sync with
 		// current document settings.
@@ -1254,7 +1254,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		dr.forceBufferUpdate();
 		break;
 	}
-		
+
 	case LFUN_LAYOUT_MODULES_CLEAR: {
 		cur.recordUndoFullDocument();
 		buffer_.params().clearLayoutModules();
@@ -1267,7 +1267,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_LAYOUT_MODULE_ADD: {
 		BufferParams const & params = buffer_.params();
 		if (!params.layoutModuleCanBeAdded(argument)) {
-			LYXERR0("Module `" << argument << 
+			LYXERR0("Module `" << argument <<
 				"' cannot be added due to failed requirements or "
 				"conflicts with installed modules.");
 			break;
@@ -1281,9 +1281,9 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_TEXTCLASS_APPLY: {
-		// since this shortcircuits, the second call is made only if 
+		// since this shortcircuits, the second call is made only if
 		// the first fails
-		bool const success = 
+		bool const success =
 			LayoutFileList::get().load(argument, buffer_.temppath()) ||
 			LayoutFileList::get().load(argument, buffer_.filePath());
 		if (!success) {
@@ -1310,12 +1310,12 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_TEXTCLASS_LOAD: {
-		// since this shortcircuits, the second call is made only if 
+		// since this shortcircuits, the second call is made only if
 		// the first fails
-		bool const success = 
+		bool const success =
 			LayoutFileList::get().load(argument, buffer_.temppath()) ||
 			LayoutFileList::get().load(argument, buffer_.filePath());
-		if (!success) {			
+		if (!success) {
 			docstring s = bformat(_("The document class `%1$s' "
 						 "could not be loaded."), from_utf8(argument));
 			frontend::Alert::error(_("Could not load class"), s);
@@ -1381,7 +1381,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 		break;
 	}
-	
+
 	case LFUN_PARAGRAPH_GOTO: {
 		int const id = convert<int>(cmd.getArg(0));
 		int const pos = convert<int>(cmd.getArg(1));
@@ -1459,7 +1459,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
 		dr.screenUpdate(Update::Force | Update::FitCursor);
 		break;
-	
+
 	case LFUN_CHANGE_PREVIOUS:
 		findPreviousChange(this);
 		// FIXME: Move this LFUN to Buffer so that we don't have to do this:
@@ -1620,7 +1620,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_SCREEN_SHOW_CURSOR:
 		showCursor();
 		break;
-	
+
 	case LFUN_SCREEN_RECENTER:
 		recenter();
 		break;
@@ -1648,7 +1648,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			if (inset->delDatabase(cmd.argument())) {
 				buffer_.invalidateBibfileCache();
 				dr.forceBufferUpdate();
-			}				
+			}
 		}
 		break;
 	}
@@ -1726,13 +1726,13 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		updateHoveredInset();
 
 		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_,
-			true, act == LFUN_SCREEN_UP); 
+			true, act == LFUN_SCREEN_UP);
 		//FIXME: what to do with cur.x_target()?
 		bool update = in_texted && cur.bv().checkDepm(cur, old);
 		cur.finishUndo();
 
 		if (update || cur.mark())
-			dr.screenUpdate(Update::Force | Update::FitCursor);	
+			dr.screenUpdate(Update::Force | Update::FitCursor);
 		if (update)
 			dr.forceBufferUpdate();
 		break;
@@ -1898,7 +1898,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (decodeInsetParam(name, data, buffer_))
 			lyx::dispatch(FuncRequest(LFUN_DIALOG_SHOW, name + " " + data));
 		else
-			lyxerr << "Inset type '" << name << 
+			lyxerr << "Inset type '" << name <<
 			"' not recognized in LFUN_DIALOG_SHOW_NEW_INSET" <<  endl;
 		break;
 	}
@@ -2108,10 +2108,10 @@ void BufferView::updateHoveredInset() const
 		need_redraw |= d->last_inset_->setMouseHover(this, false);
 		d->last_inset_ = 0;
 	}
-	
+
 	if (covering_inset && covering_inset->setMouseHover(this, true)) {
 		need_redraw = true;
-		// Only the insets that accept the hover state, do 
+		// Only the insets that accept the hover state, do
 		// clear the last_inset_, so only set the last_inset_
 		// member if the hovered setting is accepted.
 		d->last_inset_ = covering_inset;
@@ -2119,9 +2119,9 @@ void BufferView::updateHoveredInset() const
 
 	if (need_redraw) {
 		LYXERR(Debug::PAINTING, "Mouse hover detected at: ("
-				<< d->mouse_position_cache_.x_ << ", " 
+				<< d->mouse_position_cache_.x_ << ", "
 				<< d->mouse_position_cache_.y_ << ")");
-	
+
 		d->update_strategy_ = DecorationUpdate;
 
 		// This event (moving without mouse click) is not passed further.
@@ -2197,7 +2197,7 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 		if (badcursor)
 			cursor().fixIfBroken();
 	}
-	
+
 	// Do we have a selection?
 	theSelection().haveSelection(cursor().selection());
 
@@ -2431,8 +2431,8 @@ bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 		return false;
 
 	d->cursor_ = cur;
-	
-	// we would rather not do this here, but it needs to be done before 
+
+	// we would rather not do this here, but it needs to be done before
  	// the changed() signal is sent.
 	buffer_.updateBuffer();
 
@@ -2460,7 +2460,7 @@ bool BufferView::mouseSetCursor(Cursor & cur, bool select)
 		d->cursor_.fixIfBroken();
 
 	// FIXME: shift-mouse selection doesn't work well across insets.
-	bool const do_selection = 
+	bool const do_selection =
 			select && &d->cursor_.normalAnchor().inset() == &cur.inset();
 
 	// do the dEPM magic if needed
@@ -2576,7 +2576,7 @@ bool BufferView::singleParUpdate()
 	// (if this paragraph contains insets etc., rebreaking will
 	// recursively descend)
 	tm.redoParagraph(bottom_pit);
-	ParagraphMetrics const & pm = tm.parMetrics(bottom_pit);		
+	ParagraphMetrics const & pm = tm.parMetrics(bottom_pit);
 	if (pm.height() != old_height)
 		// Paragraph height has changed so we cannot proceed to
 		// the singlePar optimisation.
@@ -2613,7 +2613,7 @@ void BufferView::updateMetrics()
 	// make sure inline completion pointer is ok
 	if (d->inlineCompletionPos_.fixIfBroken())
 		d->inlineCompletionPos_ = DocIterator();
-	
+
 	if (d->anchor_pit_ >= npit)
 		// The anchor pit must have been deleted...
 		d->anchor_pit_ = npit - 1;
@@ -2621,19 +2621,19 @@ void BufferView::updateMetrics()
 	// Rebreak anchor paragraph.
 	tm.redoParagraph(d->anchor_pit_);
 	ParagraphMetrics & anchor_pm = tm.par_metrics_[d->anchor_pit_];
-	
+
 	// position anchor
 	if (d->anchor_pit_ == 0) {
 		int scrollRange = d->scrollbarParameters_.max - d->scrollbarParameters_.min;
-		
+
 		// Complete buffer visible? Then it's easy.
 		if (scrollRange == 0)
 			d->anchor_ypos_ = anchor_pm.ascent();
-	
+
 		// FIXME: Some clever handling needed to show
 		// the _first_ paragraph up to the top if the cursor is
 		// in the first line.
-	}		
+	}
 	anchor_pm.setPosition(d->anchor_ypos_);
 
 	LYXERR(Debug::PAINTING, "metrics: "
@@ -2727,14 +2727,14 @@ Point BufferView::coordOffset(DocIterator const & dit) const
 		CursorSlice const & sl = dit[i];
 		int xx = 0;
 		int yy = 0;
-		
+
 		// get relative position inside sl.inset()
 		sl.inset().cursorPos(*this, sl, dit.boundary() && (i + 1 == dit.depth()), xx, yy);
-		
+
 		// Make relative position inside of the edited inset relative to sl.inset()
 		x += xx;
 		y += yy;
-		
+
 		// In case of an RTL inset, the edited inset will be positioned to the left
 		// of xx:yy
 		if (sl.text()) {
@@ -2759,7 +2759,7 @@ Point BufferView::coordOffset(DocIterator const & dit) const
 			Dimension const dim = sl.inset().dimension(*this);
 			lastw = dim.wid;
 		}
-		
+
 		//lyxerr << "Cursor::getPos, i: "
 		// << i << " x: " << xx << " y: " << y << endl;
 	}
@@ -2788,20 +2788,20 @@ Point BufferView::coordOffset(DocIterator const & dit) const
 	for (size_t rit = 0; rit != rend; ++rit)
 		y += pm.rows()[rit].height();
 	y += pm.rows()[rend].ascent();
-	
+
 	TextMetrics const & bottom_tm = textMetrics(dit.bottom().text());
-	
+
 	// Make relative position from the nested inset now bufferview absolute.
 	int xx = bottom_tm.cursorX(dit.bottom(), dit.boundary() && dit.depth() == 1);
 	x += xx;
-	
-	// In the RTL case place the nested inset at the left of the cursor in 
+
+	// In the RTL case place the nested inset at the left of the cursor in
 	// the outer paragraph
 	bool boundary_1 = dit.boundary() && 1 == dit.depth();
 	bool rtl = bottom_tm.isRTL(dit.bottom(), boundary_1);
 	if (rtl)
 		x -= lastw;
-	
+
 	return Point(x, y);
 }
 
@@ -2815,7 +2815,7 @@ Point BufferView::getPos(DocIterator const & dit) const
 	TextMetrics const & tm = textMetrics(bot.text());
 
 	// offset from outer paragraph
-	Point p = coordOffset(dit); 
+	Point p = coordOffset(dit);
 	p.y_ += tm.parMetrics(bot.pit()).position();
 	return p;
 }
@@ -2901,9 +2901,9 @@ void BufferView::draw(frontend::Painter & pain)
 		// and possibly grey out below
 		pair<pit_type, ParagraphMetrics const *> lastpm = tm.last();
 		int const y2 = lastpm.second->position() + lastpm.second->descent();
-		
+
 		if (y2 < height_) {
-			Color color = buffer().isInternal() 
+			Color color = buffer().isInternal()
 				? Color_background : Color_bottomarea;
 			pain.fillRectangle(0, y2, width_, height_ - y2, color);
 		}
@@ -3057,7 +3057,7 @@ bool samePar(DocIterator const & a, DocIterator const & b)
 }
 
 
-void BufferView::setInlineCompletion(Cursor const & cur, DocIterator const & pos, 
+void BufferView::setInlineCompletion(Cursor const & cur, DocIterator const & pos,
 	docstring const & completion, size_t uniqueChars)
 {
 	uniqueChars = min(completion.size(), uniqueChars);
@@ -3066,9 +3066,9 @@ void BufferView::setInlineCompletion(Cursor const & cur, DocIterator const & pos
 	bool singlePar = true;
 	d->inlineCompletion_ = completion;
 	d->inlineCompletionUniqueChars_ = min(completion.size(), uniqueChars);
-	
+
 	//lyxerr << "setInlineCompletion pos=" << pos << " completion=" << completion << " uniqueChars=" << uniqueChars << std::endl;
-	
+
 	// at new position?
 	DocIterator const & old = d->inlineCompletionPos_;
 	if (old != pos) {
@@ -3081,7 +3081,7 @@ void BufferView::setInlineCompletion(Cursor const & cur, DocIterator const & pos
 		}
 		d->inlineCompletionPos_ = pos;
 	}
-	
+
 	// set update flags
 	if (changed) {
 		if (singlePar && !(cur.result().screenUpdate() & Update::Force))
@@ -3093,8 +3093,8 @@ void BufferView::setInlineCompletion(Cursor const & cur, DocIterator const & pos
 
 
 bool BufferView::clickableInset() const
-{ 
-	return d->clickable_inset_; 
+{
+	return d->clickable_inset_;
 }
 
 } // namespace lyx

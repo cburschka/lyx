@@ -155,7 +155,7 @@ public:
 	/// Ensure that the BufferView cursor is visible.
 	/// This method will automatically scroll and update the BufferView
 	/// if needed.
-	void showCursor(); 
+	void showCursor();
 	/// Ensure the passed cursor \p dit is visible.
 	/// This method will automatically scroll and update the BufferView
 	/// if needed.

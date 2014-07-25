@@ -239,7 +239,7 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 		++pos;
 		++start_pos;
 		swap(start_pos, pos);
-	} 
+	}
 
 	// at least part of text selected?
 	bool const some_sel = (pos >= row_.sel_beg && start_pos < row_.sel_end)
