@@ -65,7 +65,7 @@ target_link_libraries(frontend_qt
 	${QT_QTCORE_LIBRARY}
 	${QT_QTGUI_LIBRARY})
 
-lyx_add_gcc_pch(frontend_qt4)
+lyx_add_gcc_pch(frontend_qt)
 
 if(WIN32)
 	target_link_libraries(frontend_qt gdi32)

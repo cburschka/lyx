@@ -127,7 +127,7 @@ target_link_libraries(${_lyx}
 	mathed
 	insets
 	frontends
-	frontend_qt4
+	frontend_qt
 	graphics
 	support
 	${ICONV_LIBRARY}
