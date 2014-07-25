@@ -32,7 +32,7 @@
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "ParagraphParameters.h"
-#include "rowpainter.h"
+#include "RowPainter.h"
 #include "Text.h"
 #include "TextClass.h"
 #include "VSpace.h"

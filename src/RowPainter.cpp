@@ -1,5 +1,5 @@
 /**
- * \file rowpainter.cpp
+ * \file RowPainter.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 #include <config.h>
 #include <algorithm>
 
-#include "rowpainter.h"
+#include "RowPainter.h"
 
 #include "Buffer.h"
 #include "CoordCache.h"

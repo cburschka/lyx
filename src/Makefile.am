@@ -168,7 +168,7 @@ SOURCEFILESCORE = \
 	ParIterator.cpp \
 	PDFOptions.cpp \
 	Row.cpp \
-	rowpainter.cpp \
+	RowPainter.cpp \
 	Server.cpp \
 	ServerSocket.cpp \
 	sgml.cpp \
@@ -273,7 +273,7 @@ HEADERFILESCORE = \
 	ParIterator.h \
 	PDFOptions.h \
 	Row.h \
-	rowpainter.h \
+	RowPainter.h \
 	Server.h \
 	ServerSocket.h \
 	Session.h \
