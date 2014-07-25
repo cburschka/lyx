@@ -80,7 +80,6 @@ public:
 		RC_EXAMPLEPATH,
 		RC_EXPORT_OVERWRITE,
 		RC_FONT_ENCODING,
-		RC_FORCE_PAINT_SINGLE_CHAR,
 		RC_FILEFORMAT,
 		RC_FORWARD_SEARCH_DVI,
 		RC_FORWARD_SEARCH_PDF,
@@ -147,7 +146,6 @@ public:
 		RC_PRINTTOPRINTER,
 		RC_PRINT_ADAPTOUTPUT,
 		RC_PRINT_COMMAND,
-		RC_RTL_SUPPORT,
 		RC_SAVE_COMPRESSED,
 		RC_SCREEN_DPI,
 		RC_SCREEN_FONT_ROMAN,
@@ -411,8 +409,6 @@ public:
 	};
 	///
 	LangPackageSelection language_package_selection;
-	///
-	bool rtl_support;
 	/// bidi cursor movement: true = visual, false = logical
 	bool visual_cursor;
 	///
@@ -551,8 +547,6 @@ public:
 	};
 	///
 	ScrollWheelZoom scroll_wheel_zoom;
-	///
-	bool force_paint_single_char;
 	///
 	int cursor_width;
 	/// One of: yes, no, ask

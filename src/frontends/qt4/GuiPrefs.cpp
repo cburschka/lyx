@@ -314,7 +314,6 @@ static void setComboxFont(QComboBox * cb, string const & family,
 	// for bug 1063.
 
 	QFont font;
-	font.setKerning(false);
 
 	QString const font_family = toqstr(family);
 	if (font_family == guiApp->romanFontName()) {
@@ -2263,8 +2262,6 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 {
 	setupUi(this);
 
-	connect(rtlGB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
 	connect(visualCursorRB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(logicalCursorRB, SIGNAL(clicked()),
@@ -2348,9 +2345,7 @@ void PrefLanguage::on_languagePackageCO_currentIndexChanged(int i)
 
 void PrefLanguage::apply(LyXRC & rc) const
 {
-	// FIXME: remove rtl_support bool
-	rc.rtl_support = rtlGB->isChecked();
-	rc.visual_cursor = rtlGB->isChecked() && visualCursorRB->isChecked();
+	rc.visual_cursor = visualCursorRB->isChecked();
 	rc.mark_foreign_language = markForeignCB->isChecked();
 	rc.language_auto_begin = autoBeginCB->isChecked();
 	rc.language_auto_end = autoEndCB->isChecked();
@@ -2376,8 +2371,6 @@ void PrefLanguage::apply(LyXRC & rc) const
 
 void PrefLanguage::update(LyXRC const & rc)
 {
-	// FIXME: remove rtl_support bool
-	rtlGB->setChecked(rc.rtl_support);
 	if (rc.visual_cursor)
 		visualCursorRB->setChecked(true);
 	else

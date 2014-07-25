@@ -57,10 +57,6 @@ void Bidi::computeTables(Paragraph const & par,
 	Buffer const & buf, Row const & row)
 {
 	same_direction_ = true;
-	if (!lyxrc.rtl_support) {
-		start_ = -1;
-		return;
-	}
 
 	if (par.inInset().forceLTR()) {
 		start_ = -1;
@@ -192,7 +188,7 @@ void Bidi::computeTables(Paragraph const & par,
 bool Bidi::isBoundary(Buffer const & buf, Paragraph const & par,
 	pos_type pos) const
 {
-	if (!lyxrc.rtl_support || pos == 0)
+	if (pos == 0)
 		return false;
 
 	if (!inRange(pos - 1)) {
@@ -212,9 +208,6 @@ bool Bidi::isBoundary(Buffer const & buf, Paragraph const & par,
 bool Bidi::isBoundary(Buffer const & buf, Paragraph const & par,
 	pos_type pos, Font const & font) const
 {
-	if (!lyxrc.rtl_support)
-		return false;    // This is just for speedup
-
 	bool const rtl = font.isVisibleRightToLeft();
 	bool const rtl2 = inRange(pos)
 		? level(pos) % 2

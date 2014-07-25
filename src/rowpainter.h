@@ -14,13 +14,13 @@
 #ifndef ROWPAINTER_H
 #define ROWPAINTER_H
 
+#include "Bidi.h"
 #include "Changes.h"
 
 #include "support/types.h"
 
 namespace lyx {
 
-class Bidi;
 class BufferView;
 class Font;
 class FontInfo;
@@ -37,6 +37,21 @@ class TextMetrics;
 namespace frontend { class Painter; }
 
 /**
+ * FIXME: Re-implement row painting using row elements.
+ *
+ * This is not difficult in principle, but the code is intricate and
+ * needs some careful analysis. The first thing that needs to be done
+ * is to break row elements with the same criteria. Currently breakRow
+ * does not consider on-the-fly spell-checking, but it is not clear to
+ * me that it is required. Moreover, this thing would only work if we
+ * are sure that the Row object is up-to-date when drawing happens.
+ * This depends on the update machinery.
+ *
+ * This would allow to get rid of the Bidi class.
+ */
+
+
+/**
  * A class used for painting an individual row of text.
  * FIXME: get rid of that class.
  */
@@ -44,7 +59,7 @@ class RowPainter {
 public:
 	/// initialise and run painter
 	RowPainter(PainterInfo & pi, Text const & text,
-		pit_type pit, Row const & row, Bidi & bidi, int x, int y);
+		pit_type pit, Row const & row, int x, int y);
 
 	/// paint various parts
 	/// FIXME: transfer to TextMetrics
@@ -61,10 +76,7 @@ private:
 	void paintSeparator(double orig_x, double width, FontInfo const & font);
 	void paintForeignMark(double orig_x, Language const * lang, int desc = 0);
 	void paintMisspelledMark(double orig_x, bool changed);
-	void paintHebrewComposeChar(pos_type & vpos, FontInfo const & font);
-	void paintArabicComposeChar(pos_type & vpos, FontInfo const & font);
-	void paintChars(pos_type & vpos, FontInfo const & font,
-			bool hebrew, bool arabic);
+	void paintChars(pos_type & vpos, Font const & font);
 	int paintAppendixStart(int y);
 	void paintFromPos(pos_type & vpos, bool changed);
 	void paintInset(Inset const * inset, pos_type const pos);
@@ -98,10 +110,8 @@ private:
 	Paragraph const & par_;
 	ParagraphMetrics const & pm_;
 
-	/// bidi cache, comes from outside the rowpainter because
-	/// rowpainters are normally created in a for loop and there only
-	/// one of them is active at a time.
-	Bidi & bidi_;
+	/// bidi cache
+	Bidi bidi_;
 
 	/// row changed? (change tracking)
 	Change const change_;

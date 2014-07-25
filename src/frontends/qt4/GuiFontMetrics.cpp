@@ -15,14 +15,18 @@
 
 #include "qt_helpers.h"
 
-#include "Language.h"
 #include "Dimension.h"
+#include "Language.h"
+#include "LyXRC.h"
 
 #include "insets/Inset.h"
 
 #include "support/lassert.h"
 
+#include <QTextLayout>
+
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
@@ -39,7 +43,7 @@ namespace {
  * why this works well for symbol fonts used in mathed too, even though
  * these are not real ucs4 characters. These are codepoints in the
  * computer modern fonts used, nothing unicode related.
- * See comment in QLPainter::text() for more explanation.
+ * See comment in GuiPainter::text() for more explanation.
  **/
 inline QChar const ucs4_to_qchar(char_type const ucs4)
 {
@@ -49,7 +53,7 @@ inline QChar const ucs4_to_qchar(char_type const ucs4)
 } // anon namespace
 
 
-GuiFontMetrics::GuiFontMetrics(QFont const & font) : metrics_(font, 0)
+GuiFontMetrics::GuiFontMetrics(QFont const & font) : font_(font), metrics_(font, 0)
 {
 }
 
@@ -110,21 +114,14 @@ int GuiFontMetrics::rbearing(char_type c) const
 
 int GuiFontMetrics::width(docstring const & s) const
 {
-	size_t ls = s.size();
 	int w = 0;
-	for (unsigned int i = 0; i < ls; ++i) {
-		//FIXME: we need to detect surrogate pairs and act accordingly
-		/**
-		if isSurrogateBase(s[i]) {
-			docstring c = s[i];
-			w += metrics_.width(toqstr(c + s[i + 1]));
-			++i;
-		}
-		else
-		*/
-		w += width(s[i]);
+	map<docstring, int>::const_iterator it = strwidth_cache_.find(s);
+	if (it != strwidth_cache_.end()) {
+		w = it->second;
+	} else {
+		w = metrics_.width(toqstr(s));
+		strwidth_cache_[s] = w;
 	}
-
 	return w;
 }
 
@@ -144,6 +141,39 @@ int GuiFontMetrics::signedWidth(docstring const & s) const
 		return -width(s.substr(1, s.size() - 1));
 	else
 		return width(s);
+}
+
+namespace {
+void setTextLayout(QTextLayout & tl, docstring const & s, QFont const & font,
+			     bool const rtl)
+{
+	tl.setText(toqstr(s));
+	tl.setFont(font);
+	// Note that both setFlags and the enums are undocumented
+	tl.setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
+	tl.beginLayout();
+	tl.createLine();
+	tl.endLayout();
+}
+}
+
+
+int GuiFontMetrics::pos2x(docstring const & s, int const pos, bool const rtl) const
+{
+	QTextLayout tl;
+	setTextLayout(tl, s, font_, rtl);
+	return tl.lineForTextPosition(pos).cursorToX(pos);
+}
+
+
+int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl) const
+{
+	QTextLayout tl;
+	setTextLayout(tl, s, font_, rtl);
+	int pos = tl.lineForTextPosition(0).xToCursor(x);
+	// correct x value to the actual cursor position.
+	x = tl.lineForTextPosition(0).cursorToX(pos);
+	return pos;
 }
 
 

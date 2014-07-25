@@ -105,30 +105,21 @@ public:
 
 	///
 	int maxWidth() const { return max_width_; }
-	///
-	int singleWidth(pit_type const pit,	pos_type pos) const;
 
 	///
 	int rightMargin(ParagraphMetrics const & pm) const;
 	int rightMargin(pit_type const pit) const;
 
-	/** this calculates the specified parameters. needed when setting
-	 * the cursor and when creating a visible row */
-	void computeRowMetrics(pit_type pit, Row & row, int width) const;
-
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-	
+
 	void drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) const;
 
 	/// Returns the height of the row (width member is set to 0).
 	/// If \c topBottomSpace is true, extra space is added for the
 	/// top and bottom row.
-	Dimension rowHeight(
-		pit_type const pit,
-		pos_type const first,
-		pos_type const end,
-		bool topBottomSpace = true) const;
+	void setRowHeight(Row & row, pit_type const pit,
+			  bool topBottomSpace = true) const;
 
 private:
 	///
@@ -142,19 +133,13 @@ private:
 
 	/// sets row.end to the pos value *after* which a row should break.
 	/// for example, the pos after which isNewLine(pos) == true
-	pos_type rowBreakPoint(
-		int width,
-		pit_type const pit,
-		pos_type first
-		) const;
+	void breakRow(Row & row, int right_margin, pit_type const pit) const;
 
-	/// returns the minimum space a row needs on the screen in pixel
-	int rowWidth(
-		int right_margin,
-		pit_type const pit,
-		pos_type const first,
-		pos_type const end
-		) const;
+	// Expand the alignment of paragraph \param par at position \param pos
+	int getAlign(Paragraph const & par, pos_type pos) const;
+	/** this calculates the specified parameters. needed when setting
+	 * the cursor and when creating a visible row */
+	void computeRowMetrics(pit_type pit, Row & row, int width) const;
 
 	// Helper function for the other checkInsetHit method.
 	InsetList::InsetTable * checkInsetHit(pit_type pit, int x, int y);
@@ -162,11 +147,10 @@ private:
 
 // Temporary public:
 public:
-	/// returns the column near the specified x-coordinate of the row.
+	/// returns the position near the specified x-coordinate of the row.
 	/// x is an absolute screen coord, it is set to the real beginning
 	/// of this column.
-	pos_type getColumnNearX(pit_type pit, Row const & row, int & x,
-		bool & boundary) const;
+	pos_type getPosNearX(Row const & row, int & x, bool & boundary) const;
 
 	/// returns pos in given par at given x coord.
 	pos_type x2pos(pit_type pit, int row, int x) const;

@@ -190,8 +190,7 @@ void ParagraphMetrics::dump() const
 {
 	lyxerr << "Paragraph::dump: rows.size(): " << rows_.size() << endl;
 	for (size_t i = 0; i != rows_.size(); ++i) {
-		lyxerr << "  row " << i << ":   ";
-		rows_[i].dump();
+		lyxerr << "  row " << i << ":   " << rows_[i];
 	}
 }
 
@@ -216,27 +215,15 @@ int ParagraphMetrics::singleWidth(pos_type pos, Font const & font) const
 	if (Inset const * inset = par_->getInset(pos))
 		return insetDimension(inset).wid;
 
-	char_type c = par_->getChar(pos);
+	char_type const c = par_->getChar(pos);
 
 	if (c == '\t')
 		return 4 * theFontMetrics(font).width(' ');
-	
-	if (!isPrintable(c))
-		return theFontMetrics(font).width(c);
 
-	Language const * language = font.language();
-	if (language->rightToLeft()) {
-		if (language->lang() == "arabic_arabtex" ||
-			language->lang() == "arabic_arabi" ||
-			language->lang() == "farsi") {
-				if (Encodings::isArabicComposeChar(c))
-					return 0;
-				c = par_->transformChar(c, pos);
-		} else if (language->lang() == "hebrew" &&
-				Encodings::isHebrewComposeChar(c)) {
-			return 0;
-		}
-	}
+	// Note that this function is only called in
+	// RowPainter::paintText, and only used for characters that do
+	// not require handling of compose chars or ligatures. It can
+	// therefore be kept simple.
 	return theFontMetrics(font).width(c);
 }
 

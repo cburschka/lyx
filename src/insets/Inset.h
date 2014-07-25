@@ -431,8 +431,8 @@ public:
 	/// is this equivalent to a space (which is BTW different from
 	/// a line separator)?
 	virtual bool isSpace() const { return false; }
-	/// is this an expandible space (rubber length)?
-	virtual bool isStretchableSpace() const { return false; }
+	/// does this inset try to use all available space (like \\hfill does)?
+	virtual bool isHfill() const { return false; }
 
 	enum DisplayType {
 		Inline = 0,

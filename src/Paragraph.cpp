@@ -1928,7 +1928,7 @@ FontSize Paragraph::highestFontInRange
 char_type Paragraph::getUChar(BufferParams const & bparams, pos_type pos) const
 {
 	char_type c = d->text_[pos];
-	if (!lyxrc.rtl_support || !getFontSettings(bparams, pos).isRightToLeft())
+	if (!getFontSettings(bparams, pos).isRightToLeft())
 		return c;
 
 	// FIXME: The arabic special casing is due to the difference of arabic
@@ -3200,8 +3200,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 bool Paragraph::isHfill(pos_type pos) const
 {
 	Inset const * inset = getInset(pos);
-	return inset && (inset->lyxCode() == SPACE_CODE &&
-			 inset->isStretchableSpace());
+	return inset && inset->isHfill();
 }
 
 
@@ -3305,8 +3304,7 @@ Paragraph::getParLanguage(BufferParams const & bparams) const
 
 bool Paragraph::isRTL(BufferParams const & bparams) const
 {
-	return lyxrc.rtl_support
-		&& getParLanguage(bparams)->rightToLeft()
+	return getParLanguage(bparams)->rightToLeft()
 		&& !inInset().getLayout().forceLTR();
 }
 
@@ -3494,46 +3492,6 @@ bool Paragraph::allowEmpty() const
 	if (d->layout_->keepempty)
 		return true;
 	return d->inset_owner_ && d->inset_owner_->allowEmpty();
-}
-
-
-char_type Paragraph::transformChar(char_type c, pos_type pos) const
-{
-	if (!Encodings::isArabicChar(c))
-		return c;
-
-	char_type prev_char = ' ';
-	char_type next_char = ' ';
-
-	for (pos_type i = pos - 1; i >= 0; --i) {
-		char_type const par_char = d->text_[i];
-		if (!Encodings::isArabicComposeChar(par_char)) {
-			prev_char = par_char;
-			break;
-		}
-	}
-
-	for (pos_type i = pos + 1, end = size(); i < end; ++i) {
-		char_type const par_char = d->text_[i];
-		if (!Encodings::isArabicComposeChar(par_char)) {
-			next_char = par_char;
-			break;
-		}
-	}
-
-	if (Encodings::isArabicChar(next_char)) {
-		if (Encodings::isArabicChar(prev_char) &&
-			!Encodings::isArabicSpecialChar(prev_char))
-			return Encodings::transformChar(c, Encodings::FORM_MEDIAL);
-		else
-			return Encodings::transformChar(c, Encodings::FORM_INITIAL);
-	} else {
-		if (Encodings::isArabicChar(prev_char) &&
-			!Encodings::isArabicSpecialChar(prev_char))
-			return Encodings::transformChar(c, Encodings::FORM_FINAL);
-		else
-			return Encodings::transformChar(c, Encodings::FORM_ISOLATED);
-	}
 }
 
 

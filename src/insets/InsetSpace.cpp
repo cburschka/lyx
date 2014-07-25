@@ -199,7 +199,7 @@ int const arrow_size = 8;
 
 void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	if (isStretchableSpace()) {
+	if (isHfill()) {
 		// The metrics for this kinds are calculated externally in
 		// \c TextMetrics::computeRowMetrics. Those are dummy value:
 		dim = Dimension(10, 10, 10);
@@ -240,7 +240,7 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 			break;
 		case InsetSpaceParams::CUSTOM:
 		case InsetSpaceParams::CUSTOM_PROTECTED: {
-			int const w = 
+			int const w =
 				params_.length.len().inPixels(mi.base.textwidth,
 							fm.width(char_type('M')));
 			int const minw = (w < 0) ? 3 * arrow_size : 4;
@@ -267,7 +267,7 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
 
-	if (isStretchableSpace() || params_.length.len().value() < 0) {
+	if (isHfill() || params_.length.len().value() < 0) {
 		int const asc = theFontMetrics(pi.base.font).ascent('M');
 		int const desc = theFontMetrics(pi.base.font).descent('M');
 		// Pixel height divisible by 2 for prettier fill graphics:
@@ -459,7 +459,7 @@ void InsetSpaceParams::write(ostream & os) const
 		os <<  "\\hspace*{}";
 		break;
 	}
-	
+
 	if (!length.len().empty())
 		os << "\n\\length " << length.asString();
 }
@@ -837,7 +837,7 @@ void InsetSpace::forOutliner(docstring & os, size_t) const
 }
 
 
-bool InsetSpace::isStretchableSpace() const
+bool InsetSpace::isHfill() const
 {
 	return params_.kind == InsetSpaceParams::HFILL
 		|| params_.kind == InsetSpaceParams::HFILL_PROTECTED

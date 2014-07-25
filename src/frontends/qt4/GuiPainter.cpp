@@ -9,6 +9,10 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#ifdef Q_WS_MAC
+#define USE_RTL_OVERRIDE 1
+#endif
+
 #include <config.h>
 
 #include "GuiPainter.h"
@@ -20,7 +24,7 @@
 #include "GuiImage.h"
 #include "qt_helpers.h"
 
-#include "FontInfo.h"
+#include "Font.h"
 #include "Language.h"
 #include "LyXRC.h"
 
@@ -41,6 +45,7 @@
 #endif
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
@@ -271,14 +276,14 @@ void GuiPainter::image(int x, int y, int w, int h, graphics::Image const & i)
 
 int GuiPainter::text(int x, int y, char_type c, FontInfo const & f)
 {
-	docstring s(1, c);
-	return text(x, y, s, f);
+	return text(x, y, docstring(1, c), f);
 }
 
 
 int GuiPainter::text(int x, int y, docstring const & s,
-		FontInfo const & f)
+		     FontInfo const & f, bool const rtl)
 {
+	//LYXERR0("text: x=" << x << ", s=" << s);
 	if (s.empty())
 		return 0;
 
@@ -302,27 +307,24 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		str = ' ' + str;
 #endif
 
-	QFont const & ff = getFont(f); 
-	GuiFontMetrics const & fm = getFontMetrics(f); 
-
-	int textwidth;
+	QFont const & ff = getFont(f);
+	GuiFontMetrics const & fm = getFontMetrics(f);
 
 	// Here we use the font width cache instead of
 	//   textwidth = fontMetrics().width(str);
 	// because the above is awfully expensive on MacOSX
-	textwidth = fm.width(s);
-	textDecoration(f, x, y, textwidth);
+	int const textwidth = fm.width(s);
 
 	if (!isDrawingEnabled())
 		return textwidth;
+
+	textDecoration(f, x, y, textwidth);
 
 	// Qt4 does not display a glyph whose codepoint is the
 	// same as that of a soft-hyphen (0x00ad), unless it
 	// occurs at a line-break. As a kludge, we force Qt to
 	// render this glyph using a one-column line.
 	// This is needed for some math glyphs.
-	// FIXME In texted, this behaves differently depending
-	// on lyxrc.force_paint_single_char status.
 	// Should the soft hyphen char be displayed at all?
 	// I don't think so (i.e., Qt is correct as far as
 	// texted is concerned). /spitz
@@ -391,11 +393,74 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	setQPainterPen(computeColor(f.realColor()));
 	if (font() != ff)
 		setFont(ff);
-	// We need to draw the text as LTR as we use our own bidi code.
-	QPainter::setLayoutDirection(Qt::LeftToRight);
+
+	 /* In LyX, the character direction is forced by the language.
+	  * Therefore, we have to signal that fact to Qt.
+	  */
+#ifdef USE_RTL_OVERRIDE
+	/* Use unicode override characters to enforce drawing direction
+	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
+	 */
+	if (rtl)
+		// Right-to-left override: forces to draw text right-to-left
+		str = QChar(0x202E) + str;
+	else
+		// Left-to-right override: forces to draw text left-to-right
+		str =  QChar(0x202D) + str;
 	drawText(x, y, str);
+#else
+	/* This is a cleanr solution, but it has two drawbacks
+	 * - it seems that it does not work under Mac OS X
+	 * - it is not really documented
+	 */
+	//This is much stronger than setLayoutDirection.
+	int flag = rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight;
+	drawText(x + (rtl ? textwidth : 0), y - fm.maxAscent(), 0, 0,
+		 flag | Qt::TextDontClip,
+		 str);
+#endif
 	//LYXERR(Debug::PAINTING, "draw " << string(str.toUtf8())
 	//	<< " at " << x << "," << y);
+	return textwidth;
+}
+
+
+int GuiPainter::text(int x, int y, docstring const & str, Font const & f)
+{
+	return text(x, y, str, f.fontInfo(), f.isVisibleRightToLeft());
+}
+
+
+int GuiPainter::text(int x, int y, docstring const & str, Font const & f,
+		     Color other, size_type from, size_type to)
+{
+	GuiFontMetrics const & fm = getFontMetrics(f.fontInfo());
+	FontInfo fi = f.fontInfo();
+	bool const rtl = f.isVisibleRightToLeft();
+
+	// dimensions
+	int const ascent = fm.maxAscent();
+	int const height = fm.maxAscent() + fm.maxDescent();
+	int xmin = fm.pos2x(str, from, rtl);
+	int xmax = fm.pos2x(str, to, rtl);
+	if (xmin > xmax)
+		swap(xmin, xmax);
+
+	// First the part in other color
+	Color const orig = fi.realColor();
+	fi.setPaintColor(other);
+	setClipRect(QRect(x + xmin, y - ascent, xmax - xmin, height));
+	int const textwidth = text(x, y, str, fi, rtl);
+
+	// Then the part in normal color
+	// Note that in Qt5, it is not possible to use Qt::UniteClip
+	fi.setPaintColor(orig);
+	setClipRect(QRect(x, y - ascent, xmin, height));
+	text(x, y, str, fi, rtl);
+	setClipRect(QRect(x + xmax, y - ascent, textwidth - xmax, height));
+	text(x, y, str, fi, rtl);
+	setClipping(false);
+
 	return textwidth;
 }
 

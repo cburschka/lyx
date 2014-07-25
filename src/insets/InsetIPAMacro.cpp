@@ -620,16 +620,4 @@ void InsetIPAChar::validate(LaTeXFeatures & features) const
 }
 
 
-bool InsetIPAChar::isLetter() const
-{
-	return true;
-}
-
-
-bool InsetIPAChar::isLineSeparator() const
-{
-	return false;
-}
-
-
 } // namespace lyx

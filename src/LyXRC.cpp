@@ -58,7 +58,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 15; // prannoy: statusbar on/off in full screen
+static unsigned int const LYXRC_FILEFORMAT = 17; // lasgouttes: remove \\rtl
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
@@ -106,7 +106,6 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\example_path", LyXRC::RC_EXAMPLEPATH },
 	{ "\\export_overwrite", LyXRC::RC_EXPORT_OVERWRITE },
 	{ "\\font_encoding", LyXRC::RC_FONT_ENCODING },
-	{ "\\force_paint_single_char", LyXRC::RC_FORCE_PAINT_SINGLE_CHAR },
 	{ "\\format", LyXRC::RC_FILEFORMAT },
 	{ "\\forward_search_dvi", LyXRC::RC_FORWARD_SEARCH_DVI },
 	{ "\\forward_search_pdf", LyXRC::RC_FORWARD_SEARCH_PDF },
@@ -171,7 +170,6 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\print_to_file", LyXRC::RC_PRINTTOFILE },
 	{ "\\print_to_printer", LyXRC::RC_PRINTTOPRINTER },
 	{ "\\printer", LyXRC::RC_PRINTER },
-	{ "\\rtl", LyXRC::RC_RTL_SUPPORT },
 	{ "\\save_compressed", LyXRC::RC_SAVE_COMPRESSED },
 	{ "\\screen_dpi", LyXRC::RC_SCREEN_DPI },
 	{ "\\screen_font_roman", LyXRC::RC_SCREEN_FONT_ROMAN },
@@ -314,7 +312,6 @@ void LyXRC::setDefaults()
 	completion_minlength = 6;
 	spellcheck_notes = true;
 	use_kbmap = false;
-	rtl_support = true;
 	visual_cursor = false;
 	auto_number = true;
 	mark_foreign_language = true;
@@ -447,9 +444,6 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 	if (!lexrc.isOK())
 		return ReadError;
 
-	// default for current rowpainter capabilities
-	force_paint_single_char = true;
-
 	// format prior to 2.0 and introduction of format tag
 	unsigned int format = 0;
 
@@ -553,10 +547,6 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 
 		case RC_FONT_ENCODING:
 			lexrc >> fontenc;
-			break;
-
-		case RC_FORCE_PAINT_SINGLE_CHAR:
-			lexrc >> force_paint_single_char;
 			break;
 
 		case RC_PRINTER:
@@ -1049,9 +1039,6 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			break;
 		case RC_LANGUAGE_COMMAND_LOCAL:
 			lexrc >> language_command_local;
-			break;
-		case RC_RTL_SUPPORT:
-			lexrc >> rtl_support;
 			break;
 		case RC_VISUAL_CURSOR:
 			lexrc >> visual_cursor;
@@ -2221,14 +2208,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 
-	case RC_FORCE_PAINT_SINGLE_CHAR:
-		if (ignore_system_lyxrc ||
-		    force_paint_single_char != system_lyxrc.force_paint_single_char) {
-			os << "\\force_paint_single_char \"" << force_paint_single_char << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
-
 		os << "\n#\n"
 		   << "# FILE SECTION ######################################\n"
 		   << "#\n\n";
@@ -2553,13 +2532,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 
-	case RC_RTL_SUPPORT:
-		if (ignore_system_lyxrc ||
-		    rtl_support != system_lyxrc.rtl_support) {
-			os << "\\rtl " << convert<string>(rtl_support) << '\n';
-		}
-		if (tag != RC_LAST)
-			break;
 	case RC_VISUAL_CURSOR:
 		if (ignore_system_lyxrc ||
 			visual_cursor != system_lyxrc.visual_cursor) {
@@ -2974,7 +2946,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_ESC_CHARS:
 	case LyXRC::RC_EXAMPLEPATH:
 	case LyXRC::RC_FONT_ENCODING:
-	case LyXRC::RC_FORCE_PAINT_SINGLE_CHAR:
 	case LyXRC::RC_FILEFORMAT:
 	case LyXRC::RC_GROUP_LAYOUTS:
 	case LyXRC::RC_HUNSPELLDIR_PATH:
@@ -3032,7 +3003,6 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_PRINTTOPRINTER:
 	case LyXRC::RC_PRINT_ADAPTOUTPUT:
 	case LyXRC::RC_PRINT_COMMAND:
-	case LyXRC::RC_RTL_SUPPORT:
 	case LyXRC::RC_SAVE_COMPRESSED:
 	case LyXRC::RC_SCREEN_DPI:
 	case LyXRC::RC_SCREEN_FONT_ROMAN:
@@ -3226,10 +3196,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_FONT_ENCODING:
 		str = _("The font encoding used for the LaTeX2e fontenc package. T1 is highly recommended for non-English languages.");
-		break;
-
-	case RC_FORCE_PAINT_SINGLE_CHAR:
-		str = _("Disable any kerning and ligatures for text drawing on screen.");
 		break;
 
 	case RC_FILEFORMAT:
@@ -3442,10 +3408,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_PRINT_COMMAND:
 		str = _("Your favorite print program, e.g. \"dvips\", \"dvilj4\".");
-		break;
-
-	case RC_RTL_SUPPORT:
-		str = _("Select to enable support of right-to-left languages (e.g. Hebrew, Arabic).");
 		break;
 
 	case RC_VISUAL_CURSOR:

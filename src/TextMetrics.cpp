@@ -19,7 +19,6 @@
 
 #include "TextMetrics.h"
 
-#include "Bidi.h"
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "BufferParams.h"
@@ -30,31 +29,25 @@
 #include "HSpace.h"
 #include "InsetList.h"
 #include "Layout.h"
-#include "Length.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
 #include "ParagraphParameters.h"
-#include "ParIterator.h"
 #include "rowpainter.h"
 #include "Text.h"
 #include "TextClass.h"
 #include "VSpace.h"
-#include "WordLangTuple.h"
 
 #include "insets/InsetText.h"
 
-#include "mathed/MacroTable.h"
 #include "mathed/MathMacroTemplate.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 #include "support/debug.h"
-#include "support/docstring_list.h"
-#include "support/gettext.h"
 #include "support/lassert.h"
 
-#include <cstdlib>
+#include <cmath>
 
 using namespace std;
 
@@ -63,20 +56,32 @@ namespace lyx {
 
 using frontend::FontMetrics;
 
-static int numberOfSeparators(Paragraph const & par, Row const & row)
+namespace {
+
+int numberOfSeparators(Row const & row)
 {
-	pos_type const first = max(row.pos(), par.beginOfBody());
-	pos_type const last = row.endpos() - 1;
 	int n = 0;
-	for (pos_type p = first; p < last; ++p) {
-		if (par.isSeparator(p))
+	Row::const_iterator cit = row.begin();
+	Row::const_iterator const end = row.end();
+	for ( ; cit != end ; ++cit)
+		if (cit->type == Row::SEPARATOR)
 			++n;
-	}
 	return n;
 }
 
 
-static int numberOfLabelHfills(Paragraph const & par, Row const & row)
+void setSeparatorWidth(Row & row, double w)
+{
+	row.separator = w;
+	Row::iterator it = row.begin();
+	Row::iterator const end = row.end();
+	for ( ; it != end ; ++it)
+		if (it->type == Row::SEPARATOR)
+			it->extra = w;
+}
+
+
+int numberOfLabelHfills(Paragraph const & par, Row const & row)
 {
 	pos_type last = row.endpos() - 1;
 	pos_type first = row.pos();
@@ -97,27 +102,20 @@ static int numberOfLabelHfills(Paragraph const & par, Row const & row)
 }
 
 
-static int numberOfHfills(Paragraph const & par, Row const & row)
+int numberOfHfills(Row const & row, pos_type const body_pos)
 {
-	pos_type const last = row.endpos();
-	pos_type first = row.pos();
-
-	// hfill *DO* count at the beginning of paragraphs!
-	if (first) {
-		while (first < last && par.isHfill(first))
-			++first;
-	}
-
-	first = max(first, par.beginOfBody());
-
 	int n = 0;
-	for (pos_type p = first; p < last; ++p) {
-		if (par.isHfill(p))
+	Row::const_iterator cit = row.begin();
+	Row::const_iterator const end = row.end();
+	for ( ; cit != end ; ++cit)
+		if (cit->pos >= body_pos
+		    && cit->inset && cit->inset->isHfill())
 			++n;
-	}
 	return n;
 }
 
+
+}
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -292,7 +290,7 @@ Font TextMetrics::displayFont(pit_type pit, pos_type pos) const
 
 bool TextMetrics::isRTL(CursorSlice const & sl, bool boundary) const
 {
-	if (!lyxrc.rtl_support || !sl.text())
+	if (!sl.text())
 		return false;
 
 	int correction = 0;
@@ -306,7 +304,7 @@ bool TextMetrics::isRTL(CursorSlice const & sl, bool boundary) const
 bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos) const
 {
 	// no RTL boundary at paragraph start
-	if (!lyxrc.rtl_support || pos == 0)
+	if (pos == 0)
 		return false;
 
 	Font const & left_font = displayFont(pit, pos - 1);
@@ -321,9 +319,8 @@ bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos) const
 bool TextMetrics::isRTLBoundary(pit_type pit, pos_type pos,
 		Font const & font) const
 {
-	if (!lyxrc.rtl_support
-	    // no RTL boundary at paragraph start
-	    || pos == 0
+	if (// no RTL boundary at paragraph start
+	    pos == 0
 	    // if the metrics have not been calculated, then we are not
 	    // on screen and can safely ignore issues about boundaries.
 	    || !contains(pit))
@@ -460,32 +457,26 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	pos_type first = 0;
 	size_t row_index = 0;
 	// maximum pixel width of a row
-	int width = max_width_ - right_margin; // - leftMargin(max_width_, pit, row);
 	do {
-		Dimension dim;
-		pos_type end = rowBreakPoint(width, pit, first);
-		if (row_index || end < par.size())
+		if (row_index == pm.rows().size())
+			pm.rows().push_back(Row());
+		Row & row = pm.rows()[row_index];
+		row.pos(first);
+		breakRow(row, right_margin, pit);
+		setRowHeight(row, pit);
+		row.setChanged(false);
+		if (row_index || row.endpos() < par.size())
 			// If there is more than one row, expand the text to
 			// the full allowable width. This setting here is needed
 			// for the computeRowMetrics() below.
 			dim_.wid = max_width_;
-
-		dim = rowHeight(pit, first, end);
-		dim.wid = rowWidth(right_margin, pit, first, end);
-		if (row_index == pm.rows().size())
-			pm.rows().push_back(Row());
-		Row & row = pm.rows()[row_index];
-		row.setChanged(false);
-		row.pos(first);
-		row.endpos(end);
-		row.setDimension(dim);
-		int const max_row_width = max(dim_.wid, dim.wid);
+		int const max_row_width = max(dim_.wid, row.width());
 		computeRowMetrics(pit, row, max_row_width);
-		first = end;
+		first = row.endpos();
 		++row_index;
 
-		pm.dim().wid = max(pm.dim().wid, dim.wid);
-		pm.dim().des += dim.height();
+		pm.dim().wid = max(pm.dim().wid, row.width());
+		pm.dim().des += row.height();
 	} while (first < par.size());
 
 	if (row_index < pm.rows().size())
@@ -494,18 +485,16 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	// Make sure that if a par ends in newline, there is one more row
 	// under it
 	if (first > 0 && par.isNewline(first - 1)) {
-		Dimension dim = rowHeight(pit, first, first);
-		dim.wid = rowWidth(right_margin, pit, first, first);
 		if (row_index == pm.rows().size())
 			pm.rows().push_back(Row());
 		Row & row = pm.rows()[row_index];
-		row.setChanged(false);
 		row.pos(first);
 		row.endpos(first);
-		row.setDimension(dim);
-		int const max_row_width = max(dim_.wid, dim.wid);
+		setRowHeight(row, pit);
+		row.setChanged(false);
+		int const max_row_width = max(dim_.wid, row.width());
 		computeRowMetrics(pit, row, max_row_width);
-		pm.dim().des += dim.height();
+		pm.dim().des += row.height();
 	}
 
 	pm.dim().asc += pm.rows()[0].ascent();
@@ -517,6 +506,57 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 }
 
 
+int TextMetrics::getAlign(Paragraph const & par, pos_type const pos) const
+{
+	Layout const & layout = par.layout();
+
+	int align;
+	if (par.params().align() == LYX_ALIGN_LAYOUT)
+		align = layout.align;
+	else
+		align = par.params().align();
+
+	// handle alignment inside tabular cells
+	Inset const & owner = text_->inset();
+	switch (owner.contentAlignment()) {
+	case LYX_ALIGN_CENTER:
+	case LYX_ALIGN_LEFT:
+	case LYX_ALIGN_RIGHT:
+		if (align == LYX_ALIGN_NONE || align == LYX_ALIGN_BLOCK)
+			align = owner.contentAlignment();
+		break;
+	default:
+		// unchanged (use align)
+		break;
+	}
+
+	// Display-style insets should always be on a centered row
+	if (Inset const * inset = par.getInset(pos)) {
+		switch (inset->display()) {
+		case Inset::AlignLeft:
+			align = LYX_ALIGN_BLOCK;
+			break;
+		case Inset::AlignCenter:
+			align = LYX_ALIGN_CENTER;
+			break;
+		case Inset::Inline:
+			// unchanged (use align)
+			break;
+		case Inset::AlignRight:
+			align = LYX_ALIGN_RIGHT;
+			break;
+		}
+	}
+
+	// Has the user requested we not justify stuff?
+	if (!bv_->buffer().params().justification
+	    && align == LYX_ALIGN_BLOCK)
+		align = LYX_ALIGN_LEFT;
+
+	return align;
+}
+
+
 void TextMetrics::computeRowMetrics(pit_type const pit,
 		Row & row, int width) const
 {
@@ -525,13 +565,9 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 
 	Paragraph const & par = text_->getPar(pit);
 
-	double w = width - row.width();
+	double const w = width - row.right_margin - row.width();
 	// FIXME: put back this assertion when the crash on new doc is solved.
 	//LASSERT(w >= 0, /**/);
-
-	//lyxerr << "\ndim_.wid " << dim_.wid << endl;
-	//lyxerr << "row.width() " << row.width() << endl;
-	//lyxerr << "w " << w << endl;
 
 	bool const is_rtl = text_->isRTL(par);
 	if (is_rtl)
@@ -542,10 +578,11 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	// is there a manual margin with a manual label
 	Layout const & layout = par.layout();
 
+	int nlh = 0;
 	if (layout.margintype == MARGIN_MANUAL
 	    && layout.labeltype == LABEL_MANUAL) {
 		/// We might have real hfills in the label part
-		int nlh = numberOfLabelHfills(par, row);
+		nlh = numberOfLabelHfills(par, row);
 
 		// A manual label par (e.g. List) has an auto-hfill
 		// between the label text and the body of the
@@ -561,7 +598,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 
 	double hfill = 0;
 	// are there any hfills in the row?
-	if (int const nh = numberOfHfills(par, row)) {
+	if (int const nh = numberOfHfills(row, par.beginOfBody())) {
 		if (w > 0)
 			hfill = w / double(nh);
 	// we don't have to look at the alignment if it is ALIGN_LEFT and
@@ -570,72 +607,18 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	} else if (int(row.width()) < max_width_) {
 		// is it block, flushleft or flushright?
 		// set x how you need it
-		int align;
-		if (par.params().align() == LYX_ALIGN_LAYOUT)
-			align = layout.align;
-		else
-			align = par.params().align();
-
-		// handle alignment inside tabular cells
-		Inset const & owner = text_->inset();
-		switch (owner.contentAlignment()) {
-			case LYX_ALIGN_CENTER:
-			case LYX_ALIGN_LEFT:
-			case LYX_ALIGN_RIGHT:
-				if (align == LYX_ALIGN_NONE
-				    || align == LYX_ALIGN_BLOCK)
-					align = owner.contentAlignment();
-				break;
-			default:
-				// unchanged (use align)
-				break;
-		}
-
-		// Display-style insets should always be on a centered row
-		if (Inset const * inset = par.getInset(row.pos())) {
-			switch (inset->display()) {
-				case Inset::AlignLeft:
-					align = LYX_ALIGN_BLOCK;
-					break;
-				case Inset::AlignCenter:
-					align = LYX_ALIGN_CENTER;
-					break;
-				case Inset::Inline:
-					// unchanged (use align)
-					break;
-				case Inset::AlignRight:
-					align = LYX_ALIGN_RIGHT;
-					break;
-			}
-		}
-
-		// Has the user requested we not justify stuff?
-		if (!bv_->buffer().params().justification
-		    && align == LYX_ALIGN_BLOCK)
-			align = LYX_ALIGN_LEFT;
-
-		switch (align) {
+		switch (getAlign(par, row.pos())) {
 		case LYX_ALIGN_BLOCK: {
-			int const ns = numberOfSeparators(par, row);
-			bool disp_inset = false;
-			if (row.endpos() < par.size()) {
-				Inset const * in = par.getInset(row.endpos());
-				if (in)
-					disp_inset = in->display();
-			}
-			// If we have separators, this is not the last row of a
-			// par, does not end in newline, and is not row above a
-			// display inset... then stretch it
-			if (ns
-			    && row.endpos() < par.size()
-			    && !par.isNewline(row.endpos() - 1)
-			    && !par.isEnvSeparator(row.endpos() - 1)
-			    && !disp_inset
-				) {
-				row.separator = w / ns;
-				//lyxerr << "row.separator " << row.separator << endl;
-				//lyxerr << "ns " << ns << endl;
+			int const ns = numberOfSeparators(row);
+			/** If we have separators, and this row has
+			 * not be broken abruptly by a display inset
+			 * or newline, then stretch it */
+			if (ns && !row.right_boundary() 
+			    && row.endpos() != par.size()) {
+				setSeparatorWidth(row, w / ns);
+				row.dimension().wid = width;
 			} else if (is_rtl) {
+				row.dimension().wid = width;
 				row.x += w;
 			}
 			break;
@@ -644,48 +627,50 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			row.x += w;
 			break;
 		case LYX_ALIGN_CENTER:
+			row.dimension().wid = width - w / 2;
 			row.x += w / 2;
 			break;
 		}
 	}
 
+#if 0
 	if (is_rtl) {
 		pos_type body_pos = par.beginOfBody();
 		pos_type end = row.endpos();
 
 		if (body_pos > 0
-		    && (body_pos > end || !par.isLineSeparator(body_pos - 1)))
-		{
+		    && (body_pos > end || !par.isLineSeparator(body_pos - 1))) {
 			row.x += theFontMetrics(text_->labelFont(par)).
 				width(layout.labelsep);
 			if (body_pos <= end)
 				row.x += row.label_hfill;
 		}
 	}
+#endif
 
+	// Finally,  handle hfill insets
 	pos_type const endpos = row.endpos();
 	pos_type body_pos = par.beginOfBody();
 	if (body_pos > 0
-		&& (body_pos > endpos || !par.isLineSeparator(body_pos - 1)))
+	    && (body_pos > endpos || !par.isLineSeparator(body_pos - 1)))
 		body_pos = 0;
-
 	ParagraphMetrics & pm = par_metrics_[pit];
-	InsetList::const_iterator ii = par.insetList().begin();
-	InsetList::const_iterator iend = par.insetList().end();
-	for ( ; ii != iend; ++ii) {
-		if (ii->pos >= endpos || ii->pos < row.pos()
-			|| (ii->inset->lyxCode() != SPACE_CODE ||
-			    !ii->inset->isStretchableSpace()))
+	Row::iterator cit = row.begin();
+	Row::iterator const cend = row.end();
+	for ( ; cit != cend; ++cit) {
+		if (row.label_hfill && cit->endpos == body_pos
+		    && cit->type == Row::SPACE)
+			cit->dim.wid -= row.label_hfill * (nlh - 1);
+		if (!cit->inset || !cit->inset->isHfill())
 			continue;
-		Dimension dim = row.dimension();
-		if (pm.hfillExpansion(row, ii->pos))
-			dim.wid = int(ii->pos >= body_pos ?
-				max(hfill, 5.0) : row.label_hfill);
+		if (pm.hfillExpansion(row, cit->pos))
+			cit->dim.wid = int(cit->pos >= body_pos ?
+					   max(hfill, 5.0) : row.label_hfill);
 		else
-			dim.wid = 5;
+			cit->dim.wid = 5;
 		// Cache the inset dimension.
-		bv_->coordCache().insets().add(ii->inset, dim);
-		pm.setInsetDimension(ii->inset, dim);
+		bv_->coordCache().insets().add(cit->inset, cit->dim);
+		pm.setInsetDimension(cit->inset, cit->dim);
 	}
 }
 
@@ -693,20 +678,17 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 int TextMetrics::labelFill(pit_type const pit, Row const & row) const
 {
 	Paragraph const & par = text_->getPar(pit);
-
-	pos_type last = par.beginOfBody();
-	LBUFERR(last > 0 || par.isEnvSeparator(0));
-
-	// -1 because a label ends with a space that is in the label
-	--last;
-
-	// a separator at this end does not count
-	if (last >= 0 && par.isLineSeparator(last))
-		--last;
+	LBUFERR(par.beginOfBody() > 0 || par.isEnvSeparator(0));
 
 	int w = 0;
-	for (pos_type i = row.pos(); i <= last; ++i)
-		w += singleWidth(pit, i);
+	Row::const_iterator cit = row.begin();
+	Row::const_iterator const end = row.end();
+	// iterate over elements before main body (except the last one,
+	// which is extra space).
+	while (cit!= end && cit->endpos < par.beginOfBody()) {
+		w += cit->width();
+		++cit;
+	}
 
 	docstring const & label = par.params().labelWidthString();
 	if (label.empty())
@@ -720,7 +702,7 @@ int TextMetrics::labelFill(pit_type const pit, Row const & row) const
 
 
 #if 0
-// Not used, see TextMetrics::rowBreakPoint.
+// Not used, see TextMetrics::breakRow
 // this needs special handling - only newlines count as a break point
 static pos_type addressBreakPoint(pos_type i, Paragraph const & par)
 {
@@ -802,26 +784,37 @@ private:
 
 } // anon namespace
 
-pos_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
-		pos_type pos) const
+/** This is the function where the hard work is done. The code here is
+ * very sensitive to small changes :) Note that part of the
+ * intelligence is also in Row::shorten_if_needed
+ */
+void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit) const
 {
-	ParagraphMetrics const & pm = par_metrics_[pit];
 	Paragraph const & par = text_->getPar(pit);
 	pos_type const end = par.size();
-	if (pos == end || width < 0)
-		return end;
+	pos_type const pos = row.pos();
+	int const width = max_width_ - right_margin;
+	pos_type const body_pos = par.beginOfBody();
+	row.clear();
+	row.dimension().wid = leftMargin(max_width_, pit, pos);
+	row.right_margin = right_margin;
 
-	Layout const & layout = par.layout();
+	if (pos >= end || row.width() > width) {
+		row.dimension().wid += right_margin;
+		row.endpos(end);
+		return;
+	}
+
+	ParagraphMetrics const & pm = par_metrics_[pit];
+	ParagraphList const & pars = text_->paragraphs();
 
 #if 0
 	//FIXME: As long as leftMargin() is not correctly implemented for
 	// MARGIN_RIGHT_ADDRESS_BOX, we should also not do this here.
 	// Otherwise, long rows will be painted off the screen.
-	if (layout.margintype == MARGIN_RIGHT_ADDRESS_BOX)
+	if (par.layout().margintype == MARGIN_RIGHT_ADDRESS_BOX)
 		return addressBreakPoint(pos, par);
 #endif
-
-	pos_type const body_pos = par.beginOfBody();
 
 	// check for possible inline completion
 	DocIterator const & inlineCompletionPos = bv_->inlineCompletionPos();
@@ -834,190 +827,98 @@ pos_type TextMetrics::rowBreakPoint(int width, pit_type const pit,
 	}
 
 	// Now we iterate through until we reach the right margin
-	// or the end of the par, then choose the possible break
-	// nearest that.
-
-	int label_end = labelEnd(pit);
-	int const left = leftMargin(max_width_, pit, pos);
-	int x = left;
-
-	// pixel width since last breakpoint
-	int chunkwidth = 0;
-
-	docstring const s(1, char_type(0x00B6));
-	Font f;
-	int par_marker_width = theFontMetrics(f).width(s);
-
-	FontIterator fi = FontIterator(*this, par, pit, pos);
-	pos_type point = end;
+	// or the end of the par, then build a representation of the row.
 	pos_type i = pos;
-
-	ParagraphList const & pars_ = text_->paragraphs();
-	bool const draw_par_end_marker = lyxrc.paragraph_markers
-		&& size_type(pit + 1) < pars_.size();
-
-	for ( ; i < end; ++i, ++fi) {
-		int thiswidth = pm.singleWidth(i, *fi);
-
-		if (draw_par_end_marker && i == end - 1)
-			// enlarge the last character to hold the end-of-par marker
-			thiswidth += par_marker_width;
+	FontIterator fi = FontIterator(*this, par, pit, pos);
+	while (i < end && row.width() < width) {
+		char_type c = par.getChar(i);
+		// The most special cases are handled first.
+		if (par.isInset(i)) {
+			Inset const * ins = par.getInset(i);
+			Dimension dim = pm.insetDimension(ins);
+			row.add(i, ins, dim, *fi, par.lookupChange(i));
+		} else if (c == ' ' && i + 1 == body_pos) {
+			// There is a space at i, but it should not be
+			// added as a separator, because it is just
+			// before body_pos. Instead, insert some spacing to
+			// align text
+			FontMetrics const & fm = theFontMetrics(text_->labelFont(par));
+			int const add = max(fm.width(par.layout().labelsep),
+					    labelEnd(pit) - row.width());
+			row.addSpace(i, add, *fi, par.lookupChange(i));
+		} else if (par.isLineSeparator(i)) {
+			// In theory, no inset has this property. If
+			// this is done, a new addSeparator which
+			// takes an inset as parameter should be
+			// added.
+			LATTEST(!par.isInset(i));
+			row.addSeparator(i, c, *fi, par.lookupChange(i));
+		} else if (c == '\t')
+			row.addSpace(i, theFontMetrics(*fi).width(from_ascii("    ")),
+				     *fi, par.lookupChange(i));
+		else
+			row.add(i, c, *fi, par.lookupChange(i));
 
 		// add inline completion width
-		if (inlineCompletionLPos == i) {
-			docstring const & completion = bv_->inlineCompletion();
-			if (completion.length() > 0)
-				thiswidth += theFontMetrics(*fi).width(completion);
+		if (inlineCompletionLPos == i &&
+		    !bv_->inlineCompletion().empty()) {
+			Font f = *fi;
+			f.fontInfo().setColor(Color_inlinecompletion);
+			row.addVirtual(i + 1, bv_->inlineCompletion(),
+					  f, Change());
 		}
 
-		// add the auto-hfill from label end to the body
-		if (body_pos && i == body_pos) {
-			FontMetrics const & fm = theFontMetrics(
-				text_->labelFont(par));
-			int add = fm.width(layout.labelsep);
-			if (par.isLineSeparator(i - 1))
-				add -= singleWidth(pit, i - 1);
-
-			add = max(add, label_end - x);
-			thiswidth += add;
-		}
-
-		x += thiswidth;
-		chunkwidth += thiswidth;
-
-		// break before a character that will fall off
-		// the right of the row
-		if (x >= width) {
-			// if no break before, break here
-			if (point == end || chunkwidth >= width - left) {
-				if (i > pos)
-					point = i;
-				else
-					point = i + 1;
-			}
-			// exit on last registered breakpoint:
-			break;
-		}
-
-		if (par.isNewline(i) || par.isEnvSeparator(i)) {
-			point = i + 1;
-			break;
-		}
+		// Handle some situations that abruptly terminate the row
+		// - A newline inset
+		// - Before a display inset
+		// - After a display inset
 		Inset const * inset = 0;
-		// Break before...
-		if (i + 1 < end) {
-			if ((inset = par.getInset(i + 1)) && inset->display()) {
-				point = i + 1;
-				break;
-			}
-			// ...and after.
-			if ((inset = par.getInset(i)) && inset->display()) {
-				point = i + 1;
-				break;
-			}
+		if (par.isNewline(i) || par.isEnvSeparator(i)
+		    || (i + 1 < end && (inset = par.getInset(i + 1))
+			&& inset->display())
+		    || (!row.empty() && row.back().inset
+			&& row.back().inset->display())) {
+			row.right_boundary(true);
+			++i;
+			break;
 		}
 
-		inset = par.getInset(i);
-		if (!inset || inset->isChar()) {
-			// some insets are line separators too
-			if (par.isLineSeparator(i)) {
-				// register breakpoint:
-				point = i + 1;
-				chunkwidth = 0;
-			}
-		}
+		++i;
+		++fi;
+	}
+	row.finalizeLast();
+	row.endpos(i);
+
+	// End of paragraph marker
+	if (lyxrc.paragraph_markers
+	    && i == end && size_type(pit + 1) < pars.size()) {
+		// add a virtual element for the end-of-paragraph
+		// marker; it is shown on screen, but does not exist
+		// in the paragraph.
+		Font f(text_->layoutFont(pit));
+		f.fontInfo().setColor(Color_paragraphmarker);
+		BufferParams const & bparams
+			= text_->inset().buffer().params();
+		f.setLanguage(par.getParLanguage(bparams));
+		row.addVirtual(end, docstring(1, char_type(0x00B6)), f, Change());
 	}
 
-	// maybe found one, but the par is short enough.
-	if (i == end && x < width)
-		point = end;
+	// if the row is too large, try to cut at last separator.
+	row.shortenIfNeeded(body_pos, width);
 
-	// manual labels cannot be broken in LaTeX. But we
-	// want to make our on-screen rendering of footnotes
-	// etc. still break
-	if (body_pos && point < body_pos)
-		point = body_pos;
+	// if the row ends with a separator that is not at end of
+	// paragraph, remove it
+	if (!row.empty() && row.back().type == Row::SEPARATOR
+	    && row.endpos() < par.size())
+		row.pop_back();
 
-	return point;
+	// make sure that the RTL elements are in reverse ordering
+	row.reverseRTL(text_->isRTL(par));
 }
 
 
-int TextMetrics::rowWidth(int right_margin, pit_type const pit,
-		pos_type const first, pos_type const end) const
-{
-	// get the pure distance
-	ParagraphMetrics const & pm = par_metrics_[pit];
-	Paragraph const & par = text_->getPar(pit);
-	int w = leftMargin(max_width_, pit, first);
-	int label_end = labelEnd(pit);
-
-	// check for possible inline completion
-	DocIterator const & inlineCompletionPos = bv_->inlineCompletionPos();
-	pos_type inlineCompletionLPos = -1;
-	if (inlineCompletionPos.inTexted()
-	    && inlineCompletionPos.text() == text_
-	    && inlineCompletionPos.pit() == pit) {
-		// draw logically behind the previous character
-		inlineCompletionLPos = inlineCompletionPos.pos() - 1;
-	}
-
-	pos_type const body_pos = par.beginOfBody();
-	pos_type i = first;
-
-	if (i < end) {
-		FontIterator fi = FontIterator(*this, par, pit, i);
-		for ( ; i < end; ++i, ++fi) {
-			if (body_pos > 0 && i == body_pos) {
-				FontMetrics const & fm = theFontMetrics(
-					text_->labelFont(par));
-				w += fm.width(par.layout().labelsep);
-				if (par.isLineSeparator(i - 1))
-					w -= singleWidth(pit, i - 1);
-				w = max(w, label_end);
-			}
-
-			// a line separator at the end of a line (but not at the end of a
-			// paragraph) will not be drawn and should therefore not count for
-			// the row width.
-			if (!par.isLineSeparator(i) || i != end - 1 || end == par.size())
-				w += pm.singleWidth(i, *fi);
-
-			// add inline completion width
-			if (inlineCompletionLPos == i) {
-				docstring const & completion = bv_->inlineCompletion();
-				if (completion.length() > 0)
-					w += theFontMetrics(*fi).width(completion);
-			}
-		}
-	}
-
-	// count the paragraph end marker.
-	if (end == par.size() && lyxrc.paragraph_markers) {
-		ParagraphList const & pars_ = text_->paragraphs();
-		if (size_type(pit + 1) < pars_.size()) {
-			// enlarge the last character to hold the
-			// end-of-par marker
-			docstring const s(1, char_type(0x00B6));
-			Font f;
-			w += theFontMetrics(f).width(s);
-		}
-	}
-
-	if (body_pos > 0 && body_pos >= end) {
-		FontMetrics const & fm = theFontMetrics(
-			text_->labelFont(par));
-		w += fm.width(par.layout().labelsep);
-		if (end > 0 && par.isLineSeparator(end - 1))
-			w -= singleWidth(pit, end - 1);
-		w = max(w, label_end);
-	}
-
-	return w + right_margin;
-}
-
-
-Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
-		pos_type const end, bool topBottomSpace) const
+void TextMetrics::setRowHeight(Row & row, pit_type const pit,
+				    bool topBottomSpace) const
 {
 	Paragraph const & par = text_->getPar(pit);
 	// get the maximum ascent and the maximum descent
@@ -1035,7 +936,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	// start with so we don't have to do the assignment below too
 	// often.
 	Buffer const & buffer = bv_->buffer();
-	Font font = displayFont(pit, first);
+	Font font = displayFont(pit, row.pos());
 	FontSize const tmpsize = font.fontInfo().size();
 	font.fontInfo() = text_->layoutFont(pit);
 	FontSize const size = font.fontInfo().size();
@@ -1055,11 +956,11 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 
 	// insets may be taller
 	ParagraphMetrics const & pm = par_metrics_[pit];
-	InsetList::const_iterator ii = par.insetList().begin();
-	InsetList::const_iterator iend = par.insetList().end();
-	for ( ; ii != iend; ++ii) {
-		if (ii->pos >= first && ii->pos < end) {
-			Dimension const & dim = pm.insetDimension(ii->inset);
+	Row::const_iterator cit = row.begin();
+	Row::const_iterator cend = row.end();
+	for ( ; cit != cend; ++cit) {
+		if (cit->inset) {
+			Dimension const & dim = pm.insetDimension(cit->inset);
 			maxasc  = max(maxasc,  dim.ascent());
 			maxdesc = max(maxdesc, dim.descent());
 		}
@@ -1071,7 +972,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	int labeladdon = 0;
 
 	FontSize maxsize =
-		par.highestFontInRange(first, end, size);
+		par.highestFontInRange(row.pos(), row.endpos(), size);
 	if (maxsize > font.fontInfo().size()) {
 		// use standard paragraph font with the maximal size
 		FontInfo maxfont = font.fontInfo();
@@ -1089,7 +990,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	Inset const & inset = text_->inset();
 
 	// is it a top line?
-	if (first == 0 && topBottomSpace) {
+	if (row.pos() == 0 && topBottomSpace) {
 		BufferParams const & bufparams = buffer.params();
 		// some parskips VERY EASY IMPLEMENTATION
 		if (bufparams.paragraph_separation == BufferParams::ParagraphSkipSeparation
@@ -1108,8 +1009,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 		// special code for the top label
 		if (layout.labelIsAbove()
 		    && (!layout.isParagraphGroup() || text_->isFirstInSequence(pit))
-		    && !par.labelString().empty())
-		{
+		    && !par.labelString().empty()) {
 			labeladdon = int(
 				  labelfont_metrics.maxHeight()
 					* layout.spacing.getValue()
@@ -1129,7 +1029,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 		    && prevpar.getLabelWidthString()
 					== par.getLabelWidthString()) {
 			layoutasc = layout.itemsep * dh;
-		} else if (pit != 0 || first != 0) {
+		} else if (pit != 0 || row.pos() != 0) {
 			if (layout.topsep > 0)
 				layoutasc = layout.topsep * dh;
 		}
@@ -1147,7 +1047,7 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	}
 
 	// is it a bottom line?
-	if (end >= par.size() && topBottomSpace) {
+	if (row.endpos() >= par.size() && topBottomSpace) {
 		// add the layout spaces, for example before and after
 		// a section, or between the items of a itemize or enumerate
 		// environment
@@ -1160,10 +1060,8 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 				double unusual = 0;
 				cpit = text_->depthHook(cpit, pars[nextpit].getDepth());
 				if (pars[cpit].layout() != pars[nextpit].layout()
-					|| pars[nextpit].getLabelWidthString() != pars[cpit].getLabelWidthString())
-				{
+				    || pars[nextpit].getLabelWidthString() != pars[cpit].getLabelWidthString())
 					unusual = pars[cpit].layout().bottomsep * dh;
-				}
 				layoutdesc = max(unusual, usual);
 			} else if (pars[cpit].getDepth() == pars[nextpit].getDepth()) {
 				if (pars[cpit].layout() != pars[nextpit].layout()
@@ -1182,152 +1080,79 @@ Dimension TextMetrics::rowHeight(pit_type const pit, pos_type const first,
 	// main Text. The following test is thus bogus.
 	// Top and bottom margin of the document (only at top-level)
 	if (main_text_ && topBottomSpace) {
-		if (pit == 0 && first == 0)
+		if (pit == 0 && row.pos() == 0)
 			maxasc += 20;
 		if (pit + 1 == pit_type(pars.size()) &&
-		    end == par.size() &&
-				!(end > 0 && par.isNewline(end - 1)))
+		    row.endpos() == par.size() &&
+				!(row.endpos() > 0 && par.isNewline(row.endpos() - 1)))
 			maxdesc += 20;
 	}
 
-	return Dimension(0, maxasc + labeladdon, maxdesc);
+	row.dimension().asc = maxasc + labeladdon;
+	row.dimension().des = maxdesc;
 }
 
 
 // x is an absolute screen coord
 // returns the column near the specified x-coordinate of the row
 // x is set to the real beginning of this column
-pos_type TextMetrics::getColumnNearX(pit_type const pit,
-		Row const & row, int & x, bool & boundary) const
+pos_type TextMetrics::getPosNearX(Row const & row, int & x,
+				  bool & boundary) const
 {
-	Buffer const & buffer = bv_->buffer();
-
 	/// For the main Text, it is possible that this pit is not
 	/// yet in the CoordCache when moving cursor up.
 	/// x Paragraph coordinate is always 0 for main text anyway.
 	int const xo = origin_.x_;
 	x -= xo;
-	Paragraph const & par = text_->getPar(pit);
-	Bidi bidi;
-	bidi.computeTables(par, buffer, row);
 
-	pos_type vc = row.pos();
-	pos_type end = row.endpos();
-	pos_type c = 0;
-	Layout const & layout = par.layout();
-
-	bool left_side = false;
-
-	pos_type body_pos = par.beginOfBody();
-
-	double tmpx = row.x;
-	double last_tmpx = tmpx;
-
-	if (body_pos > 0 &&
-	    (body_pos > end || !par.isLineSeparator(body_pos - 1)))
-		body_pos = 0;
-
-	// check for empty row
-	if (vc == end) {
-		x = int(tmpx) + xo;
-		return 0;
-	}
-
-	// This (rtl_support test) is not needed, but gives
-	// some speedup if rtl_support == false
-	bool const lastrow = lyxrc.rtl_support && row.endpos() == par.size();
-
-	// If lastrow is false, we don't need to compute
-	// the value of rtl.
-	bool const rtl_on_lastrow = lastrow ? text_->isRTL(par) : false;
-
-	while (vc < end && tmpx <= x) {
-		c = bidi.vis2log(vc);
-		last_tmpx = tmpx;
-		if (body_pos > 0 && c == body_pos - 1) {
-			FontMetrics const & fm = theFontMetrics(
-				text_->labelFont(par));
-			tmpx += row.label_hfill + fm.width(layout.labelsep);
-			if (par.isLineSeparator(body_pos - 1))
-				tmpx -= singleWidth(pit, body_pos - 1);
-		}
-
-		tmpx += singleWidth(pit, c);
-		if (par.isSeparator(c) && c >= body_pos)
-				tmpx += row.separator;
-		++vc;
-	}
-
-	if ((tmpx + last_tmpx) / 2 > x) {
-		tmpx = last_tmpx;
-		left_side = true;
-	}
-
-	// This shouldn't happen. But we can reset and try to continue.
-	LASSERT(vc <= end, vc = end);
-
+	pos_type pos = row.pos();
 	boundary = false;
-
-	if (lastrow &&
-	    ((rtl_on_lastrow  &&  left_side && vc == row.pos() && x < tmpx - 5) ||
-	     (!rtl_on_lastrow && !left_side && vc == end  && x > tmpx + 5))) {
-		if (!(par.isNewline(end - 1) || par.isEnvSeparator(end - 1)))
-			c = end;
-	} else if (vc == row.pos()) {
-		c = bidi.vis2log(vc);
-		if (bidi.level(c) % 2 == 1)
-			++c;
+	if (row.empty())
+		x = row.x;
+	else if (x <= row.x) {
+		pos = row.front().left_pos();
+		x = row.x;
+	} else if (x >= row.width() - row.right_margin) {
+		pos = row.back().right_pos();
+		x = row.width() - row.right_margin;
 	} else {
-		c = bidi.vis2log(vc - 1);
-		bool const rtl = (bidi.level(c) % 2 == 1);
-		if (left_side == rtl) {
-			++c;
-			boundary = isRTLBoundary(pit, c);
+		double w = row.x;
+		Row::const_iterator cit = row.begin();
+		Row::const_iterator cend = row.end();
+		for ( ; cit != cend; ++cit) {
+			if (w <= x &&  w + cit->width() > x) {
+				double x_offset = x - w;
+				pos = cit->x2pos(x_offset);
+				x = x_offset + w;
+				break;
+			}
+			w += cit->width();
 		}
+		if (cit == row.end()) {
+			pos = row.back().right_pos();
+			x = row.width() - row.right_margin;
+		}
+		/** This tests for the case where the cursor is placed
+		 * just before a font direction change. See comment on
+		 * the boundary_ member in DocIterator.h to understand
+		 * how boundary helps here.
+		 */
+		else if (pos == cit->endpos
+			 && cit + 1 != row.end()
+			 && cit->font.isVisibleRightToLeft() != (cit + 1)->font.isVisibleRightToLeft())
+			boundary = true;
 	}
 
-// I believe this code is not needed anymore (Jug 20050717)
-#if 0
-	// The following code is necessary because the cursor position past
-	// the last char in a row is logically equivalent to that before
-	// the first char in the next row. That's why insets causing row
-	// divisions -- Newline and display-style insets -- must be treated
-	// specially, so cursor up/down doesn't get stuck in an air gap -- MV
-	// Newline inset, air gap below:
-	if (row.pos() < end && c >= end && par.isNewline(end - 1)) {
-		if (bidi.level(end -1) % 2 == 0)
-			tmpx -= singleWidth(pit, end - 1);
-		else
-			tmpx += singleWidth(pit, end - 1);
-		c = end - 1;
-	}
+	/** This tests for the case where the cursor is set at the end
+	 * of a row which has been broken due to a display inset on
+	 * next row. This is indicated by Row::right_boundary.
+	 */
+	if (!row.empty() && pos == row.back().endpos
+	    && row.back().endpos == row.endpos())
+		boundary = row.right_boundary();
 
-	// Air gap above display inset:
-	if (row.pos() < end && c >= end && end < par.size()
-	    && par.isInset(end) && par.getInset(end)->display()) {
-		c = end - 1;
-	}
-	// Air gap below display inset:
-	if (row.pos() < end && c >= end && par.isInset(end - 1)
-	    && par.getInset(end - 1)->display()) {
-		c = end - 1;
-	}
-#endif
-
-	x = int(tmpx) + xo;
-	pos_type const col = c - row.pos();
-
-	if (!c || end == par.size())
-		return col;
-
-	if (c==end && !par.isLineSeparator(c-1)
-		   && !par.isNewline(c-1)
-		   && !par.isEnvSeparator(c-1)) {
-		boundary = true;
-		return col;
-	}
-
-	return min(col, end - 1 - row.pos());
+	x += xo;
+	return pos;
 }
 
 
@@ -1342,7 +1167,7 @@ pos_type TextMetrics::x2pos(pit_type pit, int row, int x) const
 	LBUFERR(row < int(pm.rows().size()));
 	bool bound = false;
 	Row const & r = pm.rows()[row];
-	return r.pos() + getColumnNearX(pit, r, x, bound);
+	return getPosNearX(r, x, bound);
 }
 
 
@@ -1502,10 +1327,9 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 
 	if (!it) {
 		// No inset, set position in the text
-		bool bound = false; // is modified by getColumnNearX
-		int xx = x; // is modified by getColumnNearX
-		cur.pos() = row.pos()
-			+ getColumnNearX(pit, row, xx, bound);
+		bool bound = false; // is modified by getPosNearX
+		int xx = x; // is modified by getPosNearX
+		cur.pos() = getPosNearX(row, xx, bound);
 		cur.boundary(bound);
 		cur.setCurrentFont();
 		cur.setTargetX(xx);
@@ -1556,7 +1380,7 @@ void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const 
 
 	bool bound = false;
 	int xx = x;
-	pos_type const pos = row.pos() + getColumnNearX(pit, row, xx, bound);
+	pos_type const pos = getPosNearX(row, xx, bound);
 
 	LYXERR(Debug::DEBUG, "setting cursor pit: " << pit << " pos: " << pos);
 
@@ -1592,10 +1416,8 @@ InsetList::InsetTable * TextMetrics::checkInsetHit(pit_type pit, int x, int y)
 		LYXERR(Debug::DEBUG, "xo: " << p.x_ << "..." << p.x_ + dim.wid
 			<< " yo: " << p.y_ - dim.asc << "..." << p.y_ + dim.des);
 
-		if (x >= p.x_
-			&& x <= p.x_ + dim.wid
-			&& y >= p.y_ - dim.asc
-			&& y <= p.y_ + dim.des) {
+		if (x >= p.x_ && x <= p.x_ + dim.wid
+		    && y >= p.y_ - dim.asc && y <= p.y_ + dim.des) {
 			LYXERR(Debug::DEBUG, "Hit inset: " << inset);
 			return const_cast<InsetList::InsetTable *>(&(*iit));
 		}
@@ -1624,146 +1446,50 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 		bool boundary) const
 {
 	LASSERT(sl.text() == text_, return 0);
-	pit_type const pit = sl.pit();
-	Paragraph const & par = text_->paragraphs()[pit];
-	ParagraphMetrics const & pm = par_metrics_[pit];
+
+	ParagraphMetrics const & pm = par_metrics_[sl.pit()];
 	if (pm.rows().empty())
 		return 0;
-
-	pos_type ppos = sl.pos();
-	// Correct position in front of big insets
-	bool const boundary_correction = ppos != 0 && boundary;
-	if (boundary_correction)
-		--ppos;
-
 	Row const & row = pm.getRow(sl.pos(), boundary);
+	pos_type const pos = sl.pos();
 
-	pos_type cursor_vpos = 0;
+	/**
+	 * When boundary is true, position i is in the row element (pos, endpos)
+	 * if
+	 *    pos < i <= endpos
+	 * whereas, when boundary is false, the test is
+	 *    pos <= i < endpos
+	 * The correction below allows to handle both cases.
+	*/
+	int const boundary_corr = (boundary && pos) ? -1 : 0;
 
-	Buffer const & buffer = bv_->buffer();
+	/** Early return in trivial cases
+	 * 1) the row is empty
+	 * 2) the position is the left-most position of the row; there
+	 * is a quirck herehowever: if the first element is virtual
+	 * (end-of-par marker for example), then we have to look
+	 * closer
+	 */
+	if (row.empty()
+	    || (pos == row.begin()->left_pos()
+		&& pos != row.begin()->right_pos()))
+		return int(row.x);
+
+	Row::const_iterator cit = row.begin();
 	double x = row.x;
-	Bidi bidi;
-	bidi.computeTables(par, buffer, row);
-
-	pos_type const row_pos  = row.pos();
-	pos_type const end      = row.endpos();
-	// Spaces at logical line breaks in bidi text must be skipped during
-	// cursor positioning. However, they may appear visually in the middle
-	// of a row; they must be skipped, wherever they are...
-	// * logically "abc_[HEBREW_\nHEBREW]"
-	// * visually "abc_[_WERBEH\nWERBEH]"
-	pos_type skipped_sep_vpos = -1;
-
-	if (end <= row_pos)
-		cursor_vpos = row_pos;
-	else if (ppos >= end)
-		cursor_vpos = text_->isRTL(par) ? row_pos : end;
-	else if (ppos > row_pos && ppos >= end)
-		//FIXME: this code is never reached!
-		//       (see http://www.lyx.org/trac/changeset/8251)
-		// Place cursor after char at (logical) position pos - 1
-		cursor_vpos = (bidi.level(ppos - 1) % 2 == 0)
-			? bidi.log2vis(ppos - 1) + 1 : bidi.log2vis(ppos - 1);
-	else
-		// Place cursor before char at (logical) position ppos
-		cursor_vpos = (bidi.level(ppos) % 2 == 0)
-			? bidi.log2vis(ppos) : bidi.log2vis(ppos) + 1;
-
-	pos_type body_pos = par.beginOfBody();
-	if (body_pos > 0 &&
-	    (body_pos > end || !par.isLineSeparator(body_pos - 1)))
-		body_pos = 0;
-
-	// check for possible inline completion in this row
-	DocIterator const & inlineCompletionPos = bv_->inlineCompletionPos();
-	pos_type inlineCompletionVPos = -1;
-	if (inlineCompletionPos.inTexted()
-	    && inlineCompletionPos.text() == text_
-	    && inlineCompletionPos.pit() == pit
-	    && inlineCompletionPos.pos() - 1 >= row_pos
-	    && inlineCompletionPos.pos() - 1 < end) {
-		// draw logically behind the previous character
-		inlineCompletionVPos = bidi.log2vis(inlineCompletionPos.pos() - 1);
-	}
-
-	// Use font span to speed things up, see below
-	FontSpan font_span;
-	Font font;
-
-	// If the last logical character is a separator, skip it, unless
-	// it's in the last row of a paragraph; see skipped_sep_vpos declaration
-	if (end > 0 && end < par.size() && par.isSeparator(end - 1))
-		skipped_sep_vpos = bidi.log2vis(end - 1);
-
-	if (lyxrc.paragraph_markers && text_->isRTL(par)) {
-		ParagraphList const & pars_ = text_->paragraphs();
-		if (size_type(pit + 1) < pars_.size()) {
-			FontInfo f;
-			docstring const s = docstring(1, char_type(0x00B6));
-			x += theFontMetrics(f).width(s);
+	for ( ; cit != row.end() ; ++cit) {
+		/** Look whether the cursor is inside the element's
+		 * span. Note that it is necessary to take the
+		 * boundary in account, and to accept virtual
+		 * elements, which have pos == endpos.
+		 */
+		if (pos + boundary_corr >= cit->pos
+		    && (pos + boundary_corr < cit->endpos
+			|| cit->pos == cit->endpos)) {
+				x += cit->pos2x(pos);
+				break;
 		}
-	}
-
-	// Inline completion RTL special case row_pos == cursor_pos:
-	// "__|b" => cursor_pos is right of __
-	if (row_pos == inlineCompletionVPos && row_pos == cursor_vpos) {
-		font = displayFont(pit, row_pos + 1);
-		docstring const & completion = bv_->inlineCompletion();
-		if (font.isRightToLeft() && completion.length() > 0)
-			x += theFontMetrics(font.fontInfo()).width(completion);
-	}
-
-	for (pos_type vpos = row_pos; vpos < cursor_vpos; ++vpos) {
-		// Skip the separator which is at the logical end of the row
-		if (vpos == skipped_sep_vpos)
-			continue;
-		pos_type pos = bidi.vis2log(vpos);
-		if (body_pos > 0 && pos == body_pos - 1) {
-			FontMetrics const & labelfm = theFontMetrics(
-				text_->labelFont(par));
-			x += row.label_hfill + labelfm.width(par.layout().labelsep);
-			if (par.isLineSeparator(body_pos - 1))
-				x -= singleWidth(pit, body_pos - 1);
-		}
-
-		// Use font span to speed things up, see above
-		if (pos < font_span.first || pos > font_span.last) {
-			font_span = par.fontSpan(pos);
-			font = displayFont(pit, pos);
-		}
-
-		x += pm.singleWidth(pos, font);
-
-		// Inline completion RTL case:
-		// "a__|b", __ of b => non-boundary a-pos is right of __
-		if (vpos + 1 == inlineCompletionVPos
-		    && (vpos + 1 < cursor_vpos || !boundary_correction)) {
-			font = displayFont(pit, vpos + 1);
-			docstring const & completion = bv_->inlineCompletion();
-			if (font.isRightToLeft() && completion.length() > 0)
-				x += theFontMetrics(font.fontInfo()).width(completion);
-		}
-
-		//  Inline completion LTR case:
-		// "b|__a", __ of b => non-boundary a-pos is in front of __
-		if (vpos == inlineCompletionVPos
-		    && (vpos + 1 < cursor_vpos || boundary_correction)) {
-			font = displayFont(pit, vpos);
-			docstring const & completion = bv_->inlineCompletion();
-			if (!font.isRightToLeft() && completion.length() > 0)
-				x += theFontMetrics(font.fontInfo()).width(completion);
-		}
-
-		if (par.isSeparator(pos) && pos >= body_pos)
-			x += row.separator;
-	}
-
-	// see correction above
-	if (boundary_correction) {
-		if (isRTL(sl, boundary))
-			x -= singleWidth(pit, ppos);
-		else
-			x += singleWidth(pit, ppos);
+		x += cit->width();
 	}
 
 	return int(x);
@@ -2026,27 +1752,27 @@ int TextMetrics::leftMargin(int max_width,
 	// set the correct parindent
 	if (pos == 0
 	    && (layout.labeltype == LABEL_NO_LABEL
-	       || layout.labeltype == LABEL_ABOVE
-	       || layout.labeltype == LABEL_CENTERED
-	       || (layout.labeltype == LABEL_STATIC
-	           && layout.latextype == LATEX_ENVIRONMENT
-	           && !text_->isFirstInSequence(pit)))
+		|| layout.labeltype == LABEL_ABOVE
+		|| layout.labeltype == LABEL_CENTERED
+		|| (layout.labeltype == LABEL_STATIC
+		    && layout.latextype == LATEX_ENVIRONMENT
+		    && !text_->isFirstInSequence(pit)))
 	    && (align == LYX_ALIGN_BLOCK || align == LYX_ALIGN_LEFT)
 	    && !par.params().noindent()
 	    // in some insets, paragraphs are never indented
 	    && !text_->inset().neverIndent()
 	    // display style insets are always centered, omit indentation
 	    && !(!par.empty()
-		    && par.isInset(pos)
-		    && par.getInset(pos)->display())
-			&& (!(tclass.isDefaultLayout(par.layout())
-	         || tclass.isPlainLayout(par.layout()))
+		 && par.isInset(pos)
+		 && par.getInset(pos)->display())
+	    && (!(tclass.isDefaultLayout(par.layout())
+		  || tclass.isPlainLayout(par.layout()))
 	        || buffer.params().paragraph_separation
-				== BufferParams::ParagraphIndentSeparation)
-	    )
-		{
-			// use the parindent of the layout when the default indentation is
-			// used otherwise use the indentation set in the document settings
+				== BufferParams::ParagraphIndentSeparation)) {
+			// use the parindent of the layout when the
+			// default indentation is used otherwise use
+			// the indentation set in the document
+			// settings
 			if (buffer.params().getIndentation().asLyXCommand() == "default")
 				l_margin += theFontMetrics(
 					buffer.params().getFont()).signedWidth(parindent);
@@ -2055,14 +1781,6 @@ int TextMetrics::leftMargin(int max_width,
 		}
 
 	return l_margin;
-}
-
-
-int TextMetrics::singleWidth(pit_type pit, pos_type pos) const
-{
-	ParagraphMetrics const & pm = par_metrics_[pit];
-
-	return pm.singleWidth(pos, displayFont(pit, pos));
 }
 
 
@@ -2096,7 +1814,6 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 	if (pm.rows().empty())
 		return;
 
-	Bidi bidi;
 	bool const original_drawing_state = pi.pain.isDrawingEnabled();
 	int const ww = bv_->workHeight();
 	size_t const nrows = pm.rows().size();
@@ -2137,7 +1854,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 			&& y - row.ascent() < ww);
 		// It is not needed to draw on screen if we are not inside.
 		pi.pain.setDrawingEnabled(inside && original_drawing_state);
-		RowPainter rp(pi, *text_, pit, row, bidi, x, y);
+		RowPainter rp(pi, *text_, pit, row, x, y);
 
 		if (selection)
 			row.setSelectionAndMargins(sel_beg_par, sel_end_par);
@@ -2239,7 +1956,11 @@ void TextMetrics::completionPosAndDim(Cursor const & cur, int & x, int & y,
 	Point rxy = cur.bv().getPos(bvcur);
 
 	// calculate dimensions of the word
-	dim = rowHeight(bvcur.pit(), wordStart.pos(), bvcur.pos(), false);
+	Row row;
+	row.pos(wordStart.pos());
+	row.endpos(bvcur.pos());
+	setRowHeight(row, bvcur.pit(), false);
+	dim = row.dimension();
 	dim.wid = abs(rxy.x_ - lxy.x_);
 
 	// calculate position of word
@@ -2249,15 +1970,6 @@ void TextMetrics::completionPosAndDim(Cursor const & cur, int & x, int & y,
 	//lyxerr << "wid=" << dim.width() << " x=" << x << " y=" << y << " lxy.x_=" << lxy.x_ << " rxy.x_=" << rxy.x_ << " word=" << word << std::endl;
 	//lyxerr << " wordstart=" << wordStart << " bvcur=" << bvcur << " cur=" << cur << std::endl;
 }
-
-//int TextMetrics::pos2x(pit_type pit, pos_type pos) const
-//{
-//	ParagraphMetrics const & pm = par_metrics_[pit];
-//	Row const & r = pm.rows()[row];
-//	int x = 0;
-//	pos -= r.pos();
-//}
-
 
 int defaultRowHeight()
 {

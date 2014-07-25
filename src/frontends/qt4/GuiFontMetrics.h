@@ -16,6 +16,9 @@
 
 #include "support/docstring.h"
 
+#include <map>
+
+#include <QFont>
 #include <QFontMetrics>
 #include <QHash>
 
@@ -39,6 +42,8 @@ public:
 	virtual int rbearing(char_type c) const;
 	virtual int width(docstring const & s) const;
 	virtual int signedWidth(docstring const & s) const;
+	virtual int pos2x(docstring const & s, int pos, bool rtl) const;
+	virtual int x2pos(docstring const & s, int & x, bool rtl) const;
 	virtual Dimension const dimension(char_type c) const;
 
 	virtual void rectText(docstring const & str,
@@ -53,11 +58,18 @@ public:
 	int width(QString const & str) const;
 
 private:
+	/// The font
+	QFont font_;
+
 	/// Metrics on the font
 	QFontMetrics metrics_;
 
 	/// Cache of char widths
 	mutable QHash<char_type, int> width_cache_;
+
+	/// Cache of string widths
+	/// FIXME Try to use a QHash (this requires to define qHash(docstring))
+	mutable std::map<docstring, int> strwidth_cache_;
 
 	struct AscendDescend {
 		int ascent;

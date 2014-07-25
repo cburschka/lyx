@@ -803,14 +803,12 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 
 void BufferView::translateAndInsert(char_type c, Text * t, Cursor & cur)
 {
-	if (lyxrc.rtl_support) {
-		if (d->cursor_.real_current_font.isRightToLeft()) {
-			if (d->intl_.keymap == Intl::PRIMARY)
-				d->intl_.keyMapSec();
-		} else {
-			if (d->intl_.keymap == Intl::SECONDARY)
-				d->intl_.keyMapPrim();
-		}
+	if (d->cursor_.real_current_font.isRightToLeft()) {
+		if (d->intl_.keymap == Intl::PRIMARY)
+			d->intl_.keyMapSec();
+	} else {
+		if (d->intl_.keymap == Intl::SECONDARY)
+			d->intl_.keyMapPrim();
 	}
 
 	d->intl_.getTransManager().translateAndInsert(c, t, cur);

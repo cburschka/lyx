@@ -132,7 +132,6 @@ GuiLog::GuiLog(GuiView & lv)
 
 	logTB->setReadOnly(true);
 	QFont font(guiApp->typewriterFontName());
-	font.setKerning(false);
 	font.setFixedPitch(true);
 	font.setStyleHint(QFont::TypeWriter);
 	logTB->setFont(font);

@@ -998,11 +998,11 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 			break;
 		yy += h;
 	}
-	
+
 	// Find the position of the cursor
 	bool bound;
 	int x = d->synthetic_mouse_event_.cmd.x();
-	pos_type const pos = rit->pos() + tm.getColumnNearX(pit, *rit, x, bound);
+	pos_type const pos = tm.getPosNearX(*rit, x, bound);
 
 	// Set the cursor
 	cur.pit() = pit;

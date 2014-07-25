@@ -431,8 +431,6 @@ public:
 	/// return true if we allow this par to stay empty
 	bool allowEmpty() const;
 	///
-	char_type transformChar(char_type c, pos_type pos) const;
-	///
 	ParagraphParameters & params();
 	///
 	ParagraphParameters const & params() const;
