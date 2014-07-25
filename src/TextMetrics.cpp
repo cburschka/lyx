@@ -613,7 +613,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			/** If we have separators, and this row has
 			 * not be broken abruptly by a display inset
 			 * or newline, then stretch it */
-			if (ns && !row.right_boundary() 
+			if (ns && !row.right_boundary()
 			    && row.endpos() != par.size()) {
 				setSeparatorWidth(row, w / ns);
 				row.dimension().wid = width;
