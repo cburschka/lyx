@@ -2955,7 +2955,7 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 		|| !d->last_row_slice_.empty())) {
 		// FIXME: if one uses SingleParUpdate, then home/end
 		// will not work on long rows. Why?
-		d->update_strategy_ = FullScreenUpdate;//DecorationUpdate;
+		d->update_strategy_ = FullScreenUpdate;
 	}
 
 	d->horiz_scroll_offset_ = offset;
@@ -2982,6 +2982,7 @@ void BufferView::draw(frontend::Painter & pain)
 	case NoScreenUpdate:
 		// If no screen painting is actually needed, only some the different
 		// coordinates of insets and paragraphs needs to be updated.
+		LYXERR(Debug::PAINTING, "Strategy: NoScreenUpdate");
 		pi.full_repaint = true;
 		pi.pain.setDrawingEnabled(false);
  		tm.draw(pi, 0, y);
@@ -2989,6 +2990,7 @@ void BufferView::draw(frontend::Painter & pain)
 
 	case SingleParUpdate:
 		pi.full_repaint = false;
+		LYXERR(Debug::PAINTING, "Strategy: SingleParUpdate");
 		// In general, only the current row of the outermost paragraph
 		// will be redrawn. Particular cases where selection spans
 		// multiple paragraph are correctly detected in TextMetrics.
@@ -3001,6 +3003,12 @@ void BufferView::draw(frontend::Painter & pain)
 		// because of the single backing pixmap.
 
 	case FullScreenUpdate:
+
+		LYXERR(Debug::PAINTING,
+		       ((d->update_strategy_ == FullScreenUpdate)
+			? "Strategy: FullScreenUpdate"
+			: "Strategy: DecorationUpdate"));
+
 		// The whole screen, including insets, will be refreshed.
 		pi.full_repaint = true;
 

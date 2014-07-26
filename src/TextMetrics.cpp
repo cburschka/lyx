@@ -1903,7 +1903,10 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		// Clear background of this row if paragraph background was not
 		// already cleared because of a full repaint.
 		if (!pi.full_repaint && row_has_changed) {
-			pi.pain.fillRectangle(x, y - row.ascent(),
+			LYXERR(Debug::PAINTING, "Clear rect@(" 
+			       << max(x, 0) << ", " << y-row.ascent() << ")=" 
+			       << width() << " x " << row.height());
+			pi.pain.fillRectangle(max(x, 0), y - row.ascent(),
 				width(), row.height(), pi.background_color);
 		}
 
