@@ -65,6 +65,8 @@ public:
 	friend bool operator<=(CursorSlice const &, CursorSlice const &);
 	//@}
 
+	/// return true if the slice has not been initialized
+	bool empty() const { return !inset_; }
 	/// the current inset
 	Inset & inset() const { return *inset_; }
 	/// return the cell this cursor is in

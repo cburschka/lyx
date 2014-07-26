@@ -45,6 +45,7 @@
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
+#include "RowPainter.h"
 #include "Session.h"
 #include "Text.h"
 #include "TextClass.h"
@@ -230,7 +231,8 @@ struct BufferView::Private
 		inlineCompletionUniqueChars_(0),
 		last_inset_(0), clickable_inset_(false),
 		mouse_position_cache_(),
-		bookmark_edit_position_(-1), gui_(0)
+		bookmark_edit_position_(-1), gui_(0),
+		horiz_scroll_offset_(0)
 	{}
 
 	///
@@ -295,6 +297,16 @@ struct BufferView::Private
 
 	///
 	map<string, Inset *> edited_insets_;
+
+	/// When the row where the cursor lies is scrolled, this
+	/// contains the scroll offset
+	int horiz_scroll_offset_;
+	/// a slice pointing to the start of the row where the cursor
+	/// is (at last draw time)
+	CursorSlice current_row_slice_;
+	/// a slice pointing to the start of the row where cursor was
+	/// at previous draw event
+	CursorSlice last_row_slice_;
 };
 
 
@@ -456,8 +468,10 @@ void BufferView::processUpdateFlags(Update::flags flags)
 			buffer_.changed(false);
 			return;
 		}
-		// no screen update is needed.
+		// no screen update is needed in principle, but this
+		// could change if cursor row needs scrolling.
 		d->update_strategy_ = NoScreenUpdate;
+		buffer_.changed(false);
 		return;
 	}
 
@@ -2853,6 +2867,103 @@ bool BufferView::cursorInView(Point const & p, int h) const
 }
 
 
+int BufferView::horizScrollOffset() const
+{
+	return d->horiz_scroll_offset_;
+}
+
+
+CursorSlice const & BufferView::currentRowSlice() const
+{
+	return d->current_row_slice_;
+}
+
+
+CursorSlice const & BufferView::lastRowSlice() const
+{
+	return d->last_row_slice_;
+}
+
+
+void BufferView::setCurrentRowSlice(CursorSlice const & rowSlice)
+{
+	// nothing to do if the cursor was already on this row
+	if (d->current_row_slice_ == rowSlice) {
+		d->last_row_slice_ = CursorSlice();
+		return;
+	}
+
+	// if the (previous) current row was scrolled, we have to
+	// remember it in order to repaint it next time.
+	if (d->horiz_scroll_offset_ != 0)
+		d->last_row_slice_ = d->current_row_slice_;
+	else
+		d->last_row_slice_ = CursorSlice();
+
+	// Since we changed row, the scroll offset is not valid anymore
+	d->horiz_scroll_offset_ = 0;
+	d->current_row_slice_ = rowSlice;
+}
+
+
+void BufferView::checkCursorScrollOffset(PainterInfo & pi)
+{
+	CursorSlice rowSlice = d->cursor_.bottom();
+	TextMetrics const & tm = textMetrics(rowSlice.text());
+
+	// Stop if metrics have not been computed yet, since it means
+	// that there is nothing to do.
+	if (!tm.contains(rowSlice.pit()))
+		return;
+	ParagraphMetrics const & pm = tm.parMetrics(rowSlice.pit());
+	Row const & row = pm.getRow(rowSlice.pos(),
+				    d->cursor_.boundary()
+				    && rowSlice == d->cursor_.top());
+	rowSlice.pos() = row.pos();
+
+	// Set the row on which the cursor lives.
+	setCurrentRowSlice(rowSlice);
+
+	// Force the recomputation of inset positions
+	bool const drawing = pi.pain.isDrawingEnabled();
+	pi.pain.setDrawingEnabled(false);
+	// No need to care about vertical position.
+	RowPainter rp(pi, buffer().text(), d->cursor_.bottom().pit(), row, 0, 0);
+	rp.paintText();
+	pi.pain.setDrawingEnabled(drawing);
+
+	// Current x position of the cursor in pixels
+	int const cur_x = getPos(d->cursor_).x_;
+
+	// Horizontal scroll offset of the cursor row in pixels
+	int offset = d->horiz_scroll_offset_;
+	int const MARGIN = 10;
+	if (cur_x < offset + MARGIN) {
+		// scroll right
+		offset = cur_x - MARGIN;
+	} else if (cur_x > offset + workWidth() - MARGIN) {
+		// scroll left
+		offset = cur_x - workWidth() + MARGIN;
+	} else if(offset > 0
+		  && row.width() - offset < workWidth()){
+		offset = row.width() - workWidth();
+	}
+
+	if (offset != d->horiz_scroll_offset_)
+		LYXERR0("Offset is now " << offset);
+
+	if (d->update_strategy_ == NoScreenUpdate
+	    && (offset != d->horiz_scroll_offset_
+		|| !d->last_row_slice_.empty())) {
+		// FIXME: if one uses SingleParUpdate, then home/end
+		// will not work on long rows. Why?
+		d->update_strategy_ = FullScreenUpdate;//DecorationUpdate;
+	}
+
+	d->horiz_scroll_offset_ = offset;
+}
+
+
 void BufferView::draw(frontend::Painter & pain)
 {
 	if (height_ == 0 || width_ == 0)
@@ -2863,6 +2974,10 @@ void BufferView::draw(frontend::Painter & pain)
 	TextMetrics const & tm = d->text_metrics_[&text];
 	int const y = tm.first().second->position();
 	PainterInfo pi(this, pain);
+
+	// Check whether the row where the cursor lives needs to be scrolled.
+	// Update the drawing strategy if needed.
+	checkCursorScrollOffset(pi);
 
 	switch (d->update_strategy_) {
 

@@ -1850,10 +1850,20 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		if (i)
 			y += row.ascent();
 
+		CursorSlice rowSlice(const_cast<InsetText &>(text_->inset()));
+		rowSlice.pit() = pit;
+		rowSlice.pos() = row.pos();
+
 		bool const inside = (y + row.descent() >= 0
 			&& y - row.ascent() < ww);
+
+		// Adapt to cursor row scroll offset if applicable.
+		if (bv_->currentRowSlice() == rowSlice)
+			x -= bv_->horizScrollOffset();
+
 		// It is not needed to draw on screen if we are not inside.
 		pi.pain.setDrawingEnabled(inside && original_drawing_state);
+
 		RowPainter rp(pi, *text_, pit, row, x, y);
 
 		if (selection)
@@ -1872,7 +1882,8 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 
 		// Row signature; has row changed since last paint?
 		row.setCrc(pm.computeRowSignature(row, bparams));
-		bool row_has_changed = row.changed();
+		bool row_has_changed = row.changed()
+			|| rowSlice == bv_->lastRowSlice();
 
 		// Take this opportunity to spellcheck the row contents.
 		if (row_has_changed && lyxrc.spellcheck_continuously) {
