@@ -542,7 +542,7 @@ InsetTableCell splitCell(InsetTableCell & head, docstring const & align_d, bool 
 	if (hassep) {
 		pit_type const psize = head.paragraphs().front().size();
 		head.paragraphs().front().eraseChars(dit.pos(), psize, false);
-		tail.paragraphs().front().eraseChars(0, 
+		tail.paragraphs().front().eraseChars(0,
 			dit.pos() < psize ? dit.pos() + 1 : psize, false);
 	}
 
@@ -738,9 +738,9 @@ void Tabular::appendRow(row_type row)
 void Tabular::insertRow(row_type const row, bool copy)
 {
 	row_info.insert(row_info.begin() + row + 1, RowData(row_info[row]));
-	cell_info.insert(cell_info.begin() + row + 1, 
+	cell_info.insert(cell_info.begin() + row + 1,
 		cell_vector(0, CellData(buffer_)));
-	
+
 	for (col_type c = 0; c < ncols(); ++c) {
 		cell_info[row + 1].insert(cell_info[row + 1].begin() + c,
 			copy ? CellData(cell_info[row][c]) : CellData(buffer_));
@@ -749,7 +749,7 @@ void Tabular::insertRow(row_type const row, bool copy)
 		if (cell_info[row][c].multirow == CELL_BEGIN_OF_MULTIROW)
 			cell_info[row + 1][c].multirow = CELL_PART_OF_MULTIROW;
 	}
-	
+
 	updateIndexes();
 	for (col_type c = 0; c < ncols(); ++c) {
 		if (isPartOfMultiRow(row, c))
@@ -846,7 +846,7 @@ void Tabular::copyColumn(col_type const col)
 
 
 void Tabular::appendColumn(col_type col)
-{	
+{
 	insertColumn(col, false);
 }
 
@@ -1029,7 +1029,7 @@ bool Tabular::updateColumnWidths()
 			if (columnSpan(i) == 1) {
 				if (getAlignment(i) == LYX_ALIGN_DECIMAL
 					&& cell_info[r][c].decimal_width!=0)
-					new_width = max(new_width, cellInfo(i).width 
+					new_width = max(new_width, cellInfo(i).width
 				                + max_dwidth[c] - cellInfo(i).decimal_width);
 				else
 					new_width = max(new_width, cellInfo(i).width);
@@ -1098,8 +1098,8 @@ void Tabular::setAlignment(idx_type cell, LyXAlignment align,
 		if (align == LYX_ALIGN_DECIMAL && dpoint.empty())
 			dpoint = from_utf8(lyxrc.default_decimal_point);
 	} else {
-		cellInfo(cell).alignment = align; 
-		cellInset(cell).get()->setContentAlignment(align); 
+		cellInfo(cell).alignment = align;
+		cellInset(cell).get()->setContentAlignment(align);
 	}
 }
 
@@ -1289,7 +1289,7 @@ bool Tabular::columnRightLine(col_type c) const
 		idx_type i = cellIndex(r, c);
 		if (c == cellColumn(i) + columnSpan(i) - 1) {
 			++total;
-			bool left = (c + 1 < ncols() 
+			bool left = (c + 1 < ncols()
 				&& cellInfo(cellIndex(r, c + 1)).left_line)
 				|| c + 1 == ncols();
 			if (cellInfo(i).right_line && left)
@@ -1304,7 +1304,7 @@ LyXAlignment Tabular::getAlignment(idx_type cell, bool onlycolumn) const
 {
 	if (!onlycolumn && (isMultiColumn(cell) || isMultiRow(cell)))
 		return cellInfo(cell).alignment;
-	
+
 	return column_info[cellColumn(cell)].alignment;
 }
 
@@ -1376,7 +1376,7 @@ int Tabular::textVOffset(idx_type cell) const
 	int voffset = cellInfo(cell).voffset;
 	if (isMultiRow(cell)) {
 		row_type const row = cellRow(cell);
-		voffset += (cellHeight(cell) - rowAscent(row) - rowDescent(row))/2; 
+		voffset += (cellHeight(cell) - rowAscent(row) - rowDescent(row))/2;
 	}
 	return voffset;
 }
@@ -1651,7 +1651,7 @@ void Tabular::read(Lexer & lex)
 
 bool Tabular::isMultiColumn(idx_type cell) const
 {
-	return (cellInfo(cell).multicolumn == CELL_BEGIN_OF_MULTICOLUMN 
+	return (cellInfo(cell).multicolumn == CELL_BEGIN_OF_MULTICOLUMN
 		|| cellInfo(cell).multicolumn == CELL_PART_OF_MULTICOLUMN);
 }
 
@@ -1769,7 +1769,7 @@ Tabular::idx_type Tabular::rowSpan(idx_type cell) const
 	col_type row = cellRow(cell) + 1;
 	while (row < nrows() && isPartOfMultiRow(row, column))
 		++row;
-	
+
 	return row - cellRow(cell);
 }
 
@@ -1849,7 +1849,7 @@ Tabular::idx_type Tabular::cellAbove(idx_type cell) const
 {
 	if (cellRow(cell) == 0)
 		return cell;
-	
+
 	col_type const col = cellColumn(cell);
 	row_type r = cellRow(cell) - 1;
 	while (r > 0 && cell_info[r][col].multirow == CELL_PART_OF_MULTIROW)
@@ -2178,22 +2178,22 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, string const & lang) co
 				for (col_type j = 0 ; j < c; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
-				
+
 				//babel makes the "-" character an active one, so we have to suppress this here
 				//see http://groups.google.com/group/comp.text.tex/browse_thread/thread/af769424a4a0f289#
 				if (lang == "slovak" || lang == "czech")
-					os << "\\expandafter" << (use_booktabs ? "\\cmidrule" : "\\cline") 
+					os << "\\expandafter" << (use_booktabs ? "\\cmidrule" : "\\cline")
 					<< "\\expandafter{\\expandafter" << c + 1 + offset << "\\string-";
 				else
 					os << (use_booktabs ? "\\cmidrule{" : "\\cline{") << c + 1 + offset << '-';
-				
+
 				col_type cstart = c;
 				for ( ; c < ncols() && topline[c]; ++c) {}
-				
+
 				for (col_type j = cstart ; j < c ; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
-				
+
 				os << c + offset << "} ";
 			}
 		}
@@ -2251,7 +2251,7 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const & lang)
 				for (col_type j = 0 ; j < c; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
-				
+
 				//babel makes the "-" character an active one, so we have to suppress this here
 				//see http://groups.google.com/group/comp.text.tex/browse_thread/thread/af769424a4a0f289#
 				if (lang == "slovak" || lang == "czech")
@@ -2259,14 +2259,14 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const & lang)
 					<< "\\expandafter{\\expandafter" << c + 1 + offset << "\\string-";
 				else
 					os << (use_booktabs ? "\\cmidrule{" : "\\cline{") << c + 1 + offset << '-';
-				
+
 				col_type cstart = c;
 				for ( ; c < ncols() && bottomline[c]; ++c) {}
-				
+
 				for (col_type j = cstart ; j < c ; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
 						++offset;
-				
+
 				os << c + offset << "} ";
 			}
 		}
@@ -2291,7 +2291,7 @@ void Tabular::TeXCellPreamble(otexstream & os, idx_type cell,
 	bool colright = columnRightLine(c);
 	bool colleft = columnLeftLine(c);
 	bool nextcolleft = nextcol < ncols() && columnLeftLine(nextcol);
-	bool nextcellleft = nextcol < ncols() 
+	bool nextcellleft = nextcol < ncols()
 		&& leftLine(cellIndex(r, nextcol));
 	bool coldouble = colright && nextcolleft;
 	bool celldouble = rightLine(cell) && nextcellleft;
@@ -2564,7 +2564,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 		if (isPartOfMultiRow(row, c)
 		    && column_info[c].alignment != LYX_ALIGN_DECIMAL) {
 			if (cell != getLastCellInRow(row))
-				os << " & "; 
+				os << " & ";
 			continue;
 		}
 
@@ -2713,7 +2713,7 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 			break;
 		}
 	}
-	
+
 	os << "{";
 
 	if (is_tabular_star)
@@ -3414,7 +3414,7 @@ bool InsetTableCell::getStatus(Cursor & cur, FuncRequest const & cmd,
 	return true;
 }
 
-docstring InsetTableCell::asString(bool intoInsets) 
+docstring InsetTableCell::asString(bool intoInsets)
 {
 	docstring retval;
 	if (paragraphs().empty())
@@ -3456,7 +3456,7 @@ docstring InsetTableCell::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 
 InsetTabular::InsetTabular(Buffer * buf, row_type rows,
 			   col_type columns)
-	: Inset(buf), tabular(buf, max(rows, row_type(1)), max(columns, col_type(1))), scx_(0), 
+	: Inset(buf), tabular(buf, max(rows, row_type(1)), max(columns, col_type(1))), scx_(0),
 	rowselect_(false), colselect_(false)
 {
 }
@@ -3594,11 +3594,11 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			tabular.cellInset(cell)->metrics(m, dim);
 			if (!p_width.zero())
 				dim.wid = m.base.textwidth;
-			tabular.cellInfo(cell).width = dim.wid + 2 * WIDTH_OF_LINE 
+			tabular.cellInfo(cell).width = dim.wid + 2 * WIDTH_OF_LINE
 				+ tabular.interColumnSpace(cell);
 
 			// FIXME(?): do we need a second metrics call?
-			TextMetrics const & tm = 
+			TextMetrics const & tm =
 				mi.base.bv->textMetrics(tabular.cellInset(cell)->getText(0));
 
 			// determine horizontal offset because of decimal align (if necessary)
@@ -3635,14 +3635,14 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			int const lastpardes = tm.last().second->descent()
 				+ TEXT_TO_INSET_OFFSET;
 			int offset = 0;
-			switch (tabular.getVAlignment(cell)) { 
+			switch (tabular.getVAlignment(cell)) {
 				case Tabular::LYX_VALIGN_TOP:
-					break; 
+					break;
 				case Tabular::LYX_VALIGN_MIDDLE:
-					offset = -(dim.des - lastpardes)/2; 
-					break; 
+					offset = -(dim.des - lastpardes)/2;
+					break;
 				case Tabular::LYX_VALIGN_BOTTOM:
-					offset = -(dim.des - lastpardes); 
+					offset = -(dim.des - lastpardes);
 					break;
 			}
 			tabular.cell_info[r][c].voffset = offset;
@@ -3675,13 +3675,13 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 
 	tabular.updateColumnWidths();
-	dim.asc = tabular.rowAscent(0) - offset_valign_;	
+	dim.asc = tabular.rowAscent(0) - offset_valign_;
 	dim.des = tabular.height() - dim.asc;
 	dim.wid = tabular.width() + 2 * ADD_TO_TABULAR_WIDTH;
 }
 
 
-bool InsetTabular::isCellSelected(Cursor & cur, row_type row, col_type col) 
+bool InsetTabular::isCellSelected(Cursor & cur, row_type row, col_type col)
 	const
 {
 	if (&cur.inset() == this && cur.selection()) {
@@ -3689,15 +3689,15 @@ bool InsetTabular::isCellSelected(Cursor & cur, row_type row, col_type col)
 			row_type rs, re;
 			col_type cs, ce;
 			getSelection(cur, rs, re, cs, ce);
-			
+
 			idx_type const cell = tabular.cellIndex(row, col);
 			col_type const cspan = tabular.columnSpan(cell);
 			row_type const rspan = tabular.rowSpan(cell);
-			if (col + cspan - 1 >= cs && col <= ce 
+			if (col + cspan - 1 >= cs && col <= ce
 				&& row + rspan - 1 >= rs && row <= re)
 				return true;
-		} else 
-			if (col == tabular.cellColumn(cur.idx()) 
+		} else
+			if (col == tabular.cellColumn(cur.idx())
 				&& row == tabular.cellRow(cur.idx())) {
 			CursorSlice const & beg = cur.selBegin();
 			CursorSlice const & end = cur.selEnd();
@@ -3735,9 +3735,9 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 		for (col_type c = 0; c < tabular.ncols(); ++c) {
 			if (tabular.isPartOfMultiColumn(r, c))
 				continue;
-			
+
 			idx = tabular.cellIndex(r, c);
-			
+
 			if (tabular.isPartOfMultiRow(r, c)) {
 				nx += tabular.cellWidth(idx);
 				continue;
@@ -3758,7 +3758,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 		}
 
 		if (r + 1 < tabular.nrows())
-			yy += tabular.rowDescent(r) + tabular.rowAscent(r + 1) 
+			yy += tabular.rowDescent(r) + tabular.rowAscent(r + 1)
 				+ tabular.interRowSpace(r + 1);
 	}
 }
@@ -3815,7 +3815,7 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 				     + tabular.interRowSpace(r + 1);
 		}
 
-	} 
+	}
 	// FIXME: This code has no effect because InsetTableCell does not handle
 	// drawSelection other than the trivial implementation in Inset.
 	//else {
@@ -3859,7 +3859,7 @@ void InsetTabular::drawCellLines(PainterInfo & pi, int x, int y,
 	// Right
 	x -= tabular.interColumnSpace(cell);
 	col_type next_cell_col = col + 1;
-	while (next_cell_col < tabular.ncols() 
+	while (next_cell_col < tabular.ncols()
 		&& tabular.isMultiColumn(tabular.cellIndex(row, next_cell_col)))
 		next_cell_col++;
 	drawline = tabular.rightLine(cell)
@@ -3943,7 +3943,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	Cursor & bvcur = cur.bv().cursor();
 
 	FuncCode const act = cmd.action();
-	
+
 	switch (act) {
 
 	case LFUN_MOUSE_PRESS: {
@@ -3958,13 +3958,13 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.idx() = tabular.getLastCellInRow(r);
 			cur.pos() = cur.lastpos();
 			cur.setSelection(true);
-			bvcur = cur; 
+			bvcur = cur;
 			rowselect_ = true;
 			break;
 		}
 		// select column
 		int const y0 = yo(cur.bv()) - tabular.rowAscent(0) + offset_valign_;
-		if (cmd.y() < y0 + ADD_TO_TABULAR_WIDTH 
+		if (cmd.y() < y0 + ADD_TO_TABULAR_WIDTH
 			|| cmd.y() > y0 + tabular.height()) {
 			col_type c = columnFromX(cur, cmd.x());
 			cur.idx() = tabular.cellIndex(0, c);
@@ -3973,15 +3973,15 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.idx() = tabular.cellIndex(tabular.nrows() - 1, c);
 			cur.pos() = cur.lastpos();
 			cur.setSelection(true);
-			bvcur = cur; 
+			bvcur = cur;
 			colselect_ = true;
 			break;
 		}
 		// do not reset cursor/selection if we have selected
 		// some cells (bug 2715).
 		if (cmd.button() == mouse_button::button3
-		    && &bvcur.selBegin().inset() == this 
-		    && bvcur.selIsMultiCell()) 
+		    && &bvcur.selBegin().inset() == this
+		    && bvcur.selIsMultiCell())
 			;
 		else
 			// Let InsetTableCell do it
@@ -4058,7 +4058,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_RIGHT_SELECT:
 	case LFUN_CHAR_RIGHT:
 	case LFUN_CHAR_LEFT_SELECT:
-	case LFUN_CHAR_LEFT: 
+	case LFUN_CHAR_LEFT:
 	case LFUN_WORD_FORWARD:
 	case LFUN_WORD_FORWARD_SELECT:
 	case LFUN_WORD_BACKWARD:
@@ -4067,14 +4067,14 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_RIGHT_SELECT:
 	case LFUN_WORD_LEFT:
 	case LFUN_WORD_LEFT_SELECT: {
-		// determine whether we move to next or previous cell, where to enter 
+		// determine whether we move to next or previous cell, where to enter
 		// the new cell from, and which command to "finish" (i.e., exit the
 		// inset) with:
 		bool next_cell;
 		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE;
 		FuncCode finish_lfun;
 
-		if (act == LFUN_CHAR_FORWARD 
+		if (act == LFUN_CHAR_FORWARD
 				|| act == LFUN_CHAR_FORWARD_SELECT
 				|| act == LFUN_WORD_FORWARD
 				|| act == LFUN_WORD_FORWARD_SELECT) {
@@ -4088,7 +4088,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			next_cell = false;
 			finish_lfun = LFUN_FINISHED_BACKWARD;
 		}
-		// LEFT or RIGHT commands --- the interpretation will depend on the 
+		// LEFT or RIGHT commands --- the interpretation will depend on the
 		// table's direction.
 		else {
 			bool const right = act == LFUN_CHAR_RIGHT
@@ -4096,14 +4096,14 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				|| act == LFUN_WORD_RIGHT
 				|| act == LFUN_WORD_RIGHT_SELECT;
 			next_cell = isRightToLeft(cur) != right;
-			
+
 			if (lyxrc.visual_cursor)
 				entry_from = right ? ENTRY_DIRECTION_LEFT:ENTRY_DIRECTION_RIGHT;
 
 			finish_lfun = right ? LFUN_FINISHED_RIGHT : LFUN_FINISHED_LEFT;
 		}
 
-		bool const select =	act == LFUN_CHAR_FORWARD_SELECT 
+		bool const select =	act == LFUN_CHAR_FORWARD_SELECT
 		    || act == LFUN_CHAR_BACKWARD_SELECT
 		    || act == LFUN_CHAR_RIGHT_SELECT
 		    || act == LFUN_CHAR_LEFT_SELECT
@@ -4112,15 +4112,15 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			|| act == LFUN_WORD_BACKWARD_SELECT
 			|| act == LFUN_WORD_LEFT_SELECT;
 
-		// If we have a multicell selection or we're 
+		// If we have a multicell selection or we're
 		// not doing some LFUN_*_SELECT thing anyway...
 		if (!cur.selIsMultiCell() || !select) {
 			col_type const c = tabular.cellColumn(cur.idx());
 			row_type const r = tabular.cellRow(cur.idx());
-			// Are we trying to select the whole cell and is the whole cell 
+			// Are we trying to select the whole cell and is the whole cell
 			// not yet selected?
 			bool const select_whole = select && !isCellSelected(cur, r, c) &&
-				((next_cell && cur.pit() == cur.lastpit() 
+				((next_cell && cur.pit() == cur.lastpit()
 				&& cur.pos() == cur.lastpos())
 				|| (!next_cell && cur.pit() == 0 && cur.pos() == 0));
 
@@ -4138,7 +4138,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 				break;
 			}
 
-			// FIXME: When we support the selection of an empty cell, remove 
+			// FIXME: When we support the selection of an empty cell, remove
 			// the !empty_cell from this condition. For now we jump to the next
 			// cell if the current cell is empty.
 			if (cur.result().dispatched() && !empty_cell)
@@ -4169,7 +4169,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_DOWN:
 		if (!(cur.selection() && cur.selIsMultiCell()))
 			cell(cur.idx())->dispatch(cur, cmd);
-		
+
 		cur.dispatched(); // override the cell's decision
 		if (sl == cur.top()) {
 			// if our Text didn't do anything to the cursor
@@ -4334,7 +4334,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 			docstring::const_iterator const end = cmd.argument().end();
 			for (; cit != end; ++cit)
 				bv->translateAndInsert(*cit, getText(cur.idx()), cur);
-	
+
 			cur.resetAnchor();
 			bv->bookmarkEditPosition();
 		} else
@@ -4466,7 +4466,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY: {
-		if (&cur.inset() != this || cmd.getArg(0) != "tabular") 
+		if (&cur.inset() != this || cmd.getArg(0) != "tabular")
 			break;
 
 		// FIXME: We only check for the very first argument...
@@ -4646,7 +4646,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case Tabular::M_ALIGN_RIGHT:
 			flag = false;
 		case Tabular::ALIGN_RIGHT:
-			status.setEnabled(!(tabular.isMultiRow(cur.idx()) 
+			status.setEnabled(!(tabular.isMultiRow(cur.idx())
 				&& !tabular.getPWidth(cur.idx()).zero()));
 			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_RIGHT);
 			break;
@@ -4654,7 +4654,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		case Tabular::M_ALIGN_CENTER:
 			flag = false;
 		case Tabular::ALIGN_CENTER:
-			status.setEnabled(!(tabular.isMultiRow(cur.idx()) 
+			status.setEnabled(!(tabular.isMultiRow(cur.idx())
 				&& !tabular.getPWidth(cur.idx()).zero()));
 			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_CENTER);
 			break;
@@ -4666,7 +4666,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 
 		case Tabular::ALIGN_DECIMAL:
-			status.setEnabled(!tabular.isMultiRow(cur.idx()) 
+			status.setEnabled(!tabular.isMultiRow(cur.idx())
 				&& !tabular.isMultiColumn(cur.idx()));
 			status.setOnOff(tabular.getAlignment(cur.idx(), true) == LYX_ALIGN_DECIMAL);
 			break;
@@ -4719,30 +4719,30 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 		case Tabular::TABULAR_VALIGN_TOP:
 			status.setEnabled(tabular.tabular_width.zero());
-			status.setOnOff(tabular.tabular_valignment 
+			status.setOnOff(tabular.tabular_valignment
 				== Tabular::LYX_VALIGN_TOP);
 			break;
 		case Tabular::TABULAR_VALIGN_MIDDLE:
 			status.setEnabled(tabular.tabular_width.zero());
-			status.setOnOff(tabular.tabular_valignment 
+			status.setOnOff(tabular.tabular_valignment
 				== Tabular::LYX_VALIGN_MIDDLE);
 			break;
 		case Tabular::TABULAR_VALIGN_BOTTOM:
 			status.setEnabled(tabular.tabular_width.zero());
-			status.setOnOff(tabular.tabular_valignment 
+			status.setOnOff(tabular.tabular_valignment
 				== Tabular::LYX_VALIGN_BOTTOM);
 			break;
 
 		case Tabular::LONGTABULAR_ALIGN_LEFT:
-			status.setOnOff(tabular.longtabular_alignment 
+			status.setOnOff(tabular.longtabular_alignment
 				== Tabular::LYX_LONGTABULAR_ALIGN_LEFT);
 			break;
 		case Tabular::LONGTABULAR_ALIGN_CENTER:
-			status.setOnOff(tabular.longtabular_alignment 
+			status.setOnOff(tabular.longtabular_alignment
 				== Tabular::LYX_LONGTABULAR_ALIGN_CENTER);
 			break;
 		case Tabular::LONGTABULAR_ALIGN_RIGHT:
-			status.setOnOff(tabular.longtabular_alignment 
+			status.setOnOff(tabular.longtabular_alignment
 				== Tabular::LYX_LONGTABULAR_ALIGN_RIGHT);
 			break;
 
@@ -4954,7 +4954,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 				getSelection(cur, rs, re, cs, ce);
 				if (paste_tabular && paste_tabular->ncols() == ce - cs + 1
 					  && paste_tabular->nrows() == re - rs + 1)
-					status.setEnabled(true);	
+					status.setEnabled(true);
 				else {
 					status.setEnabled(false);
 					status.message(_("Selection size should match clipboard content."));
@@ -5158,7 +5158,7 @@ int InsetTabular::cellYPos(idx_type const cell) const
 	row_type row = tabular.cellRow(cell);
 	int ly = 0;
 	for (row_type r = 0; r < row; ++r)
-		ly += tabular.rowDescent(r) + tabular.rowAscent(r + 1) 
+		ly += tabular.rowDescent(r) + tabular.rowAscent(r + 1)
 			+ tabular.interRowSpace(r + 1);
 	return ly;
 }
@@ -5246,7 +5246,7 @@ void InsetTabular::moveNextCell(Cursor & cur, EntryDirection entry_from)
 	cur.pos() = 0;
 
 	// in visual mode, place cursor at extreme left or right
-	
+
 	switch(entry_from) {
 
 	case ENTRY_DIRECTION_RIGHT:
@@ -5304,7 +5304,7 @@ void InsetTabular::movePrevCell(Cursor & cur, EntryDirection entry_from)
 	cur.pos() = cur.lastpos();
 
 	// in visual mode, place cursor at extreme left or right
-	
+
 	switch(entry_from) {
 
 	case ENTRY_DIRECTION_RIGHT:
@@ -5386,7 +5386,7 @@ static void checkLongtableSpecial(Tabular::ltType & ltt,
 
 bool InsetTabular::oneCellHasRotationState(bool rotated,
 		row_type row_start, row_type row_end,
-		col_type col_start, col_type col_end) const 
+		col_type col_start, col_type col_end) const
 {
 	for (row_type r = row_start; r <= row_end; ++r)
 		for (col_type c = col_start; c <= col_end; ++c)
@@ -5833,7 +5833,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		tabular.longtabular_alignment = Tabular::LYX_LONGTABULAR_ALIGN_RIGHT;
 		break;
 
-		
+
 
 	case Tabular::SET_ROTATE_CELL:
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
@@ -5924,7 +5924,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 		lyx::dispatch(FuncRequest(LFUN_CAPTION_INSERT));
 		break;
 	}
-	
+
 	case Tabular::UNSET_LTCAPTION: {
 		if (!tabular.ltCaption(row))
 			break;
@@ -6149,7 +6149,7 @@ bool InsetTabular::isRightToLeft(Cursor & cur) const
 }
 
 
-docstring InsetTabular::asString(idx_type stidx, idx_type enidx, 
+docstring InsetTabular::asString(idx_type stidx, idx_type enidx,
                                  bool intoInsets)
 {
 	LASSERT(stidx <= enidx, return docstring());
@@ -6396,7 +6396,7 @@ bool InsetTabular::insertCompletion(Cursor & cur, docstring const & s, bool fini
 }
 
 
-void InsetTabular::completionPosAndDim(Cursor const & cur, int & x, int & y, 
+void InsetTabular::completionPosAndDim(Cursor const & cur, int & x, int & y,
 				    Dimension & dim) const
 {
 	TextMetrics const & tm = cur.bv().textMetrics(cur.text());

@@ -81,8 +81,8 @@ private:
 	// This boolean is supposed to track whether the cell has had its
 	// width explicitly set. We need to know this to determine whether
 	// layout changes and paragraph customization are allowed---that is,
-	// we need it in forcePlainLayout() and allowParagraphCustomization(). 
-	// Unfortunately, that information is not readily available in 
+	// we need it in forcePlainLayout() and allowParagraphCustomization().
+	// Unfortunately, that information is not readily available in
 	// InsetTableCell. In the case of multicolumn cells, it is present
 	// in CellData, and so would be available here if CellData were to
 	// become a member of InsetTableCell. But in the other case, it isn't
@@ -92,10 +92,10 @@ private:
 	// but the other solutions are no better. These are:
 	// (i)  Keep a pointer in InsetTableCell to the table;
 	// (ii) Find the table by iterating over the Buffer's insets.
-	// Solution (i) raises the problem of updating the pointer when an 
+	// Solution (i) raises the problem of updating the pointer when an
 	// InsetTableCell is copied, and we'd therefore need a copy constructor
-	// in InsetTabular and then in Tabular, which seems messy, given how 
-	// complicated those classes are. Solution (ii) involves a lot of 
+	// in InsetTabular and then in Tabular, which seems messy, given how
+	// complicated those classes are. Solution (ii) involves a lot of
 	// iterating, since this information is needed quite often, and so may
 	// be quite slow.
 	// So, well, if someone can do better, please do!
@@ -111,9 +111,9 @@ private:
 	LyXAlignment contentAlignment() const { return contentAlign; }
 	///
 	virtual bool usePlainLayout() const { return true; }
-	/// 
+	///
 	virtual bool forcePlainLayout(idx_type = 0) const;
-	/// 
+	///
 	virtual bool allowParagraphCustomization(idx_type = 0) const;
 	/// Is the width forced to some value?
 	bool hasFixedWidth() const { return isFixedWidth; }
@@ -309,7 +309,7 @@ public:
 		LYX_VALIGN_MIDDLE = 1,
 		///
 		LYX_VALIGN_BOTTOM = 2
-		
+
 	};
 	///
 	enum HAlignment {
@@ -472,7 +472,7 @@ public:
 	void deleteRow(row_type row);
 	///
 	void copyRow(row_type row);
-	///  
+	///
 	void insertRow(row_type row, bool copy);
 	///
 	void moveColumn(col_type col, ColDirection direction);
@@ -599,7 +599,7 @@ public:
 //private:
   // FIXME Now that cells have an InsetTableCell as their insets, rather
   // than an InsetText, it'd be possible to reverse the relationship here,
-  // so that cell_vector was a vector<InsetTableCell> rather than a 
+  // so that cell_vector was a vector<InsetTableCell> rather than a
   // vector<CellData>, and an InsetTableCell had a CellData as a member,
   // or perhaps just had its members as members.
 	///
@@ -979,7 +979,7 @@ private:
 	void setCursorFromCoordinates(Cursor & cur, int x, int y) const;
 
 	///
-	void moveNextCell(Cursor & cur, 
+	void moveNextCell(Cursor & cur,
 				EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
 	///
 	void movePrevCell(Cursor & cur,
