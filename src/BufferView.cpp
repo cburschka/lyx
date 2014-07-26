@@ -35,6 +35,7 @@
 #include "Language.h"
 #include "LaTeXFeatures.h"
 #include "LayoutFile.h"
+#include "Length.h"
 #include "Lexer.h"
 #include "LyX.h"
 #include "LyXAction.h"
@@ -2937,20 +2938,17 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 
 	// Horizontal scroll offset of the cursor row in pixels
 	int offset = d->horiz_scroll_offset_;
-	int const MARGIN = 10;
+	int const MARGIN = Length(2, Length::EM).inPixels(workWidth());
 	if (cur_x < offset + MARGIN) {
 		// scroll right
 		offset = cur_x - MARGIN;
 	} else if (cur_x > offset + workWidth() - MARGIN) {
 		// scroll left
 		offset = cur_x - workWidth() + MARGIN;
-	} else if(offset > 0
-		  && row.width() - offset < workWidth()){
-		offset = row.width() - workWidth();
 	}
 
-	if (offset != d->horiz_scroll_offset_)
-		LYXERR0("Offset is now " << offset);
+	if (offset < 0 || row.width() <= workWidth())
+		offset = 0;
 
 	if (d->update_strategy_ == NoScreenUpdate
 	    && (offset != d->horiz_scroll_offset_
