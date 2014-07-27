@@ -1807,7 +1807,7 @@ void TextMetrics::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) const
+void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const x, int y) const
 {
 	BufferParams const & bparams = bv_->buffer().params();
 	ParagraphMetrics const & pm = par_metrics_[pit];
@@ -1847,6 +1847,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 	for (size_t i = 0; i != nrows; ++i) {
 
 		Row const & row = pm.rows()[i];
+		int row_x = x;
 		if (i)
 			y += row.ascent();
 
@@ -1859,12 +1860,12 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 
 		// Adapt to cursor row scroll offset if applicable.
 		if (bv_->currentRowSlice() == rowSlice)
-			x -= bv_->horizScrollOffset();
+			row_x -= bv_->horizScrollOffset();
 
 		// It is not needed to draw on screen if we are not inside.
 		pi.pain.setDrawingEnabled(inside && original_drawing_state);
 
-		RowPainter rp(pi, *text_, pit, row, x, y);
+		RowPainter rp(pi, *text_, pit, row, row_x, y);
 
 		if (selection)
 			row.setSelectionAndMargins(sel_beg_par, sel_end_par);
@@ -1903,10 +1904,10 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type pit, int x, int y) co
 		// Clear background of this row if paragraph background was not
 		// already cleared because of a full repaint.
 		if (!pi.full_repaint && row_has_changed) {
-			LYXERR(Debug::PAINTING, "Clear rect@(" 
-			       << max(x, 0) << ", " << y-row.ascent() << ")=" 
+			LYXERR(Debug::PAINTING, "Clear rect@("
+			       << max(row_x, 0) << ", " << y-row.ascent() << ")="
 			       << width() << " x " << row.height());
-			pi.pain.fillRectangle(max(x, 0), y - row.ascent(),
+			pi.pain.fillRectangle(max(row_x, 0), y - row.ascent(),
 				width(), row.height(), pi.background_color);
 		}
 

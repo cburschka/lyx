@@ -2929,7 +2929,8 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 	bool const drawing = pi.pain.isDrawingEnabled();
 	pi.pain.setDrawingEnabled(false);
 	// No need to care about vertical position.
-	RowPainter rp(pi, buffer().text(), d->cursor_.bottom().pit(), row, 0, 0);
+	RowPainter rp(pi, buffer().text(), d->cursor_.bottom().pit(), row,
+		      -d->horiz_scroll_offset_, 0);
 	rp.paintText();
 	pi.pain.setDrawingEnabled(drawing);
 
@@ -2947,8 +2948,12 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 		offset = cur_x - workWidth() + MARGIN;
 	}
 
-	if (offset < 0 || row.width() <= workWidth())
+	if (offset < row.x || row.width() <= workWidth())
 		offset = 0;
+
+	if (offset != d->horiz_scroll_offset_)
+		LYXERR(Debug::PAINTING, "Horiz. scroll offset changed from "
+		       << d->horiz_scroll_offset_ << " to " << offset);
 
 	if (d->update_strategy_ == NoScreenUpdate
 	    && (offset != d->horiz_scroll_offset_
