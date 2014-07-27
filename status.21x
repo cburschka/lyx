@@ -87,6 +87,9 @@ What's new
 
 - Fix potential bug spotted by cppcheck.
 
+- Fix problems arising when converting floating point values to the
+  corresponding string representation (bugs 9190 and 9193).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
