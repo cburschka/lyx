@@ -1507,9 +1507,9 @@ def convert_latexargs(document):
                     "svglobal3", "svglobal", "svjog", "svmono", "svmult", "svprobth", "tarticle",
                     "tbook", "treport", "tufte-book", "tufte-handout"]
     # A list of "safe" modules, same as above
-    safe_modules = ["biblatex", "beameraddons", "beamersession", "braille", "customHeadersFooters",
-                    "endnotes", "enumitem", "eqs-within-sections", "figs-within-sections", "fix-cm",
-                    "fixltx2e", "foottoend", "hanging", "jscharstyles", "knitr", "lilypond",
+    safe_modules = ["biblatex", "beameraddons", "beamer-resenumerate", "beamersession", "braille",
+                    "customHeadersFooters", "endnotes", "enumitem", "eqs-within-sections", "figs-within-sections",
+                    "fix-cm", "fixltx2e", "foottoend", "hanging", "jscharstyles", "knitr", "lilypond",
                     "linguistics", "linguisticx", "logicalmkup", "minimalistic", "nomindex", "noweb",
                     "pdfcomment", "sweave", "tabs-within-sections", "theorems-ams-bytype",
                     "theorems-ams-extended-bytype", "theorems-ams-extended", "theorems-ams", "theorems-bytype",

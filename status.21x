@@ -61,13 +61,16 @@ What's new
 - Fix warning "Missing \use_indices" when converting from 1.6.x format
   or older.
 
+- Fix conversion of beamer overlay arguments when the module
+  "beamer-resenumerate" is used (part of bug 9208).
+
 
 
 * USER INTERFACE
 
 - Do not forget last words of paragraphs in completion possibilities.
 
-- Select word on double click even when at boundary (#9159).
+- Select word on double click even when at boundary (bug 9159).
 
 - Fix listings inset parameter validation when font size is selected
   (bug 8144).
