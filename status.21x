@@ -61,6 +61,9 @@ What's new
 - Fix warning "Missing \use_indices" when converting from 1.6.x format
   or older.
 
+- Fix conversion of multiple box overlay arguments in beamer when the
+  arguments use multiple ERTs (part of bug 9208).
+
 - Fix conversion of beamer overlay arguments when the module
   "beamer-resenumerate" is used (part of bug 9208).
 
