@@ -66,6 +66,7 @@ public:
 	void paintAppendix();
 	void paintDepthBar();
 	void paintChangeBar();
+	void paintTooLargeMarks(bool const left, bool const right);
 	void paintFirst();
 	void paintLast();
 	void paintText();

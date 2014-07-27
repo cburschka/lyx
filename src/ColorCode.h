@@ -91,6 +91,8 @@ enum ColorCode {
 
 	/// Color for the depth bars in the margin
 	Color_depthbar,
+	/// Color that indicates when a row can be scrolled
+	Color_scroll,
 	/// Color for marking foreign language words
 	Color_language,
 
