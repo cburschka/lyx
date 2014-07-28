@@ -305,7 +305,6 @@
   <tabstop>autoBeginCB</tabstop>
   <tabstop>autoEndCB</tabstop>
   <tabstop>markForeignCB</tabstop>
-  <tabstop>rtlGB</tabstop>
   <tabstop>logicalCursorRB</tabstop>
   <tabstop>visualCursorRB</tabstop>
  </tabstops>
@@ -313,54 +312,4 @@
   <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
- <connections>
-  <connection>
-   <sender>rtlGB</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>logicalCursorRB</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>139</x>
-     <y>317</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>162</x>
-     <y>348</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>rtlGB</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>visualCursorRB</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>139</x>
-     <y>317</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>228</x>
-     <y>348</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>rtlGB</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>cursorMovementLA</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>139</x>
-     <y>317</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>72</x>
-     <y>348</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
 </ui>

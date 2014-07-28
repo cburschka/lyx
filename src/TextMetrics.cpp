@@ -627,7 +627,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			row.x += w;
 			break;
 		case LYX_ALIGN_CENTER:
-			row.dimension().wid = width - w / 2;
+			row.dimension().wid = width - int(w / 2);
 			row.x += w / 2;
 			break;
 		}
@@ -660,7 +660,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	for ( ; cit != cend; ++cit) {
 		if (row.label_hfill && cit->endpos == body_pos
 		    && cit->type == Row::SPACE)
-			cit->dim.wid -= row.label_hfill * (nlh - 1);
+			cit->dim.wid -= int(row.label_hfill * (nlh - 1));
 		if (!cit->inset || !cit->inset->isHfill())
 			continue;
 		if (pm.hfillExpansion(row, cit->pos))
@@ -680,7 +680,7 @@ int TextMetrics::labelFill(pit_type const pit, Row const & row) const
 	Paragraph const & par = text_->getPar(pit);
 	LBUFERR(par.beginOfBody() > 0 || par.isEnvSeparator(0));
 
-	int w = 0;
+	double w = 0;
 	Row::const_iterator cit = row.begin();
 	Row::const_iterator const end = row.end();
 	// iterate over elements before main body (except the last one,
@@ -697,7 +697,7 @@ int TextMetrics::labelFill(pit_type const pit, Row const & row) const
 	FontMetrics const & fm
 		= theFontMetrics(text_->labelFont(par));
 
-	return max(0, fm.width(label) - w);
+	return max(0, fm.width(label) - int(w));
 }
 
 
@@ -1108,10 +1108,10 @@ pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 	pos_type pos = row.pos();
 	boundary = false;
 	if (row.empty())
-		x = row.x;
+		x = int(row.x);
 	else if (x <= row.x) {
 		pos = row.front().left_pos();
-		x = row.x;
+		x = int(row.x);
 	} else if (x >= row.width() - row.right_margin) {
 		pos = row.back().right_pos();
 		x = row.width() - row.right_margin;
@@ -1123,7 +1123,7 @@ pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 			if (w <= x &&  w + cit->width() > x) {
 				double x_offset = x - w;
 				pos = cit->x2pos(x_offset);
-				x = x_offset + w;
+				x = int(x_offset + w);
 				break;
 			}
 			w += cit->width();

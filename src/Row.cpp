@@ -45,7 +45,7 @@ double Row::Element::pos2x(pos_type const i) const
 
 	bool const rtl = font.isVisibleRightToLeft();
 
-	int w = 0;
+	double w = 0;
 	//handle first the two bounds of the element
 	if (i == pos || type != STRING)
 		w = rtl ? width() : 0;
@@ -70,7 +70,7 @@ pos_type Row::Element::x2pos(double &x) const
 	case STRING: {
 		FontMetrics const & fm = theFontMetrics(font);
 		// FIXME: is it really necessary for x to be a double?
-		int xx = x;
+		int xx = int(x);
 		i = fm.x2pos(str, xx, rtl);
 		x = xx;
 		break;
@@ -113,9 +113,9 @@ bool Row::Element::breakAt(double w)
 		return false;
 	str = str.substr(0, new_pos - pos);
 	if (rtl)
-		dim.wid -= w;
+		dim.wid -= int(w);
 	else
-		dim.wid = w;
+		dim.wid = int(w);
 	endpos = new_pos;
 	return true;
 }
@@ -404,7 +404,7 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 	double max_w = w - x;
 	if (first_below->breakAt(max_w)) {
 		end_ = first_below->endpos;
-		dim_.wid = x + first_below->width();
+		dim_.wid = int(x + first_below->width());
 		// If there are other elements, they should be removed.
 		elements_.erase(boost::next(first_below), end);
 	} else if (first_below->pos > pos_) {
