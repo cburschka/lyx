@@ -76,7 +76,7 @@ public:
 		return first == s.first && last == s.last;
 	}
 
-	inline bool inside(pos_type p) const
+	inline bool contains(pos_type p) const
 	{
 		return first <= p && p <= last;
 	}
@@ -90,15 +90,15 @@ public:
 	inline FontSpan intersect(FontSpan const & f) const
 	{
 		FontSpan result = FontSpan();
-		if (inside(f.first))
+		if (contains(f.first))
 			result.first = f.first;
-		else if (f.inside(first))
+		else if (f.contains(first))
 			result.first = first;
 		else
 			return result;
-		if (inside(f.last))
+		if (contains(f.last))
 			result.last = f.last;
-		else if (f.inside(last))
+		else if (f.contains(last))
 			result.last = last;
 		return result;
 	}

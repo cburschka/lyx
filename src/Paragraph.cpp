@@ -96,7 +96,7 @@ public:
 	///
 	void result(SpellChecker::Result r) { result_ = r; }
 	///
-	bool inside(pos_type pos) const { return range_.inside(pos); }
+	bool contains(pos_type pos) const { return range_.contains(pos); }
 	///
 	bool covered(FontSpan const & r) const
 	{
@@ -104,8 +104,9 @@ public:
 		// 2. last of new range inside current range or
 		// 3. first of current range inside new range or
 		// 4. last of current range inside new range
-		return range_.inside(r.first) || range_.inside(r.last) ||
-			r.inside(range_.first) || r.inside(range_.last);
+		//FIXME: is this the same as !range_.intersect(r).empty() ?
+		return range_.contains(r.first) || range_.contains(r.last) ||
+			r.contains(range_.first) || r.contains(range_.last);
 	}
 	///
 	void shift(pos_type pos, int offset)
@@ -191,7 +192,7 @@ public:
 		RangesIterator et = ranges_.end();
 		RangesIterator it = ranges_.begin();
 		for (; it != et; ++it) {
-			if(it->inside(pos)) {
+			if(it->contains(pos)) {
 				return it->result();
 			}
 		}
@@ -205,7 +206,7 @@ public:
 		RangesIterator et = ranges_.end();
 		RangesIterator it = ranges_.begin();
 		for (; it != et; ++it) {
-			if(it->inside(pos)) {
+			if(it->contains(pos)) {
 				return it->range();
 			}
 		}

@@ -183,7 +183,7 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 	for (++vpos ; vpos < end ; ++vpos) {
 		pos = bidi_.vis2log(vpos);
 
-		if (!font_span.inside(pos))
+		if (!font_span.contains(pos))
 			break;
 
 		bool const new_spell_state =
@@ -736,13 +736,13 @@ void RowPainter::paintText()
 		}
 
 		// Use font span to speed things up, see above
-		if (!font_span.inside(pos)) {
+		if (!font_span.contains(pos)) {
 			font_span = par_.fontSpan(pos);
 			font = text_metrics_.displayFont(pit_, pos);
 
 			// split font span if inline completion is inside
 			if (inlineCompletionVPos != -1
-			    && font_span.inside(inlineCompletionPos.pos()))
+			    && font_span.contains(inlineCompletionPos.pos()))
 				font_span.last = inlineCompletionPos.pos();
 		}
 
