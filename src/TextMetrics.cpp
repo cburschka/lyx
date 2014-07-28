@@ -1144,12 +1144,14 @@ pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 	}
 
 	/** This tests for the case where the cursor is set at the end
-	 * of a row which has been broken due to a display inset on
-	 * next row. This is indicated by Row::right_boundary.
+	 * of a row which has been broken due something else than a
+	 * separator (a display inset or a forced breaking of the
+	 * row). We know that there is a separator when the end of the
+	 * row is larger than the end of its last element.
 	 */
 	if (!row.empty() && pos == row.back().endpos
 	    && row.back().endpos == row.endpos())
-		boundary = row.right_boundary();
+		boundary = true;
 
 	x += xo;
 	return pos;

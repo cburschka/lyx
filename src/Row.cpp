@@ -250,7 +250,8 @@ ostream & operator<<(ostream & os, Row const & row)
 	   << " ascent: " << row.dim_.asc
 	   << " descent: " << row.dim_.des
 	   << " separator: " << row.separator
-	   << " label_hfill : " << row.label_hfill << "\n";
+	   << " label_hfill: " << row.label_hfill 
+	   << " row_boundary: " << row.right_boundary() << "\n";
 	double x = row.x;
 	Row::Elements::const_iterator it = row.elements_.begin();
 	for ( ; it != row.elements_.end() ; ++it) {
