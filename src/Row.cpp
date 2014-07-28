@@ -47,10 +47,10 @@ double Row::Element::pos2x(pos_type const i) const
 
 	double w = 0;
 	//handle first the two bounds of the element
-	if (i == pos || type != STRING)
-		w = rtl ? width() : 0;
-	else if (i == endpos)
+	if (i == endpos)
 		w = rtl ? 0 : width();
+	else if (i == pos || type != STRING)
+		w = rtl ? width() : 0;
 	else {
 		FontMetrics const & fm = theFontMetrics(font);
 		w = fm.pos2x(str, i - pos, font.isVisibleRightToLeft());
