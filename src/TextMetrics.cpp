@@ -506,11 +506,11 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 }
 
 
-int TextMetrics::getAlign(Paragraph const & par, pos_type const pos) const
+LyXAlignment TextMetrics::getAlign(Paragraph const & par, pos_type const pos) const
 {
 	Layout const & layout = par.layout();
 
-	int align;
+	LyXAlignment align;
 	if (par.params().align() == LYX_ALIGN_LAYOUT)
 		align = layout.align;
 	else
@@ -629,6 +629,12 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 		case LYX_ALIGN_CENTER:
 			row.dimension().wid = width - int(w / 2);
 			row.x += w / 2;
+			break;
+		case LYX_ALIGN_LEFT:
+		case LYX_ALIGN_NONE:
+		case LYX_ALIGN_LAYOUT:
+		case LYX_ALIGN_SPECIAL:
+		case LYX_ALIGN_DECIMAL:
 			break;
 		}
 	}

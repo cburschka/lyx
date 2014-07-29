@@ -16,6 +16,7 @@
 
 #include "Font.h"
 #include "InsetList.h"
+#include "LayoutEnums.h"
 #include "ParagraphMetrics.h"
 
 #include "support/types.h"
@@ -136,7 +137,7 @@ private:
 	void breakRow(Row & row, int right_margin, pit_type const pit) const;
 
 	// Expand the alignment of paragraph \param par at position \param pos
-	int getAlign(Paragraph const & par, pos_type pos) const;
+	LyXAlignment getAlign(Paragraph const & par, pos_type pos) const;
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
 	void computeRowMetrics(pit_type pit, Row & row, int width) const;
