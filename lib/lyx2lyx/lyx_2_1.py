@@ -3062,14 +3062,30 @@ def convert_beamerblocks(document):
             if i != -1:
                 if document.body[parbeg] == "\\begin_inset ERT":
                     ertcontfirstline = parbeg + 5
-                    # Find the last ERT in this paragraph (which might also be the first)
-                    lastertbeg = find_token_backwards(document.body, "\\begin_inset ERT", j)
-                    if lastertbeg == -1:
-                        document.warning("Last ERT not found!")
-                        break
-                    lastertend = find_end_of_inset(document.body, lastertbeg)
-                    if lastertend == -1:
-                        document.warning("End of last ERT not found!")
+                    lastertbeg = -1
+                    lastertend = -1
+                    while True:
+                        # Find the last ERT in this paragraph used for arguments
+                        # (which might also be the first)
+                        lastertbeg = find_token_backwards(document.body, "\\begin_inset ERT", j)
+                        if lastertbeg == -1:
+                            document.warning("Last ERT not found!")
+                            break
+                        lastertend = find_end_of_inset(document.body, lastertbeg)
+                        if lastertend == -1:
+                            document.warning("End of last ERT not found!")
+                            break
+                        # Is this ERT really used for an argument?
+                        # Note: This will fail when non-argument ERTs actually use brackets
+                        #       (e.g. \pause{})
+                        regexp = re.compile(r'.*[>\]\}]', re.IGNORECASE)
+                        cbracket = find_re(document.body, regexp, lastertbeg, lastertend)
+                        if cbracket != -1:
+                            break
+                        if lastertbeg == parbeg:
+                            break
+                        j = lastertbeg - 1
+                    if lastertbeg == -1 or lastertend == -1:
                         break
                     ertcontlastline = lastertend - 3
                     while True:
