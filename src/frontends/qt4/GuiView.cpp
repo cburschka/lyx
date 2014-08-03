@@ -3834,11 +3834,6 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (menuBar()->isVisible() && lyxrc.full_screen_menubar)
 			menuBar()->hide();
 	}
-
-	// Clear non-empty selections
-	Cursor & cur = bv->cursor();
-	if (cur.selection() && cur.selBegin() == cur.selEnd())
-		cur.clearSelection();
 }
 
 
