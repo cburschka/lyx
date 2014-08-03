@@ -3245,7 +3245,10 @@ def convert_beamerblocks(document):
                                 # Multipar ERT. Skip this.
                                 break
                             else:
-                                convert_TeX_brace_to_Argument(document, i, 2, 2, False, True, False)
+                                # ERT has contents after the closing bracket. We cannot convert this.
+                                # convert_TeX_brace_to_Argument cannot either.
+                                #convert_TeX_brace_to_Argument(document, i, 2, 2, False, True, False)
+                                break
                         else:
                             break
                         j = find_end_of_layout(document.body, i)
