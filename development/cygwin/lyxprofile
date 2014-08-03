@@ -1,7 +1,7 @@
 # Set up the home directory if not already set in the system environment.
 if [ -z "${HOME}" ]; then
   USER=`id -un`
-  HOME=`grep "^${USER}:" /etc/passwd | cut -d: -f6`
+  HOME=`getent passwd "${USER}" | cut -d: -f6`
   if [ -z "${HOME}" -o ! -d "${HOME}" ]; then
     HOME="/home/${USER}"
     test -d "${HOME}" || HOME=/tmp

@@ -46,6 +46,9 @@ What's new
 
 - Fix compatibility issue with 64-bit cygwin.
 
+- On Cygwin, use getent instead of grepping /etc/passwd for determining
+  the user's home directory when launching LyX through the gui wrapper.
+
 
 
 ** Bug fixes:
