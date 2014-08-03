@@ -852,6 +852,7 @@ void TeXOnePar(Buffer const & buf,
 	// Is this really needed ? (Dekel)
 	// We do not need to use to change the font for the last paragraph
 	// or for a command.
+	// Spitz: We need for the last par, actually. See #9231.
 
 	Font const font = par.empty()
 		 ? par.getLayoutFont(bparams, outerfont)
@@ -860,7 +861,6 @@ void TeXOnePar(Buffer const & buf,
 	bool const is_command = style.isCommand();
 
 	if (style.resfont.size() != font.fontInfo().size()
-	    && nextpar
 	    && !is_command) {
 		os << '{';
 		os << "\\" << from_ascii(font.latexSize()) << " \\par}";
