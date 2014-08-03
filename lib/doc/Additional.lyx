@@ -131,11 +131,12 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author 711066561 "Enrico Forestieri" 
 \end_header
 
 \begin_body
@@ -5252,7 +5253,47 @@ lyxpipe"
 
 \end_inset
 
- on Windows (but any working path can be used).
+ on Windows (
+\change_deleted 711066561 1405258697
+but
+\change_inserted 711066561 1405258701
+where
+\change_unchanged
+ any working path 
+\change_inserted 711066561 1405258613
+instead of lyxpipe 
+\change_unchanged
+can be used
+\change_inserted 711066561 1405258962
+, for example 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 711066561 1405258868
+"
+\backslash
+
+\backslash
+.
+\backslash
+pipe
+\backslash
+my
+\backslash
+lyx
+\backslash
+pipe"
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ would also work
+\change_unchanged
+).
  You 
 \emph on
 must
@@ -5341,13 +5382,20 @@ lyx -dbg lyxserver
 \end_layout
 
 \begin_layout Standard
-You can find a complete example client written in C in the source distribution
- as 
+You can find a complete example client written in C
+\change_inserted 711066561 1405258366
+++
+\change_unchanged
+ in the source distribution as 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 development/lyxserver/server_monitor.c
+\change_inserted 711066561 1405258386
+pp
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -5356,7 +5404,11 @@ development/lyxserver/server_monitor.c
 \end_layout
 
 \begin_layout Standard
-Another useful tool is the command-line based clientfound in 
+Another useful tool is the command-line based client
+\change_inserted 711066561 1405258403
+ 
+\change_unchanged
+found in 
 \begin_inset Flex Code
 status collapsed
 
@@ -5696,8 +5748,11 @@ Some DVI/PDF viewers
 status collapsed
 
 \begin_layout Plain Layout
-The following viewers offer the reverse PDF search feature: Okular on KDE/Linux,
- Skim on Mac OSX and SumatraPDF on Windows.
+The following viewers offer the reverse PDF search feature: Okular on KDE/Linux
+\change_inserted 711066561 1405273809
+, Qpdfview on Unix
+\change_unchanged
+, Skim on Mac OSX and SumatraPDF on Windows.
 \end_layout
 
 \end_inset
@@ -5842,7 +5897,13 @@ synctex=-1
 \end_layout
 
 \begin_layout Standard
-Please aöso note that including the 
+Please a
+\change_deleted 711066561 1405259326
+ö
+\change_inserted 711066561 1405259326
+l
+\change_unchanged
+so note that including the 
 \begin_inset Flex Code
 status collapsed
 
@@ -6154,8 +6215,11 @@ The generation of the required info can be forced by changing the converter
 \end_inset
 
 .
- Also note that only a few PDF viewers (Skim on the Mac, SumatraPDF on Windows)
- already provide SyncTeX support.
+ Also note that only a few PDF viewers (
+\change_inserted 711066561 1405273879
+Okular and Qpdfview on Unix, 
+\change_unchanged
+Skim on the Mac, SumatraPDF on Windows) already provide SyncTeX support.
 \end_layout
 
 \begin_layout Standard
@@ -6636,6 +6700,68 @@ lyxclient -g %f %l
 
 \begin_layout Standard
 Reverse search is triggered by SHIFT-click.
+\change_inserted 711066561 1405259853
+
+\end_layout
+
+\begin_layout Subsubsection*
+
+\change_inserted 711066561 1405273730
+Qpdfview (Unix)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 711066561 1405263147
+Qpdfview supports SyncTeX since version 0.3.5.
+ Go to 
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 711066561 1405260331
+Edit\SpecialChar \menuseparator
+Settings\SpecialChar \ldots{}
+\SpecialChar \menuseparator
+Behavior
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, click on the input field of the 
+\begin_inset Quotes eld
+\end_inset
+
+Source editor
+\begin_inset Quotes erd
+\end_inset
+
+ item and add the command 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 711066561 1405260473
+lyxclient -g %1 %2
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 711066561 1405260506
+Reverse search is triggered by double-click.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection*
@@ -7181,7 +7307,7 @@ $$o
 Note that only some of the viewers provide full forward search functionality,
  among them yap, xdvi, okular
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 You might want to set 
@@ -7216,15 +7342,35 @@ Formats
 
 \end_inset
 
- and Sumatra PDF
+
+\change_inserted 711066561 1405264317
+, qpdfview
+\change_unchanged
+ and Sumatra
+\change_deleted 711066561 1405264282
+ 
+\change_unchanged
+PDF
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-For Sumatra CMCDDE is needed --- downloadable from 
+
+\change_deleted 711066561 1405264216
+For 
+\change_unchanged
+Sumatra
+\change_inserted 711066561 1405264265
+PDF can also use DDE commands through the external program
+\change_unchanged
+ CMCDDE
+\change_deleted 711066561 1405264271
+ is needed
+\change_unchanged
+ --- downloadable from 
 \begin_inset CommandInset href
 LatexCommand href
-target "http://www.istri.fr/zip/CMCDDE.zip"
+target "ftp://ftp2.commence.com/pub/freebies/"
 
 \end_inset
 

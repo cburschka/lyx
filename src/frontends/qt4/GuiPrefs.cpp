@@ -415,6 +415,7 @@ PrefOutput::PrefOutput(GuiPreferences * form)
 	pdfCB->addItem("SumatraPDF -reuse-instance $$o -forward-search $$t $$n");
 	pdfCB->addItem("synctex view -i $$n:0:$$t -o $$o -x \"xpdf -raise -remote $$t.tmp $$o %{page+1}\"");
 	pdfCB->addItem("okular --unique \"$$o#src:$$n $$f\"");
+	pdfCB->addItem("qpdfview --unique \"$$o#src:$$f:$$n:0\"");
 	pdfCB->addItem("synctex view -i $$n:0:$$t -o $$o -x \"evince -i %{page+1} $$o\"");
 	pdfCB->addItem("/Applications/Skim.app/Contents/SharedSupport/displayline $$n $$o $$t");
 }
