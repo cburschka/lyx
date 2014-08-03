@@ -2290,10 +2290,17 @@ void BufferView::setCursorFromRow(int row)
 		// we need to make sure that the row and position
 		// we got back are valid, because the buffer may well
 		// have changed since we last generated the LaTeX.
-		DocIterator const dit = buffer_.getParFromID(tmpid);
+		DocIterator dit = buffer_.getParFromID(tmpid);
 		if (dit == doc_iterator_end(&buffer_))
 			posvalid = false;
-		else {
+		else if (dit.depth() > 1) {
+			// We are in an inset.
+			pos_type lastpos = dit.lastpos();
+			dit.pos() = tmppos > lastpos ? lastpos : tmppos;
+			setCursor(dit);
+			recenter();
+			return;
+		} else {
 			newpit = dit.pit();
 			// now have to check pos.
 			newpos = tmppos;
