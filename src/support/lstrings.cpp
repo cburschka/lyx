@@ -917,6 +917,31 @@ int count_char(docstring const & str, docstring::value_type chr)
 }
 
 
+int count_bin_chars(string const & str)
+{
+	QString const qstr = toqstr(str).simplified();
+	int count = 0;
+	QString::const_iterator cit = qstr.begin();
+	QString::const_iterator end = qstr.end();
+	for (; cit != end; ++cit)  {
+		switch (cit->category()) {
+		case QChar::Separator_Line:
+		case QChar::Separator_Paragraph:
+		case QChar::Other_Control:
+		case QChar::Other_Format:
+		case QChar::Other_Surrogate:
+		case QChar::Other_PrivateUse:
+		case QChar::Other_NotAssigned:
+			++count;
+			break;
+		default:
+			break;
+		}
+	}
+	return count;
+}
+
+
 docstring const trim(docstring const & a, char const * p)
 {
 	LASSERT(p, return a);

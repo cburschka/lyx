@@ -196,6 +196,14 @@ int count_char(std::string const & str, char chr);
 /// Count all occurences of char \a chr inside \a str
 int count_char(docstring const & str, docstring::value_type chr);
 
+/** Count all occurences of binary chars inside \a str.
+    It is assumed that \a str is utf-8 encoded and that a binary char
+    belongs to the unicode class names Zl, Zp, Cc, Cf, Cs, Co, or Cn
+    (excluding white space characters such as '\t', '\n', '\v', '\f', '\r').
+    See http://www.unicode.org/Public/6.2.0/ucd/UnicodeData.txt
+*/
+int count_bin_chars(std::string const & str);
+
 /** Trims characters off the end and beginning of a string.
     \code
     trim("ccabccc", "c") == "ab".
