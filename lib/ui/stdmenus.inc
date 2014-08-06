@@ -365,7 +365,7 @@ Menuset
 		Submenu "Branch|B" "insert_branches"
 		Submenu "Custom Insets" "insert_custom"
 		Submenu "File|e" "insert_file"
-		Submenu "Box[[Menu]]" "insert_box"
+		Submenu "Box[[Menu]]|x" "insert_box"
 		OptSubmenu "Insert Regular Expression" "context-edit-regexp"
 		Separator
 		Item "Citation...|C" "dialog-show-new-inset citation"
@@ -382,7 +382,7 @@ Menuset
 		Item "Footnote|F" "footnote-insert"
 		Item "Marginal Note|M" "marginalnote-insert"
 		Arguments
-		Item "TeX Code|X" "ert-insert"
+		Item "TeX Code" "ert-insert"
 		Item "Program Listing[[Menu]]" "listing-insert"
 		Item "Date" "date-insert"
 		Item "Preview|w" "preview-insert"
