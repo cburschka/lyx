@@ -47,7 +47,7 @@ double Row::Element::pos2x(pos_type const i) const
 
 	double w = 0;
 	//handle first the two bounds of the element
-	if (i == endpos)
+	if (i == endpos && !(inset && inset->lyxCode() == SEPARATOR_CODE))
 		w = rtl ? 0 : width();
 	else if (i == pos || type != STRING)
 		w = rtl ? width() : 0;
