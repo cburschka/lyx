@@ -32,9 +32,12 @@
 
 #include "Buffer.h"
 #include "BufferList.h"
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "CmdDef.h"
 #include "Color.h"
+#include "CutAndPaste.h"
+#include "ErrorList.h"
 #include "Font.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
@@ -53,6 +56,8 @@
 #include "SpellChecker.h"
 #include "Thesaurus.h"
 #include "version.h"
+
+#include "insets/InsetText.h"
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -1914,7 +1919,16 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		istringstream ss(argument);
 		Lexer lex;
 		lex.setStream(ss);
+		
+		// See #9236
+		// We need to make sure that, after we recreat the DocumentClass, 
+		// which we do in readHeader, we apply it to the document itself.
+		DocumentClassConstPtr olddc = defaults.params().documentClassPtr();
 		int const unknown_tokens = defaults.readHeader(lex);
+		DocumentClassConstPtr newdc = defaults.params().documentClassPtr();
+		ErrorList el;
+		InsetText & theinset = static_cast<InsetText &>(defaults.inset());
+		cap::switchBetweenClasses(olddc, newdc, theinset, el);
 
 		if (unknown_tokens != 0) {
 			lyxerr << "Warning in LFUN_BUFFER_SAVE_AS_DEFAULT!\n"
