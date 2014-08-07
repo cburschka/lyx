@@ -731,35 +731,42 @@ void switchBetweenClasses(DocumentClassConstPtr oldone,
 			it->setLayout(newtc[name]);
 	}
 
-	// character styles
+	// character styles and hidden table cells
 	InsetIterator const i_end = inset_iterator_end(in);
 	for (InsetIterator it = inset_iterator_begin(in); it != i_end; ++it) {
-		if (it->lyxCode() != FLEX_CODE)
+		InsetCode const code = it->lyxCode();
+		if (code == FLEX_CODE) {
 			// FIXME: Should we verify all InsetCollapsable?
-			continue;
-
-		docstring const layoutName = it->layoutName();
-		docstring const & n = newone->insetLayout(layoutName).name();
-		bool const is_undefined = n.empty() ||
-			n == DocumentClass::plainInsetLayout().name();
-		if (!is_undefined)
-			continue;
-
-		// The flex inset is undefined in newtc
-		docstring const oldname = from_utf8(oldtc.name());
-		docstring const newname = from_utf8(newtc.name());
-		docstring s;
-		if (oldname == newname)
-			s = bformat(_("Flex inset %1$s is undefined after "
-				"reloading `%2$s' layout."), layoutName, oldname);
-		else
-			s = bformat(_("Flex inset %1$s is undefined because of "
-				"conversion from `%2$s' layout to `%3$s'."),
-				layoutName, oldname, newname);
-		// To warn the user that something had to be done.
-		errorlist.push_back(ErrorItem(
-				_("Undefined flex inset"),
-				s, it.paragraph().id(),	it.pos(), it.pos() + 1));
+			docstring const layoutName = it->layoutName();
+			docstring const & n = newone->insetLayout(layoutName).name();
+			bool const is_undefined = n.empty() ||
+				n == DocumentClass::plainInsetLayout().name();
+			if (!is_undefined)
+				continue;
+	
+			// The flex inset is undefined in newtc
+			docstring const oldname = from_utf8(oldtc.name());
+			docstring const newname = from_utf8(newtc.name());
+			docstring s;
+			if (oldname == newname)
+				s = bformat(_("Flex inset %1$s is undefined after "
+					"reloading `%2$s' layout."), layoutName, oldname);
+			else
+				s = bformat(_("Flex inset %1$s is undefined because of "
+					"conversion from `%2$s' layout to `%3$s'."),
+					layoutName, oldname, newname);
+			// To warn the user that something had to be done.
+			errorlist.push_back(ErrorItem(
+					_("Undefined flex inset"),
+					s, it.paragraph().id(),	it.pos(), it.pos() + 1));
+		} else if (code == TABULAR_CODE) {
+			// The recursion above does not catch paragraphs in "hidden" cells,
+			// i.e., ones that are part of a multirow or multicolum. So we need
+			// to handle those separately.
+			// This is the cause of bug #9049.
+			InsetTabular * table = it->asInsetTabular();
+			table->setLayoutForHiddenCells(newtc);
+		}
 	}
 }
 

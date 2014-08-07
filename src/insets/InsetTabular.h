@@ -958,6 +958,8 @@ public:
 
 	/// Returns whether the cell in the specified row and column is selected.
 	bool isCellSelected(Cursor & cur, row_type row, col_type col) const;
+	///
+	void setLayoutForHiddenCells(DocumentClass const & dc);
 	//
 	// Public structures and variables
 	///

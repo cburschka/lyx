@@ -59,6 +59,10 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix crash when saving certain documents with tables (bug 9049).
+
+- Fix crash when saving default template (bug 9236).
+
 - Do not sort advanced listings settings, since their insertion order is
   relevant (bug 5203).
 
@@ -66,8 +70,6 @@ What's new
   is non-normal (bug 9231).
 
 - Fix import of latex documents with scaled fonts.
-
-- Fix crash when saving default template (bug 9236).
 
 
 * LYX2LYX
