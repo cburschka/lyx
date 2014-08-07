@@ -6442,4 +6442,21 @@ string InsetTabular::params2string(InsetTabular const & inset)
 }
 
 
+void InsetTabular::setLayoutForHiddenCells(DocumentClass const & dc) {
+	for (Tabular::col_type c = 0; c < tabular.ncols(); ++c) {
+		for (Tabular::row_type r = 0; r < tabular.nrows(); ++r) {
+			if (!tabular.isPartOfMultiColumn(r,c) &&
+			    !tabular.isPartOfMultiRow(r,c))
+				continue;
+
+			ParagraphList & parlist = tabular.cellInset(r,c)->paragraphs();
+			ParagraphList::iterator it = parlist.begin();
+			ParagraphList::iterator const en = parlist.end();
+			for (; it != en; ++it)
+					it->setLayout(dc.plainLayout());
+		}
+	}
+}
+
+
 } // namespace lyx
