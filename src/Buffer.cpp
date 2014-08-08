@@ -1301,17 +1301,20 @@ bool Buffer::save() const
 	// proper location once that has been done successfully. that
 	// way we preserve the original file if something goes wrong.
 	TempFile tempfile(fileName().onlyPath(), "tmpXXXXXX.lyx");
-	FileName savefile(tempfile.name());
+	bool const symlink = fileName().isSymLink();
+	if (!symlink)
+		tempfile.setAutoRemove(false);
 
+	FileName savefile(tempfile.name());
 	LYXERR(Debug::FILES, "Saving to " << savefile.absFileName());
 	if (!writeFile(savefile))
 		return false;
 
 	// we will set this to false if we fail
 	bool made_backup = true;
-	bool const symlink = fileName().isSymLink();
+
+	FileName backupName(absFileName() + '~');
 	if (lyxrc.make_backup) {
-		FileName backupName(absFileName() + '~');
 		if (!lyxrc.backupdir_path.empty()) {
 			string const mangledName =
 				subst(subst(backupName.absFileName(), '/', '!'), ':', '!');
@@ -1338,22 +1341,39 @@ bool Buffer::save() const
 
 	// If we have no symlink, we can simply rename the temp file.
 	// Otherwise, we need to copy it so the symlink stays intact.
-	if (!symlink)
-		tempfile.setAutoRemove(false);
-	if (made_backup &&
-	    (symlink ? savefile.copyTo(fileName(), true) : savefile.moveTo(fileName()))) {
+	if (made_backup && symlink ? savefile.copyTo(fileName(), true) :
+		                           savefile.moveTo(fileName()))
+	{
 		// saveCheckSum() was already called by writeFile(), but the
 		// time stamp is invalidated by copying/moving
 		saveCheckSum();
 		markClean();
 		return true;
 	}
-	// else
-	Alert::error(_("Write failure"),
-		     bformat(_("Cannot move saved file to:\n  %1$s.\n"
-			       "But the file has successfully been saved as:\n  %2$s."),
-			     from_utf8(fileName().absFileName()),
-	         from_utf8(savefile.absFileName())));
+	// else we saved the file, but failed to move it to the right location.
+
+	if (lyxrc.make_backup && made_backup && !symlink) {
+		// the original file was moved to filename.lyx~, so it will look
+		// to the user as if it was deleted. (see bug #9234.) we could try
+		// to restore it, but that would basically mean trying to do again
+		// what we just failed to do. better to leave things as they are.
+		Alert::error(_("Write failure"),
+			     bformat(_("The file has successfully been saved as:\n  %1$s.\n"
+		           "But LyX could not move it to:\n  %2$s.\n"
+							 "Your original file has been backed up to:\n  %3$s"),
+				     from_utf8(savefile.absFileName()),
+             from_utf8(fileName().absFileName()),
+		         from_utf8(backupName.absFileName())));
+	} else {
+		// either we did not try to make a backup, or else we tried and failed,
+		// or else the original file was a symlink, in which case it was copied,
+		// not moved. so the original file is intact.
+		Alert::error(_("Write failure"),
+			     bformat(_("Cannot move saved file to:\n  %1$s.\n"
+				       "But the file has successfully been saved as:\n  %2$s."),
+				     from_utf8(fileName().absFileName()),
+		         from_utf8(savefile.absFileName())));
+	}
 	return false;
 }
 
