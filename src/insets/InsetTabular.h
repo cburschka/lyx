@@ -545,7 +545,9 @@ public:
 	idx_type cellAbove(idx_type cell) const;
 	///
 	idx_type cellBelow(idx_type cell) const;
-	///
+	/// \return the index of the VISIBLE cell at row, column
+	/// this will be the same as the cell in the previous row,
+	/// e.g., if the cell is part of a multirow
 	idx_type cellIndex(row_type row, col_type column) const;
 	///
 	void setUsebox(idx_type cell, BoxType);
@@ -585,23 +587,33 @@ public:
 	bool haveLTCaption(CaptionType captiontype = CAPTION_ANY) const;
 	///
 	// end longtable support
-	///
+
+	//@{
+	/// there is a subtle difference between these two methods.
+	///   cellInset(r,c);
+	/// and
+	///   cellInset(cellIndex(r,c));
+	/// can return different things. this is because cellIndex(r,c)
+	/// returns the VISIBLE cell at r,c, which may be the same as the
+	/// cell at the previous row or column, if we're dealing with some
+	/// multirow or multicell.
 	shared_ptr<InsetTableCell> cellInset(idx_type cell) const;
-	///
 	shared_ptr<InsetTableCell> cellInset(row_type row,
 						  col_type column) const;
+	//@}
 	///
 	void setCellInset(row_type row, col_type column,
 			  shared_ptr<InsetTableCell>) const;
 	/// Search for \param inset in the tabular, with the
 	///
 	void validate(LaTeXFeatures &) const;
-//private:
-  // FIXME Now that cells have an InsetTableCell as their insets, rather
-  // than an InsetText, it'd be possible to reverse the relationship here,
-  // so that cell_vector was a vector<InsetTableCell> rather than a
-  // vector<CellData>, and an InsetTableCell had a CellData as a member,
-  // or perhaps just had its members as members.
+
+	//private:
+	// FIXME Now that cells have an InsetTableCell as their insets, rather
+	// than an InsetText, it'd be possible to reverse the relationship here,
+	// so that cell_vector was a vector<InsetTableCell> rather than a
+	// vector<CellData>, and an InsetTableCell had a CellData as a member,
+	// or perhaps just had its members as members.
 	///
 	class CellData {
 	public:
