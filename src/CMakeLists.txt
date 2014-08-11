@@ -119,8 +119,6 @@ add_dependencies(${_lyx} lyx_version)
 
 set_target_properties(${_lyx} PROPERTIES FOLDER "applications/LyX")
 
-qt_use_modules(${_lyx} Core Gui)
-
 lyx_add_gcc_pch(${_lyx})
 
 target_link_libraries(${_lyx}
@@ -133,6 +131,8 @@ target_link_libraries(${_lyx}
 	${ICONV_LIBRARY}
 	${QT_QTMAIN_LIBRARY}
 	${vld_dll})
+
+qt_use_modules(${_lyx} Core Gui)
 
 lyx_target_link_libraries(${_lyx} HUNSPELL ASPELL ENCHANT Magic)
 
