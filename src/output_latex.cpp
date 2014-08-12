@@ -554,7 +554,7 @@ void TeXOnePar(Buffer const & buf,
 	Paragraph const & par = paragraphs.at(pit);
 	// FIXME This check should not really be needed.
 	// Perhaps we should issue an error if it is.
-	Layout const style = text.inset().forcePlainLayout() ?
+	Layout const & style = text.inset().forcePlainLayout() ?
 		bparams.documentClass().plainLayout() : par.layout();
 
 	if (style.inpreamble)
