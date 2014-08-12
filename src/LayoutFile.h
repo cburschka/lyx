@@ -91,8 +91,6 @@ private:
 class LayoutFileList {
 public:
 	///
-	LayoutFileList() {}
-	///
 	~LayoutFileList();
 	/// \return The sole instance of this class.
 	static LayoutFileList & get();
@@ -128,6 +126,8 @@ public:
 	bool load(std::string const & name, std::string const & buf_path);
 
 private:
+	///
+	LayoutFileList() {}
 	///
 	typedef std::map<std::string, LayoutFile *> ClassMap;
 	/// noncopyable
