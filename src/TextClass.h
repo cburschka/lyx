@@ -369,12 +369,8 @@ private:
 /// In that regard, DocumentClass objects are "dynamic". But this is really
 /// an illusion, since DocumentClass objects are not (currently) changed
 /// when, say, a new Module is loaded. Rather, the old DocumentClass is
-/// discarded---actually, it's kept around in case something on the cut
+/// discarded---actually, it will be kept around if something on the cut
 /// stack needs it---and a new one is created from scratch.
-///
-/// In the main LyX code, DocumentClass objects are created only by
-/// DocumentClassBundle, for which see below.
-///
 class DocumentClass : public TextClass {
 public:
 	///
@@ -488,8 +484,7 @@ protected:
 	/// Needed in tex2lyx
 	DocumentClass() {}
 private:
-	/// The only class that can create a DocumentClass is
-	/// DocumentClassBundle, which calls the protected constructor.
+	/// The only way to make a DocumentClass is to call this function.
 	friend DocumentClassPtr
 		getDocumentClass(LayoutFile const &, LayoutModuleList const &,
 				 bool const clone);
