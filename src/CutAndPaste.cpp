@@ -118,22 +118,23 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 	pit_type pit = cur.pit();
 	pos_type pos = cur.pos();
 	bool need_update = false;
+
+	if (parlist.empty())
+		return PasteReturnValue(pit, pos, need_update);
+
 	InsetText * target_inset = cur.inset().asInsetText();
 	if (!target_inset) {
 		InsetTabular * it = cur.inset().asInsetTabular();
 		target_inset = it? it->cell(cur.idx())->asInsetText() : 0;
 	}
 	LASSERT(target_inset, return PasteReturnValue(pit, pos, need_update));
+
 	ParagraphList & pars = target_inset->paragraphs();
-
-	if (parlist.empty())
-		return PasteReturnValue(pit, pos, need_update);
-
-	BOOST_ASSERT (pos <= pars[pit].size());
+	LASSERT(pos <= pars[pit].size(),
+			return PasteReturnValue(pit, pos, need_update));
 
 	// Make a copy of the CaP paragraphs.
 	ParagraphList insertion = parlist;
-	DocumentClassConstPtr newDocClass = buffer.params().documentClassPtr();
 
 	// Now remove all out of the pars which is NOT allowed in the
 	// new environment and set also another font if that is required.
@@ -157,6 +158,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 	}
 
 	// set the paragraphs to plain layout if necessary
+	DocumentClassConstPtr newDocClass = buffer.params().documentClassPtr();
 	if (cur.inset().usePlainLayout()) {
 		bool forcePlainLayout = cur.inset().forcePlainLayout();
 		Layout const & plainLayout = newDocClass->plainLayout();
@@ -168,7 +170,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 			if (forcePlainLayout || parLayout == defaultLayout)
 				par->setLayout(plainLayout);
 		}
-	} else { // check if we need to reset from plain layout
+	}	else { // check if we need to reset from plain layout
 		Layout const & defaultLayout = newDocClass->defaultLayout();
 		Layout const & plainLayout = newDocClass->plainLayout();
 		ParagraphList::iterator const end = insertion.end();
