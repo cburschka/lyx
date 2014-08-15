@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-07-03 13:41+0200\n"
+"POT-Creation-Date: 2014-07-26 16:59+0200\n"
 "PO-Revision-Date: 2014-07-03 17:23+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -389,17 +389,6 @@ msgstr "Označiť &cudzie jazyky"
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:217
 msgid "Right-to-left language support"
 msgstr "Podpora písania sprava-doľava"
-
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:229 src/LyXRC.cpp:3446
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr ""
-"Vyberte pre zapnutie podpory písania sprava doľava (napr. pre Hebrejčinu, "
-"Arabčinu)."
-
-#: src/frontends/qt4/ui/PrefLanguageUi.ui:232
-msgid "Enable &RTL support"
-msgstr "Z&apnúť podporu písania sprava-doľava"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:247
 msgid "Cursor movement:"
@@ -14288,6 +14277,10 @@ msgstr "Nemecky"
 msgid "German (Switzerland)"
 msgstr "Nemecky (Švajčiarsko)"
 
+#: lib/languages:497
+msgid "German (Switzerland, old spelling)"
+msgstr "Nemecky (Švajčiarsko, starý pravopis)"
+
 #: lib/languages:487 lib/ui/stdtoolbars.inc:296 lib/ui/stdtoolbars.inc:583
 #: src/frontends/qt4/GuiSymbols.cpp:61
 msgid "Greek"
@@ -24120,12 +24113,6 @@ msgstr ""
 "Kódovanie písma použité pre LaTeX2e balíček fontenc. T1 je vrelo odporučené "
 "pre neanglické jazyky."
 
-#: src/LyXRC.cpp:3230
-msgid "Disable any kerning and ligatures for text drawing on screen."
-msgstr ""
-"Zablokovať zliatky (ligatúry) a zmenšenia medzier medzi susednými znakmi pre "
-"text na obrazovke."
-
 #: src/LyXRC.cpp:3237
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
@@ -29960,6 +29947,20 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid ""
+#~ "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+#~ msgstr ""
+#~ "Vyberte pre zapnutie podpory písania sprava doľava (napr. pre Hebrejčinu, "
+#~ "Arabčinu)."
+
+#~ msgid "Enable &RTL support"
+#~ msgstr "Z&apnúť podporu písania sprava-doľava"
+
+#~ msgid "Disable any kerning and ligatures for text drawing on screen."
+#~ msgstr ""
+#~ "Zablokovať zliatky (ligatúry) a zmenšenia medzier medzi susednými znakmi "
+#~ "pre text na obrazovke."
 
 #~ msgid "text here"
 #~ msgstr "Vložte sem text pre pomocný návrh"
