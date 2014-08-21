@@ -40,6 +40,13 @@ if(COMMAND cmake_policy)
 	cmake_policy(SET CMP0005 OLD)
 	# Installing MACOSX_BUNDLE targets requires a BUNDLE DESTINATION
 	cmake_policy(SET CMP0006 NEW)
+	if(POLICY CMP0028)
+		cmake_policy(SET CMP0028 OLD)
+	endif()
+	if(POLICY CMP0043)
+		# COMPILE_DEFINITIONS are not used yet. Enable new behavior.
+		cmake_policy(SET CMP0043 NEW)
+	endif()
 endif()
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
