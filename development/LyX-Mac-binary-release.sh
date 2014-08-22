@@ -13,9 +13,9 @@ QtSourceVersion="qt-everywhere-opensource-src-${QtVersion}"
 QtBuildSubDir="qt-${QtVersion}-build${QtAPI}"
 QtConfigureOptions=${QtConfigureOptions:-"-release"}
 
-GettextVersion=${GettextVersion:-"0.18.2"}
-GettextSource="gettext-${GettextVersion}"
-GettextLibrary="libintl.8.dylib"
+LibMagicVersion=${LibMagicVersion:-"5.19"}
+LibMagicSource="file-${LibMagicVersion}"
+LibMagicLibrary="libmagic.1.dylib"
 
 ASpellVersion=${ASpellVersion:-"0.60.6.1"}
 ASpellSource="aspell-${ASpellVersion}"
@@ -41,6 +41,8 @@ unset DYLD_LIBRARY_PATH LD_LIBRARY_PATH
 #   - aspell:   the dictionary files of macports (in /opt/local/share/aspell and /opt/local/lib/aspell-0.60)
 #   - hunspell: the dictionary files in the sibling directory dictionaries/dicts
 #   - mythes:   the data and idx files in the sibling directory dictionaries/thes
+# * for magic file type detection support:
+#   the libmagic sources placed in a sibling directory (variable LibMagicSource)
 
 LyXConfigureOptions="--enable-warnings --enable-optimization=-Os --with-x=no"
 LyXConfigureOptions="${LyXConfigureOptions} --disable-stdlib-debug"
@@ -72,7 +74,7 @@ esac
 aspell_dictionaries="no"
 hunspell_dictionaries="yes"
 
-gettext_deployment="no"
+libmagic_deployment="yes"
 aspell_deployment="yes"
 hunspell_deployment="yes"
 thesaurus_deployment="yes"
@@ -185,8 +187,8 @@ while [ $# -gt 0 ]; do
 		esac
 		shift
 		;;
-	--gettext-deployment=*)
-		gettext_deployment=$(echo ${1}|cut -d= -f2)
+	--libmagic-deployment=*)
+		libmagic_deployment=$(echo ${1}|cut -d= -f2)
 		shift
 		;;
 	--aspell-deployment=*)
@@ -266,10 +268,10 @@ aspellstrip=
 LyxBuildDir=${LyxBuildDir:-$(dirname "${LyxSourceDir}")/lyx-build}
 DMGLocation=${DMGLocation:-"${LyxBuildDir}"}
 
-GettextSourceDir=${GETTEXTDIR:-$(dirname "${LyxSourceDir}")/${GettextSource}}
-GettextBuildDir="${LyxBuildDir}"/"${GettextSource}"
-GettextInstallDir=${GettextInstallDir:-"${LyXUtilitiesDir}"}
-GettextInstallHdr="${GettextInstallDir}/include/libintl.h"
+LibMagicSourceDir=${LIBMAGICDIR:-$(dirname "${LyxSourceDir}")/${LibMagicSource}}
+LibMagicBuildDir="${LyxBuildDir}"/"${LibMagicSource}"
+LibMagicInstallDir=${LibMagicInstallDir:-"${LyXUtilitiesDir}"}
+LibMagicInstallHdr="${LibMagicInstallDir}/include/magic.h"
 
 ASpellSourceDir=${ASPELLDIR:-$(dirname "${LyxSourceDir}")/${ASpellSource}}
 ASpellBuildDir="${ASpellSourceDir}"
@@ -389,41 +391,41 @@ if [ "${configure_qt_frameworks}" != "yes" -a -d "${QtSourceDir}" -a ! \( -d "${
 	)
 fi
 
-if [ -d "${GettextSourceDir}" -a ! -f "${GettextInstallHdr}" ]; then
-	# we have a private Gettext source tree at hand...
+if [ -d "${LibMagicSourceDir}" -a ! -f "${LibMagicInstallHdr}" ]; then
+	# we have a private libmagic (file(1)) source tree at hand...
 	# so let's build and install it
-	if [ -z "${GettextVersion}" ]; then
-		GettextVersion=$(grep AC_INIT "${GettextSourceDir}"/configure.ac | cut -d, -f2|tr -d " ()")
+	if [ -z "${LibMagicVersion}" ]; then
+		LibMagicVersion=$(grep AC_INIT "${LibMagicSourceDir}"/configure.ac | cut -d, -f2|tr -d " ()")
 	fi
 
-	GettextName="Gettext"
-	GettextBase="${GettextName}-${GettextVersion}"
+	LibMagicName="LibMagic"
+	LibMagicBase="${LibMagicName}-${LibMagicVersion}"
 
-	echo Build gettext library ${GettextBase}
+	echo Build libmagic library ${LibMagicBase}
 	echo configure options:
-	echo --prefix="${GettextInstallDir}" ${GettextConfigureOptions}
+	echo --prefix="${LibMagicInstallDir}" ${LibMagicConfigureOptions}
 
-	mkdir -p "${GettextBuildDir}" && cd "${GettextBuildDir}"
+	mkdir -p "${LibMagicBuildDir}" && cd "${LibMagicBuildDir}"
 
 	# ----------------------------------------
-	# Build Gettext for different architectures
+	# Build LibMagic for different architectures
 	# ----------------------------------------
-	FILE_LIST="${GettextLibrary}"
+	FILE_LIST="${LibMagicLibrary}"
 
 	for arch in ${ARCH_LIST} ; do
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export CPPFLAGS
 		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export LDFLAGS
 		HOSTSYSTEM=$(eval "echo \\$HostSystem_$arch")
-		"${GettextSourceDir}/configure"\
-			--prefix="${GettextInstallDir}"\
-			${GettextConfigureOptions}
+		"${LibMagicSourceDir}/configure"\
+			--prefix="${LibMagicInstallDir}"\
+			${LibMagicConfigureOptions}
 		make && make install${strip}
 		for file in ${FILE_LIST} ; do
-			if [ -f "${GettextInstallDir}"/lib/${file} ]; then
-				mv "${GettextInstallDir}"/lib/${file}\
-					"${GettextInstallDir}"/lib/${file}-${arch} 
+			if [ -f "${LibMagicInstallDir}"/lib/${file} ]; then
+				mv "${LibMagicInstallDir}"/lib/${file}\
+					"${LibMagicInstallDir}"/lib/${file}-${arch} 
 			else
-				echo Cannot build and install Gettext for ${arch}.
+				echo Cannot build and install LibMagic for ${arch}.
 				exit 1
 			fi
 		done
@@ -437,7 +439,7 @@ if [ -d "${GettextSourceDir}" -a ! -f "${GettextInstallHdr}" ]; then
 			OBJ_LIST="${OBJ_LIST} lib/${file}-${arch}"
 		done
 		(
-			cd "${GettextInstallDir}"
+			cd "${LibMagicInstallDir}"
 			lipo -create ${OBJ_LIST} -o lib/${file}
 		)
 	done
@@ -445,7 +447,7 @@ if [ -d "${GettextSourceDir}" -a ! -f "${GettextInstallHdr}" ]; then
 	# Clean up
 	# --------
 	for arch in ${ARCH_LIST} ; do
-		rm -f "${GettextInstallDir}"/lib/*-${arch}
+		rm -f "${LibMagicInstallDir}"/lib/*-${arch}
 	done
 fi
 
@@ -761,8 +763,8 @@ convert_universal() {
 		if [ -n "${OBJ_LIST}" ]; then
 			lipo -create ${OBJ_LIST} -o "${BUNDLE_PATH}/${file}"
 		fi
-		if [ -f "${GettextInstallDir}/lib/${GettextLibrary}" -a "yes" = "${gettext_deployment}" ]; then
-			private_framework Gettext "${GettextInstallDir}/lib/${GettextLibrary}" "${LYX_BUNDLE_PATH}/${file}"
+		if [ -f "${LibMagicInstallDir}/lib/${LibMagicLibrary}" -a "yes" = "${libmagic_deployment}" ]; then
+			private_framework LibMagic "${LibMagicInstallDir}/lib/${LibMagicLibrary}" "${LYX_BUNDLE_PATH}/${file}"
 		fi
 		if [ -f "${ASpellInstallDir}/lib/${ASpellLibrary}" -a "yes" = "${aspell_deployment}" ]; then
 			private_framework Aspell "${ASpellInstallDir}/lib/${ASpellLibrary}" "${LYX_BUNDLE_PATH}/${file}"
