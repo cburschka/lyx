@@ -62,7 +62,7 @@
 #include <QDrag>
 #include <QHelpEvent>
 #ifdef Q_WS_MACX
-#include <QMacStyle>
+#include <QProxyStyle>
 #endif
 #include <QMainWindow>
 #include <QMimeData>
@@ -1488,13 +1488,13 @@ void EmbeddedWorkArea::disable()
 ////////////////////////////////////////////////////////////////////
 
 #ifdef Q_WS_MACX
-class NoTabFrameMacStyle : public QMacStyle {
+class NoTabFrameMacStyle : public QProxyStyle {
 public:
 	///
 	QRect subElementRect(SubElement element, const QStyleOption * option,
 			     const QWidget * widget = 0) const
 	{
-		QRect rect = QMacStyle::subElementRect(element, option, widget);
+		QRect rect = QProxyStyle::subElementRect(element, option, widget);
 		bool noBar = static_cast<QTabWidget const *>(widget)->count() <= 1;
 
 		// The Qt Mac style puts the contents into a 3 pixel wide box
