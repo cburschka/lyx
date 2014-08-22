@@ -48,25 +48,34 @@ LyXConfigureOptions="--enable-warnings --enable-optimization=-Os --with-x=no"
 LyXConfigureOptions="${LyXConfigureOptions} --disable-stdlib-debug"
 AspellConfigureOptions="--enable-warnings --enable-optimization=-O0 --enable-debug --disable-nls --enable-compile-in-filters --disable-pspell-compatibility"
 HunspellConfigureOptions="--with-warnings --disable-nls --disable-static"
-QtConfigureOptions="${QtConfigureOptions} -opensource -silent -shared -fast -no-exceptions"
-QtConfigureOptions="${QtConfigureOptions} -no-webkit -no-qt3support -no-javascript-jit -no-dbus"
-QtConfigureOptions="${QtConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
-QtMajorVersion=qt4
 
+QtMajorVersion=qt4
+QtConfigureOptions="${QtConfigureOptions} -opensource -silent -shared -confirm-license"
 # stupid special case...
 case "${QtVersion}:${QtAPI}" in
 4.6*:-carbon)
+	QtConfigureOptions="${QtConfigureOptions} -fast -no-exceptions"
+	QtConfigureOptions="${QtConfigureOptions} -no-webkit -no-qt3support -no-javascript-jit -no-dbus"
+	QtConfigureOptions="${QtConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
 	;;
 5.0*)
-	QtConfigureOptions="${QtConfigureOptions} -opensource -silent -shared -fast -no-strip"
+	QtConfigureOptions="${QtConfigureOptions} -fast -no-strip"
 	QtConfigureOptions="${QtConfigureOptions} -no-javascript-jit -no-pkg-config"
 	QtConfigureOptions="${QtConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
 	QtMajorVersion=qt5
 	;;
 5.*)
+	QtConfigureOptions="${QtConfigureOptions} -no-strip"
+	QtConfigureOptions="${QtConfigureOptions} -no-kms -no-pkg-config"
+	QtConfigureOptions="${QtConfigureOptions} -nomake examples -nomake tools"
+	QtConfigureOptions="${QtConfigureOptions} -skip qtquick1 -skip qtwebkit -skip qtconnectivity -skip qtscript"
+	QtConfigureOptions="${QtConfigureOptions} -skip qtquickcontrols -skip qtdeclarative"
 	QtMajorVersion=qt5
 	;;
 *)
+	QtConfigureOptions="${QtConfigureOptions} -fast -no-exceptions"
+	QtConfigureOptions="${QtConfigureOptions} -no-webkit -no-qt3support -no-javascript-jit -no-dbus"
+	QtConfigureOptions="${QtConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
 	QtConfigureOptions="${QtConfigureOptions} ${QtAPI}"
 	;;
 esac
@@ -379,7 +388,7 @@ if [ "${configure_qt_frameworks}" != "yes" -a -d "${QtSourceDir}" -a ! \( -d "${
 		done
 		echo configure options:
 		echo ${QtConfigureOptions} ${ARCHS} -prefix "${QtInstallDir}"
-		echo yes | "${QtSourceDir}"/configure ${QtConfigureOptions} ${ARCHS} -prefix "${QtInstallDir}"
+		"${QtSourceDir}"/configure ${QtConfigureOptions} ${ARCHS} -prefix "${QtInstallDir}"
 		make ${MAKEJOBS} && make install
 	)
 	cd "${QtInstallDir}" && (
