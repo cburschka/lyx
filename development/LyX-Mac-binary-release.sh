@@ -363,17 +363,6 @@ case $SDKs in
 esac
 MYCFLAGS="-mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}"
 
-# pkg-config is not usable with this script
-export PKG_CONFIG=""
-
-# These variables define the identifiers of the
-# system (both Intel and PowerPC) to compile for.
-# (Note: darwin8 is 10.4; darwin9 is 10.5.)
-# Only change these if necessary
-
-HostSystem_i386="i686-apple-darwin8"
-HostSystem_ppc="powerpc-apple-darwin8"
-
 if [ "${configure_qt_frameworks}" != "yes" -a -d "${QtSourceDir}" -a ! \( -d "${QtBuildDir}" -a -d "${QtInstallDir}" \) ]; then
 	echo Build Qt library ${QtSourceDir}
 	if [ "${QtInstallDir}" = "${QtBuildDir}" ]; then
@@ -424,7 +413,6 @@ if [ -d "${LibMagicSourceDir}" -a ! -f "${LibMagicInstallHdr}" ]; then
 	for arch in ${ARCH_LIST} ; do
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export CPPFLAGS
 		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export LDFLAGS
-		HOSTSYSTEM=$(eval "echo \\$HostSystem_$arch")
 		"${LibMagicSourceDir}/configure"\
 			--prefix="${LibMagicInstallDir}"\
 			${LibMagicConfigureOptions}
@@ -485,7 +473,6 @@ if [ -d "${HunSpellSourceDir}" -a ! -f "${HunSpellInstallHdr}" ]; then
 		make distclean
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export CPPFLAGS
 		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export LDFLAGS
-		HOSTSYSTEM=$(eval "echo \\$HostSystem_$arch")
 		"${HunSpellSourceDir}/configure"\
 			--prefix="${HunSpellInstallDir}"\
 			${HunspellConfigureOptions}
@@ -549,7 +536,6 @@ if [ -d "${ASpellSourceDir}" -a ! -f "${ASpellInstallHdr}" -a "yes" = "${aspell_
 		make distclean
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export CPPFLAGS
 		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"; export LDFLAGS
-		HOSTSYSTEM=$(eval "echo \\$HostSystem_$arch")
 		CXXFLAGS=-g "${ASpellSourceDir}/configure"\
 			--prefix="${ASpellInstallDir}"\
 			${AspellConfigureOptions}
@@ -638,7 +624,6 @@ build_lyx() {
 
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"
 		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"
-		HOSTSYSTEM=$(eval "echo \\$HostSystem_$arch")
 
 		if [ "$configure_qt_frameworks" = "yes" ]; then
 			export QT_CORE_CFLAGS="-FQtCore"
