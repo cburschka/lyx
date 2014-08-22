@@ -217,8 +217,6 @@ public:
 		std::vector<CitationStyle> const & styles, Buffer const & buf,
 		docstring const & before, docstring const & after, docstring const & dialog,
 	  size_t max_size) const;
-	/// Collects the cited entries from buf.
-	void collectCitedEntries(Buffer const & buf);
 	/// A list of BibTeX keys cited in the current document, sorted by
 	/// the last name of the author.
 	/// Make sure you have called collectCitedEntries() before you try to
@@ -246,6 +244,8 @@ public:
 	///
 	void addEntryType(docstring const & f) { entry_types_.insert(f); }
 private:
+	/// Collects the cited entries from buf.
+	void collectCitedEntries(Buffer const & buf);
 	///
 	std::set<docstring> field_names_;
 	///
