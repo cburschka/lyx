@@ -25,6 +25,8 @@ HunSpellVersion=${HunSpellVersion:-"1.3.2"}
 HunSpellSource="hunspell-${HunSpellVersion}"
 HunSpellLibrary="libhunspell-1.3.0.dylib"
 
+LyXUtilitiesDir=${LyXUtilitiesDir:-"${LyxBuildDir}"/utilities}
+
 unset DYLD_LIBRARY_PATH LD_LIBRARY_PATH
 
 # Prerequisite:
@@ -222,6 +224,10 @@ while [ $# -gt 0 ]; do
 		LyxBuildDir=$(echo ${1}|cut -d= -f2)
 		shift
 		;;
+	--with-util-dir=*)
+		LyXUtilitiesDir=$(echo ${1}|cut -d= -f2)
+		shift
+		;;
 	--help|--help=*)
 		usage "${1}"
 		;;
@@ -262,17 +268,17 @@ DMGLocation=${DMGLocation:-"${LyxBuildDir}"}
 
 GettextSourceDir=${GETTEXTDIR:-$(dirname "${LyxSourceDir}")/${GettextSource}}
 GettextBuildDir="${LyxBuildDir}"/"${GettextSource}"
-GettextInstallDir=${GettextInstallDir:-"${LyxBuildDir}"/utilities}
+GettextInstallDir=${GettextInstallDir:-"${LyXUtilitiesDir}"}
 GettextInstallHdr="${GettextInstallDir}/include/libintl.h"
 
 ASpellSourceDir=${ASPELLDIR:-$(dirname "${LyxSourceDir}")/${ASpellSource}}
 ASpellBuildDir="${ASpellSourceDir}"
-ASpellInstallDir=${ASpellInstallDir:-"${LyxBuildDir}"/utilities}
+ASpellInstallDir=${ASpellInstallDir:-"${LyXUtilitiesDir}"}
 ASpellInstallHdr="${ASpellInstallDir}/include/aspell.h"
 
 HunSpellSourceDir=${HUNSPELLDIR:-$(dirname "${LyxSourceDir}")/${HunSpellSource}}
 HunSpellBuildDir="${HunSpellSourceDir}"
-HunSpellInstallDir=${HunSpellInstallDir:-"${LyxBuildDir}"/utilities}
+HunSpellInstallDir=${HunSpellInstallDir:-"${LyXUtilitiesDir}"}
 HunSpellInstallHdr="${HunSpellInstallDir}/include/hunspell/hunspell.h"
 
 QtSourceDir=${QTSOURCEDIR:-$(dirname "${LyxSourceDir}")/${QtSourceVersion}}
