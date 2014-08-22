@@ -438,6 +438,8 @@ if [ -d "${LibMagicSourceDir}" -a ! -f "${LibMagicInstallHdr}" ]; then
 		(
 			cd "${LibMagicInstallDir}"
 			lipo -create ${OBJ_LIST} -o lib/${file}
+			# check for the "missing link"...
+			test -f lib/libmagic.dylib || (cd lib ; ln -s "${LibMagicLibrary}" libmagic.dylib)
 		)
 	done
 	# --------
