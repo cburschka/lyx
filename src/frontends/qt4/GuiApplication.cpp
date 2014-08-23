@@ -632,9 +632,15 @@ public:
 		: QTranslator(parent)
 	{}
 
+#if QT_VERSION >= 0x050000
+	virtual QString translate(const char * /* context */,
+		const char *sourceText,
+		const char * /* disambiguation */ = 0, int /* n */ = -1) const
+#else
 	QString translate(const char * /*context*/,
 	  const char * sourceText,
 	  const char * /*comment*/ = 0) const
+#endif
 	{
 		string const s = sourceText;
 		if (s == N_("About %1")	|| s == N_("Preferences")
