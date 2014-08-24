@@ -19,10 +19,6 @@
 #include <QList>
 
 class QAbstractItemModel;
-class QIcon;
-class QObject;
-class QSessionManager;
-class QSortFilterProxyModel;
 
 namespace lyx {
 
