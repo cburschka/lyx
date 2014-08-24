@@ -37,7 +37,6 @@ class FileName;
 namespace frontend {
 
 class GuiView;
-class GlobalMenuBar;
 class GuiWorkArea;
 class Menus;
 class SocketNotifier;

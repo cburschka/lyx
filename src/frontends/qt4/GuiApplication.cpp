@@ -651,28 +651,6 @@ public:
 	}
 };
 
-class GlobalMenuBar : public QMenuBar
-{
-public:
-	///
-	GlobalMenuBar() : QMenuBar(0) {}
-
-	///
-	bool event(QEvent * e)
-	{
-		if (e->type() == QEvent::ShortcutOverride) {
-			//	    && activeWindow() == 0) {
-			QKeyEvent * ke = static_cast<QKeyEvent*>(e);
-			KeySymbol sym;
-			setKeySymbol(&sym, ke);
-			guiApp->processKeySym(sym, q_key_state(ke->modifiers()));
-			e->accept();
-			return true;
-		}
-		return false;
-	}
-};
-
 #ifdef Q_WS_MACX
 // QMacPasteboardMimeGraphics can only be compiled on Mac.
 
@@ -951,7 +929,7 @@ struct GuiApplication::Private
 	QHash<int, GuiView *> views_;
 
 	/// Only used on mac.
-	GlobalMenuBar * global_menubar_;
+	QMenuBar * global_menubar_;
 
 #ifdef Q_WS_MACX
 	/// Linkback mime handler for MacOSX.
@@ -2350,7 +2328,7 @@ void GuiApplication::execBatchCommands()
 	// Create the global default menubar which is shown for the dialogs
 	// and if no GuiView is visible.
 	// This must be done after the session was recovered to know the "last files".
-	d->global_menubar_ = new GlobalMenuBar;
+	d->global_menubar_ = new QMenuBar(0);
 	d->menus_.fillMenuBar(d->global_menubar_, 0, true);
 #endif
 
