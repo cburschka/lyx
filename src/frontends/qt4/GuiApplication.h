@@ -19,6 +19,8 @@
 #include <QList>
 
 class QAbstractItemModel;
+class QIcon;
+class QSessionManager;
 
 namespace lyx {
 
