@@ -1492,6 +1492,18 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 		}
 
+		else if (t.cs() == "xhookrightarrow" || t.cs() == "xhookleftarrow" ||
+			     t.cs() == "xRightarrow" || t.cs() == "xLeftarrow" ||
+				 t.cs() == "xleftrightarrow" || t.cs() == "xLeftrightarrow" ||
+				 t.cs() == "xrightharpoondown" || t.cs() == "xrightharpoonup" ||
+				 t.cs() == "xleftharpoondown" || t.cs() == "xleftharpoonup" ||
+				 t.cs() == "xleftrightharpoons" || t.cs() == "xrightleftharpoons" ||
+				 t.cs() == "xmapsto") {
+			cell->push_back(createInsetMath(t.cs(), buf));
+			parse(cell->back().nucleus()->cell(1), FLAG_OPTION, mode);
+			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
+		}
+
 		else if (t.cs() == "ref" || t.cs() == "eqref" || t.cs() == "prettyref"
 			  || t.cs() == "pageref" || t.cs() == "vpageref" || t.cs() == "vref") {
 			cell->push_back(MathAtom(new InsetMathRef(buf, t.cs())));

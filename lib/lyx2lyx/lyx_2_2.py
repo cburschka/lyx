@@ -30,7 +30,7 @@ import sys, os
 #  find_token_backwards, is_in_inset, get_value, get_quoted_value, \
 #  del_token, check_token, get_option_value
   
-#from lyx2lyx_tools import add_to_preamble, insert_to_preamble, \
+from lyx2lyx_tools import add_to_preamble#, insert_to_preamble, \
 #  put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
 #  revert_font_attrs, hex2ratio, str2bool
 
@@ -292,11 +292,52 @@ def revert_swissgerman(document):
         j = j + 1
 
 
+def revert_use_package(document, pkg, commands, oldauto):
+    # oldauto defines how the version we are reverting to behaves:
+    # if it is true, the old version uses the package automatically.
+    # if it is false, the old version never uses the package.
+    regexp = re.compile(r'(\\use_package\s+%s)' % pkg)
+    i = find_re(document.header, regexp, 0)
+    value = "1" # default is auto
+    if i != -1:
+        value = get_value(document.header, "\\use_package" , i).split()[1]
+        del document.header[i]
+    if value == "2": # on
+        add_to_preamble(document, ["\\usepackage{" + pkg + "}"])
+    elif value == "1" and not oldauto: # auto
+        i = 0
+        while True:
+            i = find_token(document.body, '\\begin_inset Formula', i)
+            if i == -1:
+                return
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(i))
+                i += 1
+                continue
+            code = "\n".join(document.body[i:j])
+            for c in commands:
+                if code.find("\\%s" % c) != -1:
+                    add_to_preamble(document, ["\\usepackage{" + pkg + "}"])
+                    return
+            i = j
+
+
+mathtools_commands = ["xhookrightarrow", "xhookleftarrow", "xRightarrow", \
+                "xrightharpoondown", "xrightharpoonup", "xrightleftharpoons", \
+                "xLeftarrow", "xleftharpoondown", "xleftharpoonup", \
+                "xleftrightarrow", "xLeftrightarrow", "xleftrightharpoons", \
+                "xmapsto"]
+def revert_xarrow(document):
+    "remove use_package mathtools"
+    revert_use_package(document, "mathtools", mathtools_commands, False)
+
+  
 ##
 # Conversion hub
 #
 
-supported_versions = ["2.2.0","2.2"]
+supported_versions = ["2.2.0", "2.2"]
 convert = [
            [475, [convert_separator]],
            # nothing to do for 476: We consider it a bug that older versions
@@ -304,9 +345,11 @@ convert = [
            # want to hardcode amsmath off.
            [476, []],
            [477, []],
+           [478, []]
           ]
 
 revert =  [
+           [477, [revert_xarrow]],
            [476, [revert_swissgerman]],
            [475, [revert_smash]],
            [474, [revert_separator]]

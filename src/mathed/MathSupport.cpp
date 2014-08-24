@@ -113,6 +113,95 @@ double const brace[] = {
 };
 
 
+double const mapsto[] = {
+	2, 3,
+	0.75, 0.015, 0.95, 0.5, 0.75, 0.985,
+	1, 0.015, 0.475, 0.945, 0.475,
+	1, 0.015, 0.015, 0.015, 0.985,
+	0
+};
+
+
+double const lhook[] = {
+	2, 3,
+	0.25, 0.015, 0.05, 0.5, 0.25, 0.985,
+	1, 0.015, 0.475, 0.7, 0.475,
+	2, 5,
+	0.7, 0.015, 0.825, 0.15, 0.985, 0.25,
+	0.825, 0.35, 0.7, 0.475,
+	0
+};
+
+
+double const rhook[] = {
+	2, 3,
+	0.75, 0.015, 0.95, 0.5, 0.75, 0.985,
+	1, 0.3, 0.475, 0.985, 0.475,
+	2, 5,
+	0.3, 0.015, 0.175, 0.15, 0.05, 0.25,
+	0.175, 0.35, 0.3, 0.475,
+	0
+};
+
+
+double const LRArrow[] = {
+	2, 3,
+	0.25, 0.015, 0.05, 0.5, 0.25, 0.985,
+	2, 3,
+	0.75, 0.015, 0.95, 0.5, 0.75, 0.985,
+	1, 0.2, 0.8, 0.8, 0.8,
+	1, 0.2, 0.2, 0.8, 0.2,
+	0
+};
+
+
+double const LArrow[] = {
+	2, 3,
+	0.25, 0.015, 0.05, 0.5, 0.25, 0.985,
+	1, 0.2, 0.8, 0.985, 0.8,
+	1, 0.2, 0.2, 0.985, 0.2,
+	0
+};
+
+
+double const lharpoondown[] = {
+	2, 2,
+	0.015, 0.5, 0.25, 0.985,
+	1, 0.02, 0.475, 0.985, 0.475,
+	0
+};
+
+
+double const lharpoonup[] = {
+	2, 2,
+	0.25, 0.015, 0.015, 0.5,
+	1, 0.02, 0.525, 0.985, 0.525,
+	0
+};
+
+
+double const lrharpoons[] = {
+	2, 2,
+	0.25, 0.015, 0.015, 0.225,
+	1, 0.02, 0.23, 0.985, 0.23,
+	2, 2,
+	0.75, 0.985, 0.985, 0.775,
+	1, 0.02, 0.7, 0.980, 0.7,
+	0
+};
+
+
+double const rlharpoons[] = {
+	2, 2,
+	0.75, 0.015, 0.985, 0.225,
+	1, 0.02, 0.23, 0.985, 0.23,
+	2, 2,
+	0.25, 0.985, 0.015, 0.775,
+	1, 0.02, 0.7, 0.980, 0.7,
+	0
+};
+
+
 double const arrow[] = {
 	4, 7,
 	0.0150, 0.7500, 0.2000, 0.6000, 0.3500, 0.3500,
@@ -283,23 +372,36 @@ struct named_deco_struct {
 
 named_deco_struct deco_table[] = {
 	// Decorations
-	{"widehat",             angle,    3 },
-	{"widetilde",           tilde,    0 },
-	{"underbar",            hline,    0 },
-	{"underline",           hline,    0 },
-	{"overline",            hline,    0 },
-	{"underbrace",          brace,    1 },
-	{"overbrace",           brace,    3 },
-	{"overleftarrow",       arrow,    1 },
-	{"overrightarrow",      arrow,    3 },
-	{"overleftrightarrow",  udarrow,  1 },
-	{"xleftarrow",          arrow,    1 },
-	{"xrightarrow",         arrow,    3 },
-	{"underleftarrow",      arrow,    1 },
-	{"underrightarrow",     arrow,    3 },
-	{"underleftrightarrow", udarrow,  1 },
-	{"undertilde",          tilde,    0 },
-	{"utilde",              tilde,    0 },
+	{"widehat",             angle,        3 },
+	{"widetilde",           tilde,        0 },
+	{"underbar",            hline,        0 },
+	{"underline",           hline,        0 },
+	{"overline",            hline,        0 },
+	{"underbrace",          brace,        1 },
+	{"overbrace",           brace,        3 },
+	{"overleftarrow",       arrow,        1 },
+	{"overrightarrow",      arrow,        3 },
+	{"overleftrightarrow",  udarrow,      1 },
+	{"xhookleftarrow",      lhook,        0 },
+	{"xhookrightarrow",     rhook,        0 },
+	{"xleftarrow",          arrow,        1 },
+	{"xLeftarrow",          LArrow,       0 },
+	{"xleftharpoondown",    lharpoondown, 0 },
+	{"xleftharpoonup",      lharpoonup,   0 },
+	{"xleftrightharpoons",  lrharpoons,   0 },
+	{"xleftrightarrow",     udarrow,      1 },
+	{"xLeftrightarrow",     LRArrow,      0 },
+	{"xmapsto",             mapsto,       0 },
+	{"xrightarrow",         arrow,        3 },
+	{"xRightarrow",         LArrow,       2 },
+	{"xrightharpoondown",   lharpoonup,   2 },
+	{"xrightharpoonup",     lharpoondown, 2 },
+	{"xrightleftharpoons",  rlharpoons,   0 },
+	{"underleftarrow",      arrow,        1 },
+	{"underrightarrow",     arrow,        3 },
+	{"underleftrightarrow", udarrow,      1 },
+	{"undertilde",          tilde,        0 },
+	{"utilde",              tilde,        0 },
 
 	// Delimiters
 	{"(",              parenth,    0 },

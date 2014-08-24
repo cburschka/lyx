@@ -30,8 +30,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 477 // spitz: support for swissgerman
-#define LYX_FORMAT_TEX2LYX 477
+#define LYX_FORMAT_LYX 478 // uwestoehr: mathtools' x***arrow commands
+#define LYX_FORMAT_TEX2LYX 478
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER

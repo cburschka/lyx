@@ -80,8 +80,38 @@ void InsetMathXArrow::normalize(NormalStream & os) const
 
 void InsetMathXArrow::mathmlize(MathStream & ms) const
 {
-	char const * const arrow = name_ == "xleftarrow" 
-			? "&larr;" : "&rarr;";
+	char const * arrow;
+	
+	if (name_ == "xleftarrow")
+		arrow = "&larr;";
+	else if (name_ == "xrightarrow")
+		arrow = "&rarr;";
+	else if (name_ == "xhookleftarrow")
+		arrow = "&larrhk;";
+	else if (name_ == "xhookrightarrow")
+		arrow = "&rarrhk;";
+	else if (name_ == "xLeftarrow")
+		arrow = "&lArr;";
+	else if (name_ == "xRightarrow")
+		arrow = "&rArr;";
+	else if (name_ == "xleftrightarrow")
+		arrow = "&leftrightarrow;";
+	else if (name_ == "xLeftrightarrow")
+		arrow = "&Leftrightarrow;";
+	else if (name_ == "xleftharpoondown")
+		arrow = "&leftharpoondown;";
+	else if (name_ == "xleftharpoonup")
+		arrow = "&leftharpoonup;";
+	else if (name_ == "xleftrightharpoons")
+		arrow = "&leftrightharpoons;";
+	else if (name_ == "xrightharpoondown")
+		arrow = "&rightharpoondown;";
+	else if (name_ == "xrightharpoonup")
+		arrow = "&rightharpoonup;";
+	else if (name_ == "xrightleftharpoons")
+		arrow = "&rightleftharpoons;";
+	else if (name_ == "xmapsto")
+		arrow = "&mapsto;";
 	ms << "<munderover accent='false' accentunder='false'>"
 	   << arrow << cell(1) << cell(0)
 	   << "</munderover>";
@@ -90,8 +120,38 @@ void InsetMathXArrow::mathmlize(MathStream & ms) const
 
 void InsetMathXArrow::htmlize(HtmlStream & os) const
 {
-	char const * const arrow = name_ == "xleftarrow" 
-			? "&larr;" : "&rarr;";
+	char const * arrow;
+
+	if (name_ == "xleftarrow")
+		arrow = "&larr;";
+	else if (name_ == "xrightarrow")
+		arrow = "&rarr;";
+	else if (name_ == "xhookleftarrow")
+		arrow = "&larrhk;";
+	else if (name_ == "xhookrightarrow")
+		arrow = "&rarrhk;";
+	else if (name_ == "xLeftarrow")
+		arrow = "&lArr;";
+	else if (name_ == "xRightarrow")
+		arrow = "&rArr;";
+	else if (name_ == "xleftrightarrow")
+		arrow = "&leftrightarrow;";
+	else if (name_ == "xLeftrightarrow")
+		arrow = "&Leftrightarrow;";
+	else if (name_ == "xleftharpoondown")
+		arrow = "&leftharpoondown;";
+	else if (name_ == "xleftharpoonup")
+		arrow = "&leftharpoonup;";
+	else if (name_ == "xleftrightharpoons")
+		arrow = "&leftrightharpoons;";
+	else if (name_ == "xrightharpoondown")
+		arrow = "&rightharpoondown;";
+	else if (name_ == "xrightharpoonup")
+		arrow = "&rightharpoonup;";
+	else if (name_ == "xrightleftharpoons")
+		arrow = "&rightleftharpoons;";
+	else if (name_ == "xmapsto")
+		arrow = "&mapsto;";
 	os << MTag("span", "class='xarrow'")
 		 << MTag("span", "class='xatop'") << cell(0) << ETag("span")
 		 << MTag("span", "class='xabottom'") << arrow << ETag("span")
@@ -101,7 +161,10 @@ void InsetMathXArrow::htmlize(HtmlStream & os) const
 
 void InsetMathXArrow::validate(LaTeXFeatures & features) const
 {
-	features.require("amsmath");
+	if (name_ == "xleftarrow" || name_ == "xrightarrow")
+		features.require("amsmath");
+	else
+		features.require("mathtools");
 	if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		// CSS adapted from eLyXer
 		features.addCSSSnippet(

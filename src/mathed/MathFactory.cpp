@@ -466,7 +466,14 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 
 	if (s == "Diagram")
 		return MathAtom(new InsetMathDiagram(buf));
-	if (s == "xrightarrow" || s == "xleftarrow")
+	if (s == "xrightarrow" || s == "xleftarrow" ||
+		s == "xhookrightarrow" || s == "xhookleftarrow" ||
+		s == "xRightarrow" || s == "xLeftarrow" ||
+		s == "xleftrightarrow" || s == "xLeftrightarrow" ||
+		s == "xrightharpoondown" || s == "xrightharpoonup" ||
+		s == "xleftharpoondown" || s == "xleftharpoonup" ||
+		s == "xleftrightharpoons" || s == "xrightleftharpoons" ||
+		s == "xmapsto")
 		return MathAtom(new InsetMathXArrow(buf, s));
 	if (s == "split" || s == "alignedat")
 		return MathAtom(new InsetMathSplit(buf, s));
