@@ -28,6 +28,8 @@
 
 #ifdef __APPLE__
 #include <CoreServices/CoreServices.h>
+#include <CoreFoundation/CoreFoundation.h>
+#include <CoreFoundation/CFArray.h>
 #endif
 
 using namespace std;
@@ -272,43 +274,39 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode,
 {
 #ifdef __APPLE__
 // Reference: http://developer.apple.com/documentation/Carbon/Reference/LaunchServicesReference/
-	FSRef fileref;
-	OSStatus status =
-		FSPathMakeRef((UInt8 *) filename.c_str(), &fileref, NULL);
-	if (status != 0)
-		return false;
-
 	// this is what we would like to do but it seems that the
 	// viewer for PDF is often quicktime...
 	//LSRolesMask role = (mode == VIEW) ? kLSRolesViewer :  kLSRolesEditor;
 	(void)mode;
 	LSRolesMask role = kLSRolesAll;
-	FSRef outAppRef;
 
-	status = LSGetApplicationForItem(&fileref, role, &outAppRef, NULL);
+	CFURLRef docURL = CFURLCreateFromFileSystemRepresentation(
+		NULL, (UInt8 *) filename.c_str(), filename.size(), false);
+	CFURLRef appURL;
+	OSStatus status = LSGetApplicationForURL(docURL, role, NULL, &appURL);
 	if (status == kLSApplicationNotFoundErr)
 		return false;
 
+	CFURLRef docURLs[] = { docURL };
+	CFArrayRef launchItems = CFArrayCreate(
+		NULL,
+		(const void**)docURLs, sizeof(docURLs) / sizeof(CFURLRef),
+		NULL);
+	LSLaunchURLSpec launchUrlSpec = {
+		appURL, launchItems, NULL, kLSLaunchDefaults, NULL
+	};
+
 	string const texinputs = os::latex_path_list(
-			replaceCurdirPath(path, lyxrc.texinputs_prefix));
+		replaceCurdirPath(path, lyxrc.texinputs_prefix));
 	string const oldval = getEnv("TEXINPUTS");
 	string const newval = ".:" + texinputs + ":" + oldval;
 	if (!path.empty() && !lyxrc.texinputs_prefix.empty())
 		setEnv("TEXINPUTS", newval);
-
-	LSLaunchFSRefSpec inLaunchSpec;
-	inLaunchSpec.appRef = &outAppRef;
-	inLaunchSpec.numDocs = 1;
-	inLaunchSpec.itemRefs = &fileref;
-	inLaunchSpec.passThruParams = NULL;
-	inLaunchSpec.launchFlags = kLSLaunchDefaults;
-	inLaunchSpec.asyncRefCon = NULL;
-	status = LSOpenFromRefSpec(&inLaunchSpec, NULL);
-
+	status = LSOpenFromURLSpec (&launchUrlSpec, NULL);
+	CFRelease(launchItems);
 	if (!path.empty() && !lyxrc.texinputs_prefix.empty())
 		setEnv("TEXINPUTS", oldval);
-
-	return status != kLSApplicationNotFoundErr;
+	return status == 0;
 #else
 	// silence compiler warnings
 	(void)filename;
