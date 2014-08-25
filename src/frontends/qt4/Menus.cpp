@@ -1774,7 +1774,7 @@ void Menu::Impl::populate(QMenu & qMenu, MenuDefinition const & menu)
 	}
 }
 
-#if defined(Q_WS_WIN) && (QT_VERSION >= 0x040600)
+#if (defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)) && (QT_VERSION >= 0x040600)
 class AlwaysMnemonicStyle : public QProxyStyle {
 public:
 	int styleHint(StyleHint hint, const QStyleOption *opt = 0, const QWidget *widget = 0,
@@ -1794,7 +1794,7 @@ public:
 Menu::Menu(GuiView * gv, QString const & name, bool top_level, bool keyboard)
 : QMenu(gv), d(new Menu::Impl)
 {
-#if defined(Q_WS_WIN) && (QT_VERSION >= 0x040600)
+#if (defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)) && (QT_VERSION >= 0x040600)
 	if (keyboard)
 		setStyle(new AlwaysMnemonicStyle);
 #else

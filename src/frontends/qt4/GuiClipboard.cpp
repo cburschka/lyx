@@ -541,7 +541,7 @@ bool GuiClipboard::hasInternal() const
 	// are notified of changes. However, on Windows ownership is
 	// emulated by Qt through the OleIsCurrentClipboard() API, while
 	// on Mac OS X we deal with this issue by ourself.
-#if (defined(Q_WS_X11) || defined(Q_WS_WIN))
+#if defined(Q_WS_X11) || defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
 	return true;
 #else
 	return false;

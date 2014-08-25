@@ -301,7 +301,7 @@ QString const externalLineEnding(docstring const & str)
 #ifdef Q_WS_MACX
 	// The MAC clipboard uses \r for lineendings, and we use \n
 	return toqstr(subst(str, '\n', '\r'));
-#elif defined(Q_WS_WIN)
+#elif defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
 	// Windows clipboard uses \r\n for lineendings, and we use \n
 	return toqstr(subst(str, from_ascii("\n"), from_ascii("\r\n")));
 #else

@@ -448,7 +448,7 @@ GuiView::GuiView(int id)
 	// We don't want to keep the window in memory if it is closed.
 	setAttribute(Qt::WA_DeleteOnClose, true);
 
-#if (!defined(Q_WS_WIN) && !defined(Q_WS_MACX))
+#if !(defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)) && !defined(Q_WS_MACX)
 	// QIcon::fromTheme was introduced in Qt 4.6
 #if (QT_VERSION >= 0x040600)
 	// assign an icon to main form. We do not do it under Qt/Win or Qt/Mac,
