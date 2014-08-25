@@ -77,7 +77,7 @@
 #include "support/Systemcall.h"
 #include "support/TempFile.h"
 
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 #include "support/AppleScript.h"
 #include "support/linkback/LinkBackProxy.h"
 #endif
@@ -133,9 +133,9 @@
 #include <objidl.h>
 #endif // Q_WS_WIN
 
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 #include <QMacPasteboardMime>
-#endif // Q_WS_MACX
+#endif // Q_OS_MAC
 
 #include "support/bind.h"
 #include <boost/crc.hpp>
@@ -652,7 +652,7 @@ public:
 	}
 };
 
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 // QMacPasteboardMimeGraphics can only be compiled on Mac.
 
 class QMacPasteboardMimeGraphics : public QMacPasteboardMime
@@ -932,7 +932,7 @@ struct GuiApplication::Private
 	/// Only used on mac.
 	QMenuBar * global_menubar_;
 
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 	/// Linkback mime handler for MacOSX.
 	QMacPasteboardMimeGraphics mac_pasteboard_mime_;
 #endif
@@ -951,7 +951,7 @@ GuiApplication * guiApp;
 
 GuiApplication::~GuiApplication()
 {
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 	closeAllLinkBackLinks();
 #endif
 	delete d;
@@ -979,7 +979,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	if (lyxrc.quit_on_last_window_closed)
 		setQuitOnLastWindowClosed(false);
 	*/
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 	// FIXME: Do we need a lyxrc setting for this on Mac? This behaviour
 	// seems to be the default case for applications like LyX.
 	setQuitOnLastWindowClosed(false);
@@ -2346,7 +2346,7 @@ void GuiApplication::execBatchCommands()
 		// Gives some error box here.
 		return;
 
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 #if QT_VERSION > 0x040600
 	setAttribute(Qt::AA_MacDontSwapCtrlAndMeta,lyxrc.mac_dontswap_ctrl_meta);
 #endif

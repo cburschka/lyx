@@ -33,7 +33,7 @@
 #include <map>
 #include <ctime>
 
-// FIXME: Q_WS_MACX is not available, it's in Qt
+// FIXME: Q_OS_MAC is not available, it's in Qt
 #ifdef USE_MACOSX_PACKAGING
 #include "support/linkback/LinkBackProxy.h"
 #endif

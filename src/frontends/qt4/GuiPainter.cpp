@@ -9,7 +9,7 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifdef Q_WS_MAC
+#ifdef Q_OS_MAC
 #define USE_RTL_OVERRIDE 1
 #endif
 

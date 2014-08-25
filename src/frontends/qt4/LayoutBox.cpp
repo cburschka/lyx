@@ -522,7 +522,7 @@ bool LayoutBox::eventFilter(QObject * o, QEvent * e)
 	
 void LayoutBox::setIconSize(QSize size)
 {
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 	bool small = size.height() < 20;
 	setAttribute(Qt::WA_MacSmallSize, small);
 	setAttribute(Qt::WA_MacNormalSize, !small);

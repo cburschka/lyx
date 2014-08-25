@@ -500,7 +500,7 @@ PrefInput::PrefInput(GuiPreferences * form)
 
 	// reveal checkbox for switching Ctrl and Meta on Mac:
 	bool swapcb = false;
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 #if QT_VERSION > 0x040600
 	swapcb = true;
 #endif

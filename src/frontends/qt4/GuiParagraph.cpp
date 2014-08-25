@@ -61,7 +61,7 @@ GuiParagraph::GuiParagraph(GuiView & lv)
 	connect(labelWidth, SIGNAL(textChanged(QString)),
 		this, SLOT(changed()));
 
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 	// On Mac it's common to have tool windows which are always in the
 	// foreground and are hidden when the main window is not focused.
 	setWindowFlags(Qt::Tool);

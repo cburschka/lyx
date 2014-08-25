@@ -61,7 +61,7 @@
 #endif
 #include <QDrag>
 #include <QHelpEvent>
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 #include <QProxyStyle>
 #endif
 #include <QMainWindow>
@@ -1487,7 +1487,7 @@ void EmbeddedWorkArea::disable()
 //
 ////////////////////////////////////////////////////////////////////
 
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 class NoTabFrameMacStyle : public QProxyStyle {
 public:
 	///
@@ -1518,7 +1518,7 @@ NoTabFrameMacStyle noTabFrameMacStyle;
 TabWorkArea::TabWorkArea(QWidget * parent)
 	: QTabWidget(parent), clicked_tab_(-1)
 {
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 	setStyle(&noTabFrameMacStyle);
 #endif
 

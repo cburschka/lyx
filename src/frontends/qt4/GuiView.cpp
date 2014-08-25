@@ -448,7 +448,7 @@ GuiView::GuiView(int id)
 	// We don't want to keep the window in memory if it is closed.
 	setAttribute(Qt::WA_DeleteOnClose, true);
 
-#if !(defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)) && !defined(Q_WS_MACX)
+#if !(defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)) && !defined(Q_OS_MAC)
 	// QIcon::fromTheme was introduced in Qt 4.6
 #if (QT_VERSION >= 0x040600)
 	// assign an icon to main form. We do not do it under Qt/Win or Qt/Mac,
@@ -1064,7 +1064,7 @@ void GuiView::on_lastWorkAreaRemoved()
 		return;
 	}
 
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 	// On Mac we also close the last window because the application stay
 	// resident in memory. On other platforms we don't close the last
 	// window because this would quit the application.

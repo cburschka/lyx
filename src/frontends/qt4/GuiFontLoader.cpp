@@ -265,7 +265,7 @@ GuiFontInfo::GuiFontInfo(FontInfo const & f)
 			QString family = makeFontName(toqstr(lyxrc.roman_font_name),
 				toqstr(lyxrc.roman_font_foundry)); 
 			font.setFamily(family);
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 #if QT_VERSION >= 0x040300 //&& QT_VERSION < 0x040800
 			// Workaround for a Qt bug, see http://www.lyx.org/trac/ticket/3684
 			// and http://bugreports.qt.nokia.com/browse/QTBUG-11145.
@@ -341,7 +341,7 @@ bool FontLoader::available(FontInfo const & f)
 	static vector<int> cache(NUM_FAMILIES, false);
 
 	FontFamily family = f.family();
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 	// Apple ships a font name "Symbol", which has more or less the same
 	// glyphs as the original PostScript Symbol font, but it uses a different
 	// encoding (see https://en.wikipedia.org/wiki/Symbol_(typeface)#cite_note-2).

@@ -30,9 +30,9 @@
 #include "support/lstrings.h"
 #include "support/lyxtime.h"
 
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 #include "support/linkback/LinkBackProxy.h"
-#endif // Q_WS_MACX
+#endif // Q_OS_MAC
 
 #include "frontends/alert.h"
 
@@ -313,7 +313,7 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 	// write the (LinkBack) PDF data
 	f.write(ar);
 	if (type == LinkBackGraphicsType) {
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 		void const * linkBackData;
 		unsigned linkBackLen;
 		getLinkBackData(&linkBackData, &linkBackLen);
@@ -324,7 +324,7 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 #else
 		// only non-Mac this should never happen
 		LATTEST(false);
-#endif // Q_WS_MACX
+#endif // Q_OS_MAC
 	}
 
 	f.close();
@@ -488,11 +488,11 @@ bool GuiClipboard::hasGraphicsContents(Clipboard::GraphicsType type) const
 
 	// handle LinkBack for Mac
 	if (type == LinkBackGraphicsType)
-#ifdef Q_WS_MACX
+#ifdef Q_OS_MAC
 		return isLinkBackDataInPasteboard();
 #else
 		return false;
-#endif // Q_WS_MACX
+#endif // Q_OS_MAC
 	
 	// get mime data
 	QStringList const & formats = cache_.formats();
