@@ -86,6 +86,7 @@
 #include <QByteArray>
 #include <QClipboard>
 #include <QDateTime>
+#include <QDesktopWidget>
 #include <QDir>
 #include <QEvent>
 #include <QEventLoop>
@@ -2211,13 +2212,37 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow,
 #ifdef Q_WS_WIN
 		int x, y;
 		int w, h;
-		QRegExp re( "[=]*(?:([0-9]+)[xX]([0-9]+)){0,1}[ ]*(?:([+-][0-9]*)([+-][0-9]*)){0,1}" );
+		QChar sx, sy;
+		QRegExp re( "[=]*(?:([0-9]+)[xX]([0-9]+)){0,1}[ ]*(?:([+-][0-9]*)){0,1}(?:([+-][0-9]*)){0,1}" );
 		re.indexIn(geometry_arg);
 		w = re.cap(1).toInt();
 		h = re.cap(2).toInt();
 		x = re.cap(3).toInt();
 		y = re.cap(4).toInt();
+		sx = re.cap(3).isEmpty() ? '+' : re.cap(3).at(0);
+		sy = re.cap(4).isEmpty() ? '+' : re.cap(4).at(0);
+		// Set initial geometry such that we can get the frame size.
 		view->setGeometry(x, y, w, h);
+		int framewidth = view->geometry().x() - view->x();
+		int titleheight = view->geometry().y() - view->y();
+		// Negative displacements must be interpreted as distances
+		// from the right or bottom screen borders.
+		if (sx == '-' || sy == '-') {
+			QRect rec = QApplication::desktop()->screenGeometry();
+			if (sx == '-')
+				x += rec.width() - w - framewidth;
+			if (sy == '-')
+				y += rec.height() - h - titleheight;
+			view->setGeometry(x, y, w, h);
+		}
+		// Make sure that the left and top frame borders are visible.
+		if (view->x() < 0 || view->y() < 0) {
+			if (view->x() < 0)
+				x = framewidth;
+			if (view->y() < 0)
+				y = titleheight;
+			view->setGeometry(x, y, w, h);
+		}
 #endif
 	}
 	view->setFocus();
