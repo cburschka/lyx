@@ -342,7 +342,8 @@ while not failed:
             intr_system(lyx_exe + c[9:] + "&")
         else:
             intr_system(lyx_exe + " -userdir " + lyx_userdir + " " + c[9:] + "&")
-        while True:
+        count = 100
+        while count > 0:
             lyx_pid=os.popen("pidof " + lyx).read().rstrip()
             if lyx_pid != "":
                 lyx_window_name=os.popen("wmctrl -l -p | grep ' " + str(lyx_pid) +  " ' | cut -d ' ' -f 1").read().rstrip()
@@ -351,6 +352,11 @@ while not failed:
             print 'lyx_win: ' + lyx_window_name + '\n'
             print "Waiting for LyX to show up . . ."
             time.sleep(1)
+            count = count - 1
+        if count <= 0:
+            print 'Timeout: could not start ' + lyx_exe, '\n'
+            sys.stdout.flush()
+            failed = True
         print 'lyx_pid: ' + lyx_pid + '\n'
         print 'lyx_win: ' + lyx_window_name + '\n'
     elif c[0:5] == 'Sleep':
