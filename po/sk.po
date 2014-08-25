@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-07-26 16:59+0200\n"
+"POT-Creation-Date: 2014-08-23 11:15+0200\n"
 "PO-Revision-Date: 2014-07-03 17:23+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -15693,7 +15693,7 @@ msgid "File|e"
 msgstr "Súbor|S"
 
 #: lib/ui/stdmenus.inc:368
-msgid "Box[[Menu]]"
+msgid "Box[[Menu]]|x"
 msgstr "Rámik"
 
 #: lib/ui/stdmenus.inc:369 lib/ui/stdcontext.inc:328
@@ -15739,10 +15739,6 @@ msgstr "Poznámku pod čiarou"
 #: lib/ui/stdmenus.inc:383
 msgid "Marginal Note|M"
 msgstr "Okrajovú Poznámku|O"
-
-#: lib/ui/stdmenus.inc:385
-msgid "TeX Code|X"
-msgstr "TeX Kód"
 
 #: lib/ui/stdmenus.inc:386
 msgid "Program Listing[[Menu]]"
@@ -29948,6 +29944,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "TeX Code|X"
+#~ msgstr "TeX Kód"
+
 #~ msgid ""
 #~ "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 #~ msgstr ""
@@ -32752,3 +32751,6 @@ msgstr "Neznámy používateľ"
 #~ "Skratka `%1$s' je už viazaná k:\n"
 #~ "%2$s\n"
 #~ "Pred vytvorením novej musíte túto väzbu zmazať."
+
+#~ msgid "Box[[Menu]]"
+#~ msgstr "Rámik"
