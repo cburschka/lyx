@@ -1312,6 +1312,8 @@ bool Buffer::save() const
 						      mangledName));
 		}
 
+		LYXERR(Debug::FILES, "Backing up original file to " <<
+				backupName.absFileName());
 		// Except file is symlink do not copy because of #6587.
 		// Hard links have bad luck.
 		made_backup = symlink ?
