@@ -48,6 +48,12 @@ else()
   set(LYX_WINDOW_NAME "")
 endif()
 
+#check for plausible DISPLAY environment (needed bei keytests)
+set(DISPLAY_VAR $ENV{DISPLAY})
+if(NOT DISPLAY_VAR MATCHES "^[a-zA-Z\\.]*:[0-9]+\(\\.[0-9]+\)?$")
+  message(FATAL_ERROR "Invalid DISPLAY environment value (== '${DISPLAY_VAR}')")
+endif()
+
 set(LYX_EXE "${BINDIR}/${LYX}")
 set(use_hacked $ENV{XVKBD_HACKED})
 if(NOT use_hacked)
