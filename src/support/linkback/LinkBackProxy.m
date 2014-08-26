@@ -22,17 +22,11 @@ static NSAutoreleasePool * pool = nil;
 	NSMutableSet * keys;
 }
 
-+ (void)load;
 - (LyXLinkBackClient *)init;
 - (BOOL)edit:(NSString *)fileName;
 @end
 
 @implementation LyXLinkBackClient
-
-+ (void)load
-{
-	pool = [[NSAutoreleasePool alloc] init];
-}
 
 - (LyXLinkBackClient *)init
 {
@@ -233,10 +227,14 @@ int editLinkBackFile(char const * docName)
 
 void closeAllLinkBackLinks()
 {
-	[linkBackClient release];
-	linkBackClient = nil;
-	
-	[pool drain];
-	pool = nil;
+	if (linkBackClient != nil) {
+		[linkBackClient release];
+		linkBackClient = nil;
+	}
+
+	if (pool != nil) {
+		[pool drain];
+		pool = nil;
+	}
 }
 
