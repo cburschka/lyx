@@ -25,8 +25,6 @@ HunSpellVersion=${HunSpellVersion:-"1.3.2"}
 HunSpellSource="hunspell-${HunSpellVersion}"
 HunSpellLibrary="libhunspell-1.3.0.dylib"
 
-LyXUtilitiesDir=${LyXUtilitiesDir:-"${LyxBuildDir}"/utilities}
-
 unset DYLD_LIBRARY_PATH LD_LIBRARY_PATH
 
 # Prerequisite:
@@ -276,6 +274,8 @@ aspellstrip=
 
 LyxBuildDir=${LyxBuildDir:-$(dirname "${LyxSourceDir}")/lyx-build}
 DMGLocation=${DMGLocation:-"${LyxBuildDir}"}
+
+LyXUtilitiesDir=${LyXUtilitiesDir:-"${LyxBuildDir}"/utilities}
 
 LibMagicSourceDir=${LIBMAGICDIR:-$(dirname "${LyxSourceDir}")/${LibMagicSource}}
 LibMagicBuildDir="${LyxBuildDir}"/"${LibMagicSource}"
