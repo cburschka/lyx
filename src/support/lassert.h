@@ -65,6 +65,8 @@ void doWarnIf(char const * expr, char const * file, long line);
 void doBufErr(char const * expr, char const * file, long line);
 void doAppErr(char const * expr, char const * file, long line);
 
+void doAssertWithCallstack(bool value);
+
 /// Print demangled callstack to stderr
 docstring printCallStack();
 

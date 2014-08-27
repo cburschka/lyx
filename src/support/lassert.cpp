@@ -10,6 +10,7 @@
  */
 
 #include <config.h>
+#include <lassert.h>
 
 #include "support/convert.h"
 #include "support/debug.h"
@@ -35,13 +36,21 @@ namespace lyx {
 using namespace std;
 using namespace support;
 
-// TODO Should we try to print the call stack in the course of these?
+
+void doAssertWithCallstack(bool value)
+{
+	if (!value) {
+		printCallStack();
+		BOOST_ASSERT(false);
+	}
+}
+
 
 void doAssert(char const * expr, char const * file, long line)
 {
 	LYXERR0("ASSERTION " << expr << " VIOLATED IN " << file << ":" << line);
 	// comment this out if not needed
-	BOOST_ASSERT(false);
+	doAssertWithCallstack(false);
 }
 
 
@@ -60,7 +69,7 @@ void doWarnIf(char const * expr, char const * file, long line)
 {
 	docstring const d = _("It should be safe to continue, but you\nmay wish to save your work and restart LyX.");
 	// comment this out if not needed
-	BOOST_ASSERT(false);
+	doAssertWithCallstack(false);
 	throw ExceptionMessage(WarningException, _("Warning!"), 
 		formatHelper(d, expr, file, line));
 }
@@ -70,7 +79,7 @@ void doBufErr(char const * expr, char const * file, long line)
 {
 	docstring const d = _("There has been an error with this document.\nLyX will attempt to close it safely.");
 	// comment this out if not needed
-	BOOST_ASSERT(false);
+	doAssertWithCallstack(false);
 	throw ExceptionMessage(BufferException, _("Buffer Error!"),
 		formatHelper(d, expr, file, line));
 }
@@ -80,7 +89,7 @@ void doAppErr(char const * expr, char const * file, long line)
 {
 	docstring const d = _("LyX has encountered an application error\nand will now shut down.");
 	// comment this out if not needed
-	BOOST_ASSERT(false);
+	doAssertWithCallstack(false);
 	throw ExceptionMessage(ErrorException, _("Fatal Exception!"),
 		formatHelper(d, expr, file, line));
 }
