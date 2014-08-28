@@ -303,6 +303,11 @@ if [ -z "${LyXVersion}" ]; then
 	LyXVersion=$(grep AC_INIT "${LyxSourceDir}"/configure.ac | cut -d, -f2 | tr -d " ()")
 fi
 LyXVersionSuffix=${LyXVersionSuffix:-$(echo "${LyXVersion}" | cut -d. -f1-2)}
+case "${LyXVersion}" in
+*dev*)
+	LyXGitCommitHash=$(cd "${LyxSourceDir}" ; git log -1 --pretty=format:%H)
+	;;
+esac
 
 LyxName="LyX"
 LyxBase="${LyxName}-${LyXVersion}"
@@ -626,6 +631,10 @@ build_lyx() {
 
 		CPPFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"
 		LDFLAGS="${SDKROOT:+-isysroot ${SDKROOT}} -arch ${arch} ${MYCFLAGS}"
+
+		if [ -n "${LyXGitCommitHash}" ]; then
+			CPPFLAGS="${CPPFLAGS} -DLYX_GIT_COMMIT_HASH='${LyXGitCommitHash}'"
+		fi
 
 		if [ "$configure_qt_frameworks" = "yes" ]; then
 			export QT_CORE_CFLAGS="-FQtCore"
