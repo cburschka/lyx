@@ -403,11 +403,11 @@ string Formats::getFormatFromFile(FileName const & filename) const
 		return string();
 
 	string psformat;
+	string format;
 #ifdef HAVE_MAGIC_H
 	if (filename.exists()) {
 		magic_t magic_cookie = magic_open(MAGIC_MIME);
 		if (magic_cookie) {
-			string format;
 			if (magic_load(magic_cookie, NULL) != 0) {
 				LYXERR(Debug::GRAPHICS, "Formats::getFormatFromFile\n"
 					<< "\tCouldn't load magic database - "
@@ -442,35 +442,49 @@ string Formats::getFormatFromFile(FileName const & filename) const
 				}
 			}
 			magic_close(magic_cookie);
-			if (!format.empty())
+			// libmagic recognizes as latex also some formats of ours
+			// such as pstex and pdftex. Therefore we have to perform
+			// additional checks in this case (bug 9244).
+			if (!format.empty() && format != "latex")
 				return format;
 		}
 	}
 #endif
 
-	// libmagic does not distinguish eps and ps.
-	// Therefore we need to use our own detection here, but only if it
-	// recognizes either ps or eps. Otherwise the libmagic guess will
-	// be better (bug 9146).
-	string const format = guessFormatFromContents(filename);
-	if (!psformat.empty()) {
-		if (isPostScriptFileFormat(format))
+	string const ext = getExtension(filename.absFileName());
+	if (format.empty()) {
+		// libmagic does not distinguish eps and ps.
+		// Therefore we need to use our own detection here, but only if it
+		// recognizes either ps or eps. Otherwise the libmagic guess will
+		// be better (bug 9146).
+		format = guessFormatFromContents(filename);
+		if (!psformat.empty()) {
+			if (isPostScriptFileFormat(format))
+				return format;
+			else
+				return psformat;
+		}
+
+		if (isZippedFileFormat(format) && !ext.empty()) {
+			string const & fmt_name = formats.getFormatFromExtension(ext);
+			if (!fmt_name.empty()) {
+				Format const * p_format = formats.getFormat(fmt_name);
+				if (p_format && p_format->zippedNative())
+					return p_format->name();
+			}
+		}
+		// Don't simply return latex (bug 9244).
+		if (!format.empty() && format != "latex")
 			return format;
-		else
-			return psformat;
 	}
 
-	string const ext = getExtension(filename.absFileName());
-	if (isZippedFileFormat(format) && !ext.empty()) {
-		string const & fmt_name = formats.getFormatFromExtension(ext);
-		if (!fmt_name.empty()) {
-			Format const * p_format = formats.getFormat(fmt_name);
-			if (p_format && p_format->zippedNative())
-				return p_format->name();
-		}
+	// Both libmagic and our guessing from contents may return as latex
+	// also lyx files and our pstex and pdftex formats. In this case we
+	// give precedence to the format determined by the extension.
+	if (format == "latex") {
+		format = getFormatFromExtension(ext);
+		return format.empty() ? "latex" : format;
 	}
-	if (!format.empty())
-		return format;
 
 	// try to find a format from the file extension.
 	return getFormatFromExtension(ext);
