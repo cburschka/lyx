@@ -3113,11 +3113,19 @@ def convert_beamerblocks(document):
                                         # Multiline ERT. Might contain TeX code.  Embrace in ERT.
                                         document.body[ertcontlastline : ertcontlastline + 1] = [
                                                                             document.body[ertcontlastline], '\\end_layout', '', '\\end_inset']
-                                        document.body[ertcontdivline : ertcontdivline + 1] = [document.body[ertcontdivline][:tok],
-                                                                            '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
-                                                                            'status collapsed', '', '\\begin_layout Plain Layout',
-                                                                            '\\begin_inset ERT', '', 'status open' '', '\\begin_layout Plain Layout',
-                                                                            document.body[ertcontdivline][tok + 2:]]
+                                        if ertcontdivline == ertcontfirstline:
+                                            document.body[ertcontdivline : ertcontdivline + 1] = [document.body[ertcontdivline][:tok],
+                                                                                '\\end_layout', '', '\\end_inset', '',
+                                                                                '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
+                                                                                'status collapsed', '', '\\begin_layout Plain Layout',
+                                                                                '\\begin_inset ERT', '', 'status open' '', '\\begin_layout Plain Layout',
+                                                                                document.body[ertcontdivline][tok + 2:]]
+                                        else:
+                                            document.body[ertcontdivline : ertcontdivline + 1] = [document.body[ertcontdivline][:tok],
+                                                                                '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
+                                                                                'status collapsed', '', '\\begin_layout Plain Layout',
+                                                                                '\\begin_inset ERT', '', 'status open' '', '\\begin_layout Plain Layout',
+                                                                                document.body[ertcontdivline][tok + 2:]]
                                     else:
                                         document.body[ertcontdivline : ertcontdivline + 1] = [document.body[ertcontdivline][:tok],
                                                                             '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
