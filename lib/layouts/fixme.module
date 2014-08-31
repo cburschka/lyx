@@ -1,9 +1,9 @@
 #\DeclareLyXModule[fixme.sty]{FiXme}
 #DescriptionBegin
 #Provides 'FiXme' (marginal) annotations for document revision purposes.
-#A list of annotations can be produced by usinging the 'List of FIXMEs' paragraph style.
+#A list of annotations can be produced by using the 'List of FIXMEs' paragraph style.
 #The annotations are customizable via the LaTeX preamble. See the FiXme documentation for details.
-#NOTE: By default, the notes are only displayed in 'draft' mode (if the option 'draft' 
+#NOTE: By default, the notes are only displayed in 'draft' mode (if the option 'draft'
 #has been inserted to Document > Settings > Document Class > Class Options > Custom).
 #To display them always, insert \\fxsetup{draft} to Document > Settings > Preamble.
 #NOTE also that you need version 4 or later of the FiXme package for some features.
@@ -32,9 +32,9 @@ Style List_of_FIXMEs
 	LabelType	Static
 	LabelBottomSep	0
 	LeftMargin	MMMMM
-	LabelString	"[LIST of FIXMEs]"
+	LabelString	"[List of FIXMEs]"
 
-	LabelFont 
+	LabelFont
 	    Family	typewriter
 	    Series	Medium
 	    Size	Small
