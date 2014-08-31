@@ -1,0 +1,256 @@
+#\DeclareLyXModule[fixme.sty]{FiXme}
+#DescriptionBegin
+#Provides 'FiXme' (marginal) annotations for document revision purposes.
+#A list of annotations can be produced by usinging the 'List of FIXMEs' paragraph style.
+#The annotations are customizable via the LaTeX preamble. See the FiXme documentation for details.
+#NOTE: By default, the notes are only displayed in 'draft' mode (if the option 'draft' 
+#has been inserted to Document > Settings > Document Class > Class Options > Custom).
+#To display them always, insert \\fxsetup{draft} to Document > Settings > Preamble.
+#NOTE also that you need version 4 or later of the FiXme package for some features.
+#DescriptionEnd
+#
+# Authors: Mark Edgington <edgimar@gmail.com>
+#          Jürgen Spitzmüller <spitz@lyx.org>
+
+Format 48
+
+#
+# List of FIXMEs
+#
+
+Style List_of_FIXMEs
+	KeepEmpty	1
+	LatexType	Command
+	LatexName	listoffixmes
+	Margin		First_Dynamic
+	NextNoIndent	1
+	ParSkip		0
+	TopSep		0
+	BottomSep	0.25
+	ParSep		0
+	Align		Center
+	LabelType	Static
+	LabelBottomSep	0
+	LeftMargin	MMMMM
+	LabelString	"[LIST of FIXMEs]"
+
+	LabelFont 
+	    Family	typewriter
+	    Series	Medium
+	    Size	Small
+	    Color	latex
+	EndFont
+	Requires	fixme
+End
+
+#
+# FIXME Notes (simple)
+#
+
+InsetLayout Flex:Fixme_Note
+        LyXType               custom
+        LabelString           Fixme
+        LatexType             command
+        LatexName             fxnote
+        Decoration            classic
+        LabelFont
+          Color               magenta
+          Size                Small
+        EndFont
+        MultiPar              false
+        Argument 1
+          LabelString         "Options"
+          MenuString          "Fixme Note Options|s"
+          Tooltip             "Consult the fixme package documentation for options"
+        EndArgument
+	Requires              fixme
+End
+
+InsetLayout Flex:Fixme_Warning
+        CopyStyle             Flex:Fixme_Note
+        LabelString           Warning
+        LatexName             fxwarning
+End
+
+InsetLayout Flex:Fixme_Error
+        CopyStyle             Flex:Fixme_Note
+        LabelString           Error
+        LatexName             fxerror
+End
+
+InsetLayout Flex:Fixme_Fatal
+        CopyStyle             Flex:Fixme_Note
+        LabelString           Fatal
+        LatexName             fxfatal
+End
+
+
+#
+# FIXME Notes (targeted)
+#
+
+InsetLayout Flex:Fixme_Note_(Targeted)
+        CopyStyle             Flex:Fixme_Note
+        LabelString           "Fixme (Targeted)"
+        LatexName             fxnote*
+        Argument 1
+          LabelString         "Options"
+          MenuString          "Fixme Note Options|s"
+          Tooltip             "Consult the fixme package documentation for options"
+        EndArgument
+        Argument 2
+          LabelString         "Note"
+          Mandatory            1
+          MenuString          "Fixme Note|x"
+          Tooltip             "Insert the FIXME note here"
+          AutoInsert          1
+        EndArgument
+End
+
+InsetLayout Flex:Fixme_Warning_(Targeted)
+        CopyStyle             Flex:Fixme_Note_(Targeted)
+        LabelString           "Warning (Targeted)"
+        LatexName             fxwarning*
+End
+
+InsetLayout Flex:Fixme_Error_(Targeted)
+        CopyStyle             Flex:Fixme_Note_(Targeted)
+        LabelString           "Error (Targeted)"
+        LatexName             fxerror*
+End
+
+InsetLayout Flex:Fixme_Fatal_(Targeted)
+        CopyStyle             Flex:Fixme_Note_(Targeted)
+        LabelString           "Fatal (Targeted)"
+        LatexName             fxfatal*
+End
+
+
+#
+# FIXME Notes (multipar)
+#
+
+InsetLayout Flex:Fixme_Note_(Multipar)
+        CopyStyle             Flex:Fixme_Note
+        LabelString           "Fixme (Multipar)"
+        LatexName             anfxnote
+        LatexType             environment
+        Argument 1
+          LabelString         "Options"
+          MenuString          "Fixme Note Options|s"
+          Tooltip             "Consult the fixme package documentation for options"
+        EndArgument
+        Argument 2
+          LabelString         "Summary"
+          Mandatory            1
+          MenuString          "Fixme Summary"
+          Tooltip             "Insert a summary of the FIXME note here"
+          AutoInsert          1
+        EndArgument
+End
+
+InsetLayout Flex:Fixme_Warning_(Multipar)
+        CopyStyle             Flex:Fixme_Note_(Multipar)
+        LabelString           "Warning (Multipar)"
+        LatexName             anfxwarning
+End
+
+InsetLayout Flex:Fixme_Error_(Multipar)
+        CopyStyle             Flex:Fixme_Note_(Multipar)
+        LabelString           "Error (Multipar)"
+        LatexName             anfxerror
+End
+
+InsetLayout Flex:Fixme_Fatal_(Multipar)
+        CopyStyle             Flex:Fixme_Note_(Multipar)
+        LabelString           "Fatal (Multipar)"
+        LatexName             anfxfatal
+End
+
+
+#
+# FIXME Notes (multipar targeted)
+#
+
+InsetLayout Flex:Fixme_Note_(Multipar_Targeted)
+        CopyStyle             Flex:Fixme_Note_(Multipar)
+        LabelString           "Fixme (MP Targ.)"
+        LatexName             anfxnote*
+        Argument 1
+          LabelString         "Options"
+          MenuString          "Fixme Note Options|s"
+          Tooltip             "Consult the fixme package documentation for options"
+        EndArgument
+        Argument 2
+          LabelString         "Summary"
+          Mandatory            1
+          MenuString          "Fixme Summary"
+          Tooltip             "Insert a summary of the FIXME note here"
+          AutoInsert          1
+        EndArgument
+        Argument 3
+          LabelString         "Annotated Text"
+          Mandatory            1
+          MenuString          "Annotated Text|x"
+          Tooltip             "Insert the text to annotate here"
+          AutoInsert          1
+        EndArgument
+End
+
+InsetLayout Flex:Fixme_Warning_(Multipar_Targeted)
+        CopyStyle             Flex:Fixme_Note_(Multipar_Targeted)
+        LabelString           "Warning (MP Targ.)"
+        LatexName             anfxwarning*
+End
+
+InsetLayout Flex:Fixme_Error_(Multipar_Targeted)
+        CopyStyle             Flex:Fixme_Note_(Multipar_Targeted)
+        LabelString           "Error (MP Targ.)"
+        LatexName             anfxerror*
+End
+
+InsetLayout Flex:Fixme_Fatal_(Multipar_Targeted)
+        CopyStyle             Flex:Fixme_Note_(Multipar_Targeted)
+        LabelString           "Fatal (MP Targ.)"
+        LatexName             anfxfatal*
+End
+
+
+#
+# Backwards compatibility to user-provided
+# modules on the LyX wiki
+#
+# FIXME: uncomment these when #9000 is fixed.
+
+#InsetLayout FxNote
+#	ObsoletedBy           Flex:Fixme_Note
+#End
+#
+#InsetLayout FxNote*
+#	ObsoletedBy           Flex:Fixme_Note_(Targeted)
+#End
+#
+#InsetLayout FxWarning
+#	ObsoletedBy           Flex:Fixme_Warning
+#End
+#
+#InsetLayout FxWarning*
+#	ObsoletedBy           Flex:Fixme_Warning_(Targeted)
+#End
+#
+#InsetLayout FxError
+#	ObsoletedBy           Flex:Fixme_Error
+#End
+#
+#InsetLayout FxError*
+#	ObsoletedBy           Flex:Fixme_Error_(Targeted)
+#End
+#
+#InsetLayout FxFatal
+#	ObsoletedBy           Flex:Fixme_Fatal
+#End
+#
+#InsetLayout FxFatal*
+#	ObsoletedBy           Flex:Fixme_Fatal_(Targeted)
+#End
+
