@@ -6193,13 +6193,64 @@ macros/latex/contrib/tcolorbox/
 
 \begin_layout Description
 
-\change_inserted -712698321 1404300960
+\change_inserted -712698321 1409489193
 Notes: The package 
 \family sans
 tcolorbox
 \family default
 \color none
  is used to produce fancy boxes.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1409489213
+TODO Notes module
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted -712698321 1409489210
+todonotes
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1409489194
+Found: 
+\begin_inset Info
+type  "package"
+arg   "todonotes"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1409489226
+CTAN: 
+\family typewriter
+macros/latex/contrib/todonotes/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1409489236
+Notes: The package 
+\family sans
+todonotes
+\family default
+\color none
+ is used to insert 
+\begin_inset Quotes eld
+\end_inset
+
+TODO
+\begin_inset Quotes erd
+\end_inset
+
+ notes into documents.
 \change_unchanged
 
 \end_layout

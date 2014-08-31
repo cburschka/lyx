@@ -1,0 +1,132 @@
+#\DeclareLyXModule[todonotes.sty]{TODO Notes}
+#DescriptionBegin
+#Provides custom insets to insert TODO items in your document
+#(using the todonotes package). In order to generate a 'List of TODOs',
+#the module provides a paragraph style.
+#DescriptionEnd
+
+# Authors: Stephen <stephen4mailinglists@googlemail.com>
+#          Jürgen Spitzmüller <spitz@lyx.org>
+
+Format 48
+
+#
+# List of TODOs
+#
+
+Style List_of_TODOs
+	KeepEmpty	1
+	LatexType	Command
+	LatexName	listoftodos
+	Margin		First_Dynamic
+	NextNoIndent	1
+	ParSkip		0
+	TopSep		0
+	BottomSep	0.25
+	ParSep		0
+	Align		Center
+	LabelType	Static
+	LabelBottomSep	0
+	LeftMargin	MMMMM
+	LabelString	"[LIST of TODOs]"
+
+	LabelFont 
+	    Family	typewriter
+	    Series	Medium
+	    Size	Small
+	    Color	latex
+	EndFont
+
+	Argument 1
+		LabelString	"Heading"
+		MenuString	"List of TODOs Heading|s"
+		Tooltip		"Enter a custom header for the List of TODOs here"
+	EndArgument
+	Requires	todonotes
+End
+
+
+#
+# TODO Notes
+#
+
+InsetLayout Flex:TODO_Note_(Margin)
+	LyxType		custom
+	LabelString	"TODO (Margin)"
+	Decoration	classic
+	BgColor		blue
+	Font
+	    Color	yellow
+	    Family	Typewriter
+	EndFont
+	LabelFont
+	    Color	blue
+	    Family	Sans
+	    Size	Small
+	EndFont
+	MultiPar	true
+	LatexType	command
+	LatexName	todo
+	Argument 1
+		LabelString	"Options"
+		MenuString	"TODO Note Options|s"
+		Tooltip		"See the todonotes manual for possible options"
+	EndArgument
+	Requires	todonotes
+End
+
+
+InsetLayout Flex:TODO_Note_(inline)
+	CopyStyle	Flex:TODO_Note_(Margin)
+	LabelString	"TODO (Inline)"
+	Argument 1
+		LabelString	"Options"
+		MenuString	"TODO Note Options|s"
+		PresetArg	inline
+	EndArgument
+End
+
+
+#
+# Specific Notes
+#
+
+InsetLayout Flex:Missing_Figure
+	CopyStyle	Flex:TODO_Note_(Margin)
+	LabelString	"Missing Figure"
+	MultiPar	false
+	LatexName	missingfigure
+	Argument 1
+		LabelString	"Options"
+		MenuString	"Missing Figure Note Options|s"
+		Tooltip		"See the todonotes manual for possible options"
+	EndArgument
+End
+
+
+#
+# Backwards compatibility to user-provided
+# modules on the LyX wiki
+#
+# FIXME: uncomment these when #9000 is fixed.
+
+#InsetLayout TODO
+#	ObsoletedBy           Flex:TODO_Note_(Margin)
+#End
+#
+#InsetLayout MakeTableOfToDos
+#	ObsoletedBy           List_of_TODOs
+#End
+#
+#InsetLayout Todo[Inline]
+#	ObsoletedBy           Flex:TODO_Note_(inline)
+#End
+#
+#InsetLayout Todo[margin]
+#	ObsoletedBy           Flex:TODO_Note_(Margin)
+#End
+#
+#InsetLayout MissingFigure
+#	ObsoletedBy           Flex:Missing_Figure
+#End
+

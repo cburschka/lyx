@@ -2092,6 +2092,7 @@ dist_layouts_DATA =\
 	layouts/theorems-starred.module \
 	layouts/theorems-std.module \
 	layouts/theorems-without-preamble.inc \
+	layouts/todonotes.module \
 	layouts/treport.layout \
 	layouts/tufte-book.layout \
 	layouts/tufte-handout.layout
