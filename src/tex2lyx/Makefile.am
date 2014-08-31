@@ -1,6 +1,7 @@
 include $(top_srcdir)/config/common.am
 
-EXTRA_DIST = TODO.txt tex2lyx.1in $(TEST_FILES) $(TEST_RESULTS) pch.h
+EXTRA_DIST = TODO.txt tex2lyx.1in $(TEST_FILES) $(TEST_RESULTS) pch.h \
+	CMakeLists.txt test/CMakeLists.txt
 
 #noinst_LIBRARIES = libtexparser.a
 #
@@ -20,6 +21,7 @@ AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src/tex2lyx \
 	-I$(top_srcdir)/src -I$(top_builddir) $(BOOST_INCLUDES)
 
 TEST_FILES = \
+	test/runtests.cmake \
 	test/runtests.py \
 	test/box-color-size-space-align.tex \
 	test/CJK.tex \

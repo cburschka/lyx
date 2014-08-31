@@ -6,7 +6,7 @@ man_MANS = lyxclient.1
 
 bin_PROGRAMS = lyxclient
 
-EXTRA_DIST = lyxclient.1in
+EXTRA_DIST = lyxclient.1in CMakeLists.txt
 
 AM_CPPFLAGS += -I$(srcdir)/.. $(BOOST_INCLUDES)
 

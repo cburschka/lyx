@@ -4,6 +4,8 @@ SUBDIRS = doc lyx2lyx
 
 CHMOD = chmod
 
+EXTRA_DIST = examples/CMakeLists.txt scripts/CMakeLists.txt
+
 dist_pkgdata_DATA = CREDITS autocorrect chkconfig.ltx external_templates \
 	encodings layouttranslations languages latexfonts symbols syntax.default \
 	unicodesymbols

@@ -11,7 +11,12 @@ endif
 
 SUBDIRS = support frontends . $(CLIENT) tex2lyx
 
-EXTRA_DIST = pch.h
+EXTRA_DIST = pch.h \
+	CMakeLists.txt \
+	graphics/CMakeLists.txt \
+	insets/CMakeLists.txt \
+	mathed/CMakeLists.txt \
+	tests/CMakeLists.txt
 
 OTHERLIBS = $(BOOST_LIBS) $(MYTHES_LIBS) $(ENCHANT_LIBS) $(HUNSPELL_LIBS) \
             @LIBS@ $(SOCKET_LIBS) $(LIBSHLWAPI) $(LIBPSAPI)
@@ -668,7 +673,7 @@ endif
 ############################## Tests ##################################
 
 EXTRA_DIST += \
-	tests/test_layout
+	tests/test_layout CMakeLists.txt
 
 alltests: check alltests-recursive
 

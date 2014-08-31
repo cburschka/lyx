@@ -3,7 +3,8 @@ include $(top_srcdir)/config/common.am
 CLEANFILES += $(BUILT_SOURCES)
 
 EXTRA_DIST = pch.h \
-	os_cygwin.cpp os_unix.cpp os_win32.cpp os_win32.h
+	os_cygwin.cpp os_unix.cpp os_win32.cpp os_win32.h \
+	CMakeLists.txt tests/CMakeLists.txt tests/supporttest.cmake
 
 noinst_LIBRARIES = liblyxsupport.a
 

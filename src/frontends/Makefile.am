@@ -27,6 +27,9 @@ liblyxfrontends_a_SOURCES = \
 ################################# Tests ################################
 
 EXTRA_DIST = \
+	CMakeLists.txt \
+	tests/CMakeLists.txt \
+	tests/test_biblio.cmake \
 	tests/test_biblio \
 	tests/regfiles/biblio
 

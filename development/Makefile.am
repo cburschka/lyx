@@ -38,6 +38,7 @@ Win32/packaging/installer/gui/external.nsh \
 Win32/packaging/installer/gui/io_latex.ini \
 Win32/packaging/installer/gui/LaTeXFolder.nsh \
 Win32/packaging/installer/include/declarations.nsh \
+Win32/packaging/installer/include/declarations.nsh.cmake \
 Win32/packaging/installer/include/detection.nsh \
 Win32/packaging/installer/include/dictionaries.nsh \
 Win32/packaging/installer/include/filelist.nsh \
@@ -90,6 +91,7 @@ Win32/vld/cmake/vld.cmake \
 autotests/CMakeLists.txt \
 autotests/check_load.cmake \
 autotests/export.cmake \
+autotests/ExportTests.cmake \
 autotests/keytest.py \
 autotests/lyx2lyxtest.cmake \
 autotests/single-test.cmake \
@@ -100,6 +102,9 @@ checkurls/search_url.pl \
 cmake/ConfigureChecks.cmake \
 cmake/Install.cmake \
 cmake/LyxPackaging.cmake \
+cmake/LyX_description.txt \
+cmake/LyX_license.txt \
+cmake/LyX_summary.txt \
 cmake/PyCompile.cmake \
 cmake/config.cpp.cmake \
 cmake/config.h.cmake \
@@ -110,10 +115,12 @@ cmake/doc/CMakeLists.txt \
 cmake/doc/ReplaceValues.pl \
 cmake/doc/ReplaceValues.py \
 cmake/lyx_date.h.cmake \
+cmake/lyx.rc \
 cmake/man/CMakeLists.txt \
 cmake/modules/FindASPELL.cmake \
 cmake/modules/FindAiksaurusLIB.cmake \
 cmake/modules/FindEnchant.cmake \
+cmake/modules/FindCXX11Compiler.cmake \
 cmake/modules/FindGNUWIN32.cmake \
 cmake/modules/FindHunspell.cmake \
 cmake/modules/FindICONV.cmake \
@@ -129,9 +136,11 @@ cmake/modules/LyXuic.cmake \
 cmake/modules/MacroBoolTo01.cmake \
 cmake/modules/PCHSupport_26.cmake \
 cmake/modules/ProjectSourceGroup.cmake \
+cmake/pcheaders.h \
 cmake/po/cat.py \
 cmake/po/dos2unix.py \
 cmake/po/unix2dos.py \
+cmake/post_install/CMakeLists.txt \
 cmake/scripts/LyXCreateImagesResource.cmake \
 cmake/scripts/LyXGetVersion.cmake \
 keystest/cache-bisect.py \

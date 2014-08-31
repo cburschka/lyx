@@ -7,7 +7,15 @@ noinst_LIBRARIES = liblyxboost.a
 #BUILT_SOURCES = $(PCH_FILE)
 #AM_CPPFLAGS += $(PCH_FLAGS)
 
-EXTRA_DIST = boost
+EXTRA_DIST = boost \
+	CMakeLists.txt \
+	libs/CMakeLists.txt \
+	libs/regex/CMakeLists.txt \
+	libs/regex/regex.vcproj \
+	libs/regex/src/CMakeLists.txt \
+	libs/signals/CMakeLists.txt \
+	libs/signals/signals.vcproj \
+	libs/signals/src/CMakeLists.txt
 
 AM_CPPFLAGS += -DBOOST_USER_CONFIG="<config.h>" 
 AM_CPPFLAGS +=  $(BOOST_INCLUDES)

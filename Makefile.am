@@ -22,7 +22,7 @@ SUBDIRS = config development po $(BOOST) src sourcedoc lib \
 EXTRA_DIST = ANNOUNCE INSTALL.autoconf RELEASE-NOTES UPGRADING \
 	INSTALL.Win32 INSTALL.MacOSX INSTALL.cmake \
 	README.Win32 README.Cygwin README.localization lyx.1in \
-	autogen.sh
+	autogen.sh CMakeLists.txt po/CMakeLists.txt
 
 man_MANS = lyx.1
 
