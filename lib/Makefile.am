@@ -339,6 +339,7 @@ dist_examples_DATA = \
 	examples/sweave.lyx \
 	examples/tufte-book.lyx \
 	examples/tufte-handout.lyx \
+	examples/xyfigure.lyx \
 	examples/xyfigure.png \
 	examples/xypic.lyx
 
@@ -1632,6 +1633,7 @@ dist_imagesoxygen_DATA = \
 	images/oxygen/font-emph.png \
 	images/oxygen/font-noun.png \
 	images/oxygen/footnote-insert.png \
+	images/oxygen/iconsize.png \
 	images/oxygen/href-insert.png \
 	images/oxygen/index-insert.png \
 	images/oxygen/label-insert.png \
@@ -2137,6 +2139,7 @@ dist_templates_DATA = \
 	templates/aastex.lyx \
 	templates/ACM-siggraph.lyx \
 	templates/ACM-sigplan.lyx \
+	templates/ACM-SIGS.lyx \
 	templates/AEA.lyx \
 	templates/AGUTeX.lyx \
 	templates/APA.lyx \
@@ -2148,6 +2151,7 @@ dist_templates_DATA = \
 	templates/DocBook_article.lyx \
 	templates/ectaart.lyx \
 	templates/elsarticle.lyx \
+	templates/EPS-cropped.lyx \
 	templates/es_beamer-conference-ornate-20min.lyx \
 	templates/fr_beamer-conference-ornate-20min.lyx \
 	templates/frletter.lyx \
@@ -2168,6 +2172,7 @@ dist_templates_DATA = \
 	templates/koma-letter2.lyx \
 	templates/letter.lyx \
 	templates/lettre.lyx \
+	templates/PDF-cropped.lyx \
 	templates/poster-a0poster-colored.lyx \
 	templates/poster-a0poster-simple.lyx \
 	templates/poster-beamerposter.lyx \
