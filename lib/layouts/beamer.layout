@@ -1226,6 +1226,12 @@ Style Fact
   LabelString      "Fact."
 End
 
+Style Lemma
+  CopyStyle        Corollary
+  LatexName        lemma
+  LabelString      "Lemma."
+End
+
 Style Proof
   CopyStyle        Corollary
   LatexName        proof

@@ -30,8 +30,8 @@ import sys, os
 #  find_token_backwards, is_in_inset, get_value, get_quoted_value, \
 #  del_token, check_token, get_option_value
   
-from lyx2lyx_tools import add_to_preamble#, insert_to_preamble, \
-#  put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
+from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert#, \
+#  insert_to_preamble, lyx2latex, latex_length, revert_flex_inset, \
 #  revert_font_attrs, hex2ratio, str2bool
 
 from parser_tools import find_token, find_token_backwards, find_re, \
@@ -328,9 +328,88 @@ mathtools_commands = ["xhookrightarrow", "xhookleftarrow", "xRightarrow", \
                 "xLeftarrow", "xleftharpoondown", "xleftharpoonup", \
                 "xleftrightarrow", "xLeftrightarrow", "xleftrightharpoons", \
                 "xmapsto"]
+
 def revert_xarrow(document):
     "remove use_package mathtools"
     revert_use_package(document, "mathtools", mathtools_commands, False)
+
+
+def revert_beamer_lemma(document):
+    " Reverts beamer lemma layout to ERT "
+    
+    beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
+    if document.textclass not in beamer_classes:
+        return
+
+    consecutive = False
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_layout Lemma", i)
+        if i == -1:
+            return
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of Lemma layout")
+            i += 1
+            continue
+        arg1 = find_token(document.body, "\\begin_inset Argument 1", i, j)
+        endarg1 = find_end_of_inset(document.body, arg1)
+        arg2 = find_token(document.body, "\\begin_inset Argument 2", i, j)
+        endarg2 = find_end_of_inset(document.body, arg2)
+        subst1 = []
+        subst2 = []
+        if arg1 != -1:
+            beginPlain1 = find_token(document.body, "\\begin_layout Plain Layout", arg1, endarg1)
+            if beginPlain1 == -1:
+                document.warning("Malformed LyX document: Can't find arg1 plain Layout")
+                i += 1
+                continue
+            endPlain1 = find_end_of_inset(document.body, beginPlain1)
+            content1 = document.body[beginPlain1 + 1 : endPlain1 - 2]
+            subst1 = put_cmd_in_ert("<") + content1 + put_cmd_in_ert(">")
+        if arg2 != -1:
+            beginPlain2 = find_token(document.body, "\\begin_layout Plain Layout", arg2, endarg2)
+            if beginPlain2 == -1:
+                document.warning("Malformed LyX document: Can't find arg2 plain Layout")
+                i += 1
+                continue
+            endPlain2 = find_end_of_inset(document.body, beginPlain2)
+            content2 = document.body[beginPlain2 + 1 : endPlain2 - 2]
+            subst2 = put_cmd_in_ert("[") + content2 + put_cmd_in_ert("]")
+
+        # remove Arg insets
+        if arg1 < arg2:
+            del document.body[arg2 : endarg2 + 1]
+            if arg1 != -1:
+                del document.body[arg1 : endarg1 + 1]
+        if arg2 < arg1:
+            del document.body[arg1 : endarg1 + 1]
+            if arg2 != -1:
+                del document.body[arg2 : endarg2 + 1]
+
+        # index of end layout has probably changed
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of Lemma layout")
+            i += 1
+            continue
+
+        begcmd = []
+
+        # if this is not a consecutive env, add start command
+        if not consecutive:
+            begcmd = put_cmd_in_ert("\\begin{lemma}")
+
+        # has this a consecutive lemma?
+        consecutive = document.body[j + 2] == "\\begin_layout Lemma"
+
+        # if this is not followed by a consecutive env, add end command
+        if not consecutive:
+            document.body[j : j + 1] = put_cmd_in_ert("\\end{lemma}") + ["\\end_layout"]
+
+        document.body[i : i + 1] = ["\\begin_layout Standard", ""] + begcmd + subst1 + subst2
+
+        i = j
 
   
 ##
@@ -345,10 +424,12 @@ convert = [
            # want to hardcode amsmath off.
            [476, []],
            [477, []],
-           [478, []]
+           [478, []],
+           [479, []]
           ]
 
 revert =  [
+           [478, [revert_beamer_lemma]],
            [477, [revert_xarrow]],
            [476, [revert_swissgerman]],
            [475, [revert_smash]],
