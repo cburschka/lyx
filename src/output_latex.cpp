@@ -849,9 +849,9 @@ void TeXOnePar(Buffer const & buf,
 	// calculates the space between the baselines according
 	// to this font. (Matthias)
 	//
-	// Is this really needed ? (Dekel)
-	// We do not need to use to change the font for the last paragraph
-	// or for a command.
+	// We must not change the font for the last paragraph
+	// of non-multipar insets, tabular cells or commands,
+	// since this produces unwanted whitespace.
 
 	Font const font = par.empty()
 		 ? par.getLayoutFont(bparams, outerfont)
@@ -860,7 +860,9 @@ void TeXOnePar(Buffer const & buf,
 	bool const is_command = style.isCommand();
 
 	if (style.resfont.size() != font.fontInfo().size()
-	    && nextpar
+	    && (nextpar || maintext
+	        || (text.inset().getLayout().isMultiPar()
+	            && text.inset().lyxCode() != CELL_CODE))
 	    && !is_command) {
 		os << '{';
 		os << "\\" << from_ascii(font.latexSize()) << " \\par}";
