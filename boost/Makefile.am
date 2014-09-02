@@ -48,7 +48,7 @@ liblyxboost_a_SOURCES = \
 	libs/regex/src/w32_regex_traits.cpp \
 	libs/regex/src/wide_posix_api.cpp \
 	libs/regex/src/winstances.cpp \
-	\
+	libs/regex/src/static_mutex.cpp \
 	libs/signals/src/connection.cpp \
 	libs/signals/src/named_slot_map.cpp \
 	libs/signals/src/signal_base.cpp \

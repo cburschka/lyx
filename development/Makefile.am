@@ -96,6 +96,14 @@ autotests/keytest.py \
 autotests/lyx2lyxtest.cmake \
 autotests/single-test.cmake \
 autotests/xvkbd/CMakeLists.txt \
+autotests/xvkbd/findwidget.c \
+autotests/xvkbd/resources.h \
+autotests/xvkbd/XVkbd-common.h \
+autotests/xvkbd/xvkbd.c \
+autotests/xvkbd/xvkbd.xbm \
+autotests/xvkbd/iconify.xbm \
+autotests/xvkbd/xvkbd_icon.xbm \
+autotests/xvkbd/xvkbd_iconmask.xbm \
 checkurls/CMakeLists.txt \
 checkurls/CheckURL.pm \
 checkurls/search_url.pl \
