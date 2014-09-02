@@ -10,6 +10,8 @@
 
 #include <config.h>
 
+#include "support/lassert.h"
+
 #include "InsetMathXArrow.h"
 #include "MathData.h"
 #include "MathStream.h"
@@ -112,6 +114,10 @@ void InsetMathXArrow::mathmlize(MathStream & ms) const
 		arrow = "&rightleftharpoons;";
 	else if (name_ == "xmapsto")
 		arrow = "&mapsto;";
+	else {
+		lyxerr << "mathmlize conversion for '" << name_ << "' not implemented" << endl;
+		LASSERT(false, arrow = "&rarr;");
+	}
 	ms << "<munderover accent='false' accentunder='false'>"
 	   << arrow << cell(1) << cell(0)
 	   << "</munderover>";
@@ -152,6 +158,10 @@ void InsetMathXArrow::htmlize(HtmlStream & os) const
 		arrow = "&rightleftharpoons;";
 	else if (name_ == "xmapsto")
 		arrow = "&mapsto;";
+	else {
+		lyxerr << "htmlize conversion for '" << name_ << "' not implemented" << endl;
+		LASSERT(false, arrow = "&rarr;");
+	}
 	os << MTag("span", "class='xarrow'")
 		 << MTag("span", "class='xatop'") << cell(0) << ETag("span")
 		 << MTag("span", "class='xabottom'") << arrow << ETag("span")
