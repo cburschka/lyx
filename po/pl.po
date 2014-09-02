@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-08-15 11:11-0400\n"
+"POT-Creation-Date: 2014-08-28 13:28+0200\n"
 "PO-Revision-Date: 2014-08-29 23:13+0100\n"
 "Last-Translator: Manveru <michal.fita@gmail.com>\n"
 "Language-Team: http://localize.drupal.org/\n"
@@ -23540,9 +23540,9 @@ msgid "&Don't Add"
 msgstr "Nie &dodawaj"
 
 #: src/CutAndPaste.cpp:723 src/Text.cpp:403
-#, c-format, c-format
+#, c-format
 msgid "Layout `%1$s' was not found."
-msgstr "Układ „%2%s\" nie został odnaleziony."
+msgstr "Układ „%1$s\" nie został odnaleziony."
 
 #: src/CutAndPaste.cpp:725 src/Text.cpp:405
 msgid "Layout Not Found"
@@ -24085,7 +24085,7 @@ msgstr ""
 #: src/LyX.cpp:1092 src/frontends/qt4/GuiAbout.cpp:141
 #, c-format
 msgid "Built on %1$s[[date]], %2$s[[time]]"
-msgstr "Zbudowano dnia %1$[[date]] o %2%s[[time]]"
+msgstr "Zbudowano dnia %1$s o %2$s"
 
 #: src/LyX.cpp:1104 src/support/Package.cpp:628
 msgid "No system directory"
@@ -24959,7 +24959,7 @@ msgid "Module not available"
 msgstr "Moduł niedostępny"
 
 #: src/TextClass.cpp:1515
-#, c-format, c-format
+#, c-format
 msgid ""
 "The module %1$s requires a package that is not\n"
 "available in your LaTeX installation, or a converter that\n"
@@ -24972,7 +24972,7 @@ msgstr ""
 "w twojej instalacji LaTeX'a, lub konwertera, który nie jest\n"
 "zainstalowany. Generowanie przez LaTeX może być niemożliwe.\n"
 "Brakujące wymagane elementy:\n"
-"\t%2$2\n"
+"\t%2$s\n"
 "Zobacz sekcję 3.1.2.3. (Moduły) w Podręczniku użytkownika, aby uzyskać "
 "więcej informacji."
 
@@ -27392,7 +27392,7 @@ msgstr "Osiągnięto koniec dokumentu, czy chcesz kontynuować od początki?"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:540
 msgid "Spell checker has no dictionaries."
-msgstr "Sprawdzanie pisowni nie ma słowników.\n"
+msgstr "Sprawdzanie pisowni nie ma słowników."
 
 #: src/frontends/qt4/GuiSymbols.cpp:54
 msgid "Basic Latin"
@@ -28058,7 +28058,7 @@ msgstr ""
 "z menu: Widok→Ukryte→...\n"
 "\n"
 "Aby usunąć to pytanie, ustaw swoją preferencję w:\n"
-"  Narzędzia→Ustawienia→Forma i styl→Interfejs użytkownika"
+"  Narzędzia→Ustawienia→Forma i styl→Interfejs użytkownika\n"
 
 #: src/frontends/qt4/GuiView.cpp:2551
 msgid "Close or hide document?"
