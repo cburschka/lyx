@@ -67,18 +67,29 @@ if(QT_USES_X11)
     message(STATUS "cmake build is therefore omitting keytests")
   endif()
 
-  if(NOT Missing)
+  if(Missing)
+    set(_runtest FALSE)
+  else()
     project(keytest)
 
     add_subdirectory(xvkbd)
 
+    set(_runtest TRUE)
     set(KEYTEST "${CMAKE_CURRENT_SOURCE_DIR}/keytest.py")
     file(GLOB TESTST RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "*-in.txt")
     file(GLOB TESTSS RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "*-in.sh")
-    list(REMOVE_ITEM TESTST hello-world-in.txt first-time-in.txt)
+    set(_firsttxt hello-world-in.txt first-time-in.txt)
+    foreach(_f ${_firsttxt})
+      list(FIND TESTST ${_f} _ff)
+      if(NOT _ff GREATER -1)
+        set(_runtest FALSE)
+      endif()
+    endforeach()
+    list(REMOVE_ITEM TESTST ${_firsttxt})
     list(SORT TESTST)
-
-    foreach(_tf first-time-in.txt hello-world-in.txt ${TESTST})
+  endif()
+  if(_runtest)
+    foreach(_tf ${_firsttxt} ${TESTST})
       string(REGEX REPLACE "-in\\.(txt|sh)" "" _t ${_tf})
       add_test(NAME keytest/${_t}
         WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
