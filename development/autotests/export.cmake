@@ -47,12 +47,24 @@ else()
   set(LYX_SOURCE "${LYX_ROOT}/${file}.lyx")
 endif()
 
-message(STATUS "Executing ${lyx} -userdir \"${LYX_TESTS_USERDIR}\" -E ${format} ${file}.${extension} \"${LYX_SOURCE}\"")
+set(result_file_name ${file}_${_ft}.${extension})
+message(STATUS "Executing ${lyx} -userdir \"${LYX_TESTS_USERDIR}\" -E ${format} ${result_file_name} \"${LYX_SOURCE}\"")
 set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
-execute_process(COMMAND ${CMAKE_COMMAND} -E remove ${file}.${extension})
+execute_process(COMMAND ${CMAKE_COMMAND} -E remove ${result_file_name})
 execute_process(
-  COMMAND ${lyx} -userdir "${LYX_TESTS_USERDIR}" -E ${format} ${file}.${extension} "${LYX_SOURCE}"
+  COMMAND ${lyx} -userdir "${LYX_TESTS_USERDIR}" -E ${format} ${result_file_name} "${LYX_SOURCE}"
   RESULT_VARIABLE _err)
+
+#check if result file created
+if (NOT _err)
+  if (NOT EXISTS "${result_file_name}")
+    message(STATUS "Expected result file \"${result_file_name}\" does not exist")
+    set(_err -1)
+  else()
+    message(STATUS "Expected result file \"${result_file_name}\" exists")
+  endif()
+endif()
+
 if(reverted)
   string(COMPARE EQUAL  ${_err} 0 _erg)
 else()
