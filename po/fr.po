@@ -306,7 +306,7 @@ msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-08-15 11:11-0400\n"
-"PO-Revision-Date: 2014-08-28 08:53+0200\n"
+"PO-Revision-Date: 2014-09-10 18:03+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -6870,12 +6870,12 @@ msgstr "Prop"
 #: lib/layouts/IEEEtran.layout:334
 #: src/rowpainter.cpp:548
 msgid "Appendix"
-msgstr "Appendice"
+msgstr "Annexes"
 
 #: lib/layouts/ijmpc.layout:434
 #: lib/layouts/ijmpd.layout:447
 msgid "Appendix \\Alph{appendix}."
-msgstr "Appendice \\Alph{appendix}."
+msgstr "Annexe \\Alph{appendix}."
 
 #: lib/layouts/ijmpc.layout:446
 #: lib/layouts/mwrep.layout:14
@@ -7563,7 +7563,7 @@ msgstr "Une autre preuve"
 #: lib/layouts/stdsections.inc:60
 #: lib/layouts/stdsections.inc:88
 msgid "Short Title|S"
-msgstr "Titre court|c"
+msgstr "Titre court"
 
 #: lib/layouts/siamltex.layout:206
 msgid "The title as it appears in the running headers"
@@ -9303,7 +9303,7 @@ msgstr "Mode"
 #: lib/layouts/beamer.layout:365
 #: lib/layouts/beamer.layout:395
 msgid "Mode Specification|S"
-msgstr "Spécification de mode|c"
+msgstr "Spécification de mode"
 
 #: lib/layouts/beamer.layout:202
 #: lib/layouts/beamer.layout:252
@@ -9767,7 +9767,7 @@ msgstr "Corollaire."
 #: lib/layouts/beamer.layout:1485
 #: lib/layouts/beamer.layout:1509
 msgid "Action Specifications|S"
-msgstr "Spécification d'action|c"
+msgstr "Spécifications d'action"
 
 #: lib/layouts/beamer.layout:1180
 #: lib/layouts/theorems-ams.inc:32
@@ -11567,7 +11567,7 @@ msgstr "Placez un tableau ici :"
 
 #: lib/layouts/aastex.layout:380
 msgid "[Appendix]"
-msgstr "[Appendice]"
+msgstr "[Annexe]"
 
 #: lib/layouts/aastex.layout:390
 msgid "MathLetters"
@@ -11984,7 +11984,7 @@ msgstr "Premier caractère du premier mot"
 #: lib/layouts/IEEEtran.layout:304
 #: lib/layouts/IEEEtran.layout:314
 msgid "Appendices"
-msgstr "Appendices"
+msgstr "Annexes"
 
 #: lib/layouts/IEEEtran.layout:322
 msgid "Peer Review Title"
@@ -13216,7 +13216,7 @@ msgstr "Sur les diapos"
 
 #: lib/layouts/powerdot.layout:576
 msgid "Overlay Specification|S"
-msgstr "Spécification de recouvrement|c"
+msgstr "Spécification de recouvrement"
 
 #: lib/layouts/powerdot.layout:577
 msgid "Specify the overlay settings (see powerdot manual)"
@@ -13980,7 +13980,7 @@ msgstr "\\Roman{section}."
 
 #: lib/layouts/numrevtex.inc:10
 msgid "Appendix \\Alph{section}:"
-msgstr "Appendice \\Alph{section} :"
+msgstr "Annexe \\Alph{section} :"
 
 #: lib/layouts/numrevtex.inc:18
 msgid "\\Alph{subsection}."
@@ -14400,7 +14400,7 @@ msgstr "Chapitre \\thechapter"
 
 #: lib/layouts/stdsections.inc:46
 msgid "Appendix \\thechapter"
-msgstr "Appendice \\thechapter"
+msgstr "Annexe \\thechapter"
 
 #: lib/layouts/theorems-without-preamble.inc:41
 msgid "Name/Title"
@@ -17691,7 +17691,7 @@ msgstr "À propos de LyX|L"
 
 #: lib/ui/stdmenus.inc:603
 msgid "Beamer Presentations|B"
-msgstr "Beamer Presentations|B"
+msgstr "Présentations Beamer|B"
 
 #: lib/ui/stdmenus.inc:604
 msgid "Braille|a"
@@ -17840,7 +17840,7 @@ msgstr "Supprimer l'insert|u"
 
 #: lib/ui/stdcontext.inc:152
 msgid "Show Label|L"
-msgstr "Afficher l'étiquette|A"
+msgstr "Afficher l'étiquette|u"
 
 #: lib/ui/stdcontext.inc:173
 msgid "Simple Frame, Page Breaks|P"
@@ -18011,7 +18011,7 @@ msgstr "Promouvoir la section|m"
 
 #: lib/ui/stdcontext.inc:324
 msgid "Demote Section|m"
-msgstr "Rétrograder la section|é"
+msgstr "Rétrograder la section|R"
 
 #: lib/ui/stdcontext.inc:325
 msgid "Move Section Down|D"
@@ -24679,7 +24679,7 @@ msgstr "marqueur de fin de ligne"
 
 #: src/Color.cpp:266
 msgid "appendix marker"
-msgstr "marque d'appendice"
+msgstr "marque d'annexe"
 
 #: src/Color.cpp:267
 msgid "change bar"
