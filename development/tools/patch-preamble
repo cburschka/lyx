@@ -1,10 +1,10 @@
-This is patch-2.0.1, the 1st maintenance patch against LyX 2.0.0. 
-You need the source of lyx 2.0.0 to apply this patch.
+This is patch-VERSION, the NUMst maintenance patch against LyX ORIGINAL. 
+You need the source of lyx LAST to apply this patch.
 
 This patch should be applied like this
-  cd lyx-2.0.0
+  cd lyx-LAST
   make distclean
-  zcat patch-2.0.0.gz | patch -p1
+  zcat patch-VERSION.gz | patch -p1
 and then LyX can be build as usual.
 
 If you want to skip the 'distclean' step, make sure to re-run configure.

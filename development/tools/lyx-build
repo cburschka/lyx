@@ -19,8 +19,20 @@ MAKEOPTS="-j4";
 # Determine LyX version
 cd $SRCDIR/
 VERSION=$(head configure.ac | grep AC_INIT | perl -e 'while (<>) {m/AC_INIT\(LyX,([^,]+)/; print $1;}');
+LASTNUM=$(echo $VERSION | sed -e 's/.*\.//');
+LAST=$(($LASTNUM - 1));
+FIRST=$(echo $VERSION | sed -e 's/[0-9]*$//');
+ORIGINAL=${FIRST}0;
+LAST=$FIRST$LAST;
+NUMFIX="th";
+if [ "$LASTNUM" = "1" ]; then
+  NUMFIX="st";
+elif [ "$LASTNUM" = "2" ]; then
+  NUMFIX="nd";
+fi
+NUM="$LASTNUM$NUMFIX";
 
-echo "This is version $VERSION.";
+echo "This is version $VERSION, the $NUM maintenance release in the ${FIRST}x series.";
 echo -n "Ready to build source packages...";
 read
 
@@ -76,12 +88,6 @@ else
   exit 1;
 fi
 
-LASTNUM=$(echo $VERSION | sed -e 's/.*\.//');
-LAST=$(($LASTNUM - 1));
-FIRST=$(echo $VERSION | sed -e 's/[0-9]*$//');
-ORIGINAL=${FIRST}0;
-LAST=$FIRST$LAST;
-
 if [ ! -d "$BASE/lyx-patch/" ]; then
 	mkdir "$BASE/lyx-patch/" || exit 1;
 fi
@@ -118,13 +124,6 @@ echo -n "Please check the patch...";
 read
 $EDITOR patch;
 
-NUMFIX="th";
-if [ "$LASTNUM" = "1" ]; then
-  NUMFIX="st";
-elif [ "$LASTNUM" = "2" ]; then
-  NUMFIX="nd";
-fi
-NUM="$LASTNUM$NUMFIX";
 cat $BASE/lyx-export/development/tools/patch-preamble | \
 sed -e "s/VERSION/$VERSION/; s/ORIGINAL/$ORIGINAL/; s/LAST/$LAST/; s/NUM/$NUM/;" >patch-preamble;
 echo -n "Please verify the patch preamble...";
