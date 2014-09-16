@@ -229,10 +229,18 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment, o
         else:
           opening = find_token(document.body, "{", lineERT, end_ERT)
         if opening != -1:
-          document.body[lineERT : end_ERT + 1] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
-          n += 1
           lineERT2 = find_token(document.body, "\\begin_inset ERT", end_ERT, end_layout)
-          if lineERT2 != -1:
+          if lineERT2 == -1:
+            # argument in a single ERT
+            # strip off the opening bracket
+            document.body[opening] = document.body[opening][1:]
+            ertcontlastline = end_ERT - 3
+            if (opt and document.body[ertcontlastline].endswith("]")) or document.body[ertcontlastline].endswith("}"):
+              # strip off the closing bracket
+              document.body[ertcontlastline] = document.body[ertcontlastline][:-1]
+              end2 = find_token(document.body, "\\end_inset", ertcontlastline)
+              document.body[lineERT : lineERT + 1] = ["\\begin_inset Argument " + str(n)]
+          else:
             end_ERT2 = find_end_of_inset(document.body, lineERT2)
             if end_ERT2 == -1:
               document.warning("Can't find end of second ERT!!")
@@ -244,6 +252,8 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment, o
             if closing != -1: # assure that the "}" is in this ERT
               end2 = find_token(document.body, "\\end_inset", closing)
               document.body[lineERT2 : end2 + 1] = ["\\end_layout", "", "\\end_inset"]
+            document.body[lineERT : end_ERT + 1] = ["\\begin_inset Argument " + str(n), "status open", "", "\\begin_layout Plain Layout"]
+          n += 1
 
 
 ###############################################################################
