@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zh_CN\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-08-15 11:11-0400\n"
+"POT-Creation-Date: 2014-09-09 11:05-0400\n"
 "PO-Revision-Date: 2014-04-28 10:00+1000\n"
 "Last-Translator: Yihui Xie <xie@yihui.name>\n"
 "Language-Team: 简体中文 <lyx-docs@lists.lyx.org>\n"
@@ -2454,7 +2454,7 @@ msgstr "使用以下命令转换文件 ($$FName为文件名)"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:127
 #: src/frontends/qt4/ui/ChangesUi.ui:91 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:123 src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1726
+#: src/frontends/qt4/GuiApplication.cpp:1727
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "取消"
@@ -25312,7 +25312,7 @@ msgstr "显示布局 "
 msgid " not known"
 msgstr "未知"
 
-#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1624
+#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1625
 msgid "Missing argument"
 msgstr "缺失参数"
 
@@ -25852,63 +25852,63 @@ msgstr "关于LyX"
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:639
+#: src/frontends/qt4/GuiApplication.cpp:640
 msgid "About %1"
 msgstr "关于%1"
 
-#: src/frontends/qt4/GuiApplication.cpp:639
+#: src/frontends/qt4/GuiApplication.cpp:640
 #: src/frontends/qt4/GuiPrefs.cpp:3308
 msgid "Preferences"
 msgstr "首选项"
 
-#: src/frontends/qt4/GuiApplication.cpp:640
+#: src/frontends/qt4/GuiApplication.cpp:641
 msgid "Reconfigure"
 msgstr "重新配置"
 
-#: src/frontends/qt4/GuiApplication.cpp:640
+#: src/frontends/qt4/GuiApplication.cpp:641
 msgid "Quit %1"
 msgstr "退出%1"
 
-#: src/frontends/qt4/GuiApplication.cpp:1077
+#: src/frontends/qt4/GuiApplication.cpp:1078
 msgid "Nothing to do"
 msgstr "无操作"
 
-#: src/frontends/qt4/GuiApplication.cpp:1083
+#: src/frontends/qt4/GuiApplication.cpp:1084
 msgid "Unknown action"
 msgstr "未知操作"
 
-#: src/frontends/qt4/GuiApplication.cpp:1127
+#: src/frontends/qt4/GuiApplication.cpp:1128
 #, fuzzy
 msgid "Command not handled"
 msgstr "被禁止命令"
 
-#: src/frontends/qt4/GuiApplication.cpp:1133
+#: src/frontends/qt4/GuiApplication.cpp:1134
 msgid "Command disabled"
 msgstr "被禁止命令"
 
-#: src/frontends/qt4/GuiApplication.cpp:1247
+#: src/frontends/qt4/GuiApplication.cpp:1248
 #, fuzzy
 msgid "Command not allowed without a buffer open"
 msgstr "此命令在没有任何打开文档下不能执行"
 
-#: src/frontends/qt4/GuiApplication.cpp:1254
+#: src/frontends/qt4/GuiApplication.cpp:1255
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1446
+#: src/frontends/qt4/GuiApplication.cpp:1447
 msgid "Running configure..."
 msgstr "执行配置程序..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1457
+#: src/frontends/qt4/GuiApplication.cpp:1458
 msgid "Reloading configuration..."
 msgstr "读入系统配置..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1463
+#: src/frontends/qt4/GuiApplication.cpp:1464
 #, fuzzy
 msgid "System reconfiguration failed"
 msgstr "重配置系统完毕"
 
-#: src/frontends/qt4/GuiApplication.cpp:1464
+#: src/frontends/qt4/GuiApplication.cpp:1465
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may\n"
@@ -25916,11 +25916,11 @@ msgid ""
 "Please reconfigure again if needed."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1469
+#: src/frontends/qt4/GuiApplication.cpp:1470
 msgid "System reconfigured"
 msgstr "重配置系统完毕"
 
-#: src/frontends/qt4/GuiApplication.cpp:1470
+#: src/frontends/qt4/GuiApplication.cpp:1471
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -25930,48 +25930,48 @@ msgstr ""
 "您必须重启动LyX\n"
 "以便使用更新的文档类列表."
 
-#: src/frontends/qt4/GuiApplication.cpp:1550
+#: src/frontends/qt4/GuiApplication.cpp:1551
 msgid "Exiting."
 msgstr "退出."
 
-#: src/frontends/qt4/GuiApplication.cpp:1636
+#: src/frontends/qt4/GuiApplication.cpp:1637
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "打开帮助文件 %1$s..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1655
+#: src/frontends/qt4/GuiApplication.cpp:1656
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "语法: set-color <lyx_name> <x11_name>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1671
+#: src/frontends/qt4/GuiApplication.cpp:1672
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr "设置颜色 \"%1$s\" 失败 - 未定义或不能重定义颜色"
 
-#: src/frontends/qt4/GuiApplication.cpp:1866
+#: src/frontends/qt4/GuiApplication.cpp:1867
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1941
+#: src/frontends/qt4/GuiApplication.cpp:1942
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "文档缺省设置保存至 %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:1945
+#: src/frontends/qt4/GuiApplication.cpp:1946
 msgid "Unable to save document defaults"
 msgstr "无法保存文档缺省设置"
 
-#: src/frontends/qt4/GuiApplication.cpp:2103
+#: src/frontends/qt4/GuiApplication.cpp:2104
 msgid "Unknown function."
 msgstr "未知函数"
 
-#: src/frontends/qt4/GuiApplication.cpp:2516
+#: src/frontends/qt4/GuiApplication.cpp:2541
 #, fuzzy
 msgid "The current document was closed."
 msgstr "打印文件失败"
 
-#: src/frontends/qt4/GuiApplication.cpp:2526
+#: src/frontends/qt4/GuiApplication.cpp:2551
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -25979,24 +25979,24 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:2530
-#: src/frontends/qt4/GuiApplication.cpp:2536
+#: src/frontends/qt4/GuiApplication.cpp:2555
+#: src/frontends/qt4/GuiApplication.cpp:2561
 msgid "Software exception Detected"
 msgstr "检测到软件异常"
 
-#: src/frontends/qt4/GuiApplication.cpp:2534
+#: src/frontends/qt4/GuiApplication.cpp:2559
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr "LyX 出现异常，将尝试保存所有文档并退出。"
 
-#: src/frontends/qt4/GuiApplication.cpp:2803
-#: src/frontends/qt4/GuiApplication.cpp:2815
+#: src/frontends/qt4/GuiApplication.cpp:2828
+#: src/frontends/qt4/GuiApplication.cpp:2840
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "无法读取配置文件"
 
-#: src/frontends/qt4/GuiApplication.cpp:2804
+#: src/frontends/qt4/GuiApplication.cpp:2829
 #, fuzzy, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -26007,12 +26007,12 @@ msgstr ""
 "%1$s.\n"
 "请检查您的安装过程."
 
-#: src/frontends/qt4/GuiApplication.cpp:2810
+#: src/frontends/qt4/GuiApplication.cpp:2835
 #, fuzzy
 msgid "Could not find default UI file"
 msgstr "无法读取配置文件"
 
-#: src/frontends/qt4/GuiApplication.cpp:2811
+#: src/frontends/qt4/GuiApplication.cpp:2836
 #, fuzzy
 msgid ""
 "LyX could not find the default UI file!\n"
@@ -26022,7 +26022,7 @@ msgstr ""
 "%1$s.\n"
 "请检查您的安装过程."
 
-#: src/frontends/qt4/GuiApplication.cpp:2816
+#: src/frontends/qt4/GuiApplication.cpp:2841
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"

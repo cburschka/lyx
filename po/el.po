@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-08-15 11:11-0400\n"
+"POT-Creation-Date: 2014-09-09 11:05-0400\n"
 "PO-Revision-Date: 2010-07-07 02:31+0100\n"
 "Last-Translator: Οδυσσέας Δαγκλής <o2d@freemail.gr>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -2477,7 +2477,7 @@ msgstr ""
 #: src/frontends/qt4/ui/BibtexAddUi.ui:127
 #: src/frontends/qt4/ui/ChangesUi.ui:91 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:123 src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1726
+#: src/frontends/qt4/GuiApplication.cpp:1727
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Ακύρωση"
@@ -25128,7 +25128,7 @@ msgstr "Διάταξη"
 msgid " not known"
 msgstr " άγνωστο"
 
-#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1624
+#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1625
 msgid "Missing argument"
 msgstr "Λείπει όρισμα"
 
@@ -25676,62 +25676,62 @@ msgstr "Περί του LyX"
 msgid "LyX: %1$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:639
+#: src/frontends/qt4/GuiApplication.cpp:640
 msgid "About %1"
 msgstr "Περί %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:639
+#: src/frontends/qt4/GuiApplication.cpp:640
 #: src/frontends/qt4/GuiPrefs.cpp:3308
 msgid "Preferences"
 msgstr "Προτιμήσεις"
 
-#: src/frontends/qt4/GuiApplication.cpp:640
+#: src/frontends/qt4/GuiApplication.cpp:641
 msgid "Reconfigure"
 msgstr "Επαναρύθμιση"
 
-#: src/frontends/qt4/GuiApplication.cpp:640
+#: src/frontends/qt4/GuiApplication.cpp:641
 msgid "Quit %1"
 msgstr "Έξοδος %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:1077
+#: src/frontends/qt4/GuiApplication.cpp:1078
 msgid "Nothing to do"
 msgstr "Τίποτα να κάνω"
 
-#: src/frontends/qt4/GuiApplication.cpp:1083
+#: src/frontends/qt4/GuiApplication.cpp:1084
 msgid "Unknown action"
 msgstr "Άγνωστη ενέργεια"
 
-#: src/frontends/qt4/GuiApplication.cpp:1127
+#: src/frontends/qt4/GuiApplication.cpp:1128
 #, fuzzy
 msgid "Command not handled"
 msgstr "Η εντολή απενεργοποιήθηκε"
 
-#: src/frontends/qt4/GuiApplication.cpp:1133
+#: src/frontends/qt4/GuiApplication.cpp:1134
 msgid "Command disabled"
 msgstr "Η εντολή απενεργοποιήθηκε"
 
-#: src/frontends/qt4/GuiApplication.cpp:1247
+#: src/frontends/qt4/GuiApplication.cpp:1248
 #, fuzzy
 msgid "Command not allowed without a buffer open"
 msgstr "Η εντολή δεν επιτρέπεται χωρίς κάποιο ανοιχτό έγγραφο"
 
-#: src/frontends/qt4/GuiApplication.cpp:1254
+#: src/frontends/qt4/GuiApplication.cpp:1255
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1446
+#: src/frontends/qt4/GuiApplication.cpp:1447
 msgid "Running configure..."
 msgstr "Εκτέλεση διαμόρφωσης..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1457
+#: src/frontends/qt4/GuiApplication.cpp:1458
 msgid "Reloading configuration..."
 msgstr "Επαναφόρτωση διαμόρφωσης..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1463
+#: src/frontends/qt4/GuiApplication.cpp:1464
 msgid "System reconfiguration failed"
 msgstr "Η επαναδιαμόρφωση του συστήματος απέτυχε"
 
-#: src/frontends/qt4/GuiApplication.cpp:1464
+#: src/frontends/qt4/GuiApplication.cpp:1465
 #, fuzzy
 msgid ""
 "The system reconfiguration has failed.\n"
@@ -25744,11 +25744,11 @@ msgstr ""
 "αλλά το LyX ενδέχεται να μην δουλεύει σωστά.\n"
 "Επαναρυθμίστε ξανά εφόσον χρειάζεται."
 
-#: src/frontends/qt4/GuiApplication.cpp:1469
+#: src/frontends/qt4/GuiApplication.cpp:1470
 msgid "System reconfigured"
 msgstr "Το σύστημα επαναδιαμορφώθηκε"
 
-#: src/frontends/qt4/GuiApplication.cpp:1470
+#: src/frontends/qt4/GuiApplication.cpp:1471
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -25758,49 +25758,49 @@ msgstr ""
 "Πρέπει να επανακινήσετε το LyX για να χρησιμοποιήσετε\n"
 "τις ενημερωμένες προδιαγραφές των κλάσεων εγγράφων."
 
-#: src/frontends/qt4/GuiApplication.cpp:1550
+#: src/frontends/qt4/GuiApplication.cpp:1551
 msgid "Exiting."
 msgstr "Έξοδος."
 
-#: src/frontends/qt4/GuiApplication.cpp:1636
+#: src/frontends/qt4/GuiApplication.cpp:1637
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Άνοιγμα αρχείου βοήθειας %1$s..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1655
+#: src/frontends/qt4/GuiApplication.cpp:1656
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Σύνταξη: set-color <όνομα_lyx> <όνομα_x11>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1671
+#: src/frontends/qt4/GuiApplication.cpp:1672
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Η set-color \"%1$s\" απέτυχε - το χρώμα δεν έχει οριστεί ή δεν μπορεί να "
 "επαναοριστεί"
 
-#: src/frontends/qt4/GuiApplication.cpp:1866
+#: src/frontends/qt4/GuiApplication.cpp:1867
 #, fuzzy, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
 msgstr "Εφαρμόστηκε \"%1$s\" στα ενθέματα %2$d"
 
-#: src/frontends/qt4/GuiApplication.cpp:1941
+#: src/frontends/qt4/GuiApplication.cpp:1942
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Οι προεπιλογές του εγγράφου αποθηκεύτηκαν στο %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:1945
+#: src/frontends/qt4/GuiApplication.cpp:1946
 msgid "Unable to save document defaults"
 msgstr "Αδυναμία αποθήκευσης των προεπιλεγμένων ρυθμίσεων του εγγράφου"
 
-#: src/frontends/qt4/GuiApplication.cpp:2103
+#: src/frontends/qt4/GuiApplication.cpp:2104
 msgid "Unknown function."
 msgstr "Άγνωστη συνάρτηση."
 
-#: src/frontends/qt4/GuiApplication.cpp:2516
+#: src/frontends/qt4/GuiApplication.cpp:2541
 msgid "The current document was closed."
 msgstr "Το τρέχον έγγραφο έκλεισε."
 
-#: src/frontends/qt4/GuiApplication.cpp:2526
+#: src/frontends/qt4/GuiApplication.cpp:2551
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -25812,12 +25812,12 @@ msgstr ""
 "\n"
 "Εξαίρεση:"
 
-#: src/frontends/qt4/GuiApplication.cpp:2530
-#: src/frontends/qt4/GuiApplication.cpp:2536
+#: src/frontends/qt4/GuiApplication.cpp:2555
+#: src/frontends/qt4/GuiApplication.cpp:2561
 msgid "Software exception Detected"
 msgstr "Ανιχνεύθηκε εξαίρεση λογισμικού"
 
-#: src/frontends/qt4/GuiApplication.cpp:2534
+#: src/frontends/qt4/GuiApplication.cpp:2559
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -25825,12 +25825,12 @@ msgstr ""
 "Το LyX εντόπισε μια αξιοπερίεργη εξαίρεση, θα επιχειρήσει τώρα να "
 "αποθηκεύσει όλα τα μη αποθηκευμένα έγγραφα και να τερματιστεί."
 
-#: src/frontends/qt4/GuiApplication.cpp:2803
-#: src/frontends/qt4/GuiApplication.cpp:2815
+#: src/frontends/qt4/GuiApplication.cpp:2828
+#: src/frontends/qt4/GuiApplication.cpp:2840
 msgid "Could not find UI definition file"
 msgstr "Δεν βρέθηκε το αρχείο ορισμού διεπαφής χρήστη"
 
-#: src/frontends/qt4/GuiApplication.cpp:2804
+#: src/frontends/qt4/GuiApplication.cpp:2829
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -25841,11 +25841,11 @@ msgstr ""
 "%1$s.\n"
 "Παρακαλούμε ελέγξτε την εγκατάστασή σας."
 
-#: src/frontends/qt4/GuiApplication.cpp:2810
+#: src/frontends/qt4/GuiApplication.cpp:2835
 msgid "Could not find default UI file"
 msgstr "Δεν ήταν δυνατή η εύρεση του προκαθορισμένου αρχείου διεπαφής χρήστη"
 
-#: src/frontends/qt4/GuiApplication.cpp:2811
+#: src/frontends/qt4/GuiApplication.cpp:2836
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -25854,7 +25854,7 @@ msgstr ""
 "%1$s.\n"
 "Ελέγξτε την εγκατάστασή σας."
 
-#: src/frontends/qt4/GuiApplication.cpp:2816
+#: src/frontends/qt4/GuiApplication.cpp:2841
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"

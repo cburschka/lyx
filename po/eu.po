@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_2.0.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-08-15 11:11-0400\n"
+"POT-Creation-Date: 2014-09-09 11:05-0400\n"
 "PO-Revision-Date: 2012-06-21 12:33+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -2458,7 +2458,7 @@ msgstr ""
 #: src/frontends/qt4/ui/BibtexAddUi.ui:127
 #: src/frontends/qt4/ui/ChangesUi.ui:91 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:123 src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1726
+#: src/frontends/qt4/GuiApplication.cpp:1727
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Utzi"
@@ -25174,7 +25174,7 @@ msgstr "Diseinua "
 msgid " not known"
 msgstr " ezezaguna"
 
-#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1624
+#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1625
 msgid "Missing argument"
 msgstr "Argumentua falta da"
 
@@ -25768,61 +25768,61 @@ msgstr "LyX-i buruz"
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:639
+#: src/frontends/qt4/GuiApplication.cpp:640
 msgid "About %1"
 msgstr "%1(r)i buruz"
 
-#: src/frontends/qt4/GuiApplication.cpp:639
+#: src/frontends/qt4/GuiApplication.cpp:640
 #: src/frontends/qt4/GuiPrefs.cpp:3308
 msgid "Preferences"
 msgstr "Hobespenak"
 
-#: src/frontends/qt4/GuiApplication.cpp:640
+#: src/frontends/qt4/GuiApplication.cpp:641
 msgid "Reconfigure"
 msgstr "Birkonfiguratu"
 
-#: src/frontends/qt4/GuiApplication.cpp:640
+#: src/frontends/qt4/GuiApplication.cpp:641
 msgid "Quit %1"
 msgstr "Irten %1(e)tik"
 
-#: src/frontends/qt4/GuiApplication.cpp:1077
+#: src/frontends/qt4/GuiApplication.cpp:1078
 msgid "Nothing to do"
 msgstr "Ezin ezer egin"
 
-#: src/frontends/qt4/GuiApplication.cpp:1083
+#: src/frontends/qt4/GuiApplication.cpp:1084
 msgid "Unknown action"
 msgstr "Ekintza ezezaguna"
 
-#: src/frontends/qt4/GuiApplication.cpp:1127
+#: src/frontends/qt4/GuiApplication.cpp:1128
 msgid "Command not handled"
 msgstr "Kudeatu gabeko komandoa"
 
-#: src/frontends/qt4/GuiApplication.cpp:1133
+#: src/frontends/qt4/GuiApplication.cpp:1134
 msgid "Command disabled"
 msgstr "Komandoa desgaitua"
 
-#: src/frontends/qt4/GuiApplication.cpp:1247
+#: src/frontends/qt4/GuiApplication.cpp:1248
 #, fuzzy
 msgid "Command not allowed without a buffer open"
 msgstr "Ezin da komandoa erabili dokumentu bat ireki arte"
 
-#: src/frontends/qt4/GuiApplication.cpp:1254
+#: src/frontends/qt4/GuiApplication.cpp:1255
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:1446
+#: src/frontends/qt4/GuiApplication.cpp:1447
 msgid "Running configure..."
 msgstr "Konfigurazioa exekutatzen..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1457
+#: src/frontends/qt4/GuiApplication.cpp:1458
 msgid "Reloading configuration..."
 msgstr "Konfigurazioa birkargatzen..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1463
+#: src/frontends/qt4/GuiApplication.cpp:1464
 msgid "System reconfiguration failed"
 msgstr "Huts egin du sistema birkonfiguratzean"
 
-#: src/frontends/qt4/GuiApplication.cpp:1464
+#: src/frontends/qt4/GuiApplication.cpp:1465
 #, fuzzy
 msgid ""
 "The system reconfiguration has failed.\n"
@@ -25835,11 +25835,11 @@ msgstr ""
 "funtzionatzea.\n"
 "Birkonfiguratu berriro beharrezkoa izanez gero."
 
-#: src/frontends/qt4/GuiApplication.cpp:1469
+#: src/frontends/qt4/GuiApplication.cpp:1470
 msgid "System reconfigured"
 msgstr "Sistema birkonfiguratuta"
 
-#: src/frontends/qt4/GuiApplication.cpp:1470
+#: src/frontends/qt4/GuiApplication.cpp:1471
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -25849,49 +25849,49 @@ msgstr ""
 "LyX berrabiarazi behar duzu eguneratutako \n"
 "dokumentu-klasearen zehaztasunak erabiltzeko."
 
-#: src/frontends/qt4/GuiApplication.cpp:1550
+#: src/frontends/qt4/GuiApplication.cpp:1551
 msgid "Exiting."
 msgstr "Irtetzen."
 
-#: src/frontends/qt4/GuiApplication.cpp:1636
+#: src/frontends/qt4/GuiApplication.cpp:1637
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "%1$s laguntza-fitxategia irekitzen..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1655
+#: src/frontends/qt4/GuiApplication.cpp:1656
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Sintaxia: set-color <lyx_izena> <x11_izena>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1671
+#: src/frontends/qt4/GuiApplication.cpp:1672
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Huts egin du set-color \"%1$s\" - kolorea definitu gabe dago edo ezin da "
 "berriz definitu"
 
-#: src/frontends/qt4/GuiApplication.cpp:1866
+#: src/frontends/qt4/GuiApplication.cpp:1867
 #, fuzzy, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
 msgstr "\"%1$s\" aplikatuta %2$d txertakuntzei"
 
-#: src/frontends/qt4/GuiApplication.cpp:1941
+#: src/frontends/qt4/GuiApplication.cpp:1942
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokumentuaren lehenetsiak hemen gordeta: %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:1945
+#: src/frontends/qt4/GuiApplication.cpp:1946
 msgid "Unable to save document defaults"
 msgstr "Ezin dira dokumentuaren lehenetsiak gorde"
 
-#: src/frontends/qt4/GuiApplication.cpp:2103
+#: src/frontends/qt4/GuiApplication.cpp:2104
 msgid "Unknown function."
 msgstr "Funtzio ezezaguna."
 
-#: src/frontends/qt4/GuiApplication.cpp:2516
+#: src/frontends/qt4/GuiApplication.cpp:2541
 msgid "The current document was closed."
 msgstr "Uneko dokumentua itxita dago."
 
-#: src/frontends/qt4/GuiApplication.cpp:2526
+#: src/frontends/qt4/GuiApplication.cpp:2551
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -25903,12 +25903,12 @@ msgstr ""
 "\n"
 "Salbuespena: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2530
-#: src/frontends/qt4/GuiApplication.cpp:2536
+#: src/frontends/qt4/GuiApplication.cpp:2555
+#: src/frontends/qt4/GuiApplication.cpp:2561
 msgid "Software exception Detected"
 msgstr "Softwarearen salbuespena antzeman da"
 
-#: src/frontends/qt4/GuiApplication.cpp:2534
+#: src/frontends/qt4/GuiApplication.cpp:2559
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -25916,12 +25916,12 @@ msgstr ""
 "LyX-ek nolabaiteko salbuespen bitxia antzeman du. gorde gabeko dokumentu "
 "guztiak gordetzen saiatuko da eta irten egingo da."
 
-#: src/frontends/qt4/GuiApplication.cpp:2803
-#: src/frontends/qt4/GuiApplication.cpp:2815
+#: src/frontends/qt4/GuiApplication.cpp:2828
+#: src/frontends/qt4/GuiApplication.cpp:2840
 msgid "Could not find UI definition file"
 msgstr "Ezin izan da interfazeko definizioen fitxategia aurkitu"
 
-#: src/frontends/qt4/GuiApplication.cpp:2804
+#: src/frontends/qt4/GuiApplication.cpp:2829
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -25932,11 +25932,11 @@ msgstr ""
 "%1$s.\n"
 "Egiaztatu instalazioa."
 
-#: src/frontends/qt4/GuiApplication.cpp:2810
+#: src/frontends/qt4/GuiApplication.cpp:2835
 msgid "Could not find default UI file"
 msgstr "Ezin izan da interfazeko fitxategi lehenetsia irakurri"
 
-#: src/frontends/qt4/GuiApplication.cpp:2811
+#: src/frontends/qt4/GuiApplication.cpp:2836
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -25944,7 +25944,7 @@ msgstr ""
 "LyX-ek ezin izan du interfazeko fitxategi lehenetsia aurkitu.\n"
 "Egiaztatu instalazioa."
 
-#: src/frontends/qt4/GuiApplication.cpp:2816
+#: src/frontends/qt4/GuiApplication.cpp:2841
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
