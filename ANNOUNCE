@@ -1,7 +1,7 @@
 Public release of LyX version 2.1.2
 ===================================
 
-We are proud to announce the release of LyX 2.1.2.  This is the first 
+We are proud to announce the release of LyX 2.1.2.  This is the second
 maintenance release in the 2.1.x series.
 
 LyX is a document processor that encourages an approach to writing based 
@@ -34,7 +34,7 @@ really is a bug, you can e-mail the LyX developers' mailing list (lyx-devel
 If you have trouble using LyX or have a question, consult the
 documentation that comes with LyX and the LyX wiki, which lives at
 http://wiki.lyx.org/. If you can't find the answer there, e-mail the LyX 
-users' list (lyx-users at lists.lyx.org).
+users' list (lyx-users <at> lists.lyx.org).
 
 We hope you enjoy using LyX 2.1.2.
 
@@ -44,3 +44,85 @@ http://www.lyx.org
 
 What's new
 ==========
+
+** Updates:
+***********
+
+* USER INTERFACE
+
+- Detect some additional postscript and pdf viewers when they are on the
+  system PATH (AcroRd32, SumatraPDF, gsview and qpdfview).
+
+
+* DOCUMENTATION AND LOCALIZATION
+
+- Update docs explaining how to activate reverse search in qpdfview.
+
+- New French translations of the beamer examples.
+
+
+* BUILD/INSTALLATION
+
+- On Cygwin, use getent instead of grepping /etc/passwd for determining
+  the user's home directory when launching LyX through the gui wrapper.
+
+
+
+** Bug fixes:
+*************
+
+* DOCUMENT INPUT/OUTPUT
+
+- Fix crash when saving certain documents with tables (bug 9049).
+
+- Fix crash when saving default template (bug 9236).
+
+- Do not sort advanced listings settings, since their insertion order is
+  relevant (bug 5203).
+
+- Fix import of latex documents with scaled fonts.
+
+
+* LYX2LYX
+
+- Fix warning "Missing \use_indices" when converting from 1.6.x format
+  or older.
+
+- Fix several conversion problems of beamer box arguments when the
+  arguments use multiple ERTs (part of bug 9208, bug 9225, bug 9144).
+
+- Fix conversion of beamer overlay arguments when the module
+  "beamer-resenumerate" is used (part of bug 9208).
+
+
+* USER INTERFACE
+
+- Do not forget last words of paragraphs in completion possibilities.
+
+- Select word on double click even when at boundary (bug 9159).
+
+- Fix listings inset parameter validation when font size is selected
+  (bug 8144).
+
+- Fix listings validator with regard to aboveskip and belowskip (bug 7373).
+
+- Fix reverse search in insets (figures, tables, branches, etc.) (bug 9151).
+
+- Fix on-screen display of images whose type is not known to LyX (bug 9146).
+
+- Fix the -geometry command line argument for Windows.
+
+
+* INTERNALS
+
+- Improve thread-safety.
+
+- Fix potential bug spotted by cppcheck.
+
+- Fix problems arising when converting floating point values to the
+  corresponding string representation (bugs 9190 and 9193).
+
+
+* BUILD/INSTALLATION
+
+- Fix compatibility issue with 64-bit cygwin.

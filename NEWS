@@ -1,3 +1,21 @@
+What's new in version 2.1.2?
+----------------------------
+
+LyX 2.1.2 is the second maintenance release in the 2.1.x series.
+
+The most important fix here is that we believe we have resolved the problem 
+that led several users to experience seemingly random crashes with 2.1.0, 
+sometimes resulting in dataloss. (This was bug 9049.) These crashes generally 
+happened when the user attempted to save a file containing a table, usually a 
+fairly complex table. A seemingly unrelated bug report concerning a crash when 
+trying to save a default template (bug 9236) led to the solution. That bug has
+also been fixed.
+
+There are also several other, smaller bug-fixes, including several more
+improvements to the lyx2lyx conversion scripts. This should make the import
+of older beamer documents easier.
+
+
 What's new in version 2.1.1?
 ----------------------------
 
