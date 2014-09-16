@@ -56,11 +56,14 @@ What's new
 
 * LYX2LYX
 
+- Fix import of LyX 2.0 documents with complex beamer arguments (bug 9254).
+
+- Fix import of LyX 2.0 IEEEtran documents (bug 9773).
 
 
 * USER INTERFACE
 
-- Fix alignment rendering of multirow in LyX (#8976)
+- Fix alignment rendering of multirow in LyX (bug 8976).
 
 
 * INTERNALS
