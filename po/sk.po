@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-08-23 11:15+0200\n"
+"POT-Creation-Date: 2014-09-27 12:11+0200\n"
 "PO-Revision-Date: 2014-07-03 17:23+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -13460,6 +13460,68 @@ msgstr ""
 "dokumentu. To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované podľa ...)' "
 "modulu."
 
+#: lib/layouts/todonotes.module:2
+msgid "TODO Notes"
+msgstr "TODO Poznámky"
+
+#: lib/layouts/todonotes.module:7
+msgid ""
+"Provides custom insets to insert TODO items in your document (using the "
+"todonotes package). In order to generate a 'List of TODOs', the module "
+"provides a paragraph style."
+msgstr ""
+"Poskytuje vlastné vložky na vklad TODO prvkov do vášho dokumentu (používajúc "
+"balík todonotes). Pre generáciu 'Zoznam TODOs' poskytuje tento modul štýl "
+"odstavca."
+
+#: lib/layouts/todonotes.module:17
+msgid "List of TODOs"
+msgstr "Zoznam TODOs"
+
+#: lib/layouts/todonotes.module:31
+msgid "[List of TODOs]"
+msgstr "[Zoznam TODOs]"
+
+#: lib/layouts/todonotes.module:42
+msgid "List of TODOs Heading|s"
+msgstr "Nadpis Zoznamu TODOs"
+
+#: lib/layouts/todonotes.module:43
+msgid "Enter a custom header for the List of TODOs here"
+msgstr "Vložte sem vlastný nadpis pre Zoznam TODOs"
+
+#: lib/layouts/todonotes.module:53
+msgid "TODO Note (Margin)"
+msgstr "TODO Poznámka (Okraj)"
+
+#: lib/layouts/todonotes.module:55
+msgid "TODO (Margin)"
+msgstr "TODO (Okraj)"
+
+#: lib/layouts/todonotes.module:72 lib/layouts/todonotes.module:84
+msgid "TODO Note Options|s"
+msgstr "Voľby Poznámky TODO"
+
+#: lib/layouts/todonotes.module:73 lib/layouts/todonotes.module:102
+msgid "See the todonotes manual for possible options"
+msgstr "Viď manuál balíka todonotes pre možné voľby"
+
+#: lib/layouts/todonotes.module:79
+msgid "TODO Note (inline)"
+msgstr "TODO Poznámka (v riadku)"
+
+#: lib/layouts/todonotes.module:81
+msgid "TODO (Inline)"
+msgstr "TODO (v riadku)"
+
+#: lib/layouts/todonotes.module:94 lib/layouts/todonotes.module:96
+msgid "Missing Figure"
+msgstr "Chýba Obrázok"
+
+#: lib/layouts/todonotes.module:101
+msgid "Missing Figure Note Options|s"
+msgstr "Chýbajú Voľby Poznámky k Obrázku"
+
 #: lib/layouts/theorems-ams-extended-bytype.module:2
 msgid "Theorems (AMS-Extended, Numbered by Type)"
 msgstr "Teorémy (rozšírenie AMS, číslované podľa typu)"
@@ -13957,6 +14019,69 @@ msgstr ""
 "Použitím tohto modulu môžu vaše vytlačené dokumenty vyzerať ináč pri "
 "spracovaní s budúcimi verziami LaTeX-u, lebo fixltx2e vtedy môže poskytovať "
 "aj viac korektúr."
+
+#: lib/layouts/fixme.module:2
+msgid "FiXme"
+msgstr "FiXme"
+
+#: lib/layouts/fixme.module:11
+msgid ""
+"Provides 'FiXme' (marginal) annotations for document revision purposes. A "
+"list of annotations can be produced by using the 'List of FIXMEs' paragraph "
+"style. The annotations are customizable via the LaTeX preamble. See the "
+"FiXme documentation for details. NOTE: By default, the notes are only "
+"displayed in 'draft' mode (if the option 'draft' has been inserted to "
+"Document > Settings > Document Class > Class Options > Custom). To display "
+"them always, insert \\\\fxsetup{draft} to Document > Settings > Preamble. "
+"NOTE also that you need version 4 or later of the FiXme package for some "
+"features."
+msgstr ""
+"Poskytuje 'FiXme' (okrajové) vysvetlivky pre revízne zámery v dokumente. "
+"Súpis vysvetliviek sa dá vytvoriť použitím odstavcového štýlu 'Súpis "
+"FIXMEs'. Vysvetlivky sú upraviteľné v LaTeXovej preambule. Viď dokumentáciu "
+"FiXme. NOTA: Štandardne sú poznámky viditeľné len v režime 'draft' (keď "
+"voľbu 'draft' vložíte pomocou Dokument -> Nastavenia... -> Trieda dokumentu -"
+"> Nastavenie triedy -> Vlastné). Chcete to vidieť vždy, vložte \\\\fxsetup"
+"{draft} do Dokument -> Preambula LaTeX-u. POZOR: pre niektoré vlastnosti "
+"potrebujete balík 'FiXme' verziu 4 alebo vzostupnú."
+
+#: lib/layouts/fixme.module:21
+msgid "List of FIXMEs"
+msgstr "Súpis FIXMEs"
+
+#: lib/layouts/fixme.module:35
+msgid "[List of FIXMEs]"
+msgstr "[Súpis FIXMEs]"
+
+#: lib/layouts/fixme.module:50
+msgid "Fixme Note"
+msgstr "Fixme Poznámka"
+
+#: lib/layouts/fixme.module:52
+msgid "Fixme"
+msgstr "Fixme"
+
+#: lib/layouts/fixme.module:63 lib/layouts/fixme.module:98
+#: lib/layouts/fixme.module:140 lib/layouts/fixme.module:181
+msgid "Fixme Note Options|s"
+msgstr "Voľby Poznámky Fixme"
+
+#: lib/layouts/fixme.module:64 lib/layouts/fixme.module:99
+#: lib/layouts/fixme.module:141 lib/layouts/fixme.module:182
+msgid "Consult the fixme package documentation for options"
+msgstr "Viď dokumentáciu balíka fixme pre možné voľby"
+
+#: lib/layouts/fixme.module:69
+msgid "Fixme Warning"
+msgstr "Fixme Varovanie"
+
+#: lib/layouts/fixme.module:71
+msgid "Warning"
+msgstr "Varovanie"
+
+#: lib/layouts/fixme.module:75
+msgid "Fixme Error"
+msgstr "Fixme Chyba"
 
 #: lib/layouts/endnotes.module:2 lib/layouts/endnotes.module:13
 msgid "Endnote"
@@ -25882,6 +26007,138 @@ msgstr "LyX dokumenty (*.lyx)"
 #: src/frontends/qt4/GuiDocument.cpp:3544
 msgid "Error"
 msgstr "Chyba"
+
+#: lib/layouts/fixme.module:81
+msgid "Fixme Fatal"
+msgstr "Fixme Fatálny"
+
+#: lib/layouts/fixme.module:83
+msgid "Fatal"
+msgstr "Fatálny"
+
+#: lib/layouts/fixme.module:92
+msgid "Fixme Note (Targeted)"
+msgstr "Fixme Poznámka (Plánované)"
+
+#: lib/layouts/fixme.module:94
+msgid "Fixme (Targeted)"
+msgstr "Fixme (Plánované)"
+
+#: lib/layouts/fixme.module:104
+msgid "Fixme Note|x"
+msgstr "Fixme Poznámka"
+
+#: lib/layouts/fixme.module:105
+msgid "Insert the FIXME note here"
+msgstr "Vložte sem FIXME poznámku"
+
+#: lib/layouts/fixme.module:110
+msgid "Fixme Warning (Targeted)"
+msgstr "Fixme Varovanie (Plánované)"
+
+#: lib/layouts/fixme.module:112
+msgid "Warning (Targeted)"
+msgstr "Varovanie (Plánované)"
+
+#: lib/layouts/fixme.module:116
+msgid "Fixme Error (Targeted)"
+msgstr "Fixme Chyba (Plánované)"
+
+#: lib/layouts/fixme.module:118
+msgid "Error (Targeted)"
+msgstr "Chyba (Plánované)"
+
+#: lib/layouts/fixme.module:122
+msgid "Fixme Fatal (Targeted)"
+msgstr "Fixme Fatálna (Plánované)"
+
+#: lib/layouts/fixme.module:124
+msgid "Fatal (Targeted)"
+msgstr "Fatálny (Plánované)"
+
+#: lib/layouts/fixme.module:133
+msgid "Fixme Note (Multipar)"
+msgstr "Fixme Poznámka (Multipar)"
+
+#: lib/layouts/fixme.module:135
+msgid "Fixme (Multipar)"
+msgstr "Fixme (Multipar)"
+
+#: lib/layouts/fixme.module:146 lib/layouts/fixme.module:187
+msgid "Fixme Summary"
+msgstr "Fixme Súhrn"
+
+#: lib/layouts/fixme.module:147 lib/layouts/fixme.module:188
+msgid "Insert a summary of the FIXME note here"
+msgstr "Vložte sem súhrn FIXME poznámky"
+
+#: lib/layouts/fixme.module:152
+msgid "Fixme Warning (Multipar)"
+msgstr "Fixme Varovanie (Multipar)"
+
+#: lib/layouts/fixme.module:154
+msgid "Warning (Multipar)"
+msgstr "Varovanie (Multipar)"
+
+#: lib/layouts/fixme.module:158
+msgid "Fixme Error (Multipar)"
+msgstr "Fixme Chyba (Multipar)"
+
+#: lib/layouts/fixme.module:160
+msgid "Error (Multipar)"
+msgstr "Chyba (Multipar)"
+
+#: lib/layouts/fixme.module:164
+msgid "Fixme Fatal (Multipar)"
+msgstr "Fixme Fatálny (Multipar)"
+
+#: lib/layouts/fixme.module:166
+msgid "Fatal (Multipar)"
+msgstr "Fatálny (Multipar)"
+
+#: lib/layouts/fixme.module:175
+msgid "Fixme Note (Multipar Targeted)"
+msgstr "Fixme Poznámka (Multipar Plánované)"
+
+#: lib/layouts/fixme.module:177
+msgid "Fixme (MP Targ.)"
+msgstr "Fixme (MP Plán.)"
+
+#: lib/layouts/fixme.module:192
+msgid "Annotated Text"
+msgstr "Vysvetlujúci Text"
+
+#: lib/layouts/fixme.module:194
+msgid "Annotated Text|x"
+msgstr "Vysvetlujúci Text"
+
+#: lib/layouts/fixme.module:195
+msgid "Insert the text to annotate here"
+msgstr "Vložte sem text vysvetlivky"
+
+#: lib/layouts/fixme.module:200
+msgid "Fixme Warning (Multipar Targeted)"
+msgstr "Fixme Varovanie (Multipar Plánované)"
+
+#: lib/layouts/fixme.module:202
+msgid "Warning (MP Targ.)"
+msgstr "Varovanie (MP Plán.)"
+
+#: lib/layouts/fixme.module:206
+msgid "Fixme Error (Multipar Targeted)"
+msgstr "Fixme Chyba (Multipar Plánované)"
+
+#: lib/layouts/fixme.module:208
+msgid "Error (MP Targ.)"
+msgstr "Chyba (MP Plán.)"
+
+#: lib/layouts/fixme.module:212
+msgid "Fixme Fatal (Multipar Targeted)"
+msgstr "Fixme Fatálny (Multipar Plánované)"
+
+#: lib/layouts/fixme.module:214
+msgid "Fatal (MP Targ.)"
+msgstr "Fatálny (MP Plánované)"
 
 #: src/frontends/qt4/GuiCompare.cpp:198
 msgid "Error while comparing documents."
