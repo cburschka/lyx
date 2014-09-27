@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-09-09 11:05-0400\n"
-"PO-Revision-Date: 2014-08-15 17:05+0200\n"
+"POT-Creation-Date: 2014-09-27 12:08+0200\n"
+"PO-Revision-Date: 2014-09-27 14:04+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -6587,6 +6587,54 @@ msgstr "Podtitul"
 msgid "Email"
 msgstr "E-mail"
 
+#: lib/layouts/a0poster.layout:3
+msgid "A0 Poster"
+msgstr "A0 Plagát"
+
+#: lib/layouts/a0poster.layout:4 lib/layouts/beamerposter.layout:4
+#: lib/layouts/sciposter.layout:4
+msgid "Posters"
+msgstr "Plagáty"
+
+#: lib/layouts/a0poster.layout:41 lib/layouts/a0poster.layout:44
+#: lib/layouts/a0poster.layout:70 lib/layouts/beamerposter.layout:53
+#: lib/layouts/beamerposter.layout:56 lib/layouts/beamerposter.layout:82
+#: lib/layouts/sciposter.layout:97 lib/layouts/sciposter.layout:100
+#: lib/layouts/sciposter.layout:126
+msgid "Giant"
+msgstr "Gigantický"
+
+#: lib/layouts/a0poster.layout:56 lib/layouts/a0poster.layout:59
+#: lib/layouts/a0poster.layout:84 lib/layouts/beamerposter.layout:68
+#: lib/layouts/beamerposter.layout:71 lib/layouts/beamerposter.layout:96
+#: lib/layouts/sciposter.layout:112 lib/layouts/sciposter.layout:115
+#: lib/layouts/sciposter.layout:140
+msgid "More Giant"
+msgstr "Viac Gigantický"
+
+#: lib/layouts/a0poster.layout:62 lib/layouts/a0poster.layout:65
+#: lib/layouts/a0poster.layout:90 lib/layouts/beamerposter.layout:74
+#: lib/layouts/beamerposter.layout:77 lib/layouts/beamerposter.layout:102
+#: lib/layouts/sciposter.layout:118 lib/layouts/sciposter.layout:121
+#: lib/layouts/sciposter.layout:146
+msgid "Most Giant"
+msgstr "Najviac Gigantický"
+
+#: lib/layouts/a0poster.layout:68 lib/layouts/beamerposter.layout:80
+#: lib/layouts/sciposter.layout:124
+msgid "Giant Snippet"
+msgstr "Gigantický Kúsok"
+
+#: lib/layouts/a0poster.layout:82 lib/layouts/beamerposter.layout:94
+#: lib/layouts/sciposter.layout:138
+msgid "More Giant Snippet"
+msgstr "Väčší Gigantický Kúsok"
+
+#: lib/layouts/a0poster.layout:88 lib/layouts/beamerposter.layout:100
+#: lib/layouts/sciposter.layout:144
+msgid "Most Giant Snippet"
+msgstr "Najväčší Gigantický Kúsok"
+
 #: lib/layouts/aapaper.layout:93 lib/layouts/aa.layout:108
 #: lib/layouts/aapaper.inc:63
 msgid "Offprint"
@@ -7352,6 +7400,10 @@ msgstr "Nepovinný argument pre referenciu na domácu stránku"
 #: lib/layouts/revtex4.layout:267
 msgid "PACS number:"
 msgstr "PACS-číslo:"
+
+#: lib/layouts/sciposter.layout:3
+msgid "SciPoster"
+msgstr "Sci-plagát"
 
 #: lib/layouts/amsbook.layout:3
 msgid "American Mathematical Society (AMS) Book"
@@ -8526,6 +8578,10 @@ msgstr "Obrázok"
 msgid "List of Figures"
 msgstr "Zoznam Obrázkov"
 
+#: lib/layouts/beamerposter.layout:3
+msgid "Beamerposter"
+msgstr "Beamer-plagát"
+
 #: lib/layouts/docbook.layout:3
 msgid "DocBook Article (SGML)"
 msgstr "DocBook Článok (SGML)"
@@ -8900,6 +8956,38 @@ msgstr "ACM SIGPLAN"
 #: lib/layouts/sigplanconf.layout:69
 msgid "Conference"
 msgstr "Konferencia"
+
+#: lib/layouts/sciposter.layout:40
+msgid "LeftLogo"
+msgstr "ĽavéLogo"
+
+#: lib/layouts/sciposter.layout:46
+msgid "Left logo:"
+msgstr "Ľavé logo:"
+
+#: lib/layouts/sciposter.layout:60
+msgid "Logo Size"
+msgstr "Veľkosť Loga"
+
+#: lib/layouts/sciposter.layout:61
+msgid "Relative logo size (0 through 1)"
+msgstr "Relatívna veľkosť loga (0 až 1)"
+
+#: lib/layouts/sciposter.layout:65
+msgid "RightLogo"
+msgstr "PravéLogo"
+
+#: lib/layouts/sciposter.layout:68
+msgid "Right logo:"
+msgstr "Pravé logo:"
+
+#: lib/layouts/sciposter.layout:80
+msgid "Caption Width"
+msgstr "Šírka Popisu"
+
+#: lib/layouts/sciposter.layout:81
+msgid "The caption width relative to the column (0 through 1)"
+msgstr "Šírka popisu pomerná ku stĺpcu (0 až 1)"
 
 #: lib/layouts/sigplanconf.layout:82
 msgid "Name of the conference"
@@ -13029,6 +13117,60 @@ msgstr "Argument pre príkazy ktoré vyžadujú špecifikáciu prídavnej inform
 msgid "S phrase:"
 msgstr "P zvrat:"
 
+#: lib/layouts/sectionbox.module:2
+msgid "Section Boxes"
+msgstr "Sekciové Rámčeky"
+
+#: lib/layouts/sectionbox.module:6
+msgid ""
+"Defines Boxes with section header. Mainly intended for the SciPoster class."
+msgstr ""
+"Definuje Rámiky s hlavičkou sekcie. Hlavne myslené pre Sci-Plagát triedu."
+
+#: lib/layouts/sectionbox.module:11
+msgid "SectionBox"
+msgstr "SekciaRámik"
+
+#: lib/layouts/sectionbox.module:13
+msgid "Section Box"
+msgstr "Sekcia Rámik"
+
+#: lib/layouts/sectionbox.module:22
+msgid "Section Box Width|S"
+msgstr "Šírka Rámiku Sekcie|S"
+
+#: lib/layouts/sectionbox.module:23
+msgid "Width of the section Box"
+msgstr "Šírka Rámiku sekcie"
+
+#: lib/layouts/sectionbox.module:26
+msgid "Heading"
+msgstr "Záhlavie"
+
+#: lib/layouts/sectionbox.module:27
+msgid "Section Box Heading"
+msgstr "Záhlavie Rámiku Sekcie"
+
+#: lib/layouts/sectionbox.module:31
+msgid "Insert the section box header here"
+msgstr "Vložte sem návestie rámiku sekcie"
+
+#: lib/layouts/sectionbox.module:39
+msgid "SubsectionBox"
+msgstr "PodsekciaRámik"
+
+#: lib/layouts/sectionbox.module:41
+msgid "Subsection Box"
+msgstr "Podsekcia Rámik"
+
+#: lib/layouts/sectionbox.module:45
+msgid "SubsubsectionBox"
+msgstr "PodpodsekciaRámik"
+
+#: lib/layouts/sectionbox.module:47
+msgid "Subsubsection Box"
+msgstr "Podpodsekcia Rámik"
+
 #: lib/layouts/bicaption.module:2
 msgid "Multilingual Captions"
 msgstr "Viac-jazykové Popisy"
@@ -13253,6 +13395,22 @@ msgstr "Noweb"
 msgid "Allows to use Noweb as a literate programming tool."
 msgstr "Dovoľuje použiť Noweb ako nástroj pre \"literate programming\"."
 
+#: lib/layouts/pdfcomment.module:2
+msgid "PDF Comments"
+msgstr "PDF Komentáre"
+
+#: lib/layouts/pdfcomment.module:6
+msgid ""
+"Provides various kinds of annotations for the PDF output. The module uses "
+"the pdcomment package. Please consult the package documentation for details."
+msgstr ""
+"Poskytuje rôzne druhy poznámok pre PDF výstup. Tento modul používa balík "
+"pdfcomment. Pre detaily pozrite na dokumentáciu balíka."
+
+#: lib/layouts/pdfcomment.module:14
+msgid "PDF-Annotation"
+msgstr "PDF-Anotácie"
+
 #: lib/layouts/theorems-sec-bytype.module:2
 msgid "Theorems (Numbered by Type within Sections)"
 msgstr "Teorémy (Číslovanie podľa Typu vnútri Sekcií)"
@@ -13456,6 +13614,68 @@ msgid ""
 msgstr ""
 "Vynuluje číslovanie tabuliek na začiatku sekcie a predčísli ich sekciou, ako "
 "pri 'Tabuľka 2.1'."
+
+#: lib/layouts/tcolorbox.module:2
+msgid "Fancy Colored Boxes"
+msgstr "Pestro Zafarbené Rámiky"
+
+#: lib/layouts/tcolorbox.module:6
+msgid ""
+"Adds custom insets that support colored boxes via the tcolorbox package. See "
+"the tcolorbox documentation for details."
+msgstr ""
+"Pridáva vlastné vložky podporujúce farebné rámiky pomocou balíka tcolorbox. "
+"Viď dokumentáciu tcolorbox."
+
+#: lib/layouts/tcolorbox.module:10 lib/layouts/tcolorbox.module:13
+msgid "Color Box"
+msgstr "Farebný Rámik"
+
+#: lib/layouts/tcolorbox.module:18 lib/layouts/tcolorbox.module:31
+#: lib/layouts/tcolorbox.module:44
+msgid "Color Box Options"
+msgstr "Voľby pre Farebný Rámik"
+
+#: lib/layouts/tcolorbox.module:19 lib/layouts/tcolorbox.module:32
+#: lib/layouts/tcolorbox.module:45
+msgid "Insert the color box options here (see tcolorbox manual)"
+msgstr "Tu sa vložia voľby pre farebný rámik (viď tcolorbox manuál)"
+
+#: lib/layouts/tcolorbox.module:23
+msgid "Dynamic Color Box"
+msgstr "Dynamický Farebný Rámik"
+
+#: lib/layouts/tcolorbox.module:26
+msgid "Color Box (Dynamic)"
+msgstr "Farebný Rámik (Dynamický)"
+
+#: lib/layouts/tcolorbox.module:36
+msgid "Fit Color Box"
+msgstr "Prispôsobiť Farebný Rámik"
+
+#: lib/layouts/tcolorbox.module:39
+msgid "Color Box (Fit Contents)"
+msgstr "Farebný Rámik (Prispôsobiť Obsah)"
+
+#: lib/layouts/tcolorbox.module:49
+msgid "Color Box Separator"
+msgstr "Farebný Rámik Oddeľovač"
+
+#: lib/layouts/tcolorbox.module:50 lib/layouts/tcolorbox.module:84
+msgid "Color Boxes"
+msgstr "Farebné Rámiky"
+
+#: lib/layouts/tcolorbox.module:63
+msgid "-----"
+msgstr "-----"
+
+#: lib/layouts/tcolorbox.module:74
+msgid "Color Box Line"
+msgstr "Farebný Rámik Čiarka"
+
+#: lib/layouts/tcolorbox.module:83 lib/layouts/tcolorbox.module:98
+msgid "Color Box Setup"
+msgstr "Farebný Rámik Nastavenie"
 
 #: lib/layouts/sweave.module:2 lib/configure.py:614
 msgid "Sweave"
@@ -25513,6 +25733,126 @@ msgstr "LinkBack PDF"
 #: src/frontends/qt4/GuiClipboard.cpp:174
 msgid "PDF"
 msgstr "PDF"
+
+#: lib/layouts/pdfcomment.module:26
+msgid "PDFComment Options"
+msgstr "Voľby PDFKomentárov"
+
+#: lib/layouts/pdfcomment.module:27 lib/layouts/pdfcomment.module:146
+msgid "Opts"
+msgstr "Voľby"
+
+#: lib/layouts/pdfcomment.module:28
+msgid "Insert PDFComment options here (see pdfcomment manual)"
+msgstr "Tu sa vložia voľby pre PDFKomentáre (viď pdfcomment manuál)"
+
+#: lib/layouts/pdfcomment.module:33
+msgid "PDF-Margin"
+msgstr "PDF-Okraj"
+
+#: lib/layouts/pdfcomment.module:35
+msgid "PDF (Margin)"
+msgstr "PDF (Okraj)"
+
+#: lib/layouts/pdfcomment.module:43
+msgid "PDF-Markup"
+msgstr "PDF-Prirážka"
+
+#: lib/layouts/pdfcomment.module:45
+msgid "PDF (Markup)"
+msgstr "PDF (Prirážka)"
+
+#: lib/layouts/pdfcomment.module:50
+msgid "Insert the comment to the marked-up text here"
+msgstr "Vložte sem komentár prirážky"
+
+#: lib/layouts/pdfcomment.module:54
+msgid "PDF-Freetext"
+msgstr "PDF-Voľnýtext"
+
+#: lib/layouts/pdfcomment.module:56
+msgid "PDF (Freetext)"
+msgstr "PDF (Voľnýtext)"
+
+#: lib/layouts/pdfcomment.module:60
+msgid "PDF-Square"
+msgstr "PDF-Kocka"
+
+#: lib/layouts/pdfcomment.module:62
+msgid "PDF (Square)"
+msgstr "PDF (Kocka)"
+
+#: lib/layouts/pdfcomment.module:66
+msgid "PDF-Circle"
+msgstr "PDF-Kruh"
+
+#: lib/layouts/pdfcomment.module:68
+msgid "PDF (Circle)"
+msgstr "PDF (Kruh)"
+
+#: lib/layouts/pdfcomment.module:72
+msgid "PDF-Line"
+msgstr "PDF-Čiarka"
+
+#: lib/layouts/pdfcomment.module:74
+msgid "PDF (Line)"
+msgstr "PDF (Čiarka)"
+
+#: lib/layouts/pdfcomment.module:78
+msgid "PDF-Sideline"
+msgstr "PDF-Postrannáčiarka"
+
+#: lib/layouts/pdfcomment.module:80
+msgid "PDF (Sideline)"
+msgstr "PDF (Postrannáčiarka)"
+
+#: lib/layouts/pdfcomment.module:87
+msgid "Insert the comment here"
+msgstr "Vložte sem komentár"
+
+#: lib/layouts/pdfcomment.module:91
+msgid "PDF-Reply"
+msgstr "PDF-Odpoveď"
+
+#: lib/layouts/pdfcomment.module:93
+msgid "PDF (Reply)"
+msgstr "PDF (Odpoveď)"
+
+#: lib/layouts/pdfcomment.module:101
+msgid "PDF-Tooltip"
+msgstr "PDF-PomocnýNávrh"
+
+#: lib/layouts/pdfcomment.module:103
+msgid "PDF (Tooltip)"
+msgstr "PDF (PomocnýNávrh)"
+
+#: lib/layouts/pdfcomment.module:110
+msgid "Tooltip Text"
+msgstr "PomocnýNávrh Text"
+
+#: lib/layouts/pdfcomment.module:111
+msgid "Tooltip"
+msgstr "PomocnýNávrh"
+
+#: lib/layouts/pdfcomment.module:113
+msgid "text here"
+msgstr "sem text"
+
+#: lib/layouts/pdfcomment.module:122
+msgid "List of PDF Comments"
+msgstr "Zoznam PDF Komentárov"
+
+#: lib/layouts/pdfcomment.module:136
+msgid "[LIST of PDF Comments]"
+msgstr "[Zoznam PDF Komentárov]"
+
+#: lib/layouts/pdfcomment.module:147
+msgid "List Options|s"
+msgstr "Voľby Listiny"
+
+#: lib/layouts/pdfcomment.module:148
+msgid "Insert list options here (see pdfcomment manual)"
+msgstr "Vložte sem voľby listiny (viď pdfcomment manuál)"
 
 #: src/frontends/qt4/GuiClipboard.cpp:176
 msgid "JPEG"
