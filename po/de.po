@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-09-27 14:48+0200\n"
-"PO-Revision-Date: 2014-09-27 14:58+0200\n"
+"POT-Creation-Date: 2014-09-27 17:31+0200\n"
+"PO-Revision-Date: 2014-09-27 17:32+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -13173,8 +13173,8 @@ msgstr "Abschnittsboxen"
 msgid ""
 "Defines Boxes with section header. Mainly intended for the SciPoster class."
 msgstr ""
-"Definiert Boxen mit Abschnittsüberschrift. Hauptsächlich für die "
-"'Sci-Poster'-Klasse vorgesehen."
+"Definiert Boxen mit Abschnittsüberschrift. Hauptsächlich für die 'Sci-"
+"Poster'-Klasse vorgesehen."
 
 #: lib/layouts/sectionbox.module:11
 msgid "SectionBox"
@@ -13673,10 +13673,8 @@ msgid ""
 "the tcolorbox documentation for details."
 msgstr ""
 "Stellt benutzerdefinierte Einfügungen zur Verfügung, die elegante  farbige "
-"Boxen mithilfe "
-"des Pakets 'tcolorbox' erzeugen. Konsultieren Sie die Dokumentation des "
-"Pakets für "
-"Details."
+"Boxen mithilfe des Pakets 'tcolorbox' erzeugen. Konsultieren Sie die "
+"Dokumentation des Pakets für Details."
 
 #: lib/layouts/tcolorbox.module:10 lib/layouts/tcolorbox.module:13
 msgid "Color Box"
@@ -14431,9 +14429,8 @@ msgid "Tooltip"
 msgstr "Tooltip"
 
 #: lib/layouts/pdfcomment.module:113
-#, fuzzy
-msgid "text here"
-msgstr "textdegree"
+msgid "Insert the tooltip text here"
+msgstr "Geben Sie hier den Tooltip-Text ein"
 
 #: lib/layouts/pdfcomment.module:122
 msgid "List of PDF Comments"
@@ -30308,6 +30305,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#, fuzzy
+#~ msgid "text here"
+#~ msgstr "textdegree"
 
 #~ msgid ""
 #~ "Cannot create backup file %1$s.\n"
