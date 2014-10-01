@@ -51,7 +51,7 @@ class TocModels;
 class ToolbarInfo;
 
 /**
- * GuiView - Qt4 main LyX window
+ * GuiView - Qt main LyX window
  *
  * This class represents the main LyX window and provides
  * accessor functions to its content.

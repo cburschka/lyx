@@ -357,7 +357,7 @@ int LyX::exec(int & argc, char * argv[])
 
 	// FIXME
 	/* Create a CoreApplication class that will provide the main event loop
-	* and the socket callback registering. With Qt4, only QtCore
+	* and the socket callback registering. With Qt, only QtCore
 	* library would be needed.
 	* When this is done, a server_mode could be created and the following two
 	* line would be moved out from here.
