@@ -1970,7 +1970,8 @@ int InsetMathHull::plaintext(odocstringstream & os,
 			// and do not include the newline.
 			if (op.for_toc || op.for_tooltip || oss.str().size() >= max_length)
 				break;
-			wi << "\n";
+                        if (r < nrows() - 1)
+				wi << "\n";
 		}
 	}
 	docstring const str = oss.str();
