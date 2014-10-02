@@ -3382,8 +3382,6 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options, const Out
 				getInset(i)->plaintext(os, *runparams);
 			} else {
 				getInset(i)->toString(os);
-				if (getInset(i)->asInsetMath())
-					os << " ";
 			}
 		}
 	}
