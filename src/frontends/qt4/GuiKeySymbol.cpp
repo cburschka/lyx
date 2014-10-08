@@ -64,7 +64,7 @@ static int string_to_qkey(std::string const & str)
 
 	if (str == "Escape") return Qt::Key_Escape;
 	if (str == "Tab") return Qt::Key_Tab;
-	if (str == "ISO_Left_Tab") return Qt::Key_Tab;
+	if (str == "ISO_Left_Tab") return Qt::Key_Backtab;
 	if (str == "BackSpace") return Qt::Key_Backspace;
 	if (str == "Return") return Qt::Key_Return;
 	if (str == "KP_Enter") return Qt::Key_Enter; // correct ?
