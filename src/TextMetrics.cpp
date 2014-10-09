@@ -849,6 +849,8 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 			// before body_pos. Instead, insert some spacing to
 			// align text
 			FontMetrics const & fm = theFontMetrics(text_->labelFont(par));
+			// this is needed to make sure that the row width is correct
+			row.finalizeLast();
 			int const add = max(fm.width(par.layout().labelsep),
 					    labelEnd(pit) - row.width());
 			row.addSpace(i, add, *fi, par.lookupChange(i));
