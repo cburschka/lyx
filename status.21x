@@ -74,6 +74,9 @@ What's new
 
 - Fix alignment rendering of multirow in LyX (bug 8976).
 
+- Fix mapping of ISO_Left_Tab key, which was erroneously assigneg to Tab
+  (instead of BackTab).
+
 
 * INTERNALS
 
