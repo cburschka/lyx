@@ -35,6 +35,8 @@ AM_INIT_AUTOMAKE([foreign dist-bzip2 no-define 1.8] LYX_OBJECTS_LAYOUT)
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 PACKAGE=$save_PACKAGE
 
+LYX_CHECK_GIT_COMMIT
+
 # Allow to build some parts of the code as one big chunk
 m4_define([ALLPARTS],[boost,client,insets,mathed,core,tex2lyx,frontend_qt])
 AC_ARG_ENABLE(monolithic-build,
@@ -322,6 +324,7 @@ AC_DEFINE_UNQUOTED([PROGRAM_SUFFIX],
 	"${version_suffix}",[Program version suffix])
 
 AC_DEFINE_UNQUOTED([LYX_DATE],"$LYX_DATE",[Date of release])
+AC_DEFINE_UNQUOTED([LYX_GIT_COMMIT_HASH], "$lyxgitcommit", [Git commit])
 AC_DEFINE_UNQUOTED([VERSION_INFO],"$VERSION_INFO",[Full version info])
 AC_DEFINE_UNQUOTED([LYX_DIR_VER],"$lyx_dir_ver",[Versioned env var for system dir])
 AC_DEFINE_UNQUOTED([LYX_USERDIR_VER],"$lyx_userdir_ver",[Versioned env var for user dir])

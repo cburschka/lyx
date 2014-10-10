@@ -8,9 +8,10 @@ dnl Usage LYX_CHECK_VERSION   Displays version of LyX being built and
 dnl sets variable "build_type"
 AC_DEFUN([LYX_CHECK_VERSION],[
 echo "configuring LyX version" AC_PACKAGE_VERSION
+
+AC_MSG_CHECKING([for build type])
 lyx_devel_version=no
 lyx_prerelease=no
-AC_MSG_CHECKING([for build type])
 AC_ARG_ENABLE(build-type,
   AC_HELP_STRING([--enable-build-type=TYPE],[set build setting according to TYPE=rel(ease), pre(release), dev(elopment), prof(iling), gprof]),
   [case $enableval in
@@ -36,6 +37,16 @@ case $build_type in
 esac
 
 AC_SUBST(lyx_devel_version)
+])
+
+dnl If LyX is compiled from a git clone, find the HEAD commit hash
+dnl
+dnl
+AC_DEFUN([LYX_CHECK_GIT_COMMIT], [
+AC_MSG_CHECKING([for git commit hash])
+lyxgitcommit=`cd "$srcdir" && git log -1 --pretty=format:%H 2>/dev/null || true`
+test x$lyxgitcommit = x && lyxgitcommit="none"
+AC_MSG_RESULT($lyxgitcommit)
 ])
 
 

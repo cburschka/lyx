@@ -20,6 +20,8 @@ extern char const * const lyx_version;
 extern const int lyx_version_major;
 extern const int lyx_version_minor;
 ///
+extern char const * const lyx_git_commit_hash;
+///
 extern char const * const lyx_release_date;
 
 /// Package identifier (lyx[-<version-suffix>])

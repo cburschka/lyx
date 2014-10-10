@@ -115,7 +115,12 @@ static QString version()
 	docstring version_date =
 		bformat(_("LyX Version %1$s\n(%2$s)"),
 			from_ascii(lyx_version),
-			qstring_to_ucs4(loc_release_date))+"\n\n";
+			qstring_to_ucs4(loc_release_date))+"\n";
+	if (std::string(lyx_git_commit_hash) != "none")
+		version_date += _("Built from git commit hash ")
+			+ from_utf8(lyx_git_commit_hash).substr(0,8);
+	version_date += "\n";
+
 	QString res;
 	QTextStream out(&res);
 	out << toqstr(version_date);
@@ -138,6 +143,9 @@ static QString buildinfo()
 	QTextStream out(&res);
 	out << "LyX " << lyx_version
 		<< " (" << lyx_release_date << ")" << endl;
+	if (std::string(lyx_git_commit_hash) != "none")
+		out << qt_("  Git commit hash ")
+		    << QString(lyx_git_commit_hash).left(8) << endl;
 	out << toqstr(bformat(_("Built on %1$s[[date]], %2$s[[time]]"),
 		from_ascii(__DATE__), from_ascii(__TIME__))) << endl;
 
