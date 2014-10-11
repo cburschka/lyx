@@ -314,29 +314,33 @@ foreach(_c_l ${_config_lines} )
 	endif()
 endforeach(_c_l)
 
-if (LYX_LOCALVERSIONING)
-	# Find the revision number and for later use
-	FIND_PROGRAM(LYX_GITVERSION git)
-	#message(STATUS "gitversion = ${LYX_GITVERSION}")
-	if(LYX_GITVERSION)
-		EXECUTE_PROCESS(COMMAND ${LYX_GITVERSION} describe --match 2.0.0 HEAD
-                WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE LYX_PACKAGE_RELEASE OUTPUT_STRIP_TRAILING_WHITESPACE)
-		if (LYX_PACKAGE_RELEASE MATCHES "^2\\.0\\.0\\-\([0-9]+\)\\-.*$")
-		  # We will add offset of 40000 to get appropriate value to
-		  # previous svn.
-		  # We use this value than also to set the package-patch-value
-		  MATH(EXPR tmp_REVISION_VERSION "(${CMAKE_MATCH_1}+40000)")
-		  set(LYX_REVISION_VERSION "${LYX_PATCH_VERSION}-${tmp_REVISION_VERSION}git")
-                  set(ENABLE_DIST ON)
-		endif()
-	else()
-		set(LYX_REVISION_VERSION git) #TODO use date
-	endif()
-else()
-	set(LYX_REVISION_VERSION ${LYX_PATCH_VERSION})
+FIND_PROGRAM(LYX_GITVERSION git)
+#message(STATUS "gitversion = ${LYX_GITVERSION}")
+set(LYX_GIT_COMMIT_HASH "none")
+set(LYX_REVISION_VERSION ${LYX_PATCH_VERSION})
+if(LYX_GITVERSION)
+  if (LYX_LOCALVERSIONING)
+    # Find the revision number and for later use
+    EXECUTE_PROCESS(COMMAND ${LYX_GITVERSION} describe --match 2.0.0 HEAD
+      WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE LYX_PACKAGE_RELEASE OUTPUT_STRIP_TRAILING_WHITESPACE)
+    if (LYX_PACKAGE_RELEASE MATCHES "^2\\.0\\.0\\-\([0-9]+\)\\-.*$")
+      # We will add offset of 40000 to get appropriate value to
+      # previous svn.
+      # We use this value than also to set the package-patch-value
+      MATH(EXPR tmp_REVISION_VERSION "(${CMAKE_MATCH_1}+40000)")
+      set(LYX_REVISION_VERSION "${LYX_PATCH_VERSION}-${tmp_REVISION_VERSION}git")
+      set(ENABLE_DIST ON)
+    endif()
+  endif()
+  EXECUTE_PROCESS(COMMAND ${LYX_GITVERSION} log -1 "--pretty=format:%H"
+    WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE lyxgitcommit OUTPUT_STRIP_TRAILING_WHITESPACE)
+  if (lyxgitcommit MATCHES "^[0-9a-f]+$")
+    set(LYX_GIT_COMMIT_HASH ${lyxgitcommit})
+  endif()
 endif()
+#message(STATUS "LYX_GIT_COMMIT_HASH = ${LYX_GIT_COMMIT_HASH}")
 
-# Set the programs (lyx, tex2lyx, etc.) suffix 
+# Set the programs (lyx, tex2lyx, etc.) suffix
 # When building an OS X bundle, we will append
 # the suffix only to the bundle, not to the programs
 set(PROGRAM_SUFFIX "")
@@ -673,7 +677,7 @@ endif()
 # Compute qt4-version from ${QTVERSION}
 
 message(STATUS "")
-foreach(_v PACKAGE PACKAGE_VERSION
+foreach(_v PACKAGE PACKAGE_VERSION LYX_GIT_COMMIT_HASH
 	PROGRAM_SUFFIX LYX_DATE LYX_DIR_VER LYX_USERDIR_VER
 	LYX_ABS_TOP_SRCDIR
 	LYX_ABS_INSTALLED_DATADIR LYX_ABS_INSTALLED_LOCALEDIR LYX_INSTALL_SUFFIX)
