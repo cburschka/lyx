@@ -1944,6 +1944,7 @@ void Menus::Impl::macxMenuBarInit(QMenuBar * qmb)
 	const size_t num_entries = sizeof(entries) / sizeof(entries[0]);
 	const bool first_call = mac_special_menu_.empty();
 
+	LYXERR(Debug::GUI, "Creating Mac OS X special menu bar");
 	// the special menu for Menus. Fill it up only once.
 	if (first_call) {
 		for (size_t i = 0 ; i < num_entries ; ++i) {
@@ -2236,12 +2237,14 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 		// the first time a QMenuBar is created. Otherwise Qt will
 		// create duplicate items in the application menu. It seems
 		// that Qt does not remove them when the QMenubar is cleared.
-		LYXERR(Debug::GUI, "Creating Mac OS X special menu bar");
 		d->macxMenuBarInit(qmb);
 #endif
 	} else {
 		// Clear all menubar contents before filling it.
 		qmb->clear();
+#if (QT_VERSION >= 0x050000)
+		d->macxMenuBarInit(qmb);
+#endif
 	}
 
 	LYXERR(Debug::GUI, "populating menu bar" << d->menubar_.name());
