@@ -251,7 +251,6 @@ void InsetText::edit(Cursor & cur, bool front, EntryDirection entry_from)
 	}
 
 	text_.setCursor(cur.top(), pit, pos);
-	cur.clearSelection();
 	cur.finishUndo();
 }
 
