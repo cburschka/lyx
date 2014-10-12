@@ -1401,7 +1401,6 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_FINISHED_LEFT:
 		//lyxerr << "action: " << cmd.action() << endl;
 		InsetMathGrid::doDispatch(cur, cmd);
-		cur.undispatched();
 		break;
 
 	case LFUN_PARAGRAPH_BREAK:
