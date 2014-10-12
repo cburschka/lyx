@@ -84,6 +84,9 @@ public:
 	GuiView const & view() const;
 	GuiView & view();
 
+	/// Current ratio between physical pixels and device-independent pixels
+	double pixelRatio() const;
+
 public Q_SLOTS:
 	///
 	void stopBlinkingCursor();

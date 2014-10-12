@@ -199,6 +199,9 @@ public:
 	GuiWorkArea const * currentMainWorkArea() const;
 	/// return the current document WorkArea (it may not have the focus).
 	GuiWorkArea * currentMainWorkArea();
+	
+	/// Current ratio between physical pixels and device-independent pixels
+	double pixelRatio() const;
 
 Q_SIGNALS:
 	void closing(int);

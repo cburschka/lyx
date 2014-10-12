@@ -246,6 +246,7 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 GuiWorkArea::Private::Private(GuiWorkArea * parent)
 : p(parent), screen_(0), buffer_view_(0), lyx_view_(0), cursor_visible_(false),
 need_resize_(false), schedule_redraw_(false), preedit_lines_(1),
+pixel_ratio_(1.0),
 completer_(new GuiCompleter(p, p))
 {
 }
@@ -263,6 +264,16 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & gv)
 	setGuiView(gv);
 	setBuffer(buffer);
 	init();
+}
+
+
+double GuiWorkArea::pixelRatio() const
+{
+#if QT_VERSION > 0x050000
+	return devicePixelRatio();
+#else
+	return 1.0;
+#endif
 }
 
 
@@ -1120,11 +1131,11 @@ void GuiWorkArea::Private::update(int x, int y, int w, int h)
 
 void GuiWorkArea::paintEvent(QPaintEvent * ev)
 {
-	QRect const rc = ev->rect();
+	QRectF const rc = ev->rect();
 	// LYXERR(Debug::PAINTING, "paintEvent begin: x: " << rc.x()
 	//	<< " y: " << rc.y() << " w: " << rc.width() << " h: " << rc.height());
 
-	if (d->need_resize_) {
+	if (d->needResize()) {
 		d->resetScreen();
 		d->resizeBufferView();
 		if (d->cursor_visible_) {
@@ -1134,10 +1145,15 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 	}
 
 	QPainter pain(viewport());
+	double const pr = pixelRatio();
+	QRectF const rcs = QRectF(rc.x() * pr, rc.y() * pr, rc.width() * pr, rc.height() * pr);
+
 	if (lyxrc.use_qimage) {
-		pain.drawImage(rc, static_cast<QImage const &>(*d->screen_), rc);
+		QImage const & image = static_cast<QImage const &>(*d->screen_);
+		pain.drawImage(rc, image, rcs);
 	} else {
-		pain.drawPixmap(rc, static_cast<QPixmap const &>(*d->screen_), rc);
+		QPixmap const & pixmap = static_cast<QPixmap const &>(*d->screen_);
+		pain.drawPixmap(rc, pixmap, rcs);
 	}
 	d->cursor_->draw(pain);
 	ev->accept();
@@ -1146,7 +1162,7 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 
 void GuiWorkArea::Private::updateScreen()
 {
-	GuiPainter pain(screen_);
+	GuiPainter pain(screen_, p->pixelRatio());
 	buffer_view_->draw(pain);
 }
 
@@ -1220,7 +1236,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		return;
 	}
 
-	GuiPainter pain(d->screen_);
+	GuiPainter pain(d->screen_, pixelRatio());
 	d->buffer_view_->updateMetrics();
 	d->buffer_view_->draw(pain);
 	FontInfo font = d->buffer_view_->cursor().getFont().fontInfo();

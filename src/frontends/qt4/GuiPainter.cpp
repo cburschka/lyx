@@ -52,8 +52,8 @@ namespace frontend {
   
 const float Painter::thin_line = 0.0;
 
-GuiPainter::GuiPainter(QPaintDevice * device)
-	: QPainter(device), Painter(),
+GuiPainter::GuiPainter(QPaintDevice * device, double pixel_ratio)
+	: QPainter(device), Painter(pixel_ratio),
 	  use_pixmap_cache_(lyxrc.use_pixmap_cache && USE_PIXMAP_CACHE)
 {
 	// new QPainter has default QPen:
@@ -270,7 +270,10 @@ void GuiPainter::image(int x, int y, int w, int h, graphics::Image const & i)
 	if (!isDrawingEnabled())
 		return;
 
-	drawImage(x, y, qlimage.image(), 0, 0, w, h);
+	QImage const image = qlimage.image();
+	QRectF const drect = QRectF(x, y, w, h);
+	QRectF const srect = QRectF(0, 0, image.width(), image.height());
+	drawImage(drect, image, srect);
 }
 
 
@@ -367,9 +370,12 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		int const mD = fm.maxDescent();
 		int const h = mA + mD;
 		if (w > 0 && h > 0) {
-			pm = QPixmap(w, h);
+			pm = QPixmap(pixelRatio() * w , pixelRatio() * h);
+#if QT_VERSION > 0x050000
+			pm.setDevicePixelRatio(pixelRatio());
+#endif
 			pm.fill(Qt::transparent);
-			GuiPainter p(&pm);
+			GuiPainter p(&pm, pixelRatio());
 			p.setQPainterPen(computeColor(f.realColor()));
 			if (p.font() != ff)
 				p.setFont(ff);

@@ -172,8 +172,13 @@ public:
 
 	void paintEvent(QPaintEvent *)
 	{
-		int x = (width() - splash_.width()) / 2;
-		int y = (height() - splash_.height()) / 2;
+		QRectF r = splash_.rect();
+#if QT_VERSION > 0x050000
+		r.setWidth(r.width() / splash_.devicePixelRatio());
+		r.setHeight(r.height() / splash_.devicePixelRatio());
+#endif
+		int x = (width() - r.width()) / 2;
+		int y = (height() - r.height()) / 2;
 		QPainter pain(this);
 		pain.drawPixmap(x, y, splash_);
 	}
@@ -1204,6 +1209,16 @@ void GuiView::setBusy(bool busy)
 }
 
 
+double GuiView::pixelRatio() const
+{
+#if QT_VERSION > 0x050000
+	return devicePixelRatio();
+#else
+	return 1.0;
+#endif
+}
+	
+	
 GuiWorkArea * GuiView::workArea(int index)
 {
 	if (TabWorkArea * twa = d.currentTabWorkArea())

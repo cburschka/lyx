@@ -29,11 +29,11 @@ class FontInfo;
 namespace frontend {
 
 /**
- * GuiPainter - a painter implementation for Qt4
+ * GuiPainter - a painter implementation for Qt
  */
 class GuiPainter : public QPainter, public Painter {
 public:
-	GuiPainter(QPaintDevice *);
+	GuiPainter(QPaintDevice *, double pixel_ratio);
 	virtual ~GuiPainter();
 
 	/// draw a line from point to point

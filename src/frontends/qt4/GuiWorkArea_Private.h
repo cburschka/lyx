@@ -117,14 +117,28 @@ struct GuiWorkArea::Private
 	///
 	void setCursorShape(Qt::CursorShape shape);
 
+	bool needResize() const {
+		return need_resize_ || p->pixelRatio() != pixel_ratio_;
+	}
+
 	void resetScreen()
 	{
 		delete screen_;
+		pixel_ratio_ = p->pixelRatio();
 		if (lyxrc.use_qimage) {
-			screen_ = new QImage(p->viewport()->width(), p->viewport()->height(),
-				QImage::Format_ARGB32_Premultiplied);
+			QImage *x = new QImage(pixel_ratio_ * p->viewport()->width(),
+				pixel_ratio_ * p->viewport()->height(), QImage::Format_ARGB32_Premultiplied);
+#if QT_VERSION > 0x050000
+			x->setDevicePixelRatio(pixel_ratio_);
+#endif
+			screen_ = x;
 		} else {
-			screen_ = new QPixmap(p->viewport()->width(), p->viewport()->height());
+			QPixmap *x = new QPixmap(pixel_ratio_ * p->viewport()->width(),
+				pixel_ratio_ * p->viewport()->height());
+#if QT_VERSION > 0x050000
+			x->setDevicePixelRatio(pixel_ratio_);
+#endif
+			screen_ = x;
 		}
 	}
 	///
@@ -155,7 +169,10 @@ struct GuiWorkArea::Private
 	bool schedule_redraw_;
 	///
 	int preedit_lines_;
-
+	/// Ratio between physical pixels and device-independent pixels
+	/// We save the last used value to detect changes of the
+	/// current pixel_ratio of the viewport.
+	double pixel_ratio_;
 	///
 	GuiCompleter * completer_;
 

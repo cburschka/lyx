@@ -139,7 +139,10 @@ public:
 	void unregisterView(GuiView * gv);
 	///
 	GuiView & view(int id) const;
-	///
+
+	/// Current ratio between physical pixels and device-independent pixels
+	double pixelRatio() const;
+	
 	void processKeySym(KeySymbol const & key, KeyModifier state);
 	/// return the status bar state string
 	docstring viewStatusMessage();

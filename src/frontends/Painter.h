@@ -54,7 +54,7 @@ namespace frontend {
  */
 class Painter {
 public:
-	Painter() : drawing_enabled_(true) {}
+	Painter(double pixel_ratio) : drawing_enabled_(true), pixel_ratio_(pixel_ratio) {}
 
 	static const float thin_line;
 
@@ -134,6 +134,8 @@ public:
 	/// Indicate wether real screen drawing shall be done or not.
 	bool isDrawingEnabled() const { return drawing_enabled_; }
 
+	double pixelRatio() const { return pixel_ratio_; }
+
 	/// draw a char at position x, y (y is the baseline)
 	/**
 	* \return the width of the drawn text.
@@ -170,6 +172,8 @@ public:
 private:
 	///
 	bool drawing_enabled_;
+	/// Ratio between physical pixels and device-independent pixels
+	double pixel_ratio_;
 };
 
 } // namespace frontend

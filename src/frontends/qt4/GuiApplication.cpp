@@ -17,7 +17,6 @@
 #include "ColorCache.h"
 #include "ColorSet.h"
 #include "GuiClipboard.h"
-#include "GuiImage.h"
 #include "GuiKeySymbol.h"
 #include "GuiSelection.h"
 #include "GuiView.h"
@@ -1039,6 +1038,16 @@ GuiApplication * theGuiApp()
 }
 
 
+double GuiApplication::pixelRatio() const
+{
+#if QT_VERSION > 0x050000
+	return devicePixelRatio();
+#else
+	return 1.0;
+#endif
+}
+	
+	
 void GuiApplication::clearSession()
 {
 	QSettings settings;
