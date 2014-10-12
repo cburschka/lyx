@@ -592,14 +592,14 @@ void Text::setCursorIntern(Cursor & cur,
 
 bool Text::checkAndActivateInset(Cursor & cur, bool front)
 {
-	if (cur.selection())
-		return false;
 	if (front && cur.pos() == cur.lastpos())
 		return false;
 	if (!front && cur.pos() == 0)
 		return false;
 	Inset * inset = front ? cur.nextInset() : cur.prevInset();
 	if (!inset || !inset->editable())
+		return false;
+	if (cur.selection() && cur.realAnchor().find(inset) == -1)
 		return false;
 	/*
 	 * Apparently, when entering an inset we are expected to be positioned
@@ -617,8 +617,6 @@ bool Text::checkAndActivateInset(Cursor & cur, bool front)
 
 bool Text::checkAndActivateInsetVisual(Cursor & cur, bool movingForward, bool movingLeft)
 {
-	if (cur.selection())
-		return false;
 	if (cur.pos() == -1)
 		return false;
 	if (cur.pos() == cur.lastpos())
@@ -626,6 +624,8 @@ bool Text::checkAndActivateInsetVisual(Cursor & cur, bool movingForward, bool mo
 	Paragraph & par = cur.paragraph();
 	Inset * inset = par.isInset(cur.pos()) ? par.getInset(cur.pos()) : 0;
 	if (!inset || !inset->editable())
+		return false;
+	if (cur.selection() && cur.realAnchor().find(inset) == -1)
 		return false;
 	inset->edit(cur, movingForward, 
 		movingLeft ? Inset::ENTRY_DIRECTION_RIGHT : Inset::ENTRY_DIRECTION_LEFT);
