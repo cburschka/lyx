@@ -63,12 +63,12 @@ namespace lyx {
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_
- * \li Action: 
- * \li Notion: 
- * \li Syntax: 
- * \li Params: 
+ * \li Action:
+ * \li Notion:
+ * \li Syntax:
+ * \li Params:
  * \li Sample:
- * \li Origin: 
+ * \li Origin:
  * \endvar
  */
 
@@ -99,7 +99,7 @@ void LyXAction::init()
 	// magnitudes faster.
 
 	static bool init;
-	if (init) 
+	if (init)
 		return;
 
 	struct ev_item {
@@ -456,7 +456,7 @@ void LyXAction::init()
                For dissolving the element see #LFUN_INSET_DISSOLVE.
  * \li Syntax: flex-insert Name
  * \li Params: Name: This name must be defined either in your layout file
-                     or imported by some module. The definition is 
+                     or imported by some module. The definition is
                      InsetLayout Name or InsetLayout <Flex:Name>. The Flex:
                      prefix is optional.
  * \li Sample: flex-insert Code
@@ -801,7 +801,7 @@ void LyXAction::init()
 		{ LFUN_CHAR_LEFT, "char-left", ReadOnly | NoUpdate, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_CHAR_LEFT_SELECT
- * \li Action: Moves the cursor one position "to the left", adding 
+ * \li Action: Moves the cursor one position "to the left", adding
                traversed position to the selection.
  * \li Notion: See also #LFUN_CHAR_LEFT for exact details of the movement.
  * \li Syntax: char-left-select
@@ -931,7 +931,7 @@ void LyXAction::init()
 		{ LFUN_WORD_FORWARD, "word-forward", ReadOnly | NoUpdate, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_FORWARD_SELECT
- * \li Action: Moves the cursor to the logically next beginning of a word, 
+ * \li Action: Moves the cursor to the logically next beginning of a word,
                adding the logically traversed text to the selection.
  * \li Notion: See also #LFUN_WORD_FORWARD.
  * \li Syntax: word-forward-select
@@ -942,8 +942,8 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_WORD_LEFT
  * \li Action: Moves the cursor to the next beginning of a word "on the left".
  * \li Notion: This is the action which should be taken when the (e.g., ctrl-)
-               "left" key is pressed. Generally, it moves the cursor to the 
-               next beginning of a word on the left. However, in Bidi text this 
+               "left" key is pressed. Generally, it moves the cursor to the
+               next beginning of a word on the left. However, in Bidi text this
                become slightly more complicated, and there are different modes
                of cursor movement. In "visual mode", this moves left, plain and
                simple. In "logical mode", movement is logically forward in RTL
@@ -967,12 +967,12 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_WORD_RIGHT
  * \li Action: Moves the cursor to the next beginning of a word "on the right".
  * \li Notion: This is the action which should be taken when the (e.g., ctrl-)
-               "right" key is pressed. Generally, it moves the cursor to the 
-               next beginning of a word on the right. However, in Bidi text 
+               "right" key is pressed. Generally, it moves the cursor to the
+               next beginning of a word on the right. However, in Bidi text
                this become slightly more complicated, and there are different
                modes of cursor movement. In "visual mode", this moves right,
-               plain and simple. In "logical mode", movement is logically 
-               forward in LTR paragraphs, and logically backwards in RTL 
+               plain and simple. In "logical mode", movement is logically
+               forward in LTR paragraphs, and logically backwards in RTL
                paragraphs.
  * \li Syntax: word-right
  * \li Origin: dov, 28 Oct 2007
@@ -1107,8 +1107,8 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_BEGIN
- * \li Action: Move the cursor to the beginning of the current inset 
-               if it is not already there, or at the beginning of the 
+ * \li Action: Move the cursor to the beginning of the current inset
+               if it is not already there, or at the beginning of the
                enclosing inset otherwise
  * \li Syntax: inset-begin
  * \li Origin: lasgouttes, 16 Mar 2009
@@ -1117,8 +1117,8 @@ void LyXAction::init()
 		{ LFUN_INSET_BEGIN, "inset-begin", ReadOnly, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_BEGIN_SELECT
- * \li Action: Move the cursor to the beginning of the current inset 
-               if it is not already there, or at the beginning of the 
+ * \li Action: Move the cursor to the beginning of the current inset
+               if it is not already there, or at the beginning of the
                enclosing inset otherwise (adding the
                traversed text to the selection).
  * \li Syntax: inset-begin-select
@@ -1128,8 +1128,8 @@ void LyXAction::init()
 		{ LFUN_INSET_BEGIN_SELECT, "inset-begin-select", ReadOnly, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_END
- * \li Action: Move the cursor to the end of the current inset 
-               if it is not already there, or at the end of the 
+ * \li Action: Move the cursor to the end of the current inset
+               if it is not already there, or at the end of the
                enclosing inset otherwise
  * \li Syntax: inset-end
  * \li Origin: lasgouttes, 16 Mar 2009
@@ -1138,8 +1138,8 @@ void LyXAction::init()
 		{ LFUN_INSET_END, "inset-end", ReadOnly, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_END_SELECT
- * \li Action: Move the cursor to the end of the current inset 
-               if it is not already there, or at the end of the 
+ * \li Action: Move the cursor to the end of the current inset
+               if it is not already there, or at the end of the
                enclosing inset otherwise (adding the
                traversed text to the selection).
  * \li Syntax: inset-end-select
@@ -1733,7 +1733,7 @@ void LyXAction::init()
  * \li Action: Inserts a matrix.
  * \li Syntax: math-matrix <COLS> <ROWS> [<ALIGN>]
  * \li Params: <ALIGN>: Alignment is a word composed of the vertical alignment
-                        (b, c or t) (i.e. 1 char) and the horizontal alignments 
+                        (b, c or t) (i.e. 1 char) and the horizontal alignments
                         (l, c or r) (i.e. <COL> chars).
  * \li Sample: math-matrix 3 3 bccc
  * \endvar
@@ -2185,7 +2185,7 @@ void LyXAction::init()
                For CVS it is simulated by adding the document under a new
                name and deleting the old one. For RCS it is not supported.
                Disabled if uncommitted changes exist.
- * \li Syntax: vc-rename <FILENAME> 
+ * \li Syntax: vc-rename <FILENAME>
  * \li Params: <FILENAME>: New name of the document.\n
  *             A file dialog is opened if no filename is given.
  * \li Origin: gb, 05 Feb 2013
@@ -2199,7 +2199,7 @@ void LyXAction::init()
                For RCS and CVS it is simulated by adding the document
                under a new name.
                Disabled if uncommitted changes exist.
- * \li Syntax: vc-copy <FILENAME> 
+ * \li Syntax: vc-copy <FILENAME>
  * \li Params: <FILENAME>: New name of the document.\n
  *             A file dialog is opened if no filename is given.
  * \li Origin: gb, 05 Feb 2013
@@ -2423,8 +2423,8 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_INSET_MODIFY
  * \li Action: Modify some properties of an inset.
  * \li Notion: Used for bibitem, bibtex, box, branch, command, ert, external,
-                        floats, graphics, include, index, info, label, 
-                        listings, newline, newpage, nomencl, note, phantom, 
+                        floats, graphics, include, index, info, label,
+                        listings, newline, newpage, nomencl, note, phantom,
                         ref, space, tabular, vspace, wrap insets.
  * \li Syntax: inset-modify <INSET> <ARGS>
  * \li Syntax: inset-modify changetype <TYPE>
@@ -2499,7 +2499,7 @@ void LyXAction::init()
                    inset-forall Note note-insert
                which starts an infinite loop. This is mitigated by the fact
                that the number of actions is arbitrarily limited to 100000.
-               Note also that inset-forall does not update metrics between 
+               Note also that inset-forall does not update metrics between
                iterations, which can lead to bugs. This has to be eventually
                fixed.
  * \li Syntax: inset-forall <NAME> <LFUN-COMMAND> \n
@@ -2715,7 +2715,7 @@ void LyXAction::init()
  * \li Action: Creates new empty LyX window.
  * \li Notion: Already opened documents from the previous window can be found under View menu.
  * \li Syntax: window-new [<GEOMETRY>]
- * \li Params: <GEOMETRY>: pass the geometry of the window. This parameter is currently 
+ * \li Params: <GEOMETRY>: pass the geometry of the window. This parameter is currently
                            accepted only on Windows platform.
  * \li Origin: Abdel, 21 Oct 2006
  * \endvar
@@ -3382,7 +3382,7 @@ void LyXAction::init()
                to be executed (see e.g. #LFUN_COMMAND_SEQUENCE).
                \def_file "FileName" allows to include another .def file. \n
                This is particularly useful in connection with toolbar buttons:
-               Since the name of the button image for this lfun is 
+               Since the name of the button image for this lfun is
                lib/images/commands/<NAME>.png this is the way to assign an image
                to a complex command-sequence.
  * \li Syntax: call <NAME>
@@ -3734,8 +3734,8 @@ FuncRequest LyXAction::lookupFunc(string const & func) const
 
 	FuncMap::const_iterator const fit = lyx_func_map.find(cmd);
 
-	return fit != lyx_func_map.end() 
-			? FuncRequest(fit->second, arg) 
+	return fit != lyx_func_map.end()
+			? FuncRequest(fit->second, arg)
 			: FuncRequest(LFUN_UNKNOWN_ACTION);
 }
 
