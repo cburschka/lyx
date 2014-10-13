@@ -3881,7 +3881,7 @@ void InsetTabular::edit(Cursor & cur, bool front, EntryDirection)
 {
 	//lyxerr << "InsetTabular::edit: " << this << endl;
 	cur.finishUndo();
-	cur.setSelection(false);
+	//cur.setSelection(false);
 	cur.push(*this);
 	if (front) {
 		if (isRightToLeft(cur))
@@ -4161,9 +4161,10 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 		else
 			movePrevCell(cur, entry_from);
 		// if we're exiting the table, call the appropriate FINISHED lfun
-		if (sl == cur.top())
+		if (sl == cur.top()) {
 			cmd = FuncRequest(finish_lfun);
-		else
+			cur.undispatched();
+		} else
 			cur.dispatched();
 
 		cur.screenUpdateFlags(Update::Force | Update::FitCursor);
@@ -6448,7 +6449,8 @@ string InsetTabular::params2string(InsetTabular const & inset)
 }
 
 
-void InsetTabular::setLayoutForHiddenCells(DocumentClass const & dc) {
+void InsetTabular::setLayoutForHiddenCells(DocumentClass const & dc)
+{
 	for (Tabular::col_type c = 0; c < tabular.ncols(); ++c) {
 		for (Tabular::row_type r = 0; r < tabular.nrows(); ++r) {
 			if (!tabular.isPartOfMultiColumn(r,c) &&
