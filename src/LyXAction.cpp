@@ -3517,7 +3517,8 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_STATISTICS
  * \li Action: Count the statistics (number of words and characters)
-               in the document or in the given selection.
+               in the document or in the given selection and display it
+               in a dialog box.
  * \li Notion: Note that this function gives the number of words/chars written,
                not the number of characters which will be typeset.
  * \li Syntax: statistics
@@ -3525,6 +3526,23 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_STATISTICS, "statistics", ReadOnly, System },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_SERVER_GET_STATISTICS
+ * \li Action: Returns the statistics (number of words and characters)
+               in the document or in the given selection.
+ * \li Notion: Note that this function gives the number of words/chars written,
+               not the number of characters which will be typeset.
+ * \li Syntax: server-get-statistics [<TYPE>]
+ * \li Params: <TYPE>: <words|chars|chars-space> The requested count; if not
+                       specified, the three values are returned, separated
+                       by a space.\n
+                words: count words.\n
+                chars: count characters.\n
+                chars-space: count characters and spaces.
+ * \li Origin: brokenclock, Oct 10 2014
+ * \endvar
+ */
+		{ LFUN_SERVER_GET_STATISTICS, "server-get-statistics", ReadOnly, System },
 /*!
  * \var lyx::FuncCode lyx::LFUN_COMPLETION_INLINE
  * \li Action: Show the inline completion at the cursor position.

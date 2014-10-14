@@ -2391,6 +2391,33 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		needsUpdate = true;
 		break;
 
+	case LFUN_SERVER_GET_STATISTICS:
+		{
+			DocIterator from, to;
+			if (cur.selection()) {
+				from = cur.selectionBegin();
+				to = cur.selectionEnd();
+			} else {
+				from = doc_iterator_begin(cur.buffer());
+				to = doc_iterator_end(cur.buffer());
+			}
+
+			cur.buffer()->updateStatistics(from, to);
+			string const arg0 = cmd.getArg(0);
+			if (arg0 == "words") {
+				cur.message(convert<docstring>(cur.buffer()->wordCount()));
+			} else if (arg0 == "chars") {
+				cur.message(convert<docstring>(cur.buffer()->charCount(false)));
+			} else if (arg0 == "chars-space") {
+				cur.message(convert<docstring>(cur.buffer()->charCount(true)));
+			} else {
+				cur.message(convert<docstring>(cur.buffer()->wordCount()) + " "
+				+ convert<docstring>(cur.buffer()->charCount(false)) + " "
+				+ convert<docstring>(cur.buffer()->charCount(true)));
+			}
+		}
+		break;
+
 	default:
 		LYXERR(Debug::ACTION, "Command " << cmd << " not DISPATCHED by Text");
 		cur.undispatched();
@@ -3109,6 +3136,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_UNICODE_INSERT:
 	case LFUN_THESAURUS_ENTRY:
 	case LFUN_ESCAPE:
+	case LFUN_SERVER_GET_STATISTICS:
 		// these are handled in our dispatch()
 		enable = true;
 		break;

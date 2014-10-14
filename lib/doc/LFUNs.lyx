@@ -98,7 +98,7 @@ The LyX Team
 \end_layout
 
 \begin_layout Date
-2014-02-13
+2014-10-23
 \end_layout
 
 \begin_layout Section*
@@ -3076,6 +3076,22 @@ Origin lasgouttes, 14 Jan 2009
 \end_layout
 
 \begin_layout Subsection*
+separator-insert
+\end_layout
+\begin_layout Description
+Action Inserts an environment separator or paragraph break.
+\end_layout
+\begin_layout Description
+Syntax separator-insert [<ARG>]
+\end_layout
+\begin_layout Description
+Params <ARG>: <plain|parbreak> default: plain
+\end_layout
+\begin_layout Description
+Origin ef, 2 May 2014
+\end_layout
+
+\begin_layout Subsection*
 set-graphics-group
 \end_layout
 \begin_layout Description
@@ -5321,6 +5337,37 @@ Syntax server-get-layout
 \end_layout
 
 \begin_layout Subsection*
+server-get-statistics
+\end_layout
+\begin_layout Description
+Action Returns the statistics (number of words and characters) in the document or in the given selection.
+\end_layout
+\begin_layout Description
+Notion Note that this function gives the number of words/chars written, not the number of characters which will be typeset.
+\end_layout
+\begin_layout Description
+Syntax server-get-statistics [<TYPE>]
+\end_layout
+\begin_layout Description
+Params <TYPE>: <words|chars|chars-space> The requested count; if not specified, the three values are returned, separated by a space.
+\begin_inset Newline newline
+\end_inset
+
+words: count words.
+\begin_inset Newline newline
+\end_inset
+
+chars: count characters.
+\begin_inset Newline newline
+\end_inset
+
+chars-space: count characters and spaces.
+\end_layout
+\begin_layout Description
+Origin brokenclock, Oct 10 2014
+\end_layout
+
+\begin_layout Subsection*
 server-get-xy
 \end_layout
 \begin_layout Description
@@ -5411,7 +5458,7 @@ Origin SLior, 11 Jun 2000
 statistics
 \end_layout
 \begin_layout Description
-Action Count the statistics (number of words and characters) in the document or in the given selection.
+Action Count the statistics (number of words and characters) in the document or in the given selection and display it in a dialog box.
 \end_layout
 \begin_layout Description
 Notion Note that this function gives the number of words/chars written, not the number of characters which will be typeset.
