@@ -942,7 +942,9 @@ docstring const BiblioInfo::getLabel(vector<docstring> keys,
 
 bool BiblioInfo::isBibtex(docstring const & key) const
 {
-	BiblioInfo::const_iterator it = find(key);
+	docstring key1;
+	split(key, key1, ',');
+	BiblioInfo::const_iterator it = find(key1);
 	if (it == end())
 		return false;
 	return it->second.isBibTeX();
