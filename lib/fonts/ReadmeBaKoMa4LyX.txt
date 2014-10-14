@@ -18,15 +18,15 @@
 
       http://www.ctan.org/tex-archive/fonts/cm/ps-type1/bakoma/ttf/
 
-      and have been modified for use with LyX. 
-      The most recent versions of the original fonts are available 
+      and have been modified for use with LyX.
+      The most recent versions of the original fonts are available
       with the complete BaKoMa TeX distribution at
 
       http://www.ctan.org/tex-archive/systems/win32/bakoma/
 
       The author of these fonts, Basil K. Malyshev, has kindly
       granted permission to use and modify these fonts.
-     
+
       The changes made are simple remappings of glyphs. These mappings
       are:
 
@@ -37,10 +37,10 @@
       cmmi10.ttf   char 8728 mapped to char 183 (\kapp)
       msam10.ttf   char  196 mapped to char 127 (\circleddash)
       msam10.ttf   char 8728 mapped to char 183 (\uparrows)
-      
-       
-      The mappings do not change any glyph but make the glyphs mentioned 
-      available under new codes, too. So the functionality of the fonts 
+
+
+      The mappings do not change any glyph but make the glyphs mentioned
+      available under new codes, too. So the functionality of the fonts
       will not be affected in any other application.
 
 
@@ -48,6 +48,12 @@
       'wasy10.ttf' from the latex-xft font bundle:
       http://packages.qa.debian.org/l/latex-xft-fonts.html.
       The latex-xft bundle is published under the GPL.
+
+      In addition to the BaKoMa fonts, this font bundle contains the rsfs font
+      'rsfs10.ttf' from the rsfs package. It was converted from the type1
+      version available at http://www.ctan.org/tex-archive/fonts/rsfs/type1/.
+      This PostScript Type 1 implementation of the font rsfs10, originally
+      created by Ralph Smith using METAFONT, is in the public domain.
 
       In addition to the BaKoMa fonts, this font bundle contains the esint font
       'esint10.ttf' from the esint package. It was converted from the type1
