@@ -1275,8 +1275,7 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 	LBUFERR(this == cur.text());
 
 	if (!cur.selection()) {
-		bool const changed = cur.paragraph().isChanged(cur.pos());
-		if (!(changed && findNextChange(&cur.bv())))
+		if (!selectChange(cur))
 			return;
 	}
 
@@ -1292,7 +1291,6 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 	bool endsBeforeEndOfPar = (endPos < pars_[endPit].size());
 
 	// first, accept/reject changes within each individual paragraph (do not consider end-of-par)
-
 	for (pit_type pit = begPit; pit <= endPit; ++pit) {
 		pos_type parSize = pars_[pit].size();
 
@@ -1368,10 +1366,7 @@ void Text::acceptOrRejectChanges(Cursor & cur, ChangeOp op)
 	}
 
 	// finally, invoke the DEPM
-
 	deleteEmptyParagraphMechanism(begPit, endPit, cur.buffer()->params().trackChanges);
-
-	//
 
 	cur.finishUndo();
 	cur.clearSelection();
