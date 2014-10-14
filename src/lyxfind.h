@@ -26,6 +26,7 @@ namespace lyx {
 
 
 class Buffer;
+class Cursor;
 class BufferView;
 class DocIterator;
 class FuncRequest;
@@ -71,6 +72,10 @@ bool findNextChange(BufferView * bv);
 
 /// find the previous change in the buffer
 bool findPreviousChange(BufferView * bv);
+
+/// select change under the cursor
+bool selectChange(Cursor & cur, bool forward = true);
+
 
 class FindAndReplaceOptions {
 public:

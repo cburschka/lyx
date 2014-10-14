@@ -390,96 +390,70 @@ bool lyxreplace(BufferView * bv,
 }
 
 
-namespace {
-bool findChange(DocIterator & cur, bool next)
+bool findNextChange(DocIterator & cur)
 {
-	if (!next)
-		cur.backwardPos();
-	for (; cur; next ? cur.forwardPos() : cur.backwardPos())
-		if (cur.inTexted() && cur.paragraph().isChanged(cur.pos())) {
-			if (!next)
-				// if we search backwards, take a step forward
-				// to correctly set the anchor
-				cur.top().forwardPos();
+	for (; cur; cur.forwardPos())
+		if (cur.inTexted() && cur.paragraph().isChanged(cur.pos()))
 			return true;
-		}
-
 	return false;
 }
 
 
-bool findChange(BufferView * bv, bool next)
+bool findPreviousChange(DocIterator & cur)
 {
-	Cursor cur(*bv);
-	cur.setCursor(next ? bv->cursor().selectionEnd()
-		      : bv->cursor().selectionBegin());
-
-	// Are we within a change ? Then first search forward (backward),
-	// clear the selection and search the other way around (see the end
-	// of this function). This will avoid changes to be selected half.
-	bool search_both_sides = false;
-	Cursor tmpcur = cur;
-	// Find enclosing text cursor
-	while (tmpcur.inMathed())
-		tmpcur.pop_back();
-	Change change_next_pos
-		= tmpcur.paragraph().lookupChange(tmpcur.pos());
-	if (change_next_pos.changed()) {
-		if (cur.inMathed()) {
-			cur = tmpcur;
-			search_both_sides = true;
-		} else if (tmpcur.pos() > 0 && tmpcur.inTexted()) {
-			Change change_prev_pos
-				= tmpcur.paragraph().lookupChange(tmpcur.pos() - 1);
-			if (change_next_pos.isSimilarTo(change_prev_pos))
-				search_both_sides = true;
-		}
+	for (cur.backwardPos(); cur; cur.backwardPos()) {
+		if (cur.inTexted() && cur.paragraph().isChanged(cur.pos()))
+			return true;
 	}
+	return false;
+}
 
-	// find the next change
-	if (!findChange(cur, next))
+
+bool selectChange(Cursor & cur, bool forward)
+{
+	if (!cur.inTexted() || !cur.paragraph().isChanged(cur.pos()))
 		return false;
+	Change ch = cur.paragraph().lookupChange(cur.pos());
 
-	bv->mouseSetCursor(cur, false);
-
-	CursorSlice & tip = cur.top();
-
-	if (!next && tip.pos() > 0)
-		// take a step into the change
-		tip.backwardPos();
-
-	Change orig_change = tip.paragraph().lookupChange(tip.pos());
-
-	if (next) {
-		for (; tip.pit() < tip.lastpit() || tip.pos() < tip.lastpos(); tip.forwardPos()) {
-			Change change = tip.paragraph().lookupChange(tip.pos());
-			if (!change.isSimilarTo(orig_change))
-				break;
-		}
-	} else {
-		for (; tip.pit() > 0 || tip.pos() > 0;) {
-			tip.backwardPos();
-			Change change = tip.paragraph().lookupChange(tip.pos());
-			if (!change.isSimilarTo(orig_change)) {
-				// take a step forward to correctly set the selection
-				tip.forwardPos();
-				break;
-			}
+	CursorSlice tip1 = cur.top();
+	for (; tip1.pit() < tip1.lastpit() || tip1.pos() < tip1.lastpos(); tip1.forwardPos()) {
+		Change ch2 = tip1.paragraph().lookupChange(tip1.pos());
+		if (!ch2.isSimilarTo(ch))
+			break;
+	}
+	CursorSlice tip2 = cur.top();
+	for (; tip2.pit() > 0 || tip2.pos() > 0;) {
+		tip2.backwardPos();
+		Change ch2 = tip2.paragraph().lookupChange(tip2.pos());
+		if (!ch2.isSimilarTo(ch)) {
+			// take a step forward to correctly set the selection
+			tip2.forwardPos();
+			break;
 		}
 	}
-
-	if (!search_both_sides) {
-		// Now set the selection.
-		bv->mouseSetCursor(cur, true);
-	} else {
-		bv->mouseSetCursor(cur, false);
-		findChange(bv, !next);
-	}
-
+	if (forward)
+		swap(tip1, tip2);
+	cur.top() = tip1;
+	cur.bv().mouseSetCursor(cur, false);
+	cur.top() = tip2;
+	cur.bv().mouseSetCursor(cur, true);
 	return true;
 }
+
+
+namespace {
+
+
+bool findChange(BufferView * bv, bool forward)
+{
+	Cursor cur(*bv);
+	cur.setCursor(forward ? bv->cursor().selectionEnd()
+		      : bv->cursor().selectionBegin());
+	forward ? findNextChange(cur) : findPreviousChange(cur);
+	return selectChange(cur, forward);
 }
 
+}
 
 bool findNextChange(BufferView * bv)
 {
@@ -491,6 +465,7 @@ bool findPreviousChange(BufferView * bv)
 {
 	return findChange(bv, false);
 }
+
 
 
 namespace {
