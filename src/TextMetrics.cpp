@@ -802,7 +802,9 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	int const width = max_width_ - right_margin;
 	pos_type const body_pos = par.beginOfBody();
 	row.clear();
-	row.dimension().wid = leftMargin(max_width_, pit, pos);
+	// This make get changed in computeRowMetrics depending on RTL
+	row.x = leftMargin(max_width_, pit, pos);
+	row.dimension().wid = row.x;
 	row.right_margin = right_margin;
 
 	if (pos >= end || row.width() > width) {

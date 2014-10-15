@@ -362,37 +362,50 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 	if (empty() || width() <= w)
 		return;
 
-	/** First, we try to remove elements one by one from the end
-	 * until a separator is found. cit points to the first element
-	 * we want to remove from the row.
-	 */
 	Elements::iterator const beg = elements_.begin();
 	Elements::iterator const end = elements_.end();
-	Elements::iterator cit = end;
-	Elements::iterator first_below = end;
-	int new_end = end_;
-	int new_wid = dim_.wid;
-	// if the row ends with a separator, skip it.
-	if (cit != beg && boost::prior(cit)->type == SEPARATOR && new_end > keep) {
-		--cit;
-		new_end = cit->pos;
-		new_wid -= cit->dim.wid;
+	Elements::iterator last_sep = elements_.end();
+	double last_width = 0;
+	double wid = x;
+
+	Elements::iterator cit = beg;
+	for ( ; cit != end ; ++cit) {
+		if (cit->type == SEPARATOR && cit->pos >= keep) {
+			last_sep = cit;
+			last_width = wid;
+		}
+		if (wid + cit->width() > w)
+			break;
+		wid += cit->width();
 	}
 
-	// Search for a separator where the row can be broken.
-	while (cit != beg && boost::prior(cit)->type != SEPARATOR && new_end > keep) {
+	if (last_sep != end) {
+		// We have found a suitable separator. This is the
+		// common case.
+		end_ = last_sep->endpos;
+		dim_.wid = last_width;
+		elements_.erase(last_sep, end);
+		return;
+	}
+
+	if (cit == end) {
+		// This should not happen since the row is too long.
+		LYXERR0("Something is wrong cannot shorten row: " << *this);
+		return;
+	}
+
+	if (cit != beg && cit->type == VIRTUAL) {
+		// It is not possible to separate a virtual element from the
+		// previous one.
 		--cit;
-		new_end = cit->pos;
-		new_wid -= cit->dim.wid;
-		if (new_wid < w && first_below == end)
-			first_below = cit;
+		wid -= cit->width();
 	}
 
 	if (cit != beg) {
-		// We have found a suitable separator. This is the
-		// common case.
-		end_ = new_end;
-		dim_.wid = new_wid;
+		// There is no separator, but several elements (probably
+		// insets) have been added. We can cut at this place.
+		end_ = cit->pos;
+		dim_.wid = wid;
 		elements_.erase(cit, end);
 		return;
 	}
@@ -402,17 +415,11 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 	 * something: when we have one big string, maybe with some
 	 * other things after it.
 	 */
-	double max_w = w - x;
-	if (first_below->breakAt(max_w)) {
-		end_ = first_below->endpos;
-		dim_.wid = int(x + first_below->width());
+	if (cit->breakAt(w - x)) {
+		end_ = cit->endpos;
+		dim_.wid = int(x + cit->width());
 		// If there are other elements, they should be removed.
-		elements_.erase(boost::next(first_below), end);
-	} else if (first_below->pos > pos_) {
-		end_ = first_below->pos;
-		dim_.wid = new_wid;
-		// Remove all elements from first_below.
-		elements_.erase(first_below, end);
+		elements_.erase(boost::next(cit), end);
 	}
 }
 
