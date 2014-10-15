@@ -4577,9 +4577,14 @@ def convert_chunks(document):
         # The last chunk should simply have an "@" in it
         # or at least end with "@" (can happen if @ is
         # preceded by a newline)
-        lastpar = ''.join(contents[-1])
+        lastpar = ''
+        if len(contents) > 0:
+            lastpar = ''.join(contents[-1])
         if not lastpar.endswith("@"):
             document.warning("Unexpected chunk content: chunk not terminated by '@'!")
+            if len(contents) == 0:
+                # convert empty chunk layouts to Standard
+                document.body[start] = "\\begin_layout Standard"
             continue
 
         if lastpar == "@":
