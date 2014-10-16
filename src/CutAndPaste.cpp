@@ -1254,31 +1254,43 @@ void eraseSelection(Cursor & cur)
 	//lyxerr << "cap::eraseSelection begin: " << cur << endl;
 	CursorSlice const & i1 = cur.selBegin();
 	CursorSlice const & i2 = cur.selEnd();
-	if (i1.inset().asInsetMath()) {
-		saveSelection(cur);
-		cur.top() = i1;
-		if (i1.idx() == i2.idx()) {
-			i1.cell().erase(i1.pos(), i2.pos());
-			// We may have deleted i1.cell(cur.pos()).
-			// Make sure that pos is valid.
-			if (cur.pos() > cur.lastpos())
-				cur.pos() = cur.lastpos();
-		} else {
-			InsetMath * p = i1.asInsetMath();
-			Inset::row_type r1, r2;
-			Inset::col_type c1, c2;
-			region(i1, i2, r1, r2, c1, c2);
-			for (Inset::row_type row = r1; row <= r2; ++row)
-				for (Inset::col_type col = c1; col <= c2; ++col)
-					p->cell(p->index(row, col)).clear();
-			// We've deleted the whole cell. Only pos 0 is valid.
-			cur.pos() = 0;
-		}
-		// need a valid cursor. (Lgb)
-		cur.clearSelection();
-	} else {
-		lyxerr << "can't erase this selection 1" << endl;
+	if (!i1.asInsetMath()) {
+		LYXERR0("Can't erase this selection");
+		return;
 	}
+
+	saveSelection(cur);
+	cur.top() = i1;
+	InsetMath * p = i1.asInsetMath();
+	if (i1.idx() == i2.idx()) {
+		i1.cell().erase(i1.pos(), i2.pos());
+		// We may have deleted i1.cell(cur.pos()).
+		// Make sure that pos is valid.
+		if (cur.pos() > cur.lastpos())
+			cur.pos() = cur.lastpos();
+	} else if (p->nrows() > 0 && p->ncols() > 0) {
+		// This is a grid, delete a nice square region
+		Inset::row_type r1, r2;
+		Inset::col_type c1, c2;
+		region(i1, i2, r1, r2, c1, c2);
+		for (Inset::row_type row = r1; row <= r2; ++row)
+			for (Inset::col_type col = c1; col <= c2; ++col)
+				p->cell(p->index(row, col)).clear();
+		// We've deleted the whole cell. Only pos 0 is valid.
+		cur.pos() = 0;
+	} else {
+		Inset::idx_type idx1 = i1.idx();
+		Inset::idx_type idx2 = i2.idx();
+		if (idx1 > idx2)
+			swap(idx1, idx2);
+		for (Inset::idx_type idx = idx1 ; idx <= idx2; ++idx)
+			p->cell(idx).clear();
+		// We've deleted the whole cell. Only pos 0 is valid.
+		cur.pos() = 0;
+	}
+
+	// need a valid cursor. (Lgb)
+	cur.clearSelection();
 	//lyxerr << "cap::eraseSelection end: " << cur << endl;
 }
 
