@@ -43,7 +43,8 @@ What's new
 
 - The indentation of beamer frame contents has been decreased and unified.
 
-- In mathed, select only current cell on double-click
+- In mathed, select only current cell on double-click (bug 9747).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
@@ -155,8 +156,9 @@ What's new
 
 - Fix initialization problem with default Inset Layout.
 
-- When a counter is stepped, reset recursively all subcounters (bug #10063).
+- When a counter is stepped, reset recursively all subcounters (bug 10063).
 
+- Erase correctly math multi-cell selections (bug 9747).
 
 * INTERNALS
 
