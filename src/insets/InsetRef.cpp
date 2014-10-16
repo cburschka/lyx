@@ -235,8 +235,8 @@ docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const & op) const
 			// properly in XHTML output yet (bug #8599).
 			// It might not be that hard to do. We have the InsetLabel,
 			// and we can presumably find its paragraph using the TOC.
-			// We could then output the contents of the paragraph using
-			// something?
+			// But the label might be referencing a section, yet not be
+			// in that section. So this is not trivial.
 			display_string = il->prettyCounter();
 	} else 
 			display_string = ref;
