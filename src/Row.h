@@ -165,7 +165,7 @@ public:
 	Dimension & dimension() { return dim_; }
 	///
 	int height() const { return dim_.height(); }
-	///
+	/// The width of the row, including the left margin, but not the right one.
 	int width() const { return dim_.wid; }
 	///
 	int ascent() const { return dim_.asc; }

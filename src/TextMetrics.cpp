@@ -808,7 +808,6 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	row.right_margin = right_margin;
 
 	if (pos >= end || row.width() > width) {
-		row.dimension().wid += right_margin;
 		row.endpos(end);
 		return;
 	}
@@ -1122,9 +1121,9 @@ pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 	else if (x <= row.x) {
 		pos = row.front().left_pos();
 		x = int(row.x);
-	} else if (x >= row.width() - row.right_margin) {
+	} else if (x >= row.width()) {
 		pos = row.back().right_pos();
-		x = row.width() - row.right_margin;
+		x = row.width();
 	} else {
 		double w = row.x;
 		Row::const_iterator cit = row.begin();
@@ -1140,7 +1139,7 @@ pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 		}
 		if (cit == row.end()) {
 			pos = row.back().right_pos();
-			x = row.width() - row.right_margin;
+			x = row.width();
 		}
 		/** This tests for the case where the cursor is placed
 		 * just before a font direction change. See comment on
