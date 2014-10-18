@@ -25,6 +25,7 @@ namespace graphics {
 Params::Params()
 	: display(true),
 	  scale(100),
+	  pixel_ratio(1.0),
 	  angle(0)
 {}
 
@@ -35,6 +36,7 @@ bool operator==(Params const & a, Params const & b)
 		a.display == b.display &&
 		a.bb == b.bb &&
 		a.scale == b.scale &&
+		a.pixel_ratio == b.pixel_ratio &&
 		a.angle == b.angle);
 }
 

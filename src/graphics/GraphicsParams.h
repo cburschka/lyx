@@ -55,6 +55,7 @@ public:
 
 	bool display;
 	unsigned int scale;
+	double pixel_ratio;
 
 	/// The image filename.
 	support::FileName filename;

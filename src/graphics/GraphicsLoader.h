@@ -101,6 +101,9 @@ public:
 	 */
 	Image const * image() const;
 
+	double displayPixelRatio() const;
+	void setDisplayPixelRatio(double scale);
+
 private:
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;

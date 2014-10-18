@@ -191,6 +191,15 @@ public:
 	/// The connection of the signal StatusChanged 	
 	boost::signals::connection sc_;
 
+	double displayPixelRatio() const
+	{
+		return params_.pixel_ratio;
+	}
+	void setDisplayPixelRatio(double scale)
+	{
+		params_.pixel_ratio = scale;
+	}
+
 private:
 	///
 	void statusChanged();
@@ -326,6 +335,18 @@ ImageStatus Loader::status() const
 }
 
 
+double Loader::displayPixelRatio() const
+{
+	return pimpl_->displayPixelRatio();
+}
+
+
+void Loader::setDisplayPixelRatio(double scale)
+{
+	pimpl_->setDisplayPixelRatio(scale);
+}
+
+
 boost::signals::connection Loader::connect(slot_type const & slot) const
 {
 	return pimpl_->signal_.connect(slot);
@@ -432,6 +453,16 @@ void Loader::Impl::createPixmap()
 	}
 
 	image_.reset(cached_item_->image()->clone());
+
+	if (params_.pixel_ratio == 1.0) {
+		string filename = cached_item_->filename().absFileName();
+		size_t idx = filename.find_last_of('.');
+		if (idx != string::npos && idx > 3) {
+			if (filename.substr(idx - 3, 3) == "@2x") {
+				params_.pixel_ratio = 2.0;
+			}
+		}
+	}
 
 	bool const success = image_->setPixmap(params_);
 
