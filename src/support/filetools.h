@@ -50,7 +50,12 @@ enum search_mode {
 	must_exist,
 	/// Only do file name expansion, return the complete name even if
 	/// the file does not exist
-	may_not_exist
+	may_not_exist,
+	/// The (image) file may be present with hi-dpi resolution -
+	/// the lookup checks for a file named "image" + "@2x" + ".ext" first.
+	/// If found it will return e.g. "image@2x.png" instead of "image.png".
+	/// Otherwise it will work as must_exist.
+	check_hidpi
 };
 
 /** Returns the real name of file name in directory path, with optional
@@ -90,7 +95,8 @@ bool isBinaryFile(FileName const & filename);
 */
 FileName const libFileSearch(std::string const & dir,
 				std::string const & name,
-				std::string const & ext = std::string());
+				std::string const & ext = std::string(),
+				search_mode mode = must_exist);
 
 /** Same as libFileSearch(), but tries first to find an
   internationalized version of the file by prepending $LANG_ to the
@@ -106,7 +112,8 @@ i18nLibFileSearch(std::string const & dir,
   */
 FileName const
 imageLibFileSearch(std::string & dir, std::string const & name,
-		   std::string const & ext = std::string());
+		   std::string const & ext = std::string(),
+		   search_mode mode = must_exist);
 
 /// How to quote a filename
 enum quote_style {

@@ -27,7 +27,6 @@
 
 #include "support/convert.h"
 #include "support/debug.h"
-#include "support/filetools.h"
 #include "support/foreach.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
@@ -60,17 +59,17 @@ using namespace lyx::support;
 namespace lyx {
 
 FileName libFileSearch(QString const & dir, QString const & name,
-				QString const & ext)
+				QString const & ext, search_mode mode)
 {
-	return support::libFileSearch(fromqstr(dir), fromqstr(name), fromqstr(ext));
+	return support::libFileSearch(fromqstr(dir), fromqstr(name), fromqstr(ext), mode);
 }
 
 
 FileName imageLibFileSearch(QString & dir, QString const & name,
-				QString const & ext)
+				QString const & ext, search_mode mode)
 {
 	string tmp = fromqstr(dir);
-	FileName fn = support::imageLibFileSearch(tmp, fromqstr(name), fromqstr(ext));
+	FileName fn = support::imageLibFileSearch(tmp, fromqstr(name), fromqstr(ext), mode);
 	dir = toqstr(tmp);
 	return fn;
 }

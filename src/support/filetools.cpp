@@ -300,8 +300,14 @@ FileName const fileSearch(string const & path, string const & name,
 		return mode == may_not_exist ? fullname : FileName();
 	// Only add the extension if it is not already the extension of
 	// fullname.
-	if (getExtension(fullname.absFileName()) != ext)
+	if (getExtension(fullname.absFileName()) != ext) {
+		if (mode == check_hidpi) {
+			FileName fullname2x = FileName(addExtension(fullname.absFileName() + "@2x", ext));
+			if (fullname2x.isReadableFile())
+				return fullname2x;
+		}
 		fullname = FileName(addExtension(fullname.absFileName(), ext));
+	}
 	if (fullname.isReadableFile() || mode == may_not_exist)
 		return fullname;
 	return FileName();
@@ -313,20 +319,21 @@ FileName const fileSearch(string const & path, string const & name,
 //   2) build_lyxdir (if not empty)
 //   3) system_lyxdir
 FileName const libFileSearch(string const & dir, string const & name,
-			   string const & ext)
+			   string const & ext, search_mode mode)
 {
 	FileName fullname = fileSearch(addPath(package().user_support().absFileName(), dir),
-				     name, ext);
+				     name, ext, mode);
 	if (!fullname.empty())
 		return fullname;
 
 	if (!package().build_support().empty())
 		fullname = fileSearch(addPath(package().build_support().absFileName(), dir),
-				      name, ext);
+				      name, ext, mode);
 	if (!fullname.empty())
 		return fullname;
 
-	return fileSearch(addPath(package().system_support().absFileName(), dir), name, ext);
+	return fileSearch(addPath(package().system_support().absFileName(), dir),
+				      name, ext, mode);
 }
 
 
@@ -381,17 +388,17 @@ FileName const i18nLibFileSearch(string const & dir, string const & name,
 
 
 FileName const imageLibFileSearch(string & dir, string const & name,
-		  string const & ext)
+		  string const & ext, search_mode mode)
 {
 	if (!lyx::lyxrc.icon_set.empty()) {
 		string const imagedir = addPath(dir, lyx::lyxrc.icon_set);
-		FileName const fn = libFileSearch(imagedir, name, ext);
+		FileName const fn = libFileSearch(imagedir, name, ext, mode);
 		if (fn.exists()) {
 			dir = imagedir;
 			return fn;
 		}
 	}
-	return libFileSearch(dir, name, ext);
+	return libFileSearch(dir, name, ext, mode);
 }
 
 

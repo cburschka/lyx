@@ -15,6 +15,7 @@
 
 #include "Length.h"
 #include "support/qstring_helpers.h"
+#include "support/filetools.h"
 #include "qt_i18n.h"
 
 #include <QHeaderView>
@@ -91,11 +92,13 @@ QString const qt_(QString const & qstr);
 
 ///
 support::FileName libFileSearch(QString const & dir, QString const & name,
-				QString const & ext = QString());
+				QString const & ext = QString(),
+				support::search_mode mode = support::must_exist);
 
 ///
 support::FileName imageLibFileSearch(QString & dir, QString const & name,
-				     QString const & ext = QString());
+				QString const & ext = QString(),
+				support::search_mode mode = support::must_exist);
 
 /** Wrappers around browseFile which try to provide a filename
 	relative to relpath.
