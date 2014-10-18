@@ -262,6 +262,7 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & gv)
 : d(new Private(this))
 {
 	setGuiView(gv);
+	buffer.params().display_pixel_ratio = theGuiApp()->pixelRatio();
 	setBuffer(buffer);
 	init();
 }
@@ -269,7 +270,7 @@ GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & gv)
 
 double GuiWorkArea::pixelRatio() const
 {
-#if QT_VERSION > 0x050000
+#if QT_VERSION >= 0x050000
 	return devicePixelRatio();
 #else
 	return 1.0;

@@ -2808,6 +2808,7 @@ void GuiDocument::applyView()
 	bp_.html_be_strict = outputModule->strictCB->isChecked();
 	bp_.html_css_as_file = outputModule->cssCB->isChecked();
 	bp_.html_math_img_scale = outputModule->mathimgSB->value();
+	bp_.display_pixel_ratio = theGuiApp()->pixelRatio();
 
 	// fonts
 	bp_.fonts_roman =
