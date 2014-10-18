@@ -10,6 +10,7 @@
  */
 
 #include <config.h>
+#include <math.h> /* ceil */
 
 #include "GuiImage.h"
 #include "qt_helpers.h"
@@ -63,13 +64,25 @@ QImage const & GuiImage::image() const
 
 unsigned int GuiImage::width() const
 {
+#if QT_VERSION >= 0x050000
+	return is_transformed_ ?
+		ceil(transformed_.width() / transformed_.devicePixelRatio()) :
+		ceil(original_.width() / original_.devicePixelRatio());
+#else
 	return is_transformed_ ? transformed_.width() : original_.width();
+#endif
 }
 
 
 unsigned int GuiImage::height() const
 {
+#if QT_VERSION >= 0x050000
+	return is_transformed_ ?
+		ceil(transformed_.height() / transformed_.devicePixelRatio()) :
+		ceil(original_.height() / original_.devicePixelRatio());
+#else
 	return is_transformed_ ? transformed_.height() : original_.height();
+#endif
 }
 
 
@@ -103,7 +116,11 @@ bool GuiImage::setPixmap(Params const & params)
 		if (!load())
 			return false;
 	}
-		
+
+#if QT_VERSION >= 0x050000
+	original_.setDevicePixelRatio(params.pixel_ratio);
+#endif
+
 	is_transformed_ = clip(params);
 	is_transformed_ |= rotate(params);
 	is_transformed_ |= scale(params);
