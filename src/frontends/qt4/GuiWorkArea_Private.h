@@ -128,14 +128,14 @@ struct GuiWorkArea::Private
 		if (lyxrc.use_qimage) {
 			QImage *x = new QImage(pixel_ratio_ * p->viewport()->width(),
 				pixel_ratio_ * p->viewport()->height(), QImage::Format_ARGB32_Premultiplied);
-#if QT_VERSION > 0x050000
+#if QT_VERSION >= 0x050000
 			x->setDevicePixelRatio(pixel_ratio_);
 #endif
 			screen_ = x;
 		} else {
 			QPixmap *x = new QPixmap(pixel_ratio_ * p->viewport()->width(),
 				pixel_ratio_ * p->viewport()->height());
-#if QT_VERSION > 0x050000
+#if QT_VERSION >= 0x050000
 			x->setDevicePixelRatio(pixel_ratio_);
 #endif
 			screen_ = x;

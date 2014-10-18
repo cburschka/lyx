@@ -371,7 +371,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		int const h = mA + mD;
 		if (w > 0 && h > 0) {
 			pm = QPixmap(pixelRatio() * w , pixelRatio() * h);
-#if QT_VERSION > 0x050000
+#if QT_VERSION >= 0x050000
 			pm.setDevicePixelRatio(pixelRatio());
 #endif
 			pm.fill(Qt::transparent);
