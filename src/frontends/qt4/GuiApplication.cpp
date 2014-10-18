@@ -505,13 +505,14 @@ QString iconName(FuncRequest const & f, bool unknown)
 
 	QStringList imagedirs;
 	imagedirs << "images/" << "images/ipa/";
-	for (int i = 0; i < imagedirs.size(); ++i) { 
+	search_mode mode = theGuiApp()->imageSearchMode();
+	for (int i = 0; i < imagedirs.size(); ++i) {
 		QString imagedir = imagedirs.at(i) + path;
-		FileName fname = imageLibFileSearch(imagedir, name1, "png");
+		FileName fname = imageLibFileSearch(imagedir, name1, "png", mode);
 		if (fname.exists())
 			return toqstr(fname.absFileName());
 
-		fname = imageLibFileSearch(imagedir, name2, "png");
+		fname = imageLibFileSearch(imagedir, name2, "png", mode);
 		if (fname.exists())
 			return toqstr(fname.absFileName());
 	}
@@ -540,7 +541,7 @@ QString iconName(FuncRequest const & f, bool unknown)
 
 	if (unknown) {
 		QString imagedir = "images/";
-		FileName fname = imageLibFileSearch(imagedir, "unknown", "png");
+		FileName fname = imageLibFileSearch(imagedir, "unknown", "png", mode);
 		if (fname.exists())
 			return toqstr(fname.absFileName());
 		return QString(":/images/unknown.png");
@@ -553,7 +554,7 @@ QPixmap getPixmap(QString const & path, QString const & name, QString const & ex
 {
 	QPixmap pixmap;
 	QString imagedir = path;
-	FileName fname = imageLibFileSearch(imagedir, name, ext);
+	FileName fname = imageLibFileSearch(imagedir, name, ext, theGuiApp()->imageSearchMode());
 	QString path1 = toqstr(fname.absFileName());
 	QString path2 = ":/" + path + name + "." + ext;
 
@@ -1040,7 +1041,7 @@ GuiApplication * theGuiApp()
 
 double GuiApplication::pixelRatio() const
 {
-#if QT_VERSION > 0x050000
+#if QT_VERSION >= 0x050000
 	return devicePixelRatio();
 #else
 	return 1.0;

@@ -14,6 +14,7 @@
 #define GUIAPPLICATION_H
 
 #include "frontends/Application.h"
+#include "support/filetools.h"
 
 #include <QApplication>
 #include <QList>
@@ -142,7 +143,16 @@ public:
 
 	/// Current ratio between physical pixels and device-independent pixels
 	double pixelRatio() const;
-	
+
+	/// How to load image files
+	support::search_mode imageSearchMode() const {
+#if QT_VERSION >= 0x050000
+		return support::check_hidpi;
+#else
+		return support::must_exist;
+#endif
+	}
+
 	void processKeySym(KeySymbol const & key, KeyModifier state);
 	/// return the status bar state string
 	docstring viewStatusMessage();

@@ -173,7 +173,7 @@ public:
 	void paintEvent(QPaintEvent *)
 	{
 		QRectF r = splash_.rect();
-#if QT_VERSION > 0x050000
+#if QT_VERSION >= 0x050000
 		r.setWidth(r.width() / splash_.devicePixelRatio());
 		r.setHeight(r.height() / splash_.devicePixelRatio());
 #endif
@@ -477,7 +477,8 @@ GuiView::GuiView(int id)
 	// add busy indicator to statusbar
 	QLabel * busylabel = new QLabel(statusBar());
 	statusBar()->addPermanentWidget(busylabel);
-	QString fn = toqstr(lyx::libFileSearch("images", "busy.gif").absFileName());
+	search_mode mode = theGuiApp()->imageSearchMode();
+	QString fn = toqstr(lyx::libFileSearch("images", "busy", "gif", mode).absFileName());
 	QMovie * busyanim = new QMovie(fn, QByteArray(), busylabel);
 	busylabel->setMovie(busyanim);
 	busyanim->start();
@@ -1211,7 +1212,7 @@ void GuiView::setBusy(bool busy)
 
 double GuiView::pixelRatio() const
 {
-#if QT_VERSION > 0x050000
+#if QT_VERSION >= 0x050000
 	return devicePixelRatio();
 #else
 	return 1.0;

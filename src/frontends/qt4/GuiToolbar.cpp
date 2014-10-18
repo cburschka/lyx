@@ -194,9 +194,10 @@ MenuButton::MenuButton(GuiToolbar * bar, ToolbarItem const & item, bool const st
 	QString const name = toqstr(tbitem_.name_);
 	QStringList imagedirs;
 	imagedirs << "images/math/" << "images/";
-	for (int i = 0; i < imagedirs.size(); ++i) { 
+	for (int i = 0; i < imagedirs.size(); ++i) {
 		QString imagedir = imagedirs.at(i);
-		FileName const fname = imageLibFileSearch(imagedir, name, "png");
+		FileName const fname = imageLibFileSearch(imagedir, name, "png",
+			theGuiApp()->imageSearchMode());
 		if (fname.exists()) {
 			setIcon(QIcon(getPixmap(imagedir, name, "png")));
 			break;
