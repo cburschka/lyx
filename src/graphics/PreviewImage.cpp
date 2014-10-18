@@ -105,6 +105,7 @@ PreviewImage::Impl::Impl(PreviewImage & p, PreviewLoader & l,
 	: parent_(p), ploader_(l), iloader_(bf),
 	  snippet_(s), ascent_frac_(af)
 {
+	iloader_.setDisplayPixelRatio(l.displayPixelRatio());
 	iloader_.connect(bind(&Impl::statusChanged, this));
 }
 

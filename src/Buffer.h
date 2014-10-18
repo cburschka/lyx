@@ -236,6 +236,8 @@ public:
 	/// read the header, returns number of unknown tokens
 	int readHeader(Lexer & lex);
 
+	double fontScalingFactor() const;
+
 private:
 	///
 	typedef std::map<Buffer const *, Buffer *> BufferMap;

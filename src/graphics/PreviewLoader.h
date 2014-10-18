@@ -91,6 +91,8 @@ public:
 	/// The foreground color used
 	static ColorCode foregroundColor() { return Color_preview; }
 
+	double displayPixelRatio() const ;
+
 private:
 	/// noncopyable
 	PreviewLoader(PreviewLoader const &);

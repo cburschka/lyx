@@ -417,6 +417,7 @@ BufferParams::BufferParams()
 	html_math_output = MathML;
 	html_math_img_scale = 1.0;
 	html_css_as_file = false;
+	display_pixel_ratio = 1.0;
 
 	output_sync = false;
 	use_refstyle = true;

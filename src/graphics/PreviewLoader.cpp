@@ -581,9 +581,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 		return;
 	}
 
-	double const font_scaling_factor = 
-		buffer_.isExporting() ? 75.0 * buffer_.params().html_math_img_scale 
-			: 0.01 * lyxrc.dpi * lyxrc.zoom * lyxrc.preview_scale_factor;
+	double const font_scaling_factor = buffer_.fontScalingFactor();
 	
 	// The conversion command.
 	ostringstream cs;
@@ -649,6 +647,11 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	in_progress_[inprogress.pid] = inprogress;
 }
 
+
+double PreviewLoader::displayPixelRatio() const
+{
+	return buffer().params().display_pixel_ratio;
+}
 
 void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 {

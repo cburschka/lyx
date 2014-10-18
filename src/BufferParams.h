@@ -465,6 +465,8 @@ public:
 	///
 	double html_math_img_scale;
 	///
+	double display_pixel_ratio;
+	///
 	std::string html_latex_start;
 	///
 	std::string html_latex_end;
