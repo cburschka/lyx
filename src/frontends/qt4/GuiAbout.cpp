@@ -129,11 +129,11 @@ static QString version()
 	out << "\n";
 	out << qt_("User directory: ");
 	out << toqstr(makeDisplayPath(package().user_support().absFileName()));
-#ifdef DEVEL_VERSION
-	out << "\n";
-	out << toqstr(bformat(_("Qt Version (run-time): %1$s"), from_ascii(qVersion()))) << "\n";
-	out << toqstr(bformat(_("Qt Version (compile-time): %1$s"), from_ascii(QT_VERSION_STR))) << "\n";
-#endif
+	if (std::string(lyx_git_commit_hash) != "none") {
+		out << "\n";
+		out << toqstr(bformat(_("Qt Version (run-time): %1$s"), from_ascii(qVersion()))) << "\n";
+		out << toqstr(bformat(_("Qt Version (compile-time): %1$s"), from_ascii(QT_VERSION_STR))) << "\n";
+	}
 	return res;
 }
 
