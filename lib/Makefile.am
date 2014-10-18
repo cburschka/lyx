@@ -360,7 +360,7 @@ dist_fonts_DATA = \
 	fonts/wasy10.ttf
 
 imagesdir = $(pkgdatadir)/images
-dist_images_DATA = \
+dist_images_DATA1X = \
 	images/all-changes-accept.png \
 	images/all-changes-reject.png \
 	images/amssymb.png \
@@ -545,6 +545,17 @@ dist_images_DATA = \
 	images/vc-repo-update.png \
 	images/vc-revert.png \
 	images/view-others.png
+
+# possible shortcut for complete set of 2x sized icons
+#dist_images_DATA2X = \
+#	${dist_images_DATA1X:%.png=%@2x.png}
+
+dist_images_DATA2X = \
+	images/banner@2x.png
+
+dist_images_DATA = \
+	${dist_images_DATA1X} \
+	${dist_images_DATA2X}
 
 imagesmathdir = $(imagesdir)/math
 dist_imagesmath_DATA = \
