@@ -158,15 +158,27 @@ void CursorSlice::backwardPos()
 }
 
 
-bool CursorSlice::at_end() const 
+bool CursorSlice::at_cell_end() const
 {
-	return idx_ == lastidx() && pit_ == lastpit() && pos_ == lastpos();
+	return pit_ == lastpit() && pos_ == lastpos();
+}
+
+
+bool CursorSlice::at_cell_begin() const
+{
+	return pit_ == 0 && pos_ == 0;
+}
+
+
+bool CursorSlice::at_end() const
+{
+	return idx_ == lastidx() && at_cell_end();
 }
 
 
 bool CursorSlice::at_begin() const
 {
-	return idx_ == 0 && pit_ == 0 && pos_ == 0;
+	return idx_ == 0 && at_cell_begin();
 }
 
 

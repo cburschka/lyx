@@ -729,7 +729,6 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_DOUBLE:
 	case LFUN_MOUSE_TRIPLE:
 	case LFUN_WORD_SELECT:
-	case LFUN_INSET_SELECT_ALL:
 		cur.pos() = 0;
 		cur.idx() = 0;
 		cur.resetAnchor();

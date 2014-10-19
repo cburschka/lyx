@@ -87,8 +87,8 @@ Format 2
 \bind "C-y"			"redo"
 \bind "C-S-Z"			"redo"
 
-\bind "C-a"			"command-sequence buffer-begin ; buffer-end-select"   # select all
-\bind "C-M-a"			"inset-select-all"
+\bind "C-M-a"			"command-sequence buffer-begin ; buffer-end-select"   # select all
+\bind "C-a"			"inset-select-all"
 
 \bind "C-S-E"			"changes-track"  # it's what MS Word uses
 \bind "~S-M-quotedbl"		"quote-insert single"

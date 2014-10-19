@@ -113,7 +113,8 @@ Format 2
 \bind "C-x"	"cut"
 \bind "C-z"	"undo"
 \bind "S-C-Z"	"redo"
-\bind "C-a"	"command-sequence buffer-begin ; buffer-end-select"   # select all
+\bind "C-a"	"inset-select-all"
+\bind "C-M-a"	"command-sequence buffer-begin ; buffer-end-select"   # select all
 
 
 # This combination makes an umlaut accent now.

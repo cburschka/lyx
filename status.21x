@@ -58,13 +58,16 @@ What's new
 
 * USER INTERFACE
 
-- Debug options in message pane are now sorted alphabetically.
-
 - References no longer truncated in outliner (bug 9312).
 
 - Allow computing selected subformulas with computer algebra systems.
 
 - Number correctly footnotes in title layouts (part of bug 2666).
+
+- Ctrl+A is now bound to inset-select-all, which does a local
+  selection (current inset) and grows at each new invokation. Try it!
+
+- Debug options in message pane are now sorted alphabetically.
 
 * DOCUMENTATION AND LOCALIZATION
 

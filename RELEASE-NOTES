@@ -175,6 +175,11 @@ The following LyX functions have been changed:
 
 The following LyX key bindings have been changed:
 
+- In LyX 2.1.3, the binding "C-a" was moved from selecting the whole
+  document to "inset-select-all". This function allows to select the
+  document in a incremental way. The old behavior is now bound to
+  "C-M-a".
+
 - The binding "C-w" was moved from "buffer-close" to "view-close"
   (only in cua.bind).
 

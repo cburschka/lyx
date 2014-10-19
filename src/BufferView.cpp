@@ -1089,6 +1089,7 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_KEYMAP_PRIMARY:
 	case LFUN_KEYMAP_SECONDARY:
 	case LFUN_KEYMAP_TOGGLE:
+	case LFUN_INSET_SELECT_ALL:
 		flag.setEnabled(true);
 		break;
 
@@ -1798,6 +1799,41 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		dr.screenUpdate(Update::SinglePar | Update::FitCursor);
 		break;
 	}
+
+
+	case LFUN_INSET_SELECT_ALL:
+		if (cur.depth() > 1
+		    && cur.selBegin().at_begin()
+		    && cur.selEnd().at_end()) {
+			// All the contents of the inset if selected.
+			// Select the inset from outside.
+			cur.pop();
+			cur.resetAnchor();
+			cur.setSelection(true);
+			cur.posForward();
+		} else if (cur.selBegin().idx() != cur.selEnd().idx()
+			   || (cur.depth() > 1
+				   && cur.selBegin().at_cell_begin()
+			       && cur.selEnd().at_cell_end())) {
+			// At least one complete cell is selected.
+			// Select all cells
+			cur.idx() = 0;
+			cur.pos() = 0;
+			cur.resetAnchor();
+			cur.setSelection(true);
+			cur.idx() = cur.lastidx();
+			cur.pos() = cur.lastpos();
+		} else {
+			// select current cell
+			cur.pit() = 0;
+			cur.pos() = 0;
+			cur.resetAnchor();
+			cur.setSelection(true);
+			cur.pit() = cur.lastpit();
+			cur.pos() = cur.lastpos();
+		}
+		dr.screenUpdate(Update::Force);
+		break;
 
 
 	// This would be in Buffer class if only Cursor did not
