@@ -132,6 +132,10 @@ public:
 	void forwardIdx();
 	/// move to previous cell
 	void backwardIdx();
+	/// are we at the end of the cell
+	bool at_cell_end() const;
+	/// are we at the start of the cell
+	bool at_cell_begin() const;
 	/// are we at the end of this slice
 	bool at_end() const;
 	/// are we at the start of this slice
