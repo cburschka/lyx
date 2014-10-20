@@ -2242,7 +2242,7 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 	} else {
 		// Clear all menubar contents before filling it.
 		qmb->clear();
-#if (QT_VERSION >= 0x050000)
+#if (QT_VERSION >= 0x050000 && defined(Q_OS_MAC))
 		d->macxMenuBarInit(qmb);
 #endif
 	}
