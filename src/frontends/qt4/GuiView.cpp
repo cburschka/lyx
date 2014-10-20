@@ -164,23 +164,36 @@ public:
 		// The font used to display the version info
 		font.setStyleHint(QFont::SansSerif);
 		font.setWeight(QFont::Bold);
-		font.setPointSize(int(toqstr(lyxrc.font_sizes[FONT_SIZE_LARGE]).toDouble()));
+		int size = int(toqstr(lyxrc.font_sizes[FONT_SIZE_LARGE]).toDouble());
+		size *= splashPixelRatio() / pixelRatio();
+		font.setPointSize(size);
 		pain.setFont(font);
-		pain.drawText(190, 225, text);
+		int x = 190;
+		int y = 225;
+		x *= splashPixelRatio() / pixelRatio();
+		y *= splashPixelRatio() / pixelRatio();
+		LYXERR(Debug::GUI,
+			   "widget pixel ratio: " << pixelRatio() <<
+			   " splash pixel ratio: " << splashPixelRatio() <<
+			   " text position: @" << x << "+" << y);
+		pain.drawText(x, y, text);
 		setFocusPolicy(Qt::StrongFocus);
 	}
 
 	void paintEvent(QPaintEvent *)
 	{
-		QRectF r = splash_.rect();
-#if QT_VERSION >= 0x050000
-		r.setWidth(r.width() / splash_.devicePixelRatio());
-		r.setHeight(r.height() / splash_.devicePixelRatio());
-#endif
-		int x = (width() - r.width()) / 2;
-		int y = (height() - r.height()) / 2;
+		int w = splash_.width();
+		int h = splash_.height();
+		w /= splashPixelRatio();
+		h /= splashPixelRatio();
+		int x = (width() - w) / 2;
+		int y = (height() - h) / 2;
+		LYXERR(Debug::GUI,
+			   "widget pixel ratio: " << pixelRatio() <<
+			   " splash pixel ratio: " << splashPixelRatio() <<
+			   " paint pixmap: " << w << "x" << h << "@" << x << "+" << y);
 		QPainter pain(this);
-		pain.drawPixmap(x, y, splash_);
+		pain.drawPixmap(x, y, w, h, splash_);
 	}
 
 	void keyPressEvent(QKeyEvent * ev)
@@ -197,6 +210,24 @@ public:
 
 private:
 	QPixmap splash_;
+
+	/// Current ratio between physical pixels and device-independent pixels
+	double pixelRatio() const {
+#if QT_VERSION >= 0x050000
+		return devicePixelRatio();
+#else
+		return 1.0;
+#endif
+	}
+
+	/// Ratio between physical pixels and device-independent pixels of splash image
+	double splashPixelRatio() const {
+#if QT_VERSION >= 0x050000
+		return splash_.devicePixelRatio();
+#else
+		return 1.0;
+#endif
+	}
 };
 
 
