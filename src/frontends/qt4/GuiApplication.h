@@ -147,7 +147,7 @@ public:
 	/// How to load image files
 	support::search_mode imageSearchMode() const {
 #if QT_VERSION >= 0x050000
-		return support::check_hidpi;
+		return pixelRatio() > 1 ? support::check_hidpi : support::must_exist;
 #else
 		return support::must_exist;
 #endif
