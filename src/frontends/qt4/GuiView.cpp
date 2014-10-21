@@ -3877,6 +3877,18 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (menuBar()->isVisible() && lyxrc.full_screen_menubar)
 			menuBar()->hide();
 	}
+
+	// Need to update bv because many LFUNs here might have destroyed it
+	bv = currentBufferView();
+
+	// Clear non-empty selections
+        // (e.g. from a "char-forward-select" followed by "char-backward-select")
+	if (bv) {
+		Cursor & cur = bv->cursor();
+		if ((cur.selection() && cur.selBegin() == cur.selEnd())) {
+			cur.clearSelection();
+		}
+	}
 }
 
 
