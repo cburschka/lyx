@@ -481,7 +481,7 @@ endif()
 
 # lyx's source files
 set(LYX_CPP_FILES [a-zA-Z]*.cpp)
-set(LYX_HPP_FILES *.h)
+set(LYX_HPP_FILES [a-zA-Z]*.h)
 set(LYX_MOC_FILES moc_*.cpp)
 
 include(ProjectSourceGroup)
