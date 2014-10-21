@@ -160,38 +160,34 @@ public:
 
 		QPainter pain(&splash_);
 		pain.setPen(QColor(0, 0, 0));
+		double const multiplier = splashPixelRatio() / pixelRatio();
+		int const size = toqstr(lyxrc.font_sizes[FONT_SIZE_LARGE]).toDouble() * multiplier;
+		int const x = 190 * multiplier;
+		int const y = 225 * multiplier;
+		LYXERR(Debug::GUI,
+			"widget pixel ratio: " << pixelRatio() <<
+			" splash pixel ratio: " << splashPixelRatio() <<
+			" version text size,position: " << size << "@" << x << "+" << y);
 		QFont font;
 		// The font used to display the version info
 		font.setStyleHint(QFont::SansSerif);
 		font.setWeight(QFont::Bold);
-		int size = int(toqstr(lyxrc.font_sizes[FONT_SIZE_LARGE]).toDouble());
-		size *= splashPixelRatio() / pixelRatio();
 		font.setPointSize(size);
 		pain.setFont(font);
-		int x = 190;
-		int y = 225;
-		x *= splashPixelRatio() / pixelRatio();
-		y *= splashPixelRatio() / pixelRatio();
-		LYXERR(Debug::GUI,
-			   "widget pixel ratio: " << pixelRatio() <<
-			   " splash pixel ratio: " << splashPixelRatio() <<
-			   " text position: @" << x << "+" << y);
 		pain.drawText(x, y, text);
 		setFocusPolicy(Qt::StrongFocus);
 	}
 
 	void paintEvent(QPaintEvent *)
 	{
-		int w = splash_.width();
-		int h = splash_.height();
-		w /= splashPixelRatio();
-		h /= splashPixelRatio();
-		int x = (width() - w) / 2;
-		int y = (height() - h) / 2;
+		int const w = splash_.width() / splashPixelRatio();
+		int const h = splash_.height() / splashPixelRatio();
+		int const x = (width() - w) / 2;
+		int const y = (height() - h) / 2;
 		LYXERR(Debug::GUI,
-			   "widget pixel ratio: " << pixelRatio() <<
-			   " splash pixel ratio: " << splashPixelRatio() <<
-			   " paint pixmap: " << w << "x" << h << "@" << x << "+" << y);
+			"widget pixel ratio: " << pixelRatio() <<
+			" splash pixel ratio: " << splashPixelRatio() <<
+			" paint pixmap: " << w << "x" << h << "@" << x << "+" << y);
 		QPainter pain(this);
 		pain.drawPixmap(x, y, w, h, splash_);
 	}
