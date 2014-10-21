@@ -480,7 +480,7 @@ if(NOT GROUP_CODE)
 endif()
 
 # lyx's source files
-set(LYX_CPP_FILES *.cpp)
+set(LYX_CPP_FILES [a-zA-Z]*.cpp)
 set(LYX_HPP_FILES *.h)
 set(LYX_MOC_FILES moc_*.cpp)
 
