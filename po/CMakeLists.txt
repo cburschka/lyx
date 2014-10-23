@@ -74,6 +74,7 @@ endmacro(add_gettext_python)
 
 SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot" GENERATED)
 SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" GENERATED)
+SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmtx.pot" GENERATED)
 SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot" GENERATED)
 
 add_gettext_python(qt4 src/frontends/qt4/ui *.ui)
@@ -117,9 +118,15 @@ foreach(_f ${_tmp_potfiles})
   file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in "${_f}\n")
 endforeach(_f)
 
+add_custom_command(
+  OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmtx.pot"
+  COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmtx.pot"
+  DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot"
+  )
+
 ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
-    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
+    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmtx.pot" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
     COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE}
       --default-domain=${_lyxname} --directory=${TOP_SRC_DIR}
       --add-comments=TRANSLATORS:
@@ -127,7 +134,7 @@ ADD_CUSTOM_COMMAND(
       --files-from=${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in
       --copyright-holder="LyX Developers" --msgid-bugs-address=lyx-devel@lists.lyx.org
       -o "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
-    DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" ${_potfiles_dep}
+    DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmtx.pot" ${_potfiles_dep}
     )
 
 #
