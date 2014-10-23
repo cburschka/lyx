@@ -1219,6 +1219,14 @@ contributors = [
                  "21 August 2007",
                  u"Catalan translations of menus"),
 
+     contributor(u"Stéphane Mourey",
+                 "stephane.mourey () impossible-exil ! info",
+                 "GPL",
+                 "Re: gpl",
+                 "m=141381522413781",
+                 "20 October 2014",
+                 u"New lfun server-get-statistics"),
+
      contributor(u"Iñaki Larrañaga Murgoitio",
                  "dooteo () euskalgnu ! org",
                  "GPL",
