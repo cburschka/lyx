@@ -1,4 +1,4 @@
-#  Copyright (c) 2012, Kornel Benko, <kornel@lyx.org>
+#  Copyright (c) 2012-2014, Kornel Benko, <kornel@lyx.org>
 #
 #  Redistribution and use in source and binary forms, with or without
 #  modification, are permitted provided that the following conditions
@@ -32,6 +32,8 @@
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
+set(LYX_GIT_COMMIT_HASH "none")
+
 FIND_PROGRAM(LYX_GITVERSION git)
 if(LYX_GITVERSION)
   # Override the value from configure.ac, if possible
@@ -44,26 +46,32 @@ if(LYX_GITVERSION)
     set(LYX_DATE ${CMAKE_MATCH_2})
     message(STATUS "Git-hash = ${LYX_GITHASH}")
   endif()
-endif()
-
-if(NOT EXISTS ${TOP_BINARY_DIR}/lyx_date.h)
-  configure_file(${TOP_CMAKE_PATH}/lyx_date.h.cmake ${TOP_BINARY_DIR}/lyx_date.h)
-else()
-  configure_file(${TOP_CMAKE_PATH}/lyx_date.h.cmake ${TOP_BINARY_DIR}/lyx_date.tmp)
-  message(STATUS "Created ${TOP_BINARY_DIR}/lyx_date.tmp")
-
-  EXECUTE_PROCESS(
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${TOP_BINARY_DIR}/lyx_date.tmp ${TOP_BINARY_DIR}/lyx_date.h
-    ERROR_VARIABLE copy_err
-  )
-
-  if(copy_err)
-    message(FATAL_ERROR "${CMAKE_COMMAND} -E copy_if_different not working")
+  EXECUTE_PROCESS(COMMAND ${LYX_GITVERSION} log -1 "--pretty=format:%H"
+    WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE lyxgitcommit OUTPUT_STRIP_TRAILING_WHITESPACE)
+  if (lyxgitcommit MATCHES "^[0-9a-f]+$")
+    set(LYX_GIT_COMMIT_HASH ${lyxgitcommit})
   endif()
-
-  EXECUTE_PROCESS(
-    COMMAND ${CMAKE_COMMAND} -E remove ${TOP_BINARY_DIR}/lyx_date.tmp
-  )
 endif()
 
+foreach(_hf lyx_date lyx_commit_hash)
+  if(NOT EXISTS ${TOP_BINARY_DIR}/${_hf}.h)
+    configure_file(${TOP_CMAKE_PATH}/${_hf}.h.cmake ${TOP_BINARY_DIR}/${_hf}.h)
+  else()
+    configure_file(${TOP_CMAKE_PATH}/${_hf}.h.cmake ${TOP_BINARY_DIR}/${_hf}.tmp)
+    message(STATUS "Created ${TOP_BINARY_DIR}/${_hf}.tmp")
+
+    EXECUTE_PROCESS(
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different ${TOP_BINARY_DIR}/${_hf}.tmp ${TOP_BINARY_DIR}/${_hf}.h
+      ERROR_VARIABLE copy_err
+    )
+
+    if(copy_err)
+      message(FATAL_ERROR "${CMAKE_COMMAND} -E copy_if_different not working")
+    endif()
+
+    EXECUTE_PROCESS(
+      COMMAND ${CMAKE_COMMAND} -E remove ${TOP_BINARY_DIR}/${_hf}.tmp
+    )
+  endif()
+endforeach()
 

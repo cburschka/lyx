@@ -316,7 +316,6 @@ endforeach(_c_l)
 
 FIND_PROGRAM(LYX_GITVERSION git)
 #message(STATUS "gitversion = ${LYX_GITVERSION}")
-set(LYX_GIT_COMMIT_HASH "none")
 set(LYX_REVISION_VERSION ${LYX_PATCH_VERSION})
 if(LYX_GITVERSION)
   if (LYX_LOCALVERSIONING)
@@ -332,13 +331,7 @@ if(LYX_GITVERSION)
       set(ENABLE_DIST ON)
     endif()
   endif()
-  EXECUTE_PROCESS(COMMAND ${LYX_GITVERSION} log -1 "--pretty=format:%H"
-    WORKING_DIRECTORY "${TOP_SRC_DIR}" OUTPUT_VARIABLE lyxgitcommit OUTPUT_STRIP_TRAILING_WHITESPACE)
-  if (lyxgitcommit MATCHES "^[0-9a-f]+$")
-    set(LYX_GIT_COMMIT_HASH ${lyxgitcommit})
-  endif()
 endif()
-#message(STATUS "LYX_GIT_COMMIT_HASH = ${LYX_GIT_COMMIT_HASH}")
 
 # Set the programs (lyx, tex2lyx, etc.) suffix
 # When building an OS X bundle, we will append
@@ -677,7 +670,7 @@ endif()
 # Compute qt4-version from ${QTVERSION}
 
 message(STATUS "")
-foreach(_v PACKAGE PACKAGE_VERSION LYX_GIT_COMMIT_HASH
+foreach(_v PACKAGE PACKAGE_VERSION
 	PROGRAM_SUFFIX LYX_DATE LYX_DIR_VER LYX_USERDIR_VER
 	LYX_ABS_TOP_SRCDIR
 	LYX_ABS_INSTALLED_DATADIR LYX_ABS_INSTALLED_LOCALEDIR LYX_INSTALL_SUFFIX)
