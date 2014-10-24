@@ -860,7 +860,8 @@ make_dmg() {
 
 	hdiutil create -type SPARSE -size ${DMGSIZE:-"250m"} -fs HFS+ -volname "${LyxBase}" "${DMGNAME}"
 	# Unmount currently mounted disk image
-	test -d /Volumes/"${LyxBase}" && umount /Volumes/"${LyxBase}"
+	mount | grep "${LyxBase}" && umount /Volumes/"${LyxBase}"
+	test -d /Volumes/"${LyxBase}" && rmdir /Volumes/"${LyxBase}"
 
 	# Mount the disk image
 	hdiutil attach "${DMGNAME}.sparseimage"
