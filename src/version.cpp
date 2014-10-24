@@ -12,6 +12,7 @@
 #include <config.h>
 #if ! defined(LYX_DATE)
 	#include <lyx_date.h>
+	#include <lyx_commit_hash.h>
 #endif
 
 ///
