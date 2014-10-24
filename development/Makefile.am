@@ -116,6 +116,7 @@ cmake/LyX_summary.txt \
 cmake/PyCompile.cmake \
 cmake/config.cpp.cmake \
 cmake/config.h.cmake \
+cmake/lyx_commit_hash.h.cmake \
 cmake/configCompiler.h.cmake \
 cmake/configFunctions.cmake \
 cmake/configIncludes.cmake \
