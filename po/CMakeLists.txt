@@ -74,7 +74,6 @@ endmacro(add_gettext_python)
 
 SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot" GENERATED)
 SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" GENERATED)
-SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmtx.pot" GENERATED)
 SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot" GENERATED)
 
 add_gettext_python(qt4 src/frontends/qt4/ui *.ui)
@@ -90,22 +89,26 @@ add_gettext_python(layouttranslations lib/layouts *.layout *.inc *.module)
 ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     COMMAND ${LYX_PYTHON_EXECUTABLE}
-    ARGS   "${TOP_CMAKE_PATH}/po/cat.py" ${_py_sources} > "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
+    ARGS   "${TOP_CMAKE_PATH}/po/cat.py" ${_py_sources} > "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat_tmp.pot"
     COMMAND ${LYX_PYTHON_EXECUTABLE}
-      ARGS   "${TOP_CMAKE_PATH}/po/dos2unix.py" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
+      ARGS   "${TOP_CMAKE_PATH}/po/dos2unix.py" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat_tmp.pot"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+      "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat_tmp.pot" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     DEPENDS ${_py_sources}
     )
 
 ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot"
     COMMAND ${GETTEXT_MSGUNIQ_EXECUTABLE}
-    ARGS -o "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
+    ARGS -o "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt_tmp.pot" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+      "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt_tmp.pot" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot"
     DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
     )
 
 SET(_potfiles_dep)
 
-file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in "")
+file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in.tmp "")
 file(GLOB_RECURSE _tmp_potfiles RELATIVE ${TOP_SRC_DIR}/ ${TOP_SRC_DIR}/src/*.h  ${TOP_SRC_DIR}/src/*.cpp  ${TOP_SRC_DIR}/src/*.cpp.in)
 list(SORT _tmp_potfiles)
 # list(REMOVE_ITEM _tmp_potfiles src/support/Package.cpp)
@@ -115,18 +118,16 @@ foreach(_f ${_tmp_potfiles})
   # will stay the same.
   # Relevant files are files containing the string '_(".*")'
   LIST(APPEND _potfiles_dep "${TOP_SRC_DIR}/${_f}")
-  file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in "${_f}\n")
+  file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in.tmp "${_f}\n")
 endforeach(_f)
 
-add_custom_command(
-  OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmtx.pot"
-  COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmtx.pot"
-  DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot"
+execute_process(
+  COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in.tmp" "${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in"
   )
 
 ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
-    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmtx.pot" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
+    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
     COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE}
       --default-domain=${_lyxname} --directory=${TOP_SRC_DIR}
       --add-comments=TRANSLATORS:
@@ -134,7 +135,7 @@ ADD_CUSTOM_COMMAND(
       --files-from=${CMAKE_CURRENT_BINARY_DIR}/POTFILES.in
       --copyright-holder="LyX Developers" --msgid-bugs-address=lyx-devel@lists.lyx.org
       -o "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot"
-    DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmtx.pot" ${_potfiles_dep}
+    DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" ${_potfiles_dep}
     )
 
 #
