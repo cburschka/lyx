@@ -64,6 +64,13 @@ public:
 		line_onoffdash //< dashes with spaces
 	};
 
+	/// possible fill styles
+	enum fill_style {
+		fill_none,
+		fill_oddeven,
+		fill_winding
+	};
+
 	/// possible character styles of preedit string.
 	/// This is used for CJK input method support.
 	enum preedit_style {
@@ -85,7 +92,8 @@ public:
 	 * @param np size of the points array
 	 */
 	virtual void lines(int const * xp, int const * yp, int np, Color,
-		line_style = line_solid, float line_width = thin_line) = 0;
+		fill_style = fill_none, line_style = line_solid,
+		float line_width = thin_line) = 0;
 
 	/// draw a rectangle
 	virtual void rectangle(int x, int y, int w, int h, Color,

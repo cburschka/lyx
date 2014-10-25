@@ -30,6 +30,7 @@
 #include "support/docstring.h"
 
 using namespace std;
+using namespace lyx::frontend;
 
 namespace lyx {
 
@@ -126,15 +127,6 @@ bool InsetSeparator::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 ColorCode InsetSeparator::ColorName() const
 {
-	switch (params_.kind) {
-		case InsetSeparatorParams::PLAIN:
-			return Color_latex;
-			break;
-		case InsetSeparatorParams::PARBREAK:
-			return Color_pagebreak;
-			break;
-	}
-	// not really useful, but to avoids gcc complaints
 	return Color_latex;
 }
 
@@ -212,9 +204,9 @@ void InsetSeparator::draw(PainterInfo & pi, int x, int y) const
 
 		pi.pain.lines(xp, yp, 2, ColorName());
 	} else {
-		yp[0] = int(y - 0.875 * asc * 0.75);
-		yp[1] = int(y - 0.500 * asc * 0.75);
-		yp[2] = int(y - 0.125 * asc * 0.75);
+		yp[0] = int(y - 0.875 * asc * 0.5);
+		yp[1] = int(y - 0.500 * asc * 0.5);
+		yp[2] = int(y - 0.125 * asc * 0.5);
 
 		if (pi.ltr_pos) {
 			xp[0] = int(x + wid * 0.375);
@@ -226,11 +218,11 @@ void InsetSeparator::draw(PainterInfo & pi, int x, int y) const
 			xp[2] = int(x + wid * 0.625);
 		}
 
-		pi.pain.lines(xp, yp, 3, ColorName());
+		pi.pain.lines(xp, yp, 3, ColorName(), Painter::fill_oddeven);
 
-		yp[0] = int(y - 0.500 * asc * 0.75);
-		yp[1] = int(y - 0.500 * asc * 0.75);
-		yp[2] = int(y - asc * 0.75);
+		yp[0] = int(y - 0.500 * asc * 0.5);
+		yp[1] = int(y - 0.500 * asc * 0.5);
+		yp[2] = int(y - asc * 0.5);
 
 		if (pi.ltr_pos) {
 			xp[0] = int(x);

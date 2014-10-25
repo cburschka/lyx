@@ -196,6 +196,7 @@ void GuiPainter::line(int x1, int y1, int x2, int y2,
 
 void GuiPainter::lines(int const * xp, int const * yp, int np,
 	Color col,
+	fill_style fs,
 	line_style ls,
 	float lw)
 {
@@ -215,10 +216,19 @@ void GuiPainter::lines(int const * xp, int const * yp, int np,
 		if (i != 0)
 			antialias |= xp[i-1] != xp[i] && yp[i-1] != yp[i];
 	}
-	setQPainterPen(computeColor(col), ls, lw);
+	QColor const color = computeColor(col);
+	setQPainterPen(color, ls, lw);
 	bool const text_is_antialiased = renderHints() & TextAntialiasing;
 	setRenderHint(Antialiasing, antialias && text_is_antialiased);
-	drawPolyline(points.data(), np);
+	if (fs == fill_none) {
+		drawPolyline(points.data(), np);
+	} else {
+		QBrush const oldbrush = brush();
+		setBrush(QBrush(color));
+		drawPolygon(points.data(), np, fs == fill_oddeven ?
+		            Qt::OddEvenFill : Qt::WindingFill);
+		setBrush(oldbrush);
+	}
 	setRenderHint(Antialiasing, false);
 }
 

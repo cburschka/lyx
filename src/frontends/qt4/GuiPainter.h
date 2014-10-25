@@ -55,6 +55,7 @@ public:
 		int const * yp,
 		int np,
 		Color,
+		fill_style fs = fill_none,
 		line_style ls = line_solid,
 		float lw = thin_line);
 
