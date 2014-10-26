@@ -4,8 +4,11 @@
 # REVTeX 4.1 textclass definition file.
 # Based on official article.layout, revtex4.layout and stdclass.inc definition files,
 # and on the unofficial revtex4-1.layout by Manoj Rajagopalan, posted to the wiki.
-
+#
 # Author: Julien Rioux <jrioux@lyx.org>
+#
+# This layout is according to
+# https://journals.aps.org/files/revtex/auguide4-1.pdf
 
 # Some notes:
 #   - We provide natbib-internal according to LyX bug #5182.
@@ -21,7 +24,7 @@ SecNumDepth               4
 TocDepth                  3
 
 ClassOptions
-	Other                 "aps,manuscript"
+	Other                 "aps"
 End
 
 Style Section
