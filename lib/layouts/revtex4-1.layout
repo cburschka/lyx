@@ -5,12 +5,10 @@
 # Based on official article.layout, revtex4.layout and stdclass.inc definition files,
 # and on the unofficial revtex4-1.layout by Manoj Rajagopalan, posted to the wiki.
 
-# Author: Julien Rioux <jrioux@lyx.org>
+# Author: Julien Rioux <jrioux@lyx.org> and Uwe Stöhr
 
-# Some notes:
-#   - The \definecolor's are there to avoid LyX bug #4625.
-#   - We provide natbib-internal according to LyX bug #5182.
-#   - The command \lovname is missing from the class file.
+# a note:
+#   - we provide natbib-internal according to LyX bug #5182
 
 Format 49
 
@@ -25,23 +23,6 @@ TocDepth                  3
 ClassOptions
 	Other                 "aps,manuscript"
 End
-
-Preamble
-	% Fix a couple of bugs in REVTeX 4.1
-	\def\lovname{List of Videos}
-	\@ifundefined{textcolor}{}
-	{%
-	 \definecolor{BLACK}{gray}{0}
-	 \definecolor{WHITE}{gray}{1}
-	 \definecolor{RED}{rgb}{1,0,0}
-	 \definecolor{GREEN}{rgb}{0,1,0}
-	 \definecolor{BLUE}{rgb}{0,0,1}
-	 \definecolor{CYAN}{cmyk}{1,0,0,0}
-	 \definecolor{MAGENTA}{cmyk}{0,1,0,0}
-	 \definecolor{YELLOW}{cmyk}{0,0,1,0}
-	}
-EndPreamble
-
 
 Style Section
 	Align                 Center
