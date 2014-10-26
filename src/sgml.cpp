@@ -26,9 +26,9 @@
 #include "support/docstream.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
-#include "support/ThreadStorage.h"
 
 #include <map>
+#include <QThreadStorage>
 
 using namespace std;
 using namespace lyx::support;
@@ -137,10 +137,11 @@ docstring sgml::cleanID(Buffer const & buf, OutputParams const & runparams,
 	docstring content;
 
 	typedef map<docstring, docstring> MangledMap;
-	static ThreadStorage<MangledMap> tMangledNames;
-	MangledMap & mangledNames = *tMangledNames;
-	static ThreadStorage<int> tMangleID;
-	int & mangleID = *tMangleID;
+	static QThreadStorage<MangledMap> tMangledNames;
+	static QThreadStorage<int> tMangleID;
+
+	MangledMap & mangledNames = tMangledNames.localData();
+	int & mangleID = tMangleID.localData();
 
 	MangledMap::const_iterator const known = mangledNames.find(orig);
 	if (known != mangledNames.end())
