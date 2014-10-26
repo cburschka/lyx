@@ -891,19 +891,7 @@ string const LaTeXFeatures::getPackages() const
 	if (mustProvide("cancel") &&
 	    params_.use_package("cancel") != BufferParams::package_off)
 		packages << "\\usepackage{cancel}\n";
-	// wasysym is a simple feature, but it must be after amsmath if both
-	// are used
-	// wasysym redefines some integrals (e.g. iint) from amsmath. That
-	// leads to inconsistent integrals. We only load this package if
-	// the document does not contain integrals (then isRequired("esint")
-	// is false) or if esint is used, since esint redefines all relevant
-	// integral symbols from wasysym and amsmath.
-	// See http://www.lyx.org/trac/ticket/1942
-	if (mustProvide("wasysym") &&
-	    params_.use_package("wasysym") != BufferParams::package_off &&
-	    (params_.use_package("esint") != BufferParams::package_off || !isRequired("esint")))
-		packages << "\\usepackage{wasysym}\n";
-
+	
 	// accents must be loaded after amsmath
 	if (mustProvide("accents") &&
 	    params_.use_package("accents") != BufferParams::package_off)
@@ -961,13 +949,26 @@ string const LaTeXFeatures::getPackages() const
 	if (mustProvide("setspace") && !isProvided("SetSpace"))
 		packages << "\\usepackage{setspace}\n";
 
-	// we need to assure that mhchem is loaded before esint
-	// because esint must be loaded AFTER amslatex and mhchem loads amlatex
+	// we need to assure that mhchem is loaded before esint and every other
+	// package that redefines command of amsmath because mhchem loads amlatex
 	// (this info is from the author of mhchem from June 2013)
 	if (mustProvide("mhchem") &&
 	    params_.use_package("mhchem") != BufferParams::package_off)
 		packages << "\\PassOptionsToPackage{version=3}{mhchem}\n"
 			    "\\usepackage{mhchem}\n";
+
+	// wasysym is a simple feature, but it must be after amsmath if both
+	// are used
+	// wasysym redefines some integrals (e.g. iint) from amsmath. That
+	// leads to inconsistent integrals. We only load this package if
+	// the document does not contain integrals (then isRequired("esint")
+	// is false) or if esint is used, since esint redefines all relevant
+	// integral symbols from wasysym and amsmath.
+	// See http://www.lyx.org/trac/ticket/1942
+	if (mustProvide("wasysym") &&
+		params_.use_package("wasysym") != BufferParams::package_off &&
+		(params_.use_package("esint") != BufferParams::package_off || !isRequired("esint")))
+		packages << "\\usepackage{wasysym}\n"; 
 
 	// esint must be after amsmath (and packages requiring amsmath, like mhchem)
 	// and wasysym, since it will redeclare inconsistent integral symbols
