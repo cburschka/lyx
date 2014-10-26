@@ -26,6 +26,7 @@
 #include "support/docstream.h"
 #include "support/lstrings.h"
 #include "support/textutils.h"
+#include "support/ThreadStorage.h"
 
 #include <map>
 
@@ -135,10 +136,11 @@ docstring sgml::cleanID(Buffer const & buf, OutputParams const & runparams,
 
 	docstring content;
 
-	// FIXME THREAD
 	typedef map<docstring, docstring> MangledMap;
-	static MangledMap mangledNames;
-	static int mangleID = 1;
+	static ThreadStorage<MangledMap> tMangledNames;
+	MangledMap & mangledNames = *tMangledNames;
+	static ThreadStorage<int> tMangleID;
+	int & mangleID = *tMangleID;
 
 	MangledMap::const_iterator const known = mangledNames.find(orig);
 	if (known != mangledNames.end())
