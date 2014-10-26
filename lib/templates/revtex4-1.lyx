@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \textclass revtex4-1
-\options aps,manuscript,preprintnumbers
+\options reprint, aps
 \use_default_options false
 \maintain_unincluded_children false
 \language english
@@ -28,10 +28,10 @@
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize default
+\papersize letterpaper
 \use_geometry false
-\use_package amsmath 1
-\use_package amssymb 1
+\use_package amsmath 2
+\use_package amssymb 2
 \use_package cancel 0
 \use_package esint 1
 \use_package mathdots 1
@@ -70,91 +70,148 @@
 
 \begin_body
 
-\begin_layout Preprint
+\begin_layout Standard
 \begin_inset Note Note
 status open
+
+\begin_layout Plain Layout
+This is a template LyX file for articles to be submitted to the American
+ Physical Society (APS).
+ APS uses the LaTeX class REVTeX for submissions.
+ For general information about REVTeX and the latest author guide see 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://journals.aps.org/revtex
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The style of the document is specified by options in the document preamble!
+ For the right document class options, have a look at the elsarticle documentati
+on: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://journals.aps.org/files/revtex/summary4-1.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This file uses the option 
+\family sans
+aps
+\family default
+ for the 
+\emph on
+American Physical Society
+\emph default
+ styling and the option 
+\family sans
+reprint
+\family default
+ for a layout close to the final journal.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Preprint
+APS/123-QED
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Plain Layout
 Use the Preprint layout to place your local institutional report number
  in the upper righthand corner of the title page in preprint mode.
  Multiple Preprint layouts are allowed.
- Use the preprintnumbers class option under Documents \SpecialChar \menuseparator
- Settings to override
- journal defaults to display numbers if necessary...
+ Use the document class option 
+\family sans
+preprintnumbers
+\family default
+ under 
+\family sans
+Documents\SpecialChar \menuseparator
+Settings
+\family default
+ to override the journal defaults to display numbers if necessary.
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Preprint
-Draft #1
 \end_layout
 
 \begin_layout Title
-Title of paper
-\end_layout
-
-\begin_layout Author
-Firstname 
-\begin_inset Flex Surname
-status collapsed
-
-\begin_layout Plain Layout
-Lastname
-\end_layout
-
+Manuscript Title:
+\begin_inset Newline newline
 \end_inset
 
-
-\end_layout
-
-\begin_layout Author Email
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-To whom correspondence should be addressed: 
-\end_layout
-
-\end_inset
-
-a@osu.edu
-\end_layout
-
-\begin_layout Author URL
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Explanatory text: 
-\end_layout
-
-\end_inset
-
-http://www.osu.edu/~a
+with Forced Linebreak
 \end_layout
 
 \begin_layout Thanks
-Many thanks to everyone involved.
-\begin_inset Note Note
-status open
+A footnote to the article title
+\end_layout
+
+\begin_layout Author
+Ann Author
+\end_layout
+
+\begin_layout Affiliation (alternate)
+
+\begin_inset Argument 1
+status collapsed
 
 \begin_layout Plain Layout
-Email, URL, Thanks, Affiliation (alternate), etc., all apply to the current
- author.
+Also at 
 \end_layout
 
 \end_inset
 
+Physics Department, XYZ University.
+\end_layout
 
+\begin_layout Author
+Second Author
+\end_layout
+
+\begin_layout Author Email
+
+Second.Author@institution.edu
 \end_layout
 
 \begin_layout Affiliation
-Open Source University
+Authors' institution and/or address
+\begin_inset Newline newline
+\end_inset
+
+ with forced line break 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 The Affiliation layout applies to all authors since the last Affiliation
@@ -165,23 +222,78 @@ The Affiliation layout applies to all authors since the last Affiliation
 \end_inset
 
 
-\end_layout
-
-\begin_layout Collaboration
-The LyX Team
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Collaboration name, if desired (requires use of superscriptaddress option
- in Documents \SpecialChar \menuseparator
- Settings).
- No affiliation is required.
+For the case that there is no affitilation use the LaTeX command 
+\series bold
+
+\backslash
+noaffiliation
+\series default
+ as TeX
+\begin_inset space ~
+\end_inset
+
+code.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Collaboration
+MUSO Collaboration 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If desired one can use the document class option 
+\family sans
+superscriptaddress
+\family default
+ in 
+\family sans
+Documents\SpecialChar \menuseparator
+Settings
+\family default
+ to associate authors with aliations via superscript numbers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Charlie Author
+\end_layout
+
+\begin_layout Author URL
+
+http://www.Second.institution.edu/~Charlie.Author
+\end_layout
+
+\begin_layout Affiliation
+Second institution and/or address
+\end_layout
+
+\begin_layout Affiliation
+Third institution, the second for Charlie Author 
+\end_layout
+
+\begin_layout Author
+Delta Author
+\end_layout
+
+\begin_layout Affiliation
+Authors' institution and/or address
+\end_layout
+
+\begin_layout Collaboration
+CLEO Collaboration
 \end_layout
 
 \begin_layout Date
@@ -198,28 +310,136 @@ today
 \end_inset
 
 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+prints the current date; should only be replaced for special cases
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Abstract
-Insert abstract here.
+An article usually includes an abstract, a concise summary of the work covered
+ at length in the main body of the article.
+ 
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
-Inclusion of itemized lists
+\begin_layout Description
+Usage Secondary publications and information retrieval purposes.
 \end_layout
 
-\begin_layout Itemize
-is now supported.
+\begin_layout Description
+PACS
+\begin_inset space ~
+\end_inset
+
+numbers May be entered using the command 
+\series bold
+
+\backslash
+pacs{number}
+\series default
+ as TeX
+\begin_inset space ~
+\end_inset
+
+code (where 
+\series bold
+number
+\series default
+ is the PACS (Physics and Astronomy Classification Scheme) number).
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Look at 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.aip.org/pacs
+\end_layout
+
+\end_inset
+
+ to find an appropriate number.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Structure You may use the 
+\family typewriter
+Description
+\family default
+ environment to structure your abstract; use the optional argument of the
+ command 
+\series bold
+
+\backslash
+pacs[optional]{number}
+\series default
+ to give the category of each item.
 \end_layout
 
 \end_deeper
 \begin_layout PACS
 Insert suggested PACS numbers here.
+ Example 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pacs[Mass spectra]{33.15.Ta}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Keywords
-Insert suggested keywords here --- APS authors don't need to do this.
+Suggested keywords
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional; use the document class option 
+\family sans
+showkeys
+\family default
+ if keyword should be displayed.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Table of contents is optional and should be inserted to this position if
+ desired.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -228,53 +448,8 @@ status open
 
 \begin_layout Plain Layout
 Body of paper goes here.
- Use proper sectioning commands.
+ Some general notes:
 \end_layout
-
-\begin_layout Plain Layout
-References should be done using the usual mechanisms for citation, references,
- and labels.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Section
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Section-I"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Subsection
-\end_layout
-
-\begin_layout Subsubsection
-Subsubsection
-\end_layout
-
-\begin_layout Standard
-First paragraph.
-\end_layout
-
-\begin_layout Standard
-If in two-column mode, the Wide Text layout will change to single-column
- format so that long equations can be displayed.
- Use only when necessary.
-\end_layout
-
-\begin_layout Wide Text
-\begin_inset Formula 
-\[
-abc+def+ghij+klmn+opq+rst+uvw+xyz
-\]
 
 \end_inset
 
@@ -361,13 +536,50 @@ Use LyX's span column option to get a full-width table or figure in two-column.
 
 \end_layout
 
-\begin_layout Standard
-\start_of_appendix
-\begin_inset Note Note
-status open
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:level1"
+
+\end_inset
+
+First-level heading:
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-The following sections are appendices.
+
+
+\backslash
+protect
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+ with line break and two 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+lowercase{
+\end_layout
+
+\end_inset
+
+lowercase words
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \end_inset
@@ -375,31 +587,3142 @@ The following sections are appendices.
 
 \end_layout
 
-\begin_layout Acknowledgments
-Put your acknowledgments here.
+\begin_layout Standard
+If a specific letter or word should appear in lowercase instead, you must
+ escape it using the command 
+\series bold
+
+\backslash
+lowercase
+\series default
+ as TeX
+\begin_inset space ~
+\end_inset
+
+code as in the heading above.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:level2"
+
+\end_inset
+
+Second-level heading: Formatting
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
+This file may be formatted in either the 
+\family typewriter
+preprint
+\family default
+ or 
+\family typewriter
+reprint
+\family default
+ style.
+ 
+\family typewriter
+reprint
+\family default
+ format mimics final journal output.
+ Either format may be used for submission purposes.
+\end_layout
+
+\begin_layout Subsubsection
+Wide text (A level-3 head)
+\end_layout
+
+\begin_layout Standard
+The 
+\family typewriter
+widetext
+\family default
+ environment will make the text the width of the full page, as on page
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "eq:wideeq"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Note (Fourth-level head is run in)
+\end_layout
+
+\begin_layout Standard
+The width-changing commands only take effect in two-column formatting.
+ There is no effect if text is in a single column.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:citeref"
+
+\end_inset
+
+Citations and References
+\end_layout
+
+\begin_layout Subsubsection
+Citations
+\end_layout
+
+\begin_layout Standard
+Because REVTeX
+\begin_inset space \space{}
+\end_inset
+
+uses the 
+\series bold
+natbib
+\series default
+ package of Patrick Daly, the entire repertoire of commands in that package
+ are available for your document; see the 
+\series bold
+natbib
+\series default
+ documentation for further details.
+\end_layout
+
+\begin_layout Subsubsection
+Example citations
+\end_layout
+
+\begin_layout Standard
+By default, citations are numerical
+\begin_inset CommandInset citation
+LatexCommand citep
+key "article-full"
+
+\end_inset
+
+.
+ Author-year citations are used when the journal is RMP.
+ To give a textual citation, use the LateX command
+\series bold
+ 
+\backslash
+onlinecite
+\series default
+ as TeX
+\begin_inset space ~
+\end_inset
+
+code: Refs.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
-Create the reference section using BibTeX, preferably.
- The reference list will follow the journal specifications if you leave
- the 
+
+
+\backslash
+onlinecite
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+, and references therein
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+article-full,booklet-full
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+.
+ By default, the 
+\family typewriter
+natbib
+\family default
+ package automatically sorts your citations into numerical order and 
 \begin_inset Quotes eld
 \end_inset
 
-style
+compresses
 \begin_inset Quotes erd
 \end_inset
 
- empty---or you can use any of the APS or AIP provided styles.
+ runs of three or more consecutive numerical citations.
+ REVTeX
+\begin_inset space \space{}
+\end_inset
+
+provides the ability to automatically change the punctuation when switching
+ between journal styles that provide citations in square brackets and those
+ that use a superscript style instead.
+ This is done through the 
+\family typewriter
+citeautoscript
+\family default
+ document class option.
+ For instance, the journal style 
+\family typewriter
+prb
+\family default
+ automatically invokes this option because 
+\shape italic
+Physical Review B
+\shape default
+ uses superscript-style citations.
+ The effect is to move the punctuation, which normally comes after a citation
+ in square brackets, to its proper position before the superscript.
+ To illustrate, we cite several together 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "article-crossref,booklet-full,misc-full"
+
+\end_inset
+
+.
+ Futhermore, running this sample file under the 
+\family typewriter
+prb
+\family default
+ option will move the punctuation to the correct place.
+\end_layout
+
+\begin_layout Standard
+When the 
+\family typewriter
+prb
+\family default
+ class option is used, the citation is displayed as a superscript rather
+ than in square brackets.
+ Note that the location of the citation should be adjusted for the reference
+ style: the superscript references in non-
+\family typewriter
+prb
+\family default
+ style must appear after punctuation; otherwise the reference must appear
+ before any punctuation.
+ This sample was written for the regular (non-
+\family typewriter
+prb
+\family default
+) citation style.
+ The citation in the 
+\family typewriter
+prb
+\family default
+ style also displays the reference on the baseline.
+\end_layout
+
+\begin_layout Subsubsection
+References
+\end_layout
+
+\begin_layout Standard
+REVTeX
+\begin_inset space ~
+\end_inset
+
+4.1 includes the BibTeX
+\begin_inset space \space{}
+\end_inset
+
+style files 
+\emph on
+apsrev4-1.bst
+\emph default
+ and 
+\emph on
+apsrmp4-1.bst
+\emph default
+ appropriate for 
+\shape italic
+Physical Review
+\shape default
+ and 
+\shape italic
+Reviews of Modern Physics
+\shape default
+, respectively.
+ To display titles for cited journal articles, use the 
+\family typewriter
+longbibliography
+\family default
+ document class option.
+\end_layout
+
+\begin_layout Subsection
+Footnotes
+\end_layout
+
+\begin_layout Standard
+A footnote:
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Automatically placing footnotes into the bibliography requires using 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+BibTeX
+\end_layout
+
+\end_inset
+
+ to compile the bibliography.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Math and Equations
+\end_layout
+
+\begin_layout Standard
+In LaTeX
+\begin_inset space \space{}
+\end_inset
+
+there are many different ways to display equations, and a few preferred
+ ways are noted below.
+ Displayed math will center by default.
+ Use the document class option 
+\family sans
+fleqn
+\family default
+ to flush equations left.
+\end_layout
+
+\begin_layout Standard
+Below we have numbered single-line equations; this is the most common type
+ of equation in 
+\shape italic
+Physical Review
+\shape default
+: 
+\begin_inset Formula 
+\begin{eqnarray}
+\chi_{+}(p)\alt{\bf [}2|{\bf p}|(|{\bf p}|+p_{z}){\bf ]}^{-1/2}\left(\begin{array}{c}
+|{\bf p}|+p_{z}\\
+px+ip_{y}
+\end{array}\right)\;,\\
+\left\{ \openone234567890abc123\alpha\beta\gamma\delta1234556\alpha\beta\frac{1\sum_{b}^{a}}{A^{2}}\right\} .\label{eq:one}
+\end{eqnarray}
+
+\end_inset
+
+Note the open one in Eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:one"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Not all numbered equations will fit within a narrow column this way.
+ The equation number will move down automatically if it cannot fit on the
+ same line with a one-line equation: 
+\begin_inset Formula 
+\begin{equation}
+\left\{ ab12345678abc123456abcdef\alpha\beta\gamma\delta1234556\alpha\beta\frac{1\sum_{b}^{a}}{A^{2}}\right\} .
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Multiline equations
+\end_layout
+
+\begin_layout Standard
+Only number the last line of a continued equation: 
+\begin_inset Formula 
+\begin{eqnarray}
+{\cal M}= &  & ig_{Z}^{2}(4E_{1}E_{2})^{1/2}(l_{i}^{2})^{-1}\delta_{\sigma_{1},-\sigma_{2}}(g_{\sigma_{2}}^{e})^{2}\chi_{-\sigma_{2}}(p_{2})\nonumber \\
+ &  & \times[\epsilon_{j}l_{i}\epsilon_{i}]_{\sigma_{1}}\chi_{\sigma_{1}}(p_{1})
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To obtain numbers not normally produced by the automatic numbering, use
+ the LateX-command 
+\series bold
+
+\backslash
+tag
+\series default
+.
+ See sec.
+\begin_inset space \space{}
+\end_inset
+
+
+\emph on
+User-defined Numbering
+\emph default
+ of LyX's math manual for more info about 
+\series bold
+
+\backslash
+tag
+\series default
+.
+ 
+\series bold
+
+\backslash
+tag
+\series default
+ should only be used in exceptional cases---do not use it to number many
+ equations in your paper.
+\end_layout
+
+\begin_layout Standard
+Enclosing display math within the LaTeX-commands 
+\series bold
+
+\backslash
+begin{subequations}
+\series default
+ and 
+\series bold
+
+\backslash
+end{subequations}
+\series default
+ will produce a set of equations that are labeled with letters, as shown
+ in Eqs.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subeq:1"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subeq:2"
+
+\end_inset
+
+) below.
+ You may include any number of single-line and multiline equations, although
+ it is probably not a good idea to follow one display math directly after
+ another.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subequations}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "eq:whole"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{eqnarray}
+{\cal M}= &  & ig_{Z}^{2}(4E_{1}E_{2})^{1/2}(l_{i}^{2})^{-1}(g_{\sigma_{2}}^{e})^{2}\chi_{-\sigma_{2}}(p_{2})\nonumber \\
+ &  & \times[\epsilon_{i}]_{\sigma_{1}}\chi_{\sigma_{1}}(p_{1}).\label{subeq:2}
+\end{eqnarray}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\left\{ abc123456abcdef\alpha\beta\gamma\delta1234556\alpha\beta\frac{1\sum_{b}^{a}}{A^{2}}\right\} ,\label{subeq:1}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subequations}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Wide equations
+\end_layout
+
+\begin_layout Standard
+The equation that follows is set in a wide format, i.e., it spans the full
+ page.
+ The wide format is reserved for long equations that cannot easily be set
+ in a single column: 
+\end_layout
+
+\begin_layout Wide Text
+\begin_inset Formula 
+\begin{equation}
+{\cal R}^{(\text{d})}=g_{\sigma_{2}}^{e}\left(\frac{[\Gamma^{Z}(3,21)]_{\sigma_{1}}}{Q_{12}^{2}-M_{W}^{2}}+\frac{[\Gamma^{Z}(13,2)]_{\sigma_{1}}}{Q_{13}^{2}-M_{W}^{2}}\right)+x_{W}Q_{e}\left(\frac{[\Gamma^{\gamma}(3,21)]_{\sigma_{1}}}{Q_{12}^{2}-M_{W}^{2}}+\frac{[\Gamma^{\gamma}(13,2)]_{\sigma_{1}}}{Q_{13}^{2}-M_{W}^{2}}\right)\;.\label{eq:wideeq}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is typed to show how the output appears in wide format.
+ (Incidentally, since there is no blank line between the 
+\family typewriter
+equation
+\family default
+ environment above and the start of this paragraph, this paragraph is not
+ indented.)
+\end_layout
+
+\begin_layout Section
+Cross-referencing
+\end_layout
+
+\begin_layout Standard
+The referencing label should appear within the section heading, within the
+ footnote text, within the equation, or within the table or figure caption.
+ Some examples: Section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:level1"
+
+\end_inset
+
+ on page
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "sec:level1"
+
+\end_inset
+
+, Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:table1"
+
+\end_inset
+
+,
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The proposed place to locate the table is directly after its first reference
+ in text.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+placement b
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:table1"
+
+\end_inset
+
+A table that fits into a single column of a two-column layout.
+ Note that REVTeX
+\begin_inset space ~
+\end_inset
+
+4 adjusts the intercolumn spacing so that the table fills the entire width
+ of the column.
+ Table captions are numbered automatically.
+ This table illustrates left-, center-, decimal- and right-aligned columns,
+ along with the use of the 
+\family typewriter
+ruledtabular
+\family default
+ environment which sets the Scotch (double) rules above and below the alignment,
+ per APS style.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Ruled Table
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="right" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+Left
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\family roman
+Note a.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+Centered
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\family roman
+Note b.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+Decimal
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+colrule
+\end_layout
+
+\end_inset
+
+ 1 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.001 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+30 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+200 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+300.0 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:epsart"
+
+\end_inset
+
+.
+\begin_inset Float figure
+placement b
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+replace this bix with an image
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:epsart"
+
+\end_inset
+
+ A figure caption.
+ The figure captions are automatically numbered.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Floats: Figures, Tables, Videos, etc.
+\end_layout
+
+\begin_layout Standard
+The typical content of a figure is an image of some kind; that of a table
+ is an alignment.
+\begin_inset Float figure
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+replace this bix with an image
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:wide"
+
+\end_inset
+
+This is a 
+\family sans
+Figure*
+\family default
+ environment that spans the page in 
+\family typewriter
+twocolumn
+\family default
+ formatting.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:table3"
+
+\end_inset
+
+This is a wide table that spans the full page width in a two-column layout.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Ruled Table
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $D_{4h}^{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $D_{4h}^{5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ion
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1st alternative
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2nd alternative
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lst alternative 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2nd alternative
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+K
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(2e)+(2f)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(4i)$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(2c)+(2d)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(4f)$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mn
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(2g)$
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The 
+\begin_inset Formula $z$
+\end_inset
+
+ parameter of these positions is 
+\begin_inset Formula $z\sim\frac{1}{4}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(a)+(b)+(c)+(d)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(4e)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(2a)+(2b)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(a)+(b)+(c)+(d)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(2g)$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark[1]
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(4e)^{\text{a}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+He
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(8r)^{\text{a}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(4j)^{\text{a}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(4g)^{\text{a}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ag
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(4k)^{\text{a}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $(4h)^{\text{a}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The best place to locate a figure or table is immediately following its
+ first reference in text; this sample document illustrates this practice
+ for Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:epsart"
+
+\end_inset
+
+, which shows a figure that is small enough to fit in a single column.
+\end_layout
+
+\begin_layout Standard
+In exceptional cases, you will need to move the float earlier in the document,
+ as was done with Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:table3"
+
+\end_inset
+
+: LaTeX's float placement algorithms need to know about a full-page-width
+ float earlier.
+\end_layout
+
+\begin_layout Standard
+Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:wide"
+
+\end_inset
+
+ has content that is too wide for a single column, so the 
+\family typewriter
+Figure*
+\family default
+ environment has been used.
+\end_layout
+
+\begin_layout Standard
+The doubled (or Scotch) rules that appear at the top and bottom of a table
+ can be achieved enclosing the table within a 
+\family typewriter
+Ruled
+\begin_inset space ~
+\end_inset
+
+Table
+\family default
+ environment.
+ Tables
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:table1"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:table3"
+
+\end_inset
+
+, and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:table2"
+
+\end_inset
+
+
+\begin_inset Float table
+placement b
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:table2"
+
+\end_inset
+
+ A table with numerous columns that still fits into a single column.
+ Here, several entries share the same footnote.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Ruled Table
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="8">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $r_{c}$
+\end_inset
+
+ (Å)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $r_{0}$
+\end_inset
+
+ (Å)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\kappa r_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $r_{c}$
+\end_inset
+
+ (Å) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $r_{0}$
+\end_inset
+
+ (Å)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\kappa r_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cu
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.800 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14.10 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.550 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sn
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark[1]
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.680 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.870 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.700 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ag
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.990 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15.90 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.710 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pb
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark[2]
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.450 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.930 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.760 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Au
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.150 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15.90 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.710 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ca
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark[3]
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.750 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.170 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.560 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.490 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17.60 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.200 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sr
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark[4]
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.900 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.370 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.720 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Zn
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.300 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15.20 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.970 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Li
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark[2]
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.380 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.730 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.830 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.530 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17.10 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.160 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Na
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark[5]
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.760 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.110 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.120 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.550 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17.80 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.220 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+K
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark[5]
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.120 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.620 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.480 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Al
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.230 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15.80 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.240 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rb
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark[3]
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.330 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.800 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.590 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ga
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.310 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16.70 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.330 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cs
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark[4]
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.420 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.030 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.740 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+In
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.460 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18.40 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.500 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ba
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark[5]
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.960 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.460 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.780 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.480 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18.90 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.550 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext[1]{
+\end_layout
+
+\end_inset
+
+Here's the first, from Ref.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+onlinecite{
+\end_layout
+
+\end_inset
+
+misc-full
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext[2]{
+\end_layout
+
+\end_inset
+
+Here's the second.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext[3]{
+\end_layout
+
+\end_inset
+
+Here's the third.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext[4]{
+\end_layout
+
+\end_inset
+
+Here's the fourth.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext[5]{
+\end_layout
+
+\end_inset
+
+And etc.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+show various effects.
+ Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:table3"
+
+\end_inset
+
+ is a wide table, set with the 
+\family typewriter
+Table*
+\family default
+ environment.
+ Long tables may need to break across pages.
+ The most straightforward way to accomplish this is to specify the option
+ 
+\family sans
+Here
+\begin_inset space ~
+\end_inset
+
+definitely
+\family default
+ in the float settings.
+ Alternatively one can use longtables, see sec.
+\begin_inset space \space{}
+\end_inset
+
+
+\emph on
+Longtables
+\emph default
+ of LyX's 
+\emph on
+EmbeddedObjects
+\emph default
+ manual.
+\end_layout
+
+\begin_layout Standard
+There are two methods for setting footnotes within a table (these footnotes
+ will be displayed directly below the table rather than at the bottom of
+ the page or in the bibliography).
+ The easiest and preferred method is just to use a normal footnote inset.
+ This will automatically enumerate the footnotes with lowercase roman letters.
+ However, it is sometimes necessary to have multiple entries in the table
+ share the same footnote.
+ In this case, there is no choice but to manually create the footnotes using
+ the LaTeX-command 
+\series bold
+
+\backslash
+footnotemark
+\series default
+, see sec.
+\begin_inset space \space{}
+\end_inset
+
+
+\emph on
+Footnotes
+\emph default
+ of LyX's 
+\emph on
+EmbeddedObjects
+\emph default
+ manual.
+ Use tables
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:table1"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:table2"
+
+\end_inset
+
+ for examples.
+\end_layout
+
+\begin_layout Standard
+Video
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "vid:PRSTPER.4.010101"
+
+\end_inset
+
+ illustrates several features new with REVTeX4.1, starting with the 
+\family typewriter
+video
+\family default
+ environment, which is in the same category with 
+\family typewriter
+figure
+\family default
+ and 
+\family typewriter
+table
+\family default
+.
+\begin_inset Float video
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+name "includegraphics{vid_1a}"
+target "http://prst-per.aps.org/multimedia/PRSTPER/v4/i1/e010101/e010101_vid1a.mpg"
+
+\end_inset
+
+
+\begin_inset space \quad{}
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "includegraphics{vid_1b}"
+target "http://prst-per.aps.org/multimedia/PRSTPER/v4/i1/e010101/e010101_vid1b.mpg"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setfloatlink{
+\end_layout
+
+\end_inset
+
+http://link.aps.org/multimedia/PRSTPER/v4/i1/e010101
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "vid:PRSTPER.4.010101"
+
+\end_inset
+
+Students explain their initial idea about Newton's third law to a teaching
+ assistant.
+ Clip (a): same force.
+ Clip (b): move backwards.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The LaTeX-command 
+\series bold
+
+\backslash
+setfloatlink
+\series default
+ causes the title of the video to be a hyperlink to the indicated URL; it
+ may be used with any environment that can have a caption.
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Physical Review
+\shape default
+ style requires that the initial citation of figures or tables be in numerical
+ order in text, so don't cite Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:wide"
+
+\end_inset
+
+ until Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:epsart"
+
+\end_inset
+
+ has been cited.
+\end_layout
+
+\begin_layout Acknowledgments
+We wish to acknowledge the support of the author community in using REVTeX,
+ offering suggestions and encouragement, testing new versions, ….
+ 
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+Appendixes
+\end_layout
+
+\begin_layout Standard
+If there is only one appendix, then the letter 
+\begin_inset Quotes eld
+\end_inset
+
+A
+\begin_inset Quotes erd
+\end_inset
+
+ should not appear.
+ This is suppressed by using the star version of the appendix command 
+\series bold
+
+\backslash
+appendix*
+\series default
+ instead of 
+\series bold
+
+\backslash
+appendix
+\end_layout
+
+\begin_layout Standard
+This is not yet supported by LyX so that you have to do that manuelly in
+ the expoted LaTeX file.
+\end_layout
+
+\begin_layout Section
+A little more on appendixes
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+Note the equation number in an appendix: 
+\begin_inset Formula 
+\begin{equation}
+E=mc^{2}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "app:subsec"
+
+\end_inset
+
+A subsection in an appendix
+\end_layout
+
+\begin_layout Standard
+You can use a subsection or subsubsection in an appendix.
+ Note the numbering: we are now in Appendix
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "app:subsec"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Note the equation numbers in this appendix, produced with the subequations
+ environment: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{subequations}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{eqnarray}
+E & = & mc,\label{appa}\\
+E & = & mc^{2},\label{appb}\\
+E & \agt & mc^{3}.\label{appc}
+\end{eqnarray}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{subequations}
+\end_layout
+
+\end_inset
+
+ They turn out to be Eqs.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "appa"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "appb"
+
+\end_inset
+
+), and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "appc"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -411,20 +3734,29 @@ Click on the following inset to add your BibTeX file (and replace
 \begin_inset Quotes eld
 \end_inset
 
-your-bib-file
+apssamp
 \begin_inset Quotes erd
 \end_inset
 
 ).
- Then move the inset out of this note.
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
-bibfiles "your-bib-file"
+ Load as style file either 
+\emph on
+apsrev4-1.bst
+\emph default
+ Physical Review or 
+\emph on
+apsrmp4-1.bst
+\emph default
+ for Reviews of Modern Physics.
+\end_layout
 
 \end_inset
 
 
-\end_layout
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "xampl"
+options "default"
 
 \end_inset
 

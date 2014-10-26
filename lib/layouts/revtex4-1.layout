@@ -4,25 +4,32 @@
 # REVTeX 4.1 textclass definition file.
 # Based on official article.layout, revtex4.layout and stdclass.inc definition files,
 # and on the unofficial revtex4-1.layout by Manoj Rajagopalan, posted to the wiki.
-
+#
 # Author: Julien Rioux <jrioux@lyx.org> and Uwe Stöhr
+#
+# This layout is according to
+# https://journals.aps.org/files/revtex/auguide4-1.pdf
 
 # a note:
 #   - we provide natbib-internal according to LyX bug #5182
+# todo:
+#     - add support for \lowercase{}
+#     - add support for \pacs[]{}
+#     - add support for \onlinecite{}
+#     - add support for subequation environment
+#     - fix broken flex inset setfloatlink
+
 
 Format 49
 
 Input stdclass.inc
 Input numrevtex.inc
 
-Provides natbib-internal  1
-Provides url              1
-SecNumDepth               4
-TocDepth                  3
-
-ClassOptions
-	Other                 "aps,manuscript"
-End
+Provides natbib-internal	1
+Provides url			1
+SecNumDepth			4
+TocDepth			3
+DefaultStyle			Standard
 
 Style Section
 	Align                 Center
