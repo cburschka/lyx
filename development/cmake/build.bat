@@ -85,7 +85,7 @@ if "%1%" == "devel" (
 if "%1%" == "install" (
 	REM Build solution to develop LyX
 	REM set -DLYX_MERGE_REBUILD and -DLYX_MERGE_FILES to 1 for a version released with an installer
-	cmake %LYX_SOURCE% -G%USED_STUDIO% -DLYX_MERGE_REBUILD=1 -DLYX_MERGE_FILES=1 -DLYX_NLS=1 -DLYX_INSTALL=1 -DLYX_RELEASE=1 -DLYX_CONSOLE=OFF %DEPENDENCIES_DOWNLOAD% 
+	cmake %LYX_SOURCE% -G%USED_STUDIO% -DLYX_MERGE_REBUILD=0 -DLYX_MERGE_FILES=0 -DLYX_NLS=1 -DLYX_INSTALL=1 -DLYX_RELEASE=1 -DLYX_CONSOLE=OFF %DEPENDENCIES_DOWNLOAD% 
 	msbuild lyx.sln         /p:Configuration=Release /t:ALL_BUILD
 	msbuild INSTALL.vcxproj /p:Configuration=Release
 )
