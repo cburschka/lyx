@@ -184,7 +184,7 @@ Ann Author
 \begin_layout Affiliation (alternate)
 
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Also at 
@@ -338,21 +338,15 @@ PACS
 \begin_inset space ~
 \end_inset
 
-numbers May be entered using the command 
-\series bold
-
-\backslash
-pacs{number}
-\series default
- as TeX
+numbers May be entered using the environment 
+\family sans
+PACS
 \begin_inset space ~
 \end_inset
 
-code (where 
-\series bold
-number
-\series default
- is the PACS (Physics and Astronomy Classification Scheme) number).
+numbers
+\family default
+.
 \begin_inset Note Note
 status collapsed
 
@@ -382,38 +376,36 @@ Structure You may use the
 Description
 \family default
  environment to structure your abstract; use the optional argument of the
- command 
-\series bold
+ environment 
+\family sans
+PACS
+\begin_inset space ~
+\end_inset
 
-\backslash
-pacs[optional]{number}
-\series default
+numbers
+\family default
  to give the category of each item.
 \end_layout
 
 \end_deeper
 \begin_layout PACS
-Insert suggested PACS numbers here.
- Example 
-\begin_inset ERT
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-pacs[Mass spectra]{33.15.Ta}
+Insert suggested PACS numbers here.
+ An example: 
 \end_layout
 
 \end_inset
 
-
+33.15.Ta
 \end_layout
 
 \begin_layout Keywords
 Suggested keywords
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 optional; use the document class option 
@@ -451,83 +443,29 @@ Body of paper goes here.
  Some general notes:
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
+\begin_layout Itemize
 Figures should be put into the text as floats.
  There is no need to do explicit centering.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Turn Page
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
+\begin_layout Itemize
 Surround figures with the Turn Page layout for landscape.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
+\begin_layout Itemize
 Tables should appear as floats within the text.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Ruled Table
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
+\begin_layout Itemize
 The Ruled Table layout adds doubled rules to table and sets a reasonable
  default table settings.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Turn Page
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
+\begin_layout Itemize
 Surround tables with the Turn Page layout for landscape.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
+\begin_layout Itemize
 Use LyX's span column option to get a full-width table or figure in two-column.
 \end_layout
 
@@ -544,42 +482,15 @@ name "sec:level1"
 \end_inset
 
 First-level heading:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-protect
-\end_layout
-
-\end_inset
-
-
 \begin_inset Newline newline
 \end_inset
 
  with line break and two 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Lowercase
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-lowercase{
-\end_layout
-
-\end_inset
-
 lowercase words
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -589,17 +500,11 @@ status collapsed
 
 \begin_layout Standard
 If a specific letter or word should appear in lowercase instead, you must
- escape it using the command 
-\series bold
-
-\backslash
-lowercase
-\series default
- as TeX
-\begin_inset space ~
-\end_inset
-
-code as in the heading above.
+ escape it using the custom inset 
+\family sans
+Lowercase
+\family default
+ as in the heading above.
 \end_layout
 
 \begin_layout Subsection
@@ -3482,25 +3387,12 @@ target "http://prst-per.aps.org/multimedia/PRSTPER/v4/i1/e010101/e010101_vid1b.m
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Float Link
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-setfloatlink{
-\end_layout
-
-\end_inset
 
 http://link.aps.org/multimedia/PRSTPER/v4/i1/e010101
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
