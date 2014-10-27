@@ -122,11 +122,11 @@ def run_command_popen(cmd, stderr2stdout):
         unix = True
     if stderr2stdout:
         pipe = subprocess.Popen(cmd, shell=unix, close_fds=unix, stdin=subprocess.PIPE, \
-            stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
+            stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True, env=os.environ)
         cmd_stdout = pipe.communicate()[0]
     else:
         pipe = subprocess.Popen(cmd, shell=unix, close_fds=unix, stdin=subprocess.PIPE, \
-            stdout=subprocess.PIPE, universal_newlines=True)
+            stdout=subprocess.PIPE, universal_newlines=True, env=os.environ)
         (cmd_stdout, cmd_stderr) = pipe.communicate()
         if cmd_stderr:
             sys.stderr.write(cmd_stderr)

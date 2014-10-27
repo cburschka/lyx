@@ -12,6 +12,8 @@
 
 #include <config.h>
 
+#include "LyXRC.h"
+
 #include "support/ForkedCalls.h"
 
 #include "support/debug.h"
@@ -20,6 +22,7 @@
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/Timeout.h"
+#include "support/environment.h"
 
 #include "support/bind.h"
 
@@ -46,6 +49,9 @@
 
 using namespace std;
 
+#ifdef USE_MACOSX_PACKAGING
+#include <crt_externs.h>
+#endif
 
 
 namespace lyx {
@@ -304,7 +310,10 @@ int ForkedCall::generateChild()
 		return 1;
 
 	// Make sure that a V2 python is run, if available.
-	string const line = cmd_prefix_ +
+	string const line =
+#ifndef USE_MACOSX_PACKAGING
+		cmd_prefix_ +
+#endif
 		(prefixIs(command_, "python -tt")
 		 ? os::python() + command_.substr(10) : command_);
 
@@ -387,7 +396,66 @@ int ForkedCall::generateChild()
 				lyxerr << '\t'<< *ait << '\n';
 		lyxerr << "</command>" << endl;
 	}
+#ifdef USE_MACOSX_PACKAGING
+	string path = getEnv("PATH");
 
+	// Combine TEXINPUTS prefix and environment
+	string ptex = getEnv("TEXINPUTS");
+	if (!lyxrc.texinputs_prefix.empty()) {
+		string const texinputs = lyxrc.texinputs_prefix + ":" + ptex;
+		setEnv("TEXINPUTS", texinputs);
+	}
+
+	char ** var = *_NSGetEnviron();
+	// See #9308 - "LyX cannot work properly in Yosemite"
+	// This is a workaround for the POSIX incompatibility of Yosemite
+	// Duplicate the environment.
+	// Otherwise it's not passed when code inside of bundles
+	// forks a child and executes a sub-program.
+	vector<char *> envp;
+	for (; *var != 0; ++var) {
+		if (lyxerr.debugging(Debug::DEBUG)) {
+			lyxerr << "env: " << *var << '\n';
+		}
+		envp.push_back(strdup(*var));
+	}
+	envp.push_back(0);
+	envp.push_back(0);
+
+	vector<char *> cmds;
+	if (0 == strchr(argv[0], '/')) {
+		while (!path.empty()) {
+			string element;
+			path = split(path,element,':');
+			if (!suffixIs(element,'/')) element += "/";
+			element += argv[0];
+			if (lyxerr.debugging(Debug::GRAPHICS)) {
+				lyxerr << "try: " << element.data() << '\n';
+			}
+			cmds.push_back(strdup(element.data()));
+		}
+	}
+	cmds.push_back(0);
+
+	pid_t const cpid = ::fork();
+	if (cpid == 0) {
+		// Child
+		if (0 == strchr(argv[0], '/')) {
+			vector<char *>::iterator cit = cmds.begin();
+			vector<char *>::iterator const cend = cmds.end();
+			for (; cit != cend; ++cit) {
+				if (*cit)
+					execve(*cit, &*argv.begin(), &*envp.begin());
+			}
+		} else {
+			execve(argv[0], &*argv.begin(), &*envp.begin());
+		}
+		// If something goes wrong, we end up here
+		lyxerr << "execvp of \"" << command_ << "\" failed: "
+		       << strerror(errno) << endl;
+		_exit(1);
+	}
+#else
 	pid_t const cpid = ::fork();
 	if (cpid == 0) {
 		// Child
@@ -398,6 +466,7 @@ int ForkedCall::generateChild()
 		       << strerror(errno) << endl;
 		_exit(1);
 	}
+#endif
 #else
 	// Windows
 
@@ -416,6 +485,21 @@ int ForkedCall::generateChild()
 		CloseHandle(process.hThread);
 		cpid = (pid_t)process.hProcess;
 	}
+#endif
+
+#ifdef USE_MACOSX_PACKAGING
+	// Free duplicated command candidates.
+	vector<char *>::iterator cit = cmds.begin();
+	vector<char *>::iterator const cend = cmds.end();
+	for (; cit != cend; ++cit)
+		if (*cit) free(*cit);
+	// Free duplicated environment.
+	vector<char *>::iterator eit = envp.begin();
+	vector<char *>::iterator const eend = envp.end();
+	for (; eit != eend; ++eit)
+		if (*eit) free(*eit);
+	// Restore TEXINPUTS.
+	setEnv("TEXINPUTS", ptex);
 #endif
 
 	if (cpid < 0) {
