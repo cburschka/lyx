@@ -376,8 +376,28 @@ void SystemcallPrivate::startProcess(QString const & cmd, string const & path, b
 		QProcess* released = releaseProcess();
 		delete released;
 	} else if (process_) {
+#ifdef Q_OS_MAC
+		process_->setProcessEnvironment(QProcessEnvironment::systemEnvironment());
+		if (!lyxrc.texinputs_prefix.empty()) {
+			QProcessEnvironment environ = process_->processEnvironment();
+			string const texinputs = fromqstr(environ.value("TEXINPUTS"));
+			string const texinputs_prefix = os::latex_path_list(
+				path.empty() ? lyxrc.texinputs_prefix : replaceCurdirPath(path, lyxrc.texinputs_prefix));
+			environ.insert("TEXINPUTS", toqstr(".:" + texinputs_prefix + ':' + texinputs));
+			process_->setProcessEnvironment(environ);
+		}
+		if (!lyxrc.path_prefix.empty()) {
+			QProcessEnvironment environ = process_->processEnvironment();
+			string const path = fromqstr(environ.value("PATH"));
+			environ.insert("PATH", toqstr(lyxrc.path_prefix + ':' + path));
+			process_->setProcessEnvironment(environ);
+		}
+		state = SystemcallPrivate::Starting;
+		process_->start(cmd_);
+#else
 		state = SystemcallPrivate::Starting;
 		process_->start(toqstr(latexEnvCmdPrefix(path)) + cmd_);
+#endif
 	}
 }
 

@@ -589,6 +589,9 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	cs << pconverter_->command
 	   << " " << quoteName(latexfile.toFilesystemEncoding())
 	   << " --dpi " << int(font_scaling_factor);
+	if (lyxerr.debugging(Debug::GRAPHICS)) {
+		cs << " --verbose";
+	}
 
 	// FIXME XHTML 
 	// The colors should be customizable.
