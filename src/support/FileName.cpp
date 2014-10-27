@@ -249,7 +249,7 @@ bool FileName::copyTo(FileName const & name, bool keepsymlink,
 
 bool FileName::renameTo(FileName const & name) const
 {
-	LYXERR(Debug::FILES, "Renaming " << name);
+	LYXERR(Debug::FILES, "Renaming " << name << " as " << *this);
 	bool success = QFile::rename(d->fi.absoluteFilePath(), name.d->fi.absoluteFilePath());
 	if (!success)
 		LYXERR0("Could not rename file " << *this << " to " << name);
@@ -259,7 +259,7 @@ bool FileName::renameTo(FileName const & name) const
 
 bool FileName::moveTo(FileName const & name) const
 {
-	LYXERR(Debug::FILES, "Moving " << name);
+	LYXERR(Debug::FILES, "Moving " << name << " to " << *this);
 	QFile::remove(name.d->fi.absoluteFilePath());
 
 	bool success = QFile::rename(d->fi.absoluteFilePath(),
