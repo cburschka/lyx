@@ -13,11 +13,7 @@
 # a note:
 #   - we provide natbib-internal according to LyX bug #5182
 # todo:
-#     - add support for \lowercase{}
-#     - add support for \pacs[]{}
 #     - add support for \onlinecite{}
-#     - add support for subequation environment
-#     - fix broken flex inset setfloatlink
 
 
 Format 49
@@ -32,23 +28,23 @@ TocDepth			3
 DefaultStyle			Standard
 
 Style Section
-	Align                 Center
+	Align			Center
 	Font
-	  Shape               Smallcaps
+	  Shape			Smallcaps
 	EndFont
 End
 
 
 Style Subsubsection
 	Font
-	  Shape               Italic
+	  Shape			Italic
 	EndFont
 End
 
 
 Style Paragraph
 	Font
-	  Shape               Italic
+	  Shape			Italic
 	EndFont
 End
 
@@ -60,151 +56,152 @@ Input stdstarsections.inc
 ########### Front matter ############
 
 Style Abstract
-	InTitle               1
+	InTitle			1
 End
 
 
 Style Affiliation
-	Category              FrontMatter
-	Margin                Dynamic
-	LatexType             Command
-	InTitle               1
-	LatexName             affiliation
-	ParSkip               0.4
-	Align                 Center
-	AlignPossible         Block, Left, Right, Center
-	LabelType             Static
-	LabelSep              M
-	LabelString           "Affiliation:"
-
+	Category		FrontMatter
+	Margin			Dynamic
+	LatexType		Command
+	InTitle			1
+	LatexName		affiliation
+	ParSkip			0.4
+	Align			Center
+	AlignPossible		Block, Left, Right, Center
+	LabelType		Static
+	LabelSep		M
+	TextFont
+	  Family		Typewriter
+	EndFont
+	LabelString		"Affiliation:"
 	LabelFont
-	  Shape               Italic
+	  Color			Green
+	  Series		Bold	
 	EndFont
 End
 
 
 Style Affiliation_(alternate)
-	CopyStyle             Affiliation
-	LatexName             altaffiliation
-	LabelString           "Affiliation (alternate):"
+	CopyStyle		Affiliation
+	LatexName		altaffiliation
+	LabelString		"Affiliation (alternate):"
 	Argument 1
-		LabelString   "Alternate Affiliation Option"
-		Tooltip       "Optional argument to the altaffiliation command"
+	  LabelString		"Alternate Affiliation Option"
+	  Tooltip		"Optional argument to the altaffiliation command"
 	EndArgument
 	PassThru              1
 End
 
 
 Style Affiliation_(none)
-	CopyStyle             Affiliation
-	KeepEmpty             true
-	LabelString           "No affiliation"
-	LatexName             noaffiliation%
+	CopyStyle		Affiliation
+	KeepEmpty		true
+	LabelString		"No affiliation"
+	LatexName		noaffiliation%
 End
 
 
 # Address is exactly the same as Affiliation. We just put
 # this in so that tex2lyx will know what to do with it.
 Style Address
-	CopyStyle             Affiliation
-	LatexName             address
-	LabelString           "Address:"
+	CopyStyle		Affiliation
+	LatexName		address
+	LabelString		"Address:"
 End
 
 
 Style Author_Email
-	CopyStyle             Affiliation
-	LatexName             email
-	LabelString           "Electronic Address:"
+	CopyStyle		Affiliation
+	LatexName		email
+	LabelString		"Electronic Address:"
 	Argument 1
-		LabelString   "Electronic Address Option|s"
-		Tooltip       "Optional argument to the email command"
+	  LabelString		"Electronic Address Option|s"
+	  Tooltip		"Optional argument to the email command"
 	EndArgument
-	PassThru              1
+	PassThru		1
 	TextFont
-	  Family              Typewriter
-	EndFont
-	LabelFont
-	  Family              Roman
+	  Family		Roman
 	EndFont
 End
 
 
 Style Author_URL
-	CopyStyle             Author_Email
-	LatexName             homepage
-	LabelString           "URL:"
+	CopyStyle		Author_Email
+	LatexName		homepage
+	LabelString		"URL:"
 	Argument 1
-		LabelString   "Author URL Option"
-		Tooltip       "Optional argument to the homepage command"
+	  LabelString		"Author URL Option"
+	  Tooltip		"Optional argument to the homepage command"
 	EndArgument
-	PassThru              1
+	PassThru		1
 End
 
 
 Style Collaboration
-	CopyStyle             Affiliation
-	LatexName             collaboration
-	LabelString           "Collaboration:"
+	CopyStyle		Affiliation
+	LatexName		collaboration
+	LabelString		"Collaboration:"
 End
 
 
 Style Date
-	LabelType             Static
-	LabelString           "Date:"
-	LabelFont
-	  Shape               Italic
-	EndFont
+	LabelType		Static
+	LabelString		"Date:"
 End
 
 
 Style Keywords
-	Category              FrontMatter
-	Margin                Dynamic
-	LatexType             Command
-	InTitle               1
-	LatexName             keywords
-	LabelType             Static
-	LabelSep              M
-	LabelString           "Keywords:"
+	Category		FrontMatter
+	Margin			Dynamic
+	LatexType		Command
+	InTitle			1
+	LatexName		keywords
+	LabelType		Static
+	LabelSep		M
+	LabelString		"Keywords:"
+	LabelFont
+	  Color			Green
+	  Series		Bold
+	EndFont
 End
 
 
 Style PACS
-	CopyStyle             Keywords
-	LatexName             pacs
-	LabelString           "PACS numbers:"
+	CopyStyle		Keywords
+	LatexName		pacs
+	LabelString		"PACS numbers:"
 End
 
 
 Style Preprint
-	Category              FrontMatter
-	Margin                Right_Address_Box
-	LatexType             Command
-	InTitle               1
-	LatexName             preprint
-	ParSkip               0.4
-	BottomSep             1.5
-	ParSep                1.5
-	Align                 Left
+	Category		FrontMatter
+	Margin			Right_Address_Box
+	LatexType		Command
+	InTitle			1
+	LatexName		preprint
+	ParSkip			0.4
+	BottomSep		1.5
+	ParSep			1.5
+	Align			Left
 End
 
 
 Style Thanks
-	CopyStyle             Affiliation
-	LatexName             thanks
-	LabelString           "Thanks:"
+	CopyStyle		Affiliation
+	LatexName		thanks
+	LabelString		"Title footnote:"
 End
 
 
 Style Title
 	Argument 1
-		LabelString   "Short Title|S"
-		Tooltip       "Short title as it appears in the running headers"
+	  LabelString		"Short Title|S"
+	  Tooltip		"Short title as it appears in the running headers"
 	EndArgument
 	Font
-	  Series              Bold
-	  Size                Large
+	  Series		Bold
+	  Size			Large
 	EndFont
 End
 
@@ -212,94 +209,120 @@ End
 ########### Back matter #############
 
 Style Acknowledgments
-	CopyStyle             Standard
-	Category              BackMatter
-	LatexType             Environment
-	LatexName             acknowledgments
-	LabelType             Centered
-	LabelString           "acknowledgments"
-	LabelBottomSep        0.5
+	CopyStyle		Standard
+	Category		BackMatter
+	LatexType		Environment
+	LatexName		acknowledgments
+	LabelType		Centered
+	LabelString		"acknowledgments"
+	LabelBottomSep		0.5
 	LabelFont
-	  Series              Bold
-	  Shape               Smallcaps
-	  Size                Larger
+	  Series		Bold
+	  Shape			Smallcaps
+	  Size			Larger
 	EndFont
-	TopSep                0.7
+	TopSep			0.7
 End
 
 
 ##### stuff specific to REVTeX 4.1
 
 Style Ruled_Table
-	CopyStyle             Standard
-	Category              Specials
-	LatexName             ruledtabular
-	LatexType             environment
+	CopyStyle		Standard
+	Category		Specials
+	LatexName		ruledtabular
+	LatexType		environment
 End
 
 
 Style Turn_Page
-	CopyStyle             Standard
-	Category              Specials
-	LatexName             turnpage
-	LatexType             environment
+	CopyStyle		Standard
+	Category		Specials
+	LatexName		turnpage
+	LatexType		environment
 End
 
 
 Style Wide_Text
-	CopyStyle             Standard
-	Category              Specials
-	LatexName             widetext
-	LatexType             environment
+	CopyStyle		Standard
+	Category		Specials
+	LatexName		widetext
+	LatexType		environment
 End
 
 
 Float
-	Extension             lov
-	GuiName               Video
-	IsPredefined          true
-	ListCommand           listofvideos
-	ListName              "List of Videos"
-	NumberWithin          none
-	Placement             tbp
-	Style                 plain
-	Type                  video
-	UsesFloatPkg          false
+	Extension		lov
+	GuiName			Video
+	IsPredefined		true
+	ListCommand		listofvideos
+	ListName		"List of Videos"
+	NumberWithin		none
+	Placement		tbp
+	Style			plain
+	Type			video
+	UsesFloatPkg		false
 End
 
 
 InsetLayout Flex:Float_Link
-	CopyStyle             Flex:URL
-	LabelString           "Float Link"
-	LatexName             setfloatlink
-	LatexType             command
-	LyXType               custom
+	CopyStyle		Flex:URL
+	LabelString		"Float link"
+	LatexName		setfloatlink
+	LatexType		command
+	LyXType			custom
 End
 
 
 InsetLayout Flex:Lowercase
-	Decoration            conglomerate
-	LabelString           Lowercase
-	LatexName             lowercase
-	LatexType             command
-	LyXType               custom
+	LyxType			custom
+	LatexType		command
+	LatexName		lowercase
+	LabelString		"lowercase text"
 	Font
-	    # Keep empty to preserve font settings
-	    # from the surrounding environment
+	  # Keep empty to preserve font settings
+	  # from the surrounding environment
+	EndFont
+	LabelFont
+	  Size			Small
+	EndFont
+	ResetsFont true
+End
+
+
+InsetLayout "Flex:Online cite"
+	LyxType			custom
+	LatexType		command
+	LatexName		onlinecite
+	LabelString		"online cite"
+	Argument 1
+	  LabelString		"Text behind"
+	  Tooltip		"text behind the cite"
+	EndArgument
+	Font
+	  # Keep empty to preserve font settings
+	  # from the surrounding environment
+	EndFont
+	LabelFont
+	  Size			Small
 	EndFont
 	ResetsFont true
 End
 
 
 InsetLayout Flex:Surname
-	Decoration            conglomerate
-	LabelString           Surname
-	LatexName             surname
-	LatexType             command
-	LyXType               custom
+	Decoration		conglomerate
+	LabelString		Surname
+	LatexName		surname
+	LatexType		command
+	LyXType			custom
 	Font
-	    # Keep empty to preserve font settings
-	    # from the surrounding environment
+	  # Keep empty to preserve font settings
+	  # from the surrounding environment
+	EndFont
+	LabelFont
+	  Color			green
+	  Size			Small
 	EndFont
 	ResetsFont true
 End

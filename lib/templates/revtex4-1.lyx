@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 479
 \begin_document
 \begin_header
 \textclass revtex4-1
@@ -182,9 +182,8 @@ Ann Author
 \end_layout
 
 \begin_layout Affiliation (alternate)
-
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Also at 
@@ -200,7 +199,6 @@ Second Author
 \end_layout
 
 \begin_layout Author Email
-
 Second.Author@institution.edu
 \end_layout
 
@@ -272,7 +270,6 @@ Charlie Author
 \end_layout
 
 \begin_layout Author URL
-
 http://www.Second.institution.edu/~Charlie.Author
 \end_layout
 
@@ -326,6 +323,10 @@ prints the current date; should only be replaced for special cases
 An article usually includes an abstract, a concise summary of the work covered
  at length in the main body of the article.
  
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -338,21 +339,15 @@ PACS
 \begin_inset space ~
 \end_inset
 
-numbers May be entered using the command 
-\series bold
-
-\backslash
-pacs{number}
-\series default
- as TeX
+numbers May be entered using the environment 
+\family sans
+PACS
 \begin_inset space ~
 \end_inset
 
-code (where 
-\series bold
-number
-\series default
- is the PACS (Physics and Astronomy Classification Scheme) number).
+numbers
+\family default
+.
 \begin_inset Note Note
 status collapsed
 
@@ -381,39 +376,28 @@ Structure You may use the
 \family typewriter
 Description
 \family default
- environment to structure your abstract; use the optional argument of the
- command 
-\series bold
-
-\backslash
-pacs[optional]{number}
-\series default
- to give the category of each item.
+ environment to structure your abstract.
 \end_layout
 
 \end_deeper
 \begin_layout PACS
-Insert suggested PACS numbers here.
- Example 
-\begin_inset ERT
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-pacs[Mass spectra]{33.15.Ta}
+Insert suggested PACS numbers here.
+ An example: 
 \end_layout
 
 \end_inset
 
-
+33.15.Ta
 \end_layout
 
 \begin_layout Keywords
 Suggested keywords
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 optional; use the document class option 
@@ -451,83 +435,29 @@ Body of paper goes here.
  Some general notes:
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
+\begin_layout Itemize
 Figures should be put into the text as floats.
  There is no need to do explicit centering.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Turn Page
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
+\begin_layout Itemize
 Surround figures with the Turn Page layout for landscape.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
+\begin_layout Itemize
 Tables should appear as floats within the text.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Ruled Table
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
+\begin_layout Itemize
 The Ruled Table layout adds doubled rules to table and sets a reasonable
  default table settings.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Turn Page
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
+\begin_layout Itemize
 Surround tables with the Turn Page layout for landscape.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
+\begin_layout Itemize
 Use LyX's span column option to get a full-width table or figure in two-column.
 \end_layout
 
@@ -544,42 +474,15 @@ name "sec:level1"
 \end_inset
 
 First-level heading:
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-protect
-\end_layout
-
-\end_inset
-
-
 \begin_inset Newline newline
 \end_inset
 
  with line break and two 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Lowercase
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-lowercase{
-\end_layout
-
-\end_inset
-
 lowercase words
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -589,17 +492,11 @@ status collapsed
 
 \begin_layout Standard
 If a specific letter or word should appear in lowercase instead, you must
- escape it using the command 
-\series bold
-
-\backslash
-lowercase
-\series default
- as TeX
-\begin_inset space ~
-\end_inset
-
-code as in the heading above.
+ escape it using the custom inset 
+\family sans
+Lowercase
+\family default
+ as in the heading above.
 \end_layout
 
 \begin_layout Subsection
@@ -707,73 +604,33 @@ key "article-full"
 
 .
  Author-year citations are used when the journal is RMP.
- To give a textual citation, use the LateX command
-\series bold
- 
-\backslash
-onlinecite
-\series default
- as TeX
+ To give a textual citation, use the custom inset 
+\family sans
+Online
 \begin_inset space ~
 \end_inset
 
-code: Refs.
+cite
+\family default
+: Refs.
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Online cite
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-onlinecite
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
-
-[
-\end_layout
-
-\end_inset
-
-, and references therein
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
+and references therein
 \end_layout
 
 \end_inset
 
 article-full,booklet-full
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -1253,7 +1110,7 @@ ruledtabular
 \begin_layout Ruled Table
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="right" valignment="top">
@@ -1580,7 +1437,7 @@ This is a wide table that spans the full page width in a two-column layout.
 \begin_layout Ruled Table
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -2130,7 +1987,7 @@ name "tab:table2"
 \begin_layout Ruled Table
 \begin_inset Tabular
 <lyxtabular version="3" rows="12" columns="8">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -3200,25 +3057,11 @@ Here's the first, from Ref.
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Online cite
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-onlinecite{
-\end_layout
-
-\end_inset
-
 misc-full
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -3482,25 +3325,12 @@ target "http://prst-per.aps.org/multimedia/PRSTPER/v4/i1/e010101/e010101_vid1b.m
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Float Link
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-setfloatlink{
-\end_layout
-
-\end_inset
 
 http://link.aps.org/multimedia/PRSTPER/v4/i1/e010101
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
