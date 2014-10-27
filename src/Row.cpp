@@ -383,7 +383,7 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 		// We have found a suitable separator. This is the
 		// common case.
 		end_ = last_sep->endpos;
-		dim_.wid = last_width;
+		dim_.wid = int(last_width);
 		elements_.erase(last_sep, end);
 		return;
 	}
@@ -405,7 +405,7 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 		// There is no separator, but several elements (probably
 		// insets) have been added. We can cut at this place.
 		end_ = cit->pos;
-		dim_.wid = wid;
+		dim_.wid = int(wid);
 		elements_.erase(cit, end);
 		return;
 	}
