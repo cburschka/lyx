@@ -375,16 +375,7 @@ Structure You may use the
 \family typewriter
 Description
 \family default
- environment to structure your abstract; use the optional argument of the
- environment 
-\family sans
-PACS
-\begin_inset space ~
-\end_inset
-
-numbers
-\family default
- to give the category of each item.
+ environment to structure your abstract.
 \end_layout
 
 \end_deeper
@@ -612,7 +603,7 @@ key "article-full"
 
 .
  Author-year citations are used when the journal is RMP.
- To give a textual citation, use the LateX command
+ To give a textual citation, use the LaTeX command
 \series bold
  
 \backslash
@@ -650,7 +641,7 @@ status collapsed
 
 \end_inset
 
-, and references therein
+and references therein
 \begin_inset ERT
 status collapsed
 
