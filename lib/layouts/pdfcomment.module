@@ -1,21 +1,79 @@
-#\DeclareLyXModule{PDF Comments}
+#\DeclareLyXModule[datetime.sty,fmtcount.sty]{PDF Comments}
 #DescriptionBegin
 #Provides various kinds of annotations for the PDF output. The module uses
 #the pdcomment package. Please consult the package documentation for details.
 #DescriptionEnd
-# Author: Juergen Spitzmueller <spitz@lyx.org>
+# Author: Juergen Spitzmueller <spitz@lyx.org> and Uwe Stöhr
 
-Format 48
+Format 49
+
+AddToPreamble
+	\usepackage{pdfcomment}	%support for comments in PDF files
+EndPreamble
 
 #
-# Annotation insets
+# helper commands
+#
+
+Style Define_Avatar
+	Category		Misc
+	LatexType		Command
+	Margin			Dynamic
+	LatexName		defineavatar
+	ParSkip			0.4
+	LabelType		Static
+	LabelSep		M
+	LabelString		"PDF-comment avatar:"
+	Argument 1
+		LabelString	"Name"
+		Tooltip		"Name of the Avatar"
+		Mandatory	1
+	EndArgument
+	PassThru		1
+	LabelFont
+	  Color			green
+	  Shape			bold
+	EndFont
+End
+
+Style Define_PDF-Comment_Style
+	CopyStyle		Define_Avatar
+	LatexName		definestyle
+	LabelString		"PDF-comment style:"
+	Argument 1
+		LabelString	"Name"
+		Tooltip		"Name of the style"
+		Mandatory	1
+	EndArgument
+End
+
+Style Define_PDF-Comment_List_Style
+	CopyStyle		Define_Avatar
+	LatexName		defineliststyle
+	LabelString		"Definition of PDF-comment list style:"
+	Argument 1
+		LabelString	"Name"
+		Tooltip		"Name of the list style"
+		Mandatory	1
+	EndArgument
+End
+
+Style Set_PDF-Comment_List_Style
+	CopyStyle		Define_Avatar
+	LatexName		setliststyle
+	LabelString		"PDF-comment list style:"
+	ResetArgs		1
+End
+
+#
+# Comment insets
 #
 
 InsetLayout "Flex:PDF-Annotation"
 	LyXType               custom
 	LatexType             command
 	Decoration            classic
-	LabelString           PDF
+	LabelString           "PDF (Annotation)"
 	LatexName             pdfcomment
 	LabelFont
 	  Color               magenta
@@ -23,17 +81,33 @@ InsetLayout "Flex:PDF-Annotation"
 	EndFont
 	MultiPar              false
 	Argument 1
-	  MenuString          "PDFComment Options"
+	  MenuString          "PDF-Annotation options"
 	  LabelString         "Opts"
-	  ToolTip             "Insert PDFComment options here (see pdfcomment manual)"
+	  ToolTip             "Insert PDF-Annotation options here (see the pdfcomment manual)"
 	EndArgument
 	Requires              pdfcomment
+End
+
+InsetLayout "Flex:PDF-Comment-Setup"
+	CopyStyle             "Flex:PDF-Annotation"
+	LabelString           "PDF (Setup)"
+	LatexName             pdfcommentsetup
+	Argument 1
+	  MenuString          "PDF-Comment setup options"
+	  LabelString         "Opts"
+	  ToolTip             "Insert PDF-Comment setup options here (see the pdfcomment manual)"
+	EndArgument
 End
 
 InsetLayout "Flex:PDF-Margin"
 	CopyStyle             "Flex:PDF-Annotation"
 	LabelString           "PDF (Margin)"
 	LatexName             pdfmargincomment
+	Argument 1
+	  MenuString          "PDF-Margin options"
+	  LabelString         "Opts"
+	  ToolTip             "Insert PDF-Margin options here (see the pdfcomment manual)"
+	EndArgument
 	LabelFont
 	  Color               green
 	  Size                Small
@@ -55,24 +129,44 @@ InsetLayout "Flex:PDF-Freetext"
 	CopyStyle             "Flex:PDF-Margin"
 	LabelString           "PDF (Freetext)"
 	LatexName             pdffreetextcomment
+	Argument 1
+	  MenuString          "PDF-Freetext options"
+	  LabelString         "Opts"
+	  ToolTip             "Insert PDF-Freetext options here (see the pdfcomment manual)"
+	EndArgument
 End
 
 InsetLayout "Flex:PDF-Square"
 	CopyStyle             "Flex:PDF-Margin"
 	LabelString           "PDF (Square)"
 	LatexName             pdfsquarecomment
+	Argument 1
+	  MenuString          "PDF-Square options"
+	  LabelString         "Opts"
+	  ToolTip             "Insert PDF-Square options here (see the pdfcomment manual)"
+	EndArgument
 End
 
 InsetLayout "Flex:PDF-Circle"
 	CopyStyle             "Flex:PDF-Margin"
 	LabelString           "PDF (Circle)"
 	LatexName             pdfcirclecomment
+	Argument 1
+	  MenuString          "PDF-Circle options"
+	  LabelString         "Opts"
+	  ToolTip             "Insert PDF-Circle options here (see the pdfcomment manual)"
+	EndArgument
 End
 
 InsetLayout "Flex:PDF-Line"
 	CopyStyle             "Flex:PDF-Margin"
 	LabelString           "PDF (Line)"
 	LatexName             pdflinecomment
+	Argument 1
+	  MenuString          "PDF-Line options"
+	  LabelString         "Opts"
+	  ToolTip             "Insert PDF-Line options here (see the pdfcomment manual)"
+	EndArgument
 End
 
 InsetLayout "Flex:PDF-Sideline"
@@ -81,6 +175,11 @@ InsetLayout "Flex:PDF-Sideline"
 	LatexType             environment
 	LatexName             pdfsidelinecomment
 	MultiPar              true
+	Argument 1
+	  MenuString          "PDF-Sideline options"
+	  LabelString         "Opts"
+	  ToolTip             "Insert PDF-Sideline options here (see the pdfcomment manual)"
+	EndArgument
 	Argument 2
 	  LabelString         "Comment"
 	  Mandatory           1
@@ -92,6 +191,11 @@ InsetLayout "Flex:PDF-Reply"
 	CopyStyle             "Flex:PDF-Margin"
 	LabelString           "PDF (Reply)"
 	LatexName             pdfreply
+	Argument 1
+	  MenuString          "PDF-Reply options"
+	  LabelString         "Opts"
+	  ToolTip             "Insert PDF-Reply options here (see the pdfcomment manual)"
+	EndArgument
 	LabelFont
 	  Color               blue
 	  Size                Small
@@ -106,6 +210,11 @@ InsetLayout "Flex:PDF-Tooltip"
 	  Color               red
 	  Size                Small
 	EndFont
+	Argument 1
+	  MenuString          "PDF-Tooltip options"
+	  LabelString         "Opts"
+	  ToolTip             "Insert PDF-Tooltip options here (see the pdfcomment manual)"
+	EndArgument
 	Argument post:1
 	  MenuString          "Tooltip Text"
 	  LabelString         "Tooltip"
@@ -119,7 +228,7 @@ End
 # List of Annotations
 #
 
-Style List_of_PDF_Comments
+Style List_of_PDF-Comments
 	KeepEmpty	1
 	LatexType	Command
 	LatexName	listofpdfcomments
@@ -133,19 +242,19 @@ Style List_of_PDF_Comments
 	LabelType	Static
 	LabelBottomSep	0
 	LeftMargin	MMMMM
-	LabelString	"[LIST of PDF Comments]"
-
+	LabelString	"List of PDF-comments"
 	LabelFont 
-	    Family	typewriter
+	    Family	sansserif
 	    Series	Medium
-	    Size	Small
+	    Size	large
 	    Color	latex
+	    Shape	bold
 	EndFont
-
 	Argument 1
 		LabelString	"Opts"
 		MenuString	"List Options|s"
 		Tooltip		"Insert list options here (see pdfcomment manual)"
 	EndArgument
+	PassThru	1
 	Requires              pdfcomment
 End
