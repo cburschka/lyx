@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-09-27 12:11+0200\n"
+"POT-Creation-Date: 2014-10-30 11:41+0100\n"
 "PO-Revision-Date: 2014-07-03 17:23+0200\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -1317,7 +1317,7 @@ msgstr "Voľby rozmerov papiera pre &DVI prehliadač:"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:51
 msgid "Optional paper size flag (-paper) for some DVI viewers"
 msgstr ""
-"Nepovinný indikátor veľkosti papiera (-paper) pre niektoré DVI prehliadače"
+"Voliteľný indikátor veľkosti papiera (-paper) pre niektoré DVI prehliadače"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:73 src/frontends/qt4/ui/BiblioUi.ui:156
 msgid "Bibliography generation"
@@ -1609,7 +1609,7 @@ msgstr "Vertikálny &posun:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:146
 msgid "Optional vertical offset"
-msgstr "Vertikálne vyrovnanie(nepovinné)"
+msgstr "Vertikálne vyrovnanie(voliteľné)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:164
 msgid "Cell setting"
@@ -6656,7 +6656,7 @@ msgstr "Poďakovania"
 
 #: lib/layouts/jasatex.layout:247 lib/layouts/jasatex.layout:251
 msgid "Online citation"
-msgstr "Online citácia"
+msgstr "Online citát"
 
 #: lib/layouts/aapaper.layout:3 lib/layouts/aapaper.layout:14
 msgid "Astronomy & Astrophysics (V. 4, Obsolete)"
@@ -6982,7 +6982,7 @@ msgstr "Voľba Autor"
 
 #: lib/layouts/elsart.layout:130
 msgid "Optional argument for the author"
-msgstr "Nepovinný argument pre autora"
+msgstr "Voliteľný argument pre autora"
 
 #: lib/layouts/elsart.layout:138
 msgid "Author Address"
@@ -6992,9 +6992,9 @@ msgstr "Adresa Autora"
 msgid "Address Option"
 msgstr "Voľba Adresa"
 
-#: lib/layouts/elsart.layout:149 lib/layouts/ectaart.layout:68
+#: lib/layouts/ectaart.layout:68 lib/layouts/elsart.layout:149
 msgid "Optional argument for the address"
-msgstr "Nepovinný argument pre adresu"
+msgstr "Voliteľný argument pre adresu"
 
 #: lib/layouts/elsart.layout:157 lib/layouts/revtex4.layout:201
 #: lib/layouts/revtex4-1.layout:127
@@ -7022,7 +7022,7 @@ msgstr "Voľba Vďaky"
 
 #: lib/layouts/elsart.layout:208
 msgid "Optional argument for the thanks statement"
-msgstr "Nepovinný argument príkazu vďaka"
+msgstr "Voliteľný argument príkazu vďaka"
 
 #: lib/layouts/elsart.layout:289
 msgid "Theorem \\arabic{theorem}"
@@ -7353,9 +7353,9 @@ msgstr "Príslušenstvo(alternatívne)"
 msgid "Alternate Affiliation Option"
 msgstr "Voľba pre Alternatívne Príslušenstvo"
 
-#: lib/layouts/revtex4.layout:159 lib/layouts/revtex4-1.layout:104
+#: lib/layouts/revtex4-1.layout:104 lib/layouts/revtex4.layout:159
 msgid "Optional argument to the altaffiliation command"
-msgstr "Nepovinný argument pre príkaz \\altaffiliation"
+msgstr "Voliteľný argument pre príkaz altaffiliation"
 
 #: lib/layouts/revtex4.layout:161 lib/layouts/revtex4-1.layout:101
 msgid "Affiliation (alternate):"
@@ -7390,9 +7390,9 @@ msgstr "Vďaka:"
 msgid "Electronic Address Option|s"
 msgstr "Voľba elektronická adresa"
 
-#: lib/layouts/revtex4.layout:208 lib/layouts/revtex4-1.layout:133
+#: lib/layouts/revtex4-1.layout:133 lib/layouts/revtex4.layout:208
 msgid "Optional argument to the email command"
-msgstr "Nepovinný argument pre príkaz email"
+msgstr "Voliteľný argument pre príkaz email"
 
 #: lib/layouts/revtex4.layout:210 lib/layouts/revtex4-1.layout:130
 msgid "Electronic Address:"
@@ -7402,9 +7402,9 @@ msgstr "Elektronická adresa:"
 msgid "Author URL Option"
 msgstr "Voľba URL Autora"
 
-#: lib/layouts/revtex4.layout:227 lib/layouts/revtex4-1.layout:151
+#: lib/layouts/revtex4-1.layout:151 lib/layouts/revtex4.layout:227
 msgid "Optional argument to the homepage command"
-msgstr "Nepovinný argument pre referenciu na domácu stránku"
+msgstr "Voliteľný argument pre referenciu na domácu stránku"
 
 #: lib/layouts/revtex4.layout:267
 msgid "PACS number:"
@@ -7646,10 +7646,10 @@ msgstr "Springer SV Jour/PTRF"
 msgid "Headnote"
 msgstr "Hlavičková poznámka"
 
-#: lib/layouts/svprobth.layout:115 lib/layouts/svjog.layout:85
-#: lib/layouts/svglobal.layout:81
+#: lib/layouts/svglobal.layout:81 lib/layouts/svjog.layout:85
+#: lib/layouts/svprobth.layout:115
 msgid "Headnote (optional):"
-msgstr "Hlavičková poznámka (nepovinná):"
+msgstr "Hlavičková poznámka (voliteľná):"
 
 #: lib/layouts/svprobth.layout:124 lib/layouts/svprobth.layout:126
 #: lib/layouts/svjog.layout:94 lib/layouts/svjog.layout:96
@@ -7762,7 +7762,7 @@ msgstr "Kontext"
 
 #: lib/layouts/aa.layout:301
 msgid "Context of your work (optional, can be left empty)"
-msgstr "Kontext vašej práce (nepovinný, môže sa vynechať)"
+msgstr "Kontext vašej práce (voliteľný, môže sa vynechať)"
 
 #: lib/layouts/aa.layout:305
 msgid "Aims"
@@ -9324,7 +9324,7 @@ msgstr "Voľba E-mail"
 
 #: lib/layouts/ectaart.layout:79
 msgid "Optional argument for the e-mail"
-msgstr "Nepovinný argument pre e-mail"
+msgstr "Voliteľný argument pre e-mail"
 
 #: lib/layouts/ectaart.layout:100
 msgid "Web Address"
@@ -10405,7 +10405,7 @@ msgstr "Hlavička Prísady"
 
 #: lib/layouts/recipebook.layout:119
 msgid "Specify an optional ingredients header"
-msgstr "Urči nepovinnú hlavičku prísad"
+msgstr "Urči voliteľnú hlavičku prísad"
 
 #: lib/layouts/recipebook.layout:127
 msgid "Ingredients:"
@@ -10524,9 +10524,9 @@ msgstr "Životopis"
 msgid "Photo"
 msgstr "Fotka"
 
-#: lib/layouts/IEEEtran.layout:372
+#: lib/layouts/IEEEtran.layout:373
 msgid "Optional photo for biography"
-msgstr "Nepovinná fotka do životopisu"
+msgstr "Voliteľná fotka do životopisu"
 
 #: lib/layouts/IEEEtran.layout:387
 msgid "Biography without photo"
@@ -11163,6 +11163,30 @@ msgstr "Zoznam Videí"
 msgid "Float Link"
 msgstr "Plávajúci odkaz"
 
+#: lib/layouts/revtex4-1.layout:270
+msgid "Float link"
+msgstr "Plávajúci odkaz"
+
+#: lib/layouts/revtex4-1.layout:281
+msgid "lowercase text"
+msgstr "text v malých písmenách"
+
+#: lib/layouts/revtex4-1.layout:293
+msgid "Online cite"
+msgstr "Online citovať"
+
+#: lib/layouts/revtex4-1.layout:297
+msgid "online cite"
+msgstr "online citovať"
+
+#: lib/layouts/revtex4-1.layout:299
+msgid "Text behind"
+msgstr "Text za"
+
+#: lib/layouts/revtex4-1.layout:300
+msgid "text behind the cite"
+msgstr "Text za citovaním"
+
 #: lib/layouts/tufte-book.layout:3
 msgid "Tufte Book"
 msgstr "Tufte Kniha"
@@ -11270,7 +11294,7 @@ msgstr "Riadok 1"
 
 #: lib/layouts/moderncv.layout:115 lib/layouts/moderncv.layout:121
 msgid "Optional address line"
-msgstr "Nepovinný riadok adresy"
+msgstr "Voliteľný riadok adresy"
 
 #: lib/layouts/moderncv.layout:120
 msgid "Line 2"
@@ -11338,7 +11362,7 @@ msgstr "Stĺpce:"
 
 #: lib/layouts/moderncv.layout:275
 msgid "Optional width"
-msgstr "Nepovinná šírka"
+msgstr "Voliteľná šírka"
 
 #: lib/layouts/moderncv.layout:280 lib/layouts/agu_stdtitle.inc:13
 msgid "Header"
@@ -11517,7 +11541,7 @@ msgstr "Voľba Fólia"
 
 #: lib/layouts/powerdot.layout:142
 msgid "Optional arguments to the slide command (see powerdot manual)"
-msgstr "Nepovinný argument pre príkaz fólia (viď powerdot manuál)"
+msgstr "Voliteľný argument pre príkaz fólia (viď powerdot manuál)"
 
 #: lib/layouts/powerdot.layout:151
 msgid "EndSlide"
@@ -11549,7 +11573,7 @@ msgstr "Voľby pre Sekciu"
 
 #: lib/layouts/powerdot.layout:247
 msgid "Optional arguments to the section command (see powerdot manual)"
-msgstr "Nepovinné argumenty pre príkaz sekcia (viď powerdot manuál)"
+msgstr "Voliteľné argumenty pre príkaz sekcia (viď powerdot manuál)"
 
 #: lib/layouts/powerdot.layout:255 lib/layouts/powerdot.layout:303
 msgid "Lists"
@@ -11567,11 +11591,11 @@ msgstr "Špecifikácia pre typ položky (viď powerdot manuál)"
 msgid "Itemize Options"
 msgstr "Parametre pre položky"
 
-#: lib/layouts/powerdot.layout:275 lib/layouts/powerdot.layout:325
+#: lib/layouts/powerdot.layout:276 lib/layouts/powerdot.layout:327
 #: lib/layouts/enumitem.module:58 lib/layouts/enumitem.module:65
 #: lib/layouts/enumitem.module:72 lib/layouts/enumitem.module:107
 msgid "Optional arguments for this list (see enumitem manual)"
-msgstr "Nepovinné argumenty pre túto listinu (viď enumitem manuál)"
+msgstr "Voliteľné argumenty pre túto listinu (viď enumitem manuál)"
 
 #: lib/layouts/powerdot.layout:290
 msgid "ItemizeType1"
@@ -12730,7 +12754,7 @@ msgstr "Meno/Titul"
 
 #: lib/layouts/theorems-without-preamble.inc:42
 msgid "Alternative optional name or title"
-msgstr "Alternatívne nepovinné meno alebo titul"
+msgstr "Alternatívne voliteľné meno alebo titul"
 
 #: lib/layouts/theorems-without-preamble.inc:127
 msgid "Prop \\theprop."
@@ -13377,6 +13401,66 @@ msgstr ""
 "Poskytuje rôzne druhy poznámok pre PDF výstup. Tento modul používa balík "
 "pdfcomment. Pre detaily pozrite na dokumentáciu balíka."
 
+#: lib/layouts/pdfcomment.module:18
+msgid "Define Avatar"
+msgstr "Definovať Avatár"
+
+#: lib/layouts/pdfcomment.module:19
+msgid "PDF-comment"
+msgstr "PDF Komentár"
+
+#: lib/layouts/pdfcomment.module:26
+msgid "PDF-comment avatar:"
+msgstr "PDF-komentár avatár:"
+
+#: lib/layouts/pdfcomment.module:29
+msgid "Name of the Avatar"
+msgstr "Názov Avatára"
+
+#: lib/layouts/pdfcomment.module:40
+msgid "Define PDF-Comment Style"
+msgstr "Definovať Štýl PDF-komentár"
+
+#: lib/layouts/pdfcomment.module:43
+msgid "PDF-comment style:"
+msgstr "Štýl PDF-komentár:"
+
+#: lib/layouts/pdfcomment.module:46
+msgid "Name of the style"
+msgstr "Názov štýlu"
+
+#: lib/layouts/pdfcomment.module:51
+msgid "Define PDF-Comment List Style"
+msgstr "Definovať Štýl Listiny PDF-Komentár"
+
+#: lib/layouts/pdfcomment.module:54
+msgid "Definition of PDF-comment list style:"
+msgstr "Definícia Štýlu Listiny PDF-Komentár:"
+
+#: lib/layouts/pdfcomment.module:57
+msgid "Name of the list style"
+msgstr "Názov štýlu listiny"
+
+#: lib/layouts/pdfcomment.module:62
+msgid "Set PDF-Comment List Style"
+msgstr "Nastaviť Štýl Listiny PDF-Komentár"
+
+#: lib/layouts/pdfcomment.module:65
+msgid "PDF-comment list style:"
+msgstr "Štýl listiny PDF-komentár:"
+
+#: lib/layouts/pdfcomment.module:69
+msgid "PDF-Comment-Setup"
+msgstr "Nastavenie PDF Komentár"
+
+#: lib/layouts/pdfcomment.module:73
+msgid "PDF (Setup)"
+msgstr "PDF (Nastavenie)"
+
+#: lib/layouts/pdfcomment.module:81
+msgid "PDF-Comment setup options"
+msgstr "Voľby nastavenia PDF-Komentár"
+
 #: lib/layouts/pdfcomment.module:14
 msgid "PDF-Annotation"
 msgstr "PDF-Anotácie"
@@ -13767,7 +13851,7 @@ msgstr "Vložte sem počet stĺpcov"
 
 #: lib/layouts/multicol.module:26
 msgid "An optional preface"
-msgstr "Nepovinný predslov"
+msgstr "Voliteľný predslov"
 
 #: lib/layouts/multicol.module:29
 msgid "Space Before Page Break"
@@ -15567,27 +15651,27 @@ msgstr "Zmazať Posledný Argument"
 
 #: lib/ui/stdmenus.inc:261
 msgid "Transform First Non-Optional to Optional Argument"
-msgstr "Zmeniť Prvý Povinný Argument na Nepovinný"
+msgstr "Zmeniť Prvý Povinný Argument na Voliteľný"
 
 #: lib/ui/stdmenus.inc:262
 msgid "Transform Last Optional to Non-Optional Argument"
-msgstr "Zmeniť Posledný Nepovinný Argument na Povinný"
+msgstr "Zmeniť Posledný Voliteľný Argument na Povinný"
 
-#: lib/ui/stdmenus.inc:263 lib/ui/stdcontext.inc:365
+#: lib/ui/stdcontext.inc:373 lib/ui/stdmenus.inc:263
 msgid "Insert Optional Argument"
-msgstr "Vložiť nepovinný argument"
+msgstr "Vložiť voliteľný argument"
 
-#: lib/ui/stdmenus.inc:264 lib/ui/stdcontext.inc:366
+#: lib/ui/stdcontext.inc:374 lib/ui/stdmenus.inc:264
 msgid "Remove Optional Argument"
-msgstr "Zmazať nepovinný argument"
+msgstr "Zmazať Voliteľný Argument"
 
 #: lib/ui/stdmenus.inc:266 lib/ui/stdcontext.inc:368
 msgid "Append Argument Eating From the Right"
 msgstr "Pridať Argument Sprava"
 
-#: lib/ui/stdmenus.inc:267 lib/ui/stdcontext.inc:369
+#: lib/ui/stdcontext.inc:377 lib/ui/stdmenus.inc:267
 msgid "Append Optional Argument Eating From the Right"
-msgstr "Pridať Nepovinný Argument Sprava"
+msgstr "Pridať Voliteľný Argument Sprava"
 
 #: lib/ui/stdmenus.inc:268 lib/ui/stdcontext.inc:370
 msgid "Remove Last Argument Spitting Out to the Right"
@@ -16695,13 +16779,13 @@ msgstr "Hocijaké Číslo"
 msgid "User Defined|U"
 msgstr "Užívateľom Definované"
 
-#: lib/ui/stdcontext.inc:363
+#: lib/ui/stdcontext.inc:371
 msgid "Make First Non-Optional Into Optional Argument"
-msgstr "Zmeniť prvý povinný argument na nepovinný"
+msgstr "Zmeniť prvý povinný argument na voliteľný"
 
-#: lib/ui/stdcontext.inc:364
+#: lib/ui/stdcontext.inc:372
 msgid "Make Last Optional Into Non-Optional Argument"
-msgstr "Zmeniť posledný nepovinný argument na povinný"
+msgstr "Zmeniť posledný voliteľný argument na povinný"
 
 #: lib/ui/stdcontext.inc:379
 msgid "Reload|R"
@@ -17230,19 +17314,19 @@ msgstr "Pridať argument"
 
 #: lib/ui/stdtoolbars.inc:207
 msgid "Make first non-optional into optional argument"
-msgstr "Zmeniť prvý povinný argument na nepovinný"
+msgstr "Zmeniť prvý povinný argument na voliteľný"
 
 #: lib/ui/stdtoolbars.inc:208
 msgid "Make last optional into non-optional argument"
-msgstr "Zmeniť posledný nepovinný argument na povinný"
+msgstr "Zmeniť posledný voliteľný argument na povinný"
 
 #: lib/ui/stdtoolbars.inc:210
 msgid "Remove optional argument"
-msgstr "Zmazať nepovinný argument"
+msgstr "Zmazať voliteľný argument"
 
 #: lib/ui/stdtoolbars.inc:211
 msgid "Insert optional argument"
-msgstr "Vložiť nepovinný argument"
+msgstr "Vložiť voliteľný argument"
 
 #: lib/ui/stdtoolbars.inc:213
 msgid "Remove last argument spitting out to the right"
@@ -17254,7 +17338,7 @@ msgstr "Pridať argument sprava"
 
 #: lib/ui/stdtoolbars.inc:215
 msgid "Append optional argument eating from the right"
-msgstr "Pridať nepovinný argument sprava"
+msgstr "Pridať voliteľný argument sprava"
 
 #: lib/ui/stdtoolbars.inc:218
 msgid "Phonetic Symbols"
@@ -22259,6 +22343,23 @@ msgstr "&Prepísať"
 msgid "Write failure"
 msgstr "Písanie zlyhalo"
 
+#: src/Buffer.cpp:1361
+#, c-format
+msgid ""
+"The file has successfully been saved as:\n"
+"  %1$s.\n"
+"But LyX could not move it to:\n"
+"  %2$s.\n"
+"Your original file has been backed up to:\n"
+"  %3$s"
+msgstr ""
+"Dokument bol úspešne uložený ako:\n"
+"  %1$ss\n"
+"Ale LyX ho nemohol presunúť na:\n"
+"  %2$ss\n"
+"Váš pôvodný súbor bol založeny ako:\n"
+"  %3$s"
+
 #: src/Buffer.cpp:1301
 msgid "Backup failure"
 msgstr "Založenie zlyhalo"
@@ -24007,10 +24108,14 @@ msgstr ""
 "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu."
 
-#: src/LyX.cpp:1092 src/frontends/qt4/GuiAbout.cpp:141
+#: src/LyX.cpp:1093 src/frontends/qt4/GuiAbout.cpp:147
+msgid "  Git commit hash "
+msgstr "Zapísaná git transformácia "
+
+#: src/LyX.cpp:1095 src/frontends/qt4/GuiAbout.cpp:149
 #, c-format
 msgid "Built on %1$s[[date]], %2$s[[time]]"
-msgstr "Zostavený %1$s, %2$s"
+msgstr "Zostavené %1$s, %2$s"
 
 #: src/LyX.cpp:1104 src/support/Package.cpp:628
 msgid "No system directory"
@@ -25040,13 +25145,13 @@ msgstr ""
 msgid "Error: Could not generate logfile."
 msgstr "Chyba: Nemôžem generovať protokolový súbor."
 
-#: src/VCBackend.cpp:1341 src/VCBackend.cpp:1956
+#: src/VCBackend.cpp:1344 src/VCBackend.cpp:1959
 msgid ""
 "Error when committing to repository.\n"
 "You have to manually resolve the problem.\n"
 "LyX will reopen the document after you press OK."
 msgstr ""
-"Chyba pri odoslaní do repozitáru.\n"
+"Chyba pri zapísaní do repozitáru.\n"
 "Treba vyriešiť problém manuálne.\n"
 "Po stisnutí tlačidla OK sa LyX pokúsi dokument znovu otvoriť."
 
@@ -25114,7 +25219,7 @@ msgstr "Blokovanie súborov aktívne."
 
 #: src/VCBackend.cpp:1582
 msgid "Do not forget to commit the locking property into the repository."
-msgstr "Nezabudnite odoslať blokovaciu vlastnosť do repozitára."
+msgstr "Nezabudnite zapísať blokovaciu vlastnosť do repozitára."
 
 #: src/VSpace.cpp:162
 msgid "Default skip"
@@ -25370,6 +25475,10 @@ msgid ""
 msgstr ""
 "LyX verzia %1$s\n"
 "(%2$s)"
+
+#: src/frontends/qt4/GuiAbout.cpp:120
+msgid "Built from git commit hash "
+msgstr "Zostavené zo zapísanej git transformácie "
 
 #: src/frontends/qt4/GuiAbout.cpp:122
 msgid "Library directory: "
@@ -25834,6 +25943,10 @@ msgstr "Voľby PDFKomentárov"
 #: lib/layouts/pdfcomment.module:27 lib/layouts/pdfcomment.module:146
 msgid "Opts"
 msgstr "Voľby"
+
+#: lib/layouts/pdfcomment.module:83
+msgid "Insert PDF-Comment setup options here (see the pdfcomment manual)"
+msgstr "Tu sa vložia voľby pre PDF-Komentár (viď pdfcomment manuál)"
 
 #: lib/layouts/pdfcomment.module:28
 msgid "Insert PDFComment options here (see pdfcomment manual)"
@@ -29349,9 +29462,9 @@ msgstr ""
 msgid "Enter something like \\color{white}"
 msgstr "Vložte niečo ako \\color{white}"
 
-#: src/insets/InsetListingsParams.cpp:318
+#: src/insets/InsetListingsParams.cpp:336
 msgid "Expect a number with an optional * before it"
-msgstr "Očakávam číslo s nepovinným * pred ním"
+msgstr "Očakávam číslo s voliteľným * pred ním"
 
 #: src/insets/InsetListingsParams.cpp:402
 msgid "auto, last or a number"
@@ -29875,9 +29988,9 @@ msgstr "FormatRef: "
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "Nedá sa zmeniť horizontálna adjustácia v '%1$s'"
 
-#: src/mathed/MathMacroTemplate.cpp:495
+#: src/mathed/MathMacroTemplate.cpp:494
 msgid "optional"
-msgstr "nepovinné"
+msgstr "voliteľné"
 
 #: src/mathed/MathMacroTemplate.cpp:1257
 msgid "math macro"
