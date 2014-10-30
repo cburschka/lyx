@@ -8,7 +8,7 @@
 Format 49
 
 AddToPreamble
-	\usepackage{pdfcomment}	%support for comments in PDF files
+	\RequirePackage{pdfcomment}	%support for comments in PDF files
 EndPreamble
 
 #
@@ -16,7 +16,7 @@ EndPreamble
 #
 
 Style Define_Avatar
-	Category		Misc
+	Category		PDF-comment
 	LatexType		Command
 	Margin			Dynamic
 	LatexName		defineavatar
@@ -34,6 +34,7 @@ Style Define_Avatar
 	  Color			green
 	  Shape			bold
 	EndFont
+	Requires		pdfcomment
 End
 
 Style Define_PDF-Comment_Style
@@ -169,24 +170,6 @@ InsetLayout "Flex:PDF-Line"
 	EndArgument
 End
 
-InsetLayout "Flex:PDF-Sideline"
-	CopyStyle             "Flex:PDF-Margin"
-	LabelString           "PDF (Sideline)"
-	LatexType             environment
-	LatexName             pdfsidelinecomment
-	MultiPar              true
-	Argument 1
-	  MenuString          "PDF-Sideline options"
-	  LabelString         "Opts"
-	  ToolTip             "Insert PDF-Sideline options here (see the pdfcomment manual)"
-	EndArgument
-	Argument 2
-	  LabelString         "Comment"
-	  Mandatory           1
-	  ToolTip             "Insert the comment here"
-	EndArgument
-End
-
 InsetLayout "Flex:PDF-Reply"
 	CopyStyle             "Flex:PDF-Margin"
 	LabelString           "PDF (Reply)"
@@ -223,6 +206,27 @@ InsetLayout "Flex:PDF-Tooltip"
 	EndArgument
 End
 
+#
+# Environment inset
+#
+
+InsetLayout "Flex:PDF-Sideline"
+	CopyStyle             "Flex:PDF-Margin"
+	LabelString           "PDF (Sideline)"
+	LatexType             environment
+	LatexName             pdfsidelinecomment
+	MultiPar              true
+	Argument 1
+	  MenuString          "PDF-Sideline options"
+	  LabelString         "Opts"
+	  ToolTip             "Insert PDF-Sideline options here (see the pdfcomment manual)"
+	EndArgument
+	Argument 2
+	  LabelString         "Comment"
+	  Mandatory           1
+	  ToolTip             "Insert the comment here"
+	EndArgument
+End
 
 #
 # List of Annotations
@@ -230,6 +234,7 @@ End
 
 Style List_of_PDF-Comments
 	KeepEmpty	1
+	Category	PDF-comment
 	LatexType	Command
 	LatexName	listofpdfcomments
 	Margin		First_Dynamic
