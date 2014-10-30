@@ -378,4 +378,9 @@ string const & InsetRef::getName(int type)
 }
 
 
+docstring InsetRef::getTOCString() const 
+{
+	return tooltip_.empty() ? screen_label_ : tooltip_;
+}
+
 } // namespace lyx

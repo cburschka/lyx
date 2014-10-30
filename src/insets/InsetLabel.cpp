@@ -189,7 +189,7 @@ void InsetLabel::addToToc(DocIterator const & cpit, bool output_active) const
 				output_active));
 		else
 			toc.push_back(TocItem(ref_pit, 1,
-				static_cast<InsetRef *>(it->first)->screenLabel(),
+				static_cast<InsetRef *>(it->first)->getTOCString(),
 			  output_active));
 	}
 }
