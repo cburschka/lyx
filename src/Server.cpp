@@ -878,7 +878,7 @@ void LyXComm::endPipe(int & fd, string const & filename, bool write)
 		       << '\n' << strerror(errno) << endl;
 	}
 
-	if (FileName(filename).removeFile() < 0) {
+	if (!FileName(filename).removeFile()) {
 		lyxerr << "LyXComm: Could not remove pipe " << filename
 		       << '\n' << strerror(errno) << endl;
 	}

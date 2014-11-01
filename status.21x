@@ -70,7 +70,7 @@ What's new
 
 - Fix export of documents that use the LaTeX-packages mhchem and wasysym
   (bug 9266).
-  
+
 - Remove unnecessary preamble code in LaTeX export
   of documents using the class REVTeX 4.1 file (bug 4625).
 
@@ -96,6 +96,7 @@ What's new
 
 * INTERNALS
 
+- Fix wrong test in LyX server.
 
 
 * DOCUMENTATION AND LOCALIZATION
