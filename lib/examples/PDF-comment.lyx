@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 479
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -117,7 +117,7 @@ color=yellow
 status collapsed
 
 \begin_layout Plain Layout
-Use yelow as default color for new PDF-comments, see sec.
+This sets yellow as default color for new PDF-comments, see sec.
 \begin_inset space ~
 \end_inset
 
@@ -145,13 +145,13 @@ Uwe Stöhr
 \end_layout
 
 \begin_layout Standard
-The LaTeX package 
+The LaTeX-package 
 \series bold
 pdfcomment
 \series default
- provides full access for PDF comments.
+ provides full access for PDF-comments.
  You can add normal comments as well as margin comments, underlining etc.
- And you can also define a special layout for the comment, which you can
+ And you can also define a special layout for the comment which you can
  use several times in the document.
  This document is only a excerpt of the documentation of 
 \series bold
@@ -204,7 +204,7 @@ This is the standard PDF-comment.
 status open
 
 \begin_layout Plain Layout
-This is a simple PDF-Annotation
+This is a simple PDF-Annotation.
 \end_layout
 
 \end_inset
@@ -233,8 +233,7 @@ status open
 \series bold
 Note:
 \series default
- Literal TeX code, such as braces and brackets, must be inserted as TeX-code
- to the comment options.
+ All braces and brackets in comment options must be inserted as TeX-code!
 \end_layout
 
 \end_inset
@@ -264,17 +263,51 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
+author=
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
-author={Daisy Duck},color={0.234 0.867 0.211},voffset=8pt,opacity=0.5
+{
 \end_layout
 
 \end_inset
 
+Daisy Duck
+\begin_inset ERT
+status collapsed
 
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+,color=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+0.234 0.867 0.211
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+,voffset=8pt,opacity=0.5
 \end_layout
 
 \end_inset
@@ -347,14 +380,47 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
+id=1,color=blue,height=2.5cm,width=5.8cm,voffset=-2.8cm,hoffset=8cm,opacity=1.0,just
+ification=right,icolor=
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
-id=1,color=blue,height=2.5cm,width=5.8cm,voffset=-2.8cm,hoffset=8cm,opacity=1.0,just
-ification=right,icolor={yellow},linewidth=12pt,borderstyle=dashed,dashstyle={10
- 5}
+{
+\end_layout
+
+\end_inset
+
+yellow
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+,linewidth=12pt,borderstyle=dashed,dashstyle=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+10 5
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \end_inset
@@ -412,18 +478,8 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
 height=3cm,type=freetext,subject={freetext},width=4.5cm,voffset=-3.2cm,hoffset=-3.2
 cm,opacity=0.9,justification=right
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -491,19 +547,73 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
+type=line,opacity=1,line=
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
-type=line,opacity=1,line={50 480 50 180},color=green,icolor=blue,caption=top,lin
-ebegin={/ROpenArrow},lineend={/OpenArrow},linewidth=2bp,captionhoffset=-5pt,capt
-ionvoffset=15pt
+{
 \end_layout
 
 \end_inset
 
+50 480 50 180
+\begin_inset ERT
+status collapsed
 
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+,color=green,icolor=blue,caption=top,linebegin=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+/ROpenArrow
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+,lineend=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+/OpenArrow
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+,linewidth=2bp,captionhoffset=-5pt,captionvoffset=15pt
 \end_layout
 
 \end_inset
@@ -679,7 +789,7 @@ Underwave PDF-Markup
 \end_layout
 
 \begin_layout Description
-StrikeOut The markup text will be struck out: 
+StrikeOut The markup text will be struck-out: 
 \begin_inset Flex PDF-Markup
 status open
 
@@ -1173,19 +1283,20 @@ status open
 status open
 
 \begin_layout Plain Layout
+mathstyle=
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
-mathstyle=
+
 \backslash
-displaystyle
+
 \end_layout
 
 \end_inset
 
-
+displaystyle
 \end_layout
 
 \end_inset
@@ -1691,14 +1802,14 @@ You can insert a list with all PDF-comments using the environment List of
  author are printed:
 \end_layout
 
-\begin_layout List of PDF Comments
+\begin_layout List of PDF-Comments
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
 liststyle=
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1709,7 +1820,7 @@ status open
 
 AuthorComment
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1720,7 +1831,7 @@ status open
 
 , heading =
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1731,7 +1842,7 @@ status open
 
 List of PDF-comments
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
