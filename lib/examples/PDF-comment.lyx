@@ -117,7 +117,7 @@ color=yellow
 status collapsed
 
 \begin_layout Plain Layout
-This sets yellow as default color for new PDF-comments, see sec.
+This sets yellow as default color for new PDF comments, see sec.
 \begin_inset space ~
 \end_inset
 
@@ -149,7 +149,7 @@ The LaTeX-package
 \series bold
 pdfcomment
 \series default
- provides full access for PDF-comments.
+ provides full access for PDF comments.
  You can add normal comments as well as margin comments, underlining etc.
  And you can also define a special layout for the comment which you can
  use several times in the document.
@@ -198,7 +198,7 @@ PDF-Annotation
 \end_layout
 
 \begin_layout Standard
-This is the standard PDF-comment.
+This is the standard PDF comment.
  Here is an example: 
 \begin_inset Flex PDF-Annotation
 status open
@@ -213,7 +213,7 @@ This is a simple PDF-Annotation.
 \end_layout
 
 \begin_layout Standard
-Like all PDF-comment types you can add a lot of things to the option of
+Like all PDF comment types you can add a lot of things to the option of
  the inset.
  To insert the options inset, set the cursor into the comment inset and
  use the menu 
@@ -866,7 +866,7 @@ PDF-Reply
 \end_layout
 
 \begin_layout Standard
-With a PDF-Reply you can compose replies to PDF-comments.
+With a PDF-Reply you can compose replies to PDF comments.
  The option 
 \series bold
 replyto
@@ -1332,7 +1332,7 @@ The package
 \series bold
 pdfcomment
 \series default
- provides the following environments to define or change PDF-comments:
+ provides the following environments to define or change PDF comments:
 \end_layout
 
 \begin_layout Subsection
@@ -1349,9 +1349,9 @@ name "sub:PDF-Comment-setup"
 \begin_layout Standard
 With this custom inset you can reset the global (document-wide) options
  at any time.
- For example the default color for new PDF-comments is blue.
+ For example the default color for new PDF comments is blue.
  To get Adobe Reader's yellow colored notes for all comments in your document,
- add the PDF-comment setup inset to the beginning of your document and insert
+ add the PDF comment setup inset to the beginning of your document and insert
  there the option 
 \series bold
 color=yellow
@@ -1367,7 +1367,7 @@ local
 \series default
  you can keep the reset local within a group enclosed by TeX-braces.
  For example you want to reset the color only for two consecutive comments,
- then enclose the PDF-comment setup inset and the two comment insets in
+ then enclose the PDF comment setup inset and the two comment insets in
  TeX-braces.
  Here is an example:
 \end_layout
@@ -1459,14 +1459,14 @@ default PDF-Margin comment
 \end_layout
 
 \begin_layout Subsection
-PDF-Comment style
+PDF Comment style
 \end_layout
 
 \begin_layout Standard
-This environment allows you to define a style for a PDF-comment that can
+This environment allows you to define a style for a PDF comment that can
  be used by several comments.
  Assuming you write a Math tutorial and want to add popup explanations in
- the PDF for several expressions, then insert a PDF-Comment style environment
+ the PDF for several expressions, then insert a PDF Comment style environment
  before your first formula.
  Name it for example 
 \series bold
@@ -1675,16 +1675,20 @@ author={Oleg Testman},icon=Check,color=lime
 \end_layout
 
 \begin_layout Standard
-To use now your avatar for PDF-comments you have two choices:
+To use now your avatar for PDF comments you have two choices:
 \end_layout
 
 \begin_layout Enumerate
-You set up ALL PDF-comments in the document using your avatar.
+You set up ALL PDF comments in the document using your avatar.
  This is done by inserting the custom inset 
 \family sans
-PDF-Comment-Setup
+PDF
+\begin_inset space ~
+\end_inset
+
+Comment-Setup
 \family default
- before the first PDF-comment in your document.
+ before the first PDF comment in your document.
  Insert to this inset 
 \series bold
 avatar=Oleg
@@ -1697,14 +1701,18 @@ You add
 \series bold
 avatar=Oleg
 \series default
- to the options of a particular PDF-comment.
+ to the options of a particular PDF comment.
  The avatar will then only be used for this comment.
 \end_layout
 
 \begin_layout Standard
 Here is an example for the 
 \family sans
-PDF-Comment-Setup
+PDF
+\begin_inset space ~
+\end_inset
+
+Comment-Setup
 \family default
  method:
 \begin_inset Flex PDF-Comment-Setup
@@ -1790,12 +1798,12 @@ I am Dr.
 \end_layout
 
 \begin_layout Section
-List of PDF-comments
+List of PDF comments
 \end_layout
 
 \begin_layout Standard
-You can insert a list with all PDF-comments using the environment List of
- PDF-comments.
+You can insert a list with all PDF comments using the environment List of
+ PDF comments.
  By specifying options for it you can determine what parts of the comments
  shpuld appear in the list.
  Here is the list for this document where only the comments of a defined
@@ -1840,7 +1848,7 @@ status collapsed
 
 \end_inset
 
-List of PDF-comments
+List of PDF comments
 \begin_inset ERT
 status collapsed
 
@@ -1870,7 +1878,11 @@ Define
 \begin_inset space ~
 \end_inset
 
-PDF-Comment
+PDF
+\begin_inset space ~
+\end_inset
+
+Comment
 \begin_inset space ~
 \end_inset
 
@@ -1895,7 +1907,11 @@ Set
 \begin_inset space ~
 \end_inset
 
-PDF-Comment
+PDF
+\begin_inset space ~
+\end_inset
+
+Comment
 \begin_inset space ~
 \end_inset
 
@@ -1982,8 +1998,11 @@ usepackage[svgnames,rgb]{xcolor}
 \end_layout
 
 \begin_layout Itemize
-If you have two consecutive PDF-comment insets, the will appear in the PDF
- one over each other:
+If you have two consecutive PDF
+\begin_inset space ~
+\end_inset
+
+comment insets, the will appear in the PDF one over each other:
 \begin_inset Flex PDF-Comment-Setup
 status open
 

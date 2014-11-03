@@ -192,7 +192,6 @@ InsetLayout "Flex:PDF-Tooltip"
 	EndArgument
 End
 
-
 #
 # List of Annotations
 #
@@ -212,14 +211,13 @@ Style List_of_PDF_Comments
 	LabelBottomSep	0
 	LeftMargin	MMMMM
 	LabelString	"[List of PDF Comments]"
-
 	LabelFont 
-	    Family	typewriter
+	    Family	sansserif
 	    Series	Medium
-	    Size	Small
+	    Size	large
 	    Color	latex
+	    Shape	bold
 	EndFont
-
 	Argument 1
 	  LabelString	"Opts"
 	  MenuString	"List Options|s"
