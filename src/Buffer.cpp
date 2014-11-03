@@ -1300,12 +1300,15 @@ bool Buffer::save() const
 	// we first write the file to a new name, then move it to its
 	// proper location once that has been done successfully. that
 	// way we preserve the original file if something goes wrong.
-	TempFile tempfile(fileName().onlyPath(), "tmpXXXXXX.lyx");
+	string const justname = fileName().onlyFileNameWithoutExt();
+	boost::scoped_ptr<TempFile>
+		tempfile(new TempFile(fileName().onlyPath(),
+	           justname + "-XXXXXX.lyx"));
 	bool const symlink = fileName().isSymLink();
 	if (!symlink)
-		tempfile.setAutoRemove(false);
+		tempfile->setAutoRemove(false);
 
-	FileName savefile(tempfile.name());
+	FileName savefile(tempfile->name());
 	LYXERR(Debug::FILES, "Saving to " << savefile.absFileName());
 	if (!writeFile(savefile))
 		return false;
@@ -1339,6 +1342,10 @@ bool Buffer::save() const
 		}
 	}
 
+	// Destroy tempfile since it keeps the file locked on windows (bug 9234)
+	// Only do this if tempfile is not in autoremove mode
+	if (!symlink)
+		tempfile.reset();
 	// If we have no symlink, we can simply rename the temp file.
 	// Otherwise, we need to copy it so the symlink stays intact.
 	if (made_backup && symlink ? savefile.copyTo(fileName(), true) :
