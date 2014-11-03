@@ -4560,7 +4560,7 @@ def convert_chunks(document):
                 contents.append(document.body[i + 1:j])
 
             # look for potential chunk terminator
-            # on the last line of the chunk paragraph            
+            # on the last line of the chunk paragraph
             if document.body[j - 1] == "@":
                 break
 
@@ -4573,7 +4573,7 @@ def convert_chunks(document):
                 break
 
         file_pos = end = j + 1
-        
+
         # The last chunk should simply have an "@" in it
         # or at least end with "@" (can happen if @ is
         # preceded by a newline)
@@ -4636,7 +4636,23 @@ def convert_chunks(document):
         # does not need to do that.
         did_one_par = False
         if postoptstuff:
-            newstuff.extend(postoptstuff)
+            # we need to replace newlines with new layouts
+            start_newline = -1
+            started_text = False
+            for lno in range(0,len(postoptstuff)):
+                if postoptstuff[lno].startswith("\\begin_inset Newline newline"):
+                    start_newline = lno
+                elif start_newline != -1:
+                    if postoptstuff[lno].startswith("\\end_inset"):
+                        # replace that bit, but only if we already have some text
+                        # and we're not at the end except for a blank line
+                        if started_text and \
+                          (lno != len(postoptstuff) - 2 or postoptstuff[-1] != ""):
+                            newstuff.extend(['\\end_layout', '\n', '\\begin_layout Plain Layout', '\n'])
+                        start_newline = -1
+                        started_text = True
+                else:
+                    newstuff.extend([postoptstuff[lno]])
             newstuff.append('\\end_layout')
             did_one_par = True
         for c in contents:
