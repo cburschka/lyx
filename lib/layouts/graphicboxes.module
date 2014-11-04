@@ -1,0 +1,78 @@
+#\DeclareLyXModule{GraphicBoxes}
+#DescriptionBegin
+#Boxes to scale and rotate its contents
+#DescriptionEnd
+#
+#Author: Jürgen Spitzmüller <spitz@lyx.org>
+#        Uwe Stöhr <uwestoehr@lyx.org>
+
+Format 49
+
+InsetLayout Flex:Reflectbox
+	LyXType		custom
+	Decoration	classic
+	LabelString	Reflectbox
+	LatexType	command
+	LatexName	reflectbox
+	LabelFont
+	  Family	Roman
+	  Color		red
+	EndFont
+	ResetsFont	0
+	Requires	graphicx
+	MultiPar	0
+End
+
+InsetLayout Flex:Scalebox
+	CopyStyle	Flex:Reflectbox
+	LabelString	Scalebox
+	LatexName	scalebox
+	Argument 1
+	  LabelString	"H-Factor"
+	  Tooltip	"Insert horizontal scale factor (1 = 100%)"
+	  Mandatory	1
+	  DefaultArg	"1"
+	  AutoInsert	1
+	EndArgument
+	Argument 2
+	  LabelString	"V-Factor"
+	  Tooltip	"Insert vertical scale factor (1 = 100%)"
+	EndArgument
+End
+
+InsetLayout Flex:Resizebox
+	CopyStyle	Flex:Reflectbox
+	LabelString	Resizebox
+	LatexName	resizebox
+	Argument 1
+	  LabelString	"Width"
+	  Tooltip	"Width of the box"
+	  Mandatory	1
+	  DefaultArg	"1cm"
+	  AutoInsert	1
+	EndArgument
+	Argument 2
+	  LabelString	"Height"
+	  Tooltip	"Height of the box, can also be '!' to keep aspect ratio"
+	  Mandatory	1
+	  DefaultArg	"!"
+	  AutoInsert	1
+	EndArgument
+End
+
+InsetLayout Flex:Rotatebox
+	CopyStyle	Flex:Reflectbox
+	LabelString	Rotatebox
+	LatexName	rotatebox
+	Argument 1
+	  LabelString	"Origin"
+	  Tooltip	"Rotation origin; syntax: 'origin=lt' (for top left corner)"
+	EndArgument
+	Argument 2
+	  LabelString	"Angle"
+	  Tooltip	"Rotation angle in degrees (counterclockwise)"
+	  DefaultArg	"0"
+	  AutoInsert	1
+	  Mandatory	1
+	EndArgument
+End

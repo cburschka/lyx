@@ -1982,6 +1982,7 @@ dist_layouts_DATA =\
 	layouts/frletter.layout \
 	layouts/g-brief.layout \
 	layouts/g-brief2.layout \
+	layouts/graphicboxes.module \
 	layouts/hanging.module \
 	layouts/heb-article.layout \
 	layouts/heb-letter.layout \
