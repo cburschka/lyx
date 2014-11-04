@@ -2084,7 +2084,8 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					//}
 					for (InsetMath::idx_type i = start; i < at->nargs(); ++i) {
 						parse(at.nucleus()->cell(i), FLAG_ITEM, m);
-						skipSpaces();
+						if (mode == InsetMath::MATH_MODE)
+							skipSpaces();
 					}
 					cell->push_back(at);
 				}
