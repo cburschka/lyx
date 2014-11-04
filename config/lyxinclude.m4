@@ -358,6 +358,29 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 ])
 
 
+dnl Usage: LYX_CHECK_CALLSTACK_PRINTING: define LYX_CALLSTACK_PRINTING if the
+dnl        necessary APIs are available to print callstacks.
+AC_DEFUN([LYX_CHECK_CALLSTACK_PRINTING],
+[AC_CACHE_CHECK([whether printing callstack is possible],
+               [lyx_cv_callstack_printing],
+[AC_TRY_COMPILE([
+#include <execinfo.h>
+#include <cxxabi.h>
+], [
+	void* array[200];
+	size_t size = backtrace(array, 200);
+	backtrace_symbols(array, size);
+	int status = 0;
+	abi::__cxa_demangle("abcd", 0, 0, &status);
+],
+[lyx_cv_callstack_printing=yes], [lyx_cv_callstack_printing=no])])
+if test x"$lyx_cv_callstack_printing" = xyes; then
+  AC_DEFINE([LYX_CALLSTACK_PRINTING], 1,
+            [Define if callstack can be printed])
+fi
+])
+
+
 dnl Usage: LYX_USE_INCLUDED_MYTHES : select if the included MyThes should
 dnl        be used.
 AC_DEFUN([LYX_USE_INCLUDED_MYTHES],[

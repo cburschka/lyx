@@ -104,6 +104,9 @@ LYX_USE_INCLUDED_MYTHES
 ### we need to know the byte order for unicode conversions
 AC_C_BIGENDIAN
 
+# Nice to have when an assertion triggers
+LYX_CHECK_CALLSTACK_PRINTING
+
 # Needed for our char_type
 AC_CHECK_SIZEOF(wchar_t)
 
