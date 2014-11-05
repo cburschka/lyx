@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-10-30 11:41+0100\n"
-"PO-Revision-Date: 2014-07-03 17:23+0200\n"
+"POT-Creation-Date: 2014-11-05 13:27+0100\n"
+"PO-Revision-Date: 2014-11-05 13:59+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -13396,7 +13396,7 @@ msgstr "PDF Komentáre"
 #: lib/layouts/pdfcomment.module:6
 msgid ""
 "Provides various kinds of annotations for the PDF output. The module uses "
-"the pdcomment package. Please consult the package documentation for details."
+"the pdfcomment package. Please consult the package documentation for details."
 msgstr ""
 "Poskytuje rôzne druhy poznámok pre PDF výstup. Tento modul používa balík "
 "pdfcomment. Pre detaily pozrite na dokumentáciu balíka."
@@ -14000,6 +14000,70 @@ msgstr ""
 "Nastaviť všetky poznámky pod čiarou ako koncové poznámky. Nutné je pridať "
 "\\theendnotes do vložky TeX-ového kódu tam, kde sa koncové poznámky majú "
 "objaviť."
+
+#: lib/layouts/graphicboxes.module:2
+msgid "GraphicBoxes"
+msgstr "GrafickéRámčeky"
+
+#: lib/layouts/graphicboxes.module:5
+msgid "Boxes to scale and rotate its contents"
+msgstr "Rámček na rozmer a rotáciu jeho obsahu"
+
+#: lib/layouts/graphicboxes.module:11 lib/layouts/graphicboxes.module:14
+msgid "Reflectbox"
+msgstr "ZrkadľujúciRámček"
+
+#: lib/layouts/graphicboxes.module:26 lib/layouts/graphicboxes.module:28
+msgid "Scalebox"
+msgstr "RozmerovýRámček"
+
+#: lib/layouts/graphicboxes.module:31
+msgid "H-Factor"
+msgstr "H-Faktor"
+
+#: lib/layouts/graphicboxes.module:32
+msgid "Insert horizontal scale factor (1 = 100%)"
+msgstr "Vložte horizontálny faktor rozmeru (1 = 100%)"
+
+#: lib/layouts/graphicboxes.module:38
+msgid "V-Factor"
+msgstr "V-Faktor"
+
+#: lib/layouts/graphicboxes.module:39
+msgid "Insert vertical scale factor (1 = 100%)"
+msgstr "Vložte vertikálny faktor rozmeru (1 = 100%)"
+
+#: lib/layouts/graphicboxes.module:43 lib/layouts/graphicboxes.module:45
+msgid "Resizebox"
+msgstr "ZmenaVeľkostiRámček"
+
+#: lib/layouts/graphicboxes.module:49
+msgid "Width of the box"
+msgstr "Šírka Rámčeku"
+
+#: lib/layouts/graphicboxes.module:56
+msgid "Height of the box, can also be '!' to keep aspect ratio"
+msgstr "Výška rámčeku, môže byť aj '!' na držanie pomeru strán"
+
+#: lib/layouts/graphicboxes.module:63 lib/layouts/graphicboxes.module:65
+msgid "Rotatebox"
+msgstr "OtáčajúciRámček"
+
+#: lib/layouts/graphicboxes.module:68
+msgid "Origin"
+msgstr "Stredobod"
+
+#: lib/layouts/graphicboxes.module:69
+msgid "Rotation origin; syntax: 'origin=lt' (for top left corner)"
+msgstr "Pôvod otáčania; syntax: 'origin=ľv' (pre vrchný ľavý roh)"
+
+#: lib/layouts/graphicboxes.module:72
+msgid "Angle"
+msgstr "Uhol"
+
+#: lib/layouts/graphicboxes.module:73
+msgid "Rotation angle in degrees (counterclockwise)"
+msgstr "Točiaci uhol v stupňoch (v protismere hodín)"
 
 #: lib/layouts/theorems-bytype.module:2
 msgid "Theorems (Numbered by Type)"
@@ -26048,8 +26112,8 @@ msgstr "Vložte sem text pre pomocný návrh"
 msgid "List of PDF Comments"
 msgstr "Zoznam PDF Komentárov"
 
-#: lib/layouts/pdfcomment.module:136
-msgid "[LIST of PDF Comments]"
+#: lib/layouts/pdfcomment.module:214
+msgid "[List of PDF Comments]"
 msgstr "[Zoznam PDF Komentárov]"
 
 #: lib/layouts/pdfcomment.module:147
@@ -30314,6 +30378,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "[LIST of PDF Comments]"
+#~ msgstr "[Zoznam PDF Komentárov]"
+
 #~ msgid "TeX Code|X"
 #~ msgstr "TeX Kód"
 
@@ -33124,3 +33191,10 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Box[[Menu]]"
 #~ msgstr "Rámik"
+
+#~ msgid ""
+#~ "Provides various kinds of annotations for the PDF output. The module uses "
+#~ "the pdcomment package. Please consult the package documentation for details."
+#~ msgstr ""
+#~ "Poskytuje rôzne druhy poznámok pre PDF výstup. Tento modul používa balík "
+#~ "pdfcomment. Pre detaily pozrite na dokumentáciu balíka."
