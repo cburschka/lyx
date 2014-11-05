@@ -30,11 +30,12 @@ Style List_of_TODOs
 	LeftMargin	MMMMM
 	LabelString	"[List of TODOs]"
 
-	LabelFont
-	    Family	typewriter
+	LabelFont 
+	    Family	sansserif
 	    Series	Medium
-	    Size	Small
+	    Size	large
 	    Color	latex
+	    Shape	bold
 	EndFont
 
 	Argument 1

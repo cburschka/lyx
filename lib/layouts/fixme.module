@@ -34,12 +34,14 @@ Style List_of_FIXMEs
 	LeftMargin	MMMMM
 	LabelString	"[List of FIXMEs]"
 
-	LabelFont
-	    Family	typewriter
+	LabelFont 
+	    Family	sansserif
 	    Series	Medium
-	    Size	Small
+	    Size	large
 	    Color	latex
+	    Shape	bold
 	EndFont
+
 	Requires	fixme
 End
 
