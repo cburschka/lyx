@@ -322,6 +322,7 @@ dist_examples_DATA = \
 	examples/modernCV.lyx \
 	examples/MultilingualCaptions.lyx \
 	examples/noweb2lyx.lyx \
+	examples/PDF-comment.lyx \
 	examples/powerdot-example.lyx \
 	examples/recipebook.lyx \
 	examples/R-S-statements.lyx \
