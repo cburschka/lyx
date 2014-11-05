@@ -94,6 +94,8 @@ What's new
 - Fix mapping of ISO_Left_Tab key, which was erroneously assigned to Tab
   (instead of BackTab).
 
+- Disallow to insert program listings to footnotes and margin notes (bug 9321).
+
 
 * INTERNALS
 
