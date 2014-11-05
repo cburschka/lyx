@@ -213,7 +213,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-09-09 11:05-0400\n"
+"POT-Creation-Date: 2014-11-05 10:39-0500\n"
 "PO-Revision-Date: 2014-09-01 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
@@ -5407,32 +5407,33 @@ msgstr "Visa ERT-innehåll"
 msgid "O&pen"
 msgstr "Ö&ppna"
 
-#: lib/layouts/IEEEtran-CompSoc.layout:3
-msgid "IEEE Transactions Computer Society"
-msgstr "IEEE Transactions Computer Society"
+#: lib/layouts/mwart.layout:3
+msgid "Polish Article (MW Bundle)"
+msgstr "Polsk artikel (MW Bundle)"
 
-#: lib/layouts/IEEEtran-CompSoc.layout:4 lib/layouts/isprs.layout:4
-#: lib/layouts/ijmpc.layout:4 lib/layouts/extarticle.layout:4
-#: lib/layouts/siamltex.layout:4 lib/layouts/aapaper.layout:4
+#: lib/layouts/mwart.layout:4 lib/layouts/IEEEtran-CompSoc.layout:4
+#: lib/layouts/isprs.layout:4 lib/layouts/ijmpc.layout:4
+#: lib/layouts/extarticle.layout:4 lib/layouts/aapaper.layout:4
 #: lib/layouts/acmsiggraph.layout:4 lib/layouts/iopart.layout:4
 #: lib/layouts/amsart.layout:4 lib/layouts/elsart.layout:4
 #: lib/layouts/singlecol-new.layout:4 lib/layouts/egs.layout:4
 #: lib/layouts/revtex4.layout:4 lib/layouts/singlecol.layout:4
-#: lib/layouts/apa6.layout:4 lib/layouts/svprobth.layout:4
-#: lib/layouts/entcs.layout:4 lib/layouts/revtex.layout:4
-#: lib/layouts/aa.layout:4 lib/layouts/chess.layout:4 lib/layouts/dtk.layout:4
-#: lib/layouts/elsarticle.layout:4 lib/layouts/sigplanconf.layout:4
-#: lib/layouts/AEA.layout:4 lib/layouts/ectaart.layout:4
-#: lib/layouts/svjog.layout:4 lib/layouts/jsarticle.layout:4
-#: lib/layouts/svglobal3.layout:4 lib/layouts/svglobal.layout:4
-#: lib/layouts/doublecol-new.layout:4 lib/layouts/arab-article.layout:4
-#: lib/layouts/paper.layout:4 lib/layouts/spie.layout:4
-#: lib/layouts/agums.layout:4 lib/layouts/IEEEtran-TransMag.layout:4
+#: lib/layouts/svprobth.layout:4 lib/layouts/entcs.layout:4
+#: lib/layouts/revtex.layout:4 lib/layouts/aa.layout:4
+#: lib/layouts/chess.layout:4 lib/layouts/apa6.layout:4
+#: lib/layouts/siamltex.layout:4 lib/layouts/elsarticle.layout:4
+#: lib/layouts/sigplanconf.layout:4 lib/layouts/AEA.layout:4
+#: lib/layouts/ectaart.layout:4 lib/layouts/svjog.layout:4
+#: lib/layouts/jsarticle.layout:4 lib/layouts/svglobal3.layout:4
+#: lib/layouts/svglobal.layout:4 lib/layouts/doublecol-new.layout:4
+#: lib/layouts/arab-article.layout:4 lib/layouts/paper.layout:4
+#: lib/layouts/spie.layout:4 lib/layouts/agums.layout:4
 #: lib/layouts/llncs.layout:4 lib/layouts/apa.layout:4
-#: lib/layouts/aastex.layout:4 lib/layouts/jarticle.layout:4
-#: lib/layouts/ctex-article.layout:4 lib/layouts/kluwer.layout:4
-#: lib/layouts/achemso.layout:4 lib/layouts/cl2emult.layout:4
-#: lib/layouts/ijmpd.layout:4 lib/layouts/article.layout:4
+#: lib/layouts/dtk.layout:4 lib/layouts/aastex.layout:4
+#: lib/layouts/jarticle.layout:4 lib/layouts/ctex-article.layout:4
+#: lib/layouts/kluwer.layout:4 lib/layouts/achemso.layout:4
+#: lib/layouts/cl2emult.layout:4 lib/layouts/ijmpd.layout:4
+#: lib/layouts/article.layout:4 lib/layouts/IEEEtran-TransMag.layout:4
 #: lib/layouts/jgrga.layout:4 lib/layouts/scrarticle-beamer.layout:4
 #: lib/layouts/IEEEtran.layout:4 lib/layouts/agutex.layout:4
 #: lib/layouts/article-beamer.layout:4 lib/layouts/heb-article.layout:4
@@ -5440,9 +5441,29 @@ msgstr "IEEE Transactions Computer Society"
 #: lib/layouts/scrartcl.layout:4 lib/layouts/ltugboat.layout:4
 #: lib/layouts/acm-sigs-alt.layout:4 lib/layouts/revtex4-1.layout:4
 #: lib/layouts/jss.layout:4 lib/layouts/latex8.layout:4
-#: lib/layouts/acm-sigs.layout:4 lib/layouts/mwart.layout:4
+#: lib/layouts/acm-sigs.layout:4
 msgid "Articles"
 msgstr "Artiklar"
+
+#: lib/layouts/mwart.layout:25 lib/layouts/beamer.layout:194
+#: lib/layouts/beamer.layout:219 lib/layouts/paper.layout:48
+#: lib/layouts/tufte-handout.layout:23 lib/layouts/article.layout:20
+#: lib/layouts/scrartcl.layout:22 lib/layouts/memoir.layout:54
+#: lib/layouts/svmult.layout:103 lib/layouts/scrclass.inc:53
+#: lib/layouts/agu_stdsections.inc:12 lib/layouts/svcommon.inc:108
+#: lib/layouts/stdsections.inc:12 lib/layouts/db_stdsections.inc:12
+msgid "Part"
+msgstr "Del"
+
+#: lib/layouts/mwart.layout:35 lib/layouts/article.layout:31
+#: lib/layouts/scrartcl.layout:31 lib/layouts/stdstarsections.inc:13
+#: lib/layouts/svcommon.inc:245 lib/layouts/db_stdstarsections.inc:13
+msgid "Part*"
+msgstr "Del*"
+
+#: lib/layouts/IEEEtran-CompSoc.layout:3
+msgid "IEEE Transactions Computer Society"
+msgstr "IEEE Transactions Computer Society"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:19
 #: lib/layouts/IEEEtran-TransMag.layout:20
@@ -5453,8 +5474,7 @@ msgstr "Standard i titel"
 #: lib/layouts/IEEEtran-CompSoc.layout:64 lib/layouts/ijmpc.layout:68
 #: lib/layouts/ijmpc.layout:93 lib/layouts/ijmpc.layout:111
 #: lib/layouts/ijmpc.layout:129 lib/layouts/ijmpc.layout:163
-#: lib/layouts/ijmpc.layout:213 lib/layouts/siamltex.layout:287
-#: lib/layouts/siamltex.layout:307 lib/layouts/acmsiggraph.layout:70
+#: lib/layouts/ijmpc.layout:213 lib/layouts/acmsiggraph.layout:70
 #: lib/layouts/acmsiggraph.layout:179 lib/layouts/acmsiggraph.layout:198
 #: lib/layouts/iopart.layout:62 lib/layouts/iopart.layout:135
 #: lib/layouts/iopart.layout:154 lib/layouts/iopart.layout:179
@@ -5462,7 +5482,11 @@ msgstr "Standard i titel"
 #: lib/layouts/elsart.layout:116 lib/layouts/egs.layout:264
 #: lib/layouts/egs.layout:307 lib/layouts/egs.layout:501
 #: lib/layouts/revtex4.layout:104 lib/layouts/revtex4.layout:134
-#: lib/layouts/revtex4.layout:260 lib/layouts/apa6.layout:39
+#: lib/layouts/revtex4.layout:260 lib/layouts/simplecv.layout:132
+#: lib/layouts/entcs.layout:75 lib/layouts/aa.layout:73
+#: lib/layouts/aa.layout:96 lib/layouts/aa.layout:111
+#: lib/layouts/aa.layout:135 lib/layouts/aa.layout:265
+#: lib/layouts/aa.layout:325 lib/layouts/apa6.layout:39
 #: lib/layouts/apa6.layout:52 lib/layouts/apa6.layout:75
 #: lib/layouts/apa6.layout:91 lib/layouts/apa6.layout:99
 #: lib/layouts/apa6.layout:107 lib/layouts/apa6.layout:114
@@ -5472,11 +5496,8 @@ msgstr "Standard i titel"
 #: lib/layouts/apa6.layout:192 lib/layouts/apa6.layout:199
 #: lib/layouts/apa6.layout:207 lib/layouts/apa6.layout:229
 #: lib/layouts/apa6.layout:251 lib/layouts/apa6.layout:275
-#: lib/layouts/simplecv.layout:132 lib/layouts/entcs.layout:75
-#: lib/layouts/aa.layout:73 lib/layouts/aa.layout:96 lib/layouts/aa.layout:111
-#: lib/layouts/aa.layout:135 lib/layouts/aa.layout:265
-#: lib/layouts/aa.layout:325 lib/layouts/europecv.layout:35
-#: lib/layouts/europecv.layout:188 lib/layouts/elsarticle.layout:61
+#: lib/layouts/siamltex.layout:287 lib/layouts/siamltex.layout:307
+#: lib/layouts/sciposter.layout:41 lib/layouts/elsarticle.layout:61
 #: lib/layouts/elsarticle.layout:86 lib/layouts/elsarticle.layout:130
 #: lib/layouts/elsarticle.layout:152 lib/layouts/elsarticle.layout:226
 #: lib/layouts/elsarticle.layout:261 lib/layouts/elsarticle.layout:290
@@ -5484,8 +5505,8 @@ msgstr "Standard i titel"
 #: lib/layouts/sigplanconf.layout:189 lib/layouts/AEA.layout:51
 #: lib/layouts/AEA.layout:106 lib/layouts/ectaart.layout:23
 #: lib/layouts/ectaart.layout:48 lib/layouts/ectaart.layout:74
-#: lib/layouts/RJournal.layout:64 lib/layouts/IEEEtran-TransMag.layout:22
-#: lib/layouts/IEEEtran-TransMag.layout:42 lib/layouts/llncs.layout:109
+#: lib/layouts/europecv.layout:35 lib/layouts/europecv.layout:188
+#: lib/layouts/RJournal.layout:64 lib/layouts/llncs.layout:109
 #: lib/layouts/llncs.layout:184 lib/layouts/llncs.layout:221
 #: lib/layouts/llncs.layout:248 lib/layouts/tufte-handout.layout:53
 #: lib/layouts/apa.layout:42 lib/layouts/apa.layout:74
@@ -5503,32 +5524,33 @@ msgstr "Standard i titel"
 #: lib/layouts/ijmpd.layout:98 lib/layouts/ijmpd.layout:116
 #: lib/layouts/ijmpd.layout:134 lib/layouts/ijmpd.layout:153
 #: lib/layouts/ijmpd.layout:221 lib/layouts/ijmpd.layout:233
-#: lib/layouts/broadway.layout:188 lib/layouts/broadway.layout:203
-#: lib/layouts/IEEEtran.layout:70 lib/layouts/IEEEtran.layout:121
-#: lib/layouts/IEEEtran.layout:221 lib/layouts/IEEEtran.layout:261
-#: lib/layouts/IEEEtran.layout:325 lib/layouts/agutex.layout:60
-#: lib/layouts/agutex.layout:77 lib/layouts/agutex.layout:118
-#: lib/layouts/agutex.layout:141 lib/layouts/jasatex.layout:64
-#: lib/layouts/jasatex.layout:89 lib/layouts/jasatex.layout:109
-#: lib/layouts/jasatex.layout:150 lib/layouts/jasatex.layout:170
-#: lib/layouts/jasatex.layout:199 lib/layouts/ltugboat.layout:141
-#: lib/layouts/ltugboat.layout:161 lib/layouts/revtex4-1.layout:80
-#: lib/layouts/revtex4-1.layout:174 lib/layouts/revtex4-1.layout:193
-#: lib/layouts/moderncv.layout:40 lib/layouts/moderncv.layout:67
-#: lib/layouts/moderncv.layout:87 lib/layouts/moderncv.layout:442
-#: lib/layouts/latex8.layout:90 lib/layouts/svmult.layout:49
-#: lib/layouts/svmult.layout:99 lib/layouts/agu_stdtitle.inc:129
-#: lib/layouts/lyxmacros.inc:45 lib/layouts/lyxmacros.inc:66
-#: lib/layouts/acm-sigs.inc:11 lib/layouts/acm-sigs.inc:32
-#: lib/layouts/stdtitle.inc:17 lib/layouts/stdtitle.inc:38
-#: lib/layouts/stdtitle.inc:57 lib/layouts/stdstruct.inc:16
-#: lib/layouts/svcommon.inc:353 lib/layouts/svcommon.inc:377
-#: lib/layouts/svcommon.inc:428 lib/layouts/svcommon.inc:465
-#: lib/layouts/svcommon.inc:483 lib/layouts/svcommon.inc:504
-#: lib/layouts/svcommon.inc:531 lib/layouts/amsdefs.inc:25
-#: lib/layouts/amsdefs.inc:51 lib/layouts/amsdefs.inc:71
-#: lib/layouts/amsdefs.inc:95 lib/layouts/amsdefs.inc:122
-#: lib/layouts/bicaption.module:13
+#: lib/layouts/IEEEtran-TransMag.layout:22
+#: lib/layouts/IEEEtran-TransMag.layout:42 lib/layouts/broadway.layout:188
+#: lib/layouts/broadway.layout:203 lib/layouts/IEEEtran.layout:70
+#: lib/layouts/IEEEtran.layout:121 lib/layouts/IEEEtran.layout:221
+#: lib/layouts/IEEEtran.layout:261 lib/layouts/IEEEtran.layout:325
+#: lib/layouts/agutex.layout:60 lib/layouts/agutex.layout:77
+#: lib/layouts/agutex.layout:118 lib/layouts/agutex.layout:141
+#: lib/layouts/jasatex.layout:64 lib/layouts/jasatex.layout:89
+#: lib/layouts/jasatex.layout:109 lib/layouts/jasatex.layout:150
+#: lib/layouts/jasatex.layout:170 lib/layouts/jasatex.layout:199
+#: lib/layouts/ltugboat.layout:141 lib/layouts/ltugboat.layout:161
+#: lib/layouts/revtex4-1.layout:60 lib/layouts/revtex4-1.layout:154
+#: lib/layouts/revtex4-1.layout:173 lib/layouts/moderncv.layout:40
+#: lib/layouts/moderncv.layout:67 lib/layouts/moderncv.layout:87
+#: lib/layouts/moderncv.layout:442 lib/layouts/latex8.layout:90
+#: lib/layouts/svmult.layout:49 lib/layouts/svmult.layout:99
+#: lib/layouts/agu_stdtitle.inc:129 lib/layouts/lyxmacros.inc:45
+#: lib/layouts/lyxmacros.inc:66 lib/layouts/acm-sigs.inc:11
+#: lib/layouts/acm-sigs.inc:32 lib/layouts/stdtitle.inc:17
+#: lib/layouts/stdtitle.inc:38 lib/layouts/stdtitle.inc:57
+#: lib/layouts/stdstruct.inc:16 lib/layouts/svcommon.inc:353
+#: lib/layouts/svcommon.inc:377 lib/layouts/svcommon.inc:428
+#: lib/layouts/svcommon.inc:465 lib/layouts/svcommon.inc:483
+#: lib/layouts/svcommon.inc:504 lib/layouts/svcommon.inc:531
+#: lib/layouts/amsdefs.inc:25 lib/layouts/amsdefs.inc:51
+#: lib/layouts/amsdefs.inc:71 lib/layouts/amsdefs.inc:95
+#: lib/layouts/amsdefs.inc:122 lib/layouts/bicaption.module:13
 msgid "FrontMatter"
 msgstr "Förtext"
 
@@ -5542,29 +5564,29 @@ msgstr "Författarens fot"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:49 lib/layouts/isprs.layout:26
 #: lib/layouts/ijmpc.layout:209 lib/layouts/svmono.layout:23
-#: lib/layouts/siamltex.layout:259 lib/layouts/aapaper.layout:102
-#: lib/layouts/aapaper.layout:205 lib/layouts/acmsiggraph.layout:194
-#: lib/layouts/acmsiggraph.layout:210 lib/layouts/iopart.layout:175
-#: lib/layouts/iopart.layout:192 lib/layouts/elsart.layout:218
-#: lib/layouts/elsart.layout:233 lib/layouts/egs.layout:500
-#: lib/layouts/revtex4.layout:233 lib/layouts/apa6.layout:228
+#: lib/layouts/aapaper.layout:102 lib/layouts/aapaper.layout:205
+#: lib/layouts/acmsiggraph.layout:194 lib/layouts/acmsiggraph.layout:210
+#: lib/layouts/iopart.layout:175 lib/layouts/iopart.layout:192
+#: lib/layouts/elsart.layout:218 lib/layouts/elsart.layout:233
+#: lib/layouts/egs.layout:500 lib/layouts/revtex4.layout:233
 #: lib/layouts/svprobth.layout:181 lib/layouts/entcs.layout:86
 #: lib/layouts/revtex.layout:141 lib/layouts/aa.layout:291
+#: lib/layouts/apa6.layout:228 lib/layouts/siamltex.layout:259
 #: lib/layouts/elsarticle.layout:257 lib/layouts/elsarticle.layout:274
 #: lib/layouts/sigplanconf.layout:185 lib/layouts/sigplanconf.layout:201
 #: lib/layouts/AEA.layout:101 lib/layouts/ectaart.layout:43
 #: lib/layouts/ectaart.layout:56 lib/layouts/svjog.layout:151
 #: lib/layouts/svglobal.layout:147 lib/layouts/paper.layout:132
 #: lib/layouts/spie.layout:76 lib/layouts/RJournal.layout:39
-#: lib/layouts/IEEEtran-TransMag.layout:27 lib/layouts/llncs.layout:247
-#: lib/layouts/tufte-handout.layout:49 lib/layouts/tufte-handout.layout:64
-#: lib/layouts/apa.layout:73 lib/layouts/aastex.layout:240
-#: lib/layouts/kluwer.layout:263 lib/layouts/cl2emult.layout:85
-#: lib/layouts/cl2emult.layout:96 lib/layouts/ijmpd.layout:217
+#: lib/layouts/llncs.layout:247 lib/layouts/tufte-handout.layout:49
+#: lib/layouts/tufte-handout.layout:64 lib/layouts/apa.layout:73
+#: lib/layouts/aastex.layout:240 lib/layouts/kluwer.layout:263
+#: lib/layouts/cl2emult.layout:85 lib/layouts/cl2emult.layout:96
+#: lib/layouts/ijmpd.layout:217 lib/layouts/IEEEtran-TransMag.layout:27
 #: lib/layouts/IEEEtran.layout:257 lib/layouts/agutex.layout:137
 #: lib/layouts/foils.layout:149 lib/layouts/jasatex.layout:166
 #: lib/layouts/jasatex.layout:183 lib/layouts/ltugboat.layout:177
-#: lib/layouts/ltugboat.layout:191 lib/layouts/revtex4-1.layout:74
+#: lib/layouts/ltugboat.layout:191 lib/layouts/revtex4-1.layout:54
 #: lib/layouts/latex8.layout:109 lib/layouts/svmult.layout:96
 #: lib/layouts/svmult.layout:100 lib/layouts/scrclass.inc:252
 #: lib/layouts/agu_stdtitle.inc:194 lib/layouts/stdstruct.inc:12
@@ -5576,20 +5598,20 @@ msgstr "Sammandrag"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:55 lib/layouts/isprs.layout:53
 #: lib/layouts/ijmpc.layout:222 lib/layouts/ijmpc.layout:226
-#: lib/layouts/siamltex.layout:311 lib/layouts/acmsiggraph.layout:163
-#: lib/layouts/iopart.layout:204 lib/layouts/elsart.layout:64
-#: lib/layouts/revtex4.layout:271 lib/layouts/apa6.layout:250
+#: lib/layouts/acmsiggraph.layout:163 lib/layouts/iopart.layout:204
+#: lib/layouts/elsart.layout:64 lib/layouts/revtex4.layout:271
 #: lib/layouts/svprobth.layout:145 lib/layouts/svprobth.layout:148
-#: lib/layouts/aa.layout:321 lib/layouts/elsarticle.layout:286
+#: lib/layouts/aa.layout:321 lib/layouts/apa6.layout:250
+#: lib/layouts/siamltex.layout:311 lib/layouts/elsarticle.layout:286
 #: lib/layouts/sigplanconf.layout:178 lib/layouts/AEA.layout:95
 #: lib/layouts/svjog.layout:115 lib/layouts/svjog.layout:118
 #: lib/layouts/svglobal3.layout:57 lib/layouts/svglobal3.layout:60
 #: lib/layouts/svglobal.layout:111 lib/layouts/svglobal.layout:114
 #: lib/layouts/paper.layout:174 lib/layouts/spie.layout:42
-#: lib/layouts/IEEEtran-TransMag.layout:33 lib/layouts/aastex.layout:282
-#: lib/layouts/kluwer.layout:286 lib/layouts/achemso.layout:156
-#: lib/layouts/ijmpd.layout:230 lib/layouts/IEEEtran.layout:279
-#: lib/layouts/jasatex.layout:195 lib/layouts/revtex4-1.layout:173
+#: lib/layouts/aastex.layout:282 lib/layouts/kluwer.layout:286
+#: lib/layouts/achemso.layout:156 lib/layouts/ijmpd.layout:230
+#: lib/layouts/IEEEtran-TransMag.layout:33 lib/layouts/IEEEtran.layout:279
+#: lib/layouts/jasatex.layout:195 lib/layouts/revtex4-1.layout:153
 #: lib/layouts/agu_stdtitle.inc:120 lib/layouts/acm-sigs.inc:51
 #: lib/layouts/svcommon.inc:461 lib/layouts/svcommon.inc:476
 #: lib/layouts/amsdefs.inc:164
@@ -5619,12 +5641,12 @@ msgid "KEY WORDS:"
 msgstr "NYCKELORD:"
 
 #: lib/layouts/isprs.layout:77 lib/layouts/ijmpc.layout:126
-#: lib/layouts/siamltex.layout:217 lib/layouts/aapaper.layout:84
-#: lib/layouts/aapaper.layout:183 lib/layouts/acmsiggraph.layout:151
-#: lib/layouts/iopart.layout:131 lib/layouts/elsart.layout:115
-#: lib/layouts/egs.layout:306 lib/layouts/apa6.layout:74
+#: lib/layouts/aapaper.layout:84 lib/layouts/aapaper.layout:183
+#: lib/layouts/acmsiggraph.layout:151 lib/layouts/iopart.layout:131
+#: lib/layouts/elsart.layout:115 lib/layouts/egs.layout:306
 #: lib/layouts/svprobth.layout:93 lib/layouts/entcs.layout:51
 #: lib/layouts/revtex.layout:104 lib/layouts/aa.layout:216
+#: lib/layouts/apa6.layout:74 lib/layouts/siamltex.layout:217
 #: lib/layouts/beamer.layout:933 lib/layouts/elsarticle.layout:149
 #: lib/layouts/sigplanconf.layout:137 lib/layouts/ectaart.layout:109
 #: lib/layouts/ectaart.layout:185 lib/layouts/ectaart.layout:188
@@ -5636,22 +5658,22 @@ msgstr "NYCKELORD:"
 #: lib/layouts/IEEEtran.layout:118 lib/layouts/foils.layout:135
 #: lib/layouts/jasatex.layout:85 lib/layouts/ltugboat.layout:160
 #: lib/layouts/tufte-book.layout:39 lib/layouts/powerdot.layout:67
-#: lib/layouts/svmult.layout:79 lib/layouts/scrclass.inc:191
-#: lib/layouts/agu_stdtitle.inc:168 lib/layouts/stdtitle.inc:35
-#: lib/layouts/db_stdtitle.inc:21 lib/layouts/svcommon.inc:343
-#: lib/layouts/amsdefs.inc:50
+#: lib/layouts/svmult.layout:79 lib/layouts/beamerposter.layout:31
+#: lib/layouts/scrclass.inc:191 lib/layouts/agu_stdtitle.inc:168
+#: lib/layouts/stdtitle.inc:35 lib/layouts/db_stdtitle.inc:21
+#: lib/layouts/svcommon.inc:343 lib/layouts/amsdefs.inc:50
 msgid "Author"
 msgstr "Författare"
 
 #: lib/layouts/isprs.layout:94 lib/layouts/ijmpc.layout:107
-#: lib/layouts/scrlettr.layout:193 lib/layouts/siamltex.layout:192
-#: lib/layouts/aapaper.layout:78 lib/layouts/aapaper.layout:172
-#: lib/layouts/acmsiggraph.layout:141 lib/layouts/iopart.layout:58
-#: lib/layouts/elsart.layout:93 lib/layouts/egs.layout:263
-#: lib/layouts/revtex4.layout:116 lib/layouts/apa6.layout:38
+#: lib/layouts/scrlettr.layout:193 lib/layouts/aapaper.layout:78
+#: lib/layouts/aapaper.layout:172 lib/layouts/acmsiggraph.layout:141
+#: lib/layouts/iopart.layout:58 lib/layouts/elsart.layout:93
+#: lib/layouts/egs.layout:263 lib/layouts/revtex4.layout:116
 #: lib/layouts/simplecv.layout:131 lib/layouts/svprobth.layout:76
 #: lib/layouts/entcs.layout:40 lib/layouts/revtex.layout:96
-#: lib/layouts/aa.layout:204 lib/layouts/beamer.layout:877
+#: lib/layouts/aa.layout:204 lib/layouts/apa6.layout:38
+#: lib/layouts/siamltex.layout:192 lib/layouts/beamer.layout:877
 #: lib/layouts/docbook-book.layout:12 lib/layouts/elsarticle.layout:82
 #: lib/layouts/docbook-chapter.layout:10 lib/layouts/scrlttr2.layout:275
 #: lib/layouts/ectaart.layout:16 lib/layouts/hollywood.layout:333
@@ -5662,27 +5684,28 @@ msgstr "Författare"
 #: lib/layouts/broadway.layout:187 lib/layouts/IEEEtran.layout:66
 #: lib/layouts/agutex.layout:56 lib/layouts/foils.layout:127
 #: lib/layouts/jasatex.layout:60 lib/layouts/ltugboat.layout:140
-#: lib/layouts/revtex4-1.layout:212 lib/layouts/tufte-book.layout:35
+#: lib/layouts/revtex4-1.layout:192 lib/layouts/tufte-book.layout:35
 #: lib/layouts/moderncv.layout:84 lib/layouts/powerdot.layout:43
 #: lib/layouts/docbook-section.layout:10 lib/layouts/latex8.layout:39
-#: lib/layouts/svmult.layout:47 lib/layouts/scrclass.inc:175
-#: lib/layouts/agu_stdtitle.inc:247 lib/layouts/stdtitle.inc:14
-#: lib/layouts/db_stdtitle.inc:13 lib/layouts/svcommon.inc:57
-#: lib/layouts/svcommon.inc:323 lib/layouts/amsdefs.inc:24
+#: lib/layouts/svmult.layout:47 lib/layouts/beamerposter.layout:21
+#: lib/layouts/scrclass.inc:175 lib/layouts/agu_stdtitle.inc:247
+#: lib/layouts/stdtitle.inc:14 lib/layouts/db_stdtitle.inc:13
+#: lib/layouts/svcommon.inc:57 lib/layouts/svcommon.inc:323
+#: lib/layouts/amsdefs.inc:24
 msgid "Title"
 msgstr "Titel"
 
 #: lib/layouts/isprs.layout:112 lib/layouts/ijmpc.layout:144
-#: lib/layouts/scrlettr.layout:144 lib/layouts/siamltex.layout:286
-#: lib/layouts/aapaper.layout:87 lib/layouts/iopart.layout:150
-#: lib/layouts/egs.layout:250 lib/layouts/revtex4.layout:180
-#: lib/layouts/entcs.layout:61 lib/layouts/revtex.layout:122
-#: lib/layouts/aa.layout:90 lib/layouts/europecv.layout:65
-#: lib/layouts/elsarticle.layout:223 lib/layouts/scrlttr2.layout:49
-#: lib/layouts/ectaart.layout:63 lib/layouts/dinbrief.layout:264
+#: lib/layouts/scrlettr.layout:144 lib/layouts/aapaper.layout:87
+#: lib/layouts/iopart.layout:150 lib/layouts/egs.layout:250
+#: lib/layouts/revtex4.layout:180 lib/layouts/entcs.layout:61
+#: lib/layouts/revtex.layout:122 lib/layouts/aa.layout:90
+#: lib/layouts/siamltex.layout:286 lib/layouts/elsarticle.layout:223
+#: lib/layouts/scrlttr2.layout:49 lib/layouts/ectaart.layout:63
+#: lib/layouts/dinbrief.layout:264 lib/layouts/europecv.layout:65
 #: lib/layouts/g-brief.layout:182 lib/layouts/RJournal.layout:63
 #: lib/layouts/kluwer.layout:186 lib/layouts/g-brief2.layout:40
-#: lib/layouts/g-brief2.layout:775 lib/layouts/revtex4-1.layout:120
+#: lib/layouts/g-brief2.layout:775 lib/layouts/revtex4-1.layout:100
 #: lib/layouts/moderncv.layout:105 lib/layouts/lyxmacros.inc:44
 #: lib/layouts/aapaper.inc:29 lib/layouts/amsdefs.inc:121
 msgid "Address"
@@ -5692,73 +5715,73 @@ msgstr "Adress"
 msgid "Commission"
 msgstr "Kommission"
 
-#: lib/layouts/isprs.layout:148 lib/layouts/siamltex.layout:365
-#: lib/layouts/aapaper.layout:66 lib/layouts/aapaper.layout:139
-#: lib/layouts/amsart.layout:64 lib/layouts/egs.layout:32
-#: lib/layouts/revtex4.layout:65 lib/layouts/amsbook.layout:55
-#: lib/layouts/apa6.layout:402 lib/layouts/simplecv.layout:31
+#: lib/layouts/isprs.layout:148 lib/layouts/aapaper.layout:66
+#: lib/layouts/aapaper.layout:139 lib/layouts/amsart.layout:64
+#: lib/layouts/egs.layout:32 lib/layouts/revtex4.layout:65
+#: lib/layouts/amsbook.layout:55 lib/layouts/simplecv.layout:31
 #: lib/layouts/revtex.layout:40 lib/layouts/aa.layout:178
+#: lib/layouts/apa6.layout:402 lib/layouts/siamltex.layout:365
 #: lib/layouts/beamer.layout:232 lib/layouts/europecv.layout:127
 #: lib/layouts/paper.layout:60 lib/layouts/spie.layout:21
 #: lib/layouts/llncs.layout:48 lib/layouts/apa.layout:302
 #: lib/layouts/aastex.layout:88 lib/layouts/kluwer.layout:62
 #: lib/layouts/ltugboat.layout:47 lib/layouts/memoir.layout:84
-#: lib/layouts/revtex4-1.layout:46 lib/layouts/tufte-book.layout:89
+#: lib/layouts/revtex4-1.layout:26 lib/layouts/tufte-book.layout:89
 #: lib/layouts/moderncv.layout:198 lib/layouts/powerdot.layout:232
 #: lib/layouts/latex8.layout:47 lib/layouts/scrclass.inc:72
-#: lib/layouts/aguplus.inc:29 lib/layouts/numrevtex.inc:6
-#: lib/layouts/agu_stdsections.inc:30 lib/layouts/svcommon.inc:195
-#: lib/layouts/db_stdsections.inc:28 lib/layouts/stdsections.inc:71
+#: lib/layouts/numrevtex.inc:6 lib/layouts/agu_stdsections.inc:30
+#: lib/layouts/svcommon.inc:195 lib/layouts/stdsections.inc:71
+#: lib/layouts/aguplus.inc:29 lib/layouts/db_stdsections.inc:28
 #: src/frontends/qt4/GuiDocument.cpp:130
 msgid "Section"
 msgstr "Avsnitt"
 
-#: lib/layouts/isprs.layout:160 lib/layouts/siamltex.layout:376
-#: lib/layouts/aapaper.layout:70 lib/layouts/aapaper.layout:149
-#: lib/layouts/amsart.layout:105 lib/layouts/egs.layout:55
-#: lib/layouts/amsbook.layout:65 lib/layouts/apa6.layout:413
+#: lib/layouts/isprs.layout:160 lib/layouts/aapaper.layout:70
+#: lib/layouts/aapaper.layout:149 lib/layouts/amsart.layout:105
+#: lib/layouts/egs.layout:55 lib/layouts/amsbook.layout:65
 #: lib/layouts/simplecv.layout:57 lib/layouts/revtex.layout:52
-#: lib/layouts/aa.layout:186 lib/layouts/beamer.layout:289
+#: lib/layouts/aa.layout:186 lib/layouts/apa6.layout:413
+#: lib/layouts/siamltex.layout:376 lib/layouts/beamer.layout:289
 #: lib/layouts/paper.layout:69 lib/layouts/llncs.layout:57
 #: lib/layouts/apa.layout:313 lib/layouts/aastex.layout:101
 #: lib/layouts/kluwer.layout:71 lib/layouts/ltugboat.layout:68
 #: lib/layouts/memoir.layout:97 lib/layouts/tufte-book.layout:116
 #: lib/layouts/moderncv.layout:231 lib/layouts/latex8.layout:56
-#: lib/layouts/scrclass.inc:80 lib/layouts/aguplus.inc:44
-#: lib/layouts/numrevtex.inc:15 lib/layouts/agu_stdsections.inc:40
-#: lib/layouts/svcommon.inc:204 lib/layouts/db_stdsections.inc:36
-#: lib/layouts/stdsections.inc:99
+#: lib/layouts/scrclass.inc:80 lib/layouts/numrevtex.inc:15
+#: lib/layouts/agu_stdsections.inc:40 lib/layouts/svcommon.inc:204
+#: lib/layouts/stdsections.inc:99 lib/layouts/aguplus.inc:44
+#: lib/layouts/db_stdsections.inc:36
 msgid "Subsection"
 msgstr "Underavsnitt"
 
-#: lib/layouts/isprs.layout:170 lib/layouts/siamltex.layout:385
-#: lib/layouts/aapaper.layout:74 lib/layouts/aapaper.layout:161
-#: lib/layouts/amsart.layout:128 lib/layouts/revtex4.layout:74
-#: lib/layouts/amsbook.layout:74 lib/layouts/apa6.layout:423
+#: lib/layouts/isprs.layout:170 lib/layouts/aapaper.layout:74
+#: lib/layouts/aapaper.layout:161 lib/layouts/amsart.layout:128
+#: lib/layouts/revtex4.layout:74 lib/layouts/amsbook.layout:74
 #: lib/layouts/revtex.layout:61 lib/layouts/aa.layout:196
+#: lib/layouts/apa6.layout:423 lib/layouts/siamltex.layout:385
 #: lib/layouts/beamer.layout:346 lib/layouts/paper.layout:78
 #: lib/layouts/llncs.layout:66 lib/layouts/apa.layout:323
 #: lib/layouts/aastex.layout:114 lib/layouts/kluwer.layout:81
 #: lib/layouts/recipebook.layout:98 lib/layouts/ltugboat.layout:89
-#: lib/layouts/memoir.layout:110 lib/layouts/revtex4-1.layout:54
+#: lib/layouts/memoir.layout:110 lib/layouts/revtex4-1.layout:34
 #: lib/layouts/scrclass.inc:88 lib/layouts/numrevtex.inc:24
 #: lib/layouts/agu_stdsections.inc:50 lib/layouts/svcommon.inc:213
-#: lib/layouts/db_stdsections.inc:44 lib/layouts/stdsections.inc:115
+#: lib/layouts/stdsections.inc:115 lib/layouts/db_stdsections.inc:44
 msgid "Subsubsection"
 msgstr "Underunderavsnitt"
 
 #: lib/layouts/isprs.layout:180 lib/layouts/amsart.layout:75
 #: lib/layouts/egs.layout:598 lib/layouts/amsbook.layout:84
 #: lib/layouts/beamer.layout:272 lib/layouts/spie.layout:32
-#: lib/layouts/aguplus.inc:37 lib/layouts/stdstarsections.inc:35
-#: lib/layouts/svcommon.inc:254 lib/layouts/db_stdstarsections.inc:36
+#: lib/layouts/stdstarsections.inc:35 lib/layouts/svcommon.inc:254
+#: lib/layouts/aguplus.inc:37 lib/layouts/db_stdstarsections.inc:36
 msgid "Section*"
 msgstr "Avsnitt*"
 
 #: lib/layouts/isprs.layout:191 lib/layouts/amsart.layout:117
 #: lib/layouts/egs.layout:618 lib/layouts/amsbook.layout:93
-#: lib/layouts/beamer.layout:329 lib/layouts/aguplus.inc:52
-#: lib/layouts/stdstarsections.inc:46 lib/layouts/svcommon.inc:262
+#: lib/layouts/beamer.layout:329 lib/layouts/stdstarsections.inc:46
+#: lib/layouts/svcommon.inc:262 lib/layouts/aguplus.inc:52
 #: lib/layouts/db_stdstarsections.inc:48
 msgid "Subsection*"
 msgstr "Underavsnitt*"
@@ -5779,14 +5802,14 @@ msgid "Acknowledgements"
 msgstr "Tacksägelser"
 
 #: lib/layouts/isprs.layout:210 lib/layouts/ijmpc.layout:426
-#: lib/layouts/ijmpc.layout:450 lib/layouts/siamltex.layout:326
-#: lib/layouts/acmsiggraph.layout:299 lib/layouts/iopart.layout:248
-#: lib/layouts/iopart.layout:270 lib/layouts/iopart.layout:293
-#: lib/layouts/egs.layout:523 lib/layouts/egs.layout:574
-#: lib/layouts/revtex4.layout:241 lib/layouts/simplecv.layout:155
-#: lib/layouts/aa.layout:158 lib/layouts/beamer.layout:1046
-#: lib/layouts/europecv.layout:288 lib/layouts/elsarticle.layout:311
-#: lib/layouts/sigplanconf.layout:217 lib/layouts/llncs.layout:270
+#: lib/layouts/ijmpc.layout:450 lib/layouts/acmsiggraph.layout:299
+#: lib/layouts/iopart.layout:248 lib/layouts/iopart.layout:270
+#: lib/layouts/iopart.layout:293 lib/layouts/egs.layout:523
+#: lib/layouts/egs.layout:574 lib/layouts/revtex4.layout:241
+#: lib/layouts/simplecv.layout:155 lib/layouts/aa.layout:158
+#: lib/layouts/siamltex.layout:326 lib/layouts/beamer.layout:1046
+#: lib/layouts/elsarticle.layout:311 lib/layouts/sigplanconf.layout:217
+#: lib/layouts/europecv.layout:288 lib/layouts/llncs.layout:270
 #: lib/layouts/apa.layout:213 lib/layouts/aastex.layout:310
 #: lib/layouts/aastex.layout:374 lib/layouts/aastex.layout:406
 #: lib/layouts/kluwer.layout:306 lib/layouts/achemso.layout:236
@@ -5795,7 +5818,7 @@ msgstr "Tacksägelser"
 #: lib/layouts/IEEEtran.layout:369 lib/layouts/agutex.layout:158
 #: lib/layouts/agutex.layout:168 lib/layouts/agutex.layout:188
 #: lib/layouts/agutex.layout:211 lib/layouts/jasatex.layout:233
-#: lib/layouts/jasatex.layout:273 lib/layouts/revtex4-1.layout:228
+#: lib/layouts/jasatex.layout:273 lib/layouts/revtex4-1.layout:208
 #: lib/layouts/moderncv.layout:463 lib/layouts/powerdot.layout:354
 #: lib/layouts/stdstruct.inc:57 lib/layouts/svcommon.inc:544
 #: lib/layouts/svcommon.inc:578 lib/layouts/amsdefs.inc:200
@@ -5811,53 +5834,53 @@ msgid "Int. Journal of Modern Physics C"
 msgstr "Int. Journal of Modern Physics C"
 
 #: lib/layouts/ijmpc.layout:23 lib/layouts/scrlettr.layout:8
-#: lib/layouts/siamltex.layout:37 lib/layouts/aapaper.layout:35
-#: lib/layouts/acmsiggraph.layout:35 lib/layouts/iopart.layout:35
-#: lib/layouts/amsart.layout:31 lib/layouts/elsart.layout:48
-#: lib/layouts/egs.layout:19 lib/layouts/revtex4.layout:45
-#: lib/layouts/amsbook.layout:32 lib/layouts/apa6.layout:22
+#: lib/layouts/aapaper.layout:35 lib/layouts/acmsiggraph.layout:35
+#: lib/layouts/iopart.layout:35 lib/layouts/amsart.layout:31
+#: lib/layouts/elsart.layout:48 lib/layouts/egs.layout:19
+#: lib/layouts/revtex4.layout:45 lib/layouts/amsbook.layout:32
 #: lib/layouts/slides.layout:61 lib/layouts/simplecv.layout:18
 #: lib/layouts/revtex.layout:23 lib/layouts/aa.layout:36
-#: lib/layouts/chess.layout:30 lib/layouts/dtk.layout:32
-#: lib/layouts/beamer.layout:63 lib/layouts/europecv.layout:17
-#: lib/layouts/elsarticle.layout:33 lib/layouts/sigplanconf.layout:38
-#: lib/layouts/scrlttr2.layout:11 lib/layouts/hollywood.layout:347
+#: lib/layouts/chess.layout:30 lib/layouts/apa6.layout:22
+#: lib/layouts/siamltex.layout:37 lib/layouts/sciposter.layout:78
+#: lib/layouts/beamer.layout:63 lib/layouts/elsarticle.layout:33
+#: lib/layouts/sigplanconf.layout:38 lib/layouts/scrlttr2.layout:11
+#: lib/layouts/hollywood.layout:347 lib/layouts/europecv.layout:17
 #: lib/layouts/paper.layout:14 lib/layouts/llncs.layout:24
-#: lib/layouts/apa.layout:25 lib/layouts/aastex.layout:54
-#: lib/layouts/kluwer.layout:34 lib/layouts/achemso.layout:33
-#: lib/layouts/cl2emult.layout:130 lib/layouts/ijmpd.layout:28
-#: lib/layouts/broadway.layout:174 lib/layouts/IEEEtran.layout:35
-#: lib/layouts/agutex.layout:32 lib/layouts/foils.layout:31
-#: lib/layouts/jasatex.layout:36 lib/layouts/g-brief2.layout:31
-#: lib/layouts/ltugboat.layout:31 lib/layouts/memoir.layout:32
-#: lib/layouts/tufte-book.layout:20 lib/layouts/moderncv.layout:20
-#: lib/layouts/powerdot.layout:111 lib/layouts/lettre.layout:31
-#: lib/layouts/scrclass.inc:17 lib/layouts/stdclass.inc:28
-#: lib/layouts/stdinsets.inc:518 lib/layouts/db_stdclass.inc:22
-#: lib/layouts/svcommon.inc:26 lib/layouts/stdletter.inc:12
-#: lib/layouts/agu_stdclass.inc:22 lib/ui/stdtoolbars.inc:69
-#: src/insets/InsetRef.cpp:355
+#: lib/layouts/apa.layout:25 lib/layouts/dtk.layout:32
+#: lib/layouts/aastex.layout:54 lib/layouts/kluwer.layout:34
+#: lib/layouts/achemso.layout:33 lib/layouts/cl2emult.layout:130
+#: lib/layouts/ijmpd.layout:28 lib/layouts/broadway.layout:174
+#: lib/layouts/IEEEtran.layout:35 lib/layouts/agutex.layout:32
+#: lib/layouts/foils.layout:31 lib/layouts/jasatex.layout:36
+#: lib/layouts/g-brief2.layout:31 lib/layouts/ltugboat.layout:31
+#: lib/layouts/memoir.layout:32 lib/layouts/tufte-book.layout:20
+#: lib/layouts/moderncv.layout:20 lib/layouts/powerdot.layout:111
+#: lib/layouts/lettre.layout:31 lib/layouts/scrclass.inc:17
+#: lib/layouts/stdclass.inc:28 lib/layouts/stdinsets.inc:518
+#: lib/layouts/db_stdclass.inc:22 lib/layouts/svcommon.inc:26
+#: lib/layouts/stdletter.inc:12 lib/layouts/agu_stdclass.inc:22
+#: lib/ui/stdtoolbars.inc:69 src/insets/InsetRef.cpp:355
 msgid "Standard"
 msgstr "Standard"
 
 #: lib/layouts/ijmpc.layout:24 lib/layouts/scrlettr.layout:9
-#: lib/layouts/siamltex.layout:38 lib/layouts/aapaper.layout:36
-#: lib/layouts/acmsiggraph.layout:36 lib/layouts/iopart.layout:36
-#: lib/layouts/amsart.layout:32 lib/layouts/elsart.layout:49
-#: lib/layouts/egs.layout:20 lib/layouts/revtex4.layout:46
-#: lib/layouts/amsbook.layout:33 lib/layouts/apa6.layout:23
+#: lib/layouts/aapaper.layout:36 lib/layouts/acmsiggraph.layout:36
+#: lib/layouts/iopart.layout:36 lib/layouts/amsart.layout:32
+#: lib/layouts/elsart.layout:49 lib/layouts/egs.layout:20
+#: lib/layouts/revtex4.layout:46 lib/layouts/amsbook.layout:33
 #: lib/layouts/slides.layout:62 lib/layouts/simplecv.layout:19
 #: lib/layouts/revtex.layout:24 lib/layouts/aa.layout:37
-#: lib/layouts/dtk.layout:33 lib/layouts/beamer.layout:64
-#: lib/layouts/beamer.layout:1073 lib/layouts/beamer.layout:1098
-#: lib/layouts/beamer.layout:1123 lib/layouts/beamer.layout:1237
-#: lib/layouts/beamer.layout:1260 lib/layouts/beamer.layout:1294
-#: lib/layouts/europecv.layout:18 lib/layouts/europecv.layout:156
-#: lib/layouts/europecv.layout:215 lib/layouts/elsarticle.layout:34
+#: lib/layouts/apa6.layout:23 lib/layouts/siamltex.layout:38
+#: lib/layouts/beamer.layout:64 lib/layouts/beamer.layout:1073
+#: lib/layouts/beamer.layout:1098 lib/layouts/beamer.layout:1123
+#: lib/layouts/beamer.layout:1237 lib/layouts/beamer.layout:1260
+#: lib/layouts/beamer.layout:1294 lib/layouts/elsarticle.layout:34
 #: lib/layouts/sigplanconf.layout:39 lib/layouts/scrlttr2.layout:12
 #: lib/layouts/AEA.layout:116 lib/layouts/AEA.layout:302
-#: lib/layouts/hollywood.layout:282 lib/layouts/paper.layout:15
-#: lib/layouts/llncs.layout:25 lib/layouts/apa.layout:26
+#: lib/layouts/hollywood.layout:282 lib/layouts/europecv.layout:18
+#: lib/layouts/europecv.layout:156 lib/layouts/europecv.layout:215
+#: lib/layouts/paper.layout:15 lib/layouts/llncs.layout:25
+#: lib/layouts/apa.layout:26 lib/layouts/dtk.layout:33
 #: lib/layouts/aastex.layout:55 lib/layouts/kluwer.layout:35
 #: lib/layouts/achemso.layout:34 lib/layouts/cl2emult.layout:131
 #: lib/layouts/ijmpd.layout:29 lib/layouts/broadway.layout:175
@@ -5906,14 +5929,14 @@ msgstr "Historia"
 
 #: lib/layouts/ijmpc.layout:173 lib/layouts/ijmpc.layout:177
 #: lib/layouts/egs.layout:419 lib/layouts/ijmpd.layout:163
-#: lib/layouts/ijmpd.layout:167 lib/layouts/aguplus.inc:111
-#: lib/layouts/agu_stdtitle.inc:199
+#: lib/layouts/ijmpd.layout:167 lib/layouts/agu_stdtitle.inc:199
+#: lib/layouts/aguplus.inc:111
 msgid "Received"
 msgstr "Mottagen"
 
 #: lib/layouts/ijmpc.layout:191 lib/layouts/ijmpc.layout:195
 #: lib/layouts/ijmpd.layout:181 lib/layouts/ijmpd.layout:185
-#: lib/layouts/aguplus.inc:119 lib/layouts/agu_stdtitle.inc:207
+#: lib/layouts/agu_stdtitle.inc:207 lib/layouts/aguplus.inc:119
 msgid "Revised"
 msgstr "Reviderad"
 
@@ -5944,9 +5967,9 @@ msgstr "Uppställd lista"
 #: lib/layouts/ijmpc.layout:284 lib/layouts/ijmpc.layout:304
 #: lib/layouts/scrlettr.layout:34 lib/layouts/aapaper.layout:59
 #: lib/layouts/egs.layout:136 lib/layouts/egs.layout:154
-#: lib/layouts/egs.layout:178 lib/layouts/apa6.layout:455
-#: lib/layouts/apa6.layout:478 lib/layouts/apa6.layout:502
-#: lib/layouts/simplecv.layout:87 lib/layouts/beamer.layout:81
+#: lib/layouts/egs.layout:178 lib/layouts/simplecv.layout:87
+#: lib/layouts/apa6.layout:455 lib/layouts/apa6.layout:478
+#: lib/layouts/apa6.layout:502 lib/layouts/beamer.layout:81
 #: lib/layouts/beamer.layout:114 lib/layouts/beamer.layout:153
 #: lib/layouts/scrlttr2.layout:39 lib/layouts/apa.layout:355
 #: lib/layouts/apa.layout:377 lib/layouts/apa.layout:401
@@ -5975,7 +5998,7 @@ msgstr ""
 "numrerade element"
 
 #: lib/layouts/ijmpc.layout:330 lib/layouts/svmono.layout:87
-#: lib/layouts/siamltex.layout:156 lib/layouts/elsart.layout:302
+#: lib/layouts/elsart.layout:302 lib/layouts/siamltex.layout:156
 #: lib/layouts/beamer.layout:1219 lib/layouts/AEA.layout:311
 #: lib/layouts/llncs.layout:384 lib/layouts/ijmpd.layout:333
 #: lib/layouts/IEEEtran.layout:404 lib/layouts/foils.layout:281
@@ -5986,8 +6009,8 @@ msgstr ""
 msgid "Proof"
 msgstr "Bevis"
 
-#: lib/layouts/ijmpc.layout:333 lib/layouts/siamltex.layout:118
-#: lib/layouts/elsart.layout:273 lib/layouts/elsart.layout:303
+#: lib/layouts/ijmpc.layout:333 lib/layouts/elsart.layout:273
+#: lib/layouts/elsart.layout:303 lib/layouts/siamltex.layout:118
 #: lib/layouts/beamer.layout:1152 lib/layouts/llncs.layout:294
 #: lib/layouts/ijmpd.layout:336 lib/layouts/IEEEtran.layout:405
 #: lib/layouts/foils.layout:221 lib/layouts/heb-article.layout:30
@@ -6005,8 +6028,8 @@ msgstr "Resonemang"
 msgid "Proof:"
 msgstr "Bevis:"
 
-#: lib/layouts/ijmpc.layout:350 lib/layouts/siamltex.layout:68
-#: lib/layouts/elsart.layout:272 lib/layouts/beamer.layout:1225
+#: lib/layouts/ijmpc.layout:350 lib/layouts/elsart.layout:272
+#: lib/layouts/siamltex.layout:68 lib/layouts/beamer.layout:1225
 #: lib/layouts/AEA.layout:147 lib/layouts/llncs.layout:425
 #: lib/layouts/ijmpd.layout:356 lib/layouts/foils.layout:220
 #: lib/layouts/heb-article.layout:29 lib/layouts/theorems-ams.inc:24
@@ -6025,8 +6048,8 @@ msgstr "Bevis:"
 #: lib/layouts/theorems-without-preamble.inc:68
 #: lib/layouts/theorems-sec.module:18
 #: lib/layouts/theorems-sec-bytype.module:54
-#: lib/layouts/theorems-chap.module:19
 #: lib/layouts/theorems-chap-bytype.module:54
+#: lib/layouts/theorems-chap.module:19
 msgid "Theorem"
 msgstr "Teorem"
 
@@ -6065,8 +6088,8 @@ msgstr "Anmärkning"
 msgid "Remark \\theremark."
 msgstr "Anmärkning \\theremark."
 
-#: lib/layouts/ijmpc.layout:369 lib/layouts/siamltex.layout:78
-#: lib/layouts/elsart.layout:337 lib/layouts/beamer.layout:1151
+#: lib/layouts/ijmpc.layout:369 lib/layouts/elsart.layout:337
+#: lib/layouts/siamltex.layout:78 lib/layouts/beamer.layout:1151
 #: lib/layouts/AEA.layout:208 lib/layouts/llncs.layout:329
 #: lib/layouts/ijmpd.layout:381 lib/layouts/foils.layout:253
 #: lib/layouts/heb-article.layout:67 lib/layouts/theorems-ams.inc:69
@@ -6094,8 +6117,8 @@ msgstr "Korollarium"
 msgid "Corollary \\thecorollary."
 msgstr "Korollarium \\thecorollary."
 
-#: lib/layouts/ijmpc.layout:373 lib/layouts/siamltex.layout:88
-#: lib/layouts/elsart.layout:330 lib/layouts/AEA.layout:244
+#: lib/layouts/ijmpc.layout:373 lib/layouts/elsart.layout:330
+#: lib/layouts/siamltex.layout:88 lib/layouts/AEA.layout:244
 #: lib/layouts/llncs.layout:364 lib/layouts/ijmpd.layout:388
 #: lib/layouts/foils.layout:246 lib/layouts/heb-article.layout:57
 #: lib/layouts/theorems-ams.inc:87 lib/layouts/theorems-ams.inc:97
@@ -6122,8 +6145,8 @@ msgstr "Lemma"
 msgid "Lemma \\thelemma."
 msgstr "Lemma \\thelemma."
 
-#: lib/layouts/ijmpc.layout:377 lib/layouts/siamltex.layout:98
-#: lib/layouts/elsart.layout:344 lib/layouts/AEA.layout:267
+#: lib/layouts/ijmpc.layout:377 lib/layouts/elsart.layout:344
+#: lib/layouts/siamltex.layout:98 lib/layouts/AEA.layout:267
 #: lib/layouts/llncs.layout:398 lib/layouts/ijmpd.layout:395
 #: lib/layouts/foils.layout:260 lib/layouts/theorems-ams.inc:105
 #: lib/layouts/theorems-ams.inc:115 lib/layouts/theorems-ams.inc:118
@@ -6195,8 +6218,8 @@ msgstr "Påstående"
 msgid "Claim \\theclaim."
 msgstr "Påstående \\theclaim."
 
-#: lib/layouts/ijmpc.layout:404 lib/layouts/siamltex.layout:108
-#: lib/layouts/elsart.layout:379 lib/layouts/AEA.layout:201
+#: lib/layouts/ijmpc.layout:404 lib/layouts/elsart.layout:379
+#: lib/layouts/siamltex.layout:108 lib/layouts/AEA.layout:201
 #: lib/layouts/llncs.layout:322 lib/layouts/ijmpd.layout:423
 #: lib/layouts/theorems-ams.inc:123 lib/layouts/theorems-ams.inc:133
 #: lib/layouts/theorems-ams.inc:136 lib/layouts/theorems-bytype.inc:125
@@ -6239,13 +6262,13 @@ msgstr "Bilaga \\Alph{appendix}."
 
 #: lib/layouts/ijmpc.layout:446 lib/layouts/mwrep.layout:14
 #: lib/layouts/mwrep.layout:16 lib/layouts/book.layout:22
-#: lib/layouts/book.layout:24 lib/layouts/siamltex.layout:325
-#: lib/layouts/aapaper.layout:108 lib/layouts/aapaper.layout:222
-#: lib/layouts/scrbook.layout:30 lib/layouts/scrbook.layout:32
-#: lib/layouts/egs.layout:573 lib/layouts/simplecv.layout:153
-#: lib/layouts/report.layout:13 lib/layouts/report.layout:15
+#: lib/layouts/book.layout:24 lib/layouts/aapaper.layout:108
+#: lib/layouts/aapaper.layout:222 lib/layouts/scrbook.layout:30
+#: lib/layouts/scrbook.layout:32 lib/layouts/egs.layout:573
+#: lib/layouts/simplecv.layout:153 lib/layouts/siamltex.layout:325
 #: lib/layouts/beamer.layout:1045 lib/layouts/elsarticle.layout:307
-#: lib/layouts/llncs.layout:269 lib/layouts/scrreprt.layout:12
+#: lib/layouts/llncs.layout:269 lib/layouts/report.layout:13
+#: lib/layouts/report.layout:15 lib/layouts/scrreprt.layout:12
 #: lib/layouts/scrreprt.layout:14 lib/layouts/cl2emult.layout:107
 #: lib/layouts/ijmpd.layout:459 lib/layouts/recipebook.layout:47
 #: lib/layouts/recipebook.layout:49 lib/layouts/IEEEtran.layout:342
@@ -6255,16 +6278,16 @@ msgstr "Bilaga \\Alph{appendix}."
 #: lib/layouts/memoir.layout:236 lib/layouts/tufte-book.layout:250
 #: lib/layouts/tufte-book.layout:252 lib/layouts/moderncv.layout:462
 #: lib/layouts/powerdot.layout:353 lib/layouts/latex8.layout:127
-#: lib/layouts/scrclass.inc:259 lib/layouts/aguplus.inc:172
-#: lib/layouts/aguplus.inc:174 lib/layouts/stdstruct.inc:53
+#: lib/layouts/scrclass.inc:259 lib/layouts/stdstruct.inc:53
 #: lib/layouts/svcommon.inc:574 lib/layouts/amsdefs.inc:199
+#: lib/layouts/aguplus.inc:172 lib/layouts/aguplus.inc:174
 #: src/frontends/qt4/GuiDocument.cpp:1413
 msgid "Bibliography"
 msgstr "Bibliografi"
 
-#: lib/layouts/ijmpc.layout:461 lib/layouts/siamltex.layout:340
-#: lib/layouts/iopart.layout:281 lib/layouts/iopart.layout:296
-#: lib/layouts/egs.layout:588 lib/layouts/beamer.layout:1059
+#: lib/layouts/ijmpc.layout:461 lib/layouts/iopart.layout:281
+#: lib/layouts/iopart.layout:296 lib/layouts/egs.layout:588
+#: lib/layouts/siamltex.layout:340 lib/layouts/beamer.layout:1059
 #: lib/layouts/elsarticle.layout:322 lib/layouts/llncs.layout:284
 #: lib/layouts/aastex.layout:402 lib/layouts/aastex.layout:415
 #: lib/layouts/kluwer.layout:347 lib/layouts/kluwer.layout:359
@@ -6370,13 +6393,15 @@ msgstr "Bifog"
 msgid "encl:"
 msgstr "bifog:"
 
-#: lib/layouts/scrlettr.layout:116 lib/layouts/europecv.layout:31
-#: lib/layouts/sigplanconf.layout:81 lib/layouts/sigplanconf.layout:151
-#: lib/layouts/scrlttr2.layout:148 lib/layouts/g-brief.layout:36
+#: lib/layouts/scrlettr.layout:116 lib/layouts/sigplanconf.layout:81
+#: lib/layouts/sigplanconf.layout:151 lib/layouts/scrlttr2.layout:148
+#: lib/layouts/europecv.layout:31 lib/layouts/g-brief.layout:36
 #: lib/layouts/IEEEtran.layout:377 lib/layouts/IEEEtran.layout:394
 #: lib/layouts/g-brief2.layout:44 lib/layouts/g-brief2.layout:83
 #: lib/layouts/moderncv.layout:160 lib/layouts/agu_stdtitle.inc:185
-#: src/frontends/qt4/GuiIndices.cpp:51 src/mathed/MathMacroTemplate.cpp:487
+#: lib/layouts/pdfcomment.module:28 lib/layouts/pdfcomment.module:45
+#: lib/layouts/pdfcomment.module:56 src/frontends/qt4/GuiIndices.cpp:51
+#: src/mathed/MathMacroTemplate.cpp:487
 msgid "Name"
 msgstr "Namn"
 
@@ -6401,25 +6426,25 @@ msgstr "Signatur"
 msgid "Signature:"
 msgstr "Signatur:"
 
-#: lib/layouts/scrlettr.layout:147 lib/layouts/siamltex.layout:298
-#: lib/layouts/elsart.layout:146 lib/layouts/revtex4.layout:183
-#: lib/layouts/revtex.layout:134 lib/layouts/europecv.layout:68
-#: lib/layouts/scrlttr2.layout:64 lib/layouts/ectaart.layout:70
-#: lib/layouts/dinbrief.layout:57 lib/layouts/g-brief.layout:187
-#: lib/layouts/g-brief2.layout:788 lib/layouts/revtex4-1.layout:123
+#: lib/layouts/scrlettr.layout:147 lib/layouts/elsart.layout:146
+#: lib/layouts/revtex4.layout:183 lib/layouts/revtex.layout:134
+#: lib/layouts/siamltex.layout:298 lib/layouts/scrlttr2.layout:64
+#: lib/layouts/ectaart.layout:70 lib/layouts/dinbrief.layout:57
+#: lib/layouts/europecv.layout:68 lib/layouts/g-brief.layout:187
+#: lib/layouts/g-brief2.layout:788 lib/layouts/revtex4-1.layout:103
 #: lib/layouts/moderncv.layout:108 lib/layouts/amsdefs.inc:133
 msgid "Address:"
 msgstr "Adress:"
 
-#: lib/layouts/scrlettr.layout:151 lib/layouts/europecv.layout:77
-#: lib/layouts/scrlttr2.layout:187 lib/layouts/dinbrief.layout:144
+#: lib/layouts/scrlettr.layout:151 lib/layouts/scrlttr2.layout:187
+#: lib/layouts/dinbrief.layout:144 lib/layouts/europecv.layout:77
 #: lib/layouts/lettre.layout:38 lib/layouts/lettre.layout:287
 #: lib/layouts/stdletter.inc:131
 msgid "Telephone"
 msgstr "Telefon"
 
-#: lib/layouts/scrlettr.layout:154 lib/layouts/europecv.layout:80
-#: lib/layouts/dinbrief.layout:146 lib/layouts/stdletter.inc:134
+#: lib/layouts/scrlettr.layout:154 lib/layouts/dinbrief.layout:146
+#: lib/layouts/europecv.layout:80 lib/layouts/stdletter.inc:134
 msgid "Telephone:"
 msgstr "Telefon:"
 
@@ -6433,32 +6458,32 @@ msgstr "Plats"
 msgid "Place:"
 msgstr "Plats:"
 
-#: lib/layouts/scrlettr.layout:165 lib/layouts/siamltex.layout:236
-#: lib/layouts/aapaper.layout:99 lib/layouts/aapaper.layout:194
-#: lib/layouts/egs.layout:485 lib/layouts/revtex4.layout:124
-#: lib/layouts/revtex.layout:112 lib/layouts/aa.layout:227
+#: lib/layouts/scrlettr.layout:165 lib/layouts/aapaper.layout:99
+#: lib/layouts/aapaper.layout:194 lib/layouts/egs.layout:485
+#: lib/layouts/revtex4.layout:124 lib/layouts/revtex.layout:112
+#: lib/layouts/aa.layout:227 lib/layouts/siamltex.layout:236
 #: lib/layouts/frletter.layout:22 lib/layouts/beamer.layout:998
 #: lib/layouts/scrlttr2.layout:243 lib/layouts/dinbrief.layout:161
 #: lib/layouts/g-brief.layout:191 lib/layouts/aastex.layout:229
 #: lib/layouts/kluwer.layout:152 lib/layouts/foils.layout:142
 #: lib/layouts/jasatex.layout:147 lib/layouts/g-brief2.layout:54
-#: lib/layouts/g-brief2.layout:862 lib/layouts/revtex4-1.layout:164
+#: lib/layouts/g-brief2.layout:862 lib/layouts/revtex4-1.layout:144
 #: lib/layouts/tufte-book.layout:43 lib/layouts/moderncv.layout:531
 #: lib/layouts/powerdot.layout:89 lib/layouts/lettre.layout:52
-#: lib/layouts/lettre.layout:214 lib/layouts/scrclass.inc:198
-#: lib/layouts/agu_stdtitle.inc:239 lib/layouts/stdtitle.inc:54
-#: lib/layouts/db_stdtitle.inc:35 lib/layouts/svcommon.inc:369
-#: lib/layouts/amsdefs.inc:70 lib/ui/stdmenus.inc:387
-#: lib/external_templates:343 lib/external_templates:344
-#: lib/external_templates:348
+#: lib/layouts/lettre.layout:214 lib/layouts/beamerposter.layout:41
+#: lib/layouts/scrclass.inc:198 lib/layouts/agu_stdtitle.inc:239
+#: lib/layouts/stdtitle.inc:54 lib/layouts/db_stdtitle.inc:35
+#: lib/layouts/svcommon.inc:369 lib/layouts/amsdefs.inc:70
+#: lib/ui/stdmenus.inc:387 lib/external_templates:343
+#: lib/external_templates:344 lib/external_templates:348
 msgid "Date"
 msgstr "Datum"
 
-#: lib/layouts/scrlettr.layout:168 lib/layouts/siamltex.layout:248
-#: lib/layouts/revtex4.layout:126 lib/layouts/revtex.layout:114
+#: lib/layouts/scrlettr.layout:168 lib/layouts/revtex4.layout:126
+#: lib/layouts/revtex.layout:114 lib/layouts/siamltex.layout:248
 #: lib/layouts/scrlttr2.layout:247 lib/layouts/dinbrief.layout:163
 #: lib/layouts/g-brief.layout:194 lib/layouts/g-brief2.layout:872
-#: lib/layouts/revtex4-1.layout:166 lib/layouts/lettre.layout:227
+#: lib/layouts/revtex4-1.layout:146 lib/layouts/lettre.layout:227
 #: lib/layouts/amsdefs.inc:83
 msgid "Date:"
 msgstr "Datum:"
@@ -6571,10 +6596,10 @@ msgstr "Böcker"
 msgid "Polish Report (MW Bundle)"
 msgstr "Polsk rapport (MW Bundle)"
 
-#: lib/layouts/mwrep.layout:4 lib/layouts/extreport.layout:4
-#: lib/layouts/ctex-report.layout:4 lib/layouts/report.layout:4
-#: lib/layouts/RJournal.layout:4 lib/layouts/scrreprt.layout:4
-#: lib/layouts/jreport.layout:4 lib/layouts/treport.layout:4
+#: lib/layouts/mwrep.layout:4 lib/layouts/jreport.layout:4
+#: lib/layouts/extreport.layout:4 lib/layouts/ctex-report.layout:4
+#: lib/layouts/RJournal.layout:4 lib/layouts/report.layout:4
+#: lib/layouts/scrreprt.layout:4 lib/layouts/treport.layout:4
 msgid "Reports"
 msgstr "Rapporter"
 
@@ -6607,150 +6632,12 @@ msgstr "Bevis(QED)"
 msgid "Proof(smartQED)"
 msgstr "Bevis(smartQED)"
 
-#: lib/layouts/siamltex.layout:3
-msgid "Society for Industrial and Applied Mathematics (SIAM)"
-msgstr "Society for Industrial and Applied Mathematics (SIAM)"
-
-#: lib/layouts/siamltex.layout:74 lib/layouts/foils.layout:295
-#: lib/layouts/theorems-starred.inc:23 lib/layouts/theorems-order.inc:10
-msgid "Theorem*"
-msgstr "Teorem*"
-
-#: lib/layouts/siamltex.layout:84 lib/layouts/foils.layout:309
-#: lib/layouts/theorems-starred.inc:67 lib/layouts/theorems-order.inc:16
-msgid "Corollary*"
-msgstr "Korollarium*"
-
-#: lib/layouts/siamltex.layout:94 lib/layouts/foils.layout:302
-#: lib/layouts/theorems-starred.inc:84 lib/layouts/theorems-order.inc:22
-msgid "Lemma*"
-msgstr "Lemma*"
-
-#: lib/layouts/siamltex.layout:104 lib/layouts/foils.layout:316
-#: lib/layouts/theorems-starred.inc:101 lib/layouts/theorems-order.inc:28
-msgid "Proposition*"
-msgstr "Proposition*"
-
-#: lib/layouts/siamltex.layout:113 lib/layouts/theorems-starred.inc:118
-#: lib/layouts/theorems-order.inc:34
-msgid "Conjecture*"
-msgstr "Förmodan*"
-
-#: lib/layouts/siamltex.layout:117 lib/layouts/elsart.layout:358
-#: lib/layouts/AEA.layout:154 lib/layouts/powerdot.layout:526
-#: lib/layouts/stdfloats.inc:41 lib/layouts/theorems-ams-extended.module:70
-#: lib/layouts/theorems-ams-extended.module:80
-#: lib/layouts/theorems-ams-extended.module:83
-#: lib/layouts/theorems-ams-extended.module:97
-#: lib/layouts/theorems-ams-extended.module:100
-#: lib/layouts/algorithm2e.module:15
-#: lib/layouts/theorems-ams-extended-bytype.module:94
-#: lib/layouts/theorems-ams-extended-bytype.module:103
-#: lib/layouts/theorems-ams-extended-bytype.module:106
-#: lib/layouts/theorems-ams-extended-bytype.module:121
-#: lib/layouts/theorems-ams-extended-bytype.module:124
-msgid "Algorithm"
-msgstr "Algoritm"
-
-#: lib/layouts/siamltex.layout:123 lib/layouts/theorems-ams-extended.module:88
-#: lib/layouts/theorems-ams-extended-bytype.module:112
-msgid "Algorithm*"
-msgstr "Algoritm*"
-
-#: lib/layouts/siamltex.layout:127 lib/layouts/elsart.layout:365
-#: lib/layouts/beamer.layout:1185 lib/layouts/AEA.layout:223
-#: lib/layouts/llncs.layout:343 lib/layouts/foils.layout:267
-#: lib/layouts/heb-article.layout:87 lib/layouts/theorems-ams.inc:159
-#: lib/layouts/theorems-ams.inc:176 lib/layouts/theorems-ams.inc:179
-#: lib/layouts/theorems-bytype.inc:161 lib/layouts/theorems-bytype.inc:177
-#: lib/layouts/theorems-bytype.inc:180
-#: lib/layouts/theorems-starred-equivalents.inc:41
-#: lib/layouts/theorems-ams-bytype.inc:185
-#: lib/layouts/theorems-ams-bytype.inc:201
-#: lib/layouts/theorems-ams-bytype.inc:204
-#: lib/layouts/theorems-starred.inc:169 lib/layouts/theorems-starred.inc:172
-#: lib/layouts/theorems.inc:159 lib/layouts/theorems.inc:176
-#: lib/layouts/theorems.inc:179 lib/layouts/theorems-order.inc:37
-#: lib/layouts/theorems-without-preamble.inc:178
-#: lib/layouts/theorems-without-preamble.inc:192
-#: lib/layouts/theorems-without-preamble.inc:195
-#: lib/layouts/theorems-sec-bytype.module:102
-#: lib/layouts/theorems-chap-bytype.module:126
-msgid "Definition"
-msgstr "Definition"
-
-#: lib/layouts/siamltex.layout:133 lib/layouts/foils.layout:323
-#: lib/layouts/theorems-starred.inc:152 lib/layouts/theorems-order.inc:40
-msgid "Definition*"
-msgstr "Definition*"
-
-#: lib/layouts/siamltex.layout:137
-msgid "AMS"
-msgstr "AMS"
-
-#: lib/layouts/siamltex.layout:162 lib/layouts/IEEEtran.layout:411
-#: lib/layouts/theorems-proof.inc:21
-msgid "Alternative Proof String"
-msgstr "Alternativ bevissträng"
-
-#: lib/layouts/siamltex.layout:163 lib/layouts/IEEEtran.layout:412
-msgid "An alternative proof string"
-msgstr "En alternativ bevissträng"
-
-#: lib/layouts/siamltex.layout:205 lib/layouts/iopart.layout:65
-#: lib/layouts/apa6.layout:355 lib/layouts/simplecv.layout:51
-#: lib/layouts/beamer.layout:207 lib/layouts/beamer.layout:257
-#: lib/layouts/beamer.layout:314 lib/layouts/beamer.layout:371
-#: lib/layouts/beamer.layout:891 lib/layouts/europecv.layout:135
-#: lib/layouts/tufte-handout.layout:40 lib/layouts/apa.layout:255
-#: lib/layouts/aastex.layout:532 lib/layouts/achemso.layout:77
-#: lib/layouts/jasatex.layout:74 lib/layouts/memoir.layout:56
-#: lib/layouts/revtex4-1.layout:214 lib/layouts/tufte-book.layout:80
-#: lib/layouts/tufte-book.layout:107 lib/layouts/scrclass.inc:118
-#: lib/layouts/scrclass.inc:128 lib/layouts/scrclass.inc:138
-#: lib/layouts/scrclass.inc:273 lib/layouts/scrclass.inc:293
-#: lib/layouts/stdinsets.inc:523 lib/layouts/amsdefs.inc:38
-#: lib/layouts/stdsections.inc:31 lib/layouts/stdsections.inc:60
-#: lib/layouts/stdsections.inc:88
-msgid "Short Title|S"
-msgstr "Kort titel"
-
-#: lib/layouts/siamltex.layout:206
-msgid "The title as it appears in the running headers"
-msgstr "Titeln som den visas i löpande huvud"
-
-#: lib/layouts/siamltex.layout:272 lib/layouts/egs.layout:515
-#: lib/layouts/svprobth.layout:196 lib/layouts/svjog.layout:166
-#: lib/layouts/svglobal.layout:162 lib/layouts/RJournal.layout:52
-#: lib/layouts/llncs.layout:262 lib/layouts/kluwer.layout:275
-#: lib/layouts/agutex.layout:149 lib/layouts/amsdefs.inc:108
-msgid "Abstract."
-msgstr "Sammandrag."
-
-#: lib/layouts/siamltex.layout:306 lib/layouts/egs.layout:239
-#: lib/layouts/hollywood.layout:307 lib/layouts/broadway.layout:216
-#: lib/layouts/lyxmacros.inc:65
-msgid "Right Address"
-msgstr "Höger adress"
-
-#: lib/layouts/siamltex.layout:314 lib/layouts/entcs.layout:111
-msgid "Key words:"
-msgstr "Nyckelord:"
-
-#: lib/layouts/siamltex.layout:318 lib/layouts/amsdefs.inc:192
-msgid "Subjectclass"
-msgstr "Ämnesklass"
-
-#: lib/layouts/siamltex.layout:321
-msgid "AMS subject classifications:"
-msgstr "AMS ämnesklassificeringar:"
-
 #: lib/layouts/aapaper.layout:3 lib/layouts/aapaper.layout:14
 msgid "Astronomy & Astrophysics (V. 4, Obsolete)"
 msgstr "Astronomi & astrofysik (V. 4, föråldrad)"
 
 #: lib/layouts/aapaper.layout:50 lib/layouts/egs.layout:177
-#: lib/layouts/apa6.layout:454 lib/layouts/simplecv.layout:86
+#: lib/layouts/simplecv.layout:86 lib/layouts/apa6.layout:454
 #: lib/layouts/beamer.layout:80 lib/layouts/apa.layout:354
 #: lib/layouts/powerdot.layout:254 lib/layouts/db_stdlists.inc:12
 #: lib/layouts/stdlists.inc:13 lib/layouts/agu_stdlists.inc:13
@@ -6768,16 +6655,16 @@ msgstr "Uppräkning"
 #: lib/layouts/aapaper.layout:81 lib/layouts/svprobth.layout:85
 #: lib/layouts/aa.layout:68 lib/layouts/beamer.layout:909
 #: lib/layouts/sigplanconf.layout:127 lib/layouts/llncs.layout:131
-#: lib/layouts/kluwer.layout:132 lib/layouts/scrclass.inc:182
-#: lib/layouts/aapaper.inc:9 lib/layouts/acm-sigs.inc:10
-#: lib/layouts/svcommon.inc:332
+#: lib/layouts/kluwer.layout:132 lib/layouts/beamerposter.layout:26
+#: lib/layouts/scrclass.inc:182 lib/layouts/aapaper.inc:9
+#: lib/layouts/acm-sigs.inc:10 lib/layouts/svcommon.inc:332
 msgid "Subtitle"
 msgstr "Undertitel"
 
 #: lib/layouts/aapaper.layout:90 lib/layouts/iopart.layout:165
 #: lib/layouts/aa.layout:374 lib/layouts/aa.layout:378
-#: lib/layouts/europecv.layout:71 lib/layouts/elsarticle.layout:243
-#: lib/layouts/ectaart.layout:73 lib/layouts/RJournal.layout:76
+#: lib/layouts/elsarticle.layout:243 lib/layouts/ectaart.layout:73
+#: lib/layouts/europecv.layout:71 lib/layouts/RJournal.layout:76
 #: lib/layouts/RJournal.layout:77 lib/layouts/llncs.layout:239
 #: lib/layouts/aastex.layout:190 lib/layouts/achemso.layout:95
 #: lib/layouts/jasatex.layout:141 lib/layouts/moderncv.layout:143
@@ -6900,7 +6787,7 @@ msgstr "PDF-författare:"
 #: lib/layouts/paper.layout:177 lib/layouts/spie.layout:49
 #: lib/layouts/kluwer.layout:293 lib/layouts/achemso.layout:159
 #: lib/layouts/ijmpd.layout:234 lib/layouts/jasatex.layout:209
-#: lib/layouts/revtex4-1.layout:181 lib/layouts/agu_stdtitle.inc:123
+#: lib/layouts/revtex4-1.layout:161 lib/layouts/agu_stdtitle.inc:123
 #: lib/layouts/acm-sigs.inc:54
 msgid "Keywords:"
 msgstr "Nyckelord:"
@@ -6958,7 +6845,7 @@ msgid "Short cite"
 msgstr "Kort citat"
 
 #: lib/layouts/acmsiggraph.layout:285 lib/layouts/elsart.layout:201
-#: lib/layouts/revtex4.layout:194 lib/layouts/revtex4-1.layout:205
+#: lib/layouts/revtex4.layout:194 lib/layouts/revtex4-1.layout:185
 #: lib/layouts/amsdefs.inc:171
 msgid "Thanks"
 msgstr "Tack"
@@ -6974,13 +6861,31 @@ msgstr "E-post"
 #: lib/layouts/sigplanconf.layout:220 lib/layouts/spie.layout:91
 #: lib/layouts/apa.layout:234 lib/layouts/agutex.layout:184
 #: lib/layouts/jasatex.layout:230 lib/layouts/jasatex.layout:236
-#: lib/layouts/revtex4-1.layout:226
+#: lib/layouts/revtex4-1.layout:206
 msgid "Acknowledgments"
 msgstr "Tacksägelser"
 
 #: lib/layouts/iopart.layout:3
 msgid "Institute of Physics (IOP)"
 msgstr "Institute of Physics (IOP)"
+
+#: lib/layouts/iopart.layout:65 lib/layouts/simplecv.layout:51
+#: lib/layouts/apa6.layout:355 lib/layouts/siamltex.layout:205
+#: lib/layouts/beamer.layout:207 lib/layouts/beamer.layout:257
+#: lib/layouts/beamer.layout:314 lib/layouts/beamer.layout:371
+#: lib/layouts/beamer.layout:891 lib/layouts/europecv.layout:135
+#: lib/layouts/tufte-handout.layout:40 lib/layouts/apa.layout:255
+#: lib/layouts/aastex.layout:532 lib/layouts/achemso.layout:77
+#: lib/layouts/jasatex.layout:74 lib/layouts/memoir.layout:56
+#: lib/layouts/revtex4-1.layout:194 lib/layouts/tufte-book.layout:80
+#: lib/layouts/tufte-book.layout:107 lib/layouts/scrclass.inc:118
+#: lib/layouts/scrclass.inc:128 lib/layouts/scrclass.inc:138
+#: lib/layouts/scrclass.inc:273 lib/layouts/scrclass.inc:293
+#: lib/layouts/stdinsets.inc:523 lib/layouts/amsdefs.inc:38
+#: lib/layouts/stdsections.inc:31 lib/layouts/stdsections.inc:60
+#: lib/layouts/stdsections.inc:88
+msgid "Short Title|S"
+msgstr "Kort titel"
 
 #: lib/layouts/iopart.layout:66 lib/layouts/jasatex.layout:75
 msgid "Short title that will appear in header line"
@@ -6995,11 +6900,12 @@ msgid "Topical"
 msgstr "Tema"
 
 #: lib/layouts/iopart.layout:94 lib/layouts/stdinsets.inc:80
+#: lib/layouts/pdfcomment.module:126 lib/layouts/pdfcomment.module:163
 msgid "Comment"
 msgstr "Kommentar"
 
 #: lib/layouts/iopart.layout:100 lib/layouts/elsart.layout:407
-#: lib/layouts/apa6.layout:206 lib/layouts/slides.layout:169
+#: lib/layouts/slides.layout:169 lib/layouts/apa6.layout:206
 #: lib/layouts/beamer.layout:1500 lib/layouts/llncs.layout:370
 #: lib/layouts/powerdot.layout:205 lib/layouts/stdinsets.inc:101
 #: lib/layouts/theorems-without-preamble.inc:395
@@ -7032,7 +6938,7 @@ msgstr "Rapid"
 
 #: lib/layouts/iopart.layout:223 lib/layouts/revtex4.layout:259
 #: lib/layouts/svglobal3.layout:67 lib/layouts/svglobal3.layout:70
-#: lib/layouts/jasatex.layout:217 lib/layouts/revtex4-1.layout:185
+#: lib/layouts/jasatex.layout:217 lib/layouts/revtex4-1.layout:165
 msgid "PACS"
 msgstr "PACS"
 
@@ -7086,6 +6992,10 @@ msgstr "Specialavsnitt*"
 msgid "Unnumbered"
 msgstr "Onumrerat"
 
+#: lib/layouts/jreport.layout:3
+msgid "Japanese Report (jreport)"
+msgstr "Japansk rapport (jreport)"
+
 #: lib/layouts/scrbook.layout:3
 msgid "KOMA-Script Book"
 msgstr "KOMA-Script-bok)"
@@ -7094,8 +7004,8 @@ msgstr "KOMA-Script-bok)"
 #: lib/layouts/recipebook.layout:42 lib/layouts/memoir.layout:63
 #: lib/layouts/tufte-book.layout:63 lib/layouts/svmult.layout:111
 #: lib/layouts/scrclass.inc:60 lib/layouts/agu_stdsections.inc:21
-#: lib/layouts/svcommon.inc:151 lib/layouts/db_stdsections.inc:20
-#: lib/layouts/stdsections.inc:42
+#: lib/layouts/svcommon.inc:151 lib/layouts/stdsections.inc:42
+#: lib/layouts/db_stdsections.inc:20
 msgid "Chapter"
 msgstr "Kapitel"
 
@@ -7132,7 +7042,7 @@ msgid "Optional argument for the address"
 msgstr "Valfritt argument för adressen"
 
 #: lib/layouts/elsart.layout:157 lib/layouts/revtex4.layout:201
-#: lib/layouts/revtex4-1.layout:127
+#: lib/layouts/revtex4-1.layout:107
 msgid "Author Email"
 msgstr "Författarens epost"
 
@@ -7142,12 +7052,12 @@ msgid "Email:"
 msgstr "Epost:"
 
 #: lib/layouts/elsart.layout:178 lib/layouts/revtex4.layout:220
-#: lib/layouts/revtex4-1.layout:145
+#: lib/layouts/revtex4-1.layout:125
 msgid "Author URL"
 msgstr "Författarens URL"
 
 #: lib/layouts/elsart.layout:189 lib/layouts/revtex4.layout:229
-#: lib/layouts/revtex4-1.layout:148 lib/layouts/amsdefs.inc:160
+#: lib/layouts/revtex4-1.layout:128 lib/layouts/amsdefs.inc:160
 msgid "URL:"
 msgstr "URL:"
 
@@ -7197,9 +7107,48 @@ msgstr "Kriterium"
 msgid "Criterion \\arabic{theorem}"
 msgstr "Kriterium \\arabic{theorem}"
 
+#: lib/layouts/elsart.layout:358 lib/layouts/siamltex.layout:117
+#: lib/layouts/sciposter.layout:87 lib/layouts/AEA.layout:154
+#: lib/layouts/powerdot.layout:526 lib/layouts/stdfloats.inc:41
+#: lib/layouts/theorems-ams-extended.module:70
+#: lib/layouts/theorems-ams-extended.module:80
+#: lib/layouts/theorems-ams-extended.module:83
+#: lib/layouts/theorems-ams-extended.module:97
+#: lib/layouts/theorems-ams-extended.module:100
+#: lib/layouts/algorithm2e.module:15
+#: lib/layouts/theorems-ams-extended-bytype.module:94
+#: lib/layouts/theorems-ams-extended-bytype.module:103
+#: lib/layouts/theorems-ams-extended-bytype.module:106
+#: lib/layouts/theorems-ams-extended-bytype.module:121
+#: lib/layouts/theorems-ams-extended-bytype.module:124
+msgid "Algorithm"
+msgstr "Algoritm"
+
 #: lib/layouts/elsart.layout:361
 msgid "Algorithm \\arabic{theorem}"
 msgstr "Algoritm \\arabic{theorem}"
+
+#: lib/layouts/elsart.layout:365 lib/layouts/siamltex.layout:127
+#: lib/layouts/beamer.layout:1185 lib/layouts/AEA.layout:223
+#: lib/layouts/llncs.layout:343 lib/layouts/foils.layout:267
+#: lib/layouts/heb-article.layout:87 lib/layouts/theorems-ams.inc:159
+#: lib/layouts/theorems-ams.inc:176 lib/layouts/theorems-ams.inc:179
+#: lib/layouts/theorems-bytype.inc:161 lib/layouts/theorems-bytype.inc:177
+#: lib/layouts/theorems-bytype.inc:180
+#: lib/layouts/theorems-starred-equivalents.inc:41
+#: lib/layouts/theorems-ams-bytype.inc:185
+#: lib/layouts/theorems-ams-bytype.inc:201
+#: lib/layouts/theorems-ams-bytype.inc:204
+#: lib/layouts/theorems-starred.inc:169 lib/layouts/theorems-starred.inc:172
+#: lib/layouts/theorems.inc:159 lib/layouts/theorems.inc:176
+#: lib/layouts/theorems.inc:179 lib/layouts/theorems-order.inc:37
+#: lib/layouts/theorems-without-preamble.inc:178
+#: lib/layouts/theorems-without-preamble.inc:192
+#: lib/layouts/theorems-without-preamble.inc:195
+#: lib/layouts/theorems-sec-bytype.module:102
+#: lib/layouts/theorems-chap-bytype.module:126
+msgid "Definition"
+msgstr "Definition"
 
 #: lib/layouts/elsart.layout:368
 msgid "Definition \\arabic{theorem}"
@@ -7270,8 +7219,8 @@ msgstr "Not \\arabic{theorem}"
 msgid "Claim \\arabic{theorem}"
 msgstr "Påstående \\arabic{theorem}"
 
-#: lib/layouts/elsart.layout:421 lib/layouts/europecv.layout:164
-#: lib/layouts/AEA.layout:292 lib/layouts/moderncv.layout:344
+#: lib/layouts/elsart.layout:421 lib/layouts/AEA.layout:292
+#: lib/layouts/europecv.layout:164 lib/layouts/moderncv.layout:344
 #: lib/layouts/moderncv.layout:345 lib/layouts/moderncv.layout:366
 #: lib/layouts/moderncv.layout:367
 #: lib/layouts/theorems-ams-extended.module:242
@@ -7330,15 +7279,15 @@ msgid "Sectioning"
 msgstr "Avsnittsindelning"
 
 #: lib/layouts/egs.layout:75 lib/layouts/revtex4.layout:82
-#: lib/layouts/amsbook.layout:127 lib/layouts/apa6.layout:433
-#: lib/layouts/revtex.layout:70 lib/layouts/paper.layout:87
+#: lib/layouts/amsbook.layout:127 lib/layouts/revtex.layout:70
+#: lib/layouts/apa6.layout:433 lib/layouts/paper.layout:87
 #: lib/layouts/llncs.layout:75 lib/layouts/apa.layout:333
 #: lib/layouts/kluwer.layout:91 lib/layouts/agutex.layout:156
 #: lib/layouts/ltugboat.layout:109 lib/layouts/memoir.layout:123
-#: lib/layouts/revtex4-1.layout:61 lib/layouts/scrclass.inc:96
-#: lib/layouts/aguplus.inc:59 lib/layouts/numrevtex.inc:33
-#: lib/layouts/agu_stdsections.inc:60 lib/layouts/svcommon.inc:222
-#: lib/layouts/db_stdsections.inc:52 lib/layouts/stdsections.inc:130
+#: lib/layouts/revtex4-1.layout:41 lib/layouts/scrclass.inc:96
+#: lib/layouts/numrevtex.inc:33 lib/layouts/agu_stdsections.inc:60
+#: lib/layouts/svcommon.inc:222 lib/layouts/stdsections.inc:130
+#: lib/layouts/aguplus.inc:59 lib/layouts/db_stdsections.inc:52
 msgid "Paragraph"
 msgstr "Stycke"
 
@@ -7347,7 +7296,7 @@ msgstr "Stycke"
 #: lib/layouts/apa.layout:343 lib/layouts/kluwer.layout:101
 #: lib/layouts/memoir.layout:136 lib/layouts/scrclass.inc:104
 #: lib/layouts/agu_stdsections.inc:70 lib/layouts/svcommon.inc:233
-#: lib/layouts/db_stdsections.inc:60 lib/layouts/stdsections.inc:141
+#: lib/layouts/stdsections.inc:141 lib/layouts/db_stdsections.inc:60
 msgid "Subparagraph"
 msgstr "Understycke"
 
@@ -7392,6 +7341,12 @@ msgstr "En anpassad elementsträng"
 msgid "Verse"
 msgstr "Vers"
 
+#: lib/layouts/egs.layout:239 lib/layouts/siamltex.layout:306
+#: lib/layouts/hollywood.layout:307 lib/layouts/broadway.layout:216
+#: lib/layouts/lyxmacros.inc:65
+msgid "Right Address"
+msgstr "Höger adress"
+
 #: lib/layouts/egs.layout:285
 msgid "LaTeX Title"
 msgstr "LaTeX-titel"
@@ -7406,7 +7361,7 @@ msgstr "Tillhörighet"
 
 #: lib/layouts/egs.layout:342 lib/layouts/revtex4.layout:144
 #: lib/layouts/apa6.layout:162 lib/layouts/apa.layout:172
-#: lib/layouts/revtex4-1.layout:90 lib/layouts/agu_stdtitle.inc:132
+#: lib/layouts/revtex4-1.layout:70 lib/layouts/agu_stdtitle.inc:132
 msgid "Affiliation:"
 msgstr "Tillhörighet:"
 
@@ -7434,18 +7389,18 @@ msgstr "Första författare"
 msgid "1st_author_surname:"
 msgstr "1._författare_efternamn:"
 
-#: lib/layouts/egs.layout:432 lib/layouts/aguplus.inc:115
-#: lib/layouts/agu_stdtitle.inc:202
+#: lib/layouts/egs.layout:432 lib/layouts/agu_stdtitle.inc:202
+#: lib/layouts/aguplus.inc:115
 msgid "Received:"
 msgstr "Mottagen:"
 
-#: lib/layouts/egs.layout:441 lib/layouts/aguplus.inc:127
-#: lib/layouts/agu_stdtitle.inc:215
+#: lib/layouts/egs.layout:441 lib/layouts/agu_stdtitle.inc:215
+#: lib/layouts/aguplus.inc:127
 msgid "Accepted"
 msgstr "Godtagen"
 
-#: lib/layouts/egs.layout:454 lib/layouts/aguplus.inc:131
-#: lib/layouts/agu_stdtitle.inc:218
+#: lib/layouts/egs.layout:454 lib/layouts/agu_stdtitle.inc:218
+#: lib/layouts/aguplus.inc:131
 msgid "Accepted:"
 msgstr "Godtagen:"
 
@@ -7456,6 +7411,14 @@ msgstr "Offsets"
 #: lib/layouts/egs.layout:476
 msgid "reprint_reqs_to:"
 msgstr "begäran_om_omtryck_till:"
+
+#: lib/layouts/egs.layout:515 lib/layouts/svprobth.layout:196
+#: lib/layouts/siamltex.layout:272 lib/layouts/svjog.layout:166
+#: lib/layouts/svglobal.layout:162 lib/layouts/RJournal.layout:52
+#: lib/layouts/llncs.layout:262 lib/layouts/kluwer.layout:275
+#: lib/layouts/agutex.layout:149 lib/layouts/amsdefs.inc:108
+msgid "Abstract."
+msgstr "Sammandrag."
 
 #: lib/layouts/egs.layout:537 lib/layouts/aa.layout:166
 msgid "Acknowledgements."
@@ -7476,41 +7439,41 @@ msgstr "LyX-kod"
 msgid "REVTeX (V. 4)"
 msgstr "REVTeX (V. 4)"
 
-#: lib/layouts/revtex4.layout:103 lib/layouts/revtex4-1.layout:192
+#: lib/layouts/revtex4.layout:103 lib/layouts/revtex4-1.layout:172
 msgid "Preprint"
 msgstr "Preprint"
 
 #: lib/layouts/revtex4.layout:133 lib/layouts/apa6.layout:149
 #: lib/layouts/sigplanconf.layout:159 lib/layouts/apa.layout:159
 #: lib/layouts/aastex.layout:152 lib/layouts/achemso.layout:104
-#: lib/layouts/jasatex.layout:105 lib/layouts/revtex4-1.layout:79
+#: lib/layouts/jasatex.layout:105 lib/layouts/revtex4-1.layout:59
 #: lib/layouts/moderncv.layout:310 lib/layouts/moderncv.layout:311
-#: lib/layouts/latex8.layout:89 lib/layouts/aguplus.inc:65
-#: lib/layouts/agu_stdtitle.inc:128
+#: lib/layouts/latex8.layout:89 lib/layouts/agu_stdtitle.inc:128
+#: lib/layouts/aguplus.inc:65
 msgid "Affiliation"
 msgstr "Tillhörighet"
 
-#: lib/layouts/revtex4.layout:152 lib/layouts/revtex4-1.layout:98
+#: lib/layouts/revtex4.layout:152 lib/layouts/revtex4-1.layout:78
 msgid "Affiliation (alternate)"
 msgstr "Tillhörighet (alternativ)"
 
-#: lib/layouts/revtex4.layout:158 lib/layouts/revtex4-1.layout:103
+#: lib/layouts/revtex4.layout:158 lib/layouts/revtex4-1.layout:83
 msgid "Alternate Affiliation Option"
 msgstr "Alternera tillhörighetsalternativ"
 
-#: lib/layouts/revtex4.layout:159 lib/layouts/revtex4-1.layout:104
+#: lib/layouts/revtex4.layout:159 lib/layouts/revtex4-1.layout:84
 msgid "Optional argument to the altaffiliation command"
 msgstr "Valfritt argument till alttillhörighetskommandot"
 
-#: lib/layouts/revtex4.layout:161 lib/layouts/revtex4-1.layout:101
+#: lib/layouts/revtex4.layout:161 lib/layouts/revtex4-1.layout:81
 msgid "Affiliation (alternate):"
 msgstr "Tillhörighet (alternativ):"
 
-#: lib/layouts/revtex4.layout:165 lib/layouts/revtex4-1.layout:110
+#: lib/layouts/revtex4.layout:165 lib/layouts/revtex4-1.layout:90
 msgid "Affiliation (none)"
 msgstr "Tillhörighet (ingen)"
 
-#: lib/layouts/revtex4.layout:168 lib/layouts/revtex4-1.layout:113
+#: lib/layouts/revtex4.layout:168 lib/layouts/revtex4-1.layout:93
 msgid "No affiliation"
 msgstr "Ingen tillhörighet"
 
@@ -7518,36 +7481,36 @@ msgstr "Ingen tillhörighet"
 msgid "AltAffiliation"
 msgstr "AltTillhörighet"
 
-#: lib/layouts/revtex4.layout:187 lib/layouts/revtex4-1.layout:157
+#: lib/layouts/revtex4.layout:187 lib/layouts/revtex4-1.layout:137
 msgid "Collaboration"
 msgstr "Kollaboration"
 
-#: lib/layouts/revtex4.layout:190 lib/layouts/revtex4-1.layout:160
+#: lib/layouts/revtex4.layout:190 lib/layouts/revtex4-1.layout:140
 msgid "Collaboration:"
 msgstr "Kollaboration:"
 
-#: lib/layouts/revtex4.layout:197 lib/layouts/revtex4-1.layout:208
+#: lib/layouts/revtex4.layout:197 lib/layouts/revtex4-1.layout:188
 #: lib/layouts/amsdefs.inc:174
 msgid "Thanks:"
 msgstr "Tack:"
 
-#: lib/layouts/revtex4.layout:207 lib/layouts/revtex4-1.layout:132
+#: lib/layouts/revtex4.layout:207 lib/layouts/revtex4-1.layout:112
 msgid "Electronic Address Option|s"
 msgstr "Elektronisk adressalternativ"
 
-#: lib/layouts/revtex4.layout:208 lib/layouts/revtex4-1.layout:133
+#: lib/layouts/revtex4.layout:208 lib/layouts/revtex4-1.layout:113
 msgid "Optional argument to the email command"
 msgstr "Valfritt argument till epostkommandot"
 
-#: lib/layouts/revtex4.layout:210 lib/layouts/revtex4-1.layout:130
+#: lib/layouts/revtex4.layout:210 lib/layouts/revtex4-1.layout:110
 msgid "Electronic Address:"
 msgstr "Elektronisk adress:"
 
-#: lib/layouts/revtex4.layout:226 lib/layouts/revtex4-1.layout:150
+#: lib/layouts/revtex4.layout:226 lib/layouts/revtex4-1.layout:130
 msgid "Author URL Option"
 msgstr "Författare URL-alternativ"
 
-#: lib/layouts/revtex4.layout:227 lib/layouts/revtex4-1.layout:151
+#: lib/layouts/revtex4.layout:227 lib/layouts/revtex4-1.layout:131
 msgid "Optional argument to the homepage command"
 msgstr "Valfritt argument till hemsidekommandot"
 
@@ -7566,139 +7529,6 @@ msgstr "Kapitelövningar"
 #: lib/layouts/singlecol.layout:3
 msgid "Inderscience Journals (Obsolete Version)"
 msgstr "Inderscience Journals (föråldrad version)"
-
-#: lib/layouts/apa6.layout:3
-msgid "American Psychological Association (APA), v. 6"
-msgstr "American Physchological Association (APA), v. 6"
-
-#: lib/layouts/apa6.layout:51 lib/layouts/AEA.layout:50
-#: lib/layouts/apa.layout:96
-msgid "ShortTitle"
-msgstr "Kort titel"
-
-#: lib/layouts/apa6.layout:60 lib/layouts/apa.layout:105
-msgid "Short title:"
-msgstr "Kort titel:"
-
-#: lib/layouts/apa6.layout:90 lib/layouts/apa.layout:135
-msgid "TwoAuthors"
-msgstr "Två författare"
-
-#: lib/layouts/apa6.layout:98 lib/layouts/apa.layout:143
-msgid "ThreeAuthors"
-msgstr "Tre författare"
-
-#: lib/layouts/apa6.layout:106 lib/layouts/apa.layout:151
-msgid "FourAuthors"
-msgstr "Fyra författare"
-
-#: lib/layouts/apa6.layout:113
-msgid "FiveAuthors"
-msgstr "Fem författare"
-
-#: lib/layouts/apa6.layout:120
-msgid "SixAuthors"
-msgstr "Sex författare"
-
-#: lib/layouts/apa6.layout:127
-msgid "LeftHeader"
-msgstr "Vänster huvud"
-
-#: lib/layouts/apa6.layout:136
-msgid "Left header:"
-msgstr "Vänster huvud:"
-
-#: lib/layouts/apa6.layout:170 lib/layouts/apa.layout:181
-msgid "TwoAffiliations"
-msgstr "Två tillhörigheter"
-
-#: lib/layouts/apa6.layout:177 lib/layouts/apa.layout:189
-msgid "ThreeAffiliations"
-msgstr "Tre tillhörigheter"
-
-#: lib/layouts/apa6.layout:184 lib/layouts/apa.layout:197
-msgid "FourAffiliations"
-msgstr "Fyra tillhörigheter"
-
-#: lib/layouts/apa6.layout:191
-msgid "FiveAffiliations"
-msgstr "Fem tillhörigheter"
-
-#: lib/layouts/apa6.layout:198
-msgid "SixAffiliations"
-msgstr "Sex tillhörigheter"
-
-#: lib/layouts/apa6.layout:219 lib/layouts/beamer.layout:1306
-#: lib/layouts/AEA.layout:127 lib/layouts/powerdot.layout:218
-msgid "Note:"
-msgstr "Not:"
-
-#: lib/layouts/apa6.layout:242 lib/layouts/apa.layout:87
-msgid "Abstract:"
-msgstr "Sammandrag:"
-
-#: lib/layouts/apa6.layout:274
-msgid "AuthorNote"
-msgstr "Författarens not"
-
-#: lib/layouts/apa6.layout:293
-msgid "Author Note:"
-msgstr "Författarens not:"
-
-#: lib/layouts/apa6.layout:308 lib/layouts/apa6.layout:316
-#: lib/layouts/apa6.layout:325 lib/layouts/apa6.layout:333
-msgid "Preamble"
-msgstr "Ingress"
-
-#: lib/layouts/apa6.layout:324
-msgid "CopNum"
-msgstr "Kopienummer"
-
-#: lib/layouts/apa6.layout:332 lib/layouts/agu_stdclass.inc:155
-#: lib/layouts/agu_stdclass.inc:157
-msgid "Volume"
-msgstr "Volym"
-
-#: lib/layouts/apa6.layout:339 lib/layouts/apa.layout:239
-msgid "ThickLine"
-msgstr "Tjock linje"
-
-#: lib/layouts/apa6.layout:350 lib/layouts/apa.layout:250
-msgid "Centered"
-msgstr "Centrerad"
-
-#: lib/layouts/apa6.layout:351 lib/layouts/apa.layout:251
-#: lib/layouts/stdinsets.inc:519 src/insets/InsetCaption.cpp:410
-msgid "standard"
-msgstr "standard"
-
-#: lib/layouts/apa6.layout:356 lib/layouts/apa.layout:256
-#: lib/layouts/scrclass.inc:274 lib/layouts/scrclass.inc:294
-#: lib/layouts/stdinsets.inc:524
-msgid "The caption as it appears in the list of figures/tables"
-msgstr "Etiketten som den visas i listan över figurer/tabeller"
-
-#: lib/layouts/apa6.layout:370 lib/layouts/apa.layout:270
-msgid "FitFigure"
-msgstr "Passa figur"
-
-#: lib/layouts/apa6.layout:376 lib/layouts/apa.layout:276
-msgid "FitBitmap"
-msgstr "Passa bitmap"
-
-#: lib/layouts/apa6.layout:469
-msgid "*"
-msgstr "*"
-
-#: lib/layouts/apa6.layout:501 lib/layouts/apa.layout:400
-msgid "Seriate"
-msgstr "Serievis"
-
-#: lib/layouts/apa6.layout:518 lib/layouts/apa6.layout:519
-#: lib/layouts/apa.layout:417 lib/layouts/apa.layout:418
-#: lib/layouts/stdcounters.inc:48
-msgid "(\\alph{enumii})"
-msgstr "(\\alph{enumii})"
 
 #: lib/layouts/slides.layout:3 lib/layouts/powerdot.layout:126
 #: lib/layouts/powerdot.layout:152 lib/layouts/powerdot.layout:206
@@ -7857,6 +7687,10 @@ msgstr "Electronic Notes in Theor. Comp. Sc. (ENTCS)"
 msgid "Keyword"
 msgstr "Nyckelord"
 
+#: lib/layouts/entcs.layout:111 lib/layouts/siamltex.layout:314
+msgid "Key words:"
+msgstr "Nyckelord:"
+
 #: lib/layouts/ctex-report.layout:3
 msgid "Chinese Report (CTeX)"
 msgstr "Kinesisk rapport (CTeX)"
@@ -7933,13 +7767,15 @@ msgstr "Resultat av ditt arbete"
 msgid "Key words."
 msgstr "Nyckelord."
 
-#: lib/layouts/aa.layout:351 lib/layouts/beamer.layout:955
-#: lib/layouts/llncs.layout:220 lib/layouts/cl2emult.layout:73
+#: lib/layouts/aa.layout:351 lib/layouts/sciposter.layout:24
+#: lib/layouts/beamer.layout:955 lib/layouts/llncs.layout:220
+#: lib/layouts/cl2emult.layout:73 lib/layouts/beamerposter.layout:36
 #: lib/layouts/svcommon.inc:352
 msgid "Institute"
 msgstr "Institut"
 
-#: lib/layouts/aa.layout:362 lib/layouts/scrlttr2.layout:203
+#: lib/layouts/aa.layout:362 lib/layouts/sciposter.layout:29
+#: lib/layouts/scrlttr2.layout:203
 msgid "E-Mail"
 msgstr "E-post"
 
@@ -8055,13 +7891,294 @@ msgstr "Springardrag"
 msgid "KnightMove:"
 msgstr "Springardrag:"
 
-#: lib/layouts/report.layout:3
-msgid "Report (Standard Class)"
-msgstr "Rapport (standardklass)"
+#: lib/layouts/apa6.layout:3
+msgid "American Psychological Association (APA), v. 6"
+msgstr "American Physchological Association (APA), v. 6"
 
-#: lib/layouts/dtk.layout:3
-msgid "Die TeXnische Komoedie"
-msgstr "Die TeXnische Komoedie"
+#: lib/layouts/apa6.layout:51 lib/layouts/AEA.layout:50
+#: lib/layouts/apa.layout:96
+msgid "ShortTitle"
+msgstr "Kort titel"
+
+#: lib/layouts/apa6.layout:60 lib/layouts/apa.layout:105
+msgid "Short title:"
+msgstr "Kort titel:"
+
+#: lib/layouts/apa6.layout:90 lib/layouts/apa.layout:135
+msgid "TwoAuthors"
+msgstr "Två författare"
+
+#: lib/layouts/apa6.layout:98 lib/layouts/apa.layout:143
+msgid "ThreeAuthors"
+msgstr "Tre författare"
+
+#: lib/layouts/apa6.layout:106 lib/layouts/apa.layout:151
+msgid "FourAuthors"
+msgstr "Fyra författare"
+
+#: lib/layouts/apa6.layout:113
+msgid "FiveAuthors"
+msgstr "Fem författare"
+
+#: lib/layouts/apa6.layout:120
+msgid "SixAuthors"
+msgstr "Sex författare"
+
+#: lib/layouts/apa6.layout:127
+msgid "LeftHeader"
+msgstr "Vänster huvud"
+
+#: lib/layouts/apa6.layout:136
+msgid "Left header:"
+msgstr "Vänster huvud:"
+
+#: lib/layouts/apa6.layout:170 lib/layouts/apa.layout:181
+msgid "TwoAffiliations"
+msgstr "Två tillhörigheter"
+
+#: lib/layouts/apa6.layout:177 lib/layouts/apa.layout:189
+msgid "ThreeAffiliations"
+msgstr "Tre tillhörigheter"
+
+#: lib/layouts/apa6.layout:184 lib/layouts/apa.layout:197
+msgid "FourAffiliations"
+msgstr "Fyra tillhörigheter"
+
+#: lib/layouts/apa6.layout:191
+msgid "FiveAffiliations"
+msgstr "Fem tillhörigheter"
+
+#: lib/layouts/apa6.layout:198
+msgid "SixAffiliations"
+msgstr "Sex tillhörigheter"
+
+#: lib/layouts/apa6.layout:219 lib/layouts/beamer.layout:1306
+#: lib/layouts/AEA.layout:127 lib/layouts/powerdot.layout:218
+msgid "Note:"
+msgstr "Not:"
+
+#: lib/layouts/apa6.layout:242 lib/layouts/apa.layout:87
+msgid "Abstract:"
+msgstr "Sammandrag:"
+
+#: lib/layouts/apa6.layout:274
+msgid "AuthorNote"
+msgstr "Författarens not"
+
+#: lib/layouts/apa6.layout:293
+msgid "Author Note:"
+msgstr "Författarens not:"
+
+#: lib/layouts/apa6.layout:308 lib/layouts/apa6.layout:316
+#: lib/layouts/apa6.layout:325 lib/layouts/apa6.layout:333
+msgid "Preamble"
+msgstr "Ingress"
+
+#: lib/layouts/apa6.layout:324
+msgid "CopNum"
+msgstr "Kopienummer"
+
+#: lib/layouts/apa6.layout:332 lib/layouts/agu_stdclass.inc:155
+#: lib/layouts/agu_stdclass.inc:157
+msgid "Volume"
+msgstr "Volym"
+
+#: lib/layouts/apa6.layout:339 lib/layouts/apa.layout:239
+msgid "ThickLine"
+msgstr "Tjock linje"
+
+#: lib/layouts/apa6.layout:350 lib/layouts/apa.layout:250
+msgid "Centered"
+msgstr "Centrerad"
+
+#: lib/layouts/apa6.layout:351 lib/layouts/apa.layout:251
+#: lib/layouts/stdinsets.inc:519 src/insets/InsetCaption.cpp:410
+msgid "standard"
+msgstr "standard"
+
+#: lib/layouts/apa6.layout:356 lib/layouts/apa.layout:256
+#: lib/layouts/scrclass.inc:274 lib/layouts/scrclass.inc:294
+#: lib/layouts/stdinsets.inc:524
+msgid "The caption as it appears in the list of figures/tables"
+msgstr "Etiketten som den visas i listan över figurer/tabeller"
+
+#: lib/layouts/apa6.layout:370 lib/layouts/apa.layout:270
+msgid "FitFigure"
+msgstr "Passa figur"
+
+#: lib/layouts/apa6.layout:376 lib/layouts/apa.layout:276
+msgid "FitBitmap"
+msgstr "Passa bitmap"
+
+#: lib/layouts/apa6.layout:469
+msgid "*"
+msgstr "*"
+
+#: lib/layouts/apa6.layout:501 lib/layouts/apa.layout:400
+msgid "Seriate"
+msgstr "Serievis"
+
+#: lib/layouts/apa6.layout:518 lib/layouts/apa6.layout:519
+#: lib/layouts/apa.layout:417 lib/layouts/apa.layout:418
+#: lib/layouts/stdcounters.inc:48
+msgid "(\\alph{enumii})"
+msgstr "(\\alph{enumii})"
+
+#: lib/layouts/siamltex.layout:3
+msgid "Society for Industrial and Applied Mathematics (SIAM)"
+msgstr "Society for Industrial and Applied Mathematics (SIAM)"
+
+#: lib/layouts/siamltex.layout:74 lib/layouts/foils.layout:295
+#: lib/layouts/theorems-starred.inc:23 lib/layouts/theorems-order.inc:10
+msgid "Theorem*"
+msgstr "Teorem*"
+
+#: lib/layouts/siamltex.layout:84 lib/layouts/foils.layout:309
+#: lib/layouts/theorems-starred.inc:67 lib/layouts/theorems-order.inc:16
+msgid "Corollary*"
+msgstr "Korollarium*"
+
+#: lib/layouts/siamltex.layout:94 lib/layouts/foils.layout:302
+#: lib/layouts/theorems-starred.inc:84 lib/layouts/theorems-order.inc:22
+msgid "Lemma*"
+msgstr "Lemma*"
+
+#: lib/layouts/siamltex.layout:104 lib/layouts/foils.layout:316
+#: lib/layouts/theorems-starred.inc:101 lib/layouts/theorems-order.inc:28
+msgid "Proposition*"
+msgstr "Proposition*"
+
+#: lib/layouts/siamltex.layout:113 lib/layouts/theorems-starred.inc:118
+#: lib/layouts/theorems-order.inc:34
+msgid "Conjecture*"
+msgstr "Förmodan*"
+
+#: lib/layouts/siamltex.layout:123 lib/layouts/theorems-ams-extended.module:88
+#: lib/layouts/theorems-ams-extended-bytype.module:112
+msgid "Algorithm*"
+msgstr "Algoritm*"
+
+#: lib/layouts/siamltex.layout:133 lib/layouts/foils.layout:323
+#: lib/layouts/theorems-starred.inc:152 lib/layouts/theorems-order.inc:40
+msgid "Definition*"
+msgstr "Definition*"
+
+#: lib/layouts/siamltex.layout:137
+msgid "AMS"
+msgstr "AMS"
+
+#: lib/layouts/siamltex.layout:162 lib/layouts/IEEEtran.layout:411
+#: lib/layouts/theorems-proof.inc:21
+msgid "Alternative Proof String"
+msgstr "Alternativ bevissträng"
+
+#: lib/layouts/siamltex.layout:163 lib/layouts/IEEEtran.layout:412
+msgid "An alternative proof string"
+msgstr "En alternativ bevissträng"
+
+#: lib/layouts/siamltex.layout:206
+msgid "The title as it appears in the running headers"
+msgstr "Titeln som den visas i löpande huvud"
+
+#: lib/layouts/siamltex.layout:318 lib/layouts/amsdefs.inc:192
+msgid "Subjectclass"
+msgstr "Ämnesklass"
+
+#: lib/layouts/siamltex.layout:321
+msgid "AMS subject classifications:"
+msgstr "AMS ämnesklassificeringar:"
+
+#: lib/layouts/sciposter.layout:3
+#, fuzzy
+msgid "SciPoster"
+msgstr "Postmärke"
+
+#: lib/layouts/sciposter.layout:4 lib/layouts/a0poster.layout:4
+#: lib/layouts/beamerposter.layout:4
+#, fuzzy
+msgid "Posters"
+msgstr "Postmärke"
+
+#: lib/layouts/sciposter.layout:34 lib/layouts/sigplanconf.layout:69
+msgid "Conference"
+msgstr "Konferens"
+
+#: lib/layouts/sciposter.layout:40
+#, fuzzy
+msgid "LeftLogo"
+msgstr "Vänster"
+
+#: lib/layouts/sciposter.layout:46
+#, fuzzy
+msgid "Left logo:"
+msgstr "Vänster fot:"
+
+#: lib/layouts/sciposter.layout:60
+#, fuzzy
+msgid "Logo Size"
+msgstr "Typsnittsstorlekar (grader)"
+
+#: lib/layouts/sciposter.layout:61
+msgid "Relative logo size (0 through 1)"
+msgstr ""
+
+#: lib/layouts/sciposter.layout:65
+#, fuzzy
+msgid "RightLogo"
+msgstr "Höger"
+
+#: lib/layouts/sciposter.layout:68
+#, fuzzy
+msgid "Right logo:"
+msgstr "Höger fot:"
+
+#: lib/layouts/sciposter.layout:80
+#, fuzzy
+msgid "Caption Width"
+msgstr "Valfri bredd"
+
+#: lib/layouts/sciposter.layout:81
+msgid "The caption width relative to the column (0 through 1)"
+msgstr ""
+
+#: lib/layouts/sciposter.layout:97 lib/layouts/sciposter.layout:100
+#: lib/layouts/sciposter.layout:126 lib/layouts/a0poster.layout:41
+#: lib/layouts/a0poster.layout:44 lib/layouts/a0poster.layout:70
+#: lib/layouts/beamerposter.layout:53 lib/layouts/beamerposter.layout:56
+#: lib/layouts/beamerposter.layout:82
+msgid "Giant"
+msgstr ""
+
+#: lib/layouts/sciposter.layout:112 lib/layouts/sciposter.layout:115
+#: lib/layouts/sciposter.layout:140 lib/layouts/a0poster.layout:56
+#: lib/layouts/a0poster.layout:59 lib/layouts/a0poster.layout:84
+#: lib/layouts/beamerposter.layout:68 lib/layouts/beamerposter.layout:71
+#: lib/layouts/beamerposter.layout:96
+msgid "More Giant"
+msgstr ""
+
+#: lib/layouts/sciposter.layout:118 lib/layouts/sciposter.layout:121
+#: lib/layouts/sciposter.layout:146 lib/layouts/a0poster.layout:62
+#: lib/layouts/a0poster.layout:65 lib/layouts/a0poster.layout:90
+#: lib/layouts/beamerposter.layout:74 lib/layouts/beamerposter.layout:77
+#: lib/layouts/beamerposter.layout:102
+msgid "Most Giant"
+msgstr ""
+
+#: lib/layouts/sciposter.layout:124 lib/layouts/a0poster.layout:68
+#: lib/layouts/beamerposter.layout:80
+msgid "Giant Snippet"
+msgstr ""
+
+#: lib/layouts/sciposter.layout:138 lib/layouts/a0poster.layout:82
+#: lib/layouts/beamerposter.layout:94
+msgid "More Giant Snippet"
+msgstr ""
+
+#: lib/layouts/sciposter.layout:144 lib/layouts/a0poster.layout:88
+#: lib/layouts/beamerposter.layout:100
+msgid "Most Giant Snippet"
+msgstr ""
 
 #: lib/layouts/frletter.layout:3
 msgid "French Letter (frletter)"
@@ -8136,16 +8253,6 @@ msgstr "Längsta etikett"
 msgid "The longest label in this list (to determine the indendation width)"
 msgstr ""
 "Den längsta etiketten i denna lista (för att säkerställa indragsbredden)"
-
-#: lib/layouts/beamer.layout:194 lib/layouts/beamer.layout:219
-#: lib/layouts/paper.layout:48 lib/layouts/tufte-handout.layout:23
-#: lib/layouts/article.layout:20 lib/layouts/scrartcl.layout:22
-#: lib/layouts/memoir.layout:54 lib/layouts/svmult.layout:103
-#: lib/layouts/mwart.layout:25 lib/layouts/scrclass.inc:53
-#: lib/layouts/agu_stdsections.inc:12 lib/layouts/svcommon.inc:108
-#: lib/layouts/db_stdsections.inc:12 lib/layouts/stdsections.inc:12
-msgid "Part"
-msgstr "Del"
 
 #: lib/layouts/beamer.layout:200 lib/layouts/beamer.layout:250
 #: lib/layouts/beamer.layout:280 lib/layouts/beamer.layout:307
@@ -8401,7 +8508,7 @@ msgid "Overprint Area Width"
 msgstr "Övertrycksområdesbredd"
 
 #: lib/layouts/beamer.layout:695 lib/layouts/moderncv.layout:274
-#: src/frontends/qt4/GuiBox.cpp:71
+#: lib/layouts/sectionbox.module:21 src/frontends/qt4/GuiBox.cpp:71
 msgid "Width"
 msgstr "Bredd"
 
@@ -8546,7 +8653,7 @@ msgstr "Kort datum"
 msgid "Short date which appears in the sidebar/header"
 msgstr "Kort datum som visas i sidoraden/huvudet"
 
-#: lib/layouts/beamer.layout:1020
+#: lib/layouts/beamer.layout:1020 lib/layouts/beamerposter.layout:46
 msgid "TitleGraphic"
 msgstr "TitelGrafik"
 
@@ -8711,7 +8818,7 @@ msgid "Presentation"
 msgstr "Presentation"
 
 #: lib/layouts/beamer.layout:1550 lib/layouts/powerdot.layout:502
-#: lib/layouts/aguplus.inc:206 lib/layouts/stdfloats.inc:11
+#: lib/layouts/stdfloats.inc:11 lib/layouts/aguplus.inc:206
 #: lib/ui/stdtoolbars.inc:143 src/insets/Inset.cpp:100
 msgid "Table"
 msgstr "Tabell"
@@ -8747,240 +8854,6 @@ msgstr "DocBook-bok (SGML)"
 #: lib/layouts/docbook-section.layout:4
 msgid "Books (DocBook)"
 msgstr "Böcker (DocBook)"
-
-#: lib/layouts/europecv.layout:3
-msgid "Europe CV"
-msgstr "Europe CV"
-
-#: lib/layouts/europecv.layout:47
-msgid "FooterName"
-msgstr "Fotnamn"
-
-#: lib/layouts/europecv.layout:50
-msgid "Footer name:"
-msgstr "Fotnamn:"
-
-#: lib/layouts/europecv.layout:53
-msgid "Nationality"
-msgstr "Nationalitet"
-
-#: lib/layouts/europecv.layout:56
-msgid "Nationality:"
-msgstr "Nationalitet:"
-
-#: lib/layouts/europecv.layout:59
-msgid "Birthday"
-msgstr "Födelsedag"
-
-#: lib/layouts/europecv.layout:62
-msgid "Date of birth:"
-msgstr "Födelsedatum:"
-
-#: lib/layouts/europecv.layout:74 lib/layouts/ectaart.layout:84
-#: lib/layouts/latex8.layout:78
-msgid "E-mail:"
-msgstr "E-post:"
-
-#: lib/layouts/europecv.layout:82 lib/layouts/moderncv.layout:125
-msgid "Mobile"
-msgstr "Mobil"
-
-#: lib/layouts/europecv.layout:83
-msgid "Mobile phone number"
-msgstr "Mobilt telefonnummer"
-
-#: lib/layouts/europecv.layout:87
-msgid "Gender"
-msgstr "Kön"
-
-#: lib/layouts/europecv.layout:90
-msgid "Gender:"
-msgstr "Kön:"
-
-#: lib/layouts/europecv.layout:93 lib/layouts/scrlttr2.layout:195
-#: lib/layouts/achemso.layout:128 lib/layouts/moderncv.layout:137
-#: lib/layouts/lettre.layout:42 lib/layouts/lettre.layout:343
-#: lib/configure.py:690
-msgid "Fax"
-msgstr "Fax"
-
-#: lib/layouts/europecv.layout:96 lib/layouts/achemso.layout:134
-#: lib/layouts/moderncv.layout:140 lib/layouts/lettre.layout:356
-msgid "Fax:"
-msgstr "Fax:"
-
-#: lib/layouts/europecv.layout:99
-msgid "BeforePicture"
-msgstr "Innan bild"
-
-#: lib/layouts/europecv.layout:102
-msgid "Space before picture:"
-msgstr "Tomrum innan bild:"
-
-#: lib/layouts/europecv.layout:105
-msgid "Picture"
-msgstr "Bild"
-
-#: lib/layouts/europecv.layout:108
-msgid "Picture:"
-msgstr "Bild:"
-
-#: lib/layouts/europecv.layout:110
-msgid "Size"
-msgstr "Storlek"
-
-#: lib/layouts/europecv.layout:111
-msgid "Size the photo is resized to"
-msgstr "Storlek som fotot storleksändras till"
-
-#: lib/layouts/europecv.layout:115
-msgid "AfterPicture"
-msgstr "Efter bild"
-
-#: lib/layouts/europecv.layout:118
-msgid "Space after picture:"
-msgstr "Tomrum efter bild:"
-
-#: lib/layouts/europecv.layout:121 src/frontends/qt4/GuiDocument.cpp:130
-msgid "Page"
-msgstr "Sida"
-
-#: lib/layouts/europecv.layout:136
-msgid "The title as it appears in the header"
-msgstr "Titeln som den visas i huvudet"
-
-#: lib/layouts/europecv.layout:152 lib/layouts/moderncv.layout:337
-msgid "Item"
-msgstr "Element"
-
-#: lib/layouts/europecv.layout:158 lib/layouts/europecv.layout:217
-#: src/insets/Inset.cpp:115 src/insets/InsetVSpace.cpp:122
-msgid "Vertical Space"
-msgstr "Vertikalt tomrum"
-
-#: lib/layouts/europecv.layout:159 lib/layouts/europecv.layout:218
-msgid "Additional vertical space"
-msgstr "Ytterligare vertikalt tomrum"
-
-#: lib/layouts/europecv.layout:165
-msgid "Summary of the item, can also be the time"
-msgstr "Sammanfattning av elementet, kan också vara tiden"
-
-#: lib/layouts/europecv.layout:171 lib/layouts/moderncv.layout:351
-msgid "Item:"
-msgstr "Element:"
-
-#: lib/layouts/europecv.layout:178
-msgid "BulletedItem"
-msgstr "Bombelement"
-
-#: lib/layouts/europecv.layout:181
-msgid "Bulleted Item:"
-msgstr "Bombelement:"
-
-#: lib/layouts/europecv.layout:184
-msgid "Begin"
-msgstr "Börja"
-
-#: lib/layouts/europecv.layout:196
-msgid "Begin of CV"
-msgstr "Början på CV"
-
-#: lib/layouts/europecv.layout:203
-msgid "PersonalInfo"
-msgstr "Personlig info"
-
-#: lib/layouts/europecv.layout:208
-msgid "Personal Info"
-msgstr "Personlig info"
-
-#: lib/layouts/europecv.layout:211
-msgid "MotherTongue"
-msgstr "Modersmål"
-
-#: lib/layouts/europecv.layout:224
-msgid "Mother Tongue:"
-msgstr "Modersmål:"
-
-#: lib/layouts/europecv.layout:234
-msgid "LangHeader"
-msgstr "Språkhuvud"
-
-#: lib/layouts/europecv.layout:238
-msgid "Language Header:"
-msgstr "Språkhuvud:"
-
-#: lib/layouts/europecv.layout:244
-msgid "Language:"
-msgstr "Språk:"
-
-#: lib/layouts/europecv.layout:248
-msgid "Name of the language"
-msgstr "Språkets namn"
-
-#: lib/layouts/europecv.layout:252
-msgid "Listening"
-msgstr "Lyssning"
-
-#: lib/layouts/europecv.layout:253
-msgid "Level how good you think you can listen"
-msgstr "Nivå på hur bra du tror att du kan lyssna"
-
-#: lib/layouts/europecv.layout:257
-msgid "Reading"
-msgstr "Läsning"
-
-#: lib/layouts/europecv.layout:258
-msgid "Level how good you think you can read"
-msgstr "Nivå på hur bra du tror att du kan läsa"
-
-#: lib/layouts/europecv.layout:262
-msgid "Interaction"
-msgstr "Interaktion"
-
-#: lib/layouts/europecv.layout:263
-msgid "Level how good you think you can conversate"
-msgstr "Nivå på hur bra du tror att du kan konversera"
-
-#: lib/layouts/europecv.layout:267
-msgid "Production"
-msgstr "Produktion"
-
-#: lib/layouts/europecv.layout:268
-msgid "Level how good you think you can freely talk"
-msgstr "Nivå på hur bra du tror att du kan fritt tala"
-
-#: lib/layouts/europecv.layout:272
-msgid "LastLanguage"
-msgstr "Senaste språk"
-
-#: lib/layouts/europecv.layout:275
-msgid "Last Language:"
-msgstr "Senaste språk:"
-
-#: lib/layouts/europecv.layout:278
-msgid "LangFooter"
-msgstr "Språkfot"
-
-#: lib/layouts/europecv.layout:281
-msgid "Language Footer:"
-msgstr "Språkfot:"
-
-#: lib/layouts/europecv.layout:284
-msgid "End"
-msgstr "Slut"
-
-#: lib/layouts/europecv.layout:295
-msgid "End of CV"
-msgstr "Slut på CV"
-
-#: lib/layouts/europecv.layout:302
-msgid "VerticalSpace"
-msgstr "Vertikalt tomrum"
-
-#: lib/layouts/europecv.layout:307
-msgid "Vertical space"
-msgstr "Vertikalt tomrum"
 
 #: lib/layouts/elsarticle.layout:3
 msgid "Elsevier"
@@ -9102,10 +8975,6 @@ msgstr "American Geophysical Union (AGU, SGML artikel)"
 msgid "ACM SIGPLAN"
 msgstr "ACM SIGPLAN"
 
-#: lib/layouts/sigplanconf.layout:69
-msgid "Conference"
-msgstr "Konferens"
-
 #: lib/layouts/sigplanconf.layout:82
 msgid "Name of the conference"
 msgstr "Namn på konferensen"
@@ -9206,6 +9075,13 @@ msgstr "Avsändaradress:"
 #: lib/layouts/scrlttr2.layout:191
 msgid "Sender Phone:"
 msgstr "Avsändarens telefon:"
+
+#: lib/layouts/scrlttr2.layout:195 lib/layouts/europecv.layout:93
+#: lib/layouts/achemso.layout:128 lib/layouts/moderncv.layout:137
+#: lib/layouts/lettre.layout:42 lib/layouts/lettre.layout:343
+#: lib/configure.py:690
+msgid "Fax"
+msgstr "Fax"
 
 #: lib/layouts/scrlttr2.layout:199
 msgid "Sender Fax:"
@@ -9441,6 +9317,11 @@ msgstr "E-postalternativ"
 msgid "Optional argument for the e-mail"
 msgstr "Valfritt argument för e-posten"
 
+#: lib/layouts/ectaart.layout:84 lib/layouts/europecv.layout:74
+#: lib/layouts/latex8.layout:78
+msgid "E-mail:"
+msgstr "E-post:"
+
 #: lib/layouts/ectaart.layout:100
 msgid "Web Address"
 msgstr "Nätadress"
@@ -9497,8 +9378,8 @@ msgstr "Förnamn"
 msgid "Name (Surname)"
 msgstr "Namn (efternamn)"
 
-#: lib/layouts/ectaart.layout:202 lib/layouts/revtex4-1.layout:306
-#: lib/layouts/revtex4-1.layout:308 lib/layouts/db_stdcharstyles.inc:49
+#: lib/layouts/ectaart.layout:202 lib/layouts/revtex4-1.layout:286
+#: lib/layouts/revtex4-1.layout:288 lib/layouts/db_stdcharstyles.inc:49
 #: lib/layouts/db_stdcharstyles.inc:51 lib/layouts/db_stdtitle.inc:98
 #: lib/layouts/agu_stdclass.inc:66 lib/layouts/agu_stdclass.inc:68
 msgid "Surname"
@@ -9839,6 +9720,228 @@ msgstr "TONA UT"
 msgid "Scene"
 msgstr "Scen"
 
+#: lib/layouts/europecv.layout:3
+msgid "Europe CV"
+msgstr "Europe CV"
+
+#: lib/layouts/europecv.layout:47
+msgid "FooterName"
+msgstr "Fotnamn"
+
+#: lib/layouts/europecv.layout:50
+msgid "Footer name:"
+msgstr "Fotnamn:"
+
+#: lib/layouts/europecv.layout:53
+msgid "Nationality"
+msgstr "Nationalitet"
+
+#: lib/layouts/europecv.layout:56
+msgid "Nationality:"
+msgstr "Nationalitet:"
+
+#: lib/layouts/europecv.layout:59
+msgid "Birthday"
+msgstr "Födelsedag"
+
+#: lib/layouts/europecv.layout:62
+msgid "Date of birth:"
+msgstr "Födelsedatum:"
+
+#: lib/layouts/europecv.layout:82 lib/layouts/moderncv.layout:125
+msgid "Mobile"
+msgstr "Mobil"
+
+#: lib/layouts/europecv.layout:83
+msgid "Mobile phone number"
+msgstr "Mobilt telefonnummer"
+
+#: lib/layouts/europecv.layout:87
+msgid "Gender"
+msgstr "Kön"
+
+#: lib/layouts/europecv.layout:90
+msgid "Gender:"
+msgstr "Kön:"
+
+#: lib/layouts/europecv.layout:96 lib/layouts/achemso.layout:134
+#: lib/layouts/moderncv.layout:140 lib/layouts/lettre.layout:356
+msgid "Fax:"
+msgstr "Fax:"
+
+#: lib/layouts/europecv.layout:99
+msgid "BeforePicture"
+msgstr "Innan bild"
+
+#: lib/layouts/europecv.layout:102
+msgid "Space before picture:"
+msgstr "Tomrum innan bild:"
+
+#: lib/layouts/europecv.layout:105
+msgid "Picture"
+msgstr "Bild"
+
+#: lib/layouts/europecv.layout:108
+msgid "Picture:"
+msgstr "Bild:"
+
+#: lib/layouts/europecv.layout:110
+msgid "Size"
+msgstr "Storlek"
+
+#: lib/layouts/europecv.layout:111
+msgid "Size the photo is resized to"
+msgstr "Storlek som fotot storleksändras till"
+
+#: lib/layouts/europecv.layout:115
+msgid "AfterPicture"
+msgstr "Efter bild"
+
+#: lib/layouts/europecv.layout:118
+msgid "Space after picture:"
+msgstr "Tomrum efter bild:"
+
+#: lib/layouts/europecv.layout:121 src/frontends/qt4/GuiDocument.cpp:130
+msgid "Page"
+msgstr "Sida"
+
+#: lib/layouts/europecv.layout:136
+msgid "The title as it appears in the header"
+msgstr "Titeln som den visas i huvudet"
+
+#: lib/layouts/europecv.layout:152 lib/layouts/moderncv.layout:337
+msgid "Item"
+msgstr "Element"
+
+#: lib/layouts/europecv.layout:158 lib/layouts/europecv.layout:217
+#: src/insets/Inset.cpp:115 src/insets/InsetVSpace.cpp:122
+msgid "Vertical Space"
+msgstr "Vertikalt tomrum"
+
+#: lib/layouts/europecv.layout:159 lib/layouts/europecv.layout:218
+msgid "Additional vertical space"
+msgstr "Ytterligare vertikalt tomrum"
+
+#: lib/layouts/europecv.layout:165
+msgid "Summary of the item, can also be the time"
+msgstr "Sammanfattning av elementet, kan också vara tiden"
+
+#: lib/layouts/europecv.layout:171 lib/layouts/moderncv.layout:351
+msgid "Item:"
+msgstr "Element:"
+
+#: lib/layouts/europecv.layout:178
+msgid "BulletedItem"
+msgstr "Bombelement"
+
+#: lib/layouts/europecv.layout:181
+msgid "Bulleted Item:"
+msgstr "Bombelement:"
+
+#: lib/layouts/europecv.layout:184
+msgid "Begin"
+msgstr "Börja"
+
+#: lib/layouts/europecv.layout:196
+msgid "Begin of CV"
+msgstr "Början på CV"
+
+#: lib/layouts/europecv.layout:203
+msgid "PersonalInfo"
+msgstr "Personlig info"
+
+#: lib/layouts/europecv.layout:208
+msgid "Personal Info"
+msgstr "Personlig info"
+
+#: lib/layouts/europecv.layout:211
+msgid "MotherTongue"
+msgstr "Modersmål"
+
+#: lib/layouts/europecv.layout:224
+msgid "Mother Tongue:"
+msgstr "Modersmål:"
+
+#: lib/layouts/europecv.layout:234
+msgid "LangHeader"
+msgstr "Språkhuvud"
+
+#: lib/layouts/europecv.layout:238
+msgid "Language Header:"
+msgstr "Språkhuvud:"
+
+#: lib/layouts/europecv.layout:244
+msgid "Language:"
+msgstr "Språk:"
+
+#: lib/layouts/europecv.layout:248
+msgid "Name of the language"
+msgstr "Språkets namn"
+
+#: lib/layouts/europecv.layout:252
+msgid "Listening"
+msgstr "Lyssning"
+
+#: lib/layouts/europecv.layout:253
+msgid "Level how good you think you can listen"
+msgstr "Nivå på hur bra du tror att du kan lyssna"
+
+#: lib/layouts/europecv.layout:257
+msgid "Reading"
+msgstr "Läsning"
+
+#: lib/layouts/europecv.layout:258
+msgid "Level how good you think you can read"
+msgstr "Nivå på hur bra du tror att du kan läsa"
+
+#: lib/layouts/europecv.layout:262
+msgid "Interaction"
+msgstr "Interaktion"
+
+#: lib/layouts/europecv.layout:263
+msgid "Level how good you think you can conversate"
+msgstr "Nivå på hur bra du tror att du kan konversera"
+
+#: lib/layouts/europecv.layout:267
+msgid "Production"
+msgstr "Produktion"
+
+#: lib/layouts/europecv.layout:268
+msgid "Level how good you think you can freely talk"
+msgstr "Nivå på hur bra du tror att du kan fritt tala"
+
+#: lib/layouts/europecv.layout:272
+msgid "LastLanguage"
+msgstr "Senaste språk"
+
+#: lib/layouts/europecv.layout:275
+msgid "Last Language:"
+msgstr "Senaste språk:"
+
+#: lib/layouts/europecv.layout:278
+msgid "LangFooter"
+msgstr "Språkfot"
+
+#: lib/layouts/europecv.layout:281
+msgid "Language Footer:"
+msgstr "Språkfot:"
+
+#: lib/layouts/europecv.layout:284
+msgid "End"
+msgstr "Slut"
+
+#: lib/layouts/europecv.layout:295
+msgid "End of CV"
+msgstr "Slut på CV"
+
+#: lib/layouts/europecv.layout:302
+msgid "VerticalSpace"
+msgstr "Vertikalt tomrum"
+
+#: lib/layouts/europecv.layout:307
+msgid "Vertical space"
+msgstr "Vertikalt tomrum"
+
 #: lib/layouts/doublecol-new.layout:3
 msgid "Inderscience A4 Journals"
 msgstr "Inderscience A4 Journals"
@@ -10013,10 +10116,6 @@ msgstr "R Journal"
 msgid "American Geophysical Union (AGUPLUS Manuscript)"
 msgstr "American Geophysical Union (AGUPLUS manuskript)"
 
-#: lib/layouts/IEEEtran-TransMag.layout:3
-msgid "IEEE Transactions on Magnetics"
-msgstr "IEEE Transactions on Magnetics"
-
 #: lib/layouts/llncs.layout:3
 msgid "Lecture Notes in Comp. Science (LNCS)"
 msgstr "Lecture Notes in Comp. Science (LNCS)"
@@ -10119,6 +10218,10 @@ msgstr "Lösning #."
 msgid "Theorem #."
 msgstr "Teorem #."
 
+#: lib/layouts/report.layout:3
+msgid "Report (Standard Class)"
+msgstr "Rapport (standardklass)"
+
 #: lib/layouts/tufte-handout.layout:3
 msgid "Tufte Handout"
 msgstr "Tufte handout"
@@ -10142,6 +10245,10 @@ msgstr "Höger huvud:"
 #: lib/layouts/apa.layout:225
 msgid "Acknowledgements:"
 msgstr "Tacksägelser:"
+
+#: lib/layouts/dtk.layout:3
+msgid "Die TeXnische Komoedie"
+msgstr "Die TeXnische Komoedie"
 
 #: lib/layouts/aastex.layout:3
 msgid "American Astronomical Society (AASTeX)"
@@ -10447,11 +10554,9 @@ msgstr "Meddelas av"
 msgid "Article (Standard Class)"
 msgstr "Artikel (standardklass)"
 
-#: lib/layouts/article.layout:31 lib/layouts/scrartcl.layout:31
-#: lib/layouts/mwart.layout:35 lib/layouts/stdstarsections.inc:13
-#: lib/layouts/svcommon.inc:245 lib/layouts/db_stdstarsections.inc:13
-msgid "Part*"
-msgstr "Del*"
+#: lib/layouts/IEEEtran-TransMag.layout:3
+msgid "IEEE Transactions on Magnetics"
+msgstr "IEEE Transactions on Magnetics"
 
 #: lib/layouts/jgrga.layout:3
 msgid "American Geophysical Union (AGUPLUS JGR)"
@@ -10529,8 +10634,8 @@ msgstr "IEEE Transactions"
 msgid "IEEE membership"
 msgstr "IEEE-medlemskap"
 
-#: lib/layouts/IEEEtran.layout:107 lib/layouts/revtex4-1.layout:292
-#: lib/layouts/revtex4-1.layout:294
+#: lib/layouts/IEEEtran.layout:107 lib/layouts/revtex4-1.layout:272
+#: lib/layouts/revtex4-1.layout:274
 msgid "Lowercase"
 msgstr "Gemener"
 
@@ -10876,7 +10981,7 @@ msgstr "Ett prefix som 'Också vid '"
 msgid "Homepage"
 msgstr "Hemsida"
 
-#: lib/layouts/jasatex.layout:220 lib/layouts/revtex4-1.layout:188
+#: lib/layouts/jasatex.layout:220 lib/layouts/revtex4-1.layout:168
 msgid "PACS numbers:"
 msgstr "PACS-nummer:"
 
@@ -11276,40 +11381,40 @@ msgstr "ACM SIGS ('Alternativ' stil)"
 msgid "REVTeX (V. 4.1)"
 msgstr "REVTeX (V. 4.1)"
 
-#: lib/layouts/revtex4-1.layout:215
+#: lib/layouts/revtex4-1.layout:195
 msgid "Short title as it appears in the running headers"
 msgstr "Kort titel som den visas i löpande huvud"
 
-#: lib/layouts/revtex4-1.layout:232
+#: lib/layouts/revtex4-1.layout:212
 msgid "acknowledgments"
 msgstr "tacksägelser"
 
-#: lib/layouts/revtex4-1.layout:245
+#: lib/layouts/revtex4-1.layout:225
 msgid "Ruled Table"
 msgstr "Reglerad tabell"
 
-#: lib/layouts/revtex4-1.layout:247 lib/layouts/revtex4-1.layout:255
-#: lib/layouts/revtex4-1.layout:263 src/frontends/qt4/GuiSymbols.cpp:123
+#: lib/layouts/revtex4-1.layout:227 lib/layouts/revtex4-1.layout:235
+#: lib/layouts/revtex4-1.layout:243 src/frontends/qt4/GuiSymbols.cpp:123
 msgid "Specials"
 msgstr "Speciella"
 
-#: lib/layouts/revtex4-1.layout:253
+#: lib/layouts/revtex4-1.layout:233
 msgid "Turn Page"
 msgstr "Vänd sida"
 
-#: lib/layouts/revtex4-1.layout:261
+#: lib/layouts/revtex4-1.layout:241
 msgid "Wide Text"
 msgstr "Bred text"
 
-#: lib/layouts/revtex4-1.layout:271
+#: lib/layouts/revtex4-1.layout:251
 msgid "Video"
 msgstr "Video"
 
-#: lib/layouts/revtex4-1.layout:274
+#: lib/layouts/revtex4-1.layout:254
 msgid "List of Videos"
 msgstr "Lista över videor"
 
-#: lib/layouts/revtex4-1.layout:283 lib/layouts/revtex4-1.layout:285
+#: lib/layouts/revtex4-1.layout:263 lib/layouts/revtex4-1.layout:265
 msgid "Float Link"
 msgstr "Flottelänk"
 
@@ -11809,10 +11914,6 @@ msgstr "Journal of Statistical Software (JSS)"
 msgid "Latex8 Article (Obsolete)"
 msgstr "Latex8-artikel (föråldrad)"
 
-#: lib/layouts/jreport.layout:3
-msgid "Japanese Report (jreport)"
-msgstr "Japansk rapport (jreport)"
-
 #: lib/layouts/acm-sigs.layout:3
 msgid "ACM SIG Proceedings (SP)"
 msgstr "ACM SIG Proceedings (SP)"
@@ -11820,6 +11921,11 @@ msgstr "ACM SIG Proceedings (SP)"
 #: lib/layouts/letter.layout:3
 msgid "Letter (Standard Class)"
 msgstr "Brev (standardklass)"
+
+#: lib/layouts/a0poster.layout:3
+#, fuzzy
+msgid "A0 Poster"
+msgstr "Postmärke"
 
 #: lib/layouts/heb-letter.layout:3
 msgid "Hebrew Letter"
@@ -11972,9 +12078,10 @@ msgstr "P.S.:"
 msgid "Japanese Report (Vertical Writing)"
 msgstr "Japansk rapport (vertikal skrift)"
 
-#: lib/layouts/mwart.layout:3
-msgid "Polish Article (MW Bundle)"
-msgstr "Polsk artikel (MW Bundle)"
+#: lib/layouts/beamerposter.layout:3
+#, fuzzy
+msgid "Beamerposter"
+msgstr "Beamernot"
 
 #: lib/layouts/scrclass.inc:114
 msgid "Addpart"
@@ -12048,59 +12155,6 @@ msgstr "Ordalagsförfattare"
 msgid "The author of this dictum"
 msgstr "Författare av denna ordalag"
 
-#: lib/layouts/aguplus.inc:71 lib/layouts/stdstarsections.inc:68
-#: lib/layouts/svcommon.inc:278 lib/layouts/db_stdstarsections.inc:72
-msgid "Paragraph*"
-msgstr "Stycke*"
-
-#: lib/layouts/aguplus.inc:123 lib/layouts/agu_stdtitle.inc:210
-msgid "Revised:"
-msgstr "Reviderad:"
-
-#: lib/layouts/aguplus.inc:135
-msgid "CCC"
-msgstr "CCC"
-
-#: lib/layouts/aguplus.inc:139
-msgid "CCC code:"
-msgstr "CCC-kod:"
-
-#: lib/layouts/aguplus.inc:148
-msgid "PaperId"
-msgstr "Papper id"
-
-#: lib/layouts/aguplus.inc:152
-msgid "Paper Id:"
-msgstr "Papper id:"
-
-#: lib/layouts/aguplus.inc:156
-msgid "AuthorAddr"
-msgstr "Författarens adress"
-
-#: lib/layouts/aguplus.inc:160
-msgid "Author Address:"
-msgstr "Författarens adress:"
-
-#: lib/layouts/aguplus.inc:164
-msgid "SlugComment"
-msgstr "Slug-kommentar"
-
-#: lib/layouts/aguplus.inc:168
-msgid "Slug Comment:"
-msgstr "Slug-kommentar:"
-
-#: lib/layouts/aguplus.inc:184
-msgid "Plate"
-msgstr "Plate"
-
-#: lib/layouts/aguplus.inc:195
-msgid "Planotable"
-msgstr "Planotabell"
-
-#: lib/layouts/aguplus.inc:207
-msgid "table"
-msgstr "tabell"
-
 #: lib/layouts/theorems-ams.inc:73 lib/layouts/theorems.inc:73
 msgid "Corollary \\thetheorem."
 msgstr "Korollarium \\thetheorem."
@@ -12144,10 +12198,6 @@ msgstr "Anmärkning \\thetheorem."
 #: lib/layouts/theorems-ams.inc:264 lib/layouts/theorems.inc:264
 msgid "Claim \\thetheorem."
 msgstr "Påstående \\thetheorem."
-
-#: lib/layouts/stdcustom.inc:10 lib/layouts/stdcharstyles.inc:10
-msgid "UNDEFINED"
-msgstr "ODEFINIERAD"
 
 #: lib/layouts/theorems-bytype.inc:146 lib/layouts/theorems-ams-bytype.inc:170
 #: lib/layouts/theorems-without-preamble.inc:166
@@ -12270,6 +12320,10 @@ msgstr "Citera-annan"
 #: lib/layouts/agu_stdtitle.inc:163
 msgid "Cite-other:"
 msgstr "Citera-annan:"
+
+#: lib/layouts/agu_stdtitle.inc:210 lib/layouts/aguplus.inc:123
+msgid "Revised:"
+msgstr "Reviderad:"
 
 #: lib/layouts/agu_stdtitle.inc:223
 msgid "Ident-line"
@@ -12420,6 +12474,11 @@ msgstr "Fall \\alph{caseiii}."
 msgid "Case \\arabic{caseiv}."
 msgstr "Fall \\arabic{caseiv}."
 
+#: lib/layouts/stdstarsections.inc:68 lib/layouts/svcommon.inc:278
+#: lib/layouts/aguplus.inc:71 lib/layouts/db_stdstarsections.inc:72
+msgid "Paragraph*"
+msgstr "Stycke*"
+
 #: lib/layouts/stdstarsections.inc:79 lib/layouts/db_stdstarsections.inc:84
 msgid "Subparagraph*"
 msgstr "Understycke*"
@@ -12503,6 +12562,10 @@ msgstr "\\alph{paragraph}."
 #: lib/layouts/acm-sigs.inc:37
 msgid "General terms:"
 msgstr "Allmänna termer:"
+
+#: lib/layouts/stdcustom.inc:10 lib/layouts/stdcharstyles.inc:10
+msgid "UNDEFINED"
+msgstr "ODEFINIERAD"
 
 #: lib/layouts/agu_stdsections.inc:79
 msgid "Subsubparagraph"
@@ -12854,14 +12917,6 @@ msgstr "Översättare:"
 msgid "2000 Mathematics Subject Classification:"
 msgstr "2000 Mathematics Subject Classification:"
 
-#: lib/layouts/litinsets.inc:12
-msgid "Chunk ##"
-msgstr "Bit ##"
-
-#: lib/layouts/litinsets.inc:15 lib/layouts/litinsets.inc:16
-msgid "Chunk"
-msgstr "Bit"
-
 #: lib/layouts/stdsections.inc:45
 msgid "Chapter \\thechapter"
 msgstr "Kapitel \\thechapter"
@@ -12869,6 +12924,58 @@ msgstr "Kapitel \\thechapter"
 #: lib/layouts/stdsections.inc:46
 msgid "Appendix \\thechapter"
 msgstr "Bilaga \\thechapter"
+
+#: lib/layouts/aguplus.inc:135
+msgid "CCC"
+msgstr "CCC"
+
+#: lib/layouts/aguplus.inc:139
+msgid "CCC code:"
+msgstr "CCC-kod:"
+
+#: lib/layouts/aguplus.inc:148
+msgid "PaperId"
+msgstr "Papper id"
+
+#: lib/layouts/aguplus.inc:152
+msgid "Paper Id:"
+msgstr "Papper id:"
+
+#: lib/layouts/aguplus.inc:156
+msgid "AuthorAddr"
+msgstr "Författarens adress"
+
+#: lib/layouts/aguplus.inc:160
+msgid "Author Address:"
+msgstr "Författarens adress:"
+
+#: lib/layouts/aguplus.inc:164
+msgid "SlugComment"
+msgstr "Slug-kommentar"
+
+#: lib/layouts/aguplus.inc:168
+msgid "Slug Comment:"
+msgstr "Slug-kommentar:"
+
+#: lib/layouts/aguplus.inc:184
+msgid "Plate"
+msgstr "Plate"
+
+#: lib/layouts/aguplus.inc:195
+msgid "Planotable"
+msgstr "Planotabell"
+
+#: lib/layouts/aguplus.inc:207
+msgid "table"
+msgstr "tabell"
+
+#: lib/layouts/litinsets.inc:12
+msgid "Chunk ##"
+msgstr "Bit ##"
+
+#: lib/layouts/litinsets.inc:15 lib/layouts/litinsets.inc:16
+msgid "Chunk"
+msgstr "Bit"
 
 #: lib/layouts/theorems-without-preamble.inc:41
 msgid "Name/Title"
@@ -13234,6 +13341,71 @@ msgstr ""
 msgid "S phrase:"
 msgstr "S-fras:"
 
+#: lib/layouts/sectionbox.module:2
+#, fuzzy
+msgid "Section Boxes"
+msgstr "Avsnitt"
+
+#: lib/layouts/sectionbox.module:6
+msgid ""
+"Defines Boxes with section header. Mainly intended for the SciPoster class."
+msgstr ""
+
+#: lib/layouts/sectionbox.module:11
+#, fuzzy
+msgid "SectionBox"
+msgstr "Avsnitt"
+
+#: lib/layouts/sectionbox.module:13
+#, fuzzy
+msgid "Section Box"
+msgstr "Avsnitt"
+
+#: lib/layouts/sectionbox.module:22
+#, fuzzy
+msgid "Section Box Width|S"
+msgstr "Urval"
+
+#: lib/layouts/sectionbox.module:23
+#, fuzzy
+msgid "Width of the section Box"
+msgstr "Bildens bredd i utmatning"
+
+#: lib/layouts/sectionbox.module:26
+#, fuzzy
+msgid "Heading"
+msgstr "Rubriker"
+
+#: lib/layouts/sectionbox.module:27
+#, fuzzy
+msgid "Section Box Heading"
+msgstr "Avsnittsindelning"
+
+#: lib/layouts/sectionbox.module:31
+#, fuzzy
+msgid "Insert the section box header here"
+msgstr "Infoga avståndet även efter en radbrytning"
+
+#: lib/layouts/sectionbox.module:39
+#, fuzzy
+msgid "SubsectionBox"
+msgstr "Underavsnitt"
+
+#: lib/layouts/sectionbox.module:41
+#, fuzzy
+msgid "Subsection Box"
+msgstr "Underavsnitt"
+
+#: lib/layouts/sectionbox.module:45
+#, fuzzy
+msgid "SubsubsectionBox"
+msgstr "Underunderavsnitt"
+
+#: lib/layouts/sectionbox.module:47
+#, fuzzy
+msgid "Subsubsection Box"
+msgstr "Underunderavsnitt"
+
 #: lib/layouts/bicaption.module:2
 msgid "Multilingual Captions"
 msgstr "Flerspråkiga bildtexter"
@@ -13476,6 +13648,24 @@ msgstr ""
 "1, teorem 3, lemma 2, ..., i motsats till teorem 1, teorem 2, lemma 3, "
 "proposition 4, ...). Numreringen återställs vid varje avsnittstart."
 
+#: lib/layouts/theorems-chap-bytype.module:2
+msgid "Theorems (Numbered by Type within Chapters)"
+msgstr "Teorem (Numrerade efter typ inom kapitel)"
+
+#: lib/layouts/theorems-chap-bytype.module:9
+msgid ""
+"Defines some theorem environments for use with non-AMS classes. Contrary to "
+"the plain Theorem module, the different theorem types provided here each "
+"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
+"theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
+"proposition 4, ...). The numbering is reset at each chapter start."
+msgstr ""
+"Definierar några teoremmiljöer för användning med icke-AMS-klasser. I "
+"motsats till den vanliga teoremmodulen har de olika teoremtyperna försedda "
+"här varsin separat räknare (t.ex., teorem 1, teorem 2, lemma 1, proposition "
+"1, teorem 3, lemma 2, ..., i motsats till teorem 1, teorem 2, lemma 3, "
+"proposition 4, ...). Numreringen återställs vid varje kapitelstart."
+
 #: lib/layouts/algorithm2e.module:2
 msgid "Algorithm2e"
 msgstr "Algorithm2e"
@@ -13614,6 +13804,72 @@ msgstr "Namngiven teorem"
 msgid "Named Theorem."
 msgstr "Namngiven teorem."
 
+#: lib/layouts/tcolorbox.module:2
+msgid "Fancy Colored Boxes"
+msgstr ""
+
+#: lib/layouts/tcolorbox.module:6
+msgid ""
+"Adds custom insets that support colored boxes via the tcolorbox package. See "
+"the tcolorbox documentation for details."
+msgstr ""
+
+#: lib/layouts/tcolorbox.module:10 lib/layouts/tcolorbox.module:13
+#, fuzzy
+msgid "Color Box"
+msgstr "Färg"
+
+#: lib/layouts/tcolorbox.module:18 lib/layouts/tcolorbox.module:31
+#: lib/layouts/tcolorbox.module:44
+#, fuzzy
+msgid "Color Box Options"
+msgstr "Kolumnalternativ"
+
+#: lib/layouts/tcolorbox.module:19 lib/layouts/tcolorbox.module:32
+#: lib/layouts/tcolorbox.module:45
+msgid "Insert the color box options here (see tcolorbox manual)"
+msgstr ""
+
+#: lib/layouts/tcolorbox.module:23
+msgid "Dynamic Color Box"
+msgstr ""
+
+#: lib/layouts/tcolorbox.module:26
+msgid "Color Box (Dynamic)"
+msgstr ""
+
+#: lib/layouts/tcolorbox.module:36
+#, fuzzy
+msgid "Fit Color Box"
+msgstr "Typsnittsfärg"
+
+#: lib/layouts/tcolorbox.module:39
+msgid "Color Box (Fit Contents)"
+msgstr ""
+
+#: lib/layouts/tcolorbox.module:49
+#, fuzzy
+msgid "Color Box Separator"
+msgstr "Separator"
+
+#: lib/layouts/tcolorbox.module:50 lib/layouts/tcolorbox.module:84
+#, fuzzy
+msgid "Color Boxes"
+msgstr "Färger"
+
+#: lib/layouts/tcolorbox.module:63
+msgid "-----"
+msgstr ""
+
+#: lib/layouts/tcolorbox.module:74
+#, fuzzy
+msgid "Color Box Line"
+msgstr "Färga länkar"
+
+#: lib/layouts/tcolorbox.module:83 lib/layouts/tcolorbox.module:98
+msgid "Color Box Setup"
+msgstr ""
+
 #: lib/layouts/jurabib.module:2
 msgid "Jurabib"
 msgstr "Jurabib"
@@ -13660,23 +13916,6 @@ msgid ""
 msgstr ""
 "Återställer tabellnumret vid avsnittsbörjan och föregår avsnittsnumret till "
 "tabellnumret, som 'Tabell 2.1'."
-
-#: lib/layouts/sweave.module:2 lib/configure.py:614
-msgid "Sweave"
-msgstr "Sweave"
-
-#: lib/layouts/sweave.module:6
-msgid ""
-"Allows to use the statistical language S/R as a literate programming tool "
-"via the Sweave() function. For more info see the LyX example file sweave.lyx."
-msgstr ""
-"Gör det möjligt att använda det statistiska språket S/R som ett litterat "
-"programmeringsverktyg via Sweave()-funktionen. För mer information se "
-"exempelfilen sweave.lyx."
-
-#: lib/layouts/sweave.module:74 lib/layouts/sweave.module:75
-msgid "Sweave Input File"
-msgstr "Sweave-inmatningsfil"
 
 #: lib/layouts/basic.module:2
 msgid "Default (basic)"
@@ -13973,26 +14212,6 @@ msgstr ""
 "i vilken den första raden är satt till den vänstra marginalen, men alla "
 "följande rader är indragna."
 
-#: lib/layouts/endnotes.module:2 lib/layouts/endnotes.module:13
-msgid "Endnote"
-msgstr "Slutnot"
-
-#: lib/layouts/endnotes.module:6
-msgid ""
-"Adds an endnote inset, in addition to footnotes. You will need to add "
-"\\theendnotes in TeX-code where you want the endnotes to appear."
-msgstr ""
-"Lägger till en slutnotinsättning, utöver fotnoter. Du behöver lägga till "
-"\\theendnotes i TeX-koden där du vill att slutnoterna ska visas."
-
-#: lib/layouts/endnotes.module:10
-msgid "Endnote ##"
-msgstr "Slutnot ##"
-
-#: lib/layouts/endnotes.module:23
-msgid "endnote"
-msgstr "slutnot"
-
 #: lib/layouts/enumitem.module:2
 msgid "Customisable Lists (enumitem)"
 msgstr "Anpassningsbara listor (enumitem)"
@@ -14033,6 +14252,26 @@ msgstr "Minimalistisk"
 #: lib/layouts/minimalistic.module:5
 msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
 msgstr "Omdefinierar flera insättningar (Index, Gren, URL) som minimalistisk."
+
+#: lib/layouts/endnotes.module:2 lib/layouts/endnotes.module:13
+msgid "Endnote"
+msgstr "Slutnot"
+
+#: lib/layouts/endnotes.module:6
+msgid ""
+"Adds an endnote inset, in addition to footnotes. You will need to add "
+"\\theendnotes in TeX-code where you want the endnotes to appear."
+msgstr ""
+"Lägger till en slutnotinsättning, utöver fotnoter. Du behöver lägga till "
+"\\theendnotes i TeX-koden där du vill att slutnoterna ska visas."
+
+#: lib/layouts/endnotes.module:10
+msgid "Endnote ##"
+msgstr "Slutnot ##"
+
+#: lib/layouts/endnotes.module:23
+msgid "endnote"
+msgstr "slutnot"
 
 #: lib/layouts/linguistics.module:2 lib/layouts/linguistics.module:33
 msgid "Linguistics"
@@ -14112,23 +14351,256 @@ msgstr "Tablå"
 msgid "List of Tableaux"
 msgstr "Lista över tablåer"
 
-#: lib/layouts/theorems-chap-bytype.module:2
-msgid "Theorems (Numbered by Type within Chapters)"
-msgstr "Teorem (Numrerade efter typ inom kapitel)"
+#: lib/layouts/sweave.module:2 lib/configure.py:614
+msgid "Sweave"
+msgstr "Sweave"
 
-#: lib/layouts/theorems-chap-bytype.module:9
+#: lib/layouts/sweave.module:6
 msgid ""
-"Defines some theorem environments for use with non-AMS classes. Contrary to "
-"the plain Theorem module, the different theorem types provided here each "
-"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
-"theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
-"proposition 4, ...). The numbering is reset at each chapter start."
+"Allows to use the statistical language S/R as a literate programming tool "
+"via the Sweave() function. For more info see the LyX example file sweave.lyx."
 msgstr ""
-"Definierar några teoremmiljöer för användning med icke-AMS-klasser. I "
-"motsats till den vanliga teoremmodulen har de olika teoremtyperna försedda "
-"här varsin separat räknare (t.ex., teorem 1, teorem 2, lemma 1, proposition "
-"1, teorem 3, lemma 2, ..., i motsats till teorem 1, teorem 2, lemma 3, "
-"proposition 4, ...). Numreringen återställs vid varje kapitelstart."
+"Gör det möjligt att använda det statistiska språket S/R som ett litterat "
+"programmeringsverktyg via Sweave()-funktionen. För mer information se "
+"exempelfilen sweave.lyx."
+
+#: lib/layouts/sweave.module:74 lib/layouts/sweave.module:75
+msgid "Sweave Input File"
+msgstr "Sweave-inmatningsfil"
+
+#: lib/layouts/pdfcomment.module:2
+#, fuzzy
+msgid "PDF Comments"
+msgstr "Kommentar"
+
+#: lib/layouts/pdfcomment.module:6
+msgid ""
+"Provides various kinds of annotations for the PDF output. The module uses "
+"the pdfcomment package. Please consult the package documentation for details."
+msgstr ""
+
+#: lib/layouts/pdfcomment.module:18
+msgid "Define Avatar"
+msgstr ""
+
+#: lib/layouts/pdfcomment.module:19
+#, fuzzy
+msgid "PDF-comment"
+msgstr "APLcomment"
+
+#: lib/layouts/pdfcomment.module:26
+msgid "PDF-comment avatar:"
+msgstr ""
+
+#: lib/layouts/pdfcomment.module:29
+#, fuzzy
+msgid "Name of the Avatar"
+msgstr "Namn på författaren"
+
+#: lib/layouts/pdfcomment.module:40
+msgid "Define PDF-Comment Style"
+msgstr ""
+
+#: lib/layouts/pdfcomment.module:43
+#, fuzzy
+msgid "PDF-comment style:"
+msgstr "kommentaretikett"
+
+#: lib/layouts/pdfcomment.module:46
+#, fuzzy
+msgid "Name of the style"
+msgstr "Språkets namn"
+
+#: lib/layouts/pdfcomment.module:51
+msgid "Define PDF-Comment List Style"
+msgstr ""
+
+#: lib/layouts/pdfcomment.module:54
+msgid "Definition of PDF-comment list style:"
+msgstr ""
+
+#: lib/layouts/pdfcomment.module:57
+#, fuzzy
+msgid "Name of the list style"
+msgstr "Namn på standardskrivaren"
+
+#: lib/layouts/pdfcomment.module:62
+msgid "Set PDF-Comment List Style"
+msgstr ""
+
+#: lib/layouts/pdfcomment.module:65
+msgid "PDF-comment list style:"
+msgstr ""
+
+#: lib/layouts/pdfcomment.module:69
+msgid "PDF-Comment-Setup"
+msgstr ""
+
+#: lib/layouts/pdfcomment.module:73
+#, fuzzy
+msgid "PDF (Setup)"
+msgstr "PDF (XeTeX)"
+
+#: lib/layouts/pdfcomment.module:81
+#, fuzzy
+msgid "PDF-Comment setup options"
+msgstr "Dokumentinställningar"
+
+#: lib/layouts/pdfcomment.module:82 lib/layouts/pdfcomment.module:105
+#: lib/layouts/pdfcomment.module:222
+msgid "Opts"
+msgstr ""
+
+#: lib/layouts/pdfcomment.module:83
+msgid "Insert PDF-Comment setup options here (see the pdfcomment manual)"
+msgstr ""
+
+#: lib/layouts/pdfcomment.module:92
+#, fuzzy
+msgid "PDF-Annotation"
+msgstr "Notation"
+
+#: lib/layouts/pdfcomment.module:96 src/frontends/qt4/GuiClipboard.cpp:174
+msgid "PDF"
+msgstr "PDF"
+
+#: lib/layouts/pdfcomment.module:104
+#, fuzzy
+msgid "PDFComment Options"
+msgstr "Kolumnalternativ"
+
+#: lib/layouts/pdfcomment.module:106
+#, fuzzy
+msgid "Insert PDFComment options here (see pdfcomment manual)"
+msgstr "Kolumnalternativ (se beamermanualen)"
+
+#: lib/layouts/pdfcomment.module:111
+#, fuzzy
+msgid "PDF-Margin"
+msgstr "Sidmarginaler"
+
+#: lib/layouts/pdfcomment.module:113
+#, fuzzy
+msgid "PDF (Margin)"
+msgstr "Sidmarginaler"
+
+#: lib/layouts/pdfcomment.module:121
+msgid "PDF-Markup"
+msgstr ""
+
+#: lib/layouts/pdfcomment.module:123
+#, fuzzy
+msgid "PDF (Markup)"
+msgstr "PDF (beskuren)"
+
+#: lib/layouts/pdfcomment.module:128
+msgid "Insert the comment to the marked-up text here"
+msgstr ""
+
+#: lib/layouts/pdfcomment.module:132
+msgid "PDF-Freetext"
+msgstr ""
+
+#: lib/layouts/pdfcomment.module:134
+#, fuzzy
+msgid "PDF (Freetext)"
+msgstr "PDF (pdflatex)"
+
+#: lib/layouts/pdfcomment.module:138
+#, fuzzy
+msgid "PDF-Square"
+msgstr "Fyrkant"
+
+#: lib/layouts/pdfcomment.module:140
+#, fuzzy
+msgid "PDF (Square)"
+msgstr "PDF (LuaTeX)"
+
+#: lib/layouts/pdfcomment.module:144
+#, fuzzy
+msgid "PDF-Circle"
+msgstr "Cirkel"
+
+#: lib/layouts/pdfcomment.module:146
+#, fuzzy
+msgid "PDF (Circle)"
+msgstr "Cirkel"
+
+#: lib/layouts/pdfcomment.module:150
+msgid "PDF-Line"
+msgstr ""
+
+#: lib/layouts/pdfcomment.module:152
+#, fuzzy
+msgid "PDF (Line)"
+msgstr "PDF (LuaTeX)"
+
+#: lib/layouts/pdfcomment.module:156
+#, fuzzy
+msgid "PDF-Sideline"
+msgstr "Sidnot"
+
+#: lib/layouts/pdfcomment.module:158
+#, fuzzy
+msgid "PDF (Sideline)"
+msgstr "PDF (pdflatex)"
+
+#: lib/layouts/pdfcomment.module:165
+#, fuzzy
+msgid "Insert the comment here"
+msgstr "Infoga antalet kolumner här"
+
+#: lib/layouts/pdfcomment.module:169
+msgid "PDF-Reply"
+msgstr ""
+
+#: lib/layouts/pdfcomment.module:171
+#, fuzzy
+msgid "PDF (Reply)"
+msgstr "PDF (pdflatex)"
+
+#: lib/layouts/pdfcomment.module:179
+msgid "PDF-Tooltip"
+msgstr ""
+
+#: lib/layouts/pdfcomment.module:181
+#, fuzzy
+msgid "PDF (Tooltip)"
+msgstr "PDF (dvipdfm)"
+
+#: lib/layouts/pdfcomment.module:188
+#, fuzzy
+msgid "Tooltip Text"
+msgstr "Kopiera text|o"
+
+#: lib/layouts/pdfcomment.module:189
+msgid "Tooltip"
+msgstr ""
+
+#: lib/layouts/pdfcomment.module:191
+#, fuzzy
+msgid "Insert the tooltip text here"
+msgstr "Ange standardtexten här"
+
+#: lib/layouts/pdfcomment.module:199
+#, fuzzy
+msgid "List of PDF Comments"
+msgstr "Lista över fotnoter"
+
+#: lib/layouts/pdfcomment.module:213
+#, fuzzy
+msgid "[List of PDF Comments]"
+msgstr "Lista över fotnoter"
+
+#: lib/layouts/pdfcomment.module:223
+#, fuzzy
+msgid "List Options|s"
+msgstr "Notalternativ"
+
+#: lib/layouts/pdfcomment.module:224
+#, fuzzy
+msgid "Insert list options here (see pdfcomment manual)"
+msgstr "Tvåkolumnalternativ (se powerdot-manualen)"
 
 #: lib/languages:73 src/Font.cpp:61 src/Font.cpp:64 src/Font.cpp:68
 #: src/Font.cpp:73 src/Font.cpp:76
@@ -23274,7 +23746,7 @@ msgstr ""
 "Ingen information för att omvandla %1$s formatfiler till %2$s.\n"
 "Definiera en omvandlare i inställningar."
 
-#: src/Converter.cpp:468 src/Format.cpp:688 src/Format.cpp:756
+#: src/Converter.cpp:468 src/Format.cpp:702 src/Format.cpp:770
 msgid "Executing command: "
 msgstr "Exekverar kommando: "
 
@@ -23513,39 +23985,39 @@ msgstr "Språk: %1$s, "
 msgid "Number %1$s"
 msgstr "Nummer %1$s"
 
-#: src/Format.cpp:636 src/Format.cpp:649 src/Format.cpp:659
+#: src/Format.cpp:650 src/Format.cpp:663 src/Format.cpp:673
 msgid "Cannot view file"
 msgstr "Kan inte visa fil"
 
-#: src/Format.cpp:637 src/Format.cpp:704 src/frontends/qt4/GuiView.cpp:3148
+#: src/Format.cpp:651 src/Format.cpp:718 src/frontends/qt4/GuiView.cpp:3148
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Filen finns inte: %1$s"
 
-#: src/Format.cpp:650
+#: src/Format.cpp:664
 #, c-format
 msgid "No information for viewing %1$s"
 msgstr "Ingen information för att visa %1$s"
 
-#: src/Format.cpp:660
+#: src/Format.cpp:674
 #, c-format
 msgid "Auto-view file %1$s failed"
 msgstr "Auto-visa fil %1$s misslyckades"
 
-#: src/Format.cpp:703 src/Format.cpp:715 src/Format.cpp:728 src/Format.cpp:739
+#: src/Format.cpp:717 src/Format.cpp:729 src/Format.cpp:742 src/Format.cpp:753
 msgid "Cannot edit file"
 msgstr "Kan inte redigera fil"
 
-#: src/Format.cpp:716
+#: src/Format.cpp:730
 msgid "LinkBack files can only be edited on Apple Mac OSX."
 msgstr "LinkBack-filer kan endast redigeras på Apple Mac OS X."
 
-#: src/Format.cpp:729
+#: src/Format.cpp:743
 #, c-format
 msgid "No information for editing %1$s"
 msgstr "Ingen information för att redigera %1$s"
 
-#: src/Format.cpp:740
+#: src/Format.cpp:754
 #, c-format
 msgid "Auto-edit file %1$s failed"
 msgstr "Auto-redigera fil %1$s misslyckades"
@@ -25595,18 +26067,18 @@ msgstr "Filnamnsändelse"
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
 #: src/frontends/qt4/GuiDocument.cpp:2464
 #: src/frontends/qt4/GuiDocument.cpp:3477
-#: src/frontends/qt4/GuiProgressView.cpp:124
-#: src/frontends/qt4/GuiProgressView.cpp:138
+#: src/frontends/qt4/GuiProgressView.cpp:145
 #: src/frontends/qt4/GuiProgressView.cpp:159
+#: src/frontends/qt4/GuiProgressView.cpp:180
 msgid "Yes"
 msgstr "Ja"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
 #: src/frontends/qt4/GuiDocument.cpp:2463
 #: src/frontends/qt4/GuiDocument.cpp:3476
-#: src/frontends/qt4/GuiProgressView.cpp:90
-#: src/frontends/qt4/GuiProgressView.cpp:123
-#: src/frontends/qt4/GuiProgressView.cpp:159
+#: src/frontends/qt4/GuiProgressView.cpp:111
+#: src/frontends/qt4/GuiProgressView.cpp:144
+#: src/frontends/qt4/GuiProgressView.cpp:180
 msgid "No"
 msgstr "Nej"
 
@@ -25737,10 +26209,6 @@ msgstr "Nycklar"
 #: src/frontends/qt4/GuiClipboard.cpp:173
 msgid "LinkBack PDF"
 msgstr "LinkBack PDF"
-
-#: src/frontends/qt4/GuiClipboard.cpp:174
-msgid "PDF"
-msgstr "PDF"
 
 #: src/frontends/qt4/GuiClipboard.cpp:176
 msgid "JPEG"
@@ -27130,15 +27598,15 @@ msgstr "Indexinställningar"
 msgid "<All indexes>"
 msgstr "<Alla index>"
 
-#: src/frontends/qt4/GuiProgressView.cpp:53
+#: src/frontends/qt4/GuiProgressView.cpp:64
 msgid "Progress/Debug Messages"
 msgstr "Förlopp/avlusningsmeddelanden"
 
-#: src/frontends/qt4/GuiProgressView.cpp:83
+#: src/frontends/qt4/GuiProgressView.cpp:102
 msgid "Debug Level"
 msgstr "Avlusningsnivå"
 
-#: src/frontends/qt4/GuiProgressView.cpp:84
+#: src/frontends/qt4/GuiProgressView.cpp:103
 msgid "Set"
 msgstr "Vald"
 
@@ -29258,19 +29726,19 @@ msgstr "Lista över listningar"
 msgid "Unknown TOC type"
 msgstr "Okänd innehållsförteckningstyp"
 
-#: src/insets/InsetTabular.cpp:4536
+#: src/insets/InsetTabular.cpp:4539
 msgid "Selections not supported."
 msgstr "Urval stöds inte."
 
-#: src/insets/InsetTabular.cpp:4558
+#: src/insets/InsetTabular.cpp:4561
 msgid "Multi-column in current or destination column."
 msgstr "Multikolumn i aktuell eller destinationskolumn."
 
-#: src/insets/InsetTabular.cpp:4570
+#: src/insets/InsetTabular.cpp:4573
 msgid "Multi-row in current or destination row."
 msgstr "Multirad i aktuell eller destinationsrad."
 
-#: src/insets/InsetTabular.cpp:4962
+#: src/insets/InsetTabular.cpp:4965
 msgid "Selection size should match clipboard content."
 msgstr "Urvalets storlek bör matcha klippbordets innehåll."
 
@@ -29620,7 +30088,7 @@ msgstr ""
 msgid "Directory not found"
 msgstr "Katalog hittades inte"
 
-#: src/support/Systemcall.cpp:405
+#: src/support/Systemcall.cpp:425
 #, c-format
 msgid ""
 "The command\n"
@@ -29635,15 +30103,15 @@ msgstr ""
 "\n"
 "Vill du stoppa det?"
 
-#: src/support/Systemcall.cpp:407
+#: src/support/Systemcall.cpp:427
 msgid "Stop command?"
 msgstr "Stoppa kommando?"
 
-#: src/support/Systemcall.cpp:408
+#: src/support/Systemcall.cpp:428
 msgid "&Stop it"
 msgstr "&Stoppa det"
 
-#: src/support/Systemcall.cpp:408
+#: src/support/Systemcall.cpp:428
 msgid "Let it &run"
 msgstr "Låt det kö&ra"
 
@@ -30183,9 +30651,6 @@ msgstr "Okänd användare"
 
 #~ msgid "List of Equations"
 #~ msgstr "Lista över ekvationer"
-
-#~ msgid "List of Footnotes"
-#~ msgstr "Lista över fotnoter"
 
 #~ msgid "List of Index Entries"
 #~ msgstr "Lista över indexposter"
