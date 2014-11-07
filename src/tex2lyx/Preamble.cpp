@@ -966,6 +966,9 @@ void Preamble::handle_package(Parser &p, string const & name,
 		h_cite_engine_type = "authoryear";
 	}
 
+	else if (name == "bibtopic")
+		h_use_bibtopic = "true";
+
 	else if (name == "hyperref")
 		handle_hyperref(options);
 
