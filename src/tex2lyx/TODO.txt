@@ -80,7 +80,7 @@ Format LaTeX feature                        LyX feature
 459    beamer: \begin{frame},               \begin_layout Frame
        \begin{frame}[plain],                \begin_layout PlainFrame
        \begin{frame}[fragile]               \begin_layout FragileFrame
-461   support for kurier math font (the other kurier fonts are already supported)
+461   support for kurier math font (the other kurier fonts are already supported); done in master
 462    New libertine LaTeX fonts:
        \usepackage[scale|scaled|ttscale=$val]{libertineMono-type1}
                                             \font_typewriter
@@ -96,7 +96,7 @@ Format LaTeX feature                        LyX feature
       \twocolumn[]{}{}                      Layout Twocolumn, InsetArgument
       \item[]<>                             InsetArgument
       \begin{enumerate|itemize|...}[]       InsetArgument
-467   support for iwona math font (the other iwona fonts are already supported)
+467   support for iwona math font (the other iwona fonts are already supported); done in master
 
 
 General
