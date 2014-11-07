@@ -112,10 +112,10 @@ string parse_text_snippet(Parser & p, unsigned flags, const bool outer,
 
 
 char const * const known_ref_commands[] = { "ref", "pageref", "vref",
- "vpageref", "prettyref", "eqref", 0 };
+ "vpageref", "prettyref", "nameref", "eqref", 0 };
 
 char const * const known_coded_ref_commands[] = { "ref", "pageref", "vref",
- "vpageref", "formatted", "eqref", 0 };
+ "vpageref", "formatted", "nameref", "eqref", 0 };
 
 char const * const known_refstyle_commands[] = { "algref", "chapref", "corref",
  "eqref", "enuref", "figref", "fnref", "lemref", "parref", "partref", "propref",

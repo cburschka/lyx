@@ -46,7 +46,6 @@ Format LaTeX feature                        LyX feature
 390    forward/reverse search               \forward_search, \forward_macro
 391    decimal alignment in tables          InsetTabular
 392    new beamer format                    InsetLayout
-396    nameref.sty                          InsetRef
 399    automatic mathdots loading           \use_mathdots
 407    vertical offset for multirows        InsetTabular
 411    support for polyglossia              \language_package	(the cases of no package, of babel and of custom package is supported)
@@ -80,7 +79,6 @@ Format LaTeX feature                        LyX feature
 459    beamer: \begin{frame},               \begin_layout Frame
        \begin{frame}[plain],                \begin_layout PlainFrame
        \begin{frame}[fragile]               \begin_layout FragileFrame
-461   support for kurier math font (the other kurier fonts are already supported); done in master
 462    New libertine LaTeX fonts:
        \usepackage[scale|scaled|ttscale=$val]{libertineMono-type1}
                                             \font_typewriter
@@ -96,7 +94,6 @@ Format LaTeX feature                        LyX feature
       \twocolumn[]{}{}                      Layout Twocolumn, InsetArgument
       \item[]<>                             InsetArgument
       \begin{enumerate|itemize|...}[]       InsetArgument
-467   support for iwona math font (the other iwona fonts are already supported); done in master
 
 
 General
