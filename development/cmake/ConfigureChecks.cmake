@@ -112,6 +112,20 @@ check_cxx_source_compiles(
 	"
 SIZEOF_WCHAR_T_IS_4)
 
+check_cxx_source_compiles(
+	"
+	#include <execinfo.h>
+	#include <cxxabi.h>
+	int main() {
+		void* array[200];
+		size_t size = backtrace(array, 200);
+		backtrace_symbols(array, size);
+		int status = 0;
+		abi::__cxa_demangle(\"abcd\", 0, 0, &status);
+	}
+	"
+LYX_CALLSTACK_PRINTING)
+
 if(LYX_USE_QT MATCHES "QT5")
   if (Qt5X11Extras_FOUND)
     get_target_property(_x11extra_prop Qt5::X11Extras IMPORTED_CONFIGURATIONS)

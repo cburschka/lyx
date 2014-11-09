@@ -57,6 +57,9 @@
 #cmakedefine LYX_USE_TR1 1
 #cmakedefine LYX_USE_TR1_REGEX 1
 
+// Define if callstack can be printed
+#cmakedefine LYX_CALLSTACK_PRINTING 1
+
 #cmakedefine Z_PREFIX 1
 
 ${Include_used_spellchecker}
