@@ -32,7 +32,7 @@ Style Define_Avatar
 	PassThru		1
 	LabelFont
 	  Color			green
-	  Shape			bold
+	  Series		Bold
 	EndFont
 	Requires		pdfcomment
 End
@@ -211,12 +211,11 @@ Style List_of_PDF_Comments
 	LabelBottomSep	0
 	LeftMargin	MMMMM
 	LabelString	"[List of PDF Comments]"
-	LabelFont 
-	    Family	sansserif
-	    Series	Medium
-	    Size	large
+	LabelFont
+	    Family	Sans
+	    Series	Bold
+	    Size	Large
 	    Color	latex
-	    Shape	bold
 	EndFont
 	Argument 1
 	  LabelString	"Opts"
