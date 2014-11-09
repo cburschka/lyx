@@ -1346,7 +1346,7 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 		MathData ar;
 		if (cur.inMathed() && cur.selection()) {
 			asArray(grabAndEraseSelection(cur), ar);
-		} else if (!pos == cur.cell().empty()) {
+		} else if (pos == cur.cell().size()) {
 			ar = cur.cell();
 			lyxerr << "use whole cell: " << ar << endl;
 		} else {
