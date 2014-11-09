@@ -66,6 +66,7 @@ using namespace lyx::support;
 namespace lyx {
 
 using cap::grabAndEraseSelection;
+using cap::reduceSelectionToOneCell;
 
 namespace {
 
@@ -1324,14 +1325,14 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 		extra = from_ascii("noextra");
 	string const lang = to_ascii(dlang);
 
-	// FIXME: temporarily disabled
-	//if (cur.selection()) {
-	//	MathData ar;
-	//	selGet(cur.ar);
-	//	lyxerr << "use selection: " << ar << endl;
-	//	insert(pipeThroughExtern(lang, extra, ar));
-	//	return;
-	//}
+	// replace selection with result of computation
+	if (reduceSelectionToOneCell(cur)) {
+		MathData ar;
+		asArray(grabAndEraseSelection(cur), ar);
+		lyxerr << "use selection: " << ar << endl;
+		cur.insert(pipeThroughExtern(lang, extra, ar));
+		return;
+	}
 
 	// only inline, display or eqnarray math is allowed
 	if (getType() > hullEqnArray) {
@@ -1352,9 +1353,7 @@ void InsetMathHull::doExtern(Cursor & cur, FuncRequest & func)
 	if (getType() == hullSimple) {
 		size_type pos = cur.cell().find_last(eq);
 		MathData ar;
-		if (cur.inMathed() && cur.selection()) {
-			asArray(grabAndEraseSelection(cur), ar);
-		} else if (pos == cur.cell().size()) {
+		if (pos == cur.cell().size()) {
 			ar = cur.cell();
 			lyxerr << "use whole cell: " << ar << endl;
 		} else {
