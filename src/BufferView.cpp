@@ -1825,9 +1825,11 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		} else {
 			// select current cell
 			cur.pos() = 0;
+			cur.pit() = 0;
 			cur.resetAnchor();
 			cur.setSelection(true);
 			cur.pos() = cur.lastpos();
+			cur.pit() = cur.lastpit();
 		}
 		dr.screenUpdate(Update::Force);
 		break;
