@@ -768,6 +768,14 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_font_math = "minion-ntxm";
 	}
 
+	if (name == "iwona")
+		if (opts == "math")
+			h_font_math = "iwona-math";
+
+	if (name == "kurier")
+		if (opts == "math")
+			h_font_math = "kurier-math";
+
 	// after the detection and handling of special cases, we can remove the
 	// fonts, otherwise they would appear in the preamble, see bug #7856
 	if (is_known(name, known_roman_fonts) || is_known(name, known_sans_fonts)
@@ -957,6 +965,9 @@ void Preamble::handle_package(Parser &p, string const & name,
 		h_cite_engine = "jurabib";
 		h_cite_engine_type = "authoryear";
 	}
+
+	else if (name == "bibtopic")
+		h_use_bibtopic = "true";
 
 	else if (name == "hyperref")
 		handle_hyperref(options);
