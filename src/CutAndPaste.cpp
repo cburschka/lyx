@@ -502,6 +502,17 @@ void putClipboard(ParagraphList const & paragraphs,
 	LASSERT(buffer, return);
 
 	// This needs doing every time.
+	// Since setDocumentClass() causes deletion of the old document class
+	// we need to reset all layout pointers in paragraphs (otherwise they
+	// would be dangling).
+	ParIterator const end = buffer->par_iterator_end();
+	for (ParIterator it = buffer->par_iterator_begin(); it != end; ++it) {
+		docstring const name = it->layout().name();
+		if (docclass->hasLayout(name))
+			it->setLayout((*docclass)[name]);
+		else
+			it->setPlainOrDefaultLayout(*docclass);
+	}
 	buffer->params().setDocumentClass(docclass);
 
 	// we will use pasteSelectionHelper to copy the paragraphs into the
