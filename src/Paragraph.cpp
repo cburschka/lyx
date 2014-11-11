@@ -282,6 +282,10 @@ private:
 
 class Paragraph::Private
 {
+	// Enforce our own "copy" constructor by declaring the standard one and
+	// the assignment operator private without implementing them.
+	Private(Private const &);
+	Private & operator=(Private const &);
 public:
 	///
 	Private(Paragraph * owner, Layout const & layout);
