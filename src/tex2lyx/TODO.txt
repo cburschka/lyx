@@ -12,12 +12,16 @@ LyX feature:   LyX inset or document setting
 Format LaTeX feature                        LyX feature
 224    external insets defined in           InsetExternal
        lib/external_templates.
-       (Date and RasterImage cannot be supported
-       (Chess diagram, PDF pages and Spreadsheet are supported)
+       (- Date and RasterImage cannot be supported
+        - Dia and LilyPond are an \includegraphics and can therefore onyl be imported as image
+        - Chess diagram, PDF pages and Spreadsheet are supported)
        (Xfig figure, Lilypond, Dia diagram can be supported by looking at the file extension)
 226    nothing (impossible to import)       InsetBranch, \branch...\end_branch
 226    transformations                      InsetExternal
-228    draft                                InsetExternal
+       (impossible for Xfig implemented for all other cases)
+228    draft (impossible to import)         InsetExternal
+       (impossible because this outputs only the filename without any info if this
+       is just a string or if the file should be included and as what type)
 254    esint.sty                            \use_esint
 267    XeTeX                                utf8 encoding
 270    \alert, \structure (beamer)          layout
@@ -57,7 +61,6 @@ Format LaTeX feature                        LyX feature
        \renewcommand{\sffamily}{uop}
 446    Optional and required arguments      InsetArgument
        now numbered by order
-447
 448
 449    \item[<arg>]                         \begin_inset Argument item:<nr>
 450    ugm LaTeX font,                      \font_roman, \font_osf,
