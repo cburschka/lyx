@@ -125,7 +125,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 	InsetText * target_inset = cur.inset().asInsetText();
 	if (!target_inset) {
 		InsetTabular * it = cur.inset().asInsetTabular();
-		target_inset = it? it->cell(cur.idx())->asInsetText() : 0;
+		target_inset = it ? it->cell(cur.idx())->asInsetText() : 0;
 	}
 	LASSERT(target_inset, return PasteReturnValue(pit, pos, need_update));
 
@@ -170,7 +170,8 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 			if (forcePlainLayout || parLayout == defaultLayout)
 				par->setLayout(plainLayout);
 		}
-	}	else { // check if we need to reset from plain layout
+	} else {
+		// check if we need to reset from plain layout
 		Layout const & defaultLayout = newDocClass->defaultLayout();
 		Layout const & plainLayout = newDocClass->plainLayout();
 		ParagraphList::iterator const end = insertion.end();
