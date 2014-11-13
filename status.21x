@@ -85,6 +85,9 @@ What's new
 - Remove unnecessary preamble code in LaTeX export
   of documents using the class REVTeX 4.1 file (bug 4625).
 
+- Fix for improper environment with duplicate PATH variable entries.
+  This happens on Mac OS X 10.10 (Yosemite) where launchd(8) passes
+  such an environment to LyX when started from the dock (bug 9317).
 
 * LYX2LYX
 
