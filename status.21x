@@ -69,6 +69,9 @@ What's new
 - Fix import of latex documents with scaled fonts.
 
 
+- Fix for improper environment with duplicate PATH variable entries.
+  This happens on Mac OS X 10.10 (Yosemite) where launchd(8) passes
+  such an environment to LyX when started from the dock (bug 9317).
 
 * LYX2LYX
 
