@@ -149,7 +149,18 @@ void InsetNote::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action()) {
 
-	case LFUN_INSET_MODIFY:
+	case LFUN_INSET_MODIFY: {
+		// Do not do anything if converting to the same type of Note.
+		// A quick break here is done instead of disabling the LFUN
+		// because disabling the LFUN would lead to a greyed out
+		// entry, which might confuse users.
+		// In the future, we might want to have a radio button for
+		// switching between notes.
+		InsetNoteParams params;
+		string2params(to_utf8(cmd.argument()), params);
+		if (params_.type == params.type)
+		  break;
+
 		cur.recordUndoInset(ATOMIC_UNDO, this);
 		string2params(to_utf8(cmd.argument()), params_);
 		setButtonLabel();
@@ -157,6 +168,7 @@ void InsetNote::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// a full buffer update
 		cur.forceBufferUpdate();
 		break;
+	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		cur.bv().updateDialog("note", params2string(params()));
