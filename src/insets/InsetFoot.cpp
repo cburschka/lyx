@@ -32,8 +32,14 @@ using namespace std;
 namespace lyx {
 
 InsetFoot::InsetFoot(Buffer * buf)
-	: InsetFootlike(buf)
+	: InsetFootlike(buf), intitle_(false)
 {}
+
+
+docstring InsetFoot::layoutName() const
+{
+	return intitle_ ? from_ascii("Foot:InTitle") : from_ascii("Foot");
+}
 
 
 void InsetFoot::updateBuffer(ParIterator const & it, UpdateType utype)
@@ -44,20 +50,27 @@ void InsetFoot::updateBuffer(ParIterator const & it, UpdateType utype)
 		// the footnote counter is local to this inset
 		cnts.saveLastCounter();
 	}
-	Paragraph const & outer = it.paragraph();
-	if (!outer.layout().intitle) {
-		InsetLayout const & il = getLayout();
-		docstring const & count = il.counter();
-		custom_label_ = translateIfPossible(il.labelstring());
-		if (cnts.hasCounter(count))
-			cnts.step(count, utype);
-		custom_label_ += ' ' +
-			cnts.theCounter(count, outer.getParLanguage(bp)->code());
-		setLabel(custom_label_);
+
+	intitle_ = false;
+	for (size_type sl = 0 ; sl < it.depth() ; ++ sl) {
+		if (it[sl].text() && it[sl].paragraph().layout().intitle) {
+			intitle_ = true;
+			break;
+		}
 	}
+
+	Language const * lang = it.paragraph().getParLanguage(bp);
+	InsetLayout const & il = getLayout();
+	docstring const & count = il.counter();
+	custom_label_ = translateIfPossible(il.labelstring());
+	if (cnts.hasCounter(count))
+		cnts.step(count, utype);
+	custom_label_ += ' ' + cnts.theCounter(count, lang->code());
+	setLabel(custom_label_);
+
 	InsetCollapsable::updateBuffer(it, utype);
 	if (utype == OutputUpdate)
-		cnts.restoreLastCounter();	
+		cnts.restoreLastCounter();
 }
 
 
@@ -81,29 +94,6 @@ docstring InsetFoot::toolTip(BufferView const & bv, int x, int y) const
 		// this will give us something useful if there is no button
 		return InsetCollapsable::toolTip(bv, x, y);
 	return toolTipText(custom_label_+ ": ");
-}
-
-
-void InsetFoot::latex(otexstream & os, OutputParams const & runparams_in) const
-{
-	OutputParams runparams = runparams_in;
-	// footnotes in titling commands like \title have moving arguments
-	runparams.moving_arg |= runparams_in.intitle;
-
-	os << safebreakln;
-	if (runparams.lastid != -1)
-		os.texrow().start(runparams.lastid, runparams.lastpos);
-
-	// in titling commands, \thanks should be used instead of \footnote.
-	// some classes (e.g. memoir) do not understand \footnote.
-	if (runparams_in.intitle)
-		os << "\\thanks{";
-	else
-		os << "\\footnote{";
-
-	InsetText::latex(os, runparams);
-	os << "%\n}";
-	runparams_in.encoding = runparams.encoding;
 }
 
 

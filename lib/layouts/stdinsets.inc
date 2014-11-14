@@ -39,6 +39,8 @@ End
 
 InsetLayout Foot
 	LabelString           foot
+	LatexType             Command
+	LatexName             footnote
 	Counter               footnote
 	Font
 	  Size                Small
@@ -74,6 +76,16 @@ InsetLayout Foot
 			padding: 1em;
 		}
 	EndHTMLStyle
+End
+
+InsetLayout Foot:InTitle
+	CopyStyle             Foot
+	LatexName             thanks
+	NeedProtect           true
+	Counter               thanks
+	MultiPar              false
+	# FIXME: this is probably not correct
+	HTMLLabel             \arabic{thanks}
 End
 
 InsetLayout Note:Comment

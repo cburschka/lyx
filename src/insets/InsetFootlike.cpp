@@ -18,12 +18,15 @@
 #include "Font.h"
 #include "MetricsInfo.h"
 
+#include "support/lstrings.h"
+
 #include <iostream>
 
 using namespace std;
 
 namespace lyx {
 
+using support::token;
 
 InsetFootlike::InsetFootlike(Buffer * buf)
 	: InsetCollapsable(buf)
@@ -50,7 +53,8 @@ void InsetFootlike::draw(PainterInfo & pi, int x, int y) const
 
 void InsetFootlike::write(ostream & os) const
 {
-	os << to_utf8(layoutName()) << "\n";
+	// The layoutName may contain a "InTitle" qualifier
+	os << to_utf8(token(layoutName(), char_type(':'), 0)) << "\n";
 	InsetCollapsable::write(os);
 }
 

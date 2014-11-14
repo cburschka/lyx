@@ -444,6 +444,24 @@ docstring const lowerromanCounter(int const n)
 	return lowercase(romanCounter(n));
 }
 
+
+docstring const fnsymbolCounter(int const n)
+{
+	switch(n) {
+	case 1: return docstring(1, 0x002a); //*
+	case 2: return docstring(1, 0x2020); // dagger
+	case 3: return docstring(1, 0x2021); // double dagger
+	case 4: return docstring(1, 0x00A7); // section sign
+	case 5: return docstring(1, 0x00B6); // pilcrow sign
+	case 6: return docstring(1, 0x2016); // vertical bar
+	case 7: return docstring(2, 0x002a); // two *
+	case 8: return docstring(2, 0x2020); // two daggers
+	case 9: return docstring(2, 0x2021); // two double daggers
+	default:
+		return from_ascii("?");
+	};
+}
+
 } // namespace anon
 
 
@@ -474,6 +492,9 @@ docstring Counters::labelItem(docstring const & ctr,
 
 	if (numbertype == "Roman")
 		return romanCounter(val);
+
+	if (numbertype == "fnsymbol")
+		return fnsymbolCounter(val);
 
 	return convert<docstring>(val);
 }
