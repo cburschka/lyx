@@ -1892,6 +1892,13 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			"User specified LaTeX commands.\n"
 			+ from_utf8(preamble) + '\n';
 
+	// footmisc must be loaded after setspace
+	// Load it here to avoid clashes with footmisc loaded in the user
+	// preamble. For that reason we also pass the options via
+	// \PassOptionsToPackage in getPreamble() and not here.
+	if (features.mustProvide("footmisc"))
+		atlyxpreamble += "\\usepackage{footmisc}\n";
+
 	// subfig loads internally the LaTeX package "caption". As
 	// caption is a very popular package, users will load it in
 	// the preamble. Therefore we must load subfig behind the

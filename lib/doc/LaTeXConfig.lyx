@@ -69,6 +69,7 @@
 \html_latex_end </span>
 \author -1379302345 "Julien Rioux" jrioux@lyx.org
 \author -712698321 "Jürgen Spitzmüller" 
+\author -195340706 "Georg Baum"
 \end_header
 
 \begin_body
@@ -7007,6 +7008,46 @@ fixltx2e
 fixltx2e
 \family default
  module.
+\change_inserted -195340706 1415992274
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -195340706 1415992274
+footmisc
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -195340706 1415992274
+Found: 
+\begin_inset Info
+type  "package"
+arg   "footmisc"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -195340706 1415992274
+CTAN: 
+\family typewriter
+macros/latex/contrib/supported/footmisc/footmisc.sty
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -195340706 1415992274
+Notes: The package 
+\family sans
+footmisc 
+\family default
+is needed to support stable footnotes in chapter titles.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection

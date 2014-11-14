@@ -134,24 +134,6 @@ static docstring const paragraphleftindent_def = from_ascii(
 	"}\n"
 	"{\\end{list}}\n");
 
-static docstring const floatingfootnote_def = from_ascii(
-	"%% Special footnote code from the package 'stblftnt.sty'\n"
-	"%% Author: Robin Fairbairns -- Last revised Dec 13 1996\n"
-	"\\let\\SF@@footnote\\footnote\n"
-	"\\def\\footnote{\\ifx\\protect\\@typeset@protect\n"
-	"    \\expandafter\\SF@@footnote\n"
-	"  \\else\n"
-	"    \\expandafter\\SF@gobble@opt\n"
-	"  \\fi\n"
-	"}\n"
-	"\\expandafter\\def\\csname SF@gobble@opt \\endcsname{\\@ifnextchar[%]\n"
-	"  \\SF@gobble@twobracket\n"
-	"  \\@gobble\n"
-	"}\n"
-	"\\edef\\SF@gobble@opt{\\noexpand\\protect\n"
-	"  \\expandafter\\noexpand\\csname SF@gobble@opt \\endcsname}\n"
-	"\\def\\SF@gobble@twobracket[#1]#2{}\n");
-
 static docstring const binom_def = from_ascii(
 	"%% Binom macro for standard LaTeX users\n"
 	"\\newcommand{\\binom}[2]{{#1 \\choose #2}}\n");
@@ -1050,6 +1032,12 @@ string const LaTeXFeatures::getPackages() const
 	if (mustProvide("subscript") && !isRequired("fixltx2e"))
 		packages << "\\usepackage{subscript}\n";
 
+	// footmisc must be loaded after setspace
+	// Set options here, load the package after the user preamble to
+	// avoid problems with manual loaded footmisc.
+	if (mustProvide("footmisc"))
+		packages << "\\PassOptionsToPackage{stable}{footmisc}\n";
+
 	return packages.str();
 }
 
@@ -1178,8 +1166,6 @@ docstring const LaTeXFeatures::getMacros() const
 	// other
 	if (mustProvide("ParagraphLeftIndent"))
 		macros << paragraphleftindent_def;
-	if (mustProvide("NeedLyXFootnoteCode"))
-		macros << floatingfootnote_def;
 
 	// some problems with tex->html converters
 	if (mustProvide("NeedTabularnewline"))
