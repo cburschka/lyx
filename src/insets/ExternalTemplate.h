@@ -107,7 +107,7 @@ public:
 /**
  *  A singleton class that manages the external inset templates
  */
-class TemplateManager : boost::noncopyable {
+class TemplateManager {
 public:
 	/// Map from the LyX name of the template to the template structure
 	typedef std::map<std::string, Template> Templates;
@@ -129,6 +129,10 @@ public:
 	std::string const getPreambleDefByName(std::string const & name) const;
 private:
 	TemplateManager();
+	/// noncopyable
+	TemplateManager(TemplateManager const &);
+	void operator=(TemplateManager const &);
+
 	void readTemplates(support::FileName const & path);
 	void dumpTemplates(std::ostream &) const;
 	void dumpPreambleDefs(std::ostream &) const;

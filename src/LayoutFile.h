@@ -18,8 +18,6 @@
 
 #include "support/strfwd.h"
 
-#include <boost/noncopyable.hpp>
-
 #include <string>
 #include <vector>
 
@@ -56,7 +54,7 @@ private:
 /// Buffer-specific information should therefore be placed in a
 /// DocumentClass object.
 /// 
-class LayoutFile : public TextClass, boost::noncopyable {
+class LayoutFile : public TextClass {
 public:
 	/// check whether the TeX class is available
 	bool isTeXClassAvailable() const { return tex_class_avail_; }
@@ -70,6 +68,9 @@ public:
  	LayoutModuleList const & excludedModules() const 
  			{ return excluded_modules_; }
 private:
+	/// noncopyable
+	LayoutFile(LayoutFile const &);
+	void operator=(LayoutFile const &);
 	/// Construct a layout with default values. Actual values loaded later.
 	explicit LayoutFile(std::string const & filename,
 			std::string const & className = std::string(),

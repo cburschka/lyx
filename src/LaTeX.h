@@ -19,7 +19,6 @@
 #include "support/docstring.h"
 #include "support/FileName.h"
 
-#include <boost/noncopyable.hpp>
 #include <boost/signal.hpp>
 
 #include <vector>
@@ -98,7 +97,7 @@ bool operator!=(AuxInfo const &, AuxInfo const &);
  * This is required by the LaTeX compiler, and we also make use of it by
  * various support::makeAbsPath() calls.
  */
-class LaTeX : boost::noncopyable {
+class LaTeX {
 public:
 	/** Return values from scanLogFile() and run() (to come)
 
@@ -169,6 +168,10 @@ public:
 	int scanLogFile(TeXErrors &);
 
 private:
+	/// noncopyable
+	LaTeX(LaTeX const &);
+	void operator=(LaTeX const &);
+
 	/// use this for running LaTeX once
 	int startscript();
 
