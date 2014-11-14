@@ -23,9 +23,13 @@
 
 #include "support/debug.h"
 #include "support/docstring.h"
+#include "support/gettext.h"
 #include "support/lassert.h"
+#include "support/lstrings.h"
 
 #include <ostream>
+
+using namespace lyx::support;
 
 using namespace std;
 
@@ -165,7 +169,7 @@ void InsetMathDecoration::normalize(NormalStream & os) const
 
 void InsetMathDecoration::infoize(odocstream & os) const
 {
-	os << "Deco: " << key_->name;
+	os << bformat(_("Decoration: %1$s"), key_->name);
 }
 
 

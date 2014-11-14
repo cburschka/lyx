@@ -18,8 +18,12 @@
 #include "MathSupport.h"
 #include "MetricsInfo.h"
 
+#include "support/gettext.h"
+#include "support/lstrings.h"
+
 #include <ostream>
 
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -96,7 +100,7 @@ void InsetMathFontOld::normalize(NormalStream & os) const
 
 void InsetMathFontOld::infoize(odocstream & os) const
 {
-	os << "Font: " << key_->name;
+	os << bformat(_("Font: %1$s"), key_->name);
 }
 
 

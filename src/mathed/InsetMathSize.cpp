@@ -19,10 +19,13 @@
 #include "output_xhtml.h"
 
 #include "support/convert.h"
+#include "support/gettext.h"
+#include "support/lstrings.h"
 
 #include <string>
 #include <ostream>
 
+using namespace lyx::support;
 using namespace std;
 
 namespace lyx {
@@ -101,7 +104,7 @@ void InsetMathSize::normalize(NormalStream & os) const
 
 void InsetMathSize::infoize(odocstream & os) const
 {
-	os << "Size: " << key_->name;
+	os << bformat(_("Size: %1$s"), key_->name);
 }
 
 

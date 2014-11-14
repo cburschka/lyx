@@ -19,10 +19,14 @@
 #include "MathSupport.h"
 #include "MetricsInfo.h"
 
+#include "support/gettext.h"
+#include "support/lstrings.h"
+
 #include "frontends/Painter.h"
 
 #include <ostream>
 
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -92,7 +96,7 @@ void InsetMathBox::draw(PainterInfo & pi, int x, int y) const
 
 void InsetMathBox::infoize(odocstream & os) const
 {	
-	os << "Box: " << name_;
+	os << bformat(_("Box: %1$s"), name_);
 }
 
 

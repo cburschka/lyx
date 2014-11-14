@@ -36,11 +36,13 @@
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
+#include "support/lstrings.h"
 #include "support/textutils.h"
 
 #include <ostream>
 #include <vector>
 
+using namespace lyx::support;
 using namespace std;
 
 namespace lyx {
@@ -806,14 +808,13 @@ void MathMacro::octave(OctaveStream & os) const
 
 void MathMacro::infoize(odocstream & os) const
 {
-	os << "Macro: " << name();
+	os << bformat(_("Macro: %1$s"), name());
 }
 
 
 void MathMacro::infoize2(odocstream & os) const
 {
-	os << "Macro: " << name();
-
+	os << bformat(_("Macro: %1$s"), name());
 }
 
 
