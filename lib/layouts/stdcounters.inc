@@ -71,3 +71,8 @@ End
 Counter footnote
 	PrettyFormat         "Footnote ##"
 End
+
+Counter thanks
+	PrettyFormat         "Footnote ##"
+	LabelString	     "\fnsymbol{thanks}"
+End

@@ -30,9 +30,7 @@ private:
 	///
 	InsetCode lyxCode() const { return FOOT_CODE; }
 	///
-	docstring layoutName() const { return from_ascii("Foot"); }
-	///
-	void latex(otexstream &, OutputParams const &) const;
+	docstring layoutName() const;
 	///
 	int plaintext(odocstringstream & ods, OutputParams const & op,
 	              size_t max_length = INT_MAX) const;
@@ -48,6 +46,8 @@ private:
 	Inset * clone() const { return new InsetFoot(*this); }
 	///
 	docstring custom_label_;
+	///
+	bool intitle_;
 };
 
 

@@ -39,6 +39,8 @@ End
 
 InsetLayout Foot
 	LabelString           foot
+	LatexType             Command
+	LatexName             footnote
 	Counter               footnote
 	Font
 	  Size                Small
@@ -68,6 +70,39 @@ InsetLayout Foot
 		}
 		div.foot_inner { display: none; }
 		div.foot:hover div.foot_inner {
+			display: block;
+			border: 1px double black;
+			margin: 0em 1em;
+			padding: 1em;
+		}
+	EndHTMLStyle
+End
+
+InsetLayout Foot:InTitle
+	CopyStyle             Foot
+	LatexName             thanks
+	NeedProtect           true
+	Counter               thanks
+	MultiPar              false
+	HTMLLabel             \fnsymbol{thanks}
+	HTMLInnerTag          span
+	HTMLStyle
+		span.foot_intitle_label {
+			vertical-align: super;
+			font-size: smaller;
+			font-weight: bold;
+			text-decoration: underline;
+		}
+		span.foot_intitle {
+			display: inline;
+			font-size: small;
+			font-weight: medium;
+			font-family: serif;
+			font-variant: normal;
+			font-style: normal;
+		}
+		span.foot_intitle_inner { display: none; }
+		span.foot_intitle:hover span.foot_intitle_inner {
 			display: block;
 			border: 1px double black;
 			margin: 0em 1em;
