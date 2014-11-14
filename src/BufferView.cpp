@@ -1812,24 +1812,25 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			cur.setSelection(true);
 			cur.posForward();
 		} else if (cur.selBegin().idx() != cur.selEnd().idx()
-			   || (cur.selBegin().at_cell_begin()
+			   || (cur.depth() > 1
+				   && cur.selBegin().at_cell_begin()
 			       && cur.selEnd().at_cell_end())) {
 			// At least one complete cell is selected.
 			// Select all cells
-			cur.pos() = 0;
 			cur.idx() = 0;
+			cur.pos() = 0;
 			cur.resetAnchor();
 			cur.setSelection(true);
 			cur.idx() = cur.lastidx();
 			cur.pos() = cur.lastpos();
 		} else {
 			// select current cell
-			cur.pos() = 0;
 			cur.pit() = 0;
+			cur.pos() = 0;
 			cur.resetAnchor();
 			cur.setSelection(true);
-			cur.pos() = cur.lastpos();
 			cur.pit() = cur.lastpit();
+			cur.pos() = cur.lastpos();
 		}
 		dr.screenUpdate(Update::Force);
 		break;

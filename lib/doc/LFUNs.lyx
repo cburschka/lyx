@@ -98,7 +98,7 @@ The LyX Team
 \end_layout
 
 \begin_layout Date
-2014-10-23
+2014-11-14
 \end_layout
 
 \begin_layout Section*
@@ -2171,13 +2171,16 @@ Sample inset-modify note Note Comment
 inset-select-all
 \end_layout
 \begin_layout Description
-Action Selects all contents of an inset.
+Action Select all contents of an inset.
+\end_layout
+\begin_layout Description
+Notion There are 3 successive levels: select current cell, select all cells of inset, select the inset from outside (in the enclosing inset).
 \end_layout
 \begin_layout Description
 Syntax inset-select-all
 \end_layout
 \begin_layout Description
-Origin vfr, 22 Aug 2009
+Origin vfr, 22 Aug 2009; lasgouttes 1 Nov 2014
 \end_layout
 
 \begin_layout Subsection*
@@ -3047,7 +3050,7 @@ Origin Abdel, Dec 27 2007
 section-select
 \end_layout
 \begin_layout Description
-Action Selects the whole section.
+Action Select the whole section.
 \end_layout
 \begin_layout Description
 Notion The cursor should be in a section heading before calling this lfun.

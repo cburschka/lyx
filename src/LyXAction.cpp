@@ -1150,16 +1150,19 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_SELECT_ALL
- * \li Action: Selects all contents of an inset.
+ * \li Action: Select all contents of an inset.
+ * \li Notion: There are 3 successive levels: select current cell,
+ *   select all cells of inset, select the inset from outside
+ *   (in the enclosing inset).
  * \li Syntax: inset-select-all
- * \li Origin: vfr, 22 Aug 2009
+ * \li Origin: vfr, 22 Aug 2009; lasgouttes 1 Nov 2014
  * \endvar
  */
 		{ LFUN_INSET_SELECT_ALL, "inset-select-all", ReadOnly, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_SECTION_SELECT
- * \li Action: Selects the whole section.
+ * \li Action: Select the whole section.
  * \li Notion: The cursor should be in a section heading
                before calling this lfun.
  * \li Syntax: section-select
