@@ -118,10 +118,8 @@ bool canBeDisplayed(char_type c)
 }
 
 
-bool isUnicodeSymbolAvailable(docstring const & /*name*/, char_type & /*c*/)
+bool isUnicodeSymbolAvailable(docstring const & name, char_type & c)
 {
-	// this is too fragile, e.g. prodes W instead of capital omega on OS X
-#if 0
 	docstring cmd(from_ascii("\\") + name);
 	bool is_combining;
 	bool termination;
@@ -135,9 +133,6 @@ bool isUnicodeSymbolAvailable(docstring const & /*name*/, char_type & /*c*/)
 		                                is_combining, termination);
 	}
 	return c != 0 && !is_combining;
-#else
-	return false;
-#endif
 }
 
 

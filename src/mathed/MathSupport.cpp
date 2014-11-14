@@ -634,6 +634,9 @@ fontinfo fontinfos[] = {
 	// LyX internal usage
 	{"lyxtex",        inh_family, inh_series,
 			  UP_SHAPE, Color_latex},
+	// FIXME: The following two don't work on OS X, since the Symbol font
+	//        uses a different encoding, and is therefore disabled in
+	//        FontLoader::available().
 	{"lyxsymbol",     SYMBOL_FAMILY, inh_series,
 			  inh_shape, Color_math},
 	{"lyxboldsymbol", SYMBOL_FAMILY, BOLD_SERIES,
