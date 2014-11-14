@@ -62,7 +62,7 @@ MacroData::MacroData(Buffer * buf, MathMacroTemplate const & macro)
 }
 
 
-void MacroData::expand(vector<MathData> const & args, MathData & to) const
+bool MacroData::expand(vector<MathData> const & args, MathData & to) const
 {
 	updateData();
 
@@ -70,10 +70,10 @@ void MacroData::expand(vector<MathData> const & args, MathData & to) const
 	static InsetMathSqrt inset(0);
 	inset.setBuffer(const_cast<Buffer &>(*buffer_));
 
-	// FIXME UNICODE
-	asArray(display_.empty() ? definition_ : display_, inset.cell(0));
+	docstring const & definition(display_.empty() ? definition_ : display_);
+	asArray(definition, inset.cell(0));
 	//lyxerr << "MathData::expand: args: " << args << endl;
-	//lyxerr << "MathData::expand: ar: " << inset.cell(0) << endl;
+	//LYXERR0("MathData::expand: ar: " << inset.cell(0));
 	for (DocIterator it = doc_iterator_begin(buffer_, &inset); it; it.forwardChar()) {
 		if (!it.nextInset())
 			continue;
@@ -87,8 +87,12 @@ void MacroData::expand(vector<MathData> const & args, MathData & to) const
 			it.cell().insert(it.pos(), args[n - 1]);
 		}
 	}
-	//lyxerr << "MathData::expand: res: " << inset.cell(0) << endl;
+	//LYXERR0("MathData::expand: res: " << inset.cell(0));
 	to = inset.cell(0);
+	// If the result is equal to the definition then we either have a
+	// recursive loop, or the definition did not contain any macro in the
+	// first place.
+	return asString(to) != definition;
 }
 
 
