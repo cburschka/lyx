@@ -97,13 +97,16 @@ size_t ParagraphMetrics::computeRowSignature(Row const & row,
 			char_type const b[] = { static_cast<char_type>(change.type) };
 			// 1 byte is enough to encode Change::Type
 			crc.process_bytes(b, 1);
-		}			
+		}
 	}
 
 	Dimension const & d = row.dimension();
 	char_type const b[] = { static_cast<char_type>(row.sel_beg),
-				static_cast<char_type>(row.sel_end),
-		row.begin_margin_sel, row.end_margin_sel, d.wid, d.asc, d.des};
+	                        static_cast<char_type>(row.sel_end),
+	                        row.begin_margin_sel,
+	                        row.end_margin_sel,
+	                        row.separator,
+	                        d.wid, d.asc, d.des };
 	crc.process_bytes(b, sizeof(b));
 
 	return crc.checksum();
