@@ -867,7 +867,17 @@ the second item
 \end_layout
 
 \begin_layout Itemize
-the third item
+
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+custom label
+\end_layout
+
+\end_inset
+
+the third item has a custom label
 \end_layout
 
 \begin_deeper

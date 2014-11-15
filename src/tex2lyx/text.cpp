@@ -2639,11 +2639,18 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 			if (optarg) {
 				if (context.layout->labeltype != LABEL_MANUAL) {
-					// LyX does not support \item[\mybullet]
-					// in itemize environments
+					// handle option of itemize item
+					begin_inset(os, "Argument item:1\n");
+					os << "status open\n";
+					os << "\n\\begin_layout Plain Layout\n";
 					Parser p2(s + ']');
 					os << parse_text_snippet(p2,
 						FLAG_BRACK_LAST, outer, context);
+					// we must not use context.check_end_layout(os)
+					// because that would close the outer itemize layout
+					os << "\n\\end_layout\n";
+					end_inset(os);
+					eat_whitespace(p, os, context, false);
 				} else if (!s.empty()) {
 					// LyX adds braces around the argument,
 					// so we need to remove them here.
@@ -2659,8 +2666,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					} else {
 						Parser p2(s + ']');
 						os << parse_text_snippet(p2,
-							FLAG_BRACK_LAST,
-							outer, context);
+							FLAG_BRACK_LAST, outer, context);
 					}
 					// The space is needed to separate the
 					// item from the rest of the sentence.
