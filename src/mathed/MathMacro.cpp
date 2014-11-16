@@ -363,9 +363,15 @@ void MathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 		values[i].insert(0, MathAtom(proxy));
 	}
 	// expanding macro with the values
-	macro_->expand(values, expanded_.cell(0));
-	if (utype == OutputUpdate && !expanded_.cell(0).empty())
-		expanded_.cell(0).updateMacros(cur, mc, utype);
+	// Only update the argument macros if anything was expanded, otherwise
+	// we would get an endless loop (bug 9140). UpdateLocker does not work
+	// in this case, since MacroData::expand() creates new MathMacro
+	// objects, so this would be a different recursion path than the one
+	// protected by UpdateLocker.
+	if (macro_->expand(values, expanded_.cell(0))) {
+		if (utype == OutputUpdate && !expanded_.cell(0).empty())
+			expanded_.cell(0).updateMacros(cur, mc, utype);
+	}
 	// get definition for list edit mode
 	docstring const & display = macro_->display();
 	asArray(display.empty() ? macro_->definition() : display, definition_);

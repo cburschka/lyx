@@ -52,7 +52,8 @@ public:
 	size_t numargs() const { updateData(); return numargs_; }
 	/// replace #1,#2,... by given MathAtom 0,1,.., _including_ the possible
 	/// optional argument
-	void expand(std::vector<MathData> const & from, MathData & to) const;
+	/// \return whether anything was expanded
+	bool expand(std::vector<MathData> const & from, MathData & to) const;
 	/// number of optional arguments
 	size_t optionals() const;
 	///

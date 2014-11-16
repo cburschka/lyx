@@ -91,6 +91,10 @@ What's new
   This happens on Mac OS X 10.10 (Yosemite) where launchd(8) passes
   such an environment to LyX when started from the dock (bug 9317).
 
+- Fix crash on exporting a recursive math macro (bug 9140). Recursive macros
+  are invalid, so typesetting will still fail with "TeX capacity exceeded".
+
+
 * LYX2LYX
 
 - Fix import of LyX 2.0 documents with complex beamer arguments (bug 9254).
