@@ -381,7 +381,7 @@ int ForkedCall::generateChild()
 		vector<char *>::iterator ait = argv.begin();
 		vector<char *>::iterator const aend = argv.end();
 		lyxerr << "<command>\n\t" << line
-		       << "\n\tInterpretted as:\n\n";
+		       << "\n\tInterpreted as:\n\n";
 		for (; ait != aend; ++ait)
 			if (*ait)
 				lyxerr << '\t'<< *ait << '\n';
