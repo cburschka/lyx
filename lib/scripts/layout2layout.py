@@ -175,7 +175,7 @@ import os, re, string, sys
 # Manual (section "Declaring a new text class").
 
 # You might also want to consider running the
-# development/tools/updatelayouts.sh script to update all
+# development/tools/updatelayouts.py script to update all
 # layout files to the new format.
 
 currentFormat = 51

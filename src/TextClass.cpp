@@ -58,9 +58,8 @@ namespace lyx {
 // LayoutFile.cpp. Additions will never do so, but syntax changes
 // could. See LayoutFileList::addEmptyClass() and, especially, the
 // definition of the layoutpost string.
-// You should also run (or ask someone who has bash to run) the
-// development/tools/updatelayouts.sh script, to update the format of
-// all of our layout files.
+// You should also run the development/tools/updatelayouts.py script,
+// to update the format of all of our layout files.
 //
 int const LAYOUT_FORMAT = 51; //spitz: add ToggleIndent tag
 
