@@ -643,19 +643,16 @@ public:
 	///
 	ExportStatus doExport(std::string const & target, bool put_in_tempdir) const;
 	///
-	ExportStatus doExport(std::string const & target, bool put_in_tempdir,
-		std::string & result_file) const;
-	///
 	ExportStatus preview(std::string const & format) const;
 
 private:
+	///
+	ExportStatus doExport(std::string const & target, bool put_in_tempdir,
+		std::string & result_file) const;
 	/// target is a format name optionally followed by a space
 	/// and a destination file-name
 	ExportStatus doExport(std::string const & target, bool put_in_tempdir,
 		bool includeall, std::string & result_file) const;
-	///
-	ExportStatus doExport(std::string const & target, bool put_in_tempdir,
-		bool includeall) const;
 	///
 	ExportStatus preview(std::string const & format, bool includeall = false) const;
 	///
