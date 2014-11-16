@@ -116,6 +116,8 @@ public:
 	mutable std::string document_language;
 
 	/** The master language. Non-null only for child documents.
+	    Note that this is not the language of the top level master, but
+	    of the direct parent for nested includes.
 	 */
 	mutable Language const * master_language;
 
