@@ -326,6 +326,13 @@ public:
 private:
 	MathMacro & mac;
 };
+/** Avoid wrong usage of UpdateLocker.
+    To avoid wrong usage:
+    UpdateLocker(...); // wrong
+    UpdateLocker locker(...); // right
+*/
+#define UpdateLocker(x) unnamed_UpdateLocker;
+// Tip gotten from Bobby Schmidt's column in C/C++ Users Journal
 
 
 void MathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
