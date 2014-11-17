@@ -303,6 +303,11 @@ if [ -z "${LyXVersion}" ]; then
 	LyXVersion=$(grep AC_INIT "${LyxSourceDir}"/configure.ac | cut -d, -f2 | tr -d " ()")
 fi
 LyXVersionSuffix=${LyXVersionSuffix:-$(echo "${LyXVersion}" | cut -d. -f1-2)}
+case "${LyXVersion}" in
+*dev*)
+	LyXGitCommitHash=$(cd "${LyxSourceDir}" ; git log -1 --pretty=format:%h)
+	;;
+esac
 
 LyxName="LyX"
 LyxBase="${LyxName}-${LyXVersion}"
@@ -333,7 +338,7 @@ case "${QtVersion}" in
 	;;
 esac
 
-DMGNAME="${LyxBase}"
+DMGNAME="${LyxBase}${LyXGitCommitHash:+-}${LyXGitCommitHash}"
 DMGSIZE="550m"
 
 # Check for existing SDKs
