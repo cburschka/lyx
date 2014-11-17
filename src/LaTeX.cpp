@@ -666,8 +666,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				size_t len = j == string::npos
 						? token.substr(i + 1).length()
 						: j - i - 1;
-				if (regex_match(token.substr(i + 1, len),
-							sub, child_file)) {
+				string const substr = token.substr(i + 1, len);
+				if (regex_match(substr, sub, child_file)) {
 					string const name = sub.str(1);
 					child.push(make_pair(name, pnest));
 					i += len;
