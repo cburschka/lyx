@@ -4184,6 +4184,7 @@ Buffer::ExportStatus Buffer::preview(string const & format) const
 	return preview(format, update_unincluded);
 }
 
+
 Buffer::ExportStatus Buffer::preview(string const & format, bool includeall) const
 {
 	MarkAsExporting exporting(this);

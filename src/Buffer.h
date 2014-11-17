@@ -642,7 +642,8 @@ public:
 
 	///
 	ExportStatus doExport(std::string const & target, bool put_in_tempdir) const;
-	///
+	/// Export buffer to format \p format and open the result in a suitable viewer.
+	/// Note: This has nothing to do with preview of graphics or math formulas.
 	ExportStatus preview(std::string const & format) const;
 
 private:
