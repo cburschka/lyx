@@ -113,7 +113,7 @@ public:
 
 	/** Document language babel name
 	 */
-	mutable std::string document_language;
+	std::string document_language;
 
 	/** The master language. Non-null only for child documents.
 	    Note that this is not the language of the top level master, but

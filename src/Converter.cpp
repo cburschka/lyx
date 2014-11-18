@@ -343,6 +343,7 @@ bool Converters::convert(Buffer const * buffer,
 			string() : buffer->params().bibtex_command;
 		runparams.index_command = (buffer->params().index_command == "default") ?
 			string() : buffer->params().index_command;
+		runparams.document_language = buffer->params().language->babel();
 	}
 
 	// Some converters (e.g. lilypond) can only output files to the
@@ -637,8 +638,6 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 {
 	buffer.setBusy(true);
 	buffer.message(_("Running LaTeX..."));
-
-	runparams.document_language = buffer.params().language->babel();
 
 	// do the LaTeX run(s)
 	string const name = buffer.latexName();
