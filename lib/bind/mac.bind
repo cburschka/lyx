@@ -123,8 +123,8 @@ Format 2
 #  +: "Shift-Command-4"              # Capture a selection to a file
 #  +: "Shift-Control-Command-4"      # Capture a selection to the Clipboard
 #  +: "Command-A"                    # Highlight every item in a document or window, or all characters in a text field
-\bind "C-a"                          "command-sequence buffer-begin ; buffer-end-select"
-\bind "C-M-a"                        "inset-select-all"
+\bind "C-M-a"                        "command-sequence buffer-begin ; buffer-end-select"
+\bind "C-a"                          "inset-select-all"
 #  +: "Command-B"                    # Boldface the selected text or toggle boldfaced text on and off
 \bind "C-M-b"                        "font-boldsymbol"
 \bind "C-b"                          "font-bold"
