@@ -72,10 +72,13 @@ enchant::Dict * EnchantChecker::Private::addSpeller(string const & lang)
 	Speller m;
 
 	try {
+		LYXERR(Debug::FILES, "request enchant speller for language " << lang);
 		m.speller = instance->request_dict(lang);
 	}
 	catch (const enchant::Exception & e) {
 		// FIXME error handling?
+		// unfortunately the message of enchant::Exception is unreachable
+		LYXERR(Debug::FILES, "cannot add enchant speller, unspecified enchant exception in request_dict().");
 		m.speller = 0;
 	}
 	spellers_[lang] = m;
