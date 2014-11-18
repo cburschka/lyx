@@ -83,14 +83,17 @@ struct HunspellChecker::Private
 	/// the location below system/user directory
 	/// there the aff+dic files lookup will happen
 	const string dictDirectory(void) const { return "dicts"; }
-	int maxLookupSelector(void) const { return 4; }
+	int maxLookupSelector(void) const { return 5; }
 	const string HunspellDictionaryName(Language const * lang) {
 		return lang->variety().empty() 
 			? lang->code()
 			: lang->code() + "-" + lang->variety();
 	}
-	const string osPackageDictDirectory(void) {
+	const string myspellPackageDictDirectory(void) {
 		return "/usr/share/myspell";
+	}
+	const string hunspellPackageDictDirectory(void) {
+		return "/usr/share/hunspell";
 	}
 };
 
@@ -150,15 +153,14 @@ bool HunspellChecker::Private::haveLanguageFiles(string const & hpath)
 const string HunspellChecker::Private::dictPath(int selector)
 {
 	switch (selector) {
+	case 4:
+		return addName(hunspellPackageDictDirectory(),dictDirectory());
 	case 3:
-		return addName(osPackageDictDirectory(),dictDirectory());
-		break;
+		return addName(myspellPackageDictDirectory(),dictDirectory());
 	case 2:
 		return addName(package().system_support().absFileName(),dictDirectory());
-		break;
 	case 1:
 		return addName(package().user_support().absFileName(),dictDirectory());
-		break;
 	default:
 		return user_path_;
 	}
