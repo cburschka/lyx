@@ -117,6 +117,7 @@
 
 
 
+// sync with GuiAlert.cpp
 #define EXPORT_in_THREAD 1
 
 
@@ -3261,11 +3262,11 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 	if (format.empty())
 		format = used_buffer->params().getDefaultOutputFormat();
 	processing_format = format;
-#if EXPORT_in_THREAD
 	if (!msg.empty()) {
 		progress_->clearMessages();
 		gv_->message(msg);
 	}
+#if EXPORT_in_THREAD
 	GuiViewPrivate::busyBuffers.insert(used_buffer);
 	Buffer * cloned_buffer = used_buffer->cloneFromMaster();
 	if (!cloned_buffer) {
