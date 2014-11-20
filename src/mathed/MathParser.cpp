@@ -400,6 +400,12 @@ public:
 	int lineno() const { return lineno_; }
 	///
 	void putback();
+	/// store current position
+	void pushPosition();
+	/// restore previous position
+	void popPosition();
+	/// forget last saved position
+	void dropPosition();
 
 private:
 	///
@@ -447,6 +453,8 @@ private:
 	vector<Token> tokens_;
 	///
 	unsigned pos_;
+	///
+	std::vector<unsigned> positions_;
 	/// Stack of active environments
 	vector<docstring> environments_;
 	///
@@ -525,6 +533,25 @@ void Parser::skipSpaces()
 void Parser::putback()
 {
 	--pos_;
+}
+
+
+void Parser::pushPosition()
+{
+	positions_.push_back(pos_);
+}
+
+
+void Parser::popPosition()
+{
+	pos_ = positions_.back();
+	positions_.pop_back();
+}
+
+
+void Parser::dropPosition()
+{
+	positions_.pop_back();
 }
 
 
@@ -1311,10 +1338,35 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			if (nextToken().asInput() == "*") {
 				getToken();
 				added = addRow(grid, cellrow, docstring(), false);
-			} else if (good())
-				added = addRow(grid, cellrow, getArg('[', ']'));
-			else
-				error("missing token after \\\\");
+			} else {
+				// skip "{}" added in front of "[" (the
+				// counterpart is in InsetMathGrid::eolString())
+				// skip spaces because formula could come from tex2lyx
+				bool skipBraces = false;
+				pushPosition();
+				skipSpaces();
+				if (nextToken().cat() == catBegin) {
+					getToken();
+					skipSpaces();
+					if (nextToken().cat() == catEnd) {
+						getToken();
+						skipSpaces();
+						if (nextToken().asInput() == "[")
+							skipBraces = true;
+					}
+				}
+				if (skipBraces)
+					dropPosition();
+				else
+					popPosition();
+				if (good()) {
+					docstring arg;
+					if (!skipBraces)
+						arg = getArg('[', ']');
+					added = addRow(grid, cellrow, arg);
+				} else
+					error("missing token after \\\\");
+			}
 			if (added) {
 				cellcol = 0;
 				if (grid.asHullInset())
