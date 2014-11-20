@@ -133,8 +133,7 @@ const char * const known_roman_fonts[] = { "ae", "beraserif", "bookman",
 
 const char * const known_sans_fonts[] = { "avant", "berasans", "biolinum-type1",
 "cmbr", "cmss", "helvet", "iwona", "iwonac", "iwonal", "iwonalc", "kurier",
-"kurierc", "kurierl", "kurierlc", "lmss", "tgadventor",
-"tgheros", 0};
+"kurierc", "kurierl", "kurierlc", "lmss", "tgadventor", "tgheros", 0};
 
 const char * const known_typewriter_fonts[] = { "beramono", "cmtl", "cmtt",
 "courier", "lmtt", "luximono", "fourier", "libertineMono-type1", "lmodern",
