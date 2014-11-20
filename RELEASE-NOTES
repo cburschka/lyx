@@ -18,6 +18,10 @@ The following pref variables were changed in 2.2:
 
 The following pref variables are obsoleted in 2.2:
 
+- \\rtl
+  This variable was introduced to guard against any bad consequence of
+  the then-new right-to-left languages support. It is no longer needed
+  because of improvements. Now right-to-left support is always enabled.
 
 
 The following new LyX functions have been introduced in 2.2:
