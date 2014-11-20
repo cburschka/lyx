@@ -1,218 +1,55 @@
-This file lists interface changes that might affect users in 2.1.0, some
-known problems in LyX 2.1.0 and some things you have to take into account
-when upgrading from earlier versions to a version of the 2.1.x series.
+This file lists interface changes that might affect users in 2.2.0, some
+known problems in LyX 2.2.0 and some things you have to take into account
+when upgrading from earlier versions to a version of the 2.2.x series.
 
 
 Interface changes
 -----------------
 
-- There have been changes to some often used menu items.
-
-  The following menu items moved from View to Document:
-    * View (Default format)
-    * View (Other formats)
-    * Update (Default format)
-    * Update (Other formats)
-
-  The following menu item moved from Document to View:
-    * Outline -> Outline Pane
-
-- Whenever the user closes a (tabbed) view on a document, either by
-  clicking on the tab close button, or by using the File->Close menu,
-  LyX now closes exclusively that specific view. If there are other
-  views showing the same document, they are not closed. When the user
-  closes the last view, LyX can be configured for either closing the
-  document, or keeping it in memory as a hidden document (that can be
-  shown again through the View->Hidden-> submenu).
-
-  A new configurable preference option has been added, allowing for
-  either (close_buffer_with_last_view).
-
-- There have been some changes to the LyX command line. The following
-  new options have been added:
-
-  --export-to <format> <dest>    (-E <format> <dest>)
-
-    Allows one to perform a batch export of the LyX file that is
-    opened to the specified destination file <dest> and format
-    <format>. For example, to create a PDF of a LyX document,
-    you can run:
-      lyx --export-to pdf /path/to/dest.pdf /path/to/source.lyx
-    See the manual page for details.
-
-    This functionality is also available via a new menu voice
-    Export->Export As..., that pops up a dialog allowing one to
-    choose the export format, as well as the destination pathname.
-    Also, it is available via the mini-buffer (or the -x switch)
-    through a proper new LFUN (see below).
-
-- The Advanced Find and Replace feature now supports cancel of a
-  long search operation by hitting the ESC key.
-
-- The format pdf aka "PDF (ps2pdf)" was split in two formats: pdf aka
-  "PDF (ps2pdf)" and pdf6 aka "PDF (graphics)". pdf6 is used for PDF
-  files included as graphics. Custom external templates and converters
-  might need to be adjusted. The format split was needed since otherwise
-  an odt->pdf converter which is intended for included graphics only
-  did interfere with document export via ps2pdf.
-
-- The support for ArmTeX (a special typesetting engine for Armenian)
-  was removed. Writing text in Armenian is now possible in a native
-  way using XeTeX.
 
 
-The following pref variables were added in 2.1:
-
-- \\close_buffer_with_last_view [yes|no|ask]
-  When the user closes the last view on a document, close the
-  document as well ("yes"), or hide the document ("no"), or ask
-  the user ("ask").
-
-- \\completion_minlength
-  Defines the minimal length of a word to be added to the list of
-  words for text completion.
-
-- \\default_length_unit
-  Defines the default length unit: 2 for centimers, 6 for inches.
-
-- \\default_otf_view_format
-  Defines the default output format for documents with non-tex
-  fonts (OpenType fonts).
-
-- \\fullscreen_statusbar
-  Controls whether the statusbar is shown in fullscreen mode.
-
-- \\texinputs_prefix
-  Defines the prefix for the TEXINPUTS environment variable. A
-  single '.' in the paths will get replaced with the current
-  document dir and also non-absolute paths will be prefixed with
-  that dir.
-
-  The default semantics of TEXINPUTS apply, such that, for example,
-  if a path is terminated with a double slash, all subdirectories
-  will also be searched by both the TeX engine and ancillary programs
-  such as dvi previewers or dvips.
-
-  (see also commit 1717ef20)
-
-- \\use_qimage
-  See Caveats section below.
-
-- \\use_system_theme_icons
-  If set to true, LyX tries to use the theme icons as defined by
-  the OS.
+The following pref variables were added in 2.2:
 
 
-The following pref variables were changed in 2.1:
 
-- \\mac_like_word_movement -> \\mac_like_cursor_movement
-  When this option is set, the cursor is now moved to the end of
-  the current paragraph on paragraph-down. The pref variable was
-  renamed to better reflect this new behaviour.
+The following pref variables were changed in 2.2:
 
 
-The following pref variables are obsoleted in 2.1:
 
-- \\default_language and \\default_papersize
-  To set the default language and paper size for new documents, use
-  the "Save As Document Defaults" button in Document > Settings.
+The following pref variables are obsoleted in 2.2:
+
 
 
 The following new LyX functions have been introduced:
 
-- ipa-insert
-  Inserts an IPA (International Phonetic Alphabet) inset.
-
-- ipamacro-insert <char>
-  Inserts special IPA macros into the document. <char> can be
-  one of 'tone-falling', 'tone-rising', 'tone-high-rising',
-  'tone-low-rising', 'tone-high-rising-falling', 'deco bottomtiebar',
-  'deco toptiebar'.
-
-- spelling-continuously
-  Toggles continuous spell-checking.
-
-- vc-rename
-- vc-copy
-  Renames or copies a file under version control.
-
-- buffer-forall <command>
-  Applies <command> to all non-hidden buffers.
-
-- environment-split
-  Splits the current environment with a Separator.
-
-- branch-master-activate <branch>
-- branch-master-deactivate <branch>
-  Activates or deactivates a branch in a master document from within
-  a child (as opposed to the existing branch-[de]activate, which
-  toggle the branch in the document itself).
-
-- buffer-export-as <format> <filename>
-  Equivalent to the new -export-to command-line switch (see above).
-
-- clipboard-paste-simple
-  Paste the clipboard contents as simple unformatted text.
-  This is also available through a new menu voice within the
-  [Edit]->[Paste Special...] sub-menu.
-
-- view-close
-  Close the current document view only, if there are no more views
-  on the document, either close or hide it (see the new preference
-  option \\close_buffer_with_last_view)
 
 
 The following LyX functions have been changed:
 
-- close-tab-group was renamed to tab-group-close.
-
-- split-view was renamed to view-split.
-
-- break-paragraph was renamed to paragraph-break.
-
-- copy-label-as-reference was renamed to label-copy-as-reference.
 
 
 The following LyX key bindings have been changed:
 
-- The binding "C-w" was moved from "buffer-close" to "view-close"
-  (only in cua.bind).
 
-- sciword.bind was changed significantly (see #8364). The most important
-  change is that "math-delim" commands now work under Windows.
 
 The following LyX documents have been moved:
 
-- All thesis template files and the svmult and svmono template files have been
-  moved to the examples folder.
 
 
 The following metadata files have been added to the tarball:
 
-- Linux desktop file specification and scalable icon has been
-  included in the tarball.
-
-- AppData file (appdata.xml). It will not be installed by default and
-  distribution maintainers need to handle this file themselves.
 
 
 Changes with respect to external programs and libraries:
 --------------------------------------------------------
 
-- LyX now links against libmagic (http://www.darwinsys.com/file/) if it is
-  available at compile time. This improves the file format detection of
-  included graphics and other files. The old builtin format detection code
-  is used if libmagic is not available.
-
-- LyX no longer uses gettext for handling the translation files. This
-  especially is an advantage on Windows, where translating strings is faster.
 
 - LyX is not yet supposed to work with Qt5. It is advised to compile and 
   run LyX against Qt 4.8.x. On Windows, Qt 4.8.5 suffers from a bug that 
   breaks the use of shortcuts, so on Windows Qt 4.8.4 is advised.
 
 
-Known issues in version 2.1.0
+Known issues in version 2.2.0
 -----------------------------
 
 - LyX needs to be run under Python 2 and will not work properly on systems
@@ -221,11 +58,6 @@ Known issues in version 2.1.0
   be enough.
 
 
-Caveats when upgrading from earlier versions to 2.1.x
+Caveats when upgrading from earlier versions to 2.2.x
 -------------------------------------------------------
-
-- In order to improve reported scrolling slowness, we changed the way
-  screen painting is done. This, however, can slow down the performance
-  on remote X connections and we provide the \\use_qimage preference
-  variable, which brings back the old way of painting (when set to false).
 
