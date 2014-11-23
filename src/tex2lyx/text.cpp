@@ -4395,8 +4395,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					case Length::MU:
 						known_unit = true;
 						break;
-					default:
+					default: {
+						//unitFromString(unit) fails for relative units like Length::PCW
+						// therefore handle them separately
+						if (unit == "\\paperwidth" || unit == "\\columnwidth"
+							|| unit == "\\textwidth" || unit == "\\linewidth"
+							|| unit == "\\textheight" || unit == "\\paperheight")
+							known_unit = true;
 						break;
+							 }
 					}
 				}
 			}
@@ -4420,9 +4427,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// Literal vertical length or known variable
 				context.check_layout(os);
 				begin_inset(os, "VSpace ");
-				if (known_unit)
-					os << value;
-				os << unit;
+				if (known_vspace)
+					os << unit;
+				if (known_unit && !known_vspace)
+					os << translate_len(length);
 				if (starred)
 					os << '*';
 				end_inset(os);
