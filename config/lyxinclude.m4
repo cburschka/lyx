@@ -39,16 +39,6 @@ esac
 AC_SUBST(lyx_devel_version)
 ])
 
-dnl If LyX is compiled from a git clone, find the HEAD commit hash
-dnl
-dnl
-AC_DEFUN([LYX_CHECK_GIT_COMMIT], [
-AC_MSG_CHECKING([for git commit hash])
-lyxgitcommit=`cd "$srcdir" && git log -1 --pretty=format:%H 2>/dev/null || true`
-test x$lyxgitcommit = x && lyxgitcommit="none"
-AC_MSG_RESULT($lyxgitcommit)
-])
-
 
 dnl Define the option to set a LyX version on installed executables and directories
 dnl

@@ -11,7 +11,8 @@ endif
 
 SUBDIRS = support frontends . $(CLIENT) tex2lyx
 
-EXTRA_DIST = pch.h \
+EXTRA_DIST = lyx_commit_hash.h.in \
+	pch.h \
 	CMakeLists.txt \
 	graphics/CMakeLists.txt \
 	insets/CMakeLists.txt \
@@ -302,6 +303,13 @@ HEADERFILESCORE = \
 STANDALONEFILES = \
 	Layout.cpp
 
+.PHONY: lyx_commit_hash.h
+
+lyx_commit_hash.h:
+	$(AM_V_GEN)hash=`cd "$(top_srcdir)" && git log -1 --pretty=format:%H 2>/dev/null || echo none` ; \
+        sed s/@LYX_GIT_COMMIT_HASH@/$$hash/ "$(srcdir)"/lyx_commit_hash.h.in >$@
+BUILT_SOURCES += lyx_commit_hash.h
+CLEANFILES += lyx_commit_hash.h
 
 lyxcore.cpp:
 	@echo -e '$(SOURCEFILESCORE:%=\n#include "%")\n' > $@
@@ -336,7 +344,7 @@ BUILT_SOURCES += $(MOCEDFILES)
 CLEANFILES += $(MOCEDFILES)
 
 moc_%.cpp: %.h
-	$(QT_MOC) $(MOCFLAG) -o $@ $<
+	$(AM_V_GEN)$(QT_MOC) $(MOCFLAG) -o $@ $<
 
 liblyxcore_a_DEPENDENCIES = $(MOCEDFILES)
 

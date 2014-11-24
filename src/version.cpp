@@ -10,11 +10,13 @@
  */
 
 #include <config.h>
+
 #if ! defined(LYX_DATE)
-	#include <lyx_date.h>
+#include "lyx_date.h"
 #endif
+
 #if ! defined(LYX_GIT_COMMIT_HASH)
-	#include <lyx_commit_hash.h>
+#include "lyx_commit_hash.h"
 #endif
 
 ///
