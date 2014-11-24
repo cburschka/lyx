@@ -4419,6 +4419,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			} else
 				is_gluelength = true;
 			// if yes transform "9xx minus 8yy plus 7zz"
+			// to "9xx-8yy+7zz"
 			if (is_gluelength) {
 				i = gluelength.find(" minus");
 				if (i != string::npos)
