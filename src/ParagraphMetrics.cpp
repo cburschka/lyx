@@ -105,7 +105,8 @@ size_t ParagraphMetrics::computeRowSignature(Row const & row,
 	                        static_cast<char_type>(row.sel_end),
 	                        row.begin_margin_sel,
 	                        row.end_margin_sel,
-	                        row.separator,
+	                        reinterpret_cast<char_type const *>(&row.separator)[0],
+	                        reinterpret_cast<char_type const *>(&row.separator)[1],
 	                        d.wid, d.asc, d.des };
 	crc.process_bytes(b, sizeof(b));
 
