@@ -147,7 +147,7 @@ static QString buildinfo()
 		out << qt_("  Git commit hash ")
 		    << QString(lyx_git_commit_hash).left(8) << endl;
 	out << toqstr(bformat(_("Built on %1$s[[date]], %2$s[[time]]"),
-		from_ascii(__DATE__), from_ascii(__TIME__))) << endl;
+		from_ascii(lyx_build_date), from_ascii(lyx_build_time))) << endl;
 
 	out << lyx_version_info << endl;
 	return res;

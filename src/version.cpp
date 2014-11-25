@@ -29,6 +29,11 @@ extern char const * const lyx_git_commit_hash = LYX_GIT_COMMIT_HASH;
 ///
 extern char const * const lyx_release_date = LYX_DATE;
 
+///
+extern char const * const lyx_build_date = __DATE__;
+///
+extern char const * const lyx_build_time = __TIME__;
+
 /// Package identifier (lyx[-<version-suffix>])
 extern char const * const lyx_package = PACKAGE;
 

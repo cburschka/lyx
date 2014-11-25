@@ -18,7 +18,8 @@ bin_PROGRAMS = tex2lyx
 DEFAULT_INCLUDES =
 
 AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src/tex2lyx \
-	-I$(top_srcdir)/src -I$(top_builddir) $(BOOST_INCLUDES)
+	-I$(top_srcdir)/src -I$(top_builddir) -I$(top_builddir)/src \
+	$(BOOST_INCLUDES)
 
 TEST_FILES = \
 	test/runtests.cmake \

@@ -532,7 +532,7 @@ typedef int (*cmd_helper)(string const &, string const &);
 
 int parse_help(string const &, string const &)
 {
-	cerr << "Usage: tex2lyx [options] infile.tex [outfile.lyx]\n"
+	cout << "Usage: tex2lyx [options] infile.tex [outfile.lyx]\n"
 		"Options:\n"
 		"\t-c textclass       Declare the textclass.\n"
 		"\t-m mod1[,mod2...]  Load the given modules.\n"
@@ -563,11 +563,12 @@ int parse_help(string const &, string const &)
 
 int parse_version(string const &, string const &)
 {
-	lyxerr << "tex2lyx " << lyx_version
-	       << " (" << lyx_release_date << ")" << endl;
-	lyxerr << "Built on " << __DATE__ << ", " << __TIME__ << endl;
+	cout << "tex2lyx " << lyx_version
+	     << " (" << lyx_release_date << ")" << endl;
+	cout << "Built on " << lyx_build_date << ", " << lyx_build_time
+	     << endl;
 
-	lyxerr << lyx_version_info << endl;
+	cout << lyx_version_info << endl;
 	exit(error_code);
 }
 

@@ -1150,7 +1150,7 @@ int parse_version(string const &, string const &, string &)
 		cout << to_utf8(_("  Git commit hash "))
 		     << string(lyx_git_commit_hash).substr(0,8) << endl;
 	cout << to_utf8(bformat(_("Built on %1$s[[date]], %2$s[[time]]"),
-		from_ascii(__DATE__), from_ascii(__TIME__))) << endl;
+		from_ascii(lyx_build_date), from_ascii(lyx_build_time))) << endl;
 	cout << lyx_version_info << endl;
 	exit(0);
 	return 0;
