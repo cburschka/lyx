@@ -3070,6 +3070,10 @@ def convert_beamerblocks(document):
             parend = parent[2]
             j = parend
             if i != -1:
+                # If the paragraph starts with a language switch, adjust parbeg
+                if len(document.body[parbeg]) == 0 and parbeg < parend \
+                and document.body[parbeg + 1].startswith("\\lang"):
+                    parbeg += 2
                 if document.body[parbeg] == "\\begin_inset ERT":
                     ertcontfirstline = parbeg + 5
                     lastertbeg = -1
