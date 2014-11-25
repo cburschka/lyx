@@ -105,6 +105,9 @@ What's new
 
 - Fix import of chunk insets containing newlines (bug 9300).
 
+- Fix import of ERT beamer block titles which are preceeded by a
+  language switch.
+
 
 * USER INTERFACE
 
