@@ -1334,39 +1334,36 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		else if (t.cs() == "\\") {
 			if (flags & FLAG_ALIGN)
 				return success_;
-			bool added = false;
+			bool starred = false;
+			docstring arg;
 			if (nextToken().asInput() == "*") {
 				getToken();
-				added = addRow(grid, cellrow, docstring(), false);
-			} else {
-				// skip "{}" added in front of "[" (the
-				// counterpart is in InsetMathGrid::eolString())
-				// skip spaces because formula could come from tex2lyx
-				bool skipBraces = false;
-				pushPosition();
-				skipSpaces();
-				if (nextToken().cat() == catBegin) {
+				starred = true;
+			} else if (nextToken().asInput() == "[")
+				arg = getArg('[', ']');
+			else if (!good())
+				error("missing token after \\\\");
+			// skip "{}" added in front of "[" (the
+			// counterpart is in InsetMathGrid::eolString())
+			// skip spaces because formula could come from tex2lyx
+			bool skipBraces = false;
+			pushPosition();
+			if (nextToken().cat() == catBegin) {
+				getToken();
+				if (nextToken().cat() == catEnd) {
 					getToken();
+					pushPosition();
 					skipSpaces();
-					if (nextToken().cat() == catEnd) {
-						getToken();
-						skipSpaces();
-						if (nextToken().asInput() == "[")
-							skipBraces = true;
-					}
-				}
-				if (skipBraces)
-					dropPosition();
-				else
+					if (nextToken().asInput() == "[")
+						skipBraces = true;
 					popPosition();
-				if (good()) {
-					docstring arg;
-					if (!skipBraces)
-						arg = getArg('[', ']');
-					added = addRow(grid, cellrow, arg);
-				} else
-					error("missing token after \\\\");
+				}
 			}
+			if (skipBraces)
+				dropPosition();
+			else
+				popPosition();
+			bool const added = addRow(grid, cellrow, arg, !starred);
 			if (added) {
 				cellcol = 0;
 				if (grid.asHullInset())
