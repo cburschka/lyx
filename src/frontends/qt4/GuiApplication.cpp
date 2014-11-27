@@ -1809,7 +1809,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		Buffer * const last = theBufferList().last();
 		foreach (GuiView * view, allViews) {
 			// all of the buffers might be locally hidden. That is, there is no active buffer.
-			if (!view || !view->currentBufferView() || !&view->currentBufferView()->buffer())
+			if (!view || !view->currentBufferView())
 				activeBuffers[view] = 0;
 			else
 				activeBuffers[view] = &view->currentBufferView()->buffer();

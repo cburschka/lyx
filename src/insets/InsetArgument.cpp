@@ -59,7 +59,7 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 {
 	Layout::LaTeXArgMap args = it.paragraph().layout().args();
 	pass_thru_ = it.paragraph().layout().pass_thru;
-	bool const insetlayout = &it.inset() && args.empty();
+	bool const insetlayout = args.empty();
 	if (insetlayout) {
 		args = it.inset().getLayout().args();
 		pass_thru_ = it.inset().getLayout().isPassThru();
@@ -190,7 +190,7 @@ bool InsetArgument::getStatus(Cursor & cur, FuncRequest const & cmd,
 				return true;
 			}
 			Layout::LaTeXArgMap args;
-			bool const insetlayout = &cur.inset() && cur.paragraph().layout().latexargs().empty();
+			bool const insetlayout = cur.paragraph().layout().latexargs().empty();
 			if (insetlayout)
 				args = cur.inset().getLayout().latexargs();
 			else

@@ -227,8 +227,7 @@ bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 			bool varia = type != "LongTableNoNumber";
 			// check if the immediate parent inset allows caption variation
 			if (cur.depth() > 1) {
-				if (&cur[cur.depth() - 2].inset())
-					varia = cur[cur.depth() - 2].inset().allowsCaptionVariation(type);
+				varia = cur[cur.depth() - 2].inset().allowsCaptionVariation(type);
 			}
 			status.setEnabled(varia
 					  && buffer().params().documentClass().hasInsetLayout(
