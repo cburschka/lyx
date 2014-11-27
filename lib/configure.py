@@ -727,10 +727,10 @@ def checkConverterEntries():
     #       will also have this version suffix.
     #   4)  Otherwise always use tex2lyx.
     in_binary_subdir = os.path.join(lyx_binary_dir, 'tex2lyx', 'tex2lyx')
-    in_binary_subdir = os.path.abspath(in_binary_subdir)
+    in_binary_subdir = os.path.abspath(in_binary_subdir).replace('\\', '/')
 
     in_binary_dir = os.path.join(lyx_binary_dir, 'tex2lyx')
-    in_binary_dir = os.path.abspath(in_binary_dir)
+    in_binary_dir = os.path.abspath(in_binary_dir).replace('\\', '/')
 
     path, t2l = checkProg('a LaTeX/Noweb -> LyX converter', [in_binary_subdir, in_binary_subdir + version_suffix, in_binary_dir, in_binary_dir + version_suffix, 'tex2lyx' + version_suffix, 'tex2lyx'],
         rc_entry = [r'''\converter latex      lyx        "%% -f $$i $$o"	""
