@@ -4688,7 +4688,7 @@ def revert_chunks(document):
             continue
 
         # Look for optional argument
-        have_optarg = False
+        optarg = ""
         ostart = find_token(document.body, "\\begin_inset Argument 1", i, iend)
         if ostart != -1:
             oend = find_end_of_inset(document.body, ostart)
@@ -4698,7 +4698,6 @@ def revert_chunks(document):
             else:
                 m = find_end_of_layout(document.body, k)
                 optarg = "".join(document.body[k+1:m])
-                have_optarg = True
 
             # We now remove the optional argument, so we have something
             # uniform on which to work
@@ -4727,8 +4726,7 @@ def revert_chunks(document):
             k = j
         # we now need to wrap all of these paragraphs in chunks
         newlines = []
-        if have_optarg:
-            newlines.extend(["\\begin_layout Chunk", "", "<<" + optarg + ">>=", "\\end_layout", ""])
+        newlines.extend(["\\begin_layout Chunk", "", "<<" + optarg + ">>=", "\\end_layout", ""])
         for stuff in parlist:
             newlines.extend(["\\begin_layout Chunk"] + stuff + ["\\end_layout", ""])
         newlines.extend(["\\begin_layout Chunk", "", "@", "\\end_layout", ""])
