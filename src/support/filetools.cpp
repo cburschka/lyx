@@ -703,8 +703,15 @@ string latexEnvCmdPrefix(string const & path)
 		return "env TEXINPUTS=\"." + sep + texinputs_prefix
 					  + sep + texinputs + "\" ";
 	else
-		return "cmd /d /c set TEXINPUTS=." + sep + texinputs_prefix
-						   + sep + texinputs + "&";
+#ifndef USE_QPROCESS
+		return "cmd /d /c set \"TEXINPUTS=."
+						+ sep + texinputs_prefix
+						+ sep + texinputs + "\"&";
+#else
+		return "cmd /d /c set \"\"\"TEXINPUTS=."
+						+ sep + texinputs_prefix
+						+ sep + texinputs + "\"\"\"&";
+#endif
 }
 
 
