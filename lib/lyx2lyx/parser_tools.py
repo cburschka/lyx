@@ -470,13 +470,12 @@ def get_containing_layout(lines, i):
       # shouldn't happen
       return False
   par_params = ["\\noindent", "\\indent", "\\indent-toggle", "\\leftindent",
-                "\\start_of_appendix", "\\paragraph_spacing single",
-                "\\paragraph_spacing onehalf", "\\paragraph_spacing double",
-                "\\paragraph_spacing other", "\\align", "\\labelwidthstring"]
+                "\\start_of_appendix", "\\paragraph_spacing", "\\align",
+                "\\labelwidthstring"]
   stpar = stlay
   while True:
       stpar += 1
-      if lines[stpar] not in par_params:
+      if lines[stpar].split(' ', 1)[0] not in par_params:
           break
   return (lay, stlay, endlay, stpar)
 
