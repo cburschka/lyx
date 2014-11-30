@@ -74,8 +74,8 @@ bool VCS::makeRCSRevision(string const &version, string &revis) const
 		// if positive use as the last number in the whole revision string
 		if (back > 0) {
 			string base;
-			rsplit(version, base , '.' );
-			rev = base + "." + rev;
+			rsplit(version, base , '.');
+			rev = base + '.' + rev;
 		}
 		if (back == 0)
 			rev = version;
@@ -83,14 +83,14 @@ bool VCS::makeRCSRevision(string const &version, string &revis) const
 		// in case of backward indexing
 		if (back < 0) {
 			string cur, base;
-			cur = rsplit(version, base , '.' );
+			cur = rsplit(version, base , '.');
 			if (!isStrInt(cur))
 				return false;
 			int want = convert<int>(cur) + back;
 			if (want <= 0)
 				return false;
-			
-			rev = base + "." + convert<string>(want);
+
+			rev = base + '.' + convert<string>(want);
 		}
 	}
 
@@ -359,7 +359,7 @@ bool RCS::lockingToggleEnabled()
 
 bool RCS::revert()
 {
-	if (doVCCommand("co -f -u" + version_ + " "
+	if (doVCCommand("co -f -u" + version_ + ' '
 		    + quoteName(onlyFileName(owner_->absFileName())),
 		    FileName(owner_->filePath())))
 		return false;
@@ -379,7 +379,7 @@ bool RCS::isRevertWithConfirmation()
 void RCS::undoLast()
 {
 	LYXERR(Debug::LYXVC, "LyXVC: undoLast");
-	doVCCommand("rcs -o" + version_ + " "
+	doVCCommand("rcs -o" + version_ + ' '
 		    + quoteName(onlyFileName(owner_->absFileName())),
 		    FileName(owner_->filePath()));
 }
@@ -482,7 +482,7 @@ bool RCS::prepareFileRevision(string const &revis, string & f)
 	if (!VCS::makeRCSRevision(version_, rev))
 		return false;
 
-	TempFile tempfile("lyxvcrev_" + rev + "_");
+	TempFile tempfile("lyxvcrev_" + rev + '_');
 	tempfile.setAutoRemove(false);
 	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
@@ -490,7 +490,7 @@ bool RCS::prepareFileRevision(string const &revis, string & f)
 		return false;
 	}
 
-	doVCCommand("co -p" + rev + " "
+	doVCCommand("co -p" + rev + ' '
 	              + quoteName(onlyFileName(owner_->absFileName()))
 		      + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		FileName(owner_->filePath()));
@@ -638,7 +638,7 @@ docstring CVS::toString(CvsStatus status) const
 	case StatusError:
 		return _("Cannot retrieve CVS status");
 	}
-	return 0;
+	return docstring();
 }
 
 
@@ -679,7 +679,7 @@ CVS::CvsStatus CVS::getStatus()
 	while (ifs) {
 		string line;
 		getline(ifs, line);
-		LYXERR(Debug::LYXVC, line << "\n");
+		LYXERR(Debug::LYXVC, line << '\n');
 		if (prefixIs(line, "File:")) {
 			if (contains(line, "Up-to-date"))
 				status = UpToDate;
@@ -707,22 +707,22 @@ void CVS::getRevisionInfo()
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return;
 	}
-	
-	int rc = doVCCommandCallWithOutput("cvs log -r" + version_ 
-		+ " " + getTarget(File),
+
+	int rc = doVCCommandCallWithOutput("cvs log -r" + version_
+		+ ' ' + getTarget(File),
 		FileName(owner_->filePath()), tmpf);
 	if (rc) {
 		LYXERR(Debug::LYXVC, "cvs log failed with exit code " << rc);
 		return;
 	}
-	
+
 	ifstream ifs(tmpf.toFilesystemEncoding().c_str());
 	static regex const reg("date: (.*) (.*) (.*);  author: (.*);  state: (.*);(.*)");
 
 	while (ifs) {
 		string line;
 		getline(ifs, line);
-		LYXERR(Debug::LYXVC, line << "\n");
+		LYXERR(Debug::LYXVC, line << '\n');
 		if (prefixIs(line, "date:")) {
 			smatch sm;
 			regex_match(line, sm, reg);
@@ -826,7 +826,7 @@ string CVS::scanLogFile(FileName const & f, string & status)
 	while (ifs) {
 		string line;
 		getline(ifs, line);
-		LYXERR(Debug::LYXVC, line << "\n");
+		LYXERR(Debug::LYXVC, line << '\n');
 		if (!line.empty())
 			status += line + "; ";
 		if (prefixIs(line, "C ")) {
@@ -910,7 +910,7 @@ string CVS::checkOut()
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return string();
 	}
-	
+
 	int rc = update(File, tmpf);
 	string log;
 	string const res = scanLogFile(tmpf, log);
@@ -922,7 +922,7 @@ string CVS::checkOut()
 				from_local8bit(res)));
 		rc = 0;
 	}
-	
+
 	return rc ? string() : log.empty() ? "CVS: Proceeded" : "CVS: " + log;
 }
 
@@ -944,7 +944,7 @@ string CVS::repoUpdate()
 		LYXERR(Debug::LYXVC, "Could not generate logfile " << tmpf);
 		return string();
 	}
-	
+
 	getDiff(Directory, tmpf);
 	docstring res = tmpf.fileContents("UTF-8");
 	if (!res.empty()) {
@@ -956,13 +956,13 @@ string CVS::repoUpdate()
 				"or you will need to revert back to the repository version."), file);
 		int ret = frontend::Alert::prompt(_("Changes detected"),
 				text, 0, 1, _("&Continue"), _("&Abort"), _("View &Log ..."));
-		if (ret == 2 ) {
+		if (ret == 2) {
 			dispatch(FuncRequest(LFUN_DIALOG_SHOW, "file " + tmpf.absFileName()));
 			ret = frontend::Alert::prompt(_("Changes detected"),
 				text, 0, 1, _("&Continue"), _("&Abort"));
 			hideDialogs("file", 0);
 		}
-		if (ret == 1 )
+		if (ret == 1)
 			return string();
 	}
 
@@ -1107,7 +1107,7 @@ bool CVS::prepareFileRevision(string const & revis, string & f)
 	if (!VCS::makeRCSRevision(version_, rev))
 		return false;
 
-	TempFile tempfile("lyxvcrev_" + rev + "_");
+	TempFile tempfile("lyxvcrev_" + rev + '_');
 	tempfile.setAutoRemove(false);
 	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
@@ -1115,7 +1115,7 @@ bool CVS::prepareFileRevision(string const & revis, string & f)
 		return false;
 	}
 
-	doVCCommandWithOutput("cvs update -p -r" + rev + " "
+	doVCCommandWithOutput("cvs update -p -r" + rev + ' '
 		+ getTarget(File),
 		FileName(owner_->filePath()), tmpf);
 	if (tmpf.isFileEmpty())
@@ -1401,8 +1401,8 @@ string SVN::scanLogFile(FileName const & f, string & status)
 
 	while (ifs) {
 		getline(ifs, line);
-		LYXERR(Debug::LYXVC, line << "\n");
-		if (!line.empty()) 
+		LYXERR(Debug::LYXVC, line << '\n');
+		if (!line.empty())
 			status += line + "; ";
 		if (prefixIs(line, "C ") || prefixIs(line, "CU ")
 					 || contains(line, "Commit failed")) {
@@ -1515,13 +1515,13 @@ string SVN::repoUpdate()
 				"\n\nContinue?"), file);
 		int ret = frontend::Alert::prompt(_("Changes detected"),
 				text, 0, 1, _("&Yes"), _("&No"), _("View &Log ..."));
-		if (ret == 2 ) {
+		if (ret == 2) {
 			dispatch(FuncRequest(LFUN_DIALOG_SHOW, "file " + tmpf.absFileName()));
 			ret = frontend::Alert::prompt(_("Changes detected"),
 				text, 0, 1, _("&Yes"), _("&No"));
 			hideDialogs("file", 0);
 		}
-		if (ret == 1 )
+		if (ret == 1)
 			return string();
 	}
 
@@ -1578,7 +1578,7 @@ string SVN::lockingToggle()
 		return string();
 
 	frontend::Alert::warning(_("SVN File Locking"),
-		(locking ? _("Locking property unset.") : _("Locking property set.")) + "\n"
+		(locking ? _("Locking property unset.") : _("Locking property set.")) + '\n'
 		+ _("Do not forget to commit the locking property into the repository."),
 		true);
 
@@ -1771,7 +1771,7 @@ bool SVN::prepareFileRevision(string const & revis, string & f)
 	}
 
 	string revname = convert<string>(rev);
-	TempFile tempfile("lyxvcrev_" + revname + "_");
+	TempFile tempfile("lyxvcrev_" + revname + '_');
 	tempfile.setAutoRemove(false);
 	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
@@ -1779,7 +1779,7 @@ bool SVN::prepareFileRevision(string const & revis, string & f)
 		return false;
 	}
 
-	doVCCommand("svn cat -r " + revname + " "
+	doVCCommand("svn cat -r " + revname + ' '
 	              + quoteName(onlyFileName(owner_->absFileName()))
 		      + " > " + quoteName(tmpf.toFilesystemEncoding()),
 		FileName(owner_->filePath()));
@@ -2011,7 +2011,7 @@ string GIT::scanLogFile(FileName const & f, string & status)
 	while (ifs) {
 		getline(ifs, line);
 		LYXERR(Debug::LYXVC, line << "\n");
-		if (!line.empty()) 
+		if (!line.empty())
 			status += line + "; ";
 		if (prefixIs(line, "C ") || prefixIs(line, "CU ")
 					 || contains(line, "Commit failed")) {
@@ -2218,9 +2218,9 @@ bool GIT::prepareFileRevision(string const & revis, string & f)
 	else
 		pointer = revis;
 
-	pointer += ":";
+	pointer += ':';
 
-	TempFile tempfile("lyxvcrev_" + revis + "_");
+	TempFile tempfile("lyxvcrev_" + revis + '_');
 	tempfile.setAutoRemove(false);
 	FileName tmpf = tempfile.name();
 	if (tmpf.empty()) {
