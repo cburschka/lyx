@@ -66,7 +66,7 @@ void InsetMathFont::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetMathFont::draw(PainterInfo & pi, int x, int y) const
 {
-	FontSetChanger dummy(pi.base, key_->name.c_str());
+	FontSetChanger dummy(pi.base, key_->name);
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 	setPosCache(pi, x, y);
