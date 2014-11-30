@@ -14,8 +14,6 @@
 
 #include "InsetMath.h"
 
-#include "support/docstring.h"
-
 
 namespace lyx {
 
@@ -24,7 +22,7 @@ class InsetMathUnknown : public InsetMath {
 public:
 	///
 	explicit InsetMathUnknown(docstring const & name,
-		docstring const & selection = docstring(),
+		docstring const & selection = empty_docstring(),
 		bool final = true, bool black = false);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;

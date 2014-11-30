@@ -12,7 +12,7 @@
 #ifndef LYX_ALERT_H
 #define LYX_ALERT_H
 
-#include "support/docstring.h"
+#include "support/strfwd.h"
 
 
 namespace lyx {
@@ -33,8 +33,8 @@ namespace Alert {
 int prompt(docstring const & title, docstring const & question,
 	   int default_button, int cancel_button,
 	   docstring const & b1, docstring const & b2,
-	   docstring const & b3 = docstring(),
-	   docstring const & b4 = docstring());
+	   docstring const & b3 = empty_docstring(),
+	   docstring const & b4 = empty_docstring());
 
 /**
  * Display a warning to the user. Title should be a short (general) summary.
@@ -65,7 +65,7 @@ void information(docstring const & title, docstring const & message);
  * (even empty string). dflt stands for default message in the dialog.
  */
 bool askForText(docstring & response, docstring const & msg,
-	docstring const & dflt = docstring());
+	docstring const & dflt = empty_docstring());
 
 } // namespace Alert
 } // namespace frontend
