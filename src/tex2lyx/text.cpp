@@ -2828,7 +2828,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				preamble.registerAutomaticallyLoadedPackage(*it);
 		}
 
-		else if (t.cs() == "caption") {
+		else if (t.cs() == "caption" || t.cs() == "captionabove" ||
+			t.cs() == "captionbelow") {
 			bool starred = false;
 			if (p.next_token().asInput() == "*") {
 				p.get_token();
@@ -2837,14 +2838,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.skip_spaces();
 			context.check_layout(os);
 			p.skip_spaces();
-			if (starred)
+			if (starred && t.cs() == "caption")
 				begin_inset(os, "Caption LongTableNoNumber\n");
-			else
+			else if (t.cs() == "caption")
 				begin_inset(os, "Caption Standard\n");
+			else if (t.cs() == "captionabove")
+				begin_inset(os, "Caption Above\n");
+			else if (t.cs() == "captionbelow")
+				begin_inset(os, "Caption Below\n");
 			Context newcontext(true, context.textclass, 0, 0, context.font);
 			newcontext.check_layout(os);
-			// FIXME InsetArgument is now properly implemented in InsetLayout
-			//       (for captions, but also for others)
 			if (p.next_token().cat() != catEscape &&
 			    p.next_token().character() == '[') {
 				p.get_token(); // eat '['
@@ -3427,15 +3430,26 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (is_known(t.cs(), known_phrases) ||
 		         (t.cs() == "protect" &&
 		          p.next_token().cat() == catEscape &&
-		          is_known(p.next_token().cs(), known_phrases))) {
-			// LyX sometimes puts a \protect in front, so we have to ignore it
-			// FIXME: This needs to be changed when bug 4752 is fixed.
-			where = is_known(
-				t.cs() == "protect" ? p.get_token().cs() : t.cs(),
-				known_phrases);
-			context.check_layout(os);
-			os << known_coded_phrases[where - known_phrases];
-			skip_spaces_braces(p);
+		          is_known(p.next_token().cs(), known_phrases)) ||
+				 (t.cs() == "protect" &&
+			      (p.next_token().cs() == "caption" ||
+				   p.next_token().cs() == "captionabove" ||
+				   p.next_token().cs() == "captionbelow"))) {
+			if (p.next_token().cs() == "caption" ||
+				p.next_token().cs() == "captionabove" ||
+				p.next_token().cs() == "captionbelow")
+				// we must ignore if \protect is in front of \caption*
+				;
+			else {
+				// LyX sometimes puts a \protect in front, so we have to ignore it
+				// FIXME: This needs to be changed when bug 4752 is fixed.
+				where = is_known(
+					t.cs() == "protect" ? p.get_token().cs() : t.cs(),
+					known_phrases);
+				context.check_layout(os);
+				os << known_coded_phrases[where - known_phrases];
+				skip_spaces_braces(p);
+			}
 		}
 
 		// handle refstyle first to catch \eqref which can also occur
