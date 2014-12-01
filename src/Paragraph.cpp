@@ -2208,36 +2208,37 @@ string correction(string const & orig)
 }
 
 
-string const corrected_env(string const & suffix, string const & env,
-	InsetCode code, bool const lastpar)
+bool corrected_env(otexstream & os, string const & suffix, string const & env,
+	InsetCode code, bool const lastpar, int & col)
 {
-	string output = suffix + "{";
+	string macro = suffix + "{";
 	if (noTrivlistCentering(code)) {
 		if (lastpar) {
 			// the last paragraph in non-trivlist-aligned
 			// context is special (to avoid unwanted whitespace)
-			if (suffix == "\\begin")
-				return "\\" + correction(env) + "{}";
-			return string();
+			if (suffix == "\\begin") {
+				macro = "\\" + correction(env) + "{}";
+				os << from_ascii(macro);
+				col += macro.size();
+				return true;
+			}
+			return false;
 		}
-		output += correction(env);
+		macro += correction(env);
 	} else
-		output += env;
-	output += "}";
-	if (suffix == "\\begin")
-		output += "\n";
-	return output;
-}
-
-
-void adjust_column(string const & str, int & column)
-{
-	if (!contains(str, "\n"))
-		column += str.size();
-	else {
-		string tmp;
-		column = rsplit(str, tmp, '\n').size();
+		macro += env;
+	macro += "}";
+	if (suffix == "\\par\\end") {
+		os << breakln;
+		col = 0;
 	}
+	os << from_ascii(macro);
+	col += macro.size();
+	if (suffix == "\\begin") {
+		os << breakln;
+		col = 0;
+	}
+	return true;
 }
 
 } // namespace anon
@@ -2288,28 +2289,20 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 	case LYX_ALIGN_DECIMAL:
 		break;
 	case LYX_ALIGN_LEFT: {
-		string output;
 		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
-			output = corrected_env(begin_tag, "flushleft", code, lastpar);
+			corrected_env(os, begin_tag, "flushleft", code, lastpar, column);
 		else
-			output = corrected_env(begin_tag, "flushright", code, lastpar);
-		os << from_ascii(output);
-		adjust_column(output, column);
+			corrected_env(os, begin_tag, "flushright", code, lastpar, column);
 		break;
 	} case LYX_ALIGN_RIGHT: {
 		string output;
 		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
-			output = corrected_env(begin_tag, "flushright", code, lastpar);
+			corrected_env(os, begin_tag, "flushright", code, lastpar, column);
 		else
-			output = corrected_env(begin_tag, "flushleft", code, lastpar);
-		os << from_ascii(output);
-		adjust_column(output, column);
+			corrected_env(os, begin_tag, "flushleft", code, lastpar, column);
 		break;
 	} case LYX_ALIGN_CENTER: {
-		string output;
-		output = corrected_env(begin_tag, "center", code, lastpar);
-		os << from_ascii(output);
-		adjust_column(output, column);
+		corrected_env(os, begin_tag, "center", code, lastpar, column);
 		break;
 	}
 	}
@@ -2341,8 +2334,9 @@ bool Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 		break;
 	}
 
-	string output;
-	string const end_tag = "\n\\par\\end";
+	bool output = false;
+	int col = 0;
+	string const end_tag = "\\par\\end";
 	InsetCode code = ownerCode();
 	bool const lastpar = runparams.isLastPar;
 
@@ -2355,26 +2349,23 @@ bool Paragraph::Private::endTeXParParams(BufferParams const & bparams,
 		break;
 	case LYX_ALIGN_LEFT: {
 		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
-			output = corrected_env(end_tag, "flushleft", code, lastpar);
+			output = corrected_env(os, end_tag, "flushleft", code, lastpar, col);
 		else
-			output = corrected_env(end_tag, "flushright", code, lastpar);
-		os << from_ascii(output);
+			output = corrected_env(os, end_tag, "flushright", code, lastpar, col);
 		break;
 	} case LYX_ALIGN_RIGHT: {
 		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
-			output = corrected_env(end_tag, "flushright", code, lastpar);
+			output = corrected_env(os, end_tag, "flushright", code, lastpar, col);
 		else
-			output = corrected_env(end_tag, "flushleft", code, lastpar);
-		os << from_ascii(output);
+			output = corrected_env(os, end_tag, "flushleft", code, lastpar, col);
 		break;
 	} case LYX_ALIGN_CENTER: {
-		output = corrected_env(end_tag, "center", code, lastpar);
-		os << from_ascii(output);
+		corrected_env(os, end_tag, "center", code, lastpar, col);
 		break;
 	}
 	}
 
-	return !output.empty() || lastpar;
+	return output || lastpar;
 }
 
 
