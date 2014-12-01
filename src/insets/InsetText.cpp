@@ -433,6 +433,8 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 	// environment. Standard collapsable insets should not
 	// redefine this, non-standard ones may call this.
 	InsetLayout const & il = getLayout();
+	if (il.forceOwnlines())
+		os << breakln;
 	if (!il.latexname().empty()) {
 		if (il.latextype() == InsetLayout::COMMAND) {
 			// FIXME UNICODE
@@ -495,11 +497,13 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 				os << breakln;
 			else
 				os << safebreakln;
-			os << "\\end{" << from_utf8(il.latexname()) << "}\n";
+			os << "\\end{" << from_utf8(il.latexname()) << "}" << breakln;
 			if (!il.isDisplay())
 				os.protectSpace(true);
 		}
 	}
+	if (il.forceOwnlines())
+		os << breakln;
 }
 
 

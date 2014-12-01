@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 476
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 479
 \begin_document
 \begin_header
 \textclass scrbook
@@ -17019,6 +17019,59 @@ g.
 
 in TeX code or URL.
  A kludge.
+\change_inserted -712698321 1417441977
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1417442090
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1417441983
+ForceOwnlines
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1417441978
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1417441978
+1
+\end_layout
+
+\end_inset
+
+] Force a a line break in the LaTeX output before the inset starts and after
+ the inset ends.
+ This assures the inset itself is output on its own lines, for parsing purposes.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -23533,7 +23586,7 @@ name "chap:List-of-functions"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="8">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">

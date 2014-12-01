@@ -6,7 +6,7 @@
 # Note that this file is included in sweave.module,
 # knitr.module and noweb.module.
 
-Format 49
+Format 52
 
 Counter chunk
     PrettyFormat "Chunk ##"
@@ -23,15 +23,15 @@ InsetLayout "Flex:Chunk"
       Color              latex
       Family             typewriter
     EndFont
-    #LabelFont
-      #Color              latex
-      #Size               Small
-    #EndFont
-      MultiPar            true
+#   LabelFont
+#      Color              latex
+#      Size               Small
+#   EndFont
+    MultiPar              true
     CustomPars            false
     ForcePlain            true
-      PassThru            1
-      ParbreakIsNewline   1
+    PassThru              1
+    ParbreakIsNewline     1
     KeepEmpty             true
     Spellcheck            0
     FreeSpacing           true
@@ -43,5 +43,6 @@ InsetLayout "Flex:Chunk"
             LeftDelim     <<
             RightDelim    >>=<br/>
     EndArgument
-    ResetsFont false
+    ResetsFont            false
+    ForceOwnlines         true
 End

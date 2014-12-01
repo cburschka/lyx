@@ -164,6 +164,8 @@ public:
 	///
 	bool forceLTR() const { return forceltr_; }
 	///
+	bool forceOwnlines() const { return forceownlines_; }
+	///
 	bool isInToc() const { return intoc_; }
 	///
 	bool spellcheck() const { return spellcheck_; }
@@ -261,6 +263,8 @@ private:
 	bool keepempty_;
 	///
 	bool forceltr_;
+	///
+	bool forceownlines_;
 	///
 	bool needprotect_;
 	/// should the contents be written to TOC strings?

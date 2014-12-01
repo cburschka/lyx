@@ -89,6 +89,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_FONT,
 		IL_FORCE_LOCAL_FONT_SWITCH,
 		IL_FORCELTR,
+		IL_FORCEOWNLINES,
 		IL_FORCEPLAIN,
 		IL_FREESPACING,
 		IL_HTMLTAG,
@@ -139,6 +140,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "font", IL_FONT },
 		{ "forcelocalfontswitch", IL_FORCE_LOCAL_FONT_SWITCH },
 		{ "forceltr", IL_FORCELTR },
+		{ "forceownlines", IL_FORCEOWNLINES },
 		{ "forceplain", IL_FORCEPLAIN },
 		{ "freespacing", IL_FREESPACING },
 		{ "htmlattr", IL_HTMLATTR },
@@ -255,6 +257,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_FORCELTR:
 			lex >> forceltr_;
+			break;
+		case IL_FORCEOWNLINES:
+			lex >> forceownlines_;
 			break;
 		case IL_INTOC:
 			lex >> intoc_;

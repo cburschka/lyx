@@ -171,6 +171,9 @@ import os, re, string, sys
 # Incremented to format 51, 29 May 2014 by spitz
 # New Style tag "ToggleIndent"
 
+# Incremented to format 52, 1 December 2014 by spitz
+# New InsetLayout tag "ForceOwnlines"
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -178,7 +181,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.py script to update all
 # layout files to the new format.
 
-currentFormat = 51
+currentFormat = 52
 
 
 def usage(prog_name):
@@ -402,7 +405,7 @@ def convert(lines):
                 i += 1
             continue
 
-        if format == 50:
+        if format == 50 or format == 51:
             # nothing to do.
             i += 1
             continue
