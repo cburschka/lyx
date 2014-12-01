@@ -4621,10 +4621,23 @@ def convert_chunks(document):
             # We have stripped everything. This can be deleted.
             contents.pop(0)
 
-        newstuff = ['\\begin_layout Standard',
-                    '\\begin_inset Flex Chunk',
-                    'status open', '',
-                    '\\begin_layout Plain Layout', '']
+        newstuff = ['\\begin_layout Standard']
+
+        # Maintain paragraph parameters
+        par_params = ["\\noindent", "\\indent", "\\indent-toggle", "\\leftindent",
+                      "\\start_of_appendix", "\\paragraph_spacing", "\\align",
+                      "\\labelwidthstring"]
+        parms = start + 1
+        while True:
+            if document.body[parms].split(' ', 1)[0] not in par_params:
+                break
+            newstuff.extend([document.body[parms]])
+            parms += 1
+
+        newstuff.extend(
+            ['\\begin_inset Flex Chunk',
+             'status open', '',
+             '\\begin_layout Plain Layout', ''])
 
         # If we have a non-empty optional argument, insert it.
         if match and optarg != "":
