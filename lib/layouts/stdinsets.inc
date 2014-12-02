@@ -84,8 +84,31 @@ InsetLayout Foot:InTitle
 	NeedProtect           true
 	Counter               thanks
 	MultiPar              false
-	# FIXME: this is probably not correct
-	HTMLLabel             \arabic{thanks}
+	HTMLLabel             \fnsymbol{thanks}
+	HTMLInnerTag          span
+	HTMLStyle
+		span.foot_intitle_label {
+			vertical-align: super;
+			font-size: smaller;
+			font-weight: bold;
+			text-decoration: underline;
+		}
+		span.foot_intitle {
+			display: inline;
+			font-size: small;
+			font-weight: medium;
+			font-family: serif;
+			font-variant: normal;
+			font-style: normal;
+		}
+		span.foot_intitle_inner { display: none; }
+		span.foot_intitle:hover span.foot_intitle_inner {
+			display: block;
+			border: 1px double black;
+			margin: 0em 1em;
+			padding: 1em;
+		}
+	EndHTMLStyle
 End
 
 InsetLayout Note:Comment
