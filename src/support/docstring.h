@@ -19,13 +19,6 @@
 
 namespace lyx {
 
-/**
- * String type for storing the main text in UCS4 encoding.
- * Use std::string only in cases 7-bit ASCII is to be manipulated
- * within the variable.
- */
-typedef std::basic_string<char_type> docstring;
-
 /// Creates a docstring from a C string of ASCII characters
 docstring const from_ascii(char const *);
 

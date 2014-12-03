@@ -68,7 +68,11 @@ typedef basic_ostringstream<char, char_traits<char>, allocator<char> > ostringst
 
 namespace lyx {
 
-/// String type for storing the main text in UCS4 encoding
+/**
+ * String type for storing the main text in UCS4 encoding.
+ * Use std::string only in cases 7-bit ASCII is to be manipulated
+ * within the variable.
+ */
 typedef std::basic_string<char_type, std::char_traits<char_type>,
 	std::allocator<char_type> > docstring;
 
