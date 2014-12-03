@@ -1731,7 +1731,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				else if (content == "\\bigskipamount")
 					h_defskip = "bigskip";
 				else
-					h_defskip = content;
+					h_defskip = translate_len(content);
 			} else
 				h_preamble << "\\setlength{" << name << "}{" << content << "}";
 		}
