@@ -137,8 +137,8 @@ const char * const known_kurier_fonts[] = { "kurier", "kurierl",
 "kurier-condensed", "kurier-light-condensed", 0};
 
 const char * const known_typewriter_fonts[] = { "beramono", "cmtl", "cmtt",
-"courier", "lmtt", "luximono", "fourier", "lmodern", "mathpazo", "mathptmx",
-"newcent", "tgcursor", "txtt", 0};
+"courier", "lmtt", "luximono", "fourier", "libertineMono-type1", "lmodern",
+"mathpazo", "mathptmx", "newcent", "tgcursor", "txtt", 0};
 
 const char * const known_math_fonts[] = { "eulervm", "newtxmath", 0};
 
@@ -727,14 +727,19 @@ void Preamble::handle_package(Parser &p, string const & name,
 	// sansserif fonts
 	if (is_known(name, known_sans_fonts)) {
 		h_font_sans = name;
-		if (options.size() == 1) {
+		if (options.size() >= 1) {
 			if (scale_as_percentage(opts, h_font_sf_scale))
 				options.clear();
 		}
 	}
 
-	if (name == "biolinum-type1")
+	if (name == "biolinum-type1") {
 		h_font_sans = "biolinum";
+		// biolinum can have several options, e.g. [osf,scaled=0.97]
+		string::size_type pos = opts.find("osf");
+		if (pos != string::npos)
+			h_font_osf = "true";
+	}
 
 	// typewriter fonts
 	if (is_known(name, known_typewriter_fonts)) {
@@ -742,11 +747,15 @@ void Preamble::handle_package(Parser &p, string const & name,
 		// fourier as typewriter is handled in handling of \ttdefault
 		if (name != "fourier") {
 			h_font_typewriter = name;
-			if (options.size() == 1) {
+			if (options.size() >= 1) {
 				if (scale_as_percentage(opts, h_font_tt_scale))
 					options.clear();
 			}
 		}
+	}
+
+	if (name == "libertineMono-type1") {
+		h_font_typewriter = "libertine-mono";
 	}
 
 	// font uses old-style figure

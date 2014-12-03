@@ -79,13 +79,6 @@ Format LaTeX feature                        LyX feature
 459    beamer: \begin{frame},               \begin_layout Frame
        \begin{frame}[plain],                \begin_layout PlainFrame
        \begin{frame}[fragile]               \begin_layout FragileFrame
-462    New libertine LaTeX fonts:
-       \usepackage[scale|scaled|ttscale=$val]{libertineMono-type1}
-                                            \font_typewriter
-                                            \font_tt_scale
-       \usepackage[scale|scaled=$val]{biolinum-type1}
-                                            \font_sans
-                                            \font_sf_scale
 466   Powerdot updates:                     
       \pause[]                              layout Pause
       \onslide{}{}                          InsetFlex, InsetArgument
