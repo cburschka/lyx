@@ -357,7 +357,9 @@ Lines can have a left arrow fill \leftarrowfill in the middle.
 Lines can have a right arrow fill \rightarrowfill in the middle.
 Lines can have a upbrace fill \upbracefill in the middle.
 Lines can have a downbrace fill \downbracefill in the middle.
-Lines can have space \hspace{2cm} in the middle.
+Lines can have an absolute space \hspace{2cm} in the middle.
+Lines can have a relative space \hspace{0.12\textwidth} in the middle.
+Lines can have a glue-length space \hspace{2cm plus 2mm minus 1mm} in the middle.
 Lines can have protected space \hspace*{2cm} in the middle.
 
 We also handle defined spaces:
@@ -421,7 +423,9 @@ interword: $a\ b$
 Lines can have a vfill \vfill in the middle.
 Lines can have a vfill \vspace{\fill} in the middle.
 Lines can have a protected vfill \vspace*{\fill} in the middle.
-Lines can have vertical space \vspace{2cm} in the middle.
+Lines can have a vertical absolute space \vspace{2cm} in the middle.
+Lines can have a vertical relative space \vspace{0.09\columnwidth} in the middle.
+Lines can have a vertical glue-length space \vspace{2cm minus 2bp plus 1cc} in the middle.
 Lines can have protected vertical space \vspace*{2cm} in the middle.
 
 We also handle skips:

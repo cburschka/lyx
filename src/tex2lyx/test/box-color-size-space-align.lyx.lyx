@@ -1694,9 +1694,19 @@ in the middle. Lines can have a downbrace fill
 
 \end_inset
 
-in the middle. Lines can have space 
+in the middle. Lines can have an absolute space 
 \begin_inset space \hspace{}
 \length 2cm
+\end_inset
+
+ in the middle. Lines can have a relative space 
+\begin_inset space \hspace{}
+\length 12text%
+\end_inset
+
+ in the middle. Lines can have a glue-length space 
+\begin_inset space \hspace{}
+\length 2cm+2mm-1mm
 \end_inset
 
  in the middle. Lines can have protected space 
@@ -2006,8 +2016,16 @@ in the middle. Lines can have a vfill
 \begin_inset VSpace vfill*
 \end_inset
 
- in the middle. Lines can have vertical space 
+ in the middle. Lines can have a vertical absolute space 
 \begin_inset VSpace 2cm
+\end_inset
+
+ in the middle. Lines can have a vertical relative space 
+\begin_inset VSpace 9col%
+\end_inset
+
+ in the middle. Lines can have a vertical glue-length space 
+\begin_inset VSpace 2cm-2bp+1cc
 \end_inset
 
  in the middle. Lines can have protected vertical space 

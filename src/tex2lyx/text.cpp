@@ -4406,13 +4406,41 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					case Length::MU:
 						known_unit = true;
 						break;
-					default:
+					default: {
+						//unitFromString(unit) fails for relative units like Length::PCW
+						// therefore handle them separately
+						if (unit == "\\paperwidth" || unit == "\\columnwidth"
+							|| unit == "\\textwidth" || unit == "\\linewidth"
+							|| unit == "\\textheight" || unit == "\\paperheight")
+							known_unit = true;
 						break;
+							 }
 					}
 				}
 			}
 
-			if (t.cs()[0] == 'h' && (known_unit || known_hspace)) {
+			// check for glue lengths
+			bool is_gluelength = false;
+			string gluelength = length;
+			string::size_type i = length.find(" minus");
+			if (i == string::npos) {
+				i = length.find(" plus");
+				if (i != string::npos)
+					is_gluelength = true;
+			} else
+				is_gluelength = true;
+			// if yes transform "9xx minus 8yy plus 7zz"
+			// to "9xx-8yy+7zz"
+			if (is_gluelength) {
+				i = gluelength.find(" minus");
+				if (i != string::npos)
+					gluelength.replace(i, 7, "-");
+				i = gluelength.find(" plus");
+				if (i != string::npos)
+					gluelength.replace(i, 6, "+");
+			}
+
+			if (t.cs()[0] == 'h' && (known_unit || known_hspace || is_gluelength)) {
 				// Literal horizontal length or known variable
 				context.check_layout(os);
 				begin_inset(os, "space ");
@@ -4424,16 +4452,20 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					os << unit;
 				os << "}";
 				if (known_unit && !known_hspace)
-					os << "\n\\length "
-					   << translate_len(length);
+					os << "\n\\length " << translate_len(length);
+				if (is_gluelength)
+					os << "\n\\length " << gluelength;
 				end_inset(os);
-			} else if (known_unit || known_vspace) {
+			} else if (known_unit || known_vspace || is_gluelength) {
 				// Literal vertical length or known variable
 				context.check_layout(os);
 				begin_inset(os, "VSpace ");
-				if (known_unit)
-					os << value;
-				os << unit;
+				if (known_vspace)
+					os << unit;
+				if (known_unit && !known_vspace)
+					os << translate_len(length);
+				if (is_gluelength)
+					os << gluelength;
 				if (starred)
 					os << '*';
 				end_inset(os);
