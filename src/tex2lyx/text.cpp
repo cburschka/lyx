@@ -2848,6 +2848,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				begin_inset(os, "Caption Below\n");
 			Context newcontext(true, context.textclass, 0, 0, context.font);
 			newcontext.check_layout(os);
+			// FIXME InsetArgument is now properly implemented in InsetLayout
+			//       (for captions, but also for others)
 			if (p.next_token().cat() != catEscape &&
 			    p.next_token().character() == '[') {
 				p.get_token(); // eat '['
