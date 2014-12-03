@@ -1295,7 +1295,7 @@ void InsetMathHull::normalize(NormalStream & os) const
 
 void InsetMathHull::infoize(odocstream & os) const
 {
-	os << "Type: " << hullName(type_);
+	os << bformat(_("Type: %1$s"), hullName(type_));
 }
 
 

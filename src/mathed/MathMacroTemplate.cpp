@@ -1361,7 +1361,7 @@ size_t MathMacroTemplate::numOptionals() const
 
 void MathMacroTemplate::infoize(odocstream & os) const
 {
-	os << "Math Macro: \\" << name();
+	os << bformat(_("Math Macro: \\%1$s"), name());
 }
 
 

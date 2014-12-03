@@ -16,8 +16,12 @@
 #include "MathStream.h"
 #include "MathStream.h"
 
+#include "support/gettext.h"
+#include "support/lstrings.h"
+
 #include <ostream>
 
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -61,7 +65,7 @@ void InsetMathEnv::normalize(NormalStream & os) const
 
 void InsetMathEnv::infoize(odocstream & os) const
 {
-	os << "Env: " << name_;
+	os << bformat(_("Environment: %1$s"), name_);
 }
 
 

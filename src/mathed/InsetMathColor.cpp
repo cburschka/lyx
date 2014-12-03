@@ -19,8 +19,12 @@
 #include "MathSupport.h"
 #include "MetricsInfo.h"
 
+#include "support/gettext.h"
+#include "support/lstrings.h"
+
 #include <ostream>
 
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -95,7 +99,7 @@ void InsetMathColor::normalize(NormalStream & os) const
 
 void InsetMathColor::infoize(odocstream & os) const
 {
-	os << "Color: " << color_;
+	os << bformat(_("Color: %1$s"), color_);
 }
 
 
