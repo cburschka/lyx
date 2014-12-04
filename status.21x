@@ -103,6 +103,8 @@ What's new
 - Fix crash on exporting a recursive math macro (bug 9140). Recursive macros
   are invalid, so typesetting will still fail with "TeX capacity exceeded".
 
+- Protect insets when needed in subfloat captions (bug 9346).
+
 
 * LYX2LYX
 
