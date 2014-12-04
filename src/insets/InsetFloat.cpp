@@ -337,8 +337,9 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 		if (runparams_in.moving_arg)
 			os << "\\protect";
 		os << "\\subfloat";
-	
+
 		OutputParams rp = runparams_in;
+		rp.moving_arg = true;
 		docstring const caption = getCaption(rp);
 		if (!caption.empty()) {
 			os << caption;
@@ -347,7 +348,7 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 		rp.inFloat = OutputParams::SUBFLOAT;
 		InsetText::latex(os, rp);
 		os << "}";
-	
+
 		return;
 	}
 	OutputParams runparams(runparams_in);
