@@ -15,6 +15,7 @@
 
 #ifdef STD_STRING_USES_COW
 #include <algorithm>
+#include <ostream>
 
 using namespace std;
 
