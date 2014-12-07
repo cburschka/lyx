@@ -100,9 +100,9 @@ template <typename Char> bool operator==(Char const * lhs, trivial_string<Char> 
 template <typename Char>
 std::basic_ostream<Char, std::char_traits<Char> > &
 operator<<(std::basic_ostream<Char, std::char_traits<Char> > &, trivial_string<Char> const &);
+
+} // namespace lyx
 #else
 #include <string>
 #endif
-
-} // namespace lyx
 #endif
