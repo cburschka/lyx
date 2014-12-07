@@ -82,6 +82,7 @@ CharInfo::CharInfo(
 {
 }
 
+
 Encoding::Encoding(string const & n, string const & l, string const & g,
 		   string const & i, bool f, bool u, Encoding::Package p)
 	: name_(n), latexName_(l), guiName_(g), iconvName_(i), fixedwidth_(f),
@@ -451,7 +452,7 @@ docstring Encodings::fromLaTeXCommand(docstring const & cmd, int cmdtype,
 				   || (tmp.size() == prefix + 1 &&
 				       !isAlphaASCII(tmp[1]) &&
 				       (prefix == 1 || !isAlphaASCII(tmp[2])))
-				   || k == cmdend 
+				   || k == cmdend
 				   || !isAlphaASCII(cmd[k])
 				   || tmp[tmp.size() - 1] == '}'
 				 ) {
@@ -660,7 +661,7 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 		if (!symbolslex.next(true))
 			break;
 		string sflags = symbolslex.getString();
-		
+
 		string tipashortcut;
 		int flags = 0;
 
