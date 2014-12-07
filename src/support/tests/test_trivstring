@@ -1,0 +1,7 @@
+#!/bin/sh
+
+regfile=`cat ${srcdir}/tests/regfiles/trivstring`
+output=`./check_trivstring`
+
+test "$regfile" = "$output"
+exit $?
