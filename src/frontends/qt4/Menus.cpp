@@ -1206,7 +1206,7 @@ void MenuDefinition::expandFlexInsert(
 		if (cit->second.lyxtype() == type) {
 			docstring label = cit->first;
 			// we remove the "Flex:" prefix, if it is present
-			if (prefixIs(label, from_utf8("Flex:")))
+			if (prefixIs(label, from_ascii("Flex:")))
 				label = label.substr(5);
 			addWithStatusCheck(MenuItem(MenuItem::Command,
 				toqstr(translateIfPossible(label)),
