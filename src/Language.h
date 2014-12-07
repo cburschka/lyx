@@ -16,6 +16,7 @@
 #define LANGUAGE_H
 
 #include "support/docstring.h"
+#include "support/trivstring.h"
 
 #include <map>
 
@@ -33,21 +34,21 @@ public:
 	///
 	Language() : rightToLeft_(false) {}
 	/// LyX language name
-	std::string const & lang() const { return lang_; }
+	std::string const lang() const { return lang_; }
 	/// Babel language name
-	std::string const & babel() const { return babel_; }
+	std::string const babel() const { return babel_; }
 	/// polyglossia language name
-	std::string const & polyglossia() const { return polyglossia_name_; }
+	std::string const polyglossia() const { return polyglossia_name_; }
 	/// polyglossia language options
-	std::string const & polyglossiaOpts() const { return polyglossia_opts_; }
+	std::string const polyglossiaOpts() const { return polyglossia_opts_; }
 	/// Is this language only supported by polyglossia?
 	bool isPolyglossiaExclusive() const;
 	/// quotation marks style
-	std::string const & quoteStyle() const { return quote_style_; }
+	std::string const quoteStyle() const { return quote_style_; }
 	/// requirement (package, function)
-	std::string const & requires() const { return requires_; }
+	std::string const requires() const { return requires_; }
 	/// translatable GUI name
-	std::string const & display() const { return display_; }
+	std::string const display() const { return display_; }
 	/// is this a RTL language?
 	bool rightToLeft() const { return rightToLeft_; }
 	/**
@@ -60,19 +61,19 @@ public:
 	/// default encoding
 	Encoding const * encoding() const { return encoding_; }
 	///
-	std::string const & encodingStr() const { return encodingStr_; }
+	std::string const encodingStr() const { return encodingStr_; }
 	/// language code
-	std::string const & code() const { return code_; }
+	std::string const code() const { return code_; }
 	/// set code (needed for rc.spellchecker_alt_lang)
 	void setCode(std::string const & c) { code_ = c; }
 	/// language variety (needed by aspell checker)
-	std::string const & variety() const { return variety_; }
+	std::string const variety() const { return variety_; }
 	/// set variety (needed for rc.spellchecker_alt_lang)
 	void setVariety(std::string const & v) { variety_ = v; }
 	/// preamble settings after babel was called
-	std::string const & babel_postsettings() const { return babel_postsettings_; }
+	std::string const babel_postsettings() const { return babel_postsettings_; }
 	/// preamble settings before babel is called
-	std::string const & babel_presettings() const { return babel_presettings_; }
+	std::string const babel_presettings() const { return babel_presettings_; }
 	/// This language internally sets a font encoding
 	bool internalFontEncoding() const { return internal_enc_; }
 	/// This language needs to be passed to babel itself (not the class)
@@ -82,40 +83,40 @@ public:
 	///
 	bool readLanguage(Lexer & lex);
 	///
-	typedef std::map<std::string, docstring> TranslationMap;
+	typedef std::map<trivstring, trivdocstring> TranslationMap;
 	///
 	void readLayoutTranslations(TranslationMap const & trans, bool replace);
 	// for the use in std::map
 	friend bool operator<(Language const & p, Language const & q);
 private:
 	///
-	std::string lang_;
+	trivstring lang_;
 	///
-	std::string babel_;
+	trivstring babel_;
 	///
-	std::string polyglossia_name_;
+	trivstring polyglossia_name_;
 	///
-	std::string polyglossia_opts_;
+	trivstring polyglossia_opts_;
 	///
-	std::string quote_style_;
+	trivstring quote_style_;
 	///
-	std::string requires_;
+	trivstring requires_;
 	///
-	std::string display_;
+	trivstring display_;
 	///
 	bool rightToLeft_;
 	///
-	std::string encodingStr_;
+	trivstring encodingStr_;
 	///
 	Encoding const * encoding_;
 	///
-	std::string code_;
+	trivstring code_;
 	///
-	std::string variety_;
+	trivstring variety_;
 	///
-	std::string babel_postsettings_;
+	trivstring babel_postsettings_;
 	///
-	std::string babel_presettings_;
+	trivstring babel_presettings_;
 	///
 	bool internal_enc_;
 	///
@@ -135,7 +136,7 @@ class Languages
 {
 public:
 	///
-	typedef std::map<std::string, Language> LanguageList;
+	typedef std::map<trivstring, Language> LanguageList;
 	///
 	typedef LanguageList::const_iterator const_iterator;
 	///

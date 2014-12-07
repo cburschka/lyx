@@ -14,6 +14,7 @@
 #define ENCODING_H
 
 #include "support/docstring.h"
+#include "support/trivstring.h"
 #include "support/types.h"
 
 #include <map>
@@ -29,7 +30,7 @@ public:
 	EncodingException(char_type c);
 	virtual ~EncodingException() throw() {}
 	virtual const char * what() const throw();
- 
+
 	char_type failed_char;
 	int par_id;
 	pos_type pos;
@@ -94,15 +95,15 @@ public:
 	///
 private:
 	/// LaTeX command (text mode) for this character
-	docstring textcommand_;
+	trivdocstring textcommand_;
 	/// LaTeX command (math mode) for this character
-	docstring mathcommand_;
+	trivdocstring mathcommand_;
 	/// Needed LaTeX preamble (or feature) for text mode
-	std::string textpreamble_;
+	trivstring textpreamble_;
 	/// Needed LaTeX preamble (or feature) for math mode
-	std::string mathpreamble_;
+	trivstring mathpreamble_;
 	/// TIPA shortcut
-	std::string tipashortcut_;
+	trivstring tipashortcut_;
 	/// feature flags
 	unsigned int flags_;
 };
@@ -129,13 +130,13 @@ public:
 	///
 	void init() const;
 	///
-	std::string const & name() const { return name_; }
+	std::string const name() const { return name_; }
 	///
-	std::string const & latexName() const { return latexName_; }
+	std::string const latexName() const { return latexName_; }
 	///
-	std::string const & guiName() const { return guiName_; }
+	std::string const guiName() const { return guiName_; }
 	///
-	std::string const & iconvName() const { return iconvName_; }
+	std::string const iconvName() const { return iconvName_; }
 	///
 	bool hasFixedWidth() const { return fixedwidth_; }
 	///
@@ -178,13 +179,13 @@ private:
 	 */
 	bool isForced(char_type c) const;
 	///
-	std::string name_;
+	trivstring name_;
 	///
-	std::string latexName_;
+	trivstring latexName_;
 	///
-	std::string guiName_;
+	trivstring guiName_;
 	///
-	std::string iconvName_;
+	trivstring iconvName_;
 	/// Is this a fixed width encoding?
 	bool fixedwidth_;
 	/// Is this encoding TeX unsafe, e.g. control characters like {, }
@@ -222,7 +223,7 @@ public:
 	///
 	typedef std::set<char_type> MathSymbolSet;
 	///
-	typedef std::map<std::string, Encoding> EncodingList;
+	typedef std::map<trivstring, Encoding> EncodingList;
 	/// iterator to iterate over all encodings.
 	/// We hide the fact that our encoding list is implemented as a map.
 	class const_iterator : public EncodingList::const_iterator {
