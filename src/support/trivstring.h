@@ -14,6 +14,7 @@
 
 #include "support/strfwd.h"
 
+#ifdef STD_STRING_USES_COW
 #include <cstdlib>
 
 namespace lyx {
@@ -31,6 +32,9 @@ namespace lyx {
  * This class should not be used for anything else than providing thread-safety.
  * It should be removed as soon as LyX requires C++11, and all supported STL
  * implementations provide a C++11 conformant std::basic_string.
+ *
+ * If you change anything in this class please ensure that the unit test
+ * tests/check_trivstring.cpp still tests 100% of the public interface.
  */
 template <typename Char> class trivial_string
 {
@@ -56,7 +60,7 @@ public:
 	/// Is this string ordered before, at the same position or after \p other?
 	int compare(trivial_string const & other) const;
 	/// Create a copy as std::basic_string
-	std::basic_string<Char, std::char_traits<Char>, std::allocator<Char> > str() const;
+	operator std::basic_string<Char, std::char_traits<Char>, std::allocator<Char> >() const;
 	/// Return a C-compatible string, terminated by a 0 character.
 	/// This is never a copy and only valid for the life time of the trivial_string instance.
 	Char const * c_str() const;
@@ -80,8 +84,25 @@ private:
 	/// The character storage
 	Char * data_;
 };
-template <typename Char> bool operator<(trivial_string<Char> const & lhs, trivial_string<Char> const &rhs);
 
+
+/// Comparison operator (needed for std::set etc)
+template <typename Char> bool operator<(trivial_string<Char> const & lhs, trivial_string<Char> const & rhs);
+
+
+/// Equality operator
+template <typename Char> bool operator==(trivial_string<Char> const & lhs, trivial_string<Char> const & rhs);
+template <typename Char> bool operator==(trivial_string<Char> const & lhs, Char const * rhs);
+template <typename Char> bool operator==(Char const * lhs, trivial_string<Char> const & rhs);
+
+
+/// Stream output operator
+template <typename Char>
+std::basic_ostream<Char, std::char_traits<Char> > &
+operator<<(std::basic_ostream<Char, std::char_traits<Char> > &, trivial_string<Char> const &);
+#else
+#include <string>
+#endif
 
 } // namespace lyx
 #endif

@@ -297,6 +297,7 @@ if test x$GXX = xyes; then
 	      ;;
       esac
   fi
+  AC_DEFINE(STD_STRING_USES_COW, 1, [std::string uses copy-on-write])
 fi
 test "$lyx_pch_comp" = yes && lyx_flags="$lyx_flags pch"
 AM_CONDITIONAL(LYX_BUILD_PCH, test "$lyx_pch_comp" = yes)

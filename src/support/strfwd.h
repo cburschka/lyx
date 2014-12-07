@@ -95,6 +95,15 @@ std::string const & empty_string();
 // defined in docstring.cpp
 bool operator==(docstring const &, char const *);
 
+#ifdef STD_STRING_USES_COW
+template<typename Char> class trivial_string;
+typedef trivial_string<char> trivstring;
+typedef trivial_string<char_type> trivdocstring;
+#else
+typedef std::string trivstring;
+typedef docstring trivdocstring;
+#endif
+
 } // namespace lyx
 
 #endif

@@ -28,7 +28,7 @@ include_directories(
 	${ZLIB_INCLUDE_DIR})
 
 
-set(check_PROGRAMS check_convert check_filetools check_lstrings)
+set(check_PROGRAMS check_convert check_filetools check_lstrings check_trivstring)
 
 file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/regfiles")
 

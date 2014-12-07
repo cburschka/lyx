@@ -101,6 +101,8 @@ liblyxsupport_a_SOURCES = \
 	Translator.h \
 	Timeout.cpp \
 	Timeout.h \
+	trivstring.cpp \
+	trivstring.h \
 	types.h \
 	userinfo.cpp \
 	userinfo.h \
@@ -143,18 +145,21 @@ EXTRA_DIST += \
 	tests/test_lstrings \
 	tests/regfiles/convert \
 	tests/regfiles/filetools \
-	tests/regfiles/lstrings
+	tests/regfiles/lstrings \
+	tests/regfiles/trivstring
 
 
 TESTS = \
 	tests/test_convert \
 	tests/test_filetools \
-	tests/test_lstrings
+	tests/test_lstrings \
+	tests/test_trivstring
 
 check_PROGRAMS = \
 	check_convert \
 	check_filetools \
-	check_lstrings
+	check_lstrings \
+	check_trivstring
 
 if INSTALL_MACOSX
 ADD_FRAMEWORKS = -framework QtGui -framework QtCore -framework AppKit -framework ApplicationServices
@@ -178,6 +183,13 @@ check_lstrings_LDADD = liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) $(QT_CORE_LIBS)
 check_lstrings_LDFLAGS = $(QT_CORE_LDFLAGS) $(ADD_FRAMEWORKS)
 check_lstrings_SOURCES = \
 	tests/check_lstrings.cpp \
+	tests/dummy_functions.cpp \
+	tests/boost.cpp
+
+check_trivstring_LDADD = liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) $(QT_CORE_LIBS) $(LIBSHLWAPI) @LIBS@
+check_trivstring_LDFLAGS = $(QT_CORE_LDFLAGS) $(ADD_FRAMEWORKS)
+check_trivstring_SOURCES = \
+	tests/check_trivstring.cpp \
 	tests/dummy_functions.cpp \
 	tests/boost.cpp
 

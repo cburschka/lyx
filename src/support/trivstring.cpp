@@ -13,6 +13,7 @@
 #include "support/trivstring.h"
 #include "support/docstring.h"
 
+#ifdef STD_STRING_USES_COW
 #include <algorithm>
 
 using namespace std;
@@ -136,11 +137,10 @@ int trivial_string<Char>::compare(trivial_string const & other) const
 }
 
 
-template string trivial_string<char>::str() const;
-template docstring trivial_string<char_type>::str() const;
+template trivial_string<char>::operator string() const;
+template trivial_string<char_type>::operator docstring() const;
 template<typename Char>
-basic_string<Char, char_traits<Char>, allocator<Char> >
-trivial_string<Char>::str() const
+trivial_string<Char>::operator basic_string<Char, char_traits<Char>, allocator<Char> >() const
 {
 	if (use_sso())
 		return basic_string<Char, char_traits<Char>, allocator<Char> >(
@@ -172,9 +172,49 @@ template bool operator<(trivial_string<char> const &,
 template bool operator<(trivial_string<char_type> const &,
                         trivial_string<char_type> const &);
 template <typename Char>
-bool operator<(trivial_string<Char> const & lhs, trivial_string<Char> const &rhs)
+bool operator<(trivial_string<Char> const & lhs, trivial_string<Char> const & rhs)
 {
 	return lhs.compare(rhs) < 0;
 }
 
+
+template bool operator==(trivial_string<char> const &,
+                         trivial_string<char> const &);
+template bool operator==(trivial_string<char_type> const &,
+                         trivial_string<char_type> const &);
+template <typename Char>
+bool operator==(trivial_string<Char> const & lhs, trivial_string<Char> const & rhs)
+{
+	return lhs.compare(rhs) == 0; 
+}
+
+
+template bool operator==(trivial_string<char> const &, char const *);
+template bool operator==(trivial_string<char_type> const &, char_type const *);
+template <typename Char>
+bool operator==(trivial_string<Char> const & lhs, Char const * rhs)
+{
+	return lhs.compare(trivial_string<Char>(rhs)) == 0; 
+}
+
+
+template bool operator==(char const *, trivial_string<char> const &);
+template bool operator==(char_type const *, trivial_string<char_type> const &);
+template <typename Char>
+bool operator==(Char const * lhs, trivial_string<Char> const & rhs)
+{
+	return rhs.compare(trivial_string<Char>(lhs)) == 0; 
+}
+
+
+template ostream & operator<<(ostream &, trivial_string<char> const &);
+template odocstream & operator<<(odocstream &, trivial_string<char_type> const &);
+template <typename Char>
+basic_ostream<Char, char_traits<Char> > &
+operator<<(basic_ostream<Char, char_traits<Char> > & os, trivial_string<Char> const & s)
+{
+	return os << basic_string<Char, char_traits<Char>, allocator<Char> >(s);
+}
+
 } // namespace lyx
+#endif
