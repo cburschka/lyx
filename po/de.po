@@ -96,9 +96,9 @@ msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-12-04 09:45+0100\n"
-"PO-Revision-Date: 2014-12-04 09:47+0100\n"
+"PO-Revision-Date: 2014-12-07 14:37+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
-"Language-Team: German <lyx-devel@lists.lyx.org>\n"
+"Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25770,12 +25770,12 @@ msgstr "Benutzerverzeichnis: "
 #: src/frontends/qt4/GuiAbout.cpp:129
 #, c-format
 msgid "Qt Version (run-time): %1$s"
-msgstr "Qt-Version (Runtime): %1$s"
+msgstr "Qt-Version (Laufzeit): %1$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:130
 #, c-format
 msgid "Qt Version (compile-time): %1$s"
-msgstr "Qt-Version (Compile-Zeit): %1$s"
+msgstr "Qt-Version (bei Erstellung): %1$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:156
 msgid "About LyX"
