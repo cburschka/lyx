@@ -538,7 +538,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 
 	// Create an InProgress instance to place in the map of all
 	// such processes if it starts correctly.
-	InProgress inprogress(filename_base, pending_, pconverter_->to);
+	InProgress inprogress(filename_base, pending_, pconverter_->to());
 
 	// clear pending_, so we're ready to start afresh.
 	pending_.clear();
@@ -585,7 +585,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	
 	// The conversion command.
 	ostringstream cs;
-	cs << pconverter_->command
+	cs << pconverter_->command()
 	   << " " << quoteName(latexfile.toFilesystemEncoding())
 	   << " --dpi " << int(font_scaling_factor);
 

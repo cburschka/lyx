@@ -356,16 +356,16 @@ static void build_script(string const & from_file,
 		// Build the conversion command
 		string const infile      = outfile;
 		string const infile_base = changeExtension(infile, string());
-		outfile = conv.result_file.empty()
-			? addExtension(to_base, conv.To->extension())
-			: addName(subst(conv.result_dir,
+		outfile = conv.result_file().empty()
+			? addExtension(to_base, conv.To()->extension())
+			: addName(subst(conv.result_dir(),
 					token_base, infile_base),
-				  subst(conv.result_file,
+				  subst(conv.result_file(),
 					token_base, onlyFileName(infile_base)));
 
 		// If two formats share the same extension we may get identical names
-		if (outfile == infile && conv.result_file.empty()) {
-			TempFile tempfile(addExtension("gconvertXXXXXX", conv.To->extension()));
+		if (outfile == infile && conv.result_file().empty()) {
+			TempFile tempfile(addExtension("gconvertXXXXXX", conv.To()->extension()));
 			tempfile.setAutoRemove(false);
 			outfile = tempfile.name().toFilesystemEncoding();
 		}
@@ -381,7 +381,7 @@ static void build_script(string const & from_file,
 
 		// See comment about extra " quotes above (although that
 		// applies only for the first loop run here).
-		string command = conv.command;
+		string command = conv.command();
 		command = subst(command, token_from,  "' + '\"' + infile + '\"' + '");
 		command = subst(command, token_base,  "' + '\"' + infile_base + '\"' + '");
 		command = subst(command, token_to,    "' + '\"' + outfile + '\"' + '");

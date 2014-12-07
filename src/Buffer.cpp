@@ -3988,7 +3988,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 		Graph::EdgePath::const_iterator it = path.begin();
 		Graph::EdgePath::const_iterator en = path.end();
 		for (; it != en; ++it)
-			if (theConverters().get(*it).nice) {
+			if (theConverters().get(*it).nice()) {
 				need_nice_file = true;
 				break;
 			}

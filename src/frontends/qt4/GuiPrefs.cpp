@@ -232,7 +232,7 @@ QString browseRelToSub(QString const & filename, QString const & relpath,
 
 	QString testname = reloutname;
 	testname.remove(QRegExp("^(\\.\\./)+"));
-	
+
 	if (testname.contains("/"))
 		return outname;
 	else
@@ -600,8 +600,8 @@ void PrefInput::on_scrollzoomEnableCB_toggled(bool enabled)
 {
 	scrollzoomValueCO->setEnabled(enabled);
 }
-	
-	
+
+
 /////////////////////////////////////////////////////////////////////
 //
 // PrefCompletion
@@ -1097,7 +1097,7 @@ namespace {
 struct ColorSorter
 {
 	bool operator()(ColorCode lhs, ColorCode rhs) const {
-		return 
+		return
 			compare_no_case(lcolor.getGUIName(lhs), lcolor.getGUIName(rhs)) < 0;
 	}
 };
@@ -1541,12 +1541,12 @@ void PrefSpellchecker::update(LyXRC const & rc)
 void PrefSpellchecker::on_spellcheckerCB_currentIndexChanged(int index)
 {
 	QString spellchecker = spellcheckerCB->itemData(index).toString();
-	
+
 	compoundWordCB->setEnabled(spellchecker == QString("aspell"));
 }
-	
-	
-	
+
+
+
 /////////////////////////////////////////////////////////////////////
 //
 // PrefConverters
@@ -1634,8 +1634,8 @@ void PrefConverters::updateGui()
 	Converters::const_iterator cend = form_->converters().end();
 	for (; ccit != cend; ++ccit) {
 		QString const name =
-			qt_(ccit->From->prettyname()) + " -> " + qt_(ccit->To->prettyname());
-		int type = form_->converters().getNumber(ccit->From->name(), ccit->To->name());
+			qt_(ccit->From()->prettyname()) + " -> " + qt_(ccit->To()->prettyname());
+		int type = form_->converters().getNumber(ccit->From()->name(), ccit->To()->name());
 		new QListWidgetItem(name, convertersLW, type);
 	}
 	convertersLW->sortItems(Qt::AscendingOrder);
@@ -1661,10 +1661,10 @@ void PrefConverters::switchConverter()
 {
 	int const cnr = convertersLW->currentItem()->type();
 	Converter const & c(form_->converters().get(cnr));
-	converterFromCO->setCurrentIndex(form_->formats().getNumber(c.from));
-	converterToCO->setCurrentIndex(form_->formats().getNumber(c.to));
-	converterED->setText(toqstr(c.command));
-	converterFlagED->setText(toqstr(c.flags));
+	converterFromCO->setCurrentIndex(form_->formats().getNumber(c.from()));
+	converterToCO->setCurrentIndex(form_->formats().getNumber(c.to()));
+	converterED->setText(toqstr(c.command()));
+	converterFlagED->setText(toqstr(c.flags()));
 
 	updateButtons();
 }
@@ -1693,8 +1693,8 @@ void PrefConverters::updateButtons()
 	if (convertersLW->count() > 0) {
 		int const cnr = convertersLW->currentItem()->type();
 		Converter const & c = form_->converters().get(cnr);
-		old_command = c.command;
-		old_flag = c.flags;
+		old_command = c.command();
+		old_flag = c.flags();
 	}
 
 	string const new_command = fromqstr(converterED->text());
@@ -2133,13 +2133,13 @@ namespace {
 	void updateComboBox(LyXRC::Alternatives const & alts,
 	                    string const & fmt, QComboBox * combo)
 	{
-		LyXRC::Alternatives::const_iterator it = 
+		LyXRC::Alternatives::const_iterator it =
 				alts.find(fmt);
 		if (it != alts.end()) {
 			LyXRC::CommandSet const & cmds = it->second;
-			LyXRC::CommandSet::const_iterator sit = 
+			LyXRC::CommandSet::const_iterator sit =
 					cmds.begin();
-			LyXRC::CommandSet::const_iterator const sen = 
+			LyXRC::CommandSet::const_iterator const sen =
 					cmds.end();
 			for (; sit != sen; ++sit) {
 				QString const qcmd = toqstr(*sit);
@@ -2316,7 +2316,7 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 		if (!lang)
 			continue;
 		// never remove the currently selected language
-		if (name != form->rc().gui_language 
+		if (name != form->rc().gui_language
 		    && name != lyxrc.gui_language
 		    && (!Messages::available(lang->code())
 			|| added.find(lang->code()) != added.end()))
@@ -3004,7 +3004,7 @@ void PrefShortcuts::on_shortcutsTW_itemSelectionChanged()
 	if (items.isEmpty())
 		return;
 
-	KeyMap::ItemType tag = 
+	KeyMap::ItemType tag =
 		static_cast<KeyMap::ItemType>(items[0]->data(0, Qt::UserRole).toInt());
 	if (tag == KeyMap::UserUnbind)
 		removePB->setText(qt_("Res&tore"));
@@ -3044,7 +3044,7 @@ void PrefShortcuts::removeShortcut()
 		string shortcut = fromqstr(items[i]->data(1, Qt::UserRole).toString());
 		string lfun = fromqstr(items[i]->text(0));
 		FuncRequest func = lyxaction.lookupFunc(lfun);
-		KeyMap::ItemType tag = 
+		KeyMap::ItemType tag =
 			static_cast<KeyMap::ItemType>(items[i]->data(0, Qt::UserRole).toInt());
 
 		switch (tag) {
@@ -3183,7 +3183,7 @@ void PrefShortcuts::shortcutOkPressed()
 	if (oldBinding == func)
 		// nothing has changed
 		return;
-	
+
 	// make sure this key isn't already bound---and, if so, prompt user
 	FuncCode const unbind = user_unbind_.getBinding(k).action();
 	docstring const action_string = makeCmdString(oldBinding);
@@ -3330,7 +3330,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	addModule(new PrefSpellchecker(this));
 
 	//for strftime validator
-	PrefOutput * output = new PrefOutput(this); 
+	PrefOutput * output = new PrefOutput(this);
 	addModule(output);
 	addModule(new PrefPrinter(this));
 	addModule(new PrefLatex(this));
@@ -3409,11 +3409,11 @@ bool GuiPreferences::initialiseParams(string const &)
 	movers_ = theMovers();
 	colors_.clear();
 	update_screen_font_ = false;
-	
+
 	updateRc(rc_);
-	// Make sure that the bc is in the INITIAL state  
-	if (bc().policy().buttonStatus(ButtonPolicy::RESTORE))  
-		bc().restore();  
+	// Make sure that the bc is in the INITIAL state
+	if (bc().policy().buttonStatus(ButtonPolicy::RESTORE))
+		bc().restore();
 
 	return true;
 }
@@ -3429,7 +3429,7 @@ void GuiPreferences::dispatchParams()
 	prefsApplied(rc_);
 	// FIXME: these need lfuns
 	// FIXME UNICODE
-	Author const & author = 
+	Author const & author =
 		Author(from_utf8(rc_.user_name), from_utf8(rc_.user_email));
 	theBufferList().recordCurrentAuthor(author);
 

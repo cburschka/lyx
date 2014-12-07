@@ -2330,7 +2330,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-			
+
 		case RC_NUMLASTFILES:
 		if (ignore_system_lyxrc ||
 		    num_lastfiles != system_lyxrc.num_lastfiles) {
@@ -2830,23 +2830,23 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		for (Converters::const_iterator cit = theConverters().begin();
 		     cit != theConverters().end(); ++cit) {
 			Converter const * converter =
-				theSystemConverters().getConverter(cit->from,
-							       cit->to);
+				theSystemConverters().getConverter(cit->from(),
+				                                   cit->to());
 			if (!converter ||
-			    converter->command != cit->command ||
-			    converter->flags != cit->flags)
-				os << "\\converter \"" << cit->from << "\" \""
-				   << cit->to << "\" \""
-				   << escapeCommand(cit->command) << "\" \""
-				   << cit->flags << "\"\n";
+			    converter->command() != cit->command() ||
+			    converter->flags() != cit->flags())
+				os << "\\converter \"" << cit->from() << "\" \""
+				   << cit->to() << "\" \""
+				   << escapeCommand(cit->command()) << "\" \""
+				   << cit->flags() << "\"\n";
 		}
 
 		// New/modifed converters
 		for (Converters::const_iterator cit = theSystemConverters().begin();
 		     cit != theSystemConverters().end(); ++cit)
-			if (!theConverters().getConverter(cit->from, cit->to))
-				os << "\\converter \"" << cit->from
-				   << "\" \"" << cit->to << "\" \"\" \"\"\n";
+			if (!theConverters().getConverter(cit->from(), cit->to()))
+				os << "\\converter \"" << cit->from()
+				   << "\" \"" << cit->to() << "\" \"\" \"\"\n";
 		if (tag != RC_LAST)
 			break;
 

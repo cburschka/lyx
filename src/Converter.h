@@ -40,36 +40,73 @@ public:
 	///
 	void readFlags();
 	///
-	std::string from;
+	std::string const & from() const { return from_; }
 	///
-	std::string to;
+	std::string const & to() const { return to_; }
 	///
-	std::string command;
+	std::string const & command() const { return command_; }
 	///
-	std::string flags;
+	void setCommand(std::string const & command) { command_ = command; }
 	///
-	Format const * From;
+	std::string const & flags() const { return flags_; }
 	///
-	Format const * To;
+	void setFlags(std::string const & flags) { flags_ = flags; }
+	///
+	Format const * From() const { return From_; }
+	///
+	void setFrom(Format const * From) { From_ = From; }
+	///
+	void setTo(Format const * To) { To_ = To; }
+	///
+	Format const * To() const { return To_; }
+	///
+	bool latex() const { return latex_; }
+	///
+	std::string const & latex_flavor() const { return latex_flavor_; }
+	///
+	bool xml() const { return xml_; }
+	///
+	bool need_aux() const { return need_aux_; }
+	///
+	bool nice() const { return nice_; }
+	///
+	std::string const & result_dir() const { return result_dir_; }
+	///
+	std::string const & result_file() const { return result_file_; }
+	///
+	std::string const & parselog() const { return parselog_; }
+private:
+	///
+	std::string from_;
+	///
+	std::string to_;
+	///
+	std::string command_;
+	///
+	std::string flags_;
+	///
+	Format const * From_;
+	///
+	Format const * To_;
 
 	/// The converter is latex or its derivatives
-	bool latex;
+	bool latex_;
 	/// The latex derivate
-	std::string latex_flavor;
+	std::string latex_flavor_;
 	/// The converter is xml
-	bool xml;
+	bool xml_;
 	/// This converter needs the .aux files
-	bool need_aux;
+	bool need_aux_;
 	/// we need a "nice" file from the backend, c.f. OutputParams.nice.
-	bool nice;
+	bool nice_;
 	/// If the converter put the result in a directory, then result_dir
 	/// is the name of the directory
-	std::string result_dir;
+	std::string result_dir_;
 	/// If the converter put the result in a directory, then result_file
 	/// is the name of the main file in that directory
-	std::string result_file;
+	std::string result_file_;
 	/// Command to convert the program output to a LaTeX log file format
-	std::string parselog;
+	std::string parselog_;
 };
 
 

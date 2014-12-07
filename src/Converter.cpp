@@ -85,7 +85,7 @@ public:
 	ConverterEqual(string const & from, string const & to)
 		: from_(from), to_(to) {}
 	bool operator()(Converter const & c) const {
-		return c.from == from_ && c.to == to_;
+		return c.from() == from_ && c.to() == to_;
 	}
 private:
 	string const from_;
@@ -97,39 +97,39 @@ private:
 
 Converter::Converter(string const & f, string const & t,
 		     string const & c, string const & l)
-	: from(f), to(t), command(c), flags(l),
-	  From(0), To(0), latex(false), xml(false),
-	  need_aux(false), nice(false)
+	: from_(f), to_(t), command_(c), flags_(l),
+	  From_(0), To_(0), latex_(false), xml_(false),
+	  need_aux_(false), nice_(false)
 {}
 
 
 void Converter::readFlags()
 {
-	string flag_list(flags);
+	string flag_list(flags_);
 	while (!flag_list.empty()) {
 		string flag_name, flag_value;
 		flag_list = split(flag_list, flag_value, ',');
 		flag_value = split(flag_value, flag_name, '=');
 		if (flag_name == "latex") {
-			latex = true;
-			latex_flavor = flag_value.empty() ?
+			latex_ = true;
+			latex_flavor_ = flag_value.empty() ?
 				"latex" : flag_value;
 		} else if (flag_name == "xml")
-			xml = true;
+			xml_ = true;
 		else if (flag_name == "needaux")
-			need_aux = true;
+			need_aux_ = true;
 		else if (flag_name == "resultdir")
-			result_dir = (flag_value.empty())
+			result_dir_ = (flag_value.empty())
 				? token_base : flag_value;
 		else if (flag_name == "resultfile")
-			result_file = flag_value;
+			result_file_ = flag_value;
 		else if (flag_name == "parselog")
-			parselog = flag_value;
+			parselog_ = flag_value;
 		else if (flag_name == "nice")
-			nice = true;
+			nice_ = true;
 	}
-	if (!result_dir.empty() && result_file.empty())
-		result_file = "index." + formats.extension(to);
+	if (!result_dir_.empty() && result_file_.empty())
+		result_file_ = "index." + formats.extension(to_);
 	//if (!contains(command, token_from))
 	//	latex = true;
 }
@@ -172,36 +172,36 @@ void Converters::add(string const & from, string const & to,
 	Converter converter(from, to, command, flags);
 	if (it != converterlist_.end() && !flags.empty() && flags[0] == '*') {
 		converter = *it;
-		converter.command = command;
-		converter.flags = flags;
+		converter.setCommand(command);
+		converter.setFlags(flags);
 	}
 	converter.readFlags();
 
 	// The latex_command is used to update the .aux file when running
 	// a converter that uses it.
-	if (converter.latex) {
+	if (converter.latex()) {
 		if (latex_command_.empty() ||
-		    converter.latex_flavor == "latex")
+		    converter.latex_flavor() == "latex")
 			latex_command_ = subst(command, token_from, "");
 		if (dvilualatex_command_.empty() ||
-		    converter.latex_flavor == "dvilualatex")
+		    converter.latex_flavor() == "dvilualatex")
 			dvilualatex_command_ = subst(command, token_from, "");
 		if (lualatex_command_.empty() ||
-		    converter.latex_flavor == "lualatex")
+		    converter.latex_flavor() == "lualatex")
 			lualatex_command_ = subst(command, token_from, "");
 		if (pdflatex_command_.empty() ||
-		    converter.latex_flavor == "pdflatex")
+		    converter.latex_flavor() == "pdflatex")
 			pdflatex_command_ = subst(command, token_from, "");
 		if (xelatex_command_.empty() ||
-		    converter.latex_flavor == "xelatex")
+		    converter.latex_flavor() == "xelatex")
 			xelatex_command_ = subst(command, token_from, "");
 	}
 
 	if (it == converterlist_.end()) {
 		converterlist_.push_back(converter);
 	} else {
-		converter.From = it->From;
-		converter.To = it->To;
+		converter.setFrom(it->From());
+		converter.setTo(it->To());
 		*it = converter;
 	}
 }
@@ -230,8 +230,8 @@ void Converters::update(Formats const & formats)
 	ConverterList::iterator it = converterlist_.begin();
 	ConverterList::iterator end = converterlist_.end();
 	for (; it != end; ++it) {
-		it->From = formats.getFormat(it->from);
-		it->To = formats.getFormat(it->to);
+		it->setFrom(formats.getFormat(it->from()));
+		it->setTo(formats.getFormat(it->to()));
 	}
 }
 
@@ -242,8 +242,8 @@ void Converters::updateLast(Formats const & formats)
 {
 	if (converterlist_.begin() != converterlist_.end()) {
 		ConverterList::iterator it = converterlist_.end() - 1;
-		it->From = formats.getFormat(it->from);
-		it->To = formats.getFormat(it->to);
+		it->setFrom(formats.getFormat(it->from()));
+		it->setTo(formats.getFormat(it->to()));
 	}
 }
 
@@ -254,19 +254,19 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path,
 	for (Graph::EdgePath::const_iterator cit = path.begin();
 	     cit != path.end(); ++cit) {
 		Converter const & conv = converterlist_[*cit];
-		if (conv.latex) {
-			if (conv.latex_flavor == "latex")
+		if (conv.latex()) {
+			if (conv.latex_flavor() == "latex")
 				return OutputParams::LATEX;
-			if (conv.latex_flavor == "xelatex")
+			if (conv.latex_flavor() == "xelatex")
 				return OutputParams::XETEX;
-			if (conv.latex_flavor == "lualatex")
+			if (conv.latex_flavor() == "lualatex")
 				return OutputParams::LUATEX;
-			if (conv.latex_flavor == "dvilualatex")
+			if (conv.latex_flavor() == "dvilualatex")
 				return OutputParams::DVILUATEX;
-			if (conv.latex_flavor == "pdflatex")
+			if (conv.latex_flavor() == "pdflatex")
 				return OutputParams::PDFLATEX;
 		}
-		if (conv.xml)
+		if (conv.xml())
 			return OutputParams::XML;
 	}
 	return buffer ? buffer->params().getOutputFlavor()
@@ -369,25 +369,25 @@ bool Converters::convert(Buffer const * buffer,
 	for (Graph::EdgePath::const_iterator cit = edgepath.begin();
 	     cit != edgepath.end(); ++cit) {
 		Converter const & conv = converterlist_[*cit];
-		bool dummy = conv.To->dummy() && conv.to != "program";
+		bool dummy = conv.To()->dummy() && conv.to() != "program";
 		if (!dummy) {
 			LYXERR(Debug::FILES, "Converting from  "
-			       << conv.from << " to " << conv.to);
+			       << conv.from() << " to " << conv.to());
 		}
 		infile = outfile;
-		outfile = FileName(conv.result_file.empty()
-			? changeExtension(from_file.absFileName(), conv.To->extension())
-			: addName(subst(conv.result_dir,
+		outfile = FileName(conv.result_file().empty()
+			? changeExtension(from_file.absFileName(), conv.To()->extension())
+			: addName(subst(conv.result_dir(),
 					token_base, from_base),
-				  subst(conv.result_file,
+				  subst(conv.result_file(),
 					token_base, onlyFileName(from_base))));
 
 		// if input and output files are equal, we use a
 		// temporary file as intermediary (JMarc)
 		FileName real_outfile;
-		if (!conv.result_file.empty())
+		if (!conv.result_file().empty())
 			real_outfile = FileName(changeExtension(from_file.absFileName(),
-				conv.To->extension()));
+				conv.To()->extension()));
 		if (outfile == infile) {
 			real_outfile = infile;
 			// when importing, a buffer does not necessarily exist
@@ -398,9 +398,9 @@ bool Converters::convert(Buffer const * buffer,
 						   "tmpfile.out"));
 		}
 
-		if (conv.latex) {
+		if (conv.latex()) {
 			run_latex = true;
-			string command = conv.command;
+			string command = conv.command();
 			command = subst(command, token_from, "");
 			command = subst(command, token_latex_encoding, buffer ?
 				buffer->params().encoding().latexName() : string());
@@ -408,7 +408,7 @@ bool Converters::convert(Buffer const * buffer,
 			if (!runLaTeX(*buffer, command, runparams, errorList))
 				return false;
 		} else {
-			if (conv.need_aux && !run_latex) {
+			if (conv.need_aux() && !run_latex) {
 				string command;
 				switch (runparams.flavor) {
 				case OutputParams::DVILUATEX:
@@ -443,7 +443,7 @@ bool Converters::convert(Buffer const * buffer,
 			string const outfile2 =
 				to_utf8(makeRelPath(from_utf8(outfile.absFileName()), from_utf8(path)));
 
-			string command = conv.command;
+			string command = conv.command();
 			command = subst(command, token_from, quoteName(infile2));
 			command = subst(command, token_base, quoteName(from_base));
 			command = subst(command, token_to, quoteName(outfile2));
@@ -452,13 +452,13 @@ bool Converters::convert(Buffer const * buffer,
 			command = subst(command, token_orig_from, quoteName(onlyFileName(orig_from.absFileName())));
 			command = subst(command, token_encoding, buffer ? buffer->params().encoding().iconvName() : string());
 
-			if (!conv.parselog.empty())
+			if (!conv.parselog().empty())
 				command += " 2> " + quoteName(infile2 + ".out");
 
-			if (conv.from == "dvi" && conv.to == "ps")
+			if (conv.from() == "dvi" && conv.to() == "ps")
 				command = add_options(command,
 						      buffer->params().dvips_options());
-			else if (conv.from == "dvi" && prefixIs(conv.to, "pdf"))
+			else if (conv.from() == "dvi" && prefixIs(conv.to(), "pdf"))
 				command = add_options(command,
 						      dvipdfm_options(buffer->params()));
 
@@ -481,7 +481,7 @@ bool Converters::convert(Buffer const * buffer,
 						buffer ? buffer->filePath()
 						       : string());
 				if (!real_outfile.empty()) {
-					Mover const & mover = getMover(conv.to);
+					Mover const & mover = getMover(conv.to());
 					if (!mover.rename(outfile, real_outfile))
 						res = -1;
 					else
@@ -491,10 +491,10 @@ bool Converters::convert(Buffer const * buffer,
 					// converters to use the renamed file...
 					outfile = real_outfile;
 				}
-  
-				if (!conv.parselog.empty()) {
+
+				if (!conv.parselog().empty()) {
 					string const logfile =  infile2 + ".log";
-					string const command2 = conv.parselog +
+					string const command2 = conv.parselog() +
 						" < " + quoteName(infile2 + ".out") +
 						" > " + quoteName(logfile);
 					one.startscript(Systemcall::Wait,
@@ -506,7 +506,7 @@ bool Converters::convert(Buffer const * buffer,
 			}
 
 			if (res) {
-				if (conv.to == "program") {
+				if (conv.to() == "program") {
 					Alert::error(_("Build errors"),
 						_("There were errors during the build process."));
 				} else {
@@ -522,18 +522,18 @@ bool Converters::convert(Buffer const * buffer,
 	}
 
 	Converter const & conv = converterlist_[edgepath.back()];
-	if (conv.To->dummy())
+	if (conv.To()->dummy())
 		return true;
 
-	if (!conv.result_dir.empty()) {
+	if (!conv.result_dir().empty()) {
 		// The converter has put the file(s) in a directory.
 		// In this case we ignore the given to_file.
 		if (from_base != to_base) {
-			string const from = subst(conv.result_dir,
+			string const from = subst(conv.result_dir(),
 					    token_base, from_base);
-			string const to = subst(conv.result_dir,
+			string const to = subst(conv.result_dir(),
 					  token_base, to_base);
-			Mover const & mover = getMover(conv.from);
+			Mover const & mover = getMover(conv.from());
 			if (!mover.rename(FileName(from), FileName(to))) {
 				Alert::error(_("Cannot convert file"),
 					bformat(_("Could not move a temporary directory from %1$s to %2$s."),
@@ -545,7 +545,7 @@ bool Converters::convert(Buffer const * buffer,
 	} else {
 		if (conversionflags & try_cache)
 			ConverterCache::get().add(orig_from, to_format, outfile);
-		return move(conv.to, outfile, to_file, conv.latex);
+		return move(conv.to(), outfile, to_file, conv.latex());
 	}
 }
 
@@ -596,7 +596,7 @@ bool Converters::formatIsUsed(string const & format)
 	ConverterList::const_iterator cit = converterlist_.begin();
 	ConverterList::const_iterator end = converterlist_.end();
 	for (; cit != end; ++cit) {
-		if (cit->from == format || cit->to == format)
+		if (cit->from() == format || cit->to() == format)
 			return true;
 	}
 	return false;
@@ -682,13 +682,13 @@ void Converters::buildGraph()
 	// clear graph's data structures
 	G_.init(formats.size());
 	// each of the converters knows how to convert one format to another
-	// so, for each of them, we create an arrow on the graph, going from 
+	// so, for each of them, we create an arrow on the graph, going from
 	// the one to the other
 	ConverterList::iterator it = converterlist_.begin();
 	ConverterList::iterator const end = converterlist_.end();
 	for (; it != end ; ++it) {
-		int const from = formats.getNumber(it->from);
-		int const to   = formats.getNumber(it->to);
+		int const from = formats.getNumber(it->from());
+		int const to   = formats.getNumber(it->to());
 		G_.addEdge(from, to);
 	}
 }
