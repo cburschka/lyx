@@ -582,9 +582,11 @@ Encoding const *
 Encodings::fromLyXName(string const & name, bool allowUnsafe) const
 {
 	EncodingList::const_iterator const it = encodinglist.find(name);
+	if (it == encodinglist.end())
+		return 0;
 	if (!allowUnsafe && it->second.unsafe())
 		return 0;
-	return it != encodinglist.end() ? &it->second : 0;
+	return &it->second;
 }
 
 
