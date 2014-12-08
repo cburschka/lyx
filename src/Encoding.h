@@ -109,7 +109,11 @@ private:
 };
 
 
-///
+/**
+ * An encoding as defined in lib/encodings.
+ * All const methods are thread-safe, so the caller does not need any locking.
+ * This property must be kept when changing the class.
+ */
 class Encoding {
 public:
 	/// Which LaTeX package handles this encoding?
@@ -195,13 +199,13 @@ private:
 	typedef std::set<char_type> CharSet;
 	/// Set of UCS4 characters that we can encode (for singlebyte
 	/// encodings only)
-	mutable CharSet encodable_;
+	CharSet encodable_;
 	/// Set of UCS4 characters that we can't encode
 	CharSet const * forced_;
 	/// All code points below this are encodable. This helps us to avoid
 	/// lokup of ASCII characters in encodable_ and gives about 1 sec
 	/// speedup on export of the Userguide.
-	mutable char_type start_encodable_;
+	char_type start_encodable_;
 	/// Which LaTeX package handles this encoding?
 	Package package_;
 	/**
@@ -211,7 +215,7 @@ private:
 	 * This is needed especially for the multibyte encodings, if we
 	 * complete all encoding info on startup it takes 2-3 minutes.
 	 */
-	mutable bool complete_;
+	bool complete_;
 };
 
 class Encodings {

@@ -19,6 +19,7 @@
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/mutex.h"
 #include "support/textutils.h"
 #include "support/unicode.h"
 
@@ -105,10 +106,28 @@ Encoding::Encoding(string const & n, string const & l, string const & g,
 
 void Encoding::init() const
 {
+	// Since the the constructor is the only method which sets complete_
+	// to false the test for complete_ is thread-safe without mutex.
 	if (complete_)
 		return;
 
-	start_encodable_ = 0;
+	static Mutex mutex;
+	Mutex::Locker lock(&mutex);
+
+	// We need to test again for complete_, since another thread could
+	// have set it to true while we were waiting for the lock and we must
+	// not modify an encoding which is already complete.
+	if (complete_)
+		return;
+
+	// We do not make any member mutable  so that it can be easily verified
+	// that all const methods are thread-safe: init() is the only const
+	// method which changes complete_, encodable_ and start_encodable_, and
+	// it uses a mutex to ensure thread-safety.
+	CharSet & encodable = const_cast<Encoding *>(this)->encodable_;
+	char_type & start_encodable = const_cast<Encoding *>(this)->start_encodable_;
+
+	start_encodable = 0;
 	// temporarily switch off lyxerr, since we will generate iconv errors
 	lyxerr.disable();
 	if (fixedwidth_) {
@@ -122,10 +141,10 @@ void Encoding::init() const
 			char_type const uc = ucs4[0];
 			CharInfoMap::const_iterator const it = unicodesymbols.find(uc);
 			if (it == unicodesymbols.end())
-				encodable_.insert(uc);
+				encodable.insert(uc);
 			else if (!it->second.force()) {
 				if (forced_->empty() || forced_->find(uc) == forced_->end())
-					encodable_.insert(uc);
+					encodable.insert(uc);
 			}
 		}
 	} else {
@@ -138,10 +157,10 @@ void Encoding::init() const
 			if (!eightbit.empty()) {
 				CharInfoMap::const_iterator const it = unicodesymbols.find(c);
 				if (it == unicodesymbols.end())
-					encodable_.insert(c);
+					encodable.insert(c);
 				else if (!it->second.force()) {
 					if (forced_->empty() || forced_->find(c) == forced_->end())
-						encodable_.insert(c);
+						encodable.insert(c);
 				}
 			}
 		}
@@ -149,11 +168,11 @@ void Encoding::init() const
 	lyxerr.enable();
 	CharSet::iterator it = encodable_.find(start_encodable_);
 	while (it != encodable_.end()) {
-		encodable_.erase(it);
-		++start_encodable_;
+		encodable.erase(it);
+		++start_encodable;
 		it = encodable_.find(start_encodable_);
 	}
-	complete_ = true;
+	const_cast<Encoding *>(this)->complete_ = true;
 }
 
 
