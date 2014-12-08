@@ -175,6 +175,8 @@ public:
 	bool isDisplay() const { return display_; }
 	///
 	bool forcelocalfontswitch() const { return forcelocalfontswitch_; }
+	///
+	docstring const & obsoleted_by() const { return obsoleted_by_; }
 private:
 	///
 	void makeDefaultCSS() const;
@@ -277,6 +279,11 @@ private:
 	bool display_;
 	///
 	bool forcelocalfontswitch_;
+	/** Name of an insetlayout that has replaced this insetlayout.
+	    This is used to rename an insetlayout, while keeping backward
+	    compatibility
+	*/
+	docstring obsoleted_by_;
 	///
 	Layout::LaTeXArgMap latexargs_;
 	///

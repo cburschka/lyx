@@ -61,7 +61,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 52; //spitz: add ForceOwnlines tag
+int const LAYOUT_FORMAT = 53; //spitz: add ObsoletedBy tag for InsetLayouts
 
 namespace {
 
@@ -1422,13 +1422,20 @@ InsetLayout const & DocumentClass::insetLayout(docstring const & name) const
 	InsetLayouts::const_iterator cen = insetlayoutlist_.end();
 	while (!n.empty()) {
 		InsetLayouts::const_iterator cit = insetlayoutlist_.lower_bound(n);
-		if (cit != cen && cit->first == n)
-			return cit->second;
+		if (cit != cen && cit->first == n) {
+			if (cit->second.obsoleted_by().empty())
+				return cit->second;
+			n = cit->second.obsoleted_by();
+			return insetLayout(n);
+		}
+		// If we have a generic prefix (e.g., "Note:"),
+		// try if this one alone is found.
 		size_t i = n.find(':');
 		if (i == string::npos)
 			break;
 		n = n.substr(0, i);
 	}
+	// Layout "name" not found.
 	return plain_insetlayout_;
 }
 

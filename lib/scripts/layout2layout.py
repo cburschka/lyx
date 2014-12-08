@@ -174,6 +174,9 @@ import os, re, string, sys
 # Incremented to format 52, 1 December 2014 by spitz
 # New InsetLayout tag "ForceOwnlines"
 
+# Incremented to format 53, 7 December 2014 by spitz
+# New InsetLayout tag "ObsoletedBy"
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -181,7 +184,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.py script to update all
 # layout files to the new format.
 
-currentFormat = 52
+currentFormat = 53
 
 
 def usage(prog_name):
@@ -405,7 +408,7 @@ def convert(lines):
                 i += 1
             continue
 
-        if format == 50 or format == 51:
+        if format >= 50 and format <= 52:
             # nothing to do.
             i += 1
             continue

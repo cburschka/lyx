@@ -110,6 +110,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_LATEXTYPE,
 		IL_LEFTDELIM,
 		IL_LYXTYPE,
+		IL_OBSOLETEDBY,
 		IL_KEEPEMPTY,
 		IL_MULTIPAR,
 		IL_NEEDPROTECT,
@@ -164,6 +165,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "lyxtype", IL_LYXTYPE },
 		{ "multipar", IL_MULTIPAR },
 		{ "needprotect", IL_NEEDPROTECT },
+		{ "obsoletedby", IL_OBSOLETEDBY },
 		{ "parbreakisnewline", IL_PARBREAKISNEWLINE },
 		{ "passthru", IL_PASSTHRU },
 		{ "preamble", IL_PREAMBLE },
@@ -327,6 +329,27 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 						tclass.insetLayouts().end();
 				for (; lit != len; ++lit)
 					lyxerr << lit->second.name() << "\n";
+			}
+			break;
+		}
+		case IL_OBSOLETEDBY: {
+			docstring style;
+			lex >> style;
+			style = support::subst(style, '_', ' ');
+
+			// We don't want to apply the algorithm in DocumentClass::insetLayout()
+			// here. So we do it the long way.
+			TextClass::InsetLayouts::const_iterator it =
+					tclass.insetLayouts().find(style);
+			if (it != tclass.insetLayouts().end()) {
+				docstring const tmpname = name_;
+				this->operator=(it->second);
+				name_ = tmpname;
+				if (obsoleted_by().empty())
+					obsoleted_by_ = style;
+			} else {
+				LYXERR0("Cannot replace with unknown InsetLayout `"
+					<< style << '\'');
 			}
 			break;
 		}

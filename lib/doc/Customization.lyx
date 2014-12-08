@@ -17951,6 +17951,76 @@ InsetLayout
 \end_inset
 
 .
+\change_inserted -712698321 1417953494
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1417953559
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1417953494
+ObsoletedBy
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1417953574
+<layout>
+\end_layout
+
+\end_inset
+
+] Name of an 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1417953533
+InsetLayout
+\end_layout
+
+\end_inset
+
+ that has replaced this 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1417953551
+InsetLayout
+\end_layout
+
+\end_inset
+
+.
+ This is used to rename an 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1417953559
+InsetLayout
+\end_layout
+
+\end_inset
+
+, while keeping backward compatibility.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

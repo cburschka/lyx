@@ -25,6 +25,7 @@
 #include "TextClass.h"
 
 #include "support/gettext.h"
+#include "support/lstrings.h"
 
 #include <ostream>
 
@@ -66,8 +67,20 @@ InsetLayout::InsetDecoration InsetFlex::decoration() const
 
 void InsetFlex::write(ostream & os) const
 {
-	os << "Flex " <<
-		(name_.empty() ? "undefined" : name_) << "\n";
+	os << "Flex ";
+	InsetLayout const & il = getLayout();
+	if (name_.empty())
+		os << "undefined";
+	else {
+		// use il.name(), since this resolves obsoleted
+		// InsetLayout names
+		string name = to_utf8(il.name());
+		// Remove the "Flex:" prefix, if it is present
+		if (support::prefixIs(name, "Flex:"))
+			name = support::token(name, ':', 1);
+		os << name;
+	}
+	os << "\n";
 	InsetCollapsable::write(os);
 }
 
