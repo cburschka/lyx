@@ -80,7 +80,7 @@ texhash
 
 %files
 %defattr(-,root,root)
-%doc ABOUT-NLS ANNOUNCE COPYING
+%doc ANNOUNCE COPYING
 %doc README UPGRADING NEWS
 %doc lib/CREDITS
 %{_bindir}/*
@@ -88,3 +88,5 @@ texhash
 %{_datadir}/locale/*/LC_MESSAGES/*
 %{_datadir}/%{name}
 %{_datadir}/texmf/tex/latex/%{name}
+%{_datadir}/icons/*
+%{_datadir}/applications/*
