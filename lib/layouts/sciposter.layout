@@ -7,7 +7,7 @@
 #
 # Input general definitions
 
-Format 48
+Format 53
 
 Input stdclass.inc
 
@@ -107,6 +107,7 @@ InsetLayout "Flex:Giant"
 	LabelFont
 	  Size                normal
 	EndFont
+	ResetsFont            true
 End
 
 InsetLayout "Flex:More_Giant"
@@ -133,6 +134,7 @@ InsetLayout Flex:Giant_Snippet
 	LabelFont
 	  Size                normal
 	EndFont
+	ResetsFont            true
 End
 
 InsetLayout Flex:More_Giant_Snippet

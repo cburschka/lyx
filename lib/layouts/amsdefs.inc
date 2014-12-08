@@ -5,7 +5,7 @@
 # Modularized Jan '08 by Richard Heck <rgheck@brown.edu>
 
 # Including the maths stuff
-Format 49
+Format 53
 
 # the environments copied from the old amsart.layout are:
 # - Bibliography

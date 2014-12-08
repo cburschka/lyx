@@ -6,7 +6,7 @@
 
 # Author: Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 45
+Format 53
 
 InsetLayout Flex:SectionBox
 	LyXType               custom
@@ -30,10 +30,11 @@ InsetLayout Flex:SectionBox
 		AutoInsert     1
 		Tooltip        "Insert the section box header here"
 		Font
-			Size   Large
-			Series Bold
+		    Size       Large
+		    Series     Bold
 		EndFont
 	EndArgument
+	ResetsFont             true
 End
 
 InsetLayout Flex:SubsectionBox
