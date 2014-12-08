@@ -8,7 +8,7 @@
 # Authors: Stephen <stephen4mailinglists@googlemail.com>
 #          Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 48
+Format 53
 
 #
 # List of TODOs
@@ -108,25 +108,24 @@ End
 # Backwards compatibility to user-provided
 # modules on the LyX wiki
 #
-# FIXME: uncomment these when #9000 is fixed.
 
-#InsetLayout TODO
-#	ObsoletedBy           Flex:TODO_Note_(Margin)
-#End
-#
-#InsetLayout MakeTableOfToDos
-#	ObsoletedBy           List_of_TODOs
-#End
-#
-#InsetLayout Todo[Inline]
-#	ObsoletedBy           Flex:TODO_Note_(inline)
-#End
-#
-#InsetLayout Todo[margin]
-#	ObsoletedBy           Flex:TODO_Note_(Margin)
-#End
-#
-#InsetLayout MissingFigure
-#	ObsoletedBy           Flex:Missing_Figure
-#End
+InsetLayout Flex:TODO
+	ObsoletedBy           Flex:TODO_Note_(Margin)
+End
+
+InsetLayout Flex:MakeTableOfToDos
+	ObsoletedBy           List_of_TODOs
+End
+
+InsetLayout Flex:Todo[Inline]
+	ObsoletedBy           Flex:TODO_Note_(inline)
+End
+
+InsetLayout Flex:Todo[margin]
+	ObsoletedBy           Flex:TODO_Note_(Margin)
+End
+
+InsetLayout Flex:MissingFigure
+	ObsoletedBy           Flex:Missing_Figure
+End
 

@@ -12,7 +12,7 @@
 # Authors: Mark Edgington <edgimar@gmail.com>
 #          Jürgen Spitzmüller <spitz@lyx.org>
 
-Format 48
+Format 53
 
 #
 # List of FIXMEs
@@ -221,37 +221,36 @@ End
 # Backwards compatibility to user-provided
 # modules on the LyX wiki
 #
-# FIXME: uncomment these when #9000 is fixed.
 
-#InsetLayout FxNote
-#	ObsoletedBy           Flex:Fixme_Note
-#End
-#
-#InsetLayout FxNote*
-#	ObsoletedBy           Flex:Fixme_Note_(Targeted)
-#End
-#
-#InsetLayout FxWarning
-#	ObsoletedBy           Flex:Fixme_Warning
-#End
-#
-#InsetLayout FxWarning*
-#	ObsoletedBy           Flex:Fixme_Warning_(Targeted)
-#End
-#
-#InsetLayout FxError
-#	ObsoletedBy           Flex:Fixme_Error
-#End
-#
-#InsetLayout FxError*
-#	ObsoletedBy           Flex:Fixme_Error_(Targeted)
-#End
-#
-#InsetLayout FxFatal
-#	ObsoletedBy           Flex:Fixme_Fatal
-#End
-#
-#InsetLayout FxFatal*
-#	ObsoletedBy           Flex:Fixme_Fatal_(Targeted)
-#End
+InsetLayout Flex:FxNote
+	ObsoletedBy           Flex:Fixme_Note
+End
+
+InsetLayout Flex:FxNote*
+	ObsoletedBy           Flex:Fixme_Note_(Targeted)
+End
+
+InsetLayout Flex:FxWarning
+	ObsoletedBy           Flex:Fixme_Warning
+End
+
+InsetLayout Flex:FxWarning*
+	ObsoletedBy           Flex:Fixme_Warning_(Targeted)
+End
+
+InsetLayout Flex:FxError
+	ObsoletedBy           Flex:Fixme_Error
+End
+
+InsetLayout Flex:FxError*
+	ObsoletedBy           Flex:Fixme_Error_(Targeted)
+End
+
+InsetLayout Flex:FxFatal
+	ObsoletedBy           Flex:Fixme_Fatal
+End
+
+InsetLayout Flex:FxFatal*
+	ObsoletedBy           Flex:Fixme_Fatal_(Targeted)
+End
 
