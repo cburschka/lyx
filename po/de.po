@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-12-04 09:45+0100\n"
-"PO-Revision-Date: 2014-12-07 14:37+0100\n"
+"PO-Revision-Date: 2014-12-08 07:58+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -23776,7 +23776,7 @@ msgstr "Absatzstil nicht gefunden"
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr ""
-"Die Einfügung %1$s ist nach dem Laden des Absatzstils\n"
+"Die Einfügung %1$s ist nach dem Laden des Dokumentformats\n"
 "`%2$s' undefiniert."
 
 #: src/CutAndPaste.cpp:766
@@ -23785,8 +23785,8 @@ msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
 "%3$s'."
 msgstr ""
-"Der Zeichenstil %1$s ist aufgrund einer Konvertierung vom\n"
-"Absatzstil `%2$s' zu `%3$s' undefiniert."
+"Der Zeichenstil %1$s ist aufgrund des Wechsels vom\n"
+"Dokumentformat `%2$s' zu `%3$s' undefiniert."
 
 #: src/CutAndPaste.cpp:771
 msgid "Undefined flex inset"
