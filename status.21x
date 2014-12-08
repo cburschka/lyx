@@ -113,6 +113,9 @@ What's new
 
 - Fix import of chunk layouts containing newlines (bug 9300).
 
+- Maintain paragraph settings (alignment etc.) when importing chunk layouts
+  (bug 9320).
+
 - Fix export to LyX 2.0 of chunk insets without optional argument (bug 9343).
 
 - Fix import of ERT beamer block titles which are preceeded by a
