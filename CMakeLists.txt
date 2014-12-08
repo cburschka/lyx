@@ -259,13 +259,10 @@ if(UNIX OR MINGW)
 		endif()
 		set(LYX_GCC11_MODE "${CXX11_FLAG}")
 	endif()
-	set(STD_STRING_USES_COW 1)
 else()
 	if(MSVC10)
 		set(LYX_USE_TR1 1)
 		#set(LYX_USE_TR1_REGEX 1) #TODO should we use it in ECMAScript mode?
-	else()
-		set(STD_STRING_USES_COW 1)
 	endif()
 endif()
 

@@ -60,6 +60,9 @@
 // Define if callstack can be printed
 #cmakedefine LYX_CALLSTACK_PRINTING 1
 
+// Define if std::string uses copy-on-write
+#cmakedefine STD_STRING_USES_COW 1
+
 #cmakedefine Z_PREFIX 1
 
 ${Include_used_spellchecker}

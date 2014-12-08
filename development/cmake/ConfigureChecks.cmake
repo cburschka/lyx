@@ -126,6 +126,17 @@ check_cxx_source_compiles(
 	"
 LYX_CALLSTACK_PRINTING)
 
+get_filename_component(cxx_base "${CMAKE_CXX_COMPILER}" NAME_WE)
+if(cxx_base MATCHES "^clang(-[0-9]+\\.[0-9]+\\.[0-9]+)?(\\+\\+)?$")
+	set(STD_STRING_USES_COW)
+else()
+	if("${MINGW}")
+		set(STD_STRING_USES_COW)
+	else()
+		set(STD_STRING_USES_COW 1)
+	endif()
+endif()
+
 if(LYX_USE_QT MATCHES "QT5")
   if (Qt5X11Extras_FOUND)
     get_target_property(_x11extra_prop Qt5::X11Extras IMPORTED_CONFIGURATIONS)
