@@ -64,6 +64,7 @@ What's new
 
 - Allow computing selected subformulas with computer algebra systems.
 
+- Number correctly footnotes in title layouts (part of bug 2666).
 
 * DOCUMENTATION AND LOCALIZATION
 
@@ -136,6 +137,9 @@ What's new
 - Fix computer algebra system computations in formulas with '=' signs.
 
 - Fix rendering of \varOmega on OS X (bug 7954).
+
+- Only allow 1 paragraph in footnotes when they are part of a title
+  layout (bug 2666).
 
 
 * INTERNALS
