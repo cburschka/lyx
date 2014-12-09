@@ -321,7 +321,8 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 				name_ = tmpname;
 			} else {
 				LYXERR0("Cannot copy unknown InsetLayout `"
-					<< style << "'\n"
+					<< style << "' to InsetLayout `"
+					<< name() << "'\n"
 					<< "All InsetLayouts so far:");
 				TextClass::InsetLayouts::const_iterator lit = 
 						tclass.insetLayouts().begin();
@@ -348,8 +349,17 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 				if (obsoleted_by().empty())
 					obsoleted_by_ = style;
 			} else {
-				LYXERR0("Cannot replace with unknown InsetLayout `"
-					<< style << '\'');
+				LYXERR0("Cannot replace InsetLayout `"
+					<< name()
+					<< "' with unknown InsetLayout `"
+					<< style << "'\n"
+					<< "All InsetLayouts so far:");
+				TextClass::InsetLayouts::const_iterator lit = 
+						tclass.insetLayouts().begin();
+				TextClass::InsetLayouts::const_iterator len = 
+						tclass.insetLayouts().end();
+				for (; lit != len; ++lit)
+					lyxerr << lit->second.name() << "\n";
 			}
 			break;
 		}
