@@ -1,15 +1,15 @@
 # Slovak translation of LyX
 # Copyright (C) 2003, 2006
 # Zdenko Podobný <zdpo@mailbox.sk>
-# 
+#
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
 # Kornel Benko <kornel@lyx.org>, 2009-2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-11-10 03:10+0100\n"
-"PO-Revision-Date: 2014-11-05 13:59+0100\n"
+"POT-Creation-Date: 2014-12-08 18:03+0100\n"
+"PO-Revision-Date: 2014-11-14 18:39+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -12467,6 +12467,10 @@ msgstr "Rovnica ##"
 msgid "Footnote ##"
 msgstr "Poznámka pri päte ##"
 
+#: lib/layouts/stdcounters.inc:77
+msgid "\\fnsymbol{thanks}"
+msgstr "\\fnsymbol{thanks}"
+
 #: lib/layouts/stdinsets.inc:12 src/insets/InsetMarginal.cpp:35
 msgid "margin"
 msgstr "okraje"
@@ -13332,6 +13336,38 @@ msgstr "Fixme Fatálny (Multipar Plánované)"
 #: lib/layouts/fixme.module:215
 msgid "Fatal (MP Targ.)"
 msgstr "Fatálny (MP Plánované)"
+
+#: lib/layouts/fixme.module:225
+msgid "FxNote"
+msgstr "FxPoznámka"
+
+#: lib/layouts/fixme.module:229
+msgid "FxNote*"
+msgstr "FxPoznámka*"
+
+#: lib/layouts/fixme.module:233
+msgid "FxWarning"
+msgstr "FxVarovanie"
+
+#: lib/layouts/fixme.module:237
+msgid "FxWarning*"
+msgstr "FxVarovanie*"
+
+#: lib/layouts/fixme.module:241
+msgid "FxError"
+msgstr "FxChyba"
+
+#: lib/layouts/fixme.module:245
+msgid "FxError*"
+msgstr "FxChyba*"
+
+#: lib/layouts/fixme.module:249
+msgid "FxFatal"
+msgstr "FxFatálny"
+
+#: lib/layouts/fixme.module:253
+msgid "FxFatal*"
+msgstr "FxFatálny*"
 
 #: lib/layouts/foottoend.module:2
 msgid "Foot to End"
@@ -14689,6 +14725,26 @@ msgstr "Chýba Obrázok"
 #: lib/layouts/todonotes.module:101
 msgid "Missing Figure Note Options|s"
 msgstr "Chýbajú Voľby Poznámky k Obrázku"
+
+#: lib/layouts/todonotes.module:112
+msgid "TODO"
+msgstr "TODO"
+
+#: lib/layouts/todonotes.module:116
+msgid "MakeTableOfToDos"
+msgstr "ZrobiťTodoTabuľku"
+
+#: lib/layouts/todonotes.module:120
+msgid "Todo[Inline]"
+msgstr "Todo[V riadku (inline)]"
+
+#: lib/layouts/todonotes.module:124
+msgid "Todo[margin]"
+msgstr "Todo[okraj]"
+
+#: lib/layouts/todonotes.module:128
+msgid "MissingFigure"
+msgstr "ChybiaciObrázok"
 
 #: lib/languages:73 src/Font.cpp:61 src/Font.cpp:64 src/Font.cpp:68
 #: src/Font.cpp:73 src/Font.cpp:76
@@ -24826,8 +24882,8 @@ msgid "Use \"...\" to shorten long completions."
 msgstr "Použiť \"...\" pre skrátenie dlhých doplnení."
 
 #: src/LyXRC.cpp:3315
-msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
-msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na \\Rightarrow."
+msgid "Allow TeXMacs shorthand, like => converting to Rightarrow."
+msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na Rightarrow."
 
 #: src/LyXRC.cpp:3319
 #, c-format
@@ -29956,6 +30012,11 @@ msgstr "Vhodný výraz nájdený!"
 msgid "Can't add vertical grid lines in '%1$s'"
 msgstr "Nedajú sa pridať vertikálne linky mriežky '%1$s'"
 
+#: src/mathed/InsetMathBox.cpp:99
+#, c-format
+msgid "Box: %1$s"
+msgstr "Rámik: %1$s"
+
 #: src/mathed/InsetMathCases.cpp:110
 #, c-format
 msgid "No vertical grid lines in 'cases': feature %1$s"
@@ -29965,6 +30026,21 @@ msgstr "Žiadne vertikálne linky v 'cases' : vlastnosť %1$s'"
 #, c-format
 msgid "Changing number of columns not allowed in 'cases': feature %1$s"
 msgstr "Počet stĺpcov sa nedá zmeniť v 'cases':vlastnosť '%1$s'"
+
+#: src/mathed/InsetMathColor.cpp:102
+#, c-format
+msgid "Color: %1$s"
+msgstr "Farba: %1$s"
+
+#: src/mathed/InsetMathDecoration.cpp:172
+#, c-format
+msgid "Decoration: %1$s"
+msgstr "Dekorácia: %1$s"
+
+#: src/mathed/InsetMathEnv.cpp:68
+#, c-format
+msgid "Environment: %1$s"
+msgstr "Prostredie: %1$s"
 
 #: src/mathed/InsetMathGrid.cpp:1491
 msgid "Cursor not in table"
@@ -29990,6 +30066,11 @@ msgstr "Žiadna vertikálna linka (vline) na zmazanie"
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Neznáme vlastnosti tabuľky '%1$s'"
+
+#: src/mathed/InsetMathHull.cpp:1306
+#, c-format
+msgid "Type: %1$s"
+msgstr "Typ: %1$s"
 
 #: src/mathed/InsetMathHull.cpp:1339
 msgid "Bad math environment"
@@ -30055,10 +30136,20 @@ msgstr "PeknýOdkaz"
 msgid "FormatRef: "
 msgstr "FormatRef: "
 
+#: src/mathed/InsetMathSize.cpp:107
+#, c-format
+msgid "Size: %1$s"
+msgstr "Veľkosť: %1$s"
+
 #: src/mathed/InsetMathSubstack.cpp:85
 #, c-format
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "Nedá sa zmeniť horizontálna adjustácia v '%1$s'"
+
+#: src/mathed/MathMacro.cpp:811 src/mathed/MathMacro.cpp:817
+#, c-format
+msgid "Macro: %1$s"
+msgstr "Makro: %1$s"
 
 #: src/mathed/MathMacroTemplate.cpp:494
 msgid "optional"
@@ -30067,6 +30158,11 @@ msgstr "voliteľné"
 #: src/mathed/MathMacroTemplate.cpp:1256
 msgid "math macro"
 msgstr "mat. makro"
+
+#: src/mathed/MathMacroTemplate.cpp:1363
+#, c-format
+msgid "Math Macro: \\%1$s"
+msgstr "Mat. Makro: \\%1$s"
 
 #: src/output.cpp:37
 #, c-format
@@ -30386,23 +30482,18 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
-#, fuzzy
 #~ msgid "Scaling"
 #~ msgstr "Zmena mierky atď..."
 
-#, fuzzy
 #~ msgid "&Vertical factor:"
 #~ msgstr "&Vertikálnou medzerou:"
 
-#, fuzzy
 #~ msgid "&Horizintal factor:"
 #~ msgstr "&Horizontálny Fantóm"
 
-#, fuzzy
 #~ msgid "Rotation"
 #~ msgstr "Notácia"
 
-#, fuzzy
 #~ msgid "&Rotation:"
 #~ msgstr "Notácia"
 
@@ -30441,9 +30532,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Separator"
 #~ msgstr "Oddeľovač"
 
-#~ msgid "___"
-#~ msgstr "___"
-
 #~ msgid "--Separator--"
 #~ msgstr "--Oddeľovač--"
 
@@ -30452,9 +30540,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "EndOfSlide"
 #~ msgstr "KoniecFólie"
-
-#~ msgid "."
-#~ msgstr "."
 
 #~ msgid "Minimum word length for completion"
 #~ msgstr "Minimálna dĺžka slova pre doplňovanie"
@@ -30500,9 +30585,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Split Environment|l"
 #~ msgstr "Rozdeliť prostredie|d"
-
-#~ msgid "%1$s (*.%2$s)"
-#~ msgstr "%1$s (*.%2$s)"
 
 #~ msgid "Any supported format (*.*)"
 #~ msgstr "Akýkoľvek podporovaný format (*.*)"
@@ -30554,12 +30636,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid " Macro: %1$s: "
 #~ msgstr " Makro: %1$s: "
-
-#~ msgid "HTML Text|H"
-#~ msgstr "HTML Text|H"
-
-#~ msgid "LaTeX Text|L"
-#~ msgstr "LaTeX Text|L"
 
 #~ msgid "Buffer error"
 #~ msgstr "Chyby pri vytváraní"
@@ -30648,9 +30724,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "EndFrame"
 #~ msgstr "KoniecRámu"
 
-#~ msgid "________________________________"
-#~ msgstr "________________________________"
-
 #~ msgid "Automatic help"
 #~ msgstr "Automatická nápoveda"
 
@@ -30719,12 +30792,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Use undertilde pac&kage"
 #~ msgstr "Použiť balí&k undertilde"
-
-#~ msgid "DVI (pLaTeX)"
-#~ msgstr "DVI (pLaTeX)"
-
-#~ msgid "DVI (pLaTeX)|V"
-#~ msgstr "DVI (pLaTeX)|V"
 
 #~ msgid "Japanese (non-CJK) (EUC-JP)"
 #~ msgstr "Japonsky (non-CJK) (EUC-JP)"
@@ -30853,9 +30920,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Adjust the vertical space of this item"
 #~ msgstr "Nastaviť vertikálnu medzeru tejto položky"
-
-#~ msgid "Computing Review Categories"
-#~ msgstr "Computing Review Categories"
 
 #~ msgid "Noweb Article"
 #~ msgstr "Noweb článok"
@@ -30989,23 +31053,8 @@ msgstr "Neznámy používateľ"
 #~ msgid "Save in Bundled Format|F"
 #~ msgstr "Uložiť v zbalenom formáte"
 
-#~ msgid "Utopia"
-#~ msgstr "Utopia"
-
 #~ msgid "New documents will be assigned this language."
 #~ msgstr "Novým dokumentom bude priradený tento jazyk."
-
-#~ msgid "LatinOn"
-#~ msgstr "LatinOn"
-
-#~ msgid "Latin on"
-#~ msgstr "Latin on"
-
-#~ msgid "LatinOff"
-#~ msgstr "LatinOff"
-
-#~ msgid "Latin off"
-#~ msgstr "Latin off"
 
 #~ msgid "Table w&idth:"
 #~ msgstr "Šírka tabuľky:"
@@ -31022,9 +31071,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Rotate cell"
 #~ msgstr "Otočiť bunku"
 
-#~ msgid "EPS (ps2eps)"
-#~ msgstr "EPS (ps2eps)"
-
 #~ msgid "The LaTeX package mathdots is used"
 #~ msgstr "LaTeX balík mathdots je používaný"
 
@@ -31034,20 +31080,11 @@ msgstr "Neznámy používateľ"
 #~ msgid "The LaTeX package undertilde is always used"
 #~ msgstr "LaTeX balík undertilde použiť každopádne"
 
-#~ msgid "MM"
-#~ msgstr "MM"
-
-#~ msgid "MMMMM"
-#~ msgstr "MMMMM"
-
 #~ msgid "Theorem \\thetheorem"
 #~ msgstr "Teoréma \\thetheorem"
 
 #~ msgid "Corollary \\thecorollary"
 #~ msgstr "Korolár \\thecorollary"
-
-#~ msgid "Lemma \\thelemma"
-#~ msgstr "Lemma \\thelemma"
 
 #~ msgid "Proposition \\theproposition"
 #~ msgstr "Tvrdenie \\theproposition"
@@ -31097,23 +31134,14 @@ msgstr "Neznámy používateľ"
 #~ msgid "Bitmap: $$AbsOrRelPathParent$$Basename"
 #~ msgstr "Bitmapa: $$AbsOrRelPathParent$$Basename"
 
-#~ msgid "Xfig: $$AbsOrRelPathParent$$Basename"
-#~ msgstr "Xfig: $$AbsOrRelPathParent$$Basename"
-
 #~ msgid "Chess: $$AbsOrRelPathParent$$Basename"
 #~ msgstr "Šach: $$AbsOrRelPathParent$$Basename"
 
 #~ msgid "PDF pages: $$AbsOrRelPathParent$$Basename"
 #~ msgstr "PDF stránky: $$AbsOrRelPathParent$$Basename"
 
-#~ msgid "Dia: $$AbsOrRelPathParent$$Basename"
-#~ msgstr "Dia: $$AbsOrRelPathParent$$Basename"
-
 #~ msgid "HTML|H"
 #~ msgstr "HTML"
-
-#~ msgid "HTML (MS Word)"
-#~ msgstr "HTML (MS Word)"
 
 #~ msgid "LyX Preview (LilyPond book)"
 #~ msgstr "Náhľad LyX (LilyPond book)"
@@ -31130,9 +31158,6 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Definujte štýl znakov pre iniciálky. Tip: pokúste sa použiť matematiku a "
 #~ "jej umelecké štýly ako Fractur alebo Calligraphic."
-
-#~ msgid "\\thesol"
-#~ msgstr "\\thesol"
 
 #~ msgid "at Address"
 #~ msgstr "na Adrese"
@@ -31160,9 +31185,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Institute # [deprecated]"
 #~ msgstr "Inštitút #[odmietané]"
-
-#~ msgid "Motto"
-#~ msgstr "Motto"
 
 #~ msgid "Claim "
 #~ msgstr "Nárok "
@@ -31296,15 +31318,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Add Column|C"
 #~ msgstr "Pridať stĺpec"
 
-#~ msgid "Octave"
-#~ msgstr "Octave"
-
-#~ msgid "Maxima"
-#~ msgstr "Maxima"
-
-#~ msgid "Mathematica"
-#~ msgstr "Mathematica"
-
 #~ msgid "Maple, simplify"
 #~ msgstr "Maple, simplify (zjednodušiť)"
 
@@ -31340,9 +31353,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Index Entry|I"
 #~ msgstr "Heslo Indexu"
-
-#~ msgid "URL...|U"
-#~ msgstr "URL...|U"
 
 #~ msgid "Lists & TOC|O"
 #~ msgstr "Listiny a Obsah"
@@ -31527,9 +31537,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Custom value. Needs spacing type &quot;Custom&quot;."
 #~ msgstr "Vlastná hodnota. Nastavte typ rozstupu na  &quot;Vlastný&quot;."
 
-#~ msgid "DockWidget"
-#~ msgstr "DockWidget"
-
 #~ msgid "greyedout"
 #~ msgstr "zosivelé"
 
@@ -31541,9 +31548,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Group labels by prefix (e.g. &quot;sec:&quot;)"
 #~ msgstr "Zoskupiť značky podľa prefixu (napr. \"sec:\")"
-
-#~ msgid "X; "
-#~ msgstr "X; "
 
 #~ msgid "value of the optional vertical offset"
 #~ msgstr "Veľkosť nepovinného vertikálneho vyrovnania"
@@ -31598,9 +31602,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Flex:Structure"
 #~ msgstr "Flex:Struktúra"
 
-#~ msgid "Flex:ArticleMode"
-#~ msgstr "Flex:ArticleMode"
-
 #~ msgid "Flex:PresentationMode"
 #~ msgstr "Flex:PrezentačnýMód"
 
@@ -31628,9 +31629,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Flex:Citation-number"
 #~ msgstr "Flex:ČísloCitácie"
 
-#~ msgid "Flex:Volume"
-#~ msgstr "Flex:Volume"
-
 #~ msgid "Flex:Day"
 #~ msgstr "Flex:Deň"
 
@@ -31640,20 +31638,8 @@ msgstr "Neznámy používateľ"
 #~ msgid "Flex:Year"
 #~ msgstr "Flex:Rok"
 
-#~ msgid "Flex:Issue-number"
-#~ msgstr "Flex:Issue-number"
-
-#~ msgid "Flex:Issue-day"
-#~ msgstr "Flex:Issue-day"
-
-#~ msgid "Flex:Issue-months"
-#~ msgstr "Flex:Issue-months"
-
 #~ msgid "Flex:ISSN"
 #~ msgstr "Flex:SSN"
-
-#~ msgid "Flex:CODEN"
-#~ msgstr "Flex:CODEN"
 
 #~ msgid "Flex:SS-Code"
 #~ msgstr "Flex:SS-Kód"
@@ -31667,17 +31653,8 @@ msgstr "Neznámy používateľ"
 #~ msgid "Flex:Code"
 #~ msgstr "Flex:Kód"
 
-#~ msgid "Flex:Dscr"
-#~ msgstr "Flex:Dscr"
-
 #~ msgid "Flex:Keyword"
 #~ msgstr "Flex:Heslo"
-
-#~ msgid "Flex:Orgdiv"
-#~ msgstr "Flex:Orgdiv"
-
-#~ msgid "Flex:Orgname"
-#~ msgstr "Flex:Orgname"
 
 #~ msgid "Flex:Street"
 #~ msgstr "Flex:Ulica"
@@ -31697,29 +31674,8 @@ msgstr "Neznámy používateľ"
 #~ msgid "Flex:Directory"
 #~ msgstr "Flex:Adresár"
 
-#~ msgid "Flex:Email"
-#~ msgstr "Flex:Email"
-
-#~ msgid "Flex:KeyCombo"
-#~ msgstr "Flex:KeyCombo"
-
-#~ msgid "Flex:KeyCap"
-#~ msgstr "Flex:KeyCap"
-
-#~ msgid "Flex:GuiMenu"
-#~ msgstr "Flex:GuiMenu"
-
-#~ msgid "Flex:GuiMenuItem"
-#~ msgstr "Flex:GuiMenuItem"
-
-#~ msgid "Flex:GuiButton"
-#~ msgstr "Flex:GuiButton"
-
 #~ msgid "Flex:MenuChoice"
 #~ msgstr "Flex:MenuVýber"
-
-#~ msgid "Flex"
-#~ msgstr "Flex"
 
 #~ msgid "Foot"
 #~ msgstr "Päta"
@@ -31736,9 +31692,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Wrap"
 #~ msgstr "Obtekanie"
 
-#~ msgid "Info:menu"
-#~ msgstr "Info:menu"
-
 #~ msgid "Info:shortcut"
 #~ msgstr "Info:skratka (posledná)"
 
@@ -31750,12 +31703,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Flex:Initial"
 #~ msgstr "Flex:Iniciálka"
-
-#~ msgid "Flex:Glosse"
-#~ msgstr "Flex:Glosse"
-
-#~ msgid "Flex:Tri-Glosse"
-#~ msgstr "Flex:Tri-Glosse"
 
 #~ msgid "Flex:Expression"
 #~ msgstr "Flex: Výraz"
@@ -31803,12 +31750,6 @@ msgstr "Neznámy používateľ"
 #~ msgstr "Horiz. Phantom"
 
 #~ msgid "&Vert. Phantom"
-#~ msgstr "Vert. Phantom"
-
-#~ msgid "Horiz. Phantom"
-#~ msgstr "Horiz. Phantom"
-
-#~ msgid "Vert. Phantom"
 #~ msgstr "Vert. Phantom"
 
 #~ msgid "Successful "
@@ -31889,15 +31830,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Element:Citation-number"
 #~ msgstr "Element:ČísloCitácie"
 
-#~ msgid "Element:Issue-number"
-#~ msgstr "Element:Issue-number"
-
-#~ msgid "Element:Issue-day"
-#~ msgstr "Element:Issue-day"
-
-#~ msgid "Element:Issue-months"
-#~ msgstr "Element:Issue-months"
-
 #~ msgid "Element:SS-Title"
 #~ msgstr "Element:SS-Titul"
 
@@ -31909,18 +31841,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Element:Directory"
 #~ msgstr "Element: Adresár"
-
-#~ msgid "Element:KeyCombo"
-#~ msgstr "Element:KeyCombo"
-
-#~ msgid "Element:GuiMenuItem"
-#~ msgstr "Element:GuiMenuItem"
-
-#~ msgid "Element:GuiButton"
-#~ msgstr "Element:GuiButton"
-
-#~ msgid "Element:MenuChoice"
-#~ msgstr "Element:MenuChoice"
 
 #~ msgid "CharStyle"
 #~ msgstr "Štýl znaku"
@@ -31942,9 +31862,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "CharStyle:Code"
 #~ msgstr "Štýl znaku: Kód"
-
-#~ msgid "FrmtRef: "
-#~ msgstr "FrmtRef: "
 
 #~ msgid "Glossary term"
 #~ msgstr "Glosse"
@@ -31973,35 +31890,14 @@ msgstr "Neznámy používateľ"
 #~ msgid "Textual reference plus <page>"
 #~ msgstr "Textová referencia a <strana>"
 
-#~ msgid "ColorUi"
-#~ msgstr "ColorUi"
-
-#~ msgid "Block ( ERT[{title}] body ):"
-#~ msgstr "Block ( ERT[{title}] body ):"
-
-#~ msgid "Block ( ERT[{title}] example text ):"
-#~ msgstr "Block ( ERT[{title}] example text ):"
-
-#~ msgid "Block ( ERT[{title}] alert text ):"
-#~ msgstr "Block ( ERT[{title}] alert text ):"
-
 #~ msgid "Publisher ID"
 #~ msgstr "Identifikácia Vydavateľa"
-
-#~ msgid "OptArg"
-#~ msgstr "OptArg"
 
 #~ msgid "TheoremTemplate"
 #~ msgstr "Šablóna_Teorémy"
 
 #~ msgid "Theorem #:"
 #~ msgstr "Teoréma #:"
-
-#~ msgid "Lemma #:"
-#~ msgstr "Lemma #:"
-
-#~ msgid "Corollary #:"
-#~ msgstr "Corollary #:"
 
 #~ msgid "Proposition #:"
 #~ msgstr "Tvrdenie #:"
@@ -32014,9 +31910,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Fact #:"
 #~ msgstr "Fakt #:"
-
-#~ msgid "Axiom #:"
-#~ msgstr "Axiom #:"
 
 #~ msgid "Definition #:"
 #~ msgstr "Definícia #:"
@@ -32354,20 +32247,11 @@ msgstr "Neznámy používateľ"
 #~ msgid "No LaTeX log file found."
 #~ msgstr "Protokolový súbor LaTeXu nebol nájdený"
 
-#~ msgid "ispell"
-#~ msgstr "ispell"
-
 #~ msgid "pspell (library)"
 #~ msgstr "pspell (knižnica)"
 
 #~ msgid "aspell (library)"
 #~ msgstr "aspell (knižnica)"
-
-#~ msgid "*.pws"
-#~ msgstr "*.pws"
-
-#~ msgid "*.ispell"
-#~ msgstr "*.ispell"
 
 #~ msgid "Spellchecker error"
 #~ msgstr "Chyba programu kontroly pravopisu"
@@ -32529,9 +32413,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Numbers theorems and the like by section."
 #~ msgstr "Očísluje vety apod. podľa sekcie."
 
-#~ msgid "Latex"
-#~ msgstr "Latex"
-
 #~ msgid "Close Tab Group|G"
 #~ msgstr "Zavrieť skupinu podokien"
 
@@ -32558,9 +32439,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Number of Co&pies:"
 #~ msgstr "Počet kópií"
-
-#~ msgid "Sa&ns Serif:"
-#~ msgstr "Sa&ns Serif:"
 
 #~ msgid "Ne&w"
 #~ msgstr "No&vý"
@@ -32666,9 +32544,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Grayscale"
 #~ msgstr "Odtiene šedej"
-
-#~ msgid "%"
-#~ msgstr "%"
 
 #~ msgid "&Display:"
 #~ msgstr "&Displej:"
@@ -32911,12 +32786,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Framed"
 #~ msgstr "Parametre"
-
-#~ msgid "Url: "
-#~ msgstr "Url: "
-
-#~ msgid "HtmlUrl: "
-#~ msgstr "HtmlUrl: "
 
 #~ msgid "%1$d words in selection."
 #~ msgstr "%1$d slov vo výbere."
@@ -33227,3 +33096,6 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Poskytuje rôzne druhy poznámok pre PDF výstup. Tento modul používa balík "
 #~ "pdfcomment. Pre detaily pozrite na dokumentáciu balíka."
+
+#~ msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
+#~ msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na \\Rightarrow."
