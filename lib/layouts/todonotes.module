@@ -113,10 +113,6 @@ InsetLayout Flex:TODO
 	ObsoletedBy           Flex:TODO_Note_(Margin)
 End
 
-InsetLayout Flex:MakeTableOfToDos
-	ObsoletedBy           List_of_TODOs
-End
-
 InsetLayout Flex:Todo[Inline]
 	ObsoletedBy           Flex:TODO_Note_(inline)
 End
