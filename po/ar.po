@@ -2,14 +2,14 @@
 # Copyright (C) 2008--2013 LyX Developers
 # This file is distributed under the same license as the PACKAGE package.
 # Hatim Alahmadi <Dr.Hatim@hotmail.com>, 2008--2013
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-11-10 03:10+0100\n"
-"PO-Revision-Date: 2014-01-10 03:30+0300\n"
-"Last-Translator: Hatim Alahmadi <Dr.hatim@hotmail.com>\n"
+"PO-Revision-Date: 2014-12-09 05:29+0300\n"
+"Last-Translator: Hatim Alahmadi and mohamed majdi <dr.hatim@hotmail.com>\n"
 "Language-Team: LyX team <theblackdragon_100@hotmail.com>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -446,7 +446,7 @@ msgstr "بلا"
 #: src/frontends/qt4/ui/BoxUi.ui:282 src/frontends/qt4/GuiBox.cpp:361
 #: src/frontends/qt4/GuiBox.cpp:448 src/insets/InsetBox.cpp:136
 msgid "Parbox"
-msgstr ""
+msgstr "صندوق شريطي"
 
 #: src/frontends/qt4/ui/BoxUi.ui:287 src/frontends/qt4/GuiBox.cpp:449
 #: src/insets/InsetBox.cpp:140
@@ -1557,7 +1557,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:114
 msgid "&Sans Serif:"
-msgstr ""
+msgstr "&Sans Serif:"
 
 #: src/frontends/qt4/ui/FontUi.ui:124
 msgid "Select the Sans Serif (grotesque) typeface"
@@ -3258,9 +3258,8 @@ msgid "Cursor width (&pixels):"
 msgstr "عرض المؤشر (&بالنقطة):"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:90
-#, fuzzy
 msgid "Scroll &below end of document"
-msgstr "لم يقرأ المستند"
+msgstr "الانتقال& لنهاية المستند"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:97
 msgid "Skip trailing non-word characters"
@@ -3308,14 +3307,12 @@ msgid "Hide &tabbar"
 msgstr "&اخفاء شريط الجدولة"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:195
-#, fuzzy
 msgid "Hide &menubar"
-msgstr "&اخفاء شريط الجدولة"
+msgstr "إخفاء شريط القائمة"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:202
-#, fuzzy
 msgid "Hide sta&tusbar"
-msgstr "&اخفاء شريط الجدولة"
+msgstr "إخفاء شريط& الجدولة"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:209
 msgid "&Limit text width"
@@ -3525,9 +3522,8 @@ msgid "The LaTeX command that ends a switch to a foreign language"
 msgstr "أمر LaTeX الذي ينهي التبديل للغة اجنبية"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:135
-#, fuzzy
 msgid "Default decimal &separator:"
-msgstr "الفاصلة العش&رية الافتراضية:"
+msgstr "الفاصلة العشرية& الافتراضية:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:161
 msgid "Default length &unit:"
@@ -4303,7 +4299,7 @@ msgstr "المرش&ح:"
 
 #: src/frontends/qt4/ui/RefUi.ui:89
 msgid "Enter string to filter the label list"
-msgstr ""
+msgstr "أدخل قيمة لفرز قائمة الملصقات"
 
 #: src/frontends/qt4/ui/RefUi.ui:99
 msgid "Filter case-sensitively"
@@ -4976,7 +4972,7 @@ msgstr "المرشح:"
 
 #: src/frontends/qt4/ui/TocUi.ui:46
 msgid "Enter string to filter contents"
-msgstr ""
+msgstr "أدخل قيمة لفرز المحتويات"
 
 #: src/frontends/qt4/ui/TocUi.ui:63
 msgid ""
@@ -4998,11 +4994,11 @@ msgstr "..."
 
 #: src/frontends/qt4/ui/TocUi.ui:122
 msgid "Decrease nesting depth of selected item"
-msgstr ""
+msgstr "إنقاص عمق التداخل للعنصر المحدد"
 
 #: src/frontends/qt4/ui/TocUi.ui:141
 msgid "Increase nesting depth of selected item"
-msgstr ""
+msgstr "زيادة عمق التداخل للعنصر المحدد"
 
 #: src/frontends/qt4/ui/TocUi.ui:160
 msgid "Move selected item down by one"
@@ -5026,7 +5022,7 @@ msgstr "يُبقي"
 
 #: src/frontends/qt4/ui/TocUi.ui:266
 msgid "Adjust the depth of the navigation tree"
-msgstr ""
+msgstr "ضبط العمق في شجرة الاستكشاف"
 
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:13
 msgid "LyX: Enter text"
@@ -5094,7 +5090,7 @@ msgstr "كامل الكود المصدري"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:174
 msgid "Preamble Only"
-msgstr ""
+msgstr "مقدمة فقط"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:179
 msgid "Body Only"
@@ -5142,7 +5138,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/WrapUi.ui:280
 msgid "Check this to allow flexible placement"
-msgstr ""
+msgstr "اختر للسماح بوضع مرن"
 
 #: src/frontends/qt4/ui/WrapUi.ui:283
 msgid "Allow &floating"
@@ -6582,7 +6578,7 @@ msgstr "وصف"
 #: lib/layouts/stdlists.inc:97 lib/layouts/stdlyxlist.inc:7
 #: lib/layouts/enumitem.module:83 lib/ui/stdtoolbars.inc:116
 msgid "List"
-msgstr "القائمة"
+msgstr "قائمة"
 
 #: lib/layouts/aapaper.layout:96 lib/layouts/aapaper.inc:103
 #: lib/ui/stdtoolbars.inc:140 src/frontends/qt4/GuiThesaurus.cpp:47
@@ -7637,18 +7633,16 @@ msgid "Frame (plain)"
 msgstr "إطار (بسيط)"
 
 #: lib/layouts/beamer.layout:478
-#, fuzzy
 msgid "FragileFrame"
-msgstr "إبدا إطار"
+msgstr "إطار رفيع"
 
 #: lib/layouts/beamer.layout:480
-#, fuzzy
 msgid "Frame (fragile)"
-msgstr "عنصر:لقب"
+msgstr "إطار (رفيع)"
 
 #: lib/layouts/beamer.layout:489
 msgid "AgainFrame"
-msgstr ""
+msgstr "إطار مكرر"
 
 #: lib/layouts/beamer.layout:495 lib/layouts/powerdot.layout:125
 #: lib/layouts/seminar.layout:108 lib/layouts/slides.layout:91
@@ -7747,9 +7741,8 @@ msgid "Overlays"
 msgstr ""
 
 #: lib/layouts/beamer.layout:673 lib/layouts/powerdot.layout:477
-#, fuzzy
 msgid "Pause number"
-msgstr "رقم الصفحة"
+msgstr "رقم التوقف"
 
 #: lib/layouts/beamer.layout:674 lib/layouts/powerdot.layout:478
 msgid "Number of slide where the context below the pause gets visible"
@@ -7790,9 +7783,8 @@ msgid "Overlay Area Width"
 msgstr ""
 
 #: lib/layouts/beamer.layout:750
-#, fuzzy
 msgid "The width of the overlay area"
-msgstr "تثبيت عرض العمود"
+msgstr "عرض مساحة الطباعة"
 
 #: lib/layouts/beamer.layout:754
 msgid "Overlay Area Height"
@@ -8092,9 +8084,8 @@ msgid "Article"
 msgstr "مقال"
 
 #: lib/layouts/beamer.layout:1525
-#, fuzzy
 msgid "PresentationMode"
-msgstr "عرض تقديمي"
+msgstr "نظام العرض التقديمي"
 
 #: lib/layouts/beamer.layout:1531
 msgid "Presentation"
@@ -11084,23 +11075,20 @@ msgid "Onslide*"
 msgstr "شريحة*"
 
 #: lib/layouts/recipebook.layout:3
-#, fuzzy
 msgid "Recipe Book"
-msgstr "استعراض"
+msgstr "كتاب الطبخ"
 
 #: lib/layouts/recipebook.layout:43 lib/layouts/scrbook.layout:18
 msgid "\\thechapter"
 msgstr "//الفصل"
 
 #: lib/layouts/recipebook.layout:79
-#, fuzzy
 msgid "Recipe"
-msgstr "استعراض"
+msgstr "طبخ"
 
 #: lib/layouts/recipebook.layout:86
-#, fuzzy
 msgid "Recipe:"
-msgstr "استعراض"
+msgstr "طبخ:"
 
 #: lib/layouts/recipebook.layout:114
 #, fuzzy
@@ -11117,9 +11105,8 @@ msgid "Specify an optional ingredients header"
 msgstr ""
 
 #: lib/layouts/recipebook.layout:127
-#, fuzzy
 msgid "Ingredients:"
-msgstr "شكر"
+msgstr "المكونات:"
 
 #: lib/layouts/report.layout:3
 msgid "Report (Standard Class)"
@@ -11236,9 +11223,8 @@ msgid "Float Link"
 msgstr "رابط عئم"
 
 #: lib/layouts/revtex4-1.layout:270
-#, fuzzy
 msgid "Float link"
-msgstr "رابط عئم"
+msgstr "رابط عائم"
 
 #: lib/layouts/revtex4-1.layout:281
 #, fuzzy
@@ -12603,7 +12589,6 @@ msgid "Idx"
 msgstr "فهرس"
 
 #: lib/layouts/stdinsets.inc:449
-#, fuzzy
 msgid "Argument"
 msgstr "محاذاة"
 
@@ -12617,9 +12602,8 @@ msgid "unlabelled"
 msgstr "ملصق ملاحظة"
 
 #: lib/layouts/stdinsets.inc:547
-#, fuzzy
 msgid "Preview"
-msgstr "مستعرض ليك"
+msgstr "استعراض"
 
 #: lib/layouts/stdsections.inc:15 lib/layouts/svcommon.inc:119
 msgid "Part \\thepart"
@@ -12715,14 +12699,12 @@ msgid "TOC author:"
 msgstr "مؤلف جدول المحتويات:"
 
 #: lib/layouts/svcommon.inc:400
-#, fuzzy
 msgid "Running Title"
-msgstr "تشغيل BibTeX."
+msgstr "تنفيذ العنوان"
 
 #: lib/layouts/svcommon.inc:407
-#, fuzzy
 msgid "Running Author"
-msgstr "المؤلف:"
+msgstr "تنفيذ المؤلف"
 
 #: lib/layouts/svcommon.inc:418
 #, fuzzy
@@ -13291,9 +13273,8 @@ msgid "Fixme Warning"
 msgstr "المعنى"
 
 #: lib/layouts/fixme.module:72
-#, fuzzy
 msgid "Warning"
-msgstr "تحذير!"
+msgstr "تحذير"
 
 #: lib/layouts/fixme.module:76
 #, fuzzy
@@ -13312,9 +13293,8 @@ msgid "Fixme Fatal"
 msgstr ""
 
 #: lib/layouts/fixme.module:84
-#, fuzzy
 msgid "Fatal"
-msgstr "Catalan"
+msgstr ""
 
 #: lib/layouts/fixme.module:93
 msgid "Fixme Note (Targeted)"
@@ -13484,7 +13464,7 @@ msgstr "حقيقة"
 
 #: lib/layouts/graphicboxes.module:32
 msgid "Insert horizontal scale factor (1 = 100%)"
-msgstr ""
+msgstr "إدراج معامل القياس الأفقي (1 = 100%)"
 
 #: lib/layouts/graphicboxes.module:38
 #, fuzzy
@@ -13493,11 +13473,11 @@ msgstr "حقيقة"
 
 #: lib/layouts/graphicboxes.module:39
 msgid "Insert vertical scale factor (1 = 100%)"
-msgstr ""
+msgstr "إدراج معامل القياس الرأسي (1 = 100%)"
 
 #: lib/layouts/graphicboxes.module:43 lib/layouts/graphicboxes.module:45
 msgid "Resizebox"
-msgstr ""
+msgstr "تحجيم الصندوق"
 
 #: lib/layouts/graphicboxes.module:49
 #, fuzzy
@@ -13574,7 +13554,7 @@ msgstr ""
 
 #: lib/layouts/initials.module:45
 msgid "Rest of initial word or text"
-msgstr ""
+msgstr "مسح الكلمة أو النص الداخلي"
 
 #: lib/layouts/jurabib.module:2
 #, fuzzy
@@ -14076,7 +14056,7 @@ msgstr "خيارات العمود المزدوج (انظر دليل powerdot)"
 
 #: lib/layouts/rsphrase.module:2
 msgid "Risk and Safety Statements"
-msgstr ""
+msgstr "تقارير المجازفة والأمان"
 
 #: lib/layouts/rsphrase.module:7
 msgid ""
@@ -14395,9 +14375,9 @@ msgstr ""
 "عرف بعض وحدات النظريات الإضافية لتستخدم مع حزم نظريات الـAMS. تشمل المعايير ،"
 "الخوارزم،المسلمات،الشروط، الملاحظة،الترقيم،الملخص،الاعتراف بالجميل،استنتاج،"
 "الفرض،و الحالات،في الصيغ المرقمة و الغير مرقمة. على النقيض من نموذج  AMS-"
-"الممتد البسيط، النظريات المختلفة في النوع المتوفرة هنا تملك عداداً منفصلاً"
-"(مثلا. criterion 1, criterion 2, axiom 1, assumption 1, criterion 3, ..., as "
-"opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
+"الممتد البسيط، النظريات المختلفة في النوع المتوفرة هنا تملك عداداً "
+"منفصلاً(مثلا. criterion 1, criterion 2, axiom 1, assumption 1, criterion "
+"3, ..., as opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:63
 #, fuzzy
@@ -14712,10 +14692,10 @@ msgid ""
 "proposition 4, ...). The numbering is reset at each section start."
 msgstr ""
 "عرف بعض وحدات النظريات لتستخدم مع غير أصناف AMS. على النقيض من نماذج "
-"النظريات البسيطة،الأنواع المختلفة المتوفرة هنا كلا منها يملك عداداً منفصلاً"
-"(مثلا.نظرية 1, نظرية 2, قضية مساعدة 1, فرضية 1, نظرية 3, قضية مساعدة 2, ..., "
-"as opposed to theorem 1, نظرية 2, قضية مساعدة 3, فرضية 4, ...). يعاد ضبط "
-"الترقيم عند بداية كل قسم."
+"النظريات البسيطة،الأنواع المختلفة المتوفرة هنا كلا منها يملك عداداً "
+"منفصلاً(مثلا.نظرية 1, نظرية 2, قضية مساعدة 1, فرضية 1, نظرية 3, قضية مساعدة "
+"2, ..., as opposed to theorem 1, نظرية 2, قضية مساعدة 3, فرضية 4, ...). يعاد "
+"ضبط الترقيم عند بداية كل قسم."
 
 #: lib/layouts/theorems-sec.module:2
 msgid "Theorems (Numbered by Section)"
@@ -15255,23 +15235,23 @@ msgstr "Times Roman"
 
 #: lib/latexfonts:344
 msgid "TeX Gyre Bonum"
-msgstr ""
+msgstr "TeX Gyre Bonum"
 
 #: lib/latexfonts:350
 msgid "TeX Gyre Chorus"
-msgstr ""
+msgstr "TeX Gyre Chorus"
 
 #: lib/latexfonts:356
 msgid "TeX Gyre Pagella"
-msgstr ""
+msgstr "TeX Gyre Pagella"
 
 #: lib/latexfonts:362
 msgid "TeX Gyre Schola"
-msgstr ""
+msgstr "TeX Gyre Schola"
 
 #: lib/latexfonts:368
 msgid "TeX Gyre Termes"
-msgstr ""
+msgstr "TeX Gyre Termes"
 
 #: lib/latexfonts:376 lib/latexfonts:387 lib/latexfonts:393 lib/latexfonts:400
 msgid "Utopia (Fourier)"
@@ -17552,7 +17532,7 @@ msgstr "قائمة عددية"
 
 #: lib/ui/stdtoolbars.inc:115
 msgid "Itemized list"
-msgstr "القائمة النقطية"
+msgstr "قائمة نقطية"
 
 #: lib/ui/stdtoolbars.inc:118
 msgid "Increase depth"
@@ -19756,7 +19736,7 @@ msgstr "Bowtie"
 
 #: lib/ui/stdtoolbars.inc:790
 msgid "diameter"
-msgstr ""
+msgstr "قطر الدائرة"
 
 #: lib/ui/stdtoolbars.inc:791
 msgid "invdiameter"
@@ -21810,11 +21790,11 @@ msgstr "اسفل الوسط"
 
 #: lib/ui/stdtoolbars.inc:1378
 msgid "Long"
-msgstr ""
+msgstr "طول"
 
 #: lib/ui/stdtoolbars.inc:1379
 msgid "Half-long"
-msgstr ""
+msgstr "نصف-طول"
 
 #: lib/ui/stdtoolbars.inc:1380
 msgid "Extra short"
@@ -22413,7 +22393,7 @@ msgstr "جدول ممتد اكسيل"
 
 #: lib/configure.py:634
 msgid "OpenOffice spreadsheet"
-msgstr "جدول ممتد أوبن أوفيس"
+msgstr "جدول ممتد كلك"
 
 #: lib/configure.py:637
 msgid "LyXHTML"
@@ -22581,9 +22561,8 @@ msgid "LyX 2.0.x"
 msgstr "ليك 2.0.x"
 
 #: lib/configure.py:697
-#, fuzzy
 msgid "LyX 2.1.x"
-msgstr "ليك 2.0.x"
+msgstr "LyX 2.1.x"
 
 #: lib/configure.py:698
 msgid "CJK LyX 1.4.x (big5)"
@@ -24109,7 +24088,7 @@ msgstr "روماني"
 #: src/frontends/qt4/GuiDocument.cpp:3591
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
-msgstr ""
+msgstr "Sans Serif"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:123
 #: src/frontends/qt4/GuiDocument.cpp:3591
@@ -24805,11 +24784,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:3250
 msgid ""
-"The LaTeX command for loading the language package. E.g. \"\\usepackage"
-"{babel}\", \"\\usepackage{omega}\"."
+"The LaTeX command for loading the language package. E.g. "
+"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"أمر LaTeX لتحميل حزمة اللغة مثل \"\\usepackage{babel}\", \"\\usepackage"
-"{omega}\"."
+"أمر LaTeX لتحميل حزمة اللغة مثل \"\\usepackage{babel}\", "
+"\"\\usepackage{omega}\"."
 
 #: src/LyXRC.cpp:3254
 #, fuzzy
@@ -25152,9 +25131,8 @@ msgid ""
 msgstr ""
 
 #: src/LyXVC.cpp:297
-#, fuzzy
 msgid "Revert to stored version of document?"
-msgstr "عودة للمستند المحفوظ؟"
+msgstr "عودة لإصدار المستند المحفوظ؟"
 
 #: src/LyXVC.cpp:298 src/frontends/qt4/GuiView.cpp:3557
 msgid "&Revert"
@@ -25229,9 +25207,8 @@ msgid ", Depth: %1$d"
 msgstr ""
 
 #: src/Text.cpp:1880
-#, fuzzy
 msgid ", Spacing: "
-msgstr "&التباعد:"
+msgstr ", التباعد: "
 
 #: src/Text.cpp:1886 src/frontends/qt4/GuiDocument.cpp:715
 msgid "OneHalf"
@@ -25266,9 +25243,8 @@ msgid ", Boundary: "
 msgstr ""
 
 #: src/Text2.cpp:404
-#, fuzzy
 msgid "No font change defined."
-msgstr "لا اجراء محدد"
+msgstr "لم يتم تعيين خط لتغييره."
 
 #: src/Text2.cpp:444
 msgid "Nothing to index!"
@@ -25305,9 +25281,8 @@ msgid " not known"
 msgstr "مجهول"
 
 #: src/Text3.cpp:1955 src/frontends/qt4/GuiApplication.cpp:1624
-#, fuzzy
 msgid "Missing argument"
-msgstr "صنع قائمة البارامترات"
+msgstr "فقد المحاذاة"
 
 #: src/Text3.cpp:2111 src/Text3.cpp:2123
 msgid "Character set"
@@ -27933,9 +27908,8 @@ msgid "Alphabetic Presentation Forms"
 msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:117
-#, fuzzy
 msgid "Arabic Presentation Forms-A"
-msgstr "عرض تقديمي"
+msgstr "عرض تقديمي عربي نموذج-أ"
 
 #: src/frontends/qt4/GuiSymbols.cpp:118
 msgid "Combining Half Marks"
@@ -27950,9 +27924,8 @@ msgid "Small Form Variants"
 msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:121
-#, fuzzy
 msgid "Arabic Presentation Forms-B"
-msgstr "عرض تقديمي"
+msgstr "عرض تقديمي عربي نموذج-ب"
 
 #: src/frontends/qt4/GuiSymbols.cpp:122
 msgid "Halfwidth and Fullwidth Forms"
