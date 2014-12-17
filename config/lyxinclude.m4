@@ -141,6 +141,19 @@ rm -f conftest.C conftest.o conftest.obj || true
 ])
 
 
+dnl Usage: LYX_PROG_CLANG: set lyx_cv_prog_clang to yes if the compiler is clang.
+AC_DEFUN([LYX_PROG_CLANG],
+[AC_CACHE_CHECK([for clang],
+               [lyx_cv_prog_clang],
+[AC_TRY_COMPILE([], [
+#ifndef __clang__
+	    this is not clang
+#endif
+],
+[lyx_cv_prog_clang=yes ; CLANG=yes], [lyx_cv_prog_clang=no ; CLANG=no])])
+])
+
+
 AC_DEFUN([LYX_PROG_CXX],
 [AC_MSG_CHECKING([for a good enough C++ compiler])
 LYX_SEARCH_PROG(CXX, $CXX $CCC g++ gcc c++ CC cxx xlC cc++, [LYX_PROG_CXX_WORKS])
@@ -150,8 +163,11 @@ if test -z "$CXX" ; then
 fi
 AC_MSG_RESULT($CXX)
 
-AC_PROG_CXX
-AC_PROG_CXXCPP
+AC_REQUIRE([AC_PROG_CXX])
+AC_REQUIRE([AC_PROG_CXXCPP])
+AC_LANG_PUSH(C++)
+LYX_PROG_CLANG
+AC_LANG_POP(C++)
 
 ### We might want to get or shut warnings.
 AC_ARG_ENABLE(warnings,
@@ -220,9 +236,12 @@ fi
 
 # set the compiler options correctly.
 if test x$GXX = xyes; then
-  dnl Useful for global version info
-  gxx_version=`${CXX} -dumpversion`
-  CXX_VERSION="($gxx_version)"
+  dnl clang++ pretends to be g++ 4.2.1; this is not useful
+  if test x$CLANG = xno; then
+    dnl Useful for global version info
+    gxx_version=`${CXX} -dumpversion`
+    CXX_VERSION="($gxx_version)"
+  fi
 
   if test "$ac_test_CXXFLAGS" = set; then
     CXXFLAGS="$ac_save_CXXFLAGS"
@@ -265,6 +284,8 @@ if test x$GXX = xyes; then
       *)       AM_CXXFLAGS="";;
   esac
   if test x$enable_stdlib_debug = xyes ; then
+    dnl FIXME: for clang/libc++, one should define _LIBCPP_DEBUG2=0
+    dnl See http://clang-developers.42468.n3.nabble.com/libc-debug-mode-td3336742.html
     case $gxx_version in
       3.4*|4.*)
         lyx_flags="$lyx_flags stdlib-debug"
@@ -277,6 +298,7 @@ if test x$GXX = xyes; then
     case $gxx_version in
       3.3*)
         lyx_flags="$lyx_flags concept-checks"
+	dnl FIXME check whether this makes sense with clang/libc++
         AC_DEFINE(_GLIBCPP_CONCEPT_CHECKS, 1, [libstdc++ concept checking])
 	;;
       3.4*|4.*)
@@ -286,6 +308,7 @@ if test x$GXX = xyes; then
     esac
   fi
   if test x$enable_cxx11 = xyes ; then
+      dnl FIXME: check what to do with clang (is anything needed at all?)
       case $gxx_version in
 	  4.3*|4.4*|4.5*|4.6*)
 	      lyx_flags="$lyx_flags c++11-mode"
@@ -297,6 +320,7 @@ if test x$GXX = xyes; then
 	      ;;
       esac
   fi
+  dnl FIXME: this should be conditional to the use of libstdc++
   AC_DEFINE(STD_STRING_USES_COW, 1, [std::string uses copy-on-write])
 fi
 test "$lyx_pch_comp" = yes && lyx_flags="$lyx_flags pch"
