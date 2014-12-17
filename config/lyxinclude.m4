@@ -143,7 +143,7 @@ rm -f conftest.C conftest.o conftest.obj || true
 
 dnl Usage: LYX_PROG_CLANG: set lyx_cv_prog_clang to yes if the compiler is clang.
 AC_DEFUN([LYX_PROG_CLANG],
-[AC_CACHE_CHECK([for clang],
+[AC_CACHE_CHECK([whether the compiler is clang],
                [lyx_cv_prog_clang],
 [AC_TRY_COMPILE([], [
 #ifndef __clang__
@@ -151,6 +151,19 @@ AC_DEFUN([LYX_PROG_CLANG],
 #endif
 ],
 [lyx_cv_prog_clang=yes ; CLANG=yes], [lyx_cv_prog_clang=no ; CLANG=no])])
+])
+
+
+dnl Usage: LYX_LIB_STDCXX: set lyx_cv_lib_stdcxx to yes if the STL library is libstdc++.
+AC_DEFUN([LYX_LIB_STDCXX],
+[AC_CACHE_CHECK([whether STL is libstdc++],
+               [lyx_cv_lib_stdcxx],
+[AC_TRY_COMPILE([#include<vector>], [
+#if ! defined(__GLIBCXX__) && ! defined(__GLIBCPP__)
+	    this is not libstdc++
+#endif
+],
+[lyx_cv_lib_stdcxx=yes], [lyx_cv_lib_stdcxx=no])])
 ])
 
 
@@ -167,7 +180,12 @@ AC_REQUIRE([AC_PROG_CXX])
 AC_REQUIRE([AC_PROG_CXXCPP])
 AC_LANG_PUSH(C++)
 LYX_PROG_CLANG
+LYX_LIB_STDCXX
 AC_LANG_POP(C++)
+
+if test $lyx_cv_lib_stdcxx = "yes" ; then
+  AC_DEFINE(STD_STRING_USES_COW, 1, [std::string uses copy-on-write])
+fi
 
 ### We might want to get or shut warnings.
 AC_ARG_ENABLE(warnings,
@@ -320,8 +338,6 @@ if test x$GXX = xyes; then
 	      ;;
       esac
   fi
-  dnl FIXME: this should be conditional to the use of libstdc++
-  AC_DEFINE(STD_STRING_USES_COW, 1, [std::string uses copy-on-write])
 fi
 test "$lyx_pch_comp" = yes && lyx_flags="$lyx_flags pch"
 AM_CONDITIONAL(LYX_BUILD_PCH, test "$lyx_pch_comp" = yes)
