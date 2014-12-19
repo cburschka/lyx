@@ -145,7 +145,7 @@ void GuiCitation::applyView()
 	QString const before = textBeforeED->text();
 	QString const after = textAfterED->text();
 
-	apply(choice, full, force, before, after);
+	applyParams(choice, full, force, before, after);
 }
 
 
@@ -443,7 +443,7 @@ void GuiCitation::changed()
 }
 
 
-void GuiCitation::apply(int const choice, bool full, bool force,
+void GuiCitation::applyParams(int const choice, bool full, bool force,
 	QString before, QString after)
 {
 	if (cited_keys_.isEmpty())

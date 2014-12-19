@@ -430,7 +430,7 @@ void PrefOutput::on_DateED_textChanged(const QString &)
 }
 
 
-void PrefOutput::apply(LyXRC & rc) const
+void PrefOutput::applyRC(LyXRC & rc) const
 {
 	rc.date_insert_format = fromqstr(DateED->text());
 	rc.plaintext_linelen = plaintextLinelengthSB->value();
@@ -451,7 +451,7 @@ void PrefOutput::apply(LyXRC & rc) const
 }
 
 
-void PrefOutput::update(LyXRC const & rc)
+void PrefOutput::updateRC(LyXRC const & rc)
 {
 	DateED->setText(toqstr(rc.date_insert_format));
 	plaintextLinelengthSB->setValue(rc.plaintext_linelen);
@@ -509,7 +509,7 @@ PrefInput::PrefInput(GuiPreferences * form)
 }
 
 
-void PrefInput::apply(LyXRC & rc) const
+void PrefInput::applyRC(LyXRC & rc) const
 {
 	// FIXME: can derive CB from the two EDs
 	rc.use_kbmap = keymapCB->isChecked();
@@ -535,7 +535,7 @@ void PrefInput::apply(LyXRC & rc) const
 }
 
 
-void PrefInput::update(LyXRC const & rc)
+void PrefInput::updateRC(LyXRC const & rc)
 {
 	// FIXME: can derive CB from the two EDs
 	keymapCB->setChecked(rc.use_kbmap);
@@ -657,7 +657,7 @@ void PrefCompletion::enableCB()
 }
 
 
-void PrefCompletion::apply(LyXRC & rc) const
+void PrefCompletion::applyRC(LyXRC & rc) const
 {
 	rc.completion_inline_delay = inlineDelaySB->value();
 	rc.completion_inline_math = inlineMathCB->isChecked();
@@ -674,7 +674,7 @@ void PrefCompletion::apply(LyXRC & rc) const
 }
 
 
-void PrefCompletion::update(LyXRC const & rc)
+void PrefCompletion::updateRC(LyXRC const & rc)
 {
 	inlineDelaySB->setValue(rc.completion_inline_delay);
 	inlineMathCB->setChecked(rc.completion_inline_math);
@@ -803,7 +803,7 @@ void PrefLatex::on_latexIndexCO_activated(int n)
 }
 
 
-void PrefLatex::apply(LyXRC & rc) const
+void PrefLatex::applyRC(LyXRC & rc) const
 {
 	// If bibtex is not empty, bibopt contains the options, otherwise
 	// it is a customized bibtex command with options.
@@ -845,7 +845,7 @@ void PrefLatex::apply(LyXRC & rc) const
 }
 
 
-void PrefLatex::update(LyXRC const & rc)
+void PrefLatex::updateRC(LyXRC const & rc)
 {
 	latexBibtexCO->clear();
 
@@ -990,7 +990,7 @@ PrefScreenFonts::PrefScreenFonts(GuiPreferences * form)
 }
 
 
-void PrefScreenFonts::apply(LyXRC & rc) const
+void PrefScreenFonts::applyRC(LyXRC & rc) const
 {
 	LyXRC const oldrc = rc;
 
@@ -1029,7 +1029,7 @@ void PrefScreenFonts::apply(LyXRC & rc) const
 }
 
 
-void PrefScreenFonts::update(LyXRC const & rc)
+void PrefScreenFonts::updateRC(LyXRC const & rc)
 {
 	setComboxFont(screenRomanCO, rc.roman_font_name,
 			rc.roman_font_foundry);
@@ -1153,7 +1153,7 @@ PrefColors::PrefColors(GuiPreferences * form)
 }
 
 
-void PrefColors::apply(LyXRC & rc) const
+void PrefColors::applyRC(LyXRC & rc) const
 {
 	LyXRC oldrc = rc;
 
@@ -1167,7 +1167,7 @@ void PrefColors::apply(LyXRC & rc) const
 }
 
 
-void PrefColors::update(LyXRC const & rc)
+void PrefColors::updateRC(LyXRC const & rc)
 {
 	for (unsigned int i = 0; i < lcolors_.size(); ++i) {
 		QColor color = QColor(guiApp->colorCache().get(lcolors_[i], false));
@@ -1243,7 +1243,7 @@ void PrefDisplay::on_instantPreviewCO_currentIndexChanged(int index)
 }
 
 
-void PrefDisplay::apply(LyXRC & rc) const
+void PrefDisplay::applyRC(LyXRC & rc) const
 {
 	switch (instantPreviewCO->currentIndex()) {
 		case 0:
@@ -1271,7 +1271,7 @@ void PrefDisplay::apply(LyXRC & rc) const
 }
 
 
-void PrefDisplay::update(LyXRC const & rc)
+void PrefDisplay::updateRC(LyXRC const & rc)
 {
 	switch (rc.preview) {
 	case LyXRC::PREVIEW_OFF:
@@ -1353,7 +1353,7 @@ PrefPaths::PrefPaths(GuiPreferences * form)
 }
 
 
-void PrefPaths::apply(LyXRC & rc) const
+void PrefPaths::applyRC(LyXRC & rc) const
 {
 	rc.document_path = internal_path(fromqstr(workingDirED->text()));
 	rc.example_path = internal_path(fromqstr(exampleDirED->text()));
@@ -1369,7 +1369,7 @@ void PrefPaths::apply(LyXRC & rc) const
 }
 
 
-void PrefPaths::update(LyXRC const & rc)
+void PrefPaths::updateRC(LyXRC const & rc)
 {
 	workingDirED->setText(toqstr(external_path(rc.document_path)));
 	exampleDirED->setText(toqstr(external_path(rc.example_path)));
@@ -1512,7 +1512,7 @@ PrefSpellchecker::PrefSpellchecker(GuiPreferences * form)
 }
 
 
-void PrefSpellchecker::apply(LyXRC & rc) const
+void PrefSpellchecker::applyRC(LyXRC & rc) const
 {
 	string const speller = fromqstr(spellcheckerCB->
 		itemData(spellcheckerCB->currentIndex()).toString());
@@ -1526,7 +1526,7 @@ void PrefSpellchecker::apply(LyXRC & rc) const
 }
 
 
-void PrefSpellchecker::update(LyXRC const & rc)
+void PrefSpellchecker::updateRC(LyXRC const & rc)
 {
 	spellcheckerCB->setCurrentIndex(
 		spellcheckerCB->findData(toqstr(rc.spellchecker)));
@@ -1591,14 +1591,14 @@ PrefConverters::PrefConverters(GuiPreferences * form)
 }
 
 
-void PrefConverters::apply(LyXRC & rc) const
+void PrefConverters::applyRC(LyXRC & rc) const
 {
 	rc.use_converter_cache = cacheCB->isChecked();
 	rc.converter_cache_maxage = int(widgetToDouble(maxAgeLE) * 86400.0);
 }
 
 
-void PrefConverters::update(LyXRC const & rc)
+void PrefConverters::updateRC(LyXRC const & rc)
 {
 	cacheCB->setChecked(rc.use_converter_cache);
 	QString max_age;
@@ -1917,7 +1917,7 @@ string const l10n_shortcut(string const & prettyname, string const & shortcut)
 } // namespace anon
 
 
-void PrefFileformats::apply(LyXRC & rc) const
+void PrefFileformats::applyRC(LyXRC & rc) const
 {
 	QString const default_format = defaultFormatCB->itemData(
 		defaultFormatCB->currentIndex()).toString();
@@ -1928,7 +1928,7 @@ void PrefFileformats::apply(LyXRC & rc) const
 }
 
 
-void PrefFileformats::update(LyXRC const & rc)
+void PrefFileformats::updateRC(LyXRC const & rc)
 {
 	viewer_alternatives = rc.viewer_alternatives;
 	editor_alternatives = rc.editor_alternatives;
@@ -2343,7 +2343,7 @@ void PrefLanguage::on_languagePackageCO_currentIndexChanged(int i)
 }
 
 
-void PrefLanguage::apply(LyXRC & rc) const
+void PrefLanguage::applyRC(LyXRC & rc) const
 {
 	rc.visual_cursor = visualCursorRB->isChecked();
 	rc.mark_foreign_language = markForeignCB->isChecked();
@@ -2369,7 +2369,7 @@ void PrefLanguage::apply(LyXRC & rc) const
 }
 
 
-void PrefLanguage::update(LyXRC const & rc)
+void PrefLanguage::updateRC(LyXRC const & rc)
 {
 	if (rc.visual_cursor)
 		visualCursorRB->setChecked(true);
@@ -2463,7 +2463,7 @@ PrefPrinter::PrefPrinter(GuiPreferences * form)
 }
 
 
-void PrefPrinter::apply(LyXRC & rc) const
+void PrefPrinter::applyRC(LyXRC & rc) const
 {
 	rc.print_adapt_output = printerAdaptCB->isChecked();
 	rc.print_command = fromqstr(printerCommandED->text());
@@ -2487,7 +2487,7 @@ void PrefPrinter::apply(LyXRC & rc) const
 }
 
 
-void PrefPrinter::update(LyXRC const & rc)
+void PrefPrinter::updateRC(LyXRC const & rc)
 {
 	printerAdaptCB->setChecked(rc.print_adapt_output);
 	printerCommandED->setText(toqstr(rc.print_command));
@@ -2546,7 +2546,7 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 }
 
 
-void PrefUserInterface::apply(LyXRC & rc) const
+void PrefUserInterface::applyRC(LyXRC & rc) const
 {
 	rc.icon_set = fromqstr(iconSetCO->itemData(
 		iconSetCO->currentIndex()).toString());
@@ -2558,7 +2558,7 @@ void PrefUserInterface::apply(LyXRC & rc) const
 }
 
 
-void PrefUserInterface::update(LyXRC const & rc)
+void PrefUserInterface::updateRC(LyXRC const & rc)
 {
 	int iconset = iconSetCO->findData(toqstr(rc.icon_set));
 	if (iconset < 0)
@@ -2619,7 +2619,7 @@ PrefDocHandling::PrefDocHandling(GuiPreferences * form)
 }
 
 
-void PrefDocHandling::apply(LyXRC & rc) const
+void PrefDocHandling::applyRC(LyXRC & rc) const
 {
 	rc.use_lastfilepos = restoreCursorCB->isChecked();
 	rc.load_session = loadSessionCB->isChecked();
@@ -2647,7 +2647,7 @@ void PrefDocHandling::apply(LyXRC & rc) const
 }
 
 
-void PrefDocHandling::update(LyXRC const & rc)
+void PrefDocHandling::updateRC(LyXRC const & rc)
 {
 	restoreCursorCB->setChecked(rc.use_lastfilepos);
 	loadSessionCB->setChecked(rc.load_session);
@@ -2724,7 +2724,7 @@ PrefEdit::PrefEdit(GuiPreferences * form)
 }
 
 
-void PrefEdit::apply(LyXRC & rc) const
+void PrefEdit::applyRC(LyXRC & rc) const
 {
 	rc.cursor_follows_scrollbar = cursorFollowsCB->isChecked();
 	rc.scroll_below_document = scrollBelowCB->isChecked();
@@ -2747,7 +2747,7 @@ void PrefEdit::apply(LyXRC & rc) const
 }
 
 
-void PrefEdit::update(LyXRC const & rc)
+void PrefEdit::updateRC(LyXRC const & rc)
 {
 	cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar);
 	scrollBelowCB->setChecked(rc.scroll_below_document);
@@ -2817,7 +2817,7 @@ PrefShortcuts::PrefShortcuts(GuiPreferences * form)
 }
 
 
-void PrefShortcuts::apply(LyXRC & rc) const
+void PrefShortcuts::applyRC(LyXRC & rc) const
 {
 	rc.bind_file = internal_path(fromqstr(bindFileED->text()));
 	// write user_bind and user_unbind to .lyx/bind/user.bind
@@ -2844,7 +2844,7 @@ void PrefShortcuts::apply(LyXRC & rc) const
 }
 
 
-void PrefShortcuts::update(LyXRC const & rc)
+void PrefShortcuts::updateRC(LyXRC const & rc)
 {
 	bindFileED->setText(toqstr(external_path(rc.bind_file)));
 	//
@@ -3276,14 +3276,14 @@ PrefIdentity::PrefIdentity(GuiPreferences * form)
 }
 
 
-void PrefIdentity::apply(LyXRC & rc) const
+void PrefIdentity::applyRC(LyXRC & rc) const
 {
 	rc.user_name = fromqstr(nameED->text());
 	rc.user_email = fromqstr(emailED->text());
 }
 
 
-void PrefIdentity::update(LyXRC const & rc)
+void PrefIdentity::updateRC(LyXRC const & rc)
 {
 	nameED->setText(toqstr(rc.user_name));
 	emailED->setText(toqstr(rc.user_email));
@@ -3305,7 +3305,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	QDialog::setModal(false);
 
 	connect(savePB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
+	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApplyRC()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
 
@@ -3378,25 +3378,25 @@ void GuiPreferences::change_adaptor()
 }
 
 
-void GuiPreferences::apply(LyXRC & rc) const
+void GuiPreferences::applyRC(LyXRC & rc) const
 {
 	size_t end = modules_.size();
 	for (size_t i = 0; i != end; ++i)
-		modules_[i]->apply(rc);
+		modules_[i]->applyRC(rc);
 }
 
 
-void GuiPreferences::updateRc(LyXRC const & rc)
+void GuiPreferences::updateRC(LyXRC const & rc)
 {
 	size_t const end = modules_.size();
 	for (size_t i = 0; i != end; ++i)
-		modules_[i]->update(rc);
+		modules_[i]->updateRC(rc);
 }
 
 
 void GuiPreferences::applyView()
 {
-	apply(rc());
+	applyRC(rc());
 }
 
 
@@ -3410,7 +3410,7 @@ bool GuiPreferences::initialiseParams(string const &)
 	colors_.clear();
 	update_screen_font_ = false;
 
-	updateRc(rc_);
+	updateRC(rc_);
 	// Make sure that the bc is in the INITIAL state
 	if (bc().policy().buttonStatus(ButtonPolicy::RESTORE))
 		bc().restore();

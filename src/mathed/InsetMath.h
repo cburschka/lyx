@@ -177,7 +177,10 @@ public:
 	/// access to the lock (only nest array have one)
 	virtual void lock(bool) {}
 
-	/// write LaTeX and Lyx code
+	// Indicate that we do not want to hide the normal version of
+	// write(). This is to shut off a clang warning.
+	using Inset::write;
+	/// write LaTeX and LyX code
 	virtual void write(WriteStream & os) const;
 	/// write normalized content
 	virtual void normalize(NormalStream &) const;

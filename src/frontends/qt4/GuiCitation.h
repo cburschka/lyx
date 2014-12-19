@@ -126,7 +126,7 @@ private:
 	QStringList citationStyles(BiblioInfo const & bi, size_t max_size);
 
 	/// Set the Params variable for the Controller.
-	void apply(int const choice, bool const full, bool const force,
+	void applyParams(int const choice, bool const full, bool const force,
 					  QString before, QString after);
 
 	///

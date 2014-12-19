@@ -32,9 +32,17 @@ public:
 	///
 	void setBuffer(Buffer &);
 
+	// The method below hides inset::metrics() intentionally!
+	// We have to tell clang not to be fussy about that.
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Woverloaded-virtual"
+#endif
 	/// the size is usually some sort of convex hull of the cells
-	/// hides inset::metrics() intentionally!
 	void metrics(MetricsInfo const & mi) const;
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
 	/// draw background if locked
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw selection background
