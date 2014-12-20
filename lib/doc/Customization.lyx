@@ -151,6 +151,7 @@ End
 \html_css_as_file 0
 \html_be_strict true
 \author -712698321 "Jürgen Spitzmüller" 
+\author 274215730 "scott" 
 \end_header
 
 \begin_body
@@ -17070,6 +17071,9 @@ status collapsed
 ] Force a a line break in the LaTeX output before the inset starts and after
  the inset ends.
  This assures the inset itself is output on its own lines, for parsing purposes.
+
+\change_inserted 274215730 1419105878
+ Default is false.
 \change_unchanged
 
 \end_layout
