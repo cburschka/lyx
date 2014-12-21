@@ -2377,6 +2377,16 @@ void GuiDocument::modulesToParams(BufferParams & bp)
 void GuiDocument::modulesChanged()
 {
 	modulesToParams(bp_);
+
+	if (applyPB->isEnabled()) {
+		int const ret = Alert::prompt(_("Unapplied changes"),
+				_("Some changes in the dialog were not yet applied.\n"
+				"If you do not apply now, they will be lost after this action."),
+				1, 1, _("&Apply"), _("&Dismiss"));
+		if (ret == 0)
+			applyView();
+	}
+
 	bp_.makeDocumentClass();
 	paramsToDialog();
 }
