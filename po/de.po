@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-12-06 09:38+0100\n"
-"PO-Revision-Date: 2014-12-08 08:00+0100\n"
+"POT-Creation-Date: 2014-12-21 15:08+0100\n"
+"PO-Revision-Date: 2014-12-21 15:11+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -387,8 +387,9 @@ msgstr "&OK"
 #: src/frontends/qt4/ui/GraphicsUi.ui:742
 #: src/frontends/qt4/ui/DocumentUi.ui:77
 #: src/frontends/qt4/ui/CharacterUi.ui:367 src/frontends/qt4/ui/RefUi.ui:330
-#: src/frontends/qt4/GuiDocument.cpp:2191
-#: src/frontends/qt4/GuiDocument.cpp:3537
+#: src/frontends/qt4/GuiDocument.cpp:2175
+#: src/frontends/qt4/GuiDocument.cpp:2368
+#: src/frontends/qt4/GuiDocument.cpp:3530
 msgid "&Apply"
 msgstr "&Übernehmen"
 
@@ -1016,8 +1017,8 @@ msgstr "Zeilen&abstand"
 #: src/frontends/qt4/GuiDocument.cpp:1971
 #: src/frontends/qt4/GuiDocument.cpp:1978
 #: src/frontends/qt4/GuiDocument.cpp:2063
-#: src/frontends/qt4/GuiDocument.cpp:2501
-#: src/frontends/qt4/GuiDocument.cpp:3591 src/frontends/qt4/GuiExternal.cpp:76
+#: src/frontends/qt4/GuiDocument.cpp:2494
+#: src/frontends/qt4/GuiDocument.cpp:3584 src/frontends/qt4/GuiExternal.cpp:76
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
 #: src/frontends/qt4/GuiPrefs.cpp:2309 src/frontends/qt4/GuiPrefs.cpp:2539
@@ -8702,41 +8703,41 @@ msgid "The caption width relative to the column (0 through 1)"
 msgstr "Die Breite der Legende relativ zur Spalte (0 bis 1)"
 
 #: lib/layouts/sciposter.layout:97 lib/layouts/sciposter.layout:100
-#: lib/layouts/sciposter.layout:126 lib/layouts/beamerposter.layout:53
-#: lib/layouts/beamerposter.layout:56 lib/layouts/beamerposter.layout:82
+#: lib/layouts/sciposter.layout:127 lib/layouts/beamerposter.layout:53
+#: lib/layouts/beamerposter.layout:56 lib/layouts/beamerposter.layout:83
 #: lib/layouts/a0poster.layout:41 lib/layouts/a0poster.layout:44
-#: lib/layouts/a0poster.layout:70
+#: lib/layouts/a0poster.layout:71
 msgid "Giant"
 msgstr "Gigantischer"
 
-#: lib/layouts/sciposter.layout:112 lib/layouts/sciposter.layout:115
-#: lib/layouts/sciposter.layout:140 lib/layouts/beamerposter.layout:68
-#: lib/layouts/beamerposter.layout:71 lib/layouts/beamerposter.layout:96
-#: lib/layouts/a0poster.layout:56 lib/layouts/a0poster.layout:59
-#: lib/layouts/a0poster.layout:84
+#: lib/layouts/sciposter.layout:113 lib/layouts/sciposter.layout:116
+#: lib/layouts/sciposter.layout:142 lib/layouts/beamerposter.layout:69
+#: lib/layouts/beamerposter.layout:72 lib/layouts/beamerposter.layout:98
+#: lib/layouts/a0poster.layout:57 lib/layouts/a0poster.layout:60
+#: lib/layouts/a0poster.layout:86
 msgid "More Giant"
 msgstr "Noch gigantischer"
 
-#: lib/layouts/sciposter.layout:118 lib/layouts/sciposter.layout:121
-#: lib/layouts/sciposter.layout:146 lib/layouts/beamerposter.layout:74
-#: lib/layouts/beamerposter.layout:77 lib/layouts/beamerposter.layout:102
-#: lib/layouts/a0poster.layout:62 lib/layouts/a0poster.layout:65
-#: lib/layouts/a0poster.layout:90
+#: lib/layouts/sciposter.layout:119 lib/layouts/sciposter.layout:122
+#: lib/layouts/sciposter.layout:148 lib/layouts/beamerposter.layout:75
+#: lib/layouts/beamerposter.layout:78 lib/layouts/beamerposter.layout:104
+#: lib/layouts/a0poster.layout:63 lib/layouts/a0poster.layout:66
+#: lib/layouts/a0poster.layout:92
 msgid "Most Giant"
 msgstr "Am gigantischsten"
 
-#: lib/layouts/sciposter.layout:124 lib/layouts/beamerposter.layout:80
-#: lib/layouts/a0poster.layout:68
+#: lib/layouts/sciposter.layout:125 lib/layouts/beamerposter.layout:81
+#: lib/layouts/a0poster.layout:69
 msgid "Giant Snippet"
 msgstr "Gigantischerer Ausschnitt"
 
-#: lib/layouts/sciposter.layout:138 lib/layouts/beamerposter.layout:94
-#: lib/layouts/a0poster.layout:82
+#: lib/layouts/sciposter.layout:140 lib/layouts/beamerposter.layout:96
+#: lib/layouts/a0poster.layout:84
 msgid "More Giant Snippet"
 msgstr "Noch gigantischerer Ausschnitt"
 
-#: lib/layouts/sciposter.layout:144 lib/layouts/beamerposter.layout:100
-#: lib/layouts/a0poster.layout:88
+#: lib/layouts/sciposter.layout:146 lib/layouts/beamerposter.layout:102
+#: lib/layouts/a0poster.layout:90
 msgid "Most Giant Snippet"
 msgstr "Gigantischster Ausschnitt"
 
@@ -10449,10 +10450,10 @@ msgstr "Alternative Zugehörigkeit:"
 msgid "And"
 msgstr "Und"
 
-#: lib/layouts/aastex.layout:220 src/frontends/qt4/GuiDocument.cpp:2310
-#: src/frontends/qt4/GuiDocument.cpp:2322
-#: src/frontends/qt4/GuiDocument.cpp:2421
-#: src/frontends/qt4/GuiDocument.cpp:2440
+#: lib/layouts/aastex.layout:220 src/frontends/qt4/GuiDocument.cpp:2293
+#: src/frontends/qt4/GuiDocument.cpp:2305
+#: src/frontends/qt4/GuiDocument.cpp:2414
+#: src/frontends/qt4/GuiDocument.cpp:2433
 msgid "and"
 msgstr "und"
 
@@ -12916,31 +12917,31 @@ msgstr "Überarbeitung"
 msgid "RevisionRemark"
 msgstr "Überarbeitungsbemerkung"
 
-#: lib/layouts/stdspecialchars.inc:7 lib/ui/stdmenus.inc:417
+#: lib/layouts/stdspecialchars.inc:8 lib/ui/stdmenus.inc:417
 msgid "Ligature Break|k"
 msgstr "Ligaturtrenner|r"
 
-#: lib/layouts/stdspecialchars.inc:16 lib/ui/stdmenus.inc:394
+#: lib/layouts/stdspecialchars.inc:17 lib/ui/stdmenus.inc:394
 msgid "End of Sentence|E"
 msgstr "Satzendepunkt|S"
 
-#: lib/layouts/stdspecialchars.inc:25 lib/ui/stdmenus.inc:393
+#: lib/layouts/stdspecialchars.inc:26 lib/ui/stdmenus.inc:393
 msgid "Ellipsis|i"
 msgstr "Fortsetzungspunkte|F"
 
-#: lib/layouts/stdspecialchars.inc:35 lib/ui/stdmenus.inc:400
+#: lib/layouts/stdspecialchars.inc:36 lib/ui/stdmenus.inc:400
 msgid "Menu Separator|M"
 msgstr "Menütrenner|M"
 
-#: lib/layouts/stdspecialchars.inc:48 lib/ui/stdmenus.inc:416
+#: lib/layouts/stdspecialchars.inc:49 lib/ui/stdmenus.inc:416
 msgid "Hyphenation Point|H"
 msgstr "Trennmöglichkeit|ö"
 
-#: lib/layouts/stdspecialchars.inc:55 lib/ui/stdmenus.inc:398
+#: lib/layouts/stdspecialchars.inc:56 lib/ui/stdmenus.inc:398
 msgid "Breakable Slash|a"
 msgstr "Umbruchfähiger Schrägstrich|ä"
 
-#: lib/layouts/stdspecialchars.inc:64 lib/ui/stdmenus.inc:397
+#: lib/layouts/stdspecialchars.inc:65 lib/ui/stdmenus.inc:397
 msgid "Protected Hyphen|y"
 msgstr "Geschützter Trennstrich|T"
 
@@ -13063,8 +13064,8 @@ msgstr "Fixme-Fehler"
 
 #: lib/layouts/fixme.module:78 src/frontends/qt4/GuiCompare.cpp:198
 #: src/frontends/qt4/GuiDocument.cpp:2121
-#: src/frontends/qt4/GuiDocument.cpp:2203
-#: src/frontends/qt4/GuiDocument.cpp:3545
+#: src/frontends/qt4/GuiDocument.cpp:2186
+#: src/frontends/qt4/GuiDocument.cpp:3538
 msgid "Error"
 msgstr "Fehler"
 
@@ -13199,6 +13200,38 @@ msgstr "Fixme: Fatal! (mehrere Abschn., markiert)"
 #: lib/layouts/fixme.module:215
 msgid "Fatal (MP Targ.)"
 msgstr "Fatal (m. A., mark.)"
+
+#: lib/layouts/fixme.module:225
+msgid "FxNote"
+msgstr "FxNote"
+
+#: lib/layouts/fixme.module:229
+msgid "FxNote*"
+msgstr "FxNote*"
+
+#: lib/layouts/fixme.module:233
+msgid "FxWarning"
+msgstr "FxWarning"
+
+#: lib/layouts/fixme.module:237
+msgid "FxWarning*"
+msgstr "FxWarning*"
+
+#: lib/layouts/fixme.module:241
+msgid "FxError"
+msgstr "FxError"
+
+#: lib/layouts/fixme.module:245
+msgid "FxError*"
+msgstr "FxError*"
+
+#: lib/layouts/fixme.module:249
+msgid "FxFatal"
+msgstr "FxFatal"
+
+#: lib/layouts/fixme.module:253
+msgid "FxFatal*"
+msgstr "FxFatal*"
 
 #: lib/layouts/minimalistic.module:2
 msgid "Minimalistic"
@@ -13410,6 +13443,22 @@ msgstr "Fehlende Abbildung"
 msgid "Missing Figure Note Options|s"
 msgstr "Optionen für 'Fehlende Abbildung'"
 
+#: lib/layouts/todonotes.module:112
+msgid "TODO"
+msgstr "TODO"
+
+#: lib/layouts/todonotes.module:116
+msgid "Todo[Inline]"
+msgstr "TODO [eingebettet]"
+
+#: lib/layouts/todonotes.module:120
+msgid "Todo[margin]"
+msgstr "TODO [Rand]"
+
+#: lib/layouts/todonotes.module:124
+msgid "MissingFigure"
+msgstr "Fehlende Abbildung"
+
 #: lib/layouts/rsphrase.module:2
 msgid "Risk and Safety Statements"
 msgstr "R- und S-Sätze"
@@ -13485,19 +13534,19 @@ msgstr "Abschnittsbox-Überschrift"
 msgid "Insert the section box header here"
 msgstr "Geben Sie hier die Überschrift der Abschnittsbox ein."
 
-#: lib/layouts/sectionbox.module:39
+#: lib/layouts/sectionbox.module:40
 msgid "SubsectionBox"
 msgstr "Unterabschnittsbox"
 
-#: lib/layouts/sectionbox.module:41
+#: lib/layouts/sectionbox.module:42
 msgid "Subsection Box"
 msgstr "Unterabschnittsbox"
 
-#: lib/layouts/sectionbox.module:45
+#: lib/layouts/sectionbox.module:46
 msgid "SubsubsectionBox"
 msgstr "Unterunterabschnittsbox"
 
-#: lib/layouts/sectionbox.module:47
+#: lib/layouts/sectionbox.module:48
 msgid "Subsubsection Box"
 msgstr "Unterunterabschnittsbox"
 
@@ -13961,49 +14010,49 @@ msgstr ""
 msgid "Color Box"
 msgstr "Farbige Box"
 
-#: lib/layouts/tcolorbox.module:18 lib/layouts/tcolorbox.module:31
-#: lib/layouts/tcolorbox.module:44
+#: lib/layouts/tcolorbox.module:18 lib/layouts/tcolorbox.module:32
+#: lib/layouts/tcolorbox.module:46
 msgid "Color Box Options"
 msgstr "Optionen für farbige Box"
 
-#: lib/layouts/tcolorbox.module:19 lib/layouts/tcolorbox.module:32
-#: lib/layouts/tcolorbox.module:45
+#: lib/layouts/tcolorbox.module:19 lib/layouts/tcolorbox.module:33
+#: lib/layouts/tcolorbox.module:47
 msgid "Insert the color box options here (see tcolorbox manual)"
 msgstr "Geben Sie hier die Colorbox-Optionen ein (siehe 'tcolorbox'-Anleitung)"
 
-#: lib/layouts/tcolorbox.module:23
+#: lib/layouts/tcolorbox.module:24
 msgid "Dynamic Color Box"
 msgstr "Dynamische farbige Box"
 
-#: lib/layouts/tcolorbox.module:26
+#: lib/layouts/tcolorbox.module:27
 msgid "Color Box (Dynamic)"
 msgstr "Farbige Box (dynamisch)"
 
-#: lib/layouts/tcolorbox.module:36
+#: lib/layouts/tcolorbox.module:38
 msgid "Fit Color Box"
 msgstr "Passende farbige Box"
 
-#: lib/layouts/tcolorbox.module:39
+#: lib/layouts/tcolorbox.module:41
 msgid "Color Box (Fit Contents)"
 msgstr "Farbige Box (inhaltspassend)"
 
-#: lib/layouts/tcolorbox.module:49
+#: lib/layouts/tcolorbox.module:52
 msgid "Color Box Separator"
 msgstr "Farbbox-Trenner"
 
-#: lib/layouts/tcolorbox.module:50 lib/layouts/tcolorbox.module:84
+#: lib/layouts/tcolorbox.module:53 lib/layouts/tcolorbox.module:87
 msgid "Color Boxes"
 msgstr "Farbige Boxen"
 
-#: lib/layouts/tcolorbox.module:63
+#: lib/layouts/tcolorbox.module:66
 msgid "-----"
 msgstr "-----"
 
-#: lib/layouts/tcolorbox.module:74
+#: lib/layouts/tcolorbox.module:77
 msgid "Color Box Line"
 msgstr "Farbbox-Linie"
 
-#: lib/layouts/tcolorbox.module:83 lib/layouts/tcolorbox.module:98
+#: lib/layouts/tcolorbox.module:86 lib/layouts/tcolorbox.module:101
 msgid "Color Box Setup"
 msgstr "Farbbox-Einrichtung"
 
@@ -22655,7 +22704,7 @@ msgstr "LyX-Archiv (zip)"
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX-Archiv (tar.gz)"
 
-#: src/BiblioInfo.cpp:318 src/frontends/qt4/GuiDocument.cpp:2309
+#: src/BiblioInfo.cpp:318 src/frontends/qt4/GuiDocument.cpp:2292
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s und %2$s"
@@ -23411,12 +23460,12 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Die Dokumentklasse ist nicht verfügbar"
 
-#: src/BufferParams.cpp:1816 src/insets/InsetCommandParams.cpp:384
+#: src/BufferParams.cpp:1819 src/insets/InsetCommandParams.cpp:384
 #: src/insets/InsetHyperlink.cpp:197
 msgid "Uncodable characters"
 msgstr "unkodierbare Zeichen"
 
-#: src/BufferParams.cpp:1817
+#: src/BufferParams.cpp:1820
 #, c-format
 msgid ""
 "The following characters that are used in an index name are not\n"
@@ -23427,7 +23476,7 @@ msgstr ""
 "aktuellen Zeichenkodierung nicht darstellbar und wurden daher weggelassen:\n"
 "%1$s."
 
-#: src/BufferParams.cpp:2084
+#: src/BufferParams.cpp:2087
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -23442,11 +23491,11 @@ msgstr ""
 "Formaten wird benutzt werden. LyX wird nicht in der Lage sein eine korrekte\n"
 "Ausgabe zu erzeugen."
 
-#: src/BufferParams.cpp:2090
+#: src/BufferParams.cpp:2093
 msgid "Document class not found"
 msgstr "Dokumentklasse nicht gefunden"
 
-#: src/BufferParams.cpp:2097
+#: src/BufferParams.cpp:2100
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -23461,15 +23510,15 @@ msgstr ""
 "korrekte\n"
 "Ausgabe erzeugen können."
 
-#: src/BufferParams.cpp:2103 src/BufferView.cpp:1293 src/BufferView.cpp:1322
+#: src/BufferParams.cpp:2106 src/BufferView.cpp:1293 src/BufferView.cpp:1322
 msgid "Could not load class"
 msgstr "Konnte Klasse nicht laden"
 
-#: src/BufferParams.cpp:2153
+#: src/BufferParams.cpp:2156
 msgid "Error reading internal layout information"
 msgstr "Fehler beim Einlesen interner Format-Informationen"
 
-#: src/BufferParams.cpp:2154 src/TextClass.cpp:1529
+#: src/BufferParams.cpp:2157 src/TextClass.cpp:1536
 msgid "Read Error"
 msgstr "Lesefehler"
 
@@ -24150,14 +24199,14 @@ msgstr ""
 msgid "Undefined flex inset"
 msgstr "Undefinierter Zeichenstil"
 
-#: src/Encoding.cpp:225 src/Paragraph.cpp:2616
+#: src/Encoding.cpp:245 src/Paragraph.cpp:2616
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:179
 #: src/insets/InsetListings.cpp:187 src/insets/InsetListings.cpp:210
 #: src/mathed/InsetMathString.cpp:162
 msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
 
-#: src/Encoding.cpp:226 src/Paragraph.cpp:2617
+#: src/Encoding.cpp:246 src/Paragraph.cpp:2617
 #: src/insets/InsetListings.cpp:180 src/insets/InsetListings.cpp:188
 #: src/mathed/InsetMathString.cpp:163
 msgid "uncodable character"
@@ -24185,19 +24234,19 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "Das Kopieren von %1$s nach %2$s ist fehlgeschlagen."
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:121
-#: src/frontends/qt4/GuiDocument.cpp:3591
+#: src/frontends/qt4/GuiDocument.cpp:3584
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr "Serifenschrift"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:122
-#: src/frontends/qt4/GuiDocument.cpp:3591
+#: src/frontends/qt4/GuiDocument.cpp:3584
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr "Serifenlos"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:123
-#: src/frontends/qt4/GuiDocument.cpp:3591
+#: src/frontends/qt4/GuiDocument.cpp:3584
 #: src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr "Schreibmaschine"
@@ -25582,7 +25631,7 @@ msgid "Could not read stdinsets.inc! This may lead to data loss!"
 msgstr ""
 "Kann Datei stdinsets.inc nicht lesen! Dies kann zu Datenverlust führen!"
 
-#: src/TextClass.cpp:1505
+#: src/TextClass.cpp:1512
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -25596,11 +25645,11 @@ msgstr ""
 "Wenn Sie es erst kürzlich installiert haben,\n"
 "sollten Sie LyX neu konfigurieren.\n"
 
-#: src/TextClass.cpp:1510
+#: src/TextClass.cpp:1517
 msgid "Module not available"
 msgstr "Modul ist nicht verfügbar"
 
-#: src/TextClass.cpp:1516
+#: src/TextClass.cpp:1523
 #, c-format
 msgid ""
 "The module %1$s requires a package that is not\n"
@@ -25619,11 +25668,11 @@ msgstr ""
 "Konsultieren Sie Abschnitt 3.1.2.3 des Benutzerhandbuchs (Module) für "
 "weitere Informationen."
 
-#: src/TextClass.cpp:1523
+#: src/TextClass.cpp:1530
 msgid "Package not available"
 msgstr "Paket ist nicht verfügbar"
 
-#: src/TextClass.cpp:1528
+#: src/TextClass.cpp:1535
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "Fehler beim Lesen von Modul %1$s\n"
@@ -26432,8 +26481,8 @@ msgid "Filename Suffix"
 msgstr "Erweitere Dateinamen"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
-#: src/frontends/qt4/GuiDocument.cpp:2466
-#: src/frontends/qt4/GuiDocument.cpp:3480
+#: src/frontends/qt4/GuiDocument.cpp:2459
+#: src/frontends/qt4/GuiDocument.cpp:3473
 #: src/frontends/qt4/GuiProgressView.cpp:144
 #: src/frontends/qt4/GuiProgressView.cpp:158
 #: src/frontends/qt4/GuiProgressView.cpp:179
@@ -26441,8 +26490,8 @@ msgid "Yes"
 msgstr "Ja"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
-#: src/frontends/qt4/GuiDocument.cpp:2465
-#: src/frontends/qt4/GuiDocument.cpp:3479
+#: src/frontends/qt4/GuiDocument.cpp:2458
+#: src/frontends/qt4/GuiDocument.cpp:3472
 #: src/frontends/qt4/GuiProgressView.cpp:110
 #: src/frontends/qt4/GuiProgressView.cpp:143
 #: src/frontends/qt4/GuiProgressView.cpp:179
@@ -27058,10 +27107,10 @@ msgid "&Default..."
 msgstr "Stan&dard..."
 
 #: src/frontends/qt4/GuiDocument.cpp:1920
-#: src/frontends/qt4/GuiDocument.cpp:3261
-#: src/frontends/qt4/GuiDocument.cpp:3269
-#: src/frontends/qt4/GuiDocument.cpp:3277
-#: src/frontends/qt4/GuiDocument.cpp:3285
+#: src/frontends/qt4/GuiDocument.cpp:3254
+#: src/frontends/qt4/GuiDocument.cpp:3262
+#: src/frontends/qt4/GuiDocument.cpp:3270
+#: src/frontends/qt4/GuiDocument.cpp:3278
 msgid " (not installed)"
 msgstr " (nicht installiert)"
 
@@ -27130,13 +27179,15 @@ msgstr "LyX-Dokumente (*.lyx)"
 
 # , c-format
 # , c-format
-#: src/frontends/qt4/GuiDocument.cpp:2188
-#: src/frontends/qt4/GuiDocument.cpp:3534
+#: src/frontends/qt4/GuiDocument.cpp:2172
+#: src/frontends/qt4/GuiDocument.cpp:2365
+#: src/frontends/qt4/GuiDocument.cpp:3527
 msgid "Unapplied changes"
 msgstr "Nicht übernommene Änderungen"
 
-#: src/frontends/qt4/GuiDocument.cpp:2189
-#: src/frontends/qt4/GuiDocument.cpp:3535
+#: src/frontends/qt4/GuiDocument.cpp:2173
+#: src/frontends/qt4/GuiDocument.cpp:2366
+#: src/frontends/qt4/GuiDocument.cpp:3528
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -27145,93 +27196,94 @@ msgstr ""
 "Wenn Sie sie jetzt nicht akzeptieren, werden sie nach dieser\n"
 "Aktion verlorengehen."
 
-#: src/frontends/qt4/GuiDocument.cpp:2191
-#: src/frontends/qt4/GuiDocument.cpp:3537
+#: src/frontends/qt4/GuiDocument.cpp:2175
+#: src/frontends/qt4/GuiDocument.cpp:2368
+#: src/frontends/qt4/GuiDocument.cpp:3530
 msgid "&Dismiss"
 msgstr "&Ablehnen"
 
-#: src/frontends/qt4/GuiDocument.cpp:2203
-#: src/frontends/qt4/GuiDocument.cpp:3545
+#: src/frontends/qt4/GuiDocument.cpp:2186
+#: src/frontends/qt4/GuiDocument.cpp:3538
 msgid "Unable to set document class."
 msgstr "Kann Dokumentklasse nicht einstellen."
 
-#: src/frontends/qt4/GuiDocument.cpp:2316
+#: src/frontends/qt4/GuiDocument.cpp:2299
 #, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2321
+#: src/frontends/qt4/GuiDocument.cpp:2304
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s, %2$s und %3$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2335
+#: src/frontends/qt4/GuiDocument.cpp:2318
 #, c-format
 msgid "%1$s (unavailable)"
 msgstr "%1$s (nicht verfügbar)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2410
+#: src/frontends/qt4/GuiDocument.cpp:2403
 msgid "Module provided by document class."
 msgstr "Von der Dokumentklasse bereitgestelltes Modul."
 
-#: src/frontends/qt4/GuiDocument.cpp:2417
+#: src/frontends/qt4/GuiDocument.cpp:2410
 #, c-format
 msgid "Category: %1$s."
 msgstr "Kategorie: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2425
+#: src/frontends/qt4/GuiDocument.cpp:2418
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr "Benötigte Pakete: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2431
+#: src/frontends/qt4/GuiDocument.cpp:2424
 msgid "or"
 msgstr "oder"
 
-#: src/frontends/qt4/GuiDocument.cpp:2434
+#: src/frontends/qt4/GuiDocument.cpp:2427
 #, c-format
 msgid "Modules required: %1$s."
 msgstr "Benötigte Module: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2443
+#: src/frontends/qt4/GuiDocument.cpp:2436
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr "Ausgeschlossene Module: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2449
+#: src/frontends/qt4/GuiDocument.cpp:2442
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "WARNUNG: Einige benötigte Pakete sind nicht verfügbar!"
 
-#: src/frontends/qt4/GuiDocument.cpp:3197
+#: src/frontends/qt4/GuiDocument.cpp:3190
 msgid "[No options predefined]"
 msgstr "[Keine Optionen vordefiniert]"
 
-#: src/frontends/qt4/GuiDocument.cpp:3406
+#: src/frontends/qt4/GuiDocument.cpp:3399
 msgid "C&ustomize Hyperref Options"
 msgstr "H&yperref-Optionen anpassen"
 
-#: src/frontends/qt4/GuiDocument.cpp:3408
+#: src/frontends/qt4/GuiDocument.cpp:3401
 msgid "&Use Hyperref Support"
 msgstr "Hyperref-Unterstützung &verwenden"
 
-#: src/frontends/qt4/GuiDocument.cpp:3556
+#: src/frontends/qt4/GuiDocument.cpp:3549
 msgid "Can't set layout!"
 msgstr "Kann Format nicht verwenden!"
 
-#: src/frontends/qt4/GuiDocument.cpp:3557
+#: src/frontends/qt4/GuiDocument.cpp:3550
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Kann Format für ID '%1$s' nicht verwenden"
 
-#: src/frontends/qt4/GuiDocument.cpp:3648
+#: src/frontends/qt4/GuiDocument.cpp:3641
 msgid "Not Found"
 msgstr "nicht gefunden"
 
-#: src/frontends/qt4/GuiDocument.cpp:3707
+#: src/frontends/qt4/GuiDocument.cpp:3700
 msgid "Assigned master does not include this file"
 msgstr "Zugewiesenes Hauptdokument bettet diese Datei nicht ein"
 
-#: src/frontends/qt4/GuiDocument.cpp:3708
+#: src/frontends/qt4/GuiDocument.cpp:3701
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -27242,11 +27294,11 @@ msgstr ""
 "'%1$s' einbetten, sonst bleibt die\n"
 "vorgenommene Zuordnung des Hauptdokuments wirkungslos."
 
-#: src/frontends/qt4/GuiDocument.cpp:3712
+#: src/frontends/qt4/GuiDocument.cpp:3705
 msgid "Could not load master"
 msgstr "Konnte das Hauptdokument nicht laden"
 
-#: src/frontends/qt4/GuiDocument.cpp:3713
+#: src/frontends/qt4/GuiDocument.cpp:3706
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -29465,7 +29517,7 @@ msgstr ""
 msgid "External template %1$s is not installed"
 msgstr "Externe Vorlage %1$s ist nicht installiert"
 
-#: src/insets/InsetFloat.cpp:281 src/insets/InsetFloat.cpp:462
+#: src/insets/InsetFloat.cpp:281 src/insets/InsetFloat.cpp:463
 msgid "float: "
 msgstr "Gleitobjekt: "
 
@@ -29474,15 +29526,15 @@ msgstr "Gleitobjekt: "
 msgid "ERROR: Unknown float type: %1$s"
 msgstr "FEHLER: Unbekannter Gleitobjekt-Typ: %1$s"
 
-#: src/insets/InsetFloat.cpp:400
+#: src/insets/InsetFloat.cpp:401
 msgid "float"
 msgstr "Gleitobjekt"
 
-#: src/insets/InsetFloat.cpp:465
+#: src/insets/InsetFloat.cpp:466
 msgid "subfloat: "
 msgstr "Untergleitobjekt: "
 
-#: src/insets/InsetFloat.cpp:473
+#: src/insets/InsetFloat.cpp:474
 msgid " (sideways)"
 msgstr " (seitwärts)"
 
