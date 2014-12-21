@@ -46,6 +46,9 @@
 #ifdef HAVE_MAGIC_H
 #include <magic.h>
 #endif
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
 
 #include <cerrno>
 #include <cstdlib>
