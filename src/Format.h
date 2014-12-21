@@ -13,6 +13,7 @@
 #define FORMAT_H
 
 #include "support/docstring.h"
+#include "support/trivstring.h"
 
 #include "OutputParams.h"
 
@@ -54,11 +55,11 @@ public:
 	/// Name fo the parent format
 	std::string const parentFormat() const;
 	///
-	std::string const & name() const { return name_; }
+	std::string const name() const { return name_; }
 	///
 	void setName(std::string const & v) { name_ = v; }
 	///
-	std::string const & extension() const
+	std::string const extension() const
 	{
 		return extension_list_.empty() ? empty_string() : extension_list_[0];
 	}
@@ -67,23 +68,23 @@ public:
 	///
 	void setExtensions(std::string const & v);
 	///
-	std::string const & prettyname() const { return prettyname_; }
+	std::string const prettyname() const { return prettyname_; }
 	///
 	void setPrettyname(std::string const & v) { prettyname_ = v; }
 	///
-	std::string const & shortcut() const { return shortcut_; }
+	std::string const shortcut() const { return shortcut_; }
 	///
 	void setShortcut(std::string const & v) { shortcut_ = v; }
 	///
-	std::string const & viewer() const { return viewer_; }
+	std::string const viewer() const { return viewer_; }
 	///
 	void setViewer(std::string const & v) { viewer_ = v; }
 	///
-	std::string const & editor() const { return editor_; }
+	std::string const editor() const { return editor_; }
 	///
 	void setEditor(std::string const & v) { editor_ = v; }
 	///
-	std::string const & mime() const { return mime_; }
+	std::string const mime() const { return mime_; }
 	///
 	void setMime(std::string const & m) { mime_ = m; }
 	///
@@ -101,13 +102,13 @@ public:
 
 private:
 	/// Internal name. Needs to be unique.
-	std::string name_;
+	trivstring name_;
 	/// Filename extensions, the first one being the default
 	std::vector<std::string> extension_list_;
 	/// Name presented to the user. Needs to be unique.
-	std::string prettyname_;
+	trivstring prettyname_;
 	/// Keyboard shortcut for the View and Export menu.
-	std::string shortcut_;
+	trivstring shortcut_;
 	/*!
 	 * Viewer for this format. Needs to be in the PATH or an absolute
 	 * filename.
@@ -115,9 +116,9 @@ private:
 	 * If it is \c auto the default viewer of the OS for this format is
 	 * used.
 	 */
-	std::string viewer_;
+	trivstring viewer_;
 	/// Editor for this format. \sa viewer_.
-	std::string editor_;
+	trivstring editor_;
 	/*!
 	 * Full MIME type, e.g. "text/x-tex".
 	 * Only types listed by the shared MIME database of freedesktop.org
@@ -125,7 +126,7 @@ private:
 	 * This field may be empty, but it must be unique across all formats
 	 * if it is set.
 	 */
-	std::string mime_;
+	trivstring mime_;
 	///
 	int flags_;
 };

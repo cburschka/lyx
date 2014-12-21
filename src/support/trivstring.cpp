@@ -16,6 +16,7 @@
 #ifdef STD_STRING_USES_COW
 #include <algorithm>
 #include <ostream>
+#include <stdexcept>
 
 using namespace std;
 
@@ -31,8 +32,27 @@ trivial_string<Char>::trivial_string(trivial_string const & that) : size_(that.s
 	else if (size_ > 0) {
 		data_ = new Char[size_ + 1];
 		copy(that.data_, that.data_ + size_ + 1, data_);
+	} else {
+		// Happens only for really big Char types
+		data_ = 0;
 	}
-	// else Happens only for really big Char types
+}
+
+
+template<typename Char>
+trivial_string<Char>::trivial_string(Char const * that, size_t n) : size_(n)
+{
+	if (use_sso()) {
+		copy(that, that + size_, data_sso());
+		data_sso()[size_] = '\0';
+	} else if (size_ > 0) {
+		data_ = new Char[size_ + 1];
+		copy(that, that + size_, data_);
+		data_[size_] = '\0';
+	} else {
+		// Happens only for really big Char types
+		data_ = 0;
+	}
 }
 
 
@@ -50,8 +70,10 @@ trivial_string<Char>::trivial_string(
 		data_ = new Char[size_ + 1];
 		copy(that.begin(), that.end(), data_);
 		data_[size_] = '\0';
+	} else {
+		// Happens only for really big Char types
+		data_ = 0;
 	}
-	// else Happens only for really big Char types
 }
 
 
@@ -138,6 +160,20 @@ int trivial_string<Char>::compare(trivial_string const & other) const
 }
 
 
+template trivial_string<char> trivial_string<char>::substr(size_t, size_t) const;
+template trivial_string<char_type> trivial_string<char_type>::substr(size_t, size_t) const;
+template<typename Char>
+trivial_string<Char> trivial_string<Char>::substr(size_t pos, size_t n) const
+{
+	if (pos > length())
+		throw out_of_range("trivial_string::substr");
+	if (n == basic_string<Char, char_traits<Char>, allocator<Char> >::npos)
+		n = length() - pos; 
+	size_t const l = min(pos + n, length());
+	return trivial_string(c_str() + pos, l - pos);
+}
+
+
 template trivial_string<char>::operator string() const;
 template trivial_string<char_type>::operator docstring() const;
 template<typename Char>
@@ -154,8 +190,6 @@ trivial_string<Char>::operator basic_string<Char, char_traits<Char>, allocator<C
 }
 
 
-template char const * trivial_string<char>::c_str() const;
-template char_type const * trivial_string<char_type>::c_str() const;
 template<typename Char> Char const * trivial_string<Char>::c_str() const
 {
 	if (use_sso())
@@ -165,6 +199,14 @@ template<typename Char> Char const * trivial_string<Char>::c_str() const
 	// Happens only for really big Char types
 	static const Char empty_char = '\0';
 	return &empty_char;
+}
+
+
+template char trivial_string<char>::operator[](size_t) const;
+template char_type trivial_string<char_type>::operator[](size_t) const;
+template <typename Char> Char trivial_string<Char>::operator[](size_t i) const
+{
+	return c_str()[i];
 }
 
 

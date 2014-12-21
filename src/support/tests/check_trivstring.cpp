@@ -68,6 +68,13 @@ void test_trivstring()
 	cout << (c == a) << ' ' << (a == c) << endl; // equal strings
 	cout << (a == f) << ' ' << (f == a) << endl; // different strings, same length
 	cout << (a == g) << ' ' << (g == a) << endl; // different strings, different length
+	// operator[]
+	cout << d[1] << d[0] << endl;
+	// substr()
+	cout << d.substr(1) << endl;    // default argument
+	cout << d.substr(1, 1) << endl; // maximum length
+	cout << d.substr(1, 2) << endl; // length larger than max
+	cout << d.substr(2) << endl;    // maximum pos
 }
 
 void test_trivdocstring()
@@ -129,6 +136,13 @@ void test_trivdocstring()
 	cout << (c == a) << ' ' << (a == c) << endl; // equal strings
 	cout << (a == f) << ' ' << (f == a) << endl; // different strings, same length
 	cout << (a == g) << ' ' << (g == a) << endl; // different strings, different length
+	// operator[]
+	cout << static_cast<char>(d[1]) << static_cast<char>(d[0]) << endl;
+	// substr()
+	cout << to_ascii(d.substr(1)) << endl;    // default argument
+	cout << to_ascii(d.substr(1, 1)) << endl; // maximum length
+	cout << to_ascii(d.substr(1, 2)) << endl; // length larger than max
+	cout << to_ascii(d.substr(2)) << endl;    // maximum pos
 }
 
 int main()

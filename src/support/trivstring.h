@@ -44,6 +44,8 @@ public:
 	/// Construct a string from a copy of \p that
 	trivial_string(trivial_string const & that);
 	/// Construct a string from a copy of \p that
+	trivial_string(Char const * that, size_t n);
+	/// Construct a string from a copy of \p that
 	trivial_string(std::basic_string<Char, std::char_traits<Char>, std::allocator<Char> > const & that);
 	///
 	~trivial_string() { if (!use_sso()) delete[] data_; }
@@ -59,11 +61,16 @@ public:
 	bool empty() const { return size_ == 0; }
 	/// Is this string ordered before, at the same position or after \p other?
 	int compare(trivial_string const & other) const;
+	/// Return substring of length \p n starting at \p pos
+	trivial_string substr(size_t pos = 0, size_t n = std::basic_string<Char,
+				std::char_traits<Char>, std::allocator<Char> >::npos) const;
 	/// Create a copy as std::basic_string
 	operator std::basic_string<Char, std::char_traits<Char>, std::allocator<Char> >() const;
 	/// Return a C-compatible string, terminated by a 0 character.
 	/// This is never a copy and only valid for the life time of the trivial_string instance.
 	Char const * c_str() const;
+	/// Return character at position \p i (validity of \i is not checked)
+	Char operator[](size_t i) const;
 private:
 	/**
 	 * Whether short string optimization is used.
