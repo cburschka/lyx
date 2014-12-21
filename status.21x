@@ -147,7 +147,13 @@ What's new
   layout (bug 2666).
 
 - When switching classes, warn user about all unapplied document changes
-  (part of bug 9356).
+  (1. part of bug 9356).
+
+- When adding a module, warn user about all unapplied document changes
+  (2. part of bug 9356).
+
+- Do not enable the Apply button in the document dialog just because a
+  module was selected in the widget (without actual change) (bug 9365).
 
 
 * INTERNALS
