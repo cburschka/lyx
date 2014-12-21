@@ -14,6 +14,7 @@
 
 #include "Graph.h"
 #include "OutputParams.h"
+#include "support/trivstring.h"
 
 #include <vector>
 #include <set>
@@ -40,15 +41,15 @@ public:
 	///
 	void readFlags();
 	///
-	std::string const & from() const { return from_; }
+	std::string const from() const { return from_; }
 	///
-	std::string const & to() const { return to_; }
+	std::string const to() const { return to_; }
 	///
-	std::string const & command() const { return command_; }
+	std::string const command() const { return command_; }
 	///
 	void setCommand(std::string const & command) { command_ = command; }
 	///
-	std::string const & flags() const { return flags_; }
+	std::string const flags() const { return flags_; }
 	///
 	void setFlags(std::string const & flags) { flags_ = flags; }
 	///
@@ -62,7 +63,7 @@ public:
 	///
 	bool latex() const { return latex_; }
 	///
-	std::string const & latex_flavor() const { return latex_flavor_; }
+	std::string const latex_flavor() const { return latex_flavor_; }
 	///
 	bool xml() const { return xml_; }
 	///
@@ -70,20 +71,20 @@ public:
 	///
 	bool nice() const { return nice_; }
 	///
-	std::string const & result_dir() const { return result_dir_; }
+	std::string const result_dir() const { return result_dir_; }
 	///
-	std::string const & result_file() const { return result_file_; }
+	std::string const result_file() const { return result_file_; }
 	///
-	std::string const & parselog() const { return parselog_; }
+	std::string const parselog() const { return parselog_; }
 private:
 	///
-	std::string from_;
+	trivstring from_;
 	///
-	std::string to_;
+	trivstring to_;
 	///
-	std::string command_;
+	trivstring command_;
 	///
-	std::string flags_;
+	trivstring flags_;
 	///
 	Format const * From_;
 	///
@@ -92,7 +93,7 @@ private:
 	/// The converter is latex or its derivatives
 	bool latex_;
 	/// The latex derivate
-	std::string latex_flavor_;
+	trivstring latex_flavor_;
 	/// The converter is xml
 	bool xml_;
 	/// This converter needs the .aux files
@@ -101,12 +102,12 @@ private:
 	bool nice_;
 	/// If the converter put the result in a directory, then result_dir
 	/// is the name of the directory
-	std::string result_dir_;
+	trivstring result_dir_;
 	/// If the converter put the result in a directory, then result_file
 	/// is the name of the main file in that directory
-	std::string result_file_;
+	trivstring result_file_;
 	/// Command to convert the program output to a LaTeX log file format
-	std::string parselog_;
+	trivstring parselog_;
 };
 
 
@@ -192,15 +193,15 @@ private:
 	///
 	ConverterList converterlist_;
 	///
-	std::string latex_command_;
+	trivstring latex_command_;
 	///
-	std::string dvilualatex_command_;
+	trivstring dvilualatex_command_;
 	///
-	std::string lualatex_command_;
+	trivstring lualatex_command_;
 	///
-	std::string pdflatex_command_;
+	trivstring pdflatex_command_;
 	///
-	std::string xelatex_command_;
+	trivstring xelatex_command_;
 	/// If \p from = /path/file.ext and \p to = /path2/file2.ext2 then
 	/// this method moves each /path/file*.ext file to /path2/file2*.ext2
 	bool move(std::string const & fmt,
