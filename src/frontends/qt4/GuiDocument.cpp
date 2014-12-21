@@ -2166,30 +2166,13 @@ void GuiDocument::classChanged()
 		return;
 	string const classname = fromqstr(latexModule->classCO->getData(idx));
 
-	// check whether the selected modules have changed.
-	bool modules_changed = false;
-	unsigned int const srows = selectedModel()->rowCount();
-	if (srows != bp_.getModules().size())
-		modules_changed = true;
-	else {
-		list<string>::const_iterator mit = bp_.getModules().begin();
-		list<string>::const_iterator men = bp_.getModules().end();
-		for (unsigned int i = 0; i < srows && mit != men; ++i, ++mit)
-			if (selectedModel()->getIDString(i) != *mit) {
-				modules_changed = true;
-				break;
-			}
-	}
-
-	if (modules_changed || lyxrc.auto_reset_options) {
-		if (applyPB->isEnabled()) {
-			int const ret = Alert::prompt(_("Unapplied changes"),
-					_("Some changes in the dialog were not yet applied.\n"
-					"If you do not apply now, they will be lost after this action."),
-					1, 1, _("&Apply"), _("&Dismiss"));
-			if (ret == 0)
-				applyView();
-		}
+	if (applyPB->isEnabled()) {
+		int const ret = Alert::prompt(_("Unapplied changes"),
+				_("Some changes in the dialog were not yet applied.\n"
+				"If you do not apply now, they will be lost after this action."),
+				1, 1, _("&Apply"), _("&Dismiss"));
+		if (ret == 0)
+			applyView();
 	}
 
 	// We load the TextClass as soon as it is selected. This is
