@@ -55,6 +55,8 @@ public:
 		      OutputParams const &);
 	/// The color packages
 	std::string const getColorOptions() const;
+	/// The requested package options
+	std::string const getPackageOptions() const;
 	/// The packages needed by the document
 	std::string const getPackages() const;
 	/// The macros definitions needed by the document

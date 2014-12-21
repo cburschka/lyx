@@ -90,6 +90,9 @@ What's new
 - Fix incorrect output of ampersands when multiple keys are given for a
   citation (bug 9296).
 
+- Output package options (specified with PackageOptions layout tag)
+  before loading any potentially affected package (bug 9355).
+
 - Fix export of documents that use the LaTeX-packages mhchem and wasysym
   (bug 9266).
 
