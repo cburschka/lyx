@@ -20,23 +20,27 @@
 #include <tr1/memory>
 #endif
 
-namespace lyx
-{
-	using std::tr1::shared_ptr;
-	using std::tr1::const_pointer_cast;
-}
+#define LYX_SHAREDPTR_NS std::tr1
+
+#elif __cplusplus >= 201103L
+
+#include <memory>
+#define LYX_SHAREDPTR_NS std
 
 #else
 
 #include <boost/shared_ptr.hpp>
+#define LYX_SHAREDPTR_NS boost
+
+#endif
 
 namespace lyx
 {
-	using boost::shared_ptr;
-	using boost::const_pointer_cast;
+	using LYX_SHAREDPTR_NS::shared_ptr;
+	using LYX_SHAREDPTR_NS::const_pointer_cast;
 }
 
-#endif
+#undef LYX_SHAREDPTR_NS
 
 
 #endif

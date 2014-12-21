@@ -20,22 +20,27 @@
 #include <tr1/functional>
 #endif
 
-namespace lyx
-{
-	using std::tr1::function;
-}
+#define LYX_FUNCTIONAL_NS std::tr1
+
+#elif __cplusplus >= 201103L
+
+#include <functional>
+#define LYX_FUNCTIONAL_NS std
 
 #else
 
 #include <boost/function.hpp>
 #include <boost/functional.hpp>
+#define LYX_FUNCTIONAL_NS boost
+
+#endif
 
 namespace lyx
 {
-	using boost::function;
+	using LYX_FUNCTIONAL_NS::function;
 }
 
-#endif
+#undef LYX_FUNCTIONAL_NS
 
 
 #endif

@@ -58,10 +58,20 @@ namespace lyx {
 }
 #  else
 #    include <tr1/regex>
-//   TODO no match_partial in gcc, how to replace?
-#    define match_partial match_default
+//   TODO no match_partial in TR1, how to replace?
 #  endif
 #  define LR_NS std::tr1
+namespace lyx {
+using LR_NS::regex;
+using LR_NS::regex_match;
+using LR_NS::sregex_iterator;
+}
+#elif LYX_USE_TR1_REGEX
+#  include <regex>
+// <regex> in gcc is unusable in versions less than 4.9.0
+// see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
+// TODO no match_partial in std, how to replace?
+#  define LR_NS std
 namespace lyx {
 using LR_NS::regex;
 using LR_NS::regex_match;

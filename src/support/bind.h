@@ -16,25 +16,38 @@
 
 #ifdef LYX_USE_TR1
 
+#define LYX_BIND_NS std::tr1
+
 namespace lyx
 {
-	using std::tr1::bind;
 	using std::tr1::placeholders::_1;
 	using std::tr1::placeholders::_2;
-	using std::tr1::ref;
+}
+
+#elif __cplusplus >= 201103L
+
+#define LYX_BIND_NS std
+
+namespace lyx
+{
+	using std::placeholders::_1;
+	using std::placeholders::_2;
 }
 
 #else
 
 #include <boost/bind.hpp>
+#define LYX_BIND_NS boost
+
+#endif
 
 namespace lyx
 {
-	using boost::bind;
-	using boost::ref;
+	using LYX_BIND_NS::bind;
+	using LYX_BIND_NS::ref;
 }
 
-#endif
+#undef LYX_BIND_NS
 
 
 #endif

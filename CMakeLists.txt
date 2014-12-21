@@ -250,6 +250,8 @@ if(UNIX OR MINGW)
 		set(LYX_USE_TR1 1)
 		# GCC <= 4.5 does not support regex: there are linker errors
 		# http://gcc.gnu.org/onlinedocs/libstdc++/manual/status.html#status.iso.tr1
+		# <regex> and <tr1/regex> in gcc are unusable in versions less than 4.9.0
+		# see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
 		set(LYX_USE_TR1_REGEX 0)
 	endif()
 	if (LYX_ENABLE_CXX11)
