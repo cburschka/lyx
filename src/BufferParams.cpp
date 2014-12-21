@@ -1776,6 +1776,9 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			lyxpreamble += "\\synctex=-1\n";
 	}
 
+	// The package options (via \PassOptionsToPackage)
+	lyxpreamble += from_ascii(features.getPackageOptions());
+
 	// due to interferences with babel and hyperref, the color package has to
 	// be loaded (when it is not already loaded) before babel when hyperref
 	// is used with the colorlinks option, see

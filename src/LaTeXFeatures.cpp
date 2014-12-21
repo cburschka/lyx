@@ -815,6 +815,22 @@ string const LaTeXFeatures::getColorOptions() const
 }
 
 
+string const LaTeXFeatures::getPackageOptions() const
+{
+	ostringstream packageopts;
+	// Output all the package option stuff we have been asked to do.
+	map<string, string>::const_iterator it =
+		params_.documentClass().packageOptions().begin();
+	map<string, string>::const_iterator en =
+		params_.documentClass().packageOptions().end();
+	for (; it != en; ++it)
+		if (mustProvide(it->first))
+			packageopts << "\\PassOptionsToPackage{" << it->second << "}"
+				 << "{" << it->first << "}\n";
+	return packageopts.str();
+}
+
+
 string const LaTeXFeatures::getPackages() const
 {
 	ostringstream packages;
@@ -824,16 +840,6 @@ string const LaTeXFeatures::getPackages() const
 	// However, with the Require tag of layouts/custom insets,
 	// also unknown packages can be requested. They are silently
 	// swallowed now. We should change this eventually.
-
-	// Output all the package option stuff we have been asked to do.
-	map<string, string>::const_iterator it =
-	    params_.documentClass().packageOptions().begin();
-	map<string, string>::const_iterator en =
-	    params_.documentClass().packageOptions().end();
-	for (; it != en; ++it)
-		if (mustProvide(it->first))
-			packages << "\\PassOptionsToPackage{" << it->second << "}"
-			         << "{" << it->first << "}\n";
 
 	//  These are all the 'simple' includes.  i.e
 	//  packages which we just \usepackage{package}
