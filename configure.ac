@@ -285,8 +285,9 @@ char * strerror(int n);
 #define BOOST_SIGNALS_NO_DEPRECATION_WARNING 1
 
 // TR1 regex not supported in GCC <= 4.5
+// clang defines __GNUC__ but libc++ does not have tr1
 #ifndef LYX_USE_TR1
-#  if __GNUC__ == 4 
+#  if __GNUC__ == 4 && !defined(USE_LLVM_LIBCPP)
 #    define LYX_USE_TR1
 #  endif
 #endif
