@@ -62,6 +62,11 @@ namespace lyx {
 #    define match_partial match_default
 #  endif
 #  define LR_NS std::tr1
+namespace lyx {
+using LR_NS::regex;
+using LR_NS::regex_match;
+using LR_NS::sregex_iterator;
+}
 #else 
 #  include <boost/regex.hpp>
 #  define LR_NS boost
