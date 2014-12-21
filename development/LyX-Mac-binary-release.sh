@@ -185,7 +185,7 @@ while [ $# -gt 0 ]; do
 			export OBJC=gcc-4.0
 			export CXX=g++-4.0
 			;;
-		10.5|10.6|10.7|10.8)
+		10.5|10.6|10.7|10.8|10.9|10.10)
 			SDKROOT="${DEVELOPER_SDKS}/MacOSX${SDKROOT}.sdk"
 			;;
 		*)
