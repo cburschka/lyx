@@ -20,7 +20,7 @@
 // Forward definitions do not work with libc++
 // but ios_base has already been defined in strfwd
 // if compiling with it
-#ifndef  _LIBCPP_VERSION
+#ifndef USE_LLVM_LIBCPP
 namespace std {
 
 class ios_base;

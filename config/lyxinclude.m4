@@ -185,6 +185,10 @@ AC_LANG_POP(C++)
 
 if test $lyx_cv_lib_stdcxx = "yes" ; then
   AC_DEFINE(STD_STRING_USES_COW, 1, [std::string uses copy-on-write])
+else
+  if test $lyx_cv_prog_clang = "yes" ; then
+    AC_DEFINE(USE_LLVM_LIBCPP, 1, [use libc++ provided by llvm instead of GNU libstdc++])
+  fi
 fi
 
 ### We might want to get or shut warnings.

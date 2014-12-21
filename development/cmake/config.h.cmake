@@ -63,6 +63,9 @@
 // Define if std::string uses copy-on-write
 #cmakedefine STD_STRING_USES_COW 1
 
+// use libc++ provided by llvm instead of GNU libstdc++
+#cmakedefine USE_LLVM_LIBCPP 1
+
 #cmakedefine Z_PREFIX 1
 
 ${Include_used_spellchecker}
