@@ -273,6 +273,8 @@ private:
 	std::list<std::string> includeonlys_;
 	///
 	bool biblioChanged_;
+	/// Track if a non-module document param changed
+	bool nonModuleChanged_;
 };
 
 

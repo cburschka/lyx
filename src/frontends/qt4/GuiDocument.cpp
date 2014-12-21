@@ -629,7 +629,8 @@ void LocalLayout::validatePressed() {
 
 
 GuiDocument::GuiDocument(GuiView & lv)
-	: GuiDialog(lv, "document", qt_("Document Settings"))
+	: GuiDialog(lv, "document", qt_("Document Settings")),
+	  nonModuleChanged_(false)
 {
 	setupUi(this);
 
@@ -1322,8 +1323,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 			availableModel(), selectedModel(), this);
 	connect(selectionManager, SIGNAL(updateHook()),
 		this, SLOT(updateModuleInfo()));
-	connect(selectionManager, SIGNAL(updateHook()),
-		this, SLOT(change_adaptor()));
 	connect(selectionManager, SIGNAL(selectionChanged()),
 		this, SLOT(modulesChanged()));
 
@@ -1443,6 +1442,7 @@ void GuiDocument::useDefaultsClicked()
 
 void GuiDocument::change_adaptor()
 {
+	nonModuleChanged_ = true;
 	changed();
 }
 
@@ -1463,7 +1463,7 @@ void GuiDocument::includeonlyClicked(QTreeWidgetItem * item, int)
 		includeonlys_.push_back(child);
 
 	updateIncludeonlys();
-	changed();
+	change_adaptor();
 }
 
 
@@ -1642,7 +1642,7 @@ void GuiDocument::changeBackgroundColor()
 	// save color
 	set_backgroundcolor = rgbFromHexName(fromqstr(newColor.name()));
 	is_backgroundcolor = true;
-	changed();
+	change_adaptor();
 }
 
 
@@ -1655,7 +1655,7 @@ void GuiDocument::deleteBackgroundColor()
 	// save default color (white)
 	set_backgroundcolor = rgbFromHexName("#ffffff");
 	is_backgroundcolor = false;
-	changed();
+	change_adaptor();
 }
 
 
@@ -1672,7 +1672,7 @@ void GuiDocument::changeFontColor()
 	// save color
 	set_fontcolor = rgbFromHexName(fromqstr(newColor.name()));
 	is_fontcolor = true;
-	changed();
+	change_adaptor();
 }
 
 
@@ -1685,7 +1685,7 @@ void GuiDocument::deleteFontColor()
 	// save default color (black)
 	set_fontcolor = rgbFromHexName("#000000");
 	is_fontcolor = false;
-	changed();
+	change_adaptor();
 }
 
 
@@ -1700,7 +1700,7 @@ void GuiDocument::changeNoteFontColor()
 		colorButtonStyleSheet(newColor));
 	// save color
 	set_notefontcolor = rgbFromHexName(fromqstr(newColor.name()));
-	changed();
+	change_adaptor();
 }
 
 
@@ -1710,7 +1710,7 @@ void GuiDocument::deleteNoteFontColor()
 	theApp()->getRgbColor(Color_greyedouttext, set_notefontcolor);
 	colorModule->noteFontColorPB->setStyleSheet(
 		colorButtonStyleSheet(rgb2qcolor(set_notefontcolor)));
-	changed();
+	change_adaptor();
 }
 
 
@@ -1725,7 +1725,7 @@ void GuiDocument::changeBoxBackgroundColor()
 		colorButtonStyleSheet(newColor));
 	// save color
 	set_boxbgcolor = rgbFromHexName(fromqstr(newColor.name()));
-	changed();
+	change_adaptor();
 }
 
 
@@ -1735,7 +1735,7 @@ void GuiDocument::deleteBoxBackgroundColor()
 	theApp()->getRgbColor(Color_shadedbg, set_boxbgcolor);
 	colorModule->boxBackgroundPB->setStyleSheet(
 		colorButtonStyleSheet(rgb2qcolor(set_boxbgcolor)));
-	changed();
+	change_adaptor();
 }
 
 
@@ -2210,7 +2210,7 @@ void GuiDocument::languagePackageChanged(int i)
 void GuiDocument::biblioChanged()
 {
 	biblioChanged_ = true;
-	changed();
+	change_adaptor();
 }
 
 
@@ -2361,7 +2361,7 @@ void GuiDocument::modulesChanged()
 {
 	modulesToParams(bp_);
 
-	if (applyPB->isEnabled()) {
+	if (applyPB->isEnabled() && nonModuleChanged_) {
 		int const ret = Alert::prompt(_("Unapplied changes"),
 				_("Some changes in the dialog were not yet applied.\n"
 				"If you do not apply now, they will be lost after this action."),
@@ -2372,6 +2372,7 @@ void GuiDocument::modulesChanged()
 
 	bp_.makeDocumentClass();
 	paramsToDialog();
+	changed();
 }
 
 
@@ -2912,6 +2913,9 @@ void GuiDocument::applyView()
 		pdf.pagemode.clear();
 	pdf.quoted_options = pdf.quoted_options_check(
 				fromqstr(pdfSupportModule->optionsLE->text()));
+
+	// reset tracker
+	nonModuleChanged_ = false;
 }
 
 
@@ -3431,6 +3435,9 @@ void GuiDocument::paramsToDialog()
 
 	// clear changed branches cache
 	changedBranches_.clear();
+
+	// reset tracker
+	nonModuleChanged_ = false;
 }
 
 
