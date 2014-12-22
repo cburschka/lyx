@@ -197,7 +197,7 @@ bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 			string const newtype = cmd.getArg(1);
 			status.setEnabled(p_.isCompatibleCommand(p_.code(), newtype));
 			status.setOnOff(newtype == p_.getCmdName());
-		} 
+		}
 		status.setEnabled(true);
 		return true;
 	
