@@ -3432,26 +3432,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (is_known(t.cs(), known_phrases) ||
 		         (t.cs() == "protect" &&
 		          p.next_token().cat() == catEscape &&
-		          is_known(p.next_token().cs(), known_phrases)) ||
-				 (t.cs() == "protect" &&
-			      (p.next_token().cs() == "caption" ||
-				   p.next_token().cs() == "captionabove" ||
-				   p.next_token().cs() == "captionbelow"))) {
-			if (p.next_token().cs() == "caption" ||
-				p.next_token().cs() == "captionabove" ||
-				p.next_token().cs() == "captionbelow")
-				// we must ignore if \protect is in front of \caption*
-				;
-			else {
-				// LyX sometimes puts a \protect in front, so we have to ignore it
-				// FIXME: This needs to be changed when bug 4752 is fixed.
-				where = is_known(
-					t.cs() == "protect" ? p.get_token().cs() : t.cs(),
-					known_phrases);
-				context.check_layout(os);
-				os << known_coded_phrases[where - known_phrases];
-				skip_spaces_braces(p);
-			}
+		          is_known(p.next_token().cs(), known_phrases))) {
+			// LyX sometimes puts a \protect in front, so we have to ignore it
+			// FIXME: This needs to be changed when bug 4752 is fixed.
+			where = is_known(
+				t.cs() == "protect" ? p.get_token().cs() : t.cs(),
+				known_phrases);
+			context.check_layout(os);
+			os << known_coded_phrases[where - known_phrases];
+			skip_spaces_braces(p);
 		}
 
 		// handle refstyle first to catch \eqref which can also occur
