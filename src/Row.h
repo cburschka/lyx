@@ -76,7 +76,7 @@ public:
 			  extra(0), font(f), change(ch), final(false) {}
 
 		// Return total width of element, including separator overhead
-		double width() const { return dim.wid + extra; };
+		double full_width() const { return dim.wid + extra; };
 		/** Return position in pixels (from the left) of position
 		 * \param i in the row element.
 		 */
@@ -85,11 +85,11 @@ public:
 		 *  pixel position \param x. The value \param x is
 		 *  adjusted to the actual pixel position.
 		*/
-		pos_type x2pos(double &x) const;
+		pos_type x2pos(int &x) const;
 		/** Break the element if possible, so that its width is
 		 * less then \param w. Returns true on success.
 		 */
-		bool breakAt(double w);
+		bool breakAt(int w);
 
 		// Returns the position on left side of the element.
 		pos_type left_pos() const;
@@ -243,8 +243,8 @@ public:
 	double separator;
 	/// width of hfills in the label
 	double label_hfill;
-	/// the x position of the row (left margin)
-	double x;
+	/// the left margin position of the row
+	int left_margin;
 	/// the right margin of the row
 	int right_margin;
 	///

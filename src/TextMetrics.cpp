@@ -571,9 +571,9 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 
 	bool const is_rtl = text_->isRTL(par);
 	if (is_rtl)
-		row.x = rightMargin(pit);
+		row.left_margin = rightMargin(pit);
 	else
-		row.x = leftMargin(max_width_, pit, row.pos());
+		row.left_margin = leftMargin(max_width_, pit, row.pos());
 
 	// is there a manual margin with a manual label
 	Layout const & layout = par.layout();
@@ -619,16 +619,16 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 				row.dimension().wid = width;
 			} else if (is_rtl) {
 				row.dimension().wid = width;
-				row.x += w;
+				row.left_margin += w;
 			}
 			break;
 		}
 		case LYX_ALIGN_RIGHT:
-			row.x += w;
+			row.left_margin += w;
 			break;
 		case LYX_ALIGN_CENTER:
 			row.dimension().wid = width - int(w / 2);
-			row.x += w / 2;
+			row.left_margin += w / 2;
 			break;
 		case LYX_ALIGN_LEFT:
 		case LYX_ALIGN_NONE:
@@ -638,21 +638,6 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			break;
 		}
 	}
-
-#if 0
-	if (is_rtl) {
-		pos_type body_pos = par.beginOfBody();
-		pos_type end = row.endpos();
-
-		if (body_pos > 0
-		    && (body_pos > end || !par.isLineSeparator(body_pos - 1))) {
-			row.x += theFontMetrics(text_->labelFont(par)).
-				width(layout.labelsep);
-			if (body_pos <= end)
-				row.x += row.label_hfill;
-		}
-	}
-#endif
 
 	// Finally,  handle hfill insets
 	pos_type const endpos = row.endpos();
@@ -686,13 +671,13 @@ int TextMetrics::labelFill(pit_type const pit, Row const & row) const
 	Paragraph const & par = text_->getPar(pit);
 	LBUFERR(par.beginOfBody() > 0 || par.isEnvSeparator(0));
 
-	double w = 0;
+	int w = 0;
 	Row::const_iterator cit = row.begin();
 	Row::const_iterator const end = row.end();
 	// iterate over elements before main body (except the last one,
 	// which is extra space).
 	while (cit!= end && cit->endpos < par.beginOfBody()) {
-		w += cit->width();
+		w += cit->dim.wid;
 		++cit;
 	}
 
@@ -703,7 +688,7 @@ int TextMetrics::labelFill(pit_type const pit, Row const & row) const
 	FontMetrics const & fm
 		= theFontMetrics(text_->labelFont(par));
 
-	return max(0, fm.width(label) - int(w));
+	return max(0, fm.width(label) - w);
 }
 
 
@@ -803,8 +788,8 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	pos_type const body_pos = par.beginOfBody();
 	row.clear();
 	// This make get changed in computeRowMetrics depending on RTL
-	row.x = leftMargin(max_width_, pit, pos);
-	row.dimension().wid = int(row.x);
+	row.left_margin = leftMargin(max_width_, pit, pos);
+	row.dimension().wid = row.left_margin;
 	row.right_margin = right_margin;
 
 	if (pos >= end || row.width() > width) {
@@ -1117,25 +1102,25 @@ pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 	pos_type pos = row.pos();
 	boundary = false;
 	if (row.empty())
-		x = int(row.x);
-	else if (x <= row.x) {
+		x = row.left_margin;
+	else if (x <= row.left_margin) {
 		pos = row.front().left_pos();
-		x = int(row.x);
+		x = row.left_margin;
 	} else if (x >= row.width()) {
 		pos = row.back().right_pos();
 		x = row.width();
 	} else {
-		double w = row.x;
+		double w = row.left_margin;
 		Row::const_iterator cit = row.begin();
 		Row::const_iterator cend = row.end();
 		for ( ; cit != cend; ++cit) {
-			if (w <= x &&  w + cit->width() > x) {
-				double x_offset = x - w;
+			if (w <= x &&  w + cit->full_width() > x) {
+				int x_offset = int(x - w);
 				pos = cit->x2pos(x_offset);
 				x = int(x_offset + w);
 				break;
 			}
-			w += cit->width();
+			w += cit->full_width();
 		}
 		if (cit == row.end()) {
 			pos = row.back().right_pos();
@@ -1484,10 +1469,10 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	if (row.empty()
 	    || (pos == row.begin()->left_pos()
 		&& pos != row.begin()->right_pos()))
-		return int(row.x);
+		return row.left_margin;
 
 	Row::const_iterator cit = row.begin();
-	double x = row.x;
+	double x = row.left_margin;
 	for ( ; cit != row.end() ; ++cit) {
 		/** Look whether the cursor is inside the element's
 		 * span. Note that it is necessary to take the
@@ -1500,7 +1485,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 				x += cit->pos2x(pos);
 				break;
 		}
-		x += cit->width();
+		x += cit->full_width();
 	}
 
 	return int(x);

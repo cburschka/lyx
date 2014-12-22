@@ -48,9 +48,9 @@ double Row::Element::pos2x(pos_type const i) const
 	double w = 0;
 	//handle first the two bounds of the element
 	if (i == endpos && !(inset && inset->lyxCode() == SEPARATOR_CODE))
-		w = rtl ? 0 : width();
+		w = rtl ? 0 : full_width();
 	else if (i == pos || type != STRING)
-		w = rtl ? width() : 0;
+		w = rtl ? full_width() : 0;
 	else {
 		FontMetrics const & fm = theFontMetrics(font);
 		w = fm.pos2x(str, i - pos, font.isVisibleRightToLeft());
@@ -60,7 +60,7 @@ double Row::Element::pos2x(pos_type const i) const
 }
 
 
-pos_type Row::Element::x2pos(double &x) const
+pos_type Row::Element::x2pos(int &x) const
 {
 	//lyxerr << "x2pos: x=" << x << " w=" << width() << " " << *this;
 	bool const rtl = font.isVisibleRightToLeft();
@@ -69,24 +69,21 @@ pos_type Row::Element::x2pos(double &x) const
 	switch (type) {
 	case STRING: {
 		FontMetrics const & fm = theFontMetrics(font);
-		// FIXME: is it really necessary for x to be a double?
-		int xx = int(x);
-		i = fm.x2pos(str, xx, rtl);
-		x = xx;
+		i = fm.x2pos(str, x, rtl);
 		break;
 	}
 	case VIRTUAL:
 		// those elements are actually empty (but they have a width)
 		i = 0;
-		x = rtl ? width() : 0;
+		x = rtl ? int(full_width()) : 0;
 		break;
 	case SEPARATOR:
 	case INSET:
 	case SPACE:
 		// those elements contain only one position. Round to
 		// the closest side.
-		if (x > width()) {
-			x = width();
+		if (x > full_width()) {
+			x = int(full_width());
 			i = !rtl;
 		} else {
 			x = 0;
@@ -100,22 +97,22 @@ pos_type Row::Element::x2pos(double &x) const
 }
 
 
-bool Row::Element::breakAt(double w)
+bool Row::Element::breakAt(int w)
 {
-	if (type != STRING || width() <= w)
+	if (type != STRING || dim.wid <= w)
 		return false;
 
 	bool const rtl = font.isVisibleRightToLeft();
 	if (rtl)
-		w = width() - w;
+		w = dim.wid - w;
 	pos_type new_pos = x2pos(w);
 	if (new_pos == pos)
 		return false;
 	str = str.substr(0, new_pos - pos);
 	if (rtl)
-		dim.wid -= int(w);
+		dim.wid -= w;
 	else
-		dim.wid = int(w);
+		dim.wid = w;
 	endpos = new_pos;
 	return true;
 }
@@ -134,7 +131,7 @@ pos_type Row::Element::right_pos() const
 
 
 Row::Row()
-	: separator(0), label_hfill(0), x(0), right_margin(0),
+	: separator(0), label_hfill(0), left_margin(0), right_margin(0),
 	  sel_beg(-1), sel_end(-1),
 	  begin_margin_sel(false), end_margin_sel(false),
 	  changed_(false), crc_(0), pos_(0), end_(0), right_boundary_(false)
@@ -236,7 +233,7 @@ ostream & operator<<(ostream & os, Row::Element const & e)
 		os << "SPACE: ";
 		break;
 	}
-	os << "width=" << e.width();
+	os << "width=" << e.full_width();
 	return os;
 }
 
@@ -244,7 +241,7 @@ ostream & operator<<(ostream & os, Row::Element const & e)
 ostream & operator<<(ostream & os, Row const & row)
 {
 	os << " pos: " << row.pos_ << " end: " << row.end_
-	   << " x: " << row.x
+	   << " left_margin: " << row.left_margin
 	   << " width: " << row.dim_.wid
 	   << " right_margin: " << row.right_margin
 	   << " ascent: " << row.dim_.asc
@@ -252,11 +249,11 @@ ostream & operator<<(ostream & os, Row const & row)
 	   << " separator: " << row.separator
 	   << " label_hfill: " << row.label_hfill 
 	   << " row_boundary: " << row.right_boundary() << "\n";
-	double x = row.x;
+	double x = row.left_margin;
 	Row::Elements::const_iterator it = row.elements_.begin();
 	for ( ; it != row.elements_.end() ; ++it) {
 		os << "x=" << x << " => " << *it << endl;
-		x += it->width();
+		x += it->full_width();
 	}
 	return os;
 }
@@ -365,8 +362,8 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 	Elements::iterator const beg = elements_.begin();
 	Elements::iterator const end = elements_.end();
 	Elements::iterator last_sep = elements_.end();
-	double last_width = 0;
-	double wid = x;
+	int last_width = 0;
+	int wid = left_margin;
 
 	Elements::iterator cit = beg;
 	for ( ; cit != end ; ++cit) {
@@ -374,16 +371,16 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 			last_sep = cit;
 			last_width = wid;
 		}
-		if (wid + cit->width() > w)
+		if (wid + cit->dim.wid > w)
 			break;
-		wid += cit->width();
+		wid += cit->dim.wid;
 	}
 
 	if (last_sep != end) {
 		// We have found a suitable separator. This is the
 		// common case.
 		end_ = last_sep->endpos;
-		dim_.wid = int(last_width);
+		dim_.wid = last_width;
 		elements_.erase(last_sep, end);
 		return;
 	}
@@ -398,14 +395,14 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 		// It is not possible to separate a virtual element from the
 		// previous one.
 		--cit;
-		wid -= cit->width();
+		wid -= cit->dim.wid;
 	}
 
 	if (cit != beg) {
 		// There is no separator, but several elements (probably
 		// insets) have been added. We can cut at this place.
 		end_ = cit->pos;
-		dim_.wid = int(wid);
+		dim_.wid = wid;
 		elements_.erase(cit, end);
 		return;
 	}
@@ -415,9 +412,9 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 	 * something: when we have one big string, maybe with some
 	 * other things after it.
 	 */
-	if (cit->breakAt(w - x)) {
+	if (cit->breakAt(w - left_margin)) {
 		end_ = cit->endpos;
-		dim_.wid = int(x + cit->width());
+		dim_.wid = left_margin + cit->dim.wid;
 		// If there are other elements, they should be removed.
 		elements_.erase(boost::next(cit), end);
 	}

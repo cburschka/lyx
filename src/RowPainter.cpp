@@ -83,7 +83,7 @@ RowPainter::RowPainter(PainterInfo & pi,
 		dotted_line_offset_ = int(0.5 * dotted_line_thickness_) + 1;
 	}
 
-	x_ = row_.x + xo_;
+	x_ = row_.left_margin + xo_;
 
 	//lyxerr << "RowPainter: x: " << x_ << " xo: " << xo_ << " yo: " << yo_ << endl;
 	//row_.dump();
