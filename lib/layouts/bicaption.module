@@ -40,6 +40,7 @@ InsetLayout Caption:Bicaption
 	LabelString	bilingual
 	LaTeXType	command
 	LatexName	bicaption
+	NeedProtect     1
 	Argument 1
 	  LabelString	"Main Language Short Title"
 	  Tooltip	"Short title for the main(document) language"

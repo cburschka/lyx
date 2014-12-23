@@ -265,9 +265,6 @@ void InsetCaption::latex(otexstream & os,
 	// \caption{...}, later we will make it take advantage
 	// of the one of the caption packages. (Lgb)
 	OutputParams runparams = runparams_in;
-	// FIXME: actually, it is moving only when there is no
-	// optional argument.
-	runparams.moving_arg = !runparams.inTableCell;
 	InsetText::latex(os, runparams);
 	// Backwards compatibility: We always had a linebreak after
 	// the caption (see #8514)

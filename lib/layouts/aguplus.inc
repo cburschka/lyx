@@ -207,6 +207,7 @@ InsetLayout Caption:Table
 	LabelString          table
 	LaTeXType            command
 	LatexName            tablecaption
+	NeedProtect          1
 	HTMLStyle
 		div.float-caption {
 			text-align: center;

@@ -53,6 +53,7 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Do not output \protect unnecessarily before \caption (bug 9177).
 
 
 * LYX2LYX
@@ -61,7 +62,7 @@ What's new
 
 * USER INTERFACE
 
-- Fix name and hint of figure captions in documents using the class aastex. 
+- Fix name and hint of figure captions in documents using the class aastex.
 
 
 

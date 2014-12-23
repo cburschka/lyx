@@ -251,6 +251,7 @@ InsetLayout Caption:Centered
 	LabelString          standard
 	LaTeXType            command
 	LatexName            centeredcaption
+	NeedProtect          1
 	Argument 1
 		LabelString   "Short Title|S"
 		Tooltip       "The caption as it appears in the list of figures/tables"

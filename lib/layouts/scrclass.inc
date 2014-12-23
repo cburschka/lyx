@@ -269,6 +269,7 @@ InsetLayout Caption:Above
 	LabelString          above
 	LaTeXType            command
 	LatexName            captionabove
+	NeedProtect          1
 	Argument 1
 		LabelString   "Short Title|S"
 		Tooltip       "The caption as it appears in the list of figures/tables"
@@ -289,6 +290,7 @@ InsetLayout Caption:Below
 	LabelString          below
 	LaTeXType            command
 	LatexName            captionbelow
+	NeedProtect          1
 	Argument 1
 		LabelString   "Short Title|S"
 		Tooltip       "The caption as it appears in the list of figures/tables"
