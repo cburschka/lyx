@@ -438,6 +438,8 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 	if (!il.latexname().empty()) {
 		if (il.latextype() == InsetLayout::COMMAND) {
 			// FIXME UNICODE
+			// FIXME \protect should only be used for fragile
+			//    commands, but we do not provide this information yet.
 			if (runparams.moving_arg)
 				os << "\\protect";
 			os << '\\' << from_utf8(il.latexname());

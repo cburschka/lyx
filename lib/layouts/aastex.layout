@@ -529,6 +529,7 @@ InsetLayout Caption:FigCaption
 	LabelString          fig.
 	LaTeXType            command
 	LatexName            figcaption
+	# FIXME: it seems that the optional argument is actually a file name
 	Argument 1
 	    LabelString   "Short Title|S"
 	    Tooltip       "The caption as it appears in the list of figures"
