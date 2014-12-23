@@ -36,6 +36,7 @@ TEST_FILES = \
 	test/test.ltx \
 	test/test-modules.tex \
 	test/test-refstyle-theorems.tex \
+	test/test-scr.tex \
 	test/test-structure.tex \
 	test/verbatim.tex \
 	test/XeTeX-polyglossia.tex \
@@ -54,6 +55,7 @@ TEST_RESULTS = \
 	test/test.lyx.lyx \
 	test/test-modules.lyx.lyx \
 	test/test-refstyle-theorems.lyx.lyx \
+	test/test-scr.lyx.lyx \
 	test/test-structure.lyx.lyx \
 	test/verbatim.lyx.lyx \
 	test/XeTeX-polyglossia.lyx.lyx
