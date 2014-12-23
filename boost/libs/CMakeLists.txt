@@ -7,8 +7,8 @@
 project(boost)
 
 
-if(LYX_USE_TR1_REGEX)
-	message(STATUS "Using TR1 regex")
+if(LYX_USE_STD_REGEX)
+	message(STATUS "Using std regex")
 else()
 	add_subdirectory(regex) 
 endif()

@@ -12,17 +12,7 @@
 #ifndef LYX_FUNCTIONAL_H
 #define LYX_FUNCTIONAL_H
 
-#ifdef LYX_USE_TR1
-
-#include <functional>
-
-#ifdef __GNUC__
-#include <tr1/functional>
-#endif
-
-#define LYX_FUNCTIONAL_NS std::tr1
-
-#elif __cplusplus >= 201103L
+#if __cplusplus >= 201103L
 
 #include <functional>
 #define LYX_FUNCTIONAL_NS std

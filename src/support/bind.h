@@ -14,17 +14,7 @@
 
 #include "support/functional.h"
 
-#ifdef LYX_USE_TR1
-
-#define LYX_BIND_NS std::tr1
-
-namespace lyx
-{
-	using std::tr1::placeholders::_1;
-	using std::tr1::placeholders::_2;
-}
-
-#elif __cplusplus >= 201103L
+#if __cplusplus >= 201103L
 
 #define LYX_BIND_NS std
 

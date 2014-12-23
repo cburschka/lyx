@@ -246,14 +246,12 @@ set(LYX_GCC11_MODE)
 if(UNIX OR MINGW)
 	execute_process(COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
 	message(STATUS "Using GCC version ${GCC_VERSION}")
-	if(NOT GCC_VERSION VERSION_LESS 4.4)
-		set(LYX_USE_TR1 1)
-		# GCC <= 4.5 does not support regex: there are linker errors
-		# http://gcc.gnu.org/onlinedocs/libstdc++/manual/status.html#status.iso.tr1
-		# <regex> and <tr1/regex> in gcc are unusable in versions less than 4.9.0
+# disabled because of missing match_partial
+#	if(GCC_VERSION VERSION_LESS 4.9)
+		# <regex> in gcc is unusable in versions less than 4.9.0
 		# see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
-		set(LYX_USE_TR1_REGEX 0)
-	endif()
+		set(LYX_USE_STD_REGEX 0)
+#	endif()
 	if (LYX_ENABLE_CXX11)
 		find_package(CXX11Compiler)
 		if(NOT CXX11COMPILER_FOUND)
@@ -262,10 +260,11 @@ if(UNIX OR MINGW)
 		set(LYX_GCC11_MODE "${CXX11_FLAG}")
 	endif()
 else()
-	if(MSVC10)
-		set(LYX_USE_TR1 1)
-		#set(LYX_USE_TR1_REGEX 1) #TODO should we use it in ECMAScript mode?
-	endif()
+# disabled because of missing match_partial
+	set(LYX_USE_STD_REGEX 0)
+#	if(MSVC10)
+#		set(LYX_USE_STD_REGEX 1) #TODO should we use it in ECMAScript mode?
+#	endif()
 endif()
 
 
@@ -641,7 +640,7 @@ if(LYX_EXTERNAL_BOOST)
 		message(FATAL_ERROR "Boost not found" ${Boost_ERROR_REASON})
 	endif()
 else()
-	if(LYX_USE_TR1_REGEX)
+	if(LYX_USE_STD_REGEX)
 		set(Lyx_Boost_Libraries boost_signals)
 	else()
 		set(Lyx_Boost_Libraries boost_signals boost_regex)

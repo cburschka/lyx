@@ -12,17 +12,7 @@
 #ifndef LYX_SHARED_PTR_H
 #define LYX_SHARED_PTR_H
 
-#ifdef LYX_USE_TR1
-
-#include <memory>
-
-#ifdef __GNUC__
-#include <tr1/memory>
-#endif
-
-#define LYX_SHAREDPTR_NS std::tr1
-
-#elif __cplusplus >= 201103L
+#if __cplusplus >= 201103L
 
 #include <memory>
 #define LYX_SHAREDPTR_NS std
