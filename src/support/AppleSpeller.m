@@ -162,16 +162,11 @@ size_t AppleSpeller_makeSuggestion(AppleSpeller speller, const char * word, cons
 	// Mac OS X 10.6 only
 	NSInteger slen = [word_ length];
 	NSRange range = { 0, slen };
-	
-	if ([NSSpellChecker instancesRespondToSelector:@selector(guessesForWordRange:)]) {
-		result = [speller->checker guessesForWordRange:range
-			inString:word_
-			language:lang_
-			inSpellDocumentWithTag:speller->doctag];
-	} else {
-		[speller->checker setLanguage:lang_];
-		result = [speller->checker guessesForWord:word_];
-	}
+
+	result = [speller->checker guessesForWordRange:range
+		inString:word_
+		language:lang_
+		inSpellDocumentWithTag:speller->doctag];
 #else
 	[speller->checker setLanguage:lang_];
 	result = [speller->checker guessesForWord:word_];
