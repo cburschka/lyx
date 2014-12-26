@@ -637,45 +637,39 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 	}
 	context.check_deeper(os);
 	context.check_layout(os);
-	// FIXME: Adjust to format 446!
-	// Since format 446, layouts do not require anymore all optional
-	// arguments before the required ones. Needs to be implemented!
-	int optargs = 0;
-	while (optargs < context.layout->optArgs()) {
+	Layout::LaTeXArgMap::const_iterator lait = context.layout->latexargs().begin();
+	Layout::LaTeXArgMap::const_iterator const laend = context.layout->latexargs().end();
+	for (; lait != laend; ++lait) {
 		eat_whitespace(p, os, context, false);
-		if (p.next_token().cat() == catEscape ||
-		    p.next_token().character() != '[')
-			break;
-		p.get_token(); // eat '['
-		// FIXME: Just a workaround. InsetArgument::updateBuffer
-		//        will compute a proper ID for all "999" Arguments
-		//        (which is also what lyx2lyx produces).
-		//        However, tex2lyx should be able to output proper IDs
-		//        itself.
-		begin_inset(os, "Argument 999\n");
-		os << "status collapsed\n\n";
-		parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
-		end_inset(os);
+		if (lait->second.mandatory) {
+			if (p.next_token().cat() != catBegin)
+				break;
+			p.get_token(); // eat '{'
+			// FIXME: Just a workaround. InsetArgument::updateBuffer
+			//        will compute a proper ID for all "999" Arguments
+			//        (which is also what lyx2lyx produces).
+			//        However, tex2lyx should be able to output proper IDs
+			//        itself.
+			begin_inset(os, "Argument 999\n");
+			os << "status collapsed\n\n";
+			parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
+			end_inset(os);
+		} else {
+			if (p.next_token().cat() == catEscape ||
+			    p.next_token().character() != '[')
+				break;
+			p.get_token(); // eat '['
+			// FIXME: Just a workaround. InsetArgument::updateBuffer
+			//        will compute a proper ID for all "999" Arguments
+			//        (which is also what lyx2lyx produces).
+			//        However, tex2lyx should be able to output proper IDs
+			//        itself.
+			begin_inset(os, "Argument 999\n");
+			os << "status collapsed\n\n";
+			parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
+			end_inset(os);
+		}
 		eat_whitespace(p, os, context, false);
-		++optargs;
-	}
-	int reqargs = 0;
-	while (reqargs < context.layout->requiredArgs()) {
-		eat_whitespace(p, os, context, false);
-		if (p.next_token().cat() != catBegin)
-			break;
-		p.get_token(); // eat '{'
-		// FIXME: Just a workaround. InsetArgument::updateBuffer
-		//        will compute a proper ID for all "999" Arguments
-		//        (which is also what lyx2lyx produces).
-		//        However, tex2lyx should be able to output proper IDs
-		//        itself.
-		begin_inset(os, "Argument 999\n");
-		os << "status collapsed\n\n";
-		parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
-		end_inset(os);
-		eat_whitespace(p, os, context, false);
-		++reqargs;
 	}
 	parse_text(p, os, FLAG_ITEM, outer, context);
 	context.check_end_layout(os);
@@ -1734,7 +1728,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		   << "status collapsed\n";
 		if (newinsetlayout->isPassThru()) {
 			string const arg = p.verbatimEnvironment(name);
-			Context context(true, parent_context.textclass, 
+			Context context(true, parent_context.textclass,
 					&parent_context.textclass.plainLayout(),
 					parent_context.layout);
 			output_ert(os, arg, parent_context);
@@ -3905,7 +3899,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			string delim = p.get_token().asInput();
 			Parser::Arg arg = p.verbatimStuff(delim);
 			if (arg.first)
-				output_ert_inset(os, "\\verb" + delim 
+				output_ert_inset(os, "\\verb" + delim
 						 + arg.second + delim, context);
 			else
 				cerr << "invalid \\verb command. Skipping" << endl;
@@ -4499,7 +4493,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					newcontext.layout = &context.textclass.plainLayout();
 				output_ert(os, arg, newcontext);
 			} else
-				
 				parse_text_in_inset(p, os, FLAG_ITEM, false, context, newinsetlayout);
 			end_inset(os);
 		}
