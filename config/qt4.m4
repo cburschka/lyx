@@ -201,6 +201,11 @@ AC_DEFUN([QT_DO_PKG_CONFIG],
 	if test "x$USE_QT5" != "xno" ; then
 		qt_corelibs="Qt5Core"
 		qt_guilibs="Qt5Core Qt5Concurrent Qt5Gui Qt5Widgets"
+		lyx_use_winextras=false
+		PKG_CHECK_EXISTS(Qt5WinExtras, [lyx_use_winextras=true], [])
+		if $lyx_use_winextras; then
+			qt_guilibs="$qt_guilibs Qt5WinExtras"
+		fi
 	fi
 	PKG_CHECK_MODULES(QT_CORE, $qt_corelibs,,[:])
 	if test "$pkg_failed" = "no" ; then

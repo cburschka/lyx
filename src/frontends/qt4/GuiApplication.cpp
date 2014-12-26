@@ -124,13 +124,21 @@
 #undef None
 #endif
 
-#ifdef Q_WS_WIN
+#if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400)
+#if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
+#if (QT_VERSION < 0x050000)
 #include <QWindowsMime>
+#define QWINDOWSMIME QWindowsMime
+#else
+#include <QWinMime>
+#define QWINDOWSMIME QWinMime
+#endif
 #ifdef Q_CC_GNU
 #include <wtypes.h>
 #endif
 #include <objidl.h>
-#endif // Q_WS_WIN
+#endif
+#endif
 
 #ifdef Q_OS_MAC
 #include <QMacPasteboardMime>
@@ -716,7 +724,8 @@ public:
 ////////////////////////////////////////////////////////////////////////
 // Windows specific stuff goes here...
 
-#ifdef Q_WS_WIN
+#if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400)
+#if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
 // QWindowsMimeMetafile can only be compiled on Windows.
 
 static FORMATETC cfFromMime(QString const & mimetype)
@@ -736,7 +745,7 @@ static FORMATETC cfFromMime(QString const & mimetype)
 }
 
 
-class QWindowsMimeMetafile : public QWindowsMime {
+class QWindowsMimeMetafile : public QWINDOWSMIME {
 public:
 	QWindowsMimeMetafile() {}
 
@@ -813,7 +822,8 @@ public:
 	}
 };
 
-#endif // Q_WS_WIN
+#endif
+#endif
 
 
 /// Allows to check whether ESC was pressed during a long operation
@@ -877,9 +887,11 @@ struct GuiApplication::Private
 	Private(): language_model_(0), meta_fake_bit(NoModifier),
 		global_menubar_(0)
 	{
-	#ifdef Q_WS_WIN
+	#if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400)
+	#if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
 		/// WMF Mime handler for Windows clipboard.
 		wmf_mime_ = new QWindowsMimeMetafile;
+	#endif
 	#endif
 		initKeySequences(&theTopLevelKeymap());
 	}
@@ -941,9 +953,11 @@ struct GuiApplication::Private
 	QMacPasteboardMimeGraphics mac_pasteboard_mime_;
 #endif
 
-#ifdef Q_WS_WIN
+#if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400)
+#if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
 	/// WMF Mime handler for Windows clipboard.
 	QWindowsMimeMetafile * wmf_mime_;
+#endif
 #endif
 
 	/// Allows to check whether ESC was pressed during a long operation

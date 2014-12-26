@@ -58,7 +58,11 @@ set_target_properties(frontend_qt PROPERTIES FOLDER "applications/LyX")
 if(Qt5Core_FOUND AND APPLE)
        qt_use_modules(frontend_qt Core Gui Widgets Concurrent MacExtras)
 else()
-       qt_use_modules(frontend_qt Core Gui Widgets Concurrent)
+       if (Qt5WinExtras_FOUND)
+           qt_use_modules(frontend_qt Core Gui Widgets Concurrent WinExtras)
+       else()
+           qt_use_modules(frontend_qt Core Gui Widgets Concurrent)
+       endif()
 endif()
 target_link_libraries(frontend_qt
 	frontends
