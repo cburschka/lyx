@@ -2208,8 +2208,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 	bool const use_natbib = isProvided("natbib");
 	bool const use_jurabib = isProvided("jurabib");
 	string last_env;
-	while (p.good()) {
-		Token const & t = p.get_token();
 
 	// it is impossible to determine the correct encoding for non-CJK Japanese.
 	// Therefore write a note at the beginning of the document
@@ -2233,6 +2231,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		is_nonCJKJapanese = false;
 	}
 
+	while (p.good()) {
+		Token const & t = p.get_token();
 #ifdef FILEDEBUG
 		debugToken(cerr, t, flags);
 #endif
