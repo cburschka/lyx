@@ -637,21 +637,18 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 	}
 	context.check_deeper(os);
 	context.check_layout(os);
+	int i = 0;
 	Layout::LaTeXArgMap::const_iterator lait = context.layout->latexargs().begin();
 	Layout::LaTeXArgMap::const_iterator const laend = context.layout->latexargs().end();
 	for (; lait != laend; ++lait) {
+		++i;
 		eat_whitespace(p, os, context, false);
 		if (lait->second.mandatory) {
 			if (p.next_token().cat() != catBegin)
 				break;
 			p.get_token(); // eat '{'
-			// FIXME: Just a workaround. InsetArgument::updateBuffer
-			//        will compute a proper ID for all "999" Arguments
-			//        (which is also what lyx2lyx produces).
-			//        However, tex2lyx should be able to output proper IDs
-			//        itself.
-			begin_inset(os, "Argument 999\n");
-			os << "status collapsed\n\n";
+			begin_inset(os, "Argument ");
+			os << i << "\nstatus collapsed\n\n";
 			parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
 			end_inset(os);
 		} else {
@@ -659,13 +656,8 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 			    p.next_token().character() != '[')
 				break;
 			p.get_token(); // eat '['
-			// FIXME: Just a workaround. InsetArgument::updateBuffer
-			//        will compute a proper ID for all "999" Arguments
-			//        (which is also what lyx2lyx produces).
-			//        However, tex2lyx should be able to output proper IDs
-			//        itself.
-			begin_inset(os, "Argument 999\n");
-			os << "status collapsed\n\n";
+			begin_inset(os, "Argument ");
+			os << i << "\nstatus collapsed\n\n";
 			parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
 			end_inset(os);
 		}
