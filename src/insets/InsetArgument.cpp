@@ -49,11 +49,13 @@ void InsetArgument::write(ostream & os) const
 	InsetCollapsable::write(os);
 }
 
+
 void InsetArgument::read(Lexer & lex)
 {
 	lex >> name_;
 	InsetCollapsable::read(lex);
 }
+
 
 void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 {
@@ -64,7 +66,7 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 		args = it.inset().getLayout().args();
 		pass_thru_ = it.inset().getLayout().isPassThru();
 	}
-	
+
 	// Handle pre 2.1 ArgInsets (lyx2lyx cannot classify them)
 	if (name_ == "999") {
 		unsigned int const req = insetlayout ? it.inset().getLayout().requiredArgs()
@@ -118,10 +120,12 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 	InsetCollapsable::updateBuffer(it, utype);
 }
 
+
 void InsetArgument::setButtonLabel()
 {
 	setLabel(labelstring_);
 }
+
 
 docstring InsetArgument::toolTip(BufferView const & bv, int, int) const
 {
@@ -129,6 +133,7 @@ docstring InsetArgument::toolTip(BufferView const & bv, int, int) const
 		return tooltip_;
 	return toolTipText(tooltip_ + from_ascii(":\n"));
 }
+
 
 void InsetArgument::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
@@ -157,7 +162,7 @@ void InsetArgument::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// with (inherited) pass_thru to avoid call for
 		// fixParagraphsFont(), which does not play nicely with
 		// inherited pass_thru (see #8471).
-		// FIXME: Once we have implemented genuine pass_thru 
+		// FIXME: Once we have implemented genuine pass_thru
 		// option for InsetArgument (not inherited pass_thru),
 		// we should probably directly call
 		// InsetCollapsable::doDispatch(cur, cmd) for that
@@ -223,10 +228,12 @@ bool InsetArgument::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 }
 
+
 string InsetArgument::contextMenuName() const
 {
 	return "context-argument";
 }
+
 
 FontInfo InsetArgument::getFont() const
 {
@@ -235,12 +242,14 @@ FontInfo InsetArgument::getFont() const
 	return getLayout().font();
 }
 
+
 FontInfo InsetArgument::getLabelfont() const
 {
 	if (labelfont_ != inherit_font)
 		return labelfont_;
 	return getLayout().labelfont();
 }
+
 
 InsetLayout::InsetDecoration InsetArgument::decoration() const
 {
@@ -249,6 +258,7 @@ InsetLayout::InsetDecoration InsetArgument::decoration() const
 		dec = translateDecoration(decoration_);
 	return dec == InsetLayout::DEFAULT ? InsetLayout::CLASSIC : dec;
 }
+
 
 void InsetArgument::latexArgument(otexstream & os,
 		OutputParams const & runparams_in, docstring const & ldelim,
