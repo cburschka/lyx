@@ -33,6 +33,9 @@ list(REMOVE_ITEM support_sources
 	${TOP_SRC_DIR}/src/support/os_cygwin.cpp
 	${TOP_SRC_DIR}/src/support/os_os2.C
 	${TOP_SRC_DIR}/src/support/gettext.cpp)
+if(NOT STD_STRING_USES_COW)
+	list(REMOVE_ITEM support_sources ${TOP_SRC_DIR}/src/support/trivstring.cpp)
+endif()
 
 if(APPLE)
 	message(STATUS "Mac LinkBack support")
