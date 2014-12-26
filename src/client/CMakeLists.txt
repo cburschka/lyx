@@ -38,5 +38,9 @@ if(APPLE)
 	target_link_libraries(${_lyxclient} "-framework AppKit")
 endif()
 
+if(CYGWIN)
+	target_link_libraries(${_lyxclient} shlwapi)
+endif()
+
 install(TARGETS ${_lyxclient} DESTINATION ${LYX_UTILITIES_INSTALL_PATH})
 

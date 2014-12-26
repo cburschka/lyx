@@ -58,6 +58,10 @@ if(WIN32)
 	target_link_libraries(${_tex2lyx} shlwapi ole32 psapi)
 endif()
 
+if(CYGWIN)
+	target_link_libraries(${_tex2lyx} shlwapi ole32)
+endif()
+
 if(APPLE)
 	target_link_libraries(${_tex2lyx} "-framework AppKit")
 endif()

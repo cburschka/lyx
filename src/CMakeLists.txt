@@ -149,6 +149,10 @@ if(MINGW)
 	target_link_libraries(${_lyx} ole32)
 endif()
 
+if(CYGWIN)
+	target_link_libraries(${_lyx} gdi32 shlwapi ole32)
+endif()
+
 project_source_group("${GROUP_CODE}" lyx_sources lyx_headers)
 
 install(TARGETS ${_lyx} 
