@@ -2831,6 +2831,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				begin_inset(os, "Caption Above\n");
 			else if (t.cs() == "captionbelow")
 				begin_inset(os, "Caption Below\n");
+			os << "status collapsed\n";
 			Context newcontext(true, context.textclass, 0, 0, context.font);
 			newcontext.check_layout(os);
 			// FIXME InsetArgument is now properly implemented in InsetLayout
