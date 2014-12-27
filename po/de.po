@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-12-21 11:19-0500\n"
-"PO-Revision-Date: 2014-12-08 07:58+0100\n"
+"PO-Revision-Date: 2014-12-27 17:44+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -12562,7 +12562,7 @@ msgstr "Fußnote ##"
 
 #: lib/layouts/stdcounters.inc:77
 msgid "\\fnsymbol{thanks}"
-msgstr ""
+msgstr "\\fnsymbol{thanks}"
 
 #: lib/layouts/db_stdcharstyles.inc:21 lib/layouts/db_stdcharstyles.inc:23
 msgid "Directory"
@@ -24735,9 +24735,9 @@ msgid "Use \"...\" to shorten long completions."
 msgstr "Benutze \"...\" um lange Vervollständigungen zu kürzen."
 
 #: src/LyXRC.cpp:3348
-#, fuzzy
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
-msgstr "Erlaube TeXMacs-Shorthands (z.B. Konvertierung von => zu Rightarrow)."
+msgstr ""
+"Erlaube TeXMacs-Shorthands (z.B. Konvertierung von => zu \\Rightarrow)."
 
 #: src/LyXRC.cpp:3352
 #, c-format
