@@ -18,6 +18,8 @@
 namespace lyx {
   // inheriting 'private' to see which functions are used and if there are
   // other ECMAScrip defaults
+  // FIXME: Is this really needed?
+  //        If yes, then the MSVC regex implementation is not standard-conforming.
   class regex : private std::regex
   {
   public:

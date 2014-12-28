@@ -246,12 +246,11 @@ set(LYX_GCC11_MODE)
 if(UNIX OR MINGW)
 	execute_process(COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
 	message(STATUS "Using GCC version ${GCC_VERSION}")
-# disabled because of missing match_partial
-#	if(GCC_VERSION VERSION_LESS 4.9)
+	if(GCC_VERSION VERSION_LESS 4.9)
 		# <regex> in gcc is unusable in versions less than 4.9.0
 		# see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
 		set(LYX_USE_STD_REGEX 0)
-#	endif()
+	endif()
 	if (LYX_ENABLE_CXX11)
 		find_package(CXX11Compiler)
 		if(NOT CXX11COMPILER_FOUND)
@@ -260,7 +259,6 @@ if(UNIX OR MINGW)
 		set(LYX_GCC11_MODE "${CXX11_FLAG}")
 	endif()
 else()
-# disabled because of missing match_partial
 	set(LYX_USE_STD_REGEX 0)
 #	if(MSVC10)
 #		set(LYX_USE_STD_REGEX 1) #TODO should we use it in ECMAScript mode?
