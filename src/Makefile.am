@@ -681,7 +681,7 @@ endif
 ############################## Tests ##################################
 
 EXTRA_DIST += \
-	tests/test_layout CMakeLists.txt
+	tests/test_layout
 
 alltests: check alltests-recursive
 
