@@ -36,3 +36,27 @@ foreach(bns ${layout_files})
     COMMAND check_layout "${TOP_SRC_DIR}/lib/layouts/${bn}")
   settestlabel("check_layout/${bns}" "layout")
 endforeach()
+
+set(check_ExternalTransforms_SOURCES)
+foreach(_f graphics/GraphicsParams.cpp insets/ExternalTransforms.cpp
+	Length.cpp lengthcommon.cpp tests/check_ExternalTransforms.cpp
+	tests/boost.cpp tests/dummy_functions.cpp)
+    list(APPEND check_ExternalTransforms_SOURCES ${TOP_SRC_DIR}/src/${_f})
+endforeach()
+
+include_directories(${TOP_SRC_DIR}/src/tests)
+add_executable(check_ExternalTransforms ${check_ExternalTransforms_SOURCES})
+
+target_link_libraries(check_ExternalTransforms support
+	${Lyx_Boost_Libraries} ${QT_QTCORE_LIBRARY})
+
+add_dependencies(lyx_run_tests check_ExternalTransforms)
+set_target_properties(check_ExternalTransforms PROPERTIES FOLDER "src")
+
+add_test(NAME "check_ExternalTransforms"
+  COMMAND ${CMAKE_COMMAND} -DCommand=$<TARGET_FILE:check_ExternalTransforms>
+	"-DInput=${TOP_SRC_DIR}/src/tests/regfiles/ExternalTransforms"
+	"-DOutput=${CMAKE_CURRENT_BINARY_DIR}/ExternalTransforms_data"
+	-P "${TOP_SRC_DIR}/src/support/tests/supporttest.cmake")
+add_dependencies(lyx_run_tests check_ExternalTransforms)
+
