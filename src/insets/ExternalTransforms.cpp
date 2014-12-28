@@ -282,7 +282,7 @@ string const sanitizeLatexOption(string const & input)
 	lyx::smatch what;
 	static lyx::regex const front("^( *[[],*)(.*)$");
 
-	regex_match(it, end, what, front, regex_constants::match_partial);
+	regex_match(it, end, what, front);
 	if (!what[0].matched) {
 		lyxerr << "Unable to sanitize LaTeX \"Option\": "
 		       << input << '\n';
@@ -295,7 +295,7 @@ string const sanitizeLatexOption(string const & input)
 	// with iterator now pointing to 'b'
 	static lyx::regex const commas("([^,]*)(,,*)(.*)$");
 	for (; it != end;) {
-		regex_match(it, end, what, commas, regex_constants::match_partial);
+		regex_match(it, end, what, commas);
 		if (!what[0].matched) {
 			output += string(it, end);
 			break;

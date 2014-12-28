@@ -15,7 +15,6 @@
 #if __cplusplus >= 201103L && defined(LYX_USE_STD_REGEX)
 #  include <regex>
 #  ifdef _MSC_VER
-#    define match_partial _Match_partial
 namespace lyx {
   // inheriting 'private' to see which functions are used and if there are
   // other ECMAScrip defaults
@@ -59,7 +58,6 @@ namespace lyx {
 #  else
 // <regex> in gcc is unusable in versions less than 4.9.0
 // see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
-// TODO no match_partial in std, how to replace?
 #  define LR_NS std
 namespace lyx {
 using LR_NS::regex;

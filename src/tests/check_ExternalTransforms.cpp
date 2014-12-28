@@ -19,6 +19,8 @@ void test_sanitizeLatexOption()
 	cout << sanitizeLatexOption(",,") << endl;
 	cout << sanitizeLatexOption("[") << endl;
 	cout << sanitizeLatexOption("]") << endl;
+	cout << sanitizeLatexOption("a,[,c]") << endl;
+	cout << sanitizeLatexOption("[a,],c") << endl;
 	// valid input
 	cout << sanitizeLatexOption("[]") << endl;
 	cout << sanitizeLatexOption("[[]") << endl;
@@ -34,6 +36,11 @@ void test_sanitizeLatexOption()
 	cout << sanitizeLatexOption("[a,b]") << endl;
 	cout << sanitizeLatexOption("[a,,b]") << endl;
 	cout << sanitizeLatexOption("[a,,,b]") << endl;
+	cout << sanitizeLatexOption("[a,[,c]") << endl;
+	cout << sanitizeLatexOption("[a,],c]") << endl;
+	cout << sanitizeLatexOption("[a,[],c]") << endl;
+	cout << sanitizeLatexOption("[a,,[],,c]") << endl;
+	cout << sanitizeLatexOption("[a,,[,],,c]") << endl;
 	cout << sanitizeLatexOption("[a,]") << endl;
 	cout << sanitizeLatexOption("[a,,]") << endl;
 	cout << sanitizeLatexOption("[a,,,]") << endl;
