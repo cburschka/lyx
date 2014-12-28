@@ -143,6 +143,7 @@ EXTRA_DIST += \
 	tests/test_convert \
 	tests/test_filetools \
 	tests/test_lstrings \
+	tests/test_trivstring \
 	tests/regfiles/convert \
 	tests/regfiles/filetools \
 	tests/regfiles/lstrings \
