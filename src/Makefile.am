@@ -681,7 +681,11 @@ endif
 ############################## Tests ##################################
 
 EXTRA_DIST += \
+	tests/test_ExternalTransforms \
+	tests/regfiles/ExternalTransforms \
 	tests/test_layout
+
+TESTS = tests/test_ExternalTransforms
 
 alltests: check alltests-recursive
 
@@ -698,6 +702,7 @@ updatetests:
 	cd tex2lyx; $(MAKE) updatetests
 
 check_PROGRAMS = \
+	check_ExternalTransforms \
 	check_layout
 
 if INSTALL_MACOSX
@@ -721,6 +726,18 @@ check_layout_SOURCES = \
 	Spacing.cpp \
 	TextClass.cpp \
 	tests/check_layout.cpp \
+	tests/boost.cpp \
+	tests/dummy_functions.cpp
+
+check_ExternalTransforms_CPPFLAGS = $(AM_CPPFLAGS)
+check_ExternalTransforms_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ $(QT_CORE_LIBS) $(LIBSHLWAPI)
+check_ExternalTransforms_LDFLAGS = $(QT_CORE_LDFLAGS) $(ADD_FRAMEWORKS)
+check_ExternalTransforms_SOURCES = \
+	graphics/GraphicsParams.cpp \
+	insets/ExternalTransforms.cpp \
+	Length.cpp \
+	lengthcommon.cpp \
+	tests/check_ExternalTransforms.cpp \
 	tests/boost.cpp \
 	tests/dummy_functions.cpp
 
