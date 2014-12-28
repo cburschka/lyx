@@ -13,7 +13,17 @@ using namespace std;
 void test_sanitizeLatexOption()
 {
 	using external::sanitizeLatexOption;
+	// invalid input
+	cout << sanitizeLatexOption("") << endl;
+	cout << sanitizeLatexOption(",") << endl;
+	cout << sanitizeLatexOption(",,") << endl;
+	cout << sanitizeLatexOption("[") << endl;
+	cout << sanitizeLatexOption("]") << endl;
+	// valid input
 	cout << sanitizeLatexOption("[]") << endl;
+	cout << sanitizeLatexOption("[[]") << endl;
+	cout << sanitizeLatexOption("[]]") << endl;
+	cout << sanitizeLatexOption("[[]]") << endl;
 	cout << sanitizeLatexOption("[,]") << endl;
 	cout << sanitizeLatexOption("[,,]") << endl;
 	cout << sanitizeLatexOption("[,,,]") << endl;
@@ -32,6 +42,7 @@ void test_sanitizeLatexOption()
 
 int main(int, char **)
 {
-	lyx::lyxerr.setStream(cerr);
+	// Connect lyxerr with cout instead of cerr to catch error output
+	lyx::lyxerr.setStream(cout);
 	test_sanitizeLatexOption();
 }
