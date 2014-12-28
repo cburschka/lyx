@@ -39,6 +39,8 @@ namespace lyx {
 template <typename Char> class trivial_string
 {
 public:
+	/// Corresponding std::basic_string
+	typedef std::basic_string<Char, std::char_traits<Char>, std::allocator<Char> > _stdstring;
 	/// Construct an empty string
 	trivial_string() : size_(0), data_(0) {}
 	/// Construct a string from a copy of \p that
@@ -46,13 +48,13 @@ public:
 	/// Construct a string from a copy of \p that
 	trivial_string(Char const * that, size_t n);
 	/// Construct a string from a copy of \p that
-	trivial_string(std::basic_string<Char, std::char_traits<Char>, std::allocator<Char> > const & that);
+	trivial_string(_stdstring const & that);
 	///
 	~trivial_string() { if (!use_sso()) delete[] data_; }
 	/// Assign a copy of \p that
 	trivial_string & operator=(trivial_string const & that);
 	/// Assign a copy of \p that
-	trivial_string & operator=(std::basic_string<Char, std::char_traits<Char>, std::allocator<Char> > const & that);
+	trivial_string & operator=(_stdstring const & that);
 	/// Exchange contents with contents of \p that
 	void swap(trivial_string & that);
 	/// The length of the string, excluding the final 0 character
@@ -62,10 +64,9 @@ public:
 	/// Is this string ordered before, at the same position or after \p other?
 	int compare(trivial_string const & other) const;
 	/// Return substring of length \p n starting at \p pos
-	trivial_string substr(size_t pos = 0, size_t n = std::basic_string<Char,
-				std::char_traits<Char>, std::allocator<Char> >::npos) const;
+	trivial_string substr(size_t pos = 0, size_t n = _stdstring::npos) const;
 	/// Create a copy as std::basic_string
-	operator std::basic_string<Char, std::char_traits<Char>, std::allocator<Char> >() const;
+	operator _stdstring() const;
 	/// Return a C-compatible string, terminated by a 0 character.
 	/// This is never a copy and only valid for the life time of the trivial_string instance.
 	Char const * c_str() const;

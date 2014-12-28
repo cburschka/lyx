@@ -59,8 +59,7 @@ trivial_string<Char>::trivial_string(Char const * that, size_t n) : size_(n)
 template trivial_string<char>::trivial_string(string const &);
 template trivial_string<char_type>::trivial_string(docstring const &);
 template<typename Char>
-trivial_string<Char>::trivial_string(
-		basic_string<Char, char_traits<Char>, allocator<Char> > const & that)
+trivial_string<Char>::trivial_string(_stdstring const & that)
 	: size_(that.length())
 {
 	if (use_sso()) {
@@ -108,7 +107,7 @@ template trivial_string<char_type> &
 trivial_string<char_type>::operator=(docstring const &);
 template<typename Char>
 trivial_string<Char> &
-trivial_string<Char>::operator=(basic_string<Char, char_traits<Char>, allocator<Char> > const & that)
+trivial_string<Char>::operator=(_stdstring const & that)
 {
 	if (!use_sso())
 		delete[] data_;
@@ -167,7 +166,7 @@ trivial_string<Char> trivial_string<Char>::substr(size_t pos, size_t n) const
 {
 	if (pos > length())
 		throw out_of_range("trivial_string::substr");
-	if (n == basic_string<Char, char_traits<Char>, allocator<Char> >::npos)
+	if (n == _stdstring::npos)
 		n = length() - pos; 
 	size_t const l = min(pos + n, length());
 	return trivial_string(c_str() + pos, l - pos);
@@ -177,16 +176,14 @@ trivial_string<Char> trivial_string<Char>::substr(size_t pos, size_t n) const
 template trivial_string<char>::operator string() const;
 template trivial_string<char_type>::operator docstring() const;
 template<typename Char>
-trivial_string<Char>::operator basic_string<Char, char_traits<Char>, allocator<Char> >() const
+trivial_string<Char>::operator _stdstring() const
 {
 	if (use_sso())
-		return basic_string<Char, char_traits<Char>, allocator<Char> >(
-				data_sso(), size_);
+		return _stdstring(data_sso(), size_);
 	if (size_ > 0)
-		return basic_string<Char, char_traits<Char>, allocator<Char> >(
-				data_, size_);
+		return _stdstring(data_, size_);
 	// Happens only for really big Char types
-	return basic_string<Char, char_traits<Char>, allocator<Char> >();
+	return _stdstring();
 }
 
 
