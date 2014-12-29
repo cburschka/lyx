@@ -186,22 +186,13 @@ void InsetMathSymbol::mathematica(MathematicaStream & os) const
 }
 
 
-// FIXME This will likely need some work.
-char const * MathMLtype(docstring const & s)
-{
-	if (s == "mathord")
-		return "mi";
-	return "mo";
-}
-
-
 void InsetMathSymbol::mathmlize(MathStream & os) const
 {
-	// FIXME We may need to do more interesting things 
+	// FIXME We may need to do more interesting things
 	// with MathMLtype.
-	char const * type = MathMLtype(sym_->extra);
+	char const * type = sym_->MathMLtype();
 	os << '<' << type << "> ";
-	if (sym_->xmlname == "x") 
+	if (sym_->xmlname == "x")
 		// unknown so far
 		os << name();
 	else
@@ -212,15 +203,15 @@ void InsetMathSymbol::mathmlize(MathStream & os) const
 
 void InsetMathSymbol::htmlize(HtmlStream & os, bool spacing) const
 {
-	// FIXME We may need to do more interesting things 
+	// FIXME We may need to do more interesting things
 	// with MathMLtype.
-	char const * type = MathMLtype(sym_->extra);
+	char const * type = sym_->MathMLtype();
 	bool op = (std::string(type) == "mo");
-	
-	if (sym_->xmlname == "x") 
+
+	if (sym_->xmlname == "x")
 		// unknown so far
 		os << ' ' << name() << ' ';
-	else if (op && spacing) 
+	else if (op && spacing)
 		os << ' ' << sym_->xmlname << ' ';
 	else
 		os << sym_->xmlname;

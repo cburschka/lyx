@@ -1030,7 +1030,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_REGEXP_MODE: {
 		InsetMath * im = cur.inset().asInsetMath();
 		if (im) {
-			InsetMathHull * i = im->asHullInset();		
+			InsetMathHull * i = im->asHullInset();
 			if (i && i->getType() == hullRegexp) {
 				cur.message(_("Already in regular expression mode"));
 				break;
@@ -1093,7 +1093,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 			&& name != "Bmatrix" && name != "vmatrix"
 			&& name != "Vmatrix" && name != "matrix")
 			name = from_ascii("matrix");
-		
+
 		cur.niceInsert(
 			MathAtom(new InsetMathAMSArray(buffer_, name, m, n)));
 		break;
@@ -1280,7 +1280,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (createInsetMath_fromDialogStr(cmd.argument(), ar)) {
 			cur.recordUndoSelection();
 			cur.insert(ar);
-			cur.forceBufferUpdate();			
+			cur.forceBufferUpdate();
 		} else
 			cur.undispatched();
 		break;
@@ -1456,7 +1456,7 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_CAPTION_INSERT:
 		flag.setEnabled(false);
 		break;
-	
+
 	case LFUN_SPACE_INSERT: {
 		docstring const & name = cmd.argument();
 		if (name == "visible")
@@ -1636,9 +1636,8 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 		}
 
 		// do not finish macro for known * commands
-		MathWordList const & mwl = mathedWordList();
 		bool star_macro = c == '*'
-			&& (mwl.find(name.substr(1) + "*") != mwl.end()
+			&& (in_word_set(name.substr(1) + '*')
 			    || cur.buffer()->getMacro(name.substr(1) + "*", cur, true));
 		if (isAlphaASCII(c) || star_macro) {
 			cur.activeMacro()->setName(name + docstring(1, c));
@@ -1731,7 +1730,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 		cur.autocorrect() = false;
 		cur.message(_("Autocorrect Off ('!' to enter)"));
 		return true;
-	} 
+	}
 	if (lyxrc.autocorrection_math && c == '!' && !cur.autocorrect()) {
 		cur.autocorrect() = true;
 		cur.message(_("Autocorrect On (<space> to exit)"));
@@ -2197,8 +2196,11 @@ MathCompletionList::MathCompletionList(Cursor const & cur)
 	MathWordList::const_iterator it2;
 	//lyxerr << "Globals completion commands: ";
 	for (it2 = words.begin(); it2 != words.end(); ++it2) {
-		globals.push_back("\\" + (*it2).first);
-		//lyxerr << "\\" + (*it2).first << " ";
+		if (it2->second.inset != "macro") {
+			// macros are already read from MacroTable::globalMacros()
+			globals.push_back('\\' + it2->first);
+			//lyxerr << '\\' + it2->first << ' ';
+		}
 	}
 	//lyxerr << std::endl;
 	sort(globals.begin(), globals.end());

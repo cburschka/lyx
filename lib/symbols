@@ -1124,8 +1124,8 @@ pod                lyxblacktext  0   0 func     x     amsmath
 # pre-defined macros
 #
 
-\def\neq{\not=}
-\def\ne{\not=}
+\def\neq{\not=}                                                 mathrel &ne;
+\def\ne{\not=}                                                  mathrel &ne;
 \def\notin{\not\in}
 \def\slash{/}
 

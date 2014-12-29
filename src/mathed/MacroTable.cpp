@@ -14,6 +14,7 @@
 #include "MacroTable.h"
 #include "MathMacroTemplate.h"
 #include "MathMacroArgument.h"
+#include "MathParser.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "InsetMathNest.h"
@@ -41,13 +42,13 @@ namespace lyx {
 /////////////////////////////////////////////////////////////////////
 
 MacroData::MacroData(Buffer * buf)
-	: buffer_(buf), queried_(true), numargs_(0), optionals_(0), lockCount_(0),
-	  redefinition_(false), type_(MacroTypeNewcommand)
+	: buffer_(buf), queried_(true), numargs_(0), sym_(0), optionals_(0),
+	  lockCount_(0), redefinition_(false), type_(MacroTypeNewcommand)
 {}
 
 
 MacroData::MacroData(Buffer * buf, DocIterator const & pos)
-	: buffer_(buf), pos_(pos), queried_(false), numargs_(0),
+	: buffer_(buf), pos_(pos), queried_(false), numargs_(0), sym_(0),
 	  optionals_(0), lockCount_(0), redefinition_(false),
 	  type_(MacroTypeNewcommand)
 {
@@ -55,8 +56,8 @@ MacroData::MacroData(Buffer * buf, DocIterator const & pos)
 
 
 MacroData::MacroData(Buffer * buf, MathMacroTemplate const & macro)
-	: buffer_(buf), queried_(false), numargs_(0), optionals_(0), lockCount_(0),
-	  redefinition_(false), type_(MacroTypeNewcommand)
+	: buffer_(buf), queried_(false), numargs_(0), sym_(0), optionals_(0),
+	  lockCount_(0), redefinition_(false), type_(MacroTypeNewcommand)
 {
 	queryData(macro);
 }
@@ -107,6 +108,14 @@ vector<docstring> const & MacroData::defaults() const
 {
 	updateData();
 	return defaults_;
+}
+
+
+string const MacroData::requires() const
+{
+	if (sym_)
+		return to_utf8(sym_->requires);
+	return string();
 }
 
 
@@ -210,12 +219,11 @@ MacroTable::insert(docstring const & name, MacroData const & data)
 
 
 MacroTable::iterator
-MacroTable::insert(Buffer * buf, docstring const & def, string const & requires)
+MacroTable::insert(Buffer * buf, docstring const & def)
 {
 	//lyxerr << "MacroTable::insert, def: " << to_utf8(def) << endl;
 	MathMacroTemplate mac(buf, def);
 	MacroData data(buf, mac);
-	data.requires() = requires;
 	return insert(mac.name(), data);
 }
 

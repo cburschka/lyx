@@ -1066,10 +1066,10 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			 t.cs() == "def") {
 			if (t.cs() == "global")
 				getToken();
-			
+
 			// get name
 			docstring name = getToken().cs();
-			
+
 			// read parameters
 			int nargs = 0;
 			docstring pars;
@@ -1078,17 +1078,17 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				++nargs;
 			}
 			nargs /= 2;
-			
+
 			// read definition
 			MathData def;
 			parse(def, FLAG_ITEM, InsetMath::UNDECIDED_MODE);
-			
+
 			// is a version for display attached?
 			skipSpaces();
 			MathData display;
 			if (nextToken().cat() == catBegin)
 				parse(display, FLAG_ITEM, InsetMath::MATH_MODE);
-			
+
 			cell->push_back(MathAtom(new MathMacroTemplate(buf,
 				name, nargs, 0, MacroTypeDef,
 				vector<MathData>(), def, display)));
@@ -1096,7 +1096,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			if (buf && (mode_ & Parse::TRACKMACRO))
 				buf->usermacros.insert(name);
 		}
-		
+
 		else if (t.cs() == "newcommand" ||
 			 t.cs() == "renewcommand" ||
 			 t.cs() == "newlyxcommand") {
@@ -1110,13 +1110,13 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				error("'}' in \\newcommand expected");
 				return success_;
 			}
-				
+
 			// get arity
 			docstring const arg = getArg('[', ']');
 			int nargs = 0;
 			if (!arg.empty())
 				nargs = convert<int>(arg);
-				
+
 			// optional argument given?
 			skipSpaces();
 			int optionals = 0;
@@ -1127,16 +1127,16 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				parse(optionalValues[optionals], FLAG_BRACK_LAST, mode);
 				++optionals;
 			}
-			
+
 			MathData def;
 			parse(def, FLAG_ITEM, InsetMath::UNDECIDED_MODE);
-			
+
 			// is a version for display attached?
 			skipSpaces();
 			MathData display;
 			if (nextToken().cat() == catBegin)
 				parse(display, FLAG_ITEM, InsetMath::MATH_MODE);
-			
+
 			cell->push_back(MathAtom(new MathMacroTemplate(buf,
 				name, nargs, optionals, MacroTypeNewcommand,
 				optionalValues, def, display)));
@@ -1144,7 +1144,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			if (buf && (mode_ & Parse::TRACKMACRO))
 				buf->usermacros.insert(name);
 		}
-		
+
 		else if (t.cs() == "newcommandx" ||
 			 t.cs() == "renewcommandx") {
 			// \newcommandx{\foo}[2][usedefault, addprefix=\global,1=default]{#1,#2}
@@ -1159,7 +1159,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				}
 			} else
 				name = getToken().cs();
-				
+
 			// get arity
 			docstring const arg = getArg('[', ']');
 			if (arg.empty()) {
@@ -1167,14 +1167,14 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				return success_;
 			}
 			int nargs = convert<int>(arg);
-			
+
 			// get options
 			int optionals = 0;
 			vector<MathData> optionalValues;
 			if (nextToken().character() == '[') {
 				// skip '['
 				getToken();
-					
+
 				// handle 'opt=value' options, separated by ','.
 				skipSpaces();
 				while (nextToken().character() != ']' && good()) {
@@ -1187,14 +1187,14 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 							      "for given optional parameter.");
 							return success_;
 						}
-						
+
 						// skip '='
 						if (getToken().character() != '=') {
 							error("'=' and optional parameter value "
 							      "expected for \\newcommandx");
 							return success_;
 						}
-						
+
 						// get value
 						int optNum = max(size_t(n), optionalValues.size());
 						optionalValues.resize(optNum);
@@ -1209,12 +1209,12 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					} else if (nextToken().cat() == catLetter) {
 						// we in fact ignore every non-optional
 						// parameter
-						
+
 						// get option name
 						docstring opt;
 						while (nextToken().cat() == catLetter)
 							opt += getChar();
-					
+
 						// value?
 						skipSpaces();
 						MathData value;
@@ -1222,14 +1222,14 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 							getToken();
 							while (nextToken().character() != ']'
 								&& nextToken().character() != ',')
-								parse(value, FLAG_ITEM, 
+								parse(value, FLAG_ITEM,
 								      InsetMath::UNDECIDED_MODE);
 						}
 					} else {
 						error("option for \\newcommandx expected");
 						return success_;
 					}
-					
+
 					// skip komma
 					skipSpaces();
 					if (nextToken().character() == ',') {
@@ -1241,7 +1241,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 						return success_;
 					}
 				}
-				
+
 				// skip ']'
 				if (!good())
 					return success_;
@@ -1481,7 +1481,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		else if (t.cs() == "cfrac") {
 			// allowed formats are \cfrac[pos]{num}{denom}
 			docstring const arg = getArg('[', ']');
-			//lyxerr << "got so far: '" << arg << "'" << endl;				
+			//lyxerr << "got so far: '" << arg << "'" << endl;
 				if (arg == "l")
 					cell->push_back(MathAtom(new InsetMathFrac(buf, InsetMathFrac::CFRACLEFT)));
 				else if (arg == "r")
@@ -1593,13 +1593,13 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 		else if (t.cs() == "begin") {
 			docstring const name = getArg('{', '}');
-			
+
 			if (name.empty()) {
 				success_ = false;
 				error("found invalid environment");
 				return success_;
 			}
-			
+
 			environments_.push_back(name);
 
 			if (name == "array" || name == "subarray") {
@@ -2153,6 +2153,15 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 
 } // anonymous namespace
+
+
+// FIXME This will likely need some work.
+char const * latexkeys::MathMLtype() const
+{
+	if (extra == "mathord")
+		return "mi";
+	return "mo";
+}
 
 
 bool mathed_parse_cell(MathData & ar, docstring const & str, Parse::flags f)

@@ -27,6 +27,7 @@ class Buffer;
 class MathData;
 class MathMacroTemplate;
 class Paragraph;
+class latexkeys;
 
 enum MacroType {
 	MacroTypeNewcommand,
@@ -59,9 +60,9 @@ public:
 	///
 	std::vector<docstring> const & defaults() const;
 	///
-	std::string const & requires() const { return requires_; }
+	std::string const requires() const;
 	///
-	std::string & requires() { return requires_; }
+	void setSymbol(latexkeys const * sym) { sym_ = sym; }
 
 	/// lock while being drawn to avoid recursions
 	int lock() const { return ++lockCount_; }
@@ -86,7 +87,7 @@ public:
 		return definition_ == x.definition_
 			&& numargs_ == x.numargs_
 			&& display_ == x.display_
-			&& requires_ == x.requires_
+			&& sym_ == x.sym_
 			&& optionals_ == x.optionals_
 			&& defaults_ == x.defaults_;
 	}
@@ -118,7 +119,7 @@ private:
 	///
 	mutable docstring display_;
 	///
-	std::string requires_;
+	latexkeys const * sym_;
 	///
 	mutable size_t optionals_;
 	///
@@ -149,7 +150,7 @@ class MacroTable : public std::map<docstring, MacroData>
 {
 public:
 	/// Parse full "\\def..." or "\\newcommand..." or ...
-	iterator insert(Buffer * buf, docstring const & definition, std::string const &);
+	iterator insert(Buffer * buf, docstring const & definition);
 	/// Insert pre-digested macro definition
 	iterator insert(docstring const & name, MacroData const & data);
 	///

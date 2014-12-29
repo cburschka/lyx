@@ -52,11 +52,11 @@ namespace lyx {
 class ArgumentProxy : public InsetMath {
 public:
 	///
-	ArgumentProxy(MathMacro & mathMacro, size_t idx) 
+	ArgumentProxy(MathMacro & mathMacro, size_t idx)
 		: mathMacro_(mathMacro), idx_(idx) {}
 	///
-	ArgumentProxy(MathMacro & mathMacro, size_t idx, docstring const & def) 
-		: mathMacro_(mathMacro), idx_(idx) 
+	ArgumentProxy(MathMacro & mathMacro, size_t idx, docstring const & def)
+		: mathMacro_(mathMacro), idx_(idx)
 	{
 			asArray(def, def_);
 	}
@@ -81,13 +81,13 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const {
 		if (mathMacro_.editMetrics(pi.base.bv)) {
-			// The only way a ArgumentProxy can appear is in a cell of the 
-			// MathMacro. Moreover the cells are only drawn in the DISPLAY_FOLDED 
-			// mode and then, if the macro is edited the monochrome 
+			// The only way a ArgumentProxy can appear is in a cell of the
+			// MathMacro. Moreover the cells are only drawn in the DISPLAY_FOLDED
+			// mode and then, if the macro is edited the monochrome
 			// mode is entered by the MathMacro before calling the cells' draw
 			// method. Then eventually this code is reached and the proxy leaves
-			// monochrome mode temporarely. Hence, if it is not in monochrome 
-			// here (and the assert triggers in pain.leaveMonochromeMode()) 
+			// monochrome mode temporarely. Hence, if it is not in monochrome
+			// here (and the assert triggers in pain.leaveMonochromeMode())
 			// it's a bug.
 			pi.pain.leaveMonochromeMode();
 			mathMacro_.cell(idx_).draw(pi, x, y);
@@ -102,17 +102,17 @@ public:
 	size_t idx() const { return idx_; }
 	///
 	int kerning(BufferView const * bv) const
-	{ 
+	{
 		if (mathMacro_.editMetrics(bv)
 		    || !mathMacro_.cell(idx_).empty())
-			return mathMacro_.cell(idx_).kerning(bv); 
+			return mathMacro_.cell(idx_).kerning(bv);
 		else
 			return def_.kerning(bv);
 	}
 
 private:
 	///
-	Inset * clone() const 
+	Inset * clone() const
 	{
 		return new ArgumentProxy(*this);
 	}
@@ -215,7 +215,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.asc = max(bsdim.ascent(), dim.ascent());
 		dim.des = max(bsdim.descent(), dim.descent());
 		metricsMarkers(dim);
-	} else if (lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_LIST 
+	} else if (lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_LIST
 		   && editing_[mi.base.bv]) {
 		// Macro will be edited in a old-style list mode here:
 
@@ -223,7 +223,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		Dimension fontDim;
 		FontInfo labelFont = sane_font;
 		math_font_max_dim(labelFont, fontDim.asc, fontDim.des);
-		
+
 		// get dimension of components of list view
 		Dimension nameDim;
 		nameDim.wid = mathed_string_width(mi.base.font, from_ascii("Macro \\") + name() + ": ");
@@ -234,22 +234,22 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		argDim.wid = mathed_string_width(labelFont, from_ascii("#9: "));
 		argDim.asc = fontDim.asc;
 		argDim.des = fontDim.des;
-		
+
 		Dimension defDim;
 		definition_.metrics(mi, defDim);
-		
+
 		// add them up
 		dim.wid = nameDim.wid + defDim.wid;
 		dim.asc = max(nameDim.asc, defDim.asc);
 		dim.des = max(nameDim.des, defDim.des);
-		
+
 		for (idx_type i = 0; i < nargs(); ++i) {
 			Dimension cdim;
 			cell(i).metrics(mi, cdim);
 			dim.des += max(argDim.height(), cdim.height()) + 1;
 			dim.wid = max(dim.wid, argDim.wid + cdim.wid);
 		}
-		
+
 		// make space for box and markers, 2 pixels
 		dim.asc += 1;
 		dim.des += 1;
@@ -273,7 +273,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		macro_->unlock();
 
 		// calculate dimension with label while editing
-		if (lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_INLINE_BOX 
+		if (lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_INLINE_BOX
 		    && editing_[mi.base.bv]) {
 			FontInfo font = mi.base.font;
 			augmentFont(font, from_ascii("lyxtex"));
@@ -288,7 +288,6 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.asc += 1 + namedim.height() + 1;
 			dim.des += 2;
 		}
-	 
 	}
 }
 
@@ -301,10 +300,10 @@ int MathMacro::kerning(BufferView const * bv) const {
 }
 
 
-void MathMacro::updateMacro(MacroContext const & mc) 
+void MathMacro::updateMacro(MacroContext const & mc)
 {
 	if (validName()) {
-		macro_ = mc.get(name());    
+		macro_ = mc.get(name());
 		if (macro_ && macroBackup_ != *macro_) {
 			macroBackup_ = *macro_;
 			needsUpdate_ = true;
@@ -350,22 +349,22 @@ void MathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 
 	// update requires
 	requires_ = macro_->requires();
-	
+
 	if (!needsUpdate_
 		// non-normal mode? We are done!
 		|| (displayMode_ != DISPLAY_NORMAL))
 		return;
 
 	needsUpdate_ = false;
-	
+
 	// get default values of macro
 	vector<docstring> const & defaults = macro_->defaults();
-	
+
 	// create MathMacroArgumentValue objects pointing to the cells of the macro
 	vector<MathData> values(nargs());
 	for (size_t i = 0; i < nargs(); ++i) {
 		ArgumentProxy * proxy;
-		if (i < defaults.size()) 
+		if (i < defaults.size())
 			proxy = new ArgumentProxy(*this, i, defaults[i]);
 		else
 			proxy = new ArgumentProxy(*this, i);
@@ -395,7 +394,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 	int expx = x;
 	int expy = y;
 
-	if (displayMode_ == DISPLAY_INIT || displayMode_ == DISPLAY_INTERACTIVE_INIT) {		
+	if (displayMode_ == DISPLAY_INIT || displayMode_ == DISPLAY_INTERACTIVE_INIT) {
 		FontSetChanger dummy(pi.base, "lyxtex");
 		pi.pain.text(x, y, from_ascii("\\") + name(), pi.base.font);
 	} else if (displayMode_ == DISPLAY_UNFOLDED) {
@@ -407,17 +406,17 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 	} else if (lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_LIST
 		   && editing_[pi.base.bv]) {
 		// Macro will be edited in a old-style list mode here:
-		
+
 		CoordCache const & coords = pi.base.bv->coordCache();
 		FontInfo const & labelFont = sane_font;
-		
+
 		// markers and box needs two pixels
 		x += 2;
-		
+
 		// get maximal font height
 		Dimension fontDim;
 		math_font_max_dim(pi.base.font, fontDim.asc, fontDim.des);
-		
+
 		// draw label
 		docstring label = from_ascii("Macro \\") + name() + from_ascii(": ");
 		pi.pain.text(x, y, label, labelFont);
@@ -427,38 +426,38 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		definition_.draw(pi, x, y);
 		Dimension const & defDim = coords.getArrays().dim(&definition_);
 		y += max(fontDim.des, defDim.des);
-				
+
 		// draw parameters
 		docstring str = from_ascii("#9");
 		int strw1 = mathed_string_width(labelFont, from_ascii("#9"));
 		int strw2 = mathed_string_width(labelFont, from_ascii(": "));
-		
+
 		for (idx_type i = 0; i < nargs(); ++i) {
 			// position of label
 			Dimension const & cdim = coords.getArrays().dim(&cell(i));
 			x = expx + 2;
 			y += max(fontDim.asc, cdim.asc) + 1;
-			
+
 			// draw label
 			str[1] = '1' + i;
 			pi.pain.text(x, y, str, labelFont);
 			x += strw1;
 			pi.pain.text(x, y, from_ascii(":"), labelFont);
 			x += strw2;
-			
+
 			// draw paramter
 			cell(i).draw(pi, x, y);
-			
+
 			// next line
 			y += max(fontDim.des, cdim.des);
 		}
-		
-		pi.pain.rectangle(expx + 1, expy - dim.asc + 1, dim.wid - 3, 
+
+		pi.pain.rectangle(expx + 1, expy - dim.asc + 1, dim.wid - 3,
 				  dim.height() - 2, Color_mathmacroframe);
 		drawMarkers2(pi, expx, expy);
 	} else {
 		bool drawBox = lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_INLINE_BOX;
-		
+
 		// warm up cells
 		for (size_t i = 0; i < nargs(); ++i)
 			cell(i).setXY(*pi.base.bv, x, y);
@@ -483,7 +482,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 			pi.pain.leaveMonochromeMode();
 
 			if (drawBox)
-				pi.pain.rectangle(x, y - dim.asc, dim.wid, 
+				pi.pain.rectangle(x, y - dim.asc, dim.wid,
 						  dim.height(), Color_mathmacroframe);
 		} else
 			expanded_.cell(0).draw(pi, expx, expy);
@@ -508,7 +507,7 @@ void MathMacro::drawSelection(PainterInfo & pi, int x, int y) const
 
 void MathMacro::setDisplayMode(MathMacro::DisplayMode mode, int appetite)
 {
-	if (displayMode_ != mode) {		
+	if (displayMode_ != mode) {
 		// transfer name if changing from or to DISPLAY_UNFOLDED
 		if (mode == DISPLAY_UNFOLDED) {
 			cells_.resize(1);
@@ -521,7 +520,7 @@ void MathMacro::setDisplayMode(MathMacro::DisplayMode mode, int appetite)
 		displayMode_ = mode;
 		needsUpdate_ = true;
 	}
-	
+
 	// the interactive init mode is non-greedy by default
 	if (appetite == -1)
 		appetite_ = (mode == DISPLAY_INTERACTIVE_INIT) ? 0 : 9;
@@ -556,7 +555,7 @@ bool MathMacro::validName() const
 	for (size_t i = 0; i<n.size(); ++i) {
 		if (!(n[i] >= 'a' && n[i] <= 'z')
 		    && !(n[i] >= 'A' && n[i] <= 'Z')
-		    && n[i] != '*') 
+		    && n[i] != '*')
 			return false;
 	}
 
@@ -571,7 +570,7 @@ void MathMacro::validate(LaTeXFeatures & features) const
 
 	if (name() == "binom")
 		features.require("binom");
-	
+
 	// validate the cells and the definition
 	if (displayMode() == DISPLAY_NORMAL) {
 		definition_.validate(features);
@@ -592,7 +591,7 @@ Inset * MathMacro::editXY(Cursor & cur, int x, int y)
 	// We may have 0 arguments, but InsetMathNest requires at least one.
 	if (nargs() > 0) {
 		cur.screenUpdateFlags(Update::SinglePar);
-		return InsetMathNest::editXY(cur, x, y);		
+		return InsetMathNest::editXY(cur, x, y);
 	} else
 		return this;
 }
@@ -661,14 +660,14 @@ void MathMacro::attachArguments(vector<MathData> const & args, size_t arity, int
 }
 
 
-bool MathMacro::idxFirst(Cursor & cur) const 
+bool MathMacro::idxFirst(Cursor & cur) const
 {
 	cur.screenUpdateFlags(Update::SinglePar);
 	return InsetMathNest::idxFirst(cur);
 }
 
 
-bool MathMacro::idxLast(Cursor & cur) const 
+bool MathMacro::idxLast(Cursor & cur) const
 {
 	cur.screenUpdateFlags(Update::SinglePar);
 	return InsetMathNest::idxLast(cur);
@@ -745,10 +744,10 @@ void MathMacro::write(WriteStream & os) const
 	// Always protect macros in a fragile environment
 	if (os.fragile())
 		os << "\\protect";
-	
+
 	os << "\\" << name();
 	bool first = true;
-	
+
 	// Optional arguments:
 	// First find last non-empty optional argument
 	idx_type emptyOptFrom = 0;
@@ -757,19 +756,19 @@ void MathMacro::write(WriteStream & os) const
 		if (!cell(i).empty())
 			emptyOptFrom = i + 1;
 	}
-	
+
 	// print out optionals
 	for (i=0; i < cells_.size() && i < emptyOptFrom; ++i) {
 		first = false;
 		os << "[" << cell(i) << "]";
 	}
-	
+
 	// skip the tailing empty optionals
 	i = optionals_;
-	
+
 	// Print remaining arguments
 	for (; i < cells_.size(); ++i) {
-		if (cell(i).size() == 1 
+		if (cell(i).size() == 1
 			&& cell(i)[0].nucleus()->asCharInset()
 			&& isASCII(cell(i)[0].nucleus()->asCharInset()->getChar())) {
 			if (first)
@@ -794,6 +793,17 @@ void MathMacro::maple(MapleStream & os) const
 
 void MathMacro::mathmlize(MathStream & os) const
 {
+	MathWordList const & words = mathedWordList();
+	MathWordList::const_iterator it = words.find(name());
+	if (it != words.end()) {
+		docstring const xmlname = it->second.xmlname;
+		if (!xmlname.empty()) {
+			char const * type = it->second.MathMLtype();
+			os << '<' << type << "> " << xmlname << " /<"
+			   << type << '>';
+			return;
+		}
+	}
 	MathData const & data = expanded_.cell(0);
 	if (data.empty()) {
 		// this means that we do not recognize the macro
@@ -805,6 +815,15 @@ void MathMacro::mathmlize(MathStream & os) const
 
 void MathMacro::htmlize(HtmlStream & os) const
 {
+	MathWordList const & words = mathedWordList();
+	MathWordList::const_iterator it = words.find(name());
+	if (it != words.end()) {
+		docstring const xmlname = it->second.xmlname;
+		if (!xmlname.empty()) {
+			os << ' ' << xmlname << ' ';
+			return;
+		}
+	}
 	MathData const & data = expanded_.cell(0);
 	if (data.empty()) {
 		// this means that we do not recognize the macro
@@ -872,7 +891,7 @@ bool MathMacro::automaticPopupCompletion() const
 }
 
 
-CompletionList const * 
+CompletionList const *
 MathMacro::createCompletionList(Cursor const & cur) const
 {
 	if (displayMode() != DISPLAY_UNFOLDED)
@@ -889,7 +908,7 @@ docstring MathMacro::completionPrefix(Cursor const & cur) const
 
 	if (!completionSupported(cur))
 		return docstring();
-	
+
 	return "\\" + name();
 }
 
@@ -908,14 +927,14 @@ bool MathMacro::insertCompletion(Cursor & cur, docstring const & s,
 	asArray(newName, cell(0));
 	cur.bv().cursor().pos() = name().size();
 	cur.screenUpdateFlags(Update::SinglePar);
-	
+
 	// finish macro
 	if (finished) {
 		cur.bv().cursor().pop();
 		++cur.bv().cursor().pos();
 		cur.screenUpdateFlags(Update::SinglePar);
 	}
-	
+
 	return true;
 }
 
@@ -925,14 +944,14 @@ void MathMacro::completionPosAndDim(Cursor const & cur, int & x, int & y,
 {
 	if (displayMode() != DISPLAY_UNFOLDED)
 		InsetMathNest::completionPosAndDim(cur, x, y, dim);
-	
+
 	// get inset dimensions
 	dim = cur.bv().coordCache().insets().dim(this);
 	// FIXME: these 3 are no accurate, but should depend on the font.
 	// Now the popup jumps down if you enter a char with descent > 0.
 	dim.des += 3;
 	dim.asc += 3;
-	
+
 	// and position
 	Point xy
 	= cur.bv().coordCache().insets().xy(this);
