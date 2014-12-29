@@ -16,10 +16,10 @@ macro(sources _program)
 	target_link_libraries(${_program} support
 		${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY}
 		${ZLIB_LIBRARY} ${ICONV_LIBRARY})
-		lyx_target_link_libraries(${_program} Magic)
-		if(CYGWIN)
-			target_link_libraries(${_program} shlwapi)
-		endif()
+	lyx_target_link_libraries(${_program} Magic)
+	if(CYGWIN)
+		target_link_libraries(${_program} shlwapi)
+	endif()
 endmacro()
 
 file(GLOB test_sources ${TOP_SRC_DIR}/src/support/tests/${LYX_CPP_FILES})
