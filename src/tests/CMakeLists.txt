@@ -52,6 +52,7 @@ target_link_libraries(check_ExternalTransforms support
 
 add_dependencies(lyx_run_tests check_ExternalTransforms)
 set_target_properties(check_ExternalTransforms PROPERTIES FOLDER "src")
+target_link_libraries(check_ExternalTransforms ${ICONV_LIBRARY})
 
 add_test(NAME "check_ExternalTransforms"
   COMMAND ${CMAKE_COMMAND} -DCommand=$<TARGET_FILE:check_ExternalTransforms>
