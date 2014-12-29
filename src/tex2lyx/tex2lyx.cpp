@@ -789,14 +789,6 @@ bool roundtripMode()
 }
 
 
-string fixedEncoding()
-{
-	if (fixed_encoding)
-		return default_encoding;
-	return "";
-}
-
-
 namespace {
 
 /*!
@@ -1065,6 +1057,8 @@ int main(int argc, char * argv[])
 		if (!enc)
 			error_message("Unknown LaTeX encoding `" + default_encoding + "'");
 		default_encoding = enc->iconvName();
+		if (fixed_encoding)
+			preamble.setInputencoding(enc->name());
 	}
 
 	// Load the layouts
