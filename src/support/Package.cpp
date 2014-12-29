@@ -21,12 +21,15 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/os.h"
+#include "support/PathChanger.h"
+#include "support/Systemcall.h"
 
 #if defined (USE_WINDOWS_PACKAGING)
 # include "support/os_win32.h"
 #endif
 
 
+#include <iostream>
 #include <list>
 
 #if !defined (USE_WINDOWS_PACKAGING) && \
@@ -151,7 +154,8 @@ Package::Package(string const & command_line_arg0,
 		<< "</package>\n");
 }
 
-std::string const & Package::configure_command() const
+
+int Package::reconfigureUserLyXDir(string const & option) const
 {
 	if (configure_command_.empty()) {
 		FileName const configure_script(addName(system_support().absFileName(), "configure.py"));
@@ -160,7 +164,19 @@ std::string const & Package::configure_command() const
 			with_version_suffix() + " --binary-dir=" +
 			quoteName(FileName(binary_dir().absFileName()).toFilesystemEncoding());
 	}
-	return configure_command_;
+
+	lyxerr << to_utf8(_("LyX: reconfiguring user directory")) << endl;
+	PathChanger p(user_support());
+	Systemcall one;
+	int const ret = one.startscript(Systemcall::Wait, configure_command_ + option);
+	lyxerr << "LyX: " << to_utf8(_("Done!")) << endl;
+	return ret;
+}
+
+
+string Package::getConfigureLockName() const
+{
+	return user_support().absFileName() + ".lyx_configure_lock";
 }
 
 

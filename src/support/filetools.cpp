@@ -745,7 +745,7 @@ string const replaceCurdirPath(string const & path, string const & pathlist)
 		}
 		if (i != string::npos) {
 			newpathlist += sep;
-			// Stop here if the last element is empty 
+			// Stop here if the last element is empty
 			if (++i == oldpathlist.length())
 				break;
 		}
@@ -1171,6 +1171,27 @@ bool prefs2prefs(FileName const & filename, FileName const & tempfile, bool lfun
 	}
 	return true;
 }
+
+
+bool configFileNeedsUpdate(string const & file)
+{
+	// We cannot initialize configure_script directly because the package
+	// is not initialized yet when static objects are constructed.
+	static FileName configure_script;
+	static bool firstrun = true;
+	if (firstrun) {
+		configure_script =
+			FileName(addName(package().system_support().absFileName(),
+				"configure.py"));
+		firstrun = false;
+	}
+
+	FileName absfile =
+		FileName(addName(package().user_support().absFileName(), file));
+	return !absfile.exists()
+		|| configure_script.lastModified() > absfile.lastModified();
+}
+
 
 int fileLock(const char * lock_file)
 {

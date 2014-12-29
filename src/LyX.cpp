@@ -60,8 +60,6 @@
 #include "support/Messages.h"
 #include "support/os.h"
 #include "support/Package.h"
-#include "support/PathChanger.h"
-#include "support/Systemcall.h"
 
 #include "support/bind.h"
 #include <boost/scoped_ptr.hpp>
@@ -125,18 +123,6 @@ void showFileError(string const & error)
 	Alert::warning(_("Could not read configuration file"),
 		       bformat(_("Error while reading the configuration file\n%1$s.\n"
 			   "Please check your installation."), from_utf8(error)));
-}
-
-
-void reconfigureUserLyXDir()
-{
-	string const configure_command = package().configure_command();
-
-	lyxerr << to_utf8(_("LyX: reconfiguring user directory")) << endl;
-	PathChanger p(package().user_support());
-	Systemcall one;
-	one.startscript(Systemcall::Wait, configure_command);
-	lyxerr << "LyX: " << to_utf8(_("Done!")) << endl;
 }
 
 } // namespace anon
@@ -724,7 +710,7 @@ namespace {
 		}
 	}
 }
-	
+
 void cleanDuplicateEnvVars()
 {
 	std::set<std::string> seen;
@@ -825,11 +811,11 @@ bool LyX::init()
 
 	// Check that user LyX directory is ok.
 	{
-		string const lock_file = package().user_support().absFileName() + ".lyx_configure_lock";
+		string const lock_file = package().getConfigureLockName();
 		int fd = fileLock(lock_file.c_str());
 
 		if (queryUserLyXDir(package().explicit_user_support())) {
-			reconfigureUserLyXDir();
+			package().reconfigureUserLyXDir("");
 		}
 		fileUnlock(fd, lock_file.c_str());
 	}
@@ -956,27 +942,6 @@ void emergencyCleanup()
 }
 
 
-// return true if file does not exist or is older than configure.py.
-static bool needsUpdate(string const & file)
-{
-	// We cannot initialize configure_script directly because the package
-	// is not initialized yet when static objects are constructed.
-	static FileName configure_script;
-	static bool firstrun = true;
-	if (firstrun) {
-		configure_script =
-			FileName(addName(package().system_support().absFileName(),
-				"configure.py"));
-		firstrun = false;
-	}
-
-	FileName absfile =
-		FileName(addName(package().user_support().absFileName(), file));
-	return !absfile.exists()
-		|| configure_script.lastModified() > absfile.lastModified();
-}
-
-
 bool LyX::queryUserLyXDir(bool explicit_userdir)
 {
 	// Does user directory exist?
@@ -984,10 +949,10 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 	if (sup.exists() && sup.isDirectory()) {
 		first_start = false;
 
-		return needsUpdate("lyxrc.defaults")
-			|| needsUpdate("lyxmodules.lst")
-			|| needsUpdate("textclass.lst")
-			|| needsUpdate("packages.lst");
+		return configFileNeedsUpdate("lyxrc.defaults")
+			|| configFileNeedsUpdate("lyxmodules.lst")
+			|| configFileNeedsUpdate("textclass.lst")
+			|| configFileNeedsUpdate("packages.lst");
 	}
 
 	first_start = !explicit_userdir;

@@ -996,6 +996,20 @@ int main(int argc, char * argv[])
 			return EXIT_FAILURE;
 	}
 
+	// Check that user LyX directory is ok.
+	FileName const sup = package().user_support();
+	if (sup.exists() && sup.isDirectory()) {
+		string const lock_file = package().getConfigureLockName();
+		int fd = fileLock(lock_file.c_str());
+		if (configFileNeedsUpdate("lyxrc.defaults") ||
+		    configFileNeedsUpdate("lyxmodules.lst") ||
+		    configFileNeedsUpdate("textclass.lst") ||
+		    configFileNeedsUpdate("packages.lst"))
+			package().reconfigureUserLyXDir("");
+		fileUnlock(fd, lock_file.c_str());
+	} else
+		error_message("User directory does not exist.");
+
 	// Now every known option is parsed. Look for input and output
 	// file name (the latter is optional).
 	string infilename = internal_path(os::utf8_argv(1));

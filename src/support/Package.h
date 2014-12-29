@@ -134,11 +134,11 @@ public:
 	 */
 	static FileName const & get_home_dir();
 
-	/** Command to run the configure script.
-	 *  Caution: This is "ready-to-run", i.e. in the locale encoding, not
-	 *  utf8.
-	 */
-	std::string const & configure_command() const;
+	/// Run configure.py
+	int reconfigureUserLyXDir(std::string const & option) const;
+
+	///
+	std::string getConfigureLockName() const;
 
 private:
 	FileName binary_dir_;
@@ -151,6 +151,10 @@ private:
 	mutable FileName document_dir_;
 	mutable FileName temp_dir_;
 	FileName system_temp_dir_;
+	/** Command to run the configure script.
+	 *  Caution: This is "ready-to-run", i.e. in the locale encoding, not
+	 *  utf8.
+	 */
 	mutable std::string configure_command_;
 	bool explicit_user_support_dir_;
 	bool in_build_dir_;

@@ -72,8 +72,6 @@
 #include "support/Messages.h"
 #include "support/os.h"
 #include "support/Package.h"
-#include "support/PathChanger.h"
-#include "support/Systemcall.h"
 #include "support/TempFile.h"
 
 #ifdef Q_OS_MAC
@@ -1065,8 +1063,8 @@ double GuiApplication::pixelRatio() const
 	return 1.0;
 #endif
 }
-	
-	
+
+
 void GuiApplication::clearSession()
 {
 	QSettings settings;
@@ -1460,18 +1458,16 @@ void GuiApplication::reconfigure(string const & option)
 		current_view_->message(_("Running configure..."));
 
 	// Run configure in user lyx directory
-	PathChanger p(package().user_support());
-	string configure_command = package().configure_command();
-	configure_command += option;
-	Systemcall one;
-	int const ret = one.startscript(Systemcall::Wait, configure_command);
-	p.pop();
+	string const lock_file = package().getConfigureLockName();
+	int fd = fileLock(lock_file.c_str());
+	int const ret = package().reconfigureUserLyXDir(option);
 	// emit message signal.
 	if (current_view_)
 		current_view_->message(_("Reloading configuration..."));
 	lyxrc.read(libFileSearch(QString(), "lyxrc.defaults"), false);
 	// Re-read packages.lst
 	LaTeXPackages::getAvailable();
+	fileUnlock(fd, lock_file.c_str());
 
 	if (ret)
 		Alert::information(_("System reconfiguration failed"),
@@ -1713,14 +1709,14 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		// If the request comes from the minibuffer, then we can't reset
 		// the GUI, since that would destory the minibuffer itself and
-		// cause a crash, since we are currently in one of the methods of 
-		// GuiCommandBuffer. See bug #8540. 
+		// cause a crash, since we are currently in one of the methods of
+		// GuiCommandBuffer. See bug #8540.
 		if (cmd.origin() != FuncRequest::COMMANDBUFFER)
 			resetGui();
 		// else
 		//   FIXME Unfortunately, that leaves a bug here, since we cannot
 		//   reset the GUI in this case. If the changes to lyxrc affected the
-		//   UI, then, nothing would happen. This seems fairly unlikely, but 
+		//   UI, then, nothing would happen. This seems fairly unlikely, but
 		//   it definitely is a bug.
 
 		break;
@@ -1933,9 +1929,9 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		istringstream ss(argument);
 		Lexer lex;
 		lex.setStream(ss);
-		
+
 		// See #9236
-		// We need to make sure that, after we recreat the DocumentClass, 
+		// We need to make sure that, after we recreat the DocumentClass,
 		// which we do in readHeader, we apply it to the document itself.
 		DocumentClassConstPtr olddc = defaults.params().documentClassPtr();
 		int const unknown_tokens = defaults.readHeader(lex);

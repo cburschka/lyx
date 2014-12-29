@@ -300,6 +300,9 @@ int compare_timestamps(FileName const & file1, FileName const & file2);
 bool prefs2prefs(FileName const & filename, FileName const & tempfile,
                  bool lfuns);
 
+/// Does file \p file need to be updated by configure.py?
+bool configFileNeedsUpdate(std::string const & file);
+
 typedef std::pair<int, std::string> cmd_ret;
 
 cmd_ret const runCommand(std::string const & cmd);
