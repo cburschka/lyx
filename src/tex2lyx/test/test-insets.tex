@@ -34,6 +34,7 @@
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{hhline}
+\usepackage{dcolumn}
 \usepackage{pdfpages}
 \usepackage{textcomp}
 \usepackage{amssymb}
@@ -450,6 +451,23 @@ in \textmu{}m & 129.7 & 52.75 & 50.78\tabularnewline
 in \% of pixel size & 76.3 & 95.9 & 92.3\tabularnewline
 \bottomrule
 \end{tabular}
+\end{table}
+
+A table using dcolumn:
+
+\begin{table} 
+\begin{tabular}{ccddd} 
+One&Two& 
+\multicolumn{1}{c}{\textrm{Three}}& 
+\multicolumn{1}{c}{\textrm{Four}}& 
+\multicolumn{1}{c}{\textrm{Five}}\\ 
+\hline 
+one&two&\mbox{three}&\mbox{four}&\mbox{five}\\ 
+He&2& 2.77234 & 45672. & 0.69 \\ 
+C\footnote{Some tables require footnotes.} 
+&C\footnote{Some tables need more than one footnote.} 
+& 12537.64 & 37.66345 & 86.37 \\ 
+\end{tabular} 
 \end{table}
 
 
