@@ -35,7 +35,7 @@ public:
 	/// name of the macro or primitive
 	docstring name;
 	/// name of a inset that handles that macro
-	docstring inset;
+	std::string inset;
 	/**
 	 * The string or symbol to draw.
 	 * This is a string of length 1 if \p name is a known symbol, and
@@ -55,7 +55,7 @@ public:
 	/// how is this called as XML entity in MathML?
 	docstring xmlname;
 	/// required LaTeXFeatures
-	docstring requires;
+	std::string requires;
 };
 
 

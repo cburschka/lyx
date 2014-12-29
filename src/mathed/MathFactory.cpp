@@ -86,13 +86,13 @@ namespace {
 MathWordList theMathWordList;
 
 
-bool isMathFontAvailable(docstring & name)
+bool isMathFontAvailable(string & name)
 {
 	if (!use_gui)
 		return false;
 
 	FontInfo f;
-	augmentFont(f, name);
+	augmentFont(f, from_ascii(name));
 
 	// Do we have the font proper?
 	if (theFontLoader().available(f))
@@ -100,12 +100,12 @@ bool isMathFontAvailable(docstring & name)
 
 	// can we fake it?
 	if (name == "eufrak") {
-		name = from_ascii("lyxfakefrak");
+		name = "lyxfakefrak";
 		return true;
 	}
 
 	LYXERR(Debug::MATHED,
-		"font " << to_utf8(name) << " not available and I can't fake it");
+		"font " << name << " not available and I can't fake it");
 	return false;
 }
 
@@ -160,8 +160,7 @@ void initSymbols()
 			string tmp;
 			is >> tmp;
 			is >> tmp;
-			docstring t = from_utf8(tmp);
-			skip = !isMathFontAvailable(t);
+			skip = !isMathFontAvailable(tmp);
 			continue;
 		} else if (line.size() >= 4 && line.substr(0, 4) == "else") {
 			skip = !skip;
@@ -202,11 +201,11 @@ void initSymbols()
 						<< to_utf8(it->first) << " already exists.");
 				else {
 					latexkeys tmp;
-					tmp.inset = from_ascii("macro");
+					tmp.inset = "macro";
 					tmp.name = it->first;
 					tmp.extra = from_utf8(extra);
 					tmp.xmlname = from_utf8(xmlname);
-					tmp.requires = from_utf8(requires);
+					tmp.requires = requires;
 					theMathWordList[it->first] = tmp;
 					wit = theMathWordList.find(it->first);
 					it->second.setSymbol(&(wit->second));
@@ -225,40 +224,45 @@ void initSymbols()
 
 		idocstringstream is(from_utf8(line));
 		latexkeys tmp;
-		is >> tmp.name >> tmp.inset;
-		if (isFontName(tmp.inset))
+		docstring help;
+		is >> tmp.name >> help;
+		tmp.inset = to_ascii(help);
+		if (isFontName(help))
 			is >> charid >> fallbackid >> tmp.extra >> tmp.xmlname;
 		else
 			is >> tmp.extra;
 		// requires is optional
 		if (is) {
-			is >> tmp.requires;
-			// backward compatibility
-			if (tmp.requires == "esintoramsmath")
-				tmp.requires = from_ascii("esint|amsmath");
+			if ((is >> help)) {
+				// backward compatibility
+				if (help == "esintoramsmath")
+					tmp.requires = "esint|amsmath";
+				else
+					tmp.requires = to_ascii(help);
+			}
 		} else {
 			LYXERR(Debug::MATHED, "skipping line '" << line << "'\n"
-				<< to_utf8(tmp.name) << ' ' << to_utf8(tmp.inset) << ' '
+				<< to_utf8(tmp.name) << ' ' << tmp.inset << ' '
 				<< to_utf8(tmp.extra));
 			continue;
 		}
 
-		if (isFontName(tmp.inset)) {
+		if (isFontName(from_ascii(tmp.inset))) {
 			// tmp.inset _is_ the fontname here.
 			// create fallbacks if necessary
 
 			// store requirements as long as we can
 			if (tmp.requires.empty()) {
 				if (tmp.inset == "msa" || tmp.inset == "msb")
-					tmp.requires = from_ascii("amssymb");
+					tmp.requires = "amssymb";
 				else if (tmp.inset == "wasy")
-					tmp.requires = from_ascii("wasysym");
+					tmp.requires = "wasysym";
 				else if (tmp.inset == "mathscr")
-					tmp.requires = from_ascii("mathrsfs");
+					tmp.requires = "mathrsfs";
 			}
 
 			// symbol font is not available sometimes
-			docstring symbol_font = from_ascii("lyxsymbol");
+			string symbol_font = "lyxsymbol";
 			char_type unicodesymbol = 0;
 
 			if (tmp.extra == "func" || tmp.extra == "funclim" || tmp.extra == "special") {
@@ -270,23 +274,23 @@ void initSymbols()
 			} else if (fallbackid && isMathFontAvailable(symbol_font) &&
 			           canBeDisplayed(fallbackid)) {
 				if (tmp.inset == "cmex")
-					tmp.inset = from_ascii("lyxsymbol");
+					tmp.inset = "lyxsymbol";
 				else
-					tmp.inset = from_ascii("lyxboldsymbol");
+					tmp.inset = "lyxboldsymbol";
 				LYXERR(Debug::MATHED, "symbol fallback for " << to_utf8(tmp.name));
 				tmp.draw.push_back(char_type(fallbackid));
 			} else if (isUnicodeSymbolAvailable(tmp.name, unicodesymbol)) {
 				LYXERR(Debug::MATHED, "unicode fallback for " << to_utf8(tmp.name));
-				tmp.inset = from_ascii("mathnormal");
+				tmp.inset = "mathnormal";
 				tmp.draw.push_back(unicodesymbol);
 			} else {
 				LYXERR(Debug::MATHED, "faking " << to_utf8(tmp.name));
 				tmp.draw = tmp.name;
-				tmp.inset = from_ascii("lyxtex");
+				tmp.inset = "lyxtex";
 			}
 		} else {
 			// it's a proper inset
-			LYXERR(Debug::MATHED, "inset " << to_utf8(tmp.inset)
+			LYXERR(Debug::MATHED, "inset " << tmp.inset
 					      << " used for " << to_utf8(tmp.name));
 		}
 
@@ -299,14 +303,14 @@ void initSymbols()
 		// If you change the following output, please adjust
 		// development/tools/generate_symbols_images.py.
 		LYXERR(Debug::MATHED, "read symbol '" << to_utf8(tmp.name)
-			<< "  inset: " << to_utf8(tmp.inset)
+			<< "  inset: " << tmp.inset
 			<< "  draw: " << int(tmp.draw.empty() ? 0 : tmp.draw[0])
 			<< "  extra: " << to_utf8(tmp.extra)
 			<< "  xml: " << to_utf8(tmp.xmlname)
-			<< "  requires: " << to_utf8(tmp.requires) << '\'');
+			<< "  requires: " << tmp.requires << '\'');
 	}
-	docstring tmp = from_ascii("cmm");
-	docstring tmp2 = from_ascii("cmsy");
+	string tmp = "cmm";
+	string tmp2 = "cmsy";
 	has_math_fonts = isMathFontAvailable(tmp) && isMathFontAvailable(tmp2);
 }
 
@@ -410,7 +414,7 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 
 	latexkeys const * l = in_word_set(s);
 	if (l) {
-		docstring const & inset = l->inset;
+		string const & inset = l->inset;
 		//lyxerr << " found inset: '" << inset << '\'' << endl;
 		if (inset == "ref")
 			return MathAtom(new InsetMathRef(buf, l->name));

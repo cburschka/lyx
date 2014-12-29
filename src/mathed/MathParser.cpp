@@ -1748,7 +1748,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 						lyxerr << "found math environment `"
 						       << to_utf8(name)
 						       << "' in symbols file with unsupported inset `"
-						       << to_utf8(l->inset)
+						       << l->inset
 						       << "'." << endl;
 					}
 					// create generic environment inset

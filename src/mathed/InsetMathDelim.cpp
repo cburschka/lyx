@@ -71,16 +71,16 @@ void InsetMathDelim::validate(LaTeXFeatures & features) const
 	MathWordList::const_iterator it = words.find(left_);
 	if (it != words.end())
 	{
-		docstring const req = it->second.requires;
+		string const req = it->second.requires;
 		if (!req.empty())
-			features.require(to_ascii(req));
+			features.require(req);
 	}
 	it = words.find(right_);
 	if (it != words.end())
 	{
-		docstring const req = it->second.requires;
+		string const req = it->second.requires;
 		if (!req.empty())
-			features.require(to_ascii(req));
+			features.require(req);
 	}
 }
 

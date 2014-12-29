@@ -81,7 +81,7 @@ docstring InsetMathDots::name() const
 void InsetMathDots::validate(LaTeXFeatures & features) const
 {
 	if (!key_->requires.empty())
-		features.require(to_utf8(key_->requires));
+		features.require(key_->requires);
 }
 
 

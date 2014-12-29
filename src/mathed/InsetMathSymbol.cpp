@@ -66,9 +66,9 @@ void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 	bool const italic_upcase_greek = sym_->inset == "cmr" &&
 					 sym_->extra == "mathalpha" &&
 					 mi.base.fontname == "mathit";
-	docstring const font = italic_upcase_greek ? from_ascii("cmm") : sym_->inset;
+	std::string const font = italic_upcase_greek ? "cmm" : sym_->inset;
 	int const em = mathed_char_width(mi.base.font, 'M');
-	FontSetChanger dummy(mi.base, font);
+	FontSetChanger dummy(mi.base, from_ascii(font));
 	mathed_string_dim(mi.base.font, sym_->draw, dim);
 	docstring::const_reverse_iterator rit = sym_->draw.rbegin();
 	kerning_ = mathed_char_kerning(mi.base.font, *rit);
@@ -102,14 +102,14 @@ void InsetMathSymbol::draw(PainterInfo & pi, int x, int y) const
 	bool const italic_upcase_greek = sym_->inset == "cmr" &&
 					 sym_->extra == "mathalpha" &&
 					 pi.base.fontname == "mathit";
-	docstring const font = italic_upcase_greek ? from_ascii("cmm") : sym_->inset;
+	std::string const font = italic_upcase_greek ? "cmm" : sym_->inset;
 	int const em = mathed_char_width(pi.base.font, 'M');
 	if (isRelOp())
 		x += static_cast<int>(0.25*em+0.5);
 	else
 		x += static_cast<int>(0.0833*em+0.5);
 
-	FontSetChanger dummy(pi.base, font);
+	FontSetChanger dummy(pi.base, from_ascii(font));
 	pi.draw(x, y - h_, sym_->draw);
 }
 
@@ -270,7 +270,7 @@ void InsetMathSymbol::validate(LaTeXFeatures & features) const
 			"sup.limit{font-size: 75%;}");
 	} else {
 		if (!sym_->requires.empty())
-			features.require(to_utf8(sym_->requires));
+			features.require(sym_->requires);
 	}
 }
 

@@ -114,7 +114,7 @@ vector<docstring> const & MacroData::defaults() const
 string const MacroData::requires() const
 {
 	if (sym_)
-		return to_utf8(sym_->requires);
+		return sym_->requires;
 	return string();
 }
 

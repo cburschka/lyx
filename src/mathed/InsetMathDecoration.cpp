@@ -245,7 +245,7 @@ void InsetMathDecoration::htmlize(HtmlStream & os) const
 		os << MTag("span", "class='overbar'") << cell(0) << ETag("span");
 		return;
 	}
-	
+
 	if (name == "underbar" || name == "underline") {
 		os << MTag("span", "class='underbar'") << cell(0) << ETag("span");
 		return;
@@ -254,12 +254,12 @@ void InsetMathDecoration::htmlize(HtmlStream & os) const
 	TranslationMap const & t = translationMap();
 	TranslationMap::const_iterator cur = t.find(name);
 	LASSERT(cur != t.end(), return);
-	
+
 	bool symontop = cur->second.over;
 	string const symclass = symontop ? "symontop" : "symonbot";
 	os << MTag("span", "class='symbolpair " + symclass + "'")
 	   << '\n';
-	
+
 	if (symontop)
 		os << MTag("span", "class='symbol'") << from_ascii(cur->second.tag);
 	else
@@ -287,12 +287,12 @@ void InsetMathDecoration::validate(LaTeXFeatures & features) const
 				"span.symbolpair{display: inline-block; text-align:center;}\n"
 				"span.symontop{vertical-align: top;}\n"
 				"span.symonbot{vertical-align: bottom;}\n"
-				"span.symbolpair span{display: block;}\n"			
+				"span.symbolpair span{display: block;}\n"
 				"span.symbol{height: 0.5ex;}");
 		}
 	} else {
 		if (!key_->requires.empty())
-			features.require(to_utf8(key_->requires));
+			features.require(key_->requires);
 	}
 	InsetMathNest::validate(features);
 }
