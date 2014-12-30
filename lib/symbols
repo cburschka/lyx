@@ -289,7 +289,7 @@ diamondsuit        cmsy        125 168 mathord  &#x2662;
 heartsuit          cmsy        126 169 mathord  &#x2661;
 spadesuit          cmsy        127 170 mathord  &spades;
 # We define lyxnot as mathrel in order to have proper alignment
-lyxnot             cmsy         54  47 mathrel  &ssetmn;
+lyxnot             cmsy         54  47 mathrel  /
 iffont cmsy
 # 9mu = 0.5em which is the extra space added to relation operators
 \def\not{\lyxnot\kern-9mu}
@@ -373,8 +373,8 @@ subseteq           cmsy        181 205 mathrel  &sube;
 in                 cmsy         50 206 mathrel  &isin;
 ni                 cmsy         51  39 mathrel  &ni;
 owns               cmsy         51  39 mathrel  &ni;
-gg                 cmsy        192   0 mathrel  &gt;
-ll                 cmsy        191   0 mathrel  &lt;
+gg                 cmsy        192   0 mathrel  &gg;
+ll                 cmsy        191   0 mathrel  &ll;
 leftrightarrow     cmsy         36 171 mathrel  &harr;
 leftarrow          cmsy        195 172 mathrel  &larr;
 gets               cmsy        195 172 mathrel  &larr;
@@ -1120,8 +1120,8 @@ pod                lyxblacktext  0   0 func     x     amsmath
 # pre-defined macros
 #
 
-\def\neq{\not=}
-\def\ne{\not=}
+\def\neq{\not=}                                                 mathrel &ne;
+\def\ne{\not=}                                                  mathrel &ne;
 \def\notin{\not\in}
 \def\slash{/}
 

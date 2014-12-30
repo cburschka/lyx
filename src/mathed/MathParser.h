@@ -30,6 +30,8 @@ class Lexer;
 ///
 class latexkeys {
 public:
+	///
+	char const * MathMLtype() const;
 	/// name of the macro or primitive
 	docstring name;
 	/// name of a inset that handles that macro

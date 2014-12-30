@@ -175,18 +175,50 @@ void initSymbols()
 		// special case of pre-defined macros
 		if (line.size() > 8 && line.substr(0, 5) == "\\def\\") {
 			//lyxerr << "macro definition: '" << line << '\'' << endl;
+			// syntax: Either
+			// \def\macroname{definition}
+			// or
+			// \def\macroname{definition} requires
+			// or
+			// \def\macroname{definition} extra xmlname requires
 			istringstream is(line);
 			string macro;
 			string requires;
+			string extra;
+			string xmlname;
 			is >> macro >> requires;
+			if ((is >> xmlname)) {
+				extra = requires;
+				if (!(is >> requires))
+					requires = "";
+			} else
+				xmlname = "";
 			MacroTable::iterator it = MacroTable::globalMacros().insert(
-					0, from_utf8(macro), requires);
+					0, from_utf8(macro));
+			if (!extra.empty() || !xmlname.empty() || !requires.empty()) {
+				MathWordList::iterator wit = theMathWordList.find(it->first);
+				if (wit != theMathWordList.end())
+					LYXERR(Debug::MATHED, "readSymbols: inset "
+						<< to_utf8(it->first) << " already exists.");
+				else {
+					latexkeys tmp;
+					tmp.inset = from_ascii("macro");
+					tmp.name = it->first;
+					tmp.extra = from_utf8(extra);
+					tmp.xmlname = from_utf8(xmlname);
+					tmp.requires = from_utf8(requires);
+					theMathWordList[it->first] = tmp;
+					wit = theMathWordList.find(it->first);
+					it->second.setSymbol(&(wit->second));
+				}
+			}
 			// If you change the following output, please adjust
 			// development/tools/generate_symbols_images.py.
 			LYXERR(Debug::MATHED, "read symbol '" << to_utf8(it->first)
 				<< "  inset: macro"
 				<< "  draw: 0"
-				<< "  extra: "
+				<< "  extra: " << extra
+				<< "  xml: " << xmlname
 				<< "  requires: " << requires << '\'');
 			continue;
 		}
@@ -270,6 +302,7 @@ void initSymbols()
 			<< "  inset: " << to_utf8(tmp.inset)
 			<< "  draw: " << int(tmp.draw.empty() ? 0 : tmp.draw[0])
 			<< "  extra: " << to_utf8(tmp.extra)
+			<< "  xml: " << to_utf8(tmp.xmlname)
 			<< "  requires: " << to_utf8(tmp.requires) << '\'');
 	}
 	docstring tmp = from_ascii("cmm");
@@ -354,7 +387,11 @@ int ensureMode(WriteStream & os, InsetMath::mode_type mode,
 latexkeys const * in_word_set(docstring const & str)
 {
 	MathWordList::iterator it = theMathWordList.find(str);
-	return it != theMathWordList.end() ? &(it->second) : 0;
+	if (it == theMathWordList.end())
+		return 0;
+	if (it->second.inset == "macro")
+		return 0;
+	return &(it->second);
 }
 
 
