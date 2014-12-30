@@ -3746,7 +3746,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			                      context.font.language, lang);
 		}
 
-		else if (prefixIs(t.cs(), "text")
+		else if (prefixIs(t.cs(), "text") && preamble.usePolyglossia()
 			 && is_known(t.cs().substr(4), preamble.polyglossia_languages)) {
 			// scheme is \textLANGUAGE{text} where LANGUAGE is in polyglossia_languages[]
 			string lang;

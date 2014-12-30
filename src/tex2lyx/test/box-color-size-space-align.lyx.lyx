@@ -2121,9 +2121,37 @@ from textcomp: №™
 
 \size normal
 from textgreek and textcyr: 
-\lang greek
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textgreek
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
 >a
-\lang english
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
 в
 \end_layout
 
