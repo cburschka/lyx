@@ -793,12 +793,11 @@ void MathMacro::maple(MapleStream & os) const
 
 void MathMacro::mathmlize(MathStream & os) const
 {
-	MathWordList const & words = mathedWordList();
-	MathWordList::const_iterator it = words.find(name());
-	if (it != words.end()) {
-		docstring const xmlname = it->second.xmlname;
+	LATTEST(macro_);
+	if (macro_) {
+		docstring const xmlname = macro_->xmlname();
 		if (!xmlname.empty()) {
-			char const * type = it->second.MathMLtype();
+			char const * type = macro_->MathMLtype();
 			os << '<' << type << "> " << xmlname << " /<"
 			   << type << '>';
 			return;
@@ -815,10 +814,9 @@ void MathMacro::mathmlize(MathStream & os) const
 
 void MathMacro::htmlize(HtmlStream & os) const
 {
-	MathWordList const & words = mathedWordList();
-	MathWordList::const_iterator it = words.find(name());
-	if (it != words.end()) {
-		docstring const xmlname = it->second.xmlname;
+	LATTEST(macro_);
+	if (macro_) {
+		docstring const xmlname = macro_->xmlname();
 		if (!xmlname.empty()) {
 			os << ' ' << xmlname << ' ';
 			return;

@@ -62,6 +62,10 @@ public:
 	///
 	std::string const requires() const;
 	///
+	docstring const xmlname() const;
+	///
+	char const * MathMLtype() const;
+	///
 	void setSymbol(latexkeys const * sym) { sym_ = sym; }
 
 	/// lock while being drawn to avoid recursions

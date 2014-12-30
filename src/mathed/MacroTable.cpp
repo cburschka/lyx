@@ -119,6 +119,20 @@ string const MacroData::requires() const
 }
 
 
+docstring const MacroData::xmlname() const
+{
+	if (sym_)
+		return sym_->xmlname;
+	return docstring();
+}
+
+
+char const * MacroData::MathMLtype() const
+{
+	return sym_ ? sym_->MathMLtype() : 0;
+}
+
+
 void MacroData::unlock() const
 {
 	--lockCount_;
