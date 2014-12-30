@@ -47,7 +47,7 @@ namespace lyx {
 
 namespace {
 
-void output_arguments(ostream &, Parser &, bool, bool, Context &,
+void output_arguments(ostream &, Parser &, bool, bool, bool, Context &,
                       Layout::LaTeXArgMap const &);
 
 }
@@ -64,8 +64,12 @@ void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
 	else
 		newcontext.font = context.font;
 	if (layout)
-		output_arguments(os, p, outer, false, newcontext, layout->latexargs());
+		output_arguments(os, p, outer, false, false, newcontext,
+		                 layout->latexargs());
 	parse_text(p, os, flags, outer, newcontext);
+	if (layout)
+		output_arguments(os, p, outer, false, true, newcontext,
+		                 layout->postcommandargs());
 	newcontext.check_end_layout(os);
 }
 
@@ -623,7 +627,7 @@ void skip_spaces_braces(Parser & p, bool keepws = false)
 }
 
 
-void output_arguments(ostream & os, Parser & p, bool outer, bool need_layout,
+void output_arguments(ostream & os, Parser & p, bool outer, bool need_layout, bool post,
                       Context & context, Layout::LaTeXArgMap const & latexargs)
 {
 	if (need_layout) {
@@ -646,6 +650,8 @@ void output_arguments(ostream & os, Parser & p, bool outer, bool need_layout,
 				need_layout = false;
 			}
 			begin_inset(os, "Argument ");
+			if (post)
+				os << "post:";
 			os << i << "\nstatus collapsed\n\n";
 			parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
 			end_inset(os);
@@ -659,6 +665,8 @@ void output_arguments(ostream & os, Parser & p, bool outer, bool need_layout,
 				need_layout = false;
 			}
 			begin_inset(os, "Argument ");
+			if (post)
+				os << "post:";
 			os << i << "\nstatus collapsed\n\n";
 			parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
 			end_inset(os);
@@ -691,8 +699,11 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		context.need_end_deeper = true;
 	}
 	context.check_deeper(os);
-	output_arguments(os, p, outer, true, context, context.layout->latexargs());
+	output_arguments(os, p, outer, true, false, context,
+	                 context.layout->latexargs());
 	parse_text(p, os, FLAG_ITEM, outer, context);
+	output_arguments(os, p, outer, false, true, context,
+	                 context.layout->postcommandargs());
 	context.check_end_layout(os);
 	if (parent_context.deeper_paragraph) {
 		// We must suppress the "end deeper" because we
@@ -1671,10 +1682,13 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		// Unfortunately LyX can't handle arguments of list arguments (bug 7468):
 		// It is impossible to place anything after the environment name,
 		// but before the first \\item.
-		if (context.layout->latextype == LATEX_ENVIRONMENT) {
-			output_arguments(os, p, outer, false, context, context.layout->latexargs());
-		}
+		if (context.layout->latextype == LATEX_ENVIRONMENT)
+			output_arguments(os, p, outer, false, false, context,
+			                 context.layout->latexargs());
 		parse_text(p, os, FLAG_END, outer, context);
+		if (context.layout->latextype == LATEX_ENVIRONMENT)
+			output_arguments(os, p, outer, false, true, context,
+			                 context.layout->postcommandargs());
 		context.check_end_layout(os);
 		if (parent_context.deeper_paragraph) {
 			// We must suppress the "end deeper" because we

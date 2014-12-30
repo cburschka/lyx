@@ -34,6 +34,7 @@ TEST_FILES = \
 	test/foo.png \
 	test/test-insets.tex \
 	test/test.ltx \
+	test/test-memoir.tex \
 	test/test-modules.tex \
 	test/test-refstyle-theorems.tex \
 	test/test-scr.tex \
@@ -53,6 +54,7 @@ TEST_RESULTS = \
 	test/Dummy~Document.lyx.lyx \
 	test/test-insets.lyx.lyx \
 	test/test.lyx.lyx \
+	test/test-memoir.lyx.lyx \
 	test/test-modules.lyx.lyx \
 	test/test-refstyle-theorems.lyx.lyx \
 	test/test-scr.lyx.lyx \

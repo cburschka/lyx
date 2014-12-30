@@ -15,6 +15,7 @@ set(_tex_tests test.ltx
                CJK.tex
                CJKutf8.tex
                test-insets.tex
+               test-memoir.tex
                test-modules.tex
                test-refstyle-theorems.tex
                test-scr.tex
