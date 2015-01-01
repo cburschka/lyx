@@ -206,6 +206,7 @@ AC_DEFUN([QT_DO_PKG_CONFIG],
 		if $lyx_use_winextras; then
 			qt_guilibs="$qt_guilibs Qt5WinExtras"
 		fi
+		lyx_use_macextras=false
 		PKG_CHECK_EXISTS(Qt5MacExtras, [lyx_use_macextras=true], [])
 		if $lyx_use_macextras; then
 			qt_guilibs="$qt_guilibs Qt5MacExtras"
