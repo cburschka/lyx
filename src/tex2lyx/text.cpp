@@ -2285,6 +2285,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		//
 		// cat codes
 		//
+		bool const starred = p.next_token().asInput() == "*";
+		string const starredname(starred ? (t.cs() + '*') : t.cs());
 		if (t.cat() == catMath) {
 			// we are inside some text mode thingy, so opening new math is allowed
 			context.check_layout(os);
@@ -2840,11 +2842,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "caption") {
-			bool starred = false;
-			if (p.next_token().asInput() == "*") {
+			if (starred)
 				p.get_token();
-				starred = true;
-			}
 			p.skip_spaces();
 			context.check_layout(os);
 			p.skip_spaces();
@@ -4348,11 +4347,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "hspace" || t.cs() == "vspace") {
-			bool starred = false;
-			if (p.next_token().asInput() == "*") {
+			if (starred)
 				p.get_token();
-				starred = true;
-			}
 			string name = t.asInput();
 			string const length = p.verbatim_item();
 			string unit;
@@ -4486,7 +4482,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		// The single '=' is meant here.
-		else if ((newinsetlayout = findInsetLayout(context.textclass, t.cs(), true))) {
+		else if ((newinsetlayout = findInsetLayout(context.textclass, starredname, true))) {
+			if (starred)
+				p.get_token();
 			p.skip_spaces();
 			context.check_layout(os);
 			begin_inset(os, "Flex ");
