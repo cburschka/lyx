@@ -434,9 +434,13 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 							'}';
 					colinfo.push_back(next);
 					next = ColInfo();
-				} else
-					cerr << "Ignoring column specification"
-						" '" << t << "'." << endl;
+				} else {
+					// unknown column specifier, assume no arguments
+					ci2special(next);
+					next.special += t.character();
+					colinfo.push_back(next);
+					next = ColInfo();
+				}
 				break;
 			}
 	}
