@@ -644,7 +644,7 @@ void output_arguments(ostream & os, Parser & p, bool outer, Context & context,
 		} else {
 			if (p.next_token().cat() == catEscape ||
 			    p.next_token().character() != '[')
-				break;
+				continue;
 			p.get_token(); // eat '['
 			begin_inset(os, "Argument ");
 			os << i << "\nstatus collapsed\n\n";
