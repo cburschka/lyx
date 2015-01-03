@@ -45,6 +45,14 @@ using namespace lyx::support;
 namespace lyx {
 
 
+namespace {
+
+void output_arguments(ostream &, Parser &, bool, Context &,
+                      Layout::LaTeXArgMap const &);
+
+}
+
+
 void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
 		Context const & context, InsetLayout const * layout)
 {
@@ -55,6 +63,8 @@ void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
 		newcontext.layout = &context.textclass.plainLayout();
 	else
 		newcontext.font = context.font;
+	if (layout)
+		output_arguments(os, p, outer, newcontext, layout->latexargs());
 	parse_text(p, os, flags, outer, newcontext);
 	newcontext.check_end_layout(os);
 }
@@ -613,33 +623,13 @@ void skip_spaces_braces(Parser & p, bool keepws = false)
 }
 
 
-void output_command_layout(ostream & os, Parser & p, bool outer,
-			   Context & parent_context,
-			   Layout const * newlayout)
+void output_arguments(ostream & os, Parser & p, bool outer, Context & context,
+                      Layout::LaTeXArgMap const & latexargs)
 {
-	TeXFont const oldFont = parent_context.font;
-	// save the current font size
-	string const size = oldFont.size;
-	// reset the font size to default, because the font size switches
-	// don't affect section headings and the like
-	parent_context.font.size = Context::normalfont.size;
-	// we only need to write the font change if we have an open layout
-	if (!parent_context.atParagraphStart())
-		output_font_change(os, oldFont, parent_context.font);
-	parent_context.check_end_layout(os);
-	Context context(true, parent_context.textclass, newlayout,
-			parent_context.layout, parent_context.font);
-	if (parent_context.deeper_paragraph) {
-		// We are beginning a nested environment after a
-		// deeper paragraph inside the outer list environment.
-		// Therefore we don't need to output a "begin deeper".
-		context.need_end_deeper = true;
-	}
-	context.check_deeper(os);
 	context.check_layout(os);
 	int i = 0;
-	Layout::LaTeXArgMap::const_iterator lait = context.layout->latexargs().begin();
-	Layout::LaTeXArgMap::const_iterator const laend = context.layout->latexargs().end();
+	Layout::LaTeXArgMap::const_iterator lait = latexargs.begin();
+	Layout::LaTeXArgMap::const_iterator const laend = latexargs.end();
 	for (; lait != laend; ++lait) {
 		++i;
 		eat_whitespace(p, os, context, false);
@@ -663,6 +653,33 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		}
 		eat_whitespace(p, os, context, false);
 	}
+}
+
+
+void output_command_layout(ostream & os, Parser & p, bool outer,
+			   Context & parent_context,
+			   Layout const * newlayout)
+{
+	TeXFont const oldFont = parent_context.font;
+	// save the current font size
+	string const size = oldFont.size;
+	// reset the font size to default, because the font size switches
+	// don't affect section headings and the like
+	parent_context.font.size = Context::normalfont.size;
+	// we only need to write the font change if we have an open layout
+	if (!parent_context.atParagraphStart())
+		output_font_change(os, oldFont, parent_context.font);
+	parent_context.check_end_layout(os);
+	Context context(true, parent_context.textclass, newlayout,
+			parent_context.layout, parent_context.font);
+	if (parent_context.deeper_paragraph) {
+		// We are beginning a nested environment after a
+		// deeper paragraph inside the outer list environment.
+		// Therefore we don't need to output a "begin deeper".
+		context.need_end_deeper = true;
+	}
+	context.check_deeper(os);
+	output_arguments(os, p, outer, context, context.layout->latexargs());
 	parse_text(p, os, FLAG_ITEM, outer, context);
 	context.check_end_layout(os);
 	if (parent_context.deeper_paragraph) {
@@ -2827,39 +2844,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				preamble.registerAutomaticallyLoadedPackage(*it);
 		}
 
-		else if (t.cs() == "caption") {
-			if (starred)
-				p.get_token();
-			p.skip_spaces();
-			context.check_layout(os);
-			p.skip_spaces();
-			if (starred)
-				begin_inset(os, "Caption LongTableNoNumber\n");
-			else
-				begin_inset(os, "Caption Standard\n");
-			Context newcontext(true, context.textclass, 0, 0, context.font);
-			newcontext.check_layout(os);
-			// FIXME InsetArgument is now properly implemented in InsetLayout
-			//       (for captions, but also for others)
-			if (p.next_token().cat() != catEscape &&
-			    p.next_token().character() == '[') {
-				p.get_token(); // eat '['
-				begin_inset(os, "Argument 1\n");
-				os << "status collapsed\n";
-				parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
-				end_inset(os);
-				eat_whitespace(p, os, context, false);
-			}
-			parse_text(p, os, FLAG_ITEM, outer, context);
-			context.check_end_layout(os);
-			// We don't need really a new paragraph, but
-			// we must make sure that the next item gets a \begin_layout.
-			context.new_paragraph(os);
-			end_inset(os);
-			p.skip_spaces();
-			newcontext.check_end_layout(os);
-		}
-
 		else if (t.cs() == "subfloat") {
 			// the syntax is \subfloat[caption]{content}
 			// if it is a table of figure depends on the surrounding float
@@ -4473,9 +4457,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				p.get_token();
 			p.skip_spaces();
 			context.check_layout(os);
-			begin_inset(os, "Flex ");
-			os << to_utf8(newinsetlayout->name()) << '\n'
-			   << "status collapsed\n";
+			docstring const name = newinsetlayout->name();
+			bool const caption = name.find(from_ascii("Caption:")) == 0;
+			if (caption) {
+				begin_inset(os, "Caption ");
+				os << to_utf8(name.substr(8)) << '\n';
+			} else {
+				begin_inset(os, "Flex ");
+				os << to_utf8(name) << '\n'
+				   << "status collapsed\n";
+			}
 			if (newinsetlayout->isPassThru()) {
 				// set catcodes to verbatim early, just in case.
 				p.setCatcodes(VERBATIM_CATCODES);
@@ -4491,6 +4482,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			} else
 				
 				parse_text_in_inset(p, os, FLAG_ITEM, false, context, newinsetlayout);
+			if (caption)
+				p.skip_spaces();
 			end_inset(os);
 		}
 
