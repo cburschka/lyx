@@ -51,6 +51,8 @@ public:
 	/// The language of text which is not explicitly marked
 	std::string defaultLanguage() const  { return default_language; }
 	///
+	bool usePolyglossia() const;
+	///
 	std::string use_indices() const { return h_use_indices; }
 	///
 	std::string polyglossia2lyx(std::string const & language);
@@ -128,7 +130,7 @@ private:
 	std::string h_font_sans;
 	std::string h_font_typewriter;
 	std::string h_font_default_family;
-	std::string h_use_non_tex_fonts;
+	bool h_use_non_tex_fonts;
 	std::string h_font_sc;
 	std::string h_font_osf;
 	std::string h_font_sf_scale;

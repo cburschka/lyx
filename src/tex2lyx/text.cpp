@@ -3823,7 +3823,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			                      context.font.language, lang);
 		}
 
-		else if (prefixIs(t.cs(), "text")
+		else if (prefixIs(t.cs(), "text") && preamble.usePolyglossia()
 			 && is_known(t.cs().substr(4), preamble.polyglossia_languages)) {
 			// scheme is \textLANGUAGE{text} where LANGUAGE is in polyglossia_languages[]
 			string lang;
@@ -4622,8 +4622,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// Only use text mode commands, since we are in text mode here,
 			// and math commands may be invalid (bug 6797)
 			string name = t.asInput();
-			// handle the dingbats and Cyrillic
-			if (name == "\\ding" || name == "\\textcyr")
+			// handle the dingbats, cyrillic and greek
+			if (name == "\\ding" || name == "\\textcyr" ||
+			    (name == "\\textgreek" && !preamble.usePolyglossia()))
 				name = name + '{' + p.getArg('{', '}') + '}';
 			// handle the ifsym characters
 			else if (name == "\\textifsymbol") {

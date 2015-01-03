@@ -303,7 +303,7 @@ const char * const Preamble::polyglossia_languages[] = {
 "irish", "portuges", "thai", "bahasai", "english", "italian", "romanian", "turkish",
 "bahasam", "esperanto", "lao", "russian", "turkmen", "basque", "estonian", "latin",
 "samin", "ukrainian", "bengali", "farsi", "latvian", "sanskrit", "tibetan", "urdu",
-"brazil", "brazilian", "finnish", "lithuanian", "scottish", "usorbian", "breton", 
+"brazil", "brazilian", "finnish", "lithuanian", "scottish", "usorbian", "breton",
 "french", "lsorbian", "serbian", "vietnamese", "bulgarian", "galician", "magyar",
 "slovak", "welsh", "catalan", "german", "malayalam", "slovenian", "coptic", "greek",
 "marathi", "spanish",
@@ -327,6 +327,12 @@ const char * const Preamble::coded_polyglossia_languages[] = {
 "marathi", "spanish",
 "american", "ancientgreek", "australian", "british", "greek", "newzealand",
 "polutonikogreek", 0};
+
+
+bool Preamble::usePolyglossia() const
+{
+	return h_use_non_tex_fonts && h_language_package == "default";
+}
 
 
 bool Preamble::indentParagraphs() const
@@ -461,7 +467,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_font_typewriter         = "default";
 	h_font_math               = "auto";
 	h_font_default_family     = "default";
-	h_use_non_tex_fonts       = "false";
+	h_use_non_tex_fonts       = false;
 	h_font_sc                 = "false";
 	h_font_osf                = "false";
 	h_font_sf_scale           = "100";
@@ -659,7 +665,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	if (is_known(name, known_xetex_packages)) {
 		xetex = true;
-		h_use_non_tex_fonts = "true";
+		h_use_non_tex_fonts = true;
 		registerAutomaticallyLoadedPackage("fontspec");
 		if (h_inputencoding == "auto")
 			p.setEncoding("UTF-8");
@@ -701,7 +707,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 		else if (opts == "osf")
 			h_font_osf = "true";
 	}
-	
+
 	if (name == "mathdesign") {
 		if (opts.find("charter") != string::npos)
 			h_font_roman = "md-charter";
@@ -846,7 +852,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (name == "polyglossia") {
 		h_language_package = "default";
 		h_default_output_format = "pdf4";
-		h_use_non_tex_fonts = "true";
+		h_use_non_tex_fonts = true;
 		xetex = true;
 		registerAutomaticallyLoadedPackage("xunicode");
 		if (h_inputencoding == "auto")
@@ -1124,7 +1130,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	   << "\\font_typewriter " << h_font_typewriter << "\n"
 	   << "\\font_math " << h_font_math << "\n"
 	   << "\\font_default_family " << h_font_default_family << "\n"
-	   << "\\use_non_tex_fonts " << h_use_non_tex_fonts << "\n"
+	   << "\\use_non_tex_fonts " << (h_use_non_tex_fonts ? "true" : "false") << '\n'
 	   << "\\font_sc " << h_font_sc << "\n"
 	   << "\\font_osf " << h_font_osf << "\n"
 	   << "\\font_sf_scale " << h_font_sf_scale << "\n"
@@ -1459,7 +1465,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				h_preamble << ss.str();
 			}
 		}
-		
+
 		else if (t.cs() == "AtBeginDocument") {
 			string const name = p.verbatim_item();
 			// only non-lyxspecific stuff
