@@ -704,7 +704,7 @@ string Parser::verbatimOption()
 				putback();
 				res += '{' + verbatim_item() + '}';
 			} else
-				res += t.cs();
+				res += t.asInput();
 		}
 	}
 	return res;
