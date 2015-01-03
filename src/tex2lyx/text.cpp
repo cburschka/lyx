@@ -47,7 +47,7 @@ namespace lyx {
 
 namespace {
 
-void output_arguments(ostream &, Parser &, bool, Context &,
+void output_arguments(ostream &, Parser &, bool, bool, Context &,
                       Layout::LaTeXArgMap const &);
 
 }
@@ -64,7 +64,7 @@ void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
 	else
 		newcontext.font = context.font;
 	if (layout)
-		output_arguments(os, p, outer, newcontext, layout->latexargs());
+		output_arguments(os, p, outer, false, newcontext, layout->latexargs());
 	parse_text(p, os, flags, outer, newcontext);
 	newcontext.check_end_layout(os);
 }
@@ -623,10 +623,14 @@ void skip_spaces_braces(Parser & p, bool keepws = false)
 }
 
 
-void output_arguments(ostream & os, Parser & p, bool outer, Context & context,
-                      Layout::LaTeXArgMap const & latexargs)
+void output_arguments(ostream & os, Parser & p, bool outer, bool need_layout,
+                      Context & context, Layout::LaTeXArgMap const & latexargs)
 {
-	context.check_layout(os);
+	if (need_layout) {
+		context.check_layout(os);
+		need_layout = false;
+	} else
+		need_layout = true;
 	int i = 0;
 	Layout::LaTeXArgMap::const_iterator lait = latexargs.begin();
 	Layout::LaTeXArgMap::const_iterator const laend = latexargs.end();
@@ -637,6 +641,10 @@ void output_arguments(ostream & os, Parser & p, bool outer, Context & context,
 			if (p.next_token().cat() != catBegin)
 				break;
 			p.get_token(); // eat '{'
+			if (need_layout) {
+				context.check_layout(os);
+				need_layout = false;
+			}
 			begin_inset(os, "Argument ");
 			os << i << "\nstatus collapsed\n\n";
 			parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
@@ -646,6 +654,10 @@ void output_arguments(ostream & os, Parser & p, bool outer, Context & context,
 			    p.next_token().character() != '[')
 				continue;
 			p.get_token(); // eat '['
+			if (need_layout) {
+				context.check_layout(os);
+				need_layout = false;
+			}
 			begin_inset(os, "Argument ");
 			os << i << "\nstatus collapsed\n\n";
 			parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
@@ -679,7 +691,7 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 		context.need_end_deeper = true;
 	}
 	context.check_deeper(os);
-	output_arguments(os, p, outer, context, context.layout->latexargs());
+	output_arguments(os, p, outer, true, context, context.layout->latexargs());
 	parse_text(p, os, FLAG_ITEM, outer, context);
 	context.check_end_layout(os);
 	if (parent_context.deeper_paragraph) {
@@ -1667,58 +1679,11 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		}
 		context.check_deeper(os);
 		// handle known optional and required arguments
-		// FIXME: Since format 446, layouts do not require anymore all optional
-		// arguments before the required ones. Needs to be implemented!
 		// Unfortunately LyX can't handle arguments of list arguments (bug 7468):
 		// It is impossible to place anything after the environment name,
 		// but before the first \\item.
 		if (context.layout->latextype == LATEX_ENVIRONMENT) {
-			bool need_layout = true;
-			int optargs = 0;
-			while (optargs < context.layout->optArgs()) {
-				eat_whitespace(p, os, context, false);
-				if (p.next_token().cat() == catEscape ||
-				    p.next_token().character() != '[')
-					break;
-				p.get_token(); // eat '['
-				if (need_layout) {
-					context.check_layout(os);
-					need_layout = false;
-				}
-				// FIXME: Just a workaround. InsetArgument::updateBuffer
-				//        will compute a proper ID for all "999" Arguments
-				//        (which is also what lyx2lyx produces).
-				//        However, tex2lyx should be able to output proper IDs
-				//        itself.
-				begin_inset(os, "Argument 999\n");
-				os << "status collapsed\n\n";
-				parse_text_in_inset(p, os, FLAG_BRACK_LAST, outer, context);
-				end_inset(os);
-				eat_whitespace(p, os, context, false);
-				++optargs;
-			}
-			int reqargs = 0;
-			while (reqargs < context.layout->requiredArgs()) {
-				eat_whitespace(p, os, context, false);
-				if (p.next_token().cat() != catBegin)
-					break;
-				p.get_token(); // eat '{'
-				if (need_layout) {
-					context.check_layout(os);
-					need_layout = false;
-				}
-				// FIXME: Just a workaround. InsetArgument::updateBuffer
-				//        will compute a proper ID for all "999" Arguments
-				//        (which is also what lyx2lyx produces).
-				//        However, tex2lyx should be able to output proper IDs
-				//        itself.
-				begin_inset(os, "Argument 999\n");
-				os << "status collapsed\n\n";
-				parse_text_in_inset(p, os, FLAG_BRACE_LAST, outer, context);
-				end_inset(os);
-				eat_whitespace(p, os, context, false);
-				++reqargs;
-			}
+			output_arguments(os, p, outer, false, context, context.layout->latexargs());
 		}
 		parse_text(p, os, FLAG_END, outer, context);
 		context.check_end_layout(os);
