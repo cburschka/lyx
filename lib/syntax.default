@@ -641,8 +641,9 @@ $$
 \stepcounter{}
 \stretch{}
 %\subitem{}   % unsupported theindex environment
+\subcaption[translate]{translate}
 \subjectname
-\subfigure[]{translate}
+\subfigure[translate][translate]{translate} % obsolete subfigure.sty
 \subparagraph[]{}  % These "sub" versions of the sectioning commands weren't
 \subparagraph*{}   % in the original commandlist for some reason (adk)
 \subsection[]{}    %
@@ -650,6 +651,7 @@ $$
 \subsubsection[]{} %
 \subsubsection*{}  %
 %\subsubitem{}   % unsupported theindex environment
+\subtable[translate][translate]{translate} % obsolete subfigure.sty
 \suppressfloats[]
 \symbol{}
 \tablename

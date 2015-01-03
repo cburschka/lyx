@@ -2813,8 +2813,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (t.cs() == "subfloat") {
-			// the syntax is \subfloat[caption]{content}
+			// the syntax is \subfloat[list entry][sub caption]{content}
 			// if it is a table of figure depends on the surrounding float
+			// FIXME: second optional argument is not parsed
 			bool has_caption = false;
 			p.skip_spaces();
 			// do nothing if there is no outer float
