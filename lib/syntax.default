@@ -642,10 +642,14 @@ $$
 \stretch{}
 %\subitem{}   % unsupported theindex environment
 \subcaption[translate]{translate}
+\subcaptionbox[translate]{translate}[][]{translate} % subcaption.sty
+\subcaptionbox*{translate}[][]{translate} % subcaption.sty
 \subjectname
 \subfigure[translate][translate]{translate} % obsolete subfigure.sty
 \subparagraph[]{}  % These "sub" versions of the sectioning commands weren't
 \subparagraph*{}   % in the original commandlist for some reason (adk)
+\subref{} % subcaption.sty
+\subref*{} % subcaption.sty
 \subsection[]{}    %
 \subsection*{}     %
 \subsubsection[]{} %
@@ -706,6 +710,8 @@ $$
 \begin{environments}
 bibunit[]{translate}
 psmatrix[]{}
+subfigure[]{translate} % subcaption.sty
+subtable[]{translate} % subcaption.sty
 theorem[]{translate} % from amsthm.sty and probably others
 thebibliography{}
 tikzpicture[]{}
