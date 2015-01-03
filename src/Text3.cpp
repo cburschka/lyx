@@ -345,8 +345,6 @@ static void outline(OutlineOp mode, Cursor & cur)
 	ParagraphList::iterator finish = start;
 	ParagraphList::iterator const end = pars.end();
 
-	DocumentClass const & tc = buf.params().documentClass();
-
 	int const thistoclevel = buf.text().getTocLevel(distance(bgn, start));
 	int toclevel;
 
@@ -417,12 +415,17 @@ static void outline(OutlineOp mode, Cursor & cur)
 				toclevel = buf.text().getTocLevel(distance(bgn, start));
 				if (toclevel == Layout::NOT_IN_TOC)
 					continue;
+
+				DocumentClass const & tc = buf.params().documentClass();
 				DocumentClass::const_iterator lit = tc.begin();
 				DocumentClass::const_iterator len = tc.end();
+				int const newtoclevel = 
+					(mode == OutlineIn ? toclevel + 1 : toclevel - 1);
+				LabelType const oldlabeltype = start->layout().labeltype;
+
 				for (; lit != len; ++lit) {
-					if (lit->toclevel == (mode == OutlineIn ?
-							      toclevel + 1 : toclevel - 1) &&
-					    start->layout().labeltype == lit->labeltype) {
+					if (lit->toclevel ==  newtoclevel &&
+					     lit->labeltype == oldlabeltype) {
 						start->setLayout(*lit);
 						break;
 					}
