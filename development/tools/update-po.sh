@@ -98,7 +98,7 @@ fi
 if [ -z "$COMMIT" ]; then
   echo "Differences found!";
   diff -wu $FARM/$I18NFILE $I18NFILE | less;
-  git checkout *.po;
+  git checkout *.po *.gmo;
   exit 0;
 fi
 
