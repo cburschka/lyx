@@ -155,6 +155,9 @@ What's new
 - Do not enable the Apply button in the document dialog just because a
   module was selected in the widget (without actual change) (bug 9365).
 
+- Fix logic of "Maintain aspect ratio" checkbox in the graphics dialog
+  (bug 9357).
+
 
 * INTERNALS
 

@@ -128,7 +128,11 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	connect(HeightCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(Width, SIGNAL(textChanged(const QString &)),
+		this, SLOT(updateAspectRatioStatus()));
+	connect(Width, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
+	connect(Height, SIGNAL(textChanged(const QString &)),
+		this, SLOT(updateAspectRatioStatus()));
 	connect(Height, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(heightUnit, SIGNAL(selectionChanged(lyx::Length::UNIT)),
@@ -399,15 +403,13 @@ void GuiGraphics::on_scaleCB_toggled(bool setScale)
 	Height->setEnabled(false);
 	heightUnit->setEnabled(false);
 
-	aspectratio->setDisabled(true);
-	aspectratio->setChecked(true);
-
 	rotateOrderCB->setEnabled((WidthCB->isChecked() ||
 				 HeightCB->isChecked() ||
 				 scaleCB->isChecked()) &&
 				 (angle->text() != "0"));
 
 	setAutoText();
+	updateAspectRatioStatus();
 }
 
 
@@ -419,11 +421,6 @@ void GuiGraphics::on_WidthCB_toggled(bool setWidth)
 		Width->setFocus(Qt::OtherFocusReason);
 
 	bool const setHeight = HeightCB->isChecked();
-	aspectratio->setEnabled(setWidth && setHeight);
-	aspectratio->blockSignals(true);
-	aspectratio->setChecked(!(setWidth && setHeight));
-	aspectratio->blockSignals(false);
-
 	scaleCB->setEnabled(!setWidth && !setHeight);
 	//already will be unchecked, so don't need to do that
 	Scale->setEnabled((!setWidth && !setHeight) //=scaleCB->isEnabled()
@@ -433,6 +430,7 @@ void GuiGraphics::on_WidthCB_toggled(bool setWidth)
 				 (angle->text() != "0"));
 
 	setAutoText();
+	updateAspectRatioStatus();
 }
 
 
@@ -444,11 +442,6 @@ void GuiGraphics::on_HeightCB_toggled(bool setHeight)
 		Height->setFocus(Qt::OtherFocusReason);
 
 	bool const setWidth = WidthCB->isChecked();
-	aspectratio->setEnabled(setWidth && setHeight);
-	aspectratio->blockSignals(true);
-	aspectratio->setChecked(!(setWidth && setHeight));
-	aspectratio->blockSignals(false);
-
 	scaleCB->setEnabled(!setWidth && !setHeight);
 	//already unchecked
 	Scale->setEnabled((!setWidth && !setHeight) //=scaleCB->isEnabled()
@@ -458,6 +451,41 @@ void GuiGraphics::on_HeightCB_toggled(bool setHeight)
 				 (angle->text() != "0"));
 
 	setAutoText();
+	updateAspectRatioStatus();
+}
+
+
+void GuiGraphics::updateAspectRatioStatus()
+{
+	// keepaspectratio only makes sense if both a width _and_ a
+	// height are given, since its function is (see graphics manual):
+	// "If set to true then specifying both 'width' and 'height'
+	// (or 'totalheight') does not distort the figure but scales
+	// such that neither of the specified dimensions is _exceeded_."
+	aspectratio->setEnabled(
+		WidthCB->isChecked() && !Width->text().isEmpty()
+		&& Width->text() != qt_(autostr)
+		&& HeightCB->isChecked() && !Height->text().isEmpty()
+		&& Height->text() != qt_(autostr)
+		);
+	if (!aspectratio->isEnabled())
+		aspectratio->setChecked(false);
+}
+
+
+void GuiGraphics::on_aspectratio_toggled(bool aspectratio)
+{
+	if (aspectratio) {
+		WidthCB->setText(qt_("Set max. &width:"));
+		HeightCB->setText(qt_("Set max. &height:"));
+		Width->setToolTip(qt_("Maximal width of image in output"));
+		Height->setToolTip(qt_("Maximal height of image in output"));
+	} else {
+		WidthCB->setText(qt_("Set &width:"));
+		HeightCB->setText(qt_("Set &height:"));
+		Width->setToolTip(qt_("Width of image in output"));
+		Height->setToolTip(qt_("Height of image in output"));
+	}
 }
 
 
@@ -614,9 +642,9 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	scaleCB->setEnabled(!widthChecked && !heightChecked);
 	WidthCB->setEnabled(!scaleChecked);
 	HeightCB->setEnabled(!scaleChecked);
-	aspectratio->setEnabled(widthChecked && heightChecked);
 
 	setAutoText();
+	updateAspectRatioStatus();
 
 	doubleToWidget(angle, igp.rotateAngle);
 	rotateOrderCB->setChecked(igp.scaleBeforeRotation);
@@ -701,9 +729,7 @@ void GuiGraphics::applyView()
 		igp.height = HeightCB->isChecked() ?
 			Length(widgetsToLength(Height, heightUnit)) :
 			Length("0pt");
-		igp.keepAspectRatio = aspectratio->isEnabled() &&
-			aspectratio->isChecked() &&
-			igp.width.value() > 0 && igp.height.value() > 0;
+		igp.keepAspectRatio = aspectratio->isChecked();
 	}
 
 	igp.noUnzip = unzipCB->isChecked();
