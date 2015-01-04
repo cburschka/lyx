@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-12-21 11:19-0500\n"
+"POT-Creation-Date: 2015-01-04 12:46-0500\n"
 "PO-Revision-Date: 2014-03-28 00:38+0100\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
@@ -288,13 +288,13 @@ msgid "Select which language package LyX should use"
 msgstr "Pilih paket bahasa yang akan digunakan LyX"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:55
-#: src/frontends/qt4/GuiDocument.cpp:1056
+#: src/frontends/qt4/GuiDocument.cpp:1057
 #: src/frontends/qt4/GuiDocument.cpp:1983
 msgid "Automatic"
 msgstr "Otomatis"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:60
-#: src/frontends/qt4/GuiDocument.cpp:1058
+#: src/frontends/qt4/GuiDocument.cpp:1059
 msgid "Always Babel"
 msgstr "Selalu Babel"
 
@@ -303,10 +303,10 @@ msgstr "Selalu Babel"
 #: src/frontends/qt4/ui/TabularUi.ui:1228
 #: src/frontends/qt4/ui/TabularUi.ui:1276 src/frontends/qt4/ui/VSpaceUi.ui:107
 #: src/frontends/qt4/ui/ParagraphUi.ui:135 lib/layouts/stdcustom.inc:8
-#: src/frontends/qt4/GuiDocument.cpp:707 src/frontends/qt4/GuiDocument.cpp:711
-#: src/frontends/qt4/GuiDocument.cpp:719 src/frontends/qt4/GuiDocument.cpp:833
-#: src/frontends/qt4/GuiDocument.cpp:885
-#: src/frontends/qt4/GuiDocument.cpp:1060 src/frontends/qt4/GuiHSpace.cpp:56
+#: src/frontends/qt4/GuiDocument.cpp:708 src/frontends/qt4/GuiDocument.cpp:712
+#: src/frontends/qt4/GuiDocument.cpp:720 src/frontends/qt4/GuiDocument.cpp:834
+#: src/frontends/qt4/GuiDocument.cpp:886
+#: src/frontends/qt4/GuiDocument.cpp:1061 src/frontends/qt4/GuiHSpace.cpp:56
 #: src/frontends/qt4/GuiHSpace.cpp:67 src/frontends/qt4/GuiPrefs.cpp:853
 #: src/frontends/qt4/GuiPrefs.cpp:880 src/frontends/qt4/GuiPrefs.cpp:2161
 #: src/frontends/qt4/GuiPrefs.cpp:2184
@@ -315,7 +315,7 @@ msgid "Custom"
 msgstr "AturSendiri"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:70
-#: src/frontends/qt4/GuiDocument.cpp:1062
+#: src/frontends/qt4/GuiDocument.cpp:1063
 msgid "None[[language package]]"
 msgstr "Kosong"
 
@@ -488,7 +488,8 @@ msgstr "&Setuju"
 #: src/frontends/qt4/ui/ListingsUi.ui:549
 #: src/frontends/qt4/ui/DocumentUi.ui:77 src/frontends/qt4/ui/PrefsUi.ui:80
 #: src/frontends/qt4/ui/CharacterUi.ui:367 src/frontends/qt4/ui/RefUi.ui:330
-#: src/frontends/qt4/GuiDocument.cpp:2189
+#: src/frontends/qt4/GuiDocument.cpp:2173
+#: src/frontends/qt4/GuiDocument.cpp:2366
 #: src/frontends/qt4/GuiDocument.cpp:3534
 msgid "&Apply"
 msgstr "&Terapkan"
@@ -699,7 +700,7 @@ msgid "&Landscape"
 msgstr "&Lansekap"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:162
-#: src/frontends/qt4/GuiDocument.cpp:1408
+#: src/frontends/qt4/GuiDocument.cpp:1407
 msgid "Page Layout"
 msgstr "Tataletak Halaman"
 
@@ -1787,7 +1788,7 @@ msgstr "&Atas baris:"
 #: src/frontends/qt4/ui/HSpaceUi.ui:32 src/frontends/qt4/ui/ListingsUi.ui:98
 #: src/frontends/qt4/GuiBox.cpp:229 src/frontends/qt4/GuiBox.cpp:359
 #: src/frontends/qt4/GuiBox.cpp:445 src/frontends/qt4/GuiDocument.cpp:118
-#: src/frontends/qt4/GuiGraphics.cpp:580
+#: src/frontends/qt4/GuiGraphics.cpp:608
 #: src/frontends/qt4/GuiMathMatrix.cpp:33 src/frontends/qt4/GuiPrefs.cpp:2159
 #: src/frontends/qt4/GuiPrefs.cpp:2182
 msgid "None"
@@ -1799,11 +1800,11 @@ msgstr "Kosong"
 #: src/frontends/qt4/ui/ParagraphUi.ui:115
 #: src/frontends/qt4/ui/BulletsUi.ui:66 lib/ui/stdtoolbars.inc:113
 #: src/Font.cpp:180 src/HSpace.cpp:114 src/frontends/qt4/GuiDocument.cpp:114
-#: src/frontends/qt4/GuiDocument.cpp:706 src/frontends/qt4/GuiDocument.cpp:827
-#: src/frontends/qt4/GuiDocument.cpp:832 src/frontends/qt4/GuiDocument.cpp:873
-#: src/frontends/qt4/GuiDocument.cpp:884
-#: src/frontends/qt4/GuiDocument.cpp:1054
-#: src/frontends/qt4/GuiDocument.cpp:1139
+#: src/frontends/qt4/GuiDocument.cpp:707 src/frontends/qt4/GuiDocument.cpp:828
+#: src/frontends/qt4/GuiDocument.cpp:833 src/frontends/qt4/GuiDocument.cpp:874
+#: src/frontends/qt4/GuiDocument.cpp:885
+#: src/frontends/qt4/GuiDocument.cpp:1055
+#: src/frontends/qt4/GuiDocument.cpp:1140
 #: src/frontends/qt4/GuiDocument.cpp:1862
 #: src/frontends/qt4/GuiDocument.cpp:1940
 #: src/frontends/qt4/GuiDocument.cpp:1941
@@ -1812,7 +1813,7 @@ msgstr "Kosong"
 #: src/frontends/qt4/GuiDocument.cpp:1969
 #: src/frontends/qt4/GuiDocument.cpp:1976
 #: src/frontends/qt4/GuiDocument.cpp:2061
-#: src/frontends/qt4/GuiDocument.cpp:2499
+#: src/frontends/qt4/GuiDocument.cpp:2493
 #: src/frontends/qt4/GuiDocument.cpp:3588 src/frontends/qt4/GuiExternal.cpp:76
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiIndices.cpp:57
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
@@ -2724,7 +2725,7 @@ msgid "H&unspell dictionaries:"
 msgstr "Kamus H&unspell:"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
-#: src/frontends/qt4/GuiDocument.cpp:1421 src/frontends/qt4/GuiPrefs.cpp:255
+#: src/frontends/qt4/GuiDocument.cpp:1420 src/frontends/qt4/GuiPrefs.cpp:255
 msgid "Output"
 msgstr "Keluaran"
 
@@ -2951,11 +2952,12 @@ msgstr "Skala"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:400
 #: src/frontends/qt4/ui/GraphicsUi.ui:131
+#: src/frontends/qt4/GuiGraphics.cpp:487
 msgid "Height of image in output"
 msgstr "Ukuran tinggi gambar di output"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:410
-#: src/frontends/qt4/ui/GraphicsUi.ui:97
+#: src/frontends/qt4/ui/GraphicsUi.ui:97 src/frontends/qt4/GuiGraphics.cpp:486
 msgid "Width of image in output"
 msgstr "Ukuran lebar gambar di output"
 
@@ -3264,15 +3266,15 @@ msgstr "Sisipkan spasi merata setelah pemisah halaman"
 msgid "DefSkip"
 msgstr "Normal"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:87 src/frontends/qt4/GuiDocument.cpp:708
+#: src/frontends/qt4/ui/VSpaceUi.ui:87 src/frontends/qt4/GuiDocument.cpp:709
 msgid "SmallSkip"
 msgstr "Lompat Kecil"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:92 src/frontends/qt4/GuiDocument.cpp:709
+#: src/frontends/qt4/ui/VSpaceUi.ui:92 src/frontends/qt4/GuiDocument.cpp:710
 msgid "MedSkip"
 msgstr "Lompat Sedang"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:97 src/frontends/qt4/GuiDocument.cpp:710
+#: src/frontends/qt4/ui/VSpaceUi.ui:97 src/frontends/qt4/GuiDocument.cpp:711
 msgid "BigSkip"
 msgstr "Lompat Lebar"
 
@@ -3303,7 +3305,7 @@ msgid "Line &spacing"
 msgstr "Spasi &Baris"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:120 src/Text.cpp:1887
-#: src/frontends/qt4/GuiDocument.cpp:713
+#: src/frontends/qt4/GuiDocument.cpp:714
 msgid "Single"
 msgstr "Satu"
 
@@ -3312,7 +3314,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:130 src/Text.cpp:1893
-#: src/frontends/qt4/GuiDocument.cpp:717
+#: src/frontends/qt4/GuiDocument.cpp:718
 msgid "Double"
 msgstr "Dua"
 
@@ -3633,6 +3635,7 @@ msgid "Sets height of graphic. Leave unchecked to set automatically."
 msgstr "Ukuran tinggi gambar. Jangan pilih untuk pengaturan otomatis."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:144
+#: src/frontends/qt4/GuiGraphics.cpp:485
 msgid "Set &height:"
 msgstr "Ti&nggi:"
 
@@ -3645,6 +3648,7 @@ msgid "Sets width of graphic. Leave unchecked to set automatically."
 msgstr "Ukuran lebar gambar. Jangan pilin untuk pengaturan otomatis."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:164
+#: src/frontends/qt4/GuiGraphics.cpp:484
 msgid "Set &width:"
 msgstr "&Lebar:"
 
@@ -3871,7 +3875,7 @@ msgstr "Tabel &karakter tambahan"
 #: src/frontends/qt4/ui/CharacterUi.ui:108
 #: src/frontends/qt4/ui/CharacterUi.ui:145 lib/layouts/europecv.layout:241
 #: lib/layouts/europecv.layout:247 lib/layouts/moderncv.layout:430
-#: lib/layouts/bicaption.module:15 src/frontends/qt4/GuiDocument.cpp:1410
+#: lib/layouts/bicaption.module:15 src/frontends/qt4/GuiDocument.cpp:1409
 #: src/frontends/qt4/GuiPrefs.cpp:2262 src/frontends/qt4/Menus.cpp:896
 msgid "Language"
 msgstr "Bahasa"
@@ -4032,7 +4036,7 @@ msgstr "Gambar"
 
 #: src/frontends/qt4/ui/OutputUi.ui:173 lib/layouts/aapaper.layout:63
 #: lib/layouts/egs.layout:634 lib/languages:81
-#: src/frontends/qt4/GuiDocument.cpp:1272
+#: src/frontends/qt4/GuiDocument.cpp:1273
 #: src/frontends/qt4/GuiErrorList.cpp:48 src/frontends/qt4/GuiLog.cpp:228
 #: src/frontends/qt4/GuiPrefs.cpp:703
 msgid "LaTeX"
@@ -6112,7 +6116,7 @@ msgstr "Lampiran \\Alph{appendix}."
 #: lib/layouts/scrclass.inc:259 lib/layouts/stdstruct.inc:53
 #: lib/layouts/svcommon.inc:574 lib/layouts/amsdefs.inc:199
 #: lib/layouts/aguplus.inc:172 lib/layouts/aguplus.inc:174
-#: src/frontends/qt4/GuiDocument.cpp:1413
+#: src/frontends/qt4/GuiDocument.cpp:1412
 msgid "Bibliography"
 msgstr "Bibliografi"
 
@@ -7032,7 +7036,7 @@ msgstr "Dugaan \\arabic{theorem}"
 #: lib/layouts/theorems-without-preamble.inc:212
 #: lib/layouts/theorems-sec-bytype.module:110
 #: lib/layouts/theorems-chap-bytype.module:138
-#: src/frontends/qt4/GuiDocument.cpp:1096
+#: src/frontends/qt4/GuiDocument.cpp:1097
 msgid "Example"
 msgstr "Contoh"
 
@@ -10254,10 +10258,10 @@ msgstr "Afiliasi alternatif:"
 msgid "And"
 msgstr "Dan"
 
-#: lib/layouts/aastex.layout:220 src/frontends/qt4/GuiDocument.cpp:2308
-#: src/frontends/qt4/GuiDocument.cpp:2320
-#: src/frontends/qt4/GuiDocument.cpp:2419
-#: src/frontends/qt4/GuiDocument.cpp:2438
+#: lib/layouts/aastex.layout:220 src/frontends/qt4/GuiDocument.cpp:2291
+#: src/frontends/qt4/GuiDocument.cpp:2303
+#: src/frontends/qt4/GuiDocument.cpp:2413
+#: src/frontends/qt4/GuiDocument.cpp:2432
 msgid "and"
 msgstr "dan"
 
@@ -12774,7 +12778,7 @@ msgstr "ERT"
 msgid "Listings[[List of Listings]]"
 msgstr "Daftar dari Semua Daftar"
 
-#: lib/layouts/stdinsets.inc:294 src/frontends/qt4/GuiDocument.cpp:1418
+#: lib/layouts/stdinsets.inc:294 src/frontends/qt4/GuiDocument.cpp:1417
 #, fuzzy
 msgid "Listings[[inset]]"
 msgstr "Pengaturan Listing"
@@ -17952,7 +17956,7 @@ msgid "Fractions"
 msgstr "Gaya tampilan pembagian"
 
 #: lib/ui/stdtoolbars.inc:291 lib/ui/stdtoolbars.inc:390
-#: src/frontends/qt4/GuiDocument.cpp:1406
+#: src/frontends/qt4/GuiDocument.cpp:1405
 msgid "Fonts"
 msgstr "Model Huruf"
 
@@ -22299,7 +22303,7 @@ msgstr "Teks Plain (Xfig output)"
 msgid "date (output)"
 msgstr "Tanggal (output)"
 
-#: lib/configure.py:608 src/frontends/qt4/GuiDocument.cpp:1272
+#: lib/configure.py:608 src/frontends/qt4/GuiDocument.cpp:1273
 #: src/frontends/qt4/GuiErrorList.cpp:42
 msgid "DocBook"
 msgstr "DocBook"
@@ -22624,7 +22628,7 @@ msgstr "Arsip LyX (zip)"
 msgid "LyX Archive (tar.gz)"
 msgstr "Arsip LyX (tar.gz)"
 
-#: src/BiblioInfo.cpp:318 src/frontends/qt4/GuiDocument.cpp:2307
+#: src/BiblioInfo.cpp:318 src/frontends/qt4/GuiDocument.cpp:2290
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s dan %2$s"
@@ -23365,12 +23369,12 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Dokumen class tidak tersedia"
 
-#: src/BufferParams.cpp:1814 src/insets/InsetCommandParams.cpp:384
+#: src/BufferParams.cpp:1817 src/insets/InsetCommandParams.cpp:384
 #: src/insets/InsetHyperlink.cpp:197
 msgid "Uncodable characters"
 msgstr "Karakter tidak bisa di sandikan"
 
-#: src/BufferParams.cpp:1815
+#: src/BufferParams.cpp:1818
 #, fuzzy, c-format
 msgid ""
 "The following characters that are used in an index name are not\n"
@@ -23381,7 +23385,7 @@ msgstr ""
 "diwakili dengan enkoding sekarang sehingga akan diabaikan:\n"
 "%1$s."
 
-#: src/BufferParams.cpp:2075
+#: src/BufferParams.cpp:2078
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -23396,11 +23400,11 @@ msgstr ""
 "bawaan akan digunakan. LyX tidak bisa membuat\n"
 "keluaran yang diinginkan."
 
-#: src/BufferParams.cpp:2081
+#: src/BufferParams.cpp:2084
 msgid "Document class not found"
 msgstr "Dokumen class tidak ditemukan"
 
-#: src/BufferParams.cpp:2088
+#: src/BufferParams.cpp:2091
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -23415,15 +23419,15 @@ msgstr ""
 "bawaan akan digunakan. LyX tidak bisa membuat\n"
 "keluaran yang diinginkan."
 
-#: src/BufferParams.cpp:2094 src/BufferView.cpp:1294 src/BufferView.cpp:1323
+#: src/BufferParams.cpp:2097 src/BufferView.cpp:1294 src/BufferView.cpp:1323
 msgid "Could not load class"
 msgstr "Tidak bisa memuat dokumen class"
 
-#: src/BufferParams.cpp:2144
+#: src/BufferParams.cpp:2147
 msgid "Error reading internal layout information"
 msgstr "Ada kesalahan membaca informasi tataletak internal"
 
-#: src/BufferParams.cpp:2145 src/TextClass.cpp:1528
+#: src/BufferParams.cpp:2148 src/TextClass.cpp:1528
 msgid "Read Error"
 msgstr "Kesalahan membaca"
 
@@ -25374,7 +25378,8 @@ msgstr "Perubahan: "
 msgid " at "
 msgstr " pada "
 
-#: src/Text.cpp:1873
+#: src/Text.cpp:1873 src/mathed/InsetMathFont.cpp:207
+#: src/mathed/InsetMathFontOld.cpp:103
 #, c-format
 msgid "Font: %1$s"
 msgstr "Huruf: %1$s"
@@ -25388,7 +25393,7 @@ msgstr ", Masuk: %1$d"
 msgid ", Spacing: "
 msgstr ", Spasi: "
 
-#: src/Text.cpp:1890 src/frontends/qt4/GuiDocument.cpp:715
+#: src/Text.cpp:1890 src/frontends/qt4/GuiDocument.cpp:716
 msgid "OneHalf"
 msgstr "SatuSetengah"
 
@@ -26246,7 +26251,7 @@ msgstr "Bibliografi BibTeX"
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
 #: src/frontends/qt4/GuiDocument.cpp:2155
-#: src/frontends/qt4/GuiExternal.cpp:645 src/frontends/qt4/GuiGraphics.cpp:800
+#: src/frontends/qt4/GuiExternal.cpp:645 src/frontends/qt4/GuiGraphics.cpp:826
 #: src/frontends/qt4/GuiInclude.cpp:333 src/frontends/qt4/GuiView.cpp:1893
 #: src/frontends/qt4/GuiView.cpp:1950 src/frontends/qt4/GuiView.cpp:2089
 #: src/frontends/qt4/GuiView.cpp:2223 src/frontends/qt4/GuiView.cpp:2266
@@ -26328,7 +26333,7 @@ msgid "Filename Suffix"
 msgstr "Status Akhiran"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
-#: src/frontends/qt4/GuiDocument.cpp:2464
+#: src/frontends/qt4/GuiDocument.cpp:2458
 #: src/frontends/qt4/GuiDocument.cpp:3477
 #: src/frontends/qt4/GuiProgressView.cpp:145
 #: src/frontends/qt4/GuiProgressView.cpp:159
@@ -26337,7 +26342,7 @@ msgid "Yes"
 msgstr "Ya"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
-#: src/frontends/qt4/GuiDocument.cpp:2463
+#: src/frontends/qt4/GuiDocument.cpp:2457
 #: src/frontends/qt4/GuiDocument.cpp:3476
 #: src/frontends/qt4/GuiProgressView.cpp:111
 #: src/frontends/qt4/GuiProgressView.cpp:144
@@ -26530,7 +26535,7 @@ msgid "LyX Documents (*.lyx)"
 msgstr "Dokumen LyX (*.lyx)"
 
 #: src/frontends/qt4/GuiCompare.cpp:198 src/frontends/qt4/GuiDocument.cpp:2119
-#: src/frontends/qt4/GuiDocument.cpp:2201
+#: src/frontends/qt4/GuiDocument.cpp:2184
 #: src/frontends/qt4/GuiDocument.cpp:3542
 msgid "Error"
 msgstr "kesalahan"
@@ -26622,32 +26627,32 @@ msgstr "Mengkonversi ke format yang dapat dimuat..."
 msgid "Document Settings"
 msgstr "Pengaturan Dokumen"
 
-#: src/frontends/qt4/GuiDocument.cpp:741 src/frontends/qt4/GuiInclude.cpp:48
+#: src/frontends/qt4/GuiDocument.cpp:742 src/frontends/qt4/GuiInclude.cpp:48
 #: src/frontends/qt4/Menus.cpp:1442
 msgid "Child Document"
 msgstr "Anak dokumen"
 
-#: src/frontends/qt4/GuiDocument.cpp:742
+#: src/frontends/qt4/GuiDocument.cpp:743
 msgid "Include to Output"
 msgstr "Diikutkan pada Keluaran"
 
-#: src/frontends/qt4/GuiDocument.cpp:828
+#: src/frontends/qt4/GuiDocument.cpp:829
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt4/GuiDocument.cpp:829
+#: src/frontends/qt4/GuiDocument.cpp:830
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt4/GuiDocument.cpp:830
+#: src/frontends/qt4/GuiDocument.cpp:831
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/GuiDocument.cpp:834
+#: src/frontends/qt4/GuiDocument.cpp:835
 msgid "None (no fontenc)"
 msgstr "Tidak ada (tidak ada fontenc)"
 
-#: src/frontends/qt4/GuiDocument.cpp:842
+#: src/frontends/qt4/GuiDocument.cpp:843
 msgid ""
 "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
 "You need to install the package \"fontspec\" to use this feature"
@@ -26655,305 +26660,305 @@ msgstr ""
 "Langsung menggunakan huruf OpenType dan TrueType  (memerlukan eTeX atau "
 "LuaTeX)"
 
-#: src/frontends/qt4/GuiDocument.cpp:874
+#: src/frontends/qt4/GuiDocument.cpp:875
 msgid "empty"
 msgstr "empty"
 
-#: src/frontends/qt4/GuiDocument.cpp:875
+#: src/frontends/qt4/GuiDocument.cpp:876
 msgid "plain"
 msgstr "plain"
 
-#: src/frontends/qt4/GuiDocument.cpp:876
+#: src/frontends/qt4/GuiDocument.cpp:877
 msgid "headings"
 msgstr "headings"
 
-#: src/frontends/qt4/GuiDocument.cpp:877
+#: src/frontends/qt4/GuiDocument.cpp:878
 msgid "fancy"
 msgstr "fancy"
 
-#: src/frontends/qt4/GuiDocument.cpp:886
+#: src/frontends/qt4/GuiDocument.cpp:887
 msgid "US letter"
 msgstr "US letter"
 
-#: src/frontends/qt4/GuiDocument.cpp:887
+#: src/frontends/qt4/GuiDocument.cpp:888
 msgid "US legal"
 msgstr "US legal"
 
-#: src/frontends/qt4/GuiDocument.cpp:888
+#: src/frontends/qt4/GuiDocument.cpp:889
 msgid "US executive"
 msgstr "US executive"
 
-#: src/frontends/qt4/GuiDocument.cpp:889
+#: src/frontends/qt4/GuiDocument.cpp:890
 msgid "A0"
 msgstr "A0"
 
-#: src/frontends/qt4/GuiDocument.cpp:890
+#: src/frontends/qt4/GuiDocument.cpp:891
 msgid "A1"
 msgstr "A1"
 
-#: src/frontends/qt4/GuiDocument.cpp:891
+#: src/frontends/qt4/GuiDocument.cpp:892
 msgid "A2"
 msgstr "A2"
 
-#: src/frontends/qt4/GuiDocument.cpp:892
+#: src/frontends/qt4/GuiDocument.cpp:893
 msgid "A3"
 msgstr "A3"
 
-#: src/frontends/qt4/GuiDocument.cpp:893
+#: src/frontends/qt4/GuiDocument.cpp:894
 msgid "A4"
 msgstr "A4"
 
-#: src/frontends/qt4/GuiDocument.cpp:894
+#: src/frontends/qt4/GuiDocument.cpp:895
 msgid "A5"
 msgstr "A5"
 
-#: src/frontends/qt4/GuiDocument.cpp:895
+#: src/frontends/qt4/GuiDocument.cpp:896
 msgid "A6"
 msgstr "A6"
 
-#: src/frontends/qt4/GuiDocument.cpp:896
+#: src/frontends/qt4/GuiDocument.cpp:897
 msgid "B0"
 msgstr "B0"
 
-#: src/frontends/qt4/GuiDocument.cpp:897
+#: src/frontends/qt4/GuiDocument.cpp:898
 msgid "B1"
 msgstr "B1"
 
-#: src/frontends/qt4/GuiDocument.cpp:898
+#: src/frontends/qt4/GuiDocument.cpp:899
 msgid "B2"
 msgstr "B2"
 
-#: src/frontends/qt4/GuiDocument.cpp:899
+#: src/frontends/qt4/GuiDocument.cpp:900
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt4/GuiDocument.cpp:900
+#: src/frontends/qt4/GuiDocument.cpp:901
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/GuiDocument.cpp:901
+#: src/frontends/qt4/GuiDocument.cpp:902
 msgid "B5"
 msgstr "B5"
 
-#: src/frontends/qt4/GuiDocument.cpp:902
+#: src/frontends/qt4/GuiDocument.cpp:903
 msgid "B6"
 msgstr "B6"
 
-#: src/frontends/qt4/GuiDocument.cpp:903
+#: src/frontends/qt4/GuiDocument.cpp:904
 msgid "C0"
 msgstr "C0"
 
-#: src/frontends/qt4/GuiDocument.cpp:904
+#: src/frontends/qt4/GuiDocument.cpp:905
 msgid "C1"
 msgstr "C1"
 
-#: src/frontends/qt4/GuiDocument.cpp:905
+#: src/frontends/qt4/GuiDocument.cpp:906
 msgid "C2"
 msgstr "C2"
 
-#: src/frontends/qt4/GuiDocument.cpp:906
+#: src/frontends/qt4/GuiDocument.cpp:907
 msgid "C3"
 msgstr "C3"
 
-#: src/frontends/qt4/GuiDocument.cpp:907
+#: src/frontends/qt4/GuiDocument.cpp:908
 msgid "C4"
 msgstr "C4"
 
-#: src/frontends/qt4/GuiDocument.cpp:908
+#: src/frontends/qt4/GuiDocument.cpp:909
 msgid "C5"
 msgstr "C5"
 
-#: src/frontends/qt4/GuiDocument.cpp:909
+#: src/frontends/qt4/GuiDocument.cpp:910
 msgid "C6"
 msgstr "C6"
 
-#: src/frontends/qt4/GuiDocument.cpp:910
+#: src/frontends/qt4/GuiDocument.cpp:911
 msgid "JIS B0"
 msgstr "JIS B0"
 
-#: src/frontends/qt4/GuiDocument.cpp:911
+#: src/frontends/qt4/GuiDocument.cpp:912
 msgid "JIS B1"
 msgstr "JIS B1"
 
-#: src/frontends/qt4/GuiDocument.cpp:912
+#: src/frontends/qt4/GuiDocument.cpp:913
 msgid "JIS B2"
 msgstr "JIS B2"
 
-#: src/frontends/qt4/GuiDocument.cpp:913
+#: src/frontends/qt4/GuiDocument.cpp:914
 msgid "JIS B3"
 msgstr "JIS B3"
 
-#: src/frontends/qt4/GuiDocument.cpp:914
+#: src/frontends/qt4/GuiDocument.cpp:915
 msgid "JIS B4"
 msgstr "JIS B4"
 
-#: src/frontends/qt4/GuiDocument.cpp:915
+#: src/frontends/qt4/GuiDocument.cpp:916
 msgid "JIS B5"
 msgstr "JIS B5"
 
-#: src/frontends/qt4/GuiDocument.cpp:916
+#: src/frontends/qt4/GuiDocument.cpp:917
 msgid "JIS B6"
 msgstr "JIS B6"
 
-#: src/frontends/qt4/GuiDocument.cpp:1030
+#: src/frontends/qt4/GuiDocument.cpp:1031
 msgid "Language Default (no inputenc)"
 msgstr "Otomatis (tanpa inputenc)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1041
+#: src/frontends/qt4/GuiDocument.cpp:1042
 msgid "``text''"
 msgstr "``Teks''"
 
-#: src/frontends/qt4/GuiDocument.cpp:1043
+#: src/frontends/qt4/GuiDocument.cpp:1044
 msgid "''text''"
 msgstr "''Teks''"
 
-#: src/frontends/qt4/GuiDocument.cpp:1045
+#: src/frontends/qt4/GuiDocument.cpp:1046
 msgid ",,text``"
 msgstr ",,Teks``"
 
-#: src/frontends/qt4/GuiDocument.cpp:1047
+#: src/frontends/qt4/GuiDocument.cpp:1048
 msgid ",,text''"
 msgstr ",,Teks''"
 
-#: src/frontends/qt4/GuiDocument.cpp:1049
+#: src/frontends/qt4/GuiDocument.cpp:1050
 msgid "<<text>>"
 msgstr "<<Teks>>"
 
-#: src/frontends/qt4/GuiDocument.cpp:1051
+#: src/frontends/qt4/GuiDocument.cpp:1052
 msgid ">>text<<"
 msgstr ">>Teks<<"
 
-#: src/frontends/qt4/GuiDocument.cpp:1097
+#: src/frontends/qt4/GuiDocument.cpp:1098
 msgid "Numbered"
 msgstr "Bernomor"
 
-#: src/frontends/qt4/GuiDocument.cpp:1098
+#: src/frontends/qt4/GuiDocument.cpp:1099
 msgid "Appears in TOC"
 msgstr "Muncul di Daftar Isi"
 
-#: src/frontends/qt4/GuiDocument.cpp:1133
+#: src/frontends/qt4/GuiDocument.cpp:1134
 msgid "Author-year"
 msgstr "Penulis-tahun"
 
-#: src/frontends/qt4/GuiDocument.cpp:1134
+#: src/frontends/qt4/GuiDocument.cpp:1135
 msgid "Numerical"
 msgstr "Angka"
 
-#: src/frontends/qt4/GuiDocument.cpp:1156
+#: src/frontends/qt4/GuiDocument.cpp:1157
 #, fuzzy
 msgid "Package"
 msgstr "paket"
 
-#: src/frontends/qt4/GuiDocument.cpp:1156
+#: src/frontends/qt4/GuiDocument.cpp:1157
 #, fuzzy
 msgid "Load automatically"
 msgstr "secara otomatis"
 
-#: src/frontends/qt4/GuiDocument.cpp:1157
+#: src/frontends/qt4/GuiDocument.cpp:1158
 msgid "Load always"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1157
+#: src/frontends/qt4/GuiDocument.cpp:1158
 #, fuzzy
 msgid "Do not load"
 msgstr "Dokumen belum diunduh"
 
-#: src/frontends/qt4/GuiDocument.cpp:1170
+#: src/frontends/qt4/GuiDocument.cpp:1171
 msgid "The AMS LaTeX packages are always used"
 msgstr "Paket LaTeX AMS selalu digunakan"
 
-#: src/frontends/qt4/GuiDocument.cpp:1173
+#: src/frontends/qt4/GuiDocument.cpp:1174
 #, fuzzy, c-format
 msgid "The LaTeX package %1$s is always used"
 msgstr "Paket LaTeX esint selalu digunakan"
 
-#: src/frontends/qt4/GuiDocument.cpp:1178
+#: src/frontends/qt4/GuiDocument.cpp:1179
 #, fuzzy
 msgid "The AMS LaTeX packages are never used"
 msgstr "Paket LaTeX AMS selalu digunakan"
 
-#: src/frontends/qt4/GuiDocument.cpp:1181
+#: src/frontends/qt4/GuiDocument.cpp:1182
 #, fuzzy, c-format
 msgid "The LaTeX package %1$s is never used"
 msgstr "Paket LaTeX mathdots selalu digunakan"
 
-#: src/frontends/qt4/GuiDocument.cpp:1270
+#: src/frontends/qt4/GuiDocument.cpp:1271
 #: src/frontends/qt4/GuiDocument.cpp:2134
 #, fuzzy, c-format
 msgid "%1$s [Class '%2$s']"
 msgstr "%1$s dan %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1273
+#: src/frontends/qt4/GuiDocument.cpp:1274
 #, c-format
 msgid ""
 "Class not found by LyX. Please check if you have the matching %1$s class and "
 "all required packages (%2$s) installed."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1398
+#: src/frontends/qt4/GuiDocument.cpp:1397
 #: src/frontends/qt4/GuiDocument.cpp:1499
 msgid "Input listings parameters below. Enter ? for a list of parameters."
 msgstr ""
 "Input berbagai parameter listing akan muncul disini. Ketik ? untuk "
 "memunculkan daftar semua parameter"
 
-#: src/frontends/qt4/GuiDocument.cpp:1402
+#: src/frontends/qt4/GuiDocument.cpp:1401
 msgid "Document Class"
 msgstr "Kelas Dokumen"
 
-#: src/frontends/qt4/GuiDocument.cpp:1403 src/frontends/qt4/qt_helpers.cpp:597
+#: src/frontends/qt4/GuiDocument.cpp:1402 src/frontends/qt4/qt_helpers.cpp:597
 msgid "Child Documents"
 msgstr "Anak dokumen"
 
-#: src/frontends/qt4/GuiDocument.cpp:1404
+#: src/frontends/qt4/GuiDocument.cpp:1403
 msgid "Modules"
 msgstr "Modul"
 
-#: src/frontends/qt4/GuiDocument.cpp:1405
+#: src/frontends/qt4/GuiDocument.cpp:1404
 msgid "Local Layout"
 msgstr "Tataletak Lokal"
 
-#: src/frontends/qt4/GuiDocument.cpp:1407
+#: src/frontends/qt4/GuiDocument.cpp:1406
 msgid "Text Layout"
 msgstr "Tata Letak Teks"
 
-#: src/frontends/qt4/GuiDocument.cpp:1409
+#: src/frontends/qt4/GuiDocument.cpp:1408
 msgid "Page Margins"
 msgstr "Batas Halaman"
 
-#: src/frontends/qt4/GuiDocument.cpp:1411 src/frontends/qt4/GuiPrefs.cpp:1109
+#: src/frontends/qt4/GuiDocument.cpp:1410 src/frontends/qt4/GuiPrefs.cpp:1109
 msgid "Colors"
 msgstr "Warna"
 
-#: src/frontends/qt4/GuiDocument.cpp:1412
+#: src/frontends/qt4/GuiDocument.cpp:1411
 msgid "Numbering & TOC"
 msgstr "Penomoran & Daftar Isi"
 
-#: src/frontends/qt4/GuiDocument.cpp:1414
+#: src/frontends/qt4/GuiDocument.cpp:1413
 msgid "Indexes"
 msgstr "Indeks"
 
-#: src/frontends/qt4/GuiDocument.cpp:1415
+#: src/frontends/qt4/GuiDocument.cpp:1414
 msgid "PDF Properties"
 msgstr "Tampilan PDF"
 
-#: src/frontends/qt4/GuiDocument.cpp:1416
+#: src/frontends/qt4/GuiDocument.cpp:1415
 msgid "Math Options"
 msgstr "Pilihan Matematika"
 
-#: src/frontends/qt4/GuiDocument.cpp:1417
+#: src/frontends/qt4/GuiDocument.cpp:1416
 msgid "Float Placement"
 msgstr "Penempatan Ambangan"
 
-#: src/frontends/qt4/GuiDocument.cpp:1419
+#: src/frontends/qt4/GuiDocument.cpp:1418
 msgid "Bullets"
 msgstr "Simbol Label"
 
-#: src/frontends/qt4/GuiDocument.cpp:1420 src/frontends/qt4/qt_helpers.cpp:619
+#: src/frontends/qt4/GuiDocument.cpp:1419 src/frontends/qt4/qt_helpers.cpp:619
 msgid "Branches"
 msgstr "Cabang"
 
-#: src/frontends/qt4/GuiDocument.cpp:1422
+#: src/frontends/qt4/GuiDocument.cpp:1421
 msgid "LaTeX Preamble"
 msgstr "LaTeX Preamble"
 
@@ -26963,10 +26968,10 @@ msgid "&Default..."
 msgstr "Bawaan..."
 
 #: src/frontends/qt4/GuiDocument.cpp:1918
-#: src/frontends/qt4/GuiDocument.cpp:3258
-#: src/frontends/qt4/GuiDocument.cpp:3266
-#: src/frontends/qt4/GuiDocument.cpp:3274
-#: src/frontends/qt4/GuiDocument.cpp:3282
+#: src/frontends/qt4/GuiDocument.cpp:3255
+#: src/frontends/qt4/GuiDocument.cpp:3263
+#: src/frontends/qt4/GuiDocument.cpp:3271
+#: src/frontends/qt4/GuiDocument.cpp:3279
 msgid " (not installed)"
 msgstr "(belum di install)"
 
@@ -27036,12 +27041,14 @@ msgstr "Pilih dokumen master"
 msgid "LyX Files (*.lyx)"
 msgstr "Berkas LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2186
+#: src/frontends/qt4/GuiDocument.cpp:2170
+#: src/frontends/qt4/GuiDocument.cpp:2363
 #: src/frontends/qt4/GuiDocument.cpp:3531
 msgid "Unapplied changes"
 msgstr "Perubahan tidak bisa digunakan"
 
-#: src/frontends/qt4/GuiDocument.cpp:2187
+#: src/frontends/qt4/GuiDocument.cpp:2171
+#: src/frontends/qt4/GuiDocument.cpp:2364
 #: src/frontends/qt4/GuiDocument.cpp:3532
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
@@ -27050,72 +27057,73 @@ msgstr ""
 "Beberapa perubahan di dialog belum diubah.\n"
 "Apabila tidak diterapkan sekarang, akan hilang setelah ini."
 
-#: src/frontends/qt4/GuiDocument.cpp:2189
+#: src/frontends/qt4/GuiDocument.cpp:2173
+#: src/frontends/qt4/GuiDocument.cpp:2366
 #: src/frontends/qt4/GuiDocument.cpp:3534
 msgid "&Dismiss"
 msgstr "&Keluar"
 
-#: src/frontends/qt4/GuiDocument.cpp:2201
+#: src/frontends/qt4/GuiDocument.cpp:2184
 #: src/frontends/qt4/GuiDocument.cpp:3542
 msgid "Unable to set document class."
 msgstr "Tidak bisa memilih dokumen class."
 
-#: src/frontends/qt4/GuiDocument.cpp:2314
+#: src/frontends/qt4/GuiDocument.cpp:2297
 #, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2319
+#: src/frontends/qt4/GuiDocument.cpp:2302
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s, %2$s, dan %3$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2333
+#: src/frontends/qt4/GuiDocument.cpp:2316
 #, c-format
 msgid "%1$s (unavailable)"
 msgstr "%1$s (tidak tersedia)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2408
+#: src/frontends/qt4/GuiDocument.cpp:2402
 msgid "Module provided by document class."
 msgstr "Modul tersedia dari dokumen class."
 
-#: src/frontends/qt4/GuiDocument.cpp:2415
+#: src/frontends/qt4/GuiDocument.cpp:2409
 #, fuzzy, c-format
 msgid "Category: %1$s."
 msgstr "Kata&gori:"
 
-#: src/frontends/qt4/GuiDocument.cpp:2423
+#: src/frontends/qt4/GuiDocument.cpp:2417
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr "Paket yang diperlukan: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2429
+#: src/frontends/qt4/GuiDocument.cpp:2423
 msgid "or"
 msgstr "atau"
 
-#: src/frontends/qt4/GuiDocument.cpp:2432
+#: src/frontends/qt4/GuiDocument.cpp:2426
 #, c-format
 msgid "Modules required: %1$s."
 msgstr "Modul diperlukan: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2441
+#: src/frontends/qt4/GuiDocument.cpp:2435
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr "Modul yang tidak termasuk: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2447
+#: src/frontends/qt4/GuiDocument.cpp:2441
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "PERHATIAN: Beberapa paket yang diperlukan tidak tersedia"
 
-#: src/frontends/qt4/GuiDocument.cpp:3194
+#: src/frontends/qt4/GuiDocument.cpp:3191
 msgid "[No options predefined]"
 msgstr "[Belum ada opsi yang sudah didefinisikan]"
 
-#: src/frontends/qt4/GuiDocument.cpp:3403
+#: src/frontends/qt4/GuiDocument.cpp:3400
 msgid "C&ustomize Hyperref Options"
 msgstr "Pilihan suaian Hyperref"
 
-#: src/frontends/qt4/GuiDocument.cpp:3405
+#: src/frontends/qt4/GuiDocument.cpp:3402
 msgid "&Use Hyperref Support"
 msgstr "&Pengaturan Dukungan Hyperref"
 
@@ -27232,11 +27240,11 @@ msgstr "secara otomatis"
 msgid "Graphics"
 msgstr "Gambar"
 
-#: src/frontends/qt4/GuiGraphics.cpp:263 src/frontends/qt4/GuiGraphics.cpp:279
+#: src/frontends/qt4/GuiGraphics.cpp:267 src/frontends/qt4/GuiGraphics.cpp:283
 msgid "Dissolve previous group?"
 msgstr "Hilangkan grup sebelumnya?"
 
-#: src/frontends/qt4/GuiGraphics.cpp:264
+#: src/frontends/qt4/GuiGraphics.cpp:268
 #, c-format
 msgid ""
 "If you assign this graphic to group '%2$s',\n"
@@ -27249,17 +27257,17 @@ msgstr ""
 "karena gambar ini adalah satu-satunya.\n"
 "Apakah akan meneruskannya?"
 
-#: src/frontends/qt4/GuiGraphics.cpp:270 src/frontends/qt4/GuiGraphics.cpp:286
+#: src/frontends/qt4/GuiGraphics.cpp:274 src/frontends/qt4/GuiGraphics.cpp:290
 #, c-format
 msgid "Stick with group '%1$s'"
 msgstr "Tetap dengan grup '%1$s'"
 
-#: src/frontends/qt4/GuiGraphics.cpp:272
+#: src/frontends/qt4/GuiGraphics.cpp:276
 #, c-format
 msgid "Assign to group '%1$s' anyway"
 msgstr "Masukkan dalam grup '%1$s'"
 
-#: src/frontends/qt4/GuiGraphics.cpp:280
+#: src/frontends/qt4/GuiGraphics.cpp:284
 #, c-format
 msgid ""
 "If you sign off this graphic from group '%1$s',\n"
@@ -27272,45 +27280,65 @@ msgstr ""
 "karena gambar ini hanya satu-satunya dalam grup.\n"
 "Apakah proses akan diteruskan?"
 
-#: src/frontends/qt4/GuiGraphics.cpp:288
+#: src/frontends/qt4/GuiGraphics.cpp:292
 #, c-format
 msgid "Sign off from group '%1$s'"
 msgstr "Keluar dari grup '%1$s'"
 
-#: src/frontends/qt4/GuiGraphics.cpp:328
+#: src/frontends/qt4/GuiGraphics.cpp:332
 msgid "Enter unique group name:"
 msgstr "Nama Grup:"
 
-#: src/frontends/qt4/GuiGraphics.cpp:333
+#: src/frontends/qt4/GuiGraphics.cpp:337
 msgid "Group already defined!"
 msgstr "Nama grup sudah ada !"
 
-#: src/frontends/qt4/GuiGraphics.cpp:334
+#: src/frontends/qt4/GuiGraphics.cpp:338
 #, c-format
 msgid "A graphics group with the name '%1$s' already exists."
 msgstr "Grup gambar dengan nama '%1$s' sudah ada."
 
-#: src/frontends/qt4/GuiGraphics.cpp:476 src/lengthcommon.cpp:44
+#: src/frontends/qt4/GuiGraphics.cpp:479
+#, fuzzy
+msgid "Set max. &width:"
+msgstr "&Lebar:"
+
+#: src/frontends/qt4/GuiGraphics.cpp:480
+#, fuzzy
+msgid "Set max. &height:"
+msgstr "Ti&nggi:"
+
+#: src/frontends/qt4/GuiGraphics.cpp:481
+#, fuzzy
+msgid "Maximal width of image in output"
+msgstr "Ukuran lebar gambar di output"
+
+#: src/frontends/qt4/GuiGraphics.cpp:482
+#, fuzzy
+msgid "Maximal height of image in output"
+msgstr "Ukuran tinggi gambar di output"
+
+#: src/frontends/qt4/GuiGraphics.cpp:504 src/lengthcommon.cpp:44
 msgid "bp"
 msgstr "bp"
 
-#: src/frontends/qt4/GuiGraphics.cpp:476 src/lengthcommon.cpp:44
+#: src/frontends/qt4/GuiGraphics.cpp:504 src/lengthcommon.cpp:44
 msgid "cm"
 msgstr "cm"
 
-#: src/frontends/qt4/GuiGraphics.cpp:476 src/lengthcommon.cpp:45
+#: src/frontends/qt4/GuiGraphics.cpp:504 src/lengthcommon.cpp:45
 msgid "mm"
 msgstr "mm"
 
-#: src/frontends/qt4/GuiGraphics.cpp:476 src/lengthcommon.cpp:45
+#: src/frontends/qt4/GuiGraphics.cpp:504 src/lengthcommon.cpp:45
 msgid "in[[unit of measure]]"
 msgstr "in[[ukuran]]"
 
-#: src/frontends/qt4/GuiGraphics.cpp:787
+#: src/frontends/qt4/GuiGraphics.cpp:813
 msgid "Select graphics file"
 msgstr "Pilih berkas gambar"
 
-#: src/frontends/qt4/GuiGraphics.cpp:799
+#: src/frontends/qt4/GuiGraphics.cpp:825
 msgid "Clipart|#C#c"
 msgstr "Clipart|#C#c"
 
@@ -30197,6 +30225,11 @@ msgstr "Ditemukan yang sesuai!"
 msgid "Can't add vertical grid lines in '%1$s'"
 msgstr "Tidak bisa menambah garis grid vertikal di '%1$s'"
 
+#: src/mathed/InsetMathBox.cpp:99
+#, fuzzy, c-format
+msgid "Box: %1$s"
+msgstr "Huruf: %1$s"
+
 #: src/mathed/InsetMathCases.cpp:110
 #, c-format
 msgid "No vertical grid lines in 'cases': feature %1$s"
@@ -30206,6 +30239,21 @@ msgstr "Tidak ada garis grid vertikal dalam  'cases': fitur %1$s"
 #, c-format
 msgid "Changing number of columns not allowed in 'cases': feature %1$s"
 msgstr "Merubah nomor kolom tidak diijinkan dalam  'cases': fitur %1$s"
+
+#: src/mathed/InsetMathColor.cpp:102
+#, fuzzy, c-format
+msgid "Color: %1$s"
+msgstr "Warna"
+
+#: src/mathed/InsetMathDecoration.cpp:172
+#, fuzzy, c-format
+msgid "Decoration: %1$s"
+msgstr "&Dekorasi:"
+
+#: src/mathed/InsetMathEnv.cpp:68
+#, fuzzy, c-format
+msgid "Environment: %1$s"
+msgstr "Lingkungan Gather"
 
 #: src/mathed/InsetMathGrid.cpp:1491
 msgid "Cursor not in table"
@@ -30268,8 +30316,8 @@ msgstr "Tidak bisa merubah kolom di '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Tidak bisa menambah garis grid horisontal di  '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1731
-#: src/mathed/InsetMathNest.cpp:1877
+#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1730
+#: src/mathed/InsetMathNest.cpp:1876
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Otomatis koreksi mati ('!' untuk menuliskan)"
 
@@ -30285,7 +30333,7 @@ msgstr "Masuk dalam mode teks matematika (textrm)"
 msgid "Regular expression editor mode"
 msgstr "Mode penyunting ekspresi reguler"
 
-#: src/mathed/InsetMathNest.cpp:1736 src/mathed/InsetMathNest.cpp:1879
+#: src/mathed/InsetMathNest.cpp:1735 src/mathed/InsetMathNest.cpp:1878
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Otomatis koreksi hidup (<spasi> untuk keluar)"
 
@@ -30301,10 +30349,20 @@ msgstr "PrettyRef"
 msgid "FormatRef: "
 msgstr "FormatRef: "
 
+#: src/mathed/InsetMathSize.cpp:107
+#, fuzzy, c-format
+msgid "Size: %1$s"
+msgstr "Tampilkan %1$s"
+
 #: src/mathed/InsetMathSubstack.cpp:85
 #, c-format
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "Tidak bisa merubah perataan horisontal di  '%1$s'"
+
+#: src/mathed/MathMacro.cpp:835 src/mathed/MathMacro.cpp:841
+#, fuzzy, c-format
+msgid "Macro: %1$s"
+msgstr " Makro: %1$s: "
 
 #: src/mathed/MathMacroTemplate.cpp:495
 msgid "optional"
@@ -30948,9 +31006,6 @@ msgstr "Pemakai tidak dikenal"
 
 #~ msgid "List of Changes"
 #~ msgstr "Daftar Perubahan"
-
-#~ msgid " Macro: %1$s: "
-#~ msgstr " Makro: %1$s: "
 
 #~ msgid "[[Replace with the code of your language]]"
 #~ msgstr "id"
