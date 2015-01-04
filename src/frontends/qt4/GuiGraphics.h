@@ -46,6 +46,8 @@ private Q_SLOTS:
 	void on_scaleCB_toggled(bool);
 	void on_WidthCB_toggled(bool);
 	void on_HeightCB_toggled(bool);
+	void updateAspectRatioStatus();
+	void on_aspectratio_toggled(bool);
 	void on_angle_textChanged(const QString &);
 
 private:
