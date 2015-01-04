@@ -62,6 +62,18 @@ AC_MSG_RESULT([$withval])
 ])
 
 
+dnl Check whether to configure for Qt5. Default is Qt4.
+dnl
+AC_DEFUN([LYX_CHECK_QT5],[
+AC_MSG_CHECKING([whether Qt5 is requested])
+AC_ARG_ENABLE([qt5],
+  [  --enable-qt5            use Qt5 for building],
+  USE_QT5=$enableval, USE_QT5=no)
+AC_MSG_RESULT([$USE_QT5])
+AC_SUBST([USE_QT5])
+])
+
+
 dnl Usage: LYX_WARNING(message)  Displays the warning "message" and sets the
 dnl flag lyx_warning to yes.
 AC_DEFUN([LYX_WARNING],[
@@ -219,6 +231,9 @@ AC_ARG_ENABLE(concept-checks,
   AC_HELP_STRING([--enable-concept-checks],[enable concept checks]),,
   [AS_CASE([$build_type], [dev*|pre*], [enable_concept_checks=yes], 
 	  [enable_concept_checks=no])]
+  if test x$USE_QT5 = xyes ; then
+      enable_concept_checks=no
+  fi
 )
 
 ### set up optimization
@@ -285,6 +300,9 @@ if test x$GXX = xyes; then
     fi
   fi
   if test "$ac_env_CPPFLAGS_set" != set; then
+    if test x$USE_QT5 = xyes ; then
+        AS_CASE([$host], [*mingw*|*cygwin*], [], [CPPFLAGS="-fPIC $CPPFLAGS"])
+    fi
     if test x$enable_warnings = xyes ; then
         case $gxx_version in
             3.1*|3.2*|3.3*)

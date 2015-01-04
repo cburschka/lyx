@@ -112,14 +112,6 @@ EOF
 dnl start here
 AC_DEFUN([QT_DO_IT_ALL],
 [
-	AC_MSG_CHECKING([whether Qt5 is requested])
-	dnl Default is Qt4
-	AC_ARG_ENABLE([qt5],
-	  [  --enable-qt5            use Qt5 for building],
-	  USE_QT5=$enableval, USE_QT5=no)
-	AC_MSG_RESULT([$USE_QT5])
-	AC_SUBST([USE_QT5])
-
 	dnl this variable is precious
 	AC_ARG_VAR(QTDIR, [the place where the Qt files are, e.g. /usr/lib/qt4])
 
