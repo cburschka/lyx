@@ -212,6 +212,10 @@ while [ $# -gt 0 ]; do
 		LyxBuildDir=$(echo ${1}|cut -d= -f2)
 		shift
 		;;
+	--with-util-dir=*)
+		LyXUtilitiesDir=$(echo ${1}|cut -d= -f2)
+		shift
+		;;
 	--help|--help=*)
 		usage
 		;;
@@ -251,19 +255,21 @@ aspellstrip=
 LyxBuildDir=${LyxBuildDir:-$(dirname "${LyxSourceDir}")/lyx-build}
 DMGLocation=${DMGLocation:-"${LyxBuildDir}"}
 
+LyXUtilitiesDir=${LyXUtilitiesDir:-"${LyxBuildDir}"/utilities}
+
 GettextSourceDir=${GETTEXTDIR:-$(dirname "${LyxSourceDir}")/${GettextSource}}
 GettextBuildDir="${LyxBuildDir}"/"${GettextSource}"
-GettextInstallDir=${GettextInstallDir:-"${LyxBuildDir}"/utilities}
+GettextInstallDir=${GettextInstallDir:-"${LyXUtilitiesDir}"}
 GettextInstallHdr="${GettextInstallDir}/include/libintl.h"
 
 ASpellSourceDir=${ASPELLDIR:-$(dirname "${LyxSourceDir}")/${ASpellSource}}
 ASpellBuildDir="${ASpellSourceDir}"
-ASpellInstallDir=${ASpellInstallDir:-"${LyxBuildDir}"/utilities}
+ASpellInstallDir=${ASpellInstallDir:-"${LyXUtilitiesDir}"}
 ASpellInstallHdr="${ASpellInstallDir}/include/aspell.h"
 
 HunSpellSourceDir=${HUNSPELLDIR:-$(dirname "${LyxSourceDir}")/${HunSpellSource}}
 HunSpellBuildDir="${HunSpellSourceDir}"
-HunSpellInstallDir=${HunSpellInstallDir:-"${LyxBuildDir}"/utilities}
+HunSpellInstallDir=${HunSpellInstallDir:-"${LyXUtilitiesDir}"}
 HunSpellInstallHdr="${HunSpellInstallDir}/include/hunspell/hunspell.h"
 
 Qt4SourceDir=${QT4SOURCEDIR:-$(dirname "${LyxSourceDir}")/${Qt4SourceVersion}}
