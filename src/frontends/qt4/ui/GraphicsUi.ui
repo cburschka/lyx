@@ -148,7 +148,7 @@
           <item row="0" column="0" >
            <widget class="QCheckBox" name="scaleCB" >
             <property name="text" >
-             <string>&amp;Scale Graphics (%):</string>
+             <string>&amp;Scale graphics (%):</string>
             </property>
            </widget>
           </item>
@@ -247,7 +247,7 @@
              <string>Angle to rotate image by</string>
             </property>
             <property name="text" >
-             <string>A&amp;ngle (Degrees):</string>
+             <string>A&amp;ngle (degrees):</string>
             </property>
             <property name="buddy" >
              <cstring>angle</cstring>
@@ -524,7 +524,7 @@
           <enum>Qt::StrongFocus</enum>
          </property>
          <property name="toolTip" >
-          <string>Enable LyX to preview this graphics, only if graphics previewing is not disabled at application level (see Preference dialog).</string>
+          <string>Enable LyX to preview this graphics, if graphics previewing is not disabled at application level (see Preferences dialog).</string>
          </property>
          <property name="title" >
           <string>Sho&amp;w in LyX</string>
@@ -566,7 +566,7 @@
              <string>Percentage to scale by in LyX</string>
             </property>
             <property name="text" >
-             <string>Sca&amp;le on Screen (%):</string>
+             <string>Sca&amp;le on screen (%):</string>
             </property>
             <property name="buddy" >
              <cstring>displayscale</cstring>

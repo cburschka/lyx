@@ -50,7 +50,7 @@
    <item row="1" column="0">
     <widget class="QLabel" name="typeL">
      <property name="text">
-      <string>&amp;Quote Style:</string>
+      <string>&amp;Quote style:</string>
      </property>
      <property name="buddy">
       <cstring>quoteStyleCO</cstring>
@@ -78,7 +78,7 @@
       <item row="0" column="0" colspan="2">
        <widget class="QRadioButton" name="defaultencodingRB">
         <property name="text">
-         <string>Language &amp;Default</string>
+         <string>Language &amp;default</string>
         </property>
         <property name="checked">
          <bool>true</bool>

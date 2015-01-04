@@ -43,7 +43,7 @@
            <string>Specify the default output format (for view/update)</string>
           </property>
           <property name="text">
-           <string>De&amp;fault Output Format:</string>
+           <string>De&amp;fault output format:</string>
           </property>
           <property name="buddy">
            <cstring>defaultFormatCO</cstring>
@@ -68,7 +68,7 @@
       <string>Enable forward/reverse search between editor and output (e.g., SyncTeX)</string>
      </property>
      <property name="title">
-      <string>S&amp;ynchronize with Output</string>
+      <string>S&amp;ynchronize with output</string>
      </property>
      <property name="flat">
       <bool>true</bool>
@@ -85,7 +85,7 @@
         <item>
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>C&amp;ustom Macro:</string>
+           <string>C&amp;ustom macro:</string>
           </property>
           <property name="buddy">
            <cstring>synccustomCB</cstring>
