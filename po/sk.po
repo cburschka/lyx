@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-01-04 12:46-0500\n"
+"POT-Creation-Date: 2015-01-04 11:52+0100\n"
 "PO-Revision-Date: 2014-11-14 18:39+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -24493,8 +24493,8 @@ msgid "Use \"...\" to shorten long completions."
 msgstr "Použiť \"...\" pre skrátenie dlhých doplnení."
 
 #: src/LyXRC.cpp:3348
-msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
-msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na \\Rightarrow."
+msgid "Allow TeXMacs shorthand, like => converting to Rightarrow."
+msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na Rightarrow."
 
 #: src/LyXRC.cpp:3352
 #, c-format
@@ -26746,24 +26746,20 @@ msgid "A graphics group with the name '%1$s' already exists."
 msgstr "Skupina obrázkov s menom '%1$s' už existuje."
 
 #: src/frontends/qt4/GuiGraphics.cpp:479
-#, fuzzy
 msgid "Set max. &width:"
-msgstr "Nastaviť šír&ku:"
+msgstr "Nastaviť max. šír&ku:"
 
 #: src/frontends/qt4/GuiGraphics.cpp:480
-#, fuzzy
 msgid "Set max. &height:"
-msgstr "Nastaviť &výšku:"
+msgstr "Nastaviť max. &výšku:"
 
 #: src/frontends/qt4/GuiGraphics.cpp:481
-#, fuzzy
 msgid "Maximal width of image in output"
-msgstr "Šírka obrázku na výstupe"
+msgstr "Maximálna šírka obrázku na výstupe"
 
 #: src/frontends/qt4/GuiGraphics.cpp:482
-#, fuzzy
 msgid "Maximal height of image in output"
-msgstr "Výška obrázku na výstupe"
+msgstr "Maximálna výška obrázku na výstupe"
 
 #: src/frontends/qt4/GuiGraphics.cpp:504 src/lengthcommon.cpp:44
 msgid "bp"
@@ -30113,8 +30109,8 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
-#~ msgid "Allow TeXMacs shorthand, like => converting to Rightarrow."
-#~ msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na Rightarrow."
+#~ msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
+#~ msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na \\Rightarrow."
 
 #~ msgid "[LIST of PDF Comments]"
 #~ msgstr "[Zoznam PDF Komentárov]"
