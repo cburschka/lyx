@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2014-12-08 18:03+0100\n"
+"POT-Creation-Date: 2015-01-04 11:17+0100\n"
 "PO-Revision-Date: 2014-11-14 18:39+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -137,8 +137,8 @@ msgstr ""
 "Tu môžte definovať alternatívny program alebo špecifické možnosti pre BibTeX."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:156 src/frontends/qt4/ui/PrefLatexUi.ui:73
-msgid "Bibliography generation"
-msgstr "Generácia bibliografie"
+msgid "Bibliography Generation"
+msgstr "Generácia Bibliografie"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:167 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:85
@@ -673,7 +673,7 @@ msgid "Huger"
 msgstr "Ozrutné"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:144
-msgid "&Custom Bullet:"
+msgid "&Custom bullet:"
 msgstr "&Vlastná odrážka:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:174
@@ -966,8 +966,8 @@ msgid "Search as you &type"
 msgstr "V&yhľadávať pri zadávaní"
 
 #: src/frontends/qt4/ui/ColorUi.ui:27
-msgid "Font colors"
-msgstr "Farby písma"
+msgid "Font Colors"
+msgstr "Farby Písma"
 
 #: src/frontends/qt4/ui/ColorUi.ui:38
 msgid "Main text:"
@@ -1003,8 +1003,8 @@ msgid "&Change..."
 msgstr "&Zmena..."
 
 #: src/frontends/qt4/ui/ColorUi.ui:165
-msgid "Background colors"
-msgstr "Farby pozadia"
+msgid "Background Colors"
+msgstr "Farby Pozadia"
 
 #: src/frontends/qt4/ui/ColorUi.ui:176 lib/layouts/europecv.layout:124
 msgid "Page:"
@@ -1544,7 +1544,7 @@ msgid "Select the default family for the document"
 msgstr "Nastavte štandardnú rodinu písma pre dokument"
 
 #: src/frontends/qt4/ui/FontUi.ui:60
-msgid "&Base Size:"
+msgid "&Base size:"
 msgstr ""
 "&Základná\n"
 "veľkosť:"
@@ -1624,15 +1624,15 @@ msgid "Use a real small caps shape, if the font provides one"
 msgstr "Použiť reálne kapitálky v prípade, že sú fontom poskytované"
 
 #: src/frontends/qt4/ui/FontUi.ui:231
-msgid "Use true S&mall Caps"
-msgstr "Použiť pravé Malé &kapitálky"
+msgid "Use true s&mall caps"
+msgstr "Použiť pravé malé &kapitálky"
 
 #: src/frontends/qt4/ui/FontUi.ui:238
 msgid "Use old style instead of lining figures"
 msgstr "Použiť číslice minuskové, nie verzálové"
 
 #: src/frontends/qt4/ui/FontUi.ui:241
-msgid "Use &Old Style Figures"
+msgid "Use &old style figures"
 msgstr "Použiť &minuskové číslice (old style figures)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
@@ -1657,7 +1657,7 @@ msgid "Set &height:"
 msgstr "Nastaviť &výšku:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:151
-msgid "&Scale Graphics (%):"
+msgid "&Scale graphics (%):"
 msgstr "&Mierka grafiky (%):"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:161
@@ -1692,7 +1692,7 @@ msgid "Or&igin:"
 msgstr "Stre&dobod:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:250
-msgid "A&ngle (Degrees):"
+msgid "A&ngle (degrees):"
 msgstr "U&hol (stupne):"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:263
@@ -1733,8 +1733,8 @@ msgstr "LaTe&X voľby:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:527
 msgid ""
-"Enable LyX to preview this graphics, only if graphics previewing is not "
-"disabled at application level (see Preference dialog)."
+"Enable LyX to preview this graphics, if graphics previewing is not disabled "
+"at application level (see Preferences dialog)."
 msgstr ""
 "Umožniť náhľad tohoto obrázku len v prípade že náhľad obrázkov je v "
 "Nastaveniach povolený."
@@ -1742,6 +1742,10 @@ msgstr ""
 #: src/frontends/qt4/ui/GraphicsUi.ui:530
 msgid "Sho&w in LyX"
 msgstr "Zobraziť v L&yXe"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:569
+msgid "Sca&le on screen (%):"
+msgstr "Mierka na o&brazovke (%):"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:595
 msgid "Assign the graphic to a group of graphics that share the same settings"
@@ -1979,8 +1983,8 @@ msgstr ""
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:161
-msgid "Index generation"
-msgstr "Generácia registrov"
+msgid "Index Generation"
+msgstr "Generácia Registrov"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
@@ -2071,8 +2075,8 @@ msgid "New Inset"
 msgstr "Nová vložka"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:19
-msgid "Document &class"
-msgstr "Trieda &dokumentu"
+msgid "Document &Class"
+msgstr "&Trieda Dokumentu"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:44
 msgid "Click to select a local document class definition file"
@@ -2083,8 +2087,8 @@ msgid "&Local Layout..."
 msgstr "&Lokálna schéma..."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:57
-msgid "Class options"
-msgstr "Nastavenie triedy"
+msgid "Class Options"
+msgstr "Nastavenie Triedy"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:63
 msgid "Enable to use the options that are predefined in the layout file"
@@ -2135,7 +2139,7 @@ msgid "&Use refstyle (not prettyref) for cross-references"
 msgstr "&Použiť refstyle (nie prettyref) pre krížové referencie"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:53
-msgid "&Quote Style:"
+msgid "&Quote style:"
 msgstr "&Typ úvodzoviek:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:66
@@ -2143,7 +2147,7 @@ msgid "Encoding"
 msgstr "Kódovanie"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:81
-msgid "Language &Default"
+msgid "Language &default"
 msgstr "Štan&dardné pre daný jazyk"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:104
@@ -2432,7 +2436,7 @@ msgid "Use the margin settings provided by the document class"
 msgstr "Použi nastavenie okrajov z triedy dokumentu"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:31
-msgid "&Default Margins"
+msgid "&Default margins"
 msgstr "Štan&dardné okraje"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:89
@@ -2464,8 +2468,8 @@ msgid "&Foot skip:"
 msgstr "&Medzera k päte:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:180
-msgid "&Column Sep:"
-msgstr "&Rozostup stĺpcov:"
+msgid "&Column sep:"
+msgstr "&Separácia stĺpcov:"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:25
 msgid "Master Document Output"
@@ -2560,15 +2564,15 @@ msgid "All packages:"
 msgstr "Všetky balíky:"
 
 #: src/frontends/qt4/ui/MathsUi.ui:52
-msgid "Load a&utomatically"
-msgstr "Použiť a&utomaticky"
+msgid "Load A&utomatically"
+msgstr "Použiť A&utomaticky"
 
 #: src/frontends/qt4/ui/MathsUi.ui:59
-msgid "Load alwa&ys"
-msgstr "Vžd&y použiť"
+msgid "Load Alwa&ys"
+msgstr "Vžd&y Použiť"
 
 #: src/frontends/qt4/ui/MathsUi.ui:66
-msgid "Do &not load"
+msgid "Do &Not Load"
 msgstr "&Nepoužívať"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:60
@@ -2650,8 +2654,8 @@ msgid "Specify the default output format (for view/update)"
 msgstr "Určite štandardný výstupný formát (pre náhľad/aktualizáciu)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:46
-msgid "De&fault Output Format:"
-msgstr "Štandardný Výstupný &Formát:"
+msgid "De&fault output format:"
+msgstr "Štandardný výstupný &formát:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:68
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
@@ -2659,12 +2663,12 @@ msgstr ""
 "Umožniť dopredu/zvratne hľadať medzi editorom a výstupom (napr., SyncTeX)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:71
-msgid "S&ynchronize with Output"
-msgstr "S&ynchronizovať s Výstupom"
+msgid "S&ynchronize with output"
+msgstr "S&ynchronizovať s výstupom"
 
 #: src/frontends/qt4/ui/OutputUi.ui:88
-msgid "C&ustom Macro:"
-msgstr "&Vlastné Makro:"
+msgid "C&ustom macro:"
+msgstr "&Vlastné makro:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:98
 msgid "Custom LaTeX preamble macro"
@@ -2802,8 +2806,8 @@ msgid "&Bookmarks"
 msgstr "&Záložky"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:293
-msgid "G&enerate Bookmarks (ToC)"
-msgstr "Vytvoriť zá&ložky (ToC)"
+msgid "G&enerate bookmarks (toc)"
+msgstr "Vytvoriť zá&ložky (toc)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:314
 msgid "&Numbered bookmarks"
@@ -2818,8 +2822,8 @@ msgid "Number of levels"
 msgstr "Počet úrovní"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:388
-msgid "Additional o&ptions"
-msgstr "&Dodatočné možnosti"
+msgid "Additional O&ptions"
+msgstr "&Dodatočné Možnosti"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:417
 msgid "e.g.: pdfstartview=XYZ, plainpages=false, pdfpagelabels"
@@ -3140,15 +3144,15 @@ msgid "&Enabled"
 msgstr "Z&apnutá"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
-msgid "Maximum A&ge (in days):"
+msgid "Maximum a&ge (in days):"
 msgstr "Živo&tnosť (v dňoch):"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:31
-msgid "Display &Graphics"
+msgid "Display &graphics"
 msgstr "Zobraziť &grafiku"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:51
-msgid "Instant &Preview:"
+msgid "Instant &preview:"
 msgstr "&Okamžitý náhľad:"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:62 src/Font.cpp:76
@@ -3165,7 +3169,7 @@ msgid "On"
 msgstr "Zapnutý"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:80
-msgid "Preview Si&ze:"
+msgid "Preview si&ze:"
 msgstr "Mie&rka náhľadu:"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:96
@@ -3181,8 +3185,8 @@ msgid "&Mark end of paragraphs"
 msgstr "O&značiť konce odstavcov"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:26
-msgid "Session handling"
-msgstr "Riadenie sedenia"
+msgid "Session Handling"
+msgstr "Riadenie Sedenia"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:38
 msgid "Restore window layouts and &geometries"
@@ -3206,8 +3210,8 @@ msgid "&Clear all session information"
 msgstr "&Zmazať všetky informácie týkajúce sa sedenia"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:85
-msgid "Backup && saving"
-msgstr "Zálohovanie && ukladanie"
+msgid "Backup && Saving"
+msgstr "Zálohovanie && Ukladanie"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:94
 msgid "Backup &original documents when saving"
@@ -3226,8 +3230,8 @@ msgid "&Save documents compressed by default"
 msgstr "Štandardne &ukladať dokumenty komprimované"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
-msgid "Windows && work area"
-msgstr "Okná && pracovná plocha"
+msgid "Windows && Work Area"
+msgstr "Okná && Pracovná Plocha"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:164
 msgid "Open documents in &tabs"
@@ -3380,8 +3384,8 @@ msgid "Vector &graphics format"
 msgstr "&Vektorový formát obrázku"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:97
-msgid "S&hort Name:"
-msgstr "K&rátke Meno:"
+msgid "S&hort name:"
+msgstr "K&rátke meno:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:110
 msgid "E&xtensions:"
@@ -3493,8 +3497,8 @@ msgstr ""
 "zrýchlia, nižšie spomalia."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:203
-msgid "Scroll wheel zoom"
-msgstr "Lupa pomocou rolovacieho tlačítka"
+msgid "Scroll Wheel Zoom"
+msgstr "Lupa pomocou Rolovacieho Tlačítka"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:236
 msgid "Enable"
@@ -3609,8 +3613,8 @@ msgid "Mark &foreign languages"
 msgstr "Označiť &cudzie jazyky"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:217
-msgid "Right-to-left language support"
-msgstr "Podpora písania sprava-doľava"
+msgid "Right-to-Left Language Support"
+msgstr "Podpora Písania Sprava-Doľava"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:237
 msgid "Cursor movement:"
@@ -3760,8 +3764,8 @@ msgstr ""
 "Čo robiť pri pokuse o prepísanie existujúcich súborov počas exportovania."
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:151
-msgid "Forward search"
-msgstr "Dopredu hľadať"
+msgid "Forward Search"
+msgstr "Dopredu Hľadať"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:171
 msgid "DV&I command:"
@@ -4128,8 +4132,8 @@ msgid "Use icons from system's &theme"
 msgstr "Použiť s&ystémové ikony"
 
 #: src/frontends/qt4/ui/PrefUi.ui:120
-msgid "Context help"
-msgstr "Kontextovo závislá pomoc"
+msgid "Context Help"
+msgstr "Kontextovo závislá Pomoc"
 
 #: src/frontends/qt4/ui/PrefUi.ui:138
 msgid ""
@@ -4925,8 +4929,8 @@ msgid "Show &path"
 msgstr "Zobraziť &cestu"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:20
-msgid "Separate paragraphs with"
-msgstr "Ako oddeliť odstavce"
+msgid "Paragraph Separation"
+msgstr "Delenie Odstavcov"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:35
 msgid "Indent consecutive paragraphs"
@@ -14729,10 +14733,6 @@ msgstr "Chýbajú Voľby Poznámky k Obrázku"
 #: lib/layouts/todonotes.module:112
 msgid "TODO"
 msgstr "TODO"
-
-#: lib/layouts/todonotes.module:116
-msgid "MakeTableOfToDos"
-msgstr "ZrobiťTodoTabuľku"
 
 #: lib/layouts/todonotes.module:120
 msgid "Todo[Inline]"
@@ -27128,6 +27128,22 @@ msgstr "Skupina je už definovaná!"
 msgid "A graphics group with the name '%1$s' already exists."
 msgstr "Skupina obrázkov s menom '%1$s' už existuje."
 
+#: src/frontends/qt4/GuiGraphics.cpp:479
+msgid "Set max. &width:"
+msgstr "Nastaviť max. šír&ku:"
+
+#: src/frontends/qt4/GuiGraphics.cpp:480
+msgid "Set max. &height:"
+msgstr "Nastaviť max. &výšku:"
+
+#: src/frontends/qt4/GuiGraphics.cpp:481
+msgid "Maximal width of image in output"
+msgstr "Maximálna šírka obrázku na výstupe"
+
+#: src/frontends/qt4/GuiGraphics.cpp:482
+msgid "Maximal height of image in output"
+msgstr "Maximálna výška obrázku na výstupe"
+
 #: src/frontends/qt4/GuiGraphics.cpp:476 src/lengthcommon.cpp:44
 msgid "bp"
 msgstr "bp"
@@ -30482,6 +30498,18 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "Document &class"
+#~ msgstr "Trieda &dokumentu"
+
+#~ msgid "Forward search"
+#~ msgstr "Dopredu hľadať"
+
+#~ msgid "Separate paragraphs with"
+#~ msgstr "Ako oddeliť odstavce"
+
+#~ msgid "MakeTableOfToDos"
+#~ msgstr "ZrobiťTodoTabuľku"
+
 #~ msgid "Scaling"
 #~ msgstr "Zmena mierky atď..."
 
@@ -33099,3 +33127,114 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
 #~ msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na \\Rightarrow."
+
+#~ msgid "Bibliography generation"
+#~ msgstr "Generácia bibliografie"
+
+#~ msgid "&Custom Bullet:"
+#~ msgstr "&Vlastná odrážka:"
+
+#~ msgid "Font colors"
+#~ msgstr "Farby písma"
+
+#~ msgid "Background colors"
+#~ msgstr "Farby pozadia"
+
+#~ msgid "&Base Size:"
+#~ msgstr ""
+#~ "&Základná\n"
+#~ "veľkosť:"
+
+#~ msgid "Use true S&mall Caps"
+#~ msgstr "Použiť pravé Malé &kapitálky"
+
+#~ msgid "Use &Old Style Figures"
+#~ msgstr "Použiť &minuskové číslice (old style figures)"
+
+#~ msgid "&Scale Graphics (%):"
+#~ msgstr "&Mierka grafiky (%):"
+
+#~ msgid "A&ngle (Degrees):"
+#~ msgstr "U&hol (stupne):"
+
+#~ msgid ""
+#~ "Enable LyX to preview this graphics, only if graphics previewing is not "
+#~ "disabled at application level (see Preference dialog)."
+#~ msgstr ""
+#~ "Umožniť náhľad tohoto obrázku len v prípade že náhľad obrázkov je v "
+#~ "Nastaveniach povolený."
+
+#~ msgid "Index generation"
+#~ msgstr "Generácia registrov"
+
+#~ msgid "Class options"
+#~ msgstr "Nastavenie triedy"
+
+#~ msgid "&Quote Style:"
+#~ msgstr "&Typ úvodzoviek:"
+
+#~ msgid "Language &Default"
+#~ msgstr "Štan&dardné pre daný jazyk"
+
+#~ msgid "&Default Margins"
+#~ msgstr "Štan&dardné okraje"
+
+#~ msgid "&Column Sep:"
+#~ msgstr "&Rozostup stĺpcov:"
+
+#~ msgid "Load a&utomatically"
+#~ msgstr "Použiť a&utomaticky"
+
+#~ msgid "Load alwa&ys"
+#~ msgstr "Vžd&y použiť"
+
+#~ msgid "Do &not load"
+#~ msgstr "&Nepoužívať"
+
+#~ msgid "De&fault Output Format:"
+#~ msgstr "Štandardný Výstupný &Formát:"
+
+#~ msgid "S&ynchronize with Output"
+#~ msgstr "S&ynchronizovať s Výstupom"
+
+#~ msgid "C&ustom Macro:"
+#~ msgstr "&Vlastné Makro:"
+
+#~ msgid "G&enerate Bookmarks (ToC)"
+#~ msgstr "Vytvoriť zá&ložky (ToC)"
+
+#~ msgid "Additional o&ptions"
+#~ msgstr "&Dodatočné možnosti"
+
+#~ msgid "Maximum A&ge (in days):"
+#~ msgstr "Živo&tnosť (v dňoch):"
+
+#~ msgid "Display &Graphics"
+#~ msgstr "Zobraziť &grafiku"
+
+#~ msgid "Instant &Preview:"
+#~ msgstr "&Okamžitý náhľad:"
+
+#~ msgid "Preview Si&ze:"
+#~ msgstr "Mie&rka náhľadu:"
+
+#~ msgid "Session handling"
+#~ msgstr "Riadenie sedenia"
+
+#~ msgid "Backup && saving"
+#~ msgstr "Zálohovanie && ukladanie"
+
+#~ msgid "Windows && work area"
+#~ msgstr "Okná && pracovná plocha"
+
+#~ msgid "S&hort Name:"
+#~ msgstr "K&rátke Meno:"
+
+#~ msgid "Scroll wheel zoom"
+#~ msgstr "Lupa pomocou rolovacieho tlačítka"
+
+#~ msgid "Right-to-left language support"
+#~ msgstr "Podpora písania sprava-doľava"
+
+#~ msgid "Context help"
+#~ msgstr "Kontextovo závislá pomoc"
