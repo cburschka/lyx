@@ -38,6 +38,12 @@ Language const * latex_language = 0;
 Language const * reset_language = 0;
 
 
+std::string const Language::babel() const
+{
+	return deep_copy(babel_);
+}
+
+
 bool Language::isPolyglossiaExclusive() const
 {
 	return babel().empty() && !polyglossia().empty() && requires().empty();

@@ -35,7 +35,7 @@ public:
 	/// LyX language name
 	std::string const & lang() const { return lang_; }
 	/// Babel language name
-	std::string const & babel() const { return babel_; }
+	std::string const babel() const;
 	/// polyglossia language name
 	std::string const & polyglossia() const { return polyglossia_name_; }
 	/// polyglossia language options

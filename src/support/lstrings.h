@@ -24,6 +24,19 @@
 namespace lyx {
 namespace support {
 
+/// Helper to enforce creating a deep copy of lyx::docstring or std::string
+/// even if std::basic_string uses copy-on-write as in GNU libstdc++.
+/// \sa https://gcc.gnu.org/bugzilla/show_bug.cgi?id=21334
+template<typename Char, typename Traits, typename Alloc>
+typename std::basic_string<Char, Traits, Alloc>
+deep_copy(typename std::basic_string<Char, Traits, Alloc> const & src)
+{
+	typedef typename std::basic_string<Char, Traits, Alloc> String;
+	// Use constructor with two arguments to support strings with embedded
+	// \0 characters
+	return String(src.c_str(), src.length());
+}
+
 /// Compare \p s and \p s2, ignoring the case.
 /// Does not depend on the locale.
 int compare_no_case(docstring const & s, docstring const & s2);
