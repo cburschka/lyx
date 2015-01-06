@@ -39,9 +39,6 @@ using namespace lyx::support;
 
 namespace lyx {
 
-// special columntypes
-extern map<char, int> special_columns;
-
 Preamble preamble;
 
 namespace {
@@ -399,6 +396,15 @@ Author const & Preamble::getAuthor(std::string const & name) const
 			return *it;
 	static Author const dummy;
 	return dummy;
+}
+
+
+int Preamble::getSpecialTableColumnArguments(char c) const
+{
+	map<char, int>::const_iterator it = special_columns_.find(c);
+	if (it == special_columns_.end())
+		return -1;
+	return it->second;
 }
 
 
@@ -1240,7 +1246,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
                      TeX2LyXDocClass & tc)
 {
 	// initialize fixed types
-	special_columns['D'] = 3;
+	special_columns_['D'] = 3;
 	bool is_full_document = false;
 	bool is_lyx_file = false;
 	bool in_lyx_preamble = false;
@@ -1705,7 +1711,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				istringstream is(string(opts, 1));
 				is >> nargs;
 			}
-			special_columns[name[0]] = nargs;
+			special_columns_[name[0]] = nargs;
 			h_preamble << "\\newcolumntype{" << name << "}";
 			if (nargs)
 				h_preamble << "[" << nargs << "]";

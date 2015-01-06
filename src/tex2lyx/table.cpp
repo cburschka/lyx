@@ -31,9 +31,6 @@ using namespace std;
 
 namespace lyx {
 
-// filled in preamble.cpp
-map<char, int> special_columns;
-
 
 namespace {
 
@@ -420,28 +417,21 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 				next.special += t.character();
 				next.special += '{' + p.verbatim_item() + '}';
 				break;
-			default:
+			default: {
 				// try user defined column types
-				if (special_columns.find(t.character()) !=
-				    special_columns.end()) {
-					ci2special(next);
-					next.special += t.character();
-					int const nargs =
-						special_columns[t.character()];
-					for (int i = 0; i < nargs; ++i)
-						next.special += '{' +
-							p.verbatim_item() +
-							'}';
-					colinfo.push_back(next);
-					next = ColInfo();
-				} else {
-					// unknown column specifier, assume no arguments
-					ci2special(next);
-					next.special += t.character();
-					colinfo.push_back(next);
-					next = ColInfo();
-				}
+				// unknown column types (nargs == -1) are
+				// assumed to consume no arguments
+				ci2special(next);
+				next.special += t.character();
+				int const nargs =
+					preamble.getSpecialTableColumnArguments(t.character());
+				for (int i = 0; i < nargs; ++i)
+					next.special += '{' +
+						p.verbatim_item() + '}';
+				colinfo.push_back(next);
+				next = ColInfo();
 				break;
+			}
 			}
 	}
 

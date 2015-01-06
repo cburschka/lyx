@@ -85,6 +85,9 @@ public:
 	void registerAuthor(std::string const & name);
 	/// Get author named \p name (must be registered first)
 	Author const & getAuthor(std::string const & name) const;
+	/// Get number of arguments of special table column type \c or -1
+	/// if no column type \p c exists
+	int getSpecialTableColumnArguments(char c) const;
 
 	/// Parses the LaTeX preamble into internal data
 	void parse(Parser & p, std::string const & forceclass,
@@ -214,7 +217,10 @@ private:
 	///
 	void handle_if(Parser & p, bool in_lyx_preamble);
 
+	///
 	AuthorList authors_;
+	/// special table column types
+	std::map<char, int> special_columns_;
 };
 
 
