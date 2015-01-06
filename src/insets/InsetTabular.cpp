@@ -3875,7 +3875,6 @@ void InsetTabular::edit(Cursor & cur, bool front, EntryDirection)
 {
 	//lyxerr << "InsetTabular::edit: " << this << endl;
 	cur.finishUndo();
-	//cur.setSelection(false);
 	cur.push(*this);
 	if (front) {
 		if (isRightToLeft(cur))
