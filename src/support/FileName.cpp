@@ -18,7 +18,6 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/mutex.h"
-#include "support/qstring_helpers.h"
 #include "support/os.h"
 #include "support/Package.h"
 #include "support/qstring_helpers.h"
