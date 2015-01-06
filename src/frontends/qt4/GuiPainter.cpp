@@ -465,15 +465,16 @@ int GuiPainter::text(int x, int y, docstring const & str, Font const & f,
 	// First the part in other color
 	Color const orig = fi.realColor();
 	fi.setPaintColor(other);
-	setClipRect(QRect(x + xmin, y - ascent, xmax - xmin, height));
+	QRegion const clip(x + xmin, y - ascent, xmax - xmin, height);
+	setClipRegion(clip);
 	int const textwidth = text(x, y, str, fi, rtl);
 
 	// Then the part in normal color
-	// Note that in Qt5, it is not possible to use Qt::UniteClip
+	// Note that in Qt5, it is not possible to use Qt::UniteClip,
+	// therefore QRegion is used.
 	fi.setPaintColor(orig);
-	setClipRect(QRect(x, y - ascent, xmin, height));
-	text(x, y, str, fi, rtl);
-	setClipRect(QRect(x + xmax, y - ascent, textwidth - xmax, height));
+	QRegion region(viewport());
+	setClipRegion(region - clip);
 	text(x, y, str, fi, rtl);
 	setClipping(false);
 
