@@ -24,16 +24,35 @@ AM_CPPFLAGS +=  $(BOOST_INCLUDES)
 
 if MONOLITHIC_BOOST
 
+if LYX_USE_STD_REGEX
+
+liblyxboost_a_SOURCES = \
+	lyxboostsignals.cpp
+
+else
+
 liblyxboost_a_SOURCES = \
 	lyxboost.cpp \
 	libs/regex/src/instances.cpp \
 	libs/regex/src/cpp_regex_traits.cpp \
 	libs/regex/src/c_regex_traits.cpp 
 
+endif #LYX_USE_STD_REGEX
+
+else
+
+if LYX_USE_STD_REGEX
+
+liblyxboost_a_SOURCES = \
+	libs/signals/src/connection.cpp \
+	libs/signals/src/named_slot_map.cpp \
+	libs/signals/src/signal_base.cpp \
+	libs/signals/src/slot.cpp \
+	libs/signals/src/trackable.cpp
+
 else
 
 liblyxboost_a_SOURCES = \
-	\
 	libs/regex/src/internals.hpp \
 	libs/regex/src/c_regex_traits.cpp \
 	libs/regex/src/cpp_regex_traits.cpp \
@@ -55,4 +74,7 @@ liblyxboost_a_SOURCES = \
 	libs/signals/src/slot.cpp \
 	libs/signals/src/trackable.cpp
 
-endif
+endif #LYX_USE_STD_REGEX
+
+
+endif #MONOLITHIC_BOOST

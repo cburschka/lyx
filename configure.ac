@@ -285,15 +285,6 @@ char * strerror(int n);
 #define BOOST_NO_WSTRING 1
 #define BOOST_SIGNALS_NO_DEPRECATION_WARNING 1
 
-// <regex> in gcc is unusable in versions less than 4.9.0
-// see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
-// clang defines __GNUC__ but how do the versions match?
-#ifndef LYX_USE_STD_REGEX
-#  if (__GNUC__ == 4 && __GNUC_MINOR__ >= 9) || __GNUC__ > 4 || defined(USE_LLVM_LIBCPP)
-#    define LYX_USE_STD_REGEX
-#  endif
-#endif
-
 #ifdef __CYGWIN__
 #  define NOMINMAX
 #  define BOOST_POSIX 1

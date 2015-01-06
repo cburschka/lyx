@@ -354,11 +354,30 @@ if test x$GXX = xyes; then
 	      lyx_flags="$lyx_flags c++11-mode"
 	      CXXFLAGS="-std=gnu++0x $CXXFLAGS"
 	      ;;
-	  4.7*|4.8*)
+	  4.7*|4.8*|4.9*)
 	      lyx_flags="$lyx_flags c++11-mode"
 	      CXXFLAGS="-std=gnu++11 $CXXFLAGS"
 	      ;;
       esac
+      lyx_std_regex=no
+      if test x$CLANG = xno || test $lyx_cv_lib_stdcxx = yes; then
+        dnl <regex> in gcc is unusable in versions less than 4.9.0
+        dnl see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
+        case $gxx_version in
+	4.9*)
+          lyx_flags="$lyx_flags stdregex"
+          lyx_std_regex=yes
+          ;;
+        esac
+      else
+          lyx_flags="$lyx_flags stdregex"
+          lyx_std_regex=yes
+      fi
+
+      if test $lyx_std_regex = yes ; then
+        AC_DEFINE([LYX_USE_STD_REGEX], 1, [define to 1 if std::regex should be preferred to boost::regex])
+      fi
+      AM_CONDITIONAL([LYX_USE_STD_REGEX], test $lyx_std_regex = yes)
   fi
 fi
 test "$lyx_pch_comp" = yes && lyx_flags="$lyx_flags pch"
@@ -404,7 +423,11 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 	    LIBS=$save_LIBS
 	    AC_LANG_POP(C++)
 	    BOOST_INCLUDES=
-	    BOOST_LIBS="-lboost_regex${BOOST_MT} -lboost_signals${BOOST_MT}"
+	    if test $lyx_std_regex = yes ; then
+	      BOOST_LIBS="-lboost_signals${BOOST_MT}"
+	    else
+	      BOOST_LIBS="-lboost_regex${BOOST_MT} -lboost_signals${BOOST_MT}"
+	    fi
 	fi
 	AC_SUBST(BOOST_INCLUDES)
 	AC_SUBST(BOOST_LIBS)
