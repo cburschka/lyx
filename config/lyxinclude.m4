@@ -272,6 +272,7 @@ if test "x$enable_assertions" = xyes ; then
 fi
 
 # set the compiler options correctly.
+lyx_std_regex=no
 if test x$GXX = xyes; then
   dnl clang++ pretends to be g++ 4.2.1; this is not useful
   if test x$CLANG = xno; then
@@ -359,7 +360,6 @@ if test x$GXX = xyes; then
 	      CXXFLAGS="-std=gnu++11 $CXXFLAGS"
 	      ;;
       esac
-      lyx_std_regex=no
       if test x$CLANG = xno || test $lyx_cv_lib_stdcxx = yes; then
         dnl <regex> in gcc is unusable in versions less than 4.9.0
         dnl see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
@@ -377,9 +377,9 @@ if test x$GXX = xyes; then
       if test $lyx_std_regex = yes ; then
         AC_DEFINE([LYX_USE_STD_REGEX], 1, [define to 1 if std::regex should be preferred to boost::regex])
       fi
-      AM_CONDITIONAL([LYX_USE_STD_REGEX], test $lyx_std_regex = yes)
   fi
 fi
+AM_CONDITIONAL([LYX_USE_STD_REGEX], test $lyx_std_regex = yes)
 test "$lyx_pch_comp" = yes && lyx_flags="$lyx_flags pch"
 AM_CONDITIONAL(LYX_BUILD_PCH, test "$lyx_pch_comp" = yes)
 ])dnl
