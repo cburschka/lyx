@@ -273,7 +273,7 @@ void InsetMathSpace::write(WriteStream & os) const
 	os << space_info[space_].name.c_str();
 	if (space_info[space_].custom)
 		os << '{' << length_.asLatexString().c_str() << '}';
-	else if (space_info[space_].escape && space_info[space_].name != " ")
+	else if (space_info[space_].escape && space_info[space_].name.length() > 1)
 		os.pendingSpace(true);
 }
 
