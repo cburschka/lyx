@@ -51,7 +51,7 @@ target_link_libraries(check_ExternalTransforms support
 	${Lyx_Boost_Libraries} ${QT_QTCORE_LIBRARY})
 
 add_dependencies(lyx_run_tests check_ExternalTransforms)
-set_target_properties(check_ExternalTransforms PROPERTIES FOLDER "src")
+set_target_properties(check_ExternalTransforms PROPERTIES FOLDER "tests/src")
 target_link_libraries(check_ExternalTransforms ${ICONV_LIBRARY})
 
 add_test(NAME "check_ExternalTransforms"
