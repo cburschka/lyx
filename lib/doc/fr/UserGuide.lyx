@@ -155,33 +155,6 @@ logicalmkup
 
 \begin_layout Title
 Guide de l'utilisateur de LyX
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Informations de révision :
-\end_layout
-
-\begin_layout Plain Layout
-Traduction : Mise à jour pour 2.0.5 par JPChrétien, Date : 31/10/2012 
-\end_layout
-
-\begin_layout Plain Layout
-Quelques corrections de Uwe + remplacement de Éditer/Visionner/Insérer/Naviguer
- par Édition/Affichage/Insertion/Navigation
-\end_layout
-
-\begin_layout Plain Layout
-Mise à jour finale pour LyX 2.0, 30 mai 2013, JPC
-\end_layout
-
-\begin_layout Plain Layout
-Mise à jour pour LyX 2.1, 8 juin 2014, JPC
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Author
@@ -239,6 +212,37 @@ eunier-Guttin-Cluzel
 Chrétien
 \noun default
 .
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Informations de révision :
+\end_layout
+
+\begin_layout Plain Layout
+Traduction : Mise à jour pour 2.0.5 par JPChrétien, Date : 31/10/2012 
+\end_layout
+
+\begin_layout Plain Layout
+Quelques corrections de Uwe + remplacement de Éditer/Visionner/Insérer/Naviguer
+ par Édition/Affichage/Insertion/Navigation
+\end_layout
+
+\begin_layout Plain Layout
+Mise à jour finale pour LyX 2.0, 30 mai 2013, JPC
+\end_layout
+
+\begin_layout Plain Layout
+Mise à jour pour LyX 2.1, 8 juin 2014, JPC
+\end_layout
+
+\begin_layout Plain Layout
+Remplacement de « appendice » par « annexe », 31/12/2014 (JPC)
 \end_layout
 
 \end_inset
@@ -454,7 +458,7 @@ Options LaTeX et LyX
 
 \begin_layout Standard
 Pour une brève description de tous les menus et barres de boutons de LyX,
- voyez l'appendice
+ voyez l'annexe
 \begin_inset space ~
 \end_inset
 
@@ -10960,7 +10964,7 @@ Typographie spéciale\SpecialChar \menuseparator
 Espacement horizontal
 \family default
 .
- Les unités de longueur utilisées sont listées dans l'appendice
+ Les unités de longueur utilisées sont listées dans l'annexe
 \begin_inset space ~
 \end_inset
 
@@ -12201,7 +12205,7 @@ verticaux
 Personnalisé
 \family default
  permet de donner la taille de l'espacement vertical en utilisant les unités
- de longueur définies dans l'appendice
+ de longueur définies dans l'annexe
 \begin_inset space ~
 \end_inset
 
@@ -13950,7 +13954,7 @@ la police utilisée à l'écran! Vous ne verrez la différence que dans la sorti
 Outils\SpecialChar \menuseparator
 Préférences
 \family default
-, voir l'appendice
+, voir l'annexe
 \begin_inset space ~
 \end_inset
 
@@ -19166,7 +19170,7 @@ Graphique
  d'échelle.
  On peut aussi définir directement la taille de l'image en fixant une de
  ses dimensions.
- Les unités de longueurs utilisées sont décrites dans l'appendice
+ Les unités de longueurs utilisées sont décrites dans l'annexe
 \begin_inset space ~
 \end_inset
 
@@ -28184,12 +28188,12 @@ options
 \end_layout
 
 \begin_layout Section
-Appendices
+Annexes
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Appendices
+Annexes
 \end_layout
 
 \end_inset
@@ -28205,14 +28209,14 @@ name "sec:Appendices"
 \end_layout
 
 \begin_layout Standard
-Les appendices sont créés avec le menu 
+Les annexes sont créées avec le menu 
 \family sans
 Document\SpecialChar \menuseparator
 Début
 \begin_inset space ~
 \end_inset
 
-appendice
+annexe(s)
 \begin_inset space ~
 \end_inset
 
@@ -28220,21 +28224,22 @@ ici
 \family default
 .
  Ce menu fait que la portion de document situé entre la position actuelle
- du curseur et la fin devient la partie des appendices.
+ du curseur et la fin devient la partie des annexes.
  Dans LyX cette partie est soulignée par un cadre rouge.
  
 \end_layout
 
 \begin_layout Standard
-Chaque chapitre (ou section) qui se trouve dans la partie appendice est
- considéré comme un appendice et est numéroté avec un chiffre romain en
- majuscule.
- On peut faire référence à tous les appendices comme si c'étaient des sections
+Chaque chapitre (ou section) qui se trouve dans la partie annexe est considéré
+ comme une annexe et est numéroté avec une capitale latine.
+ Les sous-sections sont numérotées avec cette lettre suivie par un point
+ et par le numéro de sous-section.
+ On peut faire référence à toutes les annexes comme si c'étaient des sections
  comme les autres, en voici deux exemples:
 \end_layout
 
 \begin_layout Standard
-Appendice
+Annexe
 \begin_inset space ~
 \end_inset
 
@@ -28245,7 +28250,7 @@ reference "cha:Remerciements"
 
 \end_inset
 
-; Appendice
+; Annexe
 \begin_inset space ~
 \end_inset
 
