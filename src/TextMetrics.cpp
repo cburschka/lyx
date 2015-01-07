@@ -619,16 +619,16 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 				row.dimension().wid = width;
 			} else if (is_rtl) {
 				row.dimension().wid = width;
-				row.left_margin += w;
+				row.left_margin += int(w);
 			}
 			break;
 		}
 		case LYX_ALIGN_RIGHT:
-			row.left_margin += w;
+			row.left_margin += int(w);
 			break;
 		case LYX_ALIGN_CENTER:
 			row.dimension().wid = width - int(w / 2);
-			row.left_margin += w / 2;
+			row.left_margin += int(w / 2);
 			break;
 		case LYX_ALIGN_LEFT:
 		case LYX_ALIGN_NONE:
