@@ -630,7 +630,11 @@ find_package(ZLIB REQUIRED)
 
 if(LYX_EXTERNAL_BOOST)
 	message(STATUS "Searching for boost")
-	find_package(Boost COMPONENTS signals regex) #TODO could REQUIRED be used
+	if(LYX_USE_STD_REGEX)
+		find_package(Boost COMPONENTS signals)
+	else()
+		find_package(Boost COMPONENTS signals regex)
+	endif()
 	if(Boost_FOUND)
 		message(STATUS "Boost found")
 		message(STATUS "Boost-libs = ${Boost_LIBRARIES}")
