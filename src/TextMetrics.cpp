@@ -565,7 +565,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 
 	Paragraph const & par = text_->getPar(pit);
 
-	double const w = width - row.right_margin - row.width();
+	int const w = width - row.right_margin - row.width();
 	// FIXME: put back this assertion when the crash on new doc is solved.
 	//LASSERT(w >= 0, /**/);
 
@@ -600,7 +600,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	// are there any hfills in the row?
 	if (int const nh = numberOfHfills(row, par.beginOfBody())) {
 		if (w > 0)
-			hfill = w / double(nh);
+			hfill = double(w) / nh;
 	// we don't have to look at the alignment if it is ALIGN_LEFT and
 	// if the row is already larger then the permitted width as then
 	// we force the LEFT_ALIGN'edness!
@@ -615,20 +615,20 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			 * or newline, then stretch it */
 			if (ns && !row.right_boundary()
 			    && row.endpos() != par.size()) {
-				setSeparatorWidth(row, w / ns);
+				setSeparatorWidth(row, double(w) / ns);
 				row.dimension().wid = width;
 			} else if (is_rtl) {
 				row.dimension().wid = width;
-				row.left_margin += int(w);
+				row.left_margin += w;
 			}
 			break;
 		}
 		case LYX_ALIGN_RIGHT:
-			row.left_margin += int(w);
+			row.left_margin += w;
 			break;
 		case LYX_ALIGN_CENTER:
-			row.dimension().wid = width - int(w / 2);
-			row.left_margin += int(w / 2);
+			row.dimension().wid = width - w / 2;
+			row.left_margin += w / 2;
 			break;
 		case LYX_ALIGN_LEFT:
 		case LYX_ALIGN_NONE:
