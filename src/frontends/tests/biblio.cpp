@@ -3,28 +3,29 @@
 #include <iostream>
 #include <map>
 
-#include <boost/regex.hpp>
+#include "support/regex.h"
 
 using namespace std;
 
 // Escape special chars.
 // All characters are literals except: '.|*?+(){}[]^$\'
 // These characters are literals when preceded by a "\", which is done here
-// This function is unfortunately copied from ../frontend_helpers.cpp, so we should
-// try to make sure to keep the two in sync.
+// This function is unfortunately copied from ../qt4/GuiCitation.cpp, so we
+// should try to make sure to keep the two in sync.
 string const escape_special_chars(string const & expr)
 {
 	// Search for all chars '.|*?+(){}[^$]\'
 	// Note that '[' and '\' must be escaped.
-	// This is a limitation of boost::regex, but all other chars in BREs
+	// This is a limitation of lyx::regex, but all other chars in BREs
 	// are assumed literal.
-	boost::regex reg("[].|*?+(){}^$\\[\\\\]");
+	lyx::regex reg("[].|*?+(){}^$\\[\\\\]");
 
-	// $& is a perl-like expression that expands to all of the current match
+	// $& is a perl-like expression that expands to all
+	// of the current match
 	// The '$' must be prefixed with the escape character '\' for
 	// boost to treat it as a literal.
 	// Thus, to prefix a matched expression with '\', we use:
-	return boost::regex_replace(expr, reg, "\\\\$&");
+	return lyx::regex_replace(expr, reg, "\\\\$&");
 }
 
 
@@ -37,10 +38,9 @@ typedef map<string, string> InfoMap;
 class RegexMatch : public unary_function<string, bool>
 {
 public:
-	// re and icase are used to construct an instance of boost::RegEx.
-	// if icase is true, then matching is insensitive to case
-	RegexMatch(InfoMap const & m, string const & re, bool icase)
-		: map_(m), regex_(re, icase) {}
+	// re is used to construct an instance of lyx::regex.
+	RegexMatch(InfoMap const & m, string const & re)
+		: map_(m), regex_(re) {}
 
 	bool operator()(string const & key) const {
 		// the data searched is the key + its associated BibTeX/biblio
@@ -52,11 +52,11 @@ public:
 
 		// Attempts to find a match for the current RE
 		// somewhere in data.
-		return boost::regex_search(data, regex_);
+		return lyx::regex_search(data, regex_);
 	}
 private:
 	InfoMap const map_;
-	mutable boost::regex regex_;
+	mutable lyx::regex regex_;
 };
 
 
@@ -75,12 +75,12 @@ void test_RegexMatch()
 	im["hello"] = "hei";
 
 	try {
-		RegexMatch rm(im, "h.*o", false);
+		RegexMatch rm(im, "h.*o");
 
 		cout << rm("hello") << endl;
 		cout << rm("hei") << endl;
 	}
-	catch (boost::regex_error & regerr) {
+	catch (lyx::regex_error & regerr) {
 		cout << regerr.what() << endl;
 	}
 }
