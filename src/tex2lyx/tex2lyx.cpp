@@ -482,13 +482,13 @@ void read_environment(Parser & p, string const & begin,
  * has almost all of them listed. For the same reason the reLyX-specific
  * reLyXre environment is ignored.
  */
-void read_syntaxfile(FileName const & file_name)
+bool read_syntaxfile(FileName const & file_name)
 {
 	ifdocstream is(file_name.toFilesystemEncoding().c_str());
 	if (!is.good()) {
 		cerr << "Could not open syntax file \"" << file_name
 		     << "\" for reading." << endl;
-		exit(2);
+		return false;
 	}
 	// We can use our TeX parser, since the syntax of the layout file is
 	// modeled after TeX.
@@ -514,6 +514,7 @@ void read_syntaxfile(FileName const & file_name)
 			}
 		}
 	}
+	return true;
 }
 
 
@@ -1047,9 +1048,11 @@ int main(int argc, char * argv[])
 		cerr << "Error: Could not find syntax file \"syntax.default\"." << endl;
 		return EXIT_FAILURE;
 	}
-	read_syntaxfile(system_syntaxfile);
+	if (!read_syntaxfile(system_syntaxfile))
+		return 2;
 	if (!syntaxfile.empty())
-		read_syntaxfile(makeAbsPath(syntaxfile));
+		if (!read_syntaxfile(makeAbsPath(syntaxfile)))
+			return 2;
 
 	// Read the encodings table.
 	FileName const symbols_path = libFileSearch(string(), "unicodesymbols");
