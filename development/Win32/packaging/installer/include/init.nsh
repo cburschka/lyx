@@ -167,14 +167,14 @@ SectionEnd
 
 Section /o "English (CA)" SecDEnglishCA
  StrCpy $DictCodes "en_CA,$DictCodes"
- AddSize 690
+ AddSize 531
 SectionEnd
 
 Section "English (GB)" SecDEnglishGB
  # already installed by default
  SectionIn RO
  #StrCpy $DictCodes "en_GB,$DictCodes"
- AddSize 757
+ AddSize 652
 SectionEnd
 
 Section /o "English (NZ)" SecDEnglishNZ
@@ -186,7 +186,7 @@ Section "English (US)" SecDEnglishUS
  # already installed by default
  SectionIn RO
  #StrCpy $DictCodes "en_US,$DictCodes"
- AddSize 688
+ AddSize 530
 SectionEnd
 
 Section "Español (ES)" SecDSpanishES
@@ -237,7 +237,7 @@ SectionEnd
 
 Section /o "Gàidhlig" SecDScottish
  StrCpy $DictCodes "gd_GB,$DictCodes"
- AddSize 2504
+ AddSize 3090
 SectionEnd
 
 Section /o "Galego" SecDGalician
@@ -322,7 +322,7 @@ SectionEnd
 
 Section /o "Norsk (Nynorsk)" SecDNorwegianNN
  StrCpy $DictCodes "nn_NO,$DictCodes"
- AddSize 1515
+ AddSize 1540
 SectionEnd
 
 Section /o "Occitan" SecDOccitan
@@ -342,7 +342,7 @@ SectionEnd
 
 Section /o "Português (PT)" SecDPortuguesePT
  StrCpy $DictCodes "pt_PT,$DictCodes"
- AddSize 1595
+ AddSize 1490
 SectionEnd
 
 Section /o "Româna" SecDRomanian
@@ -413,6 +413,11 @@ SectionEnd
 Section /o "Türkmençe" SecDTurkmen
  StrCpy $DictCodes "tk_TM,$DictCodes"
  AddSize 950
+SectionEnd
+
+Section /o "Türkçe" SecDTurkish
+ StrCpy $DictCodes "tr_TR,$DictCodes"
+ AddSize 8870
 SectionEnd
 
 Section /o "Ukrainian" SecDUkrainian
@@ -542,7 +547,7 @@ SectionEnd
 
 Section /o "Slovenšcina" SecTSlovenian
  StrCpy $ThesCodes "sl_SI,$ThesCodes"
- AddSize 1121
+ AddSize 1110
 SectionEnd
 
 Section /o "Slovenský" SecTSlovakian
@@ -626,17 +631,31 @@ Function .onInit
   # check if this LyX version is already installed
   ${if} $MultiUser.Privileges == "Admin"
   ${orif} $MultiUser.Privileges == "Power"
-   ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "Publisher"
+   ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "DisplayIcon"
   ${else}
-   ReadRegStr $0 HKCU "${APP_UNINST_KEY}" "Publisher"
+   ReadRegStr $0 HKCU "${APP_UNINST_KEY}" "DisplayIcon"
    # handle also the case that LyX is already installed in HKLM
    ${if} $0 == ""
-    ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "Publisher"
+    ReadRegStr $0 HKLM "${APP_UNINST_KEY}" "DisplayIcon"
    ${endif}
   ${endif}
   ${if} $0 != ""
-   MessageBox MB_OK|MB_ICONSTOP "$(StillInstalled)" /SD IDOK
+   # check if the uninstaller was acidentally deleted
+   # if so don't bother the user if he realy wants to install a new LyX over an existing one
+   # because he won't have a chance to deny this
+   StrCpy $4 $0 -10 # remove '\bin\lyx,0'
+   # (for FileCheck the variables $0 and $1 cannot be used)
+   !insertmacro FileCheck $5 "Uninstall-LyX.exe" "$4" # macro from LyXUtils.nsh
+   ${if} $5 == "False"
+    Goto ForceInstallation
+   ${endif}
+   # installing over an existing installation of the same LyX release is not necessary
+   # if the users does this he most probably has a problem with LyX that can better be solved
+   # by reinstalling LyX
+   # for beta and other test releases over-installing can even cause errors
+   MessageBox MB_YESNO|MB_DEFBUTTON2|MB_ICONEXCLAMATION "$(AlreadyInstalled)" /SD IDNO IDYES ForceInstallation 
    Abort
+   ForceInstallation:
   ${endif}
   
   # check if there is an existing LyX installation of the same LyX series
@@ -1165,6 +1184,13 @@ Function .onInit
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
    SectionSetFlags ${SecDTurkmen} $0
    SectionSetSize ${SecDTurkmen} 0
+  ${endif}
+  StrCpy $Search "tr_TR"
+  Call StrPoint
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecDTurkish} $0
+   SectionSetSize ${SecDTurkish} 0
   ${endif}
   StrCpy $Search "uk_UA"
   Call StrPoint

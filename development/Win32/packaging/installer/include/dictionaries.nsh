@@ -28,8 +28,8 @@ Function FindDictionaries
   
   # read out the possible spell-checker filenames from the file	
   FileOpen $R5 "$INSTDIR\Resources\HunspellDictionaryNames.txt" r
-  ${for} $5 1 70
-   # the file has 140 lines, but we only need to check for one of the 2 dictionary files per language
+  ${for} $5 1 71
+   # the file has 142 lines, but we only need to check for one of the 2 dictionary files per language
    # therefore check only for every second line
    FileRead $R5 $String   # skip the .aff file
    FileRead $R5 $String   # $String is now the .dic filename
@@ -66,7 +66,7 @@ Function DownloadHunspellDictionaries
  
  # read out the locations from the file	
  FileOpen $R5 "$INSTDIR\Resources\HunspellDictionaryNames.txt" r
- ${For} $5 1 140       # the file has 140 lines
+ ${For} $5 1 142       # the file has 142 lines
  
   FileRead $R5 $String # $String is now the dictionary name
   StrCpy $R3 $String -6 # $R3 is now the dictionary language code

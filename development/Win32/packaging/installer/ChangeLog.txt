@@ -1,4 +1,50 @@
-﻿Changelog for LyX-207-4:
+﻿Changelog for LyX-212-2:
+- fix problem that some LaTeX language packages were not installed automatically
+  leading to LaTeX errors when compiling LyX documents 
+- new spell checker for Turkish
+- updated spell-checker dictionaries for English, Norwegian(Bokmal), Portuguese
+  and Scottish
+  (To benefit from them you must uninstall an already installed LyX 2.1.x and
+   then use this installer.)
+- updated thesaurus for Slovenian
+  (you need to reinstall LyX to benefit from this)
+- updated to Python 2.7.9
+
+
+Changelog for LyX-212-1:
+- installs LyX 2.1.2
+
+
+Changelog for LyX-211-2:
+- updated to Python 2.7.8
+
+
+Changelog for LyX-211-1:
+- installs LyX 2.1.1
+- updated to Ghostscript 8.14
+- updated to Qt 4.8.6
+
+
+Changelog for LyX-210-2:
+- LyX can now also be installed over an existing installation of the same LyX version
+  if the users really wants this.
+- LyX can now also be installed if the uninstaller executable of a former LyX was
+  accidentally deleted.
+- If a user set MiKTeX's automatic package installation to "No" the installer will
+  respect that and not re-enable it.
+
+
+Changelog for LyX-210-1:
+- installs LyX 2.1.0
+- fixed a bug that MiKTeX was not found if Windows' PATH variable is very long
+
+
+Changelog for LyX-208-1:
+- installs LyX 2.0.8
+- fixed a bug that MiKTeX was not found if Windows' PATH variable is very long
+
+
+Changelog for LyX-207-4:
 - downgraded to Qt 4.8.4
   (there is a bug in the newer Qt 4.8.5 that destroys some shortcuts)
 - updated to JabRef 2.10

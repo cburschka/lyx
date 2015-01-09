@@ -55,8 +55,8 @@ Section -InstallData
   WriteRegDWORD SHCTX ${APP_UNINST_KEY} "NoRepair" 0x00000001
   WriteRegStr SHCTX ${APP_UNINST_KEY} "StartMenu" "$SMPROGRAMS\$StartmenuFolder"
   
-  # if we install over an existing version, remove the old uninstaller information
-  ${if} $OldVersionNumber != ""
+  # if we install over an older existing version, remove the old uninstaller information
+  ${if} $OldVersionNumber < ${APP_SERIES_KEY}
    DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}$OldVersionNumber"
    # also delete in the case of an emergency release
    DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}$OldVersionNumber1"
@@ -215,17 +215,26 @@ Section -ConfigureScript
   # ask to update MiKTeX
   ${if} $LaTeXInstalled == "MiKTeX"
    Call UpdateMiKTeX # function from latex.nsh
-   # install all necessary packages at once
+   # install all necessary packages at once because this is much faster then to install the packages one by one
+   # NOTE: the babelpackages-txt list is only necessary for LyX 2.1.2 ans 2.1.3 because of the restructuration
+   # of babel in MiKTeX. This can be removed for LyX 2.1.4
    DetailPrint $(TEXT_CONFIGURE_LYX)
    ${if} $MultiUser.Privileges != "Admin"
    ${andif} $MultiUser.Privileges != "Power"
     # call the non-admin version
+    # at first we need to synchronize the package database
+    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--update-db"'
     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--install-some=$INSTDIR\Resources\Packages.txt"'
+    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--install-some=$INSTDIR\Resources\babel-Packages.txt"'
    ${else}
     ${if} $MiKTeXUser != "HKCU" # call the admin version
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--verbose" "--update-db"'
      nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--verbose" "--install-some=$INSTDIR\Resources\Packages.txt"'
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--verbose" "--install-some=$INSTDIR\Resources\babel-Packages.txt"'
     ${else}
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--update-db"'
      nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--install-some=$INSTDIR\Resources\Packages.txt"'
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--install-some=$INSTDIR\Resources\babel-Packages.txt"'
     ${endif}
    ${endif}
   ${endif}
