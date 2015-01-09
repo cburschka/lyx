@@ -1,4 +1,21 @@
-﻿Changelog for LyX-211-2:
+﻿Changelog for LyX-212-2:
+- fix problem that some LaTeX language packages were not installed automatically
+  leading to LaTeX errors when compiling LyX documents 
+- new spell checker for Turkish
+- updated spell-checker dictionaries for English, Norwegian(Bokmal), Portuguese
+  and Scottish
+  (To benefit from them you must uninstall an already installed LyX 2.1.x and
+   then use this installer.)
+- updated thesaurus for Slovenian
+  (you need to reinstall LyX to benefit from this)
+- updated to Python 2.7.9
+
+
+Changelog for LyX-212-1:
+- installs LyX 2.1.2
+
+
+Changelog for LyX-211-2:
 - updated to Python 2.7.8
 
 
