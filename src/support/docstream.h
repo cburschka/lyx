@@ -12,7 +12,6 @@
 #ifndef LYX_DOCSTREAM_H
 #define LYX_DOCSTREAM_H
 
-#include "TexRow.h"
 #include "support/docstring.h"
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1600) 
@@ -83,92 +82,6 @@ typedef std::basic_istringstream<char_type> idocstringstream;
 /// UCS4 output manipulator
 typedef odocstream & (*odocstream_manip)(odocstream &);
 
-/** Wrapper class for odocstream.
-    This class is used to automatically count the lines of the exported latex
-    code and also to ensure that no blank lines may be inadvertently output.
-    To this end, use the special variables "breakln" and "safebreakln" as if
-    they were iomanip's to ensure that the next output will start at the
-    beginning of a line. Using "breakln", a '\n' char will be output if needed,
-    while using "safebreakln", "%\n" will be output if needed.
-    The class also records the last output character and can tell whether
-    a paragraph break was just output.
-  */
-
-class otexstream {
-public:
-	///
-	otexstream(odocstream & os, TexRow & texrow)
-		: os_(os), texrow_(texrow), canbreakline_(false),
-		  protectspace_(false), parbreak_(true), lastchar_(0) {}
-	///
-	odocstream & os() { return os_; }
-	///
-	TexRow & texrow() { return texrow_; }
-	///
-	void put(char_type const & c);
-	///
-	void canBreakLine(bool breakline) { canbreakline_ = breakline; }
-	///
-	bool canBreakLine() const { return canbreakline_; }
-	///
-	void protectSpace(bool protectspace) { protectspace_ = protectspace; }
-	///
-	bool protectSpace() const { return protectspace_; }
-	///
-	void lastChar(char_type const & c)
-	{
-		parbreak_ = (!canbreakline_ && c == '\n');
-		canbreakline_ = (c != '\n');
-		lastchar_ = c;
-	}
-	///
-	char_type lastChar() const { return lastchar_; }
-	///
-	bool afterParbreak() const { return parbreak_; }
-private:
-	///
-	odocstream & os_;
-	///
-	TexRow & texrow_;
-	///
-	bool canbreakline_;
-	///
-	bool protectspace_;
-	///
-	bool parbreak_;
-	///
-	char_type lastchar_;
-};
-
-/// Helper structs for breaking a line
-struct BreakLine {
-	char n;
-};
-
-struct SafeBreakLine {
-	char n;
-};
-
-extern BreakLine breakln;
-extern SafeBreakLine safebreakln;
-
-///
-otexstream & operator<<(otexstream &, BreakLine);
-///
-otexstream & operator<<(otexstream &, SafeBreakLine);
-///
-otexstream & operator<<(otexstream &, odocstream_manip);
-///
-otexstream & operator<<(otexstream &, docstring const &);
-///
-otexstream & operator<<(otexstream &, std::string const &);
-///
-otexstream & operator<<(otexstream &, char const *);
-///
-otexstream & operator<<(otexstream &, char);
-///
-template <typename Type>
-otexstream & operator<<(otexstream & ots, Type value);
 
 /// Helper struct for changing stream encoding
 struct SetEnc {

@@ -181,6 +181,7 @@ SOURCEFILESCORE = \
 	Session.cpp \
 	Spacing.cpp \
 	TexRow.cpp \
+	texstream.cpp \
 	Text.cpp \
 	Text2.cpp \
 	Text3.cpp \
@@ -287,6 +288,7 @@ HEADERFILESCORE = \
 	Spacing.h \
 	SpellChecker.h \
 	TexRow.h \
+	texstream.h \
 	Text.h \
 	TextClass.h \
 	TextMetrics.h \

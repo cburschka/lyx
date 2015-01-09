@@ -17,10 +17,11 @@
 
 #include "Color.h"
 
-#include "support/docstream.h"
 #include "support/strfwd.h"
 #include "support/types.h"
 #include "support/lyxtime.h"
+
+#include "texstream.h"
 
 #include <vector>
 

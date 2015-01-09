@@ -13,7 +13,7 @@
 #ifndef EXTERNALSUPPORT_H
 #define EXTERNALSUPPORT_H
 
-#include "support/docstream.h"
+#include "texstream.h"
 
 namespace lyx {
 
