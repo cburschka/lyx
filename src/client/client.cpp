@@ -557,15 +557,15 @@ int main(int argc, char * argv[])
 	lyxerr.setStream(cerr);
 
 
-    // Set defaults
+	// Set defaults
 	char const * const lyxsocket = getenv("LYXSOCKET");
 	if (lyxsocket)
 		cmdline::serverAddress = from_local8bit(lyxsocket);
 
-    // Default temporary
-    cmdline::mainTmp = FileName::tempPath().absoluteFilePath();
+	// Default temporary
+	cmdline::mainTmp = FileName::tempPath().absoluteFilePath();
 
-    // Command line builder
+	// Command line builder
 	CmdLineParser args;
 	args.helper["-h"] = cmdline::h;
 	args.helper["-c"] = cmdline::c;
