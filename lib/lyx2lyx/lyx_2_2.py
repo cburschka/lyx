@@ -411,6 +411,75 @@ def revert_beamer_lemma(document):
 
         i = j
 
+
+
+def revert_question_env(document):
+    """
+    Reverts question and question* environments of
+    theorems-ams-extended-bytype module to ERT
+    """
+
+    # Do we use theorems-ams-extended-bytype module?
+    have_mod = False
+    mods = document.get_module_list()
+    for mod in mods:
+        if mod == "theorems-ams-extended-bytype":
+            have_mod = True
+            continue
+
+    if not have_mod:
+        return
+
+    consecutive = False
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_layout Question", i)
+        if i == -1:
+            return
+
+        starred = document.body[i] == "\\begin_layout Question*"
+
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of Question layout")
+            i += 1
+            continue
+
+        # if this is not a consecutive env, add start command
+        begcmd = []
+        if not consecutive:
+            if starred:
+                begcmd = put_cmd_in_ert("\\begin{question*}")
+            else:
+                begcmd = put_cmd_in_ert("\\begin{question}")
+
+        # has this a consecutive theorem of same type?
+        consecutive = False
+        if starred:
+            consecutive = document.body[j + 2] == "\\begin_layout Question*"
+        else:
+            consecutive = document.body[j + 2] == "\\begin_layout Question"
+
+        # if this is not followed by a consecutive env, add end command
+        if not consecutive:
+            if starred:
+                document.body[j : j + 1] = put_cmd_in_ert("\\end{question*}") + ["\\end_layout"]
+            else:
+                document.body[j : j + 1] = put_cmd_in_ert("\\end{question}") + ["\\end_layout"]
+
+        document.body[i : i + 1] = ["\\begin_layout Standard", ""] + begcmd
+
+        add_to_preamble(document, "\\providecommand{\questionname}{Question}")
+
+        if starred:
+            add_to_preamble(document, "\\theoremstyle{plain}\n" \
+                                      "\\newtheorem*{question*}{\\protect\\questionname}")
+        else:
+            add_to_preamble(document, "\\theoremstyle{plain}\n" \
+                                      "\\newtheorem{question}{\\protect\\questionname}")
+
+        i = j
+
   
 ##
 # Conversion hub
@@ -425,10 +494,12 @@ convert = [
            [476, []],
            [477, []],
            [478, []],
-           [479, []]
+           [479, []],
+           [480, []]
           ]
 
 revert =  [
+           [479, [revert_question_env]],
            [478, [revert_beamer_lemma]],
            [477, [revert_xarrow]],
            [476, [revert_swissgerman]],

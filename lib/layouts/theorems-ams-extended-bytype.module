@@ -33,6 +33,7 @@ Requires	amsmath
 # - Acknowledgement
 # - Conclusion
 # - Assumption
+# - Question
 
 # We need separate counters for each theorem-like style.
 Counter criterion
@@ -54,6 +55,8 @@ End
 Counter conclusion
 End
 Counter assumption
+End
+Counter question
 End
 
 
@@ -402,6 +405,40 @@ Style Assumption*
 	EndLangPreamble
 	BabelPreamble
 	  \addto\captions$$lang{\renewcommand{\assumptionname}{_(Assumption)}}
+	EndBabelPreamble
+End
+
+Style Question
+	CopyStyle             Theorem
+	DependsOn             Theorem
+	LatexName             question
+	LabelString           "Question \thequestion."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem{question}{\protect\questionname}
+	EndPreamble
+	LangPreamble
+	  \providecommand{\questionname}{_(Question)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\questionname}{_(Question)}}
+	EndBabelPreamble
+	LabelCounter          question
+End
+
+Style Question*
+	CopyStyle             Theorem*
+	LatexName             question*
+	LabelString           "Question."
+	Preamble
+	  \theoremstyle{plain}
+	  \newtheorem*{question*}{\protect\questionname}
+	EndPreamble
+	LangPreamble
+	  \providecommand{\questionname}{_(Question)}
+	EndLangPreamble
+	BabelPreamble
+	  \addto\captions$$lang{\renewcommand{\questionname}{_(Question)}}
 	EndBabelPreamble
 End
 
