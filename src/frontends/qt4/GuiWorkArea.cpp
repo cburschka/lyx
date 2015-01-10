@@ -640,6 +640,12 @@ void GuiWorkArea::Private::showCursor()
 		&& !completer_->inlineVisible();
 	cursor_visible_ = true;
 	cursor_->recomputeWidth();
+
+	//int cur_x = buffer_view_->getPos(cur).x_;
+	// We may have decided to slide the cursor row so that cursor
+	// is visible.
+	p.x_ -= buffer_view_->horizScrollOffset();
+
 	showCursor(p.x_, p.y_, h, l_shape, isrtl, completable);
 }
 

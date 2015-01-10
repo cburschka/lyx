@@ -32,6 +32,7 @@ class Buffer;
 class Change;
 class CoordCache;
 class Cursor;
+class CursorSlice;
 class DispatchResult;
 class DocIterator;
 class DocumentClass;
@@ -39,6 +40,7 @@ class FuncRequest;
 class FuncStatus;
 class Intl;
 class Inset;
+class PainterInfo;
 class ParIterator;
 class ParagraphMetrics;
 class Point;
@@ -118,6 +120,17 @@ public:
 	/// move the screen to fit the cursor.
 	/// Only to be called with good y coordinates (after a bv::metrics)
 	bool fitCursor();
+
+	// Returns the amount of horizontal scrolling applied to the
+	// top-level row where the cursor lies
+	int horizScrollOffset() const;
+
+	// Points to the top-level row where the cursor lies (during draw).
+	CursorSlice const & currentRowSlice() const;
+
+	// Points to the top-level row where the cursor lied at last draw event.
+	CursorSlice const & lastRowSlice() const;
+
 	/// reset the scrollbar to reflect current view position.
 	void updateScrollbar();
 	/// return the Scrollbar Parameters.
@@ -330,6 +343,13 @@ private:
 	/// Update current paragraph metrics.
 	/// \return true if no further update is needed.
 	bool singleParUpdate();
+
+	// Set the row on which the cursor lives.
+	void setCurrentRowSlice(CursorSlice const & rowSlice);
+
+	// Check whether the row where the cursor lives needs to be scrolled.
+	// Update the drawing strategy if needed.
+	void checkCursorScrollOffset(PainterInfo & pi);
 
 	/// The minimal size of the document that is visible. Used
 	/// when it is allowed to scroll below the document.

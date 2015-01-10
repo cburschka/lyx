@@ -1003,8 +1003,6 @@ private:
 	///
 	int cellYPos(idx_type cell) const;
 	///
-	void resetPos(Cursor & cur) const;
-	///
 	bool copySelection(Cursor & cur);
 	///
 	bool pasteClipboard(Cursor & cur);
@@ -1027,8 +1025,6 @@ private:
 				col_type col_start, col_type col_end) const;
 	///
 	mutable idx_type first_visible_cell;
-	///
-	mutable int scx_;
 	/// The vertical offset of the table due to the vertical
 	/// alignment with respect to the baseline.
 	mutable int offset_valign_;

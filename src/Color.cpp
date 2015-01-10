@@ -238,6 +238,7 @@ ColorSet::ColorSet()
 	{ Color_urllabel, N_("URL label"), "urllabel", "blue", "urllabel" },
 	{ Color_urltext, N_("URL text"), "urltext", "blue", "urltext" },
 	{ Color_depthbar, N_("depth bar"), "depthbar", "IndianRed", "depthbar" },
+	{ Color_scroll, N_("scroll indicator"), "scroll", "IndianRed", "scroll" },
 	{ Color_language, N_("language"), "language", "Blue", "language" },
 	{ Color_command, N_("command inset"), "command", "black", "command" },
 	{ Color_commandbg, N_("command inset background"), "commandbg", "azure", "commandbg" },

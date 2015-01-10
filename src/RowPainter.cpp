@@ -439,6 +439,23 @@ int RowPainter::paintAppendixStart(int y)
 }
 
 
+void RowPainter::paintTooLargeMarks(bool const left, bool const right)
+{
+	if (left)
+		pi_.pain.line(dotted_line_thickness_, yo_ - row_.ascent(),
+			      dotted_line_thickness_, yo_ + row_.descent(),
+			      Color_scroll,
+			      Painter::line_onoffdash, dotted_line_thickness_);
+	if (right) {
+		int const wwidth = pi_.base.bv->workWidth() - dotted_line_thickness_;
+		pi_.pain.line(wwidth, yo_ - row_.ascent(),
+			      wwidth, yo_ + row_.descent(),
+			      Color_scroll,
+			      Painter::line_onoffdash, dotted_line_thickness_);
+	}
+}
+
+
 void RowPainter::paintFirst()
 {
 	BufferParams const & bparams = pi_.base.bv->buffer().params();
