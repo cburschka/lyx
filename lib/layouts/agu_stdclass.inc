@@ -6,7 +6,7 @@
 # It is desirable, as far as possible, to have the same look and feel for
 # related layouts in latex and docbook.
 
-Format 53
+Format 54
 OutputType              docbook
 
 Columns                 1
