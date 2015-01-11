@@ -108,6 +108,8 @@ public:
 	/// this inset
 	docstring const babelpreamble() const { return babelpreamble_; }
 	///
+	bool fixedwidthpreambleencoding() const { return fixedwidthpreambleencoding_; }
+	///
 	docstring counter() const { return counter_; }
 	///
 	docstring refprefix() const { return refprefix_; }
@@ -222,6 +224,8 @@ private:
 	docstring langpreamble_;
 	/// Language and babel dependent macro definitions needed for this inset
 	docstring babelpreamble_;
+	///
+	bool fixedwidthpreambleencoding_;
 	///
 	docstring refprefix_;
 	///

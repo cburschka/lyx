@@ -177,6 +177,9 @@ import os, re, string, sys
 # Incremented to format 53, 7 December 2014 by spitz
 # New InsetLayout tag "ObsoletedBy"
 
+# Incremented to format 54, 11 Jan 2014 by gb
+# New InsetLayout tag "FixedWidthPreambleEncoding"
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -184,7 +187,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.py script to update all
 # layout files to the new format.
 
-currentFormat = 53
+currentFormat = 54
 
 
 def usage(prog_name):
@@ -408,7 +411,7 @@ def convert(lines):
                 i += 1
             continue
 
-        if format >= 50 and format <= 52:
+        if format >= 50 and format <= 53:
             # nothing to do.
             i += 1
             continue

@@ -34,20 +34,21 @@ namespace lyx {
 InsetLayout::InsetLayout() :
 	name_(from_ascii("undefined")), lyxtype_(STANDARD),
 	labelstring_(from_ascii("UNDEFINED")), contentaslabel_(false),
-	decoration_(DEFAULT), latextype_(NOLATEXTYPE), font_(inherit_font), 
-	labelfont_(sane_font), bgcolor_(Color_error), 
-	htmlforcecss_ (false), htmlisblock_(true),
-	multipar_(true), custompars_(true), forceplain_(false), 
-	passthru_(false), parbreakisnewline_(false), freespacing_(false), 
-	keepempty_(false), forceltr_(false), forceownlines_(false),
-	needprotect_(false), intoc_(false), spellcheck_(true), 
-	resetsfont_(false), display_(true), forcelocalfontswitch_(false)
+	decoration_(DEFAULT), latextype_(NOLATEXTYPE), font_(inherit_font),
+	labelfont_(sane_font), bgcolor_(Color_error),
+	fixedwidthpreambleencoding_(false), htmlforcecss_ (false),
+	htmlisblock_(true), multipar_(true), custompars_(true),
+	forceplain_(false), passthru_(false), parbreakisnewline_(false),
+	freespacing_(false), keepempty_(false), forceltr_(false),
+	forceownlines_(false), needprotect_(false), intoc_(false),
+	spellcheck_(true), resetsfont_(false), display_(true),
+	forcelocalfontswitch_(false)
 {
 	labelfont_.setColor(Color_error);
 }
 
 
-InsetLayout::InsetDecoration translateDecoration(std::string const & str) 
+InsetLayout::InsetDecoration translateDecoration(std::string const & str)
 {
 	if (support::compare_ascii_no_case(str, "classic") == 0)
 		return InsetLayout::CLASSIC;
@@ -86,6 +87,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_CUSTOMPARS,
 		IL_DECORATION,
 		IL_DISPLAY,
+		IL_FIXEDWIDTH_PREAMBLE_ENCODING,
 		IL_FONT,
 		IL_FORCE_LOCAL_FONT_SWITCH,
 		IL_FORCELTR,
@@ -132,12 +134,13 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "babelpreamble", IL_BABELPREAMBLE },
 		{ "bgcolor", IL_BGCOLOR },
 		{ "contentaslabel", IL_CONTENTASLABEL },
-		{ "copystyle", IL_COPYSTYLE }, 
+		{ "copystyle", IL_COPYSTYLE },
 		{ "counter", IL_COUNTER},
 		{ "custompars", IL_CUSTOMPARS },
 		{ "decoration", IL_DECORATION },
 		{ "display", IL_DISPLAY },
 		{ "end", IL_END },
+		{ "fixedwidthpreambleencoding", IL_FIXEDWIDTH_PREAMBLE_ENCODING },
 		{ "font", IL_FONT },
 		{ "forcelocalfontswitch", IL_FORCE_LOCAL_FONT_SWITCH },
 		{ "forceltr", IL_FORCELTR },
@@ -186,7 +189,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 	// for issuing a warning in case MultiPars comes later
 	bool readCustomOrPlain = false;
 
-	string tmp;	
+	string tmp;
 	while (!getout && lex.isOK()) {
 		int le = lex.lex();
 		switch (le) {
@@ -245,6 +248,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			lex >> leftdelim_;
 			leftdelim_ = support::subst(leftdelim_, from_ascii("<br/>"),
 						    from_ascii("\n"));
+			break;
+		case IL_FIXEDWIDTH_PREAMBLE_ENCODING:
+			lex >> fixedwidthpreambleencoding_;
 			break;
 		case IL_FORCE_LOCAL_FONT_SWITCH:
 			lex >> forcelocalfontswitch_;
@@ -313,7 +319,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 
 			// We don't want to apply the algorithm in DocumentClass::insetLayout()
 			// here. So we do it the long way.
-			TextClass::InsetLayouts::const_iterator it = 
+			TextClass::InsetLayouts::const_iterator it =
 					tclass.insetLayouts().find(style);
 			if (it != tclass.insetLayouts().end()) {
 				docstring const tmpname = name_;
@@ -324,9 +330,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 					<< style << "' to InsetLayout `"
 					<< name() << "'\n"
 					<< "All InsetLayouts so far:");
-				TextClass::InsetLayouts::const_iterator lit = 
+				TextClass::InsetLayouts::const_iterator lit =
 						tclass.insetLayouts().begin();
-				TextClass::InsetLayouts::const_iterator len = 
+				TextClass::InsetLayouts::const_iterator len =
 						tclass.insetLayouts().end();
 				for (; lit != len; ++lit)
 					lyxerr << lit->second.name() << "\n";
@@ -354,9 +360,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 					<< "' with unknown InsetLayout `"
 					<< style << "'\n"
 					<< "All InsetLayouts so far:");
-				TextClass::InsetLayouts::const_iterator lit = 
+				TextClass::InsetLayouts::const_iterator lit =
 						tclass.insetLayouts().begin();
-				TextClass::InsetLayouts::const_iterator len = 
+				TextClass::InsetLayouts::const_iterator len =
 						tclass.insetLayouts().end();
 				for (; lit != len; ++lit)
 					lyxerr << lit->second.name() << "\n";
@@ -427,7 +433,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_REQUIRES: {
 			lex.eatLine();
-			vector<string> const req 
+			vector<string> const req
 				= support::getVectorFromString(lex.getString());
 			requires_.insert(req.begin(), req.end());
 			break;
@@ -450,7 +456,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 	// Here add element to list if getout == true
 	if (!getout)
 		return false;
-	
+
 	// The label font is generally used as-is without
 	// any realization against a given context.
 	labelfont_.realize(sane_font);
@@ -460,9 +466,8 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 }
 
 
-InsetLayout::InsetLyXType translateLyXType(std::string const & str) 
+InsetLayout::InsetLyXType translateLyXType(std::string const & str)
 {
-	
 	if (support::compare_ascii_no_case(str, "charstyle") == 0)
 		return InsetLayout::CHARSTYLE;
 	if (support::compare_ascii_no_case(str, "custom") == 0)
@@ -481,7 +486,7 @@ string const & InsetLayout::htmltag() const
 {
 	if (htmltag_.empty())
 		htmltag_ = multipar_ ? "div" : "span";
-	return htmltag_; 
+	return htmltag_;
 }
 
 
@@ -489,7 +494,7 @@ string const & InsetLayout::htmlattr() const
 {
 	if (htmlattr_.empty())
 		htmlattr_ = "class=\"" + defaultCSSClass() + "\"";
-	return htmlattr_; 
+	return htmlattr_;
 }
 
 
@@ -497,12 +502,12 @@ string const & InsetLayout::htmlinnerattr() const
 {
 	if (htmlinnerattr_.empty())
 		htmlinnerattr_ = "class=\"" + defaultCSSClass() + "_inner\"";
-	return htmlinnerattr_; 
+	return htmlinnerattr_;
 }
 
 
 string InsetLayout::defaultCSSClass() const
-{ 
+{
 	if (!defaultcssclass_.empty())
 		return defaultcssclass_;
 	string d;
@@ -525,18 +530,18 @@ string InsetLayout::defaultCSSClass() const
 
 void InsetLayout::makeDefaultCSS() const
 {
-	if (!htmldefaultstyle_.empty()) 
+	if (!htmldefaultstyle_.empty())
 		return;
 	docstring const mainfontCSS = font_.asCSS();
 	if (!mainfontCSS.empty())
-		htmldefaultstyle_ = 
+		htmldefaultstyle_ =
 				from_ascii(htmltag() + "." + defaultCSSClass() + " {\n") +
 				mainfontCSS + from_ascii("\n}\n");
 }
 
 
-docstring InsetLayout::htmlstyle() const 
-{ 
+docstring InsetLayout::htmlstyle() const
+{
 	if (!htmlstyle_.empty() && !htmlforcecss_)
 		return htmlstyle_;
 	if (htmldefaultstyle_.empty())

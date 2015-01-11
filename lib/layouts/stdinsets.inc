@@ -4,7 +4,7 @@
 #
 # Detailed format description is available in the customization manual
 
-Format 53
+Format 54
 
 Provides stdinsets 1
 
@@ -267,6 +267,7 @@ InsetLayout TOC:Listings
 	LangPreamble
 		\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}
 	EndLangPreamble
+	FixedWidthPreambleEncoding true
   HTMLTag h2
   HTMLStyle
     div.lyxtoc-flat {
@@ -287,6 +288,7 @@ InsetLayout Include:Listings
 	LangPreamble
 		\renewcommand{\lstlistingname}{_(Listing)}
 	EndLangPreamble
+	FixedWidthPreambleEncoding true
 End
 
 InsetLayout Listings
