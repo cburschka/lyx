@@ -99,6 +99,7 @@ public:
 	//@{
 	bool notify(QObject * receiver, QEvent * event);
 	void commitData(QSessionManager & sm);
+	// FIXME QT5
 #ifdef Q_WS_X11
 	bool x11EventFilter(XEvent * ev);
 #endif

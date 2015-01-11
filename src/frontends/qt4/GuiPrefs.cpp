@@ -1046,7 +1046,7 @@ void PrefScreenFonts::updateRC(LyXRC const & rc)
 	updateScreenFontSizes(rc);
 
 	pixmapCacheCB->setChecked(rc.use_pixmap_cache);
-#if defined(Q_WS_X11)
+#if defined(Q_WS_X11) || defined(QPA_XCB)
 	pixmapCacheCB->setEnabled(false);
 #endif
 
@@ -2540,7 +2540,7 @@ PrefUserInterface::PrefUserInterface(GuiPreferences * form)
 	iconSetCO->addItem(qt_("Classic"), "classic");
 	iconSetCO->addItem(qt_("Oxygen"), "oxygen");
 
-#if (!defined Q_WS_X11 || QT_VERSION < 0x040600)
+#if (!(defined Q_WS_X11 || defined(QPA_XCB)) || QT_VERSION < 0x040600)
 	useSystemThemeIconsCB->hide();
 #endif
 }

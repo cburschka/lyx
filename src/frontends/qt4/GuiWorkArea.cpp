@@ -695,6 +695,7 @@ void GuiWorkArea::scrollTo(int value)
 	}
 	// Show the cursor immediately after any operation.
 	startBlinkingCursor();
+	// FIXME QT5
 #ifdef Q_WS_X11
 	QApplication::syncX();
 #endif
@@ -1060,7 +1061,7 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 	// do nothing if there are other events
 	// (the auto repeated events come too fast)
 	// it looks like this is only needed on X11
-#ifdef Q_WS_X11
+#if defined(Q_WS_X11) || defined(QPA_XCB)
 	if (qApp->hasPendingEvents() && ev->isAutoRepeat()) {
 		switch (ev->key()) {
 		case Qt::Key_PageDown:

@@ -635,7 +635,7 @@ void GuiView::saveLayout() const
 	QSettings settings;
 	settings.beginGroup("views");
 	settings.beginGroup(QString::number(id_));
-#ifdef Q_WS_X11
+#if defined(Q_WS_X11) || defined(QPA_XCB)
 	settings.setValue("pos", pos());
 	settings.setValue("size", size());
 #else
@@ -679,7 +679,7 @@ bool GuiView::restoreLayout()
 	}
 	setIconSize(icon_size);
 
-#ifdef Q_WS_X11
+#if defined(Q_WS_X11) || defined(QPA_XCB)
 	QPoint pos = settings.value("pos", QPoint(50, 50)).toPoint();
 	QSize size = settings.value("size", QSize(690, 510)).toSize();
 	resize(size);

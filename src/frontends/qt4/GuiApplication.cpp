@@ -115,6 +115,7 @@
 #include <QThreadPool>
 #include <QWidget>
 
+// FIXME QT5
 #ifdef Q_WS_X11
 #include <X11/Xatom.h>
 #include <X11/Xlib.h>
@@ -167,7 +168,7 @@ namespace lyx {
 
 frontend::Application * createApplication(int & argc, char * argv[])
 {
-#ifndef Q_WS_X11
+#if !defined(Q_WS_X11) && !defined(QPA_XCB)
 	// prune -geometry argument(s) by shifting
 	// the following ones 2 places down.
 	for (int i = 0 ; i < argc ; ++i) {
@@ -1007,7 +1008,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
     setupApplescript();
 #endif
 
-#ifdef Q_WS_X11
+#if defined(Q_WS_X11) || defined(QPA_XCB)
 	// doubleClickInterval() is 400 ms on X11 which is just too long.
 	// On Windows and Mac OS X, the operating system's value is used.
 	// On Microsoft Windows, calling this function sets the double
@@ -2948,6 +2949,7 @@ bool GuiApplication::longOperationStarted() {
 //
 // X11 specific stuff goes here...
 
+// FIXME QT5
 #ifdef Q_WS_X11
 bool GuiApplication::x11EventFilter(XEvent * xev)
 {

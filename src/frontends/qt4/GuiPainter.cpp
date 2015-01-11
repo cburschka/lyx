@@ -38,7 +38,7 @@
 
 // Set USE_PIXMAP_CACHE to 1 for enabling the use of a Pixmap cache when
 // drawing text. This is especially useful for older PPC/Mac systems.
-#if defined(Q_WS_X11)
+#if defined(Q_WS_X11) || defined(QPA_XCB)
 #define USE_PIXMAP_CACHE 0
 #else
 #define USE_PIXMAP_CACHE 1

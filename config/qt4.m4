@@ -169,6 +169,19 @@ AC_DEFUN([QT_DO_IT_ALL],
 	[AC_MSG_ERROR([LyX requires at least version $1 of Qt. Only version $QTLIB_VERSION has been found.])
 	])
 
+	if test x$USE_QT5 = xyes ; then
+	  save_CPPFLAGS=$CPPFLAGS
+	  AC_MSG_CHECKING([whether Qt uses the X Window system])
+	  CPPFLAGS="$save_CPPFLAGS $QT_CORE_INCLUDES"
+	  AC_EGREP_CPP(xcb,
+	    [#include <qconfig.h>
+	    QT_QPA_DEFAULT_PLATFORM_NAME],
+	    [AC_MSG_RESULT(yes)
+	     AC_DEFINE(QPA_XCB, 1, [Define if Qt uses the X Window System])],
+	    [AC_MSG_RESULT(no)])
+	  CPPFLAGS=$save_CPPFLAGS
+	fi
+
 	QT_FIND_TOOL([QT_MOC], [moc])
 	QT_FIND_TOOL([QT_UIC], [uic])
 	QT_FIND_TOOL([QT_RCC], [rcc])
