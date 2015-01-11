@@ -145,6 +145,8 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 		// listings package cannot deal with multi-byte-encoded
 		// glyphs (not needed with full-unicode aware backends
 		// such as XeTeX).
+		// This needs to be consistent with
+		// LaTeXFeatures::getTClassI18nPreamble().
 		Language const * const outer_language =
 			(runparams.local_font != 0) ?
 				runparams.local_font->language()
