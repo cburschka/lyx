@@ -50,6 +50,7 @@
 #include "frontends/alert.h"
 #include "frontends/Application.h"
 
+#include "support/ConsoleApplication.h"
 #include "support/lassert.h"
 #include "support/debug.h"
 #include "support/environment.h"
@@ -195,6 +196,27 @@ struct LyX::Impl {
 };
 
 
+/// The main application class for console mode
+class LyXConsoleApp : public ConsoleApplication
+{
+public:
+	LyXConsoleApp(LyX * lyx, int & argc, char * argv[])
+		: ConsoleApplication(lyx_package, argc, argv), lyx_(lyx),
+		  argc_(argc), argv_(argv)
+	{
+	}
+	void doExec()
+	{
+		int const exit_status = lyx_->execWithoutGui(argc_, argv_);
+		exit(exit_status);
+	}
+private:
+	LyX * lyx_;
+	int & argc_;
+	char ** argv_;
+};
+
+
 ///
 frontend::Application * theApp()
 {
@@ -287,39 +309,13 @@ int LyX::exec(int & argc, char * argv[])
 	setLocale();
 
 	if (!use_gui) {
-		// FIXME: create a ConsoleApplication
-		int exit_status = init(argc, argv);
-		if (exit_status) {
-			prepareExit();
-			return exit_status;
-		}
+		LyXConsoleApp app(this, argc, argv);
 
-		// this is correct, since return values are inverted.
-		exit_status = !loadFiles();
+		// Reestablish our defaults, as Qt overwrites them
+		// after creating app
+		setLocale();//???
 
-		if (pimpl_->batch_commands.empty() || pimpl_->buffer_list_.empty()) {
-			prepareExit();
-			return exit_status;
-		}
-
-		BufferList::iterator begin = pimpl_->buffer_list_.begin();
-
-		bool final_success = false;
-		for (BufferList::iterator I = begin; I != pimpl_->buffer_list_.end(); ++I) {
-			Buffer * buf = *I;
-			if (buf != buf->masterBuffer())
-				continue;
-			vector<string>::const_iterator bcit  = pimpl_->batch_commands.begin();
-			vector<string>::const_iterator bcend = pimpl_->batch_commands.end();
-			DispatchResult dr;
-			for (; bcit != bcend; ++bcit) {
-				LYXERR(Debug::ACTION, "Buffer::dispatch: cmd: " << *bcit);
-				buf->dispatch(*bcit, dr);
-				final_success |= !dr.error();
-			}
-		}
-		prepareExit();
-		return !final_success;
+		return app.exec();
 	}
 
 	// Let the frontend parse and remove all arguments that it knows
@@ -469,6 +465,43 @@ int LyX::init(int & argc, char * argv[])
 	}
 
 	return EXIT_SUCCESS;
+}
+
+
+int LyX::execWithoutGui(int & argc, char * argv[])
+{
+	int exit_status = init(argc, argv);
+	if (exit_status) {
+		prepareExit(); 
+		return exit_status;   
+	}                      
+
+	// this is correct, since return values are inverted.
+	exit_status = !loadFiles();
+
+	if (pimpl_->batch_commands.empty() || pimpl_->buffer_list_.empty()) {
+		prepareExit();
+		return exit_status;
+	}
+
+	BufferList::iterator begin = pimpl_->buffer_list_.begin();
+
+	bool final_success = false;
+	for (BufferList::iterator I = begin; I != pimpl_->buffer_list_.end(); ++I) {
+		Buffer * buf = *I;
+		if (buf != buf->masterBuffer())
+			continue;
+		vector<string>::const_iterator bcit  = pimpl_->batch_commands.begin();
+		vector<string>::const_iterator bcend = pimpl_->batch_commands.end();
+		DispatchResult dr;
+		for (; bcit != bcend; ++bcit) {
+			LYXERR(Debug::ACTION, "Buffer::dispatch: cmd: " << *bcit);
+			buf->dispatch(*bcit, dr);
+			final_success |= !dr.error();
+		}
+	}
+	prepareExit();
+	return !final_success;
 }
 
 

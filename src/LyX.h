@@ -60,8 +60,8 @@ class Application;
 
 /// initial startup
 class LyX {
+	friend class LyXConsoleApp;
 public:
-
 	LyX();
 	~LyX();
 
@@ -84,6 +84,9 @@ private:
 	\return exit code failure if any.
 	*/
 	int init(int & argc, char * argv[]);
+
+	/// Execute commandline commands if no GUI was requested.
+	int execWithoutGui(int & argc, char * argv[]);
 
 	/// Execute batch commands if available.
 	void execCommands();

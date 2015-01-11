@@ -12,6 +12,7 @@
 
 #include <config.h>
 
+#include "support/ConsoleApplication.h"
 #include "support/debug.h"
 #include "support/FileName.h"
 #include "support/FileNameList.h"
@@ -54,6 +55,7 @@
 #include <cerrno>
 #include <cstdio>
 #include <cstdlib>
+#include <exception>
 #include <string>
 #include <vector>
 #include <map>
@@ -427,6 +429,16 @@ namespace cmdline {
     docstring mainTmp(from_ascii("/tmp"));
 
 
+class StopException : public exception
+{
+public:
+	StopException(int status) : status_(status) {}
+	int status() const { return status_; }
+private:
+	int status_;
+};
+
+
 void usage()
 {
 	cerr <<
@@ -453,7 +465,7 @@ void usage()
 int h(vector<docstring> const &)
 {
 	usage();
-	exit(0);
+	throw StopException(EXIT_SUCCESS);
 }
 
 
@@ -548,14 +560,37 @@ int p(vector<docstring> const & arg)
 
 
 } // namespace cmdline
-} // namespace lyx
 
-
-int main(int argc, char * argv[])
+/// The main application class
+class LyXClientApp : public ConsoleApplication
 {
-	using namespace lyx;
-	lyxerr.setStream(cerr);
+public:
+	LyXClientApp(int & argc, char * argv[])
+		: ConsoleApplication("client" PROGRAM_SUFFIX, argc, argv),
+		  argc_(argc), argv_(argv)
+	{
+	}
+	void doExec()
+	{
+		try {
+			int const exit_status = run();
+			exit(exit_status);
+		}
+		catch (cmdline::StopException & e) {
+			exit(e.status());
+		}
+	}
+private:
+	int run();
+	int & argc_;
+	char ** argv_;
+};
 
+
+int LyXClientApp::run()
+{
+	// qt changes this, and our numeric conversions require the C locale
+	setlocale(LC_NUMERIC, "C");
 
 	// Set defaults
 	char const * const lyxsocket = getenv("LYXSOCKET");
@@ -576,11 +611,11 @@ int main(int argc, char * argv[])
 	args.helper["-p"] = cmdline::p;
 
 	// Command line failure conditions:
-	if ((!args.parse(argc, argv))
+	if ((!args.parse(argc_, argv_))
 	   || (args.isset["-c"] && args.isset["-g"])
 	   || (args.isset["-a"] && args.isset["-p"])) {
 		cmdline::usage();
-		return 1;
+		return EXIT_FAILURE;
 	}
 
 	scoped_ptr<LyXDataSocket> server;
@@ -675,6 +710,17 @@ int main(int argc, char * argv[])
 	}
 
 	return EXIT_SUCCESS;
+}
+
+} // namespace lyx
+
+
+int main(int argc, char * argv[])
+{
+	lyx::lyxerr.setStream(cerr);
+
+	lyx::LyXClientApp app(argc, argv);
+	return app.exec();
 }
 
 

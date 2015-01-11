@@ -24,6 +24,7 @@
 #include "Preamble.h"
 #include "TextClass.h"
 
+#include "support/ConsoleApplication.h"
 #include "support/convert.h"
 #include "support/ExceptionMessage.h"
 #include "support/filetools.h"
@@ -35,6 +36,7 @@
 
 #include <cstdlib>
 #include <algorithm>
+#include <exception>
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -531,6 +533,44 @@ int error_code = 0;
 typedef int (*cmd_helper)(string const &, string const &);
 
 
+class StopException : public exception
+{
+	public:
+		StopException(int status) : status_(status) {}
+		int status() const { return status_; }
+	private:
+		int status_;
+};
+
+
+/// The main application class
+class TeX2LyXApp : public ConsoleApplication
+{
+public:
+	TeX2LyXApp(int & argc, char * argv[])
+		: ConsoleApplication("tex2lyx" PROGRAM_SUFFIX, argc, argv),
+		  argc_(argc), argv_(argv)
+	{
+	}
+	void doExec()
+	{
+		try {
+			int const exit_status = run();
+			exit(exit_status);
+		}
+		catch (StopException & e) {
+			exit(e.status());
+		}
+	}
+private:
+	void easyParse();
+	/// Do the real work
+	int run();
+	int & argc_;
+	char ** argv_;
+};
+
+
 int parse_help(string const &, string const &)
 {
 	cout << "Usage: tex2lyx [options] infile.tex [outfile.lyx]\n"
@@ -558,7 +598,7 @@ int parse_help(string const &, string const &)
 		"\tand \"SYSDIR/layouts\" are searched for layout and module files.\n"
 		"Check the tex2lyx man page for more details."
 	     << endl;
-	exit(error_code);
+	throw StopException(error_code);
 }
 
 
@@ -570,14 +610,14 @@ int parse_version(string const &, string const &)
 	     << endl;
 
 	cout << lyx_version_info << endl;
-	exit(error_code);
+	throw StopException(error_code);
 }
 
 
 void error_message(string const & message)
 {
 	cerr << "tex2lyx: " << message << "\n\n";
-	error_code = 1;
+	error_code = EXIT_FAILURE;
 	parse_help(string(), string());
 }
 
@@ -687,7 +727,7 @@ int parse_copyfiles(string const &, string const &)
 }
 
 
-void easyParse(int & argc, char * argv[])
+void TeX2LyXApp::easyParse()
 {
 	map<string, cmd_helper> cmdmap;
 
@@ -710,29 +750,29 @@ void easyParse(int & argc, char * argv[])
 	cmdmap["-roundtrip"] = parse_roundtrip;
 	cmdmap["-copyfiles"] = parse_copyfiles;
 
-	for (int i = 1; i < argc; ++i) {
+	for (int i = 1; i < argc_; ++i) {
 		map<string, cmd_helper>::const_iterator it
-			= cmdmap.find(argv[i]);
+			= cmdmap.find(argv_[i]);
 
 		// don't complain if not found - may be parsed later
 		if (it == cmdmap.end()) {
-			if (argv[i][0] == '-')
-				error_message(string("Unknown option `") + argv[i] + "'.");
+			if (argv_[i][0] == '-')
+				error_message(string("Unknown option `") + argv_[i] + "'.");
 			else
 				continue;
 		}
 
-		string arg = (i + 1 < argc) ? os::utf8_argv(i + 1) : string();
-		string arg2 = (i + 2 < argc) ? os::utf8_argv(i + 2) : string();
+		string arg = (i + 1 < argc_) ? os::utf8_argv(i + 1) : string();
+		string arg2 = (i + 2 < argc_) ? os::utf8_argv(i + 2) : string();
 
 		int const remove = 1 + it->second(arg, arg2);
 
 		// Now, remove used arguments by shifting
 		// the following ones remove places down.
 		os::remove_internal_args(i, remove);
-		argc -= remove;
-		for (int j = i; j < argc; ++j)
-			argv[j] = argv[j + remove];
+		argc_ -= remove;
+		for (int j = i; j < argc_; ++j)
+			argv_[j] = argv_[j + remove];
 		--i;
 	}
 }
@@ -960,18 +1000,13 @@ bool tex2tex(string const & infilename, FileName const & outfilename,
 	return false;
 }
 
-} // namespace lyx
 
+namespace {
 
-int main(int argc, char * argv[])
+int TeX2LyXApp::run()
 {
-	using namespace lyx;
-
-	//setlocale(LC_CTYPE, "");
-
-	lyxerr.setStream(cerr);
-
-	os::init(argc, argv);
+	// qt changes this, and our numeric conversions require the C locale
+	setlocale(LC_NUMERIC, "C");
 
 	try {
 		init_package(internal_path(os::utf8_argv(0)), string(), string());
@@ -982,9 +1017,9 @@ int main(int argc, char * argv[])
 			return EXIT_FAILURE;
 	}
 
-	easyParse(argc, argv);
+	easyParse();
 
-	if (argc <= 1)
+	if (argc_ <= 1)
 		error_message("Not enough arguments.");
 
 	try {
@@ -1017,7 +1052,7 @@ int main(int argc, char * argv[])
 	infilename = makeAbsPath(infilename).absFileName();
 
 	string outfilename;
-	if (argc > 2) {
+	if (argc_ > 2) {
 		outfilename = internal_path(os::utf8_argv(2));
 		if (outfilename != "-")
 			outfilename = makeAbsPath(outfilename).absFileName();
@@ -1107,11 +1142,27 @@ int main(int argc, char * argv[])
 			if (tex2tex(infilename, FileName(outfilename), default_encoding))
 				return EXIT_SUCCESS;
 		} else {
-			if (tex2lyx(infilename, FileName(outfilename), default_encoding))
+			if (lyx::tex2lyx(infilename, FileName(outfilename), default_encoding))
 				return EXIT_SUCCESS;
 		}
 	}
 	return EXIT_FAILURE;
+}
+
+} // anonymous namespace
+} // namespace lyx
+
+
+int main(int argc, char * argv[])
+{
+	//setlocale(LC_CTYPE, "");
+
+	lyx::lyxerr.setStream(cerr);
+
+	os::init(argc, argv);
+
+	lyx::TeX2LyXApp app(argc, argv);
+	return app.exec();
 }
 
 // }])

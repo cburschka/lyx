@@ -13,7 +13,9 @@ BUILT_SOURCES = $(PCH_FILE)
 #########################  Qt stuff  #############################
 #
 
-MOCHEADER = SystemcallPrivate.h
+MOCHEADER = \
+	ConsoleApplicationPrivate.h \
+	SystemcallPrivate.h
 
 MOCEDFILES = $(MOCHEADER:%.h=moc_%.cpp)
 
@@ -36,6 +38,9 @@ liblyxsupport_a_SOURCES = \
 	FileMonitor.cpp \
 	RandomAccessList.h \
 	bind.h \
+	ConsoleApplication.cpp \
+	ConsoleApplication.h \
+	ConsoleApplicationPrivate.h \
 	convert.cpp \
 	convert.h \
 	copied_ptr.h \
