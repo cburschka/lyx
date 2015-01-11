@@ -3305,7 +3305,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	QDialog::setModal(false);
 
 	connect(savePB, SIGNAL(clicked()), this, SLOT(slotOK()));
-	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApplyRC()));
+	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
 
