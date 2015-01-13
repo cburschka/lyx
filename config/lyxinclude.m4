@@ -276,7 +276,7 @@ if test x$GXX = xyes; then
           3.1*|3.2*|3.3*)
               AM_CPPFLAGS="-W -Wall $AM_CPPFLAGS"
               ;;
-          3.4*|4.[0-8]*|clang)
+          3.4*|4.0*|4.1*|4.2*|4.3*|4.4*|4.5*|4.6*|4.7*|4.8*|clang)
               AM_CPPFLAGS="-Wextra -Wall $AM_CPPFLAGS"
               ;;
           *)
@@ -296,7 +296,7 @@ if test x$GXX = xyes; then
     dnl FIXME: for clang/libc++, one should define _LIBCPP_DEBUG2=0
     dnl See http://clang-developers.42468.n3.nabble.com/libc-debug-mode-td3336742.html
     case $gxx_version in
-      3.[123]) ;;
+      3.1*|3.2*|3.3*) ;;
       *)
         lyx_flags="$lyx_flags stdlib-debug"
 	AC_DEFINE(_GLIBCXX_DEBUG, 1, [libstdc++ debug mode])
@@ -319,8 +319,8 @@ if test x$GXX = xyes; then
   fi
   if test x$enable_cxx11 = xyes ; then
     case $gxx_version in
-      3.*|4.[012]*) AC_ERROR([There is no C++11 support in gcc 3.x]);;
-      4.[3-6]*)
+      3.*|4.0*|4.1*|4.2*) AC_ERROR([There is no C++11 support in gcc 3.x]);;
+      4.3*|4.4*|4.5*|4.6*)
         lyx_flags="$lyx_flags c++11-mode"
 	AM_CXXFLAGS="-std=gnu++0x $AM_CXXFLAGS";;
       clang)
@@ -337,7 +337,7 @@ if test x$GXX = xyes; then
       dnl <regex> in gcc is unusable in versions less than 4.9.0
       dnl see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
       case $gxx_version in
-        3.*|4.[0-8]*) ;;
+        3.*|4.0*|4.1*|4.2*|4.3*|4.4*|4.5*|4.6*|4.7*|4.8*) ;;
 	*) lyx_flags="$lyx_flags stdregex"
 	   lyx_std_regex=yes
            ;;
