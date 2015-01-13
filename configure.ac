@@ -67,7 +67,17 @@ AM_PATH_PYTHON(2.4.0,, :)
 AC_PROG_RANLIB
 
 ### Check for a C++ compiler
+dnl We have to do weird tricks so that autoconf does not touch CXXFLAGS even
+dnl if it is not set. We do not use autoconf defaults.
+lyx_has_CXXFLAGS=${CXXFLAGS+yes}
+if ! test "$lyx_has_CXXFLAGS" = yes; then
+  dnl set to a dummy value so that AC_PROG_CXX does not try to set CXXFLAGS
+  CXXFLAGS=" "
+fi
 LYX_PROG_CXX
+if ! test "$lyx_has_CXXFLAGS" = yes; then
+  unset CXXFLAGS
+fi
 AC_LANG(C++)
 
 ### Objective-C compiler

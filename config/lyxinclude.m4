@@ -162,6 +162,7 @@ AC_DEFUN([LYX_LIB_STDCXX],
 AC_DEFUN([LYX_PROG_CXX],
 [AC_REQUIRE([AC_PROG_CXX])
 AC_REQUIRE([AC_PROG_CXXCPP])
+
 AC_LANG_PUSH(C++)
 LYX_PROG_CLANG
 LYX_LIB_STDCXX
@@ -260,8 +261,8 @@ if test x$GXX = xyes; then
       AM_CXXFLAGS="-g $AM_CXXFLAGS"
   fi
   if test $build_type = gprof ; then
-    AM_CXXFLAGS="-pg $AM_CXXFLAGS"
-    AM_LDFLAGS="-pg $AM_LDFLAGS"
+    AM_CXXFLAGS="$AM_CXXFLAGS -pg"
+    AM_LDFLAGS="$AM_LDFLAGS -pg"
   fi
   if test $build_type = profiling ; then
     AM_CXXFLAGS="$AM_CXXFLAGS -fno-omit-frame-pointer"
@@ -274,23 +275,20 @@ if test x$GXX = xyes; then
   if test x$enable_warnings = xyes ; then
       case $gxx_version in
           3.1*|3.2*|3.3*)
-              AM_CPPFLAGS="-W -Wall $AM_CPPFLAGS"
+              AM_CPPFLAGS="$AM_CPPFLAGS -Wall -W"
               ;;
           3.4*|4.0*|4.1*|4.2*|4.3*|4.4*|4.5*|4.6*|4.7*|4.8*|clang)
-              AM_CPPFLAGS="-Wextra -Wall $AM_CPPFLAGS"
+              AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra"
               ;;
           *)
-              AM_CPPFLAGS="-Wextra -Wall -Wfloat-conversion $AM_CPPFLAGS"
+              AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra -Wfloat-conversion"
               ;;
       esac
   fi
   case $gxx_version in
-      3.1*)    AM_CXXFLAGS="-finline-limit=500 ";;
-      3.2*|3.3*)    AM_CXXFLAGS="";;
-      3.4*|4.*)
-          AM_CXXFLAGS=""
-          test $enable_pch = yes && lyx_pch_comp=yes
-          ;;
+      3.1*)    AM_CXXFLAGS="$AM_CXXFLAGS -finline-limit=500";;
+      3.2*|3.3*) ;;
+      *)  test $enable_pch = yes && lyx_pch_comp=yes ;;
   esac
   if test x$enable_stdlib_debug = xyes ; then
     dnl FIXME: for clang/libc++, one should define _LIBCPP_DEBUG2=0
@@ -322,15 +320,15 @@ if test x$GXX = xyes; then
       3.*|4.0*|4.1*|4.2*) AC_ERROR([There is no C++11 support in gcc 3.x]);;
       4.3*|4.4*|4.5*|4.6*)
         lyx_flags="$lyx_flags c++11-mode"
-	AM_CXXFLAGS="-std=gnu++0x $AM_CXXFLAGS";;
+	AM_CXXFLAGS="$AM_CXXFLAGS -std=gnu++0x";;
       clang)
         dnl presumably all clang version support c++11.
         lyx_flags="$lyx_flags c++11-mode"
 	dnl the deprecated-register warning is very annoying with Qt4.x right now.
-        AM_CXXFLAGS="-std=c++11 -Wno-deprecated-register $AM_CXXFLAGS";;
+        AM_CXXFLAGS="$AM_CXXFLAGS -std=c++11 -Wno-deprecated-register";;
       *)
 	lyx_flags="$lyx_flags c++11-mode"
-	AM_CXXFLAGS="-std=gnu++11 $AM_CXXFLAGS"
+	AM_CXXFLAGS="$AM_CXXFLAGS -std=gnu++11"
 	;;
     esac
     if test x$CLANG = xno || test $lyx_cv_lib_stdcxx = yes; then
