@@ -82,13 +82,14 @@ test ! x"$lyx_ldflags" = x && LDFLAGS="$lyx_ldflags $LDFLAGS"
 ### Add extra directories to check for include files.
 LYX_WITH_DIR([extra-inc],[extra include directory],extra_inc, NONE)
 LYX_LOOP_DIR($lyx_cv_extra_inc,LYX_ADD_INC_DIR(lyx_cppflags,$dir))
-test ! x"$lyx_cppflags" = x && CPPFLAGS="$lyx_cppflags $CPPFLAGS"
+test ! x"$lyx_cppflags" = x && AM_CPPFLAGS="$lyx_cppflags $AM_CPPFLAGS"
 
 ### Add both includes and libraries
 LYX_WITH_DIR([extra-prefix],[extra lib+include directory],extra_prefix, NONE, ${prefix})
 LYX_LOOP_DIR($lyx_cv_extra_prefix,[
-LYX_ADD_INC_DIR(CPPFLAGS,$dir/include)
-  LYX_ADD_LIB_DIR(LDFLAGS,$dir/lib)])
+  LYX_ADD_INC_DIR(AM_CPPFLAGS,$dir/include)
+  LYX_ADD_LIB_DIR(LDFLAGS,$dir/lib)
+])
 
 ### These are needed in windows
 AC_CHECK_LIB(shlwapi, main, [LIBSHLWAPI=-lshlwapi])
@@ -218,22 +219,21 @@ real_bindir=`eval "echo \`eval \"echo ${bindir}\"\`"`
 real_pkgdatadir=`eval "echo \`eval \"echo \\\`eval \\\"echo ${pkgdatadir}\\\"\\\`\"\`"`
 real_localedir=`eval "echo \`eval \"echo ${datadir}/locale\"\`"`
 VERSION_INFO="Configuration\n\
-  Host type:                    ${host}\n\
-  Special build flags:         ${lyx_flags}\n\
-  C++ Compiler:                 ${CXX} ${CXX_VERSION}\n\
-  C++ Compiler LyX flags:       ${AM_CPPFLAGS} ${AM_CXXFLAGS}\n\
-  C++ Compiler flags:           ${CPPFLAGS} ${CXXFLAGS}\n\
-  Linker flags:                 ${AM_LDFLAGS}\n\
-  Linker user flags:            ${LDFLAGS}\n\
+  Host type:               ${host}\n\
+  Special build flags:     ${lyx_flags}\n\
+  C++ Compiler:            ${CXX} ${CXX_VERSION}\n\
+  C++ Compiler flags:      ${AM_CPPFLAGS} ${AM_CXXFLAGS}\n\
+  C++ Compiler user flags: ${CPPFLAGS} ${CXXFLAGS}\n\
+  Linker flags:            ${AM_LDFLAGS}\n\
+  Linker user flags:       ${LDFLAGS}\n\
 ${FRONTEND_INFO}\
-  Packaging:                    ${lyx_use_packaging}\n\
-  LyX binary dir:               ${real_bindir}\n\
-  LyX files dir:                ${real_pkgdatadir}\n"
+  Packaging:               ${lyx_use_packaging}\n\
+  LyX binary dir:          ${real_bindir}\n\
+  LyX files dir:           ${real_pkgdatadir}\n"
 
 AC_SUBST(VERSION_INFO)
 AC_SUBST(AM_CPPFLAGS)
 AC_SUBST(AM_CXXFLAGS)
-AC_SUBST(AM_CFLAGS)
 AC_SUBST(AM_LDFLAGS)
 AC_SUBST(real_pkgdatadir)
 

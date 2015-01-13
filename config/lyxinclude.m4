@@ -133,26 +133,6 @@ done
 ])dnl
 
 
-AC_DEFUN([LYX_PROG_CXX_WORKS],
-[rm -f conftest.C
-cat >conftest.C <<EOF
-class foo {
-   // we require the mutable keyword
-   mutable int bar;
- };
- // we require namespace support
- namespace baz {
-   int bar;
- }
- int main() {
-   return(0);
- }
-EOF
-$CXX -c $CXXFLAGS $CPPFLAGS conftest.C >&5 || CXX=
-rm -f conftest.C conftest.o conftest.obj || true
-])
-
-
 dnl Usage: LYX_PROG_CLANG: set lyx_cv_prog_clang to yes if the compiler is clang.
 AC_DEFUN([LYX_PROG_CLANG],
 [AC_CACHE_CHECK([whether the compiler is clang],
@@ -180,15 +160,7 @@ AC_DEFUN([LYX_LIB_STDCXX],
 
 
 AC_DEFUN([LYX_PROG_CXX],
-[AC_MSG_CHECKING([for a good enough C++ compiler])
-LYX_SEARCH_PROG(CXX, $CXX $CCC g++ gcc c++ CC cxx xlC cc++, [LYX_PROG_CXX_WORKS])
-
-if test -z "$CXX" ; then
-  AC_MSG_ERROR([Unable to find a good enough C++ compiler])
-fi
-AC_MSG_RESULT($CXX)
-
-AC_REQUIRE([AC_PROG_CXX])
+[AC_REQUIRE([AC_PROG_CXX])
 AC_REQUIRE([AC_PROG_CXXCPP])
 AC_LANG_PUSH(C++)
 LYX_PROG_CLANG
@@ -243,12 +215,12 @@ AC_ARG_ENABLE(optimization,
 case $enable_optimization in
     yes)
         if test $lyx_devel_version = yes ; then
-            lyx_opt=-O
+            lyx_optim=-O
         else
-            lyx_opt=-O2
+            lyx_optim=-O2
         fi;;
-    no) lyx_opt=;;
-    *) lyx_opt=${enable_optimization};;
+    no) lyx_optim=;;
+    *) lyx_optim=${enable_optimization};;
 esac
 
 AC_ARG_ENABLE(pch,
@@ -279,41 +251,38 @@ if test x$GXX = xyes; then
     dnl Useful for global version info
     gxx_version=`${CXX} -dumpversion`
     CXX_VERSION="($gxx_version)"
+  else
+    gxx_version=clang
   fi
 
-  if test "$ac_test_CXXFLAGS" = set; then
-    CXXFLAGS="$ac_save_CXXFLAGS"
-  else
-    CFLAGS="$lyx_opt"
-    CXXFLAGS="$lyx_opt"
-    if test x$enable_debug = xyes ; then
-      CFLAGS="-g $CFLAGS"
-      CXXFLAGS="-g $CXXFLAGS"
-    fi
-    if test $build_type = gprof ; then
-      CFLAGS="-pg $CFLAGS"
-      CXXFLAGS="-pg $CXXFLAGS"
-      LDFLAGS="-pg $LDFLAGS"
-    fi
-    if test $build_type = profiling ; then
-      CFLAGS="$CFLAGS -fno-omit-frame-pointer"
-      CXXFLAGS="$CXXFLAGS -fno-omit-frame-pointer"
-    fi
+  AM_CXXFLAGS="$lyx_optim"
+  if test x$enable_debug = xyes ; then
+      AM_CXXFLAGS="-g $AM_CXXFLAGS"
   fi
-  if test "$ac_env_CPPFLAGS_set" != set; then
-    if test x$USE_QT5 = xyes ; then
-        AS_CASE([$host], [*mingw*|*cygwin*], [], [CPPFLAGS="-fPIC $CPPFLAGS"])
-    fi
-    if test x$enable_warnings = xyes ; then
-        case $gxx_version in
-            3.1*|3.2*|3.3*)
-                CPPFLAGS="-W -Wall $CPPFLAGS"
-                ;;
-            *)
-                CPPFLAGS="-Wextra -Wall $CPPFLAGS "
-                ;;
-        esac
-    fi
+  if test $build_type = gprof ; then
+    AM_CXXFLAGS="-pg $AM_CXXFLAGS"
+    AM_LDFLAGS="-pg $AM_LDFLAGS"
+  fi
+  if test $build_type = profiling ; then
+    AM_CXXFLAGS="$AM_CXXFLAGS -fno-omit-frame-pointer"
+  fi
+
+  if test x$USE_QT5 = xyes ; then
+      AS_CASE([$host], [*mingw*|*cygwin*], [], [AM_CXXFLAGS="-fPIC $AM_CXXFLAGS"])
+  fi
+  dnl Warnings are for preprocessor too
+  if test x$enable_warnings = xyes ; then
+      case $gxx_version in
+          3.1*|3.2*|3.3*)
+              AM_CPPFLAGS="-W -Wall $AM_CPPFLAGS"
+              ;;
+          3.4*|4.[0-8]*|clang)
+              AM_CPPFLAGS="-Wextra -Wall $AM_CPPFLAGS"
+              ;;
+          *)
+              AM_CPPFLAGS="-Wextra -Wall -Wfloat-conversion $AM_CPPFLAGS"
+              ;;
+      esac
   fi
   case $gxx_version in
       3.1*)    AM_CXXFLAGS="-finline-limit=500 ";;
@@ -322,13 +291,13 @@ if test x$GXX = xyes; then
           AM_CXXFLAGS=""
           test $enable_pch = yes && lyx_pch_comp=yes
           ;;
-      *)       AM_CXXFLAGS="";;
   esac
   if test x$enable_stdlib_debug = xyes ; then
     dnl FIXME: for clang/libc++, one should define _LIBCPP_DEBUG2=0
     dnl See http://clang-developers.42468.n3.nabble.com/libc-debug-mode-td3336742.html
     case $gxx_version in
-      3.4*|4.*)
+      3.[123]) ;;
+      *)
         lyx_flags="$lyx_flags stdlib-debug"
 	AC_DEFINE(_GLIBCXX_DEBUG, 1, [libstdc++ debug mode])
 	AC_DEFINE(_GLIBCXX_DEBUG_PEDANTIC, 1, [libstdc++ pedantic debug mode])
@@ -349,34 +318,38 @@ if test x$GXX = xyes; then
     esac
   fi
   if test x$enable_cxx11 = xyes ; then
-      dnl FIXME: check what to do with clang (is anything needed at all?)
+    case $gxx_version in
+      3.*|4.[012]*) AC_ERROR([There is no C++11 support in gcc 3.x]);;
+      4.[3-6]*)
+        lyx_flags="$lyx_flags c++11-mode"
+	AM_CXXFLAGS="-std=gnu++0x $AM_CXXFLAGS";;
+      clang)
+        dnl presumably all clang version support c++11.
+        lyx_flags="$lyx_flags c++11-mode"
+	dnl the deprecated-register warning is very annoying with Qt4.x right now.
+        AM_CXXFLAGS="-std=c++11 -Wno-deprecated-register $AM_CXXFLAGS";;
+      *)
+	lyx_flags="$lyx_flags c++11-mode"
+	AM_CXXFLAGS="-std=gnu++11 $AM_CXXFLAGS"
+	;;
+    esac
+    if test x$CLANG = xno || test $lyx_cv_lib_stdcxx = yes; then
+      dnl <regex> in gcc is unusable in versions less than 4.9.0
+      dnl see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
       case $gxx_version in
-	  4.3*|4.4*|4.5*|4.6*)
-	      lyx_flags="$lyx_flags c++11-mode"
-	      CXXFLAGS="-std=gnu++0x $CXXFLAGS"
-	      ;;
-	  4.7*|4.8*|4.9*)
-	      lyx_flags="$lyx_flags c++11-mode"
-	      CXXFLAGS="-std=gnu++11 $CXXFLAGS"
-	      ;;
+        3.*|4.[0-8]*) ;;
+	*) lyx_flags="$lyx_flags stdregex"
+	   lyx_std_regex=yes
+           ;;
       esac
-      if test x$CLANG = xno || test $lyx_cv_lib_stdcxx = yes; then
-        dnl <regex> in gcc is unusable in versions less than 4.9.0
-        dnl see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
-        case $gxx_version in
-	4.9*)
-          lyx_flags="$lyx_flags stdregex"
-          lyx_std_regex=yes
-          ;;
-        esac
-      else
-          lyx_flags="$lyx_flags stdregex"
-          lyx_std_regex=yes
-      fi
+    else
+      lyx_flags="$lyx_flags stdregex"
+      lyx_std_regex=yes
+    fi
 
-      if test $lyx_std_regex = yes ; then
-        AC_DEFINE([LYX_USE_STD_REGEX], 1, [define to 1 if std::regex should be preferred to boost::regex])
-      fi
+    if test $lyx_std_regex = yes ; then
+      AC_DEFINE([LYX_USE_STD_REGEX], 1, [define to 1 if std::regex should be preferred to boost::regex])
+    fi
   fi
 fi
 AM_CONDITIONAL([LYX_USE_STD_REGEX], test $lyx_std_regex = yes)
