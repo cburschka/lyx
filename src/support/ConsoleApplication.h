@@ -8,8 +8,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef CONSOPLEAPPLICATION_H
-#define CONSOPLEAPPLICATION_H
+#ifndef CONSOLEAPPLICATION_H
+#define CONSOLEAPPLICATION_H
 
 #include "support/strfwd.h"
 
@@ -58,4 +58,4 @@ private:
 } // namespace support
 } // namespace lyx
 
-#endif // CONSOPLEAPPLICATION_H
+#endif // CONSOLEAPPLICATION_H
