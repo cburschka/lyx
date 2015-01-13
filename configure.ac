@@ -150,7 +150,7 @@ QT_DO_IT_ALL([4.5.0])
 AC_SUBST([FRONTENDS_SUBDIRS], [qt4])
 FRONTEND_INFO="${FRONTEND_INFO}\
   Qt Frontend:\n\
-      Qt version:\t\t${QTLIB_VERSION}\n"
+      Qt version:\t   ${QTLIB_VERSION}\n"
 
 # fix the value of the prefixes.
 test "x$prefix" = xNONE && prefix=$default_prefix
