@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-01-04 11:52+0100\n"
+"POT-Creation-Date: 2015-01-13 11:37-0500\n"
 "PO-Revision-Date: 2014-11-14 18:39+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -15309,17 +15309,17 @@ msgid "Redo|R"
 msgstr "Opakovať|O"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1277 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:596
 msgid "Cut"
 msgstr "Vystrihnúť"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1282 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:605
 msgid "Copy"
 msgstr "Kopírovať"
 
 #: lib/ui/stdmenus.inc:107 lib/ui/stdcontext.inc:312 lib/ui/stdtoolbars.inc:83
-#: src/Text3.cpp:1222 src/mathed/InsetMathGrid.cpp:1333
+#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1333
 #: src/mathed/InsetMathNest.cpp:575
 msgid "Paste"
 msgstr "Vlepiť"
@@ -16971,11 +16971,11 @@ msgstr "Kontrola pravopisu"
 msgid "Spellcheck continuously"
 msgstr "Kontrolovať pravopis nepretržite"
 
-#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1339
+#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1340
 msgid "Undo"
 msgstr "Späť"
 
-#: lib/ui/stdtoolbars.inc:80 src/BufferView.cpp:1349
+#: lib/ui/stdtoolbars.inc:80 src/BufferView.cpp:1350
 msgid "Redo"
 msgstr "Opäť"
 
@@ -22220,12 +22220,12 @@ msgstr "chýba \\begin_header"
 msgid "\\begin_document is missing"
 msgstr "chýba \\begin_document"
 
-#: src/Buffer.cpp:946 src/Buffer.cpp:952 src/BufferView.cpp:1444
-#: src/BufferView.cpp:1450
+#: src/Buffer.cpp:946 src/Buffer.cpp:952 src/BufferView.cpp:1445
+#: src/BufferView.cpp:1451
 msgid "Changes not shown in LaTeX output"
 msgstr "Zmeny nezobrazené v LaTeX-ovom výstupe"
 
-#: src/Buffer.cpp:947 src/BufferView.cpp:1445
+#: src/Buffer.cpp:947 src/BufferView.cpp:1446
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -22237,7 +22237,7 @@ msgstr ""
 "Prosím nainštalujte tieto balíky alebo predefinujte \\lyxadded a "
 "\\lyxdeleted v LaTeX-ovej preambuly."
 
-#: src/Buffer.cpp:953 src/BufferView.cpp:1451
+#: src/Buffer.cpp:953 src/BufferView.cpp:1452
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -22917,7 +22917,7 @@ msgstr ""
 "trieda a schéma. LyX nebude schopný zrobiť\n"
 "správny výstup."
 
-#: src/BufferParams.cpp:2097 src/BufferView.cpp:1294 src/BufferView.cpp:1323
+#: src/BufferParams.cpp:2097 src/BufferView.cpp:1295 src/BufferView.cpp:1324
 msgid "Could not load class"
 msgstr "Nepodarilo sa nahrať triedu"
 
@@ -22949,103 +22949,103 @@ msgstr "Dokument je iba na čítanie"
 msgid "This portion of the document is deleted."
 msgstr "Táto časť dokumentu je vymazaná."
 
-#: src/BufferView.cpp:1058 src/BufferView.cpp:1993
+#: src/BufferView.cpp:1058 src/BufferView.cpp:2029
 #: src/frontends/qt4/GuiView.cpp:3398 src/frontends/qt4/GuiView.cpp:3473
 msgid "Absolute filename expected."
 msgstr "Očakáva sa absolútna cesta súboru."
 
-#: src/BufferView.cpp:1292 src/BufferView.cpp:1321
+#: src/BufferView.cpp:1293 src/BufferView.cpp:1322
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "Nepodarilo sa nahrať triedu dokumentu `%1$s'."
 
-#: src/BufferView.cpp:1342
+#: src/BufferView.cpp:1343
 msgid "No further undo information"
 msgstr "Ďalej sa nedá zrušovať"
 
-#: src/BufferView.cpp:1352
+#: src/BufferView.cpp:1353
 msgid "No further redo information"
 msgstr "Ďalej sa nedá opakovať"
 
-#: src/BufferView.cpp:1599
+#: src/BufferView.cpp:1600
 msgid "Mark off"
 msgstr "Značka vypnutá"
 
-#: src/BufferView.cpp:1605
+#: src/BufferView.cpp:1606
 msgid "Mark on"
 msgstr "Značka zapnutá"
 
-#: src/BufferView.cpp:1612
+#: src/BufferView.cpp:1613
 msgid "Mark removed"
 msgstr "Značka odstránená"
 
-#: src/BufferView.cpp:1615
+#: src/BufferView.cpp:1616
 msgid "Mark set"
 msgstr "Značka nastavená"
 
-#: src/BufferView.cpp:1671
+#: src/BufferView.cpp:1672
 msgid "Statistics for the selection:"
 msgstr "Štatistika výberu:"
 
-#: src/BufferView.cpp:1673
+#: src/BufferView.cpp:1674
 msgid "Statistics for the document:"
 msgstr "Štatistika pre dokument:"
 
-#: src/BufferView.cpp:1676
+#: src/BufferView.cpp:1677
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d slov"
 
-#: src/BufferView.cpp:1678
+#: src/BufferView.cpp:1679
 msgid "One word"
 msgstr "Jedno slovo"
 
-#: src/BufferView.cpp:1681
+#: src/BufferView.cpp:1682
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d znakov (spolu s medzerami)"
 
-#: src/BufferView.cpp:1684
+#: src/BufferView.cpp:1685
 msgid "One character (including blanks)"
 msgstr "Jeden znak (aj medzere)"
 
-#: src/BufferView.cpp:1687
+#: src/BufferView.cpp:1688
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d znakov (bez medzier)"
 
-#: src/BufferView.cpp:1690
+#: src/BufferView.cpp:1691
 msgid "One character (excluding blanks)"
 msgstr "Jeden znak (bez medzier)"
 
-#: src/BufferView.cpp:1692
+#: src/BufferView.cpp:1693
 msgid "Statistics"
 msgstr "Štatistika"
 
-#: src/BufferView.cpp:1848
+#: src/BufferView.cpp:1884
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr "`inset-forall' prerušené lebo počet akcií je väčší ako %1$d"
 
-#: src/BufferView.cpp:1850
+#: src/BufferView.cpp:1886
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Aplikované \"%1$s\" na %2$d vložkách"
 
-#: src/BufferView.cpp:1858
+#: src/BufferView.cpp:1894
 msgid "Branch name"
 msgstr "Meno vetvy"
 
-#: src/BufferView.cpp:1865 src/frontends/qt4/GuiBranches.cpp:218
+#: src/BufferView.cpp:1901 src/frontends/qt4/GuiBranches.cpp:218
 msgid "Branch already exists"
 msgstr "Vetva už existuje"
 
-#: src/BufferView.cpp:2315
+#: src/BufferView.cpp:2351
 msgid "Inverse Search Failed"
 msgstr "Spiatočné Hľadanie Zlyhalo"
 
-#: src/BufferView.cpp:2316
+#: src/BufferView.cpp:2352
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
@@ -23053,22 +23053,22 @@ msgstr ""
 "Neplatná pozícia žiadaná spiatočným hľadaním.\n"
 "Treba aktualizovať prehliadaný dokument."
 
-#: src/BufferView.cpp:2696
+#: src/BufferView.cpp:2732
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Vkladám dokument %1$s..."
 
-#: src/BufferView.cpp:2707
+#: src/BufferView.cpp:2743
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s bol vložený."
 
-#: src/BufferView.cpp:2709
+#: src/BufferView.cpp:2745
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Nie je možné vložiť dokument %1$s"
 
-#: src/BufferView.cpp:2975
+#: src/BufferView.cpp:3011
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -23079,11 +23079,11 @@ msgstr ""
 "%1$s\n"
 "sa kvôli chybe: %2$s nedá čítať"
 
-#: src/BufferView.cpp:2977
+#: src/BufferView.cpp:3013
 msgid "Could not read file"
 msgstr "Nemôžem čítať súbor"
 
-#: src/BufferView.cpp:2984
+#: src/BufferView.cpp:3020
 #, c-format
 msgid ""
 "%1$s\n"
@@ -23092,15 +23092,15 @@ msgstr ""
 "%1$s\n"
 "je nečitateľné."
 
-#: src/BufferView.cpp:2985 src/output.cpp:39
+#: src/BufferView.cpp:3021 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Nemôžem otvoriť súbor"
 
-#: src/BufferView.cpp:2992
+#: src/BufferView.cpp:3028
 msgid "Reading not UTF-8 encoded file"
 msgstr "Čítaný súbor nie je kódovaný v UTF-8"
 
-#: src/BufferView.cpp:2993
+#: src/BufferView.cpp:3029
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -24493,8 +24493,8 @@ msgid "Use \"...\" to shorten long completions."
 msgstr "Použiť \"...\" pre skrátenie dlhých doplnení."
 
 #: src/LyXRC.cpp:3348
-msgid "Allow TeXMacs shorthand, like => converting to Rightarrow."
-msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na Rightarrow."
+msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
+msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na \\Rightarrow."
 
 #: src/LyXRC.cpp:3352
 #, c-format
@@ -24916,7 +24916,7 @@ msgstr "Režim matematického editoru"
 msgid "No valid math formula"
 msgstr "Neplatný matematický vzorec"
 
-#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1034
+#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1033
 msgid "Already in regular expression mode"
 msgstr "Už v postupe pre regulárny výraz"
 
@@ -24924,23 +24924,23 @@ msgstr "Už v postupe pre regulárny výraz"
 msgid "Regexp editor mode"
 msgstr "Režim editoru pre regulárny výraz"
 
-#: src/Text3.cpp:1342
+#: src/Text3.cpp:1330
 msgid "Layout "
 msgstr "Schéma "
 
-#: src/Text3.cpp:1343
+#: src/Text3.cpp:1331
 msgid " not known"
 msgstr " neznámy"
 
-#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1625
+#: src/Text3.cpp:1921 src/frontends/qt4/GuiApplication.cpp:1625
 msgid "Missing argument"
 msgstr "Chýba parameter"
 
-#: src/Text3.cpp:2089 src/Text3.cpp:2101
+#: src/Text3.cpp:2077 src/Text3.cpp:2089
 msgid "Character set"
 msgstr "Znaková sada"
 
-#: src/Text3.cpp:2308 src/Text3.cpp:2319
+#: src/Text3.cpp:2296 src/Text3.cpp:2307
 msgid "Paragraph layout set"
 msgstr "Formát odstavca je nastavený"
 
@@ -29730,24 +29730,24 @@ msgstr "Počet stĺpcov sa nedá zmeniť v '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nedajú sa pridať horizontálne linky mriežky '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1730
-#: src/mathed/InsetMathNest.cpp:1876
+#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1729
+#: src/mathed/InsetMathNest.cpp:1875
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Automatická korektúra vypnutá ('!' na zapnutie)"
 
-#: src/mathed/InsetMathNest.cpp:1020
+#: src/mathed/InsetMathNest.cpp:1019
 msgid "create new math text environment ($...$)"
 msgstr "vytvoriť nové matematické textové prostredie ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1023
+#: src/mathed/InsetMathNest.cpp:1022
 msgid "entered math text mode (textrm)"
 msgstr "vstup do text. prostredia vnútri matem. (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1045
+#: src/mathed/InsetMathNest.cpp:1044
 msgid "Regular expression editor mode"
 msgstr "Modus pre editáciu regulárnych výrazov"
 
-#: src/mathed/InsetMathNest.cpp:1735 src/mathed/InsetMathNest.cpp:1878
+#: src/mathed/InsetMathNest.cpp:1734 src/mathed/InsetMathNest.cpp:1877
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Automatická korektúra zapnutá (<medzerník> na vypnutie)"
 
@@ -30109,8 +30109,8 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
-#~ msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
-#~ msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na \\Rightarrow."
+#~ msgid "Allow TeXMacs shorthand, like => converting to Rightarrow."
+#~ msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na Rightarrow."
 
 #~ msgid "[LIST of PDF Comments]"
 #~ msgstr "[Zoznam PDF Komentárov]"

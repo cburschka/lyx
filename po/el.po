@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-01-04 12:46-0500\n"
+"POT-Creation-Date: 2015-01-13 11:37-0500\n"
 "PO-Revision-Date: 2010-07-07 02:31+0100\n"
 "Last-Translator: Οδυσσέας Δαγκλής <o2d@freemail.gr>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -15830,17 +15830,17 @@ msgid "Redo|R"
 msgstr "Επανάληψη|ψ"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1277 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:596
 msgid "Cut"
 msgstr "Αποκοπή"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1282 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:605
 msgid "Copy"
 msgstr "Αντιγραφή"
 
 #: lib/ui/stdmenus.inc:107 lib/ui/stdcontext.inc:312 lib/ui/stdtoolbars.inc:83
-#: src/Text3.cpp:1222 src/mathed/InsetMathGrid.cpp:1333
+#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1333
 #: src/mathed/InsetMathNest.cpp:575
 msgid "Paste"
 msgstr "Επικόλληση"
@@ -17548,11 +17548,11 @@ msgstr "Έλεγχος ορθογραφίας"
 msgid "Spellcheck continuously"
 msgstr "Μηχανή &Ορθογράφου:"
 
-#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1339
+#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1340
 msgid "Undo"
 msgstr "Αναίρεση"
 
-#: lib/ui/stdtoolbars.inc:80 src/BufferView.cpp:1349
+#: lib/ui/stdtoolbars.inc:80 src/BufferView.cpp:1350
 msgid "Redo"
 msgstr "Επανάληψη"
 
@@ -22882,12 +22882,12 @@ msgstr "\\λείπει το begin_header"
 msgid "\\begin_document is missing"
 msgstr "\\λείπει το begin_document"
 
-#: src/Buffer.cpp:946 src/Buffer.cpp:952 src/BufferView.cpp:1444
-#: src/BufferView.cpp:1450
+#: src/Buffer.cpp:946 src/Buffer.cpp:952 src/BufferView.cpp:1445
+#: src/BufferView.cpp:1451
 msgid "Changes not shown in LaTeX output"
 msgstr "Οι αλλαγές δεν εμφανίζονται στην έξοδο LaTeX"
 
-#: src/Buffer.cpp:947 src/BufferView.cpp:1445
+#: src/Buffer.cpp:947 src/BufferView.cpp:1446
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -22899,7 +22899,7 @@ msgstr ""
 "Εγκαταστείστε αυτά τα πακέτα ή ορίστε ξανά τα \\lyxadded και \\lyxdeleted "
 "στο προοίμιο LaTeX."
 
-#: src/Buffer.cpp:953 src/BufferView.cpp:1451
+#: src/Buffer.cpp:953 src/BufferView.cpp:1452
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -23566,7 +23566,7 @@ msgstr ""
 "παράγει έξοδο εκτός αν επιλεγεί μια σωστή textclass από τον διάλογο "
 "ρυθμίσεων εγγράφου."
 
-#: src/BufferParams.cpp:2097 src/BufferView.cpp:1294 src/BufferView.cpp:1323
+#: src/BufferParams.cpp:2097 src/BufferView.cpp:1295 src/BufferView.cpp:1324
 msgid "Could not load class"
 msgstr "Δεν ήταν δυνατή η φόρτωση της κλάσης"
 
@@ -23598,124 +23598,124 @@ msgstr "Το έγγραφο είναι μόνο για ανάγνωση"
 msgid "This portion of the document is deleted."
 msgstr "Αυτό το τμήμα του εγγράφου έχει διαγραφεί."
 
-#: src/BufferView.cpp:1058 src/BufferView.cpp:1993
+#: src/BufferView.cpp:1058 src/BufferView.cpp:2029
 #: src/frontends/qt4/GuiView.cpp:3398 src/frontends/qt4/GuiView.cpp:3473
 msgid "Absolute filename expected."
 msgstr "Αναμένεται απόλυτο όνομα αρχείου."
 
-#: src/BufferView.cpp:1292 src/BufferView.cpp:1321
+#: src/BufferView.cpp:1293 src/BufferView.cpp:1322
 #, fuzzy, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "Δεν ήταν δυνατή η φόρτωση της κλάσης εγγράφων %1$s."
 
-#: src/BufferView.cpp:1342
+#: src/BufferView.cpp:1343
 msgid "No further undo information"
 msgstr "Όχι άλλες πληροφορίες αναίρεσης"
 
-#: src/BufferView.cpp:1352
+#: src/BufferView.cpp:1353
 msgid "No further redo information"
 msgstr "Όχι άλλες πληροφορίες επανάληψης"
 
-#: src/BufferView.cpp:1599
+#: src/BufferView.cpp:1600
 msgid "Mark off"
 msgstr "Σημάδι ενεργοποιημένο"
 
-#: src/BufferView.cpp:1605
+#: src/BufferView.cpp:1606
 msgid "Mark on"
 msgstr "Σημάδι απενεργοποιημένο"
 
-#: src/BufferView.cpp:1612
+#: src/BufferView.cpp:1613
 msgid "Mark removed"
 msgstr "Το σημάδι αφαιρέθηκε"
 
-#: src/BufferView.cpp:1615
+#: src/BufferView.cpp:1616
 msgid "Mark set"
 msgstr "Το σημάδι τοποθετήθηκε"
 
-#: src/BufferView.cpp:1671
+#: src/BufferView.cpp:1672
 msgid "Statistics for the selection:"
 msgstr "Στατιστικά για την επιλογή:"
 
-#: src/BufferView.cpp:1673
+#: src/BufferView.cpp:1674
 msgid "Statistics for the document:"
 msgstr "Στατιστικά για το έγγραφο:"
 
-#: src/BufferView.cpp:1676
+#: src/BufferView.cpp:1677
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d λέξεις"
 
-#: src/BufferView.cpp:1678
+#: src/BufferView.cpp:1679
 msgid "One word"
 msgstr "Μία λέξη"
 
-#: src/BufferView.cpp:1681
+#: src/BufferView.cpp:1682
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d χαρακτήρες (μαζί με κενά)"
 
-#: src/BufferView.cpp:1684
+#: src/BufferView.cpp:1685
 msgid "One character (including blanks)"
 msgstr "Ένας χαρακτήρας (μαζί με κενά)"
 
-#: src/BufferView.cpp:1687
+#: src/BufferView.cpp:1688
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d χαρακτήρες (χωρίς κενά)"
 
-#: src/BufferView.cpp:1690
+#: src/BufferView.cpp:1691
 msgid "One character (excluding blanks)"
 msgstr "Ένας χαρακτήρας (χωρίς κενά)"
 
-#: src/BufferView.cpp:1692
+#: src/BufferView.cpp:1693
 msgid "Statistics"
 msgstr "Στατιστικά"
 
-#: src/BufferView.cpp:1848
+#: src/BufferView.cpp:1884
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 
-#: src/BufferView.cpp:1850
+#: src/BufferView.cpp:1886
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Εφαρμόστηκε \"%1$s\" στα ενθέματα %2$d"
 
-#: src/BufferView.cpp:1858
+#: src/BufferView.cpp:1894
 msgid "Branch name"
 msgstr "Όνομα κλάδου"
 
-#: src/BufferView.cpp:1865 src/frontends/qt4/GuiBranches.cpp:218
+#: src/BufferView.cpp:1901 src/frontends/qt4/GuiBranches.cpp:218
 msgid "Branch already exists"
 msgstr "Ο κλάδος υπάρχει ήδη"
 
-#: src/BufferView.cpp:2315
+#: src/BufferView.cpp:2351
 msgid "Inverse Search Failed"
 msgstr ""
 
-#: src/BufferView.cpp:2316
+#: src/BufferView.cpp:2352
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
 msgstr ""
 
-#: src/BufferView.cpp:2696
+#: src/BufferView.cpp:2732
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Εισαγωγή εγγράφου %1$s..."
 
-#: src/BufferView.cpp:2707
+#: src/BufferView.cpp:2743
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Το έγγραφο %1$s εισήχθη."
 
-#: src/BufferView.cpp:2709
+#: src/BufferView.cpp:2745
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Δεν ήταν δυνατή η εισαγωγή του εγγράφου %1$s"
 
-#: src/BufferView.cpp:2975
+#: src/BufferView.cpp:3011
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -23726,11 +23726,11 @@ msgstr ""
 "%1$s\n"
 "λόγω του σφάλματος: %2$s"
 
-#: src/BufferView.cpp:2977
+#: src/BufferView.cpp:3013
 msgid "Could not read file"
 msgstr "Δεν ήταν δυνατή η ανάγνωση του αρχείου"
 
-#: src/BufferView.cpp:2984
+#: src/BufferView.cpp:3020
 #, c-format
 msgid ""
 "%1$s\n"
@@ -23739,15 +23739,15 @@ msgstr ""
 "Το %1$s\n"
 "δεν είναι αναγνώσιμο."
 
-#: src/BufferView.cpp:2985 src/output.cpp:39
+#: src/BufferView.cpp:3021 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Δεν ήταν δυνατό το άνοιγμα του αρχείου"
 
-#: src/BufferView.cpp:2992
+#: src/BufferView.cpp:3028
 msgid "Reading not UTF-8 encoded file"
 msgstr "Ανάγνωση μη-UTF-8 κωδικοποιημένου αρχείου"
 
-#: src/BufferView.cpp:2993
+#: src/BufferView.cpp:3029
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -25579,7 +25579,7 @@ msgstr "Κατάσταση λειτουργίας επεξεργαστή μαθ�
 msgid "No valid math formula"
 msgstr "Καμία έγκυρη μαθηματική φόρμουλα"
 
-#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1034
+#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1033
 msgid "Already in regular expression mode"
 msgstr "Ήδη σε κατάσταση κανονικής παράστασης"
 
@@ -25587,23 +25587,23 @@ msgstr "Ήδη σε κατάσταση κανονικής παράστασης"
 msgid "Regexp editor mode"
 msgstr ""
 
-#: src/Text3.cpp:1342
+#: src/Text3.cpp:1330
 msgid "Layout "
 msgstr "Διάταξη"
 
-#: src/Text3.cpp:1343
+#: src/Text3.cpp:1331
 msgid " not known"
 msgstr " άγνωστο"
 
-#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1625
+#: src/Text3.cpp:1921 src/frontends/qt4/GuiApplication.cpp:1625
 msgid "Missing argument"
 msgstr "Λείπει όρισμα"
 
-#: src/Text3.cpp:2089 src/Text3.cpp:2101
+#: src/Text3.cpp:2077 src/Text3.cpp:2089
 msgid "Character set"
 msgstr "Σύνολο χαρακτήρων"
 
-#: src/Text3.cpp:2308 src/Text3.cpp:2319
+#: src/Text3.cpp:2296 src/Text3.cpp:2307
 msgid "Paragraph layout set"
 msgstr "Σύνολο διατάξεων παραγράφων"
 
@@ -30391,24 +30391,24 @@ msgstr "Δεν είναι δυνατή η αλλαγή αριθμού στηλώ
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Δεν είναι δυνατή η προσθήκη οριζόντιων γραμμών πλέγματος στο '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1730
-#: src/mathed/InsetMathNest.cpp:1876
+#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1729
+#: src/mathed/InsetMathNest.cpp:1875
 msgid "Autocorrect Off ('!' to enter)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1020
+#: src/mathed/InsetMathNest.cpp:1019
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1023
+#: src/mathed/InsetMathNest.cpp:1022
 msgid "entered math text mode (textrm)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1045
+#: src/mathed/InsetMathNest.cpp:1044
 msgid "Regular expression editor mode"
 msgstr "Κατάσταση επεξεργαστή κανονικών εκφράσεων"
 
-#: src/mathed/InsetMathNest.cpp:1735 src/mathed/InsetMathNest.cpp:1878
+#: src/mathed/InsetMathNest.cpp:1734 src/mathed/InsetMathNest.cpp:1877
 msgid "Autocorrect On (<space> to exit)"
 msgstr ""
 

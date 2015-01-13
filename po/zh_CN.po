@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zh_CN\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-01-04 12:46-0500\n"
+"POT-Creation-Date: 2015-01-13 11:37-0500\n"
 "PO-Revision-Date: 2014-04-28 10:00+1000\n"
 "Last-Translator: Yihui Xie <xie@yihui.name>\n"
 "Language-Team: 简体中文 <lyx-docs@lists.lyx.org>\n"
@@ -15893,17 +15893,17 @@ msgid "Redo|R"
 msgstr "重做(R)|R"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1277 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:596
 msgid "Cut"
 msgstr "剪切"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1282 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:605
 msgid "Copy"
 msgstr "复制"
 
 #: lib/ui/stdmenus.inc:107 lib/ui/stdcontext.inc:312 lib/ui/stdtoolbars.inc:83
-#: src/Text3.cpp:1222 src/mathed/InsetMathGrid.cpp:1333
+#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1333
 #: src/mathed/InsetMathNest.cpp:575
 msgid "Paste"
 msgstr "粘贴"
@@ -17668,11 +17668,11 @@ msgstr "拼写检查"
 msgid "Spellcheck continuously"
 msgstr "拼写检查器"
 
-#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1339
+#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1340
 msgid "Undo"
 msgstr "撤销"
 
-#: lib/ui/stdtoolbars.inc:80 src/BufferView.cpp:1349
+#: lib/ui/stdtoolbars.inc:80 src/BufferView.cpp:1350
 msgid "Redo"
 msgstr "重做"
 
@@ -23150,12 +23150,12 @@ msgstr "\\begin_header 缺失"
 msgid "\\begin_document is missing"
 msgstr "\\begin_document 缺失"
 
-#: src/Buffer.cpp:946 src/Buffer.cpp:952 src/BufferView.cpp:1444
-#: src/BufferView.cpp:1450
+#: src/Buffer.cpp:946 src/Buffer.cpp:952 src/BufferView.cpp:1445
+#: src/BufferView.cpp:1451
 msgid "Changes not shown in LaTeX output"
 msgstr "改变项没有输出至LaTeX输出"
 
-#: src/Buffer.cpp:947 src/BufferView.cpp:1445
+#: src/Buffer.cpp:947 src/BufferView.cpp:1446
 #, fuzzy
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
@@ -23168,7 +23168,7 @@ msgstr ""
 "Please install these packages or redefine \\lyxadded and \\lyxdeleted in the "
 "LaTeX preamble."
 
-#: src/Buffer.cpp:953 src/BufferView.cpp:1451
+#: src/Buffer.cpp:953 src/BufferView.cpp:1452
 #, fuzzy
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
@@ -23799,7 +23799,7 @@ msgstr ""
 "未发现文档类 %1$s，将使用缺省值。在文档设置对话框中设置正确的文档类之前，LyX"
 "将不能产生输出。"
 
-#: src/BufferParams.cpp:2097 src/BufferView.cpp:1294 src/BufferView.cpp:1323
+#: src/BufferParams.cpp:2097 src/BufferView.cpp:1295 src/BufferView.cpp:1324
 msgid "Could not load class"
 msgstr "无法载入类"
 
@@ -23831,126 +23831,126 @@ msgstr "文档只读"
 msgid "This portion of the document is deleted."
 msgstr "此段文档已被删除"
 
-#: src/BufferView.cpp:1058 src/BufferView.cpp:1993
+#: src/BufferView.cpp:1058 src/BufferView.cpp:2029
 #: src/frontends/qt4/GuiView.cpp:3398 src/frontends/qt4/GuiView.cpp:3473
 #, fuzzy
 msgid "Absolute filename expected."
 msgstr "需要一个参数"
 
-#: src/BufferView.cpp:1292 src/BufferView.cpp:1321
+#: src/BufferView.cpp:1293 src/BufferView.cpp:1322
 #, fuzzy, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "无法载入文档类 %1$s。"
 
-#: src/BufferView.cpp:1342
+#: src/BufferView.cpp:1343
 msgid "No further undo information"
 msgstr "无进一步撤销信息"
 
-#: src/BufferView.cpp:1352
+#: src/BufferView.cpp:1353
 msgid "No further redo information"
 msgstr "无进一步重做信息"
 
-#: src/BufferView.cpp:1599
+#: src/BufferView.cpp:1600
 msgid "Mark off"
 msgstr "Mark off"
 
-#: src/BufferView.cpp:1605
+#: src/BufferView.cpp:1606
 msgid "Mark on"
 msgstr "Mark on"
 
-#: src/BufferView.cpp:1612
+#: src/BufferView.cpp:1613
 msgid "Mark removed"
 msgstr "Mark removed"
 
-#: src/BufferView.cpp:1615
+#: src/BufferView.cpp:1616
 msgid "Mark set"
 msgstr "Mark set"
 
-#: src/BufferView.cpp:1671
+#: src/BufferView.cpp:1672
 msgid "Statistics for the selection:"
 msgstr "统计选定区域："
 
-#: src/BufferView.cpp:1673
+#: src/BufferView.cpp:1674
 msgid "Statistics for the document:"
 msgstr "统计文档："
 
-#: src/BufferView.cpp:1676
+#: src/BufferView.cpp:1677
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d 词"
 
-#: src/BufferView.cpp:1678
+#: src/BufferView.cpp:1679
 msgid "One word"
 msgstr "一个词"
 
-#: src/BufferView.cpp:1681
+#: src/BufferView.cpp:1682
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d 字符（包含空格）"
 
-#: src/BufferView.cpp:1684
+#: src/BufferView.cpp:1685
 msgid "One character (including blanks)"
 msgstr "一个字符"
 
-#: src/BufferView.cpp:1687
+#: src/BufferView.cpp:1688
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d 字符（不包含空格）"
 
-#: src/BufferView.cpp:1690
+#: src/BufferView.cpp:1691
 msgid "One character (excluding blanks)"
 msgstr "一个字符"
 
-#: src/BufferView.cpp:1692
+#: src/BufferView.cpp:1693
 msgid "Statistics"
 msgstr "统计"
 
-#: src/BufferView.cpp:1848
+#: src/BufferView.cpp:1884
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 
-#: src/BufferView.cpp:1850
+#: src/BufferView.cpp:1886
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr ""
 
-#: src/BufferView.cpp:1858
+#: src/BufferView.cpp:1894
 #, fuzzy
 msgid "Branch name"
 msgstr "分支"
 
-#: src/BufferView.cpp:1865 src/frontends/qt4/GuiBranches.cpp:218
+#: src/BufferView.cpp:1901 src/frontends/qt4/GuiBranches.cpp:218
 msgid "Branch already exists"
 msgstr ""
 
-#: src/BufferView.cpp:2315
+#: src/BufferView.cpp:2351
 msgid "Inverse Search Failed"
 msgstr ""
 
-#: src/BufferView.cpp:2316
+#: src/BufferView.cpp:2352
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
 msgstr ""
 
-#: src/BufferView.cpp:2696
+#: src/BufferView.cpp:2732
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "插入文档 %1$s..."
 
-#: src/BufferView.cpp:2707
+#: src/BufferView.cpp:2743
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "文档 %1$s 已插入"
 
-#: src/BufferView.cpp:2709
+#: src/BufferView.cpp:2745
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "无法插入文档 %1$s"
 
-#: src/BufferView.cpp:2975
+#: src/BufferView.cpp:3011
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -23961,11 +23961,11 @@ msgstr ""
 "%1$s\n"
 "错误信息: %2$s"
 
-#: src/BufferView.cpp:2977
+#: src/BufferView.cpp:3013
 msgid "Could not read file"
 msgstr "无法读取文件"
 
-#: src/BufferView.cpp:2984
+#: src/BufferView.cpp:3020
 #, c-format
 msgid ""
 "%1$s\n"
@@ -23974,15 +23974,15 @@ msgstr ""
 "无法读取\n"
 " %1$s"
 
-#: src/BufferView.cpp:2985 src/output.cpp:39
+#: src/BufferView.cpp:3021 src/output.cpp:39
 msgid "Could not open file"
 msgstr "无法打开文件"
 
-#: src/BufferView.cpp:2992
+#: src/BufferView.cpp:3028
 msgid "Reading not UTF-8 encoded file"
 msgstr "读入非UTF-8编码的文件"
 
-#: src/BufferView.cpp:2993
+#: src/BufferView.cpp:3029
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -25773,7 +25773,7 @@ msgstr "Math editor mode"
 msgid "No valid math formula"
 msgstr "非法数学公式"
 
-#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1034
+#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1033
 #, fuzzy
 msgid "Already in regular expression mode"
 msgstr "使用正则表达式(&x)"
@@ -25783,23 +25783,23 @@ msgstr "使用正则表达式(&x)"
 msgid "Regexp editor mode"
 msgstr "Math editor mode"
 
-#: src/Text3.cpp:1342
+#: src/Text3.cpp:1330
 msgid "Layout "
 msgstr "显示布局 "
 
-#: src/Text3.cpp:1343
+#: src/Text3.cpp:1331
 msgid " not known"
 msgstr "未知"
 
-#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1625
+#: src/Text3.cpp:1921 src/frontends/qt4/GuiApplication.cpp:1625
 msgid "Missing argument"
 msgstr "缺失参数"
 
-#: src/Text3.cpp:2089 src/Text3.cpp:2101
+#: src/Text3.cpp:2077 src/Text3.cpp:2089
 msgid "Character set"
 msgstr "字符集"
 
-#: src/Text3.cpp:2308 src/Text3.cpp:2319
+#: src/Text3.cpp:2296 src/Text3.cpp:2307
 msgid "Paragraph layout set"
 msgstr "段落布局"
 
@@ -30676,25 +30676,25 @@ msgstr "无法改变列数至 '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "无法向 '%1$s'添加水平网格线"
 
-#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1730
-#: src/mathed/InsetMathNest.cpp:1876
+#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1729
+#: src/mathed/InsetMathNest.cpp:1875
 msgid "Autocorrect Off ('!' to enter)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1020
+#: src/mathed/InsetMathNest.cpp:1019
 msgid "create new math text environment ($...$)"
 msgstr "创建新数学文本环境 ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1023
+#: src/mathed/InsetMathNest.cpp:1022
 msgid "entered math text mode (textrm)"
 msgstr "进入数学文本模式 (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1045
+#: src/mathed/InsetMathNest.cpp:1044
 #, fuzzy
 msgid "Regular expression editor mode"
 msgstr "使用正则表达式(&x)"
 
-#: src/mathed/InsetMathNest.cpp:1735 src/mathed/InsetMathNest.cpp:1878
+#: src/mathed/InsetMathNest.cpp:1734 src/mathed/InsetMathNest.cpp:1877
 msgid "Autocorrect On (<space> to exit)"
 msgstr ""
 

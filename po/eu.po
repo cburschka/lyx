@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_2.0.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-01-04 12:46-0500\n"
+"POT-Creation-Date: 2015-01-13 11:37-0500\n"
 "PO-Revision-Date: 2012-06-21 12:33+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -15755,17 +15755,17 @@ msgid "Redo|R"
 msgstr "Berregin|B"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1277 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:596
 msgid "Cut"
 msgstr "Ebaki"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1282 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:605
 msgid "Copy"
 msgstr "Kopiatu"
 
 #: lib/ui/stdmenus.inc:107 lib/ui/stdcontext.inc:312 lib/ui/stdtoolbars.inc:83
-#: src/Text3.cpp:1222 src/mathed/InsetMathGrid.cpp:1333
+#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1333
 #: src/mathed/InsetMathNest.cpp:575
 msgid "Paste"
 msgstr "Itsatsi"
@@ -17443,11 +17443,11 @@ msgstr "Egiaztatu ortografia"
 msgid "Spellcheck continuously"
 msgstr "&Zuzendu jarraian"
 
-#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1339
+#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1340
 msgid "Undo"
 msgstr "Desegin"
 
-#: lib/ui/stdtoolbars.inc:80 src/BufferView.cpp:1349
+#: lib/ui/stdtoolbars.inc:80 src/BufferView.cpp:1350
 msgid "Redo"
 msgstr "Berregin"
 
@@ -22905,12 +22905,12 @@ msgstr "\\begin_header falta da"
 msgid "\\begin_document is missing"
 msgstr "\\begin_document falta da"
 
-#: src/Buffer.cpp:946 src/Buffer.cpp:952 src/BufferView.cpp:1444
-#: src/BufferView.cpp:1450
+#: src/Buffer.cpp:946 src/Buffer.cpp:952 src/BufferView.cpp:1445
+#: src/BufferView.cpp:1451
 msgid "Changes not shown in LaTeX output"
 msgstr "Erakutsi gabeko aldaketak LaTeX irteeran"
 
-#: src/Buffer.cpp:947 src/BufferView.cpp:1445
+#: src/Buffer.cpp:947 src/BufferView.cpp:1446
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -22922,7 +22922,7 @@ msgstr ""
 "Instalatu pakete hauek edo birdefinitu \\lyxadded eta \\lyxdeleted LaTeX-eko "
 "atarikoan."
 
-#: src/Buffer.cpp:953 src/BufferView.cpp:1451
+#: src/Buffer.cpp:953 src/BufferView.cpp:1452
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -23606,7 +23606,7 @@ msgstr ""
 "da diseinu lehenetsiekin. LyX-ek ezin izango du irteera\n"
 "egokirik sortu."
 
-#: src/BufferParams.cpp:2097 src/BufferView.cpp:1294 src/BufferView.cpp:1323
+#: src/BufferParams.cpp:2097 src/BufferView.cpp:1295 src/BufferView.cpp:1324
 msgid "Could not load class"
 msgstr "Ezin izan da klasea kargatu"
 
@@ -23638,103 +23638,103 @@ msgstr "Dokumentua irakurtzeko soilik da"
 msgid "This portion of the document is deleted."
 msgstr "Dokumentuaren zati hau ezabatu egin da."
 
-#: src/BufferView.cpp:1058 src/BufferView.cpp:1993
+#: src/BufferView.cpp:1058 src/BufferView.cpp:2029
 #: src/frontends/qt4/GuiView.cpp:3398 src/frontends/qt4/GuiView.cpp:3473
 msgid "Absolute filename expected."
 msgstr "Fitxategi-izen absolutua espero da."
 
-#: src/BufferView.cpp:1292 src/BufferView.cpp:1321
+#: src/BufferView.cpp:1293 src/BufferView.cpp:1322
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "Ezin izan da' %1$s' dokumentu-klasea kargatu."
 
-#: src/BufferView.cpp:1342
+#: src/BufferView.cpp:1343
 msgid "No further undo information"
 msgstr "Gehiago desegiteko informaziorik ez"
 
-#: src/BufferView.cpp:1352
+#: src/BufferView.cpp:1353
 msgid "No further redo information"
 msgstr "Gehiago berregiteko informaziorik ez"
 
-#: src/BufferView.cpp:1599
+#: src/BufferView.cpp:1600
 msgid "Mark off"
 msgstr "Marka desaktibatua"
 
-#: src/BufferView.cpp:1605
+#: src/BufferView.cpp:1606
 msgid "Mark on"
 msgstr "Marka aktibatua"
 
-#: src/BufferView.cpp:1612
+#: src/BufferView.cpp:1613
 msgid "Mark removed"
 msgstr "Marka ezabatuta"
 
-#: src/BufferView.cpp:1615
+#: src/BufferView.cpp:1616
 msgid "Mark set"
 msgstr "Marka ezarrita"
 
-#: src/BufferView.cpp:1671
+#: src/BufferView.cpp:1672
 msgid "Statistics for the selection:"
 msgstr "Hautapenaren estatistikak:"
 
-#: src/BufferView.cpp:1673
+#: src/BufferView.cpp:1674
 msgid "Statistics for the document:"
 msgstr "Dokumentuaren estatistikak:"
 
-#: src/BufferView.cpp:1676
+#: src/BufferView.cpp:1677
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d hitz"
 
-#: src/BufferView.cpp:1678
+#: src/BufferView.cpp:1679
 msgid "One word"
 msgstr "Hitz bat"
 
-#: src/BufferView.cpp:1681
+#: src/BufferView.cpp:1682
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d karaktere (zuriuneak barne)"
 
-#: src/BufferView.cpp:1684
+#: src/BufferView.cpp:1685
 msgid "One character (including blanks)"
 msgstr "karaktere bat (zuriuneak barne)"
 
-#: src/BufferView.cpp:1687
+#: src/BufferView.cpp:1688
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d karaktere (zuriuneak kanpo)"
 
-#: src/BufferView.cpp:1690
+#: src/BufferView.cpp:1691
 msgid "One character (excluding blanks)"
 msgstr "Karaktere bat (zuriuneak kanpo)"
 
-#: src/BufferView.cpp:1692
+#: src/BufferView.cpp:1693
 msgid "Statistics"
 msgstr "Estatistikak"
 
-#: src/BufferView.cpp:1848
+#: src/BufferView.cpp:1884
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr "'inset-forall' etenda ekintza kopurua %1$d baino handiagoa delako"
 
-#: src/BufferView.cpp:1850
+#: src/BufferView.cpp:1886
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "\"%1$s\" aplikatuta %2$d txertakuntzei"
 
-#: src/BufferView.cpp:1858
+#: src/BufferView.cpp:1894
 msgid "Branch name"
 msgstr "Adarraren izena"
 
-#: src/BufferView.cpp:1865 src/frontends/qt4/GuiBranches.cpp:218
+#: src/BufferView.cpp:1901 src/frontends/qt4/GuiBranches.cpp:218
 msgid "Branch already exists"
 msgstr "Adarra badago lehendik ere"
 
-#: src/BufferView.cpp:2315
+#: src/BufferView.cpp:2351
 msgid "Inverse Search Failed"
 msgstr "Huts egin du alderantzizko bilaketak"
 
-#: src/BufferView.cpp:2316
+#: src/BufferView.cpp:2352
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
@@ -23742,22 +23742,22 @@ msgstr ""
 "Alderantzizko bilaketak posizio baliogabea eskatu du.\n"
 "Ikusitako dokumentua eguneratu behar duzu."
 
-#: src/BufferView.cpp:2696
+#: src/BufferView.cpp:2732
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "%1$s dokumentua txertatzen..."
 
-#: src/BufferView.cpp:2707
+#: src/BufferView.cpp:2743
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "%1$s dokumentua txertatuta."
 
-#: src/BufferView.cpp:2709
+#: src/BufferView.cpp:2745
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Ezin izan da %1$s dokumentua txertatu"
 
-#: src/BufferView.cpp:2975
+#: src/BufferView.cpp:3011
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -23768,11 +23768,11 @@ msgstr ""
 "%1$s\n"
 "honako erroreagatik: %2$s"
 
-#: src/BufferView.cpp:2977
+#: src/BufferView.cpp:3013
 msgid "Could not read file"
 msgstr "Ezin izan da fitxategia irakurri"
 
-#: src/BufferView.cpp:2984
+#: src/BufferView.cpp:3020
 #, c-format
 msgid ""
 "%1$s\n"
@@ -23781,15 +23781,15 @@ msgstr ""
 "%1$s\n"
 " ez da irakurgarria."
 
-#: src/BufferView.cpp:2985 src/output.cpp:39
+#: src/BufferView.cpp:3021 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Ezin izan da fitxategia ireki"
 
-#: src/BufferView.cpp:2992
+#: src/BufferView.cpp:3028
 msgid "Reading not UTF-8 encoded file"
 msgstr "UTF-8 kodeketa ez duen fitxategia irakurtzen"
 
-#: src/BufferView.cpp:2993
+#: src/BufferView.cpp:3029
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -25637,7 +25637,7 @@ msgstr "Mat. editore-modua"
 msgid "No valid math formula"
 msgstr "Ez da matematikako baliozko formula"
 
-#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1034
+#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1033
 msgid "Already in regular expression mode"
 msgstr "Jadanik adierazpen erregularren moduan"
 
@@ -25645,23 +25645,23 @@ msgstr "Jadanik adierazpen erregularren moduan"
 msgid "Regexp editor mode"
 msgstr "Adi. erregularraren editore-modua"
 
-#: src/Text3.cpp:1342
+#: src/Text3.cpp:1330
 msgid "Layout "
 msgstr "Diseinua "
 
-#: src/Text3.cpp:1343
+#: src/Text3.cpp:1331
 msgid " not known"
 msgstr " ezezaguna"
 
-#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1625
+#: src/Text3.cpp:1921 src/frontends/qt4/GuiApplication.cpp:1625
 msgid "Missing argument"
 msgstr "Argumentua falta da"
 
-#: src/Text3.cpp:2089 src/Text3.cpp:2101
+#: src/Text3.cpp:2077 src/Text3.cpp:2089
 msgid "Character set"
 msgstr "Karaktere-multzoa"
 
-#: src/Text3.cpp:2308 src/Text3.cpp:2319
+#: src/Text3.cpp:2296 src/Text3.cpp:2307
 msgid "Paragraph layout set"
 msgstr "Paragrafo-estiloa ezarria"
 
@@ -30507,24 +30507,24 @@ msgstr "Ezin dira zutabeen zenbakiak aldatu '%1$s'(e)n"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Ezin da sareta horizontala gehitu '%1$s'(e)n"
 
-#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1730
-#: src/mathed/InsetMathNest.cpp:1876
+#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1729
+#: src/mathed/InsetMathNest.cpp:1875
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Zuzenketa automatikoa desgaituta ('!' hasteko)"
 
-#: src/mathed/InsetMathNest.cpp:1020
+#: src/mathed/InsetMathNest.cpp:1019
 msgid "create new math text environment ($...$)"
 msgstr "sortu matematikako testu-ingurune berria ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1023
+#: src/mathed/InsetMathNest.cpp:1022
 msgid "entered math text mode (textrm)"
 msgstr "sartu matematikako testu moduan (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1045
+#: src/mathed/InsetMathNest.cpp:1044
 msgid "Regular expression editor mode"
 msgstr "Adierazpen erregularren editore modua"
 
-#: src/mathed/InsetMathNest.cpp:1735 src/mathed/InsetMathNest.cpp:1878
+#: src/mathed/InsetMathNest.cpp:1734 src/mathed/InsetMathNest.cpp:1877
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Zuzenketa automatikoa gaituta (<zuriunea> amaitzeko)"
 

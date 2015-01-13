@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-01-04 12:46-0500\n"
+"POT-Creation-Date: 2015-01-13 11:37-0500\n"
 "PO-Revision-Date: 2014-12-09 05:29+0300\n"
 "Last-Translator: Hatim Alahmadi and mohamed majdi <dr.hatim@hotmail.com>\n"
 "Language-Team: LyX team <theblackdragon_100@hotmail.com>\n"
@@ -15404,17 +15404,17 @@ msgid "Redo|R"
 msgstr "تكرار|R"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1277 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:596
 msgid "Cut"
 msgstr "قص"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1282 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:605
 msgid "Copy"
 msgstr "نسخ"
 
 #: lib/ui/stdmenus.inc:107 lib/ui/stdcontext.inc:312 lib/ui/stdtoolbars.inc:83
-#: src/Text3.cpp:1222 src/mathed/InsetMathGrid.cpp:1333
+#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1333
 #: src/mathed/InsetMathNest.cpp:575
 msgid "Paste"
 msgstr "لصق"
@@ -17090,11 +17090,11 @@ msgstr "تدقيق إملائي"
 msgid "Spellcheck continuously"
 msgstr "تدقيق إملائي مستمر"
 
-#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1339
+#: lib/ui/stdtoolbars.inc:79 src/BufferView.cpp:1340
 msgid "Undo"
 msgstr "تراجع"
 
-#: lib/ui/stdtoolbars.inc:80 src/BufferView.cpp:1349
+#: lib/ui/stdtoolbars.inc:80 src/BufferView.cpp:1350
 msgid "Redo"
 msgstr "تكرار"
 
@@ -22347,12 +22347,12 @@ msgstr ""
 msgid "\\begin_document is missing"
 msgstr ""
 
-#: src/Buffer.cpp:946 src/Buffer.cpp:952 src/BufferView.cpp:1444
-#: src/BufferView.cpp:1450
+#: src/Buffer.cpp:946 src/Buffer.cpp:952 src/BufferView.cpp:1445
+#: src/BufferView.cpp:1451
 msgid "Changes not shown in LaTeX output"
 msgstr "تغييرات لا تظهر في مخرجات لتيك"
 
-#: src/Buffer.cpp:947 src/BufferView.cpp:1445
+#: src/Buffer.cpp:947 src/BufferView.cpp:1446
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -22360,7 +22360,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:953 src/BufferView.cpp:1451
+#: src/Buffer.cpp:953 src/BufferView.cpp:1452
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -23007,7 +23007,7 @@ msgstr ""
 "النسق الافتراضي.ربما يكون LyX غير قادر على انتاج مخرجات الا في حالة اختيار "
 "قسم نصي صحيح من صندوق اعدادات المستند."
 
-#: src/BufferParams.cpp:2097 src/BufferView.cpp:1294 src/BufferView.cpp:1323
+#: src/BufferParams.cpp:2097 src/BufferView.cpp:1295 src/BufferView.cpp:1324
 msgid "Could not load class"
 msgstr "لم يحمل النوع"
 
@@ -23040,124 +23040,124 @@ msgstr "المستند للقراءة فقط"
 msgid "This portion of the document is deleted."
 msgstr "تم حذف هذا الجزء من المستند."
 
-#: src/BufferView.cpp:1058 src/BufferView.cpp:1993
+#: src/BufferView.cpp:1058 src/BufferView.cpp:2029
 #: src/frontends/qt4/GuiView.cpp:3398 src/frontends/qt4/GuiView.cpp:3473
 msgid "Absolute filename expected."
 msgstr "متوقع إدراج المسار الكامل لاسم الملف."
 
-#: src/BufferView.cpp:1292 src/BufferView.cpp:1321
+#: src/BufferView.cpp:1293 src/BufferView.cpp:1322
 #, fuzzy, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "تعذر تحميل نوع المستند %1$s "
 
-#: src/BufferView.cpp:1342
+#: src/BufferView.cpp:1343
 msgid "No further undo information"
 msgstr "لا تراجع عن مزيد من المعلومات"
 
-#: src/BufferView.cpp:1352
+#: src/BufferView.cpp:1353
 msgid "No further redo information"
 msgstr "لا تكرار لمزيد من المعلومات"
 
-#: src/BufferView.cpp:1599
+#: src/BufferView.cpp:1600
 msgid "Mark off"
 msgstr "إيقاف علامة"
 
-#: src/BufferView.cpp:1605
+#: src/BufferView.cpp:1606
 msgid "Mark on"
 msgstr "تفعيل علامة"
 
-#: src/BufferView.cpp:1612
+#: src/BufferView.cpp:1613
 msgid "Mark removed"
 msgstr "علامة محذوفة"
 
-#: src/BufferView.cpp:1615
+#: src/BufferView.cpp:1616
 msgid "Mark set"
 msgstr "تعيين علامة"
 
-#: src/BufferView.cpp:1671
+#: src/BufferView.cpp:1672
 msgid "Statistics for the selection:"
 msgstr "احصاءات المحدد:"
 
-#: src/BufferView.cpp:1673
+#: src/BufferView.cpp:1674
 msgid "Statistics for the document:"
 msgstr "احصاءات المستند:"
 
-#: src/BufferView.cpp:1676
+#: src/BufferView.cpp:1677
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d كلمة"
 
-#: src/BufferView.cpp:1678
+#: src/BufferView.cpp:1679
 msgid "One word"
 msgstr "كلمة واحدة"
 
-#: src/BufferView.cpp:1681
+#: src/BufferView.cpp:1682
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d حرفاً (تشمل المسافات)"
 
-#: src/BufferView.cpp:1684
+#: src/BufferView.cpp:1685
 msgid "One character (including blanks)"
 msgstr "حرفاًواحد (تشمل المسافات)"
 
-#: src/BufferView.cpp:1687
+#: src/BufferView.cpp:1688
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d حرفاً(ماعدا المسافات)"
 
-#: src/BufferView.cpp:1690
+#: src/BufferView.cpp:1691
 msgid "One character (excluding blanks)"
 msgstr "حرفاًواحدا(ماعدا المسافات)"
 
-#: src/BufferView.cpp:1692
+#: src/BufferView.cpp:1693
 msgid "Statistics"
 msgstr "احصاءات"
 
-#: src/BufferView.cpp:1848
+#: src/BufferView.cpp:1884
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 
-#: src/BufferView.cpp:1850
+#: src/BufferView.cpp:1886
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr ""
 
-#: src/BufferView.cpp:1858
+#: src/BufferView.cpp:1894
 msgid "Branch name"
 msgstr "اسم الفرع"
 
-#: src/BufferView.cpp:1865 src/frontends/qt4/GuiBranches.cpp:218
+#: src/BufferView.cpp:1901 src/frontends/qt4/GuiBranches.cpp:218
 msgid "Branch already exists"
 msgstr "فرع موجود حاليا"
 
-#: src/BufferView.cpp:2315
+#: src/BufferView.cpp:2351
 msgid "Inverse Search Failed"
 msgstr ""
 
-#: src/BufferView.cpp:2316
+#: src/BufferView.cpp:2352
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
 msgstr ""
 
-#: src/BufferView.cpp:2696
+#: src/BufferView.cpp:2732
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "ادراج المستند %1$s..."
 
-#: src/BufferView.cpp:2707
+#: src/BufferView.cpp:2743
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "المستند %1$s ادرج."
 
-#: src/BufferView.cpp:2709
+#: src/BufferView.cpp:2745
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "لم يدرج المستند %1$s"
 
-#: src/BufferView.cpp:2975
+#: src/BufferView.cpp:3011
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -23168,11 +23168,11 @@ msgstr ""
 "%1$s\n"
 "بسبب الخطأ التالي:%2$s"
 
-#: src/BufferView.cpp:2977
+#: src/BufferView.cpp:3013
 msgid "Could not read file"
 msgstr "لم يُقرأ الملف"
 
-#: src/BufferView.cpp:2984
+#: src/BufferView.cpp:3020
 #, c-format
 msgid ""
 "%1$s\n"
@@ -23181,15 +23181,15 @@ msgstr ""
 "%1$s\n"
 "لايمكن قراءته"
 
-#: src/BufferView.cpp:2985 src/output.cpp:39
+#: src/BufferView.cpp:3021 src/output.cpp:39
 msgid "Could not open file"
 msgstr "لم يتم فتح الملف"
 
-#: src/BufferView.cpp:2992
+#: src/BufferView.cpp:3028
 msgid "Reading not UTF-8 encoded file"
 msgstr "قراءة الملفات غير المرمزة بـ UTF-8"
 
-#: src/BufferView.cpp:2993
+#: src/BufferView.cpp:3029
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -24905,7 +24905,7 @@ msgstr "نظام تحرير الرياضيات"
 msgid "No valid math formula"
 msgstr "صيغة رياضية غير صالحة"
 
-#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1034
+#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1033
 #, fuzzy
 msgid "Already in regular expression mode"
 msgstr "التعبير العاديه"
@@ -24915,23 +24915,23 @@ msgstr "التعبير العاديه"
 msgid "Regexp editor mode"
 msgstr "نظام تحرير الرياضيات"
 
-#: src/Text3.cpp:1342
+#: src/Text3.cpp:1330
 msgid "Layout "
 msgstr "نسق"
 
-#: src/Text3.cpp:1343
+#: src/Text3.cpp:1331
 msgid " not known"
 msgstr "مجهول"
 
-#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1625
+#: src/Text3.cpp:1921 src/frontends/qt4/GuiApplication.cpp:1625
 msgid "Missing argument"
 msgstr "فقد المحاذاة"
 
-#: src/Text3.cpp:2089 src/Text3.cpp:2101
+#: src/Text3.cpp:2077 src/Text3.cpp:2089
 msgid "Character set"
 msgstr "تعيين المحارف"
 
-#: src/Text3.cpp:2308 src/Text3.cpp:2319
+#: src/Text3.cpp:2296 src/Text3.cpp:2307
 msgid "Paragraph layout set"
 msgstr "تعيين نسق الفقرة"
 
@@ -29616,25 +29616,25 @@ msgstr "لم يتم تغيير رقم العمود في '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "تعذر اضافة خطوط أفقية للشبكة في '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1730
-#: src/mathed/InsetMathNest.cpp:1876
+#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1729
+#: src/mathed/InsetMathNest.cpp:1875
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "التدقيق الآلي مغلق (للإدخال '!')"
 
-#: src/mathed/InsetMathNest.cpp:1020
+#: src/mathed/InsetMathNest.cpp:1019
 msgid "create new math text environment ($...$)"
 msgstr "انشئ نص رياضي جديد  ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1023
+#: src/mathed/InsetMathNest.cpp:1022
 msgid "entered math text mode (textrm)"
 msgstr "إدخال نظام النص الرياضي (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1045
+#: src/mathed/InsetMathNest.cpp:1044
 #, fuzzy
 msgid "Regular expression editor mode"
 msgstr "التعبير العاديه"
 
-#: src/mathed/InsetMathNest.cpp:1735 src/mathed/InsetMathNest.cpp:1878
+#: src/mathed/InsetMathNest.cpp:1734 src/mathed/InsetMathNest.cpp:1877
 msgid "Autocorrect On (<space> to exit)"
 msgstr "تشغيل التدقيق الآلي (<مسافة> للخروج)"
 
