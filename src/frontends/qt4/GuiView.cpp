@@ -162,9 +162,9 @@ public:
 		QPainter pain(&splash_);
 		pain.setPen(QColor(0, 0, 0));
 		double const multiplier = splashPixelRatio() / pixelRatio();
-		int const size = toqstr(lyxrc.font_sizes[FONT_SIZE_LARGE]).toDouble() * multiplier;
-		int const x = 190 * multiplier;
-		int const y = 225 * multiplier;
+		int const size = static_cast<int>(toqstr(lyxrc.font_sizes[FONT_SIZE_LARGE]).toDouble() * multiplier);
+		int const x = static_cast<int>(190 * multiplier);
+		int const y = static_cast<int>(225 * multiplier);
 		LYXERR(Debug::GUI,
 			"widget pixel ratio: " << pixelRatio() <<
 			" splash pixel ratio: " << splashPixelRatio() <<
@@ -181,8 +181,8 @@ public:
 
 	void paintEvent(QPaintEvent *)
 	{
-		int const w = splash_.width() / splashPixelRatio();
-		int const h = splash_.height() / splashPixelRatio();
+		int const w = static_cast<int>(splash_.width() / splashPixelRatio());
+		int const h = static_cast<int>(splash_.height() / splashPixelRatio());
 		int const x = (width() - w) / 2;
 		int const y = (height() - h) / 2;
 		LYXERR(Debug::GUI,

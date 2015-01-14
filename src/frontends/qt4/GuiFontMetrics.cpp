@@ -162,7 +162,7 @@ int GuiFontMetrics::pos2x(docstring const & s, int const pos, bool const rtl) co
 {
 	QTextLayout tl;
 	setTextLayout(tl, s, font_, rtl);
-	return tl.lineForTextPosition(pos).cursorToX(pos);
+	return static_cast<int>(tl.lineForTextPosition(pos).cursorToX(pos));
 }
 
 
@@ -172,7 +172,7 @@ int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl) const
 	setTextLayout(tl, s, font_, rtl);
 	int pos = tl.lineForTextPosition(0).xToCursor(x);
 	// correct x value to the actual cursor position.
-	x = tl.lineForTextPosition(0).cursorToX(pos);
+	x = static_cast<int>(tl.lineForTextPosition(0).cursorToX(pos));
 	return pos;
 }
 

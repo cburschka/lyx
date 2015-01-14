@@ -245,7 +245,7 @@ void CCItemDelegate::drawCategoryHeader(QPainter * painter, QStyleOptionViewItem
 	QFontMetrics fm(font);
 	int w = fm.width(category);
 	int x = opt.rect.x() + (opt.rect.width() - w) / 2;
-	int y = opt.rect.y() + 1.5 * fm.ascent();
+	int y = opt.rect.y() + 3 * fm.ascent() / 2;
 	int left = x;
 	int right = x + w;
 	painter->drawText(x, y, category);

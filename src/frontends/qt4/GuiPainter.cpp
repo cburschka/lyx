@@ -380,7 +380,8 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		int const mD = fm.maxDescent();
 		int const h = mA + mD;
 		if (w > 0 && h > 0) {
-			pm = QPixmap(pixelRatio() * w , pixelRatio() * h);
+			pm = QPixmap(static_cast<int>(pixelRatio() * w),
+						 static_cast<int>(pixelRatio() * h));
 #if QT_VERSION >= 0x050000
 			pm.setDevicePixelRatio(pixelRatio());
 #endif
