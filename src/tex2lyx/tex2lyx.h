@@ -26,14 +26,6 @@ namespace lyx {
 
 namespace support { class FileName; }
 
-/// Simple support for frontend::Alert::warning().
-namespace frontend { 
-namespace Alert {
-	void warning(docstring const & title, docstring const & message,
-				 bool const &);
-}
-}
-
 class Context;
 
 /// A trivial subclass, just to give us a public default constructor
@@ -206,8 +198,8 @@ extern bool roundtripMode();
  *  contains a preamble.
  *  \return true if the conversion was successful, else false.
  */
-bool tex2lyx(std::string const & infilename, 
-	     support::FileName const & outfilename, 
+bool tex2lyx(std::string const & infilename,
+	     support::FileName const & outfilename,
 	     std::string const & encoding);
 
 
