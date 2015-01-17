@@ -857,7 +857,9 @@ void MathMacroTemplate::commitEditChanges(Cursor & cur,
 {
 	int args_in_def = maxArgumentInDefinition();
 	if (args_in_def != numargs_) {
-		cur.recordUndoFullDocument();
+		// FIXME: implement precise undo handling (only a few places
+		//   need undo)
+		cur.recordUndoFullBuffer();
 		changeArity(cur, inset_pos, args_in_def);
 	}
 	insertMissingArguments(args_in_def);
@@ -873,7 +875,7 @@ void MathMacroTemplate::insertParameter(Cursor & cur,
 {
 	if (pos <= numargs_ && pos >= optionals_ && numargs_ < 9) {
 		++numargs_;
-		
+
 		// append example #n
 		if (addarg) {
 			shiftArguments(pos, 1);
@@ -990,7 +992,9 @@ void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_MACRO_ADD_PARAM:
 		if (numargs_ < 9) {
 			commitEditChanges(cur, cur);
-			cur.recordUndoFullDocument();
+			// FIXME: implement precise undo handling (only a few places
+			//   need undo)
+			cur.recordUndoFullBuffer();
 			size_t pos = numargs_;
 			if (!arg.empty())
 				pos = (size_t)convert<int>(arg) - 1; // it is checked for >=0 in getStatus
@@ -1002,7 +1006,9 @@ void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_MACRO_REMOVE_PARAM:
 		if (numargs_ > 0) {
 			commitEditChanges(cur, cur);
-			cur.recordUndoFullDocument();
+			// FIXME: implement precise undo handling (only a few places
+			//   need undo)
+			cur.recordUndoFullBuffer();
 			size_t pos = numargs_ - 1;
 			if (!arg.empty())
 				pos = (size_t)convert<int>(arg) - 1; // it is checked for >=0 in getStatus
@@ -1013,7 +1019,9 @@ void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_MACRO_APPEND_GREEDY_PARAM:
 		if (numargs_ < 9) {
 			commitEditChanges(cur, cur);
-			cur.recordUndoFullDocument();
+			// FIXME: implement precise undo handling (only a few places
+			//   need undo)
+			cur.recordUndoFullBuffer();
 			insertParameter(cur, cur, numargs_, true);
 		}
 		break;
@@ -1021,27 +1029,35 @@ void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_MACRO_REMOVE_GREEDY_PARAM:
 		if (numargs_ > 0) {
 			commitEditChanges(cur, cur);
-			cur.recordUndoFullDocument();
+			// FIXME: implement precise undo handling (only a few places
+			//   need undo)
+			cur.recordUndoFullBuffer();
 			removeParameter(cur, cur, numargs_ - 1, true);
 		}
 		break;
 
 	case LFUN_MATH_MACRO_MAKE_OPTIONAL:
 		commitEditChanges(cur, cur);
-		cur.recordUndoFullDocument();
+		// FIXME: implement precise undo handling (only a few places
+		//   need undo)
+		cur.recordUndoFullBuffer();
 		makeOptional(cur, cur);
 		break;
 
 	case LFUN_MATH_MACRO_MAKE_NONOPTIONAL:
 		commitEditChanges(cur, cur);
-		cur.recordUndoFullDocument();
+		// FIXME: implement precise undo handling (only a few places
+		//   need undo)
+		cur.recordUndoFullBuffer();
 		makeNonOptional(cur, cur);
 		break;
 
 	case LFUN_MATH_MACRO_ADD_OPTIONAL_PARAM:
 		if (numargs_ < 9) {
 			commitEditChanges(cur, cur);
-			cur.recordUndoFullDocument();
+			// FIXME: implement precise undo handling (only a few places
+			//   need undo)
+			cur.recordUndoFullBuffer();
 			insertParameter(cur, cur, optionals_);
 			makeOptional(cur, cur);
 		}
@@ -1050,14 +1066,18 @@ void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_MACRO_REMOVE_OPTIONAL_PARAM:
 		if (optionals_ > 0) {
 			commitEditChanges(cur, cur);
-			cur.recordUndoFullDocument();
+			// FIXME: implement precise undo handling (only a few places
+			//   need undo)
+			cur.recordUndoFullBuffer();
 			removeParameter(cur, cur, optionals_ - 1);
 		} break;
 
 	case LFUN_MATH_MACRO_ADD_GREEDY_OPTIONAL_PARAM:
 		if (numargs_ == optionals_) {
 			commitEditChanges(cur, cur);
-			cur.recordUndoFullDocument();
+			// FIXME: implement precise undo handling (only a few places
+			//   need undo)
+			cur.recordUndoFullBuffer();
 			insertParameter(cur, cur, 0, true);
 			makeOptional(cur, cur);
 		}

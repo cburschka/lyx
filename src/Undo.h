@@ -112,8 +112,11 @@ public:
 			     UndoKind kind = ATOMIC_UNDO,
 			     Inset const * inset = 0);
 
+	/// Convenience: record undo for buffer parameters
+	void recordUndoBufferParams(CursorData const & cur);
+
 	/// Convenience: prepare undo for the whole buffer
-	void recordUndoFullDocument(CursorData const & cur);
+	void recordUndoFullBuffer(CursorData const & cur);
 
 private:
 	struct Private;

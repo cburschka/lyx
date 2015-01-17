@@ -162,7 +162,7 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 			// An option would be to check if the master is hidden.
 			// If it is, unhide.
 			if (!master)
-				buffer().undo().recordUndoFullDocument(cur);
+				buffer().undo().recordUndoBufferParams(cur);
 			else
 				// at least issue a warning for now (ugly, but better than dataloss).
 				frontend::Alert::warning(_("Branch state changes in master document"),

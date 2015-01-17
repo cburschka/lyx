@@ -2493,9 +2493,15 @@ void Cursor::recordUndoInset(UndoKind kind, Inset const * inset) const
 }
 
 
-void Cursor::recordUndoFullDocument() const
+void Cursor::recordUndoFullBuffer() const
 {
-	buffer()->undo().recordUndoFullDocument(*this);
+	buffer()->undo().recordUndoFullBuffer(*this);
+}
+
+
+void Cursor::recordUndoBufferParams() const
+{
+	buffer()->undo().recordUndoBufferParams(*this);
 }
 
 

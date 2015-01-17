@@ -1251,7 +1251,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_BUFFER_PARAMS_APPLY: {
 		DocumentClassConstPtr olddc = buffer_.params().documentClassPtr();
-		cur.recordUndoFullDocument();
+		cur.recordUndoBufferParams();
 		istringstream ss(to_utf8(cmd.argument()));
 		Lexer lex;
 		lex.setStream(ss);
@@ -1272,7 +1272,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_LAYOUT_MODULES_CLEAR: {
-		cur.recordUndoFullDocument();
+		// FIXME: this modifies the document in cap::switchBetweenClasses
+		//  without calling recordUndo. Fix this before using
+		//  recordUndoBufferParams().
+		cur.recordUndoFullBuffer();
 		buffer_.params().clearLayoutModules();
 		makeDocumentClass();
 		dr.screenUpdate(Update::Force);
@@ -1288,7 +1291,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				"conflicts with installed modules.");
 			break;
 		}
-		cur.recordUndoFullDocument();
+		// FIXME: this modifies the document in cap::switchBetweenClasses
+		//  without calling recordUndo. Fix this before using
+		//  recordUndoBufferParams().
+		cur.recordUndoFullBuffer();
 		buffer_.params().addLayoutModule(argument);
 		makeDocumentClass();
 		dr.screenUpdate(Update::Force);
@@ -1317,7 +1323,10 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 
 		// Save the old, possibly modular, layout for use in conversion.
-		cur.recordUndoFullDocument();
+		// FIXME: this modifies the document in cap::switchBetweenClasses
+		//  without calling recordUndo. Fix this before using
+		//  recordUndoBufferParams().
+		cur.recordUndoFullBuffer();
 		buffer_.params().setBaseClass(argument);
 		makeDocumentClass();
 		dr.screenUpdate(Update::Force);
@@ -2028,7 +2037,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		if (!newL || oldL == newL)
 			break;
 		if (oldL->rightToLeft() == newL->rightToLeft()) {
-			cur.recordUndoFullDocument();
+			cur.recordUndoFullBuffer();
 			buffer_.changeLanguage(oldL, newL);
 			cur.setCurrentFont();
 			dr.forceBufferUpdate();

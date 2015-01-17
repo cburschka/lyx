@@ -378,7 +378,10 @@ public:
 			     Inset const * inset = 0) const;
 
 	/// Convenience: prepare undo for the whole buffer
-	void recordUndoFullDocument() const;
+	void recordUndoFullBuffer() const;
+
+	/// Convenience: prepare undo for buffer parameters
+	void recordUndoBufferParams() const;
 
 	/// Convenience: prepare undo for the selected paragraphs or cells
 	void recordUndoSelection() const;
