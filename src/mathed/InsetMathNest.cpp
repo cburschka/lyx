@@ -40,6 +40,7 @@
 
 #include "Bidi.h"
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "CoordCache.h"
 #include "Cursor.h"
@@ -583,7 +584,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 			size_t n = 0;
 			idocstringstream is(cmd.argument());
 			is >> n;
-			topaste = cap::selection(n);
+			topaste = cap::selection(n, buffer().params().documentClassPtr());
 		}
 		cur.niceInsert(topaste, parseflg, false);
 		cur.clearSelection(); // bug 393
