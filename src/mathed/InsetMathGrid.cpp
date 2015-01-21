@@ -20,6 +20,7 @@
 #include "MetricsInfo.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "CutAndPaste.h"
 #include "FuncStatus.h"
@@ -1339,7 +1340,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 			idocstringstream is(cmd.argument());
 			int n = 0;
 			is >> n;
-			topaste = cap::selection(n);
+			topaste = cap::selection(n, buffer().params().documentClassPtr());
 		}
 		InsetMathGrid grid(buffer_, 1, 1);
 		if (!topaste.empty())

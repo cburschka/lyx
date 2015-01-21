@@ -476,8 +476,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 }
 
 
-void putClipboard(ParagraphList const & paragraphs, 
-	DocumentClassConstPtr docclass, docstring const & plaintext)
+Buffer * copyToTempBuffer(ParagraphList const & paragraphs, DocumentClassConstPtr docclass)
 {
 	// This used to need to be static to avoid a memory leak. It no longer needs
 	// to be so, but the alternative is to construct a new one of these (with a
@@ -493,7 +492,7 @@ void putClipboard(ParagraphList const & paragraphs,
 	// Use a clone for the complicated stuff so that we do not need to clean
 	// up in order to avoid a crash.
 	Buffer * buffer = staticbuffer->cloneBufferOnly();
-	LASSERT(buffer, return);
+	LASSERT(buffer, return 0);
 
 	// This needs doing every time.
 	// Since setDocumentClass() causes deletion of the old document class
@@ -514,6 +513,17 @@ void putClipboard(ParagraphList const & paragraphs,
 	DocIterator dit = doc_iterator_begin(buffer, &buffer->inset());
 	ErrorList el;
 	pasteSelectionHelper(dit, paragraphs, docclass, buffer, el);
+
+	return buffer;
+}
+
+
+void putClipboard(ParagraphList const & paragraphs, 
+	DocumentClassConstPtr docclass, docstring const & plaintext)
+{
+	Buffer * buffer = copyToTempBuffer(paragraphs, docclass);
+	if (!buffer) // already asserted in copyToTempBuffer()
+		return;
 
 	// We don't want to produce images that are not used. Therefore,
 	// output formulas as MathML. Even if this is not understood by all
@@ -1044,11 +1054,16 @@ void clearCutStack()
 }
 
 
-docstring selection(size_t sel_index)
+docstring selection(size_t sel_index, DocumentClassConstPtr docclass)
 {
-	return sel_index < theCuts.size()
-		? theCuts[sel_index].first.back().asString(AS_STR_INSETS | AS_STR_NEWLINES)
-		: docstring();
+	if (sel_index >= theCuts.size())
+		return docstring();
+
+	boost::scoped_ptr<Buffer> buffer(copyToTempBuffer(theCuts[sel_index].first, docclass));
+	if (!buffer)
+		return docstring();
+
+	return buffer->paragraphs().back().asString(AS_STR_INSETS | AS_STR_NEWLINES);
 }
 
 
