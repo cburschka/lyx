@@ -139,7 +139,8 @@ bool isSymbolFamily(FontFamily family)
 #endif
 
 
-static bool isChosenFont(QFont & font, QString const & family)
+static bool isChosenFont(QFont & font, QString const & family,
+	                 QString const & style)
 {
 	// QFontInfo won't find a font that has only a few glyphs at unusual
 	// positions, e.g. the original esint10 font.
@@ -149,7 +150,11 @@ static bool isChosenFont(QFont & font, QString const & family)
 
 	LYXERR(Debug::FONT, "got: " << fi.family());
 
-	if (fi.family().contains(family)) {
+	if (fi.family().contains(family)
+#if QT_VERSION >= 0x040800
+	    && (style.isEmpty() || fi.styleName().contains(style))
+#endif
+	    ) {
 		LYXERR(Debug::FONT, " got it ");
 		return true;
 	}
@@ -166,8 +171,20 @@ QFont symbolFont(QString const & family, bool * ok)
 
 	QFont font;
 	font.setFamily(family);
+#if QT_VERSION >= 0x040800
+	font.setStyleName("LyX");
 
-	if (isChosenFont(font, family)) {
+	if (isChosenFont(font, family, "LyX")) {
+		LYXERR(Debug::FONT, "lyx!");
+		*ok = true;
+		return font;
+	}
+
+	LYXERR(Debug::FONT, "Trying normal " << family << " ... ");
+	font.setStyleName(QString());
+#endif
+
+	if (isChosenFont(font, family, QString())) {
 		LYXERR(Debug::FONT, "normal!");
 		*ok = true;
 		return font;
@@ -176,7 +193,7 @@ QFont symbolFont(QString const & family, bool * ok)
 	LYXERR(Debug::FONT, "Trying " << upper << " ... ");
 	font.setFamily(upper);
 
-	if (isChosenFont(font, upper)) {
+	if (isChosenFont(font, upper, QString())) {
 		LYXERR(Debug::FONT, "upper!");
 		*ok = true;
 		return font;
@@ -188,7 +205,7 @@ QFont symbolFont(QString const & family, bool * ok)
 	LYXERR(Debug::FONT, "Trying " << raw << " ... ");
 	font.setRawName(raw);
 
-	if (isChosenFont(font, family)) {
+	if (isChosenFont(font, family, QString())) {
 		LYXERR(Debug::FONT, "raw version!");
 		*ok = true;
 		return font;

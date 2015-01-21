@@ -333,27 +333,6 @@ int GuiPainter::text(int x, int y, docstring const & s,
 
 	textDecoration(f, x, y, textwidth);
 
-	// Qt4 does not display a glyph whose codepoint is the
-	// same as that of a soft-hyphen (0x00ad), unless it
-	// occurs at a line-break. As a kludge, we force Qt to
-	// render this glyph using a one-column line.
-	// This is needed for some math glyphs.
-	// Should the soft hyphen char be displayed at all?
-	// I don't think so (i.e., Qt is correct as far as
-	// texted is concerned). /spitz
-	if (s.size() == 1 && str[0].unicode() == 0x00ad) {
-		setQPainterPen(computeColor(f.realColor()));
-		QTextLayout adsymbol(str);
-		adsymbol.setFont(ff);
-		adsymbol.beginLayout();
-		QTextLine line = adsymbol.createLine();
-		line.setNumColumns(1);
-		line.setPosition(QPointF(0, -line.ascent()));
-		adsymbol.endLayout();
-		line.draw(this, QPointF(x, y));
-		return textwidth;
-	}
-
 	if (use_pixmap_cache_) {
 		QPixmap pm;
 		QString key = generateStringSignature(str, f);
