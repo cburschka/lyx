@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 481
 \begin_document
 \begin_header
 \textclass aastex
@@ -212,7 +212,7 @@ Results
 <results text; refer to Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig1"
+reference "fig:fig1"
 
 \end_inset
 
@@ -296,17 +296,50 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption FigCaption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig1"
+name "fig:fig1"
 
 \end_inset
 
 This is the first figure.
  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption FigCaption
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+filename
+\end_layout
+
+\end_inset
+
+This is the second figure where the image filename is referenced via a FigCaptio
+n.
 \end_layout
 
 \end_inset
