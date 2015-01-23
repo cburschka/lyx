@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-01-04 11:17+0100\n"
+"POT-Creation-Date: 2015-01-23 14:35+0100\n"
 "PO-Revision-Date: 2014-11-14 18:39+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -2392,7 +2392,7 @@ msgstr "Konvertovať"
 
 #: src/frontends/qt4/ui/LogUi.ui:38
 msgid "Hit Enter to search, or click Go!"
-msgstr "Stlačte Enter alebo kliknite na \"Hľadaj!\""
+msgstr "Stlačte Enter alebo kliknite na \"Hľadaj\"!"
 
 #: src/frontends/qt4/ui/LogUi.ui:45
 msgid "Log &Type:"
@@ -3215,7 +3215,7 @@ msgstr "Zálohovanie && Ukladanie"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:94
 msgid "Backup &original documents when saving"
-msgstr "Zálohovať pôvodné dokumenty pri uložení"
+msgstr "Zálohovať &pôvodné dokumenty pri uložení"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:103
 msgid "&Backup documents, every"
@@ -3881,7 +3881,7 @@ msgstr "Voľba použitá spool-om k nastaveniu tlačiarne."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:117
 msgid "Spool &printer:"
-msgstr "Spool t&lačiarne:"
+msgstr "Spool pre t&lačiareň:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:130
 msgid ""
@@ -3890,7 +3890,7 @@ msgstr "Príkaz odovzdaný do systému, aby tlačil do postscript-súboru."
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:136
 msgid "Spool co&mmand:"
-msgstr "Spool príka&z:"
+msgstr "Príka&z do spoolu:"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:153
 msgid "Option used to reverse page order."
@@ -6755,6 +6755,10 @@ msgstr "PopisObrázka"
 msgid "fig."
 msgstr "obr."
 
+#: lib/layouts/aastex.layout:535
+msgid "Filename to identify the corresponding figure file"
+msgstr "Meno súboru korešpondujúceho obrázku"
+
 #: lib/layouts/aastex.layout:533 lib/layouts/achemso.layout:77
 #: lib/layouts/apa.layout:255 lib/layouts/apa6.layout:355
 #: lib/layouts/beamer.layout:209 lib/layouts/beamer.layout:261
@@ -6772,10 +6776,6 @@ msgstr "obr."
 #: lib/layouts/stdsections.inc:91
 msgid "Short Title|S"
 msgstr "Krátky Titul"
-
-#: lib/layouts/aastex.layout:534
-msgid "The caption as it appears in the list of figures"
-msgstr "Popis ako sa zobrazí v zozname obrázkov"
 
 #: lib/layouts/aastex.layout:549
 msgid "Facility"
@@ -16519,7 +16519,7 @@ msgstr "Vybrať všetko"
 
 #: lib/ui/stdmenus.inc:114
 msgid "Find & Replace (Quick)...|F"
-msgstr "Nájsť a Nahradiť (Rýchle)..."
+msgstr "Nájsť a Nahradiť (Rýchle)...|N"
 
 #: lib/ui/stdmenus.inc:115
 msgid "Find & Replace (Advanced)..."
@@ -17099,7 +17099,7 @@ msgstr "Externý materiál...|m"
 
 #: lib/ui/stdmenus.inc:474
 msgid "Child Document...|d"
-msgstr "Dokument potomka..."
+msgstr "Dokument Potomka...|P"
 
 #: lib/ui/stdmenus.inc:489
 msgid "Comment|C"
@@ -17107,7 +17107,7 @@ msgstr "Komentár"
 
 #: lib/ui/stdmenus.inc:496
 msgid "Insert New Branch...|I"
-msgstr "Vložiť Novú Vetvu..."
+msgstr "Vložiť Novú Vetvu...|V"
 
 #: lib/ui/stdmenus.inc:514
 msgid "Change Tracking|C"
@@ -23677,6 +23677,10 @@ msgstr "URL text"
 #: src/Color.cpp:240
 msgid "depth bar"
 msgstr "značenie hĺbky"
+
+#: src/Color.cpp:241
+msgid "scroll indicator"
+msgstr "Indikátor rolovacieho tlačítka"
 
 #: src/Color.cpp:241
 msgid "language"
@@ -30497,6 +30501,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "The caption as it appears in the list of figures"
+#~ msgstr "Popis ako sa zobrazí v zozname obrázkov"
 
 #~ msgid "Document &class"
 #~ msgstr "Trieda &dokumentu"
