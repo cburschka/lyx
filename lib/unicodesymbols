@@ -875,103 +875,213 @@
 #
 # Cyrillic
 #
-0x0400 "\\textcyr{\\accent0\\char197}"  "textcyr" "" # CYRILLIC CAPITAL LETTER IE WITH GRAVE
-0x0401 "\\textcyr{\\char156}"     "textcyr" "" # CYRILLIC CAPITAL LETTER IO
-0x0402 "\\textcyr{\\char130}"     "textcyr" "" # CYRILLIC CAPITAL LETTER DJE
-0x0403 "\\textcyr{\\accent1\\char195}"  "textcyr" "" # CYRILLIC CAPITAL LETTER GJE
-0x0404 "\\textcyr{\\char153}"     "textcyr" "" # CYRILLIC CAPITAL LETTER UKRAINIAN IE
-0x0405 "\\textcyr{\\char143}"     "textcyr" "" # CYRILLIC CAPITAL LETTER DZE
-0x0406 "\\textcyr{I}"             "textcyr" "" # CYRILLIC CAPITAL LETTER BYELORUSSIAN-UKRAINIAN I
-0x0407 "\\textcyr{\\char136}"     "textcyr" "" # CYRILLIC CAPITAL LETTER YI
-0x0408 "\\textcyr{J}"             "textcyr" "" # CYRILLIC CAPITAL LETTER JE
-0x0409 "\\textcyr{\\char135}"     "textcyr" "" # CYRILLIC CAPITAL LETTER LJE
-0x040a "\\textcyr{\\char155}"     "textcyr" "" # CYRILLIC CAPITAL LETTER NJE
-0x040b "\\textcyr{\\char131}"     "textcyr" "" # CYRILLIC CAPITAL LETTER TSHE
-0x040c "\\textcyr{\\accent1\\char202}"  "textcyr" "" # CYRILLIC CAPITAL LETTER KJE
-0x040d "\\textcyr{\\accent0\\char200}"  "textcyr" "" # CYRILLIC CAPITAL LETTER I WITH GRAVE
-0x040e "\\textcyr{\\char146}"     "textcyr" "" # CYRILLIC CAPITAL LETTER SHORT U
-0x040f "\\textcyr{\\char150}"     "textcyr" "" # CYRILLIC CAPITAL LETTER DZHE
-0x0410 "\\textcyr{\\char192}"     "textcyr" "" # CYRILLIC CAPITAL LETTER A
-0x0411 "\\textcyr{\\char193}"     "textcyr" "" # CYRILLIC CAPITAL LETTER BE
-0x0412 "\\textcyr{\\char194}"     "textcyr" "" # CYRILLIC CAPITAL LETTER VE
-0x0413 "\\textcyr{\\char195}"     "textcyr" "" # CYRILLIC CAPITAL LETTER GHE
-0x0414 "\\textcyr{\\char196}"     "textcyr" "" # CYRILLIC CAPITAL LETTER DE
-0x0415 "\\textcyr{\\char197}"     "textcyr" "" # CYRILLIC CAPITAL LETTER IE
-0x0416 "\\textcyr{\\char198}"     "textcyr" "" # CYRILLIC CAPITAL LETTER ZHE
-0x0417 "\\textcyr{\\char199}"     "textcyr" "" # CYRILLIC CAPITAL LETTER ZE
-0x0418 "\\textcyr{\\char200}"     "textcyr" "" # CYRILLIC CAPITAL LETTER I
-0x0419 "\\textcyr{\\char201}"     "textcyr" "" # CYRILLIC CAPITAL LETTER SHORT I
-0x041a "\\textcyr{\\char202}"     "textcyr" "" # CYRILLIC CAPITAL LETTER KA
-0x041b "\\textcyr{\\char203}"     "textcyr" "" # CYRILLIC CAPITAL LETTER EL
-0x041c "\\textcyr{\\char204}"     "textcyr" "" # CYRILLIC CAPITAL LETTER EM
-0x041d "\\textcyr{\\char205}"     "textcyr" "" # CYRILLIC CAPITAL LETTER EN
-0x041e "\\textcyr{\\char206}"     "textcyr" "" # CYRILLIC CAPITAL LETTER O
-0x041f "\\textcyr{\\char207}"     "textcyr" "" # CYRILLIC CAPITAL LETTER PE
-0x0420 "\\textcyr{\\char208}"     "textcyr" "" # CYRILLIC CAPITAL LETTER ER
-0x0421 "\\textcyr{\\char209}"     "textcyr" "" # CYRILLIC CAPITAL LETTER ES
-0x0422 "\\textcyr{\\char210}"     "textcyr" "" # CYRILLIC CAPITAL LETTER TE
-0x0423 "\\textcyr{\\char211}"     "textcyr" "" # CYRILLIC CAPITAL LETTER U
-0x0424 "\\textcyr{\\char212}"     "textcyr" "" # CYRILLIC CAPITAL LETTER EF
-0x0425 "\\textcyr{\\char213}"     "textcyr" "" # CYRILLIC CAPITAL LETTER HA
-0x0426 "\\textcyr{\\char214}"     "textcyr" "" # CYRILLIC CAPITAL LETTER TSE
-0x0427 "\\textcyr{\\char215}"     "textcyr" "" # CYRILLIC CAPITAL LETTER CHE
-0x0428 "\\textcyr{\\char216}"     "textcyr" "" # CYRILLIC CAPITAL LETTER SHA
-0x0429 "\\textcyr{\\char217}"     "textcyr" "" # CYRILLIC CAPITAL LETTER SHCHA
-0x042a "\\textcyr{\\char218}"     "textcyr" "" # CYRILLIC CAPITAL LETTER HARD SIGN
-0x042b "\\textcyr{\\char219}"     "textcyr" "" # CYRILLIC CAPITAL LETTER YERU
-0x042c "\\textcyr{\\char220}"     "textcyr" "" # CYRILLIC CAPITAL LETTER SOFT SIGN
-0x042d "\\textcyr{\\char221}"     "textcyr" "" # CYRILLIC CAPITAL LETTER E
-0x042e "\\textcyr{\\char222}"     "textcyr" "" # CYRILLIC CAPITAL LETTER YU
-0x042f "\\textcyr{\\char223}"     "textcyr" "" # CYRILLIC CAPITAL LETTER YA
-0x0430 "\\textcyr{\\char224}"     "textcyr" "" # CYRILLIC SMALL LETTER A
-0x0431 "\\textcyr{\\char225}"     "textcyr" "" # CYRILLIC SMALL LETTER BE
-0x0432 "\\textcyr{\\char226}"     "textcyr" "" # CYRILLIC SMALL LETTER VE
-0x0433 "\\textcyr{\\char227}"     "textcyr" "" # CYRILLIC SMALL LETTER GHE
-0x0434 "\\textcyr{\\char228}"     "textcyr" "" # CYRILLIC SMALL LETTER DE
-0x0435 "\\textcyr{\\char229}"     "textcyr" "" # CYRILLIC SMALL LETTER IE
-0x0436 "\\textcyr{\\char230}"     "textcyr" "" # CYRILLIC SMALL LETTER ZHE
-0x0437 "\\textcyr{\\char231}"     "textcyr" "" # CYRILLIC SMALL LETTER ZE
-0x0438 "\\textcyr{\\char232}"     "textcyr" "" # CYRILLIC SMALL LETTER I
-0x0439 "\\textcyr{\\char233}"     "textcyr" "" # CYRILLIC SMALL LETTER SHORT I
-0x043a "\\textcyr{\\char234}"     "textcyr" "" # CYRILLIC SMALL LETTER KA
-0x043b "\\textcyr{\\char235}"     "textcyr" "" # CYRILLIC SMALL LETTER EL
-0x043c "\\textcyr{\\char236}"     "textcyr" "" # CYRILLIC SMALL LETTER EM
-0x043d "\\textcyr{\\char237}"     "textcyr" "" # CYRILLIC SMALL LETTER EN
-0x043e "\\textcyr{\\char238}"     "textcyr" "" # CYRILLIC SMALL LETTER O
-0x043f "\\textcyr{\\char239}"     "textcyr" "" # CYRILLIC SMALL LETTER PE
-0x0440 "\\textcyr{\\char240}"     "textcyr" "" # CYRILLIC SMALL LETTER ER
-0x0441 "\\textcyr{\\char241}"     "textcyr" "" # CYRILLIC SMALL LETTER ES
-0x0442 "\\textcyr{\\char242}"     "textcyr" "" # CYRILLIC SMALL LETTER TE
-0x0443 "\\textcyr{\\char243}"     "textcyr" "" # CYRILLIC SMALL LETTER U
-0x0444 "\\textcyr{\\char244}"     "textcyr" "" # CYRILLIC SMALL LETTER EF
-0x0445 "\\textcyr{\\char245}"     "textcyr" "" # CYRILLIC SMALL LETTER HA
-0x0446 "\\textcyr{\\char246}"     "textcyr" "" # CYRILLIC SMALL LETTER TSE
-0x0447 "\\textcyr{\\char247}"     "textcyr" "" # CYRILLIC SMALL LETTER CHE
-0x0448 "\\textcyr{\\char248}"     "textcyr" "" # CYRILLIC SMALL LETTER SHA
-0x0449 "\\textcyr{\\char249}"     "textcyr" "" # CYRILLIC SMALL LETTER SHCHA
-0x044a "\\textcyr{\\char250}"     "textcyr" "" # CYRILLIC SMALL LETTER HARD SIGN
-0x044b "\\textcyr{\\char251}"     "textcyr" "" # CYRILLIC SMALL LETTER YERU
-0x044c "\\textcyr{\\char252}"     "textcyr" "" # CYRILLIC SMALL LETTER SOFT SIGN
-0x044d "\\textcyr{\\char253}"     "textcyr" "" # CYRILLIC SMALL LETTER E
-0x044e "\\textcyr{\\char254}"     "textcyr" "" # CYRILLIC SMALL LETTER YU
-0x044f "\\textcyr{\\char255}"     "textcyr" "" # CYRILLIC SMALL LETTER YA
-0x0450 "\\textcyr{\\accent0\\char229}"  "textcyr" "" # CYRILLIC SMALL LETTER IE WITH GRAVE
-0x0451 "\\textcyr{\\char188}"     "textcyr" "" # CYRILLIC SMALL LETTER IO
-0x0452 "\\textcyr{\\char162}"     "textcyr" "" # CYRILLIC SMALL LETTER DJE
-0x0453 "\\textcyr{\\accent1\\char227}"  "textcyr" "" # CYRILLIC SMALL LETTER GJE
-0x0454 "\\textcyr{\\char185}"     "textcyr" "" # CYRILLIC SMALL LETTER UKRAINIAN IE
-0x0455 "\\textcyr{\\char175}"     "textcyr" "" # CYRILLIC SMALL LETTER DZE
-0x0456 "\\textcyr{i}"             "textcyr" "" # CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I
-0x0457 "\\textcyr{\\char168}"     "textcyr" "" # CYRILLIC SMALL LETTER YI
-0x0458 "\\textcyr{j}"             "textcyr" "" # CYRILLIC SMALL LETTER JE
-0x0459 "\\textcyr{\\char167}"     "textcyr" "" # CYRILLIC SMALL LETTER LJE
-0x045a "\\textcyr{\\char187}"     "textcyr" "" # CYRILLIC SMALL LETTER NJE
-0x045b "\\textcyr{\\char163}"     "textcyr" "" # CYRILLIC SMALL LETTER TSHE
-0x045c "\\textcyr{\\accent1\\char234}"  "textcyr" "" # CYRILLIC SMALL LETTER KJE
-0x045d "\\textcyr{\\accent0\\char232}"  "textcyr" "" # CYRILLIC SMALL LETTER I WITH GRAVE
-0x045e "\\textcyr{\\char178}"     "textcyr" "" # CYRILLIC SMALL LETTER SHORT U
-0x045f "\\textcyr{\\char182}"     "textcyr" "" # CYRILLIC SMALL LETTER DZHE
-0x0e3f "\\textbaht"               "textcomp" "" # THAI CURRENCY SYMBOL BAHT
+# "textcyr" selects LaTeX font encoding T2A
+0x0400 "\\textcyr{\\`\\CYRE}"     "textcyr" "" # CYRILLIC CAPITAL LETTER IE WITH GRAVE
+0x0401 "\\textcyr{\\CYRYO}"       "textcyr" "" # CYRILLIC CAPITAL LETTER IO
+0x0402 "\\textcyr{\\CYRDJE}"      "textcyr" "" # CYRILLIC CAPITAL LETTER DJE
+0x0403 "\\textcyr{\\`\\CYRG}"     "textcyr" "" # CYRILLIC CAPITAL LETTER GJE
+0x0404 "\\textcyr{\\CYRIE}"       "textcyr" "" # CYRILLIC CAPITAL LETTER UKRAINIAN IE
+0x0405 "\\textcyr{\\CYRDZE}"      "textcyr" "" # CYRILLIC CAPITAL LETTER DZE
+0x0406 "\\textcyr{\\CYRII}"       "textcyr" "" # CYRILLIC CAPITAL LETTER BYELORUSSIAN-UKRAINIAN I
+0x0407 "\\textcyr{\\CYRYI}"       "textcyr" "" # CYRILLIC CAPITAL LETTER YI
+0x0408 "\\textcyr{\\CYRJE}"       "textcyr" "" # CYRILLIC CAPITAL LETTER JE
+0x0409 "\\textcyr{\\CYRLJE}"      "textcyr" "" # CYRILLIC CAPITAL LETTER LJE
+0x040a "\\textcyr{\\CYRNJE}"      "textcyr" "" # CYRILLIC CAPITAL LETTER NJE
+0x040b "\\textcyr{\\CYRTSHE}"     "textcyr" "" # CYRILLIC CAPITAL LETTER TSHE
+0x040c "\\textcyr{\\`\\CYRK}"     "textcyr" "" # CYRILLIC CAPITAL LETTER KJE
+0x040d "\\textcyr{\\`\\CYRI}"     "textcyr" "" # CYRILLIC CAPITAL LETTER I WITH GRAVE
+0x040e "\\textcyr{\\CYRUSHRT}"    "textcyr" "" # CYRILLIC CAPITAL LETTER SHORT U
+0x040f "\\textcyr{\\CYRDZHE}"     "textcyr" "" # CYRILLIC CAPITAL LETTER DZHE
+0x0410 "\\textcyr{\\CYRA}"        "textcyr" "" # CYRILLIC CAPITAL LETTER A
+0x0411 "\\textcyr{\\CYRB}"        "textcyr" "" # CYRILLIC CAPITAL LETTER BE
+0x0412 "\\textcyr{\\CYRV}"        "textcyr" "" # CYRILLIC CAPITAL LETTER VE
+0x0413 "\\textcyr{\\CYRG}"        "textcyr" "" # CYRILLIC CAPITAL LETTER GHE
+0x0414 "\\textcyr{\\CYRD}"        "textcyr" "" # CYRILLIC CAPITAL LETTER DE
+0x0415 "\\textcyr{\\CYRE}"        "textcyr" "" # CYRILLIC CAPITAL LETTER IE
+0x0416 "\\textcyr{\\CYRZH}"       "textcyr" "" # CYRILLIC CAPITAL LETTER ZHE
+0x0417 "\\textcyr{\\CYRZ}"        "textcyr" "" # CYRILLIC CAPITAL LETTER ZE
+0x0418 "\\textcyr{\\CYRI}"        "textcyr" "" # CYRILLIC CAPITAL LETTER I
+0x0419 "\\textcyr{\\CYRISHRT}"    "textcyr" "" # CYRILLIC CAPITAL LETTER SHORT I
+0x041a "\\textcyr{\\CYRK}"        "textcyr" "" # CYRILLIC CAPITAL LETTER KA
+0x041b "\\textcyr{\\CYRL}"        "textcyr" "" # CYRILLIC CAPITAL LETTER EL
+0x041c "\\textcyr{\\CYRM}"        "textcyr" "" # CYRILLIC CAPITAL LETTER EM
+0x041d "\\textcyr{\\CYRN}"        "textcyr" "" # CYRILLIC CAPITAL LETTER EN
+0x041e "\\textcyr{\\CYRO}"        "textcyr" "" # CYRILLIC CAPITAL LETTER O
+0x041f "\\textcyr{\\CYRP}"        "textcyr" "" # CYRILLIC CAPITAL LETTER PE
+0x0420 "\\textcyr{\\CYRR}"        "textcyr" "" # CYRILLIC CAPITAL LETTER ER
+0x0421 "\\textcyr{\\CYRS}"        "textcyr" "" # CYRILLIC CAPITAL LETTER ES
+0x0422 "\\textcyr{\\CYRT}"        "textcyr" "" # CYRILLIC CAPITAL LETTER TE
+0x0423 "\\textcyr{\\CYRU}"        "textcyr" "" # CYRILLIC CAPITAL LETTER U
+0x0424 "\\textcyr{\\CYRF}"        "textcyr" "" # CYRILLIC CAPITAL LETTER EF
+0x0425 "\\textcyr{\\CYRH}"        "textcyr" "" # CYRILLIC CAPITAL LETTER HA
+0x0426 "\\textcyr{\\CYRC}"        "textcyr" "" # CYRILLIC CAPITAL LETTER TSE
+0x0427 "\\textcyr{\\CYRCH}"       "textcyr" "" # CYRILLIC CAPITAL LETTER CHE
+0x0428 "\\textcyr{\\CYRSH}"       "textcyr" "" # CYRILLIC CAPITAL LETTER SHA
+0x0429 "\\textcyr{\\CYRSHCH}"     "textcyr" "" # CYRILLIC CAPITAL LETTER SHCHA
+0x042a "\\textcyr{\\CYRHRDSN}"    "textcyr" "" # CYRILLIC CAPITAL LETTER HARD SIGN
+0x042b "\\textcyr{\\CYRERY}"      "textcyr" "" # CYRILLIC CAPITAL LETTER YERU
+0x042c "\\textcyr{\\CYRSFTSN}"    "textcyr" "" # CYRILLIC CAPITAL LETTER SOFT SIGN
+0x042d "\\textcyr{\\CYREREV}"     "textcyr" "" # CYRILLIC CAPITAL LETTER E
+0x042e "\\textcyr{\\CYRYU}"       "textcyr" "" # CYRILLIC CAPITAL LETTER YU
+0x042f "\\textcyr{\\CYRYA}"       "textcyr" "" # CYRILLIC CAPITAL LETTER YA
+0x0430 "\\textcyr{\\cyra}"        "textcyr" "" # CYRILLIC SMALL LETTER A
+0x0431 "\\textcyr{\\cyrb}"        "textcyr" "" # CYRILLIC SMALL LETTER BE
+0x0432 "\\textcyr{\\cyrv}"        "textcyr" "" # CYRILLIC SMALL LETTER VE
+0x0433 "\\textcyr{\\cyrg}"        "textcyr" "" # CYRILLIC SMALL LETTER GHE
+0x0434 "\\textcyr{\\cyrd}"        "textcyr" "" # CYRILLIC SMALL LETTER DE
+0x0435 "\\textcyr{\\cyre}"        "textcyr" "" # CYRILLIC SMALL LETTER IE
+0x0436 "\\textcyr{\\cyrzh}"       "textcyr" "" # CYRILLIC SMALL LETTER ZHE
+0x0437 "\\textcyr{\\cyrz}"        "textcyr" "" # CYRILLIC SMALL LETTER ZE
+0x0438 "\\textcyr{\\cyri}"        "textcyr" "" # CYRILLIC SMALL LETTER I
+0x0439 "\\textcyr{\\cyrishrt}"    "textcyr" "" # CYRILLIC SMALL LETTER SHORT I
+0x043a "\\textcyr{\\cyrk}"        "textcyr" "" # CYRILLIC SMALL LETTER KA
+0x043b "\\textcyr{\\cyrl}"        "textcyr" "" # CYRILLIC SMALL LETTER EL
+0x043c "\\textcyr{\\cyrm}"        "textcyr" "" # CYRILLIC SMALL LETTER EM
+0x043d "\\textcyr{\\cyrn}"        "textcyr" "" # CYRILLIC SMALL LETTER EN
+0x043e "\\textcyr{\\cyro}"        "textcyr" "" # CYRILLIC SMALL LETTER O
+0x043f "\\textcyr{\\cyrp}"        "textcyr" "" # CYRILLIC SMALL LETTER PE
+0x0440 "\\textcyr{\\cyrr}"        "textcyr" "" # CYRILLIC SMALL LETTER ER
+0x0441 "\\textcyr{\\cyrs}"        "textcyr" "" # CYRILLIC SMALL LETTER ES
+0x0442 "\\textcyr{\\cyrt}"        "textcyr" "" # CYRILLIC SMALL LETTER TE
+0x0443 "\\textcyr{\\cyru}"        "textcyr" "" # CYRILLIC SMALL LETTER U
+0x0444 "\\textcyr{\\cyrf}"        "textcyr" "" # CYRILLIC SMALL LETTER EF
+0x0445 "\\textcyr{\\cyrh}"        "textcyr" "" # CYRILLIC SMALL LETTER HA
+0x0446 "\\textcyr{\\cyrc}"        "textcyr" "" # CYRILLIC SMALL LETTER TSE
+0x0447 "\\textcyr{\\cyrch}"       "textcyr" "" # CYRILLIC SMALL LETTER CHE
+0x0448 "\\textcyr{\\cyrsh}"       "textcyr" "" # CYRILLIC SMALL LETTER SHA
+0x0449 "\\textcyr{\\cyrshch}"     "textcyr" "" # CYRILLIC SMALL LETTER SHCHA
+0x044a "\\textcyr{\\cyrhrdsn}"    "textcyr" "" # CYRILLIC SMALL LETTER HARD SIGN
+0x044b "\\textcyr{\\cyrery}"      "textcyr" "" # CYRILLIC SMALL LETTER YERU
+0x044c "\\textcyr{\\cyrsftsn}"    "textcyr" "" # CYRILLIC SMALL LETTER SOFT SIGN
+0x044d "\\textcyr{\\cyrerev}"     "textcyr" "" # CYRILLIC SMALL LETTER E
+0x044e "\\textcyr{\\cyryu}"       "textcyr" "" # CYRILLIC SMALL LETTER YU
+0x044f "\\textcyr{\\cyrya}"       "textcyr" "" # CYRILLIC SMALL LETTER YA
+0x0450 "\\textcyr{\\`\\cyre}"     "textcyr" "" # CYRILLIC SMALL LETTER IE WITH GRAVE
+0x0451 "\\textcyr{\\cyryo}"       "textcyr" "" # CYRILLIC SMALL LETTER IO
+0x0452 "\\textcyr{\\cyrdje}"      "textcyr" "" # CYRILLIC SMALL LETTER DJE
+0x0453 "\\textcyr{\\`\\cyrg}"     "textcyr" "" # CYRILLIC SMALL LETTER GJE
+0x0454 "\\textcyr{\\cyrie}"       "textcyr" "" # CYRILLIC SMALL LETTER UKRAINIAN IE
+0x0455 "\\textcyr{\\cyrdze}"      "textcyr" "" # CYRILLIC SMALL LETTER DZE
+0x0456 "\\textcyr{\\cyrii}"       "textcyr" "" # CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I
+0x0457 "\\textcyr{\\cyryi}"       "textcyr" "" # CYRILLIC SMALL LETTER YI
+0x0458 "\\textcyr{\\cyrje}"       "textcyr" "" # CYRILLIC SMALL LETTER JE
+0x0459 "\\textcyr{\\cyrlje}"      "textcyr" "" # CYRILLIC SMALL LETTER LJE
+0x045a "\\textcyr{\\cyrnje}"      "textcyr" "" # CYRILLIC SMALL LETTER NJE
+0x045b "\\textcyr{\\cyrtshe}"     "textcyr" "" # CYRILLIC SMALL LETTER TSHE
+0x045c "\\textcyr{\\`\\cyrk}"     "textcyr" "" # CYRILLIC SMALL LETTER KJE
+0x045d "\\textcyr{\\`\\cyri}"     "textcyr" "" # CYRILLIC SMALL LETTER I WITH GRAVE
+0x045e "\\textcyr{\\cyrushrt}"    "textcyr" "" # CYRILLIC SMALL LETTER SHORT U
+0x045f "\\textcyr{\\cyrdzhe}"     "textcyr" "" # CYRILLIC SMALL LETTER DZHE
+0x0490 "\\textcyr{\\CYRGUP}"      "textcyr" "" # CYRILLIC CAPITAL LETTER GHE WITH UPTURN
+0x0491 "\\textcyr{\\cyrgup}"      "textcyr" "" # CYRILLIC SMALL LETTER GHE WITH UPTURN
+0x0492 "\\textcyr{\\CYRGHCRS}"    "textcyr" "" # CYRILLIC CAPITAL LETTER GHE WITH STROKE
+0x0493 "\\textcyr{\\cyrghcrs}"    "textcyr" "" # CYRILLIC SMALL LETTER GHE WITH STROKE
+#0x0494 ""                          "" "" "" # CYRILLIC CAPITAL LETTER GHE WITH MIDDLE HOOK
+#0x0495 ""                          "" "" "" # CYRILLIC SMALL LETTER GHE WITH MIDDLE HOOK
+0x0496 "\\textcyr{\\CYRZHDSC}"    "textcyr" "" # CYRILLIC CAPITAL LETTER ZHE WITH DESCENDER
+0x0497 "\\textcyr{\\cyrzhdsc}"    "textcyr" "" # CYRILLIC SMALL LETTER ZHE WITH DESCENDER
+0x0498 "\\textcyr{\\CYRZDSC}"     "textcyr" "" # CYRILLIC CAPITAL LETTER ZE WITH DESCENDER
+0x0499 "\\textcyr{\\cyrzdsc}"     "textcyr" "" # CYRILLIC SMALL LETTER ZE WITH DESCENDER
+0x049a "\\textcyr{\\CYRKDSC}"     "textcyr" "" # CYRILLIC CAPITAL LETTER KA WITH DESCENDER
+0x049b "\\textcyr{\\cyrkdsc}"     "textcyr" "" # CYRILLIC SMALL LETTER KA WITH DESCENDER
+0x049c "\\textcyr{\\CYRKVCRS}"    "textcyr" "" # CYRILLIC CAPITAL LETTER KA WITH VERTICAL STROKE
+0x049d "\\textcyr{\\cyrkvcrs}"    "textcyr" "" # CYRILLIC SMALL LETTER KA WITH VERTICAL STROKE
+#0x049e ""                          "" "" "" # CYRILLIC CAPITAL LETTER KA WITH STROKE
+#0x049f ""                          "" "" "" # CYRILLIC SMALL LETTER KA WITH STROKE
+0x04a0 "\\textcyr{\\CYRKBEAK}"    "textcyr" "" # CYRILLIC CAPITAL LETTER BASHKIR KA
+0x04a1 "\\textcyr{\\cyrkbeak}"    "textcyr" "" # CYRILLIC SMALL LETTER BASHKIR KA
+0x04a2 "\\textcyr{\\CYRNDSC}"     "textcyr" "" # CYRILLIC CAPITAL LETTER EN WITH DESCENDER
+0x04a3 "\\textcyr{\\cyrndsc}"     "textcyr" "" # CYRILLIC SMALL LETTER EN WITH DESCENDER
+0x04a4 "\\textcyr{\\CYRNG}"       "textcyr" "" # CYRILLIC CAPITAL LIGATURE EN GHE
+0x04a5 "\\textcyr{\\cyrng}"       "textcyr" "" # CYRILLIC SMALL LIGATURE EN GHE
+#0x04a6 ""                          "" "" "" # CYRILLIC CAPITAL LETTER PE WITH MIDDLE HOOK
+#0x04a7 ""                          "" "" "" # CYRILLIC SMALL LETTER PE WITH MIDDLE HOOK
+#0x04a8 ""                          "" "" "" # CYRILLIC CAPITAL LETTER ABKHASIAN HA
+#0x04a9 ""                          "" "" "" # CYRILLIC SMALL LETTER ABKHASIAN HA
+0x04aa "\\textcyr{\\CYRSDSC}"     "textcyr" "" # CYRILLIC CAPITAL LETTER ES WITH DESCENDER
+0x04ab "\\textcyr{\\cyrsdsc}"     "textcyr" "" # CYRILLIC SMALL LETTER ES WITH DESCENDER
+#0x04ac ""                          "" "" "" # CYRILLIC CAPITAL LETTER TE WITH DESCENDER
+#0x04ad ""                          "" "" "" # CYRILLIC SMALL LETTER TE WITH DESCENDER
+0x04ae "\\textcyr{\\CYRY}"        "textcyr" "" # CYRILLIC CAPITAL LETTER STRAIGHT U
+0x04af "\\textcyr{\\cyry}"        "textcyr" "" # CYRILLIC SMALL LETTER STRAIGHT U
+0x04b0 "\\textcyr{\\CYRYHCRS}"    "textcyr" "" # CYRILLIC CAPITAL LETTER STRAIGHT U WITH STROKE
+0x04b1 "\\textcyr{\\cyryhcrs}"    "textcyr" "" # CYRILLIC SMALL LETTER STRAIGHT U WITH STROKE
+0x04b2 "\\textcyr{\\CYRHDSC}"     "textcyr" "" # CYRILLIC CAPITAL LETTER HA WITH DESCENDER
+0x04b3 "\\textcyr{\\cyrhdsc}"     "textcyr" "" # CYRILLIC SMALL LETTER HA WITH DESCENDER
+0x04b4 "\\textcyr{\\CYRCHRDSC}"   "textcyr" "" # CYRILLIC CAPITAL LIGATURE TE TSE
+0x04b5 "\\textcyr{\\cyrchrdsc}"   "textcyr" "" # CYRILLIC SMALL LIGATURE TE TSE
+0x04b6 "\\textcyr{\\CYRCHVCRS}"   "textcyr" "" # CYRILLIC CAPITAL LETTER CHE WITH DESCENDER
+0x04b7 "\\textcyr{\\cyrchvcrs}"   "textcyr" "" # CYRILLIC SMALL LETTER CHE WITH DESCENDER
+0x04b8 "\\textcyr{\\CYRSHHA}"     "textcyr" "" # CYRILLIC CAPITAL LETTER CHE WITH VERTICAL STROKE
+0x04b9 "\\textcyr{\\cyrshha}"     "textcyr" "" # CYRILLIC SMALL LETTER CHE WITH VERTICAL STROKE
+#0x04ba ""                          "" "" "" # CYRILLIC CAPITAL LETTER SHHA
+#0x04bb ""                          "" "" "" # CYRILLIC SMALL LETTER SHHA
+#0x04bc ""                          "" "" "" # CYRILLIC CAPITAL LETTER ABKHASIAN CHE
+#0x04bd ""                          "" "" "" # CYRILLIC SMALL LETTER ABKHASIAN CHE
+#0x04be ""                          "" "" "" # CYRILLIC CAPITAL LETTER ABKHASIAN CHE WITH DESCENDER
+#0x04bf ""                          "" "" "" # CYRILLIC SMALL LETTER ABKHASIAN CHE WITH DESCENDER
+0x04c0 "\\textcyr{\\CYRpalochka}" "textcyr" "" # CYRILLIC LETTER PALOCHKA
+0x04c1 "\\textcyr{\\U\CYRZH}"     "textcyr" "" # CYRILLIC CAPITAL LETTER ZHE WITH BREVE
+0x04c2 "\\textcyr{\\U\cyrzh}"     "textcyr" "" # CYRILLIC SMALL LETTER ZHE WITH BREVE
+#0x04c3 ""                          "" "" "" # CYRILLIC CAPITAL LETTER KA WITH HOOK
+#0x04c4 ""                          "" "" "" # CYRILLIC SMALL LETTER KA WITH HOOK
+#0x04c5 ""                          "" "" "" # CYRILLIC CAPITAL LETTER EL WITH TAIL
+#0x04c6 ""                          "" "" "" # CYRILLIC SMALL LETTER EL WITH TAIL
+#0x04c7 ""                          "" "" "" # CYRILLIC CAPITAL LETTER EN WITH HOOK
+#0x04c8 ""                          "" "" "" # CYRILLIC SMALL LETTER EN WITH HOOK
+#0x04c9 ""                          "" "" "" # CYRILLIC CAPITAL LETTER EN WITH TAIL
+#0x04ca ""                          "" "" "" # CYRILLIC SMALL LETTER EN WITH TAIL
+#0x04cb ""                          "" "" "" # CYRILLIC CAPITAL LETTER KHAKASSIAN CHE
+#0x04cc ""                          "" "" "" # CYRILLIC SMALL LETTER KHAKASSIAN CHE
+#0x04cd ""                          "" "" "" # CYRILLIC CAPITAL LETTER EM WITH TAIL
+#0x04ce ""                          "" "" "" # CYRILLIC SMALL LETTER EM WITH TAIL
+#0x04cf ""                          "" "" "" # CYRILLIC SMALL LETTER PALOCHKA
+0x04d0 "\\textcyr{\\U\CYRA}"      "textcyr" "" # CYRILLIC CAPITAL LETTER A WITH BREVE
+0x04d1 "\\textcyr{\\U\cyra}"      "textcyr" "" # CYRILLIC SMALL LETTER A WITH BREVE
+0x04d2 "\\textcyr{\\\"\CYRA}"     "textcyr" "" # CYRILLIC CAPITAL LETTER A WITH DIAERESIS
+0x04d3 "\\textcyr{\\\"\cyra}"     "textcyr" "" # CYRILLIC SMALL LETTER A WITH DIAERESIS
+0x04d4 "\\textcyr{\\CYRAE}"       "textcyr" "" # CYRILLIC CAPITAL LIGATURE A IE
+0x04d5 "\\textcyr{\\cyrae}"       "textcyr" "" # CYRILLIC SMALL LIGATURE A IE
+0x04d6 "\\textcyr{\\U\CYRE}"      "textcyr" "" # CYRILLIC CAPITAL LETTER IE WITH BREVE
+0x04d7 "\\textcyr{\\U\cyre}"      "textcyr" "" # CYRILLIC SMALL LETTER IE WITH BREVE
+0x04d8 "\\textcyr{\\CYRSCHWA}"    "textcyr" "" # CYRILLIC CAPITAL LETTER SCHWA
+0x04d9 "\\textcyr{\\cyrschwa}"    "textcyr" "" # CYRILLIC SMALL LETTER SCHWA
+0x04da "\\textcyr{\\\"\CYRSCHWA}" "textcyr" "" # CYRILLIC CAPITAL LETTER SCHWA WITH DIAERESIS
+0x04db "\\textcyr{\\\"\cyrschwa}" "textcyr" "" # CYRILLIC SMALL LETTER SCHWA WITH DIAERESIS
+0x04dc "\\textcyr{\\\"\CYRZH}"    "textcyr" "" # CYRILLIC CAPITAL LETTER ZHE WITH DIAERESIS
+0x04dd "\\textcyr{\\\"\cyrzh}"    "textcyr" "" # CYRILLIC SMALL LETTER ZHE WITH DIAERESIS
+0x04de "\\textcyr{\\\"\CYRZ}"     "textcyr" "" # CYRILLIC CAPITAL LETTER ZE WITH DIAERESIS
+0x04df "\\textcyr{\\\"\cyrz}"     "textcyr" "" # CYRILLIC SMALL LETTER ZE WITH DIAERESIS
+#0x04e0 ""                          "" "" "" # CYRILLIC CAPITAL LETTER ABKHASIAN DZE
+#0x04e1 ""                          "" "" "" # CYRILLIC SMALL LETTER ABKHASIAN DZE
+0x04e2 "\\textcyr{\\=\CYRI}"      "textcyr" "" # CYRILLIC CAPITAL LETTER I WITH MACRON
+0x04e3 "\\textcyr{\\=\cyri}"      "textcyr" "" # CYRILLIC SMALL LETTER I WITH MACRON
+0x04e4 "\\textcyr{\\\"\CYRI}"     "textcyr" "" # CYRILLIC CAPITAL LETTER I WITH DIAERESIS
+0x04e5 "\\textcyr{\\\"\cyri}"     "textcyr" "" # CYRILLIC SMALL LETTER I WITH DIAERESIS
+0x04e6 "\\textcyr{\\\"\CYRO}"     "textcyr" "" # CYRILLIC CAPITAL LETTER O WITH DIAERESIS
+0x04e7 "\\textcyr{\\\"\cyro}"     "textcyr" "" # CYRILLIC SMALL LETTER O WITH DIAERESIS
+0x04e8 "\\textcyr{\\CYROTLD}"     "textcyr" "" # CYRILLIC CAPITAL LETTER BARRED O
+0x04e9 "\\textcyr{\\cyrotld}"     "textcyr" "" # CYRILLIC SMALL LETTER BARRED O
+#0x04ea ""                          "" "" "" # CYRILLIC CAPITAL LETTER BARRED O WITH DIAERESIS
+#0x04eb ""                          "" "" "" # CYRILLIC SMALL LETTER BARRED O WITH DIAERESIS
+0x04ec "\\textcyr{\\\"\CYREREV}"  "textcyr" "" # CYRILLIC CAPITAL LETTER E WITH DIAERESIS
+0x04ed "\\textcyr{\\\"\cyrerev}"  "textcyr" "" # CYRILLIC SMALL LETTER E WITH DIAERESIS
+0x04ee "\\textcyr{\\=\CYRU}"      "textcyr" "" # CYRILLIC CAPITAL LETTER U WITH MACRON
+0x04ef "\\textcyr{\\=\cyru}"      "textcyr" "" # CYRILLIC SMALL LETTER U WITH MACRON
+0x04f0 "\\textcyr{\\\"\CYRU}"     "textcyr" "" # CYRILLIC CAPITAL LETTER U WITH DIAERESIS
+0x04f1 "\\textcyr{\\\"\cyru}"     "textcyr" "" # CYRILLIC SMALL LETTER U WITH DIAERESIS
+0x04f2 "\\textcyr{\\H\CYRU}"      "textcyr" "" # CYRILLIC CAPITAL LETTER U WITH DOUBLE ACUTE
+0x04f3 "\\textcyr{\\H\cyru}"      "textcyr" "" # CYRILLIC SMALL LETTER U WITH DOUBLE ACUTE
+0x04f4 "\\textcyr{\\\"\CYRCH}"    "textcyr" "" # CYRILLIC CAPITAL LETTER CHE WITH DIAERESIS
+0x04f5 "\\textcyr{\\\"\cyrch}"    "textcyr" "" # CYRILLIC SMALL LETTER CHE WITH DIAERESIS
+#0x04f6 ""                          "" "" "" # CYRILLIC CAPITAL LETTER GHE WITH DESCENDER
+#0x04f7 ""                          "" "" "" # CYRILLIC SMALL LETTER GHE WITH DESCENDER
+0x04f8 "\\textcyr{\\\"\CYRERY}"    "textcyr" "" # CYRILLIC CAPITAL LETTER YERU WITH DIAERESIS
+0x04f9 "\\textcyr{\\\"\cyrery}"    "textcyr" "" # CYRILLIC SMALL LETTER YERU WITH DIAERESIS
+#
+# Thai
+#
+0x0e3f "\\textbaht"            "textcomp" "" # THAI CURRENCY SYMBOL BAHT
 #
 # Phonetic Extensions
 #
