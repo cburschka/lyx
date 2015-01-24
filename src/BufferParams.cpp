@@ -2992,7 +2992,8 @@ Encoding const & BufferParams::encoding() const
 	// FIXME: actually, we should check for the flavor
 	// or runparams.isFullyUnicode() here:
 	// This check will not work with XeTeX/LuaTeX and tex fonts.
-	// Thus we have to reset the encoding in Buffer::makeLaTeXFile.
+	// Thus we have to reset the encoding in Buffer::makeLaTeXFile
+	// (for export) and Buffer::writeLaTeXSource (for preview).
 	if (useNonTeXFonts)
 		return *(encodings.fromLyXName("utf8-plain"));
 	if (inputenc == "auto" || inputenc == "default")
