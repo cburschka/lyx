@@ -516,7 +516,7 @@ Language greek
 	QuoteStyle        french
 	Encoding          iso8859-7
 	InternalEncoding  true
-	FontEncoding      "LGR"
+	FontEncoding      LGR
 	LangCode          el_GR
 End
 
@@ -528,7 +528,7 @@ Language polutonikogreek
 	QuoteStyle        french
 	Encoding          iso8859-7
 	InternalEncoding  true
-	FontEncoding      "LGR"
+	FontEncoding      LGR
 	LangCode          el_GR
 End
 
@@ -539,7 +539,7 @@ Language hebrew
 	Encoding          cp1255
 	QuoteStyle        english
 	InternalEncoding  true
-	FontEncoding      "LHE"
+	FontEncoding      LHE
 	RTL               true
 	LangCode          he_IL
 End
@@ -812,6 +812,8 @@ Language russian
 	PolyglossiaName  russian
 	QuoteStyle       french
 	Encoding         koi8-r
+	FontEncoding     T2A
+	InternalEncoding true
 	LangCode         ru_RU
 End
 
@@ -987,6 +989,8 @@ Language ukrainian
 	PolyglossiaName  ukrainian
 	QuoteStyle       french
 	Encoding         koi8-u
+	FontEncoding     T2A
+	InternalEncoding true
 	LangCode         uk_UA
 End
 
