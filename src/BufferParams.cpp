@@ -1491,32 +1491,26 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		   << from_ascii(fonts_default_family) << "}\n";
 
 	// set font encoding
-	// for arabic_arabi and farsi we also need to load the LAE and
-	// LFE encoding
-	// XeTeX and LuaTeX (with OS fonts) work without fontenc
-	if (font_encoding() != "default" && language->lang() != "japanese"
-	    && !useNonTeXFonts && !features.isProvided("fontenc")) {
-		docstring extra_encoding;
-		if (features.mustProvide("textgreek"))
-			extra_encoding += from_ascii("LGR");
-		if (features.mustProvide("textcyr")) {
-			if (!extra_encoding.empty())
-				extra_encoding.push_back(',');
-			extra_encoding += from_ascii("T2A");
+	// XeTeX and LuaTeX (with OS fonts) do not need fontenc
+	if (!useNonTeXFonts && !features.isProvided("fontenc")
+	    && font_encoding() != "default") {
+		vector<string> fontencs;
+		// primary language font encoding and default encoding
+		if (ascii_lowercase(language->fontenc()) != "none") {
+			vector<string> fencs = getVectorFromString(font_encoding());
+			fontencs.insert(fontencs.end(), fencs.begin(), fencs.end());
+			fencs = getVectorFromString(language->fontenc());
+			vector<string>::const_iterator fit = fencs.begin();
+			for (; fit != fencs.end(); ++fit) {
+				if (find(fontencs.begin(), fontencs.end(), *fit) == fontencs.end())
+					fontencs.push_back(*fit);
+			}
 		}
-		if (!extra_encoding.empty() && !font_encoding().empty())
-			extra_encoding.push_back(',');
-		size_t fars = language_options.str().find("farsi");
-		size_t arab = language_options.str().find("arabic");
-		if (language->lang() == "arabic_arabi"
-			|| language->lang() == "farsi" || fars != string::npos
-			|| arab != string::npos) {
-			os << "\\usepackage[" << extra_encoding
-			   << from_ascii(font_encoding())
-			   << ",LFE,LAE]{fontenc}\n";
-		} else {
-			os << "\\usepackage[" << extra_encoding
-			   << from_ascii(font_encoding())
+		// get font encodings of secondary languages
+		features.getFontEncodings(fontencs);
+		if (!fontencs.empty()) {
+			os << "\\usepackage["
+			   << from_ascii(getStringFromVector(fontencs))
 			   << "]{fontenc}\n";
 		}
 	}

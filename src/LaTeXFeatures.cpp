@@ -666,6 +666,30 @@ set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding) const
 	return encodings;
 }
 
+
+void LaTeXFeatures::getFontEncodings(vector<string> & encodings) const
+{
+	// these must be loaded if glyphs of this script
+	// are used (notwithstanding the language)
+	if (mustProvide("textgreek"))
+		encodings.insert(encodings.begin(), "LGR");
+	if (mustProvide("textcyr"))
+		encodings.insert(encodings.begin(), "T2A");
+
+	LanguageList::const_iterator it  = UsedLanguages_.begin();
+	LanguageList::const_iterator end = UsedLanguages_.end();
+	for (; it != end; ++it)
+		if (!(*it)->fontenc().empty()
+		    && ascii_lowercase((*it)->fontenc()) != "none") {
+			vector<string> extraencs = getVectorFromString((*it)->fontenc());
+			vector<string>::const_iterator fit = extraencs.begin();
+			for (; fit != extraencs.end(); ++fit) {
+				if (find(encodings.begin(), encodings.end(), *fit) == encodings.end())
+					encodings.insert(encodings.begin(), *fit);
+			}
+		}
+}
+
 namespace {
 
 char const * simplefeatures[] = {

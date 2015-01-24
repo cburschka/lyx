@@ -10,6 +10,7 @@
 #	PolyglossiaName    <polyglossianame>
 #	PolyglossiaOpts    "<language-specific options>"
 #	Encoding           <encoding>
+#	FontEncoding       <font encoding>
 #	QuoteStyle         <danish|english|french|german|polish|swedish>
 #	InternalEncoding   <true|false>
 #	RTL                <true|false>
@@ -45,6 +46,8 @@
 #   Default"
 # * InternalEncoding is used to tell LyX that babel internally sets a font
 #   encoding (such as hebrew to LHE). See bug #5091.
+# * "FontEncoding none" tells LyX that fontenc should not be loaded with this
+#   language.
 # * AsBabelOptions advices LyX to pass the languages locally to babel, not
 #   globally to the class. Some languages (basically those not directly
 #   supported by babel) need this.
@@ -143,6 +146,7 @@ Language arabic_arabi
 	PolyglossiaName  arabic
 	QuoteStyle       french
 	Encoding         cp1256
+	FontEncoding     "LFE,LAE"
 	RTL              true
 	AsBabelOptions   true
 	LangCode         ar_SA
@@ -410,6 +414,7 @@ Language farsi
 	BabelName        farsi
 	PolyglossiaName  farsi
 	Encoding         utf8
+	FontEncoding     "LFE,LAE"
 	RTL              true
 	LangCode         fa_IR
 	PostBabelPreamble
@@ -511,6 +516,7 @@ Language greek
 	QuoteStyle        french
 	Encoding          iso8859-7
 	InternalEncoding  true
+	FontEncoding      "LGR"
 	LangCode          el_GR
 End
 
@@ -522,6 +528,7 @@ Language polutonikogreek
 	QuoteStyle        french
 	Encoding          iso8859-7
 	InternalEncoding  true
+	FontEncoding      "LGR"
 	LangCode          el_GR
 End
 
@@ -532,6 +539,7 @@ Language hebrew
 	Encoding          cp1255
 	QuoteStyle        english
 	InternalEncoding  true
+	FontEncoding      "LHE"
 	RTL               true
 	LangCode          he_IL
 End
@@ -605,6 +613,7 @@ Language japanese
 	AsBabelOptions   true
 	Requires         japanese
 	InternalEncoding true
+	FontEncoding     None
 End
 
 # uses CJK package

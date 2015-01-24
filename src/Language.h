@@ -76,6 +76,8 @@ public:
 	std::string const babel_presettings() const { return babel_presettings_; }
 	/// This language internally sets a font encoding
 	bool internalFontEncoding() const { return internal_enc_; }
+	/// fontenc encoding(s)
+	std::string const fontenc() const { return fontenc_; }
 	/// This language needs to be passed to babel itself (not the class)
 	bool asBabelOptions() const { return as_babel_options_; }
 	///
@@ -117,6 +119,8 @@ private:
 	trivstring babel_postsettings_;
 	///
 	trivstring babel_presettings_;
+	///
+	trivstring fontenc_;
 	///
 	bool internal_enc_;
 	///

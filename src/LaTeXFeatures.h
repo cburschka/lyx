@@ -128,6 +128,8 @@ public:
 	///
 	std::set<std::string> getEncodingSet(std::string const & doc_encoding) const;
 	///
+	void getFontEncodings(std::vector<std::string> & encodings) const;
+	///
 	void useLayout(docstring const & lyt);
 	///
 	void useInsetLayout(InsetLayout const & lay);

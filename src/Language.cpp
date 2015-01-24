@@ -72,6 +72,7 @@ bool Language::readLanguage(Lexer & lex)
 		LA_BABELNAME,
 		LA_ENCODING,
 		LA_END,
+		LA_FONTENC,
 		LA_GUINAME,
 		LA_INTERNAL_ENC,
 		LA_LANG_CODE,
@@ -91,6 +92,7 @@ bool Language::readLanguage(Lexer & lex)
 		{ "babelname",            LA_BABELNAME },
 		{ "encoding",             LA_ENCODING },
 		{ "end",                  LA_END },
+		{ "fontencoding",         LA_FONTENC },
 		{ "guiname",              LA_GUINAME },
 		{ "internalencoding",     LA_INTERNAL_ENC },
 		{ "langcode",             LA_LANG_CODE },
@@ -144,6 +146,9 @@ bool Language::readLanguage(Lexer & lex)
 			break;
 		case LA_ENCODING:
 			lex >> encodingStr_;
+			break;
+		case LA_FONTENC:
+			lex >> fontenc_;
 			break;
 		case LA_GUINAME:
 			lex >> display_;
