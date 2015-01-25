@@ -118,14 +118,21 @@ Language american
 	LangCode         en_US
 End
 
-# not supported by babel
+# In Babel, this is supported since v. 1.8a of babel-greek (2013-12-03)
+# We introduce it with LyX 2.2 to give the support time to settle.
 Language ancientgreek
-	GuiName          "Greek (ancient)"
-	PolyglossiaName  greek
-	PolyglossiaOpts  variant=ancient
-	QuoteStyle       french
-	Encoding         iso8859-7
-	LangCode         grc_GR
+	GuiName           "Greek (ancient)"
+	BabelName         greek
+	PostBabelPreamble
+	\languageattribute{greek}{ancient}
+	EndPostBabelPreamble
+	PolyglossiaName   greek
+	PolyglossiaOpts   variant=ancient
+	QuoteStyle        french
+	Encoding          iso8859-7
+	InternalEncoding  true
+	FontEncoding      LGR
+	LangCode          grc_GR
 End
 
 # FIXME: dummy babel language for arabic_arabtex to be able
