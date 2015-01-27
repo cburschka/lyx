@@ -219,7 +219,7 @@
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
         <property name="buddy">
-         <cstring>valignCO</cstring>
+         <cstring>decorationCO</cstring>
         </property>
        </widget>
       </item>
@@ -287,6 +287,7 @@
   <tabstop>columnsSB</tabstop>
   <tabstop>valignCO</tabstop>
   <tabstop>halignED</tabstop>
+  <tabstop>decorationCO</tabstop>
   <tabstop>okPB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>
