@@ -92,12 +92,12 @@ test ! x"$lyx_ldflags" = x && LDFLAGS="$lyx_ldflags $LDFLAGS"
 ### Add extra directories to check for include files.
 LYX_WITH_DIR([extra-inc],[extra include directory],extra_inc, NONE)
 LYX_LOOP_DIR($lyx_cv_extra_inc,LYX_ADD_INC_DIR(lyx_cppflags,$dir))
-test ! x"$lyx_cppflags" = x && AM_CPPFLAGS="$lyx_cppflags $AM_CPPFLAGS"
+test ! x"$lyx_cppflags" = x && CPPFLAGS="$lyx_cppflags $CPPFLAGS"
 
 ### Add both includes and libraries
 LYX_WITH_DIR([extra-prefix],[extra lib+include directory],extra_prefix, NONE, ${prefix})
 LYX_LOOP_DIR($lyx_cv_extra_prefix,[
-  LYX_ADD_INC_DIR(AM_CPPFLAGS,$dir/include)
+  LYX_ADD_INC_DIR(CPPFLAGS,$dir/include)
   LYX_ADD_LIB_DIR(LDFLAGS,$dir/lib)
 ])
 
