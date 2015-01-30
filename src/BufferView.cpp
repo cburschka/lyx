@@ -2970,6 +2970,19 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 	// Set the row on which the cursor lives.
 	setCurrentRowSlice(rowSlice);
 
+	/** FIXME: the code below adds an extraneous computation of inset
+	 * positions, and can therefore be bad for performance (think for
+	 * example about a very large tabular inset. Redawing the row
+	 * where it is means redrawing the whole screen).
+	 *
+	 * The bug that this fixes is the following: assume that there is
+	 * a very large math inset. Upon entering the inset, when pressing
+	 * `End', the row is not scrolled and the cursor is not visible. I
+	 * am not sure why the extra row computation fixes the problem,
+	 * actually.
+	 *
+	 * A proper fix should be found and this code should be removed.
+	 */
 	// Force the recomputation of inset positions
 	bool const drawing = pi.pain.isDrawingEnabled();
 	pi.pain.setDrawingEnabled(false);
@@ -2978,6 +2991,7 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 		      -d->horiz_scroll_offset_, 0);
 	rp.paintText();
 	pi.pain.setDrawingEnabled(drawing);
+	/** END of bad code */
 
 	// Current x position of the cursor in pixels
 	int const cur_x = getPos(d->cursor_).x_;

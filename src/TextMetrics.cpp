@@ -1878,7 +1878,8 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		}
 
 		// Row signature; has row changed since last paint?
-		row.setCrc(pm.computeRowSignature(row, bparams));
+		if (pi.pain.isDrawingEnabled())
+			row.setCrc(pm.computeRowSignature(row, bparams));
 		bool row_has_changed = row.changed()
 			|| rowSlice == bv_->lastRowSlice();
 
@@ -1916,7 +1917,8 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 			LYXERR(Debug::PAINTING, foreword << "pit=" << pit << " row=" << i
 				<< " row_selection="	<< row.selection()
 				<< " full_repaint="	<< pi.full_repaint
-				<< " row_has_changed="	<< row_has_changed);
+				<< " row_has_changed="	<< row_has_changed
+				<< " drawingEnabled=" << pi.pain.isDrawingEnabled());
 		}
 
 		// Backup full_repaint status and force full repaint
