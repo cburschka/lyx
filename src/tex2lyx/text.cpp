@@ -2420,10 +2420,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// {}
 				Token const prev = p.prev_token();
 				p.get_token();
-				if (p.next_token().character() == '`' ||
-				    (prev.character() == '-' &&
-				     p.next_token().character() == '-'))
-					; // ignore it in {}`` or -{}-
+				if (p.next_token().character() == '`')
+					; // ignore it in {}``
 				else
 					output_ert_inset(os, "{}", context);
 			} else if (next.cat() == catEscape &&
