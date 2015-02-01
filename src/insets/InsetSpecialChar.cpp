@@ -252,8 +252,8 @@ int InsetSpecialChar::plaintext(odocstringstream & os,
 		os << '.';
 		return 1;
 	case LDOTS:
-		os << "...";
-		return 3;
+		os.put(0x2026);
+		return 1;
 	case MENU_SEPARATOR:
 		os << "->";
 		return 2;
@@ -278,7 +278,7 @@ int InsetSpecialChar::docbook(odocstream & os, OutputParams const &) const
 		os << '.';
 		break;
 	case LDOTS:
-		os << "...";
+		os << "&hellip;";
 		break;
 	case MENU_SEPARATOR:
 		os << "&lyxarrow;";

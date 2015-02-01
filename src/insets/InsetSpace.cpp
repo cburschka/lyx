@@ -706,13 +706,13 @@ int InsetSpace::docbook(odocstream & os, OutputParams const &) const
 		os << " ";
 		break;
 	case InsetSpaceParams::QUAD:
-		os << "&emsp;"
+		os << "&emsp;";
 		break;
 	case InsetSpaceParams::QQUAD:
-		os << "&emsp;&emsp;"
+		os << "&emsp;&emsp;";
 		break;
 	case InsetSpaceParams::ENSKIP:
-		os << "&ensp;"
+		os << "&ensp;";
 		break;
 	case InsetSpaceParams::PROTECTED:
 		os << "&nbsp;";
