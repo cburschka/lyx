@@ -703,24 +703,39 @@ int InsetSpace::docbook(odocstream & os, OutputParams const &) const
 {
 	switch (params_.kind) {
 	case InsetSpaceParams::NORMAL:
-	case InsetSpaceParams::QUAD:
-	case InsetSpaceParams::QQUAD:
-	case InsetSpaceParams::ENSKIP:
 		os << " ";
 		break;
-	// FIXME For spaces and dashes look here:
-	// http://oreilly.com/catalog/docbook/book2/iso-pub.html
+	case InsetSpaceParams::QUAD:
+		os << "&emsp;"
+		break;
+	case InsetSpaceParams::QQUAD:
+		os << "&emsp;&emsp;"
+		break;
+	case InsetSpaceParams::ENSKIP:
+		os << "&ensp;"
+		break;
 	case InsetSpaceParams::PROTECTED:
-	// FIXME &blank; ?
+		os << "&nbsp;";
+		break;
 	case InsetSpaceParams::VISIBLE:
+		os << "&#x2423;";
+		break;
 	case InsetSpaceParams::ENSPACE:
-	// FIXME &thinsp; ?
+		os << "&#x2060;&ensp;&#x2060;";
+		break;
 	case InsetSpaceParams::THIN:
+		os << "&thinsp;";
+		break;
 	case InsetSpaceParams::MEDIUM:
+		os << "&emsp14;";
+		break;
 	case InsetSpaceParams::THICK:
+		os << "&emsp13;";
+		break;
 	case InsetSpaceParams::NEGTHIN:
 	case InsetSpaceParams::NEGMEDIUM:
 	case InsetSpaceParams::NEGTHICK:
+		// FIXME
 		os << "&nbsp;";
 		break;
 	case InsetSpaceParams::HFILL:
