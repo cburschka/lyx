@@ -1,32 +1,21 @@
-Public release of LyX version 2.1.2
+Public release of LyX version 2.1.3
 ===================================
 
-We are proud to announce the release of LyX 2.1.2.  This is the second
+We are proud to announce the release of LyX 2.1.3.  This is the third
 maintenance release in the 2.1.x series.
 
 LyX is a document processor that encourages an approach to writing based 
 on the structure of your documents and not simply their appearance. It is
 released under a Free and Open Source Software license.
 
-You can download LyX 2.1.1 from http://www.lyx.org/Download/.
+You can download LyX 2.1.3 from http://www.lyx.org/Download/.
 
-LyX 2.1.2 is the result of on-going efforts to make our stable version
+LyX 2.1.3 is the result of on-going efforts to make our stable version
 even more reliable and stable. We have fixed a number of bugs and made
 a number of improvements. These are detailed below. We strongly encourage 
 all LyX users to upgrade to this version.
 
-The most important fix here is that we believe we have resolved the problem 
-that led several users to experience seemingly random crashes with 2.1.0, 
-sometimes resulting in dataloss. (This was bug 9049.) These crashes generally 
-happened when the user attempted to save a file containing a table, usually a 
-fairly complex table. A seemingly unrelated bug report concerning a crash when 
-trying to save a default template (bug 9236) led to the solution. That bug has
-also been fixed.
-
-Do report your bugs, then! It really does help make LyX better, often in ways 
-you might not expect.
-
-So, if you think you have found a bug in LyX 2.1.2, open a bug report at
+If you think you have found a bug in LyX 2.1.3, open a bug report at
 http://www.lyx.org/trac/wiki/BugTrackerHome. If you're not sure whether it
 really is a bug, you can e-mail the LyX developers' mailing list (lyx-devel 
 <at> lists.lyx.org) and ask.
@@ -36,7 +25,7 @@ documentation that comes with LyX and the LyX wiki, which lives at
 http://wiki.lyx.org/. If you can't find the answer there, e-mail the LyX 
 users' list (lyx-users <at> lists.lyx.org).
 
-We hope you enjoy using LyX 2.1.2.
+We hope you enjoy using LyX 2.1.3.
 
 The LyX team.
 http://www.lyx.org
@@ -48,24 +37,56 @@ What's new
 ** Updates:
 ***********
 
+* DOCUMENT INPUT/OUTPUT
+
+- Add support for some conference poster classes (a0poster, beamerposter,
+  sciposter) (bug 8714).
+
+- Add support for the sectionbox and tcolorbox packages (part of bug 8714).
+
+- Add support for PDF annotations (via pdfcomment package) (bug 6975).
+
+
+* TEX2LYX IMPROVEMENTS
+
+- Support for bibliographies using the package bibtopic.
+
+- Support for textual references (LaTeX-command \namref from the package
+  nameref).
+
+- Support for items in itemize environments that have an optional argument.
+
+- Support for the math font of the Iwona and Kurier font families.
+
+- Support for the Libertine fonts.
+
+- Support for a relative length as paragraph separation.
+
+- Support for relative lengths in horizontal and vertical spaces.
+
+- Support for glue lengths in horizontal and vertical spaces.
+
+
 * USER INTERFACE
 
-- Detect some additional postscript and pdf viewers when they are on the
-  system PATH (AcroRd32, SumatraPDF, gsview and qpdfview).
+- References no longer truncated in outliner (bug 9312).
+
+- Allow computing selected subformulas with computer algebra systems.
+
+- Number correctly footnotes in title layouts (part of bug 2666).
+
+- Ctrl+A is now bound to inset-select-all, which does a local
+  selection (current inset) and grows at each new invokation. Try it!
+
+- Debug options in message pane are now sorted alphabetically.
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Update docs explaining how to activate reverse search in qpdfview.
+- New example file "PDF-comment.lyx" describing the support for PDF annotations.
 
-- New French translations of the beamer examples.
-
-
-* BUILD/INSTALLATION
-
-- On Cygwin, use getent instead of grepping /etc/passwd for determining
-  the user's home directory when launching LyX through the gui wrapper.
-
+- Updated Arabic, French, German, Japanese, Portuguese, Slovak and Swedish
+  user interface localization.
 
 
 ** Bug fixes:
@@ -73,56 +94,135 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix crash when saving certain documents with tables (bug 9049).
+- Fix crash on exporting a recursive math macro (bug 9140). Recursive macros
+  are invalid, so typesetting will still fail with "TeX capacity exceeded".
 
-- Fix crash when saving default template (bug 9236).
+- Fix baseline calculation in last paragraph (bug 9231).
 
-- Do not sort advanced listings settings, since their insertion order is
-  relevant (bug 5203).
+- Fix export of xfig external insets (bug 9244).
 
-- Fix import of latex documents with scaled fonts.
+- Fix incorrect output of ampersands when multiple keys are given for a
+  citation (bug 9296).
+
+- Output package options (specified with PackageOptions layout tag)
+  before loading any potentially affected package (bug 9355).
+
+- Fix export of documents that use the LaTeX-packages mhchem and wasysym
+  (bug 9266).
+
+- Remove unnecessary preamble code in LaTeX export of documents using the 
+  class REVTeX 4.1 file (bug 4625).
+
+- Fix for improper environment with duplicate PATH variable entries.
+  This happens on Mac OS X 10.10 (Yosemite) where launchd(8) passes
+  such an environment to LyX when started from the dock (bug 9317).
+
+- Protect insets when needed in subfloat captions (bug 9346).
+
+- Do not swallow spaces in text-in-math mode (bug 7970).
+
+- Do not insert a protected space after some math-spaces (bug 9319).
+
+- Fix problem when some special characters appear in the document directory
+  name on Windows (bug 9342).
 
 
 * LYX2LYX
 
-- Fix warning "Missing \use_indices" when converting from 1.6.x format
-  or older.
+- Fix import of LyX 2.0 documents with complex beamer arguments (bug 9254).
 
-- Fix several conversion problems of beamer box arguments when the
-  arguments use multiple ERTs (part of bug 9208, bug 9225, bug 9144).
+- Fix import of LyX 2.0 IEEEtran documents (bug 9273).
 
-- Fix conversion of beamer overlay arguments when the module
-  "beamer-resenumerate" is used (part of bug 9208).
+- Fix import of Chunk layout with trailing empty paragraph (bug 9298).
+
+- Fix import of chunk layouts containing newlines (bug 9300).
+
+- Maintain paragraph settings (alignment etc.) when importing chunk layouts
+  (bug 9320).
+
+- Fix export to LyX 2.0 of chunk insets without optional argument (bug 9343).
+
+- Fix import of ERT beamer block titles which are preceeded by a
+  language switch.
+
+- Fix and simplify paragraph params parsing in get_containing_layout.
 
 
 * USER INTERFACE
 
-- Do not forget last words of paragraphs in completion possibilities.
+- Fix alignment rendering of multirow in LyX (bug 8976).
 
-- Select word on double click even when at boundary (bug 9159).
+- Fix mapping of ISO_Left_Tab key, which was erroneously assigned to Tab
+  (instead of BackTab).
 
-- Fix listings inset parameter validation when font size is selected
-  (bug 8144).
+- Disallow to insert program listings to footnotes and margin notes (bug 9321).
 
-- Fix listings validator with regard to aboveskip and belowskip (bug 7373).
+- Fix computer algebra system computations in formulas with '=' signs.
 
-- Fix reverse search in insets (figures, tables, branches, etc.) (bug 9151).
+- Fix rendering of \varOmega on OS X (bug 7954).
 
-- Fix on-screen display of images whose type is not known to LyX (bug 9146).
+- Only allow 1 paragraph in footnotes when they are part of a title
+  layout (bug 2666).
 
-- Fix the -geometry command line argument for Windows.
+- When switching classes, warn user about all unapplied document changes
+  (1. part of bug 9356).
+
+- When adding a module, warn user about all unapplied document changes
+  (2. part of bug 9356).
+
+- Do not enable the Apply button in the document dialog just because a
+  module was selected in the widget (without actual change) (bug 9365).
+
+- Fix logic of "Maintain aspect ratio" checkbox in the graphics dialog
+  (bug 9357).
+
+- Fix most frequent reason for crash while editing with open view source
+  window (bug 9336).
+
+- Fix crash when pasting citation into math formula (bug 9302).
 
 
 * INTERNALS
 
-- Improve thread-safety.
+- Fix wrong test in LyX server.
 
-- Fix potential bug spotted by cppcheck.
+- Fix possible memory corruption on copying to the clipboard.
 
-- Fix problems arising when converting floating point values to the
-  corresponding string representation (bugs 9190 and 9193).
+- Fix possible memory corruption during LaTeX log file parsing.
+
+- Make some math messages translatable (bug 1908).
+
+
+* DOCUMENTATION AND LOCALIZATION
+
+- Fix language settings for all IEEEtran templates (bug 9350).
+
+- The template document for REVTeX 4.1 has been rewritten.
+
+
+* LYXHTML
+
+- Fix export of \ll, \gg, \ne and \neq in math formulas (bug 9372).
+
+
+
+* TEX2LYX
+
+- Do not ignore table columns with unknown column specifiers (bug 9311).
+
+- Parse tikzpicture environment correctly (bug 9011).
+
+- Fix misparsing of \textgreek without polyglossia (bug 8553).
+
+- Parse post command argument insets (bug 8473).
+
+- Parse parsing of verbatim options containing commands (bug 9113).
+
 
 
 * BUILD/INSTALLATION
 
-- Fix compatibility issue with 64-bit cygwin.
+- Fix some compiler warnings.
+
+- Fix a few minor issues in the RPM spec file template (bug 9349).
+
