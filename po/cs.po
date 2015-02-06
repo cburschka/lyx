@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-01-13 11:37-0500\n"
+"POT-Creation-Date: 2015-02-05 20:29-0500\n"
 "PO-Revision-Date: 2013-03-26 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -15344,18 +15344,18 @@ msgid "Redo|R"
 msgstr "Znovu změnu|n"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:597
 msgid "Cut"
 msgstr "Vyjmout"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:606
 msgid "Copy"
 msgstr "Zkopírovat"
 
 #: lib/ui/stdmenus.inc:107 lib/ui/stdcontext.inc:312 lib/ui/stdtoolbars.inc:83
-#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1333
-#: src/mathed/InsetMathNest.cpp:575
+#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1334
+#: src/mathed/InsetMathNest.cpp:576
 msgid "Paste"
 msgstr "Vložit"
 
@@ -23621,22 +23621,22 @@ msgstr "Neznámá větev"
 msgid "&Don't Add"
 msgstr "&Nepřidávat"
 
-#: src/CutAndPaste.cpp:734 src/Text.cpp:403
+#: src/CutAndPaste.cpp:744 src/Text.cpp:403
 #, c-format
 msgid "Layout `%1$s' was not found."
 msgstr "Rozvržení `%1$s' nebylo nalezeno."
 
-#: src/CutAndPaste.cpp:736 src/Text.cpp:405
+#: src/CutAndPaste.cpp:746 src/Text.cpp:405
 msgid "Layout Not Found"
 msgstr "Rozvržení nenalezeno"
 
-#: src/CutAndPaste.cpp:763
+#: src/CutAndPaste.cpp:773
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr ""
 "Flexibilní vložka %1$s není definována po znovunačtení rozvržení `%2$s'."
 
-#: src/CutAndPaste.cpp:766
+#: src/CutAndPaste.cpp:776
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
@@ -23645,7 +23645,7 @@ msgstr ""
 "Flexibilní vložka %1$s není definována kvůli konverzi rozvržení z `%2$s' do `"
 "%3$s'."
 
-#: src/CutAndPaste.cpp:771
+#: src/CutAndPaste.cpp:781
 msgid "Undefined flex inset"
 msgstr "Nedefinovaná flexibilní vložka"
 
@@ -24963,7 +24963,7 @@ msgstr "Mód matematického editoru"
 msgid "No valid math formula"
 msgstr "Žádný platný matematický vzorec"
 
-#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1033
+#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1034
 msgid "Already in regular expression mode"
 msgstr "Již jste v módu regulárních výrazů"
 
@@ -29726,27 +29726,27 @@ msgstr "&Dekorace:"
 msgid "Environment: %1$s"
 msgstr "Začít nové prostředí (%1$s)"
 
-#: src/mathed/InsetMathGrid.cpp:1491
+#: src/mathed/InsetMathGrid.cpp:1492
 msgid "Cursor not in table"
 msgstr "Kurzor není v tabulce"
 
-#: src/mathed/InsetMathGrid.cpp:1497
+#: src/mathed/InsetMathGrid.cpp:1498
 msgid "Only one row"
 msgstr "Pouze jeden řádek"
 
-#: src/mathed/InsetMathGrid.cpp:1503
+#: src/mathed/InsetMathGrid.cpp:1504
 msgid "Only one column"
 msgstr "Pouze jeden sloupec"
 
-#: src/mathed/InsetMathGrid.cpp:1511
+#: src/mathed/InsetMathGrid.cpp:1512
 msgid "No hline to delete"
 msgstr "Žádná horizontální linka (hline) ke smazání"
 
-#: src/mathed/InsetMathGrid.cpp:1520
+#: src/mathed/InsetMathGrid.cpp:1521
 msgid "No vline to delete"
 msgstr "Žádná vertikální linka (vline) ke smazání"
 
-#: src/mathed/InsetMathGrid.cpp:1549
+#: src/mathed/InsetMathGrid.cpp:1550
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Neznámá vlastnost tabulky '%1$s'"
@@ -29787,24 +29787,24 @@ msgstr "Nelze změnit počet sloupců v '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nelze přidat horizontální linky mřížky v '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1729
-#: src/mathed/InsetMathNest.cpp:1875
+#: src/mathed/InsetMathNest.cpp:712 src/mathed/InsetMathNest.cpp:1730
+#: src/mathed/InsetMathNest.cpp:1876
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Autoopravy vypnuty ('!' pro zapnutí)"
 
-#: src/mathed/InsetMathNest.cpp:1019
+#: src/mathed/InsetMathNest.cpp:1020
 msgid "create new math text environment ($...$)"
 msgstr "vytvořit textové prostředí uvnitř matematického ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1022
+#: src/mathed/InsetMathNest.cpp:1023
 msgid "entered math text mode (textrm)"
 msgstr "vstup do text. prostředí uvnitř matem. (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1044
+#: src/mathed/InsetMathNest.cpp:1045
 msgid "Regular expression editor mode"
 msgstr "Editace v módu regulárních výrazů"
 
-#: src/mathed/InsetMathNest.cpp:1734 src/mathed/InsetMathNest.cpp:1877
+#: src/mathed/InsetMathNest.cpp:1735 src/mathed/InsetMathNest.cpp:1878
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Autoopravy zapnuty (<mezerník> k ukončení)"
 

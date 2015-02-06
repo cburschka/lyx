@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-01-13 11:37-0500\n"
+"POT-Creation-Date: 2015-02-05 20:29-0500\n"
 "PO-Revision-Date: 2014-01-24 19:33+0100\n"
 "Last-Translator: Ingar Pareliussen <>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
@@ -15567,18 +15567,18 @@ msgid "Redo|R"
 msgstr "Gjer om|G"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:597
 msgid "Cut"
 msgstr "Klipp"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:606
 msgid "Copy"
 msgstr "Kopier"
 
 #: lib/ui/stdmenus.inc:107 lib/ui/stdcontext.inc:312 lib/ui/stdtoolbars.inc:83
-#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1333
-#: src/mathed/InsetMathNest.cpp:575
+#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1334
+#: src/mathed/InsetMathNest.cpp:576
 msgid "Paste"
 msgstr "Lim inn"
 
@@ -24006,23 +24006,23 @@ msgstr "Ukjend grein"
 msgid "&Don't Add"
 msgstr "&Ikkje legg til"
 
-#: src/CutAndPaste.cpp:734 src/Text.cpp:403
+#: src/CutAndPaste.cpp:744 src/Text.cpp:403
 #, c-format
 msgid "Layout `%1$s' was not found."
 msgstr "Stilen '%1$s' vart ikkje funnen."
 
-#: src/CutAndPaste.cpp:736 src/Text.cpp:405
+#: src/CutAndPaste.cpp:746 src/Text.cpp:405
 msgid "Layout Not Found"
 msgstr "Stil ikkje funnen"
 
-#: src/CutAndPaste.cpp:763
+#: src/CutAndPaste.cpp:773
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr ""
 "Fleksibeltinnskot %1$s er ikkje definert fordi vi lasta inn igjen stilen "
 "%2$s."
 
-#: src/CutAndPaste.cpp:766
+#: src/CutAndPaste.cpp:776
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
@@ -24031,7 +24031,7 @@ msgstr ""
 "Fleksibeltinnskot %1$s er ikkje definert på grunn av konverteringa stilen "
 "til %2$s til %3$s."
 
-#: src/CutAndPaste.cpp:771
+#: src/CutAndPaste.cpp:781
 msgid "Undefined flex inset"
 msgstr "Udefinert fleksibeltinnskot"
 
@@ -25338,7 +25338,7 @@ msgstr "Mattemodus"
 msgid "No valid math formula"
 msgstr "Ingen valid matteformel"
 
-#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1033
+#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1034
 msgid "Already in regular expression mode"
 msgstr "Brukar regulære uttrykk frå før"
 
@@ -30095,27 +30095,27 @@ msgstr "&Dekorasjon:"
 msgid "Environment: %1$s"
 msgstr "Samla miljø"
 
-#: src/mathed/InsetMathGrid.cpp:1491
+#: src/mathed/InsetMathGrid.cpp:1492
 msgid "Cursor not in table"
 msgstr "Skrivemerke er ikkje i tabellen"
 
-#: src/mathed/InsetMathGrid.cpp:1497
+#: src/mathed/InsetMathGrid.cpp:1498
 msgid "Only one row"
 msgstr "Berre ei rad"
 
-#: src/mathed/InsetMathGrid.cpp:1503
+#: src/mathed/InsetMathGrid.cpp:1504
 msgid "Only one column"
 msgstr "Berre ei kolonne"
 
-#: src/mathed/InsetMathGrid.cpp:1511
+#: src/mathed/InsetMathGrid.cpp:1512
 msgid "No hline to delete"
 msgstr "Har inga vassrettlinje å slette"
 
-#: src/mathed/InsetMathGrid.cpp:1520
+#: src/mathed/InsetMathGrid.cpp:1521
 msgid "No vline to delete"
 msgstr "Har inga loddrettlinje å slette"
 
-#: src/mathed/InsetMathGrid.cpp:1549
+#: src/mathed/InsetMathGrid.cpp:1550
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Ukjent tabellval '%1$s'"
@@ -30156,24 +30156,24 @@ msgstr "Kan ikkje endre talet på kolonner i '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Kan ikkje leggje til fleire vassrette linjer i rutenettet '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1729
-#: src/mathed/InsetMathNest.cpp:1875
+#: src/mathed/InsetMathNest.cpp:712 src/mathed/InsetMathNest.cpp:1730
+#: src/mathed/InsetMathNest.cpp:1876
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Autokorreksjon av ('!' for å bruke)"
 
-#: src/mathed/InsetMathNest.cpp:1019
+#: src/mathed/InsetMathNest.cpp:1020
 msgid "create new math text environment ($...$)"
 msgstr "Lag nytt mattemiljø ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1022
+#: src/mathed/InsetMathNest.cpp:1023
 msgid "entered math text mode (textrm)"
 msgstr "Nyttar mattemiljø (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1044
+#: src/mathed/InsetMathNest.cpp:1045
 msgid "Regular expression editor mode"
 msgstr "Bruk regulære uttrykk"
 
-#: src/mathed/InsetMathNest.cpp:1734 src/mathed/InsetMathNest.cpp:1877
+#: src/mathed/InsetMathNest.cpp:1735 src/mathed/InsetMathNest.cpp:1878
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Autokorreksjon på (<mellomrom> for å gå ut)"
 

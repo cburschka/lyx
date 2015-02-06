@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-01-13 11:37-0500\n"
+"POT-Creation-Date: 2015-02-05 20:29-0500\n"
 "PO-Revision-Date: 2014-03-28 00:38+0100\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
@@ -15729,18 +15729,18 @@ msgid "Redo|R"
 msgstr "Kembalikan|K"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:597
 msgid "Cut"
 msgstr "Potong"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:606
 msgid "Copy"
 msgstr "Salin"
 
 #: lib/ui/stdmenus.inc:107 lib/ui/stdcontext.inc:312 lib/ui/stdtoolbars.inc:83
-#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1333
-#: src/mathed/InsetMathNest.cpp:575
+#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1334
+#: src/mathed/InsetMathNest.cpp:576
 msgid "Paste"
 msgstr "Tempelkan"
 
@@ -24073,21 +24073,21 @@ msgstr "Cabang tidak dikenal"
 msgid "&Don't Add"
 msgstr "Jangan Tambahkan"
 
-#: src/CutAndPaste.cpp:734 src/Text.cpp:403
+#: src/CutAndPaste.cpp:744 src/Text.cpp:403
 #, c-format
 msgid "Layout `%1$s' was not found."
 msgstr "Tataletak `%1$s' tidak ditemukan"
 
-#: src/CutAndPaste.cpp:736 src/Text.cpp:405
+#: src/CutAndPaste.cpp:746 src/Text.cpp:405
 msgid "Layout Not Found"
 msgstr "TataletakTidak Ditemukan"
 
-#: src/CutAndPaste.cpp:763
+#: src/CutAndPaste.cpp:773
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr "Sisipan flex %1$s tidak terdefinisi setelah muat ulang `%2$s' layout."
 
-#: src/CutAndPaste.cpp:766
+#: src/CutAndPaste.cpp:776
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
@@ -24096,7 +24096,7 @@ msgstr ""
 "Sisipan flex  %1$s tidak terdefinisi karena konversi dari `%2$s' layout ke `"
 "%3$s'."
 
-#: src/CutAndPaste.cpp:771
+#: src/CutAndPaste.cpp:781
 msgid "Undefined flex inset"
 msgstr "Sisipan flex tidak terdefinisi"
 
@@ -25445,7 +25445,7 @@ msgstr "Penyuntingan mode matematika"
 msgid "No valid math formula"
 msgstr "Rumus matematika tidak valid"
 
-#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1033
+#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1034
 msgid "Already in regular expression mode"
 msgstr "Sudah berada di mode ekspresi reguler"
 
@@ -30255,27 +30255,27 @@ msgstr "&Dekorasi:"
 msgid "Environment: %1$s"
 msgstr "Lingkungan Gather"
 
-#: src/mathed/InsetMathGrid.cpp:1491
+#: src/mathed/InsetMathGrid.cpp:1492
 msgid "Cursor not in table"
 msgstr "Kursor tidak dalam tabel"
 
-#: src/mathed/InsetMathGrid.cpp:1497
+#: src/mathed/InsetMathGrid.cpp:1498
 msgid "Only one row"
 msgstr "Hanya satu baris"
 
-#: src/mathed/InsetMathGrid.cpp:1503
+#: src/mathed/InsetMathGrid.cpp:1504
 msgid "Only one column"
 msgstr "Hanya satu kolom"
 
-#: src/mathed/InsetMathGrid.cpp:1511
+#: src/mathed/InsetMathGrid.cpp:1512
 msgid "No hline to delete"
 msgstr "Tidak ada garis horisontal yang dihapus"
 
-#: src/mathed/InsetMathGrid.cpp:1520
+#: src/mathed/InsetMathGrid.cpp:1521
 msgid "No vline to delete"
 msgstr "Tidak ada garis vertikal yang dihapus"
 
-#: src/mathed/InsetMathGrid.cpp:1549
+#: src/mathed/InsetMathGrid.cpp:1550
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Fitur tabular  '%1$s' tidak dikenal"
@@ -30316,24 +30316,24 @@ msgstr "Tidak bisa merubah kolom di '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Tidak bisa menambah garis grid horisontal di  '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1729
-#: src/mathed/InsetMathNest.cpp:1875
+#: src/mathed/InsetMathNest.cpp:712 src/mathed/InsetMathNest.cpp:1730
+#: src/mathed/InsetMathNest.cpp:1876
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Otomatis koreksi mati ('!' untuk menuliskan)"
 
-#: src/mathed/InsetMathNest.cpp:1019
+#: src/mathed/InsetMathNest.cpp:1020
 msgid "create new math text environment ($...$)"
 msgstr "Membuat lingkungan baru matematika ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1022
+#: src/mathed/InsetMathNest.cpp:1023
 msgid "entered math text mode (textrm)"
 msgstr "Masuk dalam mode teks matematika (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1044
+#: src/mathed/InsetMathNest.cpp:1045
 msgid "Regular expression editor mode"
 msgstr "Mode penyunting ekspresi reguler"
 
-#: src/mathed/InsetMathNest.cpp:1734 src/mathed/InsetMathNest.cpp:1877
+#: src/mathed/InsetMathNest.cpp:1735 src/mathed/InsetMathNest.cpp:1878
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Otomatis koreksi hidup (<spasi> untuk keluar)"
 

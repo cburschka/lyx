@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-01-13 13:06+0100\n"
+"POT-Creation-Date: 2015-02-05 20:29-0500\n"
 "PO-Revision-Date: 2014-11-14 18:39+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -15309,18 +15309,18 @@ msgid "Redo|R"
 msgstr "Opakovať|O"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:597
 msgid "Cut"
 msgstr "Vystrihnúť"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:606
 msgid "Copy"
 msgstr "Kopírovať"
 
 #: lib/ui/stdmenus.inc:107 lib/ui/stdcontext.inc:312 lib/ui/stdtoolbars.inc:83
-#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1333
-#: src/mathed/InsetMathNest.cpp:575
+#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1334
+#: src/mathed/InsetMathNest.cpp:576
 msgid "Paste"
 msgstr "Vlepiť"
 
@@ -23571,21 +23571,21 @@ msgstr "Neznáma vetva"
 msgid "&Don't Add"
 msgstr "&Nepridať"
 
-#: src/CutAndPaste.cpp:734 src/Text.cpp:403
+#: src/CutAndPaste.cpp:744 src/Text.cpp:403
 #, c-format
 msgid "Layout `%1$s' was not found."
 msgstr "Schéma `%1$s' sa nenašla."
 
-#: src/CutAndPaste.cpp:736 src/Text.cpp:405
+#: src/CutAndPaste.cpp:746 src/Text.cpp:405
 msgid "Layout Not Found"
 msgstr "Schéma Nenájdená"
 
-#: src/CutAndPaste.cpp:763
+#: src/CutAndPaste.cpp:773
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr "Flexibilná vložka %1$s nie je definovaná po načítaní schémy `%2$s'."
 
-#: src/CutAndPaste.cpp:766
+#: src/CutAndPaste.cpp:776
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
@@ -23594,7 +23594,7 @@ msgstr ""
 "Flexibilná vložka %1$s nie je definovaná kvôli konverzii z schémy `%2$s' na `"
 "%3$s'."
 
-#: src/CutAndPaste.cpp:771
+#: src/CutAndPaste.cpp:781
 msgid "Undefined flex inset"
 msgstr "Nedefinované flexibilná vložka"
 
@@ -24493,8 +24493,8 @@ msgid "Use \"...\" to shorten long completions."
 msgstr "Použiť \"...\" pre skrátenie dlhých doplnení."
 
 #: src/LyXRC.cpp:3348
-msgid "Allow TeXMacs shorthand, like => converting to Rightarrow."
-msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na Rightarrow."
+msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
+msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na \\Rightarrow."
 
 #: src/LyXRC.cpp:3352
 #, c-format
@@ -24916,7 +24916,7 @@ msgstr "Režim matematického editoru"
 msgid "No valid math formula"
 msgstr "Neplatný matematický vzorec"
 
-#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1033
+#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1034
 msgid "Already in regular expression mode"
 msgstr "Už v postupe pre regulárny výraz"
 
@@ -29669,27 +29669,27 @@ msgstr "Dekorácia: %1$s"
 msgid "Environment: %1$s"
 msgstr "Prostredie: %1$s"
 
-#: src/mathed/InsetMathGrid.cpp:1491
+#: src/mathed/InsetMathGrid.cpp:1492
 msgid "Cursor not in table"
 msgstr "Kurzor nie je v tabuľke"
 
-#: src/mathed/InsetMathGrid.cpp:1497
+#: src/mathed/InsetMathGrid.cpp:1498
 msgid "Only one row"
 msgstr "Len jeden riadok"
 
-#: src/mathed/InsetMathGrid.cpp:1503
+#: src/mathed/InsetMathGrid.cpp:1504
 msgid "Only one column"
 msgstr "Len jeden stĺpec"
 
-#: src/mathed/InsetMathGrid.cpp:1511
+#: src/mathed/InsetMathGrid.cpp:1512
 msgid "No hline to delete"
 msgstr "žiadna horizontálna línia na zmazanie"
 
-#: src/mathed/InsetMathGrid.cpp:1520
+#: src/mathed/InsetMathGrid.cpp:1521
 msgid "No vline to delete"
 msgstr "Žiadna vertikálna linka (vline) na zmazanie"
 
-#: src/mathed/InsetMathGrid.cpp:1549
+#: src/mathed/InsetMathGrid.cpp:1550
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Neznáme vlastnosti tabuľky '%1$s'"
@@ -29730,24 +29730,24 @@ msgstr "Počet stĺpcov sa nedá zmeniť v '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nedajú sa pridať horizontálne linky mriežky '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1729
-#: src/mathed/InsetMathNest.cpp:1875
+#: src/mathed/InsetMathNest.cpp:712 src/mathed/InsetMathNest.cpp:1730
+#: src/mathed/InsetMathNest.cpp:1876
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Automatická korektúra vypnutá ('!' na zapnutie)"
 
-#: src/mathed/InsetMathNest.cpp:1019
+#: src/mathed/InsetMathNest.cpp:1020
 msgid "create new math text environment ($...$)"
 msgstr "vytvoriť nové matematické textové prostredie ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1022
+#: src/mathed/InsetMathNest.cpp:1023
 msgid "entered math text mode (textrm)"
 msgstr "vstup do text. prostredia vnútri matem. (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1044
+#: src/mathed/InsetMathNest.cpp:1045
 msgid "Regular expression editor mode"
 msgstr "Modus pre editáciu regulárnych výrazov"
 
-#: src/mathed/InsetMathNest.cpp:1734 src/mathed/InsetMathNest.cpp:1877
+#: src/mathed/InsetMathNest.cpp:1735 src/mathed/InsetMathNest.cpp:1878
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Automatická korektúra zapnutá (<medzerník> na vypnutie)"
 
@@ -30109,8 +30109,8 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
-#~ msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
-#~ msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na \\Rightarrow."
+#~ msgid "Allow TeXMacs shorthand, like => converting to Rightarrow."
+#~ msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na Rightarrow."
 
 #~ msgid "[LIST of PDF Comments]"
 #~ msgstr "[Zoznam PDF Komentárov]"

@@ -107,7 +107,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 2.1.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-01-13 11:37-0500\n"
+"POT-Creation-Date: 2015-02-05 20:29-0500\n"
 "PO-Revision-Date: 2014-04-11 19:41+0800\n"
 "Last-Translator: Mingyi Wu <mingi.wu@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -15371,18 +15371,18 @@ msgid "Redo|R"
 msgstr "重做(R)|R"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:597
 msgid "Cut"
 msgstr "剪下"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:606
 msgid "Copy"
 msgstr "複製"
 
 #: lib/ui/stdmenus.inc:107 lib/ui/stdcontext.inc:312 lib/ui/stdtoolbars.inc:83
-#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1333
-#: src/mathed/InsetMathNest.cpp:575
+#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1334
+#: src/mathed/InsetMathNest.cpp:576
 msgid "Paste"
 msgstr "貼上"
 
@@ -23591,28 +23591,28 @@ msgstr "未知的分支"
 msgid "&Don't Add"
 msgstr "不要新增(&D)"
 
-#: src/CutAndPaste.cpp:734 src/Text.cpp:403
+#: src/CutAndPaste.cpp:744 src/Text.cpp:403
 #, c-format
 msgid "Layout `%1$s' was not found."
 msgstr "找不到布局 `%1$s'."
 
-#: src/CutAndPaste.cpp:736 src/Text.cpp:405
+#: src/CutAndPaste.cpp:746 src/Text.cpp:405
 msgid "Layout Not Found"
 msgstr "找不到布局"
 
-#: src/CutAndPaste.cpp:763
+#: src/CutAndPaste.cpp:773
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr "重新讀取 `%2$s' 布局後, 彈性嵌框 %1$s 未定義."
 
-#: src/CutAndPaste.cpp:766
+#: src/CutAndPaste.cpp:776
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
 "%3$s'."
 msgstr "彈性嵌框 %1$s 未定義, 因為布局從 `%2$s' 轉換到 `%3$s'."
 
-#: src/CutAndPaste.cpp:771
+#: src/CutAndPaste.cpp:781
 msgid "Undefined flex inset"
 msgstr "未定義的彈性嵌框"
 
@@ -24875,7 +24875,7 @@ msgstr "數學編輯器模式"
 msgid "No valid math formula"
 msgstr "沒有有效的數學公式"
 
-#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1033
+#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1034
 msgid "Already in regular expression mode"
 msgstr "已經在正規表示式模式了"
 
@@ -29601,27 +29601,27 @@ msgstr "裝飾(&D):"
 msgid "Environment: %1$s"
 msgstr "建立新環境 (%1$s)"
 
-#: src/mathed/InsetMathGrid.cpp:1491
+#: src/mathed/InsetMathGrid.cpp:1492
 msgid "Cursor not in table"
 msgstr "游標不在表格內"
 
-#: src/mathed/InsetMathGrid.cpp:1497
+#: src/mathed/InsetMathGrid.cpp:1498
 msgid "Only one row"
 msgstr "只有一列"
 
-#: src/mathed/InsetMathGrid.cpp:1503
+#: src/mathed/InsetMathGrid.cpp:1504
 msgid "Only one column"
 msgstr "只有一欄"
 
-#: src/mathed/InsetMathGrid.cpp:1511
+#: src/mathed/InsetMathGrid.cpp:1512
 msgid "No hline to delete"
 msgstr "無 hline 可刪除"
 
-#: src/mathed/InsetMathGrid.cpp:1520
+#: src/mathed/InsetMathGrid.cpp:1521
 msgid "No vline to delete"
 msgstr "無 vline 可刪除"
 
-#: src/mathed/InsetMathGrid.cpp:1549
+#: src/mathed/InsetMathGrid.cpp:1550
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "不明的表格特徵「%1$s」"
@@ -29662,24 +29662,24 @@ msgstr "無法在「%1$s」中變更欄數"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "無法在「%1$s」中加入水平網格線"
 
-#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1729
-#: src/mathed/InsetMathNest.cpp:1875
+#: src/mathed/InsetMathNest.cpp:712 src/mathed/InsetMathNest.cpp:1730
+#: src/mathed/InsetMathNest.cpp:1876
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "自動修正 關閉 ('!' 開啟)"
 
-#: src/mathed/InsetMathNest.cpp:1019
+#: src/mathed/InsetMathNest.cpp:1020
 msgid "create new math text environment ($...$)"
 msgstr "建立新的數學文字環境 ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1022
+#: src/mathed/InsetMathNest.cpp:1023
 msgid "entered math text mode (textrm)"
 msgstr "已進入數學文字模式 (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1044
+#: src/mathed/InsetMathNest.cpp:1045
 msgid "Regular expression editor mode"
 msgstr "正規表示式編輯器模式"
 
-#: src/mathed/InsetMathNest.cpp:1734 src/mathed/InsetMathNest.cpp:1877
+#: src/mathed/InsetMathNest.cpp:1735 src/mathed/InsetMathNest.cpp:1878
 msgid "Autocorrect On (<space> to exit)"
 msgstr "自動修正 開啟 (<space> 離開)"
 

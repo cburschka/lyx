@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-01-13 11:37-0500\n"
+"POT-Creation-Date: 2015-02-05 20:29-0500\n"
 "PO-Revision-Date: 2013-10-26 20:23+0200\n"
 "Last-Translator: Gilad Orr <giladorr@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
@@ -15991,18 +15991,18 @@ msgid "Redo|R"
 msgstr "בצע שוב"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:597
 msgid "Cut"
 msgstr "גזור"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:606
 msgid "Copy"
 msgstr "העתק"
 
 #: lib/ui/stdmenus.inc:107 lib/ui/stdcontext.inc:312 lib/ui/stdtoolbars.inc:83
-#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1333
-#: src/mathed/InsetMathNest.cpp:575
+#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1334
+#: src/mathed/InsetMathNest.cpp:576
 msgid "Paste"
 msgstr "הדבק"
 
@@ -24671,29 +24671,29 @@ msgstr "פעולה לא ידועה"
 msgid "&Don't Add"
 msgstr "&אל תוסיף"
 
-#: src/CutAndPaste.cpp:734 src/Text.cpp:403
+#: src/CutAndPaste.cpp:744 src/Text.cpp:403
 #, fuzzy, c-format
 msgid "Layout `%1$s' was not found."
 msgstr "מחלקת המסמך לא נמצאה"
 
-#: src/CutAndPaste.cpp:736 src/Text.cpp:405
+#: src/CutAndPaste.cpp:746 src/Text.cpp:405
 #, fuzzy
 msgid "Layout Not Found"
 msgstr "לא מוצג."
 
-#: src/CutAndPaste.cpp:763
+#: src/CutAndPaste.cpp:773
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr ""
 
-#: src/CutAndPaste.cpp:766
+#: src/CutAndPaste.cpp:776
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
 "%3$s'."
 msgstr ""
 
-#: src/CutAndPaste.cpp:771
+#: src/CutAndPaste.cpp:781
 #, fuzzy
 msgid "Undefined flex inset"
 msgstr "תוסף טקסט פתוח"
@@ -25907,7 +25907,7 @@ msgstr "מצב עורך מתמטיקה"
 msgid "No valid math formula"
 msgstr "אין נוסחה מתמטית קבילה"
 
-#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1033
+#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1034
 msgid "Already in regular expression mode"
 msgstr "כבר במצב של ביטויים רגולריים"
 
@@ -30797,28 +30797,28 @@ msgstr "מראה:"
 msgid "Environment: %1$s"
 msgstr "גופן: %1$s"
 
-#: src/mathed/InsetMathGrid.cpp:1491
+#: src/mathed/InsetMathGrid.cpp:1492
 #, fuzzy
 msgid "Cursor not in table"
 msgstr "(לא מותקן)"
 
-#: src/mathed/InsetMathGrid.cpp:1497
+#: src/mathed/InsetMathGrid.cpp:1498
 msgid "Only one row"
 msgstr "שורה אחת בלבד"
 
-#: src/mathed/InsetMathGrid.cpp:1503
+#: src/mathed/InsetMathGrid.cpp:1504
 msgid "Only one column"
 msgstr "עמודה אחת בלבד"
 
-#: src/mathed/InsetMathGrid.cpp:1511
+#: src/mathed/InsetMathGrid.cpp:1512
 msgid "No hline to delete"
 msgstr "אין קו אופקי למחיקה"
 
-#: src/mathed/InsetMathGrid.cpp:1520
+#: src/mathed/InsetMathGrid.cpp:1521
 msgid "No vline to delete"
 msgstr "אין קו אנכי למחיקה"
 
-#: src/mathed/InsetMathGrid.cpp:1549
+#: src/mathed/InsetMathGrid.cpp:1550
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "תכונת טבלה לא ידועה '%1$s'"
@@ -30859,24 +30859,24 @@ msgstr "לא יכול לשנות את מספר העמודות ב- '%1$s'"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "לא יכול להוסיף קווי רשת אופקיים בתוך '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1729
-#: src/mathed/InsetMathNest.cpp:1875
+#: src/mathed/InsetMathNest.cpp:712 src/mathed/InsetMathNest.cpp:1730
+#: src/mathed/InsetMathNest.cpp:1876
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "תיקון שגיאות אוטומטי כבוי ('!' להפעלה)"
 
-#: src/mathed/InsetMathNest.cpp:1019
+#: src/mathed/InsetMathNest.cpp:1020
 msgid "create new math text environment ($...$)"
 msgstr "צור סביבת טקסט מתמטי חדשה ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1022
+#: src/mathed/InsetMathNest.cpp:1023
 msgid "entered math text mode (textrm)"
 msgstr "נכנס למצב טקסט מתמטי (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1044
+#: src/mathed/InsetMathNest.cpp:1045
 msgid "Regular expression editor mode"
 msgstr "מצב עורך ביטויים רגולריים"
 
-#: src/mathed/InsetMathNest.cpp:1734 src/mathed/InsetMathNest.cpp:1877
+#: src/mathed/InsetMathNest.cpp:1735 src/mathed/InsetMathNest.cpp:1878
 msgid "Autocorrect On (<space> to exit)"
 msgstr "תיקון שגיאות אוטומטי פעיל ('!' לכיבוי)"
 

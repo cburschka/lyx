@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-01-13 11:37-0500\n"
+"POT-Creation-Date: 2015-02-05 20:29-0500\n"
 "PO-Revision-Date: 2011-04-26 21:20+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -15848,18 +15848,18 @@ msgid "Redo|R"
 msgstr "Mégis alkalmaz|M"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:596
+#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:597
 msgid "Cut"
 msgstr "Kivágás"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:605
+#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:606
 msgid "Copy"
 msgstr "Másolás"
 
 #: lib/ui/stdmenus.inc:107 lib/ui/stdcontext.inc:312 lib/ui/stdtoolbars.inc:83
-#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1333
-#: src/mathed/InsetMathNest.cpp:575
+#: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1334
+#: src/mathed/InsetMathNest.cpp:576
 msgid "Paste"
 msgstr "Beillesztés"
 
@@ -24420,24 +24420,24 @@ msgstr "Ismeretlen változat"
 msgid "&Don't Add"
 msgstr ""
 
-#: src/CutAndPaste.cpp:734 src/Text.cpp:403
+#: src/CutAndPaste.cpp:744 src/Text.cpp:403
 #, fuzzy, c-format
 msgid "Layout `%1$s' was not found."
 msgstr "Dokumentum-osztály nem elérhető"
 
-#: src/CutAndPaste.cpp:736 src/Text.cpp:405
+#: src/CutAndPaste.cpp:746 src/Text.cpp:405
 #, fuzzy
 msgid "Layout Not Found"
 msgstr "Nem találtam"
 
-#: src/CutAndPaste.cpp:763
+#: src/CutAndPaste.cpp:773
 #, fuzzy, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr ""
 "A %1$s flex betét ismeretlen, mert osztálykonverzió történt\n"
 "%2$s-ról %3$s-ra"
 
-#: src/CutAndPaste.cpp:766
+#: src/CutAndPaste.cpp:776
 #, fuzzy, c-format
 msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
@@ -24446,7 +24446,7 @@ msgstr ""
 "A %1$s flex betét ismeretlen, mert osztálykonverzió történt\n"
 "%2$s-ról %3$s-ra"
 
-#: src/CutAndPaste.cpp:771
+#: src/CutAndPaste.cpp:781
 msgid "Undefined flex inset"
 msgstr "Definiálatlan flex betét"
 
@@ -25772,7 +25772,7 @@ msgstr "Képletszerkesztő mód"
 msgid "No valid math formula"
 msgstr "Nincs érvényes képlet formula"
 
-#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1033
+#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1034
 #, fuzzy
 msgid "Already in regular expression mode"
 msgstr "Reguláris kifejez&és"
@@ -30654,28 +30654,28 @@ msgstr "&Dekoráció:"
 msgid "Environment: %1$s"
 msgstr "Gather környezet"
 
-#: src/mathed/InsetMathGrid.cpp:1491
+#: src/mathed/InsetMathGrid.cpp:1492
 #, fuzzy
 msgid "Cursor not in table"
 msgstr " (nincs telepítve)"
 
-#: src/mathed/InsetMathGrid.cpp:1497
+#: src/mathed/InsetMathGrid.cpp:1498
 msgid "Only one row"
 msgstr "Csak egy sor"
 
-#: src/mathed/InsetMathGrid.cpp:1503
+#: src/mathed/InsetMathGrid.cpp:1504
 msgid "Only one column"
 msgstr "Csak egy oszlop"
 
-#: src/mathed/InsetMathGrid.cpp:1511
+#: src/mathed/InsetMathGrid.cpp:1512
 msgid "No hline to delete"
 msgstr "Nincs törlendő vízszintes vonal"
 
-#: src/mathed/InsetMathGrid.cpp:1520
+#: src/mathed/InsetMathGrid.cpp:1521
 msgid "No vline to delete"
 msgstr "Nincs törlendő függőleges vonal"
 
-#: src/mathed/InsetMathGrid.cpp:1549
+#: src/mathed/InsetMathGrid.cpp:1550
 #, c-format
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Ismeretlen táblázat jellemző '%1$s'"
@@ -30715,25 +30715,25 @@ msgstr "Az oszlopok száma itt: '%1$s' nem változtatható"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nem tudok vízszintes rácsvonalat adni '%1$s'-hoz"
 
-#: src/mathed/InsetMathNest.cpp:711 src/mathed/InsetMathNest.cpp:1729
-#: src/mathed/InsetMathNest.cpp:1875
+#: src/mathed/InsetMathNest.cpp:712 src/mathed/InsetMathNest.cpp:1730
+#: src/mathed/InsetMathNest.cpp:1876
 msgid "Autocorrect Off ('!' to enter)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1019
+#: src/mathed/InsetMathNest.cpp:1020
 msgid "create new math text environment ($...$)"
 msgstr "Új képlet környezet létrehozása ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1022
+#: src/mathed/InsetMathNest.cpp:1023
 msgid "entered math text mode (textrm)"
 msgstr "képlet módba lépés (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1044
+#: src/mathed/InsetMathNest.cpp:1045
 #, fuzzy
 msgid "Regular expression editor mode"
 msgstr "Reguláris kifejez&és"
 
-#: src/mathed/InsetMathNest.cpp:1734 src/mathed/InsetMathNest.cpp:1877
+#: src/mathed/InsetMathNest.cpp:1735 src/mathed/InsetMathNest.cpp:1878
 msgid "Autocorrect On (<space> to exit)"
 msgstr ""
 
