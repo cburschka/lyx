@@ -2179,6 +2179,7 @@ dist_templates_DATA = \
 	templates/IJMPC.lyx \
 	templates/IJMPD.lyx \
 	templates/IOP-article.lyx \
+	templates/ja_beamer-conference-ornate-20min.lyx \
 	templates/JASA.lyx \
 	templates/JSS-article.lyx \
 	templates/kluwer.lyx \
