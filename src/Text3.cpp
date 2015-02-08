@@ -1549,11 +1549,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 
 		case mouse_button::button2:
-			// Middle mouse pasting.
-			bv->mouseSetCursor(cur);
-			lyx::dispatch(
-				FuncRequest(LFUN_COMMAND_ALTERNATIVES,
-					    "selection-paste ; primary-selection-paste paragraph"));
+			if (lyxrc.mouse_middlebutton_paste) {
+				// Middle mouse pasting.
+				bv->mouseSetCursor(cur);
+				lyx::dispatch(
+					FuncRequest(LFUN_COMMAND_ALTERNATIVES,
+						    "selection-paste ; primary-selection-paste paragraph"));
+			}
 			cur.noScreenUpdate();
 			break;
 

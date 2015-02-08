@@ -497,6 +497,8 @@ PrefInput::PrefInput(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(dontswapCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
+	connect(mmPasteCB, SIGNAL(toggled(bool)),
+		this, SIGNAL(changed()));
 
 	// reveal checkbox for switching Ctrl and Meta on Mac:
 	bool swapcb = false;
@@ -532,6 +534,7 @@ void PrefInput::applyRC(LyXRC & rc) const
 		rc.scroll_wheel_zoom = LyXRC::SCROLL_WHEEL_ZOOM_OFF;
 	}
 	rc.mac_dontswap_ctrl_meta  = dontswapCB->isChecked();
+	rc.mouse_middlebutton_paste = mmPasteCB->isChecked();
 }
 
 
@@ -560,6 +563,7 @@ void PrefInput::updateRC(LyXRC const & rc)
 		break;
 	}
 	dontswapCB->setChecked(rc.mac_dontswap_ctrl_meta);
+	mmPasteCB->setChecked(rc.mouse_middlebutton_paste);
 }
 
 

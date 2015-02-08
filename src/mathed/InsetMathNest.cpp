@@ -1551,7 +1551,7 @@ void InsetMathNest::lfunMousePress(Cursor & cur, FuncRequest & cmd)
 		// cur.result().update(): don't overwrite previously set flags.
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor
 				| cur.result().screenUpdate());
-	} else if (cmd.button() == mouse_button::button2) {
+	} else if (cmd.button() == mouse_button::button2 && lyxrc.mouse_middlebutton_paste) {
 		if (cap::selection()) {
 			// See comment in Text::dispatch why we do this
 			cap::copySelectionToStack();

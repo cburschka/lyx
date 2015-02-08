@@ -119,6 +119,7 @@ public:
 		RC_MAKE_BACKUP,
 		RC_MARK_FOREIGN_LANGUAGE,
 		RC_MOUSE_WHEEL_SPEED,
+		RC_MOUSE_MIDDLEBUTTON_PASTE,
 		RC_NOMENCL_COMMAND,
 		RC_NUMLASTFILES,
 		RC_OPEN_BUFFERS_IN_TABS,
@@ -305,6 +306,8 @@ public:
 	std::string hunspelldir_path;
 	///
 	bool auto_region_delete;
+	/// enable middle-mouse-button paste
+	bool mouse_middlebutton_paste;
 	/// flag telling whether lastfiles should be checked for existance
 	bool auto_reset_options;
 	///

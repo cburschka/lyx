@@ -142,6 +142,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\macro_edit_style", LyXRC::RC_MACRO_EDIT_STYLE },
 	{ "\\make_backup", LyXRC::RC_MAKE_BACKUP },
 	{ "\\mark_foreign_language", LyXRC::RC_MARK_FOREIGN_LANGUAGE },
+	{ "\\mouse_middlebutton_paste", LyXRC::RC_MOUSE_MIDDLEBUTTON_PASTE },
 	{ "\\mouse_wheel_speed", LyXRC::RC_MOUSE_WHEEL_SPEED },
 	{ "\\nomencl_command", LyXRC::RC_NOMENCL_COMMAND },
 	{ "\\num_lastfiles", LyXRC::RC_NUMLASTFILES },
@@ -377,6 +378,7 @@ void LyXRC::setDefaults()
 	default_length_unit = Length::CM;
 	cursor_width = 1;
 	close_buffer_with_last_view = "yes";
+	mouse_middlebutton_paste = true;
 }
 
 
@@ -1290,6 +1292,10 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 						       << tmp << '"');
 				}
 			}
+			break;
+
+		case RC_MOUSE_MIDDLEBUTTON_PASTE:
+			lexrc >> mouse_middlebutton_paste;
 			break;
 
 		case RC_LAST:
@@ -2243,6 +2249,14 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_MOUSE_MIDDLEBUTTON_PASTE:
+		if (ignore_system_lyxrc ||
+		    mouse_middlebutton_paste != system_lyxrc.mouse_middlebutton_paste) {
+			os << "\\mouse_middlebutton_paste "
+			   << convert<string>(mouse_middlebutton_paste) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
 	case RC_COMPLETION_INLINE_DELAY:
 		if (ignore_system_lyxrc ||
 		    completion_inline_delay != system_lyxrc.completion_inline_delay) {
@@ -2974,6 +2988,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_MAKE_BACKUP:
 	case LyXRC::RC_MARK_FOREIGN_LANGUAGE:
 	case LyXRC::RC_MOUSE_WHEEL_SPEED:
+	case LyXRC::RC_MOUSE_MIDDLEBUTTON_PASTE:
 	case LyXRC::RC_NUMLASTFILES:
 	case LyXRC::RC_PARAGRAPH_MARKERS:
 	case LyXRC::RC_PATH_PREFIX:
