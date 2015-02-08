@@ -1,0 +1,1247 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 480
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\usetheme{Warsaw}
+% or ...
+
+\setbeamercovered{transparent}
+% or whatever (possibly just delete it)
+
+\deftranslation[to=japanese]{Theorem}{定理}
+\deftranslation[to=japanese]{Corollary}{系}
+\deftranslation[to=japanese]{Example}{例}
+% there are useful to change heading texts to Japanese
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language japanese
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman times
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format pdf
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+このファイルは、下記の要請を満たすひな型です。
+\end_layout
+
+\begin_layout Itemize
+学会やセミナーでの発表
+\end_layout
+
+\begin_layout Itemize
+発表の長さはおよそ20分
+\end_layout
+
+\begin_layout Itemize
+様式は装飾的
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+In principle, this file can be redistributed and/or modified under the terms
+ of the GNU Public License, version 2.
+ However, this file is supposed to be a template to be modified for your
+ own needs.
+ For this reason, if you use this file as a template and not specifically
+ distribute it as part of a another package/program, the author grants the
+ extra permission to freely copy and modify this file as you see fit and
+ even to delete this copyright notice.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+学会報どおりのタイトル
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+短縮形の論文タイトル
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+非必須。論文タイトルが長過ぎるときのみ使います
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subtitle
+論文に副タイトルがあるときのみ入れます
+\end_layout
+
+\begin_layout Author
+F.
+\begin_inset space ~
+\end_inset
+
+Author
+\begin_inset Flex InstituteMark
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ S.
+\begin_inset space ~
+\end_inset
+
+Another
+\begin_inset Flex InstituteMark
+status collapsed
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+名前を論文に現れるのと同じ順序で書きます
+\end_layout
+
+\begin_layout Itemize
+著者が別々の肩書を持っている場合には、「所属機関マーク」差込枠(挿入\SpecialChar \menuseparator
+任意設定差込枠\SpecialChar \menuseparator
+所属機関マーク)を使ってください
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Author, Another
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+- 非必須。著者が大勢いるときのみ使います
+\end_layout
+
+\begin_layout Plain Layout
+- ひじょうに多くの著者がいる場合には，「Author et al.」を使ってください
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Institute
+\begin_inset Flex InstituteMark
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+計算機科学学部
+\begin_inset Newline newline
+\end_inset
+
+どこかの大学
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex InstituteMark
+status collapsed
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+理論物理学部
+\begin_inset Newline newline
+\end_inset
+
+別の大学
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+複数の所属機関がある場合に限り、「所属機関マーク」差込枠(挿入\SpecialChar \menuseparator
+任意設定差込枠\SpecialChar \menuseparator
+所属機関マーク)を使ってください
+\end_layout
+
+\begin_layout Itemize
+簡潔に。だれもあなたの番地には興味ありません。
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+どこかの大学及び別の大学
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+2003年度素晴らしいプレゼ―テーション学会
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+学会名かその略称を使います
+\end_layout
+
+\begin_layout Itemize
+聴衆にはあまり役に立つ情報ではありませんが，どちらかといえばスライドをオンラインで読む人々向けです
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+CFP 2003
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+非必須。学会の略称を置きます
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+「institution-logo-filename.xxx」というファイルがあれば (xxxはlatexもしくはpdflatexが処理できる画像形式)、下記のコ
+メントを外すことで，ロゴを追加することができます。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filename}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+logo{
+\backslash
+pgfuseimage{institution-logo}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+下記は，各小節の冒頭に目次が表示されるようにするものです。これを望まない場合には、削除してください。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginSubsection[]{%
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+frametitle{概要}
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+tableofcontents[currentsection,currentsubsection] 
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+すべてを一段ずつ開示するようにしたい場合には、下記のコマンドのコメントを外してください。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+beamerdefaultoverlayspecification{<+->}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+概要
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+発表をどう構築するかは大変な仕事ですから、以下の構造は適切でないこともあります。ここでのソリューションに適用する法則は以下のとおりです。
+\end_layout
+
+\begin_layout Itemize
+ちょうど2〜3節に収める(要約を除く)
+\end_layout
+
+\begin_layout Itemize
+1節あたり
+\series bold
+最大でも
+\series default
+3小節に収める。
+\end_layout
+
+\begin_layout Itemize
+1フレームあたり30秒から2分で話すこと。したがって、発表すべてで15〜30フレームにすること。
+\end_layout
+
+\begin_layout Itemize
+学会の聴衆は、あなたが話そうとすることについて、ほとんど知らない可能性が高いので、
+\series bold
+単純化すること!
+\end_layout
+
+\begin_layout Itemize
+20分の発表で、中心となるアイディアを伝えるのは大変なことです。必要とされる水準よりも不正確になると思っても、細部は省略しましょう。
+\end_layout
+
+\begin_layout Itemize
+証明や実装に不可欠な細部を省略する場合には、省略する旨を一度発言しましょう。皆それで満足です。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+動機
+\end_layout
+
+\begin_layout Subsection
+我々の研究した基本問題
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+基本問題
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+よくわかる見出しを付けましょう。Use Uppercase Letters for English.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+フレームの副見出しは必須ではありません。Use upper- or lowercase letters for English.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+タイトルは、スライド全部についていけない人にもわかるように、スライドを要約していなくてはなりません。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+記号箇条書きを多用しましょう。
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+非常に短い文や短い句を使用しましょう。
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+これらの重ね合わせは、一時停止様式を使えば、生成することができます。
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+よくわかる見出しを付けましょう。
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+1-
+\end_layout
+
+\end_inset
+
+重ね合わせを行うには，重ねあわせ指定を使うこともできます。
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+3-
+\end_layout
+
+\end_inset
+
+すると、任意の順序で項目を表示することができます。
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+2-
+\end_layout
+
+\end_inset
+
+これは2番めに表示されます。
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+よくわかる見出しを付けましょう。
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+タイトルのないブロック
+\end_layout
+
+\begin_layout Itemize
+全スライドに表示されます。
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+用例ブロックのタイトル
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $e^{i\pi}=-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $e^{i\pi/2}=i$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+先行研究
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+よくわかる見出しを付けましょう。
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1-
+\end_layout
+
+\end_inset
+
+最初のスライドに表示。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2-
+\end_layout
+
+\end_inset
+
+2番めのスライドに表示。
+\end_layout
+
+\end_deeper
+\begin_layout Section
+我々の結果/貢献
+\end_layout
+
+\begin_layout Subsection
+主要な結果
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+よくわかる見出しを付けましょう。
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Theorem
+最初のスライドに表示。
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Corollary
+2番めのスライドに表示。
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+よくわかる見出しを付けましょう。
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout ColumnsTopAligned
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+5cm
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+1-
+\end_layout
+
+\end_inset
+
+左列
+\end_layout
+
+\begin_layout Column
+5cm
+\end_layout
+
+\begin_layout Corollary
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2-
+\end_layout
+
+\end_inset
+
+右列
+\begin_inset Newline newline
+\end_inset
+
+新規行
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+証明/実装の基本アイディア
+\end_layout
+
+\begin_layout Section*
+要約
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+要約
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+発表の
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+最初の主要メッセージ
+\end_layout
+
+\end_inset
+
+を1〜2行で。
+\end_layout
+
+\begin_layout Itemize
+発表の
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+2番めの主要メッセージ
+\end_layout
+
+\end_inset
+
+を1〜2行で。
+\end_layout
+
+\begin_layout Itemize
+場合によっては
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+3番目のメッセージ
+\end_layout
+
+\end_inset
+
+
+\color none
+。でもこれ以上はだめ。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+展望は必ずしも必要ではありません。
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+展望
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+まだやっていないこと。
+\end_layout
+
+\begin_layout Itemize
+さらに追加事項。
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section*
+\start_of_appendix
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+下記は必須ではなく，通常必要ではありません。
+\end_layout
+
+\end_inset
+
+附録
+\end_layout
+
+\begin_layout Subsection*
+さらに読むには
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status collapsed
+
+\begin_layout Plain Layout
+allowframebreaks
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+さらに読むには
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+beamertemplatebookbibitems
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+総記書籍から始めます。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Author1990"
+
+\end_inset
+
+A.
+ Author.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+
+\emph on
+Handbook of Everything
+\emph default
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+ Some Press, 1990.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+beamertemplatearticlebibitems
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+下記に面白い論文。一覧は短く収めること。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Someone2002"
+
+\end_inset
+
+S.
+ Someone.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+ On this and that
+\emph on
+.
+
+\emph default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+
+\emph on
+Journal on This and That
+\emph default
+.
+ 2(1):50--100, 2000.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document
