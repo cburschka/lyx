@@ -195,6 +195,13 @@ File Format Numbers
 
 \begin_layout Section
 When is an update of the .lyx file format number needed?
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:When-is-an"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -865,6 +872,63 @@ src/tex2lyx/test/CMakeLists.txt
 \begin_layout Enumerate
 Commit the changes to the repository, or send a patch to the development
  list and ask for committing if you do not have commit rights.
+\end_layout
+
+\begin_layout Chapter
+Development policies
+\end_layout
+
+\begin_layout Standard
+This chapter lists some guidelines that should be followed.
+ This list is not complete, and many guidelines are in separate chapters,
+ such as 
+\begin_inset Quotes eld
+\end_inset
+
+When is an update of the .lyx file format number needed?
+\begin_inset Quotes erd
+\end_inset
+
+ in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:When-is-an"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+When to set a fixed milestone?
+\end_layout
+
+\begin_layout Standard
+Only set a fixed milestone (like 2.1.4 or 2.2.0) if at least one of the following
+ holds:
+\end_layout
+
+\begin_layout Enumerate
+Somebody is actively working on a fix.
+\end_layout
+
+\begin_layout Enumerate
+The bug is so severe that it would block the release if it is not fixed.
+\end_layout
+
+\begin_layout Standard
+If a bug is important, but nobody is working on it, and it is no showstopper,
+ use a milestone like 2.1.x or 2.2.x.
+ For all other bugs, do not set a milestone at all.
+\end_layout
+
+\begin_layout Section
+Can we add rc entries in stable branch?
+\end_layout
+
+\begin_layout Standard
+No.
+ We are supposed to increase the prefs2prefs version number with such things.
 \end_layout
 
 \end_body
