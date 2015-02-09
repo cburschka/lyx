@@ -33,6 +33,7 @@
 # Version 1.4   26/10/08 - new custom insets for \altaffilmark, \tablenotemark
 #                        - new environments for \altaffiltext and \tablenotetext
 # Version 1.5   26/11/12 - added mandatory argument for \altaffiltext
+# Version 1.6   23/01/15 - fix for the optional argument of \figcaption
 
 
 Format 49
@@ -525,12 +526,12 @@ End
 
 
 InsetLayout Caption:FigCaption
-	LabelString          fig.
-	LaTeXType            command
-	LatexName            figcaption
+	LabelString	fig.
+	LaTeXType	command
+	LatexName	figcaption
 	Argument 1
-	    LabelString   "Short Title|S"
-	    Tooltip       "The caption as it appears in the list of figures"
+	  LabelString	"Filename"
+	  Tooltip	"Filename to identify the corresponding figure file"
 	EndArgument
 	HTMLStyle
 		div.float-caption {
