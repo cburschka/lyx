@@ -29,6 +29,8 @@ if [ "$LASTNUM" = "1" ]; then
   NUMFIX="st";
 elif [ "$LASTNUM" = "2" ]; then
   NUMFIX="nd";
+elif [ "$LASTNUM" = "3" ]; then
+  NUMFIX="rd";
 fi
 NUM="$LASTNUM$NUMFIX";
 
