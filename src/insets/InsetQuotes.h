@@ -109,6 +109,8 @@ private:
 	void parseString(std::string const &);
 	///
 	docstring displayString() const;
+	///
+	docstring getQuoteEntity() const;
 
 	///
 	QuoteLanguage language_;

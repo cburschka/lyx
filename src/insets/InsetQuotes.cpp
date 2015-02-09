@@ -307,26 +307,30 @@ int InsetQuotes::plaintext(odocstringstream & os,
 }
 
 
-int InsetQuotes::docbook(odocstream & os, OutputParams const &) const
-{
+docstring InsetQuotes::getQuoteEntity() const {
 	if (times_ == DoubleQuotes) {
 		if (side_ == LeftQuote)
-			os << "&ldquo;";
+			return from_ascii("&ldquo;");
 		else
-			os << "&rdquo;";
-	} else {
-		if (side_ == LeftQuote)
-			os << "&lsquo;";
-		else
-			os << "&rsquo;";
+			return from_ascii("&rdquo;");
 	}
+	if (side_ == LeftQuote)
+		return from_ascii("&lsquo;");
+	else
+		return from_ascii("&rsquo;");
+}
+
+
+int InsetQuotes::docbook(odocstream & os, OutputParams const &) const
+{
+	os << getQuoteEntity();
 	return 0;
 }
 
 
 docstring InsetQuotes::xhtml(XHTMLStream & xs, OutputParams const & op) const
 {
-	docbook(xs.os(), op);
+	xs << XHTMLStream::ESCAPE_NONE << getQuoteEntity();
 	return docstring();
 }
 
