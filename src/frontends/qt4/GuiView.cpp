@@ -2990,7 +2990,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 			LyXVC::CommandResult ret = buffer->lyxvc().checkIn(log);
 			dr.setMessage(log);
 			// Only skip reloading if the checkin was cancelled or
-			// an error occured before the real checkin VCS command
+			// an error occurred before the real checkin VCS command
 			// was executed, since the VCS might have changed the
 			// file even if it could not checkin successfully.
 			if (ret == LyXVC::ErrorCommand || ret == LyXVC::VCSuccess)

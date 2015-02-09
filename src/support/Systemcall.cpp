@@ -577,7 +577,7 @@ QString SystemcallPrivate::errorMessage() const
 			break;
 		case QProcess::UnknownError:
 		default:
-			message = "An unknown error occured.";
+			message = "An unknown error occurred.";
 			break;
 	}
 	return message;

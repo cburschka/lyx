@@ -10287,7 +10287,7 @@
 
 2000-02-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
-	* WorkArea, Painter, LyXScreen: Fixed the crash that occured on
+	* WorkArea, Painter, LyXScreen: Fixed the crash that occurred on
 	resize due to wrong pixmap beeing used. Also took the opurtunity
 	to make the LyXScreen stateless on regard to WorkArea and some
 	general cleanup in the same files.

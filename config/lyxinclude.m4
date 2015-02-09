@@ -91,7 +91,7 @@ AC_MSG_ERROR([cannot find $1. Please check that the $2 library
 
 
 dnl Usage: LYX_CHECK_WARNINGS  Displays a warning message if a LYX_WARNING
-dnl   has occured previously.
+dnl   has occurred previously.
 AC_DEFUN([LYX_CHECK_WARNINGS],[
 if test x$lyx_warning = xyes; then
 cat <<EOF

@@ -1526,7 +1526,7 @@ bool Buffer::write(ostream & ofs) const
 	// how to check if close went ok?
 	// Following is an attempt... (BE 20001011)
 
-	// good() returns false if any error occured, including some
+	// good() returns false if any error occurred, including some
 	//        formatting error.
 	// bad()  returns true if something bad happened in the buffer,
 	//        which should include file system full errors.

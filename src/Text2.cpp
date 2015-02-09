@@ -805,7 +805,7 @@ bool Text::cursorDownParagraph(Cursor & cur)
 void Text::fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where)
 {
 	// Do nothing if cursor is not in the paragraph where the
-	// deletion occured,
+	// deletion occurred,
 	if (cur.pit() != where.pit())
 		return;
 

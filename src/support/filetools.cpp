@@ -502,7 +502,7 @@ FileName const createLyXTmpDir(FileName const & deflt)
 		// dir inside deflt.
 		return createTmpDir(deflt, "lyx_tmpdir");
 	} else {
-		// some other error occured.
+		// some other error occurred.
 		return createTmpDir(package().system_temp_dir(), "lyx_tmpdir");
 	}
 }

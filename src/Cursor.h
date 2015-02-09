@@ -339,7 +339,7 @@ public:
 	 */
 	void noScreenUpdate() const;
 	/// fix cursor in circumstances that should never happen.
-	/// \retval true if a fix occured.
+	/// \retval true if a fix occurred.
 	bool fixIfBroken();
 	/// Repopulate the slices insets from bottom to top. Useful
 	/// for stable iterators or Undo data.

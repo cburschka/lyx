@@ -58,7 +58,7 @@ int VCS::doVCCommand(string const & cmd, FileName const & path, bool reportError
 		owner_->setBusy(false);
 	if (ret && reportError)
 		frontend::Alert::error(_("Revision control error."),
-			bformat(_("Some problem occured while running the command:\n"
+			bformat(_("Some problem occurred while running the command:\n"
 				  "'%1$s'."),
 			from_utf8(cmd)));
 	return ret;

@@ -44,7 +44,7 @@ private:
 			  error_desc(desc),
 			  error_text(text),
 			  child_name(fname) {}
-		/// what line in the TeX file the error occured in
+		/// what line in the TeX file the error occurred in
 		int error_in_line;
 		/// The kind of error
 		docstring error_desc;
