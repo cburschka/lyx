@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-01-23 14:35+0100\n"
+"POT-Creation-Date: 2015-02-09 10:26+0100\n"
 "PO-Revision-Date: 2014-11-14 18:39+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -3260,7 +3260,7 @@ msgstr "&Zobraziť jediné tlačidlo na zavretie panelov"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:193
 msgid "Closing last &view:"
-msgstr "Pri zavieraní posledného náhľadu:"
+msgstr "Pri zavieraní &posledného náhľadu:"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:204
 msgid "Closes document"
@@ -3495,6 +3495,15 @@ msgid ""
 msgstr ""
 "1.0 je štandardná rýchlosť rolovania kolieskom myši. Vyššie hodnoty "
 "zrýchlia, nižšie spomalia."
+
+#: src/frontends/qt4/ui/PrefInputUi.ui:194
+msgid ""
+"If this is checked, the middle mouse button will paste the recent selection"
+msgstr "Aktivuje vlepenie výberu stredným tlačidlom myši"
+
+#: src/frontends/qt4/ui/PrefInputUi.ui:197
+msgid "&Middle mouse button pasting"
+msgstr "S&tredné tlačidlo vlepuje výber"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:203
 msgid "Scroll Wheel Zoom"
