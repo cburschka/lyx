@@ -1,6 +1,6 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 2.1.3.
+This file describes what has been done in the preparation of LyX 2.1.4.
 All comments are welcome.
 
 We try to group things by topic and in decreasing order of importance. 
@@ -13,7 +13,7 @@ For more details on how to use the repository, please visit:
   http://wiki.lyx.org/Devel/LyXGit
 A list of bugs fixed for this release can also be found at:
   http://www.lyx.org/trac/wiki/BugTrackerHome
-as well as a list of bugs still targeted to the 2.1.3 release.
+as well as a list of bugs still targeted to the 2.1.4 release.
 
 Richard Heck
 Branch Maintainer
@@ -28,54 +28,18 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Add support for some conference poster classes (a0poster, beamerposter,
-  sciposter) (bug 8714).
-
-- Add support for the sectionbox and tcolorbox packages (part of bug 8714).
-
-- Add support for PDF annotations (via pdfcomment package) (bug 6975).
 
 
 * TEX2LYX IMPROVEMENTS
 
-- Support for bibliographies using the package bibtopic.
-
-- Support for textual references (LaTeX-command \namref from the package
-  nameref).
-
-- Support for items in itemize environments that have an optional argument.
-
-- Support for the math font of the Iwona and Kurier font families.
-
-- Support for the Libertine fonts.
-
-- Support for a relative length as paragraph separation.
-
-- Support for relative lengths in horizontal and vertical spaces.
-
-- Support for glue lengths in horizontal and vertical spaces.
 
 
 * USER INTERFACE
 
-- References no longer truncated in outliner (bug 9312).
-
-- Allow computing selected subformulas with computer algebra systems.
-
-- Number correctly footnotes in title layouts (part of bug 2666).
-
-- Ctrl+A is now bound to inset-select-all, which does a local
-  selection (current inset) and grows at each new invokation. Try it!
-
-- Debug options in message pane are now sorted alphabetically.
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- New example file "PDF-comment.lyx" describing the support for PDF annotations.
-
-- Updated Arabic, French, German, Japanese, Portuguese, Slovak and Swedish
-  user interface localization.
 
 
 * BUILD/INSTALLATION
@@ -88,129 +52,31 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix crash on exporting a recursive math macro (bug 9140). Recursive macros
-  are invalid, so typesetting will still fail with "TeX capacity exceeded".
-
-- Fix baseline calculation in last paragraph (bug 9231).
-
-- Fix export of xfig external insets (bug 9244).
-
-- Fix incorrect output of ampersands when multiple keys are given for a
-  citation (bug 9296).
-
-- Output package options (specified with PackageOptions layout tag)
-  before loading any potentially affected package (bug 9355).
-
-- Fix export of documents that use the LaTeX-packages mhchem and wasysym
-  (bug 9266).
-
-- Remove unnecessary preamble code in LaTeX export
-  of documents using the class REVTeX 4.1 file (bug 4625).
-
-- Fix for improper environment with duplicate PATH variable entries.
-  This happens on Mac OS X 10.10 (Yosemite) where launchd(8) passes
-  such an environment to LyX when started from the dock (bug 9317).
-
-- Protect insets when needed in subfloat captions (bug 9346).
-
-- Do not swallow spaces in text-in-math mode (bug 7970).
-
-- Do not insert a protected space after some math-spaces (bug 9319).
-
-- Fix problem when some special characters appear in the document directory
-  name on Windows (bug 9342).
 
 
 * LYX2LYX
 
-- Fix import of LyX 2.0 documents with complex beamer arguments (bug 9254).
-
-- Fix import of LyX 2.0 IEEEtran documents (bug 9273).
-
-- Fix import of Chunk layout with trailing empty paragraph (bug 9298).
-
-- Fix import of chunk layouts containing newlines (bug 9300).
-
-- Maintain paragraph settings (alignment etc.) when importing chunk layouts
-  (bug 9320).
-
-- Fix export to LyX 2.0 of chunk insets without optional argument (bug 9343).
-
-- Fix import of ERT beamer block titles which are preceeded by a
-  language switch.
-
-- Fix and simplify paragraph params parsing in get_containing_layout.
 
 
 * USER INTERFACE
 
-- Fix most frequent reason for crash while editing with open view source
-  window (bug 9336).
-
-- Fix crash when pasting citation into math formula (bug 9302).
-
-- Fix alignment rendering of multirow in LyX (bug 8976).
-
-- Fix mapping of ISO_Left_Tab key, which was erroneously assigned to Tab
-  (instead of BackTab).
-
-- Disallow to insert program listings to footnotes and margin notes (bug 9321).
-
-- Fix computer algebra system computations in formulas with '=' signs.
-
-- Fix rendering of \varOmega on OS X (bug 7954).
-
-- Only allow 1 paragraph in footnotes when they are part of a title
-  layout (bug 2666).
-
-- When switching classes, warn user about all unapplied document changes
-  (1st part of bug 9356).
-
-- When adding a module, warn user about all unapplied document changes
-  (2nd part of bug 9356).
-
-- Do not enable the Apply button in the document dialog just because a
-  module was selected in the widget (without actual change) (bug 9365).
-
-- Fix logic of "Maintain aspect ratio" checkbox in the graphics dialog
-  (bug 9357).
 
 
 * INTERNALS
 
-- Fix wrong test in LyX server.
-
-- Fix possible memory corruption on copying to the clipboard.
-
-- Fix possible memory corruption during LaTeX log file parsing.
-
-- Make some math messages translatable (bug 1908).
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Fix language settings for all IEEEtran templates (bug 9350).
-
-- The template document for REVTeX 4.1 has been rewritten.
 
 
 * LYXHTML
 
-- Fix export of \ll, \gg, \ne and \neq in math formulas (bug 9372).
 
 
 
 * TEX2LYX
 
-- Do not ignore table columns with unknown column specifiers (bug 9311).
-
-- Parse tikzpicture environment correctly (bug 9011).
-
-- Fix misparsing of \textgreek without polyglossia (bug 8553).
-
-- Parse post command argument insets (bug 8473).
-
-- Parse verbatim options containing commands (bug 9113).
 
 
 
@@ -220,6 +86,3 @@ What's new
 
 * BUILD/INSTALLATION
 
-- Fix some compiler warnings.
-
-- Fix a few minor issues in the RPM spec file template (bug 9349).
