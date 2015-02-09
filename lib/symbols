@@ -348,6 +348,8 @@ sqsubseteq         cmsy        118   0 mathrel  &sqsube;
 sqsupseteq         cmsy        119   0 mathrel  &sqsupe;
 parallel           cmsy        107   0 mathrel  &spar;
 mid                cmsy        106 124 mathrel  &smid;
+lvert              cmsy        106 124 mathrel  &lvert;  amsmath
+rvert              cmsy        106 124 mathrel  &rvert;  amsmath 
 dashv              cmsy         97   0 mathrel  &dashv;
 vdash              cmsy         96   0 mathrel  &vdash;
 nearrow            cmsy         37   0 mathrel  &nearr;
@@ -400,6 +402,8 @@ colon              cmr          58  58 mathpunct  &colon;
 arrowvert          cmsy        106   0 mathord  &verbar;
 Arrowvert          cmsy        107   0 mathord  &par;
 Vert               cmsy        107   0 mathord  &par;
+lVert              cmsy        107   0 mathord  &par;  amsmath
+rVert              cmsy        107   0 mathord  &par;  amsmath 
 |                  cmsy        107   0 mathord  &verbar;
 vert               cmsy        106   0 mathord  &verbar;
 uparrow            cmsy         34 173 mathrel	&uarr;
