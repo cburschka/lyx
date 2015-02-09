@@ -24,8 +24,8 @@ Lists of files to include in the installer
 
 !macro FileListQtImageformats COMMAND DIRECTORY
 
-  ${FILE}qico4.dll"
   ${FILE}qgif4.dll"
+  ${FILE}qico4.dll"
   ${FILE}qjpeg4.dll"
   ${FILE}qmng4.dll"
   ${FILE}qsvg4.dll"
