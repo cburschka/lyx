@@ -88,6 +88,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix crash on exporting a recursive math macro (bug 9140). Recursive macros
+  are invalid, so typesetting will still fail with "TeX capacity exceeded".
+
 - Fix baseline calculation in last paragraph (bug 9231).
 
 - Fix export of xfig external insets (bug 9244).
@@ -107,9 +110,6 @@ What's new
 - Fix for improper environment with duplicate PATH variable entries.
   This happens on Mac OS X 10.10 (Yosemite) where launchd(8) passes
   such an environment to LyX when started from the dock (bug 9317).
-
-- Fix crash on exporting a recursive math macro (bug 9140). Recursive macros
-  are invalid, so typesetting will still fail with "TeX capacity exceeded".
 
 - Protect insets when needed in subfloat captions (bug 9346).
 
@@ -144,6 +144,11 @@ What's new
 
 * USER INTERFACE
 
+- Fix most frequent reason for crash while editing with open view source
+  window (bug 9336).
+
+- Fix crash when pasting citation into math formula (bug 9302).
+
 - Fix alignment rendering of multirow in LyX (bug 8976).
 
 - Fix mapping of ISO_Left_Tab key, which was erroneously assigned to Tab
@@ -159,21 +164,16 @@ What's new
   layout (bug 2666).
 
 - When switching classes, warn user about all unapplied document changes
-  (1. part of bug 9356).
+  (1st part of bug 9356).
 
 - When adding a module, warn user about all unapplied document changes
-  (2. part of bug 9356).
+  (2nd part of bug 9356).
 
 - Do not enable the Apply button in the document dialog just because a
   module was selected in the widget (without actual change) (bug 9365).
 
 - Fix logic of "Maintain aspect ratio" checkbox in the graphics dialog
   (bug 9357).
-
-- Fix most frequent reason for crash while editing with open view source
-  window (bug 9336).
-
-- Fix crash when pasting citation into math formula (bug 9302).
 
 
 * INTERNALS
@@ -210,7 +210,7 @@ What's new
 
 - Parse post command argument insets (bug 8473).
 
-- Parse parsing of verbatim options containing commands (bug 9113).
+- Parse verbatim options containing commands (bug 9113).
 
 
 
@@ -223,4 +223,3 @@ What's new
 - Fix some compiler warnings.
 
 - Fix a few minor issues in the RPM spec file template (bug 9349).
-
