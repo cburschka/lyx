@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-02-05 20:29-0500\n"
+"POT-Creation-Date: 2015-02-10 09:29+0100\n"
 "PO-Revision-Date: 2014-11-14 18:39+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -3384,7 +3384,7 @@ msgstr "&Zobraziť jediné tlačidlo na zavretie panelov"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:193
 msgid "Closing last &view:"
-msgstr "Pri zavieraní posledného náhľadu:"
+msgstr "Pri zavieraní &posledného náhľadu:"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:204
 msgid "Closes document"
@@ -10162,9 +10162,9 @@ msgstr "PopisObrázka"
 msgid "fig."
 msgstr "obr."
 
-#: lib/layouts/aastex.layout:533
-msgid "The caption as it appears in the list of figures"
-msgstr "Popis ako sa zobrazí v zozname obrázkov"
+#: lib/layouts/aastex.layout:534
+msgid "Filename to identify the corresponding figure file"
+msgstr "Meno súboru korešpondujúceho obrázku"
 
 #: lib/layouts/aastex.layout:548
 msgid "Facility"
@@ -24493,8 +24493,8 @@ msgid "Use \"...\" to shorten long completions."
 msgstr "Použiť \"...\" pre skrátenie dlhých doplnení."
 
 #: src/LyXRC.cpp:3348
-msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
-msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na \\Rightarrow."
+msgid "Allow TeXMacs shorthand, like => converting to Rightarrow."
+msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na Rightarrow."
 
 #: src/LyXRC.cpp:3352
 #, c-format
@@ -30109,8 +30109,11 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
-#~ msgid "Allow TeXMacs shorthand, like => converting to Rightarrow."
-#~ msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na Rightarrow."
+#~ msgid "The caption as it appears in the list of figures"
+#~ msgstr "Popis ako sa zobrazí v zozname obrázkov"
+
+#~ msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
+#~ msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na \\Rightarrow."
 
 #~ msgid "[LIST of PDF Comments]"
 #~ msgstr "[Zoznam PDF Komentárov]"
