@@ -661,7 +661,8 @@ def checkFormatEntries(dtl_tools):
 \Format pdf4       pdf    "PDF (XeTeX)"           X  "%%"	""	"document,vector,menu=export"	""
 \Format pdf5       pdf    "PDF (LuaTeX)"          u  "%%"	""	"document,vector,menu=export"	""
 \Format pdf6       pdf    "PDF (graphics)"        "" "%%"	""	"vector"	"application/pdf"
-\Format pdf7       pdf    "PDF (cropped)"         "" "%%"	""	"document,menu=export"	""'''])
+\Format pdf7       pdf    "PDF (cropped)"         "" "%%"	""	"document,vector,menu=export"	""
+\Format pdf8       pdf    "PDF (150 dpi)"         "" "%%"	""	"document,vector,menu=export"	""'''])
     #
     checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular', 'yap', 'dviout -Set=!m'],
         rc_entry = [r'''\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector,menu=export"	"application/x-dvi"
@@ -861,9 +862,18 @@ def checkConverterEntries():
     # Only define a converter from pdf6 for graphics
     checkProg('a PDF to EPS converter', ['pdftops -eps -f 1 -l 1 $$i $$o'],
         rc_entry = [ r'\converter pdf6        eps        "%%"	""' ])
-    #
+    # Create one converter for a PDF produced using TeX fonts and one for a
+    # PDF produced using non-TeX fonts. This does not produce non-unique
+    # conversion paths, since a given document either uses TeX fonts or not.
     checkProg('a PDF cropping tool', ['pdfcrop $$i $$o'],
-        rc_entry = [ r'\converter pdf2   pdf7       "%%"	""' ])
+        rc_entry = [ r'''\converter pdf2   pdf7       "%%"	""' ])
+\converter pdf4   pdf7       "%%"	""''' ])
+    # Create one converter for a PDF produced using TeX fonts and one for a
+    # PDF produced using non-TeX fonts. This does not produce non-unique
+    # conversion paths, since a given document either uses TeX fonts or not.
+    checkProg('Ghostscript', ["gswin32c", "gswin64c", "gs"],
+        rc_entry = [ r'''\converter pdf2   pdf8       "python -tt $$s/scripts/convert_pdf.py $$i $$o ebook"	""
+\converter pdf4   pdf8       "python -tt $$s/scripts/convert_pdf.py $$i $$o ebook"	""''' ])
     #
     checkProg('a Beamer info extractor', ['makebeamerinfo -p $$i'],
         rc_entry = [ r'\converter pdf2         beamer.info        "%%"	""' ])

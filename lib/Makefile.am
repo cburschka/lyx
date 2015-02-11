@@ -2124,6 +2124,7 @@ dist_scripts_DATA = \
 # Note that we "chmod 755" manually these files in install-data-hook.
 dist_scripts_DATA += \
 	scripts/clean_dvi.py \
+	scripts/convert_pdf.py \
 	scripts/convertDefault.py \
 	scripts/csv2lyx.py \
 	scripts/date.py \
