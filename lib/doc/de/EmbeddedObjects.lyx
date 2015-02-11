@@ -30023,6 +30023,15 @@ reference "fuss:Fußnoten-Beispiel"
 \begin_inset VSpace defskip
 \end_inset
 
+Fußnoten in Titel-Umgebungen werden üblicherweise mit Symbolen nummeriert
+ und sie können nur einen Absatz enthalten.
+ Siehe als Beispiel die Fußnote der Titelseite dieses Dokuments.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
 Fußnoten in Tabellen werden von LaTeX aus technischen Gründen nicht gedruckt.
  Jedoch gibt es eine andere Methode sie zu drucken: Anstatt einer Fußnote
  wird der Befehl 
