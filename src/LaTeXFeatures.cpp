@@ -1435,7 +1435,8 @@ docstring const getFloatI18nPreamble(docstring const & type,
 
 
 docstring const i18npreamble(docstring const & templ, Language const * lang,
-		Encoding const & enc, bool const polyglossia)
+                             Encoding const & enc, bool const polyglossia,
+                             bool const need_fixedwidth)
 {
 	if (templ.empty())
 		return templ;
@@ -1447,6 +1448,24 @@ docstring const i18npreamble(docstring const & templ, Language const * lang,
 	string const langenc = lang->encoding()->iconvName();
 	string const texenc = lang->encoding()->latexName();
 	string const bufenc = enc.iconvName();
+	Encoding const * testenc(&enc);
+	bool lang_fallback = false;
+	bool ascii_fallback = false;
+	if (need_fixedwidth && !enc.hasFixedWidth()) {
+		if (lang->encoding()->hasFixedWidth()) {
+			testenc = lang->encoding();
+			lang_fallback = true;
+		} else {
+			// We need a fixed width encoding, but both the buffer
+			// encoding and the language encoding are variable
+			// width. As a last fallback, try to convert to pure
+			// ASCII using the LaTeX commands defined in unicodesymbols.
+			testenc = encodings.fromLyXName("ascii");
+			if (!testenc)
+				return docstring();
+			ascii_fallback = true;
+		}
+	}
 	// First and second character of plane 15 (Private Use Area)
 	string const s1 = "\xf3\xb0\x80\x80"; // U+F0000
 	string const s2 = "\xf3\xb0\x80\x81"; // U+F0001
@@ -1460,16 +1479,18 @@ docstring const i18npreamble(docstring const & templ, Language const * lang,
 		docstring const name = lang->translateLayout(key);
 		// Check whether name can be encoded in the buffer encoding
 		bool encodable = true;
-		for (size_t i = 0; i < name.size(); ++i) {
-			if (!enc.encodable(name[i])) {
+		for (size_t i = 0; i < name.size() && encodable; ++i)
+			if (!testenc->encodable(name[i]))
 				encodable = false;
-				break;
-			}
-		}
-		string const translated = encodable ? to_utf8(name)
-			: "\\inputencoding{" + texenc + "}"
-			+ s1 + langenc + s2 + to_utf8(name)
-			+ s1 + bufenc + s2;
+		string translated;
+		if (encodable && !lang_fallback)
+			translated = to_utf8(name);
+		else if (ascii_fallback)
+			translated = to_ascii(testenc->latexString(name).first);
+		else
+			translated = "\\inputencoding{" + texenc + "}"
+				+ s1 + langenc + s2 + to_utf8(name)
+				+ s1 + bufenc + s2;
 		preamble = subst(preamble, sub.str(), translated);
 	}
 	return from_utf8(preamble);
@@ -1494,20 +1515,20 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel, bool use_po
 		snippets.insert(i18npreamble(tclass[*cit].langpreamble(),
 						buffer().language(),
 						buffer().params().encoding(),
-						use_polyglossia));
+						use_polyglossia, false));
 		// commands for language changing (for multilanguage documents)
 		if ((use_babel || use_polyglossia) && !UsedLanguages_.empty()) {
 			snippets.insert(i18npreamble(
 						tclass[*cit].babelpreamble(),
 						buffer().language(),
 						buffer().params().encoding(),
-						use_polyglossia));
+						use_polyglossia, false));
 			for (lang_it lit = lbeg; lit != lend; ++lit)
 				snippets.insert(i18npreamble(
 						tclass[*cit].babelpreamble(),
 						*lit,
 						buffer().params().encoding(),
-						use_polyglossia));
+						use_polyglossia, false));
 		}
 	}
 	if ((use_babel || use_polyglossia) && !UsedLanguages_.empty()) {
@@ -1555,24 +1576,34 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel, bool use_po
 		TextClass::InsetLayouts::const_iterator it = ils.find(*cit);
 		if (it == ils.end())
 			continue;
+		// The listings package does not work with variable width
+		// encodings, only with fixed width encodings. Therefore we
+		// need to force a fixed width encoding for
+		// \lstlistlistingname and \lstlistingname (bug 9382).
+		// This needs to be consistent with InsetListings::latex().
+		docstring const ilname = it->second.name();
+		bool const need_fixedwidth = !runparams_.isFullUnicode() &&
+				(ilname == "Listings" ||
+				 ilname == "Include:Listings" ||
+				 ilname == "TOC:Listings");
 		// language dependent commands (once per document)
 		snippets.insert(i18npreamble(it->second.langpreamble(),
 						buffer().language(),
 						buffer().params().encoding(),
-						use_polyglossia));
+						use_polyglossia, need_fixedwidth));
 		// commands for language changing (for multilanguage documents)
 		if ((use_babel || use_polyglossia) && !UsedLanguages_.empty()) {
 			snippets.insert(i18npreamble(
 						it->second.babelpreamble(),
 						buffer().language(),
 						buffer().params().encoding(),
-						use_polyglossia));
+						use_polyglossia, need_fixedwidth));
 			for (lang_it lit = lbeg; lit != lend; ++lit)
 				snippets.insert(i18npreamble(
 						it->second.babelpreamble(),
 						*lit,
 						buffer().params().encoding(),
-						use_polyglossia));
+						use_polyglossia, need_fixedwidth));
 		}
 	}
 
