@@ -178,6 +178,8 @@ string const quoteName(string const & name, quote_style style)
 		// simple parser in Systemcall.cpp do the substitution.
 		return '"' + subst(name, "\"", "\\\"") + '"';
 #endif
+	case quote_shell_filename:
+		return quoteName(os::external_path(name), quote_shell);
 	case quote_python:
 		return "\"" + subst(subst(name, "\\", "\\\\"), "\"", "\\\"")
 		     + "\"";

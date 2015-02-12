@@ -110,6 +110,9 @@ enum quote_style {
 	/** Quote for the (OS dependant) shell. This is needed for command
 	    line arguments of subprocesses. */
 	quote_shell,
+	/** Quote a file name for the (OS dependant) shell. This is needed
+	    for file names as command line arguments of subprocesses. */
+	quote_shell_filename,
 	/** Quote for python. Use this if you want to store a filename in a
 	    python script. Example: \code
 	    os << "infile = " << quoteName(filename) << '\\n';
