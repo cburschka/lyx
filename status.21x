@@ -73,6 +73,9 @@ What's new
 
 - Work around limitations of external image viewers on windows (bug 8892).
 
+- Do not display unwanted curly brackets in multi-line formulas (happened if
+  the first character in a row was a '[') (bug 8679).
+
 
 
 * INTERNALS
