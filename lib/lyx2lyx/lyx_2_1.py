@@ -2705,8 +2705,22 @@ def revert_beamerargs(document):
                         endPlain = find_end_of_layout(document.body, beginPlain)
                         content = document.body[beginPlain + 1 : endPlain]
                         del document.body[i:j+1]
-                        subst = put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
-                        document.body[realparbeg : realparbeg] = subst
+                        if layoutname == "Description":
+                            # Description only has one (overlay) item arg
+                            subst = put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
+                            # This must be put after the first space (begin of decription body
+                            # in LyX's arkward description list syntax)
+                            # Try to find that place ...
+                            rxx = re.compile(r'^([^\\ ]+ )(.*)$')
+                            for q in range(parbeg, parend):
+                                m = rxx.match(document.body[q])
+                                if m:
+                                    # We found it. Now insert the ERT argument just there:
+                                    document.body[q : q] = [m.group(1), ''] + subst + ['', m.group(2)]
+                                    break
+                        else:
+                            subst = put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
+                            document.body[realparbeg : realparbeg] = subst
                     elif argnr == "item:2":
                         j = find_end_of_inset(document.body, i)
                         # Find containing paragraph layout
