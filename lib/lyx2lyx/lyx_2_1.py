@@ -28,7 +28,7 @@ import sys, os
 from parser_tools import count_pars_in_inset, del_token, find_token, find_token_exact, \
     find_token_backwards, find_end_of, find_end_of_inset, find_end_of_layout, \
     find_end_of_sequence, find_re, get_option_value, get_containing_layout, \
-    get_value, get_quoted_value, set_option_value
+    get_containing_inset, get_value, get_quoted_value, set_option_value
 
 #from parser_tools import find_token, find_end_of, find_tokens, \
   #find_end_of_inset, find_end_of_layout, \
@@ -4150,6 +4150,7 @@ def convert_lyxframes(document):
                 # Step III: find real frame end
                 j = j + 8
                 jj = j
+                inInset = get_containing_inset(document.body, i)
                 while True:
                     fend = find_token(document.body, "\\begin_layout", jj)
                     if fend == -1:
@@ -4159,7 +4160,11 @@ def convert_lyxframes(document):
                     if val not in frameend:
                         jj = fend + 1
                         continue
-                    old = document.body[fend]
+                    # is this frame nested in an inset (e.g., Note)?
+                    if inInset != False:
+                        # if so, end the frame inside the inset
+                        if inInset[2] < fend:
+                            fend = inInset[2]
                     if val == frametype:
                         document.body[fend : fend] = ['\\end_deeper', '', '\\begin_layout Separator', '', '\\end_layout']
                     # consider explicit EndFrames between two identical frame types
