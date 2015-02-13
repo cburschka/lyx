@@ -439,6 +439,9 @@ def get_containing_inset(lines, i):
           break
       j = stins - 1
 
+  if endins < i:
+      return False
+
   inset = get_value(lines, "\\begin_inset", stins)
   if inset == "":
       # shouldn't happen
@@ -464,6 +467,9 @@ def get_containing_layout(lines, i):
       if endlay > i:
           break
       j = stlay - 1
+
+  if endlay < i:
+      return False
 
   lay = get_value(lines, "\\begin_layout", stlay)
   if lay == "":
