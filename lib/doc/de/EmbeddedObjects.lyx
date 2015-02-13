@@ -12242,17 +12242,17 @@ n
 \emph default
  Spalten zu einer Mehrfachspalte zusammengefasst werden, errechnet sich
  die definierte Breite 
-\begin_inset Formula $W_{g\, n}$
+\begin_inset Formula $W_{g\,n}$
 \end_inset
 
  einer Spalte, deren totale Breite = 
-\begin_inset Formula $W_{\mathrm{tot\, multicolumn}}/n$
+\begin_inset Formula $W_{\mathrm{tot\,multicolumn}}/n$
 \end_inset
 
  sein soll, wie folgt:
 \begin_inset Formula 
 \begin{equation}
-W_{g\, n}=(W_{g\,\mathrm{multicolumn}}+(1-n)\cdot(12.4\,\mathrm{pt}))/n\label{eq:Wgn}
+W_{g\,n}=(W_{g\,\mathrm{multicolumn}}+(1-n)\cdot(12.4\,\mathrm{pt}))/n\label{eq:Wgn}
 \end{equation}
 
 \end_inset
@@ -19831,9 +19831,9 @@ fache der Breite der anderen 3
 Spalten haben sollen, ist die Berechnung
 \begin_inset Formula 
 \begin{align}
-\backslash\mbox{columnwidth} & =3\, W_{\mathrm{Spalte}}+2\cdot0,75\, W_{\mathrm{Spalte}}+\backslash\mbox{arrayrulewidth}\nonumber \\
+\backslash\mbox{columnwidth} & =3\,W_{\mathrm{Spalte}}+2\cdot0,75\,W_{\mathrm{Spalte}}+\backslash\mbox{arrayrulewidth}\nonumber \\
  & \phantom{=\,}+5\left(2\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}\right)\nonumber \\
- & =4,5\, W_{\mathrm{Spalte}}+62,4\,\mathrm{pt}\nonumber \\
+ & =4,5\,W_{\mathrm{Spalte}}+62,4\,\mathrm{pt}\nonumber \\
 W_{\mathrm{Spalte}} & =\frac{\backslash\mbox{columnwidth}-62,4\,\mathrm{pt}}{4,5}
 \end{align}
 
@@ -21307,7 +21307,7 @@ Pixel
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\: B_{\mathrm{red}}$
+\begin_inset Formula $\:B_{\mathrm{red}}$
 \end_inset
 
 
@@ -45226,13 +45226,13 @@ Die Gesamtbreite von
  n
 \emph default
  Tabellenzellen 
-\begin_inset Formula $W_{\mathrm{tot\, n}}$
+\begin_inset Formula $W_{\mathrm{tot\,n}}$
 \end_inset
 
  kann wie folgt berechnet werden:
 \begin_inset Formula 
 \begin{equation}
-W_{\mathrm{tot}\, n}=n\cdot(W_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}
+W_{\mathrm{tot}\,n}=n\cdot(W_{g\,n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}
 \end{equation}
 
 \end_inset
@@ -45242,7 +45242,7 @@ W_{\mathrm{tot}\, n}=n\cdot(W_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cd
 
 \begin_layout Standard
 Dabei ist 
-\begin_inset Formula $W_{g\, n}$
+\begin_inset Formula $W_{g\,n}$
 \end_inset
 
  die Breite jeder Zelle.
@@ -45284,13 +45284,13 @@ reference "eq:Wtot_n"
 \end_inset
 
  ist die Gesamtbreite einer Mehrfachspalte, 
-\begin_inset Formula $W_{\mathrm{tot\, mult}}$
+\begin_inset Formula $W_{\mathrm{tot\,mult}}$
 \end_inset
 
 ,
 \begin_inset Formula 
 \begin{equation}
-W_{\mathrm{tot\, mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}
+W_{\mathrm{tot\,mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}
 \end{equation}
 
 \end_inset
@@ -45318,7 +45318,7 @@ reference "eq:Wtot_mult"
 \end_inset
 
  gleich, kann man die benötigte Breite 
-\begin_inset Formula $W_{g\, n}$
+\begin_inset Formula $W_{g\,n}$
 \end_inset
 
 , wenn 
@@ -45326,13 +45326,13 @@ reference "eq:Wtot_mult"
 n
 \emph default
  Spalten überspannt sind, so dass jede Spalte eine Gesamtbreite 
-\begin_inset Formula $W_{\mathrm{tot\, mult}}/n$
+\begin_inset Formula $W_{\mathrm{tot\,mult}}/n$
 \end_inset
 
  hat, berechnen:
 \begin_inset Formula 
 \begin{equation}
-W_{g\, n}=\frac{W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth})}{n}
+W_{g\,n}=\frac{W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth})}{n}
 \end{equation}
 
 \end_inset
@@ -45669,7 +45669,7 @@ Dokumentation des LaTeX-Pakets
 \begin_inset CommandInset href
 LatexCommand href
 name "KOMA-Script"
-target "http://mirror.ctan.org/macros/latex/contrib/koma-script/scrguien.pdf"
+target "http://mirror.ctan.org/macros/latex/contrib/koma-script/doc/scrguien.pdf"
 
 \end_inset
 

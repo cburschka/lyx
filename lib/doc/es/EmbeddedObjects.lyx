@@ -12087,7 +12087,7 @@ reference "cap:Explicación-de-la-Ecuación"
 
 \begin_layout Standard
 La anchura dada 
-\begin_inset Formula $W_{g\, n}$
+\begin_inset Formula $W_{g\,n}$
 \end_inset
 
  necesaria para combinar 
@@ -12096,13 +12096,13 @@ n
 \emph default
  columnas puede calcularse de manera que cada columna tenga una anchura
  total de 
-\begin_inset Formula $W_{\mathrm{tot\, multicolumn}}/n$
+\begin_inset Formula $W_{\mathrm{tot\,multicolumn}}/n$
 \end_inset
 
 :
 \begin_inset Formula 
 \begin{equation}
-W_{g\, n}=(W_{g\,\mathrm{multicolumn}}+(1-n)\cdot(12.4\,\mathrm{pt}))/n\label{eq:Wgn}
+W_{g\,n}=(W_{g\,\mathrm{multicolumn}}+(1-n)\cdot(12.4\,\mathrm{pt}))/n\label{eq:Wgn}
 \end{equation}
 
 \end_inset
@@ -19542,9 +19542,9 @@ columnas en el que dos de ellas tengan 0.75
 veces la anchura de las otras, el cálculo es
 \begin_inset Formula 
 \begin{align}
-\backslash\mbox{columnwidth} & =3\, W_{\mathrm{column}}+2\cdot0.75\, W_{\mathrm{column}}+\backslash\mbox{arrayrulewidth}\nonumber \\
+\backslash\mbox{columnwidth} & =3\,W_{\mathrm{column}}+2\cdot0.75\,W_{\mathrm{column}}+\backslash\mbox{arrayrulewidth}\nonumber \\
  & \phantom{=\,}+5\left(2\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}\right)\nonumber \\
- & =4.5\, W_{\mathrm{column}}+62.4\,\mathrm{pt}\nonumber \\
+ & =4.5\,W_{\mathrm{column}}+62.4\,\mathrm{pt}\nonumber \\
 W_{\mathrm{column}} & =\frac{\backslash\mbox{columnwidth}-62.4\,\mathrm{pt}}{4.5}
 \end{align}
 
@@ -21009,7 +21009,7 @@ Pixels
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\: B_{\mathrm{red}}$
+\begin_inset Formula $\:B_{\mathrm{red}}$
 \end_inset
 
 
@@ -44540,13 +44540,13 @@ La anchura total de
 n
 \emph default
  celdas de un cuadro 
-\begin_inset Formula $W_{\mathrm{tot\, n}}$
+\begin_inset Formula $W_{\mathrm{tot\,n}}$
 \end_inset
 
  puede calcularse con
 \begin_inset Formula 
 \begin{equation}
-W_{\mathrm{tot}\, n}=n\cdot(W_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}
+W_{\mathrm{tot}\,n}=n\cdot(W_{g\,n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}
 \end{equation}
 
 \end_inset
@@ -44556,7 +44556,7 @@ W_{\mathrm{tot}\, n}=n\cdot(W_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cd
 
 \begin_layout Standard
 donde 
-\begin_inset Formula $W_{g\, n}$
+\begin_inset Formula $W_{g\,n}$
 \end_inset
 
  es el ancho dado de todas las celdas.
@@ -44597,13 +44597,13 @@ reference "eq:Wtot_n"
 \end_inset
 
 , el ancho total de una multicolumna, 
-\begin_inset Formula $W_{\mathrm{tot\, mult}}$
+\begin_inset Formula $W_{\mathrm{tot\,mult}}$
 \end_inset
 
  es
 \begin_inset Formula 
 \begin{equation}
-W_{\mathrm{tot\, mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}
+W_{\mathrm{tot\,mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}
 \end{equation}
 
 \end_inset
@@ -44631,7 +44631,7 @@ reference "eq:Wtot_mult"
 \end_inset
 
  podemos calcular el ancho dado necesario 
-\begin_inset Formula $W_{g\, n}$
+\begin_inset Formula $W_{g\,n}$
 \end_inset
 
  cuando se expanden 
@@ -44639,13 +44639,13 @@ reference "eq:Wtot_mult"
 n
 \emph default
  columnas, de forma que cada una de ellas tiene una anchura total 
-\begin_inset Formula $W_{\mathrm{tot\, mult}}/n$
+\begin_inset Formula $W_{\mathrm{tot\,mult}}/n$
 \end_inset
 
 :
 \begin_inset Formula 
 \begin{equation}
-W_{g\, n}=\frac{W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth})}{n}
+W_{g\,n}=\frac{W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth})}{n}
 \end{equation}
 
 \end_inset
@@ -44968,7 +44968,7 @@ Documentación del paquete LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "KOMA-Script"
-target "http://mirror.ctan.org/macros/latex/contrib/koma-script/scrguien.pdf"
+target "http://mirror.ctan.org/macros/latex/contrib/koma-script/doc/scrguien.pdf"
 
 \end_inset
 

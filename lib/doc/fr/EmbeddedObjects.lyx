@@ -12381,7 +12381,7 @@ reference "cha:Explication-de-l'Equation"
 
 \begin_layout Standard
 La largeur nécessaire 
-\begin_inset Formula $W_{g\, n}$
+\begin_inset Formula $W_{g\,n}$
 \end_inset
 
  quand 
@@ -12390,13 +12390,13 @@ n
 \emph default
  colonnes sont couvertes peut être calculée de façon à ce que chaque colonne
  ait une largeur totale de 
-\begin_inset Formula $W_{\mathrm{tot\, multicolonne}}/n$
+\begin_inset Formula $W_{\mathrm{tot\,multicolonne}}/n$
 \end_inset
 
 :
 \begin_inset Formula 
 \begin{equation}
-W_{g\, n}=(W_{g\,\mathrm{multicolonne}}+(1-n)\cdot(12.4\,\mathrm{pt}))/n\label{eq:Wgn}
+W_{g\,n}=(W_{g\,\mathrm{multicolonne}}+(1-n)\cdot(12.4\,\mathrm{pt}))/n\label{eq:Wgn}
 \end{equation}
 
 \end_inset
@@ -19995,9 +19995,9 @@ fois celle des 3 autres, le calcul est le suivant:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-\backslash\mbox{columnwidth} & =3\, L_{\mathrm{colonne}}+2\cdot0.75\, L_{\mathrm{colonne}}+\backslash\mbox{arrayrulewidth}\nonumber \\
+\backslash\mbox{columnwidth} & =3\,L_{\mathrm{colonne}}+2\cdot0.75\,L_{\mathrm{colonne}}+\backslash\mbox{arrayrulewidth}\nonumber \\
  & \phantom{=\,}+5\left(2\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}\right)\nonumber \\
- & =4.5\, L_{\mathrm{colonne}}+62.4\,\mathrm{pt}\nonumber \\
+ & =4.5\,L_{\mathrm{colonne}}+62.4\,\mathrm{pt}\nonumber \\
 L_{\mathrm{colonne}} & =\frac{\backslash\mbox{columnwidth}-62.4\,\mathrm{pt}}{4.5}
 \end{align}
 
@@ -21490,7 +21490,7 @@ Pixels
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\: B_{\mathrm{red}}$
+\begin_inset Formula $\:B_{\mathrm{red}}$
 \end_inset
 
 
@@ -46057,13 +46057,13 @@ La largeur totale de
 n
 \emph default
  cellules de tableau 
-\begin_inset Formula $L_{\mathrm{tot\, n}}$
+\begin_inset Formula $L_{\mathrm{tot\,n}}$
 \end_inset
 
  peut être calculée avec
 \begin_inset Formula 
 \begin{equation}
-L_{\mathrm{tot}\, n}=n\cdot(L_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}
+L_{\mathrm{tot}\,n}=n\cdot(L_{g\,n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}
 \end{equation}
 
 \end_inset
@@ -46073,7 +46073,7 @@ L_{\mathrm{tot}\, n}=n\cdot(L_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cd
 
 \begin_layout Standard
 où 
-\begin_inset Formula $L_{g\, n}$
+\begin_inset Formula $L_{g\,n}$
 \end_inset
 
  est la largeur fixe de toutes les cellules.
@@ -46115,13 +46115,13 @@ reference "eq:Wtot_n"
 \end_inset
 
 , la largeur totale d'une multi-colonnes, 
-\begin_inset Formula $L_{\mathrm{tot\, mult}}$
+\begin_inset Formula $L_{\mathrm{tot\,mult}}$
 \end_inset
 
  est
 \begin_inset Formula 
 \begin{equation}
-L_{\mathrm{tot\, mult}}=L_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}
+L_{\mathrm{tot\,mult}}=L_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}
 \end{equation}
 
 \end_inset
@@ -46149,7 +46149,7 @@ reference "eq:Wtot_mult"
 \end_inset
 
  sont égales, on peut calculer la largeur nécessaire 
-\begin_inset Formula $L_{g\, n}$
+\begin_inset Formula $L_{g\,n}$
 \end_inset
 
  quand 
@@ -46158,13 +46158,13 @@ n
 \emph default
  colonnes sont couvertes, de façon à ce que chaque colonne ait une largeur
  de 
-\begin_inset Formula $L_{\mathrm{tot\, mult}}/n$
+\begin_inset Formula $L_{\mathrm{tot\,mult}}/n$
 \end_inset
 
 :
 \begin_inset Formula 
 \begin{equation}
-L_{g\, n}=\frac{L_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth})}{n}
+L_{g\,n}=\frac{L_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth})}{n}
 \end{equation}
 
 \end_inset
@@ -46487,7 +46487,7 @@ Documentation du paquetage LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "KOMA-Script"
-target "http://mirror.ctan.org/macros/latex/contrib/koma-script/scrguien.pdf"
+target "http://mirror.ctan.org/macros/latex/contrib/koma-script/doc/scrguien.pdf"
 
 \end_inset
 
