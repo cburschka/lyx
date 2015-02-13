@@ -18924,9 +18924,9 @@ columnwidth-62.4pt)/5}
 というコマンドを入力します。5列の表で、うち2列が他の3列の幅の0.75倍であるような表の場合には、計算は
 \begin_inset Formula 
 \begin{align}
-\backslash\mbox{columnwidth} & =3\, W_{\text{列}}+2\cdot0.75\, W_{\text{列}}+\backslash\mbox{arrayrulewidth}\nonumber \\
+\backslash\mbox{columnwidth} & =3\,W_{\text{列}}+2\cdot0.75\,W_{\text{列}}+\backslash\mbox{arrayrulewidth}\nonumber \\
  & \phantom{=\,}+5\left(2\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}\right)\nonumber \\
- & =4.5\, W_{\text{列}}+62.4\,\mathrm{pt}\nonumber \\
+ & =4.5\,W_{\text{列}}+62.4\,\mathrm{pt}\nonumber \\
 W_{\text{列}} & =\frac{\backslash\mbox{columnwidth}-62.4\,\mathrm{pt}}{4.5}
 \end{align}
 
@@ -20307,7 +20307,7 @@ name "tab:表セル揃え"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\: B_{\mathrm{red}}$
+\begin_inset Formula $\:B_{\mathrm{red}}$
 \end_inset
 
 
@@ -28327,6 +28327,17 @@ reference "fn:これは脚注の一例"
 \end_inset
 
 の相互参照です。
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\lang english
+Footnotes in title environments are usually not numbered with symbols and
+ they cannot contain several paragraphs.
+ See for example the footnote in the titling of this document.
 \end_layout
 
 \begin_layout Standard
@@ -42291,13 +42302,13 @@ name "cha:式の説明"
 \end_inset
 
 個の表セルの全幅
-\begin_inset Formula $W_{\mathrm{tot\, n}}$
+\begin_inset Formula $W_{\mathrm{tot\,n}}$
 \end_inset
 
 は
 \begin_inset Formula 
 \begin{equation}
-W_{\mathrm{tot}\, n}=n\cdot(W_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}
+W_{\mathrm{tot}\,n}=n\cdot(W_{g\,n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}
 \end{equation}
 
 \end_inset
@@ -42307,7 +42318,7 @@ W_{\mathrm{tot}\, n}=n\cdot(W_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cd
 
 \begin_layout Standard
 で計算できます。ここで
-\begin_inset Formula $W_{g\, n}$
+\begin_inset Formula $W_{g\,n}$
 \end_inset
 
 は、すべてのセルが持つ固定幅です。
@@ -42342,13 +42353,13 @@ reference "eq:Wtot_n"
 \end_inset
 
 式にしたがえば、連結列の全幅
-\begin_inset Formula $W_{\mathrm{tot\, mult}}$
+\begin_inset Formula $W_{\mathrm{tot\,mult}}$
 \end_inset
 
 は
 \begin_inset Formula 
 \begin{equation}
-W_{\mathrm{tot\, mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}
+W_{\mathrm{tot\,mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}
 \end{equation}
 
 \end_inset
@@ -42362,7 +42373,7 @@ W_{\mathrm{tot\, mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\
 \end_inset
 
 列を連結する時には各列の全幅は
-\begin_inset Formula $W_{\mathrm{tot\, mult}}/n$
+\begin_inset Formula $W_{\mathrm{tot\,mult}}/n$
 \end_inset
 
 となるので、第
@@ -42380,13 +42391,13 @@ reference "eq:Wtot_mult"
 \end_inset
 
 式が等しいものと置けば、必要となる固定幅
-\begin_inset Formula $W_{g\, n}$
+\begin_inset Formula $W_{g\,n}$
 \end_inset
 
 を計算することができて、
 \begin_inset Formula 
 \begin{equation}
-W_{g\, n}=\frac{W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth})}{n}
+W_{g\,n}=\frac{W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth})}{n}
 \end{equation}
 
 \end_inset
@@ -42721,7 +42732,7 @@ LaTeXパッケージ
 \begin_inset CommandInset href
 LatexCommand href
 name "KOMA-script"
-target "http://mirror.ctan.org/macros/latex/contrib/koma-script/scrguien.pdf"
+target "http://mirror.ctan.org/macros/latex/contrib/koma-script/doc/scrguien.pdf"
 
 \end_inset
 

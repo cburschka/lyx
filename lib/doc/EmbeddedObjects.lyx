@@ -12268,7 +12268,7 @@ reference "cha:Explanation-of-Equation"
 
 \begin_layout Standard
 The width 
-\begin_inset Formula $W_{g\, n}$
+\begin_inset Formula $W_{g\,n}$
 \end_inset
 
  which the user needs to set when 
@@ -12277,13 +12277,13 @@ n
 \emph default
  columns are spanned can be calculated, so that each column has a total
  width of 
-\begin_inset Formula $W_{\mathrm{tot\, multicolumn}}/n$
+\begin_inset Formula $W_{\mathrm{tot\,multicolumn}}/n$
 \end_inset
 
 :
 \begin_inset Formula 
 \begin{equation}
-W_{g\, n}=(W_{g\,\mathrm{multicolumn}}+(1-n)\cdot(12.4\,\mathrm{pt}))/n\label{eq:Wgn}
+W_{g\,n}=(W_{g\,\mathrm{multicolumn}}+(1-n)\cdot(12.4\,\mathrm{pt}))/n\label{eq:Wgn}
 \end{equation}
 
 \end_inset
@@ -19686,9 +19686,9 @@ columns where 2 should have 0.75
 times the width than the 3 others, the calculation is
 \begin_inset Formula 
 \begin{align}
-\backslash\mbox{columnwidth} & =3\, W_{\mathrm{column}}+2\cdot0.75\, W_{\mathrm{column}}+\backslash\mbox{arrayrulewidth}\nonumber \\
+\backslash\mbox{columnwidth} & =3\,W_{\mathrm{column}}+2\cdot0.75\,W_{\mathrm{column}}+\backslash\mbox{arrayrulewidth}\nonumber \\
  & \phantom{=\,}+5\left(2\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth}\right)\nonumber \\
- & =4.5\, W_{\mathrm{column}}+62.4\,\mathrm{pt}\nonumber \\
+ & =4.5\,W_{\mathrm{column}}+62.4\,\mathrm{pt}\nonumber \\
 W_{\mathrm{column}} & =\frac{\backslash\mbox{columnwidth}-62.4\,\mathrm{pt}}{4.5}
 \end{align}
 
@@ -21158,7 +21158,7 @@ Pixels
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\: B_{\mathrm{red}}$
+\begin_inset Formula $\:B_{\mathrm{red}}$
 \end_inset
 
 
@@ -29945,6 +29945,15 @@ reference "foot:This-is-an"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+Footnotes in title environments are usually not numbered with symbols and
+ they cannot contain several paragraphs.
+ See for example the footnote in the titling of this document.
 \end_layout
 
 \begin_layout Standard
@@ -45135,19 +45144,19 @@ We can calculate the total width of
 n
 \emph default
  table cells 
-\begin_inset Formula $W_{\mathrm{tot\, n}}$
+\begin_inset Formula $W_{\mathrm{tot\,n}}$
 \end_inset
 
  as follows:
 \begin_inset Formula 
 \begin{equation}
-W_{\mathrm{tot}\, n}=n\cdot(W_{g\, n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}
+W_{\mathrm{tot}\,n}=n\cdot(W_{g\,n}+2\cdot\backslash\mbox{tabcolsep})+(n+1)\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_n}
 \end{equation}
 
 \end_inset
 
 where 
-\begin_inset Formula $W_{g\, n}$
+\begin_inset Formula $W_{g\,n}$
 \end_inset
 
  is the given width of all cells, 
@@ -45188,13 +45197,13 @@ reference "eq:Wtot_n"
 \end_inset
 
 , the total width of a multicolumn 
-\begin_inset Formula $W_{\mathrm{tot\, mult}}$
+\begin_inset Formula $W_{\mathrm{tot\,mult}}$
 \end_inset
 
  is
 \begin_inset Formula 
 \begin{equation}
-W_{\mathrm{tot\, mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}
+W_{\mathrm{tot\,mult}}=W_{g\,\mathrm{mult}}+2\cdot\backslash\mbox{tabcolsep}+2\cdot\backslash\mbox{arrayrulewidth}\label{eq:Wtot_mult}
 \end{equation}
 
 \end_inset
@@ -45222,7 +45231,7 @@ reference "eq:Wtot_mult"
 \end_inset
 
  equal we can calculate the needed given width 
-\begin_inset Formula $W_{g\, n}$
+\begin_inset Formula $W_{g\,n}$
 \end_inset
 
  when 
@@ -45230,13 +45239,13 @@ reference "eq:Wtot_mult"
 n
 \emph default
  columns are spanned, so that each column has a total width of 
-\begin_inset Formula $W_{\mathrm{tot\, mult}}/n$
+\begin_inset Formula $W_{\mathrm{tot\,mult}}/n$
 \end_inset
 
 :
 \begin_inset Formula 
 \begin{equation}
-W_{g\, n}=\frac{W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth})}{n}
+W_{g\,n}=\frac{W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+\backslash\mbox{arrayrulewidth})}{n}
 \end{equation}
 
 \end_inset
@@ -45559,7 +45568,7 @@ Documentation of the LaTeX-package
 \begin_inset CommandInset href
 LatexCommand href
 name "KOMA-Script"
-target "http://mirror.ctan.org/macros/latex/contrib/koma-script/scrguien.pdf"
+target "http://mirror.ctan.org/macros/latex/contrib/koma-script/doc/scrguien.pdf"
 
 \end_inset
 
