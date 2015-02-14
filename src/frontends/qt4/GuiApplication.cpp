@@ -1079,6 +1079,12 @@ docstring Application::iconName(FuncRequest const & f, bool unknown)
 }
 
 
+docstring Application::mathIcon(docstring const & c)
+{
+	return qstring_to_ucs4(findPng(toqstr(c)));
+}
+
+
 FuncStatus GuiApplication::getStatus(FuncRequest const & cmd) const
 {
 	FuncStatus status;
