@@ -866,7 +866,7 @@ def checkConverterEntries():
     # PDF produced using non-TeX fonts. This does not produce non-unique
     # conversion paths, since a given document either uses TeX fonts or not.
     checkProg('a PDF cropping tool', ['pdfcrop $$i $$o'],
-        rc_entry = [ r'''\converter pdf2   pdf7       "%%"	""' ])
+        rc_entry = [ r'''\converter pdf2   pdf7       "%%"	""
 \converter pdf4   pdf7       "%%"	""''' ])
     # Create one converter for a PDF produced using TeX fonts and one for a
     # PDF produced using non-TeX fonts. This does not produce non-unique
