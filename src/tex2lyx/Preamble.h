@@ -37,6 +37,8 @@ public:
 	///
 	std::string inputencoding() const { return h_inputencoding; }
 	///
+	void setInputencoding(std::string const & e) { h_inputencoding = e; }
+	///
 	std::string notefontcolor() const { return h_notefontcolor; }
 	///
 	bool refstyle() const { return h_use_refstyle; }
