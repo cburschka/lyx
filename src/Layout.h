@@ -440,7 +440,7 @@ private:
 	mutable std::string defaultcssclass_;
 	/// This is the `category' for this layout. The following are
 	/// recommended basic categories: FrontMatter, BackMatter, MainText,
-	/// Section, Starred, List, Theorem.
+	/// Sectioning, Starred, List, Reasoning.
 	docstring category_;
 	/// Macro definitions needed for this layout
 	docstring preamble_;
