@@ -3162,7 +3162,8 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 
 			if (style.pass_thru || runparams.pass_thru)
 				xs << c;
-			else if (c == '-') {
+			else if (c == '-' && !runparams.inIPA &&
+			         font.fontInfo().family() != TYPEWRITER_FAMILY) {
 				docstring str;
 				int j = i + 1;
 				if (j < size() && d->text_[j] == '-') {

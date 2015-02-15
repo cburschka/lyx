@@ -72,6 +72,8 @@ public:
 	///
 	void latex(otexstream &, OutputParams const &) const;
 	///
+	docstring xhtml(XHTMLStream & xs, OutputParams const &) const;
+	///
 	void validate(LaTeXFeatures & features) const;
 	///
 	bool allowSpellCheck() const { return false; }
