@@ -1119,39 +1119,54 @@ Delete
 \end_layout
 
 \begin_layout Standard
-差し込み枠の中身は、
-\begin_inset Flex Ruby
-status collapsed
 
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
-
-\begin_layout Plain Layout
-ショートカット
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
+\lang english
+Using the shortcut 
+\lang japanese
 
 \begin_inset Info
 type  "shortcuts"
 arg   "inset-select-all"
 \end_inset
 
-を使用して選択することができます。また、捷径
+
+\lang english
+ while the cursor is in normal text selects the whole document.
+ When the cursor is inside an inset 
+\lang japanese
+
+\begin_inset Info
+type  "shortcuts"
+arg   "inset-select-all"
+\end_inset
+
+
+\lang english
+ selects the content of the inset.
+ Using 
+\lang japanese
+
+\begin_inset Info
+type  "shortcuts"
+arg   "inset-select-all"
+\end_inset
+
+
+\lang english
+ consecutively will increase the selection to the whole inset and then to
+ the whole document.
+ The shortcut 
+\lang japanese
+
 \begin_inset Info
 type  "shortcuts"
 arg   "command-sequence buffer-begin ; buffer-end-select"
 \end_inset
 
-は文書全体を選択します。
+
+\lang english
+ selects the whole document in every case and puts the cursor to the end
+ of the document.
 \end_layout
 
 \begin_layout Section
@@ -6920,12 +6935,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 これは無調整(verbatim)環境です。
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 この下の2行は空白行です。
 \end_layout
 
@@ -6938,6 +6955,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 右記の各文字を始め、ほぼすべての文字が使えます。例："%&$§#~'`
 \backslash
 }][{|
@@ -20181,7 +20199,7 @@ status collapsed
 \end_inset
 
 列、すなわち
-\begin_inset Formula $a\, b$
+\begin_inset Formula $a\,b$
 \end_inset
 
 は、LyX上では
@@ -20220,7 +20238,7 @@ a Ctrl+Space b
 Space
 \family default
 を3回入力：
-\begin_inset Formula $a\! b$
+\begin_inset Formula $a\!b$
 \end_inset
 
 
@@ -21758,7 +21776,7 @@ Blackboard体
 の「N」が使用されている例です。
 \begin_inset Formula 
 \[
-f(x)=\sqrt{x}\;;\; x\in\mathbb{N}
+f(x)=\sqrt{x}\;;\;x\in\mathbb{N}
 \]
 
 \end_inset

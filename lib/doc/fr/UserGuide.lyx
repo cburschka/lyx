@@ -1653,19 +1653,46 @@ Suppr.
 \end_layout
 
 \begin_layout Standard
-Le contenu d'un insert est sélectionné via le raccourci 
+
+\lang english
+Using the
+\lang french
+ le raccourci 
 \begin_inset Info
 type  "shortcuts"
 arg   "inset-select-all"
 \end_inset
 
-, le raccourci
+ 
+\lang english
+while the cursor is in normal text selects the whole document.
+ When the cursor is inside an inset 
+\begin_inset Info
+type  "shortcuts"
+arg   "inset-select-all"
+\end_inset
+
+ selects the content of the inset.
+ Using 
+\begin_inset Info
+type  "shortcuts"
+arg   "inset-select-all"
+\end_inset
+
+ consecutively will increase the selection to the whole inset and then to
+ the whole document
+\lang french
+.
+ Le raccourci 
 \begin_inset Info
 type  "shortcuts"
 arg   "command-sequence buffer-begin ; buffer-end-select"
 \end_inset
 
- sélectionnant tout le document
+ 
+\lang english
+selects the whole document in every case and puts the cursor to the end
+ of the document.
 \end_layout
 
 \begin_layout Section
@@ -8450,12 +8477,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8468,6 +8497,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -24755,7 +24785,7 @@ mathématique
 a Ctrl-Espace b
 \series default
 : 
-\begin_inset Formula $a\, b$
+\begin_inset Formula $a\,b$
 \end_inset
 
  (ce qui apparaît sous la forme 
@@ -24802,7 +24832,7 @@ a Ctrl-Espace b
 Espace
 \family default
 : 
-\begin_inset Formula $a\! b$
+\begin_inset Formula $a\!b$
 \end_inset
 
 
@@ -26335,7 +26365,7 @@ mathit
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mathtt{Chasse\, fixe}$
+\begin_inset Formula $\mathtt{Chasse\,fixe}$
 \end_inset
 
 
@@ -26362,7 +26392,7 @@ mathtt
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\mathbb{TABLEAU\, NOIR}$
+\begin_inset Formula $\mathbb{TABLEAU\,NOIR}$
 \end_inset
 
 
@@ -26535,7 +26565,7 @@ Blackbold
  représente l'ensemble des entiers naturels :
 \begin_inset Formula 
 \[
-f(x)=\sqrt{x}\:;\: x\in\mathbb{N}
+f(x)=\sqrt{x}\:;\:x\in\mathbb{N}
 \]
 
 \end_inset
@@ -26863,11 +26893,11 @@ ligne
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $hors\: ligne$
+\begin_inset Formula $hors\:ligne$
 \end_inset
 
 , 
-\begin_inset Formula ${\textstyle texte\: normal}$
+\begin_inset Formula ${\textstyle texte\:normal}$
 \end_inset
 
 , 
@@ -33866,7 +33896,7 @@ R
 \end_inset
 
  par 
-\begin_inset Formula $x_{i,\, j}$
+\begin_inset Formula $x_{i,\,j}$
 \end_inset
 
 , ou les occurrences de 

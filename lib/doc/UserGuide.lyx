@@ -1441,19 +1441,36 @@ Delete
 \end_layout
 
 \begin_layout Standard
-The content of an inset is selected using the shortcut 
+Using the shortcut 
 \begin_inset Info
 type  "shortcuts"
 arg   "inset-select-all"
 \end_inset
 
-, the shortcut 
+ while the cursor is in normal text selects the whole document.
+ When the cursor is inside an inset 
+\begin_inset Info
+type  "shortcuts"
+arg   "inset-select-all"
+\end_inset
+
+ selects the content of the inset.
+ Using 
+\begin_inset Info
+type  "shortcuts"
+arg   "inset-select-all"
+\end_inset
+
+ consecutively will increase the selection to the whole inset and then to
+ the whole document.
+ The shortcut 
 \begin_inset Info
 type  "shortcuts"
 arg   "command-sequence buffer-begin ; buffer-end-select"
 \end_inset
 
- selects the whole document.
+ selects the whole document in every case and puts the cursor to the end
+ of the document.
 \end_layout
 
 \begin_layout Section
@@ -8037,12 +8054,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8055,6 +8074,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -23602,7 +23622,7 @@ arg   "math-insert \\space"
 a Ctrl+Space b
 \series default
 : 
-\begin_inset Formula $a\, b$
+\begin_inset Formula $a\,b$
 \end_inset
 
  appears in LyX as 
@@ -23646,7 +23666,7 @@ a Ctrl+Space b
 Space
 \family default
 : 
-\begin_inset Formula $a\! b$
+\begin_inset Formula $a\!b$
 \end_inset
 
 
@@ -24709,9 +24729,9 @@ lcr
 \begin_inset Formula 
 \[
 \begin{array}{lcr}
-this & this\, column & this\, column\\
-column & has & has\, right\\
-has\, left\, alignment & center\, alignment & alignment
+this & this\,column & this\,column\\
+column & has & has\,right\\
+has\,left\,alignment & center\,alignment & alignment
 \end{array}.
 \]
 
@@ -25506,7 +25526,7 @@ Blackboard
  denotes the set of numbers:
 \begin_inset Formula 
 \[
-f(x)=\sqrt{x}\:;\: x\in\mathbb{N}
+f(x)=\sqrt{x}\:;\:x\in\mathbb{N}
 \]
 
 \end_inset
@@ -32427,7 +32447,7 @@ R
 \end_inset
 
  with 
-\begin_inset Formula $x_{i,\, j}$
+\begin_inset Formula $x_{i,\,j}$
 \end_inset
 
 , or occurrences of 

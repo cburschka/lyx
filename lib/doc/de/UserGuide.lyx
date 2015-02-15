@@ -1472,15 +1472,29 @@ Entfernen
 \end_layout
 
 \begin_layout Standard
-Der Inhalt von Einfügungen wird mit dem Tastenkürzel 
-\family sans
-Strg+Alt+A
-\family default
- ausgewählt, das Tastenkürzel 
+Wird das Tastenkürzel 
 \family sans
 Strg+A
 \family default
- wählt das komplette Dokument aus.
+ verwendet, während sich der Cursor außerhalb von Einfügungen befindet,
+ wird das komplette Dokument ausgewählt.
+ Wenn sich der Cursor in einer Einfügung befindet, wählt 
+\family sans
+Strg+A
+\family default
+ den Inhalt der Einfügung aus.
+ Verwendet man dann 
+\family sans
+Strg+A
+\family default
+ mehrfach hintereinander, wird die Auswahl auf die Einfügung erweitert und
+ anschließend auf das gesamte Dokument.
+ Das Tastenkürzel 
+\family sans
+Strg+Alt+A
+\family default
+ markiert in jedem Fall das komplette Dokument und setzt den Cursor ans
+ Dokumentende.
 \end_layout
 
 \begin_layout Section
@@ -8479,10 +8493,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Verbatim.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8495,6 +8511,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Verbatim erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -24067,7 +24084,7 @@ arg   "math-insert \\space"
 a Strg+Leertaste b
 \series default
 : 
-\begin_inset Formula $a\, b$
+\begin_inset Formula $a\,b$
 \end_inset
 
  in LyX als 
@@ -24111,7 +24128,7 @@ a Strg+Leertaste b
 Leertaste
 \family default
 : 
-\begin_inset Formula $a\! b$
+\begin_inset Formula $a\!b$
 \end_inset
 
 
@@ -25030,7 +25047,7 @@ nicht
 \begin{array}{lcr}
 diese & diese & diese\\
 Spalte & Spalte & Spalte\\
-ist\: linksb\ddot{u}ndig & ist\: zentriert & ist\: rechtsb\ddot{u}ndig
+ist\:linksb\ddot{u}ndig & ist\:zentriert & ist\:rechtsb\ddot{u}ndig
 \end{array}.
 \]
 
@@ -25061,8 +25078,8 @@ cases
 \begin_inset Formula 
 \begin{eqnarray*}
 f(x) & := & \begin{cases}
-\frac{1}{q} & \mathrm{f}\ddot{\mathrm{u}}\mathrm{r}\, x=\frac{p}{q}\,(\mathrm{p},\,\mathrm{q}\,\,\mathrm{ganzzahlig})\\
-0 & \mathrm{falls}\, x\,\mathrm{irrational}\,\mathrm{ist}
+\frac{1}{q} & \mathrm{f}\ddot{\mathrm{u}}\mathrm{r}\,x=\frac{p}{q}\,(\mathrm{p},\,\mathrm{q}\,\,\mathrm{ganzzahlig})\\
+0 & \mathrm{falls}\,x\,\mathrm{irrational}\,\mathrm{ist}
 \end{cases}
 \end{eqnarray*}
 
@@ -33050,7 +33067,7 @@ R
 \end_inset
 
  mit 
-\begin_inset Formula $x_{i,\, j}$
+\begin_inset Formula $x_{i,\,j}$
 \end_inset
 
  zu ersetzen oder 
