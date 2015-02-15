@@ -235,6 +235,8 @@ public:
 
 	/// \return the icon file name for the given action.
 	static docstring iconName(FuncRequest const & f, bool unknown);
+	/// \return the math icon name for the given command.
+	static docstring mathIcon(docstring const & c);
 
 	/// Handle a accented char key sequence
 	/// FIXME: this is only needed for LFUN_ACCENT_* in Text::dispatch()

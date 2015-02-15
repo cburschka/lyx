@@ -54,6 +54,7 @@
 #include "OutputParams.h"
 #include "Text.h"
 
+#include "frontends/Application.h"
 #include "frontends/Clipboard.h"
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
@@ -2225,7 +2226,10 @@ std::string MathCompletionList::icon(size_t idx) const
 		cmd = locals[idx];
 
 	// get the icon resource name by stripping the backslash
-	return "images/math/" + to_utf8(cmd.substr(1)) + ".png";
+	docstring icon_name = frontend::Application::mathIcon(cmd.substr(1));
+	if (icon_name.empty())
+		return std::string();
+	return "images/math/" + to_utf8(icon_name);
 }
 
 std::vector<docstring> MathCompletionList::globals;
