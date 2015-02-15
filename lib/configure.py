@@ -649,7 +649,7 @@ def checkFormatEntries(dtl_tools):
     checkViewer('a Postscript previewer', ['kghostview', 'okular', 'qpdfview --unique', 'evince', 'gv', 'ghostview -swap', 'gsview64', 'gsview32'],
         rc_entry = [r'''\Format eps        eps     EPS                    "" "%%"	""	"vector"	"image/x-eps"
 \Format eps2       eps    "EPS (uncropped)"       "" "%%"	""	"vector"	""
-\Format eps3       eps    "EPS (cropped)"         "" "%%"	""	"document,menu=export"	""
+\Format eps3       eps    "EPS (cropped)"         "" "%%"	""	"document"	""
 \Format ps         ps      Postscript             t  "%%"	""	"document,vector,menu=export"	"application/postscript"'''])
     # for xdg-open issues look here: http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg151818.html
     # the MIME type is set for pdf6, because that one needs to be autodetectable by libmime
@@ -661,8 +661,8 @@ def checkFormatEntries(dtl_tools):
 \Format pdf4       pdf    "PDF (XeTeX)"           X  "%%"	""	"document,vector,menu=export"	""
 \Format pdf5       pdf    "PDF (LuaTeX)"          u  "%%"	""	"document,vector,menu=export"	""
 \Format pdf6       pdf    "PDF (graphics)"        "" "%%"	""	"vector"	"application/pdf"
-\Format pdf7       pdf    "PDF (cropped)"         "" "%%"	""	"document,vector,menu=export"	""
-\Format pdf8       pdf    "PDF (150 dpi)"         "" "%%"	""	"document,vector,menu=export"	""'''])
+\Format pdf7       pdf    "PDF (cropped)"         "" "%%"	""	"document,vector"	""
+\Format pdf8       pdf    "PDF (150 dpi)"         "" "%%"	""	"document,vector"	""'''])
     #
     checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular', 'yap', 'dviout -Set=!m'],
         rc_entry = [r'''\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector,menu=export"	"application/x-dvi"
