@@ -1101,13 +1101,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			/*
 			Paragraph & par = pars_[cur.pit()];
 			if (inset->lyxCode() == LABEL_CODE
-				&& !par.layout().counter.empty() {
+				&& !par.layout().counter.empty()) {
 				// Go to the end of the paragraph
 				// Warning: Because of Change-Tracking, the last
 				// position is 'size()' and not 'size()-1':
 				cur.pos() = par.size();
 				// Insert a new paragraph
-				FuncRequest fr(LFUN_BREAK_PARAGRAPH);
+				FuncRequest fr(LFUN_PARAGRAPH_BREAK);
 				dispatch(cur, fr);
 			}
 			*/
