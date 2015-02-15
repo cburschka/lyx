@@ -35129,7 +35129,7 @@ OpenDocument archivo de texto en formato OpenDocument, que puede abrirse
 LibreOffice, OpenOffice, KOffice, Abiword
 \family default
 , etc.
- (el convertidor a OpenDocument es un programa externo que no siempre funciona)
+ (el convertidor a OpenDocument es un programa externo que no siempre funciona).
 \end_layout
 
 \begin_layout Description
@@ -35145,7 +35145,7 @@ PDF
 
 (pdflatex)
 \family default
- pero con márgenes de página recortados
+ pero con márgenes de página recortados.
 \end_layout
 
 \begin_layout Description
@@ -35162,6 +35162,29 @@ PDF
 dvipdfm
 \family default
 , produce internamente un archivo DVI que es convertido después a PDF.
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(E-book) igual que 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+ pero con 
+\lang english
+a reduced pixel resolution of 150
+\begin_inset space \thinspace{}
+\end_inset
+
+dpi (useful for E-books to be read on tablet PCs or for large documents
+ as intermediate preview).
 \end_layout
 
 \begin_layout Description

@@ -34872,7 +34872,7 @@ PDF
 
 (pdflatex)
 \family default
- but with cropped page margins.
+ but with cropped page margins
 \end_layout
 
 \begin_layout Description
@@ -34889,6 +34889,31 @@ PDF
 dvipdfm
 \family default
 , produces internally a DVI-file which is then converted to a PDF-file
+\end_layout
+
+\begin_layout Description
+
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(E-book)
+\family default
+ the same as 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+ but with a reduced pixel resolution of 150
+\begin_inset space \thinspace{}
+\end_inset
+
+dpi (useful for E-books to be read on tablet PCs or for large documents
+ as intermediate preview)
 \end_layout
 
 \begin_layout Description

@@ -35393,7 +35393,7 @@ PDF
 
 (pdflatex)
 \family default
- aber mit beschnittenen Seitenrändern.
+ aber mit beschnittenen Seitenrändern
 \end_layout
 
 \begin_layout Description
@@ -35406,6 +35406,27 @@ PDF
 dvipdfm
 \family default
 , erzeugt intern eine DVI-Datei, die in eine PDF-Datei konvertiert wird
+\end_layout
+
+\begin_layout Description
+PDF
+\begin_inset space ~
+\end_inset
+
+(E-Book) wie 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+ aber mit einer reduzierten Pixel-Auflösung von 150
+\begin_inset space \thinspace{}
+\end_inset
+
+dpi (nützlich für E-Books für Tablet-PCs oder für große Dokumente als Vorab-Vors
+chau)
 \end_layout
 
 \begin_layout Description
