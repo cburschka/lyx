@@ -1325,19 +1325,46 @@ Suprimir
 \end_layout
 
 \begin_layout Standard
-El contenido de un recuadro se selecciona con la combinación de teclas 
+
+\lang english
+Using 
+\lang spanish
+la combinación 
 \begin_inset Info
 type  "shortcuts"
 arg   "inset-select-all"
 \end_inset
 
-, la combinación 
+ 
+\lang english
+while the cursor is in normal text selects the whole document.
+ When the cursor is inside an inset 
+\begin_inset Info
+type  "shortcuts"
+arg   "inset-select-all"
+\end_inset
+
+ selects the content of the inset.
+ Using 
+\begin_inset Info
+type  "shortcuts"
+arg   "inset-select-all"
+\end_inset
+
+ consecutively will increase the selection to the whole inset and then to
+ the whole document
+\lang spanish
+.
+ La combinación 
 \begin_inset Info
 type  "shortcuts"
 arg   "command-sequence buffer-begin ; buffer-end-select"
 \end_inset
 
- selecciona todo el documento.
+ 
+\lang english
+selects the whole document in every case and puts the cursor to the end
+ of the document.
 \end_layout
 
 \begin_layout Section
@@ -8285,12 +8312,14 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
+
 Esto es entorno literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8303,6 +8332,7 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
+
 Casi todo está permitido en entorno literal:"%&$§#~'`
 \backslash
 }][{|
@@ -24088,7 +24118,7 @@ Ctrl+Espacio
 b
 \series default
  da: 
-\begin_inset Formula $a\, b$
+\begin_inset Formula $a\,b$
 \end_inset
 
  (en LyX se ve 
@@ -24134,7 +24164,7 @@ a Ctrl+Espacio b
 Espacio
 \family default
 : 
-\begin_inset Formula $a\! b$
+\begin_inset Formula $a\!b$
 \end_inset
 
 
@@ -25284,7 +25314,7 @@ lcr
 \begin{array}{lcr}
 columna & columna & columna\\
 alineada & alineada & alineada\\
-a\, la\, izquierda & al\, centro & a\, la\, derecha
+a\,la\,izquierda & al\,centro & a\,la\,derecha
 \end{array}
 \]
 
@@ -26086,7 +26116,7 @@ Blackboard
  representa el conjunto de los números naturales:
 \begin_inset Formula 
 \[
-f(x)=\sqrt{x}\:;\: x\in\mathbb{N}
+f(x)=\sqrt{x}\:;\:x\in\mathbb{N}
 \]
 
 \end_inset
@@ -26338,11 +26368,11 @@ presentación
 \end_inset
 
 , 
-\begin_inset Formula ${\scriptstyle índice\, pequeño}$
+\begin_inset Formula ${\scriptstyle índice\,pequeño}$
 \end_inset
 
 , 
-\begin_inset Formula ${\scriptscriptstyle índice\, más\, pequeño}$
+\begin_inset Formula ${\scriptscriptstyle índice\,más\,pequeño}$
 \end_inset
 
 
@@ -32856,7 +32886,7 @@ Configuración
 \end_inset
 
  por 
-\begin_inset Formula $x_{i,\, j}$
+\begin_inset Formula $x_{i,\,j}$
 \end_inset
 
  o 
@@ -35099,7 +35129,7 @@ OpenDocument archivo de texto en formato OpenDocument, que puede abrirse
 LibreOffice, OpenOffice, KOffice, Abiword
 \family default
 , etc.
- (el convertidor a OpenDocument es un programa externo que no siempre funciona)
+ (el convertidor a OpenDocument es un programa externo que no siempre funciona).
 \end_layout
 
 \begin_layout Description
@@ -35115,7 +35145,7 @@ PDF
 
 (pdflatex)
 \family default
- pero con márgenes de página recortados
+ pero con márgenes de página recortados.
 \end_layout
 
 \begin_layout Description
@@ -35132,6 +35162,47 @@ PDF
 dvipdfm
 \family default
 , produce internamente un archivo DVI que es convertido después a PDF.
+\end_layout
+
+\begin_layout Description
+
+\family sans
+\lang english
+PDF
+\begin_inset space ~
+\end_inset
+
+(lower
+\begin_inset space ~
+\end_inset
+
+resolution)
+\family default
+\lang spanish
+ igual que 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+ pero con 
+\lang english
+a reduced pixel resolution of 150
+\begin_inset space \thinspace{}
+\end_inset
+
+dpi (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+useful for E-books to be read on tablet PCs or for large documents as intermedia
+te preview).
 \end_layout
 
 \begin_layout Description
