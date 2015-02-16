@@ -45,7 +45,9 @@
 #   Document > Settings > Language > Encoding is not set to "Language
 #   Default"
 # * InternalEncoding is used to tell LyX that babel internally sets a font
-#   encoding (such as hebrew to LHE). See bug #5091.
+#   encoding (such as hebrew to LHE). This prevents LyX from outputting
+#   characters that only exist in T1 font encoding (such as "<", ">", "|"
+#   and straight quote). See bug #5091.
 # * "FontEncoding none" tells LyX that fontenc should not be loaded with this
 #   language.
 # * AsBabelOptions advices LyX to pass the languages locally to babel, not
