@@ -607,6 +607,7 @@ Menuset
 		Item "LilyPond|P" "help-open lilypond"
 		Item "Linguistics|L" "help-open linguistics"
 		Item "Multilingual Captions|C" "help-open MultilingualCaptions"
+		Item "PDF comments|D" "help-open PDF-comment"
 		Item "Risk and Safety Statements|R" "help-open R-S-statements"
 		Item "Sweave|S" "help-open sweave"
 		Item "XY-pic|X" "help-open xypic"
