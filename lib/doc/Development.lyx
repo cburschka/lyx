@@ -931,5 +931,131 @@ No.
  We are supposed to increase the prefs2prefs version number with such things.
 \end_layout
 
+\begin_layout Chapter
+Documentation policies
+\end_layout
+
+\begin_layout Standard
+The main documentation consists of these files:
+\end_layout
+
+\begin_layout Description
+splash.lyx it is the first file you see after an installation.
+ We assume that a new user sees this.
+ It is therefore designed to be as simple as possible.
+ Therefore please don't add any new formatting, only fix typos etc.
+ Splash.lyx is up to date for LyX 2.1.x, currently maintained by Uwe Stöhr.
+\end_layout
+
+\begin_layout Description
+Intro.lyx This is the manual new users will read to learn LyX.
+ It therefore uses a limited set of formatting.
+ For example a standard document class.
+ Since new users will first learn about the formatting possibilities of
+ LyX please keep this file that simple.
+ Intro.lyx is up to date for LyX 2.1.x, currently maintained by Uwe Stöhr.
+\end_layout
+
+\begin_layout Description
+Tutorial.lyx our tutorial.
+ It must be always up to date.
+ Normally there is nothing to add since we don't want to overwhelm new users
+ with too much details.
+ The will learn these details while using LyX and we have special manuals.
+ Tutorial.lyx is up to date for LyX 2.1.x, currently maintained by Uwe Stöhr.
+\end_layout
+
+\begin_layout Description
+UserGuide.lyx our main user guide.
+ It covers a mixture of basic and detailed information.
+ Some information is also in the Math and EmbeddedObjects manual so that
+ the UserGuide refers to these files.
+ UserGuide.lyx is up to date for LyX 2.1.x, currently maintained by Uwe Stöhr.
+\end_layout
+
+\begin_layout Description
+EmbeddedObjects.lyx a special manual to explain things like tables floats
+ boxes etc.
+ in all detail.
+ EmbeddedObjects.lyx is up to date for LyX 2.1.x, currently maintained by Uwe
+ Stöhr.
+\end_layout
+
+\begin_layout Description
+Math.lyx a special manual to explain everything regarding math in all detail.
+ Math.lyx is up to date for LyX 2.1.x, currently maintained by Uwe Stöhr.
+\end_layout
+
+\begin_layout Description
+Additional.lyx this manual covers information that would be too much detail
+ for the UserGuide or would make the UserGuide uncompilable or only compilable
+ when installing a lot of special LaTeX-packages.
+ What should be in the UserGuide or better in Additional is a matter of
+ taste.
+ it is up to you to decide that.
+ Additional.lyx is not completely up to date for LyX 2.1.x.
+ Only chapter
+\begin_inset space ~
+\end_inset
+
+8 is up to date and currently maintained by Uwe Stöhr.
+ It certainly needs a rewrite and update.
+ For example many info in chapter
+\begin_inset space ~
+\end_inset
+
+2 and 3 are already covered by the UserGuide and/or the EmbeddedObjects
+ manual.
+\end_layout
+
+\begin_layout Description
+Customization.lyx this manual covers information how to customize LyX for
+ certain output formats, operating systems, languages etc.
+ It is currently completely out of date and needs a major rewrite and update.
+ If you do this please assure that your information are given for all OSes
+ and LaTeX distributions (meaning be as objective as possible).
+\end_layout
+
+\begin_layout Standard
+There are only 4
+\begin_inset space ~
+\end_inset
+
+rules in editing the docs:
+\end_layout
+
+\begin_layout Enumerate
+If you are not the maintainer of a doc file or a chapter/section, you MUST
+ use change tracking so that the maintainer could review your changes
+\end_layout
+
+\begin_layout Enumerate
+Respect the formatting of the document.
+ The different files use different formatting styles.
+ That is OK and has historic reasons nobody fully know ;-).
+ But it is important to be consistent within one file.
+\end_layout
+
+\begin_layout Enumerate
+All changes you make to a file in one language MUST also go the file in
+ the other actively maintained languages.
+ Normally the maintainer does this for you, if you are the maintainer, you
+ must do this by copying or changing the changed or added text to the other
+ files so that the translators sees the blue underlined text and know what
+ they have to translate and what was changed.
+\end_layout
+
+\begin_layout Enumerate
+You MUST assure that the document is compilable as 
+\begin_inset Quotes eld
+\end_inset
+
+PDF (pdflatex)
+\begin_inset Quotes erd
+\end_inset
+
+ after your changes.
+\end_layout
+
 \end_body
 \end_document
