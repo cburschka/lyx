@@ -8054,14 +8054,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8074,7 +8072,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -34898,7 +34895,11 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(E-book)
+(lower
+\begin_inset space ~
+\end_inset
+
+resolution)
 \family default
  the same as 
 \family sans
@@ -34912,8 +34913,12 @@ PDF
 \begin_inset space \thinspace{}
 \end_inset
 
-dpi (useful for E-books to be read on tablet PCs or for large documents
- as intermediate preview)
+dpi (e.g.
+\begin_inset space \space{}
+\end_inset
+
+useful for e-books to be read on tablet PCs or for large documents as intermedia
+te preview)
 \end_layout
 
 \begin_layout Description

@@ -35165,11 +35165,21 @@ dvipdfm
 \end_layout
 
 \begin_layout Description
+
+\family sans
+\lang english
 PDF
 \begin_inset space ~
 \end_inset
 
-(E-book) igual que 
+(lower
+\begin_inset space ~
+\end_inset
+
+resolution)
+\family default
+\lang spanish
+ igual que 
 \family sans
 PDF
 \begin_inset space ~
@@ -35183,8 +35193,16 @@ a reduced pixel resolution of 150
 \begin_inset space \thinspace{}
 \end_inset
 
-dpi (useful for E-books to be read on tablet PCs or for large documents
- as intermediate preview).
+dpi (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+useful for E-books to be read on tablet PCs or for large documents as intermedia
+te preview).
 \end_layout
 
 \begin_layout Description
