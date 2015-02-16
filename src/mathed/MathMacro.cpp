@@ -793,7 +793,8 @@ void MathMacro::maple(MapleStream & os) const
 
 void MathMacro::mathmlize(MathStream & os) const
 {
-	LATTEST(macro_);
+	// macro_ is 0 if this is an unknown macro
+	LATTEST(macro_ || displayMode_ != DISPLAY_NORMAL);
 	if (macro_) {
 		docstring const xmlname = macro_->xmlname();
 		if (!xmlname.empty()) {
@@ -814,7 +815,8 @@ void MathMacro::mathmlize(MathStream & os) const
 
 void MathMacro::htmlize(HtmlStream & os) const
 {
-	LATTEST(macro_);
+	// macro_ is 0 if this is an unknown macro
+	LATTEST(macro_ || displayMode_ != DISPLAY_NORMAL);
 	if (macro_) {
 		docstring const xmlname = macro_->xmlname();
 		if (!xmlname.empty()) {
