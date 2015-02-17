@@ -1593,7 +1593,8 @@ docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel, bool use_po
 		// need to force a fixed width encoding for
 		// \lstlistlistingname and \lstlistingname (bug 9382).
 		// This needs to be consistent with InsetListings::latex().
-		bool const need_fixedwidth = it->second.fixedwidthpreambleencoding();
+		bool const need_fixedwidth = !runparams_.isFullUnicode() &&
+				it->second.fixedwidthpreambleencoding();
 		// language dependent commands (once per document)
 		snippets.insert(i18npreamble(it->second.langpreamble(),
 						buffer().language(),
