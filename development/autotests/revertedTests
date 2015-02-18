@@ -48,7 +48,6 @@ export/doc/attic/eu_UserGuide_pdf4_systemF
 export/doc/es/Tutorial_pdf4_systemF
 export/doc/gl/Tutorial_dvi3_systemF
 export/doc/(nb|sk|sv)/Intro_pdf4_systemF
-export/doc/ru/Intro_pdf4_texF
 export/examples/(MultilingualCaptions|aas_sample|simplecv)_pdf4_systemF
 export/examples/de/Lebenslauf_pdf4_systemF
 export/examples/es/ejemplo_con_lyx_pdf5_systemF
@@ -62,9 +61,6 @@ export/templates/RJournal_(dvi3|pdf[45])_systemF
 # pdf4_systemF but not others. TODO Investigate if others can be fixed?
 export/templates/IEEEtran-(Journal|TransMag)_pdf4_systemF
 export/templates/kluwer_pdf4_systemF
-#
-# There is no Russian LuaTeX TeX font support yet.
-export/.*/ru/(splash|Intro|Tutorial)_(pdf5|dvi3)_texF
 #
 # There is no Chinese LuaTeX or XeTeX TeX font support yet.
 export/.*/zh_CN/.*(pdf[45]|dvi3)_texF
