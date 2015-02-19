@@ -5,17 +5,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 2.1.0\n"
+"Project-Id-Version: LyX 2.2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-11-10 03:10+0100\n"
-"PO-Revision-Date: 2014-12-09 05:29+0300\n"
-"Last-Translator: Hatim Alahmadi and mohamed majdi <dr.hatim@hotmail.com>\n"
-"Language-Team: LyX team <theblackdragon_100@hotmail.com>\n"
+"PO-Revision-Date: 2015-02-15 02:39+0300\n"
+"Last-Translator: Hatim Alahmadi <Dr.hatim@hotmail.com>\n"
+"Language-Team: Hatim Alahmadi <dr.hatim@hotmail.com>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.5.4\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
@@ -8882,7 +8882,7 @@ msgstr ""
 
 #: lib/layouts/egs.layout:368
 msgid "Journal:"
-msgstr "صحيفة:"
+msgstr "الصحيفة:"
 
 #: lib/layouts/egs.layout:377
 msgid "msnumber"
@@ -8977,7 +8977,7 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:289
 msgid "Theorem \\arabic{theorem}"
-msgstr ""
+msgstr "نظرية \\عربي{نظرية}"
 
 #: lib/layouts/elsart.layout:319
 msgid "PROOF."
@@ -9001,7 +9001,7 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:361
 msgid "Algorithm \\arabic{theorem}"
-msgstr ""
+msgstr "لوغرتم \\عربي{نظرية}"
 
 #: lib/layouts/elsart.layout:368
 msgid "Definition \\arabic{theorem}"
@@ -9013,11 +9013,11 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:389
 msgid "Example \\arabic{theorem}"
-msgstr ""
+msgstr "مثال \\عربي{نظرية}"
 
 #: lib/layouts/elsart.layout:396
 msgid "Problem \\arabic{theorem}"
-msgstr ""
+msgstr "مشكلة \\عربي{نظرية}"
 
 #: lib/layouts/elsart.layout:403
 msgid "Remark \\arabic{theorem}"
@@ -9025,7 +9025,7 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:410
 msgid "Note \\arabic{theorem}"
-msgstr ""
+msgstr "ملاحظة \\عربي{نظرية}"
 
 #: lib/layouts/elsart.layout:417
 msgid "Claim \\arabic{theorem}"
@@ -11084,16 +11084,15 @@ msgstr "//الفصل"
 
 #: lib/layouts/recipebook.layout:79
 msgid "Recipe"
-msgstr "طبخ"
+msgstr "وصفة"
 
 #: lib/layouts/recipebook.layout:86
 msgid "Recipe:"
-msgstr "طبخ:"
+msgstr "وصفة:"
 
 #: lib/layouts/recipebook.layout:114
-#, fuzzy
 msgid "Ingredients"
-msgstr "شكر"
+msgstr "المكونات"
 
 #: lib/layouts/recipebook.layout:118
 #, fuzzy
@@ -12441,7 +12440,7 @@ msgstr ""
 
 #: lib/layouts/scrclass.inc:156
 msgid "Minisec"
-msgstr ""
+msgstr "فقرة ثانوية صغيرة"
 
 #: lib/layouts/scrclass.inc:211
 msgid "Publishers"
@@ -12453,15 +12452,15 @@ msgstr "رأس عنوان"
 
 #: lib/layouts/scrclass.inc:233
 msgid "Uppertitleback"
-msgstr ""
+msgstr "عنوان علوي"
 
 #: lib/layouts/scrclass.inc:239
 msgid "Lowertitleback"
-msgstr ""
+msgstr "عنوان سفلي"
 
 #: lib/layouts/scrclass.inc:245
 msgid "Extratitle"
-msgstr ""
+msgstr "عنوان اكسترا"
 
 #: lib/layouts/scrclass.inc:268
 msgid "Above"
@@ -12635,7 +12634,7 @@ msgstr "فاصلة القوائم|M"
 
 #: lib/layouts/stdspecialchars.inc:48 lib/ui/stdmenus.inc:416
 msgid "Hyphenation Point|H"
-msgstr ""
+msgstr "شرطة|H"
 
 #: lib/layouts/stdspecialchars.inc:55 lib/ui/stdmenus.inc:398
 msgid "Breakable Slash|a"
@@ -13152,7 +13151,7 @@ msgstr "تعليق ختامي"
 
 #: lib/layouts/enumitem.module:2
 msgid "Customisable Lists (enumitem)"
-msgstr ""
+msgstr "قوائم مخصصة (enumitem)"
 
 #: lib/layouts/enumitem.module:6
 msgid ""
@@ -13439,13 +13438,12 @@ msgstr ""
 "حيث تريد ان يظهر التعليق الختامي."
 
 #: lib/layouts/graphicboxes.module:2
-#, fuzzy
 msgid "GraphicBoxes"
-msgstr "الصور"
+msgstr "صندوق الصورة"
 
 #: lib/layouts/graphicboxes.module:5
 msgid "Boxes to scale and rotate its contents"
-msgstr ""
+msgstr "تحجيم وتدوير محتوى الصناديق"
 
 #: lib/layouts/graphicboxes.module:11 lib/layouts/graphicboxes.module:14
 #, fuzzy
@@ -13453,9 +13451,8 @@ msgid "Reflectbox"
 msgstr "التحديد"
 
 #: lib/layouts/graphicboxes.module:26 lib/layouts/graphicboxes.module:28
-#, fuzzy
 msgid "Scalebox"
-msgstr "المقياس"
+msgstr "تحجيم الصندوق"
 
 #: lib/layouts/graphicboxes.module:31
 #, fuzzy
@@ -13480,9 +13477,8 @@ msgid "Resizebox"
 msgstr "تحجيم الصندوق"
 
 #: lib/layouts/graphicboxes.module:49
-#, fuzzy
 msgid "Width of the box"
-msgstr "عرض صندوق القسم"
+msgstr "عرض الصندوق"
 
 #: lib/layouts/graphicboxes.module:56
 msgid "Height of the box, can also be '!' to keep aspect ratio"
@@ -13509,7 +13505,7 @@ msgstr "الزاوية:"
 
 #: lib/layouts/graphicboxes.module:73
 msgid "Rotation angle in degrees (counterclockwise)"
-msgstr ""
+msgstr "زاوية التدوير بالدرجات (مع عقارب الساعة)"
 
 #: lib/layouts/hanging.module:2 lib/layouts/hanging.module:16
 msgid "Hanging"
@@ -14045,9 +14041,8 @@ msgid "[List of PDF Comments]"
 msgstr "قائمة ملاحظات التذييل"
 
 #: lib/layouts/pdfcomment.module:222
-#, fuzzy
 msgid "List Options|s"
-msgstr "خيارات الملاحظة"
+msgstr "خيارات القائمة|s"
 
 #: lib/layouts/pdfcomment.module:223
 #, fuzzy
@@ -14135,7 +14130,6 @@ msgid "Subsection Box"
 msgstr "صندوق القسم الفرعي"
 
 #: lib/layouts/sectionbox.module:45
-#, fuzzy
 msgid "SubsubsectionBox"
 msgstr "صندوق قسم تحت فرعي"
 
@@ -14232,11 +14226,11 @@ msgstr ""
 
 #: lib/layouts/shapepar.module:127
 msgid "Shape specification"
-msgstr ""
+msgstr "مواصفات الشكل"
 
 #: lib/layouts/shapepar.module:128
 msgid "Specification of the shape"
-msgstr ""
+msgstr "مواصفات الشكل"
 
 #: lib/layouts/shapepar.module:132
 #, fuzzy
@@ -14559,7 +14553,7 @@ msgstr "شر ط \\النظرية."
 
 #: lib/layouts/theorems-ams-extended.module:177
 msgid "Note \\thetheorem."
-msgstr ""
+msgstr "ملاحظة \\النظرية."
 
 #: lib/layouts/theorems-ams-extended.module:211
 msgid "Notation \\thetheorem."
@@ -14582,9 +14576,8 @@ msgid "Assumption \\thetheorem."
 msgstr ""
 
 #: lib/layouts/theorems-ams-extended.module:382
-#, fuzzy
 msgid "Question \\thetheorem."
-msgstr "شر ط \\النظرية."
+msgstr "سؤال \\نظرية."
 
 #: lib/layouts/theorems-ams-extended.module:395
 msgid "Question*"
@@ -14735,9 +14728,8 @@ msgstr ""
 "(مرقم تبعاًلـ ...)."
 
 #: lib/layouts/todonotes.module:2
-#, fuzzy
 msgid "TODO Notes"
-msgstr "ملاحظات الجدول"
+msgstr "ملاحظات للتنفيذ"
 
 #: lib/layouts/todonotes.module:7
 msgid ""
@@ -14747,19 +14739,16 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/todonotes.module:17
-#, fuzzy
 msgid "List of TODOs"
-msgstr "قائمة الجداول"
+msgstr "قائمة للتنفيذ"
 
 #: lib/layouts/todonotes.module:31
-#, fuzzy
 msgid "[List of TODOs]"
-msgstr "قائمة الجداول"
+msgstr "[قائمة للتنفيذ]"
 
 #: lib/layouts/todonotes.module:42
-#, fuzzy
 msgid "List of TODOs Heading|s"
-msgstr "قائمة القوائم"
+msgstr "رأس قائمة للتنفيذ|s"
 
 #: lib/layouts/todonotes.module:43
 msgid "Enter a custom header for the List of TODOs here"
@@ -14774,9 +14763,8 @@ msgid "TODO (Margin)"
 msgstr ""
 
 #: lib/layouts/todonotes.module:72 lib/layouts/todonotes.module:84
-#, fuzzy
 msgid "TODO Note Options|s"
-msgstr "خيارات الملاحظة"
+msgstr "خيارات ملاحظة للتنفيذ|s"
 
 #: lib/layouts/todonotes.module:73 lib/layouts/todonotes.module:102
 msgid "See the todonotes manual for possible options"
@@ -14791,9 +14779,8 @@ msgid "TODO (Inline)"
 msgstr ""
 
 #: lib/layouts/todonotes.module:94 lib/layouts/todonotes.module:96
-#, fuzzy
 msgid "Missing Figure"
-msgstr "ملف مفقود"
+msgstr "صورة مفقودة"
 
 #: lib/layouts/todonotes.module:101
 msgid "Missing Figure Note Options|s"
@@ -16585,9 +16572,8 @@ msgid "Paste Special"
 msgstr "لصق خاص"
 
 #: lib/ui/stdmenus.inc:111
-#, fuzzy
 msgid "Select Whole Inset"
-msgstr "حدد الملف لادراجه"
+msgstr "تحديد كل المدرجات"
 
 #: lib/ui/stdmenus.inc:112
 msgid "Select All"
@@ -16626,9 +16612,8 @@ msgid "Decrease List Depth|D"
 msgstr "تقليل عمق القوائم|D"
 
 #: lib/ui/stdmenus.inc:137
-#, fuzzy
 msgid "Dissolve Inset"
-msgstr "الغاء البرواز|غ"
+msgstr "إلغاء إدراج"
 
 #: lib/ui/stdmenus.inc:138
 msgid "TeX Code Settings...|C"
@@ -16959,7 +16944,7 @@ msgstr "مجلد ماكرو الرياضيات|d"
 
 #: lib/ui/stdmenus.inc:336
 msgid "Outline Pane|u"
-msgstr ""
+msgstr "لوحة الخلاصة|u"
 
 #: lib/ui/stdmenus.inc:337
 msgid "Source Pane|S"
@@ -17026,9 +17011,8 @@ msgid "File|e"
 msgstr "ملف|e"
 
 #: lib/ui/stdmenus.inc:368
-#, fuzzy
 msgid "Box[[Menu]]|x"
-msgstr "صندوق[[Menu]]"
+msgstr "صندوق[[Menu]]|x"
 
 #: lib/ui/stdmenus.inc:371
 msgid "Citation...|C"
@@ -17095,9 +17079,8 @@ msgid "Single Quote|S"
 msgstr "اقتباس فردي|S"
 
 #: lib/ui/stdmenus.inc:399
-#, fuzzy
 msgid "Visible Space|V"
-msgstr "مسافة مرئية|i"
+msgstr "مسافة مرئية|V"
 
 #: lib/ui/stdmenus.inc:401
 msgid "Phonetic Symbols|P"
@@ -17480,7 +17463,7 @@ msgstr "ادراج جدول"
 
 #: lib/ui/stdtoolbars.inc:96
 msgid "Toggle outline"
-msgstr "تثبيت الخط الخارجي"
+msgstr "تثبيت الملخص"
 
 #: lib/ui/stdtoolbars.inc:97
 msgid "Toggle math toolbar"
@@ -17712,7 +17695,7 @@ msgstr "متعدد الاعمدة"
 
 #: lib/ui/stdtoolbars.inc:173
 msgid "Set multi-row"
-msgstr ""
+msgstr "تعيين صف متعدد"
 
 #: lib/ui/stdtoolbars.inc:176
 msgid "Math"
@@ -17960,9 +17943,8 @@ msgid "Math Panels"
 msgstr "لوحة الرياضيات"
 
 #: lib/ui/stdtoolbars.inc:288
-#, fuzzy
 msgid "Math spacings"
-msgstr "خيارات الرياضيات"
+msgstr "مسافة رياضيات"
 
 #: lib/ui/stdtoolbars.inc:289 lib/ui/stdtoolbars.inc:368
 msgid "Styles"
@@ -17999,18 +17981,16 @@ msgid "Arrows"
 msgstr "الأسهم"
 
 #: lib/ui/stdtoolbars.inc:298 lib/ui/stdtoolbars.inc:891
-#, fuzzy
 msgid "Arrows (extended)"
-msgstr "نظريات (AMS-ممتدة)"
+msgstr "سهام (ممتدة)"
 
 #: lib/ui/stdtoolbars.inc:299 lib/ui/stdtoolbars.inc:502
 msgid "Operators"
 msgstr "العمليات الرياضية"
 
 #: lib/ui/stdtoolbars.inc:300 lib/ui/stdtoolbars.inc:1155
-#, fuzzy
 msgid "Operators (extended)"
-msgstr "نظريات (AMS-ممتدة)"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:301 lib/ui/stdtoolbars.inc:538
 msgid "Relations"
@@ -26080,7 +26060,7 @@ msgstr "الارتفاع الكلي"
 #: src/frontends/qt4/GuiBox.cpp:363 src/frontends/qt4/GuiBox.cpp:447
 #: src/insets/InsetBox.cpp:138
 msgid "Makebox"
-msgstr ""
+msgstr "إنشاء صندوق"
 
 #: src/frontends/qt4/GuiBranches.cpp:53 src/insets/Inset.cpp:111
 msgid "Branch"
@@ -28054,7 +28034,7 @@ msgstr "لا توجد موسوعات متاحة لهذه اللغة!"
 
 #: src/frontends/qt4/GuiToc.cpp:36
 msgid "Outline"
-msgstr "خط خارجي"
+msgstr "الملخص"
 
 #: src/frontends/qt4/GuiToolbar.cpp:390 src/frontends/qt4/Toolbars.cpp:378
 msgid "auto"
