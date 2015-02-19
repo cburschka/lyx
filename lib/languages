@@ -548,7 +548,9 @@ Language hebrew
 	Encoding          cp1255
 	QuoteStyle        english
 	InternalEncoding  true
-	FontEncoding      LHE
+# Hebrew babel loads the font encodings
+# itself in the appropriate order
+#	FontEncoding      LHE
 	RTL               true
 	LangCode          he_IL
 End
