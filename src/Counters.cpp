@@ -39,7 +39,7 @@ Counter::Counter()
 }
 
 
-Counter::Counter(docstring const & mc, docstring const & ls,  
+Counter::Counter(docstring const & mc, docstring const & ls,
                 docstring const & lsa)
 	: initial_value_(0), master_(mc), labelstring_(ls), labelstringappendix_(lsa)
 {
@@ -76,7 +76,7 @@ bool Counter::read(Lexer & lex)
 			case Lexer::LEX_UNDEF:
 				lex.printError("Unknown counter tag `$$Token'");
 				continue;
-			default: 
+			default:
 				break;
 		}
 		switch (le) {
@@ -190,7 +190,7 @@ Counters::Counters() : appendix_(false), subfloat_(false), longtable_(false)
 
 
 void Counters::newCounter(docstring const & newc,
-			  docstring const & masterc, 
+			  docstring const & masterc,
 			  docstring const & ls,
 			  docstring const & lsa)
 {
@@ -380,7 +380,7 @@ char hebrewCounter(int const n)
 
 
 // On the special cases, see http://mathworld.wolfram.com/RomanNumerals.html
-// and for a list of roman numerals up to and including 3999, see 
+// and for a list of roman numerals up to and including 3999, see
 // http://www.research.att.com/~njas/sequences/a006968.txt. (Thanks to Joost
 // for this info.)
 docstring const romanCounter(int const n)
@@ -389,25 +389,25 @@ docstring const romanCounter(int const n)
 		"I",   "II",  "III", "IV", "V",
 		"VI",  "VII", "VIII", "IX"
 	};
-	
+
 	static char const * const tens[9] = {
 		"X", "XX", "XXX", "XL", "L",
 		"LX", "LXX", "LXXX", "XC"
 	};
-	
+
 	static char const * const hunds[9] = {
 		"C", "CC", "CCC", "CD", "D",
 		"DC", "DCC", "DCCC", "CM"
 	};
-	
-	if (n > 1000 || n < 1) 
+
+	if (n > 1000 || n < 1)
 		return from_ascii("??");
-	
+
 	int val = n;
 	string roman;
 	switch (n) {
 	//special cases
-	case 900: 
+	case 900:
 		roman = "CM";
 		break;
 	case 400:
@@ -503,7 +503,7 @@ docstring Counters::labelItem(docstring const & ctr,
 docstring Counters::theCounter(docstring const & counter,
 			       string const & lang) const
 {
-	CounterList::const_iterator it = counterList_.find(counter); 
+	CounterList::const_iterator it = counterList_.find(counter);
 	if (it == counterList_.end())
 		return from_ascii("#");
 	Counter const & ctr = it->second;
@@ -520,7 +520,7 @@ docstring Counters::theCounter(docstring const & counter,
 }
 
 
-docstring Counters::flattenLabelString(docstring const & counter, 
+docstring Counters::flattenLabelString(docstring const & counter,
 				       bool in_appendix,
 				       string const & lang,
 				       vector<docstring> & callers) const
@@ -534,8 +534,8 @@ docstring Counters::flattenLabelString(docstring const & counter,
 		       << endl;
 		return from_ascii("??");
 	}
-		
-	CounterList::const_iterator it = counterList_.find(counter); 
+
+	CounterList::const_iterator it = counterList_.find(counter);
 	if (it == counterList_.end())
 		return from_ascii("#");
 	Counter const & c = it->second;
@@ -545,7 +545,7 @@ docstring Counters::flattenLabelString(docstring const & counter,
 	callers.push_back(counter);
 	if (ls.empty()) {
 		if (!c.master().empty())
-			ls = flattenLabelString(c.master(), in_appendix, lang, callers) 
+			ls = flattenLabelString(c.master(), in_appendix, lang, callers)
 				+ from_ascii(".");
 		callers.pop_back();
 		return ls + from_ascii("\\arabic{") + counter + "}";
@@ -558,7 +558,7 @@ docstring Counters::flattenLabelString(docstring const & counter,
 			break;
 		size_t const j = i + 4;
 		size_t k = j;
-		while (k < ls.size() && lowercase(ls[k]) >= 'a' 
+		while (k < ls.size() && lowercase(ls[k]) >= 'a'
 		       && lowercase(ls[k]) <= 'z')
 			++k;
 		docstring const newc = ls.substr(j, k - j);
@@ -587,7 +587,7 @@ docstring Counters::counterLabel(docstring const & format,
 			break;
 		size_t const j = i + 4;
 		size_t k = j;
-		while (k < label.size() && lowercase(label[k]) >= 'a' 
+		while (k < label.size() && lowercase(label[k]) >= 'a'
 		       && lowercase(label[k]) <= 'z')
 			++k;
 		docstring const newc(label, j, k - j);
@@ -617,7 +617,7 @@ docstring Counters::counterLabel(docstring const & format,
 docstring Counters::prettyCounter(docstring const & name,
 			       string const & lang) const
 {
-	CounterList::const_iterator it = counterList_.find(name); 
+	CounterList::const_iterator it = counterList_.find(name);
 	if (it == counterList_.end())
 		return from_ascii("#");
 	Counter const & ctr = it->second;
@@ -632,9 +632,9 @@ docstring Counters::prettyCounter(docstring const & name,
 
 
 docstring Counters::currentCounter() const
-{ 
+{
 	LBUFERR(!counter_stack_.empty());
-	return counter_stack_.back(); 
+	return counter_stack_.back();
 }
 
 
@@ -644,7 +644,7 @@ void Counters::setActiveLayout(Layout const & lay)
 	Layout const * const lastlay = layout_stack_.back();
 	// we want to check whether the layout has changed and, if so,
 	// whether we are coming out of or going into an environment.
-	if (!lastlay) { 
+	if (!lastlay) {
 		layout_stack_.pop_back();
 		layout_stack_.push_back(&lay);
 		if (lay.isEnvironment())
@@ -662,7 +662,7 @@ void Counters::setActiveLayout(Layout const & lay)
 			// LYXERR0("In: " << lay.name());
 			beginEnvironment();
 		}
-	} 
+	}
 }
 
 
