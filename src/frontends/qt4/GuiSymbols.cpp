@@ -176,7 +176,7 @@ QString getBlock(char_type c)
 
 	// guessing was wrong so far. do a real search.
 	int i = 0;
-	while (c > unicode_blocks[i].end && i < no_blocks)
+	while (i < no_blocks && c > unicode_blocks[i].end)
 		++i;
 	if (i == no_blocks)
 		return QString();
