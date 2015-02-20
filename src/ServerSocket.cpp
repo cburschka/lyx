@@ -97,15 +97,15 @@ string const ServerSocket::address() const
 // is OK and if the number of clients does not exceed MAX_CLIENTS
 void ServerSocket::serverCallback()
 {
+	if (clients.size() >= MAX_CLIENTS) {
+		writeln("BYE:Too many clients connected");
+		return;
+	}
+
 	int const client_fd = socktools::accept(fd_);
 
 	if (fd_ == -1) {
 		LYXERR(Debug::LYXSERVER, "lyx: Failed to accept new client");
-		return;
-	}
-
-	if (clients.size() >= MAX_CLIENTS) {
-		writeln("BYE:Too many clients connected");
 		return;
 	}
 
