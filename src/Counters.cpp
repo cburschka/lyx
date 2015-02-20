@@ -400,7 +400,7 @@ docstring const romanCounter(int const n)
 		"DC", "DCC", "DCCC", "CM"
 	};
 
-	if (n > 1000 || n < 1)
+	if (n >= 1000 || n < 1)
 		return from_ascii("??");
 
 	int val = n;
