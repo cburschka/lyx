@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-02-10 09:29+0100\n"
+"POT-Creation-Date: 2015-02-20 12:13+0100\n"
 "PO-Revision-Date: 2014-11-14 18:39+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -16465,6 +16465,10 @@ msgid "Multilingual Captions|C"
 msgstr "Viac-Jazykové popisy|J"
 
 #: lib/ui/stdmenus.inc:610
+msgid "PDF comments|D"
+msgstr "PDF Komentáre"
+
+#: lib/ui/stdmenus.inc:610
 msgid "Risk and Safety Statements|R"
 msgstr "Rizikové a Poistné Príkazy|R"
 
@@ -21998,6 +22002,10 @@ msgstr "PDF (grafika)"
 msgid "PDF (cropped)"
 msgstr "PDF (orezaný)"
 
+#: lib/configure.py:665
+msgid "PDF (lower resolution)"
+msgstr "PDF (nízke rozlišovanie)"
+
 #: lib/configure.py:667
 msgid "DVI"
 msgstr "DVI"
@@ -24493,8 +24501,8 @@ msgid "Use \"...\" to shorten long completions."
 msgstr "Použiť \"...\" pre skrátenie dlhých doplnení."
 
 #: src/LyXRC.cpp:3348
-msgid "Allow TeXMacs shorthand, like => converting to Rightarrow."
-msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na Rightarrow."
+msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
+msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na \\Rightarrow."
 
 #: src/LyXRC.cpp:3352
 #, c-format
@@ -30109,11 +30117,15 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "Allow TeXMacs shorthand, like => converting to Rightarrow."
+#~ msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na Rightarrow."
+
+#, fuzzy
+#~ msgid "PDF (150 dpi)"
+#~ msgstr "PDF (dvipdfm)"
+
 #~ msgid "The caption as it appears in the list of figures"
 #~ msgstr "Popis ako sa zobrazí v zozname obrázkov"
-
-#~ msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
-#~ msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na \\Rightarrow."
 
 #~ msgid "[LIST of PDF Comments]"
 #~ msgstr "[Zoznam PDF Komentárov]"
