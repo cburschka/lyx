@@ -110,8 +110,6 @@ LaTeX::LaTeX(string const & latex, OutputParams const & rp,
 
 void LaTeX::deleteFilesOnError() const
 {
-	// currently just a dummy function.
-
 	// What files do we have to delete?
 
 	// This will at least make latex do all the runs
