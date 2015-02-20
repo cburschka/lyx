@@ -672,7 +672,6 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 			LaTeX::NO_OUTPUT;
 
 	return (result & ERROR_MASK) == 0;
-
 }
 
 
