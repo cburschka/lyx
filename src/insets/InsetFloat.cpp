@@ -345,6 +345,8 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 			os << caption;
 		}
 		os << '{';
+		// The main argument is the contents of the float. This is not a moving argument.
+		rp.moving_arg = false;
 		rp.inFloat = OutputParams::SUBFLOAT;
 		InsetText::latex(os, rp);
 		os << "}";
