@@ -775,7 +775,7 @@ string Buffer::logName(LogType * type) const
 
 	// Also consider the master buffer log file
 	FileName masterfname = fname;
-	LogType mtype;
+	LogType mtype = latexlog;
 	if (masterBuffer() != this) {
 		string const mlogfile = masterBuffer()->logName(&mtype);
 		masterfname = FileName(mlogfile);
