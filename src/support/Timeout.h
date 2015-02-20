@@ -68,7 +68,10 @@ private:
 class Timer
 {
 public:
+	///
 	Timer();
+	///
+	~Timer();
 	///
 	void restart();
 	///

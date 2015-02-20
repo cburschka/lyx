@@ -158,6 +158,12 @@ Timer::Timer() : d(new Private)
 }
 
 
+Timer::~Timer()
+{
+	delete d;
+}
+
+
 void Timer::restart()
 {
 	time(&d->start_time);
