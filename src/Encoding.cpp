@@ -166,11 +166,11 @@ void Encoding::init() const
 		}
 	}
 	lyxerr.enable();
-	CharSet::iterator it = encodable_.find(start_encodable_);
-	while (it != encodable_.end()) {
+	CharSet::iterator it = encodable.find(start_encodable);
+	while (it != encodable.end()) {
 		encodable.erase(it);
 		++start_encodable;
-		it = encodable_.find(start_encodable_);
+		it = encodable.find(start_encodable);
 	}
 	const_cast<Encoding *>(this)->complete_ = true;
 }
