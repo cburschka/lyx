@@ -65,6 +65,8 @@ What's new
 
 - Do not output \protect unnecessarily before \caption (bug 9177).
 
+- Do not output \protect unnecessarily in subfigure contents (bug 9421).
+
 - Fix wrong listings preamble encoding (bug 9382).
 
 - Fix reversion of beamer description overlay arguments.
