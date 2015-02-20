@@ -19,9 +19,6 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 
-#include <cstring>
-#include <string>
-
 using namespace std;
 using namespace lyx::support;
 
@@ -315,9 +312,7 @@ bool isValidLength(string const & data, Length * result)
 		return true;
 	}
 
-	string   buffer = data;
-	int      pattern_index = 0;
-	char     pattern[3];
+	string buffer = data;
 
 	// To make isValidLength recognize negative values
 	// this little hack is needed:
@@ -345,19 +340,19 @@ bool isValidLength(string const & data, Length * result)
 	int unit_index = 1;   // entries at index 0 are sentinels
 
 	// construct "pattern" from "data"
+	string pattern;
 	while (!isEndOfData(buffer)) {
-		if (pattern_index > 2)
+		if (pattern.size() > 2)
 			return false;
-		pattern[pattern_index] = nextToken(buffer, number,
+		char const token = nextToken(buffer, number,
 				number_index, unit, unit_index);
-		if (pattern[pattern_index] == 'E')
+		if (token == 'E')
 			return false;
-		++pattern_index;
+		pattern += token;
 	}
-	pattern[pattern_index] = '\0';
 
 	// only the most basic pattern is accepted here
-	if (strcmp(pattern, "nu") != 0)
+	if (pattern != "nu")
 		return false;
 
 	// It _was_ a correct length string.
