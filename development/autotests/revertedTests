@@ -100,3 +100,8 @@ export/templates/aa_(dvi3|pdf4|pdf5)_(texF|systemF)
 # without error on TeX Live 2013, the resulting PDFs had gibberish.
 export/doc/he/(Intro|Tutorial)_pdf4_texF
 export/examples/he/(example_lyxified|example_raw|splash)_pdf4_texF
+#
+# Inside the file we state
+# "Due to technical reasons PDF-Reply works only when using pdflatex."
+# The file also seems to compile with lualatex as well.
+export/examples/PDF-comment_(dvi.*|pdf[^25]*)
