@@ -825,7 +825,10 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				if (!getline(ifs, tmp))
 					break;
 				tmp = rtrim(tmp, "\r");
-				if (++count > 10)
+				// 15 is somewhat arbitrarily chosen, based on practice.
+				// We used 10 for 14 years and increased it to 15 when we
+				// saw one case.
+				if (++count > 15)
 					break;
 			} while (!prefixIs(tmp, "l."));
 			if (prefixIs(tmp, "l.")) {
