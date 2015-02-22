@@ -662,7 +662,7 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 		Alert::error(_("LaTeX failed"), str);
 	} else if ((result & LaTeX::NO_OUTPUT) && !buffer.isClone()) {
 		Alert::warning(_("Output is empty"),
-			       _("An empty output file was generated."));
+			       _("No output file was generated."));
 	}
 
 
