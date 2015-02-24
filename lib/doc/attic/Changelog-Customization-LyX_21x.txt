@@ -1,0 +1,35 @@
+﻿Modified:
+
+- sec. 3.1:
+	- changed View->View (Other Formats)->DVI to  Document>View (Other Formats)->DVI
+	- In second and fourth paragraph changes two *View* menu to *Document*
+
+Todo:
+
+Section 3.2, second paragraph, sentence :
+"The definitions of the copiers may use four variables:"
+should read:
+"The definitions of the copiers may use eight variables:"
+
+In footnote #2, section 4.1.1, a translator (Adrien or Siegfried, I guess, I didn't add added it myself) a warning about Emacs edition of po files, as Emacs does not know (up to my knowledge) to handle files encoded in Unicode, something like "Emacs contains a `mode' for editing po files, as well, but beware, po files are Unicode-encoded."
+
+In section 4.1.2; the doc suggests to make a copy of the document, it's OK for simple docs, but it won't be good for complex docs with images, file paths will be broken when the document will be submitted. It's much better to retrieve the LyX tree from git and to edit directly the doc in place.
+
+Section 4.1bis, International Keyboard Support: what is the status of this section in an outdated branch?
+
+Section 5.1, enum 3a: the TeXLive path should be indicated, I added in the French doc /usr/local/texlive/texmf-local, (and as well /usr/share/texmf as it appears when installed by my Debian). In the same line, I added ~/.texliveXXXX for the location of TEXMFHOME.
+
+Section 5.1, enum 3b: I don't use Windows, but shouldn't the path be documented for Windows 7 and Windows 8 if they have changed ?
+
+Section 5.3.3: the current format number is 48.
+
+Section 5.3.6: the last line of Argument item should end by a period.
+               in the ForceLocal doc, in the second sentence, 'argment' should read 'argument'; the 'If' after the colon should be 'if'.
+               in the Bib_Environment doc, adds additionnaly is a pleonasm; a period is missing after \begin{thebibliography}{99}.
+
+Section 5.3.7: last sentence, the example should read '(e.g. 2.0.x to 2.1.0)' instead of '(e.g. 2.0.x to 2.1.y)' IMHO, as it won't change after 2.1.0 until 2.2.0
+
+Section 5.3.12: should not <cite>misc %author%, �%title�.</cite> read
+<cite>misc %author%, �%title%�.</cite>?
+
+Appendix B: legend for "buttonbg" should read "Color used for button background" 
