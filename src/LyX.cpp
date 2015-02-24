@@ -763,7 +763,9 @@ void cleanDuplicateEnvVars()
 	}
 
 	// Loop over the list of duplicated variables
-	for (std::set<std::string>::iterator dupe = dupes.begin(); dupe != dupes.end(); ++dupe) {
+	std::set<std::string>::iterator dupe = dupes.begin();
+	std::set<std::string>::iterator const dend = dupes.end();	
+	for (; dupe != dend; ++dupe) {
 		const char *name = (*dupe).c_str();
 		char *val = getenv(name);
 		if (val != NULL) {
