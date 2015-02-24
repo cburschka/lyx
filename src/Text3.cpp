@@ -476,7 +476,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	cur.noScreenUpdate();
 
 	LBUFERR(this == cur.text());
-	CursorSlice const oldTopSlice = cur.top();
+	CursorSlice const & oldTopSlice = cur.top();
 	bool const oldBoundary = cur.boundary();
 	bool const oldSelection = cur.selection();
 	// Signals that, even if needsUpdate == false, an update of the

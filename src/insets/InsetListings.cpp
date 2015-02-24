@@ -284,7 +284,7 @@ docstring InsetListings::xhtml(XHTMLStream & os, OutputParams const & rp) const
 	}
 
 	InsetLayout const & il = getLayout();
-	string const tag = il.htmltag();
+	string const & tag = il.htmltag();
 	string attr = "class ='listings";
 	string const lang = params().getParamValue("language");
 	if (!lang.empty())

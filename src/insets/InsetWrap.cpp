@@ -230,7 +230,7 @@ docstring InsetWrap::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 	string const len = params_.width.asHTMLString();
 	string const width = len.empty() ? "50%" : len;
 	InsetLayout const & il = getLayout();
-	string const tag = il.htmltag();
+	string const & tag = il.htmltag();
 	string const attr = il.htmlattr() + " style='width:" + width + ";'";
 	xs << html::StartTag(tag, attr);
 	docstring const deferred = 

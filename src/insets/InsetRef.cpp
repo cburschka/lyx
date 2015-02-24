@@ -140,8 +140,8 @@ docstring InsetRef::getEscapedLabel(OutputParams const & rp) const
 
 void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 {
-	string const cmd = getCmdName();
-	docstring const data = getEscapedLabel(rp);
+	string const & cmd = getCmdName();
+	docstring const & data = getEscapedLabel(rp);
 
 	if (rp.inulemcmd > 0)
 		os << "\\mbox{";

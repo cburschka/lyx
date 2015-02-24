@@ -620,7 +620,7 @@ bool Paragraph::isMergedOnEndOfParDeletion(bool trackChanges) const
 	if (!trackChanges)
 		return true;
 
-	Change const change = d->changes_.lookup(size());
+	Change const & change = d->changes_.lookup(size());
 	return change.inserted() && change.currentAuthor();
 }
 
@@ -1640,7 +1640,7 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 	int column = 0;
 	for (pos_type i = 0; i <= size(); ++i) {
 
-		Change const change = lookupChange(i);
+		Change const & change = lookupChange(i);
 		if (change != running_change)
 			flushString(os, write_buffer);
 		Changes::lyxMarkChange(os, bparams, column, running_change, change);

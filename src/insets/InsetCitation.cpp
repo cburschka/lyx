@@ -183,7 +183,7 @@ docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
 namespace {
 
 
-CitationStyle asValidLatexCommand(string const & input, vector<CitationStyle> const valid_styles)
+CitationStyle asValidLatexCommand(string const & input, vector<CitationStyle> const & valid_styles)
 {
 	CitationStyle cs = valid_styles[0];
 	cs.forceUpperCase = false;

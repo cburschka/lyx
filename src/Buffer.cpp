@@ -1851,7 +1851,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 	d->texrow.reset();
 
 	DocumentClass const & tclass = params().documentClass();
-	string const top_element = tclass.latexname();
+	string const & top_element = tclass.latexname();
 
 	bool const output_preamble =
 		output == FullSource || output == OnlyPreamble;
