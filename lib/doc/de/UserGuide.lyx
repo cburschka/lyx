@@ -35073,7 +35073,7 @@ status open
 \series bold
 Achtung:
 \series default
- nicht alle DVI-Betrachtungsprogramme sind in der Lage dieses Format korrekt
+ Nicht alle DVI-Betrachtungsprogramme sind in der Lage dieses Format korrekt
  anzuzeigen.
 \end_layout
 
@@ -35111,8 +35111,23 @@ Graphviz
 \end_layout
 
 \begin_layout Description
-HTML HTML-Format (Der HTML-Konverter ist kein Bestandteil von LyX und funktionie
-rt eventuell nicht in allen Fällen.)
+HTML HTML-Format; 
+\series bold
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Hinweis:
+\series default
+ Die exportierte Datei wird in einem Unterordner gespeichert.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description

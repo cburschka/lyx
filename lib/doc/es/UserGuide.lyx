@@ -34845,7 +34845,7 @@ status open
 Nota:
 \series default
  actualmente no todos los visores DVI pueden mostrar adecuadamente este
- formato
+ formato.
 \end_layout
 
 \end_inset
@@ -34880,8 +34880,27 @@ Graphviz.
 \end_layout
 
 \begin_layout Description
-HTML formato HTML (el convertidor HTML es un programa externo que no siempre
- funciona).
+HTML formato HTML; 
+\series bold
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Nota:
+\series default
+ 
+\lang english
+the exported file will be stored in a subdirectory
+\lang spanish
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
