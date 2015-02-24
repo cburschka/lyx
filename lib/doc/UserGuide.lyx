@@ -8054,12 +8054,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8072,6 +8074,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -34541,8 +34544,23 @@ Graphviz
 \end_layout
 
 \begin_layout Description
-HTML HTML-format (the HTML-converter is a third-party product and may not
- work in all cases)
+HTML HTML-format; 
+\series bold
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ the exported file will be stored in a subdirectory.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
