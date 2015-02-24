@@ -36072,8 +36072,29 @@ Graphviz
 \end_layout
 
 \begin_layout Description
-HTML format HTML (les convertisseurs HTML sont des applications indépendantes
- de LyX et peuvent ne pas fonctionner dans tous les cas);
+HTML format HTML; 
+\series bold
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Nota:
+\series default
+ 
+\lang english
+the exported file will be stored in a subdirectory
+\lang french
+.
+\end_layout
+
+\end_inset
+
+
+\series default
+;
 \end_layout
 
 \begin_layout Description
