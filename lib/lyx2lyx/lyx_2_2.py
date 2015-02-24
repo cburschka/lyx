@@ -480,6 +480,71 @@ def revert_question_env(document):
 
         i = j
 
+
+def convert_dashes(document):
+    "convert -- and --- to \\twohyphens and \\threehyphens"
+
+    if document.backend != "latex":
+        return
+
+    i = 0
+    while i < len(document.body):
+        words = document.body[i].split()
+        if len(words) > 1 and words[0] == "\\begin_inset" and \
+           words[1] in ["ERT", "Formula", "IPA"]:
+            # must not replace anything in math
+            # filtering out IPA makes Text::readParToken() more simple
+            # skip ERT as well since it is not needed there
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of " + words[1] + " inset at line " + str(i))
+                i += 1
+            else:
+                i = j
+            continue
+        while True:
+            j = document.body[i].find("--")
+            if j == -1:
+                break
+            front = document.body[i][:j]
+            back = document.body[i][j+2:]
+            # We can have an arbitrary number of consecutive hyphens.
+            # These must be split into the corresponding number of two and three hyphens
+            # We must match what LaTeX does: First try emdash, then endash, then single hyphen
+            if back.find("-") == 0:
+                back = back[1:]
+                if len(back) > 0:
+                    document.body.insert(i+1, back)
+                document.body[i] = front + "\\threehyphens"
+            else:
+                if len(back) > 0:
+                    document.body.insert(i+1, back)
+                document.body[i] = front + "\\twohyphens"
+        i += 1
+
+
+def revert_dashes(document):
+    "convert \\twohyphens and \\threehyphens to -- and ---"
+
+    i = 0
+    while i < len(document.body):
+        replaced = False
+        if document.body[i].find("\\twohyphens") >= 0:
+            document.body[i] = document.body[i].replace("\\twohyphens", "--")
+            replaced = True
+        if document.body[i].find("\\threehyphens") >= 0:
+            document.body[i] = document.body[i].replace("\\threehyphens", "---")
+            replaced = True
+        if replaced and i+1 < len(document.body) and \
+           (document.body[i+1].find("\\") != 0 or \
+            document.body[i+1].find("\\twohyphens") == 0 or
+            document.body[i+1].find("\\threehyphens") == 0) and \
+           len(document.body[i]) + len(document.body[i+1]) <= 80:
+            document.body[i] = document.body[i] + document.body[i+1]
+            document.body[i+1:i+2] = []
+        else:
+            i += 1
+
   
 ##
 # Conversion hub
@@ -495,10 +560,12 @@ convert = [
            [477, []],
            [478, []],
            [479, []],
-           [480, []]
+           [480, []],
+           [481, [convert_dashes]]
           ]
 
 revert =  [
+           [480, [revert_dashes]],
            [479, [revert_question_env]],
            [478, [revert_beamer_lemma]],
            [477, [revert_xarrow]],

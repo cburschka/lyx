@@ -498,6 +498,23 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 		inset->read(lex);
 		inset->setBuffer(*buf);
 		par.insertInset(par.size(), inset.release(), font, change);
+	} else if (token == "\\twohyphens" || token == "\\threehyphens") {
+		// Ideally, this should be done by lyx2lyx, but lyx2lyx does not know the
+		// running font and does not know anything about layouts (and CopyStyle).
+		Layout const & layout(par.layout());
+		FontInfo info = font.fontInfo();
+		info.realize(layout.resfont);
+		if (layout.pass_thru || info.family() == TYPEWRITER_FAMILY) {
+			if (token == "\\twohyphens")
+				par.insert(par.size(), from_ascii("--"), font, change);
+			else
+				par.insert(par.size(), from_ascii("---"), font, change);
+		} else {
+			if (token == "\\twohyphens")
+				par.insertChar(par.size(), 0x2013, font, change);
+			else
+				par.insertChar(par.size(), 0x2014, font, change);
+		}
 	} else if (token == "\\backslash") {
 		par.appendChar('\\', font, change);
 	} else if (token == "\\LyXTable") {
@@ -1019,14 +1036,36 @@ void Text::insertChar(Cursor & cur, char_type c)
 		}
 	}
 
-	par.insertChar(cur.pos(), c, cur.current_font,
+	pos_type pos = cur.pos();
+	if (!cur.paragraph().isPassThru() && owner_->lyxCode() != IPA_CODE &&
+	    cur.current_font.fontInfo().family() != TYPEWRITER_FAMILY &&
+	    c == '-' && pos > 0) {
+		if (par.getChar(pos - 1) == '-') {
+			// convert "--" to endash
+			par.eraseChar(pos - 1, cur.buffer()->params().track_changes);
+			c = 0x2013;
+			pos--;
+		} else if (par.getChar(pos - 1) == 0x2013) {
+			// convert "---" to emdash
+			par.eraseChar(pos - 1, cur.buffer()->params().track_changes);
+			c = 0x2014;
+			pos--;
+		} else if (par.getChar(pos - 1) == 0x2014) {
+			// convert "----" to "-"
+			par.eraseChar(pos - 1, cur.buffer()->params().track_changes);
+			c = '-';
+			pos--;
+		}
+	}
+
+	par.insertChar(pos, c, cur.current_font,
 		cur.buffer()->params().track_changes);
 	cur.checkBufferStructure();
 
 //		cur.screenUpdateFlags(Update::Force);
 	bool boundary = cur.boundary()
-		|| tm.isRTLBoundary(cur.pit(), cur.pos() + 1);
-	setCursor(cur, cur.pit(), cur.pos() + 1, false, boundary);
+		|| tm.isRTLBoundary(cur.pit(), pos + 1);
+	setCursor(cur, cur.pit(), pos + 1, false, boundary);
 	charInserted(cur);
 }
 

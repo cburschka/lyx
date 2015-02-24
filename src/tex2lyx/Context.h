@@ -146,6 +146,8 @@ public:
 	 * would not work.
 	 */
 	bool new_layout_allowed;
+	/// May -- be converted to endash and --- to emdash?
+	bool merging_hyphens_allowed;
 	/// Did we output anything yet in any context?
 	static bool empty;
 

@@ -2387,9 +2387,22 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cat() == catOther ||
 			       t.cat() == catAlign ||
 			       t.cat() == catParameter) {
-			// This translates "&" to "\\&" which may be wrong...
 			context.check_layout(os);
-			os << t.cs();
+			if (t.asInput() == "-" && p.next_token().asInput() == "-" &&
+			    context.merging_hyphens_allowed &&
+			    context.font.family != "ttfamily" &&
+			    !context.layout->pass_thru) {
+				if (p.next_next_token().asInput() == "-") {
+					// --- is emdash
+					os << to_utf8(docstring(1, 0x2014));
+					p.get_token();
+				} else
+					// -- is endash
+					os << to_utf8(docstring(1, 0x2013));
+				p.get_token();
+			} else
+				// This translates "&" to "\\&" which may be wrong...
+				os << t.cs();
 		}
 
 		else if (p.isParagraph()) {
@@ -3240,7 +3253,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "textipa") {
 			context.check_layout(os);
 			begin_inset(os, "IPA\n");
+			bool merging_hyphens_allowed = context.merging_hyphens_allowed;
+			context.merging_hyphens_allowed = false;
 			parse_text_in_inset(p, os, FLAG_ITEM, outer, context);
+			context.merging_hyphens_allowed = merging_hyphens_allowed;
 			end_inset(os);
 			preamble.registerAutomaticallyLoadedPackage("tipa");
 			preamble.registerAutomaticallyLoadedPackage("tipx");

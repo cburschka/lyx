@@ -82,7 +82,8 @@ Context::Context(bool need_layout_,
 	: need_layout(need_layout_),
 	  need_end_layout(false), need_end_deeper(false),
 	  has_item(false), deeper_paragraph(false),
-	  new_layout_allowed(true), textclass(textclass_),
+	  new_layout_allowed(true), merging_hyphens_allowed(true),
+	  textclass(textclass_),
 	  layout(layout_), parent_layout(parent_layout_),
 	  font(font_)
 {
@@ -240,6 +241,8 @@ void Context::dump(ostream & os, string const & desc) const
 		os << "deeper_paragraph ";
 	if (new_layout_allowed)
 		os << "new_layout_allowed ";
+	if (merging_hyphens_allowed)
+		os << "merging_hyphens_allowed ";
 	if (!extra_stuff.empty())
 		os << "extrastuff=[" << extra_stuff << "] ";
 	if (!par_extra_stuff.empty())

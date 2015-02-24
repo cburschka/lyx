@@ -11,6 +11,11 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2015-02-24 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+	* Format incremented to 481
+	  "--" and "---" are not treated as endash and emdash anymore, since
+	  we have unicode symbols for that now (bug 3647).
+
 2015-01-09 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 480:
 	  Add self-defined Question* and Question lemma types to

@@ -36,8 +36,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 480 // spitz: question and question* environments
-#define LYX_FORMAT_TEX2LYX 480
+#define LYX_FORMAT_LYX 481 // gb: endash and emdash
+#define LYX_FORMAT_TEX2LYX 481
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER

@@ -364,12 +364,6 @@ public:
 		pos_type i,
 		unsigned int & column);
 	///
-	bool latexSpecialTypewriter(
-		char_type const c,
-		otexstream & os,
-		pos_type i,
-		unsigned int & column);
-	///
 	bool latexSpecialPhrase(
 		otexstream & os,
 		pos_type & i,
@@ -1216,12 +1210,6 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 	    && lyxrc.fontenc == "T1" && latexSpecialT1(c, os, i, column))
 		return;
 
-	// \tt font needs special treatment
-	if (!runparams.inIPA
-	     && running_font.fontInfo().family() == TYPEWRITER_FAMILY
-	     && latexSpecialTypewriter(c, os, i, column))
-		return;
-
 	// Otherwise, we use what LaTeX provides us.
 	switch (c) {
 	case '\\':
@@ -1242,6 +1230,14 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		break;
 	case '-':
 		os << '-';
+		if (i + 1 < end_pos && text_[i+1] == '-') {
+			// Prevent "--" becoming an endash and "---" becoming
+			// an emdash.
+			// Within \ttfamily, "--" is merged to "-" (no endash)
+			// so we avoid this rather irritating ligature as well
+			os << "{}";
+			column += 2;
+		}
 		break;
 	case '\"':
 		os << "\\char`\\\"{}";
@@ -1395,28 +1391,6 @@ bool Paragraph::Private::latexSpecialT3(char_type const c, otexstream & os,
 		os << "\\textvertline{}";
 		column += 14;
 		return true;
-	default:
-		return false;
-	}
-}
-
-
-bool Paragraph::Private::latexSpecialTypewriter(char_type const c, otexstream & os,
-	pos_type i, unsigned int & column)
-{
-	switch (c) {
-	case '-':
-		// within \ttfamily, "--" is merged to "-" (no endash)
-		// so we avoid this rather irritating ligature
-		if (i + 1 < int(text_.size()) && text_[i + 1] == '-') {
-			os << "-{}";
-			column += 2;
-		} else
-			os << '-';
-		return true;
-
-	// everything else has to be checked separately
-	// (depending on the encoding)
 	default:
 		return false;
 	}
@@ -3159,31 +3133,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 			}
 		} else {
 			char_type c = getUChar(buf.masterBuffer()->params(), i);
-
-			if (style.pass_thru || runparams.pass_thru)
-				xs << c;
-			else if (c == '-' && !runparams.inIPA &&
-			         font.fontInfo().family() != TYPEWRITER_FAMILY) {
-				docstring str;
-				int j = i + 1;
-				if (j < size() && d->text_[j] == '-') {
-					j += 1;
-					if (j < size() && d->text_[j] == '-') {
-						str += from_ascii("&mdash;");
-						i += 2;
-					} else {
-						str += from_ascii("&ndash;");
-						i += 1;
-					}
-				}
-				else
-					str += c;
-				// We don't want to escape the entities. Note that
-				// it is safe to do this, since str can otherwise
-				// only be "-". E.g., it can't be "<".
-				xs << XHTMLStream::ESCAPE_NONE << str;
-			} else
-				xs << c;
+			xs << c;
 		}
 		font_old = font.fontInfo();
 	}
@@ -3258,9 +3208,7 @@ bool Paragraph::isHardHyphenOrApostrophe(pos_type pos) const
 	if ((nextpos == psize || isSpace(nextpos))
 		&& (pos == 0 || isSpace(prevpos)))
 		return false;
-	return c == '\''
-		|| ((nextpos == psize || d->text_[nextpos] != '-')
-		&& (pos == 0 || d->text_[prevpos] != '-'));
+	return true;
 }
 
 
