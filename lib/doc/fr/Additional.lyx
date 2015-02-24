@@ -161,11 +161,28 @@ er par Édition/Affichage/Insertion/Navigation
 \end_layout
 
 \begin_layout Plain Layout
-Manque les sections 7.2.3 à 7.2.7 (CVS/SVN)
+Mise à jour pour 2.1 : 30/12/2014, Traduction chapitre 8, unification du
+ vocabulaire : 
+\begin_inset Quotes fld
+\end_inset
+
+annexe
+\begin_inset Quotes frd
+\end_inset
+
+ pour 
+\begin_inset Quotes fld
+\end_inset
+
+appendix
+\begin_inset Quotes frd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
-Original : Révision: 39368, Date : 23/07/2011
+Manque les sections 7.2.3 à 7.2.7 (CVS/SVN)
 \end_layout
 
 \end_inset
@@ -14447,7 +14464,7 @@ Section*
 \end_layout
 
 \begin_layout Enumerate
-Vous pouvez ajouter des appendices au papier, 
+Vous pouvez ajouter des annexes au papier, 
 \emph on
 après 
 \emph default
@@ -14456,71 +14473,39 @@ les remerciements et
 avant 
 \emph default
 les Références.
- LyX propose un environnement spécial, appelé 
+ LyX propose un marqueur spécial, via 
 \family sans
-Section
-\begin_inset space ~
-\end_inset
-
-d'appendices
+Document\SpecialChar \menuseparator
+Début annexe(s) ici
 \family default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-NdT : ou 
-\family sans
-Appendices Section
-\family default
-.
-\end_layout
-
-\end_inset
-
- qui indique le début des appendices.
- Cet environnement doit être laissé vide ; il sert juste à émettre une commande
- LaTeX, mais rien n'est imprimé.
+ qui indique le début des annexes.
  Dans LyX, le mot 
 \begin_inset Quotes fld
 \end_inset
 
-Appendices
+Annexes
 \begin_inset Quotes frd
 \end_inset
 
- apparaît en lettres bleues, comme indications que toutes les sections qui
- suivent ce point sont des appendices.
- Pour écrire un appendice, utilisez l'environnement 
+ apparaît en lettres rouges, comme indication que toutes les sections qui
+ suivent ce point sont des annexes, elles-mêmes encapsulées dans une zone
+ encadrée en rouge.
+ Pour écrire une annexe, créez simplement une section dans cette zone (le
+ style 
 \begin_inset Quotes fld
 \end_inset
 
-Appendice
+Annexe
 \begin_inset Quotes frd
 \end_inset
 
-.
- LyX va numéroter chaque appendice avec une lettre majuscule, comme cela
- est demandé par les deux journaux.
- Notes que la 
-\begin_inset Quotes fld
-\end_inset
-
-Section d'appendices
-\begin_inset Quotes frd
-\end_inset
-
- 
-\emph on
-doit
-\emph default
- être présente avant le premier appendice ; si ce n'est pas le cas, tous
- les appendices seront numérotés comme des sections normales, dans la sortie.
- Un appendice peut contenir des 
+ fait la même chose, il avait été créé dans les formats 
 \family sans
-Section
+ijmp
 \family default
-s, 
+ à une époque où la fonctionnalité de création d'annexe était différente;
+ vous pouvez l'ignorer).
+ Une annexe peut contenir des 
 \family sans
 SousSection
 \family default
@@ -14528,7 +14513,7 @@ s et
 \family sans
 SousSousSection
 \family default
-s de la manière habituelle.
+s.
 \end_layout
 
 \begin_layout Enumerate
@@ -17228,7 +17213,7 @@ Memoir
 \family default
 .
  Il est donc beaucoup plus facile de mettre en forme la table des matières,
- les appendices, les chapitres et autres.
+ les annexes, les chapitres et autres.
  LyX, ne gère pas de façon native la plupart de ces fonctionnalités.
  Quelque-unes pourront être ajoutées dans de prochaines versions
 \begin_inset Foot
@@ -24491,102 +24476,79 @@ Multi-colonnes
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This feature is independent of the option 
+Cette fonctionnalité est indépendante de l'option 
 \family sans
-Two-column document
+Document sur deux colonnes
 \family default
- in the document settings under 
+ du menu 
 \family sans
-Text Layout
+Document\SpecialChar \menuseparator
+Paramètres
+\family default
+ dans la rubrique 
+\family sans
+Format du texte
 \family default
 .
- If you want to have 2
-\begin_inset space ~
-\end_inset
-
-columns for the whole document, it is recommended to use the 
+ Si vous désirez une présentation sur deux colonnes dans tout le document,
+ vous devez utiliser l'option 
 \family sans
-Two-column document
+Document sur deux colonnes
 \family default
- option.
- For all other cases use this feature.
+.
+ Pour tous les aures cas, utisez la fonctionnalité décrite ici.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To use multiple text columns in your document, you have to load the module
- 
+Pour activer les colonnes multiples dans votre document, vous devez charger
+ le module 
 \family sans
-Multiple Columns
+Multi-colonnes
 \family default
  (menu 
 \family sans
 Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Paramètres\SpecialChar \menuseparator
 Modules
 \family default
-) and must have the LaTeX-package 
+) et vous devez avoir installé le paquetage LaTeX 
 \series bold
 multicol
 \series default
- installed.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Footnotes within multiple columns will be placed at the bottom of the page
- and not under each column.
- Within the different columns you can use everything, with the limitation
- that for floats you need to use the float option 
-\family sans
-Span columns
-\family default
 .
 \end_layout
 
-\begin_layout Subsection
-
-\lang english
-Basics
-\end_layout
-
 \begin_layout Standard
-
-\lang english
-If you want to have 2
-\begin_inset space ~
-\end_inset
-
-columns in your text, insert a multicolumn inset via the menu 
+Dans chaque colonne, vous pouvez insérer ce que vous voulez, avec une limitation
+: pour les flottants, vous devez utiliser l'option 
 \family sans
-Insert\SpecialChar \menuseparator
-Custom
-\begin_inset space ~
-\end_inset
+Plusieurs colonnes.
 
-Insets\SpecialChar \menuseparator
-Multiple
-\begin_inset space ~
-\end_inset
-
-Columns
 \family default
- where the columns should start.
- Write all text that should be printed in 2
-\begin_inset space ~
-\end_inset
+ Les notes de bas de page provenant de colonnes multiples seront placées
+ sur toute la largeur de la page et non pas sous chaque colonne.
+ 
+\end_layout
 
-columns into this inset.
+\begin_layout Subsection
+Les bases
 \end_layout
 
 \begin_layout Standard
+Si vous souhaitez présenter un texte sur deux colonnes, insérez un insert
+ multi-colonnes via
+\family sans
+ Insertion\SpecialChar \menuseparator
+Inserts personnalisables\SpecialChar \menuseparator
+Multi-colonnes 
+\family default
+là où les colonnes doivent débuter.
+ Saisissez tout le texte qui doit être affiché sur deux colonnes dans cet
+ insert.
+\end_layout
 
-\lang english
-Here is an example:
+\begin_layout Standard
+Voici un exemple:
 \end_layout
 
 \begin_layout Standard
@@ -24644,44 +24606,27 @@ ty which utterly submerged my mind.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To get 3 or more columns, set the cursor into the multicolumn inset and
- use the menu 
+Pour avoir 3 colonnes ou plus, positionnez le curseur dans l'insert multi-colonn
+es et utilisez le menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Number
-\begin_inset space ~
-\end_inset
-
-of
-\begin_inset space ~
-\end_inset
-
-Columns
+Insertion\SpecialChar \menuseparator
+Nombre de colonnes
 \family default
 .
- The number of the desired columns is written into that inset (for 3
-\begin_inset space ~
-\end_inset
-
-columns write 
-\begin_inset Quotes eld
+ Le nombre de colonnes est saisi dans cet insert (pour 3 colonnes, saisir
+ 
+\begin_inset Quotes fld
 \end_inset
 
 3
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 ).
 \begin_inset Newline newline
 \end_inset
 
-Here is an example with 3
-\begin_inset space ~
-\end_inset
-
-columns:
+Voici un exemple avec 3 colonnes:
 \end_layout
 
 \begin_layout Standard
@@ -24732,14 +24677,9 @@ It can be imagined that my close intimacy with Sherlock Holmes had interested
 \end_layout
 
 \begin_layout Standard
+Vous pouvez avoir jusqu'à 10 colonnes si vous le désirez, mais ça risque
+ de ne pas être agréable à la lecture\SpecialChar \ldots{}
 
-\lang english
-You can have up to 10
-\begin_inset space ~
-\end_inset
-
-columns if you want to, but that might not be very pleasant for the readers
- of your document.
 \end_layout
 
 \begin_layout Standard
@@ -24752,15 +24692,11 @@ columns if you want to, but that might not be very pleasant for the readers
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Columns inside Columns
+Des colonnes dans des colonnes
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can also have columns inside columns:
+Vous pouvez également créer des colonnes dans des colonnes:
 \end_layout
 
 \begin_layout Standard
@@ -24841,23 +24777,17 @@ The evidence of those who had played with him– Mr.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Advanced Examples
+Exemples plus compliqués
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The examples in this section show some more special features of multiple
- columns.
+Les exemples proposés dans cette section illustrent quelques fonctionnalités
+ plus particulières de l'insertion de colonnes multiples.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For more features of multiple columns, have a look at the documentation
- of the LaTeX-package 
+Pour découvrir d'autres fonctionnalités, référez-vous à le documentation
+ du paquetage 
 \series bold
 multicol
 \series default
@@ -24872,26 +24802,22 @@ key "multicol"
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Preface
+Préface
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To add a preface text for multiple columns, set the cursor into the mulitcolumn
- inset and use the menu 
+Pour ajouter un texte en préface pour plusieurs colonnes, positionnez le
+ curseur dans l'insert multi-colonnes et appelez le menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Preface
+Insertion\SpecialChar \menuseparator
+Préface
 \family default
 .
- Write your preface text into that inset.
+ Saisissez votre texte de préface dans cet insert.
 \begin_inset Newline newline
 \end_inset
 
-This is an example with some preface text:
+Voici un exemple avec un texte en préface:
 \end_layout
 
 \begin_layout Standard
@@ -24948,11 +24874,8 @@ On the evening of the crime, he returned from the club exactly at ten.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can also use a section heading as the preface if you use a section command
- as TeX Code.
- For example the command
+Vous pouvez également utiliser une en-tête de section en tant que préface
+ si vous insérez une commande de section en code TeX: par exemple, la commande
 \end_layout
 
 \begin_layout Standard
@@ -24965,10 +24888,8 @@ subsection{subsection title}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-creates a subsection.
- In this example the preface is a subsubsection:
+crée une sous-section.
+ Et dans l'exemple suivant, la préface est une sous-sous-section:
 \end_layout
 
 \begin_layout Standard
@@ -25044,76 +24965,56 @@ A minute examination of the circumstances served only to make the case more
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If there is less vertical space than 6
-\begin_inset space ~
-\end_inset
-
-text lines is left on the page at the beginning of the multiple columns,
- a page break will be inserted before the multiple columns.
- Depending on the number of lines of the preface text, you might want to
- change this space.
- This is done by setting the cursor into the mulitcolumn inset behind the
- preface (if there is any) and using the menu 
+S'il reste un espacement vertical inférieur à 6 lignes de texte avant le
+ début de la zone multi-colonnes, un saut de page sera inséré automatiquement.
+ Vous voudrez peut-être changer ce réglage en fonction de du nombre de lignes
+ du texte en préface: ceci peut se faire en positionnant le curseur dans
+ l'insert multi-colonnes après la préface (si elle existe) et en appelant
+ le menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Space
-\begin_inset space ~
-\end_inset
-
-Before
-\begin_inset space ~
-\end_inset
-
-Page
-\begin_inset space ~
-\end_inset
-
-Break
+Insertion\SpecialChar \menuseparator
+Espacement avant saut de page
 \family default
 .
- Insert into that inset the amount of space like e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Quotes eld
+ Saisissez alors l’espacement désiré, e.g.
+ 
+\begin_inset Quotes fld
 \end_inset
 
 5cm
+\begin_inset Quotes frd
+\end_inset
+
+
 \begin_inset Quotes erd
 \end_inset
 
 .
+\lang english
+
 \begin_inset Newline newline
 \end_inset
 
-In this example the space is set to 7
-\begin_inset space ~
-\end_inset
 
-text lines by using 
-\begin_inset Quotes eld
+\lang french
+Dans l’exemple qui suit, l'espacement est réglé à 7 lignes de texte en saisissan
+t 
+\begin_inset Quotes fld
 \end_inset
 
 7
 \backslash
 baselineskip
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
- (where the command 
-\series bold
-
+ (où la commande 
 \backslash
+
+\series bold
 baselineskip
 \series default
- needs to be inserted as TeX code):
+ doit âtre insérée en code TeX):
 \end_layout
 
 \begin_layout Standard
@@ -25175,21 +25076,22 @@ On the evening of the crime, he returned from the club exactly at ten.
 \begin_layout Subsubsection
 
 \lang english
-Surrounding Space
+Espacements environnants
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The amount of space before and after multiple columns can be changed by
- changing the length 
+L’espacement avant et après un bloc de colonnes multiples peut être réglé
+ via la longueur 
 \series bold
+\lang english
 
 \backslash
 multicolsep
 \series default
 .
- For example the command
+ 
+\lang french
+Par exemple la commande en code TeX
 \end_layout
 
 \begin_layout Standard
@@ -25204,31 +25106,19 @@ multicolsep}{3cm}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-in TeX Code changes its value to 3
-\begin_inset space \thinspace{}
-\end_inset
-
-cm.
- The change must be made before the multiple columns' start.
- The predefined value is 13
-\begin_inset space \thinspace{}
-\end_inset
-
-pt.
+règle la valeur à 3cm.
+ La modification doit être faite avant le début de l'insert multi-colonnes.
+ La valeur prédéfinie est 13pt.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For this example 
+Ici 
 \series bold
 
 \backslash
 multicolsep
 \series default
- was set to 2.5
+ est réglé à 2.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -25295,16 +25185,16 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- The values you set with 
+ les valeurs réglées via 
 \series bold
 
 \backslash
 setlength
 \series default
- will be used for all following multiple columns until you change them again.
+ seront utilisées pour tous les environnements multi-colonnes suivants jusqu'à
+ la prochaine modification de la valeur.
 \end_layout
 
 \end_inset
@@ -25356,24 +25246,23 @@ go back to the default
 \begin_layout Subsubsection
 
 \lang english
-Column Breaks
+Sauts de colonne
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-A column break can be forced by inserting the command 
+Un saut de colonne peut être forcé en insérant la commande 
 \series bold
 
 \backslash
 columnbreak{}
 \series default
- as TeX-Code to that position in the text where the column should be broken.
- Note that this leads in most cases to whitespace in the text.
+ en code TeX là où la colonne doit être interrompue.
+ Notez bien que des zones vides seront créées la plupart du temps lorsque
+ cette commande est utilisée.
 \begin_inset Newline newline
 \end_inset
 
-Here is an example:
+Voici un exemple:
 \end_layout
 
 \begin_layout Standard
@@ -25441,7 +25330,7 @@ May I ask how you knew who I was?
 \begin_inset Quotes erd
 \end_inset
 
- AFTER THIS SENTENCE THE COLUMN BREAK IS FORCED.
+ APRÈS CETTE PHRASE UN SAUT DE COLONNE EST IMPOSÉ.
 \begin_inset ERT
 status collapsed
 
@@ -25499,39 +25388,21 @@ The Holy War
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Column Separation
+Séparation entre colonnes
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The width of the columns is automatically calculated, but you can modify
- the space between the columns.
- This is done by changing the length 
+La largeur des colonnes est calculée automatiquement, mais vous pouvez modifier
+ l'espacement entre colonnes.
+ Ceci est possible grâce à la longueur 
 \series bold
 
 \backslash
 columnsep
 \series default
 .
- Its predefined value is 10
-\begin_inset space \thinspace{}
-\end_inset
-
-pt.
- Here is an example where 
-\series bold
-
-\backslash
-columnsep
-\series default
- is set to 3
-\begin_inset space \thinspace{}
-\end_inset
-
-cm:
+ Sa valeur implicite est 10pt.
+ Voici un exemple dans lequel l'espacement est fixé à 3cm:
 \end_layout
 
 \begin_layout Standard
@@ -25618,31 +25489,20 @@ go back to the default
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Vertical Lines
+Filets verticaux
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Between the columns a rule with a width of the length 
+Entre les colonnes est placé un filet de largeur 
 \series bold
 
 \backslash
 columnseprule
 \series default
- is placed.
- If this rule width is set to 0
-\begin_inset space \thinspace{}
-\end_inset
-
-pt (this is the default), the rule is suppressed.
- In the following example the line is 2
-\begin_inset space \thinspace{}
-\end_inset
-
-pt wide:
+.
+ Si cette largeur est fixée à 0pt (c'est la valeur implicite), le filet
+ n'apparaît pas.
+ Dans l'exemple suivant, le filet a une largeur de 2pt:
 \end_layout
 
 \begin_layout Standard
@@ -25782,16 +25642,14 @@ The Holy War
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The rule can be colored by redefining the command 
+Le filet peut être mis en couleur en redéfinissant la commande 
 \series bold
 
 \backslash
 columnseprulecolor
 \series default
 .
- This is done by inserting the command
+ Ceci est fait en insérant la commande
 \begin_inset Newline newline
 \end_inset
 
@@ -25809,27 +25667,23 @@ color{red}}
 \begin_inset Newline newline
 \end_inset
 
-as TeX-Code before the multicolumn inset.
- Replace 
+en code TeX, avant l'insert multi-colonnes.
+ Remplacez dans cette commande 
 \series bold
 red
 \series default
- in this command by a color of your choice.
- You can use all pre- and self-defined colors.
- See the 
+ par la couleur de votre choix.
+ Vous pouvez utiliser les couleurs prédéfinies ou celles que vous avez définies
+ vous-même, voyez le 
 \emph on
-EmbeddedObjects
+Manuel des objets insérés
 \emph default
- manual, section 
+, section 
 \emph on
-Colored
-\begin_inset space ~
-\end_inset
-
-Tables
+Tableaux colorés
 \emph default
- for more information about pre- and self-defined colors.
- To go back to the default color insert the command
+ pour les détails sur la définition des couleurs.
+ Pour revenir à la couleur implicite, insérez la commande
 \begin_inset Newline newline
 \end_inset
 
@@ -25847,11 +25701,8 @@ normalcolor}
 \begin_inset Newline newline
 \end_inset
 
-Here is the example with a cyan rule and 1
-\begin_inset space \thinspace{}
-\end_inset
-
-cm column separation:
+Dans l'exemple qui suit, sont définis un filet magenta et une séparation
+ de colonnes de 1cm:
 \end_layout
 
 \begin_layout Standard
@@ -26050,26 +25901,23 @@ Paragraphes de forme inhabituelle
 
 \begin_layout Standard
 \noindent
-
-\lang english
-LaTeX as well as any other text processor uses by default rectangular paragraphs.
- For special cases like for example posters, invitation cards or poems you
- can modify the paragraph shape to one of your choice.
- This can be done by using the LaTeX-package 
+LaTeX, à l'instar des autres générateurs de texte, utilise implicitement
+ des paragraphes rectangulaires.
+ Pour des cas particuliers comme des affiches, des cartes d'invitation ou
+ des poèmes, vous pouvez modifier la forme des paragraphes à volonté.
+ Ceci est possible grâce au paquetage LaTeX 
 \series bold
 shapepar
 \series default
- which is loaded by using in the document settings the module 
+ qui est chargé en utilisant dans les paramètres du document le module 
 \family sans
-Custom paragraph shapes
+Formes de paragraphe paramétrable
 \family default
-.
+s.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Predefined shapes
+Formes prédéfinies
 \end_layout
 
 \begin_layout Standard
@@ -26078,7 +25926,8 @@ Predefined shapes
 \lang english
 shapepar
 \series default
- provides the following shapes:
+\lang french
+ fournit les formes suivantes:
 \end_layout
 
 \begin_layout Standard
@@ -26097,7 +25946,7 @@ shapepar
 \begin_layout Plain Layout
 
 \lang english
-Name
+Nom
 \end_layout
 
 \end_inset
@@ -26106,8 +25955,6 @@ Name
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Description
 \end_layout
 
@@ -26117,8 +25964,6 @@ Description
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Annotation
 \end_layout
 
@@ -26141,9 +25986,7 @@ CDlabel
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Circle with circular hole (in the size of a CD/DVD)
+Disque avec un trou circulaire (à la taille d'un CD/DVD)
 \end_layout
 
 \end_inset
@@ -26152,9 +25995,8 @@ Circle with circular hole (in the size of a CD/DVD)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Cannot be scaled, take care there is not too much text
+Pas de mise à l'échelle possible.
+ Attention, quantité de texte limitée
 \end_layout
 
 \end_inset
@@ -26176,9 +26018,7 @@ Circle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Circle
+Disque
 \end_layout
 
 \end_inset
@@ -26187,9 +26027,7 @@ Circle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Fragile, calculation might fail
+Fragile, le calcul peut échouer
 \end_layout
 
 \end_inset
@@ -26211,14 +26049,12 @@ Diamond
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Rhomboid (symbolizing a 
-\begin_inset Quotes eld
+Rhomboïde (symbolisant un 
+\begin_inset Quotes fld
 \end_inset
 
-diamond
-\begin_inset Quotes erd
+diamant
+\begin_inset Quotes frd
 \end_inset
 
 )
@@ -26230,8 +26066,6 @@ diamond
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -26254,9 +26088,7 @@ Heart
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Heart-like shape
+Forme en cœur
 \end_layout
 
 \end_inset
@@ -26265,8 +26097,6 @@ Heart-like shape
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -26289,9 +26119,7 @@ Hexagon
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Hexagon
+Hexagone
 \end_layout
 
 \end_inset
@@ -26300,8 +26128,6 @@ Hexagon
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -26324,9 +26150,7 @@ Nut
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Nut for bolt (hexagon with circular hole)
+Écrou (hexagone avec un trou circulaire)
 \end_layout
 
 \end_inset
@@ -26335,8 +26159,6 @@ Nut for bolt (hexagon with circular hole)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -26359,9 +26181,7 @@ Square
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Square
+Carré
 \end_layout
 
 \end_inset
@@ -26370,8 +26190,6 @@ Square
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -26394,9 +26212,7 @@ Star
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Five-point star
+Étoile à 5 branches
 \end_layout
 
 \end_inset
@@ -26405,8 +26221,6 @@ Five-point star
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -26429,9 +26243,7 @@ Candle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Burning candle
+Chandelle allumée
 \end_layout
 
 \end_inset
@@ -26440,8 +26252,6 @@ Burning candle
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -26464,9 +26274,7 @@ Drop down/up
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Normal/reversed rain drop
+Goutte de pluie normale/inversée
 \end_layout
 
 \end_inset
@@ -26475,9 +26283,7 @@ Normal/reversed rain drop
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Fragile, calculation might fail
+Fragile, le calcul peut échouer
 \end_layout
 
 \end_inset
@@ -26499,9 +26305,7 @@ TeX
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-The TeX logo
+Le logo TeX 
 \end_layout
 
 \end_inset
@@ -26510,8 +26314,6 @@ The TeX logo
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -26538,9 +26340,7 @@ left/right
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Triangles in different orientations
+Triangles avec des orientations différentes
 \end_layout
 
 \end_inset
@@ -26549,8 +26349,6 @@ Triangles in different orientations
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -26565,10 +26363,8 @@ Triangles in different orientations
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To use a shape for your paragraph, simply select it in LyX's pull-down box
- for environments in the toolbar.
+Pour utiliser une forme pour votre paragraphe, sélectionnez simplement la
+ forme souhaitée dans le menu déroulant des styles.
 \end_layout
 
 \begin_layout Standard
@@ -26579,9 +26375,7 @@ To use a shape for your paragraph, simply select it in LyX's pull-down box
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is an example paragraph in the shape of a nut:
+Voici un exemple de paragraphe en forme d'écrou:
 \end_layout
 
 \begin_layout Standard
@@ -26622,9 +26416,10 @@ status open
 
 \series bold
 \lang english
-Note
+Not
 \series default
-: shapepar paragraphs cannot run over a page break.
+a: les paragraphes mis en forme via shapepar ne peuvent pas franchir une
+ limite de page.
 \end_layout
 
 \end_inset
@@ -26645,12 +26440,13 @@ Note
 \lang english
 shapepar
 \series default
- takes care that the shape will always be preserved, no matter how much
- text is in the paragraph.
- Therefore the paragraph size changes with the amount of contained text.
- This can lead to paragraph sizes exceeding the page margins.
- To demonstrate the size scaling, here is the same example paragraph but
- with twice as much text:
+\lang french
+ prend soin de préserver la forme, quelle que soit la quantité de texte
+ du paragraphe.
+ De ce fait la taille du paragraphe change avec cette quantité.
+ Ceci peut conduite à des paragraphes qui empiètent dans les marges.
+ Pour illustrer cette mise à l'échelle, voici le même paragraphe avec deux
+ fois plus de texte:
 \end_layout
 
 \begin_layout Standard
@@ -26691,39 +26487,42 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-An exception is the shape 
+La forme 
 \family sans
 CDlabel
 \family default
-.
- It cannot be scaled because it must fit the size of a CD/DVD.
- Therefore the amount of text that fits into the shape is limited.
+ est une exception: elle ne peut pas être mise à l'échelle puisqu'elle doit
+ correspondre à une étiquette de CD/DVD.
+ De ce fait, la quantité de texte que l'on peut mettre en forme est limitée.
+\lang english
+
 \begin_inset Newline newline
 \end_inset
 
-The 
+
+\lang french
+Les formes 
 \family sans
 drop
 \family default
- shapes and the 
+ et 
 \family sans
 circle
 \family default
- shape are fragile, meaning that the calculation of their size can fail,
- depending on the amount of text.
- You will then get the LaTeX error 
-\begin_inset Quotes eld
+ sont fragiles, ce qui veut dire que le calcul de la taille peut échouer,
+ en fonction de la quantité de texte.
+ Vous aurez alors une erreur LaTeX 
+\begin_inset Quotes fld
 \end_inset
 
 Arithmetic overflow
-\begin_inset Quotes erd
+\begin_inset Quotes frd
 \end_inset
 
 .
- In this case one can try to remove or add some text; if nothing works one
- has to use another shape.
+ Dans ce cas, essayez d'ajouter ou d'enlever du texte; si rien ne fonctionne,
+ vous devez utiliser une autre forme\SpecialChar \ldots{}
+
 \end_layout
 
 \begin_layout Standard
@@ -26734,11 +26533,10 @@ Arithmetic overflow
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For shapes with tips you will maybe see that LaTeX's hyphenation routine
- fails for text in the tips.
- Therefore it is often necessary to add hyphenation points 
+Pour les formes pointues, vous verrez peut-être un échec de l'algorithme
+ de césure de LaTeX dans les coins.
+ Il est alors souvent nécessaire d'ajouter des points de césure explicites
+ 
 \family sans
 (
 \begin_inset Info
@@ -26748,7 +26546,7 @@ arg   "specialchar-insert hyphenation"
 
 
 \family default
-) to the corresponding text parts.
+) dans les parties de texte correspondantes.
 \end_layout
 
 \begin_layout Standard
@@ -26759,19 +26557,18 @@ arg   "specialchar-insert hyphenation"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Shapepar paragraphs are either always centered or placed on the page so
- that their left border touches the left page margin.
- You can therefore not use the paragraph dialog to align such paragraphs.
- A solution is to put the paragraph into a minipage or parbox and align
- the box.
- The problem is hereby to find the right width for the box.
- Because if it is too wide and you center the box, the paragraph is not
- centered too because it sticks at the left side of the box.
- So you might have to play a bit with the width until it fits.
- Here are two heart-shaped paragraphs, the first one is not aligned, the
- second one is right-aligned:
+Les paragraphes mis en forme par shapepar sont toujours ou bien centrés
+ ou bien alignées au fer à gauche.
+ Le menu de dialogue des paragraphes ne peut donc pas être utilisé pour
+ aligner ce type de paragraphe.
+ Une solution consiste à mettre le paragraphe en forme dans une minipage
+ ou une parbox et à aligner la boîte.
+ Le problème est alors de trouver la bonne largeur pour la boîte, parce
+ que si elle est trop large et que vous la centrez, le paragraphe n'est
+ pas centré parce qu'il est au fer à gauche dans la boîte.
+ Vous devrez alors jouer un peu avec la largeur de la boîte jusqu’à satisfaction.
+ Voici deux paragraphes en forme de cœur, le premier est non aligné, le
+ second est aligné à droite:
 \end_layout
 
 \begin_layout Standard
@@ -26836,25 +26633,17 @@ rem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Custom shapes
+Formes personnalisées
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can define any shape you want.
- Doing this manually is a lot of work because every coordinate must be specified.
- But there is a way to let the computer calculate the coordinates:
+Vous pouvez définir vos propres formes.
+ Le faire à la main demande beaucoup de travail parce qu'il faut spécifier
+ chaque coordonnée, mais il est possible de confier le travail à l'ordinateur:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Install the program 
-\lang french
-
+Installer le programme 
 \begin_inset CommandInset href
 LatexCommand href
 name "Jpgfdraw"
@@ -26866,13 +26655,11 @@ target "http://www.ctan.org/tex-archive/graphics/jpgfdraw"
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-In 
+Dans 
 \family sans
 Jpgfdraw
 \family default
- go to the menu 
+ , aller au menu 
 \family sans
 Te
 \begin_inset ERT
@@ -26900,24 +26687,16 @@ eX\SpecialChar \menuseparator
 Settings\SpecialChar \menuseparator
 Set Normal Size
 \family default
- and select the font size you are using in your document.
- For example this document uses the size 12
-\begin_inset space \thinspace{}
-\end_inset
-
-pt.
+ et sélectionner la taille de police utilisée dans le document.
+ Par exemple, le présent document utilise un police 12pt.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Draw a shape.
+Tracer une forme.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Use the menu 
+Utiliser le menu 
 \family sans
 Te
 \begin_inset ERT
@@ -26944,16 +26723,14 @@ status collapsed
 eX\SpecialChar \menuseparator
 Shapepar
 \family default
- to export the shape to coordinates.
- In the appearing dialog use either the outline of your shape for the coordinate
-s or the path itself.
+ pour exporter la forme en coordonnées.
+ Dans le menu de dialogue qui s'ouvre, utiliser soit le squelette, soit
+ le chemin proprement dit
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-For more information see 
+Pour plus d'information voir 
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.dickimaw-books.com/apps/jpgfdraw/manual/shapepar.html"
@@ -26965,43 +26742,34 @@ target "http://www.dickimaw-books.com/apps/jpgfdraw/manual/shapepar.html"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The coordinates are written into a TeX-file.
- To use it for your LyX document
+Les coordonnées ont copiées dans un fichier TeX.
+ Pour l'utiliser avec le document:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Place the cursor before the first character of your paragraph (or into a
- new empty one).
+Placer le curseur avant le premier caractère du paragraphe concerné (ou
+ dans un nouveau paragraphe vide).
+ 
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Open in LyX the menu 
+Ouvrir dans LyX le menu 
 \family sans
-Insert\SpecialChar \menuseparator
-File\SpecialChar \menuseparator
-Child
-\begin_inset space ~
-\end_inset
-
-Document
+Insertion\SpecialChar \menuseparator
+Fichier\SpecialChar \menuseparator
+Sous-document
 \family default
-, select the file and use 
+, sélectionner le fichier exporté par 
 \family sans
-Input
+Jpgfdraw
 \family default
- as 
+ et utiliser 
 \family sans
-Include Type.
+Inclus (include).
 \end_layout
 
 \begin_layout Standard
@@ -27012,21 +26780,18 @@ Include Type.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note
+Not
 \series default
-: The changed shape only applies to the current paragraph; everything is
- reset to normal for the next paragraph.
- Therefore the shape definition file must be input into every paragraph
- with the desired shape.
+a: le changement de forme ne s'applique qu’au paragraphe concerné; tout
+ redevient normal pour le paragraphe suivant.
+ De ce fait la définition de forme doit être répétée pour chaque paragraphe
+ dont on veut imposer la forme personnalisée.
 \end_layout
 
 \end_inset
@@ -27042,9 +26807,7 @@ Note
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is an example:
+Voici un exemple:
 \end_layout
 
 \begin_layout Standard
@@ -27084,20 +26847,20 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 \begin_layout Standard
 
 \series bold
-\lang english
-A tip:
+Une astuce:
 \series default
- to draw complexer shapes in 
+ pour tracer des formes vraiment complexes avec 
 \family sans
 Jpgfdraw
 \family default
- you can draw the shape in a program of your choice and import the resulting
- image to 
+ , vous pouvez tracer la forme à l'aide d'un logiciel de votre choix et
+ importer l'image correspondante dans 
 \family sans
 Jpgfdraw
 \family default
 .
- Then you only need to draw a line or spline along the outline of the image.
+ Il vous suffit ensuite de tracer une ligne ou un spline le long du squelette
+ de l'image.
 \end_layout
 
 \begin_layout Standard
@@ -27108,36 +26871,34 @@ Jpgfdraw
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The module 
+Le module 
 \family sans
-Custom paragraph shapes
+Formes de paragraphe paramétrables
 \family default
- also provides the two commands 
+ fournit également les deux styles 
 \family sans
 shapepar
 \family default
- and 
+ et 
 \family sans
 Shapepar
 \family default
- which can be used to define custom shapes coordinate by coordinate.
+ , qui peuvent être utilisés pour définir de nouvelles formes coordonnée
+ par coordonnée
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-These commands are internally used for all shapes described here.
+Ces commandes sont utilisées de manière interne pour toutes le formes décrites
+ ici,
 \end_layout
 
 \end_inset
 
- For information how these styles are used and about further customization
- possibilities, have a look at the documentation of the package 
+.
+ Pour en savoir plus quant à l'utilisation de ces styles et à d'autres possibili
+tés de personnalisation, voir la documentation du paquetage 
 \series bold
-\lang french
 shapepar
 \series default
 , 
