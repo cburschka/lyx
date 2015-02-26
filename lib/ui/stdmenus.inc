@@ -14,9 +14,9 @@
 # Guidelines (http://techbase.kde.org/Projects/Usability/HIG)
 
 # Casing Rules:
-# Capitalize all words in the element, with the following exceptions: 
-# * Articles: a, an, the. 
-# * Conjunctions: and, but, for, not, so, yet ...  
+# Capitalize all words in the element, with the following exceptions:
+# * Articles: a, an, the.
+# * Conjunctions: and, but, for, not, so, yet ...
 # * Prepositions of three or fewer letters: at, for, by, in, to ...
 #   (except when the preposition is part of a verb phrase, such as "Check In")
 # (http://library.gnome.org/devel/hig-book/stable/design-text-labels.html.en)
@@ -341,7 +341,7 @@ Menuset
 		Item "Split View Into Left and Right Half|i" "view-split horizontal"
 		Item "Split View Into Upper and Lower Half|e" "view-split vertical"
 		OptItem "Close Current View|w" "tab-group-close"
-		Item "Fullscreen|l" "ui-toggle fullscreen"	
+		Item "Fullscreen|l" "ui-toggle fullscreen"
 		Separator
 		Documents
 	End
@@ -495,7 +495,7 @@ Menuset
 		Separator
 		Item "Insert New Branch...|I" "branch-add-insert"
 	End
-	
+
 	Menu "insert_phantom"
 		Item "Phantom|P" "phantom-insert Phantom"
 		Item "Horizontal Phantom|H" "phantom-insert HPhantom"

@@ -17,9 +17,9 @@
 # capitalized in sentences, such as application names.
 #
 # Casing Rules for the "GUI Name":
-# Capitalize all words in the element, with the following exceptions: 
-# * Articles: a, an, the. 
-# * Conjunctions: and, but, for, not, so, yet ...  
+# Capitalize all words in the element, with the following exceptions:
+# * Articles: a, an, the.
+# * Conjunctions: and, but, for, not, so, yet ...
 # * Prepositions of three or fewer letters: at, for, by, in, to ...
 #
 # (http://library.gnome.org/devel/hig-book/stable/design-text-labels.html.en)
@@ -139,7 +139,7 @@ ToolbarSet
 		Item "Paragraph settings" "layout-paragraph"
 		Item "Thesaurus" "thesaurus-entry"
 	End
-	
+
 	Toolbar "table" "Table"
 		Item "Add row" "inset-modify tabular append-row"
 		Item "Add column" "inset-modify tabular append-column"
@@ -172,7 +172,7 @@ ToolbarSet
 		Item "Set multi-column" "inset-modify tabular multicolumn"
 		Item "Set multi-row" "inset-modify tabular multirow"
 	End
-	
+
 	Toolbar "math" "Math"
 		Item "Set display mode" "math-display"
 		Separator
@@ -228,7 +228,7 @@ ToolbarSet
 	Toolbar "minibuffer" "Command Buffer"
 		Minibuffer
 	End
-	
+
 	Toolbar "review" "Review[[Toolbar]]"
 		Item "Track changes" "changes-track"
 		Item "Show changes in output" "changes-output"
@@ -244,11 +244,11 @@ ToolbarSet
 		Item "Insert note" "note-insert"
 		Item "Next note" "note-next"
 	End
-	
+
 	Toolbar "view-others" "View Other Formats"
 		ViewFormats
 	End
-	
+
 	Toolbar "update-others" "Update Other Formats"
 		UpdateFormats
 	End
@@ -364,7 +364,7 @@ ToolbarSet
 		Item "Square root	\\sqrt" "math-insert \sqrt"
 		Item "Other root	\\root" "math-insert \root"
 	End
-	
+
 	Toolbar "style" "Styles"
 		Item "Display style	\\displaystyle" "math-size \displaystyle"
 		Item "Normal text style	\\textstyle" "math-size \textstyle"
