@@ -528,6 +528,17 @@ def revert_dashes(document):
 
     i = 0
     while i < len(document.body):
+        words = document.body[i].split()
+        if len(words) > 1 and words[0] == "\\begin_inset" and \
+           words[1] in ["ERT", "Formula", "IPA"]:
+            # see convert_dashes
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of " + words[1] + " inset at line " + str(i))
+                i += 1
+            else:
+                i = j
+            continue
         replaced = False
         if document.body[i].find("\\twohyphens") >= 0:
             document.body[i] = document.body[i].replace("\\twohyphens", "--")
