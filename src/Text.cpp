@@ -504,7 +504,8 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 		Layout const & layout(par.layout());
 		FontInfo info = font.fontInfo();
 		info.realize(layout.resfont);
-		if (layout.pass_thru || info.family() == TYPEWRITER_FAMILY) {
+		if (layout.pass_thru || inset().isPassThru() ||
+		    info.family() == TYPEWRITER_FAMILY) {
 			if (token == "\\twohyphens")
 				par.insert(par.size(), from_ascii("--"), font, change);
 			else
