@@ -3818,7 +3818,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if ((t.cs() == "nobreakdash" && p.next_token().asInput() == "-") ||
+		         (t.cs() == "protect" && p.next_token().asInput() == "\\nobreakdash" &&
+		          p.next_next_token().asInput() == "-") ||
 		         (t.cs() == "@" && p.next_token().asInput() == ".")) {
+			// LyX sometimes puts a \protect in front, so we have to ignore it
+			if (t.cs() == "protect")
+				p.get_token();
 			context.check_layout(os);
 			os << "\\SpecialChar \\" << t.cs()
 			   << p.get_token().asInput() << '\n';
