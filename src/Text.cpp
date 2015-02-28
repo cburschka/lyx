@@ -113,8 +113,8 @@ static bool moveItem(Paragraph & fromPar, pos_type fromPos,
 	// Therefore, it should only be used for breaking and merging paragraphs
 
 	// We need a copy here because the character at fromPos is going to be erased.
-	Font const & tmpFont = fromPar.getFontSettings(params, fromPos);
-	Change const & tmpChange = fromPar.lookupChange(fromPos);
+	Font const tmpFont = fromPar.getFontSettings(params, fromPos);
+	Change const tmpChange = fromPar.lookupChange(fromPos);
 
 	if (Inset * tmpInset = fromPar.getInset(fromPos)) {
 		fromPar.releaseInset(fromPos);
@@ -2097,11 +2097,11 @@ void Text::charsTranspose(Cursor & cur)
 
 	// Store the characters to be transposed (including font information).
 	char_type const char1 = par.getChar(pos1);
-	Font const & font1 =
+	Font const font1 =
 		par.getFontSettings(cur.buffer()->params(), pos1);
 
 	char_type const char2 = par.getChar(pos2);
-	Font const & font2 =
+	Font const font2 =
 		par.getFontSettings(cur.buffer()->params(), pos2);
 
 	// And finally, we are ready to perform the transposition.

@@ -408,7 +408,7 @@ void Text::toggleFree(Cursor & cur, Font const & font, bool toggleall)
 	// Try implicit word selection
 	// If there is a change in the language the implicit word selection
 	// is disabled.
-	CursorSlice const & resetCursor = cur.top();
+	CursorSlice const resetCursor = cur.top();
 	bool const implicitSelection =
 		font.language() == ignore_language
 		&& font.fontInfo().number() == FONT_IGNORE
