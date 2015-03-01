@@ -491,7 +491,7 @@ def convert_dashes(document):
     while i < len(document.body):
         words = document.body[i].split()
         if len(words) > 1 and words[0] == "\\begin_inset" and \
-           words[1] in ["CommandInset", "ERT", "Formula", "IPA"]:
+           words[1] in ["CommandInset", "ERT", "External", "Formula", "Graphics", "IPA", "listings"]:
             # must not replace anything in insets that store LaTeX contents in .lyx files
             # (math and command insets withut overridden read() and write() methods
             # filtering out IPA makes Text::readParToken() more simple
@@ -531,7 +531,7 @@ def revert_dashes(document):
     while i < len(document.body):
         words = document.body[i].split()
         if len(words) > 1 and words[0] == "\\begin_inset" and \
-           words[1] in ["CommandInset", "ERT", "Formula", "IPA"]:
+           words[1] in ["CommandInset", "ERT", "External", "Formula", "Graphics", "IPA", "listings"]:
             # see convert_dashes
             j = find_end_of_inset(document.body, i)
             if j == -1:
@@ -583,7 +583,7 @@ def convert_phrases(document):
         while i < len(document.body):
             words = document.body[i].split()
             if len(words) > 1 and words[0] == "\\begin_inset" and \
-               words[1] in ["CommandInset", "Formula"]:
+               words[1] in ["CommandInset", "External", "Formula", "Graphics", "listings"]:
                 # must not replace anything in insets that store LaTeX contents in .lyx files
                 # (math and command insets withut overridden read() and write() methods
                 j = find_end_of_inset(document.body, i)
@@ -616,7 +616,7 @@ def revert_phrases(document):
     i = 0
     while i < len(document.body):
         if len(words) > 1 and words[0] == "\\begin_inset" and \
-           words[1] in ["CommandInset", "Formula"]:
+           words[1] in ["CommandInset", "External", "Formula", "Graphics", "listings"]:
             # see convert_phrases
             j = find_end_of_inset(document.body, i)
             if j == -1:
