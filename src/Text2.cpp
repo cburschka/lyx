@@ -498,7 +498,7 @@ void Text::setParagraphs(Cursor & cur, docstring arg, bool merge)
 		// with same layout in a sequence.
 		// Do this only once for a selected range of paragraphs
 		// of the same layout and depth.
-		cur.recordUndo();
+		c.recordUndo();
 		par.params().apply(params, par.layout());
 		if (par.getDepth() != priordepth || par.layout() != priorlayout)
 			setLabelWidthStringToSequence(c, params.labelWidthString());
