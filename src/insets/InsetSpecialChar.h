@@ -41,7 +41,15 @@ public:
 		/// breakable slash
 		SLASH,
 		/// protected dash
-		NOBREAKDASH
+		NOBREAKDASH,
+		/// LyX logo
+		PHRASE_LYX,
+		/// TeX logo
+		PHRASE_TEX,
+		/// LaTeX2e logo
+		PHRASE_LATEX2E,
+		/// LaTeX logo
+		PHRASE_LATEX
 	};
 
 	///

@@ -399,6 +399,10 @@ Menuset
 		Item "Visible Space|V" "space-insert visible"
 		Item "Menu Separator|M" "specialchar-insert menu-separator"
 		Item "Phonetic Symbols|P" "ipa-insert"
+		Item "LyX Logo" "specialchar-insert lyx"
+		Item "TeX Logo" "specialchar-insert tex"
+		Item "LaTeX Logo" "specialchar-insert latex"
+		Item "LaTeX2e Logo" "specialchar-insert latex2e"
 	End
 
 	Menu "insert_formatting"

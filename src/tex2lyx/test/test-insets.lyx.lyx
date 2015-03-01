@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.2
-\lyxformat 481
+\lyxformat 482
 \begin_document
 \begin_header
 \textclass article
@@ -296,17 +296,7 @@ status collapsed
 
 \end_inset
 
- will be parsed in ERT, since 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-LyX
-\end_layout
-
-\end_inset
-
- does not support refstyle and prettyref natively at the same time.
+ will be parsed in ERT, since LyX does not support refstyle and prettyref natively at the same time.
 \end_layout
 
 \begin_layout Section
@@ -3130,7 +3120,8 @@ row
 \begin_inset Quotes erd
 \end_inset
 
- of the table can take up several lines. Note however that TeX
+ of the table can take up several lines. Note however that \SpecialChar \TeX
+
 \begin_inset space \space{}
 
 \end_inset
@@ -3457,17 +3448,7 @@ like this.
 \end_layout
 
 \begin_layout Standard
-From bug 7412 another example with more captions (can currently not produced in 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-LyX
-\end_layout
-
-\end_inset
-
-): 
+From bug 7412 another example with more captions (can currently not produced in LyX): 
 \begin_inset Tabular 
 <lyxtabular version="3" rows="45" columns="2">
 <features rotate="0" islongtable="true" lastFootEmpty="true">
@@ -5324,17 +5305,7 @@ Macros
 \end_layout
 
 \begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-LyX
-\end_layout
-
-\end_inset
-
- supports several kinds of macros: def 
+LyX supports several kinds of macros: def 
 \begin_inset FormulaMacro
 \def\macroa #1{a #1 a}
 \end_inset
@@ -5904,17 +5875,7 @@ Special formattings
 \end_layout
 
 \begin_layout Subsection
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-LyX
-\end_layout
-
-\end_inset
-
- line
+LyX line
 \end_layout
 
 \begin_layout Standard
@@ -6652,17 +6613,7 @@ linebreak[4]
 \end_layout
 
 \begin_layout Standard
-There are even newlines with weird arguments, but these are not handled by 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-LyX
-\end_layout
-
-\end_inset
-
-
+There are even newlines with weird arguments, but these are not handled by LyX
 \begin_inset ERT
 status collapsed
 
@@ -6736,34 +6687,14 @@ Then one has those macros with a long name for a short meaning, like ~, ^ or
 \backslash
 , \SpecialChar \slash{}
 , \SpecialChar \nobreakdash-
- and the characters that 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX
-\end_layout
-
-\end_inset
-
- wants to espace because they are active, like _&#${}%.
+ and the characters that LaTeX wants to espace because they are active, like _&#${}%.
 \end_layout
 
 \begin_layout Standard
 And what about special characters like hyphe\SpecialChar \-
 nation mark, ellipsis\SpecialChar \ldots{}
 , and end-of-sentence\SpecialChar \@.
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-LyX
-\end_layout
-
-\end_inset
-
- also supports a menu separator\SpecialChar \menuseparator
+ LyX also supports a menu separator\SpecialChar \menuseparator
 and a spif\SpecialChar \textcompwordmark{}
 fy ligature break.
 \end_layout
@@ -6833,87 +6764,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-LyX
-\end_layout
-
-\end_inset
-
- translates the phrases 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-LyX
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-TeX
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX
-\end_layout
-
-\end_inset
-
-2e and 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX
-\end_layout
-
-\end_inset
-
- to the commands LyX, TeX, LaTeX2e and LaTeX. If these phrases occur as part of other words (like 1
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-LyX
-\end_layout
-
-\end_inset
-
- or a
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-TeX
-\end_layout
-
-\end_inset
-
- or 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-LaTeX
-\end_layout
-
-\end_inset
-
-3) they should not be put into ERT.
+LyX translates the phrases LyX, TeX, LaTeX2e and LaTeX to the commands \SpecialChar \LyX
+, \SpecialChar \TeX
+, \SpecialChar \LaTeXe
+ and \SpecialChar \LaTeX
+. If these phrases occur as part of other words (like 1LyX or aTeX or LaTeX3) they should not be put into ERT.
 \end_layout
 
 \begin_layout Standard

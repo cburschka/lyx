@@ -249,12 +249,20 @@ char const * const known_coded_font_shapes[] = { "italic", "slanted",
 /// Known special characters which need skip_spaces_braces() afterwards
 char const * const known_special_chars[] = {"ldots",
 "lyxarrow", "textcompwordmark",
-"slash", "textasciitilde", "textasciicircum", "textbackslash", 0};
+"slash", "textasciitilde", "textasciicircum", "textbackslash",
+"LyX", "TeX", "LaTeXe",
+"LaTeX", 0};
+
+/// special characters from known_special_chars which may have a \\protect before
+char const * const known_special_protect_chars[] = {"LyX", "TeX",
+"LaTeXe", "LaTeX", 0};
 
 /// the same as known_special_chars with .lyx names
 char const * const known_coded_special_chars[] = {"\\SpecialChar \\ldots{}\n",
 "\\SpecialChar \\menuseparator\n", "\\SpecialChar \\textcompwordmark{}\n",
-"\\SpecialChar \\slash{}\n", "~", "^", "\n\\backslash\n", 0};
+"\\SpecialChar \\slash{}\n", "~", "^", "\n\\backslash\n",
+"\\SpecialChar \\LyX\n", "\\SpecialChar \\TeX\n", "\\SpecialChar \\LaTeXe\n",
+"\\SpecialChar \\LaTeX\n", 0};
 
 /*!
  * Graphics file extensions known by the dvips driver of the graphics package.
@@ -294,12 +302,6 @@ char const * const known_coded_spaces[] = { "space{}", "space{}",
 "negthinspace{}", "negmedspace{}", "negthickspace{}", "textvisiblespace{}",
 "hfill{}", "dotfill{}", "hrulefill{}", "leftarrowfill{}", "rightarrowfill{}",
 "upbracefill{}", "downbracefill{}", 0};
-
-/// These are translated by LyX to commands like "\\LyX{}", so we have to put
-/// them in ERT. "LaTeXe" must come before "LaTeX"!
-char const * const known_phrases[] = {"LyX", "TeX", "LaTeXe", "LaTeX", 0};
-char const * const known_coded_phrases[] = {"LyX", "TeX", "LaTeX2e", "LaTeX", 0};
-int const known_phrase_lengths[] = {3, 5, 7, 0};
 
 /// known TIPA combining diacritical marks
 char const * const known_tipa_marks[] = {"textsubwedge", "textsubumlaut",
@@ -2360,28 +2362,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		else if (t.cat() == catLetter) {
 			context.check_layout(os);
-			// Workaround for bug 4752.
-			// FIXME: This whole code block needs to be removed
-			//        when the bug is fixed and tex2lyx produces
-			//        the updated file format.
-			// The replacement algorithm in LyX is so stupid that
-			// it even translates a phrase if it is part of a word.
-			bool handled = false;
-			for (int const * l = known_phrase_lengths; *l; ++l) {
-				string phrase = t.cs();
-				for (int i = 1; i < *l && p.next_token().isAlnumASCII(); ++i)
-					phrase += p.get_token().cs();
-				if (is_known(phrase, known_coded_phrases)) {
-					output_ert_inset(os, phrase, context);
-					handled = true;
-					break;
-				} else {
-					for (size_t i = 1; i < phrase.length(); ++i)
-						p.putback();
-				}
-			}
-			if (!handled)
-				os << t.cs();
+			os << t.cs();
 		}
 
 		else if (t.cat() == catOther ||
@@ -3387,20 +3368,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 		}
 
-		else if (is_known(t.cs(), known_phrases) ||
-		         (t.cs() == "protect" &&
-		          p.next_token().cat() == catEscape &&
-		          is_known(p.next_token().cs(), known_phrases))) {
-			// LyX sometimes puts a \protect in front, so we have to ignore it
-			// FIXME: This needs to be changed when bug 4752 is fixed.
-			where = is_known(
-				t.cs() == "protect" ? p.get_token().cs() : t.cs(),
-				known_phrases);
-			context.check_layout(os);
-			os << known_coded_phrases[where - known_phrases];
-			skip_spaces_braces(p);
-		}
-
 		// handle refstyle first to catch \eqref which can also occur
 		// without refstyle. Only recognize these commands if
 		// refstyle.sty was found in the preamble (otherwise \eqref
@@ -3811,7 +3778,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			p.setEncoding(enc, Encoding::inputenc);
 		}
 
-		else if ((where = is_known(t.cs(), known_special_chars))) {
+		else if (is_known(t.cs(), known_special_chars) ||
+		         (t.cs() == "protect" &&
+		          p.next_token().cat() == catEscape &&
+		          is_known(p.next_token().cs(), known_special_protect_chars))) {
+			// LyX sometimes puts a \protect in front, so we have to ignore it
+			where = is_known(
+				t.cs() == "protect" ? p.get_token().cs() : t.cs(),
+				known_special_chars);
 			context.check_layout(os);
 			os << known_coded_special_chars[where - known_special_chars];
 			skip_spaces_braces(p);

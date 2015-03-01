@@ -499,7 +499,7 @@ void LyXAction::init()
  * \li Action: Inserts various characters into the document.
  * \li Syntax: specialchar-insert <CHAR>
  * \li Params: <CHAR>: hyphenation, ligature-break, slash, nobreakdash, dots,
-                       end-of-sentence, menu-separator.
+                       end-of-sentence, menu-separator, lyx, tex, latex, latex2e.
  * \li Origin: JSpitzm, 6 Dec 2007
  * \endvar
  */

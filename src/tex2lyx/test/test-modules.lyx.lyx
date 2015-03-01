@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.2
-\lyxformat 481
+\lyxformat 482
 \begin_document
 \begin_header
 \textclass amsart
@@ -89,17 +89,7 @@ The theorem is recognized is a style provided by the module theorems-ams, since 
 \end_layout
 
 \begin_layout Standard
-The lemma is not recognized as a command provided by a module, since the preamble code is from an older version of 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-LyX
-\end_layout
-
-\end_inset
-
-, and modules are only loaded if the preamble code matches (otherwise you could easily get completely different output for some often used names like 
+The lemma is not recognized as a command provided by a module, since the preamble code is from an older version of LyX, and modules are only loaded if the preamble code matches (otherwise you could easily get completely different output for some often used names like 
 \backslash
 theorem.
 \end_layout

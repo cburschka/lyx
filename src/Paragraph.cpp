@@ -363,13 +363,6 @@ public:
 		otexstream & os,
 		pos_type i,
 		unsigned int & column);
-	///
-	bool latexSpecialPhrase(
-		otexstream & os,
-		pos_type & i,
-		pos_type end_pos,
-		unsigned int & column,
-		OutputParams const & runparams);
 
 	///
 	void validate(LaTeXFeatures & features) const;
@@ -377,9 +370,6 @@ public:
 	/// Checks if the paragraph contains only text and no inset or font change.
 	bool onlyText(Buffer const & buf, Font const & outerfont,
 		      pos_type initial) const;
-
-	/// match a string against a particular point in the paragraph
-	bool isTextAt(string const & str, pos_type pos) const;
 
 	/// a vector of speller skip positions
 	typedef vector<FontSpan> SkipPositions;
@@ -506,26 +496,6 @@ public:
 	///
 	SpellCheckerState speller_state_;
 };
-
-
-namespace {
-
-struct special_phrase {
-	string phrase;
-	docstring macro;
-	bool builtin;
-};
-
-special_phrase const special_phrases[] = {
-	{ "LyX", from_ascii("\\LyX{}"), false },
-	{ "TeX", from_ascii("\\TeX{}"), true },
-	{ "LaTeX2e", from_ascii("\\LaTeXe{}"), true },
-	{ "LaTeX", from_ascii("\\LaTeX{}"), true },
-};
-
-size_t const phrases_nr = sizeof(special_phrases)/sizeof(special_phrase);
-
-} // namespace anon
 
 
 Paragraph::Private::Private(Paragraph * owner, Layout const & layout)
@@ -1010,26 +980,6 @@ int Paragraph::Private::writeScriptChars(otexstream & os,
 }
 
 
-bool Paragraph::Private::isTextAt(string const & str, pos_type pos) const
-{
-	pos_type const len = str.length();
-
-	// is the paragraph large enough?
-	if (pos + len > int(text_.size()))
-		return false;
-
-	// does the wanted text start at point?
-	for (string::size_type i = 0; i < str.length(); ++i) {
-		// Caution: direct comparison of characters works only
-		// because str is pure ASCII.
-		if (str[i] != text_[pos + i])
-			return false;
-	}
-
-	return fontlist_.hasChangeInRange(pos, len);
-}
-
-
 void Paragraph::Private::latexInset(BufferParams const & bparams,
 				    otexstream & os,
 				    OutputParams & runparams,
@@ -1281,10 +1231,6 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		break;
 
 	default:
-		// LyX, LaTeX etc.
-		if (latexSpecialPhrase(os, i, end_pos, column, runparams))
-			return;
-
 		if (c == '\0')
 			return;
 
@@ -1397,33 +1343,6 @@ bool Paragraph::Private::latexSpecialT3(char_type const c, otexstream & os,
 }
 
 
-/// \param end_pos
-///   If [start_pos, end_pos) does not include entirely the special phrase, then
-///   do not apply the macro transformation.
-bool Paragraph::Private::latexSpecialPhrase(otexstream & os, pos_type & i, pos_type end_pos,
-	unsigned int & column, OutputParams const & runparams)
-{
-	// FIXME: if we have "LaTeX" with a font
-	// change in the middle (before the 'T', then
-	// the "TeX" part is still special cased.
-	// Really we should only operate this on
-	// "words" for some definition of word
-
-	for (size_t pnr = 0; pnr < phrases_nr; ++pnr) {
-		if (!isTextAt(special_phrases[pnr].phrase, i)
-		    || (end_pos != -1 && i + int(special_phrases[pnr].phrase.size()) > end_pos))
-			continue;
-		if (runparams.moving_arg)
-			os << "\\protect";
-		os << special_phrases[pnr].macro;
-		i += special_phrases[pnr].phrase.length() - 1;
-		column += special_phrases[pnr].macro.length() - 1;
-		return true;
-	}
-	return false;
-}
-
-
 void Paragraph::Private::validate(LaTeXFeatures & features) const
 {
 	if (layout_->inpreamble && inset_owner_) {
@@ -1501,13 +1420,6 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 
 	// then the contents
 	for (pos_type i = 0; i < int(text_.size()) ; ++i) {
-		for (size_t pnr = 0; pnr < phrases_nr; ++pnr) {
-			if (!special_phrases[pnr].builtin
-			    && isTextAt(special_phrases[pnr].phrase, i)) {
-				features.require(special_phrases[pnr].phrase);
-				break;
-			}
-		}
 		BufferEncodings::validate(text_[i], features);
 	}
 }

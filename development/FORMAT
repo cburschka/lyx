@@ -11,6 +11,12 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2015-03-01 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+	* Format incremented to 482
+	  "LyX", "TeX", "LaTeX2e" and "LaTeX" are not automatically converted
+	  to LaTeX macros anymore.
+	  Instead, these are new flavours of InsetSpecialChar (bug 4752).
+
 2015-02-24 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 	* Format incremented to 481
 	  "--" and "---" are not treated as endash and emdash anymore, since

@@ -1188,6 +1188,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			specialChar(cur, InsetSpecialChar::END_OF_SENTENCE);
 		else if (name == "menu-separator")
 			specialChar(cur, InsetSpecialChar::MENU_SEPARATOR);
+		else if (name == "lyx")
+			specialChar(cur, InsetSpecialChar::PHRASE_LYX);
+		else if (name == "tex")
+			specialChar(cur, InsetSpecialChar::PHRASE_TEX);
+		else if (name == "latex")
+			specialChar(cur, InsetSpecialChar::PHRASE_LATEX);
+		else if (name == "latex2e")
+			specialChar(cur, InsetSpecialChar::PHRASE_LATEX2E);
 		else if (name.empty())
 			lyxerr << "LyX function 'specialchar-insert' needs an argument." << endl;
 		else

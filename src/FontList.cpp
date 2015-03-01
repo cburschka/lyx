@@ -207,13 +207,6 @@ FontSize FontList::highestInRange(pos_type startpos, pos_type endpos,
 }
 
 
-bool FontList::hasChangeInRange(pos_type pos, int len) const
-{
-	List::const_iterator cit = fontIterator(pos);
-	return cit == list_.end() || pos + len - 1 <= cit->pos();
-}
-
-
 void FontList::validate(LaTeXFeatures & features) const
 {
 	const_iterator fcit = list_.begin();

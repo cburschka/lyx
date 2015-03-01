@@ -493,7 +493,7 @@ def convert_dashes(document):
         if len(words) > 1 and words[0] == "\\begin_inset" and \
            words[1] in ["CommandInset", "ERT", "Formula", "IPA"]:
             # must not replace anything in insets that store LaTeX contents in .lyx files
-	    # (math and command insets withut overridden read() and write() methods
+            # (math and command insets withut overridden read() and write() methods
             # filtering out IPA makes Text::readParToken() more simple
             # skip ERT as well since it is not needed there
             j = find_end_of_inset(document.body, i)
@@ -558,6 +558,92 @@ def revert_dashes(document):
             i += 1
 
   
+# order is important for the last three!
+phrases = ["LyX", "LaTeX2e", "LaTeX", "TeX"]
+
+def is_part_of_converted_phrase(line, j, phrase):
+    "is phrase part of an already converted phrase?"
+    for p in phrases:
+        converted = "\\SpecialCharNoPassThru \\" + p
+        pos = j + len(phrase) - len(converted)
+        if pos >= 0:
+            if line[pos:pos+len(converted)] == converted:
+                return True
+    return False
+
+
+def convert_phrases(document):
+    "convert special phrases from plain text to \\SpecialCharNoPassThru"
+
+    if document.backend != "latex":
+        return
+
+    for phrase in phrases:
+        i = 0
+        while i < len(document.body):
+            words = document.body[i].split()
+            if len(words) > 1 and words[0] == "\\begin_inset" and \
+               words[1] in ["CommandInset", "Formula"]:
+                # must not replace anything in insets that store LaTeX contents in .lyx files
+                # (math and command insets withut overridden read() and write() methods
+                j = find_end_of_inset(document.body, i)
+                if j == -1:
+                    document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(i))
+                    i += 1
+                else:
+                    i = j
+                continue
+            if document.body[i].find("\\") == 0:
+                i += 1
+                continue
+            j = document.body[i].find(phrase)
+            if j == -1:
+                i += 1
+                continue
+            if not is_part_of_converted_phrase(document.body[i], j, phrase):
+                front = document.body[i][:j]
+                back = document.body[i][j+len(phrase):]
+                if len(back) > 0:
+                    document.body.insert(i+1, back)
+                # We cannot use SpecialChar since we do not know whether we are outside passThru 
+                document.body[i] = front + "\\SpecialCharNoPassThru \\" + phrase
+            i += 1
+
+
+def revert_phrases(document):
+    "convert special phrases to plain text"
+
+    i = 0
+    while i < len(document.body):
+        if len(words) > 1 and words[0] == "\\begin_inset" and \
+           words[1] in ["CommandInset", "Formula"]:
+            # see convert_phrases
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(i))
+                i += 1
+            else:
+                i = j
+            continue
+        replaced = False
+        for phrase in phrases:
+            # we can replace SpecialChar since LyX ensures that it cannot be inserted into passThru parts
+            if document.body[i].find("\\SpecialChar \\" + phrase) >= 0:
+                document.body[i] = document.body[i].replace("\\SpecialChar \\" + phrase, phrase)
+                replaced = True
+            if document.body[i].find("\\SpecialCharNoPassThru \\" + phrase) >= 0:
+                document.body[i] = document.body[i].replace("\\SpecialCharNoPassThru \\" + phrase, phrase)
+                replaced = True
+        if replaced and i+1 < len(document.body) and \
+           (document.body[i+1].find("\\") != 0 or \
+            document.body[i+1].find("\\SpecialChar") == 0) and \
+           len(document.body[i]) + len(document.body[i+1]) <= 80:
+            document.body[i] = document.body[i] + document.body[i+1]
+            document.body[i+1:i+2] = []
+            i -= 1
+        i += 1
+
+
 ##
 # Conversion hub
 #
@@ -573,10 +659,12 @@ convert = [
            [478, []],
            [479, []],
            [480, []],
-           [481, [convert_dashes]]
+           [481, [convert_dashes]],
+           [482, [convert_phrases]]
           ]
 
 revert =  [
+           [481, [revert_phrases]],
            [480, [revert_dashes]],
            [479, [revert_question_env]],
            [478, [revert_beamer_lemma]],

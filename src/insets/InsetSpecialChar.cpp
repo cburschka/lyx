@@ -50,32 +50,43 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
 
-	string s;
+	docstring s;
 	switch (kind_) {
 		case LIGATURE_BREAK:
-			s = "|";
+			s = from_ascii("|");
 			break;
 		case END_OF_SENTENCE:
-			s = ".";
+			s = from_ascii(".");
 			break;
 		case LDOTS:
-			s = ". . .";
+			s = from_ascii(". . .");
 			break;
 		case MENU_SEPARATOR:
-			s = " x ";
+			s = from_ascii(" x ");
 			break;
 		case HYPHENATION:
-			s = "-";
+			s = from_ascii("-");
 			break;
 		case SLASH:
-			s = "/";
+			s = from_ascii("/");
 			break;
 		case NOBREAKDASH:
-			s = "-";
+			s = from_ascii("-");
+			break;
+		case PHRASE_LYX:
+			s = from_ascii("LyX");
+			break;
+		case PHRASE_TEX:
+			s = from_ascii("TeX");
+			break;
+		case PHRASE_LATEX2E:
+			s = from_ascii("LaTeX2") + char_type(0x03b5);
+			break;
+		case PHRASE_LATEX:
+			s = from_ascii("LaTeX");
 			break;
 	}
-	docstring ds(s.begin(), s.end());
-	dim.wid = fm.width(ds);
+	dim.wid = fm.width(s);
 	if (kind_ == HYPHENATION && dim.wid > 5)
 		dim.wid -= 2; // to make it look shorter
 	
@@ -145,6 +156,22 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.text(x, y, char_type('-'), font);
 		break;
 	}
+	case PHRASE_LYX:
+		font.setColor(Color_special);
+		pi.pain.text(x, y, from_ascii("LyX"), font);
+		break;
+	case PHRASE_TEX:
+		font.setColor(Color_special);
+		pi.pain.text(x, y, from_ascii("TeX"), font);
+		break;
+	case PHRASE_LATEX2E:
+		font.setColor(Color_special);
+		pi.pain.text(x, y, from_ascii("LaTeX2") + char_type(0x03b5), font);
+		break;
+	case PHRASE_LATEX:
+		font.setColor(Color_special);
+		pi.pain.text(x, y, from_ascii("LaTeX"), font);
+		break;
 	}
 }
 
@@ -175,6 +202,18 @@ void InsetSpecialChar::write(ostream & os) const
 	case NOBREAKDASH:
 		command = "\\nobreakdash-";
 		break;
+	case PHRASE_LYX:
+		command = "\\LyX";
+		break;
+	case PHRASE_TEX:
+		command = "\\TeX";
+		break;
+	case PHRASE_LATEX2E:
+		command = "\\LaTeX2e";
+		break;
+	case PHRASE_LATEX:
+		command = "\\LaTeX";
+		break;
 	}
 	os << "\\SpecialChar " << command << "\n";
 }
@@ -200,6 +239,14 @@ void InsetSpecialChar::read(Lexer & lex)
 		kind_ = SLASH;
 	else if (command == "\\nobreakdash-")
 		kind_ = NOBREAKDASH;
+	else if (command == "\\LyX")
+		kind_ = PHRASE_LYX;
+	else if (command == "\\TeX")
+		kind_ = PHRASE_TEX;
+	else if (command == "\\LaTeX2e")
+		kind_ = PHRASE_LATEX2E;
+	else if (command == "\\LaTeX")
+		kind_ = PHRASE_LATEX;
 	else
 		lex.printError("InsetSpecialChar: Unknown kind: `$$Token'");
 }
@@ -235,6 +282,26 @@ void InsetSpecialChar::latex(otexstream & os,
 			os << "\\protect";
 		os << "\\nobreakdash-";
 		break;
+	case PHRASE_LYX:
+		if (rp.moving_arg)
+			os << "\\protect";
+		os << "\\LyX{}";
+		break;
+	case PHRASE_TEX:
+		if (rp.moving_arg)
+			os << "\\protect";
+		os << "\\TeX{}";
+		break;
+	case PHRASE_LATEX2E:
+		if (rp.moving_arg)
+			os << "\\protect";
+		os << "\\LaTeX2e{}";
+		break;
+	case PHRASE_LATEX:
+		if (rp.moving_arg)
+			os << "\\protect";
+		os << "\\LaTeX{}";
+		break;
 	}
 }
 
@@ -263,6 +330,19 @@ int InsetSpecialChar::plaintext(odocstringstream & os,
 	case NOBREAKDASH:
 		os.put(0x2011);
 		return 1;
+	case PHRASE_LYX:
+		os << "LyX";
+		return 3;
+	case PHRASE_TEX:
+		os << "TeX";
+		return 3;
+	case PHRASE_LATEX2E:
+		os << "LaTeX2";
+		os.put(0x03b5);
+		return 7;
+	case PHRASE_LATEX:
+		os << "LaTeX";
+		return 5;
 	}
 	return 0;
 }
@@ -288,6 +368,19 @@ int InsetSpecialChar::docbook(odocstream & os, OutputParams const &) const
 		break;
 	case NOBREAKDASH:
 		os << '-';
+		break;
+	case PHRASE_LYX:
+		os << "LyX";
+		break;
+	case PHRASE_TEX:
+		os << "TeX";
+		break;
+	case PHRASE_LATEX2E:
+		os << "LaTeX2";
+		os.put(0x03b5);
+		break;
+	case PHRASE_LATEX:
+		os << "LaTeX";
 		break;
 	}
 	return 0;
@@ -316,6 +409,18 @@ docstring InsetSpecialChar::xhtml(XHTMLStream & xs, OutputParams const &) const
 		break;
 	case NOBREAKDASH:
 		xs << XHTMLStream::ESCAPE_NONE << "&#8209;";
+		break;
+	case PHRASE_LYX:
+		xs << "LyX";
+		break;
+	case PHRASE_TEX:
+		xs << "TeX";
+		break;
+	case PHRASE_LATEX2E:
+		xs << "LaTeX2" << XHTMLStream::ESCAPE_NONE << "&#x3b5;";
+		break;
+	case PHRASE_LATEX:
+		xs << "LaTeX";
 		break;
 	}
 	return docstring();
@@ -352,6 +457,8 @@ void InsetSpecialChar::validate(LaTeXFeatures & features) const
 		features.require("lyxarrow");
 	if (kind_ == NOBREAKDASH)
 		features.require("amsmath");
+	if (kind_ == PHRASE_LYX)
+		features.require("LyX");
 }
 
 

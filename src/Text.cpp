@@ -486,12 +486,18 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 	} else if (token == "\\color") {
 		lex.next();
 		setLyXColor(lex.getString(), font.fontInfo());
-	} else if (token == "\\SpecialChar") {
+	} else if (token == "\\SpecialChar" ||
+	           (token == "\\SpecialCharNoPassThru" &&
+	            !par.layout().pass_thru && !inset().isPassThru())) {
 		auto_ptr<Inset> inset;
 		inset.reset(new InsetSpecialChar);
 		inset->read(lex);
 		inset->setBuffer(*buf);
 		par.insertInset(par.size(), inset.release(), font, change);
+	} else if (token == "\\SpecialCharNoPassThru") {
+		lex.next();
+		docstring const s = ltrim(lex.getDocString(), "\\");
+		par.insert(par.size(), s, font, change);
 	} else if (token == "\\IPAChar") {
 		auto_ptr<Inset> inset;
 		inset.reset(new InsetIPAChar);
