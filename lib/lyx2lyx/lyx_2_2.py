@@ -491,8 +491,9 @@ def convert_dashes(document):
     while i < len(document.body):
         words = document.body[i].split()
         if len(words) > 1 and words[0] == "\\begin_inset" and \
-           words[1] in ["ERT", "Formula", "IPA"]:
-            # must not replace anything in math
+           words[1] in ["CommandInset", "ERT", "Formula", "IPA"]:
+            # must not replace anything in insets that store LaTeX contents in .lyx files
+	    # (math and command insets withut overridden read() and write() methods
             # filtering out IPA makes Text::readParToken() more simple
             # skip ERT as well since it is not needed there
             j = find_end_of_inset(document.body, i)
@@ -530,7 +531,7 @@ def revert_dashes(document):
     while i < len(document.body):
         words = document.body[i].split()
         if len(words) > 1 and words[0] == "\\begin_inset" and \
-           words[1] in ["ERT", "Formula", "IPA"]:
+           words[1] in ["CommandInset", "ERT", "Formula", "IPA"]:
             # see convert_dashes
             j = find_end_of_inset(document.body, i)
             if j == -1:
