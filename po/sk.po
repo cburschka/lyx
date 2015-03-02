@@ -6,9 +6,9 @@
 # Kornel Benko <kornel@lyx.org>, 2009-2014.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX-2.1\n"
+"Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-02-09 10:26+0100\n"
+"POT-Creation-Date: 2015-03-02 12:03+0100\n"
 "PO-Revision-Date: 2014-11-14 18:39+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -10949,10 +10949,6 @@ msgstr "Voľby pre Sekciu"
 msgid "Optional arguments to the section command (see powerdot manual)"
 msgstr "Voliteľné argumenty pre príkaz sekcia (viď powerdot manuál)"
 
-#: lib/layouts/powerdot.layout:255 lib/layouts/powerdot.layout:304
-msgid "Lists"
-msgstr "Listiny"
-
 #: lib/layouts/powerdot.layout:271 lib/layouts/powerdot.layout:294
 msgid "Itemize Type"
 msgstr "Typ Položky"
@@ -17030,6 +17026,22 @@ msgstr "Viditeľná Medzera|M"
 msgid "Phonetic Symbols|P"
 msgstr "Fonetické Symboly|F"
 
+#: lib/ui/stdmenus.inc:402
+msgid "LyX Logo"
+msgstr "LyX Logo"
+
+#: lib/ui/stdmenus.inc:403
+msgid "TeX Logo"
+msgstr "TeX Logo"
+
+#: lib/ui/stdmenus.inc:404
+msgid "LaTeX Logo"
+msgstr "LaTeX Logo"
+
+#: lib/ui/stdmenus.inc:405
+msgid "LaTeX2e Logo"
+msgstr "LaTeX2e Logo"
+
 #: lib/ui/stdmenus.inc:405
 msgid "Superscript|S"
 msgstr "Horný index"
@@ -17321,6 +17333,10 @@ msgstr "Lingvistika|L"
 #: lib/ui/stdmenus.inc:609
 msgid "Multilingual Captions|C"
 msgstr "Viac-Jazykové popisy|J"
+
+#: lib/ui/stdmenus.inc:610
+msgid "PDF comments|D"
+msgstr "PDF komentáre"
 
 #: lib/ui/stdmenus.inc:610
 msgid "Risk and Safety Statements|R"
@@ -22393,6 +22409,10 @@ msgstr "PDF (grafika)"
 msgid "PDF (cropped)"
 msgstr "PDF (orezaný)"
 
+#: lib/configure.py:665
+msgid "PDF (lower resolution)"
+msgstr "PDF (nízke rozlišovanie)"
+
 #: lib/configure.py:667
 msgid "DVI"
 msgstr "DVI"
@@ -24894,9 +24914,9 @@ msgstr "Vyberte pre zobrazenie riadkového doplňovania v textovom móde."
 msgid "Use \"...\" to shorten long completions."
 msgstr "Použiť \"...\" pre skrátenie dlhých doplnení."
 
-#: src/LyXRC.cpp:3315
-msgid "Allow TeXMacs shorthand, like => converting to Rightarrow."
-msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na Rightarrow."
+#: src/LyXRC.cpp:3330
+msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
+msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na \\Rightarrow."
 
 #: src/LyXRC.cpp:3319
 #, c-format
@@ -30511,6 +30531,12 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "Allow TeXMacs shorthand, like => converting to Rightarrow."
+#~ msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na Rightarrow."
+
+#~ msgid "Lists"
+#~ msgstr "Listiny"
+
 #~ msgid "The caption as it appears in the list of figures"
 #~ msgstr "Popis ako sa zobrazí v zozname obrázkov"
 
@@ -33140,9 +33166,6 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Poskytuje rôzne druhy poznámok pre PDF výstup. Tento modul používa balík "
 #~ "pdfcomment. Pre detaily pozrite na dokumentáciu balíka."
-
-#~ msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
-#~ msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na \\Rightarrow."
 
 #~ msgid "Bibliography generation"
 #~ msgstr "Generácia bibliografie"
