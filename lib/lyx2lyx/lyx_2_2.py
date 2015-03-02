@@ -615,6 +615,7 @@ def revert_phrases(document):
 
     i = 0
     while i < len(document.body):
+        words = document.body[i].split()
         if len(words) > 1 and words[0] == "\\begin_inset" and \
            words[1] in ["CommandInset", "External", "Formula", "Graphics", "listings"]:
             # see convert_phrases
