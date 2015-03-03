@@ -16,7 +16,7 @@ export HOME
 export LANG=C.UTF-8
 
 # Set up Hostname/IP address where LyX can find an X-server.
-export DISPLAY=localhost:0.0
+export DISPLAY=:0.0
 
 # ========================================================
 # Below this line you should not change anything if you're
