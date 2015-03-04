@@ -19,7 +19,7 @@
 
 #include "insets/InsetText.h"
 
-#include "support/lassert.h"	
+#include "support/lassert.h"
 #include "support/qstring_helpers.h"
 
 #include <boost/next_prior.hpp>
@@ -58,7 +58,7 @@ static void step(DocIterator & dit, DocIterator const & end, Direction direction
  */
 class DocRange {
 public:
-	DocRange(DocIterator from_, DocIterator to_)
+	DocRange(DocIterator const & from_, DocIterator const & to_)
 		: from(from_), to(to_)
 	{}
 
@@ -110,7 +110,7 @@ public:
 		// this might not be intuitive but correct for our purpose
 		return o != rhs.o && n != rhs.n;
 	}
-	
+
 
 	DocPair & operator++()
 	{
@@ -130,17 +130,17 @@ public:
 	///
 	DocIterator n;
 };
-	
+
 /**
  * A pair of two DocRanges.
  */
 class DocRangePair {
 public:
-	DocRangePair(DocRange o_, DocRange n_)
+	DocRangePair(DocRange const & o_, DocRange const & n_)
 		: o(o_), n(n_)
 	{}
-	
-	DocRangePair(DocPair from, DocPair to)
+
+	DocRangePair(DocPair const & from, DocPair const & to)
 		: o(from.o, to.o), n(from.n, to.n)
 	{}
 
@@ -228,7 +228,7 @@ private:
 class Compare::Impl {
 public:
 	///
-	Impl(Compare const & compare) 
+	Impl(Compare const & compare)
 		: abort_(false), compare_(compare), recursion_level_(0), D_(0)
 	{}
 
@@ -236,7 +236,7 @@ public:
 	~Impl()
 	{}
 
-	// Algorithm to find the shortest edit string. This algorithm 
+	// Algorithm to find the shortest edit string. This algorithm
 	// only needs a linear amount of memory (linear with the sum
 	// of the number of characters in the two paragraph-lists).
 	bool diff(Buffer const * new_buf, Buffer const * old_buf,
@@ -269,7 +269,7 @@ private:
 	/// the forward and backward path.
 	SnakeResult retrieveMiddleSnake(int k, int D, Direction direction,
 		DocPair & middle_snake);
-	
+
 	/// Find the furthest reaching D-path (number of horizontal
 	/// and vertical steps; differences between the old and new
 	/// document) in the k-diagonal (vertical minus horizontal steps).
@@ -278,7 +278,7 @@ private:
 
 	/// Is there overlap between the forward and backward path
 	bool overlap(int k, int D);
-	
+
 	/// This function is called recursively by a divide and conquer
 	/// algorithm. Each time, the string is divided into two split
 	/// around the middle snake.
@@ -288,7 +288,7 @@ private:
 	/// as added, or call diff_i for further processing.
 	void diffPart(DocRangePair const & rp);
 
-	/// Runs the algorithm for the inset located at /c it and /c it_n 
+	/// Runs the algorithm for the inset located at /c it and /c it_n
 	/// and adds the result to /c pars.
 	void diffInset(Inset * inset, DocPair const & p);
 
@@ -299,7 +299,7 @@ private:
 	/// Writes the range to the destination buffer
 	void writeToDestBuffer(DocRange const & range,
 		Change::Type type = Change::UNCHANGED);
-	
+
 	/// Writes the paragraph list to the destination buffer
 	void writeToDestBuffer(ParagraphList const & copy_pars) const;
 
@@ -342,7 +342,7 @@ private:
 	compl_vector<DocIterator> nrp;
 	compl_vector<DocIterator> ors;
 	compl_vector<DocIterator> nrs;
-	
+
 	/// The number of differences in the path the algorithm
 	/// is currently processing.
 	int D_;
@@ -379,20 +379,20 @@ void Compare::run()
 	// Copy the buffer params to the destination buffer
 	dest_buffer->params() = options_.settings_from_new
 		? new_buffer->params() : old_buffer->params();
-	
+
 	// Copy extra authors to the destination buffer
 	AuthorList const & extra_authors = options_.settings_from_new ?
 		old_buffer->params().authors() : new_buffer->params().authors();
 	AuthorList::Authors::const_iterator it = extra_authors.begin();
 	for (; it != extra_authors.end(); ++it)
 		dest_buffer->params().authors().record(*it);
-	
+
 	doStatusMessage();
 
 	// do the real work
 	if (!doCompare())
 		return;
-	
+
 	finished(pimpl_->abort_);
 	return;
 }
@@ -444,7 +444,7 @@ static bool equal(Inset const * i_o, Inset const * i_n)
 	if (i_o->lyxCode() != i_n->lyxCode())
 		return false;
 
-	// Editable insets are assumed to be the same as they are of the 
+	// Editable insets are assumed to be the same as they are of the
 	// same type. If we later on decide that we insert them in the
 	// document as being unchanged, we will run the algorithm on the
 	// contents of the two insets.
@@ -486,7 +486,7 @@ static bool equal(DocIterator & o, DocIterator & n)
 
 		if (i_o && i_n)
 			return equal(i_o, i_n);
-	}	
+	}
 
 	Font fo = old_par.getFontSettings(o.buffer()->params(), o.pos());
 	Font fn = new_par.getFontSettings(n.buffer()->params(), n.pos());
@@ -494,7 +494,7 @@ static bool equal(DocIterator & o, DocIterator & n)
 }
 
 
-/// Traverses a snake in a certain direction. p points to a 
+/// Traverses a snake in a certain direction. p points to a
 /// position in the old and new file and they are synchronously
 /// moved along the snake. The function returns true if a snake
 /// was found.
@@ -502,7 +502,7 @@ static bool traverseSnake(DocPair & p, DocRangePair const & range,
 	Direction direction)
 {
 	bool ret = false;
-	DocPair const & p_end = 
+	DocPair const & p_end =
 		direction == Forward ? range.to() : range.from();
 
 	while (p != p_end) {
@@ -559,8 +559,8 @@ void Compare::Impl::furthestDpathKdiagonal(int D, int k,
 			step(p.o, rp.o.to, direction);
 		else if (!vertical_step && direction == Backward)
 			step(p.o, rp.o.from, direction);
-	}	
-	
+	}
+
 	// Traverse snake
 	if (traverseSnake(p, rp, direction)) {
 		// Record last snake
@@ -612,8 +612,8 @@ Compare::Impl::SnakeResult Compare::Impl::retrieveMiddleSnake(
 		// the length of the shortest edit script is M+N.
 		LATTEST(2 * D - odd_offset_ == M_ + N_);
 		return NoSnake;
-	} 
-	
+	}
+
 	if (os[k].empty()) {
 		// Yes, but there is only 1 snake and we found it in the
 		// reverse path.
@@ -658,14 +658,14 @@ int Compare::Impl::findMiddleSnake(DocRangePair const & rp,
 	// different characters in the old and new chunk.
 	for (int D = 0; D <= D_max; ++D) {
 		// to be used in the status messages
-		D_ = D; 
+		D_ = D;
 
 		// Forward and reverse paths
 		for (int f = 0; f < 2; ++f) {
 			Direction direction = f == 0 ? Forward : Backward;
 
 			// Diagonals between -D and D can be reached by a D-path
-			for (int k = -D; k <= D; k += 2) {			
+			for (int k = -D; k <= D; k += 2) {
 				// Find the furthest reaching D-path on this diagonal
 				furthestDpathKdiagonal(D, k, rp, direction);
 
@@ -710,7 +710,7 @@ bool Compare::Impl::diff(Buffer const * new_buf, Buffer const * old_buf,
 	traverseSnake(from, rp, Forward);
 	DocRangePair const snake(rp.from(), from);
 	processSnake(snake);
-	
+
 	// Start the recursive algorithm
 	DocRangePair rp_new(from, rp.to());
 	if (!rp_new.o.empty() || !rp_new.n.empty())
@@ -759,11 +759,11 @@ void Compare::Impl::diff_i(DocRangePair const & rp)
 		DocPair first_part_end = middle_snake;
 		traverseSnake(first_part_end, rp, Backward);
 		DocRangePair first_part(rp.from(), first_part_end);
-			
+
 		DocPair second_part_begin = middle_snake;
 		traverseSnake(second_part_begin, rp, Forward);
 		DocRangePair second_part(second_part_begin, rp.to());
-				
+
 		// Split the string in three parts:
 		// 1. in front of the snake
 		diffPart(first_part);
@@ -785,7 +785,7 @@ void Compare::Impl::diffPart(DocRangePair const & rp)
 	// is an empty string and we write the other one to the buffer.
 	if (!rp.o.empty() && !rp.n.empty())
 		diff_i(rp);
-	
+
 	else if (!rp.o.empty())
 		writeToDestBuffer(rp.o, Change::DELETED);
 
@@ -805,7 +805,7 @@ void Compare::Impl::diffInset(Inset * inset, DocPair const & p)
 	ParagraphList * backup_dest_pars = dest_pars_;
 	dest_pars_ = &inset->asInsetText()->text().paragraphs();
 	dest_pars_->clear();
-	
+
 	++nested_inset_level_;
 	diff_i(rp);
 	--nested_inset_level_;
