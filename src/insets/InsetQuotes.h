@@ -63,8 +63,6 @@ public:
 	  \end{itemize}
 	  */
 	explicit InsetQuotes(Buffer * buf, std::string const & str = "eld");
-	/// Create the right quote inset after character c
-	InsetQuotes(Buffer * buffer, char_type c);
 	/// Direct access to inner/outer quotation marks
 	InsetQuotes(Buffer * buf, char_type c, QuoteTimes t);
 	///

@@ -110,8 +110,6 @@ public:
 	///
 	InsetQuotes::QuoteLanguage quotes_language;
 	///
-	InsetQuotes::QuoteTimes quotes_times;
-	///
 	std::string fontsize;
 	/// Get the LayoutFile this document is using.
 	LayoutFile const * baseClass() const;

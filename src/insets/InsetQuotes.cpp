@@ -95,16 +95,6 @@ InsetQuotes::InsetQuotes(Buffer * buf, string const & str) : Inset(buf)
 	parseString(str);
 }
 
-InsetQuotes::InsetQuotes(Buffer * buf, char_type c) : Inset(buf)
-{
-	if (buf) {
-		language_ = buf->params().quotes_language;
-		times_ = buf->params().quotes_times;
-	}
-	setSide(c);
-}
-
-
 InsetQuotes::InsetQuotes(Buffer * buf, char_type c, QuoteTimes t)
 	: Inset(buf), times_(t)
 {
