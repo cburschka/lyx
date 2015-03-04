@@ -1112,13 +1112,13 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		iss >> opt;
 		flag.setEnabled(opt.repl_buf_name.empty()
 				|| !buffer_.isReadonly());
+		break;
 	}
 
-	case LFUN_LABEL_GOTO: {
+	case LFUN_LABEL_GOTO:
 		flag.setEnabled(!cmd.argument().empty()
 		    || getInsetByCode<InsetRef>(cur, REF_CODE));
 		break;
-	}
 
 	case LFUN_CHANGES_TRACK:
 		flag.setEnabled(true);
