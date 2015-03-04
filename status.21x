@@ -42,6 +42,9 @@ What's new
 
 - Fix some missing symbols in math completer.
 
+- Fix the profile script used on cygwin to comply with the latest cygwin/X
+  X server which, by default, does not anymore listen to tcp connections.
+
 
 * DOCUMENTATION AND LOCALIZATION
 
