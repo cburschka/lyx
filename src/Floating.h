@@ -26,7 +26,7 @@ namespace lyx {
 class Floating {
 public:
 	///
-	Floating() {}
+	Floating() : usesfloatpkg_(false), ispredefined_(false) {}
 	///
 	Floating(std::string const & type, std::string const & placement,
 		 std::string const & ext, std::string const & within,
