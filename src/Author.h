@@ -22,7 +22,7 @@ namespace lyx {
 class Author {
 public:
 	///
-	Author() {}
+	Author() : used_(false), buffer_id_(0) {};
 	///
 	Author(docstring const & name, docstring const & email);
 	///
