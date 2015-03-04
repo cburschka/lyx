@@ -455,10 +455,12 @@ bool Converters::convert(Buffer const * buffer,
 			if (!conv.parselog().empty())
 				command += " 2> " + quoteName(infile2 + ".out");
 
-			if (conv.from() == "dvi" && conv.to() == "ps")
+			// it is not actually not necessary to test for buffer here,
+			// but it pleases coverity.
+			if (buffer && conv.from() == "dvi" && conv.to() == "ps")
 				command = add_options(command,
 						      buffer->params().dvips_options());
-			else if (conv.from() == "dvi" && prefixIs(conv.to(), "pdf"))
+			else if (buffer && conv.from() == "dvi" && prefixIs(conv.to(), "pdf"))
 				command = add_options(command,
 						      dvipdfm_options(buffer->params()));
 
