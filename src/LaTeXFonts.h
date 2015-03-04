@@ -26,7 +26,7 @@ class Lexer;
 class LaTeXFont {
 public:
 	/// TeX font
-	LaTeXFont() : switchdefault_(false) {}
+	LaTeXFont() : osfdefault_(false), switchdefault_(false) {}
 	/// The font name
 	docstring const & name() { return name_; }
 	/// The name to appear in the document dialog
