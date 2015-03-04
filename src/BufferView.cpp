@@ -227,7 +227,8 @@ enum ScreenUpdateStrategy {
 
 struct BufferView::Private
 {
-	Private(BufferView & bv): wh_(0), cursor_(bv),
+	Private(BufferView & bv) : update_strategy_(NoScreenUpdate),
+		wh_(0), cursor_(bv),
 		anchor_pit_(0), anchor_ypos_(0),
 		inlineCompletionUniqueChars_(0),
 		last_inset_(0), clickable_inset_(false),
