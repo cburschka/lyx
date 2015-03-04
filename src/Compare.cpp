@@ -229,7 +229,10 @@ class Compare::Impl {
 public:
 	///
 	Impl(Compare const & compare)
-		: abort_(false), compare_(compare), recursion_level_(0), D_(0)
+		: abort_(false), N_(0), M_(0), offset_reverse_diagonal_(0),
+		  odd_offset_(0), compare_(compare),
+		  old_buf_(0), new_buf_(0), dest_buf_(0), dest_pars_(0),
+		  recursion_level_(0), nested_inset_level_(0), D_(0)
 	{}
 
 	///
