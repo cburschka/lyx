@@ -240,21 +240,24 @@ bool bruteFind3(Cursor & cur, int x, int y, bool up)
 CursorData::CursorData()
 	: DocIterator(), anchor_(),
 	  selection_(false), mark_(false), word_selection_(false),
-	  logicalpos_(false), current_font(inherit_font)
+	  logicalpos_(false), current_font(inherit_font),
+	  autocorrect_(false), macromode_(false)
 {}
 
 
 CursorData::CursorData(Buffer * buffer)
 	: DocIterator(buffer), anchor_(),
 	  selection_(false), mark_(false), word_selection_(false),
-	  logicalpos_(false), current_font(inherit_font)
+	  logicalpos_(false), current_font(inherit_font),
+	  autocorrect_(false), macromode_(false)
 {}
 
 
 CursorData::CursorData(DocIterator const & dit)
 	: DocIterator(dit), anchor_(),
 	  selection_(false), mark_(false), word_selection_(false),
-	  logicalpos_(false), current_font(inherit_font)
+	  logicalpos_(false), current_font(inherit_font),
+	  autocorrect_(false), macromode_(false)
 {}
 
 
@@ -262,7 +265,8 @@ CursorData::CursorData(DocIterator const & dit)
 // bv functions are not yet available!
 Cursor::Cursor(BufferView & bv)
 	: CursorData(&bv.buffer()), bv_(&bv),
-	  x_target_(-1), textTargetOffset_(0)
+	  x_target_(-1), textTargetOffset_(0),
+	  beforeDispatchPosX_(0), beforeDispatchPosY_(0)
 {}
 
 
