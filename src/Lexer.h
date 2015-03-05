@@ -64,10 +64,10 @@ class Lexer
 {
 public:
 	/// initialize Lexer with no special keywords.
-	Lexer(); 
+	Lexer();
 	/// initialize Lexer with a bunch of keywords
 	template<int N> Lexer(LexerKeyword (&table)[N])
-		: pimpl_(0) { init(table, N); }
+	: pimpl_(0), lastReadOk_(false) { init(table, N); }
 
 	///
 	~Lexer();
