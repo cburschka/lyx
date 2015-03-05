@@ -176,7 +176,7 @@ struct LyX::Impl {
 	Movers system_movers_;
 
 	/// has this user started lyx for the first time?
-	bool first_start;
+//	bool first_start;
 	/// the parsed command line batch command if any
 	vector<string> batch_commands;
 
