@@ -1901,6 +1901,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		    != system_lyxrc.font_sizes[FONT_SIZE_HUGE] ||
 		    font_sizes[FONT_SIZE_HUGER]
 		    != system_lyxrc.font_sizes[FONT_SIZE_HUGER]) {
+			streamsize old_prec = os.precision();
 			os.setf(ios::fixed);
 			os.precision(2);
 			os << "\\screen_font_sizes"
@@ -1915,6 +1916,8 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			   << ' ' << font_sizes[FONT_SIZE_HUGE]
 			   << ' ' << font_sizes[FONT_SIZE_HUGER]
 			   << '\n';
+			os.precision(old_prec);
+			os.unsetf(ios::fixed);
 		}
 		if (tag != RC_LAST)
 			break;
