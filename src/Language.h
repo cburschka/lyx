@@ -32,7 +32,8 @@ class Lexer;
 class Language {
 public:
 	///
-	Language() : rightToLeft_(false) {}
+	Language() : rightToLeft_(false), encoding_(0), internal_enc_(false),
+				 as_babel_options_(false) {}
 	/// LyX language name
 	std::string const lang() const { return lang_; }
 	/// Babel language name
