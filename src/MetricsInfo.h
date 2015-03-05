@@ -126,14 +126,16 @@ public:
 class TextMetricsInfo {};
 
 
-/// Generic base for temporarily changing things.
-/// The original state gets restored when the Changer is destructed.
+/// Generic base for temporarily changing things. The derived class is
+/// responsible for restoring the original state when the Changer is
+/// destructed.
 template <class Struct, class Temp = Struct>
 class Changer {
-public:
-	///
-	Changer(Struct & orig) : orig_(orig) {}
 protected:
+	///
+	Changer(Struct & orig, Temp const & save) : orig_(orig), save_(save) {}
+	///
+	Changer(Struct & orig) : orig_(orig), save_(orig) {}
 	///
 	Struct & orig_;
 	///

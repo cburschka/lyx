@@ -186,9 +186,8 @@ ArrayChanger::ArrayChanger(MetricsBase & mb)
 /////////////////////////////////////////////////////////////////////////
 
 ShapeChanger::ShapeChanger(FontInfo & font, FontShape shape)
-	: Changer<FontInfo, FontShape>(font)
+	: Changer<FontInfo, FontShape>(font, font.shape())
 {
-	save_ = orig_.shape();
 	orig_.setShape(shape);
 }
 
@@ -213,7 +212,6 @@ StyleChanger::StyleChanger(MetricsBase & mb, Styles style)
 		  { 0, 0, -3, -5 },
 		  { 3, 3,  0, -2 },
 		  { 5, 5,  2,  0 } };
-	save_ = mb;
 	int t = diff[mb.style][style];
 	if (t > 0)
 		while (t--)
@@ -242,7 +240,6 @@ FontSetChanger::FontSetChanger(MetricsBase & mb, char const * name,
 	: Changer<MetricsBase>(mb), change_(really_change_font)
 {
 	if (change_) {
-		save_ = mb;
 		FontSize oldsize = save_.font.size();
 		ColorCode oldcolor = save_.font.color();
 		docstring const oldname = from_ascii(save_.fontname);
@@ -263,7 +260,6 @@ FontSetChanger::FontSetChanger(MetricsBase & mb, docstring const & name,
 	: Changer<MetricsBase>(mb), change_(really_change_font)
 {
 	if (change_) {
-		save_ = mb;
 		FontSize oldsize = save_.font.size();
 		ColorCode oldcolor = save_.font.color();
 		docstring const oldname = from_ascii(save_.fontname);
@@ -295,7 +291,6 @@ FontSetChanger::~FontSetChanger()
 WidthChanger::WidthChanger(MetricsBase & mb, int w)
 	: Changer<MetricsBase>(mb)
 {
-	save_ = mb;
 	mb.textwidth = w;
 }
 
@@ -314,10 +309,9 @@ WidthChanger::~WidthChanger()
 
 ColorChanger::ColorChanger(FontInfo & font, ColorCode color,
 			   bool really_change_color)
-	: Changer<FontInfo, ColorCode>(font), change_(really_change_color)
+	: Changer<FontInfo, ColorCode>(font, font.color()), change_(really_change_color)
 {
 	if (change_) {
-		save_ = font.color();
 		font.setColor(color);
 	}
 }
