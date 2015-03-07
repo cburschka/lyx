@@ -24,7 +24,7 @@
 bicaption
 \end_modules
 \maintain_unincluded_children false
-\language english
+\language french
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -87,26 +87,51 @@ bicaption
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\author 34634807 "Jean-Pierre" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Typesetting Multilingual Captions
+Imprimer des légendes multilingues
 \end_layout
 
 \begin_layout Author
 Uwe Stöhr
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Traduction Jean-Pierre Chrétien, 
+\family typewriter
+<jeanpierre.chretien@free.fr>
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Historique des mises à jour
+\end_layout
+
+\begin_layout Plain Layout
+Traduction initiale, 24 février 2015
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -122,53 +147,65 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-The module 
+Le module 
 \family sans
-Multilingual
+Légendes
 \begin_inset space ~
 \end_inset
 
-captions
+multilingues
 \family default
- allows to typeset captions in two languages.
- It requires the LaTeX-package 
+ permet d'imprimer les légendes en deux langues.
+ Il nécessite la paquetage LaTeX 
 \series bold
 bicaption
 \series default
- which is part of the LaTeX-package 
+ qui fait partie du paquetage LaTeX 
 \series bold
 caption
 \series default
 .
- So if 
+ De ce fait si 
 \series bold
 caption
 \series default
- is installed, bicaption should be installed too.
+ est installé, 
+\series bold
+bicaption
+\series default
+ devrait l'être aussi.
 \end_layout
 
 \begin_layout Standard
-The first language is the document language, the second one has to be specified
- using the style 
+La langue principale est celle du document, la langue secondaire doit être
+ précisée en utilisant le style 
 \family sans
-Caption
+Mise
 \begin_inset space ~
 \end_inset
 
-setup
+en
+\begin_inset space ~
+\end_inset
+
+forme
+\begin_inset space ~
+\end_inset
+
+légende
 \family default
 .
- This style has an optional argument to define to which language the setup
- should apply.
- To change the setup of all captions in the first language, use 
+ Ce style a un argument optionnel pour définir la langue secondaire.
+ Pour positionner le réglage de toutes les légendes sur la langue principale,
+ utiliser 
 \series bold
 bi-first
 \series default
- as optional argument, for the second language use 
+ comme argument optionnel, sur la langue secondaire, utiliser 
 \series bold
 bi-second
 \series default
-, for both languages use 
+, sur les deux langues utiliser 
 \series bold
 bi-both
 \series default
@@ -177,19 +214,31 @@ bi-both
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
 \series bold
-Note
+Not
 \series default
-: If no optional argument is used for 
+a: si aucun argument optionnel n'est utilisé avec 
 \family sans
-Caption setup
+Mise
+\begin_inset space ~
+\end_inset
+
+en
+\begin_inset space ~
+\end_inset
+
+forme
+\begin_inset space ~
+\end_inset
+
+légende
 \family default
-, the setup will affect all captions in the document, not only the multilingual
- ones.
+, le réglage affectera toutes les légendes du document, pas seulement les
+ légendes multilingues.
 \end_layout
 
 \end_inset
@@ -198,8 +247,9 @@ Caption setup
 \end_layout
 
 \begin_layout Standard
-This document is in English.
- To set German as the second language one uses the command
+Ce document est en français.
+ Pour positionner l’allemand comme langue secondaire, il faut utiliser la
+ commande
 \end_layout
 
 \begin_layout Standard
@@ -209,17 +259,29 @@ lang=ngerman
 \end_layout
 
 \begin_layout Standard
-in a 
+dans un style 
 \family sans
-Caption setup
+Mise
+\begin_inset space ~
+\end_inset
+
+en
+\begin_inset space ~
+\end_inset
+
+forme
+\begin_inset space ~
+\end_inset
+
+légende
 \family default
- style.
- For other languages, replace 
+.
+ Pour d'autres langues, remplacez 
 \series bold
 ngerman
 \series default
- by the babel name of your language.
- The list of babel names is given in Table
+ par le nom de votre langue en babel.
+ La liste des noms en babel est indiquée dans le tableau
 \begin_inset space ~
 \end_inset
 
@@ -231,52 +293,51 @@ reference "tab:List-of-babel"
 \end_inset
 
 .
- The caption labels are automatically translated.
+ Les étiquettes de légende sont automatiquement traduites.
 \end_layout
 
 \begin_layout Standard
-To add a multilingual caption to a float, press the right mouse button on
- the caption that is automatically added when inserting a new float and
- select 
+Pour ajouter une légende multilingue à un flottant, presser la touche droite
+ de la souris sur la légende qui apparaît automatiquement à la création
+ d'un nouveau flottant et sélectionner 
 \family sans
-Caption (Bicaption
+Légende (Double légende
 \family default
-) from the context menu.
- If no caption is inserted, you can insert the multilingual caption via
- 
-\family sans
-Insert\SpecialChar \menuseparator
-Caption\SpecialChar \menuseparator
-Bicaption
-\family default
-.
- The caption text in the document language must be inserted in the inset
- which is inserted in the caption via 
-\family sans
-Insert\SpecialChar \menuseparator
-Main Language Caption Text
-\family default
-.
- The caption text in the second language is inserted as normal text in the
- caption.
-\end_layout
-
-\begin_layout Standard
-Short Titles for both languages (for the List of Tables\SpecialChar \slash{}
-Figures) can be inserted
+) dans le menu contextuel.
+ Si aucune légende n'apparaît, il est possible d'insérer la légende multilingue
  via 
 \family sans
-Insert\SpecialChar \menuseparator
-Main Language Caption Short Title
+Insérer\SpecialChar \menuseparator
+Légende\SpecialChar \menuseparator
+Double légende
 \family default
- and 
+.
+ Le texte de la légende dans la langue du document doit être saisi dans
+ l'insert ouvert par 
 \family sans
-Insert\SpecialChar \menuseparator
-Second Language Caption Short Title.
+Insérer\SpecialChar \menuseparator
+Texte dans la langue principale
+\family default
+.
+ Le texte de la légende dans la langue secondaire est inséré comme texte
+ normal de la légende.
 \end_layout
 
 \begin_layout Standard
-Figure
+Les titres courts dans les deux langues (pour la liste des tableaux et de
+ figures) peuvent être insérés via 
+\family sans
+Insérer\SpecialChar \menuseparator
+Titre court dans la langue principale
+\family default
+ et 
+\family sans
+Insérer\SpecialChar \menuseparator
+Titre court dans la langue secondaire.
+\end_layout
+
+\begin_layout Standard
+La figure
 \begin_inset space ~
 \end_inset
 
@@ -287,10 +348,11 @@ reference "fig:example-figure"
 
 \end_inset
 
- is an example of a figure float with a multilingual caption.
+ montre un exemple d'un flottant de figure muni d'une légende multilingue.
 \end_layout
 
 \begin_layout Caption setup
+
 \begin_inset Argument 1
 status open
 
@@ -305,7 +367,7 @@ lang=ngerman
 status collapsed
 
 \begin_layout Plain Layout
-specify the second language
+spécifie la seconde langue
 \end_layout
 
 \end_inset
@@ -336,7 +398,7 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-A figure.
+Une figure.
 \end_layout
 
 \end_inset
@@ -352,7 +414,7 @@ A figure.
 status open
 
 \begin_layout Plain Layout
-English short title
+Titre court francophone
 \end_layout
 
 \end_inset
@@ -362,7 +424,7 @@ English short title
 status open
 
 \begin_layout Plain Layout
-English Title
+Titre francophone
 \end_layout
 
 \end_inset
@@ -372,18 +434,12 @@ English Title
 status open
 
 \begin_layout Plain Layout
-
-\lang ngerman
-German short title
+Titre court germanophone
 \end_layout
 
 \end_inset
 
-
-\lang ngerman
-German Title
-\lang english
-
+Titre germanophone
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:example-figure"
@@ -411,9 +467,9 @@ status open
 
 \series bold
 \color none
-Note
+Not
 \series default
-: Multilingual captions cannot be used for longtables.
+a: les légendes multilingues ne fonctionnent pas pour les tableaux longs.
 \end_layout
 
 \end_inset
@@ -422,16 +478,17 @@ Note
 \end_layout
 
 \begin_layout Section
-Caption Customization
+Personnalisation de la légende
 \end_layout
 
 \begin_layout Standard
-The layout of the captions can also be changed using the 
+La mise en page des légendes peut être modifiée à l'aide du style 
 \family sans
-Caption setup
+Mise en forme légende
 \family default
- style.
- For example to typeset the caption text sans-serif italic, use the command
+.
+ Pour imprimer par exemple le texte de légende en italique sans empattements,
+ utiliser la commande
 \end_layout
 
 \begin_layout Standard
@@ -441,7 +498,7 @@ textfont={sf,it}
 \end_layout
 
 \begin_layout Standard
-to make the label bold use
+et pour mettre l'étiquette en gras, utiliser
 \end_layout
 
 \begin_layout Standard
@@ -451,28 +508,29 @@ labelfont=bf
 \end_layout
 
 \begin_layout Standard
-To set the font for the text and the label use the command 
+Pour régler la police pour le texte et l'étiquette, utiliser la commande
+ 
 \series bold
 font=
 \series default
 .
- For more information about possible customizations, see the documentation
- of the LaTeX-package 
+ Pour plus de détails sur les modifications possibles, voir la documentation
+ du paquetage LaTeX 
 \series bold
 caption
 \series default
-, 
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "caption"
 
 \end_inset
 
-, because the customization options of the package 
+, les options du paquetage 
 \series bold
 bicaption
 \series default
- are the same as for 
+ étant les mêmes que celles de 
 \series bold
 caption
 \series default
@@ -480,7 +538,7 @@ caption
 \end_layout
 
 \begin_layout Standard
-Figure
+La figure
 \begin_inset space ~
 \end_inset
 
@@ -491,23 +549,21 @@ reference "fig:example-figure-custom"
 
 \end_inset
 
- is an example of a figure float with a customized multilingual caption.
+ montre un exemple d'une figure muni d'une légende multilingue personnalisée.
 \end_layout
 
 \begin_layout Caption setup
+
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-Note
+Not
 \series default
-: This setup does not have an effect in this file as described in 
-\change_inserted 34634807 1424765740
-the note of 
-\change_unchanged
-section
+a: cette mise en forme n'a pas d'effet sur ce fichier comme décrit dans
+ le note de la section
 \begin_inset space ~
 \end_inset
 
@@ -538,8 +594,8 @@ labelfont=bf, labelsep=newline
 status collapsed
 
 \begin_layout Plain Layout
-the label font should be bold, the label separator is a line break instead
- of a colon.
+la police de l'étiquette doit être grasse, le séparateur d'étiquette doit
+ être un saut de ligne à la place d'un point.
 \end_layout
 
 \end_inset
@@ -548,6 +604,7 @@ the label font should be bold, the label separator is a line break instead
 \end_layout
 
 \begin_layout Caption setup
+
 \begin_inset Argument 1
 status open
 
@@ -559,22 +616,10 @@ bi-first
 
 labelfont=bf, labelsep=newline
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
-the first language 
-\change_deleted 34634807 1424765769
-caption
-\change_inserted 34634807 1424765770
-label
-\change_unchanged
- text should be 
-\change_deleted 34634807 1424765777
-sans-serif italic
-\change_inserted 34634807 1424765779
-in bold font
-\change_unchanged
-
+l'étiquette dans la langue principale doit être en police grasse
 \end_layout
 
 \end_inset
@@ -583,6 +628,7 @@ in bold font
 \end_layout
 
 \begin_layout Caption setup
+
 \begin_inset Argument 1
 status open
 
@@ -597,7 +643,7 @@ labelfont=bf, textfont={sf,it}, labelsep=newline
 status collapsed
 
 \begin_layout Plain Layout
-the second language caption text should be sans-serif italic
+la légende dans la langue secondaire doit être italique sans empattements
 \end_layout
 
 \end_inset
@@ -644,7 +690,7 @@ A figure.
 status open
 
 \begin_layout Plain Layout
-Customized caption format
+Mise en forme de légende personnalisée
 \end_layout
 
 \end_inset
@@ -652,7 +698,7 @@ Customized caption format
 
 \lang ngerman
 Angepasstes Beschriftungsformat
-\lang english
+\lang french
 
 \begin_inset CommandInset label
 LatexCommand label
@@ -680,13 +726,13 @@ name "sec:Float-List-Customization"
 
 \end_inset
 
-Float List Customization
+Personnalisation des listes de flottants
 \end_layout
 
 \begin_layout Standard
-By default the list of figures/tables contain both languages.
- You can turn off the second language by adding this line to the document
- preamble:
+Implicitement, la liste des figures ou des tableaux affiche les deux langues.
+ Il est possible de supprimer la langue secondaire en ajoutant ceci au préambule
+ du document:
 \end_layout
 
 \begin_layout Standard
@@ -698,10 +744,9 @@ PassOptionsToPackage{list=off}{bicaption}
 \end_layout
 
 \begin_layout Standard
-It is also possible to have two different lists, one for the document language,
- one for the second language.
- This is the case in this file.
- To split the list one needs to add these lines to the document preamble:
+Il est également possible d’obtenir deux listes séparées pour chacune des
+ deux langues, ce qui est le cas dans le présent document.
+ Pour ce faire, il faut ajouter ces lignes dans le préambule:
 \end_layout
 
 \begin_layout Standard
@@ -739,7 +784,7 @@ PassOptionsToPackage{listtype+=Ger}{bicaption}
 \end_layout
 
 \begin_layout Standard
-This defines two new float type named 
+Ceci définit deux nouveaux environnements de flottants dénommés 
 \emph on
 figureGer
 \emph default
@@ -748,11 +793,11 @@ figureGer
 tableGer
 \emph default
 .
- A list for 
+ Une liste pour 
 \emph on
 figureGer
 \emph default
- can be inserted by using the command
+ peut être insérée via la commande
 \end_layout
 
 \begin_layout Standard
@@ -764,8 +809,8 @@ listoffigureGeres
 \end_layout
 
 \begin_layout Standard
-as TeX-Code.
- Here is the German list of figures:
+en code TeX.
+ Voici la liste des figures en allemand:
 \end_layout
 
 \begin_layout Standard
@@ -798,23 +843,23 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note
+Not
 \series default
-: If you are using this feature, the 
-\family sans
-Caption setup
-\family default
- style option 
+a: si vous utilisez cette fonctionnalité, l'option 
 \series bold
 bi-both
 \series default
- does no longer have any effect.
- You then need to define everything explicitly for each language using the
- options 
+ du style 
+\family sans
+Mise en forme légende
+\family default
+ n'a plus aucun effet.
+ Il faut alors tout définir pour chaque langue explicitement en utilisant
+ les options 
 \series bold
 bi-first
 \series default
- and 
+ et 
 \series bold
 bi-second
 \series default
@@ -827,11 +872,11 @@ bi-second
 \end_layout
 
 \begin_layout Standard
-For more information what can be done with the LaTeX-package 
+Pour en savoir plus sur ce qui peut être fait avec le paquetage LaTeX 
 \series bold
 bicaption
 \series default
-, have a look at its documentation, 
+, voir sa documentation 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bicaption"
@@ -868,7 +913,7 @@ name "tab:List-of-babel"
 
 \end_inset
 
-List of babel names
+Liste des noms babel
 \end_layout
 
 \end_inset
@@ -893,7 +938,7 @@ List of babel names
 \begin_inset Text
 
 \begin_layout Plain Layout
-language
+langue
 \end_layout
 
 \end_inset
@@ -902,7 +947,7 @@ language
 \begin_inset Text
 
 \begin_layout Plain Layout
-babel name(s)
+nom(s) babel 
 \end_layout
 
 \end_inset
@@ -913,7 +958,7 @@ babel name(s)
 \begin_inset Text
 
 \begin_layout Plain Layout
-language
+langue
 \end_layout
 
 \end_inset
@@ -922,7 +967,7 @@ language
 \begin_inset Text
 
 \begin_layout Plain Layout
-babel name(s)
+nom(s) babel
 \end_layout
 
 \end_inset
@@ -945,7 +990,7 @@ babel name(s)
 
 \family sans
 \size small
-continued on next page
+suite page suivante
 \end_layout
 
 \end_inset
