@@ -4,7 +4,17 @@
 \begin_header
 \textclass scrartcl
 \begin_preamble
-% use this when you only need the document language captions in te list of figures/tables
+% if pdflatex is used
+\usepackage{ifpdf}
+\ifpdf
+
+% set fonts for nicer pdf view
+\IfFileExists{lmodern.sty}
+ {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
+% use this when you only need the document language captions in the list of figures/tables
 %\PassOptionsToPackage{list=off}{bicaption}
 
 % all this is only necessary if you want to have a different list of floats for each language
@@ -56,7 +66,7 @@ bicaption
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle true
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
 \use_package amsmath 1
@@ -301,7 +311,11 @@ Pour ajouter une légende multilingue à un flottant, presser la touche droite
  de la souris sur la légende qui apparaît automatiquement à la création
  d'un nouveau flottant et sélectionner 
 \family sans
-Légende (Double légende
+Légende
+\begin_inset space ~
+\end_inset
+
+(Double légende
 \family default
 ) dans le menu contextuel.
  Si aucune légende n'apparaît, il est possible d'insérer la légende multilingue
@@ -352,7 +366,6 @@ reference "fig:example-figure"
 \end_layout
 
 \begin_layout Caption setup
-
 \begin_inset Argument 1
 status open
 
@@ -466,7 +479,6 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\color none
 Not
 \series default
 a: les légendes multilingues ne fonctionnent pas pour les tableaux longs.
@@ -553,7 +565,6 @@ reference "fig:example-figure-custom"
 \end_layout
 
 \begin_layout Caption setup
-
 \begin_inset Note Note
 status open
 
@@ -604,7 +615,6 @@ la police de l'étiquette doit être grasse, le séparateur d'étiquette doit
 \end_layout
 
 \begin_layout Caption setup
-
 \begin_inset Argument 1
 status open
 
@@ -628,7 +638,6 @@ l'étiquette dans la langue principale doit être en police grasse
 \end_layout
 
 \begin_layout Caption setup
-
 \begin_inset Argument 1
 status open
 
@@ -895,7 +904,7 @@ key "bicaption"
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="47" columns="2">
+<lyxtabular version="3" rows="48" columns="2">
 <features rotate="0" booktabs="true" islongtable="true" headBottomDL="true" lastFootEmpty="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="middle" width="35col%">
@@ -1297,6 +1306,26 @@ galician
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Georgian
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+georgian
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
@@ -1681,7 +1710,7 @@ scottish
 \begin_inset Text
 
 \begin_layout Plain Layout
-Spanish
+Serbian
 \end_layout
 
 \end_inset
@@ -1690,7 +1719,7 @@ Spanish
 \begin_inset Text
 
 \begin_layout Plain Layout
-spanish
+serbian
 \end_layout
 
 \end_inset
@@ -1741,7 +1770,7 @@ slovene
 \begin_inset Text
 
 \begin_layout Plain Layout
-Swedish
+Spanish
 \end_layout
 
 \end_inset
@@ -1750,7 +1779,7 @@ Swedish
 \begin_inset Text
 
 \begin_layout Plain Layout
-swedish
+spanish
 \end_layout
 
 \end_inset
@@ -1761,7 +1790,7 @@ swedish
 \begin_inset Text
 
 \begin_layout Plain Layout
-Serbian
+Swedish
 \end_layout
 
 \end_inset
@@ -1770,7 +1799,7 @@ Serbian
 \begin_inset Text
 
 \begin_layout Plain Layout
-serbian
+swedish
 \end_layout
 
 \end_inset
