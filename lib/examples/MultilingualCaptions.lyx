@@ -14,7 +14,7 @@
 
 \fi % end if pdflatex is used
 
-% use this when you only need the document language captions in te list of figures/tables
+% use this when you only need the document language captions in the list of figures/tables
 %\PassOptionsToPackage{list=off}{bicaption}
 
 % all this is only necessary if you want to have a different list of floats for each language
@@ -408,18 +408,12 @@ English Title
 status open
 
 \begin_layout Plain Layout
-
-\lang ngerman
 German short title
 \end_layout
 
 \end_inset
 
-
-\lang ngerman
 German Title
-\lang english
-
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:example-figure"
@@ -446,7 +440,6 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\color none
 Note
 \series default
 : Multilingual captions cannot be used for longtables.

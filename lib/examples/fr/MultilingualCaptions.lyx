@@ -14,7 +14,7 @@
 
 \fi % end if pdflatex is used
 
-% use this when you only need the document language captions in te list of figures/tables
+% use this when you only need the document language captions in the list of figures/tables
 %\PassOptionsToPackage{list=off}{bicaption}
 
 % all this is only necessary if you want to have a different list of floats for each language
@@ -479,7 +479,6 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\color none
 Not
 \series default
 a: les légendes multilingues ne fonctionnent pas pour les tableaux longs.
