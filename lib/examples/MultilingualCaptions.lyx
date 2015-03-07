@@ -4,6 +4,16 @@
 \begin_header
 \textclass scrartcl
 \begin_preamble
+% if pdflatex is used
+\usepackage{ifpdf}
+\ifpdf
+
+% set fonts for nicer pdf view
+\IfFileExists{lmodern.sty}
+ {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+
 % use this when you only need the document language captions in te list of figures/tables
 %\PassOptionsToPackage{list=off}{bicaption}
 
@@ -56,7 +66,7 @@ bicaption
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle true
-\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue"
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
 \use_package amsmath 1
@@ -130,11 +140,11 @@ Multilingual
 captions
 \family default
  allows to typeset captions in two languages.
- It requires the LaTeX-package 
+ It requires the LaTeX package 
 \series bold
 bicaption
 \series default
- which is part of the LaTeX-package 
+ which is part of the LaTeX package 
 \series bold
 caption
 \series default
@@ -143,7 +153,11 @@ caption
 \series bold
 caption
 \series default
- is installed, bicaption should be installed too.
+ is installed, 
+\series bold
+bicaption
+\series default
+ should be installed too.
 \end_layout
 
 \begin_layout Standard
@@ -217,7 +231,7 @@ Caption setup
 \series bold
 ngerman
 \series default
- by the babel name of your language.
+ by the babel name of the language.
  The list of babel names is given in Table
 \begin_inset space ~
 \end_inset
@@ -238,7 +252,11 @@ To add a multilingual caption to a float, press the right mouse button on
  the caption that is automatically added when inserting a new float and
  select 
 \family sans
-Caption (Bicaption
+Caption
+\begin_inset space ~
+\end_inset
+
+(Bicaption
 \family default
 ) from the context menu.
  If no caption is inserted, you can insert the multilingual caption via
@@ -287,6 +305,25 @@ reference "fig:example-figure"
 \end_inset
 
  is an example of a figure float with a multilingual caption.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Caption setup
@@ -456,7 +493,7 @@ font=
 \series default
 .
  For more information about possible customizations, see the documentation
- of the LaTeX-package 
+ of the LaTeX package 
 \series bold
 caption
 \series default
@@ -748,7 +785,7 @@ listoffigureGeres
 \end_layout
 
 \begin_layout Standard
-as TeX-Code.
+as TeX code.
  Here is the German list of figures:
 \end_layout
 
@@ -811,7 +848,7 @@ bi-second
 \end_layout
 
 \begin_layout Standard
-For more information what can be done with the LaTeX-package 
+For more information what can be done with the LaTeX package 
 \series bold
 bicaption
 \series default
@@ -834,7 +871,7 @@ key "bicaption"
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="47" columns="2">
+<lyxtabular version="3" rows="48" columns="2">
 <features rotate="0" booktabs="true" islongtable="true" headBottomDL="true" lastFootEmpty="true" longtabularalignment="center">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="middle" width="35col%">
@@ -1236,6 +1273,26 @@ galician
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Georgian
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+georgian
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
@@ -1620,7 +1677,7 @@ scottish
 \begin_inset Text
 
 \begin_layout Plain Layout
-Spanish
+Serbian
 \end_layout
 
 \end_inset
@@ -1629,7 +1686,7 @@ Spanish
 \begin_inset Text
 
 \begin_layout Plain Layout
-spanish
+serbian
 \end_layout
 
 \end_inset
@@ -1680,7 +1737,7 @@ slovene
 \begin_inset Text
 
 \begin_layout Plain Layout
-Swedish
+Spanish
 \end_layout
 
 \end_inset
@@ -1689,7 +1746,7 @@ Swedish
 \begin_inset Text
 
 \begin_layout Plain Layout
-swedish
+spanish
 \end_layout
 
 \end_inset
@@ -1700,7 +1757,7 @@ swedish
 \begin_inset Text
 
 \begin_layout Plain Layout
-Serbian
+Swedish
 \end_layout
 
 \end_inset
@@ -1709,7 +1766,7 @@ Serbian
 \begin_inset Text
 
 \begin_layout Plain Layout
-serbian
+swedish
 \end_layout
 
 \end_inset
@@ -1809,7 +1866,7 @@ key "bicaption"
 
 \end_inset
 
-Documentation of the LaTeX-package 
+Documentation of the LaTeX package 
 \series bold
 
 \begin_inset CommandInset href
@@ -1829,7 +1886,7 @@ key "caption"
 
 \end_inset
 
-Documentation of the LaTeX-package 
+Documentation of the LaTeX package 
 \series bold
 
 \begin_inset CommandInset href
