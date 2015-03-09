@@ -555,6 +555,11 @@ void DocIterator::sanitize()
 			fixIfBroken();
 			break;
 		}
+		if (!inset->editable()) {
+			LYXERR0("Inset found on cursor stack is not editable.");
+			fixIfBroken();
+			break;
+		}
 		push_back(sl[i]);
 		top().inset_ = inset;
 		if (fixIfBroken())
