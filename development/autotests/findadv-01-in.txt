@@ -10,4 +10,5 @@ KK: aba\[Return]\[Return]\[Return]
 KK: \Cs
 KK: \Ax
 KK: buffer-export latex\[Return]
+Lang C
 TestEnd grep "^abaabaa$" test.tex

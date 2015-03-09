@@ -13,4 +13,5 @@ KD: 60
 KK: \Cs
 KK: \Ax
 KK: buffer-export latex\[Return]
+Lang C
 TestEnd grep '^\$x_{a}+\\frac{1+x_{a}}{1-x\^{(a)}}\$' test.tex
