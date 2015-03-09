@@ -10,8 +10,10 @@ KK: \Az\Ag\Ae
 KK: \Ce
 KK: foo\[Return]
 TestEnd
+Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 4\n with len: 3' lyx-log.txt
 
+Lang it_IT.utf8
 TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
 KK: \CF
 # Uncheck ignore format
@@ -19,4 +21,5 @@ KK: \Az\Ag\Ae
 KK: \Ce
 KK: foo\[Return]\[Return]
 TestEnd
+Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 8\n with len: 3' lyx-log.txt

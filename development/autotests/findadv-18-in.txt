@@ -7,4 +7,5 @@ KK: \Cs
 KK: \CF
 KK: \Axregexp-mode\[Return]\\s\[Return]
 TestEnd
+Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 1\n with len: 1' lyx-log.txt

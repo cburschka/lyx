@@ -12,4 +12,5 @@ KK: \Axfootnote-insert\[Return]
 KK: \C\[Home]\[Right]
 KK: foo\[Return]
 TestEnd
+Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n with len: 1' lyx-log.txt

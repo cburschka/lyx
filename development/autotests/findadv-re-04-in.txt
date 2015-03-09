@@ -9,4 +9,5 @@ KK: \CF
 KK: \Az\Ag\Ae
 KK: \Ce\Axregexp-mode\[Return].*\[Return]
 TestEnd
+Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 6\n with len: 5' lyx-log.txt

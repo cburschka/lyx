@@ -1,27 +1,32 @@
 # Basic test for searching with regular expressions
 
-Lang it_IT.utf8
+Lang sk_SK.utf8
 TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
 KK: Nel mezzo del cammin di nostra vita\[Return]
 KK: mi ritrovai per una selva oscura\C\[Home]
-KK: \Cs
-KK: \CF
+KK: \Axbuffer-write\[Return]
+KK: \Axdialog-show findreplaceadv\[Return]
 KK: o\Axregexp-mode\[Return].* a\[Return]
 TestEnd
+Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 8\n with len: 8' lyx-log.txt
 
+Lang sk_SK.utf8
 TestBegin test.lyx -dbg find > lyx-log2.txt 2>&1
-KK: \C\[Home]\CF
+KK: \C\[Home]\Axdialog-show findreplaceadv\[Return]
 KK: o\Axregexp-mode\[Return][[:word:]]* a
-KK: \Al\Ar
+KK: \Ac\Aj
 KD: 500
 KK: \[Return]
 KD: 100
 TestEnd
+Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 1 pos: 26\n with len: 6' lyx-log2.txt
 
+Lang sk_SK.utf8
 TestBegin test.lyx -dbg find > lyx-log3.txt 2>&1
-KK: \C\[Home]\CF
-KK: \Axregexp-mode\[Return].* \Al\Ar\[Return]\[Return]\[Return]
+KK: \C\[Home]\Axdialog-show findreplaceadv\[Return]
+KK: \Axregexp-mode\[Return].* \Ac\Aj\[Return]\[Return]\[Return]
 TestEnd
+Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 10\n with len: 3' lyx-log3.txt

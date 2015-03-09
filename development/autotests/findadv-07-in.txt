@@ -1,27 +1,31 @@
 # Basic test for searching with par-style awareness
 
-Lang it_IT.utf8
+Lang sk_SK.utf8
 TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
 KK: foo bar\[Return]
+#select itemized
 KK: \Apb
 KK: foo bar\[Return]
 KK: \Aps
 KK: foo bar\C\[Home]
-KK: \Cs
-KK: \CF
+KK: \Axbuffer-write\[Return]
+KK: \Axdialog-show findreplaceadv\[Return]
 # Uncheck ignore format
-KK: \Az\Ag\Ae
+KK: \At\Ai\Ah
 KK: \Apb
 KK: foo\[Return]
 TestEnd
+Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 1 pos: 0\n with len: 3' lyx-log.txt
 #
+Lang sk_SK.utf8
 TestBegin test.lyx -dbg find > lyx-log2.txt 2>&1
 KK: \C\[Home]
 KK: \CF
 # Uncheck ignore format
-KK: \Az\Ag\Ae
+KK: \At\Ai\Ah
 KK: \Apb
-KK: bar\[Return]\[Return]
+KK: bar\[Return]
 TestEnd
+Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 1 pos: 4\n with len: 3' lyx-log2.txt

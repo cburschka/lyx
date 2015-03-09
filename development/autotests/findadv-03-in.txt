@@ -7,7 +7,9 @@ KK: \Cs
 KK: \CF
 KK: \Cm
 KK: x^2\[Return]
+Lang C
 TestEnd pcregrep -M "Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 0" lyx-log.txt
+Lang it_IT.utf8
 TestBegin test2.lyx -dbg find > lyx-log2.txt 2>&1
 KK: \Cm
 KK: x^2 -x^2\C\[Home]
@@ -16,4 +18,5 @@ KK: \CF
 KK: \Cm
 KK: x^2\[Return]\[Return]
 TestEnd
+Lang C
 Assert pcregrep -M "Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 2" lyx-log2.txt

@@ -9,4 +9,5 @@ KK: \CF
 KK: a\[Tab]
 KK: \Cm\\bar a\[Return]\[Return]
 TestEnd
+Lang C
 Assert ! pcregrep -M 'against.*bar' lyx-log.txt

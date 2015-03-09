@@ -8,4 +8,5 @@ KK: \CF
 KK: \Az\Ag\Ae
 KK: \Cm\\frac \Axregexp-mode\[Return].* \[Down]1+x^2 \[Return]
 TestEnd
+Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n .*idx: 0 par: 0 pos: 0\n with len: 1' lyx-log.txt

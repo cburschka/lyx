@@ -12,8 +12,10 @@ KK: \Cs
 KK: \Ax
 KK: buffer-export latex\[Return]
 TestEnd
+Lang C
 Assert pcregrep -M '^\$\\frac\{1\}\{a\}\$ \$\\frac\{1\}\{a\}\$ a' test.tex
 
+Lang it_IT.utf8
 TestBegin test2.lyx -dbg find > lyx-log.txt 2>&1
 KK: \Cma  \Cma  \Cma \C\[Home]
 KK: \CF
@@ -23,4 +25,5 @@ KK: \Cs
 KK: \Ax
 KK: buffer-export latex\[Return]
 TestEnd
+Lang C
 Assert pcregrep -M '^\$\\frac\{1\}\{a\}\$ \$\\frac\{1\}\{a\}\$ \$a\$' test2.tex
