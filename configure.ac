@@ -63,7 +63,7 @@ for file in config/install-sh ; do
   chmod 755 ${srcdir}/${file}
 done
 
-AM_PATH_PYTHON(2.4.0,, :)
+AM_PATH_PYTHON(2.7.0,, :)
 AC_PROG_RANLIB
 
 ### Check for a C++ compiler

@@ -80,11 +80,11 @@ The two following programs should be available at configuration time:
     as. Otherwise, LyX will not be able to run a number of tests. Note
     that users can run these tests manually with Tools>Reconfigure.
 
-  o Python 2.4 or newer must be installed. Python is used for many
-    simple tasks that are executed by external scripts, such as the
-    automatic configuration step and the import of older LyX documents
-    with the lyx2lyx script (this script is called automatically when
-    opening a file). Python 3.0 or later is not supported.
+  o Python 2.7 must be installed. Python is used for many simple tasks
+    that are executed by external scripts, such as the automatic
+    configuration step and the import of older LyX documents with the
+    lyx2lyx script (this script is called automatically when opening a
+    file). Python 3 (3.3 or later) support is work in progress.
 
 
 Creating the Makefile

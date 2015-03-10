@@ -33,10 +33,8 @@ What do I need to run LyX?
     A decent LaTeX2e installation (e.g. TeX Live for Linux, MikTeX for
     Windows).
 
-    Python 2.4 or later to convert old LyX files and for helper scripts.
-    Note 1: Python 2.4 or later is required due to the subprocess module.
-    Note 2: Python 2.6 or later is recommended on Windows.
-    Note 3: Python 3.0 or later is not supported.
+    Python 2.7 to convert old LyX files and for helper scripts.
+    Note: Python 3 (3.3 or later) support is work in progress.
 
 How does the LyX version scheme work?
 
