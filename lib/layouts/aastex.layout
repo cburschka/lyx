@@ -530,6 +530,7 @@ InsetLayout Caption:FigCaption
 	LabelString	fig.
 	LaTeXType	command
 	LatexName	figcaption
+	MultiPar        false
 	Argument 1
 	  LabelString	"Filename"
 	  Tooltip	"Filename to identify the corresponding figure file"

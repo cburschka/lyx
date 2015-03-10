@@ -237,10 +237,6 @@ bool InsetCaption::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return InsetText::getStatus(cur, cmd, status);
 	}
 
-	case LFUN_PARAGRAPH_BREAK:
-		status.setEnabled(false);
-		return true;
-
 	case LFUN_INSET_TOGGLE:
 		// pass back to owner
 		cur.undispatched();
