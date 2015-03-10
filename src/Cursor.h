@@ -88,6 +88,10 @@ public:
 	explicit CursorData(Buffer * buffer);
 	///
 	explicit CursorData(DocIterator const & dit);
+	/// output
+	friend std::ostream & operator<<(std::ostream & os, CursorData const & cur);
+	friend LyXErr & operator<<(LyXErr & os, CursorData const & cur);
+
 protected:
 	/// the anchor position
 	DocIterator anchor_;
@@ -344,10 +348,6 @@ public:
 	/// Repopulate the slices insets from bottom to top. Useful
 	/// for stable iterators or Undo data.
 	void sanitize();
-
-	/// output
-	friend std::ostream & operator<<(std::ostream & os, Cursor const & cur);
-	friend LyXErr & operator<<(LyXErr & os, Cursor const & cur);
 
 	///
 	bool textUndo();
