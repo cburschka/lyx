@@ -85,6 +85,10 @@ What's new
 
 - Fix crash when closing LyX on MacOS X (bug 8637).
 
+- Fix crash with undo/redo (bug 9432).
+
+- Fix insertion of spaces in macro definitions (bug 9432).
+
 - Fix name and hint of figure captions in documents using the class aastex.
 
 - Fix output encoding information for non-TeX fonts XeTeX/LuaTeX on preview
