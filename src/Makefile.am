@@ -305,11 +305,23 @@ HEADERFILESCORE = \
 STANDALONEFILES = \
 	Layout.cpp
 
-.PHONY: lyx_commit_hash.h
 
-lyx_commit_hash.h:
-	$(AM_V_GEN)hash=`cd "$(top_srcdir)" && git log -1 --pretty=format:%H 2>/dev/null || echo none` ; \
-        sed s/@LYX_GIT_COMMIT_HASH@/$$hash/ "$(srcdir)"/lyx_commit_hash.h.in >$@
+.PHONY: update_commit_hash
+
+LCH_V_GEN = $(lch__v_GEN_@AM_V@)
+lch__v_GEN_ = $(lch__v_GEN_@AM_DEFAULT_V@)
+lch__v_GEN_0 = @echo "  GEN      lyx_commit_hash.h";
+lch__v_GEN_1 =
+
+update_commit_hash:
+	rm -f hash-temp \
+	$(LCH_V_GEN)hash=`cd "$(top_srcdir)" && git log -1 --pretty=format:%H 2>/dev/null || echo none` ; \
+	sed s/@LYX_GIT_COMMIT_HASH@/$$hash/ "$(srcdir)"/lyx_commit_hash.h.in >hash-temp ; \
+	cmp -s lyx_commit_hash.h hash-temp || cp hash-temp lyx_commit_hash.h ; \
+	rm -f hash-temp
+
+lyx_commit_hash.h: update_commit_hash
+
 BUILT_SOURCES += lyx_commit_hash.h
 CLEANFILES += lyx_commit_hash.h
 
