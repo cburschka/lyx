@@ -261,6 +261,36 @@ CursorData::CursorData(DocIterator const & dit)
 {}
 
 
+
+
+ostream & operator<<(ostream & os, CursorData const & cur)
+{
+	os << "\n cursor:                                | anchor:\n";
+	for (size_t i = 0, n = cur.depth(); i != n; ++i) {
+		os << " " << cur[i] << " | ";
+		if (i < cur.anchor_.depth())
+			os << cur.anchor_[i];
+		else
+			os << "-------------------------------";
+		os << "\n";
+	}
+	for (size_t i = cur.depth(), n = cur.anchor_.depth(); i < n; ++i) {
+		os << "------------------------------- | " << cur.anchor_[i] << "\n";
+	}
+	os << " selection: " << cur.selection_
+//	   << " x_target: " << cur.x_target_
+	   << " boundary: " << cur.boundary() << endl;
+	return os;
+}
+
+
+LyXErr & operator<<(LyXErr & os, CursorData const & cur)
+{
+	os.stream() << cur;
+	return os;
+}
+
+
 // be careful: this is called from the bv's constructor, too, so
 // bv functions are not yet available!
 Cursor::Cursor(BufferView & bv)
@@ -1291,36 +1321,6 @@ bool Cursor::selHandle(bool sel)
 	setSelection(sel);
 	return true;
 }
-
-
-ostream & operator<<(ostream & os, Cursor const & cur)
-{
-	os << "\n cursor:                                | anchor:\n";
-	for (size_t i = 0, n = cur.depth(); i != n; ++i) {
-		os << " " << cur[i] << " | ";
-		if (i < cur.anchor_.depth())
-			os << cur.anchor_[i];
-		else
-			os << "-------------------------------";
-		os << "\n";
-	}
-	for (size_t i = cur.depth(), n = cur.anchor_.depth(); i < n; ++i) {
-		os << "------------------------------- | " << cur.anchor_[i] << "\n";
-	}
-	os << " selection: " << cur.selection_
-	   << " x_target: " << cur.x_target_
-	   << " boundary: " << cur.boundary() << endl;
-	return os;
-}
-
-
-LyXErr & operator<<(LyXErr & os, Cursor const & cur)
-{
-	os.stream() << cur;
-	return os;
-}
-
-
 } // namespace lyx
 
 
@@ -2350,7 +2350,10 @@ void Cursor::sanitize()
 {
 	setBuffer(&bv_->buffer());
 	DocIterator::sanitize();
-	anchor_.sanitize();
+	if (selection())
+		anchor_.sanitize();
+	else
+		resetAnchor();
 }
 
 
