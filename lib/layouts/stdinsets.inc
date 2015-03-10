@@ -555,6 +555,7 @@ InsetLayout Caption:Standard
 	LaTeXType            command
 	LatexName            caption
 	NeedProtect	     1
+	MultiPar             false
 	Argument 1
 		LabelString   "Short Title|S"
 		Tooltip       "The caption as it appears in the list of figures/tables"
