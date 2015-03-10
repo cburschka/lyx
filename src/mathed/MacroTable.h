@@ -62,6 +62,8 @@ public:
 	///
 	std::string const requires() const;
 	///
+	bool hidden() const;
+	///
 	docstring const xmlname() const;
 	///
 	char const * MathMLtype() const;
@@ -162,7 +164,7 @@ public:
 	///
 	void dump();
 	///
-	void getMacroNames(std::set<docstring> & names) const;
+	void getMacroNames(std::set<docstring> & names, bool gethidden) const;
 
 	/// the global list
 	static MacroTable & globalMacros();
