@@ -1090,7 +1090,7 @@ void MathMacroTemplate::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
+bool MathMacroTemplate::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & flag) const
 {
 	bool ret = true;
@@ -1148,7 +1148,7 @@ bool MathMacroTemplate::getStatus(Cursor & /*cur*/, FuncRequest const & cmd,
 			break;
 
 		default:
-			ret = false;
+			ret = InsetMathNest::getStatus(cur, cmd, flag);
 			break;
 	}
 	return ret;
