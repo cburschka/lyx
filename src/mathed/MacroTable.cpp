@@ -119,6 +119,14 @@ string const MacroData::requires() const
 }
 
 
+bool MacroData::hidden() const
+{
+	if (sym_)
+		return sym_->hidden;
+	return false;
+}
+
+
 docstring const MacroData::xmlname() const
 {
 	if (sym_)
@@ -242,10 +250,11 @@ MacroTable::insert(Buffer * buf, docstring const & def)
 }
 
 
-void MacroTable::getMacroNames(std::set<docstring> & names) const
+void MacroTable::getMacroNames(std::set<docstring> & names, bool gethidden) const
 {
 	for (const_iterator it = begin(); it != end(); ++it)
-		names.insert(it->first);
+		if (gethidden || !it->second.hidden())
+			names.insert(it->first);
 }
 
 

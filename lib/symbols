@@ -49,7 +49,7 @@ underrightarrow     decoration none       amsmath
 #Do not load automatically, it redefines some other symbols, and we don't
 #have a possibility to turn automatic loading off like for ams
 #undertilde          decoration none       accents
-undertilde          decoration none
+undertilde          decoration none       hiddensymbol
 utilde              decoration none       undertilde
 vec                 decoration none
 widehat             decoration none
@@ -60,7 +60,7 @@ dots              dots        none
 #Do not load automatically, it redefines some other symbols, and we don't
 #have a possibility to turn automatic loading off like for ams
 #adots             dots        none        yhmath
-adots             dots        none
+adots             dots        none        hiddensymbol
 cdots             dots        none
 ddots             dots        none
 dotsb             dots        none        amsmath
@@ -93,12 +93,12 @@ Biggr             big         none
 # packages. No 'm' versions!
 # See lucidabr.dtx for a possible implementation if you want to use these
 # with other fonts.
-biggg             big         none
-bigggl            big         none
-bigggr            big         none
-Biggg             big         none
-Bigggl            big         none
-Bigggr            big         none
+biggg             big         none        hiddensymbol
+bigggl            big         none        hiddensymbol
+bigggr            big         none        hiddensymbol
+Biggg             big         none        hiddensymbol
+Bigggl            big         none        hiddensymbol
+Bigggr            big         none        hiddensymbol
 
 # font changes
 # name           "font"       math/text family  series  shape  color

@@ -185,6 +185,7 @@ void initSymbols()
 			string requires;
 			string extra;
 			string xmlname;
+			bool hidden = false;
 			is >> macro >> requires;
 			if ((is >> xmlname)) {
 				extra = requires;
@@ -205,7 +206,11 @@ void initSymbols()
 					tmp.name = it->first;
 					tmp.extra = from_utf8(extra);
 					tmp.xmlname = from_utf8(xmlname);
-					tmp.requires = requires;
+					if (requires == "hiddensymbol") {
+						requires = "";
+						tmp.hidden = hidden = true;
+					} else
+						tmp.requires = requires;
 					theMathWordList[it->first] = tmp;
 					wit = theMathWordList.find(it->first);
 					it->second.setSymbol(&(wit->second));
@@ -218,7 +223,8 @@ void initSymbols()
 				<< "  draw: 0"
 				<< "  extra: " << extra
 				<< "  xml: " << xmlname
-				<< "  requires: " << requires << '\'');
+				<< "  requires: " << requires
+				<< "  hidden: " << hidden << '\'');
 			continue;
 		}
 
@@ -294,6 +300,12 @@ void initSymbols()
 					      << " used for " << to_utf8(tmp.name));
 		}
 
+		if (tmp.requires == "hiddensymbol")
+		{
+			tmp.requires = "";
+			tmp.hidden = true;
+		}
+
 		if (theMathWordList.find(tmp.name) != theMathWordList.end())
 			LYXERR(Debug::MATHED, "readSymbols: inset " << to_utf8(tmp.name)
 				<< " already exists.");
@@ -307,7 +319,8 @@ void initSymbols()
 			<< "  draw: " << int(tmp.draw.empty() ? 0 : tmp.draw[0])
 			<< "  extra: " << to_utf8(tmp.extra)
 			<< "  xml: " << to_utf8(tmp.xmlname)
-			<< "  requires: " << tmp.requires << '\'');
+			<< "  requires: " << tmp.requires
+			<< "  hidden: " << tmp.hidden << '\'');
 	}
 	string tmp = "cmm";
 	string tmp2 = "cmsy";

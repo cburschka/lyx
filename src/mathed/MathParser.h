@@ -31,6 +31,8 @@ class Lexer;
 class latexkeys {
 public:
 	///
+	latexkeys() : hidden(false) {}
+	///
 	char const * MathMLtype() const;
 	/// name of the macro or primitive
 	docstring name;
@@ -56,6 +58,9 @@ public:
 	docstring xmlname;
 	/// required LaTeXFeatures
 	std::string requires;
+	/// Should this macro be hidden from autocompletion (since it requires
+	/// user preamble code)?
+	bool hidden;
 };
 
 

@@ -2113,7 +2113,7 @@ MathCompletionList::MathCompletionList(Cursor const & cur)
 
 	// fill in global macros
 	macros.clear();
-	MacroTable::globalMacros().getMacroNames(macros);
+	MacroTable::globalMacros().getMacroNames(macros, false);
 	//lyxerr << "Globals completion macros: ";
 	for (it = macros.begin(); it != macros.end(); ++it) {
 		//lyxerr << "\\" + *it << " ";
@@ -2198,7 +2198,7 @@ MathCompletionList::MathCompletionList(Cursor const & cur)
 	MathWordList::const_iterator it2;
 	//lyxerr << "Globals completion commands: ";
 	for (it2 = words.begin(); it2 != words.end(); ++it2) {
-		if (it2->second.inset != "macro") {
+		if (it2->second.inset != "macro" && !it2->second.hidden) {
 			// macros are already read from MacroTable::globalMacros()
 			globals.push_back('\\' + it2->first);
 			//lyxerr << '\\' + it2->first << ' ';
