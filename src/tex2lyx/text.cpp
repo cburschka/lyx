@@ -3635,7 +3635,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			begin_inset(os, "script ");
 			os << t.cs().substr(4) << '\n';
-			parse_text_in_inset(p, os, FLAG_ITEM, false, context);
+			newinsetlayout = findInsetLayout(context.textclass, t.cs(), true);
+			parse_text_in_inset(p, os, FLAG_ITEM, false, context, newinsetlayout);
 			end_inset(os);
 			if (t.cs() == "textsubscript")
 				preamble.registerAutomaticallyLoadedPackage("subscript");
