@@ -121,7 +121,7 @@ struct UndoElement
 	ParagraphList * pars;
 	/// the contents of the saved MathData (for mathed)
 	MathData * array;
-	/// Only used in case of full backups
+	/// Only used in case of params undo
 	BufferParams const * bparams;
 	/// Was the buffer clean at this point?
 	bool lyx_clean;
@@ -321,6 +321,7 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 	if (!undo_finished_
 	    && kind != ATOMIC_UNDO
 	    && !stack.empty()
+	    && !stack.top().bparams
 	    && samePar(stack.top().cell, cell)
 	    && stack.top().kind == kind
 	    && stack.top().from == from
