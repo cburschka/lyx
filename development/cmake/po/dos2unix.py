@@ -4,14 +4,14 @@
 import sys
 
 for fname in sys.argv[1:]:
-    infile = open( fname, "rb" )
+    infile = open( fname, "r" )
     instr = infile.read()
     infile.close()
     outstr = instr.replace( "\r\n", "\n" ).replace( "\r", "\n" )
 
-    if len(outstr) == len(instr):
+    if outstr == instr:
         continue
     
-    outfile = open( fname , "wb" )
+    outfile = open( fname , "w" )
     outfile.write( outstr )
     outfile.close()

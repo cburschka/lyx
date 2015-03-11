@@ -1,5 +1,7 @@
 #! /usr/bin/env python
 
+from __future__ import print_function
+
 # file ReplaceValues.py
 #
 # This file is part of LyX, the document processor.
@@ -32,7 +34,7 @@ def SubstituteDataInLine(line):
 
 def SubstituteDataInFile(InFile):
     for line in open(InFile):
-        print SubstituteDataInLine(line[:-1])
+        print(SubstituteDataInLine(line[:-1]))
 
 ##########################################
 

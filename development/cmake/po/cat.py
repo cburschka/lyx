@@ -1,5 +1,7 @@
 #! /usr/bin/env python
 
+from __future__ import print_function
+
 import sys
 from getopt import getopt
 
@@ -18,7 +20,7 @@ for (opt, param) in options:
 	if opt == "-o":
 		outfile = param
 	elif opt == "-h":
-		print usage
+		print(usage)
 		sys.exit(0)
 
 out = sys.stdout
