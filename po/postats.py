@@ -26,6 +26,7 @@ and generates a PHP web page.
 Invocation:
    postats.py lyx_version po_files > "pathToWebPages"/i18n.inc
 """
+from __future__ import print_function
 
 # modify this when you change branch
 # Note that an empty lyx_branch variable (ie svn trunk)
@@ -93,7 +94,7 @@ def run_msgfmt(pofile):
  The function runs msgfmt on it and returns corresponding php code.
 """
     if not pofile.endswith('.po'):
-        print >> sys.stderr, "%s is not a po file" % pofile
+        print("%s is not a po file" % pofile, file=sys.stderr)
         sys.exit(1)
 
     dirname = os.path.dirname(pofile)
@@ -132,7 +133,7 @@ if __name__ == "__main__":
         branch_tag = "master"
 
 
-    print """<?php
+    print("""<?php
 // The current version
 $lyx_version = "%s";
 // The branch tag
@@ -140,4 +141,4 @@ $branch_tag = "%s";
 
 // The data itself
 $podata = array (%s
-)?>""" % (sys.argv[1], branch_tag, ",".join([run_msgfmt(po) for po in sys.argv[2:] if po not in ommitted]))
+)?>""" % (sys.argv[1], branch_tag, ",".join([run_msgfmt(po) for po in sys.argv[2:] if po not in ommitted])))
