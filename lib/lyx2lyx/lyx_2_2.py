@@ -74,7 +74,7 @@ def convert_separator(document):
             lay = get_containing_layout(document.body, j-1)
             if lay != False:
                 content = "\n".join(document.body[lay[1]:lay[2]])
-                for val in sty_dict.keys():
+                for val in list(sty_dict.keys()):
                     if content.find("\\%s" % val) != -1:
                         document.body[j:j] = ["\\%s %s" % (val, sty_dict[val])]
                         i = i + 1
@@ -103,7 +103,7 @@ def convert_separator(document):
                and find_token(document.body, "\\begin_inset VSpace", lay[1], lay[2]) == -1:
                 # reset any text style before inserting the inset
                 content = "\n".join(document.body[lay[1]:lay[2]])
-                for val in sty_dict.keys():
+                for val in list(sty_dict.keys()):
                     if content.find("\\%s" % val) != -1:
                         document.body[j:j] = ["\\%s %s" % (val, sty_dict[val])]
                         i = i + 1

@@ -20,6 +20,12 @@
 
 import sys, os, re
 
+# Provide support for both python 2 and 3
+PY2 = sys.version_info[0] == 2
+if not PY2:
+    unichr = chr
+# End of code to support for both python 2 and 3
+
 def read_unicodesymbols():
     " Read the unicodesymbols list of unicode characters and corresponding commands."
     pathname = os.path.abspath(os.path.dirname(sys.argv[0]))

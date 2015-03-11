@@ -94,7 +94,7 @@ def convert_len(len):
              "theight%":"\\backslash\ntextheight", "pheight%":"\\backslash\npageheight"}
 
     # Convert LyX units to LaTeX units
-    for unit in units.keys():
+    for unit in list(units.keys()):
         if len.find(unit) != -1:
             len = '%f' % (len2value(len) / 100)
             len = len.strip('0') + units[unit]
@@ -1765,7 +1765,7 @@ def convert_module_names(document):
     return
   newmodlist = []
   for mod in modlist:
-    if modulemap.has_key(mod):
+    if mod in modulemap:
       newmodlist.append(modulemap[mod])
     else:
       document.warning("Can't find module %s in the module map!" % mod)

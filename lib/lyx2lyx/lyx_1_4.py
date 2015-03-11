@@ -1495,7 +1495,7 @@ def convert_len(len, special):
         len = '%f\\' % len2value(len) + special
 
     # Convert LyX units to LaTeX units
-    for unit in units.keys():
+    for unit in list(units.keys()):
         if len.find(unit) != -1:
             len = '%f' % (len2value(len) / 100) + units[unit]
             break
@@ -1571,7 +1571,7 @@ def convert_frameless_box(document):
                   'inner_pos':1, 'use_parbox':'0', 'width':'100col%',
                   'special':'none', 'height':'1in',
                   'height_special':'totalheight', 'collapsed':'false'}
-        for key in params.keys():
+        for key in list(params.keys()):
             value = get_value(document.body, key, i, j).replace('"', '')
             if value != "":
                 if key == 'position':

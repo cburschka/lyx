@@ -283,7 +283,7 @@ def latex_length(slen):
     units = {"text%":"\\textwidth", "col%":"\\columnwidth",
              "page%":"\\paperwidth", "line%":"\\linewidth",
              "theight%":"\\textheight", "pheight%":"\\paperheight"}
-    for unit in units.keys():
+    for unit in list(units.keys()):
         i = slen.find(unit)
         if i == -1:
             continue

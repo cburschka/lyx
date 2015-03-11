@@ -398,7 +398,7 @@ def convert_japanese_encodings(document):
     if i == -1:
         return
     val = get_value(document.header, "\\inputencoding", i)
-    if val in jap_enc_dict.keys():
+    if val in list(jap_enc_dict.keys()):
         document.header[i] = "\\inputencoding %s" % jap_enc_dict[val]
 
 
@@ -413,7 +413,7 @@ def revert_japanese_encodings(document):
     if i == -1:
         return
     val = get_value(document.header, "\\inputencoding", i)
-    if val in jap_enc_dict.keys():
+    if val in list(jap_enc_dict.keys()):
         document.header[i] = "\\inputencoding %s" % jap_enc_dict[val]
 
 
@@ -1227,7 +1227,7 @@ def revert_mathdesign(document):
         if i == -1:
             return
         val = get_value(document.header, "\\font_roman", i)
-        if val in mathdesign_dict.keys():
+        if val in list(mathdesign_dict.keys()):
             preamble = "\\usepackage[%s" % mathdesign_dict[val]
             expert = False
             j = find_token(document.header, "\\font_osf true", 0)
@@ -1391,7 +1391,7 @@ def revert_mathfonts(document):
                 k = find_token(document.header, "\\font_osf true", 0)
                 if k != -1:
                     rm += "-osf"
-                if rm in mathfont_dict.keys():
+                if rm in list(mathfont_dict.keys()):
                     add_to_preamble(document, mathfont_dict[rm])
                     document.header[j] = "\\font_roman default"
                     if k != -1:
@@ -1412,7 +1412,7 @@ def revert_mdnomath(document):
         if i == -1:
             return
         val = get_value(document.header, "\\font_roman", i)
-        if val in mathdesign_dict.keys():
+        if val in list(mathdesign_dict.keys()):
             j = find_token(document.header, "\\font_math", 0)
             if j == -1:
                 document.header[i] = "\\font_roman %s" % mathdesign_dict[val]
@@ -1437,7 +1437,7 @@ def convert_mdnomath(document):
         if i == -1:
             return
         val = get_value(document.header, "\\font_roman", i)
-        if val in mathdesign_dict.keys():
+        if val in list(mathdesign_dict.keys()):
              document.header[i] = "\\font_roman %s" % mathdesign_dict[val]
 
 
@@ -1454,7 +1454,7 @@ def revert_newtxmath(document):
         "minion-ntxm":  "\\usepackage[minion]{newtxmath}",
         "newtxmath":  "\\usepackage{newtxmath}",
         }
-        if val in mathfont_dict.keys():
+        if val in list(mathfont_dict.keys()):
             add_to_preamble(document, mathfont_dict[val])
             document.header[i] = "\\font_math auto"
 
@@ -3630,7 +3630,7 @@ def convert_captionlayouts(document):
         if i == -1:
             return
         val = get_value(document.body, "\\begin_layout", i)
-        if val in caption_dict.keys():
+        if val in list(caption_dict.keys()):
             j = find_end_of_layout(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX document: Missing `\\end_layout'.")
@@ -3666,7 +3666,7 @@ def revert_captionlayouts(document):
         val = ""
         if m:
             val = m.group(1)
-        if val not in caption_dict.keys():
+        if val not in list(caption_dict.keys()):
             i += 1
             continue
         
@@ -3847,7 +3847,7 @@ def revert_newframes(document):
         val = ""
         if m:
             val = m.group(1)
-        if val not in frame_dict.keys():
+        if val not in list(frame_dict.keys()):
             i += 1
             continue
         # Find end of sequence
@@ -3963,7 +3963,7 @@ def convert_encodings(document):
     if i == -1:
         return
     val = get_value(document.header, "\\inputencoding", i)
-    if val in LaTeX2LyX_enc_dict.keys():
+    if val in list(LaTeX2LyX_enc_dict.keys()):
         document.header[i] = "\\inputencoding %s" % LaTeX2LyX_enc_dict[val]
     elif val not in known_enc_tuple:
         document.warning("Ignoring unknown input encoding: `%s'" % val)
@@ -4004,7 +4004,7 @@ def revert_encodings(document):
     if i == -1:
         return
     val = get_value(document.header, "\\inputencoding", i)
-    if val in LyX2LaTeX_enc_dict.keys():
+    if val in list(LyX2LaTeX_enc_dict.keys()):
         document.header[i] = "\\inputencoding %s" % LyX2LaTeX_enc_dict[val]
     elif val not in known_enc_tuple:
         document.warning("Ignoring unknown input encoding: `%s'" % val)
