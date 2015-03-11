@@ -62,11 +62,9 @@ InsetCaption::InsetCaption(Buffer * buf, string const & type)
 void InsetCaption::write(ostream & os) const
 {
 	os << "Caption";
-	if (!type_.empty()) {
-		os << " "
-		   << type_;
-	}
-	os << "\n";
+	if (!type_.empty())
+		os << ' ' << type_;
+	os << '\n';
 	text().write(os);
 }
 
@@ -319,7 +317,7 @@ void InsetCaption::getArgument(otexstream & os,
 
 	if (!il.leftdelim().empty())
 		os << il.leftdelim();
-  
+ 
 	OutputParams rp = runparams;
 	if (isPassThru())
 		rp.pass_thru = true;
@@ -352,7 +350,7 @@ docstring InsetCaption::getCaptionAsHTML(XHTMLStream & xs,
 			OutputParams const & runparams) const
 {
 	xs << full_label_ << ' ';
-	InsetText::XHTMLOptions const opts = 
+	InsetText::XHTMLOptions const opts =
 		InsetText::WriteLabel | InsetText::WriteInnerTag;
 	return InsetText::insetAsXHTML(xs, runparams, opts);
 }
