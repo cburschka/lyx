@@ -872,6 +872,8 @@ string const unzippedFileName(string const & zipped_file)
 	string const ext = getExtension(zipped_file);
 	if (ext == "gz" || ext == "z" || ext == "Z")
 		return changeExtension(zipped_file, string());
+	else if (ext == "svgz")
+		return changeExtension(zipped_file, "svg");
 	return onlyPath(zipped_file) + "unzipped_" + onlyFileName(zipped_file);
 }
 
