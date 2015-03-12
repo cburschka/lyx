@@ -37,6 +37,7 @@
 #include "support/qstring_helpers.h"
 
 #include <QDir>
+#include <QImage>
 #include <QTemporaryFile>
 
 #include "support/lassert.h"
@@ -404,6 +405,24 @@ FileName const imageLibFileSearch(string & dir, string const & name,
 		}
 	}
 	return libFileSearch(dir, name, ext, mode);
+}
+
+
+int iconScaleFactor(FileName const & image)
+{
+	int imgsize = QImage(toqstr(image.absFileName())).height();
+	if (imgsize <= 0)
+		return 100;
+
+	// default icon size
+	int iconsize = 20;
+
+	string dir = "images";
+	FileName const fn = imageLibFileSearch(dir, "iconsize.png");
+	if (!fn.empty())
+		iconsize = QImage(toqstr(fn.absFileName())).height();
+
+	return (100 * iconsize + imgsize / 2)/imgsize;
 }
 
 

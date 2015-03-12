@@ -115,6 +115,11 @@ imageLibFileSearch(std::string & dir, std::string const & name,
 		   std::string const & ext = std::string(),
 		   search_mode mode = must_exist);
 
+/** Returns the percentage factor by which an image has to be
+    scaled for matching the (theme dependent) nominal icon size
+  */
+int iconScaleFactor(FileName const & image);
+
 /// How to quote a filename
 enum quote_style {
 	/** Quote for the (OS dependant) shell. This is needed for command

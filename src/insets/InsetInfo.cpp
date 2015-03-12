@@ -31,6 +31,7 @@
 
 #include "frontends/Application.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/docstring_list.h"
@@ -410,6 +411,8 @@ void InsetInfo::updateInfo()
 		InsetGraphics * inset = new InsetGraphics(buffer_);
 		InsetGraphicsParams igp;
 		igp.filename = file;
+		igp.lyxscale = iconScaleFactor(file);
+		igp.scale = convert<string>(igp.lyxscale);
 		inset->setParams(igp);
 		clear();
 		Font const f(inherit_font, buffer().params().language);
