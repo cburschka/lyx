@@ -382,8 +382,6 @@ private:
 	bool autoBreakRows_;
 	/// position of the text in the buffer.
 	DocIterator macrocontext_position_;
-	///
-	unsigned int undo_counter_;
 };
 
 

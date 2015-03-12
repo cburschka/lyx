@@ -33,6 +33,7 @@
 #include "support/debug.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
+#include "support/lyxtime.h"
 
 #include <algorithm>
 #include <deque>
@@ -72,7 +73,7 @@ struct UndoElement
 	            bool lc, size_t gid) :
 		kind(kin), cur_before(cb), cell(cel), from(fro), end(en),
 		pars(pl), array(ar), bparams(0),
-		lyx_clean(lc), group_id(gid)
+		lyx_clean(lc), group_id(gid), time(current_time())
 		{
 		}
 	///
@@ -80,11 +81,11 @@ struct UndoElement
 				bool lc, size_t gid) :
 		kind(ATOMIC_UNDO), cur_before(cb), cell(), from(0), end(0),
 		pars(0), array(0), bparams(new BufferParams(bp)),
-		lyx_clean(lc), group_id(gid)
+		lyx_clean(lc), group_id(gid), time(current_time())
 	{
 	}
 	///
-	UndoElement(UndoElement const & ue)
+	UndoElement(UndoElement const & ue) : time(current_time())
 	{
 		kind = ue.kind;
 		cur_before = ue.cur_before;
@@ -127,6 +128,8 @@ struct UndoElement
 	bool lyx_clean;
 	/// the element's group id
 	size_t group_id;
+	/// timestamp
+	time_t time;
 private:
 	/// Protect construction
 	UndoElement();
@@ -325,9 +328,13 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 	    && samePar(stack.top().cell, cell)
 	    && stack.top().kind == kind
 	    && stack.top().from == from
-	    && stack.top().end == end) {
+	    && stack.top().end == end
+	    && stack.top().cur_after == cur_before
+	    && current_time() - stack.top().time <= 2) {
 		// reset cur_after; it will be filled correctly by endUndoGroup.
 		stack.top().cur_after = CursorData();
+		// update the timestamp of the undo element
+		stack.top().time = current_time();
 		return;
 	}
 

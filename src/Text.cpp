@@ -198,7 +198,7 @@ void mergeParagraph(BufferParams const & bparams,
 
 
 Text::Text(InsetText * owner, bool use_default_layout)
-	: owner_(owner), autoBreakRows_(false), undo_counter_(0)
+	: owner_(owner), autoBreakRows_(false)
 {
 	pars_.push_back(Paragraph());
 	Paragraph & par = pars_.back();
@@ -212,7 +212,7 @@ Text::Text(InsetText * owner, bool use_default_layout)
 
 
 Text::Text(InsetText * owner, Text const & text)
-	: owner_(owner), autoBreakRows_(text.autoBreakRows_), undo_counter_(0)
+	: owner_(owner), autoBreakRows_(text.autoBreakRows_)
 {
 	pars_ = text.pars_;
 	ParagraphList::iterator const end = pars_.end();
@@ -1080,15 +1080,6 @@ void Text::insertChar(Cursor & cur, char_type c)
 void Text::charInserted(Cursor & cur)
 {
 	Paragraph & par = cur.paragraph();
-
-	// Here we call finishUndo for every 20 characters inserted.
-	// This is from my experience how emacs does it. (Lgb)
-	if (undo_counter_ < 20) {
-		++undo_counter_;
-	} else {
-		cur.finishUndo();
-		undo_counter_ = 0;
-	}
 
 	// register word if a non-letter was entered
 	if (cur.pos() > 1
