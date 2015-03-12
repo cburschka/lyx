@@ -364,18 +364,17 @@ public:
 	void endUndoGroup() const;
 
 	/// The general case: prepare undo for an arbitrary range.
-	void recordUndo(UndoKind kind, pit_type from, pit_type to) const;
+	void recordUndo(pit_type from, pit_type to) const;
 
 	/// Convenience: prepare undo for the range between 'from' and cursor.
-	void recordUndo(UndoKind kind, pit_type from) const;
+	void recordUndo(pit_type from) const;
 
 	/// Convenience: prepare undo for the single paragraph or cell
 	/// containing the cursor
 	void recordUndo(UndoKind kind = ATOMIC_UNDO) const;
 
 	/// Convenience: prepare undo for the inset containing the cursor
-	void recordUndoInset(UndoKind kind = ATOMIC_UNDO,
-			     Inset const * inset = 0) const;
+	void recordUndoInset(Inset const * inset = 0) const;
 
 	/// Convenience: prepare undo for the whole buffer
 	void recordUndoFullBuffer() const;

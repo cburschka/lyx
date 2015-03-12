@@ -82,7 +82,7 @@ void InsetWrap::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action()) {
 	case LFUN_INSET_MODIFY: {
-		cur.recordUndoInset(ATOMIC_UNDO, this);
+		cur.recordUndoInset(this);
 		InsetWrapParams params;
 		InsetWrap::string2params(to_utf8(cmd.argument()), params);
 		params_.lines = params.lines;

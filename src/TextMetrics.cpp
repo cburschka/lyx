@@ -385,7 +385,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		Cursor & cur = const_cast<Cursor &>(bv_->cursor());
 		// In some cases, we do not know how to record undo
 		if (&cur.inset() == &text_->inset())
-			cur.recordUndo(ATOMIC_UNDO, pit, pit);
+			cur.recordUndo(pit, pit);
 
 		int const moveCursor = par.fixBiblio(buffer);
 

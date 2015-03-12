@@ -381,7 +381,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 			pit_type const newpit = distance(bgn, dest);
 			pit_type const len = distance(start, finish);
 			pit_type const deletepit = pit + len;
-			buf.undo().recordUndo(cur, ATOMIC_UNDO, newpit, deletepit - 1);
+			buf.undo().recordUndo(cur, newpit, deletepit - 1);
 			pars.splice(dest, start, finish);
 			cur.pit() = newpit;
 			break;
@@ -401,7 +401,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 			}
 			// One such was found:
 			pit_type newpit = distance(bgn, dest);
-			buf.undo().recordUndo(cur, ATOMIC_UNDO, pit, newpit - 1);
+			buf.undo().recordUndo(cur, pit, newpit - 1);
 			pit_type const len = distance(start, finish);
 			pars.splice(dest, start, finish);
 			cur.pit() = newpit - len;
@@ -410,7 +410,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 		case OutlineIn:
 		case OutlineOut: {
 			pit_type const len = distance(start, finish);
-			buf.undo().recordUndo(cur, ATOMIC_UNDO, pit, pit + len - 1);
+			buf.undo().recordUndo(cur, pit, pit + len - 1);
 			for (; start != finish; ++start) {
 				toclevel = buf.text().getTocLevel(distance(bgn, start));
 				if (toclevel == Layout::NOT_IN_TOC)
@@ -496,7 +496,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_PARAGRAPH_MOVE_DOWN: {
 		pit_type const pit = cur.pit();
-		recUndo(cur, pit, pit + 1);
+		cur.recordUndo(pit, pit + 1);
 		cur.finishUndo();
 		pars_.swap(pit, pit + 1);
 		needsUpdate = true;
@@ -507,7 +507,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_PARAGRAPH_MOVE_UP: {
 		pit_type const pit = cur.pit();
-		recUndo(cur, pit - 1, pit);
+		cur.recordUndo(pit - 1, pit);
 		cur.finishUndo();
 		pars_.swap(pit, pit - 1);
 		--cur.pit();
@@ -526,7 +526,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// FIXME: this don't work for multipart document!
 		for (pit_type tmp = 0, end = pars_.size(); tmp != end; ++tmp) {
 			if (pars_[tmp].params().startOfAppendix()) {
-				recUndo(cur, tmp);
+				cur.recordUndo(tmp, tmp);
 				pars_[tmp].params().startOfAppendix(false);
 				break;
 			}

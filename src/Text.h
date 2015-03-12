@@ -188,11 +188,6 @@ public:
 	void setCursorIntern(Cursor & cur, pit_type par,
 		 pos_type pos, bool setfont = true, bool boundary = false);
 
-	///
-	void recUndo(Cursor & cur, pit_type first, pit_type last) const;
-	///
-	void recUndo(Cursor & cur, pit_type first) const;
-
 	/// Move cursor one position backwards
 	/**
 	 * Returns true if an update is needed after the move.

@@ -94,23 +94,13 @@ public:
 	 * give an inclusive range. This is called before you make the
 	 * changes to the paragraph, and it will record the original
 	 * information of the paragraphs in the undo stack.
+	 * Kind of undo is always ATOMIC_UNDO.
 	 */
-	void recordUndo(CursorData const & cur, UndoKind kind,
-		pit_type from, pit_type to);
-
-	/// Convenience: record undo information for the range between
-	/// 'from' and cursor.
-	void recordUndo(CursorData const & cur, UndoKind kind, pit_type from);
+	void recordUndo(CursorData const & cur, pit_type from, pit_type to);
 
 	/// Convenience: record undo information for the single
 	/// paragraph or cell containing the cursor.
 	void recordUndo(CursorData const & cur, UndoKind kind = ATOMIC_UNDO);
-
-	/// Convenience: record undo information for the inset
-	/// containing the cursor.
-	void recordUndoInset(CursorData const & cur,
-			     UndoKind kind = ATOMIC_UNDO,
-			     Inset const * inset = 0);
 
 	/// Convenience: record undo for buffer parameters
 	void recordUndoBufferParams(CursorData const & cur);

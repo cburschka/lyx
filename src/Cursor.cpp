@@ -2476,15 +2476,15 @@ void Cursor::endUndoGroup() const
 }
 
 
-void Cursor::recordUndo(UndoKind kind, pit_type from, pit_type to) const
+void Cursor::recordUndo(pit_type from, pit_type to) const
 {
-	buffer()->undo().recordUndo(*this, kind, from, to);
+	buffer()->undo().recordUndo(*this, from, to);
 }
 
 
-void Cursor::recordUndo(UndoKind kind, pit_type from) const
+void Cursor::recordUndo(pit_type from) const
 {
-	buffer()->undo().recordUndo(*this, kind, from);
+	buffer()->undo().recordUndo(*this, from, pit());
 }
 
 
@@ -2494,9 +2494,16 @@ void Cursor::recordUndo(UndoKind kind) const
 }
 
 
-void Cursor::recordUndoInset(UndoKind kind, Inset const * inset) const
+void Cursor::recordUndoInset(Inset const * in) const
 {
-	buffer()->undo().recordUndoInset(*this, kind, inset);
+	if (!in || in == &inset()) {
+		CursorData c = *this;
+		c.pop_back();
+		buffer()->undo().recordUndo(c, c.pit(), c.pit());
+	} else if (in == nextInset())
+		recordUndo();
+	else
+		LYXERR0("Inset not found, no undo element added.");
 }
 
 
@@ -2520,7 +2527,7 @@ void Cursor::recordUndoSelection() const
 		else
 			recordUndo();
 	} else {
-		buffer()->undo().recordUndo(*this, ATOMIC_UNDO,
+		buffer()->undo().recordUndo(*this,
 			selBegin().pit(), selEnd().pit());
 	}
 }

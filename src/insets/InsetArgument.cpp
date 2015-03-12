@@ -148,7 +148,7 @@ void InsetArgument::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 			return;
 		}
-		cur.recordUndoInset(ATOMIC_UNDO, this);
+		cur.recordUndoInset(this);
 		name_ = cmd.getArg(1);
 		cur.forceBufferUpdate();
 		break;

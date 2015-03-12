@@ -197,7 +197,7 @@ void InsetCaption::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		if (cmd.getArg(0) == "changetype") {
-			cur.recordUndoInset(ATOMIC_UNDO, this);
+			cur.recordUndoInset(this);
 			type_ = cmd.getArg(1);
 			cur.forceBufferUpdate();
 			break;

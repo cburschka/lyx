@@ -200,13 +200,13 @@ void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		if (cmd.getArg(0) == "changetype") {
-			cur.recordUndoInset(ATOMIC_UNDO, this);
+			cur.recordUndoInset(this);
 			params_.index = from_utf8(cmd.getArg(1));
 			break;
 		}
 		InsetIndexParams params;
 		InsetIndex::string2params(to_utf8(cmd.argument()), params);
-		cur.recordUndoInset(ATOMIC_UNDO, this);
+		cur.recordUndoInset(this);
 		params_.index = params.index;
 		// what we really want here is a TOC update, but that means
 		// a full buffer update

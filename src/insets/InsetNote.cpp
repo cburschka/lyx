@@ -161,7 +161,7 @@ void InsetNote::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (params_.type == params.type)
 		  break;
 
-		cur.recordUndoInset(ATOMIC_UNDO, this);
+		cur.recordUndoInset(this);
 		string2params(to_utf8(cmd.argument()), params_);
 		setButtonLabel();
 		// what we really want here is a TOC update, but that means

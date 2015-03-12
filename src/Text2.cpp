@@ -897,9 +897,8 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 
 	if (oldpar.empty() || (oldpar.size() == 1 && oldpar.isLineSeparator(0))) {
 		// Delete old par.
-		old.recordUndo(ATOMIC_UNDO,
-			   max(old.pit() - 1, pit_type(0)),
-			   min(old.pit() + 1, old.lastpit()));
+		old.recordUndo(max(old.pit() - 1, pit_type(0)),
+		               min(old.pit() + 1, old.lastpit()));
 		ParagraphList & plist = old.text()->paragraphs();
 		bool const soa = oldpar.params().startOfAppendix();
 		plist.erase(boost::next(plist.begin(), old.pit()));
@@ -976,16 +975,5 @@ void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool tra
 	}
 }
 
-
-void Text::recUndo(Cursor & cur, pit_type first, pit_type last) const
-{
-	cur.recordUndo(ATOMIC_UNDO, first, last);
-}
-
-
-void Text::recUndo(Cursor & cur, pit_type par) const
-{
-	cur.recordUndo(ATOMIC_UNDO, par, par);
-}
 
 } // namespace lyx

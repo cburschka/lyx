@@ -221,7 +221,7 @@ void InsetBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 			return;
 		}
-		cur.recordUndoInset(ATOMIC_UNDO, this);
+		cur.recordUndoInset(this);
 		if (change_type)
 			params_.type = cmd.getArg(1);
 		else // if (for_box)

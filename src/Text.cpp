@@ -1558,7 +1558,7 @@ bool Text::handleBibitems(Cursor & cur)
 	// if a bibitem is deleted, merge with previous paragraph
 	// if this is a bibliography item as well
 	if (cur.pit() > 0 && par.layout() == prevpar.layout()) {
-		cur.recordUndo(ATOMIC_UNDO, prevcur.pit());
+		cur.recordUndo(prevcur.pit());
 		mergeParagraph(bufparams, cur.text()->paragraphs(),
 							prevcur.pit());
 		cur.forceBufferUpdate();
@@ -1640,14 +1640,14 @@ bool Text::backspacePos0(Cursor & cur)
 	// is it an empty paragraph?
 	if (cur.lastpos() == 0
 	    || (cur.lastpos() == 1 && par.isSeparator(0))) {
-		cur.recordUndo(ATOMIC_UNDO, prevcur.pit(), cur.pit());
+		cur.recordUndo(prevcur.pit());
 		plist.erase(boost::next(plist.begin(), cur.pit()));
 		needsUpdate = true;
 	}
 	// is previous par empty?
 	else if (prevcur.lastpos() == 0
 		 || (prevcur.lastpos() == 1 && prevpar.isSeparator(0))) {
-		cur.recordUndo(ATOMIC_UNDO, prevcur.pit(), cur.pit());
+		cur.recordUndo(prevcur.pit());
 		plist.erase(boost::next(plist.begin(), prevcur.pit()));
 		needsUpdate = true;
 	}
@@ -1659,7 +1659,7 @@ bool Text::backspacePos0(Cursor & cur)
 	else if (par.layout() == prevpar.layout()
 		 || tclass.isDefaultLayout(par.layout())
 		 || tclass.isPlainLayout(par.layout())) {
-		cur.recordUndo(ATOMIC_UNDO, prevcur.pit());
+		cur.recordUndo(prevcur.pit());
 		mergeParagraph(bufparams, plist, prevcur.pit());
 		needsUpdate = true;
 	}
@@ -1685,7 +1685,7 @@ bool Text::backspace(Cursor & cur)
 		--prev_cur.pit();
 
 		if (!prev_cur.paragraph().isMergedOnEndOfParDeletion(cur.buffer()->params().track_changes)) {
-			cur.recordUndo(ATOMIC_UNDO, prev_cur.pit(), prev_cur.pit());
+			cur.recordUndo(prev_cur.pit(), prev_cur.pit());
 			prev_cur.paragraph().setChange(prev_cur.lastpos(), Change(Change::DELETED));
 			setCursorIntern(cur, prev_cur.pit(), prev_cur.lastpos());
 			return true;

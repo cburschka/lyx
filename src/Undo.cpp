@@ -575,40 +575,15 @@ void Undo::endUndoGroup(CursorData const & cur)
 }
 
 
-// FIXME: remove these convenience functions and make
-// Private::recordUndo public as sole interface. The code in the
-// convenience functions can move to Cursor.cpp.
-
 void Undo::recordUndo(CursorData const & cur, UndoKind kind)
 {
 	d->recordUndo(kind, cur, cur.pit(), cur.pit(), cur);
 }
 
 
-void Undo::recordUndoInset(CursorData const & cur, UndoKind kind,
-			   Inset const * inset)
+void Undo::recordUndo(CursorData const & cur, pit_type from, pit_type to)
 {
-	if (!inset || inset == &cur.inset()) {
-		DocIterator c = cur;
-		c.pop_back();
-		d->recordUndo(kind, c, c.pit(), c.pit(), cur);
-	} else if (inset == cur.nextInset())
-		recordUndo(cur, kind);
-	else
-		LYXERR0("Inset not found, no undo stack added.");
-}
-
-
-void Undo::recordUndo(CursorData const & cur, UndoKind kind, pit_type from)
-{
-	d->recordUndo(kind, cur, cur.pit(), from, cur);
-}
-
-
-void Undo::recordUndo(CursorData const & cur, UndoKind kind,
-	pit_type from, pit_type to)
-{
-	d->recordUndo(kind, cur, from, to, cur);
+	d->recordUndo(ATOMIC_UNDO, cur, from, to, cur);
 }
 
 
