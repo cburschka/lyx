@@ -157,7 +157,7 @@ public:
 		/// The text to be written on top of the pixmap
 		QString const text = lyx_version ?
 			qt_("version ") + lyx_version : qt_("unknown version");
-		splash_ = getPixmap("images/", "banner", "png");
+		splash_ = getPixmap("images/", "banner", "svgz,png");
 
 		QPainter pain(&splash_);
 		pain.setPen(QColor(0, 0, 0));
@@ -247,6 +247,8 @@ struct GuiView::GuiViewPrivate
 		smallIconSize = 16;  // scaling problems
 		normalIconSize = 20; // ok, default if iconsize.png is missing
 		bigIconSize = 26;	// better for some math icons
+		hugeIconSize = 32;	// better for hires displays
+		giantIconSize = 48;
 
 		// if it exists, use width of iconsize.png as normal size
 		QString const dir = toqstr(addPath("images", lyxrc.icon_set));
@@ -255,8 +257,8 @@ struct GuiView::GuiViewPrivate
 			QImage image(toqstr(fn.absFileName()));
 			if (image.width() < int(smallIconSize))
 				normalIconSize = smallIconSize;
-			else if (image.width() > int(bigIconSize))
-				normalIconSize = bigIconSize;
+			else if (image.width() > int(giantIconSize))
+				normalIconSize = giantIconSize;
 			else
 				normalIconSize = image.width();
 		}
@@ -318,6 +320,20 @@ struct GuiView::GuiViewPrivate
 			parent, SLOT(bigSizedIcons()));
 		menu->addAction(bigIcons);
 
+		QAction * hugeIcons = new QAction(iconSizeGroup);
+		hugeIcons->setText(qt_("Huge-sized icons"));
+		hugeIcons->setCheckable(true);
+		QObject::connect(hugeIcons, SIGNAL(triggered()),
+			parent, SLOT(hugeSizedIcons()));
+		menu->addAction(hugeIcons);
+
+		QAction * giantIcons = new QAction(iconSizeGroup);
+		giantIcons->setText(qt_("Giant-sized icons"));
+		giantIcons->setCheckable(true);
+		QObject::connect(giantIcons, SIGNAL(triggered()),
+			parent, SLOT(giantSizedIcons()));
+		menu->addAction(giantIcons);
+
 		unsigned int cur = parent->iconSize().width();
 		if ( cur == parent->d.smallIconSize)
 			smallIcons->setChecked(true);
@@ -325,6 +341,10 @@ struct GuiView::GuiViewPrivate
 			normalIcons->setChecked(true);
 		else if (cur == parent->d.bigIconSize)
 			bigIcons->setChecked(true);
+		else if (cur == parent->d.hugeIconSize)
+			hugeIcons->setChecked(true);
+		else if (cur == parent->d.giantIconSize)
+			giantIcons->setChecked(true);
 
 		return menu;
 	}
@@ -412,6 +432,8 @@ public:
 	unsigned int smallIconSize;
 	unsigned int normalIconSize;
 	unsigned int bigIconSize;
+	unsigned int hugeIconSize;
+	unsigned int giantIconSize;
 	///
 	QTimer statusbar_timer_;
 	/// auto-saving of buffers
@@ -487,9 +509,9 @@ GuiView::GuiView(int id)
 	// assign an icon to main form. We do not do it under Qt/Win or Qt/Mac,
 	// since the icon is provided in the application bundle. We use a themed
 	// version when available and use the bundled one as fallback.
-	setWindowIcon(QIcon::fromTheme("lyx", getPixmap("images/", "lyx", "png")));
+	setWindowIcon(QIcon::fromTheme("lyx", getPixmap("images/", "lyx", "svg,png")));
 #else
-	setWindowIcon(getPixmap("images/", "lyx", "png"));
+	setWindowIcon(getPixmap("images/", "lyx", "svg,png"));
 #endif
 
 #endif
@@ -673,7 +695,9 @@ bool GuiView::restoreLayout()
 	// Check whether session size changed.
 	if (icon_size.width() != int(d.smallIconSize) &&
 	    icon_size.width() != int(d.normalIconSize) &&
-	    icon_size.width() != int(d.bigIconSize)) {
+	    icon_size.width() != int(d.bigIconSize) &&
+	    icon_size.width() != int(d.hugeIconSize) &&
+	    icon_size.width() != int(d.giantIconSize)) {
 		icon_size.setWidth(d.normalIconSize);
 		icon_size.setHeight(d.normalIconSize);
 	}
@@ -1014,6 +1038,18 @@ void GuiView::normalSizedIcons()
 void GuiView::bigSizedIcons()
 {
 	setIconSize(QSize(d.bigIconSize, d.bigIconSize));
+}
+
+
+void GuiView::hugeSizedIcons()
+{
+	setIconSize(QSize(d.hugeIconSize, d.hugeIconSize));
+}
+
+
+void GuiView::giantSizedIcons()
+{
+	setIconSize(QSize(d.giantIconSize, d.giantIconSize));
 }
 
 

@@ -292,7 +292,7 @@ FileName const fileOpenSearch(string const & path, string const & name,
 // Returns the real name of file name in directory path, with optional
 // extension ext.
 FileName const fileSearch(string const & path, string const & name,
-			  string const & ext, search_mode mode)
+			  string const & exts, search_mode mode)
 {
 	// if `name' is an absolute path, we ignore the setting of `path'
 	// Expand Environmentvariables in 'name'
@@ -301,21 +301,29 @@ FileName const fileSearch(string const & path, string const & name,
 	// search first without extension, then with it.
 	if (fullname.isReadableFile())
 		return fullname;
-	if (ext.empty())
+	if (exts.empty())
 		// We are done.
 		return mode == may_not_exist ? fullname : FileName();
-	// Only add the extension if it is not already the extension of
-	// fullname.
-	if (getExtension(fullname.absFileName()) != ext) {
-		if (mode == check_hidpi) {
-			FileName fullname2x = FileName(addExtension(fullname.absFileName() + "@2x", ext));
-			if (fullname2x.isReadableFile())
-				return fullname2x;
+	int n = 0;
+	string ext = token(exts, ',', n);
+	while (!ext.empty()) {
+		// Only add the extension if it is not already the extension of
+		// fullname.
+		bool addext = getExtension(fullname.absFileName()) != ext;
+		if (addext) {
+			if (mode == check_hidpi) {
+				FileName fullname2x = FileName(addExtension(fullname.absFileName() + "@2x", ext));
+				if (fullname2x.isReadableFile())
+					return fullname2x;
+			}
+			fullname = FileName(addExtension(fullname.absFileName(), ext));
 		}
-		fullname = FileName(addExtension(fullname.absFileName(), ext));
+		if (fullname.isReadableFile() || mode == may_not_exist)
+			return fullname;
+		if (addext)
+			fullname.changeExtension("");
+		ext = token(exts, ',', ++n);
 	}
-	if (fullname.isReadableFile() || mode == may_not_exist)
-		return fullname;
 	return FileName();
 }
 

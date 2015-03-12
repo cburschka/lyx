@@ -519,11 +519,11 @@ QString iconName(FuncRequest const & f, bool unknown)
 	search_mode mode = theGuiApp()->imageSearchMode();
 	for (int i = 0; i < imagedirs.size(); ++i) {
 		QString imagedir = imagedirs.at(i) + path;
-		FileName fname = imageLibFileSearch(imagedir, name1, "png", mode);
+		FileName fname = imageLibFileSearch(imagedir, name1, "svgz,png", mode);
 		if (fname.exists())
 			return toqstr(fname.absFileName());
 
-		fname = imageLibFileSearch(imagedir, name2, "png", mode);
+		fname = imageLibFileSearch(imagedir, name2, "svgz,png", mode);
 		if (fname.exists())
 			return toqstr(fname.absFileName());
 	}
@@ -534,25 +534,27 @@ QString iconName(FuncRequest const & f, bool unknown)
 		LYXERR0("Directory " << path << " not found in resource!");
 		return QString();
 	}
-	name1 += ".png";
-	if (res.exists(name1))
-		return path + name1;
+	if (res.exists(name1 + ".svgz"))
+		return path + name1 + ".svgz";
+	else if (res.exists(name1 + ".png"))
+		return path + name1 + ".png";
 
-	name2 += ".png";
-	if (res.exists(name2))
-		return path + name2;
+	if (res.exists(name2 + ".svgz"))
+		return path + name2 + ".svgz";
+	else if (res.exists(name2 + ".png"))
+		return path + name2 + ".png";
 
 	LYXERR(Debug::GUI, "Cannot find icon with filename "
-			   << "\"" << name1 << "\""
+			   << "\"" << name1 << ".{svgz,png}\""
 			   << " or filename "
-			   << "\"" << name2 << "\""
+			   << "\"" << name2 << ".{svgz,png}\""
 			   << " for command \""
 			   << lyxaction.getActionName(f.action())
 			   << '(' << to_utf8(f.argument()) << ")\"");
 
 	if (unknown) {
 		QString imagedir = "images/";
-		FileName fname = imageLibFileSearch(imagedir, "unknown", "png", mode);
+		FileName fname = imageLibFileSearch(imagedir, "unknown", "svgz,png", mode);
 		if (fname.exists())
 			return toqstr(fname.absFileName());
 		return QString(":/images/unknown.png");
@@ -566,19 +568,23 @@ QPixmap getPixmap(QString const & path, QString const & name, QString const & ex
 	QPixmap pixmap;
 	QString imagedir = path;
 	FileName fname = imageLibFileSearch(imagedir, name, ext, theGuiApp()->imageSearchMode());
-	QString path1 = toqstr(fname.absFileName());
-	QString path2 = ":/" + path + name + "." + ext;
+	QString fpath = toqstr(fname.absFileName());
 
-	if (pixmap.load(path1)) {
+	if (pixmap.load(fpath)) {
 		return pixmap;
-	}
-	else if (pixmap.load(path2)) {
-		return pixmap;
+	} else {
+	    QStringList exts = ext.split(",");
+	    fpath = ":/" + path + name + ".";
+	    for (int i = 0; i < exts.size(); ++i) {
+		if (pixmap.load(fpath + exts.at(i)))
+			return pixmap;
+	    }
 	}
 
+	bool const list = ext.contains(",");
 	LYXERR0("Cannot load pixmap \""
-		<< path << name << '.' << ext
-		<< "\", please verify resource system!");
+		<< path << name << "." << (list ? "{" : "") << ext
+		<< (list ? "}" : "") << "\", please verify resource system!");
 
 	return QPixmap();
 }
@@ -2400,8 +2406,8 @@ QAbstractItemModel * GuiApplication::languageModel()
 	QStandardItemModel * lang_model = new QStandardItemModel(this);
 	lang_model->insertColumns(0, 3);
 	int current_row;
-	QIcon speller(getPixmap("images/", "dialog-show_spellchecker", "png"));
-	QIcon saurus(getPixmap("images/", "thesaurus-entry", "png"));
+	QIcon speller(getPixmap("images/", "dialog-show_spellchecker", "svgz,png"));
+	QIcon saurus(getPixmap("images/", "thesaurus-entry", "svgz,png"));
 	Languages::const_iterator it = lyx::languages.begin();
 	Languages::const_iterator end = lyx::languages.end();
 	for (; it != end; ++it) {

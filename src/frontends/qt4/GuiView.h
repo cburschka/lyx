@@ -229,6 +229,8 @@ private Q_SLOTS:
 	void smallSizedIcons();
 	void normalSizedIcons();
 	void bigSizedIcons();
+	void hugeSizedIcons();
+	void giantSizedIcons();
 
 	/// For completion of autosave or export threads.
 	void processingThreadStarted();

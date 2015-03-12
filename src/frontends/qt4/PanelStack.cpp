@@ -75,7 +75,7 @@ PanelStack::PanelStack(QWidget * parent)
 #endif
 
 #if QT_VERSION >= 0x040600
-	search_->setButtonPixmap(FancyLineEdit::Right, getPixmap("images/", "editclear", "png"));
+	search_->setButtonPixmap(FancyLineEdit::Right, getPixmap("images/", "editclear", "svgz,png"));
 	search_->setButtonVisible(FancyLineEdit::Right, true);
 	search_->setButtonToolTip(FancyLineEdit::Right, qt_("Clear text"));
 	search_->setAutoHideButton(FancyLineEdit::Right, true);

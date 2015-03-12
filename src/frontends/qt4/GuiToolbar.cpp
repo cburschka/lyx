@@ -196,10 +196,10 @@ MenuButton::MenuButton(GuiToolbar * bar, ToolbarItem const & item, bool const st
 	imagedirs << "images/math/" << "images/";
 	for (int i = 0; i < imagedirs.size(); ++i) {
 		QString imagedir = imagedirs.at(i);
-		FileName const fname = imageLibFileSearch(imagedir, name, "png",
+		FileName const fname = imageLibFileSearch(imagedir, name, "svgz,png",
 			theGuiApp()->imageSearchMode());
 		if (fname.exists()) {
-			setIcon(QIcon(getPixmap(imagedir, name, "png")));
+			setIcon(QIcon(getPixmap(imagedir, name, "svgz,png")));
 			break;
 		}
 	}

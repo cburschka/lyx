@@ -88,8 +88,8 @@ GuiCommandBuffer::GuiCommandBuffer(GuiView * view)
 	transform(lyxaction.func_begin(), lyxaction.func_end(),
 		back_inserter(commands_), firster());
 
-	QPixmap qpup = getPixmap("images/", "up", "png");
-	QPixmap qpdown = getPixmap("images/", "down", "png");
+	QPixmap qpup = getPixmap("images/", "up", "svgz,png");
+	QPixmap qpdown = getPixmap("images/", "down", "svgz,png");
 
 	QVBoxLayout * top = new QVBoxLayout(this);
 	QHBoxLayout * layout = new QHBoxLayout(0);
