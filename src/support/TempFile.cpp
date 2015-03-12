@@ -14,6 +14,7 @@
 
 #include "support/debug.h"
 #include "support/FileName.h"
+#include "support/filetools.h"
 #include "support/Package.h"
 #include "support/qstring_helpers.h"
 
@@ -47,14 +48,16 @@ struct TempFile::Private
 
 TempFile::TempFile(FileName const & temp_dir, string const & mask)
 {
-	QFileInfo tmp_fi(QDir(toqstr(temp_dir.absoluteFilePath())), toqstr(mask));
+	QFileInfo tmp_fi(QDir(toqstr(temp_dir.absoluteFilePath())),
+			 toqstr(onlyFileName(mask)));
 	d = new Private(tmp_fi.absoluteFilePath());
 }
 
 
 TempFile::TempFile(string const & mask)
 {
-	QFileInfo tmp_fi(QDir(toqstr(package().temp_dir().absoluteFilePath())), toqstr(mask));
+	QFileInfo tmp_fi(QDir(toqstr(package().temp_dir().absoluteFilePath())),
+			 toqstr(onlyFileName(mask)));
 	d = new Private(tmp_fi.absoluteFilePath());
 }
 

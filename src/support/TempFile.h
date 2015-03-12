@@ -33,9 +33,9 @@ class TempFile {
 public:
 	/**
 	 *Create a temporary file with the given mask.
-	 * \p mask must be in filesystem encoding, if it contains a
-	 * relative path, the template file will be created in the global
-	 * temporary directory as given by 'package().temp_dir()'.
+	 * \p mask must be in filesystem encoding, the template file
+	 * will be created in the global temporary directory as given
+	 * by 'package().temp_dir()'.
 	 * If the mask contains "XXXXXX" this portion will be replaced by
 	 * a uniquely generated string. If it does not contain this portion,
 	 * it will be automatically appended using a dot. Therefore, please
