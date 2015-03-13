@@ -43,12 +43,54 @@ InsetSpecialChar::Kind InsetSpecialChar::kind() const
 }
 
 
+namespace {
+
+int logoWidth(FontInfo const & font, InsetSpecialChar::Kind kind) {
+	frontend::FontMetrics const & fm = theFontMetrics(font);
+	double const em = fm.width('M');
+	int width = 0;
+	switch (kind) {
+	case InsetSpecialChar::PHRASE_LYX:
+		width = fm.width(from_ascii("L")) - 0.16667 * em
+			+ fm.width(from_ascii("Y")) - 0.125 * em
+			+ fm.width(from_ascii("X"));
+		break;
+
+	case InsetSpecialChar::PHRASE_TEX:
+		width = fm.width(from_ascii("T")) - 0.16667 * em
+			+ fm.width(from_ascii("E")) - 0.125 * em
+			+ fm.width(from_ascii("X"));
+		break;
+
+	case InsetSpecialChar::PHRASE_LATEX2E:
+		width = logoWidth(font, InsetSpecialChar::PHRASE_LATEX)
+			+ fm.width(from_ascii("2") + char_type(0x03b5));
+		break;
+	case InsetSpecialChar::PHRASE_LATEX: {
+		FontInfo smaller = font;
+		smaller.decSize().decSize();
+		width = fm.width(from_ascii("L")) - 0.36 * em
+			+ theFontMetrics(smaller).width(from_ascii("A")) - 0.15 * em
+			+ logoWidth(font, InsetSpecialChar::PHRASE_TEX);
+		break;
+	}
+	default:
+		LYXERR0("No information for computing width of logo " << kind);
+	}
+
+	return width;
+}
+
+}
+
+
 void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	frontend::FontMetrics const & fm =
 		theFontMetrics(mi.base.font);
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
+	dim.wid = 0;
 
 	docstring s;
 	switch (kind_) {
@@ -65,7 +107,9 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 			s = from_ascii(" x ");
 			break;
 		case HYPHENATION:
-			s = from_ascii("-");
+			dim.wid = fm.width(from_ascii("-"));
+			if (dim.wid > 5)
+				dim.wid -= 2; // to make it look shorter
 			break;
 		case SLASH:
 			s = from_ascii("/");
@@ -74,25 +118,65 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 			s = from_ascii("-");
 			break;
 		case PHRASE_LYX:
-			s = from_ascii("LyX");
-			break;
 		case PHRASE_TEX:
-			s = from_ascii("TeX");
-			break;
 		case PHRASE_LATEX2E:
-			s = from_ascii("LaTeX2") + char_type(0x03b5);
-			break;
 		case PHRASE_LATEX:
-			s = from_ascii("LaTeX");
+			dim.wid = logoWidth(mi.base.font, kind_);
 			break;
 	}
-	dim.wid = fm.width(s);
-	if (kind_ == HYPHENATION && dim.wid > 5)
-		dim.wid -= 2; // to make it look shorter
-	
+	if (dim.wid == 0)
+		dim.wid = fm.width(s);
+
 	setDimCache(mi, dim);
 }
 
+
+namespace {
+
+void drawLogo(PainterInfo & pi, InsetSpecialChar::Kind kind, int & x, int & y) {
+	FontInfo const & font = pi.base.font;
+	// FIXME: this definition of em is bogus, but there is a need
+	// for a big refactoring of the code around this issue anyway.
+	double const em = theFontMetrics(font).width('M');
+	switch (kind) {
+	case InsetSpecialChar::PHRASE_LYX:
+		x += pi.pain.text(x, y, from_ascii("L"), font);
+		x -= 0.16667 * em;
+		x += pi.pain.text(x, y + 0.25 * em, from_ascii("Y"), font);
+		x -= 0.125 * em;
+		x += pi.pain.text(x, y, from_ascii("X"), font);
+		break;
+
+	case InsetSpecialChar::PHRASE_TEX:
+		x += pi.pain.text(x, y, from_ascii("T"), font);
+		x -= 0.16667 * em;
+		x += pi.pain.text(x, y + 0.25 * em, from_ascii("E"), font);
+		x -= 0.125 * em;
+		x += pi.pain.text(x, y, from_ascii("X"), font);
+		break;
+
+	case InsetSpecialChar::PHRASE_LATEX2E:
+		drawLogo(pi, InsetSpecialChar::PHRASE_LATEX, x, y);
+		x += pi.pain.text(x, y, from_ascii("2"), font);
+		x += pi.pain.text(x, y + 0.25 * em, char_type(0x03b5), font);
+		break;
+
+	case InsetSpecialChar::PHRASE_LATEX: {
+		x += pi.pain.text(x, y, from_ascii("L"), font);
+		x -= 0.36 * em;
+		FontInfo smaller = font;
+		smaller.decSize().decSize();
+		x += pi.pain.text(x, y - 0.2 * em, from_ascii("A"), smaller);
+		x -= 0.15 * em;
+		drawLogo(pi, InsetSpecialChar::PHRASE_TEX, x, y);
+		break;
+	}
+	default:
+		LYXERR0("No information for drawing logo " << kind);
+	}
+}
+
+}
 
 void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 {
@@ -157,20 +241,10 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 		break;
 	}
 	case PHRASE_LYX:
-		font.setColor(Color_special);
-		pi.pain.text(x, y, from_ascii("LyX"), font);
-		break;
 	case PHRASE_TEX:
-		font.setColor(Color_special);
-		pi.pain.text(x, y, from_ascii("TeX"), font);
-		break;
 	case PHRASE_LATEX2E:
-		font.setColor(Color_special);
-		pi.pain.text(x, y, from_ascii("LaTeX2") + char_type(0x03b5), font);
-		break;
 	case PHRASE_LATEX:
-		font.setColor(Color_special);
-		pi.pain.text(x, y, from_ascii("LaTeX"), font);
+		drawLogo(pi, kind_, x, y);
 		break;
 	}
 }
