@@ -81,11 +81,7 @@ else()
 endif()
 set_target_properties(support PROPERTIES FOLDER "applications/LyX")
 
-if(USE_MACOSX_PACKAGING AND Qt5Core_FOUND)
-       qt_use_modules(support Core Gui)
-else()
-       qt_use_modules(support Core)
-endif()
+qt_use_modules(support Core Gui)
 
 target_link_libraries(support ${Lyx_Boost_Libraries} ${QT_QTCORE_LIBRARY} ${ZLIB_LIBRARY})
 

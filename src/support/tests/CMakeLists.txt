@@ -20,6 +20,7 @@ macro(sources _program)
 	if(CYGWIN)
 		target_link_libraries(${_program} shlwapi)
 	endif()
+	qt_use_modules(${_program} Core Gui)
 endmacro()
 
 file(GLOB test_sources ${TOP_SRC_DIR}/src/support/tests/${LYX_CPP_FILES})
