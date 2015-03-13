@@ -364,9 +364,10 @@ bool CacheItem::Impl::tryDisplayFormat(FileName & filename, string & from)
 	if (zipped_) {
 		string tempname = unzippedFileName(filename_.toFilesystemEncoding());
 		string const ext = getExtension(tempname);
+		tempname = changeExtension(tempname, "") + "-XXXXXX";
 		if (!ext.empty())
-			tempname = changeExtension(tempname, "");
-		TempFile tempfile(tempname + "-XXXXXX." + ext);
+			tempname = addExtension(tempname, ext);
+		TempFile tempfile(tempname);
 		tempfile.setAutoRemove(false);
 		unzipped_filename_ = tempfile.name();
 		if (unzipped_filename_.empty()) {
