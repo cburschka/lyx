@@ -49,6 +49,7 @@ int logoWidth(FontInfo const & font, InsetSpecialChar::Kind kind) {
 	frontend::FontMetrics const & fm = theFontMetrics(font);
 	double const em = fm.width('M');
 	int width = 0;
+	// See drawlogo() below to understand what this does.
 	switch (kind) {
 	case InsetSpecialChar::PHRASE_LYX:
 		width = fm.width(from_ascii("L")) - 0.16667 * em
@@ -64,6 +65,7 @@ int logoWidth(FontInfo const & font, InsetSpecialChar::Kind kind) {
 
 	case InsetSpecialChar::PHRASE_LATEX2E:
 		width = logoWidth(font, InsetSpecialChar::PHRASE_LATEX)
+			+ 0.15 * em
 			+ fm.width(from_ascii("2") + char_type(0x03b5));
 		break;
 	case InsetSpecialChar::PHRASE_LATEX: {
@@ -140,6 +142,9 @@ void drawLogo(PainterInfo & pi, InsetSpecialChar::Kind kind, int & x, int & y) {
 	double const em = theFontMetrics(font).width('M');
 	switch (kind) {
 	case InsetSpecialChar::PHRASE_LYX:
+		/** Reference macro:
+		 *  \providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\\@};
+		 */
 		x += pi.pain.text(x, y, from_ascii("L"), font);
 		x -= 0.16667 * em;
 		x += pi.pain.text(x, y + 0.25 * em, from_ascii("Y"), font);
@@ -147,21 +152,43 @@ void drawLogo(PainterInfo & pi, InsetSpecialChar::Kind kind, int & x, int & y) {
 		x += pi.pain.text(x, y, from_ascii("X"), font);
 		break;
 
-	case InsetSpecialChar::PHRASE_TEX:
+	case InsetSpecialChar::PHRASE_TEX: {
+		/** Reference macro:
+		 *  \def\TeX{T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\@}
+		 */
+		double const ex = theFontMetrics(font).ascent('x');
 		x += pi.pain.text(x, y, from_ascii("T"), font);
 		x -= 0.16667 * em;
-		x += pi.pain.text(x, y + 0.25 * em, from_ascii("E"), font);
+		x += pi.pain.text(x, y + 0.5 * ex, from_ascii("E"), font);
 		x -= 0.125 * em;
 		x += pi.pain.text(x, y, from_ascii("X"), font);
 		break;
-
+	}
 	case InsetSpecialChar::PHRASE_LATEX2E:
+		/** Reference macro:
+		 *  \DeclareRobustCommand{\LaTeXe}{\mbox{\m@th
+		 *    \if b\expandafter\@car\f@series\@nil\boldmath\fi
+		 *    \LaTeX\kern.15em2$_{\textstyle\varepsilon}$}}
+		 */
 		drawLogo(pi, InsetSpecialChar::PHRASE_LATEX, x, y);
+		x += 0.15 * em;
 		x += pi.pain.text(x, y, from_ascii("2"), font);
 		x += pi.pain.text(x, y + 0.25 * em, char_type(0x03b5), font);
 		break;
 
 	case InsetSpecialChar::PHRASE_LATEX: {
+		/** Reference macro:
+		 * \DeclareRobustCommand{\LaTeX}{L\kern-.36em%
+		 *        {\sbox\z@ T%
+		 *         \vbox to\ht\z@{\hbox{\check@mathfonts
+		 *                              \fontsize\sf@size\z@
+		 *                              \math@fontsfalse\selectfont
+		 *                              A}%
+		 *                        \vss}%
+		 *        }%
+		 *        \kern-.15em%
+		 *        \TeX}
+		 */
 		x += pi.pain.text(x, y, from_ascii("L"), font);
 		x -= 0.36 * em;
 		FontInfo smaller = font;
