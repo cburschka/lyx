@@ -365,7 +365,6 @@ imagesdir = $(pkgdatadir)/images
 dist_images_DATA1X = \
 	images/all-changes-accept.png \
 	images/all-changes-reject.png \
-	images/amssymb.png \
 	images/banner.png \
 	images/bookmark-goto.png \
 	images/bookmark-goto_0.png \
@@ -487,10 +486,6 @@ dist_images_DATA1X = \
 	images/note-next.png \
 	images/paste.png \
 	images/promote.png \
-	images/psnfss1.png \
-	images/psnfss2.png \
-	images/psnfss3.png \
-	images/psnfss4.png \
 	images/redo.png \
 	images/reload.png \
 	images/script-insert_subscript.png \
@@ -498,7 +493,6 @@ dist_images_DATA1X = \
 	images/spelling-continuously.png \
 	images/view-split_horizontal.png \
 	images/view-split_vertical.png \
-	images/standard.png \
 	images/tabular-feature_align-decimal.png \
 	images/tabular-feature_append-column.png \
 	images/tabular-feature_append-row.png \
@@ -548,6 +542,9 @@ dist_images_DATA1X = \
 	images/vc-revert.png \
 	images/view-others.png
 
+dist_images_DATA3X = \
+	${dist_images_DATA1X:%.png=%.svgz}
+
 # possible shortcut for complete set of 2x sized icons
 #dist_images_DATA2X = \
 #	${dist_images_DATA1X:%.png=%@2x.png}
@@ -556,11 +553,18 @@ dist_images_DATA2X = \
 	images/banner@2x.png
 
 dist_images_DATA = \
+	images/amssymb.png \
+	images/psnfss1.png \
+	images/psnfss2.png \
+	images/psnfss3.png \
+	images/psnfss4.png \
+	images/standard.png \
 	${dist_images_DATA1X} \
-	${dist_images_DATA2X}
+	${dist_images_DATA2X} \
+	${dist_images_DATA3X}
 
 imagesmathdir = $(imagesdir)/math
-dist_imagesmath_DATA = \
+dist_imagesmath_DATA1X = \
 	images/math/AC.png \
 	images/math/acute.png \
 	images/math/adots.png \
@@ -1408,8 +1412,15 @@ dist_imagesmath_DATA = \
 	images/math/Yup.png \
 	images/math/zeta.png
 
+dist_imagesmath_DATA2X = \
+	${dist_imagesmath_DATA1X:%.png=%.svgz}
+
+dist_imagesmath_DATA = \
+	${dist_imagesmath_DATA1X} \
+	${dist_imagesmath_DATA2X}
+
 imagesipadir = $(imagesdir)/ipa
-dist_imagesipa_DATA = \
+dist_imagesipa_DATA1X = \
 	images/ipa/ipamacro-insert_deco_bottomtiebar.png \
 	images/ipa/ipamacro-insert_deco_toptiebar.png \
 	images/ipa/ipamacro-insert_tone-falling.png \
@@ -1585,9 +1596,16 @@ dist_imagesipa_DATA = \
 	images/ipa/unicode-insert_0xa71b.png \
 	images/ipa/unicode-insert_0xa71c.png
 
+dist_imagesipa_DATA2X = \
+	${dist_imagesipa_DATA1X:%.png=%.svgz}
+
+dist_imagesipa_DATA = \
+	${dist_imagesipa_DATA1X} \
+	${dist_imagesipa_DATA2X}
+
 
 imagesoxygendir = $(imagesdir)/oxygen
-dist_imagesoxygen_DATA = \
+dist_imagesoxygen_DATA1X = \
 	images/oxygen/all-changes-accept.png \
 	images/oxygen/all-changes-reject.png \
 	images/oxygen/bookmark-goto.png \
@@ -1646,7 +1664,6 @@ dist_imagesoxygen_DATA = \
 	images/oxygen/font-emph.png \
 	images/oxygen/font-noun.png \
 	images/oxygen/footnote-insert.png \
-	images/oxygen/iconsize.png \
 	images/oxygen/href-insert.png \
 	images/oxygen/index-insert.png \
 	images/oxygen/label-insert.png \
@@ -1682,6 +1699,14 @@ dist_imagesoxygen_DATA = \
 	images/oxygen/url-insert.png \
 	images/oxygen/vc-revert.png \
 	images/oxygen/view-others.png
+
+dist_imagesoxygen_DATA2X = \
+	${dist_imagesoxygen_DATA1X:%.png=%.svgz}
+
+dist_imagesoxygen_DATA = \
+	images/oxygen/iconsize.png \
+	${dist_imagesoxygen_DATA1X} \
+	${dist_imagesoxygen_DATA2X}
 
 imagesclassicdir = $(imagesdir)/classic
 dist_imagesclassic_DATA = \
