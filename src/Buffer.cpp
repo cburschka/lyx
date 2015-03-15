@@ -367,7 +367,7 @@ private:
 static FileName createBufferTmpDir()
 {
 	// FIXME This would be the ideal application for a TempDir class (like
-	//       TempFile but for directories) 
+	//       TempFile but for directories)
 	string counter;
 	{
 		static int count;
@@ -3335,7 +3335,7 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 				continue;
 
 			// register macro
-			// FIXME (Abdel), I don't understandt why we pass 'it' here
+			// FIXME (Abdel), I don't understand why we pass 'it' here
 			// instead of 'macroTemplate' defined above... is this correct?
 			macros[macroTemplate.name()][it] =
 				Impl::ScopeMacro(scope, MacroData(const_cast<Buffer *>(owner_), it));
@@ -4453,9 +4453,9 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 		if (master != this) {
 			bufToUpdate.insert(this);
 			master->updateBuffer(UpdateMaster, utype);
-			// If the master buffer has no gui associated with it, then the TocModel is 
-			// not updated during the updateBuffer call and TocModel::toc_ is invalid 
-			// (bug 5699). The same happens if the master buffer is open in a different 
+			// If the master buffer has no gui associated with it, then the TocModel is
+			// not updated during the updateBuffer call and TocModel::toc_ is invalid
+			// (bug 5699). The same happens if the master buffer is open in a different
 			// window. This test catches both possibilities.
 			// See: http://marc.info/?l=lyx-devel&m=138590578911716&w=2
 			// There remains a problem here: If there is another child open in yet a third
