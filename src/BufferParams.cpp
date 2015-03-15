@@ -2856,7 +2856,7 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			// do not load inputenc if japanese is used
 			// or if the class provides inputenc
 			if (features.isRequired("japanese")
-			    && features.isProvided("inputenc"))
+			    || features.isProvided("inputenc"))
 				break;
 			os << "\\usepackage[" << from_ascii(encoding().latexName())
 			   << "]{inputenc}\n";
