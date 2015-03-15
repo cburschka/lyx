@@ -68,6 +68,7 @@ MathAtom const & MathData::operator[](pos_type pos) const
 
 void MathData::insert(size_type pos, MathAtom const & t)
 {
+	LBUFERR(pos <= size());
 	base_type::insert(begin() + pos, t);
 }
 
