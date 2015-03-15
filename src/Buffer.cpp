@@ -219,7 +219,13 @@ public:
 	mutable TocBackend toc_backend;
 
 	/// macro tables
-	typedef pair<DocIterator, MacroData> ScopeMacro;
+	struct ScopeMacro {
+		ScopeMacro() {}
+		ScopeMacro(DocIterator const & s, MacroData const & m)
+			: scope(s), macro(m) {}
+		DocIterator scope;
+		MacroData macro;
+	};
 	typedef map<DocIterator, ScopeMacro> PositionScopeMacroMap;
 	typedef map<docstring, PositionScopeMacroMap> NamePositionScopeMacroMap;
 	/// map from the macro name to the position map,
@@ -230,7 +236,13 @@ public:
 
 	/// positions of child buffers in the buffer
 	typedef map<Buffer const * const, DocIterator> BufferPositionMap;
-	typedef pair<DocIterator, Buffer const *> ScopeBuffer;
+	struct ScopeBuffer {
+		ScopeBuffer() {}
+		ScopeBuffer(DocIterator const & s,Buffer const * b)
+			: scope(s), buffer(b) {}
+		DocIterator scope;
+		Buffer const * buffer;
+	};
 	typedef map<DocIterator, ScopeBuffer> PositionScopeBufferMap;
 	/// position of children buffers in this buffer
 	BufferPositionMap children_positions;
@@ -559,7 +571,7 @@ void Buffer::cloneWithChildren(BufferMap & bufmap, CloneList * clones) const
 	for (; it != end; ++it) {
 		DocIterator dit = it->first.clone(buffer_clone);
 		dit.setBuffer(buffer_clone);
-		Buffer * child = const_cast<Buffer *>(it->second.second);
+		Buffer * child = const_cast<Buffer *>(it->second.buffer);
 
 		child->cloneWithChildren(bufmap, clones);
 		BufferMap::iterator const bit = bufmap.find(child);
@@ -3122,12 +3134,12 @@ MacroData const * Buffer::Impl::getBufferMacro(docstring const & name,
 		if (it != nameIt->second.end()) {
 			while (true) {
 				// scope ends behind pos?
-				if (pos < it->second.first) {
+				if (pos < it->second.scope) {
 					// Looks good, remember this. If there
 					// is no external macro behind this,
 					// we found the right one already.
 					bestPos = it->first;
-					bestData = &it->second.second;
+					bestData = &it->second.macro;
 					break;
 				}
 
@@ -3152,13 +3164,13 @@ MacroData const * Buffer::Impl::getBufferMacro(docstring const & name,
 			break;
 
 		// scope ends behind pos?
-		if (pos < it->second.first
+		if (pos < it->second.scope
 			&& (cloned_buffer_ ||
-			    theBufferList().isLoaded(it->second.second))) {
+			    theBufferList().isLoaded(it->second.buffer))) {
 			// look for macro in external file
 			macro_lock = true;
 			MacroData const * data
-				= it->second.second->getMacro(name, false);
+				= it->second.buffer->getMacro(name, false);
 			macro_lock = false;
 			if (data) {
 				bestPos = it->first;
