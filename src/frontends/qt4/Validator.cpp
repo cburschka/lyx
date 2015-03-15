@@ -40,8 +40,15 @@ LengthValidator::LengthValidator(QWidget * parent)
 
 QValidator::State LengthValidator::validate(QString & qtext, int &) const
 {
+	QLocale loc;
 	bool ok;
-	qtext.trimmed().toDouble(&ok);
+	loc.toDouble(qtext.trimmed(), &ok);
+	if (!ok) {
+		// Fall back to C
+		QLocale c(QLocale::C);
+		c.toDouble(qtext.trimmed(), &ok);
+	}
+
 	if (qtext.isEmpty() || ok)
 		return QValidator::Acceptable;
 
