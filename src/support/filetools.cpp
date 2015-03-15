@@ -733,15 +733,10 @@ string latexEnvCmdPrefix(string const & path)
 		return "env TEXINPUTS=\"." + sep + texinputs_prefix
 					  + sep + texinputs + "\" ";
 	else
-#ifndef USE_QPROCESS
+		// NOTE: *any* space in the last string matters! (see bug 9453)
 		return "cmd /d /c set \"TEXINPUTS=."
 						+ sep + texinputs_prefix
-						+ sep + texinputs + "\"&";
-#else
-		return "cmd /d /c set \"\"\"TEXINPUTS=."
-						+ sep + texinputs_prefix
-						+ sep + texinputs + "\"\"\"&";
-#endif
+						+ sep + texinputs + " \" & ";
 }
 
 
