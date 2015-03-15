@@ -48,7 +48,7 @@ include_directories(${TOP_SRC_DIR}/src/tests)
 add_executable(check_ExternalTransforms ${check_ExternalTransforms_SOURCES})
 
 target_link_libraries(check_ExternalTransforms support
-	${Lyx_Boost_Libraries} ${QT_QTCORE_LIBRARY})
+	${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY})
 
 add_dependencies(lyx_run_tests check_ExternalTransforms)
 set_target_properties(check_ExternalTransforms PROPERTIES FOLDER "tests/src")
