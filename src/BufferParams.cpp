@@ -2822,7 +2822,8 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 		// inputenc must be omitted.
 		// see http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
 		if ((!encodings.empty() || package == Encoding::inputenc)
-		    && !features.isRequired("japanese")) {
+		    && !features.isRequired("japanese")
+		    && !features.isProvided("inputenc")) {
 			os << "\\usepackage[";
 			set<string>::const_iterator it = encodings.begin();
 			set<string>::const_iterator const end = encodings.end();
@@ -2853,7 +2854,9 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			break;
 		case Encoding::inputenc:
 			// do not load inputenc if japanese is used
-			if (features.isRequired("japanese"))
+			// or if the class provides inputenc
+			if (features.isRequired("japanese")
+			    && features.isProvided("inputenc"))
 				break;
 			os << "\\usepackage[" << from_ascii(encoding().latexName())
 			   << "]{inputenc}\n";
