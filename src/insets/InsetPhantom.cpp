@@ -311,8 +311,8 @@ docstring InsetPhantom::toolTip(BufferView const &, int, int) const
 
 void InsetPhantom::latex(otexstream & os, OutputParams const & runparams) const
 {
-    if (runparams.moving_arg)
-        os << "\\protect";
+	if (runparams.moving_arg)
+        	os << "\\protect";
 	if (params_.type == InsetPhantomParams::Phantom)
 		os << "\\phantom{";
 	else if (params_.type == InsetPhantomParams::HPhantom)
