@@ -1,0 +1,1084 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 482
+\begin_document
+\begin_header
+\textclass europasscv
+\begin_preamble
+% Fußnoten wirklch am Seitenfuß
+\usepackage[bottom]{footmisc}
+% Das folgende ist nötig, damit Fußnoten ausgegeben werden
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+\end_preamble
+\options german
+\use_default_options true
+\maintain_unincluded_children false
+\language ngerman
+\language_package none
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 3
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language german
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Dieses Template verwendet das 
+\begin_inset Quotes gls
+\end_inset
+
+europasscv
+\begin_inset Quotes grs
+\end_inset
+
+-Paket, 
+\end_layout
+
+\begin_layout Plain Layout
+s.
+ 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/pkg/europasscv
+\end_layout
+
+\end_inset
+
+ (zuletzt abgerufen am: 14.03.2015), 
+\end_layout
+
+\begin_layout Plain Layout
+zur Erstellung eines deutschsprachigen CVs gemäß 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://europass.cedefop.europa.eu
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+Weiterführende Dokumentation:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/europasscv/europasscv.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ 
+\family sans
+Dokument\SpecialChar \menuseparator
+Einstellungen\SpecialChar \menuseparator
+Sprache\SpecialChar \menuseparator
+Kodierung
+\family default
+ muss auf 
+\begin_inset Quotes gld
+\end_inset
+
+Andere: unicode (utf8)
+\begin_inset Quotes grd
+\end_inset
+
+ eingestellt sein!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Die folgenden persönlichen Informationen können auch im Latex-Vorspann spezifizi
+ert werden:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Name
+Stefan Swerk
+\end_layout
+
+\begin_layout Address
+In Österreich
+\end_layout
+
+\begin_layout Telephone
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
++43 123
+\begin_inset space \enskip{}
+\end_inset
+
+45 678 99
+\end_layout
+
+\end_inset
+
++43 123
+\begin_inset space \enskip{}
+\end_inset
+
+45 678 99
+\end_layout
+
+\begin_layout Email
+stefan_lyx@swerk.priv.at
+\end_layout
+
+\begin_layout Homepage
+gitlab.swerk.priv.at
+\end_layout
+
+\begin_layout InstantMessaging
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Google Talk
+\end_layout
+
+\end_inset
+
+123
+\end_layout
+
+\begin_layout InstantMessaging
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Skype
+\end_layout
+
+\end_inset
+
+456
+\end_layout
+
+\begin_layout Birthday
+12.10.1492
+\end_layout
+
+\begin_layout Nationality
+Österreich
+\end_layout
+
+\begin_layout Gender
+Männlich
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ein Bild kann folgendermaßen eingebunden werden (optionaler Parameter 
+\begin_inset Quotes gls
+\end_inset
+
+Breite
+\begin_inset Quotes grs
+\end_inset
+
+, Dateipfad):
+\end_layout
+
+\begin_layout Picture
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=3.5cm
+\end_layout
+
+\end_inset
+
+REPLACEphoto.jpg
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BigItem
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Angestrebte Tätigkeit
+\end_layout
+
+\end_inset
+
+The Doctor's Companion
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Big Item
+\series default
+: Linker Text wird in blaue Kapitalbuchstaben transformiert, rechter Text
+ erscheint größer.
+\end_layout
+
+\begin_layout Itemize
+Optionaler Parameter 
+\begin_inset Quotes gld
+\end_inset
+
+Vertical Space
+\begin_inset Quotes grd
+\end_inset
+
+ zur manuellen vertikalen Ausrichtung.
+\end_layout
+
+\begin_layout Itemize
+Optionaler Parameter 
+\begin_inset Quotes gld
+\end_inset
+
+Summary
+\begin_inset Quotes grd
+\end_inset
+
+ repräsentiert den linken Spalteneintrag.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Berufserfahrung
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ein Abschnitt.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout TitleItem
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Januar 1999–Juni 2007
+\end_layout
+
+\end_inset
+
+Solid Waste Management Consultant
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Title Item
+\series default
+: Linker Text erscheint blau, rechter Text wird vergrößert.
+\end_layout
+
+\begin_layout Itemize
+Optionaler Parameter 
+\begin_inset Quotes gld
+\end_inset
+
+Vertical Space
+\begin_inset Quotes grd
+\end_inset
+
+ zur manuellen vertikalen Ausrichtung.
+\end_layout
+
+\begin_layout Itemize
+Optionaler Parameter 
+\begin_inset Quotes gld
+\end_inset
+
+Summary
+\begin_inset Quotes grd
+\end_inset
+
+ repräsentiert den linken Spalteneintrag.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Item
+Soprano Family
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\end_inset
+
+ New Jersey, United States of America
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Item
+\series default
+: 
+\begin_inset Quotes gld
+\end_inset
+
+Summary
+\begin_inset Quotes grd
+\end_inset
+
+ erscheint in linker Spalte, Rest in rechter Spalte.
+\end_layout
+
+\begin_layout Itemize
+Optionaler Parameter 
+\begin_inset Quotes gld
+\end_inset
+
+Vertical Space
+\begin_inset Quotes grd
+\end_inset
+
+ zur manuellen vertikalen Ausrichtung.
+\end_layout
+
+\begin_layout Itemize
+Optionaler Parameter 
+\begin_inset Quotes gld
+\end_inset
+
+Summary
+\begin_inset Quotes grd
+\end_inset
+
+ repräsentiert den linken Spalteneintrag.
+\end_layout
+
+\begin_layout Plain Layout
+Anmerkung: Die Verwendung von 
+\family typewriter
+
+\backslash
+newline
+\family default
+ an Stelle eines normalen oder erzwungenen Zeilenumbruchs verringert den
+ Abstand zwischen zwei Items bzw.
+ erhält die Formatierung.
+ Als Alternative könnten auch zwei Items mit angepasstem 
+\begin_inset Quotes gld
+\end_inset
+
+Vertical Space
+\begin_inset Quotes grd
+\end_inset
+
+ definiert werden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ItemInset
+status open
+
+\begin_layout EcvItemize
+Mitgliederverwaltung und Administration 
+\end_layout
+
+\begin_layout EcvItemize
+Beratung diverser Institutionen
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Für korrekte Auflistungen innerhalb von 'Items' kann (und sollte) ein 
+\begin_inset Quotes gls
+\end_inset
+
+ItemInset
+\begin_inset Quotes grs
+\end_inset
+
+ (
+\family sans
+Einfügen\SpecialChar \menuseparator
+Benutzerdefinierte Einfügungen\SpecialChar \menuseparator
+ItemInset
+\family default
+) mit 
+\begin_inset Quotes gls
+\end_inset
+
+EcvItemize
+\begin_inset Quotes grs
+\end_inset
+
+-Layout eingesetzt werden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout TitleItem
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+September 1987–Mai 1994
+\end_layout
+
+\end_inset
+
+Starship Captain
+\end_layout
+
+\begin_layout Item
+USS Enterprise (NCC-1701-D), Somewhere in the Alpha Quadrant.
+\end_layout
+
+\begin_layout Item
+Space: the final frontier.
+ These are the voyages of the starship Enterprise.
+ Its continuing mission: to explore strange new worlds, to seek out new
+ life and new civilizations, to boldly go where no one has gone before.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Nemeck, Larry (2003).
+ Star Trek: The Next Generation Companion.
+ Pocket Books.
+ ISBN 0-7434-5798-6.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Damit Fußnoten ausgegeben werden, ist der Code im LaTeX-Vorspann nötig.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Schul- und Berufsbildung
+\end_layout
+
+\begin_layout TitleLevel
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Juni 2001–August 2005
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+Bestatter
+\end_layout
+
+\end_inset
+
+ISCED-11: 7
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Title Level
+\series default
+: Wie Title Item, nur mit der Möglichkeit beispielsweise ISCED-11 Level
+ anzugeben.
+\end_layout
+
+\begin_layout Itemize
+Optionaler Parameter 
+\begin_inset Quotes gld
+\end_inset
+
+Vertical Space
+\begin_inset Quotes grd
+\end_inset
+
+ zur manuellen vertikalen Ausrichtung.
+\end_layout
+
+\begin_layout Itemize
+Optionaler Parameter 
+\begin_inset Quotes gld
+\end_inset
+
+Summary
+\begin_inset Quotes grd
+\end_inset
+
+ repräsentiert den linken Spalteneintrag.
+\end_layout
+
+\begin_layout Itemize
+Optionaler Parameter 
+\begin_inset Quotes gld
+\end_inset
+
+Text (right side)
+\begin_inset Quotes grd
+\end_inset
+
+ repräsentiert den rechten Spalteneintrag.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Item
+\begin_inset Flex Highlight
+status open
+
+\begin_layout Plain Layout
+Fisher
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Beispiel eines 
+\begin_inset Quotes gld
+\end_inset
+
+Highlights
+\begin_inset Quotes grd
+\end_inset
+
+: 
+\family sans
+Bearbeiten\SpecialChar \menuseparator
+Textstil\SpecialChar \menuseparator
+Highlight
+\end_layout
+
+\end_inset
+
+ Family, United States of America.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ItemInset
+status open
+
+\begin_layout EcvItemize
+Six
+\end_layout
+
+\begin_layout EcvItemize
+Feet
+\end_layout
+
+\begin_layout EcvItemize
+Under
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout TitleLevel
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Oktober 2006–September 2013
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+Forensiker
+\end_layout
+
+\end_inset
+
+ISCED-11: 6
+\end_layout
+
+\begin_layout Item
+Miami Metro PD, United States of America.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ItemInset
+status open
+
+\begin_layout EcvItemize
+Spezialisierung in der Analyse von Blutspuren aller Art
+\end_layout
+
+\begin_layout EcvItemize
+Doughnuts!
+\end_layout
+
+\begin_layout EcvItemize
+Vorgesetzte: Maria LaGuerta (bis 2012)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Dieser Seitenumbruch kann entfernt werden und wurde nur aus Formatierungsgründen
+ eingefügt.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Persönliche Fähigkeiten
+\end_layout
+
+\begin_layout MotherTongue
+Deutsch
+\end_layout
+
+\begin_layout LangHeader
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+i.e.
+ linke Spalte + Tabellenheader
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Language
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Englisch
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+C2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+C2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+B2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 5
+status open
+
+\begin_layout Plain Layout
+C1
+\end_layout
+
+\end_inset
+
+B2
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Language: 
+\end_layout
+
+\begin_layout Itemize
+Verstehen/Hören
+\end_layout
+
+\begin_layout Itemize
+Verstehen/Lesen
+\end_layout
+
+\begin_layout Itemize
+Sprechen/An Gesprächen teilnehmen
+\end_layout
+
+\begin_layout Itemize
+Sprechen/Zusammenhängendes Sprechen
+\end_layout
+
+\begin_layout Itemize
+Schreiben
+\end_layout
+
+\begin_layout Plain Layout
+Levels: A1/A2: Elementare Sprachverwendung - B1/B2: selbständige Sprachverwendun
+g - C1/C2: Kompetente Sprachverwendung 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LastLanguage
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Latein
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+A1
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+A2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 5
+status open
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+
+A1
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Die letzte Sprache in der Tabelle, wie oben.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LangFooter
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Kurze GERFS Definition nach der Tabelle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BlueItem
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Führerschein
+\end_layout
+
+\end_inset
+
+B
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Blue Item
+\series default
+: Wie Item, nur erscheint die linke Spalte blau.
+\end_layout
+
+\begin_layout Itemize
+Optionaler Parameter 
+\begin_inset Quotes gld
+\end_inset
+
+Vertical Space
+\begin_inset Quotes grd
+\end_inset
+
+ zur manuellen vertikalen Ausrichtung.
+\end_layout
+
+\begin_layout Itemize
+Optionaler Parameter 
+\begin_inset Quotes gld
+\end_inset
+
+Summary
+\begin_inset Quotes grd
+\end_inset
+
+ repräsentiert den linken Spalteneintrag.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Persönliche Interessen
+\end_layout
+
+\begin_layout BlueItem
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Hauptinteressen
+\end_layout
+
+\end_inset
+
+Reisen \SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout BlueItem
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+aaa
+\end_layout
+
+\end_inset
+
+bbbb
+\end_layout
+
+\begin_layout BlueItem
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+ccc
+\end_layout
+
+\end_inset
+
+dddd
+\end_layout
+
+\end_body
+\end_document

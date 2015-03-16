@@ -1,0 +1,1049 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 482
+\begin_document
+\begin_header
+\textclass europasscv
+\begin_preamble
+% Footnote at the very bottom of the page
+\usepackage[bottom]{footmisc}
+% This assure footnotes are printed
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 3
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This template relies on the 
+\begin_inset Quotes els
+\end_inset
+
+europasscv
+\begin_inset Quotes ers
+\end_inset
+
+-package, 
+\end_layout
+
+\begin_layout Plain Layout
+see 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/pkg/europasscv
+\end_layout
+
+\end_inset
+
+ (last accessed: 14.03.2015), 
+\end_layout
+
+\begin_layout Plain Layout
+to create a CV according to the guidelines at 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://europass.cedefop.europa.eu
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+For further documentation please refer to:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/europasscv/europasscv.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following personal information may be included within the Latex preamble
+ as well:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Name
+Stefan Swerk
+\end_layout
+
+\begin_layout Address
+In Austria
+\end_layout
+
+\begin_layout Telephone
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
++43 123
+\begin_inset space \enskip{}
+\end_inset
+
+45 678 99
+\end_layout
+
+\end_inset
+
++43 123
+\begin_inset space \enskip{}
+\end_inset
+
+45 678 99
+\end_layout
+
+\begin_layout Email
+stefan_lyx@swerk.priv.at
+\end_layout
+
+\begin_layout Homepage
+gitlab.swerk.priv.at
+\end_layout
+
+\begin_layout InstantMessaging
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Google Talk
+\end_layout
+
+\end_inset
+
+123
+\end_layout
+
+\begin_layout InstantMessaging
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Skype
+\end_layout
+
+\end_inset
+
+456
+\end_layout
+
+\begin_layout Birthday
+12.10.1492
+\end_layout
+
+\begin_layout Nationality
+Austria
+\end_layout
+
+\begin_layout Gender
+Male
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+To include a picture (optional argument 
+\begin_inset Quotes els
+\end_inset
+
+width
+\begin_inset Quotes ers
+\end_inset
+
+, file path):
+\end_layout
+
+\begin_layout Picture
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+width=3.5cm
+\end_layout
+
+\end_inset
+
+REPLACEphoto.jpg
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BigItem
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Job applied for
+\end_layout
+
+\end_inset
+
+The Doctor's Companion
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Big Item
+\series default
+: Puts left text to the left column and transforms it into capital letters.
+ The font size for the right text will be increased.
+\end_layout
+
+\begin_layout Itemize
+Optional argument 
+\begin_inset Quotes gld
+\end_inset
+
+Vertical Space
+\begin_inset Quotes grd
+\end_inset
+
+ for manual, vertical formatting.
+\end_layout
+
+\begin_layout Itemize
+Optional argument 
+\begin_inset Quotes gld
+\end_inset
+
+Summary
+\begin_inset Quotes grd
+\end_inset
+
+ represents the text in the left column.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Work Experience
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+A section.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout TitleItem
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+January 1999–June 2007 
+\end_layout
+
+\end_inset
+
+Solid Waste Management Consultant
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Title Item
+\series default
+: Left text is typeset in blue, font size of right text will be increased.
+\end_layout
+
+\begin_layout Itemize
+Optional argument 
+\begin_inset Quotes eld
+\end_inset
+
+Vertical Space
+\begin_inset Quotes erd
+\end_inset
+
+ for manual, vertical formatting.
+\end_layout
+
+\begin_layout Itemize
+Optional argument 
+\begin_inset Quotes eld
+\end_inset
+
+Summary
+\begin_inset Quotes erd
+\end_inset
+
+ represents the text in the left column.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Item
+Soprano Family
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newline
+\end_layout
+
+\end_inset
+
+ New Jersey, United States of America
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Item
+\series default
+: Puts left text to the left column and right text to the right column.
+ 
+\end_layout
+
+\begin_layout Itemize
+Optional argument 
+\begin_inset Quotes eld
+\end_inset
+
+Vertical Space
+\begin_inset Quotes erd
+\end_inset
+
+ for manual, vertical formatting.
+\end_layout
+
+\begin_layout Itemize
+Optional argument 
+\begin_inset Quotes eld
+\end_inset
+
+Summary
+\begin_inset Quotes erd
+\end_inset
+
+ represents the text in the left column.
+\end_layout
+
+\begin_layout Plain Layout
+Note: The usage of 
+\family typewriter
+
+\backslash
+newline
+\family default
+ instead of a normal or forced linebreak reduces the distance between two
+ consecutive items, i.e.
+ it retains the format of a single item.
+ Alternatively it may be possible to manually define the 
+\begin_inset Quotes eld
+\end_inset
+
+Vertical Space
+\begin_inset Quotes erd
+\end_inset
+
+ arguments in a way that results in the same effect.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ItemInset
+status open
+
+\begin_layout EcvItemize
+Management and administration of associates
+\end_layout
+
+\begin_layout EcvItemize
+Adviser for various institutions
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+It is advisable to use the 
+\begin_inset Quotes els
+\end_inset
+
+EcvItemize
+\begin_inset Quotes ers
+\end_inset
+
+ layout exclusively within the 
+\begin_inset Quotes els
+\end_inset
+
+ItemInset
+\begin_inset Quotes ers
+\end_inset
+
+ (
+\family sans
+Insert \SpecialChar \menuseparator
+ Custom Insets \SpecialChar \menuseparator
+ ItemInset
+\family default
+) as demonstrated above, in order to ensure correctly formatted listings.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout TitleItem
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+September 1987–Mai 1994
+\end_layout
+
+\end_inset
+
+Starship Captain
+\end_layout
+
+\begin_layout Item
+USS Enterprise (NCC-1701-D), Somewhere in the Alpha Quadrant.
+\end_layout
+
+\begin_layout Item
+Space: the final frontier.
+ These are the voyages of the starship Enterprise.
+ Its continuing mission: to explore strange new worlds, to seek out new
+ life and new civilizations, to boldly go where no one has gone before.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Nemeck, Larry (2003).
+ Star Trek: The Next Generation Companion.
+ Pocket Books.
+ ISBN 0-7434-5798-6.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Note that you'll need the preamble code used in this example to make footnotes
+ appear.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Education and Training
+\end_layout
+
+\begin_layout TitleLevel
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+June 2001–August 2005
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+Undertaker
+\end_layout
+
+\end_inset
+
+ISCED-11: 7
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Title Level
+\series default
+: Like Title Item, including the possibility to specify, for instance, ISCED-11
+ levels.
+\end_layout
+
+\begin_layout Itemize
+Optional argument 
+\begin_inset Quotes eld
+\end_inset
+
+Vertical Space
+\begin_inset Quotes erd
+\end_inset
+
+ for manual, vertical formatting.
+\end_layout
+
+\begin_layout Itemize
+Optional argument 
+\begin_inset Quotes eld
+\end_inset
+
+Summary
+\begin_inset Quotes erd
+\end_inset
+
+ represents the text in the left column.
+\end_layout
+
+\begin_layout Itemize
+Optional argument 
+\begin_inset Quotes eld
+\end_inset
+
+Text (right side)
+\begin_inset Quotes erd
+\end_inset
+
+ represents the text in the right column.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Item
+\begin_inset Flex Highlight
+status open
+
+\begin_layout Plain Layout
+Fisher
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Example of a 
+\begin_inset Quotes eld
+\end_inset
+
+Highlight
+\begin_inset Quotes grd
+\end_inset
+
+: 
+\family sans
+Edit\SpecialChar \menuseparator
+Text Style\SpecialChar \menuseparator
+Highlight
+\end_layout
+
+\end_inset
+
+ Family, United States of America.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ItemInset
+status open
+
+\begin_layout EcvItemize
+Six
+\end_layout
+
+\begin_layout EcvItemize
+Feet
+\end_layout
+
+\begin_layout EcvItemize
+Under
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout TitleLevel
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+October 2006–September 2013
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+Forensic Practitioner
+\end_layout
+
+\end_inset
+
+ISCED-11: 6
+\end_layout
+
+\begin_layout Item
+Miami Metro PD, United States of America.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ItemInset
+status open
+
+\begin_layout EcvItemize
+Blood Spatter Analyst
+\end_layout
+
+\begin_layout EcvItemize
+Doughnuts!
+\end_layout
+
+\begin_layout EcvItemize
+Superior: Maria LaGuerta (until 2012)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Feel free to remove this page break.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Personal skills
+\end_layout
+
+\begin_layout MotherTongue
+German
+\end_layout
+
+\begin_layout LangHeader
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+i.e.
+ left column + table header
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Language
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+English
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+C2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+C2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+B2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 5
+status open
+
+\begin_layout Plain Layout
+C1
+\end_layout
+
+\end_inset
+
+B2
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Language: 
+\end_layout
+
+\begin_layout Itemize
+Understanding/Listening
+\end_layout
+
+\begin_layout Itemize
+Understanding/Reading
+\end_layout
+
+\begin_layout Itemize
+Speaking/Spoken Interaction
+\end_layout
+
+\begin_layout Itemize
+Speaking/Spoken production
+\end_layout
+
+\begin_layout Itemize
+Writing
+\end_layout
+
+\begin_layout Plain Layout
+Levels: A1/A2: Basic user - B1/B2: Independent user - C1/C2: Proficient
+ user 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LastLanguage
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Latein
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+A1
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+A2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 5
+status open
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+
+A1
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The last language in the table, as above.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LangFooter
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Short CEF Definition
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BlueItem
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Driving license
+\end_layout
+
+\end_inset
+
+B
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Blue Item
+\series default
+: Like Item, blue left column appearance.
+\end_layout
+
+\begin_layout Itemize
+Optional argument 
+\begin_inset Quotes eld
+\end_inset
+
+Vertical Space
+\begin_inset Quotes erd
+\end_inset
+
+ for manual, vertical formatting.
+\end_layout
+
+\begin_layout Itemize
+Optional argument 
+\begin_inset Quotes eld
+\end_inset
+
+Summary
+\begin_inset Quotes erd
+\end_inset
+
+ represents the text in the left column.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BlueItem
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Other skills
+\end_layout
+
+\end_inset
+
+Traveling \SpecialChar \ldots{}
+
+\end_layout
+
+\begin_layout BlueItem
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+aaa
+\end_layout
+
+\end_inset
+
+bbbb
+\end_layout
+
+\begin_layout BlueItem
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+ccc
+\end_layout
+
+\end_inset
+
+dddd
+\end_layout
+
+\end_body
+\end_document

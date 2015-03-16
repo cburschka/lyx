@@ -69,7 +69,7 @@
 \html_latex_end </span>
 \author -1379302345 "Julien Rioux" jrioux@lyx.org
 \author -712698321 "Jürgen Spitzmüller" 
-\author -195340706 "Georg Baum"
+\author -195340706 "Georg Baum" 
 \end_header
 
 \begin_body
@@ -2827,10 +2827,84 @@ Notes: The
 europecv
 \family default
  document class is intended to provide curriculum vitaes (resumes) according
- to the official guidelines of the european community (europass).
- It therefore supports the european language self-assessment.
+ to the official guidelines of the 
+\change_deleted -712698321 1426498553
+e
+\change_inserted -712698321 1426498553
+E
+\change_unchanged
+uropean community (
+\change_deleted -712698321 1426499033
+e
+\change_inserted -712698321 1426499033
+E
+\change_unchanged
+uropass).
+ It therefore supports the 
+\change_deleted -712698321 1426498556
+e
+\change_inserted -712698321 1426499063
+E
+\change_unchanged
+uropean language self-assessment.
  An example curriculum vitae created using this document class can be found
  in the examples.
+
+\change_inserted -712698321 1426499129
+ This class follows the 2002 version of the guidelines (see 
+\family sans
+europasscv
+\family default
+ for an implementation of the 2013 version).
+ 
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1426498490
+europasscv
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1426498486
+Found: 
+\begin_inset Info
+type  "textclass"
+arg   "europasscv"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1426498670
+CTAN: 
+\family typewriter
+macros/latex/contrib/europasscv
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1426499137
+Notes: The 
+\family sans
+europasscv
+\family default
+ document class is another unofficial LaTeX implementation of the Europass
+ CV, the standard model for curriculum vitae as recommended by the European
+ Commission.
+ As opposed to the 
+\family sans
+europecv
+\family default
+ document class, it includes the major style updates that came out in 2013,
+ featuring a neater, more compact and somewhat fancier layout.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection

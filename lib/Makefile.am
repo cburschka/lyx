@@ -88,6 +88,7 @@ dist_deexamples_DATA = \
 	examples/de/beispiel_roh.lyx \
 	examples/de/Braille.lyx \
 	examples/de/Dezimal.lyx \
+	examples/de/europassCV.lyx \
 	examples/de/ItemizeBullets.lyx \
 	examples/de/Lebenslauf.lyx \
 	examples/de/linguistics.lyx \
@@ -306,6 +307,7 @@ dist_examples_DATA = \
 	examples/chessgame.lyx \
 	examples/docbook_article.lyx \
 	examples/europeCV.lyx \
+	examples/europassCV.lyx \
 	examples/example_lyxified.lyx \
 	examples/example_raw.lyx \
 	examples/FeynmanDiagrams.lyx \
@@ -1994,6 +1996,7 @@ dist_layouts_DATA =\
 	layouts/entcs.layout \
 	layouts/enumitem.module \
 	layouts/eqs-within-sections.module \
+	layouts/europasscv.layout \
 	layouts/europecv.layout \
 	layouts/extarticle.layout \
 	layouts/extbook.layout \

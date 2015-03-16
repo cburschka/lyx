@@ -1,0 +1,462 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[europasscv]{Europass CV (2013)}
+#  \DeclareCategory{Curricula Vitae}
+#
+# Layout definition file for the europasscv class package.
+#
+# The europasscv package is developed and maintained by
+# Giacomo Mazzamuto, see 
+#       http://www.ctan.org/pkg/europasscv 
+# and was released under the Latex Project Public 
+# License 1.3.
+#
+# The actual europass CV is developed and maintained by
+# European Centre for the Development of 
+# Vocational Training (Cedefop), refer to
+#       http://europass.cedefop.europa.eu .
+#
+# This file is loosely based on the work of Uwe Stöhr
+# in 'europecv.layout'.
+#
+# Author: Stefan Swerk (stefan_lyx@swerk.priv.at)
+# Version: 1.2 - 2015.03.15: 
+#   Removed invalid InsetLayout arguments.
+#   Contributions by Jürgen Spitzmüller:
+#       - Refined TitleLatexName to eliminate the need for
+#         manual specification of \begin{europasscv}
+#         and \ecvpersonalinfo.
+#       - The document will now be automatically closed
+#         (\end{europasscv}) in case it was not ended manually.
+#       - Fixed spelling mistakes, formatting, etc.
+# Version: 1.1 - 2015.03.15: 
+#   Changed InsetLayout Decoration from "Conglomerate" to "Classic".
+#   (Thanks to Jürgen Spitzmüller for this suggestion).
+# Version: 1.0 - 2015.03.14: Initial draft.
+
+
+# General textclass parameters
+Format 49
+
+Columns		 1
+Sides		 1
+SecNumDepth	-1
+TocDepth	-1
+TitleLatexName  begin{europasscv}\ecvpersonalinfo
+
+# These packages are loaded by the class
+Provides url 1
+Provides inputenc 1
+Provides soul 1
+Provides geometry 1
+Provides hyperref 1
+
+AddToPreamble
+	\newif\ifcvclosed
+	\AtEndDocument{\ifcvclosed\else\end{europasscv}\fi}
+EndPreamble
+
+# Standard style definition
+Style Standard
+	Category	MainText
+	Margin		Static
+	LatexType	Paragraph
+	LatexName	dummy
+	ParIndent	MM
+	ParSkip		0.4
+	Align		Block
+	LabelType	No_Label
+End
+
+Input stdcounters.inc
+Input stdinsets.inc
+Input stdlists.inc
+
+Style Name
+	Margin		Static
+	LatexType	Command
+	LatexName	ecvname
+	Category	FrontMatter
+	InPreamble	1
+	InTitle         1
+	ParSkip		0.4
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Name:"
+	LeftMargin	"xxxxxxx xxxxxxxxxx:xx"
+	LabelSep        xx
+	Align           Left
+	LabelFont
+	  Series	Bold
+	  Color		Magenta
+	EndFont
+End
+
+Style FooterName
+	CopyStyle	Name
+	LatexName	ecvfootername
+	LabelString	"Name (footer):"
+End
+
+Style Address
+	CopyStyle	Name
+	LatexName	ecvaddress
+	LabelString	"Address:"
+End
+
+Style Telephone
+	CopyStyle	Name
+	LatexName	ecvtelephone
+	LabelString	"Telephone:"
+	Argument 1
+	  LabelString	"Mobile:"
+	  Tooltip	"Mobile phone number"
+	EndArgument
+End
+
+Style Fax
+	CopyStyle	Name
+	LatexName	ecvfax
+	LabelString	"Fax:"
+End
+
+Style Email
+	CopyStyle	Name
+	LatexName	ecvemail
+	LabelString	"E-mail:"
+End
+
+Style Homepage
+	CopyStyle	Name
+	LatexName	ecvhomepage
+	LabelString	"Homepage:"
+End
+
+Style InstantMessaging
+	CopyStyle	Name
+	LatexName	ecvim
+	LabelString	"Instant Messaging:"
+	Argument 1
+	  Mandatory     1
+	  AutoInsert	1
+	  LabelString	"IM Type:"
+	  Tooltip	"IM Type (e.g., AOL Messenger)"
+	EndArgument
+End
+
+Style Birthday
+	CopyStyle	Name
+	LatexName	ecvdateofbirth
+	LabelString	"Date of birth:"
+End
+
+Style Nationality
+	CopyStyle	Name
+	LatexName	ecvnationality
+	LabelString	"Nationality:"
+End
+
+Style Gender
+	CopyStyle	Name
+	LatexName	ecvgender
+	LabelString	"Gender:"
+End
+
+Style BeforePicture
+	CopyStyle	Name
+	LatexName	ecvbeforepicture
+	LabelString	"Space before picture:"
+End
+
+Style Picture
+	CopyStyle	Name
+	LatexName	ecvpicture
+	LabelString	"Picture:"
+	Argument 1
+	  LabelString	"Width"
+	  Tooltip	"Resize photo to this width"
+	EndArgument
+End
+
+Style AfterPicture
+	CopyStyle	Name
+	LatexName	ecvafterpicture
+	LabelString	"Space after picture:"
+End
+
+Style Section
+	Category Sectioning
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	ecvsection
+	NeedProtect	1
+	NextNoIndent	1
+	Argument 1
+	  LabelString	"Vertical Space"
+	  Tooltip	"Additional vertical space"
+	EndArgument
+	ParSkip		0.4
+	TopSep		1.3
+	BottomSep	0.7
+	ParSep		0.7
+	Align		Block
+	LabelSep	xxx
+	LabelType	No_Label
+	Font
+	  Family	Sans
+	  Series	Bold
+	EndFont
+	TocLevel	1
+End
+
+Style Item
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	ecvitem
+	Category	MainText
+	Argument 1
+	  LabelString	"Vertical Space"
+	  Tooltip	"Additional vertical space"
+	EndArgument
+	Argument 2
+	  Mandatory	1
+	  AutoInsert	0
+	  LabelString	"Summary"
+	  Tooltip	"Summary of the item, can also be the time span"
+	EndArgument
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Item:"
+	LabelFont
+	  Series	Bold
+	  Color		Blue
+	EndFont
+End
+
+# The following Inset was defined in order to
+# realize the following construct:
+#
+#  \ecvitem{}{
+#    \begin{ecvitemize}
+#        \item 1
+#        \item 2
+#    \end{ecvitemize}
+#  }
+#
+InsetLayout Flex:ItemInset
+	LyxType 	custom
+	LatexType	command
+	LatexName	ecvitem
+	Decoration	Classic
+	Argument 1
+	  LabelString	"Vertical Space"
+	  Tooltip	"Additional vertical space"
+	EndArgument
+	Argument 2
+	  Mandatory	1
+	  AutoInsert	1
+	  LabelString	"Summary"
+	  Tooltip	"Summary of the item, can also be the time span"
+	EndArgument
+	LabelString	"Subitems"
+	LabelFont
+	  Series	Bold
+	  Color		Black
+	EndFont
+End
+
+Style TitleItem
+	CopyStyle	Item
+	LatexName	ecvtitle
+	TopSep		1.0
+	LabelString	"Title item:"
+End
+
+Style TitleLevel
+	CopyStyle	Item
+	LatexName	ecvtitlelevel
+	TopSep		1.0
+	LabelString	"Title level:"
+	Argument 3
+	  Mandatory	1
+	  AutoInsert	1
+	  LabelString	"Text (right side)"
+	  Tooltip	"Text (right side)"
+	EndArgument
+End
+
+Style BlueItem
+	CopyStyle	Item
+	LatexName	ecvblueitem
+	LabelString	"Blue item:"
+End
+
+InsetLayout Flex:BlueItemInset
+    	CopyStyle 	Flex:ItemInset
+	LatexName	ecvblueitem
+	LabelString	"Blue subitems"
+	LabelFont
+	  Series	Bold
+	  Color		Blue
+	EndFont
+End
+
+Style BigItem
+	CopyStyle	Item
+	LatexName	ecvbigitem
+	LabelString	"Big Item:"
+End
+
+Style EcvItemize
+	Category              List
+	Margin                Static
+	LatexType             Item_Environment
+	LatexName             ecvitemize
+	NextNoIndent          1
+	LeftMargin            MMN
+	LabelSep              xx
+	ItemSep               0.2
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0.3
+	Align                 Block
+	AlignPossible         Block, Left
+	LabelType             Itemize
+	HTMLTag               ul
+	HTMLItem              li
+	HTMLLabel             NONE
+	Argument item:1
+		LabelString   "Custom Item|s"
+		Tooltip       "A customized item string"
+	EndArgument
+End
+
+Style MotherTongue
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	ecvmothertongue
+	Category	Language
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"Mother Tongue:"
+	Font
+	  Series	Bold
+	EndFont
+	LabelFont
+	  Series	Bold
+	  Color		Blue
+	EndFont
+End
+
+Style LangHeader
+	CopyStyle	MotherTongue
+	LatexType	Command
+	LatexName	ecvlanguageheader
+	LabelString	"Language Header:"
+	KeepEmpty	1
+	TopSep		0.2
+	BottomSep	0.2
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelFont
+	  Series	Bold
+	  Color		Green
+	EndFont
+End
+
+Style Language
+	CopyStyle	LangHeader
+	LatexName	ecvlanguage
+	LabelString	"Language:"
+	Argument 1
+	  Mandatory	1
+	  AutoInsert	1
+	  LabelString	"Language"
+	  Tooltip	"Name of the language"
+	EndArgument
+	Argument 2
+	  Mandatory	1
+	  AutoInsert	1
+	  LabelString	"Listening"
+	  Tooltip	"Level how good you think you can listen"
+	EndArgument
+	Argument 3
+	  Mandatory	1
+	  AutoInsert	1
+	  LabelString	"Reading"
+	  Tooltip	"Level how good you think you can read"
+	EndArgument
+	Argument 4
+	  Mandatory	1
+	  AutoInsert	1
+	  LabelString	"Interaction"
+	  Tooltip	"Level how good you think you can conversate"
+	EndArgument
+	Argument 5
+	  Mandatory	1
+	  AutoInsert	1
+	  LabelString	"Production"
+	  Tooltip	"Level how good you think you can freely talk"
+	EndArgument
+End
+
+Style LastLanguage
+	CopyStyle	Language
+	LatexName	ecvlastlanguage
+	LabelString	"Last Language:"
+End
+
+Style LangFooter
+	CopyStyle	LangHeader
+	LatexName	ecvlanguagefooter
+	LabelString	"Language Footer:"
+End
+
+Style End
+	Margin		Dynamic
+	LatexType	Command
+	LatexName	end{europasscv}
+	Category	BackMatter
+	KeepEmpty	1
+	TopSep		1
+	ParSkip		0.4
+	Align		Block
+	LabelSep	xx
+	LabelType	Static
+	LabelString	"End of CV"
+	LabelFont
+	  Series	Bold
+	  Color		Green
+	EndFont
+	Preamble
+		\cvclosedtrue
+	EndPreamble
+End
+
+InsetLayout "Flex:Highlight"
+	LyxType		charstyle
+	LatexType	command
+	LatexName	ecvhighlight
+	Decoration	Conglomerate
+	LabelString	"Highlight"
+	Font
+	  Color		red
+	  Size		Small
+	  Family	Roman
+	  Shape		Up
+	  Series	Medium
+	  Misc		No_Emph
+	  Misc		No_Noun
+	  Misc		No_Bar
+	EndFont
+	LabelFont
+	  Color		green
+	  Size		Small
+	EndFont
+End
+
