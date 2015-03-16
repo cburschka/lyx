@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-03-16 11:02+0100\n"
-"PO-Revision-Date: 2015-03-16 11:12+0100\n"
+"POT-Creation-Date: 2015-03-16 14:26+0100\n"
+"PO-Revision-Date: 2015-03-16 14:27+0100\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -25289,8 +25289,9 @@ msgid "Use \"...\" to shorten long completions."
 msgstr "Benutze \"...\" um lange Vervollständigungen zu kürzen."
 
 #: src/LyXRC.cpp:3333
-msgid "Allow TeXMacs shorthand, like => converting to Rightarrow."
-msgstr "Erlaube TeXMacs-Shorthands (z.B. Konvertierung von => zu Rightarrow)."
+msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
+msgstr ""
+"Erlaube TeXMacs-Shorthands (z.B. Konvertierung von => zu \\Rightarrow)."
 
 #: src/LyXRC.cpp:3337
 #, c-format
@@ -30211,15 +30212,15 @@ msgstr "HPhantom"
 msgid "VPhantom"
 msgstr "VPhantom"
 
-#: src/insets/InsetPhantom.cpp:329
+#: src/insets/InsetPhantom.cpp:340
 msgid "phantom"
 msgstr "phantom"
 
-#: src/insets/InsetPhantom.cpp:331
+#: src/insets/InsetPhantom.cpp:342
 msgid "hphantom"
 msgstr "hphantom"
 
-#: src/insets/InsetPhantom.cpp:333
+#: src/insets/InsetPhantom.cpp:344
 msgid "vphantom"
 msgstr "vphantom"
 
