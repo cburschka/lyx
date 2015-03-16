@@ -339,12 +339,16 @@ int InsetPhantom::plaintext(odocstringstream & os,
 	switch (params_.type) {
 	case InsetPhantomParams::Phantom:
 		os << '[' << buffer().B_("phantom") << ":";
+		break;
 	case InsetPhantomParams::HPhantom:
 		os << '[' << buffer().B_("hphantom") << ":";
+		break;
 	case InsetPhantomParams::VPhantom:
 		os << '[' << buffer().B_("vphantom") << ":";
+		break;
 	default:
 		os << '[' << buffer().B_("phantom") << ":";
+		break;
 	}
 	InsetCollapsable::plaintext(os, runparams, max_length);
 	os << "]";
@@ -362,6 +366,7 @@ int InsetPhantom::docbook(odocstream & os, OutputParams const & runparams) const
 	case InsetPhantomParams::VPhantom:
 	default:
 		cmdname = "phantom";
+		break;
 	}
 	os << "<" + cmdname + ">";
 	int const i = InsetCollapsable::docbook(os, runparams);
