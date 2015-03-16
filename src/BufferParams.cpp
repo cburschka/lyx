@@ -1954,7 +1954,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 			+ atlyxpreamble + "\\makeatother\n\n";
 
 	// We try to load babel late, in case it interferes with other packages.
-	// Jurabib, hyperref, varioref and listings (bug 8995) have to be
+	// Jurabib, hyperref, varioref, bicaption and listings (bug 8995) have to be
 	// called after babel, though.
 	if (use_babel && !features.isRequired("jurabib")
 	    && !features.isRequired("hyperref")
@@ -1967,6 +1967,8 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 						   features.needBabelLangOptions())) + '\n';
 		lyxpreamble += from_utf8(features.getBabelPostsettings());
 	}
+	if (features.isRequired("bicaption"))
+		lyxpreamble += "\\usepackage{bicaption}\n";
 	if (!listings_params.empty() || features.isRequired("listings"))
 		lyxpreamble += "\\usepackage{listings}\n";
 	if (!listings_params.empty()) {
