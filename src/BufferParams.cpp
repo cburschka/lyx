@@ -632,7 +632,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 						 "See section 3.1.2.2 (Class Availability) of the\n"
 						 "User's Guide for more information."), desc, prereqs);
 			frontend::Alert::warning(_("Document class not available"),
-				       msg);
+				       msg, true);
 		}
 	} else if (token == "\\begin_preamble") {
 		readPreamble(lex);

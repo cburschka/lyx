@@ -48,6 +48,9 @@ What's new
 - Fix the profile script used on cygwin to comply with the latest cygwin/X
   X server which, by default, does not anymore listen to tcp connections.
 
+- Add a "Do not show again" checkbox to the warning that is issued when the
+  LaTeX class/packages are missing for a given layout (bug 9420).
+
 
 * DOCUMENTATION AND LOCALIZATION
 
