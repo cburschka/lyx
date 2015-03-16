@@ -313,13 +313,22 @@ void InsetPhantom::latex(otexstream & os, OutputParams const & runparams) const
 {
 	if (runparams.moving_arg)
         	os << "\\protect";
-	if (params_.type == InsetPhantomParams::Phantom)
+
+    switch (params_.type) {
+    case InsetPhantomParams::Phantom:
 		os << "\\phantom{";
-	else if (params_.type == InsetPhantomParams::HPhantom)
+        break;
+    case InsetPhantomParams::HPhantom:
 		os << "\\hphantom{";
-	else if (params_.type == InsetPhantomParams::VPhantom)
+        break;
+    case InsetPhantomParams::VPhantom:
 		os << "\\vphantom{";
-	InsetCollapsable::latex(os, runparams);
+        break;
+    default:
+        os << "\\phantom{";
+        break;
+    }
+    InsetCollapsable::latex(os, runparams);
 	os << "}";
 }
 
