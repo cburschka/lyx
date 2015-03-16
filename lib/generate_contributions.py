@@ -1723,6 +1723,14 @@ contributors = [
                  "23 February 2005",
                  u"aapaper support, german documentation translation, bug reports"),
 
+     contributor(u"Stefan Swerk",
+                 "stefan_lyx () swerk ! priv ! at",
+                 "GPL",
+                 "Contribution license",
+                 "m=142644092217864",
+                 "15 March 2015",
+                 u"europasscv support"),
+
      contributor(u"Kayvan Aghaiepour Sylvan",
                  "kayvan () sylvan ! com",
                  "GPL",
