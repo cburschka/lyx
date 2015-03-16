@@ -87,6 +87,8 @@ What's new
 - Fix conversion of beamer block arguments where the overlay argument and the
   closing title argument bracket share the same ERT (bug 9411).
 
+- Fix handling of the TEXINPUTS environment variable on Windows (bug 9453).
+
 
 
 * USER INTERFACE
