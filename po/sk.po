@@ -3,13 +3,13 @@
 # Zdenko Podobný <zdpo@mailbox.sk>
 #
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
-# Kornel Benko <kornel@lyx.org>, 2009-2014.
+# Kornel Benko <kornel@lyx.org>, 2009-2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-03-13 18:19+0100\n"
-"PO-Revision-Date: 2014-11-14 18:39+0100\n"
+"POT-Creation-Date: 2015-03-16 11:13+0100\n"
+"PO-Revision-Date: 2015-03-16 12:26+0100\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -9143,6 +9143,10 @@ msgstr "Electronic Notes in Theor. Comp. Sc. (ENTCS)"
 msgid "Key words:"
 msgstr "Heslá:"
 
+#: lib/layouts/europasscv.layout:3
+msgid "Europass CV (2013)"
+msgstr "Europass CV (2013)"
+
 #: lib/layouts/europecv.layout:3
 msgid "Europe CV"
 msgstr "Europe CV"
@@ -9161,6 +9165,10 @@ msgstr "Meno:"
 #: lib/layouts/europecv.layout:47
 msgid "FooterName"
 msgstr "Meno v spodnom riadku"
+
+#: lib/layouts/europasscv.layout:97
+msgid "Name (footer):"
+msgstr "Meno (spodný riadok):"
 
 #: lib/layouts/europecv.layout:50
 msgid "Footer name:"
@@ -9214,6 +9222,10 @@ msgstr "Obrázok"
 msgid "Picture:"
 msgstr "Obrázok:"
 
+#: lib/layouts/europasscv.layout:176
+msgid "Resize photo to this width"
+msgstr "Fotku pretiahnuť na túto šírku"
+
 #: lib/layouts/europecv.layout:110
 msgid "Size"
 msgstr "Veľkosť"
@@ -9242,6 +9254,10 @@ msgstr "Titul ako sa zobrazí v hlavičke"
 msgid "Item"
 msgstr "Položka"
 
+#: lib/layouts/europasscv.layout:224 lib/layouts/europasscv.layout:260
+msgid "Summary of the item, can also be the time span"
+msgstr "Sumár objektu, môže byť aj časové rozpätie"
+
 #: lib/layouts/europecv.layout:158 lib/layouts/europecv.layout:217
 #: src/insets/Inset.cpp:115 src/insets/InsetVSpace.cpp:122
 msgid "Vertical Space"
@@ -9258,6 +9274,62 @@ msgstr "Sumár objektu, môže byť aj čas"
 #: lib/layouts/europecv.layout:171 lib/layouts/moderncv.layout:351
 msgid "Item:"
 msgstr "Položka:"
+
+#: lib/layouts/europasscv.layout:247
+msgid "ItemInset"
+msgstr "PoložkováVložka"
+
+#: lib/layouts/europasscv.layout:262
+msgid "Subitems"
+msgstr "Podpoložky"
+
+#: lib/layouts/europasscv.layout:269
+msgid "TitleItem"
+msgstr "TitulnáPoložka"
+
+#: lib/layouts/europasscv.layout:273
+msgid "Title item:"
+msgstr "Titulná položka:"
+
+#: lib/layouts/europasscv.layout:276
+msgid "TitleLevel"
+msgstr "TitulÚroveň"
+
+#: lib/layouts/europasscv.layout:280
+msgid "Title level:"
+msgstr "Úroveň titulu:"
+
+#: lib/layouts/europasscv.layout:284 lib/layouts/europasscv.layout:285
+msgid "Text (right side)"
+msgstr "Text (pravá strana)"
+
+#: lib/layouts/europasscv.layout:289
+msgid "BlueItem"
+msgstr "ModráPoložka"
+
+#: lib/layouts/europasscv.layout:292
+msgid "Blue item:"
+msgstr "Modrá položka:"
+
+#: lib/layouts/europasscv.layout:295
+msgid "BlueItemInset"
+msgstr "ModráPoložkováVložka"
+
+#: lib/layouts/europasscv.layout:298
+msgid "Blue subitems"
+msgstr "Modré podpoložky"
+
+#: lib/layouts/europasscv.layout:305
+msgid "BigItem"
+msgstr "VeľkáPoložka"
+
+#: lib/layouts/europasscv.layout:308
+msgid "Big Item:"
+msgstr "Veľká Položka:"
+
+#: lib/layouts/europasscv.layout:311
+msgid "EcvItemize"
+msgstr "Ecv-položky"
 
 #: lib/layouts/europecv.layout:178
 msgid "BulletedItem"
@@ -9362,6 +9434,10 @@ msgstr "Koniec"
 #: lib/layouts/europecv.layout:295
 msgid "End of CV"
 msgstr "Koniec CV"
+
+#: lib/layouts/europasscv.layout:441 lib/layouts/europasscv.layout:446
+msgid "Highlight"
+msgstr "Zvýrazniť"
 
 #: lib/layouts/europecv.layout:302
 msgid "VerticalSpace"
@@ -10652,6 +10728,22 @@ msgstr "Mobil:"
 #: lib/layouts/moderncv.layout:152
 msgid "Homepage:"
 msgstr "Domáca stránka:"
+
+#: lib/layouts/europasscv.layout:134
+msgid "InstantMessaging"
+msgstr "OkamžitéOdoslanie"
+
+#: lib/layouts/europasscv.layout:137
+msgid "Instant Messaging:"
+msgstr "Okamžité Odoslanie:"
+
+#: lib/layouts/europasscv.layout:141
+msgid "IM Type:"
+msgstr "Typ Odosielania:"
+
+#: lib/layouts/europasscv.layout:142
+msgid "IM Type (e.g., AOL Messenger)"
+msgstr "Typ Odosielania (napr. AOL Messenger)"
 
 #: lib/layouts/moderncv.layout:155
 msgid "Social"
