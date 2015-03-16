@@ -314,21 +314,21 @@ void InsetPhantom::latex(otexstream & os, OutputParams const & runparams) const
 	if (runparams.moving_arg)
         	os << "\\protect";
 
-    switch (params_.type) {
-    case InsetPhantomParams::Phantom:
+	switch (params_.type) {
+	case InsetPhantomParams::Phantom:
 		os << "\\phantom{";
-        break;
-    case InsetPhantomParams::HPhantom:
+		break;
+	case InsetPhantomParams::HPhantom:
 		os << "\\hphantom{";
-        break;
-    case InsetPhantomParams::VPhantom:
+		break;
+	case InsetPhantomParams::VPhantom:
 		os << "\\vphantom{";
-        break;
-    default:
-        os << "\\phantom{";
-        break;
-    }
-    InsetCollapsable::latex(os, runparams);
+		break;
+	default:
+		os << "\\phantom{";
+		break;
+	}
+	InsetCollapsable::latex(os, runparams);
 	os << "}";
 }
 
@@ -336,12 +336,16 @@ void InsetPhantom::latex(otexstream & os, OutputParams const & runparams) const
 int InsetPhantom::plaintext(odocstringstream & os,
 			    OutputParams const & runparams, size_t max_length) const
 {
-	if (params_.type == InsetPhantomParams::Phantom)
+	switch (params_.type) {
+	case InsetPhantomParams::Phantom:
 		os << '[' << buffer().B_("phantom") << ":";
-	else if (params_.type == InsetPhantomParams::HPhantom)
+	case InsetPhantomParams::HPhantom:
 		os << '[' << buffer().B_("hphantom") << ":";
-	else if (params_.type == InsetPhantomParams::VPhantom)
+	case InsetPhantomParams::VPhantom:
 		os << '[' << buffer().B_("vphantom") << ":";
+	default:
+		os << '[' << buffer().B_("phantom") << ":";
+	}
 	InsetCollapsable::plaintext(os, runparams, max_length);
 	os << "]";
 
@@ -352,12 +356,13 @@ int InsetPhantom::plaintext(odocstringstream & os,
 int InsetPhantom::docbook(odocstream & os, OutputParams const & runparams) const
 {
 	string cmdname;
-	if (params_.type == InsetPhantomParams::Phantom)
+	switch (params_.type) {
+	case InsetPhantomParams::Phantom:
+	case InsetPhantomParams::HPhantom:
+	case InsetPhantomParams::VPhantom:
+	default:
 		cmdname = "phantom";
-	else if (params_.type == InsetPhantomParams::HPhantom)
-		cmdname = "phantom";
-	else if (params_.type == InsetPhantomParams::VPhantom)
-		cmdname = "phantom";
+	}
 	os << "<" + cmdname + ">";
 	int const i = InsetCollapsable::docbook(os, runparams);
 	os << "</" + cmdname + ">";
