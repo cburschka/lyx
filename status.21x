@@ -69,6 +69,9 @@ What's new
 
 - Do not output \protect unnecessarily in subfigure contents (bug 9421).
 
+- Do \protect phantoms in fragile environments (such as captions)
+  (bug 9456).
+
 - Fix LaTeX error with font sizes in caption.
 
 - Fix wrong listings preamble encoding (bug 9382).
