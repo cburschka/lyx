@@ -395,7 +395,7 @@ Optionaler Parameter
 \begin_inset Quotes gld
 \end_inset
 
-Vertical Space
+Vertikaler Abstand
 \begin_inset Quotes grd
 \end_inset
 
@@ -407,7 +407,7 @@ Optionaler Parameter
 \begin_inset Quotes gld
 \end_inset
 
-Summary
+Zusammenfassung
 \begin_inset Quotes grd
 \end_inset
 
@@ -458,7 +458,7 @@ Optionaler Parameter
 \begin_inset Quotes gld
 \end_inset
 
-Vertical Space
+Vertikaler Abstand
 \begin_inset Quotes grd
 \end_inset
 
@@ -470,7 +470,7 @@ Optionaler Parameter
 \begin_inset Quotes gld
 \end_inset
 
-Summary
+Zusammenfassung
 \begin_inset Quotes grd
 \end_inset
 
@@ -485,13 +485,13 @@ Anmerkung: Die Verwendung von
 newline
 \family default
  an Stelle eines normalen oder erzwungenen Zeilenumbruchs verringert den
- Abstand zwischen zwei Items bzw.
+ Abstand zwischen zwei Stichpunkten bzw.
  erhält die Formatierung.
- Als Alternative könnten auch zwei Items mit angepasstem 
+ Als Alternative könnten auch zwei Stichpunkte mit angepasstem 
 \begin_inset Quotes gld
 \end_inset
 
-Vertical Space
+Vertikaler Abstand
 \begin_inset Quotes grd
 \end_inset
 
@@ -522,11 +522,12 @@ Beratung diverser Institutionen
 status open
 
 \begin_layout Plain Layout
-Für korrekte Auflistungen innerhalb von 'Items' kann (und sollte) ein 
+Für korrekte Auflistungen innerhalb von Stichpunkten kann (und sollte) eine
+ 
 \begin_inset Quotes gls
 \end_inset
 
-ItemInset
+Stichpunkt-Einfügung
 \begin_inset Quotes grs
 \end_inset
 
@@ -534,13 +535,13 @@ ItemInset
 \family sans
 Einfügen\SpecialChar \menuseparator
 Benutzerdefinierte Einfügungen\SpecialChar \menuseparator
-ItemInset
+Stichpunkt-Einfügung
 \family default
 ) mit 
 \begin_inset Quotes gls
 \end_inset
 
-EcvItemize
+ECV-Auflistung
 \begin_inset Quotes grs
 \end_inset
 
@@ -630,10 +631,10 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Title Level
+Titelgrad
 \series default
-: Wie Title Item, nur mit der Möglichkeit beispielsweise ISCED-11 Level
- anzugeben.
+: Wie Titelstichpunkt, nur mit der Möglichkeit einen nationalen oder internation
+alen Grad, etwa ISCED-11, anzugeben.
 \end_layout
 
 \begin_layout Itemize
@@ -641,7 +642,7 @@ Optionaler Parameter
 \begin_inset Quotes gld
 \end_inset
 
-Vertical Space
+Vertikaler Abstand
 \begin_inset Quotes grd
 \end_inset
 
@@ -653,7 +654,7 @@ Optionaler Parameter
 \begin_inset Quotes gld
 \end_inset
 
-Summary
+Zusammenfassung
 \begin_inset Quotes grd
 \end_inset
 
@@ -665,7 +666,7 @@ Optionaler Parameter
 \begin_inset Quotes gld
 \end_inset
 
-Text (right side)
+Text (rechte Seite)
 \begin_inset Quotes grd
 \end_inset
 
@@ -692,19 +693,11 @@ Fisher
 status open
 
 \begin_layout Plain Layout
-Beispiel eines 
-\begin_inset Quotes gld
-\end_inset
-
-Highlights
-\begin_inset Quotes grd
-\end_inset
-
-: 
+Beispiel einer Hervorhebung: 
 \family sans
 Bearbeiten\SpecialChar \menuseparator
 Textstil\SpecialChar \menuseparator
-Highlight
+Hervorhebung
 \end_layout
 
 \end_inset
@@ -977,7 +970,7 @@ Die letzte Sprache in der Tabelle, wie oben.
 status open
 
 \begin_layout Plain Layout
-Kurze GERFS Definition nach der Tabelle
+Kurze GERFS-Definition nach der Tabelle
 \end_layout
 
 \end_inset
@@ -1002,9 +995,9 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Blue Item
+Blauer Stichpunkt
 \series default
-: Wie Item, nur erscheint die linke Spalte blau.
+: Wie Stichpunkt, nur erscheint die linke Spalte blau.
 \end_layout
 
 \begin_layout Itemize
@@ -1012,7 +1005,7 @@ Optionaler Parameter
 \begin_inset Quotes gld
 \end_inset
 
-Vertical Space
+Vertikaler Abstand
 \begin_inset Quotes grd
 \end_inset
 
@@ -1024,7 +1017,7 @@ Optionaler Parameter
 \begin_inset Quotes gld
 \end_inset
 
-Summary
+Zusammenfassung
 \begin_inset Quotes grd
 \end_inset
 
