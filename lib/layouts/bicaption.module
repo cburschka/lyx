@@ -30,9 +30,7 @@ Style "Caption setup"
 	LabelFont
 	  Color		Green
 	EndFont
-	BabelPreamble
-	\usepackage{bicaption} % for multilingual captions
-	EndBabelPreamble
+	Requires	bicaption
 End
 
 

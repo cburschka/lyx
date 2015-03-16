@@ -6095,8 +6095,61 @@ enumitem
  itemize, description).
  It is used by the Linguistics module to fine tune the appearance of numbered
  subexamples.
-\change_inserted -712698321 1404379467
+\change_inserted -712698321 1426533959
 
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1426533969
+Multilingual Captions module
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted -712698321 1426533976
+bicaption
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1426533959
+Found: 
+\begin_inset Info
+type  "package"
+arg   "bicaption"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1426533992
+CTAN: 
+\family typewriter
+macros/latex/contrib/caption/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1426534118
+Notes: The package 
+\family sans
+bicaption
+\family default
+ enables pairs of captions (in different languages), with control of other
+ options similar to that provided by the caption package.
+ Languages to be used are selected using 
+\family sans
+babel
+\family default
+.
+ This package is part of the 
+\family sans
+caption
+\family default
+ bundle.
 \end_layout
 
 \begin_layout Subsection
