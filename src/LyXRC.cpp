@@ -3345,7 +3345,7 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_AUTOCORRECTION_MATH:
-		str = _("Allow TeXMacs shorthand, like => converting to \Rightarrow.");
+		str = _("Allow TeXMacs shorthand, like => converting to \\Rightarrow.");
 		break;
 
 	case RC_NUMLASTFILES:
