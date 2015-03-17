@@ -1,0 +1,16 @@
+# Test for searching the special LyX and LaTeX words
+# when ignoring format
+
+Lang sk_SK.utf8
+TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
+KK: This should be a LaTeX logo: \Axspecialchar-insert lyx\[Return]\[Return]
+KK: for a WYSIWYG LaTeX editor.\C\[Home]
+KK: \Cs
+KK: \CF
+# Uncheck ignore format (depends on IT language)
+KK: \At\Ai\Ah
+KK: \Axspecialchar-insert lyx\[Return]\Ai
+KK: \Axspecialchar-insert latex\[Return]\Ae
+TestEnd
+Lang C
+Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 29\n with len: 1' lyx-log.txt
