@@ -25,7 +25,7 @@
 #  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # To call this script, one has to provide following parameters
-# IMAGES_DIR                # root for the directory-tree for .png and .git image files 
+# IMAGES_DIR                # root for the directory-tree for .png, .svgz and .git image files 
 # RESOURCE_NAME             # full path of the resulting resource-file
 # MAPPED_DIR                # Path-prefix to be removed from the file name entries
 
@@ -47,13 +47,13 @@ endif()
 
 file(GLOB_RECURSE images_png      ${IMAGES_DIR}/*.png)
 file(GLOB_RECURSE images_gif      ${IMAGES_DIR}/*.gif)
+file(GLOB_RECURSE images_svgz      ${IMAGES_DIR}/*.svgz)
 
-set(images ${images_png} ${images_gif})
+set(images ${images_png} ${images_gif} ${images_svgz})
 
 file(REMOVE ${RESOURCE_NAME})
-  if(EXISTS ${RESOURCE_NAME})
-    message(FATAL_ERROR "Cannot remove file ${RESOURCE_NAME}")
-  endif()
+if(EXISTS ${RESOURCE_NAME})
+  message(FATAL_ERROR "Cannot remove file ${RESOURCE_NAME}")
 endif()
 
 file(WRITE ${RESOURCE_NAME} "<!DOCTYPE RCC><RCC version=\"1.0\">\n")
