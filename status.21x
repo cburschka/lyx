@@ -66,6 +66,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix LaTeX errors caused by too late loading of fixltx2e package
+  (bugs 9452, 9361).
+
 - Do not output \protect unnecessarily before \caption (bug 9177).
 
 - Do not output \protect unnecessarily in subfigure contents (bug 9421).
