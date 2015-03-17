@@ -10,11 +10,11 @@ TestEnd
 Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 1\n with len: 2' lyx-log.txt
 
-Lang it_IT.utf8
+Lang sk_SK.utf8
 TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
 KK: \CF
 # Uncheck ignore format
-KK: \Az\Ag\Ae
+KK: \At\Ai\Ah
 KK: \Cm\\beta\\alpha \[Return]
 TestEnd
 Lang C

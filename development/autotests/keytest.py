@@ -209,20 +209,23 @@ def sendKeystring(keystr, LYX_PID):
     actual_delay = key_delay
     if actual_delay == '':
         actual_delay = def_delay
-    if not xvkbd_hacked:
-        subprocess.call([xvkbd_exe, "-xsendevent", "-window", lyx_window_name,
-                         "-delay", actual_delay, "-text", keystr], stdout = FNULL, stderr = FNULL)
+    xvpar = [xvkbd_exe]
+    if qt_frontend == 'QT5':
+        xvpar.extend(["-no-jump-pointer"])
     else:
-        subprocess.call([xvkbd_exe, "-no_root", "-wait_idle", lyx_pid,
-                         "-xsendevent", "-window", lyx_window_name,
-                         "-delay", actual_delay, "-text", keystr], stdout = FNULL, stderr = FNULL)
+        xvpar.extend(["-xsendevent"])
+    if xvkbd_hacked:
+        xvpar.extend(["-wait_idle", lyx_pid])
+    xvpar.extend(["-window", lyx_window_name, "-delay", actual_delay, "-text", keystr])
+    
+    subprocess.call(xvpar, stdout = FNULL, stderr = FNULL)
 
 def system_retry(num_retry, cmd):
     i = 0
     rtn = intr_system(cmd)
     while ( ( i < num_retry ) and ( rtn != 0) ):
         i = i + 1
-	rtn = intr_system(cmd)
+        rtn = intr_system(cmd)
         time.sleep(1)
     if ( rtn != 0 ):
         print "Command Failed: "+cmd
@@ -271,6 +274,9 @@ if xvkbd_exe is None:
     xvkbd_exe = "xvkbd"
 
 xvkbd_hacked = os.environ.get('XVKBD_HACKED') != None
+qt_frontend = os.environ.get('QT_FRONTEND')
+if qt_frontend is None:
+    qt_frontend = 'QT4'
 
 locale_dir = os.environ.get('LOCALE_DIR')
 if locale_dir is None:

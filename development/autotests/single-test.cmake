@@ -23,6 +23,7 @@
 #       -DLOCALE_DIR=xxx \
 #       -DPO_BUILD_DIR=xxx \
 #       -DPACKAGE=xxx \
+#       -DFRONTEND=Qt? \
 #       -P ${AUTOTEST_ROOT}/single-test.cmake
 
 set(KEYTEST "${AUTOTEST_ROOT}/keytest.py")
@@ -74,6 +75,7 @@ if(use_hacked)
 else()
   set(XVKBD_EXE "/usr/bin/xvkbd")
 endif()
+set(ENV{QT_FRONTEND} ${FRONTEND})
 
 if(EXISTS "${LYX_TESTS_USERDIR}/session")
   execute_process(COMMAND ${CMAKE_COMMAND} -E remove -f "${LYX_TESTS_USERDIR}/session")

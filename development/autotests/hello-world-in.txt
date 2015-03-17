@@ -55,9 +55,8 @@
 # LaTeX, and verifies that the typed characters are indeed present in the
 # exported document.
 #
-TestBegin test.lyx > lyx-log.txt 2>&1
+TestBegin test.lyx -dbg key > lyx-log.txt 2>&1
 KK: Hello World
 KK: \Cs
-KK: \Ax
-KK: buffer-export latex\[Return]
+KK: \Axbuffer-export latex\[Return]
 TestEnd grep "Hello World" test.tex

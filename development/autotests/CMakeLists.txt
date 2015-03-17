@@ -105,6 +105,7 @@ if(QT_USES_X11)
         -DLYX_USERDIR_VER=${LYX_USERDIR_VER}
         -DKEYTEST_OUTFILE=${_t}-out.txt
         -DPACKAGE=${PACKAGE}
+	-DFRONTEND=${LYX_USE_QT}
         -DLOCALE_DIR=${LOCALE_DIR}
         -P ${TOP_SRC_DIR}/development/autotests/single-test.cmake)
       settestlabel(keytest/${_t} "key")

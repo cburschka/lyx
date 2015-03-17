@@ -1,24 +1,24 @@
 # Finding displayed maths with ignore-format on&off (might affect #7596)
 #
-Lang it_IT.utf8
+Lang sk_SK.utf8
 TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
 KK: \Axmath-display\[Return]
 KK: x^2 +x^2\C\[Home]
 KK: \Cs
 KK: \CF
 # Uncheck ignore format
-KK: \Az\Ag\Ae
+KK: \At\Ai\Ah
 KK: \Axmath-display\[Return]
 KK: x^2\[Return]
 TestEnd
 Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 0\n with len: 1' lyx-log.txt
 
-Lang it_IT.utf8
+Lang sk_SK.utf8
 TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
 KK: \CF
 # Uncheck ignore format
-KK: \Az\Ag\Ae
+KK: \At\Ai\Ah
 KK: \Axmath-display\[Return]
 KK: x^2\[Return]\[Return]
 TestEnd

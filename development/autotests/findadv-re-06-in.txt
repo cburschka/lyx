@@ -1,11 +1,11 @@
 # Finding regexps within \frac{}
 
-Lang it_IT.utf8
+Lang sk_SK.utf8
 TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
 KK: \Cm\\frac 1-x\[Down]1+x^2 \C\[Home]
 KK: \CF
 # Uncheck ignore format (depends on IT language)
-KK: \Az\Ag\Ae
+KK: \At\Ai\Ah
 KK: \Cm\\frac \Axregexp-mode\[Return].* \[Down]1+x^2 \[Return]
 TestEnd
 Lang C
