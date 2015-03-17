@@ -1326,6 +1326,11 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// are doing!
 	if (features.mustProvide("fix-cm"))
 		os << "\\RequirePackage{fix-cm}\n";
+	// Likewise for fixltx2e. If other packages conflict with this policy,
+	// treat it as a package bug (and report it!)
+	// See http://www.latex-project.org/cgi-bin/ltxbugs2html?pr=latex/4407
+	if (features.mustProvide("fixltx2e"))
+		os << "\\RequirePackage{fixltx2e}\n";
 
 	os << "\\documentclass";
 

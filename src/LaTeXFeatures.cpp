@@ -896,12 +896,6 @@ string const LaTeXFeatures::getPackages() const
 	if (!params_.useNonTeXFonts && !use_newtxmath && !amsPackages.empty())
 		packages << amsPackages;
 
-	// fixltx2e must be loaded after amsthm, since amsthm produces an error with
-	// the redefined \[ command (bug 7233). Load it as early as possible, since
-	// other packages might profit from it.
-	if (mustProvide("fixltx2e"))
-		packages << "\\usepackage{fixltx2e}\n";
-
 	if (mustProvide("cancel") &&
 	    params_.use_package("cancel") != BufferParams::package_off)
 		packages << "\\usepackage{cancel}\n";
