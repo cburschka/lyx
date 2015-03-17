@@ -2936,9 +2936,17 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		enable = theSpellChecker();
 		break;
 
-	case LFUN_LAYOUT:
+	case LFUN_LAYOUT: {
 		enable = !cur.inset().forcePlainLayout();
+
+		docstring layout = cmd.argument();
+		if (layout.empty()) {
+			DocumentClass const & tclass = cur.buffer()->params().documentClass();
+			layout = tclass.defaultLayoutName();
+		}
+		flag.setOnOff(layout == cur.paragraph().layout().name());
 		break;
+	}
 
 	case LFUN_ENVIRONMENT_SPLIT: {
 		// FIXME This hardcoding is bad
