@@ -47,32 +47,32 @@ namespace {
 
 int logoWidth(FontInfo const & font, InsetSpecialChar::Kind kind) {
 	frontend::FontMetrics const & fm = theFontMetrics(font);
-	double const em = fm.width('M');
+	int const em = fm.width('M');
 	int width = 0;
 	// See drawlogo() below to understand what this does.
 	switch (kind) {
 	case InsetSpecialChar::PHRASE_LYX:
-		width = fm.width(from_ascii("L")) - 0.16667 * em
-			+ fm.width(from_ascii("Y")) - 0.125 * em
+		width = fm.width(from_ascii("L")) - em / 6
+			+ fm.width(from_ascii("Y")) - em / 8
 			+ fm.width(from_ascii("X"));
 		break;
 
 	case InsetSpecialChar::PHRASE_TEX:
-		width = fm.width(from_ascii("T")) - 0.16667 * em
-			+ fm.width(from_ascii("E")) - 0.125 * em
+		width = fm.width(from_ascii("T")) - em / 6
+			+ fm.width(from_ascii("E")) - em / 8
 			+ fm.width(from_ascii("X"));
 		break;
 
 	case InsetSpecialChar::PHRASE_LATEX2E:
 		width = logoWidth(font, InsetSpecialChar::PHRASE_LATEX)
-			+ 0.15 * em
+			+ 3 * em / 20
 			+ fm.width(from_ascii("2") + char_type(0x03b5));
 		break;
 	case InsetSpecialChar::PHRASE_LATEX: {
 		FontInfo smaller = font;
 		smaller.decSize().decSize();
-		width = fm.width(from_ascii("L")) - 0.36 * em
-			+ theFontMetrics(smaller).width(from_ascii("A")) - 0.15 * em
+		width = fm.width(from_ascii("L")) - 9 * em / 25
+			+ theFontMetrics(smaller).width(from_ascii("A")) - 3 * em / 20
 			+ logoWidth(font, InsetSpecialChar::PHRASE_TEX);
 		break;
 	}
@@ -139,16 +139,16 @@ void drawLogo(PainterInfo & pi, InsetSpecialChar::Kind kind, int & x, int & y) {
 	FontInfo const & font = pi.base.font;
 	// FIXME: this definition of em is bogus, but there is a need
 	// for a big refactoring of the code around this issue anyway.
-	double const em = theFontMetrics(font).width('M');
+	int const em = theFontMetrics(font).width('M');
 	switch (kind) {
 	case InsetSpecialChar::PHRASE_LYX:
 		/** Reference macro:
 		 *  \providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\\@};
 		 */
 		x += pi.pain.text(x, y, from_ascii("L"), font);
-		x -= 0.16667 * em;
-		x += pi.pain.text(x, y + 0.25 * em, from_ascii("Y"), font);
-		x -= 0.125 * em;
+		x -= em / 6;
+		x += pi.pain.text(x, y + em / 4, from_ascii("Y"), font);
+		x -= em / 8;
 		x += pi.pain.text(x, y, from_ascii("X"), font);
 		break;
 
@@ -156,11 +156,11 @@ void drawLogo(PainterInfo & pi, InsetSpecialChar::Kind kind, int & x, int & y) {
 		/** Reference macro:
 		 *  \def\TeX{T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\@}
 		 */
-		double const ex = theFontMetrics(font).ascent('x');
+		int const ex = theFontMetrics(font).ascent('x');
 		x += pi.pain.text(x, y, from_ascii("T"), font);
-		x -= 0.16667 * em;
-		x += pi.pain.text(x, y + 0.5 * ex, from_ascii("E"), font);
-		x -= 0.125 * em;
+		x -= em / 6;
+		x += pi.pain.text(x, y + ex / 2, from_ascii("E"), font);
+		x -= em / 8;
 		x += pi.pain.text(x, y, from_ascii("X"), font);
 		break;
 	}
@@ -171,9 +171,9 @@ void drawLogo(PainterInfo & pi, InsetSpecialChar::Kind kind, int & x, int & y) {
 		 *    \LaTeX\kern.15em2$_{\textstyle\varepsilon}$}}
 		 */
 		drawLogo(pi, InsetSpecialChar::PHRASE_LATEX, x, y);
-		x += 0.15 * em;
+		x += 3 * em / 20;
 		x += pi.pain.text(x, y, from_ascii("2"), font);
-		x += pi.pain.text(x, y + 0.25 * em, char_type(0x03b5), font);
+		x += pi.pain.text(x, y + em / 4, char_type(0x03b5), font);
 		break;
 
 	case InsetSpecialChar::PHRASE_LATEX: {
@@ -190,11 +190,11 @@ void drawLogo(PainterInfo & pi, InsetSpecialChar::Kind kind, int & x, int & y) {
 		 *        \TeX}
 		 */
 		x += pi.pain.text(x, y, from_ascii("L"), font);
-		x -= 0.36 * em;
+		x -= 9 * em / 25;
 		FontInfo smaller = font;
 		smaller.decSize().decSize();
-		x += pi.pain.text(x, y - 0.2 * em, from_ascii("A"), smaller);
-		x -= 0.15 * em;
+		x += pi.pain.text(x, y - em / 5, from_ascii("A"), smaller);
+		x -= 3 * em / 20;
 		drawLogo(pi, InsetSpecialChar::PHRASE_TEX, x, y);
 		break;
 	}
@@ -396,7 +396,7 @@ void InsetSpecialChar::latex(otexstream & os,
 	case PHRASE_LATEX2E:
 		if (rp.moving_arg)
 			os << "\\protect";
-		os << "\\LaTeX2e{}";
+		os << "\\LaTeXe{}";
 		break;
 	case PHRASE_LATEX:
 		if (rp.moving_arg)
