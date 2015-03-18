@@ -110,6 +110,10 @@ LaTeX::LaTeX(string const & latex, OutputParams const & rp,
 
 void LaTeX::deleteFilesOnError() const
 {
+	// Note that we do not always call this function when there is an error.
+	// For example, if there is an error but an output file is produced we
+	// still would like to output (export/view) the file.
+
 	// What files do we have to delete?
 
 	// This will at least make latex do all the runs
@@ -236,7 +240,9 @@ int LaTeX::run(TeXErrors & terr)
 	}
 
 	if (scanres & ERRORS) {
-		deleteFilesOnError();
+		// We no longer run deleteFilesOnError() here
+		// because we now show a resulting PDF even if
+		// there was an error.
 		return scanres; // return on error
 	}
 

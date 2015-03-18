@@ -4119,12 +4119,10 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 		d->cloned_buffer_->d->errorLists[error_type] = d->errorLists[error_type];
 	}
 
-	if (!success)
-		return ExportConverterError;
 
 	if (put_in_tempdir) {
 		result_file = tmp_result_file.absFileName();
-		return ExportSuccess;
+		return success ? ExportSuccess : ExportConverterError;
 	}
 
 	if (dest_filename.empty())
@@ -4189,7 +4187,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 			formats.prettyName(format)));
 	}
 
-	return ExportSuccess;
+	return success ? ExportSuccess : ExportConverterError;
 }
 
 
@@ -4214,11 +4212,10 @@ Buffer::ExportStatus Buffer::preview(string const & format, bool includeall) con
 	}
 	// (2) export with included children only
 	ExportStatus const status = doExport(format, true, false, result_file);
-	if (status != ExportSuccess)
-		return status;
-	if (!formats.view(*this, FileName(result_file), format))
+	FileName const previewFile(result_file);
+	if (previewFile.exists() && !formats.view(*this, previewFile, format))
 		return PreviewError;
-	return PreviewSuccess;
+	return (status == ExportSuccess) ? PreviewSuccess : status;
 }
 
 
