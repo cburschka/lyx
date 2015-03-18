@@ -32,7 +32,7 @@ class Paragraph;
 /// This encapsulates a single slice of a document iterator as used e.g.
 /// for cursors.
 
-// After IU, the distinction of MathInset and InsetOld as well as
+// After inset unification, the distinction of InsetMath and Inset as well as
 // that of MathData and Text should vanish. They are conceptually the
 // same (now...)
 
@@ -89,7 +89,11 @@ public:
 	pos_type pos() const { return pos_; }
 	/// return the position within the paragraph
 	pos_type & pos() { return pos_; }
-	/// return the last position within the paragraph
+	/*!
+	 * \return the last position within the paragraph.
+	 * Note that this is the position behind the last character or inset,
+	 * i.e. you cannot dereference it.
+	 */
 	pos_type lastpos() const;
 	/// return the number of embedded cells
 	size_t nargs() const { return inset_->nargs(); }
@@ -152,7 +156,9 @@ private:
 	 * Cell index of a position in this inset.
 	 * This is the primary cell information also for grid like insets,
 	 * although we have the convenience functions row() and col() for
-	 * those * and column changes every time the number of columns ornumber
+	 * those.
+	 * This means that the corresponding idx_ of a cell in a given row
+	 * and column changes every time the number of columns or number
 	 * of rows changes. Normally the cursor should stay in the same cell,
 	 * so these changes should typically be performed like the following:
 	 * \code

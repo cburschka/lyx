@@ -20,12 +20,21 @@
 
 namespace lyx {
 
-	/// a type for positions used in paragraphs
-	// needs to be signed for a while to hold the special value -1 that is
-	// used there
+	/*!
+	 * A type for positions used in paragraphs.
+	 * Each position is either occupied by a single character or an inset.
+	 * For insets, the placeholder META_INSET is stored in the paragraph
+	 * text, and the actual insets are maintained separately.
+	 */
+	// FIXME: should be unsigned, but needs to be signed for a while to
+	// hold the special value -1 that is used somewhere
+	// Note that the signed property is also used in loops counting to zero.
 	typedef ptrdiff_t  pos_type;
 
-	/// a type for paragraph offsets
+	/*!
+	 * A type for paragraph offsets.
+	 * This is used to address paragraphs in ParagraphList, Text etc.
+	 */
 	// FIXME: should be unsigned as well.
 	// however, simply changing it breaks a downward loop somewhere...
 	typedef ptrdiff_t  pit_type;
@@ -47,13 +56,13 @@ namespace lyx {
 
 	struct size_type {
 		///
-		typedef size_t  base_type;
+		typedef size_t base_type;
 		///
 		size_type(base_type t) { data_ = t; }
 		///
 		operator base_type() const { return data_; }
 		///
-		private:
+	private:
 		base_type data_;
 	};
 
@@ -61,8 +70,8 @@ namespace lyx {
 
 	///
 	enum word_location {
-		// the word around the cursor, only if the cursor is
-		//not at a boundary
+		/// the word around the cursor, only if the cursor is
+		/// not at a boundary
 		WHOLE_WORD_STRICT,
 		// the word around the cursor
 		WHOLE_WORD,
