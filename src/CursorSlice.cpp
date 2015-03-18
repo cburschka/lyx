@@ -80,19 +80,15 @@ pit_type CursorSlice::lastpit() const
 
 CursorSlice::row_type CursorSlice::row() const
 {
-	// LASSERT: This should only ever be called from an InsetMath.
-	// Should we crash in release mode, though, or try to continue?
-	LASSERT(asInsetMath(), /**/);
-	return asInsetMath()->row(idx_);
+	LASSERT(inset_, return 0);
+	return inset_->row(idx_);
 }
 
 
 CursorSlice::col_type CursorSlice::col() const
 {
-	// LASSERT: This should only ever be called from an InsetMath.
-	// Should we crash in release mode, though, or try to continue?
-	LASSERT(asInsetMath(), /**/);
-	return asInsetMath()->col(idx_);
+	LASSERT(inset_, return 0);
+	return inset_->col(idx_);
 }
 
 
