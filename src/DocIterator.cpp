@@ -449,6 +449,28 @@ void DocIterator::backwardPos()
 }
 
 
+#if 0
+// works, but currently not needed
+void DocIterator::backwardInset()
+{
+	backwardPos();
+
+	while (!empty() && !nextInset()) {
+		if (inTexted()) {
+			pos_type const lastp = lastpos();
+			Paragraph const & par = paragraph();
+			pos_type & pos = top().pos();
+			while (pos > 0 && (pos == lastp || !par.isInset(pos)))
+				--pos;
+			if (pos > 0)
+				break;
+		}
+		backwardPos();
+	}
+}
+#endif
+
+
 bool DocIterator::hasPart(DocIterator const & it) const
 {
 	// it can't be a part if it is larger

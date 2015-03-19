@@ -202,7 +202,7 @@ public:
 	/// move backward one paragraph
 	void backwardPar();
 	/// move backward one inset
-	/// FIXME: This is not implemented!
+	/// not used currently, uncomment if you need it
 	//void backwardInset();
 
 	/// are we some 'extension' (i.e. deeper nested) of the given iterator
