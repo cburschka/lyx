@@ -226,7 +226,8 @@ int LaTeX::run(TeXErrors & terr)
 	LYXERR(Debug::LATEX, "Run #" << count);
 	message(runMessage(count));
 
-	startscript();
+	int const exit_code = startscript();
+
 	scanres = scanLogFile(terr);
 	if (scanres & ERROR_RERUN) {
 		LYXERR(Debug::LATEX, "Rerunning LaTeX");
@@ -422,6 +423,7 @@ int LaTeX::run(TeXErrors & terr)
 
 	// Write the dependencies to file.
 	head.write(depfile);
+
 	if (scanres & NO_OUTPUT) {
 		// A previous run could have left a PDF and since
 		// no PDF is created if NO_OUTPUT, we remove any
@@ -431,6 +433,10 @@ int LaTeX::run(TeXErrors & terr)
 		// be the same so any lingering PDF will be viewed.
 		deleteFilesOnError();
 	}
+
+	if (exit_code)
+		scanres |= NONZERO_ERROR;
+
 	LYXERR(Debug::LATEX, "Done.");
 	return scanres;
 }

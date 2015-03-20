@@ -52,6 +52,8 @@ Changes with respect to external programs and libraries in 2.2:
   run LyX against Qt 4.8.x. On Windows, Qt 4.8.5 suffers from a bug that 
   breaks the use of shortcuts, so on Windows Qt 4.8.4 is advised.
 
+- LyX now gives an error if the underlying LaTeX command exited with error.
+
 
 Known issues in version 2.2.0
 -----------------------------
