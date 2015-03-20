@@ -134,7 +134,10 @@ public:
 		ExportTexPathHasSpaces,
 		ExportConverterError,
 		// preview
+		// Implies ExportSuccess.
 		PreviewSuccess,
+		// The exported file exists but there was an error when opening
+		// it in a viewer.
 		PreviewError
 	};
 

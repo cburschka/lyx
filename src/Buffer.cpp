@@ -4213,9 +4213,21 @@ Buffer::ExportStatus Buffer::preview(string const & format, bool includeall) con
 	// (2) export with included children only
 	ExportStatus const status = doExport(format, true, false, result_file);
 	FileName const previewFile(result_file);
-	if (previewFile.exists() && !formats.view(*this, previewFile, format))
-		return PreviewError;
-	return (status == ExportSuccess) ? PreviewSuccess : status;
+	if (previewFile.exists()) {
+		if (!formats.view(*this, previewFile, format))
+			return PreviewError;
+		else if (status == ExportSuccess)
+			return PreviewSuccess;
+		else
+			return status;
+	}
+	else {
+		// Successful export but no output file?
+		// Probably a bug in error detection.
+		LATTEST (status != ExportSuccess);
+
+		return status;
+	}
 }
 
 
