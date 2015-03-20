@@ -142,6 +142,9 @@ void LaTeX::deleteFilesOnError() const
 	// Also remove the aux file
 	FileName const aux(changeExtension(file.absFileName(), ".aux"));
 	aux.removeFile();
+
+	// Remove the output file, which is often generated even if error
+	output_file.removeFile();
 }
 
 
@@ -421,6 +424,15 @@ int LaTeX::run(TeXErrors & terr)
 
 	// Write the dependencies to file.
 	head.write(depfile);
+	if (scanres & NO_OUTPUT) {
+		// A previous run could have left a PDF and since
+		// no PDF is created if NO_OUTPUT, we remove any
+		// existing PDF and temporary files so that an
+		// incorrect PDF is not displayed, which could otherwise
+		// happen if View is run again because the checksum will
+		// be the same so any lingering PDF will be viewed.
+		deleteFilesOnError();
+	}
 	LYXERR(Debug::LATEX, "Done.");
 	return scanres;
 }
