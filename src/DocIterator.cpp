@@ -577,8 +577,9 @@ void DocIterator::sanitize()
 			fixIfBroken();
 			break;
 		}
-		if (!inset->editable()) {
-			LYXERR0("Inset found on cursor stack is not editable.");
+		if ((inset->inMathed() && !inset->isActive())
+		    || (!inset->inMathed() && !inset->editable())) {
+			LYXERR0("Inset found on cursor stack is not active.");
 			fixIfBroken();
 			break;
 		}
