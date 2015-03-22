@@ -1,0 +1,10 @@
+# Test undo of \sqrt in \frac
+# 
+
+Lang C
+TestBegin test.lyx > lyx-log.txt 2>&1
+KK: \Amm\\frac \\sqrt \Cz
+KK: \[Return]
+TestEnd
+Lang C
+Assert ! pcregrep -M 'SIGSEGV' lyx-log.txt
