@@ -676,7 +676,7 @@ void MathData::attachMacroParameters(Cursor * cur,
 	}
 
 	// remove them from the MathData
-	erase(begin() + macroPos + 1, begin() + p);
+	erase(macroPos + 1, p);
 
 	// cursor outside this MathData?
 	if (thisSlice == -1)
@@ -883,7 +883,7 @@ MathData::size_type MathData::x2pos(BufferView const * bv, int targetx, int glue
 	int currx = 0;
 	CoordCacheBase<Inset> const & coords = bv->coordCache().getInsets();
 	// find first position after targetx
-	for (; currx < targetx && it < end(); ++it) {
+	for (; currx < targetx && it != end(); ++it) {
 		lastx = currx;
 		if ((*it)->getChar() == ' ')
 			currx += glue;
