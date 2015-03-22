@@ -261,7 +261,7 @@ char const * const known_special_protect_chars[] = {"LyX", "TeX",
 char const * const known_coded_special_chars[] = {"\\SpecialChar \\ldots{}\n",
 "\\SpecialChar \\menuseparator\n", "\\SpecialChar \\textcompwordmark{}\n",
 "\\SpecialChar \\slash{}\n", "~", "^", "\n\\backslash\n",
-"\\SpecialChar \\LyX\n", "\\SpecialChar \\TeX\n", "\\SpecialChar \\LaTeXe\n",
+"\\SpecialChar \\LyX\n", "\\SpecialChar \\TeX\n", "\\SpecialChar \\LaTeX2e\n",
 "\\SpecialChar \\LaTeX\n", 0};
 
 /*!
