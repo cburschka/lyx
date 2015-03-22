@@ -86,7 +86,8 @@ void InsetMathSymbol::metrics(MetricsInfo & mi, Dimension & dim) const
 	scriptable_ = false;
 	if (mi.base.style == LM_ST_DISPLAY)
 		if (sym_->inset == "cmex" || sym_->inset == "esint" ||
-		    sym_->extra == "funclim")
+		    sym_->extra == "funclim" ||
+		    (sym_->inset == "stmry" && sym_->extra == "mathop"))
 			scriptable_ = true;
 }
 
@@ -143,7 +144,8 @@ bool InsetMathSymbol::takesLimits() const
 		sym_->inset == "cmex" ||
 		sym_->inset == "lyxboldsymb" ||
 		sym_->inset == "esint" ||
-		sym_->extra == "funclim";
+		sym_->extra == "funclim" ||
+		(sym_->inset == "stmry" && sym_->extra == "mathop");
 }
 
 
