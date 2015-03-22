@@ -1299,8 +1299,6 @@ bool LaTeXFeatures::needBabelLangOptions() const
 string const LaTeXFeatures::loadAMSPackages() const
 {
 	ostringstream tmp;
-	if (mustProvide("amsthm"))
-		tmp << "\\usepackage{amsthm}\n";
 
 	if (mustProvide("amsmath")
 	    && params_.use_package("amsmath") != BufferParams::package_off) {
@@ -1312,6 +1310,9 @@ string const LaTeXFeatures::loadAMSPackages() const
 		if (mustProvide("amstext"))
 			tmp << "\\usepackage{amstext}\n";
 	}
+
+	if (mustProvide("amsthm"))
+		tmp << "\\usepackage{amsthm}\n";
 
 	if (mustProvide("amssymb")
 	    && params_.use_package("amssymb") != BufferParams::package_off)
