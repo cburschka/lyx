@@ -299,10 +299,10 @@ bool Converters::convert(Buffer const * buffer,
 			string const command =
 				os::python() + ' ' +
 				quoteName(libFileSearch("scripts", "convertDefault.py").toFilesystemEncoding()) +
-				' ' +
-				quoteName(from_ext + ':' + from_file.toFilesystemEncoding()) +
-				' ' +
-				quoteName(to_ext + ':' + to_file.toFilesystemEncoding());
+				' ' + from_ext + ' ' +
+				quoteName(from_file.toFilesystemEncoding()) +
+				' ' + to_ext + ' ' +
+				quoteName(to_file.toFilesystemEncoding());
 			LYXERR(Debug::FILES, "No converter defined! "
 				   "I use convertDefault.py:\n\t" << command);
 			Systemcall one;

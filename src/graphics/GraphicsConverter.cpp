@@ -324,13 +324,15 @@ static void build_script(string const & from_file,
 		ostringstream os;
 		os << os::python() << ' '
 		   << commandPrep("$$s/scripts/convertDefault.py") << ' ';
-		if (!from_format.empty())
-			os << strip_digit(from_format) << ':';
+		if (from_format.empty())
+			os << "unknown ";
+		else
+			os << strip_digit(from_format) << ' ';
 		// The extra " quotes around infile and outfile are needed
 		// because the filename may contain spaces and it is used
 		// as argument of os.system().
 		os << "' + '\"' + infile + '\"' + ' "
-		   << strip_digit(to_format) << ":' + '\"' + outfile + '\"' + '";
+		   << strip_digit(to_format) << " ' + '\"' + outfile + '\"' + '";
 		string const command = os.str();
 
 		LYXERR(Debug::GRAPHICS,

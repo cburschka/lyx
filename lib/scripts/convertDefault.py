@@ -15,7 +15,7 @@
 # The user can also redefine this default converter, placing their
 # replacement in ~/.lyx/scripts
 
-# converts an image from $1 to $2 format
+# converts an image $2 (format $1) to $4 (format $3)
 import os, re, sys
 
 # We may need some extra options only supported by recent convert versions
@@ -42,15 +42,15 @@ else:
 
 opts = "-depth 8"
 
-# If supported, add the -define option for pdf source formats 
-if sys.argv[1][:4] == 'pdf:' and (version >= 0x060206 or gm):
+# If supported, add the -define option for pdf source formats
+if sys.argv[1] == 'pdf' and (version >= 0x060206 or gm):
     opts = '-define pdf:use-cropbox=true ' + opts
 
 # If supported, add the -flatten option for ppm target formats (see bug 4749)
-if sys.argv[2][:4] == 'ppm:' and (version >= 0x060305 or gm):
+if sys.argv[3] == 'ppm' and (version >= 0x060305 or gm):
     opts = opts + ' -flatten'
 
-if os.system(r'convert %s "%s" "%s"' % (opts, sys.argv[1], sys.argv[2])) != 0:
+if os.system(r'convert %s "%s" "%s"' % (opts, sys.argv[2], sys.argv[3] + ':' + sys.argv[4])) != 0:
     print >> sys.stderr, sys.argv[0], 'ERROR'
     print >> sys.stderr, 'Execution of "convert" failed.'
     sys.exit(1)
