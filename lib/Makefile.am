@@ -1710,6 +1710,17 @@ dist_imagesoxygen_DATA = \
 	${dist_imagesoxygen_DATA1X} \
 	${dist_imagesoxygen_DATA2X}
 
+imagesmathoxygendir = $(imagesdir)/math/oxygen
+dist_imagesmathoxygen_DATA = \
+	images/math/oxygen/cases.svgz \
+	images/math/oxygen/delim.svgz \
+	images/math/oxygen/font.svgz \
+	images/math/oxygen/frac.svgz \
+	images/math/oxygen/frac-square.svgz \
+	images/math/oxygen/functions.svgz \
+	images/math/oxygen/space.svgz \
+	images/math/oxygen/style.svgz
+
 imagesclassicdir = $(imagesdir)/classic
 dist_imagesclassic_DATA = \
 	images/classic/all-changes-accept.png  \
