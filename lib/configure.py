@@ -582,7 +582,7 @@ def checkFormatEntries(dtl_tools):
         rc_entry = [r'\Format fen        fen     FEN                    "" "%%"	"%%"	""	""'])
     #
     checkViewerEditor('a SVG viewer and editor', ['inkscape'],
-        rc_entry = [r'\Format svg        svg     SVG                    "" "%%" "%%"	"vector"	"image/svg+xml"'])
+        rc_entry = [r'\Format svg        "svg, svgz" SVG                "" "%%" "%%"	"vector,zipped=native"	"image/svg+xml"'])
     #
     imageformats = r'''\Format bmp        bmp     BMP                    "" "%s"	"%s"	""	"image/x-bmp"
 \Format gif        gif     GIF                    "" "%s"	"%s"	""	"image/gif"
