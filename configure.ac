@@ -63,7 +63,10 @@ for file in config/install-sh ; do
   chmod 755 ${srcdir}/${file}
 done
 
-AM_PATH_PYTHON(2.7.0,, :)
+# Find a suitable python interpreter
+LYX_PATH_PYTHON
+# do the usual python setup stuff
+AM_PATH_PYTHON
 AC_PROG_RANLIB
 
 ### Check for a C++ compiler
