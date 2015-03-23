@@ -11,6 +11,21 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2015-03-23 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+	* Format incremented to 483
+	  Make InsetSpecialChar names more consistent:
+	  \-                  => softhyphen
+	  \textcompwordmark{} => ligaturebreak
+	  \@.                 => endofsentence
+	  \ldots{}            => ldots
+	  \menuseparator      => menuseparator
+	  \slash{}            => breakableslash
+	  \nobreakdash-       => nobreakdash
+	  \LyX                => LyX
+	  \TeX                => TeX
+	  \LaTeX2e            => LaTeX2e
+	  \LaTeX              => LaTeX
+
 2015-03-01 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 	* Format incremented to 482
 	  "LyX", "TeX", "LaTeX2e" and "LaTeX" are not automatically converted

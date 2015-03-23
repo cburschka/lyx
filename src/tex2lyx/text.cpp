@@ -258,11 +258,11 @@ char const * const known_special_protect_chars[] = {"LyX", "TeX",
 "LaTeXe", "LaTeX", 0};
 
 /// the same as known_special_chars with .lyx names
-char const * const known_coded_special_chars[] = {"\\SpecialChar \\ldots{}\n",
-"\\SpecialChar \\menuseparator\n", "\\SpecialChar \\textcompwordmark{}\n",
-"\\SpecialChar \\slash{}\n", "~", "^", "\n\\backslash\n",
-"\\SpecialChar \\LyX\n", "\\SpecialChar \\TeX\n", "\\SpecialChar \\LaTeX2e\n",
-"\\SpecialChar \\LaTeX\n", 0};
+char const * const known_coded_special_chars[] = {"\\SpecialChar ldots\n",
+"\\SpecialChar menuseparator\n", "\\SpecialChar ligaturebreak\n",
+"\\SpecialChar breakableslash\n", "~", "^", "\n\\backslash\n",
+"\\SpecialChar LyX\n", "\\SpecialChar TeX\n", "\\SpecialChar LaTeX2e\n",
+"\\SpecialChar LaTeX\n", 0};
 
 /*!
  * Graphics file extensions known by the dvips driver of the graphics package.
@@ -3800,8 +3800,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (t.cs() == "protect")
 				p.get_token();
 			context.check_layout(os);
-			os << "\\SpecialChar \\" << t.cs()
-			   << p.get_token().asInput() << '\n';
+			if (t.cs() == "nobreakdash")
+				os << "\\SpecialChar nobreakdash\n";
+			else
+				os << "\\SpecialChar endofsentence\n";
+			p.get_token();
 		}
 
 		else if (t.cs() == "textquotedbl") {
@@ -3815,7 +3818,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			    || t.cs() == "%" || t.cs() == "-") {
 			context.check_layout(os);
 			if (t.cs() == "-")
-				os << "\\SpecialChar \\-\n";
+				os << "\\SpecialChar softhyphen\n";
 			else
 				os << t.cs();
 		}

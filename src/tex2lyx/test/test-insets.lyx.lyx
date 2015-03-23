@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.2
-\lyxformat 482
+\lyxformat 483
 \begin_document
 \begin_header
 \textclass article
@@ -3120,7 +3120,7 @@ row
 \begin_inset Quotes erd
 \end_inset
 
- of the table can take up several lines. Note however that \SpecialChar \TeX
+ of the table can take up several lines. Note however that \SpecialChar TeX
 
 \begin_inset space \space{}
 
@@ -6685,17 +6685,17 @@ Special characters
 \begin_layout Standard
 Then one has those macros with a long name for a short meaning, like ~, ^ or 
 \backslash
-, \SpecialChar \slash{}
-, \SpecialChar \nobreakdash-
+, \SpecialChar breakableslash
+, \SpecialChar nobreakdash
  and the characters that LaTeX wants to espace because they are active, like _&#${}%.
 \end_layout
 
 \begin_layout Standard
-And what about special characters like hyphe\SpecialChar \-
-nation mark, ellipsis\SpecialChar \ldots{}
-, and end-of-sentence\SpecialChar \@.
- LyX also supports a menu separator\SpecialChar \menuseparator
-and a spif\SpecialChar \textcompwordmark{}
+And what about special characters like hyphe\SpecialChar softhyphen
+nation mark, ellipsis\SpecialChar ldots
+, and end-of-sentence\SpecialChar endofsentence
+ LyX also supports a menu separator\SpecialChar menuseparator
+and a spif\SpecialChar ligaturebreak
 fy ligature break.
 \end_layout
 
@@ -6764,10 +6764,10 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-LyX translates the phrases LyX, TeX, LaTeX2e and LaTeX to the commands \SpecialChar \LyX
-, \SpecialChar \TeX
-, \SpecialChar \LaTeX2e
- and \SpecialChar \LaTeX
+LyX translates the phrases LyX, TeX, LaTeX2e and LaTeX to the commands \SpecialChar LyX
+, \SpecialChar TeX
+, \SpecialChar LaTeX2e
+ and \SpecialChar LaTeX
 . If these phrases occur as part of other words (like 1LyX or aTeX or LaTeX3) they should not be put into ERT.
 \end_layout
 

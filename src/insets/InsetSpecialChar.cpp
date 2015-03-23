@@ -283,37 +283,37 @@ void InsetSpecialChar::write(ostream & os) const
 	string command;
 	switch (kind_) {
 	case HYPHENATION:
-		command = "\\-";
+		command = "softhyphen";
 		break;
 	case LIGATURE_BREAK:
-		command = "\\textcompwordmark{}";
+		command = "ligaturebreak";
 		break;
 	case END_OF_SENTENCE:
-		command = "\\@.";
+		command = "endofsentence";
 		break;
 	case LDOTS:
-		command = "\\ldots{}";
+		command = "ldots";
 		break;
 	case MENU_SEPARATOR:
-		command = "\\menuseparator";
+		command = "menuseparator";
 		break;
 	case SLASH:
-		command = "\\slash{}";
+		command = "breakableslash";
 		break;
 	case NOBREAKDASH:
-		command = "\\nobreakdash-";
+		command = "nobreakdash";
 		break;
 	case PHRASE_LYX:
-		command = "\\LyX";
+		command = "LyX";
 		break;
 	case PHRASE_TEX:
-		command = "\\TeX";
+		command = "TeX";
 		break;
 	case PHRASE_LATEX2E:
-		command = "\\LaTeX2e";
+		command = "LaTeX2e";
 		break;
 	case PHRASE_LATEX:
-		command = "\\LaTeX";
+		command = "LaTeX";
 		break;
 	}
 	os << "\\SpecialChar " << command << "\n";
@@ -326,27 +326,27 @@ void InsetSpecialChar::read(Lexer & lex)
 	lex.next();
 	string const command = lex.getString();
 
-	if (command == "\\-")
+	if (command == "softhyphen")
 		kind_ = HYPHENATION;
-	else if (command == "\\textcompwordmark{}")
+	else if (command == "ligaturebreak")
 		kind_ = LIGATURE_BREAK;
-	else if (command == "\\@.")
+	else if (command == "endofsentence")
 		kind_ = END_OF_SENTENCE;
-	else if (command == "\\ldots{}")
+	else if (command == "ldots")
 		kind_ = LDOTS;
-	else if (command == "\\menuseparator")
+	else if (command == "menuseparator")
 		kind_ = MENU_SEPARATOR;
-	else if (command == "\\slash{}")
+	else if (command == "breakableslash")
 		kind_ = SLASH;
-	else if (command == "\\nobreakdash-")
+	else if (command == "nobreakdash")
 		kind_ = NOBREAKDASH;
-	else if (command == "\\LyX")
+	else if (command == "LyX")
 		kind_ = PHRASE_LYX;
-	else if (command == "\\TeX")
+	else if (command == "TeX")
 		kind_ = PHRASE_TEX;
-	else if (command == "\\LaTeX2e")
+	else if (command == "LaTeX2e")
 		kind_ = PHRASE_LATEX2E;
-	else if (command == "\\LaTeX")
+	else if (command == "LaTeX")
 		kind_ = PHRASE_LATEX;
 	else
 		lex.printError("InsetSpecialChar: Unknown kind: `$$Token'");

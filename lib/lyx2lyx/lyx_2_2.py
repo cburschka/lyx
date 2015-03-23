@@ -645,6 +645,49 @@ def revert_phrases(document):
         i += 1
 
 
+def convert_specialchar_internal(document, forward):
+    specialchars = {"\\-":"softhyphen", "\\textcompwordmark{}":"ligaturebreak", \
+        "\\@.":"endofsentence", "\\ldots{}":"ldots", \
+        "\\menuseparator":"menuseparator", "\\slash{}":"breakableslash", \
+        "\\nobreakdash-":"nobreakdash", "\\LyX":"LyX", \
+        "\\TeX":"TeX", "\\LaTeX2e":"LaTeX2e", \
+        "\\LaTeX":"LaTeX" # must be after LaTeX2e
+    }
+
+    i = 0
+    while i < len(document.body):
+        words = document.body[i].split()
+        if len(words) > 1 and words[0] == "\\begin_inset" and \
+           words[1] in ["CommandInset", "External", "Formula", "Graphics", "listings"]:
+            # see convert_phrases
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(i))
+                i += 1
+            else:
+                i = j
+            continue
+        for key, value in specialchars.iteritems():
+            if forward:
+                document.body[i] = document.body[i].replace("\\SpecialChar " + key, "\\SpecialChar " + value)
+                document.body[i] = document.body[i].replace("\\SpecialCharNoPassThru " + key, "\\SpecialCharNoPassThru " + value)
+            else:
+                document.body[i] = document.body[i].replace("\\SpecialChar " + value, "\\SpecialChar " + key)
+                document.body[i] = document.body[i].replace("\\SpecialCharNoPassThru " + value, "\\SpecialCharNoPassThru " + key)
+        i += 1
+
+
+def convert_specialchar(document):
+    "convert special characters to new syntax"
+    convert_specialchar_internal(document, True)
+
+
+def revert_specialchar(document):
+    "convert special characters to old syntax"
+    convert_specialchar_internal(document, False)
+
+
+
 ##
 # Conversion hub
 #
@@ -661,10 +704,12 @@ convert = [
            [479, []],
            [480, []],
            [481, [convert_dashes]],
-           [482, [convert_phrases]]
+           [482, [convert_phrases]],
+           [483, [convert_specialchar]]
           ]
 
 revert =  [
+           [482, [revert_specialchar]],
            [481, [revert_phrases]],
            [480, [revert_dashes]],
            [479, [revert_question_env]],
