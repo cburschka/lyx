@@ -724,8 +724,8 @@ ADD_FRAMEWORKS = -framework QtGui -framework QtCore -framework AppKit -framework
 endif
 
 check_layout_CPPFLAGS = $(AM_CPPFLAGS)
-check_layout_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ $(QT_CORE_LIBS) $(LIBSHLWAPI)
-check_layout_LDFLAGS = $(QT_CORE_LDFLAGS) $(ADD_FRAMEWORKS)
+check_layout_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ $(QT_LIB) $(LIBSHLWAPI)
+check_layout_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_layout_SOURCES = \
 	insets/InsetLayout.cpp \
 	Color.cpp \
@@ -744,8 +744,8 @@ check_layout_SOURCES = \
 	tests/dummy_functions.cpp
 
 check_ExternalTransforms_CPPFLAGS = $(AM_CPPFLAGS)
-check_ExternalTransforms_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ $(QT_CORE_LIBS) $(LIBSHLWAPI)
-check_ExternalTransforms_LDFLAGS = $(QT_CORE_LDFLAGS) $(ADD_FRAMEWORKS)
+check_ExternalTransforms_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ $(QT_LIB) $(LIBSHLWAPI)
+check_ExternalTransforms_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_ExternalTransforms_SOURCES = \
 	graphics/GraphicsParams.cpp \
 	insets/ExternalTransforms.cpp \
