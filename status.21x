@@ -104,6 +104,8 @@ What's new
 - Fix conversion of beamer block arguments where the overlay argument and the
   closing title argument bracket share the same ERT (bug 9411).
 
+- Fix conversion of beamer colloraries with argument (bug 9478).
+
 - Fix handling of the TEXINPUTS environment variable on Windows (bug 9453).
 
 
