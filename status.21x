@@ -135,7 +135,9 @@ What's new
 - Record undo properly when changing multiple paragraphs parameters
   (bug 9437).
 
-- Do not offer unsupported macros like \biggg in autocompletion
+- Do not offer unsupported macros like \biggg in autocompletion.
+
+- Fix consecutive merging of tabular cells.
 
 
 * INTERNALS
