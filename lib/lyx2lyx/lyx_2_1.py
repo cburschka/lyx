@@ -2461,22 +2461,22 @@ def convert_corollary_args(document):
                                 document.body[parbeg] = "\\begin_inset Argument 1"
                         elif document.body[ertcontlastline].endswith("]"):
                             # divide the args
-                            ertcontdivline = document.body[ertcontfirstline].find('>[')
-                            if ertcontdivline != -1:
+                            tok = document.body[ertcontfirstline].find('>[')
+                            if tok != -1:
                                 if ertcontfirstline < ertcontlastline:
                                     # Multiline ERT. Might contain TeX code.  Embrace in ERT.
                                     document.body[ertcontlastline : ertcontlastline + 1] = [
                                                                         document.body[ertcontlastline], '\\end_layout', '', '\\end_inset']
-                                    document.body[ertcontdivline : ertcontdivline + 1] = [document.body[ertcontdivline][:tok],
+                                    document.body[ertcontfirstline : ertcontfirstline + 1] = [document.body[ertcontfirstline][:tok],
                                                                         '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
                                                                         'status collapsed', '', '\\begin_layout Plain Layout',
                                                                         '\\begin_inset ERT', '', 'status open' '', '\\begin_layout Plain Layout',
-                                                                        document.body[ertcontdivline][tok + 2:]]
+                                                                        document.body[ertcontfirstline][tok + 2:-1]]
                                 else:
-                                    document.body[ertcontdivline : ertcontdivline + 1] = [document.body[ertcontdivline][:tok],
+                                    document.body[ertcontfirstline : ertcontfirstline + 1] = [document.body[ertcontfirstline][:tok],
                                                                         '\\end_layout', '', '\\end_inset', '', '', '\\begin_inset Argument 2',
                                                                         'status collapsed', '', '\\begin_layout Plain Layout',
-                                                                        document.body[ertcontdivline][tok + 2:]]
+                                                                        document.body[ertcontfirstline][tok + 2:-1]]
                             # Convert to ArgInset
                             document.body[parbeg] = "\\begin_inset Argument 1"
                         i = j
