@@ -397,7 +397,7 @@ void InsetInfo::updateInfo()
 	case ICON_INFO: {
 		FuncRequest func = lyxaction.lookupFunc(name_);
 		docstring icon_name = frontend::Application::iconName(func, true);
-		//FIXME: We should use the icon directly instead of
+		// FIXME: We should use the icon directly instead of
 		// going through FileName. The code below won't work
 		// if the icon is embedded in the executable through
 		// the Qt resource system.
