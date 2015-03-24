@@ -1688,7 +1688,8 @@ Tabular::idx_type Tabular::setMultiColumn(idx_type cell, idx_type number,
 		cs.alignment = column_info[col].alignment;
 	setRightLine(cell, right_border);
 
-	for (idx_type i = 1; i < number; ++i) {
+	idx_type lastcell = cellIndex(row, col + number - 1);
+	for (idx_type i = 1; i < lastcell - cell + 1; ++i) {
 		CellData & cs1 = cellInfo(cell + i);
 		cs1.multicolumn = CELL_PART_OF_MULTICOLUMN;
 		cs.inset->appendParagraphs(cs1.inset->paragraphs());
