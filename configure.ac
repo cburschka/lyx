@@ -64,7 +64,7 @@ for file in config/install-sh ; do
 done
 
 # Find a suitable python interpreter
-LYX_PATH_PYTHON
+LYX_PATH_PYTHON23([2.7.0], [3.3.0])
 # do the usual python setup stuff
 AM_PATH_PYTHON
 AC_PROG_RANLIB
