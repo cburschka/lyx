@@ -22,6 +22,7 @@
 #include "KeyMap.h"
 #include "LaTeXFeatures.h"
 #include "LayoutFile.h"
+#include "Length.h"
 #include "LyXAction.h"
 #include "LyXRC.h"
 #include "LyXVC.h"
@@ -40,9 +41,12 @@
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/qstring_helpers.h"
 #include "support/Translator.h"
 
 #include <sstream>
+
+#include <QtGui/QImage>
 
 using namespace std;
 using namespace lyx::support;
@@ -408,11 +412,18 @@ void InsetInfo::updateInfo()
 		FileName file(to_utf8(icon_name));
 		if (!file.exists())
 			break;
+		int percent_scale = 100;
+		int imgsize = QImage(toqstr(file.absFileName())).width();
+		if (imgsize > 0) {
+			int iconsize = Length(1, Length::EM).inPixels(1);
+			percent_scale = (100 * iconsize + imgsize / 2)/imgsize;
+		}
 		InsetGraphics * inset = new InsetGraphics(buffer_);
 		InsetGraphicsParams igp;
 		igp.filename = file;
-		igp.lyxscale = iconScaleFactor(file);
-		igp.scale = convert<string>(igp.lyxscale);
+		igp.lyxscale = percent_scale;
+		igp.scale = string();
+		igp.width = Length(1, Length::EM);
 		inset->setParams(igp);
 		clear();
 		Font const f(inherit_font, buffer().params().language);
