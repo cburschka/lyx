@@ -606,8 +606,6 @@ int parse_version(string const &, string const &)
 {
 	cout << "tex2lyx " << lyx_version
 	     << " (" << lyx_release_date << ")" << endl;
-	cout << "Built on " << lyx_build_date << ", " << lyx_build_time
-	     << endl;
 
 	cout << lyx_version_info << endl;
 	throw StopException(error_code);
