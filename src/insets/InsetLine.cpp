@@ -111,7 +111,7 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 	int const max_width = mi.base.textwidth;
 
 	Length const width(to_ascii(getParam("width")));
-	dim.wid = width.inPixels(max_width, fm.width(char_type('M')));
+	dim.wid = width.inPixels(mi.base);
 
 	// assure that the line inset is not outside of the window
 	// check that it doesn't exceed the outer boundary
@@ -123,11 +123,11 @@ void InsetLine::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = max(minw, abs(dim.wid));
 
 	Length height = Length(to_ascii(getParam("height")));
-	height_ = height.inPixels(max_width, fm.width(char_type('M')));
+	height_ = height.inPixels(mi.base);
 
 	// get the length of the parameters in pixels
 	Length offset = Length(to_ascii(getParam("offset")));
-	offset_ = offset.inPixels(max_width, fm.width(char_type('M')));
+	offset_ = offset.inPixels(mi.base);
 
 	dim.asc = max(fm.maxAscent(), offset_ + height_);
 	dim.des = max(fm.maxDescent(), - offset_);

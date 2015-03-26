@@ -1736,7 +1736,7 @@ int TextMetrics::leftMargin(int max_width,
 	}
 
 	if (!par.params().leftIndent().zero())
-		l_margin += par.params().leftIndent().inPixels(max_width);
+		l_margin += par.params().leftIndent().inPixels(max_width, labelfont_metrics.em());
 
 	LyXAlignment align;
 

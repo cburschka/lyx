@@ -501,6 +501,12 @@ deco_struct const * search_deco(docstring const & name)
 } // namespace anon
 
 
+int mathed_font_em(FontInfo const & font)
+{
+	return theFontMetrics(font).em();
+}
+
+
 int mathed_char_width(FontInfo const & font, char_type c)
 {
 	return theFontMetrics(font).width(c);

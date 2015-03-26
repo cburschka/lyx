@@ -47,7 +47,7 @@ namespace {
 
 int logoWidth(FontInfo const & font, InsetSpecialChar::Kind kind) {
 	frontend::FontMetrics const & fm = theFontMetrics(font);
-	int const em = fm.width('M');
+	int const em = fm.em();
 	int width = 0;
 	// See drawlogo() below to understand what this does.
 	switch (kind) {
@@ -137,9 +137,7 @@ namespace {
 
 void drawLogo(PainterInfo & pi, InsetSpecialChar::Kind kind, int & x, int & y) {
 	FontInfo const & font = pi.base.font;
-	// FIXME: this definition of em is bogus, but there is a need
-	// for a big refactoring of the code around this issue anyway.
-	int const em = theFontMetrics(font).width('M');
+	int const em = theFontMetrics(font).em();
 	switch (kind) {
 	case InsetSpecialChar::PHRASE_LYX:
 		/** Reference macro:

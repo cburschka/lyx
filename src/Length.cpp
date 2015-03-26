@@ -17,6 +17,9 @@
 
 #include "Length.h"
 #include "LyXRC.h"
+#include "MetricsInfo.h"
+
+#include "frontends/FontMetrics.h"
 
 #include "support/docstream.h"
 
@@ -197,7 +200,7 @@ int Length::inPixels(int text_width, int em_width_base) const
 		? em_width_base
 		: 10*(dpi/72.27)*zoom;
 	// A different estimate for em_width is
-	// theFontMetrics(FontInfo(sane_font)).width('M')
+	// theFontMetrics(FontInfo(sane_font)).em()
 	// but this estimate might not be more accurate as the screen font
 	// is different then the latex font.
 
@@ -285,6 +288,12 @@ int Length::inPixels(int text_width, int em_width_base) const
 		break;
 	}
 	return static_cast<int>(result + ((result >= 0) ? 0.5 : -0.5));
+}
+
+
+int Length::inPixels(MetricsBase const & base) const
+{
+	return inPixels(base.textwidth, theFontMetrics(base.font).em());
 }
 
 

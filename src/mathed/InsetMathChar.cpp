@@ -75,7 +75,7 @@ void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim = fm.dimension(char_);
 		kerning_ = fm.rbearing(char_) - dim.wid;
 	}
-	int const em = mathed_char_width(mi.base.font, 'M');
+	int const em = mathed_font_em(mi.base.font);
 	if (isBinaryOp(char_))
 		dim.wid += static_cast<int>(0.5*em+0.5);
 	else if (char_ == '\'')
@@ -93,7 +93,7 @@ void InsetMathChar::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetMathChar::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "drawing '" << char_ << "' font: " << pi.base.fontname << endl;
-	int const em = mathed_char_width(pi.base.font, 'M');
+	int const em = mathed_font_em(pi.base.font);
 	if (isBinaryOp(char_))
 		x += static_cast<int>(0.25*em+0.5);
 	else if (char_ == '\'')

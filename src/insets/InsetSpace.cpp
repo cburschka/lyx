@@ -209,19 +209,20 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
 	dim.asc = fm.maxAscent();
 	dim.des = fm.maxDescent();
+	int const em = fm.em();
 
 	switch (params_.kind) {
 		case InsetSpaceParams::THIN:
 		case InsetSpaceParams::NEGTHIN:
-			dim.wid = fm.width(char_type('M')) / 6;
+			dim.wid = em / 6;
 			break;
 		case InsetSpaceParams::MEDIUM:
 		case InsetSpaceParams::NEGMEDIUM:
-			dim.wid = fm.width(char_type('M')) / 4;
+			dim.wid = em / 4;
 			break;
 		case InsetSpaceParams::THICK:
 		case InsetSpaceParams::NEGTHICK:
-			dim.wid = fm.width(char_type('M')) / 2;
+			dim.wid = em / 2;
 			break;
 		case InsetSpaceParams::PROTECTED:
 		case InsetSpaceParams::VISIBLE:
@@ -229,20 +230,19 @@ void InsetSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.wid = fm.width(char_type(' '));
 			break;
 		case InsetSpaceParams::QUAD:
-			dim.wid = fm.width(char_type('M'));
+			dim.wid = em;
 			break;
 		case InsetSpaceParams::QQUAD:
-			dim.wid = 2 * fm.width(char_type('M'));
+			dim.wid = 2 * em;
 			break;
 		case InsetSpaceParams::ENSPACE:
 		case InsetSpaceParams::ENSKIP:
-			dim.wid = int(0.5 * fm.width(char_type('M')));
+			dim.wid = int(0.5 * em);
 			break;
 		case InsetSpaceParams::CUSTOM:
 		case InsetSpaceParams::CUSTOM_PROTECTED: {
 			int const w =
-				params_.length.len().inPixels(mi.base.textwidth,
-							fm.width(char_type('M')));
+				params_.length.len().inPixels(mi.base);
 			int const minw = (w < 0) ? 3 * arrow_size : 4;
 			dim.wid = max(minw, abs(w));
 			break;

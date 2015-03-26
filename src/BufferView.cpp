@@ -3000,7 +3000,7 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 
 	// Horizontal scroll offset of the cursor row in pixels
 	int offset = d->horiz_scroll_offset_;
-	int const MARGIN = Length(2, Length::EM).inPixels(workWidth());
+	int const MARGIN = Length(2, Length::EM).inPixels(pi.base);
 	if (cur_x < offset + MARGIN) {
 		// scroll right
 		offset = cur_x - MARGIN;

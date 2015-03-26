@@ -123,9 +123,7 @@ void InsetMathSpace::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = 4;
 	dim.des = 0;
 	if (space_info[space_].custom)
-		dim.wid = abs(length_.inPixels(
-				mi.base.textwidth,
-				mathed_char_width(mi.base.font, 'M')));
+		dim.wid = abs(length_.inPixels(mi.base));
 	else
 		dim.wid = space_info[space_].width;
 }

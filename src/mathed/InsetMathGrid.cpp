@@ -28,7 +28,6 @@
 #include "FuncRequest.h"
 
 #include "frontends/Clipboard.h"
-#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 #include "support/debug.h"
@@ -98,9 +97,7 @@ InsetMathGrid::RowInfo::RowInfo()
 
 int InsetMathGrid::RowInfo::skipPixels(MetricsInfo const & mi) const
 {
-	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
-	return crskip_.inPixels(mi.base.textwidth,
-				fm.width(char_type('M')));
+	return crskip_.inPixels(mi.base);
 }
 
 

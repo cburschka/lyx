@@ -171,7 +171,7 @@ void InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
 	// back up textwidth.
 	int textwidth_backup = m.base.textwidth;
 	if (hasFixedWidth())
-		m.base.textwidth = params_.width.inPixels(m.base.textwidth);
+		m.base.textwidth = params_.width.inPixels(m.base);
 	InsetCollapsable::metrics(m, dim);
 	// retore textwidth.
 	m.base.textwidth = textwidth_backup;

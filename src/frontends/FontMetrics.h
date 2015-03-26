@@ -63,6 +63,9 @@ public:
 	/// return default dimension of the font.
 	/// \warning \c width is set to zero.
 	virtual Dimension const defaultDimension() const = 0;
+	/// return the em size
+	virtual int em() const = 0;
+
 	/// return the width of the char in the font
 	virtual int width(char_type c) const = 0;
 	/// return the ascent of the char in the font

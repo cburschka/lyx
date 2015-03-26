@@ -27,6 +27,8 @@ class MathAtom;
 class InsetMath;
 
 
+int mathed_font_em(FontInfo const &);
+
 int mathed_char_width(FontInfo const &, char_type c);
 
 int mathed_char_kerning(FontInfo const &, char_type c);

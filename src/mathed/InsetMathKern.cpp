@@ -47,7 +47,7 @@ void InsetMathKern::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	dim.asc = 0;
 	dim.des = 0;
-	dim.wid = wid_.inPixels(0, mathed_char_width(mi.base.font, 'M'));
+	dim.wid = wid_.inPixels(mi.base);
 }
 
 

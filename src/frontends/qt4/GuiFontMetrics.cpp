@@ -72,6 +72,12 @@ int GuiFontMetrics::maxDescent() const
 }
 
 
+int GuiFontMetrics::em() const
+{
+	return QFontInfo(font_).pixelSize();
+}
+
+
 int GuiFontMetrics::lbearing(char_type c) const
 {
 	if (!is_utf16(c))
