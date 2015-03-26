@@ -1415,20 +1415,21 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		for (Buffer * b = &buffer_; i == 0 || b != &buffer_;
 			b = theBufferList().next(b)) {
 
-			DocIterator dit = b->getParFromID(id);
-			if (dit.atEnd()) {
+			Cursor cur(*this);
+			cur.setCursor(b->getParFromID(id));
+			if (cur.atEnd()) {
 				LYXERR(Debug::INFO, "No matching paragraph found! [" << id << "].");
 				++i;
 				continue;
 			}
-			LYXERR(Debug::INFO, "Paragraph " << dit.paragraph().id()
+			LYXERR(Debug::INFO, "Paragraph " << cur.paragraph().id()
 				<< " found in buffer `"
 				<< b->absFileName() << "'.");
 
 			if (b == &buffer_) {
 				// Set the cursor
-				dit.pos() = pos;
-				setCursor(dit);
+				cur.pos() = pos;
+				mouseSetCursor(cur);
 				dr.screenUpdate(Update::Force | Update::FitCursor);
 			} else {
 				// Switch to other buffer view and resend cmd
