@@ -24,6 +24,8 @@ else()
 endif()
 set_target_properties(insets PROPERTIES FOLDER "applications/LyX")
 
+qt_use_modules(insets Gui)
+
 lyx_add_gcc_pch(insets)
 
 project_source_group("${GROUP_CODE}" insets_sources insets_headers)
