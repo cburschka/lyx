@@ -2290,8 +2290,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				word = cur.selectionAsString(false);
 			}
 			lang = const_cast<Language *>(cur.getFont().language());
-		} else
+		} else if (cmd.getArg(1).empty()) {
+			// optional language argument is missing
+			// use the language at cursor position
+			lang = const_cast<Language *>(cur.getFont().language());
+		} else {
 			lang = const_cast<Language *>(languages.getLanguage(cmd.getArg(1)));
+		}
 		WordLangTuple wl(word, lang);
 		theSpellChecker()->insert(wl);
 		break;
@@ -2309,8 +2314,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				word = cur.selectionAsString(false);
 			}
 			lang = const_cast<Language *>(cur.getFont().language());
-		} else
+		} else if (cmd.getArg(1).empty()) {
+			lang = const_cast<Language *>(cur.getFont().language());
+		} else {
 			lang = const_cast<Language *>(languages.getLanguage(cmd.getArg(1)));
+		}
 		WordLangTuple wl(word, lang);
 		theSpellChecker()->accept(wl);
 		break;
@@ -2328,8 +2336,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				word = cur.selectionAsString(false);
 			}
 			lang = const_cast<Language *>(cur.getFont().language());
-		} else
+		} else if (cmd.getArg(1).empty()) {
+			lang = const_cast<Language *>(cur.getFont().language());
+		} else {
 			lang = const_cast<Language *>(languages.getLanguage(cmd.getArg(1)));
+		}
 		WordLangTuple wl(word, lang);
 		theSpellChecker()->remove(wl);
 		break;
@@ -3011,7 +3022,12 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_SPELLING_ADD:
 	case LFUN_SPELLING_IGNORE:
 	case LFUN_SPELLING_REMOVE:
-		enable = theSpellChecker();
+		enable = theSpellChecker() != NULL;
+		if (enable && !cmd.getArg(1).empty()) {
+			// validate explicitly given language
+			Language const * const lang = const_cast<Language *>(languages.getLanguage(cmd.getArg(1)));
+			enable &= lang != NULL;
+		}
 		break;
 
 	case LFUN_LAYOUT: {
