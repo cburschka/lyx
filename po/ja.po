@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2.0dev\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-02-05 20:29-0500\n"
+"POT-Creation-Date: 2015-03-27 15:55-0400\n"
 "PO-Revision-Date: 2015-01-22 00:46+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-docs@lists.lyx.org>\n"
@@ -201,8 +201,8 @@ msgid "Remove the selected index"
 msgstr "選択した索引を削除"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:165
-#: src/frontends/qt4/ui/BranchesUi.ui:136 src/Buffer.cpp:4240
-#: src/Buffer.cpp:4253
+#: src/frontends/qt4/ui/BranchesUi.ui:136 src/Buffer.cpp:4245
+#: src/Buffer.cpp:4258
 msgid "&Remove"
 msgstr "削除(&R)"
 
@@ -245,8 +245,8 @@ msgstr "すべて追加(&L)"
 #: src/frontends/qt4/ui/DocumentUi.ui:84
 #: src/frontends/qt4/ui/CitationUi.ui:220
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1280
-#: src/Buffer.cpp:1349 src/Buffer.cpp:2712 src/Buffer.cpp:4214
-#: src/Buffer.cpp:4278 src/LyXVC.cpp:107 src/LyXVC.cpp:297
+#: src/Buffer.cpp:1349 src/Buffer.cpp:2717 src/Buffer.cpp:4219
+#: src/Buffer.cpp:4283 src/LyXVC.cpp:107 src/LyXVC.cpp:297
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:246
 #: src/frontends/qt4/GuiDocument.cpp:2106
@@ -2431,7 +2431,7 @@ msgstr "変換されたファイルをこのコマンドで処理する($$FName�
 #: src/frontends/qt4/ui/BibtexAddUi.ui:127
 #: src/frontends/qt4/ui/ChangesUi.ui:91 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:123 src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1727
+#: src/frontends/qt4/GuiApplication.cpp:1737
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "取り消し"
@@ -2835,8 +2835,9 @@ msgid "F&ile"
 msgstr "ファイル(&I)"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:47 src/frontends/qt4/ui/ExternalUi.ui:54
-#: lib/layouts/db_stdcharstyles.inc:6 lib/layouts/db_stdcharstyles.inc:8
-#: lib/layouts/agu_stdclass.inc:82 lib/layouts/agu_stdclass.inc:84
+#: lib/layouts/aastex.layout:534 lib/layouts/db_stdcharstyles.inc:6
+#: lib/layouts/db_stdcharstyles.inc:8 lib/layouts/agu_stdclass.inc:82
+#: lib/layouts/agu_stdclass.inc:84
 msgid "Filename"
 msgstr "ファイル名"
 
@@ -3732,8 +3733,8 @@ msgid "&Draft mode"
 msgstr "下書きモード(&D)"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:282
-#: lib/layouts/stdinsets.inc:288 src/insets/InsetCaption.cpp:389
-#: src/insets/InsetListings.cpp:365 src/insets/InsetListings.cpp:367
+#: lib/layouts/stdinsets.inc:288 src/insets/InsetCaption.cpp:382
+#: src/insets/InsetListings.cpp:367 src/insets/InsetListings.cpp:369
 msgid "Listing"
 msgstr "プログラムリスト"
 
@@ -5326,9 +5327,9 @@ msgstr "表題中の標準"
 #: lib/layouts/apa.layout:136 lib/layouts/apa.layout:144
 #: lib/layouts/apa.layout:152 lib/layouts/apa.layout:160
 #: lib/layouts/apa.layout:182 lib/layouts/apa.layout:190
-#: lib/layouts/apa.layout:198 lib/layouts/aastex.layout:156
-#: lib/layouts/aastex.layout:173 lib/layouts/aastex.layout:195
-#: lib/layouts/aastex.layout:214 lib/layouts/aastex.layout:288
+#: lib/layouts/apa.layout:198 lib/layouts/aastex.layout:157
+#: lib/layouts/aastex.layout:174 lib/layouts/aastex.layout:196
+#: lib/layouts/aastex.layout:215 lib/layouts/aastex.layout:289
 #: lib/layouts/kluwer.layout:114 lib/layouts/kluwer.layout:169
 #: lib/layouts/achemso.layout:59 lib/layouts/achemso.layout:85
 #: lib/layouts/cl2emult.layout:42 lib/layouts/cl2emult.layout:61
@@ -5392,7 +5393,7 @@ msgstr "著者脚注"
 #: lib/layouts/spie.layout:76 lib/layouts/RJournal.layout:39
 #: lib/layouts/llncs.layout:247 lib/layouts/tufte-handout.layout:49
 #: lib/layouts/tufte-handout.layout:64 lib/layouts/apa.layout:73
-#: lib/layouts/aastex.layout:240 lib/layouts/kluwer.layout:263
+#: lib/layouts/aastex.layout:241 lib/layouts/kluwer.layout:263
 #: lib/layouts/cl2emult.layout:85 lib/layouts/cl2emult.layout:96
 #: lib/layouts/ijmpd.layout:217 lib/layouts/IEEEtran-TransMag.layout:27
 #: lib/layouts/IEEEtran.layout:257 lib/layouts/agutex.layout:137
@@ -5420,7 +5421,7 @@ msgstr "概要"
 #: lib/layouts/svglobal3.layout:57 lib/layouts/svglobal3.layout:60
 #: lib/layouts/svglobal.layout:111 lib/layouts/svglobal.layout:114
 #: lib/layouts/paper.layout:174 lib/layouts/spie.layout:42
-#: lib/layouts/aastex.layout:282 lib/layouts/kluwer.layout:286
+#: lib/layouts/aastex.layout:283 lib/layouts/kluwer.layout:286
 #: lib/layouts/achemso.layout:156 lib/layouts/ijmpd.layout:230
 #: lib/layouts/IEEEtran-TransMag.layout:33 lib/layouts/IEEEtran.layout:279
 #: lib/layouts/jasatex.layout:195 lib/layouts/revtex4-1.layout:153
@@ -5464,7 +5465,7 @@ msgstr "キーワード:"
 #: lib/layouts/ectaart.layout:185 lib/layouts/ectaart.layout:188
 #: lib/layouts/hollywood.layout:320 lib/layouts/paper.layout:122
 #: lib/layouts/llncs.layout:183 lib/layouts/apa.layout:119
-#: lib/layouts/aastex.layout:140 lib/layouts/kluwer.layout:168
+#: lib/layouts/aastex.layout:141 lib/layouts/kluwer.layout:168
 #: lib/layouts/achemso.layout:82 lib/layouts/cl2emult.layout:60
 #: lib/layouts/ijmpd.layout:131 lib/layouts/broadway.layout:202
 #: lib/layouts/IEEEtran.layout:118 lib/layouts/foils.layout:135
@@ -5490,7 +5491,7 @@ msgstr "著者"
 #: lib/layouts/docbook-chapter.layout:10 lib/layouts/scrlttr2.layout:275
 #: lib/layouts/ectaart.layout:16 lib/layouts/hollywood.layout:333
 #: lib/layouts/paper.layout:112 lib/layouts/llncs.layout:108
-#: lib/layouts/apa.layout:41 lib/layouts/aastex.layout:128
+#: lib/layouts/apa.layout:41 lib/layouts/aastex.layout:129
 #: lib/layouts/kluwer.layout:113 lib/layouts/achemso.layout:56
 #: lib/layouts/cl2emult.layout:41 lib/layouts/ijmpd.layout:112
 #: lib/layouts/broadway.layout:187 lib/layouts/IEEEtran.layout:66
@@ -5532,11 +5533,11 @@ msgstr "委員会"
 #: lib/layouts/egs.layout:32 lib/layouts/revtex4.layout:65
 #: lib/layouts/amsbook.layout:55 lib/layouts/simplecv.layout:31
 #: lib/layouts/revtex.layout:40 lib/layouts/aa.layout:178
-#: lib/layouts/apa6.layout:402 lib/layouts/siamltex.layout:365
+#: lib/layouts/apa6.layout:404 lib/layouts/siamltex.layout:365
 #: lib/layouts/beamer.layout:232 lib/layouts/europecv.layout:127
 #: lib/layouts/paper.layout:60 lib/layouts/spie.layout:21
-#: lib/layouts/llncs.layout:48 lib/layouts/apa.layout:302
-#: lib/layouts/aastex.layout:88 lib/layouts/kluwer.layout:62
+#: lib/layouts/llncs.layout:48 lib/layouts/apa.layout:304
+#: lib/layouts/aastex.layout:89 lib/layouts/kluwer.layout:62
 #: lib/layouts/ltugboat.layout:47 lib/layouts/memoir.layout:84
 #: lib/layouts/revtex4-1.layout:26 lib/layouts/tufte-book.layout:89
 #: lib/layouts/moderncv.layout:198 lib/layouts/powerdot.layout:232
@@ -5552,10 +5553,10 @@ msgstr "節"
 #: lib/layouts/aapaper.layout:149 lib/layouts/amsart.layout:105
 #: lib/layouts/egs.layout:55 lib/layouts/amsbook.layout:65
 #: lib/layouts/simplecv.layout:57 lib/layouts/revtex.layout:52
-#: lib/layouts/aa.layout:186 lib/layouts/apa6.layout:413
+#: lib/layouts/aa.layout:186 lib/layouts/apa6.layout:415
 #: lib/layouts/siamltex.layout:376 lib/layouts/beamer.layout:289
 #: lib/layouts/paper.layout:69 lib/layouts/llncs.layout:57
-#: lib/layouts/apa.layout:313 lib/layouts/aastex.layout:101
+#: lib/layouts/apa.layout:315 lib/layouts/aastex.layout:102
 #: lib/layouts/kluwer.layout:71 lib/layouts/ltugboat.layout:68
 #: lib/layouts/memoir.layout:97 lib/layouts/tufte-book.layout:116
 #: lib/layouts/moderncv.layout:231 lib/layouts/latex8.layout:56
@@ -5570,10 +5571,10 @@ msgstr "小節"
 #: lib/layouts/aapaper.layout:161 lib/layouts/amsart.layout:128
 #: lib/layouts/revtex4.layout:74 lib/layouts/amsbook.layout:74
 #: lib/layouts/revtex.layout:61 lib/layouts/aa.layout:196
-#: lib/layouts/apa6.layout:423 lib/layouts/siamltex.layout:385
+#: lib/layouts/apa6.layout:425 lib/layouts/siamltex.layout:385
 #: lib/layouts/beamer.layout:346 lib/layouts/paper.layout:78
-#: lib/layouts/llncs.layout:66 lib/layouts/apa.layout:323
-#: lib/layouts/aastex.layout:114 lib/layouts/kluwer.layout:81
+#: lib/layouts/llncs.layout:66 lib/layouts/apa.layout:325
+#: lib/layouts/aastex.layout:115 lib/layouts/kluwer.layout:81
 #: lib/layouts/recipebook.layout:98 lib/layouts/ltugboat.layout:89
 #: lib/layouts/memoir.layout:110 lib/layouts/revtex4-1.layout:34
 #: lib/layouts/scrclass.inc:88 lib/layouts/numrevtex.inc:24
@@ -5607,7 +5608,7 @@ msgstr "小々節*"
 
 #: lib/layouts/isprs.layout:209 lib/layouts/elsart.layout:445
 #: lib/layouts/egs.layout:522 lib/layouts/apa.layout:212
-#: lib/layouts/aastex.layout:309 lib/layouts/kluwer.layout:305
+#: lib/layouts/aastex.layout:310 lib/layouts/kluwer.layout:305
 #: lib/layouts/kluwer.layout:317 lib/layouts/aapaper.inc:91
 #: lib/layouts/svcommon.inc:558 lib/layouts/svcommon.inc:569
 msgid "Acknowledgements"
@@ -5622,8 +5623,8 @@ msgstr "謝辞(Acknowledgements)"
 #: lib/layouts/siamltex.layout:326 lib/layouts/beamer.layout:1046
 #: lib/layouts/elsarticle.layout:311 lib/layouts/sigplanconf.layout:217
 #: lib/layouts/europecv.layout:288 lib/layouts/llncs.layout:270
-#: lib/layouts/apa.layout:213 lib/layouts/aastex.layout:310
-#: lib/layouts/aastex.layout:374 lib/layouts/aastex.layout:406
+#: lib/layouts/apa.layout:213 lib/layouts/aastex.layout:311
+#: lib/layouts/aastex.layout:375 lib/layouts/aastex.layout:407
 #: lib/layouts/kluwer.layout:306 lib/layouts/achemso.layout:236
 #: lib/layouts/ijmpd.layout:439 lib/layouts/ijmpd.layout:463
 #: lib/layouts/IEEEtran.layout:308 lib/layouts/IEEEtran.layout:346
@@ -5659,7 +5660,7 @@ msgstr "Int. Journal of Modern Physics C"
 #: lib/layouts/hollywood.layout:347 lib/layouts/europecv.layout:17
 #: lib/layouts/paper.layout:14 lib/layouts/llncs.layout:24
 #: lib/layouts/apa.layout:25 lib/layouts/dtk.layout:32
-#: lib/layouts/aastex.layout:54 lib/layouts/kluwer.layout:34
+#: lib/layouts/aastex.layout:55 lib/layouts/kluwer.layout:34
 #: lib/layouts/achemso.layout:33 lib/layouts/cl2emult.layout:130
 #: lib/layouts/ijmpd.layout:28 lib/layouts/broadway.layout:174
 #: lib/layouts/IEEEtran.layout:35 lib/layouts/agutex.layout:32
@@ -5693,7 +5694,7 @@ msgstr "標準"
 #: lib/layouts/europecv.layout:156 lib/layouts/europecv.layout:215
 #: lib/layouts/paper.layout:15 lib/layouts/llncs.layout:25
 #: lib/layouts/apa.layout:26 lib/layouts/dtk.layout:33
-#: lib/layouts/aastex.layout:55 lib/layouts/kluwer.layout:35
+#: lib/layouts/aastex.layout:56 lib/layouts/kluwer.layout:35
 #: lib/layouts/achemso.layout:34 lib/layouts/cl2emult.layout:131
 #: lib/layouts/ijmpd.layout:29 lib/layouts/broadway.layout:175
 #: lib/layouts/IEEEtran.layout:36 lib/layouts/agutex.layout:33
@@ -5704,7 +5705,7 @@ msgstr "標準"
 #: lib/layouts/moderncv.layout:21 lib/layouts/powerdot.layout:112
 #: lib/layouts/powerdot.layout:376 lib/layouts/powerdot.layout:397
 #: lib/layouts/powerdot.layout:418 lib/layouts/powerdot.layout:438
-#: lib/layouts/scrclass.inc:18 lib/layouts/scrclass.inc:309
+#: lib/layouts/scrclass.inc:18 lib/layouts/scrclass.inc:313
 #: lib/layouts/stdclass.inc:29 lib/layouts/lyxmacros.inc:13
 #: lib/layouts/stdlayouts.inc:13 lib/layouts/stdlayouts.inc:34
 #: lib/layouts/stdlayouts.inc:55 lib/layouts/stdlayouts.inc:75
@@ -5780,11 +5781,11 @@ msgstr "箇条書き(記号:ItemList)"
 #: lib/layouts/scrlettr.layout:34 lib/layouts/aapaper.layout:59
 #: lib/layouts/egs.layout:136 lib/layouts/egs.layout:154
 #: lib/layouts/egs.layout:178 lib/layouts/simplecv.layout:87
-#: lib/layouts/apa6.layout:455 lib/layouts/apa6.layout:478
-#: lib/layouts/apa6.layout:502 lib/layouts/beamer.layout:81
+#: lib/layouts/apa6.layout:457 lib/layouts/apa6.layout:480
+#: lib/layouts/apa6.layout:504 lib/layouts/beamer.layout:81
 #: lib/layouts/beamer.layout:114 lib/layouts/beamer.layout:153
-#: lib/layouts/scrlttr2.layout:39 lib/layouts/apa.layout:355
-#: lib/layouts/apa.layout:377 lib/layouts/apa.layout:401
+#: lib/layouts/scrlttr2.layout:39 lib/layouts/apa.layout:357
+#: lib/layouts/apa.layout:379 lib/layouts/apa.layout:403
 #: lib/layouts/ijmpd.layout:287 lib/layouts/ijmpd.layout:307
 #: lib/layouts/scrclass.inc:44 lib/layouts/stdlyxlist.inc:7
 #: lib/layouts/stdlists.inc:14 lib/layouts/stdlists.inc:39
@@ -6061,7 +6062,7 @@ msgstr "推論 \\theconjecture."
 msgid "Prop"
 msgstr "命題(Prop)"
 
-#: lib/layouts/ijmpc.layout:423 lib/layouts/aastex.layout:370
+#: lib/layouts/ijmpc.layout:423 lib/layouts/aastex.layout:371
 #: lib/layouts/kluwer.layout:326 lib/layouts/kluwer.layout:339
 #: lib/layouts/ijmpd.layout:436 lib/layouts/IEEEtran.layout:331
 #: lib/layouts/IEEEtran.layout:334 src/rowpainter.cpp:548
@@ -6101,7 +6102,7 @@ msgstr "書誌情報"
 #: lib/layouts/iopart.layout:296 lib/layouts/egs.layout:588
 #: lib/layouts/siamltex.layout:340 lib/layouts/beamer.layout:1059
 #: lib/layouts/elsarticle.layout:322 lib/layouts/llncs.layout:284
-#: lib/layouts/aastex.layout:402 lib/layouts/aastex.layout:415
+#: lib/layouts/aastex.layout:403 lib/layouts/aastex.layout:416
 #: lib/layouts/kluwer.layout:347 lib/layouts/kluwer.layout:359
 #: lib/layouts/cl2emult.layout:121 lib/layouts/ijmpd.layout:474
 #: lib/layouts/IEEEtran.layout:357 lib/layouts/agutex.layout:222
@@ -6276,7 +6277,7 @@ msgstr "場所(Place):"
 #: lib/layouts/aa.layout:227 lib/layouts/siamltex.layout:236
 #: lib/layouts/frletter.layout:22 lib/layouts/beamer.layout:998
 #: lib/layouts/scrlttr2.layout:243 lib/layouts/dinbrief.layout:161
-#: lib/layouts/g-brief.layout:191 lib/layouts/aastex.layout:229
+#: lib/layouts/g-brief.layout:191 lib/layouts/aastex.layout:230
 #: lib/layouts/kluwer.layout:152 lib/layouts/foils.layout:142
 #: lib/layouts/jasatex.layout:147 lib/layouts/g-brief2.layout:54
 #: lib/layouts/g-brief2.layout:862 lib/layouts/revtex4-1.layout:144
@@ -6449,16 +6450,16 @@ msgid "Astronomy & Astrophysics (V. 4, Obsolete)"
 msgstr "Astronomy & Astrophysics (V. 4, 旧版)"
 
 #: lib/layouts/aapaper.layout:50 lib/layouts/egs.layout:177
-#: lib/layouts/simplecv.layout:86 lib/layouts/apa6.layout:454
-#: lib/layouts/beamer.layout:80 lib/layouts/apa.layout:354
+#: lib/layouts/simplecv.layout:86 lib/layouts/apa6.layout:456
+#: lib/layouts/beamer.layout:80 lib/layouts/apa.layout:356
 #: lib/layouts/powerdot.layout:254 lib/layouts/db_stdlists.inc:12
 #: lib/layouts/stdlists.inc:13 lib/layouts/agu_stdlists.inc:13
 msgid "Itemize"
 msgstr "箇条書き(記号)"
 
 #: lib/layouts/aapaper.layout:53 lib/layouts/egs.layout:153
-#: lib/layouts/apa6.layout:477 lib/layouts/beamer.layout:113
-#: lib/layouts/apa.layout:376 lib/layouts/powerdot.layout:302
+#: lib/layouts/apa6.layout:479 lib/layouts/beamer.layout:113
+#: lib/layouts/apa.layout:378 lib/layouts/powerdot.layout:302
 #: lib/layouts/db_stdlists.inc:19 lib/layouts/stdlists.inc:38
 #: lib/layouts/agu_stdlists.inc:21
 msgid "Enumerate"
@@ -6478,7 +6479,7 @@ msgstr "副題"
 #: lib/layouts/elsarticle.layout:243 lib/layouts/ectaart.layout:73
 #: lib/layouts/europecv.layout:71 lib/layouts/RJournal.layout:76
 #: lib/layouts/RJournal.layout:77 lib/layouts/llncs.layout:239
-#: lib/layouts/aastex.layout:190 lib/layouts/achemso.layout:95
+#: lib/layouts/aastex.layout:191 lib/layouts/achemso.layout:95
 #: lib/layouts/jasatex.layout:141 lib/layouts/moderncv.layout:143
 #: lib/layouts/latex8.layout:65 lib/layouts/lettre.layout:46
 #: lib/layouts/lettre.layout:399 lib/layouts/aapaper.inc:46
@@ -6682,20 +6683,19 @@ msgid "Institute of Physics (IOP)"
 msgstr "Institute of Physics (IOP)"
 
 #: lib/layouts/iopart.layout:65 lib/layouts/simplecv.layout:51
-#: lib/layouts/apa6.layout:355 lib/layouts/siamltex.layout:205
+#: lib/layouts/apa6.layout:357 lib/layouts/siamltex.layout:205
 #: lib/layouts/beamer.layout:207 lib/layouts/beamer.layout:257
 #: lib/layouts/beamer.layout:314 lib/layouts/beamer.layout:371
 #: lib/layouts/beamer.layout:891 lib/layouts/europecv.layout:135
-#: lib/layouts/tufte-handout.layout:40 lib/layouts/apa.layout:255
-#: lib/layouts/aastex.layout:532 lib/layouts/achemso.layout:77
-#: lib/layouts/jasatex.layout:74 lib/layouts/memoir.layout:56
-#: lib/layouts/revtex4-1.layout:194 lib/layouts/tufte-book.layout:80
-#: lib/layouts/tufte-book.layout:107 lib/layouts/scrclass.inc:118
-#: lib/layouts/scrclass.inc:128 lib/layouts/scrclass.inc:138
-#: lib/layouts/scrclass.inc:273 lib/layouts/scrclass.inc:293
-#: lib/layouts/stdinsets.inc:558 lib/layouts/amsdefs.inc:38
-#: lib/layouts/stdsections.inc:31 lib/layouts/stdsections.inc:60
-#: lib/layouts/stdsections.inc:88
+#: lib/layouts/tufte-handout.layout:40 lib/layouts/apa.layout:257
+#: lib/layouts/achemso.layout:77 lib/layouts/jasatex.layout:74
+#: lib/layouts/memoir.layout:56 lib/layouts/revtex4-1.layout:194
+#: lib/layouts/tufte-book.layout:80 lib/layouts/tufte-book.layout:107
+#: lib/layouts/scrclass.inc:118 lib/layouts/scrclass.inc:128
+#: lib/layouts/scrclass.inc:138 lib/layouts/scrclass.inc:275
+#: lib/layouts/scrclass.inc:297 lib/layouts/stdinsets.inc:560
+#: lib/layouts/amsdefs.inc:38 lib/layouts/stdsections.inc:31
+#: lib/layouts/stdsections.inc:60 lib/layouts/stdsections.inc:88
 msgid "Short Title|S"
 msgstr "見出し短縮形(S)|S"
 
@@ -7092,8 +7092,8 @@ msgstr "節分け"
 
 #: lib/layouts/egs.layout:75 lib/layouts/revtex4.layout:82
 #: lib/layouts/amsbook.layout:127 lib/layouts/revtex.layout:70
-#: lib/layouts/apa6.layout:433 lib/layouts/paper.layout:87
-#: lib/layouts/llncs.layout:75 lib/layouts/apa.layout:333
+#: lib/layouts/apa6.layout:435 lib/layouts/paper.layout:87
+#: lib/layouts/llncs.layout:75 lib/layouts/apa.layout:335
 #: lib/layouts/kluwer.layout:91 lib/layouts/agutex.layout:156
 #: lib/layouts/ltugboat.layout:109 lib/layouts/memoir.layout:123
 #: lib/layouts/revtex4-1.layout:41 lib/layouts/scrclass.inc:96
@@ -7103,9 +7103,9 @@ msgstr "節分け"
 msgid "Paragraph"
 msgstr "段落"
 
-#: lib/layouts/egs.layout:93 lib/layouts/apa6.layout:443
+#: lib/layouts/egs.layout:93 lib/layouts/apa6.layout:445
 #: lib/layouts/paper.layout:96 lib/layouts/llncs.layout:85
-#: lib/layouts/apa.layout:343 lib/layouts/kluwer.layout:101
+#: lib/layouts/apa.layout:345 lib/layouts/kluwer.layout:101
 #: lib/layouts/memoir.layout:136 lib/layouts/scrclass.inc:104
 #: lib/layouts/agu_stdsections.inc:70 lib/layouts/svcommon.inc:233
 #: lib/layouts/stdsections.inc:141 lib/layouts/db_stdsections.inc:60
@@ -7129,9 +7129,9 @@ msgid "00.00.0000"
 msgstr "00.00.0000"
 
 #: lib/layouts/egs.layout:171 lib/layouts/egs.layout:193
-#: lib/layouts/apa6.layout:471 lib/layouts/apa6.layout:495
+#: lib/layouts/apa6.layout:473 lib/layouts/apa6.layout:497
 #: lib/layouts/beamer.layout:92 lib/layouts/beamer.layout:129
-#: lib/layouts/apa.layout:370 lib/layouts/apa.layout:394
+#: lib/layouts/apa.layout:372 lib/layouts/apa.layout:396
 #: lib/layouts/powerdot.layout:278 lib/layouts/powerdot.layout:329
 #: lib/layouts/theorems-case.inc:53 lib/layouts/stdlists.inc:32
 #: lib/layouts/stdlists.inc:60
@@ -7139,9 +7139,9 @@ msgid "Custom Item|s"
 msgstr "ユーザ設定項目(S)|S"
 
 #: lib/layouts/egs.layout:172 lib/layouts/egs.layout:194
-#: lib/layouts/apa6.layout:472 lib/layouts/apa6.layout:496
+#: lib/layouts/apa6.layout:474 lib/layouts/apa6.layout:498
 #: lib/layouts/beamer.layout:93 lib/layouts/beamer.layout:130
-#: lib/layouts/apa.layout:371 lib/layouts/apa.layout:395
+#: lib/layouts/apa.layout:373 lib/layouts/apa.layout:397
 #: lib/layouts/powerdot.layout:279 lib/layouts/powerdot.layout:330
 #: lib/layouts/theorems-case.inc:54 lib/layouts/stdlists.inc:33
 #: lib/layouts/stdlists.inc:61
@@ -7257,7 +7257,7 @@ msgstr "前刷り"
 
 #: lib/layouts/revtex4.layout:133 lib/layouts/apa6.layout:149
 #: lib/layouts/sigplanconf.layout:159 lib/layouts/apa.layout:159
-#: lib/layouts/aastex.layout:152 lib/layouts/achemso.layout:104
+#: lib/layouts/aastex.layout:153 lib/layouts/achemso.layout:104
 #: lib/layouts/jasatex.layout:105 lib/layouts/revtex4-1.layout:59
 #: lib/layouts/moderncv.layout:310 lib/layouts/moderncv.layout:311
 #: lib/layouts/latex8.layout:89 lib/layouts/agu_stdtitle.inc:128
@@ -7804,34 +7804,34 @@ msgid "Centered"
 msgstr "中央揃え"
 
 #: lib/layouts/apa6.layout:351 lib/layouts/apa.layout:251
-#: lib/layouts/stdinsets.inc:554 src/insets/InsetCaption.cpp:410
+#: lib/layouts/stdinsets.inc:554 src/insets/InsetCaption.cpp:403
 msgid "standard"
 msgstr "標準"
 
-#: lib/layouts/apa6.layout:356 lib/layouts/apa.layout:256
-#: lib/layouts/scrclass.inc:274 lib/layouts/scrclass.inc:294
-#: lib/layouts/stdinsets.inc:559
+#: lib/layouts/apa6.layout:358 lib/layouts/apa.layout:258
+#: lib/layouts/scrclass.inc:276 lib/layouts/scrclass.inc:298
+#: lib/layouts/stdinsets.inc:561
 msgid "The caption as it appears in the list of figures/tables"
 msgstr "図表一覧に表示するキャプション"
 
-#: lib/layouts/apa6.layout:370 lib/layouts/apa.layout:270
+#: lib/layouts/apa6.layout:372 lib/layouts/apa.layout:272
 msgid "FitFigure"
 msgstr "寸法を調整した図"
 
-#: lib/layouts/apa6.layout:376 lib/layouts/apa.layout:276
+#: lib/layouts/apa6.layout:378 lib/layouts/apa.layout:278
 msgid "FitBitmap"
 msgstr "寸法を調整したビットマップ"
 
-#: lib/layouts/apa6.layout:469
+#: lib/layouts/apa6.layout:471
 msgid "*"
 msgstr "*"
 
-#: lib/layouts/apa6.layout:501 lib/layouts/apa.layout:400
+#: lib/layouts/apa6.layout:503 lib/layouts/apa.layout:402
 msgid "Seriate"
 msgstr "行内列挙(Seriate)"
 
-#: lib/layouts/apa6.layout:518 lib/layouts/apa6.layout:519
-#: lib/layouts/apa.layout:417 lib/layouts/apa.layout:418
+#: lib/layouts/apa6.layout:520 lib/layouts/apa6.layout:521
+#: lib/layouts/apa.layout:419 lib/layouts/apa.layout:420
 #: lib/layouts/stdcounters.inc:48
 msgid "(\\alph{enumii})"
 msgstr "(\\alph{enumii})"
@@ -8878,7 +8878,7 @@ msgstr "送り主電話番号:"
 #: lib/layouts/scrlttr2.layout:195 lib/layouts/europecv.layout:93
 #: lib/layouts/achemso.layout:128 lib/layouts/moderncv.layout:137
 #: lib/layouts/lettre.layout:42 lib/layouts/lettre.layout:343
-#: lib/configure.py:690
+#: lib/configure.py:691
 msgid "Fax"
 msgstr "ファックス"
 
@@ -10053,159 +10053,160 @@ msgstr "Die TeXnische Komoedie"
 msgid "American Astronomical Society (AASTeX)"
 msgstr "American Astronomical Society (AASTeX)"
 
-#: lib/layouts/aastex.layout:169
+#: lib/layouts/aastex.layout:170
 msgid "Altaffilation"
 msgstr "第二所属"
 
-#: lib/layouts/aastex.layout:178 lib/layouts/agutex.layout:124
+#: lib/layouts/aastex.layout:179 lib/layouts/agutex.layout:124
 #: src/mathed/InsetMathHull.cpp:1436 src/mathed/InsetMathHull.cpp:1445
 msgid "Number"
 msgstr "番号"
 
-#: lib/layouts/aastex.layout:179
+#: lib/layouts/aastex.layout:180
 msgid "Consecutive number for the alternative affiliations"
 msgstr "第二所属の連番"
 
-#: lib/layouts/aastex.layout:183
+#: lib/layouts/aastex.layout:184
 msgid "Alternative affiliation:"
 msgstr "第二所属:"
 
-#: lib/layouts/aastex.layout:209
+#: lib/layouts/aastex.layout:210
 msgid "And"
 msgstr "And"
 
-#: lib/layouts/aastex.layout:220 src/frontends/qt4/GuiDocument.cpp:2291
+#: lib/layouts/aastex.layout:221 src/frontends/qt4/GuiDocument.cpp:2291
 #: src/frontends/qt4/GuiDocument.cpp:2303
 #: src/frontends/qt4/GuiDocument.cpp:2413
 #: src/frontends/qt4/GuiDocument.cpp:2432
 msgid "and"
 msgstr "および"
 
-#: lib/layouts/aastex.layout:260
+#: lib/layouts/aastex.layout:261
 msgid "altaffilmark"
 msgstr "第二所属マーク"
 
-#: lib/layouts/aastex.layout:264
+#: lib/layouts/aastex.layout:265
 msgid "altaffiliation mark"
 msgstr "第二所属マーク:"
 
-#: lib/layouts/aastex.layout:295
+#: lib/layouts/aastex.layout:296
 msgid "Subject headings:"
 msgstr "主題ヘッダ:"
 
-#: lib/layouts/aastex.layout:320
+#: lib/layouts/aastex.layout:321
 msgid "[Acknowledgements]"
 msgstr "[謝辞]"
 
-#: lib/layouts/aastex.layout:330
+#: lib/layouts/aastex.layout:331
 msgid "PlaceFigure"
 msgstr "図挿入"
 
-#: lib/layouts/aastex.layout:341
+#: lib/layouts/aastex.layout:342
 msgid "Place Figure here:"
 msgstr "図をここに置く:"
 
-#: lib/layouts/aastex.layout:350
+#: lib/layouts/aastex.layout:351
 msgid "PlaceTable"
 msgstr "表挿入"
 
-#: lib/layouts/aastex.layout:361
+#: lib/layouts/aastex.layout:362
 msgid "Place Table here:"
 msgstr "表をここに置く:"
 
-#: lib/layouts/aastex.layout:380
+#: lib/layouts/aastex.layout:381
 msgid "[Appendix]"
 msgstr "[付録]"
 
-#: lib/layouts/aastex.layout:390
+#: lib/layouts/aastex.layout:391
 msgid "MathLetters"
 msgstr "数式文字"
 
-#: lib/layouts/aastex.layout:429
+#: lib/layouts/aastex.layout:430
 msgid "NoteToEditor"
 msgstr "編集者への注釈"
 
-#: lib/layouts/aastex.layout:441
+#: lib/layouts/aastex.layout:442
 msgid "Note to Editor:"
 msgstr "編集者への注釈:"
 
-#: lib/layouts/aastex.layout:450
+#: lib/layouts/aastex.layout:451
 msgid "TableRefs"
 msgstr "表参照"
 
-#: lib/layouts/aastex.layout:462
+#: lib/layouts/aastex.layout:463
 msgid "References. ---"
 msgstr "引用 ---"
 
-#: lib/layouts/aastex.layout:470
+#: lib/layouts/aastex.layout:471
 msgid "TableComments"
 msgstr "表コメント"
 
-#: lib/layouts/aastex.layout:482
+#: lib/layouts/aastex.layout:483
 msgid "Note. ---"
 msgstr "注釈 ---"
 
-#: lib/layouts/aastex.layout:490
+#: lib/layouts/aastex.layout:491
 msgid "Table note"
 msgstr "表注釈"
 
-#: lib/layouts/aastex.layout:498
+#: lib/layouts/aastex.layout:499
 msgid "Table note:"
 msgstr "表注釈:"
 
-#: lib/layouts/aastex.layout:505
+#: lib/layouts/aastex.layout:506
 msgid "tablenotemark"
 msgstr "表注釈マーク"
 
-#: lib/layouts/aastex.layout:509
+#: lib/layouts/aastex.layout:510
 msgid "tablenote mark"
 msgstr "表注釈マーク"
 
-#: lib/layouts/aastex.layout:527
+#: lib/layouts/aastex.layout:528
 msgid "FigCaption"
 msgstr "図キャプション"
 
-#: lib/layouts/aastex.layout:528
+#: lib/layouts/aastex.layout:529
 msgid "fig."
 msgstr "図."
 
-#: lib/layouts/aastex.layout:533
-msgid "The caption as it appears in the list of figures"
-msgstr "図一覧に表示するキャプション"
+#: lib/layouts/aastex.layout:535
+#, fuzzy
+msgid "Filename to identify the corresponding figure file"
+msgstr "対応する問題のラベル"
 
-#: lib/layouts/aastex.layout:548
+#: lib/layouts/aastex.layout:550
 msgid "Facility"
 msgstr "施設"
 
-#: lib/layouts/aastex.layout:560
+#: lib/layouts/aastex.layout:562
 msgid "Facility:"
 msgstr "観測装置:"
 
-#: lib/layouts/aastex.layout:574
+#: lib/layouts/aastex.layout:576
 msgid "Objectname"
 msgstr "オブジェクト名"
 
-#: lib/layouts/aastex.layout:586
+#: lib/layouts/aastex.layout:588
 msgid "Obj:"
 msgstr "オブジェクト:"
 
-#: lib/layouts/aastex.layout:588 lib/layouts/aastex.layout:618
+#: lib/layouts/aastex.layout:590 lib/layouts/aastex.layout:620
 msgid "Recognized Name"
 msgstr "認識名"
 
-#: lib/layouts/aastex.layout:589
+#: lib/layouts/aastex.layout:591
 msgid "Separate the recognized name of an object from text"
 msgstr "オブジェクトの認識名を本文から離す"
 
-#: lib/layouts/aastex.layout:604
+#: lib/layouts/aastex.layout:606
 msgid "Dataset"
 msgstr "データセット"
 
-#: lib/layouts/aastex.layout:616
+#: lib/layouts/aastex.layout:618
 msgid "Dataset:"
 msgstr "データセット:"
 
-#: lib/layouts/aastex.layout:619
+#: lib/layouts/aastex.layout:621
 msgid "Separate the dataset ID from text"
 msgstr "データセットIDを本文から離す"
 
@@ -11932,23 +11933,23 @@ msgstr "上"
 msgid "above"
 msgstr "上キャプション"
 
-#: lib/layouts/scrclass.inc:288
+#: lib/layouts/scrclass.inc:290
 msgid "Below"
 msgstr "下"
 
-#: lib/layouts/scrclass.inc:289
+#: lib/layouts/scrclass.inc:291
 msgid "below"
 msgstr "下キャプション"
 
-#: lib/layouts/scrclass.inc:308
+#: lib/layouts/scrclass.inc:312
 msgid "Dictum"
 msgstr "格言"
 
-#: lib/layouts/scrclass.inc:318
+#: lib/layouts/scrclass.inc:322
 msgid "Dictum Author"
 msgstr "格言著者"
 
-#: lib/layouts/scrclass.inc:319
+#: lib/layouts/scrclass.inc:323
 msgid "The author of this dictum"
 msgstr "この格言の著者"
 
@@ -12489,15 +12490,15 @@ msgstr "索引"
 msgid "Argument"
 msgstr "引数"
 
-#: lib/layouts/stdinsets.inc:573
+#: lib/layouts/stdinsets.inc:575
 msgid "LongTableNoNumber"
 msgstr "無番長尺表"
 
-#: lib/layouts/stdinsets.inc:575
+#: lib/layouts/stdinsets.inc:577
 msgid "unlabelled"
 msgstr "ラベルなし"
 
-#: lib/layouts/stdinsets.inc:582
+#: lib/layouts/stdinsets.inc:584
 msgid "Preview"
 msgstr "プレビュー"
 
@@ -13217,11 +13218,11 @@ msgstr "影響下に置く言語。「bi-first」「bi-second」「bi-both」も
 msgid "Caption setup:"
 msgstr "キャプション設定:"
 
-#: lib/layouts/bicaption.module:39
+#: lib/layouts/bicaption.module:37
 msgid "Bicaption"
 msgstr "複言語キャプション"
 
-#: lib/layouts/bicaption.module:40
+#: lib/layouts/bicaption.module:38
 msgid "bilingual"
 msgstr "二ヶ国語"
 
@@ -14733,200 +14734,200 @@ msgstr "Computer Modern Roman"
 msgid "URW Garamond"
 msgstr "URW Garamond"
 
-#: lib/latexfonts:155 lib/latexfonts:164 lib/latexfonts:172
+#: lib/latexfonts:156 lib/latexfonts:165 lib/latexfonts:173
 msgid "Libertine"
 msgstr "Libertine"
 
-#: lib/latexfonts:179 lib/latexfonts:186
+#: lib/latexfonts:180 lib/latexfonts:187
 msgid "Latin Modern Roman"
 msgstr "Latin Modern Roman"
 
-#: lib/latexfonts:193 lib/latexfonts:206
+#: lib/latexfonts:194 lib/latexfonts:207
 msgid "Bitstream Charter (Mathdesign)"
 msgstr "Bitstream Charter (Mathdesign)"
 
-#: lib/latexfonts:213 lib/latexfonts:226
+#: lib/latexfonts:214 lib/latexfonts:227
 msgid "Utopia (Mathdesign)"
 msgstr "Utopia (Mathdesign)"
 
-#: lib/latexfonts:233 lib/latexfonts:246
+#: lib/latexfonts:234 lib/latexfonts:247
 msgid "URW Garamond (Mathdesign)"
 msgstr "URW Garamond (Mathdesign)"
 
-#: lib/latexfonts:253 lib/latexfonts:263
+#: lib/latexfonts:254 lib/latexfonts:264
 msgid "Minion Pro"
 msgstr "Minion Pro"
 
-#: lib/latexfonts:272
+#: lib/latexfonts:273
 msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
 
-#: lib/latexfonts:278 lib/latexfonts:290 lib/latexfonts:297 lib/latexfonts:303
-#: lib/latexfonts:310
+#: lib/latexfonts:279 lib/latexfonts:291 lib/latexfonts:298 lib/latexfonts:304
+#: lib/latexfonts:311
 msgid "Palatino"
 msgstr "Palatino"
 
-#: lib/latexfonts:316 lib/latexfonts:325 lib/latexfonts:332 lib/latexfonts:338
+#: lib/latexfonts:317 lib/latexfonts:326 lib/latexfonts:333 lib/latexfonts:339
 msgid "Times Roman"
 msgstr "Times Roman"
 
-#: lib/latexfonts:344
+#: lib/latexfonts:345
 msgid "TeX Gyre Bonum"
 msgstr "TeX Gyre Bonum"
 
-#: lib/latexfonts:350
+#: lib/latexfonts:351
 msgid "TeX Gyre Chorus"
 msgstr "TeX Gyre Chorus"
 
-#: lib/latexfonts:356
+#: lib/latexfonts:357
 msgid "TeX Gyre Pagella"
 msgstr "TeX Gyre Pagella"
 
-#: lib/latexfonts:362
+#: lib/latexfonts:363
 msgid "TeX Gyre Schola"
 msgstr "TeX Gyre Schola"
 
-#: lib/latexfonts:368
+#: lib/latexfonts:369
 msgid "TeX Gyre Termes"
 msgstr "TeX Gyre Termes"
 
-#: lib/latexfonts:376 lib/latexfonts:387 lib/latexfonts:393 lib/latexfonts:400
+#: lib/latexfonts:377 lib/latexfonts:388 lib/latexfonts:394 lib/latexfonts:401
 msgid "Utopia (Fourier)"
 msgstr "Utopia (Fourier)"
 
-#: lib/latexfonts:411
+#: lib/latexfonts:412
 msgid "Avant Garde"
 msgstr "Avant Garde"
 
-#: lib/latexfonts:417
+#: lib/latexfonts:418
 msgid "Bera Sans"
 msgstr "Bera Sans"
 
-#: lib/latexfonts:425 lib/latexfonts:435
+#: lib/latexfonts:426 lib/latexfonts:436
 msgid "Biolinum"
 msgstr "Biolinum"
 
-#: lib/latexfonts:443
+#: lib/latexfonts:444
 msgid "CM Bright"
 msgstr "CM Bright"
 
-#: lib/latexfonts:450
+#: lib/latexfonts:451
 msgid "Computer Modern Sans"
 msgstr "Computer Modern Sans"
 
-#: lib/latexfonts:456
+#: lib/latexfonts:457
 msgid "Helvetica"
 msgstr "Helvetica"
 
-#: lib/latexfonts:464
+#: lib/latexfonts:465
 msgid "Iwona"
 msgstr "Iwona"
 
-#: lib/latexfonts:471
+#: lib/latexfonts:472
 msgid "Iwona (Light)"
 msgstr "Iwona (Light)"
 
-#: lib/latexfonts:478
+#: lib/latexfonts:479
 msgid "Iwona (Condensed)"
 msgstr "Iwona (Condensed)"
 
-#: lib/latexfonts:485
+#: lib/latexfonts:486
 msgid "Iwona (Light Condensed)"
 msgstr "Iwona (Light Condensed)"
 
-#: lib/latexfonts:492
+#: lib/latexfonts:493
 msgid "Kurier"
 msgstr "Kurier"
 
-#: lib/latexfonts:499
+#: lib/latexfonts:500
 msgid "Kurier (Light)"
 msgstr "Kurier (Light)"
 
-#: lib/latexfonts:506
+#: lib/latexfonts:507
 msgid "Kurier (Condensed)"
 msgstr "Kurier (Condensed)"
 
-#: lib/latexfonts:513
+#: lib/latexfonts:514
 msgid "Kurier (Light Condensed)"
 msgstr "Kurier (Light Condensed)"
 
-#: lib/latexfonts:520
+#: lib/latexfonts:521
 msgid "Latin Modern Sans"
 msgstr "Latin Modern Sans"
 
-#: lib/latexfonts:527
+#: lib/latexfonts:528
 msgid "TeX Gyre Adventor"
 msgstr "TeX Gyre Adventor"
 
-#: lib/latexfonts:533
+#: lib/latexfonts:534
 msgid "TeX Gyre Heros"
 msgstr "TeX Gyre Heros"
 
-#: lib/latexfonts:539
+#: lib/latexfonts:540
 msgid "URW Classico (Optima)"
 msgstr "URW Classico (Optima)"
 
-#: lib/latexfonts:551
+#: lib/latexfonts:552
 msgid "Bera Mono"
 msgstr "Bera Mono"
 
-#: lib/latexfonts:559
+#: lib/latexfonts:560
 msgid "CM Typewriter Light"
 msgstr "CM Typewriter Light"
 
-#: lib/latexfonts:566
+#: lib/latexfonts:567
 msgid "Computer Modern Typewriter"
 msgstr "Computer Modern Typewriter"
 
-#: lib/latexfonts:572
+#: lib/latexfonts:573
 msgid "Courier"
 msgstr "Courier"
 
-#: lib/latexfonts:579
+#: lib/latexfonts:580
 msgid "Libertine Mono"
 msgstr "Libertine Mono"
 
-#: lib/latexfonts:586
+#: lib/latexfonts:587
 msgid "Latin Modern Typewriter"
 msgstr "Latin Modern Typewriter"
 
-#: lib/latexfonts:593
+#: lib/latexfonts:594
 msgid "LuxiMono"
 msgstr "LuxiMono"
 
-#: lib/latexfonts:600
+#: lib/latexfonts:601
 msgid "TeX Gyre Cursor"
 msgstr "TeX Gyre Cursor"
 
-#: lib/latexfonts:606
+#: lib/latexfonts:607
 msgid "TX Typewriter"
 msgstr "TX Typewriter"
 
-#: lib/latexfonts:618
+#: lib/latexfonts:619
 msgid "Euler VM"
 msgstr "Euler VM"
 
-#: lib/latexfonts:624
+#: lib/latexfonts:625
 msgid "URW Garamond (New TX)"
 msgstr "URW Garamond (New TX)"
 
-#: lib/latexfonts:632
+#: lib/latexfonts:633
 msgid "Iwona (Math)"
 msgstr "Iwona (Math)"
 
-#: lib/latexfonts:645
+#: lib/latexfonts:646
 msgid "Kurier (Math)"
 msgstr "Kurier (Math)"
 
-#: lib/latexfonts:658
+#: lib/latexfonts:659
 msgid "Libertine (New TX)"
 msgstr "Libertine (New TX)"
 
-#: lib/latexfonts:666
+#: lib/latexfonts:667
 msgid "Minion Pro (New TX)"
 msgstr "Minion Pro (New TX)"
 
-#: lib/latexfonts:675
+#: lib/latexfonts:676
 msgid "Times Roman (New TX)"
 msgstr "Times Roman (New TX)"
 
@@ -15299,18 +15300,18 @@ msgid "Redo|R"
 msgstr "やり直す(R)|R"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:597
+#: src/Text3.cpp:1265 src/mathed/InsetMathNest.cpp:598
 msgid "Cut"
 msgstr "切り取り"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:606
+#: src/Text3.cpp:1270 src/mathed/InsetMathNest.cpp:607
 msgid "Copy"
 msgstr "コピー"
 
 #: lib/ui/stdmenus.inc:107 lib/ui/stdcontext.inc:312 lib/ui/stdtoolbars.inc:83
 #: src/Text3.cpp:1210 src/mathed/InsetMathGrid.cpp:1334
-#: src/mathed/InsetMathNest.cpp:576
+#: src/mathed/InsetMathNest.cpp:577
 msgid "Paste"
 msgstr "貼り付け"
 
@@ -16456,14 +16457,19 @@ msgid "Multilingual Captions|C"
 msgstr "多言語キャプション(C)|C"
 
 #: lib/ui/stdmenus.inc:610
+#, fuzzy
+msgid "PDF comments|D"
+msgstr "PDFコメント"
+
+#: lib/ui/stdmenus.inc:611
 msgid "Risk and Safety Statements|R"
 msgstr "リスクと安全性に関する表示(R)|R"
 
-#: lib/ui/stdmenus.inc:611 lib/configure.py:614
+#: lib/ui/stdmenus.inc:612 lib/configure.py:614
 msgid "Sweave|S"
 msgstr "Sweave|S"
 
-#: lib/ui/stdmenus.inc:612
+#: lib/ui/stdmenus.inc:613
 msgid "XY-pic|X"
 msgstr "XY-pic|X"
 
@@ -21985,136 +21991,141 @@ msgstr "PDF (graphics)"
 msgid "PDF (cropped)"
 msgstr "PDF (切り落とし)"
 
-#: lib/configure.py:667
+#: lib/configure.py:665
+#, fuzzy
+msgid "PDF (lower resolution)"
+msgstr "PDF (ツールチップ)"
+
+#: lib/configure.py:668
 msgid "DVI"
 msgstr "DVI"
 
-#: lib/configure.py:667
+#: lib/configure.py:668
 msgid "DVI|D"
 msgstr "DVI|D"
 
-#: lib/configure.py:668
+#: lib/configure.py:669
 msgid "DVI (LuaTeX)"
 msgstr "DVI (LuaTeX)"
 
-#: lib/configure.py:668
+#: lib/configure.py:669
 msgid "DVI (LuaTeX)|V"
 msgstr "DVI (LuaTeX)|V"
 
-#: lib/configure.py:671
+#: lib/configure.py:672
 msgid "DraftDVI"
 msgstr "DraftDVI"
 
-#: lib/configure.py:674 lib/configure.py:706
+#: lib/configure.py:675 lib/configure.py:707
 msgid "htm"
 msgstr "htm"
 
-#: lib/configure.py:674 lib/configure.py:706
+#: lib/configure.py:675 lib/configure.py:707
 msgid "htm|HTML"
 msgstr "html|HTML"
 
-#: lib/configure.py:677
+#: lib/configure.py:678
 msgid "Noteedit"
 msgstr "Noteedit"
 
-#: lib/configure.py:680
+#: lib/configure.py:681
 msgid "OpenDocument"
 msgstr "OpenDocument"
 
-#: lib/configure.py:681
+#: lib/configure.py:682
 msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.Org (sxw)"
 
-#: lib/configure.py:684
+#: lib/configure.py:685
 msgid "Rich Text Format"
 msgstr "リッチテキスト形式"
 
-#: lib/configure.py:685
+#: lib/configure.py:686
 msgid "MS Word"
 msgstr "MS Word"
 
-#: lib/configure.py:685
+#: lib/configure.py:686
 msgid "MS Word|W"
 msgstr "MS Word|W"
 
-#: lib/configure.py:688
+#: lib/configure.py:689
 msgid "date command"
 msgstr "dateコマンド"
 
-#: lib/configure.py:689
+#: lib/configure.py:690
 msgid "Table (CSV)"
 msgstr "表（CSV）"
 
-#: lib/configure.py:691 src/frontends/qt4/GuiView.cpp:1167
+#: lib/configure.py:692 src/frontends/qt4/GuiView.cpp:1167
 #: src/frontends/qt4/GuiView.cpp:1168 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:692
+#: lib/configure.py:693
 msgid "LyX 1.3.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:693
+#: lib/configure.py:694
 msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
-#: lib/configure.py:694
+#: lib/configure.py:695
 msgid "LyX 1.5.x"
 msgstr "LyX 1.5.x"
 
-#: lib/configure.py:695
+#: lib/configure.py:696
 msgid "LyX 1.6.x"
 msgstr "LyX 1.6.x"
 
-#: lib/configure.py:696
+#: lib/configure.py:697
 msgid "LyX 2.0.x"
 msgstr "LyX 2.0.x"
 
-#: lib/configure.py:697
+#: lib/configure.py:698
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
-#: lib/configure.py:698
+#: lib/configure.py:699
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:699
+#: lib/configure.py:700
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:700
+#: lib/configure.py:701
 msgid "LyX Preview"
 msgstr "LyXプレビュー"
 
-#: lib/configure.py:701
+#: lib/configure.py:702
 msgid "PDFTEX"
 msgstr "PDFTEX"
 
-#: lib/configure.py:702
+#: lib/configure.py:703
 msgid "Program"
 msgstr "プログラム"
 
-#: lib/configure.py:703
+#: lib/configure.py:704
 msgid "PSTEX"
 msgstr "PSTEX"
 
-#: lib/configure.py:704 src/frontends/qt4/GuiClipboard.cpp:172
+#: lib/configure.py:705 src/frontends/qt4/GuiClipboard.cpp:172
 msgid "Windows Metafile"
 msgstr "Windowsメタファイル"
 
-#: lib/configure.py:705 src/frontends/qt4/GuiClipboard.cpp:171
+#: lib/configure.py:706 src/frontends/qt4/GuiClipboard.cpp:171
 msgid "Enhanced Metafile"
 msgstr "拡張メタファイル"
 
-#: lib/configure.py:810
+#: lib/configure.py:813
 msgid "LyXBlogger"
 msgstr "LyxBlogger"
 
-#: lib/configure.py:1014
+#: lib/configure.py:1026
 msgid "LyX Archive (zip)"
 msgstr "LyX書庫(zip)"
 
-#: lib/configure.py:1017
+#: lib/configure.py:1029
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX書庫(tar.gz)"
 
@@ -22312,7 +22323,7 @@ msgid ""
 msgstr ""
 "%1$s は新版のLyXファイルなので，スクリプトlyx2lyxが変換に失敗しました。"
 
-#: src/Buffer.cpp:1267 src/Buffer.cpp:4224 src/Buffer.cpp:4287
+#: src/Buffer.cpp:1267 src/Buffer.cpp:4229 src/Buffer.cpp:4292
 msgid "File is read-only"
 msgstr "ファイルが読込専用です"
 
@@ -22334,7 +22345,7 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "修正されているファイルに上書きしますか？"
 
-#: src/Buffer.cpp:1280 src/Buffer.cpp:1349 src/Buffer.cpp:2712
+#: src/Buffer.cpp:1280 src/Buffer.cpp:1349 src/Buffer.cpp:2717
 #: src/Exporter.cpp:50 src/frontends/qt4/GuiClipboard.cpp:246
 #: src/frontends/qt4/GuiView.cpp:2151 src/frontends/qt4/GuiView.cpp:2339
 #: src/frontends/qt4/GuiView.cpp:2453
@@ -22452,11 +22463,11 @@ msgstr "iconvが変換に失敗しました"
 msgid "conversion failed"
 msgstr "変換に失敗しました"
 
-#: src/Buffer.cpp:1698
+#: src/Buffer.cpp:1703
 msgid "Uncodable character in file path"
 msgstr "ファイルパスにコード化できない文字があります"
 
-#: src/Buffer.cpp:1700
+#: src/Buffer.cpp:1705
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -22479,57 +22490,57 @@ msgstr ""
 "問題が生じる場合には、(utf8などの)適切な文書エンコーディングを用いるか、ファ"
 "イルパス名を変更してください。"
 
-#: src/Buffer.cpp:2053
+#: src/Buffer.cpp:2058
 msgid "Running chktex..."
 msgstr "chktexを実行しています..."
 
-#: src/Buffer.cpp:2067
+#: src/Buffer.cpp:2072
 msgid "chktex failure"
 msgstr "chktexに失敗"
 
-#: src/Buffer.cpp:2068
+#: src/Buffer.cpp:2073
 msgid "Could not run chktex successfully."
 msgstr "Chktexをうまく実行することができませんでした。"
 
-#: src/Buffer.cpp:2360
+#: src/Buffer.cpp:2365
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "%1$s形式に書き出す方法を知りません"
 
-#: src/Buffer.cpp:2440
+#: src/Buffer.cpp:2445
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "%1$s形式への書き出し時にエラーが起こりました。"
 
-#: src/Buffer.cpp:2449
+#: src/Buffer.cpp:2454
 msgid "Error generating literate programming code."
 msgstr "文芸的プログラミングコードを生成するのに失敗しました。"
 
-#: src/Buffer.cpp:2528
+#: src/Buffer.cpp:2533
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "派生枝「%1$s」は存在しません。"
 
-#: src/Buffer.cpp:2563
+#: src/Buffer.cpp:2568
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "派生枝「%1$s」は既に存在しています。"
 
-#: src/Buffer.cpp:2629
+#: src/Buffer.cpp:2634
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "「%1$s」を解析できません"
 
-#: src/Buffer.cpp:2636
+#: src/Buffer.cpp:2641
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "ターゲット「%1$s」を認識できません"
 
-#: src/Buffer.cpp:2643
+#: src/Buffer.cpp:2648
 msgid "Error exporting to DVI."
 msgstr "DVI書き出し時にエラーが起こりました。"
 
-#: src/Buffer.cpp:2708 src/Exporter.cpp:45
+#: src/Buffer.cpp:2713 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -22540,85 +22551,85 @@ msgstr ""
 "\n"
 "そのファイルに上書きしますか？"
 
-#: src/Buffer.cpp:2711 src/Exporter.cpp:48
+#: src/Buffer.cpp:2716 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "ファイルを上書きしますか？"
 
-#: src/Buffer.cpp:2728
+#: src/Buffer.cpp:2733
 msgid "Error running external commands."
 msgstr "外部コマンド実行時にエラーが起こりました。"
 
-#: src/Buffer.cpp:3550
+#: src/Buffer.cpp:3555
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "段落%1$dのソースコードをプレビューする"
 
-#: src/Buffer.cpp:3554
+#: src/Buffer.cpp:3559
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "段落%1$sから%2$sまでのソースコードをプレビューする"
 
-#: src/Buffer.cpp:3608
+#: src/Buffer.cpp:3613
 msgid "Preview source code"
 msgstr "ソースコードをプレビューする"
 
-#: src/Buffer.cpp:3610
+#: src/Buffer.cpp:3615
 msgid "Preview preamble"
 msgstr "プリアンブルをプレビューする"
 
-#: src/Buffer.cpp:3612
+#: src/Buffer.cpp:3617
 msgid "Preview body"
 msgstr "本文をプレビューする"
 
-#: src/Buffer.cpp:3627
+#: src/Buffer.cpp:3632
 msgid "Plain text does not have a preamble."
 msgstr "平文にはプリアンブルがありません。"
 
-#: src/Buffer.cpp:3730
+#: src/Buffer.cpp:3735
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "%1$sを自動保存しています"
 
-#: src/Buffer.cpp:3784
+#: src/Buffer.cpp:3789
 msgid "Autosave failed!"
 msgstr "自動保存に失敗しました！"
 
-#: src/Buffer.cpp:3845
+#: src/Buffer.cpp:3850
 msgid "Autosaving current document..."
 msgstr "現在の文書を自動保存しています..."
 
-#: src/Buffer.cpp:3966
+#: src/Buffer.cpp:3971
 msgid "Couldn't export file"
 msgstr "ファイルを書き出すことができませんでした"
 
-#: src/Buffer.cpp:3967
+#: src/Buffer.cpp:3972
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "%1$sというフォーマットを書き出すのに必要な情報がありません"
 
-#: src/Buffer.cpp:4028 src/frontends/qt4/GuiView.cpp:2124
+#: src/Buffer.cpp:4033 src/frontends/qt4/GuiView.cpp:2124
 msgid "File name error"
 msgstr "ファイル名エラー"
 
-#: src/Buffer.cpp:4029
+#: src/Buffer.cpp:4034
 msgid "The directory path to the document cannot contain spaces."
 msgstr "文書のパスには空白が含まれていてはなりません。"
 
-#: src/Buffer.cpp:4131 src/Buffer.cpp:4145 src/frontends/qt4/GuiView.cpp:548
+#: src/Buffer.cpp:4136 src/Buffer.cpp:4150 src/frontends/qt4/GuiView.cpp:548
 msgid "Document export cancelled."
 msgstr "文書の書き出しは取り消されました。"
 
-#: src/Buffer.cpp:4148
+#: src/Buffer.cpp:4153
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "文書は%1$sとしてファイル「%2$s」に書き出されました。"
 
-#: src/Buffer.cpp:4155
+#: src/Buffer.cpp:4160
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "文書は%1$sとして書き出されました。"
 
-#: src/Buffer.cpp:4210
+#: src/Buffer.cpp:4215
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -22629,19 +22640,19 @@ msgstr ""
 "\n"
 "緊急保存ファイルから復旧しますか？"
 
-#: src/Buffer.cpp:4213
+#: src/Buffer.cpp:4218
 msgid "Load emergency save?"
 msgstr "緊急保存ファイルを読みこみますか？"
 
-#: src/Buffer.cpp:4214
+#: src/Buffer.cpp:4219
 msgid "&Recover"
 msgstr "復旧(&R)"
 
-#: src/Buffer.cpp:4214
+#: src/Buffer.cpp:4219
 msgid "&Load Original"
 msgstr "オリジナルを読み込む(&L):"
 
-#: src/Buffer.cpp:4225
+#: src/Buffer.cpp:4230
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -22651,15 +22662,15 @@ msgstr ""
 "込み専用に設定されています。この文書を別のファイルにかならず保存してくださ"
 "い。"
 
-#: src/Buffer.cpp:4232
+#: src/Buffer.cpp:4237
 msgid "Document was successfully recovered."
 msgstr "文書を無事に復旧しました。"
 
-#: src/Buffer.cpp:4234
+#: src/Buffer.cpp:4239
 msgid "Document was NOT successfully recovered."
 msgstr "文書を無事に復旧することができませんでした。"
 
-#: src/Buffer.cpp:4235
+#: src/Buffer.cpp:4240
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -22668,27 +22679,27 @@ msgstr ""
 "緊急保存ファイルを直ちに削除しますか？\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:4239 src/Buffer.cpp:4251
+#: src/Buffer.cpp:4244 src/Buffer.cpp:4256
 msgid "Delete emergency file?"
 msgstr "緊急保存ファイルを削除しますか？"
 
-#: src/Buffer.cpp:4240 src/Buffer.cpp:4253
+#: src/Buffer.cpp:4245 src/Buffer.cpp:4258
 msgid "&Keep"
 msgstr "保持(&K)"
 
-#: src/Buffer.cpp:4244
+#: src/Buffer.cpp:4249
 msgid "Emergency file deleted"
 msgstr "緊急保存ファイルを削除しました"
 
-#: src/Buffer.cpp:4245
+#: src/Buffer.cpp:4250
 msgid "Do not forget to save your file now!"
 msgstr "すぐにファイルを保存するようにしてください！"
 
-#: src/Buffer.cpp:4252
+#: src/Buffer.cpp:4257
 msgid "Remove emergency file now?"
 msgstr "緊急保存ファイルを読みこみますか？"
 
-#: src/Buffer.cpp:4275
+#: src/Buffer.cpp:4280
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -22699,19 +22710,19 @@ msgstr ""
 "\n"
 "代わりにバックアップファイルを読み込みますか？"
 
-#: src/Buffer.cpp:4277
+#: src/Buffer.cpp:4282
 msgid "Load backup?"
 msgstr "バックアップを読み込みますか？"
 
-#: src/Buffer.cpp:4278
+#: src/Buffer.cpp:4283
 msgid "&Load backup"
 msgstr "バックアップを読み込む(&L)"
 
-#: src/Buffer.cpp:4278
+#: src/Buffer.cpp:4283
 msgid "Load &original"
 msgstr "オリジナルを読み込む(&O)"
 
-#: src/Buffer.cpp:4288
+#: src/Buffer.cpp:4293
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -22721,25 +22732,25 @@ msgstr ""
 "読み込み専用に設定されています。文書を別のファイルにかならず保存してくださ"
 "い。"
 
-#: src/Buffer.cpp:4628 src/insets/InsetCaption.cpp:383
+#: src/Buffer.cpp:4633 src/insets/InsetCaption.cpp:376
 msgid "Senseless!!! "
 msgstr "意味を成しません!!! "
 
-#: src/Buffer.cpp:4848
+#: src/Buffer.cpp:4853
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "文書%1$sを再読み込みしました。"
 
-#: src/Buffer.cpp:4851
+#: src/Buffer.cpp:4856
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "文書%1$sの再読み込みができません"
 
-#: src/Buffer.cpp:4918
+#: src/Buffer.cpp:4923
 msgid "Included File Invalid"
 msgstr "取り込まれたファイルが無効です"
 
-#: src/Buffer.cpp:4919
+#: src/Buffer.cpp:4924
 #, c-format
 msgid ""
 "Saving this document to a new location has made the file:\n"
@@ -22855,12 +22866,12 @@ msgstr ""
 msgid "Document class not available"
 msgstr "文書クラスが利用不能です"
 
-#: src/BufferParams.cpp:1817 src/insets/InsetCommandParams.cpp:384
+#: src/BufferParams.cpp:1822 src/insets/InsetCommandParams.cpp:384
 #: src/insets/InsetHyperlink.cpp:197
 msgid "Uncodable characters"
 msgstr "コード化できない文字"
 
-#: src/BufferParams.cpp:1818
+#: src/BufferParams.cpp:1823
 #, c-format
 msgid ""
 "The following characters that are used in an index name are not\n"
@@ -22871,7 +22882,7 @@ msgstr ""
 "現在のエンコーディングでは表現できないので無視されました:\n"
 "%1$s."
 
-#: src/BufferParams.cpp:2078
+#: src/BufferParams.cpp:2085
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -22886,11 +22897,11 @@ msgstr ""
 "既定テキストクラスを使用します。LyXは、正しい出力を\n"
 "行うことができないでしょう。"
 
-#: src/BufferParams.cpp:2084
+#: src/BufferParams.cpp:2091
 msgid "Document class not found"
 msgstr "文書クラスが見つかりません"
 
-#: src/BufferParams.cpp:2091
+#: src/BufferParams.cpp:2098
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -22905,15 +22916,15 @@ msgstr ""
 "既定テキストクラスを使用します。LyXは、正しい出力を\n"
 "行わないでしょう。"
 
-#: src/BufferParams.cpp:2097 src/BufferView.cpp:1295 src/BufferView.cpp:1324
+#: src/BufferParams.cpp:2104 src/BufferView.cpp:1295 src/BufferView.cpp:1324
 msgid "Could not load class"
 msgstr "クラスを読み込むことができませんでした"
 
-#: src/BufferParams.cpp:2147
+#: src/BufferParams.cpp:2154
 msgid "Error reading internal layout information"
 msgstr "内部レイアウト情報の読み込みエラーです"
 
-#: src/BufferParams.cpp:2148 src/TextClass.cpp:1528
+#: src/BufferParams.cpp:2155 src/TextClass.cpp:1528
 msgid "Read Error"
 msgstr "読み込みエラー"
 
@@ -23480,7 +23491,7 @@ msgstr ""
 "%1$s形式のファイルから%2$s形式に変換するための情報がありません。\n"
 "設定で変換子を指定してください。"
 
-#: src/Converter.cpp:468 src/Format.cpp:702 src/Format.cpp:770
+#: src/Converter.cpp:468 src/Format.cpp:704 src/Format.cpp:774
 msgid "Executing command: "
 msgstr "以下のコマンドを実行します: "
 
@@ -23587,14 +23598,14 @@ msgid "Undefined flex inset"
 msgstr "未定義の自由差込枠"
 
 #: src/Encoding.cpp:408 src/Paragraph.cpp:2619
-#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:179
-#: src/insets/InsetListings.cpp:187 src/insets/InsetListings.cpp:210
+#: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:181
+#: src/insets/InsetListings.cpp:189 src/insets/InsetListings.cpp:212
 #: src/mathed/InsetMathString.cpp:162
 msgid "LyX Warning: "
 msgstr "LyX警告: "
 
 #: src/Encoding.cpp:409 src/Paragraph.cpp:2620
-#: src/insets/InsetListings.cpp:180 src/insets/InsetListings.cpp:188
+#: src/insets/InsetListings.cpp:182 src/insets/InsetListings.cpp:190
 #: src/mathed/InsetMathString.cpp:163
 msgid "uncodable character"
 msgstr "コード化できない文字"
@@ -23723,7 +23734,7 @@ msgstr "番号 %1$s"
 msgid "Cannot view file"
 msgstr "ファイルを読むことができません"
 
-#: src/Format.cpp:651 src/Format.cpp:718 src/frontends/qt4/GuiView.cpp:3148
+#: src/Format.cpp:651 src/Format.cpp:720 src/frontends/qt4/GuiView.cpp:3148
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "ファイル%1$s は存在しません"
@@ -23738,20 +23749,20 @@ msgstr "%1$sの閲覧方法が指定されていません"
 msgid "Auto-view file %1$s failed"
 msgstr "ファイル%1$sの自動閲覧に失敗しました"
 
-#: src/Format.cpp:717 src/Format.cpp:729 src/Format.cpp:742 src/Format.cpp:753
+#: src/Format.cpp:719 src/Format.cpp:731 src/Format.cpp:744 src/Format.cpp:755
 msgid "Cannot edit file"
 msgstr "ファイルを編集することができませんでした"
 
-#: src/Format.cpp:730
+#: src/Format.cpp:732
 msgid "LinkBack files can only be edited on Apple Mac OSX."
 msgstr "LinkBackファイルはApple Mac OSX上でのみ編集することができます。"
 
-#: src/Format.cpp:743
+#: src/Format.cpp:745
 #, c-format
 msgid "No information for editing %1$s"
 msgstr "%1$s を編集するための情報がありません"
 
-#: src/Format.cpp:754
+#: src/Format.cpp:756
 #, c-format
 msgid "Auto-edit file %1$s failed"
 msgstr "ファイル%1$sの自動編集に失敗しました"
@@ -24911,7 +24922,7 @@ msgstr "数式編集モード"
 msgid "No valid math formula"
 msgstr "有効な数式ではありません"
 
-#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1034
+#: src/Text3.cpp:207 src/mathed/InsetMathNest.cpp:1035
 msgid "Already in regular expression mode"
 msgstr "既に正規表現モードです"
 
@@ -24927,7 +24938,7 @@ msgstr "割り付け"
 msgid " not known"
 msgstr "解釈不能"
 
-#: src/Text3.cpp:1921 src/frontends/qt4/GuiApplication.cpp:1625
+#: src/Text3.cpp:1921 src/frontends/qt4/GuiApplication.cpp:1635
 msgid "Missing argument"
 msgstr "引数がありません"
 
@@ -25508,60 +25519,60 @@ msgstr "LyXについて"
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:640
+#: src/frontends/qt4/GuiApplication.cpp:644
 msgid "About %1"
 msgstr "%1について"
 
-#: src/frontends/qt4/GuiApplication.cpp:640
+#: src/frontends/qt4/GuiApplication.cpp:644
 #: src/frontends/qt4/GuiPrefs.cpp:3308
 msgid "Preferences"
 msgstr "設定"
 
-#: src/frontends/qt4/GuiApplication.cpp:641
+#: src/frontends/qt4/GuiApplication.cpp:645
 msgid "Reconfigure"
 msgstr "環境構成"
 
-#: src/frontends/qt4/GuiApplication.cpp:641
+#: src/frontends/qt4/GuiApplication.cpp:645
 msgid "Quit %1"
 msgstr "%1を終了"
 
-#: src/frontends/qt4/GuiApplication.cpp:1078
+#: src/frontends/qt4/GuiApplication.cpp:1088
 msgid "Nothing to do"
 msgstr "何もしません"
 
-#: src/frontends/qt4/GuiApplication.cpp:1084
+#: src/frontends/qt4/GuiApplication.cpp:1094
 msgid "Unknown action"
 msgstr "未知の動作です。"
 
-#: src/frontends/qt4/GuiApplication.cpp:1128
+#: src/frontends/qt4/GuiApplication.cpp:1138
 msgid "Command not handled"
 msgstr "コマンドを取り扱えません"
 
-#: src/frontends/qt4/GuiApplication.cpp:1134
+#: src/frontends/qt4/GuiApplication.cpp:1144
 msgid "Command disabled"
 msgstr "コマンドは無効です"
 
-#: src/frontends/qt4/GuiApplication.cpp:1248
+#: src/frontends/qt4/GuiApplication.cpp:1258
 msgid "Command not allowed without a buffer open"
 msgstr "バッファが開かれていないときには、このコマンドは使うことができません"
 
-#: src/frontends/qt4/GuiApplication.cpp:1255
+#: src/frontends/qt4/GuiApplication.cpp:1265
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
 msgstr "buffer-foallの引数 <LFUN-COMMAND> が有効ではありません"
 
-#: src/frontends/qt4/GuiApplication.cpp:1447
+#: src/frontends/qt4/GuiApplication.cpp:1457
 msgid "Running configure..."
 msgstr "初期設定を実行しています..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1458
+#: src/frontends/qt4/GuiApplication.cpp:1468
 msgid "Reloading configuration..."
 msgstr "システム設定を読み込み直しています..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1464
+#: src/frontends/qt4/GuiApplication.cpp:1474
 msgid "System reconfiguration failed"
 msgstr "システムの再走査に失敗しました"
 
-#: src/frontends/qt4/GuiApplication.cpp:1465
+#: src/frontends/qt4/GuiApplication.cpp:1475
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may\n"
@@ -25573,11 +25584,11 @@ msgstr ""
 "LyXはうまく動かないかもしれません。\n"
 "必要ならば、再度、環境構成を行ってください。"
 
-#: src/frontends/qt4/GuiApplication.cpp:1470
+#: src/frontends/qt4/GuiApplication.cpp:1480
 msgid "System reconfigured"
 msgstr "システムの環境構成を行いました"
 
-#: src/frontends/qt4/GuiApplication.cpp:1471
+#: src/frontends/qt4/GuiApplication.cpp:1481
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -25587,49 +25598,49 @@ msgstr ""
 "更新された文書クラス設定を使うためには\n"
 "LyXを再起動する必要があります。"
 
-#: src/frontends/qt4/GuiApplication.cpp:1551
+#: src/frontends/qt4/GuiApplication.cpp:1561
 msgid "Exiting."
 msgstr "終了します。"
 
-#: src/frontends/qt4/GuiApplication.cpp:1637
+#: src/frontends/qt4/GuiApplication.cpp:1647
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "ヘルプファイルを開いています: %1$s..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1656
+#: src/frontends/qt4/GuiApplication.cpp:1666
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "文法: set-color <lyx名> <x11名>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1672
+#: src/frontends/qt4/GuiApplication.cpp:1682
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\"は失敗しました。───色が未定義か、再定義されていない可能性が"
 "あります。"
 
-#: src/frontends/qt4/GuiApplication.cpp:1867
+#: src/frontends/qt4/GuiApplication.cpp:1877
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
 msgstr "%2$d個のバッファに「%1$s」を適用しました"
 
-#: src/frontends/qt4/GuiApplication.cpp:1942
+#: src/frontends/qt4/GuiApplication.cpp:1952
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "文書既定値を%1$sに保存しました"
 
-#: src/frontends/qt4/GuiApplication.cpp:1946
+#: src/frontends/qt4/GuiApplication.cpp:1956
 msgid "Unable to save document defaults"
 msgstr "文書既定値を保存することができませんでした"
 
-#: src/frontends/qt4/GuiApplication.cpp:2104
+#: src/frontends/qt4/GuiApplication.cpp:2114
 msgid "Unknown function."
 msgstr "未知の機能です。"
 
-#: src/frontends/qt4/GuiApplication.cpp:2541
+#: src/frontends/qt4/GuiApplication.cpp:2551
 msgid "The current document was closed."
 msgstr "現在の文書は閉じられました。"
 
-#: src/frontends/qt4/GuiApplication.cpp:2551
+#: src/frontends/qt4/GuiApplication.cpp:2561
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -25641,12 +25652,12 @@ msgstr ""
 "\n"
 "例外エラー: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2555
-#: src/frontends/qt4/GuiApplication.cpp:2561
+#: src/frontends/qt4/GuiApplication.cpp:2565
+#: src/frontends/qt4/GuiApplication.cpp:2571
 msgid "Software exception Detected"
 msgstr "ソフトウェア例外エラーが検出されました"
 
-#: src/frontends/qt4/GuiApplication.cpp:2559
+#: src/frontends/qt4/GuiApplication.cpp:2569
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -25654,12 +25665,12 @@ msgstr ""
 "LyXは何か非常におかしな例外エラーを検出したので、保存されていない全ての文書の"
 "保存を試み、終了します。"
 
-#: src/frontends/qt4/GuiApplication.cpp:2828
-#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2838
+#: src/frontends/qt4/GuiApplication.cpp:2850
 msgid "Could not find UI definition file"
 msgstr "UI定義ファイルを見つけることができませんでした"
 
-#: src/frontends/qt4/GuiApplication.cpp:2829
+#: src/frontends/qt4/GuiApplication.cpp:2839
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -25670,11 +25681,11 @@ msgstr ""
 "%1$s\n"
 "を読む際にエラーが発生しました。正しく導入されているか確認してください。"
 
-#: src/frontends/qt4/GuiApplication.cpp:2835
+#: src/frontends/qt4/GuiApplication.cpp:2845
 msgid "Could not find default UI file"
 msgstr "既定のUI定義ファイルを見つけることができませんでした"
 
-#: src/frontends/qt4/GuiApplication.cpp:2836
+#: src/frontends/qt4/GuiApplication.cpp:2846
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -25682,7 +25693,7 @@ msgstr ""
 "LyXは、既定のUI定義ファイルを見つけることができませんでした。\n"
 "インストールが正しかったかどうか確認してください。"
 
-#: src/frontends/qt4/GuiApplication.cpp:2841
+#: src/frontends/qt4/GuiApplication.cpp:2851
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -28774,7 +28785,7 @@ msgstr ""
 "派生枝「%1$s」の状態が、親ファイルで変更されました。親ファイルの保存を必ず行"
 "なってください。"
 
-#: src/insets/InsetCaption.cpp:397
+#: src/insets/InsetCaption.cpp:390
 #, c-format
 msgid "Sub-%1$s"
 msgstr "内部%1$s"
@@ -28827,7 +28838,7 @@ msgstr ""
 msgid "External template %1$s is not installed"
 msgstr "外部ひな型%1$sはインストールされていません"
 
-#: src/insets/InsetFloat.cpp:281 src/insets/InsetFloat.cpp:463
+#: src/insets/InsetFloat.cpp:281 src/insets/InsetFloat.cpp:465
 msgid "float: "
 msgstr "フロート: "
 
@@ -28836,15 +28847,15 @@ msgstr "フロート: "
 msgid "ERROR: Unknown float type: %1$s"
 msgstr "エラー: %1$sというフロート型は知りません"
 
-#: src/insets/InsetFloat.cpp:401
+#: src/insets/InsetFloat.cpp:403
 msgid "float"
 msgstr "フロート"
 
-#: src/insets/InsetFloat.cpp:466
+#: src/insets/InsetFloat.cpp:468
 msgid "subfloat: "
 msgstr "従属フロート: "
 
-#: src/insets/InsetFloat.cpp:474
+#: src/insets/InsetFloat.cpp:476
 msgid " (sideways)"
 msgstr " (横向き)"
 
@@ -29096,15 +29107,15 @@ msgstr "重複: "
 msgid "Horizontal line"
 msgstr "水平線"
 
-#: src/insets/InsetListings.cpp:211
+#: src/insets/InsetListings.cpp:213
 msgid "no more lstline delimiters available"
 msgstr "lstline区分記号は以上です"
 
-#: src/insets/InsetListings.cpp:216
+#: src/insets/InsetListings.cpp:218
 msgid "Running out of delimiters"
 msgstr "区分記号を使いきりました"
 
-#: src/insets/InsetListings.cpp:217
+#: src/insets/InsetListings.cpp:219
 msgid ""
 "For inline program listings, one character must be reserved\n"
 "as a delimiter. One of the listings, however, uses all available\n"
@@ -29120,11 +29131,11 @@ msgstr ""
 "とりあえず「!」を警告に置き換えましたが、\n"
 "チェックをする必要があります"
 
-#: src/insets/InsetListings.cpp:259
+#: src/insets/InsetListings.cpp:261
 msgid "Uncodable characters in listings inset"
 msgstr "プログラムリスト差込枠にコード化できない文字があります"
 
-#: src/insets/InsetListings.cpp:260
+#: src/insets/InsetListings.cpp:262
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"
@@ -29328,15 +29339,15 @@ msgstr "水平埋め草"
 msgid "VPhantom"
 msgstr "垂直埋め草"
 
-#: src/insets/InsetPhantom.cpp:327
+#: src/insets/InsetPhantom.cpp:329
 msgid "phantom"
 msgstr "埋め草"
 
-#: src/insets/InsetPhantom.cpp:329
+#: src/insets/InsetPhantom.cpp:331
 msgid "hphantom"
 msgstr "水平埋め草"
 
-#: src/insets/InsetPhantom.cpp:331
+#: src/insets/InsetPhantom.cpp:333
 msgid "vphantom"
 msgstr "垂直埋め草"
 
@@ -29470,19 +29481,19 @@ msgstr "プログラムリスト一覧"
 msgid "Unknown TOC type"
 msgstr "未知の目次型"
 
-#: src/insets/InsetTabular.cpp:4539
+#: src/insets/InsetTabular.cpp:4540
 msgid "Selections not supported."
 msgstr "選択はサポートされていません。"
 
-#: src/insets/InsetTabular.cpp:4561
+#: src/insets/InsetTabular.cpp:4562
 msgid "Multi-column in current or destination column."
 msgstr "現列若しくは対象列中に連結列。"
 
-#: src/insets/InsetTabular.cpp:4573
+#: src/insets/InsetTabular.cpp:4574
 msgid "Multi-row in current or destination row."
 msgstr "現行若しくは対象行中に連結行。"
 
-#: src/insets/InsetTabular.cpp:4965
+#: src/insets/InsetTabular.cpp:4966
 msgid "Selection size should match clipboard content."
 msgstr "選択した大きさが、クリップボードの内容と一致していなくてはなりません。"
 
@@ -29736,24 +29747,24 @@ msgstr "「%1$s」の列数を変えることができません。"
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "「%1$s」に水平境界線を加えることができません。"
 
-#: src/mathed/InsetMathNest.cpp:712 src/mathed/InsetMathNest.cpp:1730
-#: src/mathed/InsetMathNest.cpp:1876
+#: src/mathed/InsetMathNest.cpp:713 src/mathed/InsetMathNest.cpp:1731
+#: src/mathed/InsetMathNest.cpp:1877
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "自動修正切（入にするには「!」）"
 
-#: src/mathed/InsetMathNest.cpp:1020
+#: src/mathed/InsetMathNest.cpp:1021
 msgid "create new math text environment ($...$)"
 msgstr "新しい数式テキスト環境を作成する($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1023
+#: src/mathed/InsetMathNest.cpp:1024
 msgid "entered math text mode (textrm)"
 msgstr "挿入された数式テキストモード(textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1045
+#: src/mathed/InsetMathNest.cpp:1046
 msgid "Regular expression editor mode"
 msgstr "正規表現エディタモード"
 
-#: src/mathed/InsetMathNest.cpp:1735 src/mathed/InsetMathNest.cpp:1878
+#: src/mathed/InsetMathNest.cpp:1736 src/mathed/InsetMathNest.cpp:1879
 msgid "Autocorrect On (<space> to exit)"
 msgstr "自動修正入（切にするには<スペース>）"
 
@@ -29779,7 +29790,7 @@ msgstr "寸法: %1$s"
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "「%1$s」の水平揃えを変更することができません。"
 
-#: src/mathed/MathMacro.cpp:835 src/mathed/MathMacro.cpp:841
+#: src/mathed/MathMacro.cpp:837 src/mathed/MathMacro.cpp:843
 #, c-format
 msgid "Macro: %1$s"
 msgstr "マクロ: %1$s"
@@ -30112,6 +30123,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "未知の"
+
+#~ msgid "The caption as it appears in the list of figures"
+#~ msgstr "図一覧に表示するキャプション"
 
 #~ msgid "Sca&le on screen (%):"
 #~ msgstr "画面上の縮尺(&L) (％):"
