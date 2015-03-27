@@ -35,4 +35,20 @@ namespace lyx {
 		return string();
 	}
 
+	//
+	// Dummy FontMetrics (needed by Length)
+	//
+
+
+	class FontMetrics {
+		int em() const { return 0; };
+	};
+
+	class FontInfo;
+
+	FontMetrics const & theFontMetrics(FontInfo const &) {
+		static FontMetrics dummy;
+		return dummy;
+	}
+
 }
