@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-03-16 11:13+0100\n"
-"PO-Revision-Date: 2015-03-16 12:26+0100\n"
+"POT-Creation-Date: 2015-03-23 00:06+0100\n"
+"PO-Revision-Date: 2015-03-23 17:57+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -17012,7 +17012,7 @@ msgstr "Matematika|M"
 
 #: lib/ui/stdmenus.inc:360
 msgid "Special Character|p"
-msgstr "Špeciálny znak"
+msgstr "Špeciálny znak|i"
 
 #: lib/ui/stdmenus.inc:361
 msgid "Formatting|o"
@@ -22249,8 +22249,12 @@ msgid "FEN"
 msgstr "FEN"
 
 #: lib/configure.py:585
-msgid "SVG"
-msgstr "SVG"
+msgid "svgz"
+msgstr "svgz"
+
+#: lib/configure.py:585
+msgid "svgz|SVG"
+msgstr "svgz|SVG"
 
 #: lib/configure.py:587
 msgid "BMP"
@@ -24062,13 +24066,26 @@ msgstr ""
 msgid "LaTeX failed"
 msgstr "LaTeX zlyhal"
 
+#: src/Converter.cpp:665
+#, c-format
+msgid ""
+"The external program\n"
+"%1$s\n"
+"finished with an error. It is recommended you fix the cause of the external "
+"program's error (check the logs). "
+msgstr ""
+"Externý program\n"
+"%1$s\n"
+"končil s chybou. Odporúča sa upraviť príčinu chyby externého programu "
+"(skontrolujte hlásenia). "
+
 #: src/Converter.cpp:663
 msgid "Output is empty"
 msgstr "Výstup je prázdny"
 
-#: src/Converter.cpp:664
-msgid "An empty output file was generated."
-msgstr "Bol generovaný prázdny výstupný súbor."
+#: src/Converter.cpp:673
+msgid "No output file was generated."
+msgstr "Výstupný súbor nebol generovaný."
 
 #: src/CutAndPaste.cpp:364
 #, c-format
@@ -24545,7 +24562,7 @@ msgstr "Zoznam podporovaných ladiacich indikátorov:"
 msgid "Setting debug level to %1$s"
 msgstr "Nastavenie úrovne ladenia na %1$s"
 
-#: src/LyX.cpp:1047
+#: src/LyX.cpp:1102
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -24610,7 +24627,7 @@ msgstr ""
 "\t-E [--export-to] fmt názov\n"
 "                  kde fmt je vybraný exportný formát (pozrite --export),\n"
 "                  a názov je meno výsledného súboru.\n"
-"\ti [--import] fmt file.xxx\n"
+"\t-i [--import] fmt file.xxx\n"
 "                  kde fmt je vybraný formát k importu\n"
 "                  a file.xxx je meno súboru určeného pre import.\n"
 "\t-f [--force-overwrite] čo\n"
@@ -33377,3 +33394,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Context help"
 #~ msgstr "Kontextovo závislá pomoc"
+
+#~ msgid "An empty output file was generated."
+#~ msgstr "Bol generovaný prázdny výstupný súbor."
