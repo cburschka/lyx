@@ -418,7 +418,7 @@ void LyXAction::init()
 		      package: name of latex package (e.g. listings) \n
 		      textclass: name of textclass (e.g. article) \n
 		      menu: name of lfun used in menu  \n
-		      icon: icon of lfun used in toolbar \n
+		      icon: icon of lfun used in toolbar or direct icon name\n
 		      buffer: "name"|"path"|"class"|"vcs-tree-revision"|
                               "vcs-revision"|"vcs-author"|"vcs-date"|"vcs-time"
  * \li Sample: command-sequence info-insert buffer path; info-insert buffer name

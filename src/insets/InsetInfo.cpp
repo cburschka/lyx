@@ -410,6 +410,12 @@ void InsetInfo::updateInfo()
 		// installed one is preferred anyway, and all icons that are
 		// embedded in the resources are installed as well.
 		FileName file(to_utf8(icon_name));
+		if (file.onlyFileNameWithoutExt() == "unknown") {
+			string dir = "images";
+			FileName file2(imageLibFileSearch(dir, name_, "svgz,png"));
+			if (!file2.empty())
+				file = file2;
+		}
 		if (!file.exists())
 			break;
 		int percent_scale = 100;
