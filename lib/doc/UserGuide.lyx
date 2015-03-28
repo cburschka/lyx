@@ -1861,52 +1861,24 @@ depth
 
 \begin_layout Standard
 The 
-\begin_inset space \space{}
+\begin_inset Info
+type  "icon"
+arg   "reload"
 \end_inset
 
-
-\begin_inset Graphics
-	filename ../images/reload.png
-
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-button refreshes the TOC (though this should not usually be necessary).
+ button refreshes the TOC (though this should not usually be necessary).
  Next to it are buttons that allow you to change the position of sections
  in your document.
  The 
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../images/down.png
-	scale 85
-	groupId toolbarbuttons
-
-\end_inset
-
-
-\begin_inset space ~
+\begin_inset Info
+type  "icon"
+arg   "down"
 \end_inset
 
  and 
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../images/up.png
-	scale 85
-	groupId toolbarbuttons
-
-\end_inset
-
-
-\begin_inset space ~
+\begin_inset Info
+type  "icon"
+arg   "up"
 \end_inset
 
  buttons move sections up and down in the document.
@@ -1925,19 +1897,15 @@ button refreshes the TOC (though this should not usually be necessary).
 2.6.
  LyX will then automatically renumber the sections to the new order.
  With the buttons 
-\begin_inset Graphics
-	filename ../images/promote.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "promote"
 \end_inset
 
  and 
-\begin_inset Graphics
-	filename ../images/demote.png
-	scale 85
-	groupId toolbarbuttons
-
+\begin_inset Info
+type  "icon"
+arg   "demote"
 \end_inset
 
  (or the corresponding key bindings 
