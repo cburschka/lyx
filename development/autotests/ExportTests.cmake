@@ -201,6 +201,7 @@ foreach(libsubfolder doc examples templates)
         -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
         -P "${TOP_SRC_DIR}/development/autotests/check_load.cmake")
       setmarkedtestlabel(${TestName} ${reverted} "load")
+      set_tests_properties(${TestName} PROPERTIES RUN_SERIAL ON)
     endif()
     getoutputformats("${LIBSUB_SRC_DIR}/${f}.lyx" formatlist)
     foreach(format ${formatlist})
