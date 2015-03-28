@@ -1016,6 +1016,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_SPELLING_ADD
  * \li Action: Add the word under the cursor to the respective
  *             spell checker dictionary.
+ *             The default for the language is retrieved from the cursor position.
  * \li Syntax: spelling-add [<STRING>] [<LANG>]
  * \li Params: <WORD>: word to add
                <LANG>: language name (see file languages)
@@ -1027,6 +1028,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_SPELLING_IGNORE
  * \li Action: Let the spell checker ignore the word under the cursor
  *             in the current session for the given language.
+ *             The default for the language is retrieved from the cursor position.
  * \li Syntax: spelling-ignore [<WORD>] [<LANG>]
  * \li Params: <WORD>: word to ignore
                <LANG>: language name (see file languages)
@@ -1038,9 +1040,10 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_SPELLING_REMOVE
  * \li Action: Remove the word under the cursor from the respective
  *             spell checker dictionary.
+ *             The default for the language is retrieved from the cursor position.
  * \li Syntax: spelling-remove [<STRING>] [<LANG>]
  * \li Params: <WORD>: word to remove
-               <LANG>: language name (see file languages)
+ *             <LANG>: language name (see file languages)
  * \li Origin: SWitt, 28 July 2010
  * \endvar
  */

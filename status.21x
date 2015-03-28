@@ -139,6 +139,12 @@ What's new
 
 - Fix consecutive merging of tabular cells.
 
+- Fix crash with missing optional or wrong arguments for
+  * LFUN_SPELLING_ADD,
+  * LFUN_SPELLING_IGNORE and
+  * LFUN_SPELLING_REMOVE
+  (bug 9477).
+
 
 * INTERNALS
 
