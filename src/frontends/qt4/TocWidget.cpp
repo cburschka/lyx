@@ -52,10 +52,10 @@ TocWidget::TocWidget(GuiView & gui_view, QWidget * parent)
 {
 	setupUi(this);
 
-	moveOutTB->setIcon(QIcon(getPixmap("images/", "promote", "svgz,png")));
-	moveInTB->setIcon(QIcon(getPixmap("images/", "demote", "svgz,png")));
-	moveUpTB->setIcon(QIcon(getPixmap("images/", "up", "svgz,png")));
-	moveDownTB->setIcon(QIcon(getPixmap("images/", "down", "svgz,png")));
+	moveOutTB->setIcon(QIcon(getPixmap("images/", "outline-out", "svgz,png")));
+	moveInTB->setIcon(QIcon(getPixmap("images/", "outline-in", "svgz,png")));
+	moveUpTB->setIcon(QIcon(getPixmap("images/", "outline-up", "svgz,png")));
+	moveDownTB->setIcon(QIcon(getPixmap("images/", "outline-down", "svgz,png")));
 	updateTB->setIcon(QIcon(getPixmap("images/", "reload", "svgz,png")));
 
 	// avoid flickering

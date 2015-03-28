@@ -420,7 +420,6 @@ dist_images_DATA1X = \
 	images/tab-group-close.png \
 	images/copy.png \
 	images/cut.png \
-	images/demote.png \
 	images/depth-decrement.png \
 	images/depth-increment.png \
 	images/dialog-preferences.png \
@@ -486,8 +485,11 @@ dist_images_DATA1X = \
 	images/nomencl-insert.png \
 	images/note-insert.png \
 	images/note-next.png \
+	images/outline-down.png \
+	images/outline-in.png \
+	images/outline-out.png \
+	images/outline-up.png \
 	images/paste.png \
-	images/promote.png \
 	images/redo.png \
 	images/reload.png \
 	images/script-insert_subscript.png \
@@ -1775,7 +1777,6 @@ dist_imagesclassic_DATA = \
 	images/classic/tab-group-close.png  \
 	images/classic/copy.png  \
 	images/classic/cut.png  \
-	images/classic/demote.png  \
 	images/classic/depth-decrement.png  \
 	images/classic/depth-increment.png  \
 	images/classic/dialog-preferences.png  \
@@ -1839,8 +1840,11 @@ dist_imagesclassic_DATA = \
 	images/classic/nomencl-insert.png  \
 	images/classic/note-insert.png  \
 	images/classic/note-next.png  \
+	images/classic/outline-down.png  \
+	images/classic/outline-in.png  \
+	images/classic/outline-out.png  \
+	images/classic/outline-up.png  \
 	images/classic/paste.png  \
-	images/classic/promote.png  \
 	images/classic/redo.png  \
 	images/classic/reload.png  \
 	images/classic/script-insert_subscript.png  \
