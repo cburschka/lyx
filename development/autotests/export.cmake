@@ -28,12 +28,14 @@
 #
 
 set(Perl_Script "${TOP_SRC_DIR}/development/autotests/useSystemFonts.pl")
+set(GetTempDir "${TOP_SRC_DIR}/development/autotests/getTempDir.pl")
 set(_ft ${fonttype})
+execute_process(COMMAND ${PERL_EXECUTABLE} "${GetTempDir}" "${WORKDIR}" OUTPUT_VARIABLE TempDir)
 message(STATUS "using fonttype = ${_ft}")
 if(format MATCHES "dvi3|pdf4|pdf5")
   message(STATUS "LYX_TESTS_USERDIR = ${LYX_TESTS_USERDIR}")
   message(STATUS "Converting with perl ${Perl_Script}")
-  set(LYX_SOURCE "${WORKDIR}/${file}_${format}_${_ft}.lyx")
+  set(LYX_SOURCE "${TempDir}/${file}_${format}_${_ft}.lyx")
   message(STATUS "Using source \"${LYX_ROOT}/${file}.lyx\"")
   message(STATUS "Using dest \"${LYX_SOURCE}\"")
   execute_process(COMMAND ${PERL_EXECUTABLE} "${Perl_Script}" "${LYX_ROOT}/${file}.lyx" "${LYX_SOURCE}" ${format} ${_ft}
@@ -70,6 +72,7 @@ if(reverted)
 else()
   string(COMPARE NOTEQUAL  ${_err} 0 _erg)
 endif()
+execute_process(COMMAND ${CMAKE_COMMAND} -E remove_directory "${TempDir}")
 if(_erg)
   message(STATUS "Exporting ${f}.lyx to ${format}")
   message(FATAL_ERROR "Export failed")
