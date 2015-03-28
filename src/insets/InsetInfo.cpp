@@ -10,7 +10,7 @@
 #include <config.h>
 
 #include "InsetInfo.h"
-
+#include "LyX.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
@@ -419,10 +419,12 @@ void InsetInfo::updateInfo()
 		if (!file.exists())
 			break;
 		int percent_scale = 100;
-		int imgsize = QImage(toqstr(file.absFileName())).width();
-		if (imgsize > 0) {
-			int iconsize = Length(1, Length::EM).inPixels(1);
-			percent_scale = (100 * iconsize + imgsize / 2)/imgsize;
+		if (use_gui) {
+			int imgsize = QImage(toqstr(file.absFileName())).width();
+			if (imgsize > 0) {
+				int iconsize = Length(1, Length::EM).inPixels(1);
+				percent_scale = (100 * iconsize + imgsize / 2)/imgsize;
+			}
 		}
 		InsetGraphics * inset = new InsetGraphics(buffer_);
 		InsetGraphicsParams igp;
