@@ -14,7 +14,6 @@
 #define MATH_MACRO_H
 
 #include "InsetMathNest.h"
-#include "InsetMathSqrt.h"
 #include "MacroTable.h"
 #include "MathData.h"
 
@@ -166,7 +165,7 @@ private:
 	/// current display mode
 	DisplayMode displayMode_;
 	/// expanded macro with ArgumentProxies
-	InsetMathSqrt expanded_;
+	MathData expanded_;
 	/// macro definition with #1,#2,.. insets
 	MathData definition_;
 	/// number of arguments that were really attached

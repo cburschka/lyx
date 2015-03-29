@@ -146,7 +146,7 @@ Inset * MathMacro::clone() const
 {
 	MathMacro * copy = new MathMacro(*this);
 	copy->needsUpdate_ = true;
-	//copy->expanded_.cell(0).clear();
+	//copy->expanded_.clear();
 	return copy;
 }
 
@@ -269,7 +269,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 
 		// calculate metrics, hoping that all cells are seen
 		macro_->lock();
-		expanded_.cell(0).metrics(mi, dim);
+		expanded_.metrics(mi, dim);
 
 		// otherwise do a manual metrics call
 		CoordCache & coords = mi.base.bv->coordCache();
@@ -385,9 +385,9 @@ void MathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 	// in this case, since MacroData::expand() creates new MathMacro
 	// objects, so this would be a different recursion path than the one
 	// protected by UpdateLocker.
-	if (macro_->expand(values, expanded_.cell(0))) {
-		if (utype == OutputUpdate && !expanded_.cell(0).empty())
-			expanded_.cell(0).updateMacros(cur, mc, utype);
+	if (macro_->expand(values, expanded_)) {
+		if (utype == OutputUpdate && !expanded_.empty())
+			expanded_.updateMacros(cur, mc, utype);
 	}
 	// get definition for list edit mode
 	docstring const & display = macro_->display();
@@ -482,19 +482,19 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 
 			pi.pain.fillRectangle(x, y - dim.asc, dim.wid, 1 + namedim.height() + 1, Color_mathmacrobg);
 			pi.pain.text(x + 1, y - dim.asc + namedim.asc + 2, name(), font);
-			expx += (dim.wid - expanded_.cell(0).dimension(*pi.base.bv).width()) / 2;
+			expx += (dim.wid - expanded_.dimension(*pi.base.bv).width()) / 2;
 		}
 
 		if (editing_[pi.base.bv]) {
 			pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
-			expanded_.cell(0).draw(pi, expx, expy);
+			expanded_.draw(pi, expx, expy);
 			pi.pain.leaveMonochromeMode();
 
 			if (drawBox)
 				pi.pain.rectangle(x, y - dim.asc, dim.wid,
 						  dim.height(), Color_mathmacroframe);
 		} else
-			expanded_.cell(0).draw(pi, expx, expy);
+			expanded_.draw(pi, expx, expy);
 
 		if (!drawBox)
 			drawMarkers(pi, x, y);
@@ -649,7 +649,7 @@ void MathMacro::detachArguments(vector<MathData> & args, bool strip)
 	}
 
 	attachedArgsNum_ = 0;
-	expanded_.cell(0) = MathData();
+	expanded_ = MathData();
 	cells_.resize(0);
 
 	needsUpdate_ = true;
@@ -662,7 +662,7 @@ void MathMacro::attachArguments(vector<MathData> const & args, size_t arity, int
 	cells_ = args;
 	attachedArgsNum_ = args.size();
 	cells_.resize(arity);
-	expanded_.cell(0) = MathData();
+	expanded_ = MathData();
 	optionals_ = optionals;
 
 	needsUpdate_ = true;
@@ -796,19 +796,19 @@ void MathMacro::write(WriteStream & os) const
 
 void MathMacro::maple(MapleStream & os) const
 {
-	lyx::maple(expanded_.cell(0), os);
+	lyx::maple(expanded_, os);
 }
 
 
 void MathMacro::maxima(MaximaStream & os) const
 {
-	lyx::maxima(expanded_.cell(0), os);
+	lyx::maxima(expanded_, os);
 }
 
 
 void MathMacro::mathematica(MathematicaStream & os) const
 {
-	lyx::mathematica(expanded_.cell(0), os);
+	lyx::mathematica(expanded_, os);
 }
 
 
@@ -825,12 +825,11 @@ void MathMacro::mathmlize(MathStream & os) const
 			return;
 		}
 	}
-	MathData const & data = expanded_.cell(0);
-	if (data.empty()) {
+	if (expanded_.empty()) {
 		// this means that we do not recognize the macro
 		throw MathExportException();
 	}
-	os << data;
+	os << expanded_;
 }
 
 
@@ -845,18 +844,17 @@ void MathMacro::htmlize(HtmlStream & os) const
 			return;
 		}
 	}
-	MathData const & data = expanded_.cell(0);
-	if (data.empty()) {
+	if (expanded_.empty()) {
 		// this means that we do not recognize the macro
 		throw MathExportException();
 	}
-	os << data;
+	os << expanded_;
 }
 
 
 void MathMacro::octave(OctaveStream & os) const
 {
-	lyx::octave(expanded_.cell(0), os);
+	lyx::octave(expanded_, os);
 }
 
 
