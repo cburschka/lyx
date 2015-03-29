@@ -73,11 +73,20 @@ public:
 
 		mathMacro_.macro()->lock();
 	}
-	// FIXME Other external things need similar treatment.
+	// write(), normalize(), infoize() and infoize2() are not needed since
+	// MathMacro uses the definition and not the expanded cells.
+	///
+	void maple(MapleStream & ms) const { ms << mathMacro_.cell(idx_); }
+	///
+	void maxima(MaximaStream & ms) const { ms << mathMacro_.cell(idx_); }
+	///
+	void mathematica(MathematicaStream & ms) const { ms << mathMacro_.cell(idx_); }
 	///
 	void mathmlize(MathStream & ms) const { ms << mathMacro_.cell(idx_); }
 	///
 	void htmlize(HtmlStream & ms) const { ms << mathMacro_.cell(idx_); }
+	///
+	void octave(OctaveStream & os) const { os << mathMacro_.cell(idx_); }
 	///
 	void draw(PainterInfo & pi, int x, int y) const {
 		if (mathMacro_.editMetrics(pi.base.bv)) {
@@ -788,6 +797,18 @@ void MathMacro::write(WriteStream & os) const
 void MathMacro::maple(MapleStream & os) const
 {
 	lyx::maple(expanded_.cell(0), os);
+}
+
+
+void MathMacro::maxima(MaximaStream & os) const
+{
+	lyx::maxima(expanded_.cell(0), os);
+}
+
+
+void MathMacro::mathematica(MathematicaStream & os) const
+{
+	lyx::mathematica(expanded_.cell(0), os);
 }
 
 

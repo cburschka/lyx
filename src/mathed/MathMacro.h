@@ -73,6 +73,10 @@ public:
 	///
 	void maple(MapleStream &) const;
 	///
+	void maxima(MaximaStream &) const;
+	///
+	void mathematica(MathematicaStream &) const;
+	///
 	void mathmlize(MathStream &) const;
 	///
 	void htmlize(HtmlStream &) const;
