@@ -661,27 +661,6 @@ void InsetText::setText(docstring const & data, Font const & font, bool trackCha
 }
 
 
-void InsetText::setAutoBreakRows(bool flag)
-{
-	if (flag == text_.autoBreakRows_)
-		return;
-
-	text_.autoBreakRows_ = flag;
-	if (flag)
-		return;
-
-	// remove previously existing newlines
-	ParagraphList::iterator it = paragraphs().begin();
-	ParagraphList::iterator end = paragraphs().end();
-	for (; it != end; ++it)
-		for (int i = 0; i < it->size(); ++i)
-			if (it->isNewline(i))
-				// do not track the change, because the user
-				// is not allowed to revert/reject it
-				it->eraseChar(i, false);
-}
-
-
 void InsetText::setDrawFrame(bool flag)
 {
 	drawFrame_ = flag;

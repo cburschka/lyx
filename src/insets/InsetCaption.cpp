@@ -53,7 +53,6 @@ namespace lyx {
 InsetCaption::InsetCaption(Buffer * buf, string const & type)
     : InsetText(buf, InsetText::PlainLayout), type_(type)
 {
-	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color_collapsableframe);
 }

@@ -198,7 +198,7 @@ void mergeParagraph(BufferParams const & bparams,
 
 
 Text::Text(InsetText * owner, bool use_default_layout)
-	: owner_(owner), autoBreakRows_(false)
+	: owner_(owner)
 {
 	pars_.push_back(Paragraph());
 	Paragraph & par = pars_.back();
@@ -212,7 +212,7 @@ Text::Text(InsetText * owner, bool use_default_layout)
 
 
 Text::Text(InsetText * owner, Text const & text)
-	: owner_(owner), autoBreakRows_(text.autoBreakRows_)
+	: owner_(owner)
 {
 	pars_ = text.pars_;
 	ParagraphList::iterator const end = pars_.end();

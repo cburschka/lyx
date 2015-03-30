@@ -378,8 +378,6 @@ private:
 	InsetText * owner_;
 	///
 	ParagraphList pars_;
-	///
-	bool autoBreakRows_;
 	/// position of the text in the buffer.
 	DocIterator macrocontext_position_;
 };

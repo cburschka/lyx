@@ -1123,7 +1123,6 @@ namespace {
  */
 void toggleFixedWidth(Cursor & cur, InsetTableCell * inset, bool fixedWidth)
 {
-	inset->setAutoBreakRows(fixedWidth);
 	inset->toggleFixedWidth(fixedWidth);
 	if (fixedWidth)
 		return;

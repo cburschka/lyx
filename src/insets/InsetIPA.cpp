@@ -38,7 +38,6 @@ InsetIPA::InsetIPA(Buffer * buf)
 	: InsetText(buf),
 	  preview_(new RenderPreview(this)), use_preview_(true)
 {
-	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color_insetframe);
 }

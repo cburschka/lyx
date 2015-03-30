@@ -104,10 +104,6 @@ public:
 	///
 	void setText(docstring const &, Font const &, bool trackChanges);
 	///
-	void setAutoBreakRows(bool);
-	///
-	bool getAutoBreakRows() const { return text_.autoBreakRows_; }
-	///
 	void setDrawFrame(bool);
 	///
 	ColorCode frameColor() const;

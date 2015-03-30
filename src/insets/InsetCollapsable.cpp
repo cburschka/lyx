@@ -45,7 +45,6 @@ namespace lyx {
 InsetCollapsable::InsetCollapsable(Buffer * buf, InsetText::UsePlain ltype)
 	: InsetText(buf, ltype), status_(Open), openinlined_(false)
 {
-	setAutoBreakRows(true);
 	setDrawFrame(true);
 	setFrameColor(Color_collapsableframe);
 }

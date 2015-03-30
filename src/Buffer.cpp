@@ -438,7 +438,6 @@ Buffer::Buffer(string const & file, bool readonly, Buffer const * cloned_buffer)
 			it.paragraph().setId(cloned_it.paragraph().id());
 	} else
 		d->inset = new InsetText(this);
-	d->inset->setAutoBreakRows(true);
 	d->inset->getText(0)->setMacrocontextPosition(par_iterator_begin());
 }
 
