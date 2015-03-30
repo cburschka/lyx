@@ -166,6 +166,13 @@ bool InsetBox::hasFixedWidth() const
 }
 
 
+bool InsetBox::allowMultiPar() const
+{
+	return (params_.inner_box && !params_.use_makebox)
+		|| params_.type == "Shaded" || params_.type == "Framed";
+}
+
+
 void InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
 {
 	// back up textwidth.
@@ -252,13 +259,6 @@ bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_INSET_DIALOG_UPDATE:
 		flag.setEnabled(true);
-		return true;
-
-	case LFUN_PARAGRAPH_BREAK:
-		if ((params_.inner_box && !params_.use_makebox)
-		     || params_.type == "Shaded" || params_.type == "Framed")
-			return InsetCollapsable::getStatus(cur, cmd, flag);
-		flag.setEnabled(false);
 		return true;
 
 	default:

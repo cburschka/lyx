@@ -106,6 +106,8 @@ public:
 	///
 	bool allowParagraphCustomization(idx_type = 0) const { return !forcePlainLayout(); }
 	///
+	bool allowMultiPar() const;
+	///
 	bool forcePlainLayout(idx_type = 0) const;
 	///
 	bool neverIndent() const { return true; }

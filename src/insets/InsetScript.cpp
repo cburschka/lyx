@@ -263,7 +263,6 @@ bool InsetScript::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action()) {
-	case LFUN_PARAGRAPH_BREAK:
 	case LFUN_LAYOUT:
 	case LFUN_LAYOUT_PARAGRAPH:
 	case LFUN_MATH_DISPLAY:
@@ -289,7 +288,7 @@ bool InsetScript::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_MODIFY:
 		flag.setEnabled(true);
 		return true;
-        case LFUN_COMMAND_SEQUENCE: {
+	case LFUN_COMMAND_SEQUENCE: {
 		// argument contains ';'-terminated commands
 		string arg = to_utf8(cmd.argument());
 		// prevent insertion of display math formulas like AMS align

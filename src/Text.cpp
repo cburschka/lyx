@@ -839,7 +839,7 @@ void Text::insertStringAsLines(Cursor & cur, docstring const & str,
 	    cit != str.end(); ++cit) {
 		Paragraph & par = pars_[pit];
 		if (*cit == '\n') {
-			if (autoBreakRows_ && (!par.empty() || par.allowEmpty())) {
+			if (inset().allowMultiPar() && (!par.empty() || par.allowEmpty())) {
 				lyx::breakParagraph(*this, pit, pos,
 					par.layout().isEnvironment());
 				++pit;

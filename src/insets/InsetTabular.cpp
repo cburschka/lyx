@@ -4932,6 +4932,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setEnabled(false);
 			return true;
 		}
+		// Fall back
 	case LFUN_NEWLINE_INSERT: {
 		if (tabular.getPWidth(cur.idx()).zero()) {
 			status.setEnabled(false);

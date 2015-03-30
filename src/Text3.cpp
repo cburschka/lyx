@@ -3016,7 +3016,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_PARAGRAPH_BREAK:
-		enable = cur.inset().getLayout().isMultiPar();
+		enable = inset().allowMultiPar();
 		break;
 
 	case LFUN_SPELLING_ADD:

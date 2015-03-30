@@ -613,7 +613,7 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
 		xs << html::StartTag(il.htmlinnertag(), il.htmlinnerattr());
 
 	// we will eventually lose information about the containing inset
-	if (!il.isMultiPar() || opts == JustText)
+	if (!allowMultiPar() || opts == JustText)
 		runparams.html_make_pars = false;
 	if (il.isPassThru())
 		runparams.pass_thru = true;
