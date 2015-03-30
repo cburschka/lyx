@@ -420,6 +420,10 @@ void InsetInfo::updateInfo()
 			break;
 		int percent_scale = 100;
 		if (use_gui) {
+			// Compute the scale factor for the icon such its
+			// width on screen is equal to 1em in pixels.
+			// The scale factor is rounded to the integer nearest
+			// to the float value of the ratio 100*iconsize/imgsize.
 			int imgsize = QImage(toqstr(file.absFileName())).width();
 			if (imgsize > 0) {
 				int iconsize = Length(1, Length::EM).inPixels(1);
