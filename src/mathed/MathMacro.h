@@ -56,7 +56,7 @@ public:
 
 	///
 	virtual bool notifyCursorLeaves(Cursor const & old, Cursor & cur);
-	
+
 	/// Remove cell (starting from 0)
 	void removeArgument(pos_type pos);
 	/// Insert empty cell (starting from 0)
@@ -92,7 +92,7 @@ public:
 	void unfold(Cursor & cur);
 	/// will it be folded or unfolded in the next metric call?
 	bool folded() const;
-		
+
 	enum DisplayMode {
 		DISPLAY_INIT,
 		DISPLAY_INTERACTIVE_INIT,
@@ -111,17 +111,17 @@ public:
 	///
 	bool validName() const;
 	///
-	size_t arity() const { 
+	size_t arity() const {
 		if (displayMode_ == DISPLAY_NORMAL )
 			return cells_.size();
 		else
 			return 0;
 	}
-		
+
 	///
 	size_t optionals() const { return optionals_; }
 	///
-	void setOptionals(int n) { 
+	void setOptionals(int n) {
 		if (n <= int(nargs()))
 			optionals_ = n;
 	}
@@ -159,7 +159,7 @@ private:
 	virtual Inset * clone() const;
 	///
 	bool editMode(BufferView const * bv) const;
-	
+
 	/// name of macro
 	docstring name_;
 	/// current display mode
