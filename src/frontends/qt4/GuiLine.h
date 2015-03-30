@@ -33,7 +33,7 @@ private:
 	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
-	bool checkWidgets() const;
+	bool checkWidgets(bool readonly = false) const;
 	//@}
 };
 

@@ -100,8 +100,14 @@ void GuiLine::paramsToDialog(Inset const * inset)
 }
 
 
-bool GuiLine::checkWidgets() const
+bool GuiLine::checkWidgets(bool readonly) const
 {
+	WidthLE->setReadOnly(readonly);
+	HeightLE->setReadOnly(readonly);
+	OffsetLE->setReadOnly(readonly);
+	OffsetUnitCO->setEnabled(!readonly);
+	HeightUnitCO->setEnabled(!readonly);
+	WidthUnitCO->setEnabled(!readonly);
 	if (!InsetParamsWidget::checkWidgets())
 		return false;
 	// FIXME: this should be handled in unsignedGlueLengthValidator!

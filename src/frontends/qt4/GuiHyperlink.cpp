@@ -102,8 +102,11 @@ docstring GuiHyperlink::dialogToParams() const
 }
 
 
-bool GuiHyperlink::checkWidgets() const
+bool GuiHyperlink::checkWidgets(bool readonly) const
 {
+	targetED->setReadOnly(readonly);
+	nameED->setReadOnly(readonly);
+	typeGB->setEnabled(!readonly);
 	if (!InsetParamsWidget::checkWidgets())
 		return false;
 	return !targetED->text().isEmpty() || !nameED->text().isEmpty();

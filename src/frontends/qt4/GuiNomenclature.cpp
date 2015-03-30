@@ -70,8 +70,10 @@ bool GuiNomenclature::initialiseParams(std::string const & data)
 }
 
 
-bool GuiNomenclature::checkWidgets() const
+bool GuiNomenclature::checkWidgets(bool readonly) const
 {
+	symbolED->setReadOnly(readonly);
+	descriptionTE->setReadOnly(readonly);
 	if (!InsetParamsWidget::checkWidgets())
 		return false;
 	QString const description = descriptionTE->toPlainText();

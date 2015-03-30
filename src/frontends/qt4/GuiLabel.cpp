@@ -68,8 +68,9 @@ bool GuiLabel::initialiseParams(std::string const & data)
 }
 
 
-bool GuiLabel::checkWidgets() const
+bool GuiLabel::checkWidgets(bool readonly) const
 {
+	keywordED->setReadOnly(readonly);
 	if (!InsetParamsWidget::checkWidgets())
 		return false;
 	return !keywordED->text().isEmpty();

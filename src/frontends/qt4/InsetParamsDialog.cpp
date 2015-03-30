@@ -166,7 +166,8 @@ void InsetParamsDialog::on_synchronizedCB_stateChanged(int)
 
 docstring InsetParamsDialog::checkWidgets(bool immediate)
 {
-	bool const widget_ok = d->widget_->checkWidgets();
+	bool const read_only = buffer().isReadonly();
+	bool const widget_ok = d->widget_->checkWidgets(read_only);
 	Inset const * ins = inset(d->widget_->insetCode());
 	docstring const argument = d->widget_->dialogToParams();
 	bool valid_argument = !argument.empty();
@@ -175,14 +176,13 @@ docstring InsetParamsDialog::checkWidgets(bool immediate)
 	FuncCode const code = immediate
 		? d->widget_->creationCode() : LFUN_INSET_MODIFY;
 	bool const lfun_ok = lyx::getStatus(FuncRequest(code, argument)).enabled();
-	bool const read_only = buffer().isReadonly();
 
 	okPB->setEnabled(!immediate && widget_ok && !read_only && valid_argument);
 	bool const can_be_restored = !immediate && !read_only
 			&& ins && (ins != d->inset_ || d->changed_);
 	restorePB->setEnabled(can_be_restored);
 	applyPB->setEnabled(!immediate && lfun_ok && widget_ok && !read_only && valid_argument);
-	d->widget_->setEnabled(!read_only);
+	newPB->setEnabled(widget_ok && !read_only && valid_argument);
 	synchronizedCB->setEnabled(!immediate);
 	return argument;
 }

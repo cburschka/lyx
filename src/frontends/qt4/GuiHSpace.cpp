@@ -299,8 +299,13 @@ docstring GuiHSpace::dialogToParams() const
 }
 
 
-bool GuiHSpace::checkWidgets() const
+bool GuiHSpace::checkWidgets(bool readonly) const
 {
+	spacingCO->setEnabled(!readonly);
+	unitCO->setEnabled(!readonly);
+	fillPatternCO->setEnabled(!readonly);
+	keepCB->setEnabled(!readonly);
+	valueLE->setReadOnly(readonly);
 	if (!InsetParamsWidget::checkWidgets())
 		return false;
 	return spacingCO->itemData(spacingCO->currentIndex()).toString() != "custom"

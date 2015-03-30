@@ -70,7 +70,7 @@ public:
 		{ return false; }
 
 	/// \return true if all CheckedWidgets are in a valid state.
-	virtual bool checkWidgets() const;
+	virtual bool checkWidgets(bool readonly = false) const;
 
 protected:
 	/// Add a widget to the list of all widgets whose validity should

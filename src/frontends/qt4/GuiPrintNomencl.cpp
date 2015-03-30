@@ -101,8 +101,11 @@ docstring GuiPrintNomencl::dialogToParams() const
 }
 
 
-bool GuiPrintNomencl::checkWidgets() const
+bool GuiPrintNomencl::checkWidgets(bool readonly) const
 {
+	valueLE->setReadOnly(readonly);
+	setWidthCO->setEnabled(!readonly);
+	unitLC->setEnabled(!readonly);
 	if (!InsetParamsWidget::checkWidgets())
 		return false;
 	return setWidthCO->itemData(

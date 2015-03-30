@@ -40,7 +40,7 @@ private:
 	void paramsToDialog(Inset const *);
 	void paramsToDialog(InsetCommandParams const &);
 	docstring dialogToParams() const;
-	bool checkWidgets() const;
+	bool checkWidgets(bool readonly = false) const;
 	//@}
 };
 

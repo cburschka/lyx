@@ -53,8 +53,10 @@ docstring GuiBibitem::dialogToParams() const
 }
 
 
-bool GuiBibitem::checkWidgets() const
+bool GuiBibitem::checkWidgets(bool readonly) const
 {
+	keyED->setReadOnly(readonly);
+	labelED->setReadOnly(readonly);
 	if (!InsetParamsWidget::checkWidgets())
 		return false;
 	return !keyED->text().isEmpty();
