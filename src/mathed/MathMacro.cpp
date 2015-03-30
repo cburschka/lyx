@@ -136,7 +136,8 @@ private:
 
 MathMacro::MathMacro(Buffer * buf, docstring const & name)
 	: InsetMathNest(buf, 0), name_(name), displayMode_(DISPLAY_INIT),
-		expanded_(buf), attachedArgsNum_(0), optionals_(0), nextFoldMode_(true),
+		expanded_(buf), definition_(buf), attachedArgsNum_(0),
+		optionals_(0), nextFoldMode_(true),
 		macroBackup_(buf), macro_(0), needsUpdate_(false),
 		isUpdating_(false), appetite_(9)
 {}
