@@ -1578,6 +1578,17 @@ void LyXAction::init()
  */
 		{ LFUN_LAYOUT_RELOAD, "layout-reload", NoInternal, Layout },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_VIEW_CACHE
+ * \li Action: Opens the file that was created from last preview of this buffer.
+ * \li Notion: This LFUN is called by the "Show Output Anyway" button in the LaTeX
+ *             Errors dialog. It can also be called by the user, which is useful
+ *             if the document takes a long time to compile, and you just
+ *             want to see the last previewed version.
+ * \li Syntax: buffer-view-cache
+ * \endvar
+ */
+		{ LFUN_BUFFER_VIEW_CACHE, "buffer-view-cache", ReadOnly, Buffer },
+/*!
  * \var lyx::FuncCode lyx::LFUN_TEXTCLASS_APPLY
  * \li Action: Sets the text class for the current buffer.
  * \li Syntax: textclass-apply <TEXTCLASS>

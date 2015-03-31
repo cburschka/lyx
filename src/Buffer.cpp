@@ -285,6 +285,10 @@ public:
 	/// we ran updateBuffer(), i.e., whether citation labels may need
 	/// to be updated.
 	mutable bool cite_labels_valid_;
+	/// these hold the file name and format, written to by Buffer::preview
+	/// and read from by LFUN_BUFFER_VIEW_CACHE.
+	FileName preview_file_;
+	string preview_format_;
 
 	mutable RefCache ref_cache_;
 
@@ -420,6 +424,8 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	cite_labels_valid_ = cloned_buffer_->d->cite_labels_valid_;
 	unnamed = cloned_buffer_->d->unnamed;
 	internal_buffer = cloned_buffer_->d->internal_buffer;
+	preview_file_ = cloned_buffer_->d->preview_file_;
+	preview_format_ = cloned_buffer_->d->preview_format_;
 }
 
 
@@ -2420,6 +2426,10 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		enable = !isReadonly();
 		break;
 
+	case LFUN_BUFFER_VIEW_CACHE:
+		enable = (d->preview_file_).exists();
+		break;
+
 	default:
 		return false;
 	}
@@ -2758,6 +2768,12 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		}
 		break;
 	}
+
+	case LFUN_BUFFER_VIEW_CACHE:
+		if (!formats.view(*this, d->preview_file_,
+				  d->preview_format_))
+			dr.setMessage(_("Error viewing the output file."));
+		break;
 
 	default:
 		dispatched = false;
@@ -4212,13 +4228,18 @@ Buffer::ExportStatus Buffer::preview(string const & format, bool includeall) con
 	// (2) export with included children only
 	ExportStatus const status = doExport(format, true, false, result_file);
 	FileName const previewFile(result_file);
+
+	LATTEST (isClone());
+	d->cloned_buffer_->d->preview_file_ = previewFile;
+	d->cloned_buffer_->d->preview_format_ = format;
+
+	if (status != ExportSuccess)
+		return status;
 	if (previewFile.exists()) {
 		if (!formats.view(*this, previewFile, format))
 			return PreviewError;
-		else if (status == ExportSuccess)
-			return PreviewSuccess;
 		else
-			return status;
+			return PreviewSuccess;
 	}
 	else {
 		// Successful export but no output file?

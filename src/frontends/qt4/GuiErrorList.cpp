@@ -18,7 +18,9 @@
 #include "Buffer.h"
 #include "BufferView.h"
 #include "FuncRequest.h"
+#include "FuncStatus.h"
 #include "BufferList.h"
+#include "LyX.h"
 #include "ParIterator.h"
 #include "Text.h"
 
@@ -63,11 +65,14 @@ GuiErrorList::GuiErrorList(GuiView & lv)
 		this, SLOT(slotClose()));
 	connect(viewLogPB, SIGNAL(clicked()),
 		this, SLOT(viewLog()));
+	connect(showAnywayPB, SIGNAL(clicked()),
+		this, SLOT(showAnyway()));
 	connect(errorsLW, SIGNAL(currentRowChanged(int)),
 		this, SLOT(select()));
 
 	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
 	bc().setCancel(closePB);
+	showAnywayPB->setEnabled(lyx::getStatus(FuncRequest(LFUN_BUFFER_VIEW_CACHE)).enabled());
 }
 
 
@@ -99,6 +104,12 @@ void GuiErrorList::viewLog()
 		dispatch(fr);
 	}
 	dispatch(FuncRequest(LFUN_DIALOG_SHOW, "latexlog"));
+}
+
+
+void GuiErrorList::showAnyway()
+{
+	dispatch(FuncRequest(LFUN_BUFFER_VIEW_CACHE));
 }
 
 

@@ -33,6 +33,8 @@ public Q_SLOTS:
 	void select();
 	/// open the LaTeX log
 	void viewLog();
+	/// show the output file despite compilation errors
+	void showAnyway();
 
 private:
 	///
