@@ -110,6 +110,8 @@ What's new
 
 - Fix handling of the TEXINPUTS environment variable on Windows (bug 9453).
 
+- Make lyx2lyx more robust, add the initial comment line that says what is the
+  lyx version that created the document if none is present (bug 9279).
 
 
 * USER INTERFACE

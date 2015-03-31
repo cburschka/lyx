@@ -432,8 +432,22 @@ class LyX_base:
 
     def set_version(self):
         " Set the header with the version used."
-        self.header[0] = " ".join(["#LyX %s created this file." % version__,
-                                  "For more info see http://www.lyx.org/"])
+
+        initial_comment = " ".join(["#LyX %s created this file." % version__,
+                                    "For more info see http://www.lyx.org/"])
+
+        # Simple heuristic to determine the comment that always starts
+        # a lyx file
+        if self.header[0].startswith("#"):
+            self.header[0] = initial_comment
+        else:
+            self.header.insert(0, initial_comment)
+
+        # Old lyx files had a two lines comment header:
+        # 1) the first line had the user who had created it
+        # 2) the second line had the lyx version used
+        # later we decided that 1) was a privacy risk for no gain
+        # here we remove the second line effectively erasing 1)
         if self.header[1][0] == '#':
             del self.header[1]
 
