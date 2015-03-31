@@ -54,7 +54,7 @@ void InsetParamsWidget::addCheckedWidget(QLineEdit * input, QWidget * label)
 }
 
 
-bool InsetParamsWidget::checkWidgets(bool readonly) const
+bool InsetParamsWidget::checkWidgets(bool) const
 {
 	bool valid = true;
 	Q_FOREACH(CheckedWidget const & le, checked_widgets_)
