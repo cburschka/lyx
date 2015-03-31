@@ -617,13 +617,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_CHAR_FORWARD:
-	case LFUN_CHAR_FORWARD_SELECT:
+	case LFUN_CHAR_FORWARD_SELECT: {
 		//LYXERR0(" LFUN_CHAR_FORWARD[SEL]:\n" << cur);
 		needsUpdate |= cur.selHandle(act == LFUN_CHAR_FORWARD_SELECT);
-		needsUpdate |= cursorForward(cur);
+		bool const cur_moved = cursorForward(cur);
+		needsUpdate |= cur_moved;
 
-		if (!needsUpdate && oldTopSlice == cur.top()
-				&& cur.boundary() == oldBoundary) {
+		if (!cur_moved && oldTopSlice == cur.top()
+			       && cur.boundary() == oldBoundary) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
 
@@ -642,15 +643,17 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 		}
 		break;
+	}
 
 	case LFUN_CHAR_BACKWARD:
-	case LFUN_CHAR_BACKWARD_SELECT:
+	case LFUN_CHAR_BACKWARD_SELECT: {
 		//lyxerr << "handle LFUN_CHAR_BACKWARD[_SELECT]:\n" << cur << endl;
 		needsUpdate |= cur.selHandle(act == LFUN_CHAR_BACKWARD_SELECT);
-		needsUpdate |= cursorBackward(cur);
+		bool const cur_moved = cursorBackward(cur);
+		needsUpdate |= cur_moved;
 
-		if (!needsUpdate && oldTopSlice == cur.top()
-			&& cur.boundary() == oldBoundary) {
+		if (!cur_moved && oldTopSlice == cur.top()
+			       && cur.boundary() == oldBoundary) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
 
@@ -669,14 +672,16 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 		}
 		break;
+	}
 
 	case LFUN_CHAR_LEFT:
 	case LFUN_CHAR_LEFT_SELECT:
 		if (lyxrc.visual_cursor) {
 			needsUpdate |= cur.selHandle(act == LFUN_CHAR_LEFT_SELECT);
-			needsUpdate |= cursorVisLeft(cur);
-			if (!needsUpdate && oldTopSlice == cur.top()
-					&& cur.boundary() == oldBoundary) {
+			bool const cur_moved = cursorVisLeft(cur);
+			needsUpdate |= cur_moved;
+			if (!cur_moved && oldTopSlice == cur.top()
+				       && cur.boundary() == oldBoundary) {
 				cur.undispatched();
 				cmd = FuncRequest(LFUN_FINISHED_LEFT);
 			}
@@ -697,9 +702,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_RIGHT_SELECT:
 		if (lyxrc.visual_cursor) {
 			needsUpdate |= cur.selHandle(cmd.action() == LFUN_CHAR_RIGHT_SELECT);
-			needsUpdate |= cursorVisRight(cur);
-			if (!needsUpdate && oldTopSlice == cur.top()
-					&& cur.boundary() == oldBoundary) {
+			bool const cur_moved = cursorVisRight(cur);
+			needsUpdate |= cur_moved;
+			if (!cur_moved && oldTopSlice == cur.top()
+				       && cur.boundary() == oldBoundary) {
 				cur.undispatched();
 				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			}
@@ -808,9 +814,10 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_RIGHT_SELECT:
 		if (lyxrc.visual_cursor) {
 			needsUpdate |= cur.selHandle(cmd.action() == LFUN_WORD_RIGHT_SELECT);
-			needsUpdate |= cursorVisRightOneWord(cur);
-			if (!needsUpdate && oldTopSlice == cur.top()
-					&& cur.boundary() == oldBoundary) {
+			bool const cur_moved = cursorVisRightOneWord(cur);
+			needsUpdate |= cur_moved;
+			if (!cur_moved && oldTopSlice == cur.top()
+				       && cur.boundary() == oldBoundary) {
 				cur.undispatched();
 				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			}
@@ -828,12 +835,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_WORD_FORWARD:
-	case LFUN_WORD_FORWARD_SELECT:
+	case LFUN_WORD_FORWARD_SELECT: {
 		needsUpdate |= cur.selHandle(cmd.action() == LFUN_WORD_FORWARD_SELECT);
-		needsUpdate |= cursorForwardOneWord(cur);
+		bool const cur_moved = cursorForwardOneWord(cur);
+		needsUpdate |= cur_moved;
 
-		if (!needsUpdate && oldTopSlice == cur.top()
-				&& cur.boundary() == oldBoundary) {
+		if (!cur_moved && oldTopSlice == cur.top()
+			       && cur.boundary() == oldBoundary) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
 
@@ -852,14 +860,16 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 		}
 		break;
+	}
 
 	case LFUN_WORD_LEFT:
 	case LFUN_WORD_LEFT_SELECT:
 		if (lyxrc.visual_cursor) {
 			needsUpdate |= cur.selHandle(cmd.action() == LFUN_WORD_LEFT_SELECT);
-			needsUpdate |= cursorVisLeftOneWord(cur);
-			if (!needsUpdate && oldTopSlice == cur.top()
-					&& cur.boundary() == oldBoundary) {
+			bool const cur_moved = cursorVisLeftOneWord(cur);
+			needsUpdate |= cur_moved;
+			if (!cur_moved && oldTopSlice == cur.top()
+				       && cur.boundary() == oldBoundary) {
 				cur.undispatched();
 				cmd = FuncRequest(LFUN_FINISHED_LEFT);
 			}
@@ -877,12 +887,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_WORD_BACKWARD:
-	case LFUN_WORD_BACKWARD_SELECT:
+	case LFUN_WORD_BACKWARD_SELECT: {
 		needsUpdate |= cur.selHandle(cmd.action() == LFUN_WORD_BACKWARD_SELECT);
-		needsUpdate |= cursorBackwardOneWord(cur);
+		bool const cur_moved = cursorBackwardOneWord(cur);
+		needsUpdate |= cur_moved;
 
-		if (!needsUpdate && oldTopSlice == cur.top()
-				&& cur.boundary() == oldBoundary) {
+		if (!cur_moved && oldTopSlice == cur.top()
+			       && cur.boundary() == oldBoundary) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_BACKWARD);
 
@@ -902,6 +913,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 		}
 		break;
+	}
 
 	case LFUN_WORD_SELECT: {
 		selectWord(cur, WHOLE_WORD);
