@@ -420,7 +420,7 @@ void InsetInfo::updateInfo()
 			break;
 		int percent_scale = 100;
 		if (use_gui) {
-			// Compute the scale factor for the icon such its
+			// Compute the scale factor for the icon such that its
 			// width on screen is equal to 1em in pixels.
 			// The scale factor is rounded to the integer nearest
 			// to the float value of the ratio 100*iconsize/imgsize.
