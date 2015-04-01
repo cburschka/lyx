@@ -154,6 +154,13 @@ What's new
 - Delete empty paragaphs as needed when navigating the document using
   outline mode (bug 9479).
 
+- Fix selection issue when cursor moves out of an inset (bug 2346).
+
+- Pressing "End" no longer exits math inset under certain conditions 
+  (bug 9289).
+
+- Allow cursor to exit table when in selection mode (bug 9291).
+
 
 * INTERNALS
 
