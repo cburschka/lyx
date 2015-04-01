@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 482
+\lyxformat 483
 \begin_document
 \begin_header
 \textclass europasscv
@@ -27,7 +27,7 @@
 \font_sf_scale 100
 \font_tt_scale 100
 \graphics default
-\default_output_format default
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -147,6 +147,19 @@ http://mirrors.ctan.org/macros/latex/contrib/europasscv/europasscv.pdf
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Note
+\series default
+ that this class supports 
+\family sans
+pdflatex
+\family default
+ output only.
+ 
 \end_layout
 
 \end_inset
@@ -508,8 +521,8 @@ ItemInset
 
  (
 \family sans
-Insert \SpecialChar \menuseparator
- Custom Insets \SpecialChar \menuseparator
+Insert \SpecialChar menuseparator
+ Custom Insets \SpecialChar menuseparator
  ItemInset
 \family default
 ) as demonstrated above, in order to ensure correctly formatted listings.
@@ -672,8 +685,8 @@ Highlight
 
 : 
 \family sans
-Edit\SpecialChar \menuseparator
-Text Style\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Text Style\SpecialChar menuseparator
 Highlight
 \end_layout
 
@@ -1015,7 +1028,7 @@ Other skills
 
 \end_inset
 
-Traveling \SpecialChar \ldots{}
+Traveling \SpecialChar ldots
 
 \end_layout
 

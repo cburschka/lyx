@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 482
+\lyxformat 483
 \begin_document
 \begin_header
 \textclass europasscv
@@ -28,7 +28,7 @@
 \font_sf_scale 100
 \font_tt_scale 100
 \graphics default
-\default_output_format default
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -157,10 +157,14 @@ http://mirrors.ctan.org/macros/latex/contrib/europasscv/europasscv.pdf
 Achtung:
 \series default
  
+\end_layout
+
+\begin_layout Itemize
+
 \family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
-Sprache\SpecialChar \menuseparator
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Sprache\SpecialChar menuseparator
 Kodierung
 \family default
  muss auf 
@@ -172,6 +176,14 @@ Andere: unicode (utf8)
 \end_inset
 
  eingestellt sein!
+\end_layout
+
+\begin_layout Itemize
+Diese Dokumentklasse unterstützt ausschließlich
+\family sans
+ pdflatex
+\family default
+.
 \end_layout
 
 \end_inset
@@ -533,8 +545,8 @@ Stichpunkt-Einfügung
 
  (
 \family sans
-Einfügen\SpecialChar \menuseparator
-Benutzerdefinierte Einfügungen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
+Benutzerdefinierte Einfügungen\SpecialChar menuseparator
 Stichpunkt-Einfügung
 \family default
 ) mit 
@@ -695,8 +707,8 @@ status open
 \begin_layout Plain Layout
 Beispiel einer Hervorhebung: 
 \family sans
-Bearbeiten\SpecialChar \menuseparator
-Textstil\SpecialChar \menuseparator
+Bearbeiten\SpecialChar menuseparator
+Textstil\SpecialChar menuseparator
 Hervorhebung
 \end_layout
 
@@ -1043,7 +1055,7 @@ Hauptinteressen
 
 \end_inset
 
-Reisen \SpecialChar \ldots{}
+Reisen \SpecialChar ldots
 
 \end_layout
 
