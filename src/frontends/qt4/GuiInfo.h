@@ -35,6 +35,7 @@ private:
 	FuncCode creationCode() const { return LFUN_INFO_INSERT; }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
+	bool checkWidgets(bool readonly = false) const;
 	//@}
 };
 

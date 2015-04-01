@@ -90,6 +90,16 @@ docstring GuiInfo::dialogToParams() const
 }
 
 
+bool GuiInfo::checkWidgets(bool readonly) const
+{
+	nameLE->setReadOnly(readonly);
+	typeCO->setEnabled(!readonly);
+	if (!InsetParamsWidget::checkWidgets())
+		return false;
+	return !nameLE->text().isEmpty();
+}
+
+
 } // namespace frontend
 } // namespace lyx
 
