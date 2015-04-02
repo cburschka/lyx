@@ -134,20 +134,81 @@ private:
 };
 
 
+class MathMacro::Private {
+public:
+	Private(Buffer * buf, docstring const & name)
+		: name_(name), displayMode_(DISPLAY_INIT),
+		  expanded_(buf), definition_(buf), attachedArgsNum_(0),
+		  optionals_(0), nextFoldMode_(true), macroBackup_(buf),
+		  macro_(0), needsUpdate_(false), isUpdating_(false),
+		  appetite_(9)
+	{
+	}
+	/// name of macro
+	docstring name_;
+	/// current display mode
+	DisplayMode displayMode_;
+	/// expanded macro with ArgumentProxies
+	MathData expanded_;
+	/// macro definition with #1,#2,.. insets
+	MathData definition_;
+	/// number of arguments that were really attached
+	size_t attachedArgsNum_;
+	/// optional argument attached? (only in DISPLAY_NORMAL mode)
+	size_t optionals_;
+	/// fold mode to be set in next metrics call?
+	bool nextFoldMode_;
+	/// if macro_ == true, then here is a copy of the macro
+	/// don't use it for locking
+	MacroData macroBackup_;
+	/// if macroNotFound_ == false, then here is a reference to the macro
+	/// this might invalidate after metrics was called
+	MacroData const * macro_;
+	///
+	mutable std::map<BufferView const *, bool> editing_;
+	///
+	std::string requires_;
+	/// update macro representation
+	bool needsUpdate_;
+	///
+	bool isUpdating_;
+	/// maximal number of arguments the macro is greedy for
+	size_t appetite_;
+};
+
+
 MathMacro::MathMacro(Buffer * buf, docstring const & name)
-	: InsetMathNest(buf, 0), name_(name), displayMode_(DISPLAY_INIT),
-		expanded_(buf), definition_(buf), attachedArgsNum_(0),
-		optionals_(0), nextFoldMode_(true),
-		macroBackup_(buf), macro_(0), needsUpdate_(false),
-		isUpdating_(false), appetite_(9)
+	: InsetMathNest(buf, 0), d(new Private(buf, name))
 {}
+
+
+MathMacro::MathMacro(MathMacro const & that)
+	: InsetMathNest(that), d(new Private(*that.d))
+{
+}
+
+
+MathMacro & MathMacro::operator=(MathMacro const & that)
+{
+	if (&that == this)
+		return *this;
+	InsetMathNest::operator=(that);
+	*d = *that.d;
+	return *this;
+}
+
+
+MathMacro::~MathMacro()
+{
+	delete d;
+}
 
 
 Inset * MathMacro::clone() const
 {
 	MathMacro * copy = new MathMacro(*this);
-	copy->needsUpdate_ = true;
-	//copy->expanded_.clear();
+	copy->d->needsUpdate_ = true;
+	//copy->d->expanded_.clear();
 	return copy;
 }
 
@@ -161,12 +222,30 @@ void MathMacro::normalize(NormalStream & os) const
 }
 
 
+MathMacro::DisplayMode MathMacro::displayMode() const
+{
+	return d->displayMode_;
+}
+
+
+bool MathMacro::extraBraces() const
+{
+	return d->displayMode_ == DISPLAY_NORMAL && arity() > 0;
+}
+
+
 docstring MathMacro::name() const
 {
-	if (displayMode_ == DISPLAY_UNFOLDED)
+	if (d->displayMode_ == DISPLAY_UNFOLDED)
 		return asString(cell(0));
 
-	return name_;
+	return d->name_;
+}
+
+
+docstring MathMacro::macroName() const
+{
+	return d->name_;
 }
 
 
@@ -203,21 +282,28 @@ bool MathMacro::editMode(BufferView const * bv) const {
 }
 
 
+MacroData const * MathMacro::macro()
+{
+	return d->macro_;
+}
+
+
 bool MathMacro::editMetrics(BufferView const * bv) const
 {
-	return editing_[bv];
+	return d->editing_[bv];
 }
 
 
 void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	// set edit mode for which we will have calculated metrics. But only
-	editing_[mi.base.bv] = editMode(mi.base.bv);
+	d->editing_[mi.base.bv] = editMode(mi.base.bv);
 
 	// calculate new metrics according to display mode
-	if (displayMode_ == DISPLAY_INIT || displayMode_ == DISPLAY_INTERACTIVE_INIT) {
+	if (d->displayMode_ == DISPLAY_INIT ||
+	    d->displayMode_ == DISPLAY_INTERACTIVE_INIT) {
 		mathed_string_dim(mi.base.font, from_ascii("\\") + name(), dim);
-	} else if (displayMode_ == DISPLAY_UNFOLDED) {
+	} else if (d->displayMode_ == DISPLAY_UNFOLDED) {
 		cell(0).metrics(mi, dim);
 		Dimension bsdim;
 		mathed_string_dim(mi.base.font, from_ascii("\\"), bsdim);
@@ -226,10 +312,10 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.des = max(bsdim.descent(), dim.descent());
 		metricsMarkers(dim);
 	} else if (lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_LIST
-		   && editing_[mi.base.bv]) {
+		   && d->editing_[mi.base.bv]) {
 		// Macro will be edited in a old-style list mode here:
 
-		LBUFERR(macro_);
+		LBUFERR(d->macro_);
 		Dimension fontDim;
 		FontInfo labelFont = sane_font;
 		math_font_max_dim(labelFont, fontDim.asc, fontDim.des);
@@ -246,7 +332,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		argDim.des = fontDim.des;
 
 		Dimension defDim;
-		definition_.metrics(mi, defDim);
+		d->definition_.metrics(mi, defDim);
 
 		// add them up
 		dim.wid = nameDim.wid + defDim.wid;
@@ -266,11 +352,11 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.wid += 2;
 		metricsMarkers2(dim);
 	} else {
-		LBUFERR(macro_);
+		LBUFERR(d->macro_);
 
 		// calculate metrics, hoping that all cells are seen
-		macro_->lock();
-		expanded_.metrics(mi, dim);
+		d->macro_->lock();
+		d->expanded_.metrics(mi, dim);
 
 		// otherwise do a manual metrics call
 		CoordCache & coords = mi.base.bv->coordCache();
@@ -280,11 +366,11 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 				cell(i).metrics(mi, tdim);
 			}
 		}
-		macro_->unlock();
+		d->macro_->unlock();
 
 		// calculate dimension with label while editing
 		if (lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_INLINE_BOX
-		    && editing_[mi.base.bv]) {
+		    && d->editing_[mi.base.bv]) {
 			FontInfo font = mi.base.font;
 			augmentFont(font, from_ascii("lyxtex"));
 			Dimension namedim;
@@ -303,8 +389,8 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 
 
 int MathMacro::kerning(BufferView const * bv) const {
-	if (displayMode_ == DISPLAY_NORMAL && !editing_[bv])
-		return expanded_.kerning(bv);
+	if (d->displayMode_ == DISPLAY_NORMAL && !d->editing_[bv])
+		return d->expanded_.kerning(bv);
 	else
 		return 0;
 }
@@ -313,13 +399,13 @@ int MathMacro::kerning(BufferView const * bv) const {
 void MathMacro::updateMacro(MacroContext const & mc)
 {
 	if (validName()) {
-		macro_ = mc.get(name());
-		if (macro_ && macroBackup_ != *macro_) {
-			macroBackup_ = *macro_;
-			needsUpdate_ = true;
+		d->macro_ = mc.get(name());
+		if (d->macro_ && d->macroBackup_ != *d->macro_) {
+			d->macroBackup_ = *d->macro_;
+			d->needsUpdate_ = true;
 		}
 	} else {
-		macro_ = 0;
+		d->macro_ = 0;
 	}
 }
 
@@ -329,9 +415,9 @@ class MathMacro::UpdateLocker
 public:
 	explicit UpdateLocker(MathMacro & mm) : mac(mm)
 	{
-		mac.isUpdating_ = true;
+		mac.d->isUpdating_ = true;
 	}
-	~UpdateLocker() { mac.isUpdating_ = false; }
+	~UpdateLocker() { mac.d->isUpdating_ = false; }
 private:
 	MathMacro & mac;
 };
@@ -348,27 +434,27 @@ void MathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 		UpdateType utype)
 {
 	// block recursive calls (bug 8999)
-	if (isUpdating_)
+	if (d->isUpdating_)
 		return;
 
 	UpdateLocker locker(*this);
 
 	// known macro?
-	if (macro_ == 0)
+	if (d->macro_ == 0)
 		return;
 
 	// update requires
-	requires_ = macro_->requires();
+	d->requires_ = d->macro_->requires();
 
-	if (!needsUpdate_
+	if (!d->needsUpdate_
 		// non-normal mode? We are done!
-		|| (displayMode_ != DISPLAY_NORMAL))
+		|| (d->displayMode_ != DISPLAY_NORMAL))
 		return;
 
-	needsUpdate_ = false;
+	d->needsUpdate_ = false;
 
 	// get default values of macro
-	vector<docstring> const & defaults = macro_->defaults();
+	vector<docstring> const & defaults = d->macro_->defaults();
 
 	// create MathMacroArgumentValue objects pointing to the cells of the macro
 	vector<MathData> values(nargs());
@@ -386,13 +472,13 @@ void MathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 	// in this case, since MacroData::expand() creates new MathMacro
 	// objects, so this would be a different recursion path than the one
 	// protected by UpdateLocker.
-	if (macro_->expand(values, expanded_)) {
-		if (utype == OutputUpdate && !expanded_.empty())
-			expanded_.updateMacros(cur, mc, utype);
+	if (d->macro_->expand(values, d->expanded_)) {
+		if (utype == OutputUpdate && !d->expanded_.empty())
+			d->expanded_.updateMacros(cur, mc, utype);
 	}
 	// get definition for list edit mode
-	docstring const & display = macro_->display();
-	asArray(display.empty() ? macro_->definition() : display, definition_);
+	docstring const & display = d->macro_->display();
+	asArray(display.empty() ? d->macro_->definition() : display, d->definition_);
 }
 
 
@@ -404,17 +490,17 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 	int expx = x;
 	int expy = y;
 
-	if (displayMode_ == DISPLAY_INIT || displayMode_ == DISPLAY_INTERACTIVE_INIT) {
+	if (d->displayMode_ == DISPLAY_INIT || d->displayMode_ == DISPLAY_INTERACTIVE_INIT) {
 		FontSetChanger dummy(pi.base, "lyxtex");
 		pi.pain.text(x, y, from_ascii("\\") + name(), pi.base.font);
-	} else if (displayMode_ == DISPLAY_UNFOLDED) {
+	} else if (d->displayMode_ == DISPLAY_UNFOLDED) {
 		FontSetChanger dummy(pi.base, "lyxtex");
 		pi.pain.text(x, y, from_ascii("\\"), pi.base.font);
 		x += mathed_string_width(pi.base.font, from_ascii("\\")) + 1;
 		cell(0).draw(pi, x, y);
 		drawMarkers(pi, expx, expy);
 	} else if (lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_LIST
-		   && editing_[pi.base.bv]) {
+		   && d->editing_[pi.base.bv]) {
 		// Macro will be edited in a old-style list mode here:
 
 		CoordCache const & coords = pi.base.bv->coordCache();
@@ -433,8 +519,8 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		x += mathed_string_width(labelFont, label);
 
 		// draw definition
-		definition_.draw(pi, x, y);
-		Dimension const & defDim = coords.getArrays().dim(&definition_);
+		d->definition_.draw(pi, x, y);
+		Dimension const & defDim = coords.getArrays().dim(&d->definition_);
 		y += max(fontDim.des, defDim.des);
 
 		// draw parameters
@@ -472,7 +558,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		for (size_t i = 0; i < nargs(); ++i)
 			cell(i).setXY(*pi.base.bv, x, y);
 
-		if (drawBox && editing_[pi.base.bv]) {
+		if (drawBox && d->editing_[pi.base.bv]) {
 			// draw header and rectangle around
 			FontInfo font = pi.base.font;
 			augmentFont(font, from_ascii("lyxtex"));
@@ -483,26 +569,26 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 
 			pi.pain.fillRectangle(x, y - dim.asc, dim.wid, 1 + namedim.height() + 1, Color_mathmacrobg);
 			pi.pain.text(x + 1, y - dim.asc + namedim.asc + 2, name(), font);
-			expx += (dim.wid - expanded_.dimension(*pi.base.bv).width()) / 2;
+			expx += (dim.wid - d->expanded_.dimension(*pi.base.bv).width()) / 2;
 		}
 
-		if (editing_[pi.base.bv]) {
+		if (d->editing_[pi.base.bv]) {
 			pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
-			expanded_.draw(pi, expx, expy);
+			d->expanded_.draw(pi, expx, expy);
 			pi.pain.leaveMonochromeMode();
 
 			if (drawBox)
 				pi.pain.rectangle(x, y - dim.asc, dim.wid,
 						  dim.height(), Color_mathmacroframe);
 		} else
-			expanded_.draw(pi, expx, expy);
+			d->expanded_.draw(pi, expx, expy);
 
 		if (!drawBox)
 			drawMarkers(pi, x, y);
 	}
 
 	// edit mode changed?
-	if (editing_[pi.base.bv] != editMode(pi.base.bv))
+	if (d->editing_[pi.base.bv] != editMode(pi.base.bv))
 		pi.base.bv->cursor().screenUpdateFlags(Update::SinglePar);
 }
 
@@ -517,31 +603,31 @@ void MathMacro::drawSelection(PainterInfo & pi, int x, int y) const
 
 void MathMacro::setDisplayMode(MathMacro::DisplayMode mode, int appetite)
 {
-	if (displayMode_ != mode) {
+	if (d->displayMode_ != mode) {
 		// transfer name if changing from or to DISPLAY_UNFOLDED
 		if (mode == DISPLAY_UNFOLDED) {
 			cells_.resize(1);
-			asArray(name_, cell(0));
-		} else if (displayMode_ == DISPLAY_UNFOLDED) {
-			name_ = asString(cell(0));
+			asArray(d->name_, cell(0));
+		} else if (d->displayMode_ == DISPLAY_UNFOLDED) {
+			d->name_ = asString(cell(0));
 			cells_.resize(0);
 		}
 
-		displayMode_ = mode;
-		needsUpdate_ = true;
+		d->displayMode_ = mode;
+		d->needsUpdate_ = true;
 	}
 
 	// the interactive init mode is non-greedy by default
 	if (appetite == -1)
-		appetite_ = (mode == DISPLAY_INTERACTIVE_INIT) ? 0 : 9;
+		d->appetite_ = (mode == DISPLAY_INTERACTIVE_INIT) ? 0 : 9;
 	else
-		appetite_ = size_t(appetite);
+		d->appetite_ = size_t(appetite);
 }
 
 
 MathMacro::DisplayMode MathMacro::computeDisplayMode() const
 {
-	if (nextFoldMode_ == true && macro_ && !macro_->locked())
+	if (d->nextFoldMode_ == true && d->macro_ && !d->macro_->locked())
 		return DISPLAY_NORMAL;
 	else
 		return DISPLAY_UNFOLDED;
@@ -573,17 +659,45 @@ bool MathMacro::validName() const
 }
 
 
+size_t MathMacro::arity() const
+{ 
+	if (d->displayMode_ == DISPLAY_NORMAL )
+		return cells_.size();
+	else
+		return 0;
+}
+
+
+size_t MathMacro::optionals() const
+{
+	return d->optionals_;
+}
+
+
+void MathMacro::setOptionals(int n)
+{
+	if (n <= int(nargs()))
+		d->optionals_ = n;
+}
+
+
+size_t MathMacro::appetite() const
+{
+	return d->appetite_;
+}
+
+
 void MathMacro::validate(LaTeXFeatures & features) const
 {
-	if (!requires_.empty())
-		features.require(requires_);
+	if (!d->requires_.empty())
+		features.require(d->requires_);
 
 	if (name() == "binom")
 		features.require("binom");
 
 	// validate the cells and the definition
 	if (displayMode() == DISPLAY_NORMAL) {
-		definition_.validate(features);
+		d->definition_.validate(features);
 		InsetMathNest::validate(features);
 	}
 }
@@ -608,65 +722,65 @@ Inset * MathMacro::editXY(Cursor & cur, int x, int y)
 
 
 void MathMacro::removeArgument(Inset::pos_type pos) {
-	if (displayMode_ == DISPLAY_NORMAL) {
+	if (d->displayMode_ == DISPLAY_NORMAL) {
 		LASSERT(size_t(pos) < cells_.size(), return);
 		cells_.erase(cells_.begin() + pos);
-		if (size_t(pos) < attachedArgsNum_)
-			--attachedArgsNum_;
-		if (size_t(pos) < optionals_) {
-			--optionals_;
+		if (size_t(pos) < d->attachedArgsNum_)
+			--d->attachedArgsNum_;
+		if (size_t(pos) < d->optionals_) {
+			--d->optionals_;
 		}
 
-		needsUpdate_ = true;
+		d->needsUpdate_ = true;
 	}
 }
 
 
 void MathMacro::insertArgument(Inset::pos_type pos) {
-	if (displayMode_ == DISPLAY_NORMAL) {
+	if (d->displayMode_ == DISPLAY_NORMAL) {
 		LASSERT(size_t(pos) <= cells_.size(), return);
 		cells_.insert(cells_.begin() + pos, MathData());
-		if (size_t(pos) < attachedArgsNum_)
-			++attachedArgsNum_;
-		if (size_t(pos) < optionals_)
-			++optionals_;
+		if (size_t(pos) < d->attachedArgsNum_)
+			++d->attachedArgsNum_;
+		if (size_t(pos) < d->optionals_)
+			++d->optionals_;
 
-		needsUpdate_ = true;
+		d->needsUpdate_ = true;
 	}
 }
 
 
 void MathMacro::detachArguments(vector<MathData> & args, bool strip)
 {
-	LASSERT(displayMode_ == DISPLAY_NORMAL, return);
+	LASSERT(d->displayMode_ == DISPLAY_NORMAL, return);
 	args = cells_;
 
 	// strip off empty cells, but not more than arity-attachedArgsNum_
 	if (strip) {
 		size_t i;
-		for (i = cells_.size(); i > attachedArgsNum_; --i)
+		for (i = cells_.size(); i > d->attachedArgsNum_; --i)
 			if (!cell(i - 1).empty()) break;
 		args.resize(i);
 	}
 
-	attachedArgsNum_ = 0;
-	expanded_ = MathData();
+	d->attachedArgsNum_ = 0;
+	d->expanded_ = MathData();
 	cells_.resize(0);
 
-	needsUpdate_ = true;
+	d->needsUpdate_ = true;
 }
 
 
 void MathMacro::attachArguments(vector<MathData> const & args, size_t arity, int optionals)
 {
-	LASSERT(displayMode_ == DISPLAY_NORMAL, return);
+	LASSERT(d->displayMode_ == DISPLAY_NORMAL, return);
 	cells_ = args;
-	attachedArgsNum_ = args.size();
+	d->attachedArgsNum_ = args.size();
 	cells_.resize(arity);
-	expanded_ = MathData();
-	optionals_ = optionals;
+	d->expanded_ = MathData();
+	d->optionals_ = optionals;
 
-	needsUpdate_ = true;
+	d->needsUpdate_ = true;
 }
 
 
@@ -686,9 +800,9 @@ bool MathMacro::idxLast(Cursor & cur) const
 
 bool MathMacro::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
-	if (displayMode_ == DISPLAY_UNFOLDED) {
+	if (d->displayMode_ == DISPLAY_UNFOLDED) {
 		docstring const & unfolded_name = name();
-		if (unfolded_name != name_) {
+		if (unfolded_name != d->name_) {
 			// The macro name was changed
 			Cursor inset_cursor = old;
 			int macroSlice = inset_cursor.find(this);
@@ -713,8 +827,8 @@ bool MathMacro::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 
 void MathMacro::fold(Cursor & cur)
 {
-	if (!nextFoldMode_) {
-		nextFoldMode_ = true;
+	if (!d->nextFoldMode_) {
+		d->nextFoldMode_ = true;
 		cur.screenUpdateFlags(Update::SinglePar);
 	}
 }
@@ -722,8 +836,8 @@ void MathMacro::fold(Cursor & cur)
 
 void MathMacro::unfold(Cursor & cur)
 {
-	if (nextFoldMode_) {
-		nextFoldMode_ = false;
+	if (d->nextFoldMode_) {
+		d->nextFoldMode_ = false;
 		cur.screenUpdateFlags(Update::SinglePar);
 	}
 }
@@ -731,16 +845,16 @@ void MathMacro::unfold(Cursor & cur)
 
 bool MathMacro::folded() const
 {
-	return nextFoldMode_;
+	return d->nextFoldMode_;
 }
 
 
 void MathMacro::write(WriteStream & os) const
 {
-	MathEnsurer ensurer(os, macro_ != 0, true);
+	MathEnsurer ensurer(os, d->macro_ != 0, true);
 
 	// non-normal mode
-	if (displayMode_ != DISPLAY_NORMAL) {
+	if (d->displayMode_ != DISPLAY_NORMAL) {
 		os << "\\" << name();
 		if (name().size() != 1 || isAlphaASCII(name()[0]))
 			os.pendingSpace(true);
@@ -749,7 +863,7 @@ void MathMacro::write(WriteStream & os) const
 
 	// normal mode
 	// we should be ok to continue even if this fails.
-	LATTEST(macro_);
+	LATTEST(d->macro_);
 
 	// Always protect macros in a fragile environment
 	if (os.fragile())
@@ -762,7 +876,7 @@ void MathMacro::write(WriteStream & os) const
 	// First find last non-empty optional argument
 	idx_type emptyOptFrom = 0;
 	idx_type i = 0;
-	for (; i < cells_.size() && i < optionals_; ++i) {
+	for (; i < cells_.size() && i < d->optionals_; ++i) {
 		if (!cell(i).empty())
 			emptyOptFrom = i + 1;
 	}
@@ -774,7 +888,7 @@ void MathMacro::write(WriteStream & os) const
 	}
 
 	// skip the tailing empty optionals
-	i = optionals_;
+	i = d->optionals_;
 
 	// Print remaining arguments
 	for (; i < cells_.size(); ++i) {
@@ -797,65 +911,65 @@ void MathMacro::write(WriteStream & os) const
 
 void MathMacro::maple(MapleStream & os) const
 {
-	lyx::maple(expanded_, os);
+	lyx::maple(d->expanded_, os);
 }
 
 
 void MathMacro::maxima(MaximaStream & os) const
 {
-	lyx::maxima(expanded_, os);
+	lyx::maxima(d->expanded_, os);
 }
 
 
 void MathMacro::mathematica(MathematicaStream & os) const
 {
-	lyx::mathematica(expanded_, os);
+	lyx::mathematica(d->expanded_, os);
 }
 
 
 void MathMacro::mathmlize(MathStream & os) const
 {
 	// macro_ is 0 if this is an unknown macro
-	LATTEST(macro_ || displayMode_ != DISPLAY_NORMAL);
-	if (macro_) {
-		docstring const xmlname = macro_->xmlname();
+	LATTEST(d->macro_ || d->displayMode_ != DISPLAY_NORMAL);
+	if (d->macro_) {
+		docstring const xmlname = d->macro_->xmlname();
 		if (!xmlname.empty()) {
-			char const * type = macro_->MathMLtype();
+			char const * type = d->macro_->MathMLtype();
 			os << '<' << type << "> " << xmlname << " /<"
 			   << type << '>';
 			return;
 		}
 	}
-	if (expanded_.empty()) {
+	if (d->expanded_.empty()) {
 		// this means that we do not recognize the macro
 		throw MathExportException();
 	}
-	os << expanded_;
+	os << d->expanded_;
 }
 
 
 void MathMacro::htmlize(HtmlStream & os) const
 {
 	// macro_ is 0 if this is an unknown macro
-	LATTEST(macro_ || displayMode_ != DISPLAY_NORMAL);
-	if (macro_) {
-		docstring const xmlname = macro_->xmlname();
+	LATTEST(d->macro_ || d->displayMode_ != DISPLAY_NORMAL);
+	if (d->macro_) {
+		docstring const xmlname = d->macro_->xmlname();
 		if (!xmlname.empty()) {
 			os << ' ' << xmlname << ' ';
 			return;
 		}
 	}
-	if (expanded_.empty()) {
+	if (d->expanded_.empty()) {
 		// this means that we do not recognize the macro
 		throw MathExportException();
 	}
-	os << expanded_;
+	os << d->expanded_;
 }
 
 
 void MathMacro::octave(OctaveStream & os) const
 {
-	lyx::octave(expanded_, os);
+	lyx::octave(d->expanded_, os);
 }
 
 

@@ -27,6 +27,12 @@ public:
 	/// A macro can be built from an existing template
 	MathMacro(Buffer * buf, docstring const & name);
 	///
+	MathMacro(MathMacro const &);
+	///
+	MathMacro & operator=(MathMacro const &);
+	///
+	~MathMacro();
+	///
 	virtual MathMacro * asMacro() { return this; }
 	///
 	virtual MathMacro const * asMacro() const { return this; }
@@ -101,32 +107,26 @@ public:
 	};
 
 	///
-	DisplayMode displayMode() const { return displayMode_; }
+	DisplayMode displayMode() const;
 
 	///
-	bool extraBraces() const { return displayMode_ == DISPLAY_NORMAL && arity() > 0; }
+	bool extraBraces() const;
 
 	///
 	docstring name() const;
 	///
+	docstring macroName() const;
+	///
 	bool validName() const;
 	///
-	size_t arity() const {
-		if (displayMode_ == DISPLAY_NORMAL )
-			return cells_.size();
-		else
-			return 0;
-	}
+	size_t arity() const;
 
 	///
-	size_t optionals() const { return optionals_; }
+	size_t optionals() const;
 	///
-	void setOptionals(int n) {
-		if (n <= int(nargs()))
-			optionals_ = n;
-	}
+	void setOptionals(int n);
 	/// Return the maximal number of arguments the macro is greedy for.
-	size_t appetite() const { return appetite_; }
+	size_t appetite() const;
 	///
 	InsetCode lyxCode() const { return MATH_MACRO_CODE; }
 
@@ -150,7 +150,7 @@ protected:
 	/// including the optional ones (even if it can be empty here)
 	void attachArguments(std::vector<MathData> const & args, size_t arity, int optionals);
 	///
-	MacroData const * macro() { return macro_; }
+	MacroData const * macro();
 	///
 	bool editMetrics(BufferView const * bv) const;
 
@@ -160,38 +160,13 @@ private:
 	///
 	bool editMode(BufferView const * bv) const;
 
-	/// name of macro
-	docstring name_;
-	/// current display mode
-	DisplayMode displayMode_;
-	/// expanded macro with ArgumentProxies
-	MathData expanded_;
-	/// macro definition with #1,#2,.. insets
-	MathData definition_;
-	/// number of arguments that were really attached
-	size_t attachedArgsNum_;
-	/// optional argument attached? (only in DISPLAY_NORMAL mode)
-	size_t optionals_;
-	/// fold mode to be set in next metrics call?
-	bool nextFoldMode_;
-	/// if macro_ == true, then here is a copy of the macro
-	/// don't use it for locking
-	MacroData macroBackup_;
-	/// if macroNotFound_ == false, then here is a reference to the macro
-	/// this might invalidate after metrics was called
-	MacroData const * macro_;
 	///
-	mutable std::map<BufferView const *, bool> editing_;
+	class Private;
 	///
-	std::string requires_;
-	/// update macro representation
-	bool needsUpdate_;
+	Private * d;
 	/// update lock to avoid loops
 	class UpdateLocker;
 	friend class UpdateLocker;
-	bool isUpdating_;
-	/// maximal number of arguments the macro is greedy for
-	size_t appetite_;
 
 public:
 	///

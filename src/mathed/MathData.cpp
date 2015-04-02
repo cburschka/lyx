@@ -405,9 +405,9 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc,
 	// go over the array and look for macros
 	for (size_t i = 0; i < size(); ++i) {
 		MathMacro * macroInset = operator[](i).nucleus()->asMacro();
-		if (!macroInset || macroInset->name_.empty()
-				|| macroInset->name_[0] == '^'
-				|| macroInset->name_[0] == '_'
+		if (!macroInset || macroInset->macroName().empty()
+				|| macroInset->macroName()[0] == '^'
+				|| macroInset->macroName()[0] == '_'
 				|| (macroInset->name() == edited_name
 				    && macroInset->displayMode() ==
 						MathMacro::DISPLAY_UNFOLDED))
