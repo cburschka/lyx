@@ -42,6 +42,7 @@ private:
 	FuncCode creationCode() const { return LFUN_BOX_INSERT; }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
+	bool checkWidgets(bool readonly) const;
 	//@}
 
 	/// add and remove special lengths

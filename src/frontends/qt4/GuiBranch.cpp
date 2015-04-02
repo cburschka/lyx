@@ -64,6 +64,14 @@ docstring GuiBranch::dialogToParams() const
 	return from_utf8(InsetBranch::params2string(params));
 }
 
+
+bool GuiBranch::checkWidgets(bool readonly) const
+{
+	branchCO->setEnabled(!readonly);
+	return InsetParamsWidget::checkWidgets();
+}
+
+
 } // namespace frontend
 } // namespace lyx
 

@@ -34,6 +34,7 @@ private:
 	FuncCode creationCode() const { return LFUN_BRANCH_INSERT; }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
+	bool checkWidgets(bool readonly) const;
 	//@}
 };
 

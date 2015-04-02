@@ -146,6 +146,17 @@ void GuiVSpace::paramsToDialog(Inset const * inset)
 	enableCustom(spacingCO->currentIndex());
 }
 
+
+bool GuiVSpace::checkWidgets(bool readonly) const
+{
+	valueLE->setReadOnly(readonly);
+	spacingCO->setEnabled(!readonly);
+	unitCO->setEnabled(!readonly);
+	keepCB->setEnabled(!readonly);
+
+	return InsetParamsWidget::checkWidgets();
+}
+
 } // namespace frontend
 } // namespace lyx
 

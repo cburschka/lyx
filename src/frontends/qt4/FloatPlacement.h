@@ -37,6 +37,7 @@ public:
 	FuncCode creationCode() const { return LFUN_FLOAT_INSERT; }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
+	bool checkWidgets(bool readonly) const;
 	//@}
 	///
 	void useWide();

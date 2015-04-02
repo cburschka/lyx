@@ -251,6 +251,18 @@ void FloatPlacement::checkAllowed()
 	}
 }
 
+
+bool FloatPlacement::checkWidgets(bool readonly) const
+{
+	floatTypeCO->setEnabled(!readonly);
+	defaultsCB->setEnabled(!readonly);
+	options->setEnabled(!readonly);
+	spanCB->setEnabled(!readonly);
+	sidewaysCB->setEnabled(!readonly);
+
+	return InsetParamsWidget::checkWidgets();
+}
+
 } // namespace frontend
 } // namespace lyx
 

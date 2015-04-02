@@ -411,6 +411,27 @@ docstring GuiBox::dialogToParams() const
 }
 
 
+bool GuiBox::checkWidgets(bool readonly) const
+{
+	pagebreakCB->setEnabled(!readonly);
+	typeCO->setEnabled(!readonly);
+	innerBoxCO->setEnabled(!readonly);
+	valignCO->setEnabled(!readonly);
+	ialignCO->setEnabled(!readonly);
+	halignCO->setEnabled(!readonly);
+	valignCO->setEnabled(!readonly);
+	ialignCO->setEnabled(!readonly);
+	widthCB->setEnabled(!readonly);
+	widthED->setReadOnly(readonly);
+	widthUnitsLC->setEnabled(!readonly);
+	heightED->setReadOnly(readonly);
+	heightUnitsLC->setEnabled(!readonly);
+	heightCB->setEnabled(!readonly);
+
+	return InsetParamsWidget::checkWidgets();
+}
+
+
 void GuiBox::setSpecial(bool ibox)
 {
 	QString const last_item =

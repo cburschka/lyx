@@ -1012,6 +1012,46 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 }
 
 
+bool GuiTabular::checkWidgets(bool readonly) const
+{
+	tabularRowED->setReadOnly(readonly);
+	tabularColumnED->setReadOnly(readonly);
+	multicolumnCB->setEnabled(!readonly);
+	multirowCB->setEnabled(!readonly);
+	specialAlignmentED->setReadOnly(readonly);
+	rotateCellCB->setEnabled(!readonly);
+	rotateCellAngleSB->setEnabled(!readonly);
+	rotateTabularCB->setEnabled(!readonly);
+	rotateTabularAngleSB->setEnabled(!readonly);
+	longTabularCB->setEnabled(!readonly);
+	borders->setEnabled(!readonly);
+	tabularWidthED->setReadOnly(readonly);
+	tabularWidthUnitLC->setEnabled(!readonly);
+	columnWidthED->setReadOnly(readonly);
+	columnWidthUnitLC->setEnabled(!readonly);
+	multirowOffsetED->setReadOnly(readonly);
+	multirowOffsetUnitLC->setEnabled(!readonly);
+	setBordersGB->setEnabled(!readonly);
+	allBordersGB->setEnabled(!readonly);
+	borderStyleGB->setEnabled(!readonly);
+	booktabsRB->setEnabled(!readonly);
+	topspaceCO->setEnabled(!readonly);
+	topspaceUnitLC->setEnabled(!readonly);
+	bottomspaceCO->setEnabled(!readonly);
+	bottomspaceUnitLC->setEnabled(!readonly);
+	interlinespaceCO->setEnabled(!readonly);
+	interlinespaceUnitLC->setEnabled(!readonly);
+	hAlignCO->setEnabled(!readonly);
+	decimalPointED->setReadOnly(readonly);
+	vAlignCO->setEnabled(!readonly);
+	TableAlignCO->setEnabled(!readonly);
+	longtableGB->setEnabled(!readonly);
+	alignmentGB->setEnabled(!readonly);
+
+	return InsetParamsWidget::checkWidgets();
+}
+
+
 bool GuiTabular::funcEnabled(Tabular::Feature f) const
 {
 	string cmd = "tabular " + featureAsString(f);

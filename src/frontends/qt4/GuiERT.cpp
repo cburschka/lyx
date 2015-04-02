@@ -58,6 +58,14 @@ void GuiERT::paramsToDialog(Inset const * inset)
 	}
 }
 
+
+bool GuiERT::checkWidgets(bool readonly) const
+{
+	ertBG->setEnabled(!readonly);
+	return InsetParamsWidget::checkWidgets();
+}
+
+
 } // namespace frontend
 } // namespace lyx
 
