@@ -50,10 +50,12 @@ macro(getoutputformats filepath varname)
         set(out_formats "xhtml" ${PDF_FORMATS})
       elseif(_format MATCHES "dvi$")
         set(out_formats "xhtml" ${DVI_FORMATS})
+      elseif(_format MATCHES "xhtml")
+        set(out_formats "xhtml")
       else()
         # Respect all other output formats
-        # like "eps3", "xhtml"
-        set(out_formats ${_format})
+        # like "eps3"
+        set(out_formats "xhtml" ${_format})
       endif()
       break()
     endif()
