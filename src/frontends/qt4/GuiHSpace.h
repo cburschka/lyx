@@ -38,7 +38,7 @@ private:
 	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
 	void paramsToDialog(Inset const *);
 	docstring dialogToParams() const;
-	bool checkWidgets(bool readonly = false) const;
+	bool checkWidgets(bool readonly) const;
 	//@}
 	///
 	bool const math_mode_;
