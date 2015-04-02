@@ -1,0 +1,13 @@
+# Test export lyx-icon-info 
+# 
+# 
+
+Lang C
+TestBegin -dbg files test.lyx > lyx-log.txt 2>&1
+KK: \Axinfo-insert icon math-mode\[Return]
+KK: \Axbuffer-export luatex\[Return]
+KK: \[Tab]\[Return]
+TestEnd
+Lang C
+Assert ! pcregrep -M "support/FileName.cpp .* creating path '/.*/lib/images'" lyx-log.txt
+Assert ! pcregrep -M 'support/FileName.cpp .* Checksumming "/.*/lib/images/.*math-mode.pdf" .*lasted ' lyx-log.txt
