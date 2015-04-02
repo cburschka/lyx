@@ -244,7 +244,7 @@ public:
 	std::string bibtex_command;
 	/// customized index processor
 	std::string index_command;
-	/// font encoding
+	/// font encoding(s) requested for this document
 	std::string fontenc;
 	/// the rm font
 	std::string fonts_roman;
@@ -383,8 +383,12 @@ public:
 	/// map of the file's author IDs to AuthorList indexes
 	typedef std::map<int, int> AuthorMap;
 	AuthorMap author_map;
-	/// the buffer's font encoding
+	/// the buffer's active font encoding
 	std::string const font_encoding() const;
+	/// all font encodings requested by the prefs/document/main language.
+	/// This does NOT include font encodings required by secondary languages
+	std::vector<std::string> const font_encodings() const;
+
 	///
 	std::string const dvips_options() const;
 	/** The return value of paperSizeName() depends on the

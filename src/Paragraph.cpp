@@ -1154,10 +1154,11 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		return;
 	// If T1 font encoding is used, use the special
 	// characters it provides.
-	// NOTE: some languages reset the font encoding
-	// internally
+	// NOTE: Some languages reset the font encoding internally.
+	//       If we are using such a language, we do not output
+	//       special T1 chars.
 	if (!runparams.inIPA && !running_font.language()->internalFontEncoding()
-	    && lyxrc.fontenc == "T1" && latexSpecialT1(c, os, i, column))
+	    && bparams.font_encoding() == "T1" && latexSpecialT1(c, os, i, column))
 		return;
 
 	// Otherwise, we use what LaTeX provides us.

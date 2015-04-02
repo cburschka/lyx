@@ -1499,18 +1499,8 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// XeTeX and LuaTeX (with OS fonts) do not need fontenc
 	if (!useNonTeXFonts && !features.isProvided("fontenc")
 	    && font_encoding() != "default") {
-		vector<string> fontencs;
-		// primary language font encoding and default encoding
-		if (ascii_lowercase(language->fontenc()) != "none") {
-			vector<string> fencs = getVectorFromString(font_encoding());
-			fontencs.insert(fontencs.end(), fencs.begin(), fencs.end());
-			fencs = getVectorFromString(language->fontenc());
-			vector<string>::const_iterator fit = fencs.begin();
-			for (; fit != fencs.end(); ++fit) {
-				if (find(fontencs.begin(), fontencs.end(), *fit) == fontencs.end())
-					fontencs.push_back(*fit);
-			}
-		}
+		// get main font encodings
+		vector<string> fontencs = font_encodings();
 		// get font encodings of secondary languages
 		features.getFontEncodings(fontencs);
 		if (!fontencs.empty()) {
@@ -2762,7 +2752,31 @@ string const BufferParams::dvips_options() const
 
 string const BufferParams::font_encoding() const
 {
-	return (fontenc == "global") ? lyxrc.fontenc : fontenc;
+	return font_encodings().empty() ? "default" : font_encodings().back();
+}
+
+
+vector<string> const BufferParams::font_encodings() const
+{
+	string doc_fontenc = (fontenc == "global") ? lyxrc.fontenc : fontenc;
+
+	vector<string> fontencs;
+
+	// "default" means "no explicit font encoding"
+	if (doc_fontenc != "default") {
+		fontencs = getVectorFromString(doc_fontenc);
+		if (!language->fontenc().empty()
+		    && ascii_lowercase(language->fontenc()) != "none") {
+			vector<string> fencs = getVectorFromString(language->fontenc());
+			vector<string>::const_iterator fit = fencs.begin();
+			for (; fit != fencs.end(); ++fit) {
+				if (find(fontencs.begin(), fontencs.end(), *fit) == fontencs.end())
+					fontencs.push_back(*fit);
+			}
+		}
+	}
+
+	return fontencs;
 }
 
 
