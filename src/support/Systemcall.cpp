@@ -610,6 +610,10 @@ int SystemcallPrivate::exitCode()
 	if (!process_)
 		return -1;
 
+	// From Qt's documentation, in regards to QProcess::exitCode(),
+	// "This value is not valid unless exitStatus() returns NormalExit"
+	if (process_->exitStatus() != QProcess::NormalExit)
+		return -1;
 	return process_->exitCode();
 }
 
