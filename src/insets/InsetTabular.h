@@ -115,9 +115,11 @@ private:
 	virtual bool forcePlainLayout(idx_type = 0) const;
 	///
 	virtual bool allowParagraphCustomization(idx_type = 0) const;
+	///
+	virtual bool forceLocalFontSwitch() const;
 	/// Is the width forced to some value?
 	bool hasFixedWidth() const { return isFixedWidth; }
-	/// Can the cell contain several paragraphs? 
+	/// Can the cell contain several paragraphs?
 	/** FIXME this is wrong for multirows, that are limited to one
 	 * paragraph. However, we cannot test for this (see the big
 	 * comment above).
