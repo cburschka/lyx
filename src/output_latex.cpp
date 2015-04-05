@@ -686,7 +686,7 @@ void TeXOnePar(Buffer const & buf,
 
 	// In some insets (such as Arguments), we cannot use \selectlanguage
 	bool const localswitch = !use_polyglossia
-		&& text.inset().getLayout().forcelocalfontswitch();
+		&& text.inset().forceLocalFontSwitch();
 	if (localswitch) {
 		lang_begin_command = lyxrc.language_command_local;
 		lang_end_command = "}";

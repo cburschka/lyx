@@ -157,11 +157,14 @@ public:
 	virtual bool allowMultiPar() const { return getLayout().isMultiPar(); }
 	///
 	/// should paragraphs be forced to use the empty layout?
-	virtual bool forcePlainLayout(idx_type = 0) const 
+	virtual bool forcePlainLayout(idx_type = 0) const
 		{ return getLayout().forcePlainLayout(); }
 	/// should the user be allowed to customize alignment, etc.?
-	virtual bool allowParagraphCustomization(idx_type = 0) const 
+	virtual bool allowParagraphCustomization(idx_type = 0) const
 		{ return getLayout().allowParagraphCustomization(); }
+	/// should paragraphs be forced to use a local font language switch?
+	virtual bool forceLocalFontSwitch() const
+		{ return getLayout().forcelocalfontswitch(); }
 
 	/// Update the counters of this inset and of its contents
 	virtual void updateBuffer(ParIterator const &, UpdateType);

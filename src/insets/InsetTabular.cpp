@@ -3396,6 +3396,12 @@ bool InsetTableCell::allowParagraphCustomization(idx_type) const
 }
 
 
+bool InsetTableCell::forceLocalFontSwitch() const
+{
+	return isFixedWidth;
+}
+
+
 bool InsetTableCell::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {

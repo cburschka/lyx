@@ -115,6 +115,8 @@ private:
 	virtual bool forcePlainLayout(idx_type = 0) const;
 	/// 
 	virtual bool allowParagraphCustomization(idx_type = 0) const;
+	///
+	virtual bool forceLocalFontSwitch() const;
 	/// Is the width forced to some value?
 	bool hasFixedWidth() const { return isFixedWidth; }
 };
