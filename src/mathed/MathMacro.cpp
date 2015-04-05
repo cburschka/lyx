@@ -52,35 +52,37 @@ namespace lyx {
 class ArgumentProxy : public InsetMath {
 public:
 	///
-	ArgumentProxy(MathMacro & mathMacro, size_t idx)
+	ArgumentProxy(MathMacro * mathMacro, size_t idx)
 		: mathMacro_(mathMacro), idx_(idx) {}
 	///
-	ArgumentProxy(MathMacro & mathMacro, size_t idx, docstring const & def)
+	ArgumentProxy(MathMacro * mathMacro, size_t idx, docstring const & def)
 		: mathMacro_(mathMacro), idx_(idx)
 	{
 			asArray(def, def_);
 	}
 	///
+	void setOwner(MathMacro * mathMacro) { mathMacro_ = mathMacro; }
+	///
 	InsetCode lyxCode() const { return ARGUMENT_PROXY_CODE; }
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const {
-		mathMacro_.macro()->unlock();
-		mathMacro_.cell(idx_).metrics(mi, dim);
+		mathMacro_->macro()->unlock();
+		mathMacro_->cell(idx_).metrics(mi, dim);
 
-		if (!mathMacro_.editMetrics(mi.base.bv)
-		    && mathMacro_.cell(idx_).empty())
+		if (!mathMacro_->editMetrics(mi.base.bv)
+		    && mathMacro_->cell(idx_).empty())
 			def_.metrics(mi, dim);
 
-		mathMacro_.macro()->lock();
+		mathMacro_->macro()->lock();
 	}
 	// FIXME Other external things need similar treatment.
 	///
-	void mathmlize(MathStream & ms) const { ms << mathMacro_.cell(idx_); }
+	void mathmlize(MathStream & ms) const { ms << mathMacro_->cell(idx_); }
 	///
-	void htmlize(HtmlStream & ms) const { ms << mathMacro_.cell(idx_); }
+	void htmlize(HtmlStream & ms) const { ms << mathMacro_->cell(idx_); }
 	///
 	void draw(PainterInfo & pi, int x, int y) const {
-		if (mathMacro_.editMetrics(pi.base.bv)) {
+		if (mathMacro_->editMetrics(pi.base.bv)) {
 			// The only way a ArgumentProxy can appear is in a cell of the
 			// MathMacro. Moreover the cells are only drawn in the DISPLAY_FOLDED
 			// mode and then, if the macro is edited the monochrome
@@ -90,22 +92,22 @@ public:
 			// here (and the assert triggers in pain.leaveMonochromeMode())
 			// it's a bug.
 			pi.pain.leaveMonochromeMode();
-			mathMacro_.cell(idx_).draw(pi, x, y);
+			mathMacro_->cell(idx_).draw(pi, x, y);
 			pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
-		} else if (mathMacro_.cell(idx_).empty()) {
-			mathMacro_.cell(idx_).setXY(*pi.base.bv, x, y);
+		} else if (mathMacro_->cell(idx_).empty()) {
+			mathMacro_->cell(idx_).setXY(*pi.base.bv, x, y);
 			def_.draw(pi, x, y);
 		} else
-			mathMacro_.cell(idx_).draw(pi, x, y);
+			mathMacro_->cell(idx_).draw(pi, x, y);
 	}
 	///
 	size_t idx() const { return idx_; }
 	///
 	int kerning(BufferView const * bv) const
 	{
-		if (mathMacro_.editMetrics(bv)
-		    || !mathMacro_.cell(idx_).empty())
-			return mathMacro_.cell(idx_).kerning(bv);
+		if (mathMacro_->editMetrics(bv)
+		    || !mathMacro_->cell(idx_).empty())
+			return mathMacro_->cell(idx_).kerning(bv);
 		else
 			return def_.kerning(bv);
 	}
@@ -117,7 +119,7 @@ private:
 		return new ArgumentProxy(*this);
 	}
 	///
-	MathMacro & mathMacro_;
+	MathMacro * mathMacro_;
 	///
 	size_t idx_;
 	///
@@ -131,6 +133,50 @@ MathMacro::MathMacro(Buffer * buf, docstring const & name)
 		macroBackup_(buf), macro_(0), needsUpdate_(false),
 		isUpdating_(false), appetite_(9)
 {}
+
+
+MathMacro::MathMacro(MathMacro const & that)
+	: InsetMathNest(that), expanded_(that.buffer_)
+{
+	assign(that);
+}
+
+
+MathMacro & MathMacro::operator=(MathMacro const & that)
+{
+	if (&that == this)
+		return *this;
+	InsetMathNest::operator=(that);
+	assign(that);
+	return *this;
+}
+
+
+void MathMacro::assign(MathMacro const & that)
+{
+	name_ = that.name_;
+	displayMode_ = that.displayMode_;
+	expanded_ = that.expanded_;
+	definition_ = that.definition_;
+	attachedArgsNum_ = that.attachedArgsNum_;
+	optionals_ = that.optionals_;
+	nextFoldMode_ = that.nextFoldMode_;
+	macroBackup_ = that.macroBackup_;
+	macro_ = that.macro_;
+	editing_ = that.editing_;
+	requires_ = that.requires_;
+	needsUpdate_ = that.needsUpdate_;
+	isUpdating_ = that.isUpdating_;
+	appetite_ = that.appetite_;
+	// Update the pointers to our owner of all expanded macros.
+	// This needs to be called every time a copy of the owner is created
+	// (bug 9418).
+	for (size_t i = 0; i < expanded_.cell(0).size(); ++i) {
+		ArgumentProxy * p = dynamic_cast<ArgumentProxy *>(expanded_.cell(0)[i].nucleus());
+		if (p)
+			p->setOwner(this);
+	}
+}
 
 
 Inset * MathMacro::clone() const
@@ -358,9 +404,9 @@ void MathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 	for (size_t i = 0; i < nargs(); ++i) {
 		ArgumentProxy * proxy;
 		if (i < defaults.size())
-			proxy = new ArgumentProxy(*this, i, defaults[i]);
+			proxy = new ArgumentProxy(this, i, defaults[i]);
 		else
-			proxy = new ArgumentProxy(*this, i);
+			proxy = new ArgumentProxy(this, i);
 		values[i].insert(0, MathAtom(proxy));
 	}
 	// expanding macro with the values

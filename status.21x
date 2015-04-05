@@ -125,6 +125,8 @@ What's new
 
 - Fix insertion of spaces in macro definitions (bug 9432).
 
+- Fix crash when copying macros with arguments (bug 9418).
+
 - Fix name and hint of figure captions in documents using the class aastex.
 
 - Fix output encoding information for non-TeX fonts XeTeX/LuaTeX on preview

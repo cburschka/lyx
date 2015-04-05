@@ -28,6 +28,10 @@ public:
 	/// A macro can be built from an existing template
 	MathMacro(Buffer * buf, docstring const & name);
 	///
+	MathMacro(MathMacro const &);
+	///
+	MathMacro & operator=(MathMacro const &);
+	///
 	virtual MathMacro * asMacro() { return this; }
 	///
 	virtual MathMacro const * asMacro() const { return this; }
@@ -156,6 +160,8 @@ private:
 	virtual Inset * clone() const;
 	///
 	bool editMode(BufferView const * bv) const;
+	/// Copy all members (except base class members)
+	void assign(MathMacro const &);
 	
 	/// name of macro
 	docstring name_;
