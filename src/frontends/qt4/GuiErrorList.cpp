@@ -72,7 +72,6 @@ GuiErrorList::GuiErrorList(GuiView & lv)
 
 	bc().setPolicy(ButtonPolicy::OkCancelPolicy);
 	bc().setCancel(closePB);
-	showAnywayPB->setEnabled(lyx::getStatus(FuncRequest(LFUN_BUFFER_VIEW_CACHE)).enabled());
 }
 
 
@@ -125,6 +124,8 @@ void GuiErrorList::paramsToDialog()
 	for (; it != en; ++it)
 		errorsLW->addItem(toqstr(it->error));
 	errorsLW->setCurrentRow(0);
+	showAnywayPB->setEnabled(
+		lyx::getStatus(FuncRequest(LFUN_BUFFER_VIEW_CACHE)).enabled());
 }
 
 
