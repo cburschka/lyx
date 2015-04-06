@@ -19,14 +19,14 @@
 
 % all this is only necessary if you want to have a different list of floats for each language
 \usepackage{newfloat}
-% Define a new floating environment type "figureGer"
-\DeclareFloatingEnvironment[fileext=lof2]{figureGer}
-[Abbildung][Abbildungsverzeichnis]
+% Define a new floating environment type "figureEng"
+\DeclareFloatingEnvironment[fileext=lof2]{figureEng}
+[Figure][List of Figures]
 % Define the new floating environment type "tableEng"
-\DeclareFloatingEnvironment[fileext=lot2]{tableGer}
-[Tabelle][Tabellenverzeichnis]
+\DeclareFloatingEnvironment[fileext=lot2]{tableEng}
+[Table][List of Tables]
 % inform bicaption about the new float types
-\PassOptionsToPackage{listtype+=Ger}{bicaption}
+\PassOptionsToPackage{listtype+=Eng}{bicaption}
 \end_preamble
 \options liststotoc
 \use_default_options true
@@ -34,7 +34,7 @@
 bicaption
 \end_modules
 \maintain_unincluded_children false
-\language french
+\language ngerman
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -97,7 +97,7 @@ bicaption
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language french
+\quotes_language german
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -111,37 +111,11 @@ bicaption
 \begin_body
 
 \begin_layout Title
-Imprimer des légendes multilingues
+Mehrsprachige Legenden
 \end_layout
 
 \begin_layout Author
 Uwe Stöhr
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Traduction Jean-Pierre Chrétien, 
-\family typewriter
-<jeanpierre.chretien@free.fr>
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Historique des mises à jour
-\end_layout
-
-\begin_layout Plain Layout
-Traduction initiale, 24 février 2015
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -153,69 +127,63 @@ Traduction initiale, 24 février 2015
 \end_layout
 
 \begin_layout Section
-Introduction
+Einführung
 \end_layout
 
 \begin_layout Standard
-Le module 
+Mit dem Modul 
 \family sans
-Légendes
+Mehrsprachige
 \begin_inset space ~
 \end_inset
 
-multilingues
+Legenden
 \family default
- permet d'imprimer les légendes en deux langues.
- Il nécessite la paquetage LaTeX 
+ können Legenden (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ Beschriftungen von Abbildungen) in zwei Sprachen gedruckt werden.
+ Es benötigt das LaTeX-Paket 
 \series bold
 bicaption
 \series default
- qui fait partie du paquetage LaTeX 
+, das Teil des LaTeX-Pakets 
 \series bold
 caption
 \series default
-.
- De ce fait si 
+ ist.
+ Wenn 
 \series bold
 caption
 \series default
- est installé, 
+ installiert ist, sollte also auch 
 \series bold
 bicaption
 \series default
- devrait l'être aussi.
+ installiert sein.
 \end_layout
 
 \begin_layout Standard
-La langue principale est celle du document, la langue secondaire doit être
- précisée en utilisant le style 
+Die erste Sprache ist die Dokumentsprache, die zweite muss über die Umgebung
+ 
 \family sans
-Mise
-\begin_inset space ~
-\end_inset
-
-en
-\begin_inset space ~
-\end_inset
-
-forme
-\begin_inset space ~
-\end_inset
-
-légende
+Legenden-Einstellungen
 \family default
-.
- Ce style a un argument optionnel pour définir la langue secondaire.
- Pour positionner le réglage de toutes les légendes sur la langue principale,
- utiliser 
+ angegeben werden.
+ Diese Umgebung hat ein optionales Argument um zu definieren, welche Sprache
+ die Einstellung betrifft.
+ Um die Einstellung für alle Legenden der ersten Sprache zu ändern, verwendet
+ man 
 \series bold
 bi-first
 \series default
- comme argument optionnel, sur la langue secondaire, utiliser 
+ als optionales Argument, für die zweite Sprache 
 \series bold
 bi-second
 \series default
-, sur les deux langues utiliser 
+ und für beide Sprachen 
 \series bold
 bi-both
 \series default
@@ -224,31 +192,19 @@ bi-both
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 \series bold
-Not
+Achtung
 \series default
-a: si aucun argument optionnel n'est utilisé avec 
+: Wenn für 
 \family sans
-Mise
-\begin_inset space ~
-\end_inset
-
-en
-\begin_inset space ~
-\end_inset
-
-forme
-\begin_inset space ~
-\end_inset
-
-légende
+Legenden-Einstellungen
 \family default
-, le réglage affectera toutes les légendes du document, pas seulement les
- légendes multilingues.
+ kein optionales Argument verwendet wird, betrifft die Einstellung alle
+ Legenden des Dokuments, nicht nur die mehrsprachigen.
 \end_layout
 
 \end_inset
@@ -257,115 +213,116 @@ légende
 \end_layout
 
 \begin_layout Standard
-Ce document est en français.
- Pour positionner l’allemand comme langue secondaire, il faut utiliser la
- commande
+Dieses Dokument ist in Deutsch.
+ Um Englisch als zweite Sprache zu definieren, verwendet man den Befehl
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-lang=ngerman
+lang=english
 \end_layout
 
 \begin_layout Standard
-dans un style 
+in einer 
 \family sans
-Mise
-\begin_inset space ~
-\end_inset
-
-en
-\begin_inset space ~
-\end_inset
-
-forme
-\begin_inset space ~
-\end_inset
-
-légende
+Legenden-Einstellungen
 \family default
-.
- Pour d'autres langues, remplacez 
+-Umgebung.
+ Für andere Sprachen ersetzt man 
 \series bold
-ngerman
+english
 \series default
- par le nom de votre langue en babel.
- La liste des noms en babel est indiquée dans le tableau
+ durch den babel-Namen der Sprache.
+ Die Liste der babel-Namen ist in Tabelle
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:List-of-babel"
+reference "tab:Liste-mit-babel-Namen"
 
 \end_inset
 
-.
- Les étiquettes de légende sont automatiquement traduites.
+ zu finden.
+ Die Marken der Legenden (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Tabelle
+\begin_inset Quotes grd
+\end_inset
+
+) werden automatisch übersetzt.
 \end_layout
 
 \begin_layout Standard
-Pour ajouter une légende multilingue à un flottant, presser la touche droite
- de la souris sur la légende qui apparaît automatiquement à la création
- d'un nouveau flottant et sélectionner 
+Um eine mehrsprachige Legende zu einem Gleitobjekt hinzuzufügen, klickt
+ man mit der rechten Maustaste auf die Legende, die automatisch beim Einfügen
+ des Gleitobjekts erstellt wurde, und wählt 
 \family sans
-Légende
+Legende
 \begin_inset space ~
 \end_inset
 
-(Double légende
+(Zweisprachig
 \family default
-) dans le menu contextuel.
- Si aucune légende n'apparaît, il est possible d'insérer la légende multilingue
- via 
+) im Kontext-Menü aus.
+ Ist keine Legende vorhanden, kann man eine mehrsprachige Legende über das
+ Menü 
 \family sans
-Insérer\SpecialChar \menuseparator
-Légende\SpecialChar \menuseparator
-Double légende
+Einfügen\SpecialChar \menuseparator
+Legende\SpecialChar \menuseparator
+Zweisprachig
 \family default
-.
- Le texte de la légende dans la langue du document doit être saisi dans
- l'insert ouvert par 
+ einfügen.
+ Der Legendentext der Dokumentsprache muss in die Box eingegeben werden,
+ die mit 
 \family sans
-Insérer\SpecialChar \menuseparator
-Texte dans la langue principale
+Einfügen\SpecialChar \menuseparator
+Legendentext (Hauptsprache) 
 \family default
-.
- Le texte de la légende dans la langue secondaire est inséré comme texte
- normal de la légende.
+in die Legende eingefügt wird.
+ Der Legendentext der zweiten Sprache wird normal in die Legende eingegeben.
 \end_layout
 
 \begin_layout Standard
-Les titres courts dans les deux langues (pour la liste des tableaux et de
- figures) peuvent être insérés via 
+Kurztitel für beide Sprachen können über 
 \family sans
-Insérer\SpecialChar \menuseparator
-Titre court dans la langue principale
+Einfügen\SpecialChar \menuseparator
+Legendenkurztitel (Hauptsprache)
 \family default
- et 
+ und 
 \family sans
-Insérer\SpecialChar \menuseparator
-Titre court dans la langue secondaire.
+Einfügen\SpecialChar \menuseparator
+Legendenkurztitel (Zweitsprache)
+\family default
+ eingefügt werden.
 \end_layout
 
 \begin_layout Standard
-La figure
+Abbildung
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:example-figure"
+reference "fig:Beispiel-Abbildung"
 
 \end_inset
 
- montre un exemple d'un flottant de figure muni d'une légende multilingue.
+ ist ein Beispiel einer Abbildung mit einer mehrsprachigen Legende.
 \end_layout
 
 \begin_layout Caption setup
+
 \begin_inset Argument 1
 status open
 
@@ -375,12 +332,12 @@ bi-second
 
 \end_inset
 
-lang=ngerman
+lang=english
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-spécifie la seconde langue
+legt die zweite Sprache fest
 \end_layout
 
 \end_inset
@@ -411,7 +368,7 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-Une figure.
+Eine Abbildung.
 \end_layout
 
 \end_inset
@@ -427,7 +384,7 @@ Une figure.
 status open
 
 \begin_layout Plain Layout
-Titre court francophone
+Deutscher Kurztitel
 \end_layout
 
 \end_inset
@@ -437,7 +394,7 @@ Titre court francophone
 status open
 
 \begin_layout Plain Layout
-Titre francophone
+Deutscher Titel
 \end_layout
 
 \end_inset
@@ -447,15 +404,15 @@ Titre francophone
 status open
 
 \begin_layout Plain Layout
-Titre court germanophone
+Englischer Kurztitel
 \end_layout
 
 \end_inset
 
-Titre germanophone
+Englischer Titel
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:example-figure"
+name "fig:Beispiel-Abbildung"
 
 \end_inset
 
@@ -479,9 +436,9 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Not
+Achtung
 \series default
-a: les légendes multilingues ne fonctionnent pas pour les tableaux longs.
+: Mehrsprachige Legenden können nicht für lange Tabellen verwendet werden.
 \end_layout
 
 \end_inset
@@ -490,17 +447,17 @@ a: les légendes multilingues ne fonctionnent pas pour les tableaux longs.
 \end_layout
 
 \begin_layout Section
-Personnalisation de la légende
+Legenden-Formatierung
 \end_layout
 
 \begin_layout Standard
-La mise en page des légendes peut être modifiée à l'aide du style 
+Die Formatierung der Legenden kann ebenfalls über die Umgebung 
 \family sans
-Mise en forme légende
+Legenden-Einstellungen
 \family default
-.
- Pour imprimer par exemple le texte de légende en italique sans empattements,
- utiliser la commande
+ geändert werden.
+ Um zum Beispiel die Legende in sansserif, kursiv zu setzen, verwendet man
+ den Befehl
 \end_layout
 
 \begin_layout Standard
@@ -510,7 +467,7 @@ textfont={sf,it}
 \end_layout
 
 \begin_layout Standard
-et pour mettre l'étiquette en gras, utiliser
+Um die Marke fett zu drucken, verwendet man
 \end_layout
 
 \begin_layout Standard
@@ -520,29 +477,29 @@ labelfont=bf
 \end_layout
 
 \begin_layout Standard
-Pour régler la police pour le texte et l'étiquette, utiliser la commande
- 
+Um die Formatierung für den Text und die Marke zu ändern, verwendet man
+ den Befehl 
 \series bold
 font=
 \series default
 .
- Pour plus de détails sur les modifications possibles, voir la documentation
- du paquetage LaTeX 
+ Für weitere Informationen über mögliche Anpassungen siehe die Dokumentation
+ des LaTeX-Pakets 
 \series bold
 caption
 \series default
- 
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "caption"
 
 \end_inset
 
-, les options du paquetage 
+, denn die Anpassungsmöglichkeiten des Pakets 
 \series bold
 bicaption
 \series default
- étant les mêmes que celles de 
+ sind dieselben wie für 
 \series bold
 caption
 \series default
@@ -550,38 +507,40 @@ caption
 \end_layout
 
 \begin_layout Standard
-La figure
+Abbildung
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:example-figure-custom"
+reference "fig:Beispiel-Abbildung-angepasst"
 
 \end_inset
 
- montre un exemple d'une figure muni d'une légende multilingue personnalisée.
+ ist ein Beispiel für eine Abbildung mit einer angepassten, mehrsprachigen
+ Legende.
 \end_layout
 
 \begin_layout Caption setup
+
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-Not
+Achtung
 \series default
-a: cette mise en forme n'a pas d'effet sur ce fichier comme décrit dans
- le note de la section
+: Diese Einstellung hat in diesem Dokument keinen Effekt, siehe den Hinweis
+ in Abschnitt
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Float-List-Customization"
+reference "sec:Formatierung-der-Liste"
 
 \end_inset
 
@@ -605,8 +564,8 @@ labelfont=bf, labelsep=newline
 status collapsed
 
 \begin_layout Plain Layout
-la police de l'étiquette doit être grasse, le séparateur d'étiquette doit
- être un saut de ligne à la place d'un point.
+Die Marke soll fett sein, das Trennzeichen soll ein Zeilenumbruch statt
+ eines Doppelpunkts sein.
 \end_layout
 
 \end_inset
@@ -615,6 +574,7 @@ la police de l'étiquette doit être grasse, le séparateur d'étiquette doit
 \end_layout
 
 \begin_layout Caption setup
+
 \begin_inset Argument 1
 status open
 
@@ -629,7 +589,8 @@ labelfont=bf, labelsep=newline
 status collapsed
 
 \begin_layout Plain Layout
-l'étiquette dans la langue principale doit être en police grasse
+
+Die Marke der ersten Sprache soll fett sein.
 \end_layout
 
 \end_inset
@@ -638,6 +599,7 @@ l'étiquette dans la langue principale doit être en police grasse
 \end_layout
 
 \begin_layout Caption setup
+
 \begin_inset Argument 1
 status open
 
@@ -652,7 +614,10 @@ labelfont=bf, textfont={sf,it}, labelsep=newline
 status collapsed
 
 \begin_layout Plain Layout
-la légende dans la langue secondaire doit être italique sans empattements
+
+Der Text der zweiten Sprache soll 
+\lang ngerman
+sansserif, kursiv sein.
 \end_layout
 
 \end_inset
@@ -683,7 +648,7 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-A figure.
+Eine Abbildung.
 \end_layout
 
 \end_inset
@@ -699,19 +664,19 @@ A figure.
 status open
 
 \begin_layout Plain Layout
-Mise en forme de légende personnalisée
+Angepasstes Beschriftungsformat
 \end_layout
 
 \end_inset
 
 
+\lang english
+Customized caption format
 \lang ngerman
-Angepasstes Beschriftungsformat
-\lang french
 
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:example-figure-custom"
+name "fig:Beispiel-Abbildung-angepasst"
 
 \end_inset
 
@@ -731,17 +696,18 @@ name "fig:example-figure-custom"
 \begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Float-List-Customization"
+name "sec:Formatierung-der-Liste"
 
 \end_inset
 
-Personnalisation des listes de flottants
+Formatierung der Liste mit Gleitobjekten
 \end_layout
 
 \begin_layout Standard
-Implicitement, la liste des figures ou des tableaux affiche les deux langues.
- Il est possible de supprimer la langue secondaire en ajoutant ceci au préambule
- du document:
+Die Verzeichnisse der Tabellen/Abbildungen enthalten standardmäßig beide
+ Sprachen.
+ Man kann die zweite Sprache ausschalten, indem man diese Zeile zur Dokumentpräa
+mbel hinzufügt:
 \end_layout
 
 \begin_layout Standard
@@ -753,9 +719,11 @@ PassOptionsToPackage{list=off}{bicaption}
 \end_layout
 
 \begin_layout Standard
-Il est également possible d’obtenir deux listes séparées pour chacune des
- deux langues, ce qui est le cas dans le présent document.
- Pour ce faire, il faut ajouter ces lignes dans le préambule LaTeX:
+Es ist auch möglich zwei verschiedene Verzeichnisse zu haben, eine für die
+ Dokumentsprache und eine für die zweite Sprache.
+ Dies ist in diesem Dokument der Fall.
+ Um die Liste zu Teilen, müssen diese Zeilen in den LaTeX-Vorspann des Dokuments
+ hinzugefügt werden:
 \end_layout
 
 \begin_layout Standard
@@ -769,44 +737,44 @@ usepackage{newfloat}
 
 
 \backslash
-DeclareFloatingEnvironment[fileext=lof2]{figureGer}
+DeclareFloatingEnvironment[fileext=lof2]{figureEng}
 \begin_inset Newline newline
 \end_inset
 
-[Abbildung][Abbildungsverzeichnis]
+[Figure][List of Figures]
 \begin_inset Newline newline
 \end_inset
 
 
 \backslash
-DeclareFloatingEnvironment[fileext=lot2]{tableGer}
+DeclareFloatingEnvironment[fileext=lot2]{tableEng}
 \begin_inset Newline newline
 \end_inset
 
-[Tabelle][Tabellenverzeichnis]
+[Table][List of Tables]
 \begin_inset Newline newline
 \end_inset
 
  
 \backslash
-PassOptionsToPackage{listtype+=Ger}{bicaption}
+PassOptionsToPackage{listtype+=Eng}{bicaption}
 \end_layout
 
 \begin_layout Standard
-Ceci définit deux nouveaux environnements de flottants dénommés 
+Dies definiert zwei neue Gleitobjekttypen namens 
 \emph on
-figureGer
+figureEng
 \emph default
- and 
+ und 
 \emph on
-tableGer
+tableEng
 \emph default
 .
- Une liste pour 
+ Ein Verzeichnis für 
 \emph on
-figureGer
+figureEng
 \emph default
- peut être insérée via la commande
+ kann durch den Befehl 
 \end_layout
 
 \begin_layout Standard
@@ -814,12 +782,12 @@ figureGer
 \series bold
 
 \backslash
-listoffigureGeres
+listoffigureEnges
 \end_layout
 
 \begin_layout Standard
-en code TeX.
- Voici la liste des figures en allemand:
+als TeX-Code eingefügt werden.
+ Hier ist das englische Abbildungsverzeichnis:
 \end_layout
 
 \begin_layout Standard
@@ -830,7 +798,7 @@ status open
 
 
 \backslash
-listoffigureGeres
+listoffigureEnges
 \end_layout
 
 \end_inset
@@ -852,27 +820,26 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Not
+Achtung
 \series default
-a: si vous utilisez cette fonctionnalité, l'option 
+: Wenn man dieses Feature verwendet, hat die 
+\family sans
+Legenden-Einstellungen
+\family default
+ Option 
 \series bold
 bi-both
 \series default
- du style 
-\family sans
-Mise en forme légende
-\family default
- n'a plus aucun effet.
- Il faut alors tout définir pour chaque langue explicitement en utilisant
- les options 
+ keinen Effekt mehr.
+ Man muss dann alles explizit für beide Sprachen über die Optionen 
 \series bold
 bi-first
 \series default
- et 
+ und 
 \series bold
 bi-second
 \series default
-.
+ definieren.
 \end_layout
 
 \end_inset
@@ -881,11 +848,11 @@ bi-second
 \end_layout
 
 \begin_layout Standard
-Pour en savoir plus sur ce qui peut être fait avec le paquetage LaTeX 
+Für mehr Informationen was man mit dem LaTeX-Paket 
 \series bold
 bicaption
 \series default
-, voir sa documentation 
+ machen kann, siehe seine Dokumentation, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bicaption"
@@ -918,11 +885,11 @@ key "bicaption"
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:List-of-babel"
+name "tab:Liste-mit-babel-Namen"
 
 \end_inset
 
-Liste des noms babel
+Liste mit babel-Namen
 \end_layout
 
 \end_inset
@@ -947,7 +914,7 @@ Liste des noms babel
 \begin_inset Text
 
 \begin_layout Plain Layout
-langue
+Sprache
 \end_layout
 
 \end_inset
@@ -956,7 +923,7 @@ langue
 \begin_inset Text
 
 \begin_layout Plain Layout
-nom(s) babel 
+babel-Name(n)
 \end_layout
 
 \end_inset
@@ -967,7 +934,7 @@ nom(s) babel
 \begin_inset Text
 
 \begin_layout Plain Layout
-langue
+Sprache
 \end_layout
 
 \end_inset
@@ -976,7 +943,7 @@ langue
 \begin_inset Text
 
 \begin_layout Plain Layout
-nom(s) babel
+babel-Name(n)
 \end_layout
 
 \end_inset
@@ -999,7 +966,7 @@ nom(s) babel
 
 \family sans
 \size small
-suite page suivante
+Fortsetzung auch nächster Seite
 \end_layout
 
 \end_inset
@@ -1030,7 +997,7 @@ afrikaans
 \begin_inset Text
 
 \begin_layout Plain Layout
-Basque
+Baskisch
 \end_layout
 
 \end_inset
@@ -1050,7 +1017,7 @@ basque
 \begin_inset Text
 
 \begin_layout Plain Layout
-Breton
+Bretonisch
 \end_layout
 
 \end_inset
@@ -1070,7 +1037,7 @@ breton
 \begin_inset Text
 
 \begin_layout Plain Layout
-Bulgarian
+Bulgarisch
 \end_layout
 
 \end_inset
@@ -1086,76 +1053,16 @@ bulgarian
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Catalan
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-catalan
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Croatian
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-croatian
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Czech
+Dänisch
 \end_layout
 
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-czech
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Danish
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1166,20 +1073,20 @@ danish
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Dutch
+Deutsch
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-dutch
+ngerman, naustrian 
 \end_layout
 
 \end_inset
@@ -1190,7 +1097,7 @@ dutch
 \begin_inset Text
 
 \begin_layout Plain Layout
-English
+Englisch
 \end_layout
 
 \end_inset
@@ -1230,7 +1137,7 @@ esperanto
 \begin_inset Text
 
 \begin_layout Plain Layout
-Estonian
+Estnisch
 \end_layout
 
 \end_inset
@@ -1250,7 +1157,7 @@ estonian
 \begin_inset Text
 
 \begin_layout Plain Layout
-Finnish
+Finnisch
 \end_layout
 
 \end_inset
@@ -1270,7 +1177,7 @@ finnish
 \begin_inset Text
 
 \begin_layout Plain Layout
-French
+Französisch
 \end_layout
 
 \end_inset
@@ -1290,7 +1197,7 @@ french, canadien, acadian
 \begin_inset Text
 
 \begin_layout Plain Layout
-Galician
+Galizisch
 \end_layout
 
 \end_inset
@@ -1310,7 +1217,7 @@ galician
 \begin_inset Text
 
 \begin_layout Plain Layout
-Georgian
+Georgisch
 \end_layout
 
 \end_inset
@@ -1330,27 +1237,7 @@ georgian
 \begin_inset Text
 
 \begin_layout Plain Layout
-German
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ngerman, naustrian 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Greek
+Griechisch
 \end_layout
 
 \end_inset
@@ -1370,7 +1257,7 @@ greek, polutonikogreek
 \begin_inset Text
 
 \begin_layout Plain Layout
-Hebrew
+Hebräisch
 \end_layout
 
 \end_inset
@@ -1390,27 +1277,7 @@ hebrew
 \begin_inset Text
 
 \begin_layout Plain Layout
-Hungarian
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-magyar, hungarian
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Icelandic
+Isländisch
 \end_layout
 
 \end_inset
@@ -1430,7 +1297,7 @@ icelandic
 \begin_inset Text
 
 \begin_layout Plain Layout
-Indonesian
+Indonesisch
 \end_layout
 
 \end_inset
@@ -1470,7 +1337,15 @@ interlingua
 \begin_inset Text
 
 \begin_layout Plain Layout
-Irish Gaelic
+Irisch
+\begin_inset space \thinspace{}
+\end_inset
+
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+Gälisch
 \end_layout
 
 \end_inset
@@ -1490,7 +1365,7 @@ irish
 \begin_inset Text
 
 \begin_layout Plain Layout
-Italian
+Italienisch
 \end_layout
 
 \end_inset
@@ -1506,11 +1381,51 @@ italian
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Katalanisch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+catalan
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kroatisch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+croatian
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Latin
+Latein
 \end_layout
 
 \end_inset
@@ -1526,31 +1441,11 @@ latin
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Lower Sorbian
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-lowersorbian
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Malay
+Malayisch
 \end_layout
 
 \end_inset
@@ -1566,11 +1461,51 @@ bahasam
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Niederländisch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dutch
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Niedersorbisch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lowersorbian
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-North Sami
+Nord-Sami
 \end_layout
 
 \end_inset
@@ -1590,7 +1525,7 @@ samin
 \begin_inset Text
 
 \begin_layout Plain Layout
-Norwegian
+Norwegisch
 \end_layout
 
 \end_inset
@@ -1610,7 +1545,27 @@ norsk, nynorsk
 \begin_inset Text
 
 \begin_layout Plain Layout
-Polish
+Obersorbisch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+uppersorbian
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Polnisch
 \end_layout
 
 \end_inset
@@ -1630,7 +1585,7 @@ polish
 \begin_inset Text
 
 \begin_layout Plain Layout
-Portuguese
+Portugiesisch
 \end_layout
 
 \end_inset
@@ -1650,7 +1605,7 @@ portuguese, brazilian
 \begin_inset Text
 
 \begin_layout Plain Layout
-Romanian
+Rumänisch
 \end_layout
 
 \end_inset
@@ -1670,7 +1625,7 @@ romanian
 \begin_inset Text
 
 \begin_layout Plain Layout
-Russian
+Russisch
 \end_layout
 
 \end_inset
@@ -1690,7 +1645,15 @@ russian
 \begin_inset Text
 
 \begin_layout Plain Layout
-Scottish Gaelic
+Schottisch
+\begin_inset space \thinspace{}
+\end_inset
+
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+Gälisch
 \end_layout
 
 \end_inset
@@ -1710,87 +1673,7 @@ scottish
 \begin_inset Text
 
 \begin_layout Plain Layout
-Serbian
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-serbian
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Slovakian
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-slovak
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Slovenian
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-slovene
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Spanish
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-spanish
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Swedish
+Schwedisch
 \end_layout
 
 \end_inset
@@ -1810,7 +1693,107 @@ swedish
 \begin_inset Text
 
 \begin_layout Plain Layout
-Turkish
+Serbisch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+serbian
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Slovakisch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+slovak
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Slovenisch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+slovene
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Spanisch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+spanish
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tschechisch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+czech
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Türkisch
 \end_layout
 
 \end_inset
@@ -1830,7 +1813,7 @@ turkish
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ukrainian
+Ukrainisch
 \end_layout
 
 \end_inset
@@ -1850,7 +1833,7 @@ ukrainian
 \begin_inset Text
 
 \begin_layout Plain Layout
-Upper Sorbian
+Ungarisch
 \end_layout
 
 \end_inset
@@ -1859,7 +1842,7 @@ Upper Sorbian
 \begin_inset Text
 
 \begin_layout Plain Layout
-uppersorbian
+magyar, hungarian
 \end_layout
 
 \end_inset
@@ -1870,7 +1853,7 @@ uppersorbian
 \begin_inset Text
 
 \begin_layout Plain Layout
-Welsh
+Walisisch
 \end_layout
 
 \end_inset
@@ -1899,7 +1882,7 @@ key "bicaption"
 
 \end_inset
 
-Documentation of the LaTeX-package 
+Dokumentation des LaTeX-Pakets 
 \series bold
 
 \begin_inset CommandInset href
@@ -1919,7 +1902,7 @@ key "caption"
 
 \end_inset
 
-Documentation of the LaTeX-package 
+Dokumentation de LaTeX-Pakets 
 \series bold
 
 \begin_inset CommandInset href
