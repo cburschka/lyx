@@ -71,14 +71,14 @@ bicaption
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
-\use_package cancel 0
+\use_package cancel 1
 \use_package esint 1
 \use_package mathdots 1
-\use_package mathtools 0
+\use_package mathtools 1
 \use_package mhchem 1
-\use_package stackrel 0
-\use_package stmaryrd 0
-\use_package undertilde 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
 \cite_engine_type default
 \biblio_style plain
@@ -305,25 +305,6 @@ reference "fig:example-figure"
 \end_inset
 
  is an example of a figure float with a multilingual caption.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Caption setup
@@ -564,7 +545,7 @@ labelfont=bf, labelsep=newline
 status collapsed
 
 \begin_layout Plain Layout
-the label font should be bold, the label separator is a line break instead
+The label font should be bold, the label separator is a line break instead
  of a colon.
 \end_layout
 
@@ -588,7 +569,7 @@ labelfont=bf, labelsep=newline
 status collapsed
 
 \begin_layout Plain Layout
-the first language label text should be in bold font
+The first language label font should be bold.
 \end_layout
 
 \end_inset
@@ -611,7 +592,7 @@ labelfont=bf, textfont={sf,it}, labelsep=newline
 status collapsed
 
 \begin_layout Plain Layout
-the second language caption text should be sans-serif italic
+The second language caption text should be sans-serif, italic.
 \end_layout
 
 \end_inset
@@ -715,7 +696,7 @@ PassOptionsToPackage{list=off}{bicaption}
 It is also possible to have two different lists, one for the document language,
  one for the second language.
  This is the case in this file.
- To split the list one needs to add these lines to the document preamble:
+ To split the list one needs to add these lines to the LaTeX preamble:
 \end_layout
 
 \begin_layout Standard
