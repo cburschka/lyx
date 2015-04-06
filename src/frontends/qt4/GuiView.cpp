@@ -884,6 +884,32 @@ bool GuiView::closeScheduled()
 }
 
 
+bool GuiView::prepareAllBuffersForLogout()
+{
+	Buffer * first = theBufferList().first();
+	if (!first)
+		return true;
+
+	// First, iterate over all buffers and ask the users if unsaved
+	// changes should be saved.
+	// We cannot use a for loop as the buffer list cycles.
+	Buffer * b = first;
+	do {
+		if (!saveBufferIfNeeded(const_cast<Buffer &>(*b), false))
+			return false;
+		b = theBufferList().next(b);
+	} while (b != first);
+
+	// Next, save session state
+	// When a view/window was closed before without quitting LyX, there
+	// are already entries in the lastOpened list.
+	theSession().lastOpened().clear();
+	writeSession();
+
+	return true;
+}
+
+
 /** Destroy only all tabbed WorkAreas. Destruction of other WorkAreas
  ** is responsibility of the container (e.g., dialog)
  **/

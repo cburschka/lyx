@@ -2648,13 +2648,18 @@ void GuiApplication::unregisterSocketCallback(int fd)
 
 void GuiApplication::commitData(QSessionManager & sm)
 {
-	/// The implementation is required to avoid an application exit
-	/// when session state save is triggered by session manager.
-	/// The default implementation sends a close event to all
-	/// visible top level widgets when session managment allows
-	/// interaction.
-	/// We are changing that to close all wiew one by one.
-	/// FIXME: verify if the default implementation is enough now.
+	/** The implementation is required to avoid an application exit
+	 ** when session state save is triggered by session manager.
+	 ** The default implementation sends a close event to all
+	 ** visible top level widgets when session managment allows
+	 ** interaction.
+	 ** We are changing that to check the state of each buffer in all
+	 ** views and ask the users what to do if buffers are dirty.
+	 ** Furthermore, we save the session state.
+	 ** We do NOT close the views here since the user still can cancel
+	 ** the logout process (see #9277); also, this would hide LyX from
+	 ** an OSes own session handling (application restoration).
+	 **/
 	#ifdef QT_NO_SESSIONMANAGER
 		#ifndef _MSC_VER
 			#warning Qt is compiled without session manager
@@ -2663,8 +2668,10 @@ void GuiApplication::commitData(QSessionManager & sm)
 		#endif
 		(void) sm;
 	#else
-		if (sm.allowsInteraction() && !closeAllViews())
+		if (sm.allowsInteraction() && !prepareAllViewsForLogout())
 			sm.cancel();
+		else
+			sm.release();
 	#endif
 }
 
@@ -2694,6 +2701,21 @@ bool GuiApplication::closeAllViews()
 	}
 
 	d->views_.clear();
+	return true;
+}
+
+
+bool GuiApplication::prepareAllViewsForLogout()
+{
+	if (d->views_.empty())
+		return true;
+
+	QList<GuiView *> const views = d->views_.values();
+	foreach (GuiView * view, views) {
+		if (!view->prepareAllBuffersForLogout())
+			return false;
+	}
+
 	return true;
 }
 

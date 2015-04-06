@@ -207,6 +207,9 @@ private:
 	void updateCurrentView(FuncRequest const & cmd, DispatchResult & dr);
 	///
 	bool closeAllViews();
+	/// Things that need to be done when the OSes session manager
+	/// requests a log out.
+	bool prepareAllViewsForLogout();
 	/// read the given ui (menu/toolbar) file
 	bool readUIFile(QString const & name, bool include = false);
 	///

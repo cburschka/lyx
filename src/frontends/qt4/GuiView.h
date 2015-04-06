@@ -75,6 +75,10 @@ public:
 	/// programmatically and not by the user clicking the x.
 	bool closeScheduled();
 
+	/// Things that need to be done when the OSes session manager
+	/// requests a log out.
+	bool prepareAllBuffersForLogout();
+
 	int id() const { return id_; }
 
 	/// are we busy ?
