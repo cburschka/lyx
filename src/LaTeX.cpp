@@ -158,6 +158,7 @@ int LaTeX::run(TeXErrors & terr)
 	// each time the .tex file changes.
 {
 	int scanres = NO_ERRORS;
+	int bscanres = NO_ERRORS;
 	unsigned int count = 0; // number of times run
 	num_errors = 0; // just to make sure.
 	unsigned int const MAX_RUN = 6;
@@ -305,13 +306,8 @@ int LaTeX::run(TeXErrors & terr)
 		updateBibtexDependencies(head, bibtex_info);
 		rerun |= runBibTeX(bibtex_info, runparams);
 		FileName const blgfile(changeExtension(file.absFileName(), ".blg"));
-		if (blgfile.exists()) {
-			int bscanres = scanBlgFile(head, terr);
-			if (bscanres & ERRORS) {
-				deleteFilesOnError();
-				return bscanres; // return on error
-			}
-		}
+		if (blgfile.exists())
+			bscanres = scanBlgFile(head, terr);
 	} else if (!had_depfile) {
 		/// If we run pdflatex on the file after running latex on it,
 		/// then we do not need to run bibtex, but we do need to
@@ -339,10 +335,8 @@ int LaTeX::run(TeXErrors & terr)
 		message(runMessage(count));
 		startscript();
 		scanres = scanLogFile(terr);
-		if (scanres & ERRORS) {
-			deleteFilesOnError();
+		if (scanres & ERRORS)
 			return scanres; // return on error
-		}
 
 		// update the depedencies
 		deplog(head); // reads the latex log
@@ -365,13 +359,8 @@ int LaTeX::run(TeXErrors & terr)
 		updateBibtexDependencies(head, bibtex_info);
 		rerun |= runBibTeX(bibtex_info, runparams);
 		FileName const blgfile(changeExtension(file.absFileName(), ".blg"));
-		if (blgfile.exists()) {
-			int bscanres = scanBlgFile(head, terr);
-			if (bscanres & ERRORS) {
-				deleteFilesOnError();
-				return bscanres; // return on error
-			}
-		}
+		if (blgfile.exists())
+			bscanres = scanBlgFile(head, terr);
 	}
 
 	// 4
@@ -418,10 +407,8 @@ int LaTeX::run(TeXErrors & terr)
 		message(runMessage(count));
 		startscript();
 		scanres = scanLogFile(terr);
-		if (scanres & ERRORS) {
-			deleteFilesOnError();
+		if (scanres & ERRORS)
 			return scanres; // return on error
-		}
 
 		// keep this updated
 		head.update();
@@ -444,6 +431,10 @@ int LaTeX::run(TeXErrors & terr)
 		scanres |= NONZERO_ERROR;
 
 	LYXERR(Debug::LATEX, "Done.");
+
+	if (bscanres & ERRORS)
+		return bscanres; // return on error
+
 	return scanres;
 }
 
