@@ -123,6 +123,9 @@ What's new
 
 - Fix crash with undo/redo (bug 9432).
 
+- Fix crash when attempting to restore a document with multiple views on the
+  Mac (bug 9483).
+
 - Fix insertion of spaces in macro definitions (bug 9432).
 
 - Fix crash when copying macros with arguments (bug 9418).

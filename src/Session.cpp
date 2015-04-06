@@ -150,6 +150,16 @@ void LastOpenedSection::write(ostream & os) const
 void LastOpenedSection::add(FileName const & file, bool active)
 {
 	LastOpenedFile lof(file, active);
+	// check if file is already recorded (this can happen
+	// with multiple buffer views). We do only record each
+	// file once, since we cannot restore multiple views
+	// currently, we even crash in some cases (see #9483).
+	// FIXME: Add session support for multiple views of
+	//        the same buffer (split-view etc.).
+	for (size_t i = 0; i < lastopened.size(); ++i) {
+		if (lastopened[i].file_name == file)
+			return;
+	}
 	lastopened.push_back(lof);
 }
 
