@@ -727,7 +727,7 @@ convert = [
           ]
 
 revert =  [
-	       [483, [revert_georgian]],
+           [483, [revert_georgian]],
            [482, [revert_specialchar]],
            [481, [revert_phrases]],
            [480, [revert_dashes]],
