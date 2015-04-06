@@ -2,21 +2,23 @@
 # Copyright (C) 2008--2013 LyX Developers
 # This file is distributed under the same license as the PACKAGE package.
 # Hatim Alahmadi <Dr.Hatim@hotmail.com>, 2008--2013
-#
+# Hatim Alahmady <Dr.hatim@hotmail.com>, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-11-10 03:10+0100\n"
-"PO-Revision-Date: 2015-02-15 02:39+0300\n"
-"Last-Translator: Hatim Alahmadi <Dr.hatim@hotmail.com>\n"
-"Language-Team: Hatim Alahmadi <dr.hatim@hotmail.com>\n"
+"PO-Revision-Date: 2015-03-24 23:59+0300\n"
+"Last-Translator: Hatim Alahmady <Dr.hatim@hotmail.com>\n"
+"Language-Team: Hatim Alahmady\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Virtaal 0.7.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.5.4\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:32
 msgid "Version"
@@ -24,7 +26,7 @@ msgstr "الإصدار"
 
 #: src/frontends/qt4/ui/AboutUi.ui:50
 msgid "Version goes here"
-msgstr "للاصدار اذهب هنا"
+msgstr "للإصدار اذهب هنا"
 
 #: src/frontends/qt4/ui/AboutUi.ui:67
 msgid "Credits"
@@ -1436,7 +1438,6 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:284
-#, fuzzy
 msgid "I&gnore format"
 msgstr "تجاهل اله&يئة"
 
@@ -7354,7 +7355,7 @@ msgstr "ملاحظة"
 #: lib/layouts/apa6.layout:274
 #, fuzzy
 msgid "AuthorNote"
-msgstr "المؤلف"
+msgstr "ملاحظة المؤلف"
 
 #: lib/layouts/apa6.layout:293
 #, fuzzy
@@ -8346,9 +8347,8 @@ msgstr "العناوين"
 #: lib/layouts/g-brief2.layout:755 lib/layouts/g-brief2.layout:777
 #: lib/layouts/lettre.layout:140 lib/layouts/stdletter.inc:26
 #: lib/layouts/stdletter.inc:38
-#, fuzzy
 msgid "Postal Data"
-msgstr "تعليق"
+msgstr "بيانات البريد"
 
 #: lib/layouts/dinbrief.layout:55 lib/layouts/frletter.layout:17
 #: lib/layouts/heb-letter.layout:16 lib/layouts/lettre.layout:56
@@ -8742,9 +8742,8 @@ msgid "RunTitle"
 msgstr ""
 
 #: lib/layouts/ectaart.layout:29 lib/layouts/llncs.layout:166
-#, fuzzy
 msgid "Running Title:"
-msgstr "تشغيل BibTeX."
+msgstr ""
 
 #: lib/layouts/ectaart.layout:36
 #, fuzzy
@@ -8761,18 +8760,16 @@ msgid "Address Option"
 msgstr "خيارات عنوان المنزل"
 
 #: lib/layouts/ectaart.layout:68 lib/layouts/elsart.layout:149
-#, fuzzy
 msgid "Optional argument for the address"
-msgstr "محاذاة رأسية"
+msgstr "خيارات محاذاة العنوان"
 
 #: lib/layouts/ectaart.layout:78
 msgid "E-Mail Option"
 msgstr "خيارات البريد الالكتروني"
 
 #: lib/layouts/ectaart.layout:79
-#, fuzzy
 msgid "Optional argument for the e-mail"
-msgstr "محاذاة رأسية"
+msgstr "خيارات محاذات البريد الإلكتروني"
 
 #: lib/layouts/ectaart.layout:84 lib/layouts/europecv.layout:74
 #: lib/layouts/latex8.layout:78
@@ -8809,17 +8806,15 @@ msgstr "نص الشكر"
 
 #: lib/layouts/ectaart.layout:140
 msgid "Thanks \\theThanks:"
-msgstr "شكر \\الشكر:"
+msgstr "شكر \\theThanks:"
 
 #: lib/layouts/ectaart.layout:159
-#, fuzzy
 msgid "Thanks Reference"
-msgstr "مرجع"
+msgstr "شكر مرجع"
 
 #: lib/layouts/ectaart.layout:166
-#, fuzzy
 msgid "Thanks Ref"
-msgstr "الشكر"
+msgstr "شكر مرجع"
 
 #: lib/layouts/ectaart.layout:172
 msgid "Internet Address Reference"
@@ -9001,7 +8996,7 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:361
 msgid "Algorithm \\arabic{theorem}"
-msgstr "لوغرتم \\عربي{نظرية}"
+msgstr "لوغرتم \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:368
 msgid "Definition \\arabic{theorem}"
@@ -9013,11 +9008,11 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:389
 msgid "Example \\arabic{theorem}"
-msgstr "مثال \\عربي{نظرية}"
+msgstr "مثال \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:396
 msgid "Problem \\arabic{theorem}"
-msgstr "مشكلة \\عربي{نظرية}"
+msgstr "مشكلة \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:403
 msgid "Remark \\arabic{theorem}"
@@ -9025,7 +9020,7 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:410
 msgid "Note \\arabic{theorem}"
-msgstr "ملاحظة \\عربي{نظرية}"
+msgstr "ملاحظة \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:417
 msgid "Claim \\arabic{theorem}"
@@ -10076,7 +10071,7 @@ msgstr ""
 #: lib/layouts/theorems-bytype.inc:48
 #: lib/layouts/theorems-without-preamble.inc:55 lib/layouts/theorems.inc:46
 msgid "Theorem \\thetheorem."
-msgstr "نظرية //النظرية"
+msgstr "نظرية \\thetheorem."
 
 #: lib/layouts/ijmpc.layout:371 lib/layouts/ijmpd.layout:383
 #: lib/layouts/theorems-ams-bytype.inc:98 lib/layouts/theorems-bytype.inc:74
@@ -10111,7 +10106,7 @@ msgstr "سؤال"
 #: lib/layouts/ijmpc.layout:383 lib/layouts/ijmpd.layout:404
 #: lib/layouts/theorems-without-preamble.inc:382
 msgid "Question \\thequestion."
-msgstr "سؤال //السؤال"
+msgstr "سؤال \\thequestion."
 
 #: lib/layouts/ijmpc.layout:395 lib/layouts/ijmpd.layout:415
 #: lib/layouts/theorems-ams-bytype.inc:296 lib/layouts/theorems-bytype.inc:272
@@ -10130,7 +10125,7 @@ msgstr ""
 
 #: lib/layouts/ijmpc.layout:435 lib/layouts/ijmpd.layout:448
 msgid "Appendix \\Alph{appendix}."
-msgstr "ملحق \\Alph{ملحق}."
+msgstr "ملحق \\Alph{appendix}."
 
 #: lib/layouts/ijmpd.layout:3
 msgid "Int. Journal of Modern Physics D"
@@ -10364,9 +10359,8 @@ msgid "EndOfMessage"
 msgstr "نهاية الرسالة"
 
 #: lib/layouts/lettre.layout:78 lib/layouts/lettre.layout:536
-#, fuzzy
 msgid "EndOfFile"
-msgstr "نهاية شريحة"
+msgstr "نهاية ملف"
 
 #: lib/layouts/lettre.layout:159 lib/layouts/lettre.layout:189
 #: lib/layouts/lettre.layout:215 lib/layouts/lettre.layout:238
@@ -10386,9 +10380,8 @@ msgid "Office:"
 msgstr "المكتب:"
 
 #: lib/layouts/lettre.layout:293
-#, fuzzy
 msgid "Tel:"
-msgstr "المبرق:"
+msgstr "الهاتف:"
 
 #: lib/layouts/lettre.layout:325
 msgid "NoTel"
@@ -10399,9 +10392,8 @@ msgid "EndOfMessage."
 msgstr "نهاية الرسالة."
 
 #: lib/layouts/lettre.layout:538
-#, fuzzy
 msgid "EndOfFile."
-msgstr "نهاية شريحة"
+msgstr "نهاية ملف"
 
 #: lib/layouts/lettre.layout:658
 msgid "P.S.:"
@@ -11689,7 +11681,7 @@ msgstr "تعليق ختامي"
 #: lib/layouts/svglobal.layout:81 lib/layouts/svjog.layout:85
 #: lib/layouts/svprobth.layout:115
 msgid "Headnote (optional):"
-msgstr ""
+msgstr "ملاحظة الرأس (اختياري):"
 
 #: lib/layouts/svglobal.layout:90 lib/layouts/svglobal.layout:92
 #: lib/layouts/svjog.layout:94 lib/layouts/svjog.layout:96
@@ -11756,9 +11748,8 @@ msgid "CR Subject Classification"
 msgstr ""
 
 #: lib/layouts/svglobal3.layout:87
-#, fuzzy
 msgid "Solution \\thesolution"
-msgstr "استنتاج//الاستنتاج"
+msgstr "استنتاج \\thesolution"
 
 #: lib/layouts/svjog.layout:3
 msgid "Springer SV Jour/Jog"
@@ -11789,9 +11780,8 @@ msgid "Title*: "
 msgstr "العنوان*:"
 
 #: lib/layouts/svmult.layout:66 lib/layouts/svmult.layout:151
-#, fuzzy
 msgid "Contributors"
-msgstr "قائمة بأسماء المساهمين"
+msgstr "المساهمين"
 
 #: lib/layouts/svmult.layout:68
 msgid "List of Contributors"
@@ -12396,7 +12386,7 @@ msgstr "\\روماني{قسم}."
 
 #: lib/layouts/numrevtex.inc:10
 msgid "Appendix \\Alph{section}:"
-msgstr "ملحق \\الفا{قسم}:"
+msgstr "ملحق \\Alph{section}:"
 
 #: lib/layouts/numrevtex.inc:18
 msgid "\\Alph{subsection}."
@@ -12606,15 +12596,15 @@ msgstr "استعراض"
 
 #: lib/layouts/stdsections.inc:15 lib/layouts/svcommon.inc:119
 msgid "Part \\thepart"
-msgstr "جزء //الجزء"
+msgstr "جزء \\thepart"
 
 #: lib/layouts/stdsections.inc:46
 msgid "Chapter \\thechapter"
-msgstr "فصل //الفصل"
+msgstr "فصل \\thechapter"
 
 #: lib/layouts/stdsections.inc:47
 msgid "Appendix \\thechapter"
-msgstr "ملحق //الفصل"
+msgstr "ملحق \\thechapter"
 
 #: lib/layouts/stdspecialchars.inc:7 lib/ui/stdmenus.inc:417
 msgid "Ligature Break|k"
@@ -12751,7 +12741,7 @@ msgstr ""
 #: lib/layouts/theorems-ams-bytype.inc:170 lib/layouts/theorems-bytype.inc:146
 #: lib/layouts/theorems-without-preamble.inc:166
 msgid "Fact \\thefact."
-msgstr "حادثة //الحادثة."
+msgstr "حادثة \\thefact."
 
 #: lib/layouts/theorems-ams-bytype.inc:188 lib/layouts/theorems-bytype.inc:164
 #: lib/layouts/theorems-without-preamble.inc:182
@@ -12761,12 +12751,12 @@ msgstr ""
 #: lib/layouts/theorems-ams-bytype.inc:213 lib/layouts/theorems-bytype.inc:189
 #: lib/layouts/theorems-without-preamble.inc:206
 msgid "Example \\theexample."
-msgstr "مثال //المثال."
+msgstr "مثال \\theexample."
 
 #: lib/layouts/theorems-ams-bytype.inc:232 lib/layouts/theorems-bytype.inc:208
 #: lib/layouts/theorems-without-preamble.inc:224
 msgid "Problem \\theproblem."
-msgstr "مشكلة //النظرية."
+msgstr "مشكلة \\theproblem."
 
 #: lib/layouts/theorems-ams-bytype.inc:251 lib/layouts/theorems-bytype.inc:227
 #: lib/layouts/theorems-without-preamble.inc:301
@@ -12775,47 +12765,47 @@ msgstr ""
 
 #: lib/layouts/theorems-ams.inc:73 lib/layouts/theorems.inc:73
 msgid "Corollary \\thetheorem."
-msgstr "لازمة \\النظرية."
+msgstr "لازمة \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:91 lib/layouts/theorems.inc:91
 msgid "Lemma \\thetheorem."
-msgstr "قضية مساعدة \\النظرية."
+msgstr "قضية مساعدة \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:109 lib/layouts/theorems.inc:109
 msgid "Proposition \\thetheorem."
-msgstr "فرضية \\النظرية."
+msgstr "فرضية \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:127 lib/layouts/theorems.inc:127
 msgid "Conjecture \\thetheorem."
-msgstr "حدس \\النظرية."
+msgstr "حدس \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:145 lib/layouts/theorems.inc:145
 msgid "Fact \\thetheorem."
-msgstr "حقيقة \\النظرية."
+msgstr "حقيقة \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:163 lib/layouts/theorems.inc:163
 msgid "Definition \\thetheorem."
-msgstr "تعريف \\النظرية."
+msgstr "تعريف \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:187 lib/layouts/theorems.inc:187
 msgid "Example \\thetheorem."
-msgstr "مثال //النظرية"
+msgstr "مثال \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:204 lib/layouts/theorems.inc:204
 msgid "Problem \\thetheorem."
-msgstr "مشكلة //النظرية"
+msgstr "مشكلة \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:221 lib/layouts/theorems.inc:221
 msgid "Exercise \\thetheorem."
-msgstr "تدريب \\النظرية."
+msgstr "تدريب \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:239 lib/layouts/theorems.inc:239
 msgid "Remark \\thetheorem."
-msgstr "ملاحظة \\النظرية."
+msgstr "ملاحظة \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:264 lib/layouts/theorems.inc:264
 msgid "Claim \\thetheorem."
-msgstr "متطلب \\النظرية."
+msgstr "متطلب \\thetheorem."
 
 #: lib/layouts/theorems-case.inc:12
 msgid "Case \\arabic{casei}."
@@ -12916,14 +12906,13 @@ msgid "Label of the corresponding problem"
 msgstr ""
 
 #: lib/layouts/theorems-without-preamble.inc:365
-#, fuzzy
 msgid "Property \\theproperty."
-msgstr "جزء //الجزء"
+msgstr "جزء \\theproperty."
 
 #: lib/layouts/theorems-without-preamble.inc:399
 #: lib/layouts/theorems-ams-extended-bytype.module:202
 msgid "Note \\thenote."
-msgstr "ملحوظة//الملحوظة."
+msgstr "ملحوظة \\thenote."
 
 #: lib/layouts/algorithm2e.module:2
 #, fuzzy
@@ -13553,9 +13542,8 @@ msgid "Rest of initial word or text"
 msgstr "مسح الكلمة أو النص الداخلي"
 
 #: lib/layouts/jurabib.module:2
-#, fuzzy
 msgid "Jurabib"
-msgstr "عربي"
+msgstr "Jurabib"
 
 #: lib/layouts/jurabib.module:51
 msgid "bibliography entry"
@@ -14390,7 +14378,7 @@ msgstr "معيار."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:97
 msgid "Algorithm \\thealgorithm."
-msgstr "خواريزم  \\الخواريزم."
+msgstr "خوارزم \\thealgorithm."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:115
 #: lib/layouts/theorems-ams-extended.module:91
@@ -14399,7 +14387,7 @@ msgstr "الخوارزم."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:132
 msgid "Axiom \\theaxiom."
-msgstr "مسلمة\\المسلمة."
+msgstr "مسلمة \\theaxiom."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:147
 #: lib/layouts/theorems-ams-extended.module:123
@@ -14413,7 +14401,7 @@ msgstr " مُسَلَّمة."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:167
 msgid "Condition \\thecondition."
-msgstr "شرط//الشرط."
+msgstr "شرط \\thecondition."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:182
 #: lib/layouts/theorems-ams-extended.module:157
@@ -14465,7 +14453,7 @@ msgstr "موجز."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:307
 msgid "Acknowledgement \\theacknowledgement."
-msgstr "اعتراف بالجميل \\الاعتراف بالجميل."
+msgstr "اعتراف بالجميل \\theacknowledgement."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:322
 #: lib/layouts/theorems-ams-extended.module:293
@@ -14474,7 +14462,7 @@ msgstr "اعتراف بالجميل*"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:342
 msgid "Conclusion \\theconclusion."
-msgstr "استنتاج//الاستنتاج"
+msgstr "استنتاج \\theconclusion."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:357
 #: lib/layouts/theorems-ams-extended.module:327
@@ -14501,7 +14489,7 @@ msgstr "فرضية"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:377
 msgid "Assumption \\theassumption."
-msgstr "فرضية//الفرضية"
+msgstr "فرضية \\theassumption."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:392
 #: lib/layouts/theorems-ams-extended.module:362
@@ -14537,23 +14525,23 @@ msgstr "النظريات"
 
 #: lib/layouts/theorems-ams-extended.module:40
 msgid "Criterion \\thetheorem."
-msgstr "معيار \\النظرية."
+msgstr "معيار \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:74
 msgid "Algorithm \\thetheorem."
-msgstr "الخواريزم \\النظرية."
+msgstr "الخوارزم \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:109
 msgid "Axiom \\thetheorem."
-msgstr "مسلمة \\النظرية."
+msgstr "مسلمة \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:143
 msgid "Condition \\thetheorem."
-msgstr "شر ط \\النظرية."
+msgstr "شر ط \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:177
 msgid "Note \\thetheorem."
-msgstr "ملاحظة \\النظرية."
+msgstr "ملاحظة \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:211
 msgid "Notation \\thetheorem."
@@ -14577,7 +14565,7 @@ msgstr ""
 
 #: lib/layouts/theorems-ams-extended.module:382
 msgid "Question \\thetheorem."
-msgstr "سؤال \\نظرية."
+msgstr "سؤال \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:395
 msgid "Question*"
@@ -15823,7 +15811,7 @@ msgstr "إطار بسيط|F"
 
 #: lib/ui/stdcontext.inc:173
 msgid "Simple Frame, Page Breaks|P"
-msgstr ""
+msgstr "إطار بسيط, فاصل صفحة|P"
 
 #: lib/ui/stdcontext.inc:174 lib/ui/stdmenus.inc:480
 msgid "Oval, Thin|a"
@@ -16345,7 +16333,7 @@ msgstr "معلومات المستند|D"
 
 #: lib/ui/stdcontext.inc:462
 msgid "Copy Text|o"
-msgstr "نسخ|o"
+msgstr "نسخ النص|o"
 
 #: lib/ui/stdcontext.inc:471 lib/ui/stdcontext.inc:494
 msgid "Activate Branch|A"
@@ -17391,7 +17379,7 @@ msgstr "Sweave|S"
 
 #: lib/ui/stdmenus.inc:612
 msgid "XY-pic|X"
-msgstr "رسوم-pic|X"
+msgstr "XY-pic|X"
 
 #: lib/ui/stdtoolbars.inc:71
 msgid "New document"
@@ -18181,7 +18169,7 @@ msgstr "مسافة سالبة\t\\!"
 
 #: lib/ui/stdtoolbars.inc:352
 msgid "Phantom\t\\phantom"
-msgstr "طيف\t\\طيف"
+msgstr "طيف \\phantom"
 
 #: lib/ui/stdtoolbars.inc:353
 #, fuzzy
