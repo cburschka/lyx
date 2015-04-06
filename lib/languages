@@ -469,6 +469,16 @@ Language galician
 	EndPostBabelPreamble
 End
 
+Language georgian
+	GuiName          "Georgian"
+	BabelName        georgian
+	QuoteStyle       german
+	Encoding         utf8
+	InternalEncoding true
+	FontEncoding     "T8M,T8K"
+	LangCode         ka_GE
+End
+
 # german does not use a country code (due to the variety)
 Language german
 	GuiName          "German (old spelling)"

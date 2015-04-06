@@ -686,7 +686,24 @@ def revert_specialchar(document):
     "convert special characters to old syntax"
     convert_specialchar_internal(document, False)
 
+def revert_georgian(document):
+    "Set the document language for new supported languages to English" 
 
+    if document.language == "georgian":
+        document.language = "english"
+        i = find_token(document.header, "\\language georgian", 0)
+        if i != -1:
+    	    document.header[i] = "\\language english"
+        j = find_token(document.header, "\\language_package default", 0)
+        if j != -1:
+    	    document.header[j] = "\\language_package babel"
+        k = find_token(document.header, "\\options", 0)
+        if k != -1:
+    	    document.header[k] = document.header[k].replace("\\options", "\\options georgian,")
+        else:
+    	    l = find_token(document.header, "\\use_default_options", 0)
+    	    document.header.insert(l + 1, "\\options georgian")
+    	    
 
 ##
 # Conversion hub
@@ -705,10 +722,12 @@ convert = [
            [480, []],
            [481, [convert_dashes]],
            [482, [convert_phrases]],
-           [483, [convert_specialchar]]
+           [483, [convert_specialchar]],
+           [484, []]
           ]
 
 revert =  [
+	       [483, [revert_georgian]],
            [482, [revert_specialchar]],
            [481, [revert_phrases]],
            [480, [revert_dashes]],
