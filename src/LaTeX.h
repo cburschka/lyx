@@ -140,10 +140,7 @@ public:
 		///
 		NONZERO_ERROR = 32768, // the command exited with nonzero status
 		///
-		//FIXME: BIBTEX_ERROR has been removed from ERRORS for now, since users were irritated
-		//       about those errors which prevented compilation of previously compiling documents.
-		//       Think about a "gentle" transfer to BibTeX error reporting.
-		ERRORS = TEX_ERROR + LATEX_ERROR + NONZERO_ERROR,
+		ERRORS = TEX_ERROR + LATEX_ERROR + NONZERO_ERROR + BIBTEX_ERROR,
 		///
 		WARNINGS = TEX_WARNING + LATEX_WARNING + PACKAGE_WARNING
 	};

@@ -47,7 +47,6 @@ The following metadata files have been added to the tarball in 2.2:
 Changes with respect to external programs and libraries in 2.2:
 --------------------------------------------------------
 
-
 - LyX is not yet supposed to work with Qt5. It is advised to compile and 
   run LyX against Qt 4.8.x. On Windows, Qt 4.8.5 suffers from a bug that 
   breaks the use of shortcuts, so on Windows Qt 4.8.4 is advised.
@@ -67,3 +66,8 @@ Known issues in version 2.2.0
 Caveats when upgrading from earlier versions to 2.2.x
 -------------------------------------------------------
 
+- BibTeX errors are now processed and cause LyX to show the errors dialog.
+  Before, these errors were ignored, which means that it may happen that
+  documents that compiled without error with a previous version now
+  compile with error. However, because now in 2.2.x users can click on
+  the "Show Output Anyway" button, the document can still be viewed.
