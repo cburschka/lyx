@@ -18,6 +18,9 @@
 
 #include <QApplication>
 #include <QList>
+#ifdef QPA_XCB
+#include <QAbstractNativeEventFilter>
+#endif
 
 class QAbstractItemModel;
 class QIcon;
@@ -47,6 +50,9 @@ There should be only one instance of this class. No Qt object
 initialisation should be done before the instantiation of this class.
 */
 class GuiApplication : public QApplication, public Application
+#ifdef QPA_XCB
+		     , public QAbstractNativeEventFilter
+#endif
 {
 	Q_OBJECT
 
@@ -99,9 +105,10 @@ public:
 	//@{
 	bool notify(QObject * receiver, QEvent * event);
 	void commitData(QSessionManager & sm);
-	// FIXME QT5
 #ifdef Q_WS_X11
 	bool x11EventFilter(XEvent * ev);
+#elif defined(QPA_XCB)
+	virtual bool nativeEventFilter(const QByteArray & eventType, void * message, long * result);
 #endif
 	//@}
 

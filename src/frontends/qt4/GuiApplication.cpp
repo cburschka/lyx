@@ -115,11 +115,15 @@
 #include <QThreadPool>
 #include <QWidget>
 
-// FIXME QT5
 #ifdef Q_WS_X11
 #include <X11/Xatom.h>
 #include <X11/Xlib.h>
 #undef CursorShape
+#undef None
+#elif defined(QPA_XCB)
+#include <xcb/xcb.h>
+#include <X11/Xatom.h>
+#include <X11/Intrinsic.h>
 #undef None
 #endif
 
@@ -997,6 +1001,11 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 
 	// Install translator for GUI elements.
 	installTranslator(&d->qt_trans_);
+
+#ifdef QPA_XCB
+	// Enable reception of XCB events.
+	installNativeEventFilter(this);
+#endif
 
 	// FIXME: quitOnLastWindowClosed is true by default. We should have a
 	// lyxrc setting for this in order to let the application stay resident.
@@ -2986,7 +2995,6 @@ bool GuiApplication::longOperationStarted() {
 //
 // X11 specific stuff goes here...
 
-// FIXME QT5
 #ifdef Q_WS_X11
 bool GuiApplication::x11EventFilter(XEvent * xev)
 {
@@ -3008,6 +3016,44 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 	}
 	case SelectionClear: {
 		if (xev->xselectionclear.selection != XA_PRIMARY)
+			break;
+		LYXERR(Debug::SELECTION, "Lost selection.");
+		BufferView * bv = current_view_->currentBufferView();
+		if (bv)
+			bv->clearSelection();
+		break;
+	}
+	}
+	return false;
+}
+#elif defined(QPA_XCB)
+bool GuiApplication::nativeEventFilter(const QByteArray & eventType,
+				       void * message, long *) Q_DECL_OVERRIDE
+{
+	if (!current_view_ || eventType != "xcb_generic_event_t")
+		return false;
+
+	xcb_generic_event_t * ev = static_cast<xcb_generic_event_t *>(message);
+
+	switch (ev->response_type) {
+	case XCB_SELECTION_REQUEST: {
+		xcb_selection_request_event_t * srev =
+			reinterpret_cast<xcb_selection_request_event_t *>(ev);
+		if (srev->selection != XA_PRIMARY)
+			break;
+		LYXERR(Debug::SELECTION, "X requested selection.");
+		BufferView * bv = current_view_->currentBufferView();
+		if (bv) {
+			docstring const sel = bv->requestSelection();
+			if (!sel.empty())
+				d->selection_.put(sel);
+		}
+		break;
+	}
+	case XCB_SELECTION_CLEAR: {
+		xcb_selection_clear_event_t * scev =
+			reinterpret_cast<xcb_selection_clear_event_t *>(ev);
+		if (scev->selection != XA_PRIMARY)
 			break;
 		LYXERR(Debug::SELECTION, "Lost selection.");
 		BufferView * bv = current_view_->currentBufferView();
