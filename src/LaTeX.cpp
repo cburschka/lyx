@@ -240,13 +240,6 @@ int LaTeX::run(TeXErrors & terr)
 		scanres = scanLogFile(terr);
 	}
 
-	if (scanres & ERRORS) {
-		// We no longer run deleteFilesOnError() here
-		// because we now show a resulting PDF even if
-		// there was an error.
-		return scanres; // return on error
-	}
-
 	vector<AuxInfo> const bibtex_info = scanAuxFiles(aux_file);
 	if (!run_bibtex && bibtex_info_old != bibtex_info)
 		run_bibtex = true;
@@ -335,8 +328,6 @@ int LaTeX::run(TeXErrors & terr)
 		message(runMessage(count));
 		startscript();
 		scanres = scanLogFile(terr);
-		if (scanres & ERRORS)
-			return scanres; // return on error
 
 		// update the depedencies
 		deplog(head); // reads the latex log
@@ -407,8 +398,6 @@ int LaTeX::run(TeXErrors & terr)
 		message(runMessage(count));
 		startscript();
 		scanres = scanLogFile(terr);
-		if (scanres & ERRORS)
-			return scanres; // return on error
 
 		// keep this updated
 		head.update();

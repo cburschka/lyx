@@ -653,8 +653,12 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 	if (result & LaTeX::ERRORS)
 		buffer.bufferErrors(terr, errorList);
 
-	// check return value from latex.run().
-	if (result & LaTeX::NO_LOGFILE) {
+	if (!errorList.empty()) {
+	  // We will show the LaTeX Errors GUI later which contains
+	  // specific error messages so it would be repetitive to give
+	  // e.g. the "finished with an error" dialog in addition.
+	}
+	else if (result & LaTeX::NO_LOGFILE) {
 		docstring const str =
 			bformat(_("LaTeX did not run successfully. "
 					       "Additionally, LyX could not locate "
@@ -666,7 +670,6 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 			      "finished with an error. "
 			      "It is recommended you fix the cause of the external "
 			      "program's error (check the logs). "), from_utf8(command));
-		// FIXME: In LyX 2.3.0 the warning will be converted to an error.
 		Alert::error(_("LaTeX failed"), str);
 	} else if (result & LaTeX::NO_OUTPUT) {
 		Alert::warning(_("Output is empty"),
