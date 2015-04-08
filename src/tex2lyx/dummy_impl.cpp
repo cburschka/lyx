@@ -125,15 +125,16 @@ string alignmentToCSS(LyXAlignment)
 // Dummy FontMetrics (needed by Length)
 //
 
-
+namespace frontend {
 class FontMetrics {
 	int em() const { return 0; };
 };
+}
 
 class FontInfo;
 
-FontMetrics const & theFontMetrics(FontInfo const &) {
-	static FontMetrics dummy;
+frontend::FontMetrics const & theFontMetrics(FontInfo const &) {
+	static frontend::FontMetrics dummy;
 	return dummy;
 }
 
