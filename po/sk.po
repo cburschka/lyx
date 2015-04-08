@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-03-23 00:06+0100\n"
-"PO-Revision-Date: 2015-03-23 17:57+0000\n"
+"POT-Creation-Date: 2015-04-08 21:42+0200\n"
+"PO-Revision-Date: 2015-04-08 19:45+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -1151,6 +1151,10 @@ msgstr "Otvor dialóg pre LaTeX-protokol"
 #: src/frontends/qt4/ui/ErrorListUi.ui:86
 msgid "View Complete &Log..."
 msgstr "Prehliadnuť Kompletný Protoko&l..."
+
+#: src/frontends/qt4/ui/ErrorListUi.ui:97
+msgid "Show Output &Anyway"
+msgstr "Aj tak Výstup &Ukázať"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:35
 msgid "F&ile"
@@ -11630,6 +11634,14 @@ msgstr "PredtlačPäty"
 #: lib/layouts/sigplanconf.layout:119
 msgid "Preprint footer:"
 msgstr "Predtlač päta:"
+
+#: lib/layouts/sigplanconf.layout:123
+msgid "DOI"
+msgstr "DOI"
+
+#: lib/layouts/sigplanconf.layout:126
+msgid "Digital Object Identifier:"
+msgstr "Identifikátor Digitálnych Objektov:"
 
 #: lib/layouts/sigplanconf.layout:160
 msgid "Affiliation and/or address of the author"
@@ -23076,6 +23088,10 @@ msgstr "Prepísať súbor?"
 msgid "Error running external commands."
 msgstr "Chyba pri spúšťaní externých príkazov."
 
+#: src/Buffer.cpp:2775
+msgid "Error viewing the output file."
+msgstr "Chyba pri ukážke výstupného súboru."
+
 #: src/Buffer.cpp:3562
 #, c-format
 msgid "Preview source code for paragraph %1$d"
@@ -24650,11 +24666,6 @@ msgstr ""
 #: src/LyX.cpp:1093 src/frontends/qt4/GuiAbout.cpp:147
 msgid "  Git commit hash "
 msgstr "Zapísaná git transformácia "
-
-#: src/LyX.cpp:1095 src/frontends/qt4/GuiAbout.cpp:149
-#, c-format
-msgid "Built on %1$s[[date]], %2$s[[time]]"
-msgstr "Zostavené %1$s, %2$s"
 
 #: src/LyX.cpp:1106 src/support/Package.cpp:628
 msgid "No system directory"
@@ -30647,6 +30658,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Built on %1$s[[date]], %2$s[[time]]"
+#~ msgstr "Zostavené %1$s, %2$s"
 
 #~ msgid "Allow TeXMacs shorthand, like => converting to Rightarrow."
 #~ msgstr "Umožni TeXMacs skratky, ako napr. => konverzia na Rightarrow."
