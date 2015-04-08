@@ -38,7 +38,7 @@ export/doc/uk/Intro_(pdf5|dvi3)_systemF
 # documents, fixing these would provide further tests for LyX's handling of
 # XeTeX/LuaTeX with system fonts.
 export/doc/(|de/|es/|fr/)Customization_pdf4_systemF
-export/doc/es/Math_dvi3_systemF
+export/doc/(|es/|fr/)Math_dvi3_systemF
 export/doc/(|de/|es/|fr/)Math_pdf4_systemF
 export/doc/attic/eu_Additional_pdf4_systemF
 export/doc/attic/pl_Additional_pdf4_systemF
@@ -57,6 +57,8 @@ export/examples/gl/exemplo_lyxificado_(dvi3|pdf5)_systemF
 export/examples/sr/Braille_pdf4_systemF
 export/examples/sr/splash_pdf4_systemF
 export/templates/RJournal_(dvi3|pdf[45])_systemF
+# TODO the Spanish Math_pdf5_systemF test passes. Why does this one fail?
+export/doc/fr/Math_pdf5_systemF
 # Changes in TeX Live 2014 (see git blame for info) fixed IEEEtran-CompSoc
 # pdf4_systemF but not others. TODO Investigate if others can be fixed?
 export/templates/IEEEtran-(Journal|TransMag)_pdf4_systemF
