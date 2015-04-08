@@ -1924,8 +1924,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_BUFFER_NEXT:
 	case LFUN_BUFFER_PREVIOUS:
 		// because we cycle, it doesn't matter whether on first or last
-		if (d.currentTabWorkArea()->count() <= 1)
-			enable = false;
+		enable = (d.currentTabWorkArea()->count() > 1);
 		break;
 	case LFUN_BUFFER_SWITCH:
 		// toggle on the current buffer, but do not toggle off
