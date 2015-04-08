@@ -120,6 +120,13 @@ Style PreprintFooter
 End
 
 
+Style DOI
+	CopyStyle	CopyrightYear
+	LatexName	doi
+	LabelString	"Digital Object Identifier:"
+End
+
+
 Input stdtitle.inc
 Input stdstruct.inc
 
