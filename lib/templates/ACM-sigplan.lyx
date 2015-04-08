@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 484
 \begin_document
 \begin_header
 \textclass sigplanconf
@@ -76,10 +76,12 @@
 status open
 
 \begin_layout Plain Layout
-This is a template LyX file for articles to be submitted to the Special
- Interest Group on Programming Languages  (SIGPLAN).
- How to install the SIGPLAN LaTeX class to your LaTeX system is explained
- in 
+This is a template \SpecialChar LyX
+ file for articles to be submitted to the Special Interest
+ Group on Programming Languages  (SIGPLAN).
+ How to install the SIGPLAN \SpecialChar LaTeX
+ class to your \SpecialChar LaTeX
+ system is explained in 
 \begin_inset Flex URL
 status open
 
@@ -108,7 +110,7 @@ PLDI ’05
 
 \end_inset
 
-June 12--15, 2005, Chicago, Illinois, USA.
+June 12–15, 2005, Chicago, Illinois, USA.
 \end_layout
 
 \begin_layout CopyrightYear
@@ -370,11 +372,12 @@ Appendix, only when needed, can also be started behind the bibliography.
 \end_layout
 
 \begin_layout Section*
------------------
+—————–
 \end_layout
 
 \begin_layout Standard
-You can use either BibTeX:
+You can use either Bib\SpecialChar TeX
+:
 \begin_inset Note Note
 status open
 
@@ -411,7 +414,7 @@ options "bibtotoc,plainnat"
 \end_layout
 
 \begin_layout Section*
----------------------
+———————
 \end_layout
 
 \begin_layout Standard
@@ -529,7 +532,7 @@ newblock
 \emph on
 Symposium on Logic in Computer Science (LICS ’01)
 \emph default
-, pages 247--258.
+, pages 247–258.
  IEEE, 2001.
 \end_layout
 
