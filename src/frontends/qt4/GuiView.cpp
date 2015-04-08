@@ -1922,7 +1922,6 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_BUFFER_NEXT:
-	case LFUN_BUFFER_NEXT:
 	case LFUN_BUFFER_PREVIOUS:
 		// because we cycle, it doesn't matter whether on first or last
 		if (d.currentTabWorkArea()->count() <= 1)
