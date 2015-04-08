@@ -3290,12 +3290,26 @@ void LyXAction::init()
  */
 		{ LFUN_BUFFER_NEXT, "buffer-next", ReadOnly, Buffer },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_MOVE_NEXT
+ * \li Action: Moves the current tab one spot to the right.
+ * \li Syntax: buffer-move-next
+ * \endvar
+ */
+		{ LFUN_BUFFER_MOVE_NEXT, "buffer-move-next", ReadOnly, Buffer },
+/*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_PREVIOUS
  * \li Action: Switch to the previous opened document.
  * \li Syntax: buffer-previous
  * \endvar
  */
 		{ LFUN_BUFFER_PREVIOUS, "buffer-previous", ReadOnly, Buffer },
+/*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_MOVE_PREVIOUS
+ * \li Action: Moves the current tab one spot to the left.
+ * \li Syntax: buffer-move-previous
+ * \endvar
+ */
+		{ LFUN_BUFFER_MOVE_PREVIOUS, "buffer-move-previous", ReadOnly, Buffer },
 /*!
  * \var lyx::FuncCode lyx::LFUN_MASTER_BUFFER_UPDATE
  * \li Action: Update (export) the document built from the master buffer,

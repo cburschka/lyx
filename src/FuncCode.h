@@ -460,6 +460,9 @@ enum FuncCode
 	LFUN_SEPARATOR_INSERT,          // ef 20140502
 	LFUN_SERVER_GET_STATISTICS,     // brokenclock 20141010
 	LFUN_BUFFER_VIEW_CACHE,         // skostysh 20150401
+	LFUN_BUFFER_MOVE_NEXT,          // skostysh 20150408
+	// 340
+	LFUN_BUFFER_MOVE_PREVIOUS,      // skostysh 20150408
 	LFUN_LASTACTION                 // end of the table
 };
 

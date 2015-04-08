@@ -421,7 +421,7 @@ private:
 		PREVBUFFER
 	};
 	///
-	void gotoNextOrPreviousBuffer(NextOrPrevious np);
+	void gotoNextOrPreviousBuffer(NextOrPrevious np, bool const move);
 
 	/// Is the dialog currently visible?
 	bool isDialogVisible(std::string const & name) const;

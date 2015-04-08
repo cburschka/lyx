@@ -1921,6 +1921,9 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		enable = doc_buffer;
 		break;
 
+	case LFUN_BUFFER_MOVE_NEXT:
+	case LFUN_BUFFER_MOVE_PREVIOUS:
+		// we do not cycle when moving
 	case LFUN_BUFFER_NEXT:
 	case LFUN_BUFFER_PREVIOUS:
 		// because we cycle, it doesn't matter whether on first or last
@@ -2917,7 +2920,7 @@ bool GuiView::inOtherView(Buffer & buf)
 }
 
 
-void GuiView::gotoNextOrPreviousBuffer(NextOrPrevious np)
+void GuiView::gotoNextOrPreviousBuffer(NextOrPrevious np, bool const move)
 {
 	if (!documentBufferView())
 		return;
@@ -2932,7 +2935,10 @@ void GuiView::gotoNextOrPreviousBuffer(NextOrPrevious np)
 					next_index = (i == nwa - 1 ? 0 : i + 1);
 				else
 					next_index = (i == 0 ? nwa - 1 : i - 1);
-				setBuffer(&workArea(next_index)->bufferView().buffer());
+				if (move)
+					twa->moveTab(i, next_index);
+				else
+					setBuffer(&workArea(next_index)->bufferView().buffer());
 				break;
 			}
 		}
@@ -3546,11 +3552,19 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 
 		case LFUN_BUFFER_NEXT:
-			gotoNextOrPreviousBuffer(NEXTBUFFER);
+			gotoNextOrPreviousBuffer(NEXTBUFFER, false);
+			break;
+
+		case LFUN_BUFFER_MOVE_NEXT:
+			gotoNextOrPreviousBuffer(NEXTBUFFER, true);
 			break;
 
 		case LFUN_BUFFER_PREVIOUS:
-			gotoNextOrPreviousBuffer(PREVBUFFER);
+			gotoNextOrPreviousBuffer(PREVBUFFER, false);
+			break;
+
+		case LFUN_BUFFER_MOVE_PREVIOUS:
+			gotoNextOrPreviousBuffer(PREVBUFFER, true);
 			break;
 
 		case LFUN_COMMAND_EXECUTE: {

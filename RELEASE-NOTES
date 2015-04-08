@@ -29,6 +29,12 @@ The following new LyX functions have been introduced in 2.2:
 - buffer-view-cache
   Opens the last previewed output of the buffer, if it exists.
 
+- buffer-move-next
+  Moves the current tab one spot to the right.
+
+- buffer-move-previous
+  Moves the current tab one spot to the left.
+
 
 The following LyX functions have been changed in 2.2:
 
@@ -36,6 +42,9 @@ The following LyX functions have been changed in 2.2:
 
 The following LyX key bindings have been changed in 2.2:
 
+- For bindings where Control + {PgDn, PgUp} switches to the
+  {next, previous} tab, Control + Shift + {PgDn, PgUp} moves the current
+  tab to the {next, previous} tab.
 
 
 The following LyX documents have been moved in 2.2:

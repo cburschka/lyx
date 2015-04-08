@@ -218,6 +218,8 @@ public Q_SLOTS:
 	/// close the tab given by \c index
 	void closeTab(int index);
 	///
+	void moveTab(int fromIndex, int toIndex);
+	///
 	void updateTabTexts();
 	
 private Q_SLOTS:
@@ -225,8 +227,6 @@ private Q_SLOTS:
 	void on_currentTabChanged(int index);
 	///
 	void showContextMenu(const QPoint & pos);
-	///
-	void moveTab(int fromIndex, int toIndex);
 	///
 	void mouseDoubleClickEvent(QMouseEvent * event);
 
