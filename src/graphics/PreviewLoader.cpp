@@ -218,7 +218,7 @@ private:
 	/// Called by the ForkedCall process that generated the bitmap files.
 	void finishedGenerating(pid_t, int);
 	///
-	void dumpPreamble(otexstream &) const;
+	void dumpPreamble(otexstream &, OutputParams::FLAVOR) const;
 	///
 	void dumpData(odocstream &, BitmapFile const &) const;
 
@@ -568,9 +568,44 @@ void PreviewLoader::Impl::startLoading(bool wait)
 		return;
 	}
 	of << "\\batchmode\n";
-	dumpPreamble(os);
+
+	LYXERR(Debug::LATEX, "Format = " << buffer_.params().getDefaultOutputFormat());
+	string latexparam = "";
+	OutputParams::FLAVOR flavor = buffer_.params().getOutputFlavor();
+	if (buffer_.params().encoding().package() == Encoding::japanese) {
+		latexparam = " --latex=platex";
+		flavor = OutputParams::LATEX;
+	}
+	else if (buffer_.params().useNonTeXFonts) {
+		if (flavor == OutputParams::LUATEX)
+			latexparam = " --latex=lualatex";
+		else {
+			flavor = OutputParams::XETEX;
+			latexparam = " --latex=xelatex";
+		}
+	}
+	else {
+		switch (flavor) {
+			case OutputParams::PDFLATEX:
+				latexparam = " --latex=pdflatex";
+				break;
+			case OutputParams::XETEX:
+				latexparam = " --latex=xelatex";
+				break;
+			case OutputParams::LUATEX:
+				latexparam = " --latex=lualatex";
+				break;
+			case OutputParams::DVILUATEX:
+				latexparam = " --latex=dvilualatex";
+				break;
+			default:
+				flavor = OutputParams::LATEX;
+		}
+	}
+	dumpPreamble(os, flavor);
 	// handle inputenc etc.
-	buffer_.params().writeEncodingPreamble(os, features);
+	// I think, this is already hadled by dumpPreamble(): Kornel
+	// buffer_.params().writeEncodingPreamble(os, features);
 	of << "\n\\begin{document}\n";
 	dumpData(of, inprogress.snippets);
 	of << "\n\\end{document}\n";
@@ -582,7 +617,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	}
 
 	double const font_scaling_factor = buffer_.fontScalingFactor();
-	
+
 	// The conversion command.
 	ostringstream cs;
 	cs << pconverter_->command()
@@ -598,11 +633,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 		   << " --bg " << theApp()->hexName(bg);
 	}
 
-	// FIXME what about LuaTeX?
-	if (buffer_.params().useNonTeXFonts)
-		cs << " --latex=xelatex";
-	if (buffer_.params().encoding().package() == Encoding::japanese)
-		cs << " --latex=platex";
+	cs << latexparam;
 	if (buffer_.params().bibtex_command != "default")
 		cs << " --bibtex=" << quoteName(buffer_.params().bibtex_command);
 	else if (buffer_.params().encoding().package() == Encoding::japanese)
@@ -712,14 +743,12 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 }
 
 
-void PreviewLoader::Impl::dumpPreamble(otexstream & os) const
+void PreviewLoader::Impl::dumpPreamble(otexstream & os, OutputParams::FLAVOR flavor) const
 {
 	// Dump the preamble only.
+	LYXERR(Debug::LATEX, "dumpPreamble, flavor == " << flavor);
 	OutputParams runparams(&buffer_.params().encoding());
-	if (buffer_.params().useNonTeXFonts)
-		runparams.flavor = OutputParams::XETEX;
-	else
-		runparams.flavor = OutputParams::LATEX;
+	runparams.flavor = flavor;
 	runparams.nice = true;
 	runparams.moving_arg = true;
 	runparams.free_spacing = true;
