@@ -29,9 +29,9 @@ import sys, os
 #  find_token_exact, find_end_of_inset, find_end_of_layout, \
 #  find_token_backwards, is_in_inset, get_value, get_quoted_value, \
 #  del_token, check_token, get_option_value
-  
-from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert#, \
-#  insert_to_preamble, lyx2latex, latex_length, revert_flex_inset, \
+
+from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, lyx2latex#, \
+#  insert_to_preamble, latex_length, revert_flex_inset, \
 #  revert_font_attrs, hex2ratio, str2bool
 
 from parser_tools import find_token, find_token_backwards, find_re, \
@@ -703,7 +703,30 @@ def revert_georgian(document):
         else:
     	    l = find_token(document.header, "\\use_default_options", 0)
     	    document.header.insert(l + 1, "\\options georgian")
-    	    
+
+
+def revert_sigplan_doi(document):
+    " Reverts sigplanconf DOI layout to ERT "
+
+    if document.textclass != "sigplanconf":
+        return
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_layout DOI", i)
+        if i == -1:
+            return
+        j = find_end_of_layout(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of DOI layout")
+            i += 1
+            continue
+
+        content = lyx2latex(document, document.body[i:j + 1])
+        add_to_preamble(document, ["\\doi{" + content + "}"])
+        del document.body[i:j + 1]
+        # no need to reset i
+
 
 ##
 # Conversion hub
@@ -723,10 +746,12 @@ convert = [
            [481, [convert_dashes]],
            [482, [convert_phrases]],
            [483, [convert_specialchar]],
-           [484, []]
+           [484, []],
+           [485, []]
           ]
 
 revert =  [
+           [484, [revert_sigplan_doi]],
            [483, [revert_georgian]],
            [482, [revert_specialchar]],
            [481, [revert_phrases]],
