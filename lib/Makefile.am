@@ -631,6 +631,7 @@ dist_imagesmath_DATA = \
 	images/math/blacktriangledown.png \
 	images/math/blacktriangleleft.png \
 	images/math/blacktriangleright.png \
+	images/math/boldsymbol.png \
 	images/math/bot.png \
 	images/math/bowtie.png \
 	images/math/bowtie2.png \
@@ -966,12 +967,15 @@ dist_imagesmath_DATA = \
 	images/math/mapstochar.png \
 	images/math/mapstochar2.png \
 	images/math/mars.png \
+	images/math/mathbb.png \
 	images/math/mathbb_C.png \
 	images/math/mathbb_H.png \
 	images/math/mathbb_N.png \
 	images/math/mathbb_Q.png \
 	images/math/mathbb_R.png \
 	images/math/mathbb_Z.png \
+	images/math/mathbf.png \
+	images/math/mathcal.png \
 	images/math/mathcal_F.png \
 	images/math/mathcal_H.png \
 	images/math/mathcal_L.png \
@@ -979,12 +983,18 @@ dist_imagesmath_DATA = \
 	images/math/mathcircumflex.png \
 	images/math/mathclap.png \
 	images/math/mathdollar.png \
+	images/math/mathfrak.png \
+	images/math/mathit.png \
 	images/math/mathllap.png \
 	images/math/mathparagraph.png \
+	images/math/mathscr.png \
 	images/math/mathsection.png \
 	images/math/mathring.png \
 	images/math/mathrlap.png \
+	images/math/mathrm.png \
 	images/math/mathrm_T.png \
+	images/math/mathsf.png \
+	images/math/mathtt.png \
 	images/math/matrix.png \
 	images/math/measuredangle.png \
 	images/math/mercury.png \
@@ -1250,6 +1260,7 @@ dist_imagesmath_DATA = \
 	images/math/theta.png \
 	images/math/theta2.png \
 	images/math/textdegree.png \
+	images/math/textrm.png \
 	images/math/thickapprox.png \
 	images/math/thicksim.png \
 	images/math/thorn.png \
