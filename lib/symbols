@@ -674,7 +674,7 @@ currency           wasy          27  0 textmode &curren; wasysym # works in text
 phone              wasy          7   0 textmode &phone;  wasysym # works in text mode only (produces \Upsilon in math mode)
 recorder           wasy          6   0 textmode &telrec; wasysym # works in text mode only (produces \Sigma in math mode)
 clock              wasy          28  0 textmode &clock;  wasysym # works in text mode only (produces \o in math mode)
-lightning          wasy          18  0 x        &#x2607;
+lightning          wasy          18  0 textmode &#x2607; wasysym # works in text mode only (produces ` in math mode)
 # FIXME Display is wrong (bug 8493): qt does not display characters at the \t position (0x09)
 pointer            wasy          9   0 textmode x        wasysym # works in text mode only (produces \Psi in math mode)
 RIGHTarrow         wasy          17  0 textmode &#x25B6; wasysym # works in text mode only (produces \jmath in math mode)
