@@ -103,6 +103,9 @@ What's new
 - Use local babel language switch in fixed width cells in order to prevent
   unwanted whitespace (bug 9455).
 
+- Mark the \lightning symbol as textmode such that it can be inserted in
+  a text mode environment without being enclosed in \ensuremath by LyX.
+
 
 * LYX2LYX
 
