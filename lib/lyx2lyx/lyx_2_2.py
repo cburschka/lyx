@@ -336,7 +336,7 @@ def revert_xarrow(document):
 
 def revert_beamer_lemma(document):
     " Reverts beamer lemma layout to ERT "
-    
+
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
@@ -557,7 +557,7 @@ def revert_dashes(document):
         else:
             i += 1
 
-  
+
 # order is important for the last three!
 phrases = ["LyX", "LaTeX2e", "LaTeX", "TeX"]
 
@@ -605,7 +605,7 @@ def convert_phrases(document):
                 back = document.body[i][j+len(phrase):]
                 if len(back) > 0:
                     document.body.insert(i+1, back)
-                # We cannot use SpecialChar since we do not know whether we are outside passThru 
+                # We cannot use SpecialChar since we do not know whether we are outside passThru
                 document.body[i] = front + "\\SpecialCharNoPassThru \\" + phrase
             i += 1
 
@@ -686,8 +686,9 @@ def revert_specialchar(document):
     "convert special characters to old syntax"
     convert_specialchar_internal(document, False)
 
+
 def revert_georgian(document):
-    "Set the document language for new supported languages to English" 
+    "Set the document language for new supported languages to English"
 
     if document.language == "georgian":
         document.language = "english"
