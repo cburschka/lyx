@@ -47,6 +47,7 @@
 #include "TextMetrics.h"
 #include "WordLangTuple.h"
 
+#include "frontends/alert.h"
 #include "frontends/Application.h"
 #include "frontends/Clipboard.h"
 #include "frontends/Selection.h"
@@ -2285,6 +2286,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				arg = cur.selectionAsString(false);
 				arg += " lang=" + from_ascii(cur.getFont().language()->lang());
 			}
+		}
+		if (lyxrc.thesaurusdir_path.empty()) {
+			frontend::Alert::warning(_("Path to thesaurus directory not set!"),
+					_("The path to the thesaurus directory has not been specified.\n"
+					  "The thesaurus is not functional.\n"
+					  "Please refer to sec. 6.15.1 of the User's Guide for setup\n"
+					  "instructions."));
 		}
 		bv->showDialog("thesaurus", to_utf8(arg));
 		break;
