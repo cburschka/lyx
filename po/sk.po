@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-04-08 21:42+0200\n"
-"PO-Revision-Date: 2015-04-08 19:45+0000\n"
+"POT-Creation-Date: 2015-04-12 16:32+0200\n"
+"PO-Revision-Date: 2015-04-12 14:41+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -3830,7 +3830,7 @@ msgstr "Prechádzať..."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:85
 msgid "T&hesaurus dictionaries:"
-msgstr "Knižnice &tezauru:"
+msgstr "Slovníky &tezauru:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:111
 msgid "&Temporary directory:"
@@ -5144,8 +5144,8 @@ msgid "Show the source as the master document gets it"
 msgstr "Ukazovať zdroj tak, ako ho hlavný dokument dostane"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:130
-msgid "&Master's perspective"
-msgstr "Perspektíva &hlavného dokumentu"
+msgid "Master's perspective"
+msgstr "Perspektíva hlavného dokumentu"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:137
 msgid "Automatic update"
@@ -11978,7 +11978,7 @@ msgstr "e-mail:"
 
 #: lib/layouts/aapaper.inc:114
 msgid "Thesaurus not supported in recent A&A:"
-msgstr "Thesaurus nepodporované v súčasnom A&A:"
+msgstr "Tezaurus nepodporovaný v súčasnom A&A:"
 
 #: lib/layouts/acm-sigs.inc:37
 msgid "General terms:"
@@ -25220,9 +25220,9 @@ msgstr ""
 "LyX bude umiestňovať svoje dočasné adresári do tejto cesty. Budú odstránené "
 "pri skončení LyXu."
 
-#: src/LyXRC.cpp:3469
+#: src/LyXRC.cpp:3487
 msgid "This is the place where the files of the thesaurus library reside."
-msgstr "To je miesto, kde ležia knižnice tezauru."
+msgstr "To je miesto, kde ležia slovníky tezauru."
 
 #: src/LyXRC.cpp:3473
 msgid ""
@@ -25480,6 +25480,22 @@ msgstr "Chýba parameter"
 #: src/Text3.cpp:2111 src/Text3.cpp:2123
 msgid "Character set"
 msgstr "Znaková sada"
+
+#: src/Text3.cpp:2291
+msgid "Path to thesaurus directory not set!"
+msgstr "Cesta ku slovníkom tezauru nie je nastavená!"
+
+#: src/Text3.cpp:2292
+msgid ""
+"The path to the thesaurus directory has not been specified.\n"
+"The thesaurus is not functional.\n"
+"Please refer to sec. 6.15.1 of the User's Guide for setup\n"
+"instructions."
+msgstr ""
+"Cesta ku slovníkom tezauru nebola stanovená.\n"
+"Tezaurus nie je funkčný.\n"
+"Pozri sekciu 6.15.1 Užívateľskej Príručky pre inštrukcie\n"
+"nastavenia."
 
 #: src/Text3.cpp:2330 src/Text3.cpp:2341
 msgid "Paragraph layout set"
@@ -27662,9 +27678,9 @@ msgstr "Vyberte adresár na zálohy"
 msgid "Select a document directory"
 msgstr "Vyberte adresár pre dokumenty"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1436
+#: src/frontends/qt4/GuiPrefs.cpp:1440
 msgid "Set the path to the thesaurus dictionaries"
-msgstr "Nastaviť cestu ku knižniciam tezaurus"
+msgstr "Nastaviť cestu ku slovníkom tezauru"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1445
 msgid "Set the path to the Hunspell dictionaries"
@@ -33411,3 +33427,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "An empty output file was generated."
 #~ msgstr "Bol generovaný prázdny výstupný súbor."
+
+#~ msgid "&Master's perspective"
+#~ msgstr "Perspektíva &hlavného dokumentu"
