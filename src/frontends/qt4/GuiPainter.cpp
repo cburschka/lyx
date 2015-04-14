@@ -570,42 +570,37 @@ int GuiPainter::preeditText(int x, int y, char_type c,
 }
 
 
-void GuiPainter::doubleUnderline(FontInfo const & f, int x, int y, int width)
+void GuiPainter::underline(FontInfo const & f, int x, int y, int width,
+                           line_style ls)
 {
 	FontMetrics const & fm = theFontMetrics(f);
+	int const pos = fm.underlinePos();
 
-	int const below = max(fm.maxDescent() / 2, 2);
-
-	line(x, y + below, x + width, y + below, f.realColor());
-	line(x, y + below - 2, x + width, y + below - 2, f.realColor());
-}
-
-
-void GuiPainter::underline(FontInfo const & f, int x, int y, int width)
-{
-	FontMetrics const & fm = theFontMetrics(f);
-
-	int const below = max(fm.maxDescent() / 2, 2);
-	int const height = max((fm.maxDescent() / 4) - 1, 1);
-
-	if (height < 2)
-		line(x, y + below, x + width, y + below, f.realColor());
-	else
-		fillRectangle(x, y + below, width, below + height, f.realColor());
+	line(x, y + pos, x + width, y + pos,
+	     f.realColor(), ls, fm.lineWidth());
 }
 
 
 void GuiPainter::strikeoutLine(FontInfo const & f, int x, int y, int width)
 {
 	FontMetrics const & fm = theFontMetrics(f);
+	int const pos = fm.strikeoutPos();
 
-	int const middle = max((fm.maxHeight() / 4), 1);
-	int const height =  middle/3;
+	line(x, y - pos, x + width, y - pos,
+	     f.realColor(), line_solid, fm.lineWidth());
+}
 
-	if (height < 2)
-		line(x, y - middle, x + width, y - middle, f.realColor());
-	else
-		fillRectangle(x, y - middle, width, height, f.realColor());
+
+void GuiPainter::doubleUnderline(FontInfo const & f, int x, int y, int width)
+{
+	FontMetrics const & fm = theFontMetrics(f);
+	int const pos1 = fm.underlinePos() + fm.lineWidth();
+	int const pos2 = fm.underlinePos() - fm.lineWidth() + 1;
+
+	line(x, y + pos1, x + width, y + pos1,
+		 f.realColor(), line_solid, fm.lineWidth());
+	line(x, y + pos2, x + width, y + pos2,
+		 f.realColor(), line_solid, fm.lineWidth());
 }
 
 

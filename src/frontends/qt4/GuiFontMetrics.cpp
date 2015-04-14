@@ -78,10 +78,28 @@ int GuiFontMetrics::em() const
 }
 
 
+int GuiFontMetrics::lineWidth() const
+{
+	return metrics_.lineWidth();
+}
+
+
+int GuiFontMetrics::underlinePos() const
+{
+	return metrics_.underlinePos();
+}
+
+
+int GuiFontMetrics::strikeoutPos() const
+{
+	return metrics_.strikeOutPos();
+}
+
+
 int GuiFontMetrics::lbearing(char_type c) const
 {
 	if (!is_utf16(c))
-		// FIXME: QFontMetrics::leftBearingdoes not support the
+		// FIXME: QFontMetrics::leftBearing does not support the
 		//        full unicode range. Once it does, we could use:
 		//return metrics_.leftBearing(toqstr(docstring(1, c)));
 		return 0;

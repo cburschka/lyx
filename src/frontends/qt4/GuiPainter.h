@@ -147,7 +147,7 @@ public:
 private:
 	/// check the font, and if set, draw an underline
 	void underline(FontInfo const & f,
-		int x, int y, int width);
+	               int x, int y, int width, line_style ls = line_solid);
 
 	/// check the font, and if set, draw an dashed underline
 	void dashedUnderline(FontInfo const & f,

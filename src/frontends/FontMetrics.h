@@ -65,6 +65,14 @@ public:
 	virtual Dimension const defaultDimension() const = 0;
 	/// return the em size
 	virtual int em() const = 0;
+	/// return the width of a line for underlining
+	virtual int lineWidth() const = 0;
+	/// return the distance from the base line to where an underline
+	/// should be drawn.
+	virtual int underlinePos() const = 0;
+	/// return the distance from the base line to where the strike out line
+	/// should be drawn.
+	virtual int strikeoutPos() const = 0;
 
 	/// return the width of the char in the font
 	virtual int width(char_type c) const = 0;
