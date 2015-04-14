@@ -107,6 +107,8 @@ Format 2
 \bind "C-x C-t"                "buffer-update dvi"
 \bind "C-Next"                 "buffer-next"
 \bind "C-Prior"                "buffer-previous"
+\bind "S-F7"                   "thesaurus-entry"
+\bind "S-F8"                   "dialog-show spellchecker"
 \bind "C-x 0"                  "view-close"
 
 # Window commands
