@@ -189,15 +189,13 @@ void setLocale()
 	if (lyxrc.gui_language == "auto") {
 		theLocale = QLocale::system();
 		code = fromqstr(theLocale.name());
-		// Qt tries to outsmart us and transforms en_US to C.
-		if (code == "C")
-			code = "en_US";
 	} else {
 		Language const * l = languages.getLanguage(lyxrc.gui_language);
-		code = l ? l->code() : string();
+		code = l ? l->code() : "C";
 		theLocale = QLocale(toqstr(code));
 	}
-	Messages::guiLanguage(code);
+	// Qt tries to outsmart us and transforms en_US to C.
+	Messages::guiLanguage((code == "C") ? "en_US" : code);
 	QLocale::setDefault(theLocale);
 	setlocale(LC_NUMERIC, "C");
 }
