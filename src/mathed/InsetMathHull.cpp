@@ -1645,6 +1645,7 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 				enable = display() != Inline;
 		}
 		status.setEnabled(enable);
+		status.setOnOff(display() != Inline);
 		return true;
 	}
 
