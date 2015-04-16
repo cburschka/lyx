@@ -777,7 +777,7 @@ private:
 
 /** This is the function where the hard work is done. The code here is
  * very sensitive to small changes :) Note that part of the
- * intelligence is also in Row::shorten_if_needed
+ * intelligence is also in Row::shortenIfNeeded.
  */
 void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit) const
 {
@@ -899,12 +899,6 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 
 	// if the row is too large, try to cut at last separator.
 	row.shortenIfNeeded(body_pos, width);
-
-	// if the row ends with a separator that is not at end of
-	// paragraph, remove it
-	if (!row.empty() && row.back().type == Row::SEPARATOR
-	    && row.endpos() < par.size())
-		row.pop_back();
 
 	// make sure that the RTL elements are in reverse ordering
 	row.reverseRTL(text_->isRTL(par));
