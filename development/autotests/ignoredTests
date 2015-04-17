@@ -4,8 +4,6 @@
 # latex8.sty is obsolete and replaced by IEEEconf.
 check_load/templates/attic/latex8
 export/templates/attic/latex8_pdf.*
-# LuaTeX and XeTeX both enter in infinite loops
-export/templates/JASA_.*_systemF
 #
 # not compilable with LuaTeX
 export/doc/hu/Tutorial_pdf5_.*
