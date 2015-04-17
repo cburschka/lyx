@@ -245,6 +245,10 @@ Mise à jour pour LyX 2.1, 8 juin 2014, JPC
 Remplacement de « appendice » par « annexe », 31/12/2014 (JPC)
 \end_layout
 
+\begin_layout Plain Layout
+Mise à jour mineure pour 2.1.4, 3 aril 2015 (JPC)
+\end_layout
+
 \end_inset
 
 
@@ -1074,7 +1078,7 @@ name "sec:Base-d'edition"
 \end_layout
 
 \begin_layout Standard
-Comme avec la plupart des traitements de texte modernes, on avec LyX peut
+Comme avec la plupart des traitements de texte modernes, on peut avec LyX
  opérer des copier-coller sur des blocs de texte, on peut se déplacer d'un
  caractère, d'un mot ou d'une page d'écran, et on peut effacer des mots
  entiers aussi bien que des caractères individuels.
@@ -1653,46 +1657,36 @@ Suppr.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Using the
-\lang french
- le raccourci 
+L'usage du raccourci 
 \begin_inset Info
 type  "shortcuts"
 arg   "inset-select-all"
 \end_inset
 
- 
-\lang english
-while the cursor is in normal text selects the whole document.
- When the cursor is inside an inset 
+ quand le curseur est dans un texte normal permet de sélectionner tout le
+ document.
+ Quand le curseur se trouve dans un insert, 
 \begin_inset Info
 type  "shortcuts"
 arg   "inset-select-all"
 \end_inset
 
- selects the content of the inset.
- Using 
+ sélectionne le contenu de cet insert.
+ L'utilisation répétitive de 
 \begin_inset Info
 type  "shortcuts"
 arg   "inset-select-all"
 \end_inset
 
- consecutively will increase the selection to the whole inset and then to
- the whole document
-\lang french
-.
+ étend le sélection à tout l'insert puis à tout le document.
  Le raccourci 
 \begin_inset Info
 type  "shortcuts"
 arg   "command-sequence buffer-begin ; buffer-end-select"
 \end_inset
 
- 
-\lang english
-selects the whole document in every case and puts the cursor to the end
- of the document.
+ permet de sélectionner tout le document dans tous les cas en positionnant
+ le curseur à la fin de la sélection.
 \end_layout
 
 \begin_layout Section
@@ -8477,14 +8471,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8497,7 +8489,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -36083,11 +36074,7 @@ status open
 \series bold
 Nota:
 \series default
- 
-\lang english
-the exported file will be stored in a subdirectory
-\lang french
-.
+ le fichier exporté se trouvera dans un sous-répertoire.
 \end_layout
 
 \end_inset
@@ -36399,21 +36386,15 @@ dvipdfm
 \end_layout
 
 \begin_layout Description
-
-\family sans
-\lang english
 PDF
 \begin_inset space ~
 \end_inset
 
-(lower
+(résolution
 \begin_inset space ~
 \end_inset
 
-resolution)
-\family default
-\lang french
- la même chose que 
+inférieure) la même chose que 
 \family sans
 PDF
 \begin_inset space ~
@@ -36421,22 +36402,9 @@ PDF
 
 (pdflatex)
 \family default
- mais avec
-\lang english
- a reduced pixel resolution of 150
-\begin_inset space \thinspace{}
-\end_inset
-
-dpi (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-useful for E-books to be read on tablet PCs or for large documents as intermedia
-te preview);
+ mais avec une résolution réduite à 150 dpi (utile par exemple pour des
+ livres électroniques destinés à être lus sur une tablette ou pour l'affichage
+ provisoire d'un gros document);
 \end_layout
 
 \begin_layout Description
@@ -36539,7 +36507,7 @@ ps2ascii
 \end_layout
 
 \begin_layout Description
-Postscript format PostScript en utilisant le programme 
+PostScript format PostScript en utilisant le programme 
 \family typewriter
 dvips
 \end_layout
@@ -36581,7 +36549,7 @@ PDF
 \family default
  ou 
 \family sans
-Postscript
+PostScript
 \family default
  manque, vous devriez mettre à jour votre configuration LaTeX.
  Après cette mise à jour vous devez reconfigurer LyX, voyez la section
