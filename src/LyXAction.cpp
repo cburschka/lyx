@@ -3268,7 +3268,7 @@ void LyXAction::init()
 	           buffer-forall branch-activate Solutions \n
                Export buffers to PDF (pdflatex): \n
 	           buffer-forall buffer-export pdf2 \n
- * \li Origin: scottkostyshak, 20 Jul 2012
+ * \li Origin: skostysh, 20 Jul 2012
  * \endvar
  */
 		{ LFUN_BUFFER_FORALL, "buffer-forall", ReadOnly | Argument, Buffer },
@@ -3293,6 +3293,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_BUFFER_MOVE_NEXT
  * \li Action: Moves the current tab one spot to the right.
  * \li Syntax: buffer-move-next
+ * \li Origin: skostysh, 7 Apr 2015
  * \endvar
  */
 		{ LFUN_BUFFER_MOVE_NEXT, "buffer-move-next", ReadOnly, Buffer },
@@ -3307,6 +3308,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_BUFFER_MOVE_PREVIOUS
  * \li Action: Moves the current tab one spot to the left.
  * \li Syntax: buffer-move-previous
+ * \li Origin: skostysh, 7 Apr 2015
  * \endvar
  */
 		{ LFUN_BUFFER_MOVE_PREVIOUS, "buffer-move-previous", ReadOnly, Buffer },
