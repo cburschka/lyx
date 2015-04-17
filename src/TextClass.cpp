@@ -126,7 +126,7 @@ string translateReadType(TextClass::ReadType rt)
 
 // This string should not be translated here,
 // because it is a layout identifier.
-docstring const TextClass::plain_layout_ = from_ascii("Plain Layout");
+docstring const TextClass::plain_layout_ = from_ascii(N_("Plain Layout"));
 
 
 InsetLayout DocumentClass::plain_insetlayout_;
@@ -155,7 +155,6 @@ TextClass::TextClass()
 	titletype_ = TITLE_COMMAND_AFTER;
 	titlename_ = "maketitle";
 	loaded_ = false;
-	_("Plain Layout"); // a hack to make this translatable
 }
 
 
