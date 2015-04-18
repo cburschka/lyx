@@ -35,8 +35,6 @@ Q_SIGNALS:
 	void downPressed();
 	/// complete
 	void tabPressed();
-	/// leave and hide command buffer
-	void hidePressed();
 
 protected:
 	///
