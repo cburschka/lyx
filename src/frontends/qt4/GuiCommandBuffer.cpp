@@ -108,12 +108,11 @@ GuiCommandBuffer::GuiCommandBuffer(GuiView * view)
 	edit_->setMinimumSize(edit_->sizeHint());
 	edit_->setFocusPolicy(Qt::ClickFocus);
 
-	connect(edit_, SIGNAL(escapePressed()), this, SLOT(cancel()));
 	connect(edit_, SIGNAL(returnPressed()), this, SLOT(dispatch()));
 	connect(edit_, SIGNAL(tabPressed()), this, SLOT(complete()));
 	connect(edit_, SIGNAL(upPressed()), this, SLOT(up()));
 	connect(edit_, SIGNAL(downPressed()), this, SLOT(down()));
-	connect(edit_, SIGNAL(hidePressed()), this, SLOT(hideParent()));
+	connect(edit_, SIGNAL(escapePressed()), this, SLOT(hideParent()));
 
 	layout->addWidget(upPB, 0);
 	layout->addWidget(downPB, 0);
@@ -138,22 +137,19 @@ GuiCommandBuffer::GuiCommandBuffer(GuiView * view)
 }
 
 
-void GuiCommandBuffer::cancel()
-{
-	view_->setFocus();
-	edit_->setText(QString());
-}
-
-
 void GuiCommandBuffer::dispatch()
 {
-	QString const cmd = edit_->text();
-	view_->setFocus();
-	edit_->setText(QString());
-	edit_->clearFocus();
-	std::string const cmd_ = fromqstr(cmd);
-	theSession().lastCommands().add(cmd_);
-	dispatch(cmd_);
+	std::string const cmd = fromqstr(edit_->text());
+	if (!cmd.empty())
+		theSession().lastCommands().add(cmd);
+	DispatchResult const & dr = dispatch(cmd);
+	if (!dr.error()) {
+		view_->setFocus();
+		edit_->setText(QString());
+		edit_->clearFocus();
+		// If the toolbar was "auto", it is not needed anymore
+		view_->resetCommandExecute();
+	}
 }
 
 
@@ -257,9 +253,9 @@ void GuiCommandBuffer::down()
 void GuiCommandBuffer::hideParent()
 {
 	view_->setFocus();
+	view_->resetCommandExecute();
 	edit_->setText(QString());
 	edit_->clearFocus();
-	hide();
 }
 
 
@@ -298,13 +294,6 @@ string const GuiCommandBuffer::historyDown()
 docstring const GuiCommandBuffer::getCurrentState() const
 {
 	return view_->currentBufferView()->cursor().currentState();
-}
-
-
-void GuiCommandBuffer::hide() const
-{
-	FuncRequest cmd(LFUN_COMMAND_EXECUTE, "off");
-	lyx::dispatch(cmd);
 }
 
 
@@ -347,10 +336,12 @@ GuiCommandBuffer::completions(string const & prefix, string & new_prefix)
 }
 
 
-void GuiCommandBuffer::dispatch(string const & str)
+DispatchResult const & GuiCommandBuffer::dispatch(string const & str)
 {
-	if (str.empty())
-		return;
+	if (str.empty()) {
+		static DispatchResult empty_dr;
+		return empty_dr;
+	}
 
 	history_.push_back(trim(str));
 	history_pos_ = history_.end();
@@ -358,7 +349,7 @@ void GuiCommandBuffer::dispatch(string const & str)
 	downPB->setEnabled(history_pos_ != history_.end());
 	FuncRequest func = lyxaction.lookupFunc(str);
 	func.setOrigin(FuncRequest::COMMANDBUFFER);
-	lyx::dispatch(func);
+	return lyx::dispatch(func);
 }
 
 } // namespace frontend

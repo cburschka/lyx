@@ -84,6 +84,8 @@ public:
 	/// are we busy ?
 	bool busy() const;
 
+	/// Signal that the any "auto" minibuffer can be closed now.
+	void resetCommandExecute();
 
 	/// \name Generic accessor functions
 	//@{
@@ -449,6 +451,9 @@ private:
 	/// setBusy(true) compared to setBusy(false), so we can nest
 	/// functions that call setBusy;
 	int busy_;
+
+	/// Request to open the command toolbar if it is "auto"
+	bool command_execute_;
 
 };
 
