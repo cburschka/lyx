@@ -115,6 +115,8 @@ public:
 	//@{
 	/// reset current author for all buffers
 	void recordCurrentAuthor(Author const & author);
+	/// update previews for all buffers, e.g. for Prefs update
+	void updatePreviews();
 	/// Call changed() on all buffers, internal or not
 	void changed(bool update_metrics) const;
 	/// emergency save for all buffers

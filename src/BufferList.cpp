@@ -344,6 +344,15 @@ void BufferList::recordCurrentAuthor(Author const & author)
 }
 
 
+void BufferList::updatePreviews()
+{
+	BufferStorage::iterator it = bstore.begin();
+	BufferStorage::iterator end = bstore.end();
+	for (; it != end; ++it)
+		(*it)->updatePreviews();
+}
+
+
 int BufferList::bufferNum(FileName const & fname) const
 {
 	FileNameList const buffers(fileNames());
