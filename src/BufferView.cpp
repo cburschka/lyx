@@ -1748,6 +1748,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		Cursor old = cur;
 		bool const in_texted = cur.inTexted();
 		cur.setCursor(doc_iterator_begin(cur.buffer()));
+		if (cur != old)
+			notifyCursorLeavesOrEnters(old, cur);
 		cur.selHandle(false);
 		buffer_.changed(true);
 		updateHoveredInset();
