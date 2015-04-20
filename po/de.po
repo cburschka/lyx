@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-04-13 09:48+0200\n"
-"PO-Revision-Date: 2015-04-13 09:56+0200\n"
+"POT-Creation-Date: 2015-04-20 12:17+0200\n"
+"PO-Revision-Date: 2015-04-20 12:19+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -3092,7 +3092,7 @@ msgstr "Name der BibTeX-Datenbank eingeben"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/SendtoUi.ui:92 src/frontends/qt4/ui/ShortcutUi.ui:65
 #: src/buffer_funcs.cpp:123 src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1761
+#: src/frontends/qt4/GuiApplication.cpp:1759
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -15004,51 +15004,59 @@ msgstr "Nummeriertes Beispiel (konsekutiv)"
 msgid "Examples:"
 msgstr "Beispiele:"
 
-#: lib/layouts/linguistics.module:47
+#: lib/layouts/linguistics.module:44
+msgid "Custom Numbering|s"
+msgstr "Benutzerdef. Nummerierung"
+
+#: lib/layouts/linguistics.module:45
+msgid "Customize the numeration"
+msgstr "Die Nummerierung anpassen"
+
+#: lib/layouts/linguistics.module:51
 msgid "Subexample"
 msgstr "Unterbeispiel"
 
-#: lib/layouts/linguistics.module:51
+#: lib/layouts/linguistics.module:54
 msgid "Subexample:"
 msgstr "Unterbeispiel:"
 
-#: lib/layouts/linguistics.module:66 lib/layouts/linguistics.module:68
+#: lib/layouts/linguistics.module:69 lib/layouts/linguistics.module:71
 msgid "Glosse"
 msgstr "Glosse"
 
-#: lib/layouts/linguistics.module:96 lib/layouts/linguistics.module:98
+#: lib/layouts/linguistics.module:99 lib/layouts/linguistics.module:101
 msgid "Tri-Glosse"
 msgstr "Tri-Glosse"
 
-#: lib/layouts/linguistics.module:125
+#: lib/layouts/linguistics.module:128
 msgid "Expression"
 msgstr "Ausdruck"
 
-#: lib/layouts/linguistics.module:127
+#: lib/layouts/linguistics.module:130
 msgid "expr."
 msgstr "Ausdr."
 
-#: lib/layouts/linguistics.module:141
+#: lib/layouts/linguistics.module:144
 msgid "Concepts"
 msgstr "Konzept"
 
-#: lib/layouts/linguistics.module:143
+#: lib/layouts/linguistics.module:146
 msgid "concept"
 msgstr "Konzept"
 
-#: lib/layouts/linguistics.module:157
+#: lib/layouts/linguistics.module:160
 msgid "Meaning"
 msgstr "Bedeutung"
 
-#: lib/layouts/linguistics.module:159
+#: lib/layouts/linguistics.module:162
 msgid "meaning"
 msgstr "Bedeutung"
 
-#: lib/layouts/linguistics.module:174
+#: lib/layouts/linguistics.module:177
 msgid "Tableau"
 msgstr "Tableau"
 
-#: lib/layouts/linguistics.module:179
+#: lib/layouts/linguistics.module:182
 msgid "List of Tableaux"
 msgstr "Tableaux-Verzeichnis"
 
@@ -23700,7 +23708,7 @@ msgstr "Konnte Klasse nicht laden"
 msgid "Error reading internal layout information"
 msgstr "Fehler beim Einlesen interner Format-Informationen"
 
-#: src/BufferParams.cpp:2148 src/TextClass.cpp:1536
+#: src/BufferParams.cpp:2148 src/TextClass.cpp:1535
 msgid "Read Error"
 msgstr "Lesefehler"
 
@@ -25784,7 +25792,7 @@ msgstr "Format "
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:1983 src/frontends/qt4/GuiApplication.cpp:1659
+#: src/Text3.cpp:1983 src/frontends/qt4/GuiApplication.cpp:1657
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
@@ -25812,29 +25820,29 @@ msgstr ""
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
-#: src/TextClass.cpp:158
+#: src/TextClass.cpp:129
 msgid "Plain Layout"
 msgstr "Schlichtes Format"
 
-#: src/TextClass.cpp:829
+#: src/TextClass.cpp:828
 msgid "Missing File"
 msgstr "Fehlende Datei"
 
-#: src/TextClass.cpp:830
+#: src/TextClass.cpp:829
 msgid "Could not find stdinsets.inc! This may lead to data loss!"
 msgstr ""
 "Kann Datei stdinsets.inc nicht finden! Dies kann zu Datenverlust führen!"
 
-#: src/TextClass.cpp:833
+#: src/TextClass.cpp:832
 msgid "Corrupt File"
 msgstr "Beschädigte Datei"
 
-#: src/TextClass.cpp:834
+#: src/TextClass.cpp:833
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
 msgstr ""
 "Kann Datei stdinsets.inc nicht lesen! Dies kann zu Datenverlust führen!"
 
-#: src/TextClass.cpp:1512
+#: src/TextClass.cpp:1511
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -25848,11 +25856,11 @@ msgstr ""
 "Wenn Sie es erst kürzlich installiert haben,\n"
 "sollten Sie LyX neu konfigurieren.\n"
 
-#: src/TextClass.cpp:1517
+#: src/TextClass.cpp:1516
 msgid "Module not available"
 msgstr "Modul ist nicht verfügbar"
 
-#: src/TextClass.cpp:1523
+#: src/TextClass.cpp:1522
 #, c-format
 msgid ""
 "The module %1$s requires a package that is not\n"
@@ -25871,11 +25879,11 @@ msgstr ""
 "Konsultieren Sie Abschnitt 3.1.2.3 des Benutzerhandbuchs (Module) für "
 "weitere Informationen."
 
-#: src/TextClass.cpp:1530
+#: src/TextClass.cpp:1529
 msgid "Package not available"
 msgstr "Paket ist nicht verfügbar"
 
-#: src/TextClass.cpp:1535
+#: src/TextClass.cpp:1534
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "Fehler beim Lesen von Modul %1$s\n"
@@ -26403,60 +26411,60 @@ msgstr "Über LyX"
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:671
+#: src/frontends/qt4/GuiApplication.cpp:669
 msgid "About %1"
 msgstr "Über %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:671
+#: src/frontends/qt4/GuiApplication.cpp:669
 #: src/frontends/qt4/GuiPrefs.cpp:3305
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: src/frontends/qt4/GuiApplication.cpp:672
+#: src/frontends/qt4/GuiApplication.cpp:670
 msgid "Reconfigure"
 msgstr "Neu konfigurieren"
 
-#: src/frontends/qt4/GuiApplication.cpp:672
+#: src/frontends/qt4/GuiApplication.cpp:670
 msgid "Quit %1"
 msgstr "%1 beenden"
 
-#: src/frontends/qt4/GuiApplication.cpp:1114
+#: src/frontends/qt4/GuiApplication.cpp:1112
 msgid "Nothing to do"
 msgstr "Nichts zu tun"
 
-#: src/frontends/qt4/GuiApplication.cpp:1120
+#: src/frontends/qt4/GuiApplication.cpp:1118
 msgid "Unknown action"
 msgstr "Unbekannte Aktion"
 
-#: src/frontends/qt4/GuiApplication.cpp:1164
+#: src/frontends/qt4/GuiApplication.cpp:1162
 msgid "Command not handled"
 msgstr "Befehl wurde nicht ausgeführt"
 
-#: src/frontends/qt4/GuiApplication.cpp:1170
+#: src/frontends/qt4/GuiApplication.cpp:1168
 msgid "Command disabled"
 msgstr "Befehl ist deaktiviert"
 
-#: src/frontends/qt4/GuiApplication.cpp:1284
+#: src/frontends/qt4/GuiApplication.cpp:1282
 msgid "Command not allowed without a buffer open"
 msgstr "Dieser Befehl ist nur bei geöffnetem Dokument möglich"
 
-#: src/frontends/qt4/GuiApplication.cpp:1291
+#: src/frontends/qt4/GuiApplication.cpp:1289
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
 msgstr "Das <LFUN-COMMAND>-Argument des Befehls 'buffer-forall' ist ungültig."
 
-#: src/frontends/qt4/GuiApplication.cpp:1483
+#: src/frontends/qt4/GuiApplication.cpp:1481
 msgid "Running configure..."
 msgstr "Neukonfiguration wird durchgeführt..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1491
+#: src/frontends/qt4/GuiApplication.cpp:1489
 msgid "Reloading configuration..."
 msgstr "Konfiguration wird neu geladen..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1498
+#: src/frontends/qt4/GuiApplication.cpp:1496
 msgid "System reconfiguration failed"
 msgstr "Neukonfiguration des Systems fehlgeschlagen"
 
-#: src/frontends/qt4/GuiApplication.cpp:1499
+#: src/frontends/qt4/GuiApplication.cpp:1497
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may\n"
@@ -26468,11 +26476,11 @@ msgstr ""
 "der Lage, korrekt zu arbeiten.\n"
 "Bitte rekonfigurieren Sie nochmals, wenn nötig."
 
-#: src/frontends/qt4/GuiApplication.cpp:1504
+#: src/frontends/qt4/GuiApplication.cpp:1502
 msgid "System reconfigured"
 msgstr "Das System wurde neu konfiguriert"
 
-#: src/frontends/qt4/GuiApplication.cpp:1505
+#: src/frontends/qt4/GuiApplication.cpp:1503
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -26482,49 +26490,49 @@ msgstr ""
 "Sie müssen LyX neu starten, um die aktualisierten\n"
 "Spezifikationen für die Dokumentklassen zu nutzen."
 
-#: src/frontends/qt4/GuiApplication.cpp:1585
+#: src/frontends/qt4/GuiApplication.cpp:1583
 msgid "Exiting."
 msgstr "LyX wird beendet."
 
-#: src/frontends/qt4/GuiApplication.cpp:1671
+#: src/frontends/qt4/GuiApplication.cpp:1669
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Hilfe-Datei %1$s wird geöffnet..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1690
+#: src/frontends/qt4/GuiApplication.cpp:1688
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntax: set-color <lyx_name> <x11_name>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1706
+#: src/frontends/qt4/GuiApplication.cpp:1704
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" ist fehlgeschlagen -- die Farbe ist nicht definiert oder "
 "darf nicht umdefiniert werden."
 
-#: src/frontends/qt4/GuiApplication.cpp:1901
+#: src/frontends/qt4/GuiApplication.cpp:1899
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
 msgstr "Der Befehl \"%1$s\" wurde auf %2$d Dateien (Pufferspeicher) angewandt"
 
-#: src/frontends/qt4/GuiApplication.cpp:1976
+#: src/frontends/qt4/GuiApplication.cpp:1974
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokument-Standardeinstellungen gespeichert in %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:1980
+#: src/frontends/qt4/GuiApplication.cpp:1978
 msgid "Unable to save document defaults"
 msgstr "Die Dokument-Standardeinstellungen können nicht gespeichert werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:2138
+#: src/frontends/qt4/GuiApplication.cpp:2136
 msgid "Unknown function."
 msgstr "Unbekannte Funktion."
 
-#: src/frontends/qt4/GuiApplication.cpp:2572
+#: src/frontends/qt4/GuiApplication.cpp:2570
 msgid "The current document was closed."
 msgstr "Das aktuelle Dokument wurde geschlossen."
 
-#: src/frontends/qt4/GuiApplication.cpp:2582
+#: src/frontends/qt4/GuiApplication.cpp:2580
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -26536,12 +26544,12 @@ msgstr ""
 "\n"
 "Exception: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2586
-#: src/frontends/qt4/GuiApplication.cpp:2592
+#: src/frontends/qt4/GuiApplication.cpp:2584
+#: src/frontends/qt4/GuiApplication.cpp:2590
 msgid "Software exception Detected"
 msgstr "Softwareausnahme erkannt"
 
-#: src/frontends/qt4/GuiApplication.cpp:2590
+#: src/frontends/qt4/GuiApplication.cpp:2588
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -26549,12 +26557,12 @@ msgstr ""
 "LyX hat einen ziemlich seltsamen Fehler entdeckt. Das Programm wird jetzt "
 "versuchen, alle ungespeicherten Dateien zu speichern, und dann beendet."
 
-#: src/frontends/qt4/GuiApplication.cpp:2881
-#: src/frontends/qt4/GuiApplication.cpp:2893
+#: src/frontends/qt4/GuiApplication.cpp:2879
+#: src/frontends/qt4/GuiApplication.cpp:2891
 msgid "Could not find UI definition file"
 msgstr "Die Benutzeroberflächen-Definitionsdatei konnte nicht gefunden werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:2882
+#: src/frontends/qt4/GuiApplication.cpp:2880
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -26565,13 +26573,13 @@ msgstr ""
 "%1$s.\n"
 "Bitte überprüfen Sie Ihre Installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:2888
+#: src/frontends/qt4/GuiApplication.cpp:2886
 msgid "Could not find default UI file"
 msgstr ""
 "Die Standard-Benutzeroberflächen-Definitionsdatei konnte nicht gefunden "
 "werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:2889
+#: src/frontends/qt4/GuiApplication.cpp:2887
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -26580,7 +26588,7 @@ msgstr ""
 "für die Benutzeroberfläche!\n"
 "Bitte überprüfen Sie Ihre Installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:2894
+#: src/frontends/qt4/GuiApplication.cpp:2892
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -30560,19 +30568,19 @@ msgstr "Die Zeichenkette wurde ersetzt."
 msgid "%1$d strings have been replaced."
 msgstr " %1$d Zeichenketten wurden ersetzt."
 
-#: src/lyxfind.cpp:1456
+#: src/lyxfind.cpp:1457
 msgid "Invalid regular expression!"
 msgstr "Ungültiger regulärer Ausdruck!"
 
-#: src/lyxfind.cpp:1461
+#: src/lyxfind.cpp:1462
 msgid "Match not found!"
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/lyxfind.cpp:1465
+#: src/lyxfind.cpp:1466
 msgid "Match found!"
 msgstr "Die Zeichenkette wurde gefunden!"
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1743
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1744
 #: src/mathed/InsetMathSplit.cpp:85 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -30656,17 +30664,17 @@ msgstr ""
 msgid "No number"
 msgstr "Keine Nummer"
 
-#: src/mathed/InsetMathHull.cpp:1716
+#: src/mathed/InsetMathHull.cpp:1717
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Die Anzahl der Zeilen in '%1$s' kann nicht geändert werden"
 
-#: src/mathed/InsetMathHull.cpp:1726
+#: src/mathed/InsetMathHull.cpp:1727
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Die Anzahl der Spalten in '%1$s' kann nicht geändert werden"
 
-#: src/mathed/InsetMathHull.cpp:1736
+#: src/mathed/InsetMathHull.cpp:1737
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Es können keine horizontalen Gitterlinien in '%1$s' hinzugefügt werden"
@@ -31818,9 +31826,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "Swap Columns"
 #~ msgstr "Spalten vertauschen"
-
-#~ msgid "Toggle Numbering|N"
-#~ msgstr "Nummerierung an/aus|N"
 
 #~ msgid "Toggle Numbering of Line|u"
 #~ msgstr "Zeilennummerierung an/aus|Z"
