@@ -768,6 +768,46 @@ def revert_ex_itemargs(document):
         i += 1
 
 
+def revert_forest(document):
+    " Reverts the forest environment (Linguistics module) to TeX-code "
+
+    # Do we use the linguistics module?
+    have_mod = False
+    mods = document.get_module_list()
+    for mod in mods:
+        if mod == "linguistics":
+            have_mod = True
+            continue
+
+    if not have_mod:
+        return
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Flex Structure Tree", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of Structure Tree inset")
+            i += 1
+            continue
+
+        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
+        endPlain = find_end_of_layout(document.body, beginPlain)
+        content = lyx2latex(document, document.body[beginPlain : endPlain])
+        document.warning("content: %s" % content)
+
+        add_to_preamble(document, ["\\usepackage{forest}"])
+
+        document.body[i:j + 1] = ["\\begin_inset ERT", "status collapsed", "",
+                "\\begin_layout Plain Layout", "", "\\backslash", 
+                "begin{forest}", "\\end_layout", "", "\\begin_layout Plain Layout",
+                content, "\\end_layout", "", "\\begin_layout Plain Layout",
+                "\\backslash", "end{forest}", "", "\\end_layout", "", "\\end_inset"]
+        # no need to reset i
+
+
 ##
 # Conversion hub
 #
@@ -788,10 +828,12 @@ convert = [
            [483, [convert_specialchar]],
            [484, []],
            [485, []],
-           [486, []]
+           [486, []],
+           [487, []]
           ]
 
 revert =  [
+           [485, [revert_forest]],
            [485, [revert_ex_itemargs]],
            [484, [revert_sigplan_doi]],
            [483, [revert_georgian]],

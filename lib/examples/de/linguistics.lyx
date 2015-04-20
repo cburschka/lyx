@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 486
+\lyxformat 487
 \begin_document
 \begin_header
 \textclass article
@@ -116,7 +116,8 @@ In diesem Text werden einige Funktionen von \SpecialChar LyX
  vorgestellt, die spezifisch
  auf die Bedürfnisse von Linguistinnen und Linguisten ausgerichtet sind.
  Es wird gezeigt, wie nummerierte Beispiele, Glossen, OT-Tableaux, semantische
- Auszeichnung und phonetische Notation (IPA) erzeugt werden können.
+ Auszeichnung, Strukturbäume und phonetische Notation (IPA) erzeugt werden
+ können.
 \end_layout
 
 \begin_layout Section
@@ -1401,6 +1402,217 @@ lingmeaning
 \end_layout
 
 \begin_layout Section
+Linguistische Strukturbäume
+\end_layout
+
+\begin_layout Standard
+Mittlerweile gibt es mehrere \SpecialChar LaTeX
+-Pakete, die bei der Erstellung von Strukturbäumen
+ helfen.
+ \SpecialChar LyX
+ unterstützt das Paket 
+\family sans
+forest
+\family default
+, welches hohe Flexibilität und Mächtigkeit mit einer intuitiven Syntax
+ vereint.
+ Das Linguistik-Modul enthält eine Strukturbaum-Einfügung, die unter 
+\family sans
+Einfügen\SpecialChar menuseparator
+Benutzerdefinierte Einfügungen
+\family default
+ zu finden ist.
+ Innerhalb dieser Einfügung können Sie die Klammernotation verwenden, die
+ das Paket 
+\family sans
+forest
+\family default
+ (wie auch andere Pakete, z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\family sans
+qtree
+\family default
+) anbietet.
+\end_layout
+
+\begin_layout Standard
+Hier ist ein einfaches Beispiel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Structure Tree
+status open
+
+\begin_layout Plain Layout
+[VP [DP[Hans]] [V' [V[schickt]] [DP[Maria]] [DP[D[einen]][NP[Brief]]] ]
+ ]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Wenn Sie die PDF-Ausgabe ansehen, sehen Sie, dass die Notation
+\end_layout
+
+\begin_layout Quote
+
+\family typewriter
+\size footnotesize
+[VP [DP[Hans]] [V' [V[schickt]] [DP[Maria]] [DP[D[einen]][NP[Brief]]]]]
+\end_layout
+
+\begin_layout Standard
+als Strukturbaum ausgegeben wird.
+ Um das Ergebnis bereits im \SpecialChar LyX
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"=
+\end_layout
+
+\end_inset
+
+Eingabefenster zu sehen, können Sie die Strukturbaum-Einfügung einfach in
+ eine Vorschau-Einfügung (
+\family sans
+Einfügen\SpecialChar menuseparator
+Vorschau
+\family default
+) einbetten.
+ Wenn 
+\begin_inset Quotes gld
+\end_inset
+
+Sofortige Vorschau
+\begin_inset Quotes grd
+\end_inset
+
+ richtig eingerichtet und aktiviert ist, sollten Sie den Baum sofort sehen
+ (zur Bearbeitung klicken Sie einfach auf das Bild):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset Flex Structure Tree
+status open
+
+\begin_layout Plain Layout
+[VP [DP[Maria]] [V' [V[schickt]] [DP[Hans]] [DP[D[eine]][NP[Antwort]]] ]
+ ]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Dächer (
+\begin_inset Quotes gld
+\end_inset
+
+roofs
+\begin_inset Quotes grd
+\end_inset
+
+) können mittels der Option 
+\begin_inset Quotes gld
+\end_inset
+
+triangle
+\begin_inset Quotes grd
+\end_inset
+
+ erzeugt werden (beachten Sie, dass Kommata eine spezielle Bedeutung haben;
+ sie markieren Optionen):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Structure Tree
+status open
+
+\begin_layout Plain Layout
+[VP [DP[Hans]] [V' [V[schickt]] [DP[Maria]] [DP[einen weiteren Brief, triangle]]
+ ] ]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Um die Knoten des Baums besser auszurichten, verwenden Sie die Option 
+\begin_inset Quotes gld
+\end_inset
+
+tier
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Alle Knoten, denen dieselbe 
+\begin_inset Quotes gld
+\end_inset
+
+tier
+\begin_inset Quotes grd
+\end_inset
+
+ (Ebene) zugewiesen wurde, werden in einer vertikalen Linie ausgerichtet.
+ Hier ist ein Beispiel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Structure Tree
+status open
+
+\begin_layout Plain Layout
+[VP [DP[Hans, tier=word]] [V' [V[schickt, tier=word]] [DP[Maria, tier=word]]
+ [DP[D[einen, tier=word]][NP[Brief, tier=word]]] ] ]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Das Paket bietet viel mehr Möglichkeiten, wie bspw.
+ Bewegungspfeile und Dekorationen.
+ Sie können hier nicht eingehend besprochen werden.
+ Bitte konsultieren Sie die ausführliche Dokumentation des Pakets 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "forest"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
 Phonetische Notation (IPA)
 \end_layout
 
@@ -1729,6 +1941,27 @@ status collapsed
 \begin_layout Plain Layout
 
 http://www.ctan.org/tex-archive/macros/latex/contrib/float/
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "forest"
+
+\end_inset
+
+Das forest-Paket: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ctan.org/tex-archive/macros/latex/contrib/forest/
 \end_layout
 
 \end_inset

@@ -1,4 +1,4 @@
-#\DeclareLyXModule[covington.sty]{Linguistics}
+#\DeclareLyXModule[covington.sty,enumitem.sty,forest.sty]{Linguistics}
 #DescriptionBegin
 #Defines some special environments useful for linguistics (numbered examples,
 #glosses, semantic markup, tableau floats).
@@ -121,6 +121,25 @@ InsetLayout Flex:Tri-Glosse
 		{\glend}}{}
 	EndPreamble
 	ResetsFont true
+End
+
+# Structure trees via the forest package
+InsetLayout Flex:Structure_Tree
+	LyXType               custom
+	LabelString           Tree
+	LatexType             environment
+	LatexName             forest
+	Decoration            classic
+	LabelFont
+	  Size                Small
+	EndFont
+	MultiPar              true
+	CustomPars            false
+	ParbreakIsNewline     true
+	FreeSpacing           true
+	Requires	      forest
+	ResetsFont            true
+        PassThruChars         []
 End
 
 

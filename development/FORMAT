@@ -12,6 +12,11 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 -----------------------
 
 2015-04-20 Jürgen Spitzmüller <spitz@lyx.org>
+ 	* Format incremented to 487: Support the forest environment of the forest package.
+          Note that this inset does not escape brackets in braces, i.e. [ and ] are output
+	  verbatim, not as {[] and {]}.
+
+2015-04-20 Jürgen Spitzmüller <spitz@lyx.org>
  	* Format incremented to 486: Support item arguments in the
 	  "Numbered Examples (consecutive)" and "Subexample" layouts of
 	  the linguistics module:
