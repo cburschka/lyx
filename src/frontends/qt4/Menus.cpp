@@ -1204,6 +1204,8 @@ void MenuDefinition::expandFlexInsert(
 	TextClass::InsetLayouts::const_iterator end = insetLayouts.end();
 	for (; cit != end; ++cit) {
 		if (cit->second.lyxtype() == type) {
+			if (!cit->second.obsoleted_by().empty())
+				continue;
 			docstring label = cit->first;
 			// we remove the "Flex:" prefix, if it is present
 			if (prefixIs(label, from_ascii("Flex:")))
