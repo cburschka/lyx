@@ -117,6 +117,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_MULTIPAR,
 		IL_NEEDPROTECT,
 		IL_PASSTHRU,
+		IL_PASSTHRU_CHARS,
 		IL_PARBREAKISNEWLINE,
 		IL_PREAMBLE,
 		IL_REQUIRES,
@@ -171,6 +172,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "obsoletedby", IL_OBSOLETEDBY },
 		{ "parbreakisnewline", IL_PARBREAKISNEWLINE },
 		{ "passthru", IL_PASSTHRU },
+		{ "passthruchars", IL_PASSTHRU_CHARS },
 		{ "preamble", IL_PREAMBLE },
 		{ "refprefix", IL_REFPREFIX },
 		{ "requires", IL_REQUIRES },
@@ -295,6 +297,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_PASSTHRU:
 			lex >> passthru_;
+			break;
+		case IL_PASSTHRU_CHARS:
+			lex >> passthru_chars_;
 			break;
 		case IL_PARBREAKISNEWLINE:
 			lex >> parbreakisnewline_;

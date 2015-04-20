@@ -180,6 +180,9 @@ import os, re, string, sys
 # Incremented to format 54, 11 Jan 2014 by gb
 # New InsetLayout tag "FixedWidthPreambleEncoding"
 
+# Incremented to format 55, 20 April 2015 by spitz
+# New InsetLayout and Layout tags "PassThruChars"
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -187,7 +190,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.py script to update all
 # layout files to the new format.
 
-currentFormat = 54
+currentFormat = 55
 
 
 def usage(prog_name):
@@ -411,7 +414,7 @@ def convert(lines):
                 i += 1
             continue
 
-        if format >= 50 and format <= 53:
+        if format >= 50 and format <= 54:
             # nothing to do.
             i += 1
             continue

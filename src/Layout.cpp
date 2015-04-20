@@ -51,6 +51,7 @@ enum LayoutTags {
 	LT_FONT,
 	LT_FREE_SPACING,
 	LT_PASS_THRU,
+	LT_PASS_THRU_CHARS,
 	LT_PARBREAK_IS_NEWLINE,
 	LT_ITEMCOMMAND,
 	LT_ITEMSEP,
@@ -235,6 +236,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		{ "parsep",         LT_PARSEP },
 		{ "parskip",        LT_PARSKIP },
 		{ "passthru",       LT_PASS_THRU },
+		{ "passthruchars",  LT_PASS_THRU_CHARS },
 		{ "preamble",       LT_PREAMBLE },
 		{ "refprefix",      LT_REFPREFIX },
 		{ "requires",       LT_REQUIRES },
@@ -546,6 +548,10 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 
 		case LT_PASS_THRU:
 			lex >> pass_thru;
+			break;
+
+		case LT_PASS_THRU_CHARS:
+			lex >> pass_thru_chars;
 			break;
 
 		case LT_PARBREAK_IS_NEWLINE:
@@ -1280,6 +1286,7 @@ void Layout::write(ostream & os) const
 		os << "\tLabelCounter \"" << to_utf8(counter) << "\"\n";
 	os << "\tFreeSpacing " << free_spacing << '\n';
 	os << "\tPassThru " << pass_thru << '\n';
+	os << "\tPassThruChars " << to_utf8(pass_thru_chars) << '\n';
 	os << "\tParbreakIsNewline " << parbreak_is_newline << '\n';
 	switch (spacing.getSpace()) {
 	case Spacing::Double:

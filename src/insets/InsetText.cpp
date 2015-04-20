@@ -478,6 +478,8 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 		rp.pass_thru = true;
 	if (il.isNeedProtect())
 		rp.moving_arg = true;
+	if (!il.passThruChars().empty())
+		rp.pass_thru_chars += il.passThruChars();
 	rp.par_begin = 0;
 	rp.par_end = paragraphs().size();
 

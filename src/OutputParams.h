@@ -254,6 +254,9 @@ public:
 	/// Should we output verbatim or escape LaTeX's special chars?
 	bool pass_thru;
 
+	/// Should we output verbatim specific chars?
+	docstring pass_thru_chars;
+
 	/// Should we output captions?
 	bool html_disable_captions;
 

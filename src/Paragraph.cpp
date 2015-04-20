@@ -1139,7 +1139,9 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 	char_type const c = (runparams.use_polyglossia) ?
 		owner_->getUChar(bparams, i) : text_[i];
 
-	if (style.pass_thru || runparams.pass_thru) {
+	if (style.pass_thru || runparams.pass_thru
+	    || contains(style.pass_thru_chars, c)
+	    || contains(runparams.pass_thru_chars, c)) {
 		if (c != '\0') {
 			Encoding const * const enc = runparams.encoding;
 			if (enc && !enc->encodable(c))

@@ -156,6 +156,8 @@ public:
 	///
 	bool isPassThru() const { return passthru_; }
 	///
+	docstring passThruChars() const { return passthru_chars_; }
+	///
 	bool parbreakIsNewline() const { return parbreakisnewline_; }
 	///
 	bool isNeedProtect() const { return needprotect_; }
@@ -261,6 +263,8 @@ private:
 	bool forceplain_;
 	///
 	bool passthru_;
+	///
+	docstring passthru_chars_;
 	///
 	bool parbreakisnewline_;
 	///

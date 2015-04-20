@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 480
+\lyxformat 486
 \begin_document
 \begin_header
 \textclass scrbook
@@ -152,24 +152,28 @@ End
 \html_be_strict true
 \author -712698321 "Jürgen Spitzmüller" 
 \author -195340706 "Georg Baum" 
+\author 155139281 "Jrgen Spitzmller" 
 \author 274215730 "scott" 
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Customizing LyX: Features for the Advanced User
+Customizing \SpecialChar LyX
+: Features for the Advanced User
 \end_layout
 
 \begin_layout Author
-by the LyX Team
+by the \SpecialChar LyX
+ Team
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \noindent
-If you have comments or error corrections, please send them to the LyX Documenta
-tion mailing list, 
+If you have comments or error corrections, please send them to the \SpecialChar LyX
+ Documentatio
+n mailing list, 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -233,10 +237,15 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-This manual covers the customization features present in LyX.
+This manual covers the customization features present in \SpecialChar LyX
+.
  In it, we discuss issues like keyboard shortcuts, screen previewing options,
- printer options, sending commands to LyX via the LyX Server, internationalizati
-on, installing new LaTeX classes and LyX layouts, etc.
+ printer options, sending commands to \SpecialChar LyX
+ via the \SpecialChar LyX
+ Server, internationalization,
+ installing new \SpecialChar LaTeX
+ classes and \SpecialChar LyX
+ layouts, etc.
  We can't possibly hope to touch on everything you can change—our developers
  add new features faster than we can document them—but we will explain the
  most common customizations and hopefully point you in the right direction
@@ -250,7 +259,8 @@ status collapsed
 \begin_layout Standard
 Information from previous versions of this document that now seems to be
  outdated is contained in the OutDated branch of this document.
- By default, this information will not appear in the LaTeX output.
+ By default, this information will not appear in the \SpecialChar LaTeX
+ output.
 \end_layout
 
 \end_inset
@@ -259,37 +269,43 @@ Information from previous versions of this document that now seems to be
 \end_layout
 
 \begin_layout Chapter
-LyX configuration files
+\SpecialChar LyX
+ configuration files
 \end_layout
 
 \begin_layout Standard
-This chapter aims to help you to find your way through the LyX configuration
+This chapter aims to help you to find your way through the \SpecialChar LyX
+ configuration
  files.
  Before continuing to read this chapter, you should find out where your
- LyX library and user directories are by using 
+ \SpecialChar LyX
+ library and user directories are by using 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-Help\SpecialChar \menuseparator
+Help\SpecialChar menuseparator
 About
 \begin_inset space ~
 \end_inset
 
-LyX
+\SpecialChar LyX
+
 \end_layout
 
 \end_inset
 
 .
- The library directory is the place where LyX places its system-wide configurati
-on files; the user directory is where you can place your modified versions.
+ The library directory is the place where \SpecialChar LyX
+ places its system-wide configuration
+ files; the user directory is where you can place your modified versions.
  We will call the former 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-LyXDir
+\SpecialChar LyX
+Dir
 \end_layout
 
 \end_inset
@@ -314,7 +330,8 @@ What's in
 status collapsed
 
 \begin_layout Plain Layout
-LyXDir
+\SpecialChar LyX
+Dir
 \end_layout
 
 \end_inset
@@ -327,34 +344,40 @@ LyXDir
 status collapsed
 
 \begin_layout Plain Layout
-LyXDir
+\SpecialChar LyX
+Dir
 \end_layout
 
 \end_inset
 
  and its sub-directories contain a number of files and that can be used
- to customize LyX's behavior.
- You can change many of these files from within LyX itself through the 
+ to customize \SpecialChar LyX
+'s behavior.
+ You can change many of these files from within \SpecialChar LyX
+ itself through the 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-Tools\SpecialChar \menuseparator
+Tools\SpecialChar menuseparator
 Preferences
 \end_layout
 
 \end_inset
 
  dialog.
- Most customization that you will want to do in LyX is possible through
- this dialog.
- However, many other inner aspects of LyX can be customized by modifying
- the files in 
+ Most customization that you will want to do in \SpecialChar LyX
+ is possible through this
+ dialog.
+ However, many other inner aspects of \SpecialChar LyX
+ can be customized by modifying the
+ files in 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-LyXDir
+\SpecialChar LyX
+Dir
 \end_layout
 
 \end_inset
@@ -379,7 +402,8 @@ UserDir
 
 \end_inset
 
-, are generated when you configure LyX.
+, are generated when you configure \SpecialChar LyX
+.
  They contain various default values that are guessed by inspection.
  In general, it is not a good idea to modify them, since they might be overwritt
 en at any time.
@@ -410,15 +434,18 @@ packages.lst
 
 \end_inset
 
- contains the list of packages that have been recognized by LyX.
- It is currently unused by the LyX program itself, but the information extracted
-, and more, is made available with 
+ contains the list of packages that have been recognized by \SpecialChar LyX
+.
+ It is currently unused by the \SpecialChar LyX
+ program itself, but the information extracted,
+ and more, is made available with 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-Help\SpecialChar \menuseparator
-LaTeX
+Help\SpecialChar menuseparator
+\SpecialChar LaTeX
+
 \begin_inset space ~
 \end_inset
 
@@ -451,8 +478,8 @@ layout/
 
 \end_inset
 
- directories, along with the associated LaTeX document class and their descripti
-on.
+ directories, along with the associated \SpecialChar LaTeX
+ document class and their description.
 \end_layout
 
 \begin_layout Labeling
@@ -490,7 +517,8 @@ status collapsed
 
 \end_inset
 
- lists of various sorts of LaTeX-related files found on your system
+ lists of various sorts of \SpecialChar LaTeX
+-related files found on your system
 \end_layout
 
 \begin_layout Labeling
@@ -499,7 +527,8 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-doc/LaTeXConfig.lyx
+doc/\SpecialChar LaTeX
+Config.lyx
 \end_layout
 
 \end_inset
@@ -509,13 +538,15 @@ doc/LaTeXConfig.lyx
 status collapsed
 
 \begin_layout Plain Layout
-LaTeXConfig.lyx.in
+\SpecialChar LaTeX
+Config.lyx.in
 \end_layout
 
 \end_inset
 
 .
- It contains information on your LaTeX configuration.
+ It contains information on your \SpecialChar LaTeX
+ configuration.
 \end_layout
 
 \begin_layout Subsection
@@ -528,7 +559,8 @@ These directories are duplicated between
 status collapsed
 
 \begin_layout Plain Layout
-LyXDir
+\SpecialChar LyX
+Dir
 \end_layout
 
 \end_inset
@@ -578,7 +610,8 @@ status collapsed
 
 \end_inset
 
- that define the keybindings used in LyX.
+ that define the keybindings used in \SpecialChar LyX
+.
  If there exists an internationalized version of the bind file named 
 \begin_inset Flex Code
 status collapsed
@@ -618,13 +651,15 @@ doc/
 
 \end_inset
 
- contains LyX documentation files (including the one you are currently reading).
+ contains \SpecialChar LyX
+ documentation files (including the one you are currently reading).
  The file 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-LaTeXConfig.lyx
+\SpecialChar LaTeX
+Config.lyx
 \end_layout
 
 \end_inset
@@ -707,7 +742,8 @@ Document
 
  dialog.
  In addition, it also contains the individual icons used in the toolbar
- and the banners that can be shown when LyX is launched.
+ and the banners that can be shown when \SpecialChar LyX
+ is launched.
 \end_layout
 
 \begin_layout Labeling
@@ -774,7 +810,8 @@ lyx2lyx
 
 \end_inset
 
- Python scripts used to convert between LyX versions.
+ Python scripts used to convert between \SpecialChar LyX
+ versions.
  These can be run from the command line if, say, you want to batch-convert
  files.
 \end_layout
@@ -805,7 +842,8 @@ Template
 \end_inset
 
  feature.
- Also contains some scripts used by LyX itself.
+ Also contains some scripts used by \SpecialChar LyX
+ itself.
 \end_layout
 
 \begin_layout Labeling
@@ -819,7 +857,8 @@ templates/
 
 \end_inset
 
- contains the standard LyX template files described in 
+ contains the standard \SpecialChar LyX
+ template files described in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Creating-Templates"
@@ -850,7 +889,8 @@ status collapsed
 
 \end_inset
 
- that define the user interface to LyX.
+ that define the user interface to \SpecialChar LyX
+.
  That is, the files define which items appear in which menus and the items
  appearing on the toolbar.
 \end_layout
@@ -860,8 +900,9 @@ Files you don't want to modify
 \end_layout
 
 \begin_layout Standard
-These files are used internally by LyX and you generally do not need to
- modify them unless you are a developer.
+These files are used internally by \SpecialChar LyX
+ and you generally do not need to modify
+ them unless you are a developer.
 \end_layout
 
 \begin_layout Labeling
@@ -875,18 +916,20 @@ CREDITS
 
 \end_inset
 
- this file contains the list of LyX developers.
+ this file contains the list of \SpecialChar LyX
+ developers.
  The contents are displayed with the menu entry 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-Help\SpecialChar \menuseparator
+Help\SpecialChar menuseparator
 About
 \begin_inset space ~
 \end_inset
 
-LyX
+\SpecialChar LyX
+
 \end_layout
 
 \end_inset
@@ -905,7 +948,8 @@ chkconfig.ltx
 
 \end_inset
 
- this is a LaTeX script used during the configuration process.
+ this is a \SpecialChar LaTeX
+ script used during the configuration process.
  Do not run directly.
 \end_layout
 
@@ -920,7 +964,8 @@ configure.py
 
 \end_inset
 
- this is a Python script that is used to re-configure LyX.
+ this is a Python script that is used to re-configure \SpecialChar LyX
+.
  It creates configuration files in the directory it was run from.
 \end_layout
 
@@ -989,7 +1034,8 @@ languages
 
 \end_inset
 
- this file contains a list of all the languages currently supported by LyX.
+ this file contains a list of all the languages currently supported by \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Labeling
@@ -1040,7 +1086,9 @@ unicodesymbols
 \end_inset
 
  this file contains information about unicode-encoded glyphs and the way
- they are supported by LyX via LaTeX.
+ they are supported by \SpecialChar LyX
+ via \SpecialChar LaTeX
+.
 \end_layout
 
 \begin_layout Section
@@ -1048,8 +1096,10 @@ Your local configuration directory
 \end_layout
 
 \begin_layout Standard
-Even if you are using LyX as an unprivileged user, you might want to change
- LyX configuration for your own use.
+Even if you are using \SpecialChar LyX
+ as an unprivileged user, you might want to change
+ \SpecialChar LyX
+ configuration for your own use.
  The 
 \begin_inset Flex Code
 status collapsed
@@ -1074,12 +1124,13 @@ user directory
 status collapsed
 
 \begin_layout Plain Layout
-Help\SpecialChar \menuseparator
+Help\SpecialChar menuseparator
 About
 \begin_inset space ~
 \end_inset
 
-LyX
+\SpecialChar LyX
+
 \end_layout
 
 \end_inset
@@ -1090,7 +1141,8 @@ LyX
 status collapsed
 
 \begin_layout Plain Layout
-LyXDir
+\SpecialChar LyX
+Dir
 \end_layout
 
 \end_inset
@@ -1110,7 +1162,8 @@ UserDir
 status collapsed
 
 \begin_layout Plain Layout
-LyXDir
+\SpecialChar LyX
+Dir
 \end_layout
 
 \end_inset
@@ -1131,7 +1184,7 @@ The preferences set in the
 status collapsed
 
 \begin_layout Plain Layout
-Tools\SpecialChar \menuseparator
+Tools\SpecialChar menuseparator
 Preferences
 \end_layout
 
@@ -1166,13 +1219,14 @@ When you reconfigure using
 status collapsed
 
 \begin_layout Plain Layout
-Tools\SpecialChar \menuseparator
+Tools\SpecialChar menuseparator
 Reconfigure
 \end_layout
 
 \end_inset
 
-, LyX runs the 
+, \SpecialChar LyX
+ runs the 
 \begin_inset Flex Code
 status collapsed
 
@@ -1200,7 +1254,7 @@ UserDir/layouts
 status collapsed
 
 \begin_layout Plain Layout
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Settings
 \end_layout
 
@@ -1210,7 +1264,8 @@ Settings
 \end_layout
 
 \begin_layout Itemize
-If you get some updated documentation from LyX ftp site and cannot install
+If you get some updated documentation from \SpecialChar LyX
+ ftp site and cannot install
  it because you do not have sysadmin rights on your system, you can just
  copy the files in 
 \begin_inset Flex Code
@@ -1236,7 +1291,8 @@ Help
 \end_layout
 
 \begin_layout Section
-Running LyX with multiple configurations
+Running \SpecialChar LyX
+ with multiple configurations
 \end_layout
 
 \begin_layout Standard
@@ -1249,7 +1305,8 @@ The configuration freedom of the local configuration directory may not suffice
 \end_layout
 
 \begin_layout Standard
-Invoking LyX with the command line switch 
+Invoking \SpecialChar LyX
+ with the command line switch 
 \begin_inset Flex Code
 status collapsed
 
@@ -1265,7 +1322,8 @@ status collapsed
 \emph default
  instructs the program to read the configuration from that directory, and
  not from the default directory.
- (You can determine the default directory by running LyX without the 
+ (You can determine the default directory by running \SpecialChar LyX
+ without the 
 \begin_inset Flex Code
 status collapsed
 
@@ -1275,8 +1333,9 @@ status collapsed
 
 \end_inset
 
- switch.) If the specified directory does not exist, LyX offers to create
- it for you, just like it does for the default directory on the first time
+ switch.) If the specified directory does not exist, \SpecialChar LyX
+ offers to create it
+ for you, just like it does for the default directory on the first time
  you run the program.
  You can modify the configuration options in this additional user directory
  exactly as you would for the default directory.
@@ -1308,7 +1367,8 @@ NewUserDir/layouts
 
  which you want available from all your configurations, you must add it
  to each directory separately.
- You can avoid this with the following trick: after LyX creates the additional
+ You can avoid this with the following trick: after \SpecialChar LyX
+ creates the additional
  directory, most of the subdirectories (see above) are empty.
  If you want the new configuration to mirror an existing one, replace the
  empty subdirectory with a symbolic link to the matching subdirectory in
@@ -1329,7 +1389,7 @@ doc/
 status collapsed
 
 \begin_layout Plain Layout
-Tools\SpecialChar \menuseparator
+Tools\SpecialChar menuseparator
 Reconfigure
 \end_layout
 
@@ -1373,7 +1433,7 @@ The first step is to define your file formats if they are not already defined.
 status collapsed
 
 \begin_layout Plain Layout
-Tools\SpecialChar \menuseparator
+Tools\SpecialChar menuseparator
 Preferences
 \end_layout
 
@@ -1385,7 +1445,7 @@ Preferences
 status collapsed
 
 \begin_layout Plain Layout
-File Handling\SpecialChar \menuseparator
+File Handling\SpecialChar menuseparator
 File formats
 \end_layout
 
@@ -1452,8 +1512,8 @@ Ctrl+D
 status collapsed
 
 \begin_layout Plain Layout
-Document\SpecialChar \menuseparator
-View (Other Formats)\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+View (Other Formats)\SpecialChar menuseparator
 DVI
 \end_layout
 
@@ -1499,12 +1559,13 @@ Ghostview
  fields.
  In defining this command, you can use the four variables listed in the
  next section.
- The viewer is launched when you view an image in LyX or use the 
+ The viewer is launched when you view an image in \SpecialChar LyX
+ or use the 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 View
 \end_layout
 
@@ -1549,7 +1610,8 @@ target "http://www.iana.org/assignments/media-types/"
 \end_inset
 
 .
- Therefore LyX uses the extended list of MIME types as specified by 
+ Therefore \SpecialChar LyX
+ uses the extended list of MIME types as specified by 
 \begin_inset CommandInset href
 LatexCommand href
 name "freedesktop.org"
@@ -1571,7 +1633,8 @@ Document format
 
 \end_inset
 
- option tells LyX that a format is suitable for document export.
+ option tells \SpecialChar LyX
+ that a format is suitable for document export.
  If this is set and if a suitable conversion route exists (see 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1584,7 +1647,7 @@ reference "sec:Converters"
 status collapsed
 
 \begin_layout Plain Layout
-File\SpecialChar \menuseparator
+File\SpecialChar menuseparator
 Export
 \end_layout
 
@@ -1596,7 +1659,7 @@ Export
 status collapsed
 
 \begin_layout Plain Layout
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 View
 \end_layout
 
@@ -1638,7 +1701,8 @@ Vector graphics format
 
 \end_inset
 
- tells LyX that a format can contain vector graphics.
+ tells \SpecialChar LyX
+ that a format can contain vector graphics.
  This information is used to determine the target format of included graphics
  for 
 \begin_inset Flex MenuItem
@@ -1750,7 +1814,8 @@ Copiers
 \end_layout
 
 \begin_layout Standard
-Since all conversions from one format to another take place in LyX's temporary
+Since all conversions from one format to another take place in \SpecialChar LyX
+'s temporary
  directory, it is sometimes necessary to modify a file before copying it
  to the temporary directory in order that the conversion may be performed.
 \begin_inset Foot
@@ -1783,7 +1848,8 @@ $$s
 
 \end_inset
 
- The LyX system directory (e.
+ The \SpecialChar LyX
+ system directory (e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1843,7 +1909,8 @@ $$b
 
 \end_inset
 
- The base name (without filename extension) in the LyX temporary directory
+ The base name (without filename extension) in the \SpecialChar LyX
+ temporary directory
 \end_layout
 
 \begin_layout Labeling
@@ -1857,7 +1924,8 @@ $$p
 
 \end_inset
 
- The full directory path of the LyX temporary directory
+ The full directory path of the \SpecialChar LyX
+ temporary directory
 \end_layout
 
 \begin_layout Labeling
@@ -1871,7 +1939,8 @@ $$r
 
 \end_inset
 
- The full pathname to the original LyX file being processed
+ The full pathname to the original \SpecialChar LyX
+ file being processed
 \end_layout
 
 \begin_layout Labeling
@@ -1885,7 +1954,8 @@ $$f
 
 \end_inset
 
- The filename (without any directory path) of the LyX file.
+ The filename (without any directory path) of the \SpecialChar LyX
+ file.
 \end_layout
 
 \begin_layout Labeling
@@ -1899,11 +1969,13 @@ $$l
 
 \end_inset
 
- The `LaTeX name'
+ The `\SpecialChar LaTeX
+ name'
 \end_layout
 
 \begin_layout Standard
-The latter should be the filename as it would be used in a LaTeX's 
+The latter should be the filename as it would be used in a \SpecialChar LaTeX
+'s 
 \series bold
 
 \backslash
@@ -1957,7 +2029,8 @@ cp $FROMFILE /home/you/pdf/$TOFILE
 
 \end_inset
 
-Save it in your local LyX directory—say, 
+Save it in your local \SpecialChar LyX
+ directory—say, 
 \begin_inset Flex Code
 status collapsed
 
@@ -1973,7 +2046,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Tools\SpecialChar \menuseparator
+Tools\SpecialChar menuseparator
 Preferences
 \end_layout
 
@@ -1984,7 +2057,7 @@ Preferences
 status collapsed
 
 \begin_layout Plain Layout
-File Handling\SpecialChar \menuseparator
+File Handling\SpecialChar menuseparator
 File formats
 \end_layout
 
@@ -2025,9 +2098,11 @@ Copier
 \end_layout
 
 \begin_layout Standard
-Copiers are used by LyX in various of its own conversions.
- For example, if appropriate programs are found, LyX will automatically
- install copiers for the 
+Copiers are used by \SpecialChar LyX
+ in various of its own conversions.
+ For example, if appropriate programs are found, \SpecialChar LyX
+ will automatically install
+ copiers for the 
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -2056,7 +2131,8 @@ HTML
  HTML file but various associated files (style files, images, etc.) are also
  copied.
  All these files are written to a subdirectory of the directory in which
- the original LyX file was found.
+ the original \SpecialChar LyX
+ file was found.
 \begin_inset Foot
 status collapsed
 
@@ -2090,7 +2166,8 @@ This copier can be customized.
 status collapsed
 
 \begin_layout Plain Layout
-LyXconv
+\SpecialChar LyX
+conv
 \end_layout
 
 \end_inset
@@ -2114,7 +2191,8 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-/path/to/filename.html.LyXconv
+/path/to/filename.html.\SpecialChar LyX
+conv
 \end_layout
 
 \end_inset
@@ -2146,9 +2224,9 @@ You can define your own Converters to convert files between different formats.
 status collapsed
 
 \begin_layout Plain Layout
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-File Handling\SpecialChar \menuseparator
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
+File Handling\SpecialChar menuseparator
 Converters
 \end_layout
 
@@ -2212,7 +2290,8 @@ $$s
 
 \end_inset
 
- The LyX system directory
+ The \SpecialChar LyX
+ system directory
 \end_layout
 
 \begin_layout Labeling
@@ -2333,8 +2412,11 @@ latex
 
 \end_inset
 
- This converter runs some form of LaTeX.
- This will make LyX's LaTeX error logs available.
+ This converter runs some form of \SpecialChar LaTeX
+.
+ This will make \SpecialChar LyX
+'s \SpecialChar LaTeX
+ error logs available.
 \end_layout
 
 \begin_layout Labeling
@@ -2348,7 +2430,8 @@ needaux
 
 \end_inset
 
- Needs the LaTeX 
+ Needs the \SpecialChar LaTeX
+ 
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -2380,8 +2463,9 @@ nice
 \begin_inset Quotes erd
 \end_inset
 
- file from the backend, which in practice means a LaTeX file like the one
- we would export, without 
+ file from the backend, which in practice means a \SpecialChar LaTeX
+ file like the one we
+ would export, without 
 \begin_inset Flex Code
 status collapsed
 
@@ -2489,8 +2573,9 @@ resultdir
 
  The name of the directory in which the converter will dump the generated
  files.
- LyX will not create this directory, and it does not copy anything into
- it, though it will copy this directory to the destination.
+ \SpecialChar LyX
+ will not create this directory, and it does not copy anything into it,
+ though it will copy this directory to the destination.
  The argument may contain 
 \begin_inset Flex Code
 status collapsed
@@ -2538,24 +2623,32 @@ $$b
 
 \begin_layout Standard
 None of these last three are presently used in any of the converters that
- are installed with LyX.
+ are installed with \SpecialChar LyX
+.
  
 \end_layout
 
 \begin_layout Standard
 You do not have to define converters for all formats between which you want
  to convert.
- For example, you will note that there is no `LyX to PostScript' converter,
- but LyX will export PostScript.
- It does so by first creating a LaTeX file (no converter needs to be defined
- for this) which is then converted to DVI using the `LaTeX to DVI' converter,
+ For example, you will note that there is no `\SpecialChar LyX
+ to PostScript' converter,
+ but \SpecialChar LyX
+ will export PostScript.
+ It does so by first creating a \SpecialChar LaTeX
+ file (no converter needs to be defined
+ for this) which is then converted to DVI using the `\SpecialChar LaTeX
+ to DVI' converter,
  and finally converting the resulting DVI file to PostScript.
- LyX finds such `chains' of converters automatically, and it will always
- choose the shortest possible chain.
+ \SpecialChar LyX
+ finds such `chains' of converters automatically, and it will always choose
+ the shortest possible chain.
  You can, though, still define multiple conversion methods between file
  formats.
- For example, the standard LyX configuration provides five ways to convert
- LaTeX to PDF:
+ For example, the standard \SpecialChar LyX
+ configuration provides five ways to convert
+ \SpecialChar LaTeX
+ to PDF:
 \end_layout
 
 \begin_layout Enumerate
@@ -2606,7 +2699,8 @@ directly using
 status collapsed
 
 \begin_layout Plain Layout
-XeTeX
+Xe\SpecialChar TeX
+
 \end_layout
 
 \end_inset
@@ -2620,7 +2714,8 @@ directly using
 status collapsed
 
 \begin_layout Plain Layout
-LuaTeX
+Lua\SpecialChar TeX
+
 \end_layout
 
 \end_inset
@@ -2713,7 +2808,8 @@ pdf4
 status collapsed
 
 \begin_layout Plain Layout
-XeTeX
+Xe\SpecialChar TeX
+
 \end_layout
 
 \end_inset
@@ -2733,7 +2829,8 @@ pdf5
 status collapsed
 
 \begin_layout Plain Layout
-LuaTeX
+Lua\SpecialChar TeX
+
 \end_layout
 
 \end_inset
@@ -2752,7 +2849,8 @@ status collapsed
 \end_layout
 
 \begin_layout Chapter
-Internationalizing LyX
+Internationalizing \SpecialChar LyX
+
 \begin_inset CommandInset label
 LatexCommand label
 name "cha:Internationalizing-LyX"
@@ -2763,8 +2861,10 @@ name "cha:Internationalizing-LyX"
 \end_layout
 
 \begin_layout Standard
-LyX supports using a translated interface.
- Last time we checked, LyX provided text in thirty languages.
+\SpecialChar LyX
+ supports using a translated interface.
+ Last time we checked, \SpecialChar LyX
+ provided text in thirty languages.
  The language of choice is called your 
 \emph on
 locale
@@ -2801,16 +2901,19 @@ status collapsed
 
 \begin_layout Plain Layout
 If you are a fluent speaker of a language other than English, joining these
- teams is a great way to give back to the LyX community!
+ teams is a great way to give back to the \SpecialChar LyX
+ community!
 \end_layout
 
 \end_inset
 
- will of course try to fix these shortcomings in future versions of LyX.
+ will of course try to fix these shortcomings in future versions of \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Section
-Translating LyX
+Translating \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Subsection
@@ -2818,7 +2921,8 @@ Translating the graphical user interface (text messages).
 \end_layout
 
 \begin_layout Standard
-LyX uses the GNU 
+\SpecialChar LyX
+ uses the GNU 
 \begin_inset Flex Code
 status collapsed
 
@@ -2829,8 +2933,9 @@ gettext
 \end_inset
 
  library to handle the internationalization of the interface.
- To have LyX speak your favorite language in all menus and dialogs, you
- need a 
+ To have \SpecialChar LyX
+ speak your favorite language in all menus and dialogs, you need
+ a 
 \begin_inset Flex Code
 status collapsed
 
@@ -2876,8 +2981,10 @@ gettext
 .
  It is possible to do this just for yourself, but if you're going to do
  it, you might as well share the results of your labors with the rest of
- the LyX community.
- Send a message to the LyX developers' list for more information about how
+ the \SpecialChar LyX
+ community.
+ Send a message to the \SpecialChar LyX
+ developers' list for more information about how
  to proceed.
 \end_layout
 
@@ -2886,7 +2993,8 @@ In short, this is what you should do (xx denotes the language code):
 \end_layout
 
 \begin_layout Itemize
-Check out the LyX source code.
+Check out the \SpecialChar LyX
+ source code.
  (See the 
 \begin_inset CommandInset href
 LatexCommand href
@@ -3109,8 +3217,10 @@ po
 
 \end_inset
 
--file could be added to the LyX distribution, so others can use it.
- Adding it involves making additional changes to LyX.
+-file could be added to the \SpecialChar LyX
+ distribution, so others can use it.
+ Adding it involves making additional changes to \SpecialChar LyX
+.
  So send an email to the developers' mailing list if you're interested in
  doing that.
 \end_layout
@@ -3227,7 +3337,8 @@ Of course the context information needs to be stripped off the original
  message when no translation is used.
  Therefore you have to put it in double square brackets at the end of the
  message (see the example above).
- The translation mechanism of LyX ensures that everything in double square
+ The translation mechanism of \SpecialChar LyX
+ ensures that everything in double square
  brackets at the end of messages is removed before displaying the message.
 \end_layout
 
@@ -3259,13 +3370,16 @@ As of March 2008, at least some of the documents have been translated into
 \end_inset
 
  and the locale is set accordingly, these will be used automagically by
- LyX.
- LyX looks for translated versions as 
+ \SpecialChar LyX
+.
+ \SpecialChar LyX
+ looks for translated versions as 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-LyXDir/doc/xx/DocName.lyx
+\SpecialChar LyX
+Dir/doc/xx/DocName.lyx
 \end_layout
 
 \end_inset
@@ -3337,7 +3451,7 @@ Intro.lyx
 status collapsed
 
 \begin_layout Plain Layout
-Help\SpecialChar \menuseparator
+Help\SpecialChar menuseparator
 Introduction
 \end_layout
 
@@ -3375,7 +3489,8 @@ UserDir/doc/xx/
 \end_layout
 
 \begin_layout Itemize
-Sometimes the original document (from the LyX-team) will be updated.
+Sometimes the original document (from the \SpecialChar LyX
+-team) will be updated.
  Use the source viewer at 
 \begin_inset CommandInset href
 LatexCommand href
@@ -3813,7 +3928,8 @@ status collapsed
 
 \end_inset
 
- marks comments, quotes start and end LaTeX-style commands.
+ marks comments, quotes start and end \SpecialChar LaTeX
+-style commands.
  To enter quote, you'll need to use 
 \begin_inset Flex Code
 status collapsed
@@ -4899,7 +5015,8 @@ f
 
  file maps the strings that the symbols generate to characters in the current
  font.
- The LyX distribution currently includes at least the 
+ The \SpecialChar LyX
+ distribution currently includes at least the 
 \begin_inset Flex Code
 status collapsed
 
@@ -5062,9 +5179,10 @@ so-8859-7.cdef
 \end_layout
 
 \begin_layout Standard
-If LyX cannot find a mapping for the string produced by the keystroke or
- a deadkey sequence, it will check if it looks like an accented char and
- try to draw an accent over the character on screen.
+If \SpecialChar LyX
+ cannot find a mapping for the string produced by the keystroke or a
+ deadkey sequence, it will check if it looks like an accented char and try
+ to draw an accent over the character on screen.
 \end_layout
 
 \begin_layout Subsection
@@ -5113,7 +5231,8 @@ Shift-6
 
 \end_inset
 
-] to the LyX command 
+] to the \SpecialChar LyX
+ command 
 \begin_inset Flex Code
 status collapsed
 
@@ -5191,7 +5310,8 @@ status collapsed
 \begin_inset Quotes erd
 \end_inset
 
-, however, LyX will complain with a beep, since a 
+, however, \SpecialChar LyX
+ will complain with a beep, since a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5385,7 +5505,8 @@ usldead_cedilla
 
 \end_inset
 
- and then binding this symbolic key to the corresponding LyX command.
+ and then binding this symbolic key to the corresponding \SpecialChar LyX
+ command.
 \begin_inset Foot
 status collapsed
 
@@ -5512,7 +5633,8 @@ Ctrl-
 \end_inset
 
  keys, a spare function key, etc.
- As for the LyX commands that produce accents, check the entry for 
+ As for the \SpecialChar LyX
+ commands that produce accents, check the entry for 
 \begin_inset Flex Code
 status collapsed
 
@@ -5536,12 +5658,13 @@ Saving your Language Configuration
 
 \begin_layout Standard
 You can edit your preferences so that your desired language environment
- is automatically configured when LyX starts up, via the 
+ is automatically configured when \SpecialChar LyX
+ starts up, via the 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Preferences
 \end_layout
 
@@ -5573,17 +5696,25 @@ Installing New Document Classes
 
 \begin_layout Standard
 In this chapter, we describe the procedures for creating and installing
- new LyX layout and template files, as well as offer a refresher on correctly
- installing new LaTeX document classes.
+ new \SpecialChar LyX
+ layout and template files, as well as offer a refresher on correctly
+ installing new \SpecialChar LaTeX
+ document classes.
  
 \end_layout
 
 \begin_layout Standard
 First, let us a say a few words about how one ought to think about the relation
- between LyX and LaTeX.
- The thing to understand is that, in a certain sense, LyX doesn't know anything
- about LaTeX.
- Indeed, from LyX's point of view, LaTeX is just one of several 
+ between \SpecialChar LyX
+ and \SpecialChar LaTeX
+.
+ The thing to understand is that, in a certain sense, \SpecialChar LyX
+ doesn't know anything
+ about \SpecialChar LaTeX
+.
+ Indeed, from \SpecialChar LyX
+'s point of view, \SpecialChar LaTeX
+ is just one of several 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5593,9 +5724,11 @@ backend formats
 
  in which it is capable of producing output.
  Other such formats are DocBook, plaintext, and XHTML.
- LaTeX is, of course, a particularly important format, but very little of
- the information LyX has about LaTeX is actually contained in the program
- itself.
+ \SpecialChar LaTeX
+ is, of course, a particularly important format, but very little of the
+ information \SpecialChar LyX
+ has about \SpecialChar LaTeX
+ is actually contained in the program itself.
 \begin_inset Foot
 status collapsed
 
@@ -5608,7 +5741,8 @@ hardcoded
 \begin_inset Quotes erd
 \end_inset
 
- into LyX.
+ into \SpecialChar LyX
+.
  But the developers generally regard this as a Bad Thing.
 \end_layout
 
@@ -5625,16 +5759,20 @@ article.cls
 \end_inset
 
 , is contained in `layout files'.
- Similarly, LyX itself does not know much about DocBook or XHTML.
+ Similarly, \SpecialChar LyX
+ itself does not know much about DocBook or XHTML.
  What it knows is contained in layout files.
 \end_layout
 
 \begin_layout Standard
 You can think of the layout file for a given document class as a translation
- manual between LyX constructs---paragraphs with their corresponding styles,
- certain sorts of insets, etc---and the corresponding LaTeX, DocBook, or
- XHTML constructs.
- Almost everything LyX knows about 
+ manual between \SpecialChar LyX
+ constructs—paragraphs with their corresponding styles,
+ certain sorts of insets, etc—and the corresponding \SpecialChar LaTeX
+, DocBook, or XHTML
+ constructs.
+ Almost everything \SpecialChar LyX
+ knows about 
 \begin_inset Flex Code
 status collapsed
 
@@ -5698,9 +5836,11 @@ stdsections.inc
 
 \end_inset
 
- tells LyX how paragraphs that are marked with the Section, Subsection,
- etc, styles can be translated into corresponding LaTeX, DocBook, and XHTML
- commands and tags.
+ tells \SpecialChar LyX
+ how paragraphs that are marked with the Section, Subsection, etc,
+ styles can be translated into corresponding \SpecialChar LaTeX
+, DocBook, and XHTML commands
+ and tags.
  The 
 \begin_inset Flex Code
 status collapsed
@@ -5725,38 +5865,54 @@ std*.inc
 \end_layout
 
 \begin_layout Standard
-Defining the LyX--LaTeX correspondence is not the only thing layout files
- do, though.
- Their other job is to define how the LyX constructs themselves will appear
+Defining the \SpecialChar LyX
+–\SpecialChar LaTeX
+ correspondence is not the only thing layout files do, though.
+ Their other job is to define how the \SpecialChar LyX
+ constructs themselves will appear
  on-screen.
  The fact that layout files have these two jobs is often a source of confusion,
  because they are completely separate.
- Telling LyX how to translate a certain paragraph style into LaTeX does
- not tell LyX how to display it; conversely, telling LyX how to display
- a certain paragraph style does not tell LyX how to translate it into LaTeX
- (let alone tell LaTeX how to display it).
- So, in general, when you define a new LyX construct, you must always do
- two quite separate things: (i)
+ Telling \SpecialChar LyX
+ how to translate a certain paragraph style into \SpecialChar LaTeX
+ does not tell
+ \SpecialChar LyX
+ how to display it; conversely, telling \SpecialChar LyX
+ how to display a certain paragraph
+ style does not tell \SpecialChar LyX
+ how to translate it into \SpecialChar LaTeX
+ (let alone tell \SpecialChar LaTeX
+ how to
+ display it).
+ So, in general, when you define a new \SpecialChar LyX
+ construct, you must always do two
+ quite separate things: (i)
 \begin_inset space ~
 \end_inset
 
-tell LyX how to translate it into LaTeX and (ii)
+tell \SpecialChar LyX
+ how to translate it into \SpecialChar LaTeX
+ and (ii)
 \begin_inset space ~
 \end_inset
 
-tell LyX how to display it.
+tell \SpecialChar LyX
+ how to display it.
 \end_layout
 
 \begin_layout Standard
-Much the same is true, of course, as regards LyX's other backend formats,
- though XHTML is in some ways different, because in that case LyX 
+Much the same is true, of course, as regards \SpecialChar LyX
+'s other backend formats, though
+ XHTML is in some ways different, because in that case \SpecialChar LyX
+ 
 \emph on
 is
 \emph default
  able, to some extent, to use information about how it should display a
  paragraph on the screen to output information (in the form of CSS) about
  how the paragraph should be displayed in a browser.
- Even in this case, however, the distinction between what LyX does internally
+ Even in this case, however, the distinction between what \SpecialChar LyX
+ does internally
  and how things are rendered externally remains in force, and the two can
  be controlled separately.
  See 
@@ -5770,17 +5926,25 @@ reference "sec:Tags-for-XHTML"
 \end_layout
 
 \begin_layout Section
-Installing new LaTeX files
+Installing new \SpecialChar LaTeX
+ files
 \end_layout
 
 \begin_layout Standard
-Some installations may not include a LaTeX package or class file that you
- would like to use within LyX.
- For example, you might need FoilTeX, a package for preparing slides for
- overhead projectors.
- Modern LaTeX distributions like TeXLive (2008 or newer) or MiKTeX provide
- a user interface for installing such packages.
- For example, with MiKTeX, you start the program 
+Some installations may not include a \SpecialChar LaTeX
+ package or class file that you would
+ like to use within \SpecialChar LyX
+.
+ For example, you might need Foil\SpecialChar TeX
+, a package for preparing slides for overhead
+ projectors.
+ Modern \SpecialChar LaTeX
+ distributions like \SpecialChar TeX
+Live (2008 or newer) or MiK\SpecialChar TeX
+ provide a user interface
+ for installing such packages.
+ For example, with MiK\SpecialChar TeX
+, you start the program 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5798,9 +5962,10 @@ Manager
 \end_layout
 
 \begin_layout Standard
-If your LaTeX distribution does not provide such a `package manager', or
- if the package is not available from your distribution, then follow these
- steps to install it manually:
+If your \SpecialChar LaTeX
+ distribution does not provide such a `package manager', or if the
+ package is not available from your distribution, then follow these steps
+ to install it manually:
 \end_layout
 
 \begin_layout Enumerate
@@ -5834,8 +5999,9 @@ status collapsed
 \begin_inset Quotes erd
 \end_inset
 
- (is the case for FoilTeX) then open a console, change to the folder of
- this file and execute the command 
+ (is the case for Foil\SpecialChar TeX
+) then open a console, change to the folder of this
+ file and execute the command 
 \begin_inset Flex Code
 status collapsed
 
@@ -5847,7 +6013,8 @@ latex foiltex.ins
 
 .
  You have now unpacked the package and have all files to install it.
- Most LaTeX-packages are not packed and you can skip this step.
+ Most \SpecialChar LaTeX
+-packages are not packed and you can skip this step.
 \end_layout
 
 \begin_layout Enumerate
@@ -5862,8 +6029,10 @@ Now you need to decide if the package should be available for all users
 \begin_deeper
 \begin_layout Enumerate
 On *nix systems (Linux, OSX, etc.), if you want the new package to be available
- for all users on your system, then install it in your `local' TeX tree,
- otherwise install it in your own `user' TeX tree.
+ for all users on your system, then install it in your `local' \SpecialChar TeX
+ tree, otherwise
+ install it in your own `user' \SpecialChar TeX
+ tree.
  Where these trees should be created, if they do not already exist, depends
  on your system.
  To find this out, look in the file 
@@ -5906,7 +6075,8 @@ kpsewhich texmf.cnf
 
 \end_inset
 
- The location of the `local' TeX tree is defined by the 
+ The location of the `local' \SpecialChar TeX
+ tree is defined by the 
 \begin_inset Flex Code
 status collapsed
 
@@ -5927,7 +6097,8 @@ status collapsed
 \end_inset
 
 .
- The location of the `user' TeX tree is defined by 
+ The location of the `user' \SpecialChar TeX
+ tree is defined by 
 \begin_inset Flex Code
 status collapsed
 
@@ -5962,8 +6133,9 @@ In general, it is recommended to install in the user tree because your user
 
 \begin_layout Enumerate
 On Windows, if you want the new package to be available for all users on
- your system, change to the folder where LaTeX is installed and then change
- to the subfolder 
+ your system, change to the folder where \SpecialChar LaTeX
+ is installed and then change to
+ the subfolder 
 \begin_inset Flex Code
 status collapsed
 
@@ -5978,7 +6150,8 @@ latex
 \end_inset
 
 .
- (For MiKTeX, this would be by default the folder 
+ (For MiK\SpecialChar TeX
+, this would be by default the folder 
 \begin_inset Flex Code
 status collapsed
 
@@ -5987,7 +6160,8 @@ status collapsed
 \backslash
 Programs
 \backslash
-MiKTeX
+MiK\SpecialChar TeX
+
 \backslash
 tex
 \backslash
@@ -6011,7 +6185,8 @@ status collapsed
 \backslash
 Programme
 \backslash
-MiKTeX
+MiK\SpecialChar TeX
+
 \backslash
 tex
 \backslash
@@ -6041,12 +6216,14 @@ foiltex
 \end_inset
 
 If the package should only available for you or you don't have admin permissions
-, do the same, but in the local LaTeX folder.
+, do the same, but in the local \SpecialChar LaTeX
+ folder.
  E.
 \begin_inset space \thinspace{}
 \end_inset
 
-g., for MiKTeX
+g., for MiK\SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
@@ -6099,7 +6276,8 @@ status open
 status collapsed
 
 \begin_layout Plain Layout
-MiKTeX
+MiK\SpecialChar TeX
+
 \backslash
 2.8
 \backslash
@@ -6135,7 +6313,8 @@ Roaming
 \backslash
 2.8
 \backslash
-MiKTeX
+MiK\SpecialChar TeX
+
 \backslash
 tex
 \backslash
@@ -6149,8 +6328,10 @@ latex
 
 \end_deeper
 \begin_layout Enumerate
-Now one only need to tell LaTeX that there are new files.
- This depends on the used LaTeX-Distribution:
+Now one only need to tell \SpecialChar LaTeX
+ that there are new files.
+ This depends on the used \SpecialChar LaTeX
+-Distribution:
 \begin_inset Separator parbreak
 \end_inset
 
@@ -6159,7 +6340,8 @@ Now one only need to tell LaTeX that there are new files.
 
 \begin_deeper
 \begin_layout Enumerate
-For TeXLive execute the command 
+For \SpecialChar TeX
+Live execute the command 
 \begin_inset Flex Code
 status collapsed
 
@@ -6175,7 +6357,8 @@ texhash
 \end_layout
 
 \begin_layout Enumerate
-For MiKTeX, if you have installed the package for all users, start the program
+For MiK\SpecialChar TeX
+, if you have installed the package for all users, start the program
  
 \begin_inset Quotes eld
 \end_inset
@@ -6210,21 +6393,24 @@ Settings
 
 \end_deeper
 \begin_layout Enumerate
-Finally, you need to tell LyX that there are new packages available.
- So, in LyX, use the menu 
+Finally, you need to tell \SpecialChar LyX
+ that there are new packages available.
+ So, in \SpecialChar LyX
+, use the menu 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
 Tools
 \family sans
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 Reconfigure
 \end_layout
 
 \end_inset
 
- and then restart LyX.
+ and then restart \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -6259,8 +6445,8 @@ x)
 status collapsed
 
 \begin_layout Plain Layout
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Document Class
 \end_layout
 
@@ -6271,14 +6457,15 @@ Document Class
 \end_layout
 
 \begin_layout Standard
-If you would like to use a LaTeX document class that is not even listed
- in the menu 
+If you would like to use a \SpecialChar LaTeX
+ document class that is not even listed in the
+ menu 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Document Class
 \end_layout
 
@@ -6293,11 +6480,14 @@ Types of layout files
 \end_layout
 
 \begin_layout Standard
-This section describes the various sorts of LyX files that contain layout
- information.
+This section describes the various sorts of \SpecialChar LyX
+ files that contain layout informati
+on.
  These files describe various paragraph and character styles, determining
- how LyX should display them and how they should be translated into LaTeX,
- DocBook, XHTML, or whatever output format is being used.
+ how \SpecialChar LyX
+ should display them and how they should be translated into \SpecialChar LaTeX
+, DocBook,
+ XHTML, or whatever output format is being used.
  
 \end_layout
 
@@ -6305,19 +6495,24 @@ This section describes the various sorts of LyX files that contain layout
 We shall try to provide a thorough description of the process of writing
  layout files here.
  However, there are so many different types of documents supported even
- by just LaTeX that we can't hope to cover every different possibility or
- problem you might encounter.
- The LyX users' list is frequented by people with lots of experience with
- layout design who are willing to share what they've learned, so please
- feel free to ask questions there.
+ by just \SpecialChar LaTeX
+ that we can't hope to cover every different possibility or problem
+ you might encounter.
+ The \SpecialChar LyX
+ users' list is frequented by people with lots of experience with layout
+ design who are willing to share what they've learned, so please feel free
+ to ask questions there.
 \end_layout
 
 \begin_layout Standard
 As you prepare to write a new layout, it is extremely helpful to look at
- the layouts distributed with LyX.
- If you write a LyX layout for a LaTeX document class that might also be
- used by others, or write a module that might be useful to others, then
- you should consider posting your layout to the 
+ the layouts distributed with \SpecialChar LyX
+.
+ If you write a \SpecialChar LyX
+ layout for a \SpecialChar LaTeX
+ document class that might also be used by
+ others, or write a module that might be useful to others, then you should
+ consider posting your layout to the 
 \begin_inset CommandInset href
 LatexCommand href
 name "layout section on the LyX wiki"
@@ -6325,14 +6520,17 @@ target "http://wiki.lyx.org/Layouts/Layouts"
 
 \end_inset
 
- or even to the LyX developers' list, so that it might be included in LyX
+ or even to the \SpecialChar LyX
+ developers' list, so that it might be included in \SpecialChar LyX
  itself.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Note that LyX is licensed under the General Public License, so any material
- that is contributed to LyX must be similarly licensed.
+Note that \SpecialChar LyX
+ is licensed under the General Public License, so any material
+ that is contributed to \SpecialChar LyX
+ must be similarly licensed.
 \end_layout
 
 \end_inset
@@ -6364,8 +6562,10 @@ status collapsed
 
 \end_inset
 
- extension and provide LyX with information about document classes.
- Since LyX 1.6 layout information can also be contained in layout 
+ extension and provide \SpecialChar LyX
+ with information about document classes.
+ Since \SpecialChar LyX
+ 1.6 layout information can also be contained in layout 
 \emph on
 modules
 \emph default
@@ -6380,8 +6580,10 @@ status collapsed
 \end_inset
 
  extension.
- Modules are to LaTeX packages much as layouts are to LaTeX classes, and
- some modules—such as the 
+ Modules are to \SpecialChar LaTeX
+ packages much as layouts are to \SpecialChar LaTeX
+ classes, and some modules—such
+ as the 
 \begin_inset Flex Code
 status collapsed
 
@@ -6440,7 +6642,7 @@ article.cls
 status collapsed
 
 \begin_layout Plain Layout
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Settings
 \end_layout
 
@@ -6467,15 +6669,16 @@ layouts/
 
 \end_inset
 
- folder, you will need to reconfigure and then restart LyX for the module
- to appear in the menu.
+ folder, you will need to reconfigure and then restart \SpecialChar LyX
+ for the module to
+ appear in the menu.
  However, changes you make to the module will be seen immediately, if you
  open 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Settings
 \end_layout
 
@@ -6501,7 +6704,8 @@ it is strongly recommended that you not attempt to edit modules while simultaneo
 usly working on actual documents
 \emph default
 .
- Though of course the developers strive to keep LyX stable in such situations,
+ Though of course the developers strive to keep \SpecialChar LyX
+ stable in such situations,
  syntax errors and the like in your module file could cause strange behavior.
 \end_layout
 
@@ -6510,11 +6714,14 @@ Local Layout
 \end_layout
 
 \begin_layout Standard
-Modules are to LyX as packages are to LaTeX.
+Modules are to \SpecialChar LyX
+ as packages are to \SpecialChar LaTeX
+.
  Sometimes, however, you find yourself wanting a specific inset or character
  style just for one document and writing a module that will also be available
  to other documents makes little sense.
- What you need is LyX's 
+ What you need is \SpecialChar LyX
+'s 
 \begin_inset Quotes eld
 \end_inset
 
@@ -6528,8 +6735,8 @@ Local Layout
 \begin_layout Standard
 You will find it under 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Local Layout
 \family default
 .
@@ -6550,13 +6757,17 @@ Format
  tag.
  Any format is acceptable, but one would normally use the format current
  at the time.
- (In LyX 2.1, the current layout format is 48.) You should be aware that local
- layout is not supported by versions of LyX prior to 1.6, so you should not
- use it if you want to be able to export your document to LyX 1.5 or earlier
+ (In \SpecialChar LyX
+ 2.1, the current layout format is 48.) You should be aware that local
+ layout is not supported by versions of \SpecialChar LyX
+ prior to 1.6, so you should not
+ use it if you want to be able to export your document to \SpecialChar LyX
+ 1.5 or earlier
  (without, that is, losing the local layout information).
- If you wish to be able to export to 1.6---local layout is supported in 1.6,
- though there is no UI for it---then you should use format 11 and, of course,
- use only layout constructs that were available in LyX 1.6.
+ If you wish to be able to export to 1.6—local layout is supported in 1.6,
+ though there is no UI for it—then you should use format 11 and, of course,
+ use only layout constructs that were available in \SpecialChar LyX
+ 1.6.
 \end_layout
 
 \begin_layout Standard
@@ -6570,7 +6781,8 @@ Local Layout
 
 \end_inset
 
- pane, LyX will enable the 
+ pane, \SpecialChar LyX
+ will enable the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -6579,12 +6791,14 @@ Validate
 \end_inset
 
  button at the bottom.
- Clicking this button will cause LyX to determine whether what you have
- entered is valid layout information for the chosen format.
- LyX will report the result but, unfortunately, will not tell you what errors
+ Clicking this button will cause \SpecialChar LyX
+ to determine whether what you have entered
+ is valid layout information for the chosen format.
+ \SpecialChar LyX
+ will report the result but, unfortunately, will not tell you what errors
  there might have been.
- These will be written to the terminal, however, if LyX is started from
- a terminal.
+ These will be written to the terminal, however, if \SpecialChar LyX
+ is started from a terminal.
  You will not be permitted to save your local layout until you have entered
  something valid.
 \end_layout
@@ -6613,7 +6827,8 @@ status collapsed
 
 \begin_layout Standard
 There are two situations you are likely to encounter when wanting to support
- a new LaTeX document class, involving style (
+ a new \SpecialChar LaTeX
+ document class, involving style (
 \begin_inset Flex Code
 status collapsed
 
@@ -6623,7 +6838,8 @@ status collapsed
 
 \end_inset
 
-) files and LaTeX2e class (
+) files and \SpecialChar LaTeX2e
+ class (
 \begin_inset Flex Code
 status collapsed
 
@@ -6677,7 +6893,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Of course, which directory is your local directory will vary by platform,
- and LyX allows you to specify your local directory on startup, too, using
+ and \SpecialChar LyX
+ allows you to specify your local directory on startup, too, using
  the 
 \begin_inset Flex Code
 status collapsed
@@ -6717,7 +6934,8 @@ myclass.layout
 \begin_layout LyX-Code
 
 \backslash
-DeclareLaTeXClass{report}
+Declare\SpecialChar LaTeX
+Class{report}
 \end_layout
 
 \begin_layout Standard
@@ -6727,7 +6945,8 @@ to read
 \begin_layout LyX-Code
 
 \backslash
-DeclareLaTeXClass[report, myclass.sty]{report (myclass)}
+Declare\SpecialChar LaTeX
+Class[report, myclass.sty]{report (myclass)}
 \end_layout
 
 \begin_layout Standard
@@ -6753,19 +6972,21 @@ near the top of the file.
 \end_layout
 
 \begin_layout Standard
-Start LyX and select 
+Start \SpecialChar LyX
+ and select 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-Tools\SpecialChar \menuseparator
+Tools\SpecialChar menuseparator
 Reconfigure
 \end_layout
 
 \end_inset
 
 .
- Then restart LyX and try creating a new document.
+ Then restart \SpecialChar LyX
+ and try creating a new document.
  You should see "
 \begin_inset Flex MenuItem
 status collapsed
@@ -6781,7 +7002,7 @@ report (myclass)
 status collapsed
 
 \begin_layout Plain Layout
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Settings
 \end_layout
 
@@ -6898,7 +7119,8 @@ myclass.sty
 \begin_layout LyX-Code
 #
 \backslash
-DeclareLyXModule{My Package} 
+Declare\SpecialChar LyX
+Module{My Package} 
 \end_layout
 
 \begin_layout LyX-Code
@@ -6997,7 +7219,8 @@ in the file.
 status collapsed
 
 \begin_layout Plain Layout
-DeclareLaTeXClass
+Declare\SpecialChar LaTeX
+Class
 \end_layout
 
 \end_inset
@@ -7038,7 +7261,8 @@ thesis.layout
 
 \end_inset
 
-: LyX assumes that the document class has the same name as the layout file.
+: \SpecialChar LyX
+ assumes that the document class has the same name as the layout file.
  
 \end_layout
 
@@ -7050,7 +7274,8 @@ thesis.layout
 \begin_layout LyX-Code
 
 \backslash
-DeclareLaTeXClass[thesis,book]{thesis}
+Declare\SpecialChar LaTeX
+Class[thesis,book]{thesis}
 \end_layout
 
 \begin_layout Standard
@@ -7065,7 +7290,8 @@ roll your own
 
  layout.
  We strongly suggest copying an existing layout file which uses a similar
- LaTeX class and then modifying it, if you can do so.
+ \SpecialChar LaTeX
+ class and then modifying it, if you can do so.
  At least use an existing file as a starting point so you can find out what
  items you need to worry about.
  Again, the specifics are covered below.
@@ -7091,11 +7317,13 @@ template
  for it, too.
  A template acts as a kind of tutorial for your layout, showing how it might
  be used, though containing dummy content.
- You can of course look at the various templates included with LyX for ideas.
+ You can of course look at the various templates included with \SpecialChar LyX
+ for ideas.
 \end_layout
 
 \begin_layout Standard
-Templates are created just like usual documents: using LyX.
+Templates are created just like usual documents: using \SpecialChar LyX
+.
  The only difference is that usual documents contain all possible settings,
  including the font scheme and the paper size.
  Usually a user doesn't want a template to overwrite his preferred settings
@@ -7125,7 +7353,8 @@ papersize
 
 \end_inset
 
- from the template LyX file.
+ from the template \SpecialChar LyX
+ file.
  This can be done with any simple text-editor, for example 
 \begin_inset Flex Code
 status collapsed
@@ -7165,7 +7394,8 @@ UserDir/templates/
 status collapsed
 
 \begin_layout Plain Layout
-LyXDir/templates/
+\SpecialChar LyX
+Dir/templates/
 \end_layout
 
 \end_inset
@@ -7175,8 +7405,8 @@ LyXDir/templates/
 status collapsed
 
 \begin_layout Plain Layout
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
 Paths
 \end_layout
 
@@ -7203,15 +7433,16 @@ defaults.lyx
 status collapsed
 
 \begin_layout Plain Layout
-File\SpecialChar \menuseparator
+File\SpecialChar menuseparator
 New
 \end_layout
 
 \end_inset
 
  in order to provide useful defaults.
- To create this template from inside LyX, all you have to do is to open
- a document with the correct settings, and use the 
+ To create this template from inside \SpecialChar LyX
+, all you have to do is to open a document
+ with the correct settings, and use the 
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -7229,9 +7460,11 @@ Upgrading old layout files
 \end_layout
 
 \begin_layout Standard
-The format of layout files changes with each LyX release, so old layout
- files need to be converted to the new format.
- If LyX reads a layout file in an older format, it automatically calls the
+The format of layout files changes with each \SpecialChar LyX
+ release, so old layout files
+ need to be converted to the new format.
+ If \SpecialChar LyX
+ reads a layout file in an older format, it automatically calls the
  script 
 \begin_inset Flex Code
 status collapsed
@@ -7245,7 +7478,8 @@ layout2layout.py
  to convert it to a temporary file in current format.
  The original file is left untouched.
  If you use the layout file often, then, you may want to convert it permanently,
- so that LyX does not have to do so itself every time.
+ so that \SpecialChar LyX
+ does not have to do so itself every time.
  To do this, you can call the converter manually:
 \end_layout
 
@@ -7283,7 +7517,8 @@ Call the command
 status collapsed
 
 \begin_layout Plain Layout
-python LyXDir/scripts/layout2layout.py myclass.old myclass.layout
+python \SpecialChar LyX
+Dir/scripts/layout2layout.py myclass.old myclass.layout
 \end_layout
 
 \end_inset
@@ -7297,12 +7532,14 @@ where
 status collapsed
 
 \begin_layout Plain Layout
-LyXDir
+\SpecialChar LyX
+Dir
 \end_layout
 
 \end_inset
 
- is the name of your LyX system directory.
+ is the name of your \SpecialChar LyX
+ system directory.
 \end_layout
 
 \begin_layout Standard
@@ -7325,7 +7562,8 @@ The following sections describe how layout files are structured and written.
  Our advice is to go slowly, save and test often.
  It is really not that hard, except that the multitude of options can become
  overwhelming, especially if you try to check out too many at once.
- It becomes easier if you use existing layouts of LyX as examples/reference
+ It becomes easier if you use existing layouts of \SpecialChar LyX
+ as examples/reference
  or if you modify an existing layout to your needs.
 \end_layout
 
@@ -7475,8 +7713,10 @@ DeclareCategory{Articles}
 \end_layout
 
 \begin_layout Standard
-The second and third lines are used when you (re)configure LyX.
- The layout file is read by the LaTeX script 
+The second and third lines are used when you (re)configure \SpecialChar LyX
+.
+ The layout file is read by the \SpecialChar LaTeX
+ script 
 \begin_inset Flex Code
 status collapsed
 
@@ -7497,7 +7737,8 @@ status collapsed
 \end_inset
 
  is ignored.
- The first line is just a LaTeX comment, the second one contains the mandatory
+ The first line is just a \SpecialChar LaTeX
+ comment, the second one contains the mandatory
  declaration of the text class and the third line contains the optional
  classification of the class.
  If these lines appear in a file named 
@@ -7520,7 +7761,8 @@ article
 
 \end_inset
 
- (the name of the layout file) which uses the LaTeX document class 
+ (the name of the layout file) which uses the \SpecialChar LaTeX
+ document class 
 \begin_inset Flex Code
 status collapsed
 
@@ -7544,7 +7786,7 @@ Article (Standard Class)
 status collapsed
 
 \begin_layout Plain Layout
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Settings
 \end_layout
 
@@ -7564,7 +7806,7 @@ Articles
 status collapsed
 
 \begin_layout Plain Layout
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Settings
 \end_layout
 
@@ -7704,7 +7946,8 @@ myarticle
 
 \end_inset
 
-, associated with the LaTeX document class 
+, associated with the \SpecialChar LaTeX
+ document class 
 \begin_inset Flex Code
 status collapsed
 
@@ -7842,9 +8085,11 @@ DeclareCategory{category}
 \end_layout
 
 \begin_layout Standard
-The class need only be specified if the name of the LaTeX class file and
- the name of the layout file are different or if there are packages to load.
- If the name of the class file is not specified, then LyX will simply assume
+The class need only be specified if the name of the \SpecialChar LaTeX
+ class file and the
+ name of the layout file are different or if there are packages to load.
+ If the name of the class file is not specified, then \SpecialChar LyX
+ will simply assume
  that it is the same as the name of the layout file.
 \end_layout
 
@@ -7855,7 +8100,8 @@ When the text class has been modified to your taste, all you have to do
 status collapsed
 
 \begin_layout Plain Layout
-LyXDir/layouts/
+\SpecialChar LyX
+Dir/layouts/
 \end_layout
 
 \end_inset
@@ -7875,33 +8121,37 @@ UserDir/layouts
 status collapsed
 
 \begin_layout Plain Layout
-Tools\SpecialChar \menuseparator
+Tools\SpecialChar menuseparator
 Reconfigure
 \end_layout
 
 \end_inset
 
-, exit LyX and restart.
+, exit \SpecialChar LyX
+ and restart.
  Then your new text class should be available along with the others.
 \end_layout
 
 \begin_layout Standard
 Once the layout file is installed, you can edit it and see your changes
- without having to reconfigure or to restart LyX.
+ without having to reconfigure or to restart \SpecialChar LyX
+.
  
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-In versions of LyX prior to 1.6, this was not true.
+In versions of \SpecialChar LyX
+ prior to 1.6, this was not true.
  As a result, editing layout files was very time consuming, since you had
- constantly to restart LyX to see changes.
+ constantly to restart \SpecialChar LyX
+ to see changes.
 \end_layout
 
 \end_inset
 
- You can force a reload of the current layout by using the LyX function
- 
+ You can force a reload of the current layout by using the \SpecialChar LyX
+ function 
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -7948,14 +8198,17 @@ strongly
 y working on a document that you care about.
  Use a test document.
  Syntax errors and the like in your layout file could cause peculiar behavior.
- In particular, such errors could cause LyX to regard the current layout
- as invalid and to attempt to switch to some other layout.
+ In particular, such errors could cause \SpecialChar LyX
+ to regard the current layout as
+ invalid and to attempt to switch to some other layout.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Really bad syntax errors may even caused LyX to exit.
- This is because certain sorts of errors may make LyX unable to read 
+Really bad syntax errors may even caused \SpecialChar LyX
+ to exit.
+ This is because certain sorts of errors may make \SpecialChar LyX
+ unable to read 
 \emph on
 any
 \emph default
@@ -7965,8 +8218,10 @@ any
 
 \end_inset
 
- The LyX team strives to keep LyX stable in such situations, but safe is
- better than sorry.
+ The \SpecialChar LyX
+ team strives to keep \SpecialChar LyX
+ stable in such situations, but safe is better
+ than sorry.
 \begin_inset Foot
 status collapsed
 
@@ -8012,15 +8267,16 @@ The mandatory argument, in curly brackets, is the name of the module, as
 status collapsed
 
 \begin_layout Plain Layout
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Modules
 \end_layout
 
 \end_inset
 
 .
- The argument in square brackets is optional: It declares any LaTeX packages
+ The argument in square brackets is optional: It declares any \SpecialChar LaTeX
+ packages
  on which the module depends.
  It is also possible to use the form 
 \begin_inset Flex MenuItem
@@ -8062,7 +8318,8 @@ The module declaration should then be followed by lines like the following
 status collapsed
 
 \begin_layout Plain Layout
-Preferably in English if the module should be published with LyX.
+Preferably in English if the module should be published with \SpecialChar LyX
+.
  This description will appear in the list of messages to be translated and
  will be thus translated with the next interface update.
 \end_layout
@@ -8084,7 +8341,8 @@ Preferably in English if the module should be published with LyX.
 \begin_layout LyX-Code
 #You will need to add  
 \backslash
-theendnotes in TeX code where you 
+theendnotes in \SpecialChar TeX
+ code where you 
 \end_layout
 
 \begin_layout LyX-Code
@@ -8110,8 +8368,8 @@ The description is used in
 status collapsed
 
 \begin_layout Plain Layout
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Modules
 \end_layout
 
@@ -8223,13 +8481,15 @@ int
 \end_layout
 
 \begin_layout Standard
-This tag was introduced with LyX
+This tag was introduced with \SpecialChar LyX
+
 \begin_inset space ~
 \end_inset
 
 1.4.0.
- Layout files from older LyX versions do not have an explicit file format
- and are considered to have 
+ Layout files from older \SpecialChar LyX
+ versions do not have an explicit file format and
+ are considered to have 
 \begin_inset Flex Code
 status collapsed
 
@@ -8244,10 +8504,13 @@ Format
 \end_inset
 
 .
- The format for the present version of LyX is format 35.
- But each version of LyX is capable of reading earlier versions' layout
- files, just as they are capable of reading files produced by earlier versions
- of LyX.
+ The format for the present version of \SpecialChar LyX
+ is format 35.
+ But each version of \SpecialChar LyX
+ is capable of reading earlier versions' layout files,
+ just as they are capable of reading files produced by earlier versions
+ of \SpecialChar LyX
+.
  There is, however, no provision for converting to earlier formats.
 \end_layout
 
@@ -8498,7 +8761,7 @@ default
 status collapsed
 
 \begin_layout Plain Layout
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Settings
 \end_layout
 
@@ -8893,8 +9156,8 @@ Chapter
 \end_inset
 
 .
- If it is not given, then LyX will attempt to figure out which layout to
- use.
+ If it is not given, then \SpecialChar LyX
+ will attempt to figure out which layout to use.
 \end_layout
 
 \begin_layout Description
@@ -9227,7 +9490,8 @@ status collapsed
 
 \end_inset
 
-] The file format (as defined in the LyX preferences) produced by this document
+] The file format (as defined in the \SpecialChar LyX
+ preferences) produced by this document
  class.
  It is mainly useful when 
 \begin_inset Flex Code
@@ -9417,7 +9681,9 @@ square
 \end_inset
 
  option.
- (For TeXperts, this causes LyX to output: 
+ (For \SpecialChar TeX
+perts, this causes \SpecialChar LyX
+ to output: 
 \begin_inset Flex Code
 status collapsed
 
@@ -9490,7 +9756,7 @@ headings
 status collapsed
 
 \begin_layout Plain Layout
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Settings
 \end_layout
 
@@ -9509,7 +9775,8 @@ Preamble
 
 \end_inset
 
- Sets the preamble for the LaTeX document.
+ Sets the preamble for the \SpecialChar LaTeX
+ document.
  Note that this will completely override any prior 
 \begin_inset Flex Code
 status collapsed
@@ -9854,7 +10121,8 @@ secnumdepth
 
 \end_inset
 
- counter in LaTeX.
+ counter in \SpecialChar LaTeX
+.
 \end_layout
 
 \begin_layout Description
@@ -9900,7 +10168,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Settings
 \end_layout
 
@@ -10149,7 +10417,8 @@ tocdepth
 
 \end_inset
 
- counter in LaTeX.
+ counter in \SpecialChar LaTeX
+.
 \end_layout
 
 \begin_layout Subsection
@@ -10274,7 +10543,7 @@ string="empty|plain|headings|fancy"
 
 \end_inset
 
-] The list of available page sty\SpecialChar \-
+] The list of available page sty\SpecialChar softhyphen
 les, separated by 
 \begin_inset Quotes eld
 \end_inset
@@ -10460,8 +10729,8 @@ block
 \end_inset
 
 ] A comma separated list of permitted alignments.
- (Some LaTeX styles prohibit certain alignments, since those wouldn't make
- sense.
+ (Some \SpecialChar LaTeX
+ styles prohibit certain alignments, since those wouldn't make sense.
  For example a right-aligned or centered enumeration isn't possible.)
 \end_layout
 
@@ -10485,14 +10754,15 @@ int
 
 \end_inset
 
-] Defines argument number <int> of a command\SpecialChar \slash{}
+] Defines argument number <int> of a command\SpecialChar breakableslash
 environment associated with
  the current style.
  This is useful for things like section headings, and only makes sense with
- LaTeX.
- Every (optional or required) argument of a command or environment -- except
+ \SpecialChar LaTeX
+.
+ Every (optional or required) argument of a command or environment – except
  for the required argument that is associated with the content of the paragraph
- itself -- has a separate definition, where the number specifies the order
+ itself – has a separate definition, where the number specifies the order
  of the arguments.
  The definition must end with 
 \begin_inset Flex Code
@@ -10816,8 +11086,9 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
-g., in LaTeX commands, optional arguments often require previous optional
- arguments to be output (at least empty), as in 
+g., in \SpecialChar LaTeX
+ commands, optional arguments often require previous optional arguments
+ to be output (at least empty), as in 
 \begin_inset Flex Code
 status collapsed
 
@@ -11118,13 +11389,14 @@ status collapsed
 \end_inset
 
 , this argument is automatically inserted when the respective style is selected.
- Currently, only one argument per style\SpecialChar \slash{}
+ Currently, only one argument per style\SpecialChar breakableslash
 layout can be automatically inserted.
 \end_layout
 
 \begin_layout Standard
-By default, the text entered in the LyX workarea in the respective layout
- is the last (mandatory) argument of a command if the 
+By default, the text entered in the \SpecialChar LyX
+ workarea in the respective layout is
+ the last (mandatory) argument of a command if the 
 \begin_inset Flex Code
 status collapsed
 
@@ -11432,8 +11704,9 @@ status collapsed
 \begin_layout Plain Layout
 Note that, besides that functionality, there is no way to ensure any ordering
  of preambles.
- The ordering that you see in a given version of LyX may change without
- warning in later versions.
+ The ordering that you see in a given version of \SpecialChar LyX
+ may change without warning
+ in later versions.
 \end_layout
 
 \end_inset
@@ -11685,8 +11958,10 @@ int=0
 
 \end_inset
 
-] Used for backporting new styles to stable LyX versions.
- The first stable version that supports this tag is LyX 2.1.0.
+] Used for backporting new styles to stable \SpecialChar LyX
+ versions.
+ The first stable version that supports this tag is \SpecialChar LyX
+ 2.1.0.
  The argument is a number which may either be 0, -1 or any value greater
  than zero.
  If the 
@@ -11703,7 +11978,8 @@ ForceLocal
  document header.
  If a .lyx file is read, the style definitions from the document header are
  added to the document class.
- Therefore even older LyX versions can handle the style.
+ Therefore even older \SpecialChar LyX
+ versions can handle the style.
  The argument of 
 \begin_inset Flex Code
 status collapsed
@@ -11765,11 +12041,13 @@ status collapsed
 
 \end_inset
 
-] Usually LyX does not allow you to insert more than one space between words,
+] Usually \SpecialChar LyX
+ does not allow you to insert more than one space between words,
  since a space is considered as the separation between two words, not a
  character or symbol of its own.
  This is a very fine thing but sometimes annoying, for example, when typing
- program code or plain LaTeX code.
+ program code or plain \SpecialChar LaTeX
+ code.
  For this reason, 
 \begin_inset Flex Code
 status collapsed
@@ -11781,8 +12059,10 @@ FreeSpacing
 \end_inset
 
  can be enabled.
- Note that LyX will create protected blanks for the additional blanks when
- in another mode than LaTeX-mode.
+ Note that \SpecialChar LyX
+ will create protected blanks for the additional blanks when
+ in another mode than \SpecialChar LaTeX
+-mode.
 \end_layout
 
 \begin_layout Description
@@ -11991,7 +12271,8 @@ string="item"
 
 \end_inset
 
-] The LaTeX command sequence declaring an item in a list.
+] The \SpecialChar LaTeX
+ command sequence declaring an item in a list.
  The command is to be defined without the preceding backslash (the default
  is 
 \begin_inset Quotes eld
@@ -12013,7 +12294,8 @@ item
 
 \end_inset
 
- in the LaTeX output).
+ in the \SpecialChar LaTeX
+ output).
 \end_layout
 
 \begin_layout Description
@@ -12115,8 +12397,10 @@ status collapsed
 
 \end_inset
 
-] Usually LyX does not allow you to leave a paragraph empty, since it would
- lead to empty LaTeX output.
+] Usually \SpecialChar LyX
+ does not allow you to leave a paragraph empty, since it would
+ lead to empty \SpecialChar LaTeX
+ output.
  There are some cases where this could be desirable however: in a letter
  template, the required fields can be provided as empty fields, so that
  people do not forget them; in some special classes, a style can be used
@@ -12334,7 +12618,8 @@ myenumiv
 
 \end_inset
 
-, much as in LaTeX.
+, much as in \SpecialChar LaTeX
+.
  These counters must all be declared separately.
 \begin_inset Newline newline
 \end_inset
@@ -12884,7 +13169,8 @@ status collapsed
 
 \end_inset
 
-] The name of the corresponding LaTeX stuff.
+] The name of the corresponding \SpecialChar LaTeX
+ stuff.
  Either the environment or command name.
 \end_layout
 
@@ -12919,7 +13205,8 @@ LatexName
 \end_inset
 
  stuff.
- This parameter cannot be changed from within LyX (use 
+ This parameter cannot be changed from within \SpecialChar LyX
+ (use 
 \begin_inset Flex Code
 status collapsed
 
@@ -12930,7 +13217,8 @@ Argument
 \end_inset
 
  for customizable parameters).
- This will be output as is after all LaTeX 
+ This will be output as is after all \SpecialChar LaTeX
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -12971,7 +13259,8 @@ List_Environment, Bib_Environment
 
 \end_inset
 
-] How the style should be translated into LaTeX.
+] How the style should be translated into \SpecialChar LaTeX
+.
 \begin_inset Foot
 status collapsed
 
@@ -13033,7 +13322,7 @@ status collapsed
 \emph on
 LatexName
 \emph default
-{\SpecialChar \ldots{}
+{\SpecialChar ldots
 }
 \end_layout
 
@@ -13063,7 +13352,7 @@ begin{
 \emph on
 LatexName
 \emph default
-}\SpecialChar \ldots{}
+}\SpecialChar ldots
 
 \backslash
 end{
@@ -13168,7 +13457,7 @@ LabelWidthString
 status collapsed
 
 \begin_layout Plain Layout
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Paragraph
 \begin_inset space ~
 \end_inset
@@ -13232,13 +13521,14 @@ begin{thebibliography}{99}
 \end_layout
 
 \begin_layout Standard
-Putting the last few things together, the LaTeX output will be either: 
+Putting the last few things together, the \SpecialChar LaTeX
+ output will be either: 
 \end_layout
 
 \begin_layout LyX-Code
 
 \backslash
-LatexName[LatexParam]{\SpecialChar \ldots{}
+LatexName[LatexParam]{\SpecialChar ldots
 }
 \end_layout
 
@@ -13249,14 +13539,15 @@ or:
 \begin_layout LyX-Code
 
 \backslash
-begin{LatexName}[LatexParam] \SpecialChar \ldots{}
+begin{LatexName}[LatexParam] \SpecialChar ldots
  
 \backslash
 end{LatexName}.
 \end_layout
 
 \begin_layout Standard
-depending upon the LaTeX type.
+depending upon the \SpecialChar LaTeX
+ type.
 \end_layout
 
 \end_deeper
@@ -13488,7 +13779,7 @@ Manual
 status collapsed
 
 \begin_layout Plain Layout
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Paragraph
 \begin_inset space ~
 \end_inset
@@ -13671,7 +13962,8 @@ status collapsed
 
 \end_inset
 
-] Whether newlines are translated into LaTeX newlines (
+] Whether newlines are translated into \SpecialChar LaTeX
+ newlines (
 \begin_inset Flex Code
 status collapsed
 
@@ -13686,8 +13978,10 @@ status collapsed
 \end_inset
 
 ) or not.
- The translation can be switched off to allow more comfortable LaTeX editing
- inside LyX.
+ The translation can be switched off to allow more comfortable \SpecialChar LaTeX
+ editing
+ inside \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Description
@@ -13811,8 +14105,9 @@ status collapsed
 
 \end_inset
 
-] Indicates that paragraphs will not be separated by an empty line in LaTeX
- output, but only by a line break; together with 
+] Indicates that paragraphs will not be separated by an empty line in \SpecialChar LaTeX
+ output,
+ but only by a line break; together with 
 \begin_inset Flex Code
 status collapsed
 
@@ -13950,7 +14245,8 @@ float=0
 
 \end_inset
 
-] LyX allows the user to choose either 
+] \SpecialChar LyX
+ allows the user to choose either 
 \begin_inset Quotes eld
 \end_inset
 
@@ -14080,7 +14376,51 @@ status collapsed
 \end_inset
 
 ] Whether the contents of this paragraph should be output in raw form, meaning
- without special translations that LaTeX would require.
+ without special translations that \SpecialChar LaTeX
+ would require.
+\change_inserted 155139281 1429534178
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted 155139281 1429534242
+
+\lang ngerman
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 155139281 1429534178
+PassThruChars
+\end_layout
+
+\end_inset
+
+
+\lang english
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 155139281 1429534178
+string of characters
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+Defines individual characters that should be output in raw form, meaning
+ without special translations that \SpecialChar LaTeX
+ would require.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -14093,7 +14433,8 @@ Preamble
 
 \end_inset
 
- Information to be included in the LaTeX preamble when this style is used.
+ Information to be included in the \SpecialChar LaTeX
+ preamble when this style is used.
  Used to define macros, load packages, etc., required by this particular
  style.
  Must end with 
@@ -14225,7 +14566,8 @@ status collapsed
 
 \end_inset
 
-] Resets the LaTeX arguments of this style (as defined via the 
+] Resets the \SpecialChar LaTeX
+ arguments of this style (as defined via the 
 \begin_inset Flex Code
 status collapsed
 
@@ -14426,8 +14768,9 @@ Spacing
 
 \end_inset
 
- implies the generation of specific LaTeX code, using the LaTeX package
- 
+ implies the generation of specific \SpecialChar LaTeX
+ code, using the \SpecialChar LaTeX
+ package 
 \family roman
 
 \begin_inset Flex Code
@@ -14692,9 +15035,10 @@ Internationalization of Paragraph Styles
 \end_layout
 
 \begin_layout Standard
-LyX has long supported internationalization of layout information, but,
- until version 2.0, this applied only to the user interface and not to, say,
- PDF output.
+\SpecialChar LyX
+ has long supported internationalization of layout information, but, until
+ version 2.0, this applied only to the user interface and not to, say, PDF
+ output.
  Thus, French authors were forced to resort to ugly hacks if they wanted
  `
 \lang french
@@ -14816,7 +15160,8 @@ EndBabelPreamble
 
 \end_deeper
 \begin_layout Standard
-In principle, any legal LaTeX may appear in the 
+In principle, any legal \SpecialChar LaTeX
+ may appear in the 
 \begin_inset Flex Code
 status collapsed
 
@@ -14838,7 +15183,8 @@ BabelPreamble
 
  tags, but in practice they will typically look as they do here.
  The key to correct translation of the typeset text is the definition of
- the LaTeX command 
+ the \SpecialChar LaTeX
+ command 
 \begin_inset Flex Code
 status collapsed
 
@@ -14909,8 +15255,10 @@ _()
 
 \end_inset
 
-, which will be replaced, when LyX produces LaTeX output, with the translation
- of its argument into the document language.
+, which will be replaced, when \SpecialChar LyX
+ produces \SpecialChar LaTeX
+ output, with the translation of
+ its argument into the document language.
 \end_layout
 
 \begin_layout Standard
@@ -15000,7 +15348,8 @@ claimname}{Behauptung}
 \end_layout
 
 \begin_layout Standard
-LaTeX and 
+\SpecialChar LaTeX
+ and 
 \begin_inset Flex Code
 status collapsed
 
@@ -15015,7 +15364,8 @@ babel
 
 \begin_layout Standard
 One important point to note here is that the translations are provided by
- LyX itself, through the file 
+ \SpecialChar LyX
+ itself, through the file 
 \begin_inset Flex Code
 status collapsed
 
@@ -15046,9 +15396,11 @@ BabelPreamble
 
 \end_inset
 
- are really only of use in layout files that are provided with LyX, since
- text entered in user-created layout files will not be seen by LyX's internation
-alization routines unless the 
+ are really only of use in layout files that are provided with \SpecialChar LyX
+, since text
+ entered in user-created layout files will not be seen by \SpecialChar LyX
+'s internationalizatio
+n routines unless the 
 \begin_inset Flex Code
 status collapsed
 
@@ -15060,9 +15412,11 @@ layouttranslations
 
  file is modified accordingly.
  That said, however, any layout created with the intention that it will
- be included with LyX should use these tags where appropriate.
- Please note that the paragraph style translations provided by LyX will
- never change with a minor update (e.
+ be included with \SpecialChar LyX
+ should use these tags where appropriate.
+ Please note that the paragraph style translations provided by \SpecialChar LyX
+ will never
+ change with a minor update (e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -15114,7 +15468,7 @@ table
 
 \end_inset
 
-, \SpecialChar \ldots{}
+, \SpecialChar ldots
 ) in the text class itself.
  Standard floats are included in the file 
 \begin_inset Flex Code
@@ -15136,7 +15490,8 @@ Input stdfloats.inc
 \begin_layout Standard
 to your layout file.
  If you want to implement a text class that proposes some other float types
- (like the AGU class bundled with LyX), the information below will hopefully
+ (like the AGU class bundled with \SpecialChar LyX
+), the information below will hopefully
  help you:
 \end_layout
 
@@ -15170,7 +15525,8 @@ string
 
 ] The file name extension of an auxiliary file for the list of figures (or
  whatever).
- LaTeX writes the captions to this file.
+ \SpecialChar LaTeX
+ writes the captions to this file.
 \end_layout
 
 \begin_layout Description
@@ -15265,7 +15621,8 @@ status collapsed
 \end_inset
 
 ] Indicates whether the float is already defined in the document class or
- if instead the LaTeX package 
+ if instead the \SpecialChar LaTeX
+ package 
 \begin_inset Flex Code
 status collapsed
 
@@ -15307,7 +15664,8 @@ status collapsed
 
 \end_inset
 
- if the float is already defined by the LaTeX document class.
+ if the float is already defined by the \SpecialChar LaTeX
+ document class.
 \end_layout
 
 \begin_layout Description
@@ -15400,8 +15758,10 @@ string
 
 ] A title for a list of floats of this kind (list of figures, tables, or
  whatever).
- It is used for the screen label within LyX, it is used by LaTeX for the
- title and it is used as the title in the XHTML output.
+ It is used for the screen label within \SpecialChar LyX
+, it is used by \SpecialChar LaTeX
+ for the title and
+ it is used as the title in the XHTML output.
  It will be translated to the document language.
 \end_layout
 
@@ -15496,7 +15856,8 @@ string
 \end_inset
 
 ] The default placement for the given class of floats.
- The string should be as in standard LaTeX: 
+ The string should be as in standard \SpecialChar LaTeX
+: 
 \begin_inset Flex Code
 status collapsed
 
@@ -15542,7 +15903,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Note that the order of these letters in the string is irrelevant, like in
- LaTeX.
+ \SpecialChar LaTeX
+.
 \end_layout
 
 \end_inset
@@ -15797,7 +16159,8 @@ status collapsed
 
 \end_inset
 
-] Specifies whether this float is defined using the LaTeX package 
+] Specifies whether this float is defined using the \SpecialChar LaTeX
+ package 
 \begin_inset Flex Code
 status collapsed
 
@@ -15807,7 +16170,8 @@ float
 
 \end_inset
 
-, either by the class file, another package or on-the-fly by LyX itself.
+, either by the class file, another package or on-the-fly by \SpecialChar LyX
+ itself.
 \end_layout
 
 \begin_layout Standard
@@ -15864,8 +16228,8 @@ CharStyle
 
 \end_inset
 
-): These define semantic markup corresponding to such LaTeX commands as
- 
+): These define semantic markup corresponding to such \SpecialChar LaTeX
+ commands as 
 \begin_inset Flex Code
 status collapsed
 
@@ -15903,8 +16267,9 @@ Custom
 
 \end_inset
 
-): These can be used to define custom collapsible insets, similar to TeX
- code, footnote, and the like.
+): These can be used to define custom collapsible insets, similar to \SpecialChar TeX
+ code,
+ footnote, and the like.
  An obvious example is an endnote inset, which is defined in the 
 \begin_inset Flex Code
 status collapsed
@@ -15970,9 +16335,9 @@ InsetLayout
 \end_inset
 
  can be used to customize the layout parameters for footnotes, marginal
- notes, note insets, TeX code (ERT) insets, branches, listings, indexes,
- boxes, tables, algorithms, URLs, and captions, as well as to define Flex
- insets.
+ notes, note insets, \SpecialChar TeX
+ code (ERT) insets, branches, listings, indexes, boxes,
+ tables, algorithms, URLs, and captions, as well as to define Flex insets.
 \end_layout
 
 \begin_layout Standard
@@ -16275,7 +16640,8 @@ also include a
 status collapsed
 
 \begin_layout Plain Layout
-LyXType
+\SpecialChar LyX
+Type
 \end_layout
 
 \end_inset
@@ -16326,7 +16692,8 @@ name
  may be be any valid identifier of branch defined in user's document.
  The identifier may include spaces, but in that case the whole thing must
  be wrapped in quotes.
- The main purpose of this feature is to allow LaTeX wrapping around specific
+ The main purpose of this feature is to allow \SpecialChar LaTeX
+ wrapping around specific
  branches as user needs.
 \end_layout
 
@@ -16456,7 +16823,7 @@ int
 
 \end_inset
 
-] Defines argument number of a command\SpecialChar \slash{}
+] Defines argument number of a command\SpecialChar breakableslash
 environment associated with the current
  layout.
  The definition must end with 
@@ -16798,8 +17165,9 @@ Environment
 .
  Indicates whether the environment will stand on its own in the output or
  will appear inline with the surrounding text.
- If set to false, it is supposed that the LaTeX environment ignores white
- space (including one newline character) after the 
+ If set to false, it is supposed that the \SpecialChar LaTeX
+ environment ignores white space
+ (including one newline character) after the 
 \begin_inset Flex Code
 status collapsed
 
@@ -16978,8 +17346,10 @@ LangPreamble
  This is needed for special packages like the listings package that do not
  work with variable width encodings such as utf8.
  Default is false.
- This setting is ignored if fully unicode aware LaTeX backends such as XeLaTeX
- are used.
+ This setting is ignored if fully unicode aware \SpecialChar LaTeX
+ backends such as Xe\SpecialChar LaTeX
+ are
+ used.
 \change_unchanged
 
 \end_layout
@@ -17099,7 +17469,8 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-in TeX code or URL.
+in \SpecialChar TeX
+ code or URL.
  A kludge.
 \change_inserted -712698321 1417441977
 
@@ -17149,7 +17520,8 @@ status collapsed
 
 \end_inset
 
-] Force a a line break in the LaTeX output before the inset starts and after
+] Force a a line break in the \SpecialChar LaTeX
+ output before the inset starts and after
  the inset ends.
  This assures the inset itself is output on its own lines, for parsing purposes.
 
@@ -17435,7 +17807,8 @@ string
 status collapsed
 
 \begin_layout Plain Layout
-TeX code
+\SpecialChar TeX
+ code
 \end_layout
 
 \end_inset
@@ -17493,7 +17866,8 @@ status collapsed
 
 \end_inset
 
-] The name of the corresponding LaTeX stuff.
+] The name of the corresponding \SpecialChar LaTeX
+ stuff.
  Either the environment or command name.
 \end_layout
 
@@ -17538,7 +17912,8 @@ status collapsed
 \end_inset
 
 .
- This parameter cannot be changed from within LyX (use 
+ This parameter cannot be changed from within \SpecialChar LyX
+ (use 
 \begin_inset Flex Code
 status collapsed
 
@@ -17549,7 +17924,8 @@ Argument
 \end_inset
 
  for customizable parameters).
- It will be output as is after all LaTeX 
+ It will be output as is after all \SpecialChar LaTeX
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -17582,7 +17958,8 @@ Command, Environment, None
 
 \end_inset
 
-] How the style should be translated into LaTeX.
+] How the style should be translated into \SpecialChar LaTeX
+.
 \begin_inset Foot
 status collapsed
 
@@ -17644,7 +18021,7 @@ status collapsed
 \emph on
 LatexName
 \emph default
-{\SpecialChar \ldots{}
+{\SpecialChar ldots
 }
 \end_layout
 
@@ -17674,7 +18051,7 @@ begin{
 \emph on
 LatexName
 \emph default
-}\SpecialChar \ldots{}
+}\SpecialChar ldots
 
 \backslash
 end{
@@ -17690,13 +18067,14 @@ LatexName
 \end_layout
 
 \begin_layout Standard
-Putting the last few things together, the LaTeX output will be either: 
+Putting the last few things together, the \SpecialChar LaTeX
+ output will be either: 
 \end_layout
 
 \begin_layout LyX-Code
 
 \backslash
-LatexName[LatexParam]{\SpecialChar \ldots{}
+LatexName[LatexParam]{\SpecialChar ldots
 }
 \end_layout
 
@@ -17707,14 +18085,15 @@ or:
 \begin_layout LyX-Code
 
 \backslash
-begin{LatexName}[LatexParam] \SpecialChar \ldots{}
+begin{LatexName}[LatexParam] \SpecialChar ldots
  
 \backslash
 end{LatexName}
 \end_layout
 
 \begin_layout Standard
-depending upon the LaTeX type.
+depending upon the \SpecialChar LaTeX
+ type.
 \end_layout
 
 \end_deeper
@@ -17810,7 +18189,8 @@ end
 status collapsed
 
 \begin_layout Plain Layout
-LyXType
+\SpecialChar LyX
+Type
 \end_layout
 
 \end_inset
@@ -17865,7 +18245,8 @@ after
 status collapsed
 
 \begin_layout Plain Layout
-LyXType
+\SpecialChar LyX
+Type
 \end_layout
 
 \end_inset
@@ -18312,7 +18693,8 @@ status collapsed
 
 \end_inset
 
-] Resets the LaTeX arguments of this layout (as defined via the 
+] Resets the \SpecialChar LaTeX
+ arguments of this layout (as defined via the 
 \begin_inset Flex Code
 status collapsed
 
@@ -18483,7 +18865,7 @@ figure
 
 \end_inset
 
-, \SpecialChar \ldots{}
+, \SpecialChar ldots
 ) in the text class itself.
  The standard counters are defined in the file 
 \begin_inset Flex Code
@@ -18666,7 +19048,8 @@ counter
 \end_layout
 
 \begin_layout Itemize
-counter values can be expressed using LaTeX-like macros
+counter values can be expressed using \SpecialChar LaTeX
+-like macros
 \begin_inset Newline newline
 \end_inset
 
@@ -18751,7 +19134,7 @@ arabic
 
 \end_inset
 
-: 1, 2, 3,\SpecialChar \ldots{}
+: 1, 2, 3,\SpecialChar ldots
 ; 
 \begin_inset Flex Code
 status collapsed
@@ -18762,7 +19145,7 @@ alph
 
 \end_inset
 
- for lower-case letters: a, b, c, \SpecialChar \ldots{}
+ for lower-case letters: a, b, c, \SpecialChar ldots
 ; 
 \begin_inset Flex Code
 status collapsed
@@ -18773,7 +19156,7 @@ Alph
 
 \end_inset
 
- for upper-case letters: A, B, C, \SpecialChar \ldots{}
+ for upper-case letters: A, B, C, \SpecialChar ldots
 ; 
 \begin_inset Flex Code
 status collapsed
@@ -18784,7 +19167,7 @@ roman
 
 \end_inset
 
- for lower-case roman numerals: i, ii, iii, \SpecialChar \ldots{}
+ for lower-case roman numerals: i, ii, iii, \SpecialChar ldots
 ; 
 \begin_inset Flex Code
 status collapsed
@@ -18795,7 +19178,7 @@ Roman
 
 \end_inset
 
- for upper-case roman numerals: I, II, III\SpecialChar \ldots{}
+ for upper-case roman numerals: I, II, III\SpecialChar ldots
 ; 
 \begin_inset Flex Code
 status collapsed
@@ -19592,7 +19975,8 @@ CiteFormat
 \end_inset
 
  blocks are used to describe how bibliographic information should be displayed,
- both within LyX itself (in the citation dialog and in tooltips, for example)
+ both within \SpecialChar LyX
+ itself (in the citation dialog and in tooltips, for example)
  and in XHTML output.
  Such a block might look like this:
 \end_layout
@@ -19616,10 +20000,13 @@ End
 \begin_layout Standard
 The individual lines define how the bibliographic information associated
  with an article or book, respectively, is to be displayed, and such a definitio
-n can be given for any `entry type' that might be present in a BibTeX file.
- LyX defines a default format in the source code that will be used if no
- specific definition has been given.
- LyX predefines several formats in the file 
+n can be given for any `entry type' that might be present in a Bib\SpecialChar TeX
+ file.
+ \SpecialChar LyX
+ defines a default format in the source code that will be used if no specific
+ definition has been given.
+ \SpecialChar LyX
+ predefines several formats in the file 
 \begin_inset Flex Code
 status collapsed
 
@@ -19629,11 +20016,13 @@ stdciteformats.inc
 
 \end_inset
 
-, which is included in most of LyX's document classes.
+, which is included in most of \SpecialChar LyX
+'s document classes.
 \end_layout
 
 \begin_layout Standard
-The definitions use a simple language that allows BibTeX keys to be replaced
+The definitions use a simple language that allows Bib\SpecialChar TeX
+ keys to be replaced
  with their values.
  Keys should be enclosed in 
 \begin_inset Flex Code
@@ -19891,7 +20280,8 @@ status collapsed
 \end_inset
 
 .
- LyX will treat 
+ \SpecialChar LyX
+ will treat 
 \begin_inset Flex Code
 status collapsed
 
@@ -19916,7 +20306,8 @@ warning
 
 \begin_layout Standard
 or anything like it.
- LyX shouldn't go into an infinite loop, but it may go into a long one before
+ \SpecialChar LyX
+ shouldn't go into an infinite loop, but it may go into a long one before
  it gives up.
 \end_layout
 
@@ -20042,11 +20433,15 @@ Tags for XHTML output
 \end_layout
 
 \begin_layout Standard
-As with LaTeX or DocBook, the format of LyX's XHTML output is also controlled
- by layout information.
- In general, LyX provides sensible defaults and, as mentioned earlier, it
- will even construct default CSS style rules from the other layout tags.
- For example, LyX will attempt to use the information provided in the 
+As with \SpecialChar LaTeX
+ or DocBook, the format of \SpecialChar LyX
+'s XHTML output is also controlled by
+ layout information.
+ In general, \SpecialChar LyX
+ provides sensible defaults and, as mentioned earlier, it will
+ even construct default CSS style rules from the other layout tags.
+ For example, \SpecialChar LyX
+ will attempt to use the information provided in the 
 \begin_inset Flex Code
 status collapsed
 
@@ -20063,8 +20458,9 @@ Font
 \begin_layout Standard
 In many cases, then, you may not have to do anything at all to get acceptable
  XHTML output for your own environments, custom insets, and so forth.
- But in some cases you will, and so LyX provides a number of layout tags
- that can be used to customize the XHTML and CSS that are generated.
+ But in some cases you will, and so \SpecialChar LyX
+ provides a number of layout tags that
+ can be used to customize the XHTML and CSS that are generated.
 \end_layout
 
 \begin_layout Standard
@@ -20110,14 +20506,16 @@ Paragraph styles
 \end_layout
 
 \begin_layout Standard
-The sort of XHTML LyX outputs for a paragraph depends upon whether we are
- dealing with a normal paragraph, a command, or an environment, where this
- is itself determined by the contents of the corresponding 
+The sort of XHTML \SpecialChar LyX
+ outputs for a paragraph depends upon whether we are dealing
+ with a normal paragraph, a command, or an environment, where this is itself
+ determined by the contents of the corresponding 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-LaTeXType
+\SpecialChar LaTeX
+Type
 \end_layout
 
 \end_inset
@@ -20385,7 +20783,8 @@ HTMLLabelFirst
 \begin_layout Standard
 The specific tags and attributes output for each paragraph type can be controlle
 d by means of the layout tags we are about to describe.
- As mentioned earlier, however, LyX uses sensible defaults for many of these,
+ As mentioned earlier, however, \SpecialChar LyX
+ uses sensible defaults for many of these,
  so you often may not need to do very much to get good XHTML output.
  Think of the available tags as there so you can tweak things to your liking.
 \end_layout
@@ -20430,7 +20829,8 @@ class=`mydiv'
 \end_inset
 
 .
- By default, LyX will output 
+ By default, \SpecialChar LyX
+ will output 
 \begin_inset Quotes eld
 \end_inset
 
@@ -20458,7 +20858,8 @@ layoutname
 
 \end_inset
 
- is the LyX name of the layout, made lowercase, for example: chapter.
+ is the \SpecialChar LyX
+ name of the layout, made lowercase, for example: chapter.
  This should 
 \emph on
 not
@@ -20501,7 +20902,8 @@ status collapsed
 
 \end_inset
 
-] Whether to output the default CSS information LyX generates for this layout,
+] Whether to output the default CSS information \SpecialChar LyX
+ generates for this layout,
  even if additional information is explicitly provided via 
 \begin_inset Flex Code
 status collapsed
@@ -20815,8 +21217,8 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-<dt>\SpecialChar \ldots{}
-</dt><dd>\SpecialChar \ldots{}
+<dt>\SpecialChar ldots
+</dt><dd>\SpecialChar ldots
 </dd>
 \end_layout
 
@@ -21051,13 +21453,15 @@ command
 
 \end_inset
 
- Here, too, LyX tries to provide sensible defaults, and it constructs default
+ Here, too, \SpecialChar LyX
+ tries to provide sensible defaults, and it constructs default
  CSS style rules.
  But everything can be customized.
 \end_layout
 
 \begin_layout Standard
-The XHTML LyX outputs for an inset has the following form:
+The XHTML \SpecialChar LyX
+ outputs for an inset has the following form:
 \end_layout
 
 \begin_layout LyX-Code
@@ -21093,7 +21497,7 @@ value
 \end_layout
 
 \begin_layout Standard
-If the inset permits multiple paragraphs---that is, if 
+If the inset permits multiple paragraphs—that is, if 
 \begin_inset Flex Code
 status collapsed
 
@@ -21103,7 +21507,7 @@ MultiPar
 
 \end_inset
 
- is true---then the contents of the inset will itself be output as paragraphs
+ is true—then the contents of the inset will itself be output as paragraphs
  formatted according to the styles used for those paragraphs (standard,
  quote, and the like).
  The label tag is of course omitted if the paragraph does not have a label
@@ -21156,7 +21560,7 @@ string
 status collapsed
 
 \begin_layout Plain Layout
-class=`myinset' onclick=`\SpecialChar \ldots{}
+class=`myinset' onclick=`\SpecialChar ldots
 '
 \end_layout
 
@@ -21167,7 +21571,8 @@ class=`myinset' onclick=`\SpecialChar \ldots{}
 \end_inset
 
 .
- By default, LyX will output 
+ By default, \SpecialChar LyX
+ will output 
 \begin_inset Quotes eld
 \end_inset
 
@@ -21195,8 +21600,9 @@ insetname
 
 \end_inset
 
- is the LyX name of the inset, made lowercase and with non-alphanumeric
- characters converted to underscores, for example: footnote.
+ is the \SpecialChar LyX
+ name of the inset, made lowercase and with non-alphanumeric characters
+ converted to underscores, for example: footnote.
 \end_layout
 
 \begin_layout Description
@@ -21223,7 +21629,8 @@ status collapsed
 
 \end_inset
 
-] Whether to output the default CSS information LyX generates for this layout,
+] Whether to output the default CSS information \SpecialChar LyX
+ generates for this layout,
  even if additional information is explicitly provided via 
 \begin_inset Flex Code
 status collapsed
@@ -21599,7 +22006,7 @@ string
 status collapsed
 
 \begin_layout Plain Layout
-class=`myfloat' onclick=`\SpecialChar \ldots{}
+class=`myfloat' onclick=`\SpecialChar ldots
 '
 \end_layout
 
@@ -21610,7 +22017,8 @@ class=`myfloat' onclick=`\SpecialChar \ldots{}
 \end_inset
 
 .
- By default, LyX will output 
+ By default, \SpecialChar LyX
+ will output 
 \begin_inset Quotes eld
 \end_inset
 
@@ -21638,7 +22046,8 @@ floattype
 
 \end_inset
 
- is LyX's name for this type of float, as determined by the float declaration
+ is \SpecialChar LyX
+'s name for this type of float, as determined by the float declaration
  (see 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -21753,20 +22162,24 @@ reference "sub:Citation-format-description"
 \end_layout
 
 \begin_layout Subsection
-LyX-generated CSS
+\SpecialChar LyX
+-generated CSS
 \end_layout
 
 \begin_layout Standard
-We have several times mentioned that LyX will generate default CSS style
- rules for both insets and paragraph styles, based upon the other layout
- information that is provided.
- In this section, we shall say a word about which layout information LyX
- uses and how.
+We have several times mentioned that \SpecialChar LyX
+ will generate default CSS style rules
+ for both insets and paragraph styles, based upon the other layout information
+ that is provided.
+ In this section, we shall say a word about which layout information \SpecialChar LyX
+ uses
+ and how.
 \end_layout
 
 \begin_layout Standard
-At present, LyX auto-generates CSS only for font information, making use
- of the 
+At present, \SpecialChar LyX
+ auto-generates CSS only for font information, making use of
+ the 
 \begin_inset Flex Code
 status collapsed
 
@@ -21862,8 +22275,9 @@ font-family: sans-serif;
 \end_inset
 
 .
- The correspondence of LyX sizes and CSS sizes is a little less obvious
- but nonetheless intuitive.
+ The correspondence of \SpecialChar LyX
+ sizes and CSS sizes is a little less obvious but
+ nonetheless intuitive.
  See the 
 \begin_inset Flex Code
 status collapsed
@@ -21925,8 +22339,9 @@ WARNING: This portion of the documentation has not been updated for some
 \end_layout
 
 \begin_layout Standard
-The use of material from sources external to LyX is covered in detail in
- the 
+The use of material from sources external to \SpecialChar LyX
+ is covered in detail in the
+ 
 \emph on
 Embedded Objects
 \emph default
@@ -21945,17 +22360,19 @@ The external material feature is based on the concept of a
 template
 \emph default
 .
- A template is a specification of how LyX should interface with a certain
- kind of material.
- As bundled, LyX comes with predefined templates for Xfig figures, various
+ A template is a specification of how \SpecialChar LyX
+ should interface with a certain kind
+ of material.
+ As bundled, \SpecialChar LyX
+ comes with predefined templates for Xfig figures, various
  raster format images, chess diagrams, and LilyPond music notation.
  You can check the actual list by using the menu 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-Insert\SpecialChar \menuseparator
-File\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+File\SpecialChar menuseparator
 External Material
 \end_layout
 
@@ -21966,7 +22383,8 @@ External Material
  kind of material.
  Later we'll describe in more detail what is involved, and hopefully you
  will submit all the templates you create so we can include them in a later
- LyX version.
+ \SpecialChar LyX
+ version.
 \end_layout
 
 \begin_layout Standard
@@ -22018,7 +22436,8 @@ transfig
 \end_inset
 
  in order to create a PostScript file that can readily be included in your
- LaTeX file.
+ \SpecialChar LaTeX
+ file.
  In this case, the 
 \begin_inset Flex Code
 status collapsed
@@ -22043,7 +22462,8 @@ ing idea to include the figure as raw PostScript.
  or try to invoke some graphics to ASCII converter to make the final result
  look similar to the real graphics.
  The external material management allows you to do this, because it is parametri
-zed on the different export formats that LyX supports.
+zed on the different export formats that \SpecialChar LyX
+ supports.
 \end_layout
 
 \begin_layout Standard
@@ -22051,7 +22471,8 @@ Besides supporting the production of different products according to the
  exported format, it supports tight integration with editing and viewing
  applications.
  In the case of an Xfig figure, you are able to invoke Xfig on the original
- file with a single click from within the external material dialog in LyX,
+ file with a single click from within the external material dialog in \SpecialChar LyX
+,
  and also preview the produced PostScript file with Ghostview with another
  click.
  No more fiddling around with the command line and/or file browsers to locate
@@ -22066,7 +22487,8 @@ The external template configuration file
 \end_layout
 
 \begin_layout Standard
-It is relatively easy to add custom external template definitions to LyX.
+It is relatively easy to add custom external template definitions to \SpecialChar LyX
+.
  However, be aware that doing this in an careless manner most probably 
 \emph on
 will
@@ -22094,7 +22516,8 @@ The external templates are defined in the
 status collapsed
 
 \begin_layout Plain Layout
-LyXDir/lib/external_templates
+\SpecialChar LyX
+Dir/lib/external_templates
 \end_layout
 
 \end_inset
@@ -22158,7 +22581,8 @@ Transform Resize
 \end_layout
 
 \begin_layout LyX-Code
-Format LaTeX
+Format \SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -22214,7 +22638,8 @@ FormatEnd
 \end_layout
 
 \begin_layout LyX-Code
-Format PDFLaTeX
+Format PDF\SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -22348,7 +22773,7 @@ Template
 
 \end_inset
 
- \SpecialChar \ldots{}
+ \SpecialChar ldots
  
 \begin_inset Flex Code
 status collapsed
@@ -22371,7 +22796,7 @@ Format
 
 \end_inset
 
- \SpecialChar \ldots{}
+ \SpecialChar ldots
  
 \begin_inset Flex Code
 status collapsed
@@ -22403,7 +22828,8 @@ true|false
 
 \end_inset
 
- Whether the file represented by the template must be generated by LyX.
+ Whether the file represented by the template must be generated by \SpecialChar LyX
+.
  This command must occur exactly once.
 \end_layout
 
@@ -22522,7 +22948,8 @@ InputFormat
 \end_inset
 
  The file format of the original file.
- This must be the name of a format that is known to LyX (see 
+ This must be the name of a format that is known to \SpecialChar LyX
+ (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Formats"
@@ -22549,8 +22976,9 @@ status collapsed
 \end_inset
 
  if the template can handle original files of more than one format.
- LyX will attempt to interrogate the file itself in order to deduce its
- format in this case.
+ \SpecialChar LyX
+ will attempt to interrogate the file itself in order to deduce its format
+ in this case.
  This command must occur exactly once.
 \end_layout
 
@@ -22646,7 +23074,9 @@ Format
 \begin_inset space ~
 \end_inset
 
-LaTeX|PDFLaTeX|PlainText|DocBook
+\SpecialChar LaTeX
+|PDF\SpecialChar LaTeX
+|PlainText|DocBook
 \end_layout
 
 \end_inset
@@ -22787,7 +23217,8 @@ Preamble
 \end_inset
 
  This command specifies a preamble snippet that will be included in the
- LaTeX preamble.
+ \SpecialChar LaTeX
+ preamble.
  It has to be defined using 
 \begin_inset Flex Code
 status collapsed
@@ -22798,7 +23229,7 @@ PreambleDef
 
 \end_inset
 
- \SpecialChar \ldots{}
+ \SpecialChar ldots
  
 \begin_inset Flex Code
 status collapsed
@@ -22851,7 +23282,8 @@ Requirement
 
 \end_inset
 
- The name of a required LaTeX package.
+ The name of a required \SpecialChar LaTeX
+ package.
  The package is included via 
 \begin_inset Flex Code
 status collapsed
@@ -22864,7 +23296,8 @@ usepackage{}
 
 \end_inset
 
- in the LaTeX preamble.
+ in the \SpecialChar LaTeX
+ preamble.
  This command may occur zero or more times.
 \end_layout
 
@@ -22886,8 +23319,8 @@ RotationLatexCommand
 
 \end_inset
 
- This command specifies that the built in LaTeX command should be used for
- rotation.
+ This command specifies that the built in \SpecialChar LaTeX
+ command should be used for rotation.
  This command may occur once or not at all.
 \end_layout
 
@@ -22909,8 +23342,8 @@ ResizeLatexCommand
 
 \end_inset
 
- This command specifies that the built in LaTeX command should be used for
- resizing.
+ This command specifies that the built in \SpecialChar LaTeX
+ command should be used for resizing.
  This command may occur once or not at all.
 \end_layout
 
@@ -23017,14 +23450,15 @@ UpdateFormat
 \end_inset
 
  The file format of the converted file.
- This must be the name of a format that is known to LyX (see the 
+ This must be the name of a format that is known to \SpecialChar LyX
+ (see the 
 \begin_inset Flex MenuItem
 status collapsed
 
 \begin_layout Plain Layout
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-File Handling\SpecialChar \menuseparator
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
+File Handling\SpecialChar menuseparator
 File Format
 \end_layout
 
@@ -23082,7 +23516,7 @@ PreambleDef
 
 \end_inset
 
- \SpecialChar \ldots{}
+ \SpecialChar ldots
  
 \begin_inset Flex Code
 status collapsed
@@ -23138,7 +23572,8 @@ $$AbsOrRelPathMaster
 
 \end_inset
 
- The file path, absolute or relative to the master LyX document.
+ The file path, absolute or relative to the master \SpecialChar LyX
+ document.
 \end_layout
 
 \begin_layout Description
@@ -23151,7 +23586,8 @@ $$AbsOrRelPathParent
 
 \end_inset
 
- The file path, absolute or relative to the LyX document.
+ The file path, absolute or relative to the \SpecialChar LyX
+ document.
 \end_layout
 
 \begin_layout Description
@@ -23235,7 +23671,8 @@ $$FName
 \end_inset
 
  The filename of the file specified in the external material dialog.
- This is either an absolute name, or it is relative to the LyX document.
+ This is either an absolute name, or it is relative to the \SpecialChar LyX
+ document.
 \end_layout
 
 \begin_layout Description
@@ -23258,7 +23695,8 @@ $$FName
 
 \end_inset
 
- (absolute name or relative to the LyX document).
+ (absolute name or relative to the \SpecialChar LyX
+ document).
 \end_layout
 
 \begin_layout Description
@@ -23271,7 +23709,8 @@ $$RelPathMaster
 
 \end_inset
 
- The file path, relative to the master LyX document.
+ The file path, relative to the master \SpecialChar LyX
+ document.
 \end_layout
 
 \begin_layout Description
@@ -23284,7 +23723,8 @@ $$RelPathParent
 
 \end_inset
 
- The file path, relative to the LyX document.
+ The file path, relative to the \SpecialChar LyX
+ document.
 \end_layout
 
 \begin_layout Description
@@ -23299,7 +23739,8 @@ $$Sysdir
 
  This macro will expand to the absolute path of the system directory.
  This is typically used to point to the various helper scripts that are
- bundled with LyX.
+ bundled with \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Description
@@ -23530,17 +23971,22 @@ y.
 \end_layout
 
 \begin_layout Enumerate
-LaTeX treats relative file names differently than LyX and other programs
- in nested included files.
- For LyX, a relative file name is always relative to the document that contains
+\SpecialChar LaTeX
+ treats relative file names differently than \SpecialChar LyX
+ and other programs in nested
+ included files.
+ For \SpecialChar LyX
+, a relative file name is always relative to the document that contains
  the file name.
- For LaTeX, it is always relative to the master document.
+ For \SpecialChar LaTeX
+, it is always relative to the master document.
  These two definitions are identical if you have only one document, but
  differ if you have a master document that includes part documents.
  That means that relative filenames must be transformed when presented to
- LaTeX.
- Fortunately LyX does this automatically for you if you choose the right
- macros.
+ \SpecialChar LaTeX
+.
+ Fortunately \SpecialChar LyX
+ does this automatically for you if you choose the right macros.
 \end_layout
 
 \begin_layout Standard
@@ -23573,7 +24019,8 @@ $$AbsOrRelPathMaster
 
 \end_inset
 
- if the substituted string is some kind of LaTeX input.
+ if the substituted string is some kind of \SpecialChar LaTeX
+ input.
 \end_layout
 
 \begin_layout Itemize
@@ -23648,8 +24095,9 @@ The external material feature interfaces with a lot of external programs
 
 \begin_layout Standard
 However, since the external program commands are specified in the template
- configuration file only, there are no security issues if LyX is properly
- configured with safe templates only.
+ configuration file only, there are no security issues if \SpecialChar LyX
+ is properly configure
+d with safe templates only.
  This is so because the external programs are invoked with the 
 \begin_inset Flex Code
 status collapsed
@@ -23678,7 +24126,8 @@ system
 This also implies that you are restricted in what command strings you can
  use in the external material templates.
  In particular, pipes and redirection are not readily available.
- This has to be so if LyX should remain safe.
+ This has to be so if \SpecialChar LyX
+ should remain safe.
  If you want to use some of the shell features, you should write a safe
  script to do this in a controlled manner, and then invoke the script from
  the command string.
@@ -23708,9 +24157,11 @@ will
 \emph default
  provide an easily exploitable security hole in your system.
  Of course it stands to reason that such unsafe templates will never be
- included in the standard LyX distribution, although we do encourage people
+ included in the standard \SpecialChar LyX
+ distribution, although we do encourage people
  to submit new templates in the open source tradition.
- But LyX as shipped from the official distribution channels will never have
+ But \SpecialChar LyX
+ as shipped from the official distribution channels will never have
  unsafe templates.
 \end_layout
 
@@ -23720,14 +24171,16 @@ Including external material provides a lot of power, and you have to be
  A subtle error in a single line in an innocent looking script can open
  the door to huge security problems.
  So if you do not fully understand the issues, we recommend that you consult
- a knowledgeable security professional or the LyX development team if you
- have any questions about whether a given template is safe or not.
+ a knowledgeable security professional or the \SpecialChar LyX
+ development team if you have
+ any questions about whether a given template is safe or not.
  And do this before you use it in an uncontrolled environment.
 \end_layout
 
 \begin_layout Chapter
 \start_of_appendix
-List of supported LyX functions to be used in layouts
+List of supported \SpecialChar LyX
+ functions to be used in layouts
 \begin_inset CommandInset label
 LatexCommand label
 name "chap:List-of-functions"
@@ -24584,7 +25037,8 @@ name "chap:Names-of-colors"
 
 \begin_layout Standard
 The colors listed here are the standard colors and the those that you can
- adjust in the LyX preferences.
+ adjust in the \SpecialChar LyX
+ preferences.
 \end_layout
 
 \begin_layout Description
@@ -24600,7 +25054,7 @@ none
 \uwave off
 \noun off
 \color none
- No particular color -- clear or default
+ No particular color – clear or default
 \end_layout
 
 \begin_layout Description
@@ -24744,7 +25198,8 @@ eolmarker End of line marker color
 \end_layout
 
 \begin_layout Description
-error Color of the LaTeX error box
+error Color of the \SpecialChar LaTeX
+ error box
 \end_layout
 
 \begin_layout Description
@@ -24796,7 +25251,8 @@ language Color for marking foreign language words
 \end_layout
 
 \begin_layout Description
-latex Text color in LaTeX mode
+latex Text color in \SpecialChar LaTeX
+ mode
 \end_layout
 
 \begin_layout Description

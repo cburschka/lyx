@@ -285,6 +285,8 @@ public:
 	bool free_spacing;
 	///
 	bool pass_thru;
+	/// Individual chars to be passed verbatim
+	docstring pass_thru_chars;
 	///
 	bool parbreak_is_newline;
 	/// show this in toc

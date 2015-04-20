@@ -61,7 +61,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 54; //gb: add FixedWidthPreambleEncoding tag for InsetLayouts
+int const LAYOUT_FORMAT = 55; //spitz: InsetLayout and Layout tags PassThruChars
 
 namespace {
 
