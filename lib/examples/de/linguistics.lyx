@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 486
 \begin_document
 \begin_header
 \textclass article
@@ -87,7 +87,8 @@ linguistics
 \begin_body
 
 \begin_layout Title
-Linguistische Arbeiten mit LyX
+Linguistische Arbeiten mit \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Author
@@ -107,11 +108,12 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-18.02.2013
+20.04.2015
 \end_layout
 
 \begin_layout Abstract
-In diesem Text werden einige Funktionen von LyX vorgestellt, die spezifisch
+In diesem Text werden einige Funktionen von \SpecialChar LyX
+ vorgestellt, die spezifisch
  auf die Bedürfnisse von Linguistinnen und Linguisten ausgerichtet sind.
  Es wird gezeigt, wie nummerierte Beispiele, Glossen, OT-Tableaux, semantische
  Auszeichnung und phonetische Notation (IPA) erzeugt werden können.
@@ -130,7 +132,8 @@ Linguistik
 \begin_inset Quotes grd
 \end_inset
 
--Modul bereitgestellt, das seit Version 1.6.0 mit LyX mitgeliefert wird.
+-Modul bereitgestellt, das seit Version 1.6.0 mit \SpecialChar LyX
+ mitgeliefert wird.
  
 \begin_inset Quotes gld
 \end_inset
@@ -139,14 +142,15 @@ Module
 \begin_inset Quotes grd
 \end_inset
 
- -- das Konzept wurde ebenfalls mit LyX 1.6.0 eingeführt -- sind Ergänzungsdateien
-, welche die von der Dokumentklasse bereitgestellten Möglichkeiten zumeist
+ – das Konzept wurde ebenfalls mit \SpecialChar LyX
+ 1.6.0 eingeführt – sind Ergänzungsdateien,
+ welche die von der Dokumentklasse bereitgestellten Möglichkeiten zumeist
  für sehr spezifische Aufgaben erweitern und die für jedes Dokument (egal
  welcher Klasse) einfach ausgewählt werden können.
  Um das Linguistik-Modul zu verwenden, gehen sie zu 
 \family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
 Module
 \family default
 , wählen Sie 
@@ -168,10 +172,12 @@ inzufügen
 \end_layout
 
 \begin_layout Standard
-Grundsätzlich sollte das Modul in jeder von LyX unterstützten Dokumentklasse
+Grundsätzlich sollte das Modul in jeder von \SpecialChar LyX
+ unterstützten Dokumentklasse
  funktionieren (falls nicht, informieren Sie bitte den Autor dieses Textes).
  Allerdings müssen Sie, um alle Features nutzen zu können, die folgenden
- LaTeX-Pakete installiert haben:
+ \SpecialChar LaTeX
+-Pakete installiert haben:
 \end_layout
 
 \begin_layout Enumerate
@@ -187,6 +193,10 @@ key "covington"
 \end_inset
 
 : Dieses Paket wird benötigt, um nummerierte Beispiele und Glossen zu erzeugen.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -220,6 +230,10 @@ convington
  selbst nicht unterstützt).
  Das Paket ist darüber hinaus aber auch generell nützlich, um das Aussehen
  von Listen (Aufzählungen, Auflistungen, Beschreibungen) anzupassen.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -253,6 +267,10 @@ Bedeutung
 .
  Das Paket erlaubt es, kontextsensible Anführungszeichen zu generieren (bspw.
  je nach aktuell verwendeter Sprache).
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -280,7 +298,12 @@ key "float"
 \end_inset
 
 : Dieses Paket brauchen wir für die OT-Tableaux und das Tableaux-Verzeichnis.
- Es sollte Bestandteil jeder LaTeX-Distribution sein.
+ Es sollte Bestandteil jeder \SpecialChar LaTeX
+-Distribution sein.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -360,8 +383,8 @@ Querverweise auf Beispiele erzeugen Sie wie gewohnt: Sie fügen im Beispiel
  eine Marke ein, und an der Stelle, an der der Querverweis erscheinen soll,
  einen Verweis mittels 
 \family sans
-Einfügen\SpecialChar \menuseparator
-Querverweis\SpecialChar \ldots{}
+Einfügen\SpecialChar menuseparator
+Querverweis\SpecialChar ldots
 
 \family default
  
@@ -385,6 +408,16 @@ reference "sub:Unterbeispiel"
 .
 \end_layout
 
+\begin_layout Standard
+Wenn Sie die Nummerierung für einzelne Beispiele ändern möchten, verwenden
+ Sie 
+\family sans
+Einfügen\SpecialChar menuseparator
+Benutzerdefinierte Nummerierung
+\family default
+.
+\end_layout
+
 \begin_layout Section
 Glossen
 \end_layout
@@ -393,12 +426,12 @@ Glossen
 Das Linguistikmodul stellt zwei Arten von Glossen zur Verfügung.
  Beide sind über 
 \family sans
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Benutzerdefinierte Einfügungen
 \begin_inset space ~
 \end_inset
 
-\SpecialChar \ldots{}
+\SpecialChar ldots
 
 \family default
  zugänglich.
@@ -423,7 +456,8 @@ Tri-Glosse
 \backslash
 glt
 \family default
- eingeleitet werden, der direkt (also nicht im TeX-Modus) eingegeben werden
+ eingeleitet werden, der direkt (also nicht im \SpecialChar TeX
+-Modus) eingegeben werden
  muss.
 \end_layout
 
@@ -539,12 +573,15 @@ glt Do you have matches?
 \end_layout
 
 \begin_layout Subsection*
-Beschränkungen von LyX-Glossen
+Beschränkungen von \SpecialChar LyX
+-Glossen
 \end_layout
 
 \begin_layout Standard
-Die Unterstützung von Glossen in LyX steckt noch in den Kinderschuhen.
- Es gibt einige Beschränkungen, die in zukünftigen LyX-Versionen möglicherweise
+Die Unterstützung von Glossen in \SpecialChar LyX
+ steckt noch in den Kinderschuhen.
+ Es gibt einige Beschränkungen, die in zukünftigen \SpecialChar LyX
+-Versionen möglicherweise
  behoben werden:
 \end_layout
 
@@ -552,14 +589,16 @@ Die Unterstützung von Glossen in LyX steckt noch in den Kinderschuhen.
 Schriftänderungen sind in den Glossen nicht möglich.
  Der Textstil-Dialog ist daher auch deaktiviert.
  Da Wörter in Glossen niemals getrennt werden, ist eine explizite Bestimmung
- der Sprache in der LaTeX-Ausgabe nicht nötig (und sie würde auch zu Fehlern
+ der Sprache in der \SpecialChar LaTeX
+-Ausgabe nicht nötig (und sie würde auch zu Fehlern
  führen, da das 
 \emph on
 covington
 \emph default
 -Paket dies nicht unterstützt).
  Dennoch wollen Sie vielleicht die Sprache in den Glossen festlegen, damit
- die Rechtschreibprüfung in LyX richtig funktioniert.
+ die Rechtschreibprüfung in \SpecialChar LyX
+ richtig funktioniert.
  Um das zu tun, müssen Sie folgendermaßen vorgehen: Markieren Sie den Text
  und führen Sie dann 
 \family sans
@@ -610,34 +649,42 @@ english
 french
 \family default
 .
- In der LaTeX-Ausgabe werden die Sprachumschaltungen nun zwar weiterhin
- unterdrückt, aber die Rechtschreibprüfung erkennt die Sprache.
+ In der \SpecialChar LaTeX
+-Ausgabe werden die Sprachumschaltungen nun zwar weiterhin unterdrückt,
+ aber die Rechtschreibprüfung erkennt die Sprache.
 \end_layout
 
 \begin_layout Enumerate
-Da der Inhalt von Glossen unverändert an LaTeX weitergegeben wird, passt
- LyX die Textkodierung nicht an den Inhalt an.
+Da der Inhalt von Glossen unverändert an \SpecialChar LaTeX
+ weitergegeben wird, passt \SpecialChar LyX
+ die
+ Textkodierung nicht an den Inhalt an.
  Das heißt, dass Sie, wenn Sie in der Glosse Zeichen verwenden, die die
  aktuelle Kodierung nicht abdeckt, eine Fehlermeldung bekommen werden.
  Folgendermaßen können Sie das Problem umgehen:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 Geben Sie entweder den Text außerhalb der Glosse ein, öffnen Sie dann 
 \family sans
-Ansicht\SpecialChar \menuseparator
+Ansicht\SpecialChar menuseparator
 Quelle ansehen
 \family default
- und kopieren Sie den LaTeX-Code von dort in die Glosse,
+ und kopieren Sie den \SpecialChar LaTeX
+-Code von dort in die Glosse,
 \end_layout
 
 \begin_layout Itemize
 oder markieren Sie die ganze Glosse (von außen) und stellen Sie über 
 \family sans
-Bearbeiten\SpecialChar \menuseparator
-Sprache\SpecialChar \menuseparator
-Weitere Sprachen\SpecialChar \ldots{}
+Bearbeiten\SpecialChar menuseparator
+Sprache\SpecialChar menuseparator
+Weitere Sprachen\SpecialChar ldots
  
 \family default
 die angemessene Sprache ein,
@@ -646,9 +693,9 @@ die angemessene Sprache ein,
 \begin_layout Itemize
 oder ändern Sie in 
 \family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar ldots
+\SpecialChar menuseparator
 Sprache
 \family default
  die Kodierung auf 
@@ -661,14 +708,17 @@ Unicode (utf8
 \begin_layout Itemize
 oder wählen Sie in 
 \family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar ldots
+\SpecialChar menuseparator
 Schriften
 \family default
  
 \emph on
-Nicht-TeX-Schriften verwenden (via XeTeX/LuaTeX)
+Nicht-\SpecialChar TeX
+-Schriften verwenden (via Xe\SpecialChar TeX
+/Lua\SpecialChar TeX
+)
 \emph default
 .
 \end_layout
@@ -679,20 +729,26 @@ Innerhalb von Glossen können Seiten umbrochen werden, was natürlich nicht
  erwünscht ist.
  Um dies zu umgehen, können Sie Glossen in Boxen packen (über 
 \family sans
-Einfügen\SpecialChar \menuseparator
-Box\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
+Box\SpecialChar menuseparator
 Rahmenlos
 \family default
 ).
  Wenn Sie dies automatisch für alle Glossen im Dokument tun wollen, können
- Sie den folgenden LaTeX-Code nach 
+ Sie den folgenden \SpecialChar LaTeX
+-Code nach 
 \family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
-LaTeX-Vorspann
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar ldots
+\SpecialChar menuseparator
+\SpecialChar LaTeX
+-Vorspann
 \family default
  kopieren:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -840,7 +896,7 @@ Die OT-Tableaux selbst können natürlich einfach als normale Tabellen eingegebe
  werden (Spezifika wie gestrichelte Tabellenlinien und schattierte Tabellenzelle
 n, die man hierfür manchmal braucht, sind in 
 \family sans
-Hilfe\SpecialChar \menuseparator
+Hilfe\SpecialChar menuseparator
 Eingebettete Objekt
 \family default
 e beschrieben).
@@ -850,11 +906,12 @@ e beschrieben).
 \begin_layout Standard
 Wenn Sie allerdings Ihre Tableaux durch das Dokument hindurch nummerieren
  und ein eigenes Tableaux-Verzeichnis einrichten möchten, reichen die Bordmittel
- von LyX nicht aus.
+ von \SpecialChar LyX
+ nicht aus.
  Auch hier hilft das Linguistikmodul.
  Wenn es ausgewählt ist, finden Sie unter 
 \family sans
-Einfügen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
 Gleitobjekte
 \family default
  zusätzlich ein Tableau-Gleitobjekt (siehe Tableau
@@ -882,7 +939,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1174,13 +1231,13 @@ name "tab:Beispiel-Tableau"
 
 \begin_layout Standard
 Bitte beachten Sie, dass die Legende in der Standardeinstellung immer unter
- dem Tableau ausgegeben wird, egal, wohin Sie sie im LyX-Arbeitsfenster
- setzen.
+ dem Tableau ausgegeben wird, egal, wohin Sie sie im \SpecialChar LyX
+-Arbeitsfenster setzen.
  Um die Legende über die Tableaux zu setzen, müssen Sie den folgenden Code
  in 
 \family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
 Präambel 
 \family default
 eingeben:
@@ -1219,8 +1276,8 @@ restylefloat{tableau}
 Ein Verzeichnis der Tableaux geben Sie, wie bei normalen Tabellen auch,
  über 
 \family sans
-Einfügen\SpecialChar \menuseparator
-Liste\SpecialChar \slash{}
+Einfügen\SpecialChar menuseparator
+Liste\SpecialChar breakableslash
 Inhaltsverzeichnis
 \family default
  ein.
@@ -1291,7 +1348,7 @@ Bedeutung
 \begin_layout Standard
 Diese Textstile finden Sie unter 
 \family sans
-Bearbeiten\SpecialChar \menuseparator
+Bearbeiten\SpecialChar menuseparator
 Textstil
 \family default
 .
@@ -1301,8 +1358,8 @@ Textstil
  Wenn Sie (oder Ihr Verlag) also etwa Ausdrücke doch fett gesetzt haben
  wollen, geben Sie einfach den folgenden Code in 
 \family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
 Präambel
 \family default
  ein:
@@ -1348,14 +1405,18 @@ Phonetische Notation (IPA)
 
 \begin_layout Standard
 Um phonetische Zeichen einzugeben, brauchen Sie das Linguistikmodul nicht.
- IPA-Unterstützung ist mittlerweile eine Grundfunktion von LyX.
+ IPA-Unterstützung ist mittlerweile eine Grundfunktion von \SpecialChar LyX
+.
  Da IPA aber von Linguistinnen und Linguisten sehr häufig gebraucht wird,
  wird die Verwendung der IPA-Funktion hier trotzdem (kurz) beschrieben.
 \end_layout
 
 \begin_layout Standard
-Um LyX' IPA-Funktion mit klassischem LaTeX oder PDFLaTeX zu benutzen, müssen
- Sie das Paket 
+Um \SpecialChar LyX
+' IPA-Funktion mit klassischem \SpecialChar LaTeX
+ oder PDF\SpecialChar LaTeX
+ zu benutzen, müssen Sie das
+ Paket 
 \emph on
 tipa
 \emph default
@@ -1371,18 +1432,21 @@ key "tipa"
 status collapsed
 
 \begin_layout Plain Layout
-Wenn Sie XeTeX oder LuaTeX verwenden (und 
+Wenn Sie Xe\SpecialChar TeX
+ oder Lua\SpecialChar TeX
+ verwenden (und 
 \begin_inset Quotes gld
 \end_inset
 
-Nicht-TeX-Schriften verwenden
+Nicht-\SpecialChar TeX
+-Schriften verwenden
 \begin_inset Quotes grd
 \end_inset
 
  in 
 \family sans
-Dokument\SpecialChar \menuseparator
-Einstellungen\SpecialChar \menuseparator
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
 Schriften
 \family default
  aktiviert haben), brauchen Sie kein zusätzliches Paket.
@@ -1409,8 +1473,8 @@ key "preview"
 Phonetische Zeichen werden in eine spezielle Umgebung eingegeben, die Sie
  über 
 \family sans
-Einfügen\SpecialChar \menuseparator
-Sonderzeichen\SpecialChar \menuseparator
+Einfügen\SpecialChar menuseparator
+Sonderzeichen\SpecialChar menuseparator
 Phonetische Symbole 
 \family default
 aktivieren.
@@ -1489,9 +1553,9 @@ nach
 \emph default
  installiert ist und Sie außerdem in
 \family sans
- Werkzeuge\SpecialChar \menuseparator
-Einstellungen\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+ Werkzeuge\SpecialChar menuseparator
+Einstellungen\SpecialChar ldots
+\SpecialChar menuseparator
 Grafik
 \family default
  
@@ -1502,8 +1566,9 @@ Sofortige Vorschau
 \begin_inset Quotes grd
 \end_inset
 
- aktiviert haben, zeigt LyX eine WYSIWYG-Vorschau der Notation an, sobald
- der Cursor den IPA-Bereich verlässt.
+ aktiviert haben, zeigt \SpecialChar LyX
+ eine WYSIWYG-Vorschau der Notation an, sobald der
+ Cursor den IPA-Bereich verlässt.
  Alternativ zur Symbolleiste können Sie die Zeichen auch direkt mithilfe
  der Kurznotation eingeben können, die im 
 \emph on
@@ -1529,9 +1594,9 @@ tipa
 ]).
  Alternativ können Sie die meisten IPA-Zeichen auch über 
 \family sans
-Einfügen\SpecialChar \menuseparator
-Sonderzeichen\SpecialChar \menuseparator
-Symbole\SpecialChar \ldots{}
+Einfügen\SpecialChar menuseparator
+Sonderzeichen\SpecialChar menuseparator
+Symbole\SpecialChar ldots
 
 \family default
  in das Eingabefeld eingeben oder sie aus einem anderen Dokument kopieren
@@ -1568,12 +1633,14 @@ Weitere Informationen
 
 \begin_layout Standard
 Mehr und ausführlichere Informationen über die Möglichkeiten des Einsatzes
- von LyX für linguistische Zwecke finden Sie auf der (englischsprachigen)
- 
+ von \SpecialChar LyX
+ für linguistische Zwecke finden Sie auf der (englischsprachigen) 
 \emph on
-LinguistLyX
+Linguist\SpecialChar LyX
+
 \emph default
--Seite auf dem LyX-Wiki 
+-Seite auf dem \SpecialChar LyX
+-Wiki 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "linguistlyx"
@@ -1675,8 +1742,9 @@ key "linguistlyx"
 
 \end_inset
 
-Maria Gouskova, Stacia Hartleben und Jürgen Spitzmüller: Using LyX for Linguisti
-c Papers.
+Maria Gouskova, Stacia Hartleben und Jürgen Spitzmüller: Using \SpecialChar LyX
+ for Linguistic
+ Papers.
  
 \begin_inset Flex URL
 status collapsed

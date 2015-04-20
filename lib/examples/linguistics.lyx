@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 486
 \begin_document
 \begin_header
 \textclass article
@@ -87,7 +87,8 @@ linguistics
 \begin_body
 
 \begin_layout Title
-Writing linguistic papers with LyX
+Writing linguistic papers with \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Author
@@ -107,11 +108,12 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-18/02/2013
+20/04/2015
 \end_layout
 
 \begin_layout Abstract
-This paper describes some features that LyX provides to linguists.
+This paper describes some features that \SpecialChar LyX
+ provides to linguists.
  It demonstrates how to use some native support in order to produce numbered
  examples, glosses, OT tableaux, semantic markup, and phonetic symbols (IPA).
 \end_layout
@@ -129,7 +131,8 @@ Linguistics
 \begin_inset Quotes erd
 \end_inset
 
- module that ships with LyX as of version 1.6.0.
+ module that ships with \SpecialChar LyX
+ as of version 1.6.0.
  
 \begin_inset Quotes eld
 \end_inset
@@ -138,12 +141,13 @@ Modules
 \begin_inset Quotes erd
 \end_inset
 
- are support files (introduced with LyX 1.6.0) that can easily be selected
- for any document.
+ are support files (introduced with \SpecialChar LyX
+ 1.6.0) that can easily be selected for
+ any document.
  In order to use the Linguistics module, go to 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Modules
 \family default
 , select 
@@ -165,7 +169,8 @@ Add
 You should be able to use the module with any document class (please inform
  me, if not).
  However, in order to use all the features, you need to have the following
- LaTeX packages installed:
+ \SpecialChar LaTeX
+ packages installed:
 \end_layout
 
 \begin_layout Enumerate
@@ -181,6 +186,10 @@ key "covington"
 \end_inset
 
 : This is the base package used for numbered examples and glosses.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -221,6 +230,10 @@ itemize
 description
 \emph default
 ).
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -254,6 +267,10 @@ Meaning
  character style.
  The package provides context sensitive quotation marks, depending on the
  language in use.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -281,7 +298,12 @@ key "float"
 \end_inset
 
 : Needed for the OT tableaux floats and list of floats.
- This package should be part of any LaTeX distribution.
+ This package should be part of any \SpecialChar LaTeX
+ distribution.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -359,7 +381,7 @@ And another one
 References to examples are produced as usual: insert a label to the example
  and a cross-reference via 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Cross references
 \family default
 .
@@ -380,6 +402,16 @@ reference "sub:subexample"
 .
 \end_layout
 
+\begin_layout Standard
+If you want to modify the numbering of an individual example, you can use
+ 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Numbering 
+\family default
+.
+\end_layout
+
 \begin_layout Section
 Glosses
 \end_layout
@@ -388,7 +420,7 @@ Glosses
 The Linguistics module provides two kinds of glosses, which can be inserted
  via 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Custom Insets
 \family default
 : The standard 
@@ -412,7 +444,8 @@ e., the paragraphs are automatically broken if they exceed the text width.
 \backslash
 glt
 \family default
- which must be inserted verbatim in the gloss inset (TeX mode is not needed,
+ which must be inserted verbatim in the gloss inset (\SpecialChar TeX
+ mode is not needed,
  and in fact not even possible).
 \end_layout
 
@@ -524,11 +557,13 @@ glt Do you have matches?
 \end_layout
 
 \begin_layout Subsection*
-Shortcomings of LyX's glosses
+Shortcomings of \SpecialChar LyX
+'s glosses
 \end_layout
 
 \begin_layout Standard
-LyX's glosse support is rather basic, and thus has some shortcomings, which
+\SpecialChar LyX
+'s glosse support is rather basic, and thus has some shortcomings, which
  might be addressed in further releases:
 \end_layout
 
@@ -539,7 +574,8 @@ Font changes are not allowed in glosses.
 Character Style
 \family default
  dialog is disabled.
- Since glosses are not hyphenated, an explicit language setting in the LaTeX
+ Since glosses are not hyphenated, an explicit language setting in the \SpecialChar LaTeX
+
  output is not required (in fact, it would break the output, since covington
  does not support it).
  However, you still might want to set the language for proper spell checking.
@@ -576,34 +612,42 @@ french
 ngerman
 \family default
 .
- In the LaTeX output, this setting will be suppressed.
+ In the \SpecialChar LaTeX
+ output, this setting will be suppressed.
 \end_layout
 
 \begin_layout Enumerate
-Since the content of glosses is passed verbatim to LaTeX, LyX does not adapt
- the encoding to the contents.
+Since the content of glosses is passed verbatim to \SpecialChar LaTeX
+, \SpecialChar LyX
+ does not adapt the
+ encoding to the contents.
  That means that if you use characters in the glosse which are not covered
  by the current encoding, you will run into an error message.
  Here are the possible workarounds to this problem:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 Either enter the text outside the glosse, open 
 \family sans
-View\SpecialChar \menuseparator
+View\SpecialChar menuseparator
 View Source
 \family default
- and copy the LaTeX code into the glosse,
+ and copy the \SpecialChar LaTeX
+ code into the glosse,
 \end_layout
 
 \begin_layout Itemize
 or mark the whole glosse (from outside) and set the appropriate language
  via 
 \family sans
-Edit\SpecialChar \menuseparator
-Language\SpecialChar \menuseparator
-More Languages\SpecialChar \ldots{}
+Edit\SpecialChar menuseparator
+Language\SpecialChar menuseparator
+More Languages\SpecialChar ldots
 
 \family default
 ,
@@ -616,9 +660,9 @@ Unicode (utf8)
 \emph default
  via 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar ldots
+\SpecialChar menuseparator
 Language
 \family default
 ,
@@ -627,13 +671,16 @@ Language
 \begin_layout Itemize
 or check 
 \emph on
-Use non-TeX fonts (via XeTeX/LuaTeX)
+Use non-\SpecialChar TeX
+ fonts (via Xe\SpecialChar TeX
+/Lua\SpecialChar TeX
+)
 \emph default
  in 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \ldots{}
-\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar ldots
+\SpecialChar menuseparator
 Fonts
 \family default
 .
@@ -644,19 +691,24 @@ Fonts
 Page breaks can occur within glosses, which is of course not desirable.
  A workaround is to wrap glosses into boxes (via 
 \family sans
-Insert\SpecialChar \menuseparator
-Box\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+Box\SpecialChar menuseparator
 Frameless
 \family default
 ).
  If you want to automate this for all glosses, you can copy the following
  code to 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-LaTeX Preamble
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+\SpecialChar LaTeX
+ Preamble
 \family default
 :
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -824,7 +876,7 @@ List of Tables
 The Linguistics module provides support for both.
  In 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Floats
 \family default
 , you'll find a Tableaux float:
@@ -841,7 +893,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1126,11 +1178,12 @@ Example Tableau
 
 \begin_layout Standard
 Note that by default, the caption is always placed below the tableaux in
- the output, no matter where you put it in the LyX window.
+ the output, no matter where you put it in the \SpecialChar LyX
+ window.
  To get the Tableaux captions on top, put the following code in 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Preamble
 \family default
 :
@@ -1167,7 +1220,7 @@ restylefloat{tableau}
 \begin_layout Standard
 A List of Tableaux inset can be found in 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Lists & TOC
 \family default
 .
@@ -1237,7 +1290,7 @@ meaning
 \begin_layout Standard
 You can insert the character styles via the 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Text Style
 \family default
  submenu.
@@ -1278,14 +1331,19 @@ Phonetic Symbols (IPA)
 
 \begin_layout Standard
 You do not need the Linguistics module to insert phonetic symbols, this
- is a base functionality of LyX.
+ is a base functionality of \SpecialChar LyX
+.
  However, since this is frequently used by linguists, we will describe it
  (briefly) in this manual nevertheless.
 \end_layout
 
 \begin_layout Standard
-If you use traditional LaTeX or PDFLaTeX, a prerequisite to use LyX's IPA
- support is the LaTeX package 
+If you use traditional \SpecialChar LaTeX
+ or PDF\SpecialChar LaTeX
+, a prerequisite to use \SpecialChar LyX
+'s IPA support is
+ the \SpecialChar LaTeX
+ package 
 \emph on
 tipa
 \emph default
@@ -1301,7 +1359,9 @@ key "tipa"
 status collapsed
 
 \begin_layout Plain Layout
-If you use XeTeX or LuaTeX (i.
+If you use Xe\SpecialChar TeX
+ or Lua\SpecialChar TeX
+ (i.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1309,14 +1369,15 @@ e., if you have clicked
 \begin_inset Quotes eld
 \end_inset
 
-Use non-TeX fonts
+Use non-\SpecialChar TeX
+ fonts
 \begin_inset Quotes erd
 \end_inset
 
  in 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Fonts
 \family default
 ), no extra package is needed.
@@ -1342,8 +1403,8 @@ key "preview"
 \begin_layout Standard
 The recommended way to insert phonetic symbols is via 
 \family sans
-Insert\SpecialChar \menuseparator
-Special characters\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+Special characters\SpecialChar menuseparator
 Phonetic symbols.
  
 \family default
@@ -1355,7 +1416,8 @@ inset
 \begin_inset Quotes erd
 \end_inset
 
- in LyX speak), where you can insert the symbols.
+ in \SpecialChar LyX
+ speak), where you can insert the symbols.
  Note that this box can be used both for the insertion of small snippets
  (inline) and multiple paragraphs of phonetic notation.
  While the cursor is inside the box, a toolbar opens, which provides the
@@ -1443,8 +1505,8 @@ after
 \emph default
  is installed and you have switched on instant preview (in
 \family sans
- Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
+ Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
 Graphi
 \family default
 cs), you'll get a nice WYSIWYG preview as soon as the cursor leaves the
@@ -1486,9 +1548,9 @@ tipa
 ]).
  Furthermore, you can insert symbols via 
 \family sans
-Insert\SpecialChar \menuseparator
-Special characters\SpecialChar \menuseparator
-Symbols\SpecialChar \ldots{}
+Insert\SpecialChar menuseparator
+Special characters\SpecialChar menuseparator
+Symbols\SpecialChar ldots
 
 \family default
  (which might be useful for symbols that are not yet covered by the toolbar),
@@ -1524,7 +1586,9 @@ Further information
 
 \begin_layout Standard
 For a detailed description of specific possibilities for linguists, please
- refer to the LinguistLyX page on the LyX wiki 
+ refer to the Linguist\SpecialChar LyX
+ page on the \SpecialChar LyX
+ wiki 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "linguistlyx"
@@ -1625,8 +1689,9 @@ key "linguistlyx"
 
 \end_inset
 
-Maria Gouskova, Stacia Hartleben and Jürgen Spitzmüller: Using LyX for Linguisti
-c Papers.
+Maria Gouskova, Stacia Hartleben and Jürgen Spitzmüller: Using \SpecialChar LyX
+ for Linguistic
+ Papers.
  
 \begin_inset Flex URL
 status collapsed

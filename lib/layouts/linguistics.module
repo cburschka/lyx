@@ -40,13 +40,16 @@ Style Numbered_Examples_(consecutive)
 	LatexType             Item_Environment
 	LatexName             examples
 	LabelString           "Examples:"
+	Argument item:1
+		LabelString   "Custom Numbering|s"
+		Tooltip       "Customize the numeration"
+	EndArgument
 End
 
 
 # multiple numbered example with covington.sty
 Style Subexample
-	CopyStyle	      Numbered_Example_(multiline)
-	LatexType             Item_Environment
+	CopyStyle	      Numbered_Examples_(consecutive)
 	LatexName             subexample
 	LabelString           "Subexample:"
 	Requires	      covington,enumitem

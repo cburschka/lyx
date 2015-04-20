@@ -729,6 +729,45 @@ def revert_sigplan_doi(document):
         # no need to reset i
 
 
+def revert_ex_itemargs(document):
+    " Reverts \\item arguments of the example environments (Linguistics module) to TeX-code "
+
+    # Do we use the linguistics module?
+    have_mod = False
+    mods = document.get_module_list()
+    for mod in mods:
+        if mod == "linguistics":
+            have_mod = True
+            continue
+
+    if not have_mod:
+        return
+
+    i = 0
+    example_layouts = ["Numbered Examples (consecutive)", "Subexample"]
+    while True:
+        i = find_token(document.body, "\\begin_inset Argument item:", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        # Find containing paragraph layout
+        parent = get_containing_layout(document.body, i)
+        if parent == False:
+            document.warning("Malformed LyX document: Can't find parent paragraph layout")
+            i += 1
+            continue
+        parbeg = parent[3]
+        layoutname = parent[0]
+        if layoutname in example_layouts:
+            beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
+            endPlain = find_end_of_layout(document.body, beginPlain)
+            content = document.body[beginPlain + 1 : endPlain]
+            del document.body[i:j+1]
+            subst = put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
+            document.body[parbeg : parbeg] = subst
+        i += 1
+
+
 ##
 # Conversion hub
 #
@@ -748,10 +787,12 @@ convert = [
            [482, [convert_phrases]],
            [483, [convert_specialchar]],
            [484, []],
-           [485, []]
+           [485, []],
+           [486, []]
           ]
 
 revert =  [
+           [485, [revert_ex_itemargs]],
            [484, [revert_sigplan_doi]],
            [483, [revert_georgian]],
            [482, [revert_specialchar]],

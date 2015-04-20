@@ -11,12 +11,29 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2015-04-20 Jürgen Spitzmüller <spitz@lyx.org>
+ 	* Format incremented to 486: Support item arguments in the
+	  "Numbered Examples (consecutive)" and "Subexample" layouts of
+	  the linguistics module:
+	  \item[foo] bar   ==> 	\begin_layout {Subexample|Numbered Examples (consecutive)}
+				\begin_inset Argument item:1
+				status open
+
+				\begin_layout Plain Layout
+				foo
+				\end_layout
+
+				\end_inset
+
+				bar
+				\end_layout
+
 2015-04-09 Jürgen Spitzmüller <spitz@lyx.org>
- 	* Format incremented to 485: new par layout for sigplanconf.layout: 
+ 	* Format incremented to 485: new par layout for sigplanconf.layout:
  	  DOI.
 
-2015-04-06 Uwe Stöhr <uwestoehr@web.de> 
- 	* Format incremented to 484: support for Georgian: 
+2015-04-06 Uwe Stöhr <uwestoehr@web.de>
+ 	* Format incremented to 484: support for Georgian:
  	  \lang georgian
 
 2015-03-23 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
