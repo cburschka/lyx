@@ -246,6 +246,8 @@ private:
 	PreviewLoader & parent_;
 	///
 	Buffer const & buffer_;
+	///
+	mutable int font_scaling_factor_;
 
 	/// We don't own this
 	static lyx::Converter const * pconverter_;
@@ -390,6 +392,7 @@ namespace graphics {
 PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 	: parent_(p), buffer_(b)
 {
+	font_scaling_factor_ = int(buffer_.fontScalingFactor());
 	if (!pconverter_)
 		pconverter_ = setConverter("lyxpreview");
 }
@@ -408,6 +411,19 @@ PreviewLoader::Impl::~Impl()
 PreviewImage const *
 PreviewLoader::Impl::preview(string const & latex_snippet) const
 {
+	int fs = int(buffer_.fontScalingFactor());
+	if (font_scaling_factor_ != fs) {
+		// Refresh all previews on zoom changes
+		font_scaling_factor_ = fs;
+		Cache::const_iterator cit = cache_.begin();
+		Cache::const_iterator cend = cache_.end();
+		while (cit != cend) {
+			string const snippet = (cit++)->first;
+			parent_.remove(snippet);
+			parent_.add(snippet);
+		}
+		parent_.startLoading(false);
+	}
 	Cache::const_iterator it = cache_.find(latex_snippet);
 	return (it == cache_.end()) ? 0 : it->second.get();
 }
@@ -616,13 +632,11 @@ void PreviewLoader::Impl::startLoading(bool wait)
 		return;
 	}
 
-	double const font_scaling_factor = buffer_.fontScalingFactor();
-
 	// The conversion command.
 	ostringstream cs;
 	cs << pconverter_->command()
 	   << " " << quoteName(latexfile.toFilesystemEncoding())
-	   << " --dpi " << int(font_scaling_factor);
+	   << " --dpi " << font_scaling_factor_;
 
 	// FIXME XHTML 
 	// The colors should be customizable.
