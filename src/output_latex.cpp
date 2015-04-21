@@ -1073,6 +1073,7 @@ void TeXOnePar(Buffer const & buf,
 			DocumentClass const & tclass = bparams.documentClass();
 			if ((style == next_layout
 			     && !style.parbreak_is_newline
+			     && !text.inset().getLayout().parbreakIsNewline()
 			     && style.latextype != LATEX_ITEM_ENVIRONMENT
 			     && style.latextype != LATEX_LIST_ENVIRONMENT
 			     && style.align == par.getAlign()
