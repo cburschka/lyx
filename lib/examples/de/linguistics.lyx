@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 487
+\lyxformat 488
 \begin_document
 \begin_header
 \textclass article
@@ -108,7 +108,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-20.04.2015
+21.04.2015
 \end_layout
 
 \begin_layout Abstract
@@ -319,6 +319,37 @@ arg   "float"
 \end_layout
 
 \end_deeper
+\begin_layout Enumerate
+
+\emph on
+forest.sty
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "forest"
+
+\end_inset
+
+: Dieses Paket wird zur Erzeugung von Strukturbäumen verwendet.
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Auf Ihrem System installiert: 
+\begin_inset Info
+type  "package"
+arg   "forest"
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Nummerierte Beispiele
 \end_layout
@@ -441,30 +472,31 @@ Benutzerdefinierte Einfügungen
 \emph on
 Glosse
 \emph default
- besteht aus zwei Zeilen und einer weiteren Zeile für die Paraphrase, eignet
- sich folglich für zweisprachige Glossen, die 
+ besteht aus zwei Zeilen für das Glossenpaar und einer weiteren Zeile für
+ die Paraphrase, die 
 \emph on
 Tri-Glosse
 \emph default
- besteht aus drei Zeilen und einer Zeile für die Paraphrase, erlaubt also
- die Verwendung einer dritten Sprache in der Glosse.
+ besteht aus drei Zeilen und einer Zeile für die Paraphrase (die dritte
+ Zeile wird zumeist für morphologische oder phonologische Angaben verwendet).
  Die einzelnen Zeilen können länger sein als die Textbreite, sie werden
  dann einfach automatisch und korrekt umbrochen.
- Bitte beachten Sie, dass die Zeile für die Paraphrase notwendig ist.
- Wenn sie fehlt, wird die entsprechende Glosse einen Fehler generieren.
- Die Paraphrase muss derzeit noch manuell durch den Befehl 
-\family typewriter
-
-\backslash
-glt
+ Die Paraphrase wird über 
+\family sans
+Einfügen\SpecialChar menuseparator
+Glossen-Übersetzung
 \family default
- eingeleitet werden, der direkt (also nicht im \SpecialChar TeX
--Modus) eingegeben werden
- muss.
+ eingegeben.
+ Ungeachtet wo Sie diese innerhalb der Glosse einfügen, wird die Paraphrase
+ immer als letzte Zeile ausgegeben.
 \end_layout
 
 \begin_layout Standard
-Hier ist ein einfaches Beispiel:
+Hier ist ein einfaches Beispiel für eine 
+\emph on
+Glosse
+\emph default
+:
 \end_layout
 
 \begin_layout Standard
@@ -472,20 +504,33 @@ Hier ist ein einfaches Beispiel:
 status open
 
 \begin_layout Plain Layout
-
-C'est un exemple simple
+C'est       un exemple simple
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Flex GroupGlossedWords
+status open
 
-{Dies ist} ein Beispiel einfach
+\begin_layout Plain Layout
+Dies ist
+\end_layout
+
+\end_inset
+
+ ein Beispiel einfach
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Dies ist ein einfaches Beispiel
+\end_layout
+
+\end_inset
 
 
-\backslash
-glt Dies ist ein einfaches Beispiel
 \end_layout
 
 \end_inset
@@ -495,11 +540,49 @@ glt Dies ist ein einfaches Beispiel
 
 \begin_layout Standard
 \noindent
-Beachten Sie, dass die geschweiften Klammern Mehrwortelemente zusammenhalten.
+Verwenden Sie 
+\family sans
+Bearbeiten\SpecialChar menuseparator
+Textstil\SpecialChar menuseparator
+Glossierte Wortgruppen
+\family default
+, um Mehrwortelemente zusammenzuhalten (alternativ können Sie auch im TeX-Modus
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+diese Wörter geschweift einklammern
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+).
+ Beachten Sie, dass Sie im \SpecialChar LyX
+-Fenster mehrere Leerzechen nacheinander einfügen
+ können, um die Glossen dort schöner auszurichten.
+ Die Ausgabe wird davon nicht berührt.
 \end_layout
 
 \begin_layout Standard
-Eine Tri-Glosse wird analog erzeugt:
+Hier ist eine dreizeilige Glosse (
+\emph on
+Tri-Glosse
+\emph default
+).
+ Sie wird analog erzeugt:
 \end_layout
 
 \begin_layout Standard
@@ -507,25 +590,46 @@ Eine Tri-Glosse wird analog erzeugt:
 status open
 
 \begin_layout Plain Layout
-
-C'est un exemple simple
+C'est      un   exemple simple
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Flex GroupGlossedWords
+status open
 
-{This is} an example simple
+\begin_layout Plain Layout
+This is
+\end_layout
+
+\end_inset
+
+  an   example simple
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Flex GroupGlossedWords
+status open
 
-{Dies ist} ein Beispiel einfach
+\begin_layout Plain Layout
+Dies ist
+\end_layout
+
+\end_inset
+
+ ein Beispiel  einfach
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Dies ist ein einfaches Beispiel
+\end_layout
+
+\end_inset
 
 
-\backslash
-glt Dies ist ein einfaches Beispiel
 \end_layout
 
 \end_inset
@@ -548,25 +652,38 @@ Nummeriertes Beispiel
 status open
 
 \begin_layout Plain Layout
-
-Mein Luftkissenfahrzeug ist voller Aale
+Mein Luftkissenfahrzeug ist voller  Aale
 \end_layout
 
 \begin_layout Plain Layout
-
-My skeertuig is vol palings
+My    skeertuig                   is   vol      palings
 \end_layout
 
 \begin_layout Plain Layout
+My    hovercraft                 is 
+\begin_inset Flex GroupGlossedWords
+status open
 
-My hovercraft is {full of} eels
+\begin_layout Plain Layout
+full of
+\end_layout
+
+\end_inset
+
+  eels
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Do you have matches?
+\end_layout
+
+\end_inset
 
 
-\backslash
-glt Do you have matches?
 \end_layout
 
 \end_inset
@@ -575,158 +692,14 @@ glt Do you have matches?
 \end_layout
 
 \begin_layout Subsection*
-Beschränkungen von \SpecialChar LyX
--Glossen
+Tipps & Tricks
+\end_layout
+
+\begin_layout Subsubsection*
+Seitenumbrüche innerhalb von Glossen vermeiden
 \end_layout
 
 \begin_layout Standard
-Die Unterstützung von Glossen in \SpecialChar LyX
- steckt noch in den Kinderschuhen.
- Es gibt einige Beschränkungen, die in zukünftigen \SpecialChar LyX
--Versionen möglicherweise
- behoben werden:
-\end_layout
-
-\begin_layout Enumerate
-Schriftänderungen sind in den Glossen nicht möglich.
- Der Textstil-Dialog ist daher auch deaktiviert.
- Da Wörter in Glossen niemals getrennt werden, ist eine explizite Bestimmung
- der Sprache in der \SpecialChar LaTeX
--Ausgabe nicht nötig (und sie würde auch zu Fehlern
- führen, da das 
-\emph on
-covington
-\emph default
--Paket dies nicht unterstützt).
- Dennoch wollen Sie vielleicht die Sprache in den Glossen festlegen, damit
- die Rechtschreibprüfung in \SpecialChar LyX
- richtig funktioniert.
- Um das zu tun, müssen Sie folgendermaßen vorgehen: Markieren Sie den Text
- und führen Sie dann 
-\family sans
-
-\begin_inset Info
-type  "shortcut"
-arg   "command-execute"
-\end_inset
-
- language <lang> 
-\family default
-aus (
-\family sans
-
-\begin_inset Info
-type  "shortcut"
-arg   "command-execute"
-\end_inset
-
-
-\family default
- öffnet den 
-\begin_inset Quotes gls
-\end_inset
-
-Minibuffer
-\begin_inset Quotes grs
-\end_inset
-
-, in den Sie dann 
-\family sans
-language <lang>
-\family default
- eingeben), wobei Sie 
-\family sans
-<lang>
-\family default
- durch die gewünschte Sprache ersetzen, also etwa 
-\family sans
-ngerman
-\family default
-, 
-\family sans
-english
-\family default
- oder 
-\family sans
-french
-\family default
-.
- In der \SpecialChar LaTeX
--Ausgabe werden die Sprachumschaltungen nun zwar weiterhin unterdrückt,
- aber die Rechtschreibprüfung erkennt die Sprache.
-\end_layout
-
-\begin_layout Enumerate
-Da der Inhalt von Glossen unverändert an \SpecialChar LaTeX
- weitergegeben wird, passt \SpecialChar LyX
- die
- Textkodierung nicht an den Inhalt an.
- Das heißt, dass Sie, wenn Sie in der Glosse Zeichen verwenden, die die
- aktuelle Kodierung nicht abdeckt, eine Fehlermeldung bekommen werden.
- Folgendermaßen können Sie das Problem umgehen:
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Geben Sie entweder den Text außerhalb der Glosse ein, öffnen Sie dann 
-\family sans
-Ansicht\SpecialChar menuseparator
-Quelle ansehen
-\family default
- und kopieren Sie den \SpecialChar LaTeX
--Code von dort in die Glosse,
-\end_layout
-
-\begin_layout Itemize
-oder markieren Sie die ganze Glosse (von außen) und stellen Sie über 
-\family sans
-Bearbeiten\SpecialChar menuseparator
-Sprache\SpecialChar menuseparator
-Weitere Sprachen\SpecialChar ldots
- 
-\family default
-die angemessene Sprache ein,
-\end_layout
-
-\begin_layout Itemize
-oder ändern Sie in 
-\family sans
-Dokument\SpecialChar menuseparator
-Einstellungen\SpecialChar ldots
-\SpecialChar menuseparator
-Sprache
-\family default
- die Kodierung auf 
-\emph on
-Unicode (utf8
-\emph default
-),
-\end_layout
-
-\begin_layout Itemize
-oder wählen Sie in 
-\family sans
-Dokument\SpecialChar menuseparator
-Einstellungen\SpecialChar ldots
-\SpecialChar menuseparator
-Schriften
-\family default
- 
-\emph on
-Nicht-\SpecialChar TeX
--Schriften verwenden (via Xe\SpecialChar TeX
-/Lua\SpecialChar TeX
-)
-\emph default
-.
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
 Innerhalb von Glossen können Seiten umbrochen werden, was natürlich nicht
  erwünscht ist.
  Um dies zu umgehen, können Sie Glossen in Boxen packen (über 
@@ -753,10 +726,9 @@ Einstellungen\SpecialChar ldots
 
 \end_layout
 
-\begin_deeper
-\begin_layout LyX-Code
+\begin_layout Quote
 \begin_inset listings
-lstparams "basicstyle={\footnotesize},language={[LaTeX]TeX}"
+lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
 inline false
 status open
 
@@ -776,14 +748,18 @@ AtBeginDocument{%
 
 
 \backslash
-@ifundefined{linggloss}{}{%
+renewenvironment{linggloss}[2][]{%
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-renewenvironment{linggloss}[1]{%
+def
+\backslash
+glosstr{
+\backslash
+glt #1}%
 \end_layout
 
 \begin_layout Plain Layout
@@ -799,11 +775,13 @@ textwidth}
 
 
 \backslash
-gll #1}{
+gll #2}{
+\backslash
+glosstr
 \backslash
 glend
 \backslash
-end{minipage}}}
+end{minipage}}
 \end_layout
 
 \begin_layout Plain Layout
@@ -816,9 +794,9 @@ end{minipage}}}
 
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Quote
 \begin_inset listings
-lstparams "basicstyle={\footnotesize},language={[LaTeX]TeX}"
+lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
 inline false
 status open
 
@@ -838,14 +816,18 @@ AtBeginDocument{%
 
 
 \backslash
-@ifundefined{lingglosss}{}{%
+renewenvironment{lingglosss}[2][]{%
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-renewenvironment{linggloss}[1]{%
+def
+\backslash
+glosstr{
+\backslash
+glt #1}%
 \end_layout
 
 \begin_layout Plain Layout
@@ -861,11 +843,13 @@ textwidth}
 
 
 \backslash
-glll #1}{
+glll #2}{
+\backslash
+glosstr
 \backslash
 glend
 \backslash
-end{minipage}}}
+end{minipage}}
 \end_layout
 
 \begin_layout Plain Layout
@@ -888,7 +872,147 @@ textwidth
  im Beispielcode) ändern, damit sie zur Seitenbreite Ihres Dokuments passt.
 \end_layout
 
-\end_deeper
+\begin_layout Subsubsection*
+Glossen (und Beispiele) in Beamer-Präsentationen
+\end_layout
+
+\begin_layout Standard
+Leider arbeiten das Paket 
+\emph on
+covington
+\emph default
+ und die 
+\emph on
+Beamer
+\emph default
+-Klasse von Haus aus nicht gut zusammen, da beide die Befehle 
+\family typewriter
+
+\backslash
+example
+\family default
+ und 
+\family typewriter
+
+\backslash
+examples
+\family default
+ zu definieren versuchen, was eine \SpecialChar LaTeX
+-Fehlermeldung erzeugt.
+ Sie können das Problem beheben, indem Sie in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Lokales Format
+\family default
+ folgenden Code kopieren:
+\end_layout
+
+\begin_layout Quote
+\begin_inset listings
+lstparams "basicstyle={\footnotesize\ttfamily},tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+Provides covington 1
+\end_layout
+
+\begin_layout Plain Layout
+AddToPreamble
+\end_layout
+
+\begin_layout Plain Layout
+		
+\backslash
+let
+\backslash
+example
+\backslash
+relax
+\end_layout
+
+\begin_layout Plain Layout
+		
+\backslash
+let
+\backslash
+endexample
+\backslash
+relax
+\end_layout
+
+\begin_layout Plain Layout
+		
+\backslash
+let
+\backslash
+examples
+\backslash
+relax
+\end_layout
+
+\begin_layout Plain Layout
+		
+\backslash
+let
+\backslash
+endexamples
+\backslash
+relax
+\end_layout
+
+\begin_layout Plain Layout
+		
+\backslash
+usepackage{covington}
+\end_layout
+
+\begin_layout Plain Layout
+EndPreamble
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Drücken Sie 
+\begin_inset Quotes gld
+\end_inset
+
+Validieren
+\begin_inset Quotes grd
+\end_inset
+
+ und dann 
+\begin_inset Quotes gld
+\end_inset
+
+OK
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Dies hat den Effekt, dass die Beispiel-Umgebungen von Beamer deaktiviert
+ werden (und also nicht mehr verwendet werden können), dafür können Sie
+ dann aber die des Linguistik-Moduls verwenden.
+\end_layout
+
+\begin_layout Standard
+Beachten Sie auch, dass Sie für Glossen in Beamer einen 
+\begin_inset Quotes gld
+\end_inset
+
+fragilen
+\begin_inset Quotes grd
+\end_inset
+
+ Rahmen verwenden müssen.
+ 
+\end_layout
+
 \begin_layout Section
 Tableaux für Optimalitätstheorie
 \end_layout
@@ -1235,7 +1359,7 @@ name "tab:Beispiel-Tableau"
 Bitte beachten Sie, dass die Legende in der Standardeinstellung immer unter
  dem Tableau ausgegeben wird, egal, wohin Sie sie im \SpecialChar LyX
 -Arbeitsfenster setzen.
- Um die Legende über die Tableaux zu setzen, müssen Sie den folgenden Code
+ Um die Legende über das Tableau zu setzen, müssen Sie den folgenden Code
  in 
 \family sans
 Dokument\SpecialChar menuseparator
@@ -1245,16 +1369,27 @@ Präambel
 eingeben:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Quote
+\begin_inset listings
+lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
 
 \backslash
 floatstyle{plaintop}
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Plain Layout
 
 \backslash
 restylefloat{tableau}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1262,16 +1397,27 @@ Wenn Sie eine KOMA-Klasse verwenden, nehmen Sie statt dessen das Folgende
  (welches im Kontext der KOMA-Klassen bessere Abstände erzeugt):
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Quote
+\begin_inset listings
+lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
 
 \backslash
 floatstyle{komaabove}
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Plain Layout
 
 \backslash
 restylefloat{tableau}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1283,9 +1429,7 @@ Liste\SpecialChar breakableslash
 Inhaltsverzeichnis
 \family default
  ein.
- Normalerweise werden Sie dieses Verzeichnis an den Beginn oder ans Ende
- ihres Dokuments setzen, zu Demonstrationszwecken machen wir es aber an
- dieser Stelle:
+ Dies sieht dann so aus:
 \end_layout
 
 \begin_layout Standard
@@ -1367,7 +1511,13 @@ Präambel
  ein:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Quote
+\begin_inset listings
+lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
 
 \backslash
 renewcommand
@@ -1375,6 +1525,11 @@ renewcommand
 lingexpr[1]{
 \backslash
 textbf{#1}}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1696,6 +1851,20 @@ aktivieren.
  Notation eingeben können.
  Wenn Sie in dem Eingabebereich sind, wird eine Symbolleiste aktiviert,
  die die wichtigsten IPA-Symbole (nach den IPA-Kategorien sortiert) bereitstellt.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Es fehlt ein Symbol: der (2005 in das IPA aufgenommene) labiodentale Flap.
+ Dieses Zeichen unterstützt das 
+\emph on
+Tipa-
+\emph default
+Pakete noch nicht; daher kann es auch nicht von LyX unterstützt werden.
+\end_layout
+
+\end_inset
+
  Jeder Symbolbereich dieser Symbolleiste kann durch Klicken auf die gestrichelte
  Linie abgetrennt werden.
  Dadurch kann phonetische Notation recht komfortabel eingegeben werden:
@@ -1710,7 +1879,7 @@ aktivieren.
 
 .
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Wenn Sie ein diakritisches Zeichen einfügen möchten, müssen Sie das Diakritikum

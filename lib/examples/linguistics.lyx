@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 487
+\lyxformat 488
 \begin_document
 \begin_header
 \textclass article
@@ -108,7 +108,7 @@ type "mailto:"
 \end_layout
 
 \begin_layout Date
-20/04/2015
+21/04/2015
 \end_layout
 
 \begin_layout Abstract
@@ -457,32 +457,37 @@ Custom Insets
 \family default
 : The standard 
 \emph on
-Custom:Glosse
+Glosse
 \emph default
- provides a gloss that consists of two lines and a translation, the 
+ provides a gloss that consists of two lines (a gloss pair) and a translation,
+ the 
 \emph on
-Custom:Tri-Glosse
+Tri-Glosse
 \emph default
- insets consists of three lines and a translation.
+ insets consists of three lines and a translation (the third line is usually
+ needed to give morphological or phonological information next to the gloss
+ pair).
  Each translation line might span multiple lines in the output, i.
 \begin_inset space \thinspace{}
 \end_inset
 
 e., the paragraphs are automatically broken if they exceed the text width.
- Note that the translation line is mandatory and must be preceded by the
- command 
-\family typewriter
-
-\backslash
-glt
+ The translation line is inserted by means of 
+\family sans
+Insert\SpecialChar menuseparator
+Glosse Translation
 \family default
- which must be inserted verbatim in the gloss inset (\SpecialChar TeX
- mode is not needed,
- and in fact not even possible).
+.
+ It does not matter where you insert the translation, it is always printed
+ as the last line.
 \end_layout
 
 \begin_layout Standard
-Here is a simple example:
+Here is a simple example for a 
+\emph on
+Glosse
+\emph default
+:
 \end_layout
 
 \begin_layout Standard
@@ -490,20 +495,40 @@ Here is a simple example:
 status open
 
 \begin_layout Plain Layout
-
-C'est un exemple simple
+C'est     un exemple simple
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Flex GroupGlossedWords
+status open
 
-{This is} an example simple
+\begin_layout Plain Layout
+This is
+\end_layout
+
+\end_inset
+
+ an example simple
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Quotes els
+\end_inset
+
+This is a simple example
+\begin_inset Quotes ers
+\end_inset
 
 
-\backslash
-glt This is a simple example
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -513,11 +538,47 @@ glt This is a simple example
 
 \begin_layout Standard
 \noindent
-Note how the braces hold together multi-word expressions.
+Use 
+\family sans
+Edit\SpecialChar menuseparator
+Text Style\SpecialChar menuseparator
+GroupGlossedWords
+\family default
+ in order to hold together multi-word expressions (or alternatively just
+ put braces in TeX mode 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+around those words
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+).
+ Note that you can enter multiple spaces to align the glosses in the \SpecialChar LyX
+ work
+ area; this will not affect the output.
 \end_layout
 
 \begin_layout Standard
-In the same vein, we can make a three-line gloss:
+Here is a three-line gloss (
+\emph on
+Tri-Glosse
+\emph default
+); the procedure is the same:
 \end_layout
 
 \begin_layout Standard
@@ -525,25 +586,53 @@ In the same vein, we can make a three-line gloss:
 status open
 
 \begin_layout Plain Layout
-
-C'est un exemple simple
+C'est      un exemple simple
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Flex GroupGlossedWords
+status open
 
-{Das ist} ein Beispiel einfach
+\begin_layout Plain Layout
+Das ist
+\end_layout
+
+\end_inset
+
+ ein Beispiel einfach
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Flex GroupGlossedWords
+status open
 
-{This is} an example simple
+\begin_layout Plain Layout
+This is
+\end_layout
+
+\end_inset
+
+ an  example simple
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Quotes els
+\end_inset
+
+This is a simple example
+\begin_inset Quotes ers
+\end_inset
 
 
-\backslash
-glt This is a simple example
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -553,8 +642,8 @@ glt This is a simple example
 
 \begin_layout Standard
 \noindent
-If you want to have numbered glosses, you can simply insert the gloss inset
- to a numbered examples paragraph, as follows:
+If you want to have numbered glosses, simply insert the gloss inset to a
+ numbered examples paragraph, as follows:
 \end_layout
 
 \begin_layout Numbered Examples (consecutive)
@@ -562,25 +651,45 @@ If you want to have numbered glosses, you can simply insert the gloss inset
 status open
 
 \begin_layout Plain Layout
-
-Mein Luftkissenfahrzeug ist voller Aale
+Mein Luftkissenfahrzeug ist voller  Aale
 \end_layout
 
 \begin_layout Plain Layout
-
-My skeertuig is vol palings
+My    skeertuig                   is  vol       palings
 \end_layout
 
 \begin_layout Plain Layout
+My    hovercraft                 is 
+\begin_inset Flex GroupGlossedWords
+status open
 
-My hovercraft is {full of} eels
+\begin_layout Plain Layout
+full of
+\end_layout
+
+\end_inset
+
+ eels
 \end_layout
 
 \begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Quotes els
+\end_inset
+
+Do you have matches?
+\begin_inset Quotes ers
+\end_inset
 
 
-\backslash
-glt Do you have matches?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -589,138 +698,15 @@ glt Do you have matches?
 \end_layout
 
 \begin_layout Subsection*
-Shortcomings of \SpecialChar LyX
-'s glosses
+Tips & Tricks
+\end_layout
+
+\begin_layout Subsubsection*
+Avoiding Page Breaks within Glosses
 \end_layout
 
 \begin_layout Standard
-\SpecialChar LyX
-'s glosse support is rather basic, and thus has some shortcomings, which
- might be addressed in further releases:
-\end_layout
-
-\begin_layout Enumerate
-Font changes are not allowed in glosses.
- Hence, the 
-\family sans
-Character Style
-\family default
- dialog is disabled.
- Since glosses are not hyphenated, an explicit language setting in the \SpecialChar LaTeX
-
- output is not required (in fact, it would break the output, since covington
- does not support it).
- However, you still might want to set the language for proper spell checking.
- Currently, you have to do this as follows: select the text, and then issue
- 
-\begin_inset Info
-type  "shortcut"
-arg   "command-execute"
-\end_inset
-
- 
-\family sans
-language <lang>
-\family default
-, where 
-\family sans
-<lang>
-\family default
- should be replaced by the respective language, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
- 
-\family sans
-english
-\family default
-, 
-\family sans
-french
-\family default
- or 
-\family sans
-ngerman
-\family default
-.
- In the \SpecialChar LaTeX
- output, this setting will be suppressed.
-\end_layout
-
-\begin_layout Enumerate
-Since the content of glosses is passed verbatim to \SpecialChar LaTeX
-, \SpecialChar LyX
- does not adapt the
- encoding to the contents.
- That means that if you use characters in the glosse which are not covered
- by the current encoding, you will run into an error message.
- Here are the possible workarounds to this problem:
-\begin_inset Separator parbreak
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Either enter the text outside the glosse, open 
-\family sans
-View\SpecialChar menuseparator
-View Source
-\family default
- and copy the \SpecialChar LaTeX
- code into the glosse,
-\end_layout
-
-\begin_layout Itemize
-or mark the whole glosse (from outside) and set the appropriate language
- via 
-\family sans
-Edit\SpecialChar menuseparator
-Language\SpecialChar menuseparator
-More Languages\SpecialChar ldots
-
-\family default
-,
-\end_layout
-
-\begin_layout Itemize
-or set the document encoding to 
-\emph on
-Unicode (utf8)
-\emph default
- via 
-\family sans
-Document\SpecialChar menuseparator
-Settings\SpecialChar ldots
-\SpecialChar menuseparator
-Language
-\family default
-,
-\end_layout
-
-\begin_layout Itemize
-or check 
-\emph on
-Use non-\SpecialChar TeX
- fonts (via Xe\SpecialChar TeX
-/Lua\SpecialChar TeX
-)
-\emph default
- in 
-\family sans
-Document\SpecialChar menuseparator
-Settings\SpecialChar ldots
-\SpecialChar menuseparator
-Fonts
-\family default
-.
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Page breaks can occur within glosses, which is of course not desirable.
+Page breaks might occur within glosses, which is not desirable.
  A workaround is to wrap glosses into boxes (via 
 \family sans
 Insert\SpecialChar menuseparator
@@ -733,8 +719,7 @@ Frameless
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
-\SpecialChar LaTeX
- Preamble
+LaTeX Preamble
 \family default
 :
 \begin_inset Separator parbreak
@@ -743,10 +728,9 @@ Settings\SpecialChar menuseparator
 
 \end_layout
 
-\begin_deeper
-\begin_layout LyX-Code
+\begin_layout Quote
 \begin_inset listings
-lstparams "basicstyle={\footnotesize},language={[LaTeX]TeX}"
+lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
 inline false
 status open
 
@@ -766,14 +750,18 @@ AtBeginDocument{%
 
 
 \backslash
-@ifundefined{linggloss}{}{%
+renewenvironment{linggloss}[2][]{%
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-renewenvironment{linggloss}[1]{%
+def
+\backslash
+glosstr{
+\backslash
+glt #1}%
 \end_layout
 
 \begin_layout Plain Layout
@@ -789,11 +777,13 @@ textwidth}
 
 
 \backslash
-gll #1}{
+gll #2}{
+\backslash
+glosstr
 \backslash
 glend
 \backslash
-end{minipage}}}
+end{minipage}}
 \end_layout
 
 \begin_layout Plain Layout
@@ -806,9 +796,9 @@ end{minipage}}}
 
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Quote
 \begin_inset listings
-lstparams "basicstyle={\footnotesize},language={[LaTeX]TeX}"
+lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
 inline false
 status open
 
@@ -828,14 +818,18 @@ AtBeginDocument{%
 
 
 \backslash
-@ifundefined{lingglosss}{}{%
+renewenvironment{lingglosss}[2][]{%
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-renewenvironment{linggloss}[1]{%
+def
+\backslash
+glosstr{
+\backslash
+glt #1}%
 \end_layout
 
 \begin_layout Plain Layout
@@ -851,11 +845,13 @@ textwidth}
 
 
 \backslash
-glll #1}{
+glll #2}{
+\backslash
+glosstr
 \backslash
 glend
 \backslash
-end{minipage}}}
+end{minipage}}
 \end_layout
 
 \begin_layout Plain Layout
@@ -875,10 +871,162 @@ You might have to adapt the minipage width (
 \backslash
 textwidth
 \family default
- in the example code) to fit your actual page width.
+ in the example code) to fit the glosses to your actual page width.
 \end_layout
 
-\end_deeper
+\begin_layout Subsubsection*
+Using Glosses (and Examples) in a Beamer Presentation
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+covington
+\emph default
+ package and the 
+\emph on
+beamer
+\emph default
+ class do not work together out of the box, since they both try to define
+ the commands 
+\family typewriter
+
+\backslash
+example
+\family default
+ and 
+\family typewriter
+
+\backslash
+examples
+\family default
+, which results in a \SpecialChar LaTeX
+ error.
+ You can work around the problem by inserting the following code in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Local Layout
+\family default
+:
+\end_layout
+
+\begin_layout Quote
+\begin_inset listings
+lstparams "basicstyle={\footnotesize\ttfamily},tabsize=4"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Provides covington 1
+\end_layout
+
+\begin_layout Plain Layout
+
+AddToPreamble
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+let
+\backslash
+example
+\backslash
+relax
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+let
+\backslash
+endexample
+\backslash
+relax
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+let
+\backslash
+examples
+\backslash
+relax
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+let
+\backslash
+endexamples
+\backslash
+relax
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+usepackage{covington}
+\end_layout
+
+\begin_layout Plain Layout
+
+EndPreamble
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Press 
+\begin_inset Quotes eld
+\end_inset
+
+validate
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+OK
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This effectively defuncts beamer's example(s) environment in favour of
+ covington's.
+\end_layout
+
+\begin_layout Standard
+Furthermore, if you want to use glosses in 
+\emph on
+beamer
+\emph default
+, you need to put it in a 
+\begin_inset Quotes eld
+\end_inset
+
+fragile
+\begin_inset Quotes erd
+\end_inset
+
+ frame.
+ 
+\end_layout
+
 \begin_layout Section
 Optimality Theory Tableaux
 \end_layout
@@ -911,7 +1059,7 @@ The Linguistics module provides support for both.
 Insert\SpecialChar menuseparator
 Floats
 \family default
-, you'll find a Tableaux float:
+, you will find a Tableaux float:
 \end_layout
 
 \begin_layout Standard
@@ -1212,7 +1360,7 @@ Example Tableau
 Note that by default, the caption is always placed below the tableaux in
  the output, no matter where you put it in the \SpecialChar LyX
  window.
- To get the Tableaux captions on top, put the following code in 
+ To get the Tableau captions on top, put the following code in 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
@@ -1221,32 +1369,58 @@ Preamble
 :
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Quote
+\begin_inset listings
+lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
 
 \backslash
 floatstyle{plaintop}
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Plain Layout
+
 
 \backslash
 restylefloat{tableau}
 \end_layout
 
-\begin_layout Standard
-If your using a KOMA class, use the following instead for better spacing:
+\end_inset
+
+
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+If you use a KOMA class, use the following code instead:
+\end_layout
+
+\begin_layout Quote
+\begin_inset listings
+lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
 
 \backslash
 floatstyle{komaabove}
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Plain Layout
+
 
 \backslash
 restylefloat{tableau}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1256,8 +1430,7 @@ Insert\SpecialChar menuseparator
 Lists & TOC
 \family default
 .
- Even though this usually is placed at the beginning or the end of the document,
- we do this here for exemplification purposes:
+ It looks like this:
 \end_layout
 
 \begin_layout Standard
@@ -1331,7 +1504,14 @@ Text Style
  To make expressions bold, for instance, insert:
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Quote
+\begin_inset listings
+lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
 
 \backslash
 renewcommand
@@ -1339,6 +1519,11 @@ renewcommand
 lingexpr[1]{
 \backslash
 textbf{#1}}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1628,6 +1813,21 @@ inset
  (inline) and multiple paragraphs of phonetic notation.
  While the cursor is inside the box, a toolbar opens, which provides the
  basic set of phonetic symbols (sorted by the IPA categories).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Currently, there is one symbol missing: the labiodental flap (added to the
+ IPA in 2005).
+ This symbol is not yet supported by the 
+\emph on
+tipa
+\emph default
+ package and thus cannot be supported by LyX.
+\end_layout
+
+\end_inset
+
  Each of the toolbar's panels can be torn off the bar by clicking on the
  dashed line on its top.
  This way, you can insert most symbols quite comfortably: 
