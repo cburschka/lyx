@@ -1306,7 +1306,7 @@ ToolbarSet
 		Item "Voiced labiodental approximant" "unicode-insert 0x028b"
 		Item "Voiced alveolar approximant" "unicode-insert 0x0279"
 		Item "Voiced retroflex approximant" "unicode-insert 0x027b"
-		Item "Voiced palatal approximant" "unicode-insert 0x0068"
+		Item "Voiced palatal approximant" "unicode-insert 0x006a"
 		Item "Voiced velar approximant" "unicode-insert 0x0270"
 		Item "Voiced alveolar lateral approximant" "unicode-insert 0x006c"
 		Item "Voiced retroflex lateral approximant" "unicode-insert 0x026d"
