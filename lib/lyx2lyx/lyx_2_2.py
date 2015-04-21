@@ -833,7 +833,7 @@ convert = [
           ]
 
 revert =  [
-           [485, [revert_forest]],
+           [486, [revert_forest]],
            [485, [revert_ex_itemargs]],
            [484, [revert_sigplan_doi]],
            [483, [revert_georgian]],
