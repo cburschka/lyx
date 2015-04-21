@@ -11,6 +11,11 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2015-04-21 Jürgen Spitzmüller <spitz@lyx.org>
+ 	* Format incremented to 488: Rewrite the Glosse insets (Glosse and Tri-Glosse).
+          These insets now do not any longer use PassThru. Instead, they use an optional
+          argument which is output as the glosse translation.
+
 2015-04-20 Jürgen Spitzmüller <spitz@lyx.org>
  	* Format incremented to 487: Support the forest environment of the forest package.
           Note that this inset does not escape brackets in braces, i.e. [ and ] are output

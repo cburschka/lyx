@@ -796,7 +796,6 @@ def revert_forest(document):
         beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
         endPlain = find_end_of_layout(document.body, beginPlain)
         content = lyx2latex(document, document.body[beginPlain : endPlain])
-        document.warning("content: %s" % content)
 
         add_to_preamble(document, ["\\usepackage{forest}"])
 
@@ -806,6 +805,155 @@ def revert_forest(document):
                 content, "\\end_layout", "", "\\begin_layout Plain Layout",
                 "\\backslash", "end{forest}", "", "\\end_layout", "", "\\end_inset"]
         # no need to reset i
+
+
+def revert_glossgroup(document):
+    " Reverts the GroupGlossedWords inset (Linguistics module) to TeX-code "
+
+    # Do we use the linguistics module?
+    have_mod = False
+    mods = document.get_module_list()
+    for mod in mods:
+        if mod == "linguistics":
+            have_mod = True
+            continue
+
+    if not have_mod:
+        return
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Flex GroupGlossedWords", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of GroupGlossedWords inset")
+            i += 1
+            continue
+
+        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
+        endPlain = find_end_of_layout(document.body, beginPlain)
+        content = lyx2latex(document, document.body[beginPlain : endPlain])
+        document.warning("content: %s" % content)
+
+        document.body[i:j + 1] = ["{", "", content, "", "}"]
+        # no need to reset i
+
+
+def revert_newgloss(document):
+    " Reverts the new Glosse insets (Linguistics module) to the old format "
+
+    # Do we use the linguistics module?
+    have_mod = False
+    mods = document.get_module_list()
+    for mod in mods:
+        if mod == "linguistics":
+            have_mod = True
+            continue
+
+    if not have_mod:
+        return
+
+    glosses = ("\\begin_inset Flex Glosse", "\\begin_inset Flex Tri-Glosse")
+    for glosse in glosses:
+        i = 0
+        while True:
+            i = find_token(document.body, glosse, i)
+            if i == -1:
+                break
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of Glosse inset")
+                i += 1
+                continue
+
+            arg = find_token(document.body, "\\begin_inset Argument 1", i, j)
+            endarg = find_end_of_inset(document.body, arg)
+            argcontent = ""
+            if arg != -1:
+                argbeginPlain = find_token(document.body, "\\begin_layout Plain Layout", arg, endarg)
+                if argbeginPlain == -1:
+                    document.warning("Malformed LyX document: Can't find arg plain Layout")
+                    i += 1
+                    continue
+                argendPlain = find_end_of_inset(document.body, argbeginPlain)
+                argcontent = lyx2latex(document, document.body[argbeginPlain : argendPlain - 2])
+
+                document.body[j:j] = ["", "\\begin_layout Plain Layout","\\backslash", "glt ",
+                    argcontent, "\\end_layout"]
+
+                # remove Arg insets and paragraph, if it only contains this inset
+                if document.body[arg - 1] == "\\begin_layout Plain Layout" and find_end_of_layout(document.body, arg - 1) == endarg + 3:
+                    del document.body[arg - 1 : endarg + 4]
+                else:
+                    del document.body[arg : endarg + 1]
+
+            beginPlain = find_token(document.body, "\\begin_layout Plain Layout", i)
+            endPlain = find_end_of_layout(document.body, beginPlain)
+            content = lyx2latex(document, document.body[beginPlain : endPlain])
+
+            document.body[beginPlain + 1:endPlain] = [content]
+            i = beginPlain + 1
+
+
+def convert_newgloss(document):
+    " Converts Glosse insets (Linguistics module) to the new format "
+
+    # Do we use the linguistics module?
+    have_mod = False
+    mods = document.get_module_list()
+    for mod in mods:
+        if mod == "linguistics":
+            have_mod = True
+            continue
+
+    if not have_mod:
+        return
+
+    glosses = ("\\begin_inset Flex Glosse", "\\begin_inset Flex Tri-Glosse")
+    for glosse in glosses:
+        i = 0
+        while True:
+            i = find_token(document.body, glosse, i)
+            if i == -1:
+                break
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of Glosse inset")
+                i += 1
+                continue
+
+            k = i
+            while True:
+                argcontent = []
+                beginPlain = find_token(document.body, "\\begin_layout Plain Layout", k, j)
+                if beginPlain == -1:
+                    break
+                endPlain = find_end_of_layout(document.body, beginPlain)
+                if endPlain == -1:
+                    document.warning("Malformed LyX document: Can't find end of Glosse layout")
+                    i += 1
+                    continue
+
+                glt  = find_token(document.body, "\\backslash", beginPlain, endPlain)
+                if glt != -1 and document.body[glt + 1].startswith("glt"):
+                    document.body[glt + 1] = document.body[glt + 1].lstrip("glt").lstrip()
+                    argcontent = document.body[glt + 1 : endPlain]
+                    document.body[beginPlain + 1 : endPlain] = ["\\begin_inset Argument 1", "status open", "",
+                        "\\begin_layout Plain Layout", "\\begin_inset ERT", "status open", "",
+                        "\\begin_layout Plain Layout", ""] + argcontent + ["\\end_layout", "", "\\end_inset", "",
+                        "\\end_layout", "", "\\end_inset"]
+                else:
+                    content = document.body[beginPlain + 1 : endPlain]
+                    document.body[beginPlain + 1 : endPlain] = ["\\begin_inset ERT", "status open", "",
+                        "\\begin_layout Plain Layout"] + content + ["\\end_layout", "", "\\end_inset"]
+
+                endPlain = find_end_of_layout(document.body, beginPlain)
+                k = endPlain
+                j = find_end_of_inset(document.body, i)
+
+            i = endPlain + 1
 
 
 ##
@@ -829,10 +977,12 @@ convert = [
            [484, []],
            [485, []],
            [486, []],
-           [487, []]
+           [487, []],
+           [488, [convert_newgloss]]
           ]
 
 revert =  [
+           [486, [revert_newgloss, revert_glossgroup]],
            [486, [revert_forest]],
            [485, [revert_ex_itemargs]],
            [484, [revert_sigplan_doi]],

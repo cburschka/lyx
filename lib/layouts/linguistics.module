@@ -65,7 +65,6 @@ End
 
 
 # glosse (2 lines) with covington.sty
-# mandatory translation must be entered verbatim!
 InsetLayout Flex:Glosse
 	LyXType               custom
 	LabelString           Glosse
@@ -78,24 +77,29 @@ InsetLayout Flex:Glosse
 	MultiPar              true
 	CustomPars            false
 	ForcePlain            true
-	PassThru              true
 	ParbreakIsNewline     true
 	FreeSpacing           true
-	ForceLTR              true
 	Requires	      covington
 	Preamble
+		\def\glosstr{}
 		\@ifundefined{linggloss}{%
-		\newenvironment{linggloss}[1]{%
-			\gll #1}
-		{\glend}}{}
+		\newenvironment{linggloss}[2][]{
+			\def\glosstr{\glt #1}%
+			\gll #2}
+		{\glosstr\glend}}{}
 	EndPreamble
 	InToc                 true
-	ResetsFont true
+	ResetsFont            true
+	Argument 1
+		Decoration    conglomerate
+		LabelString   "Translation"
+		MenuString    "Glosse Translation|s"
+		Tooltip       "Add a translation for the glosse"
+	EndArgument
 End
 
 
 # glosse (3 lines) with covington.sty
-# mandatory translation must be entered verbatim!
 InsetLayout Flex:Tri-Glosse
 	LyXType               custom
 	LabelString           Tri-Glosse
@@ -108,20 +112,27 @@ InsetLayout Flex:Tri-Glosse
 	MultiPar              true
 	CustomPars            false
 	ForcePlain            true
-	PassThru              true
 	ParbreakIsNewline     true
 	FreeSpacing           true
-	ForceLTR              true
 	InToc                 true
 	Requires	      covington
 	Preamble
+		\def\glosstr{}
 		\@ifundefined{lingglosss}{%
-		\newenvironment{lingglosss}[1]{%
-			\glll #1}
-		{\glend}}{}
+		\newenvironment{lingglosss}[2][]{
+			\def\glosstr{\glt #1}%
+			\glll #2}
+		{\glosstr\glend}}{}
 	EndPreamble
-	ResetsFont true
+	ResetsFont            true
+	Argument 1
+		Decoration    conglomerate
+		LabelString   "Translation"
+		MenuString    "Glosse Translation|s"
+		Tooltip       "Add a translation for the glosse"
+	EndArgument
 End
+
 
 # Structure trees via the forest package
 InsetLayout Flex:Structure_Tree
@@ -187,6 +198,16 @@ InsetLayout Flex:Meaning
 	EndPreamble
 	InToc                 true
 	ResetsFont true
+End
+
+
+# A helper to group words in Glosses
+InsetLayout Flex:GroupGlossedWords
+	LyxType               charstyle
+	LabelString           Group
+	LeftDelim             {
+	RightDelim            }
+	ResetsFont            true
 End
 
 
