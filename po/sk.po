@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-04-12 16:32+0200\n"
-"PO-Revision-Date: 2015-04-12 14:41+0000\n"
+"POT-Creation-Date: 2015-04-21 22:48+0200\n"
+"PO-Revision-Date: 2015-04-21 20:50+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -13721,6 +13721,14 @@ msgstr "Číslované príklady (postupne)"
 msgid "Examples:"
 msgstr "Príklady:"
 
+#: lib/layouts/linguistics.module:44
+msgid "Custom Numbering|s"
+msgstr "Vlastné Číslovanie|s"
+
+#: lib/layouts/linguistics.module:45
+msgid "Customize the numeration"
+msgstr "Prispôsobiť číslovanie"
+
 #: lib/layouts/linguistics.module:47
 msgid "Subexample"
 msgstr "Podpríklad"
@@ -13733,9 +13741,29 @@ msgstr "Podpríklad:"
 msgid "Glosse"
 msgstr "Glosa"
 
+#: lib/layouts/linguistics.module:95 lib/layouts/linguistics.module:130
+msgid "Translation"
+msgstr "Preklad"
+
+#: lib/layouts/linguistics.module:96 lib/layouts/linguistics.module:131
+msgid "Glosse Translation|s"
+msgstr "Preklad Glosy"
+
+#: lib/layouts/linguistics.module:97 lib/layouts/linguistics.module:132
+msgid "Add a translation for the glosse"
+msgstr "Pridajte preklad pre túto glosu"
+
 #: lib/layouts/linguistics.module:96 lib/layouts/linguistics.module:98
 msgid "Tri-Glosse"
 msgstr "Tri-Glosy"
+
+#: lib/layouts/linguistics.module:138
+msgid "Structure Tree"
+msgstr "Stromová Štruktúra"
+
+#: lib/layouts/linguistics.module:140
+msgid "Tree"
+msgstr "Strom"
 
 #: lib/layouts/linguistics.module:125
 msgid "Expression"
@@ -13760,6 +13788,14 @@ msgstr "Význam"
 #: lib/layouts/linguistics.module:159
 msgid "meaning"
 msgstr "význam"
+
+#: lib/layouts/linguistics.module:205
+msgid "GroupGlossedWords"
+msgstr "Glosované Skupiny Slov"
+
+#: lib/layouts/linguistics.module:207
+msgid "Group"
+msgstr "Skupina"
 
 #: lib/layouts/linguistics.module:174
 msgid "Tableau"
