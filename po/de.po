@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-04-20 12:17+0200\n"
-"PO-Revision-Date: 2015-04-20 12:19+0200\n"
+"POT-Creation-Date: 2015-04-21 20:41+0200\n"
+"PO-Revision-Date: 2015-04-21 20:43+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -9250,8 +9250,8 @@ msgstr "Lösung"
 msgid "Solution \\thesolution."
 msgstr "Lösung \\thesolution."
 
-#: lib/layouts/AEA.layout:300 src/frontends/qt4/Menus.cpp:1628
-#: src/frontends/qt4/Menus.cpp:1657
+#: lib/layouts/AEA.layout:300 src/frontends/qt4/Menus.cpp:1630
+#: src/frontends/qt4/Menus.cpp:1659
 msgid "Caption"
 msgstr "Legende"
 
@@ -15020,43 +15020,71 @@ msgstr "Unterbeispiel"
 msgid "Subexample:"
 msgstr "Unterbeispiel:"
 
-#: lib/layouts/linguistics.module:69 lib/layouts/linguistics.module:71
+#: lib/layouts/linguistics.module:68 lib/layouts/linguistics.module:70
 msgid "Glosse"
 msgstr "Glosse"
 
-#: lib/layouts/linguistics.module:99 lib/layouts/linguistics.module:101
+#: lib/layouts/linguistics.module:95 lib/layouts/linguistics.module:130
+msgid "Translation"
+msgstr "Übersetzung"
+
+#: lib/layouts/linguistics.module:96 lib/layouts/linguistics.module:131
+msgid "Glosse Translation|s"
+msgstr "Glosse-Übersetzung"
+
+#: lib/layouts/linguistics.module:97 lib/layouts/linguistics.module:132
+msgid "Add a translation for the glosse"
+msgstr "Fügt der Glosse eine Übersetzung (Paraphrase) hinzu"
+
+#: lib/layouts/linguistics.module:103 lib/layouts/linguistics.module:105
 msgid "Tri-Glosse"
 msgstr "Tri-Glosse"
 
-#: lib/layouts/linguistics.module:128
+#: lib/layouts/linguistics.module:138
+msgid "Structure Tree"
+msgstr "Strukturbaum"
+
+#: lib/layouts/linguistics.module:140
+msgid "Tree"
+msgstr "Baum"
+
+#: lib/layouts/linguistics.module:158
 msgid "Expression"
 msgstr "Ausdruck"
 
-#: lib/layouts/linguistics.module:130
+#: lib/layouts/linguistics.module:160
 msgid "expr."
 msgstr "Ausdr."
 
-#: lib/layouts/linguistics.module:144
+#: lib/layouts/linguistics.module:174
 msgid "Concepts"
 msgstr "Konzept"
 
-#: lib/layouts/linguistics.module:146
+#: lib/layouts/linguistics.module:176
 msgid "concept"
 msgstr "Konzept"
 
-#: lib/layouts/linguistics.module:160
+#: lib/layouts/linguistics.module:190
 msgid "Meaning"
 msgstr "Bedeutung"
 
-#: lib/layouts/linguistics.module:162
+#: lib/layouts/linguistics.module:192
 msgid "meaning"
 msgstr "Bedeutung"
 
-#: lib/layouts/linguistics.module:177
+#: lib/layouts/linguistics.module:205
+msgid "GroupGlossedWords"
+msgstr "Glossierte Wortgruppen"
+
+#: lib/layouts/linguistics.module:207
+msgid "Group"
+msgstr "Gruppe"
+
+#: lib/layouts/linguistics.module:217
 msgid "Tableau"
 msgstr "Tableau"
 
-#: lib/layouts/linguistics.module:182
+#: lib/layouts/linguistics.module:222
 msgid "List of Tableaux"
 msgstr "Tableaux-Verzeichnis"
 
@@ -16043,12 +16071,12 @@ msgid "Redo|R"
 msgstr "Wiederholen|W"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:318 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1320 src/mathed/InsetMathNest.cpp:600
+#: src/Text3.cpp:1321 src/mathed/InsetMathNest.cpp:600
 msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:319 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1325 src/mathed/InsetMathNest.cpp:609
+#: src/Text3.cpp:1326 src/mathed/InsetMathNest.cpp:609
 msgid "Copy"
 msgstr "Kopieren"
 
@@ -23732,7 +23760,7 @@ msgstr "Dokument ist schreibgeschützt"
 msgid "This portion of the document is deleted."
 msgstr "Dieser Teil des Dokuments wird gelöscht."
 
-#: src/BufferView.cpp:1072 src/BufferView.cpp:2055
+#: src/BufferView.cpp:1072 src/BufferView.cpp:2057
 #: src/frontends/qt4/GuiView.cpp:3516 src/frontends/qt4/GuiView.cpp:3598
 msgid "Absolute filename expected."
 msgstr "Ein absoluter Dateipfad wird erwartet."
@@ -23805,31 +23833,31 @@ msgstr "Ein Zeichen (ohne Leerzeichen)"
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/BufferView.cpp:1910
+#: src/BufferView.cpp:1912
 #, c-format
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 "'inset-forall' wurde abgebrochen, da die Zahl der Aktionen %1$d übersteigt"
 
-#: src/BufferView.cpp:1912
+#: src/BufferView.cpp:1914
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Der Befehl \"%1$s\" wurde auf %2$d Einfügungen angewandt"
 
-#: src/BufferView.cpp:1920
+#: src/BufferView.cpp:1922
 msgid "Branch name"
 msgstr "Name des Zweigs"
 
-#: src/BufferView.cpp:1927 src/frontends/qt4/GuiBranches.cpp:218
+#: src/BufferView.cpp:1929 src/frontends/qt4/GuiBranches.cpp:218
 msgid "Branch already exists"
 msgstr "Zweig existiert bereits."
 
-#: src/BufferView.cpp:2377
+#: src/BufferView.cpp:2379
 msgid "Inverse Search Failed"
 msgstr "Rückwärtssuche gescheitert"
 
-#: src/BufferView.cpp:2378
+#: src/BufferView.cpp:2380
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
@@ -23837,22 +23865,22 @@ msgstr ""
 "Die Rückwärtssuche wollte eine ungültige Position anspringen.\n"
 "Bitte aktualisieren Sie das ausgegebene Dokument."
 
-#: src/BufferView.cpp:2758
+#: src/BufferView.cpp:2760
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Füge Dokument %1$s ein..."
 
-#: src/BufferView.cpp:2769
+#: src/BufferView.cpp:2771
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Dokument %1$s ist eingefügt."
 
-#: src/BufferView.cpp:2771
+#: src/BufferView.cpp:2773
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Das Dokument %1$s konnte nicht eingefügt werden"
 
-#: src/BufferView.cpp:3162
+#: src/BufferView.cpp:3164
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -23863,11 +23891,11 @@ msgstr ""
 "konnte aufgrund des folgenden Fehlers\n"
 "nicht gelesen werden: %2$s"
 
-#: src/BufferView.cpp:3164
+#: src/BufferView.cpp:3166
 msgid "Could not read file"
 msgstr "Die Datei konnte nicht gelesen werden"
 
-#: src/BufferView.cpp:3171
+#: src/BufferView.cpp:3173
 #, c-format
 msgid ""
 "%1$s\n"
@@ -23876,15 +23904,15 @@ msgstr ""
 "%1$s\n"
 "ist nicht lesbar."
 
-#: src/BufferView.cpp:3172 src/output.cpp:39
+#: src/BufferView.cpp:3174 src/output.cpp:39
 msgid "Could not open file"
 msgstr "Die Datei konnte nicht geöffnet werden"
 
-#: src/BufferView.cpp:3179
+#: src/BufferView.cpp:3181
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lese nicht-UTF-8-kodierte Datei"
 
-#: src/BufferView.cpp:3180
+#: src/BufferView.cpp:3182
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -24406,14 +24434,14 @@ msgstr ""
 msgid "Undefined flex inset"
 msgstr "Undefinierter Zeichenstil"
 
-#: src/Encoding.cpp:245 src/Paragraph.cpp:2503
+#: src/Encoding.cpp:245 src/Paragraph.cpp:2506
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:181
 #: src/insets/InsetListings.cpp:189 src/insets/InsetListings.cpp:212
 #: src/mathed/InsetMathString.cpp:162
 msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
 
-#: src/Encoding.cpp:246 src/Paragraph.cpp:2504
+#: src/Encoding.cpp:246 src/Paragraph.cpp:2507
 #: src/insets/InsetListings.cpp:182 src/insets/InsetListings.cpp:190
 #: src/mathed/InsetMathString.cpp:163
 msgid "uncodable character"
@@ -25646,15 +25674,15 @@ msgstr "Zur gespeicherten Version des Dokuments zurückkehren?"
 msgid "&Revert"
 msgstr "&Wiederherstellen"
 
-#: src/Paragraph.cpp:1947
+#: src/Paragraph.cpp:1950
 msgid "Senseless with this layout!"
 msgstr "Für dieses Format nicht relevant!"
 
-#: src/Paragraph.cpp:2008
+#: src/Paragraph.cpp:2011
 msgid "Alignment not permitted"
 msgstr "Ausrichtung nicht erlaubt"
 
-#: src/Paragraph.cpp:2009
+#: src/Paragraph.cpp:2012
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -25784,27 +25812,27 @@ msgstr "Bereits im Regexp-Modus"
 msgid "Regexp editor mode"
 msgstr "Regexp-Editor-Modus"
 
-#: src/Text3.cpp:1385
+#: src/Text3.cpp:1386
 msgid "Layout "
 msgstr "Format "
 
-#: src/Text3.cpp:1386
+#: src/Text3.cpp:1387
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:1983 src/frontends/qt4/GuiApplication.cpp:1657
+#: src/Text3.cpp:1984 src/frontends/qt4/GuiApplication.cpp:1657
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/Text3.cpp:2139 src/Text3.cpp:2151
+#: src/Text3.cpp:2140 src/Text3.cpp:2152
 msgid "Character set"
 msgstr "Zeichensatz"
 
-#: src/Text3.cpp:2291
+#: src/Text3.cpp:2292
 msgid "Path to thesaurus directory not set!"
 msgstr "Pfad zum Thesaurus-Wörterbuch nicht festlegt!"
 
-#: src/Text3.cpp:2292
+#: src/Text3.cpp:2293
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -25816,7 +25844,7 @@ msgstr ""
 "Im Benutzerhandbuch, Abschnitt 6.15.11, finden Sie Hinweise,\n"
 "um den Thesaurus einzurichten."
 
-#: src/Text3.cpp:2376 src/Text3.cpp:2387
+#: src/Text3.cpp:2377 src/Text3.cpp:2388
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -26979,7 +27007,7 @@ msgid "Document Settings"
 msgstr "Dokument-Einstellungen"
 
 #: src/frontends/qt4/GuiDocument.cpp:742 src/frontends/qt4/GuiInclude.cpp:48
-#: src/frontends/qt4/Menus.cpp:1441
+#: src/frontends/qt4/Menus.cpp:1443
 msgid "Child Document"
 msgstr "Unterdokument"
 
@@ -28203,27 +28231,27 @@ msgstr "Kann Tastenkürzel nicht in Liste einfügen"
 msgid "Identity"
 msgstr "Identität"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3479
+#: src/frontends/qt4/GuiPrefs.cpp:3481
 msgid "Choose bind file"
 msgstr "Wählen Sie eine Tastaturkürzel-Datei"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3480
+#: src/frontends/qt4/GuiPrefs.cpp:3482
 msgid "LyX bind files (*.bind)"
 msgstr "LyX-Tastaturkürzel-Dateien (*.bind)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3486
+#: src/frontends/qt4/GuiPrefs.cpp:3488
 msgid "Choose UI file"
 msgstr "Wählen Sie eine 'UI'-Datei"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3487
+#: src/frontends/qt4/GuiPrefs.cpp:3489
 msgid "LyX UI files (*.ui)"
 msgstr "LyX-UI-Dateien (*.ui)"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3493
+#: src/frontends/qt4/GuiPrefs.cpp:3495
 msgid "Choose keyboard map"
 msgstr "Wählen Sie eine Tastaturtabelle"
 
-#: src/frontends/qt4/GuiPrefs.cpp:3494
+#: src/frontends/qt4/GuiPrefs.cpp:3496
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX-Tastaturtabellen (*.kmap)"
 
@@ -29298,81 +29326,81 @@ msgstr "Ansehen [%1$s]|s"
 msgid "Update [%1$s]|U"
 msgstr "Aktualisieren [%1$s]|u"
 
-#: src/frontends/qt4/Menus.cpp:1218
+#: src/frontends/qt4/Menus.cpp:1220
 msgid "No Custom Insets Defined!"
 msgstr "Es gibt keine benutzerdefinierten Einfügungen!"
 
-#: src/frontends/qt4/Menus.cpp:1290
+#: src/frontends/qt4/Menus.cpp:1292
 msgid "<No Document Open>"
 msgstr "<Kein Dokument geöffnet>"
 
-#: src/frontends/qt4/Menus.cpp:1300
+#: src/frontends/qt4/Menus.cpp:1302
 msgid "Master Document"
 msgstr "Hauptdokument"
 
-#: src/frontends/qt4/Menus.cpp:1317
+#: src/frontends/qt4/Menus.cpp:1319
 msgid "Open Navigator..."
 msgstr "Navigator öffnen..."
 
-#: src/frontends/qt4/Menus.cpp:1338
+#: src/frontends/qt4/Menus.cpp:1340
 msgid "Other Lists"
 msgstr "Andere Verzeichnisse"
 
-#: src/frontends/qt4/Menus.cpp:1351
+#: src/frontends/qt4/Menus.cpp:1353
 msgid "<Empty Table of Contents>"
 msgstr "<Leeres Inhaltsverzeichnis>"
 
-#: src/frontends/qt4/Menus.cpp:1386
+#: src/frontends/qt4/Menus.cpp:1388
 msgid "Other Toolbars"
 msgstr "Andere Werkzeugleisten"
 
-#: src/frontends/qt4/Menus.cpp:1401
+#: src/frontends/qt4/Menus.cpp:1403
 msgid "No Branches Set for Document!"
 msgstr "Keine Zweige im Dokument gesetzt!"
 
-#: src/frontends/qt4/Menus.cpp:1457
+#: src/frontends/qt4/Menus.cpp:1459
 msgid "Index List|I"
 msgstr "Stichwortverzeichnis|S"
 
-#: src/frontends/qt4/Menus.cpp:1462
+#: src/frontends/qt4/Menus.cpp:1464
 msgid "Index Entry|d"
 msgstr "Stichwort|h"
 
-#: src/frontends/qt4/Menus.cpp:1477
+#: src/frontends/qt4/Menus.cpp:1479
 #, c-format
 msgid "Index: %1$s"
 msgstr "Index: %1$s"
 
-#: src/frontends/qt4/Menus.cpp:1482 src/frontends/qt4/Menus.cpp:1511
+#: src/frontends/qt4/Menus.cpp:1484 src/frontends/qt4/Menus.cpp:1513
 #, c-format
 msgid "Index Entry (%1$s)"
 msgstr "Indexeintrag (%1$s)"
 
-#: src/frontends/qt4/Menus.cpp:1528
+#: src/frontends/qt4/Menus.cpp:1530
 msgid "No Citation in Scope!"
 msgstr "Keine Literaturverweis in Reichweite!"
 
-#: src/frontends/qt4/Menus.cpp:1541 src/insets/InsetCitation.cpp:165
+#: src/frontends/qt4/Menus.cpp:1543 src/insets/InsetCitation.cpp:165
 #: src/insets/InsetCitation.cpp:257
 msgid "No citations selected!"
 msgstr "Keine Literaturverweise ausgewählt!"
 
-#: src/frontends/qt4/Menus.cpp:1642
+#: src/frontends/qt4/Menus.cpp:1644
 #, c-format
 msgid "Caption (%1$s)"
 msgstr "Legende (%1$s)"
 
-#: src/frontends/qt4/Menus.cpp:1693
+#: src/frontends/qt4/Menus.cpp:1695
 #, c-format
 msgid "Start New Environment (%1$s)"
 msgstr "Neue Umgebung (%1$s)"
 
-#: src/frontends/qt4/Menus.cpp:1700
+#: src/frontends/qt4/Menus.cpp:1702
 #, c-format
 msgid "Start New Parent Environment (%1$s)"
 msgstr "Neue äußere Umgebung (%1$s)"
 
-#: src/frontends/qt4/Menus.cpp:2335
+#: src/frontends/qt4/Menus.cpp:2337
 msgid "No Action Defined!"
 msgstr "Keine Aktion definiert!"
 
