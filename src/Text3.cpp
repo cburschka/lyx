@@ -1302,8 +1302,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			else if (arg == "wmf")
 				type = Clipboard::WmfGraphicsType;
 			else
-				// We used to assert, but couldn't the argument come from, say, the
-				// minibuffer and just be mistyped?
+				// we also check in getStatus()
 				LYXERR0("Unrecognized graphics type: " << arg);
 
 			pasteClipboardGraphics(cur, bv->buffer().errorList("Paste"), type);
@@ -2944,6 +2943,9 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 
 		// unknown argument
+		LYXERR0("Unrecognized graphics type: " << arg);
+		// we don't want to assert if the user just mistyped the LFUN
+		LATTEST(cmd.origin() != FuncRequest::INTERNAL);
 		enable = false;
 		break;
 	 }
