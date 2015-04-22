@@ -1438,6 +1438,7 @@ void GuiApplication::gotoBookmark(unsigned int idx, bool openFile,
 	// if the current buffer is not that one, switch to it.
 	BufferView * doc_bv = current_view_ ?
 		current_view_->documentBufferView() : 0;
+	Cursor const old = doc_bv->cursor();
 	if (!doc_bv || doc_bv->buffer().fileName() != tmp.filename) {
 		if (switchToBuffer) {
 			dispatch(FuncRequest(LFUN_BUFFER_SWITCH, file));
@@ -1453,12 +1454,15 @@ void GuiApplication::gotoBookmark(unsigned int idx, bool openFile,
 			tmp.bottom_pit, tmp.bottom_pos, tmp.top_id, tmp.top_pos))
 		return;
 
+	Cursor & cur = doc_bv->cursor();
+	if (cur != old)
+		notifyCursorLeavesOrEnters(old, cur);
+
 	// bm changed
 	if (idx == 0)
 		return;
 
 	// Cursor jump succeeded!
-	Cursor const & cur = doc_bv->cursor();
 	pit_type new_pit = cur.pit();
 	pos_type new_pos = cur.pos();
 	int new_id = cur.paragraph().id();
