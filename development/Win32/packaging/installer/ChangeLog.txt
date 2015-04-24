@@ -1,4 +1,20 @@
-﻿Changelog for LyX-212-2:
+﻿Changelog for LyX-214-1:
+- installs LyX 2.1.4
+- updated Slovak translation
+- updated to Ghostscript 9.16
+- updated spell-checker dictionaries for English (GB), English (US), Portuguese,
+  Spanish, Spanish (MX) and Turkish
+  (To benefit from them you must uninstall an already installed LyX 2.1.x and
+   then use this installer.)
+- updated thesaurus for English (US), Portuguese and Spanish
+  (you need to reinstall LyX to benefit from this)
+
+
+Changelog for LyX-213-1:
+- installs LyX 2.1.3
+
+
+Changelog for LyX-212-2:
 - fix problem that some LaTeX language packages were not installed automatically
   leading to LaTeX errors when compiling LyX documents 
 - new spell checker for Turkish
