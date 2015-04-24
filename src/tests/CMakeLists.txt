@@ -33,7 +33,7 @@ foreach(bns ${layout_files})
   string(REPLACE ".layout" "" bn ${bns})
 
   add_test(NAME "check_layout/${bns}"
-    COMMAND check_layout "${TOP_SRC_DIR}/lib/layouts/${bn}")
+    COMMAND check_layout "${TOP_SRC_DIR}/lib/layouts/${bn}" "${CMAKE_CURRENT_BINARY_DIR}/${bn}.out")
   settestlabel("check_layout/${bns}" "layout")
 endforeach()
 
