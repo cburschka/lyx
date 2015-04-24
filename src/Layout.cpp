@@ -1286,7 +1286,8 @@ void Layout::write(ostream & os) const
 		os << "\tLabelCounter \"" << to_utf8(counter) << "\"\n";
 	os << "\tFreeSpacing " << free_spacing << '\n';
 	os << "\tPassThru " << pass_thru << '\n';
-	os << "\tPassThruChars " << to_utf8(pass_thru_chars) << '\n';
+	if (!pass_thru_chars.empty())
+		os << "\tPassThruChars " << to_utf8(pass_thru_chars) << '\n';
 	os << "\tParbreakIsNewline " << parbreak_is_newline << '\n';
 	switch (spacing.getSpace()) {
 	case Spacing::Double:
