@@ -68,12 +68,12 @@ void InsetPreview::addPreview(DocIterator const & inset_pos,
 void InsetPreview::preparePreview(DocIterator const & pos) const  
 {
 	TexRow texrow;
-	odocstringstream str;  
+	odocstringstream str;
 	otexstream os(str, texrow);
 	OutputParams runparams(&pos.buffer()->params().encoding());
 	latex(os, runparams);
 	docstring const snippet = str.str();
-	preview_->addPreview(snippet, *pos.buffer());  
+	preview_->addPreview(snippet, *pos.buffer());
 }
 
 
