@@ -89,6 +89,7 @@ dist_deexamples_DATA = \
 	examples/de/Braille.lyx \
 	examples/de/Dezimal.lyx \
 	examples/de/europassCV.lyx \
+	examples/de/Feynman-Diagramme \
 	examples/de/ItemizeBullets.lyx \
 	examples/de/Lebenslauf.lyx \
 	examples/de/linguistics.lyx \

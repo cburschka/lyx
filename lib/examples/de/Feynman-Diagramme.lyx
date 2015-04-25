@@ -30,7 +30,7 @@
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language ngerman
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -94,7 +94,7 @@
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\quotes_language german
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -108,7 +108,11 @@
 \begin_body
 
 \begin_layout Title
-Feynman Diagrams
+
+\noun on
+Feynman
+\noun default
+-Diagramme
 \end_layout
 
 \begin_layout Standard
@@ -116,7 +120,7 @@ Feynman Diagrams
 status open
 
 \begin_layout Plain Layout
-authors: Uwe Stöhr and Ronen Abravanel
+Autoren: Uwe Stöhr und Ronen Abravanel
 \end_layout
 
 \end_inset
@@ -125,48 +129,48 @@ authors: Uwe Stöhr and Ronen Abravanel
 \end_layout
 
 \begin_layout Standard
-To be able to create 
+Um 
 \noun on
 Feynman
 \noun default
- diagrams, the LaTeX-package 
+-Diagramme erstellen zu können, muss das LaTeX-Paket 
 \series bold
 feyn
 \series default
- must be installed.
- A 
+ installiert sein.
+ Ein 
 \noun on
 Feynman
 \noun default
- diagram is created by inserting the command 
+-Diagramm wird erzeugt, indem der Befehl 
 \series bold
 
 \backslash
 Diagram
 \series default
- in a formula.
- Then you are able to add new matrix columns and rows like a normal matrices.
- 
+ in eine Formel eingegeben wird.
+ Man kann anschließend neue Matrix-Spalten und Zeilen wie bei normalen Matrizen
+ einfügen.
 \end_layout
 
 \begin_layout Standard
-As matrix entry, one can enter commands that act as 
-\begin_inset Quotes eld
+Als Matrix-Eintrag kann man Befehle eingeben, die als 
+\begin_inset Quotes gld
 \end_inset
 
-particles
-\begin_inset Quotes erd
+Partikel
+\begin_inset Quotes grd
 \end_inset
 
- or 
-\begin_inset Quotes eld
+ oder 
+\begin_inset Quotes gld
 \end_inset
 
-propagators
-\begin_inset Quotes erd
+Propagatoren
+\begin_inset Quotes grd
 \end_inset
 
-, for example:
+ fungieren zum Beispiel:
 \end_layout
 
 \begin_layout Standard
@@ -183,7 +187,7 @@ propagators
 \begin_inset Text
 
 \begin_layout Plain Layout
-Commands
+Befehle
 \end_layout
 
 \end_inset
@@ -192,7 +196,7 @@ Commands
 \begin_inset Text
 
 \begin_layout Plain Layout
-Description
+Beschreibung
 \end_layout
 
 \end_inset
@@ -201,7 +205,7 @@ Description
 \begin_inset Text
 
 \begin_layout Plain Layout
-Example
+Beispiel
 \end_layout
 
 \end_inset
@@ -210,7 +214,7 @@ Example
 \begin_inset Text
 
 \begin_layout Plain Layout
-Result
+Ergebnis
 \end_layout
 
 \end_inset
@@ -232,7 +236,7 @@ f,g,h
 \begin_layout Plain Layout
 \noindent
 \align left
-fermion, photon or ghost propagator
+Fermion, Photon oder Ghost-Propagator
 \end_layout
 
 \end_inset
@@ -315,7 +319,7 @@ fu,fd,fv (gu,gd,gv)
 \begin_layout Plain Layout
 \noindent
 \align left
-fermion/photon, going up/down/vertical
+Fermion/Photon, nach oben/unten/vertikal
 \end_layout
 
 \end_inset
@@ -429,7 +433,8 @@ fA,fV
 \begin_layout Plain Layout
 \noindent
 \align left
-A and V are modifiers to produce arrow going left/up or right/down
+A und V sind Modifikatoren um einen Pfeil nach links/oben oder rechts/unten
+ zu zeichnen
 \end_layout
 
 \end_inset
@@ -543,7 +548,7 @@ fl,glB,glS,fl1,gl2, etc.
 \begin_layout Plain Layout
 \noindent
 \align left
-fermions/photons loop
+Fermion/Photon-Schleife
 \end_layout
 
 \end_inset
@@ -648,7 +653,7 @@ $
 \begin_layout Plain Layout
 
 \backslash
-momentum{ch}{text}
+momentum{ch}{Text}
 \end_layout
 
 \end_inset
@@ -659,7 +664,7 @@ momentum{ch}{text}
 \begin_layout Plain Layout
 \noindent
 \align left
-particle-momentum specification
+Teilchenimpuls-Angabe
 \end_layout
 
 \end_inset
@@ -697,7 +702,7 @@ $
 \begin_layout Plain Layout
 
 \backslash
-vertexlabel{p}{text}
+vertexlabel{p}{Text}
 \end_layout
 
 \end_inset
@@ -708,11 +713,11 @@ vertexlabel{p}{text}
 \begin_layout Plain Layout
 \noindent
 \align left
-the vertex label 
+das Vertex-Label 
 \emph on
 p
 \emph default
- is either '^' or '_' for labeling above or below the vertex
+ ist entweder '^' oder '_' um über oder unter dem Vertex zu beschriften
 \end_layout
 
 \end_inset
@@ -786,18 +791,18 @@ $
 \end_layout
 
 \begin_layout Standard
-These are just some of the features of thepackage 
+Dies sind nur einige der Features des Pakets 
 \series bold
 feyn
 \series default
- whose user manual can be found in 
+, dessen Handbuch in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Feyn"
 
 \end_inset
 
-.
+ zu finden ist.
 \end_layout
 
 \begin_layout Standard
@@ -807,25 +812,26 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Achtung:
 \series default
- If you have an index list in your document and use one of the AMS theorem
- modules, you have to add the option 
+ Wenn Ihr Dokument ein Stichwortverzeichnis hat und eine der AMS Theorem-Module
+ verwendet wird, muss die Option 
 \series bold
 noglobalbang
 \series default
- to the document class options in the document settings.
- This enables the usage of the '!' character in index entries (necessary
- for subentries) but might cause troubles with the align environments (which
- are described in section 
-\begin_inset Quotes eld
+ zu den Dokumentklassenoptionen in den Dokument-Einstellungen hinzugefügt
+ werden.
+ Dies ermöglicht die Verwendung des Zeichens '!' in Stichworten (wird für
+ Untereinträge benötigt), kann aber zu Problemen mit den Align-Umgebungen
+ führen (die im Abschnitt 
+\begin_inset Quotes gld
 \end_inset
 
-Align Environments
-\begin_inset Quotes erd
+Align-Umgebungen
+\begin_inset Quotes grd
 \end_inset
 
- of LyX's Math manual).
+ in LyXs Mathe-Handbuch beschrieben sind).
 \end_layout
 
 \end_inset
@@ -843,12 +849,12 @@ key "Feyn"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "Dokumentation"
 target "http://mirror.ctan.org/fonts/feyn/feyn.pdf"
 
 \end_inset
 
- of the LaTeX package 
+ des LaTeX-Pakets 
 \series bold
 feyn
 \end_layout
