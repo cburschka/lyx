@@ -132,10 +132,6 @@ Traduction initiale Jean-Pierre Chrétien - février 2011
 
 \end_layout
 
-\begin_layout Date
-
-\end_layout
-
 \begin_layout Standard
 Pour pouvoir utiliser les diagrammes de 
 \noun on
@@ -149,7 +145,11 @@ Feynman
 feyn
 \series default
  doit être installé.
- La création d'un diagramme de Feynman se fait en insérant la commande 
+ La création d'un diagramme de 
+\noun on
+Feynman
+\noun default
+ se fait en insérant la commande 
 \series bold
 
 \backslash
@@ -244,7 +244,7 @@ f,g,h
 \begin_layout Plain Layout
 \noindent
 \align left
-fermion, photon ou propagateur fantôme.
+fermion, photon ou propagateur fantôme
 \end_layout
 
 \end_inset

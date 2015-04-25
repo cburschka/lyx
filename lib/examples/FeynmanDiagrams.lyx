@@ -125,7 +125,7 @@ authors: Uwe Stöhr and Ronen Abravanel
 \end_layout
 
 \begin_layout Standard
-To be able to use 
+To be able to create 
 \noun on
 Feynman
 \noun default
@@ -134,7 +134,11 @@ Feynman
 feyn
 \series default
  must be installed.
- A Feynman diagram is created by inserting the command 
+ A 
+\noun on
+Feynman
+\noun default
+ diagram is created by inserting the command 
 \series bold
 
 \backslash
@@ -228,7 +232,7 @@ f,g,h
 \begin_layout Plain Layout
 \noindent
 \align left
-fermion, photon or ghost propagator.
+fermion, photon or ghost propagator
 \end_layout
 
 \end_inset
@@ -704,11 +708,11 @@ vertexlabel{p}{text}
 \begin_layout Plain Layout
 \noindent
 \align left
-A vertex label 
+the vertex label 
 \emph on
 p
 \emph default
- is ^ or _ for labeling above or below vertex
+ is either '^' or '_' for labeling above or below the vertex
 \end_layout
 
 \end_inset
@@ -782,12 +786,11 @@ $
 \end_layout
 
 \begin_layout Standard
-These are just some of the options in the 
+These are just some of the features of thepackage 
 \series bold
 feyn
 \series default
- package.
- Its user manual can be found in 
+ whose user manual can be found in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Feyn"
@@ -845,7 +848,7 @@ target "http://mirror.ctan.org/fonts/feyn/feyn.pdf"
 
 \end_inset
 
- of the LaTeX-Package 
+ of the LaTeX package 
 \series bold
 feyn
 \end_layout
