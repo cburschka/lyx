@@ -734,7 +734,8 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 		double af = ascent_fractions[metrics_counter];
 
 		// Add the image to the cache only if it's actually present
-		if (file.isReadableFile()) {
+		// and not empty (an empty image is signaled by af < 0)
+		if (af >= 0 && file.isReadableFile()) {
 			PreviewImagePtr ptr(new PreviewImage(parent_, snip, file, af));
 			cache_[snip] = ptr;
 

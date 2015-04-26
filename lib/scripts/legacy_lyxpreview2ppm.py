@@ -114,13 +114,16 @@ def legacy_extract_metrics_info(log_file):
                 error("Unexpected data in %s\n%s" % (log_file, line))
 
             if snippet:
-                ascent  = string.atoi(match.group(2))
-                descent = string.atoi(match.group(3))
+                ascent  = string.atof(match.group(2))
+                descent = string.atof(match.group(3))
 
                 frac = 0.5
-                if ascent >= 0 and descent >= 0:
-                    ascent = float(ascent) + tp_ascent
-                    descent = float(descent) - tp_descent
+                if ascent == 0 and descent == 0:
+                    # This is an empty image, forbid its display
+                    frac = -1.0
+                elif ascent >= 0 or descent >= 0:
+                    ascent = ascent + tp_ascent
+                    descent = descent - tp_descent
 
                     if abs(ascent + descent) > 0.1:
                         frac = ascent / (ascent + descent)
@@ -225,7 +228,7 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
 \definecolor{fg}{rgb}{%s}
 \definecolor{bg}{rgb}{%s}
 \pagecolor{bg}
-\usepackage[%s,lyx,tightpage]{preview}
+\usepackage[%s,tightpage]{preview}
 \makeatletter
 \g@addto@macro\preview{\begingroup\color{bg}\special{ps::clippath fill}\color{fg}}
 \g@addto@macro\endpreview{\endgroup}
