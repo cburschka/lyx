@@ -29,6 +29,8 @@ using std::string;
 using std::set;
 using std::vector;
 
+using namespace lyx::support;
+
 namespace lyx {
 
 InsetLayout::InsetLayout() :
@@ -50,11 +52,11 @@ InsetLayout::InsetLayout() :
 
 InsetLayout::InsetDecoration translateDecoration(std::string const & str)
 {
-	if (support::compare_ascii_no_case(str, "classic") == 0)
+	if (compare_ascii_no_case(str, "classic") == 0)
 		return InsetLayout::CLASSIC;
-	if (support::compare_ascii_no_case(str, "minimalistic") == 0)
+	if (compare_ascii_no_case(str, "minimalistic") == 0)
 		return InsetLayout::MINIMALISTIC;
-	if (support::compare_ascii_no_case(str, "conglomerate") == 0)
+	if (compare_ascii_no_case(str, "conglomerate") == 0)
 		return InsetLayout::CONGLOMERATE;
 	return InsetLayout::DEFAULT;
 }
@@ -63,11 +65,11 @@ namespace {
 
 InsetLayout::InsetLaTeXType translateLaTeXType(std::string const & str)
 {
-	if (support::compare_ascii_no_case(str, "command") == 0)
+	if (compare_ascii_no_case(str, "command") == 0)
 		return InsetLayout::COMMAND;
-	if (support::compare_ascii_no_case(str, "environment") == 0)
+	if (compare_ascii_no_case(str, "environment") == 0)
 		return InsetLayout::ENVIRONMENT;
-	if (support::compare_ascii_no_case(str, "none") == 0)
+	if (compare_ascii_no_case(str, "none") == 0)
 		return InsetLayout::NOLATEXTYPE;
 	return InsetLayout::ILT_ERROR;
 }
@@ -244,11 +246,11 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_LATEXPARAM:
 			lex >> tmp;
-			latexparam_ = support::subst(tmp, "&quot;", "\"");
+			latexparam_ = subst(tmp, "&quot;", "\"");
 			break;
 		case IL_LEFTDELIM:
 			lex >> leftdelim_;
-			leftdelim_ = support::subst(leftdelim_, from_ascii("<br/>"),
+			leftdelim_ = subst(leftdelim_, from_ascii("<br/>"),
 						    from_ascii("\n"));
 			break;
 		case IL_FIXEDWIDTH_PREAMBLE_ENCODING:
@@ -259,7 +261,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_RIGHTDELIM:
 			lex >> rightdelim_;
-			rightdelim_ = support::subst(rightdelim_, from_ascii("<br/>"),
+			rightdelim_ = subst(rightdelim_, from_ascii("<br/>"),
 						     from_ascii("\n"));
 			break;
 		case IL_LABELFONT:
@@ -320,7 +322,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			// initialize with a known style
 			docstring style;
 			lex >> style;
-			style = support::subst(style, '_', ' ');
+			style = subst(style, '_', ' ');
 
 			// We don't want to apply the algorithm in DocumentClass::insetLayout()
 			// here. So we do it the long way.
@@ -347,7 +349,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		case IL_OBSOLETEDBY: {
 			docstring style;
 			lex >> style;
-			style = support::subst(style, '_', ' ');
+			style = subst(style, '_', ' ');
 
 			// We don't want to apply the algorithm in DocumentClass::insetLayout()
 			// here. So we do it the long way.
@@ -439,7 +441,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		case IL_REQUIRES: {
 			lex.eatLine();
 			vector<string> const req
-				= support::getVectorFromString(lex.getString());
+				= getVectorFromString(lex.getString());
 			requires_.insert(req.begin(), req.end());
 			break;
 		}
@@ -473,15 +475,15 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 
 InsetLayout::InsetLyXType translateLyXType(std::string const & str)
 {
-	if (support::compare_ascii_no_case(str, "charstyle") == 0)
+	if (compare_ascii_no_case(str, "charstyle") == 0)
 		return InsetLayout::CHARSTYLE;
-	if (support::compare_ascii_no_case(str, "custom") == 0)
+	if (compare_ascii_no_case(str, "custom") == 0)
 		return InsetLayout::CUSTOM;
-	if (support::compare_ascii_no_case(str, "element") == 0)
+	if (compare_ascii_no_case(str, "element") == 0)
 		return InsetLayout::ELEMENT;
-	if (support::compare_ascii_no_case(str, "end") == 0)
+	if (compare_ascii_no_case(str, "end") == 0)
 		return InsetLayout::END;
-	if (support::compare_ascii_no_case(str, "standard") == 0)
+	if (compare_ascii_no_case(str, "standard") == 0)
 		return InsetLayout::STANDARD;
 	return InsetLayout::NOLYXTYPE;
 }
@@ -525,7 +527,7 @@ string InsetLayout::defaultCSSClass() const
 		else if (isLower(*it))
 			d += *it;
 		else
-			d += support::lowercase(*it);
+			d += lowercase(*it);
 	}
 	// are there other characters we need to remove?
 	defaultcssclass_ = d;
@@ -568,10 +570,10 @@ void InsetLayout::readArgument(Lexer & lex)
 	arg.labelfont = inherit_font;
 	string nr;
 	lex >> nr;
-	bool const postcmd = support::prefixIs(nr, "post:");
+	bool const postcmd = prefixIs(nr, "post:");
 	while (!finished && lex.isOK() && !error) {
 		lex.next();
-		string const tok = support::ascii_lowercase(lex.getString());
+		string const tok = ascii_lowercase(lex.getString());
 
 		if (tok.empty()) {
 			continue;
@@ -592,12 +594,12 @@ void InsetLayout::readArgument(Lexer & lex)
 		} else if (tok == "leftdelim") {
 			lex.next();
 			arg.ldelim = lex.getDocString();
-			arg.ldelim = support::subst(arg.ldelim,
+			arg.ldelim = subst(arg.ldelim,
 						    from_ascii("<br/>"), from_ascii("\n"));
 		} else if (tok == "rightdelim") {
 			lex.next();
 			arg.rdelim = lex.getDocString();
-			arg.rdelim = support::subst(arg.rdelim,
+			arg.rdelim = subst(arg.rdelim,
 						    from_ascii("<br/>"), from_ascii("\n"));
 		} else if (tok == "defaultarg") {
 			lex.next();
