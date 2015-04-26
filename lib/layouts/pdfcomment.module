@@ -16,73 +16,73 @@ Format 54
 Provides hyperref 1
 
 Style Define_Avatar
-	Category		PDF-comment
-	LatexType		Command
-	Margin			Dynamic
-	LatexName		defineavatar
-	ParSkip			0.4
-	LabelType		Static
-	LabelSep		M
-	LabelString		"PDF-comment avatar:"
+	Category			PDF-comment
+	LatexType			Command
+	Margin				Dynamic
+	LatexName			defineavatar
+	ParSkip				0.4
+	LabelType			Static
+	LabelSep			M
+	LabelString			"PDF-comment avatar:"
 	Argument 1
-		LabelString	"Name"
-		Tooltip		"Name of the Avatar"
-		Mandatory	1
+		LabelString		"Name"
+		Tooltip			"Name of the Avatar"
+		Mandatory		1
 	EndArgument
-	PassThru		1
+	PassThru			1
 	LabelFont
-	  Color			green
-	  Series		Bold
+	  Color				green
+	  Series			Bold
 	EndFont
-	Requires		pdfcomment
+	Requires			pdfcomment
 End
 
 Style Define_PDF-Comment_Style
-	CopyStyle		Define_Avatar
-	LatexName		definestyle
-	LabelString		"PDF-comment style:"
+	CopyStyle			Define_Avatar
+	LatexName			definestyle
+	LabelString			"PDF-comment style:"
 	Argument 1
-		LabelString	"Name"
-		Tooltip		"Name of the style"
-		Mandatory	1
+		LabelString		"Name"
+		Tooltip			"Name of the style"
+		Mandatory		1
 	EndArgument
 End
 
 Style Define_PDF-Comment_List_Style
-	CopyStyle		Define_Avatar
-	LatexName		defineliststyle
-	LabelString		"Definition of PDF-comment list style:"
+	CopyStyle			Define_Avatar
+	LatexName			defineliststyle
+	LabelString			"Definition of PDF-comment list style:"
 	Argument 1
-		LabelString	"Name"
-		Tooltip		"Name of the list style"
-		Mandatory	1
+		LabelString		"Name"
+		Tooltip			"Name of the list style"
+		Mandatory		1
 	EndArgument
 End
 
 Style Set_PDF-Comment_List_Style
-	CopyStyle		Define_Avatar
-	LatexName		setliststyle
-	LabelString		"PDF-comment list style:"
-	ResetArgs		1
+	CopyStyle			Define_Avatar
+	LatexName			setliststyle
+	LabelString			"PDF-comment list style:"
+	ResetArgs			1
 End
 
 InsetLayout "Flex:PDF-Comment-Setup"
-	LyXType               custom
-	LatexType             command
-	Decoration            classic
-	LabelString           "PDF (Setup)"
-	LatexName             pdfcommentsetup
+	LyXType				custom
+	LatexType			command
+	Decoration			classic
+	LabelString			"PDF (Setup)"
+	LatexName			pdfcommentsetup
 	LabelFont
-	  Color               magenta
-	  Size                Small
+	  Color				magenta
+	  Size				Small
 	EndFont
-	MultiPar              false
+	MultiPar			false
 	Argument 1
-	  MenuString          "PDF-Comment setup options"
-	  LabelString         "Opts"
-	  ToolTip             "Insert PDF-Comment setup options here (see the pdfcomment manual)"
+	  MenuString		"PDF-Comment setup options"
+	  LabelString		"Opts"
+	  ToolTip			"Insert PDF-Comment setup options here (see the pdfcomment manual)"
 	EndArgument
-	Requires              pdfcomment
+	Requires			pdfcomment
 End
 
 #
@@ -90,105 +90,105 @@ End
 #
 
 InsetLayout "Flex:PDF-Annotation"
-	LyXType               custom
-	LatexType             command
-	Decoration            classic
-	LabelString           PDF
-	LatexName             pdfcomment
+	LyXType				custom
+	LatexType			command
+	Decoration			classic
+	LabelString			PDF
+	LatexName			pdfcomment
 	LabelFont
-	  Color               magenta
-	  Size                Small
+	  Color				magenta
+	  Size				Small
 	EndFont
-	MultiPar              false
+	MultiPar			false
 	Argument 1
-	  MenuString          "PDFComment Options"
-	  LabelString         "Opts"
-	  ToolTip             "Insert PDFComment options here (see pdfcomment manual)"
+	  MenuString		"PDFComment Options"
+	  LabelString		"Opts"
+	  ToolTip			"Insert PDFComment options here (see pdfcomment manual)"
 	EndArgument
-	Requires              pdfcomment
+	Requires			pdfcomment
 End
 
 InsetLayout "Flex:PDF-Margin"
-	CopyStyle             "Flex:PDF-Annotation"
-	LabelString           "PDF (Margin)"
-	LatexName             pdfmargincomment
+	CopyStyle			"Flex:PDF-Annotation"
+	LabelString			"PDF (Margin)"
+	LatexName			pdfmargincomment
 	LabelFont
-	  Color               green
-	  Size                Small
+	  Color				green
+	  Size				Small
 	EndFont
 End
 
 InsetLayout "Flex:PDF-Markup"
-	CopyStyle             "Flex:PDF-Margin"
-	LabelString           "PDF (Markup)"
-	LatexName             pdfmarkupcomment
+	CopyStyle			"Flex:PDF-Margin"
+	LabelString			"PDF (Markup)"
+	LatexName			pdfmarkupcomment
 	Argument post:1
-	  LabelString         "Comment"
-	  Mandatory           1
-	  ToolTip             "Insert the comment to the marked-up text here"
+	  LabelString		"Comment"
+	  Mandatory			1
+	  ToolTip			"Insert the comment to the marked-up text here"
 	EndArgument
 End
 
 InsetLayout "Flex:PDF-Freetext"
-	CopyStyle             "Flex:PDF-Margin"
-	LabelString           "PDF (Freetext)"
-	LatexName             pdffreetextcomment
+	CopyStyle			"Flex:PDF-Margin"
+	LabelString			"PDF (Freetext)"
+	LatexName			pdffreetextcomment
 End
 
 InsetLayout "Flex:PDF-Square"
-	CopyStyle             "Flex:PDF-Margin"
-	LabelString           "PDF (Square)"
-	LatexName             pdfsquarecomment
+	CopyStyle			"Flex:PDF-Margin"
+	LabelString			"PDF (Square)"
+	LatexName			pdfsquarecomment
 End
 
 InsetLayout "Flex:PDF-Circle"
-	CopyStyle             "Flex:PDF-Margin"
-	LabelString           "PDF (Circle)"
-	LatexName             pdfcirclecomment
+	CopyStyle			"Flex:PDF-Margin"
+	LabelString			"PDF (Circle)"
+	LatexName			pdfcirclecomment
 End
 
 InsetLayout "Flex:PDF-Line"
-	CopyStyle             "Flex:PDF-Margin"
-	LabelString           "PDF (Line)"
-	LatexName             pdflinecomment
+	CopyStyle			"Flex:PDF-Margin"
+	LabelString			"PDF (Line)"
+	LatexName			pdflinecomment
 End
 
 InsetLayout "Flex:PDF-Sideline"
-	CopyStyle             "Flex:PDF-Margin"
-	LabelString           "PDF (Sideline)"
-	LatexType             environment
-	LatexName             pdfsidelinecomment
-	MultiPar              true
+	CopyStyle			"Flex:PDF-Margin"
+	LabelString			"PDF (Sideline)"
+	LatexType			environment
+	LatexName			pdfsidelinecomment
+	MultiPar			true
 	Argument 2
-	  LabelString         "Comment"
-	  Mandatory           1
-	  ToolTip             "Insert the comment here"
+	  LabelString		"Comment"
+	  Mandatory			1
+	  ToolTip			"Insert the comment here"
 	EndArgument
 End
 
 InsetLayout "Flex:PDF-Reply"
-	CopyStyle             "Flex:PDF-Margin"
-	LabelString           "PDF (Reply)"
-	LatexName             pdfreply
+	CopyStyle			"Flex:PDF-Margin"
+	LabelString			"PDF (Reply)"
+	LatexName			pdfreply
 	LabelFont
-	  Color               blue
-	  Size                Small
+	  Color				blue
+	  Size				Small
 	EndFont
 End
 
 InsetLayout "Flex:PDF-Tooltip"
-	CopyStyle             "Flex:PDF-Markup"
-	LabelString           "PDF (Tooltip)"
-	LatexName             pdftooltip
+	CopyStyle			"Flex:PDF-Markup"
+	LabelString			"PDF (Tooltip)"
+	LatexName			pdftooltip
 	LabelFont
-	  Color               red
-	  Size                Small
+	  Color				red
+	  Size				Small
 	EndFont
 	Argument post:1
-	  MenuString          "Tooltip Text"
-	  LabelString         "Tooltip"
-	  Mandatory           1
-	  ToolTip             "Insert the tooltip text here"
+	  MenuString		"Tooltip Text"
+	  LabelString		"Tooltip"
+	  Mandatory			1
+	  ToolTip			"Insert the tooltip text here"
 	EndArgument
 End
 
@@ -197,30 +197,30 @@ End
 #
 
 Style List_of_PDF_Comments
-	KeepEmpty	1
-	LatexType	Command
-	LatexName	listofpdfcomments
-	Margin		First_Dynamic
-	NextNoIndent	1
-	ParSkip		0
-	TopSep		0
-	BottomSep	0.25
-	ParSep		0
-	Align		Center
-	LabelType	Static
-	LabelBottomSep	0
-	LeftMargin	MMMMM
-	LabelString	"[List of PDF Comments]"
+	KeepEmpty			1
+	LatexType			Command
+	LatexName			listofpdfcomments
+	Margin				First_Dynamic
+	NextNoIndent		1
+	ParSkip				0
+	TopSep				0
+	BottomSep			0.25
+	ParSep				0
+	Align				Center
+	LabelType			Static
+	LabelBottomSep		0
+	LeftMargin			MMMMM
+	LabelString			"[List of PDF Comments]"
 	LabelFont
-	    Family	Sans
-	    Series	Bold
-	    Size	Large
-	    Color	latex
+	    Family			Sans
+	    Series			Bold
+	    Size			Large
+	    Color			latex
 	EndFont
 	Argument 1
-	  LabelString	"Opts"
-	  MenuString	"List Options|s"
-	  Tooltip	"Insert list options here (see pdfcomment manual)"
+	  LabelString		"Opts"
+	  MenuString		"List Options|s"
+	  Tooltip			"Insert list options here (see pdfcomment manual)"
 	EndArgument
-	Requires        pdfcomment
+	Requires			pdfcomment
 End
