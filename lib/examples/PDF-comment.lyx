@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 479
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass scrartcl
@@ -66,7 +66,7 @@ pdfcomment
 \use_package cancel 0
 \use_package esint 1
 \use_package mathdots 1
-\use_package mathtools 0
+\use_package mathtools 1
 \use_package mhchem 1
 \use_package stackrel 0
 \use_package stmaryrd 0
@@ -128,7 +128,7 @@ reference "sub:PDF-Comment-setup"
 
 \end_inset
 
- for a description.
+ for the description.
 \end_layout
 
 \end_inset
@@ -137,7 +137,7 @@ reference "sub:PDF-Comment-setup"
 \end_layout
 
 \begin_layout Title
-Description of the module pdfcomment
+Description of the module PDF Comments
 \end_layout
 
 \begin_layout Author
@@ -145,19 +145,19 @@ Uwe Stöhr
 \end_layout
 
 \begin_layout Standard
-The LaTeX-package 
+The LaTeX package 
 \series bold
 pdfcomment
 \series default
  provides full access for PDF comments.
- You can add normal comments as well as margin comments, underlining etc.
- And you can also define a special layout for the comment which you can
- use several times in the document.
+ You can add normal comments as well as margin comments, underlining etc..
+ You can also define a special layout for a comment which you can use several
+ times in the document.
  This document is only a excerpt of the documentation of 
 \series bold
 pdfcomment
 \series default
-, See its documentation for all information:
+; see its documentation for all information:
 \begin_inset Newline newline
 \end_inset
 
@@ -176,7 +176,7 @@ http://mirrors.ctan.org/macros/latex/contrib/pdfcomment/doc/pdfcomment.pdf
 \end_layout
 
 \begin_layout Section
-The different comments types
+The different comment types
 \end_layout
 
 \begin_layout Standard
@@ -484,7 +484,7 @@ cm,opacity=0.9,justification=right
 
 \end_inset
 
-This is also a comment, but it's a PDF-Freetext annotation.
+This is also a comment, but it is a PDF-Freetext annotation.
 \end_layout
 
 \end_inset
@@ -1982,7 +1982,7 @@ General Hints
 
 \begin_layout Itemize
 To be able to use all kinds of colors and color definitions you must load
- the LaTeX-package 
+ the LaTeX package 
 \series bold
 xcolor
 \series default
