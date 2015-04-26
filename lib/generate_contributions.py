@@ -1139,6 +1139,14 @@ contributors = [
                  "16 March 2010",
                  u"Arabic translation"),
 
+     contributor(u"Jari-Matti Mäkelä",
+                 "jmjmak () utu ! fi",
+                 "GPL",
+                 "Re: lyx fi translation update",
+                 "m=142987910907596",
+                 "24 April 2015",
+                 u"Contribution to the Finnish Localization."),
+
      contributor(u"Tetsuya Makimura",
                  "makimura () ims ! tsukuba.ac ! jp",
                  "GPL",
