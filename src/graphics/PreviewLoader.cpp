@@ -587,7 +587,13 @@ void PreviewLoader::Impl::startLoading(bool wait)
 
 	LYXERR(Debug::LATEX, "Format = " << buffer_.params().getDefaultOutputFormat());
 	string latexparam = "";
-	OutputParams::FLAVOR flavor = buffer_.params().getOutputFlavor();
+	bool docformat = !buffer_.params().default_output_format.empty()
+			&& buffer_.params().default_output_format != "default";
+	// Use LATEX flavor if the document does not specify a specific
+	// output format (see bug 9371).
+	OutputParams::FLAVOR flavor = docformat
+					? buffer_.params().getOutputFlavor()
+					: OutputParams::LATEX;
 	if (buffer_.params().encoding().package() == Encoding::japanese) {
 		latexparam = " --latex=platex";
 		flavor = OutputParams::LATEX;
