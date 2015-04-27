@@ -7,7 +7,18 @@
 % to be able to use custom colors
 \usepackage[svgnames,rgb]{xcolor}
 
-\usepackage[pdftex]{insdljs}
+% ------------------------------------
+% used to check for needed LaTeX packages
+\usepackage{ifthen}
+
+% check for package insdljs
+% used for JavScript code
+\newboolean{insdljs}
+\IfFileExists{insdljs.sty}
+ {\usepackage{insdljs}
+  \setboolean{insdljs}{true}}
+ {\setboolean{insdljs}{false}}
+
 \pdfcatalog{/AA \the\pdflastobj\space 0 R}
 \begin{insDLJS}[exaaae]{exaaae}{JavaScript}
   function validateTime(){
@@ -141,6 +152,25 @@ Uwe Stöhr
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+To export all parts of this document to PDF the LaTeX-package 
+\series bold
+insdljs
+\series default
+ must be installed.
+ If it is not installed you can export the document anyway but the example
+ in the section about dynamic form fields won't appear in the output.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 By loading the module PDF
 \begin_inset space ~
 \end_inset
@@ -243,23 +273,25 @@ parameters
 .
  For example in this document the following was inserted to the parameter
  inset:
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Standard
 
 \series bold
-action=mailto:forms@lyx.test?subject={The submitted PDF form},method=post
-\series default
-
+action=mailto:forms@lyx.test?subject={The submitted PDF form},
 \begin_inset Newline newline
 \end_inset
 
+method=post
+\end_layout
+
+\begin_layout Standard
 This sends the form data as email to 
 \emph on
 forms@lyx.test
 \emph default
 .
- the email subject is 
+ The email subject is 
 \begin_inset Quotes eld
 \end_inset
 
@@ -277,6 +309,13 @@ post
 get
 \series default
 .)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -322,12 +361,50 @@ status open
 
 \begin_layout Plain Layout
 
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=customer
+\end_layout
+
+\end_inset
+
 Enter your name here:
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+You must also specify a field name for text fields: Set the cursor into
+ the inset and use the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+PDF
+\begin_inset space ~
+\end_inset
+
+form
+\begin_inset space ~
+\end_inset
+
+parameters
+\family default
+.
+ There insert for example the parameter 
+\series bold
+name=customer
+\series default
+ (where 
+\series bold
+customer
+\series default
+ is the field name).
+ Only if your text field has a label and no parameters the specification
+ of the name can be omitted.
 \end_layout
 
 \begin_layout Standard
@@ -366,11 +443,15 @@ Note:
 \end_layout
 
 \begin_layout Standard
-Here is a customized text field with a width of 5
+Here is a customized multiline text field with a width of 5
 \begin_inset space \thinspace{}
 \end_inset
 
 cm and a proposed content:
+\begin_inset VSpace defskip
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -384,7 +465,9 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=name, width=5cm, bordercolor={0.5 1 0.5}, borderstyle=U, value={Testman}
+name=customer2, width=5cm, multiline, width=0.6
+\backslash
+textwidth, height=3cm, value={Testman}
 \end_layout
 
 \end_inset
@@ -448,12 +531,50 @@ status open
 
 \begin_layout Plain Layout
 
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=age
+\end_layout
+
+\end_inset
+
 Are you older than 18 years?
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+You must also specify a field name for check boxes: Set the cursor into
+ the inset and use the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+PDF
+\begin_inset space ~
+\end_inset
+
+form
+\begin_inset space ~
+\end_inset
+
+parameters
+\family default
+.
+ There insert for example the parameter 
+\series bold
+name=age
+\series default
+ (where 
+\series bold
+age
+\series default
+ is the field name).
+ Only if your check box has a label and no parameters the specification
+ of the name can be omitted.
 \end_layout
 
 \begin_layout Subsection
@@ -492,33 +613,6 @@ Combo The choices are listed in a combo box (dropdown list) but the user
 Popdown All choices are listed below each other.
  It the filed is not high enough a scroll bar is automatically added to
  the field.
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- For the popdown type you must also specify a field name! For example write
- 
-\series bold
-popdown, name=country
-\series default
- (where 
-\series bold
-country
-\series default
- is the field name).
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -667,13 +761,54 @@ Country:
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ For the popdown type you must always specify a field name: Add to the 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+form
+\begin_inset space ~
+\end_inset
+
+parameters
+\family default
+ for example the parameter 
+\series bold
+name=country
+\series default
+ (where 
+\series bold
+country
+\series default
+ is the field name).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 It is recommended to add a short name for every choice to be able to access
  them and to know which one was chosen by the user- This is done by adding
  
 \series bold
 =name
 \series default
- behind each choice.
+ behind each choice (where 
+\series bold
+name
+\series default
+ is the choice name).
  For example the radio type example contains this choice list:
 \series bold
  male=m, female=f
@@ -749,7 +884,7 @@ Sex:
 
 \end_layout
 
-\begin_layout Description
+\begin_layout Standard
 \begin_inset Note Greyedout
 status open
 
@@ -916,7 +1051,11 @@ href{http://wiki.lyx.org}{Information how to fill out this form}
 To get rid of the frame for weblinks add this to the additional options
  in the document settings under 
 \family sans
-PDF properties
+PDF
+\begin_inset space ~
+\end_inset
+
+properties
 \family default
 :
 \end_layout
@@ -930,13 +1069,6 @@ urlbordercolor={1 0 0}
 \begin_layout Standard
 if your push button border color is red (the default), otherwise use the
  same color definition as for your push button border color.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -1414,50 +1546,55 @@ Here are some examples:
 \end_layout
 
 \begin_layout Text Field Style
-
-print, bordercolor={red},borderstyle=U, backgroundcolor=lightgray, color=lime
+print, bordercolor=red,borderstyle=U, backgroundcolor=lightgray, color=lime,
+ maxlen=10, align=2, charsize=16pt
 \end_layout
 
 \begin_layout Check Box Style
-
 print, borderstyle=S, checkboxsymbol=
 \backslash
 ding{55}
 \end_layout
 
 \begin_layout Combo Box Style
-
 print, bordercolor={0.33 0.66 0.33}, borderstyle=D
 \end_layout
 
 \begin_layout Popdown Box Style
-
 print, menulength=2
 \end_layout
 
 \begin_layout Radio Box Style
-
 print, borderstyle=I, radiosymbol=6
 \end_layout
 
 \begin_layout Push Button Style
-
-print, borderstyle=B, bordercolor={lime}
+print, borderstyle=B, bordercolor=lime
 \end_layout
 
 \begin_layout Submit Button Style
-
-print, borderwidth=0
+print, borderwidth=0, bordercolor=white
 \end_layout
 
 \begin_layout Reset Button Style
-
-print, bordercolor={lime}
+print, bordercolor=lime
 \end_layout
 
-\begin_layout Standard
-Text field with gray background, lime text color and a red border only below
- the field:
+\begin_layout Itemize
+Text field with gray background, lime text color, a red border only below
+ the field, right alignment, 16
+\begin_inset space \thinspace{}
+\end_inset
+
+pt font size and a limitation for maximal 10
+\begin_inset space ~
+\end_inset
+
+characters to insert:
+\begin_inset VSpace defskip
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -1528,10 +1665,14 @@ name
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Check box with normal border and symbol 
 \backslash
 ding{55}:
+\begin_inset VSpace defskip
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -1582,8 +1723,12 @@ key "pifont"
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Combo box with dashed, colored border:
+\begin_inset VSpace defskip
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -1620,12 +1765,16 @@ Country:
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Popdown box where only 2
 \begin_inset space ~
 \end_inset
 
 entries are shown and where the last entry is preselected:
+\begin_inset VSpace defskip
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -1663,6 +1812,10 @@ Country:
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \begin_inset Note Greyedout
 status open
 
@@ -1691,13 +1844,13 @@ color
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Radio box with inverted bevel border and symbol number
 \begin_inset space ~
 \end_inset
 
 6 as checkmark:
-\begin_inset Newline newline
+\begin_inset VSpace defskip
 \end_inset
 
 
@@ -1737,11 +1890,16 @@ Sex:
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Push button with a bevel border and colored text:
-\end_layout
+\begin_inset VSpace defskip
+\end_inset
 
-\begin_layout Standard
+
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex PushButton
 status open
 
@@ -1760,7 +1918,7 @@ onclick={app.alert("Why do you click this?")}
 \backslash
 colorbox{lime}{
 \backslash
-textcolor{red}{Don't click on this button or your fridge will be destroyed!!!}}
+textcolor{red}{Don't click on this button!!!}}
 \end_layout
 
 \end_inset
@@ -1769,6 +1927,10 @@ textcolor{red}{Don't click on this button or your fridge will be destroyed!!!}}
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \begin_inset Note Greyedout
 status open
 
@@ -1846,7 +2008,7 @@ In the button above this code was used:
 \backslash
 colorbox{lime}{
 \backslash
-textcolor{red}{Don't click on this button or your fridge will be destroyed!!!}}
+textcolor{red}{Don't click on this button!!!}}
 \end_layout
 
 \begin_layout Standard
@@ -1963,7 +2125,16 @@ EmbeddedObjects
 makebox[7cm]{Reset the form}
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+Submit button with cyan background color and increased height:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex SubmitButton
 status open
 
@@ -1990,9 +2161,26 @@ raisebox{1cm}{}Send your data via mail}
 \end_inset
 
 
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+Reset button with a width of 7
+\begin_inset space \thinspace{}
+\end_inset
+
+cm:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex ResetButton
 status open
 
@@ -2049,7 +2237,7 @@ space 0 R}
 \end_layout
 
 \begin_layout Standard
-Then ad the necessary JavaScript code to your preamble or as TeX code to
+Then add the necessary JavaScript code to your preamble or as TeX code to
  your document.
  For info about JavaScript, see its documentation, 
 \begin_inset CommandInset citation
@@ -2062,7 +2250,37 @@ key "JavaScript"
 \end_layout
 
 \begin_layout Standard
-In the following example this code was used:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifinsdljs
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following section will only be displayed when the LaTeX package 
+\series bold
+insdljs
+\series default
+ is installed.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the following choice menu this JavaScript code was used:
 \end_layout
 
 \begin_layout Standard
@@ -2151,6 +2369,28 @@ end{insDLJS}
 \end_layout
 
 \begin_layout Standard
+The 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+form
+\begin_inset space ~
+\end_inset
+
+parameters
+\family default
+ of the following choice menu are
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+name=contract,radio,value=tl,default=tl,validate={validateTime();}
+\end_layout
+
+\begin_layout Standard
 \begin_inset Flex ChoiceMenu
 status open
 
@@ -2160,7 +2400,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=contract,radio,value=tl,validate={validateTime();}
+name=contract,radio,value=tl,default=tl,validate={validateTime();}
 \end_layout
 
 \end_inset
@@ -2181,9 +2421,32 @@ Job contract:
 \end_inset
 
 
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+From:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 \begin_inset Flex TextField
 status open
 
@@ -2198,7 +2461,7 @@ name=from,width=10em
 
 \end_inset
 
-From:
+
 \end_layout
 
 \end_inset
@@ -2206,7 +2469,46 @@ From:
 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset VSpace -1.5mm
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+To:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 \begin_inset Flex TextField
 status open
 
@@ -2221,7 +2523,71 @@ name=to,width=10em
 
 \end_inset
 
-To:
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following will be displayed when the LaTeX package 
+\series bold
+insdljs
+\series default
+ is not installed:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You need to install the package 
+\series bold
+insdljs
+\series default
+ to see the content of this section in the output.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi
 \end_layout
 
 \end_inset
