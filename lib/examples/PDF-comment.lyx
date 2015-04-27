@@ -45,10 +45,10 @@ pdfcomment
 \paperfontsize 12
 \spacing single
 \use_hyperref true
-\pdf_title "Description of the module pdfcomment"
+\pdf_title "Description of the module PDF Comments"
 \pdf_author "Uwe Stöhr"
-\pdf_subject "pdfcomment"
-\pdf_keywords "LyX, PDF-comments, pdfcomment"
+\pdf_subject "PDF comments"
+\pdf_keywords "LyX, PDF comments, pdfcomment"
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
@@ -213,8 +213,8 @@ This is a simple PDF-Annotation.
 \end_layout
 
 \begin_layout Standard
-Like all PDF comment types you can add a lot of things to the option of
- the inset.
+Like for all PDF comment types you can add a lot of things to the option
+ of the inset.
  To insert the options inset, set the cursor into the comment inset and
  use the menu 
 \family sans
@@ -233,7 +233,7 @@ status open
 \series bold
 Note:
 \series default
- All braces and brackets in comment options must be inserted as TeX-code!
+ All braces and brackets in comment options must be inserted as TeX code!
 \end_layout
 
 \end_inset
@@ -946,7 +946,7 @@ status open
 \series bold
 Note:
 \series default
- Due to technical reasons PDF-Reply works only when using pdflatex.
+ Due to technical reasons PDF-Reply only works when using pdflatex.
 \end_layout
 
 \end_inset
