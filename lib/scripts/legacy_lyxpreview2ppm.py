@@ -42,6 +42,8 @@
 # * gs;
 # * pdflatex (optional);
 # * pnmcrop (optional).
+# * pdftocairo (optional).
+# * epstopdf (optional).
 
 # preview.sty is part of the preview-latex project
 #   http://preview-latex.sourceforge.net/
@@ -56,11 +58,11 @@
 # [legacy_conversion_step2]
 # 2) Call dvips to create one PS file for each DVI page
 # [legacy_conversion_step3]
-# 3) If dvips fails look for PDF and call gs to produce bitmaps
-# 4) Otherwise call gs on each PostScript file to produce bitmaps
+# 3) If dvips fails look for PDF and call pdftocairo or gs to produce bitmaps
+# 4) Otherwise call pdftocairo or gs on each PostScript file to produce bitmaps
 # [legacy_conversion_pdflatex]
 # 5) Keep track of pages on which gs failed and pass them to pdflatex
-# 6) Call gs on the PDF output from pdflatex to produce bitmaps
+# 6) Call pdftocairo or gs on the PDF output from pdflatex to produce bitmaps
 # 7) Extract and write to file (or return to lyxpreview2bitmap)
 #    metrics from both methods (standard and pdflatex)
 
@@ -74,6 +76,8 @@
 # is required in certain cases, if hyperref is active for instance,
 # (step 5, 6).
 # If possible, dvipng should be used, as it's much faster.
+# If possible, the script will use pdftocairo instead of gs,
+# as it's much faster and gives better results.
 
 import glob, os, pipes, re, string, sys
 
@@ -229,6 +233,7 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
 \definecolor{bg}{rgb}{%s}
 \pagecolor{bg}
 \usepackage[%s,tightpage]{preview}
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{\usepackage{ae,aecomp}}
 \makeatletter
 \g@addto@macro\preview{\begingroup\color{bg}\special{ps::clippath fill}\color{fg}}
 \g@addto@macro\endpreview{\endgroup}
@@ -307,8 +312,8 @@ def legacy_conversion_step1(latex_file, dpi, output_format, fg_color, bg_color,
 # Creates a new LaTeX file from the original with pages specified in
 # failed_pages, pass it through pdflatex and updates the metrics
 # from the standard legacy route
-def legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics, gs,
-    gs_device, gs_ext, alpha, resolution, output_format):
+def legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics,
+    use_pdftocairo, conv, gs_device, gs_ext, alpha, resolution, output_format):
 
     # Search for pdflatex executable
     pdflatex = find_exe(["pdflatex"])
@@ -323,16 +328,30 @@ def legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics, gs,
         pdflatex_status, pdflatex_stdout = run_latex(pdflatex, pdf_latex_file)
 
         pdf_file = latex_file_re.sub(".pdf", pdf_latex_file)
+        latex_file_root = latex_file_re.sub("", pdf_latex_file)
 
-        # GhostScript call to produce bitmaps
-        gs_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=%s ' \
-                    '-sOutputFile="%s%%d.%s" ' \
-                    '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
-                    '-r%f "%s"' \
-                    % (gs, gs_device, latex_file_re.sub("", pdf_latex_file), \
-                        gs_ext, alpha, alpha, resolution, pdf_file)
-        gs_status, gs_stdout = run_command(gs_call)
-        if gs_status:
+        # Converter call to produce bitmaps
+        if use_pdftocairo:
+            conv_call = '%s -png -transp -r %d "%s" "%s"' \
+                        % (conv, resolution, pdf_file, latex_file_root)
+            conv_status, conv_stdout = run_command(conv_call)
+            if not conv_status:
+                seqnum_re = re.compile("-([0-9]+)")
+                for name in glob.glob("%s-*.png" % latex_file_root):
+                    match = seqnum_re.search(name)
+                    if match != None:
+                        new_name = seqnum_re.sub(str(int(match.group(1))), name)
+                        os.rename(name, new_name)
+        else:
+            conv_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=%s ' \
+                        '-sOutputFile="%s%%d.%s" ' \
+                        '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
+                        '-r%f "%s"' \
+                        % (conv, gs_device, latex_file_root, \
+                            gs_ext, alpha, alpha, resolution, pdf_file)
+            conv_status, conv_stdout = run_command(conv_call)
+
+        if conv_status:
             # Give up!
             warning("Some pages failed with all the possible routes")
         else:
@@ -371,17 +390,27 @@ def legacy_conversion_step2(latex_file, dpi, output_format, skipMetrics = False)
 
 
 # Either latex and dvips have been run and we have a ps file, or
-# pdflatex has been run and we have a pdf file. Proceed with gs.
+# pdflatex has been run and we have a pdf file. Proceed with pdftocairo or gs.
 def legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMetrics = False):
     # External programs used by the script.
     gs      = find_exe_or_terminate(["gswin32c", "gswin64c", "gs"])
     pnmcrop = find_exe(["pnmcrop"])
+    pdftocairo = find_exe(["pdftocairo"])
+    epstopdf   = find_exe(["epstopdf"])
+    use_pdftocairo = pdftocairo != None and output_format == "png"
+    if use_pdftocairo:
+        conv = pdftocairo
+    else:
+        conv = gs
 
     # Files to process
     pdf_file  = latex_file_re.sub(".pdf", latex_file)
     ps_file  = latex_file_re.sub(".ps",  latex_file)
 
-    # Extract resolution data for gs from the log file.
+    # The latex file name without extension
+    latex_file_root = latex_file_re.sub("", latex_file)
+
+    # Extract resolution data for the converter from the log file.
     log_file = latex_file_re.sub(".log", latex_file)
     resolution = extract_resolution(log_file, dpi)
 
@@ -406,48 +435,76 @@ def legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMe
     # Generate the bitmap images
     if dvips_failed:
         # dvips failed, maybe there's a PDF, try to produce bitmaps
-        gs_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=%s ' \
-                  '-sOutputFile="%s%%d.%s" ' \
-                  '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
-                  '-r%f "%s"' \
-                  % (gs, gs_device, latex_file_re.sub("", latex_file), \
-                     gs_ext, alpha, alpha, resolution, pdf_file)
+        if use_pdftocairo:
+            conv_call = '%s -png -transp -r %d "%s" "%s"' \
+                        % (pdftocairo, resolution, pdf_file, latex_file_root)
 
-        gs_status, gs_stdout = run_command(gs_call)
-        if gs_status:
-            error("Failed: %s %s" % (os.path.basename(gs), ps_file))
+            conv_status, conv_stdout = run_command(conv_call)
+            if not conv_status:
+                seqnum_re = re.compile("-([0-9]+)")
+                for name in glob.glob("%s-*.png" % latex_file_root):
+                    match = seqnum_re.search(name)
+                    if match != None:
+                        new_name = seqnum_re.sub(str(int(match.group(1))), name)
+                        os.rename(name, new_name)
+        else:
+            conv_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=%s ' \
+                      '-sOutputFile="%s%%d.%s" ' \
+                      '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
+                      '-r%f "%s"' \
+                      % (gs, gs_device, latex_file_root, \
+                         gs_ext, alpha, alpha, resolution, pdf_file)
+
+            conv_status, conv_stdout = run_command(conv_call)
+
+        if conv_status:
+            error("Failed: %s %s" % (os.path.basename(conv), pdf_file))
     else:
-        # Model for calling gs on each file
-        gs_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=%s ' \
-                  '-sOutputFile="%s%%d.%s" ' \
-                  '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
-                  '-r%f "%%s"' \
-                  % (gs, gs_device, latex_file_re.sub("", latex_file), \
-                     gs_ext, alpha, alpha, resolution)
+        # Model for calling the converter on each file
+        if use_pdftocairo and epstopdf != None:
+            conv_call = '%s -png -transp -singlefile -r %d "%%s.pdf" "%s%%d"' \
+                        % (pdftocairo, resolution, latex_file_root)
+        else:
+            conv_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=%s ' \
+                        '-sOutputFile="%s%%d.%s" ' \
+                        '-dGraphicsAlphaBit=%d -dTextAlphaBits=%d ' \
+                        '-r%f "%%s"' \
+                        % (gs, gs_device, latex_file_root, \
+                           gs_ext, alpha, alpha, resolution)
 
         i = 0
         # Collect all the PostScript files (like *.001, *.002, ...)
-        ps_files = glob.glob("%s.[0-9][0-9][0-9]" % latex_file_re.sub("", latex_file))
+        ps_files = glob.glob("%s.[0-9][0-9][0-9]" % latex_file_root)
         ps_files.sort()
 
-        # Call GhostScript for each file
+        # Call the converter for each file
         for file in ps_files:
             i = i + 1
             progress("Processing page %s, file %s" % (i, file))
-            gs_status, gs_stdout = run_command(gs_call % (i, file))
-            if gs_status:
-                # gs failed, keep track of this
-                warning("Ghostscript failed on page %s, file %s" % (i, file))
+            if use_pdftocairo and epstopdf != None:
+                conv_name = "PdfToCairo"
+                conv_status, conv_stdout = run_command("%s --outfile=%s.pdf %s"
+                                                       % (epstopdf, file, file))
+                if not conv_status:
+                    conv_status, conv_stdout = run_command(conv_call % (file, i))
+            else:
+                conv_name = "Ghostscript"
+                conv_status, conv_stdout = run_command(conv_call % (i, file))
+
+            if conv_status:
+                # The converter failed, keep track of this
+                warning("%s failed on page %s, file %s" % (conv_name, i, file))
                 failed_pages.append(i)
 
     # Pass failed pages to pdflatex
     if len(failed_pages) > 0:
-        legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics, gs,
-            gs_device, gs_ext, alpha, resolution, output_format)
+        legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics,
+            use_pdftocairo, conv, gs_device, gs_ext, alpha, resolution,
+            output_format)
 
-    # Crop the images
-    if pnmcrop != None:
-        crop_files(pnmcrop, latex_file_re.sub("", latex_file))
+    # Crop the ppm images
+    if pnmcrop != None and output_format == "ppm":
+        crop_files(pnmcrop, latex_file_root)
 
     # Allow to skip .metrics creation for custom management
     # (see the dvipng method)
