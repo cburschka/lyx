@@ -413,7 +413,9 @@ def main(argv):
     # Compile the latex file.
     latex_status, latex_stdout = run_latex(latex, latex_file, bibtex)
     if latex_status:
-      return (latex_status, [])
+        progress("Using the legacy conversion method and pdflatex (latex failed)")
+        return legacy_conversion_step1(latex_file, dpi, output_format, fg_color,
+            bg_color, "pdflatex", True)
 
     # The dvi output file name
     dvi_file = latex_file_re.sub(".dvi", latex_file)
