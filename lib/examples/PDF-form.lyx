@@ -15,7 +15,7 @@
 % used for JavScript code
 \newboolean{insdljs}
 \IfFileExists{insdljs.sty}
- {\usepackage{insdljs}
+ {\usepackage[pdftex]{insdljs}
   \setboolean{insdljs}{true}}
  {\setboolean{insdljs}{false}}
 
@@ -135,7 +135,7 @@ pdfform
 status open
 
 \begin_layout Plain Layout
-action=mailto:forms@lyx.test?subject={The submitted PDF form},method=post
+action=mailto:forms@lyx.test?subject=The submitted PDF form, method=post
 \end_layout
 
 \end_inset
@@ -278,7 +278,7 @@ parameters
 \begin_layout Standard
 
 \series bold
-action=mailto:forms@lyx.test?subject={The submitted PDF form},
+action=mailto:forms@lyx.test?subject=The submitted PDF form,
 \begin_inset Newline newline
 \end_inset
 
@@ -498,7 +498,7 @@ Note:
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Form-field-and"
+reference "sec:Form-field-customization"
 
 \end_inset
 
@@ -1232,161 +1232,10 @@ submit1
 \end_layout
 
 \begin_layout Section
-PDF viewer action buttons
-\end_layout
-
-\begin_layout Standard
-One often needs basic actions to be done by the PDF viewer program.
- For example to print the form.
- Such PDF program-specific actions can be triggered by adding inserting
- the custom inset 
-\family sans
-PDFAction
-\family default
-.
- The PDF viewer programs 
-\emph on
-Acrobat
-\emph default
- and 
-\emph on
-Adobe Reader
-\emph default
- can handle all possible actions while other PDF viewers might only support
- some of them.
- However, all PDF viewer programs support the basic things like printing,
- save
-\begin_inset space ~
-\end_inset
-
-as, view in fullscreen etc..
-\end_layout
-
-\begin_layout Standard
-To specify the action insert its name to the 
-\family sans
-Action
-\family default
- inset.
- A list with possible actions can be found in sec.
-\begin_inset space \thinspace{}
-\end_inset
-
-5 
-\begin_inset Quotes eld
-\end_inset
-
-Acrobat-specific behavior
-\begin_inset Quotes erd
-\end_inset
-
- of the documentation of the LaTeX package 
-\series bold
-hyperref
-\series default
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "hyperref"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Here are some examples:
-\end_layout
-
-\begin_layout Description
-Printing: 
-\begin_inset Flex PDFAction
-status open
-
-\begin_layout Plain Layout
-
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Print
-\end_layout
-
-\end_inset
-
-Print the document
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-Save
-\begin_inset space ~
-\end_inset
-
-as: 
-\begin_inset Flex PDFAction
-status open
-
-\begin_layout Plain Layout
-
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-SaveAs
-\end_layout
-
-\end_inset
-
-Save document as
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-View
-\begin_inset space ~
-\end_inset
-
-in
-\begin_inset space ~
-\end_inset
-
-fullscreen: 
-\begin_inset Flex PDFAction
-status open
-
-\begin_layout Plain Layout
-
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-FullScreen
-\end_layout
-
-\end_inset
-
-View the form in fullscreen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Form field and button customization
+Form field customization
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Form-field-and"
+name "sec:Form-field-customization"
 
 \end_inset
 
@@ -2024,7 +1873,11 @@ Note
 \series bold
 height 
 \series default
-has no effect for push, submit and reset buttons.
+and 
+\series bold
+width
+\series default
+ has no effect for push, submit and reset buttons.
 \end_layout
 
 \end_inset
@@ -2033,100 +1886,22 @@ has no effect for push, submit and reset buttons.
 \end_layout
 
 \begin_layout Standard
-As workaround use 
-\series bold
-
-\backslash
-raisebox
-\series default
- as described in sec.
+As workaround use the box method described in sec.
 \begin_inset space \thinspace{}
 \end_inset
 
- 5.6.2 
-\begin_inset Quotes eld
-\end_inset
 
-Vertical Alignment
-\begin_inset Quotes erd
-\end_inset
-
- in LyX's 
-\emph on
-EmbeddedObjects
-\emph default
- manual.
- In the button below this code was used:
-\begin_inset Newline newline
-\end_inset
-
-
-\family sans
-
-\backslash
-raisebox{-0.8cm}{}
-\backslash
-raisebox{1cm}{}Send your data via mail
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note
-\series default
- that the 
-\series bold
-width 
-\series default
-has no effect for push, submit and reset buttons.
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Action-button-customization"
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-As workaround use
-\series bold
- 
-\backslash
-makebox
-\series default
- as described in sec.
-\begin_inset space \thinspace{}
-\end_inset
-
- 5.6.2 
-\begin_inset Quotes eld
-\end_inset
-
-Vertical Alignment
-\begin_inset Quotes erd
-\end_inset
-
- in LyX's 
-\emph on
-EmbeddedObjects
-\emph default
- manual.
- In the reset button below this code was used:
-\begin_inset Newline newline
-\end_inset
-
-
-\family sans
-
-\backslash
-makebox[7cm]{Reset the form}
 \end_layout
 
 \begin_layout Itemize
-Submit button with cyan background color and increased height:
+Submit button without border, with cyan background color and increased height:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -2153,9 +1928,11 @@ name=submit2
 \backslash
 colorbox{cyan}{
 \backslash
-raisebox{-0.8cm}{}
+parbox[c][4
 \backslash
-raisebox{1cm}{}Send your data via mail}
+totalheight]{5cm}{
+\backslash
+centering Send your data via mail}}
 \end_layout
 
 \end_inset
@@ -2203,6 +1980,543 @@ makebox[7cm]{Reset the form}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+PDF viewer action buttons
+\end_layout
+
+\begin_layout Standard
+One often needs basic actions to be done by the PDF viewer program.
+ For example to print the form.
+ Such PDF program-specific actions can be triggered by adding inserting
+ the custom inset 
+\family sans
+PDFAction
+\family default
+.
+ The PDF viewer programs 
+\emph on
+Acrobat
+\emph default
+ and 
+\emph on
+Adobe Reader
+\emph default
+ can handle all possible actions while other PDF viewers might only support
+ some of them.
+ However, all PDF viewer programs support the basic things like printing,
+ save
+\begin_inset space ~
+\end_inset
+
+as, view in fullscreen etc..
+\end_layout
+
+\begin_layout Standard
+To specify the action insert its name to the 
+\family sans
+Action
+\family default
+ inset.
+ A list with possible actions can be found in sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+5 
+\begin_inset Quotes eld
+\end_inset
+
+Acrobat-specific behavior
+\begin_inset Quotes erd
+\end_inset
+
+ of the documentation of the LaTeX package 
+\series bold
+hyperref
+\series default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hyperref"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Here are some examples:
+\end_layout
+
+\begin_layout Description
+Printing: 
+\begin_inset Flex PDFAction
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Print
+\end_layout
+
+\end_inset
+
+Print the document
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Save
+\begin_inset space ~
+\end_inset
+
+as: 
+\begin_inset Flex PDFAction
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+SaveAs
+\end_layout
+
+\end_inset
+
+Save document as
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+View
+\begin_inset space ~
+\end_inset
+
+in
+\begin_inset space ~
+\end_inset
+
+fullscreen: 
+\begin_inset Flex PDFAction
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+FullScreen
+\end_layout
+
+\end_inset
+
+View the form in fullscreen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Action button customization
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Action-button-customization"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Customizing the action buttons requires some complicated LaTeX code because
+ things like the width, height and border separation cannot be specified
+ as button parameters.
+\end_layout
+
+\begin_layout Standard
+The easiest way to customize the buttons is to fill it with a custom box:
+\end_layout
+
+\begin_layout Enumerate
+Create a normal LyX box of your choice
+\end_layout
+
+\begin_layout Enumerate
+Use the menu 
+\family sans
+View\SpecialChar \menuseparator
+Source
+\begin_inset space ~
+\end_inset
+
+Pane
+\family default
+ to show the source code window (if not already shown)
+\end_layout
+
+\begin_layout Enumerate
+set the cursor into the box and copy the corresponding LaTeX code from the
+ source window
+\end_layout
+
+\begin_layout Enumerate
+paste it t the content of the 
+\family sans
+PDFAction
+\family default
+ inset.
+\end_layout
+
+\begin_layout Standard
+For example the button should be 4
+\begin_inset space \thinspace{}
+\end_inset
+
+cm wide and have the height of 2 lines.
+ Then create this parbox:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 1
+use_makebox 0
+width "4cm"
+special "none"
+height "2in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\noindent
+Save form as
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+and copy its LaTeX code to the button 
+\family sans
+PDFAction
+\family default
+ inset.
+ To center the text in the button add 
+\backslash
+centering right before the button text.
+ This is the result:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex PDFAction
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+SaveAs
+\end_layout
+
+\end_inset
+
+
+\backslash
+parbox[c][2
+\backslash
+totalheight]{4cm}{
+\backslash
+centering Save form as}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To customize the border color, add the command 
+\series bold
+menubordercolor={r g b}
+\series default
+ to the additional options in the document settings under 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+properties
+\family default
+ and replace 
+\series bold
+r
+\series default
+, 
+\series bold
+g
+\series default
+ and 
+\series bold
+b
+\series default
+ with a number between 0 and 1 for the colors red, green and blue.
+ If you want to change the border color only for certain buttons, use the
+ layout 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+link
+\begin_inset space ~
+\end_inset
+
+setup
+\family default
+ before the button and insert there the command 
+\series bold
+menubordercolor
+\series default
+.
+ The default value of 
+\series bold
+menubordercolor
+\series default
+ is 
+\series bold
+{1 0 0}
+\series default
+.
+\end_layout
+
+\begin_layout PDF Link Setup
+menubordercolor={0.1 0.9 0.5}
+\end_layout
+
+\begin_layout Standard
+An example with 
+\series bold
+menubordercolor={0.1 0.9 0.5}
+\series default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex PDFAction
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+SaveAs
+\end_layout
+
+\end_inset
+
+
+\backslash
+parbox[c][2
+\backslash
+totalheight]{4cm}{
+\backslash
+centering Save form as}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To change the border width use the command 
+\series bold
+pdfborder={0 0 w}
+\series default
+ where 
+\series bold
+w
+\series default
+ is the width in pixels.
+ The default value of 
+\series bold
+pdfborder
+\series default
+ is 
+\series bold
+{0 0 1}
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ 
+\series bold
+pdfborder
+\series default
+ affects all link types, not only the menu links.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout PDF Link Setup
+pdfborder={0 0 4}, menubordercolor={1 1 0}
+\end_layout
+
+\begin_layout Standard
+An example with a 4
+\begin_inset space ~
+\end_inset
+
+pixel thick yellow border:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex PDFAction
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+SaveAs
+\end_layout
+
+\end_inset
+
+
+\backslash
+parbox[c][2
+\backslash
+totalheight]{4cm}{
+\backslash
+centering Save form as}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To change the background color insert the command 
+\series bold
+
+\backslash
+colorbox{color}{
+\series default
+ at the beginning of the button inset and a 
+\series bold
+}
+\series default
+ at the end.
+ 
+\series bold
+color
+\series default
+ is hereby the name of the color as described in sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+5.7 
+\begin_inset Quotes eld
+\end_inset
+
+Colored Boxes
+\begin_inset Quotes erd
+\end_inset
+
+ of LyX's 
+\emph on
+EmbeddedObjects
+\emph default
+ manual.
+\end_layout
+
+\begin_layout PDF Link Setup
+pdfborder={0 0 0}
+\end_layout
+
+\begin_layout Standard
+An example without a border and with a background color:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex PDFAction
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+SaveAs
+\end_layout
+
+\end_inset
+
+
+\backslash
+colorbox{lime}{
+\backslash
+parbox[c][2
+\backslash
+totalheight]{4cm}{
+\backslash
+centering Save form as}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout PDF Link Setup
+pdfborder={0 0 1}, menubordercolor={1 0 0}
 \end_layout
 
 \begin_layout Section
@@ -2610,6 +2924,10 @@ keep this emtpy
 
 \begin_layout Section
 General hints
+\end_layout
+
+\begin_layout Itemize
+All braces and brackets in form parameters must be inserted as TeX code!
 \end_layout
 
 \begin_layout Itemize

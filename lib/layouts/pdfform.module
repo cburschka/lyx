@@ -18,6 +18,7 @@ Style "Begin PDF Form"
 	LatexName			begin{Form}
 	Category			"PDF form"
 	KeepEmpty			1
+	PassThru			1
 	ParSkip				0.4
 	Align				Block
 	LabelSep			xx
@@ -39,6 +40,13 @@ Style "End PDF Form"
 	CopyStyle			"Begin PDF Form"
 	LatexName			end{Form}
 	LabelString			"End PDF Form"
+End
+
+Style "PDF Link Setup"
+	CopyStyle			"Begin PDF Form"
+	LatexName			hypersetup
+	LabelString			"PDF link setup"
+	KeepEmpty			0
 End
 
 #
