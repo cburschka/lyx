@@ -417,12 +417,9 @@ PreviewLoader::Impl::preview(string const & latex_snippet) const
 		font_scaling_factor_ = fs;
 		Cache::const_iterator cit = cache_.begin();
 		Cache::const_iterator cend = cache_.end();
-		while (cit != cend) {
-			string const snippet = (cit++)->first;
-			parent_.remove(snippet);
-			parent_.add(snippet);
-		}
-		parent_.startLoading(false);
+		while (cit != cend)
+			parent_.remove((cit++)->first);
+		buffer_.updatePreviews();
 	}
 	Cache::const_iterator it = cache_.find(latex_snippet);
 	return (it == cache_.end()) ? 0 : it->second.get();
