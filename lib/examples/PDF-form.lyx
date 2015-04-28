@@ -380,20 +380,11 @@ Enter your name here:
 
 \begin_layout Standard
 You must also specify a field name for text fields: Set the cursor into
- the inset and use the menu 
+ its 
 \family sans
-Insert\SpecialChar \menuseparator
-PDF
-\begin_inset space ~
-\end_inset
-
-form
-\begin_inset space ~
-\end_inset
-
-parameters
+Params
 \family default
-.
+ inset.
  There insert for example the parameter 
 \series bold
 name=customer
@@ -405,24 +396,6 @@ customer
  is the field name).
  Only if your text field has a label and no parameters the specification
  of the name can be omitted.
-\end_layout
-
-\begin_layout Standard
-All form fields can be customized by adding a parameter inset to them.
- To do this, set the cursor into the field inset and use the menu 
-\family sans
-Insert\SpecialChar \menuseparator
-PDF
-\begin_inset space ~
-\end_inset
-
-form
-\begin_inset space ~
-\end_inset
-
-parameters
-\family default
-.
 \end_layout
 
 \begin_layout Standard
@@ -440,6 +413,10 @@ Note:
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+All form fields can be customized by adding parameters.
 \end_layout
 
 \begin_layout Standard
@@ -549,22 +526,8 @@ Are you older than 18 years?
 \end_layout
 
 \begin_layout Standard
-You must also specify a field name for check boxes: Set the cursor into
- the inset and use the menu 
-\family sans
-Insert\SpecialChar \menuseparator
-PDF
-\begin_inset space ~
-\end_inset
-
-form
-\begin_inset space ~
-\end_inset
-
-parameters
-\family default
-.
- There insert for example the parameter 
+You must also specify a field name for check boxes: Insert for example the
+ parameter 
 \series bold
 name=age
 \series default
@@ -572,7 +535,11 @@ name=age
 \series bold
 age
 \series default
- is the field name).
+ is the field name) into the 
+\family sans
+Params
+\family default
+ inset.
  Only if your check box has a label and no parameters the specification
  of the name can be omitted.
 \end_layout
@@ -587,12 +554,17 @@ A choice menu is added by inserting the custom inset
 ChoiceMenu
 \family default
 .
- The label is inserted into the 
+ A label for the inset is added by using the menu 
 \family sans
+Insert\SpecialChar \menuseparator
 Label
 \family default
- inset.
- The choices are inserted to the inset as comma-separated list.
+.
+ Insert the label text into this inset.
+\begin_inset Newline newline
+\end_inset
+
+The different choices are inserted to the inset as comma-separated list.
  There are 3
 \begin_inset space ~
 \end_inset
@@ -616,22 +588,7 @@ Popdown All choices are listed below each other.
 \end_layout
 
 \begin_layout Standard
-To determine the choice menu type, set the cursor into the inset and use
- the menu 
-\family sans
-Insert\SpecialChar \menuseparator
-PDF
-\begin_inset space ~
-\end_inset
-
-form
-\begin_inset space ~
-\end_inset
-
-parameters
-\family default
-.
- There insert the parameter 
+To determine the choice menu type, add the parameter 
 \series bold
 radio
 \series default
@@ -799,8 +756,8 @@ country
 
 \begin_layout Standard
 It is recommended to add a short name for every choice to be able to access
- them and to know which one was chosen by the user- This is done by adding
- 
+ them and to know which one was chosen by the user.
+ This is done by adding 
 \series bold
 =name
 \series default
@@ -937,21 +894,7 @@ Don't click on this button or your fridge will be destroyed!!!
 \begin_layout Standard
 The action that is triggered by pressing the button is specified by JavaScript
  code.
- To specify it, set the cursor into the inset and use the menu 
-\family sans
-Insert\SpecialChar \menuseparator
-PDF
-\begin_inset space ~
-\end_inset
-
-form
-\begin_inset space ~
-\end_inset
-
-parameters
-\family default
-.
- There insert the parameter 
+ To specify it, add the parameter 
 \series bold
 onclick={}
 \series default
@@ -1150,7 +1093,7 @@ status open
 Note:
 \series default
  If you have more than one submit button in your document you must specify
- a name for each of them to avoid LaTeX errors! For example write 
+ a name for each of them to avoid LaTeX errors! For example add 
 \series bold
 name=submit1
 \series default
@@ -1215,13 +1158,13 @@ status open
 Note:
 \series default
  If you have more than one reset button in your document you must specify
- a name for each of them to avoid LaTeX errors! For example write 
+ a name for each of them to avoid LaTeX errors! For example add 
 \series bold
-name=submit1
+name=reset1
 \series default
  (where 
 \series bold
-submit1
+reset1
 \series default
  is the button name).
 \end_layout

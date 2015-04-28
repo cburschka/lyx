@@ -28,6 +28,7 @@ Style "Begin PDF Form"
 		MenuString		"PDF form parameters"
 		LabelString		"Params"
 		Tooltip			"Insert PDF form parameters here"
+		AutoInsert		1
 	EndArgument
 	LabelFont
 	  Series			Bold
@@ -63,6 +64,7 @@ InsetLayout Flex:TextField
 		MenuString		"PDF form parameters"
 		LabelString		"Params"
 		Tooltip			"Insert PDF form parameters here"
+		AutoInsert		1
 	EndArgument
 	PassThru			1
 	LabelFont
