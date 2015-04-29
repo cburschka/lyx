@@ -220,12 +220,14 @@ def find_ps_pages(dvi_file):
     # The output from dv2dt goes to stdout
     dv2dt_status, dv2dt_output = run_command(dv2dt_call)
     psliteral_re = re.compile("^special[1-4] [0-9]+ '(\"|ps:)")
-    pdffile_re = re.compile("^special[1-4] [0-9]+ 'PSfile=.*.(pdf|png|jpg)")
+    hyperref_re = re.compile("^special[1-4] [0-9]+ 'ps:.*/DEST pdfmark")
+    pdffile_re = re.compile("^special[1-4] [0-9]+ 'PSfile=.*.(pdf|png|jpg|jpeg|PDF|PNG|JPG|JPEG)")
 
     # Parse the dtl file looking for PostScript specials and pdflatex files.
     # Pages using PostScript specials or pdflatex files are recorded in
     # ps_pages or pdf_pages, respectively, and then used to create a
     # different LaTeX file for processing in legacy mode.
+    # If hyperref is detected, the corresponding page is recorded in pdf_pages.
     page_has_ps = False
     page_has_pdf = False
     page_index = 0
@@ -251,9 +253,13 @@ def find_ps_pages(dvi_file):
 
         if psliteral_re.match(line) != None:
             # Literal PostScript special detected!
-            page_has_ps = True
-
-        if pdffile_re.match(line) != None:
+            # If hyperref is detected, put this page on the pdf pages list
+            if hyperref_re.match(line) != None:
+                page_has_ps = False
+                page_has_pdf = True
+            else:
+                page_has_ps = True
+        elif pdffile_re.match(line) != None:
             # Inclusion of pdflatex image file detected!
             page_has_pdf = True
 
