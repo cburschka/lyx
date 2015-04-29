@@ -81,8 +81,8 @@
 
 import glob, os, pipes, re, string, sys
 
-from lyxpreview_tools import copyfileobj, error, filter_pages, find_exe, \
-     find_exe_or_terminate, join_metrics_and_rename, latex_commands, \
+from lyxpreview_tools import check_latex_log, copyfileobj, error, filter_pages,\
+     find_exe, find_exe_or_terminate, join_metrics_and_rename, latex_commands, \
      latex_file_re, make_texcolor, mkstemp, pdflatex_commands, progress, \
      run_command, run_latex, warning, write_metrics_info
 
@@ -325,7 +325,10 @@ def legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics,
         filter_pages(latex_file, pdf_latex_file, failed_pages)
 
         # pdflatex call
+        error_pages = []
         pdflatex_status, pdflatex_stdout = run_latex(pdflatex, pdf_latex_file)
+        if pdflatex_status:
+            error_pages = check_latex_log(latex_file_re.sub(".log", pdf_latex_file))
 
         pdf_file = latex_file_re.sub(".pdf", pdf_latex_file)
         latex_file_root = latex_file_re.sub("", pdf_latex_file)
@@ -358,6 +361,12 @@ def legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics,
             # We've done it!
             pdf_log_file = latex_file_re.sub(".log", pdf_latex_file)
             pdf_metrics = legacy_extract_metrics_info(pdf_log_file)
+
+            # Invalidate metrics for pages that produced errors
+            if len(error_pages) > 0:
+                for index in error_pages:
+                    pdf_metrics.pop(index - 1)
+                    pdf_metrics.insert(index - 1, (index, -1.0))
 
             original_bitmap = latex_file_re.sub("%d." + output_format, pdf_latex_file)
             destination_bitmap = latex_file_re.sub("%d." + output_format, latex_file)
@@ -413,6 +422,9 @@ def legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMe
     # Extract resolution data for the converter from the log file.
     log_file = latex_file_re.sub(".log", latex_file)
     resolution = extract_resolution(log_file, dpi)
+
+    # Check whether some pages produced errors
+    error_pages = check_latex_log(log_file)
 
     # Older versions of gs have problems with a large degree of
     # anti-aliasing at high resolutions
@@ -504,6 +516,13 @@ def legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMe
         legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics,
             use_pdftocairo, conv, gs_device, gs_ext, alpha, resolution,
             output_format)
+
+    # Invalidate metrics for pages that produced errors
+    if len(error_pages) > 0:
+        for index in error_pages:
+            if index not in failed_pages:
+                legacy_metrics.pop(index - 1)
+                legacy_metrics.insert(index - 1, (index, -1.0))
 
     # Crop the ppm images
     if pnmcrop != None and output_format == "ppm":
