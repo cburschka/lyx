@@ -416,15 +416,83 @@ Note:
 \end_layout
 
 \begin_layout Standard
+Using the same name for several text fields results in an automatic duplication
+ of the inserted text.
+ This is for example useful if the user should input a date that should
+ appear at different places in the form.
+\begin_inset Newline newline
+\end_inset
+
+Here are 2
+\begin_inset space ~
+\end_inset
+
+fields as example: Fill one and see that the other one will also be filled
+ automatically:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex TextField
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=identic
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex TextField
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=identic
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 All form fields can be customized by adding parameters.
 \end_layout
 
 \begin_layout Standard
-Here is a customized multiline text field with a width of 5
+Here is a customized multiline text field with a width of 60
 \begin_inset space \thinspace{}
 \end_inset
 
-cm and a proposed content:
+% of the text width, 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm height and a proposed content:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -442,7 +510,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=customer2, width=5cm, multiline, width=0.6
+name=customer2, multiline, width=0.6
 \backslash
 textwidth, height=3cm, value={Testman}
 \end_layout
@@ -883,6 +951,15 @@ status open
 
 \begin_layout Plain Layout
 
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 Don't click on this button or your fridge will be destroyed!!!
 \end_layout
 
@@ -898,7 +975,7 @@ The action that is triggered by pressing the button is specified by JavaScript
 \series bold
 onclick={}
 \series default
- and write the JavaScript code between the braces.
+ and insert the JavaScript code between the braces.
 \end_layout
 
 \begin_layout Standard
@@ -979,6 +1056,15 @@ href{http://wiki.lyx.org}{Information how to fill out this form}
 status open
 
 \begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
 
 
 \backslash
@@ -1104,6 +1190,13 @@ submit1
  is the button name).
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
 \end_inset
 
 
@@ -1396,6 +1489,15 @@ status open
 
 \begin_layout Plain Layout
 
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 Enter your name here:
 \end_layout
 
@@ -1473,6 +1575,15 @@ ding{55}:
 status open
 
 \begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
 
 Are you older than 18 years?
 \end_layout
@@ -2494,8 +2605,8 @@ space 0 R}
 \end_layout
 
 \begin_layout Standard
-Then add the necessary JavaScript code to your preamble or as TeX code to
- your document.
+Then add the necessary JavaScript code to your document LaTeX preamble or
+ as TeX code to your document.
  For info about JavaScript, see its documentation, 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2626,6 +2737,27 @@ end{insDLJS}
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ 
+\emph on
+All
+\emph default
+ JavaScript funtions must be inserted into the same insDLJS environment.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 The 
 \family sans
 PDF
@@ -2644,7 +2776,7 @@ parameters
 
 
 \series bold
-name=contract,radio,value=tl,default=tl,validate={validateTime();}
+name=contract,radio,default=tl,validate={validateTime();}
 \end_layout
 
 \begin_layout Standard
@@ -2657,7 +2789,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=contract,radio,value=tl,default=tl,validate={validateTime();}
+name=contract,radio,default=tl,validate={validateTime();}
 \end_layout
 
 \end_inset
