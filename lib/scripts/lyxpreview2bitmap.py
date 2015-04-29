@@ -221,7 +221,7 @@ def find_ps_pages(dvi_file):
     dv2dt_status, dv2dt_output = run_command(dv2dt_call)
     psliteral_re = re.compile("^special[1-4] [0-9]+ '(\"|ps:)")
     hyperref_re = re.compile("^special[1-4] [0-9]+ 'ps:.*/DEST pdfmark")
-    pdffile_re = re.compile("^special[1-4] [0-9]+ 'PSfile=.*.(pdf|png|jpg|jpeg|PDF|PNG|JPG|JPEG)")
+    pdffile_re = re.compile("^special[1-4] [0-9]+ 'PSfile=.*\\.(pdf|png|jpg|jpeg|PDF|PNG|JPG|JPEG)")
 
     # Parse the dtl file looking for PostScript specials and pdflatex files.
     # Pages using PostScript specials or pdflatex files are recorded in
