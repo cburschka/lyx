@@ -482,13 +482,13 @@ def legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMe
             i = i + 1
             progress("Processing page %s, file %s" % (i, file))
             if use_pdftocairo and epstopdf != None:
-                conv_name = "PdfToCairo"
+                conv_name = "pdftocairo"
                 conv_status, conv_stdout = run_command("%s --outfile=%s.pdf %s"
                                                        % (epstopdf, file, file))
                 if not conv_status:
                     conv_status, conv_stdout = run_command(conv_call % (file, i))
             else:
-                conv_name = "Ghostscript"
+                conv_name = "ghostscript"
                 conv_status, conv_stdout = run_command(conv_call % (i, file))
 
             if conv_status:
@@ -498,6 +498,7 @@ def legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMe
 
     # Pass failed pages to pdflatex
     if len(failed_pages) > 0:
+        warning("Now trying to obtain failed previews through pdflatex")
         legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics,
             use_pdftocairo, conv, gs_device, gs_ext, alpha, resolution,
             output_format)
