@@ -79,10 +79,11 @@ import getopt, glob, os, re, shutil, string, sys
 
 from legacy_lyxpreview2ppm import legacy_conversion_step1
 
-from lyxpreview_tools import bibtex_commands, copyfileobj, error, \
-     filter_pages, find_exe, find_exe_or_terminate, join_metrics_and_rename, \
-     latex_commands, latex_file_re, make_texcolor, mkstemp, pdflatex_commands, \
-     progress, run_command, run_latex, run_tex, warning, write_metrics_info
+from lyxpreview_tools import bibtex_commands, check_latex_log, copyfileobj, \
+     error, filter_pages, find_exe, find_exe_or_terminate, \
+     join_metrics_and_rename, latex_commands, latex_file_re, make_texcolor, \
+     mkstemp, pdflatex_commands, progress, run_command, run_latex, run_tex, \
+     warning, write_metrics_info
 
 
 def usage(prog_name):
@@ -441,9 +442,11 @@ def main(argv):
                 fg_color, bg_color, latex, pdf_output)
 
     # Compile the latex file.
+    error_pages = []
     latex_status, latex_stdout = run_latex(latex, latex_file, bibtex)
     if latex_status:
         warning("trying to recover from failed compilation")
+        error_pages = check_latex_log(latex_file_re.sub(".log", latex_file))
 
     # The dvi output file name
     dvi_file = latex_file_re.sub(".dvi", latex_file)
@@ -536,6 +539,13 @@ def main(argv):
         # Join metrics from dvipng and legacy, and rename legacy bitmaps
         join_metrics_and_rename(dvipng_metrics, legacy_metrics, pdf_pages,
             original_bitmap, destination_bitmap)
+
+    # Invalidate metrics for pages that produced errors
+    if len(error_pages) > 0:
+        for index in error_pages:
+            if index not in ps_pages and index not in pdf_pages:
+                dvipng_metrics.pop(index - 1)
+                dvipng_metrics.insert(index - 1, (index, -1.0))
 
     # Convert images to ppm format if necessary.
     if output_format == "ppm":
