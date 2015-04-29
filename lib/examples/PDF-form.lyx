@@ -21,18 +21,32 @@
 
 \pdfcatalog{/AA \the\pdflastobj\space 0 R}
 \begin{insDLJS}[exaaae]{exaaae}{JavaScript}
+
   function validateTime(){
    this.delay = true;
    if((event.value == "u") || (event.value == "unlimited")) {
-   this.getField("from").display = display.hidden;
-   this.getField("to").display = display.hidden;
-  } else {
-   this.getField("from").display = display.visible;
-   this.getField("to").display = display.visible;
-   this.getField("from").setFocus();
+    this.getField("from").display = display.hidden;
+    this.getField("to").display = display.hidden;
+   } else {
+    this.getField("from").display = display.visible;
+    this.getField("to").display = display.visible;
+    this.getField("from").setFocus();
+   }
+   this.delay = false;
   }
-  this.delay = false;
-  }
+ 
+ function checkNumber() {
+  event.rc = true;
+  if (!Number(event.value))
+  {
+   app.alert("Value must be a number!");
+   event.value = "";
+  }  else {
+   event.target.textColor = color.green;
+ }
+
+}
+
 \end{insDLJS}
 
 % if pdflatex is used
@@ -1431,7 +1445,7 @@ Here are some examples:
 \end_layout
 
 \begin_layout Text Field Style
-print, bordercolor=red,borderstyle=U, backgroundcolor=lightgray, color=lime,
+print, bordercolor=red, borderstyle=U, backgroundcolor=lightgray, color=lime,
  maxlen=10, align=2, charsize=16pt
 \end_layout
 
@@ -2749,7 +2763,11 @@ Note:
 \emph on
 All
 \emph default
- JavaScript funtions must be inserted into the same insDLJS environment.
+ JavaScript funtions must be inserted into the same 
+\family sans
+insDLJS
+\family default
+ environment.
 \end_layout
 
 \end_inset
@@ -2924,6 +2942,93 @@ name=to,width=10em
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To check and assure that the user only enters a number to a text field you
+ can for example use this JavaScript code:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=TeX"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+function checkNumber() {
+\end_layout
+
+\begin_layout Plain Layout
+
+ event.rc = true;
+\end_layout
+
+\begin_layout Plain Layout
+
+ if (!Number(event.value)) {
+\end_layout
+
+\begin_layout Plain Layout
+
+  app.alert("Value must be a number!");
+\end_layout
+
+\begin_layout Plain Layout
+
+  event.value = "";
+\end_layout
+
+\begin_layout Plain Layout
+
+ } else {
+\end_layout
+
+\begin_layout Plain Layout
+
+  event.target.textColor = color.green;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+An example text field: 
+\begin_inset Flex TextField
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=test, align=1, validate={checkNumber();}
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
