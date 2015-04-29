@@ -15058,7 +15058,7 @@ status collapsed
 
 
 \backslash
-cmidrule(l{10pt}){1-1}
+cmidrule[2pt](l{10pt}){1-1}
 \end_layout
 
 \end_inset
@@ -15303,7 +15303,7 @@ cmidrule
 \series bold
 
 \backslash
-cmidrule[width](trim){startcol-endcol}
+cmidrule[height](trim){startcol-endcol}
 \end_layout
 
 \begin_layout Standard
@@ -15327,24 +15327,46 @@ s can manually be created by inserting the command as TeX-Code as the first
 \end_layout
 
 \begin_layout Standard
-The default for the width is 0.03
+The default for the optional 
+\series bold
+height
+\series default
+ is 0.03
 \begin_inset space \thinspace{}
 \end_inset
 
 em.
- Startcol is the number of the column where the line starts and endcol the
- column number where the line ends.
- The endcol always needs to be specified, also when the line should span
- only one column.
- The optional parameter trim could be either 
+ 
+\series bold
+startcol
+\series default
+ is the number of the column where the line starts and 
+\series bold
+endcol
+\series default
+ the column number where the line ends.
+ The 
+\series bold
+endcol
+\series default
+ always needs to be specified, also when the line should span only one column.
+ The optional parameter 
+\series bold
+trim
+\series default
+ could either be 
 \emph on
 l{trimwidth}
 \emph default
-, or 
+ or 
 \emph on
 r{trimwidth}
 \emph default
- where the trimwidth is also optional.
+ where the 
+\emph on
+trimwidth
+\emph default
+ is also optional.
  Using for example the parameter 
 \emph on
 l{2pt}
@@ -15354,8 +15376,11 @@ l{2pt}
 \end_inset
 
 pt.
- If you don't specify the trimwidth the lines are trimmed by the default
- of 0.5
+ If you don't specify the 
+\emph on
+trimwidth
+\emph default
+ the line is trimmed by the default of 0.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -15399,7 +15424,7 @@ at the beginning of the second row and
 \series bold
 
 \backslash
-cmidrule(l{10pt}){1-1}
+cmidrule[2pt](l{10pt}){1-1}
 \end_layout
 
 \begin_layout Standard

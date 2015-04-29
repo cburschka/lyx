@@ -15137,7 +15137,7 @@ status collapsed
 
 
 \backslash
-cmidrule(l{10pt}){1-1}
+cmidrule[2pt](l{10pt}){1-1}
 \end_layout
 
 \end_inset
@@ -15387,7 +15387,7 @@ cmidrule
 \series bold
 
 \backslash
-cmidrule[width](trim){Anfangsspalte-Endspalte}
+cmidrule[Höhe](trim){Anfangsspalte-Endspalte}
 \end_layout
 
 \begin_layout Standard
@@ -15411,27 +15411,34 @@ cmidrule
 \end_layout
 
 \begin_layout Standard
-Der Standardwert ist 0.03
+Der Standardwert der optionalen 
+\series bold
+Höhe
+\series default
+ ist 0.03
 \begin_inset space \thinspace{}
 \end_inset
 
 em.
  Die Linie reicht von 
-\family typewriter
+\series bold
 Anfangsspalte
-\family default
+\series default
  bis 
-\family typewriter
-End\SpecialChar \-
-spal\SpecialChar \-
-te
-\family default
+\series bold
+Endspalte
+\series default
 .
  Wenn die Linie nur über eine Spalte reicht, sind beide Werte gleich.
-  Der optionale Parameter 
-\family typewriter
+ Die 
+\series bold
+Endspalte
+\series default
+ muss immer angegeben werden, auch wenn die Linie nur über eine Spalte geht.
+ Der optionale Parameter 
+\series bold
 trim
-\family default
+\series default
  kann die Werte 
 \emph on
 r
@@ -15452,9 +15459,9 @@ oder
 l{Breite}
 \emph default
  annehmen, wobei die 
-\family sans
+\emph on
 Breite
-\family default
+\emph default
  optional ist.
  
 \emph on
@@ -15465,7 +15472,7 @@ l{2pt}
 \end_inset
 
 pt gekürzt wird.
- Ohne Breitenangabe werden die Linien um 0.5
+ Ohne Breitenangabe wird die Linie um 0.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -15509,7 +15516,7 @@ am Anfang der zweiten Zeile und
 \series bold
 
 \backslash
-cmidrule(l{10pt}){1-1}
+cmidrule[2pt](l{10pt}){1-1}
 \end_layout
 
 \begin_layout Standard

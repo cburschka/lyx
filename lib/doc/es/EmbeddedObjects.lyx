@@ -14876,7 +14876,7 @@ status collapsed
 
 
 \backslash
-cmidrule(l{10pt}){1-1}
+cmidrule[2pt](l{10pt}){1-1}
 \end_layout
 
 \end_inset
@@ -15162,7 +15162,11 @@ cmidrule
 \end_layout
 
 \begin_layout Standard
-El grosor predeterminado es 0.03
+El 
+\series bold
+grosor
+\series default
+ predeterminado es 0.03
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -15265,7 +15269,7 @@ midrule
 \series bold
 
 \backslash
-cmidrule(l{10pt}){1-1}
+cmidrule[2pt](l{10pt}){1-1}
 \end_layout
 
 \begin_layout Standard
