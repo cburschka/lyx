@@ -302,7 +302,7 @@ def legacy_conversion_step1(latex_file, dpi, output_format, fg_color, bg_color,
     # Compile the latex file.
     latex_status, latex_stdout = run_latex(latex, latex_file)
     if latex_status:
-      return (latex_status, [])
+        warning("trying to recover from failed compilation")
 
     if pdf_output:
         return legacy_conversion_step3(latex_file, dpi, output_format, True, skipMetrics)

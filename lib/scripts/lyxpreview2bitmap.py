@@ -435,7 +435,9 @@ def main(argv):
                 fg_color, bg_color, latex, pdf_output)
 
     # Compile the latex file.
-    run_latex(latex, latex_file, bibtex)
+    latex_status, latex_stdout = run_latex(latex, latex_file, bibtex)
+    if latex_status:
+        warning("trying to recover from failed compilation")
 
     # The dvi output file name
     dvi_file = latex_file_re.sub(".dvi", latex_file)
