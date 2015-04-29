@@ -524,7 +524,7 @@ def main(argv):
         filter_pages(latex_file, legacy_latex_file, pdf_pages)
 
         # Pass the new LaTeX file to the legacy method
-        progress("Pages %s include pdflatex image files" % pdf_pages)
+        progress("Pages %s require processing with pdflatex" % pdf_pages)
         progress("Using the legacy conversion method (PDF support)")
         legacy_status, legacy_metrics = legacy_conversion_step1(legacy_latex_file,
             dpi, output_format, fg_color, bg_color, "pdflatex", True, True)
