@@ -462,7 +462,7 @@ def legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMe
     else:
         # Model for calling the converter on each file
         if use_pdftocairo and epstopdf != None:
-            conv_call = '%s -png -transp -singlefile -r %d "%%s.pdf" "%s%%d"' \
+            conv_call = '%s -png -transp -singlefile -r %d "%%s" "%s%%d"' \
                         % (pdftocairo, resolution, latex_file_root)
         else:
             conv_call = '%s -dNOPAUSE -dBATCH -dSAFER -sDEVICE=%s ' \
@@ -482,10 +482,12 @@ def legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMe
             i = i + 1
             progress("Processing page %s, file %s" % (i, file))
             if use_pdftocairo and epstopdf != None:
-                conv_name = "pdftocairo"
+                conv_name = "epstopdf"
                 conv_status, conv_stdout = run_command("%s --outfile=%s.pdf %s"
                                                        % (epstopdf, file, file))
                 if not conv_status:
+                    conv_name = "pdftocairo"
+                    file = file + ".pdf"
                     conv_status, conv_stdout = run_command(conv_call % (file, i))
             else:
                 conv_name = "ghostscript"
