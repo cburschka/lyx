@@ -257,6 +257,24 @@ void RenderPreview::removePreview(Buffer const & buffer)
 }
 
 
+void RenderPreview::addMacroDef(docstring const & latex_snippet,
+                               Buffer const & buffer)
+{
+	graphics::PreviewLoader * loader = buffer.loader();
+	LASSERT(loader, return);
+	loader->addMacroDef(latex_snippet);
+}
+
+
+bool RenderPreview::hasMacroDef(docstring const & latex_snippet,
+                               Buffer const & buffer)
+{
+	graphics::PreviewLoader * loader = buffer.loader();
+	LASSERT(loader, return false);
+	return loader->hasMacroDef(latex_snippet);
+}
+
+
 void RenderPreview::imageReady(graphics::PreviewImage const & pimage)
 {
 	// Check the current snippet is the same as that previewed.

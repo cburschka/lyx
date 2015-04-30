@@ -74,6 +74,11 @@ public:
 			graphics::PreviewLoader & ploader,
 			bool ignore_lyxrc = false);
 
+	/// Record math macro definitions added to the preview loader
+	void addMacroDef(docstring const & latex_snippet, Buffer const & buffer);
+	/// Has a math macro definition already been added to the preview loader?
+	bool hasMacroDef(docstring const & latex_snippet, Buffer const & buffer);
+
 	/// Begin the loading process.
 	/// \param forexport : whether this is intended for export. if so,
 	/// then we ignore LyXRC and wait for the image to be generated.

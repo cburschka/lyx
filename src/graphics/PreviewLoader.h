@@ -19,6 +19,7 @@
 #define PREVIEWLOADER_H
 
 #include <boost/signal.hpp>
+#include "support/docstring.h"
 
 #include "ColorCode.h"
 
@@ -64,6 +65,11 @@ public:
 
 	/// Remove this snippet of LaTeX from the PreviewLoader.
 	void remove(std::string const & latex_snippet) const;
+
+	/// Record math macro definitions added to the loader
+	void addMacroDef(docstring const & latex_snippet) const;
+	/// Has a math macro definition already been added to the loader?
+	bool hasMacroDef(docstring const & latex_snippet) const;
 
 	/** We have accumulated several latex snippets with status "InQueue".
 	 *  Initiate their transformation into bitmap images.
