@@ -32,6 +32,16 @@ GuiTabularCreate::GuiTabularCreate(GuiView & lv)
 
 	rowsSB->setValue(5);
 	columnsSB->setValue(5);
+	table->setMinimumSize(100, 100);
+
+	connect(table, SIGNAL(rowsChanged(int)),
+		rowsSB, SLOT(setValue(int)));
+	connect(table, SIGNAL(colsChanged(int)),
+		columnsSB, SLOT(setValue(int)));
+	connect(rowsSB, SIGNAL(valueChanged(int)),
+		table, SLOT(setNumberRows(int)));
+	connect(columnsSB, SIGNAL(valueChanged(int)),
+		table, SLOT(setNumberColumns(int)));
 
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
