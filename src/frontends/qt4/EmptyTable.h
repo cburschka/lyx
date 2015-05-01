@@ -42,7 +42,7 @@ Q_SIGNALS:
 protected:
 	/// fill in a cell
 	virtual void paintCell(class QPainter *, int, int);
-//	virtual void mouseMoveEvent(QMouseEvent *);
+	virtual void mouseMoveEvent(QMouseEvent *);
 
 	/// Reset all the cell size to default
 	virtual void resetCellSize();

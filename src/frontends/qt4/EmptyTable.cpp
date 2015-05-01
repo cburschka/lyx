@@ -12,6 +12,8 @@
 
 #include "EmptyTable.h"
 
+#include "support/debug.h"
+
 #include <QPainter>
 #include <QMouseEvent>
 
@@ -19,7 +21,8 @@
  * A simple widget for a quick "preview" in TabularCreateDialog
  */
 
-unsigned int const cellsize = 20;
+unsigned int const cellheight = 20;
+unsigned int const cellwidth = 30;
 
 
 EmptyTable::EmptyTable(QWidget * parent, int rows, int columns)
@@ -28,21 +31,23 @@ EmptyTable::EmptyTable(QWidget * parent, int rows, int columns)
 	resetCellSize();
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-	viewport()->resize(cellsize*rows,cellsize*columns);
+	viewport()->resize(cellheight * rows, cellwidth * columns);
+	setSelectionMode(QAbstractItemView::NoSelection);
+	setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 
 QSize EmptyTable::sizeHint() const
 {
-	return QSize(cellsize * (2+columnCount()), cellsize * (2+rowCount()));
+	return QSize(cellwidth * (2 + columnCount()), cellheight * (2 + rowCount()));
 }
 
 void EmptyTable::resetCellSize()
 {
-	for(int i=0; i<rowCount(); ++i)
-		setRowHeight(i, cellsize);
-	for(int i=0; i<columnCount(); ++i)
-		setColumnWidth(i, cellsize);
+	for(int i = 0; i < rowCount(); ++i)
+		setRowHeight(i, cellheight);
+	for(int i = 0; i < columnCount(); ++i)
+		setColumnWidth(i, cellwidth);
 }
 
 void EmptyTable::paintCell(QPainter * p, int row, int col)
@@ -58,12 +63,12 @@ void EmptyTable::paintCell(QPainter * p, int row, int col)
 		return;
 
 	// draw handle
-	int const step = cellsize / 5;
+	int const step = cellheight / 5;
 	int const space = 4;
-	int x = cellsize - step;
-	int const y = cellsize - space;
-	int const ex = cellsize - space;
-	int ey = cellsize - step;
+	int x = cellwidth - step;
+	int const y = cellheight - space;
+	int const ex = cellwidth - space;
+	int ey = cellheight - step;
 	while (x > space) {
 		p->drawLine(x, y, ex, ey);
 		x -= step;
@@ -99,19 +104,26 @@ void EmptyTable::setNumberRows(int nr_rows)
 	rowsChanged(nr_rows);
 }
 
-/*
+
 void EmptyTable::mouseMoveEvent(QMouseEvent *ev)
 {
-	int const x = ev->pos().x();
-	int const y = ev->pos().y();
-
-	if (x > 0)
-		setNumberColumns(x / cellsize + columnCount()-1);
-
-	if (y > 0)
-		setNumberRows(y / cellsize + rowCount()-1);
+	int cc = columnCount();
+	int rc = rowCount();
+	int x = ev->x();
+	int y = ev->y();
+	int w = cellwidth * cc;
+	int h = cellheight * rc;
+	int wl = cellwidth * (cc - 1);
+	int hl = cellheight * (rc - 1);
+	if (x > w)
+		setNumberColumns(cc + 1);
+	if (y > h)
+		setNumberRows(rc + 1);
+	if (x < wl)
+		setNumberColumns(cc - 1);
+	if (y < hl)
+		setNumberRows(rc - 1);
 }
-*/
 
 #include "moc_EmptyTable.cpp"
 
