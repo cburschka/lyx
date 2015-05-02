@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-11-10 03:10+0100\n"
-"PO-Revision-Date: 2015-03-24 23:59+0300\n"
+"PO-Revision-Date: 2015-04-29 06:49+0300\n"
 "Last-Translator: Hatim Alahmady <Dr.hatim@hotmail.com>\n"
 "Language-Team: Hatim Alahmady\n"
 "Language: ar\n"
@@ -86,11 +86,12 @@ msgid "&Default (numerical)"
 msgstr "&افتراضي (عددي)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:38
-#, fuzzy
 msgid ""
 "Use the natbib styles for natural sciences and arts. Set additional "
 "parameters in document class options."
-msgstr "استخدام اساليب natbib للعلوم الطبيعيه والفنون"
+msgstr ""
+"استخدام أساليب natbib للعلوم الطبيعية والفنون. ضبط قيم إضافية في خيارات نسق "
+"المستند."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:41
 msgid "&Natbib"
@@ -431,7 +432,7 @@ msgstr "قيمة العرض"
 
 #: src/frontends/qt4/ui/BoxUi.ui:273
 msgid "Inner box -- needed for fixed width & line breaks"
-msgstr "صندوق داخلي - لتصحيح العرض & الخط الفاصل"
+msgstr "صندوق داخلي -- لتصحيح العرض & الخط الفاصل"
 
 #: src/frontends/qt4/ui/BoxUi.ui:277 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98
@@ -457,7 +458,7 @@ msgstr "صفحة صغيرة"
 
 #: src/frontends/qt4/ui/BoxUi.ui:295
 msgid "Supported box types"
-msgstr "دعم أنواع الصندوق"
+msgstr "أنواع الصندوق المدعومة"
 
 #: src/frontends/qt4/ui/BranchUi.ui:19
 msgid "&Available branches:"
@@ -507,7 +508,7 @@ msgstr "اضافة فرع جديد للقائمة"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:123
 msgid "Define or change background color"
-msgstr "تحديد او تغيير لون الخلفية"
+msgstr "تحديد أو تغيير لون الخلفية"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:126
 #: src/frontends/qt4/ui/IndicesUi.ui:185
@@ -1096,7 +1097,7 @@ msgstr "العودة للإعدادات الافتراضية لنوع المست
 
 #: src/frontends/qt4/ui/DocumentUi.ui:115
 msgid "Use Class Defaults"
-msgstr "استخدام الصنف الافتراضي"
+msgstr "استخدام النسق الافتراضي"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:130
 msgid "Save settings as LyX's default document settings"
@@ -1621,7 +1622,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:241
 msgid "Use &Old Style Figures"
-msgstr "استخدام أسلوب الرسم التوضيحي الق&ديم"
+msgstr "استخدام أسلوب الصور الق&ديم"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
@@ -2059,7 +2060,7 @@ msgstr "&نوع المستند"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:44
 msgid "Click to select a local document class definition file"
-msgstr "أضغط لتحديد ملف تعريف نوع المستند المحلي"
+msgstr "أضغط لتحديد ملف تعريف نسق المستند الحالي"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:47
 msgid "&Local Layout..."
@@ -2067,7 +2068,7 @@ msgstr "&نسق محلي..."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:57
 msgid "Class options"
-msgstr "خيارات التصنيف"
+msgstr "خيارات النسق"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:63
 msgid "Enable to use the options that are predefined in the layout file"
@@ -2127,7 +2128,7 @@ msgstr "الترميز"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:81
 msgid "Language &Default"
-msgstr "&اللغة الافتراضية"
+msgstr "اللغة &الافتراضية"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:104
 msgid "&Other:"
@@ -2309,7 +2310,7 @@ msgstr "&اللغة:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:355
 msgid "Select the programming language"
-msgstr "حدد لغة البيان"
+msgstr "حدد لغة البرمجة"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:362
 msgid "&Dialect:"
@@ -2317,7 +2318,7 @@ msgstr "&اللهجة:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:372
 msgid "Select the dialect of the programming language, if available"
-msgstr "حدد لهجة لغة البيان, اذا كانت متاحة"
+msgstr "حدد لهجة لغة البيان, إذا كانت متاحة"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:382
 msgid "Range"
@@ -2447,7 +2448,7 @@ msgstr "&الغاء التذييل:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:180
 msgid "&Column Sep:"
-msgstr "بين الأع&مدة:"
+msgstr "&ضبط الأعمدة:"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:25
 msgid "Master Document Output"
@@ -2833,7 +2834,7 @@ msgstr "&افقية"
 #: src/frontends/qt4/ui/PageLayoutUi.ui:162
 #: src/frontends/qt4/GuiDocument.cpp:1408
 msgid "Page Layout"
-msgstr "نسق الصفحة"
+msgstr "أسلوب الصفحة"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:171
 msgid "Page &style:"
@@ -3662,11 +3663,11 @@ msgstr "استخدام مسار أسلوب-ويندوز في ملفات لتيك
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:298
 msgid "Set class options to default on class change"
-msgstr "ضبط اعدادات التصنيف افتراضياً على تغيير التصنيف "
+msgstr "ضبط إعدادات النسق افتراضياً على النسق المُعدّل"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:301
 msgid "R&eset class options when document class changes"
-msgstr "&إعادة ضبط الاعدادات الافتراضيه لصنف الوثيقة"
+msgstr "&إعادة ضبط خيارات النسق عندما يُعدل نسق المستند"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:21
 msgid "Output &line length:"
@@ -4613,11 +4614,11 @@ msgstr "تمدد"
 #: src/frontends/qt4/ui/TabularUi.ui:406 src/frontends/qt4/GuiTabular.cpp:219
 #: src/frontends/qt4/GuiTabular.cpp:838
 msgid "At Decimal Separator"
-msgstr "في الفاصلة العشرية"
+msgstr "عند الفاصلة العشرية"
 
 #: src/frontends/qt4/ui/TabularUi.ui:432
 msgid "&Decimal separator:"
-msgstr "الفصلة العش&رية:"
+msgstr "الفاصلة العش&رية:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:490
 msgid "Fixed width of the column"
@@ -9381,19 +9382,19 @@ msgstr "مسافة رأسية"
 
 #: lib/layouts/extarticle.layout:3
 msgid "Article (Standard Class with Extra Font Sizes)"
-msgstr "مقالة (نوع قياسي مع حجم خط كبير)"
+msgstr "مقالة (نسق قياسي مع حجم خط كبير)"
 
 #: lib/layouts/extbook.layout:3
 msgid "Book (Standard Class with Extra Font Sizes)"
-msgstr "كتاب (نوع قياسي مع حجم خط كبير)"
+msgstr "كتاب (نسق قياسي مع حجم خط كبير)"
 
 #: lib/layouts/extletter.layout:3
 msgid "Letter (Standard Class with Extra Font Sizes)"
-msgstr "رسالة (نوع قياسي مع حجم خط كبير)"
+msgstr "رسالة (نسق قياسي مع حجم خط كبير)"
 
 #: lib/layouts/extreport.layout:3
 msgid "Report (Standard Class with Extra Font Sizes)"
-msgstr "تقرير (نوع قياسي مع حجم خط كبير)"
+msgstr "تقرير (نسق قياسي مع حجم خط كبير)"
 
 #: lib/layouts/foils.layout:3
 msgid "FoilTeX"
@@ -12004,7 +12005,7 @@ msgstr "مخرج-الشهر"
 
 #: lib/layouts/agu_stdsections.inc:79
 msgid "Subsubparagraph"
-msgstr ""
+msgstr "فقرة تحت فرعية"
 
 #: lib/layouts/agu_stdtitle.inc:19
 msgid "-- Header --"
@@ -13435,9 +13436,8 @@ msgid "Boxes to scale and rotate its contents"
 msgstr "تحجيم وتدوير محتوى الصناديق"
 
 #: lib/layouts/graphicboxes.module:11 lib/layouts/graphicboxes.module:14
-#, fuzzy
 msgid "Reflectbox"
-msgstr "التحديد"
+msgstr "صندوق منعكس"
 
 #: lib/layouts/graphicboxes.module:26 lib/layouts/graphicboxes.module:28
 msgid "Scalebox"
@@ -13474,9 +13474,8 @@ msgid "Height of the box, can also be '!' to keep aspect ratio"
 msgstr ""
 
 #: lib/layouts/graphicboxes.module:63 lib/layouts/graphicboxes.module:65
-#, fuzzy
 msgid "Rotatebox"
-msgstr "تدوير"
+msgstr "تدوير الصندوق"
 
 #: lib/layouts/graphicboxes.module:68
 #, fuzzy
@@ -14107,7 +14106,7 @@ msgstr "رأس صندوق القسم"
 
 #: lib/layouts/sectionbox.module:31
 msgid "Insert the section box header here"
-msgstr "أدرج رأس صندوق القسم هنا"
+msgstr "إدراج رأس صندوق القسم هنا"
 
 #: lib/layouts/sectionbox.module:39
 msgid "SubsectionBox"
@@ -14264,12 +14263,12 @@ msgstr ""
 
 #: lib/layouts/tcolorbox.module:10 lib/layouts/tcolorbox.module:13
 msgid "Color Box"
-msgstr "صندوق اللون"
+msgstr "صندوق الالوان"
 
 #: lib/layouts/tcolorbox.module:18 lib/layouts/tcolorbox.module:31
 #: lib/layouts/tcolorbox.module:44
 msgid "Color Box Options"
-msgstr "خيارات صندوق اللون"
+msgstr "خيارات صندوق الالوان"
 
 #: lib/layouts/tcolorbox.module:19 lib/layouts/tcolorbox.module:32
 #: lib/layouts/tcolorbox.module:45
@@ -14277,29 +14276,24 @@ msgid "Insert the color box options here (see tcolorbox manual)"
 msgstr ""
 
 #: lib/layouts/tcolorbox.module:23
-#, fuzzy
 msgid "Dynamic Color Box"
-msgstr "لون الخط"
+msgstr "صندوق الألوان الديناميكية"
 
 #: lib/layouts/tcolorbox.module:26
-#, fuzzy
 msgid "Color Box (Dynamic)"
-msgstr "خط صندوق الألوان"
+msgstr "صندوق الألوان (ديناميكية)"
 
 #: lib/layouts/tcolorbox.module:36
-#, fuzzy
 msgid "Fit Color Box"
-msgstr "لون الخط"
+msgstr "صندوق اللون المناسب"
 
 #: lib/layouts/tcolorbox.module:39
-#, fuzzy
 msgid "Color Box (Fit Contents)"
-msgstr "خط صندوق الألوان"
+msgstr "صندوق الألوان (المحتوى المناسب)"
 
 #: lib/layouts/tcolorbox.module:49
-#, fuzzy
 msgid "Color Box Separator"
-msgstr "فاصل"
+msgstr "فاصل صندوق الألوان"
 
 #: lib/layouts/tcolorbox.module:50 lib/layouts/tcolorbox.module:84
 msgid "Color Boxes"
@@ -14334,10 +14328,10 @@ msgid ""
 msgstr ""
 "تعريف وحدات نظرية ووحدات الأثبات باستخدام آلة ممتدة AMS. كلاً من النوعين "
 "المرقم و الغير المرقم متوفر. على العكس من نماذج نظرية AMS البسيطة، النظريات "
-"المختلفة في النوع المتوفرة هنا كلٍ منها يملك عداداً منفصلاً(مثلاً.نظرية 1, نظرية "
-"2, قضية مساعدة 1, فرضية 1, نظرية 3, قضية مساعدة 2, ..., على النقيض من نظرية "
-"1, نظرية 2, قضية مساعدة 3, فرضية 4, ...). وضع الترقيم يشمل المستند كله."
-"لترقيم أبعاد عرض الفصل و أبعاد عرض القسم، استخدم واحدا من نماذج 'within "
+"المختلفة في النوع المتوفرة هنا كلٍ منها يملك عداداً منفصلاً(مثلاً.نظرية 1, "
+"نظرية 2, قضية مساعدة 1, فرضية 1, نظرية 3, قضية مساعدة 2, ..., على النقيض من "
+"نظرية 1, نظرية 2, قضية مساعدة 3, فرضية 4, ...). وضع الترقيم يشمل المستند "
+"كله.لترقيم أبعاد عرض الفصل و أبعاد عرض القسم، استخدم واحدا من نماذج 'within "
 "Sections'/'within Chapters'، على الترتيب."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
@@ -14354,12 +14348,13 @@ msgid ""
 "criterion 1, criterion 2, axiom 1, assumption 1, criterion 3, ..., as "
 "opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
 msgstr ""
-"عرف بعض وحدات النظريات الإضافية لتستخدم مع حزم نظريات الـAMS. تشمل المعايير ،"
-"الخوارزم،المسلمات،الشروط، الملاحظة،الترقيم،الملخص،الاعتراف بالجميل،استنتاج،"
-"الفرض،و الحالات،في الصيغ المرقمة و الغير مرقمة. على النقيض من نموذج  AMS-"
-"الممتد البسيط، النظريات المختلفة في النوع المتوفرة هنا تملك عداداً "
-"منفصلاً(مثلا. criterion 1, criterion 2, axiom 1, assumption 1, criterion "
-"3, ..., as opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
+"عرف بعض وحدات النظريات الإضافية لتستخدم مع حزم نظريات الـAMS. تشمل المعايير "
+"،الخوارزم،المسلمات،الشروط، الملاحظة،الترقيم،الملخص،الاعتراف "
+"بالجميل،استنتاج،الفرض،و الحالات،في الصيغ المرقمة و الغير مرقمة. على النقيض "
+"من نموذج  AMS-الممتد البسيط، النظريات المختلفة في النوع المتوفرة هنا تملك "
+"عداداً منفصلاً(مثلا. criterion 1, criterion 2, axiom 1, assumption 1, "
+"criterion 3, ..., as opposed to criterion 1, criterion 2, axiom 3, "
+"assumption 4, ...)."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:63
 #, fuzzy
@@ -14606,10 +14601,10 @@ msgid ""
 msgstr ""
 "عرف بعض وحدات النظريات لتستخدم مع غير أصناف AMS. على النقيض من نماذج "
 "النظريات البسيطة، كلا من الأنواع المختلفة من النظريات المتوفرة هنا تملك "
-"عداداً منفصلاً(مثلاً. نظرية 1, نظرية 2, قضية مساعدة 1, فرضية 1, نظرية 3, قضية "
-"مساعدة 2, ...,  على العكس من نظرية 1, نظرية 2, قضية مساعدة 3, فرضية 4, ...). "
-"وضع الترقيم يشمل كل المستند. لترقيم أبعاد عرض الفصول و أبعاد عرض القسم، "
-"استخدم واحداً من النماذج  'within Sections'/'within Chapters' ،على الترتيب."
+"عداداً منفصلاً(مثلاً. نظرية 1, نظرية 2, قضية مساعدة 1, فرضية 1, نظرية 3, "
+"قضية مساعدة 2, ...,  على العكس من نظرية 1, نظرية 2, قضية مساعدة 3, فرضية 4, "
+"...). وضع الترقيم يشمل كل المستند. لترقيم أبعاد عرض الفصول و أبعاد عرض القسم،"
+" استخدم واحداً من النماذج  'within Sections'/'within Chapters' ،على الترتيب."
 
 #: lib/layouts/theorems-chap-bytype.module:2
 msgid "Theorems (Numbered by Type within Chapters)"
@@ -14625,9 +14620,9 @@ msgid ""
 msgstr ""
 "عرف بعض وحدات النظريات لتستخدم مع غير أصناف AMS. على النقيض من نماذج "
 "النظريات البسيطة، كلا من الأنواع المختلفة من النظريات المتوفرة هنا تملك "
-"عداداً منفصلاً(مثلاً. نظرية 1, نظرية 2, قضية مساعدة 1, فرضية 1, نظرية 3, قضية "
-"مساعدة 2, ...,  على العكس من نظرية 1, نظرية 2, قضية مساعدة 3, فرضية 4, ...). "
-"يعاد ضبط الترقيم مع بداية كل فصل."
+"عداداً منفصلاً(مثلاً. نظرية 1, نظرية 2, قضية مساعدة 1, فرضية 1, نظرية 3, "
+"قضية مساعدة 2, ...,  على العكس من نظرية 1, نظرية 2, قضية مساعدة 3, فرضية 4, "
+"...). يعاد ضبط الترقيم مع بداية كل فصل."
 
 #: lib/layouts/theorems-chap.module:2
 msgid "Theorems (Numbered by Chapter)"
@@ -14673,10 +14668,10 @@ msgid ""
 "proposition 4, ...). The numbering is reset at each section start."
 msgstr ""
 "عرف بعض وحدات النظريات لتستخدم مع غير أصناف AMS. على النقيض من نماذج "
-"النظريات البسيطة،الأنواع المختلفة المتوفرة هنا كلا منها يملك عداداً "
-"منفصلاً(مثلا.نظرية 1, نظرية 2, قضية مساعدة 1, فرضية 1, نظرية 3, قضية مساعدة "
-"2, ..., as opposed to theorem 1, نظرية 2, قضية مساعدة 3, فرضية 4, ...). يعاد "
-"ضبط الترقيم عند بداية كل قسم."
+"النظريات البسيطة،الأنواع المختلفة المتوفرة هنا كلا منها يملك عداداً منفصلاً("
+"مثلا.نظرية 1, نظرية 2, قضية مساعدة 1, فرضية 1, نظرية 3, قضية مساعدة 2, ..., "
+"as opposed to theorem 1, نظرية 2, قضية مساعدة 3, فرضية 4, ...). يعاد ضبط "
+"الترقيم عند بداية كل قسم."
 
 #: lib/layouts/theorems-sec.module:2
 msgid "Theorems (Numbered by Section)"
@@ -16035,9 +16030,8 @@ msgid "Plain Separator|P"
 msgstr "فاصلة القوائم|M"
 
 #: lib/ui/stdcontext.inc:309
-#, fuzzy
 msgid "Paragraph Break|B"
-msgstr "فقرة"
+msgstr "فاصل فقرة|B"
 
 #: lib/ui/stdcontext.inc:318 lib/ui/stdmenus.inc:105 lib/ui/stdtoolbars.inc:81
 #: src/Text3.cpp:1294 src/mathed/InsetMathNest.cpp:598
@@ -16069,19 +16063,19 @@ msgstr "بحث السابق|F"
 
 #: lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:117
 msgid "Move Paragraph Up|o"
-msgstr "نقل الفقرة لأعلى|o"
+msgstr "نقل الفقرة للأعلى|o"
 
 #: lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:118
 msgid "Move Paragraph Down|v"
-msgstr "نقل الفقرة لأسفل|v"
+msgstr "نقل الفقرة للأسفل|v"
 
 #: lib/ui/stdcontext.inc:331
 msgid "Promote Section|r"
-msgstr ""
+msgstr "رفع قسم|r"
 
 #: lib/ui/stdcontext.inc:332
 msgid "Demote Section|m"
-msgstr ""
+msgstr "إنزال قسم|m"
 
 #: lib/ui/stdcontext.inc:333
 msgid "Move Section Down|D"
@@ -16141,9 +16135,8 @@ msgid "Any Number|N"
 msgstr "أي رقم|N"
 
 #: lib/ui/stdcontext.inc:359
-#, fuzzy
 msgid "User Defined|U"
-msgstr "ملفات المستخدم|#U#u"
+msgstr "تعيين المستخدم|U"
 
 #: lib/ui/stdcontext.inc:368 lib/ui/stdmenus.inc:258
 msgid "Append Argument"
@@ -16932,7 +16925,7 @@ msgstr "مجلد ماكرو الرياضيات|d"
 
 #: lib/ui/stdmenus.inc:336
 msgid "Outline Pane|u"
-msgstr "لوحة الخلاصة|u"
+msgstr "نافذة الخلاصة|u"
 
 #: lib/ui/stdmenus.inc:337
 msgid "Source Pane|S"
@@ -17555,7 +17548,7 @@ msgstr "إدراج ملاحظة ليك"
 
 #: lib/ui/stdtoolbars.inc:132
 msgid "Insert box"
-msgstr "ادراج صندوق"
+msgstr "إدراج صندوق"
 
 #: lib/ui/stdtoolbars.inc:133
 msgid "Insert hyperlink"
@@ -22647,12 +22640,12 @@ msgstr "لم يحذف مسار الذاكرة المؤقتة %1$s"
 
 #: src/Buffer.cpp:901
 msgid "Unknown document class"
-msgstr "صنف مستند مجهول"
+msgstr "نسق مستند مجهول"
 
 #: src/Buffer.cpp:902
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
-msgstr "استخدم التصنيف الأفتراضي للوثيقة، لأن التصنيف %1$s غير معرف."
+msgstr "استخدم النسق الافتراضي للوثيقة، لأن النسق %1$s غير معروف."
 
 #: src/Buffer.cpp:906 src/Text.cpp:530
 #, fuzzy, c-format
@@ -23050,7 +23043,7 @@ msgstr "اسم الملف خاطئ"
 
 #: src/Buffer.cpp:4045
 msgid "The directory path to the document cannot contain spaces."
-msgstr "مسار المجلد الى المستند لا يمكن ان يحتوي مسافات."
+msgstr "مسار المجلد إلى المستند لا يمكن أن يحتوي مسافات."
 
 #: src/Buffer.cpp:4147 src/Buffer.cpp:4161 src/frontends/qt4/GuiView.cpp:581
 msgid "Document export cancelled."
@@ -23287,7 +23280,7 @@ msgstr ""
 
 #: src/BufferParams.cpp:636
 msgid "Document class not available"
-msgstr "نوع المستند غير متاح"
+msgstr "نسق المستند غير متاح"
 
 #: src/BufferParams.cpp:1816 src/insets/InsetCommandParams.cpp:384
 #: src/insets/InsetHyperlink.cpp:197
@@ -23318,7 +23311,7 @@ msgstr ""
 
 #: src/BufferParams.cpp:2083
 msgid "Document class not found"
-msgstr "لم يتم العثور على نوع المستند"
+msgstr "نسق المستند غير موجود"
 
 #: src/BufferParams.cpp:2090
 #, fuzzy, c-format
@@ -23356,7 +23349,7 @@ msgstr "حفظ علامة"
 
 #: src/BufferView.cpp:960
 msgid "Converting document to new document class..."
-msgstr "تحويل المستند إلى نوع مستند جديد..."
+msgstr "تحويل المستند إلى نسق مستند جديد..."
 
 #: src/BufferView.cpp:1004
 msgid "Document is read-only"
@@ -23374,7 +23367,7 @@ msgstr "متوقع إدراج المسار الكامل لاسم الملف."
 #: src/BufferView.cpp:1291 src/BufferView.cpp:1320
 #, fuzzy, c-format
 msgid "The document class `%1$s' could not be loaded."
-msgstr "تعذر تحميل نوع المستند %1$s "
+msgstr "تعذر تحميل نسق المستند %1$s "
 
 #: src/BufferView.cpp:1341
 msgid "No further undo information"
@@ -23877,7 +23870,7 @@ msgstr "خلفية الزر"
 
 #: src/Color.cpp:286
 msgid "paragraph marker"
-msgstr "وضع علامة على فقرة"
+msgstr "علامة فقرة"
 
 #: src/Color.cpp:287
 msgid "preview frame"
@@ -24328,7 +24321,7 @@ msgstr ""
 
 #: src/LyX.cpp:537
 msgid "No textclass is found"
-msgstr "نوع النص غير موجود"
+msgstr "نسق النص غير موجود"
 
 #: src/LyX.cpp:538
 #, fuzzy
@@ -24559,8 +24552,8 @@ msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
 msgstr ""
-"الغي التحديد اذا لم تكن ترغب في اعادة ضبط خيارات التصنيف للوضع الافتراضي بعد "
-"تغيير التصنيف."
+"ألغي التحديد إذا لم تكن ترغب في إعادة ضبط خيارات النسق للوضع الافتراضي بعد "
+"تغيير النسق."
 
 #: src/LyXRC.cpp:3100
 msgid ""
@@ -25192,11 +25185,11 @@ msgstr ""
 
 #: src/Text.cpp:1902
 msgid ", Paragraph: "
-msgstr ", الفصل: "
+msgstr ", الفقرة: "
 
 #: src/Text.cpp:1903
 msgid ", Id: "
-msgstr ", معرف: "
+msgstr ", المعرف: "
 
 #: src/Text.cpp:1904
 msgid ", Position: "
@@ -25208,7 +25201,7 @@ msgstr ""
 
 #: src/Text.cpp:1912
 msgid ", Boundary: "
-msgstr ""
+msgstr ", الحدود: "
 
 #: src/Text2.cpp:404
 msgid "No font change defined."
@@ -25258,11 +25251,11 @@ msgstr "تعيين المحارف"
 
 #: src/Text3.cpp:2330 src/Text3.cpp:2341
 msgid "Paragraph layout set"
-msgstr "تعيين نسق الفقرة"
+msgstr "تعيين أسلوب الفقرة"
 
 #: src/TextClass.cpp:159
 msgid "Plain Layout"
-msgstr "نسق بسيط"
+msgstr "أسلوب بسيط"
 
 #: src/TextClass.cpp:830
 msgid "Missing File"
@@ -25874,9 +25867,9 @@ msgid ""
 "You need to restart LyX to make use of any\n"
 "updated document class specifications."
 msgstr ""
-"تم أعادة ضبط النظام.\n"
+"تم إعادة ضبط النظام.\n"
 "انت بحاجة لأعادة تشغيل LyX لتتمكن من استخدام \n"
-"تحديثات تصنيف اقسام الوثيقة."
+"تحديثات أقسام نسق المستند."
 
 #: src/frontends/qt4/GuiApplication.cpp:1550
 msgid "Exiting."
@@ -26626,7 +26619,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:1402
 msgid "Document Class"
-msgstr "نوع المستند"
+msgstr "نسق المستند"
 
 #: src/frontends/qt4/GuiDocument.cpp:1403 src/frontends/qt4/qt_helpers.cpp:596
 #, fuzzy
@@ -26708,12 +26701,12 @@ msgstr " (غير متاح)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1948
 msgid "Class Default (TeX Fonts)"
-msgstr "الصنف الافتراضي (خطوط تيك)"
+msgstr "النسق الافتراضي (خطوط تيك)"
 
 #: src/frontends/qt4/GuiDocument.cpp:1986
 #: src/frontends/qt4/GuiDocument.cpp:2013
 msgid "Class Default"
-msgstr "الصنف الافتراضي"
+msgstr "النسق الافتراضي"
 
 #: src/frontends/qt4/GuiDocument.cpp:2090
 msgid "Layouts|#o#O"
@@ -26779,9 +26772,8 @@ msgstr "&رفض"
 
 #: src/frontends/qt4/GuiDocument.cpp:2203
 #: src/frontends/qt4/GuiDocument.cpp:3545
-#, fuzzy
 msgid "Unable to set document class."
-msgstr "تعذر حفظ اعدادات المستند الأفتراضية"
+msgstr "تعذر ضبط نسق المستند."
 
 #: src/frontends/qt4/GuiDocument.cpp:2316
 #, c-format
@@ -26800,7 +26792,7 @@ msgstr "%1$s (غير متاح)"
 
 #: src/frontends/qt4/GuiDocument.cpp:2410
 msgid "Module provided by document class."
-msgstr "نمذجة بواسطة نوع المستند."
+msgstr "نمذجة بواسطة نسق المستند."
 
 #: src/frontends/qt4/GuiDocument.cpp:2417
 #, c-format
@@ -28022,7 +28014,7 @@ msgstr "لا توجد موسوعات متاحة لهذه اللغة!"
 
 #: src/frontends/qt4/GuiToc.cpp:36
 msgid "Outline"
-msgstr "الملخص"
+msgstr "الخلاصة"
 
 #: src/frontends/qt4/GuiToolbar.cpp:390 src/frontends/qt4/Toolbars.cpp:378
 msgid "auto"
@@ -28805,7 +28797,7 @@ msgstr "صندوق"
 
 #: src/insets/Inset.cpp:114
 msgid "Horizontal Space"
-msgstr "مسافة  افقية"
+msgstr "مسافة أفقية"
 
 #: src/insets/Inset.cpp:118
 msgid "Info"
@@ -28813,7 +28805,7 @@ msgstr "معلومات"
 
 #: src/insets/Inset.cpp:163
 msgid "Horizontal Math Space"
-msgstr "مسافة  افقية"
+msgstr "مسافة أفقية"
 
 #: src/insets/InsetArgument.cpp:114
 #, fuzzy
@@ -30081,7 +30073,7 @@ msgstr "معالجة خط"
 
 #: src/support/debug.cpp:53
 msgid "Textclass files reading"
-msgstr ""
+msgstr "قراءة ملفات نسق النص"
 
 #: src/support/debug.cpp:54
 msgid "Version control"
