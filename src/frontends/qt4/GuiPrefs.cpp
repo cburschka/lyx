@@ -35,7 +35,6 @@
 #include "LyXAction.h"
 #include "LyX.h"
 #include "PanelStack.h"
-#include "paper.h"
 #include "Session.h"
 #include "SpellChecker.h"
 
