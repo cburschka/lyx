@@ -2138,8 +2138,12 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 {
 	int column = 0;
 
-	if (params_.noindent() && !layout_->pass_thru
-	    && (layout_->toggle_indent != ITOGGLE_NEVER)) {
+	bool canindent =
+		(bparams.paragraph_separation == BufferParams::ParagraphIndentSeparation) ?
+			(layout_->toggle_indent != ITOGGLE_NEVER) :
+			(layout_->toggle_indent == ITOGGLE_ALWAYS);
+
+	if (canindent && params_.noindent() && !layout_->pass_thru) {
 		os << "\\noindent ";
 		column += 10;
 	}
