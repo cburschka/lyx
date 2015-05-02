@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-11-10 03:10+0100\n"
-"PO-Revision-Date: 2015-04-29 06:49+0300\n"
+"PO-Revision-Date: 2015-05-02 15:46+0300\n"
 "Last-Translator: Hatim Alahmady <Dr.hatim@hotmail.com>\n"
 "Language-Team: Hatim Alahmady\n"
 "Language: ar\n"
@@ -3053,7 +3053,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:250
 msgid "Minimum characters for words that should be completed"
-msgstr ""
+msgstr "أقل حروف من الكلمة لكي يتم إكمالها"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:275
 msgid ""
@@ -3118,11 +3118,11 @@ msgstr "&أقصى عمر (بالايام):"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:31
 msgid "Display &Graphics"
-msgstr "&عرض الصور"
+msgstr "عرض &الصور"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:51
 msgid "Instant &Preview:"
-msgstr "&العرض المبدئي:"
+msgstr "العرض &السريع:"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:62 src/Font.cpp:76
 #: src/frontends/qt4/GuiDocument.cpp:130
@@ -3139,7 +3139,7 @@ msgstr "تشغيل"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:80
 msgid "Preview Si&ze:"
-msgstr "&حجم العرض:"
+msgstr "حجم ال&عرض:"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:96
 msgid "Factor for the preview size"
@@ -3461,7 +3461,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:203
 msgid "Scroll wheel zoom"
-msgstr "تكبير بعجلة الفارة"
+msgstr "التكبير بعجلة الفارة"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:236
 msgid "Enable"
@@ -3571,7 +3571,7 @@ msgstr "&حدد لغات أجنبية"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:217
 msgid "Right-to-left language support"
-msgstr "دعم الكتابة من اليمين لليسار"
+msgstr "دعم اللغات من-اليمين-لليسار"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:237
 msgid "Cursor movement:"
@@ -3692,9 +3692,8 @@ msgid "Date format for strftime output"
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:104
-#, fuzzy
 msgid "&Overwrite on export:"
-msgstr "استبدال المستند؟"
+msgstr "&استبدال على التصدير:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:115
 msgid "Ask permission"
@@ -3772,7 +3771,7 @@ msgstr "&مسار الذاكرة المؤقتة:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:134
 msgid "Ly&XServer pipe:"
-msgstr ""
+msgstr "Ly&XServer pipe:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:157
 msgid "&Backup directory:"
@@ -4120,7 +4119,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:22
 msgid "&List Indentation:"
-msgstr ""
+msgstr "&قائمة البادئات:"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:39
 msgid "Custom &Width:"
@@ -4319,7 +4318,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/RefUi.ui:130
 msgid "&Sort"
-msgstr "&صنف"
+msgstr "&فرز"
 
 #: src/frontends/qt4/ui/RefUi.ui:140
 msgid "Sort labels case-sensitively in alphabetical order"
@@ -4331,7 +4330,7 @@ msgstr "حالة الأح&رف"
 
 #: src/frontends/qt4/ui/RefUi.ui:150
 msgid "Group labels by prefix (e.g. \"sec:\")"
-msgstr ""
+msgstr "مجموعة الملصقات حسب البادئة (مثل \"القسم:\")"
 
 #: src/frontends/qt4/ui/RefUi.ui:153
 msgid "Grou&p"
@@ -5852,7 +5851,7 @@ msgstr "تعليق"
 #: lib/layouts/AEA.layout:306
 #, fuzzy
 msgid "Caption: "
-msgstr "تعليق:"
+msgstr "التعليق:"
 
 #: lib/layouts/AEA.layout:311 lib/layouts/IEEEtran.layout:405
 #: lib/layouts/beamer.layout:1235 lib/layouts/elsart.layout:302
@@ -7830,7 +7829,7 @@ msgstr "حزم"
 #: lib/layouts/beamer.layout:832
 #, fuzzy
 msgid "Block:"
-msgstr "حزمة"
+msgstr "الحزمة:"
 
 #: lib/layouts/beamer.layout:843
 msgid "Action Specification|S"
@@ -10351,9 +10350,8 @@ msgid "NoDate"
 msgstr "لا تاريخ"
 
 #: lib/layouts/lettre.layout:74 lib/layouts/lettre.layout:650
-#, fuzzy
 msgid "Post Scriptum"
-msgstr "بوستكربت"
+msgstr ""
 
 #: lib/layouts/lettre.layout:76 lib/layouts/lettre.layout:516
 msgid "EndOfMessage"
@@ -10368,9 +10366,8 @@ msgstr "نهاية ملف"
 #: lib/layouts/lettre.layout:258 lib/layouts/lettre.layout:288
 #: lib/layouts/lettre.layout:318 lib/layouts/lettre.layout:344
 #: lib/layouts/lettre.layout:374 lib/layouts/lettre.layout:400
-#, fuzzy
 msgid "Headings"
-msgstr "عناوين رأس الموضوع"
+msgstr "الرؤوس"
 
 #: lib/layouts/lettre.layout:170
 msgid "City:"
@@ -10597,14 +10594,12 @@ msgid "Poemtitle"
 msgstr "عنوان القصيدة"
 
 #: lib/layouts/memoir.layout:206 lib/layouts/memoir.layout:225
-#, fuzzy
 msgid "The poem title as it appears in the table of contents"
-msgstr "العنوان كما يظهر في الوثيقة"
+msgstr "عنوان القصيدة كما يظهر في جدول المحتويات"
 
 #: lib/layouts/memoir.layout:210
-#, fuzzy
 msgid "The poem title as it appears in the running headers"
-msgstr "العنوان كما يظهر في الوثيقة"
+msgstr ""
 
 #: lib/layouts/memoir.layout:219
 msgid "Poemtitle*"
@@ -10682,7 +10677,7 @@ msgstr "خاص"
 #: lib/layouts/moderncv.layout:158
 #, fuzzy
 msgid "Social:"
-msgstr "خاص"
+msgstr "خاص:"
 
 #: lib/layouts/moderncv.layout:161
 msgid "Name of the social network"
@@ -11411,7 +11406,7 @@ msgstr "ناسوخ المرسل:"
 
 #: lib/layouts/scrlttr2.layout:207
 msgid "Sender E-Mail:"
-msgstr "بريد الكتروني المرسل:"
+msgstr "البريد الإلكتروني للمرسل:"
 
 #: lib/layouts/scrlttr2.layout:215
 msgid "Sender URL:"
@@ -11439,7 +11434,7 @@ msgstr "تقرير KOMA-Script"
 
 #: lib/layouts/seminar.layout:3
 msgid "Seminar"
-msgstr ""
+msgstr "ندوة"
 
 #: lib/layouts/seminar.layout:26 lib/layouts/seminar.layout:86
 msgid "LandscapeSlide"
@@ -11459,11 +11454,11 @@ msgstr "شريحة رأسية"
 
 #: lib/layouts/seminar.layout:47
 msgid "SlideHeading"
-msgstr ""
+msgstr "رأس الشريحة"
 
 #: lib/layouts/seminar.layout:54
 msgid "SlideSubHeading"
-msgstr ""
+msgstr "الرأس الفرعي للشريحة"
 
 #: lib/layouts/seminar.layout:60 lib/layouts/seminar.layout:121
 msgid "ListOfSlides"
@@ -11483,12 +11478,11 @@ msgstr "محتويات الشريحة"
 
 #: lib/layouts/seminar.layout:75 lib/layouts/seminar.layout:148
 msgid "ProgressContents"
-msgstr ""
+msgstr "معالجة المحتويات"
 
 #: lib/layouts/seminar.layout:77
-#, fuzzy
 msgid "Progress Contents"
-msgstr "المحتويات"
+msgstr "معالجة المحتويات"
 
 #: lib/layouts/seminar.layout:98
 msgid "Landscape Slide:"
@@ -12259,7 +12253,7 @@ msgstr ""
 
 #: lib/layouts/aguplus.inc:184
 msgid "Plate"
-msgstr ""
+msgstr "لوحة"
 
 #: lib/layouts/aguplus.inc:195
 msgid "Planotable"
@@ -12697,19 +12691,16 @@ msgid "Running Author"
 msgstr "تنفيذ المؤلف"
 
 #: lib/layouts/svcommon.inc:418
-#, fuzzy
 msgid "Running chapter:"
-msgstr "تشغيل BibTeX."
+msgstr ""
 
 #: lib/layouts/svcommon.inc:421
-#, fuzzy
 msgid "Running Section"
-msgstr "المؤلف:"
+msgstr ""
 
 #: lib/layouts/svcommon.inc:424
-#, fuzzy
 msgid "Running section:"
-msgstr "المؤلف:"
+msgstr ""
 
 #: lib/layouts/svcommon.inc:448
 msgid "Abstract*"
@@ -13257,18 +13248,16 @@ msgid "Consult the fixme package documentation for options"
 msgstr ""
 
 #: lib/layouts/fixme.module:70
-#, fuzzy
 msgid "Fixme Warning"
-msgstr "المعنى"
+msgstr "تحذير Fixme"
 
 #: lib/layouts/fixme.module:72
 msgid "Warning"
 msgstr "تحذير"
 
 #: lib/layouts/fixme.module:76
-#, fuzzy
 msgid "Fixme Error"
-msgstr "اسم الملف خاطئ"
+msgstr "خطأ Fixme"
 
 #: lib/layouts/fixme.module:78 src/frontends/qt4/GuiCompare.cpp:198
 #: src/frontends/qt4/GuiDocument.cpp:2121
@@ -13294,14 +13283,12 @@ msgid "Fixme (Targeted)"
 msgstr ""
 
 #: lib/layouts/fixme.module:105
-#, fuzzy
 msgid "Fixme Note|x"
-msgstr "ملاحظة الرسم التوضيحي"
+msgstr ""
 
 #: lib/layouts/fixme.module:106
-#, fuzzy
 msgid "Insert the FIXME note here"
-msgstr "إدراج ملاحظة ليك"
+msgstr ""
 
 #: lib/layouts/fixme.module:111
 msgid "Fixme Warning (Targeted)"
@@ -13336,9 +13323,8 @@ msgid "Fixme (Multipar)"
 msgstr ""
 
 #: lib/layouts/fixme.module:147 lib/layouts/fixme.module:188
-#, fuzzy
 msgid "Fixme Summary"
-msgstr "موجز يسار"
+msgstr ""
 
 #: lib/layouts/fixme.module:148 lib/layouts/fixme.module:189
 msgid "Insert a summary of the FIXME note here"
@@ -13377,18 +13363,16 @@ msgid "Fixme (MP Targ.)"
 msgstr ""
 
 #: lib/layouts/fixme.module:193
-#, fuzzy
 msgid "Annotated Text"
-msgstr "بعد نص العنوان"
+msgstr "نص الشرح"
 
 #: lib/layouts/fixme.module:195
 msgid "Annotated Text|x"
-msgstr ""
+msgstr "نص الشرح|x"
 
 #: lib/layouts/fixme.module:196
-#, fuzzy
 msgid "Insert the text to annotate here"
-msgstr "أدرج رأس صندوق القسم هنا"
+msgstr "ادرج نص الشرح هنا"
 
 #: lib/layouts/fixme.module:201
 msgid "Fixme Warning (Multipar Targeted)"
@@ -13444,18 +13428,16 @@ msgid "Scalebox"
 msgstr "تحجيم الصندوق"
 
 #: lib/layouts/graphicboxes.module:31
-#, fuzzy
 msgid "H-Factor"
-msgstr "حقيقة"
+msgstr ""
 
 #: lib/layouts/graphicboxes.module:32
 msgid "Insert horizontal scale factor (1 = 100%)"
 msgstr "إدراج معامل القياس الأفقي (1 = 100%)"
 
 #: lib/layouts/graphicboxes.module:38
-#, fuzzy
 msgid "V-Factor"
-msgstr "حقيقة"
+msgstr ""
 
 #: lib/layouts/graphicboxes.module:39
 msgid "Insert vertical scale factor (1 = 100%)"
@@ -13478,18 +13460,16 @@ msgid "Rotatebox"
 msgstr "تدوير الصندوق"
 
 #: lib/layouts/graphicboxes.module:68
-#, fuzzy
 msgid "Origin"
-msgstr "الأصل&:"
+msgstr "الأصل"
 
 #: lib/layouts/graphicboxes.module:69
 msgid "Rotation origin; syntax: 'origin=lt' (for top left corner)"
 msgstr ""
 
 #: lib/layouts/graphicboxes.module:72
-#, fuzzy
 msgid "Angle"
-msgstr "الزاوية:"
+msgstr "الزاوية"
 
 #: lib/layouts/graphicboxes.module:73
 msgid "Rotation angle in degrees (counterclockwise)"
@@ -13836,31 +13816,28 @@ msgid "Define PDF-Comment Style"
 msgstr ""
 
 #: lib/layouts/pdfcomment.module:43
-#, fuzzy
 msgid "PDF-comment style:"
-msgstr "ملصق التعليق"
+msgstr "أسلوب PDF-comment:"
 
 #: lib/layouts/pdfcomment.module:46
-#, fuzzy
 msgid "Name of the style"
-msgstr "اسم اللغة"
+msgstr "اسم الأسلوب"
 
 #: lib/layouts/pdfcomment.module:51
 msgid "Define PDF-Comment List Style"
-msgstr ""
+msgstr "تعيين أسلوب قائمة PDF-comment"
 
 #: lib/layouts/pdfcomment.module:54
 msgid "Definition of PDF-comment list style:"
 msgstr ""
 
 #: lib/layouts/pdfcomment.module:57
-#, fuzzy
 msgid "Name of the list style"
-msgstr "اسم الطابعة الافتراضية"
+msgstr "اسم أسلوب القائمة"
 
 #: lib/layouts/pdfcomment.module:62
 msgid "Set PDF-Comment List Style"
-msgstr ""
+msgstr "ضبط أسلوب قائمة PDF-Comment"
 
 #: lib/layouts/pdfcomment.module:65
 msgid "PDF-comment list style:"
@@ -13871,14 +13848,12 @@ msgid "PDF-Comment-Setup"
 msgstr ""
 
 #: lib/layouts/pdfcomment.module:73
-#, fuzzy
 msgid "PDF (Setup)"
-msgstr "PDF (XeTeX)"
+msgstr "PDF (إعداد)"
 
 #: lib/layouts/pdfcomment.module:81
-#, fuzzy
 msgid "PDF-Comment setup options"
-msgstr "إعدادات المستند"
+msgstr "خيارات إعداد PDF-comment"
 
 #: lib/layouts/pdfcomment.module:82 lib/layouts/pdfcomment.module:105
 #: lib/layouts/pdfcomment.module:221
@@ -13890,9 +13865,8 @@ msgid "Insert PDF-Comment setup options here (see the pdfcomment manual)"
 msgstr ""
 
 #: lib/layouts/pdfcomment.module:92
-#, fuzzy
 msgid "PDF-Annotation"
-msgstr "تدوين"
+msgstr "PDF-حاشية"
 
 #: lib/layouts/pdfcomment.module:96 src/frontends/qt4/GuiClipboard.cpp:174
 msgid "PDF"
@@ -16915,9 +16889,8 @@ msgid "Close All Insets|C"
 msgstr "إغلاق كل الإدراجات|C"
 
 #: lib/ui/stdmenus.inc:333
-#, fuzzy
 msgid "Unfold Math Macro|n"
-msgstr "ماكرو رياضيات"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:334
 msgid "Fold Math Macro|d"
@@ -19848,14 +19821,12 @@ msgid "eighthnote"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:840
-#, fuzzy
 msgid "quarternote"
-msgstr "ملحوظة تذييل"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:841
-#, fuzzy
 msgid "halfnote"
-msgstr "ملاحظة الجدول"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:842
 msgid "fullnote"
@@ -22776,8 +22747,7 @@ msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
 msgstr ""
-"المستند %1$s تم تعديله خارجياً. هل انت متأكد من أنك تريد الكتابة على هذا "
-"الملف؟"
+"المستند %1$s تم تعديله خارجياً. هل انت متأكد من أنك تريد استبدال هذا الملف؟"
 
 #: src/Buffer.cpp:1286
 msgid "Overwrite modified file?"
@@ -22787,7 +22757,7 @@ msgstr "استبدال الملف المعدل؟"
 #: src/frontends/qt4/GuiClipboard.cpp:246 src/frontends/qt4/GuiView.cpp:2200
 #: src/frontends/qt4/GuiView.cpp:2387 src/frontends/qt4/GuiView.cpp:2501
 msgid "&Overwrite"
-msgstr "استبدال"
+msgstr "&استبدال"
 
 #: src/Buffer.cpp:1337
 msgid "Backup failure"
@@ -24018,13 +23988,12 @@ msgid "uncodable character"
 msgstr "محارف خاصة"
 
 #: src/Exporter.cpp:50
-#, fuzzy
 msgid "&Keep file"
-msgstr "&ابقه"
+msgstr "&ابق الملف"
 
 #: src/Exporter.cpp:51
 msgid "Overwrite &all"
-msgstr "استبدال الكل"
+msgstr "استبدال &الكل"
 
 #: src/Exporter.cpp:51
 msgid "&Cancel export"
@@ -24661,7 +24630,7 @@ msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
 msgstr ""
-"المسار الأفتراضي للوصول لمستنداتك. القيم الخالية تحدد المجلد الذي بدأ منه LyX"
+"المسار الافتراضي للوصول لمستنداتك. القيم الخالية تحدد المجلد الذي بدأ منه LyX"
 
 #: src/LyXRC.cpp:3190
 msgid "Specify additional chars that can be part of a word."
@@ -24706,6 +24675,8 @@ msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
 msgstr ""
+"استخدم هذا لضبط ملف الخريطة الصحيحة للوحة مفاتيحك. وسوف تحتجها إذا كنت تريد "
+"كتابة مستند ألماني على لوحة مفاتيح أمريكية."
 
 #: src/LyXRC.cpp:3226
 msgid ""
@@ -24781,7 +24752,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3274
 msgid "The scrolling speed of the mouse wheel."
-msgstr "سرعة عجلة الفارة"
+msgstr "سرعة التحريك بعجلة الفارة."
 
 #: src/LyXRC.cpp:3279
 #, fuzzy
@@ -24876,28 +24847,27 @@ msgstr ""
 
 #: src/LyXRC.cpp:3362
 msgid "Extension of printer program output file. Usually \".ps\"."
-msgstr ""
+msgstr "لاحقة ملف خرج طباعة البرنامج. عادة \".ps\"."
 
 #: src/LyXRC.cpp:3366
 msgid "The option to print out in landscape."
-msgstr "الخيار للطباعة افقياً"
+msgstr "خيار للطباعة أفقيا"
 
 #: src/LyXRC.cpp:3370
 msgid "The option to print only odd pages."
-msgstr "خيار لطباعة الصفحات الفردية فقط"
+msgstr "خيار طباعة الصفحات الفردية فقط."
 
 #: src/LyXRC.cpp:3374
-#, fuzzy
 msgid "The option for specifying a comma-separated list of pages to print."
-msgstr "خيار لتحديد عدد النسخ المطبوعة."
+msgstr "خيار تحديد فاصلة الطباعة لقائمة الصفحات."
 
 #: src/LyXRC.cpp:3378
 msgid "Option to specify the dimensions of the print paper."
-msgstr "خيار لتحديد أبعاد ورق الطباعة."
+msgstr "خيار تحديد أبعاد ورق الطباعة."
 
 #: src/LyXRC.cpp:3382
 msgid "The option to specify paper type."
-msgstr "خيار لتحديد نوع الورق."
+msgstr "خيار تحديد نوع الورق."
 
 #: src/LyXRC.cpp:3386
 msgid "The option to reverse the order of the pages printed."
@@ -25002,7 +24972,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3469
 msgid "This is the place where the files of the thesaurus library reside."
-msgstr ""
+msgstr "هذا المكان الذي توضع فيه ملفات مكتبة القواميس."
 
 #: src/LyXRC.cpp:3473
 #, fuzzy
@@ -25984,7 +25954,7 @@ msgstr "ثبت المراجع BibTeX"
 #: src/frontends/qt4/GuiView.cpp:2272 src/frontends/qt4/GuiView.cpp:2314
 #: src/frontends/qt4/GuiView.cpp:2441
 msgid "Documents|#o#O"
-msgstr "مستندات|#o#O"
+msgstr "المستندات|#o#O"
 
 #: src/frontends/qt4/GuiBibtex.cpp:437
 msgid "BibTeX Databases (*.bib)"
@@ -26261,11 +26231,11 @@ msgstr "تحديد مستند"
 #: src/frontends/qt4/GuiView.cpp:2003 src/frontends/qt4/GuiView.cpp:2278
 #: src/frontends/qt4/GuiView.cpp:2322
 msgid "LyX Documents (*.lyx)"
-msgstr "مستندات ليك (*.lyx)"
+msgstr "مستند ليك (*.lyx)"
 
 #: src/frontends/qt4/GuiCompare.cpp:198
 msgid "Error while comparing documents."
-msgstr ""
+msgstr "خطأ في مقارنة كامل المستند."
 
 #: src/frontends/qt4/GuiCompare.cpp:217
 msgid "Aborted"
@@ -26280,9 +26250,8 @@ msgid "Aborting process..."
 msgstr "إجهاض العملية..."
 
 #: src/frontends/qt4/GuiCompare.cpp:299
-#, fuzzy
 msgid "differences"
-msgstr "مراجع"
+msgstr ""
 
 #: src/frontends/qt4/GuiCompareHistory.cpp:36
 msgid "Compare different revisions"
@@ -26351,9 +26320,8 @@ msgstr "إعدادات المستند"
 
 #: src/frontends/qt4/GuiDocument.cpp:741 src/frontends/qt4/GuiInclude.cpp:48
 #: src/frontends/qt4/Menus.cpp:1441
-#, fuzzy
 msgid "Child Document"
-msgstr "مستند فرعي....|م"
+msgstr "مستند فرعي"
 
 #: src/frontends/qt4/GuiDocument.cpp:742
 msgid "Include to Output"
@@ -26622,9 +26590,8 @@ msgid "Document Class"
 msgstr "نسق المستند"
 
 #: src/frontends/qt4/GuiDocument.cpp:1403 src/frontends/qt4/qt_helpers.cpp:596
-#, fuzzy
 msgid "Child Documents"
-msgstr "مستند فرعي....|م"
+msgstr "مستند فرعي"
 
 #: src/frontends/qt4/GuiDocument.cpp:1404
 msgid "Modules"
@@ -26866,11 +26833,11 @@ msgid "Could not load master"
 msgstr "لم تحمل الصنف"
 
 #: src/frontends/qt4/GuiDocument.cpp:3713
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The master document '%1$s'\n"
 "could not be loaded."
-msgstr "صنف المستند %1$s لم تحمل"
+msgstr "المستند الرئيسي %1$s لم يم تحميله."
 
 #: src/frontends/qt4/GuiErrorList.cpp:44 src/frontends/qt4/GuiLog.cpp:240
 msgid "Literate"
@@ -27090,7 +27057,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiInclude.cpp:317
 msgid "Select document to include"
-msgstr "حدد المستند للتضمين"
+msgstr "حدد المستند لتضمينه"
 
 #: src/frontends/qt4/GuiInclude.cpp:324
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
@@ -28075,7 +28042,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:871
 msgid "LyX could not be closed because documents are being processed by LyX."
-msgstr ""
+msgstr "ليك لا يمكن إغلاقه لأن المستند بدأ بمعالجته بواسطة ليك."
 
 #: src/frontends/qt4/GuiView.cpp:1129
 msgid "Welcome to LyX!"
@@ -28091,7 +28058,7 @@ msgstr "فشل الحفظ الآلي!"
 
 #: src/frontends/qt4/GuiView.cpp:1642
 msgid "Command not allowed without any document open"
-msgstr "هذا الامر غير متاح بدون مستند مفتوح"
+msgstr "هذا الأمر غير متاح بدون مستند مفتوح"
 
 #: src/frontends/qt4/GuiView.cpp:1748
 #, c-format
@@ -28108,7 +28075,7 @@ msgstr "قوالب|#T#t"
 
 #: src/frontends/qt4/GuiView.cpp:1970
 msgid "Document not loaded."
-msgstr "لم يحمل المستند."
+msgstr "المستند لم يتم تحميله."
 
 #: src/frontends/qt4/GuiView.cpp:1998
 msgid "Select document to open"
@@ -28212,7 +28179,7 @@ msgstr "ملف جديد"
 
 #: src/frontends/qt4/GuiView.cpp:2271
 msgid "Select LyX document to insert"
-msgstr "حدد مستند ليك لادراجه"
+msgstr "حدد مستند ليك لإدراجه"
 
 #: src/frontends/qt4/GuiView.cpp:2313
 msgid "Choose a filename to save document as"
@@ -28278,7 +28245,7 @@ msgid ""
 msgstr ""
 "غير قادر على حفظ المستند %1$s..\n"
 "\n"
-"هل ترغب باعادة تسمية المستند ومن ثم المحاولة مجددا؟"
+"هل ترغب بإعادة تسمية المستند ومن ثم المحاولة مجددا؟"
 
 #: src/frontends/qt4/GuiView.cpp:2544
 msgid "Rename and save?"
@@ -28460,9 +28427,8 @@ msgid "Please, preview the document first."
 msgstr "فضلا, استعرض المستند أولا."
 
 #: src/frontends/qt4/GuiView.cpp:3847
-#, fuzzy
 msgid "Couldn't proceed."
-msgstr "لم يتم تصدير الملف"
+msgstr "لم يتم معالجته."
 
 #: src/frontends/qt4/GuiViewSource.cpp:248
 #: src/frontends/qt4/GuiViewSource.cpp:292
@@ -28474,9 +28440,8 @@ msgid "DocBook Source"
 msgstr "مصدر DocBook"
 
 #: src/frontends/qt4/GuiViewSource.cpp:296
-#, fuzzy
 msgid "Literate Source"
-msgstr "كود ليتك مصدري"
+msgstr "كود Literate"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1377
 msgid " (version control, locking)"
@@ -30202,9 +30167,8 @@ msgid ""
 msgstr ""
 
 #: src/support/lassert.cpp:93
-#, fuzzy
 msgid "Fatal Exception!"
-msgstr "جدول التعليق"
+msgstr ""
 
 #: src/support/os_win32.cpp:482
 msgid "System file not found"
