@@ -145,6 +145,7 @@ pdfform
 \begin_body
 
 \begin_layout Begin PDF Form
+
 \begin_inset Argument 1
 status open
 
@@ -258,7 +259,7 @@ Note:
 
 \begin_layout Standard
 If the form data should be submitted to a server or the like, then you must
- specify the URL to where it should be submitted as parameter of the 
+ specify the URL as parameter of the 
 \family sans
 Begin
 \begin_inset space ~
@@ -304,8 +305,8 @@ This sends the form data as email to
 \emph on
 forms@lyx.test
 \emph default
-.
- The email subject is 
+ when the user presses the submit button.
+ The email subject will be 
 \begin_inset Quotes eld
 \end_inset
 
@@ -322,7 +323,18 @@ post
 \series bold
 get
 \series default
-.)
+.) For more about submitting see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Submit-button"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -408,8 +420,6 @@ name=customer
 customer
 \series default
  is the field name).
- Only if your text field has a label and no parameters the specification
- of the name can be omitted.
 \end_layout
 
 \begin_layout Standard
@@ -622,8 +632,6 @@ age
 Params
 \family default
  inset.
- Only if your check box has a label and no parameters the specification
- of the name can be omitted.
 \end_layout
 
 \begin_layout Subsection
@@ -687,6 +695,10 @@ popdown
 
 \begin_layout Standard
 Here is an example for the radio type:
+\begin_inset VSpace defskip
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -700,7 +712,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-radio
+radio, name=radio
 \end_layout
 
 \end_inset
@@ -725,6 +737,10 @@ Sex:
 
 \begin_layout Standard
 Here is an example for the combo type:
+\begin_inset VSpace defskip
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -738,7 +754,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-combo
+combo, name=combo
 \end_layout
 
 \end_inset
@@ -763,6 +779,10 @@ Country:
 
 \begin_layout Standard
 Here is an example for the popdown type:
+\begin_inset VSpace defskip
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -800,27 +820,8 @@ Country:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- For the popdown type you must always specify a field name: Add to the 
-\family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-form
-\begin_inset space ~
-\end_inset
-
-parameters
-\family default
- for example the parameter 
+You must also specify a field name for choice menus: Insert for example
+ the parameter 
 \series bold
 name=country
 \series default
@@ -828,12 +829,11 @@ name=country
 \series bold
 country
 \series default
- is the field name).
-\end_layout
-
-\end_inset
-
-
+ is the field name) into the 
+\family sans
+Params
+\family default
+ inset.
 \end_layout
 
 \begin_layout Standard
@@ -944,6 +944,13 @@ hyperref
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Push button
 \end_layout
@@ -956,10 +963,9 @@ PushButton
 .
  Write inside the inset the label for the button.
  Here is an example:
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset Flex PushButton
 status open
 
@@ -1116,6 +1122,13 @@ if your push button border color is red (the default), otherwise use the
 
 \begin_layout Subsection
 Submit button
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Submit-button"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1127,10 +1140,9 @@ SubmitButton
 .
  Write inside the inset the label for the button.
  Here is an example:
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset Flex SubmitButton
 status open
 
@@ -1151,6 +1163,14 @@ Send your data via email
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+The submit button creates a forms data format (FDF) file (file extension
+ *.fdf) which is then submitted.
+ The FDF file contains only the form data.
+ They can only be applied to a PDF form if all fields in the form have a
+ name.
 \end_layout
 
 \begin_layout Standard
@@ -1209,13 +1229,6 @@ submit1
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Reset button
 \end_layout
@@ -1229,10 +1242,9 @@ ResetButton
 .
  Write inside the inset the label for the button.
  Here is an example:
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset Flex ResetButton
 status open
 
@@ -1445,37 +1457,45 @@ Here are some examples:
 \end_layout
 
 \begin_layout Text Field Style
+
 print, bordercolor=red, borderstyle=U, backgroundcolor=lightgray, color=lime,
  maxlen=10, align=2, charsize=16pt
 \end_layout
 
 \begin_layout Check Box Style
+
 print, borderstyle=S, checkboxsymbol=
 \backslash
 ding{55}
 \end_layout
 
 \begin_layout Combo Box Style
+
 print, bordercolor={0.33 0.66 0.33}, borderstyle=D
 \end_layout
 
 \begin_layout Popdown Box Style
+
 print, menulength=2
 \end_layout
 
 \begin_layout Radio Box Style
+
 print, borderstyle=I, radiosymbol=6
 \end_layout
 
 \begin_layout Push Button Style
+
 print, borderstyle=B, bordercolor=lime
 \end_layout
 
 \begin_layout Submit Button Style
+
 print, borderwidth=0, bordercolor=white
 \end_layout
 
 \begin_layout Reset Button Style
+
 print, bordercolor=lime
 \end_layout
 
@@ -1659,7 +1679,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-combo, default=Az
+combo, name=combo2, default=Az
 \end_layout
 
 \end_inset
@@ -1784,7 +1804,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-radio
+radio, name=radio2
 \end_layout
 
 \end_inset
@@ -2383,6 +2403,7 @@ menubordercolor
 \end_layout
 
 \begin_layout PDF Link Setup
+
 menubordercolor={0.1 0.9 0.5}
 \end_layout
 
@@ -2467,6 +2488,7 @@ pdfborder
 \end_layout
 
 \begin_layout PDF Link Setup
+
 pdfborder={0 0 4}, menubordercolor={1 1 0}
 \end_layout
 
@@ -2544,6 +2566,7 @@ EmbeddedObjects
 \end_layout
 
 \begin_layout PDF Link Setup
+
 pdfborder={0 0 0}
 \end_layout
 
@@ -2584,6 +2607,7 @@ centering Save form as}}
 \end_layout
 
 \begin_layout PDF Link Setup
+
 pdfborder={0 0 1}, menubordercolor={1 0 0}
 \end_layout
 
@@ -3022,7 +3046,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=test, align=1, validate={checkNumber();}
+name=onlyNumbers, align=1, validate={checkNumber();}
 \end_layout
 
 \end_inset
@@ -3090,6 +3114,7 @@ fi
 \end_layout
 
 \begin_layout End PDF Form
+
 \begin_inset Note Note
 status open
 
@@ -3103,11 +3128,28 @@ keep this emtpy
 \end_layout
 
 \begin_layout Section
-General hints
+General notes and hints
+\end_layout
+
+\begin_layout Itemize
+Submitting and applying data requires that all form fields have a name.
 \end_layout
 
 \begin_layout Itemize
 All braces and brackets in form parameters must be inserted as TeX code!
+\end_layout
+
+\begin_layout Itemize
+It is not possible to create a PDF form using XeTeX.
+ Use either the LyX export formats 
+\family sans
+PDF (pdflatex)
+\family default
+ or 
+\family sans
+PDF (LuaTeX)
+\family default
+.
 \end_layout
 
 \begin_layout Itemize
@@ -3176,8 +3218,6 @@ target "http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/manual.pdf"
  of the LaTeX package 
 \series bold
 hyperref
-\series default
-.
 \end_layout
 
 \begin_layout Bibliography
@@ -3198,8 +3238,6 @@ target "http://mirrors.ctan.org/macros/latex/required/psnfss/psnfss2e.pdf"
  of the LaTeX package 
 \series bold
 pifont
-\series default
-.
 \end_layout
 
 \end_body
