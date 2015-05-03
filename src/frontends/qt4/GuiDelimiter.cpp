@@ -188,13 +188,24 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 	for (int i = 0; i < end; ++i) {
 		string const delim = latex_delimiters[i];
 		MathSymbol const & ms =	mathSymbol(delim);
+// Due to a bug in Qt 4 on Windows, we need to use our math symbol font
+// on Windows, which results in sub-optimal glyph display (see #5760).
+// FIXME: Re-check after Windows has settled to Qt 5.
+#if defined(_WIN32)
 		QString symbol(ms.fontcode?
 			QChar(ms.fontcode) : toqstr(docstring(1, ms.unicode)));
 		QListWidgetItem * lwi = new QListWidgetItem(symbol);
-		lwi->setToolTip(toqstr(delim));
 		FontInfo lyxfont;
 		lyxfont.setFamily(ms.fontfamily);
-		lwi->setFont(frontend::getFont(lyxfont));
+		QFont font = frontend::getFont(lyxfont);
+#else
+		QString symbol(QChar(ms.unicode));
+		QListWidgetItem * lwi = new QListWidgetItem(symbol);
+		QFont font = lwi->font();
+		font.setPointSize(2 * font.pointSize());
+#endif
+		lwi->setFont(font);
+		lwi->setToolTip(toqstr(delim));
 		list_items[ms.unicode] = lwi;
 		leftLW->addItem(lwi);
 	}
@@ -206,8 +217,18 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 	}
 
 	// The last element is the empty one.
-	leftLW->addItem(qt_("(None)"));
-	rightLW->addItem(qt_("(None)"));
+	QListWidgetItem * lwi = new QListWidgetItem(qt_("(None)"));
+	QListWidgetItem * rwi = new QListWidgetItem(qt_("(None)"));
+// See above comment.
+// FIXME: Re-check after Windows has settled to Qt 5.
+#if !defined(_WIN32)
+	QFont font = lwi->font();
+	font.setPointSize(2 * font.pointSize());
+	lwi->setFont(font);
+	rwi->setFont(font);
+#endif
+	leftLW->addItem(lwi);
+	rightLW->addItem(rwi);
 
 	sizeCO->addItem(qt_("Variable"));
 
