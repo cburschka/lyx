@@ -108,7 +108,7 @@ LaTeX::LaTeX(string const & latex, OutputParams const & rp,
 }
 
 
-void LaTeX::deleteFilesOnError() const
+void LaTeX::removeAuxiliaryFiles() const
 {
 	// Note that we do not always call this function when there is an error.
 	// For example, if there is an error but an output file is produced we
@@ -413,7 +413,7 @@ int LaTeX::run(TeXErrors & terr)
 		// incorrect PDF is not displayed, which could otherwise
 		// happen if View is run again because the checksum will
 		// be the same so any lingering PDF will be viewed.
-		deleteFilesOnError();
+		removeAuxiliaryFiles();
 	}
 
 	if (exit_code)

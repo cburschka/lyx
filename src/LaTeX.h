@@ -209,7 +209,7 @@ private:
 		       OutputParams const &);
 
 	///
-	void deleteFilesOnError() const;
+	void removeAuxiliaryFiles() const;
 
 	///
 	std::string cmd;
