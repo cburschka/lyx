@@ -1025,6 +1025,12 @@ docstring InsetBibtex::xhtml(XHTMLStream & xs, OutputParams const &) const
 }
 
 
+void InsetBibtex::write(ostream & os) const
+{
+	params().Write(os, &buffer());
+}
+
+
 string InsetBibtex::contextMenuName() const
 {
 	return "context-bibtex";

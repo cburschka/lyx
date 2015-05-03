@@ -28,6 +28,7 @@
 namespace lyx {
 
 class Lexer;
+class Buffer;
 
 class ParamInfo {
 public:
@@ -117,6 +118,8 @@ public:
 	/// Parse the command
 	///
 	void write(std::ostream &) const;
+	///
+	void Write(std::ostream & os, Buffer const * buf) const;
 	/// Build the complete LaTeX command
 	docstring getCommand(OutputParams const &) const;
 	/// Return the command name

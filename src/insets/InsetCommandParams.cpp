@@ -28,6 +28,7 @@
 #include "InsetRef.h"
 #include "InsetTOC.h"
 
+#include "Buffer.h"
 #include "Encoding.h"
 #include "Lexer.h"
 #include "OutputParams.h"
@@ -321,6 +322,12 @@ void InsetCommandParams::read(Lexer & lex)
 
 void InsetCommandParams::write(ostream & os) const
 {
+	Write(os, 0);
+}
+
+
+void InsetCommandParams::Write(ostream & os, Buffer const * buffer) const
+{
 	os << "CommandInset " << insetType() << '\n';
 	os << "LatexCommand " << cmdName_ << '\n';
 	if (preview_)
@@ -328,12 +335,27 @@ void InsetCommandParams::write(ostream & os) const
 	ParamInfo::const_iterator it  = info_.begin();
 	ParamInfo::const_iterator end = info_.end();
 	for (; it != end; ++it) {
-		std::string const & name = it->name();
-		docstring const & data = (*this)[name];
+		string const & name = it->name();
+		string data = to_utf8((*this)[name]);
 		if (!data.empty()) {
-			// FIXME UNICODE
+			// Adjust path of files if document was moved
+			if (buffer && name == "filename") {
+				data = buffer->includedFilePath(data);
+			} else if (buffer && name == "bibfiles") {
+				int i = 0;
+				string newdata;
+				string bib = token(data, ',', i);
+				while (!bib.empty()) {
+					bib = buffer->includedFilePath(bib);
+					if (!newdata.empty())
+						newdata.append(1, ',');
+					newdata.append(bib);
+					bib = token(data, ',', ++i);
+				}
+				data = newdata;
+			}
 			os << name << ' '
-			   << Lexer::quoteString(to_utf8(data))
+			   << Lexer::quoteString(data)
 			   << '\n';
 		}
 	}
