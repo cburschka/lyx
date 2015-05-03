@@ -688,7 +688,7 @@ def revert_specialchar(document):
 
 
 def revert_georgian(document):
-    "Set the document language for new supported languages to English"
+    "Set the document language to English but assure Georgian output"
 
     if document.language == "georgian":
         document.language = "english"
