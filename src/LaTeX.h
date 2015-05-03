@@ -151,11 +151,16 @@ public:
 
 	/**
 	   cmd = the latex command, file = name of the (temporary) latex file,
-	   path = name of the files original path.
+	   path = name of the files original path,
+	   clean_start = This forces a fresh run by deleting the files in the temp
+			 dir. We set this e.g. if there was an error on previous
+			 preview, which is good if the user installed a package
+			 or changed certain document settings (#9061).
 	*/
 	LaTeX(std::string const & cmd, OutputParams const &,
 	      support::FileName const & file,
-	      std::string const & path = empty_string());
+	      std::string const & path = empty_string(),
+	      bool const clean_start = false);
 
 	/// runs LaTeX several times
 	int run(TeXErrors &);

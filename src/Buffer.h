@@ -648,6 +648,9 @@ public:
 	/// Export buffer to format \p format and open the result in a suitable viewer.
 	/// Note: This has nothing to do with preview of graphics or math formulas.
 	ExportStatus preview(std::string const & format) const;
+	/// true if there was a previous preview this session of this buffer and
+	/// there was an error on the previous preview of this buffer.
+	bool lastPreviewError() const;
 
 private:
 	///

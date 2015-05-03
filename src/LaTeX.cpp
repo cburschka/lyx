@@ -92,7 +92,7 @@ bool operator!=(AuxInfo const & a, AuxInfo const & o)
  */
 
 LaTeX::LaTeX(string const & latex, OutputParams const & rp,
-	     FileName const & f, string const & p)
+	     FileName const & f, string const & p, bool const clean_start)
 	: cmd(latex), file(f), path(p), runparams(rp), biber(false)
 {
 	num_errors = 0;
@@ -105,6 +105,8 @@ LaTeX::LaTeX(string const & latex, OutputParams const & rp,
 		output_file =
 			FileName(changeExtension(file.absFileName(), ".dvi"));
 	}
+	if (clean_start)
+		removeAuxiliaryFiles();
 }
 
 
@@ -168,8 +170,6 @@ int LaTeX::run(TeXErrors & terr)
 	// The class LaTeX does not know the temp path.
 	theBufferList().updateIncludedTeXfiles(FileName::getcwd().absFileName(),
 		runparams);
-
-	// Never write the depfile if an error was encountered.
 
 	// 0
 	// first check if the file dependencies exist:

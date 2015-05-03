@@ -288,10 +288,15 @@ public:
 	/// we ran updateBuffer(), i.e., whether citation labels may need
 	/// to be updated.
 	mutable bool cite_labels_valid_;
-	/// these hold the file name and format, written to by Buffer::preview
-	/// and read from by LFUN_BUFFER_VIEW_CACHE.
+
+	/// These two hold the file name and format, written to by
+	/// Buffer::preview and read from by LFUN_BUFFER_VIEW_CACHE.
 	FileName preview_file_;
 	string preview_format_;
+	/// If there was an error when previewing, on the next preview we do
+	/// a fresh compile (e.g. in case the user installed a package that
+	/// was missing).
+	bool preview_error_;
 
 	mutable RefCache ref_cache_;
 
@@ -429,6 +434,7 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	internal_buffer = cloned_buffer_->d->internal_buffer;
 	preview_file_ = cloned_buffer_->d->preview_file_;
 	preview_format_ = cloned_buffer_->d->preview_format_;
+	preview_error_ = cloned_buffer_->d->preview_error_;
 }
 
 
@@ -1161,6 +1167,12 @@ bool Buffer::isFullyLoaded() const
 void Buffer::setFullyLoaded(bool value)
 {
 	d->file_fully_loaded = value;
+}
+
+
+bool Buffer::lastPreviewError() const
+{
+	return d->preview_error_;
 }
 
 
@@ -4235,6 +4247,7 @@ Buffer::ExportStatus Buffer::preview(string const & format, bool includeall) con
 	LATTEST (isClone());
 	d->cloned_buffer_->d->preview_file_ = previewFile;
 	d->cloned_buffer_->d->preview_format_ = format;
+	d->cloned_buffer_->d->preview_error_ = (status != ExportSuccess);
 
 	if (status != ExportSuccess)
 		return status;

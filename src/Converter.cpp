@@ -644,7 +644,7 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 	// do the LaTeX run(s)
 	string const name = buffer.latexName();
 	LaTeX latex(command, runparams, FileName(makeAbsPath(name)),
-		    buffer.filePath());
+		    buffer.filePath(), buffer.lastPreviewError());
 	TeXErrors terr;
 	ShowMessage show(buffer);
 	latex.message.connect(show);
