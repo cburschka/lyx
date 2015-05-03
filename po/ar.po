@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.1.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-11-10 03:10+0100\n"
-"PO-Revision-Date: 2015-05-02 15:46+0300\n"
+"PO-Revision-Date: 2015-05-03 13:20+0300\n"
 "Last-Translator: Hatim Alahmady <Dr.hatim@hotmail.com>\n"
 "Language-Team: Hatim Alahmady\n"
 "Language: ar\n"
@@ -939,9 +939,8 @@ msgid "All fields"
 msgstr "كل الحقول"
 
 #: src/frontends/qt4/ui/CitationUi.ui:449
-#, fuzzy
 msgid "Regular e&xpression"
-msgstr "التعبير العاديه"
+msgstr "تعابير &عادية"
 
 #: src/frontends/qt4/ui/CitationUi.ui:456
 msgid "Case se&nsitive"
@@ -1405,7 +1404,6 @@ msgid "Scope"
 msgstr ""
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:218
-#, fuzzy
 msgid "C&urrent document"
 msgstr "المستند الح&الي"
 
@@ -1428,9 +1426,8 @@ msgid "&Open documents"
 msgstr "ف&تح مستند"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:263
-#, fuzzy
 msgid "&All manuals"
-msgstr "كل التدر&يبات"
+msgstr "&كل التدريبات"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:281
 msgid ""
@@ -1458,9 +1455,8 @@ msgid "&Expand macros"
 msgstr "ماكرو رياضيات"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:314
-#, fuzzy
 msgid "Search on&ly in maths"
-msgstr "البحث في الرياض&يات فقط"
+msgstr "البحث &في الرياضيات فقط"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:317
 msgid "Restrict search to math environments only"
@@ -1524,6 +1520,7 @@ msgid ""
 "Use OpenType and TrueType fonts with the fontspec package (requires XeTeX or "
 "LuaTeX)"
 msgstr ""
+"استخدام خطوط OpenType و TrueType مع حزمة fontspec (يتطلب XeTeX أو LuaTeX)"
 
 #: src/frontends/qt4/ui/FontUi.ui:23
 msgid "&Use non-TeX fonts (via XeTeX/LuaTeX)"
@@ -1594,9 +1591,8 @@ msgid "&Math:"
 msgstr "ري&اضيات:"
 
 #: src/frontends/qt4/ui/FontUi.ui:204
-#, fuzzy
 msgid "Select the math typeface"
-msgstr "حدد ملف القالب"
+msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:211
 msgid "C&JK:"
@@ -2020,13 +2016,12 @@ msgid "Information Name:"
 msgstr "اسم المعلومات:"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:16
-#, fuzzy
 msgid "Inset Parameter Configuration"
-msgstr "ادراج كسر قياسي"
+msgstr "إدراج تكوين معطى"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:46
 msgid "Update dialog when moving context"
-msgstr ""
+msgstr "تحديث النافذة عند تحريك السياق"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:49
 msgid "S&ynchronize Dialog"
@@ -2046,9 +2041,8 @@ msgid "Restore initial values in dialog"
 msgstr "استعادة القيم الابتدائية في النافذة"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:92
-#, fuzzy
 msgid "Push new inset into the document"
-msgstr "العنوان كما يظهر في الوثيقة"
+msgstr "دفع إضافة جديدة داخل المستند"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:95
 msgid "New Inset"
@@ -2075,9 +2069,8 @@ msgid "Enable to use the options that are predefined in the layout file"
 msgstr "تفعيل استخدام الخيارات التي تم تعريفها في ملف النسق"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:66
-#, fuzzy
 msgid "&Predefined:"
-msgstr "&معرف مسبقاً:"
+msgstr "&المعرف مسبقاً:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:73
 msgid ""
@@ -2145,15 +2138,13 @@ msgstr "اختر حزمة اللغة التي يجب أن يستخدمها لي�
 
 #: src/frontends/qt4/ui/LanguageUi.ui:143
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:79
-#, fuzzy
 msgid ""
 "Enter the command to load the language package (default: \\usepackage{babel})"
-msgstr "أدخل الامر لتحميل حزم اللغة (أفتراضي:babel)"
+msgstr "أدخل أمر تحميل حزم اللغة (الإفتراضي: \\usepackage{babel})"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
-#, fuzzy
 msgid "Of&fset:"
-msgstr "ايقاف"
+msgstr ""
 
 #: src/frontends/qt4/ui/LineUi.ui:35
 msgid "Value of the vertical line offset."
@@ -2172,9 +2163,8 @@ msgid "Value of the line thickness."
 msgstr "قيمة سمك الخط."
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:49
-#, fuzzy
 msgid "Input here the listings parameters"
-msgstr "صنع قائمة البارامترات"
+msgstr "ضع هنا معطيات القائمة"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:67
 #: src/frontends/qt4/ui/ListingsUi.ui:477
@@ -2286,11 +2276,11 @@ msgstr "&مسافة كرمز"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:294
 msgid "Make spaces in strings visible by a special symbol"
-msgstr ""
+msgstr "جعل مسافات في القيم الظاهرة بواسطة رمز خاص"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:297
 msgid "Space i&n string as symbol"
-msgstr ""
+msgstr "مسافة &في القيمة كرمز"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:307
 msgid "Tab&ulator size:"
@@ -2350,11 +2340,11 @@ msgstr "معطيات أخرى"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:499
 msgid "Input listing parameters here. Enter ? for a list of parameters."
-msgstr ""
+msgstr "إدراج قيم القائمة هنا. ادخل؟ لقائمة القيم."
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:19
 msgid "Document-specific layout information"
-msgstr ""
+msgstr "معلومات أسلوب مستند-خاص"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:35
 msgid "&Validate"
@@ -2392,11 +2382,11 @@ msgstr "نسخ للحافظة"
 
 #: src/frontends/qt4/ui/LogUi.ui:130
 msgid "&Go!"
-msgstr "اذهب!"
+msgstr "&اذهب!"
 
 #: src/frontends/qt4/ui/LogUi.ui:137
 msgid "Jump to the next warning message."
-msgstr "أنتقل لرسالة التحذير التالية"
+msgstr "أنتقل لرسالة التحذير التالية."
 
 #: src/frontends/qt4/ui/LogUi.ui:140
 msgid "Next &Warning"
@@ -2404,7 +2394,7 @@ msgstr "&التحذير التالي"
 
 #: src/frontends/qt4/ui/LogUi.ui:147
 msgid "Jump to the next error message."
-msgstr "أنتقل لرسالة الخطأ التالية"
+msgstr "أنتقل لرسالة الخطأ التالية."
 
 #: src/frontends/qt4/ui/LogUi.ui:150
 msgid "Next &Error"
@@ -2452,15 +2442,15 @@ msgstr "&ضبط الأعمدة:"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:25
 msgid "Master Document Output"
-msgstr "خرج مستند رئيسي"
+msgstr "خرج المستند الرئيسي"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:40
 msgid "Include only the selected subdocuments in the output"
-msgstr ""
+msgstr "إدراج المستندات الفرعية المحددة في الخرج"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:43
 msgid "Include only &selected children"
-msgstr ""
+msgstr "إدراج الملف الفرعي المحدد &فقط"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:50
 msgid ""
@@ -2469,18 +2459,16 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:53
-#, fuzzy
 msgid "&Maintain counters and references"
-msgstr "عدم ايراد كل المراجع"
+msgstr "المحافظة & على التعداد والمراجع"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:63
 msgid "Include all subdocuments in the output"
-msgstr ""
+msgstr "إدراج كل المستندات الفرعية في الخرج"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:66
-#, fuzzy
 msgid "&Include all children"
-msgstr "ملف مضمن"
+msgstr "&إدراج كل الفروع"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:31
 #: src/frontends/qt4/ui/MathMatrixUi.ui:44
@@ -2638,7 +2626,7 @@ msgstr "هيئة الخرج الافتراض&ية:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:68
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
-msgstr ""
+msgstr "تفعيل البحث السابق/التالي بين المحرر والخرج (مثل, SyncTeX)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:71
 msgid "S&ynchronize with Output"
@@ -3049,7 +3037,7 @@ msgstr "&مهلة اظهار الرسالة القافزة"
 msgid ""
 "Words with less than the specified number of characters will not be "
 "completed."
-msgstr ""
+msgstr "الكلمات الأقل من عدد معين من الحروف سوف لن تُكمل."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:250
 msgid "Minimum characters for words that should be completed"
@@ -3212,9 +3200,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:174
-#, fuzzy
 msgid "Use s&ingle instance"
-msgstr "إقتباس أحادي|إ"
+msgstr ""
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:181
 msgid "Whether to place close button on each tab or only one in the top left."
@@ -5292,22 +5279,22 @@ msgstr "عام النشر:"
 #: lib/layouts/AEA.layout:77
 #, fuzzy
 msgid "Publication Volume"
-msgstr "النشرون"
+msgstr "الناشرون"
 
 #: lib/layouts/AEA.layout:80
 #, fuzzy
 msgid "Publication Volume:"
-msgstr "النشرون"
+msgstr "الناشرون"
 
 #: lib/layouts/AEA.layout:83
 #, fuzzy
 msgid "Publication Issue"
-msgstr "النشرون"
+msgstr "الناشرون"
 
 #: lib/layouts/AEA.layout:86
 #, fuzzy
 msgid "Publication Issue:"
-msgstr "النشرون"
+msgstr "الناشرون"
 
 #: lib/layouts/AEA.layout:89
 msgid "JEL"
@@ -5541,12 +5528,11 @@ msgstr "مسلمة"
 #: lib/layouts/theorems-without-preamble.inc:351
 #: lib/layouts/theorems-without-preamble.inc:354
 msgid "Case"
-msgstr ""
+msgstr "حالة"
 
 #: lib/layouts/AEA.layout:172 lib/layouts/theorems-without-preamble.inc:348
-#, fuzzy
 msgid "Case \\thecase."
-msgstr "فصل //الفصل"
+msgstr "حالة \\thecase."
 
 #: lib/layouts/AEA.layout:178 lib/layouts/elsart.layout:414
 #: lib/layouts/heb-article.layout:77 lib/layouts/ijmpc.layout:393
@@ -5567,7 +5553,7 @@ msgstr "فصل //الفصل"
 #: lib/layouts/theorems-chap-bytype.module:186
 #: lib/layouts/theorems-sec-bytype.module:142
 msgid "Claim"
-msgstr ""
+msgstr "متطلب"
 
 #: lib/layouts/AEA.layout:185
 #: lib/layouts/theorems-ams-extended-bytype.module:339
@@ -5650,7 +5636,7 @@ msgstr "لازمة"
 #: lib/layouts/theorems-ams-extended.module:62
 #: lib/layouts/theorems-ams-extended.module:65
 msgid "Criterion"
-msgstr ""
+msgstr "معيار"
 
 #: lib/layouts/AEA.layout:223 lib/layouts/beamer.layout:1195
 #: lib/layouts/elsart.layout:365 lib/layouts/foils.layout:267
@@ -5784,7 +5770,7 @@ msgstr "مشكلة"
 #: lib/layouts/theorems-chap-bytype.module:90
 #: lib/layouts/theorems-sec-bytype.module:78
 msgid "Proposition"
-msgstr "فرضية"
+msgstr "اقتراح"
 
 #: lib/layouts/AEA.layout:274 lib/layouts/elsart.layout:400
 #: lib/layouts/ijmpc.layout:362 lib/layouts/ijmpd.layout:371
@@ -5803,14 +5789,14 @@ msgstr "فرضية"
 #: lib/layouts/theorems-chap-bytype.module:174
 #: lib/layouts/theorems-sec-bytype.module:134
 msgid "Remark"
-msgstr "ملاحظة"
+msgstr "تعليق"
 
 #: lib/layouts/AEA.layout:276 lib/layouts/ijmpc.layout:363
 #: lib/layouts/ijmpd.layout:372 lib/layouts/theorems-ams-bytype.inc:270
 #: lib/layouts/theorems-bytype.inc:246
 #: lib/layouts/theorems-without-preamble.inc:318
 msgid "Remark \\theremark."
-msgstr ""
+msgstr "تعليق \\theremark."
 
 #: lib/layouts/AEA.layout:282 lib/layouts/llncs.layout:419
 #: lib/layouts/svglobal3.layout:86
@@ -5823,7 +5809,7 @@ msgstr "حل"
 #: lib/layouts/AEA.layout:286 lib/layouts/theorems-without-preamble.inc:271
 #, fuzzy
 msgid "Solution \\thesolution."
-msgstr "استنتاج//الاستنتاج"
+msgstr "حل \\thesolution."
 
 #: lib/layouts/AEA.layout:292 lib/layouts/elsart.layout:421
 #: lib/layouts/europecv.layout:164 lib/layouts/moderncv.layout:344
@@ -6236,14 +6222,12 @@ msgstr "المعنى"
 
 #: lib/layouts/IEEEtran.layout:412 lib/layouts/siamltex.layout:162
 #: lib/layouts/theorems-proof.inc:21
-#, fuzzy
 msgid "Alternative Proof String"
-msgstr "منتسب متناوب:"
+msgstr ""
 
 #: lib/layouts/IEEEtran.layout:413 lib/layouts/siamltex.layout:163
-#, fuzzy
 msgid "An alternative proof string"
-msgstr "منتسب متناوب:"
+msgstr ""
 
 #: lib/layouts/IEEEtran.layout:425 lib/layouts/beamer.layout:1238
 #: lib/layouts/foils.layout:284 lib/layouts/llncs.layout:388
@@ -6471,23 +6455,20 @@ msgid "Institute Mark"
 msgstr "علامة المنصب"
 
 #: lib/layouts/aa.layout:262
-#, fuzzy
 msgid "Abstract (unstructured)"
-msgstr " (غير مثبت)"
+msgstr ""
 
 #: lib/layouts/aa.layout:278 lib/layouts/spie.layout:81
 msgid "ABSTRACT"
 msgstr "خلاصة"
 
 #: lib/layouts/aa.layout:296
-#, fuzzy
 msgid "Abstract (structured)"
-msgstr " (غير مثبت)"
+msgstr ""
 
 #: lib/layouts/aa.layout:300
-#, fuzzy
 msgid "Context"
-msgstr "المحتويات"
+msgstr ""
 
 #: lib/layouts/aa.layout:301
 msgid "Context of your work (optional, can be left empty)"
@@ -6518,9 +6499,8 @@ msgid "Results of your work"
 msgstr "نتائج عملك"
 
 #: lib/layouts/aa.layout:337
-#, fuzzy
 msgid "Key words."
-msgstr "كلمات مفتاحية:"
+msgstr "كلمة مفتاحية."
 
 #: lib/layouts/aa.layout:351 lib/layouts/beamer.layout:962
 #: lib/layouts/beamerposter.layout:36 lib/layouts/cl2emult.layout:73
@@ -6804,14 +6784,12 @@ msgid "Short name which appears in the footer of the title page"
 msgstr "هذا الصف تذييل الصفحة الاخيرة"
 
 #: lib/layouts/achemso.layout:116
-#, fuzzy
 msgid "Alt Affiliation"
-msgstr "منتسب"
+msgstr ""
 
 #: lib/layouts/achemso.layout:122
-#, fuzzy
 msgid "Also Affiliation"
-msgstr "منتسب"
+msgstr ""
 
 #: lib/layouts/achemso.layout:128 lib/layouts/europecv.layout:93
 #: lib/layouts/lettre.layout:42 lib/layouts/lettre.layout:343
@@ -6836,14 +6814,12 @@ msgid "Phone:"
 msgstr "الهاتف:"
 
 #: lib/layouts/achemso.layout:144
-#, fuzzy
 msgid "Abbreviations"
-msgstr "علاقة AMS"
+msgstr ""
 
 #: lib/layouts/achemso.layout:150
-#, fuzzy
 msgid "Abbreviations:"
-msgstr "علاقة AMS"
+msgstr ""
 
 #: lib/layouts/achemso.layout:165 lib/layouts/achemso.layout:176
 msgid "Scheme"
@@ -6926,9 +6902,8 @@ msgid "TOG volume"
 msgstr ""
 
 #: lib/layouts/acmsiggraph.layout:88
-#, fuzzy
 msgid "Volume number:"
-msgstr "لا رقم"
+msgstr ""
 
 #: lib/layouts/acmsiggraph.layout:92
 msgid "TOG number"
@@ -6943,9 +6918,8 @@ msgid "TOG article DOI"
 msgstr ""
 
 #: lib/layouts/acmsiggraph.layout:102
-#, fuzzy
 msgid "Article DOI:"
-msgstr "مقال"
+msgstr ""
 
 #: lib/layouts/acmsiggraph.layout:106
 msgid "TOG project URL"
@@ -7086,18 +7060,16 @@ msgid "Authors"
 msgstr "المؤلفون"
 
 #: lib/layouts/agutex.layout:92 lib/layouts/agutex.layout:96
-#, fuzzy
 msgid "Affiliation Mark"
-msgstr "منتسب"
+msgstr ""
 
 #: lib/layouts/agutex.layout:125
 msgid "Consecutive number for the author affiliations"
 msgstr ""
 
 #: lib/layouts/agutex.layout:129
-#, fuzzy
 msgid "Author affiliation:"
-msgstr "منتسب:"
+msgstr ""
 
 #: lib/layouts/agutex.layout:156 lib/layouts/amsbook.layout:127
 #: lib/layouts/apa.layout:333 lib/layouts/apa6.layout:433
@@ -7115,7 +7087,7 @@ msgstr "فقرة"
 #: lib/layouts/agutex.layout:196
 #, fuzzy
 msgid "Acknowledgments."
-msgstr "اعترافات بالجميل"
+msgstr "اعترافات بالجميل."
 
 #: lib/layouts/amsart.layout:3
 msgid "American Mathematical Society (AMS) Article"
@@ -7522,7 +7494,7 @@ msgstr "العنوان كما يظهر في الوثيقة"
 
 #: lib/layouts/beamer.layout:251
 msgid "Section \\arabic{section}"
-msgstr "قسم \\عربي{قسم}"
+msgstr "قسم \\arabic{section}"
 
 #: lib/layouts/beamer.layout:262 lib/layouts/simplecv.layout:52
 #: lib/layouts/tufte-book.layout:108 lib/layouts/scrclass.inc:139
@@ -7534,7 +7506,7 @@ msgstr "العنوان كما يظهر في الوثيقة"
 #: lib/layouts/beamer.layout:272 lib/layouts/powerdot.layout:244
 #: lib/layouts/numarticle.inc:10
 msgid "\\Alph{section}"
-msgstr "\\الفا{قسم}"
+msgstr "\\Alph{section}"
 
 #: lib/layouts/beamer.layout:309
 msgid "Subsection \\arabic{section}.\\arabic{subsection}"
@@ -8972,7 +8944,7 @@ msgstr ""
 
 #: lib/layouts/elsart.layout:289
 msgid "Theorem \\arabic{theorem}"
-msgstr "نظرية \\عربي{نظرية}"
+msgstr "نظرية \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:319
 msgid "PROOF."
@@ -8980,19 +8952,19 @@ msgstr "برهان."
 
 #: lib/layouts/elsart.layout:333
 msgid "Lemma \\arabic{theorem}"
-msgstr ""
+msgstr "قضية مساعدة \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:340
 msgid "Corollary \\arabic{theorem}"
-msgstr ""
+msgstr "لازمة \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:347
 msgid "Proposition \\arabic{theorem}"
-msgstr ""
+msgstr "اقتراح \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:354
 msgid "Criterion \\arabic{theorem}"
-msgstr ""
+msgstr "معيار \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:361
 msgid "Algorithm \\arabic{theorem}"
@@ -9000,11 +8972,11 @@ msgstr "لوغرتم \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:368
 msgid "Definition \\arabic{theorem}"
-msgstr ""
+msgstr "تعريف \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:382
 msgid "Conjecture \\arabic{theorem}"
-msgstr ""
+msgstr "حدس \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:389
 msgid "Example \\arabic{theorem}"
@@ -9016,7 +8988,7 @@ msgstr "مشكلة \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:403
 msgid "Remark \\arabic{theorem}"
-msgstr ""
+msgstr "تعليق \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:410
 msgid "Note \\arabic{theorem}"
@@ -9024,15 +8996,15 @@ msgstr "ملاحظة \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:417
 msgid "Claim \\arabic{theorem}"
-msgstr ""
+msgstr "متطلب \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:425
 msgid "Summary \\arabic{summ}"
-msgstr ""
+msgstr "موجز \\arabic{summ}"
 
 #: lib/layouts/elsart.layout:433
 msgid "Case \\arabic{case}"
-msgstr ""
+msgstr "حالة \\arabic{case}"
 
 #: lib/layouts/elsarticle.layout:3
 msgid "Elsevier"
@@ -9492,7 +9464,7 @@ msgstr ""
 
 #: lib/layouts/foils.layout:263 lib/layouts/llncs.layout:402
 msgid "Proposition #."
-msgstr ""
+msgstr "اقتراح #."
 
 #: lib/layouts/foils.layout:270 lib/layouts/heb-article.layout:90
 #: lib/layouts/llncs.layout:347
@@ -9517,11 +9489,11 @@ msgstr "لازمة*"
 #: lib/layouts/foils.layout:316 lib/layouts/siamltex.layout:104
 #: lib/layouts/theorems-order.inc:28 lib/layouts/theorems-starred.inc:101
 msgid "Proposition*"
-msgstr "فرضية*"
+msgstr "اقتراح*"
 
 #: lib/layouts/foils.layout:319 lib/layouts/theorems-starred.inc:104
 msgid "Proposition."
-msgstr ""
+msgstr "اقتراح."
 
 #: lib/layouts/foils.layout:323 lib/layouts/siamltex.layout:133
 #: lib/layouts/theorems-order.inc:40 lib/layouts/theorems-starred.inc:152
@@ -9923,15 +9895,15 @@ msgstr "مقال عبري"
 
 #: lib/layouts/heb-article.layout:80
 msgid "Claim #."
-msgstr ""
+msgstr "المتطلب  #."
 
 #: lib/layouts/heb-article.layout:97
 msgid "Remarks"
-msgstr "ملاحظات"
+msgstr "تعليقات"
 
 #: lib/layouts/heb-article.layout:100
 msgid "Remarks #."
-msgstr "ملاحظات #."
+msgstr "تعليق #."
 
 #: lib/layouts/heb-article.layout:123 lib/layouts/ijmpc.layout:340
 #: lib/layouts/ijmpd.layout:343
@@ -10089,7 +10061,7 @@ msgstr ""
 #: lib/layouts/theorems-ams-bytype.inc:134 lib/layouts/theorems-bytype.inc:110
 #: lib/layouts/theorems-without-preamble.inc:111
 msgid "Proposition \\theproposition."
-msgstr ""
+msgstr "اقتراح \\theproposition."
 
 #: lib/layouts/ijmpc.layout:382 lib/layouts/ijmpd.layout:403
 #: lib/layouts/llncs.layout:405 lib/layouts/theorems-without-preamble.inc:378
@@ -10111,7 +10083,7 @@ msgstr "سؤال \\thequestion."
 #: lib/layouts/ijmpc.layout:395 lib/layouts/ijmpd.layout:415
 #: lib/layouts/theorems-ams-bytype.inc:296 lib/layouts/theorems-bytype.inc:272
 msgid "Claim \\theclaim."
-msgstr ""
+msgstr "متطلب \\theclaim."
 
 #: lib/layouts/ijmpc.layout:406 lib/layouts/ijmpd.layout:425
 #: lib/layouts/theorems-ams-bytype.inc:152 lib/layouts/theorems-bytype.inc:128
@@ -10445,7 +10417,7 @@ msgstr ""
 #: lib/layouts/llncs.layout:319 lib/layouts/svmono.layout:84
 #: lib/layouts/theorems-starred.inc:256
 msgid "Claim."
-msgstr ""
+msgstr "متطلب."
 
 #: lib/layouts/llncs.layout:326
 msgid "Conjecture #."
@@ -10483,7 +10455,7 @@ msgstr "سؤال #."
 
 #: lib/layouts/llncs.layout:415
 msgid "Remark #."
-msgstr ""
+msgstr "تعليق #."
 
 #: lib/layouts/llncs.layout:422
 msgid "Solution #."
@@ -10961,7 +10933,7 @@ msgstr "شريحة فارغة:"
 
 #: lib/layouts/powerdot.layout:239 lib/layouts/numarticle.inc:9
 msgid "\\arabic{section}"
-msgstr "\\عربي{قسم}"
+msgstr "\\arabic{قسم}"
 
 #: lib/layouts/powerdot.layout:246
 msgid "Section Option"
@@ -12365,7 +12337,7 @@ msgstr ""
 
 #: lib/layouts/numreport.inc:8
 msgid "\\arabic{chapter}"
-msgstr "\\العربية{فصل}"
+msgstr "\\arabic{فصل}"
 
 #: lib/layouts/numreport.inc:9
 msgid "\\Alph{chapter}"
@@ -12373,11 +12345,11 @@ msgstr "\\Alph{فصل}"
 
 #: lib/layouts/numreport.inc:40
 msgid "\\arabic{footnote}"
-msgstr "\\العربية{footnote}"
+msgstr ""
 
 #: lib/layouts/numrevtex.inc:9
 msgid "\\Roman{section}."
-msgstr "\\روماني{قسم}."
+msgstr "\\Roman{قسم}."
 
 #: lib/layouts/numrevtex.inc:10
 msgid "Appendix \\Alph{section}:"
@@ -12385,19 +12357,19 @@ msgstr "ملحق \\Alph{section}:"
 
 #: lib/layouts/numrevtex.inc:18
 msgid "\\Alph{subsection}."
-msgstr "\\الفا{قسم فرعي}."
+msgstr "\\Alph{قسم فرعي}."
 
 #: lib/layouts/numrevtex.inc:19
 msgid "\\arabic{subsection}."
-msgstr "\\عربي{قسم فرعي}."
+msgstr "\\arabic{قسم فرعي}."
 
 #: lib/layouts/numrevtex.inc:27
 msgid "\\arabic{subsubsection}."
-msgstr "\\عربي{قسم تحت فرعي}."
+msgstr "\\arabic{قسم تحت فرعي}."
 
 #: lib/layouts/numrevtex.inc:28
 msgid "\\alph{subsubsection}."
-msgstr "\\الفا{قسم تحت فرعي}."
+msgstr "\\alph{قسم تحت فرعي}."
 
 #: lib/layouts/numrevtex.inc:36 lib/layouts/numrevtex.inc:37
 msgid "\\alph{paragraph}."
@@ -12525,7 +12497,7 @@ msgstr "الفقرة ##"
 
 #: lib/layouts/stdcounters.inc:43
 msgid "\\arabic{enumi}."
-msgstr ".\\arabic{enumi}"
+msgstr ""
 
 #: lib/layouts/stdcounters.inc:53
 msgid "\\roman{enumiii}."
@@ -12765,7 +12737,7 @@ msgstr "قضية مساعدة \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:109 lib/layouts/theorems.inc:109
 msgid "Proposition \\thetheorem."
-msgstr "فرضية \\thetheorem."
+msgstr "اقتراح \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:127 lib/layouts/theorems.inc:127
 msgid "Conjecture \\thetheorem."
@@ -12793,7 +12765,7 @@ msgstr "تدريب \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:239 lib/layouts/theorems.inc:239
 msgid "Remark \\thetheorem."
-msgstr "ملاحظة \\thetheorem."
+msgstr "تعليق \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:264 lib/layouts/theorems.inc:264
 msgid "Claim \\thetheorem."
@@ -12801,19 +12773,19 @@ msgstr "متطلب \\thetheorem."
 
 #: lib/layouts/theorems-case.inc:12
 msgid "Case \\arabic{casei}."
-msgstr ""
+msgstr "حالة \\arabic{casei}."
 
 #: lib/layouts/theorems-case.inc:16
 msgid "Case \\roman{caseii}."
-msgstr ""
+msgstr "حالة \\roman{caseii}."
 
 #: lib/layouts/theorems-case.inc:20
 msgid "Case \\alph{caseiii}."
-msgstr ""
+msgstr "حالة \\alph{caseiii}."
 
 #: lib/layouts/theorems-case.inc:24
 msgid "Case \\arabic{caseiv}."
-msgstr ""
+msgstr "حالة \\arabic{caseiv}."
 
 #: lib/layouts/theorems-order.inc:46 lib/layouts/theorems-starred.inc:177
 msgid "Example*"
@@ -12829,11 +12801,11 @@ msgstr "تمرين*"
 
 #: lib/layouts/theorems-order.inc:64 lib/layouts/theorems-starred.inc:228
 msgid "Remark*"
-msgstr "ملاحظة*"
+msgstr "تعليق*"
 
 #: lib/layouts/theorems-order.inc:70 lib/layouts/theorems-starred.inc:253
 msgid "Claim*"
-msgstr ""
+msgstr "متطلب*"
 
 #: lib/layouts/theorems-proof.inc:22
 #, fuzzy
@@ -12858,7 +12830,7 @@ msgstr "تمرين*"
 
 #: lib/layouts/theorems-starred.inc:231
 msgid "Remark."
-msgstr "ملاحظة*"
+msgstr "تعليق."
 
 #: lib/layouts/theorems-without-preamble.inc:41
 msgid "Name/Title"
@@ -14303,8 +14275,8 @@ msgstr ""
 "تعريف وحدات نظرية ووحدات الأثبات باستخدام آلة ممتدة AMS. كلاً من النوعين "
 "المرقم و الغير المرقم متوفر. على العكس من نماذج نظرية AMS البسيطة، النظريات "
 "المختلفة في النوع المتوفرة هنا كلٍ منها يملك عداداً منفصلاً(مثلاً.نظرية 1, "
-"نظرية 2, قضية مساعدة 1, فرضية 1, نظرية 3, قضية مساعدة 2, ..., على النقيض من "
-"نظرية 1, نظرية 2, قضية مساعدة 3, فرضية 4, ...). وضع الترقيم يشمل المستند "
+"نظرية 2, قضية مساعدة 1, اقتراح 1, نظرية 3, قضية مساعدة 2, ..., على النقيض من "
+"نظرية 1, نظرية 2, قضية مساعدة 3, اقتراح 4, ...). وضع الترقيم يشمل المستند "
 "كله.لترقيم أبعاد عرض الفصل و أبعاد عرض القسم، استخدم واحدا من نماذج 'within "
 "Sections'/'within Chapters'، على الترتيب."
 
@@ -14326,14 +14298,12 @@ msgstr ""
 "،الخوارزم،المسلمات،الشروط، الملاحظة،الترقيم،الملخص،الاعتراف "
 "بالجميل،استنتاج،الفرض،و الحالات،في الصيغ المرقمة و الغير مرقمة. على النقيض "
 "من نموذج  AMS-الممتد البسيط، النظريات المختلفة في النوع المتوفرة هنا تملك "
-"عداداً منفصلاً(مثلا. criterion 1, criterion 2, axiom 1, assumption 1, "
-"criterion 3, ..., as opposed to criterion 1, criterion 2, axiom 3, "
-"assumption 4, ...)."
+"عداداً منفصلاً(مثلا. معيار 1, معيار 2, مُسلّمة 1, فرضية 1, معيار 3, ..., في "
+"مقابل معيار 1, معيار 2, مُسلّمة 3, فرضية 4, ...)."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:63
-#, fuzzy
 msgid "Criterion \\thecriterion."
-msgstr "سؤال //السؤال"
+msgstr "معيار \\thecriterion."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:77
 #: lib/layouts/theorems-ams-extended.module:53
@@ -14481,9 +14451,9 @@ msgid ""
 "Summary, Acknowledgement, Conclusion, Fact, Assumption, Case, and Question, "
 "in both numbered and non-numbered forms."
 msgstr ""
-"عرف بعض وحدات النظريات الإضافية لتستخدم مع حزم نظريات الـAMS. تشمل المعايير ،"
-"الخوارزم،المسلمات،الشروط، الملاحظة،الترقيم،الملخص،الاعتراف بالجميل،استنتاج،"
-"الحقيقة،الفرض،و الحالات،في الصيغ المرقمة و الغير مرقمة."
+"عرف بعض وحدات النظريات الإضافية لتستخدم مع حزم نظريات الـAMS. تشمل المعايير "
+"،الخوارزم،المسلمات،الشروط، الملاحظة،الترقيم،الملخص،الاعتراف "
+"بالجميل،استنتاج،الحقيقة،الفرض،و الحالات،في الصيغ المرقمة و الغير مرقمة."
 
 #: lib/layouts/theorems-ams-extended.module:10
 #: lib/layouts/theorems-ams.module:9 lib/layouts/theorems-chap.module:9
@@ -14575,8 +14545,8 @@ msgid ""
 msgstr ""
 "عرف بعض وحدات النظريات لتستخدم مع غير أصناف AMS. على النقيض من نماذج "
 "النظريات البسيطة، كلا من الأنواع المختلفة من النظريات المتوفرة هنا تملك "
-"عداداً منفصلاً(مثلاً. نظرية 1, نظرية 2, قضية مساعدة 1, فرضية 1, نظرية 3, "
-"قضية مساعدة 2, ...,  على العكس من نظرية 1, نظرية 2, قضية مساعدة 3, فرضية 4, "
+"عداداً منفصلاً(مثلاً. نظرية 1, نظرية 2, قضية مساعدة 1, اقتراح 1, نظرية 3, "
+"قضية مساعدة 2, ...,  على العكس من نظرية 1, نظرية 2, قضية مساعدة 3, اقتراح 4, "
 "...). وضع الترقيم يشمل كل المستند. لترقيم أبعاد عرض الفصول و أبعاد عرض القسم،"
 " استخدم واحداً من النماذج  'within Sections'/'within Chapters' ،على الترتيب."
 
@@ -14594,8 +14564,8 @@ msgid ""
 msgstr ""
 "عرف بعض وحدات النظريات لتستخدم مع غير أصناف AMS. على النقيض من نماذج "
 "النظريات البسيطة، كلا من الأنواع المختلفة من النظريات المتوفرة هنا تملك "
-"عداداً منفصلاً(مثلاً. نظرية 1, نظرية 2, قضية مساعدة 1, فرضية 1, نظرية 3, "
-"قضية مساعدة 2, ...,  على العكس من نظرية 1, نظرية 2, قضية مساعدة 3, فرضية 4, "
+"عداداً منفصلاً(مثلاً. نظرية 1, نظرية 2, قضية مساعدة 1, اقتراح 1, نظرية 3, "
+"قضية مساعدة 2, ...,  على العكس من نظرية 1, نظرية 2, قضية مساعدة 3, اقتراح 4, "
 "...). يعاد ضبط الترقيم مع بداية كل فصل."
 
 #: lib/layouts/theorems-chap.module:2
@@ -14643,8 +14613,8 @@ msgid ""
 msgstr ""
 "عرف بعض وحدات النظريات لتستخدم مع غير أصناف AMS. على النقيض من نماذج "
 "النظريات البسيطة،الأنواع المختلفة المتوفرة هنا كلا منها يملك عداداً منفصلاً("
-"مثلا.نظرية 1, نظرية 2, قضية مساعدة 1, فرضية 1, نظرية 3, قضية مساعدة 2, ..., "
-"as opposed to theorem 1, نظرية 2, قضية مساعدة 3, فرضية 4, ...). يعاد ضبط "
+"مثلا.نظرية 1, نظرية 2, قضية مساعدة 1, اقتراح 1, نظرية 3, قضية مساعدة 2, ..., "
+"as opposed to theorem 1, نظرية 2, قضية مساعدة 3, اقتراح 4, ...). يعاد ضبط "
 "الترقيم عند بداية كل قسم."
 
 #: lib/layouts/theorems-sec.module:2
@@ -17713,7 +17683,7 @@ msgstr "ادراج مصفوفة"
 
 #: lib/ui/stdtoolbars.inc:194
 msgid "Insert cases environment"
-msgstr "أدرج وحدة مغلفة"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:200
 msgid "Toggle math panels"
@@ -21578,9 +21548,8 @@ msgid "Close back unrounded vowel"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1337
-#, fuzzy
 msgid "Close back rounded vowel"
-msgstr "خلفية الملاحظة"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1338
 msgid "Near-close near-front unrounded vowel"
@@ -21711,14 +21680,12 @@ msgid "Simultaneous voiceless postalveolar and velar fricative"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1373 src/insets/InsetIPAMacro.cpp:54
-#, fuzzy
 msgid "Top tie bar"
-msgstr "اعلى الوسط"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1374 src/insets/InsetIPAMacro.cpp:55
-#, fuzzy
 msgid "Bottom tie bar"
-msgstr "اسفل الوسط"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1378
 msgid "Long"
@@ -21737,9 +21704,8 @@ msgid "Primary stress"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1382
-#, fuzzy
 msgid "Secondary stress"
-msgstr "عنوان المرسل:"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1383
 msgid "Minor (foot) group"
@@ -21889,9 +21855,8 @@ msgid "Lateral release"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1421
-#, fuzzy
 msgid "No audible release"
-msgstr "اطار مزدوج"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1425
 msgid "Extra high (accent)"
@@ -21914,18 +21879,16 @@ msgid "Mid (accent)"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1430
-#, fuzzy
 msgid "Mid (tone letter)"
-msgstr "نهاية الخطاب"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1431
 msgid "Low (accent)"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1432
-#, fuzzy
 msgid "Low (tone letter)"
-msgstr "نهاية الخطاب"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1433
 msgid "Extra low (accent)"
@@ -21936,23 +21899,20 @@ msgid "Extra low (tone letter)"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1435
-#, fuzzy
 msgid "Downstep"
-msgstr "&اسفل"
+msgstr "خطوة للأسفل"
 
 #: lib/ui/stdtoolbars.inc:1436
 msgid "Upstep"
-msgstr ""
+msgstr "خطوة للأعلى"
 
 #: lib/ui/stdtoolbars.inc:1437
-#, fuzzy
 msgid "Rising (accent)"
-msgstr "صنع قائمة البارامترات"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1438
-#, fuzzy
 msgid "Rising (tone letter)"
-msgstr "نهاية الخطاب"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1439
 msgid "Falling (accent)"
@@ -21987,14 +21947,12 @@ msgid "Rising-falling (tone letter)"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1447
-#, fuzzy
 msgid "Global rise"
-msgstr "&شامل"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1448
-#, fuzzy
 msgid "Global fall"
-msgstr "&شامل"
+msgstr ""
 
 #: lib/external_templates:36
 msgid "GnumericSpreadsheet"
@@ -22132,7 +22090,7 @@ msgstr "tgo|Tgif"
 
 #: lib/configure.py:570
 msgid "FIG"
-msgstr "شكل توضيحي"
+msgstr "FIG"
 
 #: lib/configure.py:573
 msgid "DIA"
@@ -22619,9 +22577,9 @@ msgid "Using the default document class, because the class %1$s is unknown."
 msgstr "استخدم النسق الافتراضي للوثيقة، لأن النسق %1$s غير معروف."
 
 #: src/Buffer.cpp:906 src/Text.cpp:530
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown token: %1$s %2$s\n"
-msgstr "شريط ادوات مجهول \"%1$s\""
+msgstr "قول مجهول: %1$s %2$s"
 
 #: src/Buffer.cpp:910 src/Buffer.cpp:917 src/Buffer.cpp:940
 msgid "Document header error"
@@ -22629,11 +22587,11 @@ msgstr "خطأ في رأس المستند"
 
 #: src/Buffer.cpp:916
 msgid "\\begin_header is missing"
-msgstr ""
+msgstr "\\begin_header مفقود"
 
 #: src/Buffer.cpp:939
 msgid "\\begin_document is missing"
-msgstr ""
+msgstr "\\begin_document مفقود"
 
 #: src/Buffer.cpp:952 src/Buffer.cpp:958 src/BufferView.cpp:1443
 #: src/BufferView.cpp:1449
@@ -23879,7 +23837,7 @@ msgstr "تنفيذ امر:"
 
 #: src/Converter.cpp:509
 msgid "Build errors"
-msgstr "أخطاء بناء"
+msgstr "خطأ بناء"
 
 #: src/Converter.cpp:510
 msgid "There were errors during the build process."
@@ -25457,7 +25415,7 @@ msgstr ""
 "تم رصد تغييرات في مجلد العمل :\n"
 "%1$s\n"
 "\n"
-"في حالة ملف متعارض اصدار ملفات المجلد المحلي سيتم تفضيلها.\n"
+"في حالة ملف متعارض إصدار ملفات المجلد المحلي سيتم تفضيلها.\n"
 "\n"
 "استمرار؟"
 
@@ -26776,9 +26734,9 @@ msgid "or"
 msgstr "أو"
 
 #: src/frontends/qt4/GuiDocument.cpp:2434
-#, fuzzy, c-format
+#, c-format
 msgid "Modules required: %1$s."
-msgstr "الحزمـ(ـة) المطلوبة:%1$s."
+msgstr "النموذج المطلوب: %1$s."
 
 #: src/frontends/qt4/GuiDocument.cpp:2443
 #, c-format
@@ -27152,9 +27110,8 @@ msgid "Program Listing Settings"
 msgstr "إعدادات قوائم البرنامج"
 
 #: src/frontends/qt4/GuiListings.cpp:416
-#, fuzzy
 msgid "No dialect"
-msgstr "لاتوجد صورة"
+msgstr ""
 
 #: src/frontends/qt4/GuiLog.cpp:116 src/frontends/qt4/GuiLog.cpp:268
 msgid "LaTeX Log"
@@ -27451,9 +27408,8 @@ msgid "Failed to create shortcut"
 msgstr "فشل إنشاء اختصار"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3168
-#, fuzzy
 msgid "Unknown or invalid LyX function"
-msgstr "دالة مجهولة."
+msgstr "دالة ليك مجهولة أو غير صالحة"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3175
 msgid "Invalid or empty key sequence"
@@ -27470,14 +27426,12 @@ msgstr ""
 "يجب إزالة هذا الإعداد قبل إنشاء اختصار جديد."
 
 #: src/frontends/qt4/GuiPrefs.cpp:3199
-#, fuzzy
 msgid "Redefine shortcut?"
-msgstr "تحرير اختصار"
+msgstr "إعادة تعيين اختصار؟"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3200
-#, fuzzy
 msgid "&Redefine"
-msgstr "&معرف مسبقاً:"
+msgstr "&إعادة تعيين"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3234
 msgid "Can not insert shortcut to the list"
@@ -27587,9 +27541,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/GuiSearch.cpp:155 src/lyxfind.cpp:369 src/lyxfind.cpp:387
-#, fuzzy
 msgid "String not found."
-msgstr "الملف غير موجود"
+msgstr "قيمة غير موجودة."
 
 #: src/frontends/qt4/GuiSendto.cpp:40
 msgid "Export or Send Document"
@@ -27605,7 +27558,7 @@ msgstr "خطأ -> فشل تحميل ملف!"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:252
 msgid "Spell check of the selection done, did not find any errors."
-msgstr ""
+msgstr "تم التدقيق الإملائي للتحديد, ولم يتم العثور على أخطاء."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:259
 msgid ""
@@ -28938,7 +28891,7 @@ msgstr "حالة الفرع متغيرة في المستند الرئيسي"
 msgid ""
 "The state of the branch '%1$s' was changed in the master file. Please make "
 "sure to save the master."
-msgstr ""
+msgstr "تم تعديل الفرع '%1$s' في الملف الرئيسي. فضلا تأكد من حفظ الملف الرئيسي."
 
 #: src/insets/InsetCaption.cpp:397
 #, c-format
@@ -29756,19 +29709,17 @@ msgid "Search string is empty"
 msgstr "حقل البحث فارغ"
 
 #: src/lyxfind.cpp:372
-#, fuzzy
 msgid "String found."
-msgstr "الملف غير موجود"
+msgstr "قيمة موجودة."
 
 #: src/lyxfind.cpp:374
-#, fuzzy
 msgid "String has been replaced."
-msgstr "بحث واستبدال"
+msgstr "القيمة تم استبدالها."
 
 #: src/lyxfind.cpp:377
-#, fuzzy, c-format
+#, c-format
 msgid "%1$d strings have been replaced."
-msgstr "بحث واستبدال"
+msgstr "القيمة %1$d تم استبدالها."
 
 #: src/lyxfind.cpp:1456
 #, fuzzy
@@ -29776,14 +29727,13 @@ msgid "Invalid regular expression!"
 msgstr "التعبير العاديه"
 
 #: src/lyxfind.cpp:1461
-#, fuzzy
 msgid "Match not found!"
-msgstr "الملف غير موجود"
+msgstr "المطابقة غير موجودة!"
 
 #: src/lyxfind.cpp:1465
 #, fuzzy
 msgid "Match found!"
-msgstr "النموذج غير موجود"
+msgstr "المطابقة موجودة!"
 
 #: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1743
 #: src/mathed/InsetMathSplit.cpp:85 src/mathed/InsetMathSubstack.cpp:76
@@ -29920,7 +29870,7 @@ msgstr "مراجع:"
 
 #: src/support/Package.cpp:509
 msgid "LyX binary not found"
-msgstr ""
+msgstr "LyX binary غير موجود"
 
 #: src/support/Package.cpp:510
 #, c-format
@@ -30004,9 +29954,8 @@ msgid "Program initialisation"
 msgstr "تنصيب البرنامج"
 
 #: src/support/debug.cpp:45
-#, fuzzy
 msgid "Keyboard events handling"
-msgstr "معالجة خط"
+msgstr ""
 
 #: src/support/debug.cpp:46
 msgid "GUI handling"
