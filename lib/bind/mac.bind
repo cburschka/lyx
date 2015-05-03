@@ -366,6 +366,8 @@ Format 2
 \bind "C-M-Left"                     "inset-modify tabular move-column-left"
 #\bind "F9"                          "meta-prefix"
 
+\bind "C-F11"			"ui-toggle fullscreen"
+
 # Include menu and math bindings
 
 \bind_file menus.bind
