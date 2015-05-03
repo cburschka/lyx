@@ -20,6 +20,8 @@
  {\setboolean{insdljs}{false}}
 
 \pdfcatalog{/AA \the\pdflastobj\space 0 R}
+
+\ifinsdljs
 \begin{insDLJS}[exaaae]{exaaae}{JavaScript}
 
   function validateTime(){
@@ -48,6 +50,7 @@
 }
 
 \end{insDLJS}
+\fi
 
 % if pdflatex is used
 \usepackage{ifpdf}
@@ -145,7 +148,6 @@ pdfform
 \begin_body
 
 \begin_layout Begin PDF Form
-
 \begin_inset Argument 1
 status open
 
@@ -386,7 +388,6 @@ Insets
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -461,7 +462,6 @@ fields as example: Fill one and see that the other one will also be filled
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -485,7 +485,6 @@ name=identic
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -529,7 +528,6 @@ cm height and a proposed content:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -599,7 +597,6 @@ CheckBox
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -707,7 +704,6 @@ Here is an example for the radio type:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -749,7 +745,6 @@ Here is an example for the combo type:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -791,7 +786,6 @@ Here is an example for the popdown type:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -895,7 +889,6 @@ default=m
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -970,7 +963,6 @@ PushButton
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -1003,7 +995,6 @@ onclick={}
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -1076,7 +1067,6 @@ href{http://wiki.lyx.org}{Information how to fill out this form}
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -1147,7 +1137,6 @@ SubmitButton
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -1249,7 +1238,6 @@ ResetButton
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -1457,45 +1445,37 @@ Here are some examples:
 \end_layout
 
 \begin_layout Text Field Style
-
 print, bordercolor=red, borderstyle=U, backgroundcolor=lightgray, color=lime,
  maxlen=10, align=2, charsize=16pt
 \end_layout
 
 \begin_layout Check Box Style
-
 print, borderstyle=S, checkboxsymbol=
 \backslash
 ding{55}
 \end_layout
 
 \begin_layout Combo Box Style
-
 print, bordercolor={0.33 0.66 0.33}, borderstyle=D
 \end_layout
 
 \begin_layout Popdown Box Style
-
 print, menulength=2
 \end_layout
 
 \begin_layout Radio Box Style
-
 print, borderstyle=I, radiosymbol=6
 \end_layout
 
 \begin_layout Push Button Style
-
 print, borderstyle=B, bordercolor=lime
 \end_layout
 
 \begin_layout Submit Button Style
-
 print, borderwidth=0, bordercolor=white
 \end_layout
 
 \begin_layout Reset Button Style
-
 print, bordercolor=lime
 \end_layout
 
@@ -1522,7 +1502,6 @@ characters to insert:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -1609,7 +1588,6 @@ ding{55}:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -1674,7 +1652,6 @@ Combo box with dashed, colored border:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -1720,7 +1697,6 @@ entries are shown and where the last entry is preselected:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -1799,7 +1775,6 @@ Radio box with inverted bevel border and symbol number
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -1841,7 +1816,6 @@ Push button with a bevel border and colored text:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -2002,7 +1976,6 @@ Submit button without border, with cyan background color and increased height:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -2050,7 +2023,6 @@ cm:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -2143,7 +2115,6 @@ Printing:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -2171,7 +2142,6 @@ as:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -2203,7 +2173,6 @@ fullscreen:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -2323,7 +2292,6 @@ centering right before the button text.
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -2403,7 +2371,6 @@ menubordercolor
 \end_layout
 
 \begin_layout PDF Link Setup
-
 menubordercolor={0.1 0.9 0.5}
 \end_layout
 
@@ -2421,7 +2388,6 @@ menubordercolor={0.1 0.9 0.5}
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -2488,7 +2454,6 @@ pdfborder
 \end_layout
 
 \begin_layout PDF Link Setup
-
 pdfborder={0 0 4}, menubordercolor={1 1 0}
 \end_layout
 
@@ -2506,7 +2471,6 @@ pixel thick yellow border:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -2566,7 +2530,6 @@ EmbeddedObjects
 \end_layout
 
 \begin_layout PDF Link Setup
-
 pdfborder={0 0 0}
 \end_layout
 
@@ -2580,7 +2543,6 @@ An example without a border and with a background color:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -2607,7 +2569,6 @@ centering Save form as}}
 \end_layout
 
 \begin_layout PDF Link Setup
-
 pdfborder={0 0 1}, menubordercolor={1 0 0}
 \end_layout
 
@@ -2826,7 +2787,6 @@ name=contract,radio,default=tl,validate={validateTime();}
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -2882,7 +2842,6 @@ From:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -2944,7 +2903,6 @@ To:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -3041,7 +2999,6 @@ An example text field:
 status open
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status open
 
@@ -3114,7 +3071,6 @@ fi
 \end_layout
 
 \begin_layout End PDF Form
-
 \begin_inset Note Note
 status open
 
