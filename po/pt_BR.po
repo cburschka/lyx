@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pt_BR 2.1.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2015-02-07 10:25-0500\n"
-"PO-Revision-Date: 2015-05-02 16:28-0300\n"
+"PO-Revision-Date: 2015-05-03 12:00-0300\n"
 "Last-Translator: Georger Araujo <georger underscore br pound yahoo dot com "
 "dot br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br pound yahoo dot "
@@ -2608,7 +2608,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefUi.ui:141
 msgid "&Enable tool tips in main work area"
-msgstr "&Ativa dicas de contexto na área de trabalho principal"
+msgstr "&Ativar dicas de contexto na área de trabalho principal"
 
 #: src/frontends/qt4/ui/PrefUi.ui:151
 msgid "Menus"
@@ -6730,7 +6730,7 @@ msgstr "Institute of Physics (IOP)"
 #: lib/layouts/stdsections.inc:31 lib/layouts/stdsections.inc:60
 #: lib/layouts/stdsections.inc:88
 msgid "Short Title|S"
-msgstr "Título Curto|C"
+msgstr "Título Curto"
 
 #: lib/layouts/iopart.layout:66 lib/layouts/jasatex.layout:75
 msgid "Short title that will appear in header line"
@@ -13191,7 +13191,7 @@ msgstr "Frase S:"
 
 #: lib/layouts/sectionbox.module:2
 msgid "Section Boxes"
-msgstr "Seções em Caixas"
+msgstr "Caixas de Seção"
 
 #: lib/layouts/sectionbox.module:6
 msgid ""
@@ -13202,11 +13202,11 @@ msgstr ""
 
 #: lib/layouts/sectionbox.module:11
 msgid "SectionBox"
-msgstr "CaixaComSeção"
+msgstr "CaixaDeSeção"
 
 #: lib/layouts/sectionbox.module:13
 msgid "Section Box"
-msgstr "Caixa com Seção"
+msgstr "Caixa de Seção"
 
 #: lib/layouts/sectionbox.module:22
 msgid "Section Box Width|S"
@@ -13230,19 +13230,19 @@ msgstr "Digite aqui o cabeçalho da caixa com seção"
 
 #: lib/layouts/sectionbox.module:39
 msgid "SubsectionBox"
-msgstr "CaixaComSubseção"
+msgstr "CaixaDeSubseção"
 
 #: lib/layouts/sectionbox.module:41
 msgid "Subsection Box"
-msgstr "Caixa com Subseção"
+msgstr "Caixa de Subseção"
 
 #: lib/layouts/sectionbox.module:45
 msgid "SubsubsectionBox"
-msgstr "CaixaComSubsubseção"
+msgstr "CaixaDeSubsubseção"
 
 #: lib/layouts/sectionbox.module:47
 msgid "Subsubsection Box"
-msgstr "Caixa com Subsubseção"
+msgstr "Caixa de Subsubseção"
 
 #: lib/layouts/bicaption.module:2
 msgid "Multilingual Captions"
@@ -14207,7 +14207,7 @@ msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
 "via the Sweave() function. For more info see the LyX example file sweave.lyx."
 msgstr ""
-"Perimte usar a linguagem estatística S/R como uma ferramente de programação "
+"Permite usar a linguagem estatística S/R como uma ferramente de programação "
 "literária através da função Sweave(). Para mais informações, consulta o "
 "arquivo 'sweave.lyx' na pasta de exemplos do LyX."
 
@@ -15363,11 +15363,11 @@ msgstr "Usar Propriedade de Bloqueio|B"
 
 #: lib/ui/stdmenus.inc:92
 msgid "Export As...|s"
-msgstr "Exportar Como…|o"
+msgstr "Exportar Como…|C"
 
 #: lib/ui/stdmenus.inc:94
 msgid "More Formats & Options...|O"
-msgstr "Mais Formatos e Opções....|F"
+msgstr "Mais Formatos e Opções....|O"
 
 #: lib/ui/stdmenus.inc:102
 msgid "Undo|U"
@@ -15867,7 +15867,7 @@ msgstr "Maple, Simplificar|S"
 
 #: lib/ui/stdmenus.inc:309
 msgid "Maple, Factor|F"
-msgstr "Maple, Factorizar|F"
+msgstr "Maple, Fatorar|F"
 
 #: lib/ui/stdmenus.inc:310
 msgid "Maple, Evalm|E"
@@ -28873,7 +28873,7 @@ msgstr "ativo"
 #: src/insets/InsetBranch.cpp:70 src/insets/InsetBranch.cpp:72
 #: src/insets/InsetIndex.cpp:452
 msgid "non-active"
-msgstr "não-activo"
+msgstr "não-ativo"
 
 #: src/insets/InsetBranch.cpp:75
 #, c-format
