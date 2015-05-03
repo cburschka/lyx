@@ -89,6 +89,20 @@ string const getPolyglossiaEnvName(Language const * lang)
 }
 
 
+string const getPolyglossiaBegin(string const & lang_begin_command,
+				 string const & lang, string const & opts)
+{
+	string result;
+	if (!lang.empty())
+		result = subst(lang_begin_command, "$$lang", lang);
+	string options = opts.empty() ?
+		    string() : "[" + opts + "]";
+	result = subst(result, "$$opts", options);
+
+	return result;
+}
+
+
 struct TeXEnvironmentData
 {
 	bool cjk_nested;
@@ -161,17 +175,13 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 		if ((lang_end_command.empty() ||
 		    par_lang != doc_lang) &&
 		    !par_lang.empty()) {
-			os << from_ascii(subst(
-				lang_begin_command,
-				"$$lang",
-				par_lang));
-			if (use_polyglossia
-			    && !data.par_language->polyglossiaOpts().empty())
-					os << "["
-					   << from_ascii(data.par_language->polyglossiaOpts())
-					   << "]";
-			  // the '%' is necessary to prevent unwanted whitespace
-			os << "%\n";
+			    string bc = use_polyglossia ?
+					getPolyglossiaBegin(lang_begin_command, par_lang,
+							    data.par_language->polyglossiaOpts())
+				      : subst(lang_begin_command, "$$lang", par_lang);
+			    os << bc;
+			    // the '%' is necessary to prevent unwanted whitespace
+			    os << "%\n";
 		}
 	}
 
@@ -664,17 +674,17 @@ void TeXOnePar(Buffer const & buf,
 	string const outer_lang = use_polyglossia ?
 		getPolyglossiaEnvName(outer_language) : outer_language->babel();
 	string lang_begin_command = use_polyglossia ?
-		"\\begin{$$lang}" : lyxrc.language_command_begin;
+		"\\begin{$$lang}$$opts" : lyxrc.language_command_begin;
 	string lang_end_command = use_polyglossia ?
 		"\\end{$$lang}" : lyxrc.language_command_end;
 	// the '%' is necessary to prevent unwanted whitespace
 	string lang_command_termination = "%\n";
 
 	// In some insets (such as Arguments), we cannot use \selectlanguage
-	bool const localswitch = !use_polyglossia
-		&& text.inset().forceLocalFontSwitch();
+	bool const localswitch = text.inset().forceLocalFontSwitch();
 	if (localswitch) {
-		lang_begin_command = lyxrc.language_command_local;
+		lang_begin_command = use_polyglossia ?
+			    "\\text$$lang$$opts{" : lyxrc.language_command_local;
 		lang_end_command = "}";
 		lang_command_termination.clear();
 	}
@@ -742,15 +752,10 @@ void TeXOnePar(Buffer const & buf,
 			// With CJK, the CJK tag has to be closed first (see below)
 			if (runparams.encoding->package() != Encoding::CJK
 			    && !par_lang.empty()) {
-				os << from_ascii(subst(
-					lang_begin_command,
-					"$$lang",
-					par_lang));
-				if (use_polyglossia
-				    && !par_language->polyglossiaOpts().empty())
-						os << "["
-						  << from_ascii(par_language->polyglossiaOpts())
-						  << "]";
+				string bc = use_polyglossia ?
+					  getPolyglossiaBegin(lang_begin_command, par_lang, par_language->polyglossiaOpts())
+					  : subst(lang_begin_command, "$$lang", par_lang);
+				os << bc;
 				os << lang_command_termination;
 			}
 		}
@@ -955,10 +960,11 @@ void TeXOnePar(Buffer const & buf,
 					? getPolyglossiaEnvName(current_language)
 					: current_language->babel();
 				if (!current_lang.empty()) {
-					os << from_ascii(subst(
-						lang_begin_command,
-						"$$lang",
-						current_lang));
+					string bc = use_polyglossia ?
+						    getPolyglossiaBegin(lang_begin_command, current_lang,
+									current_language->polyglossiaOpts())
+						  : subst(lang_begin_command, "$$lang", current_lang);
+					os << bc;
 					pending_newline = !localswitch;
 					unskip_newline = !localswitch;
 				}
@@ -1134,19 +1140,16 @@ void latexParagraphs(Buffer const & buf,
 		? getPolyglossiaEnvName(bparams.language)
 		: bparams.language->babel();
 	string const lang_begin_command = runparams.use_polyglossia ?
-		"\\begin{$$lang}" : lyxrc.language_command_begin;
+		"\\begin{$$lang}$$opts" : lyxrc.language_command_begin;
 
 	if (maintext && !lyxrc.language_auto_begin &&
 	    !mainlang.empty()) {
 		// FIXME UNICODE
-		os << from_utf8(subst(lang_begin_command,
-					"$$lang",
-					mainlang));
-		if (runparams.use_polyglossia
-		    && !bparams.language->polyglossiaOpts().empty())
-			os << "["
-			    << from_ascii(bparams.language->polyglossiaOpts())
-			    << "]";
+		string bc = runparams.use_polyglossia ?
+			    getPolyglossiaBegin(lang_begin_command, mainlang,
+						bparams.language->polyglossiaOpts())
+			  : subst(lang_begin_command, "$$lang", mainlang);
+		os << bc;
 		os << '\n';
 	}
 
