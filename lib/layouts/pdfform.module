@@ -25,16 +25,16 @@ Style "Begin PDF Form"
 	LabelType			Static
 	LabelString			"Begin PDF Form"
 	Argument 1
-	  MenuString		"PDF form parameters"
-	  LabelString		"Params"
+	  MenuString			"PDF Form Parameters"
+	  LabelString			"Params"
 	  Tooltip			"Insert PDF form parameters here"
-	  AutoInsert		1
+	  AutoInsert			1
 	EndArgument
 	LabelFont
 	  Series			Bold
 	  Color				Green
 	EndFont
-	Requires            hyperref
+	Requires                        hyperref
 End
 
 Style "End PDF Form"
@@ -62,17 +62,17 @@ InsetLayout Flex:TextField
 	LatexName			TextField
 	LabelString			"TextField"
 	Argument 1
-	  MenuString		"PDF form parameters"
-	  LabelString		"Params"
+	  MenuString			"PDF Form Parameters"
+	  LabelString			"Params"
 	  Tooltip			"Insert PDF form parameters here"
-	  AutoInsert		1
+	  AutoInsert			1
 	EndArgument
 	PassThru			1
 	LabelFont
 	  Color				magenta
 	  Size				Small
 	EndFont
-	Requires            hyperref
+	Requires                        hyperref
 End
 
 InsetLayout Flex:CheckBox
@@ -86,9 +86,9 @@ InsetLayout Flex:ChoiceMenu
 	LatexName			ChoiceMenu
 	LabelString			"ChoiceMenu"
 	Argument 2
-	  LabelString		"Label"
+	  LabelString			"Label"
 	  Mandatory			1
-	  AutoInsert		1
+	  AutoInsert			1
 	  ToolTip			"Insert the label here"
 	EndArgument
 End
@@ -120,10 +120,10 @@ InsetLayout Flex:PDFAction
 	LatexName			Acrobatmenu
 	LabelString			"PDFAction"
 	Argument 1
-	  LabelString		"Action"
+	  LabelString			"Action"
 	  Mandatory			1
-	  AutoInsert		1
-	  ToolTip			"the name of the PDF action"
+	  AutoInsert			1
+	  ToolTip			"The name of the PDF action"
 	EndArgument
 End
 
