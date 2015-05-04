@@ -100,14 +100,14 @@ void initMathSymbols()
 	// defined with non-unicode ids for use within mathed.
 	// FIXME 2: We should fill-in this map with the parsed "symbols"
 	// file done in MathFactory.cpp.
-	math_symbols_["("] = MathSymbol('(');
-	math_symbols_[")"] = MathSymbol(')');
-	math_symbols_["{"] = MathSymbol('{');
-	math_symbols_["}"] = MathSymbol('}');
-	math_symbols_["["] = MathSymbol('[');
-	math_symbols_["]"] = MathSymbol(']');
-	math_symbols_["|"] = MathSymbol('|');
-	math_symbols_["/"] = MathSymbol('/', 54, CMSY_FAMILY);
+	math_symbols_["("] = MathSymbol('(', 40, CMR_FAMILY);
+	math_symbols_[")"] = MathSymbol(')', 41, CMR_FAMILY);
+	math_symbols_["{"] = MathSymbol('{', 102, CMSY_FAMILY);
+	math_symbols_["}"] = MathSymbol('}', 103, CMSY_FAMILY);
+	math_symbols_["["] = MathSymbol('[', 91, CMR_FAMILY);
+	math_symbols_["]"] = MathSymbol(']', 93, CMR_FAMILY);
+	math_symbols_["|"] = MathSymbol('|', 106, CMSY_FAMILY);
+	math_symbols_["/"] = MathSymbol('/', 47, CMR_FAMILY);
 	math_symbols_["backslash"] = MathSymbol('\\', 110, CMSY_FAMILY);
 	math_symbols_["lceil"] = MathSymbol(0x2308, 100, CMSY_FAMILY);
 	math_symbols_["rceil"] = MathSymbol(0x2309, 101, CMSY_FAMILY);
@@ -189,9 +189,11 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 		string const delim = latex_delimiters[i];
 		MathSymbol const & ms =	mathSymbol(delim);
 // Due to a bug in Qt 4 on Windows, we need to use our math symbol font
-// on Windows, which results in sub-optimal glyph display (see #5760).
+// on Windows (see #5760).
 // FIXME: Re-check after Windows has settled to Qt 5.
-#if defined(_WIN32)
+//        ATM, this doesn't work also with Qt 5.4.1 because of still missing
+//        glyphs for \llbracket and \rrbracket.
+#if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
 		QString symbol(ms.fontcode?
 			QChar(ms.fontcode) : toqstr(docstring(1, ms.unicode)));
 		QListWidgetItem * lwi = new QListWidgetItem(symbol);
@@ -221,7 +223,7 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 	QListWidgetItem * rwi = new QListWidgetItem(qt_("(None)"));
 // See above comment.
 // FIXME: Re-check after Windows has settled to Qt 5.
-#if !defined(_WIN32)
+#if !defined(Q_OS_WIN) && !defined(Q_CYGWIN_WIN)
 	QFont font = lwi->font();
 	font.setPointSize(2 * font.pointSize());
 	lwi->setFont(font);
