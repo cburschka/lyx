@@ -67,6 +67,9 @@ done
 LYX_PATH_PYTHON23([2.7.0], [3.3.0])
 # do the usual python setup stuff
 AM_PATH_PYTHON
+
+# Tools for creating libraries (note that we do not use libtool)
+m4_ifdef([AM_PROG_AR], [AM_PROG_AR]) dnl AM_PROG_AR requires automake 1.12
 AC_PROG_RANLIB
 
 ### Check for a C++ compiler
