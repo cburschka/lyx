@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pt_BR 2.1.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2015-02-07 10:25-0500\n"
-"PO-Revision-Date: 2015-05-03 12:00-0300\n"
+"PO-Revision-Date: 2015-05-04 00:21-0300\n"
 "Last-Translator: Georger Araujo <georger underscore br pound yahoo dot com "
 "dot br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br pound yahoo dot "
@@ -892,7 +892,7 @@ msgstr "Localizar somente em expressões &matemáticas"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:317
 msgid "Restrict search to math environments only"
-msgstr "Restringir a localização a ambientes matemáticos"
+msgstr "Restringir localização a environments matemáticos"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:46
 msgid "A&lter..."
@@ -2030,11 +2030,11 @@ msgstr "Usar movimento do cursor ao estilo &Mac"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:107
 msgid "Sort &environments alphabetically"
-msgstr "Ordenar am&bientes em ordem alfabética"
+msgstr "Ordenar &environments em ordem alfabética"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:114
 msgid "&Group environments by their category"
-msgstr "A&grupar ambientes por categoria"
+msgstr "A&grupar environments por categoria"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:122
 msgid "Edit Math Macros inline with a box around"
@@ -6693,7 +6693,7 @@ msgstr "Citação curta "
 #: lib/layouts/revtex4.layout:194 lib/layouts/revtex4-1.layout:185
 #: lib/layouts/amsdefs.inc:171
 msgid "Thanks"
-msgstr "Obrigado"
+msgstr "Agradecimentos"
 
 #: lib/layouts/acmsiggraph.layout:289
 msgid "E-mail"
@@ -7337,7 +7337,7 @@ msgstr "Colaboração:"
 #: lib/layouts/revtex4.layout:197 lib/layouts/revtex4-1.layout:188
 #: lib/layouts/amsdefs.inc:174
 msgid "Thanks:"
-msgstr "Obrigado:"
+msgstr "Agradecimentos:"
 
 #: lib/layouts/revtex4.layout:207 lib/layouts/revtex4-1.layout:112
 msgid "Electronic Address Option|s"
@@ -9922,7 +9922,7 @@ msgstr "Anex.:"
 
 #: lib/layouts/paper.layout:3
 msgid "Paper (Standard Class)"
-msgstr "Artigo (Classe Padrão)"
+msgstr "Artigo Científico (Classe Padrão)"
 
 #: lib/layouts/paper.layout:149
 msgid "SubTitle"
@@ -10388,7 +10388,7 @@ msgstr "Comby"
 
 #: lib/layouts/article.layout:3
 msgid "Article (Standard Class)"
-msgstr "Article (Classe Padrão)"
+msgstr "Artigo (Classe Padrão)"
 
 #: lib/layouts/IEEEtran-TransMag.layout:3
 msgid "IEEE Transactions on Magnetics"
@@ -12548,11 +12548,11 @@ msgstr "SGML"
 
 #: lib/layouts/stdinsets.inc:12 src/insets/InsetMarginal.cpp:35
 msgid "margin"
-msgstr "marginal"
+msgstr "nota marginal"
 
 #: lib/layouts/stdinsets.inc:41
 msgid "foot"
-msgstr "base"
+msgstr "nota de rodapé"
 
 #: lib/layouts/stdinsets.inc:151
 msgid "Greyedout"
@@ -13159,8 +13159,8 @@ msgid ""
 "chemical risk and safety statements. For a description see the file R-S-"
 "statements.lyx in LyX's examples folder."
 msgstr ""
-"Fornece dois insets e um environment para compor números e frases "
-"declarações de risco químico e segurança. Para mais informação, consulte o "
+"Fornece dois insets e um environment para compor números e frases de "
+"declarações de risco químico e segurança. Para mais informações, consulte o "
 "arquivo 'R-S-statements.lyx' na pasta de exemplos do LyX."
 
 #: lib/layouts/rsphrase.module:11 lib/layouts/rsphrase.module:16
@@ -13925,7 +13925,7 @@ msgid ""
 msgstr ""
 "Numera por capítulo teoremas e afins (isto é, o contador é zerado no início "
 "de cada capítulo). Use este módulo apenas com classes de documento que "
-"possuem um ambiente chapter."
+"possuem um environment chapter."
 
 #: lib/layouts/natbib.module:2
 msgid "Natbib"
@@ -15243,7 +15243,7 @@ msgstr "Ferramentas|F"
 
 #: lib/ui/stdmenus.inc:37
 msgid "Help|H"
-msgstr "Ajuda|A"
+msgstr "Ajuda|j"
 
 #: lib/ui/stdmenus.inc:45
 msgid "New|N"
@@ -15431,11 +15431,11 @@ msgstr "Estilo de Texto|s"
 
 #: lib/ui/stdmenus.inc:122 lib/ui/stdcontext.inc:335
 msgid "Paragraph Settings...|P"
-msgstr "Configurações de Parágrafo...|P"
+msgstr "Configurações de Parágrafo..."
 
 #: lib/ui/stdmenus.inc:125
 msgid "Table|T"
-msgstr "Tabela|T"
+msgstr "Tabela"
 
 #: lib/ui/stdmenus.inc:126 lib/ui/stdmenus.inc:592
 msgid "Math|M"
@@ -15571,11 +15571,11 @@ msgstr "Minúsculas|i"
 
 #: lib/ui/stdmenus.inc:195
 msgid "Multicolumn|M"
-msgstr "Multicoluna|u"
+msgstr "Multicoluna"
 
 #: lib/ui/stdmenus.inc:196
 msgid "Multirow|u"
-msgstr "Multilinha|n"
+msgstr "Multilinha"
 
 #: lib/ui/stdmenus.inc:198
 msgid "Top Line|T"
@@ -15587,11 +15587,11 @@ msgstr "Borda Inferior|I"
 
 #: lib/ui/stdmenus.inc:200 lib/ui/stdcontext.inc:406
 msgid "Left Line|L"
-msgstr "Borda Esquerda|E"
+msgstr "Borda Esquerda"
 
 #: lib/ui/stdmenus.inc:201 lib/ui/stdcontext.inc:407
 msgid "Right Line|R"
-msgstr "Borda Direita|D"
+msgstr "Borda Direita"
 
 #: lib/ui/stdmenus.inc:203
 msgid "Top|p"
@@ -15611,7 +15611,7 @@ msgstr "Alinhar à Esquerda|E"
 
 #: lib/ui/stdmenus.inc:210 lib/ui/stdcontext.inc:410
 msgid "Center|C"
-msgstr "Alinhar ao Centro|C"
+msgstr "Alinhar ao Centro"
 
 #: lib/ui/stdmenus.inc:211
 msgid "Right|R"
@@ -16804,7 +16804,7 @@ msgstr "Editar Arquivo Incluído...|E"
 
 #: lib/ui/stdcontext.inc:315
 msgid "Jump Back to Saved Bookmark|B"
-msgstr "Voltar para Marcador Salvo|F"
+msgstr "Voltar para Marcador Salvo|V"
 
 #: lib/ui/stdcontext.inc:323
 msgid "Promote Section|r"
@@ -16816,11 +16816,11 @@ msgstr "Rebaixar Seção|R"
 
 #: lib/ui/stdcontext.inc:325
 msgid "Move Section Down|D"
-msgstr "Mover Seção para Baixo|B"
+msgstr "Mover Seção para Baixo"
 
 #: lib/ui/stdcontext.inc:326 lib/ui/stdcontext.inc:611
 msgid "Move Section Up|U"
-msgstr "Mover Seção para Cima|C"
+msgstr "Mover Seção para Cima"
 
 #: lib/ui/stdcontext.inc:330 lib/ui/stdcontext.inc:600
 msgid "Accept Change|c"
@@ -16836,7 +16836,7 @@ msgstr "Aplicar Último Estilo de Texto|A"
 
 #: lib/ui/stdcontext.inc:334
 msgid "Text Style|x"
-msgstr "Estilo de Texto|E"
+msgstr "Estilo de Texto|s"
 
 #: lib/ui/stdcontext.inc:338
 msgid "Fullscreen Mode"
@@ -16885,11 +16885,11 @@ msgstr "Editar Externamente...|x"
 
 #: lib/ui/stdcontext.inc:401
 msgid "Multicolumn|u"
-msgstr "Multicoluna|c"
+msgstr "Multicoluna"
 
 #: lib/ui/stdcontext.inc:402
 msgid "Multirow|w"
-msgstr "Multilinha|l"
+msgstr "Multilinha"
 
 #: lib/ui/stdcontext.inc:404
 msgid "Top Line|n"
@@ -17005,7 +17005,7 @@ msgstr "Rebaixar Seção|R"
 
 #: lib/ui/stdcontext.inc:612
 msgid "Move Section Down|w"
-msgstr "Mover Seção para Baixo|B"
+msgstr "Mover Seção para Baixo"
 
 #: lib/ui/stdcontext.inc:614
 msgid "Select Section|S"
@@ -27192,7 +27192,7 @@ msgid ""
 msgstr ""
 "Conforme descrito no Guia do Usuário, a largura deste texto determina a "
 "largura da parte de etiqueta de cada item em environments como Lista e "
-"Descrição.\n"
+"Description.\n"
 "\n"
 " Normalmente não é necessário configurar isto, porque a maior largura dentre "
 "todos os itens é usada."
@@ -28592,7 +28592,7 @@ msgstr "Iniciar Novo Environment (%1$s)"
 #: src/frontends/qt4/Menus.cpp:1701
 #, c-format
 msgid "Start New Parent Environment (%1$s)"
-msgstr "Iniciar Novo Parent Environment (%1$s)"
+msgstr "Iniciar Novo Environment 'Pai' (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:2333
 msgid "No Action Defined!"
@@ -29886,7 +29886,7 @@ msgstr "Autocorreção Desligada ('!' para entrar)"
 
 #: src/mathed/InsetMathNest.cpp:1020
 msgid "create new math text environment ($...$)"
-msgstr "criar novo environment matemático no interior do parágrafo ($...$)"
+msgstr "criar novo environment matemático ($...$)"
 
 #: src/mathed/InsetMathNest.cpp:1023
 msgid "entered math text mode (textrm)"
