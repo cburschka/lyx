@@ -82,6 +82,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Update path of included files when saving a document to a different
+  location (bugs 9528, 5115).
+
 - Fix LaTeX errors caused by too late loading of fixltx2e package
   (bugs 9452, 9361).
 

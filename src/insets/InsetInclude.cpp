@@ -1030,6 +1030,12 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 }
 
 
+void InsetInclude::write(ostream & os) const
+{
+	params().Write(os, &buffer());
+}
+
+
 string InsetInclude::contextMenuName() const
 {
 	return "context-include";

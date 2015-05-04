@@ -38,6 +38,8 @@ public:
 	bool addDatabase(docstring const &);
 	///
 	bool delDatabase(docstring const &);
+	///
+	void write(std::ostream &) const;
 
 	/// \name Public functions inherited from Inset class
 	//@{

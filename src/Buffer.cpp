@@ -237,6 +237,9 @@ public:
 	/// map from children inclusion positions to their scope and their buffer
 	PositionScopeBufferMap position_to_children;
 
+	/// Keeps track of old buffer filePath() for save-as operations
+	string old_position;
+
 	/// Container for all sort of Buffer dependant errors.
 	map<string, ErrorList> errorLists;
 
@@ -4866,6 +4869,8 @@ bool Buffer::saveAs(FileName const & fn)
 	FileName const old_name = fileName();
 	FileName const old_auto = getAutosaveFileName();
 	bool const old_unnamed = isUnnamed();
+	bool success = true;
+	d->old_position = filePath();
 
 	setFileName(fn);
 	markDirty();
@@ -4883,22 +4888,19 @@ bool Buffer::saveAs(FileName const & fn)
 		// are still valid.
 		checkChildBuffers();
 		checkMasterBuffer();
-		return true;
 	} else {
 		// save failed
 		// reset the old filename and unnamed state
 		setFileName(old_name);
 		setUnnamed(old_unnamed);
-		return false;
+		success = false;
 	}
+
+	d->old_position.clear();
+	return success;
 }
 
 
-// FIXME We could do better here, but it is complicated. What would be
-// nice is to offer either (a) to save the child buffer to an appropriate
-// location, so that it would "move with the master", or else (b) to update
-// the InsetInclude so that it pointed to the same file. But (a) is a bit
-// complicated, because the code for this lives in GuiView.
 void Buffer::checkChildBuffers()
 {
 	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
@@ -4918,11 +4920,6 @@ void Buffer::checkChildBuffers()
 		if (oldloc == newloc)
 			continue;
 		// the location of the child file is incorrect.
-		Alert::warning(_("Included File Invalid"),
-				bformat(_("Saving this document to a new location has made the file:\n"
-				"  %1$s\n"
-				"inaccessible. You will need to update the included filename."),
-				from_utf8(oldloc)));
 		cbuf->setParent(0);
 		inset_inc->setChildBuffer(0);
 	}
@@ -4950,6 +4947,20 @@ void Buffer::checkMasterBuffer()
 		setParent(master);
 	else
 		setParent(0);
+}
+
+
+string Buffer::includedFilePath(string const & name) const
+{
+	if (d->old_position.empty() || d->old_position == filePath())
+		return name;
+
+	if (FileName::isAbsolute(name))
+		return to_utf8(makeRelPath(from_utf8(name), from_utf8(filePath())));
+
+	// old_position already contains a trailing path separator
+	string const cleanpath = FileName(d->old_position + name).realPath();
+	return to_utf8(makeRelPath(from_utf8(cleanpath), from_utf8(filePath())));
 }
 
 } // namespace lyx

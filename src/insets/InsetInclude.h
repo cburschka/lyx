@@ -64,6 +64,8 @@ public:
 
 	///
 	void updateCommand();
+	///
+	void write(std::ostream &) const;
 
 	/// \name Public functions inherited from Inset class
 	//@{

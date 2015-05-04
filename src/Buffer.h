@@ -707,6 +707,12 @@ public:
 	///
 	void checkMasterBuffer();
 
+	/// If the document is being saved to a new location, return the
+	/// updated path of an included file relative to the new buffer path
+	/// if possible, otherwise return its absolute path.
+	/// In all other cases, this is a no-op and name is returned unchanged.
+	std::string includedFilePath(std::string const & name) const;
+
 	/// compute statistics between \p from and \p to
 	/// \p from initial position
 	/// \p to points to the end position
