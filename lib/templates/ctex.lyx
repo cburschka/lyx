@@ -8,7 +8,7 @@
 % http://bbs.ctex.org/viewthread.php?tid=60547
 \DeclareRobustCommand\nobreakspace{\leavevmode\nobreak\ }
 \end_preamble
-\options UTF8,adobefonts
+\options UTF8,nofonts
 \use_default_options true
 \maintain_unincluded_children false
 \language chinese-simplified
@@ -74,6 +74,40 @@
 \end_header
 
 \begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The below text refers to if we replace 
+\begin_inset Quotes eld
+\end_inset
+
+nofonts
+\begin_inset Quotes erd
+\end_inset
+
+ with 
+\begin_inset Quotes eld
+\end_inset
+
+adobefonts
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The text is outdated and will be updated to reflect this change soon.
+ The change was made because we no longer need proprietary fonts to compile
+ this document.
+ For example, it can be compiled with out-of-the-box TeX Live 2014 and TeX
+ Live 2015.
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Standard
 \begin_inset Note Note
