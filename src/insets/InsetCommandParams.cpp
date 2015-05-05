@@ -346,7 +346,7 @@ void InsetCommandParams::Write(ostream & os, Buffer const * buffer) const
 				string newdata;
 				string bib = token(data, ',', i);
 				while (!bib.empty()) {
-					bib = buffer->includedFilePath(bib);
+					bib = buffer->includedFilePath(bib, "bib");
 					if (!newdata.empty())
 						newdata.append(1, ',');
 					newdata.append(bib);

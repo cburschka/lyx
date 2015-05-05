@@ -4950,17 +4950,21 @@ void Buffer::checkMasterBuffer()
 }
 
 
-string Buffer::includedFilePath(string const & name) const
+string Buffer::includedFilePath(string const & name, string const & ext) const
 {
-	if (d->old_position.empty() || d->old_position == filePath())
+	bool isabsolute = FileName::isAbsolute(name);
+	// old_position already contains a trailing path separator
+	string const absname = isabsolute ? name : d->old_position + name;
+
+	if (d->old_position.empty() || d->old_position == filePath()
+	    || !FileName(addExtension(absname, ext)).exists())
 		return name;
 
-	if (FileName::isAbsolute(name))
+	if (isabsolute)
 		return to_utf8(makeRelPath(from_utf8(name), from_utf8(filePath())));
 
-	// old_position already contains a trailing path separator
-	string const cleanpath = FileName(d->old_position + name).realPath();
-	return to_utf8(makeRelPath(from_utf8(cleanpath), from_utf8(filePath())));
+	return to_utf8(makeRelPath(from_utf8(FileName(absname).realPath()),
+	                           from_utf8(filePath())));
 }
 
 } // namespace lyx
