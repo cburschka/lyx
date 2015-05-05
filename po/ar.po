@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-11-10 03:10+0100\n"
-"PO-Revision-Date: 2015-05-04 11:22+0300\n"
+"PO-Revision-Date: 2015-05-05 12:53+0300\n"
 "Last-Translator: Hatim Alahmady <Dr.hatim@hotmail.com>\n"
 "Language-Team: Hatim Alahmady\n"
 "Language: ar\n"
@@ -5936,12 +5936,10 @@ msgid "IEEE membership"
 msgstr ""
 
 #: lib/layouts/IEEEtran.layout:107 lib/layouts/revtex4-1.layout:277
-#, fuzzy
 msgid "Lowercase"
 msgstr "حروف صغيرة"
 
 #: lib/layouts/IEEEtran.layout:111
-#, fuzzy
 msgid "lowercase"
 msgstr "حروف صغيرة"
 
@@ -5972,7 +5970,7 @@ msgstr "المؤلف"
 
 #: lib/layouts/IEEEtran.layout:124 lib/layouts/beamer.layout:953
 msgid "Short Author|S"
-msgstr "اختصارالمؤلف|S"
+msgstr "مؤلف قصير|S"
 
 #: lib/layouts/IEEEtran.layout:125
 msgid "A short version of the author name"
@@ -5988,11 +5986,11 @@ msgstr "اسم المؤلف"
 
 #: lib/layouts/IEEEtran.layout:159
 msgid "Author Affiliation"
-msgstr ""
+msgstr "انتماء المؤلف"
 
 #: lib/layouts/IEEEtran.layout:162 lib/layouts/agutex.layout:114
 msgid "Author affiliation"
-msgstr ""
+msgstr "انتماء المؤلف"
 
 #: lib/layouts/IEEEtran.layout:173
 msgid "Author Mark"
@@ -6552,12 +6550,11 @@ msgstr "الجمعية الفلكية الأمريكية (AASTeX)"
 #: lib/layouts/sigplanconf.layout:159 lib/layouts/agu_stdtitle.inc:128
 #: lib/layouts/aguplus.inc:65
 msgid "Affiliation"
-msgstr "منتسب"
+msgstr "الانتماء"
 
 #: lib/layouts/aastex.layout:169
-#, fuzzy
 msgid "Altaffilation"
-msgstr "منتسب"
+msgstr ""
 
 #: lib/layouts/aastex.layout:178 lib/layouts/agutex.layout:124
 #: src/mathed/InsetMathHull.cpp:1443 src/mathed/InsetMathHull.cpp:1452
@@ -6570,7 +6567,7 @@ msgstr ""
 
 #: lib/layouts/aastex.layout:183
 msgid "Alternative affiliation:"
-msgstr "منتسب متناوب:"
+msgstr "الانتماء البديل:"
 
 #: lib/layouts/aastex.layout:209
 msgid "And"
@@ -6584,14 +6581,12 @@ msgid "and"
 msgstr "و"
 
 #: lib/layouts/aastex.layout:260
-#, fuzzy
 msgid "altaffilmark"
-msgstr "منتسب"
+msgstr ""
 
 #: lib/layouts/aastex.layout:264
-#, fuzzy
 msgid "altaffiliation mark"
-msgstr "منتسب"
+msgstr ""
 
 #: lib/layouts/aastex.layout:295
 msgid "Subject headings:"
@@ -7012,7 +7007,7 @@ msgstr "اعترافات بالجميل"
 
 #: lib/layouts/agu-dtd.layout:3
 msgid "American Geophysical Union (AGU, SGML Article)"
-msgstr "الاتحاد الجيوفيزيائي الأمريكي (AGU, SGML Article)"
+msgstr "اتحاد الجيوفيزيائيين الأمريكيين (AGU, SGML Article)"
 
 #: lib/layouts/agu-dtd.layout:4 lib/layouts/docbook.layout:4
 msgid "Articles (DocBook)"
@@ -7020,11 +7015,11 @@ msgstr "مقالات (DocBook)"
 
 #: lib/layouts/agums.layout:3
 msgid "American Geophysical Union (AGUPLUS Manuscript)"
-msgstr ""
+msgstr "اتحاد الجيوفيزيائيين الأمريكيين (AGUPLUS Manuscript)"
 
 #: lib/layouts/agutex.layout:3
 msgid "American Geophysical Union (AGUTeX)"
-msgstr "الاتحاد الجيوفيزيائي الأمريكي (AGUTeX)"
+msgstr "اتحاد الجيوفيزيائيين الأمريكيين (AGUTeX)"
 
 #: lib/layouts/agutex.layout:74
 msgid "Authors"
@@ -7032,7 +7027,7 @@ msgstr "المؤلفون"
 
 #: lib/layouts/agutex.layout:92 lib/layouts/agutex.layout:96
 msgid "Affiliation Mark"
-msgstr ""
+msgstr "علامة الانتماء"
 
 #: lib/layouts/agutex.layout:125
 msgid "Consecutive number for the author affiliations"
@@ -7040,7 +7035,7 @@ msgstr ""
 
 #: lib/layouts/agutex.layout:129
 msgid "Author affiliation:"
-msgstr ""
+msgstr "انتماء المؤلف:"
 
 #: lib/layouts/agutex.layout:156 lib/layouts/amsbook.layout:127
 #: lib/layouts/apa.layout:333 lib/layouts/apa6.layout:433
@@ -7124,7 +7119,7 @@ msgstr "تمارين على الفصل"
 
 #: lib/layouts/apa.layout:3
 msgid "American Psychological Association (APA)"
-msgstr ""
+msgstr "الجمعية الجيوفيزيائية الأمريكية (APA)"
 
 #: lib/layouts/apa.layout:54
 msgid "RightHeader"
@@ -7158,19 +7153,19 @@ msgstr "اربعة مؤلفين"
 #: lib/layouts/egs.layout:346 lib/layouts/revtex4-1.layout:77
 #: lib/layouts/revtex4.layout:144 lib/layouts/agu_stdtitle.inc:132
 msgid "Affiliation:"
-msgstr "منتسب:"
+msgstr "الانتماء:"
 
 #: lib/layouts/apa.layout:181 lib/layouts/apa6.layout:170
 msgid "TwoAffiliations"
-msgstr "منتسبان:"
+msgstr "انتماءين:"
 
 #: lib/layouts/apa.layout:189 lib/layouts/apa6.layout:177
 msgid "ThreeAffiliations"
-msgstr "ثلاثة منتسبين"
+msgstr "ثلاثة منتمين"
 
 #: lib/layouts/apa.layout:197 lib/layouts/apa6.layout:184
 msgid "FourAffiliations"
-msgstr "اربعة منتسبين"
+msgstr "أربعة منتمين"
 
 #: lib/layouts/apa.layout:225
 msgid "Acknowledgements:"
@@ -7264,14 +7259,12 @@ msgid "Left header:"
 msgstr "الرأس الأيسر:"
 
 #: lib/layouts/apa6.layout:191
-#, fuzzy
 msgid "FiveAffiliations"
-msgstr "منتسب"
+msgstr "خمسة منتمين"
 
 #: lib/layouts/apa6.layout:198
-#, fuzzy
 msgid "SixAffiliations"
-msgstr "منتسب"
+msgstr "ستة منتمين"
 
 #: lib/layouts/apa6.layout:206 lib/layouts/beamer.layout:1493
 #: lib/layouts/elsart.layout:407 lib/layouts/iopart.layout:100
@@ -10164,18 +10157,16 @@ msgid "Journal of the Acoustical Society of America (JASA)"
 msgstr ""
 
 #: lib/layouts/jasatex.layout:121
-#, fuzzy
 msgid "Alternative Affiliation"
-msgstr "منتسب متناوب:"
+msgstr "الانتماء البديل:"
 
 #: lib/layouts/jasatex.layout:126
-#, fuzzy
 msgid "Affiliation Prefix"
-msgstr "منتسب"
+msgstr "بادئة الانتماء"
 
 #: lib/layouts/jasatex.layout:127
 msgid "A prefix like 'Also at '"
-msgstr ""
+msgstr "بادئة مثل 'أيضا في '"
 
 #: lib/layouts/jasatex.layout:132 lib/layouts/moderncv.layout:149
 msgid "Homepage"
@@ -10183,7 +10174,7 @@ msgstr "الصفحة الرئيسية"
 
 #: lib/layouts/jasatex.layout:220 lib/layouts/revtex4-1.layout:173
 msgid "PACS numbers:"
-msgstr ""
+msgstr "رقم PACS:"
 
 #: lib/layouts/jasatex.layout:223
 #, fuzzy
@@ -10205,7 +10196,7 @@ msgstr "كتاب ياباني (jbook)"
 
 #: lib/layouts/jgrga.layout:3
 msgid "American Geophysical Union (AGUPLUS JGR)"
-msgstr "نقابة الجيوفيزيائيين الأمريكية (AGUPLUS JGR)"
+msgstr "اتحاد الجيوفيزيائيين الأمريكيين (AGUPLUS JGR)"
 
 #: lib/layouts/jreport.layout:3
 msgid "Japanese Report (jreport)"
@@ -11039,19 +11030,16 @@ msgid "REVTeX (V. 4.1)"
 msgstr "REVTeX (V. 4.1)"
 
 #: lib/layouts/revtex4-1.layout:85 lib/layouts/revtex4.layout:152
-#, fuzzy
 msgid "Affiliation (alternate)"
-msgstr "منتسب"
+msgstr "الانتماء (البديل)"
 
 #: lib/layouts/revtex4-1.layout:88 lib/layouts/revtex4.layout:161
-#, fuzzy
 msgid "Affiliation (alternate):"
-msgstr "منتسب"
+msgstr "الانتماء (البديل)"
 
 #: lib/layouts/revtex4-1.layout:90 lib/layouts/revtex4.layout:158
-#, fuzzy
 msgid "Alternate Affiliation Option"
-msgstr "منتسب متناوب:"
+msgstr "خيار الانتماء البديل"
 
 #: lib/layouts/revtex4-1.layout:91 lib/layouts/revtex4.layout:159
 msgid "Optional argument to the altaffiliation command"
@@ -11059,12 +11047,11 @@ msgstr ""
 
 #: lib/layouts/revtex4-1.layout:97 lib/layouts/revtex4.layout:165
 msgid "Affiliation (none)"
-msgstr "منتسب(بدون)"
+msgstr "الانتماء (بدون)"
 
 #: lib/layouts/revtex4-1.layout:100 lib/layouts/revtex4.layout:168
-#, fuzzy
 msgid "No affiliation"
-msgstr "منتسب"
+msgstr "لا انتماء"
 
 #: lib/layouts/revtex4-1.layout:117 lib/layouts/revtex4.layout:210
 msgid "Electronic Address:"
@@ -11520,7 +11507,7 @@ msgstr "قبل الطباعة"
 
 #: lib/layouts/sigplanconf.layout:160
 msgid "Affiliation and/or address of the author"
-msgstr ""
+msgstr "الانتماء و/أو عنوان المؤلف"
 
 #: lib/layouts/sigplanconf.layout:170 lib/layouts/acm-sigs.inc:31
 msgid "Terms"
@@ -12765,9 +12752,8 @@ msgid "Claim*"
 msgstr "متطلب*"
 
 #: lib/layouts/theorems-proof.inc:22
-#, fuzzy
 msgid "Alternative proof string"
-msgstr "منتسب متناوب:"
+msgstr ""
 
 #: lib/layouts/theorems-starred.inc:121
 msgid "Conjecture."
@@ -14056,11 +14042,11 @@ msgstr "قلب"
 
 #: lib/layouts/shapepar.module:54
 msgid "Hexagon"
-msgstr "المسدس"
+msgstr "مسدس"
 
 #: lib/layouts/shapepar.module:59
 msgid "Nut"
-msgstr "Nut"
+msgstr "صامولة"
 
 #: lib/layouts/shapepar.module:64 lib/ui/stdtoolbars.inc:760
 msgid "Square"
@@ -14076,11 +14062,11 @@ msgstr "شمعة"
 
 #: lib/layouts/shapepar.module:81
 msgid "Drop down"
-msgstr "قائمة منسدلة"
+msgstr "قطرة"
 
 #: lib/layouts/shapepar.module:86
 msgid "Drop up"
-msgstr ""
+msgstr "قطرة مقلوبة"
 
 #: lib/layouts/shapepar.module:91 src/mathed/MathMacroTemplate.cpp:537
 msgid "TeX"
@@ -14104,11 +14090,11 @@ msgstr "مثلث يمين"
 
 #: lib/layouts/shapepar.module:117
 msgid "shapepar"
-msgstr ""
+msgstr "shapepar"
 
 #: lib/layouts/shapepar.module:123
 msgid "For scaling the <Shape specification> to positions on the page"
-msgstr ""
+msgstr "لتحجيم ال <Shape specification> في الموضع على الصفحة"
 
 #: lib/layouts/shapepar.module:127
 msgid "Shape specification"
@@ -14119,9 +14105,8 @@ msgid "Specification of the shape"
 msgstr "مواصفات الشكل"
 
 #: lib/layouts/shapepar.module:132
-#, fuzzy
 msgid "Shapepar"
-msgstr "الشكل:"
+msgstr "Shapepar"
 
 #: lib/layouts/sweave.module:2 lib/configure.py:614
 msgid "Sweave"
@@ -14135,7 +14120,7 @@ msgstr ""
 
 #: lib/layouts/sweave.module:74 lib/layouts/sweave.module:75
 msgid "Sweave Input File"
-msgstr ""
+msgstr "ملف إدراج Sweave"
 
 #: lib/layouts/tabs-within-sections.module:2
 msgid "Number Tables by Section"
@@ -16397,9 +16382,8 @@ msgid "Update Local Directory From Repository|d"
 msgstr "تحديث المجلد المحلي من المستودع|d"
 
 #: lib/ui/stdmenus.inc:80
-#, fuzzy
 msgid "Revert to Repository Version|v"
-msgstr "عودة لآخر اصدار|ع"
+msgstr "العودة لنسخة المستودع|v"
 
 #: lib/ui/stdmenus.inc:81
 msgid "Undo Last Check In|U"
@@ -20137,14 +20121,12 @@ msgid "Longmapsfrom"
 msgstr "Longmapsfrom"
 
 #: lib/ui/stdtoolbars.inc:953
-#, fuzzy
 msgid "xleftarrow"
-msgstr "سهم يسار"
+msgstr "xleftarrow"
 
 #: lib/ui/stdtoolbars.inc:954
-#, fuzzy
 msgid "xrightarrow"
-msgstr "سهم يمين"
+msgstr "xrightarrow"
 
 #: lib/ui/stdtoolbars.inc:970
 msgid "leqq"
@@ -21672,31 +21654,28 @@ msgid "Linguolabial"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1396
-#, fuzzy
 msgid "Dental"
-msgstr "ارجواني"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1397
-#, fuzzy
 msgid "Apical"
-msgstr "موضوعي"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1398
 msgid "Laminal"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1399
-#, fuzzy
 msgid "Aspirated"
-msgstr "مفعل"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1400
 msgid "More rounded"
-msgstr ""
+msgstr "أكثر استدارة"
 
 #: lib/ui/stdtoolbars.inc:1401
 msgid "Less rounded"
-msgstr ""
+msgstr "أقل استدارة"
 
 #: lib/ui/stdtoolbars.inc:1402
 msgid "Advanced"
@@ -21707,9 +21686,8 @@ msgid "Retracted"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1404
-#, fuzzy
 msgid "Centralized"
-msgstr "الاول كبير"
+msgstr "مركزي"
 
 #: lib/ui/stdtoolbars.inc:1405
 msgid "Mid-centralized"
@@ -21749,14 +21727,12 @@ msgid "Velarized or pharyngialized"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1414
-#, fuzzy
 msgid "Raised"
-msgstr "روجع"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1415
-#, fuzzy
 msgid "Lowered"
-msgstr "حروف صغيرة"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1416
 msgid "Advanced tongue root"
