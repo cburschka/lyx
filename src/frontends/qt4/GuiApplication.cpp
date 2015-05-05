@@ -69,6 +69,7 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h" // sorted
+#include "support/textutils.h"
 #include "support/Messages.h"
 #include "support/os.h"
 #include "support/Package.h"
@@ -2131,6 +2132,12 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 		// if it's normal insertable text not already covered
 		// by a binding
 		if (keysym.isText() && d->keyseq.length() == 1) {
+			// Non-printable characters (such as ASCII control characters)
+			// must not be inserted (#5704)
+			if (!isPrintable(encoded_last_key)) {
+				LYXERR(Debug::KEY, "Non-printable character! Omitting.");
+				return;
+			}
 			LYXERR(Debug::KEY, "isText() is true, inserting.");
 			func = FuncRequest(LFUN_SELF_INSERT,
 					   FuncRequest::KEYBOARD);
