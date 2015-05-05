@@ -713,11 +713,14 @@ public:
 	///
 	void checkMasterBuffer();
 
-	/// If the document is being saved to a new location, return the
-	/// updated path of an included file relative to the new buffer path
-	/// if possible, otherwise return its absolute path.
+	/// If the document is being saved to a new location and the named file
+	/// exists at the old location, return its updated path relative to the
+	/// new buffer path if possible, otherwise return its absolute path.
 	/// In all other cases, this is a no-op and name is returned unchanged.
-	std::string includedFilePath(std::string const & name) const;
+	/// If a non-empty ext is given, the existence of name.ext is checked
+	/// but the returned path will not contain this extension.
+	std::string includedFilePath(std::string const & name,
+				std::string const & ext = empty_string()) const;
 
 	/// compute statistics between \p from and \p to
 	/// \p from initial position
