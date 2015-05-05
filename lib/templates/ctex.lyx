@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 488
 \begin_document
 \begin_header
 \textclass ctex-article
@@ -82,11 +82,13 @@ status open
 \begin_layout Plain Layout
 这是一份文章模板，如果要使用书籍或报告，请设置文档类为
 \family sans
-book (CTeX)
+book (C\SpecialChar TeX
+)
 \family default
 或者
 \family sans
-report (CTeX)
+report (C\SpecialChar TeX
+)
 \end_layout
 
 \end_inset
@@ -95,7 +97,9 @@ report (CTeX)
 \end_layout
 
 \begin_layout Title
-基于CTeX的LyX文档模板
+基于C\SpecialChar TeX
+的\SpecialChar LyX
+文档模板
 \end_layout
 
 \begin_layout Author
@@ -116,16 +120,20 @@ report (CTeX)
 
 \begin_layout Standard
 本文档基于ctex宏包。它使用UTF8编码，因为UTF8是比较通用的编码。设置编码有两处注意（都可以在菜单中设置）：ctex文档类的选项中需要设置UTF8，语言
-编码也需要改为UTF8。本文档默认输出类型为XeTeX，也就是用XeLaTeX编译为PDF文档，使用Adobe字体，在Ubuntu系统下可成功编译生成PDF。如
-果系统中没有Adobe字体，当然也可以使用普通article类配合任意中文字体，只需要用XeLaTeX编译即可；如果需要引用ctex所做的术语翻译和大量其它为了
-适应中文文档的调整（比如缩进），那么可以在导言区（preamble）中调用：
+编码也需要改为UTF8。本文档默认输出类型为Xe\SpecialChar TeX
+，也就是用Xe\SpecialChar LaTeX
+编译为PDF文档，使用Adobe字体，在Ubuntu系统下可成功编译生成PDF。如果系统中没有Ad
+obe字体，当然也可以使用普通article类配合任意中文字体，只需要用Xe\SpecialChar LaTeX
+编译即可；如果需要引用ctex所做的术语翻译和大量其它为了适应中文文档的调整（比如缩
+进），那么可以在导言区（preamble）中调用：
 \family typewriter
 
 \backslash
 usepackage[UTF8,nofonts]{ctexcap}
 \family default
-；这样，“Section X”就会变成“第X节”。非Windows用户可以尝试用这种方法写中文LyX文档（比如用文泉驿字体，注意中英字体可以分别设置，参见xeC
-JK包）。
+；这样，“Section X”就会变成“第X节”。非Windows用户可以尝试用这种方法写中文\SpecialChar LyX
+文档（比如用文泉驿字体，注意中英字体可以分别设置，参见xeCJK包
+）。
 \end_layout
 
 \begin_layout Section
@@ -144,7 +152,8 @@ http://yihui.name
 
 \end_inset
 
-留言。注意前面已经声明，本文档默认设置为使用Adobe中文字体，如果你是Linux用户，这些字体很可能不存在，这种情况下请使用任意可用的非TeX中文字体。
+留言。注意前面已经声明，本文档默认设置为使用Adobe中文字体，如果你是Linux用户，这些字体很可能不存在，这种情况下请使用任意可用的非\SpecialChar TeX
+中文字体。
 \end_layout
 
 \begin_layout Section
@@ -152,8 +161,10 @@ http://yihui.name
 \end_layout
 
 \begin_layout Standard
-本文档使用article (CTeX)文档类，语言设置为简体中文，编码使用UTF8，字体用Adobe中文字体，输出类型设置为XeTeX。编译的时候中文与英文之间
-会自动加上空格，方便阅读。
+本文档使用article (C\SpecialChar TeX
+)文档类，语言设置为简体中文，编码使用UTF8，字体用Adobe中文字体，输出类型设置为Xe\SpecialChar TeX
+。编译的时候中文与英文之间会自动加上空
+格，方便阅读。
 \end_layout
 
 \end_body
