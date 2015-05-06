@@ -371,6 +371,14 @@ contributors = [
                  "14 August 2008",
                  u"Romanian localization and support for the frletter document class"),
 
+     contributor(u"Georger Araujo",
+                 "georger_br () yahoo ! com ! br",
+                 "GPL",
+                 "pt_BR.po translation for LyX 2.1.3",
+                 "m=143058265303480",
+                 "2 May 2015",
+                 u"Brazilian Portuguese translation"),
+
      contributor(u"João Luis Meloni Assirati",
                  "assirati () nonada ! if ! usp ! br",
                  "GPL",
