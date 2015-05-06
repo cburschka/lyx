@@ -4809,12 +4809,13 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 	// OK, we start from here.
 	for (; from != end; from.forwardPos()) {
 		// We are only interested in text so remove the math CursorSlice.
-		while (from.inMathed()) {
+		// The same is done for insets with disabled spell check.
+		while (from.inMathed() || !from.inset().allowSpellCheck()) {
 			from.pop_back();
 			from.pos()++;
 		}
 		// If from is at the end of the document (which is possible
-		// when leaving the mathed) LyX will crash later otherwise.
+		// when "from" was manipulated) LyX will crash later otherwise.
 		if (from.atEnd() || (!to_end && from >= end))
 			break;
 		to = from;
@@ -4824,7 +4825,6 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 			word_lang = wl;
 			break;
 		}
-
 		// Do not increase progress when from == to, otherwise the word
 		// count will be wrong.
 		if (from != to) {

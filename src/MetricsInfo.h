@@ -117,6 +117,8 @@ public:
 	Change change_;
 	/// Whether the parent is selected as a whole
 	bool selected;
+	/// Whether the spell checker is enabled for the parent
+	bool do_spellcheck;
 	///
 	bool full_repaint;
 	/// Current background color

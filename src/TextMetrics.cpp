@@ -1878,7 +1878,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 			|| rowSlice == bv_->lastRowSlice();
 
 		// Take this opportunity to spellcheck the row contents.
-		if (row_has_changed && lyxrc.spellcheck_continuously) {
+		if (row_has_changed && pi.do_spellcheck && lyxrc.spellcheck_continuously) {
 			text_->getPar(pit).spellCheck();
 		}
 

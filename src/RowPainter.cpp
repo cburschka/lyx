@@ -121,13 +121,15 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 	LASSERT(inset, return);
 	// Backup full_repaint status because some insets (InsetTabular)
 	// requires a full repaint
-	bool pi_full_repaint = pi_.full_repaint;
+	bool const pi_full_repaint = pi_.full_repaint;
+	bool const pi_do_spellcheck = pi_.do_spellcheck;
 
 	pi_.base.font = inset->inheritFont() ? font.fontInfo() :
 		pi_.base.bv->buffer().params().getFont().fontInfo();
 	pi_.ltr_pos = (bidi_.level(pos) % 2 == 0);
 	Change prev_change = change_;
 	pi_.change_ = change_.changed() ? change_ : par_.lookupChange(pos);
+	pi_.do_spellcheck &= inset->allowSpellCheck();
 
 	int const x1 = int(x_);
 	pi_.base.bv->coordCache().insets().add(inset, x1, yo_);
@@ -147,6 +149,7 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 	// Restore full_repaint status.
 	pi_.full_repaint = pi_full_repaint;
 	pi_.change_ = prev_change;
+	pi_.do_spellcheck = pi_do_spellcheck;
 
 #ifdef DEBUG_METRICS
 	int const x2 = x1 + dim.wid;
