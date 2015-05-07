@@ -6,6 +6,7 @@
 #
 # Language <lyxname>
 #	GuiName            "<Gui Name>"
+#	HasGuiSupport      <true|false>
 #	BabelName          <babelname>
 #	PolyglossiaName    <polyglossianame>
 #	PolyglossiaOpts    "<language-specific options>"
@@ -31,6 +32,13 @@
 #
 # * Omitted elements will be treated as empty (if string) or "false"
 #   (if boolean).
+# * When HasGuiSupport is true, the language is candidate to appear in
+#   the list of possible GUI languages in the Preferences dialog. It
+#   will actually appear there only if a corresponding .mo file can be
+#   found among the translations. When several languages correspond to
+#   the same translation -- like English, English (US) and English
+#   (UK) -- try to select the entry that is most generic -- here
+#   English.
 # * The QuoteStyle arguments correspond to the following styles:
 #   - danish:  >>text<<  >text<   (inward guillemets)
 #   - english: ``text''  `text'   (66_99)
@@ -141,6 +149,7 @@ End
 # to switch the language the way of the ArabTeX-package
 Language arabic_arabtex
 	GuiName          "Arabic (ArabTeX)"
+	HasGuiSupport    true
 	BabelName        arabtex
 	QuoteStyle       french
 	Encoding         cp1256
@@ -206,6 +215,7 @@ End
 
 Language bahasa
 	GuiName          "Indonesian"
+	HasGuiSupport    true
 	BabelName        bahasa
 	PolyglossiaName  bahasai
 	QuoteStyle       english
@@ -224,6 +234,7 @@ End
 
 Language basque
 	GuiName          "Basque"
+	HasGuiSupport    true
 	BabelName        basque
 	PolyglossiaName  basque
 	QuoteStyle       french
@@ -246,6 +257,7 @@ End
 
 Language brazilian
 	GuiName          "Portuguese (Brazil)"
+	HasGuiSupport    true
 	BabelName        brazil
 	PolyglossiaName  brazil
 	QuoteStyle       english
@@ -305,6 +317,7 @@ End
 
 Language catalan
 	GuiName          "Catalan"
+	HasGuiSupport    true
 	BabelName        catalan
 	PolyglossiaName  catalan
 	PolyglossiaOpts  "babelshorthands=true"
@@ -316,6 +329,7 @@ End
 # uses CJK package
 Language chinese-simplified
 	GuiName          "Chinese (simplified)"
+	HasGuiSupport    true
 	Encoding         euc-cn
 	QuoteStyle       english
 	LangCode         zh_CN
@@ -325,6 +339,7 @@ End
 # uses CJK package
 Language chinese-traditional
 	GuiName         "Chinese (traditional)"
+	HasGuiSupport    true
 	QuoteStyle       english
 	Encoding        utf8-cjk
 	LangCode        zh_TW
@@ -350,6 +365,7 @@ End
 
 Language czech
 	GuiName          "Czech"
+	HasGuiSupport    true
 	BabelName        czech
 	PolyglossiaName  czech
 	QuoteStyle       german
@@ -359,6 +375,7 @@ End
 
 Language danish
 	GuiName          "Danish"
+	HasGuiSupport    true
 	BabelName        danish
 	PolyglossiaName  danish
 	QuoteStyle       danish
@@ -376,6 +393,7 @@ End
 
 Language dutch
 	GuiName          "Dutch"
+	HasGuiSupport    true
 	BabelName        dutch
 	PolyglossiaName  dutch
 	PolyglossiaOpts  "babelshorthands=true"
@@ -386,6 +404,7 @@ End
 
 Language english
 	GuiName          "English"
+	HasGuiSupport    true
 	BabelName        english
 	PolyglossiaName  english
 	QuoteStyle       english
@@ -434,6 +453,7 @@ End
 
 Language finnish
 	GuiName          "Finnish"
+	HasGuiSupport    true
 	BabelName        finnish
 	PolyglossiaName  finnish
 	QuoteStyle       swedish
@@ -444,6 +464,7 @@ End
 # We redefine \og and \fg (guillemets) for older french language definitions
 Language french
 	GuiName          "French"
+	HasGuiSupport    true
 	BabelName        french
 	PolyglossiaName  french
 	QuoteStyle       french
@@ -459,6 +480,7 @@ End
 
 Language galician
 	GuiName          "Galician"
+	HasGuiSupport    true
 	BabelName        galician
 	PolyglossiaName  galician
 	QuoteStyle       french
@@ -493,6 +515,7 @@ End
 
 Language ngerman
 	GuiName          "German"
+	HasGuiSupport    true
 	BabelName        ngerman
 	PolyglossiaName  german
 	PolyglossiaOpts  "babelshorthands=true"
@@ -532,6 +555,7 @@ End
 
 Language greek
 	GuiName           "Greek"
+	HasGuiSupport     true
 	BabelName         greek
 	PolyglossiaName   greek
 	QuoteStyle        french
@@ -555,6 +579,7 @@ End
 
 Language hebrew
 	GuiName           "Hebrew"
+	HasGuiSupport     true
 	BabelName         hebrew
 	PolyglossiaName   hebrew
 	Encoding          cp1255
@@ -599,6 +624,7 @@ End
 # language. We therefore the name of its hunspell dictionary.
 Language interlingua
 	GuiName          "Interlingua"
+	HasGuiSupport    true
 	BabelName        interlingua
 	PolyglossiaName  interlingua
 	Encoding         iso8859-15
@@ -616,6 +642,7 @@ End
 
 Language italian
 	GuiName          "Italian"
+	HasGuiSupport    true
 	BabelName        italian
 	PolyglossiaName  italian
 	QuoteStyle       french
@@ -630,6 +657,7 @@ End
 # InternalEncoding to true.
 Language japanese
 	GuiName          "Japanese"
+	HasGuiSupport    true
 	BabelName        japanese
 	Encoding         jis-platex
 	LangCode         ja_JP
@@ -729,6 +757,7 @@ End
 
 Language magyar
 	GuiName          "Hungarian"
+	HasGuiSupport    true
 	BabelName        magyar
 	PolyglossiaName  magyar
 	QuoteStyle       polish
@@ -767,6 +796,7 @@ End
 
 Language norsk
 	GuiName          "Norwegian (Bokmaal)"
+	HasGuiSupport    true
 	BabelName        norsk
 	PolyglossiaName  norsk
 	QuoteStyle       french
@@ -776,6 +806,7 @@ End
 
 Language nynorsk
 	GuiName          "Norwegian (Nynorsk)"
+	HasGuiSupport    true
 	BabelName        nynorsk
 	PolyglossiaName  nynorsk
 	QuoteStyle       french
@@ -804,6 +835,7 @@ End
 
 Language polish
 	GuiName          "Polish"
+	HasGuiSupport    true
 	BabelName        polish
 	PolyglossiaName  polish
 	QuoteStyle       polish
@@ -813,6 +845,7 @@ End
 
 Language portuguese
 	GuiName          "Portuguese"
+	HasGuiSupport    true
 	BabelName        portuges
 	PolyglossiaName  portuges
 	QuoteStyle       english
@@ -822,6 +855,7 @@ End
 
 Language romanian
 	GuiName          "Romanian"
+	HasGuiSupport    true
 	BabelName        romanian
 	PolyglossiaName  romanian
 	QuoteStyle       polish
@@ -831,6 +865,7 @@ End
 
 Language russian
 	GuiName          "Russian"
+	HasGuiSupport    true
 	BabelName        russian
 	PolyglossiaName  russian
 	QuoteStyle       french
@@ -867,6 +902,7 @@ End
 
 Language serbian
 	GuiName          "Serbian"
+	HasGuiSupport    true
 	BabelName        serbianc
 	PolyglossiaName  serbian
 	QuoteStyle       german
@@ -887,6 +923,7 @@ End
 
 Language slovak
 	GuiName          "Slovak"
+	HasGuiSupport    true
 	BabelName        slovak
 	PolyglossiaName  slovak
 	QuoteStyle       german
@@ -905,6 +942,7 @@ End
 
 Language spanish
 	GuiName          "Spanish"
+	HasGuiSupport    true
 	BabelName        spanish
 	PolyglossiaName  spanish
 	QuoteStyle       french
@@ -930,6 +968,7 @@ End
 
 Language swedish
 	GuiName          "Swedish"
+	HasGuiSupport    true
 	BabelName        swedish
 	PolyglossiaName  swedish
 	QuoteStyle       swedish
@@ -984,6 +1023,7 @@ End
 
 Language turkish
 	GuiName          "Turkish"
+	HasGuiSupport    true
 	BabelName        turkish
 	PolyglossiaName  turkish
 	QuoteStyle       french
@@ -1008,6 +1048,7 @@ End
 
 Language ukrainian
 	GuiName          "Ukrainian"
+	HasGuiSupport    true
 	BabelName        ukrainian
 	PolyglossiaName  ukrainian
 	QuoteStyle       french

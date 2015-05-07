@@ -2309,19 +2309,16 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 	startCommandED->setValidator(new NoNewLineValidator(startCommandED));
 	endCommandED->setValidator(new NoNewLineValidator(endCommandED));
 
-	uiLanguageCO->clear();
-
-	QAbstractItemModel * language_model = guiApp->languageModel();
-	// FIXME: it would be nice if sorting was enabled/disabled via a checkbox.
-	language_model->sort(0);
 	defaultDecimalPointLE->setInputMask("X; ");
 	defaultDecimalPointLE->setMaxLength(1);
 
 	defaultLengthUnitCO->addItem(lyx::qt_(unit_name_gui[Length::CM]), Length::CM);
 	defaultLengthUnitCO->addItem(lyx::qt_(unit_name_gui[Length::IN]), Length::IN);
 
-	set<string> added;
+	QAbstractItemModel * language_model = guiApp->languageModel();
+	language_model->sort(0);
 	uiLanguageCO->blockSignals(true);
+	uiLanguageCO->clear();
 	uiLanguageCO->addItem(qt_("Default"), toqstr("auto"));
 	for (int i = 0; i != language_model->rowCount(); ++i) {
 		QModelIndex index = language_model->index(i, 0);
@@ -2335,11 +2332,10 @@ PrefLanguage::PrefLanguage(GuiPreferences * form)
 		if (name != form->rc().gui_language
 		    && name != lyxrc.gui_language
 		    && (!Messages::available(lang->code())
-			|| added.find(lang->code()) != added.end()))
-				continue;
-		added.insert(lang->code());
+		        || !lang->hasGuiSupport()))
+			continue;
 		uiLanguageCO->addItem(index.data(Qt::DisplayRole).toString(),
-			index.data(Qt::UserRole).toString());
+		                      index.data(Qt::UserRole).toString());
 	}
 	uiLanguageCO->blockSignals(false);
 }

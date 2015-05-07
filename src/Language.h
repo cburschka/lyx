@@ -33,7 +33,7 @@ class Language {
 public:
 	///
 	Language() : rightToLeft_(false), encoding_(0), internal_enc_(false),
-				 as_babel_options_(false) {}
+				 as_babel_options_(false), has_gui_support_(false) {}
 	/// LyX language name
 	std::string const lang() const { return lang_; }
 	/// Babel language name
@@ -81,6 +81,8 @@ public:
 	std::string const fontenc() const { return fontenc_; }
 	/// This language needs to be passed to babel itself (not the class)
 	bool asBabelOptions() const { return as_babel_options_; }
+	/// This language correspongs to a translation of the GUI
+	bool hasGuiSupport() const { return has_gui_support_; }
 	///
 	bool read(Lexer & lex);
 	///
@@ -127,6 +129,8 @@ private:
 	///
 	bool as_babel_options_;
 	///
+	bool has_gui_support_;
+	///
 	TranslationMap layoutTranslations_;
 };
 
@@ -158,7 +162,6 @@ public:
 	const_iterator begin() const { return languagelist.begin(); }
 	///
 	const_iterator end() const { return languagelist.end(); }
-	///
 
 private:
 	///

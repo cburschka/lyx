@@ -1,14 +1,14 @@
 
 	Localization/Translation FAQ
                 (2007-2011)
-              
+
     by Ran Rutenberg, Pavel Sanda, Michael Gerz
 
 
 PART I - Interface translation
 ------------------------------
 
-This file is mainly intended for those who have no or little experience using 
+This file is mainly intended for those who have no or little experience using
 .po files, but want to contribute by translating the LyX interface (i.e. menu
 and dialog items, console messages) into their native language.
 
@@ -34,10 +34,10 @@ can follow http://www.lyx.org/HowToUseGIT page.
 
 2) HOW DO I EDIT PO FILES?
 
-PO files can be edited with any text editor available for your system (e.g. 
-Vim, NotePad etc.). Yet another option is to use a specialized editor for .po 
-files. You can e.g. use the editors "poEdit" or "jEdit", Linux users can 
-additionally use e.g. "kbabel". Using these editors usually makes things easier 
+PO files can be edited with any text editor available for your system (e.g.
+Vim, NotePad etc.). Yet another option is to use a specialized editor for .po
+files. You can e.g. use the editors "poEdit" or "jEdit", Linux users can
+additionally use e.g. "kbabel". Using these editors usually makes things easier
 as they have many tools to assist the translator.
 
 
@@ -58,16 +58,16 @@ translation for them.
 '&' stands for underlined characters (shortcut) in dialog boxes.
 '|' stands for underlined characters in menus.
 
-These chars should be somehow used in your translations, however you'll have to 
-invent your own working shortcuts for dialog and menu entries and resolve 
-possible conflicts of the same shortcut chars in one menu... 
+These chars should be somehow used in your translations, however you'll have to
+invent your own working shortcuts for dialog and menu entries and resolve
+possible conflicts of the same shortcut chars in one menu...
 
 Note also that there are already used global shortcuts (such as p k x c m s a)
 and you should avoid using these characters for first-level menu shortcuts.
 
-'$' and '%' are usually used as handlers for formatting or variables to be 
-inserted into the strings. Character sequences like %1$s or %1$d MUST also 
-appear in your translations! Please take them exactly as they are or you may 
+'$' and '%' are usually used as handlers for formatting or variables to be
+inserted into the strings. Character sequences like %1$s or %1$d MUST also
+appear in your translations! Please take them exactly as they are or you may
 experience crashes when running LyX.
 
 [[Context]] is used to distinguish otherwise identical strings, which could
@@ -82,7 +82,7 @@ msgstr "Algoritmus \\arabic{theorem}"
 
 5) WHAT IS pocheck.pl AND HOW DO I USE IT?
 
-This is a small script located in the "po" directory of the source that helps 
+This is a small script located in the "po" directory of the source that helps
 you find common errors in your translation. In order to use this script you
 need the script language Perl installed.
 Run ./pocheck.pl -h to see all possible switches.
@@ -94,15 +94,22 @@ In order to test your translation you need to obtain the LyX sources
 (from the git repository) and replace the existing .po with yours.
 Afterwards, you should compile and optionally install LyX (check the
 INSTALL file for your OS). Note that, as of LyX 2.1, it is not
-necessary anymore to install anything. In order to run LyX with your
-translation, change the current language in Preferences dialog or use
-the appropriate LANG variable:
+necessary anymore to install anything.
+
+In order to run LyX with your translation, change the current language
+in Preferences dialog or use the appropriate LANG variable:
 
   On Linux: LANG=xx_CC lyx
   On Windows, you need to change the lyx.bat file and write: set LANG=xx_CC
 
-xx stands for your language code. CC stands for your country code. So to get, 
+xx stands for your language code. CC stands for your country code. So to get,
 e.g., Czech, the code is "cs_CZ".
+
+Another possibility is to use the Preferences dialog to set LyX UI to
+use your language. Note that, as of LyX 2.2, a newly introduced
+language will not appear in the languages combox unless it corresponds
+to an entry of the lib/languages file that has a "HasGuiSupport true"
+property. See this file for more details.
 
 The most comfortable way to see your updated translation while
 editing, is running (in linux) "make xx.gmo" in the po directory to
@@ -113,7 +120,7 @@ For advanced users - if you want to remerge your files against current source:
 - on Linux: execute the command: make update-po
 - on Windows: either build the update-po target in MSVC
               or run the command: msbuild po\update-po.vcxproj
-              (depending on the directory you are in) 
+              (depending on the directory you are in)
 
 
 7) HOW TO CONTRIBUTE MY WORK?
