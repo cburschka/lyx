@@ -264,6 +264,11 @@ void Text::changeDepth(Cursor & cur, DEPTH_CHANGE type)
 void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 {
 	LASSERT(this == cur.text(), return);
+
+	// If there is a selection, record undo before the cursor font is changed.
+	if (cur.selection())
+		cur.recordUndoSelection();
+
 	// Set the current_font
 	// Determine basis font
 	FontInfo layoutfont;
@@ -289,7 +294,6 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 		return;
 
 	// Ok, we have a selection.
-	cur.recordUndoSelection();
 	Font newfont = font;
 
 	if (toggleall) {	
