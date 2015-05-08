@@ -1046,6 +1046,8 @@ void writeArgument(ostream & os, string const & id, Layout::latexarg const & arg
 		lyxWrite(os, arg.font, "Font", 2);
 	if (arg.labelfont != inherit_font)
 		lyxWrite(os, arg.labelfont, "LabelFont", 2);
+	if (!arg.pass_thru_chars.empty())
+		os << "\t\tPassThruChars \"" << to_utf8(arg.pass_thru_chars) << "\"\n";
 	os << "\tEndArgument\n";
 }
 
