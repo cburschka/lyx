@@ -841,6 +841,16 @@ void GuiView::setFocus()
 }
 
 
+bool GuiView::hasFocus() const
+{
+	if (currentWorkArea())
+		return currentWorkArea()->hasFocus();
+	if (currentMainWorkArea())
+		return currentMainWorkArea()->hasFocus();
+	return d.bg_widget_->hasFocus();
+}
+
+
 void GuiView::focusInEvent(QFocusEvent * e)
 {
 	LYXERR(Debug::DEBUG, "GuiView::focusInEvent()" << this);
@@ -1698,6 +1708,16 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		? &currentBufferView()->buffer() : 0;
 	Buffer * doc_buffer = documentBufferView()
 		? &(documentBufferView()->buffer()) : 0;
+
+	/* In LyX/Mac, when a dialog is open, the menus of the
+	   application can still be accessed without giving focus to
+	   the main window. In this case, we want to disable the menu
+	   entries that are buffer-related.
+	 */
+	if (cmd.origin() == FuncRequest::MENU && !hasFocus()) {
+		buf = 0;
+		doc_buffer = 0;
+	}
 
 	// Check whether we need a buffer
 	if (!lyxaction.funcHasFlag(cmd.action(), LyXAction::NoBuffer) && !buf) {

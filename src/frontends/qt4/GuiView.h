@@ -123,6 +123,7 @@ public:
 
 	///
 	void setFocus();
+	bool hasFocus() const;
 
 	///
 	void focusInEvent(QFocusEvent * e);
