@@ -68,8 +68,7 @@ bool MacroData::expand(vector<MathData> const & args, MathData & to) const
 	updateData();
 
 	// Hack. Any inset with a cell would do.
-	static InsetMathSqrt inset(0);
-	inset.setBuffer(const_cast<Buffer &>(*buffer_));
+	InsetMathSqrt inset(const_cast<Buffer *>(buffer_));
 
 	docstring const & definition(display_.empty() ? definition_ : display_);
 	asArray(definition, inset.cell(0));
