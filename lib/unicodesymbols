@@ -2397,8 +2397,48 @@
 #
 # control pictures
 #
+# The symbols using ascii.sty are commented because the visual appearance
+# is different from the one in the official unicode charts, although the
+# the symbols are semantically correct.
+#0x2400 "{\\NUL}"                  "ascii" "" "" "" # SYMBOL FOR NULL
+#0x2401 "{\\SOH}"                  "ascii" "" "" "" # SYMBOL FOR START OF HEADING
+#0x2402 "{\\STX}"                  "ascii" "" "" "" # SYMBOL FOR START OF TEXT
+#0x2403 "{\\ETX}"                  "ascii" "" "" "" # SYMBOL FOR END OF TEXT
+#0x2404 "{\\EOT}"                  "ascii" "" "" "" # SYMBOL FOR END OF TRANSMISSION
+#0x2405 "{\\ENQ}"                  "ascii" "" "" "" # SYMBOL FOR ENQUIRY
+#0x2406 "{\\ACK}"                  "ascii" "" "" "" # SYMBOL FOR ACKNOWLEDGE
+#0x2407 "{\\BEL}"                  "ascii" "" "" "" # SYMBOL FOR BELL
+#0x2408 "{\\BS}"                   "ascii" "" "" "" # SYMBOL FOR BACKSPACE
+#0x2409 "{\\HT}"                   "ascii" "" "" "" # SYMBOL FOR HORIZONTAL TABULATION
+#0x240a "{\\LT}"                   "ascii" "" "" "" # SYMBOL FOR LINE FEED
+#0x240b "{\\VT}"                   "ascii" "" "" "" # SYMBOL FOR VERTICAL TABULATION
+#0x240c "{\\FF}"                   "ascii" "" "" "" # SYMBOL FOR FORM FEED
+#0x240d "{\\CR}"                   "ascii" "" "" "" # SYMBOL FOR CARRIAGE RETURN
+#0x240e "{\\SO}"                   "ascii" "" "" "" # SYMBOL FOR SHIFT OUT
+#0x240f "{\\SI}"                   "ascii" "" "" "" # SYMBOL FOR SHIFT IN
+#0x2410 "{\\DLE}"                  "ascii" "" "" "" # SYMBOL FOR DATA LINK ESCAPE
+#0x2411 "{\\DCa}"                  "ascii" "" "" "" # SYMBOL FOR DEVICE CONTROL ONE
+#0x2412 "{\\DCb}"                  "ascii" "" "" "" # SYMBOL FOR DEVICE CONTROL TWO
+#0x2413 "{\\DCc}"                  "ascii" "" "" "" # SYMBOL FOR DEVICE CONTROL THREE
+#0x2414 "{\\DCd}"                  "ascii" "" "" "" # SYMBOL FOR DEVICE CONTROL FOUR
+#0x2415 "{\\NAK}"                  "ascii" "" "" "" # SYMBOL FOR NEGATIVE ACKNOWLEDGE
+#0x2416 "{\\SYN}"                  "ascii" "" "" "" # SYMBOL FOR SYNCHRONOUS IDLE
+#0x2417 "{\\ETB}"                  "ascii" "" "" "" # SYMBOL FOR END OF TRANSMISSION BLOCK
+#0x2418 "{\\CAN}"                  "ascii" "" "" "" # SYMBOL FOR CANCEL
+#0x2419 "{\\EM}"                   "ascii" "" "" "" # SYMBOL FOR END OF MEDIUM
+#0x241a "{\\SUB}"                  "ascii" "" "" "" # SYMBOL FOR SUBSTITUTE
+#0x241b "{\\ESC}"                  "ascii" "" "" "" # SYMBOL FOR ESCAPE
+#0x241c "{\\FS}"                   "ascii" "" "" "" # SYMBOL FOR FILE SEPARATOR
+#0x241d "{\\GS}"                   "ascii" "" "" "" # SYMBOL FOR GROUP SEPARATOR
+#0x241e "{\\RS}"                   "ascii" "" "" "" # SYMBOL FOR RECORD SEPARATOR
+#0x241f "{\\US}"                   "ascii" "" "" "" # SYMBOL FOR UNIT SEPARATOR
+#0x2420 ""                         "" "" "" "" # SYMBOL FOR SPACE
+#0x2421 "{\\DEL}"                  "ascii" "" "" "" # SYMBOL FOR DELETE
 0x2422 "\\textblank"              "textcomp" "" # BLANK SYMBOL
 0x2423 "\\textvisiblespace"       "textcomp" "" # OPEN BOX
+#0x2424 ""                         "" "" "" "" # SYMBOL FOR NEWLINE
+#0x2425 ""                         "" "" "" "" # SYMBOL FOR DELETE FORM TWO
+#0x2426 ""                         "" "" "" "" # SYMBOL FOR SUBSTITUTE FORM TWO
 #
 # box drawing
 #
