@@ -4808,14 +4808,13 @@ int Buffer::spellCheck(DocIterator & from, DocIterator & to,
 	DocIterator const end = to_end ? doc_iterator_end(this) : to;
 	// OK, we start from here.
 	for (; from != end; from.forwardPos()) {
-		// We are only interested in text so remove the math CursorSlice.
-		// The same is done for insets with disabled spell check.
-		while (from.inMathed() || !from.inset().allowSpellCheck()) {
+		// This skips all insets with spell check disabled.
+		while (!from.allowSpellCheck()) {
 			from.pop_back();
 			from.pos()++;
 		}
 		// If from is at the end of the document (which is possible
-		// when "from" was manipulated) LyX will crash later otherwise.
+		// when "from" was changed above) LyX will crash later otherwise.
 		if (from.atEnd() || (!to_end && from >= end))
 			break;
 		to = from;

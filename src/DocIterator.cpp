@@ -482,6 +482,19 @@ bool DocIterator::hasPart(DocIterator const & it) const
 }
 
 
+bool DocIterator::allowSpellCheck() const
+{
+	/// spell check is disabled if the iterator position
+	/// is inside of an inset which disables the spell checker
+	size_t const n = depth();
+	for (size_t i = 0; i < n; ++i) {
+		if (!slices_[i].inset_->allowSpellCheck())
+			return false;
+	}
+	return true;
+}
+
+
 void DocIterator::updateInsets(Inset * inset)
 {
 	// this function re-creates the cache of inset pointers.

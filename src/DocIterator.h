@@ -75,6 +75,9 @@ public:
 	/// is this the last possible position?
 	bool atLastPos() const { return pit() == lastpit() && pos() == lastpos(); }
 
+	/// checks the cursor slices for disabled spell checker insets
+	bool allowSpellCheck() const;
+
 	//
 	// access to slice at tip
 	//
