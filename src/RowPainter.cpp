@@ -331,7 +331,7 @@ void RowPainter::paintFromPos(pos_type & vpos, bool changed)
 			new_word = par_.isSameSpellRange(pos, cpos) ;
 		}
 		if (!new_word && pi_.do_spellcheck)
-			paintMisspelledMark(orig_x, changed, font);
+			paintMisspelledMark(orig_x, changed);
 	}
 }
 
