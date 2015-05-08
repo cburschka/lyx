@@ -65,6 +65,9 @@
 // use libc++ provided by llvm instead of GNU libstdc++
 #cmakedefine USE_LLVM_LIBCPP 1
 
+// use GNU libstdc++ with C++11 ABI
+#cmakedefine USE_GLIBCXX_CXX11_ABI 1
+
 #cmakedefine Z_PREFIX 1
 
 ${Include_used_spellchecker}

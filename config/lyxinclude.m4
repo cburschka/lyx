@@ -159,6 +159,20 @@ AC_DEFUN([LYX_LIB_STDCXX],
 ])
 
 
+dnl Usage: LYX_LIB_STDCXX_CXX11_ABI: set lyx_cv_lib_stdcxx_cxx11_abi to yes
+dnl        if the STL library is GNU libstdc++ and the C++11 ABI is used.
+AC_DEFUN([LYX_LIB_STDCXX_CXX11_ABI],
+[AC_CACHE_CHECK([whether STL is libstdc++ using the C++11 ABI],
+               [lyx_cv_lib_stdcxx_cxx11_abi],
+[AC_TRY_COMPILE([#include<vector>], [
+#if ! defined(_GLIBCXX_USE_CXX11_ABI) || ! _GLIBCXX_USE_CXX11_ABI
+	    this is not libstdc++ using the C++11 ABI
+#endif
+],
+[lyx_cv_lib_stdcxx_cxx11_abi=yes], [lyx_cv_lib_stdcxx_cxx11_abi=no])])
+])
+
+
 AC_DEFUN([LYX_PROG_CXX],
 [AC_REQUIRE([AC_PROG_CXX])
 AC_REQUIRE([AC_PROG_CXXCPP])
@@ -166,10 +180,15 @@ AC_REQUIRE([AC_PROG_CXXCPP])
 AC_LANG_PUSH(C++)
 LYX_PROG_CLANG
 LYX_LIB_STDCXX
+LYX_LIB_STDCXX_CXX11_ABI
 AC_LANG_POP(C++)
 
 if test $lyx_cv_lib_stdcxx = "yes" ; then
-  AC_DEFINE(STD_STRING_USES_COW, 1, [std::string uses copy-on-write])
+  if test $lyx_cv_lib_stdcxx_cxx11_abi = "yes" ; then
+    AC_DEFINE(USE_GLIBCXX_CXX11_ABI, 1, [use GNU libstdc++ with C++11 ABI])
+  else
+    AC_DEFINE(STD_STRING_USES_COW, 1, [std::string uses copy-on-write])
+  fi
 else
   if test $lyx_cv_prog_clang = "yes" ; then
     AC_DEFINE(USE_LLVM_LIBCPP, 1, [use libc++ provided by llvm instead of GNU libstdc++])

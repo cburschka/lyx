@@ -137,7 +137,20 @@ check_cxx_source_compiles(
 		return(0);
 	}
 	"
-STD_STRING_USES_COW)
+lyx_cv_lib_stdcxx)
+
+# Check whether STL is libstdc++ with C++11 ABI
+check_cxx_source_compiles(
+	"
+	#include <vector>
+	int main() {
+	#if ! defined(_GLIBCXX_USE_CXX11_ABI) || ! _GLIBCXX_USE_CXX11_ABI
+		this is not libstdc++ using the C++11 ABI
+	#endif
+		return(0);
+	}
+	"
+USE_GLIBCXX_CXX11_ABI)
 
 check_cxx_source_compiles(
 	"
@@ -151,7 +164,13 @@ check_cxx_source_compiles(
 lyx_cv_prog_clang)
 
 set(USE_LLVM_LIBCPP)
-if(NOT STD_STRING_USES_COW)
+set(STD_STRING_USES_COW)
+set(USE_GLIBCXX_CXX11_ABI)
+if(lyx_cv_lib_stdcxx)
+  if(NOT USE_GLIBCXX_CXX11_ABI)
+    set(STD_STRING_USES_COW 1)
+  endif()
+else()
   if(lyx_cv_prog_clang)
     # use libc++ provided by llvm instead of GNU libstdc++
     set(USE_LLVM_LIBCPP 1)

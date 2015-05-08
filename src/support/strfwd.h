@@ -29,7 +29,10 @@ namespace lyx { typedef boost::uint32_t char_type; }
 #endif
 
 // Forward definitions do not work with libc++
-#ifdef USE_LLVM_LIBCPP
+// For gcc5 with the new std::string ABI forward declarations would work in
+// principle, but I am not sure whether we want non-standard
+// "namespace __cxx11" in our sources.
+#if defined(USE_LLVM_LIBCPP) || defined(USE_GLIBCXX_CXX11_ABI)
 #include <string>
 #else
 
