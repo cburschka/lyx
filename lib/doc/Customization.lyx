@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 486
+\lyxformat 488
 \begin_document
 \begin_header
 \textclass scrbook
@@ -11391,6 +11391,53 @@ status collapsed
 , this argument is automatically inserted when the respective style is selected.
  Currently, only one argument per style\SpecialChar breakableslash
 layout can be automatically inserted.
+\change_inserted -712698321 1431070519
+
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1431070588
+
+\lang ngerman
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1431070522
+PassThruChars
+\end_layout
+
+\end_inset
+
+
+\lang english
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1431070522
+string of characters
+\end_layout
+
+\end_inset
+
+]
+\family typewriter
+ 
+\family default
+Defines individual characters that should be output in raw form, meaning
+ without special translations that \SpecialChar LaTeX
+ would require.
+ Note that, contrary to PassThru, this needs to be explicitly defined for
+ arguments.
+ That is, arguments do not inherit PassThruChars from their parent inset
+ or layout.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
