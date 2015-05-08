@@ -97,6 +97,8 @@ private:
 	std::string decoration_;
 	///
 	bool pass_thru_;
+	///
+	docstring pass_thru_chars_;
 
 protected:
 	/// \name Protected functions inherited from Inset class

@@ -104,6 +104,7 @@ public:
 		FontInfo font;
 		FontInfo labelfont;
 		bool autoinsert;
+		docstring pass_thru_chars;
 	};
 	///
 	typedef std::map<std::string, latexarg> LaTeXArgMap;

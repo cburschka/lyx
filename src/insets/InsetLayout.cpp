@@ -620,6 +620,9 @@ void InsetLayout::readArgument(Lexer & lex)
 			arg.font = lyxRead(lex, arg.font);
 		} else if (tok == "labelfont") {
 			arg.labelfont = lyxRead(lex, arg.labelfont);
+		} else if (tok == "passthruchars") {
+			lex.next();
+			arg.pass_thru_chars = lex.getDocString();
 		} else {
 			lex.printError("Unknown tag");
 			error = true;

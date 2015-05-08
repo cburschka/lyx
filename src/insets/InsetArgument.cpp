@@ -39,7 +39,7 @@ namespace lyx {
 InsetArgument::InsetArgument(Buffer * buf, string const & name)
     : InsetCollapsable(buf), name_(name), labelstring_(docstring()),
       font_(inherit_font), labelfont_(inherit_font), decoration_(string()),
-      pass_thru_(false)
+      pass_thru_(false), pass_thru_chars_(docstring())
 {}
 
 
@@ -112,6 +112,7 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 		font_ = (*lait).second.font;
 		labelfont_ = (*lait).second.labelfont;
 		decoration_ = (*lait).second.decoration;
+		pass_thru_chars_ = (*lait).second.pass_thru_chars;
 	} else {
 		labelstring_ = _("Unknown Argument");
 		tooltip_ = _("Argument not known in this Layout. Will be supressed in the output.");
@@ -268,6 +269,8 @@ void InsetArgument::latexArgument(otexstream & os,
 	odocstringstream ss;
 	otexstream ots(ss, texrow);
 	OutputParams runparams = runparams_in;
+	if (!pass_thru_chars_.empty())
+		runparams.pass_thru_chars += pass_thru_chars_;
 	InsetText::latex(ots, runparams);
 	docstring str = ss.str();
 	docstring const sep = str.empty() ? docstring() : from_ascii(", ");
