@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2014-11-10 03:10+0100\n"
-"PO-Revision-Date: 2015-05-05 12:53+0300\n"
+"PO-Revision-Date: 2015-05-08 20:39+0300\n"
 "Last-Translator: Hatim Alahmady <Dr.hatim@hotmail.com>\n"
 "Language-Team: Hatim Alahmady\n"
 "Language: ar\n"
@@ -2592,7 +2592,7 @@ msgstr "تصدير إلى LaTeX/Docbook لكن بدون طباعة"
 
 #: src/frontends/qt4/ui/NoteUi.ui:73
 msgid "&Comment"
-msgstr "&تلميح"
+msgstr "&تعليق"
 
 #: src/frontends/qt4/ui/NoteUi.ui:80
 msgid "Print as grey text"
@@ -3165,7 +3165,7 @@ msgstr "مس&ح كل معلومات الجلسة"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:85
 msgid "Backup && saving"
-msgstr "نسخ احتياطي && حفظ"
+msgstr "حفظ && نسخ احتياطي"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:94
 msgid "Backup &original documents when saving"
@@ -3283,7 +3283,7 @@ msgstr "كامل الشاشة"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:174
 msgid "&Hide toolbars"
-msgstr "&اخفاء شريط الادوات"
+msgstr "&إخفاء شريط الأدوات"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:181
 msgid "Hide scr&ollbar"
@@ -3299,7 +3299,7 @@ msgstr "إخفاء شريط القائمة"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:202
 msgid "Hide sta&tusbar"
-msgstr "إخفاء شريط& الجدولة"
+msgstr "إخفاء شريط& الحالة"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:209
 msgid "&Limit text width"
@@ -3999,11 +3999,11 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:41
 msgid "If unchecked, notes and comments will be excluded from spell checking"
-msgstr "عدم التعليم, يؤدي إلى تجاهل التدقيق الإملائي للملاحظات والتلميحات"
+msgstr "عدم التعليم, يؤدي إلى تجاهل التدقيق الإملائي للملاحظات والتعليقات"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:44
 msgid "Spellcheck &notes and comments"
-msgstr "تدقيق& إملائي للملاحظات والتلميحات"
+msgstr "تدقيق& إملائي للملاحظات والتعليقات"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:51
 msgid "&Spellchecker engine:"
@@ -4072,7 +4072,7 @@ msgid ""
 "Checking this allows the automatic display of helpful comments for insets in "
 "the main work area of an edited document"
 msgstr ""
-"التأشير على هذا الخيار يسمح بعرض التلميحات المساعدة للأدوات في منطقة العمل "
+"التأشير على هذا الخيار يسمح بعرض التعليقات المساعدة للأدوات في منطقة العمل "
 "الرئيسية أثناء تعديل مستند"
 
 #: src/frontends/qt4/ui/PrefUi.ui:141
@@ -5443,7 +5443,7 @@ msgstr "الملاحظة:"
 
 #: lib/layouts/AEA.layout:138
 msgid "Table Notes"
-msgstr "ملاحظات الجدول"
+msgstr "ملاحظة الجدول"
 
 #: lib/layouts/AEA.layout:142
 msgid "Table Note"
@@ -5776,14 +5776,14 @@ msgstr "اقتراح"
 #: lib/layouts/theorems-chap-bytype.module:174
 #: lib/layouts/theorems-sec-bytype.module:134
 msgid "Remark"
-msgstr "تعليق"
+msgstr "تنبيه"
 
 #: lib/layouts/AEA.layout:276 lib/layouts/ijmpc.layout:363
 #: lib/layouts/ijmpd.layout:372 lib/layouts/theorems-ams-bytype.inc:270
 #: lib/layouts/theorems-bytype.inc:246
 #: lib/layouts/theorems-without-preamble.inc:318
 msgid "Remark \\theremark."
-msgstr "تعليق \\theremark."
+msgstr "تنبيه \\theremark."
 
 #: lib/layouts/AEA.layout:282 lib/layouts/llncs.layout:419
 #: lib/layouts/svglobal3.layout:86
@@ -5847,7 +5847,7 @@ msgstr "قياسي في العنوان"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:31
 msgid "Author Footnote"
-msgstr ""
+msgstr "تذييل المؤلف"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:37
 msgid "Author foot"
@@ -6646,7 +6646,7 @@ msgstr "مراجع.---"
 
 #: lib/layouts/aastex.layout:471
 msgid "TableComments"
-msgstr "تلميحات الجدول"
+msgstr "تعليقات الجدول"
 
 #: lib/layouts/aastex.layout:483
 msgid "Note. ---"
@@ -6663,11 +6663,11 @@ msgstr "ملاحظة الجدول:"
 #: lib/layouts/aastex.layout:506
 #, fuzzy
 msgid "tablenotemark"
-msgstr "خط الجدول"
+msgstr "علامة ملاحظة جدول"
 
 #: lib/layouts/aastex.layout:510
 msgid "tablenote mark"
-msgstr ""
+msgstr "علامة ملاحظة جدول"
 
 #: lib/layouts/aastex.layout:528
 msgid "FigCaption"
@@ -7292,9 +7292,8 @@ msgid "AuthorNote"
 msgstr "ملاحظة المؤلف"
 
 #: lib/layouts/apa6.layout:293
-#, fuzzy
 msgid "Author Note:"
-msgstr "معلومات المؤلف:"
+msgstr "ملاحظة المؤلف:"
 
 #: lib/layouts/apa6.layout:307 lib/layouts/egs.layout:355
 msgid "Journal"
@@ -7800,7 +7799,7 @@ msgstr "عنونة"
 
 #: lib/layouts/beamer.layout:899
 msgid "Short title which appears in the sidebar/header"
-msgstr ""
+msgstr "مختصر العنوان كما سيظهر في الشريط/العلوي"
 
 #: lib/layouts/beamer.layout:908
 msgid "Title (Plain Frame)"
@@ -7812,11 +7811,11 @@ msgstr "عنوان فرعي قصير|S"
 
 #: lib/layouts/beamer.layout:931
 msgid "Short subtitle which appears in the sidebar/header"
-msgstr ""
+msgstr "العنوان الفرعي كما سيظهر في الشريط/العلوي"
 
 #: lib/layouts/beamer.layout:954
 msgid "Short author which appears in the sidebar/header"
-msgstr ""
+msgstr "مختصر المؤلف الذي سيظهر في الشريط/العلوي"
 
 #: lib/layouts/beamer.layout:975
 msgid "Short Institute|S"
@@ -7824,7 +7823,7 @@ msgstr "مختصر المنصب|S"
 
 #: lib/layouts/beamer.layout:976
 msgid "Short institute which appears in the sidebar/header"
-msgstr ""
+msgstr "مختصر المنصب الذي سيظهر في الشريط/العلوي"
 
 #: lib/layouts/beamer.layout:984
 msgid "InstituteMark"
@@ -7836,7 +7835,7 @@ msgstr "تاريخ قصير|S"
 
 #: lib/layouts/beamer.layout:1019
 msgid "Short date which appears in the sidebar/header"
-msgstr ""
+msgstr "مختصر التاريخ الذي سيظهر في الشريط/العلوي"
 
 #: lib/layouts/beamer.layout:1027 lib/layouts/beamerposter.layout:46
 msgid "TitleGraphic"
@@ -7995,7 +7994,7 @@ msgstr "كتابة النص الافتراضي هنا"
 
 #: lib/layouts/beamer.layout:1491
 msgid "Beamer Note"
-msgstr ""
+msgstr "ملاحظة Beamer"
 
 #: lib/layouts/beamer.layout:1508
 msgid "Note Options"
@@ -8942,7 +8941,7 @@ msgstr "مشكلة \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:403
 msgid "Remark \\arabic{theorem}"
-msgstr "تعليق \\arabic{theorem}"
+msgstr "تنبيه \\arabic{theorem}"
 
 #: lib/layouts/elsart.layout:410
 msgid "Note \\arabic{theorem}"
@@ -8981,22 +8980,20 @@ msgid "End frontmatter"
 msgstr "بدء موضوع نهائي"
 
 #: lib/layouts/elsarticle.layout:103
-#, fuzzy
 msgid "Titlenotemark"
-msgstr "حاشية"
+msgstr "علامة ملاحظة عنوان"
 
 #: lib/layouts/elsarticle.layout:108
-#, fuzzy
 msgid "Titlenote mark"
-msgstr "حاشية"
+msgstr "علامة ملاحظة عنوان"
 
 #: lib/layouts/elsarticle.layout:126
 msgid "Title footnote"
-msgstr "عنوان الهامش"
+msgstr "عنوان تذييل"
 
 #: lib/layouts/elsarticle.layout:133
 msgid "Footnote Label"
-msgstr "ملصق التذييل"
+msgstr "ملصق تذييل"
 
 #: lib/layouts/elsarticle.layout:134
 msgid "Label you refer to in the title"
@@ -9035,14 +9032,12 @@ msgid "Label you refer to for an author"
 msgstr ""
 
 #: lib/layouts/elsarticle.layout:206
-#, fuzzy
 msgid "CorAuthormark"
-msgstr "اربعة مؤلفين"
+msgstr "علامة المؤلف الرابع"
 
 #: lib/layouts/elsarticle.layout:209
-#, fuzzy
 msgid "CorAuthor mark"
-msgstr "بريد الكتروني المؤلف"
+msgstr "علامة المؤلف الرابع"
 
 #: lib/layouts/elsarticle.layout:216
 msgid "Corresponding author"
@@ -9853,11 +9848,11 @@ msgstr "المتطلب  #."
 
 #: lib/layouts/heb-article.layout:97
 msgid "Remarks"
-msgstr "تعليقات"
+msgstr "تنبيهات"
 
 #: lib/layouts/heb-article.layout:100
 msgid "Remarks #."
-msgstr "تعليق #."
+msgstr "تنبيه #."
 
 #: lib/layouts/heb-article.layout:123 lib/layouts/ijmpc.layout:340
 #: lib/layouts/ijmpd.layout:343
@@ -10080,7 +10075,7 @@ msgstr "موضوعي"
 #: lib/layouts/iopart.layout:94 lib/layouts/stdinsets.inc:80
 #: lib/layouts/pdfcomment.module:126 lib/layouts/pdfcomment.module:163
 msgid "Comment"
-msgstr "تلميح"
+msgstr "تعليق"
 
 #: lib/layouts/iopart.layout:106
 msgid "Paper"
@@ -10407,7 +10402,7 @@ msgstr "سؤال #."
 
 #: lib/layouts/llncs.layout:415
 msgid "Remark #."
-msgstr "تعليق #."
+msgstr "تنبيه #."
 
 #: lib/layouts/llncs.layout:422
 msgid "Solution #."
@@ -10687,11 +10682,11 @@ msgstr "مدخل:"
 
 #: lib/layouts/moderncv.layout:358
 msgid "ItemWithComment"
-msgstr "تعليق مع تلميح"
+msgstr "مادة مع تعليق"
 
 #: lib/layouts/moderncv.layout:361
 msgid "Item with Comment:"
-msgstr "تعليق مع تلميح"
+msgstr "مادة مع تعليق:"
 
 #: lib/layouts/moderncv.layout:371 lib/layouts/moderncv.layout:372
 msgid "Text"
@@ -10715,11 +10710,11 @@ msgstr "بند مزدوج:"
 
 #: lib/layouts/moderncv.layout:402
 msgid "Left Summary"
-msgstr "موجز يسار"
+msgstr "موجز أيسر"
 
 #: lib/layouts/moderncv.layout:403
 msgid "Left summary"
-msgstr "موجز يسار"
+msgstr "موجز أيسر"
 
 #: lib/layouts/moderncv.layout:407
 msgid "Left Text"
@@ -10731,21 +10726,21 @@ msgstr "نص ايسر"
 
 #: lib/layouts/moderncv.layout:412
 msgid "Right Summary"
-msgstr "موجز يمين"
+msgstr "موجز أيمن"
 
 #: lib/layouts/moderncv.layout:413
 msgid "Right summary"
-msgstr "رأس يمين"
+msgstr "موجز أيمن"
 
 #: lib/layouts/moderncv.layout:417
 #, fuzzy
 msgid "DoubleListItem"
-msgstr "بند مزدوج"
+msgstr "قائمة مزدوجة للمادة"
 
 #: lib/layouts/moderncv.layout:420
 #, fuzzy
 msgid "Double List Item:"
-msgstr "بند مزدوج:"
+msgstr "قائمة مزدوجة لمادة:"
 
 #: lib/layouts/moderncv.layout:425
 msgid "First Item"
@@ -11587,14 +11582,13 @@ msgstr ""
 
 #: lib/layouts/svglobal.layout:67 lib/layouts/svjog.layout:71
 #: lib/layouts/svprobth.layout:101
-#, fuzzy
 msgid "Headnote"
-msgstr "تعليق ختامي"
+msgstr "رؤوس أقلام"
 
 #: lib/layouts/svglobal.layout:81 lib/layouts/svjog.layout:85
 #: lib/layouts/svprobth.layout:115
 msgid "Headnote (optional):"
-msgstr "ملاحظة الرأس (اختياري):"
+msgstr "رؤوس أقلام (اختياري):"
 
 #: lib/layouts/svglobal.layout:90 lib/layouts/svglobal.layout:92
 #: lib/layouts/svjog.layout:94 lib/layouts/svjog.layout:96
@@ -11781,9 +11775,8 @@ msgstr "كتاب Tufte"
 
 #: lib/layouts/tufte-book.layout:81 lib/layouts/scrclass.inc:129
 #: lib/layouts/stdsections.inc:63
-#, fuzzy
 msgid "The chapter as it appears in the table of contents/running headers"
-msgstr "العنوان كما يظهر في الوثيقة"
+msgstr ""
 
 #: lib/layouts/tufte-book.layout:130
 msgid "Sidenote"
@@ -12291,7 +12284,7 @@ msgstr "\\Alph{فصل}"
 
 #: lib/layouts/numreport.inc:40
 msgid "\\arabic{footnote}"
-msgstr ""
+msgstr "\\arabic{footnote}"
 
 #: lib/layouts/numrevtex.inc:9
 msgid "\\Roman{section}."
@@ -12709,7 +12702,7 @@ msgstr "تدريب \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:239 lib/layouts/theorems.inc:239
 msgid "Remark \\thetheorem."
-msgstr "تعليق \\thetheorem."
+msgstr "تنبيه \\thetheorem."
 
 #: lib/layouts/theorems-ams.inc:264 lib/layouts/theorems.inc:264
 msgid "Claim \\thetheorem."
@@ -12745,7 +12738,7 @@ msgstr "تمرين*"
 
 #: lib/layouts/theorems-order.inc:64 lib/layouts/theorems-starred.inc:228
 msgid "Remark*"
-msgstr "تعليق*"
+msgstr "تنبيه*"
 
 #: lib/layouts/theorems-order.inc:70 lib/layouts/theorems-starred.inc:253
 msgid "Claim*"
@@ -12773,7 +12766,7 @@ msgstr "تمرين*"
 
 #: lib/layouts/theorems-starred.inc:231
 msgid "Remark."
-msgstr "تعليق."
+msgstr "تنبيه."
 
 #: lib/layouts/theorems-without-preamble.inc:41
 msgid "Name/Title"
@@ -12818,7 +12811,7 @@ msgstr "جزء \\theproperty."
 #: lib/layouts/theorems-without-preamble.inc:399
 #: lib/layouts/theorems-ams-extended-bytype.module:202
 msgid "Note \\thenote."
-msgstr "ملحوظة \\thenote."
+msgstr "ملاحظة \\thenote."
 
 #: lib/layouts/algorithm2e.module:2
 msgid "Algorithm2e"
@@ -13240,7 +13233,7 @@ msgstr ""
 
 #: lib/layouts/fixme.module:148 lib/layouts/fixme.module:189
 msgid "Insert a summary of the FIXME note here"
-msgstr ""
+msgstr "إدراج موجز ملاحظة FIXME هنا"
 
 #: lib/layouts/fixme.module:153
 msgid "Fixme Warning (Multipar)"
@@ -13651,9 +13644,8 @@ msgid "Number of Columns"
 msgstr "عدد الأعمدة"
 
 #: lib/layouts/multicol.module:20
-#, fuzzy
 msgid "Insert the number of columns here"
-msgstr "لم يتم تغيير رقم العمود في '%1$s'"
+msgstr "أدرج عدد الأعمدة هنا"
 
 #: lib/layouts/multicol.module:26
 #, fuzzy
@@ -13694,9 +13686,8 @@ msgid "Allows to use Noweb as a literate programming tool."
 msgstr ""
 
 #: lib/layouts/pdfcomment.module:2
-#, fuzzy
 msgid "PDF Comments"
-msgstr "تلميح"
+msgstr "تعليق PDF"
 
 #: lib/layouts/pdfcomment.module:6
 msgid ""
@@ -13709,26 +13700,24 @@ msgid "Define Avatar"
 msgstr ""
 
 #: lib/layouts/pdfcomment.module:19
-#, fuzzy
 msgid "PDF-comment"
-msgstr "APLcomment"
+msgstr "تعليق-PDF"
 
 #: lib/layouts/pdfcomment.module:26
 msgid "PDF-comment avatar:"
 msgstr ""
 
 #: lib/layouts/pdfcomment.module:29
-#, fuzzy
 msgid "Name of the Avatar"
-msgstr "اسم المؤلف"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:40
 msgid "Define PDF-Comment Style"
-msgstr ""
+msgstr "تعيين أسلوب تعليق-PDF"
 
 #: lib/layouts/pdfcomment.module:43
 msgid "PDF-comment style:"
-msgstr "أسلوب PDF-comment:"
+msgstr "أسلوب تعليق-PDF:"
 
 #: lib/layouts/pdfcomment.module:46
 msgid "Name of the style"
@@ -13736,11 +13725,11 @@ msgstr "اسم الأسلوب"
 
 #: lib/layouts/pdfcomment.module:51
 msgid "Define PDF-Comment List Style"
-msgstr "تعيين أسلوب قائمة PDF-comment"
+msgstr "تعيين أسلوب قائمة تعليق-PDF"
 
 #: lib/layouts/pdfcomment.module:54
 msgid "Definition of PDF-comment list style:"
-msgstr ""
+msgstr "تحديد أسلوب قائمة تعليق-PDF :"
 
 #: lib/layouts/pdfcomment.module:57
 msgid "Name of the list style"
@@ -13748,15 +13737,15 @@ msgstr "اسم أسلوب القائمة"
 
 #: lib/layouts/pdfcomment.module:62
 msgid "Set PDF-Comment List Style"
-msgstr "ضبط أسلوب قائمة PDF-Comment"
+msgstr "ضبط أسلوب قائمة تعليق-PDF"
 
 #: lib/layouts/pdfcomment.module:65
 msgid "PDF-comment list style:"
-msgstr ""
+msgstr "أسلوب قائمة تعليق-PDF :"
 
 #: lib/layouts/pdfcomment.module:69
 msgid "PDF-Comment-Setup"
-msgstr ""
+msgstr "إعداد-تعليق-PDF"
 
 #: lib/layouts/pdfcomment.module:73
 msgid "PDF (Setup)"
@@ -13764,7 +13753,7 @@ msgstr "PDF (إعداد)"
 
 #: lib/layouts/pdfcomment.module:81
 msgid "PDF-Comment setup options"
-msgstr "خيارات إعداد PDF-comment"
+msgstr "خيارات إعداد تعليق-PDF"
 
 #: lib/layouts/pdfcomment.module:82 lib/layouts/pdfcomment.module:105
 #: lib/layouts/pdfcomment.module:221
@@ -13773,153 +13762,131 @@ msgstr ""
 
 #: lib/layouts/pdfcomment.module:83
 msgid "Insert PDF-Comment setup options here (see the pdfcomment manual)"
-msgstr ""
+msgstr "إدراج خيارات إعداد تعليق-PDF هنا (أنظر دليل pdfcomment)"
 
 #: lib/layouts/pdfcomment.module:92
 msgid "PDF-Annotation"
-msgstr "PDF-حاشية"
+msgstr "حاشية-PDF"
 
 #: lib/layouts/pdfcomment.module:96 src/frontends/qt4/GuiClipboard.cpp:174
 msgid "PDF"
 msgstr "PDF"
 
 #: lib/layouts/pdfcomment.module:104
-#, fuzzy
 msgid "PDFComment Options"
-msgstr "إعدادات العمود"
+msgstr "خيارات تعليق PDF"
 
 #: lib/layouts/pdfcomment.module:106
-#, fuzzy
 msgid "Insert PDFComment options here (see pdfcomment manual)"
-msgstr "خيارات العمود (انظر دليل beamer)"
+msgstr "إدراج خيارات تعلق PDF هنا (أنظر دليل pdfcomment)"
 
 #: lib/layouts/pdfcomment.module:111
-#, fuzzy
 msgid "PDF-Margin"
-msgstr "هوامش الصفحة"
+msgstr "هامش-PDF"
 
 #: lib/layouts/pdfcomment.module:113
-#, fuzzy
 msgid "PDF (Margin)"
-msgstr "هوامش الصفحة"
+msgstr "PDF (هامش)"
 
 #: lib/layouts/pdfcomment.module:121
 msgid "PDF-Markup"
 msgstr ""
 
 #: lib/layouts/pdfcomment.module:123
-#, fuzzy
 msgid "PDF (Markup)"
-msgstr "PDF (cropped)"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:128
-#, fuzzy
 msgid "Insert the comment to the marked-up text here"
-msgstr "أدرج رأس صندوق القسم هنا"
+msgstr "إدراج تعليق لنص marked-up هنا"
 
 #: lib/layouts/pdfcomment.module:132
 msgid "PDF-Freetext"
-msgstr ""
+msgstr "PDF-نص حر"
 
 #: lib/layouts/pdfcomment.module:134
-#, fuzzy
 msgid "PDF (Freetext)"
-msgstr "PDF (pdflatex)"
+msgstr "PDF (نص حر)"
 
 #: lib/layouts/pdfcomment.module:138
-#, fuzzy
 msgid "PDF-Square"
-msgstr "مربع"
+msgstr "PDF-مربع"
 
 #: lib/layouts/pdfcomment.module:140
-#, fuzzy
 msgid "PDF (Square)"
-msgstr "PDF (LuaTeX)"
+msgstr "PDF (مربع)"
 
 #: lib/layouts/pdfcomment.module:144
-#, fuzzy
 msgid "PDF-Circle"
-msgstr "دائرة"
+msgstr "PDF-دائرة"
 
 #: lib/layouts/pdfcomment.module:146
-#, fuzzy
 msgid "PDF (Circle)"
-msgstr "دائرة"
+msgstr "PDF (دائرة)"
 
 #: lib/layouts/pdfcomment.module:150
 msgid "PDF-Line"
-msgstr ""
+msgstr "PDF-خطي"
 
 #: lib/layouts/pdfcomment.module:152
-#, fuzzy
 msgid "PDF (Line)"
-msgstr "PDF (LuaTeX)"
+msgstr "PDF (خطي)"
 
 #: lib/layouts/pdfcomment.module:156
-#, fuzzy
 msgid "PDF-Sideline"
-msgstr "ملاحظة جانبية"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:158
-#, fuzzy
 msgid "PDF (Sideline)"
-msgstr "PDF (pdflatex)"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:165
-#, fuzzy
 msgid "Insert the comment here"
-msgstr "لم يتم تغيير رقم العمود في '%1$s'"
+msgstr "إدراج تعليق هنا"
 
 #: lib/layouts/pdfcomment.module:169
 msgid "PDF-Reply"
 msgstr ""
 
 #: lib/layouts/pdfcomment.module:171
-#, fuzzy
 msgid "PDF (Reply)"
-msgstr "PDF (pdflatex)"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:179
 msgid "PDF-Tooltip"
 msgstr ""
 
 #: lib/layouts/pdfcomment.module:181
-#, fuzzy
 msgid "PDF (Tooltip)"
-msgstr "PDF (dvipdfm)"
+msgstr "PDF (Tooltip)"
 
 #: lib/layouts/pdfcomment.module:188
-#, fuzzy
 msgid "Tooltip Text"
-msgstr "نسخ|o"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:189
 msgid "Tooltip"
 msgstr ""
 
 #: lib/layouts/pdfcomment.module:191
-#, fuzzy
 msgid "Insert the tooltip text here"
-msgstr "كتابة النص الافتراضي هنا"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:199
-#, fuzzy
 msgid "List of PDF Comments"
-msgstr "قائمة ملاحظات التذييل"
+msgstr "قائمة تعليقات PDF"
 
 #: lib/layouts/pdfcomment.module:213
-#, fuzzy
 msgid "[List of PDF Comments]"
-msgstr "قائمة ملاحظات التذييل"
+msgstr "[قائمة تعليقات PDF]"
 
 #: lib/layouts/pdfcomment.module:222
 msgid "List Options|s"
 msgstr "خيارات القائمة|s"
 
 #: lib/layouts/pdfcomment.module:223
-#, fuzzy
 msgid "Insert list options here (see pdfcomment manual)"
-msgstr "خيارات العمود المزدوج (انظر دليل powerdot)"
+msgstr "أدرج خيارات القائمة هنا (أنظر دليل pdfcomment)"
 
 #: lib/layouts/rsphrase.module:2
 msgid "Risk and Safety Statements"
@@ -14233,7 +14200,7 @@ msgid ""
 "opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
 msgstr ""
 "عرف بعض وحدات النظريات الإضافية لتستخدم مع حزم نظريات الـAMS. تشمل المعايير "
-"،الخوارزم،المسلمات،الشروط، الملاحظة،الترقيم،الملخص،الاعتراف "
+"،الخوارزم،المسلمات،الشروط، الملاحظة،الترقيم،الموجز،الاعتراف "
 "بالجميل،استنتاج،الفرض،و الحالات،في الصيغ المرقمة و الغير مرقمة. على النقيض "
 "من نموذج  AMS-الممتد البسيط، النظريات المختلفة في النوع المتوفرة هنا تملك "
 "عداداً منفصلاً(مثلا. معيار 1, معيار 2, مُسلّمة 1, فرضية 1, معيار 3, ..., في "
@@ -14316,7 +14283,7 @@ msgstr "ترقيم."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:272
 msgid "Summary \\thesummary."
-msgstr "ملخص \\الملخص."
+msgstr "موجز \\thesummary."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:287
 #: lib/layouts/theorems-ams-extended.module:259
@@ -14390,7 +14357,7 @@ msgid ""
 "in both numbered and non-numbered forms."
 msgstr ""
 "عرف بعض وحدات النظريات الإضافية لتستخدم مع حزم نظريات الـAMS. تشمل المعايير "
-"،الخوارزم،المسلمات،الشروط، الملاحظة،الترقيم،الملخص،الاعتراف "
+"،الخوارزم،المسلمات،الشروط، الملاحظة،الترقيم،الموجز،الاعتراف "
 "بالجميل،استنتاج،الحقيقة،الفرض،و الحالات،في الصيغ المرقمة و الغير مرقمة."
 
 #: lib/layouts/theorems-ams-extended.module:10
@@ -14426,7 +14393,7 @@ msgstr ""
 
 #: lib/layouts/theorems-ams-extended.module:245
 msgid "Summary \\thetheorem."
-msgstr ""
+msgstr "موجز \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:279
 msgid "Acknowledgement \\thetheorem."
@@ -14621,11 +14588,11 @@ msgstr ""
 
 #: lib/layouts/todonotes.module:53
 msgid "TODO Note (Margin)"
-msgstr ""
+msgstr "ملاحظة للتنفيذ (هامش)"
 
 #: lib/layouts/todonotes.module:55
 msgid "TODO (Margin)"
-msgstr ""
+msgstr "للتنفيذ (هامش)"
 
 #: lib/layouts/todonotes.module:72 lib/layouts/todonotes.module:84
 msgid "TODO Note Options|s"
@@ -14649,7 +14616,7 @@ msgstr "صورة مفقودة"
 
 #: lib/layouts/todonotes.module:101
 msgid "Missing Figure Note Options|s"
-msgstr ""
+msgstr "خيارات ملاحظة صورة مفقودة|s"
 
 #: lib/languages:73 src/Font.cpp:61 src/Font.cpp:64 src/Font.cpp:68
 #: src/Font.cpp:73 src/Font.cpp:76
@@ -15712,7 +15679,7 @@ msgstr "ملاحظة ليك|N"
 
 #: lib/ui/stdcontext.inc:196
 msgid "Comment|m"
-msgstr "تلميح|m"
+msgstr "تعليق|m"
 
 #: lib/ui/stdcontext.inc:197 lib/ui/stdmenus.inc:490
 msgid "Greyed Out|G"
@@ -15728,7 +15695,7 @@ msgstr "اغلاق كل الملاحظات|l"
 
 #: lib/ui/stdcontext.inc:208 lib/ui/stdmenus.inc:500
 msgid "Phantom|P"
-msgstr "طيف|m"
+msgstr "طيف|P"
 
 #: lib/ui/stdcontext.inc:209 lib/ui/stdmenus.inc:501
 msgid "Horizontal Phantom|H"
@@ -16801,7 +16768,7 @@ msgstr "نافذة المصدر|S"
 
 #: lib/ui/stdmenus.inc:338
 msgid "Messages Pane|g"
-msgstr "نافذة التنبيهات|g"
+msgstr "نافذة الرسائل|g"
 
 #: lib/ui/stdmenus.inc:339
 msgid "Toolbars|b"
@@ -17017,7 +16984,7 @@ msgstr "مستند فرعي...|d"
 
 #: lib/ui/stdmenus.inc:489
 msgid "Comment|C"
-msgstr "تلميح|C"
+msgstr "تعليق|C"
 
 #: lib/ui/stdmenus.inc:496
 msgid "Insert New Branch...|I"
@@ -19697,19 +19664,19 @@ msgstr "checkmark"
 
 #: lib/ui/stdtoolbars.inc:839
 msgid "eighthnote"
-msgstr ""
+msgstr "ملاحظة ثُمن"
 
 #: lib/ui/stdtoolbars.inc:840
 msgid "quarternote"
-msgstr ""
+msgstr "ملاحظة رُبع"
 
 #: lib/ui/stdtoolbars.inc:841
 msgid "halfnote"
-msgstr ""
+msgstr "ملاحظة نصف"
 
 #: lib/ui/stdtoolbars.inc:842
 msgid "fullnote"
-msgstr ""
+msgstr "ملاحظة كاملة"
 
 #: lib/ui/stdtoolbars.inc:843
 msgid "twonotes"
@@ -19725,7 +19692,7 @@ msgstr "ذكر"
 
 #: lib/ui/stdtoolbars.inc:846
 msgid "vernal"
-msgstr "vernal"
+msgstr "ربيعي"
 
 #: lib/ui/stdtoolbars.inc:847
 msgid "ascnode"
@@ -19745,11 +19712,11 @@ msgstr "هلال"
 
 #: lib/ui/stdtoolbars.inc:851
 msgid "leftmoon"
-msgstr "قمر يسار"
+msgstr "قمر أيسر"
 
 #: lib/ui/stdtoolbars.inc:852
 msgid "rightmoon"
-msgstr "قمر يمين"
+msgstr "قمر أيمن"
 
 #: lib/ui/stdtoolbars.inc:853
 msgid "astrosun"
@@ -23467,7 +23434,7 @@ msgstr "خلفية الملاحظة"
 
 #: src/Color.cpp:226
 msgid "comment label"
-msgstr "ملصق التعليق"
+msgstr "ملصق تعليق"
 
 #: src/Color.cpp:227
 msgid "comment background"
@@ -23494,9 +23461,8 @@ msgid "shaded box"
 msgstr "تظليل الصندوق"
 
 #: src/Color.cpp:233
-#, fuzzy
 msgid "listings background"
-msgstr "ادراج خلفية"
+msgstr "خلفية القائمة"
 
 #: src/Color.cpp:234
 msgid "branch label"
@@ -28881,15 +28847,15 @@ msgstr "ليك لا يستطيع إنتاج القائمة %1$s"
 
 #: src/insets/InsetFoot.cpp:113
 msgid "footnote"
-msgstr "هامش"
+msgstr "تذييل"
 
 #: src/insets/InsetGraphics.cpp:482 src/insets/InsetInclude.cpp:751
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Could not copy the file\n"
 "%1$s\n"
 "into the temporary directory."
-msgstr "تعذر انشاء مسار الذاكرة المؤقتة"
+msgstr "لم يتم نسخ الملف %1$s في مجلد الذاكرة المؤقتة."
 
 #: src/insets/InsetGraphics.cpp:727 src/insets/InsetGraphics.cpp:954
 #, c-format
