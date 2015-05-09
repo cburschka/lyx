@@ -2959,25 +2959,30 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 		}
 
-		// explicit graphics type?
 		Clipboard::GraphicsType type = Clipboard::AnyGraphicsType;
-		if ((arg == "pdf" && (type = Clipboard::PdfGraphicsType))
-			  || (arg == "png" && (type = Clipboard::PngGraphicsType))
-			  || (arg == "jpeg" && (type = Clipboard::JpegGraphicsType))
-			  || (arg == "linkback" &&  (type = Clipboard::LinkBackGraphicsType))
-			  || (arg == "emf" &&  (type = Clipboard::EmfGraphicsType))
-			  || (arg == "wmf" &&  (type = Clipboard::WmfGraphicsType))) {
-			enable = theClipboard().hasGraphicsContents(type);
+		if (arg == "pdf")
+			type = Clipboard::PdfGraphicsType;
+		else if (arg == "png")
+			type = Clipboard::PngGraphicsType;
+		else if (arg == "jpeg")
+			type = Clipboard::JpegGraphicsType;
+		else if (arg == "linkback")
+			type = Clipboard::LinkBackGraphicsType;
+		else if (arg == "emf")
+			type = Clipboard::EmfGraphicsType;
+		else if (arg == "wmf")
+			type = Clipboard::WmfGraphicsType;
+		else {
+			// unknown argument
+			LYXERR0("Unrecognized graphics type: " << arg);
+			// we don't want to assert if the user just mistyped the LFUN
+			LATTEST(cmd.origin() != FuncRequest::INTERNAL);
+			enable = false;
 			break;
 		}
-
-		// unknown argument
-		LYXERR0("Unrecognized graphics type: " << arg);
-		// we don't want to assert if the user just mistyped the LFUN
-		LATTEST(cmd.origin() != FuncRequest::INTERNAL);
-		enable = false;
+		enable = theClipboard().hasGraphicsContents(type);
 		break;
-	 }
+	}
 
 	case LFUN_CLIPBOARD_PASTE:
 	case LFUN_CLIPBOARD_PASTE_SIMPLE:
