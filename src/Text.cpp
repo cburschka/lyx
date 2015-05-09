@@ -848,7 +848,7 @@ void Text::insertStringAsLines(Cursor & cur, docstring const & str,
 			} else {
 				continue;
 			}
-			// do not insert consecutive spaces if !free_spacing
+		// do not insert consecutive spaces if !free_spacing
 		} else if ((*cit == ' ' || *cit == '\t') &&
 			   space_inserted && !par.isFreeSpacing()) {
 			continue;
