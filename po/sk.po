@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-04-27 15:24+0200\n"
-"PO-Revision-Date: 2015-04-27 13:34+0000\n"
+"POT-Creation-Date: 2015-05-09 15:57+0200\n"
+"PO-Revision-Date: 2015-05-09 14:53+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -12443,6 +12443,10 @@ msgstr "\\alph{subsubsection}."
 msgid "\\alph{paragraph}."
 msgstr "\\alph{paragraph}."
 
+#: lib/layouts/scrclass.inc:41
+msgid "\\alph{enumii})"
+msgstr "\\alph{enumii})"
+
 #: lib/layouts/scrclass.inc:114
 msgid "Addpart"
 msgstr "Časť (zoznam)"
@@ -14147,9 +14151,9 @@ msgstr "Začiatok PDF Form"
 msgid "PDF form"
 msgstr "PDF form"
 
-#: lib/layouts/pdfform.module:27 lib/layouts/pdfform.module:55
-msgid "PDF form parameters"
-msgstr "PDF form parametre"
+#: lib/layouts/pdfform.module:28 lib/layouts/pdfform.module:65
+msgid "PDF Form Parameters"
+msgstr "PDF Form parametre"
 
 #: lib/layouts/pdfform.module:28 lib/layouts/pdfform.module:56
 msgid "Params"
@@ -14162,6 +14166,14 @@ msgstr "Vložte sem parametre pre PDF form"
 #: lib/layouts/pdfform.module:38 lib/layouts/pdfform.module:41
 msgid "End PDF Form"
 msgstr "Koniec PDF form"
+
+#: lib/layouts/pdfform.module:45
+msgid "PDF Link Setup"
+msgstr "PDF (Spojovacie Nastavenie)"
+
+#: lib/layouts/pdfform.module:48
+msgid "PDF link setup"
+msgstr "PDF spojovacie nastavenie"
 
 #: lib/layouts/pdfform.module:48 lib/layouts/pdfform.module:53
 msgid "TextField"
@@ -14199,9 +14211,9 @@ msgstr "NulujúceTlačidlo"
 msgid "PDFAction"
 msgstr "PDFAkcia"
 
-#: lib/layouts/pdfform.module:115
-msgid "the name of the PDF action"
-msgstr "Názov PDF akcie"
+#: lib/layouts/pdfform.module:125
+msgid "The name of the PDF action"
+msgstr "Názov tejto PDF akcie"
 
 #: lib/layouts/pdfform.module:123
 msgid "Text Field Style"
@@ -23465,21 +23477,6 @@ msgstr "Dokument %1$s znovu nahraný."
 msgid "Could not reload document %1$s."
 msgstr "Nedá sa znova nahrať dokument %1$s."
 
-#: src/Buffer.cpp:4934
-msgid "Included File Invalid"
-msgstr "Zahrnutý Súbor je Neplatný"
-
-#: src/Buffer.cpp:4935
-#, c-format
-msgid ""
-"Saving this document to a new location has made the file:\n"
-"  %1$s\n"
-"inaccessible. You will need to update the included filename."
-msgstr ""
-"Uložením tohto dokumentu na nové miesto sa súbor:\n"
-"  %1$s\n"
-"stal nedostupným. Bude potrebné aktualizovať meno zahrnutého súboru."
-
 #: src/BufferParams.cpp:463
 msgid ""
 "The LaTeX package amsmath is only used if AMS formula types or symbols from "
@@ -29776,6 +29773,11 @@ msgstr "Heslo Registra"
 msgid "unknown type!"
 msgstr "neznámy typ!"
 
+#: src/frontends/qt4/qt_helpers.cpp:629
+#, c-format
+msgid "Index Entries (%1$s)"
+msgstr "Register Hesiel (%1$s)"
+
 #: src/insets/InsetIndex.cpp:449
 msgid "Unknown index type!"
 msgstr "Neznámy typ registra!"
@@ -30862,6 +30864,18 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Included File Invalid"
+#~ msgstr "Zahrnutý Súbor je Neplatný"
+
+#~ msgid ""
+#~ "Saving this document to a new location has made the file:\n"
+#~ "  %1$s\n"
+#~ "inaccessible. You will need to update the included filename."
+#~ msgstr ""
+#~ "Uložením tohto dokumentu na nové miesto sa súbor:\n"
+#~ "  %1$s\n"
+#~ "stal nedostupným. Bude potrebné aktualizovať meno zahrnutého súboru."
 
 #~ msgid "Built on %1$s[[date]], %2$s[[time]]"
 #~ msgstr "Zostavené %1$s, %2$s"
@@ -33622,3 +33636,9 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Poskytuje rôzne druhy poznámok pre PDF výstup. Tento modul používa balík "
 #~ "pdfcomment. Pre detaily pozrite na dokumentáciu balíka."
+
+#~ msgid "PDF form parameters"
+#~ msgstr "PDF form parametre"
+
+#~ msgid "the name of the PDF action"
+#~ msgstr "Názov PDF akcie"
