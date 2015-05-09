@@ -34,6 +34,14 @@ Input stdlists.inc
 Input stdcounters.inc
 Input stdfloats.inc
 
+
+# Adapt enumii counter display to KOMA default
+Counter enumii
+	Within               enumi
+	LabelString          "\alph{enumii})"
+End
+
+
 Style Description
 	LabelFont
 	  Family              Sans
