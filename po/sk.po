@@ -1,15 +1,15 @@
 # Slovak translation of LyX
 # Copyright (C) 2003, 2006
 # Zdenko Podobný <zdpo@mailbox.sk>
-# 
+#
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
 # Kornel Benko <kornel@lyx.org>, 2009-2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-09 17:55+0200\n"
-"PO-Revision-Date: 2015-04-13 09:33+0000\n"
+"POT-Creation-Date: 2015-05-09 18:42+0200\n"
+"PO-Revision-Date: 2015-05-09 16:43+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -930,7 +930,8 @@ msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:395
 msgid "Click or press Enter in the search box to search"
-msgstr "Kliknite alebo stlačte Enter vo vyhľadávacom poli aby hľadanie začalo"
+msgstr ""
+"Kliknite alebo stlačte Enter vo vyhľadávacom políčku aby hľadanie začalo"
 
 #: src/frontends/qt4/ui/CitationUi.ui:398
 msgid "&Search"
@@ -4499,7 +4500,7 @@ msgid ""
 "Type shortcut after clicking on this field. You can reset the content with "
 "the 'Clear' button"
 msgstr ""
-"Zadajte skratku po kliknutí na toto políčko. Jeho obsah môžte zmazať pomocou "
+"Zadajte skratku po kliknutí na toto pole. Jeho obsah môžte zmazať pomocou "
 "tlačidla 'Zmazať'"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:19
@@ -13455,14 +13456,14 @@ msgid "PDF Comments"
 msgstr "PDF Komentáre"
 
 #: lib/layouts/pdfcomment.module:7
-#, fuzzy
 msgid ""
 "Provides various kinds of annotations for the PDF output. The module uses "
 "the pdfcomment package. Please consult the LyX example file PDF-comment.lyx "
 "and the package documentation for details."
 msgstr ""
 "Poskytuje rôzne druhy poznámok pre PDF výstup. Tento modul používa balík "
-"pdfcomment. Pre detaily pozrite na dokumentáciu balíka."
+"pdfcomment. Pre detaily si pozrite aj príkladný LyX-súbor\n"
+"PDF-comment.lyx a dokumentáciu balíka."
 
 #: lib/layouts/pdfcomment.module:19
 msgid "Define Avatar"
@@ -13658,195 +13659,162 @@ msgid "Insert list options here (see pdfcomment manual)"
 msgstr "Vložte sem voľby listiny (viď pdfcomment manuál)"
 
 #: lib/layouts/pdfform.module:2
-#, fuzzy
 msgid "PDF Form"
-msgstr "Form"
+msgstr "PDF Form"
 
 #: lib/layouts/pdfform.module:7
-#, fuzzy
 msgid ""
 "Provides fields and buttons for PDF forms. The module uses the LaTeX package "
 "hyperref. Please consult the LyX example file PDF-form.lyx and the "
 "documentation of hyperref for details."
 msgstr ""
-"Poskytuje rôzne druhy poznámok pre PDF výstup. Tento modul používa balík "
-"pdfcomment. Pre detaily pozrite na dokumentáciu balíka."
+"Poskytuje plochy a tlačidlá pre PDF forms. Tento modul používa balík "
+"hyperref. Pre detaily si pozrite aj príkladný LyX-súbor\n"
+"PDF-form.lyx a dokumentáciu balíka hyperref."
 
 #: lib/layouts/pdfform.module:15 lib/layouts/pdfform.module:26
-#, fuzzy
 msgid "Begin PDF Form"
-msgstr "ZačiatokRámu"
+msgstr "Začiatok PDF Form"
 
 #: lib/layouts/pdfform.module:19
-#, fuzzy
 msgid "PDF form"
-msgstr "PDF autor"
+msgstr "PDF form"
 
 #: lib/layouts/pdfform.module:28 lib/layouts/pdfform.module:65
-#, fuzzy
 msgid "PDF Form Parameters"
-msgstr "Ďalšie parametre"
+msgstr "PDF Form parametre"
 
 #: lib/layouts/pdfform.module:29 lib/layouts/pdfform.module:66
 msgid "Params"
-msgstr ""
+msgstr "Parametre"
 
 #: lib/layouts/pdfform.module:30 lib/layouts/pdfform.module:67
-#, fuzzy
 msgid "Insert PDF form parameters here"
-msgstr "Vložte sem komentár"
+msgstr "Vložte sem parametre pre PDF form"
 
 #: lib/layouts/pdfform.module:40 lib/layouts/pdfform.module:43
 msgid "End PDF Form"
-msgstr ""
+msgstr "Koniec PDF form"
 
 #: lib/layouts/pdfform.module:47
-#, fuzzy
 msgid "PDF Link Setup"
-msgstr "PDF (Nastavenie)"
+msgstr "PDF (Spojovacie Nastavenie)"
 
 #: lib/layouts/pdfform.module:50
-#, fuzzy
 msgid "PDF link setup"
-msgstr "PDF (Nastavenie)"
+msgstr "PDF spojovacie nastavenie"
 
 #: lib/layouts/pdfform.module:58 lib/layouts/pdfform.module:63
-#, fuzzy
 msgid "TextField"
-msgstr "Text"
+msgstr "TextovéPole"
 
 #: lib/layouts/pdfform.module:77 lib/layouts/pdfform.module:80
-#, fuzzy
 msgid "CheckBox"
-msgstr "CheckedBox"
+msgstr "ZačiarkovaciePolíčko"
 
 #: lib/layouts/pdfform.module:83 lib/layouts/pdfform.module:86
-#, fuzzy
 msgid "ChoiceMenu"
-msgstr "MenuVýber"
+msgstr "VýberMenu"
 
 #: lib/layouts/pdfform.module:88
 msgid "Label"
 msgstr "Značka"
 
 #: lib/layouts/pdfform.module:91
-#, fuzzy
 msgid "Insert the label here"
-msgstr "Vložte sem komentár"
+msgstr "Vložte sem návestie"
 
 #: lib/layouts/pdfform.module:95 lib/layouts/pdfform.module:98
-#, fuzzy
 msgid "PushButton"
-msgstr "Tlačidlo(Gui)"
+msgstr "Tlačidlo"
 
 #: lib/layouts/pdfform.module:101 lib/layouts/pdfform.module:104
-#, fuzzy
 msgid "SubmitButton"
-msgstr "Tlačidlo(Gui)"
+msgstr "PodávacieTlačidlo"
 
 #: lib/layouts/pdfform.module:107 lib/layouts/pdfform.module:110
-#, fuzzy
 msgid "ResetButton"
-msgstr "Vynulovať"
+msgstr "NulujúceTlačidlo"
 
 #: lib/layouts/pdfform.module:117 lib/layouts/pdfform.module:120
-#, fuzzy
 msgid "PDFAction"
-msgstr "Akcia"
+msgstr "PDFAkcia"
 
 #: lib/layouts/pdfform.module:125
-#, fuzzy
 msgid "The name of the PDF action"
-msgstr "Počiatok otáčania"
+msgstr "Názov tejto PDF akcie"
 
 #: lib/layouts/pdfform.module:133
-#, fuzzy
 msgid "Text Field Style"
-msgstr "Štýl Textu"
+msgstr "Štýl Textového Pola"
 
 #: lib/layouts/pdfform.module:136
-#, fuzzy
 msgid "Default text field style"
-msgstr "Štandardný štý&l:"
+msgstr "Štandardný štýl textového pola"
 
 #: lib/layouts/pdfform.module:140
-#, fuzzy
 msgid "Submit Button Style"
-msgstr "Štýl citovania"
+msgstr "Štýl Podávacieho Tlačidla"
 
 #: lib/layouts/pdfform.module:143
-#, fuzzy
 msgid "Default submit button style"
-msgstr "Štandardný štý&l:"
+msgstr "Štandardný štýl podávacieho tlačidla"
 
 #: lib/layouts/pdfform.module:146
-#, fuzzy
 msgid "Push Button Style"
-msgstr "Štýl citovania"
+msgstr "Štýl Tlačidla"
 
 #: lib/layouts/pdfform.module:149
-#, fuzzy
 msgid "Default push button style"
-msgstr "Štandardný štý&l:"
+msgstr "Štandardný štýl tlačidla"
 
 #: lib/layouts/pdfform.module:152
-#, fuzzy
 msgid "Check Box Style"
-msgstr "Štýl Textu"
+msgstr "Štýl Začiarkovacieho Políčka"
 
 #: lib/layouts/pdfform.module:155
-#, fuzzy
 msgid "Default check box style"
-msgstr "Štandardný štý&l:"
+msgstr "Štandardný štýl začiarkovacieho políčka"
 
 #: lib/layouts/pdfform.module:158
-#, fuzzy
 msgid "Reset Button Style"
-msgstr "Štýl citovania"
+msgstr "Štýl Nulujúceho Tlačidla"
 
 #: lib/layouts/pdfform.module:161
-#, fuzzy
 msgid "Default reset button style"
-msgstr "Štandardný štý&l:"
+msgstr "Štandardný štýl nulujúceho tlačidla"
 
 #: lib/layouts/pdfform.module:164
-#, fuzzy
 msgid "List Box Style"
-msgstr "Zoznam Fólií"
+msgstr "Štýl Zoznamu Poličiek"
 
 #: lib/layouts/pdfform.module:167
-#, fuzzy
 msgid "Default list box style"
-msgstr "Štandardný štý&l:"
+msgstr "Štandardný štýl zoznamu poličiek"
 
 #: lib/layouts/pdfform.module:170
-#, fuzzy
 msgid "Combo Box Style"
-msgstr "Farebný Rámik Nastavenie"
+msgstr "Štýl Rozbaľovacieho Políčka"
 
 #: lib/layouts/pdfform.module:173
-#, fuzzy
 msgid "Default combo box style"
-msgstr "Štandardný štý&l:"
+msgstr "Štandardný štýl rozbaľovacieho políčka"
 
 #: lib/layouts/pdfform.module:176
 msgid "Popdown Box Style"
-msgstr ""
+msgstr "Štýl Sťahovacieho Políčka"
 
 #: lib/layouts/pdfform.module:179
-#, fuzzy
 msgid "Default popdown box style"
-msgstr "Štandardný štý&l:"
+msgstr "Štandardný štýl sťahovacieho políčka"
 
 #: lib/layouts/pdfform.module:182
-#, fuzzy
 msgid "Radio Box Style"
-msgstr "Štýl citovania"
+msgstr "Štýl Prepínacieho Políčka"
 
 #: lib/layouts/pdfform.module:185
-#, fuzzy
 msgid "Default radio box style"
-msgstr "Štandardný štý&l:"
+msgstr "Štandardný štýl prepínacieho políčka"
 
 #: lib/layouts/rsphrase.module:2
 msgid "Risk and Safety Statements"
@@ -28733,9 +28701,9 @@ msgid "unknown type!"
 msgstr "neznámy typ!"
 
 #: src/frontends/qt4/qt_helpers.cpp:630
-#, fuzzy, c-format
+#, c-format
 msgid "Index Entries (%1$s)"
-msgstr "Heslo Registra (%1$s)"
+msgstr "Register Hesiel (%1$s)"
 
 #: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:298
 #: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:548
