@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-09 17:24+0200\n"
-"PO-Revision-Date: 2015-05-09 17:30+0200\n"
+"POT-Creation-Date: 2015-05-09 17:55+0200\n"
+"PO-Revision-Date: 2015-05-09 17:56+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -22591,7 +22591,7 @@ msgstr ""
 "\\lyxdeleted im LaTeX-Vorspann neu."
 
 #: src/Buffer.cpp:993 src/BufferParams.cpp:409
-#: src/frontends/qt4/GuiLog.cpp:235 src/insets/InsetIndex.cpp:444
+#: src/frontends/qt4/GuiLog.cpp:235 src/insets/InsetIndex.cpp:447
 msgid "Index"
 msgstr "Stichwortverzeichnis"
 
@@ -26796,7 +26796,7 @@ msgstr ""
 msgid "Document Class"
 msgstr "Dokumentklasse"
 
-#: src/frontends/qt4/GuiDocument.cpp:1402 src/frontends/qt4/qt_helpers.cpp:597
+#: src/frontends/qt4/GuiDocument.cpp:1402 src/frontends/qt4/qt_helpers.cpp:598
 msgid "Child Documents"
 msgstr "Unterdokumente"
 
@@ -26844,7 +26844,7 @@ msgstr "Gleitobjekt-Platzierung"
 msgid "Bullets"
 msgstr "Auflistungszeichen"
 
-#: src/frontends/qt4/GuiDocument.cpp:1419 src/frontends/qt4/qt_helpers.cpp:619
+#: src/frontends/qt4/GuiDocument.cpp:1419 src/frontends/qt4/qt_helpers.cpp:620
 msgid "Branches"
 msgstr "Zweige"
 
@@ -27127,7 +27127,7 @@ msgstr "Wählen Sie eine externe Datei"
 msgid "automatically"
 msgstr "automatisch"
 
-#: src/frontends/qt4/GuiGraphics.cpp:113 src/frontends/qt4/qt_helpers.cpp:599
+#: src/frontends/qt4/GuiGraphics.cpp:113 src/frontends/qt4/qt_helpers.cpp:600
 msgid "Graphics"
 msgstr "Grafik"
 
@@ -28952,62 +28952,72 @@ msgstr ""
 "LyX bietet keine LaTeX-Unterstützung für Dateinamen, die eines der folgenden "
 "Zeichen enthalten:\n"
 
-#: src/frontends/qt4/qt_helpers.cpp:268
+#: src/frontends/qt4/qt_helpers.cpp:269
 msgid "Could not update TeX information"
 msgstr "Die TeX-Informationen konnten nicht aktualisiert werden"
 
-#: src/frontends/qt4/qt_helpers.cpp:269
+#: src/frontends/qt4/qt_helpers.cpp:270
 #, c-format
 msgid "The script `%1$s' failed."
 msgstr "Das Skript `%1$s' ist fehlgeschlagen."
 
-#: src/frontends/qt4/qt_helpers.cpp:522
+#: src/frontends/qt4/qt_helpers.cpp:523
 msgid "All Files "
 msgstr "Alle Dateien "
 
-#: src/frontends/qt4/qt_helpers.cpp:595 src/insets/InsetTOC.cpp:75
+#: src/frontends/qt4/qt_helpers.cpp:596 src/insets/InsetTOC.cpp:75
 msgid "Table of Contents"
 msgstr "Inhaltsverzeichnis"
 
-#: src/frontends/qt4/qt_helpers.cpp:601
+#: src/frontends/qt4/qt_helpers.cpp:602
 msgid "Equations"
 msgstr "Gleichungen"
 
-#: src/frontends/qt4/qt_helpers.cpp:603
+#: src/frontends/qt4/qt_helpers.cpp:604
 msgid "Footnotes"
 msgstr "Fußnoten"
 
-#: src/frontends/qt4/qt_helpers.cpp:605
+#: src/frontends/qt4/qt_helpers.cpp:606
 msgid "Listings"
 msgstr "Listing"
 
-#: src/frontends/qt4/qt_helpers.cpp:607
+#: src/frontends/qt4/qt_helpers.cpp:608
 msgid "Index Entries"
-msgstr "Stichworte"
+msgstr "Stichwörter"
 
-#: src/frontends/qt4/qt_helpers.cpp:609
+#: src/frontends/qt4/qt_helpers.cpp:610
 msgid "Marginal notes"
 msgstr "Randnotizen"
 
-#: src/frontends/qt4/qt_helpers.cpp:611
+#: src/frontends/qt4/qt_helpers.cpp:612
 msgid "Nomenclature Entries"
 msgstr "Nomenklatureinträge"
 
-#: src/frontends/qt4/qt_helpers.cpp:613
+#: src/frontends/qt4/qt_helpers.cpp:614
 msgid "Notes"
 msgstr "Notizen"
 
-#: src/frontends/qt4/qt_helpers.cpp:615
+#: src/frontends/qt4/qt_helpers.cpp:616
 msgid "Citations"
 msgstr "Literaturverweise"
 
-#: src/frontends/qt4/qt_helpers.cpp:617
+#: src/frontends/qt4/qt_helpers.cpp:618
 msgid "Labels and References"
 msgstr "Marken und Querverweise"
 
-#: src/frontends/qt4/qt_helpers.cpp:621
+#: src/frontends/qt4/qt_helpers.cpp:622
 msgid "Changes"
 msgstr "Änderungen"
+
+#: src/frontends/qt4/qt_helpers.cpp:627 src/insets/InsetIndex.cpp:279
+#: src/insets/InsetIndex.cpp:300
+msgid "unknown type!"
+msgstr "unbekannter Typ!"
+
+#: src/frontends/qt4/qt_helpers.cpp:630
+#, c-format
+msgid "Index Entries (%1$s)"
+msgstr "Stichwörter (%1$s)"
 
 #: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:298
 #: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:548
@@ -29187,7 +29197,7 @@ msgid "active"
 msgstr "aktiv"
 
 #: src/insets/InsetBranch.cpp:70 src/insets/InsetBranch.cpp:72
-#: src/insets/InsetIndex.cpp:452
+#: src/insets/InsetIndex.cpp:455
 msgid "non-active"
 msgstr "inaktiv"
 
@@ -29496,19 +29506,15 @@ msgstr ""
 msgid "Index Entry"
 msgstr "Stichwort"
 
-#: src/insets/InsetIndex.cpp:279 src/insets/InsetIndex.cpp:300
-msgid "unknown type!"
-msgstr "unbekannter Typ!"
-
-#: src/insets/InsetIndex.cpp:449
+#: src/insets/InsetIndex.cpp:452
 msgid "Unknown index type!"
 msgstr "Unbekannter Index-Typ!"
 
-#: src/insets/InsetIndex.cpp:450
+#: src/insets/InsetIndex.cpp:453
 msgid "All indexes"
 msgstr "Alle Indexe"
 
-#: src/insets/InsetIndex.cpp:454
+#: src/insets/InsetIndex.cpp:457
 msgid "subindex"
 msgstr "Unterindex"
 
