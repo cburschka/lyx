@@ -326,6 +326,7 @@ dist_examples_DATA = \
 	examples/MultilingualCaptions.lyx \
 	examples/noweb2lyx.lyx \
 	examples/PDF-comment.lyx \
+	examples/PDF-form.lyx \
 	examples/powerdot-example.lyx \
 	examples/recipebook.lyx \
 	examples/R-S-statements.lyx \
@@ -2028,6 +2029,7 @@ dist_layouts_DATA =\
 	layouts/numrevtex.inc \
 	layouts/paper.layout \
 	layouts/pdfcomment.module \
+	layouts/pdfform.module \
 	layouts/powerdot.layout \
 	layouts/RJournal.layout \
 	layouts/recipebook.layout \

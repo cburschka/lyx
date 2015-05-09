@@ -1,0 +1,3532 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass scrartcl
+\begin_preamble
+% to be able to use custom colors
+\usepackage[svgnames,rgb]{xcolor}
+
+% ------------------------------------
+% used to check for needed LaTeX packages
+\usepackage{ifthen}
+
+% check for package insdljs
+% used for JavScript code
+\newboolean{insdljs}
+\IfFileExists{insdljs.sty}
+ {\usepackage[pdftex]{insdljs}
+  \setboolean{insdljs}{true}}
+ {\setboolean{insdljs}{false}}
+
+\pdfcatalog{/AA \the\pdflastobj\space 0 R}
+
+\ifinsdljs % only execute if package insdljs is installed
+
+ \begin{insDLJS}[exaaae]{exaaae}{JavaScript}
+
+  function validateTime(){
+   this.delay = true;
+   if((event.value == "u") || (event.value == "unlimited")) {
+    this.getField("from").display = display.hidden;
+    this.getField("to").display = display.hidden;
+   } else {
+    this.getField("from").display = display.visible;
+    this.getField("to").display = display.visible;
+    this.getField("from").setFocus();
+   }
+   this.delay = false;
+  }
+ 
+ function checkNumber() {
+  event.rc = true;
+  if (!Number(event.value))
+  {
+   app.alert("Value must be a number!");
+   event.value = "";
+  }  else {
+   event.target.textColor = color.green;
+ }
+
+}
+
+ \end{insDLJS}
+
+\fi % end \ifinsdljs
+
+% if pdflatex is used
+\usepackage{ifpdf}
+\ifpdf
+
+% set fonts for nicer pdf view
+\IfFileExists{lmodern.sty}
+ {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+\end_preamble
+\options BCOR8mm,pagesize
+\use_default_options false
+\begin_modules
+pdfform
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command bibtex
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Description of the module pdfcomment"
+\pdf_author "Uwe Stöhr"
+\pdf_subject "PDF form"
+\pdf_keywords "LyX, PDF forms, hyperref"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false, urlbordercolor={1 0 0}"
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Begin PDF Form
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+action=mailto:forms@lyx.test?subject=The submitted PDF form, method=post
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Description of the module PDF Form
+\end_layout
+
+\begin_layout Author
+Uwe Stöhr
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+To export all parts of this document to PDF the LaTeX-package 
+\series bold
+insdljs
+\series default
+ must be installed.
+ If it is not installed you can export the document anyway but the example
+ in the section about dynamic form fields won't appear in the output.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By loading the module PDF
+\begin_inset space ~
+\end_inset
+
+Form the whole document or a part of it can be made a PDF form.
+ You can add all possible form elements like text fields buttons etc.
+ This document describes how this is done.
+\end_layout
+
+\begin_layout Section
+Preparation
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Preparation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+At first load the module PDF
+\begin_inset space ~
+\end_inset
+
+Form in the document settings of your file.
+ To make the whole document a form, insert the environment
+\family sans
+ Begin
+\begin_inset space ~
+\end_inset
+
+PDF
+\begin_inset space ~
+\end_inset
+
+Form
+\family default
+ from LyX's dropdown menu at the beginning of the document.
+ If only a part of the document should be a form, add 
+\family sans
+Begin
+\begin_inset space ~
+\end_inset
+
+PDF
+\begin_inset space ~
+\end_inset
+
+Form
+\family default
+ at the position where the form should start.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ It is only possible to have one form in a PDF file!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If the form data should be submitted to a server or the like, then you must
+ specify the URL as parameter of the 
+\family sans
+Begin
+\begin_inset space ~
+\end_inset
+
+PDF
+\begin_inset space ~
+\end_inset
+
+Form
+\family default
+ environment.
+ This is done by using the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+PDF
+\begin_inset space ~
+\end_inset
+
+form
+\begin_inset space ~
+\end_inset
+
+parameters
+\family default
+.
+ For example in this document the following was inserted to the parameter
+ inset:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+action=mailto:forms@lyx.test?subject=The submitted PDF form,
+\begin_inset Newline newline
+\end_inset
+
+method=post
+\end_layout
+
+\begin_layout Standard
+This sends the form data as email to 
+\emph on
+forms@lyx.test
+\emph default
+ when the user presses the submit button.
+ The email subject will be 
+\begin_inset Quotes eld
+\end_inset
+
+The submitted PDF form
+\begin_inset Quotes erd
+\end_inset
+
+ and the HTML method is 
+\series bold
+post
+\series default
+.
+ (The other possible method would be 
+\series bold
+get
+\series default
+.) For more about submitting see sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Submit-button"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Form fields
+\end_layout
+
+\begin_layout Standard
+There are 6
+\begin_inset space ~
+\end_inset
+
+possible types of fields in a PDF form:
+\end_layout
+
+\begin_layout Subsection
+Text field
+\end_layout
+
+\begin_layout Standard
+A text field is added by inserting the custom inset 
+\family sans
+TextField
+\family default
+ using the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Custom
+\begin_inset space ~
+\end_inset
+
+Insets
+\family default
+.
+ Write inside the inset the label for the text field that will be printed
+ in the PDF output before the field.
+ Here is an example:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex TextField
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=customer
+\end_layout
+
+\end_inset
+
+Enter your name here:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You must also specify a field name for text fields: Set the cursor into
+ its 
+\family sans
+Params
+\family default
+ inset.
+ There insert for example the parameter 
+\series bold
+name=customer
+\series default
+ (where 
+\series bold
+customer
+\series default
+ is the field name).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ All braces, brackets, backslashes and quote characters in form parameters
+ must be inserted as TeX code!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using the same name for several text fields results in an automatic duplication
+ of the inserted text.
+ This is for example useful if the user should input a date that should
+ appear at different places in the form.
+\begin_inset Newline newline
+\end_inset
+
+Here are 2
+\begin_inset space ~
+\end_inset
+
+fields as example: Fill one and see that the other one will also be filled
+ automatically:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex TextField
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=identic
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex TextField
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=identic
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All form fields can be customized by adding parameters.
+\end_layout
+
+\begin_layout Standard
+Here is a customized multiline text field with a width of 60
+\begin_inset space \thinspace{}
+\end_inset
+
+% of the text width, 3
+\begin_inset space \thinspace{}
+\end_inset
+
+cm height and a proposed content:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex TextField
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=customer2, multiline, width=0.6
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+, height=3cm, value=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Testman
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Enter your name here:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ It is highly recommended to use a uniform layout of all fields in your
+ form.
+ See sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Form-field-customization"
+
+\end_inset
+
+ for how this is done.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Check box
+\end_layout
+
+\begin_layout Standard
+A check box is added by inserting the custom inset 
+\family sans
+CheckBox
+\family default
+.
+ Write inside the inset the label for the box.
+ Here is an example:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex CheckBox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=age
+\end_layout
+
+\end_inset
+
+Are you older than 18 years?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You must also specify a field name for check boxes: Insert for example the
+ parameter 
+\series bold
+name=age
+\series default
+ (where 
+\series bold
+age
+\series default
+ is the field name) into the 
+\family sans
+Params
+\family default
+ inset.
+\end_layout
+
+\begin_layout Subsection
+Choice menu
+\end_layout
+
+\begin_layout Standard
+A choice menu is added by inserting the custom inset 
+\family sans
+ChoiceMenu
+\family default
+.
+ A label for the inset is added by using the menu 
+\family sans
+Insert\SpecialChar \menuseparator
+Label
+\family default
+.
+ Insert the label text into this inset.
+\begin_inset Newline newline
+\end_inset
+
+The different choices are inserted to the inset as comma-separated list.
+ There are 3
+\begin_inset space ~
+\end_inset
+
+choice menu types:
+\end_layout
+
+\begin_layout Description
+Radio Only one choice can be selected
+\end_layout
+
+\begin_layout Description
+Combo The choices are listed in a combo box (dropdown list) but the user
+ is allowed to choose something that is not in the predefined list.
+\end_layout
+
+\begin_layout Description
+Popdown All choices are listed below each other.
+ It the filed is not high enough a scroll bar is automatically added to
+ the field.
+\end_layout
+
+\begin_layout Standard
+To determine the choice menu type, add the parameter 
+\series bold
+radio
+\series default
+, 
+\series bold
+combo
+\series default
+ or 
+\series bold
+popdown
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Here is an example for the radio type:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex ChoiceMenu
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+radio, name=radio
+\end_layout
+
+\end_inset
+
+male=m, female=f
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Sex:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here is an example for the combo type:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex ChoiceMenu
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+combo, name=combo
+\end_layout
+
+\end_inset
+
+Albania=Al, Armenia=Ar, Azerbaidschan=Az
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Country:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here is an example for the popdown type:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex ChoiceMenu
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+popdown, name=country
+\end_layout
+
+\end_inset
+
+Albania=Al, Armenia=Ar, Azerbaidschan=Az
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Country:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You must also specify a field name for choice menus: Insert for example
+ the parameter 
+\series bold
+name=country
+\series default
+ (where 
+\series bold
+country
+\series default
+ is the field name) into the 
+\family sans
+Params
+\family default
+ inset.
+\end_layout
+
+\begin_layout Standard
+It is recommended to add a short name for every choice to be able to access
+ them and to know which one was chosen by the user.
+ This is done by adding 
+\series bold
+=name
+\series default
+ behind each choice (where 
+\series bold
+name
+\series default
+ is the choice name).
+ For example the radio type example contains this choice list:
+\series bold
+ male=m, female=f
+\series default
+.
+ If the user chose 
+\begin_inset Quotes eld
+\end_inset
+
+male
+\begin_inset Quotes erd
+\end_inset
+
+ you know that he chose the choice 
+\begin_inset Quotes eld
+\end_inset
+
+m
+\begin_inset Quotes erd
+\end_inset
+
+.
+ By specifying names you can also preset/propose e.g.
+\begin_inset space \space{}
+\end_inset
+
+the choice 
+\begin_inset Quotes eld
+\end_inset
+
+male
+\begin_inset Quotes erd
+\end_inset
+
+ by adding the parameter 
+\series bold
+default=m
+\series default
+.
+ Here is an example:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ChoiceMenu
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+radio, name=sex, default=m
+\end_layout
+
+\end_inset
+
+male=m, female=f
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Sex:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ Due to a bug in the LaTeX package 
+\series bold
+hyperref
+\series default
+ it is currently only possible the set the first choice as default.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Push button
+\end_layout
+
+\begin_layout Standard
+A push button is added by inserting the custom inset 
+\family sans
+PushButton
+\family default
+.
+ Write inside the inset the label for the button.
+ Here is an example:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex PushButton
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Don't click on this button or your fridge will be destroyed!!!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The action that is triggered by pressing the button is specified by JavaScript
+ code.
+ To specify it, add the parameter 
+\series bold
+onclick={}
+\series default
+ and insert the JavaScript code between the braces.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex PushButton
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+onclick=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+app.alert(
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"
+\end_layout
+
+\end_inset
+
+What the hell? Now you destroyed your fridge.
+ Congratulations.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"
+\end_layout
+
+\end_inset
+
+)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Don't click on this button or your fridge will be destroyed!!!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For info about JavaScript, see its documentation, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "JavaScript"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A common usage for pus buttons is to open a weblink.
+ Such a button is created by inserting a hyperlink into the button inset.
+ Here is an example:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex PushButton
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Information how to fill out this form"
+target "http://wiki.lyx.org"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To get rid of the frame for weblinks add this to the additional options
+ in the document settings under 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+properties
+\family default
+:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+urlbordercolor={1 0 0}
+\end_layout
+
+\begin_layout Standard
+if your push button border color is red (the default), otherwise use the
+ same color definition as for your push button border color.
+\end_layout
+
+\begin_layout Subsection
+Submit button
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Submit-button"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A submit button is used to submit the form data to a server.
+ It is added by inserting the custom inset 
+\family sans
+SubmitButton
+\family default
+.
+ Write inside the inset the label for the button.
+ Here is an example:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex SubmitButton
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=submit1
+\end_layout
+
+\end_inset
+
+Send your data via email
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The submit button creates a forms data format (FDF) file (file extension
+ *.fdf) which is then submitted.
+ The FDF file contains only the form data.
+ They can only be applied to a PDF form if all fields in the form have a
+ name.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ You can only use a submit button if you specified the submit method and
+ target in the PDF form environment options! See sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Preparation"
+
+\end_inset
+
+ for the description.
+ If there are no specifications you will get LaTeX errors!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ If you have more than one submit button in your document you must specify
+ a name for each of them to avoid LaTeX errors! For example add 
+\series bold
+name=submit1
+\series default
+ (where 
+\series bold
+submit1
+\series default
+ is the button name).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Reset button
+\end_layout
+
+\begin_layout Standard
+A reset button is used to reset all form fields to the initial state.
+ It is added by inserting the custom inset 
+\family sans
+ResetButton
+\family default
+.
+ Write inside the inset the label for the button.
+ Here is an example:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ResetButton
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=reset1
+\end_layout
+
+\end_inset
+
+Reset the form
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ If you have more than one reset button in your document you must specify
+ a name for each of them to avoid LaTeX errors! For example add 
+\series bold
+name=reset1
+\series default
+ (where 
+\series bold
+reset1
+\series default
+ is the button name).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Form field customization
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Form-field-customization"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since all form elements should look uniform, one can determine their layout
+ using the following styles:
+\end_layout
+
+\begin_layout Description
+Text
+\begin_inset space ~
+\end_inset
+
+Field
+\begin_inset space ~
+\end_inset
+
+Style
+\end_layout
+
+\begin_layout Description
+Check
+\begin_inset space ~
+\end_inset
+
+Box
+\begin_inset space ~
+\end_inset
+
+Style 
+\end_layout
+
+\begin_layout Description
+List
+\begin_inset space ~
+\end_inset
+
+Box
+\begin_inset space ~
+\end_inset
+
+Style affects all choice menu types
+\end_layout
+
+\begin_layout Description
+Combo
+\begin_inset space ~
+\end_inset
+
+Box
+\begin_inset space ~
+\end_inset
+
+Style affects only the combo box style
+\end_layout
+
+\begin_layout Description
+Popdown
+\begin_inset space ~
+\end_inset
+
+Box
+\begin_inset space ~
+\end_inset
+
+Style affects only the popdown box style
+\end_layout
+
+\begin_layout Description
+Radio
+\begin_inset space ~
+\end_inset
+
+Box
+\begin_inset space ~
+\end_inset
+
+Style affects only the radio box style
+\end_layout
+
+\begin_layout Description
+Push
+\begin_inset space ~
+\end_inset
+
+Button
+\begin_inset space ~
+\end_inset
+
+Style
+\end_layout
+
+\begin_layout Description
+Submit
+\begin_inset space ~
+\end_inset
+
+Button
+\begin_inset space ~
+\end_inset
+
+Style
+\end_layout
+
+\begin_layout Description
+Reset
+\begin_inset space ~
+\end_inset
+
+Button
+\begin_inset space ~
+\end_inset
+
+Style
+\end_layout
+
+\begin_layout Text Field Style
+
+\end_layout
+
+\begin_layout Standard
+The content of the styles is a comma-separated list of parameters.
+ The possible parameters are listed in sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+6.2 
+\begin_inset Quotes eld
+\end_inset
+
+Forms optional parameters
+\begin_inset Quotes erd
+\end_inset
+
+ of the documentation of the LaTeX package 
+\series bold
+hyperref
+\series default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hyperref"
+
+\end_inset
+
+.
+ It is important that the parameter print is always part of the definition,
+ otherwise the fields won't appear in the PDF output.
+ The defined style is applied to all fields following the definition.
+\end_layout
+
+\begin_layout Subsubsection*
+Here are some examples:
+\end_layout
+
+\begin_layout Text Field Style
+print, bordercolor=red, borderstyle=U, backgroundcolor=lightgray, color=lime,
+ maxlen=10, align=2, charsize=16pt
+\end_layout
+
+\begin_layout Check Box Style
+print, borderstyle=S, checkboxsymbol=
+\backslash
+ding{55}
+\end_layout
+
+\begin_layout Combo Box Style
+print, bordercolor={0.33 0.66 0.33}, borderstyle=D
+\end_layout
+
+\begin_layout Popdown Box Style
+print, menulength=2
+\end_layout
+
+\begin_layout Radio Box Style
+print, borderstyle=I, radiosymbol=6
+\end_layout
+
+\begin_layout Push Button Style
+print, borderstyle=B, bordercolor=lime
+\end_layout
+
+\begin_layout Submit Button Style
+print, borderwidth=0, bordercolor=white
+\end_layout
+
+\begin_layout Reset Button Style
+print, bordercolor=lime
+\end_layout
+
+\begin_layout Itemize
+Text field with gray background, lime text color, a red border only below
+ the field, right alignment, 16
+\begin_inset space \thinspace{}
+\end_inset
+
+pt font size and a limitation for maximal 10
+\begin_inset space ~
+\end_inset
+
+characters to insert:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex TextField
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Enter your name here:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\series bold
+borderstyle
+\series default
+ can be 
+\series bold
+U
+\series default
+ (underlined), 
+\series bold
+S
+\series default
+ (solid), 
+\series bold
+D
+\series default
+ (dashed), 
+\series bold
+B
+\series default
+ (bevel), or 
+\series bold
+I
+\series default
+ (inverted bevel).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note
+\series default
+ that the 
+\series bold
+value
+\series default
+ has only an effect for text fields if a 
+\series bold
+name
+\series default
+ was specified.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Check box with normal border and symbol 
+\backslash
+ding{55}:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex CheckBox
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Are you older than 18 years?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The symbol is either specified as number or with the command
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+ding{number}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+where 
+\series bold
+number
+\series default
+ is one of the possible numbers listed in Table
+\begin_inset space ~
+\end_inset
+
+2 of 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pifont"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Combo box with dashed, colored border:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex ChoiceMenu
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+combo, name=combo2, default=Az
+\end_layout
+
+\end_inset
+
+Albania=Al, Armenia=Ar, Azerbaidschan=Az
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Country:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Popdown box where only 2
+\begin_inset space ~
+\end_inset
+
+entries are shown and where the last entry is preselected:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex ChoiceMenu
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+popdown, name=country2, value=Az
+\end_layout
+
+\end_inset
+
+Albania=Al, Armenia=Ar, Azerbaidschan=Az
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Country:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note
+\series default
+ that the 
+\series bold
+borderstyle B
+\series default
+ and 
+\series bold
+I
+\series default
+ and also 
+\series bold
+color
+\series default
+ has no effect for popdown boxes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Radio box with inverted bevel border and symbol number
+\begin_inset space ~
+\end_inset
+
+6 as checkmark:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex ChoiceMenu
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+radio, name=radio2
+\end_layout
+
+\end_inset
+
+male=m, female=f
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Sex:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Push button with a bevel border and colored text:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex PushButton
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+onclick=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+app.alert(
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"
+\end_layout
+
+\end_inset
+
+Why do you click this?
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"
+\end_layout
+
+\end_inset
+
+)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+colorbox{lime}{
+\end_layout
+
+\end_inset
+
+
+\color red
+Don't click on this button!!!
+\color inherit
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note
+\series default
+ that the 
+\series bold
+backgroundcolor
+\series default
+ and
+\series bold
+ color
+\series default
+ has no effect for push, submit and reset buttons.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As workaround use the command 
+\series bold
+
+\backslash
+colorbox
+\series default
+ as described in sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+ 5.7 
+\begin_inset Quotes eld
+\end_inset
+
+Colored Boxes
+\begin_inset Quotes erd
+\end_inset
+
+ in LyX's 
+\emph on
+EmbeddedObjects
+\emph default
+ manual.
+\begin_inset Newline newline
+\end_inset
+
+In the button above this code was used:
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+
+\backslash
+colorbox{lime}{Don't click on this button!!!}
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+and the button text was colored.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note
+\series default
+ that the 
+\series bold
+height 
+\series default
+and 
+\series bold
+width
+\series default
+ has no effect for push, submit and reset buttons.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As workaround use the box method described in sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Action-button-customization"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Submit button without border, with cyan background color and increased height:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex SubmitButton
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=submit2
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+colorbox{cyan}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 1
+use_makebox 0
+width "5cm"
+special "none"
+height "4in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ Send your data via mail
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Reset button with a width of 7
+\begin_inset space \thinspace{}
+\end_inset
+
+cm:
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex ResetButton
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=reset2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "7cm"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ Reset the form
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+PDF viewer action buttons
+\end_layout
+
+\begin_layout Standard
+One often needs basic actions to be done by the PDF viewer program.
+ For example to print the form.
+ Such PDF program-specific actions can be triggered by adding inserting
+ the custom inset 
+\family sans
+PDFAction
+\family default
+.
+ The PDF viewer programs 
+\emph on
+Acrobat
+\emph default
+ and 
+\emph on
+Adobe Reader
+\emph default
+ can handle all possible actions while other PDF viewers might only support
+ some of them.
+ However, all PDF viewer programs support the basic things like printing,
+ save
+\begin_inset space ~
+\end_inset
+
+as, view in fullscreen etc..
+\end_layout
+
+\begin_layout Standard
+To specify the action insert its name to the 
+\family sans
+Action
+\family default
+ inset.
+ A list with possible actions can be found in sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+5 
+\begin_inset Quotes eld
+\end_inset
+
+Acrobat-specific behavior
+\begin_inset Quotes erd
+\end_inset
+
+ of the documentation of the LaTeX package 
+\series bold
+hyperref
+\series default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hyperref"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Here are some examples:
+\end_layout
+
+\begin_layout Description
+Printing: 
+\begin_inset Flex PDFAction
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Print
+\end_layout
+
+\end_inset
+
+Print the document
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Save
+\begin_inset space ~
+\end_inset
+
+as: 
+\begin_inset Flex PDFAction
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+SaveAs
+\end_layout
+
+\end_inset
+
+Save document as
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+View
+\begin_inset space ~
+\end_inset
+
+in
+\begin_inset space ~
+\end_inset
+
+fullscreen: 
+\begin_inset Flex PDFAction
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+FullScreen
+\end_layout
+
+\end_inset
+
+View the form in fullscreen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Action button customization
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Action-button-customization"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Customizing the action buttons requires the usage of boxes because things
+ like the width, height and border separation cannot be specified as button
+ parameters.
+\end_layout
+
+\begin_layout Standard
+The easiest way to customize the buttons is to fill it with a custom box.
+ For example the button should be 4
+\begin_inset space \thinspace{}
+\end_inset
+
+cm wide and have the height of 2 lines.
+ Then create this parbox:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 1
+use_makebox 0
+width "4cm"
+special "none"
+height "2in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\noindent
+Save form as
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+inside a 
+\family sans
+PDFAction
+\family default
+ inset.
+ To center the text in the button add 
+\series bold
+
+\backslash
+centering
+\series default
+ as TeX code right before the button text.
+ This is the result:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex PDFAction
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+SaveAs
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 1
+use_makebox 0
+width "4cm"
+special "none"
+height "2in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ Save form as
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To customize the border color, add the command 
+\series bold
+menubordercolor={r g b}
+\series default
+ to the additional options in the document settings under 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+properties
+\family default
+ and replace 
+\series bold
+r
+\series default
+, 
+\series bold
+g
+\series default
+ and 
+\series bold
+b
+\series default
+ with a number between 0 and 1 for the colors red, green and blue.
+ If you want to change the border color only for certain buttons, use the
+ layout 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+link
+\begin_inset space ~
+\end_inset
+
+setup
+\family default
+ before the button and insert there the command 
+\series bold
+menubordercolor
+\series default
+.
+ The default value of 
+\series bold
+menubordercolor
+\series default
+ is 
+\series bold
+{1 0 0}
+\series default
+.
+\end_layout
+
+\begin_layout PDF Link Setup
+menubordercolor={0.1 0.9 0.5}
+\end_layout
+
+\begin_layout Standard
+An example with 
+\series bold
+menubordercolor={0.1 0.9 0.5}
+\series default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex PDFAction
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+SaveAs
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 1
+use_makebox 0
+width "4cm"
+special "none"
+height "2in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ Save form as
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To change the border width use the command 
+\series bold
+pdfborder={0 0 w}
+\series default
+ where 
+\series bold
+w
+\series default
+ is the width in pixels.
+ The default value of 
+\series bold
+pdfborder
+\series default
+ is 
+\series bold
+{0 0 1}
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ 
+\series bold
+pdfborder
+\series default
+ affects all link types, not only the menu links.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout PDF Link Setup
+pdfborder={0 0 4}, menubordercolor={1 1 0}
+\end_layout
+
+\begin_layout Standard
+An example with a 4
+\begin_inset space ~
+\end_inset
+
+pixel thick yellow border:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex PDFAction
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+SaveAs
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 1
+use_makebox 0
+width "4cm"
+special "none"
+height "2in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ Save form as
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To change the background color insert the command 
+\series bold
+
+\backslash
+colorbox{color}{
+\series default
+ at the beginning of the button inset and a 
+\series bold
+}
+\series default
+ at the end.
+ 
+\series bold
+color
+\series default
+ is hereby the name of the color as described in sec.
+\begin_inset space \thinspace{}
+\end_inset
+
+5.7 
+\begin_inset Quotes eld
+\end_inset
+
+Colored Boxes
+\begin_inset Quotes erd
+\end_inset
+
+ of LyX's 
+\emph on
+EmbeddedObjects
+\emph default
+ manual.
+\end_layout
+
+\begin_layout PDF Link Setup
+pdfborder={0 0 0}
+\end_layout
+
+\begin_layout Standard
+An example without a border and with lime background color:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex PDFAction
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+SaveAs
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+colorbox{lime}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 1
+use_makebox 0
+width "4cm"
+special "none"
+height "2in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ Save form as
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout PDF Link Setup
+pdfborder={0 0 1}, menubordercolor={1 0 0}
+\end_layout
+
+\begin_layout Section
+Dynamic form fields
+\end_layout
+
+\begin_layout Standard
+It is also possible to have dynamic form fields.
+ This means that depending on the actions of the user fields can (dis)appear
+ or change their appearance.
+ To use this feature, add these lines to your document preamble:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+usepackage[pdftex]{insdljs}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+pdfcatalog{/AA 
+\backslash
+the
+\backslash
+pdflastobj
+\backslash
+space 0 R}
+\end_layout
+
+\begin_layout Standard
+Then add the necessary JavaScript code to your document LaTeX preamble or
+ as TeX code to your document.
+ For info about JavaScript, see its documentation, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "JavaScript"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+ifinsdljs
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following section will only be displayed when the LaTeX package 
+\series bold
+insdljs
+\series default
+ is installed.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the following choice menu this JavaScript code was used:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=TeX"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{insDLJS}[exaaae]{exaaae}{JavaScript}
+\end_layout
+
+\begin_layout Plain Layout
+
+ function validateTime(){
+\end_layout
+
+\begin_layout Plain Layout
+
+  this.delay = true;
+\end_layout
+
+\begin_layout Plain Layout
+
+  if((event.value == "u") || (event.value == "unlimited")) {
+\end_layout
+
+\begin_layout Plain Layout
+
+   this.getField("from").display = display.hidden;
+\end_layout
+
+\begin_layout Plain Layout
+
+   this.getField("to").display = display.hidden;
+\end_layout
+
+\begin_layout Plain Layout
+
+  } else {
+\end_layout
+
+\begin_layout Plain Layout
+
+   this.getField("from").display = display.visible;
+\end_layout
+
+\begin_layout Plain Layout
+
+   this.getField("to").display = display.visible;
+\end_layout
+
+\begin_layout Plain Layout
+
+   this.getField("from").setFocus();
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+  this.delay = false;
+\end_layout
+
+\begin_layout Plain Layout
+
+ }
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{insDLJS}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ 
+\emph on
+All
+\emph default
+ JavaScript funtions must be inserted into the same 
+\family sans
+insDLJS
+\family default
+ environment.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+form
+\begin_inset space ~
+\end_inset
+
+parameters
+\family default
+ of the following choice menu are
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+name=contract,radio,default=tl,validate={validateTime();}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex ChoiceMenu
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=contract,radio,default=tl,validate=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+validateTime();
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+term-limited=tl, unlimited=u
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Job contract:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+From:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex TextField
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=from,width=10em
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset VSpace -1.5mm
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+To:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex TextField
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=to,width=10em
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To check and assure that the user only enters a number to a text field you
+ can for example use this JavaScript code:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=TeX"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+function checkNumber() {
+\end_layout
+
+\begin_layout Plain Layout
+
+ event.rc = true;
+\end_layout
+
+\begin_layout Plain Layout
+
+ if (!Number(event.value)) {
+\end_layout
+
+\begin_layout Plain Layout
+
+  app.alert("Value must be a number!");
+\end_layout
+
+\begin_layout Plain Layout
+
+  event.value = "";
+\end_layout
+
+\begin_layout Plain Layout
+
+ } else {
+\end_layout
+
+\begin_layout Plain Layout
+
+  event.target.textColor = color.green;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+An example text field: 
+\begin_inset Flex TextField
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=onlyNumbers, align=1, validate=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+checkNumber();
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+else
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following will be displayed when the LaTeX package 
+\series bold
+insdljs
+\series default
+ is not installed:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You need to install the package 
+\series bold
+insdljs
+\series default
+ to see the content of this section in the output.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+fi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout End PDF Form
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+keep this emtpy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+General notes and hints
+\end_layout
+
+\begin_layout Itemize
+Submitting and applying data requires that all form fields have a name.
+\end_layout
+
+\begin_layout Itemize
+All braces, brackets, backslashes and quote characters in form parameters
+ must be inserted as TeX code!
+\end_layout
+
+\begin_layout Itemize
+It is not possible to create a PDF form using XeTeX.
+ Use either the LyX export formats 
+\family sans
+PDF (pdflatex)
+\family default
+ or 
+\family sans
+PDF (LuaTeX)
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+To be able to use all kinds of colors and color definitions you must load
+ the LaTeX package 
+\series bold
+xcolor
+\series default
+ in the document preamble this way:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+usepackage[svgnames,rgb]{xcolor}
+\end_layout
+
+\begin_layout Itemize
+To see in 
+\emph on
+Adobe Reader
+\emph default
+ and 
+\emph on
+Acrobat
+\emph default
+ custom background colors you must disable in these programs to highlight
+ the available form fields in the PDF.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "JavaScript"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "JavaScript reference"
+target "https://developer.mozilla.org/en/docs/Web/JavaScript/Reference"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "hyperref"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/manual.pdf"
+
+\end_inset
+
+ of the LaTeX package 
+\series bold
+hyperref
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "pifont"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "http://mirrors.ctan.org/macros/latex/required/psnfss/psnfss2e.pdf"
+
+\end_inset
+
+ of the LaTeX package 
+\series bold
+pifont
+\end_layout
+
+\end_body
+\end_document

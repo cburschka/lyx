@@ -1,0 +1,186 @@
+#\DeclareLyXModule{PDF Form}
+#DescriptionBegin
+#Provides fields and buttons for PDF forms. The module uses
+#the LaTeX package hyperref. Please consult the LyX example file PDF-form.lyx
+#and the documentation of hyperref for details.
+#DescriptionEnd
+# Author: Uwe Stöhr <uwestoehr@lyx.org>
+
+Format 49
+
+#
+# the form environment
+#
+
+Style "Begin PDF Form"
+	Margin				Dynamic
+	LatexType			Command
+	LatexName			begin{Form}
+	Category			"PDF form"
+	KeepEmpty			1
+	PassThru			1
+	ParSkip				0.4
+	Align				Block
+	LabelSep			xx
+	LabelType			Static
+	LabelString			"Begin PDF Form"
+	Argument 1
+	  MenuString		"PDF Form Parameters"
+	  LabelString		"Params"
+	  Tooltip			"Insert PDF form parameters here"
+	  AutoInsert		1
+	EndArgument
+	LabelFont
+	  Series			Bold
+	  Color				Green
+	EndFont
+	Requires                        hyperref
+End
+
+Style "End PDF Form"
+	CopyStyle			"Begin PDF Form"
+	LatexName			end{Form}
+	LabelString			"End PDF Form"
+	ResetArgs			1
+End
+
+Style "PDF Link Setup"
+	CopyStyle			"Begin PDF Form"
+	LatexName			hypersetup
+	LabelString			"PDF link setup"
+	KeepEmpty			0
+End
+
+#
+# form fields
+#
+
+InsetLayout Flex:TextField
+	LyXType				custom
+	LatexType			command
+	Decoration			classic
+	LatexName			TextField
+	LabelString			"TextField"
+	Argument 1
+	  MenuString		"PDF Form Parameters"
+	  LabelString		"Params"
+	  Tooltip			"Insert PDF form parameters here"
+	  AutoInsert		1
+	EndArgument
+	LabelFont
+	  Color				magenta
+	  Size				Small
+	EndFont
+	Requires                        hyperref
+End
+
+InsetLayout Flex:CheckBox
+	CopyStyle			Flex:TextField
+	LatexName			CheckBox
+	LabelString			"CheckBox"
+End
+
+InsetLayout Flex:ChoiceMenu
+	CopyStyle			Flex:TextField
+	LatexName			ChoiceMenu
+	LabelString			"ChoiceMenu"
+	Argument 2
+	  LabelString		"Label"
+	  Mandatory			1
+	  AutoInsert		1
+	  ToolTip			"Insert the label here"
+	EndArgument
+End
+
+InsetLayout Flex:PushButton
+	CopyStyle			Flex:TextField
+	LatexName			PushButton
+	LabelString			"PushButton"
+End
+
+InsetLayout Flex:SubmitButton
+	CopyStyle			Flex:TextField
+	LatexName			Submit
+	LabelString			"SubmitButton"
+End
+
+InsetLayout Flex:ResetButton
+	CopyStyle			Flex:TextField
+	LatexName			Reset
+	LabelString			"ResetButton"
+End
+
+#
+# PDF viewer-specific insets
+#
+
+InsetLayout Flex:PDFAction
+	CopyStyle			Flex:TextField
+	LatexName			Acrobatmenu
+	LabelString			"PDFAction"
+	Argument 1
+	  LabelString		"Action"
+	  Mandatory			1
+	  AutoInsert		1
+	  ToolTip			"The name of the PDF action"
+	EndArgument
+End
+
+#
+# Form style layouts
+#
+
+Style "Text Field Style"
+	CopyStyle			"Begin PDF Form"
+	LatexName			renewcommand*{\DefaultOptionsofText}
+	LabelString			"Default text field style"
+	PassThru			1
+End
+
+Style "Submit Button Style"
+	CopyStyle			"Text Field Style"
+	LatexName			renewcommand*{\DefaultOptionsofSubmit}
+	LabelString			"Default submit button style"
+End
+
+Style "Push Button Style"
+	CopyStyle			"Text Field Style"
+	LatexName			renewcommand*{\DefaultOptionsofPushButton}
+	LabelString			"Default push button style"
+End
+
+Style "Check Box Style"
+	CopyStyle			"Text Field Style"
+	LatexName			renewcommand*{\DefaultOptionsofCheckBox}
+	LabelString			"Default check box style"
+End
+
+Style "Reset Button Style"
+	CopyStyle			"Text Field Style"
+	LatexName			renewcommand*{\DefaultOptionsofReset}
+	LabelString			"Default reset button style"
+End
+
+Style "List Box Style"
+	CopyStyle			"Text Field Style"
+	LatexName			renewcommand*{\DefaultOptionsofListBox}
+	LabelString			"Default list box style"
+End
+
+Style "Combo Box Style"
+	CopyStyle			"Text Field Style"
+	LatexName			renewcommand*{\DefaultOptionsofComboBox}
+	LabelString			"Default combo box style"
+End
+
+Style "Popdown Box Style"
+	CopyStyle			"Text Field Style"
+	LatexName			renewcommand*{\DefaultOptionsofPopdownBox}
+	LabelString			"Default popdown box style"
+End
+
+Style "Radio Box Style"
+	CopyStyle			"Text Field Style"
+	LatexName			renewcommand*{\DefaultOptionsofRadio}
+	LabelString			"Default radio box style"
+End
