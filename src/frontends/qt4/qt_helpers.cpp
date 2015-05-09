@@ -21,6 +21,7 @@
 
 #include "BufferParams.h"
 #include "FloatList.h"
+#include "IndicesList.h"
 #include "Language.h"
 #include "Length.h"
 #include "TextClass.h"
@@ -618,6 +619,15 @@ QString guiName(string const & type, BufferParams const & bp)
 		return qt_("Branches");
 	if (type == "change")
 		return qt_("Changes");
+	if (prefixIs(type, "index:")) {
+		string const itype = split(type, ':');
+		IndicesList const & indiceslist = bp.indiceslist();
+		Index const * index = indiceslist.findShortcut(from_utf8(itype));
+		docstring indextype = _("unknown type!");
+		if (index)
+			indextype = index->index();
+		return toqstr(bformat(_("Index Entries (%1$s)"), indextype));
+	}
 
 	FloatList const & floats = bp.documentClass().floats();
 	if (floats.typeExist(type))
