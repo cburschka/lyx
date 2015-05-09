@@ -982,7 +982,7 @@ convert = [
           ]
 
 revert =  [
-           [486, [revert_newgloss, revert_glossgroup]],
+           [487, [revert_newgloss, revert_glossgroup]],
            [486, [revert_forest]],
            [485, [revert_ex_itemargs]],
            [484, [revert_sigplan_doi]],
