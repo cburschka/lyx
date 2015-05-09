@@ -11391,8 +11391,50 @@ status collapsed
 , this argument is automatically inserted when the respective style is selected.
  Currently, only one argument per style\SpecialChar breakableslash
 layout can be automatically inserted.
-\change_inserted -712698321 1431070519
+\change_inserted -712698321 1431166542
 
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1431166604
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1431166548
+InsertCotext
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1431166543
+[int=0]
+\end_layout
+
+\end_inset
+
+ If this is set to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1431166543
+1
+\end_layout
+
+\end_inset
+
+, this argument will bei inserted with a copy of the co-text (either selected
+ text or the whole paragraph) as content.
 \end_layout
 
 \begin_layout Itemize

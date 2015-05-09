@@ -266,6 +266,35 @@ static bool doInsertInset(Cursor & cur, Text * text,
 		}
 		return true;
 	}
+	else if (cmd.action() == LFUN_ARGUMENT_INSERT) {
+		bool cotextinsert = false;
+		InsetArgument const * const ia = static_cast<InsetArgument const *>(inset);
+		Layout const & lay = cur.paragraph().layout();
+		Layout::LaTeXArgMap args = lay.args();
+		Layout::LaTeXArgMap::const_iterator const lait = args.find(ia->name());
+		if (lait != args.end())
+			cotextinsert = (*lait).second.insertcotext;
+		// The argument requests to insert a copy of the co-text to the inset
+		if (cotextinsert) {
+			docstring ds;
+			// If we have a selection within a paragraph, use this
+			if (cur.selection() && cur.selBegin().pit() == cur.selEnd().pit())
+				ds = cur.selectionAsString(false);
+			// else use the whole paragraph
+			else
+				ds = cur.paragraph().asString();
+			text->insertInset(cur, inset);
+			if (edit)
+				inset->edit(cur, true);
+			// Now put co-text into inset
+			Font const f(inherit_font, cur.current_font.language());
+			if (!ds.empty()) {
+				cur.text()->insertStringAsLines(cur, ds, f);
+				cur.leaveInset(*inset);
+			}
+			return true;
+		}
+	}
 
 	bool gotsel = false;
 	if (cur.selection()) {

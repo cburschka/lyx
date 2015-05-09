@@ -936,6 +936,7 @@ void Layout::readArgument(Lexer & lex)
 	// writeArgument() makes use of these default values
 	arg.mandatory = false;
 	arg.autoinsert = false;
+	arg.insertcotext = false;
 	bool error = false;
 	bool finished = false;
 	arg.font = inherit_font;
@@ -965,6 +966,9 @@ void Layout::readArgument(Lexer & lex)
 		} else if (tok == "autoinsert") {
 			lex.next();
 			arg.autoinsert = lex.getBool();
+		} else if (tok == "insertcotext") {
+			lex.next();
+			arg.insertcotext = lex.getBool();
 		} else if (tok == "leftdelim") {
 			lex.next();
 			arg.ldelim = lex.getDocString();
@@ -1024,6 +1028,8 @@ void writeArgument(ostream & os, string const & id, Layout::latexarg const & arg
 		os << "\t\tMandatory " << arg.mandatory << '\n';
 	if (arg.autoinsert)
 		os << "\t\tAutoinsert " << arg.autoinsert << '\n';
+	if (arg.insertcotext)
+		os << "\t\tInsertCotext " << arg.insertcotext << '\n';
 	if (!arg.ldelim.empty())
 		os << "\t\tLeftDelim \""
 		   << to_utf8(subst(arg.ldelim, from_ascii("\n"), from_ascii("<br/>")))

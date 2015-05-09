@@ -104,6 +104,7 @@ public:
 		FontInfo font;
 		FontInfo labelfont;
 		bool autoinsert;
+		bool insertcotext;
 		docstring pass_thru_chars;
 	};
 	///

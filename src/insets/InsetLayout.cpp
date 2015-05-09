@@ -564,6 +564,7 @@ void InsetLayout::readArgument(Lexer & lex)
 	Layout::latexarg arg;
 	arg.mandatory = false;
 	arg.autoinsert = false;
+	arg.insertcotext = false;
 	bool error = false;
 	bool finished = false;
 	arg.font = inherit_font;
@@ -591,6 +592,9 @@ void InsetLayout::readArgument(Lexer & lex)
 		} else if (tok == "autoinsert") {
 			lex.next();
 			arg.autoinsert = lex.getBool();
+		} else if (tok == "insertcotext") {
+			lex.next();
+			arg.insertcotext = lex.getBool();
 		} else if (tok == "leftdelim") {
 			lex.next();
 			arg.ldelim = lex.getDocString();
