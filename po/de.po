@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-04-11 16:48+0200\n"
-"PO-Revision-Date: 2015-04-11 16:52+0200\n"
+"POT-Creation-Date: 2015-05-09 17:24+0200\n"
+"PO-Revision-Date: 2015-05-09 17:30+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -316,9 +316,9 @@ msgstr "A&lle hinzufügen"
 #: src/frontends/qt4/ui/ListingsUi.ui:559 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/DocumentUi.ui:84
 #: src/frontends/qt4/ui/CitationUi.ui:220
-#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1279
-#: src/Buffer.cpp:1348 src/Buffer.cpp:2715 src/Buffer.cpp:4217
-#: src/Buffer.cpp:4281 src/LyXVC.cpp:107 src/LyXVC.cpp:297
+#: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1282
+#: src/Buffer.cpp:1351 src/Buffer.cpp:2718 src/Buffer.cpp:4220
+#: src/Buffer.cpp:4284 src/LyXVC.cpp:107 src/LyXVC.cpp:297
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:246
 #: src/frontends/qt4/GuiDocument.cpp:2106
@@ -2215,7 +2215,7 @@ msgstr "&Hinzufügen"
 #: src/frontends/qt4/ui/BibtexUi.ui:213 src/frontends/qt4/ui/ChangesUi.ui:91
 #: src/frontends/qt4/ui/ShortcutUi.ui:65 src/buffer_funcs.cpp:123
 #: src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1740
+#: src/frontends/qt4/GuiApplication.cpp:1738
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -2746,8 +2746,8 @@ msgid "Remove the selected index"
 msgstr "Den ausgewählten Index entfernen"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:165
-#: src/frontends/qt4/ui/BranchesUi.ui:136 src/Buffer.cpp:4243
-#: src/Buffer.cpp:4256
+#: src/frontends/qt4/ui/BranchesUi.ui:136 src/Buffer.cpp:4246
+#: src/Buffer.cpp:4259
 msgid "&Remove"
 msgstr "&Entfernen"
 
@@ -3841,8 +3841,8 @@ msgstr "Input"
 msgid "Verbatim"
 msgstr "Unformatiert"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1199
-#: src/insets/InsetInclude.cpp:1205
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1205
+#: src/insets/InsetInclude.cpp:1211
 msgid "Program Listing"
 msgstr "Programmlisting"
 
@@ -6488,7 +6488,7 @@ msgid "Topical"
 msgstr "Thematisch"
 
 #: lib/layouts/iopart.layout:94 lib/layouts/stdinsets.inc:115
-#: lib/layouts/pdfcomment.module:126 lib/layouts/pdfcomment.module:163
+#: lib/layouts/pdfcomment.module:127 lib/layouts/pdfcomment.module:164
 msgid "Comment"
 msgstr "Kommentar"
 
@@ -7487,8 +7487,8 @@ msgstr "Soziales Netzwerk:"
 #: lib/layouts/IEEEtran.layout:377 lib/layouts/IEEEtran.layout:394
 #: lib/layouts/g-brief2.layout:44 lib/layouts/g-brief2.layout:83
 #: lib/layouts/scrlettr.layout:116 lib/layouts/agu_stdtitle.inc:185
-#: lib/layouts/pdfcomment.module:28 lib/layouts/pdfcomment.module:45
-#: lib/layouts/pdfcomment.module:56 src/frontends/qt4/GuiIndices.cpp:51
+#: lib/layouts/pdfcomment.module:29 lib/layouts/pdfcomment.module:46
+#: lib/layouts/pdfcomment.module:57 src/frontends/qt4/GuiIndices.cpp:51
 #: src/mathed/MathMacroTemplate.cpp:487
 msgid "Name"
 msgstr "Name"
@@ -11251,7 +11251,7 @@ msgstr "Rahmen"
 #: lib/layouts/beamer.layout:1390 lib/layouts/beamer.layout:1408
 #: lib/layouts/beamer.layout:1427 lib/layouts/beamer.layout:1446
 #: lib/layouts/beamer.layout:1465 lib/layouts/beamer.layout:1484
-#: lib/layouts/beamer.layout:1508
+#: lib/layouts/beamer.layout:1508 lib/layouts/pdfform.module:122
 msgid "Action"
 msgstr "Aktion"
 
@@ -13215,45 +13215,163 @@ msgstr ""
 "3, Lemma 2, ..., und nicht Theorem 1, Theorem 2, Lemma 3, Satz 4, ...). Die "
 "Nummerierung wird außerdem am Kapitelbeginn zurückgesetzt."
 
-#: lib/layouts/rsphrase.module:2
-msgid "Risk and Safety Statements"
-msgstr "R- und S-Sätze"
+#: lib/layouts/pdfform.module:2
+msgid "PDF Form"
+msgstr "PDF-Formular"
 
-#: lib/layouts/rsphrase.module:7
+#: lib/layouts/pdfform.module:7
 msgid ""
-"Provides two insets and one environment to typeset numbers and phrases of "
-"chemical risk and safety statements. For a description see the file R-S-"
-"statements.lyx in LyX's examples folder."
+"Provides fields and buttons for PDF forms. The module uses the LaTeX package "
+"hyperref. Please consult the LyX example file PDF-form.lyx and the "
+"documentation of hyperref for details."
 msgstr ""
-"Stellt zwei Einfügungen und eine Umgebung für Nummern und Aussagen von R- "
-"und S-Sätzen zur Verfügung. Die Verwendung ist in der Datei R-S-statements."
-"lyx dokumentiert, die Sie im Ordner \"examples\" finden."
+"Stellt Felder und Schaltflächen zur Erzeugung von PDF-Formularen bereit. Das "
+"Modul verwendet das Paket 'hyperref'. Bitte konsultieren Sie dessen "
+"Anleitung sowie die LyX-Beispieldatei 'PDF-form.lyx' für weitere Hinweise."
 
-#: lib/layouts/rsphrase.module:11 lib/layouts/rsphrase.module:16
-msgid "R-S number"
-msgstr "R-S Nummer"
+#: lib/layouts/pdfform.module:15 lib/layouts/pdfform.module:26
+msgid "Begin PDF Form"
+msgstr "Beginne PDF-Formular"
 
-#: lib/layouts/rsphrase.module:33 lib/layouts/rsphrase.module:36
-msgid "R-S phrase"
-msgstr "R-S-Satz"
+#: lib/layouts/pdfform.module:19
+msgid "PDF form"
+msgstr "PDF-Formular"
 
-#: lib/layouts/rsphrase.module:39
-msgid "Safety phrase"
-msgstr "Sicherheitssatz"
+#: lib/layouts/pdfform.module:28 lib/layouts/pdfform.module:65
+msgid "PDF Form Parameters"
+msgstr "PDF-Formular-Parameter"
 
-#: lib/layouts/rsphrase.module:46
-msgid "Phrase Text"
-msgstr "Satztext"
+#: lib/layouts/pdfform.module:29 lib/layouts/pdfform.module:66
+msgid "Params"
+msgstr "Parameter"
 
-#: lib/layouts/rsphrase.module:47
-msgid "Argument for statements that requires to specify additional information"
-msgstr ""
-"Argument für einen Satz, bei dem zusätzliche Informationen spezifiziert "
-"werden müssen."
+#: lib/layouts/pdfform.module:30 lib/layouts/pdfform.module:67
+msgid "Insert PDF form parameters here"
+msgstr "Geben Sie hier Parameter für das PDF-Formular ein"
 
-#: lib/layouts/rsphrase.module:60
-msgid "S phrase:"
-msgstr "S-Satz:"
+#: lib/layouts/pdfform.module:40 lib/layouts/pdfform.module:43
+msgid "End PDF Form"
+msgstr "Beende PDF-Formular"
+
+#: lib/layouts/pdfform.module:47
+msgid "PDF Link Setup"
+msgstr "PDF-Link-Einstellungen"
+
+#: lib/layouts/pdfform.module:50
+msgid "PDF link setup"
+msgstr "PDF-Link-Einstellungen"
+
+#: lib/layouts/pdfform.module:58 lib/layouts/pdfform.module:63
+msgid "TextField"
+msgstr "Textfeld"
+
+#: lib/layouts/pdfform.module:77 lib/layouts/pdfform.module:80
+msgid "CheckBox"
+msgstr "Ankreuzfeld"
+
+#: lib/layouts/pdfform.module:83 lib/layouts/pdfform.module:86
+msgid "ChoiceMenu"
+msgstr "Auswahlmenü"
+
+#: lib/layouts/pdfform.module:88
+msgid "Label"
+msgstr "Marke"
+
+#: lib/layouts/pdfform.module:91
+msgid "Insert the label here"
+msgstr "Geben Sie hier die Marke ein"
+
+#: lib/layouts/pdfform.module:95 lib/layouts/pdfform.module:98
+msgid "PushButton"
+msgstr "Knopf"
+
+#: lib/layouts/pdfform.module:101 lib/layouts/pdfform.module:104
+msgid "SubmitButton"
+msgstr "Sende-Knopf"
+
+#: lib/layouts/pdfform.module:107 lib/layouts/pdfform.module:110
+msgid "ResetButton"
+msgstr "Zurücksetzen-Knopf"
+
+#: lib/layouts/pdfform.module:117 lib/layouts/pdfform.module:120
+msgid "PDFAction"
+msgstr "PDF-Aktion"
+
+#: lib/layouts/pdfform.module:125
+msgid "The name of the PDF action"
+msgstr "Name der PDF-Aktion"
+
+#: lib/layouts/pdfform.module:133
+msgid "Text Field Style"
+msgstr "Textfeld-Stil"
+
+#: lib/layouts/pdfform.module:136
+msgid "Default text field style"
+msgstr "Standard-Textfeld-Stil"
+
+#: lib/layouts/pdfform.module:140
+msgid "Submit Button Style"
+msgstr "Sendeknopf-Stil"
+
+#: lib/layouts/pdfform.module:143
+msgid "Default submit button style"
+msgstr "Standard-Sendeknopf-Stil"
+
+#: lib/layouts/pdfform.module:146
+msgid "Push Button Style"
+msgstr "Knopf-Stil"
+
+#: lib/layouts/pdfform.module:149
+msgid "Default push button style"
+msgstr "Standard-Knopfstil:"
+
+#: lib/layouts/pdfform.module:152
+msgid "Check Box Style"
+msgstr "Ankreuzfeld-Stil"
+
+#: lib/layouts/pdfform.module:155
+msgid "Default check box style"
+msgstr "Standard-Ankreuzfeld-Stil"
+
+#: lib/layouts/pdfform.module:158
+msgid "Reset Button Style"
+msgstr "Zurücksetzknopf-Stil"
+
+#: lib/layouts/pdfform.module:161
+msgid "Default reset button style"
+msgstr "Standard-Zurücksetzknopf-Stil"
+
+#: lib/layouts/pdfform.module:164
+msgid "List Box Style"
+msgstr "Listen-Auswahlbox-Stil"
+
+#: lib/layouts/pdfform.module:167
+msgid "Default list box style"
+msgstr "Standard-Listen-Auswahlbox-Stil"
+
+#: lib/layouts/pdfform.module:170
+msgid "Combo Box Style"
+msgstr "Auswahlbox-Stil"
+
+#: lib/layouts/pdfform.module:173
+msgid "Default combo box style"
+msgstr "Standard-Listen-Auswahlbox-Stil"
+
+#: lib/layouts/pdfform.module:176
+msgid "Popdown Box Style"
+msgstr "Popdownbox-Stil"
+
+#: lib/layouts/pdfform.module:179
+msgid "Default popdown box style"
+msgstr "Standard-Popdownbox-Stil"
+
+#: lib/layouts/pdfform.module:182
+msgid "Radio Box Style"
+msgstr "Optionsschaltflächenstil"
+
+#: lib/layouts/pdfform.module:185
+msgid "Default radio box style"
+msgstr "Standard-Optionsschaltflächenstil"
 
 #: lib/layouts/endnotes.module:2 lib/layouts/endnotes.module:13
 msgid "Endnote"
@@ -13938,6 +14056,46 @@ msgstr ""
 "hinweg durchnummeriert. Das kann durch das Laden anderer Theorem-Module (z."
 "B. 'Theorem (abschnittsweise ...)') geändert werden."
 
+#: lib/layouts/rsphrase.module:2
+msgid "Risk and Safety Statements"
+msgstr "R- und S-Sätze"
+
+#: lib/layouts/rsphrase.module:7
+msgid ""
+"Provides two insets and one environment to typeset numbers and phrases of "
+"chemical risk and safety statements. For a description see the file R-S-"
+"statements.lyx in LyX's examples folder."
+msgstr ""
+"Stellt zwei Einfügungen und eine Umgebung für Nummern und Aussagen von R- "
+"und S-Sätzen zur Verfügung. Die Verwendung ist in der Datei R-S-statements."
+"lyx dokumentiert, die Sie im Ordner \"examples\" finden."
+
+#: lib/layouts/rsphrase.module:11 lib/layouts/rsphrase.module:16
+msgid "R-S number"
+msgstr "R-S Nummer"
+
+#: lib/layouts/rsphrase.module:33 lib/layouts/rsphrase.module:36
+msgid "R-S phrase"
+msgstr "R-S-Satz"
+
+#: lib/layouts/rsphrase.module:39
+msgid "Safety phrase"
+msgstr "Sicherheitssatz"
+
+#: lib/layouts/rsphrase.module:46
+msgid "Phrase Text"
+msgstr "Satztext"
+
+#: lib/layouts/rsphrase.module:47
+msgid "Argument for statements that requires to specify additional information"
+msgstr ""
+"Argument für einen Satz, bei dem zusätzliche Informationen spezifiziert "
+"werden müssen."
+
+#: lib/layouts/rsphrase.module:60
+msgid "S phrase:"
+msgstr "S-Satz:"
+
 #: lib/layouts/foottoend.module:2
 msgid "Foot to End"
 msgstr "Fußnote als Endnote"
@@ -14316,205 +14474,206 @@ msgstr "Standard (basic)"
 msgid "PDF Comments"
 msgstr "PDF-Kommentare"
 
-#: lib/layouts/pdfcomment.module:6
+#: lib/layouts/pdfcomment.module:7
 msgid ""
 "Provides various kinds of annotations for the PDF output. The module uses "
-"the pdfcomment package. Please consult the package documentation for details."
+"the pdfcomment package. Please consult the LyX example file PDF-comment.lyx "
+"and the package documentation for details."
 msgstr ""
 "Stellt verschiedene Formen von Annotationen für die PDF-Ausgabe bereit. Das "
 "Modul verwendet das Paket 'pdfcomments'. Bitte konsultieren Sie dessen "
-"Anleitung für Details."
+"Anleitung sowie die Beispieldatei 'PDF-comment.lyx' für Details."
 
-#: lib/layouts/pdfcomment.module:18
+#: lib/layouts/pdfcomment.module:19
 msgid "Define Avatar"
 msgstr "Avatar definieren"
 
-#: lib/layouts/pdfcomment.module:19
+#: lib/layouts/pdfcomment.module:20
 msgid "PDF-comment"
 msgstr "PDF-Kommentar"
 
-#: lib/layouts/pdfcomment.module:26
+#: lib/layouts/pdfcomment.module:27
 msgid "PDF-comment avatar:"
 msgstr "PDF-Kommentar-Avatar:"
 
-#: lib/layouts/pdfcomment.module:29
+#: lib/layouts/pdfcomment.module:30
 msgid "Name of the Avatar"
 msgstr "Name des Avatars"
 
-#: lib/layouts/pdfcomment.module:40
+#: lib/layouts/pdfcomment.module:41
 msgid "Define PDF-Comment Style"
 msgstr "PDF-Kommentar-Stil definieren"
 
-#: lib/layouts/pdfcomment.module:43
+#: lib/layouts/pdfcomment.module:44
 msgid "PDF-comment style:"
 msgstr "PDF-Kommentar-Stil:"
 
-#: lib/layouts/pdfcomment.module:46
+#: lib/layouts/pdfcomment.module:47
 msgid "Name of the style"
 msgstr "Name des Stils"
 
-#: lib/layouts/pdfcomment.module:51
+#: lib/layouts/pdfcomment.module:52
 msgid "Define PDF-Comment List Style"
 msgstr "PDF-Kommentar-Listenstil definieren"
 
-#: lib/layouts/pdfcomment.module:54
+#: lib/layouts/pdfcomment.module:55
 msgid "Definition of PDF-comment list style:"
 msgstr "Definition des PDF-Kommentar-Listenstils:"
 
-#: lib/layouts/pdfcomment.module:57
+#: lib/layouts/pdfcomment.module:58
 msgid "Name of the list style"
 msgstr "Name des Listenstils"
 
-#: lib/layouts/pdfcomment.module:62
+#: lib/layouts/pdfcomment.module:63
 msgid "Set PDF-Comment List Style"
 msgstr "PDF-Kommentar-Listenstil festlegen"
 
-#: lib/layouts/pdfcomment.module:65
+#: lib/layouts/pdfcomment.module:66
 msgid "PDF-comment list style:"
 msgstr "PDF-Kommentar-Listenstil:"
 
-#: lib/layouts/pdfcomment.module:69
+#: lib/layouts/pdfcomment.module:70
 msgid "PDF-Comment-Setup"
 msgstr "PDF-Kommentar-Einstellungen"
 
-#: lib/layouts/pdfcomment.module:73
+#: lib/layouts/pdfcomment.module:74
 msgid "PDF (Setup)"
 msgstr "PDF (Einstellungen)"
 
-#: lib/layouts/pdfcomment.module:81
+#: lib/layouts/pdfcomment.module:82
 msgid "PDF-Comment setup options"
 msgstr "PDF-Kommentar-Einstellungs-Optionen"
 
-#: lib/layouts/pdfcomment.module:82 lib/layouts/pdfcomment.module:105
-#: lib/layouts/pdfcomment.module:221
+#: lib/layouts/pdfcomment.module:83 lib/layouts/pdfcomment.module:106
+#: lib/layouts/pdfcomment.module:222
 msgid "Opts"
 msgstr "Opt."
 
-#: lib/layouts/pdfcomment.module:83
+#: lib/layouts/pdfcomment.module:84
 msgid "Insert PDF-Comment setup options here (see the pdfcomment manual)"
 msgstr "Geben Sie hier PDF-Kommentar-Optionen ein (siehe PDFComment-Anleitung)"
 
-#: lib/layouts/pdfcomment.module:92
+#: lib/layouts/pdfcomment.module:93
 msgid "PDF-Annotation"
 msgstr "PDF-Annotation"
 
-#: lib/layouts/pdfcomment.module:96 src/frontends/qt4/GuiClipboard.cpp:174
+#: lib/layouts/pdfcomment.module:97 src/frontends/qt4/GuiClipboard.cpp:174
 msgid "PDF"
 msgstr "PDF"
 
-#: lib/layouts/pdfcomment.module:104
+#: lib/layouts/pdfcomment.module:105
 msgid "PDFComment Options"
 msgstr "PDF-Notiz-Optionen"
 
-#: lib/layouts/pdfcomment.module:106
+#: lib/layouts/pdfcomment.module:107
 msgid "Insert PDFComment options here (see pdfcomment manual)"
 msgstr "Geben Sie hier PDF-Notiz-Optionen ein (siehe PDFComment-Anleitung)"
 
-#: lib/layouts/pdfcomment.module:111
+#: lib/layouts/pdfcomment.module:112
 msgid "PDF-Margin"
 msgstr "PDF-Randnotiz"
 
-#: lib/layouts/pdfcomment.module:113
+#: lib/layouts/pdfcomment.module:114
 msgid "PDF (Margin)"
 msgstr "PDF (Rand)"
 
-#: lib/layouts/pdfcomment.module:121
+#: lib/layouts/pdfcomment.module:122
 msgid "PDF-Markup"
 msgstr "PDF-Markierung"
 
-#: lib/layouts/pdfcomment.module:123
+#: lib/layouts/pdfcomment.module:124
 msgid "PDF (Markup)"
 msgstr "PDF (Markierung)"
 
-#: lib/layouts/pdfcomment.module:128
+#: lib/layouts/pdfcomment.module:129
 msgid "Insert the comment to the marked-up text here"
 msgstr "Geben Sie hier einen Kommentar zum markierten Text ein"
 
-#: lib/layouts/pdfcomment.module:132
+#: lib/layouts/pdfcomment.module:133
 msgid "PDF-Freetext"
 msgstr "PDF-Freitext"
 
-#: lib/layouts/pdfcomment.module:134
+#: lib/layouts/pdfcomment.module:135
 msgid "PDF (Freetext)"
 msgstr "PDF (Freitext)"
 
-#: lib/layouts/pdfcomment.module:138
+#: lib/layouts/pdfcomment.module:139
 msgid "PDF-Square"
 msgstr "PDF-Rechteck"
 
-#: lib/layouts/pdfcomment.module:140
+#: lib/layouts/pdfcomment.module:141
 msgid "PDF (Square)"
 msgstr "PDF (Rechteck)"
 
-#: lib/layouts/pdfcomment.module:144
+#: lib/layouts/pdfcomment.module:145
 msgid "PDF-Circle"
 msgstr "PDF-Kreis"
 
-#: lib/layouts/pdfcomment.module:146
+#: lib/layouts/pdfcomment.module:147
 msgid "PDF (Circle)"
 msgstr "PDF (Kreis)"
 
-#: lib/layouts/pdfcomment.module:150
+#: lib/layouts/pdfcomment.module:151
 msgid "PDF-Line"
 msgstr "PDF-Linie"
 
-#: lib/layouts/pdfcomment.module:152
+#: lib/layouts/pdfcomment.module:153
 msgid "PDF (Line)"
 msgstr "PDF (Linie)"
 
-#: lib/layouts/pdfcomment.module:156
+#: lib/layouts/pdfcomment.module:157
 msgid "PDF-Sideline"
 msgstr "PDF-Randlinie"
 
-#: lib/layouts/pdfcomment.module:158
+#: lib/layouts/pdfcomment.module:159
 msgid "PDF (Sideline)"
 msgstr "PDF (Randlinie)"
 
-#: lib/layouts/pdfcomment.module:165
+#: lib/layouts/pdfcomment.module:166
 msgid "Insert the comment here"
 msgstr "Geben Sie hier den Kommentar ein"
 
-#: lib/layouts/pdfcomment.module:169
+#: lib/layouts/pdfcomment.module:170
 msgid "PDF-Reply"
 msgstr "PDF-Antwort"
 
-#: lib/layouts/pdfcomment.module:171
+#: lib/layouts/pdfcomment.module:172
 msgid "PDF (Reply)"
 msgstr "PDF (Antwort)"
 
-#: lib/layouts/pdfcomment.module:179
+#: lib/layouts/pdfcomment.module:180
 msgid "PDF-Tooltip"
 msgstr "PDF-Tooltip"
 
-#: lib/layouts/pdfcomment.module:181
+#: lib/layouts/pdfcomment.module:182
 msgid "PDF (Tooltip)"
 msgstr "PDF (Tooltip)"
 
-#: lib/layouts/pdfcomment.module:188
+#: lib/layouts/pdfcomment.module:189
 msgid "Tooltip Text"
 msgstr "Tooltip-Text"
 
-#: lib/layouts/pdfcomment.module:189
+#: lib/layouts/pdfcomment.module:190
 msgid "Tooltip"
 msgstr "Tooltip"
 
-#: lib/layouts/pdfcomment.module:191
+#: lib/layouts/pdfcomment.module:192
 msgid "Insert the tooltip text here"
 msgstr "Geben Sie hier den Tooltip-Text ein"
 
-#: lib/layouts/pdfcomment.module:199
+#: lib/layouts/pdfcomment.module:200
 msgid "List of PDF Comments"
 msgstr "Liste der PDF-Kommentare"
 
-#: lib/layouts/pdfcomment.module:213
+#: lib/layouts/pdfcomment.module:214
 msgid "[List of PDF Comments]"
 msgstr "[Liste der PDF-Kommentare]"
 
-#: lib/layouts/pdfcomment.module:222
+#: lib/layouts/pdfcomment.module:223
 msgid "List Options|s"
 msgstr "Listen-Optionen"
 
-#: lib/layouts/pdfcomment.module:223
+#: lib/layouts/pdfcomment.module:224
 msgid "Insert list options here (see pdfcomment manual)"
 msgstr "Geben Sie hier die Listen-Optionen ein (siehe PDFComment-Anleitung)"
 
@@ -22345,11 +22504,11 @@ msgstr ""
 msgid "Print document failed"
 msgstr "Das Drucken des Dokuments ist fehlgeschlagen"
 
-#: src/Buffer.cpp:373
+#: src/Buffer.cpp:376
 msgid "Disk Error: "
 msgstr "Festplatten-Fehler: "
 
-#: src/Buffer.cpp:374
+#: src/Buffer.cpp:377
 #, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
@@ -22357,57 +22516,57 @@ msgstr ""
 "LyX konnte kein temporäres Verzeichnis '%1$s' erstellen (Festplatte ist "
 "vielleicht voll?)"
 
-#: src/Buffer.cpp:491
+#: src/Buffer.cpp:494
 msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr ""
 "LyX hat versucht, ein Dokument mit ungespeicherten Änderungen zu schließen!\n"
 
-#: src/Buffer.cpp:493
+#: src/Buffer.cpp:496
 msgid "Attempting to close changed document!"
 msgstr "Versuch, ein geändertes Dokument zu schließen!"
 
-#: src/Buffer.cpp:502
+#: src/Buffer.cpp:505
 msgid "Could not remove temporary directory"
 msgstr "Das temporäre Verzeichnis konnte nicht entfernt werden"
 
-#: src/Buffer.cpp:503
+#: src/Buffer.cpp:506
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Das temporäre Verzeichnis %1$s konnte nicht entfernt werden"
 
-#: src/Buffer.cpp:894
+#: src/Buffer.cpp:897
 msgid "Unknown document class"
 msgstr "Unbekannte Dokumentklasse"
 
-#: src/Buffer.cpp:895
+#: src/Buffer.cpp:898
 #, c-format
 msgid "Using the default document class, because the class %1$s is unknown."
 msgstr ""
 "Verwende die Standard-Dokumentklasse, da die Klasse %1$s unbekannt ist."
 
-#: src/Buffer.cpp:899 src/Text.cpp:530
+#: src/Buffer.cpp:902 src/Text.cpp:530
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr "Unbekanntes Token: %1$s %2$s\n"
 
-#: src/Buffer.cpp:903 src/Buffer.cpp:910 src/Buffer.cpp:933
+#: src/Buffer.cpp:906 src/Buffer.cpp:913 src/Buffer.cpp:936
 msgid "Document header error"
 msgstr "Fehler im Dokumentkopf"
 
-#: src/Buffer.cpp:909
+#: src/Buffer.cpp:912
 msgid "\\begin_header is missing"
 msgstr "\\begin_header fehlt"
 
-#: src/Buffer.cpp:932
+#: src/Buffer.cpp:935
 msgid "\\begin_document is missing"
 msgstr "\\begin_document fehlt"
 
-#: src/Buffer.cpp:945 src/Buffer.cpp:951 src/BufferView.cpp:1446
+#: src/Buffer.cpp:948 src/Buffer.cpp:954 src/BufferView.cpp:1446
 #: src/BufferView.cpp:1452
 msgid "Changes not shown in LaTeX output"
 msgstr "Änderungen nicht in der LaTeX-Ausgabe angezeigt"
 
-#: src/Buffer.cpp:946 src/BufferView.cpp:1447
+#: src/Buffer.cpp:949 src/BufferView.cpp:1447
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -22419,7 +22578,7 @@ msgstr ""
 "Bitte installieren Sie diese Pakete oder definieren Sie \\lyxadded und "
 "\\lyxdeleted im LaTeX-Vorspann neu."
 
-#: src/Buffer.cpp:952 src/BufferView.cpp:1453
+#: src/Buffer.cpp:955 src/BufferView.cpp:1453
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -22431,40 +22590,40 @@ msgstr ""
 "Bitte installieren Sie beide Pakete oder definieren Sie \\lyxadded und "
 "\\lyxdeleted im LaTeX-Vorspann neu."
 
-#: src/Buffer.cpp:990 src/BufferParams.cpp:409
+#: src/Buffer.cpp:993 src/BufferParams.cpp:409
 #: src/frontends/qt4/GuiLog.cpp:235 src/insets/InsetIndex.cpp:444
 msgid "Index"
 msgstr "Stichwortverzeichnis"
 
-#: src/Buffer.cpp:1089
+#: src/Buffer.cpp:1092
 msgid "File Not Found"
 msgstr "Datei nicht gefunden"
 
-#: src/Buffer.cpp:1090
+#: src/Buffer.cpp:1093
 #, c-format
 msgid "Unable to open file `%1$s'."
 msgstr "Kann Datei `%1$s' nicht öffnen."
 
-#: src/Buffer.cpp:1113 src/Buffer.cpp:1176
+#: src/Buffer.cpp:1116 src/Buffer.cpp:1179
 msgid "Document format failure"
 msgstr "Dokumentformat-Fehler"
 
-#: src/Buffer.cpp:1114
+#: src/Buffer.cpp:1117
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 "%1$s endete unerwartet. Das heißt, dass die Datei vermutlich beschädigt ist."
 
-#: src/Buffer.cpp:1177
+#: src/Buffer.cpp:1180
 #, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s ist kein lesbares LyX-Dokument."
 
-#: src/Buffer.cpp:1202
+#: src/Buffer.cpp:1205
 msgid "Conversion failed"
 msgstr "Die Konvertierung ist fehlgeschlagen"
 
-#: src/Buffer.cpp:1203
+#: src/Buffer.cpp:1206
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
@@ -22473,11 +22632,11 @@ msgstr ""
 "%1$s stammt von einer anderen LyX-Version, aber eine temporäre Datei für die "
 "Konvertierung konnte nicht erzeugt werden."
 
-#: src/Buffer.cpp:1213
+#: src/Buffer.cpp:1216
 msgid "Conversion script not found"
 msgstr "Das Konvertierungsskript wurde nicht gefunden"
 
-#: src/Buffer.cpp:1214
+#: src/Buffer.cpp:1217
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
@@ -22486,11 +22645,11 @@ msgstr ""
 "%1$s stammt von einer anderen LyX-Version, aber das Konvertierungsskript "
 "lyx2lyx konnte nicht gefunden werden."
 
-#: src/Buffer.cpp:1237 src/Buffer.cpp:1244
+#: src/Buffer.cpp:1240 src/Buffer.cpp:1247
 msgid "Conversion script failed"
 msgstr "Das Konvertierungsskript ist fehlgeschlagen"
 
-#: src/Buffer.cpp:1238
+#: src/Buffer.cpp:1241
 #, c-format
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
@@ -22499,7 +22658,7 @@ msgstr ""
 "%1$s stammt von einer älteren LyX-Version, aber das lyx2lyx-Skript konnte "
 "das Dokument nicht konvertieren."
 
-#: src/Buffer.cpp:1245
+#: src/Buffer.cpp:1248
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
@@ -22508,17 +22667,17 @@ msgstr ""
 "%1$s stammt von einer neueren LyX-Version, aber das lyx2lyx-Skript konnte "
 "das Dokument nicht konvertieren."
 
-#: src/Buffer.cpp:1266 src/Buffer.cpp:4227 src/Buffer.cpp:4290
+#: src/Buffer.cpp:1269 src/Buffer.cpp:4230 src/Buffer.cpp:4293
 msgid "File is read-only"
 msgstr "Datei ist schreibgeschützt"
 
-#: src/Buffer.cpp:1267
+#: src/Buffer.cpp:1270
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
 msgstr ""
 "Die Datei %1$s kann nicht gespeichert werden, da sie schreibgeschützt ist."
 
-#: src/Buffer.cpp:1276
+#: src/Buffer.cpp:1279
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
@@ -22527,22 +22686,22 @@ msgstr ""
 "Dokument %1$s wurde extern verändert. Sind Sie sicher, dass die Datei "
 "überschrieben werden soll?"
 
-#: src/Buffer.cpp:1278
+#: src/Buffer.cpp:1281
 msgid "Overwrite modified file?"
 msgstr "Modifizierte Datei überschreiben?"
 
-#: src/Buffer.cpp:1279 src/Buffer.cpp:1348 src/Buffer.cpp:2715
+#: src/Buffer.cpp:1282 src/Buffer.cpp:1351 src/Buffer.cpp:2718
 #: src/Exporter.cpp:50 src/frontends/qt4/GuiClipboard.cpp:246
 #: src/frontends/qt4/GuiView.cpp:2151 src/frontends/qt4/GuiView.cpp:2338
 #: src/frontends/qt4/GuiView.cpp:2452
 msgid "&Overwrite"
 msgstr "&Überschreiben"
 
-#: src/Buffer.cpp:1321 src/Buffer.cpp:1363
+#: src/Buffer.cpp:1324 src/Buffer.cpp:1366
 msgid "Write failure"
 msgstr "Schreibfehler"
 
-#: src/Buffer.cpp:1322
+#: src/Buffer.cpp:1325
 #, c-format
 msgid ""
 "Cannot find temporary filename for:\n"
@@ -22553,11 +22712,11 @@ msgstr ""
 "  %1$s.\n"
 "Eine Datei namens %2$s existiert bereits!"
 
-#: src/Buffer.cpp:1343
+#: src/Buffer.cpp:1346
 msgid "Backup failure"
 msgstr "Die Sicherung ist fehlgeschlagen"
 
-#: src/Buffer.cpp:1344
+#: src/Buffer.cpp:1347
 #, c-format
 msgid ""
 "Cannot create backup file:\n"
@@ -22570,7 +22729,7 @@ msgstr ""
 "Möchten Sie die Datei trotzdem speichern?\n"
 "Dadurch wird die Originaldatei überschrieben."
 
-#: src/Buffer.cpp:1364
+#: src/Buffer.cpp:1367
 #, c-format
 msgid ""
 "Cannot restore original file to:\n"
@@ -22583,47 +22742,47 @@ msgstr ""
 "Eine Sicherungskopie finden Sie aber hier:\n"
 "  %2$s."
 
-#: src/Buffer.cpp:1381
+#: src/Buffer.cpp:1384
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Speichere Dokument %1$s..."
 
-#: src/Buffer.cpp:1396
+#: src/Buffer.cpp:1399
 msgid " could not write file!"
 msgstr "kann Datei nicht schreiben!"
 
-#: src/Buffer.cpp:1404
+#: src/Buffer.cpp:1407
 msgid " done."
 msgstr " fertig."
 
-#: src/Buffer.cpp:1419
+#: src/Buffer.cpp:1422
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Versuche Dokument %1$s zu speichern\n"
 
-#: src/Buffer.cpp:1429 src/Buffer.cpp:1442 src/Buffer.cpp:1456
+#: src/Buffer.cpp:1432 src/Buffer.cpp:1445 src/Buffer.cpp:1459
 #, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr "Als %1$s gespeichert. Glück gehabt!\n"
 
-#: src/Buffer.cpp:1432
+#: src/Buffer.cpp:1435
 msgid "Save failed! Trying again...\n"
 msgstr "Speichern fehlgeschlagen! Versuche es erneut...\n"
 
-#: src/Buffer.cpp:1446
+#: src/Buffer.cpp:1449
 msgid "Save failed! Trying yet again...\n"
 msgstr "Speichern fehlgeschlagen! Versuche es noch einmal...\n"
 
-#: src/Buffer.cpp:1460
+#: src/Buffer.cpp:1463
 msgid "Save failed! Bummer. Document is lost."
 msgstr ""
 "Die Speicherung ist endgültig fehlgeschlagen. Das Dokument ist verloren!"
 
-#: src/Buffer.cpp:1549
+#: src/Buffer.cpp:1552
 msgid "Iconv software exception Detected"
 msgstr "Iconv-Software-Exception erkannt"
 
-#: src/Buffer.cpp:1549
+#: src/Buffer.cpp:1552
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
@@ -22632,13 +22791,13 @@ msgstr ""
 "Bitte überprüfen Sie, dass die Softwareunterstützung für die "
 "Zeichenkodierung (%1$s) richtig installiert ist"
 
-#: src/Buffer.cpp:1578
+#: src/Buffer.cpp:1581
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 "Kann keinen LaTeX-Befehl für das Zeichen '%1$s' (Code-Punkt %2$s) finden"
 
-#: src/Buffer.cpp:1581
+#: src/Buffer.cpp:1584
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -22648,19 +22807,19 @@ msgstr ""
 "wahrscheinlich nicht darstellbar.\n"
 "Eine Änderung der Dokumentkodierung auf 'utf8' könnte helfen."
 
-#: src/Buffer.cpp:1588
+#: src/Buffer.cpp:1591
 msgid "iconv conversion failed"
 msgstr "iconv-Konvertierung fehlgeschlagen"
 
-#: src/Buffer.cpp:1593
+#: src/Buffer.cpp:1596
 msgid "conversion failed"
 msgstr "Konvertierung fehlgeschlagen"
 
-#: src/Buffer.cpp:1701
+#: src/Buffer.cpp:1704
 msgid "Uncodable character in file path"
 msgstr "Unkodierbares Zeichen im Dateipfad"
 
-#: src/Buffer.cpp:1703
+#: src/Buffer.cpp:1706
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -22685,57 +22844,57 @@ msgstr ""
 "Im Zweifel sollten Sie eine passende Dokumentkodierung (bspw. utf8)\n"
 "wählen oder den Dokumentpfad entsprechend ändern."
 
-#: src/Buffer.cpp:2056
+#: src/Buffer.cpp:2059
 msgid "Running chktex..."
 msgstr "ChkTeX wird ausgeführt..."
 
-#: src/Buffer.cpp:2070
+#: src/Buffer.cpp:2073
 msgid "chktex failure"
 msgstr "ChkTeX ist fehlgeschlagen"
 
-#: src/Buffer.cpp:2071
+#: src/Buffer.cpp:2074
 msgid "Could not run chktex successfully."
 msgstr "Chktex konnte nicht erfolgreich ausgeführt werden."
 
-#: src/Buffer.cpp:2363
+#: src/Buffer.cpp:2366
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Keine Informationen vorhanden, um in das Format %1$s zu exportieren."
 
-#: src/Buffer.cpp:2443
+#: src/Buffer.cpp:2446
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Keine Informationen vorhanden, um in das Format %1$s zu exportieren."
 
-#: src/Buffer.cpp:2452
+#: src/Buffer.cpp:2455
 msgid "Error generating literate programming code."
 msgstr "Fehler bei der Erzeugung des Codes für literarische Programmierung."
 
-#: src/Buffer.cpp:2531
+#: src/Buffer.cpp:2534
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "Zweig \"%1$s\" existiert nicht."
 
-#: src/Buffer.cpp:2566
+#: src/Buffer.cpp:2569
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Zweig \"%1$s\" existiert bereits."
 
-#: src/Buffer.cpp:2632
+#: src/Buffer.cpp:2635
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Kann \"%1$s\" nicht parsen"
 
-#: src/Buffer.cpp:2639
+#: src/Buffer.cpp:2642
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Unbekanntes Ziel \"%1$s\""
 
-#: src/Buffer.cpp:2646
+#: src/Buffer.cpp:2649
 msgid "Error exporting to DVI."
 msgstr "Fehler beim Exportieren nach DVI."
 
-#: src/Buffer.cpp:2711 src/Exporter.cpp:45
+#: src/Buffer.cpp:2714 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -22746,85 +22905,85 @@ msgstr ""
 "\n"
 "Möchten Sie diese Datei überschreiben?"
 
-#: src/Buffer.cpp:2714 src/Exporter.cpp:48
+#: src/Buffer.cpp:2717 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Datei überschreiben?"
 
-#: src/Buffer.cpp:2731
+#: src/Buffer.cpp:2734
 msgid "Error running external commands."
 msgstr "Fehler beim Ausführen externer Befehle."
 
-#: src/Buffer.cpp:3553
+#: src/Buffer.cpp:3556
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Quellcode für Absatz %1$d vorschauen"
 
-#: src/Buffer.cpp:3557
+#: src/Buffer.cpp:3560
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Quellcode von Absatz %1$s bis %2$s vorschauen"
 
-#: src/Buffer.cpp:3611
+#: src/Buffer.cpp:3614
 msgid "Preview source code"
 msgstr "Quellcode vorschauen"
 
-#: src/Buffer.cpp:3613
+#: src/Buffer.cpp:3616
 msgid "Preview preamble"
 msgstr "Vorschau des Vorspanns"
 
-#: src/Buffer.cpp:3615
+#: src/Buffer.cpp:3618
 msgid "Preview body"
 msgstr "Vorschau des Haupttextes"
 
-#: src/Buffer.cpp:3630
+#: src/Buffer.cpp:3633
 msgid "Plain text does not have a preamble."
 msgstr "Einfacher Text hat keinen Vorspann."
 
-#: src/Buffer.cpp:3733
+#: src/Buffer.cpp:3736
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatische Speicherung von %1$s"
 
-#: src/Buffer.cpp:3787
+#: src/Buffer.cpp:3790
 msgid "Autosave failed!"
 msgstr "Die automatische Speicherung ist fehlgeschlagen!"
 
-#: src/Buffer.cpp:3848
+#: src/Buffer.cpp:3851
 msgid "Autosaving current document..."
 msgstr "Automatisches Speichern des aktuellen Dokuments..."
 
-#: src/Buffer.cpp:3969
+#: src/Buffer.cpp:3972
 msgid "Couldn't export file"
 msgstr "Die Datei konnte nicht exportiert werden"
 
-#: src/Buffer.cpp:3970
+#: src/Buffer.cpp:3973
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Keine Informationen vorhanden, um das Format %1$s zu exportieren."
 
-#: src/Buffer.cpp:4031 src/frontends/qt4/GuiView.cpp:2124
+#: src/Buffer.cpp:4034 src/frontends/qt4/GuiView.cpp:2124
 msgid "File name error"
 msgstr "Fehler im Dateinamen"
 
-#: src/Buffer.cpp:4032
+#: src/Buffer.cpp:4035
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Der Verzeichnispfad zum Dokument darf keine Leerzeichen enthalten."
 
-#: src/Buffer.cpp:4134 src/Buffer.cpp:4148 src/frontends/qt4/GuiView.cpp:548
+#: src/Buffer.cpp:4137 src/Buffer.cpp:4151 src/frontends/qt4/GuiView.cpp:548
 msgid "Document export cancelled."
 msgstr "Der Export des Dokuments wurde abgebrochen."
 
-#: src/Buffer.cpp:4151
+#: src/Buffer.cpp:4154
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument als %1$s in die Datei `%2$s' exportiert"
 
-#: src/Buffer.cpp:4158
+#: src/Buffer.cpp:4161
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument als %1$s exportiert"
 
-#: src/Buffer.cpp:4213
+#: src/Buffer.cpp:4216
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -22835,19 +22994,19 @@ msgstr ""
 "\n"
 "Soll die Notspeicherung wiederhergestellt werden?"
 
-#: src/Buffer.cpp:4216
+#: src/Buffer.cpp:4219
 msgid "Load emergency save?"
 msgstr "Notspeicherung laden?"
 
-#: src/Buffer.cpp:4217
+#: src/Buffer.cpp:4220
 msgid "&Recover"
 msgstr "&Wiederherstellen"
 
-#: src/Buffer.cpp:4217
+#: src/Buffer.cpp:4220
 msgid "&Load Original"
 msgstr "&Original laden"
 
-#: src/Buffer.cpp:4228
+#: src/Buffer.cpp:4231
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -22857,15 +23016,15 @@ msgstr ""
 "%1$s ist schreibgeschützt.\n"
 "Bitte speichern Sie die Datei unter einem neuen Namen."
 
-#: src/Buffer.cpp:4235
+#: src/Buffer.cpp:4238
 msgid "Document was successfully recovered."
 msgstr "Dokument wurde erfolgreich wiederhergestellt."
 
-#: src/Buffer.cpp:4237
+#: src/Buffer.cpp:4240
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument wurde NICHT erfolgreich wiederhergestellt."
 
-#: src/Buffer.cpp:4238
+#: src/Buffer.cpp:4241
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -22875,27 +23034,27 @@ msgstr ""
 "%1$s\n"
 "jetzt löschen?"
 
-#: src/Buffer.cpp:4242 src/Buffer.cpp:4254
+#: src/Buffer.cpp:4245 src/Buffer.cpp:4257
 msgid "Delete emergency file?"
 msgstr "Notspeicherung löschen?"
 
-#: src/Buffer.cpp:4243 src/Buffer.cpp:4256
+#: src/Buffer.cpp:4246 src/Buffer.cpp:4259
 msgid "&Keep"
 msgstr "&Behalten"
 
-#: src/Buffer.cpp:4247
+#: src/Buffer.cpp:4250
 msgid "Emergency file deleted"
 msgstr "Notspeicherung gelöscht"
 
-#: src/Buffer.cpp:4248
+#: src/Buffer.cpp:4251
 msgid "Do not forget to save your file now!"
 msgstr "Vergessen Sie nicht, ihre Datei jetzt zu speichern!"
 
-#: src/Buffer.cpp:4255
+#: src/Buffer.cpp:4258
 msgid "Remove emergency file now?"
 msgstr "Notspeicherungsdatei jetzt löschen?"
 
-#: src/Buffer.cpp:4278
+#: src/Buffer.cpp:4281
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -22906,19 +23065,19 @@ msgstr ""
 "\n"
 "Stattdessen die Sicherung laden?"
 
-#: src/Buffer.cpp:4280
+#: src/Buffer.cpp:4283
 msgid "Load backup?"
 msgstr "Sicherung laden?"
 
-#: src/Buffer.cpp:4281
+#: src/Buffer.cpp:4284
 msgid "&Load backup"
 msgstr "&Sicherung laden"
 
-#: src/Buffer.cpp:4281
+#: src/Buffer.cpp:4284
 msgid "Load &original"
 msgstr "&Original laden"
 
-#: src/Buffer.cpp:4291
+#: src/Buffer.cpp:4294
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -22928,34 +23087,19 @@ msgstr ""
 "%1$s ist schreibgeschützt.\n"
 "Bitte speichern Sie die Datei unter einem neuen Namen."
 
-#: src/Buffer.cpp:4631 src/insets/InsetCaption.cpp:376
+#: src/Buffer.cpp:4634 src/insets/InsetCaption.cpp:376
 msgid "Senseless!!! "
 msgstr "Sinnlos!!! "
 
-#: src/Buffer.cpp:4851
+#: src/Buffer.cpp:4854
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s neu geladen."
 
-#: src/Buffer.cpp:4854
+#: src/Buffer.cpp:4857
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Kann Dokument %1$s nicht neu laden."
-
-#: src/Buffer.cpp:4921
-msgid "Included File Invalid"
-msgstr "Eingebundene Datei ungültig"
-
-#: src/Buffer.cpp:4922
-#, c-format
-msgid ""
-"Saving this document to a new location has made the file:\n"
-"  %1$s\n"
-"inaccessible. You will need to update the included filename."
-msgstr ""
-"Das Speichern des Dokuments an einem anderen Ort hat die Datei\n"
-"  %1$s\n"
-"unzugänglich gemacht. Bitte aktualisieren Sie den Pfad zu dieser Datei."
 
 #: src/BufferParams.cpp:456
 msgid ""
@@ -23064,7 +23208,7 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Die Dokumentklasse ist nicht verfügbar"
 
-#: src/BufferParams.cpp:1817 src/insets/InsetCommandParams.cpp:384
+#: src/BufferParams.cpp:1817 src/insets/InsetCommandParams.cpp:406
 #: src/insets/InsetHyperlink.cpp:197
 msgid "Uncodable characters"
 msgstr "unkodierbare Zeichen"
@@ -25166,15 +25310,15 @@ msgstr ", Zeichen: 0x"
 msgid ", Boundary: "
 msgstr ", Grenze: "
 
-#: src/Text2.cpp:404
+#: src/Text2.cpp:408
 msgid "No font change defined."
 msgstr "Keine Schriftänderung definiert."
 
-#: src/Text2.cpp:444
+#: src/Text2.cpp:448
 msgid "Nothing to index!"
 msgstr "Nichts zu indizieren!"
 
-#: src/Text2.cpp:446
+#: src/Text2.cpp:450
 msgid "Cannot index more than one paragraph!"
 msgstr "Es kann nicht mehr als ein Absatz indiziert werden!"
 
@@ -25202,7 +25346,7 @@ msgstr "Format "
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1638
+#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1636
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
@@ -25801,60 +25945,60 @@ msgstr "Über LyX"
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:647
+#: src/frontends/qt4/GuiApplication.cpp:645
 msgid "About %1"
 msgstr "Über %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:647
+#: src/frontends/qt4/GuiApplication.cpp:645
 #: src/frontends/qt4/GuiPrefs.cpp:3308
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: src/frontends/qt4/GuiApplication.cpp:648
+#: src/frontends/qt4/GuiApplication.cpp:646
 msgid "Reconfigure"
 msgstr "Neu konfigurieren"
 
-#: src/frontends/qt4/GuiApplication.cpp:648
+#: src/frontends/qt4/GuiApplication.cpp:646
 msgid "Quit %1"
 msgstr "%1 beenden"
 
-#: src/frontends/qt4/GuiApplication.cpp:1091
+#: src/frontends/qt4/GuiApplication.cpp:1089
 msgid "Nothing to do"
 msgstr "Nichts zu tun"
 
-#: src/frontends/qt4/GuiApplication.cpp:1097
+#: src/frontends/qt4/GuiApplication.cpp:1095
 msgid "Unknown action"
 msgstr "Unbekannte Aktion"
 
-#: src/frontends/qt4/GuiApplication.cpp:1141
+#: src/frontends/qt4/GuiApplication.cpp:1139
 msgid "Command not handled"
 msgstr "Befehl wurde nicht ausgeführt"
 
-#: src/frontends/qt4/GuiApplication.cpp:1147
+#: src/frontends/qt4/GuiApplication.cpp:1145
 msgid "Command disabled"
 msgstr "Befehl ist deaktiviert"
 
-#: src/frontends/qt4/GuiApplication.cpp:1261
+#: src/frontends/qt4/GuiApplication.cpp:1259
 msgid "Command not allowed without a buffer open"
 msgstr "Dieser Befehl ist nur bei geöffnetem Dokument möglich"
 
-#: src/frontends/qt4/GuiApplication.cpp:1268
+#: src/frontends/qt4/GuiApplication.cpp:1266
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
 msgstr "Das <LFUN-COMMAND>-Argument des Befehls 'buffer-forall' ist ungültig."
 
-#: src/frontends/qt4/GuiApplication.cpp:1460
+#: src/frontends/qt4/GuiApplication.cpp:1458
 msgid "Running configure..."
 msgstr "Neukonfiguration wird durchgeführt..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1471
+#: src/frontends/qt4/GuiApplication.cpp:1469
 msgid "Reloading configuration..."
 msgstr "Konfiguration wird neu geladen..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1477
+#: src/frontends/qt4/GuiApplication.cpp:1475
 msgid "System reconfiguration failed"
 msgstr "Neukonfiguration des Systems fehlgeschlagen"
 
-#: src/frontends/qt4/GuiApplication.cpp:1478
+#: src/frontends/qt4/GuiApplication.cpp:1476
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may\n"
@@ -25866,11 +26010,11 @@ msgstr ""
 "der Lage, korrekt zu arbeiten.\n"
 "Bitte rekonfigurieren Sie nochmals, wenn nötig."
 
-#: src/frontends/qt4/GuiApplication.cpp:1483
+#: src/frontends/qt4/GuiApplication.cpp:1481
 msgid "System reconfigured"
 msgstr "Das System wurde neu konfiguriert"
 
-#: src/frontends/qt4/GuiApplication.cpp:1484
+#: src/frontends/qt4/GuiApplication.cpp:1482
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -25880,49 +26024,49 @@ msgstr ""
 "Sie müssen LyX neu starten, um die aktualisierten\n"
 "Spezifikationen für die Dokumentklassen zu nutzen."
 
-#: src/frontends/qt4/GuiApplication.cpp:1564
+#: src/frontends/qt4/GuiApplication.cpp:1562
 msgid "Exiting."
 msgstr "LyX wird beendet."
 
-#: src/frontends/qt4/GuiApplication.cpp:1650
+#: src/frontends/qt4/GuiApplication.cpp:1648
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Hilfe-Datei %1$s wird geöffnet..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1669
+#: src/frontends/qt4/GuiApplication.cpp:1667
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntax: set-color <lyx_name> <x11_name>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1685
+#: src/frontends/qt4/GuiApplication.cpp:1683
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" ist fehlgeschlagen -- die Farbe ist nicht definiert oder "
 "darf nicht umdefiniert werden."
 
-#: src/frontends/qt4/GuiApplication.cpp:1880
+#: src/frontends/qt4/GuiApplication.cpp:1878
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
 msgstr "Der Befehl \"%1$s\" wurde auf %2$d Dateien (Pufferspeicher) angewandt"
 
-#: src/frontends/qt4/GuiApplication.cpp:1955
+#: src/frontends/qt4/GuiApplication.cpp:1953
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokument-Standardeinstellungen gespeichert in %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:1959
+#: src/frontends/qt4/GuiApplication.cpp:1957
 msgid "Unable to save document defaults"
 msgstr "Die Dokument-Standardeinstellungen können nicht gespeichert werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:2117
+#: src/frontends/qt4/GuiApplication.cpp:2115
 msgid "Unknown function."
 msgstr "Unbekannte Funktion."
 
-#: src/frontends/qt4/GuiApplication.cpp:2554
+#: src/frontends/qt4/GuiApplication.cpp:2552
 msgid "The current document was closed."
 msgstr "Das aktuelle Dokument wurde geschlossen."
 
-#: src/frontends/qt4/GuiApplication.cpp:2564
+#: src/frontends/qt4/GuiApplication.cpp:2562
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -25934,12 +26078,12 @@ msgstr ""
 "\n"
 "Exception: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2568
-#: src/frontends/qt4/GuiApplication.cpp:2574
+#: src/frontends/qt4/GuiApplication.cpp:2566
+#: src/frontends/qt4/GuiApplication.cpp:2572
 msgid "Software exception Detected"
 msgstr "Softwareausnahme erkannt"
 
-#: src/frontends/qt4/GuiApplication.cpp:2572
+#: src/frontends/qt4/GuiApplication.cpp:2570
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -25947,12 +26091,12 @@ msgstr ""
 "LyX hat einen ziemlich seltsamen Fehler entdeckt. Das Programm wird jetzt "
 "versuchen, alle ungespeicherten Dateien zu speichern, und dann beendet."
 
-#: src/frontends/qt4/GuiApplication.cpp:2841
-#: src/frontends/qt4/GuiApplication.cpp:2853
+#: src/frontends/qt4/GuiApplication.cpp:2839
+#: src/frontends/qt4/GuiApplication.cpp:2851
 msgid "Could not find UI definition file"
 msgstr "Die Benutzeroberflächen-Definitionsdatei konnte nicht gefunden werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:2842
+#: src/frontends/qt4/GuiApplication.cpp:2840
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -25963,13 +26107,13 @@ msgstr ""
 "%1$s.\n"
 "Bitte überprüfen Sie Ihre Installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:2848
+#: src/frontends/qt4/GuiApplication.cpp:2846
 msgid "Could not find default UI file"
 msgstr ""
 "Die Standard-Benutzeroberflächen-Definitionsdatei konnte nicht gefunden "
 "werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:2849
+#: src/frontends/qt4/GuiApplication.cpp:2847
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -25978,7 +26122,7 @@ msgstr ""
 "für die Benutzeroberfläche!\n"
 "Bitte überprüfen Sie Ihre Installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:2854
+#: src/frontends/qt4/GuiApplication.cpp:2852
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -29103,31 +29247,31 @@ msgstr "Kein Literaturverzeichnis definiert!"
 msgid "LaTeX Command: "
 msgstr "LaTeX-Befehl: "
 
-#: src/insets/InsetCommandParams.cpp:268
+#: src/insets/InsetCommandParams.cpp:269
 msgid "InsetCommand Error: "
 msgstr "Befehl für Einfügung: "
 
-#: src/insets/InsetCommandParams.cpp:269 src/insets/InsetCommandParams.cpp:286
+#: src/insets/InsetCommandParams.cpp:270 src/insets/InsetCommandParams.cpp:287
 msgid "Incompatible command name."
 msgstr "Inkompatibler Befehlsname."
 
-#: src/insets/InsetCommandParams.cpp:285 src/insets/InsetCommandParams.cpp:316
+#: src/insets/InsetCommandParams.cpp:286 src/insets/InsetCommandParams.cpp:317
 msgid "InsetCommandParams Error: "
 msgstr "Befehl für Einfügung: "
 
-#: src/insets/InsetCommandParams.cpp:308
+#: src/insets/InsetCommandParams.cpp:309
 msgid "InsetCommandParams: "
 msgstr "Befehl für Einfügung: "
 
-#: src/insets/InsetCommandParams.cpp:309
+#: src/insets/InsetCommandParams.cpp:310
 msgid "Unknown parameter name: "
 msgstr "Unbekannter Argumentname: "
 
-#: src/insets/InsetCommandParams.cpp:317
+#: src/insets/InsetCommandParams.cpp:318
 msgid "Missing \\end_inset at this point: "
 msgstr "Fehlendes \\end_inset an dieser Stelle: "
 
-#: src/insets/InsetCommandParams.cpp:385
+#: src/insets/InsetCommandParams.cpp:407
 #, c-format
 msgid ""
 "The following characters that are used in the inset %1$s are not\n"
@@ -29952,15 +30096,15 @@ msgstr "Die Zeichenkette wurde ersetzt."
 msgid "%1$d strings have been replaced."
 msgstr " %1$d Zeichenketten wurden ersetzt."
 
-#: src/lyxfind.cpp:1451
+#: src/lyxfind.cpp:1452
 msgid "Invalid regular expression!"
 msgstr "Ungültiger regulärer Ausdruck!"
 
-#: src/lyxfind.cpp:1456
+#: src/lyxfind.cpp:1457
 msgid "Match not found!"
 msgstr "Die Zeichenkette wurde nicht gefunden!"
 
-#: src/lyxfind.cpp:1460
+#: src/lyxfind.cpp:1461
 msgid "Match found!"
 msgstr "Die Zeichenkette wurde gefunden!"
 
@@ -30444,6 +30588,18 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
 
+#~ msgid "Included File Invalid"
+#~ msgstr "Eingebundene Datei ungültig"
+
+#~ msgid ""
+#~ "Saving this document to a new location has made the file:\n"
+#~ "  %1$s\n"
+#~ "inaccessible. You will need to update the included filename."
+#~ msgstr ""
+#~ "Das Speichern des Dokuments an einem anderen Ort hat die Datei\n"
+#~ "  %1$s\n"
+#~ "unzugänglich gemacht. Bitte aktualisieren Sie den Pfad zu dieser Datei."
+
 #~ msgid "The caption as it appears in the list of figures"
 #~ msgstr "Die Legende, wie sie im Abbildungsverzeichnis erscheint"
 
@@ -30619,9 +30775,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "elsewhere"
 #~ msgstr "woanders"
-
-#~ msgid "BeginFrame"
-#~ msgstr "BeginneRahmen"
 
 #~ msgid "Deprecated Styles"
 #~ msgstr "Obsolete Stile"
@@ -31770,9 +31923,6 @@ msgstr "Unbekannter Benutzer"
 #~ msgid "Hyperlink"
 #~ msgstr "Hyperlink"
 
-#~ msgid "Label"
-#~ msgstr "Marke"
-
 #~ msgid "Successful compilation to format: %1$s"
 #~ msgstr "Export in das Format %1$s erfolgreich"
 
@@ -31835,9 +31985,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "Element:GuiMenuItem"
 #~ msgstr "Element: GuiMenuItem"
-
-#~ msgid "Element:GuiButton"
-#~ msgstr "Element: GuiButton"
 
 #~ msgid "Element:MenuChoice"
 #~ msgstr "Element: MenüAuswahl"
@@ -32083,9 +32230,6 @@ msgstr "Unbekannter Benutzer"
 #~ "Shortcut `%1$s' is already bound to:\n"
 #~ "%2$s"
 #~ msgstr "Tastenkürzel `%1$s' ist bereits mit %2$s belegt"
-
-#~ msgid "TextLabel"
-#~ msgstr "TextLabel"
 
 #~ msgid "Merge cells"
 #~ msgstr "Zellen zusammenfassen"
