@@ -451,25 +451,12 @@ bool codecvt<lyx::char_type, char, mbstate_t>::do_always_noconv() const throw()
 	return true;
 }
 
-#if __GNUC__ == 3 && __GNUC_MINOR__ < 4
-
-template<>
-int codecvt<lyx::char_type, char, mbstate_t>::do_length(
-	mbstate_t const &, const char *, const char *, size_t) const
-{
-	return 1;
-}
-
-#else
-
 template<>
 int codecvt<lyx::char_type, char, mbstate_t>::do_length(
 	mbstate_t &, const char *, const char *, size_t) const
 {
 	return 1;
 }
-
-#endif
 
 template<>
 int codecvt<lyx::char_type, char, mbstate_t>::do_max_length() const throw()

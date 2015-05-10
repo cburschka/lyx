@@ -293,10 +293,7 @@ if test x$GXX = xyes; then
   dnl Warnings are for preprocessor too
   if test x$enable_warnings = xyes ; then
       case $gxx_version in
-          3.1*|3.2*|3.3*)
-              AM_CPPFLAGS="$AM_CPPFLAGS -Wall -W"
-              ;;
-          3.4*|4.0*|4.1*|4.2*|4.3*|4.4*|4.5*|4.6*|4.7*|4.8*|clang)
+          4.0*|4.1*|4.2*|4.3*|4.4*|4.5*|4.6*|4.7*|4.8*|clang)
               AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra"
               ;;
           *)
@@ -305,15 +302,13 @@ if test x$GXX = xyes; then
       esac
   fi
   case $gxx_version in
-      3.1*)    AM_CXXFLAGS="$AM_CXXFLAGS -finline-limit=500";;
-      3.2*|3.3*) ;;
+      2.*|3.*) AC_ERROR([gcc 4.x is required]);;
       *)  test $enable_pch = yes && lyx_pch_comp=yes ;;
   esac
   if test x$enable_stdlib_debug = xyes ; then
     dnl FIXME: for clang/libc++, one should define _LIBCPP_DEBUG2=0
     dnl See http://clang-developers.42468.n3.nabble.com/libc-debug-mode-td3336742.html
     case $gxx_version in
-      3.1*|3.2*|3.3*) ;;
       *)
         lyx_flags="$lyx_flags stdlib-debug"
 	AC_DEFINE(_GLIBCXX_DEBUG, 1, [libstdc++ debug mode])
@@ -323,20 +318,16 @@ if test x$GXX = xyes; then
   fi
   if test x$enable_concept_checks = xyes ; then
     case $gxx_version in
-      3.3*)
+      4.*)
         lyx_flags="$lyx_flags concept-checks"
 	dnl FIXME check whether this makes sense with clang/libc++
-        AC_DEFINE(_GLIBCPP_CONCEPT_CHECKS, 1, [libstdc++ concept checking])
-	;;
-      3.4*|4.*)
-        lyx_flags="$lyx_flags concept-checks"
 	AC_DEFINE(_GLIBCXX_CONCEPT_CHECKS, 1, [libstdc++ concept checking])
 	;;
     esac
   fi
   if test x$enable_cxx11 = xyes ; then
     case $gxx_version in
-      3.*|4.0*|4.1*|4.2*) AC_ERROR([There is no C++11 support in gcc 3.x]);;
+      4.0*|4.1*|4.2*) AC_ERROR([There is no C++11 support in gcc 4.2 or older]);;
       4.3*|4.4*|4.5*|4.6*)
         lyx_flags="$lyx_flags c++11-mode"
 	AM_CXXFLAGS="$AM_CXXFLAGS -std=gnu++0x";;
@@ -354,7 +345,7 @@ if test x$GXX = xyes; then
       dnl <regex> in gcc is unusable in versions less than 4.9.0
       dnl see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
       case $gxx_version in
-        3.*|4.0*|4.1*|4.2*|4.3*|4.4*|4.5*|4.6*|4.7*|4.8*) ;;
+        4.0*|4.1*|4.2*|4.3*|4.4*|4.5*|4.6*|4.7*|4.8*) ;;
 	*) lyx_flags="$lyx_flags stdregex"
 	   lyx_std_regex=yes
            ;;
