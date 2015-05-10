@@ -142,10 +142,11 @@ void GuiBox::on_typeCO_activated(int index)
 			heightCB->setChecked(false);
 		setSpecial(ibox);
 	}
-	if (type != "Boxed")
+	if (type != "Boxed") {
 		if (type != "Frameless")
 			widthCB->setChecked(itype != "none");
 		pagebreakCB->setChecked(false);
+	}
 	changed();
 }
 
