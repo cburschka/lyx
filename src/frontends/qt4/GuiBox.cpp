@@ -177,7 +177,6 @@ void GuiBox::on_typeCO_activated(int index)
 	// the width can only be selected for makebox or framebox
 	widthCB->setEnabled(itype == "makebox"
 	                    || (type == "Boxed" && itype == "none"));
-	widthCB->setChecked(itype != "none" && !widthCB->isEnabled());
 	// except for frameless and boxed, the width cannot be specified if
 	// there is no inner box
 	bool const width_enabled =
@@ -195,8 +194,11 @@ void GuiBox::on_typeCO_activated(int index)
 	                     && ((itype == "none" && type == "Boxed") || itype == "makebox"));
 	// pagebreak is only allowed for Boxed without inner box
 	pagebreakCB->setEnabled(type == "Boxed" && itype == "none");
-	if (type != "Boxed")
+	if (type != "Boxed") {
+		if (type != "Frameless")
+			widthCB->setChecked(itype != "none");
 		pagebreakCB->setChecked(false);
+	}
 	changed();
 }
 
