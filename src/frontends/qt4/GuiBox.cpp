@@ -115,37 +115,10 @@ void GuiBox::on_innerBoxCO_activated(int /* index */)
 	QString itype =
 		innerBoxCO->itemData(innerBoxCO->currentIndex()).toString();
 	// handle parbox and minipage the same way
-	bool const ibox =
-		(itype != "none"
-		 && itype != "makebox");
-	QString const outer =
-		typeCO->itemData(typeCO->currentIndex()).toString();
-	valignCO->setEnabled(ibox);
-	ialignCO->setEnabled(ibox);
+	bool const ibox = (itype != "none" && itype != "makebox");
 	if (heightCB->isChecked() && !ibox)
 		heightCB->setChecked(false);
-	heightCB->setEnabled(ibox);
-	// the width can only be selected for makebox or framebox
-	widthCB->setEnabled(itype == "makebox"
-	                    || (outer == "Boxed" && itype == "none"));
 	widthCB->setChecked(!widthED->text().isEmpty());
-	// except for frameless and boxed, the width cannot be specified if
-	// there is no inner box
-	bool const width_enabled =
-		ibox || outer == "Frameless" || outer == "Boxed";
-	// enable if width_enabled, except if checkbaox is active but unset
-	widthED->setEnabled(width_enabled || (widthCB->isEnabled() && widthCB->isChecked()));
-	widthUnitsLC->setEnabled(width_enabled || (widthCB->isEnabled() && widthCB->isChecked()));
-	if (!widthCB->isChecked() && widthCB->isEnabled()) {
-		widthED->setEnabled(false);
-		widthUnitsLC->setEnabled(false);
-	}
-	// halign is only allowed without inner box and if a width is used and if
-	// pagebreak is not used
-	halignCO->setEnabled(!pagebreakCB->isChecked() && widthCB->isChecked()
-	                     && ((!ibox && outer == "Boxed") || itype == "makebox"));
-	// pagebreak is only allowed for Boxed without inner box
-	pagebreakCB->setEnabled(!ibox && outer == "Boxed");
 	setSpecial(ibox);
 	changed();
 }
@@ -163,38 +136,13 @@ void GuiBox::on_typeCO_activated(int index)
 	itype =
 		innerBoxCO->itemData(innerBoxCO->currentIndex()).toString();
 	// handle parbox and minipage the same way
-	bool const ibox =
-		(itype != "none"
-		 && itype != "makebox");
+	bool const ibox = (itype != "none" && itype != "makebox");
 	if (frameless && itype != "makebox") {
-		valignCO->setEnabled(ibox);
-		ialignCO->setEnabled(ibox);
 		if (heightCB->isChecked() && !ibox)
 			heightCB->setChecked(false);
-		heightCB->setEnabled(ibox);
 		setSpecial(ibox);
 	}
-	// the width can only be selected for makebox or framebox
-	widthCB->setEnabled(itype == "makebox"
-	                    || (type == "Boxed" && itype == "none"));
-	widthCB->setChecked(itype != "none" && !widthCB->isEnabled());
-	// except for frameless and boxed, the width cannot be specified if
-	// there is no inner box
-	bool const width_enabled =
-		itype != "none" || frameless || type == "Boxed";
-	// enable if width_enabled, except if checkbaox is active but unset
-	widthED->setEnabled(width_enabled || (widthCB->isEnabled() && widthCB->isChecked()));
-	widthUnitsLC->setEnabled(width_enabled || (widthCB->isEnabled() && widthCB->isChecked()));
-	if (!widthCB->isChecked() && widthCB->isEnabled()) {
-		widthED->setEnabled(false);
-		widthUnitsLC->setEnabled(false);
-	}
-	// halign is only allowed without inner box and if a width is used and if
-	// pagebreak is not used
-	halignCO->setEnabled(!pagebreakCB->isChecked() && widthCB->isChecked()
-	                     && ((itype == "none" && type == "Boxed") || itype == "makebox"));
-	// pagebreak is only allowed for Boxed without inner box
-	pagebreakCB->setEnabled(type == "Boxed" && itype == "none");
+	widthCB->setChecked(itype != "none");
 	if (type != "Boxed")
 		pagebreakCB->setChecked(false);
 	changed();
@@ -215,21 +163,12 @@ void GuiBox::initDialog()
 
 void GuiBox::on_widthCB_stateChanged(int)
 {
-	if (widthCB->isEnabled()) {
-		widthED->setEnabled(widthCB->isChecked());
-		widthUnitsLC->setEnabled(widthCB->isChecked());
-		halignCO->setEnabled(widthCB->isChecked());
-	}
 	changed();
 }
 
 
-void GuiBox::on_heightCB_stateChanged(int state)
+void GuiBox::on_heightCB_stateChanged(int /*state*/)
 {
-	bool const enable = (innerBoxCO->currentText() != qt_("None"))
-		&& (state == Qt::Checked);
-	heightED->setEnabled(enable);
-	heightUnitsLC->setEnabled(enable);
 	changed();
 }
 
@@ -237,22 +176,12 @@ void GuiBox::on_heightCB_stateChanged(int state)
 void GuiBox::on_pagebreakCB_stateChanged()
 {
 	bool pbreak = (pagebreakCB->checkState() == Qt::Checked);
-	innerBoxCO->setEnabled(!pbreak);
-	widthCB->setEnabled(!pbreak);
 	if (pbreak)
 		widthCB->setChecked(!pbreak);
-	widthED->setEnabled(!pbreak);
-	widthUnitsLC->setEnabled(!pbreak);
 	if (!pbreak) {
 		on_typeCO_activated(typeCO->currentIndex());
 		return;
 	}
-	valignCO->setEnabled(false);
-	ialignCO->setEnabled(false);
-	halignCO->setEnabled(false);
-	heightCB->setEnabled(false);
-	heightED->setEnabled(false);
-	heightUnitsLC->setEnabled(false);
 	setSpecial(false);
 	changed();
 }
@@ -413,20 +342,54 @@ docstring GuiBox::dialogToParams() const
 
 bool GuiBox::checkWidgets(bool readonly) const
 {
-	pagebreakCB->setEnabled(!readonly);
 	typeCO->setEnabled(!readonly);
-	innerBoxCO->setEnabled(!readonly);
-	valignCO->setEnabled(!readonly);
-	ialignCO->setEnabled(!readonly);
-	halignCO->setEnabled(!readonly);
-	valignCO->setEnabled(!readonly);
-	ialignCO->setEnabled(!readonly);
-	widthCB->setEnabled(!readonly);
-	widthED->setReadOnly(readonly);
-	widthUnitsLC->setEnabled(!readonly);
-	heightED->setReadOnly(readonly);
-	heightUnitsLC->setEnabled(!readonly);
-	heightCB->setEnabled(!readonly);
+
+	if (readonly) {
+		pagebreakCB->setEnabled(false);
+		innerBoxCO->setEnabled(false);
+		valignCO->setEnabled(false);
+		ialignCO->setEnabled(false);
+		halignCO->setEnabled(false);
+		widthCB->setEnabled(false);
+		widthED->setEnabled(false);
+		widthUnitsLC->setEnabled(false);
+		heightED->setEnabled(false);
+		heightUnitsLC->setEnabled(false);
+		heightCB->setEnabled(false);
+	} else {
+		QString const outer =
+			typeCO->itemData(typeCO->currentIndex()).toString();
+		QString const itype =
+			innerBoxCO->itemData(innerBoxCO->currentIndex()).toString();
+		bool const ibox = (itype != "none" && itype != "makebox");
+		// pagebreak is only allowed for Boxed without inner box
+		pagebreakCB->setEnabled(!ibox && outer == "Boxed");
+		innerBoxCO->setEnabled(!pagebreakCB->isChecked());
+		valignCO->setEnabled(ibox);
+		ialignCO->setEnabled(ibox);
+		// halign is only allowed without inner box and if a width is used and if
+		// pagebreak is not used
+		halignCO->setEnabled(!pagebreakCB->isChecked() && widthCB->isChecked()
+				     && ((!ibox && outer == "Boxed") || itype == "makebox"));
+		// the width can only be selected for makebox or framebox
+		widthCB->setEnabled(itype == "makebox"
+				    || (outer == "Boxed"
+					&& !ibox && !pagebreakCB->isChecked()));
+		// except for frameless and boxed, the width cannot be specified if
+		// there is no inner box
+		bool const width_enabled =
+			ibox || outer == "Frameless" || outer == "Boxed";
+		// enable if width_enabled, except if checkbox is active but unset
+		widthED->setEnabled(width_enabled || (widthCB->isEnabled() && widthCB->isChecked()));
+		widthUnitsLC->setEnabled(width_enabled || (widthCB->isEnabled() && widthCB->isChecked()));
+		if (!widthCB->isChecked() && widthCB->isEnabled()) {
+			widthED->setEnabled(false);
+			widthUnitsLC->setEnabled(false);
+		}
+		heightED->setEnabled(itype != "none" && heightCB->isChecked());
+		heightUnitsLC->setEnabled(itype != "none" && heightCB->isChecked());
+		heightCB->setEnabled(ibox);
+	}
 
 	return InsetParamsWidget::checkWidgets();
 }
