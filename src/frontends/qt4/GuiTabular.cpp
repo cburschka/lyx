@@ -199,7 +199,7 @@ void GuiTabular::on_interlinespaceCO_activated(int index)
 }
 
 
-void GuiTabular::checkEnabled()
+void GuiTabular::enableWidgets() const
 {
 	// if there is a LaTeX argument, the width and alignment will be overwritten
 	// therefore disable them in this case
@@ -320,7 +320,12 @@ void GuiTabular::checkEnabled()
 	multirowOffsetLA->setEnabled(enable_mr);
 	multirowOffsetED->setEnabled(enable_mr);
 	multirowOffsetUnitLC->setEnabled(enable_mr);
+}
 
+
+void GuiTabular::checkEnabled()
+{
+	enableWidgets();
 	changed();
 }
 
@@ -1016,37 +1021,41 @@ bool GuiTabular::checkWidgets(bool readonly) const
 {
 	tabularRowED->setReadOnly(readonly);
 	tabularColumnED->setReadOnly(readonly);
-	multicolumnCB->setEnabled(!readonly);
-	multirowCB->setEnabled(!readonly);
-	specialAlignmentED->setReadOnly(readonly);
-	rotateCellCB->setEnabled(!readonly);
-	rotateCellAngleSB->setEnabled(!readonly);
-	rotateTabularCB->setEnabled(!readonly);
-	rotateTabularAngleSB->setEnabled(!readonly);
-	longTabularCB->setEnabled(!readonly);
-	borders->setEnabled(!readonly);
 	tabularWidthED->setReadOnly(readonly);
-	tabularWidthUnitLC->setEnabled(!readonly);
+	specialAlignmentED->setReadOnly(readonly);
 	columnWidthED->setReadOnly(readonly);
-	columnWidthUnitLC->setEnabled(!readonly);
 	multirowOffsetED->setReadOnly(readonly);
-	multirowOffsetUnitLC->setEnabled(!readonly);
-	setBordersGB->setEnabled(!readonly);
-	allBordersGB->setEnabled(!readonly);
-	borderStyleGB->setEnabled(!readonly);
-	booktabsRB->setEnabled(!readonly);
-	topspaceCO->setEnabled(!readonly);
-	topspaceUnitLC->setEnabled(!readonly);
-	bottomspaceCO->setEnabled(!readonly);
-	bottomspaceUnitLC->setEnabled(!readonly);
-	interlinespaceCO->setEnabled(!readonly);
-	interlinespaceUnitLC->setEnabled(!readonly);
-	hAlignCO->setEnabled(!readonly);
 	decimalPointED->setReadOnly(readonly);
-	vAlignCO->setEnabled(!readonly);
-	TableAlignCO->setEnabled(!readonly);
-	longtableGB->setEnabled(!readonly);
-	alignmentGB->setEnabled(!readonly);
+
+	if (readonly) {
+		multicolumnCB->setEnabled(false);
+		multirowCB->setEnabled(false);
+		rotateCellCB->setEnabled(false);
+		rotateCellAngleSB->setEnabled(false);
+		rotateTabularCB->setEnabled(false);
+		rotateTabularAngleSB->setEnabled(false);
+		longTabularCB->setEnabled(false);
+		borders->setEnabled(false);
+		tabularWidthUnitLC->setEnabled(false);
+		columnWidthUnitLC->setEnabled(false);
+		multirowOffsetUnitLC->setEnabled(false);
+		setBordersGB->setEnabled(false);
+		allBordersGB->setEnabled(false);
+		borderStyleGB->setEnabled(false);
+		booktabsRB->setEnabled(false);
+		topspaceCO->setEnabled(false);
+		topspaceUnitLC->setEnabled(false);
+		bottomspaceCO->setEnabled(false);
+		bottomspaceUnitLC->setEnabled(false);
+		interlinespaceCO->setEnabled(false);
+		interlinespaceUnitLC->setEnabled(false);
+		hAlignCO->setEnabled(false);
+		vAlignCO->setEnabled(false);
+		TableAlignCO->setEnabled(false);
+		longtableGB->setEnabled(false);
+		alignmentGB->setEnabled(false);
+	} else
+		enableWidgets();
 
 	return InsetParamsWidget::checkWidgets();
 }

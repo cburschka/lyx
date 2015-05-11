@@ -29,7 +29,7 @@ private Q_SLOTS:
 	///
 	void changedSlot();
 	///
-	void enableWidgets();
+	void enableWidgets() const;
 
 private:
 	/// \name InsetParamsWidget inherited methods

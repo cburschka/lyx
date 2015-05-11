@@ -53,13 +53,8 @@ GuiPrintNomencl::GuiPrintNomencl(QWidget * parent) : InsetParamsWidget(parent)
 }
 
 
-void GuiPrintNomencl::on_setWidthCO_activated(int i)
+void GuiPrintNomencl::on_setWidthCO_activated(int /*i*/)
 {
-	bool const custom =
-		(setWidthCO->itemData(i).toString() == "custom");
-	valueLE->setEnabled(custom);
-	unitLC->setEnabled(custom);
-	valueLA->setEnabled(custom);
 	changed();
 }
 
@@ -68,15 +63,9 @@ void GuiPrintNomencl::paramsToDialog(InsetCommandParams const & params)
 {
 	setWidthCO->setCurrentIndex(
 		setWidthCO->findData(toqstr(params["set_width"])));
-	
+
 	lengthToWidgets(valueLE, unitLC,
 			params["width"], Length::defaultUnit());
-
-	bool const custom =
-		(setWidthCO->itemData(setWidthCO->currentIndex()).toString() == "custom");
-	valueLE->setEnabled(custom);
-	unitLC->setEnabled(custom);
-	valueLA->setEnabled(custom);
 }
 
 
@@ -104,8 +93,18 @@ docstring GuiPrintNomencl::dialogToParams() const
 bool GuiPrintNomencl::checkWidgets(bool readonly) const
 {
 	valueLE->setReadOnly(readonly);
-	setWidthCO->setEnabled(!readonly);
-	unitLC->setEnabled(!readonly);
+	if (readonly) {
+		setWidthCO->setEnabled(false);
+		unitLC->setEnabled(false);
+		valueLA->setEnabled(false);
+	} else {
+		bool const custom =
+			(setWidthCO->itemData(setWidthCO->currentIndex()).toString() == "custom");
+		valueLE->setEnabled(custom);
+		unitLC->setEnabled(custom);
+		valueLA->setEnabled(custom);
+	}
+
 	if (!InsetParamsWidget::checkWidgets())
 		return false;
 	return setWidthCO->itemData(

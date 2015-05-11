@@ -54,7 +54,7 @@ private Q_SLOTS:
 
 private:
 	///
-	void checkAllowed();
+	void checkAllowed() const;
 	///
 	std::string const get(bool & wide, bool & sideways) const;
 	///

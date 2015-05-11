@@ -150,9 +150,17 @@ void GuiVSpace::paramsToDialog(Inset const * inset)
 bool GuiVSpace::checkWidgets(bool readonly) const
 {
 	valueLE->setReadOnly(readonly);
-	spacingCO->setEnabled(!readonly);
-	unitCO->setEnabled(!readonly);
 	keepCB->setEnabled(!readonly);
+
+	if (readonly) {
+		spacingCO->setEnabled(false);
+		unitCO->setEnabled(false);
+	} else {
+		bool const enable = (spacingCO->currentIndex() == 5);
+		valueLE->setEnabled(enable);
+		valueL->setEnabled(enable);
+		unitCO->setEnabled(enable);
+	}
 
 	return InsetParamsWidget::checkWidgets();
 }

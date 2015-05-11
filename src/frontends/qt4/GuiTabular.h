@@ -48,6 +48,8 @@ private:
 	//@}
 
 	///
+	void enableWidgets() const;
+	///
 	void setHAlign(std::string & param_str) const;
 	///
 	void setVAlign(std::string & param_str) const;

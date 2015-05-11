@@ -222,7 +222,7 @@ void FloatPlacement::changedSlot()
 }
 
 
-void FloatPlacement::checkAllowed()
+void FloatPlacement::checkAllowed() const
 {
 	bool const defaults = defaultsCB->isChecked();
 	bool const ignore = topCB->isChecked() || bottomCB->isChecked()
@@ -254,11 +254,14 @@ void FloatPlacement::checkAllowed()
 
 bool FloatPlacement::checkWidgets(bool readonly) const
 {
-	floatTypeCO->setEnabled(!readonly);
-	defaultsCB->setEnabled(!readonly);
-	options->setEnabled(!readonly);
-	spanCB->setEnabled(!readonly);
-	sidewaysCB->setEnabled(!readonly);
+	if (readonly) {
+		floatTypeCO->setEnabled(false);
+		defaultsCB->setEnabled(false);
+		options->setEnabled(false);
+		spanCB->setEnabled(false);
+		sidewaysCB->setEnabled(false);
+	} else
+		checkAllowed();
 
 	return InsetParamsWidget::checkWidgets();
 }

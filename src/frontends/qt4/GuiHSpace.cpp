@@ -99,7 +99,7 @@ void GuiHSpace::changedSlot()
 }
 
 
-void GuiHSpace::enableWidgets()
+void GuiHSpace::enableWidgets() const
 {
 	QString const selection = spacingCO->itemData(spacingCO->currentIndex()).toString();
 	bool const custom = selection == "custom";
@@ -301,11 +301,17 @@ docstring GuiHSpace::dialogToParams() const
 
 bool GuiHSpace::checkWidgets(bool readonly) const
 {
-	spacingCO->setEnabled(!readonly);
-	unitCO->setEnabled(!readonly);
-	fillPatternCO->setEnabled(!readonly);
-	keepCB->setEnabled(!readonly);
 	valueLE->setReadOnly(readonly);
+
+	if (readonly) {
+		spacingCO->setEnabled(false);
+		unitCO->setEnabled(false);
+		fillPatternCO->setEnabled(false);
+		keepCB->setEnabled(false);
+		valueLE->setEnabled(false);
+	} else
+		enableWidgets();
+
 	if (!InsetParamsWidget::checkWidgets())
 		return false;
 	return spacingCO->itemData(spacingCO->currentIndex()).toString() != "custom"
