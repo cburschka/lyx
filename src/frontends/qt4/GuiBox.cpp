@@ -6,6 +6,7 @@
  * \author Jürgen Vigna (Minipage stuff)
  * \author Martin Vermeer
  * \author Jürgen Spitzmüller
+ * \author Uwe Stöhr
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -98,13 +99,28 @@ GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 		this, SIGNAL(changed()));
 	connect(halignCO, SIGNAL(activated(int)), this, SIGNAL(changed()));
 	connect(ialignCO, SIGNAL(activated(int)), this, SIGNAL(changed()));
+	connect(thicknessED, SIGNAL(textChanged(QString)), this, SIGNAL(changed()));
+	connect(thicknessUnitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+		this, SIGNAL(changed()));
+	connect(separationED, SIGNAL(textChanged(QString)), this, SIGNAL(changed()));
+	connect(separationUnitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+		this, SIGNAL(changed()));
+	connect(shadowsizeED, SIGNAL(textChanged(QString)), this, SIGNAL(changed()));
+	connect(shadowsizeUnitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+		this, SIGNAL(changed()));
 
 	heightED->setValidator(unsignedLengthValidator(heightED));
 	widthED->setValidator(unsignedLengthValidator(widthED));
+	thicknessED->setValidator(unsignedLengthValidator(thicknessED));
+	separationED->setValidator(unsignedLengthValidator(separationED));
+	shadowsizeED->setValidator(unsignedLengthValidator(shadowsizeED));
 
 	// initialize the length validator
 	addCheckedWidget(widthED, widthCB);
 	addCheckedWidget(heightED, heightCB);
+	addCheckedWidget(thicknessED, thicknessLA);
+	addCheckedWidget(separationED, separationLA);
+	addCheckedWidget(shadowsizeED, shadowsizeLA);
 
 	initDialog();
 }
@@ -142,11 +158,10 @@ void GuiBox::on_typeCO_activated(int index)
 			heightCB->setChecked(false);
 		setSpecial(ibox);
 	}
-	if (type != "Boxed") {
+	if (type != "Boxed")
 		if (type != "Frameless")
 			widthCB->setChecked(itype != "none");
 		pagebreakCB->setChecked(false);
-	}
 	changed();
 }
 
@@ -160,6 +175,15 @@ void GuiBox::initDialog()
 	widthUnitsLC->setCurrentItem(Length::PCW);
 	heightED->setText("1");
 	heightUnitsLC->setCurrentItem("totalheight");
+	// LaTeX's default for \fboxrule is 0.4 pt
+	thicknessED->setText("0.4");
+	thicknessUnitsLC->setCurrentItem(Length::PT);
+	// LaTeX's default for \fboxsep is 3 pt
+	separationED->setText("3");
+	separationUnitsLC->setCurrentItem(Length::PT);
+	// LaTeX's default for \shadowsize is 4 pt
+	shadowsizeED->setText("4");
+	shadowsizeUnitsLC->setCurrentItem(Length::PT);
 }
 
 
@@ -226,10 +250,14 @@ void GuiBox::paramsToDialog(Inset const * inset)
 	ialignCO->setEnabled(ibox);
 	setSpecial(ibox);
 
-	// halign is only allowed without inner box and if a width is used and if
-	// pagebreak is not used
-	halignCO->setEnabled(!pagebreakCB->isChecked() && widthCB->isChecked()
-	                     && ((!ibox && type == "Boxed") || params.use_makebox));
+	// halign is only allowed if a width is used
+	halignCO->setEnabled(widthCB->isChecked());
+	// add the entry "Stretch" if the box is \makebox or \framebox and if not already there
+	if ((inner_type == "makebox" || (type == "Boxed" && inner_type == "none"))
+		&& halignCO->count() < 4)
+		halignCO->addItem(toqstr("Stretch"));
+	else if (inner_type != "makebox" && (type != "Boxed" && inner_type != "none"))
+		halignCO->removeItem(3); 
 	// pagebreak is only allowed for Boxed without inner box
 	pagebreakCB->setEnabled(!ibox && type == "Boxed");
 
@@ -271,6 +299,24 @@ void GuiBox::paramsToDialog(Inset const * inset)
 		heightCB->setCheckState(Qt::Checked);
 
 	heightCB->setEnabled(ibox);
+
+	// enable line thickness only for the rectangular frame types and drop shadow
+	thicknessED->setEnabled(type == "Boxed" || type == "Doublebox" || type == "Shadowbox");
+	thicknessUnitsLC->setEnabled(type == "Boxed" || type == "Doublebox" || type == "Shadowbox");
+	lengthToWidgets(thicknessED, thicknessUnitsLC,
+		(params.thickness).asString(), default_unit);
+	// enable line separation for the allowed frame types
+	separationED->setEnabled(type == "Boxed" || type == "ovalbox" || type == "Ovalbox"
+		|| type == "Doublebox" || type == "Shadowbox");
+	separationUnitsLC->setEnabled(type == "Boxed" || type == "ovalbox" || type == "Ovalbox"
+		|| type == "Doublebox" || type == "Shadowbox");
+	lengthToWidgets(separationED, separationUnitsLC,
+		(params.separation).asString(), default_unit);
+	// enable shadow size for drop shadow
+	shadowsizeED->setEnabled(type == "Shadowbox");
+	shadowsizeUnitsLC->setEnabled(type == "Shadowbox");
+	lengthToWidgets(shadowsizeED, shadowsizeUnitsLC,
+		(params.shadowsize).asString(), default_unit);
 }
 
 
@@ -338,6 +384,21 @@ docstring GuiBox::dialogToParams() const
 				Length(widgetsToLength(heightED, heightUnitsLC));
 		}
 	}
+
+	// handle the line thickness, line separation and shadow size
+	if (thicknessED->isEnabled())
+		params.thickness = Length(widgetsToLength(thicknessED, thicknessUnitsLC));
+	else
+		params.thickness = Length();
+	if (separationED->isEnabled())
+		params.separation = Length(widgetsToLength(separationED, separationUnitsLC));
+	else
+		params.separation = Length();
+	if (separationED->isEnabled())
+		params.shadowsize = Length(widgetsToLength(shadowsizeED, shadowsizeUnitsLC));
+	else
+		params.shadowsize = Length();
+
 	return from_ascii(InsetBox::params2string(params));
 }
 
@@ -358,39 +419,79 @@ bool GuiBox::checkWidgets(bool readonly) const
 		heightED->setEnabled(false);
 		heightUnitsLC->setEnabled(false);
 		heightCB->setEnabled(false);
+		thicknessED->setEnabled(false);
+		thicknessUnitsLC->setEnabled(false);
+		separationED->setEnabled(false);
+		separationUnitsLC->setEnabled(false);
+		shadowsizeED->setEnabled(false);
+		shadowsizeUnitsLC->setEnabled(false);
 	} else {
 		QString const outer =
 			typeCO->itemData(typeCO->currentIndex()).toString();
 		QString const itype =
 			innerBoxCO->itemData(innerBoxCO->currentIndex()).toString();
 		bool const ibox = (itype != "none" && itype != "makebox");
-		// pagebreak is only allowed for Boxed without inner box
-		pagebreakCB->setEnabled(!ibox && outer == "Boxed");
-		innerBoxCO->setEnabled(!pagebreakCB->isChecked());
 		valignCO->setEnabled(ibox);
 		ialignCO->setEnabled(ibox);
-		// halign is only allowed without inner box and if a width is used and if
-		// pagebreak is not used
-		halignCO->setEnabled(!pagebreakCB->isChecked() && widthCB->isChecked()
-				     && ((!ibox && outer == "Boxed") || itype == "makebox"));
+		if (heightCB->isChecked() && !ibox)
+			heightCB->setChecked(false);
+		heightCB->setEnabled(ibox);
 		// the width can only be selected for makebox or framebox
 		widthCB->setEnabled(itype == "makebox"
-				    || (outer == "Boxed"
-					&& !ibox && !pagebreakCB->isChecked()));
-		// except for frameless and boxed, the width cannot be specified if
+			|| (outer == "Boxed" && itype == "none")
+			&& !pagebreakCB->isChecked());
+		// except for Frameless and Boxed, the width cannot be specified if
 		// there is no inner box
 		bool const width_enabled =
 			ibox || outer == "Frameless" || outer == "Boxed";
-		// enable if width_enabled, except if checkbox is active but unset
-		widthED->setEnabled(width_enabled || (widthCB->isEnabled() && widthCB->isChecked()));
-		widthUnitsLC->setEnabled(width_enabled || (widthCB->isEnabled() && widthCB->isChecked()));
+		// enable if width_enabled
+		widthED->setEnabled(width_enabled);
+		widthUnitsLC->setEnabled(width_enabled);
 		if (!widthCB->isChecked() && widthCB->isEnabled()) {
 			widthED->setEnabled(false);
 			widthUnitsLC->setEnabled(false);
 		}
+		// halign is only allowed if a width is used
+		halignCO->setEnabled(widthCB->isChecked());
+		// add the entry "Stretch" if the box is \makebox or \framebox and if not already there
+		if ((itype == "makebox" || (outer == "Boxed" && itype == "none"))
+			&& halignCO->count() < 4)
+			halignCO->addItem(toqstr("Stretch"));
+		else if (itype != "makebox" && (outer != "Boxed" && itype != "none"))
+			halignCO->removeItem(3);
+		// pagebreak is only allowed for Boxed without inner box
+		pagebreakCB->setEnabled(!ibox && outer == "Boxed");
+
 		heightED->setEnabled(itype != "none" && heightCB->isChecked());
 		heightUnitsLC->setEnabled(itype != "none" && heightCB->isChecked());
 		heightCB->setEnabled(ibox);
+
+		// enable line thickness for the rectangular frame types and drop shadow
+		thicknessED->setEnabled(outer == "Boxed" || outer == "Doublebox" || outer == "Shadowbox");
+		thicknessUnitsLC->setEnabled(outer == "Boxed" || outer == "Doublebox" || outer == "Shadowbox");
+		// set default values if empty
+		if (thicknessED->text().isEmpty() && thicknessED->isEnabled()) {
+			thicknessED->setText("0.4");
+			thicknessUnitsLC->setCurrentItem(Length::PT);
+		}
+		// enable line separation for the allowed frame types
+		separationED->setEnabled(outer == "Boxed" || outer == "ovalbox" || outer == "Ovalbox"
+			|| outer == "Doublebox" || outer == "Shadowbox");
+		separationUnitsLC->setEnabled(outer == "Boxed" || outer == "ovalbox" || outer == "Ovalbox"
+			|| outer == "Doublebox" || outer == "Shadowbox");
+		// set default values if empty
+		if (separationED->text().isEmpty() && separationED->isEnabled()) {
+			separationED->setText("3");
+			separationUnitsLC->setCurrentItem(Length::PT);
+		}
+		// enable shadow size for drop shadow
+		shadowsizeED->setEnabled(outer == "Shadowbox");
+		shadowsizeUnitsLC->setEnabled(outer == "Shadowbox");
+		// set default values if empty
+		if (shadowsizeED->text().isEmpty() && shadowsizeED->isEnabled()) {
+			shadowsizeED->setText("4");
+			shadowsizeUnitsLC->setCurrentItem(Length::PT);
+		}
 	}
 
 	return InsetParamsWidget::checkWidgets();

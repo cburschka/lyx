@@ -6,6 +6,7 @@
  *
  * \author Angus Leeming
  * \author Martin Vermeer
+ * \author Uwe Stöhr
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -52,6 +53,12 @@ public:
 	Length height;
 	///
 	std::string height_special;
+	///
+	Length thickness;
+	///
+	Length separation;
+	///
+	Length shadowsize;
 };
 
 

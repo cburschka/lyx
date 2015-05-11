@@ -956,6 +956,65 @@ def convert_newgloss(document):
             i = endPlain + 1
 
 
+def convert_BoxFeatures(document):
+    " adds new box features "
+
+    i = 0
+    while True:
+        i = find_token(document.body, "height_special", i)
+        if i == -1:
+            return
+        document.body.insert(i + 1, 'thickness "0.4pt"\nseparation "3pt"\nshadowsize "4pt"\n')
+        i = i + 1
+
+
+def revert_BoxFeatures(document):
+    " deletes new box features "
+
+    i = 0
+    defaultSep = "3pt"
+    defaultThick = "0.4pt"
+    defaultShadow = "4pt"
+    while True:
+        i = find_token(document.body, "height_special", i)
+        if i == -1:
+            return
+        # read out the values
+        beg = document.body[i+1].find('"');
+        end = document.body[i+1].rfind('"');
+        thickness = document.body[i+1][beg+1:end];
+        beg = document.body[i+2].find('"');
+        end = document.body[i+2].rfind('"');
+        separation = document.body[i+2][beg+1:end];
+        beg = document.body[i+3].find('"');
+        end = document.body[i+3].rfind('"');
+        shadowsize = document.body[i+3][beg+1:end];
+        # delete the specification
+        del document.body[i+1:i+4]
+        # output ERT
+        # first output the closing braces
+        if shadowsize != defaultShadow or separation != defaultSep or thickness != defaultThick:
+            document.body[i + 10 : i + 10] = put_cmd_in_ert("}")
+        # now output the lengths
+        if shadowsize != defaultShadow or separation != defaultSep or thickness != defaultThick:
+            document.body[i - 10 : i - 10] = put_cmd_in_ert("{")
+        if thickness != defaultThick:
+            document.body[i - 5 : i - 4] = ["{\\backslash fboxrule " + thickness]
+        if separation != defaultSep and thickness == defaultThick:
+            document.body[i - 5 : i - 4] = ["{\\backslash fboxsep " + separation]
+        if separation != defaultSep and thickness != defaultThick:
+            document.body[i - 5 : i - 4] = ["{\\backslash fboxrule " + thickness + "\\backslash fboxsep " + separation]
+        if shadowsize != defaultShadow and separation == defaultSep and thickness == defaultThick:
+            document.body[i - 5 : i - 4] = ["{\\backslash shadowsize " + shadowsize]
+        if shadowsize != defaultShadow and separation != defaultSep and thickness == defaultThick:
+            document.body[i - 5 : i - 4] = ["{\\backslash fboxsep " + separation + "\\backslash shadowsize " + shadowsize]
+        if shadowsize != defaultShadow and separation == defaultSep and thickness != defaultThick:
+            document.body[i - 5 : i - 4] = ["{\\backslash fboxrule " + thickness + "\\backslash shadowsize " + shadowsize]
+        if shadowsize != defaultShadow and separation != defaultSep and thickness != defaultThick:
+            document.body[i - 5 : i - 4] = ["{\\backslash fboxrule " + thickness + "\\backslash fboxsep " + separation + "\\backslash shadowsize " + shadowsize]
+        i = i + 11
+
+
 ##
 # Conversion hub
 #
@@ -978,10 +1037,12 @@ convert = [
            [485, []],
            [486, []],
            [487, []],
-           [488, [convert_newgloss]]
+           [488, [convert_newgloss]],
+           [489, [convert_BoxFeatures]]
           ]
 
 revert =  [
+           [488, [revert_BoxFeatures]],
            [487, [revert_newgloss, revert_glossgroup]],
            [486, [revert_forest]],
            [485, [revert_ex_itemargs]],

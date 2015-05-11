@@ -11,6 +11,14 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2015-05-xx Uwe Stöhr <uwestoehr@web.de>
+ 	* Format incremented to 489: support to set line thickness, box separation
+ 	      and shadow size in the box dialog 
+ 	  New box parameters:
+ 	  - thickness
+ 	  - separation
+ 	  - shadowsize
+
 2015-04-21 Jürgen Spitzmüller <spitz@lyx.org>
  	* Format incremented to 488: Rewrite the Glosse insets (Glosse and Tri-Glosse).
           These insets now do not any longer use PassThru. Instead, they use an optional

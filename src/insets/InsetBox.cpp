@@ -6,6 +6,7 @@
  * \author Angus Leeming
  * \author Martin Vermeer
  * \author Jürgen Spitzmüller
+ * \author Uwe Stöhr
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -272,19 +273,35 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 	BoxType btype = boxtranslator().find(params_.type);
 
 	string width_string = params_.width.asLatexString();
+	string thickness_string = params_.thickness.asLatexString();
+	string defaultThick = "0.4pt";
+	string separation_string = params_.separation.asLatexString();
+	string defaultSep = "3pt";
+	string shadowsize_string = params_.shadowsize.asLatexString();
+	string defaultShadow = "4pt";
 	bool stdwidth = false;
-	// FIXME: do not test explicitely values of width_string
-	if (params_.inner_box &&
-			(width_string.find("1.0\\columnwidth") != string::npos
-			|| width_string.find("1.0\\textwidth") != string::npos)) {
+	// in general the overall width of some decorated boxes is wider thean the inner box
+	// we could therefore calculate the real width for all sizes so that if the user wants
+	// e.g. 0.1\columnwidth or 2cm he gets exactly this size
+	// however this makes problems when importing TeX code
+	// therefore only recalculate for the most common case that the box should not protrude
+	// the page margins
+	if (params_.inner_box
+		&& ((width_string.find("1\\columnwidth") != string::npos
+			|| width_string.find("1\\textwidth") != string::npos)
+			|| width_string.find("1\\paperwidth") != string::npos
+			|| width_string.find("1\\linewidth") != string::npos)) {
 		stdwidth = true;
 		switch (btype) {
 		case Frameless:
+			break;
 		case Framed:
+			width_string += " - 2\\FrameSep - 2\\FrameRule";
 			break;
 		case Boxed:
-		case Shaded:
 			width_string += " - 2\\fboxsep - 2\\fboxrule";
+			break;
+		case Shaded:
 			break;
 		case ovalbox:
 			width_string += " - 2\\fboxsep - 0.8pt";
@@ -293,8 +310,7 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 			width_string += " - 2\\fboxsep - 1.6pt";
 			break;
 		case Shadowbox:
-			// Shadow falls outside right margin... opinions?
-			width_string += " - 2\\fboxsep - 2\\fboxrule"/* "-\\shadowsize"*/;
+			width_string += " - 2\\fboxsep - 2\\fboxrule - \\shadowsize";
 			break;
 		case Doublebox:
 			width_string += " - 2\\fboxsep - 7.5\\fboxrule - 1pt";
@@ -306,17 +322,34 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 	if (runparams.lastid != -1)
 		os.texrow().start(runparams.lastid, runparams.lastpos);
 
-	// Adapt to column/text width correctly also if paragraphs indented:
-	if (stdwidth)
+	// adapt column/text width correctly also if paragraphs indented
+	if (stdwidth && !(buffer().params().paragraph_separation))
 		os << "\\noindent";
 
 	switch (btype) {
 	case Frameless:
 		break;
 	case Framed:
+		if (!(thickness_string.find(defaultThick) != string::npos)) {
+			os << "{\\FrameRule " << from_ascii(thickness_string);
+			if (!(separation_string.find(defaultSep) != string::npos))
+				os << "\\FrameSep " << from_ascii(separation_string);
+		}
+		if (!(separation_string.find(defaultSep) != string::npos)
+			&& (thickness_string.find(defaultThick) != string::npos))
+			os << "{\\FrameSep " << from_ascii(separation_string);
+
 		os << "\\begin{framed}%\n";
 		break;
 	case Boxed:
+		if (!(thickness_string.find(defaultThick) != string::npos)) {
+			os << "{\\fboxrule " << from_ascii(thickness_string);
+			if (!(separation_string.find(defaultSep) != string::npos))
+				os << "\\fboxsep " << from_ascii(separation_string);
+		}
+		if (!(separation_string.find(defaultSep) != string::npos)
+			&& (thickness_string.find(defaultThick) != string::npos))
+			os << "{\\fboxsep " << from_ascii(separation_string);
 		if (!width_string.empty()) {
 			if (!params_.inner_box) {
 				os << "\\framebox";
@@ -338,12 +371,37 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		os << "{";
 		break;
 	case ovalbox:
+		if (!separation_string.empty() && separation_string.find(defaultSep) == string::npos)
+			os << "{\\fboxsep " << from_ascii(separation_string);
 		os << "\\ovalbox{";
 		break;
 	case Ovalbox:
+		if (!separation_string.empty() && separation_string.find(defaultSep) == string::npos)
+			os << "{\\fboxsep " << from_ascii(separation_string);
 		os << "\\Ovalbox{";
 		break;
 	case Shadowbox:
+		if (!(thickness_string.find(defaultThick) != string::npos)) {
+			os << "{\\fboxrule " << from_ascii(thickness_string);
+			if (!(separation_string.find(defaultSep) != string::npos)) {
+				os << "\\fboxsep " << from_ascii(separation_string);
+				if (!(shadowsize_string.find(defaultShadow) != string::npos))
+					os << "\\shadowsize " << from_ascii(shadowsize_string);
+			}
+			if (!(shadowsize_string.find(defaultShadow) != string::npos)
+				&& (separation_string.find(defaultSep) != string::npos))
+				os << "\\shadowsize " << from_ascii(shadowsize_string);
+		}
+		if (!(separation_string.find(defaultSep) != string::npos)
+			&& (thickness_string.find(defaultThick) != string::npos)) {
+				os << "{\\fboxsep " << from_ascii(separation_string);
+				if (!(shadowsize_string.find(defaultShadow) != string::npos))
+					os << "\\shadowsize " << from_ascii(shadowsize_string);
+		}
+		if (!(shadowsize_string.find(defaultShadow) != string::npos)
+				&& (separation_string.find(defaultSep) != string::npos)
+				&& (thickness_string.find(defaultThick) != string::npos))
+				os << "{\\shadowsize " << from_ascii(shadowsize_string);
 		os << "\\shadowbox{";
 		break;
 	case Shaded:
@@ -351,6 +409,14 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		// it is inside a minipage or parbox
 		break;
 	case Doublebox:
+		if (!(thickness_string.find(defaultThick) != string::npos)) {
+			os << "{\\fboxrule " << from_ascii(thickness_string);
+			if (!(separation_string.find(defaultSep) != string::npos))
+				os << "\\fboxsep " << from_ascii(separation_string);
+		}
+		if (!(separation_string.find(defaultSep) != string::npos)
+			&& (thickness_string.find(defaultThick) != string::npos))
+			os << "{\\fboxsep " << from_ascii(separation_string);
 		os << "\\doublebox{";
 		break;
 	}
@@ -414,6 +480,23 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		os << "\\begin{shaded}%\n";
 	}
 
+	// \framebox and \makebox handle hor_pos their own way
+	// hor_pos is senseless for \mbox and \fbox
+	if (!(params_.use_makebox)
+		&& !(btype == Boxed && !params_.inner_box)) {
+			switch (params_.hor_pos) {
+			case 'l':
+				// do nothing because this is LaTeX's default
+				break;
+			case 'c':
+				os << "\\centering ";
+				break;
+			case 'r':
+				os << "\\raggedleft ";
+				break;
+			}
+	}
+
 	InsetText::latex(os, runparams);
 
 	if (btype == Shaded)
@@ -431,15 +514,38 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		break;
 	case Framed:
 		os << "\\end{framed}";
+		if (!(separation_string.find(defaultSep) != string::npos)
+			|| !(thickness_string.find(defaultThick) != string::npos))
+			os << "}";
 		break;
 	case Boxed:
 		os << "}";
+		if (!(separation_string.find(defaultSep) != string::npos)
+			|| !(thickness_string.find(defaultThick) != string::npos))
+			os << "}";
 		break;
 	case ovalbox:
+		os << "}";
+		if (!(separation_string.find(defaultSep) != string::npos))
+			os << "}";
+		break;
 	case Ovalbox:
+		os << "}";
+		if (!(separation_string.find(defaultSep) != string::npos))
+			os << "}";
+		break;
 	case Doublebox:
+		os << "}";
+		if (!(separation_string.find(defaultSep) != string::npos)
+			|| !(thickness_string.find(defaultThick) != string::npos))
+			os << "}";
+		break;
 	case Shadowbox:
 		os << "}";
+		if (!(separation_string.find(defaultSep) != string::npos)
+			|| !(thickness_string.find(defaultThick) != string::npos)
+			|| !(shadowsize_string.find(defaultShadow) != string::npos))
+			os << "}";
 		break;
 	case Shaded:
 		// already done
@@ -548,6 +654,7 @@ void InsetBox::validate(LaTeXFeatures & features) const
 	case Frameless:
 		break;
 	case Framed:
+		features.require("calc");
 		features.require("framed");
 		break;
 	case Boxed:
@@ -632,7 +739,10 @@ InsetBoxParams::InsetBoxParams(string const & label)
 	  hor_pos('c'),
 	  inner_pos('t'),
 	  height(Length("1in")),
-	  height_special("totalheight") // default is 1\\totalheight
+	  height_special("totalheight"), // default is 1\\totalheight
+	  thickness(Length("0.4pt")),
+	  separation(Length("3pt")),
+	  shadowsize(Length("4pt"))
 {}
 
 
@@ -649,6 +759,9 @@ void InsetBoxParams::write(ostream & os) const
 	os << "special \"" << special << "\"\n";
 	os << "height \"" << height.asString() << "\"\n";
 	os << "height_special \"" << height_special << "\"\n";
+	os << "thickness \"" << thickness.asString() << "\"\n";
+	os << "separation \"" << separation.asString() << "\"\n";
+	os << "shadowsize \"" << shadowsize.asString() << "\"\n";
 }
 
 
@@ -668,6 +781,9 @@ void InsetBoxParams::read(Lexer & lex)
 	lex >> "special" >> special;
 	lex >> "height" >> height;
 	lex >> "height_special" >> height_special;
+	lex >> "thickness" >> thickness;
+	lex >> "separation" >> separation;
+	lex >> "shadowsize" >> shadowsize;
 }
 
 

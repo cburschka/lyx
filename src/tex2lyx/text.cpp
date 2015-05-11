@@ -847,6 +847,9 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 	string width_unit;
 	string latex_width;
 	string width_special = "none";
+	string thickness = "0.4pt";
+	string separation = "3pt";
+	string shadowsize = "4pt";
 	if (!inner_type.empty() && p.hasOpt()) {
 		if (inner_type != "makebox")
 			position = p.getArg('[', ']');
@@ -1071,6 +1074,9 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		os << "special \"" << width_special << "\"\n";
 		os << "height \"" << height_value << height_unit << "\"\n";
 		os << "height_special \"" << height_special << "\"\n";
+		os << "thickness \"" << thickness << "\"\n";
+		os << "separation \"" << separation << "\"\n";
+		os << "shadowsize \"" << shadowsize << "\"\n";
 		os << "status open\n\n";
 
 		// Unfortunately we can't use parse_text_in_inset:
