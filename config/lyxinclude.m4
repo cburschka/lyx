@@ -120,37 +120,65 @@ done
 ])dnl
 
 
-AC_DEFUN([LYX_PROG_CXX_WORKS],
-[rm -f conftest.C
-cat >conftest.C <<EOF
-class foo {
-   // we require the mutable keyword
-   mutable int bar;
- };
- // we require namespace support
- namespace baz {
-   int bar;
- }
- int main() {
-   return(0);
- }
-EOF
-$CXX -c $CXXFLAGS $CPPFLAGS conftest.C >&5 || CXX=
-rm -f conftest.C conftest.o conftest.obj || true
+dnl Usage: LYX_PROG_CLANG: set lyx_cv_prog_clang to yes if the compiler is clang.
+AC_DEFUN([LYX_PROG_CLANG],
+[AC_CACHE_CHECK([whether the compiler is clang],
+               [lyx_cv_prog_clang],
+[AC_TRY_COMPILE([], [
+#ifndef __clang__
+	    this is not clang
+#endif
+],
+[lyx_cv_prog_clang=yes ; CLANG=yes], [lyx_cv_prog_clang=no ; CLANG=no])])
+])
+
+
+dnl Usage: LYX_LIB_STDCXX: set lyx_cv_lib_stdcxx to yes if the STL library is libstdc++.
+AC_DEFUN([LYX_LIB_STDCXX],
+[AC_CACHE_CHECK([whether STL is libstdc++],
+               [lyx_cv_lib_stdcxx],
+[AC_TRY_COMPILE([#include<vector>], [
+#if ! defined(__GLIBCXX__) && ! defined(__GLIBCPP__)
+	    this is not libstdc++
+#endif
+],
+[lyx_cv_lib_stdcxx=yes], [lyx_cv_lib_stdcxx=no])])
+])
+
+
+dnl Usage: LYX_LIB_STDCXX_CXX11_ABI: set lyx_cv_lib_stdcxx_cxx11_abi to yes
+dnl        if the STL library is GNU libstdc++ and the C++11 ABI is used.
+AC_DEFUN([LYX_LIB_STDCXX_CXX11_ABI],
+[AC_CACHE_CHECK([whether STL is libstdc++ using the C++11 ABI],
+               [lyx_cv_lib_stdcxx_cxx11_abi],
+[AC_TRY_COMPILE([#include<vector>], [
+#if ! defined(_GLIBCXX_USE_CXX11_ABI) || ! _GLIBCXX_USE_CXX11_ABI
+	    this is not libstdc++ using the C++11 ABI
+#endif
+],
+[lyx_cv_lib_stdcxx_cxx11_abi=yes], [lyx_cv_lib_stdcxx_cxx11_abi=no])])
 ])
 
 
 AC_DEFUN([LYX_PROG_CXX],
-[AC_MSG_CHECKING([for a good enough C++ compiler])
-LYX_SEARCH_PROG(CXX, $CXX $CCC g++ gcc c++ CC cxx xlC cc++, [LYX_PROG_CXX_WORKS])
+[AC_REQUIRE([AC_PROG_CXX])
+AC_REQUIRE([AC_PROG_CXXCPP])
 
-if test -z "$CXX" ; then
-  AC_MSG_ERROR([Unable to find a good enough C++ compiler])
+AC_LANG_PUSH(C++)
+LYX_PROG_CLANG
+LYX_LIB_STDCXX
+LYX_LIB_STDCXX_CXX11_ABI
+AC_LANG_POP(C++)
+
+if test $lyx_cv_lib_stdcxx = "yes" ; then
+  if test $lyx_cv_lib_stdcxx_cxx11_abi = "yes" ; then
+    AC_DEFINE(USE_GLIBCXX_CXX11_ABI, 1, [use GNU libstdc++ with C++11 ABI])
+  fi
+else
+  if test $lyx_cv_prog_clang = "yes" ; then
+    AC_DEFINE(USE_LLVM_LIBCPP, 1, [use libc++ provided by llvm instead of GNU libstdc++])
+  fi
 fi
-AC_MSG_RESULT($CXX)
-
-AC_PROG_CXX
-AC_PROG_CXXCPP
 
 ### We might want to get or shut warnings.
 AC_ARG_ENABLE(warnings,

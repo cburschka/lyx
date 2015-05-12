@@ -13,14 +13,6 @@
 #ifndef STRFWD_H
 #define STRFWD_H
 
-// This includes does nothing but defining _LIBCPP_VERSION
-// if libc++ is used (rather than libstdc++) - we first
-// check if we have at least a c++03 standard before
-// including the file
-#if (__cplusplus > 19971L)
-#include <ciso646>
-#endif
-
 #ifdef USE_WCHAR_T
 
 // Prefer this if possible because GNU libstdc++ has usable
@@ -36,8 +28,10 @@ namespace lyx { typedef boost::uint32_t char_type; }
 
 #endif
 
-// Forward definitions do not work with libc++
-#ifdef  _LIBCPP_VERSION
+// For gcc5 with the new std::string ABI forward declarations would work in
+// principle, but I am not sure whether we want non-standard
+// "namespace __cxx11" in our sources.
+#if defined(USE_LLVM_LIBCPP) || defined(USE_GLIBCXX_CXX11_ABI)
 #include <string>
 #else
 

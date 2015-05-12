@@ -231,3 +231,6 @@ What's new
 - Add "Keywords" to lyx.desktop file (bug 9414).
 
 - Fix several compilation warnings (bug 9488).
+
+- Fix build with gcc 5.1 using libstdc++ with C++11 ABI.
+

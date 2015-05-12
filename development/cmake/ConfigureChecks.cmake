@@ -112,3 +112,49 @@ check_cxx_source_compiles(
 	"
 SIZEOF_WCHAR_T_IS_4)
 
+# Check whether STL is libstdc++
+check_cxx_source_compiles(
+	"
+	#include <vector>
+	int main() {
+	#if ! defined(__GLIBCXX__) && ! defined(__GLIBCPP__)
+		this is not libstdc++
+	#endif
+		return(0);
+	}
+	"
+lyx_cv_lib_stdcxx)
+
+# Check whether STL is libstdc++ with C++11 ABI
+check_cxx_source_compiles(
+	"
+	#include <vector>
+	int main() {
+	#if ! defined(_GLIBCXX_USE_CXX11_ABI) || ! _GLIBCXX_USE_CXX11_ABI
+		this is not libstdc++ using the C++11 ABI
+	#endif
+		return(0);
+	}
+	"
+USE_GLIBCXX_CXX11_ABI)
+
+check_cxx_source_compiles(
+	"
+	#ifndef __clang__
+		this is not clang
+	#endif
+	int main() {
+	  return(0);
+	}
+	"
+lyx_cv_prog_clang)
+
+set(USE_LLVM_LIBCPP)
+set(USE_GLIBCXX_CXX11_ABI)
+if(NOT lyx_cv_lib_stdcxx)
+  if(lyx_cv_prog_clang)
+    # use libc++ provided by llvm instead of GNU libstdc++
+    set(USE_LLVM_LIBCPP 1)
+  endif()
+endif()
+

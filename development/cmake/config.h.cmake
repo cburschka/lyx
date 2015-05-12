@@ -57,6 +57,9 @@
 #cmakedefine LYX_USE_TR1 1
 #cmakedefine LYX_USE_TR1_REGEX 1
 
+// use GNU libstdc++ with C++11 ABI
+#cmakedefine USE_GLIBCXX_CXX11_ABI 1
+
 #cmakedefine Z_PREFIX 1
 
 #cmakedefine ASPELL_FOUND 1
