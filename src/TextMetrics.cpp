@@ -1610,12 +1610,16 @@ int TextMetrics::leftMargin(int max_width,
 	l_margin += theFontMetrics(buffer.params().getFont()).signedWidth(
 		tclass.leftmargin());
 
-	if (par.getDepth() != 0) {
+	int depth = par.getDepth();
+	if (depth != 0) {
 		// find the next level paragraph
 		pit_type newpar = text_->outerHook(pit);
 		if (newpar != pit_type(pars.size())) {
 			if (pars[newpar].layout().isEnvironment()) {
-				l_margin = leftMargin(max_width, newpar);
+				int nestmargin = depth * nestMargin();
+				if (text_->isMainText())
+					nestmargin += changebarMargin();
+				l_margin = max(leftMargin(max_width, newpar), nestmargin);
 				// Remove the parindent that has been added
 				// if the paragraph was empty.
 				if (pars[newpar].empty() &&
