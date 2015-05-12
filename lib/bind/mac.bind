@@ -1,7 +1,7 @@
 # This file is part of
 # ==================================================================
 #
-#		      LyX, the High Level Word Processor
+#                    LyX, the High Level Word Processor
 #
 #         Copyright (C) 1995-1997 Asger Alstrup & The LyX Team
 #
@@ -287,7 +287,7 @@ Format 2
 #
 
 \bind "C-~S-greater"                 "label-goto"
-\bind "C-~S-less" 		             "bookmark-goto 0"
+\bind "C-~S-less"                    "bookmark-goto 0"
 
 #
 # Additional Motion + select group
@@ -366,7 +366,7 @@ Format 2
 \bind "C-M-Left"                     "inset-modify tabular move-column-left"
 #\bind "F9"                          "meta-prefix"
 
-\bind "C-F11"			"ui-toggle fullscreen"
+\bind "C-M-F"                        "ui-toggle fullscreen"
 
 # Include menu and math bindings
 
