@@ -64,9 +64,9 @@ public:
 
 private:
 	///
-	void makeTOCWithDepth(XHTMLStream & xs, Toc toc, const OutputParams & op) const;
+	void makeTOCWithDepth(XHTMLStream & xs, Toc const & toc, const OutputParams & op) const;
 	///
-	void makeTOCNoDepth(XHTMLStream & xs, Toc toc, const OutputParams & op) const;
+	void makeTOCNoDepth(XHTMLStream & xs, Toc const & toc, const OutputParams & op) const;
 	///
 	void makeTOCEntry(XHTMLStream & xs, Paragraph const & par, OutputParams const & op) const;
 	

@@ -149,7 +149,7 @@ void InsetTOC::makeTOCEntry(XHTMLStream & xs,
 
 
 void InsetTOC::makeTOCWithDepth(XHTMLStream & xs, 
-		Toc toc, OutputParams const & op) const
+		Toc const & toc, OutputParams const & op) const
 {
 	Toc::const_iterator it = toc.begin();
 	Toc::const_iterator const en = toc.end();
@@ -207,7 +207,7 @@ void InsetTOC::makeTOCWithDepth(XHTMLStream & xs,
 
 
 void InsetTOC::makeTOCNoDepth(XHTMLStream & xs, 
-		Toc toc, const OutputParams & op) const
+		Toc const & toc, const OutputParams & op) const
 {
 	Toc::const_iterator it = toc.begin();
 	Toc::const_iterator const en = toc.end();
