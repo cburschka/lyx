@@ -439,8 +439,7 @@ bool GuiBox::checkWidgets(bool readonly) const
 		heightCB->setEnabled(ibox);
 		// the width can only be selected for makebox or framebox
 		widthCB->setEnabled(itype == "makebox"
-			|| (outer == "Boxed" && itype == "none")
-			&& !pagebreakCB->isChecked());
+			|| (outer == "Boxed" && itype == "none"	&& !pagebreakCB->isChecked()));
 		// except for Frameless and Boxed, the width cannot be specified if
 		// there is no inner box
 		bool const width_enabled =
