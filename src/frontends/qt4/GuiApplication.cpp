@@ -2128,6 +2128,11 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	}
 
 	if (func.action() == LFUN_UNKNOWN_ACTION) {
+		if (state & AltModifier) {
+			current_view_->message(_("Unknown function."));
+			current_view_->restartCursor();
+			return;
+		}
 		// Hmm, we didn't match any of the keysequences. See
 		// if it's normal insertable text not already covered
 		// by a binding
@@ -2138,6 +2143,9 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 				LYXERR(Debug::KEY, "Non-printable character! Omitting.");
 				return;
 			}
+			// FIXME: Is this really needed? If not, we could  simply go with
+			// with the else part for LFUN_UNKNOWN_ACTION
+			// (see discussion at #5575)
 			LYXERR(Debug::KEY, "isText() is true, inserting.");
 			func = FuncRequest(LFUN_SELF_INSERT,
 					   FuncRequest::KEYBOARD);
