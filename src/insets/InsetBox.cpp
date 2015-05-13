@@ -268,17 +268,18 @@ bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
+const string defaultThick = "0.4pt";
+const string defaultSep = "3pt";
+const string defaultShadow = "4pt";
+
 void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 {
 	BoxType btype = boxtranslator().find(params_.type);
 
 	string width_string = params_.width.asLatexString();
 	string thickness_string = params_.thickness.asLatexString();
-	const string defaultThick = "0.4pt";
 	string separation_string = params_.separation.asLatexString();
-	const string defaultSep = "3pt";
 	string shadowsize_string = params_.shadowsize.asLatexString();
-	const string defaultShadow = "4pt";
 	bool stdwidth = false;
 	// in general the overall width of some decorated boxes is wider thean the inner box
 	// we could therefore calculate the real width for all sizes so that if the user wants
@@ -740,9 +741,9 @@ InsetBoxParams::InsetBoxParams(string const & label)
 	  inner_pos('t'),
 	  height(Length("1in")),
 	  height_special("totalheight"), // default is 1\\totalheight
-	  thickness(Length("0.4pt")),
-	  separation(Length("3pt")),
-	  shadowsize(Length("4pt"))
+	  thickness(Length(defaultThick)),
+	  separation(Length(defaultSep)),
+	  shadowsize(Length(defaultShadow))
 {}
 
 
