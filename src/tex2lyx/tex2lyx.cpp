@@ -839,7 +839,8 @@ namespace {
  *  You must ensure that \p parentFilePathTeX is properly set before calling
  *  this function!
  */
-bool tex2lyx(idocstream & is, ostream & os, string encoding)
+bool tex2lyx(idocstream & is, ostream & os, string encoding,
+             string const & outfiledir)
 {
 	// Set a sensible default encoding.
 	// This is used until an encoding command is found.
@@ -905,7 +906,7 @@ bool tex2lyx(idocstream & is, ostream & os, string encoding)
 		for (; it != end; ++it)
 			preamble.addModule(*it);
 	}
-	if (!preamble.writeLyXHeader(os, !active_environments.empty())) {
+	if (!preamble.writeLyXHeader(os, !active_environments.empty(), outfiledir)) {
 		cerr << "Could not write LyX file header." << endl;
 		return false;
 	}
@@ -924,7 +925,8 @@ bool tex2lyx(idocstream & is, ostream & os, string encoding)
 
 
 /// convert TeX from \p infilename to LyX and write it to \p os
-bool tex2lyx(FileName const & infilename, ostream & os, string const & encoding)
+bool tex2lyx(FileName const & infilename, ostream & os, string const & encoding,
+             string const & outfiledir)
 {
 	ifdocstream is;
 	// forbid buffering on this stream
@@ -937,7 +939,7 @@ bool tex2lyx(FileName const & infilename, ostream & os, string const & encoding)
 	}
 	string const oldParentFilePath = parentFilePathTeX;
 	parentFilePathTeX = onlyPath(infilename.absFileName());
-	bool retval = tex2lyx(is, os, encoding);
+	bool retval = tex2lyx(is, os, encoding, outfiledir);
 	parentFilePathTeX = oldParentFilePath;
 	return retval;
 }
@@ -970,7 +972,8 @@ bool tex2lyx(string const & infilename, FileName const & outfilename,
 	cerr << "Input file: " << infilename << "\n";
 	cerr << "Output file: " << outfilename << "\n";
 #endif
-	return tex2lyx(FileName(infilename), os, encoding);
+	return tex2lyx(FileName(infilename), os, encoding,
+	               outfilename.onlyPath().absFileName() + '/');
 }
 
 
@@ -1122,7 +1125,7 @@ int TeX2LyXApp::run()
 	if (outfilename == "-") {
 		// assume same directory as input file
 		masterFilePathLyX = masterFilePathTeX;
-		if (tex2lyx(FileName(infilename), cout, default_encoding))
+		if (tex2lyx(FileName(infilename), cout, default_encoding, masterFilePathLyX))
 			return EXIT_SUCCESS;
 	} else {
 		masterFilePathLyX = onlyPath(outfilename);

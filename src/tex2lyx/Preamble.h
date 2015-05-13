@@ -93,7 +93,8 @@ public:
 	void parse(Parser & p, std::string const & forceclass,
 	           TeX2LyXDocClass & tc);
 	/// Writes the LyX file header from internal data
-	bool writeLyXHeader(std::ostream & os, bool subdoc);
+	bool writeLyXHeader(std::ostream & os, bool subdoc,
+	                    std::string const & outfiledir);
 
 	/// known polyglossia language names (including variants)
 	static const char * const polyglossia_languages[];

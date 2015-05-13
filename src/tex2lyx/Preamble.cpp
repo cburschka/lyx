@@ -1046,7 +1046,7 @@ void Preamble::handle_if(Parser & p, bool in_lyx_preamble)
 }
 
 
-bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
+bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiledir)
 {
 	// set the quote language
 	// LyX only knows the following quotes languages:
@@ -1088,11 +1088,13 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc)
 	// output the LyX file settings
 	// Important: Keep the version formatting in sync with LyX and
 	//            lyx2lyx (bug 7951)
+	string const origin = roundtripMode() ? "roundtrip" : outfiledir;
 	os << "#LyX file created by tex2lyx " << lyx_version_major << '.'
 	   << lyx_version_minor << '\n'
 	   << "\\lyxformat " << LYX_FORMAT << '\n'
 	   << "\\begin_document\n"
 	   << "\\begin_header\n"
+	   << "\\origin " << origin << "\n"
 	   << "\\textclass " << h_textclass << "\n";
 	string const raw = subdoc ? empty_string() : h_preamble.str();
 	if (!raw.empty()) {
