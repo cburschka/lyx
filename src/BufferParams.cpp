@@ -20,6 +20,7 @@
 #include "Author.h"
 #include "LayoutFile.h"
 #include "BranchList.h"
+#include "Buffer.h"
 #include "buffer_funcs.h"
 #include "Bullet.h"
 #include "Color.h"
@@ -601,6 +602,8 @@ void BufferParams::setDefSkip(VSpace const & vs)
 string BufferParams::readToken(Lexer & lex, string const & token,
 	FileName const & filepath)
 {
+	string result;
+
 	if (token == "\\textclass") {
 		lex.next();
 		string const classname = lex.getString();
@@ -609,13 +612,31 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		// be available.
 		string tcp;
 		LayoutFileList & bcl = LayoutFileList::get();
-		if (!filepath.empty())
-			tcp = bcl.addLocalLayout(classname, filepath.absFileName());
+		if (!filepath.empty()) {
+			// If classname is an absolute path, the document is
+			// using a local layout file which could not be accessed
+			// by a relative path. In this case the path is correct
+			// even if the document was moved to a different
+			// location. However, we will have a problem if the
+			// document was generated on a different platform.
+			bool isabsolute = FileName::isAbsolute(classname);
+			string const classpath = onlyPath(classname);
+			string const path = isabsolute ? classpath
+				: FileName(addPath(filepath.absFileName(),
+						classpath)).realPath();
+			string const oldpath = isabsolute ? string()
+				: FileName(addPath(origin, classpath)).realPath();
+			tcp = bcl.addLocalLayout(onlyFileName(classname), path, oldpath);
+		}
 		// that returns non-empty if a "local" layout file is found.
-		if (!tcp.empty())
-			setBaseClass(tcp);
-		else
-			setBaseClass(classname);
+		if (!tcp.empty()) {
+			result = to_utf8(makeRelPath(from_utf8(onlyPath(tcp)),
+						from_utf8(filepath.absFileName())));
+			if (result.empty())
+				result = ".";
+			setBaseClass(onlyFileName(tcp));
+		} else
+			setBaseClass(onlyFileName(classname));
 		// We assume that a tex class exists for local or unknown
 		// layouts so this warning, will only be given for system layouts.
 		if (!baseClass()->isTeXClassAvailable()) {
@@ -636,6 +657,9 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 			frontend::Alert::warning(_("Document class not available"),
 				       msg, true);
 		}
+	} else if (token == "\\origin") {
+		lex.eatLine();
+		origin = lex.getString();
 	} else if (token == "\\begin_preamble") {
 		readPreamble(lex);
 	} else if (token == "\\begin_local_layout") {
@@ -936,17 +960,22 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		return token;
 	}
 
-	return string();
+	return result;
 }
 
 
-void BufferParams::writeFile(ostream & os) const
+void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 {
 	// The top of the file is written by the buffer.
 	// Prints out the buffer info into the .lyx file given by file
 
+	// the document directory
+	os << "\\origin " << buf->filePath() << '\n';
+
 	// the textclass
-	os << "\\textclass " << baseClass()->name() << '\n';
+	os << "\\textclass " << buf->includedFilePath(addName(buf->layoutPos(),
+						baseClass()->name()), "layout")
+	   << '\n';
 
 	// then the preamble
 	if (!preamble.empty()) {

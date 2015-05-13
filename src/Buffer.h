@@ -403,6 +403,18 @@ public:
 	/// It is always an absolute path.
 	std::string filePath() const;
 
+	/** Returns the path where a local layout file lives.
+	 *  An empty string is returned for standard system and user layouts.
+	 *  If possible, it is always relative to the buffer path.
+	 */
+	std::string layoutPos() const;
+
+	/** Set the path to a local layout file.
+	 *  This must be an absolute path but, if possible, it is always
+	 *  stored as relative to the buffer path.
+	 */
+	void setLayoutPos(std::string const & path);
+
 	/** A transformed version of the file name, adequate for LaTeX.
 	    \param no_path optional if \c true then the path is stripped.
 	*/

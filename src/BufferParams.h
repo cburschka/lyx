@@ -77,7 +77,7 @@ public:
 		support::FileName const & filepath);
 
 	///
-	void writeFile(std::ostream &) const;
+	void writeFile(std::ostream &, Buffer const *) const;
 
 	/// check what features are implied by the buffer parameters.
 	void validate(LaTeXFeatures &) const;
@@ -304,6 +304,8 @@ public:
 	/// The main encoding used by this buffer for LaTeX output.
 	/// Individual pieces of text can use different encodings.
 	Encoding const & encoding() const;
+	///
+	std::string origin;
 	///
 	std::string preamble;
 	///

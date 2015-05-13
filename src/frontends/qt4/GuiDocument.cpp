@@ -1228,7 +1228,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(latexModule->psdriverCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(latexModule->classCO, SIGNAL(activated(int)),
-		this, SLOT(classChanged()));
+		this, SLOT(classChanged_adaptor()));
 	connect(latexModule->classCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(latexModule->layoutPB, SIGNAL(clicked()),
@@ -2102,9 +2102,9 @@ void GuiDocument::browseLayout()
 
 	int const ret = Alert::prompt(_("Local layout file"),
 		_("The layout file you have selected is a local layout\n"
-		  "file, not one in the system or user directory. Your\n"
-		  "document may not work with this layout if you do not\n"
-		  "keep the layout file in the document directory."),
+		  "file, not one in the system or user directory.\n"
+		  "Your document will not work with this layout if you\n"
+		  "move the layout file to a different directory."),
 		  1, 1, _("&Set Layout"), _("&Cancel"));
 	if (ret == 1)
 		return;
@@ -2113,15 +2113,17 @@ void GuiDocument::browseLayout()
 	LayoutFileList & bcl = LayoutFileList::get();
 	string classname = layoutFile.onlyFileName();
 	// this will update an existing layout if that layout has been loaded before.
-	LayoutFileIndex name = bcl.addLocalLayout(
+	LayoutFileIndex name = support::onlyFileName(bcl.addLocalLayout(
 		classname.substr(0, classname.size() - 7),
-		layoutFile.onlyPath().absFileName());
+		layoutFile.onlyPath().absFileName()));
 
 	if (name.empty()) {
 		Alert::error(_("Error"),
 			_("Unable to read local layout file."));
 		return;
 	}
+
+	const_cast<Buffer &>(buffer()).setLayoutPos(layoutFile.onlyPath().absFileName());
 
 	// do not trigger classChanged if there is no change.
 	if (latexModule->classCO->currentText() == toqstr(name))
@@ -2158,6 +2160,13 @@ void GuiDocument::browseMaster()
 
 	if (!file.isEmpty())
 		latexModule->childDocLE->setText(file);
+}
+
+
+void GuiDocument::classChanged_adaptor()
+{
+	const_cast<Buffer &>(buffer()).setLayoutPos(string());
+	classChanged();
 }
 
 
@@ -3671,11 +3680,11 @@ DocumentClass const & GuiDocument::documentClass() const
 
 
 static void dispatch_bufferparams(Dialog const & dialog,
-	BufferParams const & bp, FuncCode lfun)
+	BufferParams const & bp, FuncCode lfun, Buffer const * buf)
 {
 	ostringstream ss;
 	ss << "\\begin_header\n";
-	bp.writeFile(ss);
+	bp.writeFile(ss, buf);
 	ss << "\\end_header\n";
 	dialog.dispatch(FuncRequest(lfun, ss.str()));
 }
@@ -3693,7 +3702,7 @@ void GuiDocument::dispatchParams()
 
 	// Apply the BufferParams. Note that this will set the base class
 	// and then update the buffer's layout.
-	dispatch_bufferparams(*this, params(), LFUN_BUFFER_PARAMS_APPLY);
+	dispatch_bufferparams(*this, params(), LFUN_BUFFER_PARAMS_APPLY, &buffer());
 
 	if (!params().master.empty()) {
 		FileName const master_file = support::makeAbsPath(params().master,
@@ -3777,7 +3786,7 @@ void GuiDocument::setLanguage() const
 
 void GuiDocument::saveAsDefault() const
 {
-	dispatch_bufferparams(*this, params(), LFUN_BUFFER_SAVE_AS_DEFAULT);
+	dispatch_bufferparams(*this, params(), LFUN_BUFFER_SAVE_AS_DEFAULT, &buffer());
 }
 
 

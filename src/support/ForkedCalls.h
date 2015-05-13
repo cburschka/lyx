@@ -150,7 +150,8 @@ private:
 class ForkedCall : public ForkedProcess {
 public:
 	///
-	ForkedCall(std::string const & path = empty_string());
+	ForkedCall(std::string const & path = empty_string(),
+	           std::string const & lpath = empty_string());
 	///
 	virtual shared_ptr<ForkedProcess> clone() const {
 		return shared_ptr<ForkedProcess>(new ForkedCall(*this));

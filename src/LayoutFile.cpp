@@ -268,7 +268,7 @@ LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 
 
 LayoutFileIndex  LayoutFileList::addLocalLayout(
-	string const & textclass, string const & path)
+	string const & textclass, string const & path, string const & oldpath)
 {
 	// FIXME  There is a bug here: 4593
 	//
@@ -277,10 +277,22 @@ LayoutFileIndex  LayoutFileList::addLocalLayout(
 	// different from textclass
 	string fullName = addName(path, textclass + ".layout");
 	
-	FileName const layout_file(fullName);
+	FileName layout_file(fullName);
+	bool moved = false;
 
-	if (!layout_file.exists())
-		return string();
+	if (!layout_file.exists()) {
+		if (oldpath.empty())
+			return string();
+		// The document has been moved to a different directory.
+		// However, oldpath always points to the right spot, unless
+		// the user also moved the layout file.
+		fullName = addName(oldpath, textclass + ".layout");
+		layout_file.set(fullName);
+		layout_file.refresh();
+		if (!layout_file.exists())
+			return string();
+		moved = true;
+	}
 
 	LYXERR(Debug::TCLASS, "Adding class " << textclass << " from directory " << path);
 	// Read .layout file and get description, real latex classname etc
@@ -327,15 +339,18 @@ LayoutFileIndex  LayoutFileList::addLocalLayout(
 	// This textclass is added on request so it will definitely be
 	// used. Load it now because other load() calls may fail if they
 	// are called in a context without buffer path information.
-	tmpl->load(path);
+	tmpl->load(moved ? oldpath : path);
 	// There will be only one textclass with this name, even if different
 	// layout files are loaded from different directories.
 	if (haveClass(textclass)) {
-		LYXERR0("Existing textclass " << textclass << " is redefined by " << fullName);
+		// Unconditionally issuing the warning may be confusing when
+		// saving the document with a different name, as it is exactly
+		// the same textclass that is being re-established.
+		LYXERR(Debug::TCLASS, "Existing textclass " << textclass << " is redefined by " << fullName);
 		delete classmap_[textclass];
 	}
 	classmap_[textclass] = tmpl;
-	return textclass;
+	return removeExtension(fullName);
 }
 
 

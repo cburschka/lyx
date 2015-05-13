@@ -118,8 +118,9 @@ public:
 	/// add a textclass from user local directory.
 	/// \return the identifier for the loaded file, or else an
 	/// empty string if no file was loaded.
-	LayoutFileIndex
-		addLocalLayout(std::string const & textclass, std::string const & path);
+	LayoutFileIndex addLocalLayout(std::string const & textclass,
+	                               std::string const & path,
+	                               std::string const & oldpath = empty_string());
 	/// a list of the available classes
 	std::vector<LayoutFileIndex> classList() const;
 

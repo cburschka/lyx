@@ -694,7 +694,7 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	string const command = cs.str();
 
 	if (wait) {
-		ForkedCall call(buffer_.filePath());
+		ForkedCall call(buffer_.filePath(), buffer_.layoutPos());
 		int ret = call.startScript(ForkedProcess::Wait, command);
 		// FIXME THREAD
 		static int fake = (2^20) + 1;

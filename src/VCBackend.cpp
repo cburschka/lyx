@@ -43,7 +43,7 @@ int VCS::doVCCommandCall(string const & cmd, FileName const & path)
 	LYXERR(Debug::LYXVC, "doVCCommandCall: " << cmd);
 	Systemcall one;
 	support::PathChanger p(path);
-	return one.startscript(Systemcall::Wait, cmd, string(), false);
+	return one.startscript(Systemcall::Wait, cmd, string(), string(), false);
 }
 
 

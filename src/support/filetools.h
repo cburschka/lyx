@@ -261,9 +261,9 @@ std::string const replaceEnvironmentPath(std::string const & path);
 
 /**
    Return a string to be used as a prefix to a command for setting the
-   environment of the TeX engine with respect to the path \p path.
+   environment of the TeX engine with respect to the paths \p path and \p lpath.
  */
-std::string latexEnvCmdPrefix(std::string const & path);
+std::string latexEnvCmdPrefix(std::string const &path, std::string const & lpath);
 
 /** Replace all references to a current directory (a lonely '.' or
     the prefix "./") in \c pathlist with \c path. Also prefixes

@@ -252,6 +252,12 @@ public:
 	/// Keeps track of old buffer filePath() for save-as operations
 	string old_position;
 
+	/** Keeps track of the path of local layout files.
+	 *  If possible, it is always relative to the buffer path.
+	 *  Empty for layouts in system or user directory.
+	 */
+	string layout_position;
+
 	/// Container for all sort of Buffer dependant errors.
 	map<string, ErrorList> errorLists;
 
@@ -432,6 +438,7 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	cite_labels_valid_ = cloned_buffer_->d->cite_labels_valid_;
 	unnamed = cloned_buffer_->d->unnamed;
 	internal_buffer = cloned_buffer_->d->internal_buffer;
+	layout_position = cloned_buffer_->d->layout_position;
 	preview_file_ = cloned_buffer_->d->preview_file_;
 	preview_format_ = cloned_buffer_->d->preview_format_;
 	preview_error_ = cloned_buffer_->d->preview_error_;
@@ -922,12 +929,11 @@ int Buffer::readHeader(Lexer & lex)
 		LYXERR(Debug::PARSER, "Handling document header token: `"
 				      << token << '\'');
 
-		string unknown = params().readToken(lex, token, d->filename.onlyPath());
-		if (!unknown.empty()) {
-			if (unknown[0] != '\\' && token == "\\textclass") {
-				Alert::warning(_("Unknown document class"),
-		       bformat(_("Using the default document class, because the "
-					      "class %1$s is unknown."), from_utf8(unknown)));
+		string const result =
+			params().readToken(lex, token, d->filename.onlyPath());
+		if (!result.empty()) {
+			if (token == "\\textclass") {
+				d->layout_position = result;
 			} else {
 				++unknown_tokens;
 				docstring const s = bformat(_("Unknown token: "
@@ -1542,7 +1548,7 @@ bool Buffer::write(ostream & ofs) const
 
 	// now write out the buffer parameters.
 	ofs << "\\begin_header\n";
-	params().writeFile(ofs);
+	params().writeFile(ofs, this);
 	ofs << "\\end_header\n";
 
 	// write the text
@@ -2542,7 +2548,8 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 
 		// Execute the command in the background
 		Systemcall call;
-		call.startscript(Systemcall::DontWait, command, filePath());
+		call.startscript(Systemcall::DontWait, command,
+		                 filePath(), layoutPos());
 		break;
 	}
 
@@ -2730,7 +2737,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 				// First run dvips.
 				// If successful, then spool command
 				res = one.startscript(Systemcall::Wait, command,
-						      filePath());
+						      filePath(), layoutPos());
 
 				if (res == 0) {
 					// If there's no GUI, we have to wait on this command. Otherwise,
@@ -2739,7 +2746,8 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 					Systemcall::Starttype stype = use_gui ?
 						Systemcall::DontWait : Systemcall::Wait;
 					res = one.startscript(stype, command2,
-							      filePath());
+							      filePath(),
+							      layoutPos());
 				}
 			} else {
 				// case 2: print directly to a printer
@@ -2748,8 +2756,9 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 				// as above....
 				Systemcall::Starttype stype = use_gui ?
 					Systemcall::DontWait : Systemcall::Wait;
-				res = one.startscript(stype, command +
-						quoteName(dviname), filePath());
+				res = one.startscript(stype,
+						command + quoteName(dviname),
+						filePath(), layoutPos());
 			}
 
 		} else {
@@ -2772,7 +2781,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 			// as above....
 			Systemcall::Starttype stype = use_gui ?
 				Systemcall::DontWait : Systemcall::Wait;
-			res = one.startscript(stype, command, filePath());
+			res = one.startscript(stype, command, filePath(), layoutPos());
 		}
 
 		if (res == 0)
@@ -3015,6 +3024,29 @@ string Buffer::filePath() const
 	int last = abs.length() - 1;
 
 	return abs[last] == '/' ? abs : abs + '/';
+}
+
+
+string Buffer::layoutPos() const
+{
+	return d->layout_position;
+}
+
+
+void Buffer::setLayoutPos(string const & path)
+{
+	if (path.empty()) {
+		d->layout_position.clear();
+		return;
+	}
+
+	LATTEST(FileName::isAbsolute(path));
+
+	d->layout_position =
+		to_utf8(makeRelPath(from_utf8(path), from_utf8(filePath())));
+
+	if (d->layout_position.empty())
+		d->layout_position = ".";
 }
 
 
@@ -3675,7 +3707,7 @@ void Buffer::getSourceCode(odocstream & os, string const & format,
 			if (output == FullSource)
 				write(ods);
 			else if (output == OnlyPreamble)
-				params().writeFile(ods);
+				params().writeFile(ods, this);
 			else if (output == OnlyBody)
 				text().write(ods);
 			os << from_utf8(ods.str());

@@ -160,6 +160,7 @@ public:
 	LaTeX(std::string const & cmd, OutputParams const &,
 	      support::FileName const & file,
 	      std::string const & path = empty_string(),
+	      std::string const & lpath = empty_string(),
 	      bool const clean_start = false);
 
 	/// runs LaTeX several times
@@ -222,8 +223,11 @@ private:
 	///
 	support::FileName file;
 
-	///
+	/// The document directory path.
 	std::string path;
+
+	/// Extra path, possibly relative to the document directory path.
+	std::string lpath;
 
 	/// used by scanLogFile
 	int num_errors;

@@ -11,6 +11,14 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2015-05-13 Enrico Forestieri <forenr@lyx.org>
+	* Format incremented to 490: new \origin tag, extended \textclass tag.
+	  The \origin tag keeps track of the document directory and is useful
+	  for locating files if the document is moved to a new location.
+	  The \textclass tag can now contain a path (possibly relative to the
+	  document directory) pointing to the location of a local layout file
+	  if it is not located in the document directory.
+
 2015-05-11 Uwe Stöhr <uwestoehr@web.de>
  	* Format incremented to 489: support to set line thickness, box separation
  	      and shadow size in the box dialog 

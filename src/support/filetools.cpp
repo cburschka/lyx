@@ -700,15 +700,30 @@ string const replaceEnvironmentPath(string const & path)
 
 
 // Return a command prefix for setting the environment of the TeX engine.
-string latexEnvCmdPrefix(string const & path)
+string latexEnvCmdPrefix(string const & path, string const & lpath)
 {
-	if (path.empty() || lyxrc.texinputs_prefix.empty())
+	bool use_lpath = !(lpath.empty() || lpath == "." || lpath == "./");
+
+	if (path.empty() || (lyxrc.texinputs_prefix.empty() && !use_lpath))
 		return string();
 
-	string const texinputs_prefix = os::latex_path_list(
+	string texinputs_prefix = lyxrc.texinputs_prefix.empty() ? string()
+		: os::latex_path_list(
 			replaceCurdirPath(path, lyxrc.texinputs_prefix));
 	string const sep = string(1, os::path_separator(os::TEXENGINE));
 	string const texinputs = getEnv("TEXINPUTS");
+
+	if (use_lpath) {
+		string const abslpath = FileName::isAbsolute(lpath)
+			? os::latex_path(lpath)
+			: os::latex_path(FileName(path + "/" + lpath).realPath());
+		if (texinputs_prefix.empty())
+			texinputs_prefix = abslpath;
+		else if (suffixIs(texinputs_prefix, sep))
+			texinputs_prefix.append(abslpath + sep);
+		else
+			texinputs_prefix.append(sep + abslpath);
+	}
 
 	if (os::shell() == os::UNIX)
 		return "env TEXINPUTS=\"." + sep + texinputs_prefix

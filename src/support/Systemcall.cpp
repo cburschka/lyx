@@ -101,9 +101,11 @@ ProgressInterface * ProgressInterface::instance()
 // Reuse of instance
 #ifndef USE_QPROCESS
 int Systemcall::startscript(Starttype how, string const & what,
-			    std::string const & path, bool /*process_events*/)
+			    string const & path, string const & lpath,
+			    bool /*process_events*/)
 {
-	string command = to_filesystem8bit(from_utf8(latexEnvCmdPrefix(path)))
+	string command =
+		to_filesystem8bit(from_utf8(latexEnvCmdPrefix(path, lpath)))
 		       + commandPrep(what);
 
 	if (how == DontWait) {
@@ -233,7 +235,8 @@ string const parsecmd(string const & incmd, string & infile, string & outfile,
 
 
 int Systemcall::startscript(Starttype how, string const & what,
-			    string const & path, bool process_events)
+			    string const & path, string const & lpath,
+			    bool process_events)
 {
 	string const what_ss = commandPrep(what);
 	LYXERR(Debug::INFO,"Running: " << what_ss);
@@ -252,7 +255,7 @@ int Systemcall::startscript(Starttype how, string const & what,
 	// is started with QProcess::startDetached, a console window is shown every 
 	// time a viewer is started. To avoid this, we fall back on Windows to the 
 	// original implementation that creates a QProcess object.
-	d.startProcess(cmd, path, false);
+	d.startProcess(cmd, path, lpath, false);
 	if (!d.waitWhile(SystemcallPrivate::Starting, process_events, -1)) {
 		LYXERR0("Systemcall: '" << cmd << "' did not start!");
 		LYXERR0("error " << d.errorMessage());
@@ -263,7 +266,7 @@ int Systemcall::startscript(Starttype how, string const & what,
 		return 0;
 	}
 #else
-	d.startProcess(cmd, path, how == DontWait);
+	d.startProcess(cmd, path, lpath, how == DontWait);
 	if (how == DontWait && d.state == SystemcallPrivate::Running)
 		return 0;
 
@@ -360,12 +363,13 @@ SystemcallPrivate::SystemcallPrivate(std::string const & sf,
 }
 
 
-void SystemcallPrivate::startProcess(QString const & cmd, string const & path, bool detached)
+void SystemcallPrivate::startProcess(QString const & cmd, string const & path,
+                                     string const & lpath, bool detached)
 {
 	cmd_ = cmd;
 	if (detached) {
 		state = SystemcallPrivate::Running;
-		if (!QProcess::startDetached(toqstr(latexEnvCmdPrefix(path)) + cmd_)) {
+		if (!QProcess::startDetached(toqstr(latexEnvCmdPrefix(path, lpath)) + cmd_)) {
 			state = SystemcallPrivate::Error;
 			return;
 		}
@@ -373,7 +377,7 @@ void SystemcallPrivate::startProcess(QString const & cmd, string const & path, b
 		delete released;
 	} else if (process_) {
 		state = SystemcallPrivate::Starting;
-		process_->start(toqstr(latexEnvCmdPrefix(path)) + cmd_);
+		process_->start(toqstr(latexEnvCmdPrefix(path, lpath)) + cmd_);
 	}
 }
 

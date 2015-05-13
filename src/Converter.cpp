@@ -306,8 +306,9 @@ bool Converters::convert(Buffer const * buffer,
 			LYXERR(Debug::FILES, "No converter defined! "
 				   "I use convertDefault.py:\n\t" << command);
 			Systemcall one;
-			one.startscript(Systemcall::Wait, command, buffer ?
-					buffer->filePath() : string());
+			one.startscript(Systemcall::Wait, command,
+			                buffer ? buffer->filePath() : string(),
+			                buffer ? buffer->layoutPos() : string());
 			if (to_file.isReadableFile()) {
 				if (conversionflags & try_cache)
 					ConverterCache::get().add(orig_from,
@@ -474,13 +475,16 @@ bool Converters::convert(Buffer const * buffer,
 			if (dummy) {
 				res = one.startscript(Systemcall::DontWait,
 					to_filesystem8bit(from_utf8(command)),
-					buffer ? buffer->filePath() : string());
+					buffer ? buffer->filePath() : string(),
+					buffer ? buffer->layoutPos() : string());
 				// We're not waiting for the result, so we can't do anything
 				// else here.
 			} else {
 				res = one.startscript(Systemcall::Wait,
 						to_filesystem8bit(from_utf8(command)),
 						buffer ? buffer->filePath()
+						       : string(),
+						buffer ? buffer->layoutPos()
 						       : string());
 				if (!real_outfile.empty()) {
 					Mover const & mover = getMover(conv.to());
@@ -501,7 +505,8 @@ bool Converters::convert(Buffer const * buffer,
 						" > " + quoteName(logfile);
 					one.startscript(Systemcall::Wait,
 						to_filesystem8bit(from_utf8(command2)),
-						buffer->filePath());
+						buffer->filePath(),
+						buffer->layoutPos());
 					if (!scanLog(*buffer, command, makeAbsPath(logfile, path), errorList))
 						return false;
 				}
@@ -644,7 +649,8 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 	// do the LaTeX run(s)
 	string const name = buffer.latexName();
 	LaTeX latex(command, runparams, FileName(makeAbsPath(name)),
-		    buffer.filePath(), buffer.lastPreviewError());
+	            buffer.filePath(), buffer.layoutPos(),
+	            buffer.lastPreviewError());
 	TeXErrors terr;
 	ShowMessage show(buffer);
 	latex.message.connect(show);

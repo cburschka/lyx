@@ -270,8 +270,8 @@ int ForkedProcess::waitForChild()
 //
 /////////////////////////////////////////////////////////////////////
 
-ForkedCall::ForkedCall(string const & path)
-	: cmd_prefix_(to_filesystem8bit(from_utf8(latexEnvCmdPrefix(path))))
+ForkedCall::ForkedCall(string const & path, string const & lpath)
+	: cmd_prefix_(to_filesystem8bit(from_utf8(latexEnvCmdPrefix(path, lpath))))
 {}
 
 

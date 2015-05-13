@@ -1015,6 +1015,30 @@ def revert_BoxFeatures(document):
         i = i + 11
 
 
+def convert_origin(document):
+    " Insert the origin tag "
+
+    i = find_token(document.header, "\\textclass ", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: No \\textclass!!")
+        return;
+    if document.dir == "":
+        origin = "stdin"
+    else:
+        origin = document.dir.replace('\\', '/')
+    document.header[i:i] = ["\\origin " + origin]
+
+
+def revert_origin(document):
+    " Remove the origin tag "
+
+    i = find_token(document.header, "\\origin ", 0)
+    if i == -1:
+        document.warning("Malformed LyX document: No \\origin!!")
+        return;
+    del document.header[i]
+
+
 ##
 # Conversion hub
 #
@@ -1038,10 +1062,12 @@ convert = [
            [486, []],
            [487, []],
            [488, [convert_newgloss]],
-           [489, [convert_BoxFeatures]]
+           [489, [convert_BoxFeatures]],
+           [490, [convert_origin]]
           ]
 
 revert =  [
+           [489, [revert_origin]],
            [488, [revert_BoxFeatures]],
            [487, [revert_newgloss, revert_glossgroup]],
            [486, [revert_forest]],

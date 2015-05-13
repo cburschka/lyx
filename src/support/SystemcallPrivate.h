@@ -45,7 +45,8 @@ public:
 	State state;
 
 	bool waitWhile(State, bool processEvents, int timeout = -1);
-	void startProcess(QString const & cmd, std::string const & path, bool detach);
+	void startProcess(QString const & cmd, std::string const & path,
+	                  std::string const & lpath, bool detach);
 	
 	int exitCode();
 
