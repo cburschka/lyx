@@ -140,6 +140,7 @@ def getlyxinput(lyx, lyxfx, lyxf, uselyx2lyx):
     if uselyx2lyx:
         cmd = '%s -E lyx %s %s' % (lyx, lyxf, lyxfx)
         sys.stdout.writelines(cmd)
+        sys.stdout.writelines("\n")
         if os.system(cmd) != 0:
             return None
         return lyxf
