@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-11 18:02+0200\n"
-"PO-Revision-Date: 2015-05-11 16:10+0000\n"
+"POT-Creation-Date: 2015-05-14 21:04+0200\n"
+"PO-Revision-Date: 2015-05-14 19:16+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -306,6 +306,10 @@ msgstr "Odstrániť vybranú databázu"
 msgid "&Delete"
 msgstr "Z&mazať"
 
+#: src/frontends/qt4/ui/BoxUi.ui:23
+msgid "Type and size"
+msgstr "Typ a veľkosť"
+
 #: src/frontends/qt4/ui/BoxUi.ui:29
 msgid "Check this if the box should break across pages"
 msgstr "Vybrať aby rámik mohol prejsť aj na druhú stránku"
@@ -415,9 +419,33 @@ msgstr "&Výška:"
 msgid "Inner Bo&x:"
 msgstr "V&nútorný rámik:"
 
+#: src/frontends/qt4/ui/BoxUi.ui:45
+msgid "Inner box type"
+msgstr "Typ vnútorného rámiku"
+
 #: src/frontends/qt4/ui/BoxUi.ui:230
 msgid "&Decoration:"
 msgstr "&Dekorácia:"
+
+#: src/frontends/qt4/ui/BoxUi.ui:325
+msgid "Thickness value"
+msgstr "Hodnota hrúbky"
+
+#: src/frontends/qt4/ui/BoxUi.ui:332
+msgid "Shadow size:"
+msgstr "Veľkosť tieňu:"
+
+#: src/frontends/qt4/ui/BoxUi.ui:346
+msgid "Box separation:"
+msgstr "Oddeľovač Rámikov:"
+
+#: src/frontends/qt4/ui/BoxUi.ui:356
+msgid "Separation value"
+msgstr "Hodnota rozchodu"
+
+#: src/frontends/qt4/ui/BoxUi.ui:380
+msgid "Size value"
+msgstr "Hodnota veľkosti"
 
 #: src/frontends/qt4/ui/BoxUi.ui:243 src/frontends/qt4/ui/ExternalUi.ui:420
 #: src/frontends/qt4/ui/LineUi.ui:58 src/frontends/qt4/ui/PageLayoutUi.ui:100
@@ -432,10 +460,6 @@ msgstr "Hodnota výšky"
 #: src/frontends/qt4/ui/BoxUi.ui:266 src/frontends/qt4/ui/WrapUi.ui:103
 msgid "Width value"
 msgstr "Hodnota Šírky"
-
-#: src/frontends/qt4/ui/BoxUi.ui:273
-msgid "Inner box -- needed for fixed width & line breaks"
-msgstr "Vnútorný rámik -- potrebný pre pevnú šírku a lom riadkov"
 
 #: src/frontends/qt4/ui/BoxUi.ui:277 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98
@@ -458,10 +482,6 @@ msgstr "Parbox"
 #: src/insets/InsetBox.cpp:140
 msgid "Minipage"
 msgstr "Minipage"
-
-#: src/frontends/qt4/ui/BoxUi.ui:295
-msgid "Supported box types"
-msgstr "Podporované typy rámikov"
 
 #: src/frontends/qt4/ui/BranchUi.ui:19
 msgid "&Available branches:"
@@ -1211,7 +1231,7 @@ msgid ""
 "disabled at application level (see Preference dialog)."
 msgstr ""
 "Umožniť náhľad tohoto materiálu len v prípade že náhľad obrázkov je v "
-"Nastaveniach povolený."
+"Nastaveniach povolený (viď dialóg Preferencie)."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:194
 msgid "&Show in LyX"
@@ -1741,7 +1761,7 @@ msgid ""
 "at application level (see Preferences dialog)."
 msgstr ""
 "Umožniť náhľad tohoto obrázku len v prípade že náhľad obrázkov je v "
-"Nastaveniach povolený."
+"Nastaveniach povolený (viď dialóg Preferencie)."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:530
 msgid "Sho&w in LyX"
@@ -2554,6 +2574,14 @@ msgstr "&Horizontálne:"
 #: src/frontends/qt4/ui/MathMatrixUi.ui:210
 msgid "Decoration"
 msgstr "Dekorácia"
+
+#: src/frontends/qt4/ui/BoxUi.ui:295
+msgid "Line thickness:"
+msgstr "Hrúbka hrán:"
+
+#: src/frontends/qt4/ui/BoxUi.ui:302
+msgid "Decoration box types"
+msgstr "Dekoračné typy rámikov"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:216
 msgid "&Type:"
@@ -17463,6 +17491,10 @@ msgid "Compressed|m"
 msgstr "Komprimované|m"
 
 #: lib/ui/stdmenus.inc:529
+msgid "Disable Editing|E"
+msgstr "Blokovať Editáciu|E"
+
+#: lib/ui/stdmenus.inc:529
 msgid "Track Changes|T"
 msgstr "Sledovať Zmeny|S"
 
@@ -22925,15 +22957,6 @@ msgstr "Pomocný adresár sa nedal zmazať"
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Pomocný adresár %1$s sa nedal zmazať"
 
-#: src/Buffer.cpp:901
-msgid "Unknown document class"
-msgstr "Neznáma trieda dokumentu"
-
-#: src/Buffer.cpp:902
-#, c-format
-msgid "Using the default document class, because the class %1$s is unknown."
-msgstr "Použitá štandardná trieda dokumentu, lebo trieda %1$s je neznáma."
-
 #: src/Buffer.cpp:906 src/Text.cpp:530
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
@@ -27203,13 +27226,13 @@ msgstr "Lokálny súbor pre schému"
 #: src/frontends/qt4/GuiDocument.cpp:2104
 msgid ""
 "The layout file you have selected is a local layout\n"
-"file, not one in the system or user directory. Your\n"
-"document may not work with this layout if you do not\n"
-"keep the layout file in the document directory."
+"file, not one in the system or user directory.\n"
+"Your document will not work with this layout if you\n"
+"move the layout file to a different directory."
 msgstr ""
 "Súbor schémy, ktorý ste zvolili je lokálnym\n"
 "súborom, a nie je ani v systémovom ani v užívateľskom adresáre.\n"
-"Váš dokument môže mať problémy kým súbor schémy\n"
+"Váš dokument bude mať problémy kým súbor schémy\n"
 "nedržíte v adresáre dokumentu."
 
 #: src/frontends/qt4/GuiDocument.cpp:2108
@@ -30869,6 +30892,15 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "Unknown document class"
+#~ msgstr "Neznáma trieda dokumentu"
+
+#~ msgid "Using the default document class, because the class %1$s is unknown."
+#~ msgstr "Použitá štandardná trieda dokumentu, lebo trieda %1$s je neznáma."
+
+#~ msgid "Inner box -- needed for fixed width & line breaks"
+#~ msgstr "Vnútorný rámik -- potrebný pre pevnú šírku a lom riadkov"
+
 #~ msgid "Included File Invalid"
 #~ msgstr "Zahrnutý Súbor je Neplatný"
 
@@ -33646,3 +33678,17 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "the name of the PDF action"
 #~ msgstr "Názov PDF akcie"
+
+#~ msgid "Supported box types"
+#~ msgstr "Podporované typy rámikov"
+
+#~ msgid ""
+#~ "The layout file you have selected is a local layout\n"
+#~ "file, not one in the system or user directory. Your\n"
+#~ "document may not work with this layout if you do not\n"
+#~ "keep the layout file in the document directory."
+#~ msgstr ""
+#~ "Súbor schémy, ktorý ste zvolili je lokálnym\n"
+#~ "súborom, a nie je ani v systémovom ani v užívateľskom adresáre.\n"
+#~ "Váš dokument môže mať problémy kým súbor schémy\n"
+#~ "nedržíte v adresáre dokumentu."
