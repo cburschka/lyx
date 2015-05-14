@@ -65,9 +65,9 @@ QImage const & GuiImage::image() const
 unsigned int GuiImage::width() const
 {
 #if QT_VERSION >= 0x050000
-	return is_transformed_ ?
-		ceil(transformed_.width() / transformed_.devicePixelRatio()) :
-		ceil(original_.width() / original_.devicePixelRatio());
+	return static_cast<unsigned int>(ceil(is_transformed_ ?
+		(transformed_.width() / transformed_.devicePixelRatio()) :
+		(original_.width() / original_.devicePixelRatio())));
 #else
 	return is_transformed_ ? transformed_.width() : original_.width();
 #endif
@@ -77,9 +77,9 @@ unsigned int GuiImage::width() const
 unsigned int GuiImage::height() const
 {
 #if QT_VERSION >= 0x050000
-	return is_transformed_ ?
-		ceil(transformed_.height() / transformed_.devicePixelRatio()) :
-		ceil(original_.height() / original_.devicePixelRatio());
+	return static_cast<unsigned int>(ceil(is_transformed_ ?
+		(transformed_.height() / transformed_.devicePixelRatio()) :
+		(original_.height() / original_.devicePixelRatio())));
 #else
 	return is_transformed_ ? transformed_.height() : original_.height();
 #endif
