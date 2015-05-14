@@ -68,8 +68,15 @@ if(LYX_XMINGW)
 endif()
 
 if(NOT help AND NOT HELP)
-	# 'project' triggers the searching for a compiler
-	project(${LYX_PROJECT})
+  # 'project' triggers the searching for a compiler
+  project(${LYX_PROJECT})
+  if (CMAKE_COMPILER_IS_GNUCXX)
+    if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS "4.0")
+      message(STATUS "Gnu CXX compiler version = ${CMAKE_CXX_COMPILER_VERSION}")
+      message(STATUS "is too old, should be >= 4.0")
+      message(FATAL_ERROR "Exiting")
+    endif()
+  endif()
 endif()
 
 if(UNIX)
