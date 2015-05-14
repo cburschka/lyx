@@ -48,7 +48,7 @@ bool test_Layout(string const & input, string const & output)
 {
 	FileName const ifn(makeAbsPath(input));
     LayoutFileList & l = LayoutFileList::get();
-	LayoutFileIndex i = l.addLocalLayout(ifn.onlyFileName(), ifn.onlyPath().absFileName());
+	LayoutFileIndex i = onlyFileName(l.addLocalLayout(ifn.onlyFileName(), ifn.onlyPath().absFileName()));
 	if (i.empty()) {
 		cerr << "Could not read layout file " << input << ".layout.\n";
 		return false;
