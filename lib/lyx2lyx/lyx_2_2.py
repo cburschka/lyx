@@ -992,7 +992,7 @@ def revert_BoxFeatures(document):
         # delete the specification
         del document.body[i+1:i+4]
         # output ERT
-        # first output the closing braces
+        # first output the closing brace
         if shadowsize != defaultShadow or separation != defaultSep or thickness != defaultThick:
             document.body[i + 10 : i + 10] = put_cmd_in_ert("}")
         # now output the lengths
@@ -1039,6 +1039,44 @@ def revert_origin(document):
     del document.header[i]
 
 
+color_names = ["brown", "darkgray", "gray", \
+               "lightgray", "lime", "olive", "orange", \
+               "pink", "purple", "teal", "violet"]
+
+def revert_textcolor(document):
+    " revert new \texcolor colors to TeX code "
+
+    i = 0
+    j = 0
+    xcolor = False
+    add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\\usepackage{xcolor}}"])
+    while True:
+        i = find_token(document.body, "\\color ", i)
+        if i == -1:
+            return
+        else:
+            for color in list(color_names):
+                if document.body[i] == "\\color " + color:
+                    # register that xcolor must be loaded in the preamble
+                    if xcolor == False:
+                        xcolor = True
+                        add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\usepackage{xcolor}}"])
+                    # find the next \\color and/or the next \\end_layout
+                    j = find_token(document.body, "\\color", i + 1)
+                    k = find_token(document.body, "\\end_layout", i + 1)
+                    if j == -1 and k != -1:
+                        j = k +1 
+                    # output TeX code
+                    # first output the closing brace
+                    if k < j:
+                        document.body[k: k] = put_cmd_in_ert("}")
+                    else:
+                        document.body[j: j] = put_cmd_in_ert("}")
+                    # now output the \textcolor command
+                    document.body[i : i + 1] = put_cmd_in_ert("\\textcolor{" + color + "}{")
+        i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -1063,10 +1101,12 @@ convert = [
            [487, []],
            [488, [convert_newgloss]],
            [489, [convert_BoxFeatures]],
-           [490, [convert_origin]]
+           [490, [convert_origin]],
+           [491, []]
           ]
 
 revert =  [
+           [490, [revert_textcolor]],
            [489, [revert_origin]],
            [488, [revert_BoxFeatures]],
            [487, [revert_newgloss, revert_glossgroup]],

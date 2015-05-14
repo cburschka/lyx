@@ -3145,7 +3145,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "textcolor") {
 			// scheme is \textcolor{color name}{text}
 			string const color = p.verbatim_item();
-			// we only support the predefined colors of the color package
+			// we support the predefined colors of the color  and the xcolor package
 			if (color == "black" || color == "blue" || color == "cyan"
 				|| color == "green" || color == "magenta" || color == "red"
 				|| color == "white" || color == "yellow") {
@@ -3155,6 +3155,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					context.check_layout(os);
 					os << "\n\\color inherit\n";
 					preamble.registerAutomaticallyLoadedPackage("color");
+			} else if (color == "brown" || color == "darkgray" || color == "gray"
+				|| color == "lightgray" || color == "lime" || color == "olive"
+				|| color == "orange" || color == "pink" || color == "purple"
+				|| color == "teal" || color == "violet") {
+					context.check_layout(os);
+					os << "\n\\color " << color << "\n";
+					parse_text_snippet(p, os, FLAG_ITEM, outer, context);
+					context.check_layout(os);
+					os << "\n\\color inherit\n";
+					preamble.registerAutomaticallyLoadedPackage("xcolor");
 			} else
 				// for custom defined colors
 				output_ert_inset(os, t.asInput() + "{" + color + "}", context);

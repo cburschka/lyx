@@ -11,6 +11,12 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2015-05-14 Uwe Stöhr <uwestoehr@web.de>
+ 	* Format incremented to 491: support for xcolor's default colors
+ 	  No new parameter, the \\color parameter can nowhave these values:
+ 	  "brown", "darkgray", "gray", "lightgray", "lime", "olive", "orange",
+ 	  "pink", "purple", "teal", "violet"
+
 2015-05-13 Enrico Forestieri <forenr@lyx.org>
 	* Format incremented to 490: new \origin tag, extended \textclass tag.
 	  The \origin tag keeps track of the document directory and is useful

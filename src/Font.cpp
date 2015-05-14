@@ -695,6 +695,18 @@ void Font::validate(LaTeXFeatures & features) const
 		case Color_latex:
 		case Color_notelabel:
 			break;
+		case Color_brown:
+		case Color_darkgray:
+		case Color_gray:
+		case Color_lightgray:
+		case Color_lime:
+		case Color_olive:
+		case Color_orange:
+		case Color_pink:
+		case Color_purple:
+		case Color_teal:
+		case Color_violet:
+			features.require("xcolor");
 		default:
 			features.require("color");
 			LYXERR(Debug::LATEX, "Color enabled. Font: " << to_utf8(stateText(0)));

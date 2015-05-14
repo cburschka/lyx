@@ -1121,11 +1121,22 @@ PrefColors::PrefColors(GuiPreferences * form)
 		if (lc == Color_none
 		    || lc == Color_black
 		    || lc == Color_white
-		    || lc == Color_red
-		    || lc == Color_green
 		    || lc == Color_blue
+		    || lc == Color_brown
 		    || lc == Color_cyan
+		    || lc == Color_darkgray
+		    || lc == Color_gray
+		    || lc == Color_green
+		    || lc == Color_lightgray
+		    || lc == Color_lime
 		    || lc == Color_magenta
+		    || lc == Color_olive
+		    || lc == Color_orange
+		    || lc == Color_pink
+		    || lc == Color_purple
+		    || lc == Color_red
+		    || lc == Color_teal
+		    || lc == Color_violet
 		    || lc == Color_yellow
 		    || lc == Color_inherit
 		    || lc == Color_ignore)

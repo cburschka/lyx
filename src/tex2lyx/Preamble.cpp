@@ -159,11 +159,13 @@ const char * const known_if_commands[] = {"if", "ifarydshln", "ifbraket",
 "ifcancel", "ifcolortbl", "ifeurosym", "ifmarginnote", "ifmmode", "ifpdf",
 "ifsidecap", "ifupgreek", 0};
 
-const char * const known_basic_colors[] = {"blue", "black", "cyan", "green",
-"magenta", "red", "white", "yellow", 0};
+const char * const known_basic_colors[] = {"black", "blue", "brown", "cyan",
+	"darkgray", "gray", "green", "lightgray", "lime", "magenta", "orange", "olive",
+	"pink",	"purple", "red", "teal", "violet", "white", "yellow", 0};
 
-const char * const known_basic_color_codes[] = {"#0000ff", "#000000", "#00ffff",
-"#00ff00", "#ff00ff", "#ff0000", "#ffffff", "#ffff00", 0};
+const char * const known_basic_color_codes[] = {"#000000", "#0000ff", "#964B00", "#00ffff",
+	"#a9a9a9", "#808080", "#00ff00", "#d3d3d3", "#bfff00", "#ff00ff", "#ff7f00", "#808000",
+	"#ffc0cb", "#800080", "#ff0000", "#008080", "#8F00FF", "#ffffff", "#ffff00", 0};
 
 /// conditional commands with three arguments like \@ifundefined{}{}{}
 const char * const known_if_3arg_commands[] = {"@ifundefined", "IfFileExists",

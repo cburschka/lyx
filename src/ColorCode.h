@@ -21,15 +21,37 @@ enum ColorCode {
 	///
 	Color_white,
 	///
-	Color_red,
-	///
-	Color_green,
-	///
 	Color_blue,
+	///
+	Color_brown,
 	///
 	Color_cyan,
 	///
+	Color_darkgray,
+	///
+	Color_gray,
+	///
+	Color_green,
+	///
+	Color_lightgray,
+	///
+	Color_lime,
+	///
 	Color_magenta,
+	///
+	Color_olive,
+	///
+	Color_orange,
+	///
+	Color_pink,
+	///
+	Color_purple,
+	///
+	Color_red,
+	///
+	Color_teal,
+	///
+	Color_violet,
 	///
 	Color_yellow,
 

@@ -21,12 +21,15 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
+#include "Color.h"
+#include "ColorCache.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "Language.h"
 #include "Paragraph.h"
 
 #include <QAbstractItemModel>
+#include <QComboBox>
 #include <QModelIndex>
 #include <QSettings>
 #include <QVariant>
@@ -92,11 +95,22 @@ static QList<ColorPair> colorData()
 	colors << ColorPair(qt_("No color"), Color_none);
 	colors << ColorPair(qt_("Black"), Color_black);
 	colors << ColorPair(qt_("White"), Color_white);
-	colors << ColorPair(qt_("Red"), Color_red);
-	colors << ColorPair(qt_("Green"), Color_green);
 	colors << ColorPair(qt_("Blue"), Color_blue);
+	colors << ColorPair(qt_("Brown"), Color_brown);
 	colors << ColorPair(qt_("Cyan"), Color_cyan);
+	colors << ColorPair(qt_("Darkgray"), Color_darkgray);
+	colors << ColorPair(qt_("Gray"), Color_gray);
+	colors << ColorPair(qt_("Green"), Color_green);
+	colors << ColorPair(qt_("Lightgray"), Color_lightgray);
+	colors << ColorPair(qt_("Lime"), Color_lime);
 	colors << ColorPair(qt_("Magenta"), Color_magenta);
+	colors << ColorPair(qt_("Olive"), Color_olive);
+	colors << ColorPair(qt_("Orange"), Color_orange);
+	colors << ColorPair(qt_("Pink"), Color_pink);
+	colors << ColorPair(qt_("Purple"), Color_purple);
+	colors << ColorPair(qt_("Red"), Color_red);
+	colors << ColorPair(qt_("Teal"), Color_teal);
+	colors << ColorPair(qt_("Violet"), Color_violet);
 	colors << ColorPair(qt_("Yellow"), Color_yellow);
 	colors << ColorPair(qt_("Reset"), Color_inherit);
 	return colors;
@@ -156,6 +170,25 @@ void fillCombo(QComboBox * combo, QList<T> const & list)
 		combo->addItem(cit->first);
 }
 
+template<typename T>
+void fillComboColor(QComboBox * combo, QList<T> const & list)
+{
+	// at first add the 2 colors "No change" and "No color"
+	combo->addItem(list.begin()->first);
+	combo->addItem((list.begin() + 1)->first);
+	// now add the real colors
+	QPixmap coloritem(32, 32);
+	QColor color;
+	typename QList<T>::const_iterator cit = list.begin() + 2;
+	for (; cit != list.end() - 1; ++cit) {
+		color = QColor(guiApp->colorCache().get(cit->second, false));
+		coloritem.fill(color);
+		combo->addItem(QIcon(coloritem), cit->first);
+	}
+	//the last color is "Reset"
+	combo->addItem((list.end() - 1)->first);
+}
+
 }
 
 GuiCharacter::GuiCharacter(GuiView & lv)
@@ -195,7 +228,7 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	fillCombo(sizeCO, size);
 	fillCombo(shapeCO, shape);
 	fillCombo(miscCO, bar);
-	fillCombo(colorCO, color);
+	fillComboColor(colorCO, color);
 	fillCombo(langCO, language);
 
 	bc().setPolicy(ButtonPolicy::OkApplyCancelAutoReadOnlyPolicy);
