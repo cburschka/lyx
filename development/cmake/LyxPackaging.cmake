@@ -94,6 +94,7 @@ set(CPACK_DEBIAN_PACKAGE_DEPENDS "python (>= 2.6)")
 
 # use dpkg-shlibdeps to generate additional info for package dependency list.
 set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
+set(CPACK_DEBIAN_PACKAGE_DEBUG ON)
 
 #
 # for the next ones, cpack insists on data with values in some file
