@@ -526,6 +526,7 @@ Menuset
 		OptItem "Update Master Document|a" "master-buffer-update"
 		Separator
 		Item "Compressed|m" "buffer-toggle-compression"
+		Item "Disable Editing|E" "buffer-toggle-read-only"
 		Item "Settings...|S" "dialog-show document"
 	End
 
