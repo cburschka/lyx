@@ -22,6 +22,7 @@
 #include "frontends/FontMetrics.h"
 
 #include "support/docstream.h"
+#include "support/lstrings.h"
 
 #include <sstream>
 #include <iomanip>
@@ -81,29 +82,31 @@ docstring const Length::asDocstring() const
 string const Length::asLatexString() const
 {
 	ostringstream os;
+	// Do not allow scientific notation (e.g. 1.2e+03), since this is not valid
+	// LaTeX (bug 9416)
 	switch (unit_) {
 	case PTW:
-		os << val_ / 100.0 << "\\textwidth";
+		os << support::formatFPNumber(val_ / 100.0) << "\\textwidth";
 		break;
 	case PCW:
-		os << val_ / 100.0 << "\\columnwidth";
+		os << support::formatFPNumber(val_ / 100.0) << "\\columnwidth";
 		break;
 	case PPW:
-		os << val_ / 100.0 << "\\paperwidth";
+		os << support::formatFPNumber(val_ / 100.0) << "\\paperwidth";
 		break;
 	case PLW:
-		os << val_ / 100.0 << "\\linewidth";
+		os << support::formatFPNumber(val_ / 100.0) << "\\linewidth";
 		break;
 	case PTH:
-		os << val_ / 100.0 << "\\textheight";
+		os << support::formatFPNumber(val_ / 100.0) << "\\textheight";
 		break;
 	case PPH:
-		os << val_ / 100.0 << "\\paperheight";
+		os << support::formatFPNumber(val_ / 100.0) << "\\paperheight";
 		break;
 	case UNIT_NONE:
 		break;
 	default:
-		os << val_ << unit_name[unit_];
+		os << support::formatFPNumber(val_) << unit_name[unit_];
 	  break;
 	}
 	return os.str();

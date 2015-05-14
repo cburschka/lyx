@@ -302,6 +302,15 @@ docstring const getStringFromVector(std::vector<docstring> const & vec,
 /// found, else -1. The last item in \p str must be "".
 int findToken(char const * const str[], std::string const & search_token);
 
+
+/// Format a floating point number with at least 6 siginificant digits, but
+/// without scientific notation.
+/// Scientific notation would be invalid in some contexts, such as lengths for
+/// LaTeX. Simply using std::ostream with std::fixed would produce results
+/// like "1000000.000000", and precision control would not be that easy either.
+std::string formatFPNumber(double);
+
+
 template <class Arg1>
 docstring bformat(docstring const & fmt, Arg1);
 
