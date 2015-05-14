@@ -1388,6 +1388,18 @@ int findToken(char const * const str[], string const & search_token)
 }
 
 
+#ifdef _MSC_VER
+// Replacement for C99 function lround()
+double round(double x)
+{
+	if (x < 0)
+		return ceil(x - 0.5);
+	else
+		return floor(x + 0.5);
+}
+#endif
+
+
 std::string formatFPNumber(double x)
 {
 	// Need manual tweaking, QString::number(x, 'f', 16) does not work either
