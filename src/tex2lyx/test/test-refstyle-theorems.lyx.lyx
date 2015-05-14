@@ -1,12 +1,11 @@
-#LyX file created by tex2lyx 2.2
-\lyxformat 490
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 491
 \begin_document
 \begin_header
 \origin roundtrip
 \textclass book
 \begin_preamble
 \usepackage{babel}
-
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -89,7 +88,6 @@ name "part:part"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "part:part"
@@ -111,7 +109,6 @@ name "chap:chapter"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "chap:chapter"
@@ -133,7 +130,6 @@ name "sec:Section"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "sec:Section"
@@ -199,7 +195,6 @@ name "par:paragraph"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "par:paragraph"
@@ -221,7 +216,6 @@ name "par:subparagraph"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "par:subparagraph"
@@ -232,19 +226,17 @@ reference "par:subparagraph"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
-
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 protect
@@ -277,7 +269,6 @@ name "fig:figure"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "fig:figure"
@@ -288,19 +279,17 @@ reference "fig:figure"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Float table
 wide false
 sideways false
 status open
 
-
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 protect
@@ -333,7 +322,6 @@ name "tab:table"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "tab:table"
@@ -344,19 +332,17 @@ reference "tab:table"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Float algorithm
 wide false
 sideways false
 status open
 
-
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 protect
@@ -389,7 +375,6 @@ name "alg:algorithm"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "alg:algorithm"
@@ -400,12 +385,10 @@ reference "alg:algorithm"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Foot
 status collapsed
 
-
-\begin_layout Standard
+\begin_layout Plain Layout
 foot
 \begin_inset CommandInset label
 LatexCommand label
@@ -422,7 +405,6 @@ name "fn:foot"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "fn:foot"
@@ -433,12 +415,10 @@ reference "fn:foot"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Marginal
 status collapsed
 
-
-\begin_layout Standard
+\begin_layout Plain Layout
 margin
 \begin_inset CommandInset label
 LatexCommand label
@@ -455,7 +435,6 @@ name "margin"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "margin"
@@ -477,7 +456,6 @@ name "enu:item"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "enu:item"
@@ -488,17 +466,17 @@ reference "enu:item"
 \end_layout
 
 \begin_layout Standard
-
-\begin_inset Formula \begin{equation}
+\begin_inset Formula 
+\begin{equation}
 A=B\label{eq:A=00003DB}
 \end{equation}
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "eq:A=00003DB"
@@ -520,7 +498,6 @@ name "lem:lemma"
 \end_layout
 
 \begin_layout Lemma
-
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "lem:lemma"
@@ -542,7 +519,6 @@ name "thm:theorem"
 \end_layout
 
 \begin_layout Theorem
-
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "thm:theorem"
@@ -564,7 +540,6 @@ name "cor:corollary"
 \end_layout
 
 \begin_layout Corollary
-
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "cor:corollary"
@@ -586,7 +561,6 @@ name "prop:proposition"
 \end_layout
 
 \begin_layout Proposition
-
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "prop:proposition"
@@ -608,7 +582,6 @@ name "conjecture"
 \end_layout
 
 \begin_layout Conjecture
-
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "conjecture"
@@ -630,7 +603,6 @@ name "fact"
 \end_layout
 
 \begin_layout Fact
-
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fact"
@@ -652,7 +624,6 @@ name "definition"
 \end_layout
 
 \begin_layout Definition
-
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "definition"
@@ -674,7 +645,6 @@ name "example"
 \end_layout
 
 \begin_layout Example
-
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "example"
@@ -696,7 +666,6 @@ name "problem"
 \end_layout
 
 \begin_layout Problem
-
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "problem"
@@ -718,7 +687,6 @@ name "exercise"
 \end_layout
 
 \begin_layout Exercise
-
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "exercise"
@@ -740,7 +708,6 @@ name "remark"
 \end_layout
 
 \begin_layout Remark
-
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "remark"
@@ -762,7 +729,6 @@ name "claim"
 \end_layout
 
 \begin_layout Claim
-
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "claim"
@@ -784,7 +750,6 @@ name "proof"
 \end_layout
 
 \begin_layout Proof
-
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "proof"

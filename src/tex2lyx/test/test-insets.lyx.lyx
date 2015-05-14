@@ -1,5 +1,5 @@
-#LyX file created by tex2lyx 2.2
-\lyxformat 490
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 491
 \begin_document
 \begin_header
 \origin roundtrip
@@ -13,8 +13,6 @@
 
 
 \def\mycommand{\textquestiondown}
-
-
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -40,15 +38,15 @@
 \paperfontsize 12
 \spacing onehalf
 \use_hyperref true
-\pdf_bookmarks 0
-\pdf_bookmarksnumbered 0
-\pdf_bookmarksopen 0
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
-\pdf_breaklinks 0
-\pdf_pdfborder 0
-\pdf_colorlinks 0
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
 \pdf_backref section
-\pdf_pdfusetitle 0
+\pdf_pdfusetitle false
 \papersize a4paper
 \use_geometry false
 \use_package amsmath 2
@@ -104,11 +102,11 @@ Title
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 %stupid stuff
 \end_layout
 
@@ -122,7 +120,6 @@ two days ago
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
@@ -159,7 +156,6 @@ References
 \begin_layout Standard
 Let's start with simple things: a label
 \begin_inset space ~
-
 \end_inset
 
 
@@ -171,7 +167,6 @@ name "lab:test"
 
  and a reference
 \begin_inset space ~
-
 \end_inset
 
 
@@ -195,7 +190,6 @@ unbreakable space
 \begin_layout Standard
 Of course there are other kind of references, like page reference
 \begin_inset space ~
-
 \end_inset
 
 
@@ -207,7 +201,6 @@ reference "lab:test"
 
 , but also equation reference
 \begin_inset space ~
-
 \end_inset
 
 
@@ -219,7 +212,6 @@ reference "lab:test"
 
  (from amsmath package), or varioref's equivalents
 \begin_inset space ~
-
 \end_inset
 
 
@@ -231,7 +223,6 @@ reference "lab:test"
 
  and
 \begin_inset space ~
-
 \end_inset
 
 
@@ -243,7 +234,6 @@ reference "lab:test"
 
 , without forgetting pretty references like
 \begin_inset space ~
-
 \end_inset
 
 
@@ -255,7 +245,6 @@ reference "lab:test"
 
  as well as textual references like
 \begin_inset space ~
-
 \end_inset
 
 
@@ -265,11 +254,13 @@ reference "lab:test"
 
 \end_inset
 
-. The command 
+.
+ The command 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 secref
@@ -282,6 +273,7 @@ secref
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -292,12 +284,14 @@ lab:test
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
 \end_inset
 
- will be parsed in ERT, since LyX does not support refstyle and prettyref natively at the same time.
+ will be parsed in ERT, since LyX does not support refstyle and prettyref
+ natively at the same time.
 \end_layout
 
 \begin_layout Section
@@ -321,7 +315,6 @@ cite:
 \begin_inset CommandInset citation
 LatexCommand citep
 after "after"
-before ""
 key "article-crossref"
 
 \end_inset
@@ -332,7 +325,6 @@ cites:
 \begin_inset CommandInset citation
 LatexCommand citep
 after "after"
-before ""
 key "whole-set,article-crossref"
 
 \end_inset
@@ -620,7 +612,6 @@ key "article-crossref"
 nocite: 
 \begin_inset CommandInset citation
 LatexCommand nocite
-after ""
 key "article-crossref"
 
 \end_inset
@@ -629,11 +620,11 @@ key "article-crossref"
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 % Remove duplicate call of 
 \backslash
 bibliography since LaTeX throws an error.
@@ -646,6 +637,7 @@ bibliography since LaTeX throws an error.
 status collapsed
 
 \begin_layout Plain Layout
+
 %
 \backslash
 bibliographystyle{unsrt}
@@ -658,6 +650,7 @@ bibliographystyle{unsrt}
 status collapsed
 
 \begin_layout Plain Layout
+
 % 
 \backslash
 bibliography{xampl}
@@ -687,17 +680,16 @@ options "unsrt"
 From bug 7306: 
 \begin_inset CommandInset citation
 LatexCommand citet
-after ""
-before ""
 key "gur+04"
 
 \end_inset
 
- have demonstrated that authors should not have umlauts in their names. It's OK to use them in the manüscript, though. 
+ have demonstrated that authors should not have umlauts in their names.
+ It's OK to use them in the manüscript, though.
+ 
 \end_layout
 
 \begin_layout Bibliography
-
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "Möstl et~al.(2010)"
@@ -707,19 +699,17 @@ key "Mostl2010"
 
  Gürkan, M.
 \begin_inset space ~
-
 \end_inset
 
 A., Freitag, M., & Rasio, F.
 \begin_inset space ~
-
 \end_inset
 
-A. 2004, ApJ, 604, 632 
+A.
+ 2004, ApJ, 604, 632 
 \end_layout
 
 \begin_layout Bibliography
-
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "{{Gürkan et~al.}(2004)}"
@@ -729,15 +719,14 @@ key "gur+04"
 
  Gürkan, M.
 \begin_inset space ~
-
 \end_inset
 
 A., Freitag, M., & Rasio, F.
 \begin_inset space ~
-
 \end_inset
 
-A. 2004, ApJ, 604, 632
+A.
+ 2004, ApJ, 604, 632
 \end_layout
 
 \begin_layout Section
@@ -758,15 +747,13 @@ Input files
 We can input files too, like this 
 \begin_inset CommandInset include
 LatexCommand input
-preview false
-filename "DummyDocument.lyx.lyx"
+filename "DummyDocument.lyx"
 
 \end_inset
 
 , or with the include variant (tests quoting as well): 
 \begin_inset CommandInset include
 LatexCommand include
-preview false
 filename "Dummy Document.tex"
 
 \end_inset
@@ -774,7 +761,6 @@ filename "Dummy Document.tex"
  
 \begin_inset CommandInset include
 LatexCommand include
-preview false
 filename "Dummy Document.tex"
 
 \end_inset
@@ -782,23 +768,27 @@ filename "Dummy Document.tex"
  
 \begin_inset CommandInset include
 LatexCommand include
-preview false
-filename "Dummy~Document.lyx.lyx"
+filename "Dummy~Document.lyx"
 
 \end_inset
 
  
 \begin_inset CommandInset include
 LatexCommand include
-preview false
-filename "Dummy~Document.lyx.lyx"
+filename "Dummy~Document.lyx"
 
 \end_inset
 
- File names containg double quotes are not legal on windows, so no test file is provided. Nevertheless, they are legal on unix, so we test at least the parsing. File names containing spaces can not be handled by automake (make dist would fail), so no test file is provided as well. Since the files do not exist, the variants without extension would not work (tex2lyx can't deduce the correct extension of nonexisting files). 
+ File names containg double quotes are not legal on windows, so no test
+ file is provided.
+ Nevertheless, they are legal on unix, so we test at least the parsing.
+ File names containing spaces can not be handled by automake (make dist
+ would fail), so no test file is provided as well.
+ Since the files do not exist, the variants without extension would not
+ work (tex2lyx can't deduce the correct extension of nonexisting files).
+ 
 \begin_inset CommandInset include
 LatexCommand include
-preview false
 filename "Dummy\"Document.tex"
 
 \end_inset
@@ -811,7 +801,6 @@ We can also import chess diagrams:
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset External
 	template ChessDiagram
 	filename ../../../lib/examples/iecc05.fen
@@ -826,7 +815,6 @@ Spreadsheets:
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset External
 	template GnumericSpreadsheet
 	filename ../../../lib/examples/longsheet.gnumeric
@@ -841,7 +829,6 @@ XFig drawings:
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset External
 	template XFig
 	filename xfigtest.fig
@@ -856,7 +843,6 @@ and PDF pages:
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset External
 	template PDFPages
 	filename ../../../lib/examples/beamer-icsi-logo.pdf
@@ -875,26 +861,22 @@ and PDF pages:
 \begin_layout Standard
 If you prefer verbatim input, you can choose between
 \begin_inset space ~
-
 \end_inset
 
 
 \begin_inset CommandInset include
 LatexCommand verbatiminput
-preview false
 filename "foo"
 
 \end_inset
 
  or
 \begin_inset space ~
-
 \end_inset
 
 
 \begin_inset CommandInset include
 LatexCommand verbatiminput*
-preview false
 filename "foo"
 
 \end_inset
@@ -927,10 +909,11 @@ description "uniform resource locator"
 
 \begin_layout Standard
 An URL: 
-\begin_inset Flex Flex:URL
+\begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
+
 http://www.lyx.org
 \end_layout
 
@@ -949,10 +932,11 @@ description "uniform resource locator"
 
 \begin_layout Standard
 An URL with strange characters: 
-\begin_inset Flex Flex:URL
+\begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
+
 http://www.lyx.org/percent%dollar$
 \end_layout
 
@@ -1070,7 +1054,6 @@ Lists
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset FloatList figure
 
 \end_inset
@@ -1095,6 +1078,7 @@ inline true
 status collapsed
 
 \begin_layout Plain Layout
+
 int a=5;
 \end_layout
 
@@ -1108,25 +1092,28 @@ int a=5;
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset listings
 lstparams "caption={Example Listing float},label={lst:Example-Listing},language=Python"
 inline false
 status collapsed
 
 \begin_layout Plain Layout
+
 # Example listing float
 \end_layout
 
 \begin_layout Plain Layout
+
 def func(param):
 \end_layout
 
 \begin_layout Plain Layout
+
     'this is a python function'
 \end_layout
 
 \begin_layout Plain Layout
+
     pass
 \end_layout
 
@@ -1166,12 +1153,10 @@ Extended character table
 
 Space
 \begin_inset space ~
-
 \end_inset
 
 as
 \begin_inset space ~
-
 \end_inset
 
 symbol
@@ -1180,57 +1165,63 @@ symbol
 
 , range lines 3
 \begin_inset space \thinspace{}
-
 \end_inset
 
 -
 \begin_inset space \thinspace{}
-
 \end_inset
 
 8:
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset listings
 lstparams "extendedchars=true,firstline=3,language=Python,lastline=8,numbers=left,showspaces=true,stepnumber=3"
 inline false
 status collapsed
 
 \begin_layout Plain Layout
+
 def func(param):
 \end_layout
 
 \begin_layout Plain Layout
+
     'this is a python function'
 \end_layout
 
 \begin_layout Plain Layout
+
     pass
 \end_layout
 
 \begin_layout Plain Layout
+
 def func(param):
 \end_layout
 
 \begin_layout Plain Layout
+
 'This is a German word: Tschüß'
 \end_layout
 
 \begin_layout Plain Layout
+
 pass
 \end_layout
 
 \begin_layout Plain Layout
+
 def func(param):
 \end_layout
 
 \begin_layout Plain Layout
+
 'this is a python function'
 \end_layout
 
 \begin_layout Plain Layout
+
 pass
 \end_layout
 
@@ -1247,6 +1238,7 @@ inline false
 status collapsed
 
 \begin_layout Plain Layout
+
 hello
 \end_layout
 
@@ -1256,13 +1248,13 @@ hello
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset listings
 lstparams "language=TeX"
 inline true
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 begin{centering} hello
@@ -1289,18 +1281,18 @@ Graphics
 
 \begin_layout Standard
 There is also some basic support for graphics, in the form 
-\begin_inset Graphics 
+\begin_inset Graphics
 	filename foo.eps
 
 \end_inset
 
 , or the slightly more elaborate 
-\begin_inset Graphics 
+\begin_inset Graphics
 	filename foo.eps
 	width 1cm
 	height 1cm
-	clip
 	BoundingBox 10bp 0bp 96bp 96bp
+	clip
 
 \end_inset
 
@@ -1322,13 +1314,17 @@ Tables
 \end_layout
 
 \begin_layout Standard
-The following example is stolen from the longtable documentation. Since tex2lyx does not understand the special verbatim code that was used in the original some lines have been rewritten using 
+The following example is stolen from the longtable documentation.
+ Since tex2lyx does not understand the special verbatim code that was used
+ in the original some lines have been rewritten using 
 \backslash
-textbackslash etc. 
+textbackslash etc.
+ 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 let
@@ -1346,6 +1342,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 let
 \backslash
@@ -1361,6 +1358,7 @@ textsf
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 let
@@ -1378,6 +1376,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 providecommand{
 \backslash
@@ -1392,17 +1391,16 @@ clearpage}
 \end_layout
 
 \begin_layout Standard
-
-\begin_inset Tabular 
+\begin_inset Tabular
 <lyxtabular version="3" rows="66" columns="2">
-<features rotate="0" islongtable="true">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="none" valignment="top" special="@{*}r">
 <column alignment="none" valignment="top" special="|p{1in}@{*}">
 <row endfirsthead="true">
 <cell alignment="none" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 KILLED 
 \end_layout
 
@@ -1411,12 +1409,13 @@ KILLED
 <cell alignment="none" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 LINE!!!! 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 kill
@@ -1428,12 +1427,10 @@ kill
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status collapsed
 
-
-\begin_layout Standard
+\begin_layout Plain Layout
 An optional table caption (used in the list of tables)
 \end_layout
 
@@ -1461,7 +1458,7 @@ name "long"
 <cell multicolumn="1" alignment="none" valignment="top" topline="true" usebox="none" special="@{*}c@{*}">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 This part appears at the top of the table
 \end_layout
 
@@ -1470,6 +1467,10 @@ This part appears at the top of the table
 <cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -1477,12 +1478,10 @@ This part appears at the top of the table
 <cell alignment="none" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \shape smallcaps
 First
-\shape default
-
 \end_layout
 
 \end_inset
@@ -1490,12 +1489,10 @@ First
 <cell alignment="none" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \shape smallcaps
 Second
-\shape default
-
 \end_layout
 
 \end_inset
@@ -1505,15 +1502,16 @@ Second
 <cell multicolumn="1" alignment="none" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 \begin_inset Argument 1
 status collapsed
 
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -1530,6 +1528,10 @@ status collapsed
 <cell multicolumn="2" alignment="none" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -1537,7 +1539,7 @@ status collapsed
 <cell multicolumn="1" alignment="none" valignment="top" topline="true" usebox="none" special="@{*}c@{*}">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 This part appears at the top of every other page
 \end_layout
 
@@ -1546,6 +1548,10 @@ This part appears at the top of every other page
 <cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -1553,12 +1559,10 @@ This part appears at the top of every other page
 <cell alignment="none" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \series bold
 First
-\series default
-
 \end_layout
 
 \end_inset
@@ -1566,12 +1570,10 @@ First
 <cell alignment="none" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \series bold
 Second
-\series default
-
 \end_layout
 
 \end_inset
@@ -1581,8 +1583,7 @@ Second
 <cell multicolumn="1" alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset Caption LongTableNoNumber
 
 \begin_layout Plain Layout
@@ -1599,6 +1600,10 @@ standard foot
 <cell multicolumn="2" alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -1606,7 +1611,7 @@ standard foot
 <cell alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 This goes at the
 \end_layout
 
@@ -1615,7 +1620,7 @@ This goes at the
 <cell alignment="none" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 bottom.
 \end_layout
 
@@ -1626,8 +1631,7 @@ bottom.
 <cell multicolumn="1" alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset Caption LongTableNoNumber
 
 \begin_layout Plain Layout
@@ -1644,6 +1648,10 @@ bottom.
 <cell multicolumn="2" alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -1651,7 +1659,7 @@ bottom.
 <cell alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 These lines will
 \end_layout
 
@@ -1660,7 +1668,7 @@ These lines will
 <cell alignment="none" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 appear
 \end_layout
 
@@ -1671,7 +1679,7 @@ appear
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 in place of the 
 \end_layout
 
@@ -1680,7 +1688,7 @@ in place of the
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 usual foot
 \end_layout
 
@@ -1691,7 +1699,7 @@ usual foot
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 at the end
 \end_layout
 
@@ -1700,7 +1708,7 @@ at the end
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 of the table
 \end_layout
 
@@ -1711,12 +1719,12 @@ of the table
 <cell alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 env
@@ -1729,6 +1737,7 @@ env
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -1739,6 +1748,7 @@ longtable
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -1752,7 +1762,7 @@ status collapsed
 <cell alignment="none" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 in the 
 \end_layout
 
@@ -1763,12 +1773,13 @@ in the
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 same way as in the 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 env
@@ -1781,6 +1792,7 @@ env
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -1791,6 +1803,7 @@ tabular
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -1804,7 +1817,7 @@ status collapsed
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 environment.
 \end_layout
 
@@ -1815,12 +1828,12 @@ environment.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 code
@@ -1833,6 +1846,7 @@ code
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -1843,6 +1857,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -1856,7 +1871,7 @@ status collapsed
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 in this case.
 \end_layout
 
@@ -1867,7 +1882,7 @@ in this case.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Each row ends with a
 \end_layout
 
@@ -1876,12 +1891,12 @@ Each row ends with a
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 code
@@ -1894,6 +1909,7 @@ code
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -1908,6 +1924,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -1923,12 +1940,13 @@ status collapsed
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 code
@@ -1941,6 +1959,7 @@ code
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -1955,6 +1974,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -1968,7 +1988,7 @@ status collapsed
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 optional
 \end_layout
 
@@ -1979,7 +1999,7 @@ optional
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 argument, just as in
 \end_layout
 
@@ -1988,7 +2008,7 @@ argument, just as in
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 the
 \end_layout
 
@@ -1999,12 +2019,12 @@ the
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 env
@@ -2017,6 +2037,7 @@ env
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -2027,6 +2048,7 @@ tabular
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -2040,7 +2062,7 @@ status collapsed
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 environment.
 \end_layout
 
@@ -2051,12 +2073,13 @@ environment.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 [10pt] See the effect of 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 code
@@ -2069,6 +2092,7 @@ code
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -2083,6 +2107,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -2096,7 +2121,7 @@ status collapsed
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 ?
 \end_layout
 
@@ -2107,7 +2132,7 @@ status collapsed
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2116,7 +2141,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2127,7 +2152,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2136,7 +2161,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2147,7 +2172,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2156,7 +2181,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2167,7 +2192,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2176,7 +2201,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2187,12 +2212,13 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Also 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 code
@@ -2205,6 +2231,7 @@ code
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -2217,6 +2244,7 @@ hline
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -2230,12 +2258,13 @@ status collapsed
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 as in 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 env
@@ -2248,6 +2277,7 @@ env
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -2258,6 +2288,7 @@ tabular
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -2273,12 +2304,13 @@ status collapsed
 <cell alignment="none" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 That was a 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 code
@@ -2291,6 +2323,7 @@ code
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -2303,6 +2336,7 @@ hline
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -2316,7 +2350,7 @@ status collapsed
 <cell alignment="none" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 .
 \end_layout
 
@@ -2327,12 +2361,13 @@ status collapsed
 <cell alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 That was 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 code
@@ -2345,6 +2380,7 @@ code
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -2359,6 +2395,7 @@ hline
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -2372,7 +2409,7 @@ status collapsed
 <cell alignment="none" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 .
 \end_layout
 
@@ -2383,12 +2420,13 @@ status collapsed
 <cell multicolumn="1" alignment="none" valignment="top" leftline="true" rightline="true" usebox="none" special="|c|">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 This is a 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 code
@@ -2401,6 +2439,7 @@ code
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -2413,6 +2452,7 @@ multicolumn{2}{||c||}
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -2426,6 +2466,10 @@ status collapsed
 <cell multicolumn="2" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -2433,12 +2477,13 @@ status collapsed
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 If a page break occurs at a 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 code
@@ -2451,6 +2496,7 @@ code
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -2463,6 +2509,7 @@ hline
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -2476,7 +2523,7 @@ status collapsed
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 a line is drawn
 \end_layout
 
@@ -2487,7 +2534,7 @@ a line is drawn
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 at the bottom of one page and at the
 \end_layout
 
@@ -2496,7 +2543,7 @@ at the bottom of one page and at the
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 top of the next.
 \end_layout
 
@@ -2507,12 +2554,13 @@ top of the next.
 <cell alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 code
@@ -2525,6 +2573,7 @@ code
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -2535,6 +2584,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -2545,6 +2595,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 env
@@ -2557,6 +2608,7 @@ env
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -2567,6 +2619,7 @@ tabular
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -2580,7 +2633,7 @@ status collapsed
 <cell alignment="none" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 can not be used.
 \end_layout
 
@@ -2591,7 +2644,7 @@ can not be used.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The optional argument may be one of
 \end_layout
 
@@ -2600,12 +2653,12 @@ The optional argument may be one of
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 code
@@ -2618,6 +2671,7 @@ code
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -2628,6 +2682,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -2643,7 +2698,7 @@ status collapsed
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 to specify whether the table should be
 \end_layout
 
@@ -2652,7 +2707,7 @@ to specify whether the table should be
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 adjusted
 \end_layout
 
@@ -2663,7 +2718,7 @@ adjusted
 <cell alignment="none" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 to the left, right
 \end_layout
 
@@ -2672,7 +2727,7 @@ to the left, right
 <cell alignment="none" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 or centrally.
 \end_layout
 
@@ -2683,7 +2738,7 @@ or centrally.
 <cell alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2692,7 +2747,7 @@ Lots of lines
 <cell alignment="none" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2703,7 +2758,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2712,7 +2767,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2723,7 +2778,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2732,7 +2787,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2743,7 +2798,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2752,7 +2807,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2763,7 +2818,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2772,7 +2827,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2783,7 +2838,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2792,7 +2847,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2803,7 +2858,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2812,7 +2867,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2823,7 +2878,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2832,7 +2887,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2843,7 +2898,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2852,7 +2907,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2863,7 +2918,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2872,7 +2927,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2883,7 +2938,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2892,7 +2947,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2903,7 +2958,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2912,7 +2967,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2923,7 +2978,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2932,7 +2987,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2943,7 +2998,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2952,7 +3007,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2963,7 +3018,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2972,7 +3027,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -2983,7 +3038,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -2992,7 +3047,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3003,7 +3058,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3012,7 +3067,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3023,7 +3078,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3032,7 +3087,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3043,7 +3098,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3052,7 +3107,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3063,7 +3118,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3072,7 +3127,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3083,7 +3138,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Some lines may take up a lot of space, like this: 
 \end_layout
 
@@ -3092,12 +3147,12 @@ Some lines may take up a lot of space, like this:
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 raggedleft
@@ -3121,17 +3176,19 @@ row
 \begin_inset Quotes erd
 \end_inset
 
- of the table can take up several lines. Note however that \SpecialChar TeX
+ of the table can take up several lines.
+ Note however that \SpecialChar TeX
 
 \begin_inset space \space{}
-
 \end_inset
 
-will never break a page within such a row. Page breaks only occur between rows of the table or at 
+will never break a page within such a row.
+ Page breaks only occur between rows of the table or at 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 code
@@ -3144,6 +3201,7 @@ code
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -3156,12 +3214,14 @@ hline
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
 \end_inset
 
- commands. 
+ commands.
+ 
 \end_layout
 
 \end_inset
@@ -3171,7 +3231,7 @@ status collapsed
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3180,7 +3240,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3191,7 +3251,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3200,7 +3260,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3211,7 +3271,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3220,7 +3280,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3231,7 +3291,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3240,7 +3300,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3251,7 +3311,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3260,7 +3320,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3271,7 +3331,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3280,7 +3340,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3291,7 +3351,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3300,7 +3360,7 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3311,13 +3371,12 @@ like this.
 <cell alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots
 \begin_inset Foot
 status collapsed
 
-
-\begin_layout Standard
+\begin_layout Plain Layout
 This is a footnote.
 \end_layout
 
@@ -3331,7 +3390,7 @@ This is a footnote.
 <cell alignment="none" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3342,7 +3401,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3351,18 +3410,17 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this
 \begin_inset Foot
 status collapsed
 
-
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 env
@@ -3375,6 +3433,7 @@ env
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -3385,6 +3444,7 @@ longtable
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -3405,7 +3465,7 @@ status collapsed
 <cell alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3414,7 +3474,7 @@ Lots of lines
 <cell alignment="none" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3425,7 +3485,7 @@ like this.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3434,8 +3494,9 @@ Lots of lines
 <cell alignment="none" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-like this. 
+\begin_layout Plain Layout
+like this.
+ 
 \end_layout
 
 \end_inset
@@ -3449,18 +3510,18 @@ like this.
 \end_layout
 
 \begin_layout Standard
-From bug 7412 another example with more captions (can currently not produced in LyX): 
-\begin_inset Tabular 
+From bug 7412 another example with more captions (can currently not produced
+ in LyX): 
+\begin_inset Tabular
 <lyxtabular version="3" rows="45" columns="2">
-<features rotate="0" islongtable="true" lastFootEmpty="true">
+<features islongtable="true" lastFootEmpty="true" longtabularalignment="center">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <row endfirsthead="true" caption="true">
 <cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -3477,6 +3538,10 @@ A long table
 <cell multicolumn="2" alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -3484,8 +3549,7 @@ A long table
 <cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -3502,6 +3566,10 @@ A long table – continued
 <cell multicolumn="2" alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -3509,12 +3577,12 @@ A long table – continued
 <cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="r">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -3525,6 +3593,7 @@ Continued on next page
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -3538,6 +3607,10 @@ status collapsed
 <cell multicolumn="2" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -3545,7 +3618,7 @@ status collapsed
 <cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Something
 \end_layout
 
@@ -3554,7 +3627,7 @@ Something
 <cell multicolumn="1" alignment="none" valignment="top" topline="true" rightline="true" usebox="none" special="c">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Description
 \end_layout
 
@@ -3565,7 +3638,7 @@ Description
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3574,7 +3647,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3585,7 +3658,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3594,7 +3667,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3605,7 +3678,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3614,7 +3687,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3625,7 +3698,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3634,7 +3707,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3645,7 +3718,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3654,7 +3727,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3665,7 +3738,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3674,7 +3747,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3685,7 +3758,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3694,7 +3767,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3705,7 +3778,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3714,7 +3787,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3725,7 +3798,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3734,7 +3807,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3745,7 +3818,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3754,7 +3827,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3765,7 +3838,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3774,7 +3847,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3785,7 +3858,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3794,7 +3867,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3805,7 +3878,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3814,7 +3887,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3825,7 +3898,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3834,7 +3907,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3845,7 +3918,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3854,7 +3927,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3865,7 +3938,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3874,7 +3947,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3885,7 +3958,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3894,7 +3967,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3905,7 +3978,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3914,7 +3987,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3925,7 +3998,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3934,7 +4007,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3945,7 +4018,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3954,7 +4027,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3965,7 +4038,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3974,7 +4047,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -3985,7 +4058,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -3994,7 +4067,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4005,7 +4078,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4014,7 +4087,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4025,7 +4098,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4034,7 +4107,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4045,7 +4118,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4054,7 +4127,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4065,7 +4138,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4074,7 +4147,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4085,7 +4158,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4094,7 +4167,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4105,7 +4178,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4114,7 +4187,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4125,7 +4198,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4134,7 +4207,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4145,7 +4218,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4154,7 +4227,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4165,7 +4238,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4174,7 +4247,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4185,7 +4258,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4194,7 +4267,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4205,7 +4278,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4214,7 +4287,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4225,7 +4298,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4234,7 +4307,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4245,7 +4318,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4254,7 +4327,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4265,7 +4338,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4274,7 +4347,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4285,7 +4358,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4294,7 +4367,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4305,7 +4378,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4314,7 +4387,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4325,7 +4398,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4334,7 +4407,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4345,7 +4418,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4354,7 +4427,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4365,7 +4438,7 @@ like this.
 <cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lots of lines
 \end_layout
 
@@ -4374,7 +4447,7 @@ Lots of lines
 <cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 like this.
 \end_layout
 
@@ -4393,27 +4466,27 @@ A table*:
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 % some comment
 \end_layout
 
 \end_inset
 
 
-\begin_inset Tabular 
+\begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="bottom" tabularwidth="80col%">
+<features tabularvalignment="bottom" tabularwidth="80col%">
 <column alignment="left" valignment="top">
 <column alignment="right" valignment="top">
 <row>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 two
 \end_layout
 
@@ -4422,6 +4495,10 @@ two
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -4429,7 +4506,7 @@ two
 <cell alignment="left" valignment="top" rotate="-50" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 lonely
 \end_layout
 
@@ -4438,7 +4515,7 @@ lonely
 <cell alignment="right" valignment="top" rotate="90" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 lines
 \end_layout
 
@@ -4457,20 +4534,16 @@ A booktabs table:
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Float table
 placement h
 wide false
 sideways false
 status open
 
-
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Special-booktabs-table"
@@ -4485,12 +4558,12 @@ Special booktabs-table
 
 \end_layout
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 centering
@@ -4503,15 +4576,16 @@ centering
 status collapsed
 
 \begin_layout Plain Layout
+
 {}
 \end_layout
 
 \end_inset
 
 
-\begin_inset Tabular 
+\begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="4">
-<features rotate="0" booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -4520,7 +4594,7 @@ status collapsed
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 System 
 \end_layout
 
@@ -4529,10 +4603,9 @@ System
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Chip
 \begin_inset space \thinspace{}
-
 \end_inset
 
 1 
@@ -4543,10 +4616,9 @@ Chip
 <cell multicolumn="1" alignment="none" valignment="top" topline="true" usebox="none" special="c">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Chip
 \begin_inset space \thinspace{}
-
 \end_inset
 
 2
@@ -4557,6 +4629,10 @@ Chip
 <cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 </cell>
 </row>
@@ -4564,12 +4640,12 @@ Chip
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 cmidrule
@@ -4582,6 +4658,7 @@ cmidrule
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -4592,6 +4669,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -4602,6 +4680,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 cmidrule
@@ -4614,6 +4693,7 @@ cmidrule
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -4624,6 +4704,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -4634,6 +4715,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 morecmidrules
@@ -4647,6 +4729,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 cmidrule
 \end_layout
@@ -4658,6 +4741,7 @@ cmidrule
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -4668,6 +4752,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -4681,7 +4766,7 @@ Detector thickness in µm
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 300 
 \end_layout
 
@@ -4690,7 +4775,7 @@ Detector thickness in µm
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 300 
 \end_layout
 
@@ -4699,7 +4784,7 @@ Detector thickness in µm
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 700
 \end_layout
 
@@ -4710,7 +4795,7 @@ Detector thickness in µm
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Edge angle in ° 
 \end_layout
 
@@ -4719,7 +4804,7 @@ Edge angle in °
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 3.55 
 \end_layout
 
@@ -4728,7 +4813,7 @@ Edge angle in °
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 2.71 
 \end_layout
 
@@ -4737,7 +4822,7 @@ Edge angle in °
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 7.99
 \end_layout
 
@@ -4748,7 +4833,7 @@ Edge angle in °
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Spatial resolution in µm 
 \end_layout
 
@@ -4757,7 +4842,7 @@ Spatial resolution in µm
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 4.26 
 \end_layout
 
@@ -4766,7 +4851,7 @@ Spatial resolution in µm
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 10.17 
 \end_layout
 
@@ -4775,7 +4860,7 @@ Spatial resolution in µm
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 10.56
 \end_layout
 
@@ -4786,7 +4871,7 @@ Spatial resolution in µm
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 MTF at 
 \begin_inset Formula $f_{\mathrm{max}}$
 \end_inset
@@ -4799,7 +4884,7 @@ MTF at
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 0.53 
 \end_layout
 
@@ -4808,7 +4893,7 @@ MTF at
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 0.37 
 \end_layout
 
@@ -4817,7 +4902,7 @@ MTF at
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 0.39
 \end_layout
 
@@ -4828,12 +4913,12 @@ MTF at
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 morecmidrules
@@ -4847,6 +4932,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 cmidrule
 \end_layout
@@ -4858,6 +4944,7 @@ cmidrule
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -4868,6 +4955,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -4881,15 +4969,27 @@ LSF-spatial resolution
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 </cell>
 <cell alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 </cell>
@@ -4898,7 +4998,7 @@ LSF-spatial resolution
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 in µm 
 \end_layout
 
@@ -4907,7 +5007,7 @@ in µm
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 129.7 
 \end_layout
 
@@ -4916,7 +5016,7 @@ in µm
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 52.75 
 \end_layout
 
@@ -4925,7 +5025,7 @@ in µm
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 50.78
 \end_layout
 
@@ -4936,7 +5036,7 @@ in µm
 <cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 in % of pixel size 
 \end_layout
 
@@ -4945,7 +5045,7 @@ in % of pixel size
 <cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 76.3 
 \end_layout
 
@@ -4954,7 +5054,7 @@ in % of pixel size
 <cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 95.9 
 \end_layout
 
@@ -4963,7 +5063,7 @@ in % of pixel size
 <cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 92.3
 \end_layout
 
@@ -4987,18 +5087,15 @@ A table using dcolumn:
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Float table
 wide false
 sideways false
 status open
 
-
-\begin_layout Standard
-
-\begin_inset Tabular 
+\begin_layout Plain Layout
+\begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="5">
-<features rotate="0" tabularvalignment="middle" tabularwidth="0pt">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="none" valignment="top" special="d">
@@ -5008,7 +5105,7 @@ status open
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 One
 \end_layout
 
@@ -5017,7 +5114,7 @@ One
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Two
 \end_layout
 
@@ -5026,12 +5123,10 @@ Two
 <cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 Three
-\family default
-
 \end_layout
 
 \end_inset
@@ -5039,12 +5134,10 @@ Three
 <cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 Four
-\family default
-
 \end_layout
 
 \end_inset
@@ -5052,12 +5145,10 @@ Four
 <cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \family roman
 Five
-\family default
-
 \end_layout
 
 \end_inset
@@ -5067,7 +5158,7 @@ Five
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 one
 \end_layout
 
@@ -5076,7 +5167,7 @@ one
 <cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 two
 \end_layout
 
@@ -5085,8 +5176,7 @@ two
 <cell alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -5103,8 +5193,7 @@ separation "3pt"
 shadowsize "4pt"
 status open
 
-
-\begin_layout Standard
+\begin_layout Plain Layout
 three
 \end_layout
 
@@ -5118,8 +5207,7 @@ three
 <cell alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -5136,8 +5224,7 @@ separation "3pt"
 shadowsize "4pt"
 status open
 
-
-\begin_layout Standard
+\begin_layout Plain Layout
 four
 \end_layout
 
@@ -5151,8 +5238,7 @@ four
 <cell alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-
+\begin_layout Plain Layout
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -5169,8 +5255,7 @@ separation "3pt"
 shadowsize "4pt"
 status open
 
-
-\begin_layout Standard
+\begin_layout Plain Layout
 five
 \end_layout
 
@@ -5186,7 +5271,7 @@ five
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 He
 \end_layout
 
@@ -5195,7 +5280,7 @@ He
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 2
 \end_layout
 
@@ -5204,7 +5289,7 @@ He
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 2.77234 
 \end_layout
 
@@ -5213,8 +5298,9 @@ He
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
-45672. 
+\begin_layout Plain Layout
+45672.
+ 
 \end_layout
 
 \end_inset
@@ -5222,7 +5308,7 @@ He
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 0.69 
 \end_layout
 
@@ -5233,13 +5319,12 @@ He
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 C
 \begin_inset Foot
 status collapsed
 
-
-\begin_layout Standard
+\begin_layout Plain Layout
 Some tables require footnotes.
 \end_layout
 
@@ -5253,13 +5338,12 @@ Some tables require footnotes.
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 C
 \begin_inset Foot
 status collapsed
 
-
-\begin_layout Standard
+\begin_layout Plain Layout
 Some tables need more than one footnote.
 \end_layout
 
@@ -5273,7 +5357,7 @@ Some tables need more than one footnote.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 12537.64 
 \end_layout
 
@@ -5282,7 +5366,7 @@ Some tables need more than one footnote.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 37.66345 
 \end_layout
 
@@ -5291,7 +5375,7 @@ Some tables need more than one footnote.
 <cell alignment="none" valignment="top" usebox="none">
 \begin_inset Text
 
-\begin_layout Standard
+\begin_layout Plain Layout
 86.37 
 \end_layout
 
@@ -5317,22 +5401,22 @@ Macros
 \begin_layout Standard
 LyX supports several kinds of macros: def 
 \begin_inset FormulaMacro
-\def\macroa #1{a #1 a}
+\newcommand{\macroa}[1]{a #1 a}
 \end_inset
 
  global def 
 \begin_inset FormulaMacro
-\def\macrob #1{b #1 b}
+\newcommand{\macrob}[1]{b #1 b}
 \end_inset
 
  long def 
 \begin_inset FormulaMacro
-\def\macroc #1{c #1 c}
+\newcommand{\macroc}[1]{c #1 c}
 \end_inset
 
  global long def 
 \begin_inset FormulaMacro
-\def\macrod #1{d #1 d}
+\newcommand{\macrod}[1]{d #1 d}
 \end_inset
 
  providecommand 
@@ -5340,6 +5424,7 @@ LyX supports several kinds of macros: def
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 providecommand{
@@ -5354,6 +5439,7 @@ macroe}[1]{e #1 e}
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 providecommand*{
@@ -5379,6 +5465,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 newcommand*{
 \backslash
@@ -5392,6 +5479,7 @@ macroi}[1]{i #1 i}
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 renewcommand*{
@@ -5407,6 +5495,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 providecommandx{
 \backslash
@@ -5421,6 +5510,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 providecommandx*{
 \backslash
@@ -5431,12 +5521,12 @@ macrok}[1]{l #1 l}
 
  newcommandx 
 \begin_inset FormulaMacro
-\newcommandx{\macrom}[1]{m #1 m}
+\newcommand{\macrom}[1]{m #1 m}
 \end_inset
 
  renewcommandx 
 \begin_inset FormulaMacro
-\renewcommandx{\macrom}[1]{n #1 n}
+\renewcommand{\macrom}[1]{n #1 n}
 \end_inset
 
  newcommandx* 
@@ -5444,6 +5534,7 @@ macrok}[1]{l #1 l}
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 newcommandx*{
@@ -5459,6 +5550,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 renewcommandx*{
 \backslash
@@ -5472,6 +5564,7 @@ macroo}[1]{p #1 p}
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 DeclareRobustCommand{
@@ -5487,6 +5580,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 DeclareRobustCommand*{
 \backslash
@@ -5501,6 +5595,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 DeclareRobustCommandx{
 \backslash
@@ -5514,6 +5609,7 @@ macros}[1]{s #1 s}
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 DeclareRobustCommandx*{
@@ -5533,6 +5629,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 macroa
 \end_layout
@@ -5544,6 +5641,7 @@ macroa
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -5554,6 +5652,7 @@ x
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -5564,6 +5663,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 macrob
@@ -5576,6 +5676,7 @@ macrob
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -5586,6 +5687,7 @@ x
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -5596,6 +5698,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 macroc
@@ -5608,6 +5711,7 @@ macroc
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -5618,6 +5722,7 @@ x
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -5628,6 +5733,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 macrod
@@ -5640,6 +5746,7 @@ macrod
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -5650,6 +5757,7 @@ x
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -5660,6 +5768,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 macroe{
@@ -5672,6 +5781,7 @@ x
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -5682,6 +5792,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 macrof{
@@ -5694,6 +5805,7 @@ x
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -5704,6 +5816,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 macrog{
@@ -5716,6 +5829,7 @@ x
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -5726,6 +5840,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 macroi{
@@ -5738,6 +5853,7 @@ x
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -5748,6 +5864,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 macrok{
@@ -5760,6 +5877,7 @@ x
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -5770,6 +5888,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 macrom{
@@ -5782,6 +5901,7 @@ x
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -5792,6 +5912,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 macroo{
@@ -5804,6 +5925,7 @@ x
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -5814,6 +5936,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 macroq{
@@ -5826,6 +5949,7 @@ x
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -5836,6 +5960,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 macror{
@@ -5848,6 +5973,7 @@ x
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -5858,6 +5984,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 %
 \backslash
 macros{x} 
@@ -5894,15 +6021,12 @@ test
 
 \begin_layout Standard
 
-\size tiny
-
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \size tiny
-
 \begin_inset CommandInset line
 LatexCommand rule
 offset "0.5ex"
@@ -5911,10 +6035,6 @@ height "1pt"
 
 \end_inset
 
-
-\size default
-
-\size tiny
 
 \end_layout
 
@@ -5932,7 +6052,6 @@ test
 
 \begin_layout Standard
 \noindent
-
 \begin_inset CommandInset line
 LatexCommand rule
 offset "0.5ex"
@@ -5950,15 +6069,12 @@ test
 
 \begin_layout Standard
 
-\size giant
-
 \end_layout
 
 \begin_layout Standard
 \noindent
 
 \size giant
-
 \begin_inset CommandInset line
 LatexCommand rule
 offset "0.5ex"
@@ -5967,10 +6083,6 @@ height "1pt"
 
 \end_inset
 
-
-\size default
-
-\size giant
 
 \end_layout
 
@@ -5996,7 +6108,6 @@ test
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset line
 LatexCommand rule
 offset "0.5ex"
@@ -6010,7 +6121,6 @@ height "1pt"
 
 \begin_layout Standard
 \noindent
-
 \begin_inset CommandInset line
 LatexCommand rule
 width "1ex"
@@ -6024,7 +6134,6 @@ test
 \begin_layout Standard
 
 \color red
-
 \begin_inset CommandInset line
 LatexCommand rule
 offset "-4ex"
@@ -6033,8 +6142,6 @@ height "1cm"
 
 \end_inset
 
-
-\color inherit
 
 \end_layout
 
@@ -6065,9 +6172,8 @@ status open
 
 \color green
 W
-\color inherit
-
 \series bold
+\color inherit
 ow
 \series default
 
@@ -6104,7 +6210,6 @@ test
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Formula $test\hphantom{Wow}test$
 \end_inset
 
@@ -6112,17 +6217,17 @@ test
 \end_layout
 
 \begin_layout Standard
-
-\begin_inset Formula \[
+\begin_inset Formula 
+\[
 test\phantom{\textcolor{green}{W}\mathbf{ow}\textsuperscript{Wow}}test
 \]
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset Formula $test\vphantom{Wow\&\%}test$
 \end_inset
 
@@ -6134,7 +6239,6 @@ TIPA
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset IPA
 
 \begin_layout Standard
@@ -6214,7 +6318,6 @@ l
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset IPA
 
 \begin_layout Standard
@@ -6223,6 +6326,7 @@ pbtd
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 :
@@ -6236,6 +6340,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 :
 \end_layout
@@ -6247,6 +6352,7 @@ dcɟkɡq
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 ;
@@ -6269,6 +6375,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 :
 \end_layout
@@ -6280,6 +6387,7 @@ nɲN
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 ;
@@ -6293,6 +6401,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 ;
 \end_layout
@@ -6304,6 +6413,7 @@ Br
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 ;
@@ -6320,11 +6430,11 @@ RR
 \begin_inset IPA
 
 \begin_layout Standard
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 :
@@ -6337,6 +6447,7 @@ rFBfvTDszSZ
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 :
@@ -6353,11 +6464,11 @@ s
 \begin_inset IPA
 
 \begin_layout Standard
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 :
@@ -6380,6 +6491,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 :
 \end_layout
@@ -6392,6 +6504,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 :
 \end_layout
@@ -6403,6 +6516,7 @@ lL
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 ;
@@ -6419,7 +6533,6 @@ L
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset IPA
 
 \begin_layout Standard
@@ -6432,7 +6545,6 @@ L
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset IPA
 
 \begin_layout Standard
@@ -6449,7 +6561,6 @@ Ueø987o@Eœ3ɞ2Oæ5aɶA6
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset IPA
 
 \begin_layout Standard
@@ -6458,6 +6569,7 @@ Ueø987o@Eœ3ɞ2Oæ5aɶA6
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 ;
@@ -6469,7 +6581,7 @@ HʢʡCʑɺɧ
 \begin_inset IPADeco toptiebar
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 ar
 \end_layout
 
@@ -6479,7 +6591,7 @@ ar
 \begin_inset IPADeco bottomtiebar
 status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 tz
 \end_layout
 
@@ -6494,7 +6606,6 @@ tz
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset IPA
 
 \begin_layout Standard
@@ -6503,6 +6614,7 @@ tz
 status collapsed
 
 \begin_layout Plain Layout
+
 {
 \end_layout
 
@@ -6513,6 +6625,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -6527,7 +6640,6 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset IPA
 
 \begin_layout Standard
@@ -6546,7 +6658,7 @@ status collapsed
 
 \begin_layout Standard
 TIPA code in math: 
-\begin_inset Formula $\textipa{\tone{55}|\text{\!b{}\!d{}\!g{}\!G{}\textglobfall{}\textvertline{}\textdoublevertline{}}}$
+\begin_inset Formula $\textipa{˥|\text{\!b{}\!d{}\!g{}\!G{}\textglobfall{}\textvertline{}\textdoublevertline{}}}$
 \end_inset
 
 
@@ -6577,6 +6689,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 
 \backslash
@@ -6590,6 +6703,7 @@ or by a newline with space, comment and argument
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 
@@ -6613,6 +6727,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 linebreak[4]
 \end_layout
@@ -6623,11 +6738,13 @@ linebreak[4]
 \end_layout
 
 \begin_layout Standard
-There are even newlines with weird arguments, but these are not handled by LyX
+There are even newlines with weird arguments, but these are not handled
+ by LyX
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 
@@ -6669,6 +6786,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 pagebreak[4]
 \end_layout
@@ -6693,28 +6811,34 @@ Special characters
 \end_layout
 
 \begin_layout Standard
-Then one has those macros with a long name for a short meaning, like ~, ^ or 
+Then one has those macros with a long name for a short meaning, like ~,
+ ^ or 
 \backslash
 , \SpecialChar breakableslash
 , \SpecialChar nobreakdash
- and the characters that LaTeX wants to espace because they are active, like _&#${}%.
+ and the characters that LaTeX wants to espace because they are active,
+ like _&#${}%.
 \end_layout
 
 \begin_layout Standard
 And what about special characters like hyphe\SpecialChar softhyphen
 nation mark, ellipsis\SpecialChar ldots
-, and end-of-sentence\SpecialChar endofsentence
+, and end-of-se
+ntence\SpecialChar endofsentence
  LyX also supports a menu separator\SpecialChar menuseparator
 and a spif\SpecialChar ligaturebreak
 fy ligature break.
 \end_layout
 
 \begin_layout Standard
-There are dashes: endash in short form – and long form –, emdash is alike: — and —. If we really want several hyphens in a row, we need to separate them: -
+There are dashes: endash in short form – and long form –, emdash is alike:
+ — and —.
+ If we really want several hyphens in a row, we need to separate them: -
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 {}
 \end_layout
 
@@ -6725,6 +6849,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 {}
 \end_layout
 
@@ -6735,6 +6860,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 {}
 \end_layout
 
@@ -6745,6 +6871,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 {}
 \end_layout
 
@@ -6755,6 +6882,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 {}
 \end_layout
 
@@ -6765,6 +6893,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 {}
 \end_layout
 
@@ -6775,14 +6904,18 @@ status collapsed
 
 \begin_layout Standard
 LyX translates the phrases LyX, TeX, LaTeX2e and LaTeX to the commands \SpecialChar LyX
-, \SpecialChar TeX
+,
+ \SpecialChar TeX
 , \SpecialChar LaTeX2e
  and \SpecialChar LaTeX
-. If these phrases occur as part of other words (like 1LyX or aTeX or LaTeX3) they should not be put into ERT.
+.
+ If these phrases occur as part of other words (like 1LyX or aTeX or LaTeX3)
+ they should not be put into ERT.
 \end_layout
 
 \begin_layout Standard
-Test for whitespace handling of commands: The following lines should result in identical output:
+Test for whitespace handling of commands: The following lines should result
+ in identical output:
 \end_layout
 
 \begin_layout Standard
@@ -6791,6 +6924,7 @@ builtin ^ unicodesymbols ȷ user
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 mycommand
@@ -6803,6 +6937,7 @@ mycommand
 status collapsed
 
 \begin_layout Plain Layout
+
 {}
 \end_layout
 
@@ -6818,6 +6953,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 mycommand
 \end_layout
@@ -6829,6 +6965,7 @@ mycommand
 status collapsed
 
 \begin_layout Plain Layout
+
 {}
 \end_layout
 
@@ -6843,6 +6980,7 @@ builtin ^ unicodesymbols ȷ user
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 mycommand
@@ -6855,6 +6993,7 @@ mycommand
 status collapsed
 
 \begin_layout Plain Layout
+
 % and another
 \end_layout
 
@@ -6865,6 +7004,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
 {}
 \end_layout
 
@@ -6881,8 +7021,6 @@ A sub
 sc
 \emph on
 ript
-\emph default
-
 \end_layout
 
 \end_inset
@@ -6892,7 +7030,7 @@ ript
 
 \begin_layout Plain Layout
 script with 
-\begin_inset Formula $a^2+b^2=c^2$
+\begin_inset Formula $a^{2}+b^{2}=c^{2}$
 \end_inset
 
  math
@@ -6908,7 +7046,8 @@ latex2writer outputs quotes in braces like
 \begin_inset Quotes ers
 \end_inset
 
-. We swallow the, but this was one broken (bug 8903).
+.
+ We swallow the, but this was one broken (bug 8903).
 \end_layout
 
 \begin_layout Section
@@ -6927,10 +7066,9 @@ Mathematics
 
 \begin_layout Standard
 Let 
-\begin_inset Formula $f:\left[  a,b\right]  \rightarrow%TCIMACRO{\U{211d} }%
+\begin_inset Formula $f:\left[a,b\right]\rightarrow%TCIMACRO{\U{211d}}%
 %BeginExpansion
-\mathbb{R}
-%EndExpansion
+\mathbb{R}%EndExpansion
 $
 \end_inset
 
@@ -6949,6 +7087,7 @@ addcontentsline:
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 addcontentsline{toc}{section}{test}
@@ -7002,11 +7141,11 @@ addcontentsline:
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 bibliographystyle{test}
@@ -7019,6 +7158,7 @@ bibliographystyle{test}
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 addcontentsline{toc}{section}{test}
@@ -7063,7 +7203,6 @@ undefined index:
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
@@ -7078,7 +7217,6 @@ index "idx":
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
@@ -7093,7 +7231,6 @@ index "new":
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "new"
@@ -7108,7 +7245,6 @@ subindex "new":
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset index_print
 LatexCommand printsubindex
 type "idx"
@@ -7123,7 +7259,6 @@ index of all indices:
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset index_print
 LatexCommand printindex*
 
@@ -7137,7 +7272,6 @@ subindex of all indices:
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset index_print
 LatexCommand printsubindex*
 
@@ -7151,7 +7285,6 @@ normal nomenclature:
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
 set_width "none"
@@ -7167,6 +7300,7 @@ manually set width:
 status collapsed
 
 \begin_layout Plain Layout
+
 
 \backslash
 settowidth{
@@ -7191,11 +7325,11 @@ nomenclature with set width:
 \end_layout
 
 \begin_layout Standard
-
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
 set_width "custom"
 width "2line%"
+
 \end_inset
 
 
