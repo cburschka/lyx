@@ -123,6 +123,12 @@ def main(argv):
                     f1 = open(lyxfile1, 'r')
                     f2 = open(lyxfile2, 'r')
                     lines1 = f1.readlines()
+                    i1 = 0
+                    for linex in lines1:
+                      if linex[:-1] == '\origin ' + inputdir + '/':
+                        lines1[i1] = '\origin ' + outputdir + '/' + "\n"
+                        break
+                      i1 = i1+1
                     lines2 = f2.readlines()
                     f1.close()
                     f2.close()
