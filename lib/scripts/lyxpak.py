@@ -15,10 +15,11 @@
 # a gzip compressed tar archive on *nix. This can be controlled by command
 # line options, however.
 
-import os, re, string, sys
+import gzip, os, re, string, sys
 if sys.version_info < (2, 4, 0):
     from sets import Set as set
 from getopt import getopt
+from cStringIO import StringIO
 
 # Pre-compiled regular expressions.
 re_lyxfile = re.compile("\.lyx$")
@@ -51,6 +52,15 @@ in the known locations, querying LyX itself if necessary.
 def error(message):
     sys.stderr.write(message + '\n')
     sys.exit(1)
+
+
+def gzopen(file, mode):
+    input = open(file, 'rb')
+    magicnum = input.read(2)
+    input.close()
+    if magicnum == "\x1f\x8b":
+        return gzip.open(file, mode)
+    return open(file, mode)
 
 
 def run_cmd(cmd):
@@ -87,9 +97,11 @@ def gather_files(curfile, incfiles, lyx2lyx):
         l2l_status, l2l_stdout = run_cmd(lyx2lyx_cmd)
         if l2l_status != None:
             error('%s failed to convert "%s"' % (lyx2lyx, curfile))
+        if l2l_stdout.startswith("\x1f\x8b"):
+            l2l_stdout = gzip.GzipFile("", "r", 0, StringIO(l2l_stdout)).read()
         lines = l2l_stdout.splitlines()
     else:
-        input = open(curfile, 'rU')
+        input = gzopen(curfile, 'rU')
         lines = input.readlines()
         input.close()
 
@@ -254,7 +266,7 @@ def main(args):
         error('File "%s" not found.' % lyxfile)
 
     # Check that it actually is a LyX document
-    input = open(lyxfile, 'rU')
+    input = gzopen(lyxfile, 'rU')
     line = input.readline()
     input.close()
     if not (line and line.startswith('#LyX')):
