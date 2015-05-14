@@ -165,7 +165,7 @@ const char * const known_basic_colors[] = {"black", "blue", "brown", "cyan",
 
 const char * const known_basic_color_codes[] = {"#000000", "#0000ff", "#964B00", "#00ffff",
 	"#a9a9a9", "#808080", "#00ff00", "#d3d3d3", "#bfff00", "#ff00ff", "#ff7f00", "#808000",
-	"#ffc0cb", "#800080", "#ff0000", "#008080", "#8F00FF", "#ffffff", "#ffff00", 0};
+	"#ffc0cb", "#800080", "#ff0000", "#008080", "#8f00ff", "#ffffff", "#ffff00", 0};
 
 /// conditional commands with three arguments like \@ifundefined{}{}{}
 const char * const known_if_3arg_commands[] = {"@ifundefined", "IfFileExists",
