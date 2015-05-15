@@ -15,8 +15,6 @@
 
 #include "GuiBox.h"
 
-#include "GuiApplication.h"
-#include "ColorCache.h"
 #include "LengthCombo.h"
 #include "Length.h"
 #include "qt_helpers.h"
@@ -28,7 +26,6 @@
 #include "support/foreach.h"
 #include "support/lstrings.h"
 
-#include <QComboBox>
 #include <QLineEdit>
 #include <QPushButton>
 
@@ -76,60 +73,6 @@ static QStringList boxGuiSpecialLengthNames()
 }
 
 
-static QList<ColorPair> colorData()
-{
-	QList<ColorPair> colors;
-	colors << ColorPair(qt_("none"), Color_none);
-	colors << ColorPair(qt_("black"), Color_black);
-	colors << ColorPair(qt_("white"), Color_white);
-	colors << ColorPair(qt_("blue"), Color_blue);
-	colors << ColorPair(qt_("brown"), Color_brown);
-	colors << ColorPair(qt_("cyan"), Color_cyan);
-	colors << ColorPair(qt_("darkgray"), Color_darkgray);
-	colors << ColorPair(qt_("gray"), Color_gray);
-	colors << ColorPair(qt_("green"), Color_green);
-	colors << ColorPair(qt_("lightgray"), Color_lightgray);
-	colors << ColorPair(qt_("lime"), Color_lime);
-	colors << ColorPair(qt_("magenta"), Color_magenta);
-	colors << ColorPair(qt_("olive"), Color_olive);
-	colors << ColorPair(qt_("orange"), Color_orange);
-	colors << ColorPair(qt_("pink"), Color_pink);
-	colors << ColorPair(qt_("purple"), Color_purple);
-	colors << ColorPair(qt_("red"), Color_red);
-	colors << ColorPair(qt_("teal"), Color_teal);
-	colors << ColorPair(qt_("violet"), Color_violet);
-	colors << ColorPair(qt_("yellow"), Color_yellow);
-	return colors;
-}
-
-
-template<typename T>
-void fillComboColor(QComboBox * combo, QList<T> const & list, bool const is_none)
-{
-	QPixmap coloritem(32, 32);
-	QColor color;
-	// frameColorCO cannot be uncolored
-	if (is_none)
-		combo->addItem("none");
-	typename QList<T>::const_iterator cit = list.begin() + 1;
-	for (; cit != list.end(); ++cit) {
-		color = QColor(guiApp->colorCache().get(cit->second, false));
-		coloritem.fill(color);
-		combo->addItem(QIcon(coloritem), cit->first);
-	}
-}
-
-
-template<class P>
-static int findPos2nd(QList<P> const & vec, QString val)
-{
-	for (int i = 0; i != vec.size(); ++i)
-		if (vec[i].first == val)
-			return i;
-	return 0;
-}
-
-
 GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 {
 	setupUi(this);
@@ -165,8 +108,6 @@ GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 	connect(shadowsizeED, SIGNAL(textChanged(QString)), this, SIGNAL(changed()));
 	connect(shadowsizeUnitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SIGNAL(changed()));
-	connect(frameColorCO, SIGNAL(highlighted(QString)), this, SIGNAL(changed()));
-	connect(backgroundColorCO, SIGNAL(highlighted(QString)), this, SIGNAL(changed()));
 
 	heightED->setValidator(unsignedLengthValidator(heightED));
 	widthED->setValidator(unsignedLengthValidator(widthED));
@@ -180,12 +121,6 @@ GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 	addCheckedWidget(thicknessED, thicknessLA);
 	addCheckedWidget(separationED, separationLA);
 	addCheckedWidget(shadowsizeED, shadowsizeLA);
-
-	// initialize colors
-	color = colorData();
-	// the background can be uncolored while the frame cannot
-	fillComboColor(frameColorCO, color, false);
-	fillComboColor(backgroundColorCO, color, true);
 
 	initDialog();
 }
@@ -250,9 +185,6 @@ void GuiBox::initDialog()
 	// LaTeX's default for \shadowsize is 4 pt
 	shadowsizeED->setText("4");
 	shadowsizeUnitsLC->setCurrentItem(Length::PT);
-	// the default color is black and none
-	frameColorCO->setCurrentIndex(findPos2nd(color, qt_("black")) - 1);
-	backgroundColorCO->setCurrentIndex(findPos2nd(color, qt_("none")));
 }
 
 
@@ -386,9 +318,6 @@ void GuiBox::paramsToDialog(Inset const * inset)
 	shadowsizeUnitsLC->setEnabled(type == "Shadowbox");
 	lengthToWidgets(shadowsizeED, shadowsizeUnitsLC,
 		(params.shadowsize).asString(), default_unit);
-	// set color
-	frameColorCO->setCurrentIndex(findPos2nd(color, qt_(params.framecolor)) - 1);
-	backgroundColorCO->setCurrentIndex(findPos2nd(color, qt_(params.backgroundcolor)));
 }
 
 
