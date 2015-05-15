@@ -29,7 +29,6 @@ bcp --boost=$1 \
 	boost/function.hpp \
 	boost/functional.hpp \
 	boost/lexical_cast.hpp \
-	boost/next_prior.hpp \
 	boost/noncopyable.hpp \
 	boost/regex.hpp \
 	boost/scoped_array.hpp \

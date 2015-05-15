@@ -20,9 +20,7 @@
 
 #include "FontList.h"
 
-#include <boost/next_prior.hpp>
-
-#include <algorithm>
+#include "support/lyxalgo.h"
 
 using namespace std;
 
@@ -72,7 +70,7 @@ void FontList::erase(pos_type pos)
 	iterator beg = list_.begin();
 	if (it != list_.end() && it->pos() == pos
 		&& (pos == 0 
-			|| (it != list_.begin() && boost::prior(it)->pos() == pos - 1))) {
+			|| (it != list_.begin() && prev(it, 1)->pos() == pos - 1))) {
 
 		// If it is a multi-character font
 		// entry, we just make it smaller

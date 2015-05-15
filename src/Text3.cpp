@@ -72,14 +72,13 @@
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
+#include "support/lyxalgo.h"
 #include "support/lyxtime.h"
 #include "support/os.h"
 #include "support/regex.h"
 
 #include "mathed/InsetMathHull.h"
 #include "mathed/MathMacroTemplate.h"
-
-#include <boost/next_prior.hpp>
 
 #include <clocale>
 #include <sstream>
@@ -370,7 +369,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 	ParagraphList & pars = buf.text().paragraphs();
 	ParagraphList::iterator const bgn = pars.begin();
 	// The first paragraph of the area to be copied:
-	ParagraphList::iterator start = boost::next(bgn, pit);
+	ParagraphList::iterator start = next(bgn, pit);
 	// The final paragraph of area to be copied:
 	ParagraphList::iterator finish = start;
 	ParagraphList::iterator const end = pars.end();
@@ -421,7 +420,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 				// Nothing to move.
 				return;
 			// Go one down from *this* header:
-			ParagraphList::iterator dest = boost::next(finish, 1);
+			ParagraphList::iterator dest = next(finish, 1);
 			// Go further down to find header to insert in front of:
 			for (; dest != end; ++dest) {
 				toclevel = buf.text().getTocLevel(distance(bgn, dest));
@@ -799,7 +798,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		ParagraphList & pars = buf.text().paragraphs();
 		ParagraphList::iterator bgn = pars.begin();
 		// The first paragraph of the area to be selected:
-		ParagraphList::iterator start = boost::next(bgn, pit);
+		ParagraphList::iterator start = next(bgn, pit);
 		// The final paragraph of area to be selected:
 		ParagraphList::iterator finish = start;
 		ParagraphList::iterator end = pars.end();

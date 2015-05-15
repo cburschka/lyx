@@ -50,9 +50,8 @@
 #include "support/lassert.h"
 #include "support/debug.h"
 #include "support/gettext.h"
+#include "support/lyxalgo.h"
 #include "support/textutils.h"
-
-#include <boost/next_prior.hpp>
 
 #include <sstream>
 
@@ -395,7 +394,7 @@ bool Text::cursorTop(Cursor & cur)
 bool Text::cursorBottom(Cursor & cur)
 {
 	LBUFERR(this == cur.text());
-	return setCursor(cur, cur.lastpit(), boost::prior(paragraphs().end())->size());
+	return setCursor(cur, cur.lastpit(), prev(paragraphs().end(), 1)->size());
 }
 
 
@@ -905,7 +904,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		               min(old.pit() + 1, old.lastpit()));
 		ParagraphList & plist = old.text()->paragraphs();
 		bool const soa = oldpar.params().startOfAppendix();
-		plist.erase(boost::next(plist.begin(), old.pit()));
+		plist.erase(next(plist.begin(), old.pit()));
 		// do not lose start of appendix marker (bug 4212)
 		if (soa && old.pit() < pit_type(plist.size()))
 			plist[old.pit()].params().startOfAppendix(true);
@@ -969,7 +968,7 @@ void Text::deleteEmptyParagraphMechanism(pit_type first, pit_type last, bool tra
 			continue;
 
 		if (par.empty() || (par.size() == 1 && par.isLineSeparator(0))) {
-			pars_.erase(boost::next(pars_.begin(), pit));
+			pars_.erase(next(pars_.begin(), pit));
 			--pit;
 			--last;
 			continue;

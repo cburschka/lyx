@@ -33,12 +33,11 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/lstrings.h"
+#include "support/lyxalgo.h"
 #include "support/textutils.h"
 
 #include <QThreadStorage>
 
-#include <algorithm>
-#include <boost/next_prior.hpp>
 #include <list>
 
 using namespace std;
@@ -130,7 +129,7 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 
 	ParagraphList const & paragraphs = text.paragraphs();
 	ParagraphList::const_iterator const priorpit =
-		pit == paragraphs.begin() ? pit : boost::prior(pit);
+		pit == paragraphs.begin() ? pit : prev(pit, 1);
 
 	OutputState * state = getOutputState();
 	bool const use_prev_env_language = state->prev_env_language_ != 0
@@ -470,9 +469,9 @@ void latexArgInsets(ParagraphList const & pars, ParagraphList::const_iterator pi
 	// get the first paragraph in sequence with this layout and depth
 	pit_type offset = 0;
 	while (true) {
-		if (boost::prior(pit, offset) == pars.begin())
+		if (prev(pit, offset) == pars.begin())
 			break;
-		ParagraphList::const_iterator priorpit = boost::prior(pit, offset + 1);
+		ParagraphList::const_iterator priorpit = prev(pit, offset + 1);
 		if (priorpit->layout() == current_layout
 		    && priorpit->params().depth() == current_depth)
 			++offset;
@@ -480,7 +479,7 @@ void latexArgInsets(ParagraphList const & pars, ParagraphList::const_iterator pi
 			break;
 	}
 
-	ParagraphList::const_iterator spit = boost::prior(pit, offset);
+	ParagraphList::const_iterator spit = prev(pit, offset);
 
 	for (; spit != pars.end(); ++spit) {
 		if (spit->layout() != current_layout || spit->params().depth() < current_depth)

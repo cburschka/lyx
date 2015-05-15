@@ -30,8 +30,7 @@
 #include "support/lassert.h"
 #include "support/debug.h"
 #include "support/lstrings.h"
-
-#include <boost/next_prior.hpp>
+#include "support/lyxalgo.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -329,8 +328,8 @@ void docbookParagraphs(Text const & text,
 
 	// if only part of the paragraphs will be outputed
 	if (runparams.par_begin !=  runparams.par_end) {
-		par = boost::next(paragraphs.begin(), runparams.par_begin);
-		pend = boost::next(paragraphs.begin(), runparams.par_end);
+		par = next(paragraphs.begin(), runparams.par_begin);
+		pend = next(paragraphs.begin(), runparams.par_end);
 		// runparams will be passed to nested paragraphs, so
 		// we have to reset the range parameters.
 		const_cast<OutputParams&>(runparams).par_begin = 0;

@@ -51,7 +51,6 @@
 #include "support/lstrings.h"
 
 #include "support/regex.h"
-#include <boost/next_prior.hpp>
 
 using namespace std;
 using namespace lyx::support;

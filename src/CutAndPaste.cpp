@@ -60,6 +60,7 @@
 #include "support/lassert.h"
 #include "support/limited_stack.h"
 #include "support/lstrings.h"
+#include "support/lyxalgo.h"
 #include "support/TempFile.h"
 
 #include "frontends/alert.h"
@@ -67,7 +68,6 @@
 #include "frontends/Selection.h"
 
 #include <boost/tuple/tuple.hpp>
-#include <boost/next_prior.hpp>
 
 #include <string>
 
@@ -387,7 +387,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 
 	// Paste it!
 	if (empty) {
-		pars.insert(boost::next(pars.begin(), pit),
+		pars.insert(next(pars.begin(), pit),
 			    insertion.begin(),
 			    insertion.end());
 
@@ -395,7 +395,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 		mergeParagraph(buffer.params(), pars,
 			       pit + insertion.size() - 1);
 	} else {
-		pars.insert(boost::next(pars.begin(), pit + 1),
+		pars.insert(next(pars.begin(), pit + 1),
 			    insertion.begin(),
 			    insertion.end());
 
@@ -599,8 +599,8 @@ void copySelectionHelper(Buffer const & buf, Text const & text,
 	LASSERT(startpit != endpit || start <= end, return);
 
 	// Clone the paragraphs within the selection.
-	ParagraphList copy_pars(boost::next(pars.begin(), startpit),
-				boost::next(pars.begin(), endpit + 1));
+	ParagraphList copy_pars(next(pars.begin(), startpit),
+				next(pars.begin(), endpit + 1));
 
 	// Remove the end of the last paragraph; afterwards, remove the
 	// beginning of the first paragraph. Keep this order - there may only

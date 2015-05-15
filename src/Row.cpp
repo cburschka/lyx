@@ -24,11 +24,9 @@
 
 #include "support/debug.h"
 #include "support/lassert.h"
+#include "support/lyxalgo.h"
 
-#include <algorithm>
 #include <ostream>
-
-#include <boost/next_prior.hpp>
 
 using namespace std;
 
@@ -417,7 +415,7 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 		end_ = cit->endpos;
 		dim_.wid = left_margin + cit->dim.wid;
 		// If there are other elements, they should be removed.
-		elements_.erase(boost::next(cit), end);
+		elements_.erase(next(cit, 1), end);
 	}
 }
 

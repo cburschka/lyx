@@ -38,7 +38,7 @@
 
 #include "support/gettext.h"
 #include "support/lassert.h"
-#include <boost/next_prior.hpp>
+#include "support/lyxalgo.h"
 
 #include <cstdlib>
 
@@ -901,7 +901,7 @@ MathData::size_type MathData::x2pos(BufferView const * bv, int targetx, int glue
 	 * See bug 1918 for details.
 	 **/
 	if (it != begin() && currx >= targetx
-	    && ((*boost::prior(it))->asNestInset()
+	    && ((*prev(it, 1))->asNestInset()
 		|| abs(lastx - targetx) < abs(currx - targetx))) {
 		--it;
 	}
