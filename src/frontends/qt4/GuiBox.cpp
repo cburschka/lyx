@@ -26,8 +26,8 @@
 #include "support/foreach.h"
 #include "support/lstrings.h"
 
-#include <QPushButton>
 #include <QLineEdit>
+#include <QPushButton>
 
 #ifdef IN
 #undef IN
@@ -390,15 +390,15 @@ docstring GuiBox::dialogToParams() const
 	if (thicknessED->isEnabled())
 		params.thickness = Length(widgetsToLength(thicknessED, thicknessUnitsLC));
 	else
-		params.thickness = Length();
+		params.thickness = Length("0.4pt");
 	if (separationED->isEnabled())
 		params.separation = Length(widgetsToLength(separationED, separationUnitsLC));
 	else
-		params.separation = Length();
+		params.separation = Length("3pt");
 	if (separationED->isEnabled())
 		params.shadowsize = Length(widgetsToLength(shadowsizeED, shadowsizeUnitsLC));
 	else
-		params.shadowsize = Length();
+		params.shadowsize = Length("4pt");
 
 	return from_ascii(InsetBox::params2string(params));
 }
