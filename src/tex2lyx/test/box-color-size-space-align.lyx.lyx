@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.2
-\lyxformat 490
+\lyxformat 491
 \begin_document
 \begin_header
 \origin roundtrip
@@ -1060,6 +1060,50 @@ bla
 blub
 \color inherit
  test 
+\color brown
+brown
+\color inherit
+ test 
+\color darkgray
+darkgray
+\color inherit
+ test 
+\color gray
+gray
+\color inherit
+
+\color lightgray
+lightgray
+\color inherit
+ test 
+\color lime
+lime
+\color inherit
+ test 
+\color olive
+olive
+\color inherit
+ test 
+\color orange
+orange
+\color inherit
+
+\color pink
+pink
+\color inherit
+ test 
+\color purple
+purple
+\color inherit
+ test 
+\color teal
+teal
+\color inherit
+ test 
+\color violet
+violet
+\color inherit
+ test 
 \color green
 c
 \color inherit
@@ -1140,37 +1184,9 @@ definecolor{violet}{rgb}{0.5, 0, 1}
 
 \begin_layout Standard
 test 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{violet}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
+\color violet
 violet
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
+\color inherit
  test
 \end_layout
 
