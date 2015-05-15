@@ -1,11 +1,12 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 491
+#LyX file created by tex2lyx 2.2
+\lyxformat 490
 \begin_document
 \begin_header
 \origin roundtrip
 \textclass scrbook
 \begin_preamble
 \usepackage{babel}
+
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -151,12 +152,15 @@ name "par:subparagraph"
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
+
 \begin_inset Caption Above
 
 \begin_layout Plain Layout
@@ -181,12 +185,15 @@ name "fig:figure"
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Float table
 wide false
 sideways false
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
+
 \begin_inset Caption Below
 
 \begin_layout Plain Layout

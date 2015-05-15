@@ -1,10 +1,17 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 491
+#LyX file created by tex2lyx 2.2
+\lyxformat 490
 \begin_document
 \begin_header
 \origin roundtrip
 \textclass article
 \begin_preamble
+
+
+
+
+
+
+
 
 \end_preamble
 \use_default_options false
@@ -74,10 +81,14 @@
 \begin_body
 
 \begin_layout Part
+
+\lang british
 df
 \end_layout
 
 \begin_layout Standard
+
+\lang british
 1 English 
 \lang ancientgreek
 ancient Greek
@@ -87,7 +98,6 @@ ancient Greek
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 textgreek[numerals=arabic, variant=ancient]
@@ -100,7 +110,6 @@ textgreek[numerals=arabic, variant=ancient]
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -115,7 +124,6 @@ reek
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -140,6 +148,8 @@ Greek
  Albanian 
 \shape smallcaps
 smallcaps
+\shape default
+
 \end_layout
 
 \begin_layout Part
@@ -157,11 +167,11 @@ df
 \begin_layout Standard
 
 \lang hebrew
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 %empty language paragraph
 \end_layout
 

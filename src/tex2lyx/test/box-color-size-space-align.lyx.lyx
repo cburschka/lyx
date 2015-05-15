@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 491
+#LyX file created by tex2lyx 2.2
+\lyxformat 490
 \begin_document
 \begin_header
 \origin roundtrip
@@ -34,6 +34,9 @@
  \usepackage[ps2pdf]{hyperref}
 
 \fi % end if pdflatex is used
+
+
+
 \end_preamble
 \options b4paper
 \use_default_options false
@@ -81,8 +84,8 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
-\backgroundcolor #ff5500
 \notefontcolor #0000ff
+\backgroundcolor #ff5500
 \boxbgcolor #ffff00
 \index Index
 \shortcut idx
@@ -114,6 +117,7 @@
 \begin_body
 
 \begin_layout Standard
+
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
@@ -148,7 +152,8 @@ separation "3pt"
 shadowsize "4pt"
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 mbox
 \end_layout
 
@@ -174,6 +179,7 @@ thickness "0.4pt"
 separation "3pt"
 shadowsize "4pt"
 status open
+
 
 \begin_layout Plain Layout
 makebox 1
@@ -202,6 +208,7 @@ separation "3pt"
 shadowsize "4pt"
 status open
 
+
 \begin_layout Plain Layout
 makebox 2
 \end_layout
@@ -229,6 +236,7 @@ separation "3pt"
 shadowsize "4pt"
 status open
 
+
 \begin_layout Plain Layout
 makebox 3
 \end_layout
@@ -239,18 +247,20 @@ makebox 3
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Float figure
 placement ht
 wide false
 sideways false
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 centering
@@ -264,7 +274,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 setlength{
 \backslash
@@ -276,12 +285,12 @@ unitlength}{.2in}
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 begin{picture}
@@ -295,7 +304,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 put
 \end_layout
@@ -307,7 +315,6 @@ put
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -318,7 +325,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 makebox(0,0)[tr]{
@@ -331,7 +337,6 @@ AAA
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -342,7 +347,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -353,7 +357,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 put
@@ -366,7 +369,6 @@ put
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -377,7 +379,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 makebox(0,0){
@@ -390,7 +391,6 @@ BBB
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -401,7 +401,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -412,7 +411,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 put
@@ -425,7 +423,6 @@ put
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -436,7 +433,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 framebox(0,0){
@@ -449,7 +445,6 @@ x
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -460,7 +455,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -471,7 +465,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 put
@@ -484,7 +477,6 @@ put
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -495,7 +487,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 line
@@ -508,7 +499,6 @@ line
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -519,7 +509,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -530,7 +519,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -541,7 +529,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{picture}
@@ -558,11 +545,11 @@ end{picture}
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 raisebox{8.5mm}{
@@ -575,7 +562,6 @@ test
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -586,7 +572,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 raisebox{-6.5mm}{
@@ -599,7 +584,6 @@ tset
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -630,7 +614,8 @@ separation "3pt"
 shadowsize "4pt"
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 framed
 \end_layout
 
@@ -657,7 +642,9 @@ separation "3pt"
 shadowsize "4pt"
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
+
 \begin_inset Box Framed
 position "c"
 hor_pos "c"
@@ -674,7 +661,8 @@ separation "3pt"
 shadowsize "4pt"
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 nested framed
 \end_layout
 
@@ -706,7 +694,8 @@ separation "3pt"
 shadowsize "4pt"
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 fbox
 \end_layout
 
@@ -733,7 +722,8 @@ separation "3pt"
 shadowsize "4pt"
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 fr
 \color blue
 ame
@@ -764,7 +754,8 @@ separation "3pt"
 shadowsize "4pt"
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 framebox 2
 \end_layout
 
@@ -791,7 +782,8 @@ separation "3pt"
 shadowsize "4pt"
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 framebox 3
 \end_layout
 
@@ -801,8 +793,7 @@ framebox 3
 \end_layout
 
 \begin_layout Standard
-This is an example text.
- 
+This is an example text. 
 \begin_inset Box Boxed
 position "c"
 hor_pos "c"
@@ -818,6 +809,7 @@ thickness "0.4pt"
 separation "3pt"
 shadowsize "4pt"
 status open
+
 
 \begin_layout Plain Layout
 \align center
@@ -836,8 +828,7 @@ over the
 
 \begin_layout Plain Layout
 \align center
-box height.
- 
+box height. 
 \end_layout
 
 \end_inset
@@ -863,7 +854,8 @@ separation "3pt"
 shadowsize "4pt"
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 ovalbox
 \end_layout
 
@@ -890,7 +882,8 @@ separation "3pt"
 shadowsize "4pt"
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 Ovalbox
 \end_layout
 
@@ -917,7 +910,8 @@ separation "3pt"
 shadowsize "4pt"
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 shadowbox
 \end_layout
 
@@ -944,7 +938,8 @@ separation "3pt"
 shadowsize "4pt"
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 doublebox
 \end_layout
 
@@ -954,6 +949,7 @@ doublebox
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Formula $\boxed{\int A=B}$
 \end_inset
 
@@ -965,16 +961,16 @@ LyX Boxes
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Note Greyedout
 status open
 
-\begin_layout Plain Layout
+\begin_layout Standard
 
 \series bold
 Note:
 \series default
- Not all DVI-viewers are able to display rotations.
- 
+ Not all DVI-viewers are able to display rotations. 
 \end_layout
 
 \end_inset
@@ -983,6 +979,7 @@ Note:
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Box Shaded
 position "c"
 hor_pos "c"
@@ -999,7 +996,8 @@ separation "3pt"
 shadowsize "4pt"
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 Shaded background box
 \end_layout
 
@@ -1009,6 +1007,7 @@ Shaded background box
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Box Shaded
 position "c"
 hor_pos "c"
@@ -1024,6 +1023,7 @@ thickness "0.4pt"
 separation "3pt"
 shadowsize "4pt"
 status open
+
 
 \begin_layout Plain Layout
 Shaded background box, with inner minipage
@@ -1054,60 +1054,32 @@ red red red
  test 
 \color green
 bla
+\color inherit
+
 \color magenta
 blub
 \color inherit
  test 
-\color brown
-brown
-\color inherit
- test 
-\color darkgray
-darkgray
-\color inherit
- test 
-\color gray
-gray
-\color lightgray
-lightgray
-\color inherit
- test 
-\color lime
-lime
-\color inherit
- test 
-\color olive
-olive
-\color inherit
- test 
-\color orange
-orange
-\color pink
-pink
-\color inherit
- test 
-\color purple
-purple
-\color inherit
- test 
-\color teal
-teal
-\color inherit
- test 
-\color violet
-violet
-\color inherit
- test 
 \color green
 c
+\color inherit
+
 \color red
 o
+\color inherit
+
 \color blue
 l
+\color inherit
+
 \color green
 o
+\color inherit
+
 \color red
 r
+\color inherit
+
 \end_layout
 
 \begin_layout Subsection
@@ -1121,7 +1093,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 textcolor{darkgreen}
 \end_layout
@@ -1133,7 +1104,6 @@ textcolor{darkgreen}
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -1144,7 +1114,6 @@ dark green
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -1154,11 +1123,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 definecolor{violet}{rgb}{0.5, 0, 1}
@@ -1171,9 +1140,37 @@ definecolor{violet}{rgb}{0.5, 0, 1}
 
 \begin_layout Standard
 test 
-\color violet
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{violet}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
 violet
-\color inherit
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
  test
 \end_layout
 
@@ -1189,11 +1186,15 @@ Huge text
 
 \begin_layout Standard
 
+\size giant
+
 \size huge
 huge text
 \end_layout
 
 \begin_layout Standard
+
+\size huge
 
 \size largest
 LARGE text
@@ -1201,11 +1202,15 @@ LARGE text
 
 \begin_layout Standard
 
+\size largest
+
 \size larger
 Large text
 \end_layout
 
 \begin_layout Standard
+
+\size larger
 
 \size large
 large text
@@ -1213,11 +1218,15 @@ large text
 
 \begin_layout Standard
 
+\size large
+
 \size normal
 normalsize text
 \end_layout
 
 \begin_layout Standard
+
+\size normal
 
 \size small
 small text
@@ -1225,11 +1234,15 @@ small text
 
 \begin_layout Standard
 
+\size small
+
 \size footnotesize
 footnotesize text
 \end_layout
 
 \begin_layout Standard
+
+\size footnotesize
 
 \size scriptsize
 scriptsize text
@@ -1237,11 +1250,15 @@ scriptsize text
 
 \begin_layout Standard
 
+\size scriptsize
+
 \size tiny
 tiny text
 \end_layout
 
 \begin_layout Standard
+
+\size tiny
 
 \size giant
 Huge text 
@@ -1267,11 +1284,15 @@ tiny text
 
 \begin_layout Standard
 
+\size tiny
+
 \size normal
 Font size switches don't affect section headings!
 \end_layout
 
 \begin_layout Standard
+
+\size normal
 
 \size scriptsize
 bla blub
@@ -1301,6 +1322,8 @@ Font size dummy 2
 
 \size scriptsize
 bla blub 
+\size normal
+
 \end_layout
 
 \begin_layout Section
@@ -1313,6 +1336,8 @@ Strikeout, underlined etc.
 Emphasized: 
 \emph on
 test
+\emph default
+
 \end_layout
 
 \begin_layout Standard
@@ -1321,6 +1346,8 @@ test
 Underbar: 
 \bar under
 test
+\bar default
+
 \end_layout
 
 \begin_layout Standard
@@ -1329,6 +1356,8 @@ test
 Double underbar: 
 \uuline on
 test
+\uuline default
+
 \end_layout
 
 \begin_layout Standard
@@ -1337,6 +1366,8 @@ test
 Wavy underbar: 
 \uwave on
 test
+\uwave default
+
 \end_layout
 
 \begin_layout Standard
@@ -1345,6 +1376,8 @@ test
 Strike out: 
 \strikeout on
 test
+\strikeout default
+
 \end_layout
 
 \begin_layout Standard
@@ -1355,7 +1388,6 @@ Crossed out:
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 xout
@@ -1368,7 +1400,6 @@ xout
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -1379,7 +1410,6 @@ test
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -1394,6 +1424,8 @@ status collapsed
 Noun: 
 \noun on
 test
+\noun default
+
 \end_layout
 
 \begin_layout Standard
@@ -1401,9 +1433,17 @@ test
 \size normal
 Underbar, emphasized, strikeout: 
 \emph on
+
 \bar under
+
 \strikeout on
 test
+\strikeout default
+
+\bar default
+
+\emph default
+
 \end_layout
 
 \begin_layout Section
@@ -1420,27 +1460,21 @@ bla
 \paragraph_spacing single
 
 \size normal
-singlespace single singlespace single singlespace single singlespace single
- singlespace single singlespace single singlespace single singlespace single
- 
+singlespace single singlespace single singlespace single singlespace single singlespace single singlespace single singlespace single singlespace single 
 \end_layout
 
 \begin_layout Standard
 \paragraph_spacing onehalf
 
 \size normal
-onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace
- 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace
- 1
+onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1 onehalfspace 1
 \end_layout
 
 \begin_layout Standard
 \paragraph_spacing onehalf
 
 \size normal
-onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace
- 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace
- 2 
+onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 onehalfspace 2 
 \end_layout
 
 \begin_layout Standard
@@ -1453,9 +1487,7 @@ blub
 \paragraph_spacing onehalf
 
 \size normal
-onehalfspace single onehalfspace single onehalfspace single onehalfspace
- single onehalfspace single onehalfspace single onehalfspace single onehalfspace
- single 
+onehalfspace single onehalfspace single onehalfspace single onehalfspace single onehalfspace single onehalfspace single onehalfspace single onehalfspace single 
 \end_layout
 
 \begin_layout Standard
@@ -1468,18 +1500,14 @@ blablub
 \paragraph_spacing double
 
 \size normal
-doublespace single doublespace single doublespace single doublespace single
- doublespace single doublespace single doublespace single doublespace single
- 
+doublespace single doublespace single doublespace single doublespace single doublespace single doublespace single doublespace single doublespace single 
 \end_layout
 
 \begin_layout Standard
 \paragraph_spacing other 1.2
 
 \size normal
- 1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single
- 1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single
- 
+ 1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single 1.2 spacing single 
 \end_layout
 
 \begin_layout Section
@@ -1496,8 +1524,7 @@ bla
 \align center
 
 \size normal
-center single center single center single center single center single center
- single center single center single center single center single 
+center single center single center single center single center single center single center single center single center single center single 
 \end_layout
 
 \begin_layout Standard
@@ -1510,17 +1537,14 @@ blabla
 \align left
 
 \size normal
-flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1
- flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1
+flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1 flushleft 1
 \end_layout
 
 \begin_layout Standard
 \align left
 
 \size normal
-flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2
- flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2
- 
+flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 flushleft 2 
 \end_layout
 
 \begin_layout Standard
@@ -1533,8 +1557,7 @@ blub
 \align left
 
 \size normal
-flushleft single flushleft single flushleft single flushleft single flushleft
- single flushleft single flushleft single flushleft single 
+flushleft single flushleft single flushleft single flushleft single flushleft single flushleft single flushleft single flushleft single 
 \end_layout
 
 \begin_layout Standard
@@ -1547,9 +1570,7 @@ blablub
 \align right
 
 \size normal
-flushright single flushright single flushright single flushright single
- flushright single flushright single flushright single flushright single
- 
+flushright single flushright single flushright single flushright single flushright single flushright single flushright single flushright single 
 \end_layout
 
 \begin_layout Standard
@@ -1561,11 +1582,11 @@ bla
 \begin_layout Standard
 
 \size normal
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 centering
@@ -1573,8 +1594,7 @@ centering
 
 \end_inset
 
- centering single centering single centering single centering single centering
- single centering single centering single centering single
+ centering single centering single centering single centering single centering single centering single centering single centering single
 \end_layout
 
 \begin_layout Standard
@@ -1586,11 +1606,11 @@ blabla
 \begin_layout Standard
 
 \size normal
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 raggedright
@@ -1598,25 +1618,23 @@ raggedright
 
 \end_inset
 
- raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedrig
-ht 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1
+ raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1
 \end_layout
 
 \begin_layout Standard
 
 \size normal
-raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedrigh
-t 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2
+raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2 raggedright 2
 \end_layout
 
 \begin_layout Standard
 
 \size normal
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 raggedleft
@@ -1624,25 +1642,23 @@ raggedleft
 
 \end_inset
 
- raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft
- 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1
+ raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1
 \end_layout
 
 \begin_layout Standard
 
 \size normal
-raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft
- 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2
+raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2 raggedleft 2
 \end_layout
 
 \begin_layout Standard
 
 \size normal
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 %set back to justified
 \end_layout
 
@@ -1654,7 +1670,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 raggedright
 \end_layout
@@ -1666,7 +1681,6 @@ raggedright
 status collapsed
 
 \begin_layout Plain Layout
-
 {}
 \end_layout
 
@@ -1684,68 +1698,63 @@ Horizontal spaces
 \size normal
 Lines can have an hfill 
 \begin_inset space \hfill{}
+
 \end_inset
 
-in the middle.
- Lines can have an hfill 
+in the middle. Lines can have an hfill 
 \begin_inset space \hfill{}
 \end_inset
 
- in the middle.
- Lines can have a protected hfill 
+ in the middle. Lines can have a protected hfill 
 \begin_inset space \hspace*{\fill}
 \end_inset
 
- in the middle.
- Lines can have a dotted fill 
+ in the middle. Lines can have a dotted fill 
 \begin_inset space \dotfill{}
+
 \end_inset
 
-in the middle.
- Lines can have a rule fill 
+in the middle. Lines can have a rule fill 
 \begin_inset space \hrulefill{}
+
 \end_inset
 
-in the middle.
- Lines can have a left arrow fill 
+in the middle. Lines can have a left arrow fill 
 \begin_inset space \leftarrowfill{}
+
 \end_inset
 
-in the middle.
- Lines can have a right arrow fill 
+in the middle. Lines can have a right arrow fill 
 \begin_inset space \rightarrowfill{}
+
 \end_inset
 
-in the middle.
- Lines can have a upbrace fill 
+in the middle. Lines can have a upbrace fill 
 \begin_inset space \upbracefill{}
+
 \end_inset
 
-in the middle.
- Lines can have a downbrace fill 
+in the middle. Lines can have a downbrace fill 
 \begin_inset space \downbracefill{}
+
 \end_inset
 
-in the middle.
- Lines can have an absolute space 
+in the middle. Lines can have an absolute space 
 \begin_inset space \hspace{}
 \length 2cm
 \end_inset
 
- in the middle.
- Lines can have a relative space 
+ in the middle. Lines can have a relative space 
 \begin_inset space \hspace{}
 \length 12text%
 \end_inset
 
- in the middle.
- Lines can have a glue-length space 
+ in the middle. Lines can have a glue-length space 
 \begin_inset space \hspace{}
 \length 2cm+2mm-1mm
 \end_inset
 
- in the middle.
- Lines can have protected space 
+ in the middle. Lines can have protected space 
 \begin_inset space \hspace*{}
 \length 2cm
 \end_inset
@@ -1764,6 +1773,7 @@ We also handle defined spaces:
 \size normal
 Interword
 \begin_inset space \space{}
+
 \end_inset
 
 a
@@ -1774,6 +1784,7 @@ a
 \size normal
 Visible
 \begin_inset space \textvisiblespace{}
+
 \end_inset
 
 a
@@ -1784,6 +1795,7 @@ a
 \size normal
 Thin
 \begin_inset space \thinspace{}
+
 \end_inset
 
 a
@@ -1794,6 +1806,7 @@ a
 \size normal
 NegThin
 \begin_inset space \negthinspace{}
+
 \end_inset
 
 a
@@ -1804,6 +1817,7 @@ a
 \size normal
 NegMed
 \begin_inset space \negmedspace{}
+
 \end_inset
 
 a
@@ -1814,6 +1828,7 @@ a
 \size normal
 NegThick
 \begin_inset space \negthickspace{}
+
 \end_inset
 
 a
@@ -1824,6 +1839,7 @@ a
 \size normal
 enspace
 \begin_inset space \enspace{}
+
 \end_inset
 
 a
@@ -1834,6 +1850,7 @@ a
 \size normal
 enskip
 \begin_inset space \enskip{}
+
 \end_inset
 
 a
@@ -1844,6 +1861,7 @@ a
 \size normal
 quad
 \begin_inset space \quad{}
+
 \end_inset
 
 a
@@ -1854,6 +1872,7 @@ a
 \size normal
 qquad
 \begin_inset space \qquad{}
+
 \end_inset
 
 a
@@ -1888,6 +1907,7 @@ protected fill:
 \size normal
 2
 \begin_inset space \thinspace{}
+
 \end_inset
 
 cm: 
@@ -1902,6 +1922,7 @@ cm:
 \size normal
 protected 2
 \begin_inset space \thinspace{}
+
 \end_inset
 
 cm: 
@@ -1935,7 +1956,7 @@ enspace:
 
 \size normal
 thin: 
-\begin_inset Formula $a\,b$
+\begin_inset Formula $a\, b$
 \end_inset
 
 
@@ -1945,7 +1966,7 @@ thin:
 
 \size normal
 medium: 
-\begin_inset Formula $a\:b$
+\begin_inset Formula $a\: b$
 \end_inset
 
 
@@ -1955,7 +1976,7 @@ medium:
 
 \size normal
 thick: 
-\begin_inset Formula $a\;b$
+\begin_inset Formula $a\; b$
 \end_inset
 
 
@@ -2032,33 +2053,27 @@ Lines can have a vfill
 \begin_inset VSpace vfill
 \end_inset
 
-in the middle.
- Lines can have a vfill 
+in the middle. Lines can have a vfill 
 \begin_inset VSpace vfill
 \end_inset
 
- in the middle.
- Lines can have a protected vfill 
+ in the middle. Lines can have a protected vfill 
 \begin_inset VSpace vfill*
 \end_inset
 
- in the middle.
- Lines can have a vertical absolute space 
+ in the middle. Lines can have a vertical absolute space 
 \begin_inset VSpace 2cm
 \end_inset
 
- in the middle.
- Lines can have a vertical relative space 
+ in the middle. Lines can have a vertical relative space 
 \begin_inset VSpace 9col%
 \end_inset
 
- in the middle.
- Lines can have a vertical glue-length space 
-\begin_inset VSpace 2cm+1cc-2bp
+ in the middle. Lines can have a vertical glue-length space 
+\begin_inset VSpace 2cm-2bp+1cc
 \end_inset
 
- in the middle.
- Lines can have protected vertical space 
+ in the middle. Lines can have protected vertical space 
 \begin_inset VSpace 2cm*
 \end_inset
 

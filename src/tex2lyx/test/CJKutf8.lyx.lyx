@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 491
+#LyX file created by tex2lyx 2.2
+\lyxformat 490
 \begin_document
 \begin_header
 \origin roundtrip
@@ -11,6 +11,8 @@
 % It is impossible to get the document language because the document could start with a command,
 % whitespace, and English word or whatever and the rest is in Japanese. Checking for the first CJK
 % environment is no solution because the document could be English and contain only some Japanese.
+
+
 \end_preamble
 \options english
 \use_default_options false
@@ -80,14 +82,20 @@
 \begin_body
 
 \begin_layout Standard
+
+\lang chinese-traditional
 Japanese 
 \end_layout
 
 \begin_layout Standard
+
+\lang chinese-traditional
 Chinese traditional
 \end_layout
 
 \begin_layout Standard
+
+\lang chinese-traditional
  Japanese 
 \end_layout
 
@@ -96,15 +104,17 @@ hello
 \end_layout
 
 \begin_layout Standard
+
+\lang chinese-traditional
 Chinese simplified 
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 begin{CJK}{UTF8}{hei}
@@ -118,7 +128,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 end{CJK}
 \end_layout
@@ -129,10 +138,14 @@ end{CJK}
 \end_layout
 
 \begin_layout Standard
+
+\lang chinese-traditional
 Chinese simplified 
 \end_layout
 
 \begin_layout Standard
+
+\lang chinese-traditional
  Big5 文鼎楷書 
 \end_layout
 
@@ -143,6 +156,8 @@ English
 \end_layout
 
 \begin_layout Standard
+
+\lang chinese-traditional
  日本語の文章 
 \end_layout
 
@@ -151,6 +166,8 @@ hello
 \end_layout
 
 \begin_layout Standard
+
+\lang chinese-traditional
 Korean 
 \end_layout
 

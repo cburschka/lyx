@@ -1,10 +1,12 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 491
+#LyX file created by tex2lyx 2.2
+\lyxformat 490
 \begin_document
 \begin_header
 \origin roundtrip
 \textclass article
 \begin_preamble
+
+
 
 \end_preamble
 \options boxed
@@ -98,18 +100,20 @@ bla
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Float algorithm
 placement h
 wide false
 sideways false
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 SetAlgoLined
@@ -123,7 +127,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 KwData
 \end_layout
@@ -135,7 +138,6 @@ KwData
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -150,7 +152,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -161,7 +162,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 KwResult
@@ -174,7 +174,6 @@ KwResult
 status collapsed
 
 \begin_layout Plain Layout
-
 {
 \end_layout
 
@@ -185,7 +184,6 @@ Result
 status collapsed
 
 \begin_layout Plain Layout
-
 }
 \end_layout
 
@@ -196,7 +194,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 ;

@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 491
+#LyX file created by tex2lyx 2.2
+\lyxformat 490
 \begin_document
 \begin_header
 \origin roundtrip
@@ -36,6 +36,8 @@
    \providecommand{\og}{\leavevmode\flqq~}%
    \providecommand{\fg}{\ifdim\lastskip>\z@\unskip\fi~\frqq}%
 }
+
+
 \end_preamble
 \options dummyoption
 \use_default_options false
@@ -114,11 +116,11 @@ Title
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 % this should be recognized as empty date:
 \end_layout
 
@@ -128,23 +130,18 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-This document contains all sorts of layouts we are supposed to support,
- along with weird nestings.
+This document contains all sorts of layouts we are supposed to support, along with weird nestings.
 \end_layout
 
 \begin_layout Standard
-At time you will see that I use subsubsections in weird places.
- The intent is just to make sure that I can include a macro-type layout
- everyzhere it makes sense.
+At time you will see that I use subsubsections in weird places. The intent is just to make sure that I can include a macro-type layout everyzhere it makes sense.
 \end_layout
 
 \begin_layout Standard
 A normal paragraph 
-\begin_inset Formula 
-\begin{equation}
-x=\sin y
+\begin_inset Formula \begin{equation}
+x = \sin y
 \end{equation}
-
 \end_inset
 
 with maths inside it.
@@ -155,16 +152,15 @@ An environment...
 \end_layout
 
 \begin_layout Quote
-...
- with two paragraphs 
+... with two paragraphs 
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 begin{foo}
@@ -177,7 +173,6 @@ begin{foo}
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{foo}
@@ -193,10 +188,12 @@ A section
 \end_layout
 
 \begin_layout Section
+
 \begin_inset Argument 1
 status collapsed
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 Hello!
 \end_layout
 
@@ -207,10 +204,10 @@ A section with optional argument
 
 \begin_layout Standard
 This causes the 
-\begin_inset Flex Strong
+\begin_inset Flex Flex:Strong
 status collapsed
 
-\begin_layout Plain Layout
+\begin_layout Standard
 logikalmkup
 \end_layout
 
@@ -236,21 +233,26 @@ A starred section for floats
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
  
 \emph on
+
 \noun on
 is
-\emph default
 \noun default
+
+\emph default
  a caption
 \end_layout
 
@@ -265,19 +267,24 @@ is
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+
 \begin_inset Argument 1
 status collapsed
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 s
 \noun on
 ho
@@ -305,12 +312,15 @@ is
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Float table
 wide true
 sideways true
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -322,12 +332,12 @@ rotated table, spanning all columns
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 centering
@@ -340,23 +350,22 @@ centering
 status collapsed
 
 \begin_layout Plain Layout
-
 {}
 \end_layout
 
 \end_inset
 
 
-\begin_inset Tabular
+\begin_inset Tabular 
 <lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="bottom">
+<features rotate="0" tabularvalignment="bottom" tabularwidth="0pt">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 a 
 \end_layout
 
@@ -365,7 +374,7 @@ a
 <cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 b
 \end_layout
 
@@ -376,7 +385,7 @@ b
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 d 
 \end_layout
 
@@ -385,7 +394,7 @@ d
 <cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
-\begin_layout Plain Layout
+\begin_layout Standard
 c
 \end_layout
 
@@ -405,19 +414,22 @@ c
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Wrap figure
 lines 4
 placement L
 overhang 2ex
-width "50col%"
+width 50col%
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 \align center
 fdgsdfdh 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -436,33 +448,26 @@ test1
 
 \begin_layout Standard
 \SpecialChar LyX
- is a document preparation system.
- It excels at letting you create complex technical and scientific articles
- with mathematics, cross-references, bibliographies, indices, etc.
- It is very good at documents of any length in which the usual processing
- abilities are required: automatic sectioning and pagination, spell checking,
- and so forth.
- It can also be used to write a letter to your mom, though granted, there
- are probably simpler programs available for that.
- It is definitely not the best tool for creating banners, flyers, or advertiseme
-nts (we'll explain why later), though with some effort all these can be
- done, too.
+ is a document preparation system. It excels at letting you create complex technical and scientific articles with mathematics, cross-references, bibliographies, indices, etc. It is very good at documents of any length in which the usual processing abilities are required: automatic sectioning and pagination, spell checking, and so forth. It can also be used to write a letter to your mom, though granted, there are probably simpler programs available for that. It is definitely not the best tool for creating banners, flyers, or advertisements (we'll explain why later), though with some effort all these can be done, too.
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Wrap figure
 lines 0
 placement o
 overhang 0col%
-width "50col%"
+width 50col%
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 \align center
 fdgs 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -481,28 +486,21 @@ test2
 
 \begin_layout Standard
 \SpecialChar LyX
- is a document preparation system.
- It excels at letting you create complex technical and scientific articles
- with mathematics, cross-references, bibliographies, indices, etc.
- It is very good at documents of any length in which the usual processing
- abilities are required: automatic sectioning and pagination, spell checking,
- and so forth.
- It can also be used to write a letter to your mom, though granted, there
- are probably simpler programs available for that.
- It is definitely not the best tool for creating banners, flyers, or advertiseme
-nts (we'll explain why later), though with some effort all these can be
- done, too.
+ is a document preparation system. It excels at letting you create complex technical and scientific articles with mathematics, cross-references, bibliographies, indices, etc. It is very good at documents of any length in which the usual processing abilities are required: automatic sectioning and pagination, spell checking, and so forth. It can also be used to write a letter to your mom, though granted, there are probably simpler programs available for that. It is definitely not the best tool for creating banners, flyers, or advertisements (we'll explain why later), though with some effort all these can be done, too.
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Wrap table
 lines 0
 placement i
 overhang 5text%
-width "5ex"
+width 5ex
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -514,12 +512,12 @@ fdg
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 centering
@@ -532,7 +530,6 @@ centering
 status collapsed
 
 \begin_layout Plain Layout
-
 {}
 \end_layout
 
@@ -548,26 +545,19 @@ dfgd
 
 \begin_layout Standard
 \SpecialChar LyX
- is a document preparation system.
- It excels at letting you create complex technical and scientific articles
- with mathematics, cross-references, bibliographies, indices, etc.
- It is very good at documents of any length in which the usual processing
- abilities are required: automatic sectioning and pagination, spell checking,
- and so forth.
- It can also be used to write a letter to your mom, though granted, there
- are probably simpler programs available for that.
- It is definitely not the best tool for creating banners, flyers, or advertiseme
-nts (we'll explain why later), though with some effort all these can be
- done, too.
+ is a document preparation system. It excels at letting you create complex technical and scientific articles with mathematics, cross-references, bibliographies, indices, etc. It is very good at documents of any length in which the usual processing abilities are required: automatic sectioning and pagination, spell checking, and so forth. It can also be used to write a letter to your mom, though granted, there are probably simpler programs available for that. It is definitely not the best tool for creating banners, flyers, or advertisements (we'll explain why later), though with some effort all these can be done, too.
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Float table
 wide false
 sideways false
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -579,21 +569,24 @@ lkälöä
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Float table
 wide false
 sideways false
 status collapsed
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 klöä
 \end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
-\begin_layout Plain Layout
+\begin_layout Standard
 ölkälö
+
 \end_layout
 
 \end_inset
@@ -612,18 +605,22 @@ klöä
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
+
 \begin_inset Float figure
 wide false
 sideways false
 status collapsed
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 sub
 \color red
 fig
@@ -634,12 +631,8 @@ u%re 1
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
-\begin_layout Plain Layout
+\begin_layout Standard
 te%st
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -648,8 +641,15 @@ te%st
 
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \begin_inset space \hfill{}
+
 \end_inset
 
  
@@ -658,18 +658,15 @@ wide false
 sideways false
 status collapsed
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 subfigure 2ö
 \end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
+\begin_layout Standard
 
 
 \end_layout
@@ -679,13 +676,20 @@ subfigure 2ö
 
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \begin_inset Float figure
 wide false
 sideways false
 status collapsed
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 subfigure 3
 \end_layout
 
@@ -694,7 +698,8 @@ subfigure 3
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -706,7 +711,7 @@ figure caption
 
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 strange usage, but valid 
 \end_layout
 
@@ -724,7 +729,8 @@ A paragraph
 \begin_inset Foot
 status collapsed
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 hello
 \end_layout
 
@@ -734,11 +740,12 @@ hello
 \begin_inset Foot
 status collapsed
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 hello
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 there
 \end_layout
 
@@ -771,7 +778,9 @@ with a command inside it
 
 \end_deeper
 \begin_layout Standard
+
 \begin_inset Separator plain
+
 \end_inset
 
 
@@ -824,7 +833,9 @@ Item2
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Separator plain
+
 \end_inset
 
 
@@ -871,6 +882,7 @@ the second item
 \end_layout
 
 \begin_layout Itemize
+
 \begin_inset Argument item:1
 status open
 
@@ -902,11 +914,11 @@ BCD second one
 \end_layout
 
 \begin_layout Description
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 x y z
 \end_layout
 
@@ -916,16 +928,15 @@ x y z
 \end_layout
 
 \begin_layout Description
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 x y % bla
 \end_layout
 
 \begin_layout Plain Layout
-
 z
 \end_layout
 
@@ -942,27 +953,27 @@ labelings:
 \labelwidthstring 00.00.0000
 label
 \begin_inset space ~
+
 \end_inset
 
 1 first item 
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring 00.00.0000
 label
 \begin_inset space ~
+
 \end_inset
 
 2 second item 
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring 00.00.0000
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 $
 \backslash
 left[
@@ -1026,11 +1037,11 @@ end{raggedleft}
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 verb~
@@ -1046,7 +1057,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-
 \backslash
 verb+
 \backslash
@@ -1060,7 +1070,6 @@ item[ABC] first item+
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 verb+something
@@ -1078,24 +1087,26 @@ and bibliography:
 \end_layout
 
 \begin_layout Bibliography
+
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+label ""
 key "FOO"
 
 \end_inset
 
- Edward Bar.
- 
+ Edward Bar. 
 \emph on
 The Foo Book
 \emph default
-.
- (1999) 
+. (1999) 
 \end_layout
 
 \begin_layout Bibliography
+
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+label ""
 key "FO2"
 
 \end_inset
@@ -1104,19 +1115,17 @@ key "FO2"
 \emph on
 The Müller Book
 \emph default
-.
- (2004) 
+. (2004) 
 \end_layout
 
 \begin_layout Standard
 \start_of_appendix
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
-%dummy comment inserted by tex2lyx to ensure that this paragraph is not
- empty
+%dummy comment inserted by tex2lyx to ensure that this paragraph is not empty
 \end_layout
 
 \end_inset
@@ -1142,6 +1151,7 @@ some
 \emph on
 french
 \emph default
+
 \lang german
  back to english:
 \lang newzealand
@@ -1153,11 +1163,11 @@ nested
 \emph on
 german
 \emph default
+
 \lang french
  french
 \lang newzealand
- english stuff.
- Note that we both used 
+ english stuff. Note that we both used 
 \family typewriter
 french
 \family default
@@ -1165,8 +1175,7 @@ french
 \family typewriter
 francais
 \family default
- alias for the french text, but for some reason this does not work with
- the 
+ alias for the french text, but for some reason this does not work with the 
 \family typewriter
 newzealand
 \family default
@@ -1194,8 +1203,7 @@ blub
 \lang newzealand
 Test for missing 
 \backslash
-end_deeper (file format 278).
- This must stay at the very end of the document! 
+end_deeper (file format 278). This must stay at the very end of the document! 
 \end_layout
 
 \begin_layout Itemize

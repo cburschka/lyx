@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 491
+#LyX file created by tex2lyx 2.2
+\lyxformat 490
 \begin_document
 \begin_header
 \origin roundtrip
@@ -11,6 +11,8 @@
 % It is impossible to get the document language because the document could start with a command,
 % whitespace, and English word or whatever and the rest is in Japanese. Checking for the first CJK
 % environment is no solution because the document could be English and contain only some Japanese.
+
+
 \end_preamble
 \options english
 \use_default_options false
@@ -80,6 +82,8 @@
 \begin_body
 
 \begin_layout Standard
+
+\lang japanese-cjk
 Japanese 
 \end_layout
 
@@ -90,6 +94,8 @@ Chinese traditional
 \end_layout
 
 \begin_layout Standard
+
+\lang japanese-cjk
  Japanese 
 \end_layout
 
@@ -104,11 +110,11 @@ Chinese simplified
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 begin{CJK}{EUC-JP}{hei}
@@ -116,13 +122,13 @@ begin{CJK}{EUC-JP}{hei}
 
 \end_inset
 
- Japanese (this CJK environment will be put in ERT because LyX supports
- only one CJK font mapping per document, this environment uses the 
+ Japanese
+ (this CJK environment will be put in ERT because LyX supports only one CJK
+ font mapping per document, this environment uses the 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 
@@ -130,12 +136,12 @@ status collapsed
 
 \end_inset
 
-texttt{hei} mapping, and the first mapping is empty.
+texttt{hei} mapping,
+ and the first mapping is empty.
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{CJK}
@@ -153,11 +159,11 @@ Chinese simplified
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 % The following Bg5 encoded text cannot be processed as is by latex.
 \end_layout
 
@@ -168,7 +174,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 % It needs to be preprocessed by bg5conv or bg5latex needs to be used.
 \end_layout
 
@@ -179,7 +184,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 % See the documentation of CJK.sty for details.
 \end_layout
 
@@ -201,11 +205,11 @@ English
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 % The following SJIS encoded text cannot be processed as is by latex.
 \end_layout
 
@@ -216,7 +220,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 % It needs to be preprocessed by sjisconv or sjislatex needs to be used.
 \end_layout
 
@@ -227,7 +230,6 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 % See the documentation of CJK.sty for details.
 \end_layout
 
@@ -237,6 +239,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+
+\lang japanese-cjk
  Shift_JIS 日本語の文章 
 \end_layout
 
@@ -245,11 +249,11 @@ hello
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 begin{CJK}{JIS}{}
@@ -257,12 +261,12 @@ begin{CJK}{JIS}{}
 
 \end_inset
 
- JIS-code 
+
+ JIS-code 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 $
 \end_layout
 
@@ -273,7 +277,6 @@ BF|K
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 
@@ -286,18 +289,17 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
 $
 \end_layout
 
 \end_inset
 
-NJ8>O(B
+NJ8>O(B
+
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-
 
 \backslash
 end{CJK}
