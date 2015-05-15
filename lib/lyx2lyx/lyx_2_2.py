@@ -969,7 +969,7 @@ def convert_BoxFeatures(document):
 
 
 def revert_BoxFeatures(document):
-    " deletes new box features "
+    " outputs new box features as TeX code "
 
     i = 0
     defaultSep = "3pt"
