@@ -187,6 +187,8 @@ trivial_string<Char>::operator _stdstring() const
 }
 
 
+template char const * trivial_string<char>::c_str() const;
+template char_type const * trivial_string<char_type>::c_str() const;
 template<typename Char> Char const * trivial_string<Char>::c_str() const
 {
 	if (use_sso())
