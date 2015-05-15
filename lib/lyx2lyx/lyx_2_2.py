@@ -964,7 +964,7 @@ def convert_BoxFeatures(document):
         i = find_token(document.body, "height_special", i)
         if i == -1:
             return
-        document.body.insert(i + 1, 'thickness "0.4pt"\nseparation "3pt"\nshadowsize "4pt"\n')
+        document.body.insert(i + 1, 'thickness "0.4pt"\nseparation "3pt"\nshadowsize "4pt"')
         i = i + 1
 
 
