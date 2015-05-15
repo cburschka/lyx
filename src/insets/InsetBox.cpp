@@ -351,22 +351,19 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		if (!(separation_string.find(defaultSep) != string::npos)
 			&& (thickness_string.find(defaultThick) != string::npos))
 			os << "{\\fboxsep " << from_ascii(separation_string);
-		if (!width_string.empty()) {
-			if (!params_.inner_box) {
-				os << "\\framebox";
-				// Special widths, see usrguide sec. 3.5
-				// FIXME UNICODE
-				if (params_.special != "none") {
-					os << "[" << params_.width.value()
-					   << '\\' << from_utf8(params_.special)
-					   << ']';
-				} else
-					os << '[' << from_ascii(width_string)
-					   << ']';
-				if (params_.hor_pos != 'c')
-					os << "[" << params_.hor_pos << "]";
+		if (!params_.inner_box && !width_string.empty()) {
+			os << "\\framebox";
+			// Special widths, see usrguide sec. 3.5
+			// FIXME UNICODE
+			if (params_.special != "none") {
+				os << "[" << params_.width.value()
+				   << '\\' << from_utf8(params_.special)
+				   << ']';
 			} else
-				os << "\\fbox";
+				os << '[' << from_ascii(width_string)
+				   << ']';
+			if (params_.hor_pos != 'c')
+				os << "[" << params_.hor_pos << "]";
 		} else
 			os << "\\fbox";
 		os << "{";
