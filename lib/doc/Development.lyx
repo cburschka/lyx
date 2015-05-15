@@ -799,6 +799,17 @@ src/tex2lyx
  Once it is committed, it is quite difficult to verify whether it is correct.
 \end_layout
 
+\begin_layout Standard
+Please 
+\emph on
+do not
+\emph default
+ update the test references by opening them with LyX or directly running
+ lyx2lyx on them.
+ This would not work, since lyx2lyx and LyX produce slightly different files
+ regarding insignificant whitespace and line breaks.
+\end_layout
+
 \begin_layout Subsection
 Adding a new test
 \end_layout
