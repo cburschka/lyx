@@ -132,7 +132,7 @@ bool bruteFind(Cursor & cursor,
 	// Get an iterator after the last paragraph in the cache
 	DocIterator et(inset);
 	et.push_back(CursorSlice(inset));
-	et.pit() = boost::prior(cache.end())->first;
+	et.pit() = lyx::prev(cache.end(), 1)->first;
 	if (et.pit() >= et.lastpit())
 		et = doc_iterator_end(inset);
 	else

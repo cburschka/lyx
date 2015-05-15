@@ -19,10 +19,9 @@
 
 #include "insets/InsetText.h"
 
-#include "support/lassert.h"	
+#include "support/lassert.h"
+#include "support/lyxalgo.h"
 #include "support/qstring_helpers.h"
-
-#include <boost/next_prior.hpp>
 
 using namespace std;
 using namespace lyx::support;
@@ -420,8 +419,8 @@ static void getParagraphList(DocRange const & range,
 	pit_type startpit = range.from.pit();
 	pit_type endpit = range.to.pit();
 	ParagraphList const & ps_ = range.text()->paragraphs();
-	ParagraphList tmp_pars(boost::next(ps_.begin(), startpit),
-		boost::next(ps_.begin(), endpit + 1));
+	ParagraphList tmp_pars(lyx::next(ps_.begin(), startpit),
+	                       lyx::next(ps_.begin(), endpit + 1));
 
 	// Remove the end of the last paragraph; afterwards, remove the
 	// beginning of the first paragraph. Keep this order - there may only

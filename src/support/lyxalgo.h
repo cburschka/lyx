@@ -83,6 +83,32 @@ void eliminate_duplicates(C & c)
 	c.erase(std::unique(c.begin(), c.end()), c.end());
 }
 
+
+#if __cplusplus >= 201103L
+using std::next;
+#else
+/// Replacement of std::next for older compilers
+template <typename It, typename Diff>
+inline It next(It i, Diff n = 1)
+{
+	std::advance(i, n);
+	return i;
+}
+#endif
+
+
+#if __cplusplus >= 201103L
+using std::prev;
+#else
+/// Replacement of std::prev for older compilers
+template <typename It, typename Diff>
+inline It prev(It i, Diff n = 1)
+{
+	std::advance(i, -n);
+	return i;
+}
+#endif
+
 } // namespace lyx
 
 #endif // LYX_ALGO_H
