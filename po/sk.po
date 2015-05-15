@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-14 22:21-0400\n"
-"PO-Revision-Date: 2015-05-09 16:43+0000\n"
+"POT-Creation-Date: 2015-05-15 09:18+0200\n"
+"PO-Revision-Date: 2015-05-15 07:28+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -2868,7 +2868,7 @@ msgid ""
 "disabled at application level (see Preference dialog)."
 msgstr ""
 "Umožniť náhľad tohoto materiálu len v prípade že náhľad obrázkov je v "
-"Nastaveniach povolený."
+"Nastaveniach povolený (viď dialóg Preferencie)."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:194
 msgid "&Show in LyX"
@@ -16603,7 +16603,7 @@ msgstr "Beamer Prezentácie"
 
 #: lib/ui/stdmenus.inc:604
 msgid "Braille|a"
-msgstr "Braille|B"
+msgstr "Braille|a"
 
 #: lib/ui/stdmenus.inc:605
 msgid "Feynman-diagram|F"
@@ -16627,12 +16627,11 @@ msgstr "Viac-Jazykové popisy|J"
 
 #: lib/ui/stdmenus.inc:610
 msgid "PDF comments|D"
-msgstr "PDF komentáre"
+msgstr "PDF komentáre|D"
 
 #: lib/ui/stdmenus.inc:611
-#, fuzzy
 msgid "PDF forms|o"
-msgstr "PDF form"
+msgstr "PDF forms|o"
 
 #: lib/ui/stdmenus.inc:612
 msgid "Risk and Safety Statements|R"
