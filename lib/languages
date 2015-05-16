@@ -503,7 +503,8 @@ End
 
 # In Babel, this is supported since release 2.7 of babel-german (Dec 2013)
 # We introduce it with LyX 2.2 to give the support time to settle.
-# Polyglossia does not yet support Swiss German. We use ngerman for now.
+# In polyglossia, this is supported since release 1.33.6 (May 2015)
+# We use german until TL 2015 is out, though.
 Language german-ch
 	GuiName          "German (Switzerland)"
 	BabelName        nswissgerman
@@ -516,7 +517,8 @@ Language german-ch
 End
 
 # In Babel, this is supported since release 2.7 of babel-german (Dec 2013)
-# Polyglossia does not yet support Swiss German. We use german for now.
+# In polyglossia, this is supported since release 1.33.6 (May 2015)
+# We use ngerman until TL 2015 is out, though.
 Language german-ch-old
 	GuiName          "German (Switzerland, old spelling)"
  	BabelName        swissgerman
