@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-15 09:18+0200\n"
-"PO-Revision-Date: 2015-05-15 07:28+0000\n"
+"POT-Creation-Date: 2015-05-16 17:49+0200\n"
+"PO-Revision-Date: 2015-05-16 15:51+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -3351,8 +3351,19 @@ msgid "&minutes"
 msgstr "minút"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
-msgid "&Save documents compressed by default"
-msgstr "Štandardne &ukladať dokumenty komprimované"
+msgid ""
+"If this is checked, new documents will be saved in a compressed binary-"
+"format by default.\n"
+"Existing documents will still be saved in their current state (compressed or "
+"uncompressed)."
+msgstr ""
+"Keď zaškrtnuté, nové dokumenty sa štandardne budú ukladať komprimované.\n"
+"Ukladanie existujúcich dokumentov zostáva v ich aktuánom stave (komprimované "
+"či nekomprimované)."
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
+msgid "&Save new documents compressed by default"
+msgstr "Štandardne &ukladať nové dokumenty komprimované"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
 msgid "Windows && work area"
@@ -23335,7 +23346,7 @@ msgstr "zelenomodrá"
 
 #: src/Color.cpp:210
 msgid "magenta"
-msgstr "fialová"
+msgstr "purpurová"
 
 #: src/Color.cpp:211
 msgid "yellow"
@@ -26077,7 +26088,7 @@ msgstr "Zelenomodrá"
 
 #: src/frontends/qt4/GuiCharacter.cpp:99
 msgid "Magenta"
-msgstr "Fialová"
+msgstr "Purpurová"
 
 #: src/frontends/qt4/GuiCharacter.cpp:100
 msgid "Yellow"
@@ -33108,3 +33119,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "&Master's perspective"
 #~ msgstr "Perspektíva &hlavného dokumentu"
+
+#~ msgid "&Save documents compressed by default"
+#~ msgstr "Štandardne &ukladať dokumenty komprimované"
