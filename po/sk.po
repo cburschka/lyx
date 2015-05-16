@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-16 09:30+0200\n"
-"PO-Revision-Date: 2015-05-16 08:24+0000\n"
+"POT-Creation-Date: 2015-05-16 15:45+0200\n"
+"PO-Revision-Date: 2015-05-16 14:11+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -307,8 +307,8 @@ msgid "&Delete"
 msgstr "Z&mazať"
 
 #: src/frontends/qt4/ui/BoxUi.ui:23
-msgid "Type and size"
-msgstr "Typ a veľkosť"
+msgid "Type and Size"
+msgstr "Typ a Veľkosť"
 
 #: src/frontends/qt4/ui/BoxUi.ui:29
 msgid "Check this if the box should break across pages"
@@ -427,21 +427,25 @@ msgstr "Typ vnútorného rámiku"
 msgid "&Decoration:"
 msgstr "&Dekorácia:"
 
+#: src/frontends/qt4/ui/BoxUi.ui:368
+msgid "&Shadow size:"
+msgstr "Veľkosť &tieňu:"
+
 #: src/frontends/qt4/ui/BoxUi.ui:325
 msgid "Thickness value"
 msgstr "Hodnota hrúbky"
 
-#: src/frontends/qt4/ui/BoxUi.ui:332
-msgid "Shadow size:"
-msgstr "Veľkosť tieňu:"
-
-#: src/frontends/qt4/ui/BoxUi.ui:346
-msgid "Box separation:"
-msgstr "Oddeľovač Rámikov:"
+#: src/frontends/qt4/ui/BoxUi.ui:325
+msgid "&Line thickness:"
+msgstr "&Hrúbka hrán:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:356
 msgid "Separation value"
 msgstr "Hodnota rozchodu"
+
+#: src/frontends/qt4/ui/BoxUi.ui:345
+msgid "Box s&eparation:"
+msgstr "&Oddeľovač rámikov:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:380
 msgid "Size value"
@@ -2575,10 +2579,6 @@ msgstr "&Horizontálne:"
 msgid "Decoration"
 msgstr "Dekorácia"
 
-#: src/frontends/qt4/ui/BoxUi.ui:295
-msgid "Line thickness:"
-msgstr "Hrúbka hrán:"
-
 #: src/frontends/qt4/ui/BoxUi.ui:302
 msgid "Decoration box types"
 msgstr "Dekoračné typy rámikov"
@@ -3258,8 +3258,19 @@ msgid "&minutes"
 msgstr "minút"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
-msgid "&Save documents compressed by default"
-msgstr "Štandardne &ukladať dokumenty komprimované"
+msgid ""
+"If this is checked, new documents will be saved in a compressed binary-"
+"format by default.\n"
+"Existing documents will still be saved in their current state (compressed or "
+"uncompressed)."
+msgstr ""
+"Keď zaškrtnuté, nové dokumenty sa štandardne budú ukladať komprimované.\n"
+"Ukladanie existujúcich dokumentov zostáva v ich aktuánom stave (komprimované "
+"či nekomprimované)."
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
+msgid "&Save new documents compressed by default"
+msgstr "Štandardne &ukladať nové dokumenty komprimované"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
 msgid "Windows && Work Area"
@@ -26604,13 +26615,13 @@ msgstr "Aktivovaná"
 msgid "Color"
 msgstr "Farba"
 
-#: src/frontends/qt4/ui/BoxUi.ui:425
-msgid "Background:"
-msgstr "Pozadie:"
+#: src/frontends/qt4/ui/BoxUi.ui:434
+msgid "Back&ground:"
+msgstr "&Pozadie:"
 
-#: src/frontends/qt4/ui/BoxUi.ui:432
-msgid "Frame:"
-msgstr "Rám:"
+#: src/frontends/qt4/ui/BoxUi.ui:444
+msgid "&Frame:"
+msgstr "&Rám:"
 
 #: src/frontends/qt4/GuiBranches.cpp:56
 msgid "Filename Suffix"
@@ -33788,3 +33799,24 @@ msgstr "Neznámy používateľ"
 #~ "súborom, a nie je ani v systémovom ani v užívateľskom adresáre.\n"
 #~ "Váš dokument môže mať problémy kým súbor schémy\n"
 #~ "nedržíte v adresáre dokumentu."
+
+#~ msgid "Shadow size:"
+#~ msgstr "Veľkosť tieňu:"
+
+#~ msgid "Box separation:"
+#~ msgstr "Oddeľovač Rámikov:"
+
+#~ msgid "Line thickness:"
+#~ msgstr "Hrúbka hrán:"
+
+#~ msgid "Background:"
+#~ msgstr "Pozadie:"
+
+#~ msgid "Frame:"
+#~ msgstr "Rám:"
+
+#~ msgid "Type and size"
+#~ msgstr "Typ a veľkosť"
+
+#~ msgid "&Save documents compressed by default"
+#~ msgstr "Štandardne &ukladať dokumenty komprimované"
