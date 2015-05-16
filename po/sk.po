@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-14 21:04+0200\n"
-"PO-Revision-Date: 2015-05-14 19:16+0000\n"
+"POT-Creation-Date: 2015-05-16 09:30+0200\n"
+"PO-Revision-Date: 2015-05-16 08:24+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -23907,21 +23907,65 @@ msgstr "biela"
 msgid "red"
 msgstr "červená"
 
+#: src/Color.cpp:220 src/frontends/qt4/GuiBox.cpp:100
+msgid "teal"
+msgstr "smaragdovozelená"
+
+#: src/Color.cpp:221 src/frontends/qt4/GuiBox.cpp:101
+msgid "violet"
+msgstr "fialová"
+
 #: src/Color.cpp:207
 msgid "green"
 msgstr "zelená"
+
+#: src/Color.cpp:212 src/frontends/qt4/GuiBox.cpp:92
+msgid "lightgray"
+msgstr "svetlošedá"
+
+#: src/Color.cpp:213 src/frontends/qt4/GuiBox.cpp:93
+msgid "lime"
+msgstr "svetlozelená"
 
 #: src/Color.cpp:208
 msgid "blue"
 msgstr "modrá"
 
+#: src/Color.cpp:207 src/frontends/qt4/GuiBox.cpp:87
+msgid "brown"
+msgstr "hnedá"
+
 #: src/Color.cpp:209
 msgid "cyan"
 msgstr "zelenomodrá"
 
-#: src/Color.cpp:210
+#: src/Color.cpp:209 src/frontends/qt4/GuiBox.cpp:89
+msgid "darkgray"
+msgstr "tmavošedá"
+
+#: src/Color.cpp:210 src/frontends/qt4/GuiBox.cpp:90
+msgid "gray"
+msgstr "šedá"
+
+#: src/Color.cpp:214 src/frontends/qt4/GuiBox.cpp:94
 msgid "magenta"
-msgstr "fialová"
+msgstr "purpurová"
+
+#: src/Color.cpp:215 src/frontends/qt4/GuiBox.cpp:95
+msgid "olive"
+msgstr "olivová"
+
+#: src/Color.cpp:216 src/frontends/qt4/GuiBox.cpp:96
+msgid "orange"
+msgstr "oranžová"
+
+#: src/Color.cpp:217 src/frontends/qt4/GuiBox.cpp:97
+msgid "pink"
+msgstr "ružová"
+
+#: src/Color.cpp:218 src/frontends/qt4/GuiBox.cpp:98
+msgid "purple"
+msgstr "nachová"
 
 #: src/Color.cpp:211
 msgid "yellow"
@@ -26560,6 +26604,14 @@ msgstr "Aktivovaná"
 msgid "Color"
 msgstr "Farba"
 
+#: src/frontends/qt4/ui/BoxUi.ui:425
+msgid "Background:"
+msgstr "Pozadie:"
+
+#: src/frontends/qt4/ui/BoxUi.ui:432
+msgid "Frame:"
+msgstr "Rám:"
+
 #: src/frontends/qt4/GuiBranches.cpp:56
 msgid "Filename Suffix"
 msgstr "Sufix Súboru"
@@ -26678,21 +26730,65 @@ msgstr "Biela"
 msgid "Red"
 msgstr "Červená"
 
+#: src/frontends/qt4/GuiCharacter.cpp:111
+msgid "Teal"
+msgstr "Smaragdovozelená"
+
+#: src/frontends/qt4/GuiCharacter.cpp:112
+msgid "Violet"
+msgstr "Fialová"
+
 #: src/frontends/qt4/GuiCharacter.cpp:96
 msgid "Green"
 msgstr "Zelená"
+
+#: src/frontends/qt4/GuiCharacter.cpp:103
+msgid "Lightgray"
+msgstr "Svetlošedá"
+
+#: src/frontends/qt4/GuiCharacter.cpp:104
+msgid "Lime"
+msgstr "Svetlozelená"
 
 #: src/frontends/qt4/GuiCharacter.cpp:97
 msgid "Blue"
 msgstr "Modrá"
 
 #: src/frontends/qt4/GuiCharacter.cpp:98
+msgid "Brown"
+msgstr "Hnedá"
+
+#: src/frontends/qt4/GuiCharacter.cpp:98
 msgid "Cyan"
 msgstr "Zelenomodrá"
 
-#: src/frontends/qt4/GuiCharacter.cpp:99
+#: src/frontends/qt4/GuiCharacter.cpp:100
+msgid "Darkgray"
+msgstr "Tmavošedá"
+
+#: src/frontends/qt4/GuiCharacter.cpp:101
+msgid "Gray"
+msgstr "Šedá"
+
+#: src/frontends/qt4/GuiCharacter.cpp:105
 msgid "Magenta"
-msgstr "Fialová"
+msgstr "Purpurová"
+
+#: src/frontends/qt4/GuiCharacter.cpp:106
+msgid "Olive"
+msgstr "Olivová"
+
+#: src/frontends/qt4/GuiCharacter.cpp:107
+msgid "Orange"
+msgstr "Oranžová"
+
+#: src/frontends/qt4/GuiCharacter.cpp:108
+msgid "Pink"
+msgstr "Ružová"
+
+#: src/frontends/qt4/GuiCharacter.cpp:109
+msgid "Purple"
+msgstr "Nachová"
 
 #: src/frontends/qt4/GuiCharacter.cpp:100
 msgid "Yellow"
