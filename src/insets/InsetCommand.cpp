@@ -244,7 +244,7 @@ bool InsetCommand::string2params(string const & data,
 	lex.setContext("InsetCommand::string2params");
 	lex >> name.c_str(); // check for name
 	lex >> "CommandInset";
-	params.read(lex);
+	params.read(lex, 0);
 	return true;
 }
 

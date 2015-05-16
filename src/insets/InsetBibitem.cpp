@@ -195,7 +195,7 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 void InsetBibitem::read(Lexer & lex)
 {
-	InsetCommand::read(lex);
+	InsetCommand::read(lex, &buffer());
 
 	if (prefixIs(getParam("key"), key_prefix)) {
 		int const key = convert<int>(getParam("key").substr(key_prefix.length()));

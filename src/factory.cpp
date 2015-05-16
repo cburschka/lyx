@@ -538,7 +538,7 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 		//Worst case, we could put it in each case below. Better, we could
 		//pass the lexer to the constructor and let the params be built there.
 		InsetCommandParams inscmd(code);
-		inscmd.read(lex);
+		inscmd.read(lex, buf);
 
 		switch (code) {
 			case BIBITEM_CODE:

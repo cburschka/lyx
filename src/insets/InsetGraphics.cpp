@@ -293,7 +293,7 @@ void InsetGraphics::read(Lexer & lex)
 {
 	lex.setContext("InsetGraphics::read");
 	//lex >> "Graphics";
-	readInsetGraphics(lex, buffer().filePath(), params_);
+	readInsetGraphics(lex, buffer().originFilePath(), params_);
 	graphic_->update(params().as_grfxParams());
 }
 

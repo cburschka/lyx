@@ -403,6 +403,13 @@ public:
 	/// It is always an absolute path.
 	std::string filePath() const;
 
+	/** Returns the path where the document was last saved.
+	 *  It may be different from filePath() if the document was later
+	 *  manually moved to a different location.
+	 *  It is always an absolute path.
+	 */
+	std::string originFilePath() const;
+
 	/** Returns the path where a local layout file lives.
 	 *  An empty string is returned for standard system and user layouts.
 	 *  If possible, it is always relative to the buffer path.
@@ -731,6 +738,9 @@ public:
 	/// In all other cases, this is a no-op and name is returned unchanged.
 	/// If a non-empty ext is given, the existence of name.ext is checked
 	/// but the returned path will not contain this extension.
+	/// Similarly, when loading a document that was moved from the location
+	/// where it was saved, return the correct path relative to the new
+	/// location.
 	std::string includedFilePath(std::string const & name,
 				std::string const & ext = empty_string()) const;
 

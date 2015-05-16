@@ -114,7 +114,7 @@ public:
 	///
 	InsetCode code() const { return insetCode_; }
 	///
-	void read(Lexer &);
+	void read(Lexer &, Buffer const *);
 	/// Parse the command
 	///
 	void write(std::ostream &) const;

@@ -249,7 +249,8 @@ public:
 	/// map from children inclusion positions to their scope and their buffer
 	PositionScopeBufferMap position_to_children;
 
-	/// Keeps track of old buffer filePath() for save-as operations
+	/// Contains the old buffer filePath() while saving-as, or the
+	/// directory where the document was last saved while loading.
 	string old_position;
 
 	/** Keeps track of the path of local layout files.
@@ -1030,7 +1031,9 @@ bool Buffer::readDocument(Lexer & lex)
 	params().indiceslist().addDefault(B_("Index"));
 
 	// read main text
+	d->old_position = originFilePath();
 	bool const res = text().read(lex, errorList, d->inset);
+	d->old_position.clear();
 
 	// inform parent buffer about local macros
 	if (parent()) {
@@ -3024,6 +3027,15 @@ string Buffer::filePath() const
 	int last = abs.length() - 1;
 
 	return abs[last] == '/' ? abs : abs + '/';
+}
+
+
+string Buffer::originFilePath() const
+{
+	if (FileName::isAbsolute(params().origin))
+		return params().origin;
+
+	return filePath();
 }
 
 

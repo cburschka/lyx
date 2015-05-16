@@ -275,7 +275,7 @@ void InsetCommandParams::setCmdName(string const & name)
 }
 
 
-void InsetCommandParams::read(Lexer & lex)
+void InsetCommandParams::read(Lexer & lex, Buffer const * buffer)
 {
 	lex.setContext("InsetCommandParams::read");
 	lex >> insetName(insetCode_).c_str();
@@ -302,7 +302,25 @@ void InsetCommandParams::read(Lexer & lex)
 		}
 		if (info_.hasParam(token)) {
 			lex.next(true);
-			params_[token] = lex.getDocString();
+			docstring data = lex.getDocString();
+			if (buffer && token == "filename") {
+				data = from_utf8(buffer->includedFilePath(to_utf8(data)));
+			} else if (buffer && token == "bibfiles") {
+				int i = 0;
+				docstring newdata;
+				docstring bib = support::token(data, ',', i);
+				while (!bib.empty()) {
+					bib = from_utf8(buffer->includedFilePath(to_utf8(bib), "bib"));
+					if (!newdata.empty())
+						newdata.append(1, ',');
+					newdata.append(bib);
+					bib = support::token(data, ',', ++i);
+				}
+				data = newdata;
+			} else if (buffer && token == "options") {
+				data = from_utf8(buffer->includedFilePath(to_utf8(data), "bst"));
+			}
+			params_[token] = data;
 		} else {
 			lex.printError("Unknown parameter name `$$Token' for command " + cmdName_);
 			throw ExceptionMessage(WarningException,
@@ -353,6 +371,8 @@ void InsetCommandParams::Write(ostream & os, Buffer const * buffer) const
 					bib = token(data, ',', ++i);
 				}
 				data = newdata;
+			} else if (buffer && name == "options") {
+				data = buffer->includedFilePath(data, "bst");
 			}
 			os << name << ' '
 			   << Lexer::quoteString(data)

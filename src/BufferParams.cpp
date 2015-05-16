@@ -682,6 +682,19 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\master") {
 		lex.eatLine();
 		master = lex.getString();
+		if (!filepath.empty() && FileName::isAbsolute(origin)) {
+			bool const isabs = FileName::isAbsolute(master);
+			FileName const abspath(isabs ? master : origin + master);
+			bool const moved = filepath != FileName(origin);
+			if (moved && abspath.exists()) {
+				docstring const path = isabs
+					? from_utf8(master)
+					: from_utf8(abspath.realPath());
+				docstring const refpath =
+					from_utf8(filepath.absFileName());
+				master = to_utf8(makeRelPath(path, refpath));
+			}
+		}
 	} else if (token == "\\suppress_date") {
 		lex >> suppress_date;
 	} else if (token == "\\justification") {
