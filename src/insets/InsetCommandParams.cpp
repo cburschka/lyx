@@ -353,6 +353,8 @@ void InsetCommandParams::Write(ostream & os, Buffer const * buffer) const
 					bib = token(data, ',', ++i);
 				}
 				data = newdata;
+			} else if (buffer && name == "options") {
+				data = buffer->includedFilePath(data, "bst");
 			}
 			os << name << ' '
 			   << Lexer::quoteString(data)
