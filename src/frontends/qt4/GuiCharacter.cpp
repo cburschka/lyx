@@ -94,7 +94,6 @@ static QList<ColorPair> colorData()
 	colors << ColorPair(qt_("No change"), Color_ignore);
 	colors << ColorPair(qt_("No color"), Color_none);
 	colors << ColorPair(qt_("Black"), Color_black);
-	colors << ColorPair(qt_("White"), Color_white);
 	colors << ColorPair(qt_("Blue"), Color_blue);
 	colors << ColorPair(qt_("Brown"), Color_brown);
 	colors << ColorPair(qt_("Cyan"), Color_cyan);
@@ -111,6 +110,7 @@ static QList<ColorPair> colorData()
 	colors << ColorPair(qt_("Red"), Color_red);
 	colors << ColorPair(qt_("Teal"), Color_teal);
 	colors << ColorPair(qt_("Violet"), Color_violet);
+	colors << ColorPair(qt_("White"), Color_white);
 	colors << ColorPair(qt_("Yellow"), Color_yellow);
 	colors << ColorPair(qt_("Reset"), Color_inherit);
 	return colors;
