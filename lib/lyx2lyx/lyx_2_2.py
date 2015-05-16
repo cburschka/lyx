@@ -1085,7 +1085,7 @@ def convert_colorbox(document):
         i = find_token(document.body, "height_special", i)
         if i == -1:
             return
-        document.body.insert(i + 2, 'framecolor "black"\nbackgroundcolor "white"')
+        document.body.insert(i + 2, 'framecolor "black"\nbackgroundcolor "none"')
         i = i + 2
 
 
