@@ -77,57 +77,30 @@ static QStringList boxGuiSpecialLengthNames()
 }
 
 
-static QList<ColorPair> colorData()
+static QList<ColorCode> colors()
 {
-	QList<ColorPair> colors;
-	colors << ColorPair(qt_("none"), Color_none);
-	colors << ColorPair(qt_("black"), Color_black);
-	colors << ColorPair(qt_("white"), Color_white);
-	colors << ColorPair(qt_("blue"), Color_blue);
-	colors << ColorPair(qt_("brown"), Color_brown);
-	colors << ColorPair(qt_("cyan"), Color_cyan);
-	colors << ColorPair(qt_("darkgray"), Color_darkgray);
-	colors << ColorPair(qt_("gray"), Color_gray);
-	colors << ColorPair(qt_("green"), Color_green);
-	colors << ColorPair(qt_("lightgray"), Color_lightgray);
-	colors << ColorPair(qt_("lime"), Color_lime);
-	colors << ColorPair(qt_("magenta"), Color_magenta);
-	colors << ColorPair(qt_("olive"), Color_olive);
-	colors << ColorPair(qt_("orange"), Color_orange);
-	colors << ColorPair(qt_("pink"), Color_pink);
-	colors << ColorPair(qt_("purple"), Color_purple);
-	colors << ColorPair(qt_("red"), Color_red);
-	colors << ColorPair(qt_("teal"), Color_teal);
-	colors << ColorPair(qt_("violet"), Color_violet);
-	colors << ColorPair(qt_("yellow"), Color_yellow);
+	QList<ColorCode> colors;
+	colors << Color_none;
+	colors << Color_black;
+	colors << Color_white;
+	colors << Color_blue;
+	colors << Color_brown;
+	colors << Color_cyan;
+	colors << Color_darkgray;
+	colors << Color_gray;
+	colors << Color_green;
+	colors << Color_lightgray;
+	colors << Color_lime;
+	colors << Color_magenta;
+	colors << Color_olive;
+	colors << Color_orange;
+	colors << Color_pink;
+	colors << Color_purple;
+	colors << Color_red;
+	colors << Color_teal;
+	colors << Color_violet;
+	colors << Color_yellow;
 	return colors;
-}
-
-
-template<typename T>
-void fillComboColor(QComboBox * combo, QList<T> const & list, bool const is_none)
-{
-	QPixmap coloritem(32, 32);
-	QColor color;
-	// frameColorCO cannot be uncolored
-	if (is_none)
-		combo->addItem(qt_("none"));
-	typename QList<T>::const_iterator cit = list.begin() + 1;
-	for (; cit != list.end(); ++cit) {
-		color = QColor(guiApp->colorCache().get(cit->second, false));
-		coloritem.fill(color);
-		combo->addItem(QIcon(coloritem), cit->first);
-	}
-}
-
-
-template<class P>
-static int findPos2nd(QList<P> const & vec, QString val)
-{
-	for (int i = 0; i != vec.size(); ++i)
-		if (vec[i].first == val)
-			return i;
-	return 0;
 }
 
 
@@ -182,13 +155,31 @@ GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 	addCheckedWidget(separationED, separationLA);
 	addCheckedWidget(shadowsizeED, shadowsizeLA);
 
-	// initialize colors
-	color = colorData();
 	// the background can be uncolored while the frame cannot
-	fillComboColor(frameColorCO, color, false);
-	fillComboColor(backgroundColorCO, color, true);
+	color_codes_ = colors();
+	fillComboColor(frameColorCO, false);
+	fillComboColor(backgroundColorCO, true);
 
 	initDialog();
+}
+
+
+void GuiBox::fillComboColor(QComboBox * combo, bool const is_none)
+{
+	QPixmap coloritem(32, 32);
+	QColor color;
+	// frameColorCO cannot be uncolored
+	if (is_none)
+		combo->addItem(toqstr(translateIfPossible(lcolor.getGUIName(Color_none))),
+			       toqstr(lcolor.getLaTeXName(Color_none)));
+	typename QList<ColorCode>::const_iterator cit = color_codes_.begin() + 1;
+	for (; cit != color_codes_.end(); ++cit) {
+		QString const latexname = toqstr(lcolor.getLaTeXName(*cit));
+		QString const guiname = toqstr(translateIfPossible(lcolor.getGUIName(*cit)));
+		color = QColor(guiApp->colorCache().get(*cit, false));
+		coloritem.fill(color);
+		combo->addItem(QIcon(coloritem), guiname, latexname);
+	}
 }
 
 
@@ -231,25 +222,29 @@ void GuiBox::on_typeCO_activated(int index)
 	}
 	// assure that the frame color is black for frameless boxes to
 	// provide the color "none"
-	if (frameless && frameColorCO->currentIndex() != 0)
-		frameColorCO->setCurrentIndex(0);
+	int const b = frameColorCO->findData("black");
+	if (frameless && frameColorCO->currentIndex() != b)
+		frameColorCO->setCurrentIndex(b);
 	changed();
 }
 
 
-void GuiBox::on_frameColorCO_currentIndexChanged(int /* index */)
+void GuiBox::on_frameColorCO_currentIndexChanged(int index)
 {
-	// if there is a non-black frame color the background canot be uncolored
+	// if there is a non-black frame color the background cannot be uncolored
 	// therefore remove the entry "none" in this case
-	if (frameColorCO->currentIndex() != 0) {
-		if (backgroundColorCO->count() == color.count()) {
-			if (backgroundColorCO->currentIndex() == 0)
-				backgroundColorCO->setCurrentIndex(findPos2nd(color, qt_("white")));
-			backgroundColorCO->removeItem(0);
+	if (index != frameColorCO->findData("black")) {
+		int const n = backgroundColorCO->findData("none");
+		if (n != -1) {
+			if (backgroundColorCO->currentIndex() == n)
+				backgroundColorCO->setCurrentIndex(
+					    backgroundColorCO->findData("white"));
+			backgroundColorCO->removeItem(n);
 		}
 	} else {
-		if (backgroundColorCO->count() == color.count() - 1)
-			backgroundColorCO->insertItem(0, qt_("none"));
+		if (backgroundColorCO->findData("none") == -1)
+			backgroundColorCO->insertItem(0, toqstr(translateIfPossible((lcolor.getGUIName(Color_none)))),
+						      toqstr(lcolor.getLaTeXName(Color_none)));
 	}
 	changed();
 }
@@ -407,12 +402,9 @@ void GuiBox::paramsToDialog(Inset const * inset)
 	lengthToWidgets(shadowsizeED, shadowsizeUnitsLC,
 		(params.shadowsize).asString(), default_unit);
 	// set color
-	frameColorCO->setCurrentIndex(findPos2nd(color, qt_(params.framecolor)) - 1);
-	// only if the framecolor is black the backgroundcolor has the entry "none"
-	if (frameColorCO->currentIndex() != 0)
-		backgroundColorCO->setCurrentIndex(findPos2nd(color, qt_(params.backgroundcolor)) - 1);
-	else
-		backgroundColorCO->setCurrentIndex(findPos2nd(color, qt_(params.backgroundcolor)));
+	// FIXME: Why use LaTeXName here, not LyXName? (spitz)
+	frameColorCO->setCurrentIndex(frameColorCO->findData(toqstr(params.framecolor)));
+	backgroundColorCO->setCurrentIndex(backgroundColorCO->findData(toqstr(params.backgroundcolor)));
 }
 
 
@@ -494,17 +486,16 @@ docstring GuiBox::dialogToParams() const
 		params.shadowsize = Length(widgetsToLength(shadowsizeED, shadowsizeUnitsLC));
 	else
 		params.shadowsize = Length("4pt");
+	// FIXME: Why use LaTeXName here, not LyXName? (spitz)
 	if (frameColorCO->isEnabled())
-		params.framecolor = lcolor.getLaTeXName(color[frameColorCO->currentIndex() + 1].second);
+		params.framecolor =
+			fromqstr(frameColorCO->itemData(frameColorCO->currentIndex()).toString());
 	else
 		params.framecolor = "black";
-	if (backgroundColorCO->isEnabled()) {
-		// only if the framecolor is black the backgroundcolor has the entry "none"
-		if (frameColorCO->currentIndex() != 0)
-			params.backgroundcolor = lcolor.getLaTeXName(color[backgroundColorCO->currentIndex() + 1].second);
-		else
-			params.backgroundcolor = lcolor.getLaTeXName(color[backgroundColorCO->currentIndex()].second);
-	} else
+	if (backgroundColorCO->isEnabled())
+		params.backgroundcolor =
+			fromqstr(backgroundColorCO->itemData(backgroundColorCO->currentIndex()).toString());
+	else
 		params.backgroundcolor = "none";
 
 	return from_ascii(InsetBox::params2string(params));

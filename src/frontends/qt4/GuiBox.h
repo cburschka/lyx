@@ -20,8 +20,6 @@
 namespace lyx {
 namespace frontend {
 
-typedef std::pair<QString, ColorCode>  ColorPair;
-
 class GuiBox : public InsetParamsWidget, public Ui::BoxUi
 {
 	Q_OBJECT
@@ -48,6 +46,8 @@ private:
 	bool checkWidgets(bool readonly) const;
 	//@}
 
+	/// Fill the color combos
+	void fillComboColor(QComboBox * combo, bool const is_none);
 	/// add and remove special lengths
 	void setSpecial(bool ibox);
 	/// only show valid inner box items
@@ -61,7 +61,7 @@ private:
 	///
 	QStringList gui_names_spec_;
 	///
-	QList<ColorPair> color;
+	QList<ColorCode> color_codes_;
 };
 
 } // namespace frontend
