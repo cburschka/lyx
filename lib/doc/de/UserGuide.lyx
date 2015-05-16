@@ -8493,12 +8493,10 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Verbatim.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8511,7 +8509,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Verbatim erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -41040,9 +41037,9 @@ reference "sub:Spracheinstellungen"
 \end_layout
 
 \begin_layout Description
-Automatisch wählt ein passendes Sprachpaket für das Ansichts-/Exportformat
- an, das Sie verwenden.
- In den meisten Fällen wird das 
+Automatisch wählt ein passendes Sprachpaket für das Ansichts-/Exportformat,
+ das Sie verwenden.
+ In den meisten Fällen wird dies 
 \series bold
 babel
 \series default
@@ -41071,7 +41068,7 @@ LaTeX-Paket ! polyglossia
 
 \end_inset
 
- besser geeignet ist (ist der Fall wenn XeTeX und/oder Nicht-T
+ besser geeignet ist (das ist der Fall, wenn XeTeX und/oder Nicht-T
 \begin_inset ERT
 status collapsed
 
@@ -41082,7 +41079,7 @@ status collapsed
 
 \end_inset
 
-eX-Schriften benutzt werden), wird dies anstelle on 
+eX-Schriften benutzt werden), wird dieses anstelle von 
 \series bold
 babel
 \series default
@@ -41108,7 +41105,7 @@ polyglossia
 \begin_layout Description
 Benutzerdefiniert erlaubt es, einen Befehl für ein Sprachpaket ihrer Wahl
  festzulegen.
- Zum Beispiel, wenn Sie ein Sprach-spezifisches Paket wie 
+ Zum Beispiel, wenn Sie ein sprachspezifisches Paket wie 
 \series bold
 ngerman
 \series default
