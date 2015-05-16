@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-16 13:30+0200\n"
-"PO-Revision-Date: 2015-05-16 13:32+0200\n"
+"POT-Creation-Date: 2015-05-16 15:36+0200\n"
+"PO-Revision-Date: 2015-05-16 15:40+0200\n"
 "Last-Translator: Jürgen Spitzmüller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -105,14 +105,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.5\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-
-#: src/frontends/qt4/ui/NumberingUi.ui:60
-msgid "&List in Table of Contents"
-msgstr "Im &Inhaltsverzeichnis aufführen"
-
-#: src/frontends/qt4/ui/NumberingUi.ui:70
-msgid "&Numbering"
-msgstr "&Nummerierung"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:20
 #: src/frontends/qt4/ui/PageLayoutUi.ui:29 src/frontends/qt4/ui/RefUi.ui:355
@@ -573,11 +565,12 @@ msgstr "In eine Datei drucken"
 msgid "&File:"
 msgstr "&Datei:"
 
-#: src/frontends/qt4/ui/PrintUi.ui:313 src/frontends/qt4/ui/BibtexAddUi.ui:46
+#: src/frontends/qt4/ui/PrintUi.ui:313 src/frontends/qt4/ui/LaTeXUi.ui:160
+#: src/frontends/qt4/ui/BibtexAddUi.ui:46
 #: src/frontends/qt4/ui/PrefInputUi.ui:111
 #: src/frontends/qt4/ui/ExternalUi.ui:70 src/frontends/qt4/ui/IncludeUi.ui:335
 #: src/frontends/qt4/ui/GraphicsUi.ui:58 src/frontends/qt4/ui/BibtexUi.ui:97
-#: src/frontends/qt4/ui/LaTeXUi.ui:160 src/frontends/qt4/ui/CompareUi.ui:50
+#: src/frontends/qt4/ui/CompareUi.ui:50
 msgid "&Browse..."
 msgstr "&Durchsuchen..."
 
@@ -1367,96 +1360,70 @@ msgstr "Vertikaler Leerraum des Phantominhalts"
 msgid "&Vertical Phantom"
 msgstr "&Vertikales Phantom"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:26
-msgid "Session Handling"
-msgstr "Sitzungshandhabung"
+#: src/frontends/qt4/ui/LaTeXUi.ui:19
+msgid "Document &Class"
+msgstr "Dokumentklasse"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:38
-msgid "Restore window layouts and &geometries"
-msgstr "Aussehen und Größe von &Fenstern wiederherstellen"
+#: src/frontends/qt4/ui/LaTeXUi.ui:44
+msgid "Click to select a local document class definition file"
+msgstr "Hier klicken, um eine lokale Dokumentklassen-Datei auszuwählen"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:45
-msgid "Restore to the cursor position when the file was last closed"
-msgstr "Positioniere den Cursor beim Öffnen der Datei dort, wo er zuletzt war"
+#: src/frontends/qt4/ui/LaTeXUi.ui:47
+msgid "&Local Layout..."
+msgstr "&Lokales Format..."
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:48
-msgid "Restore cursor &positions"
-msgstr "&Cursor-Positionen wiederherstellen"
+#: src/frontends/qt4/ui/LaTeXUi.ui:57
+msgid "Class Options"
+msgstr "Klassenoptionen"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:55
-msgid "&Load opened files from last session"
-msgstr "Ge&öffnete Dateien der letzten Sitzung laden"
+#: src/frontends/qt4/ui/LaTeXUi.ui:63
+msgid "Enable to use the options that are predefined in the layout file"
+msgstr "Aktiviert die Benutzung der in der Formatdatei vordefinierten Optionen"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:62
-msgid "&Clear all session information"
-msgstr "&Lösche alle Sitzungsinformationen"
+#: src/frontends/qt4/ui/LaTeXUi.ui:66
+msgid "&Predefined:"
+msgstr "Vo&rdefiniert:"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:85
-msgid "Backup && Saving"
-msgstr "Sichern und Speichern"
-
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:94
-msgid "Backup &original documents when saving"
-msgstr "Sichere &Originaldokumente beim Speichern"
-
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:103
-msgid "&Backup documents, every"
-msgstr "Sicherun&g der Dokumente alle"
-
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:120
-msgid "&minutes"
-msgstr "&Minuten"
-
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
-msgid "&Save documents compressed by default"
-msgstr "Dokumente &komprimiert speichern"
-
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
-msgid "Windows && Work Area"
-msgstr "Fenster und Arbeitsbereich"
-
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:164
-msgid "Open documents in &tabs"
-msgstr "Dokumente in &Registerkarten öffnen"
-
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:171
+#: src/frontends/qt4/ui/LaTeXUi.ui:73
 msgid ""
-"Whether to open documents in an already running instance of LyX.\n"
-"(Set the LyXServer pipe path and restart LyX to enable this feature)"
+"The options that are predefined in the layout file. Click to the left to "
+"select/deselect."
 msgstr ""
-"Öffne Dokumente in einer bereits laufenden LyX-Instanz.\n"
-"(Um dieses Feature nutzen zu können, müssen Sie einen\n"
-"Pfad zur LyX-Server-Weiterleitung definieren und LyX neu starten.)"
+"Die Optionen, die in der Formatdatei vordefiniert sind. Mit dem "
+"Kontrollkästchen links können diese an-/ausgeschaltet werden."
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:174
-msgid "Use s&ingle instance"
-msgstr "Ein&zelinstanz verwenden"
+#: src/frontends/qt4/ui/LaTeXUi.ui:83
+msgid "Cus&tom:"
+msgstr "&Benutzerdefiniert:"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:181
-msgid "Whether to place close button on each tab or only one in the top left."
+#: src/frontends/qt4/ui/LaTeXUi.ui:99
+msgid "&Graphics driver:"
+msgstr "&Grafiktreiber:"
+
+#: src/frontends/qt4/ui/LaTeXUi.ui:129
+msgid "Select if the current document is included to a master file"
 msgstr ""
-"Zeige den \"Schließen\"-Knopf nicht auf jedem Unterfenster an, sondern "
-"rechts in der Unterfenster-Leiste."
+"Wählen Sie dies, wenn dieses Dokument in ein Hauptdokument eingebettet ist"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
-msgid "Displa&y single close-tab button"
-msgstr "&Globalen Knopf zum Schließen von Registerkarten anzeigen"
+#: src/frontends/qt4/ui/LaTeXUi.ui:135
+msgid "Select de&fault master document"
+msgstr "Standard-Hauptdokument &wählen"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:193
-msgid "Closing last &view:"
-msgstr "Beim Schließen der letzten &Ansicht:"
+#: src/frontends/qt4/ui/LaTeXUi.ui:150
+msgid "&Master:"
+msgstr "&Hauptdokument:"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:204
-msgid "Closes document"
-msgstr "Dokument schließen"
+#: src/frontends/qt4/ui/LaTeXUi.ui:167
+msgid "Enter the name of the default master document"
+msgstr "Geben Sie den Namen des Hauptdokuments an"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:209
-msgid "Hides document"
-msgstr "Dokument verbergen"
+#: src/frontends/qt4/ui/LaTeXUi.ui:186
+msgid "&Suppress default date on front page"
+msgstr "Datum auf der &Titelseite nicht anzeigen"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:214
-msgid "Ask the user"
-msgstr "Nachfragen"
+#: src/frontends/qt4/ui/LaTeXUi.ui:206
+msgid "&Use refstyle (not prettyref) for cross-references"
+msgstr "Verwende &Refstyle (statt Prettyref) für Querverweise"
 
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:54
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:194
@@ -3002,6 +2969,109 @@ msgstr "Link zu einer Datei"
 #: src/frontends/qt4/ui/HyperlinkUi.ui:100
 msgid "&File"
 msgstr "&Datei"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:26
+msgid "Session Handling"
+msgstr "Sitzungshandhabung"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:38
+msgid "Restore window layouts and &geometries"
+msgstr "Aussehen und Größe von &Fenstern wiederherstellen"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:45
+msgid "Restore to the cursor position when the file was last closed"
+msgstr "Positioniere den Cursor beim Öffnen der Datei dort, wo er zuletzt war"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:48
+msgid "Restore cursor &positions"
+msgstr "&Cursor-Positionen wiederherstellen"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:55
+msgid "&Load opened files from last session"
+msgstr "Ge&öffnete Dateien der letzten Sitzung laden"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:62
+msgid "&Clear all session information"
+msgstr "&Lösche alle Sitzungsinformationen"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:85
+msgid "Backup && Saving"
+msgstr "Sichern und Speichern"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:94
+msgid "Backup &original documents when saving"
+msgstr "Sichere &Originaldokumente beim Speichern"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:103
+msgid "&Backup documents, every"
+msgstr "Sicherun&g der Dokumente alle"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:120
+msgid "&minutes"
+msgstr "&Minuten"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
+msgid ""
+"If this is checked, new documents will be saved in a compressed binary-"
+"format by default.\n"
+"Existing documents will still be saved in their current state (compressed or "
+"uncompressed)."
+msgstr ""
+"Wenn dies ausgewählt ist, werden neue Dokumente standardmäßig in einem "
+"komprimierten Binärformat gespeichert.\n"
+"Existierende Dokumente werden weiterhin in der bislang verwendeten Form "
+"(komprimiert oder unkomprimiert) gespeichert."
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
+msgid "&Save new documents compressed by default"
+msgstr "Neue Dokumente &komprimiert speichern"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:158
+msgid "Windows && Work Area"
+msgstr "Fenster und Arbeitsbereich"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:167
+msgid "Open documents in &tabs"
+msgstr "Dokumente in &Registerkarten öffnen"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:174
+msgid ""
+"Whether to open documents in an already running instance of LyX.\n"
+"(Set the LyXServer pipe path and restart LyX to enable this feature)"
+msgstr ""
+"Öffne Dokumente in einer bereits laufenden LyX-Instanz.\n"
+"(Um dieses Feature nutzen zu können, müssen Sie einen\n"
+"Pfad zur LyX-Server-Weiterleitung definieren und LyX neu starten.)"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:177
+msgid "Use s&ingle instance"
+msgstr "Ein&zelinstanz verwenden"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
+msgid "Whether to place close button on each tab or only one in the top left."
+msgstr ""
+"Zeige den \"Schließen\"-Knopf nicht auf jedem Unterfenster an, sondern "
+"rechts in der Unterfenster-Leiste."
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:187
+msgid "Displa&y single close-tab button"
+msgstr "&Globalen Knopf zum Schließen von Registerkarten anzeigen"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:196
+msgid "Closing last &view:"
+msgstr "Beim Schließen der letzten &Ansicht:"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:207
+msgid "Closes document"
+msgstr "Dokument schließen"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:212
+msgid "Hides document"
+msgstr "Dokument verbergen"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:217
+msgid "Ask the user"
+msgstr "Nachfragen"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90
 #: src/frontends/qt4/GuiDocument.cpp:1420 src/frontends/qt4/GuiPrefs.cpp:254
@@ -4831,71 +4901,6 @@ msgstr "&Hinzufügen..."
 msgid "Remove the selected database"
 msgstr "Die ausgewählte Datenbank entfernen"
 
-#: src/frontends/qt4/ui/LaTeXUi.ui:19
-msgid "Document &Class"
-msgstr "Dokumentklasse"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:44
-msgid "Click to select a local document class definition file"
-msgstr "Hier klicken, um eine lokale Dokumentklassen-Datei auszuwählen"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:47
-msgid "&Local Layout..."
-msgstr "&Lokales Format..."
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:57
-msgid "Class Options"
-msgstr "Klassenoptionen"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:63
-msgid "Enable to use the options that are predefined in the layout file"
-msgstr "Aktiviert die Benutzung der in der Formatdatei vordefinierten Optionen"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:66
-msgid "&Predefined:"
-msgstr "Vo&rdefiniert:"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:73
-msgid ""
-"The options that are predefined in the layout file. Click to the left to "
-"select/deselect."
-msgstr ""
-"Die Optionen, die in der Formatdatei vordefiniert sind. Mit dem "
-"Kontrollkästchen links können diese an-/ausgeschaltet werden."
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:83
-msgid "Cus&tom:"
-msgstr "&Benutzerdefiniert:"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:99
-msgid "&Graphics driver:"
-msgstr "&Grafiktreiber:"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:129
-msgid "Select if the current document is included to a master file"
-msgstr ""
-"Wählen Sie dies, wenn dieses Dokument in ein Hauptdokument eingebettet ist"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:135
-msgid "Select de&fault master document"
-msgstr "Standard-Hauptdokument &wählen"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:150
-msgid "&Master:"
-msgstr "&Hauptdokument:"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:167
-msgid "Enter the name of the default master document"
-msgstr "Geben Sie den Namen des Hauptdokuments an"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:186
-msgid "&Suppress default date on front page"
-msgstr "Datum auf der &Titelseite nicht anzeigen"
-
-#: src/frontends/qt4/ui/LaTeXUi.ui:206
-msgid "&Use refstyle (not prettyref) for cross-references"
-msgstr "Verwende &Refstyle (statt Prettyref) für Querverweise"
-
 #: src/frontends/qt4/ui/RefUi.ui:22
 msgid "La&bels in:"
 msgstr "Ma&rken in:"
@@ -5407,6 +5412,14 @@ msgstr "Als grauen Text drucken"
 #: src/frontends/qt4/ui/NoteUi.ui:83
 msgid "&Greyed out"
 msgstr "&Grauschrift"
+
+#: src/frontends/qt4/ui/NumberingUi.ui:60
+msgid "&List in Table of Contents"
+msgstr "Im &Inhaltsverzeichnis aufführen"
+
+#: src/frontends/qt4/ui/NumberingUi.ui:70
+msgid "&Numbering"
+msgstr "&Nummerierung"
 
 #: lib/layouts/jsbook.layout:3
 msgid "Japanese Book (jsbook)"
@@ -15471,208 +15484,208 @@ msgstr "Deutsch (alte Rechtschreibung)"
 msgid "German"
 msgstr "Deutsch"
 
-#: lib/languages:508
+#: lib/languages:509
 msgid "German (Switzerland)"
 msgstr "Deutsch (Schweiz)"
 
-#: lib/languages:521
+#: lib/languages:523
 msgid "German (Switzerland, old spelling)"
 msgstr "Deutsch (Schweiz, alte Rechtschreibung)"
 
-#: lib/languages:532 lib/ui/stdtoolbars.inc:296 lib/ui/stdtoolbars.inc:585
+#: lib/languages:534 lib/ui/stdtoolbars.inc:296 lib/ui/stdtoolbars.inc:585
 #: src/frontends/qt4/GuiSymbols.cpp:61
 msgid "Greek"
 msgstr "Griechisch"
 
-#: lib/languages:543
+#: lib/languages:545
 msgid "Greek (polytonic)"
 msgstr "Griechisch (polytonisch)"
 
-#: lib/languages:555 src/frontends/qt4/GuiSymbols.cpp:64
+#: lib/languages:557 src/frontends/qt4/GuiSymbols.cpp:64
 msgid "Hebrew"
 msgstr "Hebräisch"
 
-#: lib/languages:570
+#: lib/languages:572
 msgid "Hindi"
 msgstr "Hindi"
 
-#: lib/languages:588
+#: lib/languages:590
 msgid "Icelandic"
 msgstr "Isländisch"
 
-#: lib/languages:599
+#: lib/languages:601
 msgid "Interlingua"
 msgstr "Interlingua"
 
-#: lib/languages:607
+#: lib/languages:609
 msgid "Irish"
 msgstr "Irisch"
 
-#: lib/languages:616
+#: lib/languages:618
 msgid "Italian"
 msgstr "Italienisch"
 
-#: lib/languages:630
+#: lib/languages:632
 msgid "Japanese"
 msgstr "Japanisch"
 
-#: lib/languages:642
+#: lib/languages:644
 msgid "Japanese (CJK)"
 msgstr "Japanisch (CJK)"
 
-#: lib/languages:651
+#: lib/languages:653
 msgid "Kazakh"
 msgstr "Kasachisch"
 
-#: lib/languages:661
+#: lib/languages:663
 msgid "Korean"
 msgstr "Koreanisch"
 
-#: lib/languages:670
+#: lib/languages:672
 msgid "Kurmanji"
 msgstr "Kurmandschi"
 
-#: lib/languages:679 src/frontends/qt4/GuiSymbols.cpp:76
+#: lib/languages:681 src/frontends/qt4/GuiSymbols.cpp:76
 msgid "Lao"
 msgstr "Laotisch"
 
-#: lib/languages:688
+#: lib/languages:690
 msgid "Latin"
 msgstr "Latein"
 
-#: lib/languages:698
+#: lib/languages:700
 msgid "Latvian"
 msgstr "Lettisch"
 
-#: lib/languages:710
+#: lib/languages:712
 msgid "Lithuanian"
 msgstr "Litauisch"
 
-#: lib/languages:720
+#: lib/languages:722
 msgid "Lower Sorbian"
 msgstr "Niedersorbisch"
 
-#: lib/languages:729
+#: lib/languages:731
 msgid "Hungarian"
 msgstr "Ungarisch"
 
-#: lib/languages:739
+#: lib/languages:741
 msgid "Marathi"
 msgstr "Marathi"
 
-#: lib/languages:749
+#: lib/languages:751
 msgid "Mongolian"
 msgstr "Mongolisch"
 
-#: lib/languages:757
+#: lib/languages:759
 msgid "English (New Zealand)"
 msgstr "Englisch (Neuseeland)"
 
-#: lib/languages:767
+#: lib/languages:769
 msgid "Norwegian (Bokmaal)"
 msgstr "Norwegisch (Bokmål)"
 
-#: lib/languages:776
+#: lib/languages:778
 msgid "Norwegian (Nynorsk)"
 msgstr "Norwegisch (Nynorsk)"
 
-#: lib/languages:786
+#: lib/languages:788
 msgid "Occitan"
 msgstr "Okzitanisch"
 
-#: lib/languages:804
+#: lib/languages:806
 msgid "Polish"
 msgstr "Polnisch"
 
-#: lib/languages:813
+#: lib/languages:815
 msgid "Portuguese"
 msgstr "Portugiesisch"
 
-#: lib/languages:822
+#: lib/languages:824
 msgid "Romanian"
 msgstr "Rumänisch"
 
-#: lib/languages:831
+#: lib/languages:833
 msgid "Russian"
 msgstr "Russisch"
 
-#: lib/languages:842
+#: lib/languages:844
 msgid "North Sami"
 msgstr "Nordsamisch"
 
-#: lib/languages:851
+#: lib/languages:853
 msgid "Sanskrit"
 msgstr "Sanskrit"
 
-#: lib/languages:858
+#: lib/languages:860
 msgid "Scottish"
 msgstr "Schottisch"
 
-#: lib/languages:867
+#: lib/languages:869
 msgid "Serbian"
 msgstr "Serbisch"
 
-#: lib/languages:877
+#: lib/languages:879
 msgid "Serbian (Latin)"
 msgstr "Serbisch (latein. Schrift)"
 
-#: lib/languages:887
+#: lib/languages:889
 msgid "Slovak"
 msgstr "Slowakisch"
 
-#: lib/languages:896
+#: lib/languages:898
 msgid "Slovene"
 msgstr "Slowenisch"
 
-#: lib/languages:905
+#: lib/languages:907
 msgid "Spanish"
 msgstr "Spanisch"
 
-#: lib/languages:918
+#: lib/languages:920
 msgid "Spanish (Mexico)"
 msgstr "Spanisch (Mexiko)"
 
-#: lib/languages:930
+#: lib/languages:932
 msgid "Swedish"
 msgstr "Schwedisch"
 
-#: lib/languages:949 src/frontends/qt4/GuiSymbols.cpp:71
+#: lib/languages:951 src/frontends/qt4/GuiSymbols.cpp:71
 msgid "Tamil"
 msgstr "Tamilisch"
 
-#: lib/languages:957 src/frontends/qt4/GuiSymbols.cpp:72
+#: lib/languages:959 src/frontends/qt4/GuiSymbols.cpp:72
 msgid "Telugu"
 msgstr "Telugu"
 
-#: lib/languages:964 src/frontends/qt4/GuiSymbols.cpp:75
+#: lib/languages:966 src/frontends/qt4/GuiSymbols.cpp:75
 msgid "Thai"
 msgstr "Thailändisch"
 
-#: lib/languages:977 src/frontends/qt4/GuiSymbols.cpp:77
+#: lib/languages:979 src/frontends/qt4/GuiSymbols.cpp:77
 msgid "Tibetan"
 msgstr "Tibetisch"
 
-#: lib/languages:984
+#: lib/languages:986
 msgid "Turkish"
 msgstr "Türkisch"
 
-#: lib/languages:998
+#: lib/languages:1000
 msgid "Turkmen"
 msgstr "Turkmenisch"
 
-#: lib/languages:1008
+#: lib/languages:1010
 msgid "Ukrainian"
 msgstr "Ukrainisch"
 
-#: lib/languages:1019
+#: lib/languages:1021
 msgid "Upper Sorbian"
 msgstr "Obersorbisch"
 
-#: lib/languages:1040
+#: lib/languages:1042
 msgid "Vietnamese"
 msgstr "Vietnamesisch"
 
-#: lib/languages:1051
+#: lib/languages:1053
 msgid "Welsh"
 msgstr "Walisisch"
 
@@ -23864,12 +23877,12 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Die Dokumentklasse ist nicht verfügbar"
 
-#: src/BufferParams.cpp:1837 src/insets/InsetCommandParams.cpp:406
+#: src/BufferParams.cpp:1838 src/insets/InsetCommandParams.cpp:406
 #: src/insets/InsetHyperlink.cpp:197
 msgid "Uncodable characters"
 msgstr "unkodierbare Zeichen"
 
-#: src/BufferParams.cpp:1838
+#: src/BufferParams.cpp:1839
 #, c-format
 msgid ""
 "The following characters that are used in an index name are not\n"
@@ -23880,7 +23893,7 @@ msgstr ""
 "aktuellen Zeichenkodierung nicht darstellbar und wurden daher weggelassen:\n"
 "%1$s."
 
-#: src/BufferParams.cpp:2107
+#: src/BufferParams.cpp:2108
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -23895,11 +23908,11 @@ msgstr ""
 "Formaten wird benutzt werden. LyX wird nicht in der Lage sein eine korrekte\n"
 "Ausgabe zu erzeugen."
 
-#: src/BufferParams.cpp:2113
+#: src/BufferParams.cpp:2114
 msgid "Document class not found"
 msgstr "Dokumentklasse nicht gefunden"
 
-#: src/BufferParams.cpp:2120
+#: src/BufferParams.cpp:2121
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -23914,15 +23927,15 @@ msgstr ""
 "korrekte\n"
 "Ausgabe erzeugen können."
 
-#: src/BufferParams.cpp:2126 src/BufferView.cpp:1315 src/BufferView.cpp:1347
+#: src/BufferParams.cpp:2127 src/BufferView.cpp:1315 src/BufferView.cpp:1347
 msgid "Could not load class"
 msgstr "Konnte Klasse nicht laden"
 
-#: src/BufferParams.cpp:2176
+#: src/BufferParams.cpp:2177
 msgid "Error reading internal layout information"
 msgstr "Fehler beim Einlesen interner Format-Informationen"
 
-#: src/BufferParams.cpp:2177 src/TextClass.cpp:1535
+#: src/BufferParams.cpp:2178 src/TextClass.cpp:1535
 msgid "Read Error"
 msgstr "Lesefehler"
 
