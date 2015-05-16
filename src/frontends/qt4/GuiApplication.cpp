@@ -2141,16 +2141,19 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 			}
 			// If a non-Shift Modifier is used we have a non-bound key sequence
 			// (such as Alt+j = j). This should be omitted (#5575).
-			// FIXME: On Windows, the AltModifier and ShiftModifer is also
-			// set when AltGr is pressed. Therefore, the check below cannot be used
-			// since it breaks AltGr-bound symbols (see #5575 for details).
-#if !defined(_WIN32)
-			if (state & AltModifier || state & ControlModifier || state & MetaModifier) {
+			// On Windows, AltModifier and ControlModifier are both
+			// set when AltGr is pressed. Therefore, in order to not
+			// break AltGr-bound symbols (see #5575 for details),
+			// unbound Ctrl+Alt key sequences are allowed.
+			if ((state & AltModifier || state & ControlModifier || state & MetaModifier)
+#if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
+			    && !(state & AltModifier && state & ControlModifier)
+#endif
+			    ) {
 				current_view_->message(_("Unknown function."));
 				current_view_->restartCursor();
 				return;
 			}
-#endif
 			// Since all checks above were passed, we now really have text that
 			// is to be inserted (e.g., AltGr-bound symbols). Thus change the
 			// func to LFUN_SELF_INSERT and thus cause the text to be inserted
