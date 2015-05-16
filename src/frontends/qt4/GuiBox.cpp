@@ -110,7 +110,7 @@ void fillComboColor(QComboBox * combo, QList<T> const & list, bool const is_none
 	QColor color;
 	// frameColorCO cannot be uncolored
 	if (is_none)
-		combo->addItem("none");
+		combo->addItem(qt_("none"));
 	typename QList<T>::const_iterator cit = list.begin() + 1;
 	for (; cit != list.end(); ++cit) {
 		color = QColor(guiApp->colorCache().get(cit->second, false));
@@ -494,10 +494,11 @@ docstring GuiBox::dialogToParams() const
 	else
 		params.shadowsize = Length("4pt");
 	if (frameColorCO->isEnabled())
-		params.framecolor = fromqstr( color[frameColorCO->currentIndex() + 1].first );
+		params.framecolor = fromqstr(color[frameColorCO->currentIndex() + 1].first);
 	else
 		params.framecolor = "black";
 	if (backgroundColorCO->isEnabled()) {
+		// only if the framecolor is black the backgroundcolor has the entry "none"
 		if (frameColorCO->currentText() != qt_("black"))
 			params.backgroundcolor = fromqstr(color[backgroundColorCO->currentIndex() + 1].first);
 		else
