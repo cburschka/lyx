@@ -1756,10 +1756,23 @@ void LaTeXFeatures::resolveAlternatives()
 			vector<string> const alternatives = getVectorFromString(*it, "|");
 			vector<string>::const_iterator const end = alternatives.end();
 			vector<string>::const_iterator ita = alternatives.begin();
+			// Is any alternative already required? => use that
 			for (; ita != end; ++ita) {
 				if (isRequired(*ita))
 					break;
 			}
+			// Is any alternative available? => use the first one
+			// (bug 9498)
+			if (ita == end) {
+				for (ita = alternatives.begin(); ita != end; ++ita) {
+					if (isAvailable(*ita)) {
+						require(*ita);
+						break;
+					}
+				}
+			}
+			// This will not work, but not requiring something
+			// would be more confusing
 			if (ita == end)
 				require(alternatives.front());
 			features_.erase(it);

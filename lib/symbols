@@ -995,7 +995,7 @@ tbond              cmsy        180 186 mathord  x
 # If the wasysym integrals are really wanted then one has to load the package
 # manually and disable automatic loading of amsmath and esint.
 iffont esint
-int                esint        001    0  mathop  &int;         esint
+int                esint        001    0  mathop  &int;         esint|amsmath
 intop              esint        001    0  mathop  &int;         esint
 iint               esint        003    0  mathop  &Int;         esint|amsmath
 iintop             esint        003    0  mathop  &Int;         esint
@@ -1021,7 +1021,7 @@ ointctrclockwiseop esint        023    0  mathop  &awconint;    esint
 ointclockwise      esint        025    0  mathop  &cwconint;    esint
 ointclockwiseop    esint        025    0  mathop  &cwconint;    esint
 else
-int                cmex          82  242  mathop  &int;         esint
+int                cmex          82  242  mathop  &int;         esint|amsmath
 intop              cmex          82  242  mathop  &int;         esint
 iint               wasy         115    0  mathop  &Int;         esint|amsmath
 iintop             wasy         115    0  mathop  &Int          esint
