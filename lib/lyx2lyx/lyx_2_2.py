@@ -1077,6 +1077,51 @@ def revert_textcolor(document):
         i = i + 1
 
 
+def convert_colorbox(document):
+    " adds color settings for boxes "
+
+    i = 0
+    while True:
+        i = find_token(document.body, "height_special", i)
+        if i == -1:
+            return
+        document.body.insert(i + 2, 'framecolor "black"\nbackgroundcolor "white"')
+        i = i + 2
+
+
+def revert_colorbox(document):
+    " outputs color settings for boxes as TeX code "
+
+    i = 0
+    defaultframecolor = "black"
+    defaultbackcolor = "white"
+    while True:
+        i = find_token(document.body, "framecolor", i)
+        if i == -1:
+            return
+        # read out the values
+        beg = document.body[i].find('"');
+        end = document.body[i].rfind('"');
+        framecolor = document.body[i][beg+1:end];
+        beg = document.body[i+1].find('"');
+        end = document.body[i+1].rfind('"');
+        backcolor = document.body[i+1][beg+1:end];
+        # delete the specification
+        del document.body[i:i+2]
+        # output TeX code
+        # first output the closing brace
+        if framecolor != defaultframecolor or backcolor != defaultbackcolor:
+            document.body[i + 9 : i + 9] = put_cmd_in_ert("}")
+        # now output the box commands
+        if framecolor != defaultframecolor or backcolor != defaultbackcolor:
+            document.body[i - 14 : i - 14] = put_cmd_in_ert("{")
+        if framecolor != defaultframecolor:
+            document.body[i - 9 : i - 8] = ["\\backslash fboxcolor{" + framecolor + "}{" + backcolor + "}{"]
+        if backcolor != defaultbackcolor and framecolor == defaultframecolor:
+            document.body[i - 9 : i - 8] = ["\\backslash colorbox{" + backcolor + "}{"]
+        i = i + 11
+
+
 ##
 # Conversion hub
 #
@@ -1102,10 +1147,12 @@ convert = [
            [488, [convert_newgloss]],
            [489, [convert_BoxFeatures]],
            [490, [convert_origin]],
-           [491, []]
+           [491, []],
+           [492, [convert_colorbox]]
           ]
 
 revert =  [
+           [491, [revert_colorbox]],
            [490, [revert_textcolor]],
            [489, [revert_origin]],
            [488, [revert_BoxFeatures]],

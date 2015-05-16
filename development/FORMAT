@@ -11,9 +11,17 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+
+2015-05-16 Uwe Stöhr <uwestoehr@web.de>
+ 	* Format incremented to 492: support for \colorbox and \fcolorbox
+ 	  in the box dialog.
+ 	  New box parameters:
+ 	  - framcolor
+ 	  - backgroundcolor
+  
 2015-05-14 Uwe Stöhr <uwestoehr@web.de>
  	* Format incremented to 491: support for xcolor's default colors
- 	  No new parameter, the \\color parameter can nowhave these values:
+ 	  No new parameter, the \color parameter can now also have these values:
  	  "brown", "darkgray", "gray", "lightgray", "lime", "olive", "orange",
  	  "pink", "purple", "teal", "violet"
 

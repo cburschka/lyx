@@ -850,6 +850,8 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 	string thickness = "0.4pt";
 	string separation = "3pt";
 	string shadowsize = "4pt";
+	string framecolor = "black";
+	string backgroundcolor = "none";
 	if (!inner_type.empty() && p.hasOpt()) {
 		if (inner_type != "makebox")
 			position = p.getArg('[', ']');

@@ -195,15 +195,25 @@ bool InsetBox::forcePlainLayout(idx_type) const
 
 ColorCode InsetBox::backgroundColor(PainterInfo const &) const
 {
-	if (params_.type != "Shaded")
+	// we only support background color for 3 types
+	if (params_.type != "Shaded" && params_.type != "Frameless" && params_.type != "Boxed")
 		return getLayout().bgcolor();
-	// FIXME: This hardcoded color is a hack!
-	if (buffer().params().boxbgcolor == lyx::rgbFromHexName("#ff0000"))
-		return getLayout().bgcolor();
-	ColorCode c = lcolor.getFromLyXName("boxbgcolor");
-	if (c == Color_none)
-		return getLayout().bgcolor();
-	return c;
+	if (params_.type == "Shaded") {
+		// FIXME: This hardcoded color is a hack!
+		if (buffer().params().boxbgcolor == lyx::rgbFromHexName("#ff0000"))
+			return getLayout().bgcolor();
+		
+		ColorCode c = lcolor.getFromLyXName("boxbgcolor");
+		if (c == Color_none)
+			return getLayout().bgcolor();
+		return c;
+	} else {
+		if (params_.backgroundcolor == "none")
+			return getLayout().bgcolor();
+		ColorCode boxbackground = lcolor.getFromLyXName(params_.backgroundcolor);
+		return boxbackground;
+	}
+	return getLayout().bgcolor();
 }
 
 
@@ -352,7 +362,11 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 			&& (thickness_string.find(defaultThick) != string::npos))
 			os << "{\\fboxsep " << from_ascii(separation_string);
 		if (!params_.inner_box && !width_string.empty()) {
-			os << "\\framebox";
+			if (params_.framecolor != "black" || params_.backgroundcolor != "none") {
+				os << "\\fcolorbox{" << params_.framecolor << "}{" << params_.backgroundcolor << "}{";
+				os << "\\makebox";
+			} else
+				os << "\\framebox";
 			// Special widths, see usrguide sec. 3.5
 			// FIXME UNICODE
 			if (params_.special != "none") {
@@ -364,8 +378,12 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 				   << ']';
 			if (params_.hor_pos != 'c')
 				os << "[" << params_.hor_pos << "]";
-		} else
-			os << "\\fbox";
+		} else {
+			if (params_.framecolor != "black" || params_.backgroundcolor != "none")
+				os << "\\fcolorbox{" << params_.framecolor << "}{" << params_.backgroundcolor << "}";
+			else
+				os << "\\fbox";
+		}
 		os << "{";
 		break;
 	case ovalbox:
@@ -420,11 +438,15 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 	}
 
 	if (params_.inner_box) {
-		if (params_.use_parbox)
+		if (params_.use_parbox) {
+			if (params_.backgroundcolor != "none" && btype == Frameless)
+				os << "\\colorbox{" << params_.backgroundcolor << "}{";
 			os << "\\parbox";
-		else if (params_.use_makebox) {
+		} else if (params_.use_makebox) {
 			if (!width_string.empty()) {
-				os << "\\makebox";
+				if (params_.backgroundcolor != "none")
+					os << "\\colorbox{" << params_.backgroundcolor << "}{";
+				os << "\\makebox{";
 				// FIXME UNICODE
 				// output the width and horizontal position
 				if (params_.special != "none") {
@@ -436,12 +458,18 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 					   << ']';
 				if (params_.hor_pos != 'c')
 					os << "[" << params_.hor_pos << "]";
-			} else
-				os << "\\mbox";
-			os << "{";
+			} else {
+				if (params_.backgroundcolor != "none")
+					os << "\\colorbox{" << params_.backgroundcolor << "}{";
+				else
+					os << "\\mbox{";
+			}
 		}
-		else
+		else {
+			if (params_.backgroundcolor != "none" && btype == Frameless)
+				os << "\\colorbox{" << params_.backgroundcolor << "}{";
 			os << "\\begin{minipage}";
+		}
 
 		// output parameters for parbox and minipage
 		if (!params_.use_makebox) {
@@ -505,6 +533,9 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 			os << "%\n}";
 		else
 			os << "%\n\\end{minipage}";
+		if (params_.backgroundcolor != "none" && btype == Frameless
+			&& !(params_.use_makebox && width_string.empty()))
+			os << "}";
 	}
 
 	switch (btype) {
@@ -518,6 +549,9 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		break;
 	case Boxed:
 		os << "}";
+		if (!params_.inner_box && !width_string.empty()
+			&& (params_.framecolor != "black" || params_.backgroundcolor != "none"))
+			os << "}";
 		if (!(separation_string.find(defaultSep) != string::npos)
 			|| !(thickness_string.find(defaultThick) != string::npos))
 			os << "}";
@@ -650,6 +684,8 @@ void InsetBox::validate(LaTeXFeatures & features) const
 	BoxType btype = boxtranslator().find(params_.type);
 	switch (btype) {
 	case Frameless:
+		if (params_.backgroundcolor != "none")
+			features.require("xcolor");
 		break;
 	case Framed:
 		features.require("calc");
@@ -657,6 +693,8 @@ void InsetBox::validate(LaTeXFeatures & features) const
 		break;
 	case Boxed:
 		features.require("calc");
+		if (params_.framecolor != "black" || params_.backgroundcolor != "none")
+			features.require("xcolor");
 		break;
 	case ovalbox:
 	case Ovalbox:
@@ -740,7 +778,9 @@ InsetBoxParams::InsetBoxParams(string const & label)
 	  height_special("totalheight"), // default is 1\\totalheight
 	  thickness(Length(defaultThick)),
 	  separation(Length(defaultSep)),
-	  shadowsize(Length(defaultShadow))
+	  shadowsize(Length(defaultShadow)),
+	  framecolor("black"),
+	  backgroundcolor("none")
 {}
 
 
@@ -760,6 +800,8 @@ void InsetBoxParams::write(ostream & os) const
 	os << "thickness \"" << thickness.asString() << "\"\n";
 	os << "separation \"" << separation.asString() << "\"\n";
 	os << "shadowsize \"" << shadowsize.asString() << "\"\n";
+	os << "framecolor \"" << framecolor << "\"\n";
+	os << "backgroundcolor \"" << backgroundcolor << "\"\n";
 }
 
 
@@ -782,6 +824,8 @@ void InsetBoxParams::read(Lexer & lex)
 	lex >> "thickness" >> thickness;
 	lex >> "separation" >> separation;
 	lex >> "shadowsize" >> shadowsize;
+	lex >> "framecolor" >> framecolor;
+	lex >> "backgroundcolor" >> backgroundcolor;
 }
 
 

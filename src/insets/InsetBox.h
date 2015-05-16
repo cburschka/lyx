@@ -59,6 +59,10 @@ public:
 	Length separation;
 	///
 	Length shadowsize;
+	///
+	std::string framecolor;
+	///
+	std::string backgroundcolor;
 };
 
 

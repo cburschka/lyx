@@ -15,10 +15,12 @@
 
 #include "InsetParamsWidget.h"
 #include "ui_BoxUi.h"
-
+#include "Font.h"
 
 namespace lyx {
 namespace frontend {
+
+typedef std::pair<QString, ColorCode>  ColorPair;
 
 class GuiBox : public InsetParamsWidget, public Ui::BoxUi
 {
@@ -30,6 +32,7 @@ public:
 private Q_SLOTS:
 	void on_innerBoxCO_activated(int);
 	void on_typeCO_activated(int);
+	void on_frameColorCO_currentIndexChanged(int);
 	void initDialog();
 	void on_widthCB_stateChanged(int state);
 	void on_heightCB_stateChanged(int state);
@@ -57,6 +60,8 @@ private:
 	QStringList ids_spec_;
 	///
 	QStringList gui_names_spec_;
+	///
+	QList<ColorPair> color;
 };
 
 } // namespace frontend

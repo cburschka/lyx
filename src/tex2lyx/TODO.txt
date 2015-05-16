@@ -75,15 +75,15 @@ Format LaTeX feature                        LyX feature
 459    beamer: \begin{frame},               \begin_layout Frame
        \begin{frame}[plain],                \begin_layout PlainFrame
        \begin{frame}[fragile]               \begin_layout FragileFrame
-466   Powerdot updates:                     
-      \pause[]                              layout Pause
-      \onslide{}{}                          InsetFlex, InsetArgument
-      \onslide*{}{}                         InsetFlex, InsetArgument
-      \onslide+{}{}                         InsetFlex, InsetArgument
-      \twocolumn[]{}{}                      Layout Twocolumn, InsetArgument
-      \item[]<>                             InsetArgument
-      \begin{enumerate|itemize|...}[]       InsetArgument
-
+466    Powerdot updates:                     
+       \pause[]                              layout Pause
+       \onslide{}{}                          InsetFlex, InsetArgument
+       \onslide*{}{}                         InsetFlex, InsetArgument
+       \onslide+{}{}                         InsetFlex, InsetArgument
+       \twocolumn[]{}{}                      Layout Twocolumn, InsetArgument
+       \item[]<>                             InsetArgument
+       \begin{enumerate|itemize|...}[]       InsetArgument
+492    commands \fcolorbox and \colorbox     InsetBox
 
 General
 
