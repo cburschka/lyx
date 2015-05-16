@@ -242,7 +242,7 @@ void GuiBox::on_frameColorCO_currentIndexChanged(int index)
 			backgroundColorCO->removeItem(n);
 		}
 	} else {
-		if (backgroundColorCO->findData("none") == -1)
+		if (backgroundColorCO->count() == color_codes_.count() - 1)
 			backgroundColorCO->insertItem(0, toqstr(translateIfPossible((lcolor.getGUIName(Color_none)))),
 						      toqstr(lcolor.getLaTeXName(Color_none)));
 	}
@@ -402,7 +402,6 @@ void GuiBox::paramsToDialog(Inset const * inset)
 	lengthToWidgets(shadowsizeED, shadowsizeUnitsLC,
 		(params.shadowsize).asString(), default_unit);
 	// set color
-	// FIXME: Why use LaTeXName here, not LyXName? (spitz)
 	frameColorCO->setCurrentIndex(frameColorCO->findData(toqstr(params.framecolor)));
 	backgroundColorCO->setCurrentIndex(backgroundColorCO->findData(toqstr(params.backgroundcolor)));
 }
@@ -486,7 +485,6 @@ docstring GuiBox::dialogToParams() const
 		params.shadowsize = Length(widgetsToLength(shadowsizeED, shadowsizeUnitsLC));
 	else
 		params.shadowsize = Length("4pt");
-	// FIXME: Why use LaTeXName here, not LyXName? (spitz)
 	if (frameColorCO->isEnabled())
 		params.framecolor =
 			fromqstr(frameColorCO->itemData(frameColorCO->currentIndex()).toString());
