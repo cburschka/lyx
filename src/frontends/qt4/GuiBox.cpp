@@ -17,6 +17,7 @@
 
 #include "GuiApplication.h"
 #include "ColorCache.h"
+#include "ColorSet.h"
 #include "LengthCombo.h"
 #include "Length.h"
 #include "qt_helpers.h"
@@ -230,7 +231,7 @@ void GuiBox::on_typeCO_activated(int index)
 	}
 	// assure that the frame color is black for frameless boxes to
 	// provide the color "none"
-	if (frameless && frameColorCO->currentText() != qt_("black"))
+	if (frameless && frameColorCO->currentIndex() != 0)
 		frameColorCO->setCurrentIndex(0);
 	changed();
 }
@@ -238,14 +239,16 @@ void GuiBox::on_typeCO_activated(int index)
 
 void GuiBox::on_frameColorCO_currentIndexChanged(int /* index */)
 {
-	// if there is a special frme color the background canot be uncolored
-	if (frameColorCO->currentText() != qt_("black")) {
-		if (backgroundColorCO->currentText() == qt_("none"))
-			backgroundColorCO->setCurrentIndex(findPos2nd(color, qt_("white")));
-		if (backgroundColorCO->itemText(0) == qt_("none"))
+	// if there is a non-black frame color the background canot be uncolored
+	// therefore remove the entry "none" in this case
+	if (frameColorCO->currentIndex() != 0) {
+		if (backgroundColorCO->count() == color.count()) {
+			if (backgroundColorCO->currentIndex() == 0)
+				backgroundColorCO->setCurrentIndex(findPos2nd(color, qt_("white")));
 			backgroundColorCO->removeItem(0);
+		}
 	} else {
-		if (backgroundColorCO->itemText(0) != qt_("none"))
+		if (backgroundColorCO->count() == color.count() - 1)
 			backgroundColorCO->insertItem(0, qt_("none"));
 	}
 	changed();
@@ -270,9 +273,6 @@ void GuiBox::initDialog()
 	// LaTeX's default for \shadowsize is 4 pt
 	shadowsizeED->setText("4");
 	shadowsizeUnitsLC->setCurrentItem(Length::PT);
-	// the default color is black and none
-	frameColorCO->setCurrentIndex(findPos2nd(color, qt_("black")) - 1);
-	backgroundColorCO->setCurrentIndex(findPos2nd(color, qt_("none")));
 }
 
 
@@ -408,7 +408,8 @@ void GuiBox::paramsToDialog(Inset const * inset)
 		(params.shadowsize).asString(), default_unit);
 	// set color
 	frameColorCO->setCurrentIndex(findPos2nd(color, qt_(params.framecolor)) - 1);
-	if (frameColorCO->currentText() != qt_("black"))
+	// only if the framecolor is black the backgroundcolor has the entry "none"
+	if (frameColorCO->currentIndex() != 0)
 		backgroundColorCO->setCurrentIndex(findPos2nd(color, qt_(params.backgroundcolor)) - 1);
 	else
 		backgroundColorCO->setCurrentIndex(findPos2nd(color, qt_(params.backgroundcolor)));
@@ -494,15 +495,15 @@ docstring GuiBox::dialogToParams() const
 	else
 		params.shadowsize = Length("4pt");
 	if (frameColorCO->isEnabled())
-		params.framecolor = fromqstr(color[frameColorCO->currentIndex() + 1].first);
+		params.framecolor = lcolor.getLaTeXName(color[frameColorCO->currentIndex() + 1].second);
 	else
 		params.framecolor = "black";
 	if (backgroundColorCO->isEnabled()) {
 		// only if the framecolor is black the backgroundcolor has the entry "none"
-		if (frameColorCO->currentText() != qt_("black"))
-			params.backgroundcolor = fromqstr(color[backgroundColorCO->currentIndex() + 1].first);
+		if (frameColorCO->currentIndex() != 0)
+			params.backgroundcolor = lcolor.getLaTeXName(color[backgroundColorCO->currentIndex() + 1].second);
 		else
-			params.backgroundcolor = fromqstr(color[backgroundColorCO->currentIndex()].first);
+			params.backgroundcolor = lcolor.getLaTeXName(color[backgroundColorCO->currentIndex()].second);
 	} else
 		params.backgroundcolor = "none";
 
