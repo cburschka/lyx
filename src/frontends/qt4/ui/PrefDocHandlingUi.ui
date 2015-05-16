@@ -142,8 +142,7 @@
       <item row="2" column="0">
        <widget class="QCheckBox" name="saveCompressedCB">
         <property name="toolTip">
-         <string>If this is checked, new documents will be saved in a compressed binary-format by default.
-Existing documents will still be saved in their current state (compressed or uncompressed).</string>
+         <string>If this is checked, new documents will be saved in a compressed binary-format by default.&#x0a;Existing documents will still be saved in their current state (compressed or uncompressed).</string>
         </property>
         <property name="text">
          <string>&amp;Save new documents compressed by default</string>
@@ -172,8 +171,7 @@ Existing documents will still be saved in their current state (compressed or unc
       <item row="1" column="0">
        <widget class="QCheckBox" name="singleInstanceCB">
         <property name="toolTip">
-         <string>Whether to open documents in an already running instance of LyX.
-(Set the LyXServer pipe path and restart LyX to enable this feature)</string>
+         <string>Whether to open documents in an already running instance of LyX.&#x0a;(Set the LyXServer pipe path and restart LyX to enable this feature)</string>
         </property>
         <property name="text">
          <string>Use s&amp;ingle instance</string>
