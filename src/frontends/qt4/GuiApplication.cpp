@@ -2128,29 +2128,37 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 	}
 
 	if (func.action() == LFUN_UNKNOWN_ACTION) {
-		if (state & AltModifier) {
-			current_view_->message(_("Unknown function."));
-			current_view_->restartCursor();
-			return;
-		}
-		// Hmm, we didn't match any of the keysequences. See
-		// if it's normal insertable text not already covered
-		// by a binding
+		// We didn't match any of the key sequences.
+		// See if it's normal insertable text not already
+		// covered by a binding
 		if (keysym.isText() && d->keyseq.length() == 1) {
 			// Non-printable characters (such as ASCII control characters)
 			// must not be inserted (#5704)
 			if (!isPrintable(encoded_last_key)) {
 				LYXERR(Debug::KEY, "Non-printable character! Omitting.");
+				current_view_->restartCursor();
 				return;
 			}
-			// FIXME: Is this really needed? If not, we could  simply go with
-			// with the else part for LFUN_UNKNOWN_ACTION
-			// (see discussion at #5575)
+			// If a non-Shift Modifier is used we have a non-bound key sequence
+			// (such as Alt+j = j). This should be omitted (#5575).
+			// FIXME: On Windows, the AltModifier and ShiftModifer is also
+			// set when AltGr is pressed. Therefore, the check below does not work
+			// (see #5575 for details).
+#if !defined(_WIN32)
+			if ((state & AltModifier || state & ControlModifier || state & MetaModifier)) {
+				current_view_->message(_("Unknown function."));
+				current_view_->restartCursor();
+				return;
+			}
+#endif
+			// Since all checks above were passed, we now really have text that
+			// is to be inserted (e.g., AltGr-bound symbols). Thus change the
+			// func to LFUN_SELF_INSERT and thus cause the text to be inserted
+			// below.
 			LYXERR(Debug::KEY, "isText() is true, inserting.");
-			func = FuncRequest(LFUN_SELF_INSERT,
-					   FuncRequest::KEYBOARD);
+			func = FuncRequest(LFUN_SELF_INSERT, FuncRequest::KEYBOARD);
 		} else {
-			LYXERR(Debug::KEY, "Unknown, !isText() - giving up");
+			LYXERR(Debug::KEY, "Unknown Action and not isText() -- giving up");
 			if (current_view_) {
 				current_view_->message(_("Unknown function."));
 				current_view_->restartCursor();
