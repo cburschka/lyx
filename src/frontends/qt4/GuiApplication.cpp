@@ -2142,10 +2142,10 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 			// If a non-Shift Modifier is used we have a non-bound key sequence
 			// (such as Alt+j = j). This should be omitted (#5575).
 			// FIXME: On Windows, the AltModifier and ShiftModifer is also
-			// set when AltGr is pressed. Therefore, the check below does not work
-			// (see #5575 for details).
+			// set when AltGr is pressed. Therefore, the check below cannot be used
+			// since it breaks AltGr-bound symbols (see #5575 for details).
 #if !defined(_WIN32)
-			if ((state & AltModifier || state & ControlModifier || state & MetaModifier)) {
+			if (state & AltModifier || state & ControlModifier || state & MetaModifier) {
 				current_view_->message(_("Unknown function."));
 				current_view_->restartCursor();
 				return;
