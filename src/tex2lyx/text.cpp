@@ -1394,8 +1394,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			preamble.registerAutomaticallyLoadedPackage("float");
 		else {
 			Floating const & fl = parent_context.textclass.floats()
-				.getType(unstarred_name);
-		        if (!fl.floattype().empty() && fl.usesFloatPkg())
+			                      .getType(unstarred_name);
+			if (!fl.floattype().empty() && fl.usesFloatPkg())
 				preamble.registerAutomaticallyLoadedPackage("float");
 		}
 
