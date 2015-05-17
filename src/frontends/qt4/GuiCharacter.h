@@ -52,7 +52,6 @@ typedef std::pair<QString, FontSeries> SeriesPair;
 typedef std::pair<QString, FontShape>  ShapePair;
 typedef std::pair<QString, FontSize>   SizePair;
 typedef std::pair<QString, FontState>  BarPair;
-typedef std::pair<QString, ColorCode>  ColorPair;
 typedef std::pair<QString, QString>    LanguagePair;
 
 class GuiCharacter : public GuiDialog, public Ui::CharacterUi
@@ -87,7 +86,7 @@ private:
 	QList<ShapePair>  shape;
 	QList<SizePair>   size;
 	QList<BarPair>    bar;
-	QList<ColorPair>  color;
+	QList<ColorCode> color;
 	QList<LanguagePair> language;
 
 	///

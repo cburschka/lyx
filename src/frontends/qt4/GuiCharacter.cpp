@@ -28,6 +28,8 @@
 #include "Language.h"
 #include "Paragraph.h"
 
+#include "support/gettext.h"
+
 #include <QAbstractItemModel>
 #include <QComboBox>
 #include <QModelIndex>
@@ -88,31 +90,28 @@ static QList<BarPair> barData()
 }
 
 
-static QList<ColorPair> colorData()
+static QList<ColorCode> colorData()
 {
-	QList<ColorPair> colors;
-	colors << ColorPair(qt_("No change"), Color_ignore);
-	colors << ColorPair(qt_("No color"), Color_none);
-	colors << ColorPair(qt_("Black"), Color_black);
-	colors << ColorPair(qt_("Blue"), Color_blue);
-	colors << ColorPair(qt_("Brown"), Color_brown);
-	colors << ColorPair(qt_("Cyan"), Color_cyan);
-	colors << ColorPair(qt_("Darkgray"), Color_darkgray);
-	colors << ColorPair(qt_("Gray"), Color_gray);
-	colors << ColorPair(qt_("Green"), Color_green);
-	colors << ColorPair(qt_("Lightgray"), Color_lightgray);
-	colors << ColorPair(qt_("Lime"), Color_lime);
-	colors << ColorPair(qt_("Magenta"), Color_magenta);
-	colors << ColorPair(qt_("Olive"), Color_olive);
-	colors << ColorPair(qt_("Orange"), Color_orange);
-	colors << ColorPair(qt_("Pink"), Color_pink);
-	colors << ColorPair(qt_("Purple"), Color_purple);
-	colors << ColorPair(qt_("Red"), Color_red);
-	colors << ColorPair(qt_("Teal"), Color_teal);
-	colors << ColorPair(qt_("Violet"), Color_violet);
-	colors << ColorPair(qt_("White"), Color_white);
-	colors << ColorPair(qt_("Yellow"), Color_yellow);
-	colors << ColorPair(qt_("Reset"), Color_inherit);
+	QList<ColorCode> colors;
+	colors << Color_black;
+	colors << Color_blue;
+	colors << Color_brown;
+	colors << Color_cyan;
+	colors << Color_darkgray;
+	colors << Color_gray;
+	colors << Color_green;
+	colors << Color_lightgray;
+	colors << Color_lime;
+	colors << Color_magenta;
+	colors << Color_olive;
+	colors << Color_orange;
+	colors << Color_pink;
+	colors << Color_purple;
+	colors << Color_red;
+	colors << Color_teal;
+	colors << Color_violet;
+	colors << Color_white;
+	colors << Color_yellow;
 	return colors;
 }
 
@@ -174,19 +173,21 @@ template<typename T>
 void fillComboColor(QComboBox * combo, QList<T> const & list)
 {
 	// at first add the 2 colors "No change" and "No color"
-	combo->addItem(list.begin()->first);
-	combo->addItem((list.begin() + 1)->first);
+	combo->addItem(qt_("No change"), "ignore");
+	combo->addItem(qt_("No color"), "none");
 	// now add the real colors
 	QPixmap coloritem(32, 32);
 	QColor color;
-	typename QList<T>::const_iterator cit = list.begin() + 2;
-	for (; cit != list.end() - 1; ++cit) {
-		color = QColor(guiApp->colorCache().get(cit->second, false));
+	QList<ColorCode>::const_iterator cit = list.begin();
+	for (; cit != list.end(); ++cit) {
+		QString const lyxname = toqstr(lcolor.getLyXName(*cit));
+		QString const guiname = toqstr(translateIfPossible(lcolor.getGUIName(*cit)));
+		color = QColor(guiApp->colorCache().get(*cit, false));
 		coloritem.fill(color);
-		combo->addItem(QIcon(coloritem), cit->first);
+		combo->addItem(QIcon(coloritem), guiname, lyxname);
 	}
 	//the last color is "Reset"
-	combo->addItem((list.end() - 1)->first);
+	combo->addItem(qt_("Reset"), "inherit");
 }
 
 }
@@ -218,6 +219,7 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	size   = sizeData();
 	bar    = barData();
 	color  = colorData();
+	sort(color.begin(), color.end(), ColorSorter());
 
 	language = languageData();
 	language.prepend(LanguagePair(qt_("Reset"), "reset"));
@@ -395,7 +397,7 @@ void GuiCharacter::paramsToDialog(Font const & font)
 	shapeCO->setCurrentIndex(findPos2nd(shape, fi.shape()));
 	sizeCO->setCurrentIndex(findPos2nd(size, fi.size()));
 	miscCO->setCurrentIndex(findPos2nd(bar, getBar(fi)));
-	colorCO->setCurrentIndex(findPos2nd(color, fi.color()));
+	colorCO->setCurrentIndex(colorCO->findData(toqstr(lcolor.getLyXName(fi.color()))));
 
 	// reset_language is a null pointer.
 	QString const lang = (font.language() == reset_language)
@@ -414,7 +416,7 @@ void GuiCharacter::applyView()
 	fi.setShape(shape[shapeCO->currentIndex()].second);
 	fi.setSize(size[sizeCO->currentIndex()].second);
 	setBar(fi, bar[miscCO->currentIndex()].second);
-	fi.setColor(color[colorCO->currentIndex()].second);
+	fi.setColor(lcolor.getFromLyXName(fromqstr(colorCO->itemData(colorCO->currentIndex()).toString())));
 
 	font_.setLanguage(languages.getLanguage(
 		fromqstr(language[langCO->currentIndex()].second)));
