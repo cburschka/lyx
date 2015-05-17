@@ -64,6 +64,7 @@ following hack as starting point to write some macros:
 #include "InsetMathString.h"
 #include "InsetMathTabular.h"
 #include "MathMacroTemplate.h"
+#include "MathExtern.h"
 #include "MathFactory.h"
 #include "MathMacroArgument.h"
 #include "MathSupport.h"
@@ -1374,7 +1375,6 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			}
 		}
 
-#if 0
 		else if (t.cs() == "multicolumn") {
 			// extract column count and insert dummy cells
 			MathData count;
@@ -1382,30 +1382,30 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			int cols = 1;
 			if (!extractNumber(count, cols)) {
 				success_ = false;
-				lyxerr << " can't extract number of cells from " << count << endl;
+				error("can't extract number of multicolumn cells");
 			}
 			// resize the table if necessary
+			size_t first = 0;
 			for (int i = 0; i < cols; ++i) {
 				if (addCol(grid, cellcol)) {
-					cell = &grid.cell(grid.index(
-							cellrow, cellcol));
-					// mark this as dummy
-					grid.cellinfo(grid.index(
-						cellrow, cellcol)).dummy_ = true;
+					size_t const idx = grid.index(cellrow, cellcol);
+					if (i == 0)
+						first = idx;
+					grid.cellinfo(idx).multi_ =
+						InsetMathGrid::CELL_PART_OF_MULTICOLUMN;
 				}
 			}
-			// the last cell is the real thing, not a dummy
-			grid.cellinfo(grid.index(cellrow, cellcol)).dummy_ = false;
+
+			// the first cell is the real thing, not a dummy
+			cell = &grid.cell(first);
+			grid.cellinfo(first).multi_ = InsetMathGrid::CELL_BEGIN_OF_MULTICOLUMN;
 
 			// read special alignment
-			MathData align;
-			parse(align, FLAG_ITEM, mode);
-			//grid.cellinfo(grid.index(cellrow, cellcol)).align_ = extractString(align);
+			grid.cellinfo(first).align_ = parse_verbatim_item();
 
 			// parse the remaining contents into the "real" cell
 			parse(*cell, FLAG_ITEM, mode);
 		}
-#endif
 
 		else if (t.cs() == "limits" || t.cs() == "nolimits") {
 			CatCode const cat = nextToken().cat();

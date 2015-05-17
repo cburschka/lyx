@@ -99,8 +99,16 @@ void InsetMathMatrix::mathmlize(MathStream & os) const
 	os << MTag("mtable");
 	for (row_type row = 0; row < nrows(); ++row) {
 		os << MTag("mtr");
-		for (col_type col = 0; col < ncols(); ++col)
-			os << MTag("mtd") << cell(index(row, col)) << ETag("mtd");
+		for (col_type col = 0; col < ncols(); ++col) {
+			idx_type const i = index(row, col);
+			if (cellinfo_[i].multi_ != CELL_PART_OF_MULTICOLUMN) {
+				col_type const cellcols = ncellcols(i);
+				ostringstream attr;
+				if (cellcols > 1)
+					attr << "columnspan='" << cellcols << '\'';
+				os << MTag("mtd", attr.str()) << cell(i) << ETag("mtd");
+			}
+		}
 		os << ETag("mtr");
 	}
 	os << ETag("mtable");
@@ -124,8 +132,18 @@ void InsetMathMatrix::htmlize(HtmlStream & os) const
 		os << MTag("tr") << '\n';
 		if (row == 0)
 			os << MTag("td", lattrib) << ETag("td") << '\n';
-		for (col_type col = 0; col < ncols(); ++col)
-			os << MTag("td") << cell(index(row, col)) << ETag("td") << '\n';
+		for (col_type col = 0; col < ncols(); ++col) {
+			idx_type const i = index(row, col);
+			if (cellinfo_[i].multi_ != CELL_PART_OF_MULTICOLUMN) {
+				col_type const cellcols = ncellcols(i);
+				ostringstream attr;
+				if (cellcols > 1)
+					attr << "colspan='" << cellcols
+					     << '\'';
+				os << MTag("td", attr.str()) << cell(i)
+				   << ETag("td") << '\n';
+			}
+		}
 		if (row == 0)
 			os << MTag("td", rattrib) << ETag("td") << '\n';
 		os << ETag("tr") << '\n';

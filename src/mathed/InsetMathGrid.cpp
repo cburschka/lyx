@@ -81,7 +81,7 @@ static void resetGrid(InsetMathGrid & grid)
 
 
 InsetMathGrid::CellInfo::CellInfo()
-	: dummy_(false)
+	: multi_(CELL_NORMAL)
 {}
 
 
@@ -172,6 +172,8 @@ void InsetMathGrid::setDefaults()
 		colinfo_[col].skip_  = defaultColSpace(col);
 		colinfo_[col].special_.clear();
 	}
+	for (idx_type idx = 0; idx < nargs(); ++idx)
+		cellinfo_[idx].multi_ = CELL_NORMAL;
 }
 
 
@@ -358,6 +360,23 @@ InsetMathGrid::row_type InsetMathGrid::row(idx_type idx) const
 }
 
 
+InsetMathGrid::col_type InsetMathGrid::ncellcols(idx_type idx) const
+{
+	col_type cols = 1;
+	if (cellinfo_[idx].multi_ == CELL_NORMAL)
+		return cols;
+	// If the cell at idx is already CELL_PART_OF_MULTICOLUMN we return
+	// the number of remaining columns, not the ones of the complete
+	// multicolumn cell. This makes it possible to always go to the next
+	// cell with idx + ncellcols(idx) - 1.
+	row_type const r = row(idx);
+	while (idx+cols < nargs() && row(idx+cols) == r &&
+	       cellinfo_[idx+cols].multi_ == CELL_PART_OF_MULTICOLUMN)
+		cols++;
+	return cols;
+}
+
+
 void InsetMathGrid::vcrskip(Length const & crskip, row_type row)
 {
 	rowinfo_[row].crskip_ = crskip;
@@ -373,7 +392,12 @@ Length InsetMathGrid::vcrskip(row_type row) const
 void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	// let the cells adjust themselves
-	InsetMathNest::metrics(mi);
+	for (idx_type i = 0; i < nargs(); ++i) {
+		if (cellinfo_[i].multi_ != CELL_PART_OF_MULTICOLUMN) {
+			Dimension dimc;
+			cell(i).metrics(mi, dimc);
+		}
+	}
 
 	BufferView & bv = *mi.base.bv;
 
@@ -382,9 +406,12 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 		int asc  = 0;
 		int desc = 0;
 		for (col_type col = 0; col < ncols(); ++col) {
-			Dimension const & dimc = cell(index(row, col)).dimension(bv);
-			asc  = max(asc,  dimc.asc);
-			desc = max(desc, dimc.des);
+			idx_type const i = index(row, col);
+			if (cellinfo_[i].multi_ != CELL_PART_OF_MULTICOLUMN) {
+				Dimension const & dimc = cell(i).dimension(bv);
+				asc  = max(asc,  dimc.asc);
+				desc = max(desc, dimc.des);
+			}
 		}
 		rowinfo_[row].ascent_  = asc;
 		rowinfo_[row].descent_ = desc;
@@ -421,11 +448,33 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 		rowinfo_[row].offset_ -= h;
 
 
+	// multicolumn cell widths, as a map from first column to width in a
+	// vector of last columns.
+	// This is only used if the grid has more than one row, since for
+	// one-row grids multicolumn cells do not need special handling
+	vector<map<col_type, int> > mcolwidths(ncols());
+
 	// compute absolute sizes of horizontal structure
 	for (col_type col = 0; col < ncols(); ++col) {
 		int wid = 0;
-		for (row_type row = 0; row < nrows(); ++row)
-			wid = max(wid, cell(index(row, col)).dimension(bv).wid);
+		for (row_type row = 0; row < nrows(); ++row) {
+			idx_type const i = index(row, col);
+			if (cellinfo_[i].multi_ != CELL_PART_OF_MULTICOLUMN) {
+				int const w = cell(i).dimension(bv).wid;
+				col_type const cols = ncellcols(i);
+				if (cols > 1 && nrows() > 1) {
+					col_type last = col+cols-1;
+					LASSERT(last < ncols(), last = ncols()-1);
+					map<col_type, int>::iterator it =
+						mcolwidths[last].find(col);
+					if (it == mcolwidths[last].end())
+						mcolwidths[last][col] = w;
+					else
+						it->second = max(it->second, w);
+				} else
+					wid = max(wid, w);
+			}
+		}
 		colinfo_[col].width_ = wid;
 	}
 	colinfo_[ncols()].width_  = 0;
@@ -439,6 +488,35 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 			colinfo_[col - 1].skip_ +
 			colsep() +
 			colinfo_[col].lines_ * vlinesep();
+	}
+
+	// increase column widths for multicolumn cells if needed
+	// FIXME: multicolumn lines are not yet considered
+	for (col_type last = 0; last < ncols(); ++last) {
+		map<col_type, int> const & widths = mcolwidths[last];
+		// We increase the width of the last column of the multicol
+		// cell (some sort of left alignment). Since we iterate through
+		// the last and the first columns from left to right, we ensure
+		// that increased widths of previous columns are correctly
+		// taken into account for later columns, thus preventing
+		// unneeded width increasing.
+		for (map<col_type, int>::const_iterator it = widths.begin();
+		     it != widths.end(); ++it) {
+			int const wid = it->second;
+			col_type const first = it->first;
+			int const nextoffset =
+				colinfo_[first].offset_ +
+				wid +
+				colinfo_[last].skip_ +
+				colsep() +
+				colinfo_[last+1].lines_ * vlinesep();
+			int const dx = nextoffset - colinfo_[last+1].offset_;
+			if (dx > 0) {
+				colinfo_[last].width_ += dx;
+				for (col_type col = last + 1; col <= ncols(); ++col)
+					colinfo_[col].offset_ += dx;
+			}
+		}
 	}
 
 
@@ -526,11 +604,47 @@ void InsetMathGrid::drawWithMargin(PainterInfo & pi, int x, int y,
 	Dimension const dim = dimension(*pi.base.bv);
 	BufferView const & bv = *pi.base.bv;
 
-	for (idx_type idx = 0; idx < nargs(); ++idx)
-		cell(idx).draw(pi, x + lmargin + cellXOffset(bv, idx),
-			y + cellYOffset(idx));
+	for (idx_type idx = 0; idx < nargs(); ++idx) {
+		if (cellinfo_[idx].multi_ != CELL_PART_OF_MULTICOLUMN) {
+			cell(idx).draw(pi,
+				x + lmargin + cellXOffset(bv, idx),
+				y + cellYOffset(idx));
 
-	for (row_type row = 0; row <= nrows(); ++row)
+			// draw inner lines cell by cell because of possible multicolumns
+			// FIXME: multicolumn lines are not yet considered
+			row_type const r = row(idx);
+			col_type const c = col(idx);
+			if (r > 0 && r < nrows()) {
+				for (unsigned int i = 0; i < rowinfo_[r].lines_; ++i) {
+					int yy = y + rowinfo_[r].offset_
+						- rowinfo_[r].ascent_
+						- i * hlinesep()
+						- hlinesep()/2 - rowsep()/2;
+					pi.pain.line(
+						x + lmargin + colinfo_[c].offset_,
+						yy,
+						x + lmargin + colinfo_[c+1].offset_,
+						yy, Color_foreground);
+				}
+			}
+			if (c > 0 && c < ncols()) {
+				for (unsigned int i = 0; i < colinfo_[c].lines_; ++i) {
+					int xx = x + lmargin
+						+ colinfo_[c].offset_
+						- i * vlinesep()
+						- vlinesep()/2 - colsep()/2;
+					pi.pain.line(xx,
+						rowinfo_[r].offset_ - rowinfo_[r].ascent_,
+						xx,
+						rowinfo_[r].offset_ + rowinfo_[r].descent_,
+						Color_foreground);
+				}
+			}
+		}
+	}
+
+	// draw outer lines in one go
+	for (row_type row = 0; row <= nrows(); row += nrows())
 		for (unsigned int i = 0; i < rowinfo_[row].lines_; ++i) {
 			int yy = y + rowinfo_[row].offset_ - rowinfo_[row].ascent_
 				- i * hlinesep() - hlinesep()/2 - rowsep()/2;
@@ -539,7 +653,7 @@ void InsetMathGrid::drawWithMargin(PainterInfo & pi, int x, int y,
 				     Color_foreground);
 		}
 
-	for (col_type col = 0; col <= ncols(); ++col)
+	for (col_type col = 0; col <= ncols(); col += ncols())
 		for (unsigned int i = 0; i < colinfo_[col].lines_; ++i) {
 			int xx = x + lmargin + colinfo_[col].offset_
 				- i * vlinesep() - vlinesep()/2 - colsep()/2;
@@ -554,20 +668,23 @@ void InsetMathGrid::drawWithMargin(PainterInfo & pi, int x, int y,
 void InsetMathGrid::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 {
 	// let the cells adjust themselves
-	//InsetMathNest::metrics(mi);
 	for (idx_type i = 0; i < nargs(); ++i)
-		cell(i).metricsT(mi, dim);
+		if (cellinfo_[i].multi_ != CELL_PART_OF_MULTICOLUMN)
+			cell(i).metricsT(mi, dim);
 
 	// compute absolute sizes of vertical structure
 	for (row_type row = 0; row < nrows(); ++row) {
 		int asc  = 0;
 		int desc = 0;
 		for (col_type col = 0; col < ncols(); ++col) {
-			//MathData const & c = cell(index(row, col));
-			// FIXME: BROKEN!
-			Dimension dimc;
-			asc  = max(asc,  dimc.ascent());
-			desc = max(desc, dimc.descent());
+			idx_type const i = index(row, col);
+			if (cellinfo_[i].multi_ != CELL_PART_OF_MULTICOLUMN) {
+				//MathData const & c = cell(i);
+				// FIXME: BROKEN!
+				Dimension dimc;
+				asc  = max(asc,  dimc.ascent());
+				desc = max(desc, dimc.descent());
+			}
 		}
 		rowinfo_[row].ascent_  = asc;
 		rowinfo_[row].descent_ = desc;
@@ -609,7 +726,9 @@ void InsetMathGrid::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 		int wid = 0;
 		for (row_type row = 0; row < nrows(); ++row) {
 			// FIXME: BROKEN!
-			//wid = max(wid, cell(index(row, col)).width());
+			//idx_type const i = index(row, col);
+			//if (cellinfo_[i].multi_ != CELL_PART_OF_MULTICOLUMN)
+			//	wid = max(wid, cell(i).width());
 		}
 		colinfo_[col].width_ = wid;
 	}
@@ -647,7 +766,8 @@ void InsetMathGrid::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 void InsetMathGrid::drawT(TextPainter & /*pain*/, int /*x*/, int /*y*/) const
 {
 //	for (idx_type idx = 0; idx < nargs(); ++idx)
-//		cell(idx).drawT(pain, x + cellXOffset(idx), y + cellYOffset(idx));
+//		if (cellinfo_[idx].multi_ != CELL_PART_OF_MULTICOLUMN)
+//			cell(idx).drawT(pain, x + cellXOffset(idx), y + cellYOffset(idx));
 }
 
 
@@ -655,7 +775,8 @@ void InsetMathGrid::updateBuffer(ParIterator const & it, UpdateType utype)
 {
 	// pass down
 	for (idx_type idx = 0; idx < nargs(); ++idx)
-		cell(idx).updateBuffer(it, utype);
+		if (cellinfo_[idx].multi_ != CELL_PART_OF_MULTICOLUMN)
+			cell(idx).updateBuffer(it, utype);
 }
 
 
@@ -801,14 +922,16 @@ void InsetMathGrid::swapCol(col_type col)
 
 int InsetMathGrid::cellXOffset(BufferView const & bv, idx_type idx) const
 {
+	if (cellinfo_[idx].multi_ == CELL_PART_OF_MULTICOLUMN)
+		return 0;
 	col_type c = col(idx);
 	int x = colinfo_[c].offset_;
-	char align = displayColAlign(c, row(idx));
+	char align = displayColAlign(idx);
 	Dimension const & celldim = cell(idx).dimension(bv);
 	if (align == 'r' || align == 'R')
-		x += colinfo_[c].width_ - celldim.wid;
+		x += cellWidth(idx) - celldim.wid;
 	if (align == 'c' || align == 'C')
-		x += (colinfo_[c].width_ - celldim.wid) / 2;
+		x += (cellWidth(idx) - celldim.wid) / 2;
 	return x;
 }
 
@@ -816,6 +939,27 @@ int InsetMathGrid::cellXOffset(BufferView const & bv, idx_type idx) const
 int InsetMathGrid::cellYOffset(idx_type idx) const
 {
 	return rowinfo_[row(idx)].offset_;
+}
+
+
+int InsetMathGrid::cellWidth(idx_type idx) const
+{
+	switch (cellinfo_[idx].multi_) {
+	case CELL_NORMAL:
+		return colinfo_[col(idx)].width_;
+	case CELL_BEGIN_OF_MULTICOLUMN: {
+		col_type c1 = col(idx);
+		col_type c2 = c1 + ncellcols(idx);
+		return colinfo_[c2].offset_
+			- colinfo_[c1].offset_
+			- colinfo_[c2].skip_
+			- colsep()
+			- colinfo_[c2].lines_ * vlinesep();
+	}
+	case CELL_PART_OF_MULTICOLUMN:
+		return 0;
+	}
+	return 0;
 }
 
 
@@ -830,6 +974,11 @@ bool InsetMathGrid::idxUpDown(Cursor & cur, bool up) const
 			return false;
 		cur.idx() += ncols();
 	}
+	// If we are in a multicolumn cell, move to the "real" cell
+	while (cellinfo_[cur.idx()].multi_ == CELL_PART_OF_MULTICOLUMN) {
+		LASSERT(cur.idx() > 0, return false);
+		--cur.idx();
+	}
 	cur.pos() = cur.cell().x2pos(&cur.bv(), cur.x_target() - cur.cell().xo(cur.bv()));
 	return true;
 }
@@ -841,6 +990,11 @@ bool InsetMathGrid::idxBackward(Cursor & cur) const
 	if (cur.col() == 0)
 		return false;
 	--cur.idx();
+	// If we are in a multicolumn cell, move to the "real" cell
+	while (cellinfo_[cur.idx()].multi_ == CELL_PART_OF_MULTICOLUMN) {
+		LASSERT(cur.idx() > 0, return false);
+		--cur.idx();
+	}
 	cur.pos() = cur.lastpos();
 	return true;
 }
@@ -852,6 +1006,13 @@ bool InsetMathGrid::idxForward(Cursor & cur) const
 	if (cur.col() + 1 == ncols())
 		return false;
 	++cur.idx();
+	// If we are in a multicolumn cell, move to the next cell
+	while (cellinfo_[cur.idx()].multi_ == CELL_PART_OF_MULTICOLUMN) {
+		// leave matrix if at the back edge
+		if (cur.col() + 1 == ncols())
+			return false;
+		++cur.idx();
+	}
 	cur.pos() = 0;
 	return true;
 }
@@ -869,6 +1030,11 @@ bool InsetMathGrid::idxFirst(Cursor & cur) const
 		default:
 			cur.idx() = ((nrows() - 1) / 2) * ncols();
 	}
+	// If we are in a multicolumn cell, move to the "real" cell
+	while (cellinfo_[cur.idx()].multi_ == CELL_PART_OF_MULTICOLUMN) {
+		LASSERT(cur.idx() > 0, return false);
+		--cur.idx();
+	}
 	cur.pos() = 0;
 	return true;
 }
@@ -885,6 +1051,11 @@ bool InsetMathGrid::idxLast(Cursor & cur) const
 			break;
 		default:
 			cur.idx() = ((nrows() - 1) / 2 + 1) * ncols() - 1;
+	}
+	// If we are in a multicolumn cell, move to the "real" cell
+	while (cellinfo_[cur.idx()].multi_ == CELL_PART_OF_MULTICOLUMN) {
+		LASSERT(cur.idx() > 0, return false);
+		--cur.idx();
 	}
 	cur.pos() = cur.lastpos();
 	return true;
@@ -936,9 +1107,15 @@ void InsetMathGrid::idxGlue(idx_type idx)
 			delRow(row(idx) + 1);
 		}
 	} else {
-		cell(idx).append(cell(idx + 1));
+		idx_type idx_next = idx + 1;
+		while (idx_next < nargs() &&
+		       cellinfo_[idx_next].multi_ == CELL_PART_OF_MULTICOLUMN)
+			++idx_next;
+		if (idx_next < nargs())
+			cell(idx).append(cell(idx_next));
+		col_type oldcol = c + 1;
 		for (col_type cc = c + 2; cc < ncols(); ++cc)
-			cell(idx - c + cc - 1) = cell(idx - c + cc);
+			cell(idx - oldcol + cc) = cell(idx - oldcol + 1 + cc);
 		cell(idx - c + ncols() - 1).clear();
 	}
 }
@@ -968,14 +1145,26 @@ bool InsetMathGrid::idxBetween(idx_type idx, idx_type from, idx_type to) const
 }
 
 
-
 void InsetMathGrid::normalize(NormalStream & os) const
 {
 	os << "[grid ";
 	for (row_type row = 0; row < nrows(); ++row) {
 		os << "[row ";
-		for (col_type col = 0; col < ncols(); ++col)
-			os << "[cell " << cell(index(row, col)) << ']';
+		for (col_type col = 0; col < ncols(); ++col) {
+			idx_type const i = index(row, col);
+			switch (cellinfo_[i].multi_) {
+			case CELL_NORMAL:
+				os << "[cell " << cell(i) << ']';
+				break;
+			case CELL_BEGIN_OF_MULTICOLUMN:
+				os << "[cell colspan="
+				   << static_cast<int>(ncellcols(i)) << ' '
+				   << cell(i) << ']';
+				break;
+			case CELL_PART_OF_MULTICOLUMN:
+				break;
+			}
+		}
 		os << ']';
 	}
 	os << ']';
@@ -992,9 +1181,16 @@ void InsetMathGrid::mathmlize(MathStream & os) const
 		if (havetable)
 			os << MTag("mtr");
 		for (col_type col = 0; col < ncols(); ++col) {
-			os << MTag(celltag);
-			os << cell(index(row, col));
-			os << ETag(celltag);
+			idx_type const i = index(row, col);
+			if (cellinfo_[i].multi_ != CELL_PART_OF_MULTICOLUMN) {
+				col_type const cellcols = ncellcols(i);
+				ostringstream attr;
+				if (havetable && cellcols > 1)
+					attr << "colspan='" << cellcols << '\'';
+				os << MTag(celltag, attr.str());
+				os << cell(index(row, col));
+				os << ETag(celltag);
+			}
 		}
 		if (havetable)
 			os << ETag("mtr");
@@ -1017,9 +1213,16 @@ void InsetMathGrid::htmlize(HtmlStream & os, string attrib) const
 	for (row_type row = 0; row < nrows(); ++row) {
 		os << MTag("tr");
 		for (col_type col = 0; col < ncols(); ++col) {
-			os << MTag("td");
-			os << cell(index(row, col));
-			os << ETag("td");
+			idx_type const i = index(row, col);
+			if (cellinfo_[i].multi_ != CELL_PART_OF_MULTICOLUMN) {
+				col_type const cellcols = ncellcols(i);
+				ostringstream attr;
+				if (cellcols > 1)
+					attr << "colspan='" << cellcols << '\'';
+				os << MTag("td", attr.str());
+				os << cell(index(row, col));
+				os << ETag("td");
+			}
 		}
 		os << ETag("tr");
 	}
@@ -1052,7 +1255,10 @@ void InsetMathGrid::write(WriteStream & os,
 		bool emptyline = true;
 		bool last_eoln = true;
 		for (col_type col = beg_col; col < end_col; ++col) {
-			bool const empty_cell = cell(index(row, col)).empty();
+			idx_type const idx = index(row, col);
+			if (cellinfo_[idx].multi_ == CELL_PART_OF_MULTICOLUMN)
+				continue;
+			bool const empty_cell = cell(idx).empty();
 			if (!empty_cell)
 				last_eoln = false;
 			if (!empty_cell || colinfo_[col + 1].lines_) {
@@ -1060,11 +1266,26 @@ void InsetMathGrid::write(WriteStream & os,
 				emptyline = false;
 			}
 		}
-		for (col_type col = beg_col; col < lastcol; ++col) {
-			os << cell(index(row, col));
+		for (col_type col = beg_col; col < lastcol;) {
+			int nccols = 1;
+			idx_type const idx = index(row, col);
+			if (cellinfo_[idx].multi_ == CELL_BEGIN_OF_MULTICOLUMN) {
+				size_t s = col + 1;
+				while (s < ncols() &&
+				       cellinfo_[index(row, s)].multi_ == CELL_PART_OF_MULTICOLUMN)
+					s++;
+				nccols = s - col;
+				os << "\\multicolumn{" << nccols
+				   << "}{" << cellinfo_[idx].align_
+				   << "}{";
+			}
+			os << cell(idx);
 			if (os.pendingBrace())
 				ModeSpecifier specifier(os, TEXT_MODE);
+			if (cellinfo_[idx].multi_ == CELL_BEGIN_OF_MULTICOLUMN)
+				os << '}';
 			os << eocString(col, lastcol);
+			col += nccols;
 		}
 		eol = eolString(row, os.fragile(), os.latex(), last_eoln);
 		os << eol;
@@ -1125,8 +1346,27 @@ void InsetMathGrid::splitCell(Cursor & cur)
 	ar.erase(0, cur.pos());
 	cur.cell().erase(cur.pos(), cur.lastpos());
 	++cur.idx();
+	while (cur.idx() << nargs() &&
+	       cellinfo_[cur.idx()].multi_ == CELL_BEGIN_OF_MULTICOLUMN)
+		++cur.idx();
 	cur.pos() = 0;
 	cur.cell().insert(0, ar);
+}
+
+
+char InsetMathGrid::displayColAlign(idx_type idx) const
+{
+	if (cellinfo_[idx].multi_ == CELL_BEGIN_OF_MULTICOLUMN) {
+		// align_ may also contain lines like "||r|", so this is
+		// not complete, but we catch at least the simple cases.
+		if (cellinfo_[idx].align_ == "c")
+			return 'c';
+		if (cellinfo_[idx].align_ == "l")
+			return 'l';
+		if (cellinfo_[idx].align_ == "r")
+			return 'r';
+	}
+	return colinfo_[col(idx)].align_;
 }
 
 

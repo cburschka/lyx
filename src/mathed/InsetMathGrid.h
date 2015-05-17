@@ -25,13 +25,23 @@ namespace lyx {
 class InsetMathGrid : public InsetMathNest {
 public:
 
+	enum Multicolumn {
+		/// A normal cell
+		CELL_NORMAL = 0,
+		/// A multicolumn cell. The number of columns is <tt>1 + number
+		/// of CELL_PART_OF_MULTICOLUMN cells</tt> that follow directly
+		CELL_BEGIN_OF_MULTICOLUMN = 1,
+		/// This is a dummy cell (part of a multicolumn cell)
+		CELL_PART_OF_MULTICOLUMN = 2
+	};
+
 	/// additional per-cell information
 	class CellInfo {
 	public:
 		///
 		CellInfo();
-		/// a dummy cell before a multicolumn cell
-		int dummy_;
+		/// multicolumn flag
+		Multicolumn multi_;
 		/// special multi colums alignment
 		docstring align_;
 		/// these should be a per-cell property, but ok to have it here
@@ -79,7 +89,7 @@ public:
 		mutable int offset_;
 		/// how many lines to the left of this column?
 		unsigned int lines_;
-		/// additional amount to be skipped when drawing
+		/// additional amount to the right to be skipped when drawing
 		int skip_;
 		/// Special alignment.
 		/// This does also contain align_ and lines_ if it is nonempty.
@@ -152,6 +162,8 @@ public:
 	col_type col(idx_type idx) const;
 	///
 	row_type row(idx_type idx) const;
+	/// number of columns of cell \p idx
+	col_type ncellcols(idx_type idx) const;
 
 	///
 	bool idxUpDown(Cursor &, bool up) const;
@@ -237,6 +249,8 @@ protected:
 	int cellXOffset(BufferView const &, idx_type idx) const;
 	/// returns y offset of cell compared to inset
 	int cellYOffset(idx_type idx) const;
+	/// Width of cell, taking combined columns into account
+	int cellWidth(idx_type idx) const;
 	/// returns proper 'end of line' code for LaTeX
 	virtual docstring eolString(row_type row, bool fragile, bool latex,
 			bool last_eoln) const;
@@ -244,9 +258,9 @@ protected:
 	virtual docstring eocString(col_type col, col_type lastcol) const;
 	/// splits cells and shifts right part to the next cell
 	void splitCell(Cursor & cur);
-	/// Column aligmment for display of cell at (\p row, \p col).
+	/// Column aligmment for display of cell \p idx.
 	/// Must not be written to file!
-	virtual char displayColAlign(col_type col, row_type) const { return colinfo_[col].align_; }
+	virtual char displayColAlign(idx_type idx) const;
 
 
 	/// row info.

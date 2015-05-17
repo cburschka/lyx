@@ -111,8 +111,7 @@ public:
 	///
 	char defaultColAlign(col_type col);
 	///
-	///
-	char displayColAlign(col_type col, row_type row) const;
+	char displayColAlign(idx_type idx) const;
 	///
 	bool idxFirst(Cursor &) const;
 	///

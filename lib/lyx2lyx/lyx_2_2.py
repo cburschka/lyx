@@ -1130,6 +1130,30 @@ def revert_colorbox(document):
         i = i + 11
 
 
+def revert_mathmulticol(document):
+    " Convert formulas to ERT if they contain multicolumns "
+
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Formula', i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(i))
+            i += 1
+            continue
+        lines = document.body[i:j]
+        lines[0] = lines[0].replace('\\begin_inset Formula', '').lstrip()
+        code = "\n".join(lines)
+        if code.find("\\multicolumn") != -1:
+            ert = put_cmd_in_ert(code)
+            document.body[i:j+1] = ert
+            i = find_end_of_inset(document.body, i)
+        else:
+            i = j
+
+
 ##
 # Conversion hub
 #
@@ -1156,10 +1180,12 @@ convert = [
            [489, [convert_BoxFeatures]],
            [490, [convert_origin]],
            [491, []],
-           [492, [convert_colorbox]]
+           [492, [convert_colorbox]],
+           [493, []]
           ]
 
 revert =  [
+           [492, [revert_mathmulticol]],
            [491, [revert_colorbox]],
            [490, [revert_textcolor]],
            [489, [revert_origin]],

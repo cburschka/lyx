@@ -356,15 +356,16 @@ char InsetMathHull::defaultColAlign(col_type col)
 }
 
 
-char InsetMathHull::displayColAlign(col_type col, row_type row) const
+char InsetMathHull::displayColAlign(idx_type idx) const
 {
 	if (type_ == hullMultline) {
-		if (row == 0)
+		row_type const r = row(idx);
+		if (r == 0)
 			return 'l';
-		if (row == nrows() - 1)
+		if (r == nrows() - 1)
 			return 'r';
 	}
-	return InsetMathGrid::displayColAlign(col, row);
+	return InsetMathGrid::displayColAlign(idx);
 }
 
 
