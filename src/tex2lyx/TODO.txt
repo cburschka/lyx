@@ -83,6 +83,9 @@ Format LaTeX feature                        LyX feature
        \twocolumn[]{}{}                      Layout Twocolumn, InsetArgument
        \item[]<>                             InsetArgument
        \begin{enumerate|itemize|...}[]       InsetArgument
+489    horizontal alignment in boxes         InsetBox
+       \centering
+       \reggedleft
 492    command \fcolorbox                    InsetBox
 
 General
