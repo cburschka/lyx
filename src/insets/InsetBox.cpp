@@ -341,25 +341,23 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 	case Frameless:
 		break;
 	case Framed:
-		if (!(thickness_string.find(defaultThick) != string::npos)) {
+		if (thickness_string != defaultThick) {
 			os << "{\\FrameRule " << from_ascii(thickness_string);
-			if (!(separation_string.find(defaultSep) != string::npos))
+			if (separation_string != defaultSep)
 				os << "\\FrameSep " << from_ascii(separation_string);
 		}
-		if (!(separation_string.find(defaultSep) != string::npos)
-			&& (thickness_string.find(defaultThick) != string::npos))
+		if (separation_string != defaultSep && thickness_string == defaultThick)
 			os << "{\\FrameSep " << from_ascii(separation_string);
 
 		os << "\\begin{framed}%\n";
 		break;
 	case Boxed:
-		if (!(thickness_string.find(defaultThick) != string::npos)) {
+		if (thickness_string != defaultThick) {
 			os << "{\\fboxrule " << from_ascii(thickness_string);
-			if (!(separation_string.find(defaultSep) != string::npos))
+			if (separation_string != defaultSep)
 				os << "\\fboxsep " << from_ascii(separation_string);
 		}
-		if (!(separation_string.find(defaultSep) != string::npos)
-			&& (thickness_string.find(defaultThick) != string::npos))
+		if (separation_string != defaultSep && thickness_string == defaultThick)
 			os << "{\\fboxsep " << from_ascii(separation_string);
 		if (!params_.inner_box && !width_string.empty()) {
 			if (params_.framecolor != "black" || params_.backgroundcolor != "none") {
@@ -387,36 +385,34 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		os << "{";
 		break;
 	case ovalbox:
-		if (!separation_string.empty() && separation_string.find(defaultSep) == string::npos)
+		if (!separation_string.empty() && separation_string != defaultSep)
 			os << "{\\fboxsep " << from_ascii(separation_string);
 		os << "\\ovalbox{";
 		break;
 	case Ovalbox:
-		if (!separation_string.empty() && separation_string.find(defaultSep) == string::npos)
+		if (!separation_string.empty() && separation_string != defaultSep)
 			os << "{\\fboxsep " << from_ascii(separation_string);
 		os << "\\Ovalbox{";
 		break;
 	case Shadowbox:
-		if (!(thickness_string.find(defaultThick) != string::npos)) {
+		if (thickness_string != defaultThick) {
 			os << "{\\fboxrule " << from_ascii(thickness_string);
-			if (!(separation_string.find(defaultSep) != string::npos)) {
+			if (separation_string != defaultSep) {
 				os << "\\fboxsep " << from_ascii(separation_string);
-				if (!(shadowsize_string.find(defaultShadow) != string::npos))
+				if (shadowsize_string != defaultShadow)
 					os << "\\shadowsize " << from_ascii(shadowsize_string);
 			}
-			if (!(shadowsize_string.find(defaultShadow) != string::npos)
-				&& (separation_string.find(defaultSep) != string::npos))
+			if (shadowsize_string != defaultShadow	&& separation_string == defaultSep)
 				os << "\\shadowsize " << from_ascii(shadowsize_string);
 		}
-		if (!(separation_string.find(defaultSep) != string::npos)
-			&& (thickness_string.find(defaultThick) != string::npos)) {
+		if (separation_string != defaultSep && thickness_string == defaultThick) {
 				os << "{\\fboxsep " << from_ascii(separation_string);
-				if (!(shadowsize_string.find(defaultShadow) != string::npos))
+				if (shadowsize_string != defaultShadow)
 					os << "\\shadowsize " << from_ascii(shadowsize_string);
 		}
-		if (!(shadowsize_string.find(defaultShadow) != string::npos)
-				&& (separation_string.find(defaultSep) != string::npos)
-				&& (thickness_string.find(defaultThick) != string::npos))
+		if (shadowsize_string != defaultShadow
+				&& separation_string == defaultSep
+				&& thickness_string == defaultThick)
 				os << "{\\shadowsize " << from_ascii(shadowsize_string);
 		os << "\\shadowbox{";
 		break;
@@ -425,13 +421,12 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		// it is inside a minipage or parbox
 		break;
 	case Doublebox:
-		if (!(thickness_string.find(defaultThick) != string::npos)) {
+		if (thickness_string != defaultThick) {
 			os << "{\\fboxrule " << from_ascii(thickness_string);
-			if (!(separation_string.find(defaultSep) != string::npos))
+			if (separation_string != defaultSep)
 				os << "\\fboxsep " << from_ascii(separation_string);
 		}
-		if (!(separation_string.find(defaultSep) != string::npos)
-			&& (thickness_string.find(defaultThick) != string::npos))
+		if (separation_string != defaultSep && thickness_string == defaultThick)
 			os << "{\\fboxsep " << from_ascii(separation_string);
 		os << "\\doublebox{";
 		break;
@@ -543,8 +538,7 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		break;
 	case Framed:
 		os << "\\end{framed}";
-		if (!(separation_string.find(defaultSep) != string::npos)
-			|| !(thickness_string.find(defaultThick) != string::npos))
+		if (separation_string != defaultSep	|| thickness_string != defaultThick)
 			os << "}";
 		break;
 	case Boxed:
@@ -552,31 +546,29 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		if (!params_.inner_box && !width_string.empty()
 			&& (params_.framecolor != "black" || params_.backgroundcolor != "none"))
 			os << "}";
-		if (!(separation_string.find(defaultSep) != string::npos)
-			|| !(thickness_string.find(defaultThick) != string::npos))
+		if (separation_string != defaultSep	|| thickness_string != defaultThick)
 			os << "}";
 		break;
 	case ovalbox:
 		os << "}";
-		if (!(separation_string.find(defaultSep) != string::npos))
+		if (separation_string != defaultSep)
 			os << "}";
 		break;
 	case Ovalbox:
 		os << "}";
-		if (!(separation_string.find(defaultSep) != string::npos))
+		if (separation_string != defaultSep)
 			os << "}";
 		break;
 	case Doublebox:
 		os << "}";
-		if (!(separation_string.find(defaultSep) != string::npos)
-			|| !(thickness_string.find(defaultThick) != string::npos))
+		if (separation_string != defaultSep || thickness_string != defaultThick)
 			os << "}";
 		break;
 	case Shadowbox:
 		os << "}";
-		if (!(separation_string.find(defaultSep) != string::npos)
-			|| !(thickness_string.find(defaultThick) != string::npos)
-			|| !(shadowsize_string.find(defaultShadow) != string::npos))
+		if (separation_string != defaultSep
+			|| thickness_string != defaultThick
+			|| shadowsize_string != defaultShadow)
 			os << "}";
 		break;
 	case Shaded:
