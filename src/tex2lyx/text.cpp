@@ -124,6 +124,9 @@ string parse_text_snippet(Parser & p, unsigned flags, const bool outer,
 	return os.str();
 }
 
+string fboxrule = "";
+string fboxsep = "";
+string shadow_size = "";
 
 char const * const known_ref_commands[] = { "ref", "pageref", "vref",
  "vpageref", "prettyref", "nameref", "eqref", 0 };
@@ -849,8 +852,20 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 	string latex_width;
 	string width_special = "none";
 	string thickness = "0.4pt";
-	string separation = "3pt";
-	string shadowsize = "4pt";
+	if (fboxrule != "")
+		thickness = fboxrule;
+	else
+		thickness = "0.4pt";
+	string separation;
+	if (fboxsep != "")
+		separation = fboxsep;
+	else
+		separation = "3pt";
+	string shadowsize;
+	if (shadow_size != "")
+		shadowsize = shadow_size;
+	else
+		shadowsize = "4pt";
 	string framecolor = "black";
 	string backgroundcolor = "none";
 	if (frame_color != "")
@@ -1189,6 +1204,17 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 	if (background_color != "") {
 		// in this case we have to eat the the closing brace of the color box
 		p.get_token().asInput(); // the '}'
+	}
+	if (p.next_token().asInput() == "}"
+	    && (fboxrule != "" || fboxsep != "" || shadow_size != "")) {
+		// in this case we assume that the closing brace is from the box settings
+		// therefore reset these values for the next box
+		if (fboxrule != "")
+			fboxrule = "";
+		if (fboxsep != "")
+			fboxsep = "";
+		if (shadow_size != "")
+			shadow_size = "";
 	}
 }
 
@@ -4204,6 +4230,27 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "colorbox") {
 			string const backgroundcolor = p.getArg('{', '}');
 			parse_box(p, os, 0, 0, outer, context, "", "", "", "", backgroundcolor);
+		}
+
+		else if (t.cs() == "fboxrule" || t.cs() == "fboxsep"
+			     || t.cs() == "shadowsize") {
+			p.skip_spaces(true);
+			if (t.cs() == "fboxrule")
+				fboxrule = "";
+			if (t.cs() == "fboxsep")
+				fboxsep = "";
+			if (t.cs() == "shadowsize")
+				shadow_size = "";
+			while (p.good() && p.next_token().cat() != catSpace
+				   && p.next_token().cat() != catNewline
+				   && p.next_token().cat() != catEscape) {
+				if (t.cs() == "fboxrule")
+					fboxrule = fboxrule + p.get_token().asInput();
+				if (t.cs() == "fboxsep")
+					fboxsep = fboxsep + p.get_token().asInput();
+				if (t.cs() == "shadowsize")
+					shadow_size = shadow_size + p.get_token().asInput();
+				}
 		}
 
 		//\framebox() is part of the picture environment and different from \framebox{}
