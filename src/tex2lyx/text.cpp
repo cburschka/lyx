@@ -1079,6 +1079,8 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		os << "thickness \"" << thickness << "\"\n";
 		os << "separation \"" << separation << "\"\n";
 		os << "shadowsize \"" << shadowsize << "\"\n";
+		os << "framecolor \"" << framecolor << "\"\n";
+		os << "backgroundcolor \"" << backgroundcolor << "\"\n";
 		os << "status open\n\n";
 
 		// Unfortunately we can't use parse_text_in_inset:
@@ -4142,8 +4144,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				parse_outer_box(p, os, FLAG_ITEM, outer,
 				                context, "parbox", "shaded");
 			} else
-				parse_box(p, os, 0, FLAG_ITEM, outer, context,
-				          "", "", t.cs());
+				parse_box(p, os, 0, FLAG_ITEM, outer, context, "", "", t.cs());
 		}
 
 		else if (t.cs() == "fbox" || t.cs() == "mbox" ||
@@ -4151,6 +4152,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		         t.cs() == "shadowbox" || t.cs() == "doublebox")
 			parse_outer_box(p, os, FLAG_ITEM, outer, context, t.cs(), "");
 
+		//\framebox() is part of the picture environment and different from \framebox{}
+		//\framebox{} will be parsed by parse_outer_box
 		else if (t.cs() == "framebox") {
 			if (p.next_token().character() == '(') {
 				//the syntax is: \framebox(x,y)[position]{content}
