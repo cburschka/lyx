@@ -1146,9 +1146,21 @@ def revert_mathmulticol(document):
         lines = document.body[i:j]
         lines[0] = lines[0].replace('\\begin_inset Formula', '').lstrip()
         code = "\n".join(lines)
-        if code.find("\\multicolumn") != -1:
-            ert = put_cmd_in_ert(code)
-            document.body[i:j+1] = ert
+        converted = False
+        k = 0
+        n = 0
+        while n >= 0:
+            n = code.find("\\multicolumn", k)
+            # no need to convert degenerated multicolumn cells,
+            # they work in old LyX versions as "math ERT"
+            if n != -1 and code.find("\\multicolumn{1}", k) != n:
+                ert = put_cmd_in_ert(code)
+                document.body[i:j+1] = ert
+                converted = True
+                break
+            else:
+                k = n + 12
+        if converted:
             i = find_end_of_inset(document.body, i)
         else:
             i = j
