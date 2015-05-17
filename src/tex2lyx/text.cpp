@@ -832,7 +832,8 @@ bool parse_command(string const & command, Parser & p, ostream & os,
 void parse_box(Parser & p, ostream & os, unsigned outer_flags,
                unsigned inner_flags, bool outer, Context & parent_context,
                string const & outer_type, string const & special,
-               string const & inner_type)
+               string inner_type, string const & frame_color,
+               string const & background_color)
 {
 	string position;
 	string inner_pos;
@@ -852,6 +853,44 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 	string shadowsize = "4pt";
 	string framecolor = "black";
 	string backgroundcolor = "none";
+	if (frame_color != "")
+		framecolor = frame_color;
+	if (background_color != "")
+		backgroundcolor = background_color;
+	// if there is a color box around the \begin statements have not yet been parsed
+	// so do this now
+	if (frame_color != "" || background_color != "") {
+		eat_whitespace(p, os, parent_context, false);
+		p.get_token().asInput(); // the '{'
+		// parse minipage
+		if (p.next_token().asInput() == "\\begin") {
+			p.get_token().asInput();
+			p.getArg('{', '}');
+			inner_type = "minipage";
+			inner_flags = FLAG_END;
+		}
+		// parse parbox
+		else if (p.next_token().asInput() == "\\parbox") {
+			p.get_token().asInput();
+			inner_type = "parbox";
+			inner_flags = FLAG_ITEM;
+		}
+		// parse makebox
+		else if (p.next_token().asInput() == "\\makebox") {
+			p.get_token().asInput();
+			inner_type = "makebox";
+			inner_flags = FLAG_ITEM;
+		}
+		// in case there is just \colorbox{color}{text}
+		else {
+			latex_width = "";
+			inner_type = "makebox";
+			inner_flags = FLAG_BRACE_LAST;
+			hor_pos = "l";
+			position = "t";
+			inner_pos = "t";
+		}
+	}
 	if (!inner_type.empty() && p.hasOpt()) {
 		if (inner_type != "makebox")
 			position = p.getArg('[', ']');
@@ -963,7 +1002,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 	// if only \makebox{content} was used we can set its width to 1\width
 	// because this identic and also identic to \mbox
 	// this doesn't work for \framebox{content}, thus we have to use ERT for this
-	if (latex_width.empty() && inner_type == "makebox") {
+	if (latex_width.empty() && inner_type == "makebox" && background_color == "") {
 		width_value = "1";
 		width_unit = "in";
 		width_special = "width";
@@ -1142,6 +1181,10 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		}
 #endif
 	}
+	if (background_color != "") {
+		// in this case we have to eat the the closing brace of the color box
+		p.get_token().asInput(); // the '}'
+	}
 }
 
 
@@ -1204,14 +1247,14 @@ void parse_outer_box(Parser & p, ostream & os, unsigned flags, bool outer,
 			eat_whitespace(p, os, parent_context, false);
 		}
 		parse_box(p, os, flags, FLAG_END, outer, parent_context,
-		          outer_type, special, inner);
+		          outer_type, special, inner, "", "");
 	} else {
 		if (inner_flags == FLAG_ITEM) {
 			p.get_token();
 			eat_whitespace(p, os, parent_context, false);
 		}
 		parse_box(p, os, flags, inner_flags, outer, parent_context,
-		          outer_type, special, inner);
+		          outer_type, special, inner, "", "");
 	}
 }
 
@@ -1446,7 +1489,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			                parent_context, name, "shaded");
 		else
 			parse_box(p, os, 0, FLAG_END, outer, parent_context,
-			          "", "", name);
+			          "", "", name, "", "");
 		p.skip_spaces();
 	}
 
@@ -4144,13 +4187,19 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				parse_outer_box(p, os, FLAG_ITEM, outer,
 				                context, "parbox", "shaded");
 			} else
-				parse_box(p, os, 0, FLAG_ITEM, outer, context, "", "", t.cs());
+				parse_box(p, os, 0, FLAG_ITEM, outer, context,
+				          "", "", t.cs(), "", "");
 		}
 
 		else if (t.cs() == "fbox" || t.cs() == "mbox" ||
 			     t.cs() == "ovalbox" || t.cs() == "Ovalbox" ||
 		         t.cs() == "shadowbox" || t.cs() == "doublebox")
 			parse_outer_box(p, os, FLAG_ITEM, outer, context, t.cs(), "");
+
+		else if (t.cs() == "colorbox") {
+			string const backgroundcolor = p.getArg('{', '}');
+			parse_box(p, os, 0, 0, outer, context, "", "", "", "", backgroundcolor);
+		}
 
 		//\framebox() is part of the picture environment and different from \framebox{}
 		//\framebox{} will be parsed by parse_outer_box
@@ -4188,7 +4237,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			} else
 				//the syntax is: \makebox[width][position]{content}
 				parse_box(p, os, 0, FLAG_ITEM, outer, context,
-				          "", "", t.cs());
+				          "", "", t.cs(), "", "");
 		}
 
 		else if (t.cs() == "smallskip" ||
