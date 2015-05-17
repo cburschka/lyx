@@ -441,7 +441,7 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 			if (!width_string.empty()) {
 				if (params_.backgroundcolor != "none")
 					os << "\\colorbox{" << params_.backgroundcolor << "}{";
-				os << "\\makebox{";
+				os << "\\makebox";
 				// FIXME UNICODE
 				// output the width and horizontal position
 				if (params_.special != "none") {
@@ -455,10 +455,11 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 					os << "[" << params_.hor_pos << "]";
 			} else {
 				if (params_.backgroundcolor != "none")
-					os << "\\colorbox{" << params_.backgroundcolor << "}{";
+					os << "\\colorbox{" << params_.backgroundcolor << "}";
 				else
-					os << "\\mbox{";
+					os << "\\mbox";
 			}
+			os << "{";
 		}
 		else {
 			if (params_.backgroundcolor != "none" && btype == Frameless)
