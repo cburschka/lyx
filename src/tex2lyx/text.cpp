@@ -950,6 +950,9 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 					     << " for " << outer_type << endl;
 					hor_pos = "c";
 				}
+			} else {
+				if (outer_type == "framebox")
+					hor_pos = "c";
 			}
 		}
 	} else if (inner_type != "makebox")
