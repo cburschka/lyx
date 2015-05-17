@@ -1407,12 +1407,12 @@ bool Buffer::save() const
 		// to restore it, but that would basically mean trying to do again
 		// what we just failed to do. better to leave things as they are.
 		Alert::error(_("Write failure"),
-			     bformat(_("The file has successfully been saved as:\n  %1$s.\n"
-		           "But LyX could not move it to:\n  %2$s.\n"
-							 "Your original file has been backed up to:\n  %3$s"),
-				     from_utf8(savefile.absFileName()),
-             from_utf8(fileName().absFileName()),
-		         from_utf8(backupName.absFileName())));
+		             bformat(_("The file has successfully been saved as:\n  %1$s.\n"
+		                       "But LyX could not move it to:\n  %2$s.\n"
+		                       "Your original file has been backed up to:\n  %3$s"),
+		                     from_utf8(savefile.absFileName()),
+		                     from_utf8(fileName().absFileName()),
+		                     from_utf8(backupName.absFileName())));
 	} else {
 		// either we did not try to make a backup, or else we tried and failed,
 		// or else the original file was a symlink, in which case it was copied,

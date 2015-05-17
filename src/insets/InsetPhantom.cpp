@@ -150,7 +150,7 @@ void InsetPhantom::draw(PainterInfo & pi, int x, int y) const
 
 	// draw the inset marker
 	drawMarkers(pi, x, y);
-	
+
 	// draw the arrow(s)
 	static int const arrow_size = 4;
 	ColorCode const origcol = pi.base.font.color();
@@ -312,7 +312,7 @@ docstring InsetPhantom::toolTip(BufferView const &, int, int) const
 void InsetPhantom::latex(otexstream & os, OutputParams const & runparams) const
 {
 	if (runparams.moving_arg)
-        	os << "\\protect";
+		os << "\\protect";
 
 	switch (params_.type) {
 	case InsetPhantomParams::Phantom:

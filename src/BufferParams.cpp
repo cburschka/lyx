@@ -2345,7 +2345,7 @@ OutputParams::FLAVOR BufferParams::getOutputFlavor(string const & format) const
 	else if (dformat == "lyx")
 		result = OutputParams::LYX;
 	else if (dformat == "pdflatex")
- 		result = OutputParams::PDFLATEX;
+		result = OutputParams::PDFLATEX;
 	else if (dformat == "xetex")
 		result = OutputParams::XETEX;
 	else if (dformat == "luatex")

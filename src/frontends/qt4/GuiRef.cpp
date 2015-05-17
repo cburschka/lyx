@@ -61,9 +61,9 @@ GuiRef::GuiRef(GuiView & lv)
 		this, SLOT(changed_adaptor()));
 	connect(referenceED, SIGNAL(textChanged(QString)),
 		this, SLOT(changed_adaptor()));
-	connect(findLE, SIGNAL(textEdited(QString)), 
+	connect(findLE, SIGNAL(textEdited(QString)),
 		this, SLOT(filterLabels()));
-	connect(csFindCB, SIGNAL(clicked()), 
+	connect(csFindCB, SIGNAL(clicked()),
 		this, SLOT(filterLabels()));
 	connect(nameED, SIGNAL(textChanged(QString)),
 		this, SLOT(changed_adaptor()));
@@ -386,7 +386,7 @@ void GuiRef::redoRefs()
 			qSort(refsStrings.begin(), refsStrings.end(),
 			      caseInsensitiveLessThan /*defined above*/);
 	}
-	
+
 	if (groupCB->isChecked()) {
 		QList<QTreeWidgetItem *> refsCats;
 		for (int i = 0; i < refsCategories.size(); ++i) {
@@ -428,7 +428,7 @@ void GuiRef::redoRefs()
 		QTreeWidgetItemIterator it(refsTW);
 		while (*it) {
 			if ((*it)->text(0) == textToFind) {
- 				refsTW->setCurrentItem(*it);
+				refsTW->setCurrentItem(*it);
 				refsTW->setItemSelected(*it, !newInset);
 				//Make sure selected item is visible
 				refsTW->scrollToItem(*it);

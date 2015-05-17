@@ -678,7 +678,7 @@ bool MathMacro::validName() const
 
 
 size_t MathMacro::arity() const
-{ 
+{
 	if (d->displayMode_ == DISPLAY_NORMAL )
 		return cells_.size();
 	else

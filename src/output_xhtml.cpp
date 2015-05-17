@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Richard Heck
- * 
+ *
  * This code is based upon output_docbook.cpp
  *
  * Full author contact details are available in file CREDITS.
@@ -131,7 +131,7 @@ string cleanAttr(string const & str)
 	string::const_iterator en = str.end();
 	for (; it != en; ++it)
 		newname += isAlnumASCII(*it) ? *it : '_';
-	return newname;	
+	return newname;
 }
 
 
@@ -144,7 +144,7 @@ docstring cleanAttr(docstring const & str)
 		char_type const c = *it;
 		newname += isAlnumASCII(c) ? c : char_type('_');
 	}
-	return newname;	
+	return newname;
 }
 
 
@@ -392,7 +392,7 @@ bool XHTMLStream::closeFontTags()
 		LBUFERR(!tag_stack_.empty());
 		curtag = tag_stack_.back();
 	}
-	
+
 	if (*curtag == parsep_tag)
 		return true;
 
@@ -440,7 +440,7 @@ void XHTMLStream::endParagraph()
 		return;
 	}
 
-	// this case is also normal, if the parsep tag is the last one 
+	// this case is also normal, if the parsep tag is the last one
 	// on the stack. otherwise, it's an error.
 	while (!tag_stack_.empty()) {
 		TagPtr const cur_tag = tag_stack_.back();
@@ -513,13 +513,13 @@ XHTMLStream & XHTMLStream::operator<<(int i)
 
 
 XHTMLStream & XHTMLStream::operator<<(EscapeSettings e)
-{ 
+{
 	escape_ = e;
 	return *this;
 }
 
 
-XHTMLStream & XHTMLStream::operator<<(html::StartTag const & tag) 
+XHTMLStream & XHTMLStream::operator<<(html::StartTag const & tag)
 {
 	if (tag.tag_.empty())
 		return *this;
@@ -539,7 +539,7 @@ XHTMLStream & XHTMLStream::operator<<(html::ParTag const & tag)
 }
 
 
-XHTMLStream & XHTMLStream::operator<<(html::CompTag const & tag) 
+XHTMLStream & XHTMLStream::operator<<(html::CompTag const & tag)
 {
 	if (tag.tag_.empty())
 		return *this;
@@ -601,7 +601,7 @@ bool XHTMLStream::isTagPending(html::StartTag const & stag) const
 
 
 // this is complicated, because we want to make sure that
-// everything is properly nested. the code ought to make 
+// everything is properly nested. the code ought to make
 // sure of that, but we won't assert (yet) if we run into
 // a problem. we'll just output error messages and try our
 // best to make things work.
@@ -614,14 +614,14 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 	if (!pending_tags_.empty()) {
 
 		if (etag == *pending_tags_.back()) {
-			// we have <tag></tag>, so we discard it and remove it 
+			// we have <tag></tag>, so we discard it and remove it
 			// from the pending_tags_.
 			pending_tags_.pop_back();
 			return *this;
 		}
 
 		// there is a pending tag that isn't the one we are trying
-		// to close. 
+		// to close.
 
 		// is this tag itself pending?
 		// non-const iterators because we may call erase().
@@ -630,9 +630,9 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 		for (; dit != den; ++dit) {
 			if (etag == **dit) {
 				// it was pending, so we just erase it
-				writeError("Tried to close pending tag `" + etag.tag_ 
+				writeError("Tried to close pending tag `" + etag.tag_
 				        + "' when other tags were pending. Last pending tag is `"
-				        + to_utf8(pending_tags_.back()->writeTag()) 
+				        + to_utf8(pending_tags_.back()->writeTag())
 				        + "'. Tag discarded.");
 				pending_tags_.erase(dit);
 				return *this;
@@ -640,14 +640,14 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 		}
 		// so etag isn't itself pending. is it even open?
 		if (!isTagOpen(etag)) {
-			writeError("Tried to close `" + etag.tag_ 
+			writeError("Tried to close `" + etag.tag_
 			         + "' when tag was not open. Tag discarded.");
 			return *this;
 		}
 		// ok, so etag is open.
-		// our strategy will be as below: we will do what we need to 
+		// our strategy will be as below: we will do what we need to
 		// do to close this tag.
-		string estr = "Closing tag `" + etag.tag_ 
+		string estr = "Closing tag `" + etag.tag_
 		        + "' when other tags are pending. Discarded pending tags:\n";
 		for (dit = pending_tags_.begin(); dit != den; ++dit)
 			estr += to_utf8(html::htmlize((*dit)->writeTag(), XHTMLStream::ESCAPE_ALL)) + "\n";
@@ -661,7 +661,7 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 	if (tag_stack_.empty()) {
 		writeError("Tried to close `" + etag.tag_
 		         + "' when no tags were open!");
-		return *this;		
+		return *this;
 	}
 
 	// is the tag we are closing the last one we opened?
@@ -671,16 +671,16 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 		// ...and forget about it
 		tag_stack_.pop_back();
 		return *this;
-	} 
-	
-	// we are trying to close a tag other than the one last opened. 
+	}
+
+	// we are trying to close a tag other than the one last opened.
 	// let's first see if this particular tag is still open somehow.
 	if (!isTagOpen(etag)) {
-		writeError("Tried to close `" + etag.tag_ 
+		writeError("Tried to close `" + etag.tag_
 		        + "' when tag was not open. Tag discarded.");
 		return *this;
 	}
-	
+
 	// so the tag was opened, but other tags have been opened since
 	// and not yet closed.
 	// if it's a font tag, though...
@@ -694,12 +694,12 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 				break;
 			if (!(*rit)->asFontTag()) {
 				// we'll just leave it and, presumably, have to close it later.
-				writeError("Unable to close font tag `" + etag.tag_ 
+				writeError("Unable to close font tag `" + etag.tag_
 				        + "' due to open non-font tag `" + (*rit)->tag_ + "'.");
 				return *this;
 			}
 		}
-		
+
 		// so we have e.g.:
 		//    <em>this is <strong>bold
 		// and are being asked to closed em. we want:
@@ -714,7 +714,7 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 			tag_stack_.pop_back();
 			curtag = tag_stack_.back();
 		}
-    os_ << etag.writeEndTag();
+		os_ << etag.writeEndTag();
 		tag_stack_.pop_back();
 
 		// ...and restore the other tags.
@@ -724,12 +724,12 @@ XHTMLStream & XHTMLStream::operator<<(html::EndTag const & etag)
 			pending_tags_.push_back(*rit);
 		return *this;
 	}
-	
+
 	// it wasn't a font tag.
-	// so other tags were opened before this one and not properly closed. 
-	// so we'll close them, too. that may cause other issues later, but it 
+	// so other tags were opened before this one and not properly closed.
+	// so we'll close them, too. that may cause other issues later, but it
 	// at least guarantees proper nesting.
-	writeError("Closing tag `" + etag.tag_ 
+	writeError("Closing tag `" + etag.tag_
 	        + "' when other tags are open, namely:");
 	TagPtr curtag = tag_stack_.back();
 	while (etag != *curtag) {
@@ -798,7 +798,7 @@ inline void openItemTag(XHTMLStream & xs, Layout const & lay)
 }
 
 
-void openItemTag(XHTMLStream & xs, Layout const & lay, 
+void openItemTag(XHTMLStream & xs, Layout const & lay,
              ParagraphParameters const & params)
 {
 	// FIXME Are there other things we should handle here?
@@ -855,7 +855,7 @@ ParagraphList::const_iterator findEndOfEnvironment(
 
 		// FIXME I am not sure about the first check.
 		// Surely we *could* have different layouts that count as
-		// LATEX_PARAGRAPH, right? 
+		// LATEX_PARAGRAPH, right?
 		if (style.latextype == LATEX_PARAGRAPH || style != bstyle)
 			return p;
 	}
@@ -894,17 +894,17 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 			openParTag(xs, lay, par->params(),
 			           make_parid ? par->magicLabel() : "");
 
-		docstring const deferred = 
+		docstring const deferred =
 			par->simpleLyXHTMLOnePar(buf, xs, runparams, text.outerFont(distance(begin, par)));
 
 		// We want to issue the closing tag if either:
 		//   (i)  We opened it, and either html_in_par is false,
 		//        or we're not in the last paragraph, anyway.
-		//   (ii) We didn't open it and html_in_par is true, 
+		//   (ii) We didn't open it and html_in_par is true,
 		//        but we are in the first par, and there is a next par.
 		ParagraphList::const_iterator nextpar = par;
 		++nextpar;
-		bool const needclose = 
+		bool const needclose =
 			(opened && (!runparams.html_in_par || nextpar != pend))
 			|| (!opened && runparams.html_in_par && par == pbegin && nextpar != pend);
 		if (needclose) {
@@ -924,7 +924,7 @@ ParagraphList::const_iterator makeBibliography(Buffer const & buf,
 				OutputParams const & runparams,
 				Text const & text,
 				ParagraphList::const_iterator const & pbegin,
-				ParagraphList::const_iterator const & pend) 
+				ParagraphList::const_iterator const & pend)
 {
 	// FIXME XHTML
 	// Use TextClass::htmlTOCLayout() to figure out how we should look.
@@ -946,13 +946,13 @@ bool isNormalEnv(Layout const & lay)
 	    || lay.latextype == LATEX_BIB_ENVIRONMENT;
 }
 
-	
+
 ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					      XHTMLStream & xs,
 					      OutputParams const & runparams,
 					      Text const & text,
 					      ParagraphList::const_iterator const & pbegin,
-					      ParagraphList::const_iterator const & pend) 
+					      ParagraphList::const_iterator const & pend)
 {
 	ParagraphList::const_iterator const begin = text.paragraphs().begin();
 	ParagraphList::const_iterator par = pbegin;
@@ -976,8 +976,8 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		// "ii", etc, as with enum.
 		Counters & cnts = buf.masterBuffer()->params().documentClass().counters();
 		docstring const & cntr = style.counter;
-		if (!style.counter.empty() 
-		    && (par == pbegin || !isNormalEnv(style)) 
+		if (!style.counter.empty()
+		    && (par == pbegin || !isNormalEnv(style))
 				&& cnts.hasCounter(cntr)
 		)
 			cnts.step(cntr, OutputUpdate);
@@ -990,8 +990,8 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		case LATEX_ENVIRONMENT:
 		case LATEX_LIST_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
-			// There are two possiblities in this case. 
-			// One is that we are still in the environment in which we 
+			// There are two possiblities in this case.
+			// One is that we are still in the environment in which we
 			// started---which we will be if the depth is the same.
 			if (par->params().depth() == origdepth) {
 				LATTEST(bstyle == style);
@@ -999,19 +999,19 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					closeItemTag(xs, *lastlay);
 					lastlay = 0;
 				}
-				
+
 				bool const labelfirst = style.htmllabelfirst();
 				if (!labelfirst)
 					openItemTag(xs, style, par->params());
-				
+
 				// label output
-				if (style.labeltype != LABEL_NO_LABEL && 
+				if (style.labeltype != LABEL_NO_LABEL &&
 				    style.htmllabeltag() != "NONE") {
 					if (isNormalEnv(style)) {
-						// in this case, we print the label only for the first 
+						// in this case, we print the label only for the first
 						// paragraph (as in a theorem).
 						if (par == pbegin) {
-							docstring const lbl = 
+							docstring const lbl =
 									pbegin->params().labelString();
 							if (!lbl.empty()) {
 								openLabelTag(xs, style);
@@ -1039,13 +1039,13 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 				if (labelfirst)
 					openItemTag(xs, style, par->params());
 
-				par->simpleLyXHTMLOnePar(buf, xs, runparams, 
+				par->simpleLyXHTMLOnePar(buf, xs, runparams,
 					text.outerFont(distance(begin, par)), sep);
 				++par;
 
 				// We may not want to close the tag yet, in particular:
 				// If we're not at the end...
-				if (par != pend 
+				if (par != pend
 					//  and are doing items...
 					 && !isNormalEnv(style)
 					 // and if the depth has changed...
@@ -1167,7 +1167,7 @@ void xhtmlParagraphs(Text const & text,
 		case LATEX_COMMAND: {
 			// The files with which we are working never have more than
 			// one paragraph in a command structure.
-			// FIXME 
+			// FIXME
 			// if (ourparams.html_in_par)
 			//   fix it so we don't get sections inside standard, e.g.
 			// note that we may then need to make runparams not const, so we

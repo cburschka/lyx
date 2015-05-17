@@ -2159,7 +2159,7 @@ Menus::Menus() : d(new Impl) {}
 
 Menus::~Menus()
 {
-  delete d;
+	delete d;
 }
 
 

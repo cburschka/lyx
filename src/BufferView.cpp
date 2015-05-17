@@ -2497,7 +2497,7 @@ bool BufferView::checkDepm(Cursor & cur, Cursor & old)
 	d->cursor_ = cur;
 
 	// we would rather not do this here, but it needs to be done before
- 	// the changed() signal is sent.
+	// the changed() signal is sent.
 	buffer_.updateBuffer();
 
 	buffer_.changed(true);
@@ -2786,7 +2786,7 @@ Point BufferView::coordOffset(DocIterator const & dit) const
 	int lastw = 0;
 
 	// Addup contribution of nested insets, from inside to outside,
- 	// keeping the outer paragraph for a special handling below
+	// keeping the outer paragraph for a special handling below
 	for (size_t i = dit.depth() - 1; i >= 1; --i) {
 		CursorSlice const & sl = dit[i];
 		int xx = 0;
@@ -3053,7 +3053,7 @@ void BufferView::draw(frontend::Painter & pain)
 		LYXERR(Debug::PAINTING, "Strategy: NoScreenUpdate");
 		pi.full_repaint = true;
 		pi.pain.setDrawingEnabled(false);
- 		tm.draw(pi, 0, y);
+		tm.draw(pi, 0, y);
 		break;
 
 	case SingleParUpdate:
@@ -3062,7 +3062,7 @@ void BufferView::draw(frontend::Painter & pain)
 		// In general, only the current row of the outermost paragraph
 		// will be redrawn. Particular cases where selection spans
 		// multiple paragraph are correctly detected in TextMetrics.
- 		tm.draw(pi, 0, y);
+		tm.draw(pi, 0, y);
 		break;
 
 	case DecorationUpdate:

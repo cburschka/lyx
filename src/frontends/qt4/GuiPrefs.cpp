@@ -689,7 +689,7 @@ void PrefCompletion::updateRC(LyXRC const & rc)
 	popupTextCB->setChecked(rc.completion_popup_text);
 	cursorTextCB->setChecked(rc.completion_cursor_text);
 	popupAfterCompleteCB->setChecked(rc.completion_popup_after_complete);
-        enableCB();
+	enableCB();
 	minlengthSB->setValue(rc.completion_minlength);
 }
 
@@ -3147,7 +3147,7 @@ void PrefShortcuts::on_searchLE_textEdited()
 	// show matched items
 	for (int i = 0; i < matched.size(); ++i) {
 		shortcutsTW->setItemHidden(matched[i], false);
-        shortcutsTW->setItemExpanded(matched[i]->parent(), true);
+		shortcutsTW->setItemExpanded(matched[i]->parent(), true);
 	}
 }
 

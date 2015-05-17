@@ -430,7 +430,7 @@ ParamInfo const & InsetPrintIndex::findInfo(string const & /* cmdName */)
 	static ParamInfo param_info_;
 	if (param_info_.empty()) {
 		param_info_.add("type", ParamInfo::LATEX_OPTIONAL,
-                        ParamInfo::HANDLING_ESCAPE);
+		                ParamInfo::HANDLING_ESCAPE);
 		param_info_.add("name", ParamInfo::LATEX_REQUIRED);
 	}
 	return param_info_;

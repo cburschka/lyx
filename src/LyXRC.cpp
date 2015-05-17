@@ -2773,7 +2773,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		Alternatives::const_iterator const en = viewer_alternatives.end();
 		Alternatives::const_iterator const sysend =
 				system_lyxrc.viewer_alternatives.end();
- 		for (; it != en; ++it) {
+		for (; it != en; ++it) {
 			string const & fmt = it->first;
 			CommandSet const & cmd = it->second;
 			CommandSet::const_iterator sit = cmd.begin();
@@ -2819,9 +2819,9 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 			break;
 	}
 	case RC_DEFAULT_OTF_VIEW_FORMAT:
-        if ((ignore_system_lyxrc ||
-            default_otf_view_format != system_lyxrc.default_otf_view_format)
-            && !default_otf_view_format.empty()) {
+		if ((ignore_system_lyxrc ||
+		     default_otf_view_format != system_lyxrc.default_otf_view_format)
+		    && !default_otf_view_format.empty()) {
 			os << "\\default_otf_view_format " << default_otf_view_format << '\n';
 		}
 		if (tag != RC_LAST)

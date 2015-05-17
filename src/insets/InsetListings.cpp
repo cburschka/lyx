@@ -155,7 +155,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 		// language; if not, fall back to latin1.
 		Encoding const * const lstenc =
 			(outer_language->encoding()->hasFixedWidth()) ?
-				outer_language->encoding() 
+				outer_language->encoding()
 				: encodings.fromLyXName("iso8859-1");
 		switchEncoding(os.os(), buffer().params(), runparams, *lstenc, true);
 		runparams.encoding = lstenc;
@@ -182,15 +182,15 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 					   + _("uncodable character") + " '";
 					code += docstring(1, c);
 					code += "'>";
- 				} else
+				} else
 					uncodable += c;
 			} catch (EncodingException & /* e */) {
- 				if (runparams.dryrun) {
+				if (runparams.dryrun) {
 					code += "<" + _("LyX Warning: ")
 					   + _("uncodable character") + " '";
 					code += docstring(1, c);
 					code += "'>";
- 				} else
+				} else
 					uncodable += c;
 			}
 		}
@@ -230,7 +230,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 		else if (pos >= delimiters.find('Q'))
 			// We need to terminate the command before the delimiter
 			os << " ";
-                os << delim << code << delim;
+		os << delim << code << delim;
 	} else {
 		OutputParams rp = runparams;
 		rp.moving_arg = true;
@@ -272,13 +272,13 @@ docstring InsetListings::xhtml(XHTMLStream & os, OutputParams const & rp) const
 	XHTMLStream out(ods);
 
 	bool const isInline = params().isInline();
-	if (isInline) 
+	if (isInline)
 		out << html::CompTag("br");
 	else {
 		out << html::StartTag("div", "class='float float-listings'");
 		docstring caption = getCaptionHTML(rp);
 		if (!caption.empty())
-			out << html::StartTag("div", "class='float-caption'") 
+			out << html::StartTag("div", "class='float-caption'")
 			    << XHTMLStream::ESCAPE_NONE
 			    << caption << html::EndTag("div");
 	}

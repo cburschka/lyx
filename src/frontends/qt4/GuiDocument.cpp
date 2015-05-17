@@ -1157,7 +1157,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	headers << qt_("Package") << qt_("Load automatically")
 		<< qt_("Load always") << qt_("Do not load");
 	mathsModule->packagesTW->setHorizontalHeaderLabels(headers);
-	setSectionResizeMode(mathsModule->packagesTW->horizontalHeader(), QHeaderView::Stretch);	
+	setSectionResizeMode(mathsModule->packagesTW->horizontalHeader(), QHeaderView::Stretch);
 	map<string, string> const & packages = BufferParams::auto_packages();
 	mathsModule->packagesTW->setRowCount(packages.size());
 	int i = 0;
@@ -1499,7 +1499,7 @@ void GuiDocument::setListingsMessage()
 		// listingsTB->setTextColor("black");
 		listingsModule->listingsTB->setPlainText(
 			qt_("Input listings parameters below. "
-                "Enter ? for a list of parameters."));
+		            "Enter ? for a list of parameters."));
 	} else {
 		isOK = false;
 		// listingsTB->setTextColor("red");
@@ -1801,7 +1801,7 @@ void GuiDocument::osFontsChanged(bool nontexfonts)
 	if (!tex_fonts)
 		fontModule->fontencLE->setEnabled(false);
 	else
-		fontencChanged(fontModule->fontencCO->currentIndex()); 
+		fontencChanged(fontModule->fontencCO->currentIndex());
 }
 
 
@@ -1967,14 +1967,14 @@ void GuiDocument::updateFontlist()
 		fontModule->fontsRomanCO->addItem(rmi.key(), rmi.value());
 		++rmi;
 	}
-	
+
 	fontModule->fontsSansCO->addItem(qt_("Default"), QString("default"));
 	QMap<QString, QString>::const_iterator sfi = sffonts_.constBegin();
 	while (sfi != sffonts_.constEnd()) {
 		fontModule->fontsSansCO->addItem(sfi.key(), sfi.value());
 		++sfi;
 	}
-	
+
 	fontModule->fontsTypewriterCO->addItem(qt_("Default"), QString("default"));
 	QMap<QString, QString>::const_iterator tti = ttfonts_.constBegin();
 	while (tti != ttfonts_.constEnd()) {
@@ -2799,7 +2799,7 @@ void GuiDocument::applyView()
 	bp_.useNonTeXFonts = nontexfonts;
 
 	bp_.output_sync = outputModule->outputsyncCB->isChecked();
-	
+
 	bp_.output_sync_macro = fromqstr(outputModule->synccustomCB->currentText());
 
 	int mathfmt = outputModule->mathoutCB->currentIndex();

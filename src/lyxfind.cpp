@@ -137,8 +137,8 @@ bool findOne(BufferView * bv, docstring const & searchstr,
 	if (!searchAllowed(searchstr))
 		return false;
 
-	DocIterator cur = forward 
-		? bv->cursor().selectionEnd() 
+	DocIterator cur = forward
+		? bv->cursor().selectionEnd()
 		: bv->cursor().selectionBegin();
 
 	MatchString const match(searchstr, case_sens, whole);
@@ -202,19 +202,19 @@ int replaceAll(BufferView * bv,
 
 
 // the idea here is that we are going to replace the string that
-// is selected IF it is the search string. 
+// is selected IF it is the search string.
 // if there is a selection, but it is not the search string, then
 // we basically ignore it. (FIXME We ought to replace only within
 // the selection.)
 // if there is no selection, then:
 //  (i) if some search string has been provided, then we find it.
 //      (think of how the dialog works when you hit "replace" the
-//      first time.) 
+//      first time.)
 // (ii) if no search string has been provided, then we treat the
 //      word the cursor is in as the search string. (why? i have no
 //      idea.) but this only works in text?
 //
-// returns the number of replacements made (one, if any) and 
+// returns the number of replacements made (one, if any) and
 // whether anything at all was done.
 pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 			   docstring const & replacestr, bool case_sens,
@@ -237,15 +237,15 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 		cur.innerText()->selectWord(cur, WHOLE_WORD);
 		searchstr = cur.selectionAsString(false);
 	}
-	
+
 	// if we still don't have a search string, report the error
 	// and abort.
 	if (!searchAllowed(searchstr))
 		return make_pair(false, 0);
-	
+
 	bool have_selection = cur.selection();
 	docstring const selected = cur.selectionAsString(false);
-	bool match = 
+	bool match =
 		case_sens
 		? searchstr == selected
 		: compare_no_case(searchstr, selected) == 0;
@@ -327,7 +327,7 @@ bool lyxfind(BufferView * bv, FuncRequest const & ev)
 }
 
 
-bool lyxreplace(BufferView * bv, 
+bool lyxreplace(BufferView * bv,
 		FuncRequest const & ev, bool has_deleted)
 {
 	if (!bv || ev.action() != LFUN_WORD_REPLACE)
@@ -372,7 +372,7 @@ bool lyxreplace(BufferView * bv,
 			} else if (replace_count == 1) {
 				buf.message(_("String has been replaced."));
 			} else {
-				docstring const str = 
+				docstring const str =
 					bformat(_("%1$d strings have been replaced."), replace_count);
 				buf.message(str);
 			}
@@ -652,8 +652,8 @@ bool braces_match(string::const_iterator const & beg,
 		}
 	}
 	if (open_pars != unmatched) {
-		LYXERR(Debug::FIND, "Found " << open_pars 
-		       << " instead of " << unmatched 
+		LYXERR(Debug::FIND, "Found " << open_pars
+		       << " instead of " << unmatched
 		       << " unmatched open braces at the end of count");
 		return false;
 	}
@@ -726,7 +726,7 @@ private:
 };
 
 
-static docstring buffer_to_latex(Buffer & buffer) 
+static docstring buffer_to_latex(Buffer & buffer)
 {
 	OutputParams runparams(&buffer.params().encoding());
 	TexRow texrow;
@@ -824,15 +824,14 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 
 	size_t lead_size = 0;
 	if (opt.ignoreformat) {
-                if (!use_regexp) {
-                        // if par_as_string_nolead were emty, 
-                        // the following call to findAux will always *find* the string
-                        // in the checked data, and thus always using the slow
-                        // examining of the current text part.
-                        par_as_string_nolead = par_as_string;
-                }
-        }
-        else {
+		if (!use_regexp) {
+			// if par_as_string_nolead were emty,
+			// the following call to findAux will always *find* the string
+			// in the checked data, and thus always using the slow
+			// examining of the current text part.
+			par_as_string_nolead = par_as_string;
+		}
+	} else {
 		lead_size = identifyLeading(par_as_string);
 		lead_as_string = par_as_string.substr(0, lead_size);
 		par_as_string_nolead = par_as_string.substr(lead_size, par_as_string.size() - lead_size);
@@ -908,7 +907,7 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 		}
 	} else {
 		LYXERR(Debug::FIND, "Searching in regexp mode: at_begin=" << at_begin);
-		// Try all possible regexp matches, 
+		// Try all possible regexp matches,
 		//until one that verifies the braces match test is found
 		regex const *p_regexp = at_begin ? &regexp : &regexp2;
 		sregex_iterator re_it(str.begin(), str.end(), *p_regexp);
@@ -924,7 +923,7 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 			for (size_t i = 1; i < m.size() - 1; ++i)
 				if (!braces_match(m[i].first, m[i].second))
 					return false;
-			// Exclude from the returned match length any length 
+			// Exclude from the returned match length any length
 			// due to close wildcards added at end of regexp
 			if (close_wildcards == 0)
 				return m[0].second - m[0].first;
@@ -1241,7 +1240,7 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match)
 			DocIterator cur_prev_iter;
 			do {
 				found_match = match(cur);
-				LYXERR(Debug::FIND, "findBackAdv3: found_match=" 
+				LYXERR(Debug::FIND, "findBackAdv3: found_match="
 				       << found_match << ", cur: " << cur);
 				if (found_match)
 					return findMostBackwards(cur, match);
@@ -1324,7 +1323,7 @@ static bool firstUppercase(Cursor const & cur)
 	ch2 = cur.paragraph().getChar(pos + 1);
 	bool result = isUpperCase(ch1) && isLowerCase(ch2);
 	LYXERR(Debug::FIND, "firstUppercase(): "
-	       << "ch1=" << ch1 << "(" << char(ch1) << "), ch2=" 
+	       << "ch1=" << ch1 << "(" << char(ch1) << "), ch2="
 	       << ch2 << "(" << char(ch2) << ")"
 	       << ", result=" << result << ", cur=" << cur);
 	return result;

@@ -1022,7 +1022,7 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	/// Only needed with Qt/Mac.
 	installTranslator(new MenuTranslator(this));
 	///
-    setupApplescript();
+	setupApplescript();
 #endif
 
 #if defined(Q_WS_X11) || defined(QPA_XCB)

@@ -366,9 +366,9 @@ docstring const Messages::get(string const & m) const
 }
 
 std::string Messages::language() const
-    {
-        return string();
-    }
+{
+	return string();
+}
 
 bool Messages::available(string const & /* c */)
 {

@@ -121,7 +121,7 @@ HullType hullType(docstring const & s)
 	if (s == "gather")    return hullGather;
 	if (s == "flalign")   return hullFlAlign;
 	if (s == "regexp")    return hullRegexp;
-  	lyxerr << "unknown hull type '" << to_utf8(s) << "'" << endl;
+	lyxerr << "unknown hull type '" << to_utf8(s) << "'" << endl;
 	return HullType(-1);
 }
 
@@ -141,7 +141,7 @@ docstring hullName(HullType type)
 		case hullGather:     return from_ascii("gather");
 		case hullFlAlign:    return from_ascii("flalign");
 		case hullRegexp:     return from_ascii("regexp");
- 		default:
+		default:
 			lyxerr << "unknown hull type '" << type << "'" << endl;
 			return from_ascii("none");
 	}
@@ -151,8 +151,8 @@ static InsetLabel * dummy_pointer = 0;
 
 InsetMathHull::InsetMathHull(Buffer * buf)
 	: InsetMathGrid(buf, 1, 1), type_(hullNone), numbered_(1, NUMBER),
-    numbers_(1, empty_docstring()), label_(1, dummy_pointer),
-    preview_(new RenderPreview(this)), use_preview_(false)
+	  numbers_(1, empty_docstring()), label_(1, dummy_pointer),
+	  preview_(new RenderPreview(this)), use_preview_(false)
 {
 	//lyxerr << "sizeof InsetMath: " << sizeof(InsetMath) << endl;
 	//lyxerr << "sizeof MetricsInfo: " << sizeof(MetricsInfo) << endl;
@@ -166,8 +166,8 @@ InsetMathHull::InsetMathHull(Buffer * buf)
 
 InsetMathHull::InsetMathHull(Buffer * buf, HullType type)
 	: InsetMathGrid(buf, getCols(type), 1), type_(type), numbered_(1, NUMBER),
-    numbers_(1, empty_docstring()), label_(1, dummy_pointer),
-    preview_(new RenderPreview(this)), use_preview_(false)
+	  numbers_(1, empty_docstring()), label_(1, dummy_pointer),
+	  preview_(new RenderPreview(this)), use_preview_(false)
 {
 	buffer_ = buf;
 	initMath();
@@ -507,10 +507,10 @@ void InsetMathHull::drawBackground(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
 	if (previewTooSmall(dim)) {
-		pi.pain.fillRectangle(x, y - 2 * ERROR_FRAME_WIDTH, 
+		pi.pain.fillRectangle(x, y - 2 * ERROR_FRAME_WIDTH,
 		    dim.wid, dim.asc + dim.des, backgroundColor(pi));
 		return;
-	} 
+	}
 	pi.pain.fillRectangle(x + 1, y - dim.asc + 1, dim.wid - 2,
 			dim.asc + dim.des - 1, pi.backgroundColor(this));
 }
@@ -1980,7 +1980,7 @@ int InsetMathHull::plaintext(odocstringstream & os,
 			// and do not include the newline.
 			if (op.for_toc || op.for_tooltip || oss.str().size() >= max_length)
 				break;
-                        if (r < nrows() - 1)
+			if (r < nrows() - 1)
 				wi << "\n";
 		}
 	}

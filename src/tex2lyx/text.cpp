@@ -1391,12 +1391,12 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		if (!opt.empty())
 			os << "placement " << opt << '\n';
 		if (contains(opt, "H"))
-                	preamble.registerAutomaticallyLoadedPackage("float");
+			preamble.registerAutomaticallyLoadedPackage("float");
 		else {
 			Floating const & fl = parent_context.textclass.floats()
 				.getType(unstarred_name);
 		        if (!fl.floattype().empty() && fl.usesFloatPkg())
-                		preamble.registerAutomaticallyLoadedPackage("float");
+				preamble.registerAutomaticallyLoadedPackage("float");
 		}
 
 		os << "wide " << convert<string>(is_starred)

@@ -66,7 +66,7 @@ static docstring const lyx_def = from_ascii(
 static docstring const lyx_hyperref_def = from_ascii(
 	"\\providecommand{\\LyX}{\\texorpdfstring%\n"
 	"  {L\\kern-.1667em\\lower.25em\\hbox{Y}\\kern-.125emX\\@}\n"
-        "  {LyX}}");
+	"  {LyX}}");
 
 static docstring const noun_def = from_ascii(
 	"\\newcommand{\\noun}[1]{\\textsc{#1}}");
@@ -256,7 +256,7 @@ static docstring const lyxref_def = from_ascii(
 		"  {\\def\\RSthmtxt{theorem~}\\newref{thm}{name = \\RSthmtxt}}\n"
 		"  {}\n"
 		"\\RS@ifundefined{lemref}\n"
-		"  {\\def\\RSlemtxt{lemma~}\\newref{lem}{name = \\RSlemtxt}}\n" 
+		"  {\\def\\RSlemtxt{lemma~}\\newref{lem}{name = \\RSlemtxt}}\n"
 		"  {}\n");
 
 // Make sure the columns are also outputed as rtl
@@ -304,15 +304,15 @@ static docstring const rtloutputdblcol_def = from_ascii(
 
 static docstring const lyxnoun_style = from_ascii(
 	"dfn.lyxnoun {\n"
-  "  font-variant: small-caps;\n"
-  "}\n");
+	"  font-variant: small-caps;\n"
+	"}\n");
 
 
 // this is how it normally renders, but it might not always do so.
 static docstring const lyxstrikeout_style = from_ascii(
 	"del.strikeout {\n"
-  "  text-decoration: line-through;\n"
-  "}\n");
+	"  text-decoration: line-through;\n"
+	"}\n");
 
 
 /////////////////////////////////////////////////////////////////////
@@ -354,7 +354,7 @@ LaTeXFeatures::LangPackage LaTeXFeatures::langPackage() const
 		&& isAvailable("polyglossia")
 		&& !isProvided("babel")
 		&& this->hasOnlyPolyglossiaLanguages();
-	bool const babel_required = 
+	bool const babel_required =
 		!bufferParams().language->babel().empty()
 		|| !this->getBabelLanguages().empty();
 
@@ -893,14 +893,14 @@ string const LaTeXFeatures::getPackages() const
 	bool const use_newtxmath =
 		theLaTeXFonts().getLaTeXFont(from_ascii(params_.fonts_math)).getUsedPackage(
 			ot1, false, false) == "newtxmath";
-	
+
 	if (!params_.useNonTeXFonts && !use_newtxmath && !amsPackages.empty())
 		packages << amsPackages;
 
 	if (mustProvide("cancel") &&
 	    params_.use_package("cancel") != BufferParams::package_off)
 		packages << "\\usepackage{cancel}\n";
-	
+
 	// accents must be loaded after amsmath
 	if (mustProvide("accents") &&
 	    params_.use_package("accents") != BufferParams::package_off)

@@ -71,13 +71,13 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 
 void FindAndReplaceWidget::dockLocationChanged(Qt::DockWidgetArea area)
 {
-       if (area == Qt::RightDockWidgetArea || area == Qt::LeftDockWidgetArea) {
-               dynamicLayoutBasic_->setDirection(QBoxLayout::TopToBottom);
-               dynamicLayoutAdvanced_->setDirection(QBoxLayout::TopToBottom);
-       } else {
-               dynamicLayoutBasic_->setDirection(QBoxLayout::LeftToRight);
-               dynamicLayoutAdvanced_->setDirection(QBoxLayout::LeftToRight);
-       }
+	if (area == Qt::RightDockWidgetArea || area == Qt::LeftDockWidgetArea) {
+		dynamicLayoutBasic_->setDirection(QBoxLayout::TopToBottom);
+		dynamicLayoutAdvanced_->setDirection(QBoxLayout::TopToBottom);
+	} else {
+		dynamicLayoutBasic_->setDirection(QBoxLayout::LeftToRight);
+		dynamicLayoutAdvanced_->setDirection(QBoxLayout::LeftToRight);
+	}
 }
 
 
@@ -144,7 +144,7 @@ bool FindAndReplaceWidget::eventFilter(QObject * obj, QEvent * event)
 }
 
 
-static vector<string> const & allManualsFiles() 
+static vector<string> const & allManualsFiles()
 {
 	static const char * files[] = {
 		"Intro", "UserGuide", "Tutorial", "Additional",
@@ -169,7 +169,7 @@ static vector<string> const & allManualsFiles()
  **
  ** Return true if restarted from master-document buffer.
  **/
-static bool nextDocumentBuffer(Buffer * & buf) 
+static bool nextDocumentBuffer(Buffer * & buf)
 {
 	ListOfBuffers const children = buf->allRelatives();
 	LYXERR(Debug::FIND, "children.size()=" << children.size());
@@ -190,7 +190,7 @@ static bool nextDocumentBuffer(Buffer * & buf)
  **
  ** Return true if restarted from last child buffer.
  **/
-static bool prevDocumentBuffer(Buffer * & buf) 
+static bool prevDocumentBuffer(Buffer * & buf)
 {
 	ListOfBuffers const children = buf->allRelatives();
 	LYXERR(Debug::FIND, "children.size()=" << children.size());
@@ -289,7 +289,7 @@ docstring getQuestionString(FindAndReplaceOptions const & opt)
 	docstring message = opt.forward ?
 		bformat(_("%1$s: the end was reached while searching forward.\n"
 			  "Continue searching from the beginning?"),
-			scope) : 
+			scope) :
 		bformat(_("%1$s: the beginning was reached while searching backward.\n"
 			  "Continue searching from the end?"),
 			scope);
@@ -498,7 +498,7 @@ void FindAndReplaceWidget::hideDialog()
 }
 
 
-void FindAndReplaceWidget::on_findNextPB_clicked() 
+void FindAndReplaceWidget::on_findNextPB_clicked()
 {
 	findAndReplace(searchbackCB->isChecked(), false);
 	find_work_area_->setFocus();
@@ -583,7 +583,7 @@ FindAndReplace::FindAndReplace(GuiView & parent,
 	setFocusProxy(widget_);
 
 	connect(this, SIGNAL(dockLocationChanged(Qt::DockWidgetArea)),
-               widget_, SLOT(dockLocationChanged(Qt::DockWidgetArea)));
+	        widget_, SLOT(dockLocationChanged(Qt::DockWidgetArea)));
 }
 
 

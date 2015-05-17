@@ -51,7 +51,7 @@ using namespace std;
 
 namespace lyx {
 
-// FIXME Would it now be possible to use the InsetCode in 
+// FIXME Would it now be possible to use the InsetCode in
 // place of the mailer name and recover that information?
 InsetCommand::InsetCommand(Buffer * buf, InsetCommandParams const & p)
 	: Inset(buf), p_(p)
@@ -190,7 +190,7 @@ bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_ERT_INSERT:
 		status.setEnabled(false);
 		return true;
-	
+
 	// we handle these
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "changetype") {
@@ -200,11 +200,11 @@ bool InsetCommand::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 		status.setEnabled(true);
 		return true;
-	
+
 	case LFUN_INSET_DIALOG_UPDATE:
 		status.setEnabled(true);
 		return true;
-	
+
 	default:
 		return Inset::getStatus(cur, cmd, status);
 	}
@@ -334,7 +334,7 @@ bool decodeInsetParam(string const & name, string & data,
 		break;
 	}
 	case MATH_SPACE_CODE: {
-	    InsetSpaceParams p(true);
+		InsetSpaceParams p(true);
 		data = InsetSpace::params2string(p);
 		break;
 	}

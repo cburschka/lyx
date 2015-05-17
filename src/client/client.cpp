@@ -426,7 +426,7 @@ bool CmdLineParser::parse(int argc, char * argv[])
 
 namespace cmdline {
 
-    docstring mainTmp(from_ascii("/tmp"));
+docstring mainTmp(from_ascii("/tmp"));
 
 
 class StopException : public exception
@@ -456,8 +456,8 @@ void usage()
 	  "lyxclient will connect only to a lyx with the specified pid. Options -c and -g\n"
 	  "cannot be set simultaneoulsly. If no -c or -g options are given, lyxclient\n"
 	  "will read commands from standard input and disconnect when command read is BYE:\n"
-      "\n"
-      "System directory is: " << to_utf8(cmdline::mainTmp)
+	  "\n"
+	  "System directory is: " << to_utf8(cmdline::mainTmp)
 	   << endl;
 }
 

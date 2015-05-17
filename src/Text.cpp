@@ -1114,7 +1114,7 @@ bool Text::cursorForwardOneWord(Cursor & cur)
 	if (lyxrc.mac_like_cursor_movement) {
 		// Skip through trailing punctuation and spaces.
 		while (pos != lastpos && (par.isChar(pos) || par.isSpace(pos)))
-                        ++pos;
+			++pos;
 
 		// Skip over either a non-char inset or a full word
 		if (pos != lastpos && par.isWordSeparator(pos))

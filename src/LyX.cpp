@@ -470,9 +470,9 @@ int LyX::execWithoutGui(int & argc, char * argv[])
 {
 	int exit_status = init(argc, argv);
 	if (exit_status) {
-		prepareExit(); 
-		return exit_status;   
-	}                      
+		prepareExit();
+		return exit_status;
+	}
 
 	// this is correct, since return values are inverted.
 	exit_status = !loadFiles();
@@ -762,7 +762,7 @@ void cleanDuplicateEnvVars()
 
 	// Loop over the list of duplicated variables
 	std::set<std::string>::iterator dupe = dupes.begin();
-	std::set<std::string>::iterator const dend = dupes.end();	
+	std::set<std::string>::iterator const dend = dupes.end();
 	for (; dupe != dend; ++dupe) {
 		const char *name = (*dupe).c_str();
 		char *val = getenv(name);
@@ -1299,7 +1299,7 @@ void LyX::easyParse(int & argc, char * argv[])
 	cmdmap["-userdir"] = parse_userdir;
 	cmdmap["-x"] = parse_execute;
 	cmdmap["--execute"] = parse_execute;
- 	cmdmap["-e"] = parse_export;
+	cmdmap["-e"] = parse_export;
 	cmdmap["--export"] = parse_export;
 	cmdmap["-E"] = parse_export_to;
 	cmdmap["--export-to"] = parse_export_to;
