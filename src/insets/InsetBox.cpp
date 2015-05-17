@@ -158,6 +158,12 @@ void InsetBox::setButtonLabel()
 		label = bformat(_("%1$s (%2$s, %3$s)"),
 			type, inner, frame);
 	setLabel(label);
+
+	// set the frame color for the inset if the type is Boxed
+	if (btype == Boxed)
+		setFrameColor(lcolor.getFromLaTeXName(params_.framecolor));
+	else
+		setFrameColor(Color_collapsableframe);	
 }
 
 
@@ -210,7 +216,7 @@ ColorCode InsetBox::backgroundColor(PainterInfo const &) const
 	} else {
 		if (params_.backgroundcolor == "none")
 			return getLayout().bgcolor();
-		ColorCode boxbackground = lcolor.getFromLyXName(params_.backgroundcolor);
+		ColorCode boxbackground = lcolor.getFromLaTeXName(params_.backgroundcolor);
 		return boxbackground;
 	}
 	return getLayout().bgcolor();
