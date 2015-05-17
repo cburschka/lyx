@@ -1287,10 +1287,14 @@ bool Buffer::save() const
 	// We don't need autosaves in the immediate future. (Asger)
 	resetAutosaveTimers();
 
-	// none of the backup activity that follows is necessary if the
-	// file does not exist
-	if (!fileName().exists())
-		return writeFile(fileName());
+	// if the file does not yet exist, none of the backup activity
+	// that follows is necessary
+	if (!fileName().exists()) {
+		if (!writeFile(fileName()))
+			return false;
+		markClean();
+		return true;
+	}
 
 	// this will hold the name of the location to which we backup
 	// the existing file, if we do that.
