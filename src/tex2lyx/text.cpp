@@ -837,7 +837,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 {
 	string position;
 	string inner_pos;
-	string hor_pos = "c";
+	string hor_pos = "l";
 	// We need to set the height to the LaTeX default of 1\\totalheight
 	// for the case when no height argument is given
 	string height_value = "1";
@@ -886,7 +886,6 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			latex_width = "";
 			inner_type = "makebox";
 			inner_flags = FLAG_BRACE_LAST;
-			hor_pos = "l";
 			position = "t";
 			inner_pos = "t";
 		}
@@ -931,7 +930,10 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 					inner_pos = position;
 				}
 			}
-		}
+		} else {
+				if (inner_type == "makebox")
+					hor_pos = "c";
+			}
 	}
 	if (inner_type.empty()) {
 		if (special.empty() && outer_type != "framebox")
