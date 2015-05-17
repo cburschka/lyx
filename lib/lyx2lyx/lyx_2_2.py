@@ -1026,6 +1026,8 @@ def convert_origin(document):
         origin = "stdin"
     else:
         origin = document.dir.replace('\\', '/')
+        if os.name != 'nt':
+            origin = unicode(origin, sys.getfilesystemencoding())
     document.header[i:i] = ["\\origin " + origin]
 
 
