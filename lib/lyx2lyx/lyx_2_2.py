@@ -1082,10 +1082,18 @@ def convert_colorbox(document):
 
     i = 0
     while True:
+        # the routine convert_BoxFeatures adds already "shadowsize" to the box params
+        # but for an unknown reason this is not yet done before this routine is run
+        # therefore handle the case that shadowsize exists (for files in version 489  491)
+        # and that it don't exists
         i = find_token(document.body, "height_special", i)
         if i == -1:
             return
-        document.body.insert(i + 2, 'framecolor "black"\nbackgroundcolor "none"')
+        j = find_token(document.body, "shadowsize", i)
+        if j == i + 3:
+            document.body.insert(i + 4, 'framecolor "black"\nbackgroundcolor "none"')
+        else:
+            document.body.insert(i + 2, 'framecolor "black"\nbackgroundcolor "none"')
         i = i + 2
 
 
