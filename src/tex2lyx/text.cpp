@@ -998,9 +998,8 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 	if (!outer_type.empty() && !inner_type.empty() &&
 	    (inner_flags & FLAG_END))
 		active_environments.push_back(inner_type);
-	// LyX can't handle length variables
-	bool use_ert = contains(width_unit, '\\') || contains(height_unit, '\\');
-	if (!use_ert && !outer_type.empty() && !inner_type.empty()) {
+	bool use_ert = false;
+	if (!outer_type.empty() && !inner_type.empty()) {
 		// Look whether there is some content after the end of the
 		// inner box, but before the end of the outer box.
 		// If yes, we need to output ERT.
@@ -1130,10 +1129,20 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			os << "use_makebox " << (inner_type == "makebox") << '\n';
 		if (outer_type == "fbox" || outer_type == "mbox")
 			os << "width \"\"\n";
+		// for values like "1.5\width" LyX uses "1.5in" as width ad sets "width" as sepecial
+		else if (contains(width_unit, '\\'))
+			os << "width \"" << width_value << "in" << "\"\n";
 		else
 			os << "width \"" << width_value << width_unit << "\"\n";
-		os << "special \"" << width_special << "\"\n";
-		os << "height \"" << height_value << height_unit << "\"\n";
+		if (contains(width_unit, '\\')) {
+			width_unit.erase (0,1); // remove the leading '\'
+			os << "special \"" << width_unit << "\"\n";
+		} else
+			os << "special \"" << width_special << "\"\n";
+		if (contains(height_unit, '\\'))
+			os << "height \"" << height_value << "in" << "\"\n";
+		else
+			os << "height \"" << height_value << height_unit << "\"\n";
 		os << "height_special \"" << height_special << "\"\n";
 		os << "thickness \"" << thickness << "\"\n";
 		os << "separation \"" << separation << "\"\n";
