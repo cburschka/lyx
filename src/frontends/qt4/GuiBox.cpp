@@ -166,6 +166,7 @@ GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 
 void GuiBox::fillComboColor(QComboBox * combo, bool const is_none)
 {
+	combo->clear();
 	QPixmap coloritem(32, 32);
 	QColor color;
 	// frameColorCO cannot be uncolored
