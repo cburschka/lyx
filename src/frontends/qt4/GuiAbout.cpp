@@ -47,30 +47,36 @@ static QString credits()
 	QFile file(toqstr(package().system_support().absFileName()) + "/CREDITS");
 	QTextStream out(&res);
 
-	if (file.isReadable()) {
-		out << qt_("ERROR: LyX wasn't able to read CREDITS file\n");
+	if (!file.exists()) {
+		out << qt_("ERROR: LyX wasn't able to find the CREDITS file\n");
 		out << qt_("Please install correctly to estimate the great\n");
 		out << qt_("amount of work other people have done for the LyX project.");
 	} else {
 		file.open(QIODevice::ReadOnly);
-		QTextStream ts(&file);
-		ts.setCodec("UTF-8");
-		QString line;
-		do {
-			line = ts.readLine();
-			if (line.startsWith("@b"))
-				out << "<b>" << line.mid(2) << "</b>";
-			else if (line.startsWith("@i")) {
-				if (line.startsWith("@iE-mail")) {
-					// unmask email
-					line.replace(QString(" () "), QString("@"));
-					line.replace(QString(" ! "), QString("."));
-				}
-				out << "<i>" << line.mid(2) << "</i>";
-			} else
-				out << line;
-			out << "<br>";
-		} while (!line.isNull());
+		if (!file.isReadable()) {
+			out << qt_("ERROR: LyX wasn't able to read the CREDITS file\n");
+			out << qt_("Please install correctly to estimate the great\n");
+			out << qt_("amount of work other people have done for the LyX project.");
+		} else {
+			QTextStream ts(&file);
+			ts.setCodec("UTF-8");
+			QString line;
+			do {
+				line = ts.readLine();
+				if (line.startsWith("@b"))
+					out << "<b>" << line.mid(2) << "</b>";
+				else if (line.startsWith("@i")) {
+					if (line.startsWith("@iE-mail")) {
+						// unmask email
+						line.replace(QString(" () "), QString("@"));
+						line.replace(QString(" ! "), QString("."));
+					}
+					out << "<i>" << line.mid(2) << "</i>";
+				} else
+					out << line;
+				out << "<br>";
+			} while (!line.isNull());
+		}
 	}
 	out.flush();
 	return res;
