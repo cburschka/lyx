@@ -1222,12 +1222,9 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 	    && (fboxrule != "" || fboxsep != "" || shadow_size != "")) {
 		// in this case we assume that the closing brace is from the box settings
 		// therefore reset these values for the next box
-		if (fboxrule != "")
-			fboxrule = "";
-		if (fboxsep != "")
-			fboxsep = "";
-		if (shadow_size != "")
-			shadow_size = "";
+		fboxrule = "";
+		fboxsep = "";
+		shadow_size = "";
 	}
 
 	// all boxes except of Frameless and Shaded require calc
