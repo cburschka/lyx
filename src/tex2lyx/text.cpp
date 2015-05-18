@@ -1099,7 +1099,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		begin_inset(os, "Box ");
 		if (outer_type == "framed")
 			os << "Framed\n";
-		else if (outer_type == "framebox" || outer_type == "fbox")
+		else if (outer_type == "framebox" || outer_type == "fbox" || frame_color != "")
 			os << "Boxed\n";
 		else if (outer_type == "shadowbox")
 			os << "Shadowbox\n";
@@ -1118,6 +1118,8 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		os << "hor_pos \"" << hor_pos << "\"\n";
 		if (outer_type == "mbox")
 			os << "has_inner_box 1\n";
+		if (frame_color != "")
+			os << "has_inner_box 0\n";
 		else
 			os << "has_inner_box " << !inner_type.empty() << "\n";
 		os << "inner_pos \"" << inner_pos << "\"\n";
@@ -1125,6 +1127,8 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		   << '\n';
 		if (outer_type == "mbox")
 			os << "use_makebox 1\n";
+		if (frame_color != "")
+			os << "use_makebox 0\n";
 		else
 			os << "use_makebox " << (inner_type == "makebox") << '\n';
 		if (outer_type == "mbox")
@@ -1210,7 +1214,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		}
 #endif
 	}
-	if (background_color != "") {
+	if (inner_flags != FLAG_BRACE_LAST && (frame_color != "" || background_color != "")) {
 		// in this case we have to eat the the closing brace of the color box
 		p.get_token().asInput(); // the '}'
 	}
@@ -4235,9 +4239,17 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		         t.cs() == "shadowbox" || t.cs() == "doublebox")
 			parse_outer_box(p, os, FLAG_ITEM, outer, context, t.cs(), "");
 
-		else if (t.cs() == "colorbox") {
-			string const backgroundcolor = p.getArg('{', '}');
-			parse_box(p, os, 0, 0, outer, context, "", "", "", "", backgroundcolor);
+		else if (t.cs() == "fcolorbox" || t.cs() == "colorbox") {
+			string backgroundcolor;
+			preamble.registerAutomaticallyLoadedPackage("xcolor");
+			if (t.cs() == "fcolorbox") {
+				string const framecolor = p.getArg('{', '}');
+				backgroundcolor = p.getArg('{', '}');
+				parse_box(p, os, 0, 0, outer, context, "", "", "", framecolor, backgroundcolor);
+			} else {
+				backgroundcolor = p.getArg('{', '}');
+				parse_box(p, os, 0, 0, outer, context, "", "", "", "", backgroundcolor);
+			}
 		}
 
 		else if (t.cs() == "fboxrule" || t.cs() == "fboxsep"
