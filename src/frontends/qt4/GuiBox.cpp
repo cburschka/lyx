@@ -183,10 +183,9 @@ void GuiBox::fillComboColor(QComboBox * combo, bool const is_none)
 }
 
 
-void GuiBox::on_innerBoxCO_activated(int /* index */)
+void GuiBox::on_innerBoxCO_activated(int index)
 {
-	QString itype =
-		innerBoxCO->itemData(innerBoxCO->currentIndex()).toString();
+	QString itype =	innerBoxCO->itemData(index).toString();
 	// handle parbox and minipage the same way
 	bool const ibox = (itype != "none" && itype != "makebox");
 	if (heightCB->isChecked() && !ibox)
