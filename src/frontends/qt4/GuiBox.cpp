@@ -80,7 +80,6 @@ static QStringList boxGuiSpecialLengthNames()
 static QList<ColorCode> colors()
 {
 	QList<ColorCode> colors;
-	colors << Color_none;
 	colors << Color_black;
 	colors << Color_white;
 	colors << Color_blue;
@@ -173,7 +172,7 @@ void GuiBox::fillComboColor(QComboBox * combo, bool const is_none)
 	if (is_none)
 		combo->addItem(toqstr(translateIfPossible(lcolor.getGUIName(Color_none))),
 			       toqstr(lcolor.getLaTeXName(Color_none)));
-	QList<ColorCode>::const_iterator cit = color_codes_.begin() + 1;
+	QList<ColorCode>::const_iterator cit = color_codes_.begin();
 	for (; cit != color_codes_.end(); ++cit) {
 		QString const latexname = toqstr(lcolor.getLaTeXName(*cit));
 		QString const guiname = toqstr(translateIfPossible(lcolor.getGUIName(*cit)));
