@@ -13,9 +13,7 @@
 #ifndef QTHELPERS_H
 #define QTHELPERS_H
 
-#include "ColorSet.h"
 #include "Length.h"
-#include "support/lstrings.h"
 #include "support/qstring_helpers.h"
 #include "support/filetools.h"
 #include "qt_i18n.h"
@@ -38,12 +36,6 @@ class BufferParams;
 namespace frontend {
 
 class LengthCombo;
-
-struct ColorSorter {
-	bool operator()(ColorCode lhs, ColorCode rhs) const {
-		return	support::compare_no_case(lcolor.getGUIName(lhs), lcolor.getGUIName(rhs)) < 0;
-	}
-};
 
 /// method to get a Length from widgets (LengthCombo)
 std::string widgetsToLength(QLineEdit const * input, LengthCombo const * combo);

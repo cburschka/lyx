@@ -23,12 +23,14 @@
 #include "BufferView.h"
 #include "Color.h"
 #include "ColorCache.h"
+#include "ColorSet.h"
 #include "Cursor.h"
 #include "FuncRequest.h"
 #include "Language.h"
 #include "Paragraph.h"
 
 #include "support/gettext.h"
+#include "support/lstrings.h"
 
 #include <QAbstractItemModel>
 #include <QComboBox>
@@ -190,7 +192,16 @@ void fillComboColor(QComboBox * combo, QList<T> const & list)
 	combo->addItem(qt_("Reset"), "inherit");
 }
 
-}
+
+struct ColorSorter
+{
+	bool operator()(ColorCode lhs, ColorCode rhs) const {
+		return
+			support::compare_no_case(lcolor.getGUIName(lhs), lcolor.getGUIName(rhs)) < 0;
+	}
+};
+
+} // namespace anon
 
 GuiCharacter::GuiCharacter(GuiView & lv)
 	: GuiDialog(lv, "character", qt_("Text Style")), font_(ignore_font, ignore_language),
