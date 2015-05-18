@@ -246,8 +246,8 @@ void GuiBox::on_frameColorCO_currentIndexChanged(int index)
 {
 	// if there is a non-black frame color the background cannot be uncolored
 	// therefore remove the entry "none" in this case
+	int const n = backgroundColorCO->findData("none");
 	if (index != frameColorCO->findData("black")) {
-		int const n = backgroundColorCO->findData("none");
 		if (n != -1) {
 			if (backgroundColorCO->currentIndex() == n)
 				backgroundColorCO->setCurrentIndex(
@@ -255,7 +255,7 @@ void GuiBox::on_frameColorCO_currentIndexChanged(int index)
 			backgroundColorCO->removeItem(n);
 		}
 	} else {
-		if (backgroundColorCO->count() == color_codes_.count() - 1)
+		if (n == -1)
 			backgroundColorCO->insertItem(0, toqstr(translateIfPossible((lcolor.getGUIName(Color_none)))),
 						      toqstr(lcolor.getLaTeXName(Color_none)));
 	}
