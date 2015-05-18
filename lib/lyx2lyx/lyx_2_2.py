@@ -964,8 +964,8 @@ def convert_BoxFeatures(document):
         i = find_token(document.body, "height_special", i)
         if i == -1:
             return
-        document.body.insert(i + 1, 'thickness "0.4pt"\nseparation "3pt"\nshadowsize "4pt"')
-        i = i + 1
+        document.body[i+1:i+1] = ['thickness "0.4pt"', 'separation "3pt"', 'shadowsize "4pt"']
+        i = i + 4
 
 
 def revert_BoxFeatures(document):
@@ -1084,19 +1084,11 @@ def convert_colorbox(document):
 
     i = 0
     while True:
-        # the routine convert_BoxFeatures adds already "shadowsize" to the box params
-        # but for an unknown reason this is not yet done before this routine is run
-        # therefore handle the case that shadowsize exists (for files in version 489  491)
-        # and that it don't exists
-        i = find_token(document.body, "height_special", i)
+        i = find_token(document.body, "shadowsize", i)
         if i == -1:
             return
-        j = find_token(document.body, "shadowsize", i)
-        if j == i + 3:
-            document.body.insert(i + 4, 'framecolor "black"\nbackgroundcolor "none"')
-        else:
-            document.body.insert(i + 2, 'framecolor "black"\nbackgroundcolor "none"')
-        i = i + 2
+        document.body[i+1:i+1] = ['framecolor "black"', 'backgroundcolor "none"']
+        i = i + 3
 
 
 def revert_colorbox(document):
