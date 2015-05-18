@@ -151,8 +151,8 @@ GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 	connect(shadowsizeED, SIGNAL(textChanged(QString)), this, SIGNAL(changed()));
 	connect(shadowsizeUnitsLC, SIGNAL(selectionChanged(lyx::Length::UNIT)),
 		this, SIGNAL(changed()));
-	connect(frameColorCO, SIGNAL(highlighted(QString)), this, SIGNAL(changed()));
-	connect(backgroundColorCO, SIGNAL(highlighted(QString)), this, SIGNAL(changed()));
+	connect(backgroundColorCO, SIGNAL(currentIndexChanged(int)),
+		this, SIGNAL(changed()));
 
 	heightED->setValidator(unsignedLengthValidator(heightED));
 	widthED->setValidator(unsignedLengthValidator(widthED));
