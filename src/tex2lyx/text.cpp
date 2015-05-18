@@ -1229,6 +1229,13 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		if (shadow_size != "")
 			shadow_size = "";
 	}
+
+	// all boxes except of Frameless and Shaded require calc
+	if (!(outer_type.empty() || outer_type == "mbox") &&
+		!((outer_type == "shaded" && inner_type.empty()) ||
+			     (outer_type == "minipage" && inner_type == "shaded") ||
+			     (outer_type == "parbox" && inner_type == "shaded")))
+		preamble.registerAutomaticallyLoadedPackage("calc");
 }
 
 
@@ -1684,6 +1691,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		eat_whitespace(p, os, parent_context, false);
 		parse_outer_box(p, os, FLAG_END, outer, parent_context, name, "");
 		p.skip_spaces();
+		preamble.registerAutomaticallyLoadedPackage("framed");
 	}
 
 	else if (name == "lstlisting") {
