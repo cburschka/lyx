@@ -28,13 +28,26 @@ add_dependencies(lyx_run_tests check_layout)
 set_target_properties(check_layout PROPERTIES FOLDER "tests/src")
 
 file(GLOB layout_files RELATIVE "${TOP_SRC_DIR}/lib/layouts" "${TOP_SRC_DIR}/lib/layouts/*.layout")
+file(GLOB module_files RELATIVE "${TOP_SRC_DIR}/lib/layouts" "${TOP_SRC_DIR}/lib/layouts/*.module")
 list(SORT layout_files)
-foreach(bns ${layout_files}) 
-  string(REPLACE ".layout" "" bn ${bns})
+list(SORT module_files)
 
-  add_test(NAME "check_layout/${bns}"
-    COMMAND check_layout "${TOP_SRC_DIR}/lib/layouts/${bn}" "${CMAKE_CURRENT_BINARY_DIR}/${bn}.out")
-  settestlabel("check_layout/${bns}" "layout")
+foreach(bns ${layout_files} ${module_files})
+  string(REGEX REPLACE "\\.(layout|module)" "" bn ${bns})
+  set(_checktype ${CMAKE_MATCH_1})
+  if("${_checktype}" STREQUAL "module")
+    file(WRITE "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "#% Do not delete the line below; configure depends on this\n")
+    file(APPEND "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "#  \\DeclareLaTeXClass{test${bn}}\n")
+
+    file(APPEND "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "Format 5\n")
+    file(APPEND "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "Input ${bns}\n")
+    add_test(NAME "check_layout/${bns}"
+      COMMAND env LYX_USERDIR_22x=${LYX_TESTS_USERDIR} $<TARGET_FILE:check_layout> "${LYX_TESTS_USERDIR}/layouts/test${bn}" "${CMAKE_CURRENT_BINARY_DIR}/${bn}.out${_checktype}")
+  else()
+    add_test(NAME "check_layout/${bns}"
+      COMMAND check_layout "${TOP_SRC_DIR}/lib/layouts/${bn}" "${CMAKE_CURRENT_BINARY_DIR}/${bn}.out${_checktype}")
+  endif()
+  settestlabel("check_layout/${bns}" "${_checktype}")
 endforeach()
 
 set(check_ExternalTransforms_SOURCES)
