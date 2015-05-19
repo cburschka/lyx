@@ -193,13 +193,10 @@ void fillComboColor(QComboBox * combo, QList<T> const & list)
 }
 
 
-struct ColorSorter
+bool ColorSorter(ColorCode lhs, ColorCode rhs)
 {
-	bool operator()(ColorCode lhs, ColorCode rhs) const {
-		return
-			support::compare_no_case(lcolor.getGUIName(lhs), lcolor.getGUIName(rhs)) < 0;
-	}
-};
+	return support::compare_no_case(lcolor.getGUIName(lhs), lcolor.getGUIName(rhs)) < 0;
+}
 
 } // namespace anon
 
@@ -230,7 +227,7 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	size   = sizeData();
 	bar    = barData();
 	color  = colorData();
-	sort(color.begin(), color.end(), ColorSorter());
+	qSort(color.begin(), color.end(), ColorSorter);
 
 	language = languageData();
 	language.prepend(LanguagePair(qt_("Reset"), "reset"));
