@@ -5,9 +5,8 @@
 \textclass scrartcl
 \begin_preamble
 % to be able to use custom colors
-\usepackage[svgnames,rgb]{xcolor}
+\usepackage{xcolor}
 
-% ------------------------------------
 % used to check for needed LaTeX packages
 \usepackage{ifthen}
 
@@ -1024,6 +1023,44 @@ The action that is triggered by pressing the button is specified by JavaScript
 onclick={}
 \series default
  and insert the JavaScript code between the braces.
+ For info about JavaScript, see its documentation, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "JavaScript"
+
+\end_inset
+
+.
+ In the following example this JavaScript code was used:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+app.alert(
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"
+\end_layout
+
+\end_inset
+
+What the hell? Now you destroyed your fridge.
+ Congratulations.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"
+\end_layout
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Standard
@@ -1091,17 +1128,6 @@ Don't click on this button or your fridge will be destroyed!!!
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-For info about JavaScript, see its documentation, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "JavaScript"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -2205,19 +2231,7 @@ height_special "totalheight"
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- Reset the form
+Reset the form
 \end_layout
 
 \end_inset
@@ -3446,7 +3460,7 @@ To be able to use all kinds of colors and color definitions you must load
 \series bold
 xcolor
 \series default
- in the document preamble this way:
+ in the document preamble:
 \begin_inset Newline newline
 \end_inset
 
@@ -3454,7 +3468,7 @@ xcolor
 \series bold
 
 \backslash
-usepackage[svgnames,rgb]{xcolor}
+usepackage{xcolor}
 \end_layout
 
 \begin_layout Itemize
