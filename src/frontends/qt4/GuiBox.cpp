@@ -105,13 +105,10 @@ static QList<ColorCode> colors()
 
 namespace {
 
-struct ColorSorter
+bool ColorSorter(ColorCode lhs, ColorCode rhs)
 {
-	bool operator()(ColorCode lhs, ColorCode rhs) const {
-		return
-			support::compare_no_case(lcolor.getGUIName(lhs), lcolor.getGUIName(rhs)) < 0;
-	}
-};
+	return support::compare_no_case(lcolor.getGUIName(lhs), lcolor.getGUIName(rhs)) < 0;
+}
 
 } // namespace anon
 
@@ -169,7 +166,7 @@ GuiBox::GuiBox(QWidget * parent) : InsetParamsWidget(parent)
 
 	// the background can be uncolored while the frame cannot
 	color_codes_ = colors();
-	sort(color_codes_.begin(), color_codes_.end(), ColorSorter());
+	qSort(color_codes_.begin(), color_codes_.end(), ColorSorter);
 	fillComboColor(backgroundColorCO, true);
 	fillComboColor(frameColorCO, false);
 
