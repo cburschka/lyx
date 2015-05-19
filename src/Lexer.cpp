@@ -695,23 +695,23 @@ double Lexer::getFloat() const
 }
 
 
-string const Lexer::getString() const
+string const Lexer::getString(bool trim) const
 {
 	lastReadOk_ = pimpl_->status == LEX_DATA || pimpl_->status == LEX_TOKEN;
 
 	if (lastReadOk_)
-	return pimpl_->getString();
+		return trim ? support::trim(pimpl_->getString(), "\t ") : pimpl_->getString();
 
 	return string();
 }
 
 
-docstring const Lexer::getDocString() const
+docstring const Lexer::getDocString(bool trim) const
 {
 	lastReadOk_ = pimpl_->status == LEX_DATA || pimpl_->status == LEX_TOKEN;
 
 	if (lastReadOk_)
-		return pimpl_->getDocString();
+		return trim ? support::trim(pimpl_->getDocString(), "\t ") : pimpl_->getDocString();
 
 	return docstring();
 }
