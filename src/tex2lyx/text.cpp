@@ -906,7 +906,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			inner_pos = "t";
 		}
 	}
-	if (inner_type == "makebox" && !p.hasOpt())
+	if (!p.hasOpt() && (inner_type == "makebox" || outer_type == "mbox"))
 		hor_pos = "c";
 	if (!inner_type.empty() && p.hasOpt()) {
 		if (inner_type != "makebox")
@@ -1142,7 +1142,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		os << "hor_pos \"" << hor_pos << "\"\n";
 		if (outer_type == "mbox")
 			os << "has_inner_box 1\n";
-		if (!frame_color.empty())
+		else if (!frame_color.empty())
 			os << "has_inner_box 0\n";
 		else
 			os << "has_inner_box " << !inner_type.empty() << "\n";
@@ -1151,7 +1151,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		   << '\n';
 		if (outer_type == "mbox")
 			os << "use_makebox 1\n";
-		if (!frame_color.empty())
+		else if (!frame_color.empty())
 			os << "use_makebox 0\n";
 		else
 			os << "use_makebox " << (inner_type == "makebox") << '\n';
