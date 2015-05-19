@@ -564,8 +564,8 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 
 		case LT_REQUIRES: {
 			lex.eatLine();
-			vector<string> const req = 
-				getVectorFromString(lex.getString());
+			vector<string> const req =
+				getVectorFromString(lex.getString(true));
 			requires_.insert(req.begin(), req.end());
 			break;
 		}
