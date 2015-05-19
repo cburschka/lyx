@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-16 15:45+0200\n"
-"PO-Revision-Date: 2015-05-16 14:11+0000\n"
+"POT-Creation-Date: 2015-05-19 13:50+0200\n"
+"PO-Revision-Date: 2015-05-19 12:00+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -41,6 +41,10 @@ msgstr "Autorské práva"
 #: src/frontends/qt4/ui/AboutUi.ui:99
 msgid "Build Info"
 msgstr "Produkčná informácia"
+
+#: src/frontends/qt4/ui/AboutUi.ui:116
+msgid "Release Notes"
+msgstr "Poznámky k Vydaniu"
 
 #: src/frontends/qt4/ui/AboutUi.ui:150 src/frontends/qt4/ui/CompareUi.ui:163
 #: src/frontends/qt4/ui/DelimiterUi.ui:286
@@ -23946,9 +23950,9 @@ msgstr "modrá"
 msgid "brown"
 msgstr "hnedá"
 
-#: src/Color.cpp:209
+#: src/Color.cpp:208
 msgid "cyan"
-msgstr "zelenomodrá"
+msgstr "modrozelená"
 
 #: src/Color.cpp:209 src/frontends/qt4/GuiBox.cpp:89
 msgid "darkgray"
@@ -26245,8 +26249,8 @@ msgid "Advanced Find and Replace"
 msgstr "Pokročilé Hľadať a Nahradiť"
 
 #: src/frontends/qt4/GuiAbout.cpp:51
-msgid "ERROR: LyX wasn't able to read CREDITS file\n"
-msgstr "Chyba: LyXu sa nepodarilo načítať súbor CREDITS\n"
+msgid "ERROR: LyX wasn't able to find the CREDITS file\n"
+msgstr "CHYBA: LyXu sa nepodarilo nájsť súbor CREDITS\n"
 
 #: src/frontends/qt4/GuiAbout.cpp:52
 msgid "Please install correctly to estimate the great\n"
@@ -26255,6 +26259,26 @@ msgstr "Prosím vykonajte správnu inštaláciu na ocenenie veľkého\n"
 #: src/frontends/qt4/GuiAbout.cpp:53
 msgid "amount of work other people have done for the LyX project."
 msgstr "množstva práce všetkých ľudí, ktorí pracovali pre LyX projekt."
+
+#: src/frontends/qt4/GuiAbout.cpp:57
+msgid "ERROR: LyX wasn't able to read the CREDITS file\n"
+msgstr "CHYBA: LyXu sa nepodarilo načítať súbor CREDITS\n"
+
+#: src/frontends/qt4/GuiAbout.cpp:93
+msgid "ERROR: LyX wasn't able to find the RELEASE-NOTES file\n"
+msgstr "CHYBA: LyXu sa nepodarilo nájsť súbor RELEASE-NOTES\n"
+
+#: src/frontends/qt4/GuiAbout.cpp:94 src/frontends/qt4/GuiAbout.cpp:100
+msgid "Please install correctly to see what has changed\n"
+msgstr "Prosím vykonajte správnu inštaláciu keď chcete zistiť čo sa zmenilo\n"
+
+#: src/frontends/qt4/GuiAbout.cpp:95 src/frontends/qt4/GuiAbout.cpp:101
+msgid "for this version of LyX."
+msgstr "pre túto verziu LyXu."
+
+#: src/frontends/qt4/GuiAbout.cpp:99
+msgid "ERROR: LyX wasn't able to read the RELEASE-NOTES file\n"
+msgstr "CHYBA: LyXu sa nepodarilo načítať súbor RELEASE-NOTES\n"
 
 #: src/frontends/qt4/GuiAbout.cpp:84
 #, c-format
@@ -26728,82 +26752,6 @@ msgstr "Preškrtnuté"
 #: src/frontends/qt4/GuiCharacter.cpp:92
 msgid "No color"
 msgstr "Bez farby"
-
-#: src/frontends/qt4/GuiCharacter.cpp:93
-msgid "Black"
-msgstr "Čierna"
-
-#: src/frontends/qt4/GuiCharacter.cpp:94
-msgid "White"
-msgstr "Biela"
-
-#: src/frontends/qt4/GuiCharacter.cpp:95
-msgid "Red"
-msgstr "Červená"
-
-#: src/frontends/qt4/GuiCharacter.cpp:111
-msgid "Teal"
-msgstr "Smaragdovozelená"
-
-#: src/frontends/qt4/GuiCharacter.cpp:112
-msgid "Violet"
-msgstr "Fialová"
-
-#: src/frontends/qt4/GuiCharacter.cpp:96
-msgid "Green"
-msgstr "Zelená"
-
-#: src/frontends/qt4/GuiCharacter.cpp:103
-msgid "Lightgray"
-msgstr "Svetlošedá"
-
-#: src/frontends/qt4/GuiCharacter.cpp:104
-msgid "Lime"
-msgstr "Svetlozelená"
-
-#: src/frontends/qt4/GuiCharacter.cpp:97
-msgid "Blue"
-msgstr "Modrá"
-
-#: src/frontends/qt4/GuiCharacter.cpp:98
-msgid "Brown"
-msgstr "Hnedá"
-
-#: src/frontends/qt4/GuiCharacter.cpp:98
-msgid "Cyan"
-msgstr "Zelenomodrá"
-
-#: src/frontends/qt4/GuiCharacter.cpp:100
-msgid "Darkgray"
-msgstr "Tmavošedá"
-
-#: src/frontends/qt4/GuiCharacter.cpp:101
-msgid "Gray"
-msgstr "Šedá"
-
-#: src/frontends/qt4/GuiCharacter.cpp:105
-msgid "Magenta"
-msgstr "Purpurová"
-
-#: src/frontends/qt4/GuiCharacter.cpp:106
-msgid "Olive"
-msgstr "Olivová"
-
-#: src/frontends/qt4/GuiCharacter.cpp:107
-msgid "Orange"
-msgstr "Oranžová"
-
-#: src/frontends/qt4/GuiCharacter.cpp:108
-msgid "Pink"
-msgstr "Ružová"
-
-#: src/frontends/qt4/GuiCharacter.cpp:109
-msgid "Purple"
-msgstr "Nachová"
-
-#: src/frontends/qt4/GuiCharacter.cpp:100
-msgid "Yellow"
-msgstr "Žltá"
 
 #: src/frontends/qt4/GuiCharacter.cpp:162
 msgid "Text Style"
@@ -30999,6 +30947,63 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "Black"
+#~ msgstr "Čierna"
+
+#~ msgid "Blue"
+#~ msgstr "Modrá"
+
+#~ msgid "Brown"
+#~ msgstr "Hnedá"
+
+#~ msgid "Cyan"
+#~ msgstr "Zelenomodrá"
+
+#~ msgid "Darkgray"
+#~ msgstr "Tmavošedá"
+
+#~ msgid "Gray"
+#~ msgstr "Šedá"
+
+#~ msgid "Green"
+#~ msgstr "Zelená"
+
+#~ msgid "Lightgray"
+#~ msgstr "Svetlošedá"
+
+#~ msgid "Lime"
+#~ msgstr "Svetlozelená"
+
+#~ msgid "Magenta"
+#~ msgstr "Purpurová"
+
+#~ msgid "Olive"
+#~ msgstr "Olivová"
+
+#~ msgid "Orange"
+#~ msgstr "Oranžová"
+
+#~ msgid "Pink"
+#~ msgstr "Ružová"
+
+#~ msgid "Purple"
+#~ msgstr "Nachová"
+
+#~ msgid "Red"
+#~ msgstr "Červená"
+
+#~ msgid "Teal"
+#~ msgstr "Smaragdovozelená"
+
+#~ msgid "Violet"
+#~ msgstr "Fialová"
+
+#~ msgid "White"
+#~ msgstr "Biela"
+
+#~ msgid "Yellow"
+#~ msgstr "Žltá"
+
 #~ msgid "Unknown document class"
 #~ msgstr "Neznáma trieda dokumentu"
 
@@ -33820,3 +33825,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "&Save documents compressed by default"
 #~ msgstr "Štandardne &ukladať dokumenty komprimované"
+
+#~ msgid "ERROR: LyX wasn't able to read CREDITS file\n"
+#~ msgstr "Chyba: LyXu sa nepodarilo načítať súbor CREDITS\n"
