@@ -1,13 +1,10 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 493
 \begin_document
 \begin_header
+\origin D:/LyXGit/Master/lib/examples/
 \textclass scrartcl
 \begin_preamble
-% to be able to use custom colors
-\usepackage[svgnames,rgb]{xcolor}
-
-% ------------------------------------
 % used to check for needed LaTeX packages
 \usepackage{ifthen}
 
@@ -150,6 +147,7 @@ pdfform
 \begin_body
 
 \begin_layout Begin PDF Form
+
 \begin_inset Argument 1
 status open
 
@@ -175,7 +173,8 @@ Uwe Stöhr
 status open
 
 \begin_layout Plain Layout
-To export all parts of this document to PDF the LaTeX-package 
+To export all parts of this document to PDF the \SpecialChar LaTeX
+-package 
 \series bold
 insdljs
 \series default
@@ -228,7 +227,8 @@ PDF
 
 Form
 \family default
- from LyX's dropdown menu at the beginning of the document.
+ from \SpecialChar LyX
+'s dropdown menu at the beginning of the document.
  If only a part of the document should be a form, add 
 \family sans
 Begin
@@ -278,7 +278,7 @@ Form
  environment.
  This is done by using the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 PDF
 \begin_inset space ~
 \end_inset
@@ -371,7 +371,7 @@ TextField
 \family default
  using the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Custom
 \begin_inset space ~
 \end_inset
@@ -423,24 +423,6 @@ name=customer
 customer
 \series default
  is the field name).
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- All braces, brackets, backslashes and quote characters in form parameters
- must be inserted as TeX code!
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -536,41 +518,8 @@ status open
 
 \begin_layout Plain Layout
 name=customer2, multiline, width=0.6
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
 \backslash
-textwidth
-\end_layout
-
-\end_inset
-
-, height=3cm, value=
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-Testman
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
+textwidth, height=3cm, value={Testman}
 \end_layout
 
 \end_inset
@@ -679,7 +628,7 @@ ChoiceMenu
 .
  A label for the inset is added by using the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Label
 \family default
 .
@@ -961,7 +910,8 @@ status open
 \series bold
 Note:
 \series default
- Due to a bug in the LaTeX package 
+ Due to a bug in the \SpecialChar LaTeX
+ package 
 \series bold
 hyperref
 \series default
@@ -1024,28 +974,20 @@ The action that is triggered by pressing the button is specified by JavaScript
 onclick={}
 \series default
  and insert the JavaScript code between the braces.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Flex PushButton
-status open
-
-\begin_layout Plain Layout
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-onclick=
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
+ For info about JavaScript, see its documentation, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "JavaScript"
 
 \end_inset
 
+.
+ In the following example this JavaScript code was used:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
 app.alert(
 \begin_inset ERT
 status collapsed
@@ -1070,17 +1012,41 @@ status collapsed
 \end_inset
 
 )
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex PushButton
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+onclick={app.alert(
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
-}
+"
 \end_layout
 
 \end_inset
 
+What the hell? Now you destroyed your fridge.
+ Congratulations.
+\begin_inset ERT
+status collapsed
 
+\begin_layout Plain Layout
+
+"
+\end_layout
+
+\end_inset
+
+)}
 \end_layout
 
 \end_inset
@@ -1094,14 +1060,21 @@ Don't click on this button or your fridge will be destroyed!!!
 \end_layout
 
 \begin_layout Standard
-For info about JavaScript, see its documentation, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "JavaScript"
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ All quote characters in form parameters must be inserted as \SpecialChar TeX
+ code!
+\end_layout
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -1238,7 +1211,8 @@ reference "sec:Preparation"
 \end_inset
 
  for the description.
- If there are no specifications you will get LaTeX errors!
+ If there are no specifications you will get \SpecialChar LaTeX
+ errors!
 \end_layout
 
 \end_inset
@@ -1256,7 +1230,8 @@ status open
 Note:
 \series default
  If you have more than one submit button in your document you must specify
- a name for each of them to avoid LaTeX errors! For example add 
+ a name for each of them to avoid \SpecialChar LaTeX
+ errors! For example add 
 \series bold
 name=submit1
 \series default
@@ -1319,7 +1294,8 @@ status open
 Note:
 \series default
  If you have more than one reset button in your document you must specify
- a name for each of them to avoid LaTeX errors! For example add 
+ a name for each of them to avoid \SpecialChar LaTeX
+ errors! For example add 
 \series bold
 name=reset1
 \series default
@@ -1477,7 +1453,8 @@ Forms optional parameters
 \begin_inset Quotes erd
 \end_inset
 
- of the documentation of the LaTeX package 
+ of the documentation of the \SpecialChar LaTeX
+ package 
 \series bold
 hyperref
 \series default
@@ -1499,37 +1476,45 @@ Here are some examples:
 \end_layout
 
 \begin_layout Text Field Style
+
 print, bordercolor=red, borderstyle=U, backgroundcolor=lightgray, color=lime,
  maxlen=10, align=2, charsize=16pt
 \end_layout
 
 \begin_layout Check Box Style
+
 print, borderstyle=S, checkboxsymbol=
 \backslash
 ding{55}
 \end_layout
 
 \begin_layout Combo Box Style
+
 print, bordercolor={0.33 0.66 0.33}, borderstyle=D
 \end_layout
 
 \begin_layout Popdown Box Style
+
 print, menulength=2
 \end_layout
 
 \begin_layout Radio Box Style
+
 print, borderstyle=I, radiosymbol=6
 \end_layout
 
 \begin_layout Push Button Style
+
 print, borderstyle=B, bordercolor=lime
 \end_layout
 
 \begin_layout Submit Button Style
+
 print, borderwidth=0, bordercolor=white
 \end_layout
 
 \begin_layout Reset Button Style
+
 print, bordercolor=lime
 \end_layout
 
@@ -1874,18 +1859,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-onclick=
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-app.alert(
+onclick={app.alert(
 \begin_inset ERT
 status collapsed
 
@@ -1907,46 +1881,34 @@ status collapsed
 
 \end_inset
 
-)
-\begin_inset ERT
-status collapsed
+)}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "lime"
+status open
 
 \begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-colorbox{lime}{
-\end_layout
-
-\end_inset
-
 
 \color red
 Don't click on this button!!!
-\color inherit
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -1989,47 +1951,7 @@ backgroundcolor
 \end_layout
 
 \begin_layout Standard
-As workaround use the command 
-\series bold
-
-\backslash
-colorbox
-\series default
- as described in sec.
-\begin_inset space \thinspace{}
-\end_inset
-
- 5.7 
-\begin_inset Quotes eld
-\end_inset
-
-Colored Boxes
-\begin_inset Quotes erd
-\end_inset
-
- in LyX's 
-\emph on
-EmbeddedObjects
-\emph default
- manual.
-\begin_inset Newline newline
-\end_inset
-
-In the button above this code was used:
-\begin_inset Newline newline
-\end_inset
-
-
-\family sans
-
-\backslash
-colorbox{lime}{Don't click on this button!!!}
-\family default
-
-\begin_inset Newline newline
-\end_inset
-
-and the button text was colored.
+As workaround use a colored box and/or color the box text.
 \end_layout
 
 \begin_layout Standard
@@ -2058,18 +1980,7 @@ width
 \end_layout
 
 \begin_layout Standard
-As workaround use the box method described in sec.
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Action-button-customization"
-
-\end_inset
-
-
+As workaround a box.
 \end_layout
 
 \begin_layout Itemize
@@ -2096,19 +2007,6 @@ name=submit2
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-colorbox{cyan}{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -2120,33 +2018,15 @@ width "5cm"
 special "none"
 height "4in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "cyan"
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- Send your data via mail
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+Send your data via mail
 \end_layout
 
 \end_inset
@@ -2202,22 +2082,15 @@ width "7cm"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- Reset the form
+Reset the form
 \end_layout
 
 \end_inset
@@ -2279,7 +2152,8 @@ Acrobat-specific behavior
 \begin_inset Quotes erd
 \end_inset
 
- of the documentation of the LaTeX package 
+ of the documentation of the \SpecialChar LaTeX
+ package 
 \series bold
 hyperref
 \series default
@@ -2417,6 +2291,11 @@ width "4cm"
 special "none"
 height "2in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -2435,13 +2314,6 @@ inside a
 PDFAction
 \family default
  inset.
- To center the text in the button add 
-\series bold
-
-\backslash
-centering
-\series default
- as TeX code right before the button text.
  This is the result:
 \end_layout
 
@@ -2471,22 +2343,15 @@ width "4cm"
 special "none"
 height "2in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- Save form as
+Save form as
 \end_layout
 
 \end_inset
@@ -2555,6 +2420,7 @@ menubordercolor
 \end_layout
 
 \begin_layout PDF Link Setup
+
 menubordercolor={0.1 0.9 0.5}
 \end_layout
 
@@ -2593,23 +2459,16 @@ width "4cm"
 special "none"
 height "2in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
 \noindent
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- Save form as
+Save form as
 \end_layout
 
 \end_inset
@@ -2665,6 +2524,7 @@ pdfborder
 \end_layout
 
 \begin_layout PDF Link Setup
+
 pdfborder={0 0 4}, menubordercolor={1 1 0}
 \end_layout
 
@@ -2703,23 +2563,16 @@ width "4cm"
 special "none"
 height "2in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
 \noindent
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- Save form as
+Save form as
 \end_layout
 
 \end_inset
@@ -2733,41 +2586,11 @@ centering
 \end_layout
 
 \begin_layout Standard
-To change the background color insert the command 
-\series bold
-
-\backslash
-colorbox{color}{
-\series default
- at the beginning of the button inset and a 
-\series bold
-}
-\series default
- at the end.
- 
-\series bold
-color
-\series default
- is hereby the name of the color as described in sec.
-\begin_inset space \thinspace{}
-\end_inset
-
-5.7 
-\begin_inset Quotes eld
-\end_inset
-
-Colored Boxes
-\begin_inset Quotes erd
-\end_inset
-
- of LyX's 
-\emph on
-EmbeddedObjects
-\emph default
- manual.
+To change the background color use a colored box.
 \end_layout
 
 \begin_layout PDF Link Setup
+
 pdfborder={0 0 0}
 \end_layout
 
@@ -2791,19 +2614,6 @@ SaveAs
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-colorbox{lime}{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -2815,34 +2625,16 @@ width "4cm"
 special "none"
 height "2in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "lime"
 status open
 
 \begin_layout Plain Layout
 \noindent
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- Save form as
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+Save form as
 \end_layout
 
 \end_inset
@@ -2856,6 +2648,7 @@ status collapsed
 \end_layout
 
 \begin_layout PDF Link Setup
+
 pdfborder={0 0 1}, menubordercolor={1 0 0}
 \end_layout
 
@@ -2891,8 +2684,10 @@ space 0 R}
 \end_layout
 
 \begin_layout Standard
-Then add the necessary JavaScript code to your document LaTeX preamble or
- as TeX code to your document.
+Then add the necessary JavaScript code to your document \SpecialChar LaTeX
+ preamble or as
+ \SpecialChar TeX
+ code to your document.
  For info about JavaScript, see its documentation, 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2921,7 +2716,8 @@ ifinsdljs
 status open
 
 \begin_layout Plain Layout
-The following section will only be displayed when the LaTeX package 
+The following section will only be displayed when the \SpecialChar LaTeX
+ package 
 \series bold
 insdljs
 \series default
@@ -3078,29 +2874,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=contract,radio,default=tl,validate=
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-validateTime();
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
+name=contract,radio,default=tl,validate={validateTime();}
 \end_layout
 
 \end_inset
@@ -3130,7 +2904,7 @@ Job contract:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -3312,29 +3086,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=onlyNumbers, align=1, validate=
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-checkNumber();
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
+name=onlyNumbers, align=1, validate={checkNumber();}
 \end_layout
 
 \end_inset
@@ -3365,7 +3117,8 @@ else
 status open
 
 \begin_layout Plain Layout
-The following will be displayed when the LaTeX package 
+The following will be displayed when the \SpecialChar LaTeX
+ package 
 \series bold
 insdljs
 \series default
@@ -3402,6 +3155,7 @@ fi
 \end_layout
 
 \begin_layout End PDF Form
+
 \begin_inset Note Note
 status open
 
@@ -3424,37 +3178,24 @@ Submitting and applying data requires that all form fields have a name.
 
 \begin_layout Itemize
 All braces, brackets, backslashes and quote characters in form parameters
- must be inserted as TeX code!
+ must be inserted as \SpecialChar TeX
+ code!
 \end_layout
 
 \begin_layout Itemize
-It is not possible to create a PDF form using XeTeX.
- Use either the LyX export formats 
+It is not possible to create a PDF form using Xe\SpecialChar TeX
+.
+ Use either the \SpecialChar LyX
+ export formats 
 \family sans
 PDF (pdflatex)
 \family default
  or 
 \family sans
-PDF (LuaTeX)
+PDF (Lua\SpecialChar TeX
+)
 \family default
 .
-\end_layout
-
-\begin_layout Itemize
-To be able to use all kinds of colors and color definitions you must load
- the LaTeX package 
-\series bold
-xcolor
-\series default
- in the document preamble this way:
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-
-\backslash
-usepackage[svgnames,rgb]{xcolor}
 \end_layout
 
 \begin_layout Itemize
@@ -3503,7 +3244,8 @@ target "http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/manual.pdf"
 
 \end_inset
 
- of the LaTeX package 
+ of the \SpecialChar LaTeX
+ package 
 \series bold
 hyperref
 \end_layout
@@ -3523,7 +3265,8 @@ target "http://mirrors.ctan.org/macros/latex/required/psnfss/psnfss2e.pdf"
 
 \end_inset
 
- of the LaTeX package 
+ of the \SpecialChar LaTeX
+ package 
 \series bold
 pifont
 \end_layout

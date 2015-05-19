@@ -34,7 +34,7 @@ Style "Begin PDF Form"
 	  Series			Bold
 	  Color				Green
 	EndFont
-	Requires                        hyperref
+	Requires			hyperref
 End
 
 Style "End PDF Form"
@@ -66,12 +66,13 @@ InsetLayout Flex:TextField
 	  LabelString		"Params"
 	  Tooltip			"Insert PDF form parameters here"
 	  AutoInsert		1
+	  PassThruChars		"\[]{}"
 	EndArgument
 	LabelFont
 	  Color				magenta
 	  Size				Small
 	EndFont
-	Requires                        hyperref
+	Requires			hyperref
 End
 
 InsetLayout Flex:CheckBox
