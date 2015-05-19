@@ -460,6 +460,10 @@ void Loader::Impl::createPixmap()
 		if (idx != string::npos && idx > 3) {
 			if (filename.substr(idx - 3, 3) == "@2x") {
 				params_.pixel_ratio = 2.0;
+			} else if (cached_item_->filename().extension() == "svgz") {
+				params_.pixel_ratio = 4.0;
+			} else if (cached_item_->filename().extension() == "svg") {
+				params_.pixel_ratio = 4.0;
 			}
 		}
 	}

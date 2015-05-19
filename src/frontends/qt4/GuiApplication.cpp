@@ -566,22 +566,39 @@ QString iconName(FuncRequest const & f, bool unknown)
 	return QString();
 }
 
+
+bool getPixmap(QPixmap & pixmap, QString const & path)
+{
+	if (pixmap.load(path)) {
+		if (path.endsWith(".svgz") || path.endsWith(".svg") ) {
+			GuiApplication const * guiApp = theGuiApp();
+			if (guiApp != 0) {
+				pixmap.setDevicePixelRatio(guiApp->pixelRatio());
+			}
+		}
+		return true;
+	}
+	return false;
+}
+
+
 QPixmap getPixmap(QString const & path, QString const & name, QString const & ext)
 {
-	QPixmap pixmap;
 	QString imagedir = path;
 	FileName fname = imageLibFileSearch(imagedir, name, ext, theGuiApp()->imageSearchMode());
 	QString fpath = toqstr(fname.absFileName());
+	QPixmap pixmap = QPixmap();
 
-	if (pixmap.load(fpath)) {
+	if (getPixmap(pixmap, fpath)) {
 		return pixmap;
-	} else {
-	    QStringList exts = ext.split(",");
-	    fpath = ":/" + path + name + ".";
-	    for (int i = 0; i < exts.size(); ++i) {
-		if (pixmap.load(fpath + exts.at(i)))
+	}
+	
+	QStringList exts = ext.split(",");
+	fpath = ":/" + path + name + ".";
+	for (int i = 0; i < exts.size(); ++i) {
+		if (getPixmap(pixmap, fpath + exts.at(i))) {
 			return pixmap;
-	    }
+		}
 	}
 
 	bool const list = ext.contains(",");
@@ -591,6 +608,7 @@ QPixmap getPixmap(QString const & path, QString const & name, QString const & ex
 
 	return QPixmap();
 }
+
 
 QIcon getIcon(FuncRequest const & f, bool unknown)
 {
@@ -610,13 +628,13 @@ QIcon getIcon(FuncRequest const & f, bool unknown)
 		return QIcon();
 
 	//LYXERR(Debug::GUI, "Found icon: " << icon);
-	QPixmap pm;
-	if (!pm.load(icon)) {
+	QPixmap pixmap = QPixmap();
+	if (!getPixmap(pixmap,icon)) {
 		LYXERR0("Cannot load icon " << icon << " please verify resource system!");
 		return QIcon();
 	}
 
-	return QIcon(pm);
+	return QIcon(pixmap);
 }
 
 
@@ -2423,6 +2441,9 @@ void GuiApplication::execBatchCommands()
 #ifdef Q_OS_MAC
 #if QT_VERSION > 0x040600
 	setAttribute(Qt::AA_MacDontSwapCtrlAndMeta,lyxrc.mac_dontswap_ctrl_meta);
+#endif
+#if QT_VERSION > 0x050100
+	setAttribute(Qt::AA_UseHighDpiPixmaps,true);
 #endif
 	// Create the global default menubar which is shown for the dialogs
 	// and if no GuiView is visible.

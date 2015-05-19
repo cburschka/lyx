@@ -32,6 +32,7 @@
 #include "TocModel.h"
 
 #include "qt_helpers.h"
+#include "support/filetools.h"
 
 #include "frontends/alert.h"
 #include "frontends/KeySymbol.h"
@@ -109,6 +110,7 @@
 #include <QSplitter>
 #include <QStackedWidget>
 #include <QStatusBar>
+#include <QSvgRenderer>
 #include <QtConcurrentRun>
 #include <QTime>
 #include <QTimer>
@@ -149,7 +151,8 @@ namespace {
 class BackgroundWidget : public QWidget
 {
 public:
-	BackgroundWidget()
+	BackgroundWidget(int width, int height)
+		: width_(width), height_(height)
 	{
 		LYXERR(Debug::GUI, "show banner: " << lyxrc.show_banner);
 		if (!lyxrc.show_banner)
@@ -157,32 +160,40 @@ public:
 		/// The text to be written on top of the pixmap
 		QString const text = lyx_version ?
 			qt_("version ") + lyx_version : qt_("unknown version");
-		splash_ = getPixmap("images/", "banner", "svgz,png");
+		QString imagedir = "images/";
+		FileName fname = imageLibFileSearch(imagedir, "banner", "svgz");
+		QSvgRenderer svgRenderer(toqstr(fname.absFileName()));
+		if (svgRenderer.isValid()) {
+			splash_ = QPixmap(splashSize());
+			QPainter painter(&splash_);
+			svgRenderer.render(&painter);
+			splash_.setDevicePixelRatio(pixelRatio());
+		} else {
+			splash_ = getPixmap("images/", "banner", "png");
+		}
 
 		QPainter pain(&splash_);
 		pain.setPen(QColor(0, 0, 0));
-		double const multiplier = splashPixelRatio() / pixelRatio();
-		int const size = static_cast<int>(toqstr(lyxrc.font_sizes[FONT_SIZE_LARGE]).toDouble() * multiplier);
-		int const x = static_cast<int>(190 * multiplier);
-		int const y = static_cast<int>(225 * multiplier);
+		qreal const fsize = fontSize();
+		QPointF const position = textPosition();
 		LYXERR(Debug::GUI,
 			"widget pixel ratio: " << pixelRatio() <<
 			" splash pixel ratio: " << splashPixelRatio() <<
-			" version text size,position: " << size << "@" << x << "+" << y);
+			" version text size,position: " << fsize << "@" << position.x() << "+" << position.y());
 		QFont font;
 		// The font used to display the version info
 		font.setStyleHint(QFont::SansSerif);
 		font.setWeight(QFont::Bold);
-		font.setPointSize(size);
+		font.setPointSizeF(fsize);
 		pain.setFont(font);
-		pain.drawText(x, y, text);
+		pain.drawText(position, text);
 		setFocusPolicy(Qt::StrongFocus);
 	}
 
 	void paintEvent(QPaintEvent *)
 	{
-		int const w = static_cast<int>(splash_.width() / splashPixelRatio());
-		int const h = static_cast<int>(splash_.height() / splashPixelRatio());
+		int const w = width_;
+		int const h = height_;
 		int const x = (width() - w) / 2;
 		int const y = (height() - h) / 2;
 		LYXERR(Debug::GUI,
@@ -207,6 +218,8 @@ public:
 
 private:
 	QPixmap splash_;
+	int const width_;
+	int const height_;
 
 	/// Current ratio between physical pixels and device-independent pixels
 	double pixelRatio() const {
@@ -215,6 +228,26 @@ private:
 #else
 		return 1.0;
 #endif
+	}
+
+	qreal fontSize() {
+		return toqstr(lyxrc.font_sizes[FONT_SIZE_LARGE]).toDouble();
+	}
+
+	QPointF textPosition() {
+		return QPointF(splashWidth()/2 - 16, splashHeigth() - 40);
+	}
+
+	QSize splashSize() {
+		return 	QSize(width_ * pixelRatio(),height_ * pixelRatio());
+	}
+
+	double splashWidth() {
+		return splash_.width()/splashPixelRatio();
+	}
+
+	double splashHeigth() {
+		return splash_.height()/splashPixelRatio();
 	}
 
 	/// Ratio between physical pixels and device-independent pixels of splash image
@@ -264,7 +297,7 @@ struct GuiView::GuiViewPrivate
 		}
 
 		splitter_ = new QSplitter;
-		bg_widget_ = new BackgroundWidget;
+		bg_widget_ = new BackgroundWidget(400, 250);
 		stack_widget_ = new QStackedWidget;
 		stack_widget_->addWidget(bg_widget_);
 		stack_widget_->addWidget(splitter_);

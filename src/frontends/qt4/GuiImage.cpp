@@ -141,8 +141,9 @@ bool GuiImage::clip(Params const & params)
 		// No clipping is necessary.
 		return false;
 
-	int const new_width  = params.bb.xr - params.bb.xl;
-	int const new_height = params.bb.yt - params.bb.yb;
+	double const pixelRatio = is_transformed_ ? transformed_.devicePixelRatio() : original_.devicePixelRatio();
+	int const new_width  = static_cast<int>((params.bb.xr - params.bb.xl) * pixelRatio);
+	int const new_height = static_cast<int>((params.bb.yt - params.bb.yb) * pixelRatio);
 
 	QImage const & image = is_transformed_ ? transformed_ : original_;
 
@@ -185,7 +186,8 @@ bool GuiImage::scale(Params const & params)
 	if (params.scale == 100)
 		return false;
 
-	qreal scale = qreal(params.scale) / 100.0;
+	double const pixelRatio = is_transformed_ ? transformed_.devicePixelRatio() : original_.devicePixelRatio();
+	qreal scale = qreal(params.scale) / 100.0 * pixelRatio;
 
 #if (QT_VERSION >= 0x040500) && (QT_VERSION <= 0x040502)
 	// Due to a bug in Qt, LyX will crash for certain
