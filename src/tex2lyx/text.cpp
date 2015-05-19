@@ -127,6 +127,7 @@ string parse_text_snippet(Parser & p, unsigned flags, const bool outer,
 string fboxrule = "";
 string fboxsep = "";
 string shadow_size = "";
+bool wasBoxAlign = false;
 
 char const * const known_ref_commands[] = { "ref", "pageref", "vref",
  "vpageref", "prettyref", "nameref", "eqref", 0 };
@@ -1030,6 +1031,39 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		width_unit.clear();
 		width_special = "none";
 	}
+
+	// try to determine the box content alignment
+	// first handle the simple case of "{\centering..."
+	if (p.next_token().asInput() == "\\raggedright") {
+		wasBoxAlign = true;
+		hor_pos = "l";
+	} else if (p.next_token().asInput() == "\\centering") {
+		wasBoxAlign = true;
+		hor_pos = "c";
+	} else if (p.next_token().asInput() == "\\raggedleft") {
+		wasBoxAlign = true;
+		hor_pos = "r";
+	} else {
+		// now handle the cases "{%catNewline\centering..."
+		// and "{catNewline\centering..."
+		p.pushPosition();
+		p.get_token().asInput();
+		if (p.next_token().cat() == catComment || p.next_token().cat() == catNewline)
+			p.get_token().asInput();
+		if (p.next_token().asInput() == "\\raggedright") {
+			wasBoxAlign = true;
+			hor_pos = "l";
+		} else if (p.next_token().asInput() == "\\centering") {
+			wasBoxAlign = true;
+			os << "\n sada";
+			hor_pos = "c";
+		} else if (p.next_token().asInput() == "\\raggedleft") {
+			wasBoxAlign = true;
+			hor_pos = "r";
+		}
+		p.popPosition();
+	}
+
 	if (use_ert) {
 		ostringstream ss;
 		if (!outer_type.empty()) {
@@ -4257,8 +4291,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			}
 		}
 
+		// FIXME: due to the compiler limit of "if" nestings
+		// the code for the alignment was put here
+		// put them in their own if if this is fixed
 		else if (t.cs() == "fboxrule" || t.cs() == "fboxsep"
-			     || t.cs() == "shadowsize") {
+			     || t.cs() == "shadowsize"
+				 || t.cs() == "raggedleft" || t.cs() == "centering"
+		         || t.cs() == "raggedright") {
 			p.skip_spaces(true);
 			if (t.cs() == "fboxrule")
 				fboxrule = "";
@@ -4266,16 +4305,24 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				fboxsep = "";
 			if (t.cs() == "shadowsize")
 				shadow_size = "";
-			while (p.good() && p.next_token().cat() != catSpace
-				   && p.next_token().cat() != catNewline
-				   && p.next_token().cat() != catEscape) {
-				if (t.cs() == "fboxrule")
-					fboxrule = fboxrule + p.get_token().asInput();
-				if (t.cs() == "fboxsep")
-					fboxsep = fboxsep + p.get_token().asInput();
-				if (t.cs() == "shadowsize")
-					shadow_size = shadow_size + p.get_token().asInput();
+			if (t.cs() != "raggedleft" && t.cs() != "centering"
+		         && t.cs() != "raggedright") {
+				while (p.good() && p.next_token().cat() != catSpace
+				       && p.next_token().cat() != catNewline
+				       && p.next_token().cat() != catEscape) {
+					if (t.cs() == "fboxrule")
+						fboxrule = fboxrule + p.get_token().asInput();
+					if (t.cs() == "fboxsep")
+						fboxsep = fboxsep + p.get_token().asInput();
+					if (t.cs() == "shadowsize")
+						shadow_size = shadow_size + p.get_token().asInput();
 				}
+			} else {
+				// we only handle them if they are in a box
+				if (!wasBoxAlign)
+					output_ert_inset(os, '\\' + t.cs() + ' ', context);
+			}
+			wasBoxAlign = false;
 		}
 
 		//\framebox() is part of the picture environment and different from \framebox{}
