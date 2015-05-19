@@ -389,8 +389,8 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_REQUIRES: {
 			lex.eatLine();
-			vector<string> const req 
-				= support::getVectorFromString(lex.getString());
+			vector<string> const req
+				= support::getVectorFromString(lex.getString(true));
 			requires_.insert(req.begin(), req.end());
 			break;
 		}
