@@ -173,8 +173,8 @@ has_inner_box 1
 inner_pos "c"
 use_parbox 0
 use_makebox 1
-width "1in"
-special "width"
+width ""
+special "none"
 height "1in"
 height_special "totalheight"
 thickness "0.4pt"
@@ -256,6 +256,66 @@ makebox 3
 
 \begin_layout Standard
 
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "1in"
+special "width"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+
+\begin_layout Plain Layout
+www
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "l"
+has_inner_box 1
+inner_pos "t"
+use_parbox 1
+use_makebox 0
+width "2.3cm"
+special "none"
+height "1in"
+height_special "depth"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+
+\begin_layout Plain Layout
+www
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \begin_inset Float figure
 placement ht
 wide false
@@ -271,12 +331,12 @@ status collapsed
 \begin_layout Plain Layout
 
 \backslash
-centering
+centering 
 \end_layout
 
 \end_inset
 
- 
+
 \begin_inset ERT
 status collapsed
 
@@ -608,7 +668,7 @@ Framed Boxes
 blabla 
 \begin_inset Box Framed
 position "c"
-hor_pos "c"
+hor_pos "l"
 has_inner_box 0
 inner_pos "c"
 use_parbox 0
@@ -638,7 +698,7 @@ blabla
 blabla 
 \begin_inset Box Framed
 position "c"
-hor_pos "c"
+hor_pos "l"
 has_inner_box 0
 inner_pos "c"
 use_parbox 0
@@ -659,7 +719,7 @@ status open
 
 \begin_inset Box Framed
 position "c"
-hor_pos "c"
+hor_pos "l"
 has_inner_box 0
 inner_pos "c"
 use_parbox 0
@@ -694,7 +754,7 @@ blabla
 blabla 
 \begin_inset Box Boxed
 position "c"
-hor_pos "c"
+hor_pos "l"
 has_inner_box 0
 inner_pos "c"
 use_parbox 0
@@ -718,6 +778,66 @@ fbox
 \end_inset
 
  blabla
+\end_layout
+
+\begin_layout Standard
+blabla 
+\begin_inset Box Boxed
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+
+\begin_layout Standard
+framebox
+\end_layout
+
+\end_inset
+
+ blabla
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Box Boxed
+position "t"
+hor_pos "l"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "90col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+
+\begin_layout Plain Layout
+fbox around minipage
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -815,10 +935,40 @@ framebox 3
 \end_layout
 
 \begin_layout Standard
-This is an example text. 
+
 \begin_inset Box Boxed
 position "c"
 hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "1.5in"
+special "totalheight"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+
+\begin_layout Standard
+www
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is an example text. 
+\begin_inset Box Boxed
+position "c"
+hor_pos "l"
 has_inner_box 1
 inner_pos "s"
 use_parbox 0
@@ -864,7 +1014,7 @@ box height.
 blabla 
 \begin_inset Box ovalbox
 position "c"
-hor_pos "c"
+hor_pos "l"
 has_inner_box 0
 inner_pos "c"
 use_parbox 0
@@ -894,7 +1044,7 @@ ovalbox
 blabla 
 \begin_inset Box Ovalbox
 position "c"
-hor_pos "c"
+hor_pos "l"
 has_inner_box 0
 inner_pos "c"
 use_parbox 0
@@ -924,7 +1074,7 @@ Ovalbox
 blabla 
 \begin_inset Box Shadowbox
 position "c"
-hor_pos "c"
+hor_pos "l"
 has_inner_box 0
 inner_pos "c"
 use_parbox 0
@@ -954,7 +1104,7 @@ shadowbox
 blabla 
 \begin_inset Box Doublebox
 position "c"
-hor_pos "c"
+hor_pos "l"
 has_inner_box 0
 inner_pos "c"
 use_parbox 0
@@ -989,6 +1139,506 @@ doublebox
 \end_layout
 
 \begin_layout Subsection
+Boxes with custom settings
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Box Boxed
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "1cm"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "35pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+
+\begin_layout Standard
+www
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ 
+\begin_inset Box Boxed
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "1cm"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "20pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+
+\begin_layout Standard
+www
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+  
+\begin_inset Box Boxed
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "1cm"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "10pt"
+separation "1pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+
+\begin_layout Standard
+www
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Shadowbox
+position "c"
+hor_pos "c"
+has_inner_box 0
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "35pt"
+shadowsize "15pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+
+\begin_layout Standard
+www
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 1
+use_makebox 0
+width "90col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+
+\begin_layout Plain Layout
+www
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+raggedleft 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 1
+use_makebox 0
+width "90col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+
+\begin_layout Plain Layout
+ www
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Color Boxes
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "blue"
+status open
+
+
+\begin_layout Plain Layout
+www
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "l"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "90col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "blue"
+status open
+
+
+\begin_layout Plain Layout
+ www 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "l"
+has_inner_box 1
+inner_pos "t"
+use_parbox 1
+use_makebox 0
+width "90col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "blue"
+status open
+
+
+\begin_layout Plain Layout
+www
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "l"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width "90col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "blue"
+status open
+
+
+\begin_layout Plain Layout
+www
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Box Boxed
+position "t"
+hor_pos "l"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "90col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "lime"
+backgroundcolor "white"
+status open
+
+
+\begin_layout Plain Layout
+www
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Box Boxed
+position "t"
+hor_pos "l"
+has_inner_box 0
+inner_pos "t"
+use_parbox 1
+use_makebox 0
+width "90col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "lime"
+backgroundcolor "white"
+status open
+
+
+\begin_layout Plain Layout
+www
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Box Boxed
+position "t"
+hor_pos "l"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "90col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "lime"
+backgroundcolor "white"
+status open
+
+
+\begin_layout Plain Layout
+www
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "lime"
+backgroundcolor "white"
+status open
+
+
+\begin_layout Plain Layout
+www
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 LyX Boxes
 \end_layout
 
@@ -1014,7 +1664,7 @@ Note:
 
 \begin_inset Box Shaded
 position "c"
-hor_pos "c"
+hor_pos "l"
 has_inner_box 0
 inner_pos "c"
 use_parbox 0
@@ -1044,7 +1694,7 @@ Shaded background box
 
 \begin_inset Box Shaded
 position "c"
-hor_pos "c"
+hor_pos "l"
 has_inner_box 1
 inner_pos "c"
 use_parbox 0
@@ -1641,12 +2291,12 @@ status collapsed
 \begin_layout Plain Layout
 
 \backslash
-centering
+centering 
 \end_layout
 
 \end_inset
 
- centering single centering single centering single centering single centering single centering single centering single centering single
+centering single centering single centering single centering single centering single centering single centering single centering single
 \end_layout
 
 \begin_layout Standard
@@ -1665,12 +2315,12 @@ status collapsed
 \begin_layout Plain Layout
 
 \backslash
-raggedright
+raggedright 
 \end_layout
 
 \end_inset
 
- raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1
+raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1 raggedright 1
 \end_layout
 
 \begin_layout Standard
@@ -1689,12 +2339,12 @@ status collapsed
 \begin_layout Plain Layout
 
 \backslash
-raggedleft
+raggedleft 
 \end_layout
 
 \end_inset
 
- raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1
+raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1 raggedleft 1
 \end_layout
 
 \begin_layout Standard
@@ -1723,7 +2373,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \backslash
-raggedright
+raggedright 
 \end_layout
 
 \end_inset
