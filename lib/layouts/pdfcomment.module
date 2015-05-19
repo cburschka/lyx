@@ -35,7 +35,7 @@ Style Define_Avatar
 	  Color			green
 	  Series		Bold
 	EndFont
-	Requires                pdfcomment
+	Requires		pdfcomment
 End
 
 Style Define_PDF-Comment_Style
@@ -83,7 +83,7 @@ InsetLayout "Flex:PDF-Comment-Setup"
 	  LabelString		"Opts"
 	  ToolTip		"Insert PDF-Comment setup options here (see the pdfcomment manual)"
 	EndArgument
-	Requires                pdfcomment
+	Requires		pdfcomment
 End
 
 #
@@ -106,7 +106,7 @@ InsetLayout "Flex:PDF-Annotation"
 	  LabelString		"Opts"
 	  ToolTip		"Insert PDFComment options here (see pdfcomment manual)"
 	EndArgument
-	Requires                pdfcomment
+	Requires		pdfcomment
 End
 
 InsetLayout "Flex:PDF-Margin"
@@ -223,5 +223,5 @@ Style List_of_PDF_Comments
 	  MenuString		"List Options|s"
 	  Tooltip		"Insert list options here (see pdfcomment manual)"
 	EndArgument
-	Requires                pdfcomment
+	Requires		pdfcomment
 End
