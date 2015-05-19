@@ -268,6 +268,8 @@ GuiAbout::GuiAbout(GuiView & lv)
 	d->ui.buildinfoTB->setText(buildinfo());
 	d->ui.releasenotesTB->setHtml(release_notes());
 	d->ui.creditsTB->setHtml(credits());
+
+	d->ui.tab->setUsesScrollButtons(false);
 }
 
 
