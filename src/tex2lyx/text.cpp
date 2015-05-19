@@ -1021,18 +1021,6 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		}
 		p.popPosition();
 	}
-	// if only \makebox{content} was used we can set its width to 1\width
-	// because this identic and also identic to \mbox
-	// this doesn't work for \framebox{content}, thus we have to use ERT for this
-	if (latex_width.empty() && inner_type == "makebox" && background_color.empty()) {
-		width_value = "1";
-		width_unit = "in";
-		width_special = "width";
-	} else if (latex_width.empty() && outer_type == "framebox") {
-		width_value.clear();
-		width_unit.clear();
-		width_special = "none";
-	}
 
 	// try to determine the box content alignment
 	// first handle the simple case of "{\centering..."
