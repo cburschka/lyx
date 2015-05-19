@@ -1,7 +1,8 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 488
+\lyxformat 493
 \begin_document
 \begin_header
+\origin /home/jspitz/lyx/lyx-devel/lib/examples/
 \textclass article
 \begin_preamble
 %% Uncomment the following for Tableaux captions on top:
@@ -872,6 +873,37 @@ You might have to adapt the minipage width (
 textwidth
 \family default
  in the example code) to fit the glosses to your actual page width.
+\end_layout
+
+\begin_layout Subsubsection*
+Footnotes in Glosses
+\end_layout
+
+\begin_layout Standard
+Although you can insert a footnote in a 
+\emph on
+Glosse
+\emph default
+ inset, LaTeX compilation will not succeed.
+ If you need footnotes, put 
+\family typewriter
+
+\backslash
+footnotemark
+\family default
+ in TeX mode in the glosse at the point where the footnote number should
+ appear, and
+\family typewriter
+ 
+\backslash
+footnotetext{Actual footnote ...}
+\family default
+, also in TeX mode, right behind the 
+\emph on
+Glosse
+\emph default
+ inset.
+ If you need several footnotes, just insert multiple of these constructs.
 \end_layout
 
 \begin_layout Subsubsection*

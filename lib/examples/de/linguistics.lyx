@@ -1,7 +1,8 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 488
+\lyxformat 493
 \begin_document
 \begin_header
+\origin /home/jspitz/lyx/lyx-devel/lib/examples/de/
 \textclass article
 \begin_preamble
 %% Kommentieren Sie das Folgende aus, um Tableaux-Überschriften zu erzeugen:
@@ -873,6 +874,35 @@ textwidth
 \end_layout
 
 \begin_layout Subsubsection*
+Fußnoten in Glossen
+\end_layout
+
+\begin_layout Standard
+Sie können zwar eine Fußnote in eine 
+\emph on
+Glosse 
+\emph default
+einfügen, dies führt aber zu einem LaTeX-Fehler.
+ Wenn Sie Fußnoten benötigen, schreiben Sie an der Stelle, an der das Fußnotenze
+ichen erscheinen soll, im TeX-Modus 
+\family typewriter
+
+\backslash
+footnotemark
+\family default
+ in die Glosse.
+ Direkt nach (und außerhalb) der Glosse schreiben Sie, ebenfalls im TeX-Modus,
+\family typewriter
+ 
+\backslash
+footnotetext{Die Fußnote ...}
+\family default
+.
+ Sollten Sie mehrere Fußnoten brauchen, geben Sie einfach mehrere dieser
+ Befehlspaare ein.
+\end_layout
+
+\begin_layout Subsubsection*
 Glossen (und Beispiele) in Beamer-Präsentationen
 \end_layout
 
@@ -915,14 +945,17 @@ inline false
 status open
 
 \begin_layout Plain Layout
+
 Provides covington 1
 \end_layout
 
 \begin_layout Plain Layout
+
 AddToPreamble
 \end_layout
 
 \begin_layout Plain Layout
+
 		
 \backslash
 let
@@ -933,6 +966,7 @@ relax
 \end_layout
 
 \begin_layout Plain Layout
+
 		
 \backslash
 let
@@ -943,6 +977,7 @@ relax
 \end_layout
 
 \begin_layout Plain Layout
+
 		
 \backslash
 let
@@ -953,6 +988,7 @@ relax
 \end_layout
 
 \begin_layout Plain Layout
+
 		
 \backslash
 let
@@ -963,12 +999,14 @@ relax
 \end_layout
 
 \begin_layout Plain Layout
+
 		
 \backslash
 usepackage{covington}
 \end_layout
 
 \begin_layout Plain Layout
+
 EndPreamble
 \end_layout
 
@@ -1377,11 +1415,13 @@ status open
 
 \begin_layout Plain Layout
 
+
 \backslash
 floatstyle{plaintop}
 \end_layout
 
 \begin_layout Plain Layout
+
 
 \backslash
 restylefloat{tableau}
@@ -1405,11 +1445,13 @@ status open
 
 \begin_layout Plain Layout
 
+
 \backslash
 floatstyle{komaabove}
 \end_layout
 
 \begin_layout Plain Layout
+
 
 \backslash
 restylefloat{tableau}
@@ -1518,6 +1560,7 @@ inline false
 status open
 
 \begin_layout Plain Layout
+
 
 \backslash
 renewcommand
