@@ -123,9 +123,6 @@
 #undef None
 #elif defined(QPA_XCB)
 #include <xcb/xcb.h>
-#include <X11/Xatom.h>
-#include <X11/Intrinsic.h>
-#undef None
 #endif
 
 #if (QT_VERSION < 0x050000) || (QT_VERSION >= 0x050400)
@@ -3067,7 +3064,7 @@ bool GuiApplication::nativeEventFilter(const QByteArray & eventType,
 	case XCB_SELECTION_REQUEST: {
 		xcb_selection_request_event_t * srev =
 			reinterpret_cast<xcb_selection_request_event_t *>(ev);
-		if (srev->selection != XA_PRIMARY)
+		if (srev->selection != XCB_ATOM_PRIMARY)
 			break;
 		LYXERR(Debug::SELECTION, "X requested selection.");
 		BufferView * bv = current_view_->currentBufferView();
@@ -3081,7 +3078,7 @@ bool GuiApplication::nativeEventFilter(const QByteArray & eventType,
 	case XCB_SELECTION_CLEAR: {
 		xcb_selection_clear_event_t * scev =
 			reinterpret_cast<xcb_selection_clear_event_t *>(ev);
-		if (scev->selection != XA_PRIMARY)
+		if (scev->selection != XCB_ATOM_PRIMARY)
 			break;
 		LYXERR(Debug::SELECTION, "Lost selection.");
 		BufferView * bv = current_view_->currentBufferView();
