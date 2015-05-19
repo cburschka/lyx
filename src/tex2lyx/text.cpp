@@ -906,6 +906,8 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			inner_pos = "t";
 		}
 	}
+	if (inner_type == "makebox" && !p.hasOpt())
+		hor_pos = "c";
 	if (!inner_type.empty() && p.hasOpt()) {
 		if (inner_type != "makebox")
 			position = p.getArg('[', ']');
@@ -947,9 +949,9 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 				}
 			}
 		} else {
-				if (inner_type == "makebox")
-					hor_pos = "c";
-			}
+			if (inner_type == "makebox")
+				hor_pos = "c";
+		}
 	}
 	if (inner_type.empty()) {
 		if (special.empty() && outer_type != "framebox")
