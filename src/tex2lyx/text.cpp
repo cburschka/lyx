@@ -1165,7 +1165,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			os << "use_makebox 0\n";
 		else
 			os << "use_makebox " << (inner_type == "makebox") << '\n';
-		if (outer_type == "mbox")
+		if (outer_type == "mbox" || (outer_type == "fbox" && inner_type == ""))
 			os << "width \"\"\n";
 		// for values like "1.5\width" LyX uses "1.5in" as width ad sets "width" as sepecial
 		else if (contains(width_unit, '\\'))
