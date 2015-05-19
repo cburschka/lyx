@@ -853,29 +853,29 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 	string latex_width;
 	string width_special = "none";
 	string thickness = "0.4pt";
-	if (fboxrule != "")
+	if (!fboxrule.empty())
 		thickness = fboxrule;
 	else
 		thickness = "0.4pt";
 	string separation;
-	if (fboxsep != "")
+	if (!fboxsep.empty())
 		separation = fboxsep;
 	else
 		separation = "3pt";
 	string shadowsize;
-	if (shadow_size != "")
+	if (!shadow_size.empty())
 		shadowsize = shadow_size;
 	else
 		shadowsize = "4pt";
 	string framecolor = "black";
 	string backgroundcolor = "none";
-	if (frame_color != "")
+	if (!frame_color.empty())
 		framecolor = frame_color;
-	if (background_color != "")
+	if (!background_color.empty())
 		backgroundcolor = background_color;
 	// if there is a color box around the \begin statements have not yet been parsed
 	// so do this now
-	if (frame_color != "" || background_color != "") {
+	if (!frame_color.empty() || !background_color.empty()) {
 		eat_whitespace(p, os, parent_context, false);
 		p.get_token().asInput(); // the '{'
 		// parse minipage
@@ -1022,7 +1022,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 	// if only \makebox{content} was used we can set its width to 1\width
 	// because this identic and also identic to \mbox
 	// this doesn't work for \framebox{content}, thus we have to use ERT for this
-	if (latex_width.empty() && inner_type == "makebox" && background_color == "") {
+	if (latex_width.empty() && inner_type == "makebox" && background_color.empty()) {
 		width_value = "1";
 		width_unit = "in";
 		width_special = "width";
@@ -1133,7 +1133,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		begin_inset(os, "Box ");
 		if (outer_type == "framed")
 			os << "Framed\n";
-		else if (outer_type == "framebox" || outer_type == "fbox" || frame_color != "")
+		else if (outer_type == "framebox" || outer_type == "fbox" || !frame_color.empty())
 			os << "Boxed\n";
 		else if (outer_type == "shadowbox")
 			os << "Shadowbox\n";
@@ -1152,7 +1152,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		os << "hor_pos \"" << hor_pos << "\"\n";
 		if (outer_type == "mbox")
 			os << "has_inner_box 1\n";
-		if (frame_color != "")
+		if (!frame_color.empty())
 			os << "has_inner_box 0\n";
 		else
 			os << "has_inner_box " << !inner_type.empty() << "\n";
@@ -1161,11 +1161,11 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		   << '\n';
 		if (outer_type == "mbox")
 			os << "use_makebox 1\n";
-		if (frame_color != "")
+		if (!frame_color.empty())
 			os << "use_makebox 0\n";
 		else
 			os << "use_makebox " << (inner_type == "makebox") << '\n';
-		if (outer_type == "mbox" || (outer_type == "fbox" && inner_type == ""))
+		if (outer_type == "mbox" || (outer_type == "fbox" && inner_type.empty()))
 			os << "width \"\"\n";
 		// for values like "1.5\width" LyX uses "1.5in" as width ad sets "width" as sepecial
 		else if (contains(width_unit, '\\'))
@@ -1248,12 +1248,11 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		}
 #endif
 	}
-	if (inner_flags != FLAG_BRACE_LAST && (frame_color != "" || background_color != "")) {
+	if (inner_flags != FLAG_BRACE_LAST && (!frame_color.empty() || !background_color.empty())) {
 		// in this case we have to eat the the closing brace of the color box
 		p.get_token().asInput(); // the '}'
 	}
-	if (p.next_token().asInput() == "}"
-	    && (fboxrule != "" || fboxsep != "" || shadow_size != "")) {
+	if (p.next_token().asInput() == "}") {
 		// in this case we assume that the closing brace is from the box settings
 		// therefore reset these values for the next box
 		fboxrule = "";
