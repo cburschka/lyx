@@ -137,9 +137,9 @@ public:
 	///
 	double getFloat() const;
 	///
-	std::string const getString() const;
+	std::string const getString(bool trim = false) const;
 	///
-	docstring const getDocString() const;
+	docstring const getDocString(bool trim = false) const;
 	/** Get a long string, ended by the tag `endtag'.
 	    This string can span several lines. The first line
 	    serves as a template for how many spaces the lines
