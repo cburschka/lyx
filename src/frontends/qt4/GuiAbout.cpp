@@ -83,6 +83,94 @@ static QString credits()
 }
 
 
+static QString release_notes()
+{
+	QString res;
+	QFile file(toqstr(package().system_support().absFileName()) + "/RELEASE-NOTES");
+	QTextStream out(&res);
+
+	if (!file.exists()) {
+		out << qt_("ERROR: LyX wasn't able to find the RELEASE-NOTES file\n");
+		out << qt_("Please install correctly to see what has changed\n");
+		out << qt_("for this version of LyX.");
+	} else {
+		file.open(QIODevice::ReadOnly);
+		if (!file.isReadable()) {
+			out << qt_("ERROR: LyX wasn't able to read the RELEASE-NOTES file\n");
+			out << qt_("Please install correctly to see what has changed\n");
+			out << qt_("for this version of LyX.");
+		} else {
+			QTextStream ts(&file);
+			ts.setCodec("UTF-8");
+			QString line;
+			bool incomment = false;
+			bool inlist = false;
+			do {
+				// a simple markdown parser
+				line = ts.readLine();
+				// skipe empty lines
+				if (line.isEmpty())
+					continue;
+				// parse (:comments:)
+				if (line.startsWith("(:")) {
+					if (!line.endsWith(":)"))
+						incomment = true;
+					continue;
+				} if (line.endsWith(":)") && incomment) {
+					incomment = false;
+					continue;
+				} if (incomment)
+					continue;
+				// headings
+				if (line.startsWith("!!!")) {
+					if (inlist) {
+					    out << "</li>";
+					    out << "</ul><br>";
+					    inlist = false;
+					}
+					out << "<h4>" << line.mid(3) << "</h4>";
+				}
+				else if (line.startsWith("!!")) {
+					if (inlist) {
+					    out << "</li>";
+					    out << "</ul><br>";
+					    inlist = false;
+					}
+					out << "<h3>" << line.mid(2) << "</h3>";
+				} else if (line.startsWith("!")) {
+					if (inlist) {
+					    out << "</li>";
+					    out << "</ul><br>";
+					    inlist = false;
+					}
+					out << "<h2>" << line.mid(1) << "</h2>";
+				// lists
+				} else if (line.startsWith("* ")) {
+					if (inlist)
+						out << "</li>";
+					else
+						out << "<ul>";
+					inlist = true;
+					out << "<li>" << line.mid(2);
+				} else if (inlist && line.startsWith("  ")) {
+					out << line.mid(2);
+				} else if (inlist) {
+					inlist = false;
+					out << "</li>";
+					out << "</ul><br>";
+					out << line;
+				} else
+					out << line;
+
+				out << " ";
+			} while (!line.isNull());
+		}
+	}
+	out.flush();
+	return res;
+}
+
+
 static QString copyright()
 {
 	QString release_year = release_date().toString("yyyy");
@@ -178,6 +266,7 @@ GuiAbout::GuiAbout(GuiView & lv)
 
 	d->ui.versionLA->setText(version());
 	d->ui.buildinfoTB->setText(buildinfo());
+	d->ui.releasenotesTB->setHtml(release_notes());
 	d->ui.creditsTB->setHtml(credits());
 }
 

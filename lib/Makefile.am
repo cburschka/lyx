@@ -7,8 +7,8 @@ CHMOD = chmod
 EXTRA_DIST = examples/CMakeLists.txt scripts/CMakeLists.txt
 
 dist_pkgdata_DATA = CREDITS autocorrect chkconfig.ltx external_templates \
-	encodings layouttranslations languages latexfonts symbols syntax.default \
-	unicodesymbols
+	encodings layouttranslations languages latexfonts RELEASE-NOTES \
+	symbols syntax.default unicodesymbols
 
 # We use DATA now instead of PYTHON because automake 1.11.2 complains.
 # Note that we "chmod 755" manually this file in install-data-hook.

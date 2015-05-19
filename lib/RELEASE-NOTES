@@ -1,0 +1,82 @@
+!Important Changes in LyX 2.2.0
+
+(: This file lists interface changes that might affect users in 2.2.0, some
+   known problems in LyX 2.2.0 and some things you have to take into account
+   when upgrading from earlier versions to a version of the 2.2.x series. :)
+
+
+!!Interface changes
+
+
+!!!The following pref variables were added in 2.2:
+
+
+
+!!!The following pref variables were changed in 2.2:
+
+
+
+!!!The following pref variables are obsoleted in 2.2:
+
+* \rtl:
+  This variable was introduced to guard against any bad consequence of
+  the then-new right-to-left languages support. It is no longer needed
+  because of improvements. Now right-to-left support is always enabled.
+
+
+!!!The following new LyX functions have been introduced in 2.2:
+
+* buffer-view-cache:
+  Opens the last previewed output of the buffer, if it exists.
+
+* buffer-move-next:
+  Moves the current tab one spot to the right.
+
+* buffer-move-previous:
+  Moves the current tab one spot to the left.
+
+
+!!!The following LyX functions have been changed in 2.2:
+
+
+
+!!!The following LyX key bindings have been changed in 2.2:
+
+* For bindings where Control + {PgDn, PgUp} switches to the
+  {next, previous} tab, Control + Shift + {PgDn, PgUp} moves the current
+  tab to the {next, previous} tab.
+
+
+!!!The following LyX documents have been moved in 2.2:
+
+
+
+!!!The following metadata files have been added to the tarball in 2.2:
+
+
+
+!!Changes with respect to external programs and libraries in 2.2:
+
+* LyX is not yet supposed to work with Qt5. It is advised to compile and
+  run LyX against Qt 4.8.x. On Windows, Qt 4.8.5 suffers from a bug that
+  breaks the use of shortcuts, so on Windows Qt 4.8.4 is advised.
+
+* LyX now gives an error if the underlying LaTeX command exited with error.
+
+
+!!Known issues in version 2.2.0
+
+* LyX needs to be run under Python 2 and will not work properly on systems
+  where Python 3 is the default binary. See bug #7030 to know how to fix
+  this properly, since simple sheebang conversion in *.py files will not
+  be enough.
+
+
+!!Caveats when upgrading from earlier versions to 2.2.x
+
+* BibTeX errors are now processed and cause LyX to show the errors dialog.
+  Before, these errors were ignored, which means that it may happen that
+  documents that compiled without error with a previous version now
+  compile with error. However, because now in 2.2.x users can click on
+  the "Show Output Anyway" button, the document can still be viewed.
+
