@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>327</width>
-    <height>232</height>
+    <width>424</width>
+    <height>258</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -115,7 +115,7 @@
       <attribute name="title">
        <string>Release Notes</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout">
+      <layout class="QGridLayout">
        <item row="0" column="0">
         <widget class="QTextBrowser" name="releasenotesTB"/>
        </item>
