@@ -34,7 +34,7 @@ Style "Begin PDF Form"
 	  Series			Bold
 	  Color				Green
 	EndFont
-	Requires                        hyperref
+	Requires			hyperref
 End
 
 Style "End PDF Form"
@@ -71,7 +71,7 @@ InsetLayout Flex:TextField
 	  Color				magenta
 	  Size				Small
 	EndFont
-	Requires                        hyperref
+	Requires			hyperref
 End
 
 InsetLayout Flex:CheckBox
