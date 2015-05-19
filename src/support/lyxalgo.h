@@ -84,7 +84,7 @@ void eliminate_duplicates(C & c)
 }
 
 
-#if __cplusplus >= 201103L
+#ifdef LYX_USE_CXX11
 using std::next;
 #else
 /// Replacement of std::next for older compilers
@@ -97,7 +97,7 @@ inline It next(It i, Diff n = 1)
 #endif
 
 
-#if __cplusplus >= 201103L
+#ifdef LYX_USE_CXX11
 using std::prev;
 #else
 /// Replacement of std::prev for older compilers

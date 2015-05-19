@@ -12,7 +12,7 @@
 #ifndef LYX_REGEXP_H
 #define LYX_REGEXP_H
 
-#if __cplusplus >= 201103L && defined(LYX_USE_STD_REGEX)
+#if defined(LYX_USE_CXX11) && defined(LYX_USE_STD_REGEX)
 #  include <regex>
 #  ifdef _MSC_VER
 namespace lyx {

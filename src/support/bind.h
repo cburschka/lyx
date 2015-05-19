@@ -14,7 +14,7 @@
 
 #include "support/functional.h"
 
-#if __cplusplus >= 201103L
+#ifdef LYX_USE_CXX11
 
 #define LYX_BIND_NS std
 

@@ -12,7 +12,7 @@
 #ifndef LYX_SHARED_PTR_H
 #define LYX_SHARED_PTR_H
 
-#if __cplusplus >= 201103L
+#ifdef LYX_USE_CXX11
 
 #include <memory>
 #define LYX_SHAREDPTR_NS std

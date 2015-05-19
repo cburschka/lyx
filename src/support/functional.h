@@ -12,7 +12,7 @@
 #ifndef LYX_FUNCTIONAL_H
 #define LYX_FUNCTIONAL_H
 
-#if __cplusplus >= 201103L
+#ifdef LYX_USE_CXX11
 
 #include <functional>
 #define LYX_FUNCTIONAL_NS std
