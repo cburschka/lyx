@@ -1045,7 +1045,6 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			hor_pos = "l";
 		} else if (p.next_token().asInput() == "\\centering") {
 			wasBoxAlign = true;
-			os << "\n sada";
 			hor_pos = "c";
 		} else if (p.next_token().asInput() == "\\raggedleft") {
 			wasBoxAlign = true;
