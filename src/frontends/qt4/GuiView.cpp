@@ -110,7 +110,9 @@
 #include <QSplitter>
 #include <QStackedWidget>
 #include <QStatusBar>
+#if QT_VERSION >= 0x050000
 #include <QSvgRenderer>
+#endif
 #include <QtConcurrentRun>
 #include <QTime>
 #include <QTimer>
@@ -162,6 +164,7 @@ public:
 			qt_("version ") + lyx_version : qt_("unknown version");
 		QString imagedir = "images/";
 		FileName fname = imageLibFileSearch(imagedir, "banner", "svgz");
+#if QT_VERSION >= 0x050000
 		QSvgRenderer svgRenderer(toqstr(fname.absFileName()));
 		if (svgRenderer.isValid()) {
 			splash_ = QPixmap(splashSize());
@@ -171,6 +174,9 @@ public:
 		} else {
 			splash_ = getPixmap("images/", "banner", "png");
 		}
+#else
+		splash_ = getPixmap("images/", "banner", "png");
+#endif
 
 		QPainter pain(&splash_);
 		pain.setPen(QColor(0, 0, 0));
