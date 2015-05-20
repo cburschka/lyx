@@ -41,7 +41,7 @@ Format 2
 \bind "M-~S-i s q"		"self-insert \""
 # FIXME: find a binding for single quotes
 # \bind "M-~S-i s q"		"quote-insert single"
-\bind "M-~S-i s m"		"menu-separator-insert"
+\bind "M-~S-i s m"		"specialchar-insert menu-separator"
 
 \bind "M-~S-i h i"		"math-mode"
 \bind "M-~S-i h d"		"math-display"
