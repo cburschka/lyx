@@ -884,6 +884,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			p.getArg('{', '}');
 			inner_type = "minipage";
 			inner_flags = FLAG_END;
+			active_environments.push_back("minipage");
 		}
 		// parse parbox
 		else if (p.next_token().asInput() == "\\parbox") {
@@ -1237,6 +1238,8 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		}
 #endif
 	}
+	if (inner_type == "minipage" && (!frame_color.empty() || !background_color.empty()))
+		active_environments.pop_back();
 	if (inner_flags != FLAG_BRACE_LAST && (!frame_color.empty() || !background_color.empty())) {
 		// in this case we have to eat the the closing brace of the color box
 		p.get_token().asInput(); // the '}'
