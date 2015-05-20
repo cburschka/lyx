@@ -162,9 +162,9 @@ public:
 		/// The text to be written on top of the pixmap
 		QString const text = lyx_version ?
 			qt_("version ") + lyx_version : qt_("unknown version");
+#if QT_VERSION >= 0x050000
 		QString imagedir = "images/";
 		FileName fname = imageLibFileSearch(imagedir, "banner", "svgz");
-#if QT_VERSION >= 0x050000
 		QSvgRenderer svgRenderer(toqstr(fname.absFileName()));
 		if (svgRenderer.isValid()) {
 			splash_ = QPixmap(splashSize());
@@ -175,7 +175,7 @@ public:
 			splash_ = getPixmap("images/", "banner", "png");
 		}
 #else
-		splash_ = getPixmap("images/", "banner", "png");
+		splash_ = getPixmap("images/", "banner", "svgz,png");
 #endif
 
 		QPainter pain(&splash_);
