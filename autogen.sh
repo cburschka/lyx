@@ -19,7 +19,6 @@ case $automake_version in
     *' '1.[8-9]*|*' '1.1[01234]*)
 	;;
     *)
-
 	echo "This automake version is not supported by LyX."
 	echo "LyX only supports automake 1.8 to 1.14."
 	exit 1
@@ -35,7 +34,6 @@ test "$autoversion" != "" && {
     echo "LyX requires autoconf >= 2.60"
     exit 1
 }
-
 
 case $autoversion in
     *' '2.60[ab]|*' '2.6[0-9])
@@ -85,7 +83,9 @@ else
 fi
 
 echo "Building po/POTFILES.in..."
-if (! make -s -f po/Rules-lyx srcdir=po top_srcdir=. po/POTFILES.in ); then
+if ( make -s -f po/Rules-lyx srcdir=po top_srcdir=. po/POTFILES.in ); then
+    :
+else
 	echo "Building po/POTFILES.in failed -- aborting"
 	exit 1
 fi
