@@ -28,6 +28,7 @@
 #include <iomanip>
 
 using namespace std;
+using namespace lyx::support;
 
 namespace lyx {
 
@@ -65,7 +66,7 @@ string const Length::asString() const
 {
 	ostringstream os;
 	if (unit_ != UNIT_NONE)
-		os << val_ << unit_name[unit_]; // setw?
+		os << formatFPNumber(val_) << unit_name[unit_]; // setw?
 	return os.str();
 }
 
@@ -74,7 +75,7 @@ docstring const Length::asDocstring() const
 {
 	odocstringstream os;
 	if (unit_ != UNIT_NONE)
-		os << val_ << unit_name[unit_]; // setw?
+		os << formatFPNumber(val_) << unit_name[unit_]; // setw?
 	return os.str();
 }
 
@@ -86,27 +87,27 @@ string const Length::asLatexString() const
 	// LaTeX (bug 9416)
 	switch (unit_) {
 	case PTW:
-		os << support::formatFPNumber(val_ / 100.0) << "\\textwidth";
+		os << formatFPNumber(val_ / 100.0) << "\\textwidth";
 		break;
 	case PCW:
-		os << support::formatFPNumber(val_ / 100.0) << "\\columnwidth";
+		os << formatFPNumber(val_ / 100.0) << "\\columnwidth";
 		break;
 	case PPW:
-		os << support::formatFPNumber(val_ / 100.0) << "\\paperwidth";
+		os << formatFPNumber(val_ / 100.0) << "\\paperwidth";
 		break;
 	case PLW:
-		os << support::formatFPNumber(val_ / 100.0) << "\\linewidth";
+		os << formatFPNumber(val_ / 100.0) << "\\linewidth";
 		break;
 	case PTH:
-		os << support::formatFPNumber(val_ / 100.0) << "\\textheight";
+		os << formatFPNumber(val_ / 100.0) << "\\textheight";
 		break;
 	case PPH:
-		os << support::formatFPNumber(val_ / 100.0) << "\\paperheight";
+		os << formatFPNumber(val_ / 100.0) << "\\paperheight";
 		break;
 	case UNIT_NONE:
 		break;
 	default:
-		os << support::formatFPNumber(val_) << unit_name[unit_];
+		os << formatFPNumber(val_) << unit_name[unit_];
 	  break;
 	}
 	return os.str();
@@ -121,7 +122,7 @@ string const Length::asHTMLString() const
  	case BP:
 	case DD:
 		// close enough
-		os << val_ << "pt";
+		os << formatFPNumber(val_) << "pt";
 		break;
  	case MM:
 	case CM:
@@ -129,13 +130,13 @@ string const Length::asHTMLString() const
 	case IN:
 	case EX:
 	case EM:
-		os << val_ << unit_name[unit_];
+		os << formatFPNumber(val_) << unit_name[unit_];
 		break;
 	case CC:
-		os << val_/12.0 << "pt";
+		os << formatFPNumber(val_ / 12.0) << "pt";
 		break;
  	case MU:
-		os << val_/18.0 << "em";
+		os << formatFPNumber(val_ / 18.0) << "em";
 		break;
 	case PTW:
 	case PPW:
@@ -145,7 +146,7 @@ string const Length::asHTMLString() const
 	case PPH:
 		// what it's a percentage of probably won't make sense for HTML,
 		// so we'll assume people have chosen these appropriately
-		os << val_ << '%';
+		os << formatFPNumber(val_) << '%';
 		break;
 	case SP:
 	case UNIT_NONE:
@@ -377,7 +378,7 @@ string const GlueLength::asString() const
 
 	ostringstream buffer;
 
-	buffer << len_.value();
+	buffer << formatFPNumber(len_.value());
 
 	if (plus_.zero() && minus_.zero()) {
 		buffer << unit_name[len_.unit()];
@@ -388,7 +389,7 @@ string const GlueLength::asString() const
 	if (minus_.zero()) {
 		if (len_.unit() != plus_.unit())
 			buffer << unit_name[len_.unit()];
-		buffer << '+' << plus_.value();
+		buffer << '+' << formatFPNumber(plus_.value());
 		buffer << unit_name[plus_.unit()];
 		return buffer.str();
 	}
@@ -397,7 +398,7 @@ string const GlueLength::asString() const
 	if (plus_.zero()) {
 		if (len_.unit() != minus_.unit())
 			buffer << unit_name[len_.unit()];
-		buffer << '-' << minus_.value();
+		buffer << '-' << formatFPNumber(minus_.value());
 		buffer << unit_name[minus_.unit()];
 		return buffer.str();
 	}
@@ -408,7 +409,7 @@ string const GlueLength::asString() const
 	if (minus_ == plus_) {
 		if (len_.unit() != minus_.unit())
 			buffer << unit_name[len_.unit()];
-		buffer << "+-" << minus_.value();
+		buffer << "+-" << formatFPNumber(minus_.value());
 		buffer << unit_name[minus_.unit()];
 		return buffer.str();
 	}
@@ -416,8 +417,8 @@ string const GlueLength::asString() const
 	// this is so rare a case, why bother minimising units ?
 
 	buffer << unit_name[len_.unit()];
-	buffer << '+' << plus_.value() << unit_name[plus_.unit()];
-	buffer << '-' << minus_.value() << unit_name[minus_.unit()];
+	buffer << '+' << formatFPNumber(plus_.value()) << unit_name[plus_.unit()];
+	buffer << '-' << formatFPNumber(minus_.value()) << unit_name[minus_.unit()];
 
 	return buffer.str();
 }

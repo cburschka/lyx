@@ -67,6 +67,11 @@ void doubleToWidget(QLineEdit * input, double const & value,
 /// method to set a (localized) double value in a widget (QLineEdit)
 void doubleToWidget(QLineEdit * input, std::string const & value,
 	char f = 'g', int prec = 6);
+/**
+ * method to format localized floating point numbers without
+ * ever using scientific notation
+ */
+QString formatLocFPNumber(double d);
 
 /// colors a widget red if invalid
 void setValid(QWidget * widget, bool valid);

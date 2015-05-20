@@ -145,7 +145,7 @@ void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 		combo->setCurrentItem(len.unit());
 		QLocale loc;
 		loc.setNumberOptions(QLocale::OmitGroupSeparator);
-		input->setText(loc.toString(Length(len).value()));
+		input->setText(formatLocFPNumber(Length(len).value()));
 	}
 }
 
@@ -201,6 +201,15 @@ void doubleToWidget(QLineEdit * input, double const & value, char f, int prec)
 void doubleToWidget(QLineEdit * input, string const & value, char f, int prec)
 {
 	doubleToWidget(input, convert<double>(value), f, prec);
+}
+
+
+QString formatLocFPNumber(double d)
+{
+	QString result = toqstr(formatFPNumber(d));
+	QLocale loc;
+	result.replace('.', loc.decimalPoint());
+	return result;
 }
 
 
