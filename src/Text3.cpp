@@ -1075,8 +1075,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 					needsUpdate |= backspace(cur);
 					cur.resetAnchor();
 				}
-				// It is possible to make it a lot faster still
-				// just comment out the line below...
 			}
 		} else {
 			cutSelection(cur, true, false);
