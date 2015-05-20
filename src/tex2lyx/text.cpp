@@ -1141,7 +1141,7 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		os << "hor_pos \"" << hor_pos << "\"\n";
 		if (outer_type == "mbox")
 			os << "has_inner_box 1\n";
-		else if (!frame_color.empty())
+		else if (!frame_color.empty() && inner_type == "makebox")
 			os << "has_inner_box 0\n";
 		else
 			os << "has_inner_box " << !inner_type.empty() << "\n";
