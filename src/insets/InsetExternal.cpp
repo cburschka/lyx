@@ -272,7 +272,7 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 		case EX_FILENAME: {
 			lex.eatLine();
 			string const name = lex.getString();
-			filename.set(name, buffer.filePath());
+			filename.set(name, buffer.originFilePath());
 			break;
 		}
 		
