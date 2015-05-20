@@ -102,6 +102,9 @@ public:
 	/// paragraph or cell containing the cursor.
 	void recordUndo(CursorData const & cur, UndoKind kind = ATOMIC_UNDO);
 
+	/// prepare undo for the inset containing the cursor
+	void recordUndoInset(CursorData const & cur, Inset const * inset);
+
 	/// Convenience: record undo for buffer parameters
 	void recordUndoBufferParams(CursorData const & cur);
 

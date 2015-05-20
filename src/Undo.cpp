@@ -587,6 +587,19 @@ void Undo::recordUndo(CursorData const & cur, pit_type from, pit_type to)
 }
 
 
+void Undo::recordUndoInset(CursorData const & cur, Inset const * inset)
+{
+	if (!inset || inset == &cur.inset()) {
+		DocIterator c = cur;
+		c.pop_back();
+		d->recordUndo(ATOMIC_UNDO, c, c.pit(), c.pit(), cur);
+	} else if (inset == cur.nextInset())
+		recordUndo(cur);
+	else
+		LYXERR0("Inset not found, no undo stack added.");
+}
+
+
 void Undo::recordUndoBufferParams(CursorData const & cur)
 {
 	d->recordUndoBufferParams(cur);

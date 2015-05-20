@@ -2496,14 +2496,7 @@ void Cursor::recordUndo(UndoKind kind) const
 
 void Cursor::recordUndoInset(Inset const * in) const
 {
-	if (!in || in == &inset()) {
-		CursorData c = *this;
-		c.pop_back();
-		buffer()->undo().recordUndo(c, c.pit(), c.pit());
-	} else if (in == nextInset())
-		recordUndo();
-	else
-		LYXERR0("Inset not found, no undo element added.");
+	buffer()->undo().recordUndoInset(*this, in);
 }
 
 
