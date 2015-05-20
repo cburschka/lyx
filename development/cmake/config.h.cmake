@@ -68,6 +68,9 @@
 // use GNU libstdc++ with C++11 ABI
 #cmakedefine USE_GLIBCXX_CXX11_ABI 1
 
+// use GNU c++11 extensions
+#cmakedefine LYX_USE_CXX11 1
+
 #cmakedefine Z_PREFIX 1
 
 ${Include_used_spellchecker}
