@@ -32,7 +32,7 @@ AC_DEFUN([QT_CHECK_COMPILE],
 		qt_guilibs="'-lQtCore -lQtGui' '-lQtCore4 -lQtGui4'"
 		if test $USE_QT5 = "yes" ; then
 		    qt_corelibs="-lQt5Core"
-		    qt_guilibs="-lQt5Core -lQt5Concurrent -lQt5Gui -lQt5Widgets"
+		    qt_guilibs="-lQt5Core -lQt5Concurrent -lQt5Gui -lQt5Svg -lQt5Widgets"
 		fi
 		for libname in $qt_corelibs '-framework QtCore'
 		do
@@ -205,7 +205,7 @@ AC_DEFUN([QT_DO_PKG_CONFIG],
 	qt_guilibs="QtCore QtGui"
 	if test "x$USE_QT5" != "xno" ; then
 		qt_corelibs="Qt5Core"
-		qt_guilibs="Qt5Core Qt5Concurrent Qt5Gui Qt5Widgets"
+		qt_guilibs="Qt5Core Qt5Concurrent Qt5Gui Qt5Svg Qt5Widgets"
 		lyx_use_winextras=false
 		PKG_CHECK_EXISTS(Qt5WinExtras, [lyx_use_winextras=true], [])
 		if $lyx_use_winextras; then
