@@ -34,7 +34,7 @@ namespace frontend {
 
 LengthValidator::LengthValidator(QWidget * parent)
 	: QValidator(parent),
-	  no_bottom_(true), glue_length_(false)
+	  no_bottom_(true), glue_length_(false), unsigned_(false)
 {}
 
 
@@ -42,20 +42,29 @@ QValidator::State LengthValidator::validate(QString & qtext, int &) const
 {
 	QLocale loc;
 	bool ok;
-	loc.toDouble(qtext.trimmed(), &ok);
+	double d = loc.toDouble(qtext.trimmed(), &ok);
+	// QLocale::toDouble accepts something like "1."
+	// We don't.
+	bool dp = qtext.endsWith(loc.decimalPoint());
 	if (!ok) {
 		// Fall back to C
 		QLocale c(QLocale::C);
-		c.toDouble(qtext.trimmed(), &ok);
+		d = c.toDouble(qtext.trimmed(), &ok);
+		dp = qtext.endsWith(c.decimalPoint());
 	}
 
-	if (qtext.isEmpty() || ok)
+	if (ok && unsigned_ && d < 0)
+		return QValidator::Invalid;
+
+	if (qtext.isEmpty() || (ok && !dp))
 		return QValidator::Acceptable;
 
 	string const text = fromqstr(qtext);
 
 	if (glue_length_) {
 		GlueLength gl;
+		if (unsigned_ && gl.len().value() < 0)
+			return QValidator::Invalid;
 		return (isValidGlueLength(text, &gl)) ?
 			QValidator::Acceptable : QValidator::Intermediate;
 	}
@@ -67,6 +76,9 @@ QValidator::State LengthValidator::validate(QString & qtext, int &) const
 
 	if (no_bottom_)
 		return QValidator::Acceptable;
+
+	if (unsigned_ && l.value() < 0)
+		return QValidator::Invalid;
 
 	return b_.inPixels(100) <= l.inPixels(100) ?
 		QValidator::Acceptable : QValidator::Intermediate;
@@ -92,6 +104,7 @@ LengthValidator * unsignedLengthValidator(QLineEdit * ed)
 {
 	LengthValidator * v = new LengthValidator(ed);
 	v->setBottom(Length());
+	v->setUnsigned(true);
 	return v;
 }
 
@@ -100,6 +113,7 @@ LengthValidator * unsignedGlueLengthValidator(QLineEdit * ed)
 {
 	LengthValidator * v = new LengthValidator(ed);
 	v->setBottom(GlueLength());
+	v->setUnsigned(true);
 	return v;
 }
 
@@ -122,6 +136,7 @@ LengthAutoValidator * unsignedLengthAutoValidator(QLineEdit * ed, QString const 
 {
 	LengthAutoValidator * v = new LengthAutoValidator(ed, autotext);
 	v->setBottom(Length());
+	v->setUnsigned(true);
 	return v;
 }
 

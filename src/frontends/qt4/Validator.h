@@ -62,6 +62,7 @@ public:
 	void setBottom(Length const &);
 	void setBottom(GlueLength const &);
 	Length bottom() const { return b_; }
+	void setUnsigned(bool const u) { unsigned_ = u; }
 	//@}
 
 private:
@@ -69,6 +70,7 @@ private:
 	GlueLength g_;
 	bool no_bottom_;
 	bool glue_length_;
+	bool unsigned_;
 };
 
 

@@ -751,7 +751,8 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	// Set width and alignment
 
 	Length const tabwidth = tabular.tabularWidth();
-	if (tabwidth.zero())
+	if (tabwidth.zero()
+	    && !(tabularWidthED->hasFocus() && tabularWidthED->text() == "0"))
 		tabularWidthED->clear();
 	else
 		lengthToWidgets(tabularWidthED, tabularWidthUnitLC,
@@ -769,7 +770,8 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 		pwidth = getColumnPWidth(tabular, cell);
 	}
 	string colwidth;
-	if (pwidth.zero())
+	if (pwidth.zero()
+	    && !(columnWidthED->hasFocus() && columnWidthED->text() == "0"))
 		columnWidthED->clear();
 	else {
 		colwidth = pwidth.asString();
@@ -780,7 +782,8 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 	if (multirow)
 		mroffset = getMROffset(tabular, cell);
 	string offset;
-	if (mroffset.zero())
+	if (mroffset.zero()
+	    && !(multirowOffsetED->hasFocus() && multirowOffsetED->text() == "0"))
 		multirowOffsetED->clear();
 	else {
 		offset = mroffset.asString();

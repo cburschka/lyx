@@ -192,7 +192,8 @@ void InsetParamsDialog::onWidget_changed()
 {
 	d->changed_ = true;
 	docstring const argument = checkWidgets(immediateApplyCB->isChecked());
-	if (immediateApplyCB->isChecked())
+	if (immediateApplyCB->isChecked()
+	    && d->widget_->checkWidgets(buffer().isReadonly()))
 		dispatch(FuncRequest(LFUN_INSET_MODIFY, argument));
 }
 

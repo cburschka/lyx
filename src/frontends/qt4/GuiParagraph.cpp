@@ -72,7 +72,9 @@ GuiParagraph::GuiParagraph(GuiView & lv)
 #endif
 
 	on_synchronizedViewCB_toggled();
-	linespacingValue->setValidator(new QDoubleValidator(linespacingValue));
+	QDoubleValidator * val = new QDoubleValidator(linespacingValue);
+	val->setNotation(QDoubleValidator::StandardNotation);
+	linespacingValue->setValidator(val);
 
 	labelWidth->setWhatsThis(qt_(
 		"As described in the User Guide, the width of"
@@ -164,7 +166,10 @@ void GuiParagraph::on_synchronizedViewCB_toggled()
 
 void GuiParagraph::changed()
 {
-	if (synchronizedViewCB->isChecked())
+	QLocale loc;
+	if (synchronizedViewCB->isChecked()
+	    && !linespacingValue->text().endsWith(loc.decimalPoint())
+	    && linespacingValue->hasAcceptableInput())
 		on_applyPB_clicked();
 }
 
