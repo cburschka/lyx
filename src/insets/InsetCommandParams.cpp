@@ -275,7 +275,13 @@ void InsetCommandParams::setCmdName(string const & name)
 }
 
 
-void InsetCommandParams::read(Lexer & lex, Buffer const * buffer)
+void InsetCommandParams::read(Lexer & lex)
+{
+	Read(lex, 0);
+}
+
+
+void InsetCommandParams::Read(Lexer & lex, Buffer const * buffer)
 {
 	lex.setContext("InsetCommandParams::read");
 	lex >> insetName(insetCode_).c_str();

@@ -66,7 +66,7 @@ public:
 	///
 	void write(std::ostream & os) const { p_.write(os); }
 	///
-	void read(Lexer & lex, Buffer const * buf) { p_.read(lex, buf); }
+	void read(Lexer & lex) { p_.Read(lex, &buffer()); }
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///

@@ -113,9 +113,10 @@ public:
 	std::string insetType() const;
 	///
 	InsetCode code() const { return insetCode_; }
-	///
-	void read(Lexer &, Buffer const *);
 	/// Parse the command
+	void read(Lexer &);
+	///
+	void Read(Lexer &, Buffer const *);
 	///
 	void write(std::ostream &) const;
 	///
