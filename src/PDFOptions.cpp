@@ -121,6 +121,8 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 		opt += "pdfborder={0 0 ";
 		opt += (pdfborder ? '0' : '1');
 		opt += "},";
+		if (pdfborder)
+			opt += "pdfborderstyle={},";
 		opt += "backref=" + backref + ',';
 		opt += "colorlinks=" + convert<string>(colorlinks) + ',';
 		if (!pagemode.empty())
