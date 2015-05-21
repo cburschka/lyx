@@ -9,6 +9,7 @@ Format 54
 
 Input stdcounters.inc
 Input stdinsets.inc
+Input stdfloats.inc
 
 ###
 # General textclass parameters
@@ -493,48 +494,6 @@ Style Pause
     Size           Normal
     Color          latex
   EndFont
-End
-
-###
-# Caption style definition
-###
-
-###
-# Floats definitions
-###
-Float
-  Type                  table
-  GuiName               Table
-  Extension             lot
-  NumberWithin          none
-  Style                 plain
-  ListName              "List of Tables"
-  IsPredefined          true
-  UsesFloatPkg          false
-  ListCommand           listoftables
-End
-  
-Float
-  Type                  figure
-  GuiName               Figure
-  Extension             lof
-  NumberWithin          none
-  Style                 plain
-  ListName              "List of Figures"
-  IsPredefined          true
-  UsesFloatPkg          false
-  ListCommand           listoffigures
-End
-
-Float
-  Type                  algorithm
-  GuiName               Algorithm
-  Extension             loa
-  NumberWithin          none
-  Style                 ruled
-  ListName              "List of Algorithms"
-  IsPredefined          false
-  UsesFloatPkg          true
 End
 
 ###

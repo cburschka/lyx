@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 493
 \begin_document
 \begin_header
+\origin D:/LyXGit/Master/lib/examples/
 \textclass powerdot
 \begin_preamble
 \pdsetup{%
@@ -129,10 +130,10 @@ ps2pdf
  to generate a PDF, which is the recommended method (for your own documents,
  you can set this via 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \ldots{}
-\SpecialChar \menuseparator
-Output\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar ldots
+\SpecialChar menuseparator
+Output\SpecialChar menuseparator
 Default Output Format
 \family default
 ).
@@ -171,7 +172,8 @@ DVI
 \series bold
 Options:
 \series default
- Depending on your LaTeX system you might have to add the option 
+ Depending on your \SpecialChar LaTeX
+ system you might have to add the option 
 \begin_inset Quotes eld
 \end_inset
 
@@ -181,11 +183,11 @@ dvips
 
  to the document class options (
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \ldots{}
-\SpecialChar \menuseparator
-Document Class\SpecialChar \menuseparator
-Class Options\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar ldots
+\SpecialChar menuseparator
+Document Class\SpecialChar menuseparator
+Class Options\SpecialChar menuseparator
 Custom
 \family default
 ) to get proper output.
@@ -202,11 +204,11 @@ style=<style>
 \emph default
  (via 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \ldots{}
-\SpecialChar \menuseparator
-Document Class\SpecialChar \menuseparator
-Class Options\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar ldots
+\SpecialChar menuseparator
+Document Class\SpecialChar menuseparator
+Class Options\SpecialChar menuseparator
 Custom
 \family default
 ); the 
@@ -252,7 +254,8 @@ powerdot
 \end_layout
 
 \begin_layout Title
-Powerdot Presentations: A LyX Sample
+Powerdot Presentations: A \SpecialChar LyX
+ Sample
 \end_layout
 
 \begin_layout Author
@@ -287,7 +290,8 @@ and
 status collapsed
 
 \begin_layout Plain Layout
-Extensions and comments for LyX 2.1 by Jürgen Spitzmüller.
+Extensions and comments for \SpecialChar LyX
+ 2.1 by Jürgen Spitzmüller.
 \end_layout
 
 \end_inset
@@ -320,7 +324,8 @@ We use a
 \family typewriter
 Slide
 \family default
- style (magenta color, see above this text in the LyX window) for the title
+ style (magenta color, see above this text in the \SpecialChar LyX
+ window) for the title
  of each slide and to start a new slide.
 \end_layout
 
@@ -339,7 +344,8 @@ But we may also produce wide slides via the
 \family typewriter
 WideSlide
 \family default
- style (green color, see above this text in the LyX window).
+ style (green color, see above this text in the \SpecialChar LyX
+ window).
 \end_layout
 
 \begin_layout Slide
@@ -361,7 +367,8 @@ powerdot
 \backslash
 tableofcontents[<options>]
 \family default
- in TeX mode.
+ in \SpecialChar TeX
+ mode.
 \end_layout
 
 \end_inset
@@ -395,7 +402,7 @@ This is the first section
 status open
 
 \begin_layout Plain Layout
-toc=This slide has\SpecialChar \ldots{}
+toc=This slide has\SpecialChar ldots
 
 \end_layout
 
@@ -438,7 +445,7 @@ Slide options can be specified via
 \family typewriter
 Insert
 \family default
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \family typewriter
 Slide Option
@@ -469,11 +476,11 @@ display=<displaytype>
 \emph default
  (via 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \ldots{}
-\SpecialChar \menuseparator
-Document Class\SpecialChar \menuseparator
-Class Options\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar ldots
+\SpecialChar menuseparator
+Document Class\SpecialChar menuseparator
+Class Options\SpecialChar menuseparator
 Custom
 \family default
 ) determines whether notes are visible in the output.
@@ -519,7 +526,8 @@ Pause
 \backslash
 pause
 \family default
- in TeX mode!
+ in \SpecialChar TeX
+ mode!
 \end_layout
 
 \end_inset
@@ -532,7 +540,7 @@ pause
 \end_layout
 
 \begin_layout Standard
-\SpecialChar \ldots{}
+\SpecialChar ldots
  and then continue.
 \end_layout
 
@@ -541,7 +549,7 @@ Uncovering text
 \end_layout
 
 \begin_layout Standard
-Use Edit\SpecialChar \menuseparator
+Use Edit\SpecialChar menuseparator
 Text Style to access the 
 \family typewriter
 Onslide
@@ -603,7 +611,7 @@ On Slides
 
  sub-inset is accessible via 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Overlay Specifications
 \family default
 .
@@ -745,18 +753,18 @@ status open
 \begin_layout Plain Layout
 List options can be inserted via 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Enumerate Options
 \family default
  or 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Itemize Options
 \family default
 , respectively.
  A list item can be customized by means of 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Custom Item
 \family default
 .
@@ -777,6 +785,10 @@ Let's enumerate things:
 
 \begin_layout EnumerateType1
 The first thing;
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -787,6 +799,10 @@ The first thing;
 \end_deeper
 \begin_layout EnumerateType1
 The second thing;
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -797,6 +813,10 @@ The second thing;
 \end_deeper
 \begin_layout EnumerateType1
 The third thing;
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -873,6 +893,10 @@ EnumerateType1
 
 \begin_layout Enumerate
 The first thing;
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -883,6 +907,10 @@ The first thing;
 \end_deeper
 \begin_layout Enumerate
 The second thing;
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -893,6 +921,10 @@ The second thing;
 \end_deeper
 \begin_layout Enumerate
 The third thing;
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -922,7 +954,8 @@ The overlay argument of a list item (
 \backslash
 item<arg>
 \family default
- in LaTeX output, 
+ in \SpecialChar LaTeX
+ output, 
 \begin_inset Quotes eld
 \end_inset
 
@@ -930,9 +963,10 @@ On Slide
 \begin_inset Quotes erd
 \end_inset
 
- in LyX) is inserted via 
+ in \SpecialChar LyX
+) is inserted via 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Overlay Specification.
  Note how these, as opposed to 
 \family typewriter
@@ -995,6 +1029,10 @@ status open
 \end_inset
 
 The second;
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1086,7 +1124,7 @@ plain
 \end_inset
 
 e.
- it has no title, navigation bar etc.) \SpecialChar \ldots{}
+ it has no title, navigation bar etc.) \SpecialChar ldots
  
 \end_layout
 
@@ -1100,7 +1138,8 @@ It uses the
 \family typewriter
 EmptySlide
 \family default
- style for its title (cyan color in the LyX window).
+ style for its title (cyan color in the \SpecialChar LyX
+ window).
 \end_layout
 
 \begin_layout Pause
@@ -1137,7 +1176,7 @@ Twocolumn
  The inset for the left column is automatically inserted or can be inserted
  via 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Left Column
 \family default
 .
@@ -1147,7 +1186,7 @@ powerdot
 \emph default
  manual) can be inserted via 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Column Options
 \family default
 .
@@ -1181,7 +1220,8 @@ method=direct
 
 \end_inset
 
-Example of LaTeX source code
+Example of \SpecialChar LaTeX
+ source code
 \end_layout
 
 \begin_layout Standard
@@ -1196,7 +1236,8 @@ listings
 \backslash
 HelloWorld
 \family default
- LaTeX command:
+ \SpecialChar LaTeX
+ command:
 \end_layout
 
 \begin_layout Standard
@@ -1324,6 +1365,98 @@ n");
 \end_layout
 
 \begin_layout Slide
+Floats
+\end_layout
+
+\begin_layout Standard
+You can use the standard float types 
+\emph on
+algorithm
+\emph default
+, 
+\emph on
+figure
+\emph default
+ and 
+\emph on
+table
+\emph default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+algorithm float
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+figure float
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+table float
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Slide
 The end.
 \end_layout
 
@@ -1332,7 +1465,8 @@ At the end of the document, you have to put an
 \family typewriter
 EndSlide
 \family default
- style (see the black symbol below into LyX window).
+ style (see the black symbol below into \SpecialChar LyX
+ window).
 \end_layout
 
 \begin_layout Standard
