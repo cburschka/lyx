@@ -20,7 +20,7 @@ http://www.tex.ac.uk/tex-archive/systems/win32/w32tex/pdftex-w32.tar.xz
 # Settings
 
 Caption "PDF Viewer"
-OutFile pdfview.exe
+OutFile pdfview-old.exe
 Icon "..\packaging\icons\lyx.ico"
 SilentInstall silent
 
