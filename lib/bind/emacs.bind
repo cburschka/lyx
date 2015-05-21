@@ -144,7 +144,7 @@ Format 2
 #bind "F10"                    "------"
 
 \bind "M-x"			"command-execute"
-\bind "C-M-o"			"dialog-toggle toc"
+\bind "C-M-o"			"dialog-show toc"
 
 \bind "M-equal"			"buffer-zoom-in"
 \bind "M-plus"			"buffer-zoom-in"
