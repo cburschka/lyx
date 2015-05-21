@@ -749,22 +749,12 @@ g.
 
 if a tex2lyx bug was fixed, or a new feature was added.
  In these cases the stored references need to be updated.
- To do so, call 
+ To do so if using autotools, call 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 make updatetests
-\end_layout
-
-\end_inset
-
- (autotools) 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-FIXME: Add cmake command
 \end_layout
 
 \end_inset
@@ -779,8 +769,40 @@ src/tex2lyx
 
 \end_inset
 
- subfolder of the build directory.
- For convenience, this command does also produce re-exported roundtrip .lyx.tex
+ subdirectory of the build directory.
+ If instead using CMake, call 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+make updatetex2lyxtests
+\end_layout
+
+\end_inset
+
+ in the build directory or in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src/tex2lyx/test
+\end_layout
+
+\end_inset
+
+ subdirectory of the build directory
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Note that this is a case where a make target in the build directory can
+ affect the source directory, which might not be advisable.
+\end_layout
+
+\end_inset
+
+.
+ For convenience, these commands also produce re-exported roundtrip .lyx.tex
  files.
  Please examine the changed output carefully before committing the changed
  files to the repository: Since the test machinery does not do a roundtrip
