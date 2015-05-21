@@ -145,6 +145,7 @@ enumitem
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -1966299584 "ef" 
 \end_header
 
 \begin_body
@@ -10185,17 +10186,69 @@ Start New Environment
 
 \begin_layout Standard
 To split an existing list into two lists, set the cursor at the end of a
- list item, press 
+ list item
+\change_deleted -1966299584 1432227810
+,
+\change_inserted -1966299584 1432227815
+ and repeatedly
+\change_unchanged
+ press 
 \begin_inset Info
 type  "shortcut"
 arg   "paragraph-break"
 \end_inset
 
- and select 
+ 
+\change_deleted -1966299584 1432227824
+and select 
 \family sans
 --Separator--
 \family default
- in the pull-down box for environments in LyX's main toolbar.
+ in the pull-down box for environments in LyX's main toolbar
+\change_inserted -1966299584 1432229616
+until you get an environment separator in the form of a small angled arrow.
+ The only difference between this separator and the one you obtain by using
+ the menu (a reddish line) is that it will also insert a blank line in the
+ LaTeX output
+\change_unchanged
+.
+
+\change_inserted -1966299584 1432230601
+ However, each kind of separator can be turned into the other kind by right-clic
+king it and choosing the wanted type through the context menu that opens.
+ In general, you get an environment separator when you press 
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-break"
+\end_inset
+
+ in a Standard environment immediately after a non-Standard one.
+ Thus, in a normal workflow, you can insert two consecutive environments
+ of the same type by simply pressing 
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-break"
+\end_inset
+
+ until you get an environment separator, after which any other kind of environme
+nt can be inserted (even of the same type).
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1966299584 1432231566
+If you load documents produced with a previous version of LyX, you may notice
+ that the angled-arrow separator may appear at the end of a line.
+ In this case it is not used to separate environments but rather to assure
+ that the same LaTeX output is obtained.
+ Indeed, previous versions of LyX could insert spurious blank lines in the
+ LaTeX output, which are now avoided.
+ As those blank lines may affect vertical spacing, LyX takes care that you
+ obtain the same results as before.
+ You can safely remove the separators automatically inserted for this purpose
+ if you like better the resulting vertical spacing.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
