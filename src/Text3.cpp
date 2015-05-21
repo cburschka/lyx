@@ -273,6 +273,13 @@ static bool doInsertInset(Cursor & cur, Text * text,
 		Layout::LaTeXArgMap::const_iterator const lait = args.find(ia->name());
 		if (lait != args.end())
 			cotextinsert = (*lait).second.insertcotext;
+		else {
+			InsetLayout const & il = cur.inset().getLayout();
+			args = il.args();
+			Layout::LaTeXArgMap::const_iterator const ilait = args.find(ia->name());
+			if (ilait != args.end())
+				cotextinsert = (*ilait).second.insertcotext;
+		}
 		// The argument requests to insert a copy of the co-text to the inset
 		if (cotextinsert) {
 			docstring ds;
