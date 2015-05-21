@@ -149,14 +149,20 @@ What's new
 
 - Fix crash with undo/redo (bug 9432).
 
+- Undo all changes in one operation after "replace all" in advanced
+  search (bug 8658).
+
+- Record undo properly when changing multiple paragraphs parameters
+  (bug 9437).
+
+- Fix cursor font after undoing a font-changing command (bug 9537).
+
 - Fix crash when attempting to restore a document with multiple views on the
   Mac (bug 9483).
 
 - Fix insertion of spaces in macro definitions (bug 9432).
 
 - Fix crash when copying macros with arguments (bug 9418).
-
-- Fix cursor font after undoing a font-changing command (bug 9537).
 
 - Fix bad cursor font in some cases after changing layout (bug 4294).
 
@@ -173,9 +179,6 @@ What's new
 - Fix keyboard navigation in the math matrix panel (bug 9392).
 
 - Correctly inform if URW Garamond (ugm) font is not available (bug 9429).
-
-- Record undo properly when changing multiple paragraphs parameters
-  (bug 9437).
 
 - Do not offer unsupported macros like \biggg in autocompletion.
 

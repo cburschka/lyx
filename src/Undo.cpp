@@ -588,5 +588,18 @@ void Undo::recordUndoFullDocument(CursorData const & cur)
 	endUndoGroup();
 }
 
+/// UndoGroupHelper class stuff
+
+void UndoGroupHelper::resetBuffer(Buffer * buf)
+{
+	if (buf == buffer_)
+		return;
+	if (buffer_)
+		buffer_->undo().endUndoGroup();
+	buffer_ = buf;
+	if (buffer_)
+		buffer_->undo().beginUndoGroup();
+}
+
 
 } // namespace lyx

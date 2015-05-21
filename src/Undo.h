@@ -121,6 +121,34 @@ private:
 };
 
 
+/** Helper class to simplify the use of undo groups across several buffers.
+ *
+ *  The undo group is created when the object is instanciated; it is
+ *  then ended as the object goes out of scope or the buffer is reset
+ *  (see below)
+ */
+class UndoGroupHelper {
+public:
+	UndoGroupHelper(Buffer * buf) : buffer_(0)
+	{
+		resetBuffer(buf);
+	}
+
+	~UndoGroupHelper()
+	{
+		resetBuffer(0);
+	}
+
+	/** Close the current undo group if necessary and create a new one
+	 * for buffer \c buf.
+	 */
+	void resetBuffer(Buffer * buf);
+
+private:
+	Buffer * buffer_;
+};
+
+
 
 } // namespace lyx
 

@@ -338,6 +338,8 @@ bool FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt, bool
 		}
 	}
 
+	UndoGroupHelper helper(buf);
+
 	do {
 		LYXERR(Debug::FIND, "Dispatching LFUN_WORD_FINDADV");
 		dispatch(cmd);
@@ -382,6 +384,9 @@ bool FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt, bool
 		if (buf != &view_.documentBufferView()->buffer())
 			lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
 						  buf->absFileName()));
+
+		helper.resetBuffer(buf);
+
 		bv = view_.documentBufferView();
 		if (opt.forward) {
 			bv->cursor().clear();
@@ -395,6 +400,7 @@ bool FindAndReplaceWidget::findAndReplaceScope(FindAndReplaceOptions & opt, bool
 		}
 		bv->clearSelection();
 	} while (wrap_answer != 1);
+
 	if (buf_orig != &view_.documentBufferView()->buffer())
 		lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
 					  buf_orig->absFileName()));
