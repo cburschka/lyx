@@ -7,6 +7,10 @@
 
 !!Interface changes
 
+* The --Separator-- layout has been removed in favor of an environment
+  separator inset. There is no provision for inserting this inset from
+  the GUI (though some menus use it) as it is automatically inserted
+  when needed. See Section 3.4.6 of the User Guide for details.
 
 !!!The following pref variables were added in 2.2:
 
