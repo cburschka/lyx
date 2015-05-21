@@ -125,6 +125,7 @@ Style Addpart
 	Argument 1
 		LabelString   "Short Title|S"
 		Tooltip       "The part as it appears in the table of contents/running headers"
+		InsertCotext  1
 	EndArgument
 End
 
@@ -135,6 +136,7 @@ Style Addchap
 	Argument 1
 		LabelString   "Short Title|S"
 		Tooltip       "The chapter as it appears in the table of contents/running headers"
+		InsertCotext  1
 	EndArgument
 End
 
@@ -145,6 +147,7 @@ Style Addsec
 	Argument 1
 		LabelString   "Short Title|S"
 		Tooltip       "The section as it appears in the table of contents/running headers"
+		InsertCotext  1
 	EndArgument
 End
 
@@ -282,6 +285,7 @@ InsetLayout Caption:Above
 	Argument 1
 		LabelString   "Short Title|S"
 		Tooltip       "The caption as it appears in the list of figures/tables"
+		InsertCotext  1
 	EndArgument
 	HTMLStyle
 		div.float-caption {
@@ -304,6 +308,7 @@ InsetLayout Caption:Below
 	Argument 1
 		LabelString   "Short Title|S"
 		Tooltip       "The caption as it appears in the list of figures/tables"
+		InsertCotext  1
 	EndArgument
 	HTMLStyle
 		div.float-caption {

@@ -123,6 +123,7 @@ Style Author
   Argument 1
     LabelString	"Short Author|S"
     Tooltip	"A short version of the author name"
+    InsertCotext 1
   EndArgument
   LatexName	author
   LabelSep	xxx
@@ -335,6 +336,7 @@ Style Appendix
   Argument 1
     LabelString	"Short Title"
     Tooltip	"Short title for the appendix"
+    InsertCotext 1
   EndArgument
 End
 

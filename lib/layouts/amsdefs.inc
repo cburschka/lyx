@@ -37,6 +37,7 @@ Style Title
 	Argument 1
 		LabelString   "Short Title|S"
 		Tooltip       "Short title which appears in the running headers"
+		InsertCotext  1
 	EndArgument
 	Font
 	  Shape               Smallcaps

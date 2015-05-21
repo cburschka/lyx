@@ -76,6 +76,7 @@ Style Title
 	Argument 1
 	  LabelString	"Short Title|S"
 	  Tooltip	"Short title which will appear in the running header"
+	  InsertCotext  1
 	EndArgument
 End
 
@@ -110,6 +111,7 @@ Style Affiliation
 	Argument 1
 	  LabelString	"Short name"
 	  Tooltip	"Short name which appears in the footer of the title page"
+	  InsertCotext  1
 	EndArgument
 End
 

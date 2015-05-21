@@ -55,19 +55,21 @@ Style Part
 	Argument 1
 		LabelString   "Short Title|S"
 		Tooltip       "The part as it appears in the table of contents/running headers"
+		InsertCotext   1
 	EndArgument
 End
-      	
 
 
 Style Chapter
 	Argument 1
 		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The chapter as it appears in the table of contents"
+		InsertCotext   1
 	EndArgument
 	Argument 2
 		LabelString   "Short Title (Header)"
 		Tooltip       "The chapter as it appears in the running headers"
+		InsertCotext  1
 		Requires      1
 	EndArgument
 End
@@ -77,6 +79,7 @@ Style Chapter*
 	Argument 1
 		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The chapter as it appears in the table of contents"
+		InsertCotext   1
 	EndArgument
 End
 
@@ -85,10 +88,12 @@ Style Section
 	Argument 1
 		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The section as it appears in the table of contents"
+		InsertCotext   1
 	EndArgument
 	Argument 2
 		LabelString   "Short Title (Header)"
 		Tooltip       "The section as it appears in the running headers"
+		InsertCotext  1
 		Requires      1
 	EndArgument
 End
@@ -98,10 +103,12 @@ Style Subsection
 	Argument 1
 		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The subsection as it appears in the table of contents"
+		InsertCotext   1
 	EndArgument
 	Argument 2
 		LabelString   "Short Title (Header)"
 		Tooltip       "The subsection as it appears in the running headers"
+		InsertCotext  1
 		Requires      1
 	EndArgument
 End
@@ -111,10 +118,12 @@ Style Subsubsection
 	Argument 1
 		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The subsubsection as it appears in the table of contents"
+		InsertCotext   1
 	EndArgument
 	Argument 2
 		LabelString   "Short Title (Header)"
 		Tooltip       "The subsubsection as it appears in the running headers"
+		InsertCotext  1
 		Requires      1
 	EndArgument
 End
@@ -124,10 +133,12 @@ Style Paragraph
 	Argument 1
 		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The paragraph as it appears in the table of contents"
+		InsertCotext   1
 	EndArgument
 	Argument 2
 		LabelString   "Short Title (Header)"
 		Tooltip       "The paragraph as it appears in the running headers"
+		InsertCotext  1
 		Requires      1
 	EndArgument
 End
@@ -137,10 +148,12 @@ Style Subparagraph
 	Argument 1
 		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The subparagraph as it appears in the table of contents"
+		InsertCotext   1
 	EndArgument
 	Argument 2
 		LabelString   "Short Title (Header)"
 		Tooltip       "The subparagraph as it appears in the running headers"
+		InsertCotext  1
 		Requires      1
 	EndArgument
 End
@@ -204,10 +217,12 @@ Style Poemtitle
 	Argument 1
 		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The poem title as it appears in the table of contents"
+		InsertCotext   1
 	EndArgument
 	Argument 2
 		LabelString   "Short Title (Header)"
 		Tooltip       "The poem title as it appears in the running headers"
+		InsertCotext  1
 		Requires      1
 	EndArgument
 	Font
@@ -223,6 +238,7 @@ Style Poemtitle*
 	Argument 1
 		LabelString   "Short Title (TOC)|S"
 		Tooltip       "The poem title as it appears in the table of contents"
+		InsertCotext   1
 	EndArgument
 End
 

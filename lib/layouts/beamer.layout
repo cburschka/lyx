@@ -183,7 +183,7 @@ Style Description
   ParSep           0.3
   Align            Left
   LabelType        Manual
-  LabelFont 
+  LabelFont
     Series         Bold
   EndFont
 End
@@ -208,6 +208,7 @@ Style Part
   Argument 2
     LabelString    "Short Title|S"
     Tooltip        "The part as it appears in the table of contents/running headers"
+    InsertCotext   1
   EndArgument
   NeedProtect      1
   NextNoIndent     1
@@ -221,7 +222,7 @@ Style Part
   LabelType        Static
   LabelString      "Part"
   RefPrefix        part
-  Font 
+  Font
     Family         Roman
     Series         Bold
     Size           Huge
@@ -260,13 +261,14 @@ Style Section
   Argument 2
     LabelString    "Short Title|S"
     Tooltip        "The section as it appears in the table of contents/running headers"
+    InsertCotext   1
   EndArgument
-  Font 
+  Font
     Family         Roman
     Series         Bold
     Size           huge
   EndFont
-  LabelFont 
+  LabelFont
     Color          latex
   EndFont
   LabelStringAppendix "\Alph{section}"
@@ -318,13 +320,14 @@ Style Subsection
   Argument 2
     LabelString    "Short Title|S"
     Tooltip        "The subsection as it appears in the table of contents/running headers"
+    InsertCotext   1
   EndArgument
-  Font 
+  Font
     Family         Roman
     Series         Bold
     Size           larger
   EndFont
-  LabelFont 
+  LabelFont
     Color          latex
   EndFont
   LabelStringAppendix "\arabic{section}.\arabic{subsection}"
@@ -376,13 +379,14 @@ Style Subsubsection
   Argument 2
     LabelString    "Short Title|S"
     Tooltip        "The subsubsection as it appears in the table of contents/running headers"
+    InsertCotext   1
   EndArgument
-  Font 
+  Font
     Family         Roman
     Series         Bold
     Size           large
   EndFont
-  LabelFont 
+  LabelFont
     Color          latex
   EndFont
   LabelStringAppendix "\arabic{section}.\arabic{subsection}.\arabic{subsubsection}"
@@ -523,7 +527,7 @@ Style AgainFrame
   Font
     Color           latex
   EndFont
-  LabelFont 
+  LabelFont
     Family          Roman
     Color           latex
     Size            Largest
@@ -542,7 +546,7 @@ Style FrameTitle
   ParSep           1
   Align            Block
   LabelType        No_Label
-  Font 
+  Font
     Color          Blue
     Size           Largest
   EndFont
@@ -556,6 +560,7 @@ Style FrameTitle
   Argument 2
     LabelString    "Short Frame Title|S"
     Tooltip        "A short form of the frame title used in some themes"
+    InsertCotext   1
   EndArgument
 End
 
@@ -571,7 +576,7 @@ Style FrameSubtitle
   ParSep           1
   Align            Block
   LabelType        No_Label
-  Font 
+  Font
     Color          Blue
   EndFont
   Argument 1
@@ -609,7 +614,7 @@ Style Column
     Tooltip        "Column options (see beamer manual)"
   EndArgument
   LeftMargin       "Start column (increase depth!), width:xx"
-  LabelFont 
+  LabelFont
     Family         Roman
     Color          latex
   EndFont
@@ -636,7 +641,7 @@ Style Columns
   TopSep           1
   BottomSep        1
   ParSep           0
-  LabelFont 
+  LabelFont
     Family         Roman
     Color          latex
   EndFont
@@ -720,7 +725,7 @@ Style Overprint
   Align            Left
   LabelType        Static
   LabelString      "Overprint"
-  LabelFont 
+  LabelFont
     Family         Roman
     Color          latex
   EndFont
@@ -741,7 +746,7 @@ Style OverlayArea
   TopSep           1
   BottomSep        1
   ParSep           0
-  LabelFont 
+  LabelFont
     Family         Roman
     Color          latex
   EndFont
@@ -773,7 +778,7 @@ Style Uncover
   TopSep           1
   BottomSep        1
   ParSep           0
-  LabelFont 
+  LabelFont
     Family         Roman
     Color          Latex
   EndFont
@@ -897,8 +902,9 @@ Style Title
   Argument 1
     LabelString   "Short Title|S"
     Tooltip       "Short title which appears in the sidebar/header"
+    InsertCotext   1
   EndArgument
-  Font 
+  Font
     Size           Huge
     Series         Bold
     Color          Blue
@@ -929,8 +935,9 @@ Style Subtitle
   Argument 1
     LabelString   "Short Subtitle|S"
     Tooltip       "Short subtitle which appears in the sidebar/header"
+    InsertCotext   1
   EndArgument
-  Font 
+  Font
     Size           Large
     Series         Bold
     Color          Blue
@@ -952,8 +959,9 @@ Style Author
   Argument 1
     LabelString   "Short Author|S"
     Tooltip       "Short author which appears in the sidebar/header"
+    InsertCotext   1
   EndArgument
-  Font 
+  Font
     Size           Largest
     Color          Blue
   EndFont
@@ -974,8 +982,9 @@ Style Institute
   Argument 1
     LabelString   "Short Institute|S"
     Tooltip       "Short institute which appears in the sidebar/header"
+    InsertCotext   1
   EndArgument
-  Font 
+  Font
     Size           Large
     Color          Blue
   EndFont
@@ -1017,8 +1026,9 @@ Style Date
   Argument 1
     LabelString   "Short Date|S"
     Tooltip       "Short date which appears in the sidebar/header"
+    InsertCotext   1
   EndArgument
-  Font 
+  Font
     Size           Largest
     Color          Blue
   EndFont
@@ -1037,7 +1047,7 @@ Style TitleGraphic
   ParSep           1
   Align            Center
   LabelType        No_Label
-  Font 
+  Font
     Size           Huge
     Series         Bold
     Color          Blue
@@ -1066,7 +1076,7 @@ Style Bibliography
   LabelType        Bibliography
   LabelString      "References"
   LabelBottomSep   0.7
-  LabelFont 
+  LabelFont
     Series         Bold
     Size           Larger
   EndFont
@@ -1278,7 +1288,7 @@ Style LyX-Code
      \item[]}
     {\end{list}}
   EndPreamble
-  Font 
+  Font
     Family         Typewriter
   EndFont
 End
@@ -1298,7 +1308,7 @@ Style NoteItem
   LabelSep         xx
   LabelString      "Note:"
   LeftMargin       "Note:xx"
-  LabelFont 
+  LabelFont
     Family         Roman
     Color          latex
   EndFont
