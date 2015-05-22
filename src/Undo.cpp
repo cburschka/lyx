@@ -434,10 +434,12 @@ void Undo::Private::doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack,
 
 	if (undo.bparams)
 		doRecordUndoBufferParams(undo.cur_after, otherstack);
-	else
+	else {
+		LATTEST(undo.end <= cell_dit.lastpit());
 		doRecordUndo(ATOMIC_UNDO, cell_dit,
 					 undo.from, cell_dit.lastpit() - undo.end, undo.cur_after,
 					 otherstack);
+	}
 	otherstack.top().cur_after = undo.cur_before;
 
 	// This does the actual undo/redo.
