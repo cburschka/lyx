@@ -227,6 +227,7 @@ Float
 	Type			margintable
 	GuiName			MarginTable
 	Placement		tbp
+	AllowedPlacement none
 	Extension		lot
 	NumberWithin	none
 	Style			plain
@@ -240,6 +241,7 @@ Float
 	Type			marginfigure
 	GuiName			MarginFigure
 	Placement		tbp
+	AllowedPlacement none
 	Extension		lof
 	NumberWithin	none
 	Style			plain

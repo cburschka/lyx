@@ -497,6 +497,55 @@ Style Pause
 End
 
 ###
+# Float definitions
+###
+Float
+	Type                  table
+	GuiName               Table
+	Placement             tbp
+	AllowedPlacement      H
+	Extension             lot
+	NumberWithin          none
+	Style                 plain
+	ListName              "List of Tables"
+	IsPredefined          true
+	UsesFloatPkg          false
+	ListCommand           listoftables
+	RefPrefix             tab
+End
+
+
+Float
+	Type                  figure
+	GuiName               Figure
+	Placement             tbp
+	AllowedPlacement      H
+	Extension             lof
+	NumberWithin          none
+	Style                 plain
+	ListName              "List of Figures"
+	IsPredefined          true
+	UsesFloatPkg          false
+	ListCommand           listoffigures
+	RefPrefix             fig
+End
+
+
+Float
+	Type                  algorithm
+	GuiName               Algorithm
+	Placement             tbp
+	AllowedPlacement      H
+	Extension             loa
+	NumberWithin          none
+	Style                 ruled
+	ListName              "List of Algorithms"
+	IsPredefined          false
+	UsesFloatPkg          true
+	RefPrefix             alg
+End
+
+###
 # Counters definitions
 ###
 Counter enumi
