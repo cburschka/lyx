@@ -25,7 +25,7 @@ Provides natbib-internal	1
 Provides url			1
 SecNumDepth			4
 TocDepth			3
-DefaultStyle			Standard
+DefaultStyle		Standard
 
 Style Section
 	Align			Center
@@ -68,7 +68,7 @@ Style Affiliation
 	LatexName		affiliation
 	ParSkip			0.4
 	Align			Center
-	AlignPossible		Block, Left, Right, Center
+	AlignPossible	Block, Left, Right, Center
 	LabelType		Static
 	LabelSep		M
 	TextFont
@@ -87,10 +87,10 @@ Style Affiliation_(alternate)
 	LatexName		altaffiliation
 	LabelString		"Affiliation (alternate):"
 	Argument 1
-	  LabelString		"Alternate Affiliation Option"
+	  LabelString	"Alternate Affiliation Option"
 	  Tooltip		"Optional argument to the altaffiliation command"
 	EndArgument
-	PassThru              1
+	PassThru		1
 End
 
 
@@ -116,7 +116,7 @@ Style Author_Email
 	LatexName		email
 	LabelString		"Electronic Address:"
 	Argument 1
-	  LabelString		"Electronic Address Option|s"
+	  LabelString	"Electronic Address Option|s"
 	  Tooltip		"Optional argument to the email command"
 	EndArgument
 	PassThru		1
@@ -131,7 +131,7 @@ Style Author_URL
 	LatexName		homepage
 	LabelString		"URL:"
 	Argument 1
-	  LabelString		"Author URL Option"
+	  LabelString	"Author URL Option"
 	  Tooltip		"Optional argument to the homepage command"
 	EndArgument
 	PassThru		1
@@ -196,9 +196,9 @@ End
 
 Style Title
 	Argument 1
-	  LabelString		"Short Title|S"
+	  LabelString	"Short Title|S"
 	  Tooltip		"Short title as it appears in the running headers"
-	  InsertCotext		1
+	  InsertCotext	1
 	EndArgument
 	Font
 	  Series		Bold
@@ -216,7 +216,7 @@ Style Acknowledgments
 	LatexName		acknowledgments
 	LabelType		Centered
 	LabelString		"acknowledgments"
-	LabelBottomSep		0.5
+	LabelBottomSep	0.5
 	LabelFont
 	  Series		Bold
 	  Shape			Smallcaps
@@ -255,14 +255,14 @@ End
 Float
 	Extension		lov
 	GuiName			Video
-	IsPredefined		true
+	IsPredefined	true
 	ListCommand		listofvideos
 	ListName		"List of Videos"
-	NumberWithin		none
+	NumberWithin	none
 	Placement		tbp
 	Style			plain
 	Type			video
-	UsesFloatPkg		false
+	UsesFloatPkg	false
 End
 
 
@@ -297,7 +297,7 @@ InsetLayout "Flex:Online cite"
 	LatexName		onlinecite
 	LabelString		"online cite"
 	Argument 1
-	  LabelString		"Text behind"
+	  LabelString	"Text behind"
 	  Tooltip		"text behind the cite"
 	EndArgument
 	Font
