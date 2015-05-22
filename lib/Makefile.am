@@ -441,6 +441,7 @@ dist_images_DATA1X = \
 	images/dialog-toggle_toc.png \
 	images/down.png \
 	images/editclear.png \
+	images/emblem-readonly.png \
 	images/ert-insert.png \
 	images/file-open.png \
 	images/float-insert_figure.png \

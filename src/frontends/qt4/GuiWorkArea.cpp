@@ -2011,8 +2011,14 @@ void TabWorkArea::updateTabTexts()
 		QString tab_text = it->displayString().replace("&", "&&");
 		if (!buf.fileName().empty() && !buf.isClean())
 			tab_text += "*";
+		QString tab_tooltip = it->abs();
+		if (buf.isReadonly()) {
+			setTabIcon(tab_index, QIcon(getPixmap("images/", "emblem-readonly", "svgz,png")));
+			tab_tooltip = qt_("%1 (read only)").arg(it->abs());
+		} else
+			setTabIcon(tab_index, QIcon());
 		setTabText(tab_index, tab_text);
-		setTabToolTip(tab_index, it->abs());
+		setTabToolTip(tab_index, tab_tooltip);
 	}
 }
 
