@@ -67,6 +67,10 @@ private:
 	///
 	std::string allowed_placement_;
 	///
+	bool allows_wide_;
+	///
+	bool allows_sideways_;
+	///
 	FloatList const * float_list_;
 };
 

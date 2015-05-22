@@ -358,11 +358,12 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 
 	FloatList const & floats = buffer().params().documentClass().floats();
 	string tmptype = params_.type;
-	if (params_.sideways)
+	if (params_.sideways && floats.allowsSideways(params_.type))
 		tmptype = "sideways" + params_.type;
-	if (params_.wide && (!params_.sideways ||
-			     params_.type == "figure" ||
-			     params_.type == "table"))
+	if (params_.wide && floats.allowsSideways(params_.type)
+		&& (!params_.sideways ||
+		     params_.type == "figure" ||
+		     params_.type == "table"))
 		tmptype += "*";
 	// Figure out the float placement to use.
 	// From lowest to highest:
@@ -449,7 +450,10 @@ bool InsetFloat::insetAllowed(InsetCode code) const
 
 void InsetFloat::setWide(bool w, bool update_label)
 {
-	params_.wide = w;
+	if (!buffer().params().documentClass().floats().allowsWide(params_.type))
+		params_.wide = false;
+	else
+	    params_.wide = w;
 	if (update_label)
 		setNewLabel();
 }
@@ -457,7 +461,10 @@ void InsetFloat::setWide(bool w, bool update_label)
 
 void InsetFloat::setSideways(bool s, bool update_label)
 {
-	params_.sideways = s;
+	if (!buffer().params().documentClass().floats().allowsSideways(params_.type))
+		params_.sideways = false;
+	else
+		params_.sideways = s;
 	if (update_label)
 		setNewLabel();
 }
@@ -480,10 +487,12 @@ void InsetFloat::setNewLabel()
 
 	lab += floatName(params_.type);
 
-	if (params_.wide)
+	FloatList const & floats = buffer().params().documentClass().floats();
+
+	if (params_.wide && floats.allowsWide(params_.type))
 		lab += '*';
 
-	if (params_.sideways)
+	if (params_.sideways && floats.allowsSideways(params_.type))
 		lab += _(" (sideways)");
 
 	setLabel(lab);

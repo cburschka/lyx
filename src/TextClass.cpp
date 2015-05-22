@@ -61,7 +61,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 56; //spitz: New Float tags AllowedPlacement
+int const LAYOUT_FORMAT = 56; //spitz: New Float tags AllowedPlacement, AllowsWide, AllowsSideways
 
 namespace {
 
@@ -1098,11 +1098,15 @@ bool TextClass::readFloat(Lexer & lexrc)
 		FT_LISTCOMMAND,
 		FT_REFPREFIX,
 		FT_ALLOWED_PLACEMENT,
+		FT_ALLOWS_SIDEWAYS,
+	    	FT_ALLOWS_WIDE,
 		FT_END
 	};
 
 	LexerKeyword floatTags[] = {
 		{ "allowedplacement", FT_ALLOWED_PLACEMENT },
+		{ "allowssideways", FT_ALLOWS_SIDEWAYS },
+		{ "allowswide", FT_ALLOWS_WIDE },
 		{ "end", FT_END },
 		{ "extension", FT_EXT },
 		{ "guiname", FT_NAME },
@@ -1137,6 +1141,8 @@ bool TextClass::readFloat(Lexer & lexrc)
 	string within;
 	bool usesfloat = true;
 	bool ispredefined = false;
+	bool allowswide = true;
+	bool allowssideways = true;
 
 	bool getout = false;
 	while (!getout && lexrc.isOK()) {
@@ -1212,6 +1218,14 @@ bool TextClass::readFloat(Lexer & lexrc)
 			lexrc.next();
 			ispredefined = lexrc.getBool();
 			break;
+		case FT_ALLOWS_SIDEWAYS:
+			lexrc.next();
+			allowssideways = lexrc.getBool();
+			break;
+		case FT_ALLOWS_WIDE:
+			lexrc.next();
+			allowswide = lexrc.getBool();
+			break;
 		case FT_HTMLATTR:
 			lexrc.next();
 			htmlattr = lexrc.getString();
@@ -1252,8 +1266,9 @@ bool TextClass::readFloat(Lexer & lexrc)
 			          "not be able to produce a float list.");
 		}
 		Floating fl(type, placement, ext, within, style, name,
-				listname, listcommand, refprefix, allowed_placement,
-				htmltag, htmlattr, htmlstyle, usesfloat, ispredefined);
+			    listname, listcommand, refprefix, allowed_placement,
+			    htmltag, htmlattr, htmlstyle, usesfloat, ispredefined,
+			    allowswide, allowssideways);
 		floatlist_.newFloat(fl);
 		// each float has its own counter
 		counters_.newCounter(from_ascii(type), from_ascii(within),

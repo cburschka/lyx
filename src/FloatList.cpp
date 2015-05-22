@@ -64,6 +64,24 @@ bool FloatList::typeExist(string const & t) const
 }
 
 
+bool FloatList::allowsWide(string const & t) const
+{
+	List::const_iterator cit = list.find(t);
+	if (cit != list.end())
+		return cit->second.allowsWide();
+	return false;
+}
+
+
+bool FloatList::allowsSideways(string const & t) const
+{
+	List::const_iterator cit = list.find(t);
+	if (cit != list.end())
+		return cit->second.allowsSideways();
+	return false;
+}
+
+
 Floating const & FloatList::getType(string const & t) const
 {
 	// I wish we could use exceptions

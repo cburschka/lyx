@@ -184,7 +184,7 @@ import os, re, string, sys
 # New InsetLayout and Layout tags "PassThruChars"
 
 # Incremented to format 56, 20 May 2015 by spitz
-# New Float tags "AllowedPlacement"
+# New Float tags "AllowedPlacement", "AllowsWide", "AllowsSideways"
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").

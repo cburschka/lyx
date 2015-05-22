@@ -146,13 +146,15 @@ void FloatPlacement::paramsToDialog(Inset const * inset)
 	InsetFloatParams const & params = fl->params();
 
 	BufferParams const & bp = fl->buffer().params();
-	initFloatTypeCO(bp.documentClass().floats());
+	FloatList const & floats = bp.documentClass().floats();
+	initFloatTypeCO(floats);
 
 	int const item = floatTypeCO->findData(toqstr(params.type));
 	floatTypeCO->setCurrentIndex(item);
 
-	allowed_placement_ =
-		bp.documentClass().floats().allowedPlacement(params.type);
+	allowed_placement_ = floats.allowedPlacement(params.type);
+	allows_sideways_ = floats.allowsSideways(params.type);
+	allows_wide_ = floats.allowsWide(params.type);
 
 	set(params.placement);
 
@@ -165,10 +167,9 @@ void FloatPlacement::paramsToDialog(Inset const * inset)
 		bottomCB->setChecked(false);
 	}
 
-	spanCB->setChecked(params.wide);
-	sidewaysCB->setChecked(params.sideways);
-	// the package rotfloat only has *-versions for figure and table
-	spanCB->setEnabled(!params.sideways || standardfloat_);
+	spanCB->setChecked(params.wide && allows_wide_);
+	sidewaysCB->setChecked(params.sideways && allows_sideways_);
+
 	checkAllowed();
 }
 
@@ -255,7 +256,8 @@ void FloatPlacement::checkAllowed() const
 					     && contains(allowed_placement_, 'H'));
 		ignoreCB->setEnabled(!sideways && !defaults && ignore && !heredefinitely
 				     && contains(allowed_placement_, '!'));
-		spanCB->setEnabled(!sideways || standardfloat_);
+		spanCB->setEnabled(allows_wide_ && (!sideways || standardfloat_));
+		sidewaysCB->setEnabled(allows_sideways_);
 	} else {
 		topCB->setEnabled(!defaults && !heredefinitely);
 		bottomCB->setEnabled(!defaults && !heredefinitely);

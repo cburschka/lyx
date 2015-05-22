@@ -43,6 +43,10 @@ public:
 	///
 	bool typeExist(std::string const & t) const;
 	///
+	bool allowsWide(std::string const & t) const;
+	///
+	bool allowsSideways(std::string const & t) const;
+	///
 	Floating const & getType(std::string const & t) const;
 	///
 	void erase(std::string const & t);

@@ -15585,7 +15585,7 @@ to your layout file.
 
 \begin_layout Description
 
-\change_inserted -712698321 1432283705
+\change_inserted -712698321 1432313622
 \begin_inset Flex Code
 status collapsed
 
@@ -15690,6 +15690,140 @@ ignore LaTeX rules
 none
 \emph default
 .
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1432313755
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1432313630
+AllowsSideways
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1432313646
+
+\emph off
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\emph on
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1432313646
+
+\emph on
+1
+\end_layout
+
+\end_inset
+
+
+\emph default
+] Defines whether the float allows to be rotated via the rotfloat package
+ (sidewaysfloat).
+ Set to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1432313721
+0
+\end_layout
+
+\end_inset
+
+ if the float does not support this feature.
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1432313802
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1432313759
+AllowsWide
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1432313755
+
+\emph off
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\emph on
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1432313755
+
+\emph on
+1
+\end_layout
+
+\end_inset
+
+
+\emph default
+] Defines whether the float has a starred variant that spans columns in
+ a two column paragraph.
+ Set to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1432313755
+0
+\end_layout
+
+\end_inset
+
+ if the float does not support this feature.
 \change_unchanged
 
 \end_layout

@@ -26,7 +26,8 @@ namespace lyx {
 class Floating {
 public:
 	///
-	Floating() : usesfloatpkg_(false), ispredefined_(false) {}
+	Floating() : usesfloatpkg_(false), ispredefined_(false),
+	    allowswide_(true), allowssideways_(true) {}
 	///
 	Floating(std::string const & type, std::string const & placement,
 		 std::string const & ext, std::string const & within,
@@ -34,7 +35,8 @@ public:
 		 std::string const & listName, std::string const & listCmd,
 		 std::string const & refPrefix, std::string const & allowedplacement,
 		 std::string const & htmlType, std::string const & htmlClass,
-		 std::string const & htmlStyle, bool usesfloat, bool isprefined);
+		 std::string const & htmlStyle, bool usesfloat, bool isprefined,
+		 bool allowswide, bool allowssideways);
 	///
 	std::string const & floattype() const { return floattype_; }
 	///
@@ -62,6 +64,10 @@ public:
 	bool usesFloatPkg() const { return usesfloatpkg_; }
 	///
 	bool isPredefined() const { return ispredefined_; }
+	///
+	bool allowsWide() const { return allowswide_; }
+	///
+	bool allowsSideways() const { return allowssideways_; }
 	/// style information, for preamble
 	std::string const & htmlStyle() const { return html_style_; }
 	/// class, for css, defaults to "float-" + type()
@@ -95,6 +101,10 @@ private:
 	bool usesfloatpkg_;
 	///
 	bool ispredefined_;
+	///
+	bool  allowswide_;
+	///
+	bool  allowssideways_;
 	/// 
 	mutable std::string html_tag_;
 	/// 
