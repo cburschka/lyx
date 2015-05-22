@@ -6,42 +6,39 @@
 
 Format 54
 
-Columns			1
-Sides			1
-SecNumDepth		3
-TocDepth		3
+Columns				1
+Sides				1
+SecNumDepth			3
+TocDepth			3
 DefaultStyle		Standard
 
 Provides float		1
 
 ClassOptions
-	FontSize	10|11|12
+	FontSize		10|11|12
 end
-
 
 # This is just to show how to declare the default font.
 # The defaults are exactly those shown here.
 DefaultFont
-	Family		Roman
-	Series		Medium
-	Shape		Up
-	Size		Normal
-	Color		None
+	Family			Roman
+	Series			Medium
+	Shape			Up
+	Size			Normal
+	Color			None
 EndFont
 
-
 Style Standard
-	Category        MainText
-	Margin		Static
-	LatexType	Paragraph
-	LatexName	dummy
-	ParIndent	MM
-	ParSkip		0.4
-	Align		Block
+	Category    	MainText
+	Margin			Static
+	LatexType		Paragraph
+	LatexName		dummy
+	ParIndent		MM
+	ParSkip			0.4
+	Align			Block
 	AlignPossible	Block, Left, Right, Center
-	LabelType	No_Label
+	LabelType		No_Label
 End
-
 
 Input stdcounters.inc
 Input stdfloats.inc
@@ -54,249 +51,244 @@ NoCounter chapter
 NoStyle Chapter*
 
 Style Title
-	Margin		Static
-	LatexType	Command
-	Category	FrontMatter
-	InPreamble	1
-	LatexName	title
-	ParSkip		0.4
-	ItemSep		0
-	TopSep		0
-	BottomSep	0.7
-	ParSep		1
-	Align		Center
-	LabelType	No_Label
+	Margin			Static
+	LatexType		Command
+	Category		FrontMatter
+	InPreamble		1
+	LatexName		title
+	ParSkip			0.4
+	ItemSep			0
+	TopSep			0
+	BottomSep		0.7
+	ParSep			1
+	Align			Center
+	LabelType		No_Label
 	Font
-	  Family	Sans
-	  Size		Largest
-	  Series	Bold
+	  Family		Sans
+	  Size			Largest
+	  Series		Bold
 	  EndFont
-	HTMLTag		h1
-	HTMLTitle	true
+	HTMLTag			h1
+	HTMLTitle		true
 	Argument 1
 	  LabelString	"Short Title|S"
-	  Tooltip	"Short title which will appear in the running header"
-	  InsertCotext  1
+	  Tooltip		"Short title which will appear in the running header"
+	  InsertCotext	1
 	EndArgument
 End
 
 Style Author
-	LatexType	command
-	LatexName	author
-	Category	FrontMatter
-	InPreamble	1
-	TopSep		0.7
-	Align		Center
+	LatexType		command
+	LatexName		author
+	Category		FrontMatter
+	InPreamble		1
+	TopSep			0.7
+	Align			Center
 	Font
-	  Family	Sans
-	  Size		Large
+	  Family		Sans
+	  Size			Large
 	EndFont
 End
 
 Style Email
-	CopyStyle	Author
-	LatexName	email
-	TopSep		1
+	CopyStyle		Author
+	LatexName		email
+	TopSep			1
 	Font
-	  Size		Normal
+	  Size			Normal
 	EndFont
 End
 
 Style Affiliation
-	CopyStyle	Email
-	LatexName	affiliation
+	CopyStyle		Email
+	LatexName		affiliation
 	Font
-	  Shape		Italic
+	  Shape			Italic
 	EndFont
 	Argument 1
 	  LabelString	"Short name"
-	  Tooltip	"Short name which appears in the footer of the title page"
-	  InsertCotext  1
+	  Tooltip		"Short name which appears in the footer of the title page"
+	  InsertCotext	1
 	EndArgument
 End
 
 Style Alt_Affiliation
-	CopyStyle	Affiliation
-	LatexName	altaffiliation
-	TopSep		0.7
+	CopyStyle		Affiliation
+	LatexName		altaffiliation
+	TopSep			0.7
 End
 
 Style Also_Affiliation
-	CopyStyle	Affiliation
-	LatexName	alsoaffiliation
-	TopSep		0.5
+	CopyStyle		Affiliation
+	LatexName		alsoaffiliation
+	TopSep			0.5
 End
 
 Style Fax
-	CopyStyle	Email
-	LatexName	fax
-	TopSep		0
-	LabelSep	xx
-	LabelType	Static
-	LabelString	"Fax:"
+	CopyStyle		Email
+	LatexName		fax
+	TopSep			0
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Fax:"
 End
 
 Style Phone
-	CopyStyle	Fax
-	LatexName	phone
-	LabelString	"Phone:"
-	TopSep		0.5
+	CopyStyle		Fax
+	LatexName		phone
+	LabelString		"Phone:"
+	TopSep			0.5
 End
 
 Style Abbreviations
-	CopyStyle	Fax
-	Margin		Dynamic
-	LatexName	abbreviations
-	TopSep		1
-	Align		Left
-	LabelString	"Abbreviations:"
+	CopyStyle		Fax
+	Margin			Dynamic
+	LatexName		abbreviations
+	TopSep			1
+	Align			Left
+	LabelString		"Abbreviations:"
 	LabelFont
-	  Color		Blue
+	  Color			Blue
 	EndFont
 End
 
 Style Keywords
-	CopyStyle	Abbreviations
-	LatexName	keywords
-	LabelString	"Keywords:"
-	TopSep		0.3
+	CopyStyle		Abbreviations
+	LatexName		keywords
+	LabelString		"Keywords:"
+	TopSep			0.3
 End
 
 Float
-	Type		scheme
-	GuiName		Scheme
-	Placement	tbp
-	Extension	los
+	Type			scheme
+	GuiName			Scheme
+	Placement		tbp
+	Extension		los
 	NumberWithin	none
-	Style		plain
-	ListName	"List of Schemes"
+	Style			plain
+	ListName		"List of Schemes"
 	IsPredefined	true
 	UsesFloatPkg	true
 End
 
 InsetLayout scheme
-	LabelString	Scheme
+	LabelString		Scheme
 	LabelFont
-	  Color		collapsable
-	  Size		Small
+	  Color			collapsable
+	  Size			Small
 	EndFont
-	MultiPar	true
+	MultiPar		true
 End
 
-
 Float
-	Type		chart
-	GuiName		Chart
-	Placement	tbp
-	Extension	loc
+	Type			chart
+	GuiName			Chart
+	Placement		tbp
+	Extension		loc
 	NumberWithin	none
-	Style		plain
-	ListName	"List of Charts"
+	Style			plain
+	ListName		"List of Charts"
 	IsPredefined	true
 	UsesFloatPkg	true
 End
 
 InsetLayout chart
-	LabelString	Chart
+	LabelString		Chart
 	LabelFont
-	  Color		collapsable
-	  Size		Small
+	  Color			collapsable
+	  Size			Small
 	EndFont
-	MultiPar	true
+	MultiPar		true
 End
-
 
 Float
 	# We need the [[mathematical]] context, since graph in the sense of
 	# diagram is not meant (chart is used for this, see above).
-	Type		graph
-	GuiName		Graph[[mathematical]]
-	Placement	tbp
-	Extension	loh
+	Type			graph
+	GuiName			Graph[[mathematical]]
+	Placement		tbp
+	Extension		loh
 	NumberWithin	none
-	Style		plain
-	ListName	"List of Graphs[[mathematical]]"
+	Style			plain
+	ListName		"List of Graphs[[mathematical]]"
 	IsPredefined	true
 	UsesFloatPkg	true
 End
 
 InsetLayout graph
-	LabelString	Graph[[mathematical]]
+	LabelString		Graph[[mathematical]]
 	LabelFont
-	  Color		collapsable
-	  Size		Small
+	  Color			collapsable
+	  Size			Small
 	EndFont
-	MultiPar	true
+	MultiPar		true
 End
 
 # insert Abtract and Bibliography style
 Input stdstruct.inc
 
 Style Acknowledgement
-	CopyStyle	Abstract
-	LatexName	acknowledgement
-	Category	BackMatter
-	InTitle		0
-	BottomSep	0.7
-	LabelType	Above
-	LabelString	"Acknowledgement"
+	CopyStyle		Abstract
+	LatexName		acknowledgement
+	Category		BackMatter
+	InTitle			0
+	BottomSep		0.7
+	LabelType		Above
+	LabelString		"Acknowledgement"
 	Font
-	  Size		Normal
+	  Size			Normal
 	EndFont
 	LabelFont
-	  Series	Bold
-	  Size		Large
+	  Series		Bold
+	  Size			Large
 	EndFont
 End
 
 Style SupplementalInfo
-	CopyStyle	Acknowledgement
-	LatexName	suppinfo
-	LabelString	"Supporting Information Available"
+	CopyStyle		Acknowledgement
+	LatexName		suppinfo
+	LabelString		"Supporting Information Available"
 End
 
 Style TOC_entry
-	CopyStyle	Acknowledgement
-	LatexName	tocentry
-	ParSep		0.3
-	LabelString	"Graphical TOC Entry"
+	CopyStyle		Acknowledgement
+	LatexName		tocentry
+	ParSep			0.3
+	LabelString		"Graphical TOC Entry"
 End
-
 
 InsetLayout Flex:Bibnote
-	LyxType		custom
-	LatexType	command
-	LatexName	bibnote
-	LabelString	"bibnote"
-	Decoration	Classic
+	LyxType			custom
+	LatexType		command
+	LatexName		bibnote
+	LabelString		"bibnote"
+	Decoration		Classic
 	Font
-	  Color		foreground
-	  Size		Small
-	  Family	Roman
-	  Shape		Up
-	  Series	Medium
-	  Misc		No_Emph
-	  Misc		No_Noun
-	  Misc		No_Bar
+	  Color			foreground
+	  Size			Small
+	  Family		Roman
+	  Shape			Up
+	  Series		Medium
+	  Misc			No_Emph
+	  Misc			No_Noun
+	  Misc			No_Bar
 	EndFont
 	LabelFont
-	  Size		Small
+	  Size			Small
 	EndFont
-	MultiPar	true
-	ResetsFont true
+	MultiPar		true
+	ResetsFont		true
 End
 
-
 InsetLayout Flex:Chemistry
-	CopyStyle	Flex:Bibnote
-	LatexName	ce
-	LabelString	"chemistry"
+	CopyStyle		Flex:Bibnote
+	LatexName		ce
+	LabelString		"chemistry"
 	Preamble
 	  \usepackage[version=3]{mhchem}
 	EndPreamble
 	LabelFont
-	  Color		blue
+	  Color			blue
 	EndFont
-	MultiPar	false
+	MultiPar		false
 End
-
