@@ -75,6 +75,12 @@ void FloatPlacement::useSideways()
 }
 
 
+bool FloatPlacement::possiblePlacement(char const & p) const
+{
+	return !spanCB->isVisible() || contains(allowed_placement_, p);
+}
+
+
 void FloatPlacement::set(string const & placement)
 {
 	bool def_placement = false;
@@ -87,22 +93,22 @@ void FloatPlacement::set(string const & placement)
 
 	if (placement.empty()) {
 		def_placement = true;
-	} else if (contains(placement, 'H')) {
+	} else if (contains(placement, 'H') && possiblePlacement('H')) {
 		here_definitely = true;
 	} else {
-		if (contains(placement, '!')) {
+		if (contains(placement, '!') && possiblePlacement('!')) {
 			force = true;
 		}
-		if (contains(placement, 't')) {
+		if (contains(placement, 't') && possiblePlacement('t')) {
 			top = true;
 		}
-		if (contains(placement, 'b')) {
+		if (contains(placement, 'b') && possiblePlacement('b')) {
 			bottom = true;
 		}
-		if (contains(placement, 'p')) {
+		if (contains(placement, 'p') && possiblePlacement('p')) {
 			page = true;
 		}
-		if (contains(placement, 'h')) {
+		if (contains(placement, 'h') && possiblePlacement('h')) {
 			here = true;
 		}
 	}
@@ -144,6 +150,9 @@ void FloatPlacement::paramsToDialog(Inset const * inset)
 
 	int const item = floatTypeCO->findData(toqstr(params.type));
 	floatTypeCO->setCurrentIndex(item);
+
+	allowed_placement_ =
+		bp.documentClass().floats().allowedPlacement(params.type);
 
 	set(params.placement);
 
@@ -234,12 +243,18 @@ void FloatPlacement::checkAllowed() const
 		bool const span = spanCB->isChecked();
 		bool const sideways = sidewaysCB->isChecked();
 		defaultsCB->setEnabled(!sideways);
-		topCB->setEnabled(!sideways && !defaults && !heredefinitely);
-		bottomCB->setEnabled(!sideways && !defaults && !span && !heredefinitely);
-		pageCB->setEnabled(!sideways && !defaults && !heredefinitely);
-		herepossiblyCB->setEnabled(!sideways && !defaults && !span && !heredefinitely);
-		heredefinitelyCB->setEnabled(!sideways && !defaults && !span);
-		ignoreCB->setEnabled(!sideways && !defaults && ignore && !heredefinitely);
+		topCB->setEnabled(!sideways && !defaults && !heredefinitely
+				  && contains(allowed_placement_, 't'));
+		bottomCB->setEnabled(!sideways && !defaults && !span && !heredefinitely
+				     && contains(allowed_placement_, 'b'));
+		pageCB->setEnabled(!sideways && !defaults && !heredefinitely
+				   && contains(allowed_placement_, 'p'));
+		herepossiblyCB->setEnabled(!sideways && !defaults && !span && !heredefinitely
+					   && contains(allowed_placement_, 'h'));
+		heredefinitelyCB->setEnabled(!sideways && !defaults && !span
+					     && contains(allowed_placement_, 'H'));
+		ignoreCB->setEnabled(!sideways && !defaults && ignore && !heredefinitely
+				     && contains(allowed_placement_, '!'));
 		spanCB->setEnabled(!sideways || standardfloat_);
 	} else {
 		topCB->setEnabled(!defaults && !heredefinitely);

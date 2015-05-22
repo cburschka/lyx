@@ -59,9 +59,13 @@ private:
 	std::string const get(bool & wide, bool & sideways) const;
 	///
 	void initFloatTypeCO(FloatList const & floats);
+	///
+	bool possiblePlacement(char const & p) const;
 
 	/// one of figure or table?
 	bool standardfloat_;
+	///
+	std::string allowed_placement_;
 	///
 	FloatList const * float_list_;
 };

@@ -61,7 +61,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 55; //spitz: InsetLayout and Layout tags PassThruChars
+int const LAYOUT_FORMAT = 56; //spitz: New Float tags AllowedPlacement
 
 namespace {
 
@@ -256,7 +256,7 @@ LexerKeyword textClassTags[] = {
 	{ "nostyle",           TC_NOSTYLE },
 	{ "outputformat",      TC_OUTPUTFORMAT },
 	{ "outputtype",        TC_OUTPUTTYPE },
-	{ "packageoptions",	   TC_PKGOPTS },
+	{ "packageoptions",    TC_PKGOPTS },
 	{ "pagestyle",         TC_PAGESTYLE },
 	{ "preamble",          TC_PREAMBLE },
 	{ "provides",          TC_PROVIDES },
@@ -1097,10 +1097,12 @@ bool TextClass::readFloat(Lexer & lexrc)
 		FT_HTMLTAG,
 		FT_LISTCOMMAND,
 		FT_REFPREFIX,
+		FT_ALLOWED_PLACEMENT,
 		FT_END
 	};
 
 	LexerKeyword floatTags[] = {
+		{ "allowedplacement", FT_ALLOWED_PLACEMENT },
 		{ "end", FT_END },
 		{ "extension", FT_EXT },
 		{ "guiname", FT_NAME },
@@ -1128,6 +1130,7 @@ bool TextClass::readFloat(Lexer & lexrc)
 	string listcommand;
 	string name;
 	string placement;
+	string allowed_placement = "!htbpH";
 	string refprefix;
 	string style;
 	string type;
@@ -1170,6 +1173,10 @@ bool TextClass::readFloat(Lexer & lexrc)
 		case FT_PLACEMENT:
 			lexrc.next();
 			placement = lexrc.getString();
+			break;
+		case FT_ALLOWED_PLACEMENT:
+			lexrc.next();
+			allowed_placement = lexrc.getString();
 			break;
 		case FT_EXT:
 			lexrc.next();
@@ -1245,7 +1252,7 @@ bool TextClass::readFloat(Lexer & lexrc)
 			          "not be able to produce a float list.");
 		}
 		Floating fl(type, placement, ext, within, style, name,
-				listname, listcommand, refprefix,
+				listname, listcommand, refprefix, allowed_placement,
 				htmltag, htmlattr, htmlstyle, usesfloat, ispredefined);
 		floatlist_.newFloat(fl);
 		// each float has its own counter

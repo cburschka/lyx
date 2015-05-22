@@ -183,6 +183,9 @@ import os, re, string, sys
 # Incremented to format 55, 20 April 2015 by spitz
 # New InsetLayout and Layout tags "PassThruChars"
 
+# Incremented to format 56, 20 May 2015 by spitz
+# New Float tags "AllowedPlacement"
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -190,7 +193,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.py script to update all
 # layout files to the new format.
 
-currentFormat = 55
+currentFormat = 56
 
 
 def usage(prog_name):
@@ -414,7 +417,7 @@ def convert(lines):
                 i += 1
             continue
 
-        if format >= 50 and format <= 54:
+        if format >= 50 and format <= 55:
             # nothing to do.
             i += 1
             continue

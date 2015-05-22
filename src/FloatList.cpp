@@ -48,6 +48,15 @@ string const FloatList::defaultPlacement(string const & t) const
 }
 
 
+string const FloatList::allowedPlacement(string const & t) const
+{
+	List::const_iterator cit = list.find(t);
+	if (cit != list.end())
+		return cit->second.allowedPlacement();
+	return string();
+}
+
+
 bool FloatList::typeExist(string const & t) const
 {
 	List::const_iterator cit = list.find(t);

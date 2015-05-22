@@ -369,16 +369,27 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 	// - float default placement
 	// - document wide default placement
 	// - specific float placement
-	string placement;
+	string tmpplacement;
 	string const buf_placement = buffer().params().float_placement;
 	string const def_placement = floats.defaultPlacement(params_.type);
 	if (!params_.placement.empty()
 	    && params_.placement != def_placement) {
-		placement = params_.placement;
+		tmpplacement = params_.placement;
 	} else if (params_.placement.empty()
 		   && !buf_placement.empty()
 		   && buf_placement != def_placement) {
-		placement = buf_placement;
+		tmpplacement = buf_placement;
+	}
+
+	// Check if placement is allowed by this float
+	string const allowed_placement =
+		floats.allowedPlacement(params_.type);
+	string placement;
+	string::const_iterator lit = tmpplacement.begin();
+	string::const_iterator end = tmpplacement.end();
+	for (; lit != end; ++lit) {
+		if (contains(allowed_placement, *lit))
+			placement += *lit;
 	}
 
 	// Force \begin{<floatname>} to appear in a new line.

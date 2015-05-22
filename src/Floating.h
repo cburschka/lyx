@@ -32,8 +32,8 @@ public:
 		 std::string const & ext, std::string const & within,
 		 std::string const & style, std::string const & name,
 		 std::string const & listName, std::string const & listCmd,
-		 std::string const & refPrefix,
-		 std::string const & htmlType, std::string const & htmlClass, 
+		 std::string const & refPrefix, std::string const & allowedplacement,
+		 std::string const & htmlType, std::string const & htmlClass,
 		 std::string const & htmlStyle, bool usesfloat, bool isprefined);
 	///
 	std::string const & floattype() const { return floattype_; }
@@ -56,6 +56,8 @@ public:
 	std::string const & listCommand() const { return listcommand_; }
 	/// prefix to use for formatted references to such floats
 	std::string const & refPrefix() const { return refprefix_; }
+	/// allowed placement options
+	std::string const & allowedPlacement() const { return allowedplacement_; }
 	///
 	bool usesFloatPkg() const { return usesfloatpkg_; }
 	///
@@ -87,6 +89,8 @@ private:
 	std::string listcommand_;
 	///
 	std::string refprefix_;
+	///
+	std::string allowedplacement_;
 	///
 	bool usesfloatpkg_;
 	///

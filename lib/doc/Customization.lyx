@@ -1,7 +1,8 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 488
+\lyxformat 493
 \begin_document
 \begin_header
+\origin /home/jspitz/lyx/lyx-devel/lib/doc/
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -15578,6 +15579,119 @@ to your layout file.
  (like the AGU class bundled with \SpecialChar LyX
 ), the information below will hopefully
  help you:
+\change_inserted -712698321 1432283506
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1432283705
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1432283514
+AllowedPlacement
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1432283507
+string
+\end_layout
+
+\end_inset
+
+=!htbpH] Allowed placement options for this float type.
+ The value is a string of placement characters.
+ Possible characters include: 
+\emph on
+h
+\emph default
+ (
+\begin_inset Quotes eld
+\end_inset
+
+here if possible
+\begin_inset Quotes erd
+\end_inset
+
+), 
+\emph on
+t
+\emph default
+ (
+\begin_inset Quotes eld
+\end_inset
+
+top of page
+\begin_inset Quotes erd
+\end_inset
+
+), 
+\emph on
+b
+\emph default
+ (
+\begin_inset Quotes eld
+\end_inset
+
+bottom of page
+\begin_inset Quotes erd
+\end_inset
+
+), 
+\emph on
+p
+\emph default
+ (
+\begin_inset Quotes eld
+\end_inset
+
+page of floats
+\begin_inset Quotes erd
+\end_inset
+
+), 
+\emph on
+H
+\emph default
+ (
+\begin_inset Quotes eld
+\end_inset
+
+here definitely
+\begin_inset Quotes erd
+\end_inset
+
+) and 
+\emph on
+!
+\emph default
+ (
+\begin_inset Quotes eld
+\end_inset
+
+ignore LaTeX rules
+\begin_inset Quotes erd
+\end_inset
+
+).
+ The order of the characters in the string does not matter.
+ If no placement options are allowed, use the string 
+\emph on
+none
+\emph default
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -22410,6 +22524,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout

@@ -39,6 +39,8 @@ public:
 	///
 	std::string const defaultPlacement(std::string const & t) const;
 	///
+	std::string const allowedPlacement(std::string const & t) const;
+	///
 	bool typeExist(std::string const & t) const;
 	///
 	Floating const & getType(std::string const & t) const;
