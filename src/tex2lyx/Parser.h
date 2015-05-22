@@ -125,7 +125,7 @@ public:
 
 	iparserdocstream(idocstream & is) : is_(is) {}
 
-#if (__cplusplus > 199711L)
+#ifdef LYX_USE_CXX11
 	/// Like std::istream::operator bool()
 	/// Do not convert is_ implicitly to bool, since that is forbidden in C++11.
 	explicit operator bool() const { return s_.empty() ? !is_.fail() : true; }
