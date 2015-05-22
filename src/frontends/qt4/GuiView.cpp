@@ -245,7 +245,7 @@ private:
 	}
 
 	QSize splashSize() const {
-		return 	QSize(
+		return QSize(
 			static_cast<unsigned int>(width_ * pixelRatio()),
 			static_cast<unsigned int>(height_ * pixelRatio()));
 	}
