@@ -236,24 +236,18 @@ private:
 #endif
 	}
 
-	qreal fontSize() {
+	qreal fontSize() const {
 		return toqstr(lyxrc.font_sizes[FONT_SIZE_LARGE]).toDouble();
 	}
 
-	QPointF textPosition() {
-		return QPointF(splashWidth()/2 - 16, splashHeigth() - 40);
+	QPointF textPosition() const {
+		return QPointF(width_/2 - 16, height_ - 40);
 	}
 
-	QSize splashSize() {
-		return 	QSize(width_ * pixelRatio(),height_ * pixelRatio());
-	}
-
-	double splashWidth() {
-		return splash_.width()/splashPixelRatio();
-	}
-
-	double splashHeigth() {
-		return splash_.height()/splashPixelRatio();
+	QSize splashSize() const {
+		return 	QSize(
+			static_cast<unsigned int>(width_ * pixelRatio()),
+			static_cast<unsigned int>(height_ * pixelRatio()));
 	}
 
 	/// Ratio between physical pixels and device-independent pixels of splash image
