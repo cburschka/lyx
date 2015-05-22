@@ -396,6 +396,7 @@ void Undo::Private::doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack,
 	// We will store in otherstack the part of the document under 'undo'
 	DocIterator cell_dit = undo.cell.asDocIterator(&buffer_);
 
+	LATTEST(undo.end <= cell_dit.lastpit());
 	doRecordUndo(ATOMIC_UNDO, cell_dit,
 		undo.from, cell_dit.lastpit() - undo.end, undo.cur_after,
 		undo.isFullBuffer, otherstack);
