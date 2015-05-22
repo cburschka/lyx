@@ -74,24 +74,24 @@ End
 
 
 Style Verbatim
-	Category		MainText
-	LatexType		Environment
-	LatexName		verbatim
-	NextNoIndent		1
-	ParbreakIsNewline	1
-	FreeSpacing		1
-	PassThru		1
-	KeepEmpty		1
-	NewLine			0
-	TopSep			0.7
-	BottomSep		0.7
-	Align			Block
-	AlignPossible		Block
-	LabelType		No_Label
+	Category              MainText
+	LatexType             Environment
+	LatexName             verbatim
+	NextNoIndent          1
+	ParbreakIsNewline	  1
+	FreeSpacing           1
+	PassThru              1
+	KeepEmpty             1
+	NewLine               0
+	TopSep                0.7
+	BottomSep             0.7
+	Align                 Block
+	AlignPossible         Block
+	LabelType             No_Label
 	Font
-	  Family		Typewriter
+	  Family              Typewriter
 	EndFont
-	HTMLTag			<pre></pre>
-	HTMLItem		p
+	HTMLTag               <pre></pre>
+	HTMLItem              p
 End
 

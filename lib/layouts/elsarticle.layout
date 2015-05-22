@@ -6,40 +6,40 @@
 
 Format 54
 
-Columns			1
-Sides			1
-SecNumDepth		3
-TocDepth		3
+Columns				1
+Sides				1
+SecNumDepth			3
+TocDepth			3
 DefaultStyle		Standard
 Provides natbib		1
 Provides refstyle	1
 
 ClassOptions
-	FontSize	10|11|12
+	FontSize		10|11|12
 end
 
 
 # This is just to show how to declare the default font.
 # The defaults are exactly those shown here.
 DefaultFont
-	Family		Roman
-	Series		Medium
-	Shape		Up
-	Size		Normal
-	Color		None
+	Family			Roman
+	Series			Medium
+	Shape			Up
+	Size			Normal
+	Color			None
 EndFont
 
 
 Style Standard
-	Category	MainText
-	Margin		Static
-	LatexType	Paragraph
-	LatexName	dummy
-	ParIndent	MM
-	ParSkip		0.4
-	Align		Block
+	Category		MainText
+	Margin			Static
+	LatexType		Paragraph
+	LatexName		dummy
+	ParIndent		MM
+	ParSkip			0.4
+	Align			Block
 	AlignPossible	Block, Left, Right, Center
-	LabelType	No_Label
+	LabelType		No_Label
 End
 
 Input stdcounters.inc
@@ -49,282 +49,282 @@ Input stdsections.inc
 Input stdstarsections.inc
 Input stdlayouts.inc
 
-NoStyle Chapter
-NoCounter chapter
-NoStyle Chapter*
+NoStyle				Chapter
+NoCounter			chapter
+NoStyle				Chapter*
 
 
 Style BeginFrontmatter
-	Margin	Dynamic
-	LatexType	Command
-	LatexName	begin{frontmatter}
-	Category	FrontMatter
-	KeepEmpty	1
-	ParSkip		0.4
-	Align		Block
-	LabelSep	xx
-	LabelType	Static
-	LabelString	"Begin frontmatter"
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		begin{frontmatter}
+	Category		FrontMatter
+	KeepEmpty		1
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Begin frontmatter"
 	LabelFont
-	  Series	Bold
-	  Color		Green
+	  Series		Bold
+	  Color			Green
 	EndFont
 End
 
 
 Style EndFrontmatter
-	CopyStyle	BeginFrontmatter
-	LatexName	end{frontmatter}
-	LabelString	"End frontmatter"
+	CopyStyle		BeginFrontmatter
+	LatexName		end{frontmatter}
+	LabelString		"End frontmatter"
 End
 
 
 Style Title
-	Margin		Static
-	LatexType	Command
-	LatexName	title
-	Category	FrontMatter
-	InTitle		0
-	ResetArgs	1
-	ParSkip		0.4
-	ItemSep		0
-	TopSep		0
-	BottomSep	1
-	ParSep		1
-	Align		Center
-	LabelType	No_Label
+	Margin			Static
+	LatexType		Command
+	LatexName		title
+	Category		FrontMatter
+	InTitle			0
+	ResetArgs		1
+	ParSkip			0.4
+	ItemSep			0
+	TopSep			0
+	BottomSep		1
+	ParSep			1
+	Align			Center
+	LabelType		No_Label
 	Font
-	  Size		Largest
+	  Size			Largest
 	EndFont
-	HTMLTitle	true
+	HTMLTitle		true
 End
 
 
 InsetLayout "Flex:Titlenotemark"
-	LyxType		custom
-	LatexType	command
-	ForcePlain	1
-	LatexName	tnoteref
-	LabelString	"Titlenote mark"
+	LyxType			custom
+	LatexType		command
+	ForcePlain		1
+	LatexName		tnoteref
+	LabelString		"Titlenote mark"
 	Font
-	  Color		foreground
-	  Size		Small
-	  Family	Roman
-	  Shape		Up
-	  Series	Medium
-	  Misc		No_Emph
-	  Misc		No_Noun
-	  Misc		No_Bar
+	  Color			foreground
+	  Size			Small
+	  Family		Roman
+	  Shape			Up
+	  Series		Medium
+	  Misc			No_Emph
+	  Misc			No_Noun
+	  Misc			No_Bar
 	EndFont
 	LabelFont
-	  Color		green
-	  Size		Small
+	  Color			green
+	  Size			Small
 	EndFont
 End
 
 
 Style "Title footnote"
-	Margin		Dynamic
-	LatexType	Command
-	LatexName	tnotetext
-	Category	FrontMatter
-	InTitle		0
+	Margin			Dynamic
+	LatexType		Command
+	LatexName		tnotetext
+	Category		FrontMatter
+	InTitle			0
 	Argument 1
 	  LabelString	"Footnote Label"
-	  Tooltip	"Label you refer to in the title"
+	  Tooltip		"Label you refer to in the title"
 	EndArgument
-	ParSkip		0.4
-	BottomSep	0.5
-	Align		Left
-	LabelSep	xx
-	LabelType	Static
-	LabelString	"Title footnote:"
+	ParSkip			0.4
+	BottomSep		0.5
+	Align			Left
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Title footnote:"
 	LabelFont
-	  Color		Green
-	  Series	Bold
+	  Color			Green
+	  Series		Bold
 	EndFont
 End
 
 
 Style Author
-	Margin		Static
-	LatexType	Command
-	Category	FrontMatter
-	InTitle		0
+	Margin			Static
+	LatexType		Command
+	Category		FrontMatter
+	InTitle			0
 	Argument 1
 	  LabelString	"Author Label"
-	  Tooltip	"Label you will reference in the address"
+	  Tooltip		"Label you will reference in the address"
 	EndArgument
-	LatexName	author
-	LabelSep	xxx
-	ParSkip		0.4
-	TopSep		1.3
-	BottomSep	0.7
-	ParSep		0.7
-	Align		Center
-	LabelType	No_Label
+	LatexName		author
+	LabelSep		xxx
+	ParSkip			0.4
+	TopSep			1.3
+	BottomSep		0.7
+	ParSep			0.7
+	Align			Center
+	LabelType		No_Label
 	Font
-	  Size		Large
+	  Size			Large
 	EndFont
 End
 
 
 InsetLayout "Flex:Authormark"
-	LyxType		custom
-	LatexType	command
-	ForcePlain	1
-	LatexName	fnref
-	LabelString	"Author mark"
+	LyxType			custom
+	LatexType		command
+	ForcePlain		1
+	LatexName		fnref
+	LabelString		"Author mark"
 	Font
-	  Color		foreground
-	  Size		Small
-	  Family	Roman
-	  Shape		Up
-	  Series	Medium
-	  Misc		No_Emph
-	  Misc		No_Noun
-	  Misc		No_Bar
+	  Color			foreground
+	  Size			Small
+	  Family		Roman
+	  Shape			Up
+	  Series		Medium
+	  Misc			No_Emph
+	  Misc			No_Noun
+	  Misc			No_Bar
 	EndFont
 	LabelFont
-	  Color		latex
-	  Size		Small
+	  Color			latex
+	  Size			Small
 	EndFont
 End
 
 
 Style "Author footnote"
-	CopyStyle	"Title footnote"
-	LatexName	fntext
-	LabelString	"Author footnote:"
+	CopyStyle		"Title footnote"
+	LatexName		fntext
+	LabelString		"Author footnote:"
 	Argument 1
 	  LabelString	"Author Footnote Label"
-	  Tooltip	"Label you refer to for an author"
+	  Tooltip		"Label you refer to for an author"
 	EndArgument
 End
 
 
 InsetLayout "Flex:CorAuthormark"
-	CopyStyle	"Flex:Authormark"
-	LatexName	corref
-	LabelString	"CorAuthor mark"
+	CopyStyle		"Flex:Authormark"
+	LatexName		corref
+	LabelString		"CorAuthor mark"
 	LabelFont
-	  Color		blue
+	  Color			blue
 	EndFont
 End
 
 
 Style "Corresponding author"
-	CopyStyle	"Author footnote"
-	LatexName	cortext
-	LabelString	"Corresponding author text:"
+	CopyStyle		"Author footnote"
+	LatexName		cortext
+	LabelString		"Corresponding author text:"
 End
 
 
 Style Address
-	Margin		Static
-	LatexType	Command
-	Category	FrontMatter
-	LatexName	address
-	InTitle		0
+	Margin			Static
+	LatexType		Command
+	Category		FrontMatter
+	LatexName		address
+	InTitle			0
 	Argument 1
 	  LabelString	"Address Label"
-	  Tooltip	"Label of the author you refer to"
+	  Tooltip		"Label of the author you refer to"
 	EndArgument
-	ParSkip		0.4
-	Align		Center
+	ParSkip			0.4
+	Align			Center
 	AlignPossible	Left, Right
-	LabelType	No_Label
+	LabelType		No_Label
 	Font
-	  Shape		Italic
+	  Shape			Italic
 	EndFont
 End
 
 
 Style Email
-	CopyStyle	Address
-	LatexName	ead
+	CopyStyle		Address
+	LatexName		ead
 	AlignPossible	Block
 	Argument 1
 	  LabelString	"Internet"
-	  Tooltip	"If content is 'url', email becomes an Internet address"
+	  Tooltip		"If content is 'url', email becomes an Internet address"
 	EndArgument
 	Font
-	  Shape		Up
+	  Shape			Up
 	EndFont
 End
 
 
 Style Abstract
-	Margin		Static
-	LatexType	Environment
-	LatexName	abstract
-	Category	FrontMatter
-	InTitle		0
+	Margin			Static
+	LatexType		Environment
+	LatexName		abstract
+	Category		FrontMatter
+	InTitle			0
 	NextNoIndent	1
-	LeftMargin	MMM
-	RightMargin	MMM
-	ParIndent	MM
-	ItemSep		0
-	TopSep		0.7
-	BottomSep	0.7
-	ParSep		0
-	Align		Block
+	LeftMargin		MMM
+	RightMargin		MMM
+	ParIndent		MM
+	ItemSep			0
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0
+	Align			Block
 	AlignPossible	Block
-	LabelType	Centered
-	LabelString	"Abstract"
+	LabelType		Centered
+	LabelString		"Abstract"
 	LabelBottomSep	0.5
 	Font
-	  Size		Small
+	  Size			Small
 	EndFont
 	LabelFont
-	  Series	Bold
-	  Size		Large
+	  Series		Bold
+	  Size			Large
 	EndFont
 End
 
 
 Style Keywords
-	Margin		Dynamic
-	LatexType	Environment
-	LatexName	keyword
-	Category	FrontMatter
-	InTitle		0
-	Align		Left
+	Margin			Dynamic
+	LatexType		Environment
+	LatexName		keyword
+	Category		FrontMatter
+	InTitle			0
+	Align			Left
 	NextNoIndent	1
-	BottomSep	0.5
-	ParSkip		0.4
-	Align		Block
-	LabelSep	xx
-	LabelType	Static
-	LabelString	"Keywords:"
+	BottomSep		0.5
+	ParSkip			0.4
+	Align			Block
+	LabelSep		xx
+	LabelType		Static
+	LabelString		"Keywords:"
 	LabelFont
-	  Color		Green
-	  Series	Bold
+	  Color			Green
+	  Series		Bold
 	EndFont		
 End
 
 
 Style Bibliography
-	Margin		First_Dynamic
-	LatexType	Bib_Environment
-	LatexName	thebibliography
-	Category	BackMatter
+	Margin			First_Dynamic
+	LatexType		Bib_Environment
+	LatexName		thebibliography
+	Category		BackMatter
 	NextNoIndent	1
 	ToggleIndent	Never
-	LeftMargin	MM
-	ParSkip		0.4
-	ItemSep		0
-	TopSep		0.7
-	BottomSep	0.7
-	ParSep		0.5
-	Align		Block
+	LeftMargin		MM
+	ParSkip			0.4
+	ItemSep			0
+	TopSep			0.7
+	BottomSep		0.7
+	ParSep			0.5
+	Align			Block
 	AlignPossible	Block, Left
-	LabelType	Bibliography
-	LabelString	"References"
+	LabelType		Bibliography
+	LabelString		"References"
 	LabelBottomSep	1.2
 	LabelFont
-	  Series	Bold
-	  Size		Larger
+	  Series		Bold
+	  Size			Larger
 	EndFont
 End
 
