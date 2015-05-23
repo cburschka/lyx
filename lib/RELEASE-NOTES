@@ -14,7 +14,14 @@
 
 !!!The following pref variables were added in 2.2:
 
-
+* \save_origin:
+  This variable was introduced to allow saving the document directory
+  path in the document. If allowed, LyX will be able to locate all
+  included files even when the document is manually moved/copied to
+  a different location. If a valid \origin tag is present and the
+  document was actually moved, the path of all included files is
+  updated relative to the new location and the new origin will be
+  recorded when saving again the document.
 
 !!!The following pref variables were changed in 2.2:
 
