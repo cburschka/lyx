@@ -87,12 +87,42 @@ Float
 	GuiName               Algorithm
 	Placement             tbp
 	AllowedPlacement      !htbp
+	AllowsSideways        0
+	AllowsWide            0
 	Extension             loa
 	NumberWithin          none
 	Style                 none
 	IsPredefined          true
 	UsesFloatPkg          false
 	RefPrefix             alg
+End
+
+Float
+	Type                  figure
+	GuiName               Figure
+	AllowedPlacement      !htbp
+	Extension             lof
+	NumberWithin          none
+	Style                 plain
+	ListName              "List of Figures"
+	IsPredefined          true
+	UsesFloatPkg          false
+	ListCommand           listoffigures
+	RefPrefix             fig
+End
+
+Float
+	Type                  table
+	GuiName               Table
+	AllowedPlacement      !htbp
+	Extension             lot
+	NumberWithin          none
+	Style                 plain
+	ListName              "List of Tables"
+	IsPredefined          true
+	UsesFloatPkg          false
+	ListCommand           listoftables
+	RefPrefix             tab
 End
 
 InsetLayout "Flex:Giant"
