@@ -2628,6 +2628,8 @@ PrefDocHandling::PrefDocHandling(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(saveCompressedCB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
+	connect(saveOriginCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 }
 
 
@@ -2639,6 +2641,7 @@ void PrefDocHandling::applyRC(LyXRC & rc) const
 	rc.autosave = autoSaveCB->isChecked() ?  autoSaveSB->value() * 60 : 0;
 	rc.make_backup = backupCB->isChecked();
 	rc.save_compressed = saveCompressedCB->isChecked();
+	rc.save_origin = saveOriginCB->isChecked();
 	rc.open_buffers_in_tabs = openDocumentsInTabsCB->isChecked();
 	rc.single_instance = singleInstanceCB->isChecked();
 	rc.single_close_tab_button = singleCloseTabButtonCB->isChecked();
@@ -2674,6 +2677,7 @@ void PrefDocHandling::updateRC(LyXRC const & rc)
 	autoSaveSB->setEnabled(autosave);
 	backupCB->setChecked(rc.make_backup);
 	saveCompressedCB->setChecked(rc.save_compressed);
+	saveOriginCB->setChecked(rc.save_origin);
 	openDocumentsInTabsCB->setChecked(rc.open_buffers_in_tabs);
 	singleInstanceCB->setChecked(rc.single_instance && !rc.lyxpipes.empty());
 	singleInstanceCB->setEnabled(!rc.lyxpipes.empty());

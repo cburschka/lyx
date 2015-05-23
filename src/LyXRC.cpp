@@ -172,6 +172,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\print_to_printer", LyXRC::RC_PRINTTOPRINTER },
 	{ "\\printer", LyXRC::RC_PRINTER },
 	{ "\\save_compressed", LyXRC::RC_SAVE_COMPRESSED },
+	{ "\\save_origin", LyXRC::RC_SAVE_ORIGIN },
 	{ "\\screen_dpi", LyXRC::RC_SCREEN_DPI },
 	{ "\\screen_font_roman", LyXRC::RC_SCREEN_FONT_ROMAN },
 	{ "\\screen_font_roman_foundry", LyXRC::RC_SCREEN_FONT_ROMAN_FOUNDRY },
@@ -295,6 +296,7 @@ void LyXRC::setDefaults()
 	load_session = false;
 	make_backup = true;
 	save_compressed = false;
+	save_origin = false;
 	backupdir_path.erase();
 	display_graphics = true;
 	// Spellchecker settings:
@@ -986,6 +988,9 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			break;
 		case RC_SAVE_COMPRESSED:
 			lexrc >> save_compressed;
+			break;
+		case RC_SAVE_ORIGIN:
+			lexrc >> save_origin;
 			break;
 		case RC_BACKUPDIR_PATH:
 			if (lexrc.next()) {
@@ -2424,6 +2429,13 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_SAVE_ORIGIN:
+		if (ignore_system_lyxrc ||
+		    save_origin != system_lyxrc.save_origin) {
+			os << "\\save_origin " << convert<string>(save_origin) << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
 	case RC_BACKUPDIR_PATH:
 		if (ignore_system_lyxrc ||
 		    backupdir_path != system_lyxrc.backupdir_path) {
@@ -3022,6 +3034,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_PRINT_ADAPTOUTPUT:
 	case LyXRC::RC_PRINT_COMMAND:
 	case LyXRC::RC_SAVE_COMPRESSED:
+	case LyXRC::RC_SAVE_ORIGIN:
 	case LyXRC::RC_SCREEN_DPI:
 	case LyXRC::RC_SCREEN_FONT_ROMAN:
 	case LyXRC::RC_SCREEN_FONT_ROMAN_FOUNDRY:

@@ -148,6 +148,7 @@ public:
 		RC_PRINT_ADAPTOUTPUT,
 		RC_PRINT_COMMAND,
 		RC_SAVE_COMPRESSED,
+		RC_SAVE_ORIGIN,
 		RC_SCREEN_DPI,
 		RC_SCREEN_FONT_ROMAN,
 		RC_SCREEN_FONT_ROMAN_FOUNDRY,
@@ -320,6 +321,8 @@ public:
 	bool load_session;
 	/// do we save new documents as compressed by default
 	bool save_compressed;
+	/// whether or not to save the document dir in the file
+	bool save_origin;
 	/// shall a backup file be created
 	bool make_backup;
 	/// A directory for storing backup files

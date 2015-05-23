@@ -149,6 +149,16 @@
         </property>
        </widget>
       </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="saveOriginCB">
+        <property name="toolTip">
+         <string>If this is checked, the document directory path will be saved in the document.&#x0a;This allows moving the document elsewhere and still finding the included files.</string>
+        </property>
+        <property name="text">
+         <string>Save the &amp;document directory path</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -261,6 +271,7 @@
   <tabstop>autoSaveCB</tabstop>
   <tabstop>autoSaveSB</tabstop>
   <tabstop>saveCompressedCB</tabstop>
+  <tabstop>saveOriginCB</tabstop>
  </tabstops>
  <includes>
   <include location="local">qt_i18n.h</include>

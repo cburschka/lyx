@@ -983,7 +983,8 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	// Prints out the buffer info into the .lyx file given by file
 
 	// the document directory
-	os << "\\origin " << buf->filePath() << '\n';
+	os << "\\origin "
+	   << (lyxrc.save_origin ? buf->filePath() : "unavailable") << '\n';
 
 	// the textclass
 	os << "\\textclass " << buf->includedFilePath(addName(buf->layoutPos(),
