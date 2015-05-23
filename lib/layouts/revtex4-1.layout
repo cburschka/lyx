@@ -253,6 +253,22 @@ End
 
 
 Float
+	Type			algorithm
+	GuiName			Algorithm
+	Placement		H
+	AllowedPlacement none
+	AllowsSideways	0
+	Extension		loa
+	NumberWithin	none
+	Style			ruled
+	ListName		"List of Algorithms"
+	IsPredefined	false
+	UsesFloatPkg	true
+	RefPrefix		alg
+End
+
+
+Float
 	Extension		lov
 	GuiName			Video
 	IsPredefined	true
