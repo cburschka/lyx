@@ -165,6 +165,7 @@ Float
 	Placement		tbp
 	Extension		los
 	NumberWithin	none
+	AllowsSideways	0
 	Style			plain
 	ListName		"List of Schemes"
 	IsPredefined	true
@@ -186,6 +187,7 @@ Float
 	Placement		tbp
 	Extension		loc
 	NumberWithin	none
+	AllowsSideways	0
 	Style			plain
 	ListName		"List of Charts"
 	IsPredefined	true
@@ -209,6 +211,7 @@ Float
 	Placement		tbp
 	Extension		loh
 	NumberWithin	none
+	AllowsSideways	0
 	Style			plain
 	ListName		"List of Graphs[[mathematical]]"
 	IsPredefined	true
