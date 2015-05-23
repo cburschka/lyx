@@ -204,6 +204,8 @@ def lyx2latex(document, lines):
                   line = "''"
               else:
                   line = "'"
+      elif line.startswith("\\begin_inset Newline newline"):
+          line = "\\\\ "
       elif line.startswith("\\begin_inset space"):
           line = line[18:].strip()
           if line.startswith("\\hspace"):
