@@ -258,6 +258,7 @@ Float
 	Placement		H
 	AllowedPlacement none
 	AllowsSideways	0
+	AllowsWide		0
 	Extension		loa
 	NumberWithin	none
 	Style			ruled
@@ -276,6 +277,7 @@ Float
 	ListName		"List of Videos"
 	NumberWithin	none
 	Placement		tbp
+	AllowsSideways	0
 	Style			plain
 	Type			video
 	UsesFloatPkg	false
