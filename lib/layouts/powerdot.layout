@@ -502,8 +502,9 @@ End
 Float
 	Type                  table
 	GuiName               Table
-	Placement             tbp
 	AllowedPlacement      H
+	AllowsSideways        0
+	AllowsWide            0
 	Extension             lot
 	NumberWithin          none
 	Style                 plain
@@ -518,8 +519,9 @@ End
 Float
 	Type                  figure
 	GuiName               Figure
-	Placement             tbp
 	AllowedPlacement      H
+	AllowsSideways        0
+	AllowsWide            0
 	Extension             lof
 	NumberWithin          none
 	Style                 plain
@@ -534,8 +536,9 @@ End
 Float
 	Type                  algorithm
 	GuiName               Algorithm
-	Placement             tbp
 	AllowedPlacement      H
+	AllowsSideways        0
+	AllowsWide            0
 	Extension             loa
 	NumberWithin          none
 	Style                 ruled
