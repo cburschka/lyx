@@ -73,6 +73,10 @@
 # Incremented to format 17, by lasgouttes
 #  Remove rtl_support rc.
 
+# Incremented to format 18, by ef
+#   Add option to allow saving the document directory
+#   No conversion necessary.
+
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
 
@@ -355,5 +359,6 @@ conversions = [
 	[ 14, []],
 	[ 15, []],
 	[ 16, [remove_force_paint_single_char]],
-	[ 17, [remove_rtl]]
+	[ 17, [remove_rtl]],
+	[ 18, []]
 ]
