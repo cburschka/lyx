@@ -322,9 +322,11 @@ doc_files = \
 install-data-hook:
 	for i in $(doc_files); \
 	do \
-		if $(EGREP) -q "LYX_DIR_VER|LYX_USERDIR_VER" "$(DESTDIR)$(docdir)/$$i"; then \
+		if $(EGREP) -q "LYX_DIR_VER|LYX_USERDIR_VER|^\\origin " "$(DESTDIR)$(docdir)/$$i"; then \
+			origin=`dirname "$(docdir)/$$i"`/; \
 			sed -e "s/LYX_DIR_VER/$(LYX_DIR_VER)/g" \
 			    -e "s/LYX_USERDIR_VER/$(LYX_USERDIR_VER)/g" \
+			    -e "s|^\\\\origin .*|\\\\origin $$origin|" \
 				"$(DESTDIR)$(docdir)/$$i" > "$(DESTDIR)$(docdir)/$$i.tmp"; \
 			mv -f "$(DESTDIR)$(docdir)/$$i.tmp" "$(DESTDIR)$(docdir)/$$i"; \
 			chmod 644 "$(DESTDIR)$(docdir)/$$i"; \
