@@ -360,7 +360,7 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 	string tmptype = params_.type;
 	if (params_.sideways && floats.allowsSideways(params_.type))
 		tmptype = "sideways" + params_.type;
-	if (params_.wide && floats.allowsSideways(params_.type)
+	if (params_.wide && floats.allowsWide(params_.type)
 		&& (!params_.sideways ||
 		     params_.type == "figure" ||
 		     params_.type == "table"))
