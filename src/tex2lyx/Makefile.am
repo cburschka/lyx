@@ -34,6 +34,7 @@ TEST_FILES = \
 	test/foo.eps \
 	test/foo.png \
 	test/test-insets.tex \
+	test/test-insets-basic.lyx \
 	test/test.ltx \
 	test/test-memoir.tex \
 	test/test-modules.tex \
@@ -54,6 +55,7 @@ TEST_RESULTS = \
 	test/Dummy Document.lyx.lyx \
 	test/Dummy~Document.lyx.lyx \
 	test/test-insets.lyx.lyx \
+	test/test-insets-basic.lyx.lyx \
 	test/test.lyx.lyx \
 	test/test-memoir.lyx.lyx \
 	test/test-modules.lyx.lyx \

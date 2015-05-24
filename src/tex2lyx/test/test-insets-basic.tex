@@ -1,0 +1,746 @@
+%% LyX trick_preamble_code_into_believing_that_this_was_created_by_lyx created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+
+\setlength{\parindent}{3mm}
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage[numbers]{natbib}
+\usepackage{nomencl}
+% the following is useful when we have the old nomencl.sty package
+\providecommand{\printnomenclature}{\printglossary}
+\providecommand{\makenomenclature}{\makeglossary}
+\makenomenclature
+\usepackage{varioref}
+\usepackage{splitidx}
+\makeindex
+\newindex[Index]{idx}
+\newindex[new]{new}
+\newindex{test}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{xargs}
+\usepackage{subscript}
+\usepackage{rotating}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{dcolumn}
+\usepackage{pdfpages}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage[ps,mover]{lyxskak}
+\usepackage{tipa}
+\usepackage{tipx}
+\usepackage{tone}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
+\newcommand{\lyxline}[1][1pt]{%
+  \par\noindent%
+  \rule[.5ex]{\linewidth}{#1}\par}
+
+\newcommand{\lyxarrow}{\leavevmode\,$\triangleright$\,\allowbreak}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+% Load refstyle before prettyref so that prettyref wins.
+% The real refstyle tests are in test-refstyle-theorems.tex.
+\usepackage{refstyle}
+\AtBeginDocument{\providecommand\secref[1]{\ref{sec:#1}}}
+\usepackage{prettyref}
+
+\def\mycommand{\textquestiondown}
+
+\begin{document}
+
+\title{Title}
+
+\date %stupid stuff
+{two days ago}
+
+\maketitle
+
+\tableofcontents
+\lstlistoflistings
+
+\noindent This paragraph is not indented.
+
+\section{References\index{References}}
+
+Let's start with simple things: a label~\label{lab:test} and a
+reference~\ref{lab:test}; note that I have tested ``unbreakable
+space'' without warning (and worse than that, I just tested english
+quotes too...).
+
+Of course there are other kind of references, like page
+reference~\pageref{lab:test}, but also equation
+reference~\eqref{lab:test} (from amsmath package), or varioref's
+equivalents~\vref{lab:test} and~\vpageref{lab:test}, without
+forgetting pretty references like~\prettyref{lab:test} as well as textual
+references like~\nameref{lab:test}.
+The command \secref{lab:test} will be parsed in ERT, since LyX
+does not support refstyle and prettyref natively at the same time.
+
+\section{Cites\index{Cites}}
+
+Let's start with simple things: a \textbackslash{}cite: \cite[after]{article-crossref}
+and two \textbackslash{}cites: \cite[after]{whole-set,article-crossref}
+
+Now the natbib things:
+
+\textbackslash{}citet: \citet[before][after]{article-crossref} \textbackslash{}citet{*}:
+\citet*[before][after]{article-crossref} \textbackslash{}Citet: \Citet[before][after]{article-crossref}
+\textbackslash{}Citet{*}: \Citet*[before][after]{article-crossref}
+
+\textbackslash{}citep: \citep[before][after]{article-crossref} \textbackslash{}citep{*}:
+\citep*[before][after]{article-crossref} \textbackslash{}Citep: \Citep[before][after]{article-crossref}
+\textbackslash{}Citep{*}: \Citep*[before][after]{article-crossref}
+
+\textbackslash{}citealt: \citealt[before][after]{article-crossref}
+\textbackslash{}citealt{*}: \citealt*[before][after]{article-crossref}
+\textbackslash{}Citealt: \Citealt[before][after]{article-crossref}
+\textbackslash{}Citealt{*}: \Citealt*[before][after]{article-crossref}
+
+\textbackslash{}citealp: \citealp[before][after]{article-crossref}
+\textbackslash{}citealp{*}: \citealp*[before][after]{article-crossref}
+\textbackslash{}Citealp: \Citep[before][after]{article-crossref}
+\textbackslash{}Citealp{*}: \Citealp*[before][after]{article-crossref}
+
+\textbackslash{}citeauthor: \citeauthor[before][after]{article-crossref}
+\textbackslash{}citeauthor{*}: \citeauthor*[before][after]{article-crossref}
+\textbackslash{}Citeauthor: \Citeauthor[before][after]{article-crossref}
+\textbackslash{}Citeauthor{*}: \Citeauthor*[before][after]{article-crossref}
+
+\textbackslash{}citeyear: \citeyear[before][after]{article-crossref}
+
+\textbackslash{}citeyearpar: \citeyearpar[before][after]{article-crossref} 
+
+\textbackslash{}nocite: \nocite{article-crossref}
+
+% Remove duplicate call of \bibliography since LaTeX throws an error.
+%\bibliographystyle{unsrt}
+% \bibliography{xampl}
+
+With \textbackslash{}nocite\{{*}\}:
+\bibliographystyle{unsrt}
+\nocite{*}
+\bibliography{xampl}
+
+From bug 7306:
+\citet{gur+04} have demonstrated that authors should not have umlauts
+in their names. It's OK to use them in the man\"{u}script, though.
+\begin{thebibliography}{References}
+\bibitem[M\"{o}stl et~al.(2010)]{Mostl2010} Gürkan, M.~A., Freitag,
+M., \& Rasio, F.~A. 2004, ApJ, 604, 632
+\bibitem[{{G\"{u}rkan et~al.}(2004)}]{gur+04} Gürkan, M.~A., Freitag,
+M., \& Rasio, F.~A. 2004, ApJ, 604, 632\end{thebibliography}
+
+
+\section{Input files\index{Input files}}
+
+We can input files too, like this \input{DummyDocument}, or with the include
+variant (tests quoting as well):
+\include{\string"Dummy\space Document\string".tex}
+\include{\string"Dummy Document\string".tex}
+\include{\string"Dummy\string~Document\string"}
+\include{\string"Dummy\string~Document\string".tex}
+
+We can also import PDF pages:
+
+\includepdf[pages=-,angle=22,origin=Bl,width=5cm,height=40mm,keepaspectratio]{../../../lib/examples/beamer-icsi-logo}
+
+If you prefer verbatim input, you can choose
+between~\verbatiminput{DummyDocument.tex} or~\verbatiminput*{DummyDocument.tex}.
+
+
+\section{URLs and Hyperlinks\index{URL}\nomenclature[www]{URL}{uniform resource locator}}
+
+An URL: \url{http://www.lyx.org} \nomenclature{URL2}{uniform resource locator}
+
+An URL with strange characters: \url{http://www.lyx.org/percent%dollar$}
+
+link:\href{http://www.test.test}{www.test.test}
+
+link2:\href{http://www.test.test}{http://www.test.test}
+
+mail:\href{mailto:www.test.test}{name}
+
+file:\href{file:www.test.test}{www.test.test}
+
+ftp:\href{ftp://www.test.test}{ftp://www.test.test}
+
+ftp2:\href{ftp://www.test.test}{www.test.test}
+
+parser test (stupid, but valid):\href{http://www.test.test}{\}}
+
+parser test (escaped):\href{http://www.test.test}{a brace \} and another one \{ and something}
+
+
+\section{Lists\index{Lists}}
+
+\listoffigures
+\listoftables
+
+
+\section{Listings}
+
+Inline: \lstinline[language={C++},keywordstyle={\color{green}}]!int a=5;!\\
+Float:
+
+\begin{lstlisting}[caption={Example Listing float},label={lst:Example-Listing},language=Python]
+# Example listing float
+def func(param):
+    'this is a python function'
+    pass
+\end{lstlisting}
+
+Here is an example listing with left line numbering, step ``3'',
+language ``Python'', options ``Extended character table'' and
+``Space~as~symbol'', range lines 3\,-\,8:
+
+\begin{lstlisting}[extendedchars=true,firstline=3,language=Python,lastline=8,numbers=left,showspaces=true,stepnumber=3]
+def func(param):
+    'this is a python function'
+    pass
+def func(param):
+'This is a German word: Tschüß'
+pass
+def func(param):
+'this is a python function'
+pass
+\end{lstlisting}
+
+Special cases:
+\begin{lstlisting}[abovecaptionskip=2em,basicstyle={\large\ttfamily},breaklines=true,extendedchars=true,firstline=2,float=h,language={[R/3 3.1]ABAP},lastline=5,numbers=left,numberstyle={\scriptsize},showspaces=true,showstringspaces=false,stepnumber=3,tabsize=4]
+hello
+\end{lstlisting}
+
+\lstinline[language=TeX]!\begin{centering} hello!
+
+
+\section{Graphics\index{Graphics}}
+
+There is also some basic support for graphics, in the form
+\includegraphics{foo.eps}, or the slightly more elaborate
+\includegraphics[bb=10bp 0bp 96bp 96bp,clip,height=1cm, width=1cm]{foo.eps}.
+
+\section{Tables\index{Tables}}
+
+The following example is stolen from the longtable documentation.
+Since tex2lyx does not understand the special verbatim code that
+was used in the original some lines have been rewritten using
+\textbackslash textbackslash etc.
+\let\package\textsf
+\let\env\textsf
+\let\code\texttt
+\providecommand\finalclearpage{\clearpage}
+
+\begin{longtable}{@{*}r||p{1in}@{*}}
+KILLED & LINE!!!! \kill
+\caption
+[An optional table caption (used in the list of tables)]
+{A long table\label{long}}\\
+\hline\hline
+\multicolumn{2}{@{*}c@{*}}%
+     {This part appears at the top of the table}\\
+\textsc{First}&\textsc{Second}\\
+\hline\hline
+\endfirsthead
+\caption[]{(continued)}\\
+\hline\hline
+\multicolumn{2}{@{*}c@{*}}%
+      {This part appears at the top of every other page}\\
+\textbf{First}&\textbf{Second}\\
+\hline\hline
+\endhead
+\caption*
+{standard foot}\\
+\hline
+This goes at the&bottom.\\
+\hline
+\endfoot
+\caption*{(last foot)}\\
+\hline
+These lines will&appear\\
+in place of the & usual foot\\
+at the end& of the table\\
+\hline
+\endlastfoot
+\env{longtable}  columns  are specified& in the \\
+same way as  in the \env{tabular}& environment.\\
+\code{@\{*\}r||p\{1in\}@\{*\}}& in this case.\\
+Each row ends with a& \code{\textbackslash\textbackslash} command.\\
+The \code{\textbackslash\textbackslash} command  has an& optional\\
+argument, just as in& the\\
+ \env{tabular}&environment.\\[10pt]
+See the effect of \code{\textbackslash\textbackslash[10pt]}&?\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Also \code{\textbackslash hline} may be used,&  as in \env{tabular}.\\
+\hline
+That  was a \code{\textbackslash hline}&.\\
+\hline\hline
+That  was \code{\textbackslash hline\textbackslash hline}&.\\
+\multicolumn{2}{||c||}%
+{This is a \code{\textbackslash multicolumn\{2\}\{||c||\}}}\\
+If a  page break  occurs at a \code{\textbackslash hline} then& a line is drawn\\
+at the bottom of one  page  and at the& top of the next.\\
+\hline
+The \code{[t] [b] [c]} argument of \env{tabular}& can  not be used.\\
+The optional argument may be  one of& \code{[l] [r] [c]}\\
+to specify whether  the  table  should be& adjusted\\
+to the  left, right& or centrally.\\
+\hline\hline
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Some lines may take up a lot of space, like this: &
+    \raggedleft This last column is a ``p'' column so this
+    ``row'' of the table can take up several lines. Note however that
+    \TeX\ will  never break a page within such a row. Page breaks only
+    occur between rows of the table or at \code{\textbackslash hline} commands.
+    \tabularnewline
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+Lots of lines& like this.\\
+\hline
+Lots\footnote{This is a footnote.} of lines& like this.\\
+Lots   of   lines& like this\footnote{\env{longtable} takes special
+    precautions, so that footnotes may also be used in `p' columns.}\\
+\hline
+Lots of lines& like this.\\
+Lots of lines& like this.
+\end{longtable}
+
+From bug 7412 another example with more captions (can currently not produced in LyX):
+\begin{longtable}{|l|l|}
+\caption{A long table}
+\endfirsthead
+\caption{A long table -- continued}
+\endhead
+\multicolumn{2}{r}{{Continued on next page}}
+\tabularnewline
+\endfoot
+\endlastfoot
+\hline
+\multicolumn{1}{|c|}{Something} & \multicolumn{1}{c|}{Description}\tabularnewline
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline Lots of lines& like this.\\
+\hline
+\end{longtable}
+
+A table*:
+
+\begin{tabular*} % some comment
+{0.8\columnwidth}[b]{lr}
+two\\
+\begin{turn}{-50}lonely\end{turn}&\begin{sideways}lines\end{sideways}
+\end{tabular*}
+
+A booktabs table:
+
+\begin{table}[h]
+\caption{\label{tab:Special-booktabs-table}Special booktabs-table}
+
+
+\centering{}%
+\begin{tabular}{cccc}
+\toprule 
+System & Chip\,1 & \multicolumn{2}{c}{Chip\,2}\tabularnewline
+\cmidrule(r){2-2}\cmidrule(l){3-4}\morecmidrules \cmidrule{2-4}Detector
+thickness in \textmu{}m & 300 & 300 & 700\tabularnewline
+\midrule 
+Edge angle in \textdegree{} & 3.55 & 2.71 & 7.99\tabularnewline
+\addlinespace
+Spatial resolution in \textmu{}m & 4.26 & 10.17 & 10.56\tabularnewline
+\addlinespace
+MTF at $f_{\mathrm{max}}$ & 0.53 & 0.37 & 0.39\tabularnewline
+\midrule 
+\morecmidrules \cmidrule{3-4}LSF-spatial resolution &  &  & \tabularnewline
+in \textmu{}m & 129.7 & 52.75 & 50.78\tabularnewline
+in \% of pixel size & 76.3 & 95.9 & 92.3\tabularnewline
+\bottomrule
+\end{tabular}
+\end{table}
+
+A table using dcolumn:
+
+\begin{table} 
+\begin{tabular}{ccddd} 
+One&Two& 
+\multicolumn{1}{c}{\textrm{Three}}& 
+\multicolumn{1}{c}{\textrm{Four}}& 
+\multicolumn{1}{c}{\textrm{Five}}\\ 
+\hline 
+one&two&\mbox{three}&\mbox{four}&\mbox{five}\\ 
+He&2& 2.77234 & 45672. & 0.69 \\ 
+C\footnote{Some tables require footnotes.} 
+&C\footnote{Some tables need more than one footnote.} 
+& 12537.64 & 37.66345 & 86.37 \\ 
+\end{tabular} 
+\end{table}
+
+
+\section{Macros}
+
+LyX supports several kinds of macros:
+def \def\macroa#1{a #1 a}
+global def \global\def\macrob#1{b #1 b}
+long def \long\def\macroc#1{c #1 c}
+global long def \global\long\def\macrod#1{d #1 d}
+providecommand \providecommand{\macroe}[1]{e #1 e}
+providecommand* \providecommand*{\macrof}[1]{f #1 f}
+newcommand \newcommand{\macrog}[1]{g #1 g}
+renewcommand \renewcommand{\macrog}[1]{h #1 h}
+newcommand* \newcommand*{\macroi}[1]{i #1 i}
+renewcommand* \renewcommand*{\macroi}[1]{j #1 j}
+providecommandx \providecommandx{\macrok}[1]{k #1 k}
+providecommandx* \providecommandx*{\macrok}[1]{l #1 l}
+newcommandx \newcommandx{\macrom}[1]{m #1 m}
+renewcommandx \renewcommandx{\macrom}[1]{n #1 n}
+newcommandx* \newcommandx*{\macroo}[1]{o #1 o}
+renewcommandx* \renewcommandx*{\macroo}[1]{p #1 p}
+DeclareRobustCommand \DeclareRobustCommand{\macroq}[1]{q #1 q}
+DeclareRobustCommand* \DeclareRobustCommand*{\macror}[1]{r #1 r}
+DeclareRobustCommandx \DeclareRobustCommandx{\macros}[1]{s #1 s}
+DeclareRobustCommandx* \DeclareRobustCommandx*{\macrot}[1]{t #1 t}
+
+Now use them all:
+\macroa{x} \macrob{x} \macroc{x} \macrod{x} \macroe{x} \macrof{x} \macrog{x}
+\macroi{x} \macrok{x} \macrom{x} \macroo{x} \macroq{x} \macror{x}
+The following tow don't work, but they should???
+%\macros{x} \macrot{x}
+
+
+\section{Special formattings\index{Special formattings}}
+
+\subsection{LyX line}
+
+test
+
+{\tiny \lyxline{\tiny}}{\tiny \par}
+
+test {\Huge Test} {\tiny test} test
+
+\lyxline{\normalsize}
+
+test
+
+{\Huge \lyxline{\Huge}}{\Huge \par}
+
+
+\subsection{rules}
+
+test\rule[0.001\textwidth]{1\columnwidth}{0.05\textheight}
+
+test
+
+\rule[0.5ex]{1\columnwidth}{1pt}
+
+\noindent \rule{1ex}{0.5cc}test
+
+\textcolor{red}{\rule[-4ex]{5in}{1cm}}
+
+
+\subsection{Phantoms}
+
+test\phantom{Wow}test
+
+test\hphantom{\textcolor{green}{W}\textbf{ow}\textsuperscript{Wow}}test
+
+test\vphantom{Wow\textbackslash{}\&\%}test
+
+$test\hphantom{Wow}test$
+
+\[
+test\phantom{\textcolor{green}{W}\mathbf{ow}\textsuperscript{Wow}}test
+\]
+
+
+$test\vphantom{Wow\&\%}test$
+
+
+\subsection{TIPA}
+
+\begin{IPA}
+\textsubring{e}
+\r{e}
+\textsubwedge{e}
+\textsubumlaut{e}
+\textsubtilde{e}
+\textseagull{e}
+\textsubbridge{e}
+\textinvsubbridge{e}
+\textsubsquare{e}
+e\textsuperscript{h}
+\textsubrhalfring{e}
+\textsublhalfring{e}
+\textsubplus{e}
+\=*{e}
+\b{e}
+\"{e}
+\textovercross{e}
+\s{e}
+\textsyllabic{e}
+\textsubarch{e}
+e\textrhoticity
+e\textsuperscript{w}
+e\textsuperscript{j}
+e\textsuperscript{\textgamma}
+e\textsuperscript{\textrevglotstop}
+\textsuperimposetilde{e}
+\textraising{e}
+\textlowering{e}
+\textadvancing{e}
+\textretracting{e}
+\~{e}
+e\textsuperscript{n}
+e\textsuperscript{l}
+e\textcorner{}
+\H{e}
+
+\`{e}
+\={e}
+\'{e}
+\textdoublegrave{e}
+\v{e}
+\^{e}
+\texthighrise{e}
+\textlowrise{e}
+\textrisefall{e}
+\u{e}
+\end{IPA}
+
+\textipa{pbtd\:t\:dc\textbardotlessj k\textscriptg q\;G}
+\textipa{PmMn\:n\textltailn N\;N\;Br\;RR}
+\textipa{\:rFBfvTDszSZ\:s}
+\textipa{\:zçJxGXK\textcrh QhH\textbeltl{}}
+\textipa{\textlyoghlig V\*r\:Rh\textturnmrleg l\:lL\;L}
+
+\textipa{\!o|!\textdoublebarpipe ||\!b\!d\!j\!g\!Ge'}
+
+\textipa{iy1\textbaru W\textcolor{red}{uIY}Ueø987o@E½3\textcloserevepsilon 2Oæ5a\textscoelig A6}
+
+\textipa{\*ww4\;H\textbarrevglotstop\textbarglotstop C\textctz\textturnlonglegr\texththeng \texttoptiebar{ar}\textbottomtiebar{tz}}
+
+\textipa{:;e\textprimstress\textsecstress \textvertline{}\textdoublevertline{}.\t*{ }}
+
+\textipa{\tone{55}\tone{44}\tone{33}\tone{22}\tone{11}\textdownstep\textupstep \tone{15}\tone{51}\tone{45}\tone{12}\tone{454}\textglobrise \textglobfall{}}
+
+TIPA code in math:
+$\textipa{\tone{55}|\text{\!b{}\!d{}\!g{}\!G{}\textglobfall{}\textvertline{}\textdoublevertline{}}}$
+
+\subsection{Line breaks\sindex[breaks]{Line breaks}}
+
+They can also or be broken by a newline\\
+or by a starred newline \\*
+or by a newline with space, comment and argument \\ %hu
+[3cm]
+or by a newline command \newline
+or by a line break \linebreak
+or by a defined line break \linebreak % again with a comment
+	[4]
+
+There are even newlines with weird arguments, but these are not
+handled by LyX\\*[1cm]
+so we try to use ERT in this case.
+
+\subsection{Page breaks\sindex[breaks]{Page breaks}}
+
+They can also or be broken by a newpage \newpage
+or by a page break \pagebreak
+or by a defined page break \pagebreak % again with a comment
+	[4]
+
+
+\section{Special characters\index{Special characters}}
+
+Then one has those macros with a long name for a short meaning, like
+\textasciitilde, \textasciicircum{} or \textbackslash{}, \slash{},
+\nobreakdash- and the characters
+that LaTeX wants to espace because they are active, like \_\&\#\$\{\}\%.
+
+And what about special characters like hyphe\-nation mark,
+ellipsis\ldots, and end-of-sentence\@. LyX also supports a menu
+separator\lyxarrow{}and a spif\textcompwordmark{}fy ligature break.
+
+There are dashes: endash in short form -- and long form \textendash,
+emdash is alike: --- and \textemdash. If we really want several hyphens
+in a row, we need to separate them: -{}-, -{}-{}-, -{}-{}-{}- etc.
+
+LyX translates the phrases LyX, TeX, LaTeX2e and LaTeX
+to the commands \LyX{}, \TeX{}, \LaTeXe{} and \LaTeX{}.
+If these phrases occur as part of other words (like 1LyX or aTeX or LaTeX3)
+they should not be put into ERT.
+
+Test for whitespace handling of commands: The following lines should
+result in identical output:
+
+builtin \textasciicircum{} unicodesymbols \j{} user \mycommand{} xx\par
+builtin \textasciicircum {} unicodesymbols \j {} user \mycommand{} xx\par
+builtin \textasciicircum % with a comment
+{} unicodesymbols \j % and a second one
+{} user \mycommand % and another
+{} xx
+
+A sub\textsubscript{sc\emph{ript}} and super\textsuperscript{script
+with $a^2+b^2=c^2$ math}.
+
+latex2writer outputs quotes in braces like {\textquoteright}. We swallow the,
+but this was one broken (bug 8903).
+
+
+\section{Mathematics\index{Mathematics}}
+
+Let $f:\left[  a,b\right]  \rightarrow%
+%TCIMACRO{\U{211d} }%
+%BeginExpansion
+\mathbb{R}
+%EndExpansion
+$.
+
+\[
+\begin{array}{rclccc}
+1 + 2 & = & 3 
+\multicolumn{3}{c}{4 < 5 \leq 6 }
+\end{array}
+\]
+
+
+\section{Lists/Indices}
+
+single \textbackslash{}addcontentsline: \addcontentsline{toc}{section}{test}
+
+with \textbackslash{}addcontentsline and \textbackslash{}phantomsection:
+
+\bibliographystyle{test}
+\phantomsection\addcontentsline{toc}{section}{\refname}\bibliography{xampl}
+
+
+normal:
+
+\bibliographystyle{test}
+\bibliography{xampl}
+
+
+with wrong \textbackslash{}addcontentsline:
+
+\bibliographystyle{test} \addcontentsline{toc}{section}{test} \bibliographystyle{test}
+\bibliography{xampl}
+
+
+with \textbackslash{}addcontentsline and \textbackslash{}nocite\{{*}\}:
+
+\bibliographystyle{test}
+\addcontentsline{toc}{section}{\refname}\nocite{*}
+\bibliography{xampl}
+
+
+undefined index:
+
+\printindex{}
+
+index "idx":
+
+\printindex[idx]{}
+
+index "new":
+
+\printindex[new]{}
+
+subindex "new":
+
+\printsubindex[idx]{}
+
+index of all indices:
+
+\printindex*{}
+
+subindex of all indices:
+
+\printsubindex*{}
+
+normal nomenclature:
+
+\printnomenclature hello
+
+manually set width: \settowidth{\nomlabelwidth}{URL2} \printnomenclature{}
+
+nomenclature with set width:
+
+\printnomenclature[0.02\linewidth]{}
+
+\end{document}
