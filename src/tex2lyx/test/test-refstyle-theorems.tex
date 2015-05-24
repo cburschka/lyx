@@ -14,7 +14,7 @@
 \AtBeginDocument{\providecommand\partref[1]{\ref{part:#1}}}
 \AtBeginDocument{\providecommand\chapref[1]{\ref{chap:#1}}}
 \AtBeginDocument{\providecommand\secref[1]{\ref{sec:#1}}}
-\AtBeginDocument{\providecommand\subref[1]{\ref{sub:#1}}}
+\AtBeginDocument{\providecommand\subsecref[1]{\ref{subsec:#1}}}
 \AtBeginDocument{\providecommand\parref[1]{\ref{par:#1}}}
 \AtBeginDocument{\providecommand\figref[1]{\ref{fig:#1}}}
 \AtBeginDocument{\providecommand\tabref[1]{\ref{tab:#1}}}
@@ -30,8 +30,8 @@
 \newfloat{algorithm}{tbp}{loa}[chapter]
 \providecommand{\algorithmname}{Algorithm}
 \floatname{algorithm}{\protect\algorithmname}
-\RS@ifundefined{subref}
-  {\def\RSsubtxt{section~}\newref{sub}{name = \RSsubtxt}}
+\RS@ifundefined{subsecref}
+  {\newref{subsec}{name = \RSsectxt}}
   {}
 \RS@ifundefined{thmref}
   {\def\RSthmtxt{theorem~}\newref{thm}{name = \RSthmtxt}}
@@ -111,14 +111,14 @@
 \secref{Section}
 
 
-\subsection{Subsection\label{sub:subsection}}
+\subsection{Subsection\label{subsec:subsection}}
 
-Ref to \subref{subsection}.
+Ref to \subsecref{subsection}.
 
 
-\subsubsection{Subsubsection\label{sub:Subsubsection}}
+\subsubsection{Subsubsection\label{subsec:Subsubsection}}
 
-Ref to \subref{Subsubsection}.
+Ref to \subsecref{Subsubsection}.
 
 
 \paragraph{paragraph\label{par:paragraph}}

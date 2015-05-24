@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.2
-\lyxformat 493
+\lyxformat 495
 \begin_document
 \begin_header
 \origin roundtrip
@@ -147,7 +147,7 @@ reference "sec:Section"
 Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:subsection"
+name "subsec:subsection"
 
 \end_inset
 
@@ -158,7 +158,7 @@ name "sub:subsection"
 Ref to 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:subsection"
+reference "subsec:subsection"
 
 \end_inset
 
@@ -169,7 +169,7 @@ reference "sub:subsection"
 Subsubsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Subsubsection"
+name "subsec:Subsubsection"
 
 \end_inset
 
@@ -180,7 +180,7 @@ name "sub:Subsubsection"
 Ref to 
 \begin_inset CommandInset ref
 LatexCommand formatted
-reference "sub:Subsubsection"
+reference "subsec:Subsubsection"
 
 \end_inset
 
