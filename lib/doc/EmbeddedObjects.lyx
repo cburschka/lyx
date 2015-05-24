@@ -164,7 +164,7 @@
   \setboolean{diagbox}{true}}
  {\setboolean{diagbox}{false}}
 \end_preamble
-\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames
 \use_default_options false
 \begin_modules
 initials
@@ -19101,56 +19101,6 @@ Note:
 \end_layout
 
 \begin_layout Standard
-Currently LyX only offers to rotate table cells by 90
-\begin_inset space \thinspace{}
-\end_inset
-
-° counter-clockwise.
- To rotate cells by an angle of your choice, you have to add this to the
- document preamble:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-@ifundefined{turnbox}{
-\backslash
-usepackage{rotating}}{}
-\end_layout
-
-\begin_layout Standard
-In the table cell that should be rotated, add at the beginning this command
- as TeX-code:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-begin{turn}{angle}
-\end_layout
-
-\begin_layout Standard
-where angle is the rotation angle in °.
- At the end of the cell the command
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-end{turn}
-\end_layout
-
-\begin_layout Standard
-is inserted as TeX-code.
-\end_layout
-
-\begin_layout Standard
 Table
 \begin_inset space ~
 \end_inset
@@ -19175,6 +19125,7 @@ cells were rotated by 45
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -19203,108 +19154,33 @@ Table with rotated cells in the first row.
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" rotate="45" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{turn}{45}
-\end_layout
-
-\end_inset
-
 cups
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{turn}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" rotate="45" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{turn}{45}
-\end_layout
-
-\end_inset
-
 plates
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{turn}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" rotate="45" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{turn}{45}
-\end_layout
-
-\end_inset
-
 saucers
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{turn}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset

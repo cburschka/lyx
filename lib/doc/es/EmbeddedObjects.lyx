@@ -168,7 +168,7 @@
   \setboolean{diagbox}{true}}
  {\setboolean{diagbox}{false}}
 \end_preamble
-\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames
 \use_default_options false
 \begin_modules
 initials
@@ -18933,56 +18933,6 @@ Nota:
 \end_layout
 
 \begin_layout Standard
-Actualmente, LyX solo permite la rotación de celdas 90
-\begin_inset space \thinspace{}
-\end_inset
-
-° en sentido horario.
- Para otros ángulos de rotación hay que añadir lo siguiente en el preámbulo
- del documento:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-@ifundefined{turnbox}{
-\backslash
-usepackage{rotating}}{}
-\end_layout
-
-\begin_layout Standard
-En la celda que se desee rotar, se añade al principio el siguiente comando
- en código TeX:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-begin{turn}{ángulo}
-\end_layout
-
-\begin_layout Standard
-donde 
-\emph on
-ángulo
-\emph default
- es el ángulo de rotación en grados.
- Al final de la celda se inserta en código TeX el comando
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-end{turn}
-\end_layout
-
-\begin_layout Standard
 El cuadro
 \begin_inset space ~
 \end_inset
@@ -19031,108 +18981,33 @@ Cuadro con celdas rotadas en la primera fila.
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" rotate="45" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{turn}{45}
-\end_layout
-
-\end_inset
-
 copas
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{turn}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" rotate="45" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{turn}{45}
-\end_layout
-
-\end_inset
-
 platos
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{turn}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" rotate="45" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{turn}{45}
-\end_layout
-
-\end_inset
-
 fuentes
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{turn}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
