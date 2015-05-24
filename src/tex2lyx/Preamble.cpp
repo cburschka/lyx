@@ -1552,9 +1552,9 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				in_lyx_preamble = true;
 			}
 
-			// remove the lyxdot definition that is re-added by LyX
+			// remove LyX-specific definitions that are re-added by LyX
 			// if necessary
-			if (name == "\\lyxdot") {
+			if (name == "\\lyxdot" || name == "\\lyxarrow") {
 				p.skip_spaces();
 				in_lyx_preamble = true;
 			}
