@@ -121,6 +121,11 @@ static QString release_notes()
 					continue;
 				} if (incomment)
 					continue;
+
+				// detect links to the tracker
+				line.replace(QRegExp("(bug )(\\#)(\\d+)*"),
+					     "<a href=\"http://www.lyx.org/trac/ticket/\\3\">\\1\\3</a>");
+
 				// headings
 				if (line.startsWith("!!!")) {
 					if (inlist) {
@@ -267,6 +272,7 @@ GuiAbout::GuiAbout(GuiView & lv)
 	d->ui.versionLA->setText(version());
 	d->ui.buildinfoTB->setText(buildinfo());
 	d->ui.releasenotesTB->setHtml(release_notes());
+	d->ui.releasenotesTB->setOpenExternalLinks(true);
 	d->ui.creditsTB->setHtml(credits());
 
 	d->ui.tab->setUsesScrollButtons(false);
