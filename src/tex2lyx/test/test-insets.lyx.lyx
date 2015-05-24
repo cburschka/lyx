@@ -759,7 +759,7 @@ We can input files too, like this
 \begin_inset CommandInset include
 LatexCommand input
 preview false
-filename "DummyDocument.lyx.lyx"
+filename "DummyDocument.lyx"
 
 \end_inset
 
@@ -767,7 +767,7 @@ filename "DummyDocument.lyx.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 preview false
-filename "Dummy Document.tex"
+filename "Dummy Document.lyx"
 
 \end_inset
 
@@ -775,7 +775,7 @@ filename "Dummy Document.tex"
 \begin_inset CommandInset include
 LatexCommand include
 preview false
-filename "Dummy Document.tex"
+filename "Dummy Document.lyx"
 
 \end_inset
 
@@ -783,7 +783,7 @@ filename "Dummy Document.tex"
 \begin_inset CommandInset include
 LatexCommand include
 preview false
-filename "Dummy~Document.lyx.lyx"
+filename "Dummy~Document.lyx"
 
 \end_inset
 
@@ -791,7 +791,7 @@ filename "Dummy~Document.lyx.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 preview false
-filename "Dummy~Document.lyx.lyx"
+filename "Dummy~Document.lyx"
 
 \end_inset
 
@@ -882,7 +882,7 @@ If you prefer verbatim input, you can choose between
 \begin_inset CommandInset include
 LatexCommand verbatiminput
 preview false
-filename "foo"
+filename "DummyDocument.tex"
 
 \end_inset
 
@@ -895,7 +895,7 @@ filename "foo"
 \begin_inset CommandInset include
 LatexCommand verbatiminput*
 preview false
-filename "foo"
+filename "DummyDocument.tex"
 
 \end_inset
 
