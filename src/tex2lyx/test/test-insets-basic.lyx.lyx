@@ -4930,7 +4930,7 @@ in % of pixel size
 \end_layout
 
 \begin_layout Standard
-A table using dcolumn:
+A table using decimal alignment:
 \end_layout
 
 \begin_layout Standard
@@ -4944,19 +4944,22 @@ status open
 \begin_layout Standard
 
 \begin_inset Tabular 
-<lyxtabular version="3" rows="4" columns="5">
+<lyxtabular version="3" rows="4" columns="8">
 <features rotate="0" tabularvalignment="middle" tabularwidth="0pt">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
-<column alignment="none" valignment="top" special="d">
-<column alignment="none" valignment="top" special="d">
-<column alignment="none" valignment="top" special="d">
+<column alignment="right" valignment="top">
+<column alignment="none" valignment="top" special="@{\extracolsep{0pt}.}l">
+<column alignment="right" valignment="top">
+<column alignment="none" valignment="top" special="@{\extracolsep{0pt}.}l">
+<column alignment="right" valignment="top">
+<column alignment="none" valignment="top" special="@{\extracolsep{0pt}.}l">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
-One
+One 
 \end_layout
 
 \end_inset
@@ -4965,7 +4968,7 @@ One
 \begin_inset Text
 
 \begin_layout Standard
-Two
+Two 
 \end_layout
 
 \end_inset
@@ -4974,12 +4977,13 @@ Two
 \begin_inset Text
 
 \begin_layout Standard
-
-\family roman
 Three
-\family default
-
 \end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
 \end_inset
 </cell>
@@ -4987,12 +4991,13 @@ Three
 \begin_inset Text
 
 \begin_layout Standard
-
-\family roman
 Four
-\family default
-
 \end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
 \end_inset
 </cell>
@@ -5000,12 +5005,13 @@ Four
 \begin_inset Text
 
 \begin_layout Standard
-
-\family roman
 Five
-\family default
-
 \end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
 \end_inset
 </cell>
@@ -5015,7 +5021,7 @@ Five
 \begin_inset Text
 
 \begin_layout Standard
-one
+one 
 \end_layout
 
 \end_inset
@@ -5024,113 +5030,50 @@ one
 \begin_inset Text
 
 \begin_layout Standard
-two
+two 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="none" valignment="top" topline="true" usebox="none">
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" usebox="none" special="c">
 \begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Box Frameless
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-use_makebox 1
-width ""
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
 
 \begin_layout Standard
 three
 \end_layout
 
 \end_inset
-
-
-\end_layout
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
 
 \end_inset
 </cell>
-<cell alignment="none" valignment="top" topline="true" usebox="none">
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" usebox="none" special="c">
 \begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Box Frameless
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-use_makebox 1
-width ""
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
 
 \begin_layout Standard
 four
 \end_layout
 
 \end_inset
-
-
-\end_layout
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
 
 \end_inset
 </cell>
-<cell alignment="none" valignment="top" topline="true" usebox="none">
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" usebox="none" special="c">
 \begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Box Frameless
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-use_makebox 1
-width ""
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
 
 \begin_layout Standard
 five
 \end_layout
 
 \end_inset
-
-
-\end_layout
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
 
 \end_inset
 </cell>
@@ -5140,12 +5083,21 @@ five
 \begin_inset Text
 
 \begin_layout Standard
-He
+He 
 \end_layout
 
 \end_inset
 </cell>
 <cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+2 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -5158,7 +5110,30 @@ He
 \begin_inset Text
 
 \begin_layout Standard
-2.77234 
+77234 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+45672
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0
 \end_layout
 
 \end_inset
@@ -5167,16 +5142,7 @@ He
 \begin_inset Text
 
 \begin_layout Standard
-45672. 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-0.69 
+69 
 \end_layout
 
 \end_inset
@@ -5187,18 +5153,7 @@ He
 \begin_inset Text
 
 \begin_layout Standard
-C
-\begin_inset Foot
-status collapsed
-
-
-\begin_layout Standard
-Some tables require footnotes.
-\end_layout
-
-\end_inset
-
- 
+C 
 \end_layout
 
 \end_inset
@@ -5207,18 +5162,16 @@ Some tables require footnotes.
 \begin_inset Text
 
 \begin_layout Standard
-C
-\begin_inset Foot
-status collapsed
-
-
-\begin_layout Standard
-Some tables need more than one footnote.
+C 
 \end_layout
 
 \end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
 
- 
+\begin_layout Standard
+12537
 \end_layout
 
 \end_inset
@@ -5227,7 +5180,16 @@ Some tables need more than one footnote.
 \begin_inset Text
 
 \begin_layout Standard
-12537.64 
+64 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+37
 \end_layout
 
 \end_inset
@@ -5236,7 +5198,16 @@ Some tables need more than one footnote.
 \begin_inset Text
 
 \begin_layout Standard
-37.66345 
+66345 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+86
 \end_layout
 
 \end_inset
@@ -5245,7 +5216,7 @@ Some tables need more than one footnote.
 \begin_inset Text
 
 \begin_layout Standard
-86.37 
+37 
 \end_layout
 
 \end_inset
