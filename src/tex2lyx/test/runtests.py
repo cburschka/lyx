@@ -71,18 +71,18 @@ def main(argv):
         files = [sys.argv[4+skipcount]]
     else:
         files = ['test.ltx', \
+                 'algo2e.tex', \
                  'box-color-size-space-align.tex', \
                  'CJK.tex', \
                  'CJKutf8.tex', \
                  'test-insets.tex', \
+                 'test-insets-basic.tex', \
                  'test-memoir.tex', \
                  'test-modules.tex', \
                  'test-refstyle-theorems.tex', \
                  'test-scr.tex', \
                  'test-structure.tex', \
-                 'verbatim.tex', \
-                 'XeTeX-polyglossia.tex', \
-                 'algo2e.tex']
+                 'XeTeX-polyglossia.tex']
 
     errors = []
     overwrite = (outputdir == inputdir)
