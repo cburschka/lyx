@@ -1,52 +1,14 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 493
 \begin_document
 \begin_header
+\origin unavailable
 \textclass jss
 \begin_preamble
-%the following commands are used only for articles and codesnippets
-
-\author{First Author\\Affiliation of the first author \And 
-        Second Author\\Affiliation of the second author \AND
-        Third Author\\Affiliation of the third author}
-\title{Article About the Use of Package \pkg{foo} in \proglang{R}}
-
-% the same as above, without any formatting
-\Plainauthor{First Author, Second Author, Third author}
-\Plaintitle{Article About the Use of Package foo in R} 
-%if necessary, provide a short title
-\Shorttitle{Package foo in R} 
-
-\Abstract{This is the abstract of the article.}
-%at least one keyword is needed
-\Keywords{keyword 1, keyword 2, \pkg{foo}, \proglang{R}}
-%the same as above, without any formatting
-\Plainkeywords{keyword 1, keyword 2, foo, R} 
-
 %the following commands are used only for book or software reviews
 
 %\Reviewer{Some Author\\University of Somewhere}
 %\Plainreviewer{Some Author}
-
-%the following commands are used only for book reviews
-%\Booktitle{LyX and \proglang{R}: Secrets of the LyX Master}
-%\Bookauthor{Book Author}
-%\Pubyear{2008}
-%\ISBN{0-12345-678-9}
-%\Pages{500}
-
-%the following command is used only for software reviews
-%\Softwaretitle{\proglang{gretl 1.7.4}}
-
-%the following commands are used only for book or software reviews
-%\Publisher{LyX Publishing Inc.}
-%\Pubaddress{LyX City}
-%\Price{USD 59.95 (P), USD 99.95 (H)}
-%\URL{http://www.lyx.org/}
-
-%without any formatting
-%\Plaintitle{LyX and R: Secrets of the LyX Master}
-%\Shorttitle{LyX and R}
 
 %the following commands are used for articles, codesnippets, book reviews and software reviews
 
@@ -58,19 +20,6 @@
 %\Year{2000}
 %\Submitdate{2000-00-00}
 %\Acceptdate{2000-00-00}
-
-%The address of at least one author should be given in the following format
-\Address{
-  First Author\\
-  Department of Statistics\\
-  University of Somewhere\\
-  Somewhere, Somecountry\\
-  E-mail: \email{first.author@lyx.org}\\
-  URL: \url{http://www.lyx.org}
-}
-%you can add a telephone and fax number before the e-mail in the format
-%Telephone: +12/3/4567-89
-%Fax: +12/3/4567-89
 
 %if you use Sweave,  include the following line (with % symbols):
 %% need no \usepackage{Sweave.sty}
@@ -147,10 +96,12 @@
 status open
 
 \begin_layout Plain Layout
-This is a template LyX file for articles to be submitted to the Journal
- of Statistical Software (JSS).
- How to install the JSS LaTeX class to your LaTeX system is explained in
- 
+This is a template \SpecialChar LyX
+ file for articles to be submitted to the Journal of
+ Statistical Software (JSS).
+ How to install the JSS \SpecialChar LaTeX
+ class to your \SpecialChar LaTeX
+ system is explained in 
 \begin_inset Flex URL
 status open
 
@@ -171,15 +122,6 @@ http://wiki.lyx.org/Layouts/JSS
 status open
 
 \begin_layout Plain Layout
-Note that title, author, address, abstract, keywords etc for this article
- style are written in the LaTeX preamble (accessed from Document\SpecialChar \menuseparator
-Settings...\SpecialChar \menuseparator
-LaTeX
- Preamble).
- 
-\end_layout
-
-\begin_layout Plain Layout
 To use the JSS codesnippet, bookreview or softwarereview styles, replace
  the option 
 \begin_inset Quotes eld
@@ -189,9 +131,9 @@ article
 \begin_inset Quotes erd
 \end_inset
 
- in Document\SpecialChar \menuseparator
-Settings...\SpecialChar \menuseparator
-Document Class\SpecialChar \menuseparator
+ in Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Document Class\SpecialChar menuseparator
 Options with 
 \begin_inset Quotes eld
 \end_inset
@@ -216,7 +158,8 @@ softwarereview
 \begin_inset Quotes erd
 \end_inset
 
- and remove/uncomment the relevant parts in the LaTeX Preamble.
+ and remove/uncomment the relevant parts in the \SpecialChar LaTeX
+ Preamble.
  
 \end_layout
 
@@ -239,13 +182,20 @@ nojss
 \end_inset
 
 .
- This will suppress the JSS-specic parts of the layout.
+ This will suppress the JSS-specific parts of the layout.
 \end_layout
 
 \begin_layout Plain Layout
 To include the JSS-specific parts of the layout, the article has to be processed
- with PDF, i.e.
- you cannot process it with DVI or PS.
+ with PDF, i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space ~
+\end_inset
+
+you cannot process it with DVI or PS.
  However, if the option 
 \begin_inset Quotes eld
 \end_inset
@@ -262,19 +212,221 @@ nojss
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Title
+A Capitalized Title: Something about a Package 
+\begin_inset Flex pkg
+status open
+
+\begin_layout Plain Layout
+foo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Title
+A Capitalized Title: Something about a Package foo
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Achim Zeileis
+\begin_inset Newline newline
+\end_inset
+
+Universität Innsbruck 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+And 
+\end_layout
+
+\end_inset
+
+Second Author
+\begin_inset Newline newline
+\end_inset
+
+Plus Affiliation
+\end_layout
+
+\begin_layout Plain Author
+Achim Zeileis, Second Author
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+optional
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Short Title
+\begin_inset Flex pkg
+status open
+
+\begin_layout Plain Layout
+foo
+\end_layout
+
+\end_inset
+
+: A Capitalized Title
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-The opt field provides bookmarks for PDF files
+only if necessary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+The abstract of the article.
+\end_layout
+
+\begin_layout Keywords
+keywords, comma-separated, not capitalized, 
+\begin_inset Flex proglang
+status open
+
+\begin_layout Plain Layout
+Java
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+at least one keyword must be supplied
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Keywords
+keyword 1, keyword 2, foo, R
+\end_layout
+
+\begin_layout Address
+Achim Zeileis
+\begin_inset Newline newline
+\end_inset
+
+Department of Statistics and Mathematics
+\begin_inset Newline newline
+\end_inset
+
+Faculty of Economics and Statistics
+\begin_inset Newline newline
+\end_inset
+
+Universität Innsbruck
+\begin_inset Newline newline
+\end_inset
+
+6020 Innsbruck, Austria
+\begin_inset Newline newline
+\end_inset
+
+E-mail: 
+\begin_inset Flex E-mail
+status open
+
+\begin_layout Plain Layout
+
+Achim.Zeileis@uibk.ac.at
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+URL: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://eeecon.uibk.ac.at/~zeileis/
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+It is also possible to add a telephone and fax number before the e-mail
+ in the following format:
+\begin_inset Newline newline
+\end_inset
+
+Telephone: +43/512/507-7103
+\end_layout
+
+\begin_layout Plain Layout
+Fax: +43/512/507-2851
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+About package 
+\begin_inset Flex pkg
+status open
+
+\begin_layout Plain Layout
+foo
+\end_layout
+
+\end_inset
+
+ in 
+\begin_inset Flex proglang
+status open
+
+\begin_layout Plain Layout
+R
 \end_layout
 
 \end_inset
 
 
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 About package foo in R
@@ -282,72 +434,12 @@ About package foo in R
 
 \end_inset
 
-About package 
-\begin_inset ERT
+
+\begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-
-
-\backslash
-pkg
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-foo
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- in 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-proglang
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-R
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
+The short title provides bookmarks for PDF files
 \end_layout
 
 \end_inset
@@ -357,113 +449,63 @@ status collapsed
 
 \begin_layout Standard
 The special JSS style commands related to software and mathematical formulas
- are written as follows in LyX: 
-\begin_inset ERT
+ are written as follows in \SpecialChar LyX
+: 
+\begin_inset Flex proglang
 status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-proglang{R}
+R
 \end_layout
 
 \end_inset
 
  or 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex proglang
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-proglang{
-\end_layout
-
-\end_inset
-
 R
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
  for the names of programming languages, 
-\begin_inset ERT
+\begin_inset Flex pkg
 status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-pkg{foo}
+foo
 \end_layout
 
 \end_inset
 
  or 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex pkg
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-pkg{
-\end_layout
-
-\end_inset
-
 foo
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
 
  for software packages, and 
-\begin_inset ERT
+\begin_inset Flex code
 status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-code{some code}
+some code
 \end_layout
 
 \end_inset
 
  or 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex pkg
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-pkg{
-\end_layout
-
-\end_inset
-
 some code
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
 \end_layout
 
 \end_inset
@@ -474,7 +516,7 @@ status collapsed
 
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 written as 
@@ -490,7 +532,7 @@ E
 
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 written as 
@@ -506,7 +548,7 @@ VAR
 
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 written as 
@@ -522,7 +564,7 @@ COV
 
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 written as 
@@ -536,141 +578,65 @@ Prob
 \end_layout
 
 \begin_layout Standard
-Writing several lines of code: 
+Writing several lines of code:
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
+\begin_layout Code Chunk
 
-\begin_layout Plain Layout
-
-
-\backslash
-begin{CodeChunk}
 \end_layout
 
-\begin_layout Plain Layout
-
-
-\backslash
-begin{Code}
-\end_layout
-
-\begin_layout Plain Layout
+\begin_deeper
+\begin_layout Standard Code
 
 first line of code
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard Code
 
 second line of code
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard Code
 
 third line of code
 \end_layout
 
-\begin_layout Plain Layout
-
-
-\backslash
-end{Code}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{CodeChunk}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 Alternatively, you can distinguish between input and output code:
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
+\begin_layout Code Chunk
 
-\begin_layout Plain Layout
-
-
-\backslash
-begin{CodeChunk}
 \end_layout
 
-\begin_layout Plain Layout
-
-
-\backslash
-begin{CodeInput}
-\end_layout
-
-\begin_layout Plain Layout
+\begin_deeper
+\begin_layout Code Input
 
 first line of input code
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Code Input
 
 second line of input code
 \end_layout
 
-\begin_layout Plain Layout
-
-
-\backslash
-end{CodeInput}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{CodeOutput}
-\end_layout
-
-\begin_layout Plain Layout
+\begin_layout Code Output
 
 first line of output code
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Code Output
 
 second line of output code
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Code Output
 
 third line of output code
 \end_layout
 
-\begin_layout Plain Layout
-
-
-\backslash
-end{CodeOutput}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{CodeChunk}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
+\end_deeper
 \begin_layout Section*
 Acknowledgments
 \end_layout
