@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-19 13:50+0200\n"
-"PO-Revision-Date: 2015-05-19 12:00+0000\n"
+"POT-Creation-Date: 2015-05-24 10:52+0200\n"
+"PO-Revision-Date: 2015-05-24 08:59+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -3235,7 +3235,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:48
 msgid "Restore cursor &positions"
-msgstr "Reštaurovať &pozíciu kurzoru"
+msgstr "Reštaurovať pozíciu &kurzoru"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:55
 msgid "&Load opened files from last session"
@@ -3251,7 +3251,7 @@ msgstr "Zálohovanie && Ukladanie"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:94
 msgid "Backup &original documents when saving"
-msgstr "Zálohovať &pôvodné dokumenty pri uložení"
+msgstr "Zálohovať pô&vodné dokumenty pri uložení"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:103
 msgid "&Backup documents, every"
@@ -3275,6 +3275,20 @@ msgstr ""
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
 msgid "&Save new documents compressed by default"
 msgstr "Štandardne &ukladať nové dokumenty komprimované"
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
+msgid ""
+"If this is checked, the document directory path will be saved in the "
+"document.\n"
+"This allows moving the document elsewhere and still finding the included "
+"files."
+msgstr ""
+"Keď zaškrtnuté, adresár dokumentu sa zapíše do dokumentu.\n"
+"Dovolí sa tým premiestniť dokument niekde inde a predsa nájsť vložené súbory."
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:158
+msgid "Save the &document directory path"
+msgstr "Ukladať adresár &dokumentov"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
 msgid "Windows && Work Area"
@@ -3301,9 +3315,9 @@ msgstr "Jednoduchá &inštancia"
 msgid "Whether to place close button on each tab or only one in the top left."
 msgstr "Dať tlačidlo \"Zavrieť\" na každý panel, alebo len jediné vľavo hore."
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:197
 msgid "Displa&y single close-tab button"
-msgstr "&Zobraziť jediné tlačidlo na zavretie panelov"
+msgstr "Zobraziť &jediné tlačidlo na zavretie panelov"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:193
 msgid "Closing last &view:"
@@ -10398,8 +10412,36 @@ msgid "Japanese Book (jsbook)"
 msgstr "Japonská Kniha (jsbook)"
 
 #: lib/layouts/jss.layout:3
-msgid "Journal of Statistical Software (JSS)"
-msgstr "Journal of Statistical Software (JSS)"
+msgid "Journal of Statistical Software (JSS) version 2"
+msgstr "Journal of Statistical Software (JSS) verzia 2"
+
+#: lib/layouts/jss.layout:30
+msgid "Plain Title"
+msgstr "Prostý Titul"
+
+#: lib/layouts/jss.layout:39
+msgid "Plain Author"
+msgstr "Prostý Autor"
+
+#: lib/layouts/jss.layout:100
+msgid "Plain Keywords"
+msgstr "Prosté Heslá"
+
+#: lib/layouts/jss.layout:103
+msgid "Plain Keywords:"
+msgstr "Prosté Heslá:"
+
+#: lib/layouts/jss.layout:109
+msgid "Short Title:"
+msgstr "Krátky Titul:"
+
+#: lib/layouts/jss.layout:112 lib/layouts/jss.layout:114
+msgid "pkg"
+msgstr "pkg"
+
+#: lib/layouts/jss.layout:138 lib/layouts/jss.layout:140
+msgid "proglang"
+msgstr "proglang"
 
 #: lib/layouts/kluwer.layout:3
 msgid "Kluwer"
@@ -12281,6 +12323,14 @@ msgstr "CCC-Kód"
 msgid "Code"
 msgstr "Kód"
 
+#: lib/layouts/jss.layout:202 lib/layouts/jss.layout:205
+msgid "Code Input"
+msgstr "Vstupný Kód"
+
+#: lib/layouts/jss.layout:208 lib/layouts/jss.layout:211
+msgid "Code Output"
+msgstr "Výstupný Kód"
+
 #: lib/layouts/agu_stdtitle.inc:398 lib/layouts/agu_stdtitle.inc:400
 msgid "Dscr"
 msgstr "Opis"
@@ -13891,6 +13941,14 @@ msgstr "silný dôraz"
 #: lib/layouts/logicalmkup.module:65
 msgid "code"
 msgstr "kód"
+
+#: lib/layouts/jss.layout:167 lib/layouts/jss.layout:182
+msgid "Code Chunk"
+msgstr "Odrezok Kódu"
+
+#: lib/layouts/jss.layout:194
+msgid "Standard Code"
+msgstr "Štandardný Kód"
 
 #: lib/layouts/minimalistic.module:2
 msgid "Minimalistic"
@@ -29108,6 +29166,10 @@ msgstr " (iba pre čítanie)"
 msgid "Close File"
 msgstr "Zavrieť Súbor"
 
+#: src/frontends/qt4/GuiWorkArea.cpp:2017
+msgid "%1 (read only)"
+msgstr "%1 (iba pre čítanie)"
+
 #: src/frontends/qt4/GuiWorkArea.cpp:2023
 msgid "Hide tab"
 msgstr "Panel skryť"
@@ -33828,3 +33890,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "ERROR: LyX wasn't able to read CREDITS file\n"
 #~ msgstr "Chyba: LyXu sa nepodarilo načítať súbor CREDITS\n"
+
+#~ msgid "Journal of Statistical Software (JSS)"
+#~ msgstr "Journal of Statistical Software (JSS)"
