@@ -1467,7 +1467,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			string const body2 = p.verbatim_item();
 			// only non-lyxspecific stuff
 			if (in_lyx_preamble &&
-			    (name == "subref" || name == "thmref" || name == "lemref"))
+			    (name == "subsecref" || name == "thmref" || name == "lemref"))
 				p.skip_spaces();
 			else {
 				ostringstream ss;
@@ -1486,7 +1486,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			    (name == "\\providecommand\\partref[1]{\\ref{part:#1}}"
 				|| name == "\\providecommand\\chapref[1]{\\ref{chap:#1}}"
 				|| name == "\\providecommand\\secref[1]{\\ref{sec:#1}}"
-				|| name == "\\providecommand\\subref[1]{\\ref{sub:#1}}"
+				|| name == "\\providecommand\\subsecref[1]{\\ref{subsec:#1}}"
 				|| name == "\\providecommand\\parref[1]{\\ref{par:#1}}"
 				|| name == "\\providecommand\\figref[1]{\\ref{fig:#1}}"
 				|| name == "\\providecommand\\tabref[1]{\\ref{tab:#1}}"
