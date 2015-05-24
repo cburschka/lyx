@@ -1684,13 +1684,22 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			string const body = p.verbatim_item();
 			string const opt3 = p.getFullOpt();
 
-			add_known_theorem(name, opt1, !opt2.empty(),
-				from_utf8("\\newtheorem{" + name + '}' +
-				          opt1 + opt2 + '{' + body + '}' + opt3));
+			string const complete = "\\newtheorem{" + name + '}' +
+				          opt1 + opt2 + '{' + body + '}' + opt3;
+
+			add_known_theorem(name, opt1, !opt2.empty(), from_utf8(complete));
+
+			// we know that our theorem module already add automatically some
+			// theorem definition. They must not be output in the preamble to
+			// avoid LaTeX errors about redefinitions
+			if (complete == "\\newtheorem{thm}{\\protect\\theoremname}")
+				in_lyx_preamble = true;
+			else
+				in_lyx_preamble = false;
 
 			if (!in_lyx_preamble)
 				h_preamble << "\\newtheorem{" << name << '}'
-				           << opt1 << opt2 << '{' << '}' << opt3;
+				           << opt1 << opt2 << '{' << body << '}' << opt3;
 		}
 
 		else if (t.cs() == "def") {
