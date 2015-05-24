@@ -1554,7 +1554,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 
 			// remove LyX-specific definitions that are re-added by LyX
 			// if necessary
-			if (name == "\\lyxdot" || name == "\\lyxarrow") {
+			// \lyxline is an ancient command that is converted by tex2lyx into
+			// a \rule therefore remove its preamble code
+			if (name == "\\lyxdot" || name == "\\lyxarrow"
+				|| name == "\\lyxline") {
 				p.skip_spaces();
 				in_lyx_preamble = true;
 			}
