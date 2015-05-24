@@ -11,6 +11,10 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2015-05-24 Jürgen Spitzmüller <spitz@lyx.org>
+ 	* Format incremented to 495: Rename sub: refprefix to subsec: in order
+          to prevent clash of \\subref command with subfloat package.
+
 2015-05-24 Uwe Stöhr <uwestoehr@web.de>
  	* Format incremented to 494: support more layouts in jss.layout
  	  No new parameters.

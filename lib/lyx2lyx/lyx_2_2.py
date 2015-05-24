@@ -1424,6 +1424,98 @@ def revert_jss(document):
           k = k + 1
 
 
+def convert_subref(document):
+    " converts sub: ref prefixes to subref: "
+
+    # 1) label insets
+    rx = re.compile(r'^name \"sub:(.+)$')
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset label", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of Label inset at line " + str(i))
+            i += 1
+            continue
+
+        for p in range(i, j):
+            m = rx.match(document.body[p])
+            if m:
+                label = m.group(1)
+                document.body[p] = "name \"subsec:" + label
+        i += 1
+
+    # 2) xref insets
+    rx = re.compile(r'^reference \"sub:(.+)$')
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset ref", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of Ref inset at line " + str(i))
+            i += 1
+            continue
+
+        for p in range(i, j):
+            m = rx.match(document.body[p])
+            if m:
+                label = m.group(1)
+                document.body[p] = "reference \"subsec:" + label
+                break
+        i += 1
+
+
+
+def revert_subref(document):
+    " reverts subref: ref prefixes to sub: "
+
+    # 1) label insets
+    rx = re.compile(r'^name \"subsec:(.+)$')
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset label", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of Label inset at line " + str(i))
+            i += 1
+            continue
+
+        for p in range(i, j):
+            m = rx.match(document.body[p])
+            if m:
+                label = m.group(1)
+                document.body[p] = "name \"sub:" + label
+                break
+        i += 1
+
+    # 2) xref insets
+    rx = re.compile(r'^reference \"subsec:(.+)$')
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset CommandInset ref", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of Ref inset at line " + str(i))
+            i += 1
+            continue
+
+        for p in range(i, j):
+            m = rx.match(document.body[p])
+            if m:
+                label = m.group(1)
+                document.body[p] = "reference \"sub:" + label
+                break
+        i += 1
+
+
 ##
 # Conversion hub
 #
@@ -1452,10 +1544,12 @@ convert = [
            [491, []],
            [492, [convert_colorbox]],
            [493, []],
-           [494, []]
+           [494, []],
+           [495, [convert_subref]]
           ]
 
 revert =  [
+           [494, [revert_subref]],
            [493, [revert_jss]],
            [492, [revert_mathmulticol]],
            [491, [revert_colorbox]],

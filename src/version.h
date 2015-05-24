@@ -32,8 +32,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 494 // uwestoehr jss layout changes
-#define LYX_FORMAT_TEX2LYX 494
+#define LYX_FORMAT_LYX 495 // spitz: subsection ref prefix change
+#define LYX_FORMAT_TEX2LYX 495
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER

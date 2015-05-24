@@ -12,6 +12,12 @@
   the GUI (though some menu entries use it) as it is automatically inserted
   when needed. See Section 3.4.6 of the User Guide for details.
 
+* The prefix for subsections in labels and references has been changed from
+  "sub:" to "subsec:" in order to avoid a clash with subfloats (conflicting
+  \subref command, see bug #7550). Files are automatically converted to the new scheme.
+  Please assure that you adapt external refstyle or prettyref definitions and
+  your own layout files.
+
 !!!The following pref variables were added in 2.2:
 
 * \save_origin:

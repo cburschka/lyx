@@ -249,8 +249,8 @@ static docstring const ogonek_def = from_ascii(
 	"\\newcommand{\\ogonek}[1]{\\mathpalette\\doogonek{#1}}\n");
 
 static docstring const lyxref_def = from_ascii(
-		"\\RS@ifundefined{subref}\n"
-		"  {\\def\\RSsubtxt{section~}\\newref{sub}{name = \\RSsubtxt}}\n"
+		"\\RS@ifundefined{subsecref}\n"
+		"  {\\newref{subsec}{name = \\RSsectxt}}\n"
 		"  {}\n"
 		"\\RS@ifundefined{thmref}\n"
 		"  {\\def\\RSthmtxt{theorem~}\\newref{thm}{name = \\RSthmtxt}}\n"

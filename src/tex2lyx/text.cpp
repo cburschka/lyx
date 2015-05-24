@@ -137,11 +137,11 @@ char const * const known_coded_ref_commands[] = { "ref", "pageref", "vref",
 
 char const * const known_refstyle_commands[] = { "algref", "chapref", "corref",
  "eqref", "enuref", "figref", "fnref", "lemref", "parref", "partref", "propref",
- "secref", "subref", "tabref", "thmref", 0 };
+ "secref", "subsecref", "tabref", "thmref", 0 };
 
 char const * const known_refstyle_prefixes[] = { "alg", "chap", "cor",
  "eq", "enu", "fig", "fn", "lem", "par", "part", "prop",
- "sec", "sub", "tab", "thm", 0 };
+ "sec", "subsec", "tab", "thm", 0 };
 
 
 /**

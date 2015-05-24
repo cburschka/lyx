@@ -22,11 +22,11 @@ IfStyle Section
 End
 
 IfStyle Subsection
-	RefPrefix sub
+	RefPrefix subsec
 End
 
 IfStyle Subsubsection
-	RefPrefix sub
+	RefPrefix subsec
 End
 
 IfStyle Paragraph
