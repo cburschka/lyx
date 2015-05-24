@@ -11,6 +11,9 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
 
+2015-05-24 Uwe Stöhr <uwestoehr@web.de>
+ 	* Format incremented to 494: support more layouts in jss.layout
+ 	  No new parameters.
 
 2015-05-17 Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 	* Format incremented to 493
@@ -22,7 +25,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
  	  New box parameters:
  	  - framcolor
  	  - backgroundcolor
-  
+
 2015-05-14 Uwe Stöhr <uwestoehr@web.de>
  	* Format incremented to 491: support for xcolor's default colors
  	  No new parameter, the \color parameter can now also have these values:

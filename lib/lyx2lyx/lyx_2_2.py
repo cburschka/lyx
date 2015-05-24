@@ -1160,6 +1160,270 @@ def revert_mathmulticol(document):
             i = j
 
 
+def revert_Argument_to_TeX_brace(document, line, endline, n, nmax, environment, opt):
+    '''
+    Reverts an InsetArgument to TeX-code
+    usage:
+    revert_Argument_to_TeX_brace(document, LineOfBegin, LineOfEnd, StartArgument, EndArgument, isEnvironment, isOpt)
+    LineOfBegin is the line  of the \begin_layout or \begin_inset statement
+    LineOfEnd is the line  of the \end_layout or \end_inset statement, if "0" is given, the end of the file is used instead
+    StartArgument is the number of the first argument that needs to be converted
+    EndArgument is the number of the last argument that needs to be converted or the last defined one
+    isEnvironment must be true, if the layout is for a LaTeX environment
+    isOpt must be true, if the argument is an optional one
+    '''
+    lineArg = 0
+    wasOpt = False
+    while lineArg != -1 and n < nmax + 1:
+      lineArg = find_token(document.body, "\\begin_inset Argument " + str(n), line)
+      if lineArg > endline and endline != 0:
+        return wasOpt
+      if lineArg != -1:
+        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", lineArg)
+        # we have to assure that no other inset is in the Argument
+        beginInset = find_token(document.body, "\\begin_inset", beginPlain)
+        endInset = find_token(document.body, "\\end_inset", beginPlain)
+        k = beginPlain + 1
+        l = k
+        while beginInset < endInset and beginInset != -1:
+          beginInset = find_token(document.body, "\\begin_inset", k)
+          endInset = find_token(document.body, "\\end_inset", l)
+          k = beginInset + 1
+          l = endInset + 1
+        if environment == False:
+          if opt == False:
+            document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}{")
+            del(document.body[lineArg : beginPlain + 1])
+            wasOpt = False
+          else:
+            document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("]")
+            document.body[lineArg : beginPlain + 1] = put_cmd_in_ert("[")
+            wasOpt = True
+        else:
+          document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}")
+          document.body[lineArg : beginPlain + 1] = put_cmd_in_ert("{")
+          wasOpt = False
+        n += 1
+    return wasOpt
+
+
+def revert_jss(document):
+    " Reverts JSS In_Preamble commands to ERT in preamble "
+
+    if document.textclass != "jss":
+        return
+
+    h = 0
+    m = 0
+    j = 0
+    k = 0
+    n = 0
+    while True:
+      # at first revert the inset layouts because they can be part of the In_Preamble layouts
+      while m != -1 or j != -1 or h != -1 or k != -1 or n != -1:
+        # \pkg
+        if h != -1:
+          h = find_token(document.body, "\\begin_inset Flex pkg", h)
+        if h != -1:
+          endh = find_end_of_inset(document.body, h)
+          document.body[endh - 2 : endh + 1] = put_cmd_in_ert("}")
+          document.body[h : h + 4] = put_cmd_in_ert("\\pkg{")
+          h = h + 5
+        # \proglang
+        if m != -1:
+          m = find_token(document.body, "\\begin_inset Flex proglang", m)
+        if m != -1:
+          endm = find_end_of_inset(document.body, m)
+          document.body[endm - 2 : endm + 1] = put_cmd_in_ert("}")
+          document.body[m : m + 4] = put_cmd_in_ert("\\proglang{")
+          m = m + 5
+        # \code
+        if j != -1:
+          j = find_token(document.body, "\\begin_inset Flex code", j)
+        if j != -1:
+          endj = find_end_of_inset(document.body, j)
+          document.body[endj - 2 : endj + 1] = put_cmd_in_ert("}")
+          document.body[j : j + 4] = put_cmd_in_ert("\\code{")
+          j = j + 5
+        # \email
+        if k != -1:
+          k = find_token(document.body, "\\begin_inset Flex E-mail", k)
+        if k != -1:
+          endk = find_end_of_inset(document.body, k)
+          document.body[endk - 2 : endk + 1] = put_cmd_in_ert("}")
+          document.body[k : k + 4] = put_cmd_in_ert("\\email{")
+          k = k + 5
+        # \url
+        if n != -1:
+          n = find_token(document.body, "\\begin_inset Flex URL", n)
+        if n != -1:
+          endn = find_end_of_inset(document.body, n)
+          document.body[endn - 2 : endn + 1] = put_cmd_in_ert("}")
+          document.body[n : n + 4] = put_cmd_in_ert("\\url{")
+          n = n + 5
+      # now revert the In_Preamble layouts
+      # \title
+      i = find_token(document.body, "\\begin_layout Title", 0)
+      if i == -1:
+        return
+      j = find_end_of_layout(document.body, i)
+      if j == -1:
+        document.warning("Malformed LyX document: Can't find end of Title layout")
+        i += 1
+        continue
+      content = lyx2latex(document, document.body[i:j + 1])
+      add_to_preamble(document, ["\\title{" + content + "}"])
+      del document.body[i:j + 1]
+      # \author
+      i = find_token(document.body, "\\begin_layout Author", 0)
+      if i == -1:
+        return
+      j = find_end_of_layout(document.body, i)
+      if j == -1:
+        document.warning("Malformed LyX document: Can't find end of Author layout")
+        i += 1
+        continue
+      content = lyx2latex(document, document.body[i:j + 1])
+      add_to_preamble(document, ["\\author{" + content + "}"])
+      del document.body[i:j + 1]
+      # \Plainauthor
+      i = find_token(document.body, "\\begin_layout Plain Author", 0)
+      if i == -1:
+        return
+      j = find_end_of_layout(document.body, i)
+      if j == -1:
+        document.warning("Malformed LyX document: Can't find end of Plain Author layout")
+        i += 1
+        continue
+      content = lyx2latex(document, document.body[i:j + 1])
+      add_to_preamble(document, ["\\Plainauthor{" + content + "}"])
+      del document.body[i:j + 1]
+      # \Plaintitle
+      i = find_token(document.body, "\\begin_layout Plain Title", 0)
+      if i == -1:
+        return
+      j = find_end_of_layout(document.body, i)
+      if j == -1:
+        document.warning("Malformed LyX document: Can't find end of Plain Title layout")
+        i += 1
+        continue
+      content = lyx2latex(document, document.body[i:j + 1])
+      add_to_preamble(document, ["\\Plaintitle{" + content + "}"])
+      del document.body[i:j + 1]
+      # \Shorttitle
+      i = find_token(document.body, "\\begin_layout Short Title", 0)
+      if i == -1:
+        return
+      j = find_end_of_layout(document.body, i)
+      if j == -1:
+        document.warning("Malformed LyX document: Can't find end of Short Title layout")
+        i += 1
+        continue
+      content = lyx2latex(document, document.body[i:j + 1])
+      add_to_preamble(document, ["\\Shorttitle{" + content + "}"])
+      del document.body[i:j + 1]
+      # \Abstract
+      i = find_token(document.body, "\\begin_layout Abstract", 0)
+      if i == -1:
+        return
+      j = find_end_of_layout(document.body, i)
+      if j == -1:
+        document.warning("Malformed LyX document: Can't find end of Abstract layout")
+        i += 1
+        continue
+      content = lyx2latex(document, document.body[i:j + 1])
+      add_to_preamble(document, ["\\Abstract{" + content + "}"])
+      del document.body[i:j + 1]
+      # \Keywords
+      i = find_token(document.body, "\\begin_layout Keywords", 0)
+      if i == -1:
+        return
+      j = find_end_of_layout(document.body, i)
+      if j == -1:
+        document.warning("Malformed LyX document: Can't find end of Keywords layout")
+        i += 1
+        continue
+      content = lyx2latex(document, document.body[i:j + 1])
+      add_to_preamble(document, ["\\Keywords{" + content + "}"])
+      del document.body[i:j + 1]
+      # \Plainkeywords
+      i = find_token(document.body, "\\begin_layout Plain Keywords", 0)
+      if i == -1:
+        return
+      j = find_end_of_layout(document.body, i)
+      if j == -1:
+        document.warning("Malformed LyX document: Can't find end of Plain Keywords layout")
+        i += 1
+        continue
+      content = lyx2latex(document, document.body[i:j + 1])
+      add_to_preamble(document, ["\\Plainkeywords{" + content + "}"])
+      del document.body[i:j + 1]
+      # \Address
+      i = find_token(document.body, "\\begin_layout Address", 0)
+      if i == -1:
+        return
+      j = find_end_of_layout(document.body, i)
+      if j == -1:
+        document.warning("Malformed LyX document: Can't find end of Address layout")
+        i += 1
+        continue
+      content = lyx2latex(document, document.body[i:j + 1])
+      add_to_preamble(document, ["\\Address{" + content + "}"])
+      del document.body[i:j + 1]
+      # finally handle the code layouts
+      h = 0
+      m = 0
+      j = 0
+      k = 0
+      while m != -1 or j != -1 or h != -1 or k != -1:
+        # \CodeChunk
+        if h != -1:
+          h = find_token(document.body, "\\begin_layout Code Chunk", h)
+        if h != -1:
+          endh = find_end_of_layout(document.body, h)
+          begindeeper = find_token(document.body, "\\begin_deeper", h)
+          enddeeper = find_token(document.body, "\\end_deeper", h)
+          document.body[enddeeper + 1 : enddeeper] = ["\\end_layout"]
+          document.body[enddeeper : enddeeper + 1] = put_cmd_in_ert("\\end{CodeChunk}")
+          del document.body[begindeeper]
+          document.body[h : h + 3] = put_cmd_in_ert("\\begin{CodeChunk}")
+          document.body[h - 1 : h] = ["\\begin_layout Standard"]
+          h = h + 1
+        # \Code
+        if m != -1:
+          m = find_token(document.body, "\\begin_layout Standard Code", m)
+        if m != -1:
+          endm = find_end_of_layout(document.body, m)
+          document.body[endm : endm + 1] = ["\\end_layout", "", "\\begin_layout Standard"]
+          document.body[endm + 3 : endm + 4] = put_cmd_in_ert("\\end{Code}")
+          document.body[endm + 13 : endm + 13] = ["\\end_layout", "", "\\begin_layout Standard"]
+          document.body[m + 1 : m] = ["\\end_layout", "", "\\begin_layout Standard"]
+          document.body[m : m + 1] = put_cmd_in_ert("\\begin{Code}")
+          m = m + 1
+        # \CodeInput
+        if j != -1:
+          j = find_token(document.body, "\\begin_layout Code Input", j)
+        if j != -1:
+          endj = find_end_of_layout(document.body, j)
+          document.body[endj : endj + 1] = ["\\end_layout", "", "\\begin_layout Standard"]
+          document.body[endj + 3 : endj + 4] = put_cmd_in_ert("\\end{CodeInput}")
+          document.body[endj + 13 : endj + 13] = ["\\end_layout", "", "\\begin_layout Standard"]
+          document.body[j + 1 : j] = ["\\end_layout", "", "\\begin_layout Standard"]
+          document.body[j : j + 1] = put_cmd_in_ert("\\begin{CodeInput}")
+          j = j + 1
+        # \CodeOutput
+        if k != -1:
+          k = find_token(document.body, "\\begin_layout Code Output", k)
+        if k != -1:
+          endk = find_end_of_layout(document.body, k)
+          document.body[endk : endj + 1] = ["\\end_layout", "", "\\begin_layout Standard"]
+          document.body[endk + 3 : endk + 4] = put_cmd_in_ert("\\end{CodeOutput}")
+          document.body[endk + 13 : endk + 13] = ["\\end_layout", "", "\\begin_layout Standard"]
+          document.body[k + 1 : k] = ["\\end_layout", "", "\\begin_layout Standard"]
+          document.body[k : k + 1] = put_cmd_in_ert("\\begin{CodeOutput}")
+          k = k + 1
+
+
 ##
 # Conversion hub
 #
@@ -1187,10 +1451,12 @@ convert = [
            [490, [convert_origin]],
            [491, []],
            [492, [convert_colorbox]],
-           [493, []]
+           [493, []],
+           [494, []]
           ]
 
 revert =  [
+           [493, [revert_jss]],
            [492, [revert_mathmulticol]],
            [491, [revert_colorbox]],
            [490, [revert_textcolor]],

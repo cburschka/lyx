@@ -1,12 +1,14 @@
 #% Do not delete the line below; configure depends on this      
-#  \DeclareLaTeXClass[jss,ae.sty,color.sty,fancyvrb.sty,hyperref.sty,natbib.sty,upquote.sty]{Journal of Statistical Software (JSS)}
+#  \DeclareLaTeXClass[jss,ae.sty,color.sty,fancyvrb.sty,hyperref.sty,natbib.sty,upquote.sty]{Journal of Statistical Software (JSS) version 2}
 #  \DeclareCategory{Articles}
 # Journal of Statistical Software (JSS) article textclass definition file
 # Author: Andreas Karlsson <andreas.karlsson@ltv.se>
+#         Phil Chalmers <rphilip.chalmers@gmail.com>
+#         Uwe Stöhr <uwestoehr@lyx.org>
 # License: GNU GPL version 2 or later
 # JSS LaTeX files can be downloaded from http://www.jstatsoft.org/downloads/JSSstyle.zip
 
-Format 54
+Format 49
 
 # Read the definitions from article.layout
 Input article.layout
@@ -17,3 +19,194 @@ Input article.layout
 AddToPreamble
     %\usepackage{Sweave}
 EndPreamble
+
+Style Title
+	InPreamble			1
+	Font
+	  Size				Huge
+	EndFont
+End
+
+Style "Plain Title"
+	CopyStyle			Title
+	LatexName			Plaintitle
+End
+
+Style Author
+	InPreamble			1
+End
+
+Style "Plain Author"
+	CopyStyle			Author
+	LatexName			Plainauthor
+End
+
+Style Abstract
+	Category			FrontMatter
+	LatexName			Abstract
+	LatexType			Command
+	InTitle				1
+	InPreamble			1
+	Margin				Dynamic
+	LeftMargin			MMNMM
+	ParSkip				0.4
+	BottomSep			1.5
+	TopSep				1.5
+	ParSep				1.5
+	TopSep				0.8
+	BottomSep			0.8
+	AlignPossible		Block, Left, Right, Center
+	Labeltype			Centered
+	LabelString			"Abstract"
+	Labelsep			M
+	LabelFont
+	  Series			Bold
+	EndFont
+End
+
+Style Address
+	CopyStyle			Abstract
+	LatexName			Address
+	Labeltype			Above
+	LabelString			"Affiliation:"
+	Margin				Static
+	LeftMargin			M
+	Labelsep			M
+	LabelFont
+	  Size				normal
+	EndFont
+End
+
+Style Keywords
+	CopyStyle			Abstract	
+	LatexName			Keywords
+	Font
+	  Size				Small
+	EndFont
+	Margin				Dynamic
+	LeftMargin			MMN
+	RightMargin			MMN
+	Align				Block
+	NextNoIndent		1
+	BottomSep			0.5
+	ParSkip				0.4
+	Labeltype			Static
+	LabelString			"Keywords:"
+	LabelFont
+	  Shape				Italic
+	EndFont
+End
+
+Style "Plain Keywords"
+	CopyStyle			Keywords
+	LatexName			Plainkeywords
+	LabelString			"Plain Keywords:"
+End
+
+Style "Short Title"
+	CopyStyle			Keywords
+	LatexName			Shorttitle
+	LabelString			"Short Title:"
+End
+
+InsetLayout "Flex:pkg"
+	LyxType				custom
+	LabelString			pkg
+	LatexType			command
+	LatexName			pkg
+	Font
+	  Color				foreground
+	  Size				Small
+	  Family			Roman
+	  Shape				Up
+	  Series			Medium
+	  Misc				No_Emph
+	  Misc				No_Noun
+	  Misc				No_Bar
+	  Series			Bold
+	EndFont
+	LabelFont
+	  Color				latex
+	  Size				Small
+	EndFont
+	InToc				true
+	HTMLTag				pkg
+	ResetsFont			true
+	spellcheck			false
+End
+
+InsetLayout "Flex:proglang"
+	CopyStyle			"Flex:pkg"
+	LabelString			proglang
+	LatexName			proglang
+	Font
+	  Family			Typewriter
+	  Series			Medium
+	EndFont
+	LabelFont
+	  Color				latex
+	  Size				Small
+	EndFont
+	HTMLTag				proglang
+End
+
+InsetLayout "Flex:code"
+	CopyStyle			"Flex:proglang"
+	LabelString			code
+	LatexName			code
+	HTMLTag				code
+End
+
+InsetLayout "Flex:E-mail"
+	CopyStyle			"Flex:URL"
+	LabelString			E-mail
+	LatexName			email
+	HTMLTag				email
+End
+
+Style "Code Chunk"
+	Category			MainText
+	LatexType			Environment
+	LatexName			CodeChunk
+	NextNoIndent		1
+	ParbreakIsNewline	1
+	FreeSpacing			1
+	PassThru			1
+	KeepEmpty			1
+	NewLine				0
+	TopSep				0.7
+	BottomSep			0.7
+	Align				Block
+	AlignPossible		Block
+	Labeltype			Above
+	LabelString			"Code Chunk"
+	Font
+	  Family			Typewriter
+	EndFont
+	LabelFont
+	  Series			Bold
+	  Color				Green
+	EndFont
+	HTMLTag				<pre></pre>
+	HTMLItem			p
+End
+
+Style "Standard Code"
+	CopyStyle			"Code Chunk"
+	LatexName			Code
+	LabelString			"Code"
+	TopSep				0
+	BottomSep			0
+End
+
+Style "Code Input"
+	CopyStyle			"Standard Code"
+	LatexName			CodeInput
+	LabelString			"Code Input"
+End
+
+Style "Code Output"
+	CopyStyle			"Standard Code"
+	LatexName			CodeOutput
+	LabelString			"Code Output"
+End
