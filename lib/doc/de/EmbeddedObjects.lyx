@@ -165,7 +165,7 @@
 % Damit der Index den Namen "Stichwortverzeichnis" erhält
 \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
 \end_preamble
-\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames
 \use_default_options false
 \begin_modules
 initials
@@ -19224,56 +19224,6 @@ Achtung:
 \end_layout
 
 \begin_layout Standard
-Momentan bietet LyX nur an, Tabellenzellen um 90
-\begin_inset space \thinspace{}
-\end_inset
-
-° gegen den Uhrzeigersinn zu rotieren.
- Um Zellen um Winkel Ihrer Wahl zu rotieren, müssen Sie dies zu Ihrem LaTeX-Vors
-pann hinzufügen:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-@ifundefined{turnbox}{
-\backslash
-usepackage{rotating}}{}
-\end_layout
-
-\begin_layout Standard
-In die Tabellenzelle, die rotiert werden soll, fügen Sie zu Beginn diesen
- Befehl als TeX-Code ein:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-begin{turn}{Winkel}
-\end_layout
-
-\begin_layout Standard
-wobei Winkel der Rotationswinkel in ° ist.
- Am Ende der Zellen wird der Befehl
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-end{turn}
-\end_layout
-
-\begin_layout Standard
-als TeX-Code eingefügt.
-\end_layout
-
-\begin_layout Standard
 Tabelle
 \begin_inset space ~
 \end_inset
@@ -19298,6 +19248,7 @@ Zellen um 45
 
 \begin_layout Standard
 \begin_inset Float table
+placement h
 wide false
 sideways false
 status open
@@ -19326,108 +19277,33 @@ Tabelle mit rotierten Zellen in der ersten Zeile.
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" rotate="45" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{turn}{45}
-\end_layout
-
-\end_inset
-
 Tassen
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{turn}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" rotate="45" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{turn}{45}
-\end_layout
-
-\end_inset
-
 Teller
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{turn}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" rotate="45" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{turn}{45}
-\end_layout
-
-\end_inset
-
 Untertassen
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{turn}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset

@@ -178,7 +178,7 @@
 \DeclareCaptionOption{large}[]{\def\captionfont{\large}}
 \DeclareCaptionOption{Large}[]{\def\captionfont{\Large}}
 \end_preamble
-\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames
 \use_default_options false
 \begin_modules
 initials
@@ -226,7 +226,7 @@ End
 \font_sf_scale 100
 \font_tt_scale 100
 \graphics default
-\default_output_format pdf
+\default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -18355,48 +18355,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-いまのところ、LyXでは、表セルは、反時計回りに90
-\begin_inset space \thinspace{}
-\end_inset
-
-°毎に回転させることしかできません。これ以外の角度にセルを回転させたい場合には、文書プリアンブルに
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-@ifundefined{turnbox}{
-\backslash
-usepackage{rotating}}{}
-\end_layout
-
-\begin_layout Standard
-と書き加えなくてはなりません。回転させる表セルの冒頭に、TeXコードで
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-begin{turn}{角度}
-\end_layout
-
-\begin_layout Standard
-というコマンドを書き加えてください。ここで角度は、°での回転角です。さらに、セルの終わりで、TeXコードで
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-end{turn}
-\end_layout
-
-\begin_layout Standard
 と入れてください。表
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -18437,108 +18395,33 @@ name "tab:回転表"
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" rotate="45" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{turn}{45}
-\end_layout
-
-\end_inset
-
 コップ
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{turn}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" rotate="45" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{turn}{45}
-\end_layout
-
-\end_inset
-
 皿
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{turn}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" rotate="45" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{turn}{45}
-\end_layout
-
-\end_inset
-
 受け皿
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{turn}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
