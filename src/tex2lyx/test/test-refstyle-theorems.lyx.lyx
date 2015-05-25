@@ -5,7 +5,77 @@
 \origin roundtrip
 \textclass book
 \begin_preamble
+%% Do not edit unless you really know what you are doing.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+
+\AtBeginDocument{\providecommand\partref[1]{\ref{part:#1}}}
+\AtBeginDocument{\providecommand\chapref[1]{\ref{chap:#1}}}
+\AtBeginDocument{\providecommand\secref[1]{\ref{sec:#1}}}
+\AtBeginDocument{\providecommand\subsecref[1]{\ref{subsec:#1}}}
+\AtBeginDocument{\providecommand\parref[1]{\ref{par:#1}}}
+\AtBeginDocument{\providecommand\figref[1]{\ref{fig:#1}}}
+\AtBeginDocument{\providecommand\tabref[1]{\ref{tab:#1}}}
+\AtBeginDocument{\providecommand\algref[1]{\ref{alg:#1}}}
+\AtBeginDocument{\providecommand\fnref[1]{\ref{fn:#1}}}
+\AtBeginDocument{\providecommand\enuref[1]{\ref{enu:#1}}}
+\AtBeginDocument{\providecommand\eqref[1]{\ref{eq:#1}}}
+\AtBeginDocument{\providecommand\lemref[1]{\ref{lem:#1}}}
+\AtBeginDocument{\providecommand\thmref[1]{\ref{thm:#1}}}
+\AtBeginDocument{\providecommand\corref[1]{\ref{cor:#1}}}
+\AtBeginDocument{\providecommand\propref[1]{\ref{prop:#1}}}
+\floatstyle{ruled}
+\newfloat{algorithm}{tbp}{loa}[chapter]
+\providecommand{\algorithmname}{Algorithm}
+\floatname{algorithm}{\protect\algorithmname}
+\RS@ifundefined{subsecref}{\newref{subsec}{name = \RSsectxt}}{}
+\RS@ifundefined{thmref}{\def\RSthmtxt{theorem~}\newref{thm}{name = \RSthmtxt}}{}
+\RS@ifundefined{lemref}{\def\RSlemtxt{lemma~}\newref{lem}{name = \RSlemtxt}}{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\theoremstyle{plain}
+\newtheorem{lem}[thm]{\protect\lemmaname}\theoremstyle{plain}
+\newtheorem{cor}[thm]{\protect\corollaryname}\theoremstyle{plain}
+\newtheorem{prop}[thm]{\protect\propositionname}\theoremstyle{plain}
+\newtheorem{conjecture}[thm]{\protect\conjecturename}\theoremstyle{plain}
+\newtheorem{fact}[thm]{\protect\factname}\theoremstyle{definition}
+\newtheorem{defn}[thm]{\protect\definitionname}\theoremstyle{definition}
+\newtheorem{example}[thm]{\protect\examplename}\theoremstyle{definition}
+\newtheorem{problem}[thm]{\protect\problemname}\theoremstyle{definition}
+\newtheorem{xca}[thm]{\protect\exercisename}\theoremstyle{remark}
+\newtheorem{rem}[thm]{\protect\remarkname}\theoremstyle{remark}
+\newtheorem{claim}[thm]{\protect\claimname}\ifx\proof\undefined
+\newenvironment{proof}[1][\protect\proofname]{\par
+\normalfont\topsep6\p@\@plus6\p@\relax
+\trivlist
+\itemindent\parindent
+\item[\hskip\labelsep\scshape #1]\ignorespaces
+}{%
+\endtrivlist\@endpefalse
+}
+\providecommand{\proofname}{Proof}
+\fi
+
+
+
 \usepackage{babel}
+\providecommand{\claimname}{Claim}
+\providecommand{\conjecturename}{Conjecture}
+\providecommand{\corollaryname}{Corollary}
+\providecommand{\definitionname}{Definition}
+\providecommand{\examplename}{Example}
+\providecommand{\exercisename}{Exercise}
+\providecommand{\factname}{Fact}
+\providecommand{\lemmaname}{Lemma}
+\providecommand{\problemname}{Problem}
+\providecommand{\propositionname}{Proposition}
+\providecommand{\remarkname}{Remark}
+\providecommand{\theoremname}{Theorem}
+
 
 \end_preamble
 \use_default_options false
