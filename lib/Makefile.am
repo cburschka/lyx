@@ -2308,10 +2308,51 @@ CLEANFILES += lyx@program_suffix@.desktop lyx.desktop-temp \
 endif
 dist_noinst_DATA += lyx.desktop.in images/lyx.svg images/lyx.png
 
+exampleandtemplate_files = \
+			   $(dist_caexamples_DATA) \
+			   $(dist_csexamples_DATA) \
+			   $(dist_daexamples_DATA) \
+			   $(dist_deexamples_DATA) \
+			   $(dist_elexamples_DATA) \
+			   $(dist_esexamples_DATA) \
+			   $(dist_euexamples_DATA) \
+			   $(dist_faexamples_DATA) \
+			   $(dist_frexamples_DATA) \
+			   $(dist_glexamples_DATA) \
+			   $(dist_heexamples_DATA) \
+			   $(dist_huexamples_DATA) \
+			   $(dist_idexamples_DATA) \
+			   $(dist_itexamples_DATA) \
+			   $(dist_jaexamples_DATA) \
+			   $(dist_koexamples_DATA) \
+			   $(dist_nlexamples_DATA) \
+			   $(dist_plexamples_DATA) \
+			   $(dist_ptexamples_DATA) \
+			   $(dist_roexamples_DATA) \
+			   $(dist_ruexamples_DATA) \
+			   $(dist_slexamples_DATA) \
+			   $(dist_skexamples_DATA) \
+			   $(dist_srexamples_DATA) \
+			   $(dist_svexamples_DATA) \
+			   $(dist_springerexamples_DATA) \
+			   $(dist_thesisexamples_DATA) \
+			   $(dist_ukexamples_DATA) \
+			   $(dist_examples_DATA) \
+			   $(dist_templates_DATA)
+
 install-data-hook:
 	$(CHMOD) 755 $(DESTDIR)$(pkgdatadir)/configure.py
 	for i in $(DESTDIR)$(scriptsdir)/*.py $(DESTDIR)$(scriptsdir)/listerrors ; do \
 		$(CHMOD) 755 $$i; \
+	done
+	for i in $(exampleandtemplate_files); do \
+		if $(EGREP) -q "^\\\\origin " "$(DESTDIR)$(pkgdatadir)/$$i"; then \
+			origin=`dirname "/systemlyxdir/$$i"`/; \
+			sed -e "s|^\\\\origin .*|\\\\origin $$origin|" \
+				"$(DESTDIR)$(pkgdatadir)/$$i" > "$(DESTDIR)$(pkgdatadir)/$$i.tmp"; \
+			mv -f "$(DESTDIR)$(pkgdatadir)/$$i.tmp" "$(DESTDIR)$(pkgdatadir)/$$i"; \
+			chmod 644 "$(DESTDIR)$(pkgdatadir)/$$i"; \
+		fi; \
 	done
 
 alltests: check alltests-recursive

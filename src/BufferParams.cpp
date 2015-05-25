@@ -54,6 +54,7 @@
 #include "support/gettext.h"
 #include "support/Messages.h"
 #include "support/mutex.h"
+#include "support/Package.h"
 #include "support/Translator.h"
 #include "support/lstrings.h"
 
@@ -660,6 +661,11 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\origin") {
 		lex.eatLine();
 		origin = lex.getString();
+		string const sysdirprefix = "/systemlyxdir/";
+		if (prefixIs(origin, sysdirprefix)) {
+			origin.replace(0, sysdirprefix.length() - 1,
+				package().system_support().absFileName());
+		}
 	} else if (token == "\\begin_preamble") {
 		readPreamble(lex);
 	} else if (token == "\\begin_local_layout") {
@@ -983,8 +989,13 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	// Prints out the buffer info into the .lyx file given by file
 
 	// the document directory
-	os << "\\origin "
-	   << (lyxrc.save_origin ? buf->filePath() : "unavailable") << '\n';
+	string filepath = buf->filePath();
+	string const sysdir = package().system_support().absFileName();
+	if (prefixIs(filepath, sysdir))
+		filepath.replace(0, sysdir.length(), "/systemlyxdir/");
+	else if (!lyxrc.save_origin)
+		filepath = "unavailable";
+	os << "\\origin " << filepath << '\n';
 
 	// the textclass
 	os << "\\textclass " << buf->includedFilePath(addName(buf->layoutPos(),
