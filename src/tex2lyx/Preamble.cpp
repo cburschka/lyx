@@ -1692,17 +1692,8 @@ void Preamble::parse(Parser & p, string const & forceclass,
 
 			add_known_theorem(name, opt1, !opt2.empty(), from_utf8(complete));
 
-			// we know that our theorem module already add automatically some
-			// theorem definition. They must not be output in the preamble to
-			// avoid LaTeX errors about redefinitions
-			if (complete == "\\newtheorem{thm}{\\protect\\theoremname}")
-				in_lyx_preamble = true;
-			else
-				in_lyx_preamble = false;
-
 			if (!in_lyx_preamble)
-				h_preamble << "\\newtheorem{" << name << '}'
-				           << opt1 << opt2 << '{' << body << '}' << opt3;
+				h_preamble << complete;
 		}
 
 		else if (t.cs() == "def") {

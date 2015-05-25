@@ -38,6 +38,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
 \theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}\theoremstyle{plain}
 \newtheorem{lem}[thm]{\protect\lemmaname}\theoremstyle{plain}
 \newtheorem{cor}[thm]{\protect\corollaryname}\theoremstyle{plain}
 \newtheorem{prop}[thm]{\protect\propositionname}\theoremstyle{plain}
