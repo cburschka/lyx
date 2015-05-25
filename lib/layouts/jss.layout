@@ -48,7 +48,8 @@ Style Abstract
 	InTitle				1
 	InPreamble			1
 	Margin				Dynamic
-	LeftMargin			MMNMM
+	LeftMargin			MM
+	NextNoIndent		1
 	ParSkip				0.4
 	BottomSep			1.5
 	TopSep				1.5
@@ -67,7 +68,7 @@ End
 Style Address
 	CopyStyle			Abstract
 	LatexName			Address
-	Labeltype			Above
+	LabelType			Above
 	LabelString			"Affiliation:"
 	Margin				Static
 	LeftMargin			M
@@ -152,6 +153,7 @@ End
 
 InsetLayout "Flex:code"
 	CopyStyle			"Flex:proglang"
+	Spellcheck			0
 	LabelString			code
 	LatexName			code
 	HTMLTag				code
@@ -168,6 +170,7 @@ Style "Code Chunk"
 	Category			MainText
 	LatexType			Environment
 	LatexName			CodeChunk
+	Spellcheck			0
 	NextNoIndent		1
 	ParbreakIsNewline	1
 	FreeSpacing			1
@@ -209,4 +212,23 @@ Style "Code Output"
 	CopyStyle			"Standard Code"
 	LatexName			CodeOutput
 	LabelString			"Code Output"
+End
+
+Style Appendix
+	LatexType			Environment
+	LatexName			appendix
+	Category			BackMatter
+	TopSep				0.6
+	BottomSep			0.6
+	Margin				First_Dynamic
+	Align				Block
+	NextNoIndent		1
+	LabelType			Above
+	LabelString			"Appendix"
+	LabelSep			M
+	LabelFont
+	  Series			Bold
+	  Shape				Up
+	  Size				large
+	EndFont
 End
