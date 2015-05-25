@@ -518,14 +518,14 @@ Menuset
 		Submenu "Change Tracking|C" "document_change"
 		OptItem "Build Program|B" "build-program"
 		Item "LaTeX Log|L" "dialog-show latexlog"
-		Item "Start Appendix Here|A" "appendix"
+		Item "Start Appendix Here|x" "appendix"
 		Separator
 		ViewFormats
 		UpdateFormats
 		OptItem "View Master Document|M" "master-buffer-view"
 		OptItem "Update Master Document|a" "master-buffer-update"
 		Separator
-		Item "Compressed|m" "buffer-toggle-compression"
+		Item "Compressed|o" "buffer-toggle-compression"
 		Item "Disable Editing|E" "buffer-toggle-read-only"
 		Item "Settings...|S" "dialog-show document"
 	End
