@@ -2,7 +2,7 @@
 \lyxformat 495
 \begin_document
 \begin_header
-\origin D:/LyXGit/Master/src/tex2lyx/test/
+\origin roundtrip
 \textclass article
 \begin_preamble
 %% Do not edit unless you really know what you are doing.
@@ -24,12 +24,9 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
-\providecommand{\LyX}{L\kern-.1667em\lower.25em\hbox{Y}\kern-.125emX\@}
-\newcommand{\lyxline}[1][1pt]{%
-  \par\noindent%
-  \rule[.5ex]{\linewidth}{#1}\par}
 
-\newcommand{\lyxarrow}{\leavevmode\,$\triangleright$\,\allowbreak}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 
@@ -786,7 +783,7 @@ We can input files too, like this
 \begin_inset CommandInset include
 LatexCommand input
 preview false
-filename "DummyDocument.lyx"
+filename "DummyDocument.lyx.lyx"
 
 \end_inset
 
@@ -794,7 +791,7 @@ filename "DummyDocument.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 preview false
-filename "Dummy Document.lyx"
+filename "Dummy Document.lyx.lyx"
 
 \end_inset
 
@@ -802,7 +799,7 @@ filename "Dummy Document.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 preview false
-filename "Dummy Document.lyx"
+filename "Dummy Document.lyx.lyx"
 
 \end_inset
 
@@ -810,7 +807,7 @@ filename "Dummy Document.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 preview false
-filename "Dummy~Document.lyx"
+filename "Dummy~Document.lyx.lyx"
 
 \end_inset
 
@@ -818,7 +815,7 @@ filename "Dummy~Document.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 preview false
-filename "Dummy~Document.lyx"
+filename "Dummy~Document.lyx.lyx"
 
 \end_inset
 
@@ -5812,7 +5809,7 @@ Special formattings
 \end_layout
 
 \begin_layout Subsection
-LyX line
+Rules
 \end_layout
 
 \begin_layout Standard
@@ -5820,13 +5817,6 @@ test
 \end_layout
 
 \begin_layout Standard
-
-\size tiny
-
-\end_layout
-
-\begin_layout Standard
-\noindent
 
 \size tiny
 
@@ -5858,24 +5848,6 @@ test
 \end_layout
 
 \begin_layout Standard
-\noindent
-
-\begin_inset CommandInset line
-LatexCommand rule
-offset "0.5ex"
-width "100line%"
-height "1pt"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-test
-\end_layout
-
-\begin_layout Standard
 
 \size giant
 
@@ -5899,10 +5871,6 @@ height "1pt"
 
 \size giant
 
-\end_layout
-
-\begin_layout Subsection
-rules
 \end_layout
 
 \begin_layout Standard
