@@ -93,22 +93,22 @@ Style Address
 End
 
 Style Keywords
-	CopyStyle			Abstract	
-	LatexName			Keywords
-	Font
-	  Size				Small
-	EndFont
 	Margin				Dynamic
-	LeftMargin			MMN
-	RightMargin			MMN
-	Align				Block
+	LatexType			Command
+	LatexName			Keywords
+	Category			FrontMatter
+	InTitle				1
+	InPreamble			1
 	NextNoIndent		1
 	BottomSep			0.5
 	ParSkip				0.4
-	Labeltype			Static
+	Align				Block
+	LabelSep			xx
+	LabelType			Static
 	LabelString			"Keywords:"
 	LabelFont
-	  Shape				Italic
+	  Color				Green
+	  Series			Bold
 	EndFont
 End
 
