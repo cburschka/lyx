@@ -219,11 +219,23 @@ bool Dialog::isVisibleView() const
 
 Inset const * Dialog::inset(InsetCode code) const
 {
+	// ins: the innermost inset of the type we look for
+	//      that contains the cursor
 	Inset * ins = bufferview()->cursor().innerInsetOfType(code);
-	if (!ins)
-		ins = bufferview()->cursor().nextInset();
-	if (!ins || ins->lyxCode() != code)
-		return 0;
+	// next: a potential inset at cursor position
+	Inset * next = bufferview()->cursor().nextInset();
+	// Check if next is of the type we look for
+	if (next)
+		if (next->lyxCode() != code)
+			next = 0;
+	if (ins) {
+		// prefer next if it is of the requested type (bug 8716)
+		if (next)
+			ins = next;
+	} else
+		// no containing inset of requested type
+		// use next (which might also be 0)
+		ins = next;
 	return ins;
 }
 
