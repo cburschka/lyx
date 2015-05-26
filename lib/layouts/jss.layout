@@ -20,6 +20,21 @@ AddToPreamble
     %\usepackage{Sweave}
 EndPreamble
 
+Style Section
+	LabelString			\thesection.
+End
+
+Style Subsection
+	LabelString			\thesubsection.
+End
+
+Style Subsubsection
+	LabelType			No_Label
+	Font
+	  Shape				Italic
+	EndFont
+End
+
 Style Title
 	InPreamble			1
 	Font
@@ -48,7 +63,7 @@ Style Abstract
 	InTitle				1
 	InPreamble			1
 	Margin				Dynamic
-	LeftMargin			MM
+	LeftMargin			M
 	NextNoIndent		1
 	ParSkip				0.4
 	BottomSep			1.5
@@ -59,7 +74,6 @@ Style Abstract
 	AlignPossible		Block, Left, Right, Center
 	Labeltype			Centered
 	LabelString			"Abstract"
-	Labelsep			M
 	LabelFont
 	  Series			Bold
 	EndFont
