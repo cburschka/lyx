@@ -199,6 +199,7 @@ void Text::setLayout(Cursor & cur, docstring const & layout)
 	pit_type end = cur.selEnd().pit() + 1;
 	cur.recordUndoSelection();
 	setLayout(start, end, layout);
+	cur.setCurrentFont();
 	cur.forceBufferUpdate();
 }
 
