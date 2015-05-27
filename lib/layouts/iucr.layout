@@ -1,0 +1,260 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[iucr,float.sty,harvard.sty,multicol.sty,tabularx.sty]{International Union of Crystallography (IUCr)}
+#  \DeclareCategory{Articles}
+# IUCr article textclass definition file.
+# Author: Uwe Stöhr (uwestoehr@web.de)
+# IUCr LaTeX files can be downloaded from ftp://ftp.iucr.org/templates/latex/
+
+Format 54
+
+Columns				1
+Sides				1
+SecNumDepth			3
+TocDepth			3
+DefaultStyle		Standard
+
+ClassOptions
+	FontSize		10
+end
+
+Style Standard
+	Category		MainText
+	Margin			Static
+	LatexType		Paragraph
+	LatexName		dummy
+	ParIndent		MM
+	ParSkip			0.4
+	Align			Block
+	AlignPossible	Block, Left, Right, Center
+	LabelType		No_Label
+End
+
+Input stdtitle.inc
+Input stdcounters.inc
+Input stdfloats.inc
+Input stdlists.inc
+Input stdsections.inc
+Input stdstarsections.inc
+Input stdstruct.inc
+
+NoStyle Chapter
+NoCounter chapter
+NoStyle Chapter*
+NoStyle Author
+NoStyle Bibliography
+
+Style Section
+	LabelString			\thesection.
+	LabelStringAppendix	\thesection
+	Align				Center
+End
+
+Style Subsection
+	LabelString			\thesubsection.
+	Font
+	  Shape				Italic
+	  Size				Normal
+	EndFont
+End
+
+Style Subsubsection
+	LabelString			\thesubsubsection.
+	Font
+	  Shape				Italic
+	EndFont
+End
+
+Style "Short Title"
+	CopyStyle		Title
+	LatexName		shorttitle
+	Font
+	  Size			Small
+	EndFont
+End
+
+InsetLayout "Flex:City"
+	LyxType			custom
+	LatexType		command
+	ForcePlain		1
+	LatexName		city
+	LabelString		"City"
+	Font
+	  Color			foreground
+	  Size			Small
+	  Family		Roman
+	  Shape			Up
+	  Series		Medium
+	  Misc			No_Emph
+	  Misc			No_Noun
+	  Misc			No_Bar
+	EndFont
+	LabelFont
+	  Color			green
+	  Size			Small
+	EndFont
+End
+
+InsetLayout "Flex:Country"
+	CopyStyle		"Flex:City"
+	LatexName		country
+	LabelString		"Country"
+End
+
+InsetLayout "Flex:Author Footnote"
+	CopyStyle		"Flex:City"
+	LatexName		aufn
+	LabelString		"Author Footnote"
+End
+
+Style "Main Author"
+	Margin			Static
+	LatexType		Command
+	LatexName		cauthor
+	Category		FrontMatter
+	InTitle			1
+	NextNoIndent	1
+	Argument 1
+	  LabelString	"Affiliation Key"
+	  Tooltip		"Affiliation key of the author"
+	EndArgument
+	Argument 2
+	  Mandatory		1
+	  LabelString	"Forename"
+	  Tooltip		"Forename"
+	EndArgument
+	Argument 3
+	  Mandatory		1
+	  LabelString	"Surname"
+	  Tooltip		"Surname"
+	EndArgument
+	Argument 4
+	  Mandatory		1
+	  LabelString	"Email"
+	  Tooltip		"Email"
+	  Font
+	    Shape		Italic
+	  EndFont
+	EndArgument
+	BottomSep		0.5
+	ParSkip			0.4
+	Align			Center
+	LabelType		No_Label
+End
+
+Style "Co Author"
+	CopyStyle		"Main Author"
+	LatexName		author
+	LabelString		"Co-author"
+	ResetArgs		1
+	Argument 1
+	  LabelString	"Affiliation Key"
+	  Tooltip		"Affiliation key of the co-author"
+	EndArgument
+	Argument 2
+	  Mandatory		1
+	  LabelString	"Forename"
+	  Tooltip		"Forename"
+	EndArgument
+End
+
+Style "Short Author"
+	CopyStyle		"Co Author"
+	LatexName		shortauthor
+	LabelString		"Short author:"
+	ResetArgs		1
+	LabelType		Static
+	Align			Block
+	Margin			Dynamic
+	LabelSep		xx
+	LabelFont
+	  Series		Bold
+	  Color			Green
+	EndFont
+End
+
+Style Affiliation
+	CopyStyle		"Short Author"
+	LatexName		aff
+	Category		FrontMatter
+	LabelString		"Affiliation:"
+	Argument 1
+	  LabelString	"Affiliation Key"
+	  Tooltip		"Affiliation key"
+	EndArgument
+	Font
+	  Shape			Italic
+	EndFont
+	LabelFont
+	  Series		Bold
+	  Color			Green
+	  Shape			Up
+	EndFont
+End
+
+Style Keyword
+	CopyStyle		"Short Author"
+	LatexName		keyword
+	LabelString		"Keyword:"
+End
+
+Style Vita
+	CopyStyle		"Short Author"
+	LatexName		vita
+	LabelString		"Vita:"
+End
+
+Style "PDB reference"
+	CopyStyle		"Short Author"
+	LatexName		PDBreference
+	LabelString		"PDB reference:"
+	Argument 1
+	  LabelString	"Name"
+	  Tooltip		"Optional name"
+	EndArgument
+End
+
+Style "NDB reference"
+	CopyStyle		"PDB reference"
+	LatexName		NDBreference
+	LabelString		"NDB reference:"
+End
+
+Style Synopsis
+  CopyStyle			Abstract
+  LatexName			synopsis
+  LabelString		"Synopsis"
+  Align				Left
+  AlignPossible		Left
+End
+
+Style Acknowledgements
+  CopyStyle			"Short Author"
+  LatexName			ack
+  LabelString		"Acknowledgements:"
+  Category			BackMatter
+  TopSep			0.7
+End
+
+InsetLayout "Flex:References"
+  CopyStyle			"Flex:City"
+  LatexType			Environment
+  LatexName			references
+  Decoration		Classic
+  ForcePlain		0
+  Spellcheck		0
+  ParbreakIsNewline	1
+  FreeSpacing		1
+  KeepEmpty			1
+  LabelString		"References"
+  LabelFont
+    Color			Green
+  EndFont
+End
+
+Style Reference
+  CopyStyle			"Short Author"
+  LatexName			reference
+  Category			BackMatter
+  LabelString		"Reference:"
+  Align				Left
+End

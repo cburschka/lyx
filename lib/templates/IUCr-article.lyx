@@ -1,0 +1,906 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 495
+\begin_document
+\begin_header
+\origin /systemlyxdir/templates/
+\textclass iucr
+\begin_preamble
+% values according to sec. 4.1 of the IUCr documentation
+\paperprodcode{a000000} % Replace with production code if known
+\paperref{xx9999} % Replace xx9999 with reference code if known
+\papertype{FA} % Indicate type of article
+                                  %   FA - research papers (full article)
+                                  %   SC - short communications
+                                  %   FC - fast communications
+                                  %   LA - lead article
+                                  %   TR - topical review
+                                  %   XL - crystallization papers
+\paperlang{english} % Language
+\journalcode{A} % Indicate the journal to which submitted
+                                  %   A - Acta Crystallographica Section A
+                                  %   B - Acta Crystallographica Section B
+                                  %   C - Acta Crystallographica Section C
+                                  %   D - Acta Crystallographica Section D
+                                  %   J - Journal of Applied Crystallography
+                                  %   S - Journal of Synchrotron Radiation
+
+% The following entries will be changed as required by editorial staff
+\journalyr{2003}
+%\journaliss{1}
+%\journalvol{57}
+%\journalfirstpage{1}
+%\journallastpage{11}
+\journalreceived{\relax}
+\journalaccepted{\relax}
+\journalonline{\relax}
+
+%\usepackage{harvard}
+\end_preamble
+\options preprint
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This is a template \SpecialChar LyX
+ file for articles to be submitted to the International
+ Journal of Modern Physics section C (IJMPC).
+ How to install the IJMPC \SpecialChar LaTeX
+ class to your \SpecialChar LaTeX
+ system is explained in 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://wiki.lyx.org/Layouts/IUCr
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Use no document class option only for Acta A, JAC full article.
+ In all other cases use these document class option(s):
+\end_layout
+
+\begin_layout Plain Layout
+
+\family sans
+preprint
+\family default
+ - for initial submissions to a journal
+\end_layout
+
+\begin_layout Plain Layout
+
+\family sans
+abstract
+\family default
+ - for conference abstracts
+\end_layout
+
+\begin_layout Plain Layout
+
+\family sans
+d
+\family default
+ - Acta B, D full article
+\end_layout
+
+\begin_layout Plain Layout
+
+\family sans
+s
+\family default
+ - JSR full article
+\end_layout
+
+\begin_layout Plain Layout
+
+\family sans
+short
+\family default
+ - Acta A, JAC short article
+\end_layout
+
+\begin_layout Plain Layout
+
+\family sans
+d, short
+\family default
+ - Acta B, D short article
+\end_layout
+
+\begin_layout Plain Layout
+
+\family sans
+s, short
+\family default
+ - JSR short article
+\end_layout
+
+\begin_layout Plain Layout
+
+\family sans
+conference
+\family default
+ - JAC conference paper
+\end_layout
+
+\begin_layout Plain Layout
+
+\family sans
+s, conference
+\family default
+- JSR conference paper
+\end_layout
+
+\begin_layout Plain Layout
+For more journal codes see the preamble of this document.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Title
+\end_layout
+
+\begin_layout Short Title
+short title
+\end_layout
+
+\begin_layout Main Author
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+a,b
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+John
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+Doe
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+doe@any.where
+\end_layout
+
+\end_inset
+
+address
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+add address only if it differs from the main address
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Use lower-case letters as key to link authors to their affiliations.
+ If there is only one affiliation, remove the key inset.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Author Footnote
+status open
+
+\begin_layout Plain Layout
+On leave from Institute of Advanced Research, Albany, Ruritania.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Co Author
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+b
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+J.
+\end_layout
+
+\end_inset
+
+Soape
+\end_layout
+
+\begin_layout Co Author
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+a
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+A.
+ N.
+\end_layout
+
+\end_inset
+
+Author
+\end_layout
+
+\begin_layout Short Author
+Soape, Author and Doe
+\end_layout
+
+\begin_layout Affiliation
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+a
+\end_layout
+
+\end_inset
+
+Baskerville Lodge, 
+\begin_inset Flex City
+status open
+
+\begin_layout Plain Layout
+Dartmoor
+\end_layout
+
+\end_inset
+
+, Devon, 
+\begin_inset Flex Country
+status open
+
+\begin_layout Plain Layout
+England
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Affiliation
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+b
+\end_layout
+
+\end_inset
+
+3 Watery Way, 
+\begin_inset Flex City
+status open
+
+\begin_layout Plain Layout
+Full Fathom
+\end_layout
+
+\end_inset
+
+ 5, 
+\begin_inset Flex Country
+status open
+
+\begin_layout Plain Layout
+Atlantis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Vita
+Joe Soape is an archetypal generic author, whose association with the much-trave
+lled Kilroy has extended over many years.
+ He travels to work each day on a Clapham omnibus.
+\begin_inset Newline newline
+\end_inset
+
+John Doe is also a generic individual with extensive experience of legal
+ and forensic matters.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+A vita is only required for authors of invited review papers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Keyword
+X-ray diffraction
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+use the keyword environment for each word or phrase
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Keyword
+muscle
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+PDB and NDB reference codes for structures referenced in the article and
+ deposited with the Protein Data Bank and Nucleic Acids Database (Acta Crystallo
+graphica Section D).
+ Repeat for each separate structure, e.g.:
+\end_layout
+
+\begin_layout PDB reference
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+dethiobiotin synthetase
+\end_layout
+
+\end_inset
+
+1byi
+\end_layout
+
+\begin_layout NDB reference
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+d(G
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+$_4$CGC$_4$
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+ad0002
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Synopsis
+Synopsis text
+\end_layout
+
+\begin_layout Abstract
+The entire abstract should fit into a single column.
+ The body text of the abstract should be a single paragraph.
+\end_layout
+
+\begin_layout Abstract
+References, figures and tables (if any) should be restricted to those necessary
+ for the comprehension of the abstract.
+ References should be indicated by numbers in square brackets, [1], [2]
+ 
+\shape italic
+etc.
+\shape default
+, in the text, and be listed at the end of the abstract.
+ Figures and tables should be placed at the appropriate point(s) in the
+ text.
+ 
+\end_layout
+
+\begin_layout Section
+A section
+\end_layout
+
+\begin_layout Standard
+some text
+\end_layout
+
+\begin_layout Subsection
+subsection
+\end_layout
+
+\begin_layout Standard
+A citation:
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lamport86"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+subsubsection
+\end_layout
+
+\begin_layout Standard
+text
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Caption to table (optional).
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="right" valignment="top">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+HEADING 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+FOR 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+EACH 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+COLUMN 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+entry 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+entry 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+entry 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+entry 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+entry 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+entry 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+entry 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+entry 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+entry 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+entry 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+entry 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+entry 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Caption describing figure (optional).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Acknowledgements
+Acknowledgment text
+\end_layout
+
+\begin_layout Standard
+You can either use plain references:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex References
+status open
+
+\begin_layout Reference
+Parthé, E.
+ & Gelato, L.
+ (1984).
+\emph on
+Acta Cryst.
+
+\emph default
+ A
+\series bold
+40
+\series default
+, 169–183.
+\end_layout
+
+\begin_layout Reference
+Rauch, H.
+ & Petrascheck, D.
+ (1976).
+ 
+\emph on
+Grundlagen für ein Laue-Neutroneninterferometer Teil 1: Dynamische Beugung.
+
+\emph default
+ Report AIAU 74405b.
+ Atominstitut der Österreichischen Universitäten, Austria.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Or Bib\SpecialChar TeX
+:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+You must use the bibliography style 
+\family sans
+iucr
+\family default
+ (part of the 
+\series bold
+iucr
+\series default
+ LaTeX bundle).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "iucr"
+options "iucr"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+An appendix section
+\end_layout
+
+\begin_layout Subsection
+Appendix subsection
+\end_layout
+
+\begin_layout Subsubsection
+subsub
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+referencelist 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+referencelist is necessary for submissions.
+ See the 
+\series bold
+iucr
+\series default
+ documentation for how this is used.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

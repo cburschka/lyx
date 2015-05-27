@@ -2054,6 +2054,7 @@ dist_layouts_DATA =\
 	layouts/initials.module \
 	layouts/iopart.layout \
 	layouts/isprs.layout \
+	layouts/iucr.layout \
 	layouts/jarticle.layout \
 	layouts/jasatex.layout \
 	layouts/jbook.layout \
@@ -2240,6 +2241,7 @@ dist_templates_DATA = \
 	templates/IJMPC.lyx \
 	templates/IJMPD.lyx \
 	templates/IOP-article.lyx \
+	templates/IUCr-article.lyx \
 	templates/ja_beamer-conference-ornate-20min.lyx \
 	templates/JASA.lyx \
 	templates/JSS-article.lyx \
