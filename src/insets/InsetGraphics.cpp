@@ -119,8 +119,14 @@ string findTargetFormat(string const & format, OutputParams const & runparams)
 	}
 	// for HTML, we leave the known formats and otherwise convert to png
 	if (runparams.flavor == OutputParams::HTML) {
+		Format const * const f = formats.getFormat(format);
+		// Convert vector graphics to svg
+		if (f && f->vectorFormat() && theConverters().isReachable(format, "svg"))
+			return "svg";
+		// Leave the known formats alone
 		if (format == "jpg" || format == "png" || format == "gif")
 			return format;
+		// Convert everything else to png
 		return "png";
 	}
 	// If it's postscript, we always do eps.
