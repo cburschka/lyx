@@ -14,13 +14,23 @@
 
 * The prefix for subsections in labels and references has been changed from
   "sub:" to "subsec:" in order to avoid a clash with subfloats (conflicting
-  \subref command, see bug #7550). Files are automatically converted to the new scheme.
-  Please assure that you adapt external refstyle or prettyref definitions and
-  your own layout files.
+  \subref command, see bug #7550). Files are automatically converted to the new 
+  scheme. Please assure that you adapt external refstyle or prettyref definitions 
+  and your own layout files.
+
+* Support for printing from within LyX (File> Print) has been removed. LyX's 
+  printing support was very limited, and most users will want to print after 
+  reviewing an output document (e.g., a PDF), anyway, which can be done from the
+  PDF viewer. 
+  Users who would like to restore this functionality can create a "printer"
+  format from within LyX and then define, say, a pdf->printer converter that does
+  nothing but call lpd, or a2ps, or whatever. The "printer" will then be available
+  as an export option.
+  
 
 !!!The following pref variables were added in 2.2:
 
-* \save_origin:
+* \save_origin
   This variable was introduced to allow saving the document directory
   path in the document. If allowed, LyX will be able to locate all
   included files even when the document is manually moved/copied to
@@ -35,21 +45,35 @@
 
 !!!The following pref variables are obsoleted in 2.2:
 
-* \rtl:
+* \rtl
   This variable was introduced to guard against any bad consequence of
   the then-new right-to-left languages support. It is no longer needed
   because of improvements. Now right-to-left support is always enabled.
 
+* \printer
+* \print_adapt_output
+* \print_command
+* \print_evenpage_flag
+* \print_oddpage_flag
+* \print_pagerange_flag
+* \print_copies_flag
+* \print_collcopies_flag
+* \print_reverse_flag
+* \print_to_printer
+* \print_to_file
+* \print_file_extension:
+  These were used for print support, which has been removed.  
+
 
 !!!The following new LyX functions have been introduced in 2.2:
 
-* buffer-view-cache:
+* buffer-view-cache
   Opens the last previewed output of the buffer, if it exists.
 
-* buffer-move-next:
+* buffer-move-next
   Moves the current tab one spot to the right.
 
-* buffer-move-previous:
+* buffer-move-previous
   Moves the current tab one spot to the left.
 
 
