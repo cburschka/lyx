@@ -1,7 +1,8 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 487
+\lyxformat 495
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -3710,7 +3711,7 @@ http://www.wkap.nl/jrnllist.htm/JRNLHOME
 KOMA-Script
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Koma-Script"
+name "subsec:Koma-Script"
 
 \end_inset
 
@@ -3816,7 +3817,7 @@ Notes: These letter classes are bundled with the Koma-Script classes (see
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Koma-Script"
+reference "subsec:Koma-Script"
 
 \end_inset
 
@@ -6764,13 +6765,27 @@ Notes: The package
 polyglossia
 \family default
  provides a language interface specifically for Xe\SpecialChar TeX
+
+\change_inserted -712698321 1432730282
+ and Lua\SpecialChar TeX
+
+\change_unchanged
 .
  It aims to supersede the 
 \family sans
 babel
 \family default
  package by using Xe\SpecialChar TeX
-'s mutlilingual and multiscript facilities.
+'s
+\change_inserted -712698321 1432730291
+ and
+\change_unchanged
+ 
+\change_inserted -712698321 1432730298
+Lua\SpecialChar TeX
+'s 
+\change_unchanged
+mutlilingual and multiscript facilities.
  If installed, 
 \family sans
 polyglossia
@@ -6780,7 +6795,12 @@ polyglossia
 babel
 \family default
  when Xe\SpecialChar TeX
- is used as output format.
+ 
+\change_inserted -712698321 1432730308
+or Lua\SpecialChar TeX
+ 
+\change_unchanged
+is used as output format.
 \end_layout
 
 \begin_layout Subsection

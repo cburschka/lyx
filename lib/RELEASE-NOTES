@@ -79,6 +79,10 @@
 
 * LyX now gives an error if the underlying LaTeX command exited with error.
 
+* With LuaTeX, LyX now uses polyglossia instead of babel if the language
+  package option "Automatic" is selected. In order to use babel, select
+  "Always babel" instead.
+
 
 !!Known issues in version 2.2.0
 
