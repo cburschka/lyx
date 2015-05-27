@@ -214,7 +214,7 @@ nojss
 
 \begin_layout Title
 A Capitalized Title: Something about a Package 
-\begin_inset Flex pkg
+\begin_inset Flex Pkg
 status open
 
 \begin_layout Plain Layout
@@ -280,7 +280,7 @@ optional
 \end_layout
 
 \begin_layout Short Title
-\begin_inset Flex pkg
+\begin_inset Flex Pkg
 status open
 
 \begin_layout Plain Layout
@@ -315,7 +315,7 @@ e abstract of the article.The abstract of the article.The abstract of the
 
 \begin_layout Keywords
 keywords, comma-separated, not capitalized, 
-\begin_inset Flex proglang
+\begin_inset Flex Proglang
 status open
 
 \begin_layout Plain Layout
@@ -412,7 +412,7 @@ Fax: +43/512/507-2851
 
 \begin_layout Section
 About package 
-\begin_inset Flex pkg
+\begin_inset Flex Pkg
 status open
 
 \begin_layout Plain Layout
@@ -422,7 +422,7 @@ foo
 \end_inset
 
  in 
-\begin_inset Flex proglang
+\begin_inset Flex Proglang
 status open
 
 \begin_layout Plain Layout
@@ -458,7 +458,7 @@ The short title provides bookmarks for PDF files
 The special JSS style commands related to software and mathematical formulas
  are written as follows in \SpecialChar LyX
 : 
-\begin_inset Flex proglang
+\begin_inset Flex Proglang
 status open
 
 \begin_layout Plain Layout
@@ -468,7 +468,7 @@ R
 \end_inset
 
  or 
-\begin_inset Flex proglang
+\begin_inset Flex Proglang
 status open
 
 \begin_layout Plain Layout
@@ -478,7 +478,7 @@ R
 \end_inset
 
  for the names of programming languages, 
-\begin_inset Flex pkg
+\begin_inset Flex Pkg
 status open
 
 \begin_layout Plain Layout
@@ -488,7 +488,7 @@ foo
 \end_inset
 
  or 
-\begin_inset Flex pkg
+\begin_inset Flex Pkg
 status open
 
 \begin_layout Plain Layout
@@ -498,7 +498,7 @@ foo
 \end_inset
 
  for software packages, and 
-\begin_inset Flex code
+\begin_inset Flex Code
 status open
 
 \begin_layout Plain Layout
@@ -508,7 +508,7 @@ some code
 \end_inset
 
  or 
-\begin_inset Flex pkg
+\begin_inset Flex Pkg
 status open
 
 \begin_layout Plain Layout
@@ -588,54 +588,68 @@ Prob
 Writing several lines of code:
 \end_layout
 
-\begin_layout Code Chunk
+\begin_layout Standard
+\begin_inset Flex Code Chunk
+status open
 
-\end_layout
+\begin_layout Code
 
-\begin_deeper
-\begin_layout Standard Code
 first line of code
 \end_layout
 
-\begin_layout Standard Code
+\begin_layout Code
+
 second line of code
 \end_layout
 
-\begin_layout Standard Code
+\begin_layout Code
+
 third line of code
 \end_layout
 
-\end_deeper
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 Alternatively, you can distinguish between input and output code:
 \end_layout
 
-\begin_layout Code Chunk
+\begin_layout Standard
+\begin_inset Flex Code Chunk
+status open
 
-\end_layout
-
-\begin_deeper
 \begin_layout Code Input
+
 first line of input code
 \end_layout
 
 \begin_layout Code Input
+
 second line of input code
 \end_layout
 
 \begin_layout Code Output
+
 first line of output code
 \end_layout
 
 \begin_layout Code Output
+
 second line of output code
 \end_layout
 
 \begin_layout Code Output
+
 third line of output code
 \end_layout
 
-\end_deeper
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section*
 Acknowledgments
 \end_layout

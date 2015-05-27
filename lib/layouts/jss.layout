@@ -126,7 +126,7 @@ Style "Short Title"
 	LabelString			"Short Title:"
 End
 
-InsetLayout "Flex:pkg"
+InsetLayout "Flex:Pkg"
 	LyxType				custom
 	LabelString			pkg
 	LatexType			command
@@ -146,14 +146,13 @@ InsetLayout "Flex:pkg"
 	  Color				latex
 	  Size				Small
 	EndFont
-	InToc				true
 	HTMLTag				pkg
 	ResetsFont			true
 	spellcheck			false
 End
 
-InsetLayout "Flex:proglang"
-	CopyStyle			"Flex:pkg"
+InsetLayout "Flex:Proglang"
+	CopyStyle			"Flex:Pkg"
 	LabelString			proglang
 	LatexName			proglang
 	Font
@@ -167,8 +166,8 @@ InsetLayout "Flex:proglang"
 	HTMLTag				proglang
 End
 
-InsetLayout "Flex:code"
-	CopyStyle			"Flex:proglang"
+InsetLayout "Flex:Code"
+	CopyStyle			"Flex:Proglang"
 	Spellcheck			0
 	LabelString			code
 	LatexName			code
@@ -182,10 +181,31 @@ InsetLayout "Flex:E-mail"
 	HTMLTag				email
 End
 
-Style "Code Chunk"
-	Category			MainText
+InsetLayout "Flex:Code Chunk"
+	CopyStyle			"Flex:Pkg"
 	LatexType			Environment
 	LatexName			CodeChunk
+	Decoration			Classic
+	Spellcheck			0
+	ParbreakIsNewline	1
+	FreeSpacing			1
+	PassThru			1
+	KeepEmpty			1
+	LabelString			"Code Chunk"
+	Font
+	  Family			Typewriter
+	EndFont
+	LabelFont
+	  #Series			Bold
+	  Color				Green
+	EndFont
+End
+
+Style "Code"
+	LatexName			Code
+	LabelString			"Code"
+	LatexType			Environment
+	LatexName			Code
 	Spellcheck			0
 	NextNoIndent		1
 	ParbreakIsNewline	1
@@ -193,12 +213,11 @@ Style "Code Chunk"
 	PassThru			1
 	KeepEmpty			1
 	NewLine				0
-	TopSep				0.7
-	BottomSep			0.7
+	TopSep				0
+	BottomSep			0
 	Align				Block
 	AlignPossible		Block
 	Labeltype			Above
-	LabelString			"Code Chunk"
 	Font
 	  Family			Typewriter
 	EndFont
@@ -210,22 +229,14 @@ Style "Code Chunk"
 	HTMLItem			p
 End
 
-Style "Standard Code"
-	CopyStyle			"Code Chunk"
-	LatexName			Code
-	LabelString			"Code"
-	TopSep				0
-	BottomSep			0
-End
-
 Style "Code Input"
-	CopyStyle			"Standard Code"
+	CopyStyle			"Code"
 	LatexName			CodeInput
 	LabelString			"Code Input"
 End
 
 Style "Code Output"
-	CopyStyle			"Standard Code"
+	CopyStyle			"Code"
 	LatexName			CodeOutput
 	LabelString			"Code Output"
 End

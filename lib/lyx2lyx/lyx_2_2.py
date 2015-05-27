@@ -1223,7 +1223,7 @@ def revert_jss(document):
       while m != -1 or j != -1 or h != -1 or k != -1 or n != -1:
         # \pkg
         if h != -1:
-          h = find_token(document.body, "\\begin_inset Flex pkg", h)
+          h = find_token(document.body, "\\begin_inset Flex Pkg", h)
         if h != -1:
           endh = find_end_of_inset(document.body, h)
           document.body[endh - 2 : endh + 1] = put_cmd_in_ert("}")
@@ -1231,7 +1231,7 @@ def revert_jss(document):
           h = h + 5
         # \proglang
         if m != -1:
-          m = find_token(document.body, "\\begin_inset Flex proglang", m)
+          m = find_token(document.body, "\\begin_inset Flex Proglang", m)
         if m != -1:
           endm = find_end_of_inset(document.body, m)
           document.body[endm - 2 : endm + 1] = put_cmd_in_ert("}")
@@ -1239,12 +1239,16 @@ def revert_jss(document):
           m = m + 5
         # \code
         if j != -1:
-          j = find_token(document.body, "\\begin_inset Flex code", j)
+          j = find_token(document.body, "\\begin_inset Flex Code", j)
         if j != -1:
-          endj = find_end_of_inset(document.body, j)
-          document.body[endj - 2 : endj + 1] = put_cmd_in_ert("}")
-          document.body[j : j + 4] = put_cmd_in_ert("\\code{")
-          j = j + 5
+          # assure that we are not in a Code Chunk inset
+          if document.body[j][-1] == "e":
+              endj = find_end_of_inset(document.body, j)
+              document.body[endj - 2 : endj + 1] = put_cmd_in_ert("}")
+              document.body[j : j + 4] = put_cmd_in_ert("\\code{")
+              j = j + 5
+          else:
+              j = j + 1
         # \email
         if k != -1:
           k = find_token(document.body, "\\begin_inset Flex E-mail", k)
@@ -1378,28 +1382,14 @@ def revert_jss(document):
       while m != -1 or j != -1 or h != -1 or k != -1:
         # \CodeChunk
         if h != -1:
-          h = find_token(document.body, "\\begin_layout Code Chunk", h)
+          h = find_token(document.body, "\\begin_inset Flex Code Chunk", h)
         if h != -1:
-          endh = find_end_of_layout(document.body, h)
-          begindeeper = find_token(document.body, "\\begin_deeper", h)
-          enddeeper = find_token(document.body, "\\end_deeper", h)
-          document.body[enddeeper + 1 : enddeeper] = ["\\end_layout"]
-          document.body[enddeeper : enddeeper + 1] = put_cmd_in_ert("\\end{CodeChunk}")
-          del document.body[begindeeper]
+          endh = find_end_of_inset(document.body, h)
+          document.body[endh + 1 : endh] = ["\\end_layout"]
+          document.body[endh : endh + 1] = put_cmd_in_ert("\\end{CodeChunk}")
           document.body[h : h + 3] = put_cmd_in_ert("\\begin{CodeChunk}")
           document.body[h - 1 : h] = ["\\begin_layout Standard"]
           h = h + 1
-        # \Code
-        if m != -1:
-          m = find_token(document.body, "\\begin_layout Standard Code", m)
-        if m != -1:
-          endm = find_end_of_layout(document.body, m)
-          document.body[endm : endm + 1] = ["\\end_layout", "", "\\begin_layout Standard"]
-          document.body[endm + 3 : endm + 4] = put_cmd_in_ert("\\end{Code}")
-          document.body[endm + 13 : endm + 13] = ["\\end_layout", "", "\\begin_layout Standard"]
-          document.body[m + 1 : m] = ["\\end_layout", "", "\\begin_layout Standard"]
-          document.body[m : m + 1] = put_cmd_in_ert("\\begin{Code}")
-          m = m + 1
         # \CodeInput
         if j != -1:
           j = find_token(document.body, "\\begin_layout Code Input", j)
@@ -1422,6 +1412,17 @@ def revert_jss(document):
           document.body[k + 1 : k] = ["\\end_layout", "", "\\begin_layout Standard"]
           document.body[k : k + 1] = put_cmd_in_ert("\\begin{CodeOutput}")
           k = k + 1
+        # \Code
+        if m != -1:
+          m = find_token(document.body, "\\begin_layout Code", m)
+        if m != -1:
+          endm = find_end_of_layout(document.body, m)
+          document.body[endm : endm + 1] = ["\\end_layout", "", "\\begin_layout Standard"]
+          document.body[endm + 3 : endm + 4] = put_cmd_in_ert("\\end{Code}")
+          document.body[endm + 13 : endm + 13] = ["\\end_layout", "", "\\begin_layout Standard"]
+          document.body[m + 1 : m] = ["\\end_layout", "", "\\begin_layout Standard"]
+          document.body[m : m + 1] = put_cmd_in_ert("\\begin{Code}")
+          m = m + 1
 
 
 def convert_subref(document):
