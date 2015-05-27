@@ -403,6 +403,17 @@ PrefOutput::PrefOutput(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(pdfCB, SIGNAL(editTextChanged(QString)),
 		this, SIGNAL(changed()));
+	connect(printerPaperTypeED, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
+	connect(printerLandscapeED, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
+	connect(printerPaperSizeED, SIGNAL(textChanged(QString)),
+		this, SIGNAL(changed()));
+
+	printerPaperTypeED->setValidator(new NoNewLineValidator(printerPaperTypeED));
+	printerLandscapeED->setValidator(new NoNewLineValidator(printerLandscapeED));
+	printerPaperSizeED->setValidator(new NoNewLineValidator(printerPaperSizeED));
+
 	dviCB->addItem("");
 	dviCB->addItem("xdvi -sourceposition '$$n:\\ $$t' $$o");
 	dviCB->addItem("yap -1 -s \"$$n $$t\" $$o");
@@ -447,6 +458,10 @@ void PrefOutput::applyRC(LyXRC & rc) const
 		rc.export_overwrite = ALL_FILES;
 		break;
 	}
+
+	rc.print_paper_flag = fromqstr(printerPaperTypeED->text());
+	rc.print_landscape_flag = fromqstr(printerLandscapeED->text());
+	rc.print_paper_dimension_flag = fromqstr(printerPaperSizeED->text());
 }
 
 
@@ -468,6 +483,10 @@ void PrefOutput::updateRC(LyXRC const & rc)
 		overwriteCO->setCurrentIndex(2);
 		break;
 	}
+
+	printerPaperTypeED->setText(toqstr(rc.print_paper_flag));
+	printerLandscapeED->setText(toqstr(rc.print_landscape_flag));
+	printerPaperSizeED->setText(toqstr(rc.print_paper_dimension_flag));
 }
 
 
@@ -2409,122 +2428,6 @@ void PrefLanguage::updateRC(LyXRC const & rc)
 
 /////////////////////////////////////////////////////////////////////
 //
-// PrefPrinter
-//
-/////////////////////////////////////////////////////////////////////
-
-PrefPrinter::PrefPrinter(GuiPreferences * form)
-	: PrefModule(catOutput, N_("Printer"), form)
-{
-	setupUi(this);
-
-	connect(printerAdaptCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(printerCommandED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(printerNameED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(printerPageRangeED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(printerCopiesED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(printerReverseED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(printerToPrinterED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(printerExtensionED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(printerSpoolCommandED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(printerPaperTypeED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(printerEvenED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(printerOddED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(printerCollatedED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(printerLandscapeED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(printerToFileED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(printerExtraED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(printerSpoolPrefixED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-	connect(printerPaperSizeED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
-
-	printerNameED->setValidator(new NoNewLineValidator(printerNameED));
-	printerCommandED->setValidator(new NoNewLineValidator(printerCommandED));
-	printerEvenED->setValidator(new NoNewLineValidator(printerEvenED));
-	printerPageRangeED->setValidator(new NoNewLineValidator(printerPageRangeED));
-	printerCopiesED->setValidator(new NoNewLineValidator(printerCopiesED));
-	printerReverseED->setValidator(new NoNewLineValidator(printerReverseED));
-	printerToFileED->setValidator(new NoNewLineValidator(printerToFileED));
-	printerPaperTypeED->setValidator(new NoNewLineValidator(printerPaperTypeED));
-	printerExtraED->setValidator(new NoNewLineValidator(printerExtraED));
-	printerOddED->setValidator(new NoNewLineValidator(printerOddED));
-	printerCollatedED->setValidator(new NoNewLineValidator(printerCollatedED));
-	printerLandscapeED->setValidator(new NoNewLineValidator(printerLandscapeED));
-	printerToPrinterED->setValidator(new NoNewLineValidator(printerToPrinterED));
-	printerExtensionED->setValidator(new NoNewLineValidator(printerExtensionED));
-	printerPaperSizeED->setValidator(new NoNewLineValidator(printerPaperSizeED));
-	printerSpoolCommandED->setValidator(new NoNewLineValidator(printerSpoolCommandED));
-	printerSpoolPrefixED->setValidator(new NoNewLineValidator(printerSpoolPrefixED));
-}
-
-
-void PrefPrinter::applyRC(LyXRC & rc) const
-{
-	rc.print_adapt_output = printerAdaptCB->isChecked();
-	rc.print_command = fromqstr(printerCommandED->text());
-	rc.printer = fromqstr(printerNameED->text());
-
-	rc.print_pagerange_flag = fromqstr(printerPageRangeED->text());
-	rc.print_copies_flag = fromqstr(printerCopiesED->text());
-	rc.print_reverse_flag = fromqstr(printerReverseED->text());
-	rc.print_to_printer = fromqstr(printerToPrinterED->text());
-	rc.print_file_extension = fromqstr(printerExtensionED->text());
-	rc.print_spool_command = fromqstr(printerSpoolCommandED->text());
-	rc.print_paper_flag = fromqstr(printerPaperTypeED->text());
-	rc.print_evenpage_flag = fromqstr(printerEvenED->text());
-	rc.print_oddpage_flag = fromqstr(printerOddED->text());
-	rc.print_collcopies_flag = fromqstr(printerCollatedED->text());
-	rc.print_landscape_flag = fromqstr(printerLandscapeED->text());
-	rc.print_to_file = internal_path(fromqstr(printerToFileED->text()));
-	rc.print_extra_options = fromqstr(printerExtraED->text());
-	rc.print_spool_printerprefix = fromqstr(printerSpoolPrefixED->text());
-	rc.print_paper_dimension_flag = fromqstr(printerPaperSizeED->text());
-}
-
-
-void PrefPrinter::updateRC(LyXRC const & rc)
-{
-	printerAdaptCB->setChecked(rc.print_adapt_output);
-	printerCommandED->setText(toqstr(rc.print_command));
-	printerNameED->setText(toqstr(rc.printer));
-
-	printerPageRangeED->setText(toqstr(rc.print_pagerange_flag));
-	printerCopiesED->setText(toqstr(rc.print_copies_flag));
-	printerReverseED->setText(toqstr(rc.print_reverse_flag));
-	printerToPrinterED->setText(toqstr(rc.print_to_printer));
-	printerExtensionED->setText(toqstr(rc.print_file_extension));
-	printerSpoolCommandED->setText(toqstr(rc.print_spool_command));
-	printerPaperTypeED->setText(toqstr(rc.print_paper_flag));
-	printerEvenED->setText(toqstr(rc.print_evenpage_flag));
-	printerOddED->setText(toqstr(rc.print_oddpage_flag));
-	printerCollatedED->setText(toqstr(rc.print_collcopies_flag));
-	printerLandscapeED->setText(toqstr(rc.print_landscape_flag));
-	printerToFileED->setText(toqstr(external_path(rc.print_to_file)));
-	printerExtraED->setText(toqstr(rc.print_extra_options));
-	printerSpoolPrefixED->setText(toqstr(rc.print_spool_printerprefix));
-	printerPaperSizeED->setText(toqstr(rc.print_paper_dimension_flag));
-}
-
-
-/////////////////////////////////////////////////////////////////////
-//
 // PrefUserInterface
 //
 /////////////////////////////////////////////////////////////////////
@@ -3348,7 +3251,6 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 	//for strftime validator
 	PrefOutput * output = new PrefOutput(this);
 	addModule(output);
-	addModule(new PrefPrinter(this));
 	addModule(new PrefLatex(this));
 
 	PrefConverters * converters = new PrefConverters(this);

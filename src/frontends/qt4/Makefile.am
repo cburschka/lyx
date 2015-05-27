@@ -113,7 +113,6 @@ SOURCEFILES = \
 	GuiParagraph.cpp \
 	GuiPhantom.cpp \
 	GuiPrefs.cpp \
-	GuiPrint.cpp \
 	GuiPrintindex.cpp \
 	GuiPrintNomencl.cpp \
 	GuiProgress.cpp \
@@ -222,7 +221,6 @@ MOCHEADER = \
 	GuiParagraph.h \
 	GuiPhantom.h \
 	GuiPrefs.h \
-	GuiPrint.h \
 	GuiPrintindex.h \
 	GuiPrintNomencl.h \
 	GuiProgress.h \
@@ -329,13 +327,11 @@ UIFILES = \
 	PrefLanguageUi.ui \
 	PrefLatexUi.ui \
 	PrefPathsUi.ui \
-	PrefPrinterUi.ui \
 	PrefScreenFontsUi.ui \
 	PrefShortcutsUi.ui \
 	PrefSpellcheckerUi.ui \
 	PrefsUi.ui \
 	PrefUi.ui \
-	PrintUi.ui \
 	PrintindexUi.ui \
 	PrintNomenclUi.ui \
 	ProgressViewUi.ui \

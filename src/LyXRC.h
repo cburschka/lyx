@@ -129,24 +129,9 @@ public:
 		RC_PREVIEW,
 		RC_PREVIEW_HASHED_LABELS,
 		RC_PREVIEW_SCALE_FACTOR,
-		RC_PRINTCOLLCOPIESFLAG,
-		RC_PRINTCOPIESFLAG,
-		RC_PRINTER,
-		RC_PRINTEVENPAGEFLAG,
-		RC_PRINTEXSTRAOPTIONS,
-		RC_PRINTFILEEXTENSION,
 		RC_PRINTLANDSCAPEFLAG,
-		RC_PRINTODDPAGEFLAG,
-		RC_PRINTPAGERANGEFLAG,
 		RC_PRINTPAPERDIMENSIONFLAG,
 		RC_PRINTPAPERFLAG,
-		RC_PRINTREVERSEFLAG,
-		RC_PRINTSPOOL_COMMAND,
-		RC_PRINTSPOOL_PRINTERPREFIX,
-		RC_PRINTTOFILE,
-		RC_PRINTTOPRINTER,
-		RC_PRINT_ADAPTOUTPUT,
-		RC_PRINT_COMMAND,
 		RC_SAVE_COMPRESSED,
 		RC_SAVE_ORIGIN,
 		RC_SCREEN_DPI,
@@ -237,37 +222,7 @@ public:
 	///
 	std::string ui_file;
 	///
-	std::string printer;
-	///
-	std::string print_command;
-	///
-	std::string print_evenpage_flag;
-	///
-	std::string print_oddpage_flag;
-	///
-	std::string print_pagerange_flag;
-	///
-	std::string print_copies_flag;
-	///
-	std::string print_collcopies_flag;
-	///
-	std::string print_reverse_flag;
-	///
 	std::string print_landscape_flag;
-	///
-	std::string print_to_printer;
-	///
-	bool print_adapt_output;
-	///
-	std::string print_to_file;
-	///
-	std::string print_file_extension;
-	///
-	std::string print_extra_options;
-	///
-	std::string print_spool_command;
-	///
-	std::string print_spool_printerprefix;
 	///
 	std::string print_paper_flag;
 	///

@@ -2446,7 +2446,6 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_BRANCH_ADD:
 	case LFUN_BRANCHES_RENAME:
-	case LFUN_BUFFER_PRINT:
 		// if no Buffer is present, then of course we won't be called!
 		break;
 
@@ -2677,125 +2676,6 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		if (success) {
 			dr.screenUpdate(Update::Force);
 			dr.forceBufferUpdate();
-		}
-		break;
-	}
-
-	case LFUN_BUFFER_PRINT: {
-		// we'll assume there's a problem until we succeed
-		dr.setError(true);
-		string target = func.getArg(0);
-		string target_name = func.getArg(1);
-		string command = func.getArg(2);
-
-		if (target.empty()
-		    || target_name.empty()
-		    || command.empty()) {
-			LYXERR0("Unable to parse " << func.argument());
-			docstring const msg =
-				bformat(_("Unable to parse \"%1$s\""), func.argument());
-			dr.setMessage(msg);
-			break;
-		}
-		if (target != "printer" && target != "file") {
-			LYXERR0("Unrecognized target \"" << target << '"');
-			docstring const msg =
-				bformat(_("Unrecognized target \"%1$s\""), from_utf8(target));
-			dr.setMessage(msg);
-			break;
-		}
-
-		if (doExport("dvi", true) != ExportSuccess) {
-			showPrintError(absFileName());
-			dr.setMessage(_("Error exporting to DVI."));
-			break;
-		}
-
-		// Push directory path.
-		string const path = temppath();
-		// Prevent the compiler from optimizing away p
-		FileName pp(path);
-		PathChanger p(pp);
-
-		// there are three cases here:
-		// 1. we print to a file
-		// 2. we print directly to a printer
-		// 3. we print using a spool command (print to file first)
-		Systemcall one;
-		int res = 0;
-		string const dviname = changeExtension(latexName(true), "dvi");
-
-		if (target == "printer") {
-			if (!lyxrc.print_spool_command.empty()) {
-				// case 3: print using a spool
-				string const psname = changeExtension(dviname,".ps");
-				command += ' ' + lyxrc.print_to_file
-					+ quoteName(psname)
-					+ ' '
-					+ quoteName(dviname);
-
-				string command2 = lyxrc.print_spool_command + ' ';
-				if (target_name != "default") {
-					command2 += lyxrc.print_spool_printerprefix
-						+ target_name
-						+ ' ';
-				}
-				command2 += quoteName(psname);
-				// First run dvips.
-				// If successful, then spool command
-				res = one.startscript(Systemcall::Wait, command,
-						      filePath(), layoutPos());
-
-				if (res == 0) {
-					// If there's no GUI, we have to wait on this command. Otherwise,
-					// LyX deletes the temporary directory, and with it the spooled
-					// file, before it can be printed!!
-					Systemcall::Starttype stype = use_gui ?
-						Systemcall::DontWait : Systemcall::Wait;
-					res = one.startscript(stype, command2,
-							      filePath(),
-							      layoutPos());
-				}
-			} else {
-				// case 2: print directly to a printer
-				if (target_name != "default")
-					command += ' ' + lyxrc.print_to_printer + target_name + ' ';
-				// as above....
-				Systemcall::Starttype stype = use_gui ?
-					Systemcall::DontWait : Systemcall::Wait;
-				res = one.startscript(stype,
-						command + quoteName(dviname),
-						filePath(), layoutPos());
-			}
-
-		} else {
-			// case 1: print to a file
-			FileName const filename(makeAbsPath(target_name, filePath()));
-			FileName const dvifile(makeAbsPath(dviname, path));
-			if (filename.exists()) {
-				docstring text = bformat(
-					_("The file %1$s already exists.\n\n"
-					  "Do you want to overwrite that file?"),
-					makeDisplayPath(filename.absFileName()));
-				if (Alert::prompt(_("Overwrite file?"),
-						  text, 0, 1, _("&Overwrite"), _("&Cancel")) != 0)
-					break;
-			}
-			command += ' ' + lyxrc.print_to_file
-				+ quoteName(filename.toFilesystemEncoding())
-				+ ' '
-				+ quoteName(dvifile.toFilesystemEncoding());
-			// as above....
-			Systemcall::Starttype stype = use_gui ?
-				Systemcall::DontWait : Systemcall::Wait;
-			res = one.startscript(stype, command, filePath(), layoutPos());
-		}
-
-		if (res == 0)
-			dr.setError(false);
-		else {
-			dr.setMessage(_("Error running external commands."));
-			showPrintError(absFileName());
 		}
 		break;
 	}

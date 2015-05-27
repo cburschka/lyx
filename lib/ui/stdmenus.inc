@@ -57,7 +57,6 @@ Menuset
 		Separator
 		Submenu "Import|I" "file_import"
 		Submenu "Export|E" "file_export"
-		Item "Print...|P" "dialog-show print"
 		OptItem "Fax...|F" "buffer-export fax"
 		Separator
 		Item "New Window|W" "window-new"

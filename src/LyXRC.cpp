@@ -58,7 +58,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 18; // ef: save_origin
+static unsigned int const LYXRC_FILEFORMAT = 19; // rgh: remove print support
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
@@ -153,24 +153,9 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\preview", LyXRC::RC_PREVIEW },
 	{ "\\preview_hashed_labels", LyXRC::RC_PREVIEW_HASHED_LABELS },
 	{ "\\preview_scale_factor", LyXRC::RC_PREVIEW_SCALE_FACTOR },
-	{ "\\print_adapt_output", LyXRC::RC_PRINT_ADAPTOUTPUT },
-	{ "\\print_collcopies_flag", LyXRC::RC_PRINTCOLLCOPIESFLAG },
-	{ "\\print_command", LyXRC::RC_PRINT_COMMAND },
-	{ "\\print_copies_flag", LyXRC::RC_PRINTCOPIESFLAG },
-	{ "\\print_evenpage_flag", LyXRC::RC_PRINTEVENPAGEFLAG },
-	{ "\\print_extra_options", LyXRC::RC_PRINTEXSTRAOPTIONS },
-	{ "\\print_file_extension", LyXRC::RC_PRINTFILEEXTENSION },
 	{ "\\print_landscape_flag", LyXRC::RC_PRINTLANDSCAPEFLAG },
-	{ "\\print_oddpage_flag", LyXRC::RC_PRINTODDPAGEFLAG },
-	{ "\\print_pagerange_flag", LyXRC::RC_PRINTPAGERANGEFLAG },
 	{ "\\print_paper_dimension_flag", LyXRC::RC_PRINTPAPERDIMENSIONFLAG },
 	{ "\\print_paper_flag", LyXRC::RC_PRINTPAPERFLAG },
-	{ "\\print_reverse_flag", LyXRC::RC_PRINTREVERSEFLAG },
-	{ "\\print_spool_command", LyXRC::RC_PRINTSPOOL_COMMAND },
-	{ "\\print_spool_printerprefix", LyXRC::RC_PRINTSPOOL_PRINTERPREFIX },
-	{ "\\print_to_file", LyXRC::RC_PRINTTOFILE },
-	{ "\\print_to_printer", LyXRC::RC_PRINTTOPRINTER },
-	{ "\\printer", LyXRC::RC_PRINTER },
 	{ "\\save_compressed", LyXRC::RC_SAVE_COMPRESSED },
 	{ "\\save_origin", LyXRC::RC_SAVE_ORIGIN },
 	{ "\\screen_dpi", LyXRC::RC_SCREEN_DPI },
@@ -240,21 +225,7 @@ void LyXRC::setDefaults()
 	ui_file = "default";
 	// The current document directory
 	texinputs_prefix = ".";
-	// Get printer from the environment. If fail, use default "",
-	// assuming that everything is set up correctly.
-	printer = getEnv("PRINTER");
-	print_adapt_output = false;
-	print_command = "dvips";
-	print_evenpage_flag = "-B";
-	print_oddpage_flag = "-A";
-	print_pagerange_flag = "-pp";
-	print_copies_flag = "-c";
-	print_collcopies_flag = "-C";
-	print_reverse_flag = "-r";
 	print_landscape_flag = "-t landscape";
-	print_to_printer = "-P";
-	print_to_file = "-o ";
-	print_file_extension = ".ps";
 	print_paper_flag = "-t";
 	print_paper_dimension_flag = "-T";
 	document_path.erase();
@@ -553,74 +524,8 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			lexrc >> fontenc;
 			break;
 
-		case RC_PRINTER:
-			lexrc >> printer;
-			break;
-
-		case RC_PRINT_COMMAND:
-			if (lexrc.next(true)) {
-				print_command = lexrc.getString();
-			}
-			break;
-
-		case RC_PRINTEVENPAGEFLAG:
-			lexrc >> print_evenpage_flag;
-			break;
-
-		case RC_PRINTODDPAGEFLAG:
-			lexrc >> print_oddpage_flag;
-			break;
-
-		case RC_PRINTPAGERANGEFLAG:
-			lexrc >> print_pagerange_flag;
-			break;
-
-		case RC_PRINTCOPIESFLAG:
-			lexrc >> print_copies_flag;
-			break;
-
-		case RC_PRINTCOLLCOPIESFLAG:
-			lexrc >> print_collcopies_flag;
-			break;
-
-		case RC_PRINTREVERSEFLAG:
-			lexrc >> print_reverse_flag;
-			break;
-
 		case RC_PRINTLANDSCAPEFLAG:
 			lexrc >> print_landscape_flag;
-			break;
-
-		case RC_PRINTTOPRINTER:
-			lexrc >> print_to_printer;
-			break;
-
-		case RC_PRINT_ADAPTOUTPUT:
-			lexrc >> print_adapt_output;
-			break;
-
-		case RC_PRINTTOFILE:
-			if (lexrc.next()) {
-				print_to_file = os::internal_path(lexrc.getString());
-			}
-			break;
-
-		case RC_PRINTFILEEXTENSION:
-			lexrc >> print_file_extension;
-			break;
-
-		case RC_PRINTEXSTRAOPTIONS:
-			lexrc >> print_extra_options;
-			break;
-
-		case RC_PRINTSPOOL_COMMAND:
-			if (lexrc.next(true)) {
-				print_spool_command = lexrc.getString();
-			}
-			break;
-
-		case RC_PRINTSPOOL_PRINTERPREFIX:
-			lexrc >> print_spool_printerprefix;
 			break;
 
 		case RC_PRINTPAPERDIMENSIONFLAG:
@@ -2049,82 +1954,10 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 
-		os << "\n#\n"
-		   << "# PRINTER SECTION ###################################\n"
-		   << "#\n\n";
+	os << "\n#\n"
+		 << "# PRINTER SECTION ###################################\n"
+		 << "#\n\n";
 
-	case RC_PRINTER:
-		if (ignore_system_lyxrc ||
-		    printer != system_lyxrc.printer) {
-			os << "\\printer \"" << printer << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
-	case RC_PRINT_ADAPTOUTPUT:
-		if (ignore_system_lyxrc ||
-		    print_adapt_output != system_lyxrc.print_adapt_output) {
-			os << "\\print_adapt_output "
-			   << convert<string>(print_adapt_output)
-			   << '\n';
-		}
-		if (tag != RC_LAST)
-			break;
-	case RC_PRINT_COMMAND:
-		if (ignore_system_lyxrc ||
-		    print_command != system_lyxrc.print_command) {
-			os << "\\print_command \"" << escapeCommand(print_command) << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
-	case RC_PRINTEXSTRAOPTIONS:
-		if (ignore_system_lyxrc ||
-		    print_extra_options != system_lyxrc.print_extra_options) {
-			os << "\\print_extra_options \"" << print_extra_options
-			   << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
-	case RC_PRINTSPOOL_COMMAND:
-		if (ignore_system_lyxrc ||
-		    print_spool_command != system_lyxrc.print_spool_command) {
-			os << "\\print_spool_command \"" << escapeCommand(print_spool_command)
-			   << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
-	case RC_PRINTSPOOL_PRINTERPREFIX:
-		if (ignore_system_lyxrc ||
-		    print_spool_printerprefix
-		    != system_lyxrc.print_spool_printerprefix) {
-			os << "\\print_spool_printerprefix \""
-			   << print_spool_printerprefix << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
-	case RC_PRINTEVENPAGEFLAG:
-		if (ignore_system_lyxrc ||
-		    print_evenpage_flag != system_lyxrc.print_evenpage_flag) {
-			os << "\\print_evenpage_flag \"" << print_evenpage_flag
-			   << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
-	case RC_PRINTODDPAGEFLAG:
-		if (ignore_system_lyxrc ||
-		    print_oddpage_flag != system_lyxrc.print_oddpage_flag) {
-			os << "\\print_oddpage_flag \"" << print_oddpage_flag
-			   << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
-	case RC_PRINTREVERSEFLAG:
-		if (ignore_system_lyxrc ||
-		    print_reverse_flag != system_lyxrc.print_reverse_flag) {
-			os << "\\print_reverse_flag \"" << print_reverse_flag
-			   << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
 	case RC_PRINTLANDSCAPEFLAG:
 		if (ignore_system_lyxrc ||
 		    print_landscape_flag != system_lyxrc.print_landscape_flag) {
@@ -2133,32 +1966,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-	case RC_PRINTPAGERANGEFLAG:
-		if (ignore_system_lyxrc ||
-		    print_pagerange_flag != system_lyxrc.print_pagerange_flag) {
-			os << "\\print_pagerange_flag \"" << print_pagerange_flag
-			   << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
-	case RC_PRINTCOPIESFLAG:
-		if (ignore_system_lyxrc ||
-		    print_copies_flag != system_lyxrc.print_copies_flag) {
-			os << "\\print_copies_flag \"" << print_copies_flag
-			   << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
-	case RC_PRINTCOLLCOPIESFLAG:
-		if (ignore_system_lyxrc ||
-		    print_collcopies_flag
-		    != system_lyxrc.print_collcopies_flag) {
-			os << "\\print_collcopies_flag \""
-			   << print_collcopies_flag
-			   << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
+
 	case RC_PRINTPAPERFLAG:
 		if (ignore_system_lyxrc ||
 		    print_paper_flag != system_lyxrc.print_paper_flag) {
@@ -2167,6 +1975,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+
 	case RC_PRINTPAPERDIMENSIONFLAG:
 		if (ignore_system_lyxrc ||
 		    print_paper_dimension_flag
@@ -2176,35 +1985,10 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
-	case RC_PRINTTOPRINTER:
-		if (ignore_system_lyxrc ||
-		    print_to_printer != system_lyxrc.print_to_printer) {
-			os << "\\print_to_printer \"" << print_to_printer
-			   << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
-	case RC_PRINTTOFILE:
-		if (ignore_system_lyxrc ||
-		    print_to_file != system_lyxrc.print_to_file) {
-			string const path = os::external_path(print_to_file);
-			os << "\\print_to_file \"" << path << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
-	case RC_PRINTFILEEXTENSION:
-		if (ignore_system_lyxrc ||
-		    print_file_extension != system_lyxrc.print_file_extension) {
-			os << "\\print_file_extension \""
-			   << print_file_extension
-			   << "\"\n";
-		}
-		if (tag != RC_LAST)
-			break;
 
-		os << "\n#\n"
-		   << "# TEX SECTION #######################################\n"
-		   << "#\n\n";
+	os << "\n#\n"
+		 << "# TEX SECTION #######################################\n"
+		 << "#\n\n";
 
 	case RC_TEXINPUTS_PREFIX:
 		if (ignore_system_lyxrc ||
@@ -3015,24 +2799,9 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_PREVIEW:
 	case LyXRC::RC_PREVIEW_HASHED_LABELS:
 	case LyXRC::RC_PREVIEW_SCALE_FACTOR:
-	case LyXRC::RC_PRINTCOLLCOPIESFLAG:
-	case LyXRC::RC_PRINTCOPIESFLAG:
-	case LyXRC::RC_PRINTER:
-	case LyXRC::RC_PRINTEVENPAGEFLAG:
-	case LyXRC::RC_PRINTEXSTRAOPTIONS:
-	case LyXRC::RC_PRINTFILEEXTENSION:
 	case LyXRC::RC_PRINTLANDSCAPEFLAG:
-	case LyXRC::RC_PRINTODDPAGEFLAG:
-	case LyXRC::RC_PRINTPAGERANGEFLAG:
 	case LyXRC::RC_PRINTPAPERDIMENSIONFLAG:
 	case LyXRC::RC_PRINTPAPERFLAG:
-	case LyXRC::RC_PRINTREVERSEFLAG:
-	case LyXRC::RC_PRINTSPOOL_COMMAND:
-	case LyXRC::RC_PRINTSPOOL_PRINTERPREFIX:
-	case LyXRC::RC_PRINTTOFILE:
-	case LyXRC::RC_PRINTTOPRINTER:
-	case LyXRC::RC_PRINT_ADAPTOUTPUT:
-	case LyXRC::RC_PRINT_COMMAND:
 	case LyXRC::RC_SAVE_COMPRESSED:
 	case LyXRC::RC_SAVE_ORIGIN:
 	case LyXRC::RC_SCREEN_DPI:
@@ -3369,76 +3138,16 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		str = _("Scale the preview size to suit.");
 		break;
 
-	case RC_PRINTCOLLCOPIESFLAG:
-		str = _("The option for specifying whether the copies should be collated.");
-		break;
-
-	case RC_PRINTCOPIESFLAG:
-		str = _("The option for specifying the number of copies to print.");
-		break;
-
-	case RC_PRINTER:
-		str = _("The default printer to print on. If none is specified, LyX will use the environment variable PRINTER.");
-		break;
-
-	case RC_PRINTEVENPAGEFLAG:
-		str = _("The option to print only even pages.");
-		break;
-
-	case RC_PRINTEXSTRAOPTIONS:
-		str = _("Extra options to pass to printing program after everything else, but before the filename of the DVI file to be printed.");
-		break;
-
-	case RC_PRINTFILEEXTENSION:
-		str = _("Extension of printer program output file. Usually \".ps\".");
-		break;
-
 	case RC_PRINTLANDSCAPEFLAG:
 		str = _("The option to print out in landscape.");
 		break;
 
-	case RC_PRINTODDPAGEFLAG:
-		str = _("The option to print only odd pages.");
-		break;
-
-	case RC_PRINTPAGERANGEFLAG:
-		str = _("The option for specifying a comma-separated list of pages to print.");
-		break;
-
 	case RC_PRINTPAPERDIMENSIONFLAG:
-				   str = _("Option to specify the dimensions of the print paper.");
+		str = _("Option to specify the dimensions of the print paper.");
 		break;
 
 	case RC_PRINTPAPERFLAG:
 		str = _("The option to specify paper type.");
-		break;
-
-	case RC_PRINTREVERSEFLAG:
-		str = _("The option to reverse the order of the pages printed.");
-		break;
-
-	case RC_PRINTSPOOL_COMMAND:
-		str = _("When set, this printer option automatically prints to a file and then calls a separate print spooling program on that file with the given name and arguments.");
-		break;
-
-	case RC_PRINTSPOOL_PRINTERPREFIX:
-		str = _("If you specify a printer name in the print dialog, the following argument is prepended along with the printer name after the spool command.");
-		break;
-
-	case RC_PRINTTOFILE:
-		str = _("Option to pass to the print program to print to a file.");
-		break;
-
-	case RC_PRINTTOPRINTER:
-		str = _("Option to pass to the print program to print on a specific printer.");
-		break;
-
-	case RC_PRINT_ADAPTOUTPUT:
-		str = _("Select for LyX to pass the name of the destination printer to your print command.");
-		break;
-
-	case RC_PRINT_COMMAND:
-		str = _("Your favorite print program, e.g. \"dvips\", \"dvilj4\".");
 		break;
 
 	case RC_VISUAL_CURSOR:

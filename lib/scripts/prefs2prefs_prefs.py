@@ -126,10 +126,10 @@ no_match = (False, [])
 
 def remove_obsolete(line):
 	tags = ("\\use_tempdir", "\\spell_command", "\\personal_dictionary",
-				"\\plaintext_roff_command", "\\use_alt_language", 
-				"\\use_escape_chars", "\\use_input_encoding",
-				"\\use_personal_dictionary", "\\use_pspell",
-				"\\use_spell_lib")
+		"\\plaintext_roff_command", "\\use_alt_language",
+		"\\use_escape_chars", "\\use_input_encoding",
+		"\\use_personal_dictionary", "\\use_pspell",
+		"\\use_spell_lib")
 	line = line.lower().lstrip()
 	for tag in tags:
 		if line.lower().startswith(tag):
@@ -333,6 +333,17 @@ def remove_rtl(line):
 		return no_match
 	return (True, "")
 
+def remove_print_support(line):
+	tags = ("\\printer", "\\print_adapt_output", "\\print_command",
+		"\\print_evenpage_flag", "\\print_oddpage_flag", "\\print_pagerange_flag",
+		"\\print_copies_flag", "\\print_collcopies_flag", "\\print_reverse_flag",
+		"\\print_to_printer", "\\print_to_file", "\\print_file_extension")
+	line = line.lower().lstrip()
+	for tag in tags:
+		if line.lower().startswith(tag):
+			return (True, "")
+	return no_match
+
 # End conversions for LyX 2.1 to 2.2
 ####################################
 
@@ -360,5 +371,6 @@ conversions = [
 	[ 15, []],
 	[ 16, [remove_force_paint_single_char]],
 	[ 17, [remove_rtl]],
-	[ 18, []]
+	[ 18, []],
+	[ 19, [remove_print_support]]
 ]

@@ -1099,13 +1099,6 @@ def checkOtherEntries():
     # path, OCTAVE = checkProg('Octave', ['octave'])
     ## FIXME: MAPLE is not used anywhere
     # path, MAPLE = checkProg('Maple', ['maple'])
-    checkProg('a spool command', ['lp', 'lpr'],
-        rc_entry = [
-            r'''\print_spool_printerprefix "-d "
-\print_spool_command "lp"''',
-            r'''\print_spool_printerprefix "-P",
-\print_spool_command "lpr"''',
-            ''])
     # Add the rest of the entries (no checkProg is required)
     addToRC(r'''\copier    fig        "python -tt $$s/scripts/fig_copy.py $$i $$o"
 \copier    pstex      "python -tt $$s/scripts/tex_copy.py $$i $$o $$l"
@@ -1491,7 +1484,7 @@ if __name__ == '__main__':
     lyx_check_config = True
     lyx_kpsewhich = True
     outfile = 'lyxrc.defaults'
-    lyxrc_fileformat = 18
+    lyxrc_fileformat = 19
     rc_entries = ''
     lyx_keep_temps = False
     version_suffix = ''

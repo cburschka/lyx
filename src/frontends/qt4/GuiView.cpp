@@ -1894,9 +1894,6 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 				|| name == "texinfo"
 				|| name == "progress"
 				|| name == "compare";
-		else if (name == "print")
-			enable = doc_buffer->params().isExportable("dvi")
-				&& lyxrc.print_command != "none";
 		else if (name == "character" || name == "symbols"
 			|| name == "mathdelimiter" || name == "mathmatrix") {
 			if (!buf || buf->isReadonly())
@@ -4424,8 +4421,6 @@ Dialog * GuiView::build(string const & name)
 		return createGuiPhantom(*this);
 	if (name == "prefs")
 		return createGuiPreferences(*this);
-	if (name == "print")
-		return createGuiPrint(*this);
 	if (name == "ref")
 		return createGuiRef(*this);
 	if (name == "sendto")

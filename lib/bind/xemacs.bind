@@ -342,7 +342,6 @@ Format 2
 ## Start TeX mode, some overlap with AucTeX mode
 #
 \bind "C-c C-b"			"buffer-update dvi"
-\bind "C-c C-p"			"dialog-show print"
 \bind "C-c C-r"			"buffer-update dvi"	# tex region
 #
 ## End TeX mode

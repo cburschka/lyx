@@ -165,8 +165,6 @@ Format 2
 \bind "C-S-N"                        "buffer-new-template"
 #  +: "Command-O"                    # Display a dialog for choosing a document to open in the frontmost application
 \bind "C-o"                          "file-open"
-#  +: "Command-P"                    # Display the Print dialog
-\bind "C-p"                          "dialog-show print"
 #  -: "Shift-Command-P"              # Display a dialog for specifying printing parameters (Page Setup)
 \bind "C-S-P"                        "font-typewriter" # 'P' for Program
 #  +: "Command-Q"                    # Quit the frontmost application

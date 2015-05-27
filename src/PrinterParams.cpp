@@ -23,7 +23,6 @@ namespace lyx {
 PrinterParams::PrinterParams() 
 {
 	target = PRINTER;
-	printer_name = lyxrc.printer;
 	file_name = std::string();
 	all_pages = true;
 	from_page = 1;

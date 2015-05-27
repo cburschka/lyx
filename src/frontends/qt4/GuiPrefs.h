@@ -39,7 +39,6 @@
 #include "ui_PrefConvertersUi.h"
 #include "ui_PrefFileformatsUi.h"
 #include "ui_PrefLanguageUi.h"
-#include "ui_PrefPrinterUi.h"
 #include "ui_PrefUi.h"
 #include "ui_PrefIdentityUi.h"
 #include "ui_ShortcutUi.h"
@@ -393,17 +392,6 @@ public:
 private Q_SLOTS:
 	void on_uiLanguageCO_currentIndexChanged(int);
 	void on_languagePackageCO_currentIndexChanged(int);
-};
-
-
-class PrefPrinter : public PrefModule, public Ui::PrefPrinterUi
-{
-	Q_OBJECT
-public:
-	PrefPrinter(GuiPreferences * form);
-
-	void applyRC(LyXRC & rc) const;
-	void updateRC(LyXRC const & rc);
 };
 
 
