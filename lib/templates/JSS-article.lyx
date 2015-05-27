@@ -594,17 +594,14 @@ Writing several lines of code:
 
 \begin_deeper
 \begin_layout Standard Code
-
 first line of code
 \end_layout
 
 \begin_layout Standard Code
-
 second line of code
 \end_layout
 
 \begin_layout Standard Code
-
 third line of code
 \end_layout
 
@@ -619,27 +616,22 @@ Alternatively, you can distinguish between input and output code:
 
 \begin_deeper
 \begin_layout Code Input
-
 first line of input code
 \end_layout
 
 \begin_layout Code Input
-
 second line of input code
 \end_layout
 
 \begin_layout Code Output
-
 first line of output code
 \end_layout
 
 \begin_layout Code Output
-
 second line of output code
 \end_layout
 
 \begin_layout Code Output
-
 third line of output code
 \end_layout
 
@@ -652,8 +644,21 @@ Acknowledgments
 Here you can write some acknowledgments.
 \end_layout
 
-\begin_layout Appendix
-This is the appendix section
+\begin_layout Section
+\start_of_appendix
+This is the first appendix section
+\end_layout
+
+\begin_layout Subsection
+A subsection
+\end_layout
+
+\begin_layout Subsubsection
+A subsubsection
+\end_layout
+
+\begin_layout Standard
+some text
 \end_layout
 
 \end_body

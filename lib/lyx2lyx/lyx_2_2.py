@@ -1375,8 +1375,7 @@ def revert_jss(document):
       m = 0
       j = 0
       k = 0
-      l = 0
-      while m != -1 or j != -1 or h != -1 or k != -1 or l != -1:
+      while m != -1 or j != -1 or h != -1 or k != -1:
         # \CodeChunk
         if h != -1:
           h = find_token(document.body, "\\begin_layout Code Chunk", h)
@@ -1423,17 +1422,6 @@ def revert_jss(document):
           document.body[k + 1 : k] = ["\\end_layout", "", "\\begin_layout Standard"]
           document.body[k : k + 1] = put_cmd_in_ert("\\begin{CodeOutput}")
           k = k + 1
-        if l != -1:
-          l = find_token(document.body, "\\begin_layout Appendix", l)
-        if l != -1:
-          endl = find_end_of_layout(document.body, l)
-          document.body[endl : endl + 1] = ["\\end_layout", "", "\\begin_layout Standard"]
-          document.body[endl + 3 : endl + 4] = put_cmd_in_ert("\\end{appendix}")
-          document.body[endl + 13 : endl + 13] = ["\\end_layout", ""]
-          document.body[l + 1 : l] = ["\\end_layout", "", "\\begin_layout Standard"]
-          document.body[l : l + 1] = put_cmd_in_ert("\\begin{appendix}")
-          document.body[l -1 : l] = ["", "\\begin_layout Standard"]
-          l = l + 1
 
 
 def convert_subref(document):

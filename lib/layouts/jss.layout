@@ -20,6 +20,8 @@ AddToPreamble
     %\usepackage{Sweave}
 EndPreamble
 
+NoStyle "Right Address"
+
 Style Section
 	LabelString			\thesection.
 End
@@ -226,23 +228,4 @@ Style "Code Output"
 	CopyStyle			"Standard Code"
 	LatexName			CodeOutput
 	LabelString			"Code Output"
-End
-
-Style Appendix
-	LatexType			Environment
-	LatexName			appendix
-	Category			BackMatter
-	TopSep				0.6
-	BottomSep			0.6
-	Margin				First_Dynamic
-	Align				Block
-	NextNoIndent		1
-	LabelType			Above
-	LabelString			"Appendix"
-	LabelSep			M
-	LabelFont
-	  Series			Bold
-	  Shape				Up
-	  Size				large
-	EndFont
 End
