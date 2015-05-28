@@ -613,7 +613,7 @@ Menuset
 		Item "Multilingual Captions|C" "help-open MultilingualCaptions"
 		Item "PDF comments|D" "help-open PDF-comment"
 		Item "PDF forms|o" "help-open PDF-form"
-		Item "Risk and Safety Statements|R" "help-open R-S-statements"
+		Item "Hazard and Precautionary Statements|H" "help-open H-P-statements"
 		Item "Sweave|S" "help-open sweave"
 		Item "XY-pic|X" "help-open xypic"
 	End
