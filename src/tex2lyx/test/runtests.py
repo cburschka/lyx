@@ -82,6 +82,7 @@ def main(argv):
                  'test-refstyle-theorems.tex', \
                  'test-scr.tex', \
                  'test-structure.tex', \
+                 'verbatim.tex', \
                  'XeTeX-polyglossia.tex']
 
     errors = []

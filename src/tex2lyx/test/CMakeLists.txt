@@ -22,6 +22,7 @@ set(_tex_tests test.ltx
                test-refstyle-theorems.tex
                test-scr.tex
                test-structure.tex
+               verbatim.tex
                XeTeX-polyglossia.tex)
 
 set(runtestsScript "${TOP_SRC_DIR}/src/tex2lyx/test/runtests.py")

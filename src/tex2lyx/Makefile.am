@@ -40,6 +40,7 @@ TEST_FILES = \
 	test/test-refstyle-theorems.tex \
 	test/test-scr.tex \
 	test/test-structure.tex \
+	test/verbatim.tex \
 	test/XeTeX-polyglossia.tex \
 	test/xfigtest.fig \
 	test/xfigtest.pstex \
@@ -60,6 +61,7 @@ TEST_RESULTS = \
 	test/test-refstyle-theorems.lyx.lyx \
 	test/test-scr.lyx.lyx \
 	test/test-structure.lyx.lyx \
+	test/verbatim.lyx.lyx \
 	test/XeTeX-polyglossia.lyx.lyx
 
 alltests: check alltests-recursive
