@@ -242,7 +242,7 @@ public:
 	///
 	bool selectWordWhenUnderCursor(Cursor & cur, word_location);
 	/// Change the case of the word at cursor position.
-	void changeCase(Cursor & cur, TextCase action);
+	void changeCase(Cursor & cur, TextCase action, bool partial);
 	/// Transposes the character at the cursor with the one before it
 	void charsTranspose(Cursor & cur);
 

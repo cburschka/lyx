@@ -14,19 +14,19 @@
 
 * The prefix for subsections in labels and references has been changed from
   "sub:" to "subsec:" in order to avoid a clash with subfloats (conflicting
-  \subref command, see bug #7550). Files are automatically converted to the new 
-  scheme. Please assure that you adapt external refstyle or prettyref definitions 
+  \subref command, see bug #7550). Files are automatically converted to the new
+  scheme. Please assure that you adapt external refstyle or prettyref definitions
   and your own layout files.
 
-* Support for printing from within LyX (File> Print) has been removed. LyX's 
-  printing support was very limited, and most users will want to print after 
+* Support for printing from within LyX (File> Print) has been removed. LyX's
+  printing support was very limited, and most users will want to print after
   reviewing an output document (e.g., a PDF), anyway, which can be done from the
-  PDF viewer. 
-  Users who would like to restore this functionality can create a "printer"
-  format from within LyX and then define, say, a pdf->printer converter that does
-  nothing but call lpd, or a2ps, or whatever. The "printer" will then be available
-  as an export option.
-  
+  PDF viewer.
+  Users who would like to restore this functionality can create a
+  "printer" format from within LyX and then define, say, a
+  pdf->printer converter that does nothing but call lpd, or a2ps, or
+  whatever. The "printer" will then be available as an export option.
+
 
 !!!The following pref variables were added in 2.2:
 
@@ -62,7 +62,7 @@
 * \print_to_printer
 * \print_to_file
 * \print_file_extension:
-  These were used for print support, which has been removed.  
+  These were used for print support, which has been removed.
 
 
 !!!The following new LyX functions have been introduced in 2.2:
@@ -79,14 +79,17 @@
 
 !!!The following LyX functions have been changed in 2.2:
 
-
+* word-upcase, word-lowcase and word-capitalize do not select the word
+  to operate on in the emacs way (that is, starting at cursor
+  position); this behaviour can be restored by using the argument
+  "partial".
 
 !!!The following LyX key bindings have been changed in 2.2:
 
 * For bindings where Control + {PgDn, PgUp} switches to the
   {next, previous} tab, Control + Shift + {PgDn, PgUp} moves the current
   tab to the {next, previous} tab.
-  
+
 * The shortcuts for "bookmark-save x" have been changed from C-M-S-x to S-Fx
   ("x" stands for the number of the bookmark.)
 

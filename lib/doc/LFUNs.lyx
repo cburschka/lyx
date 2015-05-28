@@ -98,7 +98,7 @@ The LyX Team
 \end_layout
 
 \begin_layout Date
-2014-11-14
+2015-05-28
 \end_layout
 
 \begin_layout Section*
@@ -1834,7 +1834,7 @@ alpha)
 \begin_inset Newline newline
 \end_inset
 
-		      icon: icon of lfun used in toolbar
+		      icon: icon of lfun used in toolbar or direct icon name
 \begin_inset Newline newline
 \end_inset
 
@@ -3144,7 +3144,7 @@ Action Inserts various characters into the document.
 Syntax specialchar-insert <CHAR>
 \end_layout
 \begin_layout Description
-Params <CHAR>: hyphenation, ligature-break, slash, nobreakdash, dots, end-of-sentence, menu-separator.
+Params <CHAR>: hyphenation, ligature-break, slash, nobreakdash, dots, end-of-sentence, menu-separator, lyx, tex, latex, latex2e.
 \end_layout
 \begin_layout Description
 Origin JSpitzm, 6 Dec 2007
@@ -3154,7 +3154,7 @@ Origin JSpitzm, 6 Dec 2007
 spelling-add
 \end_layout
 \begin_layout Description
-Action Add the word under the cursor to the respective spell checker dictionary.
+Action Add the word under the cursor to the respective spell checker dictionary. The default for the language is retrieved from the cursor position.
 \end_layout
 \begin_layout Description
 Syntax spelling-add [<STRING>] [<LANG>]
@@ -3183,7 +3183,7 @@ Origin vfr, 24 March 2013
 spelling-ignore
 \end_layout
 \begin_layout Description
-Action Let the spell checker ignore the word under the cursor in the current session for the given language.
+Action Let the spell checker ignore the word under the cursor in the current session for the given language. The default for the language is retrieved from the cursor position.
 \end_layout
 \begin_layout Description
 Syntax spelling-ignore [<WORD>] [<LANG>]
@@ -3199,7 +3199,7 @@ Origin JSpitzm, 18 Jan 2010
 spelling-remove
 \end_layout
 \begin_layout Description
-Action Remove the word under the cursor from the respective spell checker dictionary.
+Action Remove the word under the cursor from the respective spell checker dictionary. The default for the language is retrieved from the cursor position.
 \end_layout
 \begin_layout Description
 Syntax spelling-remove [<STRING>] [<LANG>]
@@ -3357,10 +3357,13 @@ Syntax word-backward-select
 word-capitalize
 \end_layout
 \begin_layout Description
-Action Capitalizes the words in the selection (i.e. the first letters) or the letter on the cursor position.
+Action Capitalizes the words in the selection (i.e. the first letters) or the first letter of word at cursor position.
 \end_layout
 \begin_layout Description
-Syntax word-capitalize
+Syntax word-capitalize [<SEL_TYPE>]
+\end_layout
+\begin_layout Description
+Params <SEL_TYPE>: if this is equal to "partial", then the default word starts at cursor position (emacs-style). Otherwise, the whole word is considered.
 \end_layout
 
 \begin_layout Subsection*
@@ -3509,10 +3512,13 @@ Origin dov, 28 Oct 2007
 word-lowcase
 \end_layout
 \begin_layout Description
-Action Change the words in the selection or from the cursor position to the end of word to the lower case.
+Action Change the words in the selection or word at cursor position to lower case.
 \end_layout
 \begin_layout Description
-Syntax word-lowcase
+Syntax word-lowcase [<SEL_TYPE>]
+\end_layout
+\begin_layout Description
+Params <SEL_TYPE>: if this is equal to "partial", then the default word starts at cursor position (emacs-style). Otherwise, the whole word is considered.
 \end_layout
 
 \begin_layout Subsection*
@@ -3588,10 +3594,13 @@ Origin Andre, 11 Sep 2002
 word-upcase
 \end_layout
 \begin_layout Description
-Action Change the words in the selection or from the cursor position to the end of word to the upper case.
+Action Change the words in the selection or word at cursor position to upper case.
 \end_layout
 \begin_layout Description
-Syntax word-upcase
+Syntax word-upcase [<SEL_TYPE>]
+\end_layout
+\begin_layout Description
+Params <SEL_TYPE>: if this is equal to "partial", then the default word starts at cursor position (emacs-style). Otherwise, the whole word is considered.
 \end_layout
 
 \begin_layout Subsection*
@@ -4524,7 +4533,7 @@ Export buffers to PDF (pdflatex):
 
 \end_layout
 \begin_layout Description
-Origin scottkostyshak, 20 Jul 2012
+Origin skostysh, 20 Jul 2012
 \end_layout
 
 \begin_layout Subsection*
@@ -4557,6 +4566,32 @@ Params <LANG>: language name. See lib/languages for list.
 \end_layout
 \begin_layout Description
 Origin leeming, 30 Mar 2004
+\end_layout
+
+\begin_layout Subsection*
+buffer-move-next
+\end_layout
+\begin_layout Description
+Action Moves the current tab one spot to the right.
+\end_layout
+\begin_layout Description
+Syntax buffer-move-next
+\end_layout
+\begin_layout Description
+Origin skostysh, 7 Apr 2015
+\end_layout
+
+\begin_layout Subsection*
+buffer-move-previous
+\end_layout
+\begin_layout Description
+Action Moves the current tab one spot to the left.
+\end_layout
+\begin_layout Description
+Syntax buffer-move-previous
+\end_layout
+\begin_layout Description
+Origin skostysh, 7 Apr 2015
 \end_layout
 
 \begin_layout Subsection*
@@ -4628,36 +4663,6 @@ Action Switch to the previous opened document.
 \end_layout
 \begin_layout Description
 Syntax buffer-previous
-\end_layout
-
-\begin_layout Subsection*
-buffer-print
-\end_layout
-\begin_layout Description
-Action Prints the current document.
-\end_layout
-\begin_layout Description
-Notion Many settings can be given via the preferences dialog.
-\end_layout
-\begin_layout Description
-Syntax buffer-print <TARGET> <TARGET-NAME> <COMMAND>
-\end_layout
-\begin_layout Description
-Params <TARGET> is either "printer" or "file".
-\begin_inset Newline newline
-\end_inset
-
-<TARGER-NAME> is either "default" or file name or printer name.
-\begin_inset Newline newline
-\end_inset
-
-<COMMAND> command ensuring the printing job.
-\end_layout
-\begin_layout Description
-Sample buffer-print file "/trash/newfile1.ps" "dvips"
-\end_layout
-\begin_layout Description
-Origin leeming, 28 Mar 2004
 \end_layout
 
 \begin_layout Subsection*
@@ -4767,6 +4772,19 @@ Syntax buffer-view [<FORMAT>]
 \end_layout
 \begin_layout Description
 Params <FORMAT>: The format to display, where this is one of the formats defined (in the current GUI) in the Tools>Preferences>File Formats dialog. If no format is given, the default format as specified in the same dialog is used.
+\end_layout
+
+\begin_layout Subsection*
+buffer-view-cache
+\end_layout
+\begin_layout Description
+Action Opens the file that was created from last preview of this buffer.
+\end_layout
+\begin_layout Description
+Notion This LFUN is called by the "Show Output Anyway" button in the LaTeX Errors dialog. It can also be called by the user, which is useful if the document takes a long time to compile, and you just want to see the last previewed version.
+\end_layout
+\begin_layout Description
+Syntax buffer-view-cache
 \end_layout
 
 \begin_layout Subsection*

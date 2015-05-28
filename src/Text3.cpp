@@ -1291,15 +1291,15 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_WORD_UPCASE:
-		changeCase(cur, text_uppercase);
+		changeCase(cur, text_uppercase, cmd.getArg(0) == "partial");
 		break;
 
 	case LFUN_WORD_LOWCASE:
-		changeCase(cur, text_lowercase);
+		changeCase(cur, text_lowercase, cmd.getArg(0) == "partial");
 		break;
 
 	case LFUN_WORD_CAPITALIZE:
-		changeCase(cur, text_capitalization);
+		changeCase(cur, text_capitalization, cmd.getArg(0) == "partial");
 		break;
 
 	case LFUN_CHARS_TRANSPOSE:

@@ -1489,20 +1489,19 @@ void Text::deleteWordBackward(Cursor & cur)
 
 
 // Kill to end of line.
-void Text::changeCase(Cursor & cur, TextCase action)
+void Text::changeCase(Cursor & cur, TextCase action, bool partial)
 {
 	LBUFERR(this == cur.text());
 	CursorSlice from;
 	CursorSlice to;
 
-	bool gotsel = false;
-	if (cur.selection()) {
+	bool const gotsel = cur.selection();
+	if (gotsel) {
 		from = cur.selBegin();
 		to = cur.selEnd();
-		gotsel = true;
 	} else {
 		from = cur.top();
-		getWord(from, to, PARTIAL_WORD);
+		getWord(from, to, partial ? PARTIAL_WORD : WHOLE_WORD);
 		cursorForwardOneWord(cur);
 	}
 

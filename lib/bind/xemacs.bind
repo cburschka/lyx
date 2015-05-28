@@ -237,6 +237,10 @@ Format 2
 \bind "M-period"		"specialchar-insert dots"
 \bind "M-w"			"copy"
 \bind "Escape"			"meta-prefix"
+\bind "M-u"			"word-upcase partial"
+\bind "M-l"			"word-lowcase partial"
+# This conflicts with the character menu.
+#bind "M-c"			"word-capitalize partial"
 
 # Numeric keypad (if Shift+KP_XXX does not switch the NumLock state)
 \bind "S-KP_Right"              "char-right-select"
@@ -355,3 +359,8 @@ Format 2
 \bind_file latinkeys.bind
 \bind_file cyrkeys.bind
 \bind_file greekkeys.bind
+
+# the following bindings have to be adapted w.r.t. menus.bind
+\bind "M-c Down"		"word-lowcase partial"
+\bind "M-c Up"			"word-upcase partial"
+\bind "M-c Right"		"word-capitalize partial"

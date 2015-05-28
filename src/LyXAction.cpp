@@ -1000,24 +1000,33 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_CAPITALIZE
  * \li Action: Capitalizes the words in the selection (i.e. the first letters)
-               or the letter on the cursor position.
- * \li Syntax: word-capitalize
+               or the first letter of word at cursor position.
+ * \li Syntax: word-capitalize [<SEL_TYPE>]
+ * \li Params: <SEL_TYPE>: if this is equal to "partial", then the
+ *             default word starts at cursor position (emacs-style).
+ *             Otherwise, the whole word is considered.
  * \endvar
  */
 		{ LFUN_WORD_CAPITALIZE, "word-capitalize", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_UPCASE
- * \li Action: Change the words in the selection or from the cursor position
-               to the end of word to the upper case.
- * \li Syntax: word-upcase
+ * \li Action: Change the words in the selection or word at cursor position
+               to upper case.
+ * \li Syntax: word-upcase [<SEL_TYPE>]
+ * \li Params: <SEL_TYPE>: if this is equal to "partial", then the
+ *             default word starts at cursor position (emacs-style).
+ *             Otherwise, the whole word is considered.
  * \endvar
  */
 		{ LFUN_WORD_UPCASE, "word-upcase", Noop, Edit },
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_LOWCASE
- * \li Action: Change the words in the selection or from the cursor position
-               to the end of word to the lower case.
- * \li Syntax: word-lowcase
+ * \li Action: Change the words in the selection or word at cursor position
+               to lower case.
+ * \li Syntax: word-lowcase [<SEL_TYPE>]
+ * \li Params: <SEL_TYPE>: if this is equal to "partial", then the
+ *             default word starts at cursor position (emacs-style).
+ *             Otherwise, the whole word is considered.
  * \endvar
  */
 		{ LFUN_WORD_LOWCASE, "word-lowcase", Noop, Edit },
