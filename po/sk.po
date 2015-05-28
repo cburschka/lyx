@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-24 10:52+0200\n"
-"PO-Revision-Date: 2015-05-24 08:59+0000\n"
+"POT-Creation-Date: 2015-05-28 08:05+0200\n"
+"PO-Revision-Date: 2015-05-28 06:39+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -3845,6 +3845,10 @@ msgstr "DV&I príkaz:"
 msgid "&PDF command:"
 msgstr "PD&F príkaz:"
 
+#: src/frontends/qt4/ui/PrefOutputUi.ui:107
+msgid "DVI-PS Options"
+msgstr "DVI PS Voľby"
+
 #: src/frontends/qt4/ui/PrefPathsUi.ui:41
 msgid "&PATH prefix:"
 msgstr "P&refix cesty:"
@@ -3917,94 +3921,13 @@ msgstr "P&racovný adresár:"
 msgid "H&unspell dictionaries:"
 msgstr "Knižnice pre &hunspell:"
 
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:41
-msgid "Printer Command Options"
-msgstr "Voľby Príkaz Pre Tlačiareň"
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:69
-msgid "Extension to be used when printing to file."
-msgstr "Prípona na použitie pri tlačí do súboru."
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:72
-msgid "File ex&tension:"
-msgstr "Prípon&a súboru:"
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:85
-msgid "Option used to print to a file."
-msgstr "Možnosti používané pri tlači do súboru."
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:88
-msgid "Print to &file:"
-msgstr "Tlač do &súboru:"
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:98
-msgid "Option used to print to non-default printer."
-msgstr "Voľba na tlač pre neštandardnú tlačiareň."
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:101
-msgid "Set &printer:"
-msgstr "Nastaviť &tlačiareň:"
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:114
-msgid "Option used with spool command to set printer."
-msgstr "Voľba použitá spool-om k nastaveniu tlačiarne."
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:117
-msgid "Spool &printer:"
-msgstr "Spool pre t&lačiareň:"
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:130
-msgid ""
-"Command transmitted to the system to actually print the postscript file."
-msgstr "Príkaz odovzdaný do systému, aby tlačil do postscript-súboru."
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:136
-msgid "Spool co&mmand:"
-msgstr "Príka&z do spoolu:"
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:153
-msgid "Option used to reverse page order."
-msgstr "Voľba na použitie pre tlač v opačnom poradí."
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:156
-msgid "Re&verse pages:"
-msgstr "&Opačné poradie stránok:"
-
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:169
 msgid "Lan&dscape:"
 msgstr "Na šírk&u:"
 
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:182
-msgid "&Number of copies:"
-msgstr "Poč&et kópií:"
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:192
-msgid "Option used to set number of copies."
-msgstr "Voľba určujúca počet kópií."
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:199
-msgid "Option used to print a range of pages."
-msgstr "Voľba určujúca tlač rozsahu strán."
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:206
-msgid "Co&llated:"
-msgstr "Uspor&iadať:"
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:216
-msgid "Pa&ge range:"
-msgstr "&Rozsah strán:"
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:226
-msgid "Option used to collate multiple copies."
-msgstr "Voľba určujúca usporiadanie kópií za sebou."
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:233
-msgid "&Odd pages:"
-msgstr "&Nepárne strany:"
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:246
-msgid "&Even pages:"
-msgstr "&Párne strany:"
+#: src/frontends/qt4/ui/PrefOutputUi.ui:162
+msgid "Other Options"
+msgstr "Iné Voľby"
 
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:256
 msgid "Paper t&ype:"
@@ -4013,43 +3936,6 @@ msgstr "T&yp papiera:"
 #: src/frontends/qt4/ui/PrefPrinterUi.ui:266
 msgid "Paper si&ze:"
 msgstr "&Veľkosť papiera:"
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:279
-msgid "Any other options you'd like to use with the printer command."
-msgstr "Ľubovoľné ďalšie voľby pre príkaz k tlači."
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:282
-msgid "E&xtra options:"
-msgstr "E&xtra voľby:"
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:298
-msgid "Customizes output to a given printer. Expert option."
-msgstr "Prispôsobiť výstup na určenú tlačiareň. Pokročilé nastavenie."
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:301
-msgid ""
-"Normally, this needs to be checked only if you are using dvips as your "
-"printer command and you have config.<printer> files installed for all your "
-"printers."
-msgstr ""
-"Vyberte to len keď používate dvips ako príkaz k tlači a máte súbory typu "
-"config.<tlačiareň> nainštalované pre všetky vaše tlačiarne."
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:304
-msgid "Adapt &output to printer"
-msgstr "Prispôso&biť výstup na tlačiareň"
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:311
-msgid "Name of the default printer"
-msgstr "Názov štandardnej tlačiarne"
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:318
-msgid "Default &printer:"
-msgstr "Štandardná &tlačiareň:"
-
-#: src/frontends/qt4/ui/PrefPrinterUi.ui:331
-msgid "Printer co&mmand:"
-msgstr "Prí&kaz pre tlačiareň:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:69
 msgid "Sans Seri&f:"
@@ -4251,90 +4137,10 @@ msgstr ""
 "Vlastná hodnota. &quot;Odsadzovanie Zoznamov&quot; je treba nastaviť na "
 "&quot;Vlastné&quot;."
 
-#: src/frontends/qt4/ui/PrintUi.ui:28
-msgid "Pages"
-msgstr "Strany"
-
-#: src/frontends/qt4/ui/PrintUi.ui:59
-msgid "Page number to print from"
-msgstr "Číslo prvej strany na tlačenie"
-
-#: src/frontends/qt4/ui/PrintUi.ui:66
-msgid "&To:[[as in 'From page x to page y']]"
-msgstr "&Do strany:"
-
-#: src/frontends/qt4/ui/PrintUi.ui:79
-msgid "Page number to print to"
-msgstr "Číslo poslednej strany na tlačenie"
-
-#: src/frontends/qt4/ui/PrintUi.ui:88 src/frontends/qt4/ui/PrintUi.ui:101
-msgid "Print all pages"
-msgstr "Tlačiť všetky strany"
-
-#: src/frontends/qt4/ui/PrintUi.ui:91
-msgid "Fro&m"
-msgstr "&Od"
-
 #: src/frontends/qt4/ui/PrintUi.ui:104
 #: src/frontends/qt4/ui/ProgressViewUi.ui:226
 msgid "&All"
 msgstr "&Všetko"
-
-#: src/frontends/qt4/ui/PrintUi.ui:116
-msgid "Print &odd-numbered pages"
-msgstr "Tlačiť &nepárno očíslované strany"
-
-#: src/frontends/qt4/ui/PrintUi.ui:126
-msgid "Print &even-numbered pages"
-msgstr "Tlačiť &párno číslované strany"
-
-#: src/frontends/qt4/ui/PrintUi.ui:136
-msgid "Print in reverse order"
-msgstr "Tlačiť v opačnom poradí"
-
-#: src/frontends/qt4/ui/PrintUi.ui:139
-msgid "Re&verse order"
-msgstr "Opačné por&adie"
-
-#: src/frontends/qt4/ui/PrintUi.ui:149
-msgid "Copie&s"
-msgstr "Kóp&ie"
-
-#: src/frontends/qt4/ui/PrintUi.ui:161
-msgid "Number of copies"
-msgstr "Počet kópií"
-
-#: src/frontends/qt4/ui/PrintUi.ui:177
-msgid "Collate copies"
-msgstr "Usporiadať kópie"
-
-#: src/frontends/qt4/ui/PrintUi.ui:180
-msgid "&Collate"
-msgstr "&Usporiadať"
-
-#: src/frontends/qt4/ui/PrintUi.ui:230
-msgid "&Print"
-msgstr "&Tlač"
-
-#: src/frontends/qt4/ui/PrintUi.ui:258
-msgid "Print Destination"
-msgstr "Cieľ tlače"
-
-#: src/frontends/qt4/ui/PrintUi.ui:270
-msgid "Send output to the printer"
-msgstr "Poslať výstup na tlačiareň"
-
-#: src/frontends/qt4/ui/PrintUi.ui:273
-msgid "P&rinter:"
-msgstr "T&lačiareň:"
-
-#: src/frontends/qt4/ui/PrintUi.ui:283
-msgid "Send output to the given printer"
-msgstr "Poslať výstup na určenú tlačiareň"
-
-#: src/frontends/qt4/ui/PrintUi.ui:290 src/frontends/qt4/ui/PrintUi.ui:303
-msgid "Send output to a file"
-msgstr "Poslať výstup do súboru"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:61
 msgid "Check if this index should be part (e.g., a section) of the former one."
@@ -10351,6 +10157,10 @@ msgstr "Komisia"
 msgid "ACKNOWLEDGEMENTS"
 msgstr "POĎAKOVANIA"
 
+#: lib/layouts/iucr.layout:3
+msgid "International Union of Crystallography (IUCr)"
+msgstr "International Union of Crystallography (IUCr)"
+
 #: lib/layouts/jarticle.layout:3
 msgid "Japanese Article (jarticle)"
 msgstr "Japonský Článok (jarticle)"
@@ -10415,6 +10225,22 @@ msgstr "Japonská Kniha (jsbook)"
 msgid "Journal of Statistical Software (JSS) version 2"
 msgstr "Journal of Statistical Software (JSS) verzia 2"
 
+#: lib/layouts/iucr.layout:47 lib/layouts/jss.layout:26
+msgid "\\thesection."
+msgstr "\\thesection."
+
+#: lib/layouts/iucr.layout:48
+msgid "\\thesection"
+msgstr "\\thesection"
+
+#: lib/layouts/iucr.layout:53 lib/layouts/jss.layout:30
+msgid "\\thesubsection."
+msgstr "\\thesubsection."
+
+#: lib/layouts/iucr.layout:61
+msgid "\\thesubsubsection."
+msgstr "\\thesubsubsection."
+
 #: lib/layouts/jss.layout:30
 msgid "Plain Title"
 msgstr "Prostý Titul"
@@ -10435,9 +10261,17 @@ msgstr "Prosté Heslá:"
 msgid "Short Title:"
 msgstr "Krátky Titul:"
 
+#: lib/layouts/jss.layout:129
+msgid "Pkg"
+msgstr "Pkg"
+
 #: lib/layouts/jss.layout:112 lib/layouts/jss.layout:114
 msgid "pkg"
 msgstr "pkg"
+
+#: lib/layouts/jss.layout:154
+msgid "Proglang"
+msgstr "Proglang"
 
 #: lib/layouts/jss.layout:138 lib/layouts/jss.layout:140
 msgid "proglang"
@@ -10919,6 +10753,84 @@ msgstr "Mesto"
 #: lib/layouts/agu_stdtitle.inc:496 lib/layouts/agu_stdtitle.inc:498
 msgid "Country"
 msgstr "Krajina"
+
+#: lib/layouts/iucr.layout:109
+msgid "Main Author"
+msgstr "Hlavný Autor"
+
+#: lib/layouts/iucr.layout:117 lib/layouts/iucr.layout:150
+#: lib/layouts/iucr.layout:181
+msgid "Affiliation Key"
+msgstr "Heslo Príslušenstva"
+
+#: lib/layouts/iucr.layout:118
+msgid "Affiliation key of the author"
+msgstr "Heslo príslušenstvo autora"
+
+#: lib/layouts/iucr.layout:122 lib/layouts/iucr.layout:123
+#: lib/layouts/iucr.layout:155 lib/layouts/iucr.layout:156
+msgid "Forename"
+msgstr "Krstné meno"
+
+#: lib/layouts/iucr.layout:144
+msgid "Co Author"
+msgstr "Spolu Autor"
+
+#: lib/layouts/iucr.layout:147
+msgid "Co-author"
+msgstr "Spolu-autor"
+
+#: lib/layouts/iucr.layout:151
+msgid "Affiliation key of the co-author"
+msgstr "Heslo príslušenstvo spolu-autora"
+
+#: lib/layouts/iucr.layout:160
+msgid "Short Author"
+msgstr "Skratka Autora"
+
+#: lib/layouts/iucr.layout:163
+msgid "Short author:"
+msgstr "Skratka autora:"
+
+#: lib/layouts/iucr.layout:182
+msgid "Affiliation key"
+msgstr "Heslo príslušenstva"
+
+#: lib/layouts/iucr.layout:197
+msgid "Keyword:"
+msgstr "Heslo:"
+
+#: lib/layouts/iucr.layout:200
+msgid "Vita"
+msgstr "Životopis"
+
+#: lib/layouts/iucr.layout:203
+msgid "Vita:"
+msgstr "Životopis:"
+
+#: lib/layouts/iucr.layout:206
+msgid "PDB reference"
+msgstr "PDB referencia"
+
+#: lib/layouts/iucr.layout:209
+msgid "PDB reference:"
+msgstr "PDBreferencia:"
+
+#: lib/layouts/iucr.layout:212
+msgid "Optional name"
+msgstr "Voliteľný názov"
+
+#: lib/layouts/iucr.layout:216
+msgid "NDB reference"
+msgstr "NDB referencia"
+
+#: lib/layouts/iucr.layout:219
+msgid "NDB reference:"
+msgstr "NDB referencia:"
+
+#: lib/layouts/iucr.layout:222 lib/layouts/iucr.layout:225
+msgid "Synopsis"
+msgstr "Prehľad"
 
 #: lib/layouts/moderncv.layout:330
 msgid "Entry:"
@@ -13946,10 +13858,6 @@ msgstr "kód"
 msgid "Code Chunk"
 msgstr "Odrezok Kódu"
 
-#: lib/layouts/jss.layout:194
-msgid "Standard Code"
-msgstr "Štandardný Kód"
-
 #: lib/layouts/minimalistic.module:2
 msgid "Minimalistic"
 msgstr "Minimalistické"
@@ -16835,10 +16743,6 @@ msgstr "Importovať|I"
 msgid "Export|E"
 msgstr "Exportovať|E"
 
-#: lib/ui/stdmenus.inc:60
-msgid "Print...|P"
-msgstr "Tlač...|T"
-
 #: lib/ui/stdmenus.inc:61
 msgid "Fax...|F"
 msgstr "Fax...|F"
@@ -17547,8 +17451,8 @@ msgstr "Vytvoriť program"
 msgid "LaTeX Log|L"
 msgstr "LaTeX Protokol|L"
 
-#: lib/ui/stdmenus.inc:517
-msgid "Start Appendix Here|A"
+#: lib/ui/stdmenus.inc:521
+msgid "Start Appendix Here|x"
 msgstr "Začni Prílohy Tu|P"
 
 #: lib/ui/stdmenus.inc:521
@@ -17559,8 +17463,8 @@ msgstr "Zobraziť Hlavný Dokument"
 msgid "Update Master Document|a"
 msgstr "Aktualizovať Hlavný Dokument"
 
-#: lib/ui/stdmenus.inc:524
-msgid "Compressed|m"
+#: lib/ui/stdmenus.inc:528
+msgid "Compressed|o"
 msgstr "Komprimované|m"
 
 #: lib/ui/stdmenus.inc:529
@@ -17774,10 +17678,6 @@ msgstr "Otvoriť dokument"
 #: lib/ui/stdtoolbars.inc:73
 msgid "Save document"
 msgstr "Uložiť dokument"
-
-#: lib/ui/stdtoolbars.inc:74
-msgid "Print document"
-msgstr "Tlač dokument"
 
 #: lib/ui/stdtoolbars.inc:76
 msgid "Check spelling"
@@ -23355,20 +23255,6 @@ msgstr "Vetva \"%1$s\" neexistuje."
 msgid "Branch \"%1$s\" already exists."
 msgstr "Vetva \"%1$s\" už existuje."
 
-#: src/Buffer.cpp:2641
-#, c-format
-msgid "Unable to parse \"%1$s\""
-msgstr "Nemôžem analyzovať \"%1$s\""
-
-#: src/Buffer.cpp:2648
-#, c-format
-msgid "Unrecognized target \"%1$s\""
-msgstr "Neznámy cieľ \"%1$s\""
-
-#: src/Buffer.cpp:2655
-msgid "Error exporting to DVI."
-msgstr "Chyba pri exporte na DVI."
-
 #: src/Buffer.cpp:2720 src/Exporter.cpp:45
 #, c-format
 msgid ""
@@ -23383,10 +23269,6 @@ msgstr ""
 #: src/Buffer.cpp:2723 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Prepísať súbor?"
-
-#: src/Buffer.cpp:2740
-msgid "Error running external commands."
-msgstr "Chyba pri spúšťaní externých príkazov."
 
 #: src/Buffer.cpp:2775
 msgid "Error viewing the output file."
@@ -25384,48 +25266,9 @@ msgstr "Rovnice v náhľade budú označené pomocou \"(#)\" a nebudú očíslov
 msgid "Scale the preview size to suit."
 msgstr "Nastavte mierku pre vhodný náhľad."
 
-#: src/LyXRC.cpp:3342
-msgid "The option for specifying whether the copies should be collated."
-msgstr "Voľba špecifikuje, či sa kópie majú usporiadať."
-
-#: src/LyXRC.cpp:3346
-msgid "The option for specifying the number of copies to print."
-msgstr "Voľba špecifikuje počet kópií pre tlač."
-
-#: src/LyXRC.cpp:3350
-msgid ""
-"The default printer to print on. If none is specified, LyX will use the "
-"environment variable PRINTER."
-msgstr ""
-"Štandardná tlačiareň pre tlač. Ak nič nie je nastavené, tak LyX použije "
-"premennú prostredia PRINTER."
-
-#: src/LyXRC.cpp:3354
-msgid "The option to print only even pages."
-msgstr "Voľba na tlač iba párnych strán."
-
-#: src/LyXRC.cpp:3358
-msgid ""
-"Extra options to pass to printing program after everything else, but before "
-"the filename of the DVI file to be printed."
-msgstr ""
-"Extra voľby pre program tlače, ktoré sa použijú tesne pred tlačou DVI súboru."
-
-#: src/LyXRC.cpp:3362
-msgid "Extension of printer program output file. Usually \".ps\"."
-msgstr "Prípona výstupného súboru tlače. Obyčajne \".ps\"."
-
 #: src/LyXRC.cpp:3366
 msgid "The option to print out in landscape."
 msgstr "Voľba tlače na šírku."
-
-#: src/LyXRC.cpp:3370
-msgid "The option to print only odd pages."
-msgstr "Voľba na tlač iba nepárnych strán."
-
-#: src/LyXRC.cpp:3374
-msgid "The option for specifying a comma-separated list of pages to print."
-msgstr "Voľba špecifikuje čiarkami oddelený zoznam strán pre tlač."
 
 #: src/LyXRC.cpp:3378
 msgid "Option to specify the dimensions of the print paper."
@@ -25434,46 +25277,6 @@ msgstr "Voľba špecifikujúca veľkosti tlačenej stránky."
 #: src/LyXRC.cpp:3382
 msgid "The option to specify paper type."
 msgstr "Voľba špecifikuje typ stránky."
-
-#: src/LyXRC.cpp:3386
-msgid "The option to reverse the order of the pages printed."
-msgstr "Voľba pre tlač strán v opačnom poradí."
-
-#: src/LyXRC.cpp:3390
-msgid ""
-"When set, this printer option automatically prints to a file and then calls "
-"a separate print spooling program on that file with the given name and "
-"arguments."
-msgstr ""
-"Keď nastavené, táto voľba automaticky tlačí do súboru a potom pre tlač tohto "
-"súboru volá \"spool\" program s daným menom a s danými parametrami."
-
-#: src/LyXRC.cpp:3394
-msgid ""
-"If you specify a printer name in the print dialog, the following argument is "
-"prepended along with the printer name after the spool command."
-msgstr ""
-"Ak špecifikujete názov tlačiarne v dialógu pre tlač, tak nasledujúci "
-"argument sa spolu s názvom tlačiarne pridá k spool-príkazu."
-
-#: src/LyXRC.cpp:3398
-msgid "Option to pass to the print program to print to a file."
-msgstr "Voľba, aby program na tlač tlačil do súboru."
-
-#: src/LyXRC.cpp:3402
-msgid "Option to pass to the print program to print on a specific printer."
-msgstr "Voľba, aby program na tlač tlačil na konkrétnej tlačiarni."
-
-#: src/LyXRC.cpp:3406
-msgid ""
-"Select for LyX to pass the name of the destination printer to your print "
-"command."
-msgstr ""
-"Vyberte, keď chcete aby LyX preniesol názov tlačiarne ku programu pre tlač."
-
-#: src/LyXRC.cpp:3410
-msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
-msgstr "Váš obľúbený program na tlač, napr. \"dvips\", \"dvilj4\"."
 
 #: src/LyXRC.cpp:3414
 msgid ""
@@ -28072,10 +27875,6 @@ msgid ""
 msgstr ""
 "Zmena užívateľského rozhrania bude naplno aktívna len po reštartu LyXu."
 
-#: src/frontends/qt4/GuiPrefs.cpp:2405
-msgid "Printer"
-msgstr "Tlačiareň"
-
 #: src/frontends/qt4/GuiPrefs.cpp:2521
 msgid "User Interface"
 msgstr "Užívateľské Rozhranie"
@@ -28194,18 +27993,6 @@ msgstr "Zvoľte mapu kláves"
 #: src/frontends/qt4/GuiPrefs.cpp:3490
 msgid "LyX keyboard maps (*.kmap)"
 msgstr "LyX klávesové mapy (*.kmap)"
-
-#: src/frontends/qt4/GuiPrint.cpp:43
-msgid "Print Document"
-msgstr "Tlač Dokument"
-
-#: src/frontends/qt4/GuiPrint.cpp:87
-msgid "Print to file"
-msgstr "Tlačiť do súboru"
-
-#: src/frontends/qt4/GuiPrint.cpp:88
-msgid "PostScript files (*.ps)"
-msgstr "PostScript súbory (*.ps)"
 
 #: src/frontends/qt4/GuiPrintNomencl.cpp:49
 msgid "Longest label width"
@@ -31008,6 +30795,258 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Printer Command Options"
+#~ msgstr "Voľby Príkaz Pre Tlačiareň"
+
+#~ msgid "Extension to be used when printing to file."
+#~ msgstr "Prípona na použitie pri tlačí do súboru."
+
+#~ msgid "File ex&tension:"
+#~ msgstr "Prípon&a súboru:"
+
+#~ msgid "Option used to print to a file."
+#~ msgstr "Možnosti používané pri tlači do súboru."
+
+#~ msgid "Print to &file:"
+#~ msgstr "Tlač do &súboru:"
+
+#~ msgid "Option used to print to non-default printer."
+#~ msgstr "Voľba na tlač pre neštandardnú tlačiareň."
+
+#~ msgid "Set &printer:"
+#~ msgstr "Nastaviť &tlačiareň:"
+
+#~ msgid "Option used with spool command to set printer."
+#~ msgstr "Voľba použitá spool-om k nastaveniu tlačiarne."
+
+#~ msgid "Spool &printer:"
+#~ msgstr "Spool pre t&lačiareň:"
+
+#~ msgid ""
+#~ "Command transmitted to the system to actually print the postscript file."
+#~ msgstr "Príkaz odovzdaný do systému, aby tlačil do postscript-súboru."
+
+#~ msgid "Spool co&mmand:"
+#~ msgstr "Príka&z do spoolu:"
+
+#~ msgid "Option used to reverse page order."
+#~ msgstr "Voľba na použitie pre tlač v opačnom poradí."
+
+#~ msgid "Re&verse pages:"
+#~ msgstr "&Opačné poradie stránok:"
+
+#~ msgid "&Number of copies:"
+#~ msgstr "Poč&et kópií:"
+
+#~ msgid "Option used to set number of copies."
+#~ msgstr "Voľba určujúca počet kópií."
+
+#~ msgid "Option used to print a range of pages."
+#~ msgstr "Voľba určujúca tlač rozsahu strán."
+
+#~ msgid "Co&llated:"
+#~ msgstr "Uspor&iadať:"
+
+#~ msgid "Pa&ge range:"
+#~ msgstr "&Rozsah strán:"
+
+#~ msgid "Option used to collate multiple copies."
+#~ msgstr "Voľba určujúca usporiadanie kópií za sebou."
+
+#~ msgid "&Odd pages:"
+#~ msgstr "&Nepárne strany:"
+
+#~ msgid "&Even pages:"
+#~ msgstr "&Párne strany:"
+
+#~ msgid "Any other options you'd like to use with the printer command."
+#~ msgstr "Ľubovoľné ďalšie voľby pre príkaz k tlači."
+
+#~ msgid "E&xtra options:"
+#~ msgstr "E&xtra voľby:"
+
+#~ msgid "Customizes output to a given printer. Expert option."
+#~ msgstr "Prispôsobiť výstup na určenú tlačiareň. Pokročilé nastavenie."
+
+#~ msgid ""
+#~ "Normally, this needs to be checked only if you are using dvips as your "
+#~ "printer command and you have config.<printer> files installed for all "
+#~ "your printers."
+#~ msgstr ""
+#~ "Vyberte to len keď používate dvips ako príkaz k tlači a máte súbory typu "
+#~ "config.<tlačiareň> nainštalované pre všetky vaše tlačiarne."
+
+#~ msgid "Adapt &output to printer"
+#~ msgstr "Prispôso&biť výstup na tlačiareň"
+
+#~ msgid "Name of the default printer"
+#~ msgstr "Názov štandardnej tlačiarne"
+
+#~ msgid "Default &printer:"
+#~ msgstr "Štandardná &tlačiareň:"
+
+#~ msgid "Printer co&mmand:"
+#~ msgstr "Prí&kaz pre tlačiareň:"
+
+#~ msgid "Pages"
+#~ msgstr "Strany"
+
+#~ msgid "Page number to print from"
+#~ msgstr "Číslo prvej strany na tlačenie"
+
+#~ msgid "&To:[[as in 'From page x to page y']]"
+#~ msgstr "&Do strany:"
+
+#~ msgid "Page number to print to"
+#~ msgstr "Číslo poslednej strany na tlačenie"
+
+#~ msgid "Print all pages"
+#~ msgstr "Tlačiť všetky strany"
+
+#~ msgid "Fro&m"
+#~ msgstr "&Od"
+
+#~ msgid "Print &odd-numbered pages"
+#~ msgstr "Tlačiť &nepárno očíslované strany"
+
+#~ msgid "Print &even-numbered pages"
+#~ msgstr "Tlačiť &párno číslované strany"
+
+#~ msgid "Print in reverse order"
+#~ msgstr "Tlačiť v opačnom poradí"
+
+#~ msgid "Re&verse order"
+#~ msgstr "Opačné por&adie"
+
+#~ msgid "Copie&s"
+#~ msgstr "Kóp&ie"
+
+#~ msgid "Number of copies"
+#~ msgstr "Počet kópií"
+
+#~ msgid "Collate copies"
+#~ msgstr "Usporiadať kópie"
+
+#~ msgid "&Collate"
+#~ msgstr "&Usporiadať"
+
+#~ msgid "&Print"
+#~ msgstr "&Tlač"
+
+#~ msgid "Print Destination"
+#~ msgstr "Cieľ tlače"
+
+#~ msgid "Send output to the printer"
+#~ msgstr "Poslať výstup na tlačiareň"
+
+#~ msgid "P&rinter:"
+#~ msgstr "T&lačiareň:"
+
+#~ msgid "Send output to the given printer"
+#~ msgstr "Poslať výstup na určenú tlačiareň"
+
+#~ msgid "Send output to a file"
+#~ msgstr "Poslať výstup do súboru"
+
+#~ msgid "Print...|P"
+#~ msgstr "Tlač...|T"
+
+#~ msgid "Print document"
+#~ msgstr "Tlač dokument"
+
+#~ msgid "Unable to parse \"%1$s\""
+#~ msgstr "Nemôžem analyzovať \"%1$s\""
+
+#~ msgid "Unrecognized target \"%1$s\""
+#~ msgstr "Neznámy cieľ \"%1$s\""
+
+#~ msgid "Error exporting to DVI."
+#~ msgstr "Chyba pri exporte na DVI."
+
+#~ msgid "Error running external commands."
+#~ msgstr "Chyba pri spúšťaní externých príkazov."
+
+#~ msgid "The option for specifying whether the copies should be collated."
+#~ msgstr "Voľba špecifikuje, či sa kópie majú usporiadať."
+
+#~ msgid "The option for specifying the number of copies to print."
+#~ msgstr "Voľba špecifikuje počet kópií pre tlač."
+
+#~ msgid ""
+#~ "The default printer to print on. If none is specified, LyX will use the "
+#~ "environment variable PRINTER."
+#~ msgstr ""
+#~ "Štandardná tlačiareň pre tlač. Ak nič nie je nastavené, tak LyX použije "
+#~ "premennú prostredia PRINTER."
+
+#~ msgid "The option to print only even pages."
+#~ msgstr "Voľba na tlač iba párnych strán."
+
+#~ msgid ""
+#~ "Extra options to pass to printing program after everything else, but "
+#~ "before the filename of the DVI file to be printed."
+#~ msgstr ""
+#~ "Extra voľby pre program tlače, ktoré sa použijú tesne pred tlačou DVI "
+#~ "súboru."
+
+#~ msgid "Extension of printer program output file. Usually \".ps\"."
+#~ msgstr "Prípona výstupného súboru tlače. Obyčajne \".ps\"."
+
+#~ msgid "The option to print only odd pages."
+#~ msgstr "Voľba na tlač iba nepárnych strán."
+
+#~ msgid "The option for specifying a comma-separated list of pages to print."
+#~ msgstr "Voľba špecifikuje čiarkami oddelený zoznam strán pre tlač."
+
+#~ msgid "The option to reverse the order of the pages printed."
+#~ msgstr "Voľba pre tlač strán v opačnom poradí."
+
+#~ msgid ""
+#~ "When set, this printer option automatically prints to a file and then "
+#~ "calls a separate print spooling program on that file with the given name "
+#~ "and arguments."
+#~ msgstr ""
+#~ "Keď nastavené, táto voľba automaticky tlačí do súboru a potom pre tlač "
+#~ "tohto súboru volá \"spool\" program s daným menom a s danými parametrami."
+
+#~ msgid ""
+#~ "If you specify a printer name in the print dialog, the following argument "
+#~ "is prepended along with the printer name after the spool command."
+#~ msgstr ""
+#~ "Ak špecifikujete názov tlačiarne v dialógu pre tlač, tak nasledujúci "
+#~ "argument sa spolu s názvom tlačiarne pridá k spool-príkazu."
+
+#~ msgid "Option to pass to the print program to print to a file."
+#~ msgstr "Voľba, aby program na tlač tlačil do súboru."
+
+#~ msgid "Option to pass to the print program to print on a specific printer."
+#~ msgstr "Voľba, aby program na tlač tlačil na konkrétnej tlačiarni."
+
+#~ msgid ""
+#~ "Select for LyX to pass the name of the destination printer to your print "
+#~ "command."
+#~ msgstr ""
+#~ "Vyberte, keď chcete aby LyX preniesol názov tlačiarne ku programu pre "
+#~ "tlač."
+
+#~ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
+#~ msgstr "Váš obľúbený program na tlač, napr. \"dvips\", \"dvilj4\"."
+
+#~ msgid "Printer"
+#~ msgstr "Tlačiareň"
+
+#~ msgid "Print Document"
+#~ msgstr "Tlač Dokument"
+
+#~ msgid "Print to file"
+#~ msgstr "Tlačiť do súboru"
+
+#~ msgid "PostScript files (*.ps)"
+#~ msgstr "PostScript súbory (*.ps)"
+
+#~ msgid "Standard Code"
+#~ msgstr "Štandardný Kód"
 
 #~ msgid "Black"
 #~ msgstr "Čierna"
@@ -33891,5 +33930,8 @@ msgstr "Neznámy používateľ"
 #~ msgid "ERROR: LyX wasn't able to read CREDITS file\n"
 #~ msgstr "Chyba: LyXu sa nepodarilo načítať súbor CREDITS\n"
 
-#~ msgid "Journal of Statistical Software (JSS)"
-#~ msgstr "Journal of Statistical Software (JSS)"
+#~ msgid "Start Appendix Here|A"
+#~ msgstr "Začni Prílohy Tu|P"
+
+#~ msgid "Compressed|m"
+#~ msgstr "Komprimované|m"
