@@ -1123,6 +1123,18 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			breakParagraph(cur, cmd.argument() == "inverse");
 		}
 		cur.resetAnchor();
+		// If we have a list and autoinsert item insets,
+		// insert them now.
+		Layout::LaTeXArgMap args = par.layout().args();
+		Layout::LaTeXArgMap::const_iterator lait = args.begin();
+		Layout::LaTeXArgMap::const_iterator const laend = args.end();
+		for (; lait != laend; ++lait) {
+			Layout::latexarg arg = (*lait).second;
+			if (arg.autoinsert && prefixIs((*lait).first, "item:")) {
+				FuncRequest cmd(LFUN_ARGUMENT_INSERT, (*lait).first);
+				lyx::dispatch(cmd);
+			}
+		}
 		break;
 	}
 
