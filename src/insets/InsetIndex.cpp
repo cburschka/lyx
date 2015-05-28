@@ -356,7 +356,8 @@ void InsetIndex::addToToc(DocIterator const & cpit, bool output_active) const
 	string type = "index";
 	if (buffer().masterBuffer()->params().use_indices)
 		type += ":" + to_utf8(params_.index);
-	text().forOutliner(str, 0);
+	// this is unlikely to be terribly long
+	text().forOutliner(str, INT_MAX);
 	buffer().tocBackend().toc(type).push_back(TocItem(pit, 0, str, output_active));
 	// Proceed with the rest of the inset.
 	InsetCollapsable::addToToc(cpit, output_active);
