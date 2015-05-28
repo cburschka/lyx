@@ -237,11 +237,11 @@ private:
 	}
 
 	qreal fontSize() const {
-		return toqstr(lyxrc.font_sizes[FONT_SIZE_LARGE]).toDouble();
+		return toqstr(lyxrc.font_sizes[FONT_SIZE_NORMAL]).toDouble();
 	}
 
 	QPointF textPosition() const {
-		return QPointF(width_/2 - 16, height_ - 40);
+		return QPointF(width_/2 - 18, height_/2 + 45);
 	}
 
 	QSize splashSize() const {
