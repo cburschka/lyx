@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-28 08:05+0200\n"
-"PO-Revision-Date: 2015-05-28 06:39+0000\n"
+"POT-Creation-Date: 2015-05-28 20:45+0200\n"
+"PO-Revision-Date: 2015-05-28 18:58+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -13581,6 +13581,36 @@ msgstr ""
 "Pridáva prostredie pre \"visiace\" odstavce. Visiaci odstavec začína na "
 "prvom riadku bez zasunutia, nasledujúce riadky sú naopak zasunuté."
 
+#: lib/layouts/hpstatement.module:2
+msgid "Hazard and Precautionary Statements"
+msgstr "Rizikové a Bezpečnostné Inštrukcie"
+
+#: lib/layouts/hpstatement.module:7
+msgid ""
+"Provides two insets to typeset numbers and phrases of chemical hazard and "
+"precautionary statements. For a description see the file H-P-statements.lyx "
+"in LyX's examples folder."
+msgstr ""
+"Poskytuje dve vložky na sádzanie čísiel a zvratov pre chemické rizikové a "
+"bezpečnostné inštrukcie. Pre vysvetlenie pozri súbor H-P-statements.lyx v "
+"adresári príkladov."
+
+#: lib/layouts/hpstatement.module:11 lib/layouts/hpstatement.module:16
+msgid "H-P number"
+msgstr "H-P číslo"
+
+#: lib/layouts/hpstatement.module:35 lib/layouts/hpstatement.module:38
+msgid "H-P statement"
+msgstr "H-P inštrukcia"
+
+#: lib/layouts/hpstatement.module:40
+msgid "Statement Text"
+msgstr "Inštrukčný Text"
+
+#: lib/layouts/hpstatement.module:41
+msgid "Text for statements that require some information"
+msgstr "Text pre inštrukcie ktoré vyžadujú nejaké informácie"
+
 #: lib/layouts/initials.module:2
 msgid "Initials"
 msgstr "Iniciálky"
@@ -22890,19 +22920,6 @@ msgstr "Bez roku"
 msgid "Bibliography entry not found!"
 msgstr "Bibliografické heslo nenájdené!"
 
-#: src/Buffer.cpp:138
-#, c-format
-msgid ""
-"Could not print the document %1$s.\n"
-"Check that your printer is set up correctly."
-msgstr ""
-"Nedal sa vytlačiť dokument %1$s.\n"
-"Skontrolujte nastavenie vašej tlačiarne."
-
-#: src/Buffer.cpp:141
-msgid "Print document failed"
-msgstr "Tlač dokumentu zlyhala"
-
 #: src/Buffer.cpp:373
 msgid "Disk Error: "
 msgstr "Chyba Disku: "
@@ -30795,6 +30812,16 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid ""
+#~ "Could not print the document %1$s.\n"
+#~ "Check that your printer is set up correctly."
+#~ msgstr ""
+#~ "Nedal sa vytlačiť dokument %1$s.\n"
+#~ "Skontrolujte nastavenie vašej tlačiarne."
+
+#~ msgid "Print document failed"
+#~ msgstr "Tlač dokumentu zlyhala"
 
 #~ msgid "Printer Command Options"
 #~ msgstr "Voľby Príkaz Pre Tlačiareň"
