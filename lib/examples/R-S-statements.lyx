@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 495
 \begin_document
 \begin_header
+\origin /systemlyxdir/examples/
 \textclass scrartcl
 \begin_preamble
 % if pdflatex is used
@@ -74,7 +75,7 @@ rsphrase
 \suppress_date true
 \justification true
 \use_refstyle 1
-\notefontcolor #0000ff
+\notefontcolor #ff0000
 \index Index
 \shortcut idx
 \color #008000
@@ -96,8 +97,31 @@ rsphrase
 
 \begin_body
 
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+IMPORTANT NOTE: Risk and Safety Statements are replaced in 2015 in the EU
+ by the Hazard and Precautionary statements.
+\end_layout
+
+\begin_layout Plain Layout
+See the LyX example file 
+\emph on
+H-P-statements.lyx
+\emph default
+ for Hazard and Precautionary statements.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Title
-Chemical Risk and Safety statements in LyX
+Chemical Risk and Safety statements in \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Author
@@ -109,8 +133,9 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-To be able to insert Chemical Risk and Safety statements in LyX, you need
- to load the module 
+To be able to insert chemical Risk and Safety statements in \SpecialChar LyX
+, you need to
+ load the module 
 \family sans
 Risk
 \begin_inset space ~
@@ -128,8 +153,8 @@ Statements
 \family default
  in the menu 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Modules
 \family default
 .
@@ -144,7 +169,7 @@ insets and 1
 environment.
  The insets are accessible via the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Custom
 \begin_inset space ~
 \end_inset
@@ -299,8 +324,9 @@ status open
 
 \begin_layout Standard
 Some safety statements require some text.
- For these statements, you need to use the phrase environments from LyX's
- environment selection box instead of the inset.
+ For these statements, you need to use the phrase environments from \SpecialChar LyX
+'s environme
+nt selection box instead of the inset.
  The required text is specified as optional argument (inserted via the 
 \family sans
 Insert
@@ -448,11 +474,15 @@ At
 \begin_inset CommandInset href
 LatexCommand href
 name "this webpage"
-target "http://schoolscout24.de/cgi-bin/rsp/rspinput.cgi"
+target "http://schoolscout24.de/cgi-bin/keminaco/rspinput.cgi"
 
 \end_inset
 
- you find the official statements for all 23 languages of the EU.
+ you find the official statements for all 23
+\begin_inset space ~
+\end_inset
+
+languages of the EU.
 \end_layout
 
 \begin_layout Standard
