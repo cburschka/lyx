@@ -748,6 +748,7 @@ char const * simplefeatures[] = {
 	"tfrupee",
 	"shapepar",
 	"rsphrase",
+	"hpstatement",
 	"algorithm2e",
 	"sectionbox",
 	"tcolorbox",
