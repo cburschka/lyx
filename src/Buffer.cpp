@@ -133,14 +133,6 @@ int const LYX_FORMAT = LYX_FORMAT_LYX;
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
 
-void showPrintError(string const & name)
-{
-	docstring str = bformat(_("Could not print the document %1$s.\n"
-					    "Check that your printer is set up correctly."),
-			     makeDisplayPath(name, 50));
-	Alert::error(_("Print document failed"), str);
-}
-
 } // namespace anon
 
 
