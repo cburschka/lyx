@@ -1742,6 +1742,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	Buffer * doc_buffer = documentBufferView()
 		? &(documentBufferView()->buffer()) : 0;
 
+#ifdef Q_OS_MAC
 	/* In LyX/Mac, when a dialog is open, the menus of the
 	   application can still be accessed without giving focus to
 	   the main window. In this case, we want to disable the menu
@@ -1751,6 +1752,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		buf = 0;
 		doc_buffer = 0;
 	}
+#endif
 
 	// Check whether we need a buffer
 	if (!lyxaction.funcHasFlag(cmd.action(), LyXAction::NoBuffer) && !buf) {
