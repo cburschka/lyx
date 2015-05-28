@@ -1747,6 +1747,9 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	   application can still be accessed without giving focus to
 	   the main window. In this case, we want to disable the menu
 	   entries that are buffer-related.
+	   This code must not be used on Linux and Windows, since it
+	   would disable buffer-related entries when hovering over the
+	   menu (see bug #9574).
 	 */
 	if (cmd.origin() == FuncRequest::MENU && !hasFocus()) {
 		buf = 0;
