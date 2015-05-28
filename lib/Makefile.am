@@ -313,6 +313,7 @@ dist_examples_DATA = \
 	examples/example_lyxified.lyx \
 	examples/example_raw.lyx \
 	examples/FeynmanDiagrams.lyx \
+	examples/H-P-statements.lyx \
 	examples/iecc05.fen \
 	examples/iecc07.fen \
 	examples/iecc12.fen \
@@ -2046,6 +2047,7 @@ dist_layouts_DATA =\
 	layouts/heb-article.layout \
 	layouts/heb-letter.layout \
 	layouts/hollywood.layout \
+	layouts/hpstatement.module \
 	layouts/IEEEtran.layout \
 	layouts/IEEEtran-CompSoc.layout \
 	layouts/IEEEtran-TransMag.layout \

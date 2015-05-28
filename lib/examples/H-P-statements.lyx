@@ -1,0 +1,629 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 495
+\begin_document
+\begin_header
+\origin unavailable
+\textclass scrartcl
+\begin_preamble
+% if pdflatex is used
+\usepackage{ifpdf}
+\ifpdf
+
+% set fonts for nicer pdf view
+\IfFileExists{lmodern.sty}
+ {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+\end_preamble
+\use_default_options true
+\begin_modules
+hpstatement
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "Chemical Hazard and Precautionary statements in LyX"
+\pdf_author "Uwe Stöhr"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Chemical Hazard and Precautionary statements in \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Author
+Uwe Stöhr
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+To be able to insert chemical hazard and precautionary statements in \SpecialChar LyX
+, you
+ need to load the module 
+\family sans
+Risk
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+Safety
+\begin_inset space ~
+\end_inset
+
+Statements
+\family default
+ in the menu 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Modules
+\family default
+.
+ The module provides 2
+\begin_inset space ~
+\end_inset
+
+insets which are accessible via the menu 
+\family sans
+Insert\SpecialChar menuseparator
+Custom
+\begin_inset space ~
+\end_inset
+
+Insets
+\family default
+.
+\end_layout
+
+\begin_layout Section
+Statements
+\end_layout
+
+\begin_layout Standard
+The inset 
+\family sans
+H-P
+\begin_inset space ~
+\end_inset
+
+number
+\family default
+ is used to typeset the number, the inset 
+\family sans
+H-P
+\begin_inset space ~
+\end_inset
+
+statement
+\family default
+ will output the corresponding statement.
+\end_layout
+
+\begin_layout Standard
+The hazard statement 
+\begin_inset Flex H-P number
+status open
+
+\begin_layout Plain Layout
+
+H200
+\end_layout
+
+\end_inset
+
+ has the statement: 
+\begin_inset Flex H-P statement
+status open
+
+\begin_layout Plain Layout
+
+H200
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is 
+\begin_inset Flex H-P number
+status collapsed
+
+\begin_layout Plain Layout
+
+H200
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Flex H-P statement
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As you can see, the statement inset can be left empty.
+ In this case the previously used number is used for the statement.
+\end_layout
+
+\begin_layout Standard
+Precautionary statements are inserted the same way as hazard statements:
+\end_layout
+
+\begin_layout Standard
+The precautionary statement 
+\begin_inset Flex H-P number
+status collapsed
+
+\begin_layout Plain Layout
+
+P235
+\end_layout
+
+\end_inset
+
+ is: 
+\begin_inset Flex H-P statement
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Statement Alternatives
+\end_layout
+
+\begin_layout Standard
+Some statements allow you to choose between certain alternatives.
+ In these cases you must add a dot and the number of the alternative to
+ the statement number.
+ Some examples:
+\end_layout
+
+\begin_layout Description
+P210.1 leads to: 
+\begin_inset Flex H-P number
+status open
+
+\begin_layout Plain Layout
+
+P210.1
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Flex H-P statement
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+P210.2 leads to: 
+\begin_inset Flex H-P number
+status open
+
+\begin_layout Plain Layout
+
+P210.2
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Flex H-P statement
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The alternative number 
+\begin_inset Quotes eld
+\end_inset
+
+0
+\begin_inset Quotes erd
+\end_inset
+
+ refers to the original version as stated in the regulations:
+\end_layout
+
+\begin_layout Description
+P210.0 leads to: 
+\begin_inset Flex H-P number
+status open
+
+\begin_layout Plain Layout
+
+P210.0
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Flex H-P statement
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Required Text
+\end_layout
+
+\begin_layout Standard
+Some statements require text.
+ This is inserted to the optional argument of LyX's 
+\family sans
+H-P-Statement
+\family default
+ inset.
+ The argument is inserted with the menu 
+\family sans
+Insert\SpecialChar menuseparator
+Statement
+\begin_inset space ~
+\end_inset
+
+Text
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+In this example the text 
+\begin_inset Quotes eld
+\end_inset
+
+sunglasses
+\begin_inset Quotes erd
+\end_inset
+
+ was added to the optional argument:
+\end_layout
+
+\begin_layout Standard
+Statement 
+\begin_inset Flex H-P number
+status open
+
+\begin_layout Plain Layout
+
+P280
+\end_layout
+
+\end_inset
+
+ says: 
+\begin_inset Flex H-P statement
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+sunglasses
+\end_layout
+
+\end_inset
+
+P280
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Some statements print text referring to the place on a label.
+ For example:
+\end_layout
+
+\begin_layout Standard
+Statement 
+\begin_inset Flex H-P number
+status open
+
+\begin_layout Plain Layout
+
+P321
+\end_layout
+
+\end_inset
+
+ says: 
+\begin_inset Flex H-P statement
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+the left side
+\end_layout
+
+\end_inset
+
+P321
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Quotes eld
+\end_inset
+
+the left side
+\begin_inset Quotes erd
+\end_inset
+
+ is the input required text.
+\end_layout
+
+\begin_layout Standard
+If you don't have a label use 
+\begin_inset Quotes eld
+\end_inset
+
+nolabel
+\begin_inset Quotes erd
+\end_inset
+
+ as 
+\begin_inset Quotes eld
+\end_inset
+
+number
+\begin_inset Quotes erd
+\end_inset
+
+ for the alternative to omit the text about the label:
+\end_layout
+
+\begin_layout Standard
+Statement 
+\begin_inset Flex H-P number
+status open
+
+\begin_layout Plain Layout
+
+P321
+\end_layout
+
+\end_inset
+
+ says: 
+\begin_inset Flex H-P statement
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+the left side
+\end_layout
+
+\end_inset
+
+P321.nolabel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Language issues
+\end_layout
+
+\begin_layout Standard
+The statements are output depending on the language.
+ Currently only the languages
+\begin_inset Newline newline
+\end_inset
+
+Danish, English, French, German, Italian and Spanish
+\begin_inset Newline newline
+\end_inset
+
+are supported.
+\end_layout
+
+\begin_layout Standard
+At 
+\begin_inset CommandInset href
+LatexCommand href
+name "this webpage"
+target "http://schoolscout24.de/cgi-bin/keminaco/hppinput.cgi"
+
+\end_inset
+
+ you find the official statements for all 23
+\begin_inset space ~
+\end_inset
+
+languages of the EU.
+\end_layout
+
+\begin_layout Standard
+Mixing languages is possible without problems:
+\end_layout
+
+\begin_layout Standard
+
+\lang ngerman
+Dies ist H-Satz 
+\begin_inset Flex H-P number
+status open
+
+\begin_layout Plain Layout
+
+H251
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Flex H-P statement
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is hazard statement 
+\begin_inset Flex H-P number
+status open
+
+\begin_layout Plain Layout
+
+H251
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Flex H-P statement
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

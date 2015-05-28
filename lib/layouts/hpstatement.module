@@ -1,0 +1,43 @@
+#\DeclareLyXModule[hpstatement.sty]{Hazard and Precautionary Statements}
+#DescriptionBegin
+#Provides two insets to typeset numbers and phrases of chemical hazard
+#and precautionary statements. For a description see the file 
+#H-P-statements.lyx in LyX's examples folder.
+#DescriptionEnd
+#Author: Uwe Stöhr <uwestoehr@web.de>
+
+Format 54
+
+InsetLayout "Flex:H-P number"
+	LyxType			custom
+	LatexType		command
+	LatexName		hpnumber
+	Requires		hpstatement
+	LabelString		"H-P number"
+	PassThru		1
+	
+	Font
+	  Color			foreground
+	  Size			Small
+	  Family		Roman
+	  Shape			Up
+	  Series		Medium
+	  Misc			No_Emph
+	  Misc			No_Noun
+	  Misc			No_Bar
+	EndFont
+	LabelFont
+	  Color			green
+	  Size			Small
+	EndFont
+End
+
+InsetLayout "Flex:H-P statement"
+	CopyStyle 		"Flex:H-P number"
+	LatexName		hpstatement
+	LabelString		"H-P statement"
+	Argument 1
+	  LabelString	"Statement Text"
+	  Tooltip		"Text for statements that require some information"
+	EndArgument
+End
