@@ -556,6 +556,13 @@ key "lamport86"
 
 \end_inset
 
+ and another one: 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pauling89"
+
+\end_inset
+
 
 \end_layout
 
@@ -782,14 +789,40 @@ Acknowledgment text
 \end_layout
 
 \begin_layout Standard
-You can either use plain references:
-\end_layout
+\begin_inset VSpace bigskip
+\end_inset
 
-\begin_layout Standard
-\begin_inset Flex References
+You can either use plain references:
+\begin_inset Note Note
 status open
 
-\begin_layout Reference
+\begin_layout Plain Layout
+Pressing 
+\family sans
+Return
+\family default
+ in a 
+\family sans
+References
+\family default
+ environment adds a new 
+\family sans
+Reference
+\family default
+ inset.
+ Insert one reference in each inset.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout References
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
 Parthé, E.
  & Gelato, L.
  (1984).
@@ -804,7 +837,16 @@ Acta Cryst.
 , 169–183.
 \end_layout
 
-\begin_layout Reference
+\end_inset
+
+
+\end_layout
+
+\begin_layout References
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
 Rauch, H.
  & Petrascheck, D.
  (1976).

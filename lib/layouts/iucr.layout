@@ -230,31 +230,23 @@ End
 Style Acknowledgements
   CopyStyle			"Short Author"
   LatexName			ack
+  InTitle			0
   LabelString		"Acknowledgements:"
   Category			BackMatter
   TopSep			0.7
 End
 
-InsetLayout "Flex:References"
-  CopyStyle			"Flex:City"
-  LatexType			Environment
-  LatexName			references
-  Decoration		Classic
-  ForcePlain		0
-  Spellcheck		0
-  ParbreakIsNewline	1
-  FreeSpacing		1
-  KeepEmpty			1
-  LabelString		"References"
-  LabelFont
-    Color			Green
-  EndFont
-End
-
-Style Reference
-  CopyStyle			"Short Author"
-  LatexName			reference
+Style References
+  Margin			Manual
   Category			BackMatter
-  LabelString		"Reference:"
+  LatexType			List_Environment
+  LatexName			references
+  ItemCommand		reference
+  NextNoIndent		1
+  Argument item:1
+    LabelString		"Reference"
+    Mandatory		1
+    AutoInsert		1
+  EndArgument
   Align				Left
 End
