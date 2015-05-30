@@ -568,8 +568,6 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	}
 	of << "\\batchmode\n";
 	dumpPreamble(os);
-	// handle inputenc etc.
-	buffer_.params().writeEncodingPreamble(os, features);
 	of << "\n\\begin{document}\n";
 	dumpData(of, inprogress.snippets);
 	of << "\n\\end{document}\n";
