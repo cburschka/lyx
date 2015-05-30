@@ -245,6 +245,8 @@ private:
 	PreviewLoader & parent_;
 	///
 	Buffer const & buffer_;
+	///
+	mutable int font_scaling_factor_;
 
 	/// We don't own this
 	static lyx::Converter const * pconverter_;
@@ -389,6 +391,9 @@ namespace graphics {
 PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 	: parent_(p), buffer_(b)
 {
+	font_scaling_factor_ = buffer_.isExporting()
+		? int(75.0 * buffer_.params().html_math_img_scale)
+		: int(0.01 * lyxrc.dpi * lyxrc.zoom * lyxrc.preview_scale_factor);
 	if (!pconverter_)
 		pconverter_ = setConverter("lyxpreview");
 }
@@ -407,6 +412,17 @@ PreviewLoader::Impl::~Impl()
 PreviewImage const *
 PreviewLoader::Impl::preview(string const & latex_snippet) const
 {
+	int fs = buffer_.isExporting()
+		? int(75.0 * buffer_.params().html_math_img_scale)
+		: int(0.01 * lyxrc.dpi * lyxrc.zoom * lyxrc.preview_scale_factor);
+	if (font_scaling_factor_ != fs) {
+		font_scaling_factor_ = fs;
+		Cache::const_iterator cit = cache_.begin();
+		Cache::const_iterator cend = cache_.end();
+		while (cit != cend)
+			parent_.remove((cit++)->first);
+		buffer_.updatePreviews();
+	}
 	Cache::const_iterator it = cache_.find(latex_snippet);
 	return (it == cache_.end()) ? 0 : it->second.get();
 }
@@ -577,16 +593,12 @@ void PreviewLoader::Impl::startLoading(bool wait)
 					 << "File was not closed properly.");
 		return;
 	}
-
-	double const font_scaling_factor = 
-		buffer_.isExporting() ? 75.0 * buffer_.params().html_math_img_scale 
-			: 0.01 * lyxrc.dpi * lyxrc.zoom * lyxrc.preview_scale_factor;
 	
 	// The conversion command.
 	ostringstream cs;
 	cs << pconverter_->command
 	   << " " << quoteName(latexfile.toFilesystemEncoding())
-	   << " --dpi " << int(font_scaling_factor);
+	   << " --dpi " << font_scaling_factor_;
 	if (lyxerr.debugging(Debug::GRAPHICS)) {
 		cs << " --verbose";
 	}
