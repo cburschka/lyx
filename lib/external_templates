@@ -13,6 +13,10 @@
 # part of the official LyX distribution.
 # Feel free to create your own External Templates, storing them in
 # .lyx/external_templates
+# Note that a user-defined external_templates file would replace this
+# definition. Thus, if you would like to keep the external templates defined
+# in this file, please copy this file and add on futher external templates
+# to the end. For more information, see http://www.lyx.org/trac/ticket/3983.
 
 
 PreambleDef WarnNotFound
