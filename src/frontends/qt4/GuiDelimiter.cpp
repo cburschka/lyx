@@ -192,8 +192,9 @@ GuiDelimiter::GuiDelimiter(GuiView & lv)
 // on Windows (see #5760).
 // FIXME: Re-check after Windows has settled to Qt 5.
 //        ATM, this doesn't work also with Qt 5.4.1 because of still missing
-//        glyphs for \llbracket and \rrbracket.
-#if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
+//        glyphs for \llbracket and \rrbracket. These last symbols are also
+//        missing when compiling on cygwin using the X11 xcb backend.
+#if defined(Q_OS_WIN) || defined(Q_OS_CYGWIN)
 		QString symbol(ms.fontcode?
 			QChar(ms.fontcode) : toqstr(docstring(1, ms.unicode)));
 		QListWidgetItem * lwi = new QListWidgetItem(symbol);
