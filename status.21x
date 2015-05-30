@@ -30,6 +30,10 @@ What's new
 
 - New support for PDF forms.
 
+- New method to view PDF files if Acrobat Reader is used as PDF viewer:
+  Clicking the view button will also update the PDF view.
+  (Windows-only, bug 9512).
+
 - Add low-resolution PDF export format (needs an installed ghostscript).
 
 - Add possibility via the layout file to prevent LyX from loading inputenc.
