@@ -137,7 +137,10 @@ def extract_metrics_info(dvipng_stdout):
         ascent  = string.atof(match.group(2))
 
         frac = 0.5
-        if ascent >= 0 or descent >= 0:
+        if ascent < 0:
+            # This is an empty image, forbid its display
+            frac = -1.0
+        elif ascent >= 0 or descent >= 0:
             if abs(ascent + descent) > 0.1:
                 frac = ascent / (ascent + descent)
 

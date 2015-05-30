@@ -85,7 +85,7 @@ Dimension PreviewImage::dim() const
 	if (!image)
 		return dim;
 
-	dim.asc = int(pimpl_->ascent_frac_ * double(image->height()));
+	dim.asc = int(pimpl_->ascent_frac_ * double(image->height()) + 0.5);
 	dim.des = image->height() - dim.asc;
 	dim.wid = image->width();
 	return dim;
