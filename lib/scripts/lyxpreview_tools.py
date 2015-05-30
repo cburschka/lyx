@@ -363,3 +363,39 @@ def string_in_file(string, infile):
             return True
     f.close()
     return False
+
+
+# Returns a list of indexes of pages giving errors extracted from the latex log
+def check_latex_log(log_file):
+
+    error_re = re.compile("^! ")
+    snippet_re = re.compile("^Preview: Snippet ")
+    data_re = re.compile("([0-9]+) ([0-9]+) ([0-9]+) ([0-9]+)")
+
+    found_error = False
+    error_pages = []
+
+    try:
+        for line in open(log_file, 'r').readlines():
+            if not found_error:
+                match = error_re.match(line)
+                if match != None:
+                    found_error = True
+                continue
+            else:
+                match = snippet_re.match(line)
+                if match == None:
+                    continue
+
+                found_error = False
+                match = data_re.search(line)
+                if match == None:
+                    error("Unexpected data in %s\n%s" % (log_file, line))
+
+                error_pages.append(int(match.group(1)))
+
+    except:
+        warning('check_latex_log: Unable to open "%s"' % log_file)
+        warning(`sys.exc_type` + ',' + `sys.exc_value`)
+
+    return error_pages
