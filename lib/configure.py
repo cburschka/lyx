@@ -678,7 +678,8 @@ def checkFormatEntries(dtl_tools):
         rc_entry = [r'\Format noteedit   not     Noteedit               "" "%%"	"%%"	"vector"	""'])
     #
     checkViewerEditor('an OpenDocument viewer', ['libreoffice', 'lwriter', 'lowriter', 'oowriter', 'swriter', 'abiword'],
-        rc_entry = [r'''\Format odt        odt     "OpenDocument"  "" "%%"	"%%"	"document,vector,menu=export"	"application/vnd.oasis.opendocument.text"
+        rc_entry = [r'''\Format odt        odt     "OpenDocument (tex4ht)"  "" "%%"	"%%"	"document,vector,menu=export"	"application/vnd.oasis.opendocument.text"
+\Format odt2       odt    "OpenDocument (eLyXer)"  "" "%%"	"%%"	"document,vector,menu=export"	"application/vnd.oasis.opendocument.text"
 \Format sxw        sxw    "OpenOffice.Org (sxw)"  "" ""	""	"document,vector"	"application/vnd.sun.xml.writer"'''])
     #
     checkViewerEditor('a Rich Text and Word viewer', ['libreoffice', 'lwriter', 'lowriter', 'oowriter', 'swriter', 'abiword'],
@@ -784,6 +785,12 @@ def checkConverterEntries():
     path, elyxer = checkProg('a LyX -> HTML (MS Word) converter',
         ['elyxer.py --nofooter --html --directory $$r $$i $$o', 'elyxer --nofooter --html --directory $$r $$i $$o'],
         rc_entry = [ r'\converter lyx      wordhtml       "%%"	""' ])
+    path, elyxer = checkProg('a LyX -> OpenDocument (eLyXer) converter',
+        ['elyxer.py --html --nofooter --unicode --directory $$r $$i $$o', 'elyxer --html --nofooter --unicode --directory $$r $$i $$o'],
+        rc_entry = [ r'\converter lyx      odt2       "%%"	""' ])
+    path, elyxer = checkProg('a LyX -> Word converter',
+        ['elyxer.py --html --nofooter --unicode --directory $$r $$i $$o', 'elyxer --html --nofooter --unicode --directory $$r $$i $$o'],
+        rc_entry = [ r'\converter lyx      word      "%%"	""' ])
     if elyxer.find('elyxer') >= 0:
       addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py -e html,png,jpg,jpeg,css $$i $$o"''')
       addToRC(r'''\copier    wordhtml       "python -tt $$s/scripts/ext_copy.py -e html,png,jpg,jpeg,css $$i $$o"''')
@@ -830,7 +837,7 @@ def checkConverterEntries():
     # directly available as application.
     # On SuSE the scripts have a .sh suffix, and on debian they are in /usr/share/tex4ht/
     # Both SuSE and debian have oolatex
-    checkProg('a LaTeX -> Open Document converter', [
+    checkProg('a LaTeX -> Open Document (tex4ht) converter', [
         'oolatex $$i', 'mk4ht oolatex $$i', 'oolatex.sh $$i', '/usr/share/tex4ht/oolatex $$i',
         'htlatex $$i \'xhtml,ooffice\' \'ooffice/! -cmozhtf\' \'-coo\' \'-cvalidate\''],
         rc_entry = [ r'\converter latex      odt        "%%"	"needaux"' ])
