@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pt_BR 2.1.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2015-05-14 22:21-0400\n"
-"PO-Revision-Date: 2015-05-04 00:21-0300\n"
+"PO-Revision-Date: 2015-05-30 23:12-0300\n"
 "Last-Translator: Georger Araujo <georger underscore br pound yahoo dot com "
 "dot br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br pound yahoo dot "
@@ -236,7 +236,7 @@ msgstr "&Adicionar Selecionados"
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:35
 msgid "Add all unknown branches to the list."
-msgstr "Adicionar à lista todos os ramos desconhecidos"
+msgstr "Adicionar à lista todos os ramos desconhecidos."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:38
 msgid "Add A&ll"
@@ -327,8 +327,8 @@ msgstr "Nenhum"
 msgid ""
 "Enter the command to load the language package (default: \\usepackage{babel})"
 msgstr ""
-"Digite o comando para carregar o pacote de idioma (padrão: "
-"\\usepackage{babel})"
+"Digite o comando para carregar o pacote de idioma (padrão: \\usepackage"
+"{babel})"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:87
 msgid "Command s&tart:"
@@ -1213,7 +1213,7 @@ msgstr "Valor da espessura da linha."
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
 msgid "Listing Parameters"
-msgstr "Parâmetros de lista"
+msgstr "Parâmetros de listagem"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:66 src/frontends/qt4/ui/ListingsUi.ui:507
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:83
@@ -2758,11 +2758,11 @@ msgstr "Mostrar todas as mensagens de debug"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
 msgid "Display statusbar messages?"
-msgstr "Mostrar mensagens da barra de status?"
+msgstr "Mostrar mensagens na barra de status?"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:239
 msgid "&Statusbar messages"
-msgstr "&Mensagens da barra de status"
+msgstr "&Mensagens na barra de status"
 
 #: src/frontends/qt4/ui/SymbolsUi.ui:56
 #: src/frontends/qt4/ui/DelimiterUi.ui:268
@@ -3539,9 +3539,8 @@ msgid "Show the source as the master document gets it"
 msgstr "Exibir o código-fonte como o documento mestre o obtém"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:130
-#, fuzzy
 msgid "Master's perspective"
-msgstr "&Perspectiva do documento mestre"
+msgstr "Perspectiva do documento mestre"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:137
 msgid "Automatic update"
@@ -3782,7 +3781,7 @@ msgstr "Listagem inline"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:45
 msgid "Check for floating listings"
-msgstr "Marque para listagem 'float'"
+msgstr "Marque para listagens 'float'"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:48
 msgid "&Float"
@@ -10213,9 +10212,8 @@ msgid "fig."
 msgstr "fig."
 
 #: lib/layouts/aastex.layout:535
-#, fuzzy
 msgid "Filename to identify the corresponding figure file"
-msgstr "Etiqueta do problema correspondente"
+msgstr "Nome de arquivo para identificar o arquivo de figura correspondente"
 
 #: lib/layouts/aastex.layout:550
 msgid "Facility"
@@ -10588,7 +10586,7 @@ msgstr "Foto opcional para a biografia"
 
 #: lib/layouts/IEEEtran.layout:387
 msgid "Biography without photo"
-msgstr "Biografia Sem Foto"
+msgstr "Biografia sem foto"
 
 #: lib/layouts/IEEEtran.layout:399
 msgid "BiographyNoPhoto"
@@ -12916,7 +12914,7 @@ msgstr "Porca de parafuso"
 
 #: lib/layouts/shapepar.module:64 lib/ui/stdtoolbars.inc:758
 msgid "Square"
-msgstr "Quadrado"
+msgstr "Square"
 
 #: lib/layouts/shapepar.module:69
 msgid "Star"
@@ -13386,9 +13384,9 @@ msgid ""
 "it depends on R >= 2.14.1. For more info see http://yihui.name/knitr"
 msgstr ""
 "Usa o pacote knitr do R para gerar relatórios dinamicamente. Este pacote do "
-"R deve ser instalado para que o módule possa funcionar: install."
-"packages('knitr'). Nota: exige R >= 2.14.1. Para maiores informações, "
-"consulte http://yihui.name/knitr"
+"R deve ser instalado para que o módule possa funcionar: install.packages"
+"('knitr'). Nota: exige R >= 2.14.1. Para maiores informações, consulte "
+"http://yihui.name/knitr"
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:6
@@ -13572,194 +13570,162 @@ msgid "Rest of initial word or text"
 msgstr "Parte restante da palavra ou texto inicial"
 
 #: lib/layouts/pdfform.module:2
-#, fuzzy
 msgid "PDF Form"
-msgstr "Forma"
+msgstr "Formulário PDF"
 
 #: lib/layouts/pdfform.module:7
-#, fuzzy
 msgid ""
 "Provides fields and buttons for PDF forms. The module uses the LaTeX package "
 "hyperref. Please consult the LyX example file PDF-form.lyx and the "
 "documentation of hyperref for details."
 msgstr ""
-"Oferece vários tipos de anotações para a saída em PDF. O módulo usa o pacote "
-"pdfcomment. Para mais informações, consulte a documentação do pacote."
+"Oferece campos e botões para formulários PDF. O módulo usa o pacote LaTeX "
+"hyperref. Para mais informações, consulte o arquivo de exemplo PDF-form.lyx "
+"e a documentação do hyperref."
 
 #: lib/layouts/pdfform.module:15 lib/layouts/pdfform.module:26
 msgid "Begin PDF Form"
-msgstr ""
+msgstr "Iniciar Formulário PDF"
 
 #: lib/layouts/pdfform.module:19
-#, fuzzy
 msgid "PDF form"
-msgstr "Autor do PDF"
+msgstr "Formulário PDF"
 
 #: lib/layouts/pdfform.module:28 lib/layouts/pdfform.module:65
-#, fuzzy
 msgid "PDF Form Parameters"
-msgstr "Mais Parâmetros"
+msgstr "Parâmetros de Formulário PDF"
 
 #: lib/layouts/pdfform.module:29 lib/layouts/pdfform.module:66
 msgid "Params"
-msgstr ""
+msgstr "Parâms"
 
 #: lib/layouts/pdfform.module:30 lib/layouts/pdfform.module:67
-#, fuzzy
 msgid "Insert PDF form parameters here"
-msgstr "Digite aqui o comentário"
+msgstr "Digite aqui os parâmetros de formulário PDF"
 
 #: lib/layouts/pdfform.module:40 lib/layouts/pdfform.module:43
 msgid "End PDF Form"
-msgstr ""
+msgstr "Finalizar Formulário PDF"
 
 #: lib/layouts/pdfform.module:47
-#, fuzzy
 msgid "PDF Link Setup"
-msgstr "PDF (Configuração)"
+msgstr "Configuração de Link PDF"
 
 #: lib/layouts/pdfform.module:50
-#, fuzzy
 msgid "PDF link setup"
-msgstr "PDF (Configuração)"
+msgstr "Configuração de link PDF"
 
 #: lib/layouts/pdfform.module:58 lib/layouts/pdfform.module:63
-#, fuzzy
 msgid "TextField"
-msgstr "Texto"
+msgstr "TextField"
 
 #: lib/layouts/pdfform.module:77 lib/layouts/pdfform.module:80
-#, fuzzy
 msgid "CheckBox"
-msgstr "CheckedBox"
+msgstr "CheckBox"
 
 #: lib/layouts/pdfform.module:83 lib/layouts/pdfform.module:86
-#, fuzzy
 msgid "ChoiceMenu"
-msgstr "OpçãoDeMenu"
+msgstr "ChoiceMenu"
 
 #: lib/layouts/pdfform.module:88
 msgid "Label"
 msgstr "Etiqueta"
 
 #: lib/layouts/pdfform.module:91
-#, fuzzy
 msgid "Insert the label here"
-msgstr "Digite aqui o comentário"
+msgstr "Digite aqui a etiqueta"
 
 #: lib/layouts/pdfform.module:95 lib/layouts/pdfform.module:98
-#, fuzzy
 msgid "PushButton"
-msgstr "BotãoDeGUI"
+msgstr "PushButton"
 
 #: lib/layouts/pdfform.module:101 lib/layouts/pdfform.module:104
-#, fuzzy
 msgid "SubmitButton"
-msgstr "BotãoDeGUI"
+msgstr "SubmitButton"
 
 #: lib/layouts/pdfform.module:107 lib/layouts/pdfform.module:110
-#, fuzzy
 msgid "ResetButton"
-msgstr "Elemento:BotãoGUI"
+msgstr "ResetButton"
 
 #: lib/layouts/pdfform.module:117 lib/layouts/pdfform.module:120
-#, fuzzy
 msgid "PDFAction"
-msgstr "Ação"
+msgstr "AçãoPDF"
 
 #: lib/layouts/pdfform.module:125
-#, fuzzy
 msgid "The name of the PDF action"
-msgstr "Origem da rotação"
+msgstr "O nome da ação PDF"
 
 #: lib/layouts/pdfform.module:133
-#, fuzzy
 msgid "Text Field Style"
-msgstr "Estilo de Texto"
+msgstr "Estilo Text Field"
 
 #: lib/layouts/pdfform.module:136
-#, fuzzy
 msgid "Default text field style"
-msgstr "&Estilo padrão:"
+msgstr "Estilo padrão de text field"
 
 #: lib/layouts/pdfform.module:140
-#, fuzzy
 msgid "Submit Button Style"
-msgstr "Estilo de Referência"
+msgstr "Estilo de Submit Button"
 
 #: lib/layouts/pdfform.module:143
-#, fuzzy
 msgid "Default submit button style"
-msgstr "&Estilo padrão:"
+msgstr "Estilo padrão de submit button"
 
 #: lib/layouts/pdfform.module:146
-#, fuzzy
 msgid "Push Button Style"
-msgstr "Estilo de Referência"
+msgstr "Estilo de Push Button"
 
 #: lib/layouts/pdfform.module:149
-#, fuzzy
 msgid "Default push button style"
-msgstr "&Estilo padrão:"
+msgstr "Estilo padrão de push button"
 
 #: lib/layouts/pdfform.module:152
-#, fuzzy
 msgid "Check Box Style"
-msgstr "Estilo de Texto"
+msgstr "Estilo de Check Box"
 
 #: lib/layouts/pdfform.module:155
-#, fuzzy
 msgid "Default check box style"
-msgstr "&Estilo padrão:"
+msgstr "Estilo padrão de check box"
 
 #: lib/layouts/pdfform.module:158
-#, fuzzy
 msgid "Reset Button Style"
-msgstr "Estilo de Referência"
+msgstr "Estilo de Reset Button"
 
 #: lib/layouts/pdfform.module:161
-#, fuzzy
 msgid "Default reset button style"
-msgstr "&Estilo padrão:"
+msgstr "Estilo padrão de reset button"
 
 #: lib/layouts/pdfform.module:164
-#, fuzzy
 msgid "List Box Style"
-msgstr "Lista de Slides"
+msgstr "Estilo de List Box"
 
 #: lib/layouts/pdfform.module:167
-#, fuzzy
 msgid "Default list box style"
-msgstr "&Estilo padrão:"
+msgstr "Estilo padrão de list box"
 
 #: lib/layouts/pdfform.module:170
-#, fuzzy
 msgid "Combo Box Style"
-msgstr "Configuração de Caixa Colorida"
+msgstr "Estilo de Combo Box"
 
 #: lib/layouts/pdfform.module:173
-#, fuzzy
 msgid "Default combo box style"
-msgstr "&Estilo padrão:"
+msgstr "Estilo padrão de combo box"
 
 #: lib/layouts/pdfform.module:176
 msgid "Popdown Box Style"
-msgstr ""
+msgstr "Estilo Popdown Box"
 
 #: lib/layouts/pdfform.module:179
-#, fuzzy
 msgid "Default popdown box style"
-msgstr "&Estilo padrão:"
+msgstr "Estilo padrão de popdown box"
 
 #: lib/layouts/pdfform.module:182
-#, fuzzy
 msgid "Radio Box Style"
-msgstr "Estilo de Referência"
+msgstr "Estilo de Radio Box"
 
 #: lib/layouts/pdfform.module:185
-#, fuzzy
 msgid "Default radio box style"
-msgstr "&Estilo padrão:"
+msgstr "Estilo padrão de radio box"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
 msgid "Theorems (AMS-Extended, Numbered by Type)"
@@ -14413,14 +14379,14 @@ msgid "PDF Comments"
 msgstr "Comentários PDF"
 
 #: lib/layouts/pdfcomment.module:7
-#, fuzzy
 msgid ""
 "Provides various kinds of annotations for the PDF output. The module uses "
 "the pdfcomment package. Please consult the LyX example file PDF-comment.lyx "
 "and the package documentation for details."
 msgstr ""
 "Oferece vários tipos de anotações para a saída em PDF. O módulo usa o pacote "
-"pdfcomment. Para mais informações, consulte a documentação do pacote."
+"pdfcomment. Para mais informações, consulte o arquivo de exemplo PDF-comment."
+"lyx e a documentação do pacote."
 
 #: lib/layouts/pdfcomment.module:19
 msgid "Define Avatar"
@@ -16710,7 +16676,7 @@ msgstr "Braille|B"
 
 #: lib/ui/stdmenus.inc:605
 msgid "Feynman-diagram|F"
-msgstr "Diagrama de Feynman|F"
+msgstr "Feynman-diagram|F"
 
 #: lib/ui/stdmenus.inc:606
 msgid "Knitr|K"
@@ -16729,14 +16695,12 @@ msgid "Multilingual Captions|C"
 msgstr "Legendas Multilíngues|M"
 
 #: lib/ui/stdmenus.inc:610
-#, fuzzy
 msgid "PDF comments|D"
-msgstr "Comentários PDF"
+msgstr "Comentários PDF|D"
 
 #: lib/ui/stdmenus.inc:611
-#, fuzzy
 msgid "PDF forms|o"
-msgstr "Autor do PDF"
+msgstr "Formulários PDF|o"
 
 #: lib/ui/stdmenus.inc:612
 msgid "Risk and Safety Statements|R"
@@ -18012,7 +17976,7 @@ msgstr "Phantom horizontal\t\\hphantom"
 
 #: lib/ui/stdtoolbars.inc:354
 msgid "Vertical phantom\t\\vphantom"
-msgstr "Phantom Vertical\t\\vphantom"
+msgstr "Phantom vertical\t\\vphantom"
 
 #: lib/ui/stdtoolbars.inc:355
 msgid "Smash \\smash"
@@ -21828,11 +21792,11 @@ msgstr "Descida Global"
 
 #: lib/external_templates:36
 msgid "GnumericSpreadsheet"
-msgstr "PlanilhaDeCalculoGnumeric"
+msgstr "PlanilhaGnumeric"
 
 #: lib/external_templates:37 lib/external_templates:44
 msgid "Spreadsheet"
-msgstr "PlanilhaDeCalculo"
+msgstr "Planilha"
 
 #: lib/external_templates:39
 msgid ""
@@ -21842,7 +21806,7 @@ msgid ""
 "The gnumeric software is necessary for conversion,\n"
 "both for gnumeric and excel files.\n"
 msgstr ""
-"Uma planilha de cálculo do Gnumeric, LibreOffice, OpenOffice ou Excel.\n"
+"Uma planilha do Gnumeric, LibreOffice, OpenOffice ou Excel.\n"
 "É importada como tabela longa, então qualquer comprimento\n"
 "é aceitável. Largura excessiva pode ser um problema.\n"
 "O software gnumeric é necessário para fazer a conversão,\n"
@@ -22185,15 +22149,15 @@ msgstr "Info (Beamer)"
 
 #: lib/configure.py:632
 msgid "Gnumeric spreadsheet"
-msgstr "Planilha de cálculo Gnumeric"
+msgstr "Planilha Gnumeric"
 
 #: lib/configure.py:633
 msgid "Excel spreadsheet"
-msgstr "Planilha de cálculo Excel"
+msgstr "Planilha Excel"
 
 #: lib/configure.py:634
 msgid "OpenOffice spreadsheet"
-msgstr "Planilha de cálculo OpenOffice"
+msgstr "Planilha OpenOffice"
 
 #: lib/configure.py:637
 msgid "LyXHTML"
@@ -22276,9 +22240,8 @@ msgid "PDF (cropped)"
 msgstr "PDF (recortado)"
 
 #: lib/configure.py:665
-#, fuzzy
 msgid "PDF (lower resolution)"
-msgstr "PDF (DicaDeContexto)"
+msgstr "PDF (resolução menor)"
 
 #: lib/configure.py:668
 msgid "DVI"
@@ -22699,7 +22662,7 @@ msgstr " não foi possível gravar o arquivo!"
 
 #: src/Buffer.cpp:1407
 msgid " done."
-msgstr " pronto."
+msgstr " concluído."
 
 #: src/Buffer.cpp:1422
 #, c-format
@@ -24709,11 +24672,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:3283
 msgid ""
-"The LaTeX command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The LaTeX command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"Comando LaTeX para carregar o pacote de idioma. P.ex., "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"Comando LaTeX para carregar o pacote de idioma. P.ex., \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 
 #: src/LyXRC.cpp:3287
 msgid ""
@@ -27745,7 +27708,7 @@ msgstr "Erro -> Não é possível carregar arquivo!"
 #: src/frontends/qt4/GuiSpellchecker.cpp:252
 msgid "Spell check of the selection done, did not find any errors."
 msgstr ""
-"Correcção ortográfica da selecção terminada, não foram encontrados erros."
+"Concluída correção ortográfica da seleção, não foram encontrados erros."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:259
 msgid ""
@@ -28129,7 +28092,7 @@ msgstr "auto"
 
 #: src/frontends/qt4/GuiToolbar.cpp:394 src/frontends/qt4/GuiToolbar.cpp:403
 msgid "off"
-msgstr "desligado"
+msgstr "desativado"
 
 #: src/frontends/qt4/GuiToolbar.cpp:410
 #, c-format
@@ -28896,9 +28859,9 @@ msgid "unknown type!"
 msgstr "tipo desconhecido!"
 
 #: src/frontends/qt4/qt_helpers.cpp:630
-#, fuzzy, c-format
+#, c-format
 msgid "Index Entries (%1$s)"
-msgstr "Entrada de Índice (%1$s)"
+msgstr "Entradas de Índice (%1$s)"
 
 #: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:298
 #: src/insets/InsetGraphics.cpp:597 src/insets/InsetInclude.cpp:548
@@ -29100,7 +29063,7 @@ msgstr "Ramo (somente filho): "
 
 #: src/insets/InsetBranch.cpp:95
 msgid "Branch (master only): "
-msgstr "Ramos (apenas mestre): "
+msgstr "Ramo (apenas mestre): "
 
 #: src/insets/InsetBranch.cpp:97
 msgid "Branch (undefined): "
