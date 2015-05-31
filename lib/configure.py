@@ -777,7 +777,7 @@ def checkConverterEntries():
     checkProg('an MS Word -> LaTeX converter', ['wvCleanLatex $$i $$o'],
         rc_entry = [ r'\converter word       latex      "%%"	""' ])
 
-    # eLyXer: search as an executable (elyxer.py, elyxer)
+    # eLyXer
     path, elyxer = checkProg('a LyX -> HTML converter',
         ['elyxer.py --nofooter --directory $$r $$i $$o'],
         rc_entry = [ r'\converter lyx      html       "%%"	""' ])
