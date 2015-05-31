@@ -776,22 +776,6 @@ Speicherung wieder herstellen
 \begin_layout Itemize
 
 \family sans
-Drucken, Strg+P
-\family default
- oder 
-\family sans
-
-\begin_inset Info
-type  "icon"
-arg   "dialog-show print"
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
 Beenden, Strg+Q
 \end_layout
 
@@ -17069,122 +17053,6 @@ Beim Vorschauen eines Dokuments wird die Ausgabedatei nur in \SpecialChar LyX
 s temporärem
  Verzeichnis erzeugt.
  Für eine permanente Ausgabe muss das Dokument exportiert werden.
-\end_layout
-
-\begin_layout Subsection
-Die Datei von \SpecialChar LyX
- aus ausdrucken
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Datei-ausdrucken"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Statt Ihre Dokument zu exportieren und dann zu drucken, können Sie es auch
- direkt von \SpecialChar LyX
- aus drucken.
- Um eine Datei zu drucken, wählen Sie das Menü 
-\family sans
-Datei\SpecialChar menuseparator
-Drucken
-\family default
- (Tastenkürzel 
-\family sans
-Strg+P
-\family default
-) oder drücken Sie den Werkzeugleistenknopf 
-\begin_inset Info
-type  "icon"
-arg   "dialog-show print"
-\end_inset
-
-.
- \SpecialChar LyX
- ruft dann intern \SpecialChar LaTeX
- auf um ein DVI zu erzeugen.
- Diese Datei wird dann vom Programm 
-\family typewriter
-dvips
-\family default
- in eine PostScript-Datei gewandelt und anschließend mit dem Programm 
-\family typewriter
-Ghostscript
-\family default
- gedruckt.
- Durch diese Schritte im Hintergrund ist diese Methode nicht die schnellste.
-\end_layout
-
-\begin_layout Standard
-Man kann folgende Druckparameter in der 
-\family sans
-Druckziel
-\family default
- Box festlegen:
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-Drucker
-\family default
- Dies ist der Name des Druckers, auf dem ausgedruckt werden soll.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Man beachte, dass dies der Druckername für das Programm 
-\family typewriter
-dvips
-\family default
- ist.
- Das bedeutet, dass 
-\family typewriter
-dvips
-\family default
- für diesen Druckernamen konfiguriert sein muss.
- Der Standard-Drucker kann in \SpecialChar LyX
-s Einstellungen-Dialog festgelegt werden,
- siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Drucker"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- Der Drucker sollte PostScript verarbeiten können.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-Datei
-\family default
- Der Name einer Datei in die ausgegeben werden soll.
- Die Ausgabe wird eine PostScript-Datei sein.
- Sie wird in \SpecialChar LyX
-s Arbeitsverzeichnis erstellt, falls kein Pfad angegeben wird.
-\end_layout
-
-\begin_layout Standard
-Sie können wählen einen Bereich, nur gerade oder ungerade Seiten oder Seiten
- in umgekehrter Reihenfolge zu drucken — Letztere sind für zweiseitigen
- Druck ohne Duplexer nützlich: Man kann die Seiten nach dem einseitigen
- Drucken je nach Drucker neu einlegen um anschließend die Rückseite zu bedrucken.
 \end_layout
 
 \begin_layout Section
@@ -36540,35 +36408,6 @@ Neukonfiguration von \SpecialChar LyX
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Drucken
-\end_layout
-
-\begin_layout Standard
-Mit diesem Menü können Sie Ihr Dokument entweder in eine Datei im PostScript-For
-mat drucken, oder sie an einen Drucker schicken.
- Der Drucker wird das Dokument ebenfalls im PostScript-Format erhalten.
- Die Konvertierung nach PostScript wird von \SpecialChar LyX
- im Hintergrund mit dem Programm
- 
-\family typewriter
-dvips
-\family default
- durchgeführt.
- Für weitere Informationen siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Datei-ausdrucken"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Subsection
