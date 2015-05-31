@@ -148,6 +148,7 @@ enumitem
 \html_be_strict true
 \author -1966299584 "ef" 
 \author -712698321 "Jürgen Spitzmüller" 
+\author 2089657418 "Usti" 
 \end_header
 
 \begin_body
@@ -45847,147 +45848,26 @@ Additional
 Features
 \emph default
  manual.
-\end_layout
+\change_inserted 2089657418 1433036195
 
-\begin_layout Subsection
-Printer
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Printer"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Printer
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Settings ! Printer
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-Default
-\begin_inset space ~
-\end_inset
-
-printer Here you can specify the name of your 
-\family sans
-Default printer
-\family default
-.
- The name will be used when the 
-\family sans
-Printer command
-\family default
- is executed.
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Note Greyedout
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 
-\series bold
-Note:
-\series default
- You can leave this field empty on Windows systems because it has no effect.
-\end_layout
+\change_inserted 2089657418 1433036213
 
-\end_inset
-
+\color red
+Check why this does no longer exists
+\change_unchanged
 
 \end_layout
 
-\begin_layout Description
-Printer
-\begin_inset space ~
-\end_inset
-
-command is the command \SpecialChar LyX
-
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-\SpecialChar LaTeX
- uses for printing.
- The default is 
-\family sans
-dvips
-\family default
- on most systems.
-\end_layout
-
-\begin_layout Description
-Printer
-\begin_inset space ~
-\end_inset
-
-Command
-\begin_inset space ~
-\end_inset
-
-Options Here you can specify printer options.
- A list of printer options with explanations can be found in the documentation
- of the program that provides the 
-\family sans
-Printer command
-\family default
- you are using.
-\end_layout
-
-\begin_layout Description
-Adapt
-\begin_inset space ~
-\end_inset
-
-output
-\begin_inset space ~
-\end_inset
-
-to
-\begin_inset space ~
-\end_inset
-
-printer This option works only for the 
-\family sans
-Printer command
-\family default
- 
-\begin_inset Quotes eld
 \end_inset
 
 
-\family sans
-dvips
-\family default
+\change_unchanged
 
-\begin_inset Quotes erd
-\end_inset
-
-.
- It activates a configuration file for dvips.
- This is an option only for dvips experts.
 \end_layout
 
 \begin_layout Subsection

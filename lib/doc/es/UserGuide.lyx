@@ -5076,7 +5076,7 @@ Numeración
 \begin_layout Subsubsection
 Encabezados con Título corto
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Encabezados de sección ! Títulos cortos
@@ -5086,7 +5086,7 @@ Encabezados de sección ! Títulos cortos
 
 
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Títulos cortos
@@ -8551,12 +8551,14 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
+
 Esto es entorno literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8569,6 +8571,7 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
+
 Casi todo está permitido en entorno literal:"%&$§#~'`
 \backslash
 }][{|
@@ -27869,13 +27872,9 @@ El IG lista automáticamente las secciones numeradas.
 \end_inset
 
 
-\begin_inset space \thinspace{}
-\end_inset
-
-
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Títulos-breves"
+reference "sec:Títulos-cortos"
 
 \end_inset
 
@@ -36511,7 +36510,14 @@ Abre una ventana lateral para navegar por los índices; se describe en la
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Panel-del-esquema"
+reference "sec:Navegación"
+
+\end_inset
+
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Indice-general"
 
 \end_inset
 
@@ -45787,163 +45793,6 @@ Búsqueda inversa DVI/PDF
 Características adicionales
 \emph default
 .
-\end_layout
-
-\begin_layout Subsection
-Impresora
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Impresora"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Impresora
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Configuración ! Impresora
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-Impresora
-\begin_inset space ~
-\end_inset
-
-predeterminada En este campo puedes poner el nombre de tu impresora predetermina
-da.
- Este nombre se usará cuando se ejecute el 
-\family sans
-Comando de Impresión
-\family default
-.
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Nota:
-\series default
- En Windows puedes dejar el campo en blanco porque no tiene efecto.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-
-\family sans
-Comando
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-Impresión 
-\family default
-es el comando que usan \SpecialChar LyX
-
-\begin_inset space \thinspace{}
-\end_inset
-
-/
-\begin_inset space \thinspace{}
-\end_inset
-
-\SpecialChar LaTeX
- para imprimir.
- En la mayoría de sistemas el comando predeterminado es 
-\family sans
-dvips
-\family default
-.
-\end_layout
-
-\begin_layout Description
-Opciones
-\begin_inset space ~
-\end_inset
-
-del
-\begin_inset space ~
-\end_inset
-
-comando
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-impresión En la documentación del programa que suministra el 
-\family sans
-Comando de impresión
-\family default
- que se use
-\family sans
- 
-\family default
-puedes encontrar la explicación de las opciones que pueden configurarse
- en estos campos.
-\end_layout
-
-\begin_layout Description
-Adaptar
-\begin_inset space ~
-\end_inset
-
-la
-\begin_inset space ~
-\end_inset
-
-salida
-\begin_inset space ~
-\end_inset
-
-a
-\begin_inset space ~
-\end_inset
-
-la
-\begin_inset space ~
-\end_inset
-
-impresora Esta opción solo funciona si el 
-\family sans
-Comando de Impresión
-\family default
- es «
-\family sans
-dvips
-\family default
-».
- Activa un archivo de configuración para dvips.
- Esta opción es para expertos en dvips.
 \end_layout
 
 \begin_layout Subsection

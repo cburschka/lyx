@@ -7174,12 +7174,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 これは無調整(verbatim)環境です。
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 この下の2行は空白行です。
 \end_layout
 
@@ -7192,6 +7194,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 右記の各文字を始め、ほぼすべての文字が使えます。例："%&$§#~'`
 \backslash
 }][{|
@@ -11022,7 +11025,7 @@ height "1pt"
 に、特別なキーボード配置表を使用することもできます。これを実現するための情報は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:キーボード配置表"
+reference "subsec:キーボード配置表の設定"
 
 \end_inset
 
@@ -38660,90 +38663,6 @@ http://unixhelp.ed.ac.uk/CGI/man-cgi?date
 DVI/PDFの逆検索
 \emph default
 」という節にあります。
-\end_layout
-
-\begin_layout Subsection
-プリンタ
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:プリンタ"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-ぷりんた@プリンタ
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-せってい@設定!ぷりんた@プリンタ
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-既定プリンタ ここではお使いの既定プリンタ名を指定できます。プリンタ名は、
-\family sans
-印刷コマンド
-\family default
-が実行されるときに使用されます。
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-【註】
-\series default
-Windowsシステムでは効力がないのでこのフィールドは空でかまいません。
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Description
-印刷コマンド これは\SpecialChar LyX
-すなわち\SpecialChar LaTeX
-が印刷に使用するコマンドです。既定値は、ほとんどのシステムで
-\family sans
-dvips
-\family default
-です。
-\end_layout
-
-\begin_layout Description
-印刷コマンドオプション ここでは印刷コマンド用オプションを指定できます。お使いの印刷コマンドを提供するプログラムの取扱説明書に、印刷オプションの全覧と説明があり
-ます。
-\end_layout
-
-\begin_layout Description
-出力をプリンタに合わせる このオプションは、
-\family sans
-印刷コマンド
-\family default
-が「
-\family sans
-dvips
-\family default
-」のときのみ機能します。これはdvips用の設定ファイルを有効化します。これはdvips熟練者専用のオプションです。
 \end_layout
 
 \begin_layout Subsection
