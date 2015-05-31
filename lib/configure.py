@@ -572,8 +572,8 @@ def checkFormatEntries(dtl_tools):
     checkViewerEditor('a Dia viewer and editor', ['dia'],
         rc_entry = [r'\Format dia        dia     DIA                    "" "%%"	"%%"	"vector,zipped=native", "application/x-dia-diagram"'])
     #
-    checkViewerEditor('an OpenOffice drawing viewer and editor', ['libreoffice', 'lodraw', 'ooffice', 'oodraw', 'soffice'],
-        rc_entry = [r'\Format odg        "odg, sxd" "OpenOffice drawing"   "" "%%"	"%%"	"vector,zipped=native"	"application/vnd.oasis.opendocument.graphics"'])
+    checkViewerEditor('an OpenDocument drawing viewer and editor', ['libreoffice', 'lodraw', 'ooffice', 'oodraw', 'soffice'],
+        rc_entry = [r'\Format odg        "odg, sxd" "OpenDocument drawing"   "" "%%"	"%%"	"vector,zipped=native"	"application/vnd.oasis.opendocument.graphics"'])
     #
     checkViewerEditor('a Grace viewer and editor', ['xmgrace'],
         rc_entry = [r'\Format agr        agr     Grace                  "" "%%"	"%%"	"vector"	""'])
@@ -631,7 +631,7 @@ def checkFormatEntries(dtl_tools):
     checkViewer('gnumeric spreadsheet software', ['gnumeric'],
       rc_entry = [r'''\Format gnumeric gnumeric "Gnumeric spreadsheet" "" ""    "%%"   "document"	"application/x-gnumeric"
 \Format excel      xls    "Excel spreadsheet"      "" "" "%%"    "document"	"application/vnd.ms-excel"
-\Format oocalc     ods    "OpenOffice spreadsheet" "" "" "%%"    "document"	"application/vnd.oasis.opendocument.spreadsheet"'''])
+\Format oocalc     ods    "OpenDocument spreadsheet" "" "" "%%"    "document"	"application/vnd.oasis.opendocument.spreadsheet"'''])
  #
     checkViewer('an HTML previewer', ['firefox', 'mozilla file://$$p$$i', 'netscape'],
         rc_entry = [r'\Format xhtml      xhtml   "LyXHTML"              y "%%" ""    "document,menu=export"	"application/xhtml+xml"'])
@@ -677,8 +677,9 @@ def checkFormatEntries(dtl_tools):
     checkViewerEditor('Noteedit', ['noteedit'],
         rc_entry = [r'\Format noteedit   not     Noteedit               "" "%%"	"%%"	"vector"	""'])
     #
-    checkViewerEditor('an OpenDocument/OpenOffice viewer', ['libreoffice', 'lwriter', 'lowriter', 'oowriter', 'swriter', 'abiword'],
-        rc_entry = [r'''\Format odt        odt     OpenDocument           "" "%%"	"%%"	"document,vector,menu=export"	"application/vnd.oasis.opendocument.text"
+    checkViewerEditor('an OpenDocument viewer', ['libreoffice', 'lwriter', 'lowriter', 'oowriter', 'swriter', 'abiword'],
+        rc_entry = [r'''\Format odt        odt     "OpenDocument (eLyXer)"  "" "%%"	"%%"	"document,vector,menu=export"	"application/vnd.oasis.opendocument.text"
+\Format odt2       odt    "OpenDocument (tex4ht)"  "" "%%"	"%%"	"document,vector,menu=export"	"application/vnd.oasis.opendocument.text"
 \Format sxw        sxw    "OpenOffice.Org (sxw)"  "" ""	""	"document,vector"	"application/vnd.sun.xml.writer"'''])
     #
     checkViewerEditor('a Rich Text and Word viewer', ['libreoffice', 'lwriter', 'lowriter', 'oowriter', 'swriter', 'abiword'],
@@ -949,7 +950,7 @@ def checkConverterEntries():
     # The eps2->eps converter then fixes the bounding box by cropping.
     # Although unoconv can convert to png and pdf as well, do not define
     # odg->png and odg->pdf converters, since the bb would be too large as well.
-    checkProg('an OpenOffice -> EPS converter', ['libreoffice -headless -nologo -convert-to eps $$i', 'unoconv -f eps --stdout $$i > $$o'],
+    checkProg('an OpenDocument -> EPS converter', ['libreoffice -headless -nologo -convert-to eps $$i', 'unoconv -f eps --stdout $$i > $$o'],
         rc_entry = [ r'\converter odg        eps2       "%%"	""'])
     # Only define a converter to pdf6 for graphics
     checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i', 'inkscape --file=$$i --export-area-drawing --without-gui --export-pdf=$$o'],
