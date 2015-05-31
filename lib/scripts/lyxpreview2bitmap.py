@@ -160,11 +160,12 @@ def extract_metrics_info(dvipng_stdout):
 
 def fix_latex_file(latex_file):
     documentclass_re = re.compile("(\\\\documentclass\[)(1[012]pt,?)(.+)")
-    newcommandx_re = re.compile("^(\\\\newcommandx)(.+)")
+    newcommandx_re = re.compile("(\\\\newcommandx)(\\\\[a-zA-Z])(.+)")
 
     tmp = mkstemp()
 
     changed = 0
+    macros = []
     for line in open(latex_file, 'r').readlines():
         match = documentclass_re.match(line)
         if match != None:
@@ -177,8 +178,14 @@ def fix_latex_file(latex_file):
             tmp.write(line)
             continue
 
+        macroname = match.group(2)
+        if not macroname in macros:
+            macros.append(macroname)
+            tmp.write(line)
+            continue
+
         changed = 1
-        tmp.write("\\providecommandx%s\n" % match.group(2))
+        tmp.write("\\renewcommandx%s%s\n" % (match.group(2), match.group(3)))
 
     if changed:
         copyfileobj(tmp, open(latex_file,"wb"), 1)
