@@ -777,12 +777,12 @@ def checkConverterEntries():
     checkProg('an MS Word -> LaTeX converter', ['wvCleanLatex $$i $$o'],
         rc_entry = [ r'\converter word       latex      "%%"	""' ])
 
-    # eLyXer
+    # eLyXer: search as an executable (elyxer.py, elyxer)
     path, elyxer = checkProg('a LyX -> HTML converter',
-        ['elyxer.py --nofooter --directory $$r $$i $$o'],
+        ['elyxer.py --nofooter --directory $$r $$i $$o', 'elyxer --nofooter --directory $$r $$i $$o'],
         rc_entry = [ r'\converter lyx      html       "%%"	""' ])
     path, elyxer = checkProg('a LyX -> HTML (MS Word) converter',
-        ['elyxer.py --nofooter --html --directory $$r $$i $$o'],
+        ['elyxer.py --nofooter --html --directory $$r $$i $$o', 'elyxer --nofooter --html --directory $$r $$i $$o'],
         rc_entry = [ r'\converter lyx      wordhtml       "%%"	""' ])
     if elyxer.find('elyxer') >= 0:
       addToRC(r'''\copier    html       "python -tt $$s/scripts/ext_copy.py -e html,png,jpg,jpeg,css $$i $$o"''')
