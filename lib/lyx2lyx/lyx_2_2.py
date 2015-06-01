@@ -1096,7 +1096,7 @@ def revert_colorbox(document):
 
     i = 0
     defaultframecolor = "black"
-    defaultbackcolor = "white"
+    defaultbackcolor = "none"
     while True:
         i = find_token(document.body, "framecolor", i)
         if i == -1:
