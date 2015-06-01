@@ -61,7 +61,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 56; //spitz: New Float tags AllowedPlacement, AllowsWide, AllowsSideways
+int const LAYOUT_FORMAT = 57; //spitz: New Layout tag ParagraphGroup
 
 namespace {
 

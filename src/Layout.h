@@ -190,10 +190,7 @@ public:
 	}
 	/// Is this the kind of layout in which adjacent paragraphs
 	/// are handled as one group?
-	bool isParagraphGroup() const {
-	return latextype == LATEX_ENVIRONMENT
-		|| latextype == LATEX_BIB_ENVIRONMENT;
-	}
+	bool isParagraphGroup() const {	return par_group_; }
 	///
 	bool labelIsInline() const {
 		return labeltype == LABEL_STATIC
@@ -452,6 +449,8 @@ private:
 	docstring langpreamble_;
 	/// Language and babel dependent macro definitions needed for this layout
 	docstring babelpreamble_;
+	/// Are adjacent paragraphs handled as one group?
+	bool par_group_;
 	/// Packages needed for this layout
 	std::set<std::string> requires_;
 	///

@@ -75,6 +75,7 @@ enum LayoutTags {
 	LT_NEED_PROTECT,
 	LT_NEWLINE,
 	LT_NEXTNOINDENT,
+	LT_PAR_GROUP,
 	LT_PARINDENT,
 	LT_PARSEP,
 	LT_PARSKIP,
@@ -151,6 +152,7 @@ Layout::Layout()
 	forcelocal = 0;
 	itemcommand_ = "item";
 	toggle_indent = ITOGGLE_DOCUMENT_DEFAULT;
+	par_group_ = false;
 }
 
 
@@ -231,6 +233,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		{ "newline",        LT_NEWLINE },
 		{ "nextnoindent",   LT_NEXTNOINDENT },
 		{ "obsoletedby",    LT_OBSOLETEDBY },
+		{ "paragraphgroup", LT_PAR_GROUP },
 		{ "parbreakisnewline", LT_PARBREAK_IS_NEWLINE },
 		{ "parindent",      LT_PARINDENT },
 		{ "parsep",         LT_PARSEP },
@@ -540,6 +543,10 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		case LT_LABELCOUNTER:
 			lex >> counter;	
 			counter = trim(counter);
+			break;
+
+		case LT_PAR_GROUP:
+			lex >> par_group_;
 			break;
 
 		case LT_FREE_SPACING:
@@ -875,11 +882,14 @@ void Layout::readLatexType(Lexer & lex)
 		return;
 	case LATEX_PARAGRAPH:
 	case LATEX_COMMAND:
-	case LATEX_ENVIRONMENT:
 	case LATEX_ITEM_ENVIRONMENT:
-	case LATEX_BIB_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
 		latextype = static_cast<LatexType>(le);
+		break;
+	case LATEX_ENVIRONMENT:
+	case LATEX_BIB_ENVIRONMENT:
+		latextype = static_cast<LatexType>(le);
+		par_group_ = true;
 		break;
 	default:
 		LYXERR0("Unhandled value " << le);
@@ -1210,6 +1220,7 @@ void Layout::write(ostream & os) const
 		os << "\tEndLabelType Static\n";
 		break;
 	}
+	os << "\tParagraphGroup \"" << par_group_ << "\"\n";
 	if (!leftmargin.empty())
 		os << "\tLeftMargin \"" << to_utf8(leftmargin) << "\"\n";
 	if (!rightmargin.empty())

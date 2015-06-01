@@ -186,6 +186,9 @@ import os, re, string, sys
 # Incremented to format 56, 20 May 2015 by spitz
 # New Float tags "AllowedPlacement", "AllowsWide", "AllowsSideways"
 
+# Incremented to format 57, 30 May 2015 by spitz
+# New Layout tag "ParagraphGroup"
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -193,7 +196,7 @@ import os, re, string, sys
 # development/tools/updatelayouts.py script to update all
 # layout files to the new format.
 
-currentFormat = 56
+currentFormat = 57
 
 
 def usage(prog_name):
@@ -417,7 +420,7 @@ def convert(lines):
                 i += 1
             continue
 
-        if format >= 50 and format <= 55:
+        if format >= 50 and format <= 56:
             # nothing to do.
             i += 1
             continue
