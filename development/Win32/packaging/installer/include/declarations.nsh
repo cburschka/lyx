@@ -20,6 +20,7 @@ Configuration of LyX installer
 !define FILES_IMAGEMAGICK "${FILES_DEPS}\imagemagick"
 !define FILES_GHOSTSCRIPT "${FILES_DEPS}\ghostscript"
 !define FILES_NETPBM "${FILES_DEPS}\bin"
+!define FILES_RSVG "${FILES_DEPS}\bin"
 !define FILES_DTL "${FILES_DEPS}\bin"
 !define FILES_DVIPOST "${FILES_DEPS}\bin"
 !define FILES_DVIPOST_PKG "${FILES_DEPS}\tex"
@@ -56,7 +57,7 @@ Configuration of LyX installer
 !define APP_WEBPAGE_INFO "${APP_NAME} Website"
 !define APP_WIKI "http://wiki.lyx.org"
 !define APP_WIKI_INFO "${APP_NAME} Wiki"
-!define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-2014 by the LyX Team"
+!define APP_COPYRIGHT "LyX is Copyright Â© 1995 by Matthias Ettrich, 1995-2014 by the LyX Team"
 
 !define APP_RUN "bin\lyx.exe"
 !define BIN_LYX "lyx.exe"

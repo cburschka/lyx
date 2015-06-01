@@ -158,10 +158,6 @@ Section -Configure
    FileWrite $R1 '\path_prefix "$PathPrefix"$\r$\n'
   ${endif}
   
-  # set path to eLyXer
-  FileWrite $R1 '\converter "lyx" "odt" "python -tt \"$INSTDIR\Python\Lib\elyxer.py\" --html --nofooter --unicode --directory $$$$r $$$$i $$$$o" ""$\r$\n\
-                 \converter "lyx" "word" "python -tt \"$INSTDIR\Python\Lib\elyxer.py\" --html --nofooter --unicode --directory $$$$r $$$$i $$$$o" ""$\r$\n'
-  
   # use pdfview for all types of PDF files
   FileWrite $R1 '\format "pdf5" "pdf" "PDF (LuaTeX)" "u" "pdfview" "" "document,vector,menu=export" "application/pdf"$\r$\n\
 		 \format "pdf4" "pdf" "PDF (XeTeX)" "X" "pdfview" "" "document,vector,menu=export" "application/pdf"$\r$\n\

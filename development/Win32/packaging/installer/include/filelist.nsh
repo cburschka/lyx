@@ -65,6 +65,12 @@ Lists of files to include in the installer
   
 !macroend
 
+!macro FileListRsvg COMMAND DIRECTORY
+
+  ${FILE}rsvg-convert.exe"
+  
+!macroend
+
 !macro FileListDvipostBin COMMAND DIRECTORY
 
   ${FILE}pplatex.exe"
