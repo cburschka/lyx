@@ -5,16 +5,7 @@
 \origin roundtrip
 \textclass amsart
 \begin_preamble
-\numberwithin{equation}{section} %% Comment out for sequentially-numbered
-\numberwithin{figure}{section} %% Comment out for sequentially-numbered
-\providecommand{\theoremname}{Theorem}
-\theoremstyle{plain}
-\newtheorem{thm}{\protect\theoremname}\theoremstyle{plain}
-\newtheorem{lem}[thm]{Lemma}
-
 \usepackage{babel}
-
-
 
 \end_preamble
 \use_default_options false

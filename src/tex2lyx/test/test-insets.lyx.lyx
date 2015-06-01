@@ -5,27 +5,6 @@
 \origin roundtrip
 \textclass article
 \begin_preamble
-%% Do not edit unless you really know what you are doing.
-
-
-
-
-
-\usepackage{url}
-% the following is useful when we have the old nomencl.sty package
-\providecommand{\printnomenclature}{\printglossary}
-\providecommand{\makenomenclature}{\makeglossary}
-\makenomenclature
-\usepackage{xargs}
-\usepackage{listings}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 
 % Load refstyle before prettyref so that prettyref wins.
 % The real refstyle tests are in test-refstyle-theorems.tex.
@@ -124,10 +103,6 @@
 Title
 \end_layout
 
-\begin_layout Date
-two days ago
-\end_layout
-
 \begin_layout Standard
 
 \begin_inset ERT
@@ -140,6 +115,10 @@ status collapsed
 \end_inset
 
 
+\end_layout
+
+\begin_layout Date
+two days ago
 \end_layout
 
 \begin_layout Standard
@@ -903,7 +882,7 @@ If you prefer verbatim input, you can choose between
 \begin_inset CommandInset include
 LatexCommand verbatiminput
 preview false
-filename "DummyDocument.tex"
+filename "foo"
 
 \end_inset
 
@@ -916,7 +895,7 @@ filename "DummyDocument.tex"
 \begin_inset CommandInset include
 LatexCommand verbatiminput*
 preview false
-filename "DummyDocument.tex"
+filename "foo"
 
 \end_inset
 
@@ -5004,6 +4983,340 @@ in % of pixel size
 \end_layout
 
 \begin_layout Standard
+A table using dcolumn:
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset Tabular 
+<lyxtabular version="3" rows="4" columns="5">
+<features rotate="0" tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="none" valignment="top" special="d">
+<column alignment="none" valignment="top" special="d">
+<column alignment="none" valignment="top" special="d">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+One
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Two
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family roman
+Three
+\family default
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family roman
+Four
+\family default
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\family roman
+Five
+\family default
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+one
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+two
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 1
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+
+\begin_layout Standard
+three
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 1
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+
+\begin_layout Standard
+four
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 1
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+
+\begin_layout Standard
+five
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+He
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+2.77234 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+45672. 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+0.69 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+C
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+Some tables require footnotes.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+C
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+Some tables need more than one footnote.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+12537.64 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+37.66345 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+86.37 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 A table using decimal alignment:
 \end_layout
 
@@ -5883,7 +6196,7 @@ Special formattings
 \end_layout
 
 \begin_layout Subsection
-Rules
+LyX line
 \end_layout
 
 \begin_layout Standard
@@ -5891,6 +6204,13 @@ test
 \end_layout
 
 \begin_layout Standard
+
+\size tiny
+
+\end_layout
+
+\begin_layout Standard
+\noindent
 
 \size tiny
 
@@ -5922,6 +6242,24 @@ test
 \end_layout
 
 \begin_layout Standard
+\noindent
+
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+test
+\end_layout
+
+\begin_layout Standard
 
 \size giant
 
@@ -5944,6 +6282,33 @@ height "1pt"
 \size default
 
 \size giant
+
+\end_layout
+
+\begin_layout Subsection
+Rules
+\end_layout
+
+\begin_layout Standard
+test
+\end_layout
+
+\begin_layout Standard
+
+\size tiny
+
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100line%"
+height "1pt"
+
+\end_inset
+
+
+\size default
+
+\size tiny
 
 \end_layout
 
