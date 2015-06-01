@@ -1160,53 +1160,6 @@ def revert_mathmulticol(document):
             i = j
 
 
-def revert_Argument_to_TeX_brace(document, line, endline, n, nmax, environment, opt):
-    '''
-    Reverts an InsetArgument to TeX-code
-    usage:
-    revert_Argument_to_TeX_brace(document, LineOfBegin, LineOfEnd, StartArgument, EndArgument, isEnvironment, isOpt)
-    LineOfBegin is the line  of the \begin_layout or \begin_inset statement
-    LineOfEnd is the line  of the \end_layout or \end_inset statement, if "0" is given, the end of the file is used instead
-    StartArgument is the number of the first argument that needs to be converted
-    EndArgument is the number of the last argument that needs to be converted or the last defined one
-    isEnvironment must be true, if the layout is for a LaTeX environment
-    isOpt must be true, if the argument is an optional one
-    '''
-    lineArg = 0
-    wasOpt = False
-    while lineArg != -1 and n < nmax + 1:
-      lineArg = find_token(document.body, "\\begin_inset Argument " + str(n), line)
-      if lineArg > endline and endline != 0:
-        return wasOpt
-      if lineArg != -1:
-        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", lineArg)
-        # we have to assure that no other inset is in the Argument
-        beginInset = find_token(document.body, "\\begin_inset", beginPlain)
-        endInset = find_token(document.body, "\\end_inset", beginPlain)
-        k = beginPlain + 1
-        l = k
-        while beginInset < endInset and beginInset != -1:
-          beginInset = find_token(document.body, "\\begin_inset", k)
-          endInset = find_token(document.body, "\\end_inset", l)
-          k = beginInset + 1
-          l = endInset + 1
-        if environment == False:
-          if opt == False:
-            document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}{")
-            del(document.body[lineArg : beginPlain + 1])
-            wasOpt = False
-          else:
-            document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("]")
-            document.body[lineArg : beginPlain + 1] = put_cmd_in_ert("[")
-            wasOpt = True
-        else:
-          document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}")
-          document.body[lineArg : beginPlain + 1] = put_cmd_in_ert("{")
-          wasOpt = False
-        n += 1
-    return wasOpt
-
-
 def revert_jss(document):
     " Reverts JSS In_Preamble commands to ERT in preamble "
 
