@@ -1105,8 +1105,8 @@ def revert_colorbox(document):
         beg = document.body[i].find('"');
         end = document.body[i].rfind('"');
         framecolor = document.body[i][beg+1:end];
-        beg = document.body[i+1].find('"');
-        end = document.body[i+1].rfind('"');
+        beg = document.body[i + 1].find('"');
+        end = document.body[i + 1].rfind('"');
         backcolor = document.body[i+1][beg+1:end];
         j = find_end_of_inset(document.body, i)
         if j == -1:
@@ -1114,7 +1114,7 @@ def revert_colorbox(document):
             i += 1
             continue
         # delete the specification
-        del document.body[i:i+2]
+        del document.body[i : i + 2]
         # output TeX code
         # first output the closing brace
         if framecolor != defaultframecolor or backcolor != defaultbackcolor:
@@ -1124,8 +1124,8 @@ def revert_colorbox(document):
             document.body[i - 14 : i - 14] = put_cmd_in_ert("{")
         if framecolor != defaultframecolor:
             document.body[i - 9 : i - 8] = ["\\backslash fcolorbox{" + framecolor + "}{" + backcolor + "}{"]
-            k = find_token(document.body, "\\begin_inset Box Boxed", i - 16)
-            if k != -1:
+            k = find_token(document.body, "\\begin_inset Box Boxed", i - 5)
+            if k == i - 5:
                 # \fcolorbox is already framed box thus remove the frame
                 document.body[k : k + 1] = ["\\begin_inset Box Frameless"]
         if backcolor != defaultbackcolor and framecolor == defaultframecolor:
