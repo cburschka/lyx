@@ -863,10 +863,9 @@ XFig drawings:
 
 \begin_layout Standard
 
-\begin_inset CommandInset include
-LatexCommand input
-preview false
-filename "xfigtest.pstex_t"
+\begin_inset External
+	template XFig
+	filename xfigtest.fig
 
 \end_inset
 
