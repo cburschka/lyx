@@ -1108,17 +1108,26 @@ def revert_colorbox(document):
         beg = document.body[i+1].find('"');
         end = document.body[i+1].rfind('"');
         backcolor = document.body[i+1][beg+1:end];
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of box inset!")
+            i += 1
+            continue
         # delete the specification
         del document.body[i:i+2]
         # output TeX code
         # first output the closing brace
         if framecolor != defaultframecolor or backcolor != defaultbackcolor:
-            document.body[i + 9 : i + 9] = put_cmd_in_ert("}")
+            document.body[j + 1 : j + 1] = put_cmd_in_ert("}")
         # now output the box commands
         if framecolor != defaultframecolor or backcolor != defaultbackcolor:
             document.body[i - 14 : i - 14] = put_cmd_in_ert("{")
         if framecolor != defaultframecolor:
-            document.body[i - 9 : i - 8] = ["\\backslash fboxcolor{" + framecolor + "}{" + backcolor + "}{"]
+            document.body[i - 9 : i - 8] = ["\\backslash fcolorbox{" + framecolor + "}{" + backcolor + "}{"]
+            k = find_token(document.body, "\\begin_inset Box Boxed", i - 16)
+            if k != -1:
+                # \fcolorbox is already framed box thus remove the frame
+                document.body[k : k + 1] = ["\\begin_inset Box Frameless"]
         if backcolor != defaultbackcolor and framecolor == defaultframecolor:
             document.body[i - 9 : i - 8] = ["\\backslash colorbox{" + backcolor + "}{"]
         i = i + 11
