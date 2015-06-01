@@ -241,21 +241,21 @@ Style References
   Category			BackMatter
   LatexType			Item_Environment
   LatexName			references
-  ItemCommand			reference
-  LabelType			Above
-  LabelString			"References"
+  ItemCommand		reference
+  LabelType			Centered
+  LabelString		"References"
   LabelFont
    Size larger
    Series bold
   EndFont
-  ParagraphGroup		1
-  NextNoIndent			1
+  ParagraphGroup	1
+  NextNoIndent		1
   TopSep			0.7
   BottomSep			0.7
   Argument item:1
-    LabelString			"Reference"
-    Mandatory			1
-    AutoInsert			1
+    LabelString		"Reference"
+    Mandatory		1
+    AutoInsert		1
   EndArgument
   Align				Left
 End
