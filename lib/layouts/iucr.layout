@@ -5,7 +5,7 @@
 # Author: Uwe Stöhr (uwestoehr@web.de)
 # IUCr LaTeX files can be downloaded from ftp://ftp.iucr.org/templates/latex/
 
-Format 54
+Format 57
 
 Columns				1
 Sides				1
@@ -237,16 +237,25 @@ Style Acknowledgements
 End
 
 Style References
-  Margin			Manual
+  Margin			Static
   Category			BackMatter
-  LatexType			List_Environment
+  LatexType			Item_Environment
   LatexName			references
-  ItemCommand		reference
-  NextNoIndent		1
+  ItemCommand			reference
+  LabelType			Above
+  LabelString			"References"
+  LabelFont
+   Size larger
+   Series bold
+  EndFont
+  ParagraphGroup		1
+  NextNoIndent			1
+  TopSep			0.7
+  BottomSep			0.7
   Argument item:1
-    LabelString		"Reference"
-    Mandatory		1
-    AutoInsert		1
+    LabelString			"Reference"
+    Mandatory			1
+    AutoInsert			1
   EndArgument
   Align				Left
 End
