@@ -1,8 +1,8 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 493
+\lyxformat 495
 \begin_document
 \begin_header
-\origin unavailable
+\origin /systemlyxdir/doc/
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -862,7 +862,7 @@ templates/
  template files described in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Creating-Templates"
+reference "subsec:Creating-Templates"
 
 \end_inset
 
@@ -1068,7 +1068,7 @@ layouttranslations
  (see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:I18n"
+reference "subsec:I18n"
 
 \end_inset
 
@@ -6543,7 +6543,7 @@ Note that \SpecialChar LyX
 Layout modules
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Layout-modules"
+name "subsec:Layout-modules"
 
 \end_inset
 
@@ -7302,7 +7302,7 @@ roll your own
 Creating templates
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Creating-Templates"
+name "subsec:Creating-Templates"
 
 \end_inset
 
@@ -8518,7 +8518,7 @@ Format
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:General-text-class"
+name "subsec:General-text-class"
 
 \end_inset
 
@@ -8650,7 +8650,7 @@ CiteFormat
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Citation-format-description"
+reference "subsec:Citation-format-description"
 
 \end_inset
 
@@ -8690,7 +8690,7 @@ ClassOptions
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:ClassOptions"
+reference "subsec:ClassOptions"
 
 \end_inset
 
@@ -8819,7 +8819,7 @@ End
 See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Counters"
+reference "subsec:Counters"
 
 \end_inset
 
@@ -8840,7 +8840,7 @@ DefaultFont
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Font-description"
+reference "subsec:Font-description"
 
 \end_inset
 
@@ -8990,7 +8990,7 @@ not
  Modules have their own way of excluding other modules (see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Layout-modules"
+reference "subsec:Layout-modules"
 
 \end_inset
 
@@ -9011,7 +9011,7 @@ Float
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Floats"
+reference "subsec:Floats"
 
 \end_inset
 
@@ -9208,7 +9208,7 @@ End
 See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Counters"
+reference "subsec:Counters"
 
 \end_inset
 
@@ -9341,7 +9341,7 @@ End
 See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Flex-insets-and"
+reference "subsec:Flex-insets-and"
 
 \end_inset
 
@@ -10226,7 +10226,7 @@ End
 See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Paragraph-Styles"
+reference "subsec:Paragraph-Styles"
 
 \end_inset
 
@@ -10435,7 +10435,7 @@ ClassOptions
  section
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:ClassOptions"
+name "subsec:ClassOptions"
 
 \end_inset
 
@@ -10638,7 +10638,7 @@ End
 Paragraph styles
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Paragraph-Styles"
+name "subsec:Paragraph-Styles"
 
 \end_inset
 
@@ -11305,7 +11305,7 @@ Font
  The font used for the argument content, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Font-description"
+reference "subsec:Font-description"
 
 \end_inset
 
@@ -11325,7 +11325,7 @@ LabelFont
  The font used for the label; see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Font-description"
+reference "subsec:Font-description"
 
 \end_inset
 
@@ -11649,7 +11649,7 @@ EndBabelPreamble
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:I18n"
+reference "subsec:I18n"
 
 \end_inset
 
@@ -11995,7 +11995,7 @@ and
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Font-description"
+reference "subsec:Font-description"
 
 \end_inset
 
@@ -12165,7 +12165,7 @@ HTML*
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Paragraph-Style-XHTML"
+reference "subsec:Paragraph-Style-XHTML"
 
 \end_inset
 
@@ -12713,7 +12713,7 @@ myenumiv
 See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Counters"
+reference "subsec:Counters"
 
 \end_inset
 
@@ -12734,7 +12734,7 @@ LabelFont
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Font-description"
+reference "subsec:Font-description"
 
 \end_inset
 
@@ -12824,7 +12824,7 @@ LabelCounter
  in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Counters"
+reference "subsec:Counters"
 
 \end_inset
 
@@ -13228,7 +13228,7 @@ EndLangPreamble
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:I18n"
+reference "subsec:I18n"
 
 \end_inset
 
@@ -14153,6 +14153,110 @@ status collapsed
 
 ] Name of a style that has replaced this style.
  This is used to rename a style, while keeping backward compatibility.
+\change_inserted -712698321 1432986397
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1432986583
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1432986403
+ParagraphGroup
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1432986397
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1432986397
+1
+\end_layout
+
+\end_inset
+
+] Determines whether consecutive pragraphs of the same type are treated
+ as belonging together.
+ This has the effect that the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1432986460
+GuiLabel
+\end_layout
+
+\end_inset
+
+ is only printed once before such a group.
+ By default, this is true for 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1432986491
+LaTeXType
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1432986583
+Environment
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1432986572
+Bib_Environment
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ and false for all other types.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -14613,7 +14717,7 @@ Provides
  above (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:General-text-class"
+reference "subsec:General-text-class"
 
 \end_inset
 
@@ -14925,7 +15029,7 @@ TextFont
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Font-description"
+reference "subsec:Font-description"
 
 \end_inset
 
@@ -15113,7 +15217,7 @@ float=0
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:I18n"
+name "subsec:I18n"
 
 \end_inset
 
@@ -15526,7 +15630,7 @@ from 2.0.x to 2.1.y) will introduce new translations or corrections.
 Floats
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Floats"
+name "subsec:Floats"
 
 \end_inset
 
@@ -16539,7 +16643,7 @@ type
 Flex insets and InsetLayout
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Flex-insets-and"
+name "subsec:Flex-insets-and"
 
 \end_inset
 
@@ -17173,7 +17277,7 @@ EndArgument
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Paragraph-Styles"
+reference "subsec:Paragraph-Styles"
 
 \end_inset
 
@@ -17193,7 +17297,7 @@ BabelPreamble
  Preamble for changing language commands; see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:I18n"
+reference "subsec:I18n"
 
 \end_inset
 
@@ -17295,7 +17399,7 @@ status collapsed
 ] As with paragraph styles, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Paragraph-Styles"
+reference "subsec:Paragraph-Styles"
 
 \end_inset
 
@@ -17577,7 +17681,7 @@ and
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Font-description"
+reference "subsec:Font-description"
 
 \end_inset
 
@@ -17954,7 +18058,7 @@ status collapsed
 ] As with paragraph styles, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Paragraph-Styles"
+reference "subsec:Paragraph-Styles"
 
 \end_inset
 
@@ -18067,7 +18171,7 @@ status collapsed
 ] As with paragraph styles, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Paragraph-Styles"
+reference "subsec:Paragraph-Styles"
 
 \end_inset
 
@@ -18088,7 +18192,7 @@ LabelFont
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Font-description"
+reference "subsec:Font-description"
 
 \end_inset
 
@@ -18172,7 +18276,7 @@ LangPreamble
  Language dependent preamble; see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:I18n"
+reference "subsec:I18n"
 
 \end_inset
 
@@ -18861,7 +18965,7 @@ status collapsed
 ] As with paragraph styles, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Paragraph-Styles"
+reference "subsec:Paragraph-Styles"
 
 \end_inset
 
@@ -18908,7 +19012,7 @@ status collapsed
 ] As with paragraph styles, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Paragraph-Styles"
+reference "subsec:Paragraph-Styles"
 
 \end_inset
 
@@ -18929,7 +19033,7 @@ Preamble
  As with paragraph styles, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Paragraph-Styles"
+reference "subsec:Paragraph-Styles"
 
 \end_inset
 
@@ -18983,7 +19087,7 @@ string
 ] As with paragraph styles, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Paragraph-Styles"
+reference "subsec:Paragraph-Styles"
 
 \end_inset
 
@@ -19170,7 +19274,7 @@ status collapsed
 Counters
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Counters"
+name "subsec:Counters"
 
 \end_inset
 
@@ -19731,7 +19835,7 @@ section
 Font description
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Font-description"
+name "subsec:Font-description"
 
 \end_inset
 
@@ -20289,7 +20393,7 @@ giant
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Citation-format-description"
+name "subsec:Citation-format-description"
 
 \end_inset
 
@@ -20821,7 +20925,7 @@ AddToHTMLPreamble
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:General-text-class"
+reference "subsec:General-text-class"
 
 \end_inset
 
@@ -20831,7 +20935,7 @@ reference "sub:General-text-class"
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Paragraph-Style-XHTML"
+name "subsec:Paragraph-Style-XHTML"
 
 \end_inset
 
@@ -22384,7 +22488,7 @@ floattype
  (see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Floats"
+reference "subsec:Floats"
 
 \end_inset
 
@@ -22487,7 +22591,7 @@ CiteFormat
  See 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Citation-format-description"
+reference "subsec:Citation-format-description"
 
 \end_inset
 
@@ -22565,7 +22669,7 @@ Font
  declaration (see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Font-description"
+reference "subsec:Font-description"
 
 \end_inset
 
