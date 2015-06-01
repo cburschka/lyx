@@ -107,7 +107,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 2.1.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-14 22:21-0400\n"
+"POT-Creation-Date: 2015-06-01 17:51-0400\n"
 "PO-Revision-Date: 2014-04-11 19:41+0800\n"
 "Last-Translator: Mingyi Wu <mingi.wu@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -296,8 +296,8 @@ msgid "Remove the selected index"
 msgstr "移除選取的索引"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:165
-#: src/frontends/qt4/ui/BranchesUi.ui:136 src/Buffer.cpp:4246
-#: src/Buffer.cpp:4259
+#: src/frontends/qt4/ui/BranchesUi.ui:136 src/Buffer.cpp:4250
+#: src/Buffer.cpp:4263
 msgid "&Remove"
 msgstr "移除(&R)"
 
@@ -340,8 +340,8 @@ msgstr "全部加入(&l)"
 #: src/frontends/qt4/ui/DocumentUi.ui:84
 #: src/frontends/qt4/ui/CitationUi.ui:220
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1282
-#: src/Buffer.cpp:1351 src/Buffer.cpp:2718 src/Buffer.cpp:4220
-#: src/Buffer.cpp:4284 src/LyXVC.cpp:107 src/LyXVC.cpp:297
+#: src/Buffer.cpp:1355 src/Buffer.cpp:2722 src/Buffer.cpp:4224
+#: src/Buffer.cpp:4288 src/LyXVC.cpp:107 src/LyXVC.cpp:297
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:246
 #: src/frontends/qt4/GuiDocument.cpp:2106
@@ -3413,18 +3413,27 @@ msgid "&minutes"
 msgstr "分鐘(&m)"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
-msgid "&Save documents compressed by default"
+msgid ""
+"If this is checked, new documents will be saved in a compressed binary-"
+"format by default.\n"
+"Existing documents will still be saved in their current state (compressed or "
+"uncompressed)."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
+#, fuzzy
+msgid "&Save new documents compressed by default"
 msgstr "預設文件以壓縮方式儲存(&S)"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:158
 msgid "Windows && work area"
 msgstr "視窗 && 工作區"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:164
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:167
 msgid "Open documents in &tabs"
 msgstr "以標籤頁方式開啟新文件(&t)"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:171
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:174
 msgid ""
 "Whether to open documents in an already running instance of LyX.\n"
 "(Set the LyXServer pipe path and restart LyX to enable this feature)"
@@ -3432,31 +3441,31 @@ msgstr ""
 "是否要在一個運行中的 LyX 程式, 開啟文件.\n"
 "(檢查 LyXServer 管線路徑設定, 並且重啟 LyX 以使此功能生效)"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:174
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:177
 msgid "Use s&ingle instance"
 msgstr "使用單一實例 (s&ingle instance) (亦即一個檔案只能開啟一次)"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:181
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
 msgid "Whether to place close button on each tab or only one in the top left."
 msgstr "設定是否讓所有標籤頁, 共用同一個關閉按鈕, 或是有各自的關閉按鈕."
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:187
 msgid "Displa&y single close-tab button"
 msgstr "只顯示一個標籤頁「關閉」按鈕(&y)"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:193
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:196
 msgid "Closing last &view:"
 msgstr "關閉目前檢視(&v):"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:204
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:207
 msgid "Closes document"
 msgstr "關閉文件"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:209
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:212
 msgid "Hides document"
 msgstr "隱藏文件"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:214
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:217
 msgid "Ask the user"
 msgstr "詢問使用者"
 
@@ -5372,8 +5381,8 @@ msgstr "Standard in Title"
 #: lib/layouts/ijmpd.layout:134 lib/layouts/ijmpd.layout:153
 #: lib/layouts/ijmpd.layout:221 lib/layouts/ijmpd.layout:233
 #: lib/layouts/IEEEtran-TransMag.layout:22
-#: lib/layouts/IEEEtran-TransMag.layout:42 lib/layouts/broadway.layout:188
-#: lib/layouts/broadway.layout:203 lib/layouts/IEEEtran.layout:70
+#: lib/layouts/IEEEtran-TransMag.layout:42 lib/layouts/broadway.layout:190
+#: lib/layouts/broadway.layout:205 lib/layouts/IEEEtran.layout:70
 #: lib/layouts/IEEEtran.layout:121 lib/layouts/IEEEtran.layout:221
 #: lib/layouts/IEEEtran.layout:261 lib/layouts/IEEEtran.layout:325
 #: lib/layouts/agutex.layout:60 lib/layouts/agutex.layout:77
@@ -5501,7 +5510,7 @@ msgstr "關鍵字:"
 #: lib/layouts/llncs.layout:183 lib/layouts/apa.layout:119
 #: lib/layouts/aastex.layout:141 lib/layouts/kluwer.layout:168
 #: lib/layouts/achemso.layout:82 lib/layouts/cl2emult.layout:60
-#: lib/layouts/ijmpd.layout:131 lib/layouts/broadway.layout:202
+#: lib/layouts/ijmpd.layout:131 lib/layouts/broadway.layout:204
 #: lib/layouts/IEEEtran.layout:118 lib/layouts/foils.layout:135
 #: lib/layouts/jasatex.layout:85 lib/layouts/ltugboat.layout:160
 #: lib/layouts/tufte-book.layout:39 lib/layouts/powerdot.layout:67
@@ -5528,7 +5537,7 @@ msgstr "Author 作者"
 #: lib/layouts/apa.layout:41 lib/layouts/aastex.layout:129
 #: lib/layouts/kluwer.layout:113 lib/layouts/achemso.layout:56
 #: lib/layouts/cl2emult.layout:41 lib/layouts/ijmpd.layout:112
-#: lib/layouts/broadway.layout:187 lib/layouts/IEEEtran.layout:66
+#: lib/layouts/broadway.layout:189 lib/layouts/IEEEtran.layout:66
 #: lib/layouts/agutex.layout:56 lib/layouts/foils.layout:127
 #: lib/layouts/jasatex.layout:60 lib/layouts/ltugboat.layout:140
 #: lib/layouts/revtex4-1.layout:192 lib/layouts/tufte-book.layout:35
@@ -5696,7 +5705,7 @@ msgstr "Int. Journal of Modern Physics C"
 #: lib/layouts/apa.layout:25 lib/layouts/dtk.layout:32
 #: lib/layouts/aastex.layout:55 lib/layouts/kluwer.layout:34
 #: lib/layouts/achemso.layout:33 lib/layouts/cl2emult.layout:130
-#: lib/layouts/ijmpd.layout:28 lib/layouts/broadway.layout:174
+#: lib/layouts/ijmpd.layout:28 lib/layouts/broadway.layout:176
 #: lib/layouts/IEEEtran.layout:35 lib/layouts/agutex.layout:32
 #: lib/layouts/foils.layout:31 lib/layouts/jasatex.layout:36
 #: lib/layouts/g-brief2.layout:31 lib/layouts/ltugboat.layout:31
@@ -5730,7 +5739,7 @@ msgstr "標準"
 #: lib/layouts/apa.layout:26 lib/layouts/dtk.layout:33
 #: lib/layouts/aastex.layout:56 lib/layouts/kluwer.layout:35
 #: lib/layouts/achemso.layout:34 lib/layouts/cl2emult.layout:131
-#: lib/layouts/ijmpd.layout:29 lib/layouts/broadway.layout:175
+#: lib/layouts/ijmpd.layout:29 lib/layouts/broadway.layout:177
 #: lib/layouts/IEEEtran.layout:36 lib/layouts/agutex.layout:33
 #: lib/layouts/foils.layout:32 lib/layouts/jasatex.layout:37
 #: lib/layouts/g-brief2.layout:32 lib/layouts/ltugboat.layout:32
@@ -6319,8 +6328,8 @@ msgstr "地點:"
 #: lib/layouts/scrclass.inc:198 lib/layouts/agu_stdtitle.inc:239
 #: lib/layouts/stdtitle.inc:54 lib/layouts/amsdefs.inc:70
 #: lib/layouts/db_stdtitle.inc:35 lib/layouts/svcommon.inc:369
-#: lib/ui/stdmenus.inc:387 lib/external_templates:343
-#: lib/external_templates:344 lib/external_templates:348
+#: lib/ui/stdmenus.inc:387 lib/external_templates:347
+#: lib/external_templates:348 lib/external_templates:352
 msgid "Date"
 msgstr "日期"
 
@@ -7186,7 +7195,7 @@ msgid "Verse"
 msgstr "Verse 韻文"
 
 #: lib/layouts/egs.layout:239 lib/layouts/siamltex.layout:306
-#: lib/layouts/hollywood.layout:307 lib/layouts/broadway.layout:216
+#: lib/layouts/hollywood.layout:307 lib/layouts/broadway.layout:218
 #: lib/layouts/lyxmacros.inc:65
 msgid "Right Address"
 msgstr "Right Address 右側住址"
@@ -9475,7 +9484,7 @@ msgstr "好萊塢(Hollywood)"
 msgid "Scripts"
 msgstr "劇本"
 
-#: lib/layouts/hollywood.layout:41 lib/layouts/broadway.layout:32
+#: lib/layouts/hollywood.layout:41 lib/layouts/broadway.layout:34
 msgid "Dialogue"
 msgstr "Dialogue 對話"
 
@@ -9499,19 +9508,19 @@ msgstr "INT."
 msgid "EXT."
 msgstr "EXT."
 
-#: lib/layouts/hollywood.layout:145 lib/layouts/broadway.layout:122
+#: lib/layouts/hollywood.layout:145 lib/layouts/broadway.layout:124
 msgid "Speaker"
 msgstr "Speaker 說話者"
 
-#: lib/layouts/hollywood.layout:160 lib/layouts/broadway.layout:135
+#: lib/layouts/hollywood.layout:160 lib/layouts/broadway.layout:137
 msgid "Parenthetical"
 msgstr "Parenthetical 包入小括號"
 
-#: lib/layouts/hollywood.layout:171 lib/layouts/broadway.layout:146
+#: lib/layouts/hollywood.layout:171 lib/layouts/broadway.layout:148
 msgid "("
 msgstr "("
 
-#: lib/layouts/hollywood.layout:173 lib/layouts/broadway.layout:148
+#: lib/layouts/hollywood.layout:173 lib/layouts/broadway.layout:150
 msgid ")"
 msgstr ")"
 
@@ -9523,7 +9532,7 @@ msgstr "Continuing 繼續"
 msgid "(continuing)"
 msgstr "(繼續)"
 
-#: lib/layouts/hollywood.layout:209 lib/layouts/broadway.layout:43
+#: lib/layouts/hollywood.layout:209 lib/layouts/broadway.layout:45
 msgid "Narrative"
 msgstr "Narrative 敘述"
 
@@ -10408,31 +10417,31 @@ msgstr "American Geophysical Union (AGUPLUS JGR)"
 msgid "Broadway"
 msgstr "百老匯(Broadway)"
 
-#: lib/layouts/broadway.layout:59
+#: lib/layouts/broadway.layout:61
 msgid "ACT"
 msgstr "ACT"
 
-#: lib/layouts/broadway.layout:71
+#: lib/layouts/broadway.layout:73
 msgid "ACT \\arabic{act}"
 msgstr "ACT \\arabic{act}"
 
-#: lib/layouts/broadway.layout:75 lib/layouts/broadway.layout:102
+#: lib/layouts/broadway.layout:77 lib/layouts/broadway.layout:104
 msgid "SCENE"
 msgstr "SCENE"
 
-#: lib/layouts/broadway.layout:87
+#: lib/layouts/broadway.layout:89
 msgid "SCENE \\arabic{scene}"
 msgstr "SCENE \\arabic{scene}"
 
-#: lib/layouts/broadway.layout:91
+#: lib/layouts/broadway.layout:93
 msgid "SCENE*"
 msgstr "SCENE*"
 
-#: lib/layouts/broadway.layout:106 lib/layouts/broadway.layout:117
+#: lib/layouts/broadway.layout:108 lib/layouts/broadway.layout:119
 msgid "AT RISE:"
 msgstr "AT RISE:"
 
-#: lib/layouts/broadway.layout:159 lib/layouts/broadway.layout:169
+#: lib/layouts/broadway.layout:161 lib/layouts/broadway.layout:171
 msgid "CURTAIN"
 msgstr "CURTAIN 幕"
 
@@ -13425,7 +13434,7 @@ msgstr ""
 "參考範例檔: lilypond.lyx."
 
 #: lib/layouts/lilypond.module:13 lib/layouts/lilypond.module:14
-#: lib/external_templates:251
+#: lib/external_templates:255
 msgid "LilyPond"
 msgstr "LilyPond"
 
@@ -15562,12 +15571,12 @@ msgid "Redo|R"
 msgstr "重做(R)|R"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1277 src/mathed/InsetMathNest.cpp:598
+#: src/Text3.cpp:1278 src/mathed/InsetMathNest.cpp:598
 msgid "Cut"
 msgstr "剪下"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1282 src/mathed/InsetMathNest.cpp:607
+#: src/Text3.cpp:1283 src/mathed/InsetMathNest.cpp:607
 msgid "Copy"
 msgstr "複製"
 
@@ -16502,7 +16511,8 @@ msgid "LaTeX Log|L"
 msgstr "LaTeX 記錄檔|L"
 
 #: lib/ui/stdmenus.inc:517
-msgid "Start Appendix Here|A"
+#, fuzzy
+msgid "Start Appendix Here|x"
 msgstr "劃定游標以下為附錄(A)|A"
 
 #: lib/ui/stdmenus.inc:521
@@ -16514,7 +16524,8 @@ msgid "Update Master Document|a"
 msgstr "更新主文件(a)|a"
 
 #: lib/ui/stdmenus.inc:524
-msgid "Compressed|m"
+#, fuzzy
+msgid "Compressed|o"
 msgstr "壓縮檔案(m)|m"
 
 #: lib/ui/stdmenus.inc:525 lib/ui/stdcontext.inc:98 lib/ui/stdcontext.inc:110
@@ -21811,15 +21822,15 @@ msgstr "Global rise"
 msgid "Global fall"
 msgstr "Global fall"
 
-#: lib/external_templates:36
+#: lib/external_templates:40
 msgid "GnumericSpreadsheet"
 msgstr "Gnumeric 試算表"
 
-#: lib/external_templates:37 lib/external_templates:44
+#: lib/external_templates:41 lib/external_templates:48
 msgid "Spreadsheet"
 msgstr "試算表"
 
-#: lib/external_templates:39
+#: lib/external_templates:43
 msgid ""
 "A spreadsheet made with Gnumeric, LibreOffice, OpenOffice or Excel.\n"
 "It imports as a long table, so any length\n"
@@ -21834,39 +21845,39 @@ msgstr ""
 "電腦內都需要安裝 gnumeric 的軟體以進行轉換\n"
 "註: 試算表內的中文字, 可能無法正常轉換!\n"
 
-#: lib/external_templates:76
+#: lib/external_templates:80
 msgid "RasterImage"
 msgstr "RasterImage"
 
-#: lib/external_templates:79 lib/external_templates:85
+#: lib/external_templates:83 lib/external_templates:89
 msgid "Raster image"
 msgstr "Raster image"
 
-#: lib/external_templates:84
+#: lib/external_templates:88
 msgid "A bitmap file.\n"
 msgstr "點陣圖檔案. \n"
 
-#: lib/external_templates:148
+#: lib/external_templates:152
 msgid "XFig"
 msgstr "XFig"
 
-#: lib/external_templates:149 lib/external_templates:152
+#: lib/external_templates:153 lib/external_templates:156
 msgid "Xfig figure"
 msgstr "Xfig 圖片"
 
-#: lib/external_templates:151
+#: lib/external_templates:155
 msgid "An Xfig figure.\n"
 msgstr "一張 Xfig 圖片\n"
 
-#: lib/external_templates:201
+#: lib/external_templates:205
 msgid "ChessDiagram"
 msgstr "西洋棋圖形"
 
-#: lib/external_templates:202 lib/external_templates:221
+#: lib/external_templates:206 lib/external_templates:225
 msgid "Chess diagram"
 msgstr "西洋棋圖形"
 
-#: lib/external_templates:204
+#: lib/external_templates:208
 msgid ""
 "A chess position diagram.\n"
 "This template will use XBoard to edit the position.\n"
@@ -21904,11 +21915,11 @@ msgstr ""
 "的地方, 而您將需要\n"
 "從 CTAN 安裝 skak 套件. \n"
 
-#: lib/external_templates:252 lib/external_templates:258
+#: lib/external_templates:256 lib/external_templates:262
 msgid "Lilypond typeset music"
 msgstr "Lilypond 排版音樂"
 
-#: lib/external_templates:254
+#: lib/external_templates:258
 msgid ""
 "Sheet music typeset by GNU LilyPond,\n"
 "converted to .pdf or .eps for inclusion\n"
@@ -21920,15 +21931,15 @@ msgstr ""
 "使用 .eps 需要至少 lilypond 2.6\n"
 "使用 .pdf 需要至少 lilypond 2.9\n"
 
-#: lib/external_templates:300
+#: lib/external_templates:304
 msgid "PDFPages"
 msgstr "PDF 頁面"
 
-#: lib/external_templates:301 lib/external_templates:315
+#: lib/external_templates:305 lib/external_templates:319
 msgid "PDF pages"
 msgstr "PDF 頁面"
 
-#: lib/external_templates:303
+#: lib/external_templates:307
 msgid ""
 "Includes PDF documents, using the 'pdfpages' package.\n"
 "To include multiple pages, use the 'pages'-option,\n"
@@ -21956,7 +21967,7 @@ msgstr ""
 "將會以原始尺寸插入文件.\n"
 "請參考 pdfpages 套件的說明文件以獲取更多資訊.\n"
 
-#: lib/external_templates:346
+#: lib/external_templates:350
 msgid ""
 "Today's date.\n"
 "Read 'info date' for more information.\n"
@@ -21964,15 +21975,15 @@ msgstr ""
 "今天日期. \n"
 "讀取「info date」以獲得更多資訊. \n"
 
-#: lib/external_templates:375
+#: lib/external_templates:379
 msgid "Dia"
 msgstr "Dia"
 
-#: lib/external_templates:376 lib/external_templates:379
+#: lib/external_templates:380 lib/external_templates:383
 msgid "Dia diagram"
 msgstr "Dia 流程圖"
 
-#: lib/external_templates:378
+#: lib/external_templates:382
 msgid "Dia diagram.\n"
 msgstr "Dia 流程圖.\n"
 
@@ -22583,7 +22594,7 @@ msgid ""
 "it."
 msgstr "%1$s 是來自新版的 LyX, 而且 lyx2lyx 命令稿無法轉換它."
 
-#: src/Buffer.cpp:1269 src/Buffer.cpp:4230 src/Buffer.cpp:4293
+#: src/Buffer.cpp:1269 src/Buffer.cpp:4234 src/Buffer.cpp:4297
 msgid "File is read-only"
 msgstr "檔案為唯讀檔"
 
@@ -22603,19 +22614,19 @@ msgstr "文件 %1$s 已經由外部修改過. 您確定要覆寫該檔案嗎?"
 msgid "Overwrite modified file?"
 msgstr "覆寫已修改檔案?"
 
-#: src/Buffer.cpp:1282 src/Buffer.cpp:1351 src/Buffer.cpp:2718
+#: src/Buffer.cpp:1282 src/Buffer.cpp:1355 src/Buffer.cpp:2722
 #: src/Exporter.cpp:50 src/frontends/qt4/GuiClipboard.cpp:246
 #: src/frontends/qt4/GuiView.cpp:2151 src/frontends/qt4/GuiView.cpp:2338
 #: src/frontends/qt4/GuiView.cpp:2452
 msgid "&Overwrite"
 msgstr "覆寫(&O)"
 
-#: src/Buffer.cpp:1324 src/Buffer.cpp:1366
+#: src/Buffer.cpp:1328 src/Buffer.cpp:1370
 #, fuzzy
 msgid "Write failure"
 msgstr "chktex 失敗"
 
-#: src/Buffer.cpp:1325
+#: src/Buffer.cpp:1329
 #, c-format
 msgid ""
 "Cannot find temporary filename for:\n"
@@ -22623,11 +22634,11 @@ msgid ""
 "Even %2$s exists!"
 msgstr ""
 
-#: src/Buffer.cpp:1346
+#: src/Buffer.cpp:1350
 msgid "Backup failure"
 msgstr "備份失敗"
 
-#: src/Buffer.cpp:1347
+#: src/Buffer.cpp:1351
 #, c-format
 msgid ""
 "Cannot create backup file:\n"
@@ -22636,7 +22647,7 @@ msgid ""
 "This will over-write the original file."
 msgstr ""
 
-#: src/Buffer.cpp:1367
+#: src/Buffer.cpp:1371
 #, c-format
 msgid ""
 "Cannot restore original file to:\n"
@@ -22645,58 +22656,58 @@ msgid ""
 "  %2$s."
 msgstr ""
 
-#: src/Buffer.cpp:1384
+#: src/Buffer.cpp:1388
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "正在儲存文件 %1$s..."
 
-#: src/Buffer.cpp:1399
+#: src/Buffer.cpp:1403
 msgid " could not write file!"
 msgstr "無法寫入檔案!"
 
-#: src/Buffer.cpp:1407
+#: src/Buffer.cpp:1411
 msgid " done."
 msgstr " 完成."
 
-#: src/Buffer.cpp:1422
+#: src/Buffer.cpp:1426
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: 試圖儲存文件 %1$s\n"
 
-#: src/Buffer.cpp:1432 src/Buffer.cpp:1445 src/Buffer.cpp:1459
+#: src/Buffer.cpp:1436 src/Buffer.cpp:1449 src/Buffer.cpp:1463
 #, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr "儲存到 %1$s. 呼!\n"
 
-#: src/Buffer.cpp:1435
+#: src/Buffer.cpp:1439
 msgid "Save failed! Trying again...\n"
 msgstr "儲存失敗! 再試一次...\n"
 
-#: src/Buffer.cpp:1449
+#: src/Buffer.cpp:1453
 msgid "Save failed! Trying yet again...\n"
 msgstr "儲存失敗! 並再試一次...\n"
 
-#: src/Buffer.cpp:1463
+#: src/Buffer.cpp:1467
 msgid "Save failed! Bummer. Document is lost."
 msgstr "儲存失敗! 倒霉. 失去文件了."
 
-#: src/Buffer.cpp:1552
+#: src/Buffer.cpp:1556
 msgid "Iconv software exception Detected"
 msgstr "Iconv 程式偵測到例外狀況"
 
-#: src/Buffer.cpp:1552
+#: src/Buffer.cpp:1556
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr "請確認支援您的編碼 (%1$s) 的軟體都已經適當地安裝了"
 
-#: src/Buffer.cpp:1581
+#: src/Buffer.cpp:1585
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr "無法找到 LaTeX 命令字元 '%1$s' (code point %2$s)"
 
-#: src/Buffer.cpp:1584
+#: src/Buffer.cpp:1588
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -22705,19 +22716,19 @@ msgstr ""
 "您的文件中某些字元, 可能無法以所選編碼來表現. \n"
 "變更文件編碼為 utf8 可能會有幫助."
 
-#: src/Buffer.cpp:1591
+#: src/Buffer.cpp:1595
 msgid "iconv conversion failed"
 msgstr "iconv 轉換失敗"
 
-#: src/Buffer.cpp:1596
+#: src/Buffer.cpp:1600
 msgid "conversion failed"
 msgstr "轉換失敗"
 
-#: src/Buffer.cpp:1704
+#: src/Buffer.cpp:1708
 msgid "Uncodable character in file path"
 msgstr "檔案路徑中有無法解析的字元"
 
-#: src/Buffer.cpp:1706
+#: src/Buffer.cpp:1710
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -22739,57 +22750,57 @@ msgstr ""
 "為了防止出錯, 請選擇適當的文件編碼 (例如 utf8)\n"
 "或變更文件的路徑名稱."
 
-#: src/Buffer.cpp:2059
+#: src/Buffer.cpp:2063
 msgid "Running chktex..."
 msgstr "chktex 執行中..."
 
-#: src/Buffer.cpp:2073
+#: src/Buffer.cpp:2077
 msgid "chktex failure"
 msgstr "chktex 失敗"
 
-#: src/Buffer.cpp:2074
+#: src/Buffer.cpp:2078
 msgid "Could not run chktex successfully."
 msgstr "無法成功運行 chktex."
 
-#: src/Buffer.cpp:2366
+#: src/Buffer.cpp:2370
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "不知如何匯出格式: %1$s"
 
-#: src/Buffer.cpp:2446
+#: src/Buffer.cpp:2450
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "匯出格式: %1$s 發生錯誤."
 
-#: src/Buffer.cpp:2455
+#: src/Buffer.cpp:2459
 msgid "Error generating literate programming code."
 msgstr "產生 文學(literate)程式碼 時發生錯誤."
 
-#: src/Buffer.cpp:2534
+#: src/Buffer.cpp:2538
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "分支 \"%1$s\" 不存在."
 
-#: src/Buffer.cpp:2569
+#: src/Buffer.cpp:2573
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "分支 \"%1$s\" 已存在."
 
-#: src/Buffer.cpp:2635
+#: src/Buffer.cpp:2639
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "無法解析「%1$s」"
 
-#: src/Buffer.cpp:2642
+#: src/Buffer.cpp:2646
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "無法辨識的目標「%1$s」"
 
-#: src/Buffer.cpp:2649
+#: src/Buffer.cpp:2653
 msgid "Error exporting to DVI."
 msgstr "匯出 DVI 發生錯誤."
 
-#: src/Buffer.cpp:2714 src/Exporter.cpp:45
+#: src/Buffer.cpp:2718 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -22800,85 +22811,85 @@ msgstr ""
 "\n"
 "您要覆寫該檔案嗎?"
 
-#: src/Buffer.cpp:2717 src/Exporter.cpp:48
+#: src/Buffer.cpp:2721 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "覆寫檔案?"
 
-#: src/Buffer.cpp:2734
+#: src/Buffer.cpp:2738
 msgid "Error running external commands."
 msgstr "執行外部命令時發生錯誤."
 
-#: src/Buffer.cpp:3556
+#: src/Buffer.cpp:3560
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "預覽段落 %1$d 原始碼"
 
-#: src/Buffer.cpp:3560
+#: src/Buffer.cpp:3564
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "預覽從段落 %1$s 到 %2$s 的原始碼"
 
-#: src/Buffer.cpp:3614
+#: src/Buffer.cpp:3618
 msgid "Preview source code"
 msgstr "預覽原始碼"
 
-#: src/Buffer.cpp:3616
+#: src/Buffer.cpp:3620
 msgid "Preview preamble"
 msgstr "預覽前文"
 
-#: src/Buffer.cpp:3618
+#: src/Buffer.cpp:3622
 msgid "Preview body"
 msgstr "預覽內文"
 
-#: src/Buffer.cpp:3633
+#: src/Buffer.cpp:3637
 msgid "Plain text does not have a preamble."
 msgstr "純文字沒有前文."
 
-#: src/Buffer.cpp:3736
+#: src/Buffer.cpp:3740
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "自動儲存 %1$s"
 
-#: src/Buffer.cpp:3790
+#: src/Buffer.cpp:3794
 msgid "Autosave failed!"
 msgstr "自動儲存失敗!"
 
-#: src/Buffer.cpp:3851
+#: src/Buffer.cpp:3855
 msgid "Autosaving current document..."
 msgstr "自動儲存目前文件..."
 
-#: src/Buffer.cpp:3972
+#: src/Buffer.cpp:3976
 msgid "Couldn't export file"
 msgstr "無法匯出檔案"
 
-#: src/Buffer.cpp:3973
+#: src/Buffer.cpp:3977
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "沒有資訊用於匯出格式 %1$s."
 
-#: src/Buffer.cpp:4034 src/frontends/qt4/GuiView.cpp:2124
+#: src/Buffer.cpp:4038 src/frontends/qt4/GuiView.cpp:2124
 msgid "File name error"
 msgstr "檔案名稱錯誤"
 
-#: src/Buffer.cpp:4035
+#: src/Buffer.cpp:4039
 msgid "The directory path to the document cannot contain spaces."
 msgstr "到文件的目錄路徑不可包含空格."
 
-#: src/Buffer.cpp:4137 src/Buffer.cpp:4151 src/frontends/qt4/GuiView.cpp:548
+#: src/Buffer.cpp:4141 src/Buffer.cpp:4155 src/frontends/qt4/GuiView.cpp:548
 msgid "Document export cancelled."
 msgstr "文件匯出取消."
 
-#: src/Buffer.cpp:4154
+#: src/Buffer.cpp:4158
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "文件匯出為 %1$s 到檔案「%2$s」"
 
-#: src/Buffer.cpp:4161
+#: src/Buffer.cpp:4165
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "文件匯出為 %1$s"
 
-#: src/Buffer.cpp:4216
+#: src/Buffer.cpp:4220
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -22889,19 +22900,19 @@ msgstr ""
 "\n"
 "回復緊急儲存?"
 
-#: src/Buffer.cpp:4219
+#: src/Buffer.cpp:4223
 msgid "Load emergency save?"
 msgstr "載入緊急儲存?"
 
-#: src/Buffer.cpp:4220
+#: src/Buffer.cpp:4224
 msgid "&Recover"
 msgstr "回復(&R)"
 
-#: src/Buffer.cpp:4220
+#: src/Buffer.cpp:4224
 msgid "&Load Original"
 msgstr "載入原始檔(&L)"
 
-#: src/Buffer.cpp:4231
+#: src/Buffer.cpp:4235
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -22910,15 +22921,15 @@ msgstr ""
 "已經成功地載入緊急檔, 且原始檔案 %1$s 已標示為 唯讀檔. 請確保此檔案儲存為另外"
 "一個不同的檔案."
 
-#: src/Buffer.cpp:4238
+#: src/Buffer.cpp:4242
 msgid "Document was successfully recovered."
 msgstr "文件回復成功."
 
-#: src/Buffer.cpp:4240
+#: src/Buffer.cpp:4244
 msgid "Document was NOT successfully recovered."
 msgstr "文件「沒有」回復成功."
 
-#: src/Buffer.cpp:4241
+#: src/Buffer.cpp:4245
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -22927,27 +22938,27 @@ msgstr ""
 "現在移除緊急檔?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:4245 src/Buffer.cpp:4257
+#: src/Buffer.cpp:4249 src/Buffer.cpp:4261
 msgid "Delete emergency file?"
 msgstr "刪除緊急檔?"
 
-#: src/Buffer.cpp:4246 src/Buffer.cpp:4259
+#: src/Buffer.cpp:4250 src/Buffer.cpp:4263
 msgid "&Keep"
 msgstr "保留(&K)"
 
-#: src/Buffer.cpp:4250
+#: src/Buffer.cpp:4254
 msgid "Emergency file deleted"
 msgstr "緊急檔已刪除"
 
-#: src/Buffer.cpp:4251
+#: src/Buffer.cpp:4255
 msgid "Do not forget to save your file now!"
 msgstr "現在別忘了儲存您的檔案"
 
-#: src/Buffer.cpp:4258
+#: src/Buffer.cpp:4262
 msgid "Remove emergency file now?"
 msgstr "現在移除緊急檔?"
 
-#: src/Buffer.cpp:4281
+#: src/Buffer.cpp:4285
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -22958,19 +22969,19 @@ msgstr ""
 "\n"
 "載入備份做為替代?"
 
-#: src/Buffer.cpp:4283
+#: src/Buffer.cpp:4287
 msgid "Load backup?"
 msgstr "載入備份?"
 
-#: src/Buffer.cpp:4284
+#: src/Buffer.cpp:4288
 msgid "&Load backup"
 msgstr "載入備份(&L)"
 
-#: src/Buffer.cpp:4284
+#: src/Buffer.cpp:4288
 msgid "Load &original"
 msgstr "載入原始檔(&o)"
 
-#: src/Buffer.cpp:4294
+#: src/Buffer.cpp:4298
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -22979,16 +22990,16 @@ msgstr ""
 "已經成功地載入備份檔, 且原始檔案 %1$s 已標示為 唯讀檔. 請確保此檔案儲存為另外"
 "一個不同的檔案."
 
-#: src/Buffer.cpp:4634 src/insets/InsetCaption.cpp:376
+#: src/Buffer.cpp:4638 src/insets/InsetCaption.cpp:376
 msgid "Senseless!!! "
 msgstr "無意義!!! "
 
-#: src/Buffer.cpp:4854
+#: src/Buffer.cpp:4858
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "文件 %1$s 已重新載入."
 
-#: src/Buffer.cpp:4857
+#: src/Buffer.cpp:4861
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "無法讀取文件 %1$s."
@@ -23084,7 +23095,7 @@ msgstr ""
 msgid "Document class not available"
 msgstr "文件類別無法使用"
 
-#: src/BufferParams.cpp:1817 src/insets/InsetCommandParams.cpp:406
+#: src/BufferParams.cpp:1817 src/insets/InsetCommandParams.cpp:408
 #: src/insets/InsetHyperlink.cpp:197
 msgid "Uncodable characters"
 msgstr "無法編碼的字元"
@@ -25046,15 +25057,15 @@ msgstr ", 字元: 0x"
 msgid ", Boundary: "
 msgstr ", 邊界: "
 
-#: src/Text2.cpp:408
+#: src/Text2.cpp:409
 msgid "No font change defined."
 msgstr "沒有字型變更定義."
 
-#: src/Text2.cpp:448
+#: src/Text2.cpp:449
 msgid "Nothing to index!"
 msgstr "沒有任何東西可索引!"
 
-#: src/Text2.cpp:450
+#: src/Text2.cpp:451
 msgid "Cannot index more than one paragraph!"
 msgstr "無法索引一個段落以上!"
 
@@ -25074,23 +25085,23 @@ msgstr "已經在正規表示式模式了"
 msgid "Regexp editor mode"
 msgstr "正規表示 編輯器模式"
 
-#: src/Text3.cpp:1342
+#: src/Text3.cpp:1343
 msgid "Layout "
 msgstr "布局 "
 
-#: src/Text3.cpp:1343
+#: src/Text3.cpp:1344
 msgid " not known"
 msgstr " 未知"
 
-#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1636
+#: src/Text3.cpp:1934 src/frontends/qt4/GuiApplication.cpp:1636
 msgid "Missing argument"
 msgstr "缺少引數"
 
-#: src/Text3.cpp:2089 src/Text3.cpp:2101
+#: src/Text3.cpp:2090 src/Text3.cpp:2102
 msgid "Character set"
 msgstr "字元集"
 
-#: src/Text3.cpp:2319 src/Text3.cpp:2330
+#: src/Text3.cpp:2320 src/Text3.cpp:2331
 msgid "Paragraph layout set"
 msgstr "段落版面配置設定"
 
@@ -25351,13 +25362,13 @@ msgstr ""
 "要繼續?"
 
 #: src/VCBackend.cpp:1514 src/VCBackend.cpp:1518
-#: src/frontends/qt4/FindAndReplace.cpp:376
+#: src/frontends/qt4/FindAndReplace.cpp:378
 #: src/frontends/qt4/GuiSearch.cpp:140
 msgid "&Yes"
 msgstr "是(&Y)"
 
 #: src/VCBackend.cpp:1514 src/VCBackend.cpp:1518
-#: src/frontends/qt4/FindAndReplace.cpp:376
+#: src/frontends/qt4/FindAndReplace.cpp:378
 #: src/frontends/qt4/GuiSearch.cpp:140
 msgid "&No"
 msgstr "否(&N)"
@@ -25547,24 +25558,24 @@ msgstr ""
 msgid "Advanced search in progress (press ESC to cancel) . . ."
 msgstr "進階搜尋 正在進行中 (按 ESC 取消) . . ."
 
-#: src/frontends/qt4/FindAndReplace.cpp:357
+#: src/frontends/qt4/FindAndReplace.cpp:359
 msgid "Advanced search cancelled by user"
 msgstr "使用者取消 進階搜尋"
 
-#: src/frontends/qt4/FindAndReplace.cpp:375
+#: src/frontends/qt4/FindAndReplace.cpp:377
 #: src/frontends/qt4/GuiSearch.cpp:139
 msgid "Wrap search?"
 msgstr "自動從頭搜尋?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:422
+#: src/frontends/qt4/FindAndReplace.cpp:428
 msgid "Nothing to search"
 msgstr "沒輸入想搜尋的字串"
 
-#: src/frontends/qt4/FindAndReplace.cpp:470
+#: src/frontends/qt4/FindAndReplace.cpp:476
 msgid "No open document(s) in which to search"
 msgstr "無開啟的文件可供搜尋"
 
-#: src/frontends/qt4/FindAndReplace.cpp:576
+#: src/frontends/qt4/FindAndReplace.cpp:582
 msgid "Advanced Find and Replace"
 msgstr "尋找 & 置換(進階)"
 
@@ -28948,7 +28959,7 @@ msgstr "不明的參數名稱: "
 msgid "Missing \\end_inset at this point: "
 msgstr "此處缺少 \\end_inset : "
 
-#: src/insets/InsetCommandParams.cpp:407
+#: src/insets/InsetCommandParams.cpp:409
 #, c-format
 msgid ""
 "The following characters that are used in the inset %1$s are not\n"

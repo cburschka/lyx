@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2.0dev\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-14 22:21-0400\n"
+"POT-Creation-Date: 2015-06-01 17:51-0400\n"
 "PO-Revision-Date: 2015-01-22 00:46+0900\n"
 "Last-Translator: Koji Yokota <yokota@res.otaru-uc.ac.jp>\n"
 "Language-Team: Japanese <lyx-docs@lists.lyx.org>\n"
@@ -201,8 +201,8 @@ msgid "Remove the selected index"
 msgstr "選択した索引を削除"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:165
-#: src/frontends/qt4/ui/BranchesUi.ui:136 src/Buffer.cpp:4246
-#: src/Buffer.cpp:4259
+#: src/frontends/qt4/ui/BranchesUi.ui:136 src/Buffer.cpp:4250
+#: src/Buffer.cpp:4263
 msgid "&Remove"
 msgstr "削除(&R)"
 
@@ -245,8 +245,8 @@ msgstr "すべて追加(&L)"
 #: src/frontends/qt4/ui/DocumentUi.ui:84
 #: src/frontends/qt4/ui/CitationUi.ui:220
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1282
-#: src/Buffer.cpp:1351 src/Buffer.cpp:2718 src/Buffer.cpp:4220
-#: src/Buffer.cpp:4284 src/LyXVC.cpp:107 src/LyXVC.cpp:297
+#: src/Buffer.cpp:1355 src/Buffer.cpp:2722 src/Buffer.cpp:4224
+#: src/Buffer.cpp:4288 src/LyXVC.cpp:107 src/LyXVC.cpp:297
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:246
 #: src/frontends/qt4/GuiDocument.cpp:2106
@@ -3356,19 +3356,28 @@ msgid "&minutes"
 msgstr "分(&M)"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
-msgid "&Save documents compressed by default"
+msgid ""
+"If this is checked, new documents will be saved in a compressed binary-"
+"format by default.\n"
+"Existing documents will still be saved in their current state (compressed or "
+"uncompressed)."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
+#, fuzzy
+msgid "&Save new documents compressed by default"
 msgstr "既定で文書を圧縮保存(&S)"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:158
 #, fuzzy
 msgid "Windows && work area"
 msgstr "ウィンドウと作業領域"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:164
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:167
 msgid "Open documents in &tabs"
 msgstr "文書をタブ内に開く(&T)"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:171
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:174
 msgid ""
 "Whether to open documents in an already running instance of LyX.\n"
 "(Set the LyXServer pipe path and restart LyX to enable this feature)"
@@ -3376,31 +3385,31 @@ msgstr ""
 "文書を起動済みLyXインスタンスの中に開くか否か。\n"
 "(LyXServerパイプを指定し、LyXを再起動して機能を有効にしてください)"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:174
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:177
 msgid "Use s&ingle instance"
 msgstr "単独インスタンスを使用(&I)"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:181
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
 msgid "Whether to place close button on each tab or only one in the top left."
 msgstr "タブ閉ボタンを各タブに置くか、右上に一つだけ置くかを選択します。"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:187
 msgid "Displa&y single close-tab button"
 msgstr "タブ閉ボタンを単一表示(&Y)"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:193
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:196
 msgid "Closing last &view:"
 msgstr "最後の表示窓を閉じる際(&V):"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:204
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:207
 msgid "Closes document"
 msgstr "文書を閉じる"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:209
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:212
 msgid "Hides document"
 msgstr "文書を非表示にする"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:214
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:217
 msgid "Ask the user"
 msgstr "ユーザに問い合わせる"
 
@@ -5339,8 +5348,8 @@ msgstr "表題中の標準"
 #: lib/layouts/ijmpd.layout:134 lib/layouts/ijmpd.layout:153
 #: lib/layouts/ijmpd.layout:221 lib/layouts/ijmpd.layout:233
 #: lib/layouts/IEEEtran-TransMag.layout:22
-#: lib/layouts/IEEEtran-TransMag.layout:42 lib/layouts/broadway.layout:188
-#: lib/layouts/broadway.layout:203 lib/layouts/IEEEtran.layout:70
+#: lib/layouts/IEEEtran-TransMag.layout:42 lib/layouts/broadway.layout:190
+#: lib/layouts/broadway.layout:205 lib/layouts/IEEEtran.layout:70
 #: lib/layouts/IEEEtran.layout:121 lib/layouts/IEEEtran.layout:221
 #: lib/layouts/IEEEtran.layout:261 lib/layouts/IEEEtran.layout:325
 #: lib/layouts/agutex.layout:60 lib/layouts/agutex.layout:77
@@ -5468,7 +5477,7 @@ msgstr "キーワード:"
 #: lib/layouts/llncs.layout:183 lib/layouts/apa.layout:119
 #: lib/layouts/aastex.layout:141 lib/layouts/kluwer.layout:168
 #: lib/layouts/achemso.layout:82 lib/layouts/cl2emult.layout:60
-#: lib/layouts/ijmpd.layout:131 lib/layouts/broadway.layout:202
+#: lib/layouts/ijmpd.layout:131 lib/layouts/broadway.layout:204
 #: lib/layouts/IEEEtran.layout:118 lib/layouts/foils.layout:135
 #: lib/layouts/jasatex.layout:85 lib/layouts/ltugboat.layout:160
 #: lib/layouts/tufte-book.layout:39 lib/layouts/powerdot.layout:67
@@ -5495,7 +5504,7 @@ msgstr "著者"
 #: lib/layouts/apa.layout:41 lib/layouts/aastex.layout:129
 #: lib/layouts/kluwer.layout:113 lib/layouts/achemso.layout:56
 #: lib/layouts/cl2emult.layout:41 lib/layouts/ijmpd.layout:112
-#: lib/layouts/broadway.layout:187 lib/layouts/IEEEtran.layout:66
+#: lib/layouts/broadway.layout:189 lib/layouts/IEEEtran.layout:66
 #: lib/layouts/agutex.layout:56 lib/layouts/foils.layout:127
 #: lib/layouts/jasatex.layout:60 lib/layouts/ltugboat.layout:140
 #: lib/layouts/revtex4-1.layout:192 lib/layouts/tufte-book.layout:35
@@ -5663,7 +5672,7 @@ msgstr "Int. Journal of Modern Physics C"
 #: lib/layouts/apa.layout:25 lib/layouts/dtk.layout:32
 #: lib/layouts/aastex.layout:55 lib/layouts/kluwer.layout:34
 #: lib/layouts/achemso.layout:33 lib/layouts/cl2emult.layout:130
-#: lib/layouts/ijmpd.layout:28 lib/layouts/broadway.layout:174
+#: lib/layouts/ijmpd.layout:28 lib/layouts/broadway.layout:176
 #: lib/layouts/IEEEtran.layout:35 lib/layouts/agutex.layout:32
 #: lib/layouts/foils.layout:31 lib/layouts/jasatex.layout:36
 #: lib/layouts/g-brief2.layout:31 lib/layouts/ltugboat.layout:31
@@ -5697,7 +5706,7 @@ msgstr "標準"
 #: lib/layouts/apa.layout:26 lib/layouts/dtk.layout:33
 #: lib/layouts/aastex.layout:56 lib/layouts/kluwer.layout:35
 #: lib/layouts/achemso.layout:34 lib/layouts/cl2emult.layout:131
-#: lib/layouts/ijmpd.layout:29 lib/layouts/broadway.layout:175
+#: lib/layouts/ijmpd.layout:29 lib/layouts/broadway.layout:177
 #: lib/layouts/IEEEtran.layout:36 lib/layouts/agutex.layout:33
 #: lib/layouts/foils.layout:32 lib/layouts/jasatex.layout:37
 #: lib/layouts/g-brief2.layout:32 lib/layouts/ltugboat.layout:32
@@ -6288,8 +6297,8 @@ msgstr "場所(Place):"
 #: lib/layouts/scrclass.inc:198 lib/layouts/agu_stdtitle.inc:239
 #: lib/layouts/stdtitle.inc:54 lib/layouts/amsdefs.inc:70
 #: lib/layouts/db_stdtitle.inc:35 lib/layouts/svcommon.inc:369
-#: lib/ui/stdmenus.inc:387 lib/external_templates:343
-#: lib/external_templates:344 lib/external_templates:348
+#: lib/ui/stdmenus.inc:387 lib/external_templates:347
+#: lib/external_templates:348 lib/external_templates:352
 msgid "Date"
 msgstr "日付"
 
@@ -7155,7 +7164,7 @@ msgid "Verse"
 msgstr "詩句"
 
 #: lib/layouts/egs.layout:239 lib/layouts/siamltex.layout:306
-#: lib/layouts/hollywood.layout:307 lib/layouts/broadway.layout:216
+#: lib/layouts/hollywood.layout:307 lib/layouts/broadway.layout:218
 #: lib/layouts/lyxmacros.inc:65
 msgid "Right Address"
 msgstr "右寄せ住所"
@@ -9436,7 +9445,7 @@ msgstr "Hollywood"
 msgid "Scripts"
 msgstr "7. 脚本"
 
-#: lib/layouts/hollywood.layout:41 lib/layouts/broadway.layout:32
+#: lib/layouts/hollywood.layout:41 lib/layouts/broadway.layout:34
 msgid "Dialogue"
 msgstr "対話"
 
@@ -9460,19 +9469,19 @@ msgstr "屋内"
 msgid "EXT."
 msgstr "屋外"
 
-#: lib/layouts/hollywood.layout:145 lib/layouts/broadway.layout:122
+#: lib/layouts/hollywood.layout:145 lib/layouts/broadway.layout:124
 msgid "Speaker"
 msgstr "話者"
 
-#: lib/layouts/hollywood.layout:160 lib/layouts/broadway.layout:135
+#: lib/layouts/hollywood.layout:160 lib/layouts/broadway.layout:137
 msgid "Parenthetical"
 msgstr "括弧付き"
 
-#: lib/layouts/hollywood.layout:171 lib/layouts/broadway.layout:146
+#: lib/layouts/hollywood.layout:171 lib/layouts/broadway.layout:148
 msgid "("
 msgstr "("
 
-#: lib/layouts/hollywood.layout:173 lib/layouts/broadway.layout:148
+#: lib/layouts/hollywood.layout:173 lib/layouts/broadway.layout:150
 msgid ")"
 msgstr ")"
 
@@ -9484,7 +9493,7 @@ msgstr "引き続き"
 msgid "(continuing)"
 msgstr "（引き続き）"
 
-#: lib/layouts/hollywood.layout:209 lib/layouts/broadway.layout:43
+#: lib/layouts/hollywood.layout:209 lib/layouts/broadway.layout:45
 msgid "Narrative"
 msgstr "ナレーション"
 
@@ -10367,31 +10376,31 @@ msgstr "American Geophysical Union (AGUPLUS JGR)"
 msgid "Broadway"
 msgstr "Broadway"
 
-#: lib/layouts/broadway.layout:59
+#: lib/layouts/broadway.layout:61
 msgid "ACT"
 msgstr "幕"
 
-#: lib/layouts/broadway.layout:71
+#: lib/layouts/broadway.layout:73
 msgid "ACT \\arabic{act}"
 msgstr "第\\arabic{act}幕"
 
-#: lib/layouts/broadway.layout:75 lib/layouts/broadway.layout:102
+#: lib/layouts/broadway.layout:77 lib/layouts/broadway.layout:104
 msgid "SCENE"
 msgstr "場面"
 
-#: lib/layouts/broadway.layout:87
+#: lib/layouts/broadway.layout:89
 msgid "SCENE \\arabic{scene}"
 msgstr "第\\arabic{scene}場"
 
-#: lib/layouts/broadway.layout:91
+#: lib/layouts/broadway.layout:93
 msgid "SCENE*"
 msgstr "場面*"
 
-#: lib/layouts/broadway.layout:106 lib/layouts/broadway.layout:117
+#: lib/layouts/broadway.layout:108 lib/layouts/broadway.layout:119
 msgid "AT RISE:"
 msgstr "幕間に:"
 
-#: lib/layouts/broadway.layout:159 lib/layouts/broadway.layout:169
+#: lib/layouts/broadway.layout:161 lib/layouts/broadway.layout:171
 msgid "CURTAIN"
 msgstr "カーテン"
 
@@ -13368,7 +13377,7 @@ msgstr ""
 "これは出力時に処理されます。例示ファイルlilypond.lyxを参照してください。"
 
 #: lib/layouts/lilypond.module:13 lib/layouts/lilypond.module:14
-#: lib/external_templates:251
+#: lib/external_templates:255
 msgid "LilyPond"
 msgstr "LilyPond"
 
@@ -15494,12 +15503,12 @@ msgid "Redo|R"
 msgstr "やり直す(R)|R"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1277 src/mathed/InsetMathNest.cpp:598
+#: src/Text3.cpp:1278 src/mathed/InsetMathNest.cpp:598
 msgid "Cut"
 msgstr "切り取り"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1282 src/mathed/InsetMathNest.cpp:607
+#: src/Text3.cpp:1283 src/mathed/InsetMathNest.cpp:607
 msgid "Copy"
 msgstr "コピー"
 
@@ -16435,7 +16444,8 @@ msgid "LaTeX Log|L"
 msgstr "LaTeXログ|L"
 
 #: lib/ui/stdmenus.inc:517
-msgid "Start Appendix Here|A"
+#, fuzzy
+msgid "Start Appendix Here|x"
 msgstr "ここから付録を開始(A)|A"
 
 #: lib/ui/stdmenus.inc:521
@@ -16447,7 +16457,8 @@ msgid "Update Master Document|a"
 msgstr "親文書を更新(A)|A"
 
 #: lib/ui/stdmenus.inc:524
-msgid "Compressed|m"
+#, fuzzy
+msgid "Compressed|o"
 msgstr "圧縮(M)|M"
 
 #: lib/ui/stdmenus.inc:525 lib/ui/stdcontext.inc:98 lib/ui/stdcontext.inc:110
@@ -21744,15 +21755,15 @@ msgstr "全体的昇り調子"
 msgid "Global fall"
 msgstr "全体的降り調子"
 
-#: lib/external_templates:36
+#: lib/external_templates:40
 msgid "GnumericSpreadsheet"
 msgstr "Gnumeric表計算表"
 
-#: lib/external_templates:37 lib/external_templates:44
+#: lib/external_templates:41 lib/external_templates:48
 msgid "Spreadsheet"
 msgstr "表計算表"
 
-#: lib/external_templates:39
+#: lib/external_templates:43
 msgid ""
 "A spreadsheet made with Gnumeric, LibreOffice, OpenOffice or Excel.\n"
 "It imports as a long table, so any length\n"
@@ -21765,39 +21776,39 @@ msgstr ""
 "あまりにも大きいと問題が発生します。Gnumericファイル・\n"
 "Excelファイルとも変換にはGnumericが必要です。\n"
 
-#: lib/external_templates:76
+#: lib/external_templates:80
 msgid "RasterImage"
 msgstr "ラスターイメージ"
 
-#: lib/external_templates:79 lib/external_templates:85
+#: lib/external_templates:83 lib/external_templates:89
 msgid "Raster image"
 msgstr "ラスター画像"
 
-#: lib/external_templates:84
+#: lib/external_templates:88
 msgid "A bitmap file.\n"
 msgstr "ビットマップファイルです。\n"
 
-#: lib/external_templates:148
+#: lib/external_templates:152
 msgid "XFig"
 msgstr "XFig"
 
-#: lib/external_templates:149 lib/external_templates:152
+#: lib/external_templates:153 lib/external_templates:156
 msgid "Xfig figure"
 msgstr "Xfig図"
 
-#: lib/external_templates:151
+#: lib/external_templates:155
 msgid "An Xfig figure.\n"
 msgstr "Xfigの図です。\n"
 
-#: lib/external_templates:201
+#: lib/external_templates:205
 msgid "ChessDiagram"
 msgstr "チェス棋譜"
 
-#: lib/external_templates:202 lib/external_templates:221
+#: lib/external_templates:206 lib/external_templates:225
 msgid "Chess diagram"
 msgstr "チェス棋譜"
 
-#: lib/external_templates:204
+#: lib/external_templates:208
 msgid ""
 "A chess position diagram.\n"
 "This template will use XBoard to edit the position.\n"
@@ -21833,11 +21844,11 @@ msgstr ""
 "CTANからskakパッケージをインストールしなくては\n"
 "なりません。\n"
 
-#: lib/external_templates:252 lib/external_templates:258
+#: lib/external_templates:256 lib/external_templates:262
 msgid "Lilypond typeset music"
 msgstr "Lilypond組版楽譜"
 
-#: lib/external_templates:254
+#: lib/external_templates:258
 msgid ""
 "Sheet music typeset by GNU LilyPond,\n"
 "converted to .pdf or .eps for inclusion\n"
@@ -21849,15 +21860,15 @@ msgstr ""
 ".epsを使うには少なくともlilypond 2.6が必要です\n"
 ".pdfを使うには少なくともlilypond 2.9が必要です\n"
 
-#: lib/external_templates:300
+#: lib/external_templates:304
 msgid "PDFPages"
 msgstr "PDFページ"
 
-#: lib/external_templates:301 lib/external_templates:315
+#: lib/external_templates:305 lib/external_templates:319
 msgid "PDF pages"
 msgstr "PDFページ"
 
-#: lib/external_templates:303
+#: lib/external_templates:307
 msgid ""
 "Includes PDF documents, using the 'pdfpages' package.\n"
 "To include multiple pages, use the 'pages'-option,\n"
@@ -21885,7 +21896,7 @@ msgstr ""
 "他のオプションや詳細については、pdfpagesパッケージの\n"
 "取扱説明書をお読みください。\n"
 
-#: lib/external_templates:346
+#: lib/external_templates:350
 msgid ""
 "Today's date.\n"
 "Read 'info date' for more information.\n"
@@ -21893,15 +21904,15 @@ msgstr ""
 "今日の日付。\n"
 "もっと詳しい情報は「info date」を読んでください。\n"
 
-#: lib/external_templates:375
+#: lib/external_templates:379
 msgid "Dia"
 msgstr "Dia"
 
-#: lib/external_templates:376 lib/external_templates:379
+#: lib/external_templates:380 lib/external_templates:383
 msgid "Dia diagram"
 msgstr "Dia ダイアグラム"
 
-#: lib/external_templates:378
+#: lib/external_templates:382
 msgid "Dia diagram.\n"
 msgstr "Dia ダイアグラム\n"
 
@@ -22522,7 +22533,7 @@ msgid ""
 msgstr ""
 "%1$s は新版のLyXファイルなので，スクリプトlyx2lyxが変換に失敗しました。"
 
-#: src/Buffer.cpp:1269 src/Buffer.cpp:4230 src/Buffer.cpp:4293
+#: src/Buffer.cpp:1269 src/Buffer.cpp:4234 src/Buffer.cpp:4297
 msgid "File is read-only"
 msgstr "ファイルが読込専用です"
 
@@ -22544,18 +22555,18 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "修正されているファイルに上書きしますか？"
 
-#: src/Buffer.cpp:1282 src/Buffer.cpp:1351 src/Buffer.cpp:2718
+#: src/Buffer.cpp:1282 src/Buffer.cpp:1355 src/Buffer.cpp:2722
 #: src/Exporter.cpp:50 src/frontends/qt4/GuiClipboard.cpp:246
 #: src/frontends/qt4/GuiView.cpp:2151 src/frontends/qt4/GuiView.cpp:2338
 #: src/frontends/qt4/GuiView.cpp:2452
 msgid "&Overwrite"
 msgstr "上書き(&O)"
 
-#: src/Buffer.cpp:1324 src/Buffer.cpp:1366
+#: src/Buffer.cpp:1328 src/Buffer.cpp:1370
 msgid "Write failure"
 msgstr "書き込みに失敗"
 
-#: src/Buffer.cpp:1325
+#: src/Buffer.cpp:1329
 #, c-format
 msgid ""
 "Cannot find temporary filename for:\n"
@@ -22563,11 +22574,11 @@ msgid ""
 "Even %2$s exists!"
 msgstr ""
 
-#: src/Buffer.cpp:1346
+#: src/Buffer.cpp:1350
 msgid "Backup failure"
 msgstr "バックアップ失敗"
 
-#: src/Buffer.cpp:1347
+#: src/Buffer.cpp:1351
 #, c-format
 msgid ""
 "Cannot create backup file:\n"
@@ -22576,7 +22587,7 @@ msgid ""
 "This will over-write the original file."
 msgstr ""
 
-#: src/Buffer.cpp:1367
+#: src/Buffer.cpp:1371
 #, fuzzy, c-format
 msgid ""
 "Cannot restore original file to:\n"
@@ -22589,46 +22600,46 @@ msgstr ""
 " %2$s\n"
 "に無事保存されています。"
 
-#: src/Buffer.cpp:1384
+#: src/Buffer.cpp:1388
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "文書を保存中です: %1$s..."
 
-#: src/Buffer.cpp:1399
+#: src/Buffer.cpp:1403
 msgid " could not write file!"
 msgstr "はファイルを書き込めませんでした!"
 
-#: src/Buffer.cpp:1407
+#: src/Buffer.cpp:1411
 msgid " done."
 msgstr "終わりました。"
 
-#: src/Buffer.cpp:1422
+#: src/Buffer.cpp:1426
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: 文書「%1$s」を保存しようとしています\n"
 
-#: src/Buffer.cpp:1432 src/Buffer.cpp:1445 src/Buffer.cpp:1459
+#: src/Buffer.cpp:1436 src/Buffer.cpp:1449 src/Buffer.cpp:1463
 #, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr "%1$sに保存しました。ひゅぅ。\n"
 
-#: src/Buffer.cpp:1435
+#: src/Buffer.cpp:1439
 msgid "Save failed! Trying again...\n"
 msgstr "保存に失敗しました！再度試みています...\n"
 
-#: src/Buffer.cpp:1449
+#: src/Buffer.cpp:1453
 msgid "Save failed! Trying yet again...\n"
 msgstr "保存に失敗しました！また再度試みています...\n"
 
-#: src/Buffer.cpp:1463
+#: src/Buffer.cpp:1467
 msgid "Save failed! Bummer. Document is lost."
 msgstr "保存に失敗しました！なんてこった。文書は失われました。"
 
-#: src/Buffer.cpp:1552
+#: src/Buffer.cpp:1556
 msgid "Iconv software exception Detected"
 msgstr "Iconvソフトウェアで例外エラーが検出されました"
 
-#: src/Buffer.cpp:1552
+#: src/Buffer.cpp:1556
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
@@ -22637,14 +22648,14 @@ msgstr ""
 "お使いの文字コード(%1$s)向けのサポートソフトウェアが適切にインストールされて"
 "いることを確認してください。"
 
-#: src/Buffer.cpp:1581
+#: src/Buffer.cpp:1585
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 "文字「%1$s」を表すLaTeXコマンドを見つけることができませんでした(コードポイン"
 "ト%2$s)"
 
-#: src/Buffer.cpp:1584
+#: src/Buffer.cpp:1588
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -22654,19 +22665,19 @@ msgstr ""
 "す。\n"
 "文書文字コードをutf8に変更すると解決するかもしれません。"
 
-#: src/Buffer.cpp:1591
+#: src/Buffer.cpp:1595
 msgid "iconv conversion failed"
 msgstr "iconvが変換に失敗しました"
 
-#: src/Buffer.cpp:1596
+#: src/Buffer.cpp:1600
 msgid "conversion failed"
 msgstr "変換に失敗しました"
 
-#: src/Buffer.cpp:1704
+#: src/Buffer.cpp:1708
 msgid "Uncodable character in file path"
 msgstr "ファイルパスにコード化できない文字があります"
 
-#: src/Buffer.cpp:1706
+#: src/Buffer.cpp:1710
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -22689,57 +22700,57 @@ msgstr ""
 "問題が生じる場合には、(utf8などの)適切な文書エンコーディングを用いるか、ファ"
 "イルパス名を変更してください。"
 
-#: src/Buffer.cpp:2059
+#: src/Buffer.cpp:2063
 msgid "Running chktex..."
 msgstr "chktexを実行しています..."
 
-#: src/Buffer.cpp:2073
+#: src/Buffer.cpp:2077
 msgid "chktex failure"
 msgstr "chktexに失敗"
 
-#: src/Buffer.cpp:2074
+#: src/Buffer.cpp:2078
 msgid "Could not run chktex successfully."
 msgstr "Chktexをうまく実行することができませんでした。"
 
-#: src/Buffer.cpp:2366
+#: src/Buffer.cpp:2370
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "%1$s形式に書き出す方法を知りません"
 
-#: src/Buffer.cpp:2446
+#: src/Buffer.cpp:2450
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "%1$s形式への書き出し時にエラーが起こりました。"
 
-#: src/Buffer.cpp:2455
+#: src/Buffer.cpp:2459
 msgid "Error generating literate programming code."
 msgstr "文芸的プログラミングコードを生成するのに失敗しました。"
 
-#: src/Buffer.cpp:2534
+#: src/Buffer.cpp:2538
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "派生枝「%1$s」は存在しません。"
 
-#: src/Buffer.cpp:2569
+#: src/Buffer.cpp:2573
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "派生枝「%1$s」は既に存在しています。"
 
-#: src/Buffer.cpp:2635
+#: src/Buffer.cpp:2639
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "「%1$s」を解析できません"
 
-#: src/Buffer.cpp:2642
+#: src/Buffer.cpp:2646
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "ターゲット「%1$s」を認識できません"
 
-#: src/Buffer.cpp:2649
+#: src/Buffer.cpp:2653
 msgid "Error exporting to DVI."
 msgstr "DVI書き出し時にエラーが起こりました。"
 
-#: src/Buffer.cpp:2714 src/Exporter.cpp:45
+#: src/Buffer.cpp:2718 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -22750,85 +22761,85 @@ msgstr ""
 "\n"
 "そのファイルに上書きしますか？"
 
-#: src/Buffer.cpp:2717 src/Exporter.cpp:48
+#: src/Buffer.cpp:2721 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "ファイルを上書きしますか？"
 
-#: src/Buffer.cpp:2734
+#: src/Buffer.cpp:2738
 msgid "Error running external commands."
 msgstr "外部コマンド実行時にエラーが起こりました。"
 
-#: src/Buffer.cpp:3556
+#: src/Buffer.cpp:3560
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "段落%1$dのソースコードをプレビューする"
 
-#: src/Buffer.cpp:3560
+#: src/Buffer.cpp:3564
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "段落%1$sから%2$sまでのソースコードをプレビューする"
 
-#: src/Buffer.cpp:3614
+#: src/Buffer.cpp:3618
 msgid "Preview source code"
 msgstr "ソースコードをプレビューする"
 
-#: src/Buffer.cpp:3616
+#: src/Buffer.cpp:3620
 msgid "Preview preamble"
 msgstr "プリアンブルをプレビューする"
 
-#: src/Buffer.cpp:3618
+#: src/Buffer.cpp:3622
 msgid "Preview body"
 msgstr "本文をプレビューする"
 
-#: src/Buffer.cpp:3633
+#: src/Buffer.cpp:3637
 msgid "Plain text does not have a preamble."
 msgstr "平文にはプリアンブルがありません。"
 
-#: src/Buffer.cpp:3736
+#: src/Buffer.cpp:3740
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "%1$sを自動保存しています"
 
-#: src/Buffer.cpp:3790
+#: src/Buffer.cpp:3794
 msgid "Autosave failed!"
 msgstr "自動保存に失敗しました！"
 
-#: src/Buffer.cpp:3851
+#: src/Buffer.cpp:3855
 msgid "Autosaving current document..."
 msgstr "現在の文書を自動保存しています..."
 
-#: src/Buffer.cpp:3972
+#: src/Buffer.cpp:3976
 msgid "Couldn't export file"
 msgstr "ファイルを書き出すことができませんでした"
 
-#: src/Buffer.cpp:3973
+#: src/Buffer.cpp:3977
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "%1$sというフォーマットを書き出すのに必要な情報がありません"
 
-#: src/Buffer.cpp:4034 src/frontends/qt4/GuiView.cpp:2124
+#: src/Buffer.cpp:4038 src/frontends/qt4/GuiView.cpp:2124
 msgid "File name error"
 msgstr "ファイル名エラー"
 
-#: src/Buffer.cpp:4035
+#: src/Buffer.cpp:4039
 msgid "The directory path to the document cannot contain spaces."
 msgstr "文書のパスには空白が含まれていてはなりません。"
 
-#: src/Buffer.cpp:4137 src/Buffer.cpp:4151 src/frontends/qt4/GuiView.cpp:548
+#: src/Buffer.cpp:4141 src/Buffer.cpp:4155 src/frontends/qt4/GuiView.cpp:548
 msgid "Document export cancelled."
 msgstr "文書の書き出しは取り消されました。"
 
-#: src/Buffer.cpp:4154
+#: src/Buffer.cpp:4158
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "文書は%1$sとしてファイル「%2$s」に書き出されました。"
 
-#: src/Buffer.cpp:4161
+#: src/Buffer.cpp:4165
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "文書は%1$sとして書き出されました。"
 
-#: src/Buffer.cpp:4216
+#: src/Buffer.cpp:4220
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -22839,19 +22850,19 @@ msgstr ""
 "\n"
 "緊急保存ファイルから復旧しますか？"
 
-#: src/Buffer.cpp:4219
+#: src/Buffer.cpp:4223
 msgid "Load emergency save?"
 msgstr "緊急保存ファイルを読みこみますか？"
 
-#: src/Buffer.cpp:4220
+#: src/Buffer.cpp:4224
 msgid "&Recover"
 msgstr "復旧(&R)"
 
-#: src/Buffer.cpp:4220
+#: src/Buffer.cpp:4224
 msgid "&Load Original"
 msgstr "オリジナルを読み込む(&L):"
 
-#: src/Buffer.cpp:4231
+#: src/Buffer.cpp:4235
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -22861,15 +22872,15 @@ msgstr ""
 "込み専用に設定されています。この文書を別のファイルにかならず保存してくださ"
 "い。"
 
-#: src/Buffer.cpp:4238
+#: src/Buffer.cpp:4242
 msgid "Document was successfully recovered."
 msgstr "文書を無事に復旧しました。"
 
-#: src/Buffer.cpp:4240
+#: src/Buffer.cpp:4244
 msgid "Document was NOT successfully recovered."
 msgstr "文書を無事に復旧することができませんでした。"
 
-#: src/Buffer.cpp:4241
+#: src/Buffer.cpp:4245
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -22878,27 +22889,27 @@ msgstr ""
 "緊急保存ファイルを直ちに削除しますか？\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:4245 src/Buffer.cpp:4257
+#: src/Buffer.cpp:4249 src/Buffer.cpp:4261
 msgid "Delete emergency file?"
 msgstr "緊急保存ファイルを削除しますか？"
 
-#: src/Buffer.cpp:4246 src/Buffer.cpp:4259
+#: src/Buffer.cpp:4250 src/Buffer.cpp:4263
 msgid "&Keep"
 msgstr "保持(&K)"
 
-#: src/Buffer.cpp:4250
+#: src/Buffer.cpp:4254
 msgid "Emergency file deleted"
 msgstr "緊急保存ファイルを削除しました"
 
-#: src/Buffer.cpp:4251
+#: src/Buffer.cpp:4255
 msgid "Do not forget to save your file now!"
 msgstr "すぐにファイルを保存するようにしてください！"
 
-#: src/Buffer.cpp:4258
+#: src/Buffer.cpp:4262
 msgid "Remove emergency file now?"
 msgstr "緊急保存ファイルを読みこみますか？"
 
-#: src/Buffer.cpp:4281
+#: src/Buffer.cpp:4285
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -22909,19 +22920,19 @@ msgstr ""
 "\n"
 "代わりにバックアップファイルを読み込みますか？"
 
-#: src/Buffer.cpp:4283
+#: src/Buffer.cpp:4287
 msgid "Load backup?"
 msgstr "バックアップを読み込みますか？"
 
-#: src/Buffer.cpp:4284
+#: src/Buffer.cpp:4288
 msgid "&Load backup"
 msgstr "バックアップを読み込む(&L)"
 
-#: src/Buffer.cpp:4284
+#: src/Buffer.cpp:4288
 msgid "Load &original"
 msgstr "オリジナルを読み込む(&O)"
 
-#: src/Buffer.cpp:4294
+#: src/Buffer.cpp:4298
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -22931,16 +22942,16 @@ msgstr ""
 "読み込み専用に設定されています。文書を別のファイルにかならず保存してくださ"
 "い。"
 
-#: src/Buffer.cpp:4634 src/insets/InsetCaption.cpp:376
+#: src/Buffer.cpp:4638 src/insets/InsetCaption.cpp:376
 msgid "Senseless!!! "
 msgstr "意味を成しません!!! "
 
-#: src/Buffer.cpp:4854
+#: src/Buffer.cpp:4858
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "文書%1$sを再読み込みしました。"
 
-#: src/Buffer.cpp:4857
+#: src/Buffer.cpp:4861
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "文書%1$sの再読み込みができません"
@@ -23050,7 +23061,7 @@ msgstr ""
 msgid "Document class not available"
 msgstr "文書クラスが利用不能です"
 
-#: src/BufferParams.cpp:1817 src/insets/InsetCommandParams.cpp:406
+#: src/BufferParams.cpp:1817 src/insets/InsetCommandParams.cpp:408
 #: src/insets/InsetHyperlink.cpp:197
 msgid "Uncodable characters"
 msgstr "コード化できない文字"
@@ -25086,15 +25097,15 @@ msgstr ", 文字: 0x"
 msgid ", Boundary: "
 msgstr ", 境界: "
 
-#: src/Text2.cpp:408
+#: src/Text2.cpp:409
 msgid "No font change defined."
 msgstr "フォントの変更が定義されていません。"
 
-#: src/Text2.cpp:448
+#: src/Text2.cpp:449
 msgid "Nothing to index!"
 msgstr "索引にするものがありません！"
 
-#: src/Text2.cpp:450
+#: src/Text2.cpp:451
 msgid "Cannot index more than one paragraph!"
 msgstr "一段落以上は索引にすることができません！"
 
@@ -25114,23 +25125,23 @@ msgstr "既に正規表現モードです"
 msgid "Regexp editor mode"
 msgstr "正規表現エディタモード"
 
-#: src/Text3.cpp:1342
+#: src/Text3.cpp:1343
 msgid "Layout "
 msgstr "割り付け"
 
-#: src/Text3.cpp:1343
+#: src/Text3.cpp:1344
 msgid " not known"
 msgstr "解釈不能"
 
-#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1636
+#: src/Text3.cpp:1934 src/frontends/qt4/GuiApplication.cpp:1636
 msgid "Missing argument"
 msgstr "引数がありません"
 
-#: src/Text3.cpp:2089 src/Text3.cpp:2101
+#: src/Text3.cpp:2090 src/Text3.cpp:2102
 msgid "Character set"
 msgstr "文字が調整されました"
 
-#: src/Text3.cpp:2319 src/Text3.cpp:2330
+#: src/Text3.cpp:2320 src/Text3.cpp:2331
 msgid "Paragraph layout set"
 msgstr "段落を割り付けました。"
 
@@ -25395,13 +25406,13 @@ msgstr ""
 "続けますか？"
 
 #: src/VCBackend.cpp:1514 src/VCBackend.cpp:1518
-#: src/frontends/qt4/FindAndReplace.cpp:376
+#: src/frontends/qt4/FindAndReplace.cpp:378
 #: src/frontends/qt4/GuiSearch.cpp:140
 msgid "&Yes"
 msgstr "はい(&Y)"
 
 #: src/VCBackend.cpp:1514 src/VCBackend.cpp:1518
-#: src/frontends/qt4/FindAndReplace.cpp:376
+#: src/frontends/qt4/FindAndReplace.cpp:378
 #: src/frontends/qt4/GuiSearch.cpp:140
 msgid "&No"
 msgstr "いいえ(&N)"
@@ -25590,24 +25601,24 @@ msgstr ""
 msgid "Advanced search in progress (press ESC to cancel) . . ."
 msgstr "詳細検索中です(取り消すにはESCを押してください) . . ."
 
-#: src/frontends/qt4/FindAndReplace.cpp:357
+#: src/frontends/qt4/FindAndReplace.cpp:359
 msgid "Advanced search cancelled by user"
 msgstr "ユーザが詳細検索を取り消しました"
 
-#: src/frontends/qt4/FindAndReplace.cpp:375
+#: src/frontends/qt4/FindAndReplace.cpp:377
 #: src/frontends/qt4/GuiSearch.cpp:139
 msgid "Wrap search?"
 msgstr "文頭に戻って検索を続けますか？"
 
-#: src/frontends/qt4/FindAndReplace.cpp:422
+#: src/frontends/qt4/FindAndReplace.cpp:428
 msgid "Nothing to search"
 msgstr "検索対象がありません"
 
-#: src/frontends/qt4/FindAndReplace.cpp:470
+#: src/frontends/qt4/FindAndReplace.cpp:476
 msgid "No open document(s) in which to search"
 msgstr "検索を行う文書が開かれていません"
 
-#: src/frontends/qt4/FindAndReplace.cpp:576
+#: src/frontends/qt4/FindAndReplace.cpp:582
 msgid "Advanced Find and Replace"
 msgstr "詳細な検索及び置換"
 
@@ -29016,7 +29027,7 @@ msgstr "不明なパラメーター名: "
 msgid "Missing \\end_inset at this point: "
 msgstr "ここに\\end_insetがありません: "
 
-#: src/insets/InsetCommandParams.cpp:407
+#: src/insets/InsetCommandParams.cpp:409
 #, c-format
 msgid ""
 "The following characters that are used in the inset %1$s are not\n"

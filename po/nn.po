@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-14 22:21-0400\n"
+"POT-Creation-Date: 2015-06-01 17:51-0400\n"
 "PO-Revision-Date: 2014-01-24 19:33+0100\n"
 "Last-Translator: Ingar Pareliussen <>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
@@ -200,8 +200,8 @@ msgid "Remove the selected index"
 msgstr "Fjern den valde indeksen"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:165
-#: src/frontends/qt4/ui/BranchesUi.ui:136 src/Buffer.cpp:4246
-#: src/Buffer.cpp:4259
+#: src/frontends/qt4/ui/BranchesUi.ui:136 src/Buffer.cpp:4250
+#: src/Buffer.cpp:4263
 msgid "&Remove"
 msgstr "&Fjern"
 
@@ -244,8 +244,8 @@ msgstr "Legg til a&lle"
 #: src/frontends/qt4/ui/DocumentUi.ui:84
 #: src/frontends/qt4/ui/CitationUi.ui:220
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1282
-#: src/Buffer.cpp:1351 src/Buffer.cpp:2718 src/Buffer.cpp:4220
-#: src/Buffer.cpp:4284 src/LyXVC.cpp:107 src/LyXVC.cpp:297
+#: src/Buffer.cpp:1355 src/Buffer.cpp:2722 src/Buffer.cpp:4224
+#: src/Buffer.cpp:4288 src/LyXVC.cpp:107 src/LyXVC.cpp:297
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:246
 #: src/frontends/qt4/GuiDocument.cpp:2106
@@ -3329,18 +3329,27 @@ msgid "&minutes"
 msgstr "&minutt"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
-msgid "&Save documents compressed by default"
+msgid ""
+"If this is checked, new documents will be saved in a compressed binary-"
+"format by default.\n"
+"Existing documents will still be saved in their current state (compressed or "
+"uncompressed)."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
+#, fuzzy
+msgid "&Save new documents compressed by default"
 msgstr "Lagra dokumentet komprimert som &standard"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:158
 msgid "Windows && work area"
 msgstr "Vindauge && arbeidsområde"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:164
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:167
 msgid "Open documents in &tabs"
 msgstr "Opna dokumen&tet i faner"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:171
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:174
 msgid ""
 "Whether to open documents in an already running instance of LyX.\n"
 "(Set the LyXServer pipe path and restart LyX to enable this feature)"
@@ -3348,31 +3357,31 @@ msgstr ""
 "Om du skal opne dokumentet i eit LyX windauge som er ope frå før.\n"
 "(Hugs å  sette stig til LyXServer sitt datarøyr og start LyX på nytt)"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:174
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:177
 msgid "Use s&ingle instance"
 msgstr "Bruk berre e&itt vindauge "
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:181
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
 msgid "Whether to place close button on each tab or only one in the top left."
 msgstr "Skal kvar fane ha ein lat att knapp eller berre ein øvst til venstre."
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:187
 msgid "Displa&y single close-tab button"
 msgstr "Vi&s berre ein lat att-knapp"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:193
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:196
 msgid "Closing last &view:"
 msgstr "Avslutt siste &vising:"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:204
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:207
 msgid "Closes document"
 msgstr "Let att dokumentet"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:209
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:212
 msgid "Hides document"
 msgstr "Skjuler dokumentet"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:214
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:217
 msgid "Ask the user"
 msgstr "Spør brukaren"
 
@@ -5294,8 +5303,8 @@ msgstr "Standard"
 #: lib/layouts/ijmpd.layout:134 lib/layouts/ijmpd.layout:153
 #: lib/layouts/ijmpd.layout:221 lib/layouts/ijmpd.layout:233
 #: lib/layouts/IEEEtran-TransMag.layout:22
-#: lib/layouts/IEEEtran-TransMag.layout:42 lib/layouts/broadway.layout:188
-#: lib/layouts/broadway.layout:203 lib/layouts/IEEEtran.layout:70
+#: lib/layouts/IEEEtran-TransMag.layout:42 lib/layouts/broadway.layout:190
+#: lib/layouts/broadway.layout:205 lib/layouts/IEEEtran.layout:70
 #: lib/layouts/IEEEtran.layout:121 lib/layouts/IEEEtran.layout:221
 #: lib/layouts/IEEEtran.layout:261 lib/layouts/IEEEtran.layout:325
 #: lib/layouts/agutex.layout:60 lib/layouts/agutex.layout:77
@@ -5425,7 +5434,7 @@ msgstr "NØKKELORD:"
 #: lib/layouts/llncs.layout:183 lib/layouts/apa.layout:119
 #: lib/layouts/aastex.layout:141 lib/layouts/kluwer.layout:168
 #: lib/layouts/achemso.layout:82 lib/layouts/cl2emult.layout:60
-#: lib/layouts/ijmpd.layout:131 lib/layouts/broadway.layout:202
+#: lib/layouts/ijmpd.layout:131 lib/layouts/broadway.layout:204
 #: lib/layouts/IEEEtran.layout:118 lib/layouts/foils.layout:135
 #: lib/layouts/jasatex.layout:85 lib/layouts/ltugboat.layout:160
 #: lib/layouts/tufte-book.layout:39 lib/layouts/powerdot.layout:67
@@ -5452,7 +5461,7 @@ msgstr "Forfattar"
 #: lib/layouts/apa.layout:41 lib/layouts/aastex.layout:129
 #: lib/layouts/kluwer.layout:113 lib/layouts/achemso.layout:56
 #: lib/layouts/cl2emult.layout:41 lib/layouts/ijmpd.layout:112
-#: lib/layouts/broadway.layout:187 lib/layouts/IEEEtran.layout:66
+#: lib/layouts/broadway.layout:189 lib/layouts/IEEEtran.layout:66
 #: lib/layouts/agutex.layout:56 lib/layouts/foils.layout:127
 #: lib/layouts/jasatex.layout:60 lib/layouts/ltugboat.layout:140
 #: lib/layouts/revtex4-1.layout:192 lib/layouts/tufte-book.layout:35
@@ -5620,7 +5629,7 @@ msgstr ""
 #: lib/layouts/apa.layout:25 lib/layouts/dtk.layout:32
 #: lib/layouts/aastex.layout:55 lib/layouts/kluwer.layout:34
 #: lib/layouts/achemso.layout:33 lib/layouts/cl2emult.layout:130
-#: lib/layouts/ijmpd.layout:28 lib/layouts/broadway.layout:174
+#: lib/layouts/ijmpd.layout:28 lib/layouts/broadway.layout:176
 #: lib/layouts/IEEEtran.layout:35 lib/layouts/agutex.layout:32
 #: lib/layouts/foils.layout:31 lib/layouts/jasatex.layout:36
 #: lib/layouts/g-brief2.layout:31 lib/layouts/ltugboat.layout:31
@@ -5654,7 +5663,7 @@ msgstr "Standard"
 #: lib/layouts/apa.layout:26 lib/layouts/dtk.layout:33
 #: lib/layouts/aastex.layout:56 lib/layouts/kluwer.layout:35
 #: lib/layouts/achemso.layout:34 lib/layouts/cl2emult.layout:131
-#: lib/layouts/ijmpd.layout:29 lib/layouts/broadway.layout:175
+#: lib/layouts/ijmpd.layout:29 lib/layouts/broadway.layout:177
 #: lib/layouts/IEEEtran.layout:36 lib/layouts/agutex.layout:33
 #: lib/layouts/foils.layout:32 lib/layouts/jasatex.layout:37
 #: lib/layouts/g-brief2.layout:32 lib/layouts/ltugboat.layout:32
@@ -6247,8 +6256,8 @@ msgstr "Stad:"
 #: lib/layouts/scrclass.inc:198 lib/layouts/agu_stdtitle.inc:239
 #: lib/layouts/stdtitle.inc:54 lib/layouts/amsdefs.inc:70
 #: lib/layouts/db_stdtitle.inc:35 lib/layouts/svcommon.inc:369
-#: lib/ui/stdmenus.inc:387 lib/external_templates:343
-#: lib/external_templates:344 lib/external_templates:348
+#: lib/ui/stdmenus.inc:387 lib/external_templates:347
+#: lib/external_templates:348 lib/external_templates:352
 msgid "Date"
 msgstr "Dato"
 
@@ -7120,7 +7129,7 @@ msgid "Verse"
 msgstr "Vers"
 
 #: lib/layouts/egs.layout:239 lib/layouts/siamltex.layout:306
-#: lib/layouts/hollywood.layout:307 lib/layouts/broadway.layout:216
+#: lib/layouts/hollywood.layout:307 lib/layouts/broadway.layout:218
 #: lib/layouts/lyxmacros.inc:65
 msgid "Right Address"
 msgstr "Frå høgre"
@@ -9468,7 +9477,7 @@ msgstr ""
 msgid "Scripts"
 msgstr "Senka skrift"
 
-#: lib/layouts/hollywood.layout:41 lib/layouts/broadway.layout:32
+#: lib/layouts/hollywood.layout:41 lib/layouts/broadway.layout:34
 msgid "Dialogue"
 msgstr "Dialog"
 
@@ -9492,19 +9501,19 @@ msgstr "INV."
 msgid "EXT."
 msgstr "UTV."
 
-#: lib/layouts/hollywood.layout:145 lib/layouts/broadway.layout:122
+#: lib/layouts/hollywood.layout:145 lib/layouts/broadway.layout:124
 msgid "Speaker"
 msgstr "Stemme"
 
-#: lib/layouts/hollywood.layout:160 lib/layouts/broadway.layout:135
+#: lib/layouts/hollywood.layout:160 lib/layouts/broadway.layout:137
 msgid "Parenthetical"
 msgstr "I parentes"
 
-#: lib/layouts/hollywood.layout:171 lib/layouts/broadway.layout:146
+#: lib/layouts/hollywood.layout:171 lib/layouts/broadway.layout:148
 msgid "("
 msgstr "("
 
-#: lib/layouts/hollywood.layout:173 lib/layouts/broadway.layout:148
+#: lib/layouts/hollywood.layout:173 lib/layouts/broadway.layout:150
 msgid ")"
 msgstr ")"
 
@@ -9516,7 +9525,7 @@ msgstr "Framhald"
 msgid "(continuing)"
 msgstr "(framhald)"
 
-#: lib/layouts/hollywood.layout:209 lib/layouts/broadway.layout:43
+#: lib/layouts/hollywood.layout:209 lib/layouts/broadway.layout:45
 msgid "Narrative"
 msgstr "Forteljing"
 
@@ -10423,31 +10432,31 @@ msgstr ""
 msgid "Broadway"
 msgstr ""
 
-#: lib/layouts/broadway.layout:59
+#: lib/layouts/broadway.layout:61
 msgid "ACT"
 msgstr "AKT"
 
-#: lib/layouts/broadway.layout:71
+#: lib/layouts/broadway.layout:73
 msgid "ACT \\arabic{act}"
 msgstr "AKT \\arabic{act}"
 
-#: lib/layouts/broadway.layout:75 lib/layouts/broadway.layout:102
+#: lib/layouts/broadway.layout:77 lib/layouts/broadway.layout:104
 msgid "SCENE"
 msgstr "SCENE"
 
-#: lib/layouts/broadway.layout:87
+#: lib/layouts/broadway.layout:89
 msgid "SCENE \\arabic{scene}"
 msgstr "SCENE \\arabic{scene}"
 
-#: lib/layouts/broadway.layout:91
+#: lib/layouts/broadway.layout:93
 msgid "SCENE*"
 msgstr "SCENE*"
 
-#: lib/layouts/broadway.layout:106 lib/layouts/broadway.layout:117
+#: lib/layouts/broadway.layout:108 lib/layouts/broadway.layout:119
 msgid "AT RISE:"
 msgstr "VED_OPPGANG:"
 
-#: lib/layouts/broadway.layout:159 lib/layouts/broadway.layout:169
+#: lib/layouts/broadway.layout:161 lib/layouts/broadway.layout:171
 msgid "CURTAIN"
 msgstr "TEPPE"
 
@@ -13574,7 +13583,7 @@ msgstr ""
 "handsama saman med dokumentet. Sjå lilypond.lyx eksempelfil."
 
 #: lib/layouts/lilypond.module:13 lib/layouts/lilypond.module:14
-#: lib/external_templates:251
+#: lib/external_templates:255
 msgid "LilyPond"
 msgstr "LilyPond"
 
@@ -15756,12 +15765,12 @@ msgid "Redo|R"
 msgstr "Gjer om|G"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1277 src/mathed/InsetMathNest.cpp:598
+#: src/Text3.cpp:1278 src/mathed/InsetMathNest.cpp:598
 msgid "Cut"
 msgstr "Klipp"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1282 src/mathed/InsetMathNest.cpp:607
+#: src/Text3.cpp:1283 src/mathed/InsetMathNest.cpp:607
 msgid "Copy"
 msgstr "Kopier"
 
@@ -16705,7 +16714,8 @@ msgid "LaTeX Log|L"
 msgstr "LaTeX-logg|L"
 
 #: lib/ui/stdmenus.inc:517
-msgid "Start Appendix Here|A"
+#, fuzzy
+msgid "Start Appendix Here|x"
 msgstr "Start vedlegga her|S"
 
 #: lib/ui/stdmenus.inc:521
@@ -16717,7 +16727,8 @@ msgid "Update Master Document|a"
 msgstr "Oppdater hovuddokumentet|a"
 
 #: lib/ui/stdmenus.inc:524
-msgid "Compressed|m"
+#, fuzzy
+msgid "Compressed|o"
 msgstr "Komprimert|o"
 
 #: lib/ui/stdmenus.inc:525 lib/ui/stdcontext.inc:98 lib/ui/stdcontext.inc:110
@@ -22196,15 +22207,15 @@ msgstr "Global auke"
 msgid "Global fall"
 msgstr "Global senking"
 
-#: lib/external_templates:36
+#: lib/external_templates:40
 msgid "GnumericSpreadsheet"
 msgstr "GnumericRekneark"
 
-#: lib/external_templates:37 lib/external_templates:44
+#: lib/external_templates:41 lib/external_templates:48
 msgid "Spreadsheet"
 msgstr "Rekneark"
 
-#: lib/external_templates:39
+#: lib/external_templates:43
 msgid ""
 "A spreadsheet made with Gnumeric, LibreOffice, OpenOffice or Excel.\n"
 "It imports as a long table, so any length\n"
@@ -22217,39 +22228,39 @@ msgstr ""
 "er ok. Stor breidd kan vere eit problem.\n"
 "Gnumeric er naudsynt både for gnumeric- og excel-rekneark.\n"
 
-#: lib/external_templates:76
+#: lib/external_templates:80
 msgid "RasterImage"
 msgstr "Rasterbilete"
 
-#: lib/external_templates:79 lib/external_templates:85
+#: lib/external_templates:83 lib/external_templates:89
 msgid "Raster image"
 msgstr "Rasterbilete"
 
-#: lib/external_templates:84
+#: lib/external_templates:88
 msgid "A bitmap file.\n"
 msgstr "Ei bitmap fil.\n"
 
-#: lib/external_templates:148
+#: lib/external_templates:152
 msgid "XFig"
 msgstr "XFig"
 
-#: lib/external_templates:149 lib/external_templates:152
+#: lib/external_templates:153 lib/external_templates:156
 msgid "Xfig figure"
 msgstr "XFig figur"
 
-#: lib/external_templates:151
+#: lib/external_templates:155
 msgid "An Xfig figure.\n"
 msgstr "Ein XFig figur.\n"
 
-#: lib/external_templates:201
+#: lib/external_templates:205
 msgid "ChessDiagram"
 msgstr "Sjakkbrett"
 
-#: lib/external_templates:202 lib/external_templates:221
+#: lib/external_templates:206 lib/external_templates:225
 msgid "Chess diagram"
 msgstr "Sjakkbrett"
 
-#: lib/external_templates:204
+#: lib/external_templates:208
 msgid ""
 "A chess position diagram.\n"
 "This template will use XBoard to edit the position.\n"
@@ -22286,11 +22297,11 @@ msgstr ""
 "kan finne dei, og du må installere \n"
 "skak pakken frå CTAN\n"
 
-#: lib/external_templates:252 lib/external_templates:258
+#: lib/external_templates:256 lib/external_templates:262
 msgid "Lilypond typeset music"
 msgstr "Lilypond for musikknotasjon"
 
-#: lib/external_templates:254
+#: lib/external_templates:258
 msgid ""
 "Sheet music typeset by GNU LilyPond,\n"
 "converted to .pdf or .eps for inclusion\n"
@@ -22302,15 +22313,15 @@ msgstr ""
 "Bruk av .eps krev lilypond 2.6\n"
 "Bruk av .pdf krev lilypond 2.9\n"
 
-#: lib/external_templates:300
+#: lib/external_templates:304
 msgid "PDFPages"
 msgstr "PDFSider"
 
-#: lib/external_templates:301 lib/external_templates:315
+#: lib/external_templates:305 lib/external_templates:319
 msgid "PDF pages"
 msgstr "PDFSider"
 
-#: lib/external_templates:303
+#: lib/external_templates:307
 msgid ""
 "Includes PDF documents, using the 'pdfpages' package.\n"
 "To include multiple pages, use the 'pages'-option,\n"
@@ -22338,7 +22349,7 @@ msgstr ""
 "Les dokumentasjonen for PDFPages-pakken\n"
 "for fleire val og detaljar.\n"
 
-#: lib/external_templates:346
+#: lib/external_templates:350
 msgid ""
 "Today's date.\n"
 "Read 'info date' for more information.\n"
@@ -22346,15 +22357,15 @@ msgstr ""
 "Datoen i dag.\n"
 "Les 'info date' for meir informasjon\n"
 
-#: lib/external_templates:375
+#: lib/external_templates:379
 msgid "Dia"
 msgstr "Dia"
 
-#: lib/external_templates:376 lib/external_templates:379
+#: lib/external_templates:380 lib/external_templates:383
 msgid "Dia diagram"
 msgstr "Dia diagram"
 
-#: lib/external_templates:378
+#: lib/external_templates:382
 msgid "Dia diagram.\n"
 msgstr "Dia diagram.\n"
 
@@ -22977,7 +22988,7 @@ msgstr ""
 "%1$s vart laga i ein nyare LyX-versjon og lyx2lyx-programmet klarte ikkje å "
 "konvertere det."
 
-#: src/Buffer.cpp:1269 src/Buffer.cpp:4230 src/Buffer.cpp:4293
+#: src/Buffer.cpp:1269 src/Buffer.cpp:4234 src/Buffer.cpp:4297
 msgid "File is read-only"
 msgstr "Fila kan berre bli lest frå"
 
@@ -22999,19 +23010,19 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Skriv over det endra dokumentet?"
 
-#: src/Buffer.cpp:1282 src/Buffer.cpp:1351 src/Buffer.cpp:2718
+#: src/Buffer.cpp:1282 src/Buffer.cpp:1355 src/Buffer.cpp:2722
 #: src/Exporter.cpp:50 src/frontends/qt4/GuiClipboard.cpp:246
 #: src/frontends/qt4/GuiView.cpp:2151 src/frontends/qt4/GuiView.cpp:2338
 #: src/frontends/qt4/GuiView.cpp:2452
 msgid "&Overwrite"
 msgstr "Skriv &over"
 
-#: src/Buffer.cpp:1324 src/Buffer.cpp:1366
+#: src/Buffer.cpp:1328 src/Buffer.cpp:1370
 #, fuzzy
 msgid "Write failure"
 msgstr "ChkTeX feil"
 
-#: src/Buffer.cpp:1325
+#: src/Buffer.cpp:1329
 #, c-format
 msgid ""
 "Cannot find temporary filename for:\n"
@@ -23019,11 +23030,11 @@ msgid ""
 "Even %2$s exists!"
 msgstr ""
 
-#: src/Buffer.cpp:1346
+#: src/Buffer.cpp:1350
 msgid "Backup failure"
 msgstr "Kan ikkje laga reservekopi"
 
-#: src/Buffer.cpp:1347
+#: src/Buffer.cpp:1351
 #, c-format
 msgid ""
 "Cannot create backup file:\n"
@@ -23032,7 +23043,7 @@ msgid ""
 "This will over-write the original file."
 msgstr ""
 
-#: src/Buffer.cpp:1367
+#: src/Buffer.cpp:1371
 #, c-format
 msgid ""
 "Cannot restore original file to:\n"
@@ -23041,58 +23052,58 @@ msgid ""
 "  %2$s."
 msgstr ""
 
-#: src/Buffer.cpp:1384
+#: src/Buffer.cpp:1388
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Lagrar %1$s..."
 
-#: src/Buffer.cpp:1399
+#: src/Buffer.cpp:1403
 msgid " could not write file!"
 msgstr "Kan ikkje skrive fila!"
 
-#: src/Buffer.cpp:1407
+#: src/Buffer.cpp:1411
 msgid " done."
 msgstr "ferdig."
 
-#: src/Buffer.cpp:1422
+#: src/Buffer.cpp:1426
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Prøver å skrive dokumentet %1$s\n"
 
-#: src/Buffer.cpp:1432 src/Buffer.cpp:1445 src/Buffer.cpp:1459
+#: src/Buffer.cpp:1436 src/Buffer.cpp:1449 src/Buffer.cpp:1463
 #, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr "Lagra til.%1$s.\n"
 
-#: src/Buffer.cpp:1435
+#: src/Buffer.cpp:1439
 msgid "Save failed! Trying again...\n"
 msgstr "Klarte ikkje å lagre. Prøver igjen...\n"
 
-#: src/Buffer.cpp:1449
+#: src/Buffer.cpp:1453
 msgid "Save failed! Trying yet again...\n"
 msgstr "Klarte ikkje lagre. Prøver igjen på nytt...\n"
 
-#: src/Buffer.cpp:1463
+#: src/Buffer.cpp:1467
 msgid "Save failed! Bummer. Document is lost."
 msgstr "Lagring fungerte ikkje. Diverre har dokumentet gått tapt."
 
-#: src/Buffer.cpp:1552
+#: src/Buffer.cpp:1556
 msgid "Iconv software exception Detected"
 msgstr "Iconv program unntak oppdaga"
 
-#: src/Buffer.cpp:1552
+#: src/Buffer.cpp:1556
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr "Sjekk om du har programma for å støtte enkodinga (%1$s) er installert."
 
-#: src/Buffer.cpp:1581
+#: src/Buffer.cpp:1585
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr "Kan ikkje finne LaTeX kommandoen for '%1$s' (kode punkt %2$s)"
 
-#: src/Buffer.cpp:1584
+#: src/Buffer.cpp:1588
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -23101,19 +23112,19 @@ msgstr ""
 "Nokre av teikna i dokumentet er ikkje i teiknkodinga. \n"
 "Prøv å endre teiknkodinga til utf8."
 
-#: src/Buffer.cpp:1591
+#: src/Buffer.cpp:1595
 msgid "iconv conversion failed"
 msgstr "feil med iconv konverteringa"
 
-#: src/Buffer.cpp:1596
+#: src/Buffer.cpp:1600
 msgid "conversion failed"
 msgstr "Feil oppstod i konverteringa"
 
-#: src/Buffer.cpp:1704
+#: src/Buffer.cpp:1708
 msgid "Uncodable character in file path"
 msgstr "Umogeleg spesialteikn i stigen"
 
-#: src/Buffer.cpp:1706
+#: src/Buffer.cpp:1710
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -23137,58 +23148,58 @@ msgstr ""
 "Vel derfor ein anna koding for dokumentet (f.eks. utf8)\n"
 " eller vel ein anna stig."
 
-#: src/Buffer.cpp:2059
+#: src/Buffer.cpp:2063
 msgid "Running chktex..."
 msgstr "Køyrer ChkTeX ..."
 
-#: src/Buffer.cpp:2073
+#: src/Buffer.cpp:2077
 msgid "chktex failure"
 msgstr "ChkTeX feil"
 
-#: src/Buffer.cpp:2074
+#: src/Buffer.cpp:2078
 msgid "Could not run chktex successfully."
 msgstr "Kunne ikkje køyre ChkTeX."
 
-#: src/Buffer.cpp:2366
+#: src/Buffer.cpp:2370
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "LyX veit ikkje korleis ein eksporterer %1$s."
 
-#: src/Buffer.cpp:2446
+#: src/Buffer.cpp:2450
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Feil ved eksporten til %1$s."
 
-#: src/Buffer.cpp:2455
+#: src/Buffer.cpp:2459
 #, fuzzy
 msgid "Error generating literate programming code."
 msgstr "Noweb litterær programmering"
 
-#: src/Buffer.cpp:2534
+#: src/Buffer.cpp:2538
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "Finn ikkje greina: %1$s."
 
-#: src/Buffer.cpp:2569
+#: src/Buffer.cpp:2573
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "Grein\"%1$s\" finst frå før."
 
-#: src/Buffer.cpp:2635
+#: src/Buffer.cpp:2639
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Klarar ikkje å tyde \"%1$s\""
 
-#: src/Buffer.cpp:2642
+#: src/Buffer.cpp:2646
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Ukjent mål \"%1$s\""
 
-#: src/Buffer.cpp:2649
+#: src/Buffer.cpp:2653
 msgid "Error exporting to DVI."
 msgstr "Feil ved eksport til DVI"
 
-#: src/Buffer.cpp:2714 src/Exporter.cpp:45
+#: src/Buffer.cpp:2718 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -23199,85 +23210,85 @@ msgstr ""
 "\n"
 "Vil du skrive over dette dokumentet?"
 
-#: src/Buffer.cpp:2717 src/Exporter.cpp:48
+#: src/Buffer.cpp:2721 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Skriv over dokumentet?"
 
-#: src/Buffer.cpp:2734
+#: src/Buffer.cpp:2738
 msgid "Error running external commands."
 msgstr "Generell informasjon"
 
-#: src/Buffer.cpp:3556
+#: src/Buffer.cpp:3560
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Førehandsvising av kjeldekode for avsnittet %1$d"
 
-#: src/Buffer.cpp:3560
+#: src/Buffer.cpp:3564
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Førehandsvising av kjeldekode av avsnittet %1$s til %2$s"
 
-#: src/Buffer.cpp:3614
+#: src/Buffer.cpp:3618
 msgid "Preview source code"
 msgstr "Førehandsvising av kjeldekode"
 
-#: src/Buffer.cpp:3616
+#: src/Buffer.cpp:3620
 msgid "Preview preamble"
 msgstr "Førehandsvising av LaTeX fortekst"
 
-#: src/Buffer.cpp:3618
+#: src/Buffer.cpp:3622
 msgid "Preview body"
 msgstr "Førehandsvising av tekstkroppen"
 
-#: src/Buffer.cpp:3633
+#: src/Buffer.cpp:3637
 msgid "Plain text does not have a preamble."
 msgstr "Rein tekst har ikkje ein fortekst"
 
-#: src/Buffer.cpp:3736
+#: src/Buffer.cpp:3740
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatisk lagring %1$s"
 
-#: src/Buffer.cpp:3790
+#: src/Buffer.cpp:3794
 msgid "Autosave failed!"
 msgstr "Automatisk lagring feila!"
 
-#: src/Buffer.cpp:3851
+#: src/Buffer.cpp:3855
 msgid "Autosaving current document..."
 msgstr "Automatisk lagring av dette dokumentet..."
 
-#: src/Buffer.cpp:3972
+#: src/Buffer.cpp:3976
 msgid "Couldn't export file"
 msgstr "Kan ikkje eksportere dokumentet"
 
-#: src/Buffer.cpp:3973
+#: src/Buffer.cpp:3977
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "LyX veit ikkje korleis ein importerer %1$s."
 
-#: src/Buffer.cpp:4034 src/frontends/qt4/GuiView.cpp:2124
+#: src/Buffer.cpp:4038 src/frontends/qt4/GuiView.cpp:2124
 msgid "File name error"
 msgstr "Feil på filnamn"
 
-#: src/Buffer.cpp:4035
+#: src/Buffer.cpp:4039
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Stigen til dokumentet kan ikkje ha mellomrom i seg."
 
-#: src/Buffer.cpp:4137 src/Buffer.cpp:4151 src/frontends/qt4/GuiView.cpp:548
+#: src/Buffer.cpp:4141 src/Buffer.cpp:4155 src/frontends/qt4/GuiView.cpp:548
 msgid "Document export cancelled."
 msgstr "Eksport av dokumentet er stoppa."
 
-#: src/Buffer.cpp:4154
+#: src/Buffer.cpp:4158
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokumentet eksportert som %1$s til %2$s'"
 
-#: src/Buffer.cpp:4161
+#: src/Buffer.cpp:4165
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokumentet eksportert som %1$s"
 
-#: src/Buffer.cpp:4216
+#: src/Buffer.cpp:4220
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -23288,19 +23299,19 @@ msgstr ""
 "\n"
 "Gå tilbake til nødkopien?"
 
-#: src/Buffer.cpp:4219
+#: src/Buffer.cpp:4223
 msgid "Load emergency save?"
 msgstr "Last nødkopien av dokumentet?"
 
-#: src/Buffer.cpp:4220
+#: src/Buffer.cpp:4224
 msgid "&Recover"
 msgstr "&Gå tilbake"
 
-#: src/Buffer.cpp:4220
+#: src/Buffer.cpp:4224
 msgid "&Load Original"
 msgstr "&Last Original"
 
-#: src/Buffer.cpp:4231
+#: src/Buffer.cpp:4235
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -23309,15 +23320,15 @@ msgstr ""
 "Nødkopien er lasta, men originalen %1$s kan berre bli lest frå. Lagra derfor "
 "dokumentet med eit anna namn."
 
-#: src/Buffer.cpp:4238
+#: src/Buffer.cpp:4242
 msgid "Document was successfully recovered."
 msgstr "Dokumentet vart redda."
 
-#: src/Buffer.cpp:4240
+#: src/Buffer.cpp:4244
 msgid "Document was NOT successfully recovered."
 msgstr "Diverre kunne ikkje dokumentet reddast."
 
-#: src/Buffer.cpp:4241
+#: src/Buffer.cpp:4245
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -23326,27 +23337,27 @@ msgstr ""
 "Last nødkopien av dokumentet no?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:4245 src/Buffer.cpp:4257
+#: src/Buffer.cpp:4249 src/Buffer.cpp:4261
 msgid "Delete emergency file?"
 msgstr "Slett nødkopien av dokumentet?"
 
-#: src/Buffer.cpp:4246 src/Buffer.cpp:4259
+#: src/Buffer.cpp:4250 src/Buffer.cpp:4263
 msgid "&Keep"
 msgstr "&Hald fast"
 
-#: src/Buffer.cpp:4250
+#: src/Buffer.cpp:4254
 msgid "Emergency file deleted"
 msgstr "Nødkopien sletta"
 
-#: src/Buffer.cpp:4251
+#: src/Buffer.cpp:4255
 msgid "Do not forget to save your file now!"
 msgstr "Ikkje gløym å lagra dokumentet ditt no!"
 
-#: src/Buffer.cpp:4258
+#: src/Buffer.cpp:4262
 msgid "Remove emergency file now?"
 msgstr "Fjern nødkopien av dokumentet no?"
 
-#: src/Buffer.cpp:4281
+#: src/Buffer.cpp:4285
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -23357,19 +23368,19 @@ msgstr ""
 "\n"
 "Skal vi opna det istaden?"
 
-#: src/Buffer.cpp:4283
+#: src/Buffer.cpp:4287
 msgid "Load backup?"
 msgstr "Gå tilbake til reservekopi?"
 
-#: src/Buffer.cpp:4284
+#: src/Buffer.cpp:4288
 msgid "&Load backup"
 msgstr "Gå tilbake til &reservekopi"
 
-#: src/Buffer.cpp:4284
+#: src/Buffer.cpp:4288
 msgid "Load &original"
 msgstr "Last &original"
 
-#: src/Buffer.cpp:4294
+#: src/Buffer.cpp:4298
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -23378,16 +23389,16 @@ msgstr ""
 "Reservekopien er lasta, men originalen %1$s kan berre bli lest frå. Lagra "
 "derfor dokumentet under eit anna namn."
 
-#: src/Buffer.cpp:4634 src/insets/InsetCaption.cpp:376
+#: src/Buffer.cpp:4638 src/insets/InsetCaption.cpp:376
 msgid "Senseless!!! "
 msgstr "Meiningslaust! "
 
-#: src/Buffer.cpp:4854
+#: src/Buffer.cpp:4858
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokumentet %1$s er lasta på nytt."
 
-#: src/Buffer.cpp:4857
+#: src/Buffer.cpp:4861
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Kunne ikkje lasta dokumentet %1$s på nytt."
@@ -23494,7 +23505,7 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Dokumentklassa er ikkje tilgjengeleg"
 
-#: src/BufferParams.cpp:1817 src/insets/InsetCommandParams.cpp:406
+#: src/BufferParams.cpp:1817 src/insets/InsetCommandParams.cpp:408
 #: src/insets/InsetHyperlink.cpp:197
 msgid "Uncodable characters"
 msgstr "Det er teikn som ikkje kan kodast"
@@ -25507,15 +25518,15 @@ msgstr ", Teikn: 0x"
 msgid ", Boundary: "
 msgstr ", Grense: "
 
-#: src/Text2.cpp:408
+#: src/Text2.cpp:409
 msgid "No font change defined."
 msgstr "Det er ikkje definert noko skrifttype endring."
 
-#: src/Text2.cpp:448
+#: src/Text2.cpp:449
 msgid "Nothing to index!"
 msgstr "Ingenting å lage indeks av!"
 
-#: src/Text2.cpp:450
+#: src/Text2.cpp:451
 msgid "Cannot index more than one paragraph!"
 msgstr "Kan ikkje lage indeks av meir enn eit avsnitt!"
 
@@ -25535,23 +25546,23 @@ msgstr "Brukar regulære uttrykk frå før"
 msgid "Regexp editor mode"
 msgstr "Regulære uttrykk modus"
 
-#: src/Text3.cpp:1342
+#: src/Text3.cpp:1343
 msgid "Layout "
 msgstr "Stil "
 
-#: src/Text3.cpp:1343
+#: src/Text3.cpp:1344
 msgid " not known"
 msgstr " ukjent"
 
-#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1636
+#: src/Text3.cpp:1934 src/frontends/qt4/GuiApplication.cpp:1636
 msgid "Missing argument"
 msgstr "Manglande val"
 
-#: src/Text3.cpp:2089 src/Text3.cpp:2101
+#: src/Text3.cpp:2090 src/Text3.cpp:2102
 msgid "Character set"
 msgstr "Teiknsett"
 
-#: src/Text3.cpp:2319 src/Text3.cpp:2330
+#: src/Text3.cpp:2320 src/Text3.cpp:2331
 msgid "Paragraph layout set"
 msgstr "set avsnitt stil"
 
@@ -25811,13 +25822,13 @@ msgstr ""
 "Skal vi halde fram?"
 
 #: src/VCBackend.cpp:1514 src/VCBackend.cpp:1518
-#: src/frontends/qt4/FindAndReplace.cpp:376
+#: src/frontends/qt4/FindAndReplace.cpp:378
 #: src/frontends/qt4/GuiSearch.cpp:140
 msgid "&Yes"
 msgstr "&Ja"
 
 #: src/VCBackend.cpp:1514 src/VCBackend.cpp:1518
-#: src/frontends/qt4/FindAndReplace.cpp:376
+#: src/frontends/qt4/FindAndReplace.cpp:378
 #: src/frontends/qt4/GuiSearch.cpp:140
 msgid "&No"
 msgstr "&Nei"
@@ -26010,24 +26021,24 @@ msgstr ""
 msgid "Advanced search in progress (press ESC to cancel) . . ."
 msgstr "Utvida søk køyrer (trykk ESC for å avbryte)..."
 
-#: src/frontends/qt4/FindAndReplace.cpp:357
+#: src/frontends/qt4/FindAndReplace.cpp:359
 msgid "Advanced search cancelled by user"
 msgstr "Utvida søk avbroten av brukaren"
 
-#: src/frontends/qt4/FindAndReplace.cpp:375
+#: src/frontends/qt4/FindAndReplace.cpp:377
 #: src/frontends/qt4/GuiSearch.cpp:139
 msgid "Wrap search?"
 msgstr "Leita rundt?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:422
+#: src/frontends/qt4/FindAndReplace.cpp:428
 msgid "Nothing to search"
 msgstr "Har ingenting å leite etter"
 
-#: src/frontends/qt4/FindAndReplace.cpp:470
+#: src/frontends/qt4/FindAndReplace.cpp:476
 msgid "No open document(s) in which to search"
 msgstr "Ingen opne dokument å leite i"
 
-#: src/frontends/qt4/FindAndReplace.cpp:576
+#: src/frontends/qt4/FindAndReplace.cpp:582
 msgid "Advanced Find and Replace"
 msgstr "Utvida søk og erstatte"
 
@@ -29436,7 +29447,7 @@ msgstr "Ukjent valnamn: "
 msgid "Missing \\end_inset at this point: "
 msgstr "Manglar \\end_inset her: "
 
-#: src/insets/InsetCommandParams.cpp:407
+#: src/insets/InsetCommandParams.cpp:409
 #, c-format
 msgid ""
 "The following characters that are used in the inset %1$s are not\n"

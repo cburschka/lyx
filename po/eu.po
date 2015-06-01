@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_2.0.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-14 22:21-0400\n"
+"POT-Creation-Date: 2015-06-01 17:51-0400\n"
 "PO-Revision-Date: 2012-06-21 12:33+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -202,8 +202,8 @@ msgid "Remove the selected index"
 msgstr "Kendu hautatutako indizea"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:165
-#: src/frontends/qt4/ui/BranchesUi.ui:136 src/Buffer.cpp:4246
-#: src/Buffer.cpp:4259
+#: src/frontends/qt4/ui/BranchesUi.ui:136 src/Buffer.cpp:4250
+#: src/Buffer.cpp:4263
 msgid "&Remove"
 msgstr "&Kendu"
 
@@ -246,8 +246,8 @@ msgstr "Gehitu &denak"
 #: src/frontends/qt4/ui/DocumentUi.ui:84
 #: src/frontends/qt4/ui/CitationUi.ui:220
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1282
-#: src/Buffer.cpp:1351 src/Buffer.cpp:2718 src/Buffer.cpp:4220
-#: src/Buffer.cpp:4284 src/LyXVC.cpp:107 src/LyXVC.cpp:297
+#: src/Buffer.cpp:1355 src/Buffer.cpp:2722 src/Buffer.cpp:4224
+#: src/Buffer.cpp:4288 src/LyXVC.cpp:107 src/LyXVC.cpp:297
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:246
 #: src/frontends/qt4/GuiDocument.cpp:2106
@@ -3396,19 +3396,28 @@ msgid "&minutes"
 msgstr "minuturo"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
-msgid "&Save documents compressed by default"
+msgid ""
+"If this is checked, new documents will be saved in a compressed binary-"
+"format by default.\n"
+"Existing documents will still be saved in their current state (compressed or "
+"uncompressed)."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
+#, fuzzy
+msgid "&Save new documents compressed by default"
 msgstr "&Gorde dokumentuak konprimituta lehenetsi gisa"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:158
 msgid "Windows && work area"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:164
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:167
 #, fuzzy
 msgid "Open documents in &tabs"
 msgstr "&Ireki dokumentuak fitxetan"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:171
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:174
 msgid ""
 "Whether to open documents in an already running instance of LyX.\n"
 "(Set the LyXServer pipe path and restart LyX to enable this feature)"
@@ -3417,36 +3426,36 @@ msgstr ""
 "edo ez. Ezarri LyXServer kanalizazioaren bide-izena eta berrabiarazi LyX\n"
 "eginbide honek eragina izan dezan."
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:174
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:177
 #, fuzzy
 msgid "Use s&ingle instance"
 msgstr "Instantzia &bakuna"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:181
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
 msgid "Whether to place close button on each tab or only one in the top left."
 msgstr ""
 "Ixteko botoia fitxa bakoitzean kokatu edo soilik goi ezkerrean adierazten du."
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:187
 #, fuzzy
 msgid "Displa&y single close-tab button"
 msgstr "Fitxak &ixteko botoi bakuna"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:193
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:196
 msgid "Closing last &view:"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:204
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:207
 #, fuzzy
 msgid "Closes document"
 msgstr "Itxi dokumentua"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:209
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:212
 #, fuzzy
 msgid "Hides document"
 msgstr "Dokumentu berria"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:214
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:217
 msgid "Ask the user"
 msgstr ""
 
@@ -5391,8 +5400,8 @@ msgstr "Arrunta"
 #: lib/layouts/ijmpd.layout:134 lib/layouts/ijmpd.layout:153
 #: lib/layouts/ijmpd.layout:221 lib/layouts/ijmpd.layout:233
 #: lib/layouts/IEEEtran-TransMag.layout:22
-#: lib/layouts/IEEEtran-TransMag.layout:42 lib/layouts/broadway.layout:188
-#: lib/layouts/broadway.layout:203 lib/layouts/IEEEtran.layout:70
+#: lib/layouts/IEEEtran-TransMag.layout:42 lib/layouts/broadway.layout:190
+#: lib/layouts/broadway.layout:205 lib/layouts/IEEEtran.layout:70
 #: lib/layouts/IEEEtran.layout:121 lib/layouts/IEEEtran.layout:221
 #: lib/layouts/IEEEtran.layout:261 lib/layouts/IEEEtran.layout:325
 #: lib/layouts/agutex.layout:60 lib/layouts/agutex.layout:77
@@ -5522,7 +5531,7 @@ msgstr "GAKOAK:"
 #: lib/layouts/llncs.layout:183 lib/layouts/apa.layout:119
 #: lib/layouts/aastex.layout:141 lib/layouts/kluwer.layout:168
 #: lib/layouts/achemso.layout:82 lib/layouts/cl2emult.layout:60
-#: lib/layouts/ijmpd.layout:131 lib/layouts/broadway.layout:202
+#: lib/layouts/ijmpd.layout:131 lib/layouts/broadway.layout:204
 #: lib/layouts/IEEEtran.layout:118 lib/layouts/foils.layout:135
 #: lib/layouts/jasatex.layout:85 lib/layouts/ltugboat.layout:160
 #: lib/layouts/tufte-book.layout:39 lib/layouts/powerdot.layout:67
@@ -5549,7 +5558,7 @@ msgstr "Egilea"
 #: lib/layouts/apa.layout:41 lib/layouts/aastex.layout:129
 #: lib/layouts/kluwer.layout:113 lib/layouts/achemso.layout:56
 #: lib/layouts/cl2emult.layout:41 lib/layouts/ijmpd.layout:112
-#: lib/layouts/broadway.layout:187 lib/layouts/IEEEtran.layout:66
+#: lib/layouts/broadway.layout:189 lib/layouts/IEEEtran.layout:66
 #: lib/layouts/agutex.layout:56 lib/layouts/foils.layout:127
 #: lib/layouts/jasatex.layout:60 lib/layouts/ltugboat.layout:140
 #: lib/layouts/revtex4-1.layout:192 lib/layouts/tufte-book.layout:35
@@ -5717,7 +5726,7 @@ msgstr ""
 #: lib/layouts/apa.layout:25 lib/layouts/dtk.layout:32
 #: lib/layouts/aastex.layout:55 lib/layouts/kluwer.layout:34
 #: lib/layouts/achemso.layout:33 lib/layouts/cl2emult.layout:130
-#: lib/layouts/ijmpd.layout:28 lib/layouts/broadway.layout:174
+#: lib/layouts/ijmpd.layout:28 lib/layouts/broadway.layout:176
 #: lib/layouts/IEEEtran.layout:35 lib/layouts/agutex.layout:32
 #: lib/layouts/foils.layout:31 lib/layouts/jasatex.layout:36
 #: lib/layouts/g-brief2.layout:31 lib/layouts/ltugboat.layout:31
@@ -5751,7 +5760,7 @@ msgstr "Arrunta"
 #: lib/layouts/apa.layout:26 lib/layouts/dtk.layout:33
 #: lib/layouts/aastex.layout:56 lib/layouts/kluwer.layout:35
 #: lib/layouts/achemso.layout:34 lib/layouts/cl2emult.layout:131
-#: lib/layouts/ijmpd.layout:29 lib/layouts/broadway.layout:175
+#: lib/layouts/ijmpd.layout:29 lib/layouts/broadway.layout:177
 #: lib/layouts/IEEEtran.layout:36 lib/layouts/agutex.layout:33
 #: lib/layouts/foils.layout:32 lib/layouts/jasatex.layout:37
 #: lib/layouts/g-brief2.layout:32 lib/layouts/ltugboat.layout:32
@@ -6344,8 +6353,8 @@ msgstr "Tokia:"
 #: lib/layouts/scrclass.inc:198 lib/layouts/agu_stdtitle.inc:239
 #: lib/layouts/stdtitle.inc:54 lib/layouts/amsdefs.inc:70
 #: lib/layouts/db_stdtitle.inc:35 lib/layouts/svcommon.inc:369
-#: lib/ui/stdmenus.inc:387 lib/external_templates:343
-#: lib/external_templates:344 lib/external_templates:348
+#: lib/ui/stdmenus.inc:387 lib/external_templates:347
+#: lib/external_templates:348 lib/external_templates:352
 msgid "Date"
 msgstr "Data"
 
@@ -7239,7 +7248,7 @@ msgid "Verse"
 msgstr "Bertsoa"
 
 #: lib/layouts/egs.layout:239 lib/layouts/siamltex.layout:306
-#: lib/layouts/hollywood.layout:307 lib/layouts/broadway.layout:216
+#: lib/layouts/hollywood.layout:307 lib/layouts/broadway.layout:218
 #: lib/layouts/lyxmacros.inc:65
 msgid "Right Address"
 msgstr "Eskuin helbidea"
@@ -9628,7 +9637,7 @@ msgstr ""
 msgid "Scripts"
 msgstr "Azpiindizea"
 
-#: lib/layouts/hollywood.layout:41 lib/layouts/broadway.layout:32
+#: lib/layouts/hollywood.layout:41 lib/layouts/broadway.layout:34
 msgid "Dialogue"
 msgstr "Elkarrizketa"
 
@@ -9652,19 +9661,19 @@ msgstr "BARNE."
 msgid "EXT."
 msgstr "KANPO."
 
-#: lib/layouts/hollywood.layout:145 lib/layouts/broadway.layout:122
+#: lib/layouts/hollywood.layout:145 lib/layouts/broadway.layout:124
 msgid "Speaker"
 msgstr "Hizlaria"
 
-#: lib/layouts/hollywood.layout:160 lib/layouts/broadway.layout:135
+#: lib/layouts/hollywood.layout:160 lib/layouts/broadway.layout:137
 msgid "Parenthetical"
 msgstr "Parentesikoa"
 
-#: lib/layouts/hollywood.layout:171 lib/layouts/broadway.layout:146
+#: lib/layouts/hollywood.layout:171 lib/layouts/broadway.layout:148
 msgid "("
 msgstr "("
 
-#: lib/layouts/hollywood.layout:173 lib/layouts/broadway.layout:148
+#: lib/layouts/hollywood.layout:173 lib/layouts/broadway.layout:150
 msgid ")"
 msgstr ")"
 
@@ -9676,7 +9685,7 @@ msgstr "Jarraitzen"
 msgid "(continuing)"
 msgstr "(jarraitzen)"
 
-#: lib/layouts/hollywood.layout:209 lib/layouts/broadway.layout:43
+#: lib/layouts/hollywood.layout:209 lib/layouts/broadway.layout:45
 msgid "Narrative"
 msgstr "Kontakizuna"
 
@@ -10590,31 +10599,31 @@ msgstr ""
 msgid "Broadway"
 msgstr ""
 
-#: lib/layouts/broadway.layout:59
+#: lib/layouts/broadway.layout:61
 msgid "ACT"
 msgstr "AKTOA"
 
-#: lib/layouts/broadway.layout:71
+#: lib/layouts/broadway.layout:73
 msgid "ACT \\arabic{act}"
 msgstr "\\arabic{act}. AKTOA"
 
-#: lib/layouts/broadway.layout:75 lib/layouts/broadway.layout:102
+#: lib/layouts/broadway.layout:77 lib/layouts/broadway.layout:104
 msgid "SCENE"
 msgstr "ESZENA"
 
-#: lib/layouts/broadway.layout:87
+#: lib/layouts/broadway.layout:89
 msgid "SCENE \\arabic{scene}"
 msgstr "\\arabic{scene}. ESZENA"
 
-#: lib/layouts/broadway.layout:91
+#: lib/layouts/broadway.layout:93
 msgid "SCENE*"
 msgstr "ESZENA*"
 
-#: lib/layouts/broadway.layout:106 lib/layouts/broadway.layout:117
+#: lib/layouts/broadway.layout:108 lib/layouts/broadway.layout:119
 msgid "AT RISE:"
 msgstr "IGOTZEAN:"
 
-#: lib/layouts/broadway.layout:159 lib/layouts/broadway.layout:169
+#: lib/layouts/broadway.layout:161 lib/layouts/broadway.layout:171
 msgid "CURTAIN"
 msgstr "OIHALA"
 
@@ -13746,7 +13755,7 @@ msgstr ""
 "fitxategia."
 
 #: lib/layouts/lilypond.module:13 lib/layouts/lilypond.module:14
-#: lib/external_templates:251
+#: lib/external_templates:255
 msgid "LilyPond"
 msgstr "LilyPond"
 
@@ -15943,12 +15952,12 @@ msgid "Redo|R"
 msgstr "Berregin|B"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1277 src/mathed/InsetMathNest.cpp:598
+#: src/Text3.cpp:1278 src/mathed/InsetMathNest.cpp:598
 msgid "Cut"
 msgstr "Ebaki"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1282 src/mathed/InsetMathNest.cpp:607
+#: src/Text3.cpp:1283 src/mathed/InsetMathNest.cpp:607
 msgid "Copy"
 msgstr "Kopiatu"
 
@@ -16893,7 +16902,8 @@ msgid "LaTeX Log|L"
 msgstr "LaTeX-en egunkaria|L"
 
 #: lib/ui/stdmenus.inc:517
-msgid "Start Appendix Here|A"
+#, fuzzy
+msgid "Start Appendix Here|x"
 msgstr "Hasi eranskina hemen|h"
 
 #: lib/ui/stdmenus.inc:521
@@ -16905,7 +16915,8 @@ msgid "Update Master Document|a"
 msgstr "Eguneratu dokumentu maisua|E"
 
 #: lib/ui/stdmenus.inc:524
-msgid "Compressed|m"
+#, fuzzy
+msgid "Compressed|o"
 msgstr "Konprimituta|K"
 
 #: lib/ui/stdmenus.inc:525 lib/ui/stdcontext.inc:98 lib/ui/stdcontext.inc:110
@@ -22424,15 +22435,15 @@ msgstr ""
 msgid "Global fall"
 msgstr ""
 
-#: lib/external_templates:36
+#: lib/external_templates:40
 msgid "GnumericSpreadsheet"
 msgstr "Gnumeric kalkulu-orria"
 
-#: lib/external_templates:37 lib/external_templates:44
+#: lib/external_templates:41 lib/external_templates:48
 msgid "Spreadsheet"
 msgstr "Kalkulu-orria"
 
-#: lib/external_templates:39
+#: lib/external_templates:43
 msgid ""
 "A spreadsheet made with Gnumeric, LibreOffice, OpenOffice or Excel.\n"
 "It imports as a long table, so any length\n"
@@ -22447,39 +22458,39 @@ msgstr ""
 "Gnumeric aplikazioa behar da gnumeric eta excel formatukoen bihurketak "
 "lantzeko.\n"
 
-#: lib/external_templates:76
+#: lib/external_templates:80
 msgid "RasterImage"
 msgstr "Bilbe-irudia"
 
-#: lib/external_templates:79 lib/external_templates:85
+#: lib/external_templates:83 lib/external_templates:89
 msgid "Raster image"
 msgstr "Bilbe-irudia"
 
-#: lib/external_templates:84
+#: lib/external_templates:88
 msgid "A bitmap file.\n"
 msgstr "Bit-mapa fitxategia.\n"
 
-#: lib/external_templates:148
+#: lib/external_templates:152
 msgid "XFig"
 msgstr "XFig"
 
-#: lib/external_templates:149 lib/external_templates:152
+#: lib/external_templates:153 lib/external_templates:156
 msgid "Xfig figure"
 msgstr "Xfig irudia"
 
-#: lib/external_templates:151
+#: lib/external_templates:155
 msgid "An Xfig figure.\n"
 msgstr "Xfig irudia.\n"
 
-#: lib/external_templates:201
+#: lib/external_templates:205
 msgid "ChessDiagram"
 msgstr "Xake-taula"
 
-#: lib/external_templates:202 lib/external_templates:221
+#: lib/external_templates:206 lib/external_templates:225
 msgid "Chess diagram"
 msgstr "Xake-taula"
 
-#: lib/external_templates:204
+#: lib/external_templates:208
 msgid ""
 "A chess position diagram.\n"
 "This template will use XBoard to edit the position.\n"
@@ -22516,11 +22527,11 @@ msgstr ""
 "TeX-ek aurkitu ahal izateko, eta skak paketea\n"
 "instalatu beharko duzu CTAN-etik.\n"
 
-#: lib/external_templates:252 lib/external_templates:258
+#: lib/external_templates:256 lib/external_templates:262
 msgid "Lilypond typeset music"
 msgstr "Lilypond, musika konposaketa"
 
-#: lib/external_templates:254
+#: lib/external_templates:258
 msgid ""
 "Sheet music typeset by GNU LilyPond,\n"
 "converted to .pdf or .eps for inclusion\n"
@@ -22532,15 +22543,15 @@ msgstr ""
 ".eps erabiltzeko gutxienez  lilypond 2.6 bertsioa behar da\n"
 ".pdf erabiltzeko gutxienez  lilypond 2.9 bertsioa behar da\n"
 
-#: lib/external_templates:300
+#: lib/external_templates:304
 msgid "PDFPages"
 msgstr "PDFPages"
 
-#: lib/external_templates:301 lib/external_templates:315
+#: lib/external_templates:305 lib/external_templates:319
 msgid "PDF pages"
 msgstr "PDF orrialdeak"
 
-#: lib/external_templates:303
+#: lib/external_templates:307
 #, fuzzy
 msgid ""
 "Includes PDF documents, using the 'pdfpages' package.\n"
@@ -22569,7 +22580,7 @@ msgstr ""
 "Irakurri pdfpages paketearen dokumentazioa\n"
 "aukera eta xehetasun gehiagorako.\n"
 
-#: lib/external_templates:346
+#: lib/external_templates:350
 msgid ""
 "Today's date.\n"
 "Read 'info date' for more information.\n"
@@ -22577,15 +22588,15 @@ msgstr ""
 "Gaurko data.\n"
 "Irakurri 'info date' informazio gehiagorako.\n"
 
-#: lib/external_templates:375
+#: lib/external_templates:379
 msgid "Dia"
 msgstr "Dia"
 
-#: lib/external_templates:376 lib/external_templates:379
+#: lib/external_templates:380 lib/external_templates:383
 msgid "Dia diagram"
 msgstr "Dia diagrama"
 
-#: lib/external_templates:378
+#: lib/external_templates:382
 msgid "Dia diagram.\n"
 msgstr "Dia diagrama.\n"
 
@@ -23213,7 +23224,7 @@ msgstr ""
 "%1$s LyX-en berriagokoa da, eta lyx2lyx script-ak huts egin du hau "
 "bihurtzean."
 
-#: src/Buffer.cpp:1269 src/Buffer.cpp:4230 src/Buffer.cpp:4293
+#: src/Buffer.cpp:1269 src/Buffer.cpp:4234 src/Buffer.cpp:4297
 msgid "File is read-only"
 msgstr "Fitxategia irakurtzeko soilik da"
 
@@ -23236,19 +23247,19 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Gainidatzi aldatutako fitxategia?"
 
-#: src/Buffer.cpp:1282 src/Buffer.cpp:1351 src/Buffer.cpp:2718
+#: src/Buffer.cpp:1282 src/Buffer.cpp:1355 src/Buffer.cpp:2722
 #: src/Exporter.cpp:50 src/frontends/qt4/GuiClipboard.cpp:246
 #: src/frontends/qt4/GuiView.cpp:2151 src/frontends/qt4/GuiView.cpp:2338
 #: src/frontends/qt4/GuiView.cpp:2452
 msgid "&Overwrite"
 msgstr "&Gainidatzi"
 
-#: src/Buffer.cpp:1324 src/Buffer.cpp:1366
+#: src/Buffer.cpp:1328 src/Buffer.cpp:1370
 #, fuzzy
 msgid "Write failure"
 msgstr "chktex-ek huts egin du"
 
-#: src/Buffer.cpp:1325
+#: src/Buffer.cpp:1329
 #, c-format
 msgid ""
 "Cannot find temporary filename for:\n"
@@ -23256,11 +23267,11 @@ msgid ""
 "Even %2$s exists!"
 msgstr ""
 
-#: src/Buffer.cpp:1346
+#: src/Buffer.cpp:1350
 msgid "Backup failure"
 msgstr "Babeskopiak huts egin du"
 
-#: src/Buffer.cpp:1347
+#: src/Buffer.cpp:1351
 #, c-format
 msgid ""
 "Cannot create backup file:\n"
@@ -23269,7 +23280,7 @@ msgid ""
 "This will over-write the original file."
 msgstr ""
 
-#: src/Buffer.cpp:1367
+#: src/Buffer.cpp:1371
 #, c-format
 msgid ""
 "Cannot restore original file to:\n"
@@ -23278,60 +23289,60 @@ msgid ""
 "  %2$s."
 msgstr ""
 
-#: src/Buffer.cpp:1384
+#: src/Buffer.cpp:1388
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "%1$s dokumentua gordetzen ..."
 
-#: src/Buffer.cpp:1399
+#: src/Buffer.cpp:1403
 msgid " could not write file!"
 msgstr " ezin izan da fitxategia idatzi."
 
-#: src/Buffer.cpp:1407
+#: src/Buffer.cpp:1411
 msgid " done."
 msgstr " eginda."
 
-#: src/Buffer.cpp:1422
+#: src/Buffer.cpp:1426
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: %1$s dokumentua gordetzen saiatzen\n"
 
-#: src/Buffer.cpp:1432 src/Buffer.cpp:1445 src/Buffer.cpp:1459
+#: src/Buffer.cpp:1436 src/Buffer.cpp:1449 src/Buffer.cpp:1463
 #, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr "%1$s(e)n gordeta. Uffff.\n"
 
-#: src/Buffer.cpp:1435
+#: src/Buffer.cpp:1439
 msgid "Save failed! Trying again...\n"
 msgstr "Huts egin du gordetzean! Berriro saiatzen...\n"
 
-#: src/Buffer.cpp:1449
+#: src/Buffer.cpp:1453
 msgid "Save failed! Trying yet again...\n"
 msgstr "Huts egin du gordetzean! Beste behin saiatzen...\n"
 
-#: src/Buffer.cpp:1463
+#: src/Buffer.cpp:1467
 msgid "Save failed! Bummer. Document is lost."
 msgstr "Huts egin du gordetzean! Dokumentua galdu da."
 
-#: src/Buffer.cpp:1552
+#: src/Buffer.cpp:1556
 msgid "Iconv software exception Detected"
 msgstr "Iconv softwarearen salbuespena detektatu da"
 
-#: src/Buffer.cpp:1552
+#: src/Buffer.cpp:1556
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr "Egiaztatu zure kodeketaren (%1$s) euskarria ongi instalatuta dagoela"
 
-#: src/Buffer.cpp:1581
+#: src/Buffer.cpp:1585
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 "Ezin izan da LaTeX komandoa aurkitu '%1$s' karakterearentzako (kodeko %2$s "
 "puntua)"
 
-#: src/Buffer.cpp:1584
+#: src/Buffer.cpp:1588
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -23341,19 +23352,19 @@ msgstr ""
 "kodeketarekin.\n"
 "Dokumentua UTF8 kodeketara bihurtzeak lagun dezake."
 
-#: src/Buffer.cpp:1591
+#: src/Buffer.cpp:1595
 msgid "iconv conversion failed"
 msgstr "iconv bihurketak huts egin du"
 
-#: src/Buffer.cpp:1596
+#: src/Buffer.cpp:1600
 msgid "conversion failed"
 msgstr "bihurketak huts egin du"
 
-#: src/Buffer.cpp:1704
+#: src/Buffer.cpp:1708
 msgid "Uncodable character in file path"
 msgstr "Kodetu ezin daitekeen karakterea fitxategiaren bide-izenean"
 
-#: src/Buffer.cpp:1706
+#: src/Buffer.cpp:1710
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -23378,58 +23389,58 @@ msgstr ""
 "Aukeratu dokumentuari dagokion kodeketa egokia (utf8 bezalakoa)\n"
 "edo aldatu fitxategiaren bide-izena."
 
-#: src/Buffer.cpp:2059
+#: src/Buffer.cpp:2063
 msgid "Running chktex..."
 msgstr "chktex exekutatzen..."
 
-#: src/Buffer.cpp:2073
+#: src/Buffer.cpp:2077
 msgid "chktex failure"
 msgstr "chktex-ek huts egin du"
 
-#: src/Buffer.cpp:2074
+#: src/Buffer.cpp:2078
 msgid "Could not run chktex successfully."
 msgstr "Ezin izan da ongi chktex exekutatu."
 
-#: src/Buffer.cpp:2366
+#: src/Buffer.cpp:2370
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Ez dago informaziorik honako formatura esportatzeko: %1$s"
 
-#: src/Buffer.cpp:2446
+#: src/Buffer.cpp:2450
 #, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Errorea honako formatura esportatzean: %1$s."
 
-#: src/Buffer.cpp:2455
+#: src/Buffer.cpp:2459
 #, fuzzy
 msgid "Error generating literate programming code."
 msgstr "Errorea pixmap-a sortzean."
 
-#: src/Buffer.cpp:2534
+#: src/Buffer.cpp:2538
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "\"%1$s\" adarra ez da existitzen."
 
-#: src/Buffer.cpp:2569
+#: src/Buffer.cpp:2573
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "\"%1$s\" adarra badago lehendik ere."
 
-#: src/Buffer.cpp:2635
+#: src/Buffer.cpp:2639
 #, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Ezin da \"%1$s\" analizatu"
 
-#: src/Buffer.cpp:2642
+#: src/Buffer.cpp:2646
 #, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "\"%1$s\" helburu ezezaguna"
 
-#: src/Buffer.cpp:2649
+#: src/Buffer.cpp:2653
 msgid "Error exporting to DVI."
 msgstr "Errorea DVI-ra esportatzean."
 
-#: src/Buffer.cpp:2714 src/Exporter.cpp:45
+#: src/Buffer.cpp:2718 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -23440,85 +23451,85 @@ msgstr ""
 "\n"
 "Nahi duzu fitxategi hori gainidaztea?"
 
-#: src/Buffer.cpp:2717 src/Exporter.cpp:48
+#: src/Buffer.cpp:2721 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Gainidatzi fitxategia?"
 
-#: src/Buffer.cpp:2734
+#: src/Buffer.cpp:2738
 msgid "Error running external commands."
 msgstr "Errorea kanpoko komandoak exekutatzean."
 
-#: src/Buffer.cpp:3556
+#: src/Buffer.cpp:3560
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Aurreikusi iturburuko kodea %1$d. paragrafoarentzako"
 
-#: src/Buffer.cpp:3560
+#: src/Buffer.cpp:3564
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Aurreikusi iturburuko kodea %1$s. paragrafotik %2$s.(e)ra"
 
-#: src/Buffer.cpp:3614
+#: src/Buffer.cpp:3618
 msgid "Preview source code"
 msgstr "Aurreikusi iturburuko kodea"
 
-#: src/Buffer.cpp:3616
+#: src/Buffer.cpp:3620
 msgid "Preview preamble"
 msgstr "Aurreikusi atarikoa"
 
-#: src/Buffer.cpp:3618
+#: src/Buffer.cpp:3622
 msgid "Preview body"
 msgstr "Aurreikusi gorputza"
 
-#: src/Buffer.cpp:3633
+#: src/Buffer.cpp:3637
 msgid "Plain text does not have a preamble."
 msgstr ""
 
-#: src/Buffer.cpp:3736
+#: src/Buffer.cpp:3740
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Autogordetzea %1$s"
 
-#: src/Buffer.cpp:3790
+#: src/Buffer.cpp:3794
 msgid "Autosave failed!"
 msgstr "Huts egin du automatikoki gordetzean!"
 
-#: src/Buffer.cpp:3851
+#: src/Buffer.cpp:3855
 msgid "Autosaving current document..."
 msgstr "Uneko dokumentua autogordetzen..."
 
-#: src/Buffer.cpp:3972
+#: src/Buffer.cpp:3976
 msgid "Couldn't export file"
 msgstr "Ezin izan da fitxategia esportatu"
 
-#: src/Buffer.cpp:3973
+#: src/Buffer.cpp:3977
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Ez dago informaziorik %1$s formatua esportatzeko."
 
-#: src/Buffer.cpp:4034 src/frontends/qt4/GuiView.cpp:2124
+#: src/Buffer.cpp:4038 src/frontends/qt4/GuiView.cpp:2124
 msgid "File name error"
 msgstr "Fitxategi-izenean errorea"
 
-#: src/Buffer.cpp:4035
+#: src/Buffer.cpp:4039
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Dokumentuaren bide-izenak ezin du zuriunerik izan."
 
-#: src/Buffer.cpp:4137 src/Buffer.cpp:4151 src/frontends/qt4/GuiView.cpp:548
+#: src/Buffer.cpp:4141 src/Buffer.cpp:4155 src/frontends/qt4/GuiView.cpp:548
 msgid "Document export cancelled."
 msgstr "Dokumentua esportatzea bertan behera utzi da."
 
-#: src/Buffer.cpp:4154
+#: src/Buffer.cpp:4158
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokumentua %1$s gisa esportatuta '%2$s' fitxategira"
 
-#: src/Buffer.cpp:4161
+#: src/Buffer.cpp:4165
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokumentua %1$s gisa esportatuta"
 
-#: src/Buffer.cpp:4216
+#: src/Buffer.cpp:4220
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -23529,19 +23540,19 @@ msgstr ""
 "\n"
 "Larrialdian gordetakoa berreskuratu?"
 
-#: src/Buffer.cpp:4219
+#: src/Buffer.cpp:4223
 msgid "Load emergency save?"
 msgstr "Kargatu larrialdian gordetakoa?"
 
-#: src/Buffer.cpp:4220
+#: src/Buffer.cpp:4224
 msgid "&Recover"
 msgstr "&Berreskuratu"
 
-#: src/Buffer.cpp:4220
+#: src/Buffer.cpp:4224
 msgid "&Load Original"
 msgstr "&Kargatu jatorrizkoa"
 
-#: src/Buffer.cpp:4231
+#: src/Buffer.cpp:4235
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -23551,15 +23562,15 @@ msgstr ""
 "irakurtzeko soilik gisa markatuta dago. Ziurtatu zaitez dokumentua beste "
 "fitxategi batean gordetzeaz."
 
-#: src/Buffer.cpp:4238
+#: src/Buffer.cpp:4242
 msgid "Document was successfully recovered."
 msgstr "Dokumentua ongi berreskuratu da."
 
-#: src/Buffer.cpp:4240
+#: src/Buffer.cpp:4244
 msgid "Document was NOT successfully recovered."
 msgstr "Dokumentua EZ da ongi berreskuratu."
 
-#: src/Buffer.cpp:4241
+#: src/Buffer.cpp:4245
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -23568,27 +23579,27 @@ msgstr ""
 "Kendu larrialdiko fitxategia orain?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:4245 src/Buffer.cpp:4257
+#: src/Buffer.cpp:4249 src/Buffer.cpp:4261
 msgid "Delete emergency file?"
 msgstr "Ezabatu larrialdiko fitxategia?"
 
-#: src/Buffer.cpp:4246 src/Buffer.cpp:4259
+#: src/Buffer.cpp:4250 src/Buffer.cpp:4263
 msgid "&Keep"
 msgstr "&Mantendu"
 
-#: src/Buffer.cpp:4250
+#: src/Buffer.cpp:4254
 msgid "Emergency file deleted"
 msgstr "Larrialdiko fitxategia ezabatuta"
 
-#: src/Buffer.cpp:4251
+#: src/Buffer.cpp:4255
 msgid "Do not forget to save your file now!"
 msgstr "Ez zaitez ahaztu zure fitxategia orain gordetzeaz."
 
-#: src/Buffer.cpp:4258
+#: src/Buffer.cpp:4262
 msgid "Remove emergency file now?"
 msgstr "Kendu larrialdiko fitxategia orain?"
 
-#: src/Buffer.cpp:4281
+#: src/Buffer.cpp:4285
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -23599,19 +23610,19 @@ msgstr ""
 "\n"
 "Kargatu babeskopia horren ordez?"
 
-#: src/Buffer.cpp:4283
+#: src/Buffer.cpp:4287
 msgid "Load backup?"
 msgstr "Kargatu babeskopia?"
 
-#: src/Buffer.cpp:4284
+#: src/Buffer.cpp:4288
 msgid "&Load backup"
 msgstr "&Kargatu babeskopia"
 
-#: src/Buffer.cpp:4284
+#: src/Buffer.cpp:4288
 msgid "Load &original"
 msgstr "Kargatu &jatorrizkoa"
 
-#: src/Buffer.cpp:4294
+#: src/Buffer.cpp:4298
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -23621,16 +23632,16 @@ msgstr ""
 "irakurtzeko soilik gisa markatuta dago. Ziurtatu zaitez dokumentua beste "
 "fitxategi batean gordetzeaz."
 
-#: src/Buffer.cpp:4634 src/insets/InsetCaption.cpp:376
+#: src/Buffer.cpp:4638 src/insets/InsetCaption.cpp:376
 msgid "Senseless!!! "
 msgstr "Zentzugabea. "
 
-#: src/Buffer.cpp:4854
+#: src/Buffer.cpp:4858
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "%1$s dokumentua kargatuta."
 
-#: src/Buffer.cpp:4857
+#: src/Buffer.cpp:4861
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Ezin izan da %1$s dokumentua birkargatu."
@@ -23746,7 +23757,7 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Dokumentu-klasea ez dago erabilgarri"
 
-#: src/BufferParams.cpp:1817 src/insets/InsetCommandParams.cpp:406
+#: src/BufferParams.cpp:1817 src/insets/InsetCommandParams.cpp:408
 #: src/insets/InsetHyperlink.cpp:197
 msgid "Uncodable characters"
 msgstr "Kodetu ezin daitezkeen karaktereak"
@@ -25804,15 +25815,15 @@ msgstr ", karakterea: 0x"
 msgid ", Boundary: "
 msgstr ", muga: "
 
-#: src/Text2.cpp:408
+#: src/Text2.cpp:409
 msgid "No font change defined."
 msgstr "Ez da letra-tipoaren aldaketarik definitu."
 
-#: src/Text2.cpp:448
+#: src/Text2.cpp:449
 msgid "Nothing to index!"
 msgstr "Ezer ez indexatzeko!"
 
-#: src/Text2.cpp:450
+#: src/Text2.cpp:451
 msgid "Cannot index more than one paragraph!"
 msgstr "Ezin da paragrafo bat baino gehiago indexatu!"
 
@@ -25832,23 +25843,23 @@ msgstr "Jadanik adierazpen erregularren moduan"
 msgid "Regexp editor mode"
 msgstr "Adi. erregularraren editore-modua"
 
-#: src/Text3.cpp:1342
+#: src/Text3.cpp:1343
 msgid "Layout "
 msgstr "Diseinua "
 
-#: src/Text3.cpp:1343
+#: src/Text3.cpp:1344
 msgid " not known"
 msgstr " ezezaguna"
 
-#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1636
+#: src/Text3.cpp:1934 src/frontends/qt4/GuiApplication.cpp:1636
 msgid "Missing argument"
 msgstr "Argumentua falta da"
 
-#: src/Text3.cpp:2089 src/Text3.cpp:2101
+#: src/Text3.cpp:2090 src/Text3.cpp:2102
 msgid "Character set"
 msgstr "Karaktere-multzoa"
 
-#: src/Text3.cpp:2319 src/Text3.cpp:2330
+#: src/Text3.cpp:2320 src/Text3.cpp:2331
 msgid "Paragraph layout set"
 msgstr "Paragrafo-estiloa ezarria"
 
@@ -26113,13 +26124,13 @@ msgstr ""
 "Jarraitu?"
 
 #: src/VCBackend.cpp:1514 src/VCBackend.cpp:1518
-#: src/frontends/qt4/FindAndReplace.cpp:376
+#: src/frontends/qt4/FindAndReplace.cpp:378
 #: src/frontends/qt4/GuiSearch.cpp:140
 msgid "&Yes"
 msgstr "&Bai"
 
 #: src/VCBackend.cpp:1514 src/VCBackend.cpp:1518
-#: src/frontends/qt4/FindAndReplace.cpp:376
+#: src/frontends/qt4/FindAndReplace.cpp:378
 #: src/frontends/qt4/GuiSearch.cpp:140
 msgid "&No"
 msgstr "&Ez"
@@ -26318,24 +26329,24 @@ msgid "Advanced search in progress (press ESC to cancel) . . ."
 msgstr ""
 "Bilaketa aurreratuaren aurrerapena (sakatu Ihes bertan behera uzteko) . . ."
 
-#: src/frontends/qt4/FindAndReplace.cpp:357
+#: src/frontends/qt4/FindAndReplace.cpp:359
 msgid "Advanced search cancelled by user"
 msgstr "Bilaketa aurreratua erabiltzaileak utzita"
 
-#: src/frontends/qt4/FindAndReplace.cpp:375
+#: src/frontends/qt4/FindAndReplace.cpp:377
 #: src/frontends/qt4/GuiSearch.cpp:139
 msgid "Wrap search?"
 msgstr "Itzulbiratu bilaketa?"
 
-#: src/frontends/qt4/FindAndReplace.cpp:422
+#: src/frontends/qt4/FindAndReplace.cpp:428
 msgid "Nothing to search"
 msgstr "Ezin ezer bilatzeko"
 
-#: src/frontends/qt4/FindAndReplace.cpp:470
+#: src/frontends/qt4/FindAndReplace.cpp:476
 msgid "No open document(s) in which to search"
 msgstr "Ez dago dokumenturik irekita hor bilatzeko."
 
-#: src/frontends/qt4/FindAndReplace.cpp:576
+#: src/frontends/qt4/FindAndReplace.cpp:582
 msgid "Advanced Find and Replace"
 msgstr "Bilatu eta ordeztu aurreratua"
 
@@ -29779,7 +29790,7 @@ msgstr "Parametroaren izena ezezaguna: "
 msgid "Missing \\end_inset at this point: "
 msgstr "\\end_inset falta da puntu honetan: "
 
-#: src/insets/InsetCommandParams.cpp:407
+#: src/insets/InsetCommandParams.cpp:409
 #, c-format
 msgid ""
 "The following characters that are used in the inset %1$s are not\n"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-14 22:21-0400\n"
+"POT-Creation-Date: 2015-06-01 17:51-0400\n"
 "PO-Revision-Date: 2011-04-26 21:20+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -200,8 +200,8 @@ msgid "Remove the selected index"
 msgstr "Kiválasztott adatbázis eltávolítása"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:165
-#: src/frontends/qt4/ui/BranchesUi.ui:136 src/Buffer.cpp:4246
-#: src/Buffer.cpp:4259
+#: src/frontends/qt4/ui/BranchesUi.ui:136 src/Buffer.cpp:4250
+#: src/Buffer.cpp:4263
 msgid "&Remove"
 msgstr "E&ltávolít"
 
@@ -245,8 +245,8 @@ msgstr ""
 #: src/frontends/qt4/ui/DocumentUi.ui:84
 #: src/frontends/qt4/ui/CitationUi.ui:220
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1282
-#: src/Buffer.cpp:1351 src/Buffer.cpp:2718 src/Buffer.cpp:4220
-#: src/Buffer.cpp:4284 src/LyXVC.cpp:107 src/LyXVC.cpp:297
+#: src/Buffer.cpp:1355 src/Buffer.cpp:2722 src/Buffer.cpp:4224
+#: src/Buffer.cpp:4288 src/LyXVC.cpp:107 src/LyXVC.cpp:297
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:246
 #: src/frontends/qt4/GuiDocument.cpp:2106
@@ -3406,54 +3406,62 @@ msgid "&minutes"
 msgstr "percben"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
+msgid ""
+"If this is checked, new documents will be saved in a compressed binary-"
+"format by default.\n"
+"Existing documents will still be saved in their current state (compressed or "
+"uncompressed)."
+msgstr ""
+
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
 #, fuzzy
-msgid "&Save documents compressed by default"
+msgid "&Save new documents compressed by default"
 msgstr "Mentsd dokumentum alapértéknek"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:158
 msgid "Windows && work area"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:164
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:167
 #, fuzzy
 msgid "Open documents in &tabs"
 msgstr "&Dokumentumok megnyitása, füleken"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:171
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:174
 msgid ""
 "Whether to open documents in an already running instance of LyX.\n"
 "(Set the LyXServer pipe path and restart LyX to enable this feature)"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:174
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:177
 #, fuzzy
 msgid "Use s&ingle instance"
 msgstr "Aposztrof|p"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:181
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
 msgid "Whether to place close button on each tab or only one in the top left."
 msgstr "Bezáró gomb elhelyezése minden fülre, vagy egy közös balra felül."
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:187
 #, fuzzy
 msgid "Displa&y single close-tab button"
 msgstr "&Szimpla bezáró gomb"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:193
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:196
 msgid "Closing last &view:"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:204
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:207
 #, fuzzy
 msgid "Closes document"
 msgstr "Új dokumentum"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:209
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:212
 #, fuzzy
 msgid "Hides document"
 msgstr "Új dokumentum"
 
-#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:214
+#: src/frontends/qt4/ui/PrefDocHandlingUi.ui:217
 msgid "Ask the user"
 msgstr ""
 
@@ -5410,8 +5418,8 @@ msgstr "Normál szöveg"
 #: lib/layouts/ijmpd.layout:134 lib/layouts/ijmpd.layout:153
 #: lib/layouts/ijmpd.layout:221 lib/layouts/ijmpd.layout:233
 #: lib/layouts/IEEEtran-TransMag.layout:22
-#: lib/layouts/IEEEtran-TransMag.layout:42 lib/layouts/broadway.layout:188
-#: lib/layouts/broadway.layout:203 lib/layouts/IEEEtran.layout:70
+#: lib/layouts/IEEEtran-TransMag.layout:42 lib/layouts/broadway.layout:190
+#: lib/layouts/broadway.layout:205 lib/layouts/IEEEtran.layout:70
 #: lib/layouts/IEEEtran.layout:121 lib/layouts/IEEEtran.layout:221
 #: lib/layouts/IEEEtran.layout:261 lib/layouts/IEEEtran.layout:325
 #: lib/layouts/agutex.layout:60 lib/layouts/agutex.layout:77
@@ -5541,7 +5549,7 @@ msgstr "KULCSSZAVAK:"
 #: lib/layouts/llncs.layout:183 lib/layouts/apa.layout:119
 #: lib/layouts/aastex.layout:141 lib/layouts/kluwer.layout:168
 #: lib/layouts/achemso.layout:82 lib/layouts/cl2emult.layout:60
-#: lib/layouts/ijmpd.layout:131 lib/layouts/broadway.layout:202
+#: lib/layouts/ijmpd.layout:131 lib/layouts/broadway.layout:204
 #: lib/layouts/IEEEtran.layout:118 lib/layouts/foils.layout:135
 #: lib/layouts/jasatex.layout:85 lib/layouts/ltugboat.layout:160
 #: lib/layouts/tufte-book.layout:39 lib/layouts/powerdot.layout:67
@@ -5568,7 +5576,7 @@ msgstr "Szerző"
 #: lib/layouts/apa.layout:41 lib/layouts/aastex.layout:129
 #: lib/layouts/kluwer.layout:113 lib/layouts/achemso.layout:56
 #: lib/layouts/cl2emult.layout:41 lib/layouts/ijmpd.layout:112
-#: lib/layouts/broadway.layout:187 lib/layouts/IEEEtran.layout:66
+#: lib/layouts/broadway.layout:189 lib/layouts/IEEEtran.layout:66
 #: lib/layouts/agutex.layout:56 lib/layouts/foils.layout:127
 #: lib/layouts/jasatex.layout:60 lib/layouts/ltugboat.layout:140
 #: lib/layouts/revtex4-1.layout:192 lib/layouts/tufte-book.layout:35
@@ -5736,7 +5744,7 @@ msgstr ""
 #: lib/layouts/apa.layout:25 lib/layouts/dtk.layout:32
 #: lib/layouts/aastex.layout:55 lib/layouts/kluwer.layout:34
 #: lib/layouts/achemso.layout:33 lib/layouts/cl2emult.layout:130
-#: lib/layouts/ijmpd.layout:28 lib/layouts/broadway.layout:174
+#: lib/layouts/ijmpd.layout:28 lib/layouts/broadway.layout:176
 #: lib/layouts/IEEEtran.layout:35 lib/layouts/agutex.layout:32
 #: lib/layouts/foils.layout:31 lib/layouts/jasatex.layout:36
 #: lib/layouts/g-brief2.layout:31 lib/layouts/ltugboat.layout:31
@@ -5770,7 +5778,7 @@ msgstr "Normál szöveg"
 #: lib/layouts/apa.layout:26 lib/layouts/dtk.layout:33
 #: lib/layouts/aastex.layout:56 lib/layouts/kluwer.layout:35
 #: lib/layouts/achemso.layout:34 lib/layouts/cl2emult.layout:131
-#: lib/layouts/ijmpd.layout:29 lib/layouts/broadway.layout:175
+#: lib/layouts/ijmpd.layout:29 lib/layouts/broadway.layout:177
 #: lib/layouts/IEEEtran.layout:36 lib/layouts/agutex.layout:33
 #: lib/layouts/foils.layout:32 lib/layouts/jasatex.layout:37
 #: lib/layouts/g-brief2.layout:32 lib/layouts/ltugboat.layout:32
@@ -6369,8 +6377,8 @@ msgstr "Hely:"
 #: lib/layouts/scrclass.inc:198 lib/layouts/agu_stdtitle.inc:239
 #: lib/layouts/stdtitle.inc:54 lib/layouts/amsdefs.inc:70
 #: lib/layouts/db_stdtitle.inc:35 lib/layouts/svcommon.inc:369
-#: lib/ui/stdmenus.inc:387 lib/external_templates:343
-#: lib/external_templates:344 lib/external_templates:348
+#: lib/ui/stdmenus.inc:387 lib/external_templates:347
+#: lib/external_templates:348 lib/external_templates:352
 msgid "Date"
 msgstr "Dátum"
 
@@ -7264,7 +7272,7 @@ msgid "Verse"
 msgstr "Vers"
 
 #: lib/layouts/egs.layout:239 lib/layouts/siamltex.layout:306
-#: lib/layouts/hollywood.layout:307 lib/layouts/broadway.layout:216
+#: lib/layouts/hollywood.layout:307 lib/layouts/broadway.layout:218
 #: lib/layouts/lyxmacros.inc:65
 msgid "Right Address"
 msgstr "Jobb cím"
@@ -9674,7 +9682,7 @@ msgstr ""
 msgid "Scripts"
 msgstr "Alsó index"
 
-#: lib/layouts/hollywood.layout:41 lib/layouts/broadway.layout:32
+#: lib/layouts/hollywood.layout:41 lib/layouts/broadway.layout:34
 msgid "Dialogue"
 msgstr "Párbeszéd"
 
@@ -9698,19 +9706,19 @@ msgstr "Belső színhely"
 msgid "EXT."
 msgstr "Külső színhely"
 
-#: lib/layouts/hollywood.layout:145 lib/layouts/broadway.layout:122
+#: lib/layouts/hollywood.layout:145 lib/layouts/broadway.layout:124
 msgid "Speaker"
 msgstr "Beszélő"
 
-#: lib/layouts/hollywood.layout:160 lib/layouts/broadway.layout:135
+#: lib/layouts/hollywood.layout:160 lib/layouts/broadway.layout:137
 msgid "Parenthetical"
 msgstr "Közbevetett"
 
-#: lib/layouts/hollywood.layout:171 lib/layouts/broadway.layout:146
+#: lib/layouts/hollywood.layout:171 lib/layouts/broadway.layout:148
 msgid "("
 msgstr "("
 
-#: lib/layouts/hollywood.layout:173 lib/layouts/broadway.layout:148
+#: lib/layouts/hollywood.layout:173 lib/layouts/broadway.layout:150
 msgid ")"
 msgstr ")"
 
@@ -9722,7 +9730,7 @@ msgstr "Folytatás"
 msgid "(continuing)"
 msgstr "(folytatás)"
 
-#: lib/layouts/hollywood.layout:209 lib/layouts/broadway.layout:43
+#: lib/layouts/hollywood.layout:209 lib/layouts/broadway.layout:45
 msgid "Narrative"
 msgstr "Elbeszélés"
 
@@ -10641,31 +10649,31 @@ msgstr ""
 msgid "Broadway"
 msgstr ""
 
-#: lib/layouts/broadway.layout:59
+#: lib/layouts/broadway.layout:61
 msgid "ACT"
 msgstr "Cselekvés"
 
-#: lib/layouts/broadway.layout:71
+#: lib/layouts/broadway.layout:73
 msgid "ACT \\arabic{act}"
 msgstr "\\arabic{act}. cselekvés"
 
-#: lib/layouts/broadway.layout:75 lib/layouts/broadway.layout:102
+#: lib/layouts/broadway.layout:77 lib/layouts/broadway.layout:104
 msgid "SCENE"
 msgstr "SZÍNHELY"
 
-#: lib/layouts/broadway.layout:87
+#: lib/layouts/broadway.layout:89
 msgid "SCENE \\arabic{scene}"
 msgstr "\\arabic{scene}. SZÍNHELY "
 
-#: lib/layouts/broadway.layout:91
+#: lib/layouts/broadway.layout:93
 msgid "SCENE*"
 msgstr "SZÍNHELY*"
 
-#: lib/layouts/broadway.layout:106 lib/layouts/broadway.layout:117
+#: lib/layouts/broadway.layout:108 lib/layouts/broadway.layout:119
 msgid "AT RISE:"
 msgstr "EMELKEDÉS(?):"
 
-#: lib/layouts/broadway.layout:159 lib/layouts/broadway.layout:169
+#: lib/layouts/broadway.layout:161 lib/layouts/broadway.layout:171
 msgid "CURTAIN"
 msgstr "FÜGGÖNY"
 
@@ -13836,7 +13844,7 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/lilypond.module:13 lib/layouts/lilypond.module:14
-#: lib/external_templates:251
+#: lib/external_templates:255
 msgid "LilyPond"
 msgstr "LilyPond"
 
@@ -16035,12 +16043,12 @@ msgid "Redo|R"
 msgstr "Mégis alkalmaz|M"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1277 src/mathed/InsetMathNest.cpp:598
+#: src/Text3.cpp:1278 src/mathed/InsetMathNest.cpp:598
 msgid "Cut"
 msgstr "Kivágás"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1282 src/mathed/InsetMathNest.cpp:607
+#: src/Text3.cpp:1283 src/mathed/InsetMathNest.cpp:607
 msgid "Copy"
 msgstr "Másolás"
 
@@ -17004,7 +17012,8 @@ msgid "LaTeX Log|L"
 msgstr "LaTeX napló|X"
 
 #: lib/ui/stdmenus.inc:517
-msgid "Start Appendix Here|A"
+#, fuzzy
+msgid "Start Appendix Here|x"
 msgstr "Kezd itt a függeléket|f"
 
 #: lib/ui/stdmenus.inc:521
@@ -17018,7 +17027,8 @@ msgid "Update Master Document|a"
 msgstr "Fődokumentum"
 
 #: lib/ui/stdmenus.inc:524
-msgid "Compressed|m"
+#, fuzzy
+msgid "Compressed|o"
 msgstr "Tömörített|m"
 
 #: lib/ui/stdmenus.inc:525 lib/ui/stdcontext.inc:98 lib/ui/stdcontext.inc:110
@@ -22579,15 +22589,15 @@ msgstr "&Globális nyelv"
 msgid "Global fall"
 msgstr "&Globális nyelv"
 
-#: lib/external_templates:36
+#: lib/external_templates:40
 msgid "GnumericSpreadsheet"
 msgstr "GnumericMunkafüzet"
 
-#: lib/external_templates:37 lib/external_templates:44
+#: lib/external_templates:41 lib/external_templates:48
 msgid "Spreadsheet"
 msgstr "Munkafüzet"
 
-#: lib/external_templates:39
+#: lib/external_templates:43
 #, fuzzy
 msgid ""
 "A spreadsheet made with Gnumeric, LibreOffice, OpenOffice or Excel.\n"
@@ -22602,42 +22612,42 @@ msgstr ""
 "A gnumeric program szükséges, mind gnumeric és excel fájlok\n"
 "átalakításához.\n"
 
-#: lib/external_templates:76
+#: lib/external_templates:80
 msgid "RasterImage"
 msgstr "RasterImage"
 
-#: lib/external_templates:79 lib/external_templates:85
+#: lib/external_templates:83 lib/external_templates:89
 #, fuzzy
 msgid "Raster image"
 msgstr "RasterImage"
 
-#: lib/external_templates:84
+#: lib/external_templates:88
 msgid "A bitmap file.\n"
 msgstr "Egy bitmap fájl.\n"
 
-#: lib/external_templates:148
+#: lib/external_templates:152
 msgid "XFig"
 msgstr "XFig"
 
-#: lib/external_templates:149 lib/external_templates:152
+#: lib/external_templates:153 lib/external_templates:156
 #, fuzzy
 msgid "Xfig figure"
 msgstr "Egy Xfig ábra.\n"
 
-#: lib/external_templates:151
+#: lib/external_templates:155
 msgid "An Xfig figure.\n"
 msgstr "Egy Xfig ábra.\n"
 
-#: lib/external_templates:201
+#: lib/external_templates:205
 msgid "ChessDiagram"
 msgstr "SakktáblaDiagram"
 
-#: lib/external_templates:202 lib/external_templates:221
+#: lib/external_templates:206 lib/external_templates:225
 #, fuzzy
 msgid "Chess diagram"
 msgstr "SakktáblaDiagram"
 
-#: lib/external_templates:204
+#: lib/external_templates:208
 msgid ""
 "A chess position diagram.\n"
 "This template will use XBoard to edit the position.\n"
@@ -22675,11 +22685,11 @@ msgstr ""
 "hogy a TeX megtalálja, és telepítenie kell a\n"
 "skak csomagot a CTAN-ról.\n"
 
-#: lib/external_templates:252 lib/external_templates:258
+#: lib/external_templates:256 lib/external_templates:262
 msgid "Lilypond typeset music"
 msgstr "Lilypond zene szedése"
 
-#: lib/external_templates:254
+#: lib/external_templates:258
 msgid ""
 "Sheet music typeset by GNU LilyPond,\n"
 "converted to .pdf or .eps for inclusion\n"
@@ -22691,16 +22701,16 @@ msgstr ""
 ".eps használatához legalább lilypond 2.6-ra van szükség\n"
 ".pdf használatához legalább lilypond 2.9-ra van szükség\n"
 
-#: lib/external_templates:300
+#: lib/external_templates:304
 msgid "PDFPages"
 msgstr "PDFoldalak"
 
-#: lib/external_templates:301 lib/external_templates:315
+#: lib/external_templates:305 lib/external_templates:319
 #, fuzzy
 msgid "PDF pages"
 msgstr "PDFoldalak"
 
-#: lib/external_templates:303
+#: lib/external_templates:307
 #, fuzzy
 msgid ""
 "Includes PDF documents, using the 'pdfpages' package.\n"
@@ -22726,7 +22736,7 @@ msgstr ""
 "Kérem olvassa el a pdfpages csomag dokumentációját\n"
 "a további opciókért és részletekért.\n"
 
-#: lib/external_templates:346
+#: lib/external_templates:350
 msgid ""
 "Today's date.\n"
 "Read 'info date' for more information.\n"
@@ -22734,16 +22744,16 @@ msgstr ""
 "A mai dátum.\n"
 "További információért olvassa az 'info date'-et.\n"
 
-#: lib/external_templates:375
+#: lib/external_templates:379
 msgid "Dia"
 msgstr "Dia"
 
-#: lib/external_templates:376 lib/external_templates:379
+#: lib/external_templates:380 lib/external_templates:383
 #, fuzzy
 msgid "Dia diagram"
 msgstr "Dia diagram.\n"
 
-#: lib/external_templates:378
+#: lib/external_templates:382
 msgid "Dia diagram.\n"
 msgstr "Dia diagram.\n"
 
@@ -23384,7 +23394,7 @@ msgstr ""
 "A %1$s fájl egy újabb LyX verzióval készült, sajnos a lyx2lyx program nem "
 "tudja átalakítani."
 
-#: src/Buffer.cpp:1269 src/Buffer.cpp:4230 src/Buffer.cpp:4293
+#: src/Buffer.cpp:1269 src/Buffer.cpp:4234 src/Buffer.cpp:4297
 msgid "File is read-only"
 msgstr "Csak olvasható fájl"
 
@@ -23406,19 +23416,19 @@ msgstr ""
 msgid "Overwrite modified file?"
 msgstr "Módosított fájl felülírása?"
 
-#: src/Buffer.cpp:1282 src/Buffer.cpp:1351 src/Buffer.cpp:2718
+#: src/Buffer.cpp:1282 src/Buffer.cpp:1355 src/Buffer.cpp:2722
 #: src/Exporter.cpp:50 src/frontends/qt4/GuiClipboard.cpp:246
 #: src/frontends/qt4/GuiView.cpp:2151 src/frontends/qt4/GuiView.cpp:2338
 #: src/frontends/qt4/GuiView.cpp:2452
 msgid "&Overwrite"
 msgstr "&Felülírja"
 
-#: src/Buffer.cpp:1324 src/Buffer.cpp:1366
+#: src/Buffer.cpp:1328 src/Buffer.cpp:1370
 #, fuzzy
 msgid "Write failure"
 msgstr "chktex hiba"
 
-#: src/Buffer.cpp:1325
+#: src/Buffer.cpp:1329
 #, c-format
 msgid ""
 "Cannot find temporary filename for:\n"
@@ -23426,11 +23436,11 @@ msgid ""
 "Even %2$s exists!"
 msgstr ""
 
-#: src/Buffer.cpp:1346
+#: src/Buffer.cpp:1350
 msgid "Backup failure"
 msgstr "Biztonsági mentés hiba"
 
-#: src/Buffer.cpp:1347
+#: src/Buffer.cpp:1351
 #, c-format
 msgid ""
 "Cannot create backup file:\n"
@@ -23439,7 +23449,7 @@ msgid ""
 "This will over-write the original file."
 msgstr ""
 
-#: src/Buffer.cpp:1367
+#: src/Buffer.cpp:1371
 #, c-format
 msgid ""
 "Cannot restore original file to:\n"
@@ -23448,46 +23458,46 @@ msgid ""
 "  %2$s."
 msgstr ""
 
-#: src/Buffer.cpp:1384
+#: src/Buffer.cpp:1388
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Dokumentum mentése: %1$s..."
 
-#: src/Buffer.cpp:1399
+#: src/Buffer.cpp:1403
 msgid " could not write file!"
 msgstr " a fájl nem írható!"
 
-#: src/Buffer.cpp:1407
+#: src/Buffer.cpp:1411
 msgid " done."
 msgstr " kész."
 
-#: src/Buffer.cpp:1422
+#: src/Buffer.cpp:1426
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Megpróbálom menteni a dokumentumot: %1$s\n"
 
-#: src/Buffer.cpp:1432 src/Buffer.cpp:1445 src/Buffer.cpp:1459
+#: src/Buffer.cpp:1436 src/Buffer.cpp:1449 src/Buffer.cpp:1463
 #, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr "Mentve %1$s néven. Hurrá.\n"
 
-#: src/Buffer.cpp:1435
+#: src/Buffer.cpp:1439
 msgid "Save failed! Trying again...\n"
 msgstr "Sikertelen mentés! Újra próbálom...\n"
 
-#: src/Buffer.cpp:1449
+#: src/Buffer.cpp:1453
 msgid "Save failed! Trying yet again...\n"
 msgstr "Sikertelen mentés! Megpróbálom mégegyszer...\n"
 
-#: src/Buffer.cpp:1463
+#: src/Buffer.cpp:1467
 msgid "Save failed! Bummer. Document is lost."
 msgstr "Sikertelen mentés! A csudába, a dokumentum elvesztett."
 
-#: src/Buffer.cpp:1552
+#: src/Buffer.cpp:1556
 msgid "Iconv software exception Detected"
 msgstr "Iconv szoftveres kivétel történt"
 
-#: src/Buffer.cpp:1552
+#: src/Buffer.cpp:1556
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
@@ -23496,12 +23506,12 @@ msgstr ""
 "Kérem ellenőrizze, hogy az ön nyelvének kódolásához (%1$s) szükséges "
 "program, jól van feltelepítve"
 
-#: src/Buffer.cpp:1581
+#: src/Buffer.cpp:1585
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr "Nem találom a LaTeX parancsot a '%1$s' karakterhez (kód helye %2$s)"
 
-#: src/Buffer.cpp:1584
+#: src/Buffer.cpp:1588
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
@@ -23510,19 +23520,19 @@ msgstr ""
 "A dokumentumban néhány karakter nem ábrázolható a választott kódlapban.\n"
 "A dokumentum kódolásának utf8-ra módosítása segíthet."
 
-#: src/Buffer.cpp:1591
+#: src/Buffer.cpp:1595
 msgid "iconv conversion failed"
 msgstr "iconv átalakítás nem sikerült"
 
-#: src/Buffer.cpp:1596
+#: src/Buffer.cpp:1600
 msgid "conversion failed"
 msgstr "átalakítás nem sikerült"
 
-#: src/Buffer.cpp:1704
+#: src/Buffer.cpp:1708
 msgid "Uncodable character in file path"
 msgstr "Kódolhatatlan karakter az elérési útban"
 
-#: src/Buffer.cpp:1706
+#: src/Buffer.cpp:1710
 #, fuzzy, c-format
 msgid ""
 "The path of your document\n"
@@ -23543,59 +23553,59 @@ msgstr ""
 "Válasszon megfelelő dokumentum kódolást (mint pl. utf8)\n"
 "vagy változtassa meg az elérési utat."
 
-#: src/Buffer.cpp:2059
+#: src/Buffer.cpp:2063
 msgid "Running chktex..."
 msgstr "Chktex futtatása..."
 
-#: src/Buffer.cpp:2073
+#: src/Buffer.cpp:2077
 msgid "chktex failure"
 msgstr "chktex hiba"
 
-#: src/Buffer.cpp:2074
+#: src/Buffer.cpp:2078
 msgid "Could not run chktex successfully."
 msgstr "A chktex futtatása sikertelen."
 
-#: src/Buffer.cpp:2366
+#: src/Buffer.cpp:2370
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr "Nincs információ az %1$s-ba exportáláshoz."
 
-#: src/Buffer.cpp:2446
+#: src/Buffer.cpp:2450
 #, fuzzy, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Nincs információ az %1$s-ba exportáláshoz."
 
-#: src/Buffer.cpp:2455
+#: src/Buffer.cpp:2459
 #, fuzzy
 msgid "Error generating literate programming code."
 msgstr "Nem találtam literális programfordítási naplótfájlt."
 
-#: src/Buffer.cpp:2534
+#: src/Buffer.cpp:2538
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr "\"%1$s\" változat nem létezik."
 
-#: src/Buffer.cpp:2569
+#: src/Buffer.cpp:2573
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr "\"%1$s\" változat már létezik."
 
-#: src/Buffer.cpp:2635
+#: src/Buffer.cpp:2639
 #, fuzzy, c-format
 msgid "Unable to parse \"%1$s\""
 msgstr "Ismeretlen eszköztár \"%1$s\""
 
-#: src/Buffer.cpp:2642
+#: src/Buffer.cpp:2646
 #, fuzzy, c-format
 msgid "Unrecognized target \"%1$s\""
 msgstr "Ismeretlen eszköztár \"%1$s\""
 
-#: src/Buffer.cpp:2649
+#: src/Buffer.cpp:2653
 #, fuzzy
 msgid "Error exporting to DVI."
 msgstr "Hiba pixmap készítése közben"
 
-#: src/Buffer.cpp:2714 src/Exporter.cpp:45
+#: src/Buffer.cpp:2718 src/Exporter.cpp:45
 #, c-format
 msgid ""
 "The file %1$s already exists.\n"
@@ -23606,88 +23616,88 @@ msgstr ""
 "\n"
 "Szeretné a fájlt felülírni?"
 
-#: src/Buffer.cpp:2717 src/Exporter.cpp:48
+#: src/Buffer.cpp:2721 src/Exporter.cpp:48
 msgid "Overwrite file?"
 msgstr "Felülírjam a fájlt?"
 
-#: src/Buffer.cpp:2734
+#: src/Buffer.cpp:2738
 #, fuzzy
 msgid "Error running external commands."
 msgstr "Hiba belső formátum olvasásakor"
 
-#: src/Buffer.cpp:3556
+#: src/Buffer.cpp:3560
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "A %1$d bekezdés forráskódjának előnézete"
 
-#: src/Buffer.cpp:3560
+#: src/Buffer.cpp:3564
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Forráskód előnézete a %1$s bekezdéstól, a %2$s bekezdésig"
 
-#: src/Buffer.cpp:3614
+#: src/Buffer.cpp:3618
 msgid "Preview source code"
 msgstr "Forráskód előnézete"
 
-#: src/Buffer.cpp:3616
+#: src/Buffer.cpp:3620
 #, fuzzy
 msgid "Preview preamble"
 msgstr "Előnézet kész"
 
-#: src/Buffer.cpp:3618
+#: src/Buffer.cpp:3622
 #, fuzzy
 msgid "Preview body"
 msgstr "Előnézet kész"
 
-#: src/Buffer.cpp:3633
+#: src/Buffer.cpp:3637
 msgid "Plain text does not have a preamble."
 msgstr ""
 
-#: src/Buffer.cpp:3736
+#: src/Buffer.cpp:3740
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatikus mentése: %1$s"
 
-#: src/Buffer.cpp:3790
+#: src/Buffer.cpp:3794
 msgid "Autosave failed!"
 msgstr "Automatikus mentés sikertelen!"
 
-#: src/Buffer.cpp:3851
+#: src/Buffer.cpp:3855
 msgid "Autosaving current document..."
 msgstr "Aktuális dokumentum automatikus mentése..."
 
-#: src/Buffer.cpp:3972
+#: src/Buffer.cpp:3976
 msgid "Couldn't export file"
 msgstr "A fájl nem exportálható"
 
-#: src/Buffer.cpp:3973
+#: src/Buffer.cpp:3977
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Nincs információ az %1$s-ba exportáláshoz."
 
-#: src/Buffer.cpp:4034 src/frontends/qt4/GuiView.cpp:2124
+#: src/Buffer.cpp:4038 src/frontends/qt4/GuiView.cpp:2124
 msgid "File name error"
 msgstr "Fájlnév hiba"
 
-#: src/Buffer.cpp:4035
+#: src/Buffer.cpp:4039
 msgid "The directory path to the document cannot contain spaces."
 msgstr "A lyx fájl elérési útja nem tartalmazhat szóközöket."
 
-#: src/Buffer.cpp:4137 src/Buffer.cpp:4151 src/frontends/qt4/GuiView.cpp:548
+#: src/Buffer.cpp:4141 src/Buffer.cpp:4155 src/frontends/qt4/GuiView.cpp:548
 msgid "Document export cancelled."
 msgstr "A dokumentumot exportálás megszakítva."
 
-#: src/Buffer.cpp:4154
+#: src/Buffer.cpp:4158
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "A %1$s dokumentumot exportáltam, mint `%2$s'"
 
-#: src/Buffer.cpp:4161
+#: src/Buffer.cpp:4165
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "A dokumentumot exportáltam, mint %1$s"
 
-#: src/Buffer.cpp:4216
+#: src/Buffer.cpp:4220
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -23698,34 +23708,34 @@ msgstr ""
 "\n"
 "Helyreállítsam a mentett változatot?"
 
-#: src/Buffer.cpp:4219
+#: src/Buffer.cpp:4223
 msgid "Load emergency save?"
 msgstr "Biztonsági másolat betöltése?"
 
-#: src/Buffer.cpp:4220
+#: src/Buffer.cpp:4224
 msgid "&Recover"
 msgstr "&Helyreállítás"
 
-#: src/Buffer.cpp:4220
+#: src/Buffer.cpp:4224
 msgid "&Load Original"
 msgstr "&Eredeti betöltése"
 
-#: src/Buffer.cpp:4231
+#: src/Buffer.cpp:4235
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4238
+#: src/Buffer.cpp:4242
 msgid "Document was successfully recovered."
 msgstr "A dokumentumot sikeresen helyreállítottam."
 
-#: src/Buffer.cpp:4240
+#: src/Buffer.cpp:4244
 msgid "Document was NOT successfully recovered."
 msgstr "A dokumentum helyreállíása SIKERTELEN."
 
-#: src/Buffer.cpp:4241
+#: src/Buffer.cpp:4245
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -23734,28 +23744,28 @@ msgstr ""
 "Töröljem most a biztonsági másolat fájlt?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:4245 src/Buffer.cpp:4257
+#: src/Buffer.cpp:4249 src/Buffer.cpp:4261
 msgid "Delete emergency file?"
 msgstr "Töröljem a biztonsági másolat fájlt?"
 
-#: src/Buffer.cpp:4246 src/Buffer.cpp:4259
+#: src/Buffer.cpp:4250 src/Buffer.cpp:4263
 #, fuzzy
 msgid "&Keep"
 msgstr "Megtart"
 
-#: src/Buffer.cpp:4250
+#: src/Buffer.cpp:4254
 msgid "Emergency file deleted"
 msgstr "Biztonságimentés-fájl törölve"
 
-#: src/Buffer.cpp:4251
+#: src/Buffer.cpp:4255
 msgid "Do not forget to save your file now!"
 msgstr "Ne felejtse el menteni most a fájlt!"
 
-#: src/Buffer.cpp:4258
+#: src/Buffer.cpp:4262
 msgid "Remove emergency file now?"
 msgstr "Töröljem most a biztonsági másolat fájlt?"
 
-#: src/Buffer.cpp:4281
+#: src/Buffer.cpp:4285
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -23766,35 +23776,35 @@ msgstr ""
 "\n"
 "Inkább azt töltsem be?"
 
-#: src/Buffer.cpp:4283
+#: src/Buffer.cpp:4287
 msgid "Load backup?"
 msgstr "Biztonsági mentés betöltése?"
 
-#: src/Buffer.cpp:4284
+#: src/Buffer.cpp:4288
 msgid "&Load backup"
 msgstr "&Biztonsági mentés betöltése"
 
-#: src/Buffer.cpp:4284
+#: src/Buffer.cpp:4288
 msgid "Load &original"
 msgstr "&Eredeti betöltése"
 
-#: src/Buffer.cpp:4294
+#: src/Buffer.cpp:4298
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4634 src/insets/InsetCaption.cpp:376
+#: src/Buffer.cpp:4638 src/insets/InsetCaption.cpp:376
 msgid "Senseless!!! "
 msgstr "Értelmetlen!"
 
-#: src/Buffer.cpp:4854
+#: src/Buffer.cpp:4858
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "%1$s dokumentum újratöltve."
 
-#: src/Buffer.cpp:4857
+#: src/Buffer.cpp:4861
 #, fuzzy, c-format
 msgid "Could not reload document %1$s."
 msgstr "A(z) %1$s dokumentum nem olvasható"
@@ -23905,7 +23915,7 @@ msgstr ""
 msgid "Document class not available"
 msgstr "A dokumentum-osztály nem érhető el"
 
-#: src/BufferParams.cpp:1817 src/insets/InsetCommandParams.cpp:406
+#: src/BufferParams.cpp:1817 src/insets/InsetCommandParams.cpp:408
 #: src/insets/InsetHyperlink.cpp:197
 #, fuzzy
 msgid "Uncodable characters"
@@ -25941,15 +25951,15 @@ msgstr ", Betű: 0x"
 msgid ", Boundary: "
 msgstr ", Határ: "
 
-#: src/Text2.cpp:408
+#: src/Text2.cpp:409
 msgid "No font change defined."
 msgstr "Nincs betűkészlet váltás megadva."
 
-#: src/Text2.cpp:448
+#: src/Text2.cpp:449
 msgid "Nothing to index!"
 msgstr "Nincs mit a szójegyzékbe rakni!"
 
-#: src/Text2.cpp:450
+#: src/Text2.cpp:451
 msgid "Cannot index more than one paragraph!"
 msgstr "Nem tudok szójegyzékbe rakni többet, mint egy bekezdés!"
 
@@ -25971,23 +25981,23 @@ msgstr "Reguláris kifejez&és"
 msgid "Regexp editor mode"
 msgstr "Képletszerkesztő mód"
 
-#: src/Text3.cpp:1342
+#: src/Text3.cpp:1343
 msgid "Layout "
 msgstr "Elrendezés "
 
-#: src/Text3.cpp:1343
+#: src/Text3.cpp:1344
 msgid " not known"
 msgstr " ismeretlen"
 
-#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1636
+#: src/Text3.cpp:1934 src/frontends/qt4/GuiApplication.cpp:1636
 msgid "Missing argument"
 msgstr "Hiányzó paraméter"
 
-#: src/Text3.cpp:2089 src/Text3.cpp:2101
+#: src/Text3.cpp:2090 src/Text3.cpp:2102
 msgid "Character set"
 msgstr "Betűkészlet"
 
-#: src/Text3.cpp:2319 src/Text3.cpp:2330
+#: src/Text3.cpp:2320 src/Text3.cpp:2331
 msgid "Paragraph layout set"
 msgstr "Bekezdés kinézetének beállítása"
 
@@ -26249,13 +26259,13 @@ msgstr ""
 "Folytassam?"
 
 #: src/VCBackend.cpp:1514 src/VCBackend.cpp:1518
-#: src/frontends/qt4/FindAndReplace.cpp:376
+#: src/frontends/qt4/FindAndReplace.cpp:378
 #: src/frontends/qt4/GuiSearch.cpp:140
 msgid "&Yes"
 msgstr "&Igen"
 
 #: src/VCBackend.cpp:1514 src/VCBackend.cpp:1518
-#: src/frontends/qt4/FindAndReplace.cpp:376
+#: src/frontends/qt4/FindAndReplace.cpp:378
 #: src/frontends/qt4/GuiSearch.cpp:140
 msgid "&No"
 msgstr "&Nem"
@@ -26449,26 +26459,26 @@ msgstr ""
 msgid "Advanced search in progress (press ESC to cancel) . . ."
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:357
+#: src/frontends/qt4/FindAndReplace.cpp:359
 msgid "Advanced search cancelled by user"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:375
+#: src/frontends/qt4/FindAndReplace.cpp:377
 #: src/frontends/qt4/GuiSearch.cpp:139
 msgid "Wrap search?"
 msgstr ""
 
-#: src/frontends/qt4/FindAndReplace.cpp:422
+#: src/frontends/qt4/FindAndReplace.cpp:428
 #, fuzzy
 msgid "Nothing to search"
 msgstr "Nincs mit tenni"
 
-#: src/frontends/qt4/FindAndReplace.cpp:470
+#: src/frontends/qt4/FindAndReplace.cpp:476
 #, fuzzy
 msgid "No open document(s) in which to search"
 msgstr "&Dokumentumok megnyitása, füleken"
 
-#: src/frontends/qt4/FindAndReplace.cpp:576
+#: src/frontends/qt4/FindAndReplace.cpp:582
 #, fuzzy
 msgid "Advanced Find and Replace"
 msgstr "Keres és cserél"
@@ -29971,7 +29981,7 @@ msgstr "Ismeretlen paraméter név: "
 msgid "Missing \\end_inset at this point: "
 msgstr "Hiányzó \\end_inset ennél a pontnál."
 
-#: src/insets/InsetCommandParams.cpp:407
+#: src/insets/InsetCommandParams.cpp:409
 #, fuzzy, c-format
 msgid ""
 "The following characters that are used in the inset %1$s are not\n"
