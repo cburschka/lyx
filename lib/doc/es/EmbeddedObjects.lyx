@@ -33352,27 +33352,8 @@ borde rectangular sencillo
 \family default
  sin marco interior, puedes permitir saltos de página dentro del marco.
  Ten en cuenta que en ese caso, al contrario que otros marcos con bordes,
- el borde usa siempre todo el ancho de columna, el marco se establece como
- su párrafo propio y 
-\series bold
-
-\backslash
-fboxrule
-\series default
- y 
-\series bold
-
-\backslash
-fboxsep
-\series default
- no funcionan.
- El grosor del borde tiene el tamaño de 
-\series bold
-
-\backslash
-FrameRule
-\series default
-.
+ el borde usa siempre todo el ancho de columna y el marco se establece como
+ su párrafo propio: 
 \begin_inset Box Framed
 position "t"
 hor_pos "c"
@@ -33559,7 +33540,7 @@ cornersize{0.5}
 \end_layout
 
 \begin_layout Standard
-Para los marcos con 
+El color rojo predeterminado de los marcos con 
 \family sans
 fondo
 \begin_inset space ~
@@ -33567,19 +33548,7 @@ fondo
 
 coloreado
 \family default
- el espacio por omisión entre el contenido y el borde es 3
-\begin_inset space \thinspace{}
-\end_inset
-
-pt; se puede cambiar con el valor de 
-\series bold
-
-\backslash
-fboxsep
-\series default
-.
- El color rojo predeterminado se puede cambiar en el sitio con el comando
- 
+ se puede cambiar en el sitio con el comando 
 \series bold
 
 \backslash
@@ -33658,23 +33627,11 @@ reference "sec:Marcos-Coloreados"
 
 \end_inset
 
- Por ejemplo, la nota siguiente se define con los comandos en código \SpecialChar TeX
+ Por ejemplo, la nota siguiente se define con el comando en código \SpecialChar TeX
 
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-
-\backslash
-setlength{
-\backslash
-fboxsep}{0.5cm}
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
 
 \series bold
 
@@ -33685,15 +33642,6 @@ definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
 \begin_layout Standard
 \begin_inset ERT
 status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength{
-\backslash
-fboxsep}{0.5cm}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -33739,15 +33687,6 @@ status collapsed
 
 
 \backslash
-setlength{
-\backslash
-fboxsep}{3pt}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
 definecolor{shadecolor}{rgb}{1,0,0}
 \end_layout
 
@@ -33760,8 +33699,8 @@ definecolor{shadecolor}{rgb}{1,0,0}
 \begin_inset VSpace bigskip
 \end_inset
 
-Los cambios en las dimensiones son válidos para todos los marcos que siguen
- a los comandos.
+Los cambios en las dimensiones y de los colores son válidos para todos los
+ marcos que siguen a los comandos.
 \end_layout
 
 \begin_layout Section

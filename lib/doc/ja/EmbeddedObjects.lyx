@@ -31619,30 +31619,17 @@ status collapsed
 \begin_inset VSpace bigskip
 \end_inset
 
-装飾として
+
+\lang english
+When you use the decoration 
 \family sans
-簡素な長方形の箱型
+simple rectangular frame
 \family default
-を使用し、内部ボックスをなしにした場合には、ボックス内で改行をすることができます。その際、他の枠付きボックスと異なり、枠は列幅全体に広げられて独立した段落に置か
-れ、このボックス型では
-\series bold
-
-\backslash
-fboxrule
-\series default
-と
-\series bold
-
-\backslash
-fboxsep
-\series default
-は無効となります。枠線の太さは
-\series bold
-
-\backslash
-FrameRule
-\series default
-の値になります。 
+ and no inner box, you can allow page breaks within a box.
+ Note that then, unlike other framed boxes, the frame always uses the whole
+ column width and the box is set as its own paragraph:
+\lang japanese
+ 
 \begin_inset Box Framed
 position "t"
 hor_pos "c"
@@ -31830,21 +31817,14 @@ cornersize{0.5}
 
 \begin_layout Standard
 
+\lang english
+The default background color red of 
 \family sans
-影付き背景
+shaded background
 \family default
-ボックスでは、ボックスの内容と枠の余白の既定値は3
-\begin_inset space \thinspace{}
-\end_inset
-
-ptになっていますが、
+ boxes can either be changed locally with the command
 \series bold
-
-\backslash
-fboxsep
-\series default
-の値を変更することで変えられます。既定の背景色である赤色は、
-\series bold
+\lang japanese
 
 \backslash
 definecolor{shadebox}
@@ -31871,7 +31851,7 @@ reference "sec:色付きの表"
 
 節
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 N
@@ -31909,18 +31889,6 @@ reference "sec:色付きボックス"
 \series bold
 
 \backslash
-setlength{
-\backslash
-fboxsep}{0.5cm}
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-
-\backslash
 definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
 \end_layout
 
@@ -31932,15 +31900,6 @@ definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
 \begin_layout Standard
 \begin_inset ERT
 status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength{
-\backslash
-fboxsep}{0.5cm}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -31990,15 +31949,6 @@ status collapsed
 
 
 \backslash
-setlength{
-\backslash
-fboxsep}{3pt}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
 definecolor{shadecolor}{rgb}{1,0,0}
 \end_layout
 
@@ -32011,7 +31961,10 @@ definecolor{shadecolor}{rgb}{1,0,0}
 \begin_inset VSpace bigskip
 \end_inset
 
-変更した長さや幅は、変更を設定したコマンド以後のすべてのボックスに有効となります。
+
+\lang english
+Manually changed sizes and colors are valid for all boxes following the
+ commands that change them.
 \end_layout
 
 \begin_layout Section
@@ -36763,7 +36716,7 @@ textvisiblespace
 以下は、verbatimとして挿入された子文書です。 
 \begin_inset CommandInset include
 LatexCommand verbatiminput
-filename "../DummyTextDocument.txt"
+filename "../DUMMYT~1.TXT"
 
 \end_inset
 
@@ -36778,7 +36731,7 @@ filename "../DummyTextDocument.txt"
 オプションを指定して、verbatimとして挿入された子文書です。 
 \begin_inset CommandInset include
 LatexCommand verbatiminput*
-filename "../DummyTextDocument.txt"
+filename "../DUMMYT~1.TXT"
 
 \end_inset
 

@@ -33651,27 +33651,7 @@ simple rectangular frame
 \family default
  and no inner box, you can allow page breaks within a box.
  Note that then, unlike other framed boxes, the frame always uses the whole
- column width, the box is set as its own paragraph, and 
-\series bold
-
-\backslash
-fboxrule
-\series default
- and 
-\series bold
-
-\backslash
-fboxsep
-\series default
- have no effect on this box type.
- The frame line thickness has the size of 
-\series bold
-
-\backslash
-FrameRule
-\series default
-.
- 
+ column width and the box is set as its own paragraph: 
 \begin_inset Box Framed
 position "t"
 hor_pos "c"
@@ -33854,23 +33834,11 @@ cornersize{0.5}
 \end_layout
 
 \begin_layout Standard
-For 
+The default background color red of 
 \family sans
 shaded background
 \family default
- boxes the default space between the box content and the box border is 3
-\begin_inset space \thinspace{}
-\end_inset
-
-pt and can be changed with the value of 
-\series bold
-
-\backslash
-fboxsep
-\series default
-.
- The default background color red can either be changed locally with the
- command 
+ boxes can either be changed locally with the command 
 \series bold
 
 \backslash
@@ -33939,22 +33907,10 @@ reference "sec:Colored-Boxes"
 
  For example the appearance of the following shaded background box is set
  with the \SpecialChar TeX
--Code commands
+-Code command
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-
-\backslash
-setlength{
-\backslash
-fboxsep}{0.5cm}
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
 
 \series bold
 
@@ -33965,15 +33921,6 @@ definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
 \begin_layout Standard
 \begin_inset ERT
 status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength{
-\backslash
-fboxsep}{0.5cm}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -34029,15 +33976,6 @@ status collapsed
 
 
 \backslash
-setlength{
-\backslash
-fboxsep}{3pt}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
 definecolor{shadecolor}{rgb}{1,0,0}
 \end_layout
 
@@ -34050,8 +33988,8 @@ definecolor{shadecolor}{rgb}{1,0,0}
 \begin_inset VSpace bigskip
 \end_inset
 
-Manually changed lengths, widths and colors are valid for all boxes following
- the commands that change them.
+Manually changed sizes and colors are valid for all boxes following the
+ commands that change them.
 \end_layout
 
 \begin_layout Section
@@ -39180,7 +39118,7 @@ Text
 Here is a child document inserted as Verbatim: 
 \begin_inset CommandInset include
 LatexCommand verbatiminput
-filename "DummyTextDocument.txt"
+filename "DUMMYT~1.TXT"
 
 \end_inset
 
@@ -39195,7 +39133,7 @@ Mark spaces in output
  option: 
 \begin_inset CommandInset include
 LatexCommand verbatiminput*
-filename "DummyTextDocument.txt"
+filename "DUMMYT~1.TXT"
 
 \end_inset
 

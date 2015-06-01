@@ -33780,28 +33780,8 @@ Einfacher rechteckiger Rahmen
 \family default
  und keine innere Box verwenden, können Sie Seitenumbrüche in der Box erlauben.
  Beachten Sie, dass im Gegensatz zu anderen gerahmten Boxen, der Rahmen
- immer über die gesamte Zeilenbreite gezeichnet wird, die Box ein Absatz
- für sich ist und 
-\series bold
-
-\backslash
-fboxrule
-\series default
- und 
-\series bold
-
-\backslash
-fboxsep
-\series default
- keinen Einfluss auf diesen Box Typ haben.
- Die Rahmendicke wird durch 
-\series bold
-
-\backslash
-FrameRule
-\series default
- festgelegt.
- 
+ immer über die gesamte Zeilenbreite geht und dass die Box ein Absatz für
+ sich ist: 
 \begin_inset Box Framed
 position "t"
 hor_pos "c"
@@ -33982,23 +33962,11 @@ cornersize{0.5}
 \begin_inset VSpace bigskip
 \end_inset
 
-Für Boxen mit 
+Die Standard-Hintergrundfarbe rot von Boxen mit 
 \family sans
 schattiertem Hintergrund
 \family default
- beträgt der Abstand zwischen Rand und Text 3
-\begin_inset space \thinspace{}
-\end_inset
-
-pt und kann mit 
-\series bold
-
-\backslash
-fboxsep
-\series default
- geändert werden.
- Die Standard-Hintergrundfarbe ist rot und kann entweder lokal mit dem Befehl
- 
+ kann entweder lokal mit dem Befehl 
 \series bold
 
 \backslash
@@ -34075,29 +34043,12 @@ reference "abs:Farbige-Boxen"
 \series bold
 
 \backslash
-setlength{
-\backslash
-fboxsep}{0.5cm}
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
 definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
 \end_layout
 
 \begin_layout Standard
 \begin_inset ERT
 status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength{
-\backslash
-fboxsep}{0.5cm}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -34151,15 +34102,6 @@ status collapsed
 
 
 \backslash
-setlength{
-\backslash
-fboxsep}{3pt}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
 definecolor{shadecolor}{rgb}{1,0,0}
 \end_layout
 
@@ -34172,7 +34114,7 @@ definecolor{shadecolor}{rgb}{1,0,0}
 \begin_inset VSpace bigskip
 \end_inset
 
-Geänderte Längen und Breiten gelten für alle Boxen, die auf den Befehl folgen,
+Geänderte Größen und Farben gelten für alle Boxen, die auf den Befehl folgen,
  der sie ändert.
 \end_layout
 

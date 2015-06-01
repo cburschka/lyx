@@ -34271,28 +34271,8 @@ cadre rectangulaire simple
  sans boîte intérieure, vous pouvez autoriser les sauts de page à l'intérieur
  de la boîte.
  Notez que dans ce cas, contrairement aux autres boîtes avec cadre, le cadre
- prendra toute la largeur de la colonne, la boîte sera considérée comme
- son propre paragraphe et 
-\series bold
-
-\backslash
-fboxrule
-\series default
- et 
-\series bold
-
-\backslash
-fboxsep
-\series default
- n'ont aucun effet sur ce type de boîte.
- L'épaisseur de la ligne du cadre a la valeur de 
-\series bold
-
-\backslash
-FrameRule
-\series default
-.
- 
+ prendra toute la largeur de la colonne et la boîte sera considérée comme
+ son propre paragraphe: 
 \begin_inset Box Framed
 position "t"
 hor_pos "c"
@@ -34475,7 +34455,7 @@ cornersize{0.5}
 \end_layout
 
 \begin_layout Standard
-Pour les boîtes à 
+La couleur rouge utilisée implicitement pour les boîtes à 
 \family sans
 Fond
 \begin_inset space ~
@@ -34483,20 +34463,7 @@ Fond
 
 ombré
 \family default
-, l'espacement implicite entre le contenu de la boîte et son cadre est de
- 3
-\begin_inset space \thinspace{}
-\end_inset
-
-pt et il peut être modifié avec la valeur de 
-\series bold
-
-\backslash
-fboxsep
-\series default
-.
- La couleur rouge utilisée implicitement pour le fond peut soit être modifiée
- localement avec la commande 
+ peut soit être modifiée localement avec la commande 
 \series bold
 
 \backslash
@@ -34535,7 +34502,7 @@ reference "sec:Tableaux-Colorés"
 
 \end_inset
 
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -34568,28 +34535,16 @@ reference "sec:Boîtes-colorées"
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
 Par exemple l'apparence de la note à fond ombré suivante a été modifié avec
- les commandes en code \SpecialChar TeX
+ le commande en code \SpecialChar TeX
  suivantes
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-
-\backslash
-setlength{
-\backslash
-fboxsep}{0.5cm}
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
 
 \series bold
 
@@ -34600,15 +34555,6 @@ definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
 \begin_layout Standard
 \begin_inset ERT
 status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength{
-\backslash
-fboxsep}{0.5cm}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -34665,15 +34611,6 @@ status collapsed
 
 
 \backslash
-setlength{
-\backslash
-fboxsep}{3pt}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
 definecolor{shadecolor}{rgb}{1,0,0}
 \end_layout
 
@@ -34690,8 +34627,8 @@ definecolor{shadecolor}{rgb}{1,0,0}
 \end_layout
 
 \begin_layout Standard
-Les longueurs et les largeurs ainsi modifiées restent valables pour toutes
- les boîtes qui suivent la commandes qui les a changées.
+Les largeurs et culeurs ainsi modifiées restent valables pour toutes les
+ boîtes qui suivent la commandes qui les a changées.
 \end_layout
 
 \begin_layout Section
