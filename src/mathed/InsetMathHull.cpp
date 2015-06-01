@@ -643,7 +643,7 @@ void InsetMathHull::preparePreview(DocIterator const & pos,
 		MacroData const * data = buffer->getMacro(*it, pos, true);
 		if (data) {
 			odocstringstream mac_preamble;
-			data->write(mac_preamble, false);
+			data->write(mac_preamble, true);
 			docstring const mps = mac_preamble.str();
 			bool const is_new_def = prefixIs(mps, from_ascii("\\newcomm"));
 			// assure that \newcommand definitions of macros are only added once
