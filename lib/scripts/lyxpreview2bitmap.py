@@ -158,13 +158,46 @@ def extract_metrics_info(dvipng_stdout):
     return results
 
 
-def fix_latex_file(latex_file):
+def fix_latex_file(latex_file, pdf_output):
     documentclass_re = re.compile("(\\\\documentclass\[)(1[012]pt,?)(.+)")
+    usepackage_re = re.compile("\\\\usepackage")
+    userpreamble_re = re.compile("User specified LaTeX commands")
+    enduserpreamble_re = re.compile("\\\\makeatother")
+    begindoc_re = re.compile("\\\\begin\{document\}")
 
     tmp = mkstemp()
 
+    in_doc_body = 0
+    in_user_preamble = 0
+    usepkg = 0
     changed = 0
     for line in open(latex_file, 'r').readlines():
+        if in_doc_body:
+            if changed:
+                tmp.write(line)
+                continue
+            else:
+                break
+
+        if begindoc_re.match(line) != None:
+            in_doc_body = 1
+
+        if not pdf_output and not usepkg:
+            if userpreamble_re.search(line) != None:
+                in_user_preamble = 1
+            elif enduserpreamble_re.search(line) != None:
+                in_user_preamble = 0
+            if usepackage_re.match(line) != None and in_user_preamble:
+                usepkg = 1
+                changed = 1
+                tmp.write("\\def\\t@a{microtype}\n")
+                tmp.write("\\let\\oldusepkg\usepackage\n")
+                tmp.write("\\def\\usepackage{\\@ifnextchar[\\@usepkg{\@usepkg[]}}\n")
+                tmp.write("\\def\@usepkg[#1]#2{\\def\\t@b{#2}")
+                tmp.write("\\ifx\\t@a\\t@b\\else\\oldusepkg[#1]{#2}\\fi}\n")
+                tmp.write(line)
+                continue
+
         match = documentclass_re.match(line)
         if match == None:
             tmp.write(line)
@@ -391,9 +424,9 @@ def main(argv):
     progress("Preprocess through lilypond-book: %s" % lilypond)
     progress("Altering the latex file for font size and colors")
 
-    # Omit font size specification in latex file and make sure multiple
-    # defined macros are not an issue.
-    fix_latex_file(latex_file)
+    # Omit font size specification in latex file and make sure that
+    # the microtype package doesn't cause issues in dvi mode.
+    fix_latex_file(latex_file, pdf_output)
 
     if lilypond:
         progress("Preprocess the latex file through %s" % lilypond_book)

@@ -233,8 +233,11 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
 \definecolor{bg}{rgb}{%s}
 \pagecolor{bg}
 \usepackage[%s,tightpage]{preview}
-\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{\usepackage{ae,aecomp}}
 \makeatletter
+\def\t@a{cmr}
+\if\f@family\t@a
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{\usepackage{ae,aecompl}}
+\fi
 \g@addto@macro\preview{\begingroup\color{bg}\special{ps::clippath fill}\color{fg}}
 \g@addto@macro\endpreview{\endgroup}
 \makeatother

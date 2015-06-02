@@ -89,7 +89,7 @@ void InsetPreview::preparePreview(DocIterator const & pos) const
 		MacroData const * data = buffer->getMacro(*it, pos, true);
 		if (data) {
 			odocstringstream macro_def;
-			data->write(macro_def, false);
+			data->write(macro_def, true);
 			docstring const md = macro_def.str();
 			macro_def << endl;
 			bool is_newcomm = prefixIs(md, from_ascii("\\newcomm"));
