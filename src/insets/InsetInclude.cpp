@@ -556,7 +556,8 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 			from_utf8(incfile), true);
 	}
 
-	FileName const writefile(makeAbsPath(mangled, masterBuffer->temppath()));
+	FileName const writefile(makeAbsPath(mangled, runparams.for_preview ?
+						 buffer().temppath() : masterBuffer->temppath()));
 
 	LYXERR(Debug::LATEX, "incfile:" << incfile);
 	LYXERR(Debug::LATEX, "exportfile:" << exportfile);
@@ -1092,6 +1093,7 @@ docstring latexString(InsetInclude const & inset)
 	// by latex() anyway.
 	OutputParams runparams(0);
 	runparams.flavor = OutputParams::LATEX;
+	runparams.for_preview = true;
 	inset.latex(os, runparams);
 
 	return ods.str();
