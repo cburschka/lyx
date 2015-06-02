@@ -107,6 +107,11 @@ pair<string,string> Thesaurus::Private::getThesaurus(string const & path, docstr
 	for (FileNameList::const_iterator it = idx_files.begin(); it != idx_files.end(); ++it) {
 		basename = it->onlyFileNameWithoutExt();
 		if (contains(basename, to_ascii(lang))) {
+			// do not use more specific dicts.
+			if (contains(basename, '_') && !contains(lang, '_'))
+				continue;
+			if (contains(basename, '-') && !contains(lang, '-'))
+				continue;
 			ifstream ifs(it->absFileName().c_str());
 			if (ifs) {
 				// check for appropriate version of index file
@@ -128,8 +133,23 @@ pair<string,string> Thesaurus::Private::getThesaurus(string const & path, docstr
 			break;
 		}
 	}
-	if (idx.empty())
+	if (idx.empty()) {
+		// try with a more general dictionary
+		docstring shortcode;
+		if (contains(lang, '_')) {
+			split(lang, shortcode, '_');
+			LYXERR(Debug::FILES, "Did not find thesaurus for LANG code "
+			       << lang << ". Trying with " << shortcode);
+			return getThesaurus(path, shortcode);
+		}
+		else if (contains(lang, '-')) {
+			split(lang, shortcode, '-');
+			LYXERR(Debug::FILES, "Did not find thesaurus for LANG code "
+			       << lang << ". Trying with " << shortcode);
+			return getThesaurus(path, shortcode);
+		}
 		return make_pair(string(), string());
+	}
 	for (support::FileNameList::const_iterator it = data_files.begin(); it != data_files.end(); ++it) {
 		if (contains(it->onlyFileName(), basename)) {
 			data = it->absFileName();
