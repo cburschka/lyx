@@ -275,6 +275,9 @@ public:
 	/// Are we generating this material for use by advanced search?
 	bool for_search;
 
+	/// Are we generating this material for instant preview?
+	bool for_preview;
+
 	/// Include all children notwithstanding the use of \includeonly
 	bool includeall;
 
