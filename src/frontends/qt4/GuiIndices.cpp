@@ -44,7 +44,8 @@ namespace frontend {
 
 
 GuiIndices::GuiIndices(QWidget * parent)
-	: QWidget(parent)
+	: QWidget(parent), readonly_(false),
+	  use_indices_(false)
 {
 	setupUi(this);
 	indicesTW->setColumnCount(2);
@@ -65,18 +66,39 @@ GuiIndices::GuiIndices(QWidget * parent)
 	newIndexLE->setValidator(new NoNewLineValidator(newIndexLE));
 }
 
-void GuiIndices::update(BufferParams const & params)
+
+void GuiIndices::updateWidgets()
 {
+	bool const have_sel =
+		!indicesTW->selectedItems().isEmpty();
+
+	indexCO->setEnabled(!readonly_);
+	indexOptionsLE->setEnabled(
+		indexCO->itemData(indexCO->currentIndex()).toString() != "default");
+	indexOptionsLE->setReadOnly(readonly_);
+
+	multipleIndicesCB->setEnabled(!readonly_);
+	indicesTW->setEnabled(use_indices_);
+	newIndexLE->setEnabled(use_indices_);
+	newIndexLE->setReadOnly(readonly_);
+	newIndexLA->setEnabled(use_indices_);
+	addIndexPB->setEnabled(use_indices_ && !readonly_
+			       && !newIndexLE->text().isEmpty());
+	availableLA->setEnabled(use_indices_);
+	removePB->setEnabled(use_indices_ && have_sel && !readonly_);
+	colorPB->setEnabled(use_indices_ && have_sel && !readonly_);
+	renamePB->setEnabled(use_indices_ && have_sel && !readonly_);
+}
+
+
+void GuiIndices::update(BufferParams const & params, bool const readonly)
+{
+	use_indices_ = params.use_indices;
+	readonly_ = readonly;
 	indiceslist_ = params.indiceslist();
 	multipleIndicesCB->setChecked(params.use_indices);
-	bool const state = params.use_indices;
-	indicesTW->setEnabled(state);
-	newIndexLE->setEnabled(state);
-	newIndexLA->setEnabled(state);
-	addIndexPB->setEnabled(state);
-	availableLA->setEnabled(state);
-	removePB->setEnabled(state);
-	colorPB->setEnabled(state);
+
+	updateWidgets();
 
 	string command;
 	string options =
@@ -92,8 +114,6 @@ void GuiIndices::update(BufferParams const & params)
 		indexCO->setCurrentIndex(indexCO->findData(toqstr("default")));
 		indexOptionsLE->clear();
 	}
-	indexOptionsLE->setEnabled(
-		indexCO->currentIndex() != 0);
 
 	updateView();
 }
@@ -130,11 +150,8 @@ void GuiIndices::updateView()
 		}
 	}
 	indicesTW->resizeColumnToContents(0);
-	bool const have_sel =
-		!indicesTW->selectedItems().isEmpty();
-	removePB->setEnabled(have_sel);
-	renamePB->setEnabled(have_sel);
-	colorPB->setEnabled(have_sel);
+
+	updateWidgets();
 	// emit signal
 	changed();
 }
@@ -156,10 +173,16 @@ void GuiIndices::apply(BufferParams & params) const
 }
 
 
-void GuiIndices::on_indexCO_activated(int n)
+void GuiIndices::on_indexCO_activated(int)
 {
-	indexOptionsLE->setEnabled(
-		indexCO->itemData(n).toString() != "default");
+	updateWidgets();
+	changed();
+}
+
+
+void GuiIndices::on_newIndexLE_textChanged(QString)
+{
+	updateWidgets();
 	changed();
 }
 
@@ -234,11 +257,7 @@ void GuiIndices::on_indicesTW_itemDoubleClicked(QTreeWidgetItem * item, int /*co
 
 void GuiIndices::on_indicesTW_itemSelectionChanged()
 {
-	bool const have_sel =
-		!indicesTW->selectedItems().isEmpty();
-	removePB->setEnabled(have_sel);
-	renamePB->setEnabled(have_sel);
-	colorPB->setEnabled(have_sel);
+	updateWidgets();
 }
 
 
@@ -248,18 +267,10 @@ void GuiIndices::on_colorPB_clicked()
 }
 
 
-void GuiIndices::on_multipleIndicesCB_toggled(bool const state)
+void GuiIndices::on_multipleIndicesCB_toggled(bool const b)
 {
-	bool const have_sel =
-		!indicesTW->selectedItems().isEmpty();
-	indicesTW->setEnabled(state);
-	newIndexLE->setEnabled(state);
-	newIndexLA->setEnabled(state);
-	addIndexPB->setEnabled(state);
-	availableLA->setEnabled(state);
-	removePB->setEnabled(state && have_sel);
-	colorPB->setEnabled(state && have_sel);
-	renamePB->setEnabled(state && have_sel);
+	use_indices_ = b;
+	updateWidgets();
 	// emit signal
 	changed();
 }

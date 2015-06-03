@@ -33,7 +33,7 @@ class GuiIndices : public QWidget, public Ui::IndicesUi
 public:
 	GuiIndices(QWidget * parent = 0);
 
-	void update(BufferParams const & params);
+	void update(BufferParams const & params, bool const readonly);
 	void apply(BufferParams & params) const;
 
 Q_SIGNALS:
@@ -45,6 +45,7 @@ protected:
 
 protected Q_SLOTS:
 	void on_indexCO_activated(int n);
+	void on_newIndexLE_textChanged(QString);
 	void on_indexOptionsLE_textChanged(QString);
 	void on_addIndexPB_pressed();
 	void on_renamePB_clicked();
@@ -55,8 +56,14 @@ protected Q_SLOTS:
 	void on_multipleIndicesCB_toggled(bool);
 
 private:
+	///
+	void updateWidgets();
 	/// Contains all legal indices for this doc
 	IndicesList indiceslist_;
+	///
+	bool readonly_;
+	///
+	bool use_indices_;
 };
 
 } // namespace frontend

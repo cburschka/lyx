@@ -2993,7 +2993,7 @@ void GuiDocument::paramsToDialog()
 	biblioChanged_ = false;
 
 	// indices
-	indicesModule->update(bp_);
+	indicesModule->update(bp_, buffer().isReadonly());
 
 	// language & quotes
 	int const pos = langModule->languageCO->findData(toqstr(
