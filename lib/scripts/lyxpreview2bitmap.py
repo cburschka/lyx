@@ -193,8 +193,10 @@ def fix_latex_file(latex_file, pdf_output):
                 tmp.write("\\def\\t@a{microtype}\n")
                 tmp.write("\\let\\oldusepkg\\usepackage\n")
                 tmp.write("\\def\\usepackage{\\@ifnextchar[\\@usepkg{\\@usepkg[]}}\n")
-                tmp.write("\\def\@usepkg[#1]#2{\\def\\t@b{#2}")
-                tmp.write("\\ifx\\t@a\\t@b\\else\\oldusepkg[#1]{#2}\\fi}\n")
+                tmp.write("\\def\\@usepkg[#1]#2{\\@ifnextchar[")
+                tmp.write("{\\@@usepkg[#1]{#2}}{\\@@usepkg[#1]{#2}[]}}\n")
+                tmp.write("\\def\@@usepkg[#1]#2[#3]{\\def\\t@b{#2}")
+                tmp.write("\\ifx\\t@a\\t@b\\else\\oldusepkg[#1]{#2}[#3]\\fi}\n")
                 tmp.write(line)
                 continue
 
