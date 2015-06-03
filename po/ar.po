@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.2.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2015-05-22 01:36+0300\n"
-"PO-Revision-Date: 2015-05-24 01:51+0300\n"
+"PO-Revision-Date: 2015-06-02 10:56+0300\n"
 "Last-Translator: Hatim Alahmady <Dr.hatim@hotmail.com>\n"
 "Language-Team: Hatim Alahmady\n"
 "Language: ar\n"
@@ -1156,7 +1156,6 @@ msgstr "هنا يمكن تعيين معالج فهرس بديل وإدخال ا�
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:161
-#, fuzzy
 msgid "Index Generation"
 msgstr "إنتاج الفهرس"
 
@@ -1185,11 +1184,11 @@ msgstr "اختر إذا كنت تريد استخدام فهارس متعددة (
 
 #: src/frontends/qt4/ui/IndicesUi.ui:92
 msgid "&Use multiple indexes"
-msgstr "استخدام فه&رس متعددة"
+msgstr "استخدام فها&رس متعددة"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:[[index]]"
-msgstr "&جديد:[[index]]"
+msgstr "&جديد:[[فهرس]]"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
@@ -1232,7 +1231,7 @@ msgstr "تسمية الفهرس المحدد"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:175
 msgid "R&ename..."
-msgstr "تس&ميه"
+msgstr "تس&ميه..."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:182
 msgid "Define or change button color"
@@ -1257,7 +1256,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:59
 msgid "Unknown word:"
-msgstr "كلمة مجهولة"
+msgstr "كلمة مجهولة:"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:69
 msgid "Current word"
@@ -2101,7 +2100,7 @@ msgstr "الفه&ارس المتاحة:"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:89
 msgid "Select the index that shall be printed at this place of the document."
-msgstr ""
+msgstr "اختر الفهرس الذي يجب طباعته في هذا الموضع من المستند."
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:41
 msgid "If unchecked, notes and comments will be excluded from spell checking"
@@ -3213,7 +3212,7 @@ msgstr "رسائل ش&ريح الحالة"
 
 #: src/frontends/qt4/ui/IndexUi.ui:69
 msgid "Select the index this entry should be listed in."
-msgstr ""
+msgstr "اختر الفهرس الذي سيدرج فيه مدخل الفهرس هذا."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
@@ -5226,7 +5225,7 @@ msgstr "إعدادات المصطلح"
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:19
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:32
 msgid "Define hanging indentation/label length for the nomenclature list."
-msgstr ""
+msgstr "تعيين طول المسافة البادئة/الملصق لقائمة المصطلحات."
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:22
 msgid "&List Indentation:"
@@ -6665,7 +6664,7 @@ msgstr "\\thechapter"
 
 #: lib/layouts/scrbook.layout:26
 msgid "\\thechapter.\\arabic{equation}"
-msgstr ""
+msgstr "\\thechapter.\\arabic{equation}"
 
 #: lib/layouts/singlecol-new.layout:3
 msgid "Inderscience 9.5 x 6.5 Journals"
@@ -7926,9 +7925,8 @@ msgid "Short name"
 msgstr "اسم قصير"
 
 #: lib/layouts/achemso.layout:113
-#, fuzzy
 msgid "Short name which appears in the footer of the title page"
-msgstr "هذا الصف تذييل الصفحة الاخيرة"
+msgstr "اسم قصير يظهر في اسفل عنوان الصفحة"
 
 #: lib/layouts/achemso.layout:118
 msgid "Alt Affiliation"
@@ -8548,9 +8546,8 @@ msgstr ""
 #: lib/layouts/beamer.layout:210 lib/layouts/memoir.layout:57
 #: lib/layouts/tufte-handout.layout:41 lib/layouts/scrclass.inc:127
 #: lib/layouts/stdsections.inc:33
-#, fuzzy
 msgid "The part as it appears in the table of contents/running headers"
-msgstr "العنوان كما يظهر في الوثيقة"
+msgstr "الجزء الذي يظهر في جدول المحتويات/ running headers"
 
 #: lib/layouts/beamer.layout:252
 msgid "Section \\arabic{section}"
@@ -8566,19 +8563,18 @@ msgid "Subsection \\arabic{section}.\\arabic{subsection}"
 msgstr "قسم فرعي \\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:322
-#, fuzzy
 msgid "The subsection as it appears in the table of contents/running headers"
-msgstr "العنوان كما يظهر في الوثيقة"
+msgstr "القسم الفرعي الذي يظهر في جدول المحتويات/ running headers"
 
 #: lib/layouts/beamer.layout:333
 msgid "\\arabic{section}.\\arabic{subsection}"
 msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:370
-#, fuzzy
 msgid ""
 "Subsubsection \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
-msgstr "\\arabic{section}.\\arabic{subsection}"
+msgstr ""
+"قسم تحت فرعي \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 
 #: lib/layouts/beamer.layout:381
 msgid ""
@@ -8586,9 +8582,8 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/beamer.layout:392
-#, fuzzy
 msgid "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
-msgstr "\\arabic{section}.\\arabic{subsection}"
+msgstr "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 
 #: lib/layouts/beamer.layout:418 lib/layouts/beamer.layout:423
 msgid "Frame"
@@ -9595,9 +9590,8 @@ msgid "Onslide+"
 msgstr ""
 
 #: lib/layouts/powerdot.layout:554
-#, fuzzy
 msgid "Onslide*"
-msgstr "شريحة*"
+msgstr "على الشريحة*"
 
 #: lib/layouts/ectaart.layout:3
 msgid "Econometrica"
@@ -9612,7 +9606,6 @@ msgid "Running Title:"
 msgstr ""
 
 #: lib/layouts/ectaart.layout:36
-#, fuzzy
 msgid "RunAuthor"
 msgstr "المؤلف"
 
@@ -10336,7 +10329,7 @@ msgstr ""
 #: lib/layouts/llncs.layout:347 lib/layouts/heb-article.layout:90
 #: lib/layouts/foils.layout:270
 msgid "Definition #."
-msgstr ""
+msgstr "تعريف #."
 
 #: lib/layouts/llncs.layout:354
 msgid "Example #."
@@ -11733,7 +11726,7 @@ msgstr "خلاصة---"
 
 #: lib/layouts/IEEEtran.layout:283
 msgid "Index Terms---"
-msgstr ""
+msgstr "فهرس الكلمات---"
 
 #: lib/layouts/IEEEtran.layout:287 lib/layouts/IEEEtran.layout:291
 msgid "Paragraph Start"
@@ -11741,7 +11734,7 @@ msgstr "بداية الفقرة"
 
 #: lib/layouts/IEEEtran.layout:295
 msgid "First Char"
-msgstr ""
+msgstr "الحرف الأول"
 
 #: lib/layouts/IEEEtran.layout:296
 msgid "First character of first word"
@@ -11773,7 +11766,7 @@ msgstr "سيرة"
 
 #: lib/layouts/IEEEtran.layout:375
 msgid "Optional photo for biography"
-msgstr ""
+msgstr "خيارات الصورة في السيرة"
 
 #: lib/layouts/IEEEtran.layout:390
 msgid "Biography without photo"
@@ -11821,9 +11814,8 @@ msgid "List of Contributors"
 msgstr "قائمة بالمساهمين"
 
 #: lib/layouts/svmult.layout:72
-#, fuzzy
 msgid "Contributor List"
-msgstr "قائمة بأسماء المساهمين"
+msgstr "قائمة المساهمين"
 
 #: lib/layouts/svmult.layout:104 lib/layouts/svmult.layout:108
 #: lib/layouts/svmult.layout:112 lib/layouts/svmult.layout:116
@@ -11840,28 +11832,24 @@ msgid "PartBacktext"
 msgstr ""
 
 #: lib/layouts/svmult.layout:115 lib/layouts/svcommon.inc:413
-#, fuzzy
 msgid "Running Chapter"
-msgstr "تشغيل BibTeX."
+msgstr ""
 
 #: lib/layouts/svmult.layout:119 lib/layouts/svcommon.inc:168
-#, fuzzy
 msgid "ChapAuthor"
-msgstr "المؤلف"
+msgstr "مؤلف الفصل"
 
 #: lib/layouts/svmult.layout:123 lib/layouts/svcommon.inc:155
-#, fuzzy
 msgid "ChapSubtitle"
-msgstr "العنوان الجانبي"
+msgstr "عنوان جانبي للفصل"
 
 #: lib/layouts/svmult.layout:127 lib/layouts/svcommon.inc:318
 msgid "extrachap"
 msgstr ""
 
 #: lib/layouts/svmult.layout:131 lib/layouts/svcommon.inc:313
-#, fuzzy
 msgid "Extrachap"
-msgstr "إضافي"
+msgstr "فصل إضافي"
 
 #: lib/layouts/svmult.layout:139 lib/layouts/svcommon.inc:502
 #: lib/layouts/svcommon.inc:506
@@ -12004,7 +11992,7 @@ msgstr "تقييد"
 
 #: lib/layouts/foils.layout:183
 msgid "Restriction:"
-msgstr ""
+msgstr "التقييد:"
 
 #: lib/layouts/foils.layout:191 lib/layouts/aguplus.inc:93
 #: lib/layouts/customHeadersFooters.module:18
@@ -12073,9 +12061,8 @@ msgid "AMS"
 msgstr "AMS"
 
 #: lib/layouts/siamltex.layout:206
-#, fuzzy
 msgid "The title as it appears in the running headers"
-msgstr "العنوان كما يظهر في الوثيقة"
+msgstr ""
 
 #: lib/layouts/siamltex.layout:319 lib/layouts/amsdefs.inc:193
 msgid "Subjectclass"
@@ -12095,19 +12082,19 @@ msgstr "أضف جزء"
 
 #: lib/layouts/scrclass.inc:133
 msgid "Addchap"
-msgstr ""
+msgstr "إضافة فصل"
 
 #: lib/layouts/scrclass.inc:144
 msgid "Addsec"
-msgstr ""
+msgstr "إضافة قسم"
 
 #: lib/layouts/scrclass.inc:155
 msgid "Addchap*"
-msgstr ""
+msgstr "إضافة فصل*"
 
 #: lib/layouts/scrclass.inc:161
 msgid "Addsec*"
-msgstr ""
+msgstr "إضافة قسم*"
 
 #: lib/layouts/scrclass.inc:167
 msgid "Minisec"
@@ -12154,36 +12141,32 @@ msgid "Dictum"
 msgstr "قول مأثور"
 
 #: lib/layouts/scrclass.inc:335
-#, fuzzy
 msgid "Dictum Author"
-msgstr "المؤلف الاول"
+msgstr "مؤلف القول المأثور"
 
 #: lib/layouts/scrclass.inc:336
 msgid "The author of this dictum"
-msgstr "صاحب هذا القول"
+msgstr "مؤلف القول المأثور"
 
 #: lib/layouts/acm-sigs.inc:37
-#, fuzzy
 msgid "General terms:"
-msgstr "عام"
+msgstr ""
 
 #: lib/layouts/stdciteformats.inc:9
 msgid "pp."
 msgstr ""
 
 #: lib/layouts/stdciteformats.inc:10
-#, fuzzy
 msgid "ed."
-msgstr "احمر"
+msgstr "ed."
 
 #: lib/layouts/stdciteformats.inc:11
 msgid "vol."
-msgstr ""
+msgstr "vol."
 
 #: lib/layouts/stdciteformats.inc:12
-#, fuzzy
 msgid "no."
-msgstr "لا"
+msgstr "no."
 
 #: lib/layouts/stdciteformats.inc:13
 msgid "in"
@@ -12197,7 +12180,7 @@ msgstr "حادثة \\thefact."
 #: lib/layouts/theorems-bytype.inc:164 lib/layouts/theorems-ams-bytype.inc:188
 #: lib/layouts/theorems-without-preamble.inc:182
 msgid "Definition \\thedefinition."
-msgstr ""
+msgstr "تعريف \\thedefinition."
 
 #: lib/layouts/theorems-bytype.inc:189 lib/layouts/theorems-ams-bytype.inc:213
 #: lib/layouts/theorems-without-preamble.inc:206
@@ -12592,7 +12575,7 @@ msgstr "الفقرة ##"
 
 #: lib/layouts/stdcounters.inc:43
 msgid "\\arabic{enumi}."
-msgstr ""
+msgstr "\\arabic{enumi}."
 
 #: lib/layouts/stdcounters.inc:53
 msgid "\\roman{enumiii}."
@@ -13998,7 +13981,7 @@ msgstr ""
 
 #: lib/layouts/eqs-within-sections.module:17
 msgid "\\thesection.\\arabic{equation}"
-msgstr ""
+msgstr "\\thesection.\\arabic{equation}"
 
 #: lib/layouts/algorithm2e.module:2
 msgid "Algorithm2e"
@@ -16433,7 +16416,7 @@ msgstr "تغيير نوع محدد|L"
 
 #: lib/ui/stdmenus.inc:236
 msgid "Macro Definition"
-msgstr "تعريف مختصر"
+msgstr "تعريف ماكرو"
 
 #: lib/ui/stdmenus.inc:238
 msgid "Change Formula Type|F"
@@ -24652,18 +24635,16 @@ msgid "Running BibTeX."
 msgstr "تشغيل BibTeX."
 
 #: src/LaTeX.cpp:465
-#, fuzzy
 msgid "Running MakeIndex for nomencl."
-msgstr "تشغيل صانع فهرس."
+msgstr "تشغيل MakeIndex للمصطلحات."
 
 #: src/LaTeX.cpp:1282 src/LaTeX.cpp:1288 src/LaTeX.cpp:1297
 msgid "BibTeX error: "
 msgstr "BibTeX خطأ: "
 
 #: src/LaTeX.cpp:1304
-#, fuzzy
 msgid "Biber error: "
-msgstr "خطأ في القرص:"
+msgstr "خطأ Biber :"
 
 #: src/LaTeXFonts.cpp:220 src/LaTeXFonts.cpp:289
 msgid "Font not available"
@@ -25059,7 +25040,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3200
 msgid "Select how LyX will display any graphics."
-msgstr "حدد طريقة عرض الصور في LyX."
+msgstr "تحديد طريقة عرض الصور في LyX."
 
 #: src/LyXRC.cpp:3204
 msgid ""
@@ -25070,15 +25051,13 @@ msgstr ""
 
 #: src/LyXRC.cpp:3208
 msgid "Specify additional chars that can be part of a word."
-msgstr ""
+msgstr "تعيين حرف إضافي ليكون جزء من كلمة."
 
 #: src/LyXRC.cpp:3212
-#, fuzzy
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
-"المسار الأفتراضي للوصول لمستنداتك. القيم الخالية تحدد المجلد الذي بدأ منه LyX"
 
 #: src/LyXRC.cpp:3216
 msgid ""
@@ -25087,14 +25066,11 @@ msgid ""
 msgstr ""
 
 #: src/LyXRC.cpp:3223
-#, fuzzy
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
 "\"makeindex.sh -m $$lang\"."
 msgstr ""
-"تحدد خيارات bibtex (cf. man bibtex)  أو استخدم مترجم أخر (مثل mlbibtex أو "
-"bibulus)."
 
 #: src/LyXRC.cpp:3227
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
@@ -25105,6 +25081,8 @@ msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
 msgstr ""
+"تعيين خيارات makeindex (راجع makeindex ) لاستخدامها للمصطلحات. ربما هذا "
+"يختلف عن خيارات معالجة الفهرس."
 
 #: src/LyXRC.cpp:3240
 msgid ""
@@ -26348,7 +26326,7 @@ msgstr "دالة مجهولة."
 
 #: src/frontends/qt4/GuiApplication.cpp:2620
 msgid "The current document was closed."
-msgstr "المستند الحالي اغلق"
+msgstr "تم إغلاق المستند الحالي."
 
 #: src/frontends/qt4/GuiApplication.cpp:2630
 msgid ""
@@ -26371,9 +26349,8 @@ msgstr ""
 
 #: src/frontends/qt4/GuiApplication.cpp:2929
 #: src/frontends/qt4/GuiApplication.cpp:2941
-#, fuzzy
 msgid "Could not find UI definition file"
-msgstr "غير قادر على العثور على ملف الـUI الأفتراضي"
+msgstr "لم يتم العثور على ملف الـواجهة الافتراضي"
 
 #: src/frontends/qt4/GuiApplication.cpp:2930
 #, c-format
@@ -26391,13 +26368,11 @@ msgid "Could not find default UI file"
 msgstr "غير قادر على العثور على ملف الـUI الأفتراضي"
 
 #: src/frontends/qt4/GuiApplication.cpp:2937
-#, fuzzy
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
 msgstr ""
-"خطأ أثناء قراءة ملف الضبط\n"
-"%1$s.\n"
+"ليك لم يعثر على ملف الواجهة الافتراضي!\n"
 "من فضلك تأكد من عملية التنصيب."
 
 #: src/frontends/qt4/GuiApplication.cpp:2942
@@ -27543,7 +27518,7 @@ msgstr "إدخال اسم فهرس جديد"
 
 #: src/frontends/qt4/GuiIndices.cpp:222
 msgid "The index could not be renamed. Check if the new name already exists."
-msgstr ""
+msgstr "لم يتم تغيير اسم الفهرس. تأكد من الاسم الجديد موجود مسبقا."
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "unknown"
@@ -29049,11 +29024,11 @@ msgstr "لا فروع معينة للمستند!"
 
 #: src/frontends/qt4/Menus.cpp:1459
 msgid "Index List|I"
-msgstr "قائمة الفهرس"
+msgstr "قائمة الفهرس|I"
 
 #: src/frontends/qt4/Menus.cpp:1464
 msgid "Index Entry|d"
-msgstr "مدخل فهرس|م"
+msgstr "مدخل فهرس|d"
 
 #: src/frontends/qt4/Menus.cpp:1479
 #, c-format
@@ -29194,28 +29169,28 @@ msgid "unknown type!"
 msgstr "نوع مجهول!"
 
 #: src/frontends/qt4/qt_helpers.cpp:638
-#, fuzzy, c-format
+#, c-format
 msgid "Index Entries (%1$s)"
-msgstr "مدخل فهرس (%1$s)"
+msgstr "مدخل فهرس  (%1$s)"
 
 #: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:298
 #: src/insets/InsetGraphics.cpp:605 src/insets/InsetInclude.cpp:547
 msgid ""
 "The following filename will cause troubles when running the exported file "
 "through LaTeX: "
-msgstr ""
+msgstr "اسم الملف التالي يسبب مشاكل عند تصدير عبر لتيك:"
 
 #: src/insets/ExternalSupport.cpp:374 src/insets/InsetBibtex.cpp:303
 #: src/insets/InsetGraphics.cpp:612 src/insets/InsetInclude.cpp:551
 msgid "Problematic filename for DVI"
-msgstr ""
+msgstr "اسم الملف يسبب مشكلة في DVI"
 
 #: src/insets/ExternalSupport.cpp:375 src/insets/InsetBibtex.cpp:304
 #: src/insets/InsetGraphics.cpp:613 src/insets/InsetInclude.cpp:552
 msgid ""
 "The following filename can cause troubles when running the exported file "
 "through LaTeX and opening the resulting DVI: "
-msgstr ""
+msgstr "اسم الملف التالي يسبب مشاكل عند تصدير عبر لتيك وفتح النتيجة في DVI :"
 
 #: src/insets/Inset.cpp:88
 msgid "Bibliography Entry"
@@ -29242,9 +29217,8 @@ msgid "Horizontal Math Space"
 msgstr "مسافة أفقية"
 
 #: src/insets/InsetArgument.cpp:117
-#, fuzzy
 msgid "Unknown Argument"
-msgstr "صنف مستند مجهول"
+msgstr ""
 
 #: src/insets/InsetArgument.cpp:118
 msgid "Argument not known in this Layout. Will be supressed in the output."
@@ -29252,7 +29226,7 @@ msgstr ""
 
 #: src/insets/InsetBibitem.cpp:94
 msgid "Keys must be unique!"
-msgstr ""
+msgstr "المفتاح يجب أن يكون فريد!"
 
 #: src/insets/InsetBibitem.cpp:95
 #, c-format
@@ -29260,6 +29234,8 @@ msgid ""
 "The key %1$s already exists,\n"
 "it will be changed to %2$s."
 msgstr ""
+"المفتاح %1$s موجود مسبقا,\n"
+"سيتم تغييره إلى %2$s."
 
 #: src/insets/InsetBibtex.cpp:148
 #, c-format
