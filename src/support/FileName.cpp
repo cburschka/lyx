@@ -490,6 +490,12 @@ bool FileName::chdir() const
 }
 
 
+bool FileName::link(FileName const & name) const
+{
+	return QFile::link(toqstr(absFileName()), toqstr(name.absFileName()));
+}
+
+
 unsigned long checksum_ifstream_fallback(char const * file)
 {
 	unsigned long result = 0;

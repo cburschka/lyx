@@ -143,6 +143,7 @@ public:
 	/// the symlink will be destroyed).
 	/// \return true on success.
 	bool moveTo(FileName const & target) const;
+	bool link(FileName const & name) const;
 
 	/// change mode of pointed file.
 	/// This methods does nothing and return true on platforms that does not
