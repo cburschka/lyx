@@ -348,7 +348,7 @@ def run_tex(tex, tex_file):
 
     tex_status, tex_stdout = run_command(tex_call)
     if tex_status:
-        warning("%s had problems compiling %s" \
+        progress("Warning: %s had problems compiling %s" \
             % (os.path.basename(tex), tex_file))
     return tex_status, tex_stdout
 

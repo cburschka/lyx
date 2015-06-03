@@ -471,7 +471,7 @@ def main(argv):
     error_pages = []
     latex_status, latex_stdout = run_latex(latex, latex_file, bibtex)
     if latex_status:
-        warning("trying to recover from failed compilation")
+        progress("Will try to recover from %s failure" % latex)
         error_pages = check_latex_log(latex_file_re.sub(".log", latex_file))
 
     # The dvi output file name
@@ -568,10 +568,14 @@ def main(argv):
 
     # Invalidate metrics for pages that produced errors
     if len(error_pages) > 0:
+        error_count = 0
         for index in error_pages:
             if index not in ps_pages and index not in pdf_pages:
                 dvipng_metrics.pop(index - 1)
                 dvipng_metrics.insert(index - 1, (index, -1.0))
+                error_count += 1
+        if error_count:
+            warning("Failed to produce %d preview snippet(s)" % error_count)
 
     # Convert images to ppm format if necessary.
     if output_format == "ppm":
