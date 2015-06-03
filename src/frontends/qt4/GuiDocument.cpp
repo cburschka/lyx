@@ -31,6 +31,7 @@
 #include "BufferView.h"
 #include "Color.h"
 #include "ColorCache.h"
+#include "Cursor.h"
 #include "Encoding.h"
 #include "FloatPlacement.h"
 #include "Format.h"
@@ -2604,9 +2605,16 @@ void GuiDocument::applyView()
 	bp_.quotes_language = (InsetQuotes::QuoteLanguage) langModule->quoteStyleCO->itemData(
 		langModule->quoteStyleCO->currentIndex()).toInt();
 
-	QString const lang = langModule->languageCO->itemData(
+	QString const langname = langModule->languageCO->itemData(
 		langModule->languageCO->currentIndex()).toString();
-	bp_.language = lyx::languages.getLanguage(fromqstr(lang));
+	Language const * newlang = lyx::languages.getLanguage(fromqstr(langname));
+	Cursor & cur = const_cast<BufferView *>(bufferview())->cursor();
+	// If current cursor language was the document language, then update it too.
+	if (cur.current_font.language() == bp_.language) {
+		cur.current_font.setLanguage(newlang);
+		cur.real_current_font.setLanguage(newlang);
+	}
+	bp_.language = newlang;
 
 	QString const pack = langModule->languagePackageCO->itemData(
 		langModule->languagePackageCO->currentIndex()).toString();
