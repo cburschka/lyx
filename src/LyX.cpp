@@ -779,6 +779,43 @@ void cleanDuplicateEnvVars()
 }
 #endif
 
+
+static void initTemplatePath()
+{
+	FileName const package_template_path =
+		FileName(addPath(package().system_support().absFileName(), "templates"));
+
+	if (lyxrc.template_path.empty()) {
+		lyxrc.template_path = package_template_path.absFileName();
+	}
+#if defined (USE_MACOSX_PACKAGING)
+	FileName const user_template_path =
+		FileName(addPath(package().user_support().absFileName(), "templates"));
+
+	if (package_template_path != FileName(lyxrc.template_path) &&
+		user_template_path != FileName(lyxrc.template_path))
+	{
+		return;
+	}
+	/// addPath cannot be used here.
+	/// The path with trailing slash doesn't work as symlink name.
+	FileName const user_template_link =
+		FileName(user_template_path.absFileName() + "SystemTemplates");
+	if (user_template_link.isSymLink()) {
+		user_template_link.removeFile();
+	}
+	if (!user_template_link.exists()) {
+		if (!package_template_path.link(user_template_link)) {
+			LYXERR(Debug::INIT, "Cannot create symlink " + user_template_link.absFileName());
+			lyxrc.template_path = package_template_path.absFileName();
+			return;
+		}
+	}
+	lyxrc.template_path = user_template_path.absFileName();
+#endif
+}
+
+
 bool LyX::init()
 {
 #ifdef SIGHUP
@@ -801,10 +838,7 @@ bool LyX::init()
 		lyxrc.example_path = addPath(package().system_support().absFileName(),
 					      "examples");
 	}
-	if (lyxrc.template_path.empty()) {
-		lyxrc.template_path = addPath(package().system_support().absFileName(),
-					      "templates");
-	}
+	initTemplatePath();
 
 	// init LyXDir environment variable
 	string const lyx_dir = package().lyx_dir().absFileName();
