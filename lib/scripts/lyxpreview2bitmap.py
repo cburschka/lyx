@@ -158,12 +158,17 @@ def extract_metrics_info(dvipng_stdout):
     return results
 
 
-def fix_latex_file(latex_file):
+def fix_latex_file(latex_file, pdf_output):
     documentclass_re = re.compile("(\\\\documentclass\[)(1[012]pt,?)(.+)")
-    newcommandx_re = re.compile("(\\\\newcommandx)(\\\\[a-zA-Z])(.+)")
+    def_re = re.compile(r"(\\newcommandx|\\global\\long\\def)(\\[a-zA-Z])(.+)")
+    usepackage_re = re.compile("\\\\usepackage")
+    userpreamble_re = re.compile("User specified LaTeX commands")
+    enduserpreamble_re = re.compile("\\\\makeatother")
 
     tmp = mkstemp()
 
+    in_user_preamble = 0
+    usepkg = 0
     changed = 0
     macros = []
     for line in open(latex_file, 'r').readlines():
@@ -173,7 +178,25 @@ def fix_latex_file(latex_file):
             tmp.write("%s%s\n" % (match.group(1), match.group(3)))
             continue
 
-        match = newcommandx_re.match(line)
+        if not pdf_output and not usepkg:
+            if userpreamble_re.search(line) != None:
+                in_user_preamble = 1
+            elif enduserpreamble_re.search(line) != None:
+                in_user_preamble = 0
+            if usepackage_re.match(line) != None and in_user_preamble:
+                usepkg = 1
+                changed = 1
+                tmp.write("\\def\\t@a{microtype}\n")
+                tmp.write("\\let\\oldusepkg\\usepackage\n")
+                tmp.write("\\def\\usepackage{\\@ifnextchar[\\@usepkg{\\@usepkg[]}}\n")
+                tmp.write("\\def\\@usepkg[#1]#2{\\@ifnextchar[")
+                tmp.write("{\\@@usepkg[#1]{#2}}{\\@@usepkg[#1]{#2}[]}}\n")
+                tmp.write("\\def\@@usepkg[#1]#2[#3]{\\def\\t@b{#2}")
+                tmp.write("\\ifx\\t@a\\t@b\\else\\oldusepkg[#1]{#2}[#3]\\fi}\n")
+                tmp.write(line)
+                continue
+
+        match = def_re.match(line)
         if match == None:
             tmp.write(line)
             continue
@@ -184,8 +207,12 @@ def fix_latex_file(latex_file):
             tmp.write(line)
             continue
 
-        changed = 1
-        tmp.write("\\renewcommandx%s%s\n" % (match.group(2), match.group(3)))
+        definecmd = match.group(1)
+        if definecmd == "\\global\\long\\def":
+            tmp.write(line)
+        else:
+            changed = 1
+            tmp.write("\\renewcommandx%s%s\n" % (match.group(2), match.group(3)))
 
     if changed:
         copyfileobj(tmp, open(latex_file,"wb"), 1)
@@ -405,9 +432,9 @@ def main(argv):
     progress("Preprocess through lilypond-book: %s" % lilypond)
     progress("Altering the latex file for font size and colors")
 
-    # Omit font size specification in latex file and make sure multiple
-    # defined macros are not an issue.
-    fix_latex_file(latex_file)
+    # Omit font size specification in latex file and make sure that multiple
+    # defined macros and the microtype package don't cause issues.
+    fix_latex_file(latex_file, pdf_output)
 
     if lilypond:
         progress("Preprocess the latex file through %s" % lilypond_book)
@@ -452,7 +479,7 @@ def main(argv):
     error_pages = []
     latex_status, latex_stdout = run_latex(latex, latex_file, bibtex)
     if latex_status:
-        warning("trying to recover from failed compilation")
+        progress("Will try to recover from %s failure" % latex)
         error_pages = check_latex_log(latex_file_re.sub(".log", latex_file))
 
     # The dvi output file name
@@ -549,10 +576,14 @@ def main(argv):
 
     # Invalidate metrics for pages that produced errors
     if len(error_pages) > 0:
+        error_count = 0
         for index in error_pages:
             if index not in ps_pages and index not in pdf_pages:
                 dvipng_metrics.pop(index - 1)
                 dvipng_metrics.insert(index - 1, (index, -1.0))
+                error_count += 1
+        if error_count:
+            warning("Failed to produce %d preview snippet(s)" % error_count)
 
     # Convert images to ppm format if necessary.
     if output_format == "ppm":

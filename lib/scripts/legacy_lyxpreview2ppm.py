@@ -233,8 +233,11 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
 \definecolor{bg}{rgb}{%s}
 \pagecolor{bg}
 \usepackage[%s,tightpage]{preview}
-\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{\usepackage{ae,aecomp}}
 \makeatletter
+\def\t@a{cmr}
+\if\f@family\t@a
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{\usepackage{ae,aecompl}}
+\fi
 \g@addto@macro\preview{\begingroup\color{bg}\special{ps::clippath fill}\color{fg}}
 \g@addto@macro\endpreview{\endgroup}
 \makeatother
@@ -302,7 +305,7 @@ def legacy_conversion_step1(latex_file, dpi, output_format, fg_color, bg_color,
     # Compile the latex file.
     latex_status, latex_stdout = run_latex(latex, latex_file)
     if latex_status:
-        warning("trying to recover from failed compilation")
+        progress("Will try to recover from %s failure" % latex)
 
     if pdf_output:
         return legacy_conversion_step3(latex_file, dpi, output_format, True, skipMetrics)
@@ -315,10 +318,13 @@ def legacy_conversion_step1(latex_file, dpi, output_format, fg_color, bg_color,
 def legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics,
     use_pdftocairo, conv, gs_device, gs_ext, alpha, resolution, output_format):
 
+    error_count = 0
+
     # Search for pdflatex executable
     pdflatex = find_exe(["pdflatex"])
     if pdflatex == None:
         warning("Can't find pdflatex. Some pages failed with all the possible routes.")
+        failed_pages = []
     else:
         # Create a new LaTeX file from the original but only with failed pages
         pdf_latex_file = latex_file_re.sub("_pdflatex.tex", latex_file)
@@ -357,6 +363,7 @@ def legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics,
         if conv_status:
             # Give up!
             warning("Some pages failed with all the possible routes")
+            failed_pages = []
         else:
             # We've done it!
             pdf_log_file = latex_file_re.sub(".log", pdf_latex_file)
@@ -367,6 +374,7 @@ def legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics,
                 for index in error_pages:
                     pdf_metrics.pop(index - 1)
                     pdf_metrics.insert(index - 1, (index, -1.0))
+                    error_count += 1
 
             original_bitmap = latex_file_re.sub("%d." + output_format, pdf_latex_file)
             destination_bitmap = latex_file_re.sub("%d." + output_format, latex_file)
@@ -374,6 +382,8 @@ def legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics,
             # Join the metrics with the those from dvips and rename the bitmap images
             join_metrics_and_rename(legacy_metrics, pdf_metrics, failed_pages,
                 original_bitmap, destination_bitmap)
+
+    return error_count
 
 
 # The file has been processed through latex and we expect dvi output.
@@ -513,9 +523,11 @@ def legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMe
     # Pass failed pages to pdflatex
     if len(failed_pages) > 0:
         warning("Now trying to obtain failed previews through pdflatex")
-        legacy_conversion_pdflatex(latex_file, failed_pages, legacy_metrics,
-            use_pdftocairo, conv, gs_device, gs_ext, alpha, resolution,
-            output_format)
+        error_count = legacy_conversion_pdflatex(latex_file, failed_pages,
+            legacy_metrics, use_pdftocairo, conv, gs_device, gs_ext, alpha,
+            resolution, output_format)
+    else:
+        error_count = 0
 
     # Invalidate metrics for pages that produced errors
     if len(error_pages) > 0:
@@ -523,6 +535,7 @@ def legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMe
             if index not in failed_pages:
                 legacy_metrics.pop(index - 1)
                 legacy_metrics.insert(index - 1, (index, -1.0))
+                error_count += 1
 
     # Crop the ppm images
     if pnmcrop != None and output_format == "ppm":
@@ -534,6 +547,8 @@ def legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMe
         # Extract metrics info from the log file.
         metrics_file = latex_file_re.sub(".metrics", latex_file)
         write_metrics_info(legacy_metrics, metrics_file)
+        if error_count:
+            warning("Failed to produce %d preview snippet(s)" % error_count)
 
     return (0, legacy_metrics)
 
