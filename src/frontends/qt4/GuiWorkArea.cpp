@@ -818,7 +818,7 @@ void GuiWorkArea::mousePressEvent(QMouseEvent * e)
 		return;
 	}
 
-#if (QT_VERSION < 0x050000)
+#if (QT_VERSION < 0x050000) && !defined(__HAIKU__)
 	inputContext()->reset();
 #endif
 
