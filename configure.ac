@@ -213,7 +213,7 @@ save_LIBS="$LIBS"
 LIBS=
 AC_CHECK_FUNCS(fcntl,
   [AC_SEARCH_LIBS([gethostbyname], [nsl])
-   AC_SEARCH_LIBS([socket], [socket], [],
+   AC_SEARCH_LIBS([socket], [socket network], [],
      [AC_CHECK_LIB([socket], [socket], [LIBS="-lsocket -lnsl $LIBS"],
 		[], [-lnsl])])],
   [lyx_client_subdir=false])
