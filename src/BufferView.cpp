@@ -1223,6 +1223,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	string const argument = to_utf8(cmd.argument());
 	Cursor & cur = d->cursor_;
+	Cursor old = cur;
 
 	// Don't dispatch function that does not apply to internal buffers.
 	if (buffer_.isInternal() 
@@ -1720,7 +1721,6 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			p = Point(0, 0);
 		if (act == LFUN_SCREEN_DOWN && scrolled < height_)
 			p = Point(width_, height_);
-		Cursor old = cur;
 		bool const in_texted = cur.inTexted();
 		cur.setCursor(doc_iterator_begin(cur.buffer()));
 		cur.selHandle(false);
@@ -2042,6 +2042,21 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	buffer_.undo().endUndoGroup();
 	dr.dispatched(dispatched);
+
+	// NOTE: The code below is copied from Cursor::dispatch. If you
+	// need to modify this, please update the other one too.
+
+	// notify insets we just entered/left
+	if (cursor() != old) {
+		old.beginUndoGroup();
+		old.fixIfBroken();
+		bool badcursor = notifyCursorLeavesOrEnters(old, cursor());
+		if (badcursor) {
+			cursor().fixIfBroken();
+			resetInlineCompletionPos();
+		}
+		old.endUndoGroup();
+	}
 }
 
 

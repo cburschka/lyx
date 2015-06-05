@@ -70,6 +70,8 @@ What's new
 - Fix setting of nested minipage via the dialog (bug 8716).
 
 - When the document language is changed, update cursor language too (bug 9586).
+
+- Correctly update previews when cursor leaves inset (bug 6173).
  
 
 * INTERNALS
