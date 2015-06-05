@@ -458,6 +458,9 @@ void Cursor::dispatch(FuncRequest const & cmd0)
 	}
 	endUndoGroup();
 
+	// NOTE: The code below has been copied to BufferView::dispatch.
+	// If you need to modify this, please update the other one too.
+
 	// notify insets we just left
 	if (*this != old) {
 		old.beginUndoGroup();
