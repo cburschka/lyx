@@ -562,12 +562,13 @@ AC_DEFUN([LYX_USE_PACKAGING],
 [AC_MSG_CHECKING([what packaging should be used])
 AC_ARG_WITH(packaging,
   [AC_HELP_STRING([--with-packaging=THIS], [use THIS packaging for installation:
-			    Possible values: posix, windows, macosx])],
+			    Possible values: posix, windows, macosx, haiku])],
   [lyx_use_packaging="$withval"], [
   case $host in
     *-apple-darwin*) lyx_use_packaging=macosx ;;
-     *-pc-mingw32*) lyx_use_packaging=windows;;
-                  *) lyx_use_packaging=posix;;
+    *-pc-mingw32*) lyx_use_packaging=windows ;;
+    *haiku*) lyx_use_packaging=haiku ;;
+    *) lyx_use_packaging=posix ;;
   esac])
 AC_MSG_RESULT($lyx_use_packaging)
 lyx_install_posix=false
@@ -600,9 +601,15 @@ case $lyx_use_packaging in
 	   pkgdatadir='${datadir}/${PACKAGE}'
 	   default_prefix=$ac_default_prefix
 	   case ${host} in
-	   *cygwin*) lyx_install_cygwin=true ;;
-		*apple-darwin*) lyx_install_macosx=true ;;
+	     *cygwin*) lyx_install_cygwin=true ;;
+	     *apple-darwin*) lyx_install_macosx=true ;;
 	   esac
+	   lyx_install_posix=true ;;
+	haiku) AC_DEFINE(USE_HAIKU_PACKAGING, 1, [Define to 1 if LyX should use a Haiku-style file layout])
+	   PACKAGE=lyx${version_suffix}
+	   program_suffix=$version_suffix
+	   pkgdatadir='${datadir}/${PACKAGE}'
+	   default_prefix=$ac_default_prefix
 	   lyx_install_posix=true ;;
     *) AC_MSG_ERROR([unknown packaging type $lyx_use_packaging.]) ;;
 esac

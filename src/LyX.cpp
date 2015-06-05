@@ -833,7 +833,7 @@ bool LyX::init()
 		return false;
 
 	// Set the PATH correctly.
-#if !defined (USE_POSIX_PACKAGING)
+#if !defined (USE_POSIX_PACKAGING) && !defined (USE_HAIKU_PACKAGING)
 	// Add the directory containing the LyX executable to the path
 	// so that LyX can find things like tex2lyx.
 	if (package().build_support().empty())

@@ -34,8 +34,9 @@
 
 #if !defined (USE_WINDOWS_PACKAGING) && \
     !defined (USE_MACOSX_PACKAGING) && \
+    !defined (USE_HAIKU_PACKAGING) && \
     !defined (USE_POSIX_PACKAGING)
-#error USE_FOO_PACKAGING must be defined for FOO = WINDOWS, MACOSX or POSIX.
+#error USE_FOO_PACKAGING must be defined for FOO = WINDOWS, MACOSX, HAIKU or POSIX.
 #endif
 
 #if defined (USE_MACOSX_PACKAGING)
@@ -695,6 +696,9 @@ FileName const get_default_user_support_dir(FileName const & home_dir)
 #elif defined (USE_MACOSX_PACKAGING)
 	(void)home_dir; // Silence warning about unused variable.
 	return FileName(addPath(fromqstr(QDesktopServices::storageLocation(QDesktopServices::DataLocation)), PACKAGE));
+
+#elif defined (USE_HAIKU_PACKAGING)
+	return FileName(addPath(home_dir.absFileName(), string("/config/settings/") + PACKAGE));
 
 #else // USE_POSIX_PACKAGING
 	return FileName(addPath(home_dir.absFileName(), string(".") + PACKAGE));
