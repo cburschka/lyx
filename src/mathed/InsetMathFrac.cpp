@@ -553,8 +553,8 @@ void InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Dimension dim0, dim1;
 
-	// FIXME: for an unknown reason the cells must be set directly
-	// after the StyleChanger and cannot be set after the if case
+	// The cells must be set while the RAII objects (StyleChanger,
+	// FracChanger) do still exist and cannot be set after the if case.
 	if (kind_ == DBINOM) {
 		StyleChanger dummy(mi.base, LM_ST_DISPLAY);
 		cell(0).metrics(mi, dim0);
@@ -587,8 +587,8 @@ void InsetMathBinom::draw(PainterInfo & pi, int x, int y) const
 		kind_ == BRACK ? from_ascii("]") : from_ascii(")");
 
 	int m = x + dim.width() / 2;
-	// FIXME: for an unknown reason the cells must be drawn directly
-	// after the StyleChanger and cannot be drawn after the if case
+	// The cells must be drawn while the RAII objects (StyleChanger,
+	// FracChanger) do still exist and cannot be drawn after the if case.
 	if (kind_ == DBINOM) {
 		StyleChanger dummy(pi.base, LM_ST_DISPLAY);
 		cell(0).draw(pi, m - dim0.wid / 2, y - dim0.des - 3 - 5);
