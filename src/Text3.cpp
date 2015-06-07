@@ -1071,17 +1071,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_DELETE_BACKWARD:
 		if (!cur.selection()) {
 			if (bv->getIntl().getTransManager().backspace()) {
-				bool par_boundary = cur.pos() == 0;
 				// Par boundary, full-screen update
-				if (par_boundary)
+				if (cur.pos() == 0)
 					singleParUpdate = false;
 				needsUpdate |= backspace(cur);
 				cur.resetAnchor();
-				if (par_boundary && cur.pos() > 0
-				    && cur.paragraph().isEnvSeparator(cur.pos() - 1)) {
-					needsUpdate |= backspace(cur);
-					cur.resetAnchor();
-				}
 			}
 		} else {
 			cutSelection(cur, true, false);
