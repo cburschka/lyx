@@ -16,7 +16,7 @@ test "$automake_version" != "" && {
 }
 
 case $automake_version in
-    *' '1.[8-9]*|*' '1.1[01234]*)
+    *' '1.[8-9]*|*' '1.1[012345]*)
 	;;
     *)
 	echo "This automake version is not supported by LyX."
