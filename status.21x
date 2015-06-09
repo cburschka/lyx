@@ -143,6 +143,9 @@ What's new
 
 - Fix instant preview of included documents in child documents (bug 9583).
 
+- Do not add paragraph break on environments with font change if the
+  environments only have one paragraph (bug 9598).
+
 
 * LYX2LYX
 

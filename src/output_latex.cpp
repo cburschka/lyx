@@ -875,7 +875,7 @@ void TeXOnePar(Buffer const & buf,
 
 	if (style.resfont.size() != font.fontInfo().size()
 	    && (nextpar || maintext
-	        || (text.inset().getLayout().isMultiPar()
+	        || (text.inset().paragraphs().size() > 1
 	            && text.inset().lyxCode() != CELL_CODE))
 	    && !is_command) {
 		os << '{';
