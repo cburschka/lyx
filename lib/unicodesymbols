@@ -2309,8 +2309,8 @@
 #0x22d5 ""                         "" "" "" "" # EQUAL AND PARALLEL TO
 #0x22d6 ""                         "" "" "" "" # LESS-THAN WITH DOT
 #0x22d7 ""                         "" "" "" "" # GREATER-THAN WITH DOT
-#0x22d8 ""                         "" "" "" "" # VERY MUCH LESS-THAN
-#0x22d9 ""                         "" "" "" "" # VERY MUCH GREATER-THAN
+0x22d8 ""                         "" "" "\\llless" "amssymb" # VERY MUCH LESS-THAN
+0x22d9 ""                         "" "" "\\gggtr" "amssymb" # VERY MUCH GREATER-THAN
 #0x22da ""                         "" "" "" "" # LESS-THAN EQUAL TO OR GREATER-THAN
 #0x22db ""                         "" "" "" "" # GREATER-THAN EQUAL TO OR LESS-THAN
 #0x22dc ""                         "" "" "" "" # EQUAL TO OR LESS-THAN
