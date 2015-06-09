@@ -854,8 +854,8 @@ void TeXOnePar(Buffer const & buf,
 	// to this font. (Matthias)
 	//
 	// We must not change the font for the last paragraph
-	// of non-multipar insets, tabular cells or commands,
-	// since this produces unwanted whitespace.
+	// of non-multipar insets, tabular cells, greyedout notes
+	// or commands, since this produces unwanted whitespace.
 
 	Font const font = par.empty()
 		 ? par.getLayoutFont(bparams, outerfont)
@@ -866,7 +866,8 @@ void TeXOnePar(Buffer const & buf,
 	if (style.resfont.size() != font.fontInfo().size()
 	    && (nextpar || maintext
 	        || (text.inset().getLayout().isMultiPar()
-	            && text.inset().lyxCode() != CELL_CODE))
+	            && text.inset().lyxCode() != CELL_CODE
+		    && text.inset().lyxCode() != NOTE_CODE))
 	    && !is_command) {
 		os << '{';
 		os << "\\" << from_ascii(font.latexSize()) << " \\par}";
