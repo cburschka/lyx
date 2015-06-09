@@ -25,6 +25,9 @@
 
 #include "graphics/PreviewImage.h"
 
+#include "mathed/InsetMathHull.h"
+#include "mathed/MacroTable.h"
+
 #include <sstream>
 
 using namespace std;
@@ -74,7 +77,32 @@ void InsetPreview::preparePreview(DocIterator const & pos) const
 	otexstream os(str, texrow);
 	OutputParams runparams(&pos.buffer()->params().encoding());
 	latex(os, runparams);
-	docstring const snippet = str.str();
+
+	// collect macros at this position
+	MacroNameSet macros;
+	pos.buffer()->listMacroNames(macros);
+
+	// look for math insets and collect definitions for the used macros
+	MacroNameSet defs;
+	DocIterator dit = doc_iterator_begin(pos.buffer(), this);
+	DocIterator const dend = doc_iterator_end(pos.buffer(), this);
+	if (!dit.nextInset())
+		dit.forwardInset();
+	for (; dit != dend; dit.forwardInset()) {
+		InsetMath * im = dit.nextInset()->asInsetMath();
+		InsetMathHull * hull = im ? im->asHullInset() : 0;
+		if (!hull)
+			continue;
+		for (idx_type idx = 0; idx < hull->nargs(); ++idx)
+			hull->usedMacros(hull->cell(idx), pos, macros, defs);
+	}
+	MacroNameSet::iterator it = defs.begin();
+	MacroNameSet::iterator end = defs.end();
+	docstring macro_preamble;
+	for (; it != end; ++it)
+		macro_preamble.append(*it);
+
+	docstring const snippet = macro_preamble + str.str();
 	preview_->addPreview(snippet, *pos.buffer());  
 }
 

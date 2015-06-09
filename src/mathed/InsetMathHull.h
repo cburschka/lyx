@@ -23,6 +23,7 @@
 namespace lyx {
 
 class InsetLabel;
+class MacroNameSet;
 class ParConstIterator;
 class RenderPreview;
 
@@ -151,6 +152,9 @@ public:
 		graphics::PreviewLoader &) const;
 	/// Recreates the preview if preview is enabled.
 	void reloadPreview(DocIterator const & pos) const;
+	///
+	void usedMacros(MathData const & md, DocIterator const & pos,
+	                MacroNameSet & macros, MacroNameSet & defs) const;
 	///
 	void initUnicodeMath() const;
 
