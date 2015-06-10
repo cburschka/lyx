@@ -19,6 +19,7 @@
 #define PREVIEWLOADER_H
 
 #include <boost/signal.hpp>
+#include <QObject>
 #include "support/docstring.h"
 
 #include "ColorCode.h"
@@ -31,7 +32,8 @@ namespace graphics {
 
 class PreviewImage;
 
-class PreviewLoader {
+class PreviewLoader : public QObject {
+	Q_OBJECT
 public:
 	/** We need buffer because we require the preamble to the
 	 *  LaTeX file.
@@ -98,6 +100,10 @@ public:
 	static ColorCode foregroundColor() { return Color_preview; }
 
 	double displayPixelRatio() const ;
+
+public Q_SLOTS:
+	///
+	void refreshPreviews();
 
 private:
 	/// noncopyable
