@@ -436,6 +436,8 @@ PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 
 PreviewLoader::Impl::~Impl()
 {
+	delete delay_refresh_;
+
 	InProgressProcesses::iterator ipit  = in_progress_.begin();
 	InProgressProcesses::iterator ipend = in_progress_.end();
 
