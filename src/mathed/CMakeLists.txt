@@ -14,7 +14,7 @@ list(REMOVE_ITEM mathed_sources
 
 lyx_add_msvc_pch(mathed)
 
-include_directories(${TOP_SRC_DIR}/src/mathed)
+include_directories(${TOP_SRC_DIR}/src/mathed ${QT_INCLUDES})
 
 if(NOT LYX_MERGE_FILES)
 	add_library(mathed ${library_type} ${mathed_sources} ${mathed_headers})

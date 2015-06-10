@@ -13,7 +13,7 @@ lyx_add_msvc_pch(graphics)
 
 include_directories(${TOP_SRC_DIR}/src/graphics)
 lyx_automoc(${TOP_SRC_DIR}/src/graphics/PreviewLoader.cpp)
-include_directories(${CMAKE_CURRENT_BINARY_DIR})
+include_directories(${CMAKE_CURRENT_BINARY_DIR} ${QT_INCLUDES})
 
 if(NOT LYX_MERGE_FILES)
 	add_library(graphics ${library_type} ${graphics_sources} ${graphics_headers})
