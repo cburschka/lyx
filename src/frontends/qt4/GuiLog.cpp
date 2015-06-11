@@ -46,7 +46,7 @@ QRegExp exprInfo("^(Document Class:|LaTeX Font Info:|File:|Package:|Language:|Un
 // Warnings
 QRegExp exprWarning("^(LaTeX Warning|LaTeX Font Warning|Package [\\w\\.]+ Warning|Class \\w+ Warning|Warning--|.*> WARN - ).*$");
 // Errors
-QRegExp exprError("^(!|.*---line [0-9]+ of file|.*> FATAL - |.*> ERROR - ).*$");
+QRegExp exprError("^(!|.*---line [0-9]+ of file|.*> FATAL - |.*> ERROR - |Missing character: There is no ).*$");
 
 
 /////////////////////////////////////////////////////////////////////

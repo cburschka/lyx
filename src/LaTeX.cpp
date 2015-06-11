@@ -875,14 +875,22 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 			} else if (contains(token, "That makes 100 errors")) {
 				// More than 100 errors were reprted
 				retval |= TOO_MANY_ERRORS;
-			} else if (prefixIs(token, "!pdfTeX error:")){
+			} else if (prefixIs(token, "!pdfTeX error:")) {
 				// otherwise we dont catch e.g.:
 				// !pdfTeX error: pdflatex (file feyn10): Font feyn10 at 600 not found
 				retval |= ERRORS;
-					terr.insertError(0,
-							 from_local8bit("pdfTeX Error"),
-							 from_local8bit(token),
-							 child_name);
+				terr.insertError(0,
+						 from_local8bit("pdfTeX Error"),
+						 from_local8bit(token),
+						 child_name);
+			} else if (prefixIs(token, "Missing character: There is no ")) {
+				// XeTeX/LuaTeX error about missing glyph in selected font
+				// (bug 9610)
+				retval |= LATEX_ERROR;
+				terr.insertError(0,
+						 from_local8bit("Missing glyphs!"),
+						 from_local8bit(token),
+						 child_name);
 			}
 		}
 	}
