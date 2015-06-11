@@ -388,7 +388,7 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 	    save_LIBS=$LIBS
 
 	    AC_MSG_CHECKING([for multithreaded boost libraries])
-	    LIBS="$save_LIBS -lboost_signals-mt -lm $LIBTHREAD"
+	    LIBS="$save_LIBS -lboost_signals-mt $LIBTHREAD"
 	    AC_LINK_IFELSE(
 		[AC_LANG_PROGRAM([#include <boost/signal.hpp>],
 			[boost::signal<void ()> s;])],
@@ -396,7 +396,7 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 		 BOOST_MT="-mt"],
 		[AC_MSG_RESULT([no])
 		 AC_MSG_CHECKING([for plain boost libraries])
-		 LIBS="$save_LIBS -lboost_signals -lm"
+		 LIBS="$save_LIBS -lboost_signals"
 		 AC_LINK_IFELSE(
 		     [AC_LANG_PROGRAM([#include <boost/signal.hpp>],
 			     [boost::signal<void ()> s;])],
@@ -459,9 +459,9 @@ AC_DEFUN([LYX_USE_INCLUDED_MYTHES],[
 		if test x$ac_cv_header_mythes_h != xyes; then
 			AC_CHECK_HEADER(mythes/mythes.hxx,[ac_cv_header_mythes_h=yes lyx_cv_mythes_h_location="<mythes/mythes.hxx>"])
 		fi
-		AC_CHECK_LIB(mythes, main, [MYTHES_LIBS="-lmythes" lyx_mythes=yes], [lyx_mythes=no], [-lm])
+		AC_CHECK_LIB(mythes, main, [MYTHES_LIBS="-lmythes" lyx_mythes=yes], [lyx_mythes=no])
 		if test x$lyx_mythes != xyes; then
-			AC_CHECK_LIB(mythes-1.2, main, [MYTHES_LIBS="-lmythes-1.2" lyx_mythes=yes], [lyx_mythes=no], [-lm])
+			AC_CHECK_LIB(mythes-1.2, main, [MYTHES_LIBS="-lmythes-1.2" lyx_mythes=yes], [lyx_mythes=no])
 		fi
 		AC_LANG_POP(C++)
 		if test x$lyx_mythes != xyes -o x$ac_cv_header_mythes_h != xyes; then
