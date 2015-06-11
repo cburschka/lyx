@@ -819,6 +819,14 @@ contributors = [
                  "23 February 2005",
                  u"Norwegian documentation and localization"),
 
+     contributor(u"Jessica Hamilton",
+                 "jessica.l.hamilton () gmail ! com",
+                 "GPL",
+                 "Contributor License",
+                 "m=143381137411598",
+                 "9 June 2015",
+                 u"Haiku OS support"),
+
      contributor(u"Richard Heck",
                  "rgheck () comcast ! net",
                  "GPL",
