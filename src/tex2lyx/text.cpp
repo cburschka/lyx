@@ -4289,7 +4289,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			     || t.cs() == "shadowsize"
 				 || t.cs() == "raggedleft" || t.cs() == "centering"
 		         || t.cs() == "raggedright") {
-			p.skip_spaces(true);
 			if (t.cs() == "fboxrule")
 				fboxrule = "";
 			if (t.cs() == "fboxsep")
@@ -4298,6 +4297,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				shadow_size = "";
 			if (t.cs() != "raggedleft" && t.cs() != "centering"
 		         && t.cs() != "raggedright") {
+				p.skip_spaces(true);
 				while (p.good() && p.next_token().cat() != catSpace
 				       && p.next_token().cat() != catNewline
 				       && p.next_token().cat() != catEscape) {
@@ -4310,8 +4310,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				}
 			} else {
 				// we only handle them if they are in a box
-				if (!wasBoxAlign)
-					output_ert_inset(os, '\\' + t.cs() + ' ', context);
+				if (wasBoxAlign) {
+					// LyX will add a space after outputting the
+					// alignment command, so eat any space which
+					// might follow. Otherwise the paragraph
+					// might start with an unneeded space.
+					p.skip_spaces(true);
+				} else
+					output_ert_inset(os, t.asInput(), context);
 			}
 			wasBoxAlign = false;
 		}
