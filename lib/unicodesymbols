@@ -668,15 +668,15 @@
 #
 # Combining diacritical marks
 #
-0x0300 "\\`"                      "" "combining,force,notermination=text" "" "" # COMBINING GRAVE ACCENT
-0x0301 "\\'"                      "" "combining,force,notermination=text" "" "" # COMBINING ACUTE ACCENT
-0x0302 "\\^"                      "" "combining,force,notermination=text" "" "" # COMBINING CIRCUMFLEX ACCENT
-0x0303 "\\~"                      "" "combining,force,notermination=text" "" "" # COMBINING TILDE
-0x0304 "\\="                      "" "combining,force,notermination=text" "" "" # COMBINING MACRON
+0x0300 "\\`"                      "" "combining,force" "" "" # COMBINING GRAVE ACCENT
+0x0301 "\\'"                      "" "combining,force" "" "" # COMBINING ACUTE ACCENT
+0x0302 "\\^"                      "" "combining,force" "" "" # COMBINING CIRCUMFLEX ACCENT
+0x0303 "\\~"                      "" "combining,force" "" "" # COMBINING TILDE
+0x0304 "\\="                      "" "combining,force" "" "" # COMBINING MACRON
 #0x0305 ""                         "" "combining,force" # COMBINING OVERLINE
 0x0306 "\\u"                      "" "combining,force" # COMBINING BREVE
-0x0307 "\\."                      "" "combining,force,notermination=text" "" "" # COMBINING DOT ABOVE
-0x0308 "\\\""                     "" "combining,force,notermination=text" "" "" # COMBINING DIAERESIS
+0x0307 "\\."                      "" "combining,force" "" "" # COMBINING DOT ABOVE
+0x0308 "\\\""                     "" "combining,force" "" "" # COMBINING DIAERESIS
 #0x0309 ""                         "" "combining,force" # COMBINING HOOK ABOVE
 0x030a "\\r"                      "" "combining,force" # COMBINING RING ABOVE
 0x030b "\\H"                      "" "combining,force" # COMBINING DOUBLE ACUTE ACCENT
