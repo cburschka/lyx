@@ -73,7 +73,7 @@
 0x00b5 "\\textmu"                 "textcomp" "force" "" "" # µ MICRO SIGN (upright, not $\mu$)
 0x00b6 "\\textparagraph"          "textcomp" "" # PILCROW SIGN # not equal to \textpilcrow
 0x00b7 "\\textperiodcentered"     "" "" "\cdot" # MIDDLE DOT
-0x00b8 "\\c\\ "                   "" "notermination=text" "" "" # CEDILLA (command from latin1.def)
+0x00b8 "\\c{ }"                   "" "" "" "" # CEDILLA
 0x00b9 "\\textonesuperior"        "textcomp" "force" "{{}^1}" "" # ¹ SUPERSCRIPT ONE
 0x00ba "\\textordmasculine"       "textcomp" "" # MASCULINE ORDINAL INDICATOR
 0x00bb "\\guillemotright"         "" "" # RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
