@@ -13,6 +13,8 @@ lyx_add_msvc_pch(graphics)
 
 
 include_directories(${TOP_SRC_DIR}/src/graphics)
+lyx_automoc(${TOP_SRC_DIR}/src/graphics/PreviewLoader.cpp)
+include_directories(${CMAKE_CURRENT_BINARY_DIR} ${QT_INCLUDES})
 
 if(NOT LYX_MERGE_FILES)
 	add_library(graphics ${library_type} ${graphics_sources} ${graphics_headers})
@@ -21,6 +23,7 @@ else()
 	add_library(graphics ${library_type} ${_allinone_files})
 endif()
 set_target_properties(graphics PROPERTIES FOLDER "applications/LyX")
+qt_use_modules(graphics Core)
 
 lyx_add_gcc_pch(graphics)
 

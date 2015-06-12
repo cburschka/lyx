@@ -20,6 +20,8 @@
 
 #include <boost/signal.hpp>
 
+#include <QObject>
+
 #include "ColorCode.h"
 
 namespace lyx {
@@ -30,7 +32,8 @@ namespace graphics {
 
 class PreviewImage;
 
-class PreviewLoader {
+class PreviewLoader : public QObject {
+	Q_OBJECT
 public:
 	/** We need buffer because we require the preamble to the
 	 *  LaTeX file.
@@ -90,6 +93,10 @@ public:
 	static ColorCode backgroundColor() { return Color_background; }
 	/// The foreground color used
 	static ColorCode foregroundColor() { return Color_preview; }
+
+public Q_SLOTS:
+	///
+	void refreshPreviews();
 
 private:
 	/// noncopyable

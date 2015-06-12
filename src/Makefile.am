@@ -316,7 +316,7 @@ endif
 
 #########################  Qt stuff  ##############################
 
-MOCHEADER = Compare.h
+MOCHEADER = Compare.h PreviewLoader.h
 
 if INSTALL_WINDOWS
 
@@ -329,6 +329,9 @@ MOCEDFILES = $(MOCHEADER:%.h=moc_%.cpp)
 
 BUILT_SOURCES += $(MOCEDFILES)
 CLEANFILES += $(MOCEDFILES)
+
+moc_PreviewLoader.cpp: graphics/PreviewLoader.h
+	$(MOC4) $(MOCFLAG) -o $@ $<
 
 moc_%.cpp: %.h
 	$(MOC4) $(MOCFLAG) -o $@ $<

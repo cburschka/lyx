@@ -44,6 +44,8 @@
 #include <fstream>
 #include <iomanip>
 
+#include <QTimer>
+
 using namespace std;
 using namespace lyx::support;
 
@@ -207,6 +209,8 @@ public:
 	/// \p wait whether to wait for the process to complete or, instead,
 	/// to do it in the background.
 	void startLoading(bool wait = false);
+	///
+	void refreshPreviews();
 
 	/// Emit this signal when an image is ready for display.
 	boost::signal<void(PreviewImage const &)> imageReady;
@@ -247,6 +251,8 @@ private:
 	Buffer const & buffer_;
 	///
 	mutable int font_scaling_factor_;
+	///
+	QTimer * delay_refresh_;
 
 	/// We don't own this
 	static lyx::Converter const * pconverter_;
@@ -298,6 +304,12 @@ void PreviewLoader::remove(string const & latex_snippet) const
 void PreviewLoader::startLoading(bool wait) const
 {
 	pimpl_->startLoading(wait);
+}
+
+
+void PreviewLoader::refreshPreviews()
+{
+	pimpl_->refreshPreviews();
 }
 
 
@@ -396,11 +408,18 @@ PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 		: int(0.01 * lyxrc.dpi * lyxrc.zoom * lyxrc.preview_scale_factor);
 	if (!pconverter_)
 		pconverter_ = setConverter("lyxpreview");
+
+	delay_refresh_ = new QTimer(&parent_);
+	delay_refresh_->setSingleShot(true);
+	QObject::connect(delay_refresh_, SIGNAL(timeout()),
+	                 &parent_, SLOT(refreshPreviews()));
 }
 
 
 PreviewLoader::Impl::~Impl()
 {
+	delete delay_refresh_;
+
 	InProgressProcesses::iterator ipit  = in_progress_.begin();
 	InProgressProcesses::iterator ipend = in_progress_.end();
 
@@ -416,15 +435,29 @@ PreviewLoader::Impl::preview(string const & latex_snippet) const
 		? int(75.0 * buffer_.params().html_math_img_scale)
 		: int(0.01 * lyxrc.dpi * lyxrc.zoom * lyxrc.preview_scale_factor);
 	if (font_scaling_factor_ != fs) {
-		font_scaling_factor_ = fs;
-		Cache::const_iterator cit = cache_.begin();
-		Cache::const_iterator cend = cache_.end();
-		while (cit != cend)
-			parent_.remove((cit++)->first);
-		buffer_.updatePreviews();
+		// Schedule refresh of all previews on zoom changes.
+		// The previews are regenerated only after the zoom factor
+		// has not been changed for about 1 second.
+		delay_refresh_->start(1000);
 	}
+	// Don't try to access the cache until we are done.
+	if (delay_refresh_->isActive())
+		return 0;
 	Cache::const_iterator it = cache_.find(latex_snippet);
 	return (it == cache_.end()) ? 0 : it->second.get();
+}
+
+
+void PreviewLoader::Impl::refreshPreviews()
+{
+	font_scaling_factor_ = buffer_.isExporting()
+		? int(75.0 * buffer_.params().html_math_img_scale)
+		: int(0.01 * lyxrc.dpi * lyxrc.zoom * lyxrc.preview_scale_factor);
+	Cache::const_iterator cit = cache_.begin();
+	Cache::const_iterator cend = cache_.end();
+	while (cit != cend)
+		parent_.remove((cit++)->first);
+	buffer_.updatePreviews();
 }
 
 
@@ -782,3 +815,5 @@ void PreviewLoader::Impl::dumpData(odocstream & os,
 
 } // namespace graphics
 } // namespace lyx
+
+#include "moc_PreviewLoader.cpp"
