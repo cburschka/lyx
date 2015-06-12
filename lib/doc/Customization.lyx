@@ -6907,7 +6907,7 @@ DeclareLyXModule{My Package}
 \end_layout
 
 \begin_layout LyX-Code
-Format 35
+Format 49
 \begin_inset Newline newline
 \end_inset
 
@@ -8233,11 +8233,34 @@ Format
 \end_inset
 
 .
- The format for the present version of LyX is format 35.
+ The format for LyX 2.1.x is format 49.
  But each version of LyX is capable of reading earlier versions' layout
  files, just as they are capable of reading files produced by earlier versions
  of LyX.
  There is, however, no provision for converting to earlier formats.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+LyX uses the script 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+layout2layout.py
+\end_layout
+
+\end_inset
+
+ to perform this conversion.
+ Users can invoke the script manually to update their own layout files to
+ the new format when changing to a new major version (e.g., from LyX 2.0.x to
+ LyX 2.1.x).
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Subsection
