@@ -270,26 +270,37 @@ void GuiParagraph::updateView()
 
 	// linespacing
 	int ls;
+	bool pending_input = false;
 	Spacing const & space = pp.spacing();
-	switch (space.getSpace()) {
-	case Spacing::Single:
-		ls = 1;
-		break;
-	case Spacing::Onehalf:
-		ls = 2;
-		break;
-	case Spacing::Double:
-		ls = 3;
-		break;
-	case Spacing::Other:
+	if (synchronizedViewCB->isChecked() && linespacingValue->hasFocus()) {
+		// The user is about to enter custom spacing.
+		// We thus stay in Custom mode.
+		// This prevents the combo from e.g. immediately
+		// switching to single if a user enters "1" in the
+		// linespacingValue widget while aiming at e.g. "1.3"
 		ls = 4;
-		break;
-	default:
-		ls = 0;
-		break;
+		pending_input = true;
+	} else {
+		switch (space.getSpace()) {
+		case Spacing::Single:
+			ls = 1;
+			break;
+		case Spacing::Onehalf:
+			ls = 2;
+			break;
+		case Spacing::Double:
+			ls = 3;
+			break;
+		case Spacing::Other:
+			ls = 4;
+			break;
+		default:
+			ls = 0;
+			break;
+		}
 	}
 	linespacing->setCurrentIndex(ls);
-	if (space.getSpace() == Spacing::Other) {
+	if (space.getSpace() == Spacing::Other || pending_input) {
 		doubleToWidget(linespacingValue, space.getValue());
 		linespacingValue->setEnabled(true);
 	} else {
