@@ -1051,7 +1051,6 @@ def revert_textcolor(document):
     i = 0
     j = 0
     xcolor = False
-    add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\\usepackage{xcolor}}"])
     while True:
         i = find_token(document.body, "\\color ", i)
         if i == -1:
@@ -1062,7 +1061,7 @@ def revert_textcolor(document):
                     # register that xcolor must be loaded in the preamble
                     if xcolor == False:
                         xcolor = True
-                        add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\usepackage{xcolor}}"])
+                        add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\usepackage{xcolor}}{}"])
                     # find the next \\color and/or the next \\end_layout
                     j = find_token(document.body, "\\color", i + 1)
                     k = find_token(document.body, "\\end_layout", i + 1)
