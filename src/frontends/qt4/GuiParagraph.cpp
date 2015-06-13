@@ -167,9 +167,13 @@ void GuiParagraph::on_synchronizedViewCB_toggled()
 void GuiParagraph::changed()
 {
 	QLocale loc;
+	// We apply immediately, except if we have custom line spacing
+	// with an intermediate result (trailing decimal separator) or
+	// an invalid value (which might as well be intermediate)
 	if (synchronizedViewCB->isChecked()
-	    && !linespacingValue->text().endsWith(loc.decimalPoint())
-	    && linespacingValue->hasAcceptableInput())
+	    && (linespacing->currentIndex() != 4
+		|| (!linespacingValue->text().endsWith(loc.decimalPoint())
+		    && linespacingValue->hasAcceptableInput())))
 		on_applyPB_clicked();
 }
 
