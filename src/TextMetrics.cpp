@@ -625,6 +625,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 		}
 		case LYX_ALIGN_RIGHT:
 			row.left_margin += w;
+			row.dimension().wid += w;
 			break;
 		case LYX_ALIGN_CENTER:
 			row.dimension().wid = width - w / 2;
