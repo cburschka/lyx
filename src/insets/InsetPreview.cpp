@@ -24,17 +24,11 @@
 
 #include "graphics/PreviewImage.h"
 
-#include "mathed/MacroTable.h"
-
-#include "support/lstrings.h"
-
 #include <sstream>
 
 using namespace std;
 
 namespace lyx {
-
-using support::prefixIs;
 
 
 InsetPreview::InsetPreview(Buffer * buf) 
@@ -76,33 +70,10 @@ void InsetPreview::preparePreview(DocIterator const & pos) const
 	TexRow texrow;
 	odocstringstream str;
 	otexstream os(str, texrow);
-	Buffer const * buffer = pos.buffer();
-	OutputParams runparams(&buffer->params().encoding());
+	OutputParams runparams(&pos.buffer()->params().encoding());
 	latex(os, runparams);
-	// collect macros at this position in case they are used in a math inset
-	MacroNameSet macros;
-	buffer->listMacroNames(macros);
-	MacroNameSet::iterator it = macros.begin();
-	MacroNameSet::iterator end = macros.end();
-	docstring macro_preamble;
-	for (; it != end; ++it) {
-		MacroData const * data = buffer->getMacro(*it, pos, true);
-		if (data) {
-			odocstringstream macro_def;
-			data->write(macro_def, true);
-			docstring const md = macro_def.str();
-			macro_def << endl;
-			bool is_newcomm = prefixIs(md, from_ascii("\\newcomm"));
-			// assure that \newcommand defs are only added once
-			if (!is_newcomm || !preview_->hasMacroDef(md, *buffer)) {
-				if (is_newcomm)
-					preview_->addMacroDef(md, *buffer);
-				macro_preamble.append(macro_def.str());
-			}
-		}
-	}
-	docstring const snippet = macro_preamble + str.str();
-	preview_->addPreview(snippet, *buffer);
+	docstring const snippet = str.str();
+	preview_->addPreview(snippet, *pos.buffer());
 }
 
 

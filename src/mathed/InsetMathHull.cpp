@@ -638,22 +638,12 @@ void InsetMathHull::preparePreview(DocIterator const & pos,
 	buffer->listMacroNames(macros);
 	MacroNameSet::iterator it = macros.begin();
 	MacroNameSet::iterator end = macros.end();
-	docstring macro_preamble;
+	odocstringstream macro_preamble;
 	for (; it != end; ++it) {
 		MacroData const * data = buffer->getMacro(*it, pos, true);
 		if (data) {
-			odocstringstream mac_preamble;
-			data->write(mac_preamble, true);
-			docstring const mps = mac_preamble.str();
-			bool const is_new_def = prefixIs(mps, from_ascii("\\newcomm"));
-			// assure that \newcommand definitions of macros are only added once
-			if (!is_new_def || !preview_->hasMacroDef(mps, *buffer)) {
-				if (is_new_def)
-					preview_->addMacroDef(mps, *buffer);
-				if (!macro_preamble.empty())
-					macro_preamble += '\n';
-				macro_preamble += mps;
-			}
+			data->write(macro_preamble, true);
+			macro_preamble << endl;
 		}
 	}
 
@@ -678,7 +668,8 @@ void InsetMathHull::preparePreview(DocIterator const & pos,
 				          '{' + convert<docstring>(num) + '}';
 		}
 	}
-	docstring const snippet = macro_preamble + setcnt + latexString(*this);
+	docstring const snippet = macro_preamble.str() +
+	    setcnt + latexString(*this);
 	LYXERR(Debug::MACROS, "Preview snippet: " << snippet);
 	preview_->addPreview(snippet, *buffer, forexport);
 }

@@ -207,10 +207,6 @@ public:
 	void add(string const & latex_snippet);
 	///
 	void remove(string const & latex_snippet);
-	/// Record math macro definitions added to the loader
-	void addMacroDef(docstring const & latex_snippet);
-	/// Has a math macro definition already been added to the loader?
-	bool hasMacroDef(docstring const & latex_snippet) const;
 	/// \p wait whether to wait for the process to complete or, instead,
 	/// to do it in the background.
 	void startLoading(bool wait = false);
@@ -249,9 +245,6 @@ private:
 	    The map uses the conversion commands as its identifiers.
 	 */
 	InProgressProcesses in_progress_;
-
-	///
-	set<docstring> macrodefs_;
 
 	///
 	PreviewLoader & parent_;
@@ -306,18 +299,6 @@ void PreviewLoader::add(string const & latex_snippet) const
 void PreviewLoader::remove(string const & latex_snippet) const
 {
 	pimpl_->remove(latex_snippet);
-}
-
-
-void PreviewLoader::addMacroDef(docstring const & latex_snippet) const
-{
-	pimpl_->addMacroDef(latex_snippet);
-}
-
-
-bool PreviewLoader::hasMacroDef(docstring const & latex_snippet) const
-{
-	return pimpl_->hasMacroDef(latex_snippet);
 }
 
 
@@ -578,18 +559,6 @@ void PreviewLoader::Impl::remove(string const & latex_snippet)
 		if (curr->second.snippets.empty())
 			in_progress_.erase(curr);
 	}
-}
-
-
-void PreviewLoader::Impl::addMacroDef(docstring const & latex_snippet)
-{
-	macrodefs_.insert(latex_snippet);
-}
-
-
-bool PreviewLoader::Impl::hasMacroDef(docstring const & latex_snippet) const
-{
-	return macrodefs_.find(latex_snippet) != macrodefs_.end();
 }
 
 
