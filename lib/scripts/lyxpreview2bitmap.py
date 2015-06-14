@@ -160,27 +160,23 @@ def extract_metrics_info(dvipng_stdout):
 
 def fix_latex_file(latex_file, pdf_output):
     documentclass_re = re.compile("(\\\\documentclass\[)(1[012]pt,?)(.+)")
+    def_re = re.compile(r"(\\newcommandx|\\global\\long\\def)(\\[a-zA-Z])(.+)")
     usepackage_re = re.compile("\\\\usepackage")
     userpreamble_re = re.compile("User specified LaTeX commands")
     enduserpreamble_re = re.compile("\\\\makeatother")
-    begindoc_re = re.compile("\\\\begin\{document\}")
 
     tmp = mkstemp()
 
-    in_doc_body = 0
     in_user_preamble = 0
     usepkg = 0
     changed = 0
+    macros = []
     for line in open(latex_file, 'r').readlines():
-        if in_doc_body:
-            if changed:
-                tmp.write(line)
-                continue
-            else:
-                break
-
-        if begindoc_re.match(line) != None:
-            in_doc_body = 1
+        match = documentclass_re.match(line)
+        if match != None:
+            changed = 1
+            tmp.write("%s%s\n" % (match.group(1), match.group(3)))
+            continue
 
         if not pdf_output and not usepkg:
             if userpreamble_re.search(line) != None:
@@ -200,13 +196,23 @@ def fix_latex_file(latex_file, pdf_output):
                 tmp.write(line)
                 continue
 
-        match = documentclass_re.match(line)
+        match = def_re.match(line)
         if match == None:
             tmp.write(line)
             continue
 
-        changed = 1
-        tmp.write("%s%s\n" % (match.group(1), match.group(3)))
+        macroname = match.group(2)
+        if not macroname in macros:
+            macros.append(macroname)
+            tmp.write(line)
+            continue
+
+        definecmd = match.group(1)
+        if definecmd == "\\global\\long\\def":
+            tmp.write(line)
+        else:
+            changed = 1
+            tmp.write("\\renewcommandx%s%s\n" % (match.group(2), match.group(3)))
 
     if changed:
         copyfileobj(tmp, open(latex_file,"wb"), 1)
@@ -426,8 +432,8 @@ def main(argv):
     progress("Preprocess through lilypond-book: %s" % lilypond)
     progress("Altering the latex file for font size and colors")
 
-    # Omit font size specification in latex file and make sure that
-    # the microtype package doesn't cause issues in dvi mode.
+    # Omit font size specification in latex file and make sure that multiple
+    # defined macros and the microtype package don't cause issues.
     fix_latex_file(latex_file, pdf_output)
 
     if lilypond:

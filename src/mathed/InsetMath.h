@@ -58,6 +58,7 @@ class InsetMathAMSArray;
 class InsetMathBrace;
 class InsetMathChar;
 class InsetMathDelim;
+class InsetMathFracBase;
 class InsetMathFrac;
 class InsetMathFont;
 class InsetMathGrid;
@@ -129,6 +130,8 @@ public:
 	virtual InsetMathChar const     * asCharInset() const     { return 0; }
 	virtual InsetMathDelim          * asDelimInset()          { return 0; }
 	virtual InsetMathDelim const    * asDelimInset() const    { return 0; }
+	virtual InsetMathFracBase       * asFracBaseInset()       { return 0; }
+	virtual InsetMathFracBase const * asFracBaseInset() const { return 0; }
 	virtual InsetMathFrac           * asFracInset()           { return 0; }
 	virtual InsetMathFrac const     * asFracInset() const     { return 0; }
 	virtual InsetMathFont           * asFontInset()           { return 0; }

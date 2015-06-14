@@ -30,6 +30,10 @@ public:
 	bool idxBackward(Cursor &) const { return false; }
 	///
 	bool idxForward(Cursor &) const { return false; }
+	///
+	InsetMathFracBase * asFracBaseInset() { return this; }
+	///
+	InsetMathFracBase const * asFracBaseInset() const { return this; }
 };
 
 

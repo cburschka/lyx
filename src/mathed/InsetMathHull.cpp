@@ -14,6 +14,10 @@
 
 #include "InsetMathChar.h"
 #include "InsetMathColor.h"
+#include "InsetMathFrac.h"
+#include "InsetMathGrid.h"
+#include "InsetMathNest.h"
+#include "InsetMathScript.h"
 #include "MathExtern.h"
 #include "MathFactory.h"
 #include "MathStream.h"
@@ -32,6 +36,7 @@
 #include "LaTeXFeatures.h"
 #include "LyXRC.h"
 #include "MacroTable.h"
+#include "MathMacro.h"
 #include "output_xhtml.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
@@ -623,6 +628,55 @@ void InsetMathHull::addPreview(DocIterator const & inset_pos,
 }
 
 
+void InsetMathHull::usedMacros(MathData const & md, DocIterator const & pos,
+                               MacroNameSet & macros, MacroNameSet & defs) const
+{
+	MacroNameSet::iterator const end = macros.end();
+
+	for (size_t i = 0; i < md.size(); ++i) {
+		MathMacro const * mi = md[i].nucleus()->asMacro();
+		InsetMathScript const * si = md[i].nucleus()->asScriptInset();
+		InsetMathFracBase const * fi = md[i].nucleus()->asFracBaseInset();
+		InsetMathGrid const * gi = md[i].nucleus()->asGridInset();
+		InsetMathNest const * ni = md[i].nucleus()->asNestInset();
+		if (mi) {
+			// Make sure this is a macro defined in the document
+			// (as we also spot the macros in the symbols file)
+			// or that we have not already accounted for it.
+			docstring const name = mi->name();
+			if (macros.find(name) == end)
+				continue;
+			macros.erase(name);
+			MathData ar(pos.buffer());
+			MacroData const * data =
+				pos.buffer()->getMacro(name, pos, true);
+			if (data) {
+				odocstringstream macro_def;
+				data->write(macro_def, true);
+				macro_def << endl;
+				defs.insert(macro_def.str());
+				asArray(data->definition(), ar);
+			}
+			usedMacros(ar, pos, macros, defs);
+		} else if (si) {
+			if (!si->nuc().empty())
+				usedMacros(si->nuc(), pos, macros, defs);
+			if (si->hasDown())
+				usedMacros(si->down(), pos, macros, defs);
+			if (si->hasUp())
+				usedMacros(si->up(), pos, macros, defs);
+		} else if (fi || gi) {
+			idx_type nidx = fi ? fi->nargs() : gi->nargs();
+			for (idx_type idx = 0; idx < nidx; ++idx)
+				usedMacros(fi ? fi->cell(idx) : gi->cell(idx),
+				           pos, macros, defs);
+		} else if (ni) {
+			usedMacros(ni->cell(0), pos, macros, defs);
+		}
+	}
+}
+
+
 void InsetMathHull::preparePreview(DocIterator const & pos,
                                    bool forexport) const
 {
@@ -636,16 +690,17 @@ void InsetMathHull::preparePreview(DocIterator const & pos,
 	// collect macros at this position
 	MacroNameSet macros;
 	buffer->listMacroNames(macros);
-	MacroNameSet::iterator it = macros.begin();
-	MacroNameSet::iterator end = macros.end();
-	odocstringstream macro_preamble;
-	for (; it != end; ++it) {
-		MacroData const * data = buffer->getMacro(*it, pos, true);
-		if (data) {
-			data->write(macro_preamble, true);
-			macro_preamble << endl;
-		}
-	}
+
+	// collect definitions only for the macros used in this inset
+	MacroNameSet defs;
+	for (idx_type idx = 0; idx < nargs(); ++idx)
+		usedMacros(cell(idx), pos, macros, defs);
+
+	MacroNameSet::iterator it = defs.begin();
+	MacroNameSet::iterator end = defs.end();
+	docstring macro_preamble;
+	for (; it != end; ++it)
+		macro_preamble.append(*it);
 
 	docstring setcnt;
 	if (forexport && haveNumbers()) {
@@ -668,8 +723,7 @@ void InsetMathHull::preparePreview(DocIterator const & pos,
 				          '{' + convert<docstring>(num) + '}';
 		}
 	}
-	docstring const snippet = macro_preamble.str() +
-	    setcnt + latexString(*this);
+	docstring const snippet = macro_preamble + setcnt + latexString(*this);
 	LYXERR(Debug::MACROS, "Preview snippet: " << snippet);
 	preview_->addPreview(snippet, *buffer, forexport);
 }
