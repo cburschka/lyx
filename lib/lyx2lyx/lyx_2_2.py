@@ -1046,7 +1046,7 @@ color_names = ["brown", "darkgray", "gray", \
                "pink", "purple", "teal", "violet"]
 
 def revert_textcolor(document):
-    " revert new \\texcolor colors to TeX code "
+    " revert new \\textcolor colors to TeX code "
 
     i = 0
     j = 0
