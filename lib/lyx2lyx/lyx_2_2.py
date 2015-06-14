@@ -292,17 +292,20 @@ def revert_swissgerman(document):
         j = j + 1
 
 
-def revert_use_package(document, pkg, commands, oldauto):
+def revert_use_package(document, pkg, commands, oldauto, supported):
     # oldauto defines how the version we are reverting to behaves:
     # if it is true, the old version uses the package automatically.
     # if it is false, the old version never uses the package.
+    # If "supported" is true, the target version also supports this
+    # package natively.
     regexp = re.compile(r'(\\use_package\s+%s)' % pkg)
-    i = find_re(document.header, regexp, 0)
+    p = find_re(document.header, regexp, 0)
     value = "1" # default is auto
-    if i != -1:
-        value = get_value(document.header, "\\use_package" , i).split()[1]
-        del document.header[i]
-    if value == "2": # on
+    if p != -1:
+        value = get_value(document.header, "\\use_package" , p).split()[1]
+        if not supported:
+            del document.header[p]
+    if value == "2" and not supported: # on
         add_to_preamble(document, ["\\usepackage{" + pkg + "}"])
     elif value == "1" and not oldauto: # auto
         i = 0
@@ -318,7 +321,10 @@ def revert_use_package(document, pkg, commands, oldauto):
             code = "\n".join(document.body[i:j])
             for c in commands:
                 if code.find("\\%s" % c) != -1:
-                    add_to_preamble(document, ["\\usepackage{" + pkg + "}"])
+                    if supported:
+                        document.header[p] = "\\use_package " + pkg + " 2"
+                    else:
+                        add_to_preamble(document, ["\\usepackage{" + pkg + "}"])
                     return
             i = j
 
@@ -331,7 +337,7 @@ mathtools_commands = ["xhookrightarrow", "xhookleftarrow", "xRightarrow", \
 
 def revert_xarrow(document):
     "remove use_package mathtools"
-    revert_use_package(document, "mathtools", mathtools_commands, False)
+    revert_use_package(document, "mathtools", mathtools_commands, False, True)
 
 
 def revert_beamer_lemma(document):
