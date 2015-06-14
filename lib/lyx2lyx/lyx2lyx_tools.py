@@ -125,7 +125,7 @@ def put_cmd_in_ert(arg):
     else:
       s = arg
     for rep in unicode_reps:
-      s = s.replace(rep[1], rep[0].replace('\\\\', '\\'))
+      s = s.replace(rep[1], rep[0])
     s = s.replace('\\', "\\backslash\n")
     ret += s.splitlines()
     ret += ["\\end_layout", "", "\\end_inset"]
@@ -254,7 +254,7 @@ def lyx2latex(document, lines):
 
           # Do the LyX text --> LaTeX conversion
           for rep in unicode_reps:
-            line = line.replace(rep[1], rep[0] + "{}")
+              line = line.replace(rep[1], rep[0])
           line = line.replace(r'\backslash', r'\textbackslash{}')
           line = line.replace(r'\series bold', r'\bfseries{}').replace(r'\series default', r'\mdseries{}')
           line = line.replace(r'\shape italic', r'\itshape{}').replace(r'\shape smallcaps', r'\scshape{}')

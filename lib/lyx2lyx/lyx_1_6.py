@@ -145,6 +145,7 @@ def set_option(document, m, option, value):
     return l
 
 
+# FIXME: Use the version in unicode_symbols.py which has some bug fixes
 def read_unicodesymbols():
     " Read the unicodesymbols list of unicode characters and corresponding commands."
     pathname = os.path.abspath(os.path.dirname(sys.argv[0]))
