@@ -34,13 +34,13 @@
 # chosen. The algorithm tries to satisfy as many requirements as possible.
 # Therefore it may depend on the whole document contents which feature is chosen.
 # Known flags:
-# - combining       This is a combining char that will get combined with a base char
+# - combining          This is a combining char that will get combined with a base char
 # - force              Always output replacement command
 # - force=enc1;enc2... Always output replacement command in the specified encodings.
 # - force!=en1;en2...  Always output replacement command in all but the specified encodings.
 #                      Symbols are never forced in encodings with iconv name
 #                      UTF-8 and package none (currently only utf8-plain).
-# - mathalpha       This character is considered as a math variable in mathmode
+# - mathalpha          This character is considered as a math variable in mathmode
 # - notermination=text Do not terminate this textcommand (by {} or space).
 #                      This is set by default if textcommand ends with }.
 # - notermination=math Do not terminate this mathcommand (by {} or space).
@@ -734,7 +734,7 @@
 #0x033f ""                         "" "combining,force" # COMBINING DOUBLE OVERLINE
 #0x0340 ""                         "" "combining,force" # COMBINING GRAVE TONE MARK
 #0x0341 ""                         "" "combining,force" # COMBINING ACUTE TONE MARK
-0x0342 "\\~" 			   "textgreek" "combining,force,notermination=text" "" "" # COMBINING GREEK PERISPOMENI 
+0x0342 "\\~" 			   "textgreek" "combining,force,notermination=text" "" "" # COMBINING GREEK PERISPOMENI
 #0x0343 ""                         "" "combining,force" # COMBINING GREEK KORONIS
 #0x0344 ""                         "" "combining,force" # COMBINING GREEK DIALYTIKA TONOS
 #0x0345 ""                         "" "combining,force" # COMBINING GREEK YPOGEGRAMMENI
