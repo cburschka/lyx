@@ -680,11 +680,13 @@ def checkFormatEntries(dtl_tools):
     checkViewerEditor('an OpenDocument viewer', ['libreoffice', 'lwriter', 'lowriter', 'oowriter', 'swriter', 'abiword'],
         rc_entry = [r'''\Format odt        odt     "OpenDocument (tex4ht)"  "" "%%"	"%%"	"document,vector,menu=export"	"application/vnd.oasis.opendocument.text"
 \Format odt2       odt    "OpenDocument (eLyXer)"  "" "%%"	"%%"	"document,vector,menu=export"	"application/vnd.oasis.opendocument.text"
+\Format odt3       odt    "OpenDocument (Pandoc)"  "" "%%"	"%%"	"document,vector,menu=export"	"application/vnd.oasis.opendocument.text"
 \Format sxw        sxw    "OpenOffice.Org (sxw)"  "" ""	""	"document,vector"	"application/vnd.sun.xml.writer"'''])
     #
     checkViewerEditor('a Rich Text and Word viewer', ['libreoffice', 'lwriter', 'lowriter', 'oowriter', 'swriter', 'abiword'],
         rc_entry = [r'''\Format rtf        rtf    "Rich Text Format"      "" "%%"	"%%"	"document,vector,menu=export"	"application/rtf"
-\Format word       doc    "MS Word"               W  "%%"	"%%"	"document,vector,menu=export"	"application/msword"'''])
+\Format word       doc    "MS Word"               W  "%%"	"%%"	"document,vector,menu=export"	"application/msword"
+\Format word2      docx    "MS Word Office Open XML"               W  "%%"	"%%"	"document,vector,menu=export"	"application/vnd.openxmlformats-officedocument.wordprocessingml.document"'''])
     #
     # entries that do not need checkProg
     addToRC(r'''\Format date       ""     "date command"          "" ""	""	""	""
@@ -827,6 +829,9 @@ def checkConverterEntries():
     #
     checkProg('an OpenDocument -> LaTeX converter', ['w2l -clean $$i'],
         rc_entry = [ r'\converter odt        latex      "%%"	""' ])
+    #
+    checkProg('a MS Word Office Open XML converter -> LaTeX', ['pandoc -s -f docx -o $$o -t latex $$i'],
+        rc_entry = [ r'\converter word2      latex      "%%"	""' ])
     # Only define a converter to pdf6, otherwise the odt format could be
     # used as an intermediate step for export to pdf, which is not wanted.
     checkProg('an OpenDocument -> PDF converter', ['unoconv -f pdf --stdout $$i > $$o'],
@@ -844,6 +849,12 @@ def checkConverterEntries():
     # On windows it is called latex2rt.exe
     checkProg('a LaTeX -> RTF converter', ['latex2rtf -p -S -o $$o $$i', 'latex2rt -p -S -o $$o $$i'],
         rc_entry = [ r'\converter latex      rtf        "%%"	"needaux"' ])
+    #
+    checkProg('a LaTeX -> Open Document (Pandoc) converter', ['pandoc -s -f latex -o $$o -t odt $$i'],
+        rc_entry = [ r'\converter latex      odt3        "%%"	""' ])
+    #
+    checkProg('a LaTeX -> MS Word Office Open XML converter', ['pandoc -s -f latex -o $$o -t docx $$i'],
+        rc_entry = [ r'\converter latex      word2       "%%"	""' ])
     #
     checkProg('a RTF -> HTML converter', ['unrtf --html  $$i > $$o'],
         rc_entry = [ r'\converter rtf      html        "%%"	""' ])
