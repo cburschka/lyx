@@ -1933,11 +1933,55 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		atlyxpreamble += "\\@ifundefined{date}{}{\\date{}}\n";
 
 	/* the user-defined preamble */
-	if (!containsOnly(preamble, " \n\t"))
+	if (!containsOnly(preamble, " \n\t")) {
 		// FIXME UNICODE
 		atlyxpreamble += "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
-			"User specified LaTeX commands.\n"
-			+ from_utf8(preamble) + '\n';
+			"User specified LaTeX commands.\n";
+
+		// Check if the user preamble contains uncodable glyphs
+		docstring const u_preamble = from_utf8(preamble);
+		odocstringstream user_preamble;
+		docstring uncodable_glyphs;
+		Encoding const * const enc = features.runparams().encoding;
+		if (enc) {
+			for (size_t n = 0; n < u_preamble.size(); ++n) {
+				char_type c = u_preamble[n];
+				if (!enc->encodable(c)) {
+					docstring const glyph(1, c);
+					LYXERR0("Uncodable character '"
+						<< glyph
+						<< "' in user preamble!");
+					uncodable_glyphs += glyph;
+					if (features.runparams().dryrun) {
+						user_preamble << "<" << _("LyX Warning: ")
+						   << _("uncodable character") << " '";
+						user_preamble.put(c);
+						user_preamble << "'>";
+					}
+				} else
+					user_preamble << u_preamble[n];
+			}
+		} else
+			user_preamble << u_preamble;
+
+		// On BUFFER_VIEW|UPDATE, warn user if we found uncodable glyphs
+		if (!features.runparams().dryrun && !uncodable_glyphs.empty()) {
+			frontend::Alert::warning(
+				_("Uncodable character in user preamble"),
+				support::bformat(
+				  _("The user preamble of your document contains glyphs "
+				    "that are unknown in the current document encoding "
+				    "(namely %1$s).\nThese glyphs are omitted "
+				    " from the output, which may result in "
+				    "incomplete output."
+				    "\n\nPlease select an appropriate "
+				    "document encoding\n"
+				    "(such as utf8) or change the "
+				    "preamble code accordingly."),
+				  uncodable_glyphs));
+		}
+		atlyxpreamble += user_preamble.str() + '\n';
+	}
 
 	// footmisc must be loaded after setspace
 	// Load it here to avoid clashes with footmisc loaded in the user
