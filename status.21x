@@ -246,6 +246,8 @@ What's new
 - Fix parsing of Requires layout tag if it uses tabs instead of spaces
   (bug 9518).
 
+- Don't repeatedly check for missing programs when reconfiguring.
+
 
 
 * DOCUMENTATION AND LOCALIZATION
