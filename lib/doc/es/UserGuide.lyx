@@ -10841,36 +10841,43 @@ enumeración
 \end_layout
 
 \begin_layout Standard
-Para indicar a \SpecialChar LyX
- que hay dos listas y no una, pon el cursor al final del
- último ítem y usa el menú 
+
+\lang english
+To split an existing list into two lists,
+\lang spanish
+ pon el cursor al final del último ítem y usa el menú 
 \family sans
 Editar\SpecialChar menuseparator
-Iniciar nuevo entorno padre
+
+\lang english
+Start New Environment
 \family default
 .
- Esto añade un separador de entornos y una nueva lista tras él.
- El menú 
+ This inserts a plain separator (red line in LyX) and behind it the new
+ list.
+ Alternatively set the cursor at the end of a list item and press 
 \family sans
-Editar\SpecialChar menuseparator
-Iniciar nuevo entorno
+\lang spanish
+Entrar
 \family default
- también crea una nueva lista pero en el mismo nivel de anidación.
+\lang english
+ three times.
+ This inserts a paragraph separator (red arrow in LyX).
+ The difference between both separator types is that the plain separator
+ only splits the list and not the current paragraph.
+ One can change the separator type by right-clicking on it.
 \end_layout
 
 \begin_layout Standard
-Para dividir una lista existente en dos, pon el cursor al final de un ítem,
- pulsa la tecla 
+
+\lang english
+In general, you get an environment separator when you press 
 \family sans
+\lang spanish
 Entrar
 \family default
- y selecciona 
-\family sans
-–Separador–
-\family default
- en el cuadro desplegable de entornos en la barra de herramientas principal
- de \SpecialChar LyX
-.
+\lang english
+ in a Standard environment immediately after a non-Standard one.
 \end_layout
 
 \begin_layout Section
@@ -41788,9 +41795,10 @@ status collapsed
 \end_inset
 
  (es el caso cuando se usa Xe\SpecialChar TeX
- y/o tipografías no \SpecialChar TeX
-), se usará este en vez
- de 
+ y Lua\SpecialChar TeX
+ y tipografías no \SpecialChar TeX
+), se usará este en
+ vez de 
 \series bold
 babel
 \series default

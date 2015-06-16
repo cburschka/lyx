@@ -8710,12 +8710,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8728,6 +8730,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -11169,66 +11172,43 @@ ceci est une autre
 \end_layout
 
 \begin_layout Standard
-Pour dire à \SpecialChar LyX
- qu'il y a deux listes et pas une seule, mettez le curseur à
- la fin du dernier élément et utilisez le menu 
+
+\lang english
+To split an existing list into two lists,
+\lang french
+ mettez le curseur à la fin du dernier élément et utilisez le menu 
 \family sans
 Édition\SpecialChar menuseparator
-Commencer
-\begin_inset space ~
-\end_inset
 
-un
-\begin_inset space ~
-\end_inset
-
-nouvel
-\begin_inset space ~
-\end_inset
-
-environnement
-\begin_inset space ~
-\end_inset
-
-parent
+\lang english
+Start New Environment
 \family default
 .
- Cela ajoute un séparateur d'environnement et une nouvelle liste après lui.
- Si vous utilisez le menu 
-\family sans
-Édition\SpecialChar menuseparator
-Commencer
-\begin_inset space ~
-\end_inset
-
-un
-\begin_inset space ~
-\end_inset
-
-nouvel
-\begin_inset space ~
-\end_inset
-
-environnement
-\family default
- une nouvelle liste va être créée, mais au même niveau d’emboîtement.
-\end_layout
-
-\begin_layout Standard
-Pour couper une liste existante en deux listes, mettez le curseur à la fin
- d'un élément de la liste et appuyez 
+ This inserts a plain separator (red line in LyX) and behind it the new
+ list.
+ Alternatively set the cursor at the end of a list item and press 
 \begin_inset Info
 type  "shortcut"
 arg   "paragraph-break"
 \end_inset
 
- et choisissez 
-\family sans
-–Séparateur–
-\family default
- dans la liste déroulante pour choisir les environnements dans la barre
- d'outils principale de \SpecialChar LyX
-.
+ three times.
+ This inserts a paragraph separator (red arrow in LyX).
+ The difference between both separator types is that the plain separator
+ only splits the list and not the current paragraph.
+ One can change the separator type by right-clicking on it.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In general, you get an environment separator when you press 
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-break"
+\end_inset
+
+ in a Standard environment immediately after a non-Standard one.
 \end_layout
 
 \begin_layout Standard
@@ -43013,7 +42993,8 @@ Paquetages \SpecialChar LaTeX
 \end_inset
 
  et plus approprié (comme dans avec Xe\SpecialChar TeX
- ou des polices non-\SpecialChar TeX
+ ou Lua\SpecialChar TeX
+ et des polices non-\SpecialChar TeX
 ), ce dernier
  sera utilisé à la place de 
 \series bold

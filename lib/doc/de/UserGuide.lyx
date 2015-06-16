@@ -8734,10 +8734,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Verbatim.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8750,6 +8752,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Verbatim erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -11192,42 +11195,54 @@ Aufzählung
 \end_layout
 
 \begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+sd
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Um \SpecialChar LyX
  zu sagen, dass es zwei Listen sind und nicht eine, setzt man den Cursor
  ans Ende des letzten Listeneintrags und verwendet das Menü 
 \family sans
 Bearbeiten\SpecialChar menuseparator
-Neue äußere Umgebung
-\family default
-.
- Dies fügt einen Umgebungstrenner und dahinter eine neue Liste ein.
- Verwendet man stattdessen das Menü 
-\family sans
-Bearbeiten\SpecialChar menuseparator
 Neue Umgebung
 \family default
- wird ebenfalls eine neue Liste eingefügt, aber in derselben Schachtelungstiefe.
+.
+ Dies fügt einen einfachen Trenner (rote Linie in LyX) und dahinter eine
+ neue Liste ein.
+ Alternativ setzt man den Cursor ans Ende des letzten Listeneintrags und
+ drückt dreimal 
+\family sans
+Enter
+\family default
+.
+ Es wird dann ein Absatzumbruch eingefügt (roter Pfeil in LyX).
+ Der Unterschied zwischen beiden Trennern ist, dass der einfache Trenner
+ nur die Listen, nicht aber den aktuellen Absatz trennt.
+ Klickt man mit der rechten Maustaste auf einen Trenner, kann man zwischen
+ beiden Typen umschalten.
 \end_layout
 
 \begin_layout Standard
-Um eine bestehende Liste in zwei Listen zu teilen, setzt man den Cursor
- ans Ende eines Listeneintrags, drückt 
+Allgemein erhält man einen Trenner wenn man 
 \family sans
-Eingabe
+Enter
 \family default
- und wählt im 
-\begin_inset Quotes gld
-\end_inset
-
-pull-down
-\begin_inset Quotes grd
-\end_inset
-
--Menü am Anfang der Standard-Werkzeugleiste 
-\family sans
-–Trenner–
-\family default
- aus.
+ in einer leeren Standard-Umgebung drückt, die auf eine Nicht-Standard-Umgebung
+ folgt.
 \end_layout
 
 \begin_layout Section

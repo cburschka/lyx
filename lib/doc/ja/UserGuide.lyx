@@ -9319,33 +9319,40 @@ name "subsec:入れ子の分離"
 \end_layout
 
 \begin_layout Standard
-箇条書きが、単一の箇条書きではなく、別々のものだと\SpecialChar LyX
-に教えるには、カーソルを最後の項目の終わりにおいて、
-\family sans
-編集\SpecialChar menuseparator
-新たな親環境を開始
-\family default
-メニューを選択します。すると、環境分離線が挿入され、その後に新規箇条書きが置かれます。この代わりに、
-\family sans
-編集\SpecialChar menuseparator
-新たな環境を開始
-\family default
-メニューを選択したとすると、やはり新規箇条書きが作られますが、同じ深度に置かれます。
-\end_layout
 
-\begin_layout Standard
-既存の箇条書きを2つに分けるには、箇条書き項目の後ろにカーソルを置いて、
+\lang english
+To split an existing list into two lists, set the cursor at the end of a
+ list item and use the menu 
+\family sans
+Edit\SpecialChar menuseparator
+Start New Environment
+\family default
+.
+ This inserts a plain separator (red line in LyX) and behind it the new
+ list.
+ Alternatively set the cursor at the end of a list item and press 
 \begin_inset Info
 type  "shortcut"
 arg   "paragraph-break"
 \end_inset
 
-を押し、\SpecialChar LyX
-のメインツールバーにある環境プルダウンボックスから
-\family sans
-―分離線―
-\family default
-を選択してください。
+ three times.
+ This inserts a paragraph separator (red arrow in LyX).
+ The difference between both separator types is that the plain separator
+ only splits the list and not the current paragraph.
+ One can change the separator type by right-clicking on it.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In general, you get an environment separator when you press 
+\begin_inset Info
+type  "shortcut"
+arg   "paragraph-break"
+\end_inset
+
+ in a Standard environment immediately after a non-Standard one.
 \end_layout
 
 \begin_layout Section
@@ -35347,6 +35354,15 @@ latexはつけじ@\SpecialChar LaTeX
 \end_inset
 
 の方が適当であれば(Xe\SpecialChar TeX
+
+\lang english
+or Lua
+\lang japanese
+\SpecialChar TeX
+
+\lang english
+ and
+\lang japanese
 や非\SpecialChar TeX
 フォントを使用している場合など)、
 \series bold

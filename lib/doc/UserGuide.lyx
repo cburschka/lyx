@@ -141,14 +141,11 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author -1966299584 "ef" 
-\author -712698321 "Jürgen Spitzmüller" 
-\author 2089657418 "Usti" 
 \end_header
 
 \begin_body
@@ -8267,12 +8264,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8285,6 +8284,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -10547,95 +10547,36 @@ enumeration
 \end_layout
 
 \begin_layout Standard
-To tell \SpecialChar LyX
- that there are two lists and not one, set the cursor at the end
- of the last item and use the menu 
-\family sans
-Edit\SpecialChar menuseparator
-Start New Parent Environment
-\family default
-.
- This adds an environment separator and a new list behind it.
- If you use instead the menu 
+To split an existing list into two lists, set the cursor at the end of a
+ list item and use the menu 
 \family sans
 Edit\SpecialChar menuseparator
 Start New Environment
 \family default
- a new list will also be created, but in the same nesting level.
-\end_layout
-
-\begin_layout Standard
-To split an existing list into two lists, set the cursor at the end of a
- list item
-\change_deleted -1966299584 1432227810
-,
-\change_inserted -1966299584 1432227815
- and repeatedly
-\change_unchanged
- press 
+.
+ This inserts a plain separator (red line in LyX) and behind it the new
+ list.
+ Alternatively set the cursor at the end of a list item and press 
 \begin_inset Info
 type  "shortcut"
 arg   "paragraph-break"
 \end_inset
 
- 
-\change_deleted -1966299584 1432227824
-and select 
-\family sans
-–Separator–
-\family default
- in the pull-down box for environments in \SpecialChar LyX
-'s main toolbar
-\change_inserted -1966299584 1432229616
-until you get an environment separator in the form of a small angled arrow.
- The only difference between this separator and the one you obtain by using
- the menu (a reddish line) is that it will also insert a blank line in the
- \SpecialChar LaTeX
- output
-\change_unchanged
-.
+ three times.
+ This inserts a paragraph separator (red arrow in LyX).
+ The difference between both separator types is that the plain separator
+ only splits the list and not the current paragraph.
+ One can change the separator type by right-clicking on it.
+\end_layout
 
-\change_inserted -1966299584 1432230601
- However, each kind of separator can be turned into the other kind by right-clic
-king it and choosing the wanted type through the context menu that opens.
- In general, you get an environment separator when you press 
+\begin_layout Standard
+In general, you get an environment separator when you press 
 \begin_inset Info
 type  "shortcut"
 arg   "paragraph-break"
 \end_inset
 
  in a Standard environment immediately after a non-Standard one.
- Thus, in a normal workflow, you can insert two consecutive environments
- of the same type by simply pressing 
-\begin_inset Info
-type  "shortcut"
-arg   "paragraph-break"
-\end_inset
-
- until you get an environment separator, after which any other kind of environme
-nt can be inserted (even of the same type).
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted -1966299584 1432231566
-If you load documents produced with a previous version of \SpecialChar LyX
-, you may notice
- that the angled-arrow separator may appear at the end of a line.
- In this case it is not used to separate environments but rather to assure
- that the same \SpecialChar LaTeX
- output is obtained.
- Indeed, previous versions of \SpecialChar LyX
- could insert spurious blank lines in the
- \SpecialChar LaTeX
- output, which are now avoided.
- As those blank lines may affect vertical spacing, \SpecialChar LyX
- takes care that you
- obtain the same results as before.
- You can safely remove the separators automatically inserted for this purpose
- if you like better the resulting vertical spacing.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
@@ -41674,16 +41615,9 @@ status collapsed
 \end_inset
 
  is more appropriate (is the case when using Xe\SpecialChar TeX
-
-\change_inserted -712698321 1432730145
- or LuaTeX
-\change_unchanged
- and
-\change_deleted -712698321 1432730156
-/or
-\change_unchanged
- non-\SpecialChar TeX
- fonts), this package will be used instead of 
+ or LuaTeX and non-\SpecialChar TeX
+ fonts),
+ this package will be used instead of 
 \series bold
 babel
 \series default
@@ -45848,26 +45782,6 @@ Additional
 Features
 \emph default
  manual.
-\change_inserted 2089657418 1433036195
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 2089657418 1433036213
-
-\color red
-Check why this does no longer exists
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
