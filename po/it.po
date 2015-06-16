@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-06-03 20:49+0200\n"
-"PO-Revision-Date: 2015-06-03 21:23+0100\n"
+"POT-Creation-Date: 2015-06-16 19:31+0200\n"
+"PO-Revision-Date: 2015-06-16 19:41+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "Language: it\n"
@@ -8581,7 +8581,7 @@ msgstr "Telefono mittente:"
 #: lib/layouts/moderncv.layout:137
 #: lib/layouts/lettre.layout:42
 #: lib/layouts/lettre.layout:343
-#: lib/configure.py:692
+#: lib/configure.py:696
 msgid "Fax"
 msgstr "Fax"
 
@@ -11457,8 +11457,8 @@ msgstr "Affiliazione autore"
 
 #: lib/layouts/agutex.layout:124
 #: lib/layouts/aastex.layout:179
-#: src/mathed/InsetMathHull.cpp:1453
-#: src/mathed/InsetMathHull.cpp:1462
+#: src/mathed/InsetMathHull.cpp:1498
+#: src/mathed/InsetMathHull.cpp:1507
 msgid "Number"
 msgstr "Numero"
 
@@ -15470,7 +15470,7 @@ msgid "Defines some theorem environments for use with non-AMS classes. Contrary 
 msgstr "Definisce alcuni ambienti tipo teorema per classi non-AMS. Contrariamente al modulo Teoremi, i differenti tipi di teorema usano un contatore separato (cioè, si ottiene teorema 1, teorema 2, lemma 1, proposizione 1, teorema 3, lemma 2, ..., invece che teorema 1, teorema 2, lemma 3, proposizione 4, ...). La numerazione viene azzerata all'inizio di ogni capitolo."
 
 #: lib/layouts/sweave.module:2
-#: lib/configure.py:614
+#: lib/configure.py:616
 msgid "Sweave"
 msgstr "Sweave"
 
@@ -15514,8 +15514,8 @@ msgid "Named Theorems"
 msgstr "Teoremi con nome"
 
 #: lib/layouts/theorems-named.module:7
-msgid "Facilitates the use of named theorems. The name of the theorem goes into the 'Short Title' inset."
-msgstr "Facilita l'uso di teoremi con nome. Il nome del teorema va specificato con l'inserto \"Titolo breve\"."
+msgid "Facilitates the use of named theorems. The name of the theorem goes into the 'Additional Theorem Text' argument."
+msgstr "Facilita l'uso di teoremi con nome. Il nome del teorema va specificato con l'argomento 'Testo opzionale'."
 
 #: lib/layouts/theorems-named.module:11
 msgid "Named Theorem"
@@ -15968,7 +15968,7 @@ msgid "Adds an environment for hanging paragraphs. Hanging paragraph is a paragr
 msgstr "Aggiunge un ambiente per paragrafi con rientro. Un paragrafo con rientro è un paragrafo la cui prima riga comincia dal margine sinistro ma tutte le righe successive sono indentate."
 
 #: lib/layouts/knitr.module:2
-#: lib/configure.py:616
+#: lib/configure.py:618
 msgid "Rnw (knitr)"
 msgstr "Rnw (knitr)"
 
@@ -17434,12 +17434,12 @@ msgid "Spellcheck continuously"
 msgstr "Verifica ortografica continua"
 
 #: lib/ui/stdtoolbars.inc:78
-#: src/BufferView.cpp:1363
+#: src/BufferView.cpp:1364
 msgid "Undo"
 msgstr "Annulla"
 
 #: lib/ui/stdtoolbars.inc:79
-#: src/BufferView.cpp:1373
+#: src/BufferView.cpp:1374
 msgid "Redo"
 msgstr "Rifai"
 
@@ -17462,7 +17462,7 @@ msgstr "Copia"
 #: lib/ui/stdtoolbars.inc:82
 #: lib/ui/stdcontext.inc:320
 #: lib/ui/stdmenus.inc:106
-#: src/Text3.cpp:1310
+#: src/Text3.cpp:1311
 #: src/mathed/InsetMathGrid.cpp:1571
 #: src/mathed/InsetMathNest.cpp:579
 msgid "Paste"
@@ -23982,7 +23982,7 @@ msgid "Hazard and Precautionary Statements|H"
 msgstr "Dichiarazioni di Pericolo e Cautela|r"
 
 #: lib/ui/stdmenus.inc:617
-#: lib/configure.py:614
+#: lib/configure.py:616
 msgid "Sweave|S"
 msgstr "Sweave|e"
 
@@ -24161,446 +24161,458 @@ msgstr "Diagramma Dia"
 msgid "Dia diagram.\n"
 msgstr "Diagramma Dia.\n"
 
-#: lib/configure.py:567
+#: lib/configure.py:569
 msgid "tgo"
 msgstr "tgo"
 
-#: lib/configure.py:567
+#: lib/configure.py:569
 msgid "tgo|Tgif"
 msgstr "tgo|Tgif"
 
-#: lib/configure.py:570
+#: lib/configure.py:572
 msgid "FIG"
 msgstr "FIG"
 
-#: lib/configure.py:573
+#: lib/configure.py:575
 msgid "DIA"
 msgstr "DIA"
 
-#: lib/configure.py:576
+#: lib/configure.py:578
 msgid "sxd"
 msgstr "sxd"
 
-#: lib/configure.py:576
+#: lib/configure.py:578
 msgid "sxd|OpenDocument"
 msgstr "sxd|OpenDocument"
 
-#: lib/configure.py:579
+#: lib/configure.py:581
 msgid "Grace"
 msgstr "Grace"
 
-#: lib/configure.py:582
+#: lib/configure.py:584
 msgid "FEN"
 msgstr "FEN"
 
-#: lib/configure.py:585
+#: lib/configure.py:587
 msgid "svgz"
 msgstr "svgz"
 
-#: lib/configure.py:585
+#: lib/configure.py:587
 msgid "svgz|SVG"
 msgstr "svgz|SVG"
 
-#: lib/configure.py:587
+#: lib/configure.py:589
 msgid "BMP"
 msgstr "BMP"
 
-#: lib/configure.py:588
+#: lib/configure.py:590
 msgid "GIF"
 msgstr "GIF"
 
-#: lib/configure.py:589
+#: lib/configure.py:591
 msgid "jpeg"
 msgstr "jpeg"
 
-#: lib/configure.py:589
+#: lib/configure.py:591
 msgid "jpeg|JPEG"
 msgstr "jpeg|JPEG"
 
-#: lib/configure.py:590
+#: lib/configure.py:592
 msgid "PBM"
 msgstr "PBM"
 
-#: lib/configure.py:591
+#: lib/configure.py:593
 msgid "PGM"
 msgstr "PGM"
 
-#: lib/configure.py:592
+#: lib/configure.py:594
 #: src/frontends/qt4/GuiClipboard.cpp:175
 msgid "PNG"
 msgstr "PNG"
 
-#: lib/configure.py:593
+#: lib/configure.py:595
 msgid "PPM"
 msgstr "PPM"
 
-#: lib/configure.py:594
+#: lib/configure.py:596
 msgid "TIFF"
 msgstr "TIFF"
 
-#: lib/configure.py:595
+#: lib/configure.py:597
 msgid "XBM"
 msgstr "XBM"
 
-#: lib/configure.py:596
+#: lib/configure.py:598
 msgid "XPM"
 msgstr "XPM"
 
-#: lib/configure.py:604
+#: lib/configure.py:606
 msgid "Plain text (chess output)"
 msgstr "Testo semplice (scacchi)"
 
-#: lib/configure.py:605
+#: lib/configure.py:607
 msgid "Plain text (image)"
 msgstr "Testo semplice (immagine)"
 
-#: lib/configure.py:606
+#: lib/configure.py:608
 msgid "Plain text (Xfig output)"
 msgstr "Testo semplice (Xfig)"
 
-#: lib/configure.py:607
+#: lib/configure.py:609
 msgid "date (output)"
 msgstr "date (uscita)"
 
-#: lib/configure.py:608
+#: lib/configure.py:610
 #: src/frontends/qt4/GuiDocument.cpp:1274
 #: src/frontends/qt4/GuiErrorList.cpp:44
 msgid "DocBook"
 msgstr "DocBook"
 
-#: lib/configure.py:608
+#: lib/configure.py:610
 msgid "DocBook|B"
 msgstr "DocBook|B"
 
-#: lib/configure.py:609
+#: lib/configure.py:611
 msgid "DocBook (XML)"
 msgstr "DocBook (XML)"
 
-#: lib/configure.py:610
+#: lib/configure.py:612
 msgid "Graphviz Dot"
 msgstr "Graphviz Dot"
 
-#: lib/configure.py:611
+#: lib/configure.py:613
 msgid "LaTeX (dviluatex)"
 msgstr "LaTeX (dviluatex)"
 
-#: lib/configure.py:612
+#: lib/configure.py:614
 msgid "LaTeX (pLaTeX)"
 msgstr "LaTeX (pLaTeX)"
 
-#: lib/configure.py:613
+#: lib/configure.py:615
 msgid "NoWeb"
 msgstr "NoWeb"
 
-#: lib/configure.py:613
+#: lib/configure.py:615
 msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
-#: lib/configure.py:615
+#: lib/configure.py:617
 msgid "R/S code"
 msgstr "Codice R/S"
 
-#: lib/configure.py:617
+#: lib/configure.py:619
 msgid "LilyPond music"
 msgstr "Spartito LilyPond"
 
-#: lib/configure.py:618
+#: lib/configure.py:620
 msgid "LilyPond book (LaTeX)"
 msgstr "LilyPond book (LaTeX)"
 
-#: lib/configure.py:619
+#: lib/configure.py:621
 msgid "LaTeX (plain)"
 msgstr "LaTeX (normale)"
 
-#: lib/configure.py:619
+#: lib/configure.py:621
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX (normale)|L"
 
-#: lib/configure.py:620
+#: lib/configure.py:622
 msgid "LaTeX (LuaTeX)"
 msgstr "LaTeX (LuaTeX)"
 
-#: lib/configure.py:621
+#: lib/configure.py:623
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
-#: lib/configure.py:622
+#: lib/configure.py:624
 msgid "LaTeX (XeTeX)"
 msgstr "LaTeX (XeTeX)"
 
-#: lib/configure.py:623
+#: lib/configure.py:625
 msgid "LaTeX (clipboard)"
 msgstr "LaTeX (appunti)"
 
-#: lib/configure.py:624
+#: lib/configure.py:626
 msgid "Plain text"
 msgstr "Testo semplice"
 
-#: lib/configure.py:624
+#: lib/configure.py:626
 msgid "Plain text|a"
 msgstr "Testo semplice|s"
 
-#: lib/configure.py:625
+#: lib/configure.py:627
 msgid "Plain text (pstotext)"
 msgstr "Testo semplice (pstotext)"
 
-#: lib/configure.py:626
+#: lib/configure.py:628
 msgid "Plain text (ps2ascii)"
 msgstr "Testo semplice (ps2ascii)"
 
-#: lib/configure.py:627
+#: lib/configure.py:629
 msgid "Plain text (catdvi)"
 msgstr "Testo semplice (catdvi)"
 
-#: lib/configure.py:628
+#: lib/configure.py:630
 msgid "Plain Text, Join Lines"
 msgstr "Testo semplice, per paragrafi"
 
-#: lib/configure.py:629
+#: lib/configure.py:631
 msgid "Info (Beamer)"
 msgstr "Info (Beamer)"
 
-#: lib/configure.py:632
+#: lib/configure.py:634
 msgid "Gnumeric spreadsheet"
 msgstr "Foglio elettronico Gnumeric"
 
-#: lib/configure.py:633
+#: lib/configure.py:635
 msgid "Excel spreadsheet"
 msgstr "Foglio elettronico Excel"
 
-#: lib/configure.py:634
+#: lib/configure.py:636
 msgid "OpenDocument spreadsheet"
 msgstr "Foglio elettronico OpenDocument"
 
-#: lib/configure.py:637
+#: lib/configure.py:639
 msgid "LyXHTML"
 msgstr "LyXHTML"
 
-#: lib/configure.py:637
+#: lib/configure.py:639
 msgid "LyXHTML|y"
 msgstr "LyXHTML|y"
 
-#: lib/configure.py:645
+#: lib/configure.py:647
 #: src/frontends/qt4/GuiLog.cpp:233
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: lib/configure.py:650
+#: lib/configure.py:652
 msgid "EPS"
 msgstr "EPS"
 
-#: lib/configure.py:651
+#: lib/configure.py:653
 msgid "EPS (uncropped)"
 msgstr "EPS (uncropped)"
 
-#: lib/configure.py:652
+#: lib/configure.py:654
 msgid "EPS (cropped)"
 msgstr "EPS (cropped)"
 
-#: lib/configure.py:653
+#: lib/configure.py:655
 msgid "Postscript"
 msgstr "Postscript"
 
-#: lib/configure.py:653
+#: lib/configure.py:655
 msgid "Postscript|t"
 msgstr "Postscript|t"
 
-#: lib/configure.py:658
+#: lib/configure.py:660
 msgid "PDF (ps2pdf)"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:658
+#: lib/configure.py:660
 msgid "PDF (ps2pdf)|P"
 msgstr "PDF (ps2pdf)|P"
 
-#: lib/configure.py:659
+#: lib/configure.py:661
 msgid "PDF (pdflatex)"
 msgstr "PDF (pdflatex)"
 
-#: lib/configure.py:659
+#: lib/configure.py:661
 msgid "PDF (pdflatex)|F"
 msgstr "PDF (pdflatex)|F"
 
-#: lib/configure.py:660
+#: lib/configure.py:662
 msgid "PDF (dvipdfm)"
 msgstr "PDF (dvipdfm)"
 
-#: lib/configure.py:660
+#: lib/configure.py:662
 msgid "PDF (dvipdfm)|m"
 msgstr "PDF (dvipdfm)|m"
 
-#: lib/configure.py:661
+#: lib/configure.py:663
 msgid "PDF (XeTeX)"
 msgstr "PDF (XeTeX)"
 
-#: lib/configure.py:661
+#: lib/configure.py:663
 msgid "PDF (XeTeX)|X"
 msgstr "PDF (XeTeX)|X"
 
-#: lib/configure.py:662
+#: lib/configure.py:664
 msgid "PDF (LuaTeX)"
 msgstr "PDF (LuaTeX)"
 
-#: lib/configure.py:662
+#: lib/configure.py:664
 msgid "PDF (LuaTeX)|u"
 msgstr "PDF (LuaTeX)|u"
 
-#: lib/configure.py:663
+#: lib/configure.py:665
 msgid "PDF (graphics)"
 msgstr "PDF (grafica)"
 
-#: lib/configure.py:664
+#: lib/configure.py:666
 msgid "PDF (cropped)"
 msgstr "PDF (cropped)"
 
-#: lib/configure.py:665
+#: lib/configure.py:667
 msgid "PDF (lower resolution)"
 msgstr "PDF (bassa risol.)"
 
-#: lib/configure.py:668
+#: lib/configure.py:670
 msgid "DVI"
 msgstr "DVI"
 
-#: lib/configure.py:668
+#: lib/configure.py:670
 msgid "DVI|D"
 msgstr "DVI|D"
 
-#: lib/configure.py:669
+#: lib/configure.py:671
 msgid "DVI (LuaTeX)"
 msgstr "DVI (LuaTeX)"
 
-#: lib/configure.py:669
+#: lib/configure.py:671
 msgid "DVI (LuaTeX)|V"
 msgstr "DVI (LuaTeX)|V"
 
-#: lib/configure.py:672
+#: lib/configure.py:674
 msgid "DraftDVI"
 msgstr "DraftDVI"
 
-#: lib/configure.py:675
-#: lib/configure.py:709
+#: lib/configure.py:677
+#: lib/configure.py:713
 msgid "htm"
 msgstr "htm"
 
-#: lib/configure.py:675
-#: lib/configure.py:709
+#: lib/configure.py:677
+#: lib/configure.py:713
 msgid "htm|HTML"
 msgstr "htm|HTML"
 
-#: lib/configure.py:678
+#: lib/configure.py:680
 msgid "Noteedit"
 msgstr "Noteedit"
 
-#: lib/configure.py:681
+#: lib/configure.py:683
 msgid "OpenDocument (tex4ht)"
 msgstr "OpenDocument (tex4ht)"
 
-#: lib/configure.py:682
+#: lib/configure.py:684
 msgid "OpenDocument (eLyXer)"
 msgstr "OpenDocument (eLyXer)"
 
-#: lib/configure.py:683
+#: lib/configure.py:685
+msgid "OpenDocument (Pandoc)"
+msgstr "OpenDocument (Pandoc)"
+
+#: lib/configure.py:686
 msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.Org (sxw)"
 
-#: lib/configure.py:686
+#: lib/configure.py:689
 msgid "Rich Text Format"
 msgstr "RTF"
 
-#: lib/configure.py:687
+#: lib/configure.py:690
 msgid "MS Word"
 msgstr "MS Word"
 
-#: lib/configure.py:687
+#: lib/configure.py:690
 msgid "MS Word|W"
 msgstr "MS Word|W"
 
-#: lib/configure.py:690
+#: lib/configure.py:691
+msgid "MS Word Office Open XML"
+msgstr "MS Word Office Open XML"
+
+#: lib/configure.py:691
+msgid "MS Word Office Open XML|W"
+msgstr "MS Word Office Open XML|X"
+
+#: lib/configure.py:694
 msgid "date command"
 msgstr "Comando date"
 
-#: lib/configure.py:691
+#: lib/configure.py:695
 msgid "Table (CSV)"
 msgstr "Tabella (CSV)"
 
-#: lib/configure.py:693
+#: lib/configure.py:697
 #: src/frontends/qt4/GuiView.cpp:1312
 #: src/frontends/qt4/GuiView.cpp:1313
 #: src/mathed/MathMacroTemplate.cpp:542
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:694
+#: lib/configure.py:698
 msgid "LyX 1.3.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:695
+#: lib/configure.py:699
 msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
-#: lib/configure.py:696
+#: lib/configure.py:700
 msgid "LyX 1.5.x"
 msgstr "LyX 1.5.x"
 
-#: lib/configure.py:697
+#: lib/configure.py:701
 msgid "LyX 1.6.x"
 msgstr "LyX 1.6.x"
 
-#: lib/configure.py:698
+#: lib/configure.py:702
 msgid "LyX 2.0.x"
 msgstr "LyX 2.0.x"
 
-#: lib/configure.py:699
+#: lib/configure.py:703
 msgid "LyX 2.1.x"
 msgstr "LyX 2.1.x"
 
-#: lib/configure.py:700
+#: lib/configure.py:704
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
-#: lib/configure.py:701
+#: lib/configure.py:705
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:702
+#: lib/configure.py:706
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:703
+#: lib/configure.py:707
 msgid "LyX Preview"
 msgstr "Anteprima LyX"
 
-#: lib/configure.py:704
+#: lib/configure.py:708
 msgid "PDFTEX"
 msgstr "PDFTEX"
 
-#: lib/configure.py:705
+#: lib/configure.py:709
 msgid "Program"
 msgstr "Programma"
 
-#: lib/configure.py:706
+#: lib/configure.py:710
 msgid "PSTEX"
 msgstr "PSTEX"
 
-#: lib/configure.py:707
+#: lib/configure.py:711
 #: src/frontends/qt4/GuiClipboard.cpp:172
 msgid "Windows Metafile"
 msgstr "Metafile di Windows"
 
-#: lib/configure.py:708
+#: lib/configure.py:712
 #: src/frontends/qt4/GuiClipboard.cpp:171
 msgid "Enhanced Metafile"
 msgstr "Metafile di Windows"
 
-#: lib/configure.py:821
+#: lib/configure.py:825
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
 
-#: lib/configure.py:1034
+#: lib/configure.py:1047
 msgid "LyX Archive (zip)"
 msgstr "Archivio LyX (zip)"
 
-#: lib/configure.py:1037
+#: lib/configure.py:1050
 msgid "LyX Archive (tar.gz)"
 msgstr "Archivio LyX (tar.gz)"
 
@@ -24679,13 +24691,13 @@ msgstr "manca \\begin_document"
 
 #: src/Buffer.cpp:978
 #: src/Buffer.cpp:984
-#: src/BufferView.cpp:1469
-#: src/BufferView.cpp:1475
+#: src/BufferView.cpp:1470
+#: src/BufferView.cpp:1476
 msgid "Changes not shown in LaTeX output"
 msgstr "Modifiche non visualizzate nell'output LaTeX"
 
 #: src/Buffer.cpp:979
-#: src/BufferView.cpp:1470
+#: src/BufferView.cpp:1471
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor xcolor/ulem are installed.\n"
 "Please install these packages or redefine \\lyxadded and \\lyxdeleted in the LaTeX preamble."
@@ -24694,7 +24706,7 @@ msgstr ""
 "Occorre installare questi pacchetti o ridefinire \\lyxadded e \\lyxdeleted nel preambolo LaTeX."
 
 #: src/Buffer.cpp:985
-#: src/BufferView.cpp:1476
+#: src/BufferView.cpp:1477
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because xcolor and ulem are not installed.\n"
 "Please install both packages or redefine \\lyxadded and \\lyxdeleted in the LaTeX preamble."
@@ -25266,7 +25278,47 @@ msgstr ""
 "rappresentabili nella codifica corrente e sono stati omessi:\n"
 "%1$s."
 
-#: src/BufferParams.cpp:2133
+#: src/BufferParams.cpp:1956
+#: src/Encoding.cpp:245
+#: src/Paragraph.cpp:2509
+#: src/frontends/qt4/LaTeXHighlighter.cpp:108
+#: src/insets/InsetListings.cpp:181
+#: src/insets/InsetListings.cpp:189
+#: src/insets/InsetListings.cpp:212
+#: src/mathed/InsetMathString.cpp:162
+msgid "LyX Warning: "
+msgstr "Avviso di LyX: "
+
+#: src/BufferParams.cpp:1957
+#: src/Encoding.cpp:246
+#: src/Paragraph.cpp:2510
+#: src/insets/InsetListings.cpp:182
+#: src/insets/InsetListings.cpp:190
+#: src/mathed/InsetMathString.cpp:163
+msgid "uncodable character"
+msgstr "carattere intraducibile"
+
+#: src/BufferParams.cpp:1970
+msgid "Uncodable character in user preamble"
+msgstr "Carattere intraducibile nel preambolo utente"
+
+#: src/BufferParams.cpp:1972
+#, c-format
+msgid ""
+"The user preamble of your document contains glyphs that are unknown in the current document encoding (namely %1$s).\n"
+"These glyphs are omitted  from the output, which may result in incomplete output.\n"
+"\n"
+"Please select an appropriate document encoding\n"
+"(such as utf8) or change the preamble code accordingly."
+msgstr ""
+"Il preambolo utente del documento contiene caratteri che non\n"
+"possono essere rappresentati nella codifica corrente (%1$s).\n"
+"Tali caratteri saranno omessi nel file LaTeX esportato.\n"
+"\n"
+"Sciegliete una codifica appropriata per il documento\n"
+"(per esempio utf8) o modificate opportunamente il preambolo."
+
+#: src/BufferParams.cpp:2177
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -25281,11 +25333,11 @@ msgstr ""
 "con layout predefiniti. LyX non sarà in grado di produrre\n"
 "un output corretto."
 
-#: src/BufferParams.cpp:2139
+#: src/BufferParams.cpp:2183
 msgid "Document class not found"
 msgstr "Classe di documento non trovata"
 
-#: src/BufferParams.cpp:2146
+#: src/BufferParams.cpp:2190
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -25300,17 +25352,17 @@ msgstr ""
 "con layout predefiniti. LyX non sarà in grado di produrre\n"
 "un output corretto."
 
-#: src/BufferParams.cpp:2152
-#: src/BufferView.cpp:1315
-#: src/BufferView.cpp:1347
+#: src/BufferParams.cpp:2196
+#: src/BufferView.cpp:1316
+#: src/BufferView.cpp:1348
 msgid "Could not load class"
 msgstr "Impossibile caricare classe"
 
-#: src/BufferParams.cpp:2202
+#: src/BufferParams.cpp:2246
 msgid "Error reading internal layout information"
 msgstr "Errore durante la lettura del layout interno"
 
-#: src/BufferParams.cpp:2203
+#: src/BufferParams.cpp:2247
 #: src/TextClass.cpp:1557
 msgid "Read Error"
 msgstr "Errore di lettura"
@@ -25336,105 +25388,105 @@ msgid "This portion of the document is deleted."
 msgstr "Questa porzione del documento è stata cancellata."
 
 #: src/BufferView.cpp:1072
-#: src/BufferView.cpp:2057
+#: src/BufferView.cpp:2055
 #: src/frontends/qt4/GuiView.cpp:3571
 #: src/frontends/qt4/GuiView.cpp:3653
 msgid "Absolute filename expected."
 msgstr "È richiesto un nome file assoluto."
 
-#: src/BufferView.cpp:1313
-#: src/BufferView.cpp:1345
+#: src/BufferView.cpp:1314
+#: src/BufferView.cpp:1346
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
 msgstr "Impossibile caricare la classe di documento `%1$s'."
 
-#: src/BufferView.cpp:1366
+#: src/BufferView.cpp:1367
 msgid "No further undo information"
 msgstr "Nessun altra operazione da annullare"
 
-#: src/BufferView.cpp:1376
+#: src/BufferView.cpp:1377
 msgid "No further redo information"
 msgstr "Nessun altra operazione da rifare"
 
-#: src/BufferView.cpp:1626
+#: src/BufferView.cpp:1627
 msgid "Mark off"
 msgstr "Evidenziazione disattivata"
 
-#: src/BufferView.cpp:1632
+#: src/BufferView.cpp:1633
 msgid "Mark on"
 msgstr "Evidenziazione attivata"
 
-#: src/BufferView.cpp:1639
+#: src/BufferView.cpp:1640
 msgid "Mark removed"
 msgstr "Evidenziazione rimossa"
 
-#: src/BufferView.cpp:1642
+#: src/BufferView.cpp:1643
 msgid "Mark set"
 msgstr "Evidenziazione impostata"
 
-#: src/BufferView.cpp:1698
+#: src/BufferView.cpp:1699
 msgid "Statistics for the selection:"
 msgstr "Statistiche per la selezione:"
 
-#: src/BufferView.cpp:1700
+#: src/BufferView.cpp:1701
 msgid "Statistics for the document:"
 msgstr "Statistiche per il documento:"
 
-#: src/BufferView.cpp:1703
+#: src/BufferView.cpp:1704
 #, c-format
 msgid "%1$d words"
 msgstr "%1$d parole"
 
-#: src/BufferView.cpp:1705
+#: src/BufferView.cpp:1706
 msgid "One word"
 msgstr "Una parola"
 
-#: src/BufferView.cpp:1708
+#: src/BufferView.cpp:1709
 #, c-format
 msgid "%1$d characters (including blanks)"
 msgstr "%1$d caratteri (spazi inclusi)"
 
-#: src/BufferView.cpp:1711
+#: src/BufferView.cpp:1712
 msgid "One character (including blanks)"
 msgstr "Un carattere (spazi inclusi)"
 
-#: src/BufferView.cpp:1714
+#: src/BufferView.cpp:1715
 #, c-format
 msgid "%1$d characters (excluding blanks)"
 msgstr "%1$d caratteri (spazi esclusi)"
 
-#: src/BufferView.cpp:1717
+#: src/BufferView.cpp:1718
 msgid "One character (excluding blanks)"
 msgstr "Un carattere (spazi esclusi)"
 
-#: src/BufferView.cpp:1719
+#: src/BufferView.cpp:1720
 msgid "Statistics"
 msgstr "Statistiche"
 
-#: src/BufferView.cpp:1912
+#: src/BufferView.cpp:1910
 #, c-format
 msgid "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr "`inset-forall' è stato interrotto perché il numero di azioni è maggiore di %1$d"
 
-#: src/BufferView.cpp:1914
+#: src/BufferView.cpp:1912
 #, c-format
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Ho applicato \"%1$s\" a %2$d inserti"
 
-#: src/BufferView.cpp:1922
+#: src/BufferView.cpp:1920
 msgid "Branch name"
 msgstr "Nome ramo"
 
-#: src/BufferView.cpp:1929
+#: src/BufferView.cpp:1927
 #: src/frontends/qt4/GuiBranches.cpp:218
 msgid "Branch already exists"
 msgstr "Il ramo esiste già"
 
-#: src/BufferView.cpp:2379
+#: src/BufferView.cpp:2392
 msgid "Inverse Search Failed"
 msgstr "Ricerca inversa non riuscita"
 
-#: src/BufferView.cpp:2380
+#: src/BufferView.cpp:2393
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You need to update the viewed document."
@@ -25442,22 +25494,22 @@ msgstr ""
 "La posizione richiesta per la ricerca inversa non è valida.\n"
 "Occorre prima aggiornare l'anteprima del documento."
 
-#: src/BufferView.cpp:2760
+#: src/BufferView.cpp:2773
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Sto inserendo il documento %1$s..."
 
-#: src/BufferView.cpp:2771
+#: src/BufferView.cpp:2784
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Documento %1$s inserito."
 
-#: src/BufferView.cpp:2773
+#: src/BufferView.cpp:2786
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Non riesco ad inserire il documento %1$s"
 
-#: src/BufferView.cpp:3164
+#: src/BufferView.cpp:3177
 #, c-format
 msgid ""
 "Could not read the specified document\n"
@@ -25468,11 +25520,11 @@ msgstr ""
 "%1$s\n"
 "a causa dell'errore: %2$s"
 
-#: src/BufferView.cpp:3166
+#: src/BufferView.cpp:3179
 msgid "Could not read file"
 msgstr "Non riesco a leggere il file"
 
-#: src/BufferView.cpp:3173
+#: src/BufferView.cpp:3186
 #, c-format
 msgid ""
 "%1$s\n"
@@ -25481,16 +25533,16 @@ msgstr ""
 "%1$s\n"
 "non può essere letto."
 
-#: src/BufferView.cpp:3174
+#: src/BufferView.cpp:3187
 #: src/output.cpp:39
 msgid "Could not open file"
 msgstr "Non riesco ad aprire il file"
 
-#: src/BufferView.cpp:3181
+#: src/BufferView.cpp:3194
 msgid "Reading not UTF-8 encoded file"
 msgstr "Lettura di un file non codificato UTF-8"
 
-#: src/BufferView.cpp:3182
+#: src/BufferView.cpp:3195
 msgid ""
 "The file is not UTF-8 encoded.\n"
 "It will be read as local 8Bit-encoded.\n"
@@ -26048,24 +26100,6 @@ msgstr "L'inserto flessibile %1$s non è definito a causa della conversione del 
 msgid "Undefined flex inset"
 msgstr "Inserto flessibile non definito"
 
-#: src/Encoding.cpp:245
-#: src/Paragraph.cpp:2509
-#: src/frontends/qt4/LaTeXHighlighter.cpp:108
-#: src/insets/InsetListings.cpp:181
-#: src/insets/InsetListings.cpp:189
-#: src/insets/InsetListings.cpp:212
-#: src/mathed/InsetMathString.cpp:162
-msgid "LyX Warning: "
-msgstr "Avviso di LyX: "
-
-#: src/Encoding.cpp:246
-#: src/Paragraph.cpp:2510
-#: src/insets/InsetListings.cpp:182
-#: src/insets/InsetListings.cpp:190
-#: src/mathed/InsetMathString.cpp:163
-msgid "uncodable character"
-msgstr "carattere intraducibile"
-
 #: src/Exporter.cpp:45
 #, c-format
 msgid ""
@@ -26319,13 +26353,13 @@ msgstr "BibTeX è in esecuzione."
 msgid "Running MakeIndex for nomencl."
 msgstr "MakeIndex è in esecuzione per nomencl."
 
-#: src/LaTeX.cpp:1282
-#: src/LaTeX.cpp:1288
-#: src/LaTeX.cpp:1297
+#: src/LaTeX.cpp:1290
+#: src/LaTeX.cpp:1296
+#: src/LaTeX.cpp:1305
 msgid "BibTeX error: "
 msgstr "Errore di BibTeX: "
 
-#: src/LaTeX.cpp:1304
+#: src/LaTeX.cpp:1312
 msgid "Biber error: "
 msgstr "Errore di Biber: "
 
@@ -26593,7 +26627,7 @@ msgid "  Git commit hash "
 msgstr "  Git commit hash "
 
 #: src/LyX.cpp:1159
-#: src/support/Package.cpp:644
+#: src/support/Package.cpp:645
 msgid "No system directory"
 msgstr "Nessuna cartella di sistema"
 
@@ -31937,7 +31971,7 @@ msgid "Match found!"
 msgstr "Corrispondenza trovata!"
 
 #: src/mathed/InsetMathAMSArray.cpp:119
-#: src/mathed/InsetMathHull.cpp:1754
+#: src/mathed/InsetMathHull.cpp:1799
 #: src/mathed/InsetMathSplit.cpp:85
 #: src/mathed/InsetMathSubstack.cpp:76
 #, c-format
@@ -31999,16 +32033,16 @@ msgstr "Nessuna linea verticale da cancellare"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "La caratteristica della tabella '%1$s' è sconosciuta"
 
-#: src/mathed/InsetMathHull.cpp:1316
+#: src/mathed/InsetMathHull.cpp:1361
 #, c-format
 msgid "Type: %1$s"
 msgstr "Tipo: %1$s"
 
-#: src/mathed/InsetMathHull.cpp:1349
+#: src/mathed/InsetMathHull.cpp:1394
 msgid "Bad math environment"
 msgstr "Contesto matematico errato"
 
-#: src/mathed/InsetMathHull.cpp:1350
+#: src/mathed/InsetMathHull.cpp:1395
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
@@ -32016,22 +32050,22 @@ msgstr ""
 "Il calcolo non può essere effettuato in contesti matematici AMS.\n"
 "Occorre cambiare il tipo di formula matematica e riprovare."
 
-#: src/mathed/InsetMathHull.cpp:1453
-#: src/mathed/InsetMathHull.cpp:1462
+#: src/mathed/InsetMathHull.cpp:1498
+#: src/mathed/InsetMathHull.cpp:1507
 msgid "No number"
 msgstr "Nessun numero"
 
-#: src/mathed/InsetMathHull.cpp:1727
+#: src/mathed/InsetMathHull.cpp:1772
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Non posso cambiare il numero di righe in '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1737
+#: src/mathed/InsetMathHull.cpp:1782
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Non posso cambiare il numero di colonne in '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1747
+#: src/mathed/InsetMathHull.cpp:1792
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Non posso aggiungere le linee della griglia orizzontale in '%1$s'"
@@ -32117,24 +32151,24 @@ msgstr "Sommario: "
 msgid "References: "
 msgstr "Referimenti: "
 
-#: src/support/Package.cpp:168
+#: src/support/Package.cpp:169
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: sto riconfigurando la cartella utente."
 
-#: src/support/Package.cpp:172
+#: src/support/Package.cpp:173
 msgid "Done!"
 msgstr "Fatto!"
 
-#: src/support/Package.cpp:525
+#: src/support/Package.cpp:526
 msgid "LyX binary not found"
 msgstr "Eseguibile di LyX non trovato"
 
-#: src/support/Package.cpp:526
+#: src/support/Package.cpp:527
 #, c-format
 msgid "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr "Impossibile determinare la locazione dell'eseguibile di LyX dalla linea di comando %1$s"
 
-#: src/support/Package.cpp:645
+#: src/support/Package.cpp:646
 #, c-format
 msgid ""
 "Unable to determine the system directory having searched\n"
@@ -32147,12 +32181,12 @@ msgstr ""
 "Usate il parametro '-sysdir' da linea di comando o impostate la variabile d'ambiente\n"
 "%2$s alla cartella di sistema di LyX contenente il file `chkconfig.ltx'."
 
-#: src/support/Package.cpp:714
-#: src/support/Package.cpp:741
+#: src/support/Package.cpp:718
+#: src/support/Package.cpp:745
 msgid "File not found"
 msgstr "File non trovato"
 
-#: src/support/Package.cpp:715
+#: src/support/Package.cpp:719
 #, c-format
 msgid ""
 "Invalid %1$s switch.\n"
@@ -32161,7 +32195,7 @@ msgstr ""
 "Il parametro %1$s non è valido.\n"
 "La cartella %2$s non contiene %3$s."
 
-#: src/support/Package.cpp:742
+#: src/support/Package.cpp:746
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
@@ -32170,7 +32204,7 @@ msgstr ""
 "La variabile d'ambiente %1$s non è valida.\n"
 "La cartella %2$s non contiene %3$s."
 
-#: src/support/Package.cpp:766
+#: src/support/Package.cpp:770
 #, c-format
 msgid ""
 "Invalid %1$s environment variable.\n"
@@ -32179,7 +32213,7 @@ msgstr ""
 "La variabile d'ambiente %1$s non è valida.\n"
 "%2$s non è una cartella."
 
-#: src/support/Package.cpp:768
+#: src/support/Package.cpp:772
 msgid "Directory not found"
 msgstr "Cartella non trovata"
 
