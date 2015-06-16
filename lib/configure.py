@@ -250,6 +250,11 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
         sys.exit(2)
     logger.info('checking for ' + description + '...')
     ## print '(' + ','.join(progs) + ')',
+    additional_path = path
+    path = os.environ["PATH"].split(os.pathsep) + additional_path
+    extlist = ['']
+    if "PATHEXT" in os.environ:
+        extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
     global java, perl
     for idx in range(len(progs)):
         # ac_prog may have options, ac_word is the command name
@@ -260,10 +265,6 @@ def checkProg(description, progs, rc_entry = [], path = [], not_found = ''):
         if ac_word.endswith('.pl') and perl == '':
             continue
         msg = '+checking for "' + ac_word + '"... '
-        path = os.environ["PATH"].split(os.pathsep) + path
-        extlist = ['']
-        if "PATHEXT" in os.environ:
-            extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
         for ac_dir in path:
             if hasattr(os, "access") and not os.access(ac_dir, os.F_OK):
                 continue
@@ -302,6 +303,11 @@ def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], 
         sys.exit(2)
     logger.info('checking for ' + description + '...')
     ## print '(' + ','.join(progs) + ')',
+    additional_path = path
+    path = os.environ["PATH"].split(os.pathsep) + additional_path
+    extlist = ['']
+    if "PATHEXT" in os.environ:
+        extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
     found_prime = False
     real_ac_dir = ''
     real_ac_word = not_found
@@ -315,10 +321,6 @@ def checkProgAlternatives(description, progs, rc_entry = [], alt_rc_entry = [], 
         if ac_word.endswith('.pl') and perl == '':
             continue
         msg = '+checking for "' + ac_word + '"... '
-        path = os.environ["PATH"].split(os.pathsep) + path
-        extlist = ['']
-        if "PATHEXT" in os.environ:
-            extlist = extlist + os.environ["PATHEXT"].split(os.pathsep)
         found_alt = False
         for ac_dir in path:
             if hasattr(os, "access") and not os.access(ac_dir, os.F_OK):
