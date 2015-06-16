@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-28 20:45+0200\n"
-"PO-Revision-Date: 2015-05-28 18:58+0000\n"
+"POT-Creation-Date: 2015-06-16 10:32+0200\n"
+"PO-Revision-Date: 2015-06-16 08:42+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -13840,9 +13840,9 @@ msgstr "Skupina"
 msgid "Tableau"
 msgstr "Tablo"
 
-#: lib/layouts/linguistics.module:179
+#: lib/layouts/linguistics.module:222
 msgid "List of Tableaux"
-msgstr "Zoznam Tablou"
+msgstr "Zoznam Tablov"
 
 #: lib/layouts/logicalmkup.module:2
 msgid "Logical Markup"
@@ -14946,10 +14946,10 @@ msgstr "Menované Teorémy"
 #: lib/layouts/theorems-named.module:7
 msgid ""
 "Facilitates the use of named theorems. The name of the theorem goes into the "
-"'Short Title' inset."
+"'Additional Theorem Text' argument."
 msgstr ""
-"Umožňuje používanie menovaných teorém. Meno teorému ide do vložky 'Krátky "
-"Titul'."
+"Umožňuje používanie menovaných teorém. Meno teorému ide do vložky 'Dodatočný "
+"Text Teorémy'."
 
 #: lib/layouts/theorems-named.module:11
 msgid "Named Theorem"
@@ -17685,9 +17685,9 @@ msgstr "PDF komentáre|D"
 msgid "PDF forms|o"
 msgstr "PDF forms|o"
 
-#: lib/ui/stdmenus.inc:610
-msgid "Risk and Safety Statements|R"
-msgstr "Rizikové a Poistné Príkazy|R"
+#: lib/ui/stdmenus.inc:616
+msgid "Hazard and Precautionary Statements|H"
+msgstr "Rizikové a Bezpečnostné Inštrukcie|R"
 
 #: lib/ui/stdmenus.inc:611 lib/configure.py:614
 msgid "Sweave|S"
@@ -22488,8 +22488,8 @@ msgid "sxd"
 msgstr "sxd"
 
 #: lib/configure.py:576
-msgid "sxd|OpenOffice"
-msgstr "sxd|OpenOffice"
+msgid "sxd|OpenDocument"
+msgstr "sxd|OpenDocument"
 
 #: lib/configure.py:579
 msgid "Grace"
@@ -22673,8 +22673,8 @@ msgid "Excel spreadsheet"
 msgstr "Excel tabuľkový procesor"
 
 #: lib/configure.py:634
-msgid "OpenOffice spreadsheet"
-msgstr "OpenOffice tabuľkový procesor"
+msgid "OpenDocument spreadsheet"
+msgstr "OpenDocument tabuľkový procesor"
 
 #: lib/configure.py:637
 msgid "LyXHTML"
@@ -22792,9 +22792,17 @@ msgstr "htm|HTML"
 msgid "Noteedit"
 msgstr "Noteedit"
 
-#: lib/configure.py:680
-msgid "OpenDocument"
-msgstr "OpenDocument"
+#: lib/configure.py:681
+msgid "OpenDocument (tex4ht)"
+msgstr "OpenDocument (tex4ht)"
+
+#: lib/configure.py:682
+msgid "OpenDocument (eLyXer)"
+msgstr "OpenDocument (eLyXer)"
+
+#: lib/configure.py:683
+msgid "OpenDocument (Pandoc)"
+msgstr "OpenDocument (Pandoc)"
 
 #: lib/configure.py:681
 msgid "OpenOffice.Org (sxw)"
@@ -22811,6 +22819,14 @@ msgstr "MS Word"
 #: lib/configure.py:685
 msgid "MS Word|W"
 msgstr "MS Word"
+
+#: lib/configure.py:689
+msgid "MS Word Office Open XML"
+msgstr "MS-Word Office-Open XML"
+
+#: lib/configure.py:689
+msgid "MS Word Office Open XML|W"
+msgstr "MS-Word Office-Open XML|W"
 
 #: lib/configure.py:688
 msgid "date command"
@@ -24387,6 +24403,29 @@ msgstr "LyX varovanie: "
 #: src/mathed/InsetMathString.cpp:163
 msgid "uncodable character"
 msgstr "Nekódovateľný znak"
+
+#: src/BufferParams.cpp:1970
+msgid "Uncodable character in user preamble"
+msgstr "Nekódovateľný znak v preambule používateľa"
+
+#: src/BufferParams.cpp:1972
+#, c-format
+msgid ""
+"The user preamble of your document contains glyphs that are unknown in the "
+"current document encoding (namely %1$s).\n"
+"These glyphs are omitted  from the output, which may result in incomplete "
+"output.\n"
+"\n"
+"Please select an appropriate document encoding\n"
+"(such as utf8) or change the preamble code accordingly."
+msgstr ""
+"Preambula vášho dokumentu obsahuje glyfy, ktoré sú neznáme v kódovaní "
+"aktuálneho dokumentu (menovite %1$s).\n"
+"Tieto glyfy budú pri exporte do LaTeX-u vynechané, čo môže končiť neúplnom "
+"výstupe.\n"
+"\n"
+"Vyberte vhodné kódovanie dokumentu (napr. utf8)\n"
+"alebo zmeňte primerane preambulu."
 
 #: src/Exporter.cpp:50
 msgid "&Keep file"
@@ -30813,6 +30852,9 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "Risk and Safety Statements|R"
+#~ msgstr "Rizikové a Poistné Príkazy|R"
+
 #~ msgid ""
 #~ "Could not print the document %1$s.\n"
 #~ "Check that your printer is set up correctly."
@@ -33962,3 +34004,13 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Compressed|m"
 #~ msgstr "Komprimované|m"
+
+#~ msgid "OpenOffice spreadsheet"
+#~ msgstr "OpenOffice tabuľkový procesor"
+
+#~ msgid ""
+#~ "Facilitates the use of named theorems. The name of the theorem goes into the "
+#~ "'Short Title' inset."
+#~ msgstr ""
+#~ "Umožňuje používanie menovaných teorém. Meno teorému ide do vložky 'Krátky "
+#~ "Titul'."
