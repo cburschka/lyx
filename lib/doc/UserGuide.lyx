@@ -1629,10 +1629,6 @@ These are the most basic mouse operations.
 
 \begin_layout Enumerate
 Motion
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1648,10 +1644,6 @@ left mouse button
 \end_deeper
 \begin_layout Enumerate
 Selecting Text
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -1685,10 +1677,6 @@ Paste
 \end_deeper
 \begin_layout Enumerate
 Insets (Footnotes, Notes, Floats, etc.)
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2451,10 +2439,6 @@ description "Control key"
 
  in the documentation files) This has a couple of different uses, depending
  on which keys it is used in combination with:
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2569,10 +2553,6 @@ menu accelerator keys
 .
  If you use this in combination with any of the underlined letters in a
  menu or menu item, it selects that menu item.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -4047,10 +4027,6 @@ Format
 \family default
  What size paper to print on.
  The choices are
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5713,10 +5689,6 @@ Itemize
 
 \begin_layout Itemize
 Each item has a particular bullet or symbol as its label.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5751,10 +5723,6 @@ Itemize
 Itemize
 \family default
  environment, the label changes to a new symbol.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5807,28 +5775,16 @@ The label for the first level
 Itemize
 \family default
  is a large black dot, or bullet.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 The label for the second level is a dash.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 The label for the third is an asterisk.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5929,10 +5885,6 @@ Enumerate
 
 \begin_layout Enumerate
 Each item has a numeral as its label.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -5964,10 +5916,6 @@ Itemize
 Enumerate
 \family default
  environment:
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -6014,28 +5962,16 @@ The first level of an
 Enumerate
 \family default
  uses Arabic numerals followed by a period.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 The second level uses lower case letters surrounded by parentheses.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 The third level uses lower-case Roman numerals followed by a period.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -6783,10 +6719,6 @@ Alph{enumi}
 \end_inset
 
 Level 1
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -6819,10 +6751,6 @@ Level 2
 
 \begin_layout Enumerate
 Level 2
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -6851,10 +6779,6 @@ arabic{enumiii}}
 \end_inset
 
 Level 3
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8264,14 +8188,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8284,7 +8206,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8341,10 +8262,6 @@ one
 
 \begin_layout Enumerate
 two
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8481,10 +8398,6 @@ Here's a list of the three types of nesting behavior, and which paragraph
 \begin_layout Description
 Unnestable Can't nest them.
  Can't nest into them.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8526,10 +8439,6 @@ Fully
 
 Nestable You can nest them.
  You can nest other things into them.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8592,10 +8501,6 @@ Verbatim
 \begin_layout Description
 Nestable-Inside You can nest them inside other things.
  You can't nest anything into them.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8830,19 +8735,11 @@ Here's an example with a table:
 
 \begin_layout Enumerate
 Item One
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 This is (a) and it's nested.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -8967,10 +8864,6 @@ If we hadn't nested the table at all, the list would look like this:
 
 \begin_layout Enumerate
 Item One
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9111,10 +9004,6 @@ There's another trap you can fall into: Nesting the table, but not going
 
 \begin_layout Enumerate
 Item One
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9273,46 +9162,26 @@ level #6
 
 \begin_layout Enumerate
 level #1 – outermost
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 level #2
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 level #3
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 level #4
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 level #5
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9386,10 +9255,6 @@ Example 1: The Six-fold Way and Mixed Nesting
 List
 \family default
  environment.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9409,10 +9274,6 @@ arg   "depth-increment"
 \end_inset
 
 .
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9444,10 +9305,6 @@ arg   "depth-increment"
 \end_inset
 
 .
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9545,20 +9402,12 @@ can
 \end_inset
 
 .
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Labeling
 \labelwidthstring MMM
 #5-a This is level #5\SpecialChar ldots
-
-\begin_inset Separator parbreak
-\end_inset
-
 
 \end_layout
 
@@ -9691,10 +9540,6 @@ which, we will change to the
 Enumerate
 \family default
  environment.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9768,10 +9613,6 @@ Enumerate
 \family default
  paragraph environment.
  We're actually going to nest a bunch of these.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9796,10 +9637,6 @@ Itemize
 \family default
  environment inside of this one? It will be at level #3, but what will its
  label be? An asterisk?
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9832,10 +9669,6 @@ arg   "depth-increment"
 Itemize
 \family default
 .)
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -9854,10 +9687,6 @@ arg   "depth-increment"
 
 .
  We will do that again\SpecialChar ldots
-
-\begin_inset Separator parbreak
-\end_inset
-
 
 \end_layout
 
@@ -10054,10 +9883,6 @@ We're going to go totally nuts now.
 Enumerate
 \family default
 )
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10090,10 +9915,6 @@ arg   "depth-increment"
 Return, Enumerate
 \family default
 : level #1) This is the next item in the list.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10145,10 +9966,6 @@ arg   "paragraph-break inverse"
 
 \begin_layout Verse
 Here comes a table:
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10374,10 +10191,6 @@ Address
 \family default
  environments.
  Here it goes:
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -10494,19 +10307,11 @@ It is sometimes necessary to have two consecutive environments of the same
 
 \begin_layout Enumerate
 Hello
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 this is an
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -12057,10 +11862,6 @@ The default in most cases is justified alignment, in which the inter-word
  spacing is variable and each line of a paragraph fills the region between
  the left and right margins.
  The other three alignments should be self-explanatory, and look like this:
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -14076,10 +13877,6 @@ overall look
 
  of the font.
  The possible options are:
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -14156,10 +13953,6 @@ Series
 \family default
  This corresponds to the print weight.
  Options are:
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -14202,10 +13995,6 @@ Shape
 \family default
  As the name implies.
  Options are:
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -14392,10 +14181,6 @@ Size
  the details, but a general description of what
  you want to do.
  The options are:
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -14762,10 +14547,6 @@ Misc
 \family default
  Here you can change a few other things at the character level.
  Options are:
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -18610,10 +18391,6 @@ The graphics dialog can be called at any time by clicking on an image.
  Images will appear in the output exactly at the position where they are
  in the text.
  This is an example image within a separate, horizontally centered paragraph:
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -19183,10 +18960,6 @@ Table
  have a line below them and the cells of the second row have a line above
  them.
  Here is an example table:
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -19479,10 +19252,6 @@ one
  and border settings affect only the multicolumn cell.
  Here is an example table with a multicolumn cell in the first row and one
  in the last row without the upper border:
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -19836,10 +19605,6 @@ First
 header
 \family default
 ; see the following longtable to see how it works:
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -22036,10 +21801,6 @@ To have multi-line entries in table cells, you have to declare a fixed width
  Your text is then automatically split into multiple lines and the cell
  is enlarged vertically when the length of the text exceeds the given width.
  An example:
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -23107,10 +22868,6 @@ Box
 .
  Right-clicking on the box label allows you to alter the width of the minipage
  and its alignment within the page.
-\begin_inset Separator parbreak
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
