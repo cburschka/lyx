@@ -1959,7 +1959,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 						user_preamble << "'>";
 					}
 				} else
-					user_preamble << u_preamble[n];
+					user_preamble.put(c);
 			}
 		} else
 			user_preamble << u_preamble;
