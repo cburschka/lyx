@@ -42,6 +42,8 @@ private:
 	///
 	bool neverIndent() const { return true; }
 	///
+	bool forceLocalFontSwitch() const { return true; }
+	///
 	InsetCode lyxCode() const { return CAPTION_CODE; }
 	///
 	void cursorPos(BufferView const & bv,
