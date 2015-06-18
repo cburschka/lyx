@@ -321,17 +321,10 @@ void GuiToolbar::add(ToolbarItem const & item)
 }
 
 
-void GuiToolbar::update(bool in_math, bool in_table, bool in_review, 
-	bool in_mathmacrotemplate, bool in_ipa)
+void GuiToolbar::update(int context)
 {
-	if (visibility_ & Toolbars::AUTO) {
-		bool show_it = (in_math && (visibility_ & Toolbars::MATH))
-			|| (in_table && (visibility_ & Toolbars::TABLE))
-			|| (in_review && (visibility_ & Toolbars::REVIEW))
-			|| (in_mathmacrotemplate && (visibility_ & Toolbars::MATHMACROTEMPLATE))
-			|| (in_ipa && (visibility_ & Toolbars::IPA));
-		setVisible(show_it);
-	}
+	if (visibility_ & Toolbars::AUTO)
+		setVisible(visibility_ & context & Toolbars::ALLOWAUTO);
 
 	// update visible toolbars only
 	if (!isVisible())

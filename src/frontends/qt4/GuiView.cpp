@@ -1534,24 +1534,25 @@ void GuiView::updateToolbars()
 {
 	ToolbarMap::iterator end = d.toolbars_.end();
 	if (d.current_work_area_) {
-		bool const math =
-			d.current_work_area_->bufferView().cursor().inMathed()
-			&& !d.current_work_area_->bufferView().cursor().inRegexped();
-		bool const table =
-			lyx::getStatus(FuncRequest(LFUN_LAYOUT_TABULAR)).enabled();
-		bool const review =
-			lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).enabled() &&
-			lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).onOff(true);
-		bool const mathmacrotemplate =
-			lyx::getStatus(FuncRequest(LFUN_IN_MATHMACROTEMPLATE)).enabled();
-		bool const ipa =
-			lyx::getStatus(FuncRequest(LFUN_IN_IPA)).enabled();
+		int context = 0;
+		if (d.current_work_area_->bufferView().cursor().inMathed()
+			&& !d.current_work_area_->bufferView().cursor().inRegexped())
+			context |= Toolbars::MATH;
+		if (lyx::getStatus(FuncRequest(LFUN_LAYOUT_TABULAR)).enabled())
+			context |= Toolbars::TABLE;
+		if (lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).enabled()
+			&& lyx::getStatus(FuncRequest(LFUN_CHANGES_TRACK)).onOff(true))
+			context |= Toolbars::REVIEW;
+		if (lyx::getStatus(FuncRequest(LFUN_IN_MATHMACROTEMPLATE)).enabled())
+			context |= Toolbars::MATHMACROTEMPLATE;
+		if (lyx::getStatus(FuncRequest(LFUN_IN_IPA)).enabled())
+			context |= Toolbars::IPA;
 
 		for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
-			it->second->update(math, table, review, mathmacrotemplate, ipa);
+			it->second->update(context);
 	} else
 		for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
-			it->second->update(false, false, false, false, false);
+			it->second->update();
 }
 
 
