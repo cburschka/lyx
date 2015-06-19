@@ -58,12 +58,13 @@ enum OpenEncoding {
 struct OutputState
 {
 	OutputState() : open_encoding_(none), cjk_inherited_(0),
-		        prev_env_language_(0)
+		        prev_env_language_(0), open_polyglossia_lang_("")
 	{
 	}
 	int open_encoding_;
 	int cjk_inherited_;
 	Language const * prev_env_language_;
+	string open_polyglossia_lang_;
 };
 
 
@@ -968,12 +969,17 @@ void TeXOnePar(Buffer const & buf,
 					unskip_newline = !localswitch;
 				}
 			} else if (!par_lang.empty()) {
-				os << from_ascii(subst(
-					lang_end_command,
-					"$$lang",
-					par_lang));
-				pending_newline = !localswitch;
-				unskip_newline = !localswitch;
+				// If we are in an environment, we have to close the language afterwards
+				if (style.isEnvironment())
+					state->open_polyglossia_lang_ = par_lang;
+				else {
+					os << from_ascii(subst(
+						lang_end_command,
+						"$$lang",
+						par_lang));
+					pending_newline = !localswitch;
+					unskip_newline = !localswitch;
+				}
 			}
 		}
 	}
@@ -1253,6 +1259,11 @@ void latexParagraphs(Buffer const & buf,
 	if (maintext && !is_child && state->open_encoding_ == CJK) {
 		os << "\\end{CJK}\n";
 		state->open_encoding_ = none;
+	}
+	// Likewise for polyglossia
+	if (maintext && !is_child && state->open_polyglossia_lang_ != "") {
+		os << "\\end{" << state->open_polyglossia_lang_ << "}\n";
+		state->open_polyglossia_lang_ = "";
 	}
 
 	// reset inherited encoding
