@@ -1,15 +1,17 @@
 # Hebrew docs do not currently work with LuaTeX
-export/.*/he/.*(pdf5|dvi3)_.*
+export/.*/he/(Intro|Tutorial|example).*(pdf5|dvi3)_.*
+export/.*/he/(splash).*(dvi3)_.*
 #
 # FIXME
 # After LyX 2.1 is released, apply the patch and remove these
 # See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
-export/.*/id/.*(pdf5|dvi3)_.*
+export/.*/id/.*(dvi3)_.*
+export/doc/id/UserGuide_pdf5_systemF
 #
 # FIXME
 # Similar to the Indonesian support, see:
 # http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
-export/.*/hu/.*(pdf5|dvi3)_.*
+export/.*/hu/.*(dvi3)_.*
 #
 export/.*/es/europeCV_pdf_texF
 #
@@ -30,7 +32,7 @@ export/examples/fa/splash_(pdf5|dvi3)_.*
 #
 # There is no non-TeX support for Ukrainian with LuaTeX. See:
 # https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181690.html
-export/doc/uk/Intro_(pdf5|dvi3)_systemF
+export/doc/uk/Intro_dvi3_systemF
 #
 # The following documents likely fail because of excessive preamble code that
 # is only targeted at (pdf)latex. TODO these .lyx files could be fixed. Although
@@ -50,10 +52,10 @@ export/doc/gl/Tutorial_dvi3_systemF
 export/doc/(nb|sk|sv)/Intro_pdf4_systemF
 export/examples/(aas_sample|simplecv)_pdf4_systemF
 export/examples/de/Lebenslauf_pdf4_systemF
-export/examples/es/ejemplo_con_lyx_pdf5_systemF
-export/examples/eu/adibide_lyx-atua_(dvi3|pdf5)_systemF
+#export/examples/es/ejemplo_con_lyx_pdf5_systemF
+export/examples/eu/adibide_lyx-atua_(dvi3)_systemF
 export/examples/fr/(Foils|ListesPuces|seminar|simplecv)_pdf4_systemF
-export/examples/gl/exemplo_lyxificado_(dvi3|pdf5)_systemF
+export/examples/gl/exemplo_lyxificado_(dvi3)_systemF
 export/examples/sr/Braille_pdf4_systemF
 export/examples/sr/splash_pdf4_systemF
 export/templates/RJournal_(dvi3|pdf[45])_systemF
