@@ -164,7 +164,9 @@
  {\setboolean{diagbox}{false}}
 
 % use normal list environments also in French documents
+\@ifpackageloaded{babel}{%
 \frenchbsetup{StandardLayout}
+}{}
 \end_preamble
 \options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames,table
 \use_default_options false

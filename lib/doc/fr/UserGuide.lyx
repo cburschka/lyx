@@ -55,7 +55,9 @@
 %\renewcommand*{\index}[1]{\OrgIndex{#1}}
 
 % use normal list environments also in French documents
+\@ifpackageloaded{babel}{%
 \frenchbsetup{StandardLayout}
+}{}
 \end_preamble
 \options refpage,intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading,numbers=noenddot
 \use_default_options false
@@ -8710,14 +8712,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8730,7 +8730,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
