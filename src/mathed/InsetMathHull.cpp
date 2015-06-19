@@ -647,6 +647,10 @@ void InsetMathHull::usedMacros(MathData const & md, DocIterator const & pos,
 			if (macros.find(name) == end)
 				continue;
 			macros.erase(name);
+			// Look for macros in the arguments of this macro.
+			for (idx_type idx = 0; idx < mi->nargs(); ++idx)
+				usedMacros(mi->cell(idx), pos, macros, defs);
+			// Look for macros in the definition of this macro.
 			MathData ar(pos.buffer());
 			MacroData const * data =
 				pos.buffer()->getMacro(name, pos, true);

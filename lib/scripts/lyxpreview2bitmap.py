@@ -160,7 +160,7 @@ def extract_metrics_info(dvipng_stdout):
 
 def fix_latex_file(latex_file, pdf_output):
     documentclass_re = re.compile("(\\\\documentclass\[)(1[012]pt,?)(.+)")
-    def_re = re.compile(r"(\\newcommandx|\\global\\long\\def)(\\[a-zA-Z])(.+)")
+    def_re = re.compile(r"(\\newcommandx|\\global\\long\\def)(\\[a-zA-Z]+)(.+)")
     usepackage_re = re.compile("\\\\usepackage")
     userpreamble_re = re.compile("User specified LaTeX commands")
     enduserpreamble_re = re.compile("\\\\makeatother")
