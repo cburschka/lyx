@@ -194,6 +194,8 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 	}
 
 	if (style.isEnvironment()) {
+		if (par_lang != doc_lang)
+			state->open_polyglossia_lang_ = par_lang;
 		os << "\\begin{" << from_ascii(style.latexname()) << '}';
 		if (!style.latexargs().empty()) {
 			OutputParams rp = runparams;
@@ -969,10 +971,8 @@ void TeXOnePar(Buffer const & buf,
 					unskip_newline = !localswitch;
 				}
 			} else if (!par_lang.empty()) {
-				// If we are in an environment, we have to close the language afterwards
-				if (style.isEnvironment())
-					state->open_polyglossia_lang_ = par_lang;
-				else {
+				// If we are in an environment, we have to close the "outer" language afterwards
+				if (!style.isEnvironment() || state->open_polyglossia_lang_ != par_lang) {
 					os << from_ascii(subst(
 						lang_end_command,
 						"$$lang",
