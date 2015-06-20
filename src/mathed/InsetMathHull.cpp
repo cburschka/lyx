@@ -640,6 +640,9 @@ void InsetMathHull::usedMacros(MathData const & md, DocIterator const & pos,
 		InsetMathGrid const * gi = md[i].nucleus()->asGridInset();
 		InsetMathNest const * ni = md[i].nucleus()->asNestInset();
 		if (mi) {
+			// Look for macros in the arguments of this macro.
+			for (idx_type idx = 0; idx < mi->nargs(); ++idx)
+				usedMacros(mi->cell(idx), pos, macros, defs);
 			// Make sure this is a macro defined in the document
 			// (as we also spot the macros in the symbols file)
 			// or that we have not already accounted for it.
@@ -647,9 +650,6 @@ void InsetMathHull::usedMacros(MathData const & md, DocIterator const & pos,
 			if (macros.find(name) == end)
 				continue;
 			macros.erase(name);
-			// Look for macros in the arguments of this macro.
-			for (idx_type idx = 0; idx < mi->nargs(); ++idx)
-				usedMacros(mi->cell(idx), pos, macros, defs);
 			// Look for macros in the definition of this macro.
 			MathData ar(pos.buffer());
 			MacroData const * data =
