@@ -37,6 +37,7 @@
 #include "LyXRC.h"
 #include "MacroTable.h"
 #include "MathMacro.h"
+#include "MathMacroTemplate.h"
 #include "output_xhtml.h"
 #include "Paragraph.h"
 #include "ParIterator.h"
@@ -635,6 +636,7 @@ void InsetMathHull::usedMacros(MathData const & md, DocIterator const & pos,
 
 	for (size_t i = 0; i < md.size(); ++i) {
 		MathMacro const * mi = md[i].nucleus()->asMacro();
+		MathMacroTemplate const * mt = md[i].nucleus()->asMacroTemplate();
 		InsetMathScript const * si = md[i].nucleus()->asScriptInset();
 		InsetMathFracBase const * fi = md[i].nucleus()->asFracBaseInset();
 		InsetMathGrid const * gi = md[i].nucleus()->asGridInset();
@@ -661,6 +663,10 @@ void InsetMathHull::usedMacros(MathData const & md, DocIterator const & pos,
 				defs.insert(macro_def.str());
 				asArray(data->definition(), ar);
 			}
+			usedMacros(ar, pos, macros, defs);
+		} else if (mt) {
+			MathData ar(pos.buffer());
+			asArray(mt->definition(), ar);
 			usedMacros(ar, pos, macros, defs);
 		} else if (si) {
 			if (!si->nuc().empty())

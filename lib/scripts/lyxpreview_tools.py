@@ -272,11 +272,13 @@ def write_metrics_info(metrics_info, metrics_file):
 # Reads a .tex files and create an identical file but only with
 # pages whose index is in pages_to_keep
 def filter_pages(source_path, destination_path, pages_to_keep):
+    def_re = re.compile(r"(\\newcommandx|\\renewcommandx|\\global\\long\\def)(\\[a-zA-Z]+)(.+)")
     source_file = open(source_path, "r")
     destination_file = open(destination_path, "w")
 
     page_index = 0
     skip_page = False
+    macros = []
     for line in source_file:
         # We found a new page
         if line.startswith("\\begin{preview}"):
@@ -285,6 +287,14 @@ def filter_pages(source_path, destination_path, pages_to_keep):
             skip_page = page_index not in pages_to_keep
 
         if not skip_page:
+            match = def_re.match(line)
+            if match != None:
+                definecmd = match.group(1)
+                macroname = match.group(2)
+                if not macroname in macros:
+                    macros.append(macroname)
+                    if definecmd == "\\renewcommandx":
+                        line = line.replace(definecmd, "\\newcommandx")
             destination_file.write(line)
 
         # End of a page, we reset the skip_page bool
