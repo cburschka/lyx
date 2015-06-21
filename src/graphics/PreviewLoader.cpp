@@ -450,6 +450,11 @@ PreviewLoader::Impl::preview(string const & latex_snippet) const
 void PreviewLoader::Impl::refreshPreviews()
 {
 	font_scaling_factor_ = int(buffer_.fontScalingFactor());
+	// Reschedule refresh until the previous process completed.
+	if (!finished_generating_) {
+		delay_refresh_->start(1000);
+		return;
+	}
 	Cache::const_iterator cit = cache_.begin();
 	Cache::const_iterator cend = cache_.end();
 	while (cit != cend)
