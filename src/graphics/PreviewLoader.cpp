@@ -254,6 +254,8 @@ private:
 	mutable int font_scaling_factor_;
 	///
 	QTimer * delay_refresh_;
+	///
+	bool finished_generating_;
 
 	/// We don't own this
 	static lyx::Converter const * pconverter_;
@@ -402,7 +404,7 @@ namespace lyx {
 namespace graphics {
 
 PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
-	: parent_(p), buffer_(b)
+	: parent_(p), buffer_(b), finished_generating_(true)
 {
 	font_scaling_factor_ = int(buffer_.fontScalingFactor());
 	if (!pconverter_)
@@ -437,8 +439,8 @@ PreviewLoader::Impl::preview(string const & latex_snippet) const
 		// has not been changed for about 1 second.
 		delay_refresh_->start(1000);
 	}
-	// Don't try to access the cache until we are finished.
-	if (delay_refresh_->isActive())
+	// Don't try to access the cache until we are done.
+	if (delay_refresh_->isActive() || !finished_generating_)
 		return 0;
 	Cache::const_iterator it = cache_.find(latex_snippet);
 	return (it == cache_.end()) ? 0 : it->second.get();
@@ -452,6 +454,7 @@ void PreviewLoader::Impl::refreshPreviews()
 	Cache::const_iterator cend = cache_.end();
 	while (cit != cend)
 		parent_.remove((cit++)->first);
+	finished_generating_ = false;
 	buffer_.updatePreviews();
 }
 
@@ -788,6 +791,7 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 	for (; nit != nend; ++nit) {
 		imageReady(*nit->get());
 	}
+	finished_generating_ = true;
 }
 
 
