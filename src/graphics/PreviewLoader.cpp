@@ -253,6 +253,8 @@ private:
 	mutable int font_scaling_factor_;
 	///
 	QTimer * delay_refresh_;
+	///
+	bool finished_generating_;
 
 	/// We don't own this
 	static lyx::Converter const * pconverter_;
@@ -401,7 +403,7 @@ namespace lyx {
 namespace graphics {
 
 PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
-	: parent_(p), buffer_(b)
+	: parent_(p), buffer_(b), finished_generating_(true)
 {
 	font_scaling_factor_ = buffer_.isExporting()
 		? int(75.0 * buffer_.params().html_math_img_scale)
@@ -441,7 +443,7 @@ PreviewLoader::Impl::preview(string const & latex_snippet) const
 		delay_refresh_->start(1000);
 	}
 	// Don't try to access the cache until we are done.
-	if (delay_refresh_->isActive())
+	if (delay_refresh_->isActive() || !finished_generating_)
 		return 0;
 	Cache::const_iterator it = cache_.find(latex_snippet);
 	return (it == cache_.end()) ? 0 : it->second.get();
@@ -453,10 +455,16 @@ void PreviewLoader::Impl::refreshPreviews()
 	font_scaling_factor_ = buffer_.isExporting()
 		? int(75.0 * buffer_.params().html_math_img_scale)
 		: int(0.01 * lyxrc.dpi * lyxrc.zoom * lyxrc.preview_scale_factor);
+	// Reschedule refresh until the previous process completed.
+	if (!finished_generating_) {
+		delay_refresh_->start(1000);
+		return;
+	}
 	Cache::const_iterator cit = cache_.begin();
 	Cache::const_iterator cend = cache_.end();
 	while (cit != cend)
 		parent_.remove((cit++)->first);
+	finished_generating_ = false;
 	buffer_.updatePreviews();
 }
 
@@ -751,6 +759,7 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 	for (; nit != nend; ++nit) {
 		imageReady(*nit->get());
 	}
+	finished_generating_ = true;
 }
 
 

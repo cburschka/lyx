@@ -160,59 +160,33 @@ def extract_metrics_info(dvipng_stdout):
 
 def fix_latex_file(latex_file, pdf_output):
     documentclass_re = re.compile("(\\\\documentclass\[)(1[012]pt,?)(.+)")
-    def_re = re.compile(r"(\\newcommandx|\\global\\long\\def)(\\[a-zA-Z])(.+)")
-    usepackage_re = re.compile("\\\\usepackage")
-    userpreamble_re = re.compile("User specified LaTeX commands")
-    enduserpreamble_re = re.compile("\\\\makeatother")
+    def_re = re.compile(r"(\\newcommandx|\\global\\long\\def)(\\[a-zA-Z]+)")
 
     tmp = mkstemp()
 
-    in_user_preamble = 0
-    usepkg = 0
-    changed = 0
+    changed = False
     macros = []
     for line in open(latex_file, 'r').readlines():
-        match = documentclass_re.match(line)
-        if match != None:
-            changed = 1
-            tmp.write("%s%s\n" % (match.group(1), match.group(3)))
-            continue
-
-        if not pdf_output and not usepkg:
-            if userpreamble_re.search(line) != None:
-                in_user_preamble = 1
-            elif enduserpreamble_re.search(line) != None:
-                in_user_preamble = 0
-            if usepackage_re.match(line) != None and in_user_preamble:
-                usepkg = 1
-                changed = 1
-                tmp.write("\\def\\t@a{microtype}\n")
-                tmp.write("\\let\\oldusepkg\\usepackage\n")
-                tmp.write("\\def\\usepackage{\\@ifnextchar[\\@usepkg{\\@usepkg[]}}\n")
-                tmp.write("\\def\\@usepkg[#1]#2{\\@ifnextchar[")
-                tmp.write("{\\@@usepkg[#1]{#2}}{\\@@usepkg[#1]{#2}[]}}\n")
-                tmp.write("\\def\@@usepkg[#1]#2[#3]{\\def\\t@b{#2}")
-                tmp.write("\\ifx\\t@a\\t@b\\else\\oldusepkg[#1]{#2}[#3]\\fi}\n")
-                tmp.write(line)
-                continue
-
-        match = def_re.match(line)
-        if match == None:
-            tmp.write(line)
-            continue
-
-        macroname = match.group(2)
-        if not macroname in macros:
-            macros.append(macroname)
-            tmp.write(line)
-            continue
-
-        definecmd = match.group(1)
-        if definecmd == "\\global\\long\\def":
-            tmp.write(line)
+        if line.startswith("\\documentclass"):
+            match = documentclass_re.match(line)
+            if match != None:
+                changed = True
+                line = match.group(1) + match.group(3) + "\n"
+            if not pdf_output:
+                changed = True
+                line += "\\PassOptionsToPackage{draft}{microtype}\n"
         else:
-            changed = 1
-            tmp.write("\\renewcommandx%s%s\n" % (match.group(2), match.group(3)))
+            match = def_re.match(line)
+            if match != None:
+                macroname = match.group(2)
+                if macroname in macros:
+                    definecmd = match.group(1)
+                    if definecmd == "\\newcommandx":
+                        changed = True
+                        line = line.replace(definecmd, "\\renewcommandx")
+                else:
+                    macros.append(macroname)
+        tmp.write(line)
 
     if changed:
         copyfileobj(tmp, open(latex_file,"wb"), 1)
