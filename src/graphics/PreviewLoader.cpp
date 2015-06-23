@@ -746,6 +746,7 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 	if (git == in_progress_.end()) {
 		lyxerr << "PreviewLoader::finishedGenerating(): unable to find "
 			"data for PID " << pid << endl;
+		finished_generating_ = true;
 		return;
 	}
 
@@ -754,8 +755,11 @@ void PreviewLoader::Impl::finishedGenerating(pid_t pid, int retval)
 	LYXERR(Debug::GRAPHICS, "PreviewLoader::finishedInProgress("
 				<< retval << "): processing " << status
 				<< " for " << command);
-	if (retval > 0)
+	if (retval > 0) {
+		in_progress_.erase(git);
+		finished_generating_ = true;
 		return;
+	}
 
 	// Read the metrics file, if it exists
 	vector<double> ascent_fractions(git->second.snippets.size());
