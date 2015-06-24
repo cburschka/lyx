@@ -203,6 +203,14 @@ MathMacro::MathMacro(MathMacro const & that)
 	: InsetMathNest(that), d(new Private(*that.d))
 {
 	d->updateChildren(this);
+	if (d->macro_ && lyxrc.preview == LyXRC::PREVIEW_ON) {
+		// We need to update d->macro_ by ourselves because in this case
+		// MathData::metrics() is not called when selecting a math inset
+		DocIterator const & pos = d->macroBackup_.pos();
+		d->macro_ = pos.buffer()->getMacro(name(), pos);
+		if (!d->macro_)
+			d->macro_ = &d->macroBackup_;
+	}
 }
 
 
@@ -213,6 +221,14 @@ MathMacro & MathMacro::operator=(MathMacro const & that)
 	InsetMathNest::operator=(that);
 	*d = *that.d;
 	d->updateChildren(this);
+	if (d->macro_ && lyxrc.preview == LyXRC::PREVIEW_ON) {
+		// We need to update d->macro_ by ourselves because in this case
+		// MathData::metrics() is not called when selecting a math inset
+		DocIterator const & pos = d->macroBackup_.pos();
+		d->macro_ = pos.buffer()->getMacro(name(), pos);
+		if (!d->macro_)
+			d->macro_ = &d->macroBackup_;
+	}
 	return *this;
 }
 

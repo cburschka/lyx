@@ -69,6 +69,8 @@ public:
 	char const * MathMLtype() const;
 	///
 	void setSymbol(latexkeys const * sym) { sym_ = sym; }
+	///
+	DocIterator const & pos() { return pos_; }
 
 	/// lock while being drawn to avoid recursions
 	int lock() const { return ++lockCount_; }
