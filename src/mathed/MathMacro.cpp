@@ -723,8 +723,21 @@ size_t MathMacro::appetite() const
 
 void MathMacro::validate(LaTeXFeatures & features) const
 {
+	// Immediately after a document is loaded, in some cases the MacroData
+	// of the global macros defined in the lib/symbols file may still not
+	// be known to the macro machinery because it will be set only after
+	// the first call to updateMacros(). This is not a problem unless
+	// instant preview is on for math, in which case we will be missing
+	// the corresponding requirements.
+	// In this case, we get the required info from the global macro table.
 	if (!d->requires_.empty())
 		features.require(d->requires_);
+	else if (!d->macro_) {
+		// Update requires for known global macros.
+		MacroData const * data = MacroTable::globalMacros().get(name());
+		if (data && !data->requires().empty())
+			features.require(data->requires());
+	}
 
 	if (name() == "binom")
 		features.require("binom");
