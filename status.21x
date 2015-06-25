@@ -146,6 +146,9 @@ What's new
 - Do not add paragraph break on environments with font change if the
   environments only have one paragraph (bug 9598).
 
+- Make sure to generate a preview for global macros when they appear
+  in a document containing only a single math inset.
+
 
 * LYX2LYX
 
