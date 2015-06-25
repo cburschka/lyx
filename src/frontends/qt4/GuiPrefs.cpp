@@ -2764,7 +2764,7 @@ void PrefEdit::update(LyXRC const & rc)
 	macroEditStyleCO->setCurrentIndex(rc.macro_edit_style);
 	cursorWidthSB->setValue(rc.cursor_width);
 	toggleScrollbarCB->setChecked(rc.full_screen_scrollbar);
-	toggleScrollbarCB->setChecked(rc.full_screen_statusbar);
+	toggleStatusbarCB->setChecked(rc.full_screen_statusbar);
 	toggleToolbarsCB->setChecked(rc.full_screen_toolbars);
 	toggleTabbarCB->setChecked(rc.full_screen_tabbar);
 	toggleMenubarCB->setChecked(rc.full_screen_menubar);
