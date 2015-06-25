@@ -176,6 +176,14 @@ void MathMacro::assign(MathMacro const & that)
 		if (p)
 			p->setOwner(this);
 	}
+	if (macro_ && lyxrc.preview == LyXRC::PREVIEW_ON) {
+		// We need to update macro_ by ourselves because in this case
+		// MathData::metrics() is not called when selecting a math inset
+		DocIterator const & pos = macroBackup_.pos();
+		macro_ = pos.buffer() ? pos.buffer()->getMacro(name(), pos) : 0;
+		if (!macro_)
+			macro_ = &macroBackup_;
+	}
 }
 
 
