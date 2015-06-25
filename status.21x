@@ -149,6 +149,9 @@ What's new
 - Make sure to generate a preview for global macros when they appear
   in a document containing only a single math inset.
 
+- Use the correct font size in previews also with document classes using
+  a special syntax for setting the size of fonts (such as powerdot).
+
 
 * LYX2LYX
 

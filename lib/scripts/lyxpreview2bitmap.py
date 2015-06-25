@@ -77,7 +77,7 @@
 
 import getopt, glob, os, re, shutil, string, sys
 
-from legacy_lyxpreview2ppm import legacy_conversion_step1
+from legacy_lyxpreview2ppm import extract_resolution, legacy_conversion_step1
 
 from lyxpreview_tools import bibtex_commands, check_latex_log, copyfileobj, \
      error, filter_pages, find_exe, find_exe_or_terminate, \
@@ -159,7 +159,6 @@ def extract_metrics_info(dvipng_stdout):
 
 
 def fix_latex_file(latex_file, pdf_output):
-    documentclass_re = re.compile("(\\\\documentclass\[)(1[012]pt,?)(.+)")
     def_re = re.compile(r"(\\newcommandx|\\global\\long\\def)(\\[a-zA-Z]+)")
 
     tmp = mkstemp()
@@ -167,14 +166,9 @@ def fix_latex_file(latex_file, pdf_output):
     changed = False
     macros = []
     for line in open(latex_file, 'r').readlines():
-        if line.startswith("\\documentclass"):
-            match = documentclass_re.match(line)
-            if match != None:
-                changed = True
-                line = match.group(1) + match.group(3) + "\n"
-            if not pdf_output:
-                changed = True
-                line += "\\PassOptionsToPackage{draft}{microtype}\n"
+        if not pdf_output and line.startswith("\\documentclass"):
+            changed = True
+            line += "\\PassOptionsToPackage{draft}{microtype}\n"
         else:
             match = def_re.match(line)
             if match != None:
@@ -406,8 +400,8 @@ def main(argv):
     progress("Preprocess through lilypond-book: %s" % lilypond)
     progress("Altering the latex file for font size and colors")
 
-    # Omit font size specification in latex file and make sure that multiple
-    # defined macros and the microtype package don't cause issues.
+    # Make sure that multiple defined macros and the microtype package
+    # don't cause issues in the latex file.
     fix_latex_file(latex_file, pdf_output)
 
     if lilypond:
@@ -452,9 +446,10 @@ def main(argv):
     # Compile the latex file.
     error_pages = []
     latex_status, latex_stdout = run_latex(latex, latex_file, bibtex)
+    latex_log = latex_file_re.sub(".log", latex_file)
     if latex_status:
         progress("Will try to recover from %s failure" % latex)
-        error_pages = check_latex_log(latex_file_re.sub(".log", latex_file))
+        error_pages = check_latex_log(latex_log)
 
     # The dvi output file name
     dvi_file = latex_file_re.sub(".dvi", latex_file)
@@ -490,9 +485,12 @@ def main(argv):
         return legacy_conversion_step1(latex_file, dpi, output_format, fg_color,
             bg_color, "pdflatex", True)
 
+    # Retrieve resolution
+    resolution = extract_resolution(latex_log, dpi)
+
     # Run the dvi file through dvipng.
     dvipng_call = '%s -Ttight -depth -height -D %d -fg "%s" -bg "%s" %s "%s"' \
-        % (dvipng, dpi, fg_color_dvipng, bg_color_dvipng, pages_parameter, dvi_file)
+        % (dvipng, resolution, fg_color_dvipng, bg_color_dvipng, pages_parameter, dvi_file)
     dvipng_status, dvipng_stdout = run_command(dvipng_call)
 
     if dvipng_status:
