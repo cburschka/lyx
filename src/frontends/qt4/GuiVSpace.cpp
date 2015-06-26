@@ -53,7 +53,10 @@ GuiVSpace::GuiVSpace(QWidget * parent) : InsetParamsWidget(parent)
 	connect(spacingCO, SIGNAL(activated(int)),
 		this, SLOT(enableCustom(int)));
 
-	valueLE->setValidator(unsignedGlueLengthValidator(valueLE));
+	// Set up a signed glue length validator
+	LengthValidator * v = new LengthValidator(valueLE);
+	v->setBottom(GlueLength());
+	valueLE->setValidator(v);
 
 	// initialize the length validator
 	addCheckedWidget(valueLE, valueL);

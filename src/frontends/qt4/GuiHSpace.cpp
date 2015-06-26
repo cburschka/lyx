@@ -81,10 +81,13 @@ GuiHSpace::GuiHSpace(bool math_mode, QWidget * parent)
 	connect(fillPatternCO, SIGNAL(activated(int)),
 		this, SLOT(changedSlot()));
 
+	// Set up a signed (glue) length validator
+	LengthValidator * v = new LengthValidator(valueLE);
 	if (math_mode_)
-		valueLE->setValidator(unsignedLengthValidator(valueLE));
+		v->setBottom(Length());
 	else
-		valueLE->setValidator(unsignedGlueLengthValidator(valueLE));
+		v->setBottom(GlueLength());
+	valueLE->setValidator(v);
 
 	// initialize the length validator
 	addCheckedWidget(valueLE, valueL);
