@@ -1407,6 +1407,10 @@ std::string formatFPNumber(double x)
 	os << std::fixed;
 	// Prevent outputs of 23.4200000000000017 but output small numbers
 	// with at least 6 significant digits.
+	bool const neg = x < 0;
+	// Treat all doubles as positive for the formatting
+	if (neg)
+		x = -x;
 	double const logarithm = log10(x);
 	os << std::setprecision(max(6 - static_cast<int>(round(logarithm)), 0)) << x;
 	string result = os.str();
@@ -1415,6 +1419,9 @@ std::string formatFPNumber(double x)
 		if (result[result.length()-1] == '.')
 			result = rtrim(result, ".");
 	}
+	// Re-add negativity
+	if (neg)
+		result = "-" + result;
 	return result;
 }
 
