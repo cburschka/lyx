@@ -310,11 +310,11 @@
       </item>
       <item row="3" column="0">
        <widget class="QCheckBox" name="OnlyMaths">
-        <property name="text">
-         <string>Search on&amp;ly in maths</string>
-        </property>
         <property name="toolTip">
          <string>Restrict search to math environments only</string>
+        </property>
+        <property name="text">
+         <string>Search on&amp;ly in maths</string>
         </property>
        </widget>
       </item>
