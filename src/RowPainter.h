@@ -63,22 +63,22 @@ public:
 
 	/// paint various parts
 	/// FIXME: transfer to TextMetrics
-	void paintAppendix();
-	void paintDepthBar();
-	void paintChangeBar();
-	void paintTooLargeMarks(bool const left, bool const right);
-	void paintFirst();
+	void paintAppendix() const;
+	void paintDepthBar() const;
+	void paintChangeBar() const;
+	void paintTooLargeMarks(bool const left, bool const right) const;
+	void paintFirst() const;
 	void paintLast();
 	void paintText();
 	void paintOnlyInsets();
-	void paintSelection();
+	void paintSelection() const;
 
 private:
 	void paintSeparator(double orig_x, double width, FontInfo const & font);
-	void paintForeignMark(double orig_x, Language const * lang, int desc = 0);
-	void paintMisspelledMark(double orig_x, bool changed);
+	void paintForeignMark(double orig_x, Language const * lang, int desc = 0) const;
+	void paintMisspelledMark(double orig_x, bool changed) const;
 	void paintChars(pos_type & vpos, Font const & font);
-	int paintAppendixStart(int y);
+	int paintAppendixStart(int y) const;
 	void paintFromPos(pos_type & vpos, bool changed);
 	void paintInset(Inset const * inset, pos_type const pos);
 	void paintInlineCompletion(Font const & font);
@@ -90,9 +90,9 @@ private:
 	FontInfo labelFont() const;
 
 	///
-	void paintLabel();
+	void paintLabel() const;
 	///
-	void paintTopLevelLabel();
+	void paintTopLevelLabel() const;
 
 
 	/// contains painting related information.
@@ -100,7 +100,7 @@ private:
 
 	/// Text for the row
 	Text const & text_;
-	TextMetrics & text_metrics_;
+	TextMetrics const & text_metrics_;
 	ParagraphList const & pars_;
 
 	/// The row to paint

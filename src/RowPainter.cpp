@@ -277,8 +277,7 @@ void RowPainter::paintSeparator(double orig_x, double width,
 }
 
 
-void RowPainter::paintForeignMark(double orig_x, Language const * lang,
-		int desc)
+void RowPainter::paintForeignMark(double orig_x, Language const * lang, int desc) const
 {
 	if (!lyxrc.mark_foreign_language)
 		return;
@@ -293,7 +292,7 @@ void RowPainter::paintForeignMark(double orig_x, Language const * lang,
 }
 
 
-void RowPainter::paintMisspelledMark(double orig_x, bool changed)
+void RowPainter::paintMisspelledMark(double orig_x, bool changed) const
 {
 	// if changed the misspelled marker gets placed slightly lower than normal
 	// to avoid drawing at the same vertical offset
@@ -336,7 +335,7 @@ void RowPainter::paintFromPos(pos_type & vpos, bool changed)
 }
 
 
-void RowPainter::paintChangeBar()
+void RowPainter::paintChangeBar() const
 {
 	pos_type const start = row_.pos();
 	pos_type end = row_.endpos();
@@ -358,7 +357,7 @@ void RowPainter::paintChangeBar()
 }
 
 
-void RowPainter::paintAppendix()
+void RowPainter::paintAppendix() const
 {
 	// only draw the appendix frame once (for the main text)
 	if (!par_.params().appendix() || !text_.isMainText())
@@ -374,7 +373,7 @@ void RowPainter::paintAppendix()
 }
 
 
-void RowPainter::paintDepthBar()
+void RowPainter::paintDepthBar() const
 {
 	depth_type const depth = par_.getDepth();
 
@@ -417,7 +416,7 @@ void RowPainter::paintDepthBar()
 }
 
 
-int RowPainter::paintAppendixStart(int y)
+int RowPainter::paintAppendixStart(int y) const
 {
 	FontInfo pb_font = sane_font;
 	pb_font.setColor(Color_appendix);
@@ -442,7 +441,7 @@ int RowPainter::paintAppendixStart(int y)
 }
 
 
-void RowPainter::paintTooLargeMarks(bool const left, bool const right)
+void RowPainter::paintTooLargeMarks(bool const left, bool const right) const
 {
 	if (left)
 		pi_.pain.line(int(dotted_line_thickness_), yo_ - row_.ascent(),
@@ -459,7 +458,7 @@ void RowPainter::paintTooLargeMarks(bool const left, bool const right)
 }
 
 
-void RowPainter::paintFirst()
+void RowPainter::paintFirst() const
 {
 	BufferParams const & bparams = pi_.base.bv->buffer().params();
 	Layout const & layout = par_.layout();
@@ -498,7 +497,7 @@ void RowPainter::paintFirst()
 }
 
 
-void RowPainter::paintLabel()
+void RowPainter::paintLabel() const
 {
 	docstring const str = par_.labelString();
 	if (str.empty())
@@ -522,7 +521,7 @@ void RowPainter::paintLabel()
 }
 
 
-void RowPainter::paintTopLevelLabel()
+void RowPainter::paintTopLevelLabel() const
 {
 	BufferParams const & bparams = pi_.base.bv->buffer().params();
 	bool const is_rtl = text_.isRTL(par_);
@@ -860,7 +859,7 @@ void RowPainter::paintText()
 }
 
 
-void RowPainter::paintSelection()
+void RowPainter::paintSelection() const
 {
 	if (!row_.selection())
 		return;
