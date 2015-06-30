@@ -22,6 +22,7 @@
 #include "MathSupport.h"
 
 #include "Buffer.h"
+#include "BufferList.h"
 #include "BufferView.h"
 #include "CoordCache.h"
 #include "Cursor.h"
@@ -207,7 +208,10 @@ MathMacro::MathMacro(MathMacro const & that)
 		// We need to update d->macro_ by ourselves because in this case
 		// MathData::metrics() is not called when selecting a math inset
 		DocIterator const & pos = d->macroBackup_.pos();
-		d->macro_ = pos.buffer() ? pos.buffer()->getMacro(name(), pos) : 0;
+		Buffer const * buf = pos.buffer();
+		if (buf && !theBufferList().isLoaded(buf))
+			buf = 0;
+		d->macro_ = buf ? buf->getMacro(name(), pos) : 0;
 		if (!d->macro_)
 			d->macro_ = &d->macroBackup_;
 	}
@@ -225,7 +229,10 @@ MathMacro & MathMacro::operator=(MathMacro const & that)
 		// We need to update d->macro_ by ourselves because in this case
 		// MathData::metrics() is not called when selecting a math inset
 		DocIterator const & pos = d->macroBackup_.pos();
-		d->macro_ = pos.buffer() ? pos.buffer()->getMacro(name(), pos) : 0;
+		Buffer const * buf = pos.buffer();
+		if (buf && !theBufferList().isLoaded(buf))
+			buf = 0;
+		d->macro_ = buf ? buf->getMacro(name(), pos) : 0;
 		if (!d->macro_)
 			d->macro_ = &d->macroBackup_;
 	}
