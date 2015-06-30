@@ -1386,7 +1386,7 @@ FuncStatus getStatus(FuncRequest const & action)
 }
 
 
-DispatchResult const & dispatch(FuncRequest const & action)
+void dispatch(FuncRequest const & action)
 {
 	LAPPERR(theApp());
 	return theApp()->dispatch(action);
@@ -1396,7 +1396,7 @@ DispatchResult const & dispatch(FuncRequest const & action)
 void dispatch(FuncRequest const & action, DispatchResult & dr)
 {
 	LAPPERR(theApp());
-	theApp()->dispatch(action, dr);
+	return theApp()->dispatch(action, dr);
 }
 
 

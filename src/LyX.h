@@ -135,7 +135,7 @@ private:
 	bool first_start;
 
 	friend FuncStatus getStatus(FuncRequest const & action);
-	friend DispatchResult const & dispatch(FuncRequest const & action);
+	friend void dispatch(FuncRequest const & action);
 	friend void dispatch(FuncRequest const & action, DispatchResult & dr);
 	friend std::vector<std::string> & theFilesToLoad();
 	friend BufferList & theBufferList();
@@ -175,7 +175,7 @@ void execBatchCommands();
 FuncStatus getStatus(FuncRequest const & action);
 
 ///
-DispatchResult const & dispatch(FuncRequest const & action);
+void dispatch(FuncRequest const & action);
 
 ///
 void dispatch(FuncRequest const & action, DispatchResult & dr);

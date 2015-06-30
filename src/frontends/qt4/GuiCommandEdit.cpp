@@ -45,6 +45,14 @@ void GuiCommandEdit::keyPressEvent(QKeyEvent * e)
 		downPressed();
 		break;
 
+	case Qt::Key_X:
+		if (e->modifiers() == Qt::AltModifier
+		   || e->modifiers() == Qt::MetaModifier) {
+			// emit signal
+			hidePressed();
+			break;
+		}
+
 	default:
 		QLineEdit::keyPressEvent(e);
 		break;

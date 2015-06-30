@@ -348,8 +348,6 @@ void Toolbars::readToolbarSettings(Lexer & lex)
 				flag = MATHMACROTEMPLATE;
 			else if (!compare_ascii_no_case(*cit, "review"))
 				flag = REVIEW;
-			else if (!compare_ascii_no_case(*cit, "minibuffer"))
-				flag = MINIBUFFER;
 			else if (!compare_ascii_no_case(*cit, "top"))
 				flag = TOP;
 			else if (!compare_ascii_no_case(*cit, "bottom"))

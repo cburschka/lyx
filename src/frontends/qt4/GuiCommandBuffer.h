@@ -24,9 +24,6 @@
 class QListWidgetItem;
 
 namespace lyx {
-
-class DispatchResult;
-
 namespace frontend {
 
 class GuiView;
@@ -40,6 +37,8 @@ public:
 	GuiCommandBuffer(GuiView * view);
 
 public Q_SLOTS:
+	/// cancel command compose
+	void cancel();
 	/// dispatch a command
 	void dispatch();
 	/// tab-complete
@@ -68,6 +67,9 @@ private:
 	/// return the font and depth in the active BufferView as a message.
 	docstring const getCurrentState() const;
 
+	/// hide the command buffer.
+	void hide() const;
+
 	/// open a listbox and show the contents of the list. When reversed
 	/// is true, the contents of the list is filled bottom-up.
 	void showList(std::vector<std::string> const & list, 
@@ -78,7 +80,7 @@ private:
 					      std::string & new_prefix);
 
 	/// dispatch a command
-	DispatchResult const & dispatch(std::string const & str);
+	void dispatch(std::string const & str);
 
 	/// available command names
 	std::vector<std::string> commands_;

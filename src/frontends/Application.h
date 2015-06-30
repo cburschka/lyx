@@ -177,7 +177,7 @@ public:
 	/// Every user command is processed here, either invocated from
 	/// keyboard or from the GUI. All GUI objects, including buttons and
 	/// menus should use this class and never call kernel functions directly.
-	virtual DispatchResult const & dispatch(FuncRequest const &) = 0;
+	virtual void dispatch(FuncRequest const &) = 0;
 
 	/// LyX dispatcher: executes lyx actions and returns result.
 	virtual void dispatch(FuncRequest const &, DispatchResult & dr) = 0;

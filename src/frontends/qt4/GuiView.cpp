@@ -508,8 +508,7 @@ QSet<Buffer const *> GuiView::GuiViewPrivate::busyBuffers;
 
 
 GuiView::GuiView(int id)
-	: d(*new GuiViewPrivate(this)), id_(id), closing_(false), busy_(0),
-	  command_execute_(false)
+	: d(*new GuiViewPrivate(this)), id_(id), closing_(false), busy_(0)
 {
 	// GuiToolbars *must* be initialised before the menu bar.
 	normalSizedIcons(); // at least on Mac the default is 32 otherwise, which is huge
@@ -1344,13 +1343,6 @@ void GuiView::setBusy(bool busy)
 }
 
 
-void GuiView::resetCommandExecute()
-{
-	command_execute_ = false;
-	updateToolbars();
-}
-
-
 double GuiView::pixelRatio() const
 {
 #if QT_VERSION >= 0x050000
@@ -1555,8 +1547,6 @@ void GuiView::updateToolbars()
 			context |= Toolbars::MATHMACROTEMPLATE;
 		if (lyx::getStatus(FuncRequest(LFUN_IN_IPA)).enabled())
 			context |= Toolbars::IPA;
-		if (command_execute_)
-			context |= Toolbars::MINIBUFFER;
 
 		for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
 			it->second->update(context);
@@ -3634,7 +3624,14 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 
 		case LFUN_COMMAND_EXECUTE: {
-			command_execute_ = true;
+			bool const show_it = cmd.argument() != "off";
+			// FIXME: this is a hack, "minibuffer" should not be
+			// hardcoded.
+			if (GuiToolbar * t = toolbar("minibuffer")) {
+				t->setVisible(show_it);
+				if (show_it && t->commandBuffer())
+					t->commandBuffer()->setFocus();
+			}
 			break;
 		}
 		case LFUN_DROP_LAYOUTS_CHOICE:

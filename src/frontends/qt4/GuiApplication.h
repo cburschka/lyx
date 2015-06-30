@@ -62,7 +62,7 @@ public:
 
 	/// \name Methods inherited from Application class
 	//@{
-	DispatchResult const & dispatch(FuncRequest const &);
+	void dispatch(FuncRequest const &);
 	void dispatch(FuncRequest const &, DispatchResult & dr);
 	FuncStatus getStatus(FuncRequest const & cmd) const;
 	void restoreGuiSession();

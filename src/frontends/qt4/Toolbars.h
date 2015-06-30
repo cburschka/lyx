@@ -110,8 +110,7 @@ public:
 		MATHMACROTEMPLATE = 1024, //< show in math macro template
 		SAMEROW = 2048, //place to the current row, no new line
 		IPA = 4096, //< show when in IPA inset
-		MINIBUFFER = 8192, //< show when command-execute has been invoked
-		ALLOWAUTO = MATH | TABLE | REVIEW | MATHMACROTEMPLATE | IPA | MINIBUFFER
+		ALLOWAUTO = MATH | TABLE | REVIEW | MATHMACROTEMPLATE | IPA
 	};
 
 	typedef std::vector<ToolbarInfo> Infos;

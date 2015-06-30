@@ -965,9 +965,6 @@ struct GuiApplication::Private
 	///
 	KeyModifier meta_fake_bit;
 
-	/// The result of last dispatch action
-	DispatchResult dispatch_result_;
-
 	/// Multiple views container.
 	/**
 	* Warning: This must not be a smart pointer as the destruction of the
@@ -1375,7 +1372,7 @@ static docstring makeDispatchMessage(docstring const & msg,
 }
 
 
-DispatchResult const & GuiApplication::dispatch(FuncRequest const & cmd)
+void GuiApplication::dispatch(FuncRequest const & cmd)
 {
 	Buffer * buffer = 0;
 	if (current_view_ && current_view_->currentBufferView()) {
@@ -1395,9 +1392,6 @@ DispatchResult const & GuiApplication::dispatch(FuncRequest const & cmd)
 	// the buffer may have been closed by one action
 	if (theBufferList().isLoaded(buffer))
 		buffer->undo().endUndoGroup();
-
-	d->dispatch_result_ = dr;
-	return d->dispatch_result_;
 }
 
 
