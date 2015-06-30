@@ -192,6 +192,18 @@ void MathMacro::Private::updateChildren(MathMacro * owner)
 		if (p)
 			p->setOwner(owner);
 	}
+
+	if (macro_ && lyxrc.preview == LyXRC::PREVIEW_ON) {
+		// We need to update macro_ by ourselves because in this case
+		// MathData::metrics() is not called when selecting a math inset
+		DocIterator const & pos = macroBackup_.pos();
+		Buffer const * buf = pos.buffer();
+		if (buf && !theBufferList().isLoaded(buf))
+			buf = 0;
+		macro_ = buf ? buf->getMacro(owner->name(), pos) : 0;
+		if (!macro_)
+			macro_ = &macroBackup_;
+	}
 }
 
 
@@ -204,17 +216,6 @@ MathMacro::MathMacro(MathMacro const & that)
 	: InsetMathNest(that), d(new Private(*that.d))
 {
 	d->updateChildren(this);
-	if (d->macro_ && lyxrc.preview == LyXRC::PREVIEW_ON) {
-		// We need to update d->macro_ by ourselves because in this case
-		// MathData::metrics() is not called when selecting a math inset
-		DocIterator const & pos = d->macroBackup_.pos();
-		Buffer const * buf = pos.buffer();
-		if (buf && !theBufferList().isLoaded(buf))
-			buf = 0;
-		d->macro_ = buf ? buf->getMacro(name(), pos) : 0;
-		if (!d->macro_)
-			d->macro_ = &d->macroBackup_;
-	}
 }
 
 
@@ -225,17 +226,6 @@ MathMacro & MathMacro::operator=(MathMacro const & that)
 	InsetMathNest::operator=(that);
 	*d = *that.d;
 	d->updateChildren(this);
-	if (d->macro_ && lyxrc.preview == LyXRC::PREVIEW_ON) {
-		// We need to update d->macro_ by ourselves because in this case
-		// MathData::metrics() is not called when selecting a math inset
-		DocIterator const & pos = d->macroBackup_.pos();
-		Buffer const * buf = pos.buffer();
-		if (buf && !theBufferList().isLoaded(buf))
-			buf = 0;
-		d->macro_ = buf ? buf->getMacro(name(), pos) : 0;
-		if (!d->macro_)
-			d->macro_ = &d->macroBackup_;
-	}
 	return *this;
 }
 
