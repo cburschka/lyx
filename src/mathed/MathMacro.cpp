@@ -22,6 +22,7 @@
 #include "MathSupport.h"
 
 #include "Buffer.h"
+#include "BufferList.h"
 #include "BufferView.h"
 #include "CoordCache.h"
 #include "Cursor.h"
@@ -180,7 +181,10 @@ void MathMacro::assign(MathMacro const & that)
 		// We need to update macro_ by ourselves because in this case
 		// MathData::metrics() is not called when selecting a math inset
 		DocIterator const & pos = macroBackup_.pos();
-		macro_ = pos.buffer() ? pos.buffer()->getMacro(name(), pos) : 0;
+		Buffer const * buf = pos.buffer();
+		if (buf && !theBufferList().isLoaded(buf))
+			buf = 0;
+		macro_ = buf ? buf->getMacro(name(), pos) : 0;
 		if (!macro_)
 			macro_ = &macroBackup_;
 	}
