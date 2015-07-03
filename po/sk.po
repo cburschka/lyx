@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-05-31 12:52+0200\n"
+"POT-Creation-Date: 2015-07-03 12:04-0400\n"
 "PO-Revision-Date: 2015-06-02 07:30+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
@@ -1259,8 +1259,8 @@ msgstr "Vstup"
 msgid "Verbatim"
 msgstr "Doslovne (Verbatim)"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1205
-#: src/insets/InsetInclude.cpp:1211
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1207
+#: src/insets/InsetInclude.cpp:1213
 msgid "Program Listing"
 msgstr "Výpis Zdrojového Kódu"
 
@@ -8874,7 +8874,7 @@ msgstr "Telefón odosielateľa:"
 #: lib/layouts/scrlttr2.layout:195 lib/layouts/europecv.layout:93
 #: lib/layouts/achemso.layout:128 lib/layouts/moderncv.layout:137
 #: lib/layouts/lettre.layout:42 lib/layouts/lettre.layout:343
-#: lib/configure.py:691
+#: lib/configure.py:693
 msgid "Fax"
 msgstr "Fax"
 
@@ -10063,7 +10063,7 @@ msgid "Altaffilation"
 msgstr "Alt. príslušenstvo"
 
 #: lib/layouts/aastex.layout:179 lib/layouts/agutex.layout:124
-#: src/mathed/InsetMathHull.cpp:1435 src/mathed/InsetMathHull.cpp:1444
+#: src/mathed/InsetMathHull.cpp:1499 src/mathed/InsetMathHull.cpp:1508
 msgid "Number"
 msgstr "Číslo"
 
@@ -13327,7 +13327,7 @@ msgstr "silný dôraz"
 msgid "code"
 msgstr "kód"
 
-#: lib/layouts/knitr.module:2 lib/configure.py:616
+#: lib/layouts/knitr.module:2 lib/configure.py:618
 msgid "Rnw (knitr)"
 msgstr "Rnw (knitr)"
 
@@ -14300,7 +14300,7 @@ msgstr "Tablo"
 msgid "List of Tableaux"
 msgstr "Zoznam Tablou"
 
-#: lib/layouts/sweave.module:2 lib/configure.py:614
+#: lib/layouts/sweave.module:2 lib/configure.py:616
 msgid "Sweave"
 msgstr "Sweave"
 
@@ -15481,12 +15481,12 @@ msgid "Redo|R"
 msgstr "Opakovať|O"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1278 src/mathed/InsetMathNest.cpp:598
+#: src/Text3.cpp:1277 src/mathed/InsetMathNest.cpp:598
 msgid "Cut"
 msgstr "Vystrihnúť"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1283 src/mathed/InsetMathNest.cpp:607
+#: src/Text3.cpp:1282 src/mathed/InsetMathNest.cpp:607
 msgid "Copy"
 msgstr "Kopírovať"
 
@@ -16648,7 +16648,7 @@ msgstr "PDF forms|o"
 msgid "Risk and Safety Statements|R"
 msgstr "Rizikové a Poistné Príkazy|R"
 
-#: lib/ui/stdmenus.inc:613 lib/configure.py:614
+#: lib/ui/stdmenus.inc:613 lib/configure.py:616
 msgid "Sweave|S"
 msgstr "Sweave|S"
 
@@ -21893,425 +21893,425 @@ msgstr "Dia diagram"
 msgid "Dia diagram.\n"
 msgstr "Diagram programu Dia.\n"
 
-#: lib/configure.py:567
+#: lib/configure.py:569
 msgid "tgo"
 msgstr "tgo"
 
-#: lib/configure.py:567
+#: lib/configure.py:569
 msgid "tgo|Tgif"
 msgstr "tgo|Tgif"
 
-#: lib/configure.py:570
+#: lib/configure.py:572
 msgid "FIG"
 msgstr "FIG"
 
-#: lib/configure.py:573
+#: lib/configure.py:575
 msgid "DIA"
 msgstr "DIA"
 
-#: lib/configure.py:576
+#: lib/configure.py:578
 msgid "sxd"
 msgstr "sxd"
 
-#: lib/configure.py:576
+#: lib/configure.py:578
 msgid "sxd|OpenOffice"
 msgstr "sxd|OpenOffice"
 
-#: lib/configure.py:579
+#: lib/configure.py:581
 msgid "Grace"
 msgstr "Grace"
 
-#: lib/configure.py:582
+#: lib/configure.py:584
 msgid "FEN"
 msgstr "FEN"
 
-#: lib/configure.py:585
+#: lib/configure.py:587
 msgid "SVG"
 msgstr "SVG"
 
-#: lib/configure.py:587
+#: lib/configure.py:589
 msgid "BMP"
 msgstr "BMP"
 
-#: lib/configure.py:588
+#: lib/configure.py:590
 msgid "GIF"
 msgstr "GIF"
 
-#: lib/configure.py:589
+#: lib/configure.py:591
 msgid "jpeg"
 msgstr "jpeg"
 
-#: lib/configure.py:589
+#: lib/configure.py:591
 msgid "jpeg|JPEG"
 msgstr "jpeg|JPEG"
 
-#: lib/configure.py:590
+#: lib/configure.py:592
 msgid "PBM"
 msgstr "PBM"
 
-#: lib/configure.py:591
+#: lib/configure.py:593
 msgid "PGM"
 msgstr "PGM"
 
-#: lib/configure.py:592 src/frontends/qt4/GuiClipboard.cpp:175
+#: lib/configure.py:594 src/frontends/qt4/GuiClipboard.cpp:175
 msgid "PNG"
 msgstr "PNG"
 
-#: lib/configure.py:593
+#: lib/configure.py:595
 msgid "PPM"
 msgstr "PPM"
 
-#: lib/configure.py:594
+#: lib/configure.py:596
 msgid "TIFF"
 msgstr "TIFF"
 
-#: lib/configure.py:595
+#: lib/configure.py:597
 msgid "XBM"
 msgstr "XBM"
 
-#: lib/configure.py:596
+#: lib/configure.py:598
 msgid "XPM"
 msgstr "XPM"
 
-#: lib/configure.py:604
+#: lib/configure.py:606
 msgid "Plain text (chess output)"
 msgstr "Prostý text (šachy)"
 
-#: lib/configure.py:605
+#: lib/configure.py:607
 msgid "Plain text (image)"
 msgstr "Prostý text (obrázok)"
 
-#: lib/configure.py:606
+#: lib/configure.py:608
 msgid "Plain text (Xfig output)"
 msgstr "Prostý text (Xfig výstup)"
 
-#: lib/configure.py:607
+#: lib/configure.py:609
 msgid "date (output)"
 msgstr "dátum (výstup)"
 
-#: lib/configure.py:608 src/frontends/qt4/GuiDocument.cpp:1273
+#: lib/configure.py:610 src/frontends/qt4/GuiDocument.cpp:1273
 #: src/frontends/qt4/GuiErrorList.cpp:42
 msgid "DocBook"
 msgstr "DocBook"
 
-#: lib/configure.py:608
+#: lib/configure.py:610
 msgid "DocBook|B"
 msgstr "DocBook"
 
-#: lib/configure.py:609
+#: lib/configure.py:611
 msgid "DocBook (XML)"
 msgstr "DocBook (XML)"
 
-#: lib/configure.py:610
+#: lib/configure.py:612
 msgid "Graphviz Dot"
 msgstr "Graphviz Dot"
 
-#: lib/configure.py:611
+#: lib/configure.py:613
 msgid "LaTeX (dviluatex)"
 msgstr "LaTeX (dviluatex)"
 
-#: lib/configure.py:612
+#: lib/configure.py:614
 msgid "LaTeX (pLaTeX)"
 msgstr "LaTeX (pLaTeX)"
 
-#: lib/configure.py:613
+#: lib/configure.py:615
 msgid "NoWeb"
 msgstr "NoWeb"
 
-#: lib/configure.py:613
+#: lib/configure.py:615
 msgid "NoWeb|N"
 msgstr "NoWeb"
 
-#: lib/configure.py:615
+#: lib/configure.py:617
 msgid "R/S code"
 msgstr "R/S kód"
 
-#: lib/configure.py:617
+#: lib/configure.py:619
 msgid "LilyPond music"
 msgstr "LilyPond nóty"
 
-#: lib/configure.py:618
+#: lib/configure.py:620
 msgid "LilyPond book (LaTeX)"
 msgstr "LilyPond Kniha (LaTeX)"
 
-#: lib/configure.py:619
+#: lib/configure.py:621
 msgid "LaTeX (plain)"
 msgstr "LaTeX (prostý)"
 
-#: lib/configure.py:619
+#: lib/configure.py:621
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX (prostý)"
 
-#: lib/configure.py:620
+#: lib/configure.py:622
 msgid "LaTeX (LuaTeX)"
 msgstr "LaTeX (LuaTeX)"
 
-#: lib/configure.py:621
+#: lib/configure.py:623
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
-#: lib/configure.py:622
+#: lib/configure.py:624
 msgid "LaTeX (XeTeX)"
 msgstr "LaTeX (XeTeX)"
 
-#: lib/configure.py:623
+#: lib/configure.py:625
 msgid "LaTeX (clipboard)"
 msgstr "LaTeX (schránka)"
 
-#: lib/configure.py:624
+#: lib/configure.py:626
 msgid "Plain text"
 msgstr "Prostý text"
 
-#: lib/configure.py:624
+#: lib/configure.py:626
 msgid "Plain text|a"
 msgstr "Prostý text"
 
-#: lib/configure.py:625
+#: lib/configure.py:627
 msgid "Plain text (pstotext)"
 msgstr "Prostý text (pstotext)"
 
-#: lib/configure.py:626
+#: lib/configure.py:628
 msgid "Plain text (ps2ascii)"
 msgstr "Prostý text (ps2ascii)"
 
-#: lib/configure.py:627
+#: lib/configure.py:629
 msgid "Plain text (catdvi)"
 msgstr "Prostý text (catdvi)"
 
-#: lib/configure.py:628
+#: lib/configure.py:630
 msgid "Plain Text, Join Lines"
 msgstr "Prostý text, riadky spojiť"
 
-#: lib/configure.py:629
+#: lib/configure.py:631
 msgid "Info (Beamer)"
 msgstr "Info (Beamer)"
 
-#: lib/configure.py:632
+#: lib/configure.py:634
 msgid "Gnumeric spreadsheet"
 msgstr "Gnumeric tabuľkový procesor"
 
-#: lib/configure.py:633
+#: lib/configure.py:635
 msgid "Excel spreadsheet"
 msgstr "Excel tabuľkový procesor"
 
-#: lib/configure.py:634
+#: lib/configure.py:636
 msgid "OpenOffice spreadsheet"
 msgstr "OpenOffice tabuľkový procesor"
 
-#: lib/configure.py:637
+#: lib/configure.py:639
 msgid "LyXHTML"
 msgstr "LyXHTML"
 
-#: lib/configure.py:637
+#: lib/configure.py:639
 msgid "LyXHTML|y"
 msgstr "LyXHTML"
 
-#: lib/configure.py:645 src/frontends/qt4/GuiLog.cpp:232
+#: lib/configure.py:647 src/frontends/qt4/GuiLog.cpp:232
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: lib/configure.py:650
+#: lib/configure.py:652
 msgid "EPS"
 msgstr "EPS"
 
-#: lib/configure.py:651
+#: lib/configure.py:653
 msgid "EPS (uncropped)"
 msgstr "EPS (neorezaný)"
 
-#: lib/configure.py:652
+#: lib/configure.py:654
 msgid "EPS (cropped)"
 msgstr "EPS (orezaný)"
 
-#: lib/configure.py:653
+#: lib/configure.py:655
 msgid "Postscript"
 msgstr "Postscript"
 
-#: lib/configure.py:653
+#: lib/configure.py:655
 msgid "Postscript|t"
 msgstr "Postscript"
 
-#: lib/configure.py:658
+#: lib/configure.py:660
 msgid "PDF (ps2pdf)"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:658
+#: lib/configure.py:660
 msgid "PDF (ps2pdf)|P"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:659
+#: lib/configure.py:661
 msgid "PDF (pdflatex)"
 msgstr "PDF (pdflatex)"
 
-#: lib/configure.py:659
+#: lib/configure.py:661
 msgid "PDF (pdflatex)|F"
 msgstr "PDF (pdflatex)"
 
-#: lib/configure.py:660
+#: lib/configure.py:662
 msgid "PDF (dvipdfm)"
 msgstr "PDF (dvipdfm)"
 
-#: lib/configure.py:660
+#: lib/configure.py:662
 msgid "PDF (dvipdfm)|m"
 msgstr "PDF (dvipdfm)"
 
-#: lib/configure.py:661
+#: lib/configure.py:663
 msgid "PDF (XeTeX)"
 msgstr "PDF (XeTeX)"
 
-#: lib/configure.py:661
+#: lib/configure.py:663
 msgid "PDF (XeTeX)|X"
 msgstr "PDF (XeTeX)|X"
 
-#: lib/configure.py:662
+#: lib/configure.py:664
 msgid "PDF (LuaTeX)"
 msgstr "PDF (LuaTeX)"
 
-#: lib/configure.py:662
+#: lib/configure.py:664
 msgid "PDF (LuaTeX)|u"
 msgstr "PDF (LuaTeX)|u"
 
-#: lib/configure.py:663
+#: lib/configure.py:665
 msgid "PDF (graphics)"
 msgstr "PDF (grafika)"
 
-#: lib/configure.py:664
+#: lib/configure.py:666
 msgid "PDF (cropped)"
 msgstr "PDF (orezaný)"
 
-#: lib/configure.py:665
+#: lib/configure.py:667
 msgid "PDF (lower resolution)"
 msgstr "PDF (nízke rozlišovanie)"
 
-#: lib/configure.py:668
+#: lib/configure.py:670
 msgid "DVI"
 msgstr "DVI"
 
-#: lib/configure.py:668
+#: lib/configure.py:670
 msgid "DVI|D"
 msgstr "DVI"
 
-#: lib/configure.py:669
+#: lib/configure.py:671
 msgid "DVI (LuaTeX)"
 msgstr "DVI (LuaTeX)"
 
-#: lib/configure.py:669
+#: lib/configure.py:671
 msgid "DVI (LuaTeX)|V"
 msgstr "DVI (LuaTeX)|V"
 
-#: lib/configure.py:672
+#: lib/configure.py:674
 msgid "DraftDVI"
 msgstr "DraftDVI"
 
-#: lib/configure.py:675 lib/configure.py:707
+#: lib/configure.py:677 lib/configure.py:709
 msgid "htm"
 msgstr "htm"
 
-#: lib/configure.py:675 lib/configure.py:707
+#: lib/configure.py:677 lib/configure.py:709
 msgid "htm|HTML"
 msgstr "htm|HTML"
 
-#: lib/configure.py:678
+#: lib/configure.py:680
 msgid "Noteedit"
 msgstr "Noteedit"
 
-#: lib/configure.py:681
+#: lib/configure.py:683
 msgid "OpenDocument"
 msgstr "OpenDocument"
 
-#: lib/configure.py:682
+#: lib/configure.py:684
 msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.Org (sxw)"
 
-#: lib/configure.py:685
+#: lib/configure.py:687
 msgid "Rich Text Format"
 msgstr "Rich Text Format"
 
-#: lib/configure.py:686
+#: lib/configure.py:688
 msgid "MS Word"
 msgstr "MS Word"
 
-#: lib/configure.py:686
+#: lib/configure.py:688
 msgid "MS Word|W"
 msgstr "MS Word"
 
-#: lib/configure.py:689
+#: lib/configure.py:691
 msgid "date command"
 msgstr "príkaz pre dátum"
 
-#: lib/configure.py:690
+#: lib/configure.py:692
 msgid "Table (CSV)"
 msgstr "Tabuľka (CSV)"
 
-#: lib/configure.py:692 src/frontends/qt4/GuiView.cpp:1167
+#: lib/configure.py:694 src/frontends/qt4/GuiView.cpp:1167
 #: src/frontends/qt4/GuiView.cpp:1168 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:693
+#: lib/configure.py:695
 msgid "LyX 1.3.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:694
+#: lib/configure.py:696
 msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
-#: lib/configure.py:695
+#: lib/configure.py:697
 msgid "LyX 1.5.x"
 msgstr "LyX 1.5.x"
 
-#: lib/configure.py:696
+#: lib/configure.py:698
 msgid "LyX 1.6.x"
 msgstr "LyX 1.6.x"
 
-#: lib/configure.py:697
+#: lib/configure.py:699
 msgid "LyX 2.0.x"
 msgstr "LyX 2.0.x"
 
-#: lib/configure.py:698
+#: lib/configure.py:700
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
-#: lib/configure.py:699
+#: lib/configure.py:701
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:700
+#: lib/configure.py:702
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:701
+#: lib/configure.py:703
 msgid "LyX Preview"
 msgstr "Náhľad LyX"
 
-#: lib/configure.py:702
+#: lib/configure.py:704
 msgid "PDFTEX"
 msgstr "PDFTEX"
 
-#: lib/configure.py:703
+#: lib/configure.py:705
 msgid "Program"
 msgstr "Program"
 
-#: lib/configure.py:704
+#: lib/configure.py:706
 msgid "PSTEX"
 msgstr "PSTEX"
 
-#: lib/configure.py:705 src/frontends/qt4/GuiClipboard.cpp:172
+#: lib/configure.py:707 src/frontends/qt4/GuiClipboard.cpp:172
 msgid "Windows Metafile"
 msgstr "Windows Metafile"
 
-#: lib/configure.py:706 src/frontends/qt4/GuiClipboard.cpp:171
+#: lib/configure.py:708 src/frontends/qt4/GuiClipboard.cpp:171
 msgid "Enhanced Metafile"
 msgstr "Rozšírený WMF"
 
-#: lib/configure.py:813
+#: lib/configure.py:815
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
 
-#: lib/configure.py:1026
+#: lib/configure.py:1028
 msgid "LyX Archive (zip)"
 msgstr "LyX Archív (zip)"
 
-#: lib/configure.py:1029
+#: lib/configure.py:1031
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX Archív (tar.gz)"
 
@@ -25093,23 +25093,23 @@ msgstr "Už v postupe pre regulárny výraz"
 msgid "Regexp editor mode"
 msgstr "Režim editoru pre regulárny výraz"
 
-#: src/Text3.cpp:1343
+#: src/Text3.cpp:1342
 msgid "Layout "
 msgstr "Schéma "
 
-#: src/Text3.cpp:1344
+#: src/Text3.cpp:1343
 msgid " not known"
 msgstr " neznámy"
 
-#: src/Text3.cpp:1934 src/frontends/qt4/GuiApplication.cpp:1636
+#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1636
 msgid "Missing argument"
 msgstr "Chýba parameter"
 
-#: src/Text3.cpp:2090 src/Text3.cpp:2102
+#: src/Text3.cpp:2089 src/Text3.cpp:2101
 msgid "Character set"
 msgstr "Znaková sada"
 
-#: src/Text3.cpp:2320 src/Text3.cpp:2331
+#: src/Text3.cpp:2319 src/Text3.cpp:2330
 msgid "Paragraph layout set"
 msgstr "Formát odstavca je nastavený"
 
@@ -29037,7 +29037,7 @@ msgstr "LyX nemôže generovať zoznam od %1$s"
 msgid "footnote"
 msgstr "Poznámka pod čiarou"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:752
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:753
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -29102,18 +29102,18 @@ msgstr "Zahrnúť (vylúčené)"
 msgid "Unknown"
 msgstr "Neznáme"
 
-#: src/insets/InsetInclude.cpp:507 src/insets/InsetInclude.cpp:798
-#: src/insets/InsetInclude.cpp:873
+#: src/insets/InsetInclude.cpp:507 src/insets/InsetInclude.cpp:799
+#: src/insets/InsetInclude.cpp:874
 msgid "Recursive input"
 msgstr "Rekurzívny vstup"
 
-#: src/insets/InsetInclude.cpp:508 src/insets/InsetInclude.cpp:799
-#: src/insets/InsetInclude.cpp:874
+#: src/insets/InsetInclude.cpp:508 src/insets/InsetInclude.cpp:800
+#: src/insets/InsetInclude.cpp:875
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr "Došlo k pokusu vložiť súbor %1$s do seba! Vklad ignorujem."
 
-#: src/insets/InsetInclude.cpp:637
+#: src/insets/InsetInclude.cpp:638
 #, c-format
 msgid ""
 "Could not load included file\n"
@@ -29124,11 +29124,11 @@ msgstr ""
 "`%1$s'\n"
 "Skontrolujte, či daný súbor naozaj existuje."
 
-#: src/insets/InsetInclude.cpp:641
+#: src/insets/InsetInclude.cpp:642
 msgid "Missing included file"
 msgstr "Chýba zahrnutý súbor"
 
-#: src/insets/InsetInclude.cpp:649
+#: src/insets/InsetInclude.cpp:650
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -29139,11 +29139,11 @@ msgstr ""
 "má triedu (textclass) `%2$s'\n"
 "zatiaľ čo nadriadený súbor má triedu `%3$s'."
 
-#: src/insets/InsetInclude.cpp:655
+#: src/insets/InsetInclude.cpp:656
 msgid "Different textclasses"
 msgstr "Rozdielne triedy (textclass)"
 
-#: src/insets/InsetInclude.cpp:670
+#: src/insets/InsetInclude.cpp:671
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -29154,11 +29154,11 @@ msgstr ""
 "používa modul `%2$s',\n"
 "ktorý sa nepoužíva v nadriadenom dokumente."
 
-#: src/insets/InsetInclude.cpp:674
+#: src/insets/InsetInclude.cpp:675
 msgid "Module not found"
 msgstr "Modul nenájdený"
 
-#: src/insets/InsetInclude.cpp:703 src/insets/InsetInclude.cpp:728
+#: src/insets/InsetInclude.cpp:704 src/insets/InsetInclude.cpp:729
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
@@ -29167,15 +29167,15 @@ msgstr ""
 "Zahrnutý súbor `%1$s' nebol správne exportovaný.\n"
 "Upozornenie: LaTeX-ov export asi nie je úplný."
 
-#: src/insets/InsetInclude.cpp:712 src/insets/InsetInclude.cpp:736
+#: src/insets/InsetInclude.cpp:713 src/insets/InsetInclude.cpp:737
 msgid "Export failure"
 msgstr "Exportovanie zlyhalo"
 
-#: src/insets/InsetInclude.cpp:786
+#: src/insets/InsetInclude.cpp:787
 msgid "Unsupported Inclusion"
 msgstr "Nepodporovaná Inklúzia"
 
-#: src/insets/InsetInclude.cpp:787
+#: src/insets/InsetInclude.cpp:788
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -29808,7 +29808,7 @@ msgstr "Vhodný výraz nenájdený!"
 msgid "Match found!"
 msgstr "Vhodný výraz nájdený!"
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1735
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1799
 #: src/mathed/InsetMathSplit.cpp:85 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -29869,16 +29869,16 @@ msgstr "Žiadna vertikálna linka (vline) na zmazanie"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Neznáme vlastnosti tabuľky '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1298
+#: src/mathed/InsetMathHull.cpp:1362
 #, c-format
 msgid "Type: %1$s"
 msgstr "Typ: %1$s"
 
-#: src/mathed/InsetMathHull.cpp:1331
+#: src/mathed/InsetMathHull.cpp:1395
 msgid "Bad math environment"
 msgstr "Zlé mat. prostredie"
 
-#: src/mathed/InsetMathHull.cpp:1332
+#: src/mathed/InsetMathHull.cpp:1396
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
@@ -29886,21 +29886,21 @@ msgstr ""
 "Výpočet sa pre mat. prostredie AMS nedá previezť.\n"
 "Zmeňte typ mat. formuly a skúste to ešte raz."
 
-#: src/mathed/InsetMathHull.cpp:1435 src/mathed/InsetMathHull.cpp:1444
+#: src/mathed/InsetMathHull.cpp:1499 src/mathed/InsetMathHull.cpp:1508
 msgid "No number"
 msgstr "Bez čísla"
 
-#: src/mathed/InsetMathHull.cpp:1708
+#: src/mathed/InsetMathHull.cpp:1772
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Nedá sa zmeniť počet riadkov v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1718
+#: src/mathed/InsetMathHull.cpp:1782
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Počet stĺpcov sa nedá zmeniť v '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1728
+#: src/mathed/InsetMathHull.cpp:1792
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Nedajú sa pridať horizontálne linky mriežky '%1$s'"
@@ -29948,7 +29948,7 @@ msgstr "Veľkosť: %1$s"
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "Nedá sa zmeniť horizontálna adjustácia v '%1$s'"
 
-#: src/mathed/MathMacro.cpp:883 src/mathed/MathMacro.cpp:889
+#: src/mathed/MathMacro.cpp:909 src/mathed/MathMacro.cpp:915
 #, c-format
 msgid "Macro: %1$s"
 msgstr "Makro: %1$s"

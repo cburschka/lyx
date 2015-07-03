@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-06-01 17:51-0400\n"
+"POT-Creation-Date: 2015-07-03 12:04-0400\n"
 "PO-Revision-Date: 2010-07-07 02:31+0100\n"
 "Last-Translator: Οδυσσέας Δαγκλής <o2d@freemail.gr>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -1287,8 +1287,8 @@ msgstr "Είσοδος"
 msgid "Verbatim"
 msgstr "Αυτολεξεί"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1205
-#: src/insets/InsetInclude.cpp:1211
+#: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1207
+#: src/insets/InsetInclude.cpp:1213
 msgid "Program Listing"
 msgstr "Κώδικας Προγράμματος"
 
@@ -9121,7 +9121,7 @@ msgstr "Τηλέφωνο Αποστολέα:"
 #: lib/layouts/scrlttr2.layout:195 lib/layouts/europecv.layout:93
 #: lib/layouts/achemso.layout:128 lib/layouts/moderncv.layout:137
 #: lib/layouts/lettre.layout:42 lib/layouts/lettre.layout:343
-#: lib/configure.py:691
+#: lib/configure.py:693
 msgid "Fax"
 msgstr ""
 
@@ -10383,7 +10383,7 @@ msgid "Altaffilation"
 msgstr "Εναλλακτική Προέλευση"
 
 #: lib/layouts/aastex.layout:179 lib/layouts/agutex.layout:124
-#: src/mathed/InsetMathHull.cpp:1435 src/mathed/InsetMathHull.cpp:1444
+#: src/mathed/InsetMathHull.cpp:1499 src/mathed/InsetMathHull.cpp:1508
 msgid "Number"
 msgstr "Αριθμός"
 
@@ -13851,7 +13851,7 @@ msgstr "δυνατό"
 msgid "code"
 msgstr "κώδικας"
 
-#: lib/layouts/knitr.module:2 lib/configure.py:616
+#: lib/layouts/knitr.module:2 lib/configure.py:618
 msgid "Rnw (knitr)"
 msgstr ""
 
@@ -14811,7 +14811,7 @@ msgstr "Ταμπλό"
 msgid "List of Tableaux"
 msgstr "Λίστα Ταμπλό"
 
-#: lib/layouts/sweave.module:2 lib/configure.py:614
+#: lib/layouts/sweave.module:2 lib/configure.py:616
 msgid "Sweave"
 msgstr ""
 
@@ -16020,12 +16020,12 @@ msgid "Redo|R"
 msgstr "Επανάληψη|ψ"
 
 #: lib/ui/stdmenus.inc:105 lib/ui/stdcontext.inc:310 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1278 src/mathed/InsetMathNest.cpp:598
+#: src/Text3.cpp:1277 src/mathed/InsetMathNest.cpp:598
 msgid "Cut"
 msgstr "Αποκοπή"
 
 #: lib/ui/stdmenus.inc:106 lib/ui/stdcontext.inc:311 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1283 src/mathed/InsetMathNest.cpp:607
+#: src/Text3.cpp:1282 src/mathed/InsetMathNest.cpp:607
 msgid "Copy"
 msgstr "Αντιγραφή"
 
@@ -17215,7 +17215,7 @@ msgstr "Συγγραφέας:"
 msgid "Risk and Safety Statements|R"
 msgstr ""
 
-#: lib/ui/stdmenus.inc:613 lib/configure.py:614
+#: lib/ui/stdmenus.inc:613 lib/configure.py:616
 msgid "Sweave|S"
 msgstr ""
 
@@ -22566,431 +22566,431 @@ msgstr ""
 msgid "Dia diagram.\n"
 msgstr ""
 
-#: lib/configure.py:567
+#: lib/configure.py:569
 msgid "tgo"
 msgstr ""
 
-#: lib/configure.py:567
+#: lib/configure.py:569
 msgid "tgo|Tgif"
 msgstr ""
 
-#: lib/configure.py:570
+#: lib/configure.py:572
 msgid "FIG"
 msgstr ""
 
-#: lib/configure.py:573
+#: lib/configure.py:575
 msgid "DIA"
 msgstr ""
 
-#: lib/configure.py:576
+#: lib/configure.py:578
 msgid "sxd"
 msgstr ""
 
-#: lib/configure.py:576
+#: lib/configure.py:578
 msgid "sxd|OpenOffice"
 msgstr ""
 
-#: lib/configure.py:579
+#: lib/configure.py:581
 msgid "Grace"
 msgstr ""
 
-#: lib/configure.py:582
+#: lib/configure.py:584
 msgid "FEN"
 msgstr ""
 
-#: lib/configure.py:585
+#: lib/configure.py:587
 msgid "SVG"
 msgstr ""
 
-#: lib/configure.py:587
+#: lib/configure.py:589
 msgid "BMP"
 msgstr ""
 
-#: lib/configure.py:588
+#: lib/configure.py:590
 msgid "GIF"
 msgstr ""
 
-#: lib/configure.py:589
+#: lib/configure.py:591
 msgid "jpeg"
 msgstr ""
 
-#: lib/configure.py:589
+#: lib/configure.py:591
 msgid "jpeg|JPEG"
 msgstr ""
 
-#: lib/configure.py:590
+#: lib/configure.py:592
 msgid "PBM"
 msgstr ""
 
-#: lib/configure.py:591
+#: lib/configure.py:593
 msgid "PGM"
 msgstr ""
 
-#: lib/configure.py:592 src/frontends/qt4/GuiClipboard.cpp:175
+#: lib/configure.py:594 src/frontends/qt4/GuiClipboard.cpp:175
 msgid "PNG"
 msgstr ""
 
-#: lib/configure.py:593
+#: lib/configure.py:595
 msgid "PPM"
 msgstr ""
 
-#: lib/configure.py:594
+#: lib/configure.py:596
 msgid "TIFF"
 msgstr ""
 
-#: lib/configure.py:595
+#: lib/configure.py:597
 msgid "XBM"
 msgstr ""
 
-#: lib/configure.py:596
+#: lib/configure.py:598
 msgid "XPM"
 msgstr ""
 
-#: lib/configure.py:604
+#: lib/configure.py:606
 msgid "Plain text (chess output)"
 msgstr "Απλό κείμενο (έξοδος chess)"
 
-#: lib/configure.py:605
+#: lib/configure.py:607
 msgid "Plain text (image)"
 msgstr "Απλό κείμενο (εικόνα)"
 
-#: lib/configure.py:606
+#: lib/configure.py:608
 msgid "Plain text (Xfig output)"
 msgstr "Απλό κείμενο (έξοδος Xfig)"
 
-#: lib/configure.py:607
+#: lib/configure.py:609
 msgid "date (output)"
 msgstr "Ημερομηνία (έξοδος)"
 
-#: lib/configure.py:608 src/frontends/qt4/GuiDocument.cpp:1273
+#: lib/configure.py:610 src/frontends/qt4/GuiDocument.cpp:1273
 #: src/frontends/qt4/GuiErrorList.cpp:42
 msgid "DocBook"
 msgstr ""
 
-#: lib/configure.py:608
+#: lib/configure.py:610
 msgid "DocBook|B"
 msgstr ""
 
-#: lib/configure.py:609
+#: lib/configure.py:611
 msgid "DocBook (XML)"
 msgstr ""
 
-#: lib/configure.py:610
+#: lib/configure.py:612
 msgid "Graphviz Dot"
 msgstr ""
 
-#: lib/configure.py:611
+#: lib/configure.py:613
 #, fuzzy
 msgid "LaTeX (dviluatex)"
 msgstr "Τίτλος LaTeX"
 
-#: lib/configure.py:612
+#: lib/configure.py:614
 msgid "LaTeX (pLaTeX)"
 msgstr ""
 
-#: lib/configure.py:613
+#: lib/configure.py:615
 msgid "NoWeb"
 msgstr ""
 
-#: lib/configure.py:613
+#: lib/configure.py:615
 msgid "NoWeb|N"
 msgstr ""
 
-#: lib/configure.py:615
+#: lib/configure.py:617
 #, fuzzy
 msgid "R/S code"
 msgstr "κώδικας"
 
-#: lib/configure.py:617
+#: lib/configure.py:619
 msgid "LilyPond music"
 msgstr ""
 
-#: lib/configure.py:618
+#: lib/configure.py:620
 msgid "LilyPond book (LaTeX)"
 msgstr ""
 
-#: lib/configure.py:619
+#: lib/configure.py:621
 msgid "LaTeX (plain)"
 msgstr ""
 
-#: lib/configure.py:619
+#: lib/configure.py:621
 msgid "LaTeX (plain)|L"
 msgstr ""
 
-#: lib/configure.py:620
+#: lib/configure.py:622
 #, fuzzy
 msgid "LaTeX (LuaTeX)"
 msgstr "Τίτλος LaTeX"
 
-#: lib/configure.py:621
+#: lib/configure.py:623
 msgid "LaTeX (pdflatex)"
 msgstr ""
 
-#: lib/configure.py:622
+#: lib/configure.py:624
 msgid "LaTeX (XeTeX)"
 msgstr ""
 
-#: lib/configure.py:623
+#: lib/configure.py:625
 #, fuzzy
 msgid "LaTeX (clipboard)"
 msgstr "Κλάσεις LaTeX"
 
-#: lib/configure.py:624
+#: lib/configure.py:626
 msgid "Plain text"
 msgstr "Απλό κείμενο"
 
-#: lib/configure.py:624
+#: lib/configure.py:626
 msgid "Plain text|a"
 msgstr "Απλό κείμενο|Α"
 
-#: lib/configure.py:625
+#: lib/configure.py:627
 msgid "Plain text (pstotext)"
 msgstr "Απλό κείμενο (pstotext)"
 
-#: lib/configure.py:626
+#: lib/configure.py:628
 msgid "Plain text (ps2ascii)"
 msgstr "Απλό κείμενο (ps2ascii)"
 
-#: lib/configure.py:627
+#: lib/configure.py:629
 msgid "Plain text (catdvi)"
 msgstr "Απλό κείμενο (catdvi)"
 
-#: lib/configure.py:628
+#: lib/configure.py:630
 msgid "Plain Text, Join Lines"
 msgstr "Απλό Κείμενο, Ένωση Γραμμών"
 
-#: lib/configure.py:629
+#: lib/configure.py:631
 msgid "Info (Beamer)"
 msgstr ""
 
-#: lib/configure.py:632
+#: lib/configure.py:634
 msgid "Gnumeric spreadsheet"
 msgstr ""
 
-#: lib/configure.py:633
+#: lib/configure.py:635
 msgid "Excel spreadsheet"
 msgstr ""
 
-#: lib/configure.py:634
+#: lib/configure.py:636
 msgid "OpenOffice spreadsheet"
 msgstr ""
 
-#: lib/configure.py:637
+#: lib/configure.py:639
 msgid "LyXHTML"
 msgstr ""
 
-#: lib/configure.py:637
+#: lib/configure.py:639
 msgid "LyXHTML|y"
 msgstr ""
 
-#: lib/configure.py:645 src/frontends/qt4/GuiLog.cpp:232
+#: lib/configure.py:647 src/frontends/qt4/GuiLog.cpp:232
 msgid "BibTeX"
 msgstr ""
 
-#: lib/configure.py:650
+#: lib/configure.py:652
 msgid "EPS"
 msgstr ""
 
-#: lib/configure.py:651
+#: lib/configure.py:653
 msgid "EPS (uncropped)"
 msgstr ""
 
-#: lib/configure.py:652
+#: lib/configure.py:654
 msgid "EPS (cropped)"
 msgstr ""
 
-#: lib/configure.py:653
+#: lib/configure.py:655
 msgid "Postscript"
 msgstr ""
 
-#: lib/configure.py:653
+#: lib/configure.py:655
 msgid "Postscript|t"
 msgstr ""
 
-#: lib/configure.py:658
+#: lib/configure.py:660
 msgid "PDF (ps2pdf)"
 msgstr ""
 
-#: lib/configure.py:658
+#: lib/configure.py:660
 msgid "PDF (ps2pdf)|P"
 msgstr ""
 
-#: lib/configure.py:659
+#: lib/configure.py:661
 msgid "PDF (pdflatex)"
 msgstr ""
 
-#: lib/configure.py:659
+#: lib/configure.py:661
 msgid "PDF (pdflatex)|F"
 msgstr ""
 
-#: lib/configure.py:660
+#: lib/configure.py:662
 msgid "PDF (dvipdfm)"
 msgstr ""
 
-#: lib/configure.py:660
+#: lib/configure.py:662
 msgid "PDF (dvipdfm)|m"
 msgstr ""
 
-#: lib/configure.py:661
+#: lib/configure.py:663
 msgid "PDF (XeTeX)"
 msgstr ""
 
-#: lib/configure.py:661
+#: lib/configure.py:663
 msgid "PDF (XeTeX)|X"
 msgstr ""
 
-#: lib/configure.py:662
+#: lib/configure.py:664
 msgid "PDF (LuaTeX)"
 msgstr ""
 
-#: lib/configure.py:662
+#: lib/configure.py:664
 msgid "PDF (LuaTeX)|u"
 msgstr ""
 
-#: lib/configure.py:663
+#: lib/configure.py:665
 #, fuzzy
 msgid "PDF (graphics)"
 msgstr "Γραφικά"
 
-#: lib/configure.py:664
+#: lib/configure.py:666
 msgid "PDF (cropped)"
 msgstr ""
 
-#: lib/configure.py:665
+#: lib/configure.py:667
 msgid "PDF (lower resolution)"
 msgstr ""
 
-#: lib/configure.py:668
+#: lib/configure.py:670
 msgid "DVI"
 msgstr ""
 
-#: lib/configure.py:668
+#: lib/configure.py:670
 msgid "DVI|D"
 msgstr ""
 
-#: lib/configure.py:669
+#: lib/configure.py:671
 msgid "DVI (LuaTeX)"
 msgstr ""
 
-#: lib/configure.py:669
+#: lib/configure.py:671
 #, fuzzy
 msgid "DVI (LuaTeX)|V"
 msgstr "Τίτλος LaTeX"
 
-#: lib/configure.py:672
+#: lib/configure.py:674
 msgid "DraftDVI"
 msgstr ""
 
-#: lib/configure.py:675 lib/configure.py:707
+#: lib/configure.py:677 lib/configure.py:709
 msgid "htm"
 msgstr ""
 
-#: lib/configure.py:675 lib/configure.py:707
+#: lib/configure.py:677 lib/configure.py:709
 msgid "htm|HTML"
 msgstr ""
 
-#: lib/configure.py:678
+#: lib/configure.py:680
 msgid "Noteedit"
 msgstr ""
 
-#: lib/configure.py:681
+#: lib/configure.py:683
 msgid "OpenDocument"
 msgstr ""
 
-#: lib/configure.py:682
+#: lib/configure.py:684
 msgid "OpenOffice.Org (sxw)"
 msgstr ""
 
-#: lib/configure.py:685
+#: lib/configure.py:687
 msgid "Rich Text Format"
 msgstr ""
 
-#: lib/configure.py:686
+#: lib/configure.py:688
 msgid "MS Word"
 msgstr ""
 
-#: lib/configure.py:686
+#: lib/configure.py:688
 msgid "MS Word|W"
 msgstr ""
 
-#: lib/configure.py:689
+#: lib/configure.py:691
 msgid "date command"
 msgstr "εντολή ημερομηνίας"
 
-#: lib/configure.py:690
+#: lib/configure.py:692
 msgid "Table (CSV)"
 msgstr "Πίνακας (CSV)"
 
-#: lib/configure.py:692 src/frontends/qt4/GuiView.cpp:1167
+#: lib/configure.py:694 src/frontends/qt4/GuiView.cpp:1167
 #: src/frontends/qt4/GuiView.cpp:1168 src/mathed/MathMacroTemplate.cpp:543
 msgid "LyX"
 msgstr ""
 
-#: lib/configure.py:693
+#: lib/configure.py:695
 msgid "LyX 1.3.x"
 msgstr ""
 
-#: lib/configure.py:694
+#: lib/configure.py:696
 msgid "LyX 1.4.x"
 msgstr ""
 
-#: lib/configure.py:695
+#: lib/configure.py:697
 msgid "LyX 1.5.x"
 msgstr ""
 
-#: lib/configure.py:696
+#: lib/configure.py:698
 msgid "LyX 1.6.x"
 msgstr ""
 
-#: lib/configure.py:697
+#: lib/configure.py:699
 msgid "LyX 2.0.x"
 msgstr ""
 
-#: lib/configure.py:698
+#: lib/configure.py:700
 msgid "CJK LyX 1.4.x (big5)"
 msgstr ""
 
-#: lib/configure.py:699
+#: lib/configure.py:701
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr ""
 
-#: lib/configure.py:700
+#: lib/configure.py:702
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr ""
 
-#: lib/configure.py:701
+#: lib/configure.py:703
 msgid "LyX Preview"
 msgstr "Προεπισκόπηση LyX"
 
-#: lib/configure.py:702
+#: lib/configure.py:704
 msgid "PDFTEX"
 msgstr ""
 
-#: lib/configure.py:703
+#: lib/configure.py:705
 msgid "Program"
 msgstr "Πρόγραμμα"
 
-#: lib/configure.py:704
+#: lib/configure.py:706
 msgid "PSTEX"
 msgstr ""
 
-#: lib/configure.py:705 src/frontends/qt4/GuiClipboard.cpp:172
+#: lib/configure.py:707 src/frontends/qt4/GuiClipboard.cpp:172
 msgid "Windows Metafile"
 msgstr ""
 
-#: lib/configure.py:706 src/frontends/qt4/GuiClipboard.cpp:171
+#: lib/configure.py:708 src/frontends/qt4/GuiClipboard.cpp:171
 msgid "Enhanced Metafile"
 msgstr ""
 
-#: lib/configure.py:813
+#: lib/configure.py:815
 msgid "LyXBlogger"
 msgstr ""
 
-#: lib/configure.py:1026
+#: lib/configure.py:1028
 msgid "LyX Archive (zip)"
 msgstr ""
 
-#: lib/configure.py:1029
+#: lib/configure.py:1031
 msgid "LyX Archive (tar.gz)"
 msgstr ""
 
@@ -25780,23 +25780,23 @@ msgstr "Ήδη σε κατάσταση κανονικής παράστασης"
 msgid "Regexp editor mode"
 msgstr ""
 
-#: src/Text3.cpp:1343
+#: src/Text3.cpp:1342
 msgid "Layout "
 msgstr "Διάταξη"
 
-#: src/Text3.cpp:1344
+#: src/Text3.cpp:1343
 msgid " not known"
 msgstr " άγνωστο"
 
-#: src/Text3.cpp:1934 src/frontends/qt4/GuiApplication.cpp:1636
+#: src/Text3.cpp:1933 src/frontends/qt4/GuiApplication.cpp:1636
 msgid "Missing argument"
 msgstr "Λείπει όρισμα"
 
-#: src/Text3.cpp:2090 src/Text3.cpp:2102
+#: src/Text3.cpp:2089 src/Text3.cpp:2101
 msgid "Character set"
 msgstr "Σύνολο χαρακτήρων"
 
-#: src/Text3.cpp:2320 src/Text3.cpp:2331
+#: src/Text3.cpp:2319 src/Text3.cpp:2330
 msgid "Paragraph layout set"
 msgstr "Σύνολο διατάξεων παραγράφων"
 
@@ -29737,7 +29737,7 @@ msgstr ""
 msgid "footnote"
 msgstr "υποσημείωση"
 
-#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:752
+#: src/insets/InsetGraphics.cpp:474 src/insets/InsetInclude.cpp:753
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -29801,18 +29801,18 @@ msgstr "Συμπερίληψη (αποκλεισμός)"
 msgid "Unknown"
 msgstr "άγνωστο"
 
-#: src/insets/InsetInclude.cpp:507 src/insets/InsetInclude.cpp:798
-#: src/insets/InsetInclude.cpp:873
+#: src/insets/InsetInclude.cpp:507 src/insets/InsetInclude.cpp:799
+#: src/insets/InsetInclude.cpp:874
 msgid "Recursive input"
 msgstr "Αναδρομική είσοδος"
 
-#: src/insets/InsetInclude.cpp:508 src/insets/InsetInclude.cpp:799
-#: src/insets/InsetInclude.cpp:874
+#: src/insets/InsetInclude.cpp:508 src/insets/InsetInclude.cpp:800
+#: src/insets/InsetInclude.cpp:875
 #, c-format
 msgid "Attempted to include file %1$s in itself! Ignoring inclusion."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:637
+#: src/insets/InsetInclude.cpp:638
 #, fuzzy, c-format
 msgid ""
 "Could not load included file\n"
@@ -29822,12 +29822,12 @@ msgstr ""
 "Αποτυχία δημιουργίας αντιγράφου ασφαλείας για το %1$s.\n"
 "Ελέγξτε εάν ο φάκελος υπάρχει και είναι εγγράψιμος."
 
-#: src/insets/InsetInclude.cpp:641
+#: src/insets/InsetInclude.cpp:642
 #, fuzzy
 msgid "Missing included file"
 msgstr "Συμπερίληψη αρχείου"
 
-#: src/insets/InsetInclude.cpp:649
+#: src/insets/InsetInclude.cpp:650
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -29835,11 +29835,11 @@ msgid ""
 "while parent file has textclass `%3$s'."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:655
+#: src/insets/InsetInclude.cpp:656
 msgid "Different textclasses"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:670
+#: src/insets/InsetInclude.cpp:671
 #, c-format
 msgid ""
 "Included file `%1$s'\n"
@@ -29847,27 +29847,27 @@ msgid ""
 "which is not used in parent file."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:674
+#: src/insets/InsetInclude.cpp:675
 msgid "Module not found"
 msgstr "Η μονάδα δε βρέθηκε"
 
-#: src/insets/InsetInclude.cpp:703 src/insets/InsetInclude.cpp:728
+#: src/insets/InsetInclude.cpp:704 src/insets/InsetInclude.cpp:729
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 "Warning: LaTeX export is probably incomplete."
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:712 src/insets/InsetInclude.cpp:736
+#: src/insets/InsetInclude.cpp:713 src/insets/InsetInclude.cpp:737
 #, fuzzy
 msgid "Export failure"
 msgstr "Αποτυχία αντιγράφου ασφαλείας"
 
-#: src/insets/InsetInclude.cpp:786
+#: src/insets/InsetInclude.cpp:787
 msgid "Unsupported Inclusion"
 msgstr ""
 
-#: src/insets/InsetInclude.cpp:787
+#: src/insets/InsetInclude.cpp:788
 #, c-format
 msgid ""
 "LyX does not know how to include non-LyX files when generating HTML output. "
@@ -30493,7 +30493,7 @@ msgstr "Δε βρέθηκε ταύτιση!"
 msgid "Match found!"
 msgstr "Βρέθηκε ταύτιση!"
 
-#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1735
+#: src/mathed/InsetMathAMSArray.cpp:119 src/mathed/InsetMathHull.cpp:1799
 #: src/mathed/InsetMathSplit.cpp:85 src/mathed/InsetMathSubstack.cpp:76
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -30555,37 +30555,37 @@ msgstr "Δεν υπάρχει vline για διαγραφή"
 msgid "Unknown tabular feature '%1$s'"
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1298
+#: src/mathed/InsetMathHull.cpp:1362
 #, fuzzy, c-format
 msgid "Type: %1$s"
 msgstr "Γραμματοσειρά: %1$s"
 
-#: src/mathed/InsetMathHull.cpp:1331
+#: src/mathed/InsetMathHull.cpp:1395
 #, fuzzy
 msgid "Bad math environment"
 msgstr "Εισαγωγή περιβάλλοντος επιλογών"
 
-#: src/mathed/InsetMathHull.cpp:1332
+#: src/mathed/InsetMathHull.cpp:1396
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
 msgstr ""
 
-#: src/mathed/InsetMathHull.cpp:1435 src/mathed/InsetMathHull.cpp:1444
+#: src/mathed/InsetMathHull.cpp:1499 src/mathed/InsetMathHull.cpp:1508
 msgid "No number"
 msgstr "Κανένας αριθμός"
 
-#: src/mathed/InsetMathHull.cpp:1708
+#: src/mathed/InsetMathHull.cpp:1772
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Δεν είναι δυνατή η αλλαγή αριθμού γραμμών στο '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1718
+#: src/mathed/InsetMathHull.cpp:1782
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Δεν είναι δυνατή η αλλαγή αριθμού στηλών στο '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1728
+#: src/mathed/InsetMathHull.cpp:1792
 #, c-format
 msgid "Can't add horizontal grid lines in '%1$s'"
 msgstr "Δεν είναι δυνατή η προσθήκη οριζόντιων γραμμών πλέγματος στο '%1$s'"
@@ -30633,7 +30633,7 @@ msgstr "Προβολή %1$s"
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "Δεν είναι δυνατή η προσθήκη οριζόντιων γραμμών πλέγματος στο '%1$s'"
 
-#: src/mathed/MathMacro.cpp:883 src/mathed/MathMacro.cpp:889
+#: src/mathed/MathMacro.cpp:909 src/mathed/MathMacro.cpp:915
 #, fuzzy, c-format
 msgid "Macro: %1$s"
 msgstr " Μακροεντολή: %1$s:"
