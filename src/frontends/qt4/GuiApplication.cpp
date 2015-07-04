@@ -2735,10 +2735,11 @@ void GuiApplication::commitData(QSessionManager & sm)
 
 void GuiApplication::unregisterView(GuiView * gv)
 {
-	LAPPERR(d->views_[gv->id()] == gv);
-	d->views_.remove(gv->id());
-	if (current_view_ == gv)
-		current_view_ = 0;
+	if(d->views_.contains(gv->id()) && d->views_.value(gv->id()) == gv) {
+		d->views_.remove(gv->id());
+		if (current_view_ == gv)
+			current_view_ = 0;
+	}
 }
 
 
