@@ -194,15 +194,10 @@ void MathMacro::Private::updateChildren(MathMacro * owner)
 	}
 
 	if (macro_ && lyxrc.preview == LyXRC::PREVIEW_ON) {
-		// We need to update macro_ by ourselves because in this case
-		// MathData::metrics() is not called when selecting a math inset
-		DocIterator const & pos = macroBackup_.pos();
-		Buffer const * buf = pos.buffer();
-		if (buf && !theBufferList().isLoaded(buf))
-			buf = 0;
-		macro_ = buf ? buf->getMacro(owner->name(), pos) : 0;
-		if (!macro_)
-			macro_ = &macroBackup_;
+		// As MathData::metrics() is not called when instant preview is
+		// on, we have to update macro_ by ourselves. In this case, we
+		// simply let it point to the last known good copy of MacroData.
+		macro_ = &macroBackup_;
 	}
 }
 
