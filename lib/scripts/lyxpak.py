@@ -21,6 +21,12 @@ if sys.version_info < (2, 4, 0):
 from getopt import getopt
 from cStringIO import StringIO
 
+running_on_windows = (os.name == 'nt')
+
+if running_on_windows:
+    from shutil import copyfile
+    from tempfile import NamedTemporaryFile
+
 # Pre-compiled regular expressions.
 re_lyxfile = re.compile("\.lyx$")
 re_input = re.compile(r'^(.*)\\(input|include){(\s*)(.+)(\s*)}.*$')
@@ -55,12 +61,12 @@ def error(message):
 
 
 def gzopen(file, mode):
-    input = open(file, 'rb')
+    input = open(unicode(file, 'utf-8'), 'rb')
     magicnum = input.read(2)
     input.close()
     if magicnum == "\x1f\x8b":
-        return gzip.open(file, mode)
-    return open(file, mode)
+        return gzip.open(unicode(file, 'utf-8'), mode)
+    return open(unicode(file, 'utf-8'), mode)
 
 
 def run_cmd(cmd):
@@ -83,7 +89,7 @@ def find_exe(candidates, extlist, path):
 def abspath(name):
     " Resolve symlinks and returns the absolute normalized name."
     newname = os.path.normpath(os.path.abspath(name))
-    if os.name != 'nt':
+    if not running_on_windows:
         newname = os.path.realpath(newname)
     return newname
 
@@ -93,8 +99,19 @@ def gather_files(curfile, incfiles, lyx2lyx):
     curdir = os.path.dirname(abspath(curfile))
     is_lyxfile = re_lyxfile.search(curfile)
     if is_lyxfile:
-        lyx2lyx_cmd = 'python "%s" "%s"' % (lyx2lyx, curfile)
-        l2l_status, l2l_stdout = run_cmd(lyx2lyx_cmd)
+        if running_on_windows:
+            # os.popen cannot cope with unicode arguments and we cannot be
+            # sure that curfile can be correctly converted to the current
+            # code page. So, we resort to running lyx2lyx on a copy.
+            tmp = NamedTemporaryFile(delete=False)
+            tmp.close()
+            copyfile(unicode(curfile, 'utf-8'), tmp.name)
+            lyx2lyx_cmd = 'python "%s" "%s"' % (lyx2lyx, tmp.name)
+            l2l_status, l2l_stdout = run_cmd(lyx2lyx_cmd)
+            os.unlink(tmp.name)
+        else:
+            lyx2lyx_cmd = 'python "%s" "%s"' % (lyx2lyx, curfile)
+            l2l_status, l2l_stdout = run_cmd(lyx2lyx_cmd)
         if l2l_status != None:
             error('%s failed to convert "%s"' % (lyx2lyx, curfile))
         if l2l_stdout.startswith("\x1f\x8b"):
@@ -136,9 +153,9 @@ def gather_files(curfile, incfiles, lyx2lyx):
             if not os.path.isabs(file):
                 file = os.path.join(curdir, file)
             file_exists = False
-            if not os.path.isdir(file):
+            if not os.path.isdir(unicode(file, 'utf-8')):
                 for ext in extlist:
-                    if os.path.exists(file + ext):
+                    if os.path.exists(unicode(file + ext, 'utf-8')):
                         file = file + ext
                         file_exists = True
                         break
@@ -161,7 +178,7 @@ def gather_files(curfile, incfiles, lyx2lyx):
                 file = file[9:]
             if not os.path.isabs(file):
                 file = os.path.join(curdir, file + '.bst')
-            if os.path.exists(file):
+            if os.path.exists(unicode(file, 'utf-8')):
                 incfiles.append(abspath(file))
             i += 1
             continue
@@ -176,7 +193,7 @@ def gather_files(curfile, incfiles, lyx2lyx):
                     file = bibfiles[j] + '.bib'
                 else:
                     file = os.path.join(curdir, bibfiles[j] + '.bib')
-                if os.path.exists(file):
+                if os.path.exists(unicode(file, 'utf-8')):
                     incfiles.append(abspath(file))
                 j += 1
             i += 1
@@ -242,7 +259,7 @@ def main(args):
     if len(argv) != 1:
         error(usage(ourprog))
 
-    makezip = (os.name == 'nt')
+    makezip = running_on_windows
     outdir = ""
     lyx2lyx = None
 
@@ -258,11 +275,13 @@ def main(args):
         lyx2lyx = param
       elif opt == "-o":
         outdir = param
-        if not os.path.isdir(outdir):
+        if not os.path.isdir(unicode(outdir, 'utf-8')):
           error('Error: "%s" is not a directory.' % outdir)
 
     lyxfile = argv[0]
-    if not os.path.exists(lyxfile):
+    if not running_on_windows:
+        lyxfile = unicode(lyxfile, sys.getfilesystemencoding()).encode('utf-8')
+    if not os.path.exists(unicode(lyxfile, 'utf-8')):
         error('File "%s" not found.' % lyxfile)
 
     # Check that it actually is a LyX document
@@ -315,14 +334,14 @@ def main(args):
     incfiles.sort()
 
     if topdir != '':
-        os.chdir(topdir)
+        os.chdir(unicode(topdir, 'utf-8'))
 
     # Create the archive
     try:
         if makezip:
             zip = zipfile.ZipFile(ar_name, "w", zipfile.ZIP_DEFLATED)
             for file in incfiles:
-                zip.write(file)
+                zip.write(file.decode('utf-8'), unicode(file, 'utf-8'))
             zip.close()
         else:
             tar = tarfile.open(ar_name, "w:gz")
@@ -337,4 +356,31 @@ def main(args):
 
 
 if __name__ == "__main__":
+    if running_on_windows:
+        # This works around <http://bugs.python.org/issue2128> for Python 2.
+        # All arguments are retrieved in unicode format and converted to utf-8.
+        # In this way, when launched from the command line, lyxpak.py can deal
+        # with any non-ascii names. Unfortunately, this is not the case when
+        # launched by LyX, because LyX converts the arguments of the converters
+        # to the filesystem encoding. On Windows this corresponds to the current
+        # code page and not to the UTF-16 encoding used by NTFS, such that they
+        # are transliterated if not exactly encodable. As an example, α may
+        # become a, β may become ß, and so on. However, this is a problem only
+        # if the full path of the LyX document contains an unencodable character
+        # as all other paths are extracted from the document in utf-8 format.
+        from ctypes import WINFUNCTYPE, windll, POINTER, byref, c_int
+        from ctypes.wintypes import LPWSTR, LPCWSTR
+        GetCommandLineW = WINFUNCTYPE(LPWSTR)(("GetCommandLineW", windll.kernel32))
+        CommandLineToArgvW = WINFUNCTYPE(POINTER(LPWSTR), LPCWSTR, POINTER(c_int))(("CommandLineToArgvW", windll.shell32))
+        argc = c_int(0)
+        argv_unicode = CommandLineToArgvW(GetCommandLineW(), byref(argc))
+        # unicode_argv[0] is the Python interpreter, so skip that.
+        argv = [argv_unicode[i].encode('utf-8') for i in xrange(1, argc.value)]
+        # Also skip option arguments to the Python interpreter.
+        while len(argv) > 0:
+            if not argv[0].startswith("-"):
+                break
+            argv = argv[1:]
+        sys.argv = argv
+
     main(sys.argv)
