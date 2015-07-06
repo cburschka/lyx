@@ -722,7 +722,6 @@ char const * simplefeatures[] = {
 	"pmboxdraw",
 	"bbding",
 	"ifsym",
-	"marvosym",
 	"txfonts",
 	"pxfonts",
 	"mathdesign",
@@ -901,6 +900,13 @@ string const LaTeXFeatures::getPackages() const
 	if (mustProvide("cancel") &&
 	    params_.use_package("cancel") != BufferParams::package_off)
 		packages << "\\usepackage{cancel}\n";
+
+   	// marvosym and bbding both define the \Cross macro
+   	if (mustProvide("marvosym")) {
+	    if (mustProvide("bbding"))
+		packages << "\\let\\Cross\\relax\n";
+   	    packages << "\\usepackage{marvosym}\n";
+	}
 
 	// accents must be loaded after amsmath
 	if (mustProvide("accents") &&
