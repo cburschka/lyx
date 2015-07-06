@@ -22,7 +22,6 @@
 #include "MathSupport.h"
 
 #include "Buffer.h"
-#include "BufferList.h"
 #include "BufferView.h"
 #include "CoordCache.h"
 #include "Cursor.h"
