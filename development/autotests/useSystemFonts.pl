@@ -99,6 +99,12 @@ if ($fontT eq "systemF") {
     $font{sans} = "NanumGothic";
     $font{typewriter} = "NanumGothic";
   }
+  elsif ($lang eq "ar" ) {
+    # available in 'fonts-sil-scheherazade' package
+    $font{roman} = "Scheherazade";
+    $font{sans} = "Scheherazade";
+    $font{typewriter} = "Scheherazade";
+  }
   else {
     # default system fonts
     $font{roman} = "FreeSans";
