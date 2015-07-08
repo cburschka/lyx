@@ -678,6 +678,11 @@ content_directory() {
 	echo "${content}"
 }
 
+installname() {
+		echo install_name_tool "$@"
+		install_name_tool "$@"
+}
+
 private_framework() {
 	fwdir=$(framework_name "$1")
 	source="$2"
@@ -687,11 +692,9 @@ private_framework() {
 	mkdir -p "${condir}/${fwdir}"
 	if [ ! -f "${condir}/${fwdir}/${libnm}" ]; then
 		cp -p "${source}" "${condir}/${fwdir}"
-		echo Set library id in "${condir}/${fwdir}/${libnm}"
-		install_name_tool -id "@executable_path/../${fwdir}/${libnm}" "${condir}/${fwdir}/${libnm}"
+		installname -id "@executable_path/../${fwdir}/${libnm}" "${condir}/${fwdir}/${libnm}"
 	fi
-	echo Correct library id reference to "${libnm}" in "${target}"
-	install_name_tool -change "${source}" "@executable_path/../${fwdir}/${libnm}" "${target}"
+	installname -change "${source}" "@executable_path/../${fwdir}/${libnm}" "${target}"
 }
 
 deploy_qtlibs() {
@@ -724,16 +727,17 @@ EOF
 		test -d "${condir}/${fwdir}" || (
 			echo Copy framework "${source}/lib/"$(basename "${fwdir}")
 			cp -pR "${source}/lib/"$(basename "${fwdir}") "${condir}/${fwdir}"
-			echo Set library id in "${condir}/${fwdir}/${version}${libnm}"
-			install_name_tool -id "@executable_path/../${fwdir}/${version}${libnm}" "${condir}/${fwdir}/${version}${libnm}"
+			installname -id "@executable_path/../${fwdir}/${version}${libnm}" "${condir}/${fwdir}/${version}${libnm}"
 			find "${condir}/PlugIns" "${condir}/"$(dirname "${fwdir}") -name Headers -prune -o -type f -print | while read filename ; do
 				if [ "${filename}" != "${target}" ]; then
 					otool -L "${filename}" 2>/dev/null | sort -u | while read library ; do
 						# pattern match for: /path/to/qt/lib/QtGui.framework/Versions/4/QtGui (compatibility version 4.6.0, current version 4.6.2)
 						case "${library}" in
+						*@rpath/*"${libnm}"*"("*version*")"*)
+							echo rpath based name for ${libnm} is ok.
+							;;
 						*"${libnm}"*"("*version*")"*)
-							echo Correct library id reference to "${libnm}" in "${filename}"
-							install_name_tool -change\
+							installname -change\
 								"${source}/lib/${dirname}/${version}${libnm}"\
 								"@executable_path/../${fwdir}/${version}${libnm}"\
 								"${filename}"
@@ -743,8 +747,7 @@ EOF
 				fi
 			done
 		)
-		echo Correct library id reference to "${libnm}" in "${target}"
-		install_name_tool -change\
+		installname -change\
 			"${source}/lib/${dirname}/${version}${libnm}"\
 			"@executable_path/../${fwdir}/${version}${libnm}"\
 			"${target}"
