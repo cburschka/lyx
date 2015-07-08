@@ -1647,9 +1647,15 @@ void InsetMathHull::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MATH_DISPLAY: {
 		cur.recordUndoInset();
 		mutate(type_ == hullSimple ? hullEquation : hullSimple);
-		cur.idx() = 0;
-		cur.pos() = cur.lastpos();
-		//cur.dispatched(FINISHED);
+		// if the cursor is in a cell that got merged, move it to
+		// start of the hull inset.
+		if (cur.idx() > 0) {
+			cur.idx() = 0;
+			cur.pos() = 0;
+		}
+		if (cur.pos() > cur.lastpos())
+			cur.pos() = cur.lastpos();
+
 		break;
 	}
 
