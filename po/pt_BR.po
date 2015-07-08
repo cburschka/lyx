@@ -8,10 +8,10 @@
 # Susana Barbosa <susanabarb@gmail.com>, 2010, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: pt_BR 2.1.3\n"
+"Project-Id-Version: pt_BR 2.1.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2015-07-03 12:04-0400\n"
-"PO-Revision-Date: 2015-05-30 23:12-0300\n"
+"PO-Revision-Date: 2015-07-05 09:38-0300\n"
 "Last-Translator: Georger Araujo <georger underscore br pound yahoo dot com "
 "dot br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br pound yahoo dot "
@@ -327,8 +327,8 @@ msgstr "Nenhum"
 msgid ""
 "Enter the command to load the language package (default: \\usepackage{babel})"
 msgstr ""
-"Digite o comando para carregar o pacote de idioma (padrão: "
-"\\usepackage{babel})"
+"Digite o comando para carregar o pacote de idioma (padrão: \\usepackage"
+"{babel})"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:87
 msgid "Command s&tart:"
@@ -336,7 +336,7 @@ msgstr "&Início do comando:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:97
 msgid "The LaTeX command that starts a switch to a foreign language"
-msgstr "O comando LaTeX  que inicia uma mudança para um idioma estrangeiro"
+msgstr "O comando LaTeX que inicia uma mudança para um idioma estrangeiro"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:117
 msgid "Command e&nd:"
@@ -344,7 +344,7 @@ msgstr "&Fim do comando:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:127
 msgid "The LaTeX command that ends a switch to a foreign language"
-msgstr "O comando LaTeX  que termina uma mudança para um idioma estrangeiro"
+msgstr "O comando LaTeX que termina uma mudança para um idioma estrangeiro"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:134
 msgid "Default Decimal &Separator:"
@@ -1729,7 +1729,7 @@ msgstr "Aplica bordas à(s) célula(s) (selecionada(s))"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1099
 msgid "All Borders"
-msgstr "Todas as bordas"
+msgstr "Todas as Bordas"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1105
 msgid "Set all borders of the current (selected) cell(s)"
@@ -2047,7 +2047,7 @@ msgstr "Editar inline, com o nome na barra de status, Macros de Matemática"
 #: src/frontends/qt4/ui/PrefEditUi.ui:132
 msgid "Edit Math Macros with a parameter list (like in LyX < 1.6)"
 msgstr ""
-"Editar Macros de Matemática com uma lista de parâmetros (como no  LyX < 1.6)"
+"Editar Macros de Matemática com uma lista de parâmetros (como no LyX < 1.6)"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:156
 msgid "Fullscreen"
@@ -3386,11 +3386,14 @@ msgid ""
 "Existing documents will still be saved in their current state (compressed or "
 "uncompressed)."
 msgstr ""
+"Se isto estiver marcado, documentos novos serão salvos em um formato binário "
+"comprimido por padrão.\n"
+"Documentos existentes continuarão a ser salvos em seus estados atuais "
+"(comprimido ou não-comprimido)."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
-#, fuzzy
 msgid "&Save new documents compressed by default"
-msgstr "&Os documentos deverão ser salvos por padrão em formato comprimido"
+msgstr "&Salvar documentos novos em formato comprimido por padrão"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:158
 msgid "Windows && work area"
@@ -8195,7 +8198,7 @@ msgstr "Especificações padrão de superposição no interior esta moldura"
 #: lib/layouts/beamer.layout:443 lib/layouts/beamer.layout:465
 #: lib/layouts/beamer.layout:476 lib/layouts/beamer.layout:502
 msgid "Frame Options"
-msgstr "Opções  de Moldura"
+msgstr "Opções de Moldura"
 
 #: lib/layouts/beamer.layout:444 lib/layouts/beamer.layout:466
 #: lib/layouts/beamer.layout:477 lib/layouts/beamer.layout:503
@@ -12780,7 +12783,7 @@ msgstr "Capítulo \\thechapter"
 
 #: lib/layouts/stdsections.inc:46
 msgid "Appendix \\thechapter"
-msgstr "Apêndice  \\thechapter"
+msgstr "Apêndice \\thechapter"
 
 #: lib/layouts/aguplus.inc:135
 msgid "CCC"
@@ -13393,9 +13396,9 @@ msgid ""
 "it depends on R >= 2.14.1. For more info see http://yihui.name/knitr"
 msgstr ""
 "Usa o pacote knitr do R para gerar relatórios dinamicamente. Este pacote do "
-"R deve ser instalado para que o módule possa funcionar: install."
-"packages('knitr'). Nota: exige R >= 2.14.1. Para maiores informações, "
-"consulte http://yihui.name/knitr"
+"R deve ser instalado para que o módule possa funcionar: install.packages"
+"('knitr'). Nota: exige R >= 2.14.1. Para maiores informações, consulte "
+"http://yihui.name/knitr"
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:6
@@ -13510,7 +13513,7 @@ msgstr ""
 "contrário do módulo Teorema simples, cada tipo diferente de teorema "
 "fornecido aqui tem um contador separado (p.ex., teorema 1, teorema 2, lema "
 "1, proposição 1, teorema 3, lema 2, ..., em vez de teorema 1, teorema 2, "
-"lema 3, proposição 4, ....). A numeração volta a zero ao iniciar uma nova "
+"lema 3, proposição 4, ...). A numeração volta a zero ao iniciar uma nova "
 "seção."
 
 #: lib/layouts/theorems-chap-bytype.module:2
@@ -13722,7 +13725,7 @@ msgstr "Estilo padrão de combo box"
 
 #: lib/layouts/pdfform.module:176
 msgid "Popdown Box Style"
-msgstr "Estilo Popdown Box"
+msgstr "Estilo de Popdown Box"
 
 #: lib/layouts/pdfform.module:179
 msgid "Default popdown box style"
@@ -14086,7 +14089,7 @@ msgstr ""
 "contrário do módulo Teorema simples, cada tipo diferente de teorema "
 "fornecido aqui tem um contador separado (p.ex., teorema 1, teorema 2, lema "
 "1, proposição 1, teorema 3, lema 2, ..., em vez de teorema 1, teorema 2, "
-"lema 3, proposição 4, ....).  O âmbito da numeração é o documento inteiro. "
+"lema 3, proposição 4, ...). O âmbito da numeração é o documento inteiro. "
 "Para numerar por capítulo e por seção, use os módulos '... no âmbito de cada "
 "Capítulo' e '... no âmbito de cada Seção', respectivamente."
 
@@ -15177,7 +15180,7 @@ msgstr "Minion Pro (New TX)"
 
 #: lib/latexfonts:676
 msgid "Times Roman (New TX)"
-msgstr "Times Roman  (New TX)"
+msgstr "Times Roman (New TX)"
 
 #: lib/encodings:31
 msgid "Unicode (utf8)"
@@ -15693,7 +15696,7 @@ msgstr "Colar como PDF"
 
 #: lib/ui/stdmenus.inc:161
 msgid "Paste as PNG"
-msgstr "Colar como  PNG"
+msgstr "Colar como PNG"
 
 #: lib/ui/stdmenus.inc:162
 msgid "Paste as JPEG"
@@ -16245,7 +16248,7 @@ msgstr "Aspa Simples|S"
 
 #: lib/ui/stdmenus.inc:397
 msgid "Protected Hyphen|y"
-msgstr "Hifen Protegido|H"
+msgstr "Hífen Protegido|H"
 
 #: lib/ui/stdmenus.inc:398
 msgid "Breakable Slash|a"
@@ -16301,7 +16304,7 @@ msgstr "Phantom"
 
 #: lib/ui/stdmenus.inc:416
 msgid "Hyphenation Point|H"
-msgstr "Ponto de Hifenação|H"
+msgstr "Ponto de Hifenização|H"
 
 #: lib/ui/stdmenus.inc:417
 msgid "Ligature Break|k"
@@ -16488,7 +16491,6 @@ msgid "LaTeX Log|L"
 msgstr "Log do LaTeX|L"
 
 #: lib/ui/stdmenus.inc:517
-#, fuzzy
 msgid "Start Appendix Here|x"
 msgstr "Começar Apêndice Aqui|p"
 
@@ -16501,7 +16503,6 @@ msgid "Update Master Document|a"
 msgstr "Atualizar Documento Mestre|A"
 
 #: lib/ui/stdmenus.inc:524
-#, fuzzy
 msgid "Compressed|o"
 msgstr "Comprimido|m"
 
@@ -21877,7 +21878,7 @@ msgid ""
 msgstr ""
 "Um diagrama de posições de xadrez.\n"
 "Este modelo usa XBoard para editar a posição.\n"
-"Use o menu  'File->Save Position'  no Xboard para salvar\n"
+"Use o menu 'File->Save Position' no Xboard para salvar\n"
 " a posição que deseja mostrar.\n"
 "Assegure-se de que o arquivo tem extensão '.fen'\n"
 "e lembre-se de digitar um caminho (path) relativo\n"
@@ -23040,7 +23041,7 @@ msgid ""
 "The LaTeX package cancel is only used if \\cancel commands are used in "
 "formulas"
 msgstr ""
-"O pacote LaTeX cancel somente é usado se comandos  \\cancel forem usados em "
+"O pacote LaTeX cancel somente é usado se comandos \\cancel forem usados em "
 "fórmulas"
 
 #: src/BufferParams.cpp:462
@@ -24218,7 +24219,7 @@ msgstr ""
 "Sinal SIGSEGV recebido!\n"
 "Desculpe, você achou um erro no LyX, esperamos que você não tenha perdido "
 "nenhum dado.\n"
-"Por favor, leia as instruções para relato de bugs em  'Help-"
+"Por favor, leia as instruções para relato de bugs em 'Help-"
 ">Introduction' (Ajuda->Introdução) e envie um relatório sobre o bug, se "
 "necessário. Obrigado!\n"
 "Tchau."
@@ -24628,7 +24629,7 @@ msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
 msgstr ""
-"Defina as opções do makeindex (cf. man makeindex)  para usar com "
+"Defina as opções do makeindex (cf. man makeindex) para usar com "
 "nomenclaturas. Podem diferir das opções de processamento de índice remissivo."
 
 #: src/LyXRC.cpp:3255
@@ -24683,11 +24684,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:3283
 msgid ""
-"The LaTeX command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The LaTeX command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"Comando LaTeX para carregar o pacote de idioma. P.ex., "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"Comando LaTeX para carregar o pacote de idioma. P.ex., \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 
 #: src/LyXRC.cpp:3287
 msgid ""
@@ -24785,7 +24786,7 @@ msgstr "Mostra uma pré-visualização composta de coisas como matemática"
 
 #: src/LyXRC.cpp:3367
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
-msgstr "Equações pré-visualizadas terão etiquetas \"(#)\"  em vez de números"
+msgstr "Equações pré-visualizadas terão etiquetas \"(#)\" em vez de números"
 
 #: src/LyXRC.cpp:3371
 msgid "Scale the preview size to suit."
@@ -24926,7 +24927,7 @@ msgid ""
 "makes LyX use the nearest bitmap font size available, instead of scaling."
 msgstr ""
 "Permite o redimensionamento de fontes bitmap. Se você estiver usando uma "
-"fonte bitmap e esta opção estiver marcada,  pode ser que as fontes pareçam "
+"fonte bitmap e esta opção estiver marcada, pode ser que as fontes pareçam "
 "serrilhadas no LyX. Desmarque esta opção para que o LyX, em vez de "
 "redimensionar, use o tamanho de fonte bitmap mais próximo disponível."
 
@@ -25777,7 +25778,7 @@ msgid ""
 "LyX Version %1$s\n"
 "(%2$s)"
 msgstr ""
-"LyX Version %1$s\n"
+"LyX Versão %1$s\n"
 "(%2$s)"
 
 #: src/frontends/qt4/GuiAbout.cpp:122
@@ -25791,12 +25792,12 @@ msgstr "Pasta de usuário:"
 #: src/frontends/qt4/GuiAbout.cpp:129
 #, c-format
 msgid "Qt Version (run-time): %1$s"
-msgstr "Qt Version (run-time): %1$s"
+msgstr "Versão do Qt (run-time): %1$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:130
 #, c-format
 msgid "Qt Version (compile-time): %1$s"
-msgstr "Qt Version (compile-time): %1$s"
+msgstr "Versão do Qt (compile-time): %1$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:156
 msgid "About LyX"
@@ -26367,11 +26368,11 @@ msgstr "Não foi possível converter layout local para o formato atual."
 
 #: src/frontends/qt4/GuiDocument.cpp:589
 msgid "Layout is valid!"
-msgstr "Layout válido!"
+msgstr "Layout é válido!"
 
 #: src/frontends/qt4/GuiDocument.cpp:593
 msgid "Layout is invalid!"
-msgstr "Layout inválido!"
+msgstr "Layout é inválido!"
 
 #: src/frontends/qt4/GuiDocument.cpp:608
 msgid "Convert to current format"
@@ -26616,12 +26617,12 @@ msgstr "Não carregar"
 
 #: src/frontends/qt4/GuiDocument.cpp:1171
 msgid "The AMS LaTeX packages are always used"
-msgstr "Os pacotes LaTeX AMS são usados sempre"
+msgstr "Os pacotes LaTeX AMS sempre são usados"
 
 #: src/frontends/qt4/GuiDocument.cpp:1174
 #, c-format
 msgid "The LaTeX package %1$s is always used"
-msgstr "O pacote LaTeX %1$s é usado sempre"
+msgstr "O pacote LaTeX %1$s sempre é usado"
 
 #: src/frontends/qt4/GuiDocument.cpp:1179
 msgid "The AMS LaTeX packages are never used"
@@ -26630,7 +26631,7 @@ msgstr "Os pacotes LaTeX AMS nunca são usados"
 #: src/frontends/qt4/GuiDocument.cpp:1182
 #, c-format
 msgid "The LaTeX package %1$s is never used"
-msgstr "O pacote LaTeX  %1$s nunca é usado"
+msgstr "O pacote LaTeX %1$s nunca é usado"
 
 #: src/frontends/qt4/GuiDocument.cpp:1271
 #: src/frontends/qt4/GuiDocument.cpp:2134
@@ -29902,7 +29903,7 @@ msgstr "sp"
 
 #: src/lengthcommon.cpp:46
 msgid "Text Width %"
-msgstr "Largua Texto %"
+msgstr "Largura Texto %"
 
 #: src/lengthcommon.cpp:47
 msgid "Column Width %"
