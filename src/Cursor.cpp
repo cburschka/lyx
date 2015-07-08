@@ -386,7 +386,7 @@ void Cursor::saveBeforeDispatchPosXY()
 
 void Cursor::dispatch(FuncRequest const & cmd0)
 {
-	LYXERR(Debug::DEBUG, "cmd: " << cmd0 << '\n' << *this);
+	LYXERR(Debug::ACTION, "Cursor::dispatch: cmd: " << cmd0 << '\n' << *this);
 	if (empty())
 		return;
 

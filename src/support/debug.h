@@ -81,7 +81,7 @@ namespace Debug {
 		///
 		WORKAREA   = (1 << 19),
 		///
-		INSETTEXT  = (1 << 20),
+		CLIPBOARD  = (1 << 20),
 		///
 		GRAPHICS   = (1 << 21),
 		/// change tracking

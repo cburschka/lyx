@@ -60,7 +60,7 @@ ErrorItem errorTags[] = {
 	{ Debug::INSETS,    "insets",    N_("LyX Insets")},
 	{ Debug::FILES,     "files",     N_("Files used by LyX")},
 	{ Debug::WORKAREA,  "workarea",  N_("Workarea events")},
-	{ Debug::INSETTEXT, "insettext", N_("Insettext/tabular messages")},
+	{ Debug::CLIPBOARD, "clipboard", N_("Clipboard handling")},
 	{ Debug::GRAPHICS,  "graphics",  N_("Graphics conversion and loading")},
 	{ Debug::CHANGES,   "changes",   N_("Change tracking")},
 	{ Debug::EXTERNAL,  "external",  N_("External template/inset messages")},

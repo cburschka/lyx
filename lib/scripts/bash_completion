@@ -16,7 +16,7 @@ _lyx()
 	local dbg_cmds=( "none info init key gui \
 			parser lyxrc kbmap latex mathed font tclass \
 			lyxvc lyxserver action lyxlex depend insets \
-			files workarea insettext graphics changes \
+			files workarea clipboard graphics changes \
 			external painting debug any undo scrolling \
 			macros rtl locale selection find" )
 

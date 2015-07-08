@@ -63,7 +63,7 @@ namespace frontend {
 
 static QMimeData const * read_clipboard() 
 {
-	LYXERR(Debug::ACTION, "Getting Clipboard");
+	LYXERR(Debug::CLIPBOARD, "Getting Clipboard");
 	QMimeData const * source =
 		qApp->clipboard()->mimeData(QClipboard::Clipboard);
 	if (!source) {
@@ -82,7 +82,7 @@ static QMimeData const * read_clipboard()
 void CacheMimeData::update()
 {
 	time_t const start_time = current_time();
-	LYXERR(Debug::ACTION, "Creating CacheMimeData object");
+	LYXERR(Debug::CLIPBOARD, "Creating CacheMimeData object");
 	cached_formats_ = read_clipboard()->formats();
 
 	// Qt times out after 5 seconds if it does not recieve a response.
@@ -118,17 +118,17 @@ GuiClipboard::GuiClipboard()
 
 string const GuiClipboard::getAsLyX() const
 {
-	LYXERR(Debug::ACTION, "GuiClipboard::getAsLyX(): `");
+	LYXERR(Debug::CLIPBOARD, "GuiClipboard::getAsLyX(): `");
 	// We don't convert encodings here since the encoding of the
 	// clipboard contents is specified in the data itself
 	if (cache_.hasFormat(lyxMimeType())) {
 		// data from ourself or some other LyX instance
 		QByteArray const ar = cache_.data(lyxMimeType());
 		string const s(ar.data(), ar.count());
-		LYXERR(Debug::ACTION, s << "'");
+		LYXERR(Debug::CLIPBOARD, s << "'");
 		return s;
 	}
-	LYXERR(Debug::ACTION, "'");
+	LYXERR(Debug::CLIPBOARD, "'");
 	return string();
 }
 
@@ -267,7 +267,7 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 		// get image from QImage from clipboard
 		QImage image = qApp->clipboard()->image();
 		if (image.isNull()) {
-			LYXERR(Debug::ACTION, "No image in clipboard");
+			LYXERR(Debug::CLIPBOARD, "No image in clipboard");
 			return FileName();
 		}
 
@@ -300,12 +300,12 @@ FileName GuiClipboard::getAsGraphics(Cursor const & cur, GraphicsType type) cons
 		return FileName();
 	// data from ourself or some other LyX instance
 	QByteArray const ar = cache_.data(mime);
-	LYXERR(Debug::ACTION, "Getting from clipboard: mime = " << mime.constData()
+	LYXERR(Debug::CLIPBOARD, "Getting from clipboard: mime = " << mime.constData()
 	       << "length = " << ar.count());
 
 	QFile f(toqstr(filename.absFileName()));
 	if (!f.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-		LYXERR(Debug::ACTION, "Error opening file "
+		LYXERR(Debug::CLIPBOARD, "Error opening file "
 		       << filename.absFileName() << " for writing");
 		return FileName();
 	}
@@ -405,7 +405,7 @@ docstring const GuiClipboard::getAsText(TextType type) const
 		break;
 	}
 	}
-	LYXERR(Debug::ACTION, "GuiClipboard::getAsText(" << type << "): `" << str << "'");
+	LYXERR(Debug::CLIPBOARD, "GuiClipboard::getAsText(" << type << "): `" << str << "'");
 	if (str.isNull())
 		return docstring();
 
@@ -421,7 +421,7 @@ void GuiClipboard::put(string const & text) const
 
 void GuiClipboard::put(string const & lyx, docstring const & html, docstring const & text)
 {
-	LYXERR(Debug::ACTION, "GuiClipboard::put(`" << lyx << "' `"
+	LYXERR(Debug::CLIPBOARD, "GuiClipboard::put(`" << lyx << "' `"
 			      << to_utf8(html) << "' `" << to_utf8(text) << "')");
 	// We don't convert the encoding of lyx since the encoding of the
 	// clipboard contents is specified in the data itself
@@ -496,9 +496,9 @@ bool GuiClipboard::hasGraphicsContents(Clipboard::GraphicsType type) const
 	
 	// get mime data
 	QStringList const & formats = cache_.formats();
-	LYXERR(Debug::ACTION, "We found " << formats.size() << " formats");
+	LYXERR(Debug::CLIPBOARD, "We found " << formats.size() << " formats");
 	for (int i = 0; i < formats.size(); ++i)
-		LYXERR(Debug::ACTION, "Found format " << formats[i]);
+		LYXERR(Debug::CLIPBOARD, "Found format " << formats[i]);
 
 	// compute mime for type
 	QString mime;
@@ -559,9 +559,9 @@ void GuiClipboard::on_dataChanged()
 	//to time-out waiting for the clipboard.
 	cache_.update();
 	QStringList l = cache_.formats();
-	LYXERR(Debug::ACTION, "Qt Clipboard changed. We found the following mime types:");
+	LYXERR(Debug::CLIPBOARD, "Qt Clipboard changed. We found the following mime types:");
 	for (int i = 0; i < l.count(); i++)
-		LYXERR(Debug::ACTION, l.value(i));
+		LYXERR(Debug::CLIPBOARD, l.value(i));
 
 	plaintext_clipboard_empty_ = qApp->clipboard()->
 		text(QClipboard::Clipboard).isEmpty();
