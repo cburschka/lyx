@@ -387,13 +387,16 @@ if [ "${configure_qt_frameworks}" != "yes" -a -d "${QtSourceDir}" -a ! \( -d "${
 		echo configure options:
 		echo ${QtConfigureOptions} ${ARCHS} -prefix "${QtInstallDir}"
 		"${QtSourceDir}"/configure ${QtConfigureOptions} ${ARCHS} -prefix "${QtInstallDir}"
-		make ${MAKEJOBS} && make install
+		make -j1 && make -j1 install
 	)
+fi
+if [ -d "${QtInstallDir}" -a ! -f "${QtInstallDir}"/include/QtCore ]; then
 	cd "${QtInstallDir}" && (
 		mkdir -p include
 		cd include
 		for libnm in ${QtLibraries} ; do
-			test -d ${libnm} -o -L ${libnm} || ln -s ../lib/${libnm}.framework/Headers ${libnm}
+			test -d ${libnm} -o -L ${libnm} || \
+			( ln -s ../lib/${libnm}.framework/Headers ${libnm} && echo Link to framework ${libnm} )
 		done
 	)
 fi
