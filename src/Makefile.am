@@ -44,7 +44,9 @@ if LYX_WIN_RESOURCE
 endif
 
 if INSTALL_MACOSX
-lyx_LDFLAGS = -framework AppKit -framework ApplicationServices
+lyx_LDFLAGS = -framework AppKit -framework ApplicationServices \
+	-Wl,-rpath,@loader_path/../Frameworks \
+	-Wl,-rpath,@executable_path/../Frameworks
 endif
 
 #lyx_LDFLAGS=-Wl,-O1
