@@ -52,10 +52,10 @@
 # * Encoding is not relevant for XeTeX (which is utf8 always), and if
 #   Document > Settings > Language > Encoding is not set to "Language
 #   Default"
-# * InternalEncoding is used to tell LyX that babel internally sets a font
-#   encoding (such as hebrew to LHE). This prevents LyX from outputting
-#   characters that only exist in T1 font encoding (such as "<", ">", "|"
-#   and straight quote). See bug #5091.
+# * InternalEncoding is used to tell LyX that babel internally sets a
+#   non-standard font encoding (such as hebrew to LHE or greek to LGR).
+#   If True, LyX cares for characters/macros that do not exist in
+#   some font encodings ("<", ">", "|" and straight quote). See bug #5091.
 # * "FontEncoding none" tells LyX that fontenc should not be loaded with this
 #   language.
 # * AsBabelOptions advices LyX to pass the languages locally to babel, not
@@ -64,7 +64,7 @@
 #   FIXME: in this case, we might still need to pass the other languages
 #          globally, for the use of other packages (such as varioref).
 # * LangCode is also used for spellchecking and thesaurus, where the
-#   dictionaries are named accordingly. Thus, check this when intoducing/
+#   dictionaries are named accordingly. Thus, check this when introducing/
 #   changing language codes (especially aspell, thesaurus).
 #   TODO: maybe use Best Current Practice (BCP 47) codes for LangCode
 #         http://www.rfc-editor.org/rfc/bcp/bcp47.txt
@@ -290,6 +290,7 @@ Language bulgarian
 	PolyglossiaName  bulgarian
 	QuoteStyle       german
 	Encoding         cp1251
+	FontEncoding     T2A
 	LangCode         bg_BG
 End
 
@@ -496,8 +497,7 @@ Language georgian
 	BabelName        georgian
 	QuoteStyle       german
 	Encoding         utf8
-	InternalEncoding true
-	FontEncoding     "T8M,T8K"
+	FontEncoding     T8M
 	LangCode         ka_GE
 End
 
@@ -730,6 +730,7 @@ Language latvian
 	PolyglossiaName  latvian
 	QuoteStyle       danish
 	Encoding         iso8859-4
+#	FontEncoding     L7x # (required for hyphenation but not set by babel)
 	LangCode         lv_LV
 	AsBabelOptions   true
 End
@@ -742,6 +743,7 @@ Language lithuanian
 	PolyglossiaName  lithuanian
 	QuoteStyle       german
 	Encoding         iso8859-13
+	FontEncoding     L7x
 	LangCode         lt_LT
 	AsBabelOptions   true
 End
@@ -780,6 +782,7 @@ Language mongolian
 	GuiName          "Mongolian"
 	BabelName        mongolian
 	Encoding         utf8
+	FontEncoding     T2A
 	LangCode         mn_MN
 	AsBabelOptions   true
 End
@@ -840,6 +843,7 @@ Language polish
 	PolyglossiaName  polish
 	QuoteStyle       polish
 	Encoding         iso8859-2
+#	FontEncoding     QX # (required for hyphenation but not set by babel)
 	LangCode         pl_PL
 End
 
@@ -859,7 +863,7 @@ Language romanian
 	BabelName        romanian
 	PolyglossiaName  romanian
 	QuoteStyle       polish
-	Encoding         iso8859-2
+	Encoding         iso8859-16
 	LangCode         ro_RO
 End
 
@@ -871,7 +875,6 @@ Language russian
 	QuoteStyle       french
 	Encoding         koi8-r
 	FontEncoding     T2A
-	InternalEncoding true
 	LangCode         ru_RU
 End
 
@@ -906,7 +909,8 @@ Language serbian
 	BabelName        serbianc
 	PolyglossiaName  serbian
 	QuoteStyle       german
-	Encoding         iso8859-5
+	Encoding         utf-8
+	FontEncoding     T2A
 	LangCode         sr_RS
 	AsBabelOptions   true
 End
@@ -1007,6 +1011,7 @@ Language thai
 	PolyglossiaName  thai
 	QuoteStyle       english
 	Encoding         tis620-0
+#	FontEncoding     LTH
 	LangCode         th_TH
 	PostBabelPreamble
 	\usepackage{thswitch}
@@ -1054,7 +1059,6 @@ Language ukrainian
 	QuoteStyle       french
 	Encoding         koi8-u
 	FontEncoding     T2A
-	InternalEncoding true
 	LangCode         uk_UA
 End
 
