@@ -184,13 +184,14 @@ static docstring const changetracking_none_def = from_ascii(
 	"\\newcommand{\\lyxadded}[3]{#3}\n"
 	"\\newcommand{\\lyxdeleted}[3]{}\n");
 
+static docstring const textgreek_LGR_def = from_ascii(
+	"\\DeclareFontEncoding{LGR}{}{}\n");
 static docstring const textgreek_def = from_ascii(
 	"\\DeclareRobustCommand{\\greektext}{%\n"
 	"  \\fontencoding{LGR}\\selectfont\\def\\encodingdefault{LGR}}\n"
 	"\\DeclareRobustCommand{\\textgreek}[1]{\\leavevmode{\\greektext #1}}\n"
-	"\\DeclareFontEncoding{LGR}{}{}\n"
-	"\\DeclareTextSymbol{\\~}{LGR}{126}");
-
+        "\\ProvideTextCommand{\\~}{LGR}[1]{\\char126#1}\n");
+   
 static docstring const textcyr_def = from_ascii(
 	"\\DeclareRobustCommand{\\cyrtext}{%\n"
 	"  \\fontencoding{T2A}\\selectfont\\def\\encodingdefault{T2A}}\n"
@@ -1126,6 +1127,9 @@ docstring const LaTeXFeatures::getMacros() const
 		macros << lyxarrow_def << '\n';
 
 	if (!usePolyglossia() && mustProvide("textgreek")) {
+	        // ensure LGR font encoding is defined also if fontenc is not loaded by LyX
+	   	if (params_.font_encoding() == "default")
+			macros << textgreek_LGR_def;
 		// Avoid a LaTeX error if times fonts are used and the grtimes
 		// package is installed but actual fonts are not (bug 6469).
 		if (params_.fonts_roman == "times")

@@ -687,7 +687,7 @@
 0x0310 "\\textdotbreve"           "tipa" "combining,force" # COMBINING CANDRABINDU
 0x0311 "\\textroundcap"           "tipa" "combining,force" # COMBINING INVERTED BREVE
 #0x0312 ""                         "" "combining,force" # COMBINING TURNED COMMA ABOVE
-#0x0313 ""                         "" "combining,force" # COMBINING COMMA ABOVE
+#0x0313 ""                         "" "combining,force" # COMBINING COMMA ABOVE == COMBINING GREEK KORONIS (psili)
 #0x0314 ""                         "" "combining,force" # COMBINING REVERSED COMMA ABOVE
 #0x0315 ""                         "" "combining,force" # COMBINING COMMA ABOVE RIGHT
 0x0316 "\\textsubgrave"           "tipa" "combining,force" # COMBINING GRAVE ACCENT BELOW
@@ -734,10 +734,10 @@
 #0x033f ""                         "" "combining,force" # COMBINING DOUBLE OVERLINE
 #0x0340 ""                         "" "combining,force" # COMBINING GRAVE TONE MARK
 #0x0341 ""                         "" "combining,force" # COMBINING ACUTE TONE MARK
-0x0342 "\\~" 			   "textgreek" "combining,force" "" "" # COMBINING GREEK PERISPOMENI 
-#0x0343 ""                         "" "combining,force" # COMBINING GREEK KORONIS
-#0x0344 ""                         "" "combining,force" # COMBINING GREEK DIALYTIKA TONOS
-#0x0345 ""                         "" "combining,force" # COMBINING GREEK YPOGEGRAMMENI
+0x0342 "\\~"                       "textgreek" "combining,force" "" "" # COMBINING GREEK PERISPOMENI
+#0x0343 ""                         "" "combining,force" # COMBINING GREEK KORONIS == 0x0313 COMBINING COMMA ABOVE (= combining GREEK PSILI)
+0x0344 "\\\"'"                     "" "combining,force" # COMBINING GREEK DIALYTIKA TONOS
+0x0345 "|"                         "textgreek" "force"  # COMBINING GREEK YPOGEGRAMMENI (place after the base letter, the combination is done via ligature definitions in Greek text fonts (LGR))
 0x0346 "\\overbridge"             "tipa" "combining,force" # COMBINING BRIDGE ABOVE
 0x0347 "\\subdoublebar"           "tipa" "combining,force" # COMBINING EQUALS SIGN BELOW
 0x0348 "\\subdoublevert"          "tipa" "combining,force" # COMBINING DOUBLE VERTICAL LINE BELOW
@@ -1478,16 +1478,16 @@
 0x1f03 "\\textgreek{<`a}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH DASIA AND VARIA
 0x1f04 "\\textgreek{>'a}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH PSILI AND OXIA
 0x1f05 "\\textgreek{<'a}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH DASIA AND OXIA
-0x1f06 "\\textgreek{>\\~a}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH PSILI AND PERISPOMENI
-0x1f07 "\\textgreek{<\\~a}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH DASIA AND PERISPOMENI
+0x1f06 "\\textgreek{\\~>a}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH PSILI AND PERISPOMENI
+0x1f07 "\\textgreek{\\~<a}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH DASIA AND PERISPOMENI
 0x1f08 "\\textgreek{>A}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH PSILI
 0x1f09 "\\textgreek{<A}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH DASIA
 0x1f0a "\\textgreek{>`A}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH PSILI AND VARIA
 0x1f0b "\\textgreek{<`A}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH DASIA AND VARIA
 0x1f0c "\\textgreek{>'A}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH PSILI AND OXIA
 0x1f0d "\\textgreek{<'A}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH DASIA AND OXIA
-0x1f0e "\\textgreek{>\\~A}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH PSILI AND PERISPOMENI
-0x1f0f "\\textgreek{<\\~A}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH DASIA AND PERISPOMENI
+0x1f0e "\\textgreek{\\~>A}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH PSILI AND PERISPOMENI
+0x1f0f "\\textgreek{\\~<A}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH DASIA AND PERISPOMENI
 0x1f10 "\\textgreek{>e}"	"textgreek" "" "" "" # GREEK SMALL LETTER EPSILON WITH PSILI
 0x1f11 "\\textgreek{<e}"	"textgreek" "" "" "" # GREEK SMALL LETTER EPSILON WITH DASIA
 0x1f12 "\\textgreek{>`e}"	"textgreek" "" "" "" # GREEK SMALL LETTER EPSILON WITH PSILI AND VARIA
@@ -1506,32 +1506,32 @@
 0x1f23 "\\textgreek{<`h}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH DASIA AND VARIA
 0x1f24 "\\textgreek{>'h}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH PSILI AND OXIA
 0x1f25 "\\textgreek{<'h}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH DASIA AND OXIA
-0x1f26 "\\textgreek{>\\~h}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH PSILI AND PERISPOMENI
-0x1f27 "\\textgreek{<\\~h}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH DASIA AND PERISPOMENI
+0x1f26 "\\textgreek{\\~>h}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH PSILI AND PERISPOMENI
+0x1f27 "\\textgreek{\\~<h}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH DASIA AND PERISPOMENI
 0x1f28 "\\textgreek{>H}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH PSILI
 0x1f29 "\\textgreek{<H}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH DASIA
 0x1f2a "\\textgreek{>`H}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH PSILI AND VARIA
 0x1f2b "\\textgreek{<`H}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH DASIA AND VARIA
 0x1f2c "\\textgreek{>'H}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH PSILI AND OXIA
 0x1f2d "\\textgreek{<'H}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH DASIA AND OXIA
-0x1f2e "\\textgreek{>\\~H}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH PSILI AND PERISPOMENI
-0x1f2f "\\textgreek{<\\~H}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH DASIA AND PERISPOMENI
+0x1f2e "\\textgreek{\\~>H}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH PSILI AND PERISPOMENI
+0x1f2f "\\textgreek{\\~<H}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH DASIA AND PERISPOMENI
 0x1f30 "\\textgreek{>i}"	"textgreek" "" "" "" # GREEK SMALL LETTER IOTA WITH PSILI
 0x1f31 "\\textgreek{<i}"	"textgreek" "" "" "" # GREEK SMALL LETTER IOTA WITH DASIA
 0x1f32 "\\textgreek{>`i}"	"textgreek" "" "" "" # GREEK SMALL LETTER IOTA WITH PSILI AND VARIA
 0x1f33 "\\textgreek{<`i}"	"textgreek" "" "" "" # GREEK SMALL LETTER IOTA WITH DASIA AND VARIA
 0x1f34 "\\textgreek{>'i}"	"textgreek" "" "" "" # GREEK SMALL LETTER IOTA WITH PSILI AND OXIA
 0x1f35 "\\textgreek{<'i}"	"textgreek" "" "" "" # GREEK SMALL LETTER IOTA WITH DASIA AND OXIA
-0x1f36 "\\textgreek{>\\~i}"	"textgreek" "" "" "" # GREEK SMALL LETTER IOTA WITH PSILI AND PERISPOMENI
-0x1f37 "\\textgreek{<\\~i}"	"textgreek" "" "" "" # GREEK SMALL LETTER IOTA WITH DASIA AND PERISPOMENI
+0x1f36 "\\textgreek{\\~>i}"	"textgreek" "" "" "" # GREEK SMALL LETTER IOTA WITH PSILI AND PERISPOMENI
+0x1f37 "\\textgreek{\\~<i}"	"textgreek" "" "" "" # GREEK SMALL LETTER IOTA WITH DASIA AND PERISPOMENI
 0x1f38 "\\textgreek{>I}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER IOTA WITH PSILI
 0x1f39 "\\textgreek{<I}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER IOTA WITH DASIA
 0x1f3a "\\textgreek{>`I}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER IOTA WITH PSILI AND VARIA
 0x1f3b "\\textgreek{<`I}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER IOTA WITH DASIA AND VARIA
 0x1f3c "\\textgreek{>'I}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER IOTA WITH PSILI AND OXIA
 0x1f3d "\\textgreek{<'I}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER IOTA WITH DASIA AND OXIA
-0x1f3e "\\textgreek{>\\~I}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER IOTA WITH PSILI AND PERISPOMENI
-0x1f3f "\\textgreek{<\\~I}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER IOTA WITH DASIA AND PERISPOMENI
+0x1f3e "\\textgreek{\\~>I}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER IOTA WITH PSILI AND PERISPOMENI
+0x1f3f "\\textgreek{\\~<I}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER IOTA WITH DASIA AND PERISPOMENI
 0x1f40 "\\textgreek{>o}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMICRON WITH PSILI
 0x1f41 "\\textgreek{<o}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMICRON WITH DASIA
 0x1f42 "\\textgreek{>`o}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMICRON WITH PSILI AND VARIA
@@ -1550,28 +1550,28 @@
 0x1f53 "\\textgreek{<`u}"	"textgreek" "" "" "" # GREEK SMALL LETTER UPSILON WITH DASIA AND VARIA
 0x1f54 "\\textgreek{>'u}"	"textgreek" "" "" "" # GREEK SMALL LETTER UPSILON WITH PSILI AND OXIA
 0x1f55 "\\textgreek{<'u}"	"textgreek" "" "" "" # GREEK SMALL LETTER UPSILON WITH DASIA AND OXIA
-0x1f56 "\\textgreek{>\\~u}"	"textgreek" "" "" "" # GREEK SMALL LETTER UPSILON WITH PSILI AND PERISPOMENI
-0x1f57 "\\textgreek{<\\~u}"	"textgreek" "" "" "" # GREEK SMALL LETTER UPSILON WITH DASIA AND PERISPOMENI
+0x1f56 "\\textgreek{\\~>u}"	"textgreek" "" "" "" # GREEK SMALL LETTER UPSILON WITH PSILI AND PERISPOMENI
+0x1f57 "\\textgreek{\\~<u}"	"textgreek" "" "" "" # GREEK SMALL LETTER UPSILON WITH DASIA AND PERISPOMENI
 0x1f59 "\\textgreek{<U}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER UPSILON WITH DASIA
 0x1f5b "\\textgreek{<`U}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER UPSILON WITH DASIA AND VARIA
 0x1f5d "\\textgreek{<'U}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER UPSILON WITH DASIA AND OXIA
-0x1f5f "\\textgreek{<\\~U}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER UPSILON WITH DASIA AND PERISPOMENI
+0x1f5f "\\textgreek{\\~<U}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER UPSILON WITH DASIA AND PERISPOMENI
 0x1f60 "\\textgreek{>w}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH PSILI
 0x1f61 "\\textgreek{<w}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH DASIA
 0x1f62 "\\textgreek{>`w}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH PSILI AND VARIA
 0x1f63 "\\textgreek{<`w}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH DASIA AND VARIA
 0x1f64 "\\textgreek{>'w}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH PSILI AND OXIA
 0x1f65 "\\textgreek{<'w}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH DASIA AND OXIA
-0x1f66 "\\textgreek{>\\~w}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH PSILI AND PERISPOMENI
-0x1f67 "\\textgreek{<\\~w}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH DASIA AND PERISPOMENI
+0x1f66 "\\textgreek{\\~>w}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH PSILI AND PERISPOMENI
+0x1f67 "\\textgreek{\\~<w}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH DASIA AND PERISPOMENI
 0x1f68 "\\textgreek{>W}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH PSILI
 0x1f69 "\\textgreek{<W}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH DASIA
 0x1f6a "\\textgreek{>`W}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH PSILI AND VARIA
 0x1f6b "\\textgreek{<`W}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH DASIA AND VARIA
 0x1f6c "\\textgreek{>'W}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH PSILI AND OXIA
 0x1f6d "\\textgreek{<'W}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH DASIA AND OXIA
-0x1f6e "\\textgreek{>\\~W}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH PSILI AND PERISPOMENI
-0x1f6f "\\textgreek{<\\~W}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH DASIA AND PERISPOMENI
+0x1f6e "\\textgreek{\\~>W}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH PSILI AND PERISPOMENI
+0x1f6f "\\textgreek{\\~<W}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH DASIA AND PERISPOMENI
 0x1f70 "\\textgreek{`a}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH VARIA
 0x1f71 "\\textgreek{'a}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH OXIA
 0x1f72 "\\textgreek{`e}"	"textgreek" "" "" "" # GREEK SMALL LETTER EPSILON WITH VARIA
@@ -1592,48 +1592,48 @@
 0x1f83 "\\textgreek{<`a|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH DASIA AND VARIA AND YPOGEGRAMMENI
 0x1f84 "\\textgreek{>'a|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH PSILI AND OXIA AND YPOGEGRAMMENI
 0x1f85 "\\textgreek{<'a|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH DASIA AND OXIA AND YPOGEGRAMMENI
-0x1f86 "\\textgreek{>\\~a|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH PSILI AND PERISPOMENI AND YPOGEGRAMMENI
-0x1f87 "\\textgreek{<\\~a|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH DASIA AND PERISPOMENI AND YPOGEGRAMMENI
+0x1f86 "\\textgreek{\\~>a|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH PSILI AND PERISPOMENI AND YPOGEGRAMMENI
+0x1f87 "\\textgreek{\\~<a|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH DASIA AND PERISPOMENI AND YPOGEGRAMMENI
 0x1f88 "\\textgreek{>A|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH PSILI AND PROSGEGRAMMENI
 0x1f89 "\\textgreek{<A|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH DASIA AND PROSGEGRAMMENI
 0x1f8a "\\textgreek{>`A|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH PSILI AND VARIA AND PROSGEGRAMMENI
 0x1f8b "\\textgreek{<`A|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH DASIA AND VARIA AND PROSGEGRAMMENI
 0x1f8c "\\textgreek{>'A|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH PSILI AND OXIA AND PROSGEGRAMMENI
 0x1f8d "\\textgreek{<'A|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH DASIA AND OXIA AND PROSGEGRAMMENI
-0x1f8e "\\textgreek{>\\~A|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH PSILI AND PERISPOMENI AND PROSGEGRAMMENI
-0x1f8f "\\textgreek{<\\~A|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH DASIA AND PERISPOMENI AND PROSGEGRAMMENI
+0x1f8e "\\textgreek{\\~>A|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH PSILI AND PERISPOMENI AND PROSGEGRAMMENI
+0x1f8f "\\textgreek{\\~<A|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ALPHA WITH DASIA AND PERISPOMENI AND PROSGEGRAMMENI
 0x1f90 "\\textgreek{>h|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH PSILI AND YPOGEGRAMMENI
 0x1f91 "\\textgreek{<h|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH DASIA AND YPOGEGRAMMENI
 0x1f92 "\\textgreek{>`h|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH PSILI AND VARIA AND YPOGEGRAMMENI
 0x1f93 "\\textgreek{<`h|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH DASIA AND VARIA AND YPOGEGRAMMENI
 0x1f94 "\\textgreek{>'h|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH PSILI AND OXIA AND YPOGEGRAMMENI
 0x1f95 "\\textgreek{<'h|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH DASIA AND OXIA AND YPOGEGRAMMENI
-0x1f96 "\\textgreek{>\\~h|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH PSILI AND PERISPOMENI AND YPOGEGRAMMENI
-0x1f97 "\\textgreek{<\\~h|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH DASIA AND PERISPOMENI AND YPOGEGRAMMENI
+0x1f96 "\\textgreek{\\~>h|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH PSILI AND PERISPOMENI AND YPOGEGRAMMENI
+0x1f97 "\\textgreek{\\~<h|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH DASIA AND PERISPOMENI AND YPOGEGRAMMENI
 0x1f98 "\\textgreek{>H|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH PSILI AND PROSGEGRAMMENI
 0x1f99 "\\textgreek{<H|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH DASIA AND PROSGEGRAMMENI
 0x1f9a "\\textgreek{>`H|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH PSILI AND VARIA AND PROSGEGRAMMENI
 0x1f9b "\\textgreek{<`H|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH DASIA AND VARIA AND PROSGEGRAMMENI
 0x1f9c "\\textgreek{>'H|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH PSILI AND OXIA AND PROSGEGRAMMENI
 0x1f9d "\\textgreek{<'H|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH DASIA AND OXIA AND PROSGEGRAMMENI
-0x1f9e "\\textgreek{>\\~H|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH PSILI AND PERISPOMENI AND PROSGEGRAMMENI
-0x1f9f "\\textgreek{<\\~H|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH DASIA AND PERISPOMENI AND PROSGEGRAMMENI
+0x1f9e "\\textgreek{\\~>H|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH PSILI AND PERISPOMENI AND PROSGEGRAMMENI
+0x1f9f "\\textgreek{\\~<H|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH DASIA AND PERISPOMENI AND PROSGEGRAMMENI
 0x1fa0 "\\textgreek{>w|}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH PSILI AND YPOGEGRAMMENI
 0x1fa1 "\\textgreek{<w|}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH DASIA AND YPOGEGRAMMENI
 0x1fa2 "\\textgreek{>`w|}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH PSILI AND VARIA AND YPOGEGRAMMENI
 0x1fa3 "\\textgreek{<`w|}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH DASIA AND VARIA AND YPOGEGRAMMENI
 0x1fa4 "\\textgreek{>'w|}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH PSILI AND OXIA AND YPOGEGRAMMENI
 0x1fa5 "\\textgreek{<'w|}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH DASIA AND OXIA AND YPOGEGRAMMENI
-0x1fa6 "\\textgreek{>\\~w|}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH PSILI AND PERISPOMENI AND YPOGEGRAMMENI
-0x1fa7 "\\textgreek{<\\~w|}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH DASIA AND PERISPOMENI AND YPOGEGRAMMENI
+0x1fa6 "\\textgreek{\\~>w|}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH PSILI AND PERISPOMENI AND YPOGEGRAMMENI
+0x1fa7 "\\textgreek{\\~<w|}"	"textgreek" "" "" "" # GREEK SMALL LETTER OMEGA WITH DASIA AND PERISPOMENI AND YPOGEGRAMMENI
 0x1fa8 "\\textgreek{>W|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH PSILI AND PROSGEGRAMMENI
 0x1fa9 "\\textgreek{<W|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH DASIA AND PROSGEGRAMMENI
 0x1faa "\\textgreek{>`W|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH PSILI AND VARIA AND PROSGEGRAMMENI
 0x1fab "\\textgreek{<`W|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH DASIA AND VARIA AND PROSGEGRAMMENI
 0x1fac "\\textgreek{>'W|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH PSILI AND OXIA AND PROSGEGRAMMENI
 0x1fad "\\textgreek{<'W|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH DASIA AND OXIA AND PROSGEGRAMMENI
-0x1fae "\\textgreek{>\\~W|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH PSILI AND PERISPOMENI AND PROSGEGRAMMENI
-0x1faf "\\textgreek{<\\~W|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH DASIA AND PERISPOMENI AND PROSGEGRAMMENI
+0x1fae "\\textgreek{\\~>W|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH PSILI AND PERISPOMENI AND PROSGEGRAMMENI
+0x1faf "\\textgreek{\\~<W|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER OMEGA WITH DASIA AND PERISPOMENI AND PROSGEGRAMMENI
 0x1fb0 "\\textgreek{\u{a}}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH VRACHY
 0x1fb1 "\\textgreek{\=a}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH MACRON
 0x1fb2 "\\textgreek{`a|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ALPHA WITH VARIA AND YPOGEGRAMMENI
@@ -1650,7 +1650,7 @@
 0x1fbe "\\textgreek{v|}"	"textgreek" "" "" "" # GREEK PROSGEGRAMMENI
 0x1fbf "\\textgreek{>v}"	"textgreek" "" "" "" # GREEK PSILI
 0x1fc0 "\\textgreek{\\~v}"	"textgreek" "" "" "" # GREEK PERISPOMENI
-0x1fc1 "\\textgreek{\"\\~v}"	"textgreek" "" "" "" # GREEK DIALYTIKA AND PERISPOMENI
+0x1fc1 "\\textgreek{\\~\"v}"	"textgreek" "" "" "" # GREEK DIALYTIKA AND PERISPOMENI
 0x1fc2 "\\textgreek{`h|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH VARIA AND YPOGEGRAMMENI
 0x1fc3 "\\textgreek{h|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH YPOGEGRAMMENI
 0x1fc4 "\\textgreek{'h|}"	"textgreek" "" "" "" # GREEK SMALL LETTER ETA WITH OXIA AND YPOGEGRAMMENI
@@ -1663,20 +1663,20 @@
 0x1fcc "\\textgreek{H|}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER ETA WITH PROSGEGRAMMENI
 0x1fcd "\\textgreek{>`v}"	"textgreek" "" "" "" # GREEK PSILI AND VARIA
 0x1fce "\\textgreek{>'v}"	"textgreek" "" "" "" # GREEK PSILI AND OXIA
-0x1fcf "\\textgreek{>\\~v}"	"textgreek" "" "" "" # GREEK PSILI AND PERISPOMENI
+0x1fcf "\\textgreek{\\~>v}"	"textgreek" "" "" "" # GREEK PSILI AND PERISPOMENI
 0x1fd0 "\\textgreek{\\u{i}}"	"textgreek" "" "" "" # GREEK SMALL LETTER IOTA WITH VRACHY
 0x1fd1 "\\textgreek{\\=i}"	"textgreek" "" "" "" # GREEK SMALL LETTER IOTA WITH MACRON
 0x1fd2 "\\textgreek{\"`i}"	"textgreek" "" "" "" # GREEK SMALL LETTER IOTA WITH DIALYTIKA AND VARIA
 0x1fd3 "\\textgreek{\"'i}"	"textgreek" "" "" "" # GREEK SMALL LETTER IOTA WITH DIALYTIKA AND OXIA
 0x1fd6 "\\textgreek{\\~i}"	"textgreek" "" "" "" # GREEK SMALL LETTER IOTA WITH PERISPOMENI
-0x1fd7 "\\textgreek{\"\\~i}"	"textgreek" "" "" "" # GREEK SMALL LETTER IOTA WITH DIALYTIKA AND PERISPOMENI
+0x1fd7 "\\textgreek{\\~\"i}"	"textgreek" "" "" "" # GREEK SMALL LETTER IOTA WITH DIALYTIKA AND PERISPOMENI
 0x1fd8 "\\textgreek{\\u{I}}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER IOTA WITH VRACHY
 0x1fd9 "\\textgreek{\\=I}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER IOTA WITH MACRON
 0x1fda "\\textgreek{`I}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER IOTA WITH VARIA
 0x1fdb "\\textgreek{'I}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER IOTA WITH OXIA
 0x1fdd "\\textgreek{<`v}"	"textgreek" "" "" "" # GREEK DASIA AND VARIA
 0x1fde "\\textgreek{<`v}"	"textgreek" "" "" "" # GREEK DASIA AND OXIA
-0x1fdf "\\textgreek{<\\~v}"	"textgreek" "" "" "" # GREEK DASIA AND PERISPOMENI
+0x1fdf "\\textgreek{\\~<v}"	"textgreek" "" "" "" # GREEK DASIA AND PERISPOMENI
 0x1fe0 "\\textgreek{\\u{u}}"	"textgreek" "" "" "" # GREEK SMALL LETTER UPSILON WITH VRACHY
 0x1fe1 "\\textgreek{\\=u}"	"textgreek" "" "" "" # GREEK SMALL LETTER UPSILON WITH MACRON
 0x1fe2 "\\textgreek{\"`u}"	"textgreek" "" "" "" # GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND VARIA
@@ -1684,7 +1684,7 @@
 0x1fe4 "\\textgreek{>r}"	"textgreek" "" "" "" # GREEK SMALL LETTER RHO WITH PSILI
 0x1fe5 "\\textgreek{<r}"	"textgreek" "" "" "" # GREEK SMALL LETTER RHO WITH DASIA
 0x1fe6 "\\textgreek{\\~u}"	"textgreek" "" "" "" # GREEK SMALL LETTER UPSILON WITH PERISPOMENI
-0x1fe7 "\\textgreek{\"\\~u}"	"textgreek" "" "" "" # GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND PERISPOMENI
+0x1fe7 "\\textgreek{\\~\"u}"	"textgreek" "" "" "" # GREEK SMALL LETTER UPSILON WITH DIALYTIKA AND PERISPOMENI
 0x1fe8 "\\textgreek{\\u{U}}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER UPSILON WITH VRACHY
 0x1fe9 "\\textgreek{\\=U}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER UPSILON WITH MACRON
 0x1fea "\\textgreek{`U}"	"textgreek" "" "" "" # GREEK CAPITAL LETTER UPSILON WITH VARIA
