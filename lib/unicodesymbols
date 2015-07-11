@@ -1187,11 +1187,11 @@
 0x1d63 "\\textsubscript{r}"       "subscript" "" "{{}_r}" "" # LATIN SUBSCRIPT SMALL LETTER R
 0x1d64 "\\textsubscript{u}"       "subscript" "" "{{}_u}" "" # LATIN SUBSCRIPT SMALL LETTER U
 0x1d65 "\\textsubscript{v}"       "subscript" "" "{{}_v}" "" # LATIN SUBSCRIPT SMALL LETTER V
-0x1d66 "\\textsubscript{\\textgreek{b}}" "subscript" "" "{{}_\\beta}" "" # GREEK SUBSCRIPT SMALL LETTER BETA
-0x1d67 "\\textsubscript{\\textgreek{g}}" "subscript" "" "{{}_\\gamma}" "" # GREEK SUBSCRIPT SMALL LETTER GAMMA
-0x1d68 "\\textsubscript{\\textgreek{r}}" "subscript" "" "{{}_\\rho}" "" # GREEK SUBSCRIPT SMALL LETTER RHO
-0x1d69 "\\textsubscript{\\textgreek{f}}" "subscript" "" "{{}_\\phi}" "" # GREEK SUBSCRIPT SMALL LETTER PHI
-0x1d6a "\\textsubscript{\\textgreek{q}}" "subscript" "" "{{}_\\chi}" "" # GREEK SUBSCRIPT SMALL LETTER CHI
+0x1d66 "\\textsubscript{\\textgreek{b}}" "subscript,textgreek" "" "{{}_\\beta}" "" # GREEK SUBSCRIPT SMALL LETTER BETA
+0x1d67 "\\textsubscript{\\textgreek{g}}" "subscript,textgreek" "" "{{}_\\gamma}" "" # GREEK SUBSCRIPT SMALL LETTER GAMMA
+0x1d68 "\\textsubscript{\\textgreek{r}}" "subscript,textgreek" "" "{{}_\\rho}" "" # GREEK SUBSCRIPT SMALL LETTER RHO
+0x1d69 "\\textsubscript{\\textgreek{f}}" "subscript,textgreek" "" "{{}_\\phi}" "" # GREEK SUBSCRIPT SMALL LETTER PHI
+0x1d6a "\\textsubscript{\\textgreek{q}}" "subscript,textgreek" "" "{{}_\\chi}" "" # GREEK SUBSCRIPT SMALL LETTER CHI
 #0x1d6b ""                         "" "" # LATIN SMALL LETTER UE
 #0x1d6c ""                         "" "" # LATIN SMALL LETTER B WITH MIDDLE TILDE
 0x1d6d "\\textsuperimposetilde{d}" "tipa" "force" # LATIN SMALL LETTER D WITH MIDDLE TILDE
