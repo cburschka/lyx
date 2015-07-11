@@ -16,10 +16,13 @@
 # line options, however.
 
 import gzip, os, re, string, sys
-if sys.version_info < (2, 4, 0):
-    from sets import Set as set
 from getopt import getopt
 from cStringIO import StringIO
+import subprocess
+
+# The path to the current python executable. sys.executable may fail, so in
+# this case we revert to simply calling "python" from the path.
+PYTHON_BIN = sys.executable if sys.executable else "python"
 
 running_on_windows = (os.name == 'nt')
 
@@ -69,13 +72,6 @@ def gzopen(file, mode):
     return open(unicode(file, 'utf-8'), mode)
 
 
-def run_cmd(cmd):
-    handle = os.popen(cmd, 'r')
-    cmd_stdout = handle.read()
-    cmd_status = handle.close()
-    return cmd_status, cmd_stdout
-
-
 def find_exe(candidates, extlist, path):
     for prog in candidates:
         for directory in path:
@@ -98,6 +94,7 @@ def gather_files(curfile, incfiles, lyx2lyx):
     " Recursively gather files."
     curdir = os.path.dirname(abspath(curfile))
     is_lyxfile = re_lyxfile.search(curfile)
+
     if is_lyxfile:
         if running_on_windows:
             # os.popen cannot cope with unicode arguments and we cannot be
@@ -106,14 +103,16 @@ def gather_files(curfile, incfiles, lyx2lyx):
             tmp = NamedTemporaryFile(delete=False)
             tmp.close()
             copyfile(unicode(curfile, 'utf-8'), tmp.name)
-            lyx2lyx_cmd = 'python "%s" "%s"' % (lyx2lyx, tmp.name)
-            l2l_status, l2l_stdout = run_cmd(lyx2lyx_cmd)
+            try:
+                l2l_stdout = subprocess.check_output([PYTHON_BIN, lyx2lyx, tmp.name])
+            except subprocess.CalledProcessError:
+                error('%s failed to convert "%s"' % (lyx2lyx, curfile))
             os.unlink(tmp.name)
         else:
-            lyx2lyx_cmd = 'python "%s" "%s"' % (lyx2lyx, curfile)
-            l2l_status, l2l_stdout = run_cmd(lyx2lyx_cmd)
-        if l2l_status != None:
-            error('%s failed to convert "%s"' % (lyx2lyx, curfile))
+            try:
+                l2l_stdout = subprocess.check_output([PYTHON_BIN, lyx2lyx, curfile])
+            except subprocess.CalledProcessError:
+                error('%s failed to convert "%s"' % (lyx2lyx, curfile))
         if l2l_stdout.startswith("\x1f\x8b"):
             l2l_stdout = gzip.GzipFile("", "r", 0, StringIO(l2l_stdout)).read()
         lines = l2l_stdout.splitlines()
@@ -222,8 +221,9 @@ def find_lyx2lyx(progloc, path):
     lyx_exe, full_path = find_exe(["lyxc", "lyx"], extlist, path)
     if lyx_exe == None:
         error('Cannot find the LyX executable in the path.')
-    cmd_status, cmd_stdout = run_cmd("%s -version 2>&1" % lyx_exe)
-    if cmd_status != None:
+    try:
+        cmd_stdout = subprocess.check_output([lyx_exe, '-version'], stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError:
         error('Cannot query LyX about the lyx2lyx script.')
     re_msvc = re.compile(r'^(\s*)(Host type:)(\s+)(win32)$')
     re_sysdir = re.compile(r'^(\s*)(LyX files dir:)(\s+)(\S+)$')
