@@ -249,6 +249,42 @@ static docstring const ogonek_def = from_ascii(
 	"  \\mathchar\"0\\hexnumber@\\symtipasymb0C}{#2}}\n"
 	"\\newcommand{\\ogonek}[1]{\\mathpalette\\doogonek{#1}}\n");
 
+static docstring const lyxaccent_def = from_ascii(
+	"%% custom text accent \\LyxTextAccent[<rise value (length)>]{<accent>}{<base>}\n"
+        "\\newcommand*{\\LyxTextAccent}[3][0ex]{%\n"
+        "  \\hmode@bgroup\\ooalign{\\null#3\\crcr\\hidewidth\n"
+        "  \\raise#1\\hbox{#2}\\hidewidth}\\egroup}\n"
+        "%% select a font size smaller than the current font size:\n"
+        "\\newcommand{\\LyxAccentSize}[1][\\sf@size]{%\n"
+        "  \\check@mathfonts\\fontsize#1\\z@\\math@fontsfalse\\selectfont\n"
+        "}\n");
+
+static docstring const textcommabelow_def = from_ascii(
+        "\\ProvideTextCommandDefault{\\textcommabelow}[1]{%%\n"
+        "  \\LyxTextAccent[-.31ex]{\\LyxAccentSize,}{#1}}\n");
+
+static docstring const textcommaabove_def = from_ascii(
+        "\\ProvideTextCommandDefault{\\textcommaabove}[1]{%%\n"
+        "  \\LyxTextAccent[.5ex]{\\LyxAccentSize`}{#1}}\n");
+
+static docstring const textcommaaboveright_def = from_ascii(
+        "\\ProvideTextCommandDefault{\\textcommaaboveright}[1]{%%\n"
+        "  \\LyxTextAccent[.5ex]{\\LyxAccentSize\\ `}{#1}}\n");
+
+// Baltic languages use a comma-accent instead of a cedilla
+static docstring const textbaltic_def = from_ascii(
+        "%% use comma accent instead of cedilla for these characters:\n"
+        "\\DeclareTextCompositeCommand{\\c}{T1}{g}{\\textcommaabove{g}}\n"
+        "\\DeclareTextCompositeCommand{\\c}{T1}{G}{\\textcommabelow{G}}\n"
+        "\\DeclareTextCompositeCommand{\\c}{T1}{k}{\\textcommabelow{k}}\n"
+        "\\DeclareTextCompositeCommand{\\c}{T1}{K}{\\textcommabelow{K}}\n"
+        "\\DeclareTextCompositeCommand{\\c}{T1}{l}{\\textcommabelow{l}}\n"
+        "\\DeclareTextCompositeCommand{\\c}{T1}{L}{\\textcommabelow{L}}\n"
+        "\\DeclareTextCompositeCommand{\\c}{T1}{n}{\\textcommabelow{n}}\n"
+        "\\DeclareTextCompositeCommand{\\c}{T1}{N}{\\textcommabelow{N}}\n"
+        "\\DeclareTextCompositeCommand{\\c}{T1}{r}{\\textcommabelow{r}}\n"
+        "\\DeclareTextCompositeCommand{\\c}{T1}{R}{\\textcommabelow{R}}\n");
+
 static docstring const lyxref_def = from_ascii(
 		"\\RS@ifundefined{subsecref}\n"
 		"  {\\newref{subsec}{name = \\RSsectxt}}\n"
@@ -498,6 +534,9 @@ bool LaTeXFeatures::isProvided(string const & name) const
 			from_ascii(params_.fonts_math)).provides(name, ot1,
 								       complete,
 								       nomath);
+	// TODO: "textbaltic" provided, if the font-encoding is "L7x"
+	//       "textgreek" provided, if a language with font-encoding LGR is used in the document
+	//       "textcyr" provided, if a language with font-encoding T2A is used in the document
 }
 
 
@@ -1145,6 +1184,23 @@ docstring const LaTeXFeatures::getMacros() const
 
 	if (!usePolyglossia() && mustProvide("textcyr"))
 		macros << textcyr_def << '\n';
+
+        // non-standard text accents:
+	if (mustProvide("textcommaabove") || mustProvide("textcommaaboveright") ||
+	    mustProvide("textcommabelow") || mustProvide("textbaltic"))
+		macros << lyxaccent_def;
+
+	if (mustProvide("textcommabelow") || mustProvide("textbaltic"))
+		macros << textcommabelow_def << '\n';
+
+	if (mustProvide("textcommaabove") || mustProvide("textbaltic"))
+		macros << textcommaabove_def << '\n';
+
+	if (mustProvide("textcommaaboveright"))
+		macros << textcommaaboveright_def << '\n';
+
+	if (mustProvide("textbaltic"))
+		macros << textbaltic_def << '\n';
 
 	if (mustProvide("lyxmathsym"))
 		macros << lyxmathsym_def << '\n';
