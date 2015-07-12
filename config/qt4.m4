@@ -202,7 +202,7 @@ AC_DEFUN([QT_DO_PKG_CONFIG],
 	  export PKG_CONFIG_PATH
 	fi
 	qt_corelibs="QtCore"
-	qt_guilibs="QtCore QtGui"
+	qt_guilibs="QtCore QtGui QtSvg"
 	if test "x$USE_QT5" != "xno" ; then
 		qt_corelibs="Qt5Core"
 		qt_guilibs="Qt5Core Qt5Concurrent Qt5Gui Qt5Svg Qt5Widgets"
