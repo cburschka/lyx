@@ -39,7 +39,7 @@ foreach(bns ${layout_files} ${module_files})
     file(WRITE "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "#% Do not delete the line below; configure depends on this\n")
     file(APPEND "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "#  \\DeclareLaTeXClass{test${bn}}\n")
 
-    file(APPEND "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "Format 5\n")
+    file(APPEND "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "Format 55\n")
     file(APPEND "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "Input ${bns}\n")
     add_test(NAME "check_layout/${bns}"
       COMMAND env LYX_USERDIR_22x=${LYX_TESTS_USERDIR} $<TARGET_FILE:check_layout> "${LYX_TESTS_USERDIR}/layouts/test${bn}" "${CMAKE_CURRENT_BINARY_DIR}/${bn}.out${_checktype}")
@@ -83,6 +83,10 @@ foreach(_f graphics/GraphicsParams.cpp insets/ExternalTransforms.cpp
 endforeach()
 
 include_directories(${TOP_SRC_DIR}/src/tests)
+set(check_Length_SOURCES)
+foreach(_f Length.cpp lengthcommon.cpp tests/check_Length.cpp tests/boost.cpp tests/dummy_functions.cpp)
+  list(APPEND check_Length_SOURCES ${TOP_SRC_DIR}/src/${_f})
+endforeach()
 add_executable(check_Length ${check_Length_SOURCES})
 
 target_link_libraries(check_Length support
