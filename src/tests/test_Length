@@ -1,0 +1,7 @@
+#!/bin/sh
+
+regfile=`cat ${srcdir}/tests/regfiles/Length`
+output=`./check_Length`
+
+test "$regfile" = "$output"
+exit $?

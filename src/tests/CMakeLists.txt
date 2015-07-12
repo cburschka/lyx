@@ -75,3 +75,28 @@ add_test(NAME "check_ExternalTransforms"
 	-P "${TOP_SRC_DIR}/src/support/tests/supporttest.cmake")
 add_dependencies(lyx_run_tests check_ExternalTransforms)
 
+set(check_ExternalTransforms_SOURCES)
+foreach(_f graphics/GraphicsParams.cpp insets/ExternalTransforms.cpp
+	Length.cpp lengthcommon.cpp tests/check_ExternalTransforms.cpp
+	tests/boost.cpp tests/dummy_functions.cpp)
+    list(APPEND check_ExternalTransforms_SOURCES ${TOP_SRC_DIR}/src/${_f})
+endforeach()
+
+include_directories(${TOP_SRC_DIR}/src/tests)
+add_executable(check_Length ${check_Length_SOURCES})
+
+target_link_libraries(check_Length support
+	${Lyx_Boost_Libraries} ${QT_QTGUI_LIBRARY} ${QT_QTCORE_LIBRARY})
+lyx_target_link_libraries(check_Length Magic)
+
+add_dependencies(lyx_run_tests check_Length)
+set_target_properties(check_Length PROPERTIES FOLDER "tests/src")
+target_link_libraries(check_Length ${ICONV_LIBRARY})
+
+add_test(NAME "check_Length"
+  COMMAND ${CMAKE_COMMAND} -DCommand=$<TARGET_FILE:check_Length>
+	"-DInput=${TOP_SRC_DIR}/src/tests/regfiles/Length"
+	"-DOutput=${CMAKE_CURRENT_BINARY_DIR}/Length_data"
+	-P "${TOP_SRC_DIR}/src/support/tests/supporttest.cmake")
+add_dependencies(lyx_run_tests check_Length)
+

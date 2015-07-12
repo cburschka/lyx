@@ -702,9 +702,11 @@ endif
 EXTRA_DIST += \
 	tests/test_ExternalTransforms \
 	tests/regfiles/ExternalTransforms \
-	tests/test_layout
+	tests/regfiles/Length \
+	tests/test_layout \
+	tests/test_Length
 
-TESTS = tests/test_ExternalTransforms
+TESTS = tests/test_ExternalTransforms tests/test_Length
 
 alltests: check alltests-recursive
 
@@ -722,6 +724,7 @@ updatetests:
 
 check_PROGRAMS = \
 	check_ExternalTransforms \
+	check_Length \
 	check_layout
 
 if INSTALL_MACOSX
@@ -757,6 +760,16 @@ check_ExternalTransforms_SOURCES = \
 	Length.cpp \
 	lengthcommon.cpp \
 	tests/check_ExternalTransforms.cpp \
+	tests/boost.cpp \
+	tests/dummy_functions.cpp
+
+check_Length_CPPFLAGS = $(AM_CPPFLAGS)
+check_Length_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ $(QT_LIB) $(LIBSHLWAPI)
+check_Length_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
+check_Length_SOURCES = \
+	Length.cpp \
+	lengthcommon.cpp \
+	tests/check_Length.cpp \
 	tests/boost.cpp \
 	tests/dummy_functions.cpp
 
