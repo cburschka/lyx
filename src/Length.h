@@ -102,6 +102,7 @@ public:
 	 */
 	int inPixels(MetricsBase const &) const;
 	/// return the value in Big Postscript points.
+	/// Caution: Inaccurate for em, ex, mu and percent units.
 	int inBP() const;
 
 	/// return the default unit (centimeter or inch)
@@ -110,6 +111,8 @@ public:
 	friend bool isValidLength(std::string const & data, Length * result);
 
 private:
+	/// Convert value to inch for text width and em width given in inch
+	double inInch(double text_width, double em_width) const;
 	///
 	double val_;
 	///

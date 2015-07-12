@@ -200,9 +200,9 @@ int Length::inPixels(int text_width, int em_width_base) const
 	// DPI setting for monitor: pixels/inch
 	double const dpi = lyxrc.dpi; // screen resolution [pixels/inch]
 
-	double const em_width = (em_width_base > 0)
-		? em_width_base
-		: 10*(dpi/72.27)*zoom;
+	double const em_width_in = (em_width_base > 0)
+		? em_width_base / (zoom * dpi)
+		: 10.0/72.27;
 	// A different estimate for em_width is
 	// theFontMetrics(FontInfo(sane_font)).em()
 	// but this estimate might not be more accurate as the screen font
@@ -212,52 +212,53 @@ int Length::inPixels(int text_width, int em_width_base) const
 	// between lengths and font sizes on the screen
 	// is the same as on paper.
 
+	double const text_width_in = text_width / (zoom * dpi);
+	double const result = zoom * dpi * inInch(text_width_in, em_width_in);
+	return static_cast<int>(result + ((result >= 0) ? 0.5 : -0.5));
+}
+
+
+double Length::inInch(double text_width, double em_width) const
+{
 	double result = 0.0;
 
 	switch (unit_) {
 	case Length::SP:
 		// Scaled point: sp = 1/65536 pt
-		result = zoom * dpi * val_
-			/ (72.27 * 65536); // 4736286.7
+		result = val_ / (72.27 * 65536); // 4736286.7
 		break;
 	case Length::PT:
 		// Point: 1 pt = 1/72.27 inch
-		result = zoom * dpi * val_
-			/ 72.27; // 72.27
+		result = val_ / 72.27; // 72.27
 		break;
 	case Length::BP:
 		// Big point: 1 bp = 1/72 inch
-		result = zoom * dpi * val_
-			/ 72; // 72
+		result = val_ / 72; // 72
 		break;
 	case Length::DD:
 		// Didot: 1157dd = 1238 pt?
-		result = zoom * dpi * val_
-			/ (72.27 / (0.376 * 2.845)); // 67.559735
+		result = val_ / (72.27 / (0.376 * 2.845)); // 67.559735
 		break;
 	case Length::MM:
 		// Millimeter: 1 mm = 1/25.4 inch
-		result = zoom * dpi * val_
-			/ 25.4; // 25.4
+		result = val_ / 25.4; // 25.4
 		break;
 	case Length::PC:
 		// Pica: 1 pc = 12 pt
-		result = zoom * dpi * val_
-			/ (72.27 / 12); // 6.0225
+		result = val_ / (72.27 / 12); // 6.0225
 		break;
 	case Length::CC:
 		// Cicero: 1 cc = 12 dd
-		result = zoom * dpi * val_
+		result = val_
 			/ (72.27 / (12 * 0.376 * 2.845)); // 5.6299779
 		break;
 	case Length::CM:
 		// Centimeter: 1 cm = 1/2.54 inch
-		result = zoom * dpi * val_
-			/ 2.54; // 2.54
+		result = val_ / 2.54; // 2.54
 		break;
 	case Length::IN:
 		// Inch
-		result = zoom * dpi * val_;
+		result = val_;
 		break;
 	case Length::EX:
 		// Ex: The height of an "x"
@@ -291,7 +292,7 @@ int Length::inPixels(int text_width, int em_width_base) const
 		result = 0;  // this cannot happen
 		break;
 	}
-	return static_cast<int>(result + ((result >= 0) ? 0.5 : -0.5));
+	return result;
 }
 
 
@@ -305,25 +306,10 @@ int Length::inBP() const
 {
 	// return any Length value as a one with
 	// the PostScript point, called bp (big points)
-	double result = 0.0;
-	switch (unit_) {
-	case Length::CM:
-		// 1bp = 0.2835cm
-		result = val_ * 28.346;
-		break;
-	case Length::MM:
-		// 1bp = 0.02835mm
-		result = val_ * 2.8346;
-		break;
-	case Length::IN:
-		// 1pt = 1/72in
-		result = val_ * 72.0;
-		break;
-	default:
-		// no other than bp possible
-		result = val_;
-		break;
-	}
+
+	double const text_width_in = 210.0 / 2.54; // assume A4
+	double const em_width_in = 10.0 / 72.27;
+	double result = 72.0 * inInch(text_width_in, em_width_in);
 	return static_cast<int>(result + 0.5);
 }
 
