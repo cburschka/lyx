@@ -19,6 +19,7 @@ Lists of files to include in the installer
 
   ${FILE}QtCore4.dll"
   ${FILE}QtGui4.dll"
+  ${FILE}QtSvg4.dll"
 
 !macroend
 
