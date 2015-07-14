@@ -76,8 +76,12 @@ public:
 private:
 	void paintSeparator(double orig_x, double width, FontInfo const & font);
 	void paintForeignMark(double orig_x, Language const * lang, int desc = 0) const;
-	void paintMisspelledMark(double orig_x, bool changed) const;
-	void paintChars(pos_type & vpos, Font const & font);
+	void paintTextAndSel(docstring const & str, Font const & font,
+                         Change const & change,
+                         pos_type start_pos, pos_type end_pos);
+	void paintMisspelledMark(double orig_x,
+	                         docstring const & str, Font const & font,
+	                         pos_type pos, bool changed) const;
 	int paintAppendixStart(int y) const;
 	void paintFromPos(pos_type & vpos, bool changed);
 	void paintInset(Inset const * inset, pos_type const pos);

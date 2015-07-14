@@ -3131,10 +3131,9 @@ bool Paragraph::isHardHyphenOrApostrophe(pos_type pos) const
 }
 
 
-bool Paragraph::isSameSpellRange(pos_type pos1, pos_type pos2) const
+FontSpan const & Paragraph::getSpellRange(pos_type pos) const
 {
-	return pos1 == pos2
-		|| d->speller_state_.getRange(pos1) == d->speller_state_.getRange(pos2);
+	return d->speller_state_.getRange(pos);
 }
 
 

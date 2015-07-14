@@ -483,10 +483,9 @@ public:
 	/// \return true if one of the tested positions is misspelled.
 	bool isMisspelled(pos_type pos, bool check_boundary = false) const;
 
-	/// \return true if both positions are inside the same
-	/// spell range - i.e. the same word.
-	/// use it for positions inside misspelled range only.
-	bool isSameSpellRange(pos_type pos1, pos_type pos2) const;
+	/// \return the spell range (misspelled area) around position.
+	/// Range is empty if word at position is correctly spelled.
+	FontSpan const & getSpellRange(pos_type pos) const;
 
 	/// spell check of whole paragraph
 	/// remember results until call of requestSpellCheck()

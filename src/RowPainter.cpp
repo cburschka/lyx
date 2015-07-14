@@ -163,9 +163,117 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 }
 
 
-void RowPainter::paintChars(pos_type & vpos, Font const & font)
+void RowPainter::paintSeparator(double orig_x, double width,
+	FontInfo const & font)
 {
-	// This method takes up 70% of time when typing
+	pi_.pain.textDecoration(font, int(orig_x), yo_, int(width));
+	x_ += width;
+}
+
+
+void RowPainter::paintForeignMark(double orig_x, Language const * lang, int desc) const
+{
+	if (!lyxrc.mark_foreign_language)
+		return;
+	if (lang == latex_language)
+		return;
+	if (lang == pi_.base.bv->buffer().params().language)
+		return;
+
+	int const y = yo_ + solid_line_offset_ + desc + solid_line_thickness_ / 2;
+	pi_.pain.line(int(orig_x), y, int(x_), y, Color_language,
+		Painter::line_solid, solid_line_thickness_);
+}
+
+
+void RowPainter::paintMisspelledMark(double const orig_x,
+                                     docstring const & str, Font const & font,
+                                     pos_type const start_pos,
+                                     bool const changed) const
+{
+	// if changed the misspelled marker gets placed slightly lower than normal
+	// to avoid drawing at the same vertical offset
+	int const y = yo_ + solid_line_offset_ + solid_line_thickness_
+		+ (changed ? solid_line_thickness_ + 1 : 0)
+		+ dotted_line_offset_;
+
+	//FIXME: this could be computed only once, it is probably not costly.
+	// check for cursor position
+	// don't draw misspelled marker for words at cursor position
+	// we don't want to disturb the process of text editing
+	DocIterator const nw = pi_.base.bv->cursor().newWord();
+	pos_type cpos = -1;
+	if (!nw.empty() && par_.id() == nw.paragraph().id()) {
+		cpos = nw.pos();
+		if (cpos > 0 && cpos == par_.size() && !par_.isWordSeparator(cpos-1))
+			--cpos;
+		else if (cpos > 0 && par_.isWordSeparator(cpos))
+			--cpos;
+	}
+
+	pos_type pos = start_pos;
+	while (pos < start_pos + pos_type(str.length())) {
+		if (!par_.isMisspelled(pos)) {
+			++pos;
+			continue;
+		}
+
+		FontSpan const & range = par_.getSpellRange(pos);
+
+		// Skip element which are being edited
+		if (range.contains(cpos)) {
+			// the range includes the last element
+			pos = range.last + 1;
+			continue;
+		}
+
+		FontMetrics const & fm = theFontMetrics(font);
+		int x1 = fm.pos2x(str, range.first - start_pos,
+		                  font.isVisibleRightToLeft());
+		int x2 = fm.pos2x(str, range.last - start_pos + 1,
+		                  font.isVisibleRightToLeft());
+		if (x1 > x2)
+			swap(x1, x2);
+
+		pi_.pain.line(int(orig_x) + x1, y, int(orig_x) + x2, y,
+		              Color_error,
+		              Painter::line_onoffdash, dotted_line_thickness_);
+		pos = range.last + 1;
+	}
+}
+
+
+void RowPainter::paintTextAndSel(docstring const & str, Font const & font,
+                                 Change const & change,
+                                 pos_type start_pos, pos_type end_pos)
+{
+	// at least part of text selected?
+	bool const some_sel = (end_pos >= row_.sel_beg && start_pos < row_.sel_end)
+		|| pi_.selected;
+	// all the text selected?
+	bool const all_sel = (start_pos >= row_.sel_beg && end_pos < row_.sel_end)
+		|| pi_.selected;
+
+	if (all_sel) {
+		Font copy = font;
+		copy.fontInfo().setPaintColor(Color_selectiontext);
+		x_ += pi_.pain.text(int(x_), yo_, str, copy);
+	} else if (change.changed()) {
+		Font copy = font;
+		copy.fontInfo().setPaintColor(change.color());
+		x_ += pi_.pain.text(int(x_), yo_, str, copy);
+	} else if (!some_sel) {
+		x_ += pi_.pain.text(int(x_), yo_, str, font);
+	} else {
+		x_ += pi_.pain.text(int(x_), yo_, str, font, Color_selectiontext,
+				    max(row_.sel_beg, start_pos) - start_pos,
+				    min(row_.sel_end, end_pos) - start_pos);
+	}
+}
+
+
+void RowPainter::paintFromPos(pos_type & vpos, bool changed)
+{
 	pos_type pos = bidi_.vis2log(vpos);
 	pos_type start_pos = pos;
 	// first character
@@ -174,12 +282,12 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 	char_type const c = par_.getChar(pos);
 	str.push_back(c);
 
+	double const orig_x = x_;
+
+	Font const font = text_metrics_.displayFont(pit_, pos);
 	FontSpan const font_span = par_.fontSpan(pos);
 	// Track-change status.
 	Change const & change_running = par_.lookupChange(pos);
-	// spelling correct?
-	bool const spell_state =
-		lyxrc.spellcheck_continuously && par_.isMisspelled(pos);
 
 	// collect as much similar chars as we can
 	pos_type const end = row_.endpos();
@@ -187,12 +295,6 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 		pos = bidi_.vis2log(vpos);
 
 		if (!font_span.contains(pos))
-			break;
-
-		bool const new_spell_state =
-			lyxrc.spellcheck_continuously && par_.isMisspelled(pos);
-		if (new_spell_state != spell_state)
-			// Spell checker state changed here.
 			break;
 
 		Change const & change = par_.lookupChange(pos);
@@ -244,93 +346,16 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 		swap(start_pos, pos);
 	}
 
-	// at least part of text selected?
-	bool const some_sel = (pos >= row_.sel_beg && start_pos < row_.sel_end)
-		|| pi_.selected;
-	// all the text selected?
-	bool const all_sel = (start_pos >= row_.sel_beg && pos < row_.sel_end)
-		|| pi_.selected;
+	// Actually paint the text, taking care about the selection
+	paintTextAndSel(str, font, change_running, start_pos, pos);
 
-	if (all_sel) {
-		Font copy = font;
-		copy.fontInfo().setPaintColor(Color_selectiontext);
-		x_ += pi_.pain.text(int(x_), yo_, str, copy);
-	} else if (change_running.changed()) {
-		Font copy = font;
-		copy.fontInfo().setPaintColor(change_running.color());
-		x_ += pi_.pain.text(int(x_), yo_, str, copy);
-	} else if (!some_sel) {
-		x_ += pi_.pain.text(int(x_), yo_, str, font);
-	} else {
-		x_ += pi_.pain.text(int(x_), yo_, str, font, Color_selectiontext,
-				    max(row_.sel_beg, start_pos) - start_pos,
-				    min(row_.sel_end, pos) - start_pos);
-	}
-}
-
-
-void RowPainter::paintSeparator(double orig_x, double width,
-	FontInfo const & font)
-{
-	pi_.pain.textDecoration(font, int(orig_x), yo_, int(width));
-	x_ += width;
-}
-
-
-void RowPainter::paintForeignMark(double orig_x, Language const * lang, int desc) const
-{
-	if (!lyxrc.mark_foreign_language)
-		return;
-	if (lang == latex_language)
-		return;
-	if (lang == pi_.base.bv->buffer().params().language)
-		return;
-
-	int const y = yo_ + solid_line_offset_ + desc + solid_line_thickness_ / 2;
-	pi_.pain.line(int(orig_x), y, int(x_), y, Color_language,
-		Painter::line_solid, solid_line_thickness_);
-}
-
-
-void RowPainter::paintMisspelledMark(double orig_x, bool changed) const
-{
-	// if changed the misspelled marker gets placed slightly lower than normal
-	// to avoid drawing at the same vertical offset
-	int const y = yo_ + solid_line_offset_ + solid_line_thickness_
-		+ (changed ? solid_line_thickness_ + 1 : 0)
-		+ dotted_line_offset_;
-	pi_.pain.line(int(orig_x), y, int(x_), y, Color_error,
-		Painter::line_onoffdash, dotted_line_thickness_);
-}
-
-
-void RowPainter::paintFromPos(pos_type & vpos, bool changed)
-{
-	pos_type const pos = bidi_.vis2log(vpos);
-	Font const font = text_metrics_.displayFont(pit_, pos);
-	double const orig_x = x_;
-
-	paintChars(vpos, font);
+	// The line that indicates word in a different language
 	paintForeignMark(orig_x, font.language());
 
 	// Paint the spelling mark if needed.
-	if (lyxrc.spellcheck_continuously && par_.isMisspelled(pos)) {
-		// check for cursor position
-		// don't draw misspelled marker for words at cursor position
-		// we don't want to disturb the process of text editing
-		BufferView const * bv = pi_.base.bv;
-		DocIterator const nw = bv->cursor().newWord();
-		bool new_word = false;
-		if (!nw.empty() && par_.id() == nw.paragraph().id()) {
-			pos_type cpos = nw.pos();
-			if (cpos > 0 && cpos == par_.size() && !par_.isWordSeparator(cpos-1))
-				--cpos;
-			else if (cpos > 0 && par_.isWordSeparator(cpos))
-				--cpos;
-			new_word = par_.isSameSpellRange(pos, cpos) ;
-		}
-		if (!new_word && pi_.do_spellcheck)
-			paintMisspelledMark(orig_x, changed);
+	if (lyxrc.spellcheck_continuously && pi_.do_spellcheck
+		&& par_.isMisspelled(start_pos)) {
+		paintMisspelledMark(orig_x, str, font, start_pos, changed);
 	}
 }
 
