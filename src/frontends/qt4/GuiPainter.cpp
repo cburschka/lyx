@@ -9,10 +9,6 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifdef Q_OS_MAC
-#define USE_RTL_OVERRIDE 1
-#endif
-
 #include <config.h>
 
 #include "GuiPainter.h"
@@ -393,7 +389,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	 /* In LyX, the character direction is forced by the language.
 	  * Therefore, we have to signal that fact to Qt.
 	  */
-#ifdef USE_RTL_OVERRIDE
+#if 1
 	/* Use unicode override characters to enforce drawing direction
 	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
 	 */
@@ -405,9 +401,10 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		str =  QChar(0x202D) + str;
 	drawText(x, y, str);
 #else
-	/* This is a cleanr solution, but it has two drawbacks
-	 * - it seems that it does not work under Mac OS X
+	/* This looks like a cleaner solution, but it has drawbacks
+	 * - does not work reliably (Mac OS X, ...)
 	 * - it is not really documented
+	 * Keep it here for now, in case it can be helpful
 	 */
 	//This is much stronger than setLayoutDirection.
 	int flag = rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight;
