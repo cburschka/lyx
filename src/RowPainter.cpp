@@ -232,7 +232,7 @@ void RowPainter::paintChars(pos_type & vpos, Font const & font)
 	 * bidi algorithm to strings that it paints to the screen.
 	 * Therefore, if we were to paint Hebrew/Arabic words as a
 	 * single string, the letters in the words would get reversed
-	 * again. In order to avoid that, we force LTR drawing.
+	 * again. In order to avoid that, we reverse our string.
 	 * See also http://thread.gmane.org/gmane.editors.lyx.devel/79740
 	 * for an earlier thread on the subject
 	 */
