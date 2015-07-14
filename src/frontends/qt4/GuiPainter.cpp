@@ -49,8 +49,8 @@ using namespace lyx::support;
 
 namespace lyx {
 namespace frontend {
-  
-const float Painter::thin_line = 0.0;
+
+const int Painter::thin_line = 0;
 
 GuiPainter::GuiPainter(QPaintDevice * device, double pixel_ratio)
 	: QPainter(device), Painter(pixel_ratio),
@@ -71,7 +71,7 @@ GuiPainter::~GuiPainter()
 
 
 void GuiPainter::setQPainterPen(QColor const & col,
-	Painter::line_style ls, float lw)
+	Painter::line_style ls, int lw)
 {
 	if (col == current_color_ && ls == current_ls_ && lw == current_lw_)
 		return;
@@ -88,7 +88,7 @@ void GuiPainter::setQPainterPen(QColor const & col,
 		case line_onoffdash: pen.setStyle(Qt::DotLine); break;
 	}
 
-	pen.setWidthF(lw);
+	pen.setWidth(lw);
 
 	setPen(pen);
 }
@@ -180,7 +180,7 @@ void GuiPainter::point(int x, int y, Color col)
 void GuiPainter::line(int x1, int y1, int x2, int y2,
 	Color col,
 	line_style ls,
-	float lw)
+	int lw)
 {
 	if (!isDrawingEnabled())
 		return;
@@ -198,7 +198,7 @@ void GuiPainter::lines(int const * xp, int const * yp, int np,
 	Color col,
 	fill_style fs,
 	line_style ls,
-	float lw)
+	int lw)
 {
 	if (!isDrawingEnabled())
 		return;
@@ -236,7 +236,7 @@ void GuiPainter::lines(int const * xp, int const * yp, int np,
 void GuiPainter::rectangle(int x, int y, int w, int h,
 	Color col,
 	line_style ls,
-	float lw)
+	int lw)
 {
 	if (!isDrawingEnabled())
 		return;

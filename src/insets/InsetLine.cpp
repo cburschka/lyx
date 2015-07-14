@@ -159,7 +159,7 @@ void InsetLine::draw(PainterInfo & pi, int x, int y) const
 		     y - offset_ - height_/2,
 		     x + dim.wid - height_/2 - 2,
 		     y - offset_ - height_/2,
-		     Line_color, Painter::line_solid, float(height_));
+		     Line_color, Painter::line_solid, height_);
 }
 
 

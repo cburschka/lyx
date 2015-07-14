@@ -42,7 +42,7 @@ public:
 		int x2, int y2,
 		Color,
 		line_style ls = line_solid,
-		float lw = thin_line);
+		int lw = thin_line);
 
 	/**
 	 * lines -  draw a set of lines
@@ -57,7 +57,7 @@ public:
 		Color,
 		fill_style fs = fill_none,
 		line_style ls = line_solid,
-		float lw = thin_line);
+		int lw = thin_line);
 
 	/// draw a rectangle
 	virtual void rectangle(
@@ -65,7 +65,7 @@ public:
 		int w, int h,
 		Color,
 		line_style = line_solid,
-		float lw = thin_line);
+		int lw = thin_line);
 
 	/// draw a filled rectangle
 	virtual void fillRectangle(
@@ -163,11 +163,11 @@ private:
 
 	/// set pen parameters
 	void setQPainterPen(QColor const & col,
-		line_style ls = line_solid, float lw = thin_line);
+		line_style ls = line_solid, int lw = thin_line);
 
 	QColor current_color_;
 	Painter::line_style current_ls_;
-	float current_lw_;
+	int current_lw_;
 	///
 	bool const use_pixmap_cache_;
 	///

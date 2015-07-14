@@ -56,7 +56,7 @@ class Painter {
 public:
 	Painter(double pixel_ratio) : drawing_enabled_(true), pixel_ratio_(pixel_ratio) {}
 
-	static const float thin_line;
+	static const int thin_line;
 
 	/// possible line styles
 	enum line_style {
@@ -83,7 +83,7 @@ public:
 
 	/// draw a line from point to point
 	virtual void line(int x1, int y1, int x2, int y2, Color,
-		line_style = line_solid, float line_width = thin_line) = 0;
+		line_style = line_solid, int line_width = thin_line) = 0;
 
 	/**
 	 * lines -  draw a set of lines
@@ -93,11 +93,11 @@ public:
 	 */
 	virtual void lines(int const * xp, int const * yp, int np, Color,
 		fill_style = fill_none, line_style = line_solid,
-		float line_width = thin_line) = 0;
+		int line_width = thin_line) = 0;
 
 	/// draw a rectangle
 	virtual void rectangle(int x, int y, int w, int h, Color,
-		line_style = line_solid, float line_width = thin_line) = 0;
+		line_style = line_solid, int line_width = thin_line) = 0;
 
 	/// draw a filled rectangle
 	virtual void fillRectangle(int x, int y, int w, int h, Color) = 0;
