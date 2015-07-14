@@ -191,12 +191,14 @@ static docstring const textgreek_def = from_ascii(
 	"  \\fontencoding{LGR}\\selectfont\\def\\encodingdefault{LGR}}\n"
 	"\\DeclareRobustCommand{\\textgreek}[1]{\\leavevmode{\\greektext #1}}\n"
         "\\ProvideTextCommand{\\~}{LGR}[1]{\\char126#1}\n");
-   
+
+static docstring const textcyr_T2A_def = from_ascii(
+	"\\InputIfFileExists{t2aenc.def}{}{%\n"
+        "  \\errmessage{File `t2aenc.def' not found: Cyrillic script not supported}}\n");
 static docstring const textcyr_def = from_ascii(
 	"\\DeclareRobustCommand{\\cyrtext}{%\n"
 	"  \\fontencoding{T2A}\\selectfont\\def\\encodingdefault{T2A}}\n"
-	"\\DeclareRobustCommand{\\textcyr}[1]{\\leavevmode{\\cyrtext #1}}\n"
-	"\\AtBeginDocument{\\DeclareFontEncoding{T2A}{}{}}\n");
+	"\\DeclareRobustCommand{\\textcyr}[1]{\\leavevmode{\\cyrtext #1}}\n");
 
 static docstring const lyxmathsym_def = from_ascii(
 	"\\newcommand{\\lyxmathsym}[1]{\\ifmmode\\begingroup\\def\\b@ld{bold}\n"
@@ -1183,6 +1185,9 @@ docstring const LaTeXFeatures::getMacros() const
 	}
 
 	if (!usePolyglossia() && mustProvide("textcyr"))
+	        // ensure T2A font encoding is set up also if fontenc is not loaded by LyX
+	   	if (params_.font_encoding() == "default")
+			macros << textcyr_T2A_def;
 		macros << textcyr_def << '\n';
 
         // non-standard text accents:
