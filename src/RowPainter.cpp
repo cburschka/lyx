@@ -296,10 +296,10 @@ void RowPainter::paintMisspelledMark(double orig_x, bool changed) const
 {
 	// if changed the misspelled marker gets placed slightly lower than normal
 	// to avoid drawing at the same vertical offset
-	float const y = yo_ + solid_line_offset_ + solid_line_thickness_
+	int const y = yo_ + solid_line_offset_ + solid_line_thickness_
 		+ (changed ? solid_line_thickness_ + 1 : 0)
 		+ dotted_line_offset_;
-	pi_.pain.line(int(orig_x), int(y), int(x_), int(y), Color_error,
+	pi_.pain.line(int(orig_x), y, int(x_), y, Color_error,
 		Painter::line_onoffdash, dotted_line_thickness_);
 }
 
@@ -787,9 +787,9 @@ void RowPainter::paintText()
 			// Calculate 1/3 height of the buffer's default font
 			FontMetrics const & fm
 				= theFontMetrics(pi_.base.bv->buffer().params().getFont());
-			float const y_bar = change_running.deleted() ?
+			int const y_bar = change_running.deleted() ?
 				yo_ - fm.maxAscent() / 3 : yo_ + 2 * solid_line_offset_ + solid_line_thickness_;
-			pi_.pain.line(change_last_x, int(y_bar), int(x_), int(y_bar),
+			pi_.pain.line(change_last_x, y_bar, int(x_), y_bar,
 				change_running.color(), Painter::line_solid, solid_line_thickness_);
 
 			// Change might continue with a different author or type
@@ -850,9 +850,9 @@ void RowPainter::paintText()
 	if (change_running.changed()) {
 		FontMetrics const & fm
 			= theFontMetrics(pi_.base.bv->buffer().params().getFont());
-		float const y_bar = change_running.deleted() ?
+		int const y_bar = change_running.deleted() ?
 				yo_ - fm.maxAscent() / 3 : yo_ + 2 * solid_line_offset_ + solid_line_thickness_;
-		pi_.pain.line(change_last_x, int(y_bar), int(x_), int(y_bar),
+		pi_.pain.line(change_last_x, y_bar, int(x_), y_bar,
 			change_running.color(), Painter::line_solid, solid_line_thickness_);
 		change_running.setUnchanged();
 	}
