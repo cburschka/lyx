@@ -244,7 +244,7 @@ void RowPainter::paintMisspelledMark(double const orig_x,
 }
 
 
-void RowPainter::paintTextAndSel(docstring const & str, Font const & font,
+void RowPainter::paintStringAndSel(docstring const & str, Font const & font,
                                  Change const & change,
                                  pos_type start_pos, pos_type end_pos)
 {
@@ -348,7 +348,7 @@ void RowPainter::paintFromPos(pos_type & vpos, bool changed)
 	}
 
 	// Actually paint the text, taking care about the selection
-	paintTextAndSel(str, font, change_running, start_pos, pos);
+	paintStringAndSel(str, font, change_running, start_pos, pos);
 
 	// The line that indicates word in a different language
 	paintForeignMark(orig_x, font.language());
