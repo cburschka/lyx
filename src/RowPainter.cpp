@@ -230,7 +230,8 @@ void RowPainter::paintMisspelledMark(double const orig_x,
 		FontMetrics const & fm = theFontMetrics(font);
 		int x1 = fm.pos2x(str, range.first - start_pos,
 		                  font.isVisibleRightToLeft());
-		int x2 = fm.pos2x(str, range.last - start_pos + 1,
+		int x2 = fm.pos2x(str, min(range.last - start_pos + 1,
+		                           pos_type(str.length())),
 		                  font.isVisibleRightToLeft());
 		if (x1 > x2)
 			swap(x1, x2);
