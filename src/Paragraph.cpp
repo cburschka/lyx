@@ -915,10 +915,13 @@ int Paragraph::Private::writeScriptChars(otexstream & os,
 {
 	// FIXME: modifying i here is not very nice...
 
-	// We only arrive here when a proper language for character text_[i] has
-	// not been specified (i.e., it could not be translated in the current
-	// latex encoding) or its latex translation has been forced, and it
-	// belongs to a known script.
+	// We only arrive here when character text_[i] could not be translated
+	// into the current latex encoding (or its latex translation has been forced,)
+	// and it belongs to a known script.
+	// TODO: We need \textcyr and \textgreek wrappers also for characters
+	//       that can be encoded in the "LaTeX encoding" but not in the
+	//       current *font encoding*.
+	//       (See #9681 for details and test)
 	// Parameter ltx contains the latex translation of text_[i] as specified
 	// in the unicodesymbols file and is something like "\textXXX{<spec>}".
 	// The latex macro name "textXXX" specifies the script to which text_[i]
@@ -934,6 +937,10 @@ int Paragraph::Private::writeScriptChars(otexstream & os,
 	bool closing_brace = true;
 	if (script == "textgreek" && encoding.latexName() == "iso-8859-7") {
 		// Correct encoding is being used, so we can avoid \textgreek.
+		// TODO: wrong test: we need to check the *font encoding*
+		//       (i.e. the active language and its FontEncoding tag)
+	        // 	 instead of the LaTeX *input encoding*!
+		// 	 See #9637 for details and test-cases.
 		pos = brace1 + 1;
 		length -= pos;
 		closing_brace = false;
@@ -1156,9 +1163,9 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		return;
 	// If T1 font encoding is used, use the special
 	// characters it provides.
-	// NOTE: Some languages reset the font encoding internally.
-	//       If we are using such a language, we do not output
-	//       special T1 chars.
+	// NOTE: Some languages reset the font encoding internally to a
+	//       non-standard font encoding. If we are using such a language,
+	//       we do not output special T1 chars.
 	if (!runparams.inIPA && !running_font.language()->internalFontEncoding()
 	    && bparams.font_encoding() == "T1" && latexSpecialT1(c, os, i, column))
 		return;
