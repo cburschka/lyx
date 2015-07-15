@@ -810,14 +810,10 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 #endif
 
 	// check for possible inline completion
-	DocIterator const & inlineCompletionPos = bv_->inlineCompletionPos();
-	pos_type inlineCompletionLPos = -1;
-	if (inlineCompletionPos.inTexted()
-	    && inlineCompletionPos.text() == text_
-	    && inlineCompletionPos.pit() == pit) {
-		// draw logically behind the previous character
-		inlineCompletionLPos = inlineCompletionPos.pos() - 1;
-	}
+	DocIterator const & ic_it = bv_->inlineCompletionPos();
+	pos_type ic_pos = -1;
+	if (ic_it.inTexted() && ic_it.text() == text_ && ic_it.pit() == pit)
+		ic_pos = ic_it.pos();
 
 	// Now we iterate through until we reach the right margin
 	// or the end of the par, then build a representation of the row.
@@ -855,12 +851,18 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 			row.add(i, c, *fi, par.lookupChange(i));
 
 		// add inline completion width
-		if (inlineCompletionLPos == i &&
-		    !bv_->inlineCompletion().empty()) {
+		// draw logically behind the previous character
+		if (ic_pos == i + 1 && !bv_->inlineCompletion().empty()) {
+			docstring const comp = bv_->inlineCompletion();
+			size_t const uniqueTo =bv_->inlineCompletionUniqueChars();
 			Font f = *fi;
-			f.fontInfo().setColor(Color_inlinecompletion);
-			row.addVirtual(i + 1, bv_->inlineCompletion(),
-					  f, Change());
+
+			if (uniqueTo > 0) {
+				f.fontInfo().setColor(Color_inlinecompletion);
+				row.addVirtual(i + 1, comp.substr(0, uniqueTo), f, Change());
+			}
+			f.fontInfo().setColor(Color_nonunique_inlinecompletion);
+			row.addVirtual(i + 1, comp.substr(uniqueTo), f, Change());
 		}
 
 		// Handle some situations that abruptly terminate the row
