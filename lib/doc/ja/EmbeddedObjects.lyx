@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 495
+\lyxformat 496
 \begin_document
 \begin_header
 \origin /systemlyxdir/doc/ja/
@@ -603,51 +603,6 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
-エクスポートする際に解凍しない
-\family default
-オプションは、
-\emph on
-x.eps.gz
-\emph default
-のような、zip圧縮されたEPS画像のみに有効です。このオプションが有効になっていると、\SpecialChar LaTeX
-はzip圧縮EPS画像をそのまま取り扱えるので、画像は解凍されません。
-\begin_inset Newline newline
-\end_inset
-
-zip圧縮EPS画像は、出力書式としてPostScriptを選択する場合には、ディスク領域を節約できるので便利です。付録
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:PostScript"
-
-\end_inset
-
-をご参照下さい。EPS画像をzip圧縮するには、UNIXシェルかWindowsコンソールから以下のコマンドを実行して下さい。
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-gzip x.eps
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-zgrep %%Bounding x.eps.gz > x.eps.bb
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-二つめのコマンドは、\SpecialChar LaTeX
-が圧縮画像を取り扱う際に必要な領域ボックスファイル「x.eps.bb」を生成します。
-\begin_inset Newline newline
-\end_inset
-
-
-\family sans
 画像グループ
 \family default
 のセクションでは、画像設定グループを定義したり、既存のものに所属させたりすることができます。
@@ -36716,7 +36671,7 @@ textvisiblespace
 以下は、verbatimとして挿入された子文書です。 
 \begin_inset CommandInset include
 LatexCommand verbatiminput
-filename "../DUMMYT~1.TXT"
+filename "../DummyTextDocument.txt"
 
 \end_inset
 
@@ -36731,7 +36686,7 @@ filename "../DUMMYT~1.TXT"
 オプションを指定して、verbatimとして挿入された子文書です。 
 \begin_inset CommandInset include
 LatexCommand verbatiminput*
-filename "../DUMMYT~1.TXT"
+filename "../DummyTextDocument.txt"
 
 \end_inset
 
@@ -38180,13 +38135,6 @@ DVI
 
 \begin_layout Section
 PostScript
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:PostScript"
-
-\end_inset
-
-
 \begin_inset Index idx
 status collapsed
 

@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 495
+\lyxformat 496
 \begin_document
 \begin_header
 \origin /systemlyxdir/doc/de/
@@ -603,74 +603,6 @@ Entwurfsmodus
 \family default
 angekreuzt, wird nur ein Rahmen in der Größe der Abbildung mit dem Dateinamen
  darin gedruckt.
-\begin_inset Newline newline
-\end_inset
-
-Die Option 
-\family sans
-Beim
-\begin_inset space ~
-\end_inset
-
-Exportieren
-\begin_inset space ~
-\end_inset
-
-nicht
-\begin_inset space ~
-\end_inset
-
-entpacken
-\family default
- betrifft nur gepackte EPS-Dateien, zum Beispiel 
-\emph on
-x.eps.gz
-\emph default
-.
- \SpecialChar LaTeX
- kann so mit ihnen umgehen.
-\begin_inset Newline newline
-\end_inset
-
-Gepackte EPS-Dateien sparen Platz, wenn Sie als Ausgabe-Format PostScript
- wählen, siehe Anhang
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "abs:PostScript"
-
-\end_inset
-
-.
- Um EPS-Dateien zu packen, benutzen Sie folgende Kommandozeilenbefehle:
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-gzip x.eps
-\begin_inset Newline newline
-\end_inset
-
-zgrep %%Bounding x.eps.gz > x.eps.bb
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-Der zweite Befehl erzeugt die Begrenzungsbox 
-\begin_inset Quotes gld
-\end_inset
-
-x.eps.bb
-\begin_inset Quotes grd
-\end_inset
-
-, die \SpecialChar LaTeX
- für gepackte Abbildungen benötigt.
 \begin_inset Newline newline
 \end_inset
 
@@ -40909,13 +40841,6 @@ Ansicht
 
 \begin_layout Section
 PostScript
-\begin_inset CommandInset label
-LatexCommand label
-name "abs:PostScript"
-
-\end_inset
-
-
 \begin_inset Index idx
 status collapsed
 

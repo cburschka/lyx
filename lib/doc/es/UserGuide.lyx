@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 495
+\lyxformat 496
 \begin_document
 \begin_header
 \origin /systemlyxdir/doc/es/
@@ -8551,14 +8551,12 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
-
 Esto es entorno literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8571,7 +8569,6 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
-
 Casi todo está permitido en entorno literal:"%&$§#~'`
 \backslash
 }][{|
@@ -11106,7 +11103,7 @@ name "subsec:Espacio-fino"
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Espacios ! Fino
