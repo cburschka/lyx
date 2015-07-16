@@ -538,10 +538,11 @@ public:
 
 
 /**
- * Notifies all insets which appear in old, but not in cur. And then
- * notify all insets which appear in cur, but not in old.
- * Make sure that the cursor old is valid, i.e. all inset pointers
- * point to valid insets! Use Cursor::fixIfBroken if necessary.
+ * Notifies all insets which appear in \c old, but not in \c cur. And then
+ * notify all insets which appear in \c cur, but not in \c old.
+ * \returns true if cursor is now invalid, e.g. if some insets in
+ *   higher cursor slices of \c old do not exist anymore. In this case
+ *   it may be necessary to use Use Cursor::fixIfBroken.
  */
 bool notifyCursorLeavesOrEnters(Cursor const & old, Cursor & cur);
 
