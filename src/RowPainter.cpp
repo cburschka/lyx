@@ -116,6 +116,13 @@ int RowPainter::leftMargin() const
 
 void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 {
+	// Handle selection
+	bool const pi_selected = pi_.selected;
+	Cursor const & cur = pi_.base.bv->cursor();
+	if (cur.selection() && cur.text() == &text_
+		&& cur.normalAnchor().text() == &text_)
+		pi_.selected = row_.sel_beg <= pos && row_.sel_end > pos;
+
 	Font const font = text_metrics_.displayFont(pit_, pos);
 
 	LASSERT(inset, return);
@@ -150,6 +157,7 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 	pi_.full_repaint = pi_full_repaint;
 	pi_.change_ = prev_change;
 	pi_.do_spellcheck = pi_do_spellcheck;
+	pi_.selected = pi_selected;
 
 #ifdef DEBUG_METRICS
 	int const x2 = x1 + dim.wid;
@@ -163,10 +171,9 @@ void RowPainter::paintInset(Inset const * inset, pos_type const pos)
 }
 
 
-void RowPainter::paintSeparator(double orig_x, double width,
-	FontInfo const & font)
+void RowPainter::paintSeparator(double width, Font const & font)
 {
-	pi_.pain.textDecoration(font, int(orig_x), yo_, int(width));
+	pi_.pain.textDecoration(font.fontInfo(), int(x_), yo_, int(width));
 	x_ += width;
 }
 
@@ -845,21 +852,14 @@ void RowPainter::paintText()
 			double separator_width = width_pos;
 			if (pos >= body_pos)
 				separator_width += row_.separator;
-			paintSeparator(orig_x, separator_width, orig_font.fontInfo());
+			paintSeparator(separator_width, orig_font);
 			paintForeignMark(orig_x, orig_font.language());
 			++vpos;
 
 		} else if (inset) {
 			// If outer row has changed, nested insets are repaint completely.
 			pi_.base.bv->coordCache().insets().add(inset, int(x_), yo_);
-
-			bool const pi_selected = pi_.selected;
-			Cursor const & cur = pi_.base.bv->cursor();
-			if (cur.selection() && cur.text() == &text_
-				  && cur.normalAnchor().text() == &text_)
-				pi_.selected = row_.sel_beg <= pos && row_.sel_end > pos;
 			paintInset(inset, pos);
-			pi_.selected = pi_selected;
 			++vpos;
 
 		} else {

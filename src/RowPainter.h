@@ -70,11 +70,12 @@ public:
 	void paintFirst() const;
 	void paintLast();
 	void paintText();
+	void paintText2();
 	void paintOnlyInsets();
 	void paintSelection() const;
 
 private:
-	void paintSeparator(double orig_x, double width, FontInfo const & font);
+	void paintSeparator(double width, Font const & font);
 	void paintForeignMark(double orig_x, Language const * lang, int desc = 0) const;
 	void paintStringAndSel(docstring const & str, Font const & font,
                          Change const & change,
