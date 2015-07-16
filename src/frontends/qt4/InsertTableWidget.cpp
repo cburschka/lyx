@@ -16,6 +16,9 @@
 #include "GuiView.h"
 #include "qt_helpers.h"
 
+// DispatchResult.h is needed by the windows compiler because lyx::dispatch
+// returns a DispatchResult const reference. Gcc does not complain. Weird...
+#include "DispatchResult.h"
 #include "FuncStatus.h"
 #include "FuncRequest.h"
 #include "LyX.h"
