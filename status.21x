@@ -294,3 +294,6 @@ What's new
 - Fix build with gcc 5.1 using libstdc++ with C++11 ABI.
 
 - Fix bash-ism in ./autogen.sh script.
+
+- Update path_prefix in lyxrc.dist for Mac OS X.
+  Add the MacTeX installation location and remove very old unusable items.
