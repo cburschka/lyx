@@ -280,6 +280,20 @@ void RowPainter::paintStringAndSel(docstring const & str, Font const & font,
 }
 
 
+void RowPainter::paintChange(double orig_x, Font const & font,
+                             Change const & change) const
+{
+	if (!change.changed())
+		return;
+	// Calculate 1/3 height of font
+	FontMetrics const & fm = theFontMetrics(font);
+	int const y_bar = change.deleted() ? yo_ - fm.maxAscent() / 3
+		: yo_ + 2 * solid_line_offset_ + solid_line_thickness_;
+	pi_.pain.line(int(orig_x), y_bar, int(x_), y_bar,
+	              change.color(), Painter::line_solid, solid_line_thickness_);
+}
+
+
 void RowPainter::paintFromPos(pos_type & vpos, bool changed)
 {
 	pos_type pos = bidi_.vis2log(vpos);
@@ -686,13 +700,6 @@ void RowPainter::paintLast()
 	}
 
 	case END_LABEL_NO_LABEL:
-		if (lyxrc.paragraph_markers && size_type(pit_ + 1) < pars_.size()) {
-			docstring const s = docstring(1, char_type(0x00B6));
-			FontInfo f = FontInfo(text_.layoutFont(pit_));
-			f.setColor(Color_paragraphmarker);
-			pi_.pain.text(int(x_), yo_, s, f);
-			x_ += theFontMetrics(f).width(s);
-		}
 		break;
 	}
 }
@@ -716,19 +723,58 @@ void RowPainter::paintOnlyInsets()
 		    || !cache.getInsets().has(inset))
 			continue;
 		x_ = cache.getInsets().x(inset);
-
-		bool const pi_selected = pi_.selected;
-		Cursor const & cur = pi_.base.bv->cursor();
-		if (cur.selection() && cur.text() == &text_
-			  && cur.normalAnchor().text() == &text_)
-			pi_.selected = row_.sel_beg <= pos && row_.sel_end > pos;
 		paintInset(inset, pos);
-		pi_.selected = pi_selected;
 	}
 }
 
-
 void RowPainter::paintText()
+{
+	Row::const_iterator cit = row_.begin();
+	Row::const_iterator const & end = row_.end();
+	for ( ; cit != end ; ++cit) {
+		double const orig_x = x_;
+		Row::Element const & e = *cit;
+		int foreign_descent = 0;
+
+		switch (e.type) {
+		case Row::STRING:
+		case Row::VIRTUAL:
+			paintStringAndSel(e.str, e.font, e.change, e.pos, e.endpos);
+
+			// Paint the spelling mark if needed.
+			if (lyxrc.spellcheck_continuously && pi_.do_spellcheck
+				&& par_.isMisspelled(e.pos)) {
+				paintMisspelledMark(orig_x, e.str, e.font, e.pos, e.change.changed());
+			}
+			break;
+		case Row::INSET: {
+			// If outer row has changed, nested insets are repaint completely.
+			pi_.base.bv->coordCache().insets().add(e.inset, int(x_), yo_);
+			paintInset(e.inset, e.pos);
+			foreign_descent = e.dim.descent();
+		}
+			break;
+		case Row::SEPARATOR:
+		case Row::SPACE:
+			paintSeparator(e.full_width(), e.font);
+		}
+
+		// The line that indicates word in a different language
+		paintForeignMark(orig_x, e.font.language(), foreign_descent);
+
+		// change tracking (not for insets that track their own changes)
+		if (e.type != Row::INSET || ! e.inset->canTrackChanges())
+			paintChange(orig_x, e.font, e.change);
+	}
+
+#if 0
+	x_ = row_.left_margin + xo_;
+	paintText2();
+#endif
+}
+
+
+void RowPainter::paintText2()
 {
 	//LYXERR0("-------------------------------------------------------");
 	pos_type const end = row_.endpos();

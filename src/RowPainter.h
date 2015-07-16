@@ -83,6 +83,7 @@ private:
 	void paintMisspelledMark(double orig_x,
 	                         docstring const & str, Font const & font,
 	                         pos_type pos, bool changed) const;
+	void paintChange(double orig_x , Font const & font, Change const & change) const;
 	int paintAppendixStart(int y) const;
 	void paintFromPos(pos_type & vpos, bool changed);
 	void paintInset(Inset const * inset, pos_type const pos);
