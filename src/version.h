@@ -32,8 +32,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 496 // gb: remove noUnzip parameter of InsetGraphics
-#define LYX_FORMAT_TEX2LYX 496
+#define LYX_FORMAT_LYX 497 // gb: bounding box of external insets supports units
+#define LYX_FORMAT_TEX2LYX 497
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER

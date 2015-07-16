@@ -262,36 +262,36 @@ graphics::Params InsetGraphicsParams::as_grfxParams() const
 			unsigned int const bb_orig_yb = convert<unsigned int>(token(tmp, ' ', 1));
 
 			// new pars.bb values must be >= zero
-			if (pars.bb.xl > bb_orig_xl)
-				pars.bb.xl -= bb_orig_xl;
+			if (pars.bb.xl.inBP() > static_cast<int>(bb_orig_xl))
+				pars.bb.xl = Length(pars.bb.xl.inBP() - bb_orig_xl, Length::BP);
 			else
-				pars.bb.xl = 0;
+				pars.bb.xl = Length();
 
-			if (pars.bb.xr > bb_orig_xl)
-				pars.bb.xr -= bb_orig_xl;
+			if (pars.bb.xr.inBP() > static_cast<int>(bb_orig_xl))
+				pars.bb.xr = Length(pars.bb.xr.inBP() - bb_orig_xl, Length::BP);
 			else
-				pars.bb.xr = 0;
+				pars.bb.xr = Length();
 
-			if (pars.bb.yb > bb_orig_yb)
-				pars.bb.yb -= bb_orig_yb;
+			if (pars.bb.yb.inBP() > static_cast<int>(bb_orig_yb))
+				pars.bb.yb = Length(pars.bb.yb.inBP() - bb_orig_yb, Length::BP);
 			else
-				pars.bb.yb = 0;
+				pars.bb.yb = Length();
 
-			if (pars.bb.yt > bb_orig_yb)
-				pars.bb.yt -= bb_orig_yb;
+			if (pars.bb.yt.inBP() > static_cast<int>(bb_orig_yb))
+				pars.bb.yt = Length(pars.bb.yt.inBP() - bb_orig_yb, Length::BP);
 			else
-				pars.bb.yt = 0;
+				pars.bb.yt = Length();
 		}
 
 		// Paranoia check.
-		int const width  = pars.bb.xr - pars.bb.xl;
-		int const height = pars.bb.yt - pars.bb.yb;
+		int const width  = pars.bb.xr.inBP() - pars.bb.xl.inBP();
+		int const height = pars.bb.yt.inBP() - pars.bb.yb.inBP();
 
 		if (width  < 0 || height < 0) {
-			pars.bb.xl = 0;
-			pars.bb.xr = 0;
-			pars.bb.yb = 0;
-			pars.bb.yt = 0;
+			pars.bb.xl = Length();
+			pars.bb.xr = Length();
+			pars.bb.yb = Length();
+			pars.bb.yt = Length();
 		}
 	}
 

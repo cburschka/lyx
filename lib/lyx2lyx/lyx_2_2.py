@@ -30,7 +30,8 @@ import sys, os
 #  find_token_backwards, is_in_inset, get_value, get_quoted_value, \
 #  del_token, check_token, get_option_value
 
-from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, lyx2latex#, \
+from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, lyx2latex, \
+  length_in_bp#, \
 #  insert_to_preamble, latex_length, revert_flex_inset, \
 #  revert_font_attrs, hex2ratio, str2bool
 
@@ -1527,6 +1528,44 @@ def convert_nounzip(document):
         i = j + 1
 
 
+def convert_revert_external_bbox(document, forward):
+    " add units to bounding box of external insets "
+
+    rx = re.compile(r'^\s*boundingBox\s+\S+\s+\S+\s+\S+\s+\S+\s*$')
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset External", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of external inset at line " + str(i))
+            i += 1
+            continue
+        k = find_re(document.body, rx, i, j)
+        if k == -1:
+            i = j + 1
+            continue
+        tokens = document.body[k].split()
+        if forward:
+            for t in range(1, 5):
+                tokens[t] += "bp"
+        else:
+            for t in range(1, 5):
+                tokens[t] = length_in_bp(tokens[t])
+        document.body[k] = "\tboundingBox " + tokens[1] + " " + tokens[2] + " " + \
+                           tokens[3] + " " + tokens[4]
+        i = j + 1
+
+
+def convert_external_bbox(document):
+    convert_revert_external_bbox(document, True)
+
+
+def revert_external_bbox(document):
+    convert_revert_external_bbox(document, False)
+
+
 ##
 # Conversion hub
 #
@@ -1557,10 +1596,12 @@ convert = [
            [493, []],
            [494, []],
            [495, [convert_subref]],
-           [496, [convert_nounzip]]
+           [496, [convert_nounzip]],
+           [497, [convert_external_bbox]]
           ]
 
 revert =  [
+           [496, [revert_external_bbox]],
            [495, []], # nothing to do since the noUnzip parameter was optional
            [494, [revert_subref]],
            [493, [revert_jss]],

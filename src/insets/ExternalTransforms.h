@@ -36,7 +36,9 @@ class ClipData {
 public:
 	ClipData() : clip(false) {}
 
+	/// The bounding box
 	graphics::BoundingBox bbox;
+	/// clip image
 	bool clip;
 };
 

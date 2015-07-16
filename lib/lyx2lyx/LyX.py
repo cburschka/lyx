@@ -85,7 +85,7 @@ format_relation = [("0_06",    [200], minor_versions("0.6" , 4)),
                    ("1_6", list(range(277,346)), minor_versions("1.6" , 10)),
                    ("2_0", list(range(346,414)), minor_versions("2.0" , 8)),
                    ("2_1", list(range(414,475)), minor_versions("2.1" , 0)),
-                   ("2_2", list(range(475,497)), minor_versions("2.2" , 0))
+                   ("2_2", list(range(475,498)), minor_versions("2.2" , 0))
                   ]
 
 ####################################################################

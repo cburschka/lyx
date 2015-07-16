@@ -14,6 +14,8 @@
 #ifndef GRAPHICSPARAMS_H
 #define GRAPHICSPARAMS_H
 
+#include "Length.h"
+
 #include "support/FileName.h"
 
 #include <string>
@@ -36,15 +38,16 @@ public:
 	/// 0 0 0 0 is empty!
 	bool empty() const;
 
-	unsigned int xl;
-	unsigned int yb;
-	unsigned int xr;
-	unsigned int yt;
+	Length xl;
+	Length yb;
+	Length xr;
+	Length yt;
 };
 
 bool operator==(BoundingBox const &, BoundingBox const &);
 bool operator!=(BoundingBox const &, BoundingBox const &);
 
+/// output bounding box in LyX file format
 std::ostream & operator<<(std::ostream &, BoundingBox const &);
 
 

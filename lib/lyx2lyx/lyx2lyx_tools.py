@@ -59,6 +59,7 @@ latex_length(slen):
 
 '''
 
+import re
 import string
 from parser_tools import find_token, find_end_of_inset
 from unicode_symbols import unicode_reps
@@ -321,6 +322,44 @@ def latex_length(slen):
         lastvalue = slen[lastvaluepos:]
         slen = slen.replace("  ", lastvalue + " ")
     return (percent, slen)
+
+
+def length_in_bp(length):
+    " Convert a length in LyX format to its value in bp units "
+
+    em_width = 10.0 / 72.27 # assume 10pt font size
+    text_width = 8.27 / 1.7 # assume A4 with default margins
+    # scale factors are taken from Length::inInch()
+    scales = {"bp"       : 1.0,
+              "cc"       : (72.0 / (72.27 / (12.0 * 0.376 * 2.845))),
+              "cm"       : (72.0 / 2.54),
+              "dd"       : (72.0 / (72.27 / (0.376 * 2.845))),
+              "em"       : (72.0 * em_width),
+              "ex"       : (72.0 * em_width * 0.4305),
+              "in"       : 72.0,
+              "mm"       : (72.0 / 25.4),
+              "mu"       : (72.0 * em_width / 18.0),
+              "pc"       : (72.0 / (72.27 / 12.0)),
+              "pt"       : (72.0 / (72.27)),
+              "sp"       : (72.0 / (72.27 * 65536.0)),
+              "text%"    : (72.0 * text_width / 100.0),
+              "col%"     : (72.0 * text_width / 100.0), # assume 1 column
+              "page%"    : (72.0 * text_width * 1.7 / 100.0),
+              "line%"    : (72.0 * text_width / 100.0),
+              "theight%" : (72.0 * text_width * 1.787 / 100.0),
+              "pheight%" : (72.0 * text_width * 2.2 / 100.0)}
+
+    rx = re.compile(r'^\s*([^a-zA-Z%]+)([a-zA-Z%]+)\s*$')
+    m = rx.match(length)
+    if not m:
+        document.warning("Invalid length value: " + length + ".")
+        return 0
+    value = m.group(1)
+    unit = m.group(2)
+    if not unit in scales.keys():
+        document.warning("Unknown length unit: " + unit + ".")
+        return value
+    return "%g" % (float(value) * scales[unit])
 
 
 def revert_flex_inset(lines, name, LaTeXname):

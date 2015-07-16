@@ -293,13 +293,13 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 
 		case EX_BOUNDINGBOX:
 			lex.next();
-			clipdata.bbox.xl = lex.getInteger();
+			clipdata.bbox.xl = Length(lex.getString());
 			lex.next();
-			clipdata.bbox.yb = lex.getInteger();
+			clipdata.bbox.yb = Length(lex.getString());
 			lex.next();
-			clipdata.bbox.xr = lex.getInteger();
+			clipdata.bbox.xr = Length(lex.getString());
 			lex.next();
-			clipdata.bbox.yt = lex.getInteger();
+			clipdata.bbox.yt = Length(lex.getString());
 			break;
 
 		case EX_CLIP:

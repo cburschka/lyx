@@ -218,7 +218,10 @@ string const  ClipLatexOption::option_impl() const
 
 	ostringstream os;
 	if (!data.bbox.empty())
-		os << "bb=" << data.bbox << ',';
+		os << "bb=" << data.bbox.xl.asLatexString() << ' '
+		   << data.bbox.yb.asLatexString() << ' '
+		   << data.bbox.xr.asLatexString() << ' '
+		   << data.bbox.yt.asLatexString() << ',';
 	if (data.clip)
 		os << "clip,";
 	return os.str();

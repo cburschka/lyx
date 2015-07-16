@@ -518,7 +518,7 @@
             </property>
            </widget>
           </item>
-          <item row="3" column="1" colspan="2" >
+          <item row="3" column="1" >
            <widget class="QLineEdit" name="xlED" >
             <property name="toolTip" >
              <string/>
@@ -548,8 +548,20 @@
             </property>
            </widget>
           </item>
-          <item row="2" column="1" colspan="2" >
+          <item row="2" column="1" >
            <widget class="QLineEdit" name="xrED" />
+          </item>
+          <item row="2" column="2" >
+           <widget class="lyx::frontend::LengthCombo" name="xrUnitCO" />
+          </item>
+          <item row="2" column="4" >
+           <widget class="lyx::frontend::LengthCombo" name="ytUnitCO" />
+          </item>
+          <item row="3" column="2" >
+           <widget class="lyx::frontend::LengthCombo" name="xlUnitCO" />
+          </item>
+          <item row="3" column="4" >
+           <widget class="lyx::frontend::LengthCombo" name="ybUnitCO" />
           </item>
          </layout>
         </widget>

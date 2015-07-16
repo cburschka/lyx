@@ -140,6 +140,14 @@ GuiExternal::GuiExternal(GuiView & lv)
 	connect(ytED, SIGNAL(textChanged(QString)), this, SLOT(bbChanged()));
 	connect(xlED, SIGNAL(textChanged(QString)), this, SLOT(bbChanged()));
 	connect(ybED, SIGNAL(textChanged(QString)), this, SLOT(bbChanged()));
+	connect(xrUnitCO, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+		this, SLOT(bbChanged()));
+	connect(ytUnitCO, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+		this, SLOT(bbChanged()));
+	connect(xlUnitCO, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+		this, SLOT(bbChanged()));
+	connect(ybUnitCO, SIGNAL(selectionChanged(lyx::Length::UNIT)),
+		this, SLOT(bbChanged()));
 	connect(draftCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 
 	QIntValidator * validator = new QIntValidator(displayscaleED);
@@ -148,10 +156,10 @@ GuiExternal::GuiExternal(GuiView & lv)
 
 	angleED->setValidator(new QDoubleValidator(-360, 360, 2, angleED));
 
-	xlED->setValidator(new QIntValidator(xlED));
-	ybED->setValidator(new QIntValidator(ybED));
-	xrED->setValidator(new QIntValidator(xrED));
-	ytED->setValidator(new QIntValidator(ytED));
+	xlED->setValidator(unsignedLengthValidator(xlED));
+	ybED->setValidator(unsignedLengthValidator(ybED));
+	xrED->setValidator(unsignedLengthValidator(xrED));
+	ytED->setValidator(unsignedLengthValidator(ytED));
 
 	widthED->setValidator(unsignedLengthValidator(widthED));
 	heightED->setValidator(unsignedLengthValidator(heightED));
@@ -183,6 +191,10 @@ GuiExternal::GuiExternal(GuiView & lv)
 	bc().addReadOnly(xlED);
 	bc().addReadOnly(xrED);
 	bc().addReadOnly(ybED);
+	bc().addReadOnly(ytUnitCO);
+	bc().addReadOnly(xlUnitCO);
+	bc().addReadOnly(xrUnitCO);
+	bc().addReadOnly(ybUnitCO);
 	bc().addReadOnly(extraFormatCO);
 	bc().addReadOnly(extraED);
 
@@ -318,10 +330,15 @@ void GuiExternal::getbbClicked()
 		bb = "0 0 " + convert<string>(width) + ' ' + convert<string>(height);
 	}
 
-	xlED->setText(toqstr(token(bb, ' ', 0)));
-	ybED->setText(toqstr(token(bb, ' ', 1)));
-	xrED->setText(toqstr(token(bb, ' ', 2)));
-	ytED->setText(toqstr(token(bb, ' ', 3)));
+	doubleToWidget(xlED, token(bb, ' ', 0));
+	doubleToWidget(ybED, token(bb, ' ', 1));
+	doubleToWidget(xrED, token(bb, ' ', 2));
+	doubleToWidget(ytED, token(bb, ' ', 3));
+	// the values from the file always have the bigpoint-unit bp
+	xlUnitCO->setCurrentIndex(0);
+	ybUnitCO->setCurrentIndex(0);
+	xrUnitCO->setCurrentIndex(0);
+	ytUnitCO->setCurrentIndex(0);
 
 	bbChanged_ = false;
 }
@@ -429,14 +446,17 @@ static void getSize(external::ResizeData & data,
 void setCrop(QCheckBox & clipCB,
 	QLineEdit & xlED, QLineEdit & ybED,
 	QLineEdit & xrED, QLineEdit & ytED,
+	LengthCombo & xlUnitCO, LengthCombo & ybUnitCO,
+	LengthCombo & xrUnitCO, LengthCombo & ytUnitCO,
 	external::ClipData const & data)
 {
 	clipCB.setChecked(data.clip);
-	graphics::BoundingBox const & bbox = data.bbox;
-	xlED.setText(QString::number(bbox.xl));
-	ybED.setText(QString::number(bbox.yb));
-	xrED.setText(QString::number(bbox.xr));
-	ytED.setText(QString::number(bbox.yt));
+	Length::UNIT const default_unit = data.bbox.xl.zero() ?
+		Length::defaultUnit() : data.bbox.xl.unit();
+	lengthToWidgets(&xlED, &xlUnitCO, data.bbox.xl, default_unit);
+	lengthToWidgets(&ybED, &ybUnitCO, data.bbox.yb, default_unit);
+	lengthToWidgets(&xrED, &xrUnitCO, data.bbox.xr, default_unit);
+	lengthToWidgets(&ytED, &ytUnitCO, data.bbox.yt, default_unit);
 }
 
 
@@ -444,6 +464,8 @@ static void getCrop(external::ClipData & data,
 	QCheckBox const & clipCB,
 	QLineEdit const & xlED, QLineEdit const & ybED,
 	QLineEdit const & xrED, QLineEdit const & ytED,
+	LengthCombo const & xlUnitCO, LengthCombo const & ybUnitCO,
+	LengthCombo const & xrUnitCO, LengthCombo const & ytUnitCO,
 	bool bb_changed)
 {
 	data.clip = clipCB.isChecked();
@@ -451,10 +473,10 @@ static void getCrop(external::ClipData & data,
 	if (!bb_changed)
 		return;
 
-	data.bbox.xl = xlED.text().toInt();
-	data.bbox.yb = ybED.text().toInt();
-	data.bbox.xr = xrED.text().toInt();
-	data.bbox.yt = ytED.text().toInt();
+	data.bbox.xl = Length(widgetsToLength(&xlED, &xlUnitCO));
+	data.bbox.yb = Length(widgetsToLength(&ybED, &ybUnitCO));
+	data.bbox.xr = Length(widgetsToLength(&xrED, &xrUnitCO));
+	data.bbox.yt = Length(widgetsToLength(&ytED, &ytUnitCO));
 }
 
 
@@ -494,7 +516,8 @@ void GuiExternal::updateContents()
 	setSize(*widthED, *widthUnitCO, *heightED, *heightUnitCO,
 		*aspectratioCB, params_.resizedata);
 
-	setCrop(*clipCB, *xlED, *ybED, *xrED, *ytED, params_.clipdata);
+	setCrop(*clipCB, *xlED, *ybED, *xrED, *ytED,
+	        *xlUnitCO, *ybUnitCO, *xrUnitCO, *ytUnitCO, params_.clipdata);
 	bbChanged_ = !params_.clipdata.bbox.empty();
 
 	isValid();
@@ -584,8 +607,8 @@ void GuiExternal::applyView()
 			*heightED, *heightUnitCO, *aspectratioCB, usingScale());
 
 	if (cropGB->isEnabled())
-		getCrop(params_.clipdata, *clipCB, *xlED, *ybED,
-			*xrED, *ytED, bbChanged_);
+		getCrop(params_.clipdata, *clipCB, *xlED, *ybED, *xrED, *ytED,
+		        *xlUnitCO, *ybUnitCO, *xrUnitCO, *ytUnitCO, bbChanged_);
 
 	if (optionsGB->isEnabled()) {
 		MapType::const_iterator it = extra_.begin();

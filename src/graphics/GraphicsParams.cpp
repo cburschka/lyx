@@ -12,8 +12,6 @@
 
 #include "GraphicsParams.h"
 
-#include "Length.h"
-
 #include <cstdlib>
 #include <sstream>
 
@@ -49,18 +47,17 @@ bool operator!=(Params const & a, Params const & b)
 
 ostream & operator<<(ostream & os, BoundingBox const & bb)
 {
-	os << bb.xl << ' ' << bb.yb << ' ' << bb.xr << ' ' << bb.yt;
+	os << bb.xl.asString() << ' ' << bb.yb.asString() << ' '
+	   << bb.xr.asString() << ' ' << bb.yt.asString();
 	return os;
 }
 
 
 BoundingBox::BoundingBox()
-	: xl(0), yb(0), xr(0), yt(0)
 {}
 
 
 BoundingBox::BoundingBox(string const & bb)
-	: xl(0), yb(0), xr(0), yt(0)
 {
 	if (bb.empty())
 		return;
@@ -69,14 +66,22 @@ BoundingBox::BoundingBox(string const & bb)
 	string a, b, c, d;
 	is >> a >> b >> c >> d;
 
+	Length xl_tmp = Length(a);
+	if (xl_tmp.value() < 0)
+		xl_tmp = Length(-xl_tmp.value(), xl_tmp.unit());
+	Length yb_tmp = Length(b);
+	if (yb_tmp.value() < 0)
+		yb_tmp = Length(-yb_tmp.value(), yb_tmp.unit());
+	Length xr_tmp = Length(c);
+	if (xr_tmp.value() < 0)
+		xr_tmp = Length(-xr_tmp.value(), xr_tmp.unit());
+	Length yt_tmp = Length(d);
+	if (yt_tmp.value() < 0)
+		yt_tmp = Length(-yt_tmp.value(), yt_tmp.unit());
+
 	// inBP returns the length in Postscript points.
 	// Note further that there are 72 Postscript pixels per inch.
-	unsigned int const xl_tmp = abs(Length(a).inBP());
-	unsigned int const yb_tmp = abs(Length(b).inBP());
-	unsigned int const xr_tmp = abs(Length(c).inBP());
-	unsigned int const yt_tmp = abs(Length(d).inBP());
-
-	if (xr_tmp <= xl_tmp || yt_tmp <= yb_tmp)
+	if (xr_tmp.inBP() <= xl_tmp.inBP() || yt_tmp.inBP() <= yb_tmp.inBP())
 		return;
 
 	xl = xl_tmp;
@@ -88,7 +93,7 @@ BoundingBox::BoundingBox(string const & bb)
 
 bool BoundingBox::empty() const
 {
-	return (!xl && !yb && !xr && !yt);
+	return xl.zero() && yb.zero() && xr.zero() && yt.zero();
 }
 
 

@@ -143,11 +143,11 @@ bool GuiImage::clip(Params const & params)
 
 #if QT_VERSION >= 0x050000
 	double const pixelRatio = is_transformed_ ? transformed_.devicePixelRatio() : original_.devicePixelRatio();
-	int const new_width  = static_cast<int>((params.bb.xr - params.bb.xl) * pixelRatio);
-	int const new_height = static_cast<int>((params.bb.yt - params.bb.yb) * pixelRatio);
+	int const new_width  = static_cast<int>((params.bb.xr.inBP() - params.bb.xl.inBP()) * pixelRatio);
+	int const new_height = static_cast<int>((params.bb.yt.inBP() - params.bb.yb.inBP()) * pixelRatio);
 #else
-	int const new_width  = static_cast<int>((params.bb.xr - params.bb.xl));
-	int const new_height = static_cast<int>((params.bb.yt - params.bb.yb));
+	int const new_width  = static_cast<int>((params.bb.xr.inBP() - params.bb.xl.inBP()));
+	int const new_height = static_cast<int>((params.bb.yt.inBP() - params.bb.yb.inBP()));
 #endif
 
 	QImage const & image = is_transformed_ ? transformed_ : original_;
@@ -162,9 +162,9 @@ bool GuiImage::clip(Params const & params)
 	if (new_width == image.width() && new_height == image.height())
 		return false;
 
-	int const xoffset_l = params.bb.xl;
-	int const yoffset_t = (image.height() > int(params.bb.yt))
-		? image.height() - params.bb.yt : 0;
+	int const xoffset_l = params.bb.xl.inBP();
+	int const yoffset_t = (image.height() > params.bb.yt.inBP())
+		? image.height() - params.bb.yt.inBP() : 0;
 
 	transformed_ = image.copy(xoffset_l, yoffset_t, new_width, new_height);
 	return true;
