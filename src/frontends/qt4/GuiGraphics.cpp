@@ -196,8 +196,6 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(draftCB, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));
-	connect(unzipCB, SIGNAL(stateChanged(int)),
-		this, SLOT(change_adaptor()));
 	// FIXME: we should connect to clicked() when we move to Qt 4.2	because
 	// the toggled(bool) signal is also trigged when we update the widgets
 	// (rgh-4/07) this isn't as much or a problem as it was, because we're now
@@ -223,11 +221,9 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	bc().addReadOnly(filenameL);
 	bc().addReadOnly(filename);
 	bc().addReadOnly(browsePB);
-	bc().addReadOnly(unzipCB);
 	bc().addReadOnly(bbFrame);
 	bc().addReadOnly(draftCB);
 	bc().addReadOnly(clip);
-	bc().addReadOnly(unzipCB);
 	bc().addReadOnly(displayGB);
 	bc().addReadOnly(sizeGB);
 	bc().addReadOnly(rotationGB);
@@ -582,7 +578,6 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	// Update the draft and clip mode
 	draftCB->setChecked(igp.draft);
 	clip->setChecked(igp.clip);
-	unzipCB->setChecked(igp.noUnzip);
 	displayGB->setChecked(igp.display);
 	displayscale->setText(toqstr(convert<string>(igp.lyxscale)));
 
@@ -732,7 +727,6 @@ void GuiGraphics::applyView()
 		igp.keepAspectRatio = aspectratio->isChecked();
 	}
 
-	igp.noUnzip = unzipCB->isChecked();
 	igp.lyxscale = displayscale->text().toInt();
 	igp.rotateAngle = widgetToDoubleStr(angle);
 

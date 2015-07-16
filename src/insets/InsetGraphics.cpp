@@ -627,44 +627,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 	// determine the export format
 	string const tex_format = flavor2format(runparams.flavor);
 
-	// If the file is compressed and we have specified that it
-	// should not be uncompressed, then just return its name and
-	// let LaTeX do the rest!
 	if (formats.isZippedFile(params().filename)) {
-		if (params().noUnzip) {
-			// We don't know whether latex can actually handle
-			// this file, but we can't check, because that would
-			// mean to unzip the file and thereby making the
-			// noUnzip parameter meaningless.
-			LYXERR(Debug::GRAPHICS, "\tpass zipped file to LaTeX.");
-
-			FileName const bb_orig_file =
-				FileName(changeExtension(orig_file, "bb"));
-			if (runparams.nice) {
-				runparams.exportdata->addExternalFile(tex_format,
-						bb_orig_file,
-						changeExtension(output_file, "bb"));
-			} else {
-				// LaTeX needs the bounding box file in the
-				// tmp dir
-				FileName bb_file =
-					FileName(changeExtension(temp_file.absFileName(), "bb"));
-				boost::tie(status, bb_file) =
-					copyFileIfNeeded(bb_orig_file, bb_file);
-				if (status == FAILURE)
-					return orig_file;
-				runparams.exportdata->addExternalFile(tex_format,
-						bb_file);
-			}
-			runparams.exportdata->addExternalFile(tex_format,
-					source_file, output_file);
-			runparams.exportdata->addExternalFile("dvi",
-					source_file, output_file);
-			// We can't strip the extension, because we don't know
-			// the unzipped file format
-			return latex_path(output_file, EXCLUDE_EXTENSION);
-		}
-
 		FileName const unzipped_temp_file =
 			FileName(unzippedFileName(temp_file.absFileName()));
 		output_file = unzippedFileName(output_file);

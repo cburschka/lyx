@@ -1505,6 +1505,28 @@ def revert_subref(document):
         i += 1
 
 
+def convert_nounzip(document):
+    " remove the noUnzip parameter of graphics insets "
+
+    rx = re.compile(r'\s*noUnzip\s*$')
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Graphics", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of graphics inset at line " + str(i))
+            i += 1
+            continue
+
+        k = find_re(document.body, rx, i, j)
+        if k != -1:
+          del document.body[k]
+          j = j - 1
+        i = j + 1
+
+
 ##
 # Conversion hub
 #
@@ -1534,10 +1556,12 @@ convert = [
            [492, [convert_colorbox]],
            [493, []],
            [494, []],
-           [495, [convert_subref]]
+           [495, [convert_subref]],
+           [496, [convert_nounzip]]
           ]
 
 revert =  [
+           [495, []], # nothing to do since the noUnzip parameter was optional
            [494, [revert_subref]],
            [493, [revert_jss]],
            [492, [revert_mathmulticol]],

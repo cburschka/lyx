@@ -48,8 +48,6 @@ public:
 	bool keepAspectRatio;
 	/// draft mode
 	bool draft;
-	/// what to do with zipped files
-	bool noUnzip;
 	/// scale image before rotating
 	bool scaleBeforeRotation;
 
