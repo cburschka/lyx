@@ -195,7 +195,7 @@ private:
 struct Undo::Private
 {
 	Private(Buffer & buffer) : buffer_(buffer), undo_finished_(true),
-				   group_id(0), group_level(0) {}
+				   group_id_(0), group_level_(0) {}
 
 	// Do one undo/redo step
 	void doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack,
@@ -232,9 +232,9 @@ struct Undo::Private
 	bool undo_finished_;
 
 	/// Current group Id.
-	size_t group_id;
+	size_t group_id_;
 	/// Current group nesting nevel.
-	size_t group_level;
+	size_t group_level_;
 };
 
 
@@ -263,8 +263,8 @@ void Undo::clear()
 	d->undo_finished_ = true;
 	// We used to do that, but I believe it is better to keep
 	// groups (only used in Buffer::reload for now (JMarc)
-	//d->group_id = 0;
-	//d->group_level = 0;
+	//d->group_id_ = 0;
+	//d->group_level_ = 0;
 }
 
 
@@ -308,9 +308,9 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 	CursorData const & cur_before,
 	UndoElementStack & stack)
 {
-	if (!group_level) {
+	if (!group_level_) {
 		LYXERR0("There is no group open (creating one)");
-		++group_id;
+		++group_id_;
 	}
 
 	if (first_pit > last_pit)
@@ -338,10 +338,10 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 		return;
 	}
 
-	LYXERR(Debug::UNDO, "Create undo element of group " << group_id);
+	LYXERR(Debug::UNDO, "Create undo element of group " << group_id_);
 	// create the position information of the Undo entry
 	UndoElement undo(kind, cur_before, cell, from, end, 0, 0,
-	                 buffer_.isClean(), group_id);
+	                 buffer_.isClean(), group_id_);
 
 	// fill in the real data to be saved
 	if (cell.inMathed()) {
@@ -392,15 +392,15 @@ void Undo::Private::recordUndo(UndoKind kind,
 void Undo::Private::doRecordUndoBufferParams(CursorData const & cur_before,
 									   UndoElementStack & stack)
 {
-	if (!group_level) {
+	if (!group_level_) {
 		LYXERR0("There is no group open (creating one)");
-		++group_id;
+		++group_id_;
 	}
 
-	LYXERR(Debug::UNDO, "Create full buffer undo element of group " << group_id);
+	LYXERR(Debug::UNDO, "Create full buffer undo element of group " << group_id_);
 	// create the position information of the Undo entry
 	UndoElement undo(cur_before, buffer_.params(), buffer_.isClean(),
-					 group_id);
+					 group_id_);
 
 	// push the undo entry to undo stack
 	stack.push(undo);
@@ -546,25 +546,25 @@ bool Undo::textRedo(CursorData & cur)
 
 void Undo::beginUndoGroup()
 {
-	if (d->group_level == 0) {
+	if (d->group_level_ == 0) {
 		// create a new group
-		++d->group_id;
-		LYXERR(Debug::UNDO, "+++++++Creating new group " << d->group_id);
+		++d->group_id_;
+		LYXERR(Debug::UNDO, "+++++++Creating new group " << d->group_id_);
 	}
-	++d->group_level;
+	++d->group_level_;
 }
 
 
 void Undo::endUndoGroup()
 {
-	if (d->group_level == 0) {
+	if (d->group_level_ == 0) {
 		LYXERR0("There is no undo group to end here");
 		return;
 	}
-	--d->group_level;
-	if (d->group_level == 0) {
+	--d->group_level_;
+	if (d->group_level_ == 0) {
 		// real end of the group
-		LYXERR(Debug::UNDO, "-------End of group " << d->group_id);
+		LYXERR(Debug::UNDO, "-------End of group " << d->group_id_);
 	}
 }
 
