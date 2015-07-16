@@ -29,7 +29,7 @@ class WordLangTuple {
 public:
 	WordLangTuple() : lang_(0) {}
 
-	WordLangTuple(docstring const & w, Language * l)
+	WordLangTuple(docstring const & w, Language const * l)
 		: word_(w), lang_(l)
 	{}
 
@@ -47,7 +47,7 @@ private:
 	/// the word
 	docstring word_;
 	/// language of word
-	Language * lang_;
+	Language const * lang_;
 };
 
 

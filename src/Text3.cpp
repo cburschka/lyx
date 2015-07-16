@@ -486,6 +486,15 @@ bool Text::isRTL(Paragraph const & par) const
 	return par.isRTL(buffer.params());
 }
 
+	
+namespace {
+		
+	Language const * getLanguage(Cursor const & cur, string const & lang) {
+		return lang.empty() ? cur.getFont().language() : languages.getLanguage(lang);
+	}
+
+}
+
 
 void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 {
@@ -2343,8 +2352,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_SPELLING_ADD: {
+		Language const * language = getLanguage(cur, cmd.getArg(1));
 		docstring word = from_utf8(cmd.getArg(0));
-		Language * lang;
 		if (word.empty()) {
 			word = cur.selectionAsString(false);
 			// FIXME
@@ -2353,22 +2362,15 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				selectWordWhenUnderCursor(cur, WHOLE_WORD);
 				word = cur.selectionAsString(false);
 			}
-			lang = const_cast<Language *>(cur.getFont().language());
-		} else if (cmd.getArg(1).empty()) {
-			// optional language argument is missing
-			// use the language at cursor position
-			lang = const_cast<Language *>(cur.getFont().language());
-		} else {
-			lang = const_cast<Language *>(languages.getLanguage(cmd.getArg(1)));
 		}
-		WordLangTuple wl(word, lang);
+		WordLangTuple wl(word, language);
 		theSpellChecker()->insert(wl);
 		break;
 	}
 
 	case LFUN_SPELLING_IGNORE: {
+		Language const * language = getLanguage(cur, cmd.getArg(1));
 		docstring word = from_utf8(cmd.getArg(0));
-		Language * lang;
 		if (word.empty()) {
 			word = cur.selectionAsString(false);
 			// FIXME
@@ -2377,20 +2379,15 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				selectWordWhenUnderCursor(cur, WHOLE_WORD);
 				word = cur.selectionAsString(false);
 			}
-			lang = const_cast<Language *>(cur.getFont().language());
-		} else if (cmd.getArg(1).empty()) {
-			lang = const_cast<Language *>(cur.getFont().language());
-		} else {
-			lang = const_cast<Language *>(languages.getLanguage(cmd.getArg(1)));
 		}
-		WordLangTuple wl(word, lang);
+		WordLangTuple wl(word, language);
 		theSpellChecker()->accept(wl);
 		break;
 	}
 
 	case LFUN_SPELLING_REMOVE: {
+		Language const * language = getLanguage(cur, cmd.getArg(1));
 		docstring word = from_utf8(cmd.getArg(0));
-		Language * lang;
 		if (word.empty()) {
 			word = cur.selectionAsString(false);
 			// FIXME
@@ -2399,13 +2396,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				selectWordWhenUnderCursor(cur, WHOLE_WORD);
 				word = cur.selectionAsString(false);
 			}
-			lang = const_cast<Language *>(cur.getFont().language());
-		} else if (cmd.getArg(1).empty()) {
-			lang = const_cast<Language *>(cur.getFont().language());
-		} else {
-			lang = const_cast<Language *>(languages.getLanguage(cmd.getArg(1)));
 		}
-		WordLangTuple wl(word, lang);
+		WordLangTuple wl(word, language);
 		theSpellChecker()->remove(wl);
 		break;
 	}
