@@ -17,7 +17,6 @@
 
 #include "Text.h"
 
-#include "Bidi.h"
 #include "BranchList.h"
 #include "FloatList.h"
 #include "FuncStatus.h"
@@ -710,7 +709,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				cmd = FuncRequest(LFUN_FINISHED_LEFT);
 			}
 		} else {
-			if (reverseDirectionNeeded(cur)) {
+			if (cur.reverseDirectionNeeded()) {
 				cmd.setAction(cmd.action() == LFUN_CHAR_LEFT_SELECT ?
 					LFUN_CHAR_FORWARD_SELECT : LFUN_CHAR_FORWARD);
 			} else {
@@ -734,7 +733,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			}
 		} else {
-			if (reverseDirectionNeeded(cur)) {
+			if (cur.reverseDirectionNeeded()) {
 				cmd.setAction(cmd.action() == LFUN_CHAR_RIGHT_SELECT ?
 					LFUN_CHAR_BACKWARD_SELECT : LFUN_CHAR_BACKWARD);
 			} else {
@@ -846,7 +845,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			}
 		} else {
-			if (reverseDirectionNeeded(cur)) {
+			if (cur.reverseDirectionNeeded()) {
 				cmd.setAction(cmd.action() == LFUN_WORD_RIGHT_SELECT ?
 						LFUN_WORD_BACKWARD_SELECT : LFUN_WORD_BACKWARD);
 			} else {
@@ -898,7 +897,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				cmd = FuncRequest(LFUN_FINISHED_LEFT);
 			}
 		} else {
-			if (reverseDirectionNeeded(cur)) {
+			if (cur.reverseDirectionNeeded()) {
 				cmd.setAction(cmd.action() == LFUN_WORD_LEFT_SELECT ?
 						LFUN_WORD_FORWARD_SELECT : LFUN_WORD_FORWARD);
 			} else {

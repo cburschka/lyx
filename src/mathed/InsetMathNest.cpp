@@ -38,7 +38,6 @@
 #include "MathStream.h"
 #include "MathSupport.h"
 
-#include "Bidi.h"
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
@@ -670,7 +669,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		else {
 			bool right = (act == LFUN_CHAR_RIGHT_SELECT
 						  || act == LFUN_CHAR_RIGHT);
-			if (lyxrc.visual_cursor || !reverseDirectionNeeded(cur))
+			if (lyxrc.visual_cursor || !cur.reverseDirectionNeeded())
 				forward = right;
 			else
 				forward = !right;

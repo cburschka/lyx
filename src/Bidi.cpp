@@ -215,23 +215,4 @@ bool Bidi::isBoundary(Buffer const & buf, Paragraph const & par,
 	return rtl != rtl2;
 }
 
-
-bool reverseDirectionNeeded(Cursor const & cur)
-{
-	/*
-	 * We determine the directions based on the direction of the
-	 * bottom() --- i.e., outermost --- paragraph, because that is
-	 * the only way to achieve consistency of the arrow's movements
-	 * within a paragraph, and thus avoid situations in which the
-	 * cursor gets stuck.
-	 */
-	return cur.bottom().paragraph().isRTL(cur.bv().buffer().params());
-}
-
-
-bool isWithinRtlParagraph(Cursor const & cur)
-{
-	return cur.innerParagraph().isRTL(cur.bv().buffer().params());
-}
-
 } // namespace lyx

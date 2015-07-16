@@ -22,7 +22,6 @@
 
 #include "Text.h"
 
-#include "Bidi.h"
 #include "Buffer.h"
 #include "buffer_funcs.h"
 #include "BufferList.h"

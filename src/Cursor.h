@@ -268,6 +268,8 @@ public:
 	bool posVisToNewRow(bool movingLeft);
 	/// move to right or left extremity of the current row
 	void posVisToRowExtremity(bool left);
+	/// Should interpretation of the arrow keys be reversed?
+	bool reverseDirectionNeeded() const;
 
 	/// insert an inset
 	void insert(Inset *);

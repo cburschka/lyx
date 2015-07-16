@@ -1156,6 +1156,19 @@ void Cursor::posVisToRowExtremity(bool left)
 }
 
 
+bool Cursor::reverseDirectionNeeded() const
+{
+	/*
+	 * We determine the directions based on the direction of the
+	 * bottom() --- i.e., outermost --- paragraph, because that is
+	 * the only way to achieve consistency of the arrow's movements
+	 * within a paragraph, and thus avoid situations in which the
+	 * cursor gets stuck.
+	 */
+	return bottom().paragraph().isRTL(bv().buffer().params());
+}
+
+
 CursorSlice Cursor::normalAnchor() const
 {
 	if (!selection())
@@ -1843,7 +1856,7 @@ bool Cursor::upDownInMath(bool up)
 		// handling when the cursor is at the end of line: Use the new
 		// x-target only if the old one was before the end of line
 		// or the old one was after the beginning of the line
-		bool inRTL = isWithinRtlParagraph(*this);
+		bool inRTL = innerParagraph().isRTL(bv().buffer().params());
 		bool left;
 		bool right;
 		if (inRTL) {
@@ -1985,7 +1998,7 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		// end of line: Use the new x-target only if the old
 		// one was before the end of line or the old one was
 		// after the beginning of the line
-		bool inRTL = isWithinRtlParagraph(*this);
+		bool inRTL = innerParagraph().isRTL(bv().buffer().params());
 		bool left;
 		bool right;
 		if (inRTL) {
