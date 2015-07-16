@@ -44,6 +44,7 @@
 #include "SpellChecker.h"
 #include "TextClass.h"
 #include "TextMetrics.h"
+#include "Thesaurus.h"
 #include "WordLangTuple.h"
 
 #include "frontends/alert.h"
@@ -2329,6 +2330,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_THESAURUS_ENTRY: {
+		Language const * language = cur.getFont().language();
 		docstring arg = cmd.argument();
 		if (arg.empty()) {
 			arg = cur.selectionAsString(false);
@@ -2337,10 +2339,20 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				// Get word or selection
 				selectWordWhenUnderCursor(cur, WHOLE_WORD);
 				arg = cur.selectionAsString(false);
-				arg += " lang=" + from_ascii(cur.getFont().language()->lang());
+				arg += " lang=" + from_ascii(language->lang());
+			}
+		} else {
+			string lang = cmd.getArg(1);
+			// This duplicates the code in GuiThesaurus::initialiseParams
+			if (prefixIs(lang, "lang=")) {
+				language = languages.getLanguage(lang.substr(5));
+				if (!language)
+					language = cur.getFont().language();
 			}
 		}
-		if (lyxrc.thesaurusdir_path.empty()) {
+		string lang = language->code();
+		if (lyxrc.thesaurusdir_path.empty() && !thesaurus.thesaurusInstalled(from_ascii(lang))) {
+			LYXERR(Debug::ACTION, "Command " << cmd << ". Thesaurus not found for language " << lang);
 			frontend::Alert::warning(_("Path to thesaurus directory not set!"),
 					_("The path to the thesaurus directory has not been specified.\n"
 					  "The thesaurus is not functional.\n"
