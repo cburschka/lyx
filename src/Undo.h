@@ -80,12 +80,19 @@ public:
 	 *  a single step. This means you can add a group whenever you are not sure.
 	 */
 	void beginUndoGroup();
-
+	/// open a new group as above and specify a cursor to set as cur_before
+	/// of the group's undo elements.
+	/**
+	 * This cursor takes precedence over what is passed to recordUndo.
+	 * In the case of nested groups, only the first cur_before is
+	 * taken in account. The cursor is reset at the end of the
+	 * top-level group.
+	 */
+	void beginUndoGroup(CursorData const & cur_before);
 	/// end the current undo group.
 	void endUndoGroup();
-
 	/// end the current undo group and set UndoElement::cur_after if necessary.
-	void endUndoGroup(CursorData const &);
+	void endUndoGroup(CursorData const & cur_after);
 
 	/// The general case: record undo information for an arbitrary range.
 	/**

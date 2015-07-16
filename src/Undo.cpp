@@ -235,6 +235,8 @@ struct Undo::Private
 	size_t group_id_;
 	/// Current group nesting nevel.
 	size_t group_level_;
+	/// the position of cursor before the group was created
+	CursorData group_cur_before_;
 };
 
 
@@ -340,8 +342,9 @@ void Undo::Private::doRecordUndo(UndoKind kind,
 
 	LYXERR(Debug::UNDO, "Create undo element of group " << group_id_);
 	// create the position information of the Undo entry
-	UndoElement undo(kind, cur_before, cell, from, end, 0, 0,
-	                 buffer_.isClean(), group_id_);
+	UndoElement undo(kind,
+	      group_cur_before_.empty() ? cur_before : group_cur_before_,
+	      cell, from, end, 0, 0, buffer_.isClean(), group_id_);
 
 	// fill in the real data to be saved
 	if (cell.inMathed()) {
@@ -390,7 +393,7 @@ void Undo::Private::recordUndo(UndoKind kind,
 
 
 void Undo::Private::doRecordUndoBufferParams(CursorData const & cur_before,
-									   UndoElementStack & stack)
+                                             UndoElementStack & stack)
 {
 	if (!group_level_) {
 		LYXERR0("There is no group open (creating one)");
@@ -399,7 +402,8 @@ void Undo::Private::doRecordUndoBufferParams(CursorData const & cur_before,
 
 	LYXERR(Debug::UNDO, "Create full buffer undo element of group " << group_id_);
 	// create the position information of the Undo entry
-	UndoElement undo(cur_before, buffer_.params(), buffer_.isClean(),
+	UndoElement undo(group_cur_before_.empty() ? cur_before : group_cur_before_,
+                     buffer_.params(), buffer_.isClean(),
 					 group_id_);
 
 	// push the undo entry to undo stack
@@ -555,6 +559,14 @@ void Undo::beginUndoGroup()
 }
 
 
+void Undo::beginUndoGroup(CursorData const & cur_before)
+{
+	beginUndoGroup();
+	if (d->group_cur_before_.empty())
+		d->group_cur_before_ = cur_before;
+}
+
+
 void Undo::endUndoGroup()
 {
 	if (d->group_level_ == 0) {
@@ -564,16 +576,17 @@ void Undo::endUndoGroup()
 	--d->group_level_;
 	if (d->group_level_ == 0) {
 		// real end of the group
+		d->group_cur_before_ = CursorData();
 		LYXERR(Debug::UNDO, "-------End of group " << d->group_id_);
 	}
 }
 
 
-void Undo::endUndoGroup(CursorData const & cur)
+void Undo::endUndoGroup(CursorData const & cur_after)
 {
 	endUndoGroup();
 	if (!d->undostack_.empty() && d->undostack_.top().cur_after.empty())
-		d->undostack_.top().cur_after = cur;
+		d->undostack_.top().cur_after = cur_after;
 }
 
 

@@ -2482,7 +2482,7 @@ void Cursor::finishUndo() const
 
 void Cursor::beginUndoGroup() const
 {
-	buffer()->undo().beginUndoGroup();
+	buffer()->undo().beginUndoGroup(*this);
 }
 
 
