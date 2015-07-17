@@ -614,6 +614,7 @@ bool Text::checkAndActivateInset(Cursor & cur, bool front)
 	if (!front)
 		--cur.pos();
 	inset->edit(cur, front);
+	cur.setCurrentFont();
 	return true;
 }
 
@@ -632,6 +633,7 @@ bool Text::checkAndActivateInsetVisual(Cursor & cur, bool movingForward, bool mo
 		return false;
 	inset->edit(cur, movingForward, 
 		movingLeft ? Inset::ENTRY_DIRECTION_RIGHT : Inset::ENTRY_DIRECTION_LEFT);
+	cur.setCurrentFont();
 	return true;
 }
 
