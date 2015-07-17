@@ -569,12 +569,6 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	// FIXME: put back this assertion when the crash on new doc is solved.
 	//LASSERT(w >= 0, /**/);
 
-	bool const is_rtl = text_->isRTL(par);
-	if (is_rtl)
-		row.left_margin = rightMargin(pit);
-	else
-		row.left_margin = leftMargin(max_width_, pit, row.pos());
-
 	// is there a manual margin with a manual label
 	Layout const & layout = par.layout();
 
@@ -617,7 +611,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 			    && row.endpos() != par.size()) {
 				setSeparatorWidth(row, double(w) / ns);
 				row.dimension().wid = width;
-			} else if (is_rtl) {
+			} else if (text_->isRTL(par)) {
 				row.dimension().wid = width;
 				row.left_margin += w;
 			}
@@ -785,13 +779,19 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	Paragraph const & par = text_->getPar(pit);
 	pos_type const end = par.size();
 	pos_type const pos = row.pos();
-	int const width = max_width_ - right_margin;
 	pos_type const body_pos = par.beginOfBody();
+	bool const is_rtl = text_->isRTL(par);
+
 	row.clear();
-	// This make get changed in computeRowMetrics depending on RTL
 	row.left_margin = leftMargin(max_width_, pit, pos);
-	row.dimension().wid = row.left_margin;
 	row.right_margin = right_margin;
+	if (is_rtl)
+		swap(row.left_margin, row.right_margin);
+	// Remember that the row width takes into account the left_margin
+	// but not the right_margin.
+	row.dimension().wid = row.left_margin;
+	// the width available for the row.
+	int const width = max_width_ - row.right_margin;
 
 	if (pos >= end || row.width() > width) {
 		row.endpos(end);
@@ -904,7 +904,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	row.shortenIfNeeded(body_pos, width);
 
 	// make sure that the RTL elements are in reverse ordering
-	row.reverseRTL(text_->isRTL(par));
+	row.reverseRTL(is_rtl);
 }
 
 

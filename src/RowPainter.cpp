@@ -460,13 +460,10 @@ void RowPainter::paintLabel() const
 	FontMetrics const & fm = theFontMetrics(font);
 	double x = x_;
 
-	if (is_rtl) {
-		x = width_ - row_.left_margin
-			+ fm.width(layout.labelsep);
-	} else {
-		x = x_ - fm.width(layout.labelsep)
-			- fm.width(str);
-	}
+	if (is_rtl)
+		x = width_ - row_.right_margin + fm.width(layout.labelsep);
+	else
+		x = x_ - fm.width(layout.labelsep) - fm.width(str);
 
 	pi_.pain.text(int(x), yo_, str, font);
 }
@@ -500,12 +497,10 @@ void RowPainter::paintTopLevelLabel() const
 
 	double x = x_;
 	if (layout.labeltype == LABEL_CENTERED) {
-		if (is_rtl)
-			x = row_.left_margin;
-		x += (width_ - text_metrics_.rightMargin(pm_) - row_.left_margin) / 2;
+		x = row_.left_margin + (width_ - row_.left_margin - row_.right_margin) / 2;
 		x -= fm.width(str) / 2;
 	} else if (is_rtl) {
-		x = width_ - row_.left_margin -	fm.width(str);
+		x = width_ - row_.right_margin - fm.width(str);
 	}
 	pi_.pain.text(int(x), yo_ - maxdesc - labeladdon, str, font);
 }
@@ -580,7 +575,7 @@ void RowPainter::paintLast()
 		int const y = yo_ - size;
 		int const max_row_width = width_ - size - Inset::TEXT_TO_INSET_OFFSET;
 		int x = is_rtl ? nestMargin() + changebarMargin()
-			: max_row_width - text_metrics_.rightMargin(pm_);
+			: max_row_width - row_.right_margin;
 
 		// If needed, move the box a bit to avoid overlapping with text.
 		int const rem = max_row_width - row_.width();
