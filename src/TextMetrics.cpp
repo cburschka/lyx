@@ -1090,6 +1090,7 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 				  bool & boundary) const
 {
+	//LYXERR0("getPosNearX(" << x << ") row=" << row);
 	/// For the main Text, it is possible that this pit is not
 	/// yet in the CoordCache when moving cursor up.
 	/// x Paragraph coordinate is always 0 for main text anyway.
@@ -1145,6 +1146,7 @@ pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 		boundary = true;
 
 	x += xo;
+	//LYXERR0("getPosNearX ==> pos=" << pos << ", boundary=" << boundary);
 	return pos;
 }
 
