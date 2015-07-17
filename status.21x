@@ -184,6 +184,9 @@ What's new
 
 - Fix cursor font after undoing a font-changing command (bug 9537).
 
+- Reset cursor font when entring an inset with char-forward/backward
+  (bug 9597).
+
 - Fix crash when attempting to restore a document with multiple views on the
   Mac (bug 9483).
 
