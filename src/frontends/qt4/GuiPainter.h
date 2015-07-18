@@ -91,13 +91,15 @@ public:
 	 * text direction is given by \c rtl.
 	 * \return the width of the drawn text.
 	 */
-	virtual int text(int x, int y, docstring const & str, FontInfo const & f, bool rtl = false);
+	virtual int text(int x, int y, docstring const & str, FontInfo const & f,
+                     bool rtl = false, double wordspacing = 0.0);
 
 	/** draw a string at position x, y (y is the baseline). The
 	 * text direction is enforced by the \c Font.
 	 * \return the width of the drawn text.
 	 */
-	virtual int text(int x, int y, docstring const & str, Font const & f);
+	virtual int text(int x, int y, docstring const & str, Font const & f,
+                     double wordspacing = 0.0);
 
 	/** draw a string at position x, y (y is the baseline), but
 	 * make sure that the part between \c from and \c to is in
@@ -105,7 +107,8 @@ public:
 	 * \return the width of the drawn text.
 	 */
 	virtual int text(int x, int y, docstring const & str, Font const & f,
-			 Color other, size_type from, size_type to);
+                     Color other, size_type from, size_type to,
+                     double const wordspacing);
 
 	/// draw a char at position x, y (y is the baseline)
 	virtual int text(int x, int y, char_type c, FontInfo const & f);

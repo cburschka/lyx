@@ -76,7 +76,10 @@ public:
 			  extra(0), font(f), change(ch), final(false) {}
 
 		// Return total width of element, including separator overhead
-		double full_width() const { return dim.wid + extra; };
+		double full_width() const { return dim.wid + extra * countSeparators(); };
+		// Return the number of separator in the element (only STRING type)
+		int countSeparators() const;
+
 		/** Return position in pixels (from the left) of position
 		 * \param i in the row element.
 		 */
@@ -173,6 +176,11 @@ public:
 	int ascent() const { return dim_.asc; }
 	///
 	int descent() const { return dim_.des; }
+
+	// Return the number of separators in the row
+	int countSeparators() const;
+	// Set the extra spacing for every separator in STRING elements
+	void setSeparatorExtraWidth(double w);
 
 	///
 	void add(pos_type pos, Inset const * ins, Dimension const & dim,

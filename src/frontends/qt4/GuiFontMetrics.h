@@ -43,8 +43,8 @@ public:
 	virtual int rbearing(char_type c) const;
 	virtual int width(docstring const & s) const;
 	virtual int signedWidth(docstring const & s) const;
-	virtual int pos2x(docstring const & s, int pos, bool rtl) const;
-	virtual int x2pos(docstring const & s, int & x, bool rtl) const;
+	virtual int pos2x(docstring const & s, int pos, bool rtl, double ws) const;
+	virtual int x2pos(docstring const & s, int & x, bool rtl, double ws) const;
 	virtual bool breakAt(docstring & s, int & x, bool rtl, bool force) const;
 	virtual Dimension const dimension(char_type c) const;
 

@@ -58,28 +58,6 @@ using frontend::FontMetrics;
 
 namespace {
 
-int numberOfSeparators(Row const & row)
-{
-	int n = 0;
-	Row::const_iterator cit = row.begin();
-	Row::const_iterator const end = row.end();
-	for ( ; cit != end ; ++cit)
-		if (cit->type == Row::SEPARATOR)
-			++n;
-	return n;
-}
-
-
-void setSeparatorWidth(Row & row, double w)
-{
-	row.separator = w;
-	Row::iterator it = row.begin();
-	Row::iterator const end = row.end();
-	for ( ; it != end ; ++it)
-		if (it->type == Row::SEPARATOR)
-			it->extra = w;
-}
-
 
 int numberOfLabelHfills(Paragraph const & par, Row const & row)
 {
@@ -603,13 +581,13 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 		// set x how you need it
 		switch (getAlign(par, row.pos())) {
 		case LYX_ALIGN_BLOCK: {
-			int const ns = numberOfSeparators(row);
+			int const ns = row.countSeparators();
 			/** If we have separators, and this row has
 			 * not be broken abruptly by a display inset
 			 * or newline, then stretch it */
 			if (ns && !row.right_boundary()
 			    && row.endpos() != par.size()) {
-				setSeparatorWidth(row, double(w) / ns);
+				row.setSeparatorExtraWidth(double(w) / ns);
 				row.dimension().wid = width;
 			} else if (text_->isRTL(par)) {
 				row.dimension().wid = width;

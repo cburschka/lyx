@@ -290,7 +290,8 @@ int GuiPainter::text(int x, int y, char_type c, FontInfo const & f)
 
 
 int GuiPainter::text(int x, int y, docstring const & s,
-		     FontInfo const & f, bool const rtl)
+                     FontInfo const & f, bool const rtl,
+                     double const wordspacing)
 {
 	//LYXERR0("text: x=" << x << ", s=" << s);
 	if (s.empty())
@@ -316,7 +317,8 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		str = ' ' + str;
 #endif
 
-	QFont const & ff = getFont(f);
+	QFont ff = getFont(f);
+	ff.setWordSpacing(wordspacing);
 	GuiFontMetrics const & fm = getFontMetrics(f);
 
 	// Here we use the font width cache instead of
@@ -418,14 +420,16 @@ int GuiPainter::text(int x, int y, docstring const & s,
 }
 
 
-int GuiPainter::text(int x, int y, docstring const & str, Font const & f)
+int GuiPainter::text(int x, int y, docstring const & str, Font const & f,
+                     double const wordspacing)
 {
-	return text(x, y, str, f.fontInfo(), f.isVisibleRightToLeft());
+	return text(x, y, str, f.fontInfo(), f.isVisibleRightToLeft(), wordspacing);
 }
 
 
 int GuiPainter::text(int x, int y, docstring const & str, Font const & f,
-		     Color other, size_type from, size_type to)
+                     Color other, size_type const from, size_type const to,
+                     double const wordspacing)
 {
 	GuiFontMetrics const & fm = getFontMetrics(f.fontInfo());
 	FontInfo fi = f.fontInfo();
@@ -434,8 +438,8 @@ int GuiPainter::text(int x, int y, docstring const & str, Font const & f,
 	// dimensions
 	int const ascent = fm.maxAscent();
 	int const height = fm.maxAscent() + fm.maxDescent();
-	int xmin = fm.pos2x(str, from, rtl);
-	int xmax = fm.pos2x(str, to, rtl);
+	int xmin = fm.pos2x(str, from, rtl, wordspacing);
+	int xmax = fm.pos2x(str, to, rtl, wordspacing);
 	if (xmin > xmax)
 		swap(xmin, xmax);
 
@@ -444,7 +448,7 @@ int GuiPainter::text(int x, int y, docstring const & str, Font const & f,
 	fi.setPaintColor(other);
 	QRegion const clip(x + xmin, y - ascent, xmax - xmin, height);
 	setClipRegion(clip);
-	int const textwidth = text(x, y, str, fi, rtl);
+	int const textwidth = text(x, y, str, fi, rtl, wordspacing);
 
 	// Then the part in normal color
 	// Note that in Qt5, it is not possible to use Qt::UniteClip,
@@ -452,7 +456,7 @@ int GuiPainter::text(int x, int y, docstring const & str, Font const & f,
 	fi.setPaintColor(orig);
 	QRegion region(viewport());
 	setClipRegion(region - clip);
-	text(x, y, str, fi, rtl);
+	text(x, y, str, fi, rtl, wordspacing);
 	setClipping(false);
 
 	return textwidth;

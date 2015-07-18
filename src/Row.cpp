@@ -36,6 +36,15 @@ namespace lyx {
 using support::rtrim;
 using frontend::FontMetrics;
 
+
+int Row::Element::countSeparators() const
+{
+	if (type != STRING)
+		return 0;
+	return count(str.begin(), str.end(), ' ');
+}
+
+
 double Row::Element::pos2x(pos_type const i) const
 {
 	// This can happen with inline completion when clicking on the
@@ -54,7 +63,7 @@ double Row::Element::pos2x(pos_type const i) const
 		w = rtl ? full_width() : 0;
 	else {
 		FontMetrics const & fm = theFontMetrics(font);
-		w = fm.pos2x(str, i - pos, font.isVisibleRightToLeft());
+		w = fm.pos2x(str, i - pos, font.isVisibleRightToLeft(), extra);
 	}
 
 	return w;
@@ -70,7 +79,7 @@ pos_type Row::Element::x2pos(int &x) const
 	switch (type) {
 	case STRING: {
 		FontMetrics const & fm = theFontMetrics(font);
-		i = fm.x2pos(str, x, rtl);
+		i = fm.x2pos(str, x, rtl, extra);
 		break;
 	}
 	case VIRTUAL:
@@ -254,6 +263,26 @@ ostream & operator<<(ostream & os, Row const & row)
 		x += it->full_width();
 	}
 	return os;
+}
+
+
+int Row::countSeparators() const
+{
+	int n = 0;
+	const_iterator const end = elements_.end();
+	for (const_iterator cit = elements_.begin() ; cit != end ; ++cit)
+		n += cit->countSeparators();
+	return n;
+}
+
+
+void Row::setSeparatorExtraWidth(double w)
+{
+	separator = w;
+	iterator const end = elements_.end();
+	for (iterator it = elements_.begin() ; it != end ; ++it)
+		if (it->type == Row::STRING)
+			it->extra = w;
 }
 
 

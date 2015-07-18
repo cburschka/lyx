@@ -186,14 +186,12 @@ void RowPainter::paintForeignMark(double orig_x, Language const * lang, int desc
 
 
 void RowPainter::paintMisspelledMark(double const orig_x,
-                                     docstring const & str, Font const & font,
-                                     pos_type const start_pos,
-                                     bool const changed) const
+                                     Row::Element const & e) const
 {
 	// if changed the misspelled marker gets placed slightly lower than normal
 	// to avoid drawing at the same vertical offset
 	int const y = yo_ + solid_line_offset_ + solid_line_thickness_
-		+ (changed ? solid_line_thickness_ + 1 : 0)
+		+ (e.change.changed() ? solid_line_thickness_ + 1 : 0)
 		+ dotted_line_offset_;
 
 	//FIXME: this could be computed only once, it is probably not costly.
@@ -210,8 +208,8 @@ void RowPainter::paintMisspelledMark(double const orig_x,
 			--cpos;
 	}
 
-	pos_type pos = start_pos;
-	while (pos < start_pos + pos_type(str.length())) {
+	pos_type pos = e.pos;
+	while (pos < e.pos + pos_type(e.str.length())) {
 		if (!par_.isMisspelled(pos)) {
 			++pos;
 			continue;
@@ -226,12 +224,12 @@ void RowPainter::paintMisspelledMark(double const orig_x,
 			continue;
 		}
 
-		FontMetrics const & fm = theFontMetrics(font);
-		int x1 = fm.pos2x(str, range.first - start_pos,
-		                  font.isVisibleRightToLeft());
-		int x2 = fm.pos2x(str, min(range.last - start_pos + 1,
-		                           pos_type(str.length())),
-		                  font.isVisibleRightToLeft());
+		FontMetrics const & fm = theFontMetrics(e.font);
+		int x1 = fm.pos2x(e.str, range.first - e.pos,
+		                  e.font.isVisibleRightToLeft(), e.extra);
+		int x2 = fm.pos2x(e.str, min(range.last - e.pos + 1,
+									 pos_type(e.str.length())),
+									 e.font.isVisibleRightToLeft(), e.extra);
 		if (x1 > x2)
 			swap(x1, x2);
 
@@ -243,32 +241,31 @@ void RowPainter::paintMisspelledMark(double const orig_x,
 }
 
 
-void RowPainter::paintStringAndSel(docstring const & str, Font const & font,
-                                 Change const & change,
-                                 pos_type start_pos, pos_type end_pos)
+void RowPainter::paintStringAndSel(Row::Element const & e)
 {
 	// at least part of text selected?
-	bool const some_sel = (end_pos >= row_.sel_beg && start_pos < row_.sel_end)
+	bool const some_sel = (e.endpos >= row_.sel_beg && e.pos < row_.sel_end)
 		|| pi_.selected;
 	// all the text selected?
-	bool const all_sel = (start_pos >= row_.sel_beg && end_pos < row_.sel_end)
+	bool const all_sel = (e.pos >= row_.sel_beg && e.endpos < row_.sel_end)
 		|| pi_.selected;
 
 	if (all_sel) {
-		Font copy = font;
+		Font copy = e.font;
 		copy.fontInfo().setPaintColor(Color_selectiontext);
-		x_ += pi_.pain.text(int(x_), yo_, str, copy);
-	} else if (change.changed()) {
-		Font copy = font;
-		copy.fontInfo().setPaintColor(change.color());
-		x_ += pi_.pain.text(int(x_), yo_, str, copy);
+		pi_.pain.text(int(x_), yo_, e.str, copy, e.extra);
+	} else if (e.change.changed()) {
+		Font copy = e.font;
+		copy.fontInfo().setPaintColor(e.change.color());
+		pi_.pain.text(int(x_), yo_, e.str, copy, e.extra);
 	} else if (!some_sel) {
-		x_ += pi_.pain.text(int(x_), yo_, str, font);
+		pi_.pain.text(int(x_), yo_, e.str, e.font, e.extra);
 	} else {
-		x_ += pi_.pain.text(int(x_), yo_, str, font, Color_selectiontext,
-				    max(row_.sel_beg, start_pos) - start_pos,
-				    min(row_.sel_end, end_pos) - start_pos);
+		pi_.pain.text(int(x_), yo_, e.str, e.font, Color_selectiontext,
+				    max(row_.sel_beg, e.pos) - e.pos,
+                        min(row_.sel_end, e.endpos) - e.pos, e.extra);
 	}
+	x_ += e.full_width();
 }
 
 
@@ -639,12 +636,12 @@ void RowPainter::paintText()
 		switch (e.type) {
 		case Row::STRING:
 		case Row::VIRTUAL:
-			paintStringAndSel(e.str, e.font, e.change, e.pos, e.endpos);
+			paintStringAndSel(e);
 
 			// Paint the spelling mark if needed.
 			if (lyxrc.spellcheck_continuously && pi_.do_spellcheck
 				&& par_.isMisspelled(e.pos)) {
-				paintMisspelledMark(orig_x, e.str, e.font, e.pos, e.change.changed());
+				paintMisspelledMark(orig_x, e);
 			}
 			break;
 		case Row::INSET: {

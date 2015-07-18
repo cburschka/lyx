@@ -15,6 +15,7 @@
 #define ROWPAINTER_H
 
 #include "Changes.h"
+#include "Row.h"
 
 #include "support/types.h"
 
@@ -29,7 +30,6 @@ class PainterInfo;
 class Paragraph;
 class ParagraphList;
 class ParagraphMetrics;
-class Row;
 class Text;
 class TextMetrics;
 
@@ -60,12 +60,8 @@ public:
 private:
 	void paintSeparator(double width, Font const & font);
 	void paintForeignMark(double orig_x, Language const * lang, int desc = 0) const;
-	void paintStringAndSel(docstring const & str, Font const & font,
-                         Change const & change,
-                         pos_type start_pos, pos_type end_pos);
-	void paintMisspelledMark(double orig_x,
-	                         docstring const & str, Font const & font,
-	                         pos_type pos, bool changed) const;
+	void paintStringAndSel(Row::Element const & e);
+	void paintMisspelledMark(double orig_x, Row::Element const & e) const;
 	void paintChange(double orig_x , Font const & font, Change const & change) const;
 	int paintAppendixStart(int y) const;
 	void paintInset(Inset const * inset, Font const & font,
