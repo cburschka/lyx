@@ -52,6 +52,7 @@
 #include "Spacing.h"
 #include "TextClass.h"
 #include "Undo.h"
+#include "VSpace.h"
 
 #include "insets/InsetListingsParams.h"
 
