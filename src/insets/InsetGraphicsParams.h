@@ -14,7 +14,7 @@
 #define INSETGRAPHICSPARAMS_H
 
 
-#include "Length.h"
+#include "graphics/GraphicsParams.h"
 
 #include "support/FileName.h"
 
@@ -51,8 +51,8 @@ public:
 	/// scale image before rotating
 	bool scaleBeforeRotation;
 
-	/// The bounding box with "xLB yLB yRT yRT ", divided by a space!
-	std::string bb;
+	/// The bounding box
+	graphics::BoundingBox bbox;
 	/// clip image
 	bool clip;
 

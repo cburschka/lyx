@@ -525,7 +525,7 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	filename->setText(toqstr(name));
 
 	// set the bounding box values
-	if (igp.bb.empty()) {
+	if (igp.bbox.empty()) {
 		string const bb = readBoundingBox(igp.filename.absFileName());
 		// the values from the file always have the bigpoint-unit bp
 		doubleToWidget(lbX, token(bb, ' ', 0));
@@ -539,39 +539,18 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 		bbChanged = false;
 	} else {
 		// get the values from the inset
-		Length anyLength;
-		string const xl = token(igp.bb, ' ', 0);
-		string const yl = token(igp.bb, ' ', 1);
-		string const xr = token(igp.bb, ' ', 2);
-		string const yr = token(igp.bb, ' ', 3);
-		if (isValidLength(xl, &anyLength)) {
-			doubleToWidget(lbX, anyLength.value());
-			string const unit = unit_name[anyLength.unit()];
-			lbXunit->setCurrentIndex(lbXunit->findData(toqstr(unit)));
-		} else {
-			lbX->setText(toqstr(xl));
-		}
-		if (isValidLength(yl, &anyLength)) {
-			doubleToWidget(lbY, anyLength.value());
-			string const unit = unit_name[anyLength.unit()];
-			lbYunit->setCurrentIndex(lbYunit->findData(toqstr(unit)));
-		} else {
-			lbY->setText(toqstr(xl));
-		}
-		if (isValidLength(xr, &anyLength)) {
-			doubleToWidget(rtX, anyLength.value());
-			string const unit = unit_name[anyLength.unit()];
-			rtXunit->setCurrentIndex(rtXunit->findData(toqstr(unit)));
-		} else {
-			rtX->setText(toqstr(xl));
-		}
-		if (isValidLength(yr, &anyLength)) {
-			doubleToWidget(rtY, anyLength.value());
-			string const unit = unit_name[anyLength.unit()];
-			rtYunit->setCurrentIndex(rtYunit->findData(toqstr(unit)));
-		} else {
-			rtY->setText(toqstr(xl));
-		}
+		doubleToWidget(lbX, igp.bbox.xl.value());
+		string unit = unit_name[igp.bbox.xl.unit()];
+		lbXunit->setCurrentIndex(lbXunit->findData(toqstr(unit)));
+		doubleToWidget(lbY, igp.bbox.yb.value());
+		unit = unit_name[igp.bbox.yb.unit()];
+		lbYunit->setCurrentIndex(lbYunit->findData(toqstr(unit)));
+		doubleToWidget(rtX, igp.bbox.xr.value());
+		unit = unit_name[igp.bbox.xr.unit()];
+		rtXunit->setCurrentIndex(rtXunit->findData(toqstr(unit)));
+		doubleToWidget(rtY, igp.bbox.yt.value());
+		unit = unit_name[igp.bbox.yt.unit()];
+		rtYunit->setCurrentIndex(rtYunit->findData(toqstr(unit)));
 		bbChanged = true;
 	}
 
@@ -673,7 +652,7 @@ void GuiGraphics::applyView()
 	igp.filename.set(fromqstr(filename->text()), fromqstr(bufferFilePath()));
 
 	// the bb section
-	igp.bb.erase();
+	igp.bbox = graphics::BoundingBox();
 	if (bbChanged) {
 		string bb;
 		string lbXs = widgetToDoubleStr(lbX);
@@ -685,22 +664,17 @@ void GuiGraphics::applyView()
 			convert<int>(rtXs) + convert<int>(rtXs);
 		if (bb_sum) {
 			if (lbXs.empty())
-				bb = "0 ";
-			else
-				bb = lbXs + fromqstr(lbXunit->currentText()) + ' ';
+				lbXs = "0";
+			igp.bbox.xl = Length(lbXs + fromqstr(lbXunit->currentText()));
 			if (lbYs.empty())
-				bb += "0 ";
-			else
-				bb += (lbYs + fromqstr(lbYunit->currentText()) + ' ');
+				lbYs = "0";
+			igp.bbox.yb = Length(lbYs + fromqstr(lbYunit->currentText()));
 			if (rtXs.empty())
-				bb += "0 ";
-			else
-				bb += (rtXs + fromqstr(rtXunit->currentText()) + ' ');
+				rtXs = "0";
+			igp.bbox.xr = Length(rtXs + fromqstr(rtXunit->currentText()));
 			if (rtYs.empty())
-				bb += '0';
-			else
-				bb += (rtYs + fromqstr(rtYunit->currentText()));
-			igp.bb = bb;
+				rtYs = "0";
+			igp.bbox.yt = Length(rtYs + fromqstr(rtYunit->currentText()));
 		}
 	}
 

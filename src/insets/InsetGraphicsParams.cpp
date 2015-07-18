@@ -19,7 +19,6 @@
 #include "LyXRC.h"
 
 #include "graphics/epstools.h"
-#include "graphics/GraphicsParams.h"
 #include "graphics/GraphicsTypes.h"
 
 #include "support/convert.h"
@@ -72,7 +71,7 @@ void InsetGraphicsParams::init()
 	draft = false;			// draft mode
 	scaleBeforeRotation = false;	// scale image before rotating
 
-	bb = string();			// bounding box
+	bbox = graphics::BoundingBox();	// bounding box
 	clip = false;			// clip image
 
 	rotateAngle = "0";		// angle of rotation in degrees
@@ -94,7 +93,7 @@ void InsetGraphicsParams::copy(InsetGraphicsParams const & igp)
 	draft = igp.draft;
 	scaleBeforeRotation = igp.scaleBeforeRotation;
 
-	bb = igp.bb;
+	bbox = igp.bbox;
 	clip = igp.clip;
 
 	rotateAngle = igp.rotateAngle;
@@ -117,7 +116,7 @@ bool operator==(InsetGraphicsParams const & left,
 	    left.draft == right.draft &&
 	    left.scaleBeforeRotation == right.scaleBeforeRotation &&
 
-	    left.bb == right.bb &&
+	    left.bbox == right.bbox &&
 	    left.clip == right.clip &&
 
 	    left.rotateAngle == right.rotateAngle &&
@@ -160,8 +159,8 @@ void InsetGraphicsParams::Write(ostream & os, Buffer const & buffer) const
 	if (scaleBeforeRotation)
 		os << "\tscaleBeforeRotation\n";
 
-	if (!bb.empty())		// bounding box
-		os << "\tBoundingBox " << bb << '\n';
+	if (!bbox.empty())		// bounding box
+		os << "\tBoundingBox " << bbox << '\n';
 	if (clip)			// clip image
 		os << "\tclip\n";
 
@@ -207,13 +206,14 @@ bool InsetGraphicsParams::Read(Lexer & lex, string const & token, string const &
 	} else if (token == "scaleBeforeRotation") {
 		scaleBeforeRotation = true;
 	} else if (token == "BoundingBox") {
-		bb.erase();
-		for (int i = 0; i < 4; ++i) {
-			if (i != 0)
-				bb += ' ';
-			lex.next();
-			bb += lex.getString();
-		}
+		lex.next();
+		bbox.xl = Length(lex.getString());
+		lex.next();
+		bbox.yb = Length(lex.getString());
+		lex.next();
+		bbox.xr = Length(lex.getString());
+		lex.next();
+		bbox.yt = Length(lex.getString());
 	} else if (token == "clip") {
 		clip = true;
 	} else if (token == "rotateAngle") {
@@ -252,7 +252,7 @@ graphics::Params InsetGraphicsParams::as_grfxParams() const
 	pars.angle = convert<double>(rotateAngle);
 
 	if (clip) {
-		pars.bb = bb;
+		pars.bb = bbox;
 
 		// Get the original Bounding Box from the file
 		string const tmp = graphics::readBB_from_PSFile(filename);

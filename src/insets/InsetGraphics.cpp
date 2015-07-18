@@ -310,8 +310,11 @@ string InsetGraphics::createLatexOptions() const
 	// stream since we might have a trailing comma that we would like to remove
 	// before writing it to the output stream.
 	ostringstream options;
-	if (!params().bb.empty())
-	    options << "bb=" << rtrim(params().bb) << ',';
+	if (!params().bbox.empty())
+		options << "bb=" << params().bbox.xl.asLatexString() << ' '
+		        << params().bbox.yb.asLatexString() << ' '
+		        << params().bbox.xr.asLatexString() << ' '
+		        << params().bbox.yt.asLatexString() << ',';
 	if (params().draft)
 	    options << "draft,";
 	if (params().clip)
@@ -734,7 +737,7 @@ void InsetGraphics::latex(otexstream & os,
 			&& params().filename.isReadableFile();
 	string message;
 	if (!file_exists) {
-		if (params().bb.empty())
+		if (params().bbox.empty())
 		    message = "bb = 0 0 200 100";
 		if (!params().draft) {
 			if (!message.empty())
