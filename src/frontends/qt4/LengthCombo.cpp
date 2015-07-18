@@ -98,6 +98,14 @@ void LengthCombo::noPercents()
 }
 
 
+void LengthCombo::removeFontDependent()
+{
+	removeUnit(Length::EM);
+	removeUnit(Length::EX);
+	removeUnit(Length::MU);
+}
+
+
 void LengthCombo::removeUnit(lyx::Length::UNIT unit)
 {
 	QString const val = lyx::toqstr(lyx::stringFromUnit(unit));

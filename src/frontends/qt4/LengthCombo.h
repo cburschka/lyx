@@ -41,6 +41,8 @@ public:
 	virtual void setEnabled(bool b);
 	/// use the %-items?
 	void noPercents();
+	/// Remove EM, EX and MU units
+	void removeFontDependent();
 	/// remove a unit from the combo
 	void removeUnit(lyx::Length::UNIT unit);
 	/// add a unit to the combo

@@ -220,6 +220,18 @@ GuiExternal::GuiExternal(GuiView & lv)
 
 	// add scale item
 	widthUnitCO->insertItem(0, qt_("Scale%"), "scale");
+
+	// remove all units from bb that depend on font or other dimensions
+	// we cannot use these, since we need to compare against absolute
+	// values from the image file.
+	xlUnitCO->noPercents();
+	xlUnitCO->removeFontDependent();
+	xrUnitCO->noPercents();
+	xrUnitCO->removeFontDependent();
+	ytUnitCO->noPercents();
+	ytUnitCO->removeFontDependent();
+	ybUnitCO->noPercents();
+	ybUnitCO->removeFontDependent();
 }
 
 
