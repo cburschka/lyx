@@ -606,26 +606,26 @@ void RowPainter::paintLast()
 
 void RowPainter::paintOnlyInsets()
 {
-	CoordCache const & cache = pi_.base.bv->coordCache();
-	pos_type const end = row_.endpos();
-	for (pos_type pos = row_.pos(); pos != end; ++pos) {
-		// If outer row has changed, nested insets are repaint completely.
-		Inset const * inset = par_.getInset(pos);
-		bool const nested_inset = inset &&
-				((inset->asInsetMath() &&
-				  !inset->asInsetMath()->asMacroTemplate())
-				 || inset->asInsetText()
-				 || inset->asInsetTabular());
-		if (!nested_inset)
-			continue;
-		if (x_ > pi_.base.bv->workWidth()
-		    || !cache.getInsets().has(inset))
-			continue;
-		x_ = cache.getInsets().x(inset);
-		Font const font = text_metrics_.displayFont(pit_, pos);
-		paintInset(inset, font, par_.lookupChange(pos), pos);
+	Row::const_iterator cit = row_.begin();
+	Row::const_iterator const & end = row_.end();
+	for ( ; cit != end ; ++cit) {
+		Row::Element const & e = *cit;
+		if (e.type == Row::INSET) {
+			// If outer row has changed, nested insets are repainted completely.
+			pi_.base.bv->coordCache().insets().add(e.inset, int(x_), yo_);
+			bool const nested_inset =
+				(e.inset->asInsetMath() && !e.inset->asInsetMath()->asMacroTemplate())
+				|| e.inset->asInsetText() || e.inset->asInsetTabular();
+			if (!nested_inset) {
+				x_ += e.full_width();
+				continue;
+			}
+			paintInset(e.inset, e.font, e.change, e.pos);
+		} else
+			x_ += e.full_width();
 	}
 }
+
 
 void RowPainter::paintText()
 {
