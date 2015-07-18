@@ -93,6 +93,14 @@ public:
 	 * the offset x is updated to match the closest position in the string.
 	 */
 	virtual int x2pos(docstring const & s, int & x, bool rtl) const = 0;
+	/**
+	 * Break string at width at most x.
+	 * \return true if successful
+	 * \param rtl is true for right-to-left layout
+	 * \param force is false for breaking at word separator, true for
+	 *   arbitrary position.
+	 */
+	virtual bool breakAt(docstring & s, int & x, bool rtl, bool force) const = 0;
 	/// return char dimension for the font.
 	virtual Dimension const dimension(char_type c) const = 0;
 	/**

@@ -86,10 +86,12 @@ public:
 		 *  adjusted to the actual pixel position.
 		*/
 		pos_type x2pos(int &x) const;
-		/** Break the element if possible, so that its width is
-		 * less then \param w. Returns true on success.
+		/** Break the element if possible, so that its width is less
+		 * than \param w. Returns true on success. When \param force
+		 * is true, the string is cut at any place, other wise it
+		 * respects the row breaking rules of characters.
 		 */
-		bool breakAt(int w);
+		bool breakAt(int w, bool force);
 
 		// Returns the position on left side of the element.
 		pos_type left_pos() const;

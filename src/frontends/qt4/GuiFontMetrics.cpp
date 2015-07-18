@@ -183,6 +183,31 @@ int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl) const
 }
 
 
+bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const force) const
+{
+	if (s.empty())
+		return false;
+	QTextLayout tl;
+	tl.setText(toqstr(s));
+	tl.setFont(font_);
+	// Note that both setFlags and the enums are undocumented
+	tl.setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
+	QTextOption to;
+	to.setWrapMode(force ? QTextOption::WrapAnywhere : QTextOption::WordWrap);
+	tl.setTextOption(to);
+	tl.beginLayout();
+	QTextLine line = tl.createLine();
+	line.setLineWidth(x);
+	tl.createLine();
+	tl.endLayout();
+	if (int(line.naturalTextWidth()) > x)
+		return false;
+	x = int(line.naturalTextWidth());
+	s = s.substr(0, line.textLength());
+	return true;
+}
+
+
 void GuiFontMetrics::rectText(docstring const & str,
 	int & w, int & ascent, int & descent) const
 {

@@ -819,7 +819,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	// or the end of the par, then build a representation of the row.
 	pos_type i = pos;
 	FontIterator fi = FontIterator(*this, par, pit, pos);
-	while (i < end && row.width() < width) {
+	while (i < end && row.width() <= width) {
 		char_type c = par.getChar(i);
 		// The most special cases are handled first.
 		if (par.isInset(i)) {
@@ -837,13 +837,6 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 			int const add = max(fm.width(par.layout().labelsep),
 					    labelEnd(pit) - row.width());
 			row.addSpace(i, add, *fi, par.lookupChange(i));
-		} else if (par.isLineSeparator(i)) {
-			// In theory, no inset has this property. If
-			// this is done, a new addSeparator which
-			// takes an inset as parameter should be
-			// added.
-			LATTEST(!par.isInset(i));
-			row.addSeparator(i, c, *fi, par.lookupChange(i));
 		} else if (c == '\t')
 			row.addSpace(i, theFontMetrics(*fi).width(from_ascii("    ")),
 				     *fi, par.lookupChange(i));
@@ -905,6 +898,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 
 	// make sure that the RTL elements are in reverse ordering
 	row.reverseRTL(is_rtl);
+	//LYXERR0("breakrow: row is " << row);
 }
 
 
