@@ -30,7 +30,7 @@ public:
 	LengthCombo(QWidget * parent);
 
 	/// set the current item from unit
-	virtual void setCurrentItem(lyx::Length::UNIT unit);
+	void setCurrentItem(lyx::Length::UNIT unit);
 	/// set the current item from length string
 	virtual void setCurrentItem(QString const & item);
 	/// set the current item from int
@@ -40,11 +40,11 @@ public:
 	/// enable the widget
 	virtual void setEnabled(bool b);
 	/// use the %-items?
-	virtual void noPercents();
+	void noPercents();
 	/// remove a unit from the combo
-	virtual void removeUnit(lyx::Length::UNIT unit);
+	void removeUnit(lyx::Length::UNIT unit);
 	/// add a unit to the combo
-	virtual void addUnit(lyx::Length::UNIT unit);
+	void addUnit(lyx::Length::UNIT unit);
 
 protected Q_SLOTS:
 	virtual void hasActivated(int index);
