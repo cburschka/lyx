@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-06-16 10:32+0200\n"
-"PO-Revision-Date: 2015-06-16 08:42+0000\n"
+"POT-Creation-Date: 2015-07-19 15:15+0200\n"
+"PO-Revision-Date: 2015-07-19 14:14+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -1745,14 +1745,6 @@ msgstr "y:"
 #: src/frontends/qt4/ui/GraphicsUi.ui:414
 msgid "x:"
 msgstr "x:"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:460
-msgid "Don't uncompress image before exporting to LaTeX"
-msgstr "Nedekomprimovať obrázok pred exportom do LaTeX-u"
-
-#: src/frontends/qt4/ui/GraphicsUi.ui:463
-msgid "Don't un&zip on export"
-msgstr "Nerozbaliť pri exporte (&unzip)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:491
 #: src/frontends/qt4/ui/GraphicsUi.ui:498
@@ -22333,9 +22325,46 @@ msgstr "Rastrový obrázok"
 msgid "Raster image"
 msgstr "Rastrový obrázok"
 
-#: lib/external_templates:84
-msgid "A bitmap file.\n"
-msgstr "Bitmapový súbor.\n"
+#: lib/external_templates:88
+msgid ""
+"A bitmap file.\n"
+"Use this template to include bitmap images of any kind except\n"
+"photos in JPEG format: These will be uncompressed by this\n"
+"template, therefore it is better to include them with a\n"
+"graphics inset, since the graphics inset preserves the\n"
+"compression if the pdflatex compiler is used.\n"
+msgstr ""
+"Bitmapový súbor. Okrem druhu JPEG, používajte túto šablónu na vklad\n"
+"akýchkoľvek bitmapových obrázkov: S touto šablónou budú dekomprimované.\n"
+"Je lepšie použiť ich v grafickej vložke lebo grafická vložka uchováva\n"
+"kompresiu pri použití programu pdflatex.\n"
+
+#: lib/external_templates:156
+msgid "VectorGraphics"
+msgstr "VektorováGrafike"
+
+#: lib/external_templates:157 lib/external_templates:166
+msgid "Vector graphics"
+msgstr "Vektorová grafika"
+
+#: lib/external_templates:159
+msgid ""
+"A vector graphics file.\n"
+"Use this template to include vector graphics of any kind.\n"
+"LyX will try to retain the vector properties of the image for\n"
+"the final output.\n"
+"Note that specialized templates exist for Xfig figures and Dia diagrams.\n"
+"The specialized templates allow to automatically use the document font in\n"
+"the figures, which is not possible with this general template.\n"
+msgstr ""
+"Súbor s vektorovou grafikou.\n"
+"Používajte túto šablónu na vklad akýchkoľvek obrázkov s vektorovou "
+"grafikou.\n"
+"LyX sa pokúsi držať vektorové vlastnosti obrázku pre konečný výstup.\n"
+"Všimnite si že existujú špecializované šablóny pre Xfig obrázky a Dia "
+"diagramy.\n"
+"Špecializované šablóny dovoľujú automaticky použiť font dokumentu v\n"
+"obrázkoch, čo nie je možné so všeobecnou šablónou.\n"
 
 #: lib/external_templates:148
 msgid "XFig"
@@ -30723,8 +30752,8 @@ msgid "Workarea events"
 msgstr "Udalosti pracovnej oblasti"
 
 #: src/support/debug.cpp:63
-msgid "Insettext/tabular messages"
-msgstr "Hlásenia z tabuliek/vložiek textu"
+msgid "Clipboard handling"
+msgstr "Obsluha schránky"
 
 #: src/support/debug.cpp:64
 msgid "Graphics conversion and loading"
@@ -30851,6 +30880,18 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "A bitmap file.\n"
+#~ msgstr "Bitmapový súbor.\n"
+
+#~ msgid "Don't uncompress image before exporting to LaTeX"
+#~ msgstr "Nedekomprimovať obrázok pred exportom do LaTeX-u"
+
+#~ msgid "Don't un&zip on export"
+#~ msgstr "Nerozbaliť pri exporte (&unzip)"
+
+#~ msgid "Insettext/tabular messages"
+#~ msgstr "Hlásenia z tabuliek/vložiek textu"
 
 #~ msgid "Risk and Safety Statements|R"
 #~ msgstr "Rizikové a Poistné Príkazy|R"
