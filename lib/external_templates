@@ -86,6 +86,11 @@ Template RasterImage
 	# what the template can provide him with.
 	HelpText
 		A bitmap file.
+		Use this template to include bitmap images of any kind except
+		photos in JPEG format: These will be uncompressed by this
+		template, therefore it is better to include them with a
+		graphics inset, since the graphics inset preserves the
+		compression if the pdflatex compiler is used.
 	HelpTextEnd
 	# ANY file type can be displayed as a RasterImage.
 	# Specifically, LyX will attempt to interrogate the file itself
@@ -148,6 +153,70 @@ Template RasterImage
 	FormatEnd
 TemplateEnd
 
+Template VectorGraphics
+	GuiName "Vector graphics"
+	HelpText
+		A vector graphics file.
+		Use this template to include vector graphics of any kind.
+		LyX will try to retain the vector properties of the image for
+		the final output.
+		Note that specialized templates exist for Xfig figures and Dia diagrams.
+		The specialized templates allow to automatically use the document font in
+		the figures, which is not possible with this general template.
+	HelpTextEnd
+	# ANY file type can be displayed as a VectorGraphics.
+	# Specifically, LyX will attempt to interrogate the file itself
+	# in order to deduce its format.
+	InputFormat "*"
+	# Globbing pattern used when browsing for a vector graphics file.
+	# xfig, dia, fen and ly are exlcuded, since we have specialized templates
+	FileFilter "*.{agr,dot,emf,eps,odg,obj,sxd,svg,svgz,tgo,pdf,wmf}"
+	AutomaticProduction true
+	# LyX has hard-coded support for these transformations
+	Transform Rotate
+	Transform Resize
+	Transform Clip
+	Transform Extra
+	Preview Graphics
+	Format LaTeX
+		TransformOption Rotate RotationLatexOption
+		TransformOption Resize ResizeLatexOption
+		TransformOption Clip   ClipLatexOption
+		TransformOption Extra  ExtraOption
+		Option Arg "[$$Extra,$$Rotate,$$Resize,$$Clip]"
+		# This string is what is output to the LaTeX file.
+		Product "\\includegraphics$$Arg{$$AbsOrRelPathMaster$$Basename}"
+		UpdateFormat eps
+		UpdateResult "$$AbsPath$$Basename.eps"
+		Requirement "graphicx"
+		ReferencedFile latex "$$AbsPath$$Basename.eps"
+		ReferencedFile dvi   "$$AbsPath$$Basename.eps"
+	FormatEnd
+	Format PDFLaTeX
+		TransformOption Rotate RotationLatexOption
+		TransformOption Resize ResizeLatexOption
+		TransformOption Clip   ClipLatexOption
+		TransformOption Extra  ExtraOption
+		Option Arg "[$$Extra,$$Rotate,$$Resize,$$Clip]"
+		Product "\\includegraphics$$Arg{$$AbsOrRelPathMaster$$Basename}"
+		UpdateFormat pdf6
+		UpdateResult "$$AbsPath$$Basename.pdf"
+		Requirement "graphicx"
+		ReferencedFile pdflatex "$$AbsPath$$Basename.pdf"
+	FormatEnd
+	Format Ascii
+		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"
+		UpdateFormat asciiimage
+		UpdateResult "$$AbsPath$$Basename.asc"
+	FormatEnd
+	Format DocBook
+		Product "<graphic fileref=\"$$AbsOrRelPathMaster$$Basename.eps\"></graphic>"
+		UpdateFormat eps
+		UpdateResult "$$AbsPath$$Basename.eps"
+		ReferencedFile docbook     "$$AbsPath$$Basename.eps"
+		ReferencedFile docbook-xml "$$AbsPath$$Basename.eps"
+	FormatEnd
+TemplateEnd
 
 Template XFig
 	GuiName "Xfig figure"
