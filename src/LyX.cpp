@@ -783,33 +783,35 @@ void cleanDuplicateEnvVars()
 static void initTemplatePath()
 {
 	FileName const package_template_path =
-		FileName(addPath(package().system_support().absFileName(), "templates"));
+		FileName(addName(package().system_support().absFileName(), "templates"));
 
 	if (lyxrc.template_path.empty()) {
 		lyxrc.template_path = package_template_path.absFileName();
 	}
 #if defined (USE_MACOSX_PACKAGING)
 	FileName const user_template_path =
-		FileName(addPath(package().user_support().absFileName(), "templates"));
+		FileName(addName(package().user_support().absFileName(), "templates"));
 
 	if (package_template_path != FileName(lyxrc.template_path) &&
 		user_template_path != FileName(lyxrc.template_path))
 	{
 		return;
 	}
-	/// addPath cannot be used here.
-	/// The path with trailing slash doesn't work as symlink name.
 	FileName const user_template_link =
-		FileName(user_template_path.absFileName() + "SystemTemplates");
-	if (user_template_link.isSymLink()) {
+		FileName(addName(user_template_path.absFileName(),"SystemTemplates"));
+	if (user_template_link.isSymLink() && !equivalent(user_template_link, package_template_path)) {
 		user_template_link.removeFile();
 	}
 	if (!user_template_link.exists()) {
 		if (!package_template_path.link(user_template_link)) {
-			LYXERR(Debug::INIT, "Cannot create symlink " + user_template_link.absFileName());
-			lyxrc.template_path = package_template_path.absFileName();
+			FileName const user_support = package().user_support();
+			if (user_support.exists() && user_support.isDirectory()) {
+				LYXERR(Debug::INIT, "Cannot create symlink " + user_template_link.absFileName());
+				lyxrc.template_path = package_template_path.absFileName();
+			}
 			return;
 		}
+		LYXERR(Debug::INIT, "Symlink \"" << user_template_link.absFileName() << "\" created.");
 	}
 	lyxrc.template_path = user_template_path.absFileName();
 #endif
@@ -883,6 +885,8 @@ bool LyX::init()
 
 		if (queryUserLyXDir(package().explicit_user_support())) {
 			package().reconfigureUserLyXDir("");
+			// Now the user directory is present on first start.
+			initTemplatePath();
 		}
 		fileUnlock(fd, lock_file.c_str());
 	}
