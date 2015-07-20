@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 495
+\lyxformat 497
 \begin_document
 \begin_header
 \origin /systemlyxdir/doc/
@@ -24112,6 +24112,47 @@ $$Extension
 \end_inset
 
  The file extension (including the dot).
+\change_inserted -195340706 1437418878
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -195340706 1437418878
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -195340706 1437418878
+$$pngOrjpg
+\end_layout
+
+\end_inset
+
+ This will be the string 
+\begin_inset Quotes eld
+\end_inset
+
+jpg
+\begin_inset Quotes erd
+\end_inset
+
+ if the file is in JPEG format, otherwise it will be the string 
+\begin_inset Quotes eld
+\end_inset
+
+png
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This is useful to avoid uneeded conversions for output formats that support
+ both PNG and JPEG fomats.
+ The predefined RasterImage template uses this macro for the PDFLATeX output
+ format.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

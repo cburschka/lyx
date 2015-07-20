@@ -86,11 +86,7 @@ Template RasterImage
 	# what the template can provide him with.
 	HelpText
 		A bitmap file.
-		Use this template to include bitmap images of any kind except
-		photos in JPEG format: These will be uncompressed by this
-		template, therefore it is better to include them with a
-		graphics inset, since the graphics inset preserves the
-		compression if the pdflatex compiler is used.
+		Use this template to include bitmap images of any kind.
 	HelpTextEnd
 	# ANY file type can be displayed as a RasterImage.
 	# Specifically, LyX will attempt to interrogate the file itself
@@ -134,10 +130,10 @@ Template RasterImage
 		TransformOption Extra  ExtraOption
 		Option Arg "[$$Extra,$$Rotate,$$Resize,$$Clip]"
 		Product "\\includegraphics$$Arg{$$AbsOrRelPathMaster$$Basename}"
-		UpdateFormat png
-		UpdateResult "$$AbsPath$$Basename.png"
+		UpdateFormat "$$pngOrjpg"
+		UpdateResult "$$AbsPath$$Basename.$$pngOrjpg"
 		Requirement "graphicx"
-		ReferencedFile pdflatex "$$AbsPath$$Basename.png"
+		ReferencedFile pdflatex "$$AbsPath$$Basename.$$pngOrjpg"
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"

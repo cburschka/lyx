@@ -37,7 +37,8 @@ void editExternal(InsetExternalParams const & params,
 enum Substitute {
 	ALL,
 	PATHS,
-	ALL_BUT_PATHS
+	ALL_BUT_PATHS,
+	FORMATS
 };
 
 /** Substitute meta-variables in string \p s, making use of \p params and

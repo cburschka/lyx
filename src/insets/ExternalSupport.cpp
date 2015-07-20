@@ -83,6 +83,21 @@ string const doSubstitution(InsetExternalParams const & params,
 			    bool external_in_tmpdir,
 			    Substitute what)
 {
+	string result = s;
+	if (what != PATHS && contains(result, "$$pngOrjpg")) {
+		// This is for raster images and pdflatex:
+		// Since pdflatex supports both jpg and png, we choose the best format:
+		// jpg if the original file is jpg to retain the compression, else png.
+		string format = formats.getFormatFromFile(params.filename);
+		if (format == "jpg")
+			result = subst(result, "$$pngOrjpg", "jpg");
+		else
+			result = subst(result, "$$pngOrjpg", "png");
+	}
+
+	if (what == FORMATS)
+		return result;
+
 	Buffer const * masterBuffer = buffer.masterBuffer();
 	string const parentpath = external_in_tmpdir ?
 		masterBuffer->temppath() :
@@ -94,7 +109,6 @@ string const doSubstitution(InsetExternalParams const & params,
 			onlyFileName(filename), string());
 	string const absname = makeAbsPath(filename, parentpath).absFileName();
 
-	string result = s;
 	if (what != ALL_BUT_PATHS) {
 		string const filepath = onlyPath(filename);
 		string const abspath = onlyPath(absname);
@@ -235,7 +249,8 @@ void updateExternal(InsetExternalParams const & params,
 			return; // FAILURE
 	}
 
-	string const to_format = outputFormat.updateFormat;
+	string const to_format = doSubstitution(params, buffer,
+		outputFormat.updateFormat, false, external_in_tmpdir, FORMATS);
 	if (to_format.empty())
 		return; // NOT_NEEDED
 
