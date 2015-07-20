@@ -333,11 +333,16 @@ void Row::add(pos_type const pos, char_type const c,
 		Element e(STRING, pos, f, ch);
 		elements_.push_back(e);
 	}
-	dim_.wid -= back().dim.wid;
-	back().str += c;
-	back().endpos = pos + 1;
-	back().dim.wid = theFontMetrics(back().font).width(back().str);
-	dim_.wid += back().dim.wid;
+	if (back().str.length() % 30 == 0) {
+		dim_.wid -= back().dim.wid;
+		back().str += c;
+		back().endpos = pos + 1;
+		back().dim.wid = theFontMetrics(back().font).width(back().str);
+		dim_.wid += back().dim.wid;
+	} else {
+		back().str += c;
+		back().endpos = pos + 1;
+	}
 }
 
 
