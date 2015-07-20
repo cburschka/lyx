@@ -177,7 +177,7 @@ int Package::reconfigureUserLyXDir(string const & option) const
 
 string Package::getConfigureLockName() const
 {
-	return user_support().absFileName() + ".lyx_configure_lock";
+	return addName(user_support().absFileName(), ".lyx_configure_lock");
 }
 
 
