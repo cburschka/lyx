@@ -30,18 +30,6 @@ class DocIterator;
 class Inset;
 
 /**
- * FIXME: Change Row object to operate only on integers and not doubles.
- *
- * This use of double is only useful to distribute the extra
- * horizontal space between separators in justified text. If we do
- * integer arithmetic, then it is possible to have two groups of
- * separators, with size s or s+1. Then strings can be drawn without
- * cutting at separators in justfied text, as it is done in
- * non-justified text. This will improve performance.
- */
-
-
-/**
  * An on-screen row of text. A paragraph is broken into a RowList for
  * display. Each Row contains a tokenized description of the contents
  * of the line.
@@ -58,8 +46,6 @@ public:
 		 * correspond to any paragraph contents
 		 */
 		VIRTUAL,
-		// A stretchable space, basically
-		SEPARATOR,
 		// An inset
 		INSET,
 		// Some spacing described by its width, not a string
@@ -76,7 +62,10 @@ public:
 			  extra(0), font(f), change(ch), final(false) {}
 
 		// Return total width of element, including separator overhead
-		double full_width() const { return dim.wid + extra; };
+		double full_width() const { return dim.wid + extra * countSeparators(); };
+		// Return the number of separator in the element (only STRING type)
+		int countSeparators() const;
+
 		/** Return position in pixels (from the left) of position
 		 * \param i in the row element.
 		 */
@@ -86,10 +75,12 @@ public:
 		 *  adjusted to the actual pixel position.
 		*/
 		pos_type x2pos(int &x) const;
-		/** Break the element if possible, so that its width is
-		 * less then \param w. Returns true on success.
+		/** Break the element if possible, so that its width is less
+		 * than \param w. Returns true on success. When \param force
+		 * is true, the string is cut at any place, other wise it
+		 * respects the row breaking rules of characters.
 		 */
-		bool breakAt(int w);
+		bool breakAt(int w, bool force);
 
 		// Returns the position on left side of the element.
 		pos_type left_pos() const;
@@ -109,10 +100,10 @@ public:
 		// Non-zero only if element is an inset
 		Inset const * inset;
 
-		// Only non-null for separator elements
+		// Only non-null for justified rows
 		double extra;
 
-		// Non-empty if element is a string or separator
+		// Non-empty if element is a string or is virtual
 		docstring str;
 		//
 		Font font;
@@ -172,6 +163,11 @@ public:
 	///
 	int descent() const { return dim_.des; }
 
+	// Return the number of separators in the row
+	int countSeparators() const;
+	// Set the extra spacing for every separator in STRING elements
+	void setSeparatorExtraWidth(double w);
+
 	///
 	void add(pos_type pos, Inset const * ins, Dimension const & dim,
 		 Font const & f, Change const & ch);
@@ -181,9 +177,6 @@ public:
 	///
 	void addVirtual(pos_type pos, docstring const & s,
 			Font const & f, Change const & ch);
-	///
-	void addSeparator(pos_type pos, char_type const c,
-			  Font const & f, Change const & ch);
 	///
 	void addSpace(pos_type pos, int width, Font const & f, Change const & ch);
 
@@ -239,7 +232,7 @@ public:
 
 	friend std::ostream & operator<<(std::ostream & os, Row const & row);
 
-	/// width of a separator (i.e. space)
+	/// additional width for separators in justified rows (i.e. space)
 	double separator;
 	/// width of hfills in the label
 	double label_hfill;

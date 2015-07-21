@@ -58,28 +58,6 @@ using frontend::FontMetrics;
 
 namespace {
 
-int numberOfSeparators(Row const & row)
-{
-	int n = 0;
-	Row::const_iterator cit = row.begin();
-	Row::const_iterator const end = row.end();
-	for ( ; cit != end ; ++cit)
-		if (cit->type == Row::SEPARATOR)
-			++n;
-	return n;
-}
-
-
-void setSeparatorWidth(Row & row, double w)
-{
-	row.separator = w;
-	Row::iterator it = row.begin();
-	Row::iterator const end = row.end();
-	for ( ; it != end ; ++it)
-		if (it->type == Row::SEPARATOR)
-			it->extra = w;
-}
-
 
 int numberOfLabelHfills(Paragraph const & par, Row const & row)
 {
@@ -569,12 +547,6 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	// FIXME: put back this assertion when the crash on new doc is solved.
 	//LASSERT(w >= 0, /**/);
 
-	bool const is_rtl = text_->isRTL(par);
-	if (is_rtl)
-		row.left_margin = rightMargin(pit);
-	else
-		row.left_margin = leftMargin(max_width_, pit, row.pos());
-
 	// is there a manual margin with a manual label
 	Layout const & layout = par.layout();
 
@@ -609,15 +581,15 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 		// set x how you need it
 		switch (getAlign(par, row.pos())) {
 		case LYX_ALIGN_BLOCK: {
-			int const ns = numberOfSeparators(row);
+			int const ns = row.countSeparators();
 			/** If we have separators, and this row has
 			 * not be broken abruptly by a display inset
 			 * or newline, then stretch it */
 			if (ns && !row.right_boundary()
 			    && row.endpos() != par.size()) {
-				setSeparatorWidth(row, double(w) / ns);
+				row.setSeparatorExtraWidth(double(w) / ns);
 				row.dimension().wid = width;
-			} else if (is_rtl) {
+			} else if (text_->isRTL(par)) {
 				row.dimension().wid = width;
 				row.left_margin += w;
 			}
@@ -785,13 +757,19 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	Paragraph const & par = text_->getPar(pit);
 	pos_type const end = par.size();
 	pos_type const pos = row.pos();
-	int const width = max_width_ - right_margin;
 	pos_type const body_pos = par.beginOfBody();
+	bool const is_rtl = text_->isRTL(par);
+
 	row.clear();
-	// This make get changed in computeRowMetrics depending on RTL
 	row.left_margin = leftMargin(max_width_, pit, pos);
-	row.dimension().wid = row.left_margin;
 	row.right_margin = right_margin;
+	if (is_rtl)
+		swap(row.left_margin, row.right_margin);
+	// Remember that the row width takes into account the left_margin
+	// but not the right_margin.
+	row.dimension().wid = row.left_margin;
+	// the width available for the row.
+	int const width = max_width_ - row.right_margin;
 
 	if (pos >= end || row.width() > width) {
 		row.endpos(end);
@@ -819,7 +797,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	// or the end of the par, then build a representation of the row.
 	pos_type i = pos;
 	FontIterator fi = FontIterator(*this, par, pit, pos);
-	while (i < end && row.width() < width) {
+	while (i < end && row.width() <= width) {
 		char_type c = par.getChar(i);
 		// The most special cases are handled first.
 		if (par.isInset(i)) {
@@ -837,13 +815,6 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 			int const add = max(fm.width(par.layout().labelsep),
 					    labelEnd(pit) - row.width());
 			row.addSpace(i, add, *fi, par.lookupChange(i));
-		} else if (par.isLineSeparator(i)) {
-			// In theory, no inset has this property. If
-			// this is done, a new addSeparator which
-			// takes an inset as parameter should be
-			// added.
-			LATTEST(!par.isInset(i));
-			row.addSeparator(i, c, *fi, par.lookupChange(i));
 		} else if (c == '\t')
 			row.addSpace(i, theFontMetrics(*fi).width(from_ascii("    ")),
 				     *fi, par.lookupChange(i));
@@ -904,7 +875,8 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	row.shortenIfNeeded(body_pos, width);
 
 	// make sure that the RTL elements are in reverse ordering
-	row.reverseRTL(text_->isRTL(par));
+	row.reverseRTL(is_rtl);
+	//LYXERR0("breakrow: row is " << row);
 }
 
 
@@ -1090,6 +1062,7 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 				  bool & boundary) const
 {
+	//LYXERR0("getPosNearX(" << x << ") row=" << row);
 	/// For the main Text, it is possible that this pit is not
 	/// yet in the CoordCache when moving cursor up.
 	/// x Paragraph coordinate is always 0 for main text anyway.
@@ -1145,6 +1118,7 @@ pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 		boundary = true;
 
 	x += xo;
+	//LYXERR0("getPosNearX ==> pos=" << pos << ", boundary=" << boundary);
 	return pos;
 }
 

@@ -24,6 +24,7 @@
 
 #include "support/debug.h"
 #include "support/lassert.h"
+#include "support/lstrings.h"
 #include "support/lyxalgo.h"
 
 #include <ostream>
@@ -32,7 +33,17 @@ using namespace std;
 
 namespace lyx {
 
+using support::rtrim;
 using frontend::FontMetrics;
+
+
+int Row::Element::countSeparators() const
+{
+	if (type != STRING)
+		return 0;
+	return count(str.begin(), str.end(), ' ');
+}
+
 
 double Row::Element::pos2x(pos_type const i) const
 {
@@ -52,7 +63,7 @@ double Row::Element::pos2x(pos_type const i) const
 		w = rtl ? full_width() : 0;
 	else {
 		FontMetrics const & fm = theFontMetrics(font);
-		w = fm.pos2x(str, i - pos, font.isVisibleRightToLeft());
+		w = fm.pos2x(str, i - pos, font.isVisibleRightToLeft(), extra);
 	}
 
 	return w;
@@ -68,7 +79,7 @@ pos_type Row::Element::x2pos(int &x) const
 	switch (type) {
 	case STRING: {
 		FontMetrics const & fm = theFontMetrics(font);
-		i = fm.x2pos(str, x, rtl);
+		i = fm.x2pos(str, x, rtl, extra);
 		break;
 	}
 	case VIRTUAL:
@@ -76,7 +87,6 @@ pos_type Row::Element::x2pos(int &x) const
 		i = 0;
 		x = rtl ? int(full_width()) : 0;
 		break;
-	case SEPARATOR:
 	case INSET:
 	case SPACE:
 		// those elements contain only one position. Round to
@@ -96,24 +106,21 @@ pos_type Row::Element::x2pos(int &x) const
 }
 
 
-bool Row::Element::breakAt(int w)
+bool Row::Element::breakAt(int w, bool force)
 {
 	if (type != STRING || dim.wid <= w)
 		return false;
 
 	bool const rtl = font.isVisibleRightToLeft();
-	if (rtl)
-		w = dim.wid - w;
-	pos_type new_pos = x2pos(w);
-	if (new_pos == pos)
-		return false;
-	str = str.substr(0, new_pos - pos);
-	if (rtl)
-		dim.wid -= w;
-	else
-		dim.wid = w;
-	endpos = new_pos;
-	return true;
+	FontMetrics const & fm = theFontMetrics(font);
+	int x = w;
+	if(fm.breakAt(str, x, rtl, force)) {
+		dim.wid = x;
+		endpos = pos + str.length();
+		//lyxerr << "breakAt(" << w << ")  Row element Broken at " << x << "(w(str)=" << fm.width(str) << "): e=" << *this << endl;
+		return true;
+	}
+	return false;
 }
 
 
@@ -225,9 +232,6 @@ ostream & operator<<(ostream & os, Row::Element const & e)
 	case Row::INSET:
 		os << "INSET: " << to_utf8(e.inset->layoutName()) << ", ";
 		break;
-	case Row::SEPARATOR:
-		os << "SEPARATOR: extra=" << e.extra << ", ";
-		break;
 	case Row::SPACE:
 		os << "SPACE: ";
 		break;
@@ -258,6 +262,26 @@ ostream & operator<<(ostream & os, Row const & row)
 }
 
 
+int Row::countSeparators() const
+{
+	int n = 0;
+	const_iterator const end = elements_.end();
+	for (const_iterator cit = elements_.begin() ; cit != end ; ++cit)
+		n += cit->countSeparators();
+	return n;
+}
+
+
+void Row::setSeparatorExtraWidth(double w)
+{
+	separator = w;
+	iterator const end = elements_.end();
+	for (iterator it = elements_.begin() ; it != end ; ++it)
+		if (it->type == Row::STRING)
+			it->extra = w;
+}
+
+
 bool Row::sameString(Font const & f, Change const & ch) const
 {
 	if (elements_.empty())
@@ -278,6 +302,7 @@ void Row::finalizeLast()
 	elt.final = true;
 
 	if (elt.type == STRING) {
+		dim_.wid -= elt.dim.wid;
 		elt.dim.wid = theFontMetrics(elt.font).width(elt.str);
 		dim_.wid += elt.dim.wid;
 	}
@@ -304,8 +329,16 @@ void Row::add(pos_type const pos, char_type const c,
 		Element e(STRING, pos, f, ch);
 		elements_.push_back(e);
 	}
-	back().str += c;
-	back().endpos = pos + 1;
+	if (back().str.length() % 30 == 0) {
+		dim_.wid -= back().dim.wid;
+		back().str += c;
+		back().endpos = pos + 1;
+		back().dim.wid = theFontMetrics(back().font).width(back().str);
+		dim_.wid += back().dim.wid;
+	} else {
+		back().str += c;
+		back().endpos = pos + 1;
+	}
 }
 
 
@@ -320,18 +353,6 @@ void Row::addVirtual(pos_type const pos, docstring const & s,
 	e.endpos = pos;
 	elements_.push_back(e);
 	finalizeLast();
-}
-
-
-void Row::addSeparator(pos_type const pos, char_type const c,
-		       Font const & f, Change const & ch)
-{
-	finalizeLast();
-	Element e(SEPARATOR, pos, f, ch);
-	e.str += c;
-	e.dim.wid = theFontMetrics(f).width(c);
-	elements_.push_back(e);
-	dim_.wid += e.dim.wid;
 }
 
 
@@ -357,31 +378,15 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 {
 	if (empty() || width() <= w)
 		return;
-
 	Elements::iterator const beg = elements_.begin();
 	Elements::iterator const end = elements_.end();
-	Elements::iterator last_sep = elements_.end();
-	int last_width = 0;
 	int wid = left_margin;
 
 	Elements::iterator cit = beg;
 	for ( ; cit != end ; ++cit) {
-		if (cit->type == SEPARATOR && cit->pos >= keep) {
-			last_sep = cit;
-			last_width = wid;
-		}
-		if (wid + cit->dim.wid > w)
+		if (cit->endpos >= keep && wid + cit->dim.wid > w)
 			break;
 		wid += cit->dim.wid;
-	}
-
-	if (last_sep != end) {
-		// We have found a suitable separator. This is the
-		// common case.
-		end_ = last_sep->endpos;
-		dim_.wid = last_width;
-		elements_.erase(last_sep, end);
-		return;
 	}
 
 	if (cit == end) {
@@ -397,23 +402,41 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 		wid -= cit->dim.wid;
 	}
 
+	// Try to break this row cleanly (at word boundary)
+	if (cit->breakAt(w - wid, false)) {
+		end_ = cit->endpos;
+		// after breakAt, there may be spaces at the end of the
+		// string, but they are not counted in the string length
+		// (qtextlayout feature, actually). We remove them, but do not
+		// change the endo of the row, since the spaces at row break
+		// are invisible.
+		cit->str = rtrim(cit->str);
+		cit->endpos = cit->pos + cit->str.length();
+		dim_.wid = wid + cit->dim.wid;
+		// If there are other elements, they should be removed.
+		elements_.erase(next(cit, 1), end);
+		return;
+	}
+
 	if (cit != beg) {
-		// There is no separator, but several elements (probably
-		// insets) have been added. We can cut at this place.
+		// There is no separator, but several elements have been
+		// added. We can cut right here.
 		end_ = cit->pos;
 		dim_.wid = wid;
 		elements_.erase(cit, end);
 		return;
 	}
 
-	/* If we are here, it means that we have not found a separator
-	 * to shorten the row. There is one case where we can do
-	 * something: when we have one big string, maybe with some
-	 * other things after it.
+	/* If we are here, it means that we have not found a separator to
+	 * shorten the row. Let's try to break it again, but not at word
+	 * boundary this time.
 	 */
-	if (cit->breakAt(w - left_margin)) {
+	if (cit->breakAt(w - wid, true)) {
 		end_ = cit->endpos;
-		dim_.wid = left_margin + cit->dim.wid;
+		// See comment above.
+		cit->str = rtrim(cit->str);
+		cit->endpos = cit->pos + cit->str.length();
+		dim_.wid = wid + cit->dim.wid;
 		// If there are other elements, they should be removed.
 		elements_.erase(next(cit, 1), end);
 	}

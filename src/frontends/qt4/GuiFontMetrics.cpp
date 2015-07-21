@@ -150,10 +150,11 @@ int GuiFontMetrics::signedWidth(docstring const & s) const
 }
 
 namespace {
-void setTextLayout(QTextLayout & tl, docstring const & s, QFont const & font,
-			     bool const rtl)
+void setTextLayout(QTextLayout & tl, docstring const & s, QFont font,
+                   bool const rtl, double const wordspacing)
 {
 	tl.setText(toqstr(s));
+	font.setWordSpacing(wordspacing);
 	tl.setFont(font);
 	// Note that both setFlags and the enums are undocumented
 	tl.setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
@@ -164,22 +165,51 @@ void setTextLayout(QTextLayout & tl, docstring const & s, QFont const & font,
 }
 
 
-int GuiFontMetrics::pos2x(docstring const & s, int const pos, bool const rtl) const
+int GuiFontMetrics::pos2x(docstring const & s, int const pos, bool const rtl,
+                          double const wordspacing) const
 {
 	QTextLayout tl;
-	setTextLayout(tl, s, font_, rtl);
+	QFont copy = font_;
+	copy.setWordSpacing(wordspacing);
+	setTextLayout(tl, s, font_, rtl, wordspacing);
 	return static_cast<int>(tl.lineForTextPosition(pos).cursorToX(pos));
 }
 
 
-int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl) const
+int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl,
+                          double const wordspacing) const
 {
 	QTextLayout tl;
-	setTextLayout(tl, s, font_, rtl);
+	setTextLayout(tl, s, font_, rtl, wordspacing);
 	int pos = tl.lineForTextPosition(0).xToCursor(x);
 	// correct x value to the actual cursor position.
 	x = static_cast<int>(tl.lineForTextPosition(0).cursorToX(pos));
 	return pos;
+}
+
+
+bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const force) const
+{
+	if (s.empty())
+		return false;
+	QTextLayout tl;
+	tl.setText(toqstr(s));
+	tl.setFont(font_);
+	// Note that both setFlags and the enums are undocumented
+	tl.setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
+	QTextOption to;
+	to.setWrapMode(force ? QTextOption::WrapAnywhere : QTextOption::WordWrap);
+	tl.setTextOption(to);
+	tl.beginLayout();
+	QTextLine line = tl.createLine();
+	line.setLineWidth(x);
+	tl.createLine();
+	tl.endLayout();
+	if (int(line.naturalTextWidth()) > x)
+		return false;
+	x = int(line.naturalTextWidth());
+	s = s.substr(0, line.textLength());
+	return true;
 }
 
 

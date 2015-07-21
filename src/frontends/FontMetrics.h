@@ -84,15 +84,27 @@ public:
 	 * return the x offset of a position in the string. The
 	 * direction of the string is forced, and the returned value
 	 * is from the left edge of the word, not from the start of the string.
+	 * \param rtl is true for right-to-left layout
+	 * \param ws is the amount of extra inter-word space applied text justication.
 	 */
-	virtual int pos2x(docstring const & s, int pos, bool rtl) const = 0;
+	virtual int pos2x(docstring const & s, int pos, bool rtl, double ws) const = 0;
 	/**
 	 * return the position in the string for a given x offset. The
 	 * direction of the string is forced, and the returned value
 	 * is from the left edge of the word, not from the start of the string.
 	 * the offset x is updated to match the closest position in the string.
+	 * \param rtl is true for right-to-left layout
+	 * \param ws is the amount of extra inter-word space applied text justication.
 	 */
-	virtual int x2pos(docstring const & s, int & x, bool rtl) const = 0;
+	virtual int x2pos(docstring const & s, int & x, bool rtl, double ws) const = 0;
+	/**
+	 * Break string at width at most x.
+	 * \return true if successful
+	 * \param rtl is true for right-to-left layout
+	 * \param force is false for breaking at word separator, true for
+	 *   arbitrary position.
+	 */
+	virtual bool breakAt(docstring & s, int & x, bool rtl, bool force) const = 0;
 	/// return char dimension for the font.
 	virtual Dimension const dimension(char_type c) const = 0;
 	/**

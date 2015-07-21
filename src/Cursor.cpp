@@ -1018,139 +1018,17 @@ bool Cursor::posVisToNewRow(bool movingLeft)
 
 void Cursor::posVisToRowExtremity(bool left)
 {
-	// prepare bidi tables
-	Paragraph const & par = paragraph();
-	Buffer const & buf = *buffer();
-	Row const & row = textRow();
-	Bidi bidi;
-	bidi.computeTables(par, buf, row);
-
 	LYXERR(Debug::RTL, "entering extremity: " << pit() << "," << pos() << ","
 		<< (boundary() ? 1 : 0));
 
-	if (left) { // move to leftmost position
-		// if this is an RTL paragraph, and we're at the last row in the
-		// paragraph, move to lastpos
-		if (par.isRTL(buf.params()) && row.endpos() == lastpos())
-			pos() = lastpos();
-		else {
-			pos() = bidi.vis2log(row.pos());
+	TextMetrics const & tm = bv_->textMetrics(text());
+	// Looking for extremities is like clicking on the left or the
+	// right of the row.
+	int x = tm.origin().x_ + (left ? 0 : textRow().width());
+	bool b = false;
+	pos() = tm.getPosNearX(textRow(), x, b);
+	boundary(b);
 
-			// Moving to the leftmost position in the row,
-			// the cursor should normally be placed to the
-			// *left* of the leftmost position. A very
-			// common exception, though, is if the
-			// leftmost character also happens to be the
-			// separator at the (logical) end of the row
-			// --- in this case, the separator is
-			// positioned beyond the left margin, and we
-			// don't want to move the cursor there (moving
-			// to the left of the separator is equivalent
-			// to moving to the next line). So, in this
-			// case we actually want to place the cursor
-			// to the *right* of the leftmost position
-			// (the separator). Another exception is if
-			// we're moving to the logically last position
-			// in the row, which is *not* a separator:
-			// this means that the entire row has no
-			// separators (if there were any, the row
-			// would have been broken there); and
-			// therefore in this case we also move to the
-			// *right* of the last position (this
-			// indicates to the user that there is no
-			// space after this position, and is
-			// consistent with the behavior in the middle
-			// of a row --- moving right or left moves to
-			// the next/previous character; if we were to
-			// move to the *left* of this position, that
-			// would simulate a separator which is not
-			// really there!). Finally, there is an
-			// exception to the previous exception: if
-			// this non-separator-but-last-position-in-row
-			// is an inset, then we *do* want to stay to
-			// the left of it anyway: this is the
-			// "boundary" which we simulate at insets.
-
-			// Another exception is when row.endpos() is
-			// 0.
-
-			// do we want to be to the right of pos?
-			// as explained above, if at last pos in row, stay to the right
-			bool const right_of_pos = row.endpos() > 0
-				&& pos() == row.endpos() - 1 && !par.isInset(pos());
-
-			// Now we know if we want to be to the left or to the right of pos,
-			// let's make sure we are where we want to be.
-			bool const new_pos_is_RTL =
-				par.getFontSettings(buf.params(), pos()).isVisibleRightToLeft();
-
-			if (new_pos_is_RTL != right_of_pos) {
-				++pos();
-				boundary(true);
-			}
-		}
-	} else {
-		// move to rightmost position
-		// if this is an LTR paragraph, and we're at the last row in the
-		// paragraph, move to lastpos
-		if (!par.isRTL(buf.params()) && row.endpos() == lastpos())
-			pos() = lastpos();
-		else {
-			pos() = row.endpos() > 0 ? bidi.vis2log(row.endpos() - 1) : 0;
-
-			// Moving to the rightmost position in the
-			// row, the cursor should normally be placed
-			// to the *right* of the rightmost position. A
-			// very common exception, though, is if the
-			// rightmost character also happens to be the
-			// separator at the (logical) end of the row
-			// --- in this case, the separator is
-			// positioned beyond the right margin, and we
-			// don't want to move the cursor there (moving
-			// to the right of the separator is equivalent
-			// to moving to the next line). So, in this
-			// case we actually want to place the cursor
-			// to the *left* of the rightmost position
-			// (the separator). Another exception is if
-			// we're moving to the logically last position
-			// in the row, which is *not* a separator:
-			// this means that the entire row has no
-			// separators (if there were any, the row
-			// would have been broken there); and
-			// therefore in this case we also move to the
-			// *left* of the last position (this indicates
-			// to the user that there is no space after
-			// this position, and is consistent with the
-			// behavior in the middle of a row --- moving
-			// right or left moves to the next/previous
-			// character; if we were to move to the
-			// *right* of this position, that would
-			// simulate a separator which is not really
-			// there!). Finally, there is an exception to
-			// the previous exception: if this
-			// non-separator-but-last-position-in-row is
-			// an inset, then we *do* want to stay to the
-			// right of it anyway: this is the "boundary"
-			// which we simulate at insets. Another
-			// exception is when row.endpos() is 0.
-
-			// do we want to be to the left of pos?
-			// as explained above, if at last pos in row, stay to the left,
-			// unless the last position is the same as the first.
-			bool const left_of_pos = row.endpos() > 0
-				&& pos() == row.endpos() - 1 && !par.isInset(pos());
-
-			// Now we know if we want to be to the left or to the right of pos,
-			// let's make sure we are where we want to be.
-			bool const new_pos_is_RTL =
-				par.getFontSettings(buf.params(), pos()).isVisibleRightToLeft();
-
-			if (new_pos_is_RTL == left_of_pos) {
-				++pos();
-				boundary(true);
-			}
-		}
-	}
 	LYXERR(Debug::RTL, "leaving extremity: " << pit() << "," << pos() << ","
 		<< (boundary() ? 1 : 0));
 }
