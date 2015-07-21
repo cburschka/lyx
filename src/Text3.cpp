@@ -2233,6 +2233,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_FINISHED_BACKWARD:
 		LYXERR(Debug::DEBUG, "handle LFUN_FINISHED_BACKWARD:\n" << cur);
+		cur.setCurrentFont();
 		break;
 
 	case LFUN_FINISHED_FORWARD:
