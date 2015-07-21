@@ -30,18 +30,6 @@ class DocIterator;
 class Inset;
 
 /**
- * FIXME: Change Row object to operate only on integers and not doubles.
- *
- * This use of double is only useful to distribute the extra
- * horizontal space between separators in justified text. If we do
- * integer arithmetic, then it is possible to have two groups of
- * separators, with size s or s+1. Then strings can be drawn without
- * cutting at separators in justfied text, as it is done in
- * non-justified text. This will improve performance.
- */
-
-
-/**
  * An on-screen row of text. A paragraph is broken into a RowList for
  * display. Each Row contains a tokenized description of the contents
  * of the line.
@@ -58,8 +46,6 @@ public:
 		 * correspond to any paragraph contents
 		 */
 		VIRTUAL,
-		// A stretchable space, basically
-		SEPARATOR,
 		// An inset
 		INSET,
 		// Some spacing described by its width, not a string
@@ -114,10 +100,10 @@ public:
 		// Non-zero only if element is an inset
 		Inset const * inset;
 
-		// Only non-null for separator elements
+		// Only non-null for justified rows
 		double extra;
 
-		// Non-empty if element is a string or separator
+		// Non-empty if element is a string or is virtual
 		docstring str;
 		//
 		Font font;
@@ -192,9 +178,6 @@ public:
 	void addVirtual(pos_type pos, docstring const & s,
 			Font const & f, Change const & ch);
 	///
-	void addSeparator(pos_type pos, char_type const c,
-			  Font const & f, Change const & ch);
-	///
 	void addSpace(pos_type pos, int width, Font const & f, Change const & ch);
 
 	///
@@ -249,7 +232,7 @@ public:
 
 	friend std::ostream & operator<<(std::ostream & os, Row const & row);
 
-	/// width of a separator (i.e. space)
+	/// additional width for separators in justified rows (i.e. space)
 	double separator;
 	/// width of hfills in the label
 	double label_hfill;

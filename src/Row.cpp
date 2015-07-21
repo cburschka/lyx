@@ -87,7 +87,6 @@ pos_type Row::Element::x2pos(int &x) const
 		i = 0;
 		x = rtl ? int(full_width()) : 0;
 		break;
-	case SEPARATOR:
 	case INSET:
 	case SPACE:
 		// those elements contain only one position. Round to
@@ -233,9 +232,6 @@ ostream & operator<<(ostream & os, Row::Element const & e)
 	case Row::INSET:
 		os << "INSET: " << to_utf8(e.inset->layoutName()) << ", ";
 		break;
-	case Row::SEPARATOR:
-		os << "SEPARATOR: extra=" << e.extra << ", ";
-		break;
 	case Row::SPACE:
 		os << "SPACE: ";
 		break;
@@ -357,18 +353,6 @@ void Row::addVirtual(pos_type const pos, docstring const & s,
 	e.endpos = pos;
 	elements_.push_back(e);
 	finalizeLast();
-}
-
-
-void Row::addSeparator(pos_type const pos, char_type const c,
-		       Font const & f, Change const & ch)
-{
-	finalizeLast();
-	Element e(SEPARATOR, pos, f, ch);
-	e.str += c;
-	e.dim.wid = theFontMetrics(f).width(c);
-	elements_.push_back(e);
-	dim_.wid += e.dim.wid;
 }
 
 

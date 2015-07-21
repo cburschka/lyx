@@ -163,13 +163,6 @@ void RowPainter::paintInset(Inset const * inset, Font const & font,
 }
 
 
-void RowPainter::paintSeparator(double width, Font const & font)
-{
-	pi_.pain.textDecoration(font.fontInfo(), int(x_), yo_, int(width));
-	x_ += width;
-}
-
-
 void RowPainter::paintForeignMark(double orig_x, Language const * lang, int desc) const
 {
 	if (!lyxrc.mark_foreign_language)
@@ -651,9 +644,9 @@ void RowPainter::paintText()
 			foreign_descent = e.dim.descent();
 		}
 			break;
-		case Row::SEPARATOR:
 		case Row::SPACE:
-			paintSeparator(e.full_width(), e.font);
+			pi_.pain.textDecoration(e.font.fontInfo(), int(x_), yo_, int(e.full_width()));
+			x_ += e.full_width();
 		}
 
 		// The line that indicates word in a different language
