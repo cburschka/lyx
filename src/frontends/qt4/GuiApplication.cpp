@@ -1737,6 +1737,8 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 		// Make sure we don't keep old colors in cache.
 		d->color_cache_.clear();
+		// Update the current view
+		lyx::dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
 		break;
 	}
 

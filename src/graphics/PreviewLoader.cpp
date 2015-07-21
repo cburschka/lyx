@@ -253,6 +253,10 @@ private:
 	///
 	mutable int font_scaling_factor_;
 	///
+	mutable int fg_color_;
+	///
+	mutable int bg_color_;
+	///
 	QTimer * delay_refresh_;
 	///
 	bool finished_generating_;
@@ -407,6 +411,8 @@ PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 	: parent_(p), buffer_(b), finished_generating_(true)
 {
 	font_scaling_factor_ = int(buffer_.fontScalingFactor());
+	fg_color_ = strtol(theApp()->hexName(foregroundColor()).c_str(), 0, 16);
+	bg_color_ = strtol(theApp()->hexName(backgroundColor()).c_str(), 0, 16);
 	if (!pconverter_)
 		pconverter_ = setConverter("lyxpreview");
 
@@ -433,10 +439,14 @@ PreviewImage const *
 PreviewLoader::Impl::preview(string const & latex_snippet) const
 {
 	int fs = int(buffer_.fontScalingFactor());
-	if (font_scaling_factor_ != fs) {
-		// Schedule refresh of all previews on zoom changes.
+	int fg = strtol(theApp()->hexName(foregroundColor()).c_str(), 0, 16);
+	int bg = strtol(theApp()->hexName(backgroundColor()).c_str(), 0, 16);
+	if (font_scaling_factor_ != fs || fg_color_ != fg || bg_color_ != bg) {
+		// Schedule refresh of all previews on zoom or color changes.
 		// The previews are regenerated only after the zoom factor
 		// has not been changed for about 1 second.
+		fg_color_ = fg;
+		bg_color_ = bg;
 		delay_refresh_->start(1000);
 	}
 	// Don't try to access the cache until we are done.
