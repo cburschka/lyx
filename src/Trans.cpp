@@ -580,7 +580,7 @@ Trans TransManager::default_;
 
 
 TransManager::TransManager()
-	: active_(0)
+	: active_(&default_)
 {}
 
 
