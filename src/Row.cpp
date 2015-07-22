@@ -382,11 +382,42 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 	Elements::iterator const end = elements_.end();
 	int wid = left_margin;
 
+	// The last breakable element that has been found and its x position.
+	Elements::iterator last_brk = elements_.end();
+	int last_wid = 0;
+
 	Elements::iterator cit = beg;
 	for ( ; cit != end ; ++cit) {
-		if (cit->endpos >= keep && wid + cit->dim.wid > w)
+		if (cit->countSeparators() && cit->pos >= keep) {
+			last_brk = cit;
+			last_wid = wid;
+		}
+		if (wid + cit->dim.wid > w)
 			break;
 		wid += cit->dim.wid;
+	}
+
+	/* We have found a suitable separable element. This is the common case.
+	 * Try to break it cleanly (at word boundary) at a length that is both
+	 * - less than the available space on the row
+	 * - shorter than the natural width of the element, in order to enforce
+	 *   break-up.
+	 */
+	if (last_brk != end
+		&& last_brk->breakAt(min(w - last_wid, last_brk->dim.wid - 2), false)) {
+		end_ = last_brk->endpos;
+		/* after breakAt, there may be spaces at the end of the
+		 * string, but they are not counted in the string length
+		 * (QTextLayout feature, actually). We remove them, but do not
+		 * change the endo of the row, since the spaces at row break
+		 * are invisible.
+		 */
+		last_brk->str = rtrim(last_brk->str);
+		last_brk->endpos = last_brk->pos + last_brk->str.length();
+		dim_.wid = last_wid + last_brk->dim.wid;
+		// If there are other elements, they should be removed.
+		elements_.erase(next(last_brk, 1), end);
+		return;
 	}
 
 	if (cit == end) {
@@ -400,22 +431,6 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 		// previous one.
 		--cit;
 		wid -= cit->dim.wid;
-	}
-
-	// Try to break this row cleanly (at word boundary)
-	if (cit->breakAt(w - wid, false)) {
-		end_ = cit->endpos;
-		// after breakAt, there may be spaces at the end of the
-		// string, but they are not counted in the string length
-		// (qtextlayout feature, actually). We remove them, but do not
-		// change the endo of the row, since the spaces at row break
-		// are invisible.
-		cit->str = rtrim(cit->str);
-		cit->endpos = cit->pos + cit->str.length();
-		dim_.wid = wid + cit->dim.wid;
-		// If there are other elements, they should be removed.
-		elements_.erase(next(cit, 1), end);
-		return;
 	}
 
 	if (cit != beg) {
