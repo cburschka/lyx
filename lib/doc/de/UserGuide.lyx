@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 495
+\lyxformat 497
 \begin_document
 \begin_header
 \origin /systemlyxdir/doc/de/
@@ -571,18 +571,7 @@ Die \SpecialChar LaTeX
  die Sie über das Menü 
 \family sans
 Hilfe\SpecialChar menuseparator
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Konfiguration
+LaTeX-Konfiguration
 \family default
  anschauen können.
  Wenn sie Pakete vermissen, die sie benötigen, müssen Sie das fehlende Paket
@@ -597,52 +586,6 @@ Neu
 konfigurieren
 \family default
  neu konfigurieren.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Die zwei geschweiften Klammern in der \SpecialChar TeX
--Code-Box verhindern, dass der Begriff
- 
-\begin_inset Quotes gld
-\end_inset
-
-\SpecialChar LaTeX
-
-\begin_inset Quotes grd
-\end_inset
-
- mit hoch- und tiefgestellten Zeichen ausgegeben wird.
- Mehr zu \SpecialChar TeX
--Code ist in Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:TeX-Code"
-
-\end_inset
-
- zu finden; die Ausgabe von Eigennamen wie \SpecialChar LaTeX
- ist in Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:LyXs-Eigennamen"
-
-\end_inset
-
- beschrieben.
-\end_layout
-
-\end_inset
-
-
 \begin_inset Index idx
 status collapsed
 
@@ -2975,19 +2918,9 @@ Powerdot Layout für Präsentationen
 \end_layout
 
 \begin_layout Description
-REVTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X Artikel für Veröffentlichungen der APS (American Physical Society), des
- AIP (American Institute of Physics) und der OSA (Optical Society of America).
+REVTeX Artikel für Veröffentlichungen der APS (American Physical Society),
+ des AIP (American Institute of Physics) und der OSA (Optical Society of
+ America).
  Diese Klasse ist nicht mit allen \SpecialChar LyX
 -Funktionen kompatibel.
 \end_layout
@@ -4524,7 +4457,7 @@ Eine Absatzumgebung wählt man mit dem
 \begin_inset Quotes gld
 \end_inset
 
-pull-down
+Pull-down
 \begin_inset Quotes grd
 \end_inset
 
@@ -8461,7 +8394,7 @@ Code
 -Umgebung wird die Leertaste als geschütztes Leerzeichen behandelt anstatt
  als 
 \family typewriter
-end-of-word
+End-of-word
 \family default
 -Markierung.
 \end_layout
@@ -13455,65 +13388,21 @@ Schreibmaschine
 \begin_layout Standard
 Wenn Sie die Option 
 \family sans
-Nicht-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX-Schriften verwenden
+Nicht-TeX-Schriften verwenden
 \family default
  benutzen, haben Sie Zugriff auf die in Ihrem Betriebssystem installierten
  Schriften.
  Dies setzt voraus, dass Sie 
 \family sans
-PDF (XeT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX)
+PDF (XeTeX)
 \family default
 , 
 \family sans
-PDF (LuaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX)
+PDF (LuaTeX)
 \family default
  oder 
 \family sans
-DVI (LuaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX)
+DVI (LuaTeX)
 \family default
  als Ausgabeformat verwenden.
  Das bedeutet daher auch, dass entweder Xe\SpecialChar TeX
@@ -14071,18 +13960,7 @@ Die
 \family typewriter
  
 \family sans
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Fontkodierung
+LaTeX-Fontkodierung
 \family default
  ist eine Einstellung für Experten, mit der der Wert geändert kann, der
  an das \SpecialChar LaTeX
@@ -15548,13 +15426,9 @@ Alt+Z
 D
 \family default
 )
-\lang english
-
 \begin_inset Newline newline
 \end_inset
 
-
-\lang ngerman
 Da wir Sie eben vor unterstrichenem Text gewarnt haben, können Sie sich
  sicher denken, was wir von doppelt unterstrichenem Text halten.
 \end_layout
@@ -16243,18 +16117,7 @@ Sie können ihr Dokument als \SpecialChar LaTeX
 \family sans
 Datei\SpecialChar menuseparator
 Exportieren\SpecialChar menuseparator
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \family default
  exportieren.
  Die verschiedenen \SpecialChar LaTeX
@@ -16337,18 +16200,7 @@ DVI
 \begin_inset space ~
 \end_inset
 
-(LuaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X)
+(LuaTeX)
 \family default
  exportieren.
  Die zweite Möglichkeit verwendet das Programm 
@@ -16664,18 +16516,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(LuaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X) Diese verwendet das Programm 
+(LuaTeX) Diese verwendet das Programm 
 \family typewriter
 Lua\SpecialChar TeX
 
@@ -16714,18 +16555,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(XeTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X) Diese verwendet das Programm 
+(XeTeX) Diese verwendet das Programm 
 \family typewriter
 Xe\SpecialChar TeX
 
@@ -16837,18 +16667,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(XeTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X)
+(XeTeX)
 \family default
  oder 
 \family sans
@@ -16856,18 +16675,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(LuaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X)
+(LuaTeX)
 \family default
  ausprobieren auch wenn sie noch nicht so ausentwickelt wie 
 \family typewriter
@@ -16963,8 +16771,7 @@ Sie können Ihr Dokument mit dem Menü
 \family sans
 Datei\SpecialChar menuseparator
 Exportieren\SpecialChar menuseparator
-\SpecialChar LyX
--HTML
+LyX-HTML
 \family default
  als XHTML-Datei exportieren.
 \end_layout
@@ -17535,18 +17342,7 @@ Objekte
 \begin_layout Description
 Bemerkung: Wenn Sie manuelle Trennhilfen innerhalb einer 
 \family sans
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Code
+LyX-Code
 \family default
 -Umgebung benötigen, müssen Sie statt 
 \family sans
@@ -17586,18 +17382,7 @@ Strg+
 
 - in 
 \family sans
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Code
+LyX-Code
 \family default
 -Umgebungen (noch) nicht klarkommt.
 \end_layout
@@ -18470,7 +18255,8 @@ fest
 
 \begin_layout Subsection
 \SpecialChar LyX
-s Eigennamen
+- und \SpecialChar LaTeX
+-Logos
 \begin_inset Index idx
 status collapsed
 
@@ -18492,154 +18278,38 @@ name "subsec:LyXs-Eigennamen"
 \end_layout
 
 \begin_layout Standard
-Sie haben sicherlich bemerkt, dass das Wort 
-\begin_inset Quotes gld
-\end_inset
-
-\SpecialChar LaTeX
-
-\begin_inset Quotes grd
-\end_inset
-
- immer mit Zeichen in verschiedener Größe und Positionen ausgegeben wird.
- \SpecialChar LaTeX
- ist der Name des Programms, das von \SpecialChar LyX
- verwendet wird und wird daher als
- Eigenname erkannt, wenn man in \SpecialChar LyX
- 
-\begin_inset Quotes gld
-\end_inset
-
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\begin_inset Quotes grd
-\end_inset
-
- schreibt.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Die geschweiften Klammern in \SpecialChar TeX
--Code sind hier dazu da, zu verhindern, dass
- der Text als Eigenname ausgegeben wird, siehe den letzten Absatz dieses
- Abschnitts.
-\end_layout
-
-\end_inset
-
- Beachten Sie die Reihenfolge der hoch- und tiefgestellten Zeichen! \SpecialChar LyX
- erkennt
- die folgenden Eigennamen:
+Unter 
+\family sans
+Einfügen\SpecialChar menuseparator
+Sonderzeichen
+\family default
+ bietet \SpecialChar LyX
+ folgende Programmlogos mit spezifischer Formatierung:
 \end_layout
 
 \begin_layout Description
 \SpecialChar LyX
- Das Programm um das es hier geht; schreiben Sie 
-\begin_inset Quotes gld
-\end_inset
-
-L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-yX
-\begin_inset Quotes grd
-\end_inset
-
- um in zu erzeugen.
+ An die \SpecialChar TeX
+-Schreibung angelehntes Logo von LyX.
 \end_layout
 
 \begin_layout Description
 \SpecialChar TeX
- Das Programm, dass von \SpecialChar LaTeX
- verwendet wird; schreiben Sie 
-\begin_inset Quotes gld
-\end_inset
-
-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\begin_inset Quotes grd
-\end_inset
-
- um in zu erzeugen.
+ Logo des Textsatzprogramms TeX, das \SpecialChar LyX
+ für die Ausgabe verwendet.
 \end_layout
 
 \begin_layout Description
 \SpecialChar LaTeX
- Das Programm, dass von \SpecialChar LyX
- verwendet wird; schreiben Sie 
-\begin_inset Quotes gld
-\end_inset
-
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
-\begin_inset Quotes grd
-\end_inset
-
- um in zu erzeugen.
+ Auf \SpecialChar TeX
+ aufsetzende Makrosammlung, die \SpecialChar LyX
+ für die Ausgabe verwendet.
 \end_layout
 
 \begin_layout Description
 \SpecialChar LaTeX2e
  Die aktuelle Version von \SpecialChar LaTeX
-; schreiben Sie 
-\begin_inset Quotes gld
-\end_inset
-
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX2e
-\begin_inset Quotes grd
-\end_inset
-
- um in zu erzeugen.
+.
 \end_layout
 
 \begin_layout Standard
@@ -18681,42 +18351,6 @@ Sie wundern sich vielleicht warum die \SpecialChar LaTeX
 \SpecialChar TeX
 -3.14159
 \begin_inset Quotes grd
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Wenn Sie keine Eigennamen ausgeben wollen, z.
-\begin_inset space \thinspace{}
-\end_inset
-
-B.
- in Abschnittsüberschriften, können Sie zwei leere geschweifte Klammern
- in \SpecialChar TeX
--Code in das Wort einfügen.
- In \SpecialChar LyX
- sieht das dann so aus: 
-\begin_inset Graphics
-	filename ../clipart/LaTeX.png
-	scale 80
-
-\end_inset
-
-.
-\begin_inset Newline newline
-\end_inset
-
-Für mehr über \SpecialChar TeX
--Code siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:TeX-Code"
-
 \end_inset
 
 .
@@ -19922,18 +19556,7 @@ eröffnen
 \family default
  im Grafik-Dialogfenster in der Karteikarte 
 \family sans
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-
+LaTeX-
 \begin_inset space \space{}
 \end_inset
 
@@ -19941,18 +19564,7 @@ und
 \begin_inset space \space{}
 \end_inset
 
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Optionen
+LyX-Optionen
 \family default
  drücken.
  Wenn Sie dann im Grafik-Dialogfenster einer anderen Abbildung denselben
@@ -20514,13 +20126,9 @@ Kopfzeile
 
 \begin_layout Description
 Erste
-\lang english
-
 \begin_inset space ~
 \end_inset
 
-
-\lang ngerman
 Kopfzeile: Die aktuelle Zeile wird als eine Überschrifts-Zeile der ersten
  Seite einer mehrseitigen Tabelle definiert.
 \end_layout
@@ -25379,11 +24987,7 @@ arg   "dialog-show mathdelimiter"
 \family typewriter
 ()
 \family default
--Tasten erstellt:
-\lang english
- 
-\lang ngerman
-
+-Tasten erstellt: 
 \begin_inset Formula 
 \[
 \frac{1}{\left(1+\left(\frac{1}{1+\left(\frac{1}{1+x}\right)}\right)\right)}\qquad\qquad\frac{1}{(1+(\frac{1}{1+(\frac{1}{1+x})}))}
@@ -27302,13 +26906,9 @@ status collapsed
 \end_inset
 
 
-\lang english
-
 \begin_inset Newline newline
 \end_inset
 
-
-\lang ngerman
 Man kann mit der Option 
 \family sans
 Verwende refstyle (statt prettyref) für Querverweise
@@ -28335,37 +27935,11 @@ Liste
 \end_inset
 
 Inhaltsverzeichnis\SpecialChar menuseparator
-BibTe
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family sans
-X-Literaturverzeichnis
+BibTeX-Literaturverzeichnis
 \family default
 , woraufhin das 
 \family sans
-BibTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Literaturverzeichnis
+BibTeX-Literaturverzeichnis
 \family default
 -Fenster geöffnet wird.
  Sie können dort Datenbanken hinzufügen und auch wieder löschen.
@@ -28445,18 +28019,7 @@ Literaturverzeichnis
 Werkzeuge\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Ausgabe\SpecialChar menuseparator
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \family default
 .
  Die folgenden Varianten sind möglich:
@@ -29170,8 +28733,6 @@ Der vorige Eintrag muss kein existierender Eintrag sein.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -29584,22 +29145,7 @@ makeindex
 Werkzeuge\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Ausgaben\SpecialChar menuseparator
-LaTe
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family sans
-X
+LaTeX
 \family default
  kontrolliert werden.
  Die Funktionen und Eigenschaften der Programme können Sie der Dokumentation
@@ -29620,22 +29166,7 @@ Sie können aber auch ein anderes Stichwort-Programm benutzen, wenn Sie es
 Werkzeuge\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Ausgaben\SpecialChar menuseparator
-LaTe
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family sans
-X
+LaTeX
 \family default
  im Feld 
 \family sans
@@ -30637,18 +30168,7 @@ Ausgaben
 \SpecialChar menuseparator
 
 \family sans
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+LaTeX
 \family default
  können Sie den Befehl modifizieren oder ein anderes Programm eintragen.
  In 
@@ -31463,18 +30983,7 @@ Wenn Sie gezwungen sind oder es wollen, \SpecialChar LaTeX
 -Code-Kästchen erhalten Sie mit 
 \family sans
 Einfügen\SpecialChar menuseparator
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Code
+TeX-Code
 \family default
 , 
 \family sans
@@ -31745,18 +31254,7 @@ Einstellungen
 \SpecialChar menuseparator
 
 \family sans
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX-Vorspann
+LaTeX-Vorspann
 \family default
 ) mit dem Befehl
 \end_layout
@@ -32161,7 +31659,7 @@ Kopfzeile
 \begin_inset space ~
 \end_inset
 
-mitte,
+Mitte,
 \begin_inset space ~
 \end_inset
 
@@ -32185,7 +31683,7 @@ Fußzeile
 \begin_inset space ~
 \end_inset
 
-mitte,
+Mitte,
 \begin_inset space ~
 \end_inset
 
@@ -32247,7 +31745,7 @@ Kopfzeile links
 \begin_inset Text
 
 \begin_layout Plain Layout
-Kopfzeile mitte
+Kopfzeile Mitte
 \end_layout
 
 \end_inset
@@ -32367,7 +31865,7 @@ Fußzeile links
 \begin_inset Text
 
 \begin_layout Plain Layout
-Fußzeile mitte
+Fußzeile Mitte
 \end_layout
 
 \end_inset
@@ -32468,18 +31966,7 @@ Für die Definition benötigt man einige \SpecialChar LaTeX
 -Code (Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Code
+TeX-Code
 \family default
 ) eingefügt werden:
 \end_layout
@@ -32550,7 +32037,7 @@ Fußzeile
 \begin_inset space ~
 \end_inset
 
-mitte
+Mitte
 \family default
  ein.
 \end_layout
@@ -32688,19 +32175,7 @@ Wobei Höhe eine Größe in Standard-Einheiten ist.
 -Protokoll über das Menü 
 \family sans
 Dokument\SpecialChar menuseparator
-La
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-\SpecialChar TeX
--Protokoll 
+LaTeX-Protokoll 
 \family default
 und schaut mit Hilfe des Knopfes 
 \family sans
@@ -32760,7 +32235,7 @@ Kopfzeile
 \begin_inset space ~
 \end_inset
 
-mitte leer, leeres optionales Argument
+Mitte leer, leeres optionales Argument
 \end_layout
 
 \begin_layout Description
@@ -32796,7 +32271,7 @@ Fußzeile
 \begin_inset space ~
 \end_inset
 
-mitte 
+Mitte 
 \family sans
 \series bold
 \color red
@@ -35136,18 +34611,7 @@ arg   "note-insert"
 \family sans
 Einfügen\SpecialChar menuseparator
 Notiz\SpecialChar menuseparator
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Notiz
+LyX-Notiz
 \end_layout
 
 \end_inset
@@ -35764,18 +35228,7 @@ CJK
 \begin_inset space ~
 \end_inset
 
-L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-yX Format der speziellen \SpecialChar LyX
+LyX Format der speziellen \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
@@ -35833,18 +35286,7 @@ DVI
 \begin_inset space ~
 \end_inset
 
-(LuaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX) DVI-Format unter Verwendung des Programms 
+(LuaTeX) DVI-Format unter Verwendung des Programms 
 \family typewriter
 Lua\SpecialChar TeX
 
@@ -35940,33 +35382,11 @@ MathML
 \end_layout
 
 \begin_layout Description
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \begin_inset space ~
 \end_inset
 
-(LuaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX) Textdatei mit dem \SpecialChar LaTeX
+(LuaTeX) Textdatei mit dem \SpecialChar LaTeX
 -Quellcode, der mit dem Programm 
 \family typewriter
 Lua\SpecialChar TeX
@@ -35976,18 +35396,7 @@ Lua\SpecialChar TeX
 \end_layout
 
 \begin_layout Description
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \begin_inset space ~
 \end_inset
 
@@ -36002,18 +35411,7 @@ pdflatex
 \end_layout
 
 \begin_layout Description
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \begin_inset space ~
 \end_inset
 
@@ -36028,33 +35426,11 @@ latex
 \end_layout
 
 \begin_layout Description
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \begin_inset space ~
 \end_inset
 
-(XeT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX) Textdatei mit dem \SpecialChar LaTeX
+(XeTeX) Textdatei mit dem \SpecialChar LaTeX
 -Quellcode, der mit dem Programm 
 \family typewriter
 Xe\SpecialChar TeX
@@ -36072,38 +35448,16 @@ book
 \begin_inset space ~
 \end_inset
 
-(La
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-\SpecialChar TeX
+(La\SpecialChar TeX
 ) Textdatei mit dem \SpecialChar LaTeX
--Quellcode und außerdem Code in der Syntax der Musik-Notatio
-nssoftware
+-Quellcode und außerdem Code in der Syntax der Musik-Nota
+tionssoftware
 \family typewriter
  LilyPond
 \end_layout
 
 \begin_layout Description
-L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-yX-Archiv
+LyX-Archiv
 \begin_inset space ~
 \end_inset
 
@@ -36114,18 +35468,7 @@ yX-Archiv
 \end_layout
 
 \begin_layout Description
-L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-yX
+LyX
 \begin_inset space ~
 \end_inset
 
@@ -36152,18 +35495,7 @@ y
 \end_layout
 
 \begin_layout Description
-L
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-yXHTML HTML-Format, unter Verwendung von \SpecialChar LyX
+LyXHTML HTML-Format, unter Verwendung von \SpecialChar LyX
 s internem XHTML-Konverter
 \end_layout
 
@@ -36229,18 +35561,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(LuaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX) PDF-Format unter Verwendung des Programms 
+(LuaTeX) PDF-Format unter Verwendung des Programms 
 \family typewriter
 Lua\SpecialChar TeX
 
@@ -36308,18 +35629,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(XeT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX) PDF-Format unter Verwendung des Programms 
+(XeTeX) PDF-Format unter Verwendung des Programms 
 \family typewriter
 Xe\SpecialChar TeX
 
@@ -38449,18 +37759,7 @@ reference "sec:Änderungsverfolgung"
 \end_layout
 
 \begin_layout Subsection
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX-Protokoll
+LaTeX-Protokoll
 \end_layout
 
 \begin_layout Standard
@@ -38978,18 +38277,7 @@ Zählt die Wörter und Zeichen des aktuellen Dokuments oder des markierten
 \end_layout
 
 \begin_layout Subsection
-Check T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+Check TeX
 \begin_inset Index idx
 status collapsed
 
@@ -39015,18 +38303,7 @@ Chk\SpecialChar TeX
 \end_layout
 
 \begin_layout Subsection
-T
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX-Informationen
+TeX-Informationen
 \begin_inset Index idx
 status collapsed
 
@@ -39229,18 +38506,7 @@ Das Menü
 \begin_inset space ~
 \end_inset
 
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X
+LyX
 \family default
  informiert über das Urheberrecht, die Mitwirkenden und die \SpecialChar LyX
 -Version, die
@@ -40654,18 +39920,7 @@ arg   "note-insert"
 \family sans
 Einfügen\SpecialChar menuseparator
 Notiz\SpecialChar menuseparator
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Notiz
+LyX-Notiz
 \end_layout
 
 \end_inset
@@ -40755,22 +40010,7 @@ arg   "ert-insert"
 
 \family sans
 Einfügen\SpecialChar menuseparator
-T
-\family default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-
-\family sans
-eX-Code
+TeX-Code
 \end_layout
 
 \end_inset
@@ -41796,18 +41036,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(XeTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X)
+(XeTeX)
 \family default
 , 
 \family sans
@@ -41815,18 +41044,7 @@ PDF
 \begin_inset space ~
 \end_inset
 
-(LuaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X)
+(LuaTeX)
 \family default
  und 
 \family sans
@@ -43531,8 +42749,7 @@ Einige Zeichen erfordern das Laden von speziellen \SpecialChar LaTeX
 \family sans
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
-\SpecialChar LaTeX
--Vorspann
+LaTeX-Vorspann
 \family default
 ).
  Für das €-Zeichen muss man beispielsweise die Zeile 
@@ -43686,18 +42903,7 @@ Handbuchergänzungen
 \begin_layout Description
 XHTML-Ausgabe-Optionen Einstellungen für das Export-Format 
 \family sans
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-XHTML
+LyXHTML
 \family default
 .
  
@@ -43950,18 +43156,7 @@ Alle \SpecialChar LyX
 -Funktionen sind im Menü 
 \family sans
 Hilfe\SpecialChar menuseparator
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Funktionen
+LyX-Funktionen
 \family default
  aufgelistet.
 \end_layout
@@ -45007,9 +44202,9 @@ Zweite
 \family default
  Tastaturtabelle definieren und, wenn Sie die 
 \emph on
-cua
+Cua-
 \emph default
- Tastaturkürzel verwenden, die erste mit 
+Tastaturkürzel verwenden, die erste mit 
 \begin_inset Info
 type  "shortcut"
 arg   "keymap-primary"
@@ -45237,18 +44432,8 @@ Sicherungsdateien haben die Endung
 \end_layout
 
 \begin_layout Description
-Ly
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Server-Weiterleitung Hier wird der Name einer sogenannten UNIX-Pipe angegeben.
+LyX-Server-Weiterleitung Hier wird der Name einer sogenannten UNIX-Pipe
+ angegeben.
  Über diese werden Daten aus externen Programmen an \SpecialChar LyX
  gesendet.
 \begin_inset Newline newline
@@ -45885,18 +45070,7 @@ Handbuchergänzungen
 \end_layout
 
 \begin_layout Subsection
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+LaTeX
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:LaTeX-Einstellungen"
@@ -45918,18 +45092,7 @@ Einstellungen ! \SpecialChar LaTeX
 \end_layout
 
 \begin_layout Description
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Fontkodierung
+LaTeX-Fontkodierung
 \begin_inset space ~
 \end_inset
 
@@ -46063,18 +45226,7 @@ reference "subsec:Nomenklatur-Programm"
 \end_layout
 
 \begin_layout Description
-CheckTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Befehl Befehl für das Programm 
+CheckTeX-Befehl Befehl für das Programm 
 \family sans
 Check\SpecialChar TeX
 

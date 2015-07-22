@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 496
+\lyxformat 497
 \begin_document
 \begin_header
 \origin /systemlyxdir/doc/de/
@@ -261,7 +261,7 @@ Abbildungen, Tabellen, Gleitobjekte, Notizen und Boxen
 
 \begin_layout Author
 vom \SpecialChar LyX
- Team
+-Team
 \begin_inset Foot
 status open
 
@@ -12336,18 +12336,7 @@ Tabellen-Einstellungen
 -Dialogs keine Berechnungen.
  Deshalb müssen Sie die Formel für die Breite im Feld 
 \family sans
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Argument
+LaTeX-Argument
 \family default
  eingeben.
  Hier iss ein Überblick über die Argumente:
@@ -17646,18 +17635,7 @@ dunkelgruen
 
  werden, also müssen Sie ins 
 \family sans
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Argument
+LaTeX-Argument
 \family default
  der Zellen der ersten Spalte den Befehl
 \end_layout
@@ -22503,18 +22481,7 @@ reference "tab:Tabelle-mit-1.5pt-vert"
 
  wurde das 
 \family sans
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Argument
+LaTeX-Argument
 \family default
 \series bold
  VcV
@@ -23049,18 +23016,7 @@ usepackage{arydshln}
 \begin_layout Standard
 Um senkrechte Linien zu stricheln, müssen Sie im 
 \family sans
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X-Argument
+LaTeX-Argument
 \family default
  des 
 \family sans
@@ -25302,7 +25258,7 @@ status collapsed
 \end_inset
 
  nicht alle möglichen \SpecialChar LyX
- Marken-Kürzel
+-Marken-Kürzel
 \begin_inset Foot
 status collapsed
 
@@ -29822,18 +29778,7 @@ Ex\SpecialChar softhyphen
 por\SpecialChar softhyphen
 tie\SpecialChar softhyphen
 ren\SpecialChar menuseparator
-LaTe
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X (pdflatex) / (normal)
+LaTeX (pdflatex) / (normal)
 \family default
 .
  Ein Kommentar sieht so aus:
@@ -39389,9 +39334,9 @@ Zweige sind im Kapitel
 Zweige
 \emph default
  des \SpecialChar LyX
- 
+
 \emph on
-Benutzerhandbuchs
+-Benutzerhandbuchs
 \emph default
  erklärt.
 \end_layout
