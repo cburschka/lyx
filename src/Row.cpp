@@ -224,7 +224,8 @@ ostream & operator<<(ostream & os, Row::Element const & e)
 
 	switch (e.type) {
 	case Row::STRING:
-		os << "STRING: `" << to_utf8(e.str) << "', ";
+		os << "STRING: `" << to_utf8(e.str) << "' ("
+		   << e.countSeparators() << " sep.), ";
 		break;
 	case Row::VIRTUAL:
 		os << "VIRTUAL: `" << to_utf8(e.str) << "', ";
@@ -378,52 +379,56 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 {
 	if (empty() || width() <= w)
 		return;
+
 	Elements::iterator const beg = elements_.begin();
 	Elements::iterator const end = elements_.end();
 	int wid = left_margin;
 
-	// The last breakable element that has been found and its x position.
-	Elements::iterator last_brk = elements_.end();
-	int last_wid = 0;
-
+	// Search for the first element that goes beyond right margin
 	Elements::iterator cit = beg;
 	for ( ; cit != end ; ++cit) {
-		if (cit->countSeparators() && cit->pos >= keep) {
-			last_brk = cit;
-			last_wid = wid;
-		}
 		if (wid + cit->dim.wid > w)
 			break;
 		wid += cit->dim.wid;
-	}
-
-	/* We have found a suitable separable element. This is the common case.
-	 * Try to break it cleanly (at word boundary) at a length that is both
-	 * - less than the available space on the row
-	 * - shorter than the natural width of the element, in order to enforce
-	 *   break-up.
-	 */
-	if (last_brk != end
-		&& last_brk->breakAt(min(w - last_wid, last_brk->dim.wid - 2), false)) {
-		end_ = last_brk->endpos;
-		/* after breakAt, there may be spaces at the end of the
-		 * string, but they are not counted in the string length
-		 * (QTextLayout feature, actually). We remove them, but do not
-		 * change the endo of the row, since the spaces at row break
-		 * are invisible.
-		 */
-		last_brk->str = rtrim(last_brk->str);
-		last_brk->endpos = last_brk->pos + last_brk->str.length();
-		dim_.wid = last_wid + last_brk->dim.wid;
-		// If there are other elements, they should be removed.
-		elements_.erase(next(last_brk, 1), end);
-		return;
 	}
 
 	if (cit == end) {
 		// This should not happen since the row is too long.
 		LYXERR0("Something is wrong cannot shorten row: " << *this);
 		return;
+	}
+
+	// Iterate backwards over breakable elements and try to break them
+	Elements::iterator cit_brk = cit;
+	int wid_brk = wid + cit_brk->dim.wid;
+	++cit_brk;
+	while (cit_brk != beg) {
+		--cit_brk;
+		Element & brk = *cit_brk;
+		wid_brk -= brk.dim.wid;
+		if (brk.countSeparators() == 0 || brk.pos < keep)
+			continue;
+		/* We have found a suitable separable element. This is the common case.
+		 * Try to break it cleanly (at word boundary) at a length that is both
+		 * - less than the available space on the row
+		 * - shorter than the natural width of the element, in order to enforce
+		 *   break-up.
+		 */
+		if (brk.breakAt(min(w - wid_brk, brk.dim.wid - 2), false)) {
+			end_ = brk.endpos;
+			/* after breakAt, there may be spaces at the end of the
+			 * string, but they are not counted in the string length
+			 * (QTextLayout feature, actually). We remove them, but do
+			 * not change the endo of the row, since the spaces at row
+			 * break are invisible.
+			 */
+			brk.str = rtrim(brk.str);
+			brk.endpos = brk.pos + brk.str.length();
+			dim_.wid = wid_brk + brk.dim.wid;
+			// If there are other elements, they should be removed.
+			elements_.erase(cit_brk + 1, end);
+			return;
+		}
 	}
 
 	if (cit != beg && cit->type == VIRTUAL) {
@@ -434,8 +439,8 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 	}
 
 	if (cit != beg) {
-		// There is no separator, but several elements have been
-		// added. We can cut right here.
+		// There is no usable separator, but several elements have
+		// been added. We can cut right here.
 		end_ = cit->pos;
 		dim_.wid = wid;
 		elements_.erase(cit, end);
