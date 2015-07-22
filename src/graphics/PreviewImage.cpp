@@ -113,6 +113,9 @@ PreviewImage::Impl::Impl(PreviewImage & p, PreviewLoader & l,
 
 PreviewImage::Impl::~Impl()
 {
+	// If these images are generated for a clone, then that may be
+	// because we are previewing. We therefore do not want to delete
+	// them when this Buffer is destroyed.
 	if (!ploader_.buffer().isClone())
 		iloader_.filename().removeFile();
 }
