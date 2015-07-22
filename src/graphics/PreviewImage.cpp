@@ -12,6 +12,7 @@
 
 #include "PreviewImage.h"
 
+#include "Buffer.h"
 #include "Dimension.h"
 #include "GraphicsImage.h"
 #include "GraphicsLoader.h"
@@ -112,7 +113,8 @@ PreviewImage::Impl::Impl(PreviewImage & p, PreviewLoader & l,
 
 PreviewImage::Impl::~Impl()
 {
-	iloader_.filename().removeFile();
+	if (!ploader_.buffer().isClone())
+		iloader_.filename().removeFile();
 }
 
 
