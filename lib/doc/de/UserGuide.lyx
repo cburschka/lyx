@@ -355,7 +355,7 @@ Skalierung auf Bildschirm
  verwenden.
  Der zweite und dritte Fall sind Tabellen und Gleichungen, die breiter als
  \SpecialChar LyX
-s Hauptarbeitsbereich sind.
+' Hauptarbeitsbereich sind.
  Man kann die Pfeiltasten benutzen um horizontal durch Tabellen zu navigieren.
  Dies funktioniert leider noch nicht für Gleichungen.
 \end_layout
@@ -1828,7 +1828,7 @@ Mit der
 F5
 \family default
  -Taste wird der Cursor vertikal in \SpecialChar LyX
-s Hauptfenster zentriert.
+' Hauptfenster zentriert.
 \end_layout
 
 \begin_layout Subsection
@@ -2157,7 +2157,7 @@ B.
 autocorrect
 \family default
  zu finden, die sich irgendwo in \SpecialChar LyX
-s Installationsordner befindet.
+' Installationsordner befindet.
  Die Automatische Korrektur kann jederzeit angeschaltet werden in dem man
  das Ausrufezeichen drückt '!'.
  Durch Drücken der Leertaste wird sie ausgeschaltet.
@@ -2189,7 +2189,7 @@ emacs
 \family default
 .
  \SpecialChar LyX
-s Voreinstellung ist 
+' Voreinstellung ist 
 \family typewriter
 cua
 \family default
@@ -3234,7 +3234,7 @@ m Dokumenten verwendet zu werden.
  nur in diesem einen Dokument.
  Also so etwas wie einen dokumentspezifischen \SpecialChar LaTeX
 -Vorspann: \SpecialChar LyX
-s sogenanntes 
+' sogenanntes 
 \begin_inset Quotes gld
 \end_inset
 
@@ -8667,12 +8667,10 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Verbatim.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8685,7 +8683,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Verbatim erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -14093,7 +14090,7 @@ nicht
  die Bildschirmschrift! Die Änderung ist nur in der Ausgabe sichtbar; dies
  ist Teil des WYSIWYM Konzeptes.
  \SpecialChar LyX
-s Bildschirmschriften können im Dialog 
+' Bildschirmschriften können im Dialog 
 \family sans
 Werkzeuge\SpecialChar menuseparator
 Einstellungen
@@ -16107,7 +16104,7 @@ ren.
  die Datei mittels Konsolenbefehlen bearbeiten.
  Die \SpecialChar LaTeX
 -Datei wird automatisch in \SpecialChar LyX
-s temporärem Verzeichnis erstellt, wann
+' temporärem Verzeichnis erstellt, wann
  immer Sie Ihr Dokument ansehen oder exportieren.
 \end_layout
 
@@ -16872,7 +16869,7 @@ Andere Formate aktualisieren
 
 \begin_layout Standard
 Beim Vorschauen eines Dokuments wird die Ausgabedatei nur in \SpecialChar LyX
-s temporärem
+' temporärem
  Verzeichnis erzeugt.
  Für eine permanente Ausgabe muss das Dokument exportiert werden.
 \end_layout
@@ -18781,7 +18778,7 @@ arg   "footnote-insert"
 \end_inset
 
  Diese Box ist \SpecialChar LyX
-s Darstellung einer Fußnote.
+' Darstellung einer Fußnote.
  Klickt man mit links auf die Marke 
 \begin_inset Quotes gld
 \end_inset
@@ -25587,7 +25584,7 @@ reference "eq:tanhExp"
 
 \begin_layout Standard
 Die Eigenschaften von \SpecialChar LyX
-s Querverweis-Box sind in Abschnitt
+' Querverweis-Box sind in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -26439,7 +26436,7 @@ name "sec:Querverweise"
 
 \begin_layout Standard
 Eine von \SpecialChar LyX
-s Stärken sind Querverweise.
+' Stärken sind Querverweise.
  Sie können auf jeden Abschnitt, jedes Gleitobjekt, jede Fußnote, Formel
  und Liste im Dokument referenzieren.
  Für eine Referenz müssen Sie zuerst eine Marke in den zu referenzieren
@@ -31530,12 +31527,12 @@ thepage
 status open
 
 \begin_layout Plain Layout
-
+\SpecialChar LyX
+'
 \family sans
 \series bold
 \color red
-\SpecialChar LyX
-s Benutzerhandbuch
+ Benutzerhandbuch
 \end_layout
 
 \end_inset
@@ -32271,12 +32268,12 @@ Fußzeile
 \begin_inset space ~
 \end_inset
 
-Mitte 
+Mitte \SpecialChar LyX
+'
 \family sans
 \series bold
 \color red
-\SpecialChar LyX
-s Benutzerhandbuch
+ Benutzerhandbuch
 \family default
 \series default
 \color inherit
@@ -32874,7 +32871,7 @@ Quelltext-Panel
  Das Fenster zeigt den Quellcode des gesamten Absatzes, indem sich der Cursor
  momentan befindet.
  Man kann auch Dokumentteile in \SpecialChar LyX
-s Hauptfenster markieren, dann wird nur
+' Hauptfenster markieren, dann wird nur
  der Code der Auswahl angezeigt (wenn es mehr als ein Absatz ist).
  Um das gesamte Dokument als Quellcode anzusehen, verwendet man die entsprechend
 e Option im Quellcode-Fenster.
@@ -33579,7 +33576,7 @@ Es gibt 2
 Dateien für jede Sprache.
  Um ein Wörterbuch unter Windows zu installieren, kopiert man beide Dateien
  in \SpecialChar LyX
-s Installationsunterordner 
+' Installationsunterordner 
 \family sans
 ~
 \backslash
@@ -34231,7 +34228,7 @@ Farbe ! Änderungsverfolgung
 \end_inset
 
  Der Autor und das Datum der Änderung werden in \SpecialChar LyX
-s Statusleiste angezeigt,
+' Statusleiste angezeigt,
  wenn sich der Cursor in geändertem Text befindet.
  Die selbe Information erhalten Sie, wenn Sie den Werkzeugleistenknopf 
 \begin_inset Info
@@ -35496,7 +35493,7 @@ y
 
 \begin_layout Description
 LyXHTML HTML-Format, unter Verwendung von \SpecialChar LyX
-s internem XHTML-Konverter
+' internem XHTML-Konverter
 \end_layout
 
 \begin_layout Description
@@ -35742,7 +35739,7 @@ Fax
 \begin_layout Standard
 Dieses Menü erscheint nur, wenn ein Faxprogramm installiert ist (bei Windows
  muss zusätzlich dessen Programmpfad zu \SpecialChar LyX
-s PATH-Präfix hinzugefügt werden,
+' PATH-Präfix hinzugefügt werden,
  siehe Abschnitt
 \begin_inset space ~
 \end_inset
@@ -35766,7 +35763,7 @@ kdeprintfax
  senden.
  Das voreingestellte Format der gesendeten Datei ist PostScript.
  Das Format kann in \SpecialChar LyX
-s Grundeinstellungen, wie in Abschnitt
+' Grundeinstellungen, wie in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -36260,7 +36257,7 @@ Tabelle ist.
 
 \begin_layout Standard
 \SpecialChar LyX
-s Werkzeugleisten und ihre Knöpfe sind in Abschnitt
+' Werkzeugleisten und ihre Knöpfe sind in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -36308,7 +36305,7 @@ Hälfte
 teilen
 \family default
  teilt \SpecialChar LyX
-s Hauptfenster vertikal, 
+' Hauptfenster vertikal, 
 \family sans
 Ansicht
 \begin_inset space ~
@@ -40650,7 +40647,7 @@ Lokales
 Format
 \family default
  können Sie eine eigene Layout-Datei laden, die sich nicht in \SpecialChar LyX
-s 
+' 
 \emph on
 layouts
 \emph default
@@ -43229,7 +43226,7 @@ Mit
  Symbldesign
 \family default
  kann das Aussehen von \SpecialChar LyX
-s Werkzeugleisten geändert werden.
+' Werkzeugleisten geändert werden.
  Die derzeit verfügbaren Symboldesigns sind in 
 \begin_inset CommandInset href
 LatexCommand href
@@ -43291,7 +43288,7 @@ Mit der Option
 Aussehen und Größe von Fenstern wiederherstellen
 \family default
  wird \SpecialChar LyX
-s Hauptfenster mit der Größe und dem Aussehen geöffnet, das in der
+' Hauptfenster mit der Größe und dem Aussehen geöffnet, das in der
  letzten \SpecialChar LyX
 -Sitzung benutzt wurde.
 \end_layout
@@ -44664,7 +44661,7 @@ der
 \end_inset
 
 Benutzeroberfläche Hier kann die Sprache der \SpecialChar LyX
-s Menüs eingestellt werden.
+' Menüs eingestellt werden.
  Der aktuelle Übersetzungsstatus ist hier zu finden:
 \begin_inset Newline newline
 \end_inset
@@ -44819,7 +44816,7 @@ Standard-Dezimaltrenner Legen Sie hier den Standard-Dezimaltrenner fest,
 \begin_layout Description
 Standard-Längeneinheit Legt die Einheit fest, die als Voreinstellung für
  Längen in \SpecialChar LyX
-s Dialogen verwendet wird.
+' Dialogen verwendet wird.
 \end_layout
 
 \begin_layout Description
@@ -45508,7 +45505,7 @@ Anpassung
 
 \begin_layout Standard
 Da alle Konvertierungen von einem Format in ein anderes in \SpecialChar LyX
-s temporärem
+' temporärem
  Verzeichnis stattfinden, ist es manchmal notwendig eine Datei zu modifizieren,
  bevor sie ins temporäre Verzeichnis kopiert und dort konvertiert wird.
  Dies geschieht, indem man einen 
