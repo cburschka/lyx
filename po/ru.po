@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-07-03 12:04-0400\n"
+"POT-Creation-Date: 2015-07-23 18:04-0400\n"
 "PO-Revision-Date: 2010-04-21 02:16+0300\n"
 "Last-Translator: Sergey Tereschenko <serg.partizan@gmail.com>\n"
 "Language-Team: Russian <kruvalig@gmail.com>\n"
@@ -27355,12 +27355,12 @@ msgstr ""
 "LyX получил сообщение о серьёзной ошибке, сейчас он попытается сохранить все "
 "документы и выйти."
 
-#: src/frontends/qt4/GuiApplication.cpp:2839
-#: src/frontends/qt4/GuiApplication.cpp:2851
+#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2852
 msgid "Could not find UI definition file"
 msgstr "Не удалось найти файл определения UI"
 
-#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2841
 #, fuzzy, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -27371,11 +27371,11 @@ msgstr ""
 "%1$s.\n"
 "Проверьте вашу установку."
 
-#: src/frontends/qt4/GuiApplication.cpp:2846
+#: src/frontends/qt4/GuiApplication.cpp:2847
 msgid "Could not find default UI file"
 msgstr "На удалось найти файл UI по умолчанию"
 
-#: src/frontends/qt4/GuiApplication.cpp:2847
+#: src/frontends/qt4/GuiApplication.cpp:2848
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -27383,7 +27383,7 @@ msgstr ""
 "LyX не смог найти файл UI по умолчанию!\n"
 "Проверьте вашу установку."
 
-#: src/frontends/qt4/GuiApplication.cpp:2852
+#: src/frontends/qt4/GuiApplication.cpp:2853
 #, fuzzy, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -31671,7 +31671,7 @@ msgstr "LyX: %1$s"
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "Невозможно добавить горизонтальные линии в '%1$s'"
 
-#: src/mathed/MathMacro.cpp:909 src/mathed/MathMacro.cpp:915
+#: src/mathed/MathMacro.cpp:903 src/mathed/MathMacro.cpp:909
 #, fuzzy, c-format
 msgid "Macro: %1$s"
 msgstr " Макрокоманда: %1$s: "

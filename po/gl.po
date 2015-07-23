@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-07-03 12:04-0400\n"
+"POT-Creation-Date: 2015-07-23 18:04-0400\n"
 "PO-Revision-Date: 2007-07-11 18:31+0100\n"
 "Last-Translator: Ramon Flores <fa2ramon@usc.es>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -27279,13 +27279,13 @@ msgid ""
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:2839
-#: src/frontends/qt4/GuiApplication.cpp:2851
+#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2852
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Non foi posíbel ler ficheiro de configuración"
 
-#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2841
 #, fuzzy, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -27296,12 +27296,12 @@ msgstr ""
 "%1$s.\n"
 "Comprobe a sua instalación."
 
-#: src/frontends/qt4/GuiApplication.cpp:2846
+#: src/frontends/qt4/GuiApplication.cpp:2847
 #, fuzzy
 msgid "Could not find default UI file"
 msgstr "Non foi posíbel ler ficheiro de configuración"
 
-#: src/frontends/qt4/GuiApplication.cpp:2847
+#: src/frontends/qt4/GuiApplication.cpp:2848
 #, fuzzy
 msgid ""
 "LyX could not find the default UI file!\n"
@@ -27311,7 +27311,7 @@ msgstr ""
 "%1$s.\n"
 "Comprobe a sua instalación."
 
-#: src/frontends/qt4/GuiApplication.cpp:2852
+#: src/frontends/qt4/GuiApplication.cpp:2853
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -31665,7 +31665,7 @@ msgstr "LyX: %1$s"
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "Non é posíbel engadir liñas de cuadrícula horizontal en '%1$s'"
 
-#: src/mathed/MathMacro.cpp:909 src/mathed/MathMacro.cpp:915
+#: src/mathed/MathMacro.cpp:903 src/mathed/MathMacro.cpp:909
 #, fuzzy, c-format
 msgid "Macro: %1$s"
 msgstr " Macro: %1$s: "

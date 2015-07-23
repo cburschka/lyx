@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.0.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-07-03 12:04-0400\n"
+"POT-Creation-Date: 2015-07-23 18:04-0400\n"
 "PO-Revision-Date: 2014-08-29 23:13+0100\n"
 "Last-Translator: Manveru <michal.fita@gmail.com>\n"
 "Language-Team: http://localize.drupal.org/\n"
@@ -26322,12 +26322,12 @@ msgstr ""
 "LyX uchwycił jakiś wyjątkowo zakręcony wyjątek, nastąpi teraz próba "
 "zapisania wszystkich niezapisanych dokumentów, następnie wyjścia."
 
-#: src/frontends/qt4/GuiApplication.cpp:2839
-#: src/frontends/qt4/GuiApplication.cpp:2851
+#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2852
 msgid "Could not find UI definition file"
 msgstr "Nie można odnaleźć pliku definicji UI"
 
-#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2841
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -26338,11 +26338,11 @@ msgstr ""
 "%1$s.\n"
 "Proszę sprawdzić swoją instalację."
 
-#: src/frontends/qt4/GuiApplication.cpp:2846
+#: src/frontends/qt4/GuiApplication.cpp:2847
 msgid "Could not find default UI file"
 msgstr "Nie można odnaleźć domyślnego pliku UI"
 
-#: src/frontends/qt4/GuiApplication.cpp:2847
+#: src/frontends/qt4/GuiApplication.cpp:2848
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -26350,7 +26350,7 @@ msgstr ""
 "LyX nie mógł odnaleźć domyślnego pliku interfejsu użytkownika!\n"
 "Proszę sprawdzić swoją instalację."
 
-#: src/frontends/qt4/GuiApplication.cpp:2852
+#: src/frontends/qt4/GuiApplication.cpp:2853
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -30459,7 +30459,7 @@ msgstr "Podgląd %1$s"
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "Nie można zmienić poziomego wyrównania w '%1$s'"
 
-#: src/mathed/MathMacro.cpp:909 src/mathed/MathMacro.cpp:915
+#: src/mathed/MathMacro.cpp:903 src/mathed/MathMacro.cpp:909
 #, fuzzy, c-format
 msgid "Macro: %1$s"
 msgstr "Makro:  %1$s: "

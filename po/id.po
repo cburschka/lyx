@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-07-03 12:04-0400\n"
+"POT-Creation-Date: 2015-07-23 18:04-0400\n"
 "PO-Revision-Date: 2014-03-28 00:38+0100\n"
 "Last-Translator: Waluyo Adi Siswanto <was.uthm@gmail.com>\n"
 "Language-Team: Indonesian <was.uthm@gmail.com>\n"
@@ -26399,12 +26399,12 @@ msgstr ""
 "LyX teleh mendeteksi hal yang sangat tidak wajar,sekarang akan menyimpan "
 "perubahan kemudian keluart."
 
-#: src/frontends/qt4/GuiApplication.cpp:2839
-#: src/frontends/qt4/GuiApplication.cpp:2851
+#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2852
 msgid "Could not find UI definition file"
 msgstr "Tidak bisa menemukan berkas definisi UI"
 
-#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2841
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -26415,11 +26415,11 @@ msgstr ""
 "%1$s.\n"
 "Periksa kesempurnaan instalasi."
 
-#: src/frontends/qt4/GuiApplication.cpp:2846
+#: src/frontends/qt4/GuiApplication.cpp:2847
 msgid "Could not find default UI file"
 msgstr "Tidak bisa menemukan berkas UI bawaan"
 
-#: src/frontends/qt4/GuiApplication.cpp:2847
+#: src/frontends/qt4/GuiApplication.cpp:2848
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -26427,7 +26427,7 @@ msgstr ""
 "LyX tidak bisa menemukan berkas UI bawaan!\n"
 "Periksa kesempurnaan instalasi."
 
-#: src/frontends/qt4/GuiApplication.cpp:2852
+#: src/frontends/qt4/GuiApplication.cpp:2853
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -30563,7 +30563,7 @@ msgstr "Tampilkan %1$s"
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "Tidak bisa merubah perataan horisontal di  '%1$s'"
 
-#: src/mathed/MathMacro.cpp:909 src/mathed/MathMacro.cpp:915
+#: src/mathed/MathMacro.cpp:903 src/mathed/MathMacro.cpp:909
 #, fuzzy, c-format
 msgid "Macro: %1$s"
 msgstr " Makro: %1$s: "

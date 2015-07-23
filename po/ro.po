@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-07-03 12:04-0400\n"
+"POT-Creation-Date: 2015-07-23 18:04-0400\n"
 "PO-Revision-Date: 2011-04-26 10:58-0400\n"
 "Last-Translator: Marius Ionescu <felijohn@gmail.com>\n"
 "Language-Team: Romanian <ro-kde@yahoogroups.com>\n"
@@ -26960,13 +26960,13 @@ msgid ""
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:2839
-#: src/frontends/qt4/GuiApplication.cpp:2851
+#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2852
 #, fuzzy
 msgid "Could not find UI definition file"
 msgstr "Listă de slide-uri"
 
-#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2841
 #, fuzzy, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -26977,12 +26977,12 @@ msgstr ""
 "%1$s.\n"
 "Te rog verifică instalarea."
 
-#: src/frontends/qt4/GuiApplication.cpp:2846
+#: src/frontends/qt4/GuiApplication.cpp:2847
 #, fuzzy
 msgid "Could not find default UI file"
 msgstr "Listă de slide-uri"
 
-#: src/frontends/qt4/GuiApplication.cpp:2847
+#: src/frontends/qt4/GuiApplication.cpp:2848
 #, fuzzy
 msgid ""
 "LyX could not find the default UI file!\n"
@@ -26992,7 +26992,7 @@ msgstr ""
 "%1$s.\n"
 "Te rog verifică instalarea."
 
-#: src/frontends/qt4/GuiApplication.cpp:2852
+#: src/frontends/qt4/GuiApplication.cpp:2853
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -31416,7 +31416,7 @@ msgstr "Vizualizează DVI"
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "Aliniere orizontală în coloană"
 
-#: src/mathed/MathMacro.cpp:909 src/mathed/MathMacro.cpp:915
+#: src/mathed/MathMacro.cpp:903 src/mathed/MathMacro.cpp:909
 #, fuzzy, c-format
 msgid "Macro: %1$s"
 msgstr " Macro: %s: "

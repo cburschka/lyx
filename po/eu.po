@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_2.0.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-07-03 12:04-0400\n"
+"POT-Creation-Date: 2015-07-23 18:04-0400\n"
 "PO-Revision-Date: 2012-06-21 12:33+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -26593,12 +26593,12 @@ msgstr ""
 "LyX-ek nolabaiteko salbuespen bitxia antzeman du. gorde gabeko dokumentu "
 "guztiak gordetzen saiatuko da eta irten egingo da."
 
-#: src/frontends/qt4/GuiApplication.cpp:2839
-#: src/frontends/qt4/GuiApplication.cpp:2851
+#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2852
 msgid "Could not find UI definition file"
 msgstr "Ezin izan da interfazeko definizioen fitxategia aurkitu"
 
-#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2841
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -26609,11 +26609,11 @@ msgstr ""
 "%1$s.\n"
 "Egiaztatu instalazioa."
 
-#: src/frontends/qt4/GuiApplication.cpp:2846
+#: src/frontends/qt4/GuiApplication.cpp:2847
 msgid "Could not find default UI file"
 msgstr "Ezin izan da interfazeko fitxategi lehenetsia irakurri"
 
-#: src/frontends/qt4/GuiApplication.cpp:2847
+#: src/frontends/qt4/GuiApplication.cpp:2848
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -26621,7 +26621,7 @@ msgstr ""
 "LyX-ek ezin izan du interfazeko fitxategi lehenetsia aurkitu.\n"
 "Egiaztatu instalazioa."
 
-#: src/frontends/qt4/GuiApplication.cpp:2852
+#: src/frontends/qt4/GuiApplication.cpp:2853
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -30754,7 +30754,7 @@ msgstr "Ikusi %1$s"
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "Ezin da lerrokadura horizontalik aldatu '%1$s'(e)n"
 
-#: src/mathed/MathMacro.cpp:909 src/mathed/MathMacro.cpp:915
+#: src/mathed/MathMacro.cpp:903 src/mathed/MathMacro.cpp:909
 #, fuzzy, c-format
 msgid "Macro: %1$s"
 msgstr " Makroa: %1$s: "

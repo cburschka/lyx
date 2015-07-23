@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR 2.1.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-07-03 12:04-0400\n"
+"POT-Creation-Date: 2015-07-23 18:04-0400\n"
 "PO-Revision-Date: 2015-07-05 09:38-0300\n"
 "Last-Translator: Georger Araujo <georger underscore br pound yahoo dot com "
 "dot br>\n"
@@ -327,8 +327,8 @@ msgstr "Nenhum"
 msgid ""
 "Enter the command to load the language package (default: \\usepackage{babel})"
 msgstr ""
-"Digite o comando para carregar o pacote de idioma (padrão: \\usepackage"
-"{babel})"
+"Digite o comando para carregar o pacote de idioma (padrão: "
+"\\usepackage{babel})"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:87
 msgid "Command s&tart:"
@@ -13396,9 +13396,9 @@ msgid ""
 "it depends on R >= 2.14.1. For more info see http://yihui.name/knitr"
 msgstr ""
 "Usa o pacote knitr do R para gerar relatórios dinamicamente. Este pacote do "
-"R deve ser instalado para que o módule possa funcionar: install.packages"
-"('knitr'). Nota: exige R >= 2.14.1. Para maiores informações, consulte "
-"http://yihui.name/knitr"
+"R deve ser instalado para que o módule possa funcionar: install."
+"packages('knitr'). Nota: exige R >= 2.14.1. Para maiores informações, "
+"consulte http://yihui.name/knitr"
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:6
@@ -24684,11 +24684,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:3283
 msgid ""
-"The LaTeX command for loading the language package. E.g. \"\\usepackage"
-"{babel}\", \"\\usepackage{omega}\"."
+"The LaTeX command for loading the language package. E.g. "
+"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"Comando LaTeX para carregar o pacote de idioma. P.ex., \"\\usepackage"
-"{babel}\", \"\\usepackage{omega}\"."
+"Comando LaTeX para carregar o pacote de idioma. P.ex., "
+"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 
 #: src/LyXRC.cpp:3287
 msgid ""
@@ -25955,13 +25955,13 @@ msgstr ""
 "O Lyx encontrou uma exceção muito estranha, e tentará agora salvar todos os "
 "documentos que ainda não foram salvos e encerrar."
 
-#: src/frontends/qt4/GuiApplication.cpp:2839
-#: src/frontends/qt4/GuiApplication.cpp:2851
+#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2852
 msgid "Could not find UI definition file"
 msgstr ""
 "Não foi possível encontrar arquivo de definição de Interface de Usuário"
 
-#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2841
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -25972,13 +25972,13 @@ msgstr ""
 "%1$s\n"
 "Verifique sua instalação."
 
-#: src/frontends/qt4/GuiApplication.cpp:2846
+#: src/frontends/qt4/GuiApplication.cpp:2847
 msgid "Could not find default UI file"
 msgstr ""
 "Não foi possível encontrar arquivo padrão de definição de Interface de "
 "Usuário"
 
-#: src/frontends/qt4/GuiApplication.cpp:2847
+#: src/frontends/qt4/GuiApplication.cpp:2848
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -25987,7 +25987,7 @@ msgstr ""
 "Usuário!\n"
 "Verifique sua instalação."
 
-#: src/frontends/qt4/GuiApplication.cpp:2852
+#: src/frontends/qt4/GuiApplication.cpp:2853
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -30098,7 +30098,7 @@ msgstr "Tamanho: %1$s"
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "Não é possível alterar alinhamento horizontal em '%1$s'"
 
-#: src/mathed/MathMacro.cpp:909 src/mathed/MathMacro.cpp:915
+#: src/mathed/MathMacro.cpp:903 src/mathed/MathMacro.cpp:909
 #, c-format
 msgid "Macro: %1$s"
 msgstr "Macro: %1$s"

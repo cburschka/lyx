@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-07-03 12:04-0400\n"
+"POT-Creation-Date: 2015-07-23 18:04-0400\n"
 "PO-Revision-Date: 2011-04-26 21:20+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -26724,12 +26724,12 @@ msgstr ""
 "A LyX elkapott egy nagyon durva kivételt, meg fogja próbálni menteni a még "
 "mentetlen dokumentumokat és ki fog lépni."
 
-#: src/frontends/qt4/GuiApplication.cpp:2839
-#: src/frontends/qt4/GuiApplication.cpp:2851
+#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2852
 msgid "Could not find UI definition file"
 msgstr "Nem találom az UI definíciós fájlt"
 
-#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2841
 #, fuzzy, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -26740,11 +26740,11 @@ msgstr ""
 "include fájl olvasása közben.\n"
 "Ellenőrizze a program beállításait."
 
-#: src/frontends/qt4/GuiApplication.cpp:2846
+#: src/frontends/qt4/GuiApplication.cpp:2847
 msgid "Could not find default UI file"
 msgstr "Nem találom az alapértelmezett UI fájlt"
 
-#: src/frontends/qt4/GuiApplication.cpp:2847
+#: src/frontends/qt4/GuiApplication.cpp:2848
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -26752,7 +26752,7 @@ msgstr ""
 "A LyX nem találja az alapértelmezett UI fájlt!\n"
 "Ellenőrizze a program telepítettségét."
 
-#: src/frontends/qt4/GuiApplication.cpp:2852
+#: src/frontends/qt4/GuiApplication.cpp:2853
 #, fuzzy, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -30964,7 +30964,7 @@ msgstr "LyX: %1$s"
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "Nem tudok vízszintes rácsvonalat adni '%1$s'-hoz"
 
-#: src/mathed/MathMacro.cpp:909 src/mathed/MathMacro.cpp:915
+#: src/mathed/MathMacro.cpp:903 src/mathed/MathMacro.cpp:909
 #, fuzzy, c-format
 msgid "Macro: %1$s"
 msgstr " Makró: %1$s: "

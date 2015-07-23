@@ -72,7 +72,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-07-03 12:04-0400\n"
+"POT-Creation-Date: 2015-07-23 18:04-0400\n"
 "PO-Revision-Date: 2015-04-24 16:34+0200\n"
 "Last-Translator: Jari-Matti Mäkelä <jmjm@iki.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -26589,12 +26589,12 @@ msgid ""
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:2839
-#: src/frontends/qt4/GuiApplication.cpp:2851
+#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2852
 msgid "Could not find UI definition file"
 msgstr "Käyttöliittymän määritystiedostoa ei löytynyt"
 
-#: src/frontends/qt4/GuiApplication.cpp:2840
+#: src/frontends/qt4/GuiApplication.cpp:2841
 #, fuzzy, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -26604,11 +26604,11 @@ msgstr ""
 "Virhe asetustiedostoa %1$s lukiessa.\n"
 "Tarkista installaatiosi."
 
-#: src/frontends/qt4/GuiApplication.cpp:2846
+#: src/frontends/qt4/GuiApplication.cpp:2847
 msgid "Could not find default UI file"
 msgstr "Käyttöliittymän oletusmääritystiedostoa ei löytynyt"
 
-#: src/frontends/qt4/GuiApplication.cpp:2847
+#: src/frontends/qt4/GuiApplication.cpp:2848
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -26616,7 +26616,7 @@ msgstr ""
 "Käyttöliittymän oletusmääritystiedostoa ei löytynyt!\n"
 "Tarkista LyX:n asennus."
 
-#: src/frontends/qt4/GuiApplication.cpp:2852
+#: src/frontends/qt4/GuiApplication.cpp:2853
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -30762,7 +30762,7 @@ msgstr "Näytä %1$s"
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "En voi lisätä vaakaviivat kohteeseen '%1$s'"
 
-#: src/mathed/MathMacro.cpp:909 src/mathed/MathMacro.cpp:915
+#: src/mathed/MathMacro.cpp:903 src/mathed/MathMacro.cpp:909
 #, fuzzy, c-format
 msgid "Macro: %1$s"
 msgstr " Makro: %1$s: "
