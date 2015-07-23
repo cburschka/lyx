@@ -404,7 +404,8 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 	++cit_brk;
 	while (cit_brk != beg) {
 		--cit_brk;
-		Element & brk = *cit_brk;
+		// make a copy of the element to work on it.
+		Element brk = *cit_brk;
 		wid_brk -= brk.dim.wid;
 		if (brk.countSeparators() == 0 || brk.pos < keep)
 			continue;
@@ -415,6 +416,15 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 		 *   break-up.
 		 */
 		if (brk.breakAt(min(w - wid_brk, brk.dim.wid - 2), false)) {
+			/* if this element originally did not cause a row overflow
+			 * in itself, and the remainder of the row would still be
+			 * too large after breaking, then we will have issues in
+			 * next row. Thus breaking does not help.
+			 */
+			if (wid_brk + cit_brk->dim.wid < w
+			    && dim_.wid - (wid_brk + brk.dim.wid) >= w) {
+				break;
+			}
 			end_ = brk.endpos;
 			/* after breakAt, there may be spaces at the end of the
 			 * string, but they are not counted in the string length
@@ -424,6 +434,7 @@ void Row::shortenIfNeeded(pos_type const keep, int const w)
 			 */
 			brk.str = rtrim(brk.str);
 			brk.endpos = brk.pos + brk.str.length();
+			*cit_brk = brk;
 			dim_.wid = wid_brk + brk.dim.wid;
 			// If there are other elements, they should be removed.
 			elements_.erase(cit_brk + 1, end);
