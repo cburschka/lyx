@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 496
+\lyxformat 497
 \begin_document
 \begin_header
 \origin /systemlyxdir/doc/
@@ -342,8 +342,7 @@ The latest PDF-version of this document can be found here:
 
 
 \series bold
-http://wiki.lyx.org/\SpecialChar LyX
-/DocumentationDevelopment#EmbeddedObjects
+http://wiki.lyx.org/LyX/DocumentationDevelopment#EmbeddedObjects
 \end_layout
 
 \end_inset
@@ -566,8 +565,7 @@ box
 \begin_layout Description
 
 \family sans
-\SpecialChar LaTeX
-
+LaTeX
 \begin_inset space ~
 \end_inset
 
@@ -575,8 +573,7 @@ and
 \begin_inset space ~
 \end_inset
 
-\SpecialChar LyX
-
+LyX
 \begin_inset space ~
 \end_inset
 
@@ -5607,7 +5604,7 @@ or
 LTright
 \series default
  by inserting this line as \SpecialChar TeX
--Code before the longtable:
+ Code before the longtable:
 \end_layout
 
 \begin_layout Standard
@@ -6394,7 +6391,7 @@ Table
 
 2.1 in the list of tables if there are two longtables without captions.
  To avoid this you can add the following command in \SpecialChar TeX
--Code after every longtable
+ Code after every longtable
  without a caption:
 \end_layout
 
@@ -6892,7 +6889,7 @@ LTcapwidth
 in.
  To change it add the following command to your document preamble or as
  \SpecialChar TeX
--Code into your document before the longtable that should be affected
+ Code into your document before the longtable that should be affected
 \end_layout
 
 \begin_layout Standard
@@ -9738,7 +9735,7 @@ By default tables are only broken between rows.
 \end_inset
 
  as \SpecialChar TeX
--Code at the point of the cell where it can be broken.
+ Code at the point of the cell where it can be broken.
  Before the 
 \series bold
 
@@ -9748,7 +9745,7 @@ By default tables are only broken between rows.
 
 \series default
  command you have to insert in \SpecialChar TeX
--Code as many 
+ Code as many 
 \begin_inset Quotes eld
 \end_inset
 
@@ -9767,7 +9764,7 @@ By default tables are only broken between rows.
 \series default
  is the character to separate table cells.
  Write in \SpecialChar TeX
--Code after each 
+ Code after each 
 \series bold
 &
 \series default
@@ -9803,7 +9800,7 @@ reference "tab:ForcedPagebreak"
  the cell that should be broken is in the second column followed by another
  column.
  Therefore the following command was inserted in the cell as \SpecialChar TeX
--Code after
+ Code after
  
 \begin_inset Quotes eld
 \end_inset
@@ -9890,7 +9887,7 @@ parfillskip}{0pt}
 
 \begin_layout Standard
 must be inserted as \SpecialChar TeX
--Code at the beginning of the cell.
+ Code at the beginning of the cell.
  This ensures that the part of the cell that will be displayed on the new
  page appears with the full width.
 \begin_inset Separator parbreak
@@ -12634,7 +12631,7 @@ in the document preamble.
  Then all entries of multirow cells in the document are centered.
  If centering is only needed for several tables, you can renew the command
  in a \SpecialChar TeX
--Code box just before the table instead of the preamble.
+ Code box just before the table instead of the preamble.
  If the text should be right-aligned, replace 
 \series bold
 
@@ -12951,7 +12948,7 @@ To tell the reader what is meant by column and row headings in a table,
  it is helpful to split the first cell of the table by one or two diagonal
  lines.
  This can be achieved by loading the \SpecialChar LaTeX
--package 
+ package 
 \series bold
 diagbox
 \series default
@@ -12974,7 +12971,7 @@ status collapsed
 diagbox
 \series default
  that is inserted as \SpecialChar TeX
--Code and that can take 2 or 3
+ Code and that can take 2 or 3
 \begin_inset space ~
 \end_inset
 
@@ -14112,7 +14109,7 @@ diagbox
 \series default
  so one needs to create a new length which can be used later.
  This is done with the \SpecialChar TeX
--Code commands
+ Code commands
 \end_layout
 
 \begin_layout Standard
@@ -15355,7 +15352,7 @@ cmidrule
 \series default
  are currently not supported by \SpecialChar LyX
  so you have to use \SpecialChar TeX
--Code to be able to
+ Code to be able to
  use them.
  
 \series bold
@@ -15364,7 +15361,7 @@ cmidrule
 cmidrule
 \series default
 s can manually be created by inserting the command as \SpecialChar TeX
--Code as the first
+ Code as the first
  cell entry of the first cell of a row.
  The line is then drawn in the output above the current row.
 \end_layout
@@ -15501,7 +15498,7 @@ reference "tab:Special-booktabs-table"
 
 .
  This can be achieved with the \SpecialChar TeX
--Code command
+ Code command
 \end_layout
 
 \begin_layout Standard
@@ -16805,7 +16802,7 @@ reference "subsec:Vertical-Alignment"
 .
  In the example above the second table in the first item is aligned using
  the \SpecialChar TeX
--Code-command
+ Code command
 \end_layout
 
 \begin_layout Standard
@@ -16825,7 +16822,7 @@ before the box.
 }
 \series default
  is inserted as \SpecialChar TeX
--Code.
+ Code.
  For the second table in the last item the command
 \end_layout
 
@@ -17417,7 +17414,7 @@ cellcolor{name of color}
 
 \begin_layout Standard
 Both commands are inserted at the beginning of a cell as \SpecialChar TeX
--Code.
+ Code.
 \end_layout
 
 \begin_layout Standard
@@ -17431,10 +17428,10 @@ Style
 \family default
  dialog.
  If a cell contains \SpecialChar TeX
--Code mark only the characters, otherwise the colored
+ Code mark only the characters, otherwise the colored
  \SpecialChar TeX
--Code will cause \SpecialChar LaTeX
--errors.
+ Code will cause \SpecialChar LaTeX
+ errors.
 \end_layout
 
 \begin_layout Standard
@@ -17495,7 +17492,7 @@ centering}c
 as \SpecialChar LaTeX
 -argument for this column.
  The first row should be light blue, therefore the \SpecialChar TeX
--Code command
+ Code command
 \end_layout
 
 \begin_layout Standard
@@ -17510,7 +17507,7 @@ rowcolor{cyan}
 is inserted to the first cell of this row.
  Note that this overwrites the column color for the first cell.
  The last cell of the last row is colored maroon by inserting the \SpecialChar TeX
--Code
+ Code
  command
 \end_layout
 
@@ -17918,7 +17915,7 @@ rowcolors[commands]{row number}{odd row color}{even row color}
 
 \begin_layout Standard
 that is either inserted in the document preamble or as \SpecialChar TeX
--Code before the
+ Code before the
  first table to be colored.
  row
 \begin_inset space ~
@@ -18724,7 +18721,7 @@ reference "tab:Table-with-horizontal-colored"
 \end_inset
 
 , insert these commands in \SpecialChar TeX
--Code before the table or table float:
+ Code before the table or table float:
 \end_layout
 
 \begin_layout Standard
@@ -18943,7 +18940,7 @@ sd
 
 \begin_layout Standard
 To return to the default line color black, insert this command in \SpecialChar TeX
--Code
+ Code
  after the table or table float:
 \end_layout
 
@@ -20235,7 +20232,7 @@ If you are using font sizes larger than the normal size, the table borders
 strut
 \series default
  in \SpecialChar TeX
--Code at the beginning of a table row.
+ Code at the beginning of a table row.
  Table
 \begin_inset space ~
 \end_inset
@@ -21804,7 +21801,7 @@ arrayrulewidth}{1.5pt}
 
 \begin_layout Standard
 in \SpecialChar TeX
--Code before the table or table float.
+ Code before the table or table float.
  The changed thickness is valid for all subsequent tables.
  To use the default value again, set 
 \series bold
@@ -21817,7 +21814,7 @@ arrayrulewidth
 \end_inset
 
 pt in \SpecialChar TeX
--Code after the table or table float.
+ Code after the table or table float.
 \end_layout
 
 \begin_layout Standard
@@ -22005,7 +22002,7 @@ reference "tab:Table-with-horizontal"
 \end_inset
 
 , insert these commands in \SpecialChar TeX
--Code before the table or table float:
+ Code before the table or table float:
 \end_layout
 
 \begin_layout Standard
@@ -22052,7 +22049,7 @@ arrayrulewidth 0.4pt}}
 
 \begin_layout Standard
 To return to the default line thickness, insert this command in \SpecialChar TeX
--Code after
+ Code after
  the table or table float:
 \end_layout
 
@@ -22828,9 +22825,9 @@ x
 \begin_layout Standard
 \SpecialChar LyX
  does not natively support dashed lines, so you have to use \SpecialChar TeX
--Code.
+ Code.
  As a prerequisite the \SpecialChar LaTeX
--package 
+ package 
 \series bold
 arydshln
 \series default
@@ -22866,7 +22863,7 @@ To make a vertical line dashed, enter the colon
 \end_inset
 
  together with the character for the horizontal alignment as \SpecialChar LaTeX
--argument in
+ argument in
  the table cell dialog.
 \end_layout
 
@@ -22884,7 +22881,7 @@ hdashline
 
 \begin_layout Standard
 in \SpecialChar TeX
--Code as first element of the first cell in the table row.
+ Code as first element of the first cell in the table row.
 \end_layout
 
 \begin_layout Standard
@@ -22903,7 +22900,7 @@ cdashline{line number
 
 \begin_layout Standard
 in \SpecialChar TeX
--Code as the first element of the first cell in the table row.
+ Code as the first element of the first cell in the table row.
  If you have for example a multicolumn spanning columns 2 to 4 and you want
  to have a dashed line above, add the command
 \end_layout
@@ -22952,16 +22949,16 @@ reference "tab:Table-with-dashed"
 \end_inset
 
  as \SpecialChar LaTeX
--argument of the third column.
+ argument of the third column.
  The \SpecialChar TeX
--Code command 
+ Code command 
 \series bold
 
 \backslash
 hdashline
 \series default
  was inserted in the first cell of the third row and the \SpecialChar TeX
--Code command
+ Code command
 \begin_inset Newline newline
 \end_inset
 
@@ -23735,7 +23732,7 @@ arrayrulecolor{black}}
 \begin_layout Standard
 To get back the black line color, one needs to insert the following commands
  as \SpecialChar TeX
--Code behind the table:
+ Code behind the table:
 \end_layout
 
 \begin_layout Standard
@@ -23792,7 +23789,7 @@ dashgapcolor{color}
 
 \begin_layout Standard
 can be used in front of a table as \SpecialChar TeX
--Code.
+ Code.
  color is hereby the name of a defined color.
  The command
 \end_layout
@@ -24107,7 +24104,7 @@ reference "sec:Caption-Placement"
 
 .
  To keep your \SpecialChar LyX
--document readable, you can open and close the float box by
+ document readable, you can open and close the float box by
  left-clicking on the box label.
  A closed float box looks like this: 
 \begin_inset Graphics
@@ -24263,7 +24260,7 @@ reference "cha:Program-Code-Listings"
  A possible environment for algorithms is the 
 \family sans
 \SpecialChar LyX
--Code
+ Code
 \family default
 , described in \SpecialChar LyX
 's 
@@ -24352,7 +24349,7 @@ List of Algorithms
  when your document has the same language as \SpecialChar LyX
 's menu names.
  In other cases use this command in \SpecialChar TeX
--Code instead:
+ Code instead:
 \end_layout
 
 \begin_layout Standard
@@ -24679,7 +24676,7 @@ arg   "dialog-show-new-inset ref"
 .
  The cross-reference window appears showing all labels of the document.
  If you have multiple \SpecialChar LyX
--documents opened, choose the one you are working
+ documents opened, choose the one you are working
  on from the drop-list at the top of the dialog.
  You can now sort the labels alphabetically and then choose one.
  A grey cross-reference box like this one: 
@@ -26035,7 +26032,7 @@ ss
 \end_inset
 
  in \SpecialChar TeX
--Code instead of 
+ Code instead of 
 \begin_inset Quotes eld
 \end_inset
 
@@ -28455,7 +28452,7 @@ FigBesBeg
 
 \begin_layout Standard
 in \SpecialChar TeX
--Code before the float.
+ Code before the float.
  And insert the command
 \end_layout
 
@@ -28469,7 +28466,7 @@ FigBesEnd
 
 \begin_layout Standard
 in \SpecialChar TeX
--Code at the point where you want to get back to the original float definitio
+ Code at the point where you want to get back to the original float definitio
 n.
 \end_layout
 
@@ -28533,7 +28530,7 @@ sidecaptionvpos{float type}{placement}
 
 \begin_layout Standard
 in the document preamble or in \SpecialChar TeX
--Code before the float.
+ Code before the float.
  The float type is either 
 \family sans
 figure
@@ -30084,9 +30081,9 @@ Footnotes in tables are not printed by \SpecialChar LaTeX
 footnotemark{}
 \series default
  is inserted as \SpecialChar TeX
--code.
+ code.
  The text of the footnote is entered as an argument of the \SpecialChar TeX
--code command
+ code command
  
 \series bold
 
@@ -30336,7 +30333,7 @@ To refer to the same footnote several times without printing the footnote
 footnotemark[number]
 \series default
  in \SpecialChar TeX
--code.
+ code.
 \begin_inset Newline newline
 \end_inset
 
@@ -30344,7 +30341,7 @@ As you do not know the number of the repeating footnote while you are writing
  the text, you have to store its number.
  For the following footnote mark example, these commands were inserted in
  \SpecialChar TeX
--code after Footnote
+ code after Footnote
 \begin_inset space ~
 \end_inset
 
@@ -31146,7 +31143,7 @@ theendnotes
 
 \begin_layout Standard
 in \SpecialChar TeX
--Code at the end of a section or chapter.
+ Code at the end of a section or chapter.
 \end_layout
 
 \begin_layout Standard
@@ -31498,7 +31495,7 @@ reversemarginpar
 
 \begin_layout Standard
 in \SpecialChar TeX
--Code before a margin note.
+ Code before a margin note.
  The new placement is valid for all subsequent margin notes.
  
 \begin_inset ERT
@@ -31563,7 +31560,7 @@ normalmarginpar
 
 \begin_layout Standard
 in \SpecialChar TeX
--Code.
+ Code.
 \begin_inset ERT
 status collapsed
 
@@ -31775,7 +31772,7 @@ marginnote
  or for a better page layout.
  The offset is set in \SpecialChar LyX
  as \SpecialChar TeX
--Code directly after the margin note in the scheme
+ Code directly after the margin note in the scheme
 \end_layout
 
 \begin_layout Standard
@@ -31806,7 +31803,7 @@ For example the margin note beside this text line is shifted up 1.5
 \end_inset
 
 cm with the \SpecialChar TeX
--Code-command 
+ Code command 
 \begin_inset Quotes eld
 \end_inset
 
@@ -33825,7 +33822,7 @@ reference "sec:Colored-Boxes"
 
  For example the appearance of the following shaded background box is set
  with the \SpecialChar TeX
--Code command
+ Code command
 \end_layout
 
 \begin_layout Standard
@@ -34347,7 +34344,7 @@ You can alternatively set the command
 \end_inset
 
  as \SpecialChar TeX
--Code directly before the word:
+ Code directly before the word:
 \end_layout
 
 \begin_layout Standard
@@ -34542,7 +34539,7 @@ depth}{
 
 \begin_layout Standard
 in \SpecialChar TeX
--Code before the word.
+ Code before the word.
  After the word insert a closing brace 
 \begin_inset Quotes eld
 \end_inset
@@ -34556,7 +34553,7 @@ in \SpecialChar TeX
 \end_inset
 
  in \SpecialChar TeX
--Code.
+ Code.
 \begin_inset Newline newline
 \end_inset
 
@@ -34978,7 +34975,7 @@ colorbox{darkgreen}{
 
 \begin_layout Standard
 before the word in \SpecialChar TeX
--Code.
+ Code.
  After the word insert a closing brace 
 \begin_inset Quotes eld
 \end_inset
@@ -34992,7 +34989,7 @@ before the word in \SpecialChar TeX
 \end_inset
 
  in \SpecialChar TeX
--Code.
+ Code.
 \begin_inset Newline newline
 \end_inset
 
@@ -35174,7 +35171,7 @@ To rotate material, you can put it into a rotated box.
 rotatebox
 \series default
  in \SpecialChar TeX
--Code with the following scheme:
+ Code with the following scheme:
 \end_layout
 
 \begin_layout Standard
@@ -35235,7 +35232,7 @@ In the following example the command
 rotatebox[origin=c]{60}{
 \series default
  was inserted as \SpecialChar TeX
--Code before the text 
+ Code before the text 
 \begin_inset Quotes eld
 \end_inset
 
@@ -35248,7 +35245,7 @@ with rotated
 }
 \series default
  in \SpecialChar TeX
--Code.
+ Code.
 \end_layout
 
 \begin_layout Standard
@@ -35536,7 +35533,7 @@ scalebox
 resizebox
 \series default
  can be used as \SpecialChar TeX
--Code.
+ Code.
 \end_layout
 
 \begin_layout Standard
@@ -37291,7 +37288,7 @@ begin{window}[2,c,{
 
 \begin_layout Standard
 as \SpecialChar TeX
--Code at the beginning of the paragraph.
+ Code at the beginning of the paragraph.
  The first parameter in the bracket, here '2', defines the number of lines
  above the object, the second, here 'c', the position of the object.
  The positions 'l', 'c' and 'r' (for left, center, right) are possible.
@@ -37954,8 +37951,7 @@ File
 \end_layout
 
 \begin_layout Description
-\SpecialChar LyX
-
+LyX
 \begin_inset space ~
 \end_inset
 
@@ -38004,7 +38000,7 @@ Child
 
 Document \SpecialChar LyX
  or \SpecialChar LaTeX
--documents.
+ documents.
 \end_layout
 
 \begin_layout Section
@@ -38134,7 +38130,7 @@ Date
 today
 \series default
  as \SpecialChar TeX
--Code.
+ Code.
  The different methods are compared in Table
 \begin_inset space ~
 \end_inset
@@ -38266,9 +38262,7 @@ Option
 \family default
  field in the 
 \family sans
-\SpecialChar LaTeX
- and \SpecialChar LyX
- options
+LaTeX and LyX options
 \family default
  tab.
  The argument of this option is a comma separated list, containing page
@@ -38398,7 +38392,7 @@ Beamer
 EndFrame
 \family default
  environment and in a subsequent paragraph a \SpecialChar TeX
--Code box containing the command
+ Code box containing the command
  
 \series bold
 
@@ -38598,7 +38592,7 @@ as date
 
 \begin_layout Plain Layout
 as \SpecialChar TeX
--Code inset box
+ Code inset box
 \end_layout
 
 \end_inset
@@ -38721,14 +38715,11 @@ External material is displayed in \SpecialChar LyX
 
  or as image, depending on the option 
 \family sans
-Show in \SpecialChar LyX
-
+Show in LyX
 \family default
  in the 
 \family sans
-\SpecialChar LaTeX
- and \SpecialChar LyX
- options
+LaTeX and LyX options
 \family default
  tab of the dialog.
 \end_layout
@@ -38838,8 +38829,8 @@ Documents
 
 \begin_layout Description
 Include You can include \SpecialChar LyX
-- and \SpecialChar LaTeX
--documents.
+ and \SpecialChar LaTeX
+ documents.
  When you press the 
 \family sans
 Edit
@@ -38910,10 +38901,10 @@ status open
 Note:
 \series default
  If you have included a \SpecialChar LyX
-- or \SpecialChar LaTeX
--file, you are warned when you export/view
- the document in case the child document uses another document class than
- the master document as this will lead to unexpected outputs.
+ or \SpecialChar LaTeX
+ file, you are warned when you export/view the
+ document in case the child document uses another document class than the
+ master document as this will lead to unexpected outputs.
 \end_layout
 
 \end_inset

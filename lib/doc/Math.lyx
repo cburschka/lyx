@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 497
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/
 \textclass scrartcl
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -220,18 +221,21 @@
 \begin_body
 
 \begin_layout Title
-LyX's detailed Math manual
+\SpecialChar LyX
+'s detailed Math manual
 \end_layout
 
 \begin_layout Author
-by the LyX Team
+by the \SpecialChar LyX
+ Team
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \noindent
-If you have comments or error corrections, please send them to the LyX Documenta
-tion mailing list: 
+If you have comments or error corrections, please send them to the \SpecialChar LyX
+ Documentatio
+n mailing list: 
 \family typewriter
 
 \begin_inset CommandInset href
@@ -284,7 +288,8 @@ LatexCommand tableofcontents
 status open
 
 \begin_layout Plain Layout
-To export this document to PDF, PS or DVI the LaTeX-packages 
+To export this document to PDF, PS or DVI the \SpecialChar LaTeX
+-packages 
 \series bold
 braket, cancel, eurosym, mathdots, mathtools, mhchem, undertilde
 \series default
@@ -329,8 +334,10 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-This document explains LyX's math features and is furthermore a collection
- of LaTeX-commands used for mathematical characters and constructs.
+This document explains \SpecialChar LyX
+'s math features and is furthermore a collection
+ of \SpecialChar LaTeX
+-commands used for mathematical characters and constructs.
  The explanations are designed for the usage of commands.
  It is therefore required that you have read the section 
 \family typewriter
@@ -349,7 +356,7 @@ Most of the characters and many constructs explained in this manual are
 \family sans
 Insert
 \series bold
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \series default
 Math
@@ -379,8 +386,8 @@ Use AMS math package
 \family default
  must be checked in the document settings (menu 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Math
 \begin_inset space ~
 \end_inset
@@ -409,7 +416,8 @@ AmS
 
 \end_inset
 
--math when math constructs are found that are supported by LyX.
+-math when math constructs are found that are supported by \SpecialChar LyX
+.
 \end_layout
 
 \end_inset
@@ -461,7 +469,8 @@ target "ftp://ftp.ams.org/pub/tex/doc/amstex/amsguide.pdf"
 
 
 \family default
-, which is part of every LaTeX standard installation.
+, which is part of every \SpecialChar LaTeX
+ standard installation.
 \end_layout
 
 \end_inset
@@ -530,8 +539,8 @@ arg   "math-mode"
 
  or the menu 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Change formula type
 \family default
 .
@@ -573,7 +582,7 @@ math toolbar
 \family default
  can be turned on in the menu 
 \family sans
-View\SpecialChar \menuseparator
+View\SpecialChar menuseparator
 Toolbars
 \family default
 .
@@ -632,12 +641,14 @@ Math
 \end_layout
 
 \begin_layout Standard
-The TeX-mode
+The \SpecialChar TeX
+ mode
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-T@TeX-mode
+T@\SpecialChar TeX
+-mode
 \end_layout
 
 \end_inset
@@ -650,19 +661,8 @@ arg   "ert-insert"
 
  or by using the menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Te
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-X Code
+Insert\SpecialChar menuseparator
+TeX Code
 \family default
  (shortcut 
 \begin_inset Info
@@ -671,59 +671,26 @@ arg   "ert-insert"
 \end_inset
 
 ).
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-In LyX there are three 
-\begin_inset Quotes eld
-\end_inset
-
-proper names
-\begin_inset Quotes erd
-\end_inset
-
- that appear in the output with sub- and superscript letters: TeX, LaTeX
- and LyX
-\end_layout
-
-\begin_layout Plain Layout
-To avoid that these names are recognized as proper names, a TeX-brace pair
- is inserted.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-To change the LaTeX-preamble
+To change the \SpecialChar LaTeX
+-preamble
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-L@LaTeX-preamble
+L@\SpecialChar LaTeX
+-preamble
 \end_layout
 
 \end_inset
 
 , use the menu 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-LaT
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{}
-\end_layout
-
-\end_inset
-
-eX
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+LaTeX
 \family default
  
 \family sans
@@ -736,12 +703,12 @@ Preamble
 To edit matrices, case differentiations and multiline formulas subsequently,
  use the menus 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Math
 \family default
  and 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Rows
 \begin_inset space \thinspace{}
 \end_inset
@@ -779,7 +746,7 @@ intertext
  is used, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Text-in-multiline"
+reference "subsec:Text-in-multiline"
 
 \end_inset
 
@@ -838,7 +805,8 @@ text
 \end_inset
 
 .
- The text appears black in LyX and can therefore be distinguished from the
+ The text appears black in \SpecialChar LyX
+ and can therefore be distinguished from the
  other formula parts which appear blue.
  In the output mathematical text is set upright, in contrary to other formula
  parts.
@@ -849,7 +817,8 @@ Command Scheme
 \end_layout
 
 \begin_layout Standard
-Most of the LaTeX-commands for math constructs have the following scheme:
+Most of the \SpecialChar LaTeX
+-commands for math constructs have the following scheme:
 \end_layout
 
 \begin_layout Standard
@@ -886,36 +855,45 @@ A command always starts with a backslash
 .
  To omit optional arguments, also omit the associated brackets.
  The braces around the required arguments are named in this document as
- TeX-braces
+ \SpecialChar TeX
+ braces
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-T@TeX-braces
+T@\SpecialChar TeX
+-braces
 \end_layout
 
 \end_inset
 
 .
- If you add in a formula a left brace to a command name, LyX automatically
- creates a TeX-brace.
- In all other cases TeX-braces are created in formulas with the command
- 
+ If you add in a formula a left brace to a command name, \SpecialChar LyX
+ automatically
+ creates a \SpecialChar TeX
+ brace.
+ In all other cases \SpecialChar TeX
+ braces are created in formulas with the command 
 \series bold
 
 \backslash
 {
 \series default
 .
- TeX-braces appear red in LyX, in contrary to normal braces which appear
- blue.
- In TeX-mode no command is needed to get TeX-braces.
- TeX-braces don't appear in the output.
+ \SpecialChar TeX
+ braces appear red in \SpecialChar LyX
+, in contrary to normal braces which appear blue.
+ In \SpecialChar TeX
+ mode no command is needed to get \SpecialChar TeX
+ braces.
+ \SpecialChar TeX
+ braces don't appear in the output.
 \end_layout
 
 \begin_layout Standard
 When commands without arguments, like commands for symbols are entered in
- TeX-mode, a space character must 
+ \SpecialChar TeX
+ mode, a space character must 
 \emph on
 always
 \emph default
@@ -1018,7 +996,7 @@ Available units
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -1518,13 +1496,17 @@ arg   "math-superscript"
 \end_inset
 
 .
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -1668,7 +1650,7 @@ Space
 Fractions
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Fractions"
+name "subsec:Fractions"
 
 \end_inset
 
@@ -1790,13 +1772,17 @@ A line with the fraction
 dfrac
 \series default
 .
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -2114,14 +2100,16 @@ cfracleft
 \backslash
 cfracright
 \series default
- are no real LaTeX commands but represent the command 
+ are no real \SpecialChar LaTeX
+ commands but represent the command 
 \series bold
 
 \backslash
 cfrac[alignment]{numerator}{denominator}
 \series default
  .
- Therefore you cannot use them in TeX code.
+ Therefore you cannot use them in \SpecialChar TeX
+ code.
 \end_layout
 
 \end_inset
@@ -2230,7 +2218,8 @@ Note:
 \backslash
 unitfracthree
 \series default
- is not a real LaTeX command but the command
+ is not a real \SpecialChar LaTeX
+ command but the command
 \begin_inset Newline newline
 \end_inset
 
@@ -2241,7 +2230,8 @@ unitfracthree
 unitfrac[number]{numerator}{denominator}
 \series default
  .
- Therefore you cannot use it in TeX code.
+ Therefore you cannot use it in \SpecialChar TeX
+ code.
 \end_layout
 
 \end_inset
@@ -2254,7 +2244,7 @@ How to define own fractions where the fraction stroke can be changed, is
  explained in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Self-defined-Fractions"
+reference "subsec:Self-defined-Fractions"
 
 \end_inset
 
@@ -2265,7 +2255,7 @@ reference "sub:Self-defined-Fractions"
 Multiline fractions are explained in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Multiline-Fractions"
+reference "subsec:Multiline-Fractions"
 
 \end_inset
 
@@ -2336,13 +2326,17 @@ arg   "math-insert \\root"
 \end_inset
 
 .
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -2530,7 +2524,7 @@ uproot{distance}
 
 \begin_layout Standard
 Distance is the number of Big Points (unit bp; 
-\begin_inset Formula $\mathrm{72\, bp=1\, inch}$
+\begin_inset Formula $\mathrm{72\,bp=1\,inch}$
 \end_inset
 
 ), that the index should be moved to the left or top, resp..
@@ -2704,13 +2698,17 @@ brack
 \end_inset
 
 .
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -2939,7 +2937,7 @@ Case differentiations
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -3090,8 +3088,8 @@ cases
 \series default
  is also available via the menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Cases-Environment
 \family default
 .
@@ -3132,13 +3130,17 @@ not
 
  every character can be displayed canceled.
  The characters are quasi accentuated by a slash.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -3252,7 +3254,7 @@ The last example shows that not all negations look good.
  Therefore there are special commands for some negations (see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Mathematical-Symbols"
+reference "subsec:Mathematical-Symbols"
 
 \end_inset
 
@@ -3270,7 +3272,7 @@ reference "sec:Relations"
 Placeholders
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Placeholders"
+name "subsec:Placeholders"
 
 \end_inset
 
@@ -3346,7 +3348,7 @@ status collapsed
 Typesetting isotopes and chemical symbols is described in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Chemical-Symbols-and"
+reference "subsec:Chemical-Symbols-and"
 
 \end_inset
 
@@ -3356,13 +3358,17 @@ reference "sub:Chemical-Symbols-and"
 \end_inset
 
  the following problem occurs:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -3493,13 +3499,17 @@ phantom
  The arrows indicate that the complete width and height of the box content
  will be created as placeholder.
  Phantom characters are accordingly placeholders with the size of the characters.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -3775,7 +3785,7 @@ int
  creates an integral sign, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Big-Operators"
+reference "subsec:Big-Operators"
 
 \end_inset
 
@@ -3788,7 +3798,7 @@ reference "sub:Big-Operators"
  An example application is in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Multiline-Brackets"
+reference "subsec:Multiline-Brackets"
 
 \end_inset
 
@@ -3799,8 +3809,8 @@ reference "sub:Multiline-Brackets"
 Placeholders can also be used for text when they are inserted via the menu
  
 \family sans
-Insert\SpecialChar \menuseparator
-Formatting\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+Formatting\SpecialChar menuseparator
 Phantom
 \family default
 :
@@ -3852,7 +3862,7 @@ Formula ! underlined
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -4125,8 +4135,8 @@ rule
 \series default
  can also be used for text when a line is inserted via the menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Formatting\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+Formatting\SpecialChar menuseparator
 Horizontal
 \begin_inset space ~
 \end_inset
@@ -4153,7 +4163,7 @@ height "1pt"
 Ellipses
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Ellipses"
+name "subsec:Ellipses"
 
 \end_inset
 
@@ -4243,14 +4253,19 @@ dots
 
 \end_inset
 
-, LaTeX decides on the basis of the next character what type is used.
+, \SpecialChar LaTeX
+ decides on the basis of the next character what type is used.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -4521,7 +4536,7 @@ A_{n1} & \cdots & A_{nm}
 \begin_layout Standard
 The ellipses available in menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Special
 \begin_inset space ~
 \end_inset
@@ -4637,7 +4652,8 @@ q & w & e & r
 \end_inset
 
 Note that the matrix fields that should be spanned must be empty, otherwise
- you get LaTeX-errors.
+ you get \SpecialChar LaTeX
+-errors.
 \end_layout
 
 \begin_layout Standard
@@ -4672,7 +4688,7 @@ hfill
 , see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Variable-Space"
+reference "subsec:Variable-Space"
 
 \end_inset
 
@@ -4736,7 +4752,8 @@ hrulefill
 \end_layout
 
 \begin_layout Standard
-To use the commands for text, they have to be inserted in TeX-mode.
+To use the commands for text, they have to be inserted in \SpecialChar TeX
+ mode.
 \end_layout
 
 \begin_layout Section
@@ -4769,8 +4786,8 @@ arg   "dialog-show mathmatrix"
 
  or the menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Matrix
 \family default
 .
@@ -4910,7 +4927,7 @@ arg   "inset-modify tabular delete-row"
 
 , or the menu 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Rows & Columns
 \family default
  can be used.
@@ -4980,7 +4997,7 @@ Parenthesis
 ), see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Automatic-Bracket-Size"
+reference "subsec:Automatic-Bracket-Size"
 
 \end_inset
 
@@ -4998,7 +5015,7 @@ reference "sub:Automatic-Bracket-Size"
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -5168,7 +5185,7 @@ matrix
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -5373,7 +5390,7 @@ arraycolsep
  that is described in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Column-Separation"
+reference "subsec:Column-Separation"
 
 \end_inset
 
@@ -5537,7 +5554,7 @@ Brackets ! vertical
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -5761,7 +5778,7 @@ lfloor
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -6002,7 +6019,8 @@ status open
 \series bold
 Note:
 \series default
- In TeX-mode the command 
+ In \SpecialChar TeX
+ mode the command 
 \series bold
 
 \backslash
@@ -6059,7 +6077,7 @@ rangle
 Manual Bracket Size
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Manual-Bracket-Size"
+name "subsec:Manual-Bracket-Size"
 
 \end_inset
 
@@ -6077,7 +6095,8 @@ Bracket size ! manual
 \end_layout
 
 \begin_layout Standard
-The bracket size can be specified manually by the LaTeX-commands 
+The bracket size can be specified manually by the \SpecialChar LaTeX
+-commands 
 \series bold
 
 \backslash
@@ -6131,13 +6150,17 @@ Bigg
 
 \begin_layout Standard
 These commands are used to emphasize levels of brackets:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -6227,6 +6250,10 @@ C
 
 \begin_layout Standard
 Here is an overview about all bracket sizes:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6350,13 +6377,17 @@ r
 
 \begin_layout Standard
 In the following table is a comparison of the variants:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle">
 <column alignment="center" valignment="middle">
 <row>
@@ -6546,7 +6577,7 @@ bigr(
 Automatic Bracket Size
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Automatic-Bracket-Size"
+name "subsec:Automatic-Bracket-Size"
 
 \end_inset
 
@@ -6621,6 +6652,10 @@ right
 \series default
  the wanted bracket must be inserted.
  The bracket size will then automatically be calculated for the output.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6715,7 +6750,8 @@ Alt+M
 Bracket
 \family default
  can be used.
- This has the advantage that you can see in LyX immediately the real bracket
+ This has the advantage that you can see in \SpecialChar LyX
+ immediately the real bracket
  size and that the matching right bracket will be created too.
 \begin_inset Newline newline
 \end_inset
@@ -6789,16 +6825,20 @@ left
 \backslash
 right
 \series default
- will be converted by LyX to brackets in the right size when the document
- is reloaded and an omitted bracket will appear as dashed line.
+ will be converted by \SpecialChar LyX
+ to brackets in the right size when the document is
+ reloaded and an omitted bracket will appear as dashed line.
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-Because all popular LaTeX-Distributions use eTeX, an extension to LaTeX,
- the command 
+Because all popular \SpecialChar LaTeX
+ distributions use e\SpecialChar TeX
+, an extension to \SpecialChar LaTeX
+, the command
+ 
 \series bold
 
 \backslash
@@ -6829,15 +6869,16 @@ g.
 needed for physical vectors:
 \begin_inset Formula 
 \[
-\left\langle \phi\:\middle|\: J=\frac{3}{2}\,,\, M_{J}\right\rangle 
+\left\langle \phi\:\middle|\:J=\frac{3}{2}\,,\,M_{J}\right\rangle 
 \]
 
 \end_inset
 
-For physical vectors there is a special LaTeX-package, described in 
+For physical vectors there is a special \SpecialChar LaTeX
+-package, described in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Physical-Vectors"
+reference "subsec:Physical-Vectors"
 
 \end_inset
 
@@ -6862,7 +6903,7 @@ Brackets ! horizontal
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -7154,13 +7195,17 @@ Load
 always
 \family default
 , you have access to square backets:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -7456,13 +7501,17 @@ underbracket
 \series default
  you can change the thickness of the bracket's stroke by specifying the
  desired thickness in square brackets behind the command:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -7679,7 +7728,7 @@ reference "sec:Multiline-Formulas"
 , must be used:
 \begin_inset Formula 
 \begin{eqnarray*}
-A & = & \underbrace{gggg+bbqq}_{r}+\: dddd\\
+A & = & \underbrace{gggg+bbqq}_{r}+\:dddd\\
  &  & \hphantom{gggg+\:}\underbrace{\hphantom{bbqq+dddd}}_{s}
 \end{eqnarray*}
 
@@ -7694,7 +7743,7 @@ status collapsed
 Space commands are explained in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Predefined-Space"
+reference "subsec:Predefined-Space"
 
 \end_inset
 
@@ -7733,7 +7782,7 @@ status collapsed
 because a bracket is not handled as a character, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Binary-Operators"
+reference "subsec:Binary-Operators"
 
 \end_inset
 
@@ -7769,7 +7818,7 @@ hphantom
  see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Placeholders"
+reference "subsec:Placeholders"
 
 \end_inset
 
@@ -7817,7 +7866,7 @@ jot}{-6pt}
 \begin_inset Formula 
 \begin{eqnarray*}
  &  & \hphantom{gggg+\:}\overbrace{\hphantom{bbqq+dddd}}^{s}\\
-A & = & \underbrace{gggg+bbqq}_{r}+\: dddd
+A & = & \underbrace{gggg+bbqq}_{r}+\:dddd
 \end{eqnarray*}
 
 \end_inset
@@ -7842,7 +7891,8 @@ The first formula row is the same as the second row of the previous example,
  The second row contains the formula together with the second brace.
  To avoid that there is space between the upper brace in the first row and
  the formula, the row spacing needs to be reduced.
- This is not easily possible due to a bug in LyX.
+ This is not easily possible due to a bug in \SpecialChar LyX
+.
 \begin_inset Foot
 status collapsed
 
@@ -7889,7 +7939,8 @@ setlength{
 \backslash
 jot}{-6pt}
 \series default
- in TeX-mode.
+ in \SpecialChar TeX
+ mode.
  
 \series bold
 
@@ -7904,7 +7955,7 @@ pt using the same command.
  More about the row separation in formulas is explained in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Line-Separation"
+reference "subsec:Line-Separation"
 
 \end_inset
 
@@ -7956,7 +8007,7 @@ Arrows ! horizontal
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8165,7 +8216,7 @@ hookleftarrow
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8381,7 +8432,7 @@ hookrightarrow
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8545,7 +8596,7 @@ rightleftharpoons
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8774,7 +8825,7 @@ vspace{4mm}
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8940,6 +8991,10 @@ always
 \end_inset
 
 
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -8950,7 +9005,7 @@ always
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9222,7 +9277,7 @@ xhookrightarrow
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9496,13 +9551,17 @@ xrightleftharpoons
 
 \begin_layout Standard
 The command scheme is for all these arrows:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9610,7 +9669,7 @@ Arrows ! vertical
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9794,7 +9853,7 @@ downarrow
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9936,14 +9995,14 @@ Vertical arrows can be used also as delimiters together with the commands
  described in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Manual-Bracket-Size"
+reference "subsec:Manual-Bracket-Size"
 
 \end_inset
 
  and 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Automatic-Bracket-Size"
+reference "subsec:Automatic-Bracket-Size"
 
 \end_inset
 
@@ -10003,7 +10062,7 @@ status collapsed
 accents in text see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Accents-in-Text"
+reference "subsec:Accents-in-Text"
 
 \end_inset
 
@@ -10047,7 +10106,7 @@ texorpdfstring
  is in section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Formulas-in-Section"
+reference "subsec:Formulas-in-Section"
 
 \end_inset
 
@@ -10059,7 +10118,7 @@ reference "sub:Formulas-in-Section"
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Accents-for-one"
+name "subsec:Accents-for-one"
 
 \end_inset
 
@@ -10083,7 +10142,7 @@ Accents ! for one character
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -10346,7 +10405,7 @@ A
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -10563,7 +10622,8 @@ A
 
 \begin_layout Standard
 You can directly insert accents like é to formulas.
- LyX will transform them to the corresponding accent command.
+ \SpecialChar LyX
+ will transform them to the corresponding accent command.
  For umlauts
 \begin_inset Index idx
 status collapsed
@@ -10575,7 +10635,8 @@ Umlauts
 \end_inset
 
  it is better to insert a quotation mark before the vowel.
- These two characters are then treated by LaTeX as 
+ These two characters are then treated by \SpecialChar LaTeX
+ as 
 \emph on
 one
 \emph default
@@ -10608,7 +10669,7 @@ real
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -10765,7 +10826,9 @@ In mathematical text, umlauts and other accented characters can directly
 \end_layout
 
 \begin_layout Standard
-LyX also supports a tilde under the character if the LaTeX-package 
+\SpecialChar LyX
+ also supports a tilde under the character if the \SpecialChar LaTeX
+-package 
 \series bold
 undertilde
 \series default
@@ -10800,13 +10863,18 @@ ifundertilde
 status open
 
 \begin_layout Plain Layout
-The following table will only be displayed when the LaTeX-package 
+The following table will only be displayed when the \SpecialChar LaTeX
+-package 
 \series bold
 undertilde
 \series default
  is installed.
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator parbreak
 \end_inset
 
 
@@ -10817,7 +10885,7 @@ undertilde
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -10894,7 +10962,8 @@ else
 status open
 
 \begin_layout Plain Layout
-The following will be displayed when the LaTeX-package 
+The following will be displayed when the \SpecialChar LaTeX
+-package 
 \series bold
 undertilde
 \series default
@@ -10907,7 +10976,8 @@ undertilde
 \end_layout
 
 \begin_layout Standard
-You need to install the LaTeX-package 
+You need to install the \SpecialChar LaTeX
+-package 
 \series bold
 undertilde
 \series default
@@ -10958,7 +11028,7 @@ Accents ! for several characters
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -11124,7 +11194,7 @@ A=B
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -11371,7 +11441,7 @@ A=B
 Space
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Space"
+name "subsec:Space"
 
 \end_inset
 
@@ -11392,7 +11462,7 @@ Space ! horizontal
 Predefined Space
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Predefined-Space"
+name "subsec:Predefined-Space"
 
 \end_inset
 
@@ -11452,6 +11522,10 @@ arg   "math-insert \\space"
 Space
 \family default
  afterwards.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -11459,7 +11533,7 @@ Space
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="15col%">
 <column alignment="center" valignment="top">
@@ -11521,7 +11595,7 @@ Result
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\, B$
+\begin_inset Formula $A\,B$
 \end_inset
 
 
@@ -11555,7 +11629,7 @@ Result
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\: B$
+\begin_inset Formula $A\:B$
 \end_inset
 
 
@@ -11589,7 +11663,7 @@ Result
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\; B$
+\begin_inset Formula $A\;B$
 \end_inset
 
 
@@ -11677,7 +11751,7 @@ qquad
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="15col%">
 <column alignment="center" valignment="top">
@@ -11879,7 +11953,7 @@ hspace{1em}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\! B$
+\begin_inset Formula $A\!B$
 \end_inset
 
 
@@ -11904,14 +11978,14 @@ Space
 \begin_inset space \thinspace{}
 \end_inset
 
---
+–
 \begin_inset space \thinspace{}
 \end_inset
 
 7 are variable spaces which are explained in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Variable-Space"
+reference "subsec:Variable-Space"
 
 \end_inset
 
@@ -11921,16 +11995,21 @@ reference "sub:Variable-Space"
 \end_inset
 
 9 seems to produce no space.
- It is displayed red in LyX contrary to the other sizes, because it is a
- negative space.
+ It is displayed red in \SpecialChar LyX
+ contrary to the other sizes, because it is a negative
+ space.
  There are two more negative spaces:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="6.8cm">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -12053,13 +12132,17 @@ g.
 \end_inset
 
 useful for summation operators:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -12180,15 +12263,20 @@ f_kl
 \begin_layout Standard
 \noindent
 Relations like for example equal signs, are always surrounded by space.
- To suppress this, the equal sign is placed into a TeX-brace.
+ To suppress this, the equal sign is placed into a \SpecialChar TeX
+ brace.
  The following example demonstrates this:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -12288,8 +12376,8 @@ Spaces are needed for physical units, because the space between the value
  and the unit is the smallest one and not a normal space.
  For units in text, the smallest space is inserted via the menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Formatting\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+Formatting\SpecialChar menuseparator
 Thin
 \begin_inset space ~
 \end_inset
@@ -12312,7 +12400,7 @@ An example to visualize the difference:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <row>
@@ -12396,7 +12484,7 @@ status collapsed
 for vertical space in formulas see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Line-Separation"
+reference "subsec:Line-Separation"
 
 \end_inset
 
@@ -12432,7 +12520,7 @@ More about
 texorpdfstring is in section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Formulas-in-Section"
+reference "subsec:Formulas-in-Section"
 
 \end_inset
 
@@ -12444,7 +12532,7 @@ reference "sub:Formulas-in-Section"
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Variable-Space"
+name "subsec:Variable-Space"
 
 \end_inset
 
@@ -12585,7 +12673,7 @@ hfill
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -12771,7 +12859,7 @@ hrulefill
  that fill the space with a pattern, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Ellipses"
+reference "subsec:Ellipses"
 
 \end_inset
 
@@ -12781,8 +12869,8 @@ reference "sub:Ellipses"
 \begin_layout Standard
 For text, variable space can be inserted via the menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Formatting\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+Formatting\SpecialChar menuseparator
 Horizontal
 \begin_inset space ~
 \end_inset
@@ -12902,7 +12990,8 @@ mathsurround}{5mm}
 \end_layout
 
 \begin_layout Standard
-is inserted in TeX-mode.
+is inserted in \SpecialChar TeX
+ mode.
  5
 \begin_inset space \thinspace{}
 \end_inset
@@ -13032,7 +13121,7 @@ Objects
 Boxes with Frame
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Boxes-with-Frame"
+name "subsec:Boxes-with-Frame"
 
 \end_inset
 
@@ -13225,13 +13314,17 @@ framebox
 fbox
 \series default
 .
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -13441,8 +13534,9 @@ B
 
 \begin_layout Standard
 The frame thickness can also be adjusted.
- To do this the following commands have to be inserted in TeX-mode before
- the formula
+ To do this the following commands have to be inserted in \SpecialChar TeX
+ mode before the
+ formula
 \end_layout
 
 \begin_layout Standard
@@ -13542,7 +13636,8 @@ fboxsep
 \end_layout
 
 \begin_layout Standard
-were inserted in TeX-mode.
+were inserted in \SpecialChar TeX
+ mode.
  The given values are used for all following boxes.
 \end_layout
 
@@ -13590,14 +13685,15 @@ fboxsep 3pt
 \end_layout
 
 \begin_layout Standard
-is inserted in TeX-mode before the next formula.
+is inserted in \SpecialChar TeX
+ mode before the next formula.
 \end_layout
 
 \begin_layout Subsection
 Boxes without Frame
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Boxes-without-Frame"
+name "subsec:Boxes-without-Frame"
 
 \end_inset
 
@@ -13729,7 +13825,8 @@ raisebox
 \family sans
 Ctrl+M
 \family default
- twice instead of once because LyX doesn't yet support 
+ twice instead of once because \SpecialChar LyX
+ doesn't yet support 
 \series bold
 
 \backslash
@@ -13741,13 +13838,19 @@ raisebox
 \end_inset
 
 
+\series default
+
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -13924,7 +14027,7 @@ framebox
 Colored Boxes
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Colored-Boxes"
+name "subsec:Colored-Boxes"
 
 \end_inset
 
@@ -13942,8 +14045,8 @@ Boxes ! colored
 \end_layout
 
 \begin_layout Standard
-To be able to use all commands explained in this section, the LaTeX-package
- 
+To be able to use all commands explained in this section, the \SpecialChar LaTeX
+-package 
 \series bold
 color
 \series default
@@ -13952,11 +14055,13 @@ color
 status collapsed
 
 \begin_layout Plain Layout
-The LaTeX-package 
+The \SpecialChar LaTeX
+-package 
 \series bold
 color
 \series default
- is part of every LaTeX standard installation.
+ is part of every \SpecialChar LaTeX
+ standard installation.
 \end_layout
 
 \end_inset
@@ -13971,13 +14076,16 @@ Packages ! color
 
 \end_inset
 
- has to be loaded in the LaTeX-preamble with the line
+ has to be loaded in the \SpecialChar LaTeX
+-preamble with the line
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 When text is colored somewhere in the document with a predefined color,
- LyX loads the LaTeX-package 
+ \SpecialChar LyX
+ loads the \SpecialChar LaTeX
+ package 
 \series bold
 color
 \series default
@@ -13993,8 +14101,8 @@ color
 status collapsed
 
 \begin_layout Plain Layout
-To avoid that the package is loaded twice, a macro was inserted to the LaTeX-pre
-amble.
+To avoid that the package is loaded twice, a macro was inserted to the \SpecialChar LaTeX
+-preamble.
 \end_layout
 
 \end_inset
@@ -14113,13 +14221,19 @@ white
  and 
 \series bold
 yellow
+\series default
+
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -14310,12 +14424,12 @@ arg   "dialog-show character"
 
  or the menu 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Text
 \begin_inset space ~
 \end_inset
 
-Style\SpecialChar \menuseparator
+Style\SpecialChar menuseparator
 Customized
 \family default
 .
@@ -14527,7 +14641,8 @@ darkgreen
 \begin_inset Quotes erd
 \end_inset
 
- with the LaTeX-preamble line:
+ with the \SpecialChar LaTeX
+-preamble line:
 \end_layout
 
 \begin_layout Standard
@@ -14739,7 +14854,7 @@ textcolor{color}{characters to color}
 Paragraph Boxes
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Paragraph-Boxes"
+name "subsec:Paragraph-Boxes"
 
 \end_inset
 
@@ -14760,7 +14875,7 @@ Boxes ! as paragraph
 A box that can contain several lines and paragraphs, a so-called paragraph
  box (parbox), can be created with the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Box
 \family default
  or the toolbar button 
@@ -14792,6 +14907,11 @@ width "5cm"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -14849,7 +14969,8 @@ Vertical Box Alignment
 \begin_inset VSpace medskip
 \end_inset
 
-In LaTeX a parbox is created with the command 
+In \SpecialChar LaTeX
+ a parbox is created with the command 
 \series bold
 
 \backslash
@@ -14951,7 +15072,8 @@ fboxsep-2
 \backslash
 fboxrule}{
 \series default
- is inserted in TeX-mode before the formula.
+ is inserted in \SpecialChar TeX
+ mode before the formula.
  
 \series bold
 
@@ -14977,7 +15099,8 @@ linewidth
 
 times the frame separation and the frame thickness must be subtracted from
  the line width.
- As this is not automatically done by LyX due to a bug
+ As this is not automatically done by \SpecialChar LyX
+ due to a bug
 \begin_inset Foot
 status collapsed
 
@@ -14994,8 +15117,10 @@ target "http://www.lyx.org/trac/ticket/4483"
 
 \end_inset
 
-, TeX-mode has to be used.
- To be able to multiply and subtract in arguments, the LaTeX-package 
+, \SpecialChar TeX
+ mode has to be used.
+ To be able to multiply and subtract in arguments, the \SpecialChar LaTeX
+-package 
 \series bold
 calc
 \series default
@@ -15008,7 +15133,8 @@ status collapsed
 \series bold
 calc
 \series default
- is part of every LaTeX standard installation.
+ is part of every \SpecialChar LaTeX
+ standard installation.
 \end_layout
 
 \end_inset
@@ -15023,7 +15149,8 @@ Packages ! calc
 
 \end_inset
 
- must be loaded in the LaTeX-preamble with the line
+ must be loaded in the \SpecialChar LaTeX
+-preamble with the line
 \end_layout
 
 \begin_layout Standard
@@ -15039,7 +15166,8 @@ Behind the formula both boxes are closed by entering
 \series bold
 }}
 \series default
- in TeX-mode.
+ in \SpecialChar TeX
+ mode.
  Here is an example:
 \begin_inset ERT
 status collapsed
@@ -15168,7 +15296,7 @@ tag
  see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:User-defined-Numbering"
+reference "subsec:User-defined-Numbering"
 
 \end_inset
 
@@ -15220,8 +15348,10 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Such a formula must be inserted completely in TeX-mode because LyX does
- not yet support the command 
+Such a formula must be inserted completely in \SpecialChar TeX
+ mode because \SpecialChar LyX
+ does not yet
+ support the command 
 \series bold
 
 \backslash
@@ -15244,7 +15374,8 @@ tag*
 \backslash
 parbox{5cm}{
 \series default
- is inserted in TeX-mode.
+ is inserted in \SpecialChar TeX
+ mode.
 \begin_inset Foot
 status collapsed
 
@@ -15286,7 +15417,8 @@ reference "sec:Formula-Styles"
 \backslash
 ]
 \series default
- is inserted in TeX-mode.
+ is inserted in \SpecialChar TeX
+ mode.
  The commands 
 \series bold
 
@@ -15346,7 +15478,7 @@ Operators
 Big Operators
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Big-Operators"
+name "subsec:Big-Operators"
 
 \end_inset
 
@@ -15406,7 +15538,7 @@ Options
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -15705,7 +15837,7 @@ bigcup
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -16074,7 +16206,7 @@ int
 in the style the operator limits are displayed, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Operator-Limits"
+reference "subsec:Operator-Limits"
 
 \end_inset
 
@@ -16114,7 +16246,7 @@ Font styles
 see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Font-Styles"
+reference "subsec:Font-Styles"
 
 \end_inset
 
@@ -16173,7 +16305,7 @@ For multiple integrals there are the following commands:
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -16298,7 +16430,7 @@ sqiint
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -16411,7 +16543,7 @@ dotsint
 Operator Limits
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Operator-Limits"
+name "subsec:Operator-Limits"
 
 \end_inset
 
@@ -16430,13 +16562,17 @@ Operators ! Limits
 
 \begin_layout Standard
 Limits are created by super- and subscripts:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -16532,8 +16668,8 @@ To force that the limits are set beside the operator, the cursor is set
  directly behind the operator and the limits type is changed with the menu
  
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Change Limits Type
 \family default
  to 
@@ -16731,7 +16867,7 @@ toolbar
 \family default
  or the menu 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Rows &Columns
 \family default
 .
@@ -17011,7 +17147,7 @@ adjustlimits
 How to use one limit for several operators is described in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Self-defined-Operators"
+reference "subsec:Self-defined-Operators"
 
 \end_inset
 
@@ -17123,7 +17259,8 @@ sideset
 sidesetn
 \series default
  is used to set characters before and/or behind the operator (this variant
- represents LaTeX's original 
+ represents \SpecialChar LaTeX
+'s original 
 \series bold
 
 \backslash
@@ -17268,7 +17405,7 @@ a
 Binary Operators
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Binary-Operators"
+name "subsec:Binary-Operators"
 
 \end_inset
 
@@ -17301,7 +17438,7 @@ Binary operators are surrounded by space when there is a character before
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -17668,7 +17805,7 @@ bullet
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -18002,7 +18139,7 @@ vee
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -18383,7 +18520,7 @@ Menu Separator
 \family default
  from the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Special Character
 \family default
  is the operator 
@@ -18399,7 +18536,7 @@ triangleright
 Self-defined Operators
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Self-defined-Operators"
+name "subsec:Self-defined-Operators"
 
 \end_inset
 
@@ -18437,7 +18574,8 @@ DeclareMathOperator
 
 \end_inset
 
- custom operators can be defined in the LaTeX-preamble.
+ custom operators can be defined in the \SpecialChar LaTeX
+-preamble.
  Its command scheme is:
 \end_layout
 
@@ -18456,7 +18594,7 @@ Display can be characters or symbols that define how the operator looks
  All self-defined big operators can have limits as described in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Operator-Limits"
+reference "subsec:Operator-Limits"
 
 \end_inset
 
@@ -18464,7 +18602,8 @@ reference "sub:Operator-Limits"
 \end_layout
 
 \begin_layout Standard
-For example the LaTeX-preamble line
+For example the \SpecialChar LaTeX
+-preamble line
 \end_layout
 
 \begin_layout Standard
@@ -18489,7 +18628,7 @@ Lozenge
 , that inserts a big operator consisting of the lozenge symbol from 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Miscellaneous-Symbols"
+reference "subsec:Miscellaneous-Symbols"
 
 \end_inset
 
@@ -18677,7 +18816,7 @@ Fonts
 Font Styles
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Font-Styles"
+name "subsec:Font-Styles"
 
 \end_inset
 
@@ -18706,7 +18845,7 @@ Latin letters in formulas can be set in one of the following font styles:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -19022,7 +19161,7 @@ AbC
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -19306,7 +19445,8 @@ textrm
 \series default
 .
  That their style can't be set correctly via the text style dialog is a
- bug in LyX.
+ bug in \SpecialChar LyX
+.
 \begin_inset Foot
 status collapsed
 
@@ -19329,8 +19469,8 @@ target "http://www.lyx.org/trac/ticket/4629"
 \begin_layout Standard
 Instead of the style commands the dialog 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Text Style
 \family default
  or the toolbar button 
@@ -19346,7 +19486,7 @@ arg   "math-insert \\font"
 Bold Formulas
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Bold-Formulas"
+name "subsec:Bold-Formulas"
 
 \end_inset
 
@@ -19425,7 +19565,8 @@ boldmath
 
 \end_inset
 
- in TeX-mode.
+ in \SpecialChar TeX
+ mode.
  To end the environment, the command 
 \series bold
 
@@ -19444,7 +19585,8 @@ unboldmath
 
 \end_inset
 
- is inserted in TeX-mode.
+ is inserted in \SpecialChar TeX
+ mode.
 \begin_inset ERT
 status collapsed
 
@@ -19517,12 +19659,13 @@ Text Style
 You can also define your own colors as described in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Colored-Boxes"
+reference "subsec:Colored-Boxes"
 
 \end_inset
 
 .
- They can be used with the TeX code command 
+ They can be used with the \SpecialChar TeX
+ code command 
 \series bold
 
 \backslash
@@ -19591,7 +19734,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Due to a bug in LyX only complete formulas can be colored with self-defined
+Due to a bug in \SpecialChar LyX
+ only complete formulas can be colored with self-defined
  colors.
 \begin_inset Foot
 status collapsed
@@ -19616,7 +19760,7 @@ target "http://www.lyx.org/trac/ticket/5269"
 Font Sizes
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Font-Sizes"
+name "subsec:Font-Sizes"
 
 \end_inset
 
@@ -19742,7 +19886,8 @@ huge
 \end_layout
 
 \begin_layout Standard
-A size command is inserted in TeX-mode before the formula and sets the size
+A size command is inserted in \SpecialChar TeX
+ mode before the formula and sets the size
  for all following formula and text characters.
  To switch back to the initial size, the command 
 \series bold
@@ -19750,7 +19895,8 @@ A size command is inserted in TeX-mode before the formula and sets the size
 \backslash
 normalsize
 \series default
- is inserted behind the formula in TeX-mode.
+ is inserted behind the formula in \SpecialChar TeX
+ mode.
 \end_layout
 
 \begin_layout Standard
@@ -19762,6 +19908,10 @@ arg   "math-insert \\style"
 \end_inset
 
 :
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -19769,7 +19919,7 @@ arg   "math-insert \\style"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -20128,7 +20278,7 @@ Greek letters ! small
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -20412,7 +20562,7 @@ vartheta
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="12" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -20719,7 +20869,7 @@ rho
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -21014,7 +21164,7 @@ omega
 How to create special upright Greek letters is explained in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Upright-small-Greek"
+reference "subsec:Upright-small-Greek"
 
 \end_inset
 
@@ -21042,7 +21192,7 @@ Greek letters ! big
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -21226,7 +21376,7 @@ Pi
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -21390,7 +21540,8 @@ Omega
 \end_inset
 
 That the big Greek letters appear upright is caused by a design bug when
- TeX was developed.
+ \SpecialChar TeX
+ was developed.
  To get correct italic big letters, begin every command with 
 \series bold
 var
@@ -21420,7 +21571,8 @@ status collapsed
 \series bold
 fixmath
 \series default
- is part of the LaTeX-package 
+ is part of the \SpecialChar LaTeX
+-package 
 \series bold
 was
 \series default
@@ -21462,7 +21614,8 @@ Packages ! fixmath
 
 \end_inset
 
- with the LaTeX-preamble line
+ with the \SpecialChar LaTeX
+-preamble line
 \end_layout
 
 \begin_layout Standard
@@ -21512,13 +21665,17 @@ boldsymbol
 \end_inset
 
 .
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -21625,7 +21782,8 @@ texorpdfstring{
 status collapsed
 
 \begin_layout Plain Layout
-A list with all symbols of most of the LaTeX-packages can be found in 
+A list with all symbols of most of the \SpecialChar LaTeX
+-packages can be found in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Symbols"
@@ -21664,7 +21822,7 @@ More about
 texorpdfstring is in section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Formulas-in-Section"
+reference "subsec:Formulas-in-Section"
 
 \end_inset
 
@@ -21707,7 +21865,7 @@ arg   "math-insert \\digamma"
 Mathematical Symbols
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Mathematical-Symbols"
+name "subsec:Mathematical-Symbols"
 
 \end_inset
 
@@ -21731,7 +21889,7 @@ Symbols ! mathematical
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -21990,7 +22148,7 @@ jmath
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -22289,7 +22447,7 @@ Bbbk
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -22552,7 +22710,7 @@ bot
 Miscellaneous Symbols
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Miscellaneous-Symbols"
+name "subsec:Miscellaneous-Symbols"
 
 \end_inset
 
@@ -22574,7 +22732,7 @@ Symbols ! miscellaneous
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -22825,7 +22983,7 @@ $
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -23080,7 +23238,7 @@ bullet
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -23346,7 +23504,7 @@ diagdown
 Some symbols can be displayed in different sizes, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Font-Sizes"
+reference "subsec:Font-Sizes"
 
 \end_inset
 
@@ -23393,7 +23551,8 @@ officialeuro
 \end_layout
 
 \begin_layout Standard
-To use the Euro symbol in formulas, the LaTeX-package 
+To use the Euro symbol in formulas, the \SpecialChar LaTeX
+-package 
 \series bold
 eurosym
 \series default
@@ -23407,7 +23566,8 @@ Packages ! eurosym
 
 \end_inset
 
- must be installed and loaded with the LaTeX-preamble line
+ must be installed and loaded with the \SpecialChar LaTeX
+-preamble line
 \end_layout
 
 \begin_layout Standard
@@ -23457,7 +23617,8 @@ eurosym
 \backslash
 euro
 \series default
- can also be inserted in TeX-mode.
+ can also be inserted in \SpecialChar TeX
+ mode.
  The official currency symbol can then be inserted with the command 
 \series bold
 
@@ -23476,7 +23637,8 @@ officialeuro
 
 \end_inset
 
-, that is only available in TeX-mode.
+, that is only available in \SpecialChar TeX
+ mode.
 \end_layout
 
 \begin_layout Standard
@@ -23497,7 +23659,8 @@ ifeurosym
 status open
 
 \begin_layout Plain Layout
-The following table will only be displayed when the LaTeX-package 
+The following table will only be displayed when the \SpecialChar LaTeX
+-package 
 \series bold
 eurosym
 \series default
@@ -23511,13 +23674,17 @@ eurosym
 
 \begin_layout Standard
 An overview about the different Euro symbols:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -23621,7 +23788,8 @@ mathematical text
 \begin_inset Text
 
 \begin_layout Plain Layout
-TeX-mode
+\SpecialChar TeX
+ mode
 \end_layout
 
 \end_inset
@@ -23684,7 +23852,8 @@ else
 status open
 
 \begin_layout Plain Layout
-The following will be displayed when the LaTeX-package 
+The following will be displayed when the \SpecialChar LaTeX
+-package 
 \series bold
 eurosym
 \series default
@@ -23697,7 +23866,8 @@ eurosym
 \end_layout
 
 \begin_layout Standard
-You need to install the LaTeX-package 
+You need to install the \SpecialChar LaTeX
+-package 
 \series bold
 eurosym
 \series default
@@ -23790,7 +23960,7 @@ arg   "math-insert \\leq"
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -24222,7 +24392,7 @@ nmid
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -24654,7 +24824,7 @@ widehat=
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -25118,7 +25288,8 @@ triangleright
 \end_layout
 
 \begin_layout Standard
-LyX supports also many special relations.
+\SpecialChar LyX
+ supports also many special relations.
  Use the toolbar button 
 \begin_inset Info
 type  "icon"
@@ -25152,13 +25323,17 @@ stackrel
 \end_inset
 
 :
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -25263,7 +25438,7 @@ Functions
 Predefined Functions
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Predefined-Functions"
+name "subsec:Predefined-Functions"
 
 \end_inset
 
@@ -25297,13 +25472,17 @@ italic
  Therefore there are predefined functionswhich are additionally a bit separated
  from prefactors.
  They are inserted as commands starting with a backslash before their name.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -25414,7 +25593,7 @@ The following functions are predefined:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -25862,7 +26041,8 @@ To use a function that is not predefined, like for example the sign function
 \end_layout
 
 \begin_layout Itemize
-Define the function by inserting the following line to the LaTeX-preamble
+Define the function by inserting the following line to the \SpecialChar LaTeX
+-preamble
 \begin_inset Foot
 status collapsed
 
@@ -25876,7 +26056,7 @@ DeclareMathOperator
  see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Self-defined-Operators"
+reference "subsec:Self-defined-Operators"
 
 \end_inset
 
@@ -25956,19 +26136,24 @@ The result is the same with both methods as with a predefined function
 status collapsed
 
 \begin_layout Plain Layout
-In LyX self-defined functions are displayed red, predefined ones black.
+In \SpecialChar LyX
+ self-defined functions are displayed red, predefined ones black.
 \end_layout
 
 \end_inset
 
 :
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -26103,13 +26288,17 @@ liminf
 limsup
 \series default
  the following functions are defined:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -26271,7 +26460,7 @@ The limit is created by inserting a subscript.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -26379,7 +26568,7 @@ In a displayed formula the limit is set below the formula, as usual:
 How to adjust the typesetting of the limits see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Operator-Limits"
+reference "subsec:Operator-Limits"
 
 \end_inset
 
@@ -26422,7 +26611,8 @@ In an inline formula less space is set before the function names for all
  variants.
  By default the modulo-functions take only the first following character
  into account.
- To use more than one character, one has to put them into TeX-braces:
+ To use more than one character, one has to put them into \SpecialChar TeX
+ braces:
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{Command}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Result}}\\
@@ -26455,6 +26645,10 @@ The characters ^ and _ would normally create a superscript and subscript,
  To get these characters you have to insert them with a leading 
 \backslash
 :
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -26462,7 +26656,7 @@ The characters ^ and _ would normally create a superscript and subscript,
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="block" valignment="top">
 <column alignment="block" valignment="top">
 <row>
@@ -26551,7 +26745,8 @@ Special Characters in Mathematical Text
 \end_layout
 
 \begin_layout Standard
-The following commands can only be used in mathematical text or in TeX-mode:
+The following commands can only be used in mathematical text or in \SpecialChar TeX
+ mode:
 \end_layout
 
 \begin_layout Standard
@@ -26561,7 +26756,7 @@ The following commands can only be used in mathematical text or in TeX-mode:
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="block" valignment="top">
 <column alignment="block" valignment="top">
 <row>
@@ -26797,7 +26992,7 @@ i
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="block" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -27072,14 +27267,15 @@ An exception are the commands
 
 `
 \series default
-, because they can be inserted in LyX directly to text.
+, because they can be inserted in \SpecialChar LyX
+ directly to text.
 \end_layout
 
 \begin_layout Subsection
 Accents in Text
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Accents-in-Text"
+name "subsec:Accents-in-Text"
 
 \end_inset
 
@@ -27098,7 +27294,8 @@ Accents ! in text
 
 \begin_layout Standard
 With the following commands all letters can be accented.
- The commands must be inserted in TeX-mode.
+ The commands must be inserted in \SpecialChar TeX
+ mode.
 \end_layout
 
 \begin_layout Standard
@@ -27108,7 +27305,7 @@ With the following commands all letters can be accented.
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="block" valignment="top">
 <column alignment="block" valignment="top">
 <row>
@@ -27400,7 +27597,7 @@ t ee
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="block" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -27749,7 +27946,8 @@ The accents
 ^
 \series default
  can in combination with vowels directly be inserted with the keyboard without
- using TeX-mode.
+ using \SpecialChar TeX
+ mode.
  The same applies for the tilde
 \begin_inset Foot
 status collapsed
@@ -27828,7 +28026,7 @@ v
  see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Accents-for-one"
+reference "subsec:Accents-for-one"
 
 \end_inset
 
@@ -27865,7 +28063,7 @@ textcircled
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -28019,7 +28217,7 @@ status collapsed
 see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Font-Sizes"
+reference "subsec:Font-Sizes"
 
 \end_inset
 
@@ -28043,7 +28241,7 @@ status collapsed
 see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Boxes-without-Frame"
+reference "subsec:Boxes-without-Frame"
 
 \end_inset
 
@@ -28090,7 +28288,8 @@ oldstylenums
 \end_inset
 
 .
- The command can be used in formulas and in TeX-mode.
+ The command can be used in formulas and in \SpecialChar TeX
+ mode.
  The command scheme is:
 \end_layout
 
@@ -28139,6 +28338,10 @@ Formula ! styles
 
 \begin_layout Itemize
 There are two different alignment styles:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -28153,7 +28356,7 @@ fleqn
 \series default
  must be inserted in the menu 
 \family sans
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Settings
 \family default
  under 
@@ -28193,7 +28396,8 @@ mathindent
 \begin_inset space \thinspace{}
 \end_inset
 
-mm, the following command line is inserted in the LaTeX-preamble
+mm, the following command line is inserted in the \SpecialChar LaTeX
+-preamble
 \end_layout
 
 \begin_layout Standard
@@ -28217,6 +28421,10 @@ pt will be used.
 \end_deeper
 \begin_layout Itemize
 And two different numbering styles:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -28231,7 +28439,7 @@ leqno
 \series default
  must be inserted in the menu 
 \family sans
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Settings
 \family default
  under 
@@ -28268,7 +28476,7 @@ Centered
  The indented formulas are then set in a flalign environment, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Flalign-Environment"
+reference "subsec:Flalign-Environment"
 
 \end_inset
 
@@ -28301,7 +28509,8 @@ General
 \end_layout
 
 \begin_layout Standard
-In LyX multiline formulas are created by pressing 
+In \SpecialChar LyX
+ multiline formulas are created by pressing 
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -28315,7 +28524,7 @@ eqnarray environment
  that is described in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Eqnarray-Environment"
+reference "subsec:Eqnarray-Environment"
 
 \end_inset
 
@@ -28330,7 +28539,7 @@ align environment
  that is described in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Standard-align-Environment"
+reference "subsec:Standard-align-Environment"
 
 \end_inset
 
@@ -28343,7 +28552,7 @@ reference "sub:Standard-align-Environment"
 There are other multiline formula environments that can be created via the
  menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Math
 \family default
 .
@@ -28373,7 +28582,7 @@ arg   "inset-modify tabular delete-row"
 
 , respectively, or the menu 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Rows & Columns
 \family default
  can be used.
@@ -28383,7 +28592,7 @@ Rows & Columns
 Line Separation
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Line-Separation"
+name "subsec:Line-Separation"
 
 \end_inset
 
@@ -28414,9 +28623,11 @@ B^{2}(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2})+4x_{0}^{2}x^{2}+4x_{0}xD & = & \te
 \end_layout
 
 \begin_layout Standard
-In LaTeX additional line space is specified as optional argument of the
- new line command.
- This is not yet possible in LyX
+In \SpecialChar LaTeX
+ additional line space is specified as optional argument of the new line
+ command.
+ This is not yet possible in \SpecialChar LyX
+
 \begin_inset Foot
 status collapsed
 
@@ -28434,7 +28645,8 @@ target "http://www.lyx.org/trac/ticket/1505"
 
 \end_inset
 
-, therefore the whole formula must be inserted in TeX-mode.
+, therefore the whole formula must be inserted in \SpecialChar TeX
+ mode.
  To add in our example space, the command 
 \series bold
 
@@ -28520,7 +28732,7 @@ jot
 
  is changed.
  The definition is: 
-\begin_inset Formula $\mbox{line separation}=\mathrm{6\, pt+\backslash jot}$
+\begin_inset Formula $\mbox{line separation}=\mathrm{6\,pt+\backslash jot}$
 \end_inset
 
 .
@@ -28553,8 +28765,10 @@ jot}{3mm+3pt}
 \end_layout
 
 \begin_layout Standard
-is inserted in TeX-mode before the formula.
- This requires that the LaTeX-package 
+is inserted in \SpecialChar TeX
+ mode before the formula.
+ This requires that the \SpecialChar LaTeX
+-package 
 \series bold
 calc
 \series default
@@ -28567,7 +28781,8 @@ status collapsed
 \series bold
 calc
 \series default
- is part of every LaTeX standard installation.
+ is part of every \SpecialChar LaTeX
+ standard installation.
 \end_layout
 
 \end_inset
@@ -28582,7 +28797,8 @@ Packages ! calc
 
 \end_inset
 
- was loaded in LaTeX-preamble with the line
+ was loaded in \SpecialChar LaTeX
+-preamble with the line
 \end_layout
 
 \begin_layout Standard
@@ -28653,7 +28869,7 @@ pt.
 Column Separation
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Column-Separation"
+name "subsec:Column-Separation"
 
 \end_inset
 
@@ -28729,8 +28945,9 @@ arraycolsep}{1cm}
 \end_layout
 
 \begin_layout Standard
-inserted in TeX-mode, sets for all following formulas a column separation
- of 2
+inserted in \SpecialChar TeX
+ mode, sets for all following formulas a column separation of
+ 2
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -28866,7 +29083,7 @@ hspace
  see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Variable-Space"
+reference "subsec:Variable-Space"
 
 \end_inset
 
@@ -28978,7 +29195,8 @@ the term
 \end_layout
 
 \begin_layout Itemize
-Due to a bug in LyX the cursor cannot be set with the mouse into the first
+Due to a bug in \SpecialChar LyX
+ the cursor cannot be set with the mouse into the first
  line.
 \begin_inset Foot
 status collapsed
@@ -29010,14 +29228,14 @@ Other methods to set long formulas are offered by the environments described
  in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Multline-Environment"
+reference "subsec:Multline-Environment"
 
 \end_inset
 
  and 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Multiline-Formula-Parts"
+reference "subsec:Multiline-Formula-Parts"
 
 \end_inset
 
@@ -29028,7 +29246,7 @@ reference "sub:Multiline-Formula-Parts"
 Multiline Fractions
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Multiline-Fractions"
+name "subsec:Multiline-Fractions"
 
 \end_inset
 
@@ -29149,7 +29367,7 @@ splitfrac{xy+xy+xy+xy+xy
 Multiline Brackets
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Multiline-Brackets"
+name "subsec:Multiline-Brackets"
 
 \end_inset
 
@@ -29228,7 +29446,7 @@ right
  see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Automatic-Bracket-Size"
+reference "subsec:Automatic-Bracket-Size"
 
 \end_inset
 
@@ -29345,14 +29563,14 @@ Align environments consist of columns.
 \begin_layout Standard
 Align environments are created via the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Math
 \family default
 .
  With the menu 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Change Formula Type
 \family default
  already existing formulas can be converted to Align environments.
@@ -29373,7 +29591,7 @@ arg   "inset-modify tabular delete-column"
 
 , respectively, or the menu 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Rows & Columns
 \family default
  can be used.
@@ -29383,7 +29601,7 @@ Rows & Columns
 Standard align Environment
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Standard-align-Environment"
+name "subsec:Standard-align-Environment"
 
 \end_inset
 
@@ -29409,8 +29627,8 @@ arg   "newline-insert newline"
 
  in a formula or by the menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 AMS align Environment
 \family default
 .
@@ -29446,7 +29664,7 @@ hfill
  see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Variable-Space"
+reference "subsec:Variable-Space"
 
 \end_inset
 
@@ -29507,7 +29725,7 @@ The alignat environment has no predefined column separation.
  It can be inserted manually with the spaces that are described 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Space"
+reference "subsec:Space"
 
 \end_inset
 
@@ -29537,7 +29755,7 @@ Because the column separation can be set separately for every column, this
 Flalign Environment
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Flalign-Environment"
+name "subsec:Flalign-Environment"
 
 \end_inset
 
@@ -29571,7 +29789,8 @@ X & =\textrm{-}1 & Y & =\textrm{-}2 & Z & =4
 
 \begin_layout Standard
 By creating a flalign environment with an odd number of columns where an
- empty TeX-brace is inserted to the last column, several formulas in a document
+ empty \SpecialChar TeX
+ brace is inserted to the last column, several formulas in a document
  can be set to the left, although the formula style 
 \series bold
 Centered
@@ -29608,7 +29827,7 @@ pt space was inserted at the beginning of the first column.
 Eqnarray Environment
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Eqnarray-Environment"
+name "subsec:Eqnarray-Environment"
 
 \end_inset
 
@@ -29675,7 +29894,7 @@ X=\textrm{-}1
 Multline Environment
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Multline-Environment"
+name "subsec:Multline-Environment"
 
 \end_inset
 
@@ -29840,7 +30059,8 @@ multlinegap}{2cm}
 \end_layout
 
 \begin_layout Standard
-was inserted in TeX-mode before:
+was inserted in \SpecialChar TeX
+ mode before:
 \begin_inset ERT
 status collapsed
 
@@ -29893,7 +30113,7 @@ shoveleft
 Multiline Formula Parts
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Multiline-Formula-Parts"
+name "subsec:Multiline-Formula-Parts"
 
 \end_inset
 
@@ -29931,7 +30151,7 @@ split
 .
  They can be inserted via the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Math
 \family default
  or by using the commands described in this section.
@@ -30082,7 +30302,7 @@ split
 Text in multiline Formulas
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Text-in-multiline"
+name "subsec:Text-in-multiline"
 
 \end_inset
 
@@ -30144,7 +30364,8 @@ intertext{text}
 
 \begin_layout Standard
 The text should not be longer than a line because it cannot be hyphenated.
- As LyX doesn't yet support 
+ As \SpecialChar LyX
+ doesn't yet support 
 \series bold
 
 \backslash
@@ -30302,8 +30523,8 @@ General
 \begin_layout Standard
 Numbered formulas can be created with the menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Numbered
 \begin_inset space ~
 \end_inset
@@ -30321,8 +30542,8 @@ N
 ).
  Existing formulas can be numbered with the menu 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Toggle
 \begin_inset space ~
 \end_inset
@@ -30336,7 +30557,8 @@ arg   "math-number-toggle"
 \end_inset
 
 ).
- The formula number is displayed in LyX behind the formula as a number sign
+ The formula number is displayed in \SpecialChar LyX
+ behind the formula as a number sign
  in parentheses.
  The number sign is replaced in the output by the formula number.
 \end_layout
@@ -30345,8 +30567,8 @@ arg   "math-number-toggle"
 When numbering is turned on in multiline formulas, all lines will be numbered.
  But the numbering can be controlled with the menu 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Toggle
 \begin_inset space ~
 \end_inset
@@ -30400,7 +30622,7 @@ Cross-references ! to formulas
 All labeled formulas can be cross-referenced.
  A label is added by the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Label
 \family default
  or the toolbar button 
@@ -30442,7 +30664,7 @@ g.
 section labels.
  To change a label, the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Label
 \family default
  is used again or you right-click on a formula and then on 
@@ -30453,15 +30675,15 @@ Equation Label
 \end_layout
 
 \begin_layout Standard
-The name of the label is displayed in LyX within two parentheses behind
- formula.
+The name of the label is displayed in \SpecialChar LyX
+ within two parentheses behind formula.
  A formula with a label is always numbered.
 \end_layout
 
 \begin_layout Standard
 Cross-references are inserted via the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Cross-Reference
 \family default
  or with the toolbar button 
@@ -30481,8 +30703,9 @@ arg   "dialog-show-new-inset ref"
 \begin_inset Newline newline
 \end_inset
 
-By right-clicking on a cross-reference in LyX, one jumps to the formula
- that is referenced.
+By right-clicking on a cross-reference in \SpecialChar LyX
+, one jumps to the formula that
+ is referenced.
 \end_layout
 
 \begin_layout Standard
@@ -30554,7 +30777,7 @@ tag
  is described in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:User-defined-Numbering"
+reference "subsec:User-defined-Numbering"
 
 \end_inset
 
@@ -30568,7 +30791,7 @@ reference "sub:User-defined-Numbering"
  contains a box like in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Paragraph-Boxes"
+reference "subsec:Paragraph-Boxes"
 
 \end_inset
 
@@ -30603,7 +30826,8 @@ begin{subequations}
 end{subequations}
 \series default
  formulas can be subnumbered.
- Both commands are inserted in TeX-mode.
+ Both commands are inserted in \SpecialChar TeX
+ mode.
 \end_layout
 
 \begin_layout Standard
@@ -30751,7 +30975,7 @@ end
 \begin_inset Newline linebreak
 \end_inset
 
-c, \SpecialChar \ldots{}
+c, \SpecialChar ldots
  For multiline formulas every line will be subnumbered.
  All subnumbered formulas are treated as 
 \emph on
@@ -30815,7 +31039,8 @@ reference "eq:f"
 \end_layout
 
 \begin_layout Standard
-By inserting the commands in TeX-mode, a space is created between the first
+By inserting the commands in \SpecialChar TeX
+ mode, a space is created between the first
  two formulas.
  To revert this -5
 \begin_inset space \thinspace{}
@@ -30901,7 +31126,7 @@ end{subequations}
 User-defined Numbering
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:User-defined-Numbering"
+name "subsec:User-defined-Numbering"
 
 \end_inset
 
@@ -30930,7 +31155,8 @@ Formula numbering ! self-defined delimiters
 
 With the standard numbering parentheses are set around the formula number.
  To replace the parentheses for example by vertical bars, the following
- line is added to the LaTeX-preamble:
+ line is added to the \SpecialChar LaTeX
+-preamble:
 \end_layout
 
 \begin_layout Standard
@@ -30949,7 +31175,8 @@ maketag@@@{|#1|}}
 status collapsed
 
 \begin_layout Plain Layout
-This macro is already declared in the LaTeX-preamble for testing.
+This macro is already declared in the \SpecialChar LaTeX
+-preamble for testing.
  To activate it, remove the percent sign at the beginning.
 \end_layout
 
@@ -31120,7 +31347,8 @@ resp.
 \end_layout
 
 \begin_layout Standard
-To be able to use these commands in TeX-mode, the 
+To be able to use these commands in \SpecialChar TeX
+ mode, the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -31136,7 +31364,8 @@ active
 \begin_inset Quotes erd
 \end_inset
 
- for LaTeX using the command 
+ for \SpecialChar LaTeX
+ using the command 
 \series bold
 
 \backslash
@@ -31150,7 +31379,8 @@ makeatletter.
 makeatother
 \series default
  reverts this.
- So the command sequence in TeX-mode is:
+ So the command sequence in \SpecialChar TeX
+ mode is:
 \end_layout
 
 \begin_layout Standard
@@ -31174,7 +31404,8 @@ makeatother
 \end_layout
 
 \begin_layout Standard
-In the LaTeX-preamble 
+In the \SpecialChar LaTeX
+-preamble 
 \series bold
 
 \backslash
@@ -31186,7 +31417,8 @@ makeatletter
 \backslash
 makeatother
 \series default
- can be omitted as they are automatically internally inserted by LyX.
+ can be omitted as they are automatically internally inserted by \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -31209,7 +31441,8 @@ status collapsed
 \series bold
 remreset
 \series default
- is part of the LaTeX-package 
+ is part of the \SpecialChar LaTeX
+-package 
 \series bold
 carlisle
 \series default
@@ -31223,7 +31456,8 @@ Packages ! carlisle
 
 \end_inset
 
- that is part of every LaTeX standard installation.
+ that is part of every \SpecialChar LaTeX
+ standard installation.
 \end_layout
 
 \end_inset
@@ -31238,7 +31472,8 @@ Packages ! remreset
 
 \end_inset
 
- has to be loaded in the LaTeX-preamble with the line
+ has to be loaded in the \SpecialChar LaTeX
+-preamble with the line
 \end_layout
 
 \begin_layout Standard
@@ -31382,7 +31617,9 @@ Counter denotes what kind of numbering is affected, sectioning denotes what
 \end_layout
 
 \begin_layout Standard
-Thus in our case the following LaTeX-preamble or TeX code line is used:
+Thus in our case the following \SpecialChar LaTeX
+ preamble or \SpecialChar TeX
+ code line is used:
 \end_layout
 
 \begin_layout Standard
@@ -31443,7 +31680,9 @@ numberwithin{table}{part}
 \begin_layout Standard
 To go back to the standard numbering or to prevent this kind of numbering
  when it is defined by the document class, the following command is inserted
- as TeX code or to the LaTeX-preamble:
+ as \SpecialChar TeX
+ code or to the \SpecialChar LaTeX
+ preamble:
 \end_layout
 
 \begin_layout Standard
@@ -31594,7 +31833,8 @@ roman{equation}}
 \end_layout
 
 \begin_layout Standard
-is inserted before the formula in TeX-mode.
+is inserted before the formula in \SpecialChar TeX
+ mode.
  
 \series bold
 
@@ -31645,7 +31885,7 @@ newcommand
  that is described in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:The-Command-newcommand"
+reference "subsec:The-Command-newcommand"
 
 \end_inset
 
@@ -31667,7 +31907,8 @@ the
 \series default
  is used as prefix for a counter, the value of the counter is output as
  Arabic number.
- When a formula is numbered, LaTeX sets internally the command 
+ When a formula is numbered, \SpecialChar LaTeX
+ sets internally the command 
 \series bold
 
 \backslash
@@ -32005,7 +32246,7 @@ target "run:Formula-numbering.lyx"
 Chemical Symbols and Equations
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Chemical-Symbols-and"
+name "subsec:Chemical-Symbols-and"
 
 \end_inset
 
@@ -32063,7 +32304,7 @@ The
  The chemical equation for this is:
 \begin_inset Formula 
 \begin{equation}
-\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:chem-reaction}
+\mathrm{2\,Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:chem-reaction}
 \end{equation}
 
 \end_inset
@@ -32092,7 +32333,7 @@ font styles
 see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Font-Styles"
+reference "subsec:Font-Styles"
 
 \end_inset
 
@@ -32124,7 +32365,8 @@ ce
 
 \end_inset
 
- that is available when the LaTeX-package 
+ that is available when the \SpecialChar LaTeX
+-package 
 \series bold
 mhchem
 \series default
@@ -32147,13 +32389,17 @@ ce
 \series default
  to a formula a new blue box appears where chemical formulas can be inserted
  in an intuitive way.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -32503,7 +32749,9 @@ Note:
 \backslash
 ce
 \series default
- box will lead to LaTeX errors due to a LyX bug.
+ box will lead to \SpecialChar LaTeX
+ errors due to a \SpecialChar LyX
+ bug.
 \color inherit
 
 \begin_inset Foot
@@ -32524,7 +32772,8 @@ target "http://www.lyx.org/trac/ticket/8566"
 
 
 \color none
- In this case TeX code has to be used like for 
+ In this case \SpecialChar TeX
+ code has to be used like for 
 \series bold
 
 \backslash
@@ -32569,8 +32818,9 @@ status open
 \color none
 Note:
 \series default
- It is not possible in LyX to use the character ^ to get an up-arrow as
- described in the 
+ It is not possible in \SpecialChar LyX
+ to use the character ^ to get an up-arrow as described
+ in the 
 \series bold
 mhchem
 \series default
@@ -32745,7 +32995,8 @@ Diagrams
 \end_layout
 
 \begin_layout Standard
-LyX supports two types of commutative diagrams: 
+\SpecialChar LyX
+ supports two types of commutative diagrams: 
 \series bold
 amscd
 \series default
@@ -32879,7 +33130,8 @@ When text for vertical arrows is inserted between the first and second A
  or V, resp., it is placed left beside the arrow.
  When it is inserted between the second and third one, it appears right
  beside the arrow.
- If the text contains an A or V, these letters must be set into a TeX-brace.
+ If the text contains an A or V, these letters must be set into a \SpecialChar TeX
+ brace.
 \end_layout
 
 \begin_layout Standard
@@ -32985,7 +33237,8 @@ Diagrams ! xymatrix
 \end_layout
 
 \begin_layout Standard
-To be able to use xymatrices, the LaTeX-package 
+To be able to use xymatrices, the \SpecialChar LaTeX
+-package 
 \series bold
 xypic
 \series default
@@ -33018,7 +33271,7 @@ XY-pic manual
 \emph default
  that you find in the menu 
 \family sans
-Help\SpecialChar \menuseparator
+Help\SpecialChar menuseparator
 Specific
 \begin_inset space ~
 \end_inset
@@ -33051,7 +33304,8 @@ To be able to use
 \noun on
 Feynman
 \noun default
--diagrams, the LaTeX-package 
+-diagrams, the \SpecialChar LaTeX
+-package 
 \series bold
 feyn
 \series default
@@ -33083,13 +33337,14 @@ Examples how to create
 \noun on
 Feynman-
 \noun default
-diagrams in LyX is given in the 
+diagrams in \SpecialChar LyX
+ is given in the 
 \emph on
 Feynman-diagram manual
 \emph default
  that you find in the menu 
 \family sans
-Help\SpecialChar \menuseparator
+Help\SpecialChar menuseparator
 Specific
 \begin_inset space ~
 \end_inset
@@ -33137,7 +33392,7 @@ The Command
 newcommand
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:The-Command-newcommand"
+name "subsec:The-Command-newcommand"
 
 \end_inset
 
@@ -33169,7 +33424,8 @@ newcommand
 \end_layout
 
 \begin_layout Standard
-Many LaTeX-commands are too long to be used frequently.
+Many \SpecialChar LaTeX
+-commands are too long to be used frequently.
  But it is possible to define with the command 
 \series bold
 
@@ -33229,7 +33485,8 @@ status open
 Note:
 \series default
  Assure that the name of the new command is not already used in your document
- or by LaTeX-packages that you use.
+ or by \SpecialChar LaTeX
+-packages that you use.
  When you for example define the command 
 \series bold
 
@@ -33307,7 +33564,8 @@ gr
 \backslash
 Longrightarrow
 \series default
-, the LaTeX-preamble line is:
+, the \SpecialChar LaTeX
+-preamble line is:
 \begin_inset VSpace medskip
 \end_inset
 
@@ -33433,7 +33691,7 @@ framebox
 , see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Boxes-with-Frame"
+reference "subsec:Boxes-with-Frame"
 
 \end_inset
 
@@ -33489,13 +33747,17 @@ white
 
 \begin_layout Standard
 A test of the new defined commands:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -33779,7 +34041,8 @@ To define a command for the solution formula where only the three parameters
 \begin_inset Formula $\lambda$
 \end_inset
 
- can be given optionally, the LaTeX-preamble line is
+ can be given optionally, the \SpecialChar LaTeX
+-preamble line is
 \begin_inset Newline newline
 \end_inset
 
@@ -33852,7 +34115,8 @@ lambda
 
 \begin_layout Standard
 The definition of the new command is unintuitive because one has to know
- the schemes of all used LaTeX commands, e.
+ the schemes of all used \SpecialChar LaTeX
+ commands, e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -33860,7 +34124,8 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-that a fraction is inserted in LaTeX as 
+that a fraction is inserted in \SpecialChar LaTeX
+ as 
 \series bold
 
 \backslash
@@ -33868,8 +34133,10 @@ frac{numerator}{denominator}
 \series default
 .
  Furthermore one can easily forget a brace in the definition and cannot
- see in LyX what the new command is doing.
- To avoid these problems LyX offers the possibility to use math macros instead
+ see in \SpecialChar LyX
+ what the new command is doing.
+ To avoid these problems \SpecialChar LyX
+ offers the possibility to use math macros instead
  of the command 
 \series bold
 
@@ -33882,8 +34149,8 @@ newcommand
 \begin_layout Standard
 A math macro is created by using the menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Macro
 \family default
  or the toolbar button 
@@ -33974,7 +34241,8 @@ arg   "math-macro-make-optional"
 \end_inset
 
 .
- In the second blue box the appearance of the macro in LyX can be defined.
+ In the second blue box the appearance of the macro in \SpecialChar LyX
+ can be defined.
  Normally you want to see it as it is defined, so the box is kept empty.
  But when you have created a macro that needs lot of space on the screen,
  you can insert in the box for example
@@ -34014,7 +34282,8 @@ qG:
 
 \series default
 For the macro only the arguments with the macro name in front of them will
- then be displayed in LyX, leading to a better overview.
+ then be displayed in \SpecialChar LyX
+, leading to a better overview.
  The formula appears in the output as defined in the first box.
 \begin_inset Newline newline
 \end_inset
@@ -34022,7 +34291,7 @@ For the macro only the arguments with the macro name in front of them will
 The appearance of macros in formulas can furthermore be changed for single
  macros by setting the cursor in the macro and using the menu 
 \family sans
-View\SpecialChar \menuseparator
+View\SpecialChar menuseparator
 (Un)fold
 \begin_inset space ~
 \end_inset
@@ -34045,7 +34314,8 @@ To use a macro, the macro name is inserted as command to a formula, in our
 qG
 \series default
 .
- Our macro looks in LyX like this:
+ Our macro looks in \SpecialChar LyX
+ like this:
 \begin_inset Newline newline
 \end_inset
 
@@ -34094,11 +34364,12 @@ Here is our macro example with the arguments
 \end_layout
 
 \begin_layout Standard
-LyX offers in the menu 
+\SpecialChar LyX
+ offers in the menu 
 \family sans
-Tools\SpecialChar \menuseparator
-Preferences\SpecialChar \menuseparator
-Editing\SpecialChar \menuseparator
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
+Editing\SpecialChar menuseparator
 Control
 \family default
  different styles to edit macros.
@@ -34120,9 +34391,9 @@ newcommand
 \backslash
 newcommand
 \series default
- command is not placed in the LaTeX-preamble, therefore macros can only
- be used in formulas that are in the document below the macro definition
- box.
+ command is not placed in the \SpecialChar LaTeX
+-preamble, therefore macros can only be used
+ in formulas that are in the document below the macro definition box.
 \end_layout
 
 \begin_layout Standard
@@ -34151,7 +34422,8 @@ xleftarrow[#2]{#1}}
 
 
 \series default
-in LyX as normal text, highlighting it completely and using then the shortcut
+in \SpecialChar LyX
+ as normal text, highlighting it completely and using then the shortcut
  
 \family sans
 Ctrl+M
@@ -34164,7 +34436,8 @@ Ctrl+M
 newcommand
 \series default
  command is typed correctly, otherwise you get a faulty macro leading to
- LaTeX errors.
+ \SpecialChar LaTeX
+ errors.
 \end_layout
 
 \begin_layout Standard
@@ -34179,7 +34452,7 @@ fb
  from 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:The-Command-newcommand"
+reference "subsec:The-Command-newcommand"
 
 \end_inset
 
@@ -34188,7 +34461,8 @@ reference "sub:The-Command-newcommand"
 
 \begin_layout Standard
 When the cursor is in a macro definition box, you will see the macro toolbar
- in LyX:
+ in \SpecialChar LyX
+:
 \end_layout
 
 \begin_layout Standard
@@ -34238,7 +34512,7 @@ The macro toolbar contains from left to right the following buttons:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features rotate="0" islongtable="true" longtabularalignment="center">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top" width="85col%">
 <row interlinespace="2.5mm">
@@ -34262,13 +34536,13 @@ arg   "math-macro-remove-param"
 \begin_layout Plain Layout
 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Macro
 \begin_inset space ~
 \end_inset
 
-Definition\SpecialChar \menuseparator
+Definition\SpecialChar menuseparator
 Remove Last Argument
 \end_layout
 
@@ -34296,13 +34570,13 @@ arg   "math-macro-add-param"
 \begin_layout Plain Layout
 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Macro
 \begin_inset space ~
 \end_inset
 
-Definition\SpecialChar \menuseparator
+Definition\SpecialChar menuseparator
 Append Argument
 \end_layout
 
@@ -34330,13 +34604,13 @@ arg   "math-macro-make-optional"
 \begin_layout Plain Layout
 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Macro
 \begin_inset space ~
 \end_inset
 
-Definition\SpecialChar \menuseparator
+Definition\SpecialChar menuseparator
 Transform First Non-Optional to
 \begin_inset Newline newline
 \end_inset
@@ -34348,13 +34622,13 @@ status open
 \begin_layout Plain Layout
 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Macro
 \begin_inset space ~
 \end_inset
 
-Definition\SpecialChar \menuseparator
+Definition\SpecialChar menuseparator
 
 \end_layout
 
@@ -34387,13 +34661,13 @@ arg   "math-macro-make-nonoptional"
 \begin_layout Plain Layout
 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Macro
 \begin_inset space ~
 \end_inset
 
-Definition\SpecialChar \menuseparator
+Definition\SpecialChar menuseparator
 Transform Last Optional to
 \begin_inset Newline newline
 \end_inset
@@ -34405,13 +34679,13 @@ status open
 \begin_layout Plain Layout
 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Macro
 \begin_inset space ~
 \end_inset
 
-Definition\SpecialChar \menuseparator
+Definition\SpecialChar menuseparator
 
 \end_layout
 
@@ -34444,13 +34718,13 @@ arg   "math-macro-remove-optional-param"
 \begin_layout Plain Layout
 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Macro
 \begin_inset space ~
 \end_inset
 
-Definition\SpecialChar \menuseparator
+Definition\SpecialChar menuseparator
 Remove Optional Argument
 \end_layout
 
@@ -34478,13 +34752,13 @@ arg   "math-macro-add-optional-param"
 \begin_layout Plain Layout
 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Macro
 \begin_inset space ~
 \end_inset
 
-Definition\SpecialChar \menuseparator
+Definition\SpecialChar menuseparator
 Insert Optional Argument
 \end_layout
 
@@ -34512,13 +34786,13 @@ arg   "math-macro-remove-greedy-param"
 \begin_layout Plain Layout
 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Macro
 \begin_inset space ~
 \end_inset
 
-Definition\SpecialChar \menuseparator
+Definition\SpecialChar menuseparator
 Remove Last Argument
 \begin_inset Newline newline
 \end_inset
@@ -34530,13 +34804,13 @@ status open
 \begin_layout Plain Layout
 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Macro
 \begin_inset space ~
 \end_inset
 
-Definition\SpecialChar \menuseparator
+Definition\SpecialChar menuseparator
 
 \end_layout
 
@@ -34569,13 +34843,13 @@ arg   "math-macro-append-greedy-param"
 \begin_layout Plain Layout
 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Macro
 \begin_inset space ~
 \end_inset
 
-Definition\SpecialChar \menuseparator
+Definition\SpecialChar menuseparator
 Append Argument
 \begin_inset Newline newline
 \end_inset
@@ -34587,13 +34861,13 @@ status open
 \begin_layout Plain Layout
 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Macro
 \begin_inset space ~
 \end_inset
 
-Definition\SpecialChar \menuseparator
+Definition\SpecialChar menuseparator
 
 \end_layout
 
@@ -34626,13 +34900,13 @@ arg   "math-macro-add-greedy-optional-param"
 \begin_layout Plain Layout
 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Macro
 \begin_inset space ~
 \end_inset
 
-Definition\SpecialChar \menuseparator
+Definition\SpecialChar menuseparator
 Append Optional Argument
 \begin_inset Newline newline
 \end_inset
@@ -34644,13 +34918,13 @@ status open
 \begin_layout Plain Layout
 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Macro
 \begin_inset space ~
 \end_inset
 
-Definition\SpecialChar \menuseparator
+Definition\SpecialChar menuseparator
 
 \end_layout
 
@@ -34674,8 +34948,10 @@ Computer Algebra Systems
 \end_layout
 
 \begin_layout Standard
-LyX offers the exchange between mathematical expressions written in LyX's
- math editor and external applications or user defined scripts.
+\SpecialChar LyX
+ offers the exchange between mathematical expressions written in \SpecialChar LyX
+'s math
+ editor and external applications or user defined scripts.
  Currently supported applications are 
 \family sans
 Maple
@@ -34704,8 +34980,8 @@ Usage
 \begin_layout Standard
 Write some expression in a formula, go to the 
 \family sans
-Edit\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Use Computer Algebra System
 \family default
  menu and choose the application you have installed on the computer.
@@ -34778,10 +35054,12 @@ Currently there is no keyboard shortcut for calling the algebra applications.
 \family sans
 math-extern
 \family default
- LyX function (see the 
+ \SpecialChar LyX
+ function (see the 
 \family sans
 \emph on
-LyX Functions
+\SpecialChar LyX
+ Functions
 \family default
 \emph default
  manual).
@@ -34853,13 +35131,17 @@ Thus, the problem disappears when converting the minus sign to mathematical
 
 \begin_layout Standard
 An example to visualize the problem:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top">
 <column alignment="left" valignment="top">
 <row>
@@ -34950,7 +35232,8 @@ Comma
 \end_layout
 
 \begin_layout Standard
-In LaTeX a comma inside a formula is used, according to the English convention,
+In \SpecialChar LaTeX
+ a comma inside a formula is used, according to the English convention,
  as number group separator.
  So there will be space added behind all commas in formulas.
 \end_layout
@@ -34981,7 +35264,8 @@ status collapsed
 \series bold
 icomma
 \series default
- is part of the LaTeX-package 
+ is part of the \SpecialChar LaTeX
+-package 
 \series bold
 was
 \series default
@@ -35023,7 +35307,8 @@ Packages ! icomma
 
 \end_inset
 
- is loaded with the LaTeX-preamble line
+ is loaded with the \SpecialChar LaTeX
+-preamble line
 \end_layout
 
 \begin_layout Standard
@@ -35038,7 +35323,7 @@ usepackage{icomma}
 Physical Vectors
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Physical-Vectors"
+name "subsec:Physical-Vectors"
 
 \end_inset
 
@@ -35056,7 +35341,8 @@ Vectors ! physical
 \end_layout
 
 \begin_layout Standard
-Predefined vectors are offered by the LaTeX-package 
+Predefined vectors are offered by the \SpecialChar LaTeX
+-package 
 \series bold
 braket
 \series default
@@ -35070,7 +35356,8 @@ Packages ! braket
 
 \end_inset
 
- that is loaded with the LaTeX-preamble line
+ that is loaded with the \SpecialChar LaTeX
+-preamble line
 \end_layout
 
 \begin_layout Standard
@@ -35099,7 +35386,8 @@ ifbraket
 status open
 
 \begin_layout Plain Layout
-The following table will only be displayed when the LaTeX-package 
+The following table will only be displayed when the \SpecialChar LaTeX
+-package 
 \series bold
 braket
 \series default
@@ -35113,13 +35401,17 @@ braket
 
 \begin_layout Standard
 The following commands are defined:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -35242,7 +35534,7 @@ Braket
  assures that all vertical bars are set in the size of the surrounding brackets:
 \begin_inset Formula 
 \[
-\Braket{\phi|J=\frac{3}{2}\,,\, M_{J}}
+\Braket{\phi|J=\frac{3}{2}\,,\,M_{J}}
 \]
 
 \end_inset
@@ -35265,7 +35557,8 @@ else
 status open
 
 \begin_layout Plain Layout
-The following will be displayed when the LaTeX-package 
+The following will be displayed when the \SpecialChar LaTeX
+-package 
 \series bold
 braket
 \series default
@@ -35278,7 +35571,8 @@ braket
 \end_layout
 
 \begin_layout Standard
-You need to install the LaTeX-package 
+You need to install the \SpecialChar LaTeX
+-package 
 \series bold
 braket
 \series default
@@ -35317,7 +35611,7 @@ middle
 , that is described in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Automatic-Bracket-Size"
+reference "subsec:Automatic-Bracket-Size"
 
 \end_inset
 
@@ -35328,7 +35622,7 @@ reference "sub:Automatic-Bracket-Size"
 Self-defined Fractions
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Self-defined-Fractions"
+name "subsec:Self-defined-Fractions"
 
 \end_inset
 
@@ -35424,13 +35718,17 @@ The style is a number in the range of 0
 \end_inset
 
 3.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -35578,7 +35876,7 @@ tbinom
  from 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Fractions"
+reference "subsec:Fractions"
 
 \end_inset
 
@@ -35618,7 +35916,8 @@ genfrac{(}{)}{0pt}{1}{#1}{#2}}
 \end_inset
 
 To define a fraction where the fraction bar thickness can be given as optional
- argument, the following line is inserted to the LaTeX-preamble:
+ argument, the following line is inserted to the \SpecialChar LaTeX
+-preamble:
 \end_layout
 
 \begin_layout Standard
@@ -35683,7 +35982,8 @@ ifcancel
 status open
 
 \begin_layout Plain Layout
-The following table will only be displayed when the LaTeX-package 
+The following table will only be displayed when the \SpecialChar LaTeX
+-package 
 \series bold
 cancel
 \series default
@@ -35693,13 +35993,17 @@ cancel
 \end_inset
 
 
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -35922,7 +36226,8 @@ subscript
 \begin_inset Quotes erd
 \end_inset
 
- value one can add the LaTeX-preamble line
+ value one can add the \SpecialChar LaTeX
+-preamble line
 \end_layout
 
 \begin_layout Standard
@@ -35950,7 +36255,8 @@ Smaller
 \end_layout
 
 \begin_layout Standard
-To color the cancellation bar one adds this command as TeX code:
+To color the cancellation bar one adds this command as \SpecialChar TeX
+ code:
 \end_layout
 
 \begin_layout Standard
@@ -36077,7 +36383,8 @@ else
 status open
 
 \begin_layout Plain Layout
-The following will be displayed when the LaTeX-package 
+The following will be displayed when the \SpecialChar LaTeX
+-package 
 \series bold
 cancel
 \series default
@@ -36090,7 +36397,8 @@ cancel
 \end_layout
 
 \begin_layout Standard
-You need to install the LaTeX-package 
+You need to install the \SpecialChar LaTeX
+-package 
 \series bold
 cancel
 \series default
@@ -36117,7 +36425,7 @@ fi
 Formulas in Section Headings
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Formulas-in-Section"
+name "subsec:Formulas-in-Section"
 
 \end_inset
 
@@ -36181,7 +36489,7 @@ s.
 Both problems can be solved by inserting at the end of the section heading
  a short title with the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Short
 \begin_inset space ~
 \end_inset
@@ -36200,7 +36508,8 @@ When formulas should be used in the table of contents but
 \series bold
 hyperref
 \series default
- is used, one can use the following command in TeX-mode:
+ is used, one can use the following command in \SpecialChar TeX
+ mode:
 \end_layout
 
 \begin_layout Standard
@@ -36336,7 +36645,7 @@ status collapsed
 see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Bold-Formulas"
+reference "subsec:Bold-Formulas"
 
 \end_inset
 
@@ -36365,7 +36674,8 @@ Formula ! in multi-column text
 \begin_layout Standard
 Formulas in multi-column text are often too wide to fit into a column and
  thus need to be set over the whole page width.
- This is done by using the LaTeX-package 
+ This is done by using the \SpecialChar LaTeX
+-package 
 \series bold
 multicol
 \series default
@@ -36378,7 +36688,8 @@ status collapsed
 \series bold
 multicol
 \series default
- is part of every LaTeX standard installation.
+ is part of every \SpecialChar LaTeX
+ standard installation.
 \end_layout
 
 \end_inset
@@ -36393,7 +36704,8 @@ Packages ! multicol
 
 \end_inset
 
-, that is loaded with the LaTeX-preamble line
+, that is loaded with the \SpecialChar LaTeX
+-preamble line
 \end_layout
 
 \begin_layout Standard
@@ -36419,7 +36731,7 @@ document
 \family default
  in the menu 
 \family sans
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Settings
 \family default
  under 
@@ -36458,7 +36770,8 @@ begin{multicols}{column number}
 \end_layout
 
 \begin_layout Standard
-is written in TeX-mode.
+is written in \SpecialChar TeX
+ mode.
  The column number is a number in the range of 2
 \begin_inset space \thinspace{}
 \end_inset
@@ -36480,7 +36793,8 @@ end{multicols}
 \end_layout
 
 \begin_layout Standard
-in TeX-mode.
+in \SpecialChar TeX
+ mode.
 \end_layout
 
 \begin_layout Standard
@@ -36713,7 +37027,7 @@ status collapsed
 font sizes see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Font-Sizes"
+reference "subsec:Font-Sizes"
 
 \end_inset
 
@@ -36771,7 +37085,7 @@ Indented
 , see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Variable-Space"
+reference "subsec:Variable-Space"
 
 \end_inset
 
@@ -36792,7 +37106,7 @@ Centered
  is used, the method described in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Flalign-Environment"
+reference "subsec:Flalign-Environment"
 
 \end_inset
 
@@ -36805,7 +37119,8 @@ reference "eq:within"
 \end_inset
 
  consists of five columns where in the first two columns contain the equation,
- the third the matrix and the last one an empty TeX-brace.
+ the third the matrix and the last one an empty \SpecialChar TeX
+ brace.
 \begin_inset Formula 
 \begin{flalign}
 \hspace{30pt}F_{A} & =\rho·V·g & \footnotesize\begin{array}{ll}
@@ -36824,7 +37139,7 @@ g & \textrm{gravitational acceleration}
 Upright small Greek Letters
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Upright-small-Greek"
+name "subsec:Upright-small-Greek"
 
 \end_inset
 
@@ -36858,7 +37173,8 @@ status collapsed
 \series bold
 upgreek
 \series default
- is part of the LaTeX-package 
+ is part of the \SpecialChar LaTeX
+-package 
 \series bold
 was
 \series default
@@ -36900,7 +37216,8 @@ Packages ! upgreek
 
 \end_inset
 
- that is loaded with the LaTeX-preamble line
+ that is loaded with the \SpecialChar LaTeX
+-preamble line
 \end_layout
 
 \begin_layout Standard
@@ -36931,7 +37248,8 @@ ifupgreek
 status open
 
 \begin_layout Plain Layout
-The following table will only be displayed when the LaTeX-package 
+The following table will only be displayed when the \SpecialChar LaTeX
+-package 
 \series bold
 upgreek
 \series default
@@ -37002,7 +37320,8 @@ else
 status open
 
 \begin_layout Plain Layout
-The following will be displayed when the LaTeX-package 
+The following will be displayed when the \SpecialChar LaTeX
+-package 
 \series bold
 upgreek
 \series default
@@ -37015,7 +37334,8 @@ upgreek
 \end_layout
 
 \begin_layout Standard
-You need to install the LaTeX-package 
+You need to install the \SpecialChar LaTeX
+-package 
 \series bold
 upgreek
 \series default
@@ -37072,7 +37392,7 @@ status collapsed
 see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Binary-Operators"
+reference "subsec:Binary-Operators"
 
 \end_inset
 
@@ -37083,7 +37403,8 @@ reference "sub:Binary-Operators"
 
  all the time, because this character is defined in all encodings as text
  character.
- But the encoding can be changed by this LaTeX-preamble line:
+ But the encoding can be changed by this \SpecialChar LaTeX
+-preamble line:
 \end_layout
 
 \begin_layout Standard
@@ -37101,15 +37422,15 @@ else
 \backslash
 textperiodcentered
 \backslash
-f\SpecialChar \textcompwordmark{}
+f\SpecialChar ligaturebreak
 i}
 \end_layout
 
 \begin_layout Standard
 The character encoding (menu 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Language
 \family default
 ) specifies what character appears when a keyboard key is pressed.
@@ -37120,8 +37441,8 @@ Language
 textperiodcentered
 \series default
  is used.
- But this command is not available in a formula so that you would get LaTeX-erro
-rs.
+ But this command is not available in a formula so that you would get \SpecialChar LaTeX
+-errors.
  With the changed encoding the right command is chosen automatically, depending
  on if the character was inserted into a formula or not.
 \end_layout
@@ -37136,10 +37457,13 @@ latin9
 \series bold
 latin9.def
 \series default
- which is in the installation folder of LaTeX.
- Encodings should only be changed via the LaTeX-preamble and not in the
- definition files.
- Otherwise documents could not be edited by other LyX users working on other
+ which is in the installation folder of \SpecialChar LaTeX
+.
+ Encodings should only be changed via the \SpecialChar LaTeX
+-preamble and not in the definition
+ files.
+ Otherwise documents could not be edited by other \SpecialChar LyX
+ users working on other
  computers.
 \end_layout
 
@@ -37148,8 +37472,9 @@ latin9.def
 \end_inset
 
 Besides the centered dot, in this document the degree sign ° is defined
- with the following LaTeX-preamble line so that it can be directly inserted
- into a formula:
+ with the following \SpecialChar LaTeX
+-preamble line so that it can be directly inserted into
+ a formula:
 \end_layout
 
 \begin_layout Standard
@@ -37167,17 +37492,19 @@ else
 \backslash
 textdegree
 \backslash
-f\SpecialChar \textcompwordmark{}
+f\SpecialChar ligaturebreak
 i}
 \end_layout
 
 \begin_layout Subsection
-LaTeX-comments in formulas
+\SpecialChar LaTeX
+-comments in formulas
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-LaTeX-comments
+\SpecialChar LaTeX
+-comments
 \end_layout
 
 \end_inset
@@ -37186,16 +37513,18 @@ LaTeX-comments
 \end_layout
 
 \begin_layout Standard
-In text you can insert a comment that will only be visible in the LaTeX
- source code of your file with the menu 
+In text you can insert a comment that will only be visible in the \SpecialChar LaTeX
+ source
+ code of your file with the menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Note\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+Note\SpecialChar menuseparator
 Comment
 \family default
 .
- This is not possible in a formula but you can insert LaTeX-comments with
- the command
+ This is not possible in a formula but you can insert \SpecialChar LaTeX
+-comments with the
+ command
 \end_layout
 
 \begin_layout Standard
@@ -37208,7 +37537,8 @@ Comment
 
 \begin_layout Standard
 This creates a box in which you can write your comment.
- Due to a bug in LyX
+ Due to a bug in \SpecialChar LyX
+
 \begin_inset Foot
 status collapsed
 
@@ -37226,11 +37556,14 @@ target "http://www.lyx.org/trac/ticket/9002"
 \end_inset
 
  you cannot write normal text inside the comment, even when you use mathematical
- text, you will see its LaTeX-commands in the LaTeX-output.
+ text, you will see its \SpecialChar LaTeX
+-commands in the \SpecialChar LaTeX
+-output.
 \begin_inset Newline newline
 \end_inset
 
-This a formula with a LaTeX-comment:
+This a formula with a \SpecialChar LaTeX
+-comment:
 \begin_inset Formula 
 \[
 A=B%\text{This is the comment}
@@ -37315,7 +37648,7 @@ status collapsed
 done with font styles, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Font-Styles"
+reference "subsec:Font-Styles"
 
 \end_inset
 
@@ -37335,7 +37668,7 @@ km/h
 Between the value and the unit is the smallest space, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Predefined-Space"
+reference "subsec:Predefined-Space"
 
 \end_inset
 
@@ -37367,13 +37700,15 @@ unittwo
 \backslash
 unittwo
 \series default
- is not a real LaTeX command but the command 
+ is not a real \SpecialChar LaTeX
+ command but the command 
 \series bold
 
 \backslash
 unit[value]{unit}
 \series default
-, therefore you cannot use it in TeX code.
+, therefore you cannot use it in \SpecialChar TeX
+ code.
 \end_layout
 
 \begin_layout Itemize
@@ -37441,8 +37776,8 @@ times
 \series default
  or via the menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Special Character\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+Special Character\SpecialChar menuseparator
 Symbols
 \family default
 .
@@ -37453,7 +37788,7 @@ Functions with names consisting of several letters are set upright to avoid
  confusions, see 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Predefined-Functions"
+reference "subsec:Predefined-Functions"
 
 \end_inset
 
@@ -37499,9 +37834,9 @@ F
 \series default
  or via the menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Special Character\SpecialChar \menuseparator
-Symbols\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+Special Character\SpecialChar menuseparator
+Symbols\SpecialChar menuseparator
 Letterlike
 \begin_inset space ~
 \end_inset
@@ -37552,7 +37887,7 @@ Some characters and symbols can be created with several commands.
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="12" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -37879,7 +38214,7 @@ vert
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="12" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -38196,7 +38531,8 @@ Mittelbach, F.
 \shape default
 : 
 \shape italic
-The LaTeX Companion
+The \SpecialChar LaTeX
+ Companion
 \shape default
 .
  Addison Wesley, 2004
@@ -38217,7 +38553,8 @@ target "ftp://ftp.dante.de/tex-archive/info/math/voss/mathmode/Mathmode.pdf"
 
 \end_inset
 
- of LaTeX's math abilities
+ of \SpecialChar LaTeX
+'s math abilities
 \end_layout
 
 \begin_layout Bibliography
@@ -38248,7 +38585,8 @@ AmS
 
 \end_inset
 
--LaTeX
+-\SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Bibliography
@@ -38266,7 +38604,8 @@ target "ftp://ftp.dante.de/tex-archive/info/symbols/comprehensive/symbols-a4.pdf
 
 \end_inset
 
- of all symbols available with LaTeX-packages
+ of all symbols available with \SpecialChar LaTeX
+-packages
 \end_layout
 
 \begin_layout Bibliography
@@ -38284,7 +38623,8 @@ target "http://mirrors.ctan.org/macros/latex/contrib/cancel/cancel.pdf"
 
 \end_inset
 
- of the LaTeX-package 
+ of the \SpecialChar LaTeX
+-package 
 \series bold
 cancel
 \series default
@@ -38316,7 +38656,8 @@ target "http://www.tug.org/applications/hyperref/ftp/doc/manual.pdf"
 
 \end_inset
 
- of the LaTeX-package 
+ of the \SpecialChar LaTeX
+-package 
 \series bold
 hyperref
 \series default
@@ -38348,7 +38689,8 @@ target "http://www.ctan.org/tex-archive/macros/latex/contrib/mhchem/mhchem.pdf"
 
 \end_inset
 
- of the LaTeX-package 
+ of the \SpecialChar LaTeX
+-package 
 \series bold
 mhchem
 \series default
