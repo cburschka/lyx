@@ -777,6 +777,21 @@ convert_universal() {
 	done
 }
 
+deduplicate() {
+	find "$@" -type f -print | while read file ; do
+		echo $(md5 -q "$file") "$file"
+	done | sort | while read hash file ; do
+		if [ "$phash" = "$hash" ]; then
+			cmp -s "$pfile" "$file" && (
+				rm "$file"
+				ln -s "$pfile" "$file" && echo link for "$file" created
+			)
+		fi
+		phash="$hash"
+		pfile="$file"
+	done
+}
+
 copy_dictionaries() {
 	if [ -d "${ASpellInstallDir}" -a "yes" = "${aspell_dictionaries}" ]; then
 		ASpellResources="${LyxAppPrefix}/Contents/Resources"
@@ -792,11 +807,13 @@ copy_dictionaries() {
 		HunSpellResources="${LyxAppPrefix}/Contents/Resources"
 		if [ -d "${DictionarySourceDir}" ]; then
 			( cd "${DictionarySourceDir}" && find dicts -name .svn -prune -o -type f -print | cpio -pmdv "${HunSpellResources}" )
+			deduplicate "${HunSpellResources}"/dicts
 		fi
 	fi
 	if [ -d "${DictionarySourceDir}" -a "yes" = "${thesaurus_deployment}" ]; then
 		MyThesResources="${LyxAppPrefix}/Contents/Resources"
 		( cd "${DictionarySourceDir}" && find thes -name .svn -prune -o -type f -print | cpio -pmdv "${MyThesResources}" )
+		deduplicate "${MyThesResources}"/thes
 	fi
 }
 
