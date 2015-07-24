@@ -803,10 +803,14 @@ deduplicate() {
 	find "$@" -type f -print | while read file ; do
 		echo $(md5 -q "$file") "$file"
 	done | sort | while read hash file ; do
-		if [ "$phash" = "$hash" ]; then
+		ppath=$(dirname "$pfile")
+		path=$(dirname "$file")
+		if [ "$phash" = "$hash" -a "$ppath" = "$path" ]; then
+			pname=$(basename "$pfile")
+			name=$(basename "$file")
 			cmp -s "$pfile" "$file" && (
 				rm "$file"
-				ln -s "$pfile" "$file" && echo link for "$file" created
+				cd "$path" && ln -s "$pname" "$name" && echo link for "$file" created
 			)
 		fi
 		phash="$hash"
