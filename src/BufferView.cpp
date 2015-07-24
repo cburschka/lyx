@@ -2458,6 +2458,7 @@ void BufferView::setCursor(DocIterator const & dit)
 
 	d->cursor_.setCursor(dit);
 	d->cursor_.setSelection(false);
+	d->cursor_.setCurrentFont();
 	// FIXME
 	// It seems on general grounds as if this is probably needed, but
 	// it is not yet clear.
