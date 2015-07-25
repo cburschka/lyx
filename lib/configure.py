@@ -688,7 +688,7 @@ def checkFormatEntries(dtl_tools):
     checkViewerEditor('a Rich Text and Word viewer', ['libreoffice', 'lwriter', 'lowriter', 'oowriter', 'swriter', 'abiword'],
         rc_entry = [r'''\Format rtf        rtf    "Rich Text Format"      "" "%%"	"%%"	"document,vector,menu=export"	"application/rtf"
 \Format word       doc    "MS Word"               W  "%%"	"%%"	"document,vector,menu=export"	"application/msword"
-\Format word2      docx    "MS Word Office Open XML"               W  "%%"	"%%"	"document,vector,menu=export"	"application/vnd.openxmlformats-officedocument.wordprocessingml.document"'''])
+\Format word2      docx    "MS Word Office Open XML"               O  "%%"	"%%"	"document,vector,menu=export"	"application/vnd.openxmlformats-officedocument.wordprocessingml.document"'''])
     #
     # entries that do not need checkProg
     addToRC(r'''\Format date       ""     "date command"          "" ""	""	""	""
