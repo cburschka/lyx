@@ -1,6 +1,6 @@
 -*- text -*-
 
-This file describes what has been done in the preparation of LyX 2.1.4.
+This file describes what has been done in the preparation of LyX 2.1.5.
 All comments are welcome.
 
 We try to group things by topic and in decreasing order of importance. 
@@ -13,7 +13,7 @@ For more details on how to use the repository, please visit:
   http://wiki.lyx.org/Devel/LyXGit
 A list of bugs fixed for this release can also be found at:
   http://www.lyx.org/trac/wiki/BugTrackerHome
-as well as a list of bugs still targeted to the 2.1.4 release.
+as well as a list of bugs still targeted to the 2.1.5 release.
 
 Richard Heck
 Branch Maintainer
@@ -28,19 +28,7 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- New support for PDF forms.
 
-- New method to view PDF files if Acrobat Reader is used as PDF viewer:
-  Clicking the view button will also update the PDF view.
-  (Windows-only, bug 9512).
-
-- Add low-resolution PDF export format (needs an installed ghostscript).
-
-- Add possibility via the layout file to prevent LyX from loading inputenc.
-
-- Add Sweave and knitr importers (bug 8734).
-
-- Correctly save files created from the command line (bug 9544).
 
 
 * TEX2LYX IMPROVEMENTS
@@ -49,225 +37,36 @@ What's new
 
 * USER INTERFACE
 
-- The icons for Standard, Itemize and Enumerate layouts are now
-  toggled properly (bug 9463).
 
-- support for the math commands  \lvert, \rvert, \lVert, and \rVert (bug 3538).
-
-- Fix some missing symbols in math completer.
-
-- Fix the profile script used on cygwin to comply with the latest cygwin/X
-  X server which, by default, does not anymore listen to tcp connections.
-
-- Add a "Do not show again" checkbox to the warning that is issued when the
-  LaTeX class/packages are missing for a given layout (bug 9420).
-
-- Fix display of limits for some math operators provided by stmaryrd.sty
-  (bug 9458).
-
-- Allow using icon names other than lfun's as argument for "info-insert icon".
-
-- Add icons for the "Fonts" math panel.
-
-- Split different indices in the outliner (bug 7012).
-
-- Clarify the function of Tools > Preferences > Look & Feel > Save Documents
-  Compressed by Default (bug 7822).
-
-- Update instant previews when modifying the screen zoom factor (bug 8258).
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- New example file "PDF-form.lyx" describing the new support for PDF forms.
 
-- New Brazilian Portuguese translation of the LyX user interface localization.
-
-- New French and German translation of the MultilingualCaptions example file.
-
-- New French translation of the PDF-comment example file.
-
-- New German translation of the FeynmanDiagrams example file.
-
-- Updated Arabic, Finnish, French, German, Italian, Slovak and Swedish user
-  interface localization.
 
 
 * BUILD/INSTALLATION
 
-- Allow automake 1.15.
 
-- Use symlinks for duplicated dictionaries and thesauri when creating the
-  package on Mac OS X.
+
 
 ** Bug fixes:
 *************
 
 * DOCUMENT INPUT/OUTPUT
 
-- Update path of included files when saving a document to a different
-  location (bugs 9528, 5115).
-
-- Fix LaTeX errors caused by too late loading of fixltx2e package
-  (bugs 9452, 9361).
-
-- Fix loading order of amsmath and amsthm, thereby prevent a LaTeX
-  error (bug 7233).
-
-- Do not output \protect unnecessarily before \caption (bug 9177).
-
-- Do not output \protect unnecessarily in subfigure contents (bug 9421).
-
-- Do \protect phantoms in fragile environments (such as captions)
-  (bug 9456).
-
-- Fix LaTeX error with font sizes in caption (bug 9470).
-
-- Fix wrong listings preamble encoding (bug 9382).
-
-- Fix reversion of beamer description overlay arguments.
-
-- Fix loading of bicaption package (bug 9449).
-
-- Use local babel language switch in fixed width cells in order to prevent
-  unwanted whitespace (bug 9455).
-
-- Mark the \lightning symbol as textmode such that it can be inserted in
-  a text mode environment without being enclosed in \ensuremath by LyX.
-
-- Take into account compressed documents when creating a LyX archive.
-
-- Fix test for urwclassico font (bug 9576).
-
-- Fix issues with instant preview and math macros (bugs 6369 and 9354).
-
-- Fix instant preview for the Math manual (bug 9508).
-
-- Fix instant preview when a preview snippet produces errors (bug 9510).
-
-- Fix instant preview of included documents in child documents (bug 9583).
-
-- Do not add paragraph break on environments with font change if the
-  environments only have one paragraph (bug 9598).
-
-- Make sure to generate a preview for global macros when they appear
-  in a document containing only a single math inset.
-
-- Use the correct font size in previews also with document classes using
-  a special syntax for setting the size of fonts (such as powerdot).
 
 
 * LYX2LYX
 
-- Fix conversion of frame ends when frame is nested in inset (bug 9409).
-
-- Fix conversion of beamer block arguments where the overlay argument and the
-  closing title argument bracket share the same ERT (bug 9411).
-
-- Fix conversion of beamer colloraries with argument (bug 9478).
-
-- Fix handling of the TEXINPUTS environment variable on Windows (bug 9453).
-
-- Make lyx2lyx more robust, add the initial comment line that says what is the
-  lyx version that created the document if none is present (bug 9279).
 
 
 * USER INTERFACE
 
-- Fix crash when closing LyX on MacOS X (bug 8637).
-
-- Fix crash with undo/redo (bug 9432).
-
-- Undo all changes in one operation after "replace all" in advanced
-  search (bug 8658).
-
-- Record undo properly when changing multiple paragraphs parameters
-  (bug 9437).
-
-- Fix cursor font after undoing a font-changing command (bug 9537).
-
-- Reset cursor font when entring an inset with char-forward/backward
-  (bug 9597).
-
-- Fix crash when attempting to restore a document with multiple views on the
-  Mac (bug 9483).
-
-- Fix insertion of spaces in macro definitions (bug 9432).
-
-- Fix crash when copying macros with arguments (bug 9418).
-
-- Fix crash when copying macros with instant preview on.
-
-- Fix bad cursor font in some cases after changing layout (bug 4294).
-
-- Fix logic error in on-screen font shape (bug #3519).
-
-- Fix name and hint of figure captions in documents using the class aastex.
-
-- Fix output encoding information for non-TeX fonts XeTeX/LuaTeX on preview
-  pane (bug 8919).
-
-- Work around limitations of external image viewers on windows (bug 8892).
-
-- Do not display unwanted curly brackets in multi-line formulas (happened if
-  the first character in a row was a '[') (bug 8679).
-
-- Fix keyboard navigation in the math matrix panel (bug 9392).
-
-- Correctly inform if URW Garamond (ugm) font is not available (bug 9429).
-
-- Do not offer unsupported macros like \biggg in autocompletion.
-
-- Fix consecutive merging of tabular cells.
-
-- Fix crash with missing optional or wrong arguments for
-  * LFUN_SPELLING_ADD,
-  * LFUN_SPELLING_IGNORE and
-  * LFUN_SPELLING_REMOVE
-  (bug 9477).
-
-- Fix selection of Interlingua user interface (bug 9267).
-
-- Delete empty paragaphs as needed when navigating the document using
-  outline mode (bug 9479).
-
-- Fix selection issue when cursor moves out of an inset (bug 2346).
-
-- Pressing "End" no longer exits math inset under certain conditions 
-  (bug 9289).
-
-- Allow cursor to exit table when in selection mode (bug 9291).
-
-- Fix selection at borders of insets (bug 9487).
-
-- Remove conflicting accelerator to "Master's perspective" in the
-  View Source pane (bug 9495).
-
-- Update previews after find/replace (bug 7242).
-
-- Fix button logic in box dialog (bug 9543).
-
-- Fix default style of broadway layout.
-
-- Fix button logic in table settings dialog (bug 9570).
-
-- Fix wrong alignment of inline previews occurring in some cases (bug 7850).
-
-- Fix math preview for LuaTeX or XeTeX default output mode (bug 9371).
-
-- Fix shortcut conflicts (bug 9567).
-
-- Fix crash when using a secondary keymap but no primary one (bug 9685).
 
 
 * INTERNALS
 
-- Fix parsing of Requires layout tag if it uses tabs instead of spaces
-  (bug 9518).
-
-- Don't repeatedly check for missing programs when reconfiguring.
-
-- Backport of the fix for bug 9659 from master.
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -278,11 +77,7 @@ What's new
 
 
 
-
 * TEX2LYX
-
-- Write fixed encoding to LyX file if -fixedenc was given (bug 9178).
-
 
 
 
@@ -292,15 +87,3 @@ What's new
 
 * BUILD/INSTALLATION
 
-- Fix a configuration error on Windows causing that TeX files were not scanned.
-
-- Add "Keywords" to lyx.desktop file (bug 9414).
-
-- Fix several compilation warnings (bug 9488).
-
-- Fix build with gcc 5.1 using libstdc++ with C++11 ABI.
-
-- Fix bash-ism in ./autogen.sh script.
-
-- Update path_prefix in lyxrc.dist for Mac OS X.
-  Add the MacTeX installation location and remove very old unusable items.
