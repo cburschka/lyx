@@ -157,6 +157,17 @@ void GuiCitation::showEvent(QShowEvent * e)
 }
 
 
+void GuiCitation::on_citationTB_currentChanged(int i)
+{
+	if (i == 0)
+		findLE->setFocus();
+	else if (citationStyleCO->isEnabled())
+		citationStyleCO->setFocus();
+	else
+		textAfterED->setFocus();
+}
+
+
 void GuiCitation::on_okPB_clicked()
 {
 	applyView();

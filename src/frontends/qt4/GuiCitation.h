@@ -44,6 +44,7 @@ public:
 	~GuiCitation();
 
 private Q_SLOTS:
+	void on_citationTB_currentChanged(int i);
 	void on_okPB_clicked();
 	void on_cancelPB_clicked();
 	void on_restorePB_clicked();

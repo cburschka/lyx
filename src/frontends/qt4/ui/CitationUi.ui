@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>CitationUi</class>
  <widget class="QDialog" name="CitationUi">
@@ -5,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>449</width>
-    <height>487</height>
+    <width>590</width>
+    <height>506</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,152 +16,463 @@
   <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout">
-   <item row="0" column="0" colspan="3">
-    <layout class="QHBoxLayout">
-     <property name="spacing">
-      <number>6</number>
-     </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
+  <layout class="QGridLayout" name="gridLayout_4">
+   <item row="0" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
-      <widget class="QLabel" name="availableKeysLA">
-       <property name="text">
-        <string>A&amp;vailable Citations:</string>
+      <layout class="QHBoxLayout">
+       <property name="spacing">
+        <number>6</number>
        </property>
-       <property name="buddy">
-        <cstring>availableLV</cstring>
+       <property name="margin">
+        <number>0</number>
        </property>
-      </widget>
+       <item>
+        <widget class="QLabel" name="availableKeysLA">
+         <property name="text">
+          <string>A&amp;vailable Citations:</string>
+         </property>
+         <property name="buddy">
+          <cstring>availableLV</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>71</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="selectedKeysLA">
+         <property name="text">
+          <string>S&amp;elected Citations:</string>
+         </property>
+         <property name="buddy">
+          <cstring>selectedLV</cstring>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
      <item>
-      <spacer>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>71</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QLabel" name="selectedKeysLA">
-       <property name="text">
-        <string>S&amp;elected Citations:</string>
-       </property>
-       <property name="buddy">
-        <cstring>selectedLV</cstring>
-       </property>
-      </widget>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QListView" name="availableLV">
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <widget class="QPushButton" name="addPB">
+             <property name="toolTip">
+              <string>Click or press Enter to add the selected citation to the list</string>
+             </property>
+             <property name="text">
+              <string>&amp;Add</string>
+             </property>
+             <property name="autoDefault">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="deletePB">
+             <property name="toolTip">
+              <string>Click or press Delete to delete the selected citation from the list</string>
+             </property>
+             <property name="text">
+              <string>&amp;Delete</string>
+             </property>
+             <property name="autoDefault">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer>
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>77</width>
+               <height>1</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="upPB">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="toolTip">
+              <string>Move the selected citation up (Ctrl-Up)</string>
+             </property>
+             <property name="text">
+              <string>&amp;Up</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff/>
+              </iconset>
+             </property>
+             <property name="autoDefault">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="downPB">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="toolTip">
+              <string>Move the selected citation down (Ctrl-Down)</string>
+             </property>
+             <property name="text">
+              <string>Do&amp;wn</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff/>
+              </iconset>
+             </property>
+             <property name="autoDefault">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QListView" name="selectedLV">
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0">
+        <widget class="QTextEdit" name="infoML">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="acceptDrops">
+          <bool>false</bool>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>
-   <item row="1" column="0" rowspan="5">
-    <widget class="QListView" name="availableLV">
-     <property name="editTriggers">
-      <set>QAbstractItemView::NoEditTriggers</set>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QPushButton" name="addPB">
-     <property name="toolTip">
-      <string>Click or press Enter to add the selected citation to the list</string>
-     </property>
-     <property name="text">
-      <string>&amp;Add</string>
-     </property>
-     <property name="autoDefault">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="2" rowspan="5">
-    <widget class="QListView" name="selectedLV">
-     <property name="editTriggers">
-      <set>QAbstractItemView::NoEditTriggers</set>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QPushButton" name="deletePB">
-     <property name="toolTip">
-      <string>Click or press Delete to delete the selected citation from the list</string>
-     </property>
-     <property name="text">
-      <string>&amp;Delete</string>
-     </property>
-     <property name="autoDefault">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <spacer>
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>77</width>
-       <height>71</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="4" column="1">
-    <widget class="QPushButton" name="upPB">
+   <item row="1" column="0">
+    <widget class="QToolBox" name="citationTB">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+      <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="toolTip">
-      <string>Move the selected citation up (Ctrl-Up)</string>
+     <property name="accessibleName">
+      <string/>
      </property>
-     <property name="text">
-      <string>&amp;Up</string>
+     <property name="currentIndex">
+      <number>1</number>
      </property>
-     <property name="icon">
-      <iconset>
-       <normaloff/>
-      </iconset>
-     </property>
-     <property name="autoDefault">
-      <bool>false</bool>
-     </property>
+     <widget class="QWidget" name="page">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>572</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <attribute name="label">
+       <string>&amp;Search Citation</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="QLabel" name="findKeysLA">
+         <property name="text">
+          <string>Searc&amp;h:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>findLE</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="4">
+        <widget class="QLineEdit" name="findLE">
+         <property name="toolTip">
+          <string>Enter the text to search for and press Enter or click the button to search</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="5">
+        <widget class="QPushButton" name="searchPB">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>Click or press Enter in the search box to search</string>
+         </property>
+         <property name="text">
+          <string>&amp;Search</string>
+         </property>
+         <property name="autoDefault">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="fieldsLA">
+         <property name="text">
+          <string>Search &amp;field:</string>
+         </property>
+         <property name="buddy">
+          <cstring>fieldsCO</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="fieldsCO">
+         <property name="maxVisibleItems">
+          <number>16</number>
+         </property>
+         <property name="insertPolicy">
+          <enum>QComboBox::NoInsert</enum>
+         </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QComboBox::AdjustToContents</enum>
+         </property>
+         <item>
+          <property name="text">
+           <string>All fields</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="3">
+        <widget class="QCheckBox" name="regexCB">
+         <property name="text">
+          <string>Regular e&amp;xpression</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4" colspan="2">
+        <widget class="QCheckBox" name="caseCB">
+         <property name="text">
+          <string>Case se&amp;nsitive</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="entriesLA">
+         <property name="text">
+          <string>Entry t&amp;ypes:</string>
+         </property>
+         <property name="buddy">
+          <cstring>entriesCO</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="entriesCO">
+         <property name="insertPolicy">
+          <enum>QComboBox::NoInsert</enum>
+         </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QComboBox::AdjustToContents</enum>
+         </property>
+         <item>
+          <property name="text">
+           <string>All entry types</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="4" colspan="2">
+        <widget class="QCheckBox" name="asTypeCB">
+         <property name="text">
+          <string>Search as you &amp;type</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>572</width>
+        <height>105</height>
+       </rect>
+      </property>
+      <attribute name="label">
+       <string>For&amp;matting</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <widget class="QLabel" name="citationStyleLA">
+         <property name="text">
+          <string>Citation st&amp;yle:</string>
+         </property>
+         <property name="buddy">
+          <cstring>citationStyleCO</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="3">
+        <widget class="QComboBox" name="citationStyleCO">
+         <property name="toolTip">
+          <string>Natbib citation style to use</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="textBeforeLA">
+         <property name="text">
+          <string>Text &amp;before:</string>
+         </property>
+         <property name="buddy">
+          <cstring>textBeforeED</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="textBeforeED">
+         <property name="toolTip">
+          <string>Text to place before citation</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLabel" name="textAfterLA">
+         <property name="text">
+          <string>&amp;Text after:</string>
+         </property>
+         <property name="buddy">
+          <cstring>textAfterED</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QLineEdit" name="textAfterED">
+         <property name="toolTip">
+          <string>Text to place after citation</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="4">
+        <layout class="QHBoxLayout">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <item>
+          <spacer>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>21</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="fulllistCB">
+           <property name="toolTip">
+            <string>List all authors</string>
+           </property>
+           <property name="text">
+            <string>&amp;Full author list</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="forceuppercaseCB">
+           <property name="toolTip">
+            <string>Force upper case in citation</string>
+           </property>
+           <property name="text">
+            <string>Force u&amp;pper case</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
-   <item row="5" column="1">
-    <widget class="QPushButton" name="downPB">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="toolTip">
-      <string>Move the selected citation down (Ctrl-Down)</string>
-     </property>
-     <property name="text">
-      <string>Do&amp;wn</string>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normaloff/>
-      </iconset>
-     </property>
-     <property name="autoDefault">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="0" colspan="3">
+   <item row="2" column="0">
     <layout class="QHBoxLayout">
      <property name="spacing">
       <number>6</number>
@@ -226,295 +538,7 @@
      </item>
     </layout>
    </item>
-   <item row="6" column="0" colspan="3">
-    <widget class="QTextEdit" name="infoML">
-     <property name="acceptDrops">
-      <bool>false</bool>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-     <property name="maximumSize" >
-      <size>
-       <height>60</height>
-       <width>16777215</width>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="0" colspan="3">
-    <widget class="QGroupBox" name="styleGB">
-     <property name="title">
-      <string>Formatting</string>
-     </property>
-     <property name="flat">
-      <bool>true</bool>
-     </property>
-     <layout class="QGridLayout">
-      <item row="0" column="0">
-       <widget class="QLabel" name="citationStyleLA">
-        <property name="text">
-         <string>Citation st&amp;yle:</string>
-        </property>
-        <property name="buddy">
-         <cstring>citationStyleCO</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" colspan="3">
-       <widget class="QComboBox" name="citationStyleCO">
-        <property name="toolTip">
-         <string>Natbib citation style to use</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="textBeforeLA">
-        <property name="text">
-         <string>Text &amp;before:</string>
-        </property>
-        <property name="buddy">
-         <cstring>textBeforeED</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="textBeforeED">
-        <property name="toolTip">
-         <string>Text to place before citation</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="textAfterLA">
-        <property name="text">
-         <string>Text a&amp;fter:</string>
-        </property>
-        <property name="buddy">
-         <cstring>textAfterED</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3">
-       <widget class="QLineEdit" name="textAfterED">
-        <property name="toolTip">
-         <string>Text to place after citation</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" colspan="4">
-       <layout class="QHBoxLayout">
-        <property name="spacing">
-         <number>6</number>
-        </property>
-        <property name="margin">
-         <number>0</number>
-        </property>
-        <item>
-         <spacer>
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>21</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="fulllistCB">
-          <property name="toolTip">
-           <string>List all authors</string>
-          </property>
-          <property name="text">
-           <string>Full aut&amp;hor list</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="forceuppercaseCB">
-          <property name="toolTip">
-           <string>Force upper case in citation</string>
-          </property>
-          <property name="text">
-           <string>Force u&amp;pper case</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="7" column="0" colspan="3">
-    <widget class="QGroupBox" name="groupBox">
-     <property name="title">
-      <string>Search Citation</string>
-     </property>
-     <property name="flat">
-      <bool>true</bool>
-     </property>
-     <layout class="QGridLayout">
-      <property name="margin">
-       <number>9</number>
-      </property>
-      <property name="spacing">
-       <number>6</number>
-      </property>
-      <item row="0" column="0">
-       <widget class="QLabel" name="findKeysLA">
-        <property name="text">
-         <string>Searc&amp;h:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-        <property name="buddy">
-         <cstring>findLE</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" colspan="5">
-       <widget class="QLineEdit" name="findLE">
-        <property name="toolTip">
-         <string>Enter the text to search for and press Enter or click the button to search</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="6">
-       <widget class="QPushButton" name="searchPB">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="toolTip">
-         <string>Click or press Enter in the search box to search</string>
-        </property>
-        <property name="text">
-         <string>&amp;Search</string>
-        </property>
-        <property name="autoDefault">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="fieldsLA">
-        <property name="text">
-         <string>Search field:</string>
-        </property>
-        <property name="buddy">
-         <cstring>fieldsCO</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QComboBox" name="fieldsCO">
-        <property name="maxVisibleItems">
-         <number>16</number>
-        </property>
-        <property name="insertPolicy">
-         <enum>QComboBox::NoInsert</enum>
-        </property>
-        <property name="sizeAdjustPolicy">
-         <enum>QComboBox::AdjustToContents</enum>
-        </property>
-        <item>
-         <property name="text">
-          <string>All fields</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <spacer>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="3" colspan="2">
-       <widget class="QCheckBox" name="regexCB">
-        <property name="text">
-         <string>Regular e&amp;xpression</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="5" colspan="2">
-       <widget class="QCheckBox" name="caseCB">
-        <property name="text">
-         <string>Case se&amp;nsitive</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="entriesLA">
-        <property name="text">
-         <string>Entry types:</string>
-        </property>
-        <property name="buddy">
-         <cstring>entriesCO</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QComboBox" name="entriesCO">
-        <property name="insertPolicy">
-         <enum>QComboBox::NoInsert</enum>
-        </property>
-        <property name="sizeAdjustPolicy">
-         <enum>QComboBox::AdjustToContents</enum>
-        </property>
-        <item>
-         <property name="text">
-          <string>All entry types</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <spacer>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="2" column="5" colspan="2">
-       <widget class="QCheckBox" name="asTypeCB">
-        <property name="text">
-         <string>Search as you &amp;type</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
   </layout>
-  <zorder>availableLV</zorder>
-  <zorder>addPB</zorder>
-  <zorder>selectedLV</zorder>
-  <zorder>deletePB</zorder>
-  <zorder>upPB</zorder>
-  <zorder>downPB</zorder>
-  <zorder>infoML</zorder>
-  <zorder>styleGB</zorder>
-  <zorder>groupBox</zorder>
  </widget>
  <tabstops>
   <tabstop>availableLV</tabstop>
@@ -524,16 +548,6 @@
   <tabstop>downPB</tabstop>
   <tabstop>selectedLV</tabstop>
   <tabstop>infoML</tabstop>
-  <tabstop>findLE</tabstop>
-  <tabstop>searchPB</tabstop>
-  <tabstop>fieldsCO</tabstop>
-  <tabstop>entriesCO</tabstop>
-  <tabstop>regexCB</tabstop>
-  <tabstop>caseCB</tabstop>
-  <tabstop>asTypeCB</tabstop>
-  <tabstop>citationStyleCO</tabstop>
-  <tabstop>textBeforeED</tabstop>
-  <tabstop>textAfterED</tabstop>
   <tabstop>fulllistCB</tabstop>
   <tabstop>forceuppercaseCB</tabstop>
   <tabstop>restorePB</tabstop>
