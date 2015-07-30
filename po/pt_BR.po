@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: pt_BR 2.1.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2015-07-23 18:04-0400\n"
-"PO-Revision-Date: 2015-07-05 09:38-0300\n"
+"PO-Revision-Date: 2015-07-26 22:25-0300\n"
 "Last-Translator: Georger Araujo <georger underscore br pound yahoo dot com "
 "dot br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br pound yahoo dot "
@@ -327,8 +327,8 @@ msgstr "Nenhum"
 msgid ""
 "Enter the command to load the language package (default: \\usepackage{babel})"
 msgstr ""
-"Digite o comando para carregar o pacote de idioma (padrão: "
-"\\usepackage{babel})"
+"Digite o comando para carregar o pacote de idioma (padrão: \\usepackage"
+"{babel})"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:87
 msgid "Command s&tart:"
@@ -574,7 +574,7 @@ msgstr "Número da página a partir da qual imprimir"
 
 #: src/frontends/qt4/ui/PrintUi.ui:66
 msgid "&To:[[as in 'From page x to page y']]"
-msgstr "&Para:"
+msgstr "&Até:"
 
 #: src/frontends/qt4/ui/PrintUi.ui:79
 msgid "Page number to print to"
@@ -2791,7 +2791,7 @@ msgstr "&Visualizar todos"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
-msgstr "&Novo:[[ramo]]"
+msgstr "&Novo:"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:35
 msgid ""
@@ -2976,7 +2976,7 @@ msgstr "Cortar para caber na caixa delimitadora"
 #: src/frontends/qt4/ui/ExternalUi.ui:484
 #: src/frontends/qt4/ui/GraphicsUi.ui:345
 msgid "&Left bottom:"
-msgstr "Inferior &Esquerda:"
+msgstr "Inferior &esquerda:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:497
 msgid "x"
@@ -10353,11 +10353,11 @@ msgstr "Lista de Charts"
 
 #: lib/layouts/achemso.layout:211 lib/layouts/achemso.layout:222
 msgid "Graph[[mathematical]]"
-msgstr "Graph[[mathematical]]"
+msgstr "Graph"
 
 #: lib/layouts/achemso.layout:216
 msgid "List of Graphs[[mathematical]]"
-msgstr "Lista de Graphs[[mathematical]]"
+msgstr "Lista de Graphs"
 
 #: lib/layouts/achemso.layout:250
 msgid "SupplementalInfo"
@@ -13396,9 +13396,9 @@ msgid ""
 "it depends on R >= 2.14.1. For more info see http://yihui.name/knitr"
 msgstr ""
 "Usa o pacote knitr do R para gerar relatórios dinamicamente. Este pacote do "
-"R deve ser instalado para que o módule possa funcionar: install."
-"packages('knitr'). Nota: exige R >= 2.14.1. Para maiores informações, "
-"consulte http://yihui.name/knitr"
+"R deve ser instalado para que o módule possa funcionar: install.packages"
+"('knitr'). Nota: exige R >= 2.14.1. Para maiores informações, consulte "
+"http://yihui.name/knitr"
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:6
@@ -16168,7 +16168,7 @@ msgstr "Arquivo|A"
 
 #: lib/ui/stdmenus.inc:368
 msgid "Box[[Menu]]"
-msgstr "Caixa[[Menu]]"
+msgstr "Caixa"
 
 #: lib/ui/stdmenus.inc:369 lib/ui/stdcontext.inc:328
 msgid "Insert Regular Expression"
@@ -16220,7 +16220,7 @@ msgstr "Código TeX|X"
 
 #: lib/ui/stdmenus.inc:386
 msgid "Program Listing[[Menu]]"
-msgstr "Listagem de Programa[[Menu]]"
+msgstr "Listagem de Programa"
 
 #: lib/ui/stdmenus.inc:388
 msgid "Preview|w"
@@ -16720,7 +16720,7 @@ msgstr "Declarações de Risco e Segurança|R"
 
 #: lib/ui/stdmenus.inc:613 lib/configure.py:616
 msgid "Sweave|S"
-msgstr "Sweave|S"
+msgstr "Sweave|w"
 
 #: lib/ui/stdmenus.inc:614
 msgid "XY-pic|X"
@@ -17646,7 +17646,7 @@ msgstr "Buffer de Comandos"
 
 #: lib/ui/stdtoolbars.inc:232
 msgid "Review[[Toolbar]]"
-msgstr "Revisão[[Toolbar]]"
+msgstr "Revisão"
 
 #: lib/ui/stdtoolbars.inc:233
 msgid "Track changes"
@@ -18684,7 +18684,7 @@ msgstr "neq"
 
 #: lib/ui/stdtoolbars.inc:568
 msgid "in[[math relation]]"
-msgstr "in[[math relation]]"
+msgstr "in"
 
 #: lib/ui/stdtoolbars.inc:569
 msgid "ni"
@@ -22153,7 +22153,7 @@ msgstr "Texto simples (catdvi)"
 
 #: lib/configure.py:630
 msgid "Plain Text, Join Lines"
-msgstr "Texto simples, Juntar Linhas"
+msgstr "Texto Simples, Juntar Linhas"
 
 #: lib/configure.py:631
 msgid "Info (Beamer)"
@@ -24378,7 +24378,7 @@ msgstr ""
 #: src/LyX.cpp:1149 src/frontends/qt4/GuiAbout.cpp:141
 #, c-format
 msgid "Built on %1$s[[date]], %2$s[[time]]"
-msgstr "Compilado em %1$s[[date]], %2$s[[time]]"
+msgstr "Compilado em %1$s, %2$s"
 
 #: src/LyX.cpp:1161 src/support/Package.cpp:628
 msgid "No system directory"
@@ -24684,11 +24684,11 @@ msgstr ""
 
 #: src/LyXRC.cpp:3283
 msgid ""
-"The LaTeX command for loading the language package. E.g. "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"The LaTeX command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
-"Comando LaTeX para carregar o pacote de idioma. P.ex., "
-"\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
+"Comando LaTeX para carregar o pacote de idioma. P.ex., \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
 
 #: src/LyXRC.cpp:3287
 msgid ""
@@ -25617,7 +25617,7 @@ msgstr "Não foi possível ler modelo"
 
 #: src/frontends/qt4/BulletsModule.cpp:41
 msgid "Standard[[Bullets]]"
-msgstr "Padrão[[Pontos]]"
+msgstr "Padrão"
 
 #: src/frontends/qt4/BulletsModule.cpp:42
 msgid "Maths"
@@ -26323,19 +26323,19 @@ msgstr "Compare revisões diferentes"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:58
 msgid "big[[delimiter size]]"
-msgstr "big[[delimiter size]]"
+msgstr "big"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:59
 msgid "Big[[delimiter size]]"
-msgstr "Big[[delimiter size]]"
+msgstr "Big"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:60
 msgid "bigg[[delimiter size]]"
-msgstr "bigg[[delimiter size]]"
+msgstr "bigg"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:61
 msgid "Bigg[[delimiter size]]"
-msgstr "Bigg[[delimiter size]]"
+msgstr "Bigg"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:168
 msgid "Math Delimiter"
@@ -27078,7 +27078,7 @@ msgstr "mm"
 
 #: src/frontends/qt4/GuiGraphics.cpp:504 src/lengthcommon.cpp:45
 msgid "in[[unit of measure]]"
-msgstr "in[[unit of measure]]"
+msgstr "in"
 
 #: src/frontends/qt4/GuiGraphics.cpp:813
 msgid "Select graphics file"
@@ -28720,7 +28720,7 @@ msgstr "Outras Barras de Ferramentas"
 
 #: src/frontends/qt4/Menus.cpp:1402
 msgid "No Branches Set for Document!"
-msgstr "Nenhum Ramo Definido Neste Documento!"
+msgstr "Nenhum Ramo Definido para o Documento!"
 
 #: src/frontends/qt4/Menus.cpp:1458
 msgid "Index List|I"
@@ -29871,7 +29871,7 @@ msgstr "Pré-visualização falhou"
 
 #: src/lengthcommon.cpp:44
 msgid "cc[[unit of measure]]"
-msgstr "cc[[unit of measure]]"
+msgstr "cc"
 
 #: src/lengthcommon.cpp:44
 msgid "dd"
@@ -29887,7 +29887,7 @@ msgstr "ex"
 
 #: src/lengthcommon.cpp:45
 msgid "mu[[unit of measure]]"
-msgstr "mu[[unit of measure]]"
+msgstr "mu"
 
 #: src/lengthcommon.cpp:45
 msgid "pc"
@@ -30078,7 +30078,7 @@ msgstr "Autocorreção Ligada (<espaço> para sair)"
 
 #: src/mathed/InsetMathRef.cpp:225
 msgid "Standard[[mathref]]"
-msgstr "Padrão[[mathref]]"
+msgstr "Padrão"
 
 #: src/mathed/InsetMathRef.cpp:230
 msgid "PrettyRef"
