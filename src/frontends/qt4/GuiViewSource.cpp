@@ -46,7 +46,8 @@ namespace frontend {
 ViewSourceWidget::ViewSourceWidget()
 	:	bv_(0), document_(new QTextDocument(this)),
 		highlighter_(new LaTeXHighlighter(document_)),
-		force_getcontent_(true)
+		force_getcontent_(true),
+		update_timer_(new QTimer(this))
 {
 	setupUi(this);
 
@@ -55,13 +56,18 @@ ViewSourceWidget::ViewSourceWidget()
 	connect(autoUpdateCB, SIGNAL(toggled(bool)),
 		updatePB, SLOT(setDisabled(bool)));
 	connect(autoUpdateCB, SIGNAL(toggled(bool)),
-		this, SLOT(updateView()));
+		this, SLOT(updateViewNow()));
 	connect(masterPerspectiveCB, SIGNAL(toggled(bool)),
-		this, SLOT(updateView()));
+		this, SLOT(updateViewNow()));
 	connect(updatePB, SIGNAL(clicked()),
-		this, SLOT(updateView()));
+		this, SLOT(updateViewNow()));
 	connect(outputFormatCO, SIGNAL(activated(int)),
 		this, SLOT(setViewFormat()));
+
+	// setting the update timer
+	update_timer_->setSingleShot(true);
+	connect(update_timer_, SIGNAL(timeout()),
+		this, SLOT(realUpdateView()));
 
 	// setting a document at this point trigger an assertion in Qt
 	// so we disable the signals here:
@@ -139,7 +145,7 @@ void ViewSourceWidget::setBufferView(BufferView const * bv)
 void ViewSourceWidget::contentsChanged()
 {
 	if (autoUpdateCB->isChecked())
-		updateView();
+		updateViewNow();
 }
 
 
@@ -147,11 +153,25 @@ void ViewSourceWidget::setViewFormat()
 {
 	view_format_ = outputFormatCO->itemData(
 	      outputFormatCO->currentIndex()).toString();
-	updateView();
+	updateViewNow();
 }
 
 
 void ViewSourceWidget::updateView()
+{
+	const int long_delay = 400;
+	const int short_delay = 60;
+	// a shorter delay if just the current paragraph is shown
+	update_timer_->start((contentsCO->currentIndex() == 0) ?
+						short_delay : long_delay);
+}
+
+void ViewSourceWidget::updateViewNow()
+{
+	update_timer_->start(0);
+}
+
+void ViewSourceWidget::realUpdateView()
 {
 	if (!bv_) {
 		document_->setPlainText(QString());

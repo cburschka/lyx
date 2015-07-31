@@ -20,6 +20,7 @@
 
 #include <QDockWidget>
 #include <QString>
+#include <QTimer>
 
 class QTextDocument;
 
@@ -43,14 +44,20 @@ protected:
 	void resizeEvent (QResizeEvent * event);
 
 public Q_SLOTS:
-	/// update content
+	/// schedule an update after delay
 	void updateView();
+	/// schedule an update now
+	void updateViewNow();
 	///
 	void setViewFormat();
 	///
 	void updateDefaultFormat();
 	///
 	void contentsChanged();
+
+private Q_SLOTS:
+	/// update content
+	void realUpdateView();
 
 private:
 	///
@@ -63,6 +70,8 @@ private:
 	bool force_getcontent_;
 	///
 	QString view_format_;
+	///
+	QTimer * update_timer_;
 };
 
 
