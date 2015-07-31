@@ -38,6 +38,10 @@ public:
 	ViewSourceWidget();
 	///
 	void setBufferView(BufferView const * bv);
+	///
+	void saveSession(QString const & session_key) const;
+	///
+	void restoreSession(QString const & session_key);
 
 protected:
 	///
@@ -49,8 +53,8 @@ public Q_SLOTS:
 	/// schedule an update now
 	void updateViewNow();
 	///
-	void setViewFormat();
-	///
+	void setViewFormat(int const index);
+	//
 	void updateDefaultFormat();
 	///
 	void contentsChanged();

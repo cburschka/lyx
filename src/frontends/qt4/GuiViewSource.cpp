@@ -33,6 +33,7 @@
 #include <boost/crc.hpp>
 
 #include <QBoxLayout>
+#include <QComboBox>
 #include <QSettings>
 #include <QTextCursor>
 #include <QTextDocument>
@@ -56,13 +57,15 @@ ViewSourceWidget::ViewSourceWidget()
 	connect(autoUpdateCB, SIGNAL(toggled(bool)),
 		updatePB, SLOT(setDisabled(bool)));
 	connect(autoUpdateCB, SIGNAL(toggled(bool)),
-		this, SLOT(updateViewNow()));
+		this, SLOT(contentsChanged()));
 	connect(masterPerspectiveCB, SIGNAL(toggled(bool)),
-		this, SLOT(updateViewNow()));
+		this, SLOT(contentsChanged()));
 	connect(updatePB, SIGNAL(clicked()),
 		this, SLOT(updateViewNow()));
 	connect(outputFormatCO, SIGNAL(activated(int)),
-		this, SLOT(setViewFormat()));
+		this, SLOT(setViewFormat(int)));
+	connect(outputFormatCO, SIGNAL(activated(int)),
+		this, SLOT(contentsChanged()));
 
 	// setting the update timer
 	update_timer_->setSingleShot(true);
@@ -149,11 +152,10 @@ void ViewSourceWidget::contentsChanged()
 }
 
 
-void ViewSourceWidget::setViewFormat()
+void ViewSourceWidget::setViewFormat(int const index)
 {
-	view_format_ = outputFormatCO->itemData(
-	      outputFormatCO->currentIndex()).toString();
-	updateViewNow();
+	outputFormatCO->setCurrentIndex(index);
+	view_format_ = outputFormatCO->itemData(index).toString();
 }
 
 
@@ -244,7 +246,7 @@ void ViewSourceWidget::updateDefaultFormat()
 		if (qformat == view_format_)
 		   index = outputFormatCO->count() -1;
 	}
-	outputFormatCO->setCurrentIndex(index);
+	setViewFormat(index);
 
 	outputFormatCO->blockSignals(false);
 }
@@ -260,6 +262,35 @@ void ViewSourceWidget::resizeEvent (QResizeEvent * event)
 		layout_->setDirection(QBoxLayout::LeftToRight);
 	}
 	QWidget::resizeEvent(event);
+}
+
+void ViewSourceWidget::saveSession(QString const & session_key) const
+{
+	QSettings settings;
+	settings.setValue(session_key + "/output", view_format_);
+	settings.setValue(session_key + "/contents", contentsCO->currentIndex());
+	settings.setValue(session_key + "/autoupdate", autoUpdateCB->isChecked());
+	settings.setValue(session_key + "/masterview",
+					  masterPerspectiveCB->isChecked());
+}
+
+
+void ViewSourceWidget::restoreSession(QString const & session_key)
+{
+	QSettings settings;
+    view_format_ = settings.value(session_key + "/output", 0).toString();
+	contentsCO->setCurrentIndex(settings
+								.value(session_key + "/contents", 0)
+								.toInt());
+	masterPerspectiveCB->setChecked(settings
+									.value(session_key + "/masterview", false)
+									.toBool());
+	bool const checked = settings
+		.value(session_key + "/autoupdate", true)
+		.toBool();
+	autoUpdateCB->setChecked(checked);
+	if (checked)
+		updateView();
 }
 
 
@@ -294,7 +325,7 @@ void GuiViewSource::enableView(bool enable)
 	widget_->updateDefaultFormat();
 	if (!enable)
 		// In the opposite case, updateView() will be called anyway.
-		widget_->updateView();
+		widget_->contentsChanged();
 }
 
 
@@ -323,26 +354,14 @@ QString GuiViewSource::title() const
 void GuiViewSource::saveSession() const
 {
 	Dialog::saveSession();
-	QSettings settings;
-	// see below
-	// settings.setValue(
-	//	sessionKey() + "/output", widget_->contentsCO->currentIndex());
-	settings.setValue(
-		sessionKey() + "/autoupdate", widget_->autoUpdateCB->isChecked());
+	widget_->saveSession(sessionKey());
 }
 
 
 void GuiViewSource::restoreSession()
 {
 	DockView::restoreSession();
-	// FIXME: Full source updating is too slow to be done at startup.
-	//widget_->outputCO-setCurrentIndex(
-	//	settings.value(sessionKey() + "/output", false).toInt());
-	widget_->contentsCO->setCurrentIndex(0);
-	QSettings settings;
-	widget_->autoUpdateCB->setChecked(
-		settings.value(sessionKey() + "/autoupdate", true).toBool());
-	widget_->updateView();
+	widget_->restoreSession(sessionKey());
 }
 
 
