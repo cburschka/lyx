@@ -425,26 +425,20 @@ MathMacroTemplate::MathMacroTemplate(Buffer * buf, docstring const & name, int n
 }
 
 
-MathMacroTemplate::MathMacroTemplate(Buffer * buf, docstring const & str)
-	: InsetMathNest(buf, 3), numargs_(0), optionals_(0),
-	type_(MacroTypeNewcommand), lookOutdated_(true)
+bool MathMacroTemplate::fromString(docstring const & str)
 {
-	buffer_ = buf;
-	initMath();
-
-	MathData ar(buf);
+	MathData ar(buffer_);
 	mathed_parse_cell(ar, str, Parse::NORMAL);
 	if (ar.size() != 1 || !ar[0]->asMacroTemplate()) {
 		lyxerr << "Cannot read macro from '" << ar << "'" << endl;
 		asArray(from_ascii("invalidmacro"), cell(0));
-		// FIXME: The macro template does not make sense after this.
-		// The whole parsing should not be in a constructor which
-		// has no chance to report failure.
-		return;
+		// The macro template does not make sense after this.
+		return false;
 	}
 	operator=( *(ar[0]->asMacroTemplate()) );
 
 	updateLook();
+	return true;
 }
 
 

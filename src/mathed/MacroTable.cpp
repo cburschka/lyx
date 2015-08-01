@@ -243,7 +243,8 @@ MacroTable::iterator
 MacroTable::insert(Buffer * buf, docstring const & def)
 {
 	//lyxerr << "MacroTable::insert, def: " << to_utf8(def) << endl;
-	MathMacroTemplate mac(buf, def);
+	MathMacroTemplate mac(buf);
+	mac.fromString(def);
 	MacroData data(buf, mac);
 	return insert(mac.name(), data);
 }

@@ -34,8 +34,8 @@ public:
 		std::vector<MathData> const & optionalValues = std::vector<MathData>(),
 		MathData const & def = MathData(),
 		MathData const & display = MathData());
-	///
-	MathMacroTemplate(Buffer * buf, const docstring & str);
+	/// parses from string, returns false if failed
+	bool fromString (const docstring & str);
 	///
 	bool editable() const { return true; }
 	///

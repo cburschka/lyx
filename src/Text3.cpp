@@ -132,7 +132,7 @@ static void finishChange(Cursor & cur, bool selecting)
 }
 
 
-static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
+static void mathDispatch(Cursor & cur, FuncRequest const & cmd)
 {
 	cur.recordUndo();
 	docstring sel = cur.selectionAsString(false);
@@ -152,45 +152,39 @@ static void mathDispatch(Cursor & cur, FuncRequest const & cmd, bool display)
 		LATTEST(old_pos == cur.pos());
 #endif
 		cur.nextInset()->edit(cur, true);
-		// don't do that also for LFUN_MATH_MODE
-		// unless you want end up with always changing
-		// to mathrm when opening an inlined inset --
-		// I really hate "LyXfunc overloading"...
-		if (display)
-			cur.dispatch(FuncRequest(LFUN_MATH_DISPLAY));
-		// Avoid an unnecessary undo step if cmd.argument
-		// is empty
-		if (!cmd.argument().empty())
-			cur.dispatch(FuncRequest(LFUN_MATH_INSERT,
-						 cmd.argument()));
+		if (cmd.action() != LFUN_MATH_MODE)
+			// LFUN_MATH_MODE has a different meaning in math mode
+			cur.dispatch(cmd);
 	} else {
-		// create a macro if we see "\\newcommand"
-		// somewhere, and an ordinary formula
-		// otherwise
-		if (sel.find(from_ascii("\\newcommand")) == string::npos
-				&& sel.find(from_ascii("\\newlyxcommand")) == string::npos
-				&& sel.find(from_ascii("\\def")) == string::npos)
-		{
-			InsetMathHull * formula = new InsetMathHull(cur.buffer());
-			string const selstr = to_utf8(sel);
-			istringstream is(selstr);
-			Lexer lex;
+		InsetMathHull * formula = new InsetMathHull(cur.buffer());
+		string const selstr = to_utf8(sel);
+		istringstream is(selstr);
+		Lexer lex;
+		lex.setStream(is);
+		if (!formula->readQuiet(lex)) {
+			// No valid formula, let's try with delims
+			is.str("$" + selstr + "$");
 			lex.setStream(is);
 			if (!formula->readQuiet(lex)) {
-				// No valid formula, let's try with delims
-				is.str("$" + selstr + "$");
-				lex.setStream(is);
-				if (!formula->readQuiet(lex)) {
-					// Still not valid, leave it as is
-					valid = false;
-					delete formula;
-					cur.insert(sel);
-				} else
-					cur.insert(formula);
-			} else
-				cur.insert(formula);
-		} else {
-			cur.insert(new MathMacroTemplate(cur.buffer(), sel));
+				// Still not valid, leave it as is
+				valid = false;
+				delete formula;
+				cur.insert(sel);
+			}
+		}
+		if (valid) {
+			cur.insert(formula);
+			cur.nextInset()->edit(cur, true);
+			LASSERT(cur.inMathed(), return);
+			cur.pos() = 0;
+			cur.resetAnchor();
+			cur.setSelection(true);
+			cur.pos() = cur.lastpos();
+			if (cmd.action() != LFUN_MATH_MODE)
+				// LFUN_MATH_MODE has a different meaning in math mode
+				cur.dispatch(cmd);
+			cur.clearSelection();
+			cur.pos() = cur.lastpos();
 		}
 	}
 	if (valid)
@@ -2015,22 +2009,38 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		changeDepth(cur, INC_DEPTH);
 		break;
 
-	case LFUN_MATH_DISPLAY:
-		mathDispatch(cur, cmd, true);
-		break;
-
 	case LFUN_REGEXP_MODE:
 		regexpDispatch(cur, cmd);
 		break;
 
-	case LFUN_MATH_MODE:
-		if (cmd.argument() == "on")
+	case LFUN_MATH_MODE: {
+		if (cmd.argument() == "on" || cmd.argument() == "") {
 			// don't pass "on" as argument
 			// (it would appear literally in the first cell)
-			mathDispatch(cur, FuncRequest(LFUN_MATH_MODE), false);
-		else
-			mathDispatch(cur, cmd, false);
+			docstring sel = cur.selectionAsString(false);
+			MathMacroTemplate * macro = new MathMacroTemplate(cur.buffer());
+			// create a macro template if we see "\\newcommand" somewhere, and
+			// an ordinary formula otherwise
+			if (!sel.empty()
+				&& (sel.find(from_ascii("\\newcommand")) != string::npos
+					|| sel.find(from_ascii("\\newlyxcommand")) != string::npos
+					|| sel.find(from_ascii("\\def")) != string::npos)
+				&& macro->fromString(sel)) {
+				cur.recordUndo();
+				replaceSelection(cur);
+				cur.insert(macro);
+			} else {
+				// no meaningful macro template was found
+				delete macro;
+				mathDispatch(cur,FuncRequest(LFUN_MATH_MODE));
+			}
+		} else
+			// The argument is meaningful
+			// We replace cmd with LFUN_MATH_INSERT because LFUN_MATH_MODE
+			// has a different meaning in math mode
+			mathDispatch(cur, FuncRequest(LFUN_MATH_INSERT,cmd.argument()));
 		break;
+	}
 
 	case LFUN_MATH_MACRO:
 		if (cmd.argument().empty())
@@ -2058,27 +2068,16 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	// passthrough hat and underscore outside mathed:
+	case LFUN_MATH_DISPLAY:
 	case LFUN_MATH_SUBSCRIPT:
-		mathDispatch(cur, FuncRequest(LFUN_SELF_INSERT, "_"), false);
-		break;
 	case LFUN_MATH_SUPERSCRIPT:
-		mathDispatch(cur, FuncRequest(LFUN_SELF_INSERT, "^"), false);
-		break;
-
 	case LFUN_MATH_INSERT:
 	case LFUN_MATH_AMS_MATRIX:
 	case LFUN_MATH_MATRIX:
 	case LFUN_MATH_DELIM:
-	case LFUN_MATH_BIGDELIM: {
-		cur.recordUndo();
-		cap::replaceSelection(cur);
-		cur.insert(new InsetMathHull(cur.buffer(), hullSimple));
-		checkAndActivateInset(cur, true);
-		LASSERT(cur.inMathed(), break);
-		cur.dispatch(cmd);
+	case LFUN_MATH_BIGDELIM:
+		mathDispatch(cur, cmd);
 		break;
-	}
 
 	case LFUN_FONT_EMPH: {
 		Font font(ignore_font, ignore_language);
