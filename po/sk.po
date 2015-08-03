@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-07-19 15:15+0200\n"
-"PO-Revision-Date: 2015-07-19 14:14+0000\n"
+"POT-Creation-Date: 2015-08-03 09:26+0200\n"
+"PO-Revision-Date: 2015-08-03 08:28+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
 "Language: sk\n"
@@ -859,9 +859,9 @@ msgstr "&Použiť"
 msgid "Close"
 msgstr "Zavrieť"
 
-#: src/frontends/qt4/ui/CitationUi.ui:30
+#: src/frontends/qt4/ui/CitationUi.ui:33
 msgid "A&vailable Citations:"
-msgstr "&Dostupné Citácie:"
+msgstr "Do&stupné Citácie:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:53
 msgid "S&elected Citations:"
@@ -883,6 +883,10 @@ msgstr "Presunúť označenú citáciu nahor (Ctrl-Up)"
 msgid "Move the selected citation down (Ctrl-Down)"
 msgstr "Presunúť označenú citáciu nadol (Ctrl-Down)"
 
+#: src/frontends/qt4/ui/CitationUi.ui:220
+msgid "&Search Citation"
+msgstr "Hľadať &citáciu"
+
 #: src/frontends/qt4/ui/CitationUi.ui:174
 #: src/frontends/qt4/ui/DocumentUi.ui:44
 #: src/frontends/qt4/ui/GraphicsUi.ui:692
@@ -895,10 +899,6 @@ msgstr "O&bnoviť"
 #: src/frontends/qt4/ui/CitationUi.ui:210
 msgid "App&ly"
 msgstr "&Použiť"
-
-#: src/frontends/qt4/ui/CitationUi.ui:248
-msgid "Formatting"
-msgstr "Formátovanie"
 
 #: src/frontends/qt4/ui/CitationUi.ui:257
 msgid "Citation st&yle:"
@@ -916,8 +916,8 @@ msgstr "&Text pred:"
 msgid "Text to place before citation"
 msgstr "Text, umiestnený pred citátom"
 
-#: src/frontends/qt4/ui/CitationUi.ui:291
-msgid "Text a&fter:"
+#: src/frontends/qt4/ui/CitationUi.ui:414
+msgid "&Text after:"
 msgstr "Te&xt za:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:301
@@ -928,9 +928,9 @@ msgstr "Text, umiestnený za citátom"
 msgid "List all authors"
 msgstr "Vypísať všetkých autorov"
 
-#: src/frontends/qt4/ui/CitationUi.ui:332
-msgid "Full aut&hor list"
-msgstr "Každý a&utor"
+#: src/frontends/qt4/ui/CitationUi.ui:455
+msgid "&Full author list"
+msgstr "Výpis všetkých a&utorov"
 
 #: src/frontends/qt4/ui/CitationUi.ui:339
 msgid "Force upper case in citation"
@@ -939,10 +939,6 @@ msgstr "Vnútiť veľké písmená do citácie"
 #: src/frontends/qt4/ui/CitationUi.ui:342
 msgid "Force u&pper case"
 msgstr "Vnútiť v&eľké písmo"
-
-#: src/frontends/qt4/ui/CitationUi.ui:354
-msgid "Search Citation"
-msgstr "Hľadať citáciu"
 
 #: src/frontends/qt4/ui/CitationUi.ui:369
 msgid "Searc&h:"
@@ -963,26 +959,26 @@ msgstr "Kliknite alebo stlačte Enter vo vyhľadávacom políčku aby hľadanie 
 msgid "&Search"
 msgstr "Hľada&j"
 
-#: src/frontends/qt4/ui/CitationUi.ui:408
-msgid "Search field:"
-msgstr "Priestor hľadania:"
+#: src/frontends/qt4/ui/CitationUi.ui:265
+msgid "Search &field:"
+msgstr "P&riestor hľadania:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:428
 #: src/frontends/qt4/GuiCitation.cpp:288
 msgid "All fields"
 msgstr "Všetky políčka"
 
-#: src/frontends/qt4/ui/CitationUi.ui:449
+#: src/frontends/qt4/ui/CitationUi.ui:306
 msgid "Regular e&xpression"
-msgstr "&Regulárny výraz"
+msgstr "Re&gulárny výraz"
 
-#: src/frontends/qt4/ui/CitationUi.ui:456
+#: src/frontends/qt4/ui/CitationUi.ui:313
 msgid "Case se&nsitive"
-msgstr "R&ozlišovať veľkosť písmen"
+msgstr "Roz&lišovať veľkosť písmen"
 
-#: src/frontends/qt4/ui/CitationUi.ui:463
-msgid "Entry types:"
-msgstr "Typy záznamov:"
+#: src/frontends/qt4/ui/CitationUi.ui:320
+msgid "Entry t&ypes:"
+msgstr "&Typy záznamov:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:480
 #: src/frontends/qt4/GuiCitation.cpp:303
@@ -992,6 +988,10 @@ msgstr "Všetky typy záznamov"
 #: src/frontends/qt4/ui/CitationUi.ui:501
 msgid "Search as you &type"
 msgstr "V&yhľadávať pri zadávaní"
+
+#: src/frontends/qt4/ui/CitationUi.ui:374
+msgid "For&matting"
+msgstr "&Formátovanie"
 
 #: src/frontends/qt4/ui/ColorUi.ui:27
 msgid "Font Colors"
@@ -22328,16 +22328,10 @@ msgstr "Rastrový obrázok"
 #: lib/external_templates:88
 msgid ""
 "A bitmap file.\n"
-"Use this template to include bitmap images of any kind except\n"
-"photos in JPEG format: These will be uncompressed by this\n"
-"template, therefore it is better to include them with a\n"
-"graphics inset, since the graphics inset preserves the\n"
-"compression if the pdflatex compiler is used.\n"
+"Use this template to include bitmap images of any kind.\n"
 msgstr ""
-"Bitmapový súbor. Okrem druhu JPEG, používajte túto šablónu na vklad\n"
-"akýchkoľvek bitmapových obrázkov: S touto šablónou budú dekomprimované.\n"
-"Je lepšie použiť ich v grafickej vložke lebo grafická vložka uchováva\n"
-"kompresiu pri použití programu pdflatex.\n"
+"Bitmap súbor.\n"
+"Použite túto šablónu na vklad bitmapových obrázkov akéhokoľvek typu.\n"
 
 #: lib/external_templates:156
 msgid "VectorGraphics"
@@ -22853,8 +22847,8 @@ msgstr "MS Word"
 msgid "MS Word Office Open XML"
 msgstr "MS-Word Office-Open XML"
 
-#: lib/configure.py:689
-msgid "MS Word Office Open XML|W"
+#: lib/configure.py:691
+msgid "MS Word Office Open XML|O"
 msgstr "MS-Word Office-Open XML|W"
 
 #: lib/configure.py:688
@@ -30881,6 +30875,19 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid ""
+#~ "A bitmap file.\n"
+#~ "Use this template to include bitmap images of any kind except\n"
+#~ "photos in JPEG format: These will be uncompressed by this\n"
+#~ "template, therefore it is better to include them with a\n"
+#~ "graphics inset, since the graphics inset preserves the\n"
+#~ "compression if the pdflatex compiler is used.\n"
+#~ msgstr ""
+#~ "Bitmapový súbor. Okrem druhu JPEG, používajte túto šablónu na vklad\n"
+#~ "akýchkoľvek bitmapových obrázkov: S touto šablónou budú dekomprimované.\n"
+#~ "Je lepšie použiť ich v grafickej vložke lebo grafická vložka uchováva\n"
+#~ "kompresiu pri použití programu pdflatex.\n"
+
 #~ msgid "A bitmap file.\n"
 #~ msgstr "Bitmapový súbor.\n"
 
@@ -34055,3 +34062,24 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Umožňuje používanie menovaných teorém. Meno teorému ide do vložky 'Krátky "
 #~ "Titul'."
+
+#~ msgid "Formatting"
+#~ msgstr "Formátovanie"
+
+#~ msgid "Text a&fter:"
+#~ msgstr "Te&xt za:"
+
+#~ msgid "Full aut&hor list"
+#~ msgstr "Každý a&utor"
+
+#~ msgid "Search Citation"
+#~ msgstr "Hľadať citáciu"
+
+#~ msgid "Search field:"
+#~ msgstr "Priestor hľadania:"
+
+#~ msgid "Entry types:"
+#~ msgstr "Typy záznamov:"
+
+#~ msgid "MS Word Office Open XML|W"
+#~ msgstr "MS-Word Office-Open XML|W"
