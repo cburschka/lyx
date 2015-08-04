@@ -16,7 +16,9 @@
 
 #include "ui_ViewSourceUi.h"
 
+#include "Buffer.h"
 #include "DockView.h"
+#include "TexRow.h"
 
 #include <QDockWidget>
 #include <QString>
@@ -38,6 +40,8 @@ public:
 	ViewSourceWidget();
 	///
 	void setBufferView(BufferView const * bv);
+	/// returns true if the string has changed
+	bool setText(QString const & qstr = QString());
 	///
 	void saveSession(QString const & session_key) const;
 	///
@@ -64,14 +68,17 @@ private Q_SLOTS:
 	void realUpdateView();
 
 private:
+	/// Get the source code of selected paragraphs, or the whole document.
+	/// If TexRow is unavailable for the format then t is null.
+	std::auto_ptr<TexRow> getContent(BufferView const * view,
+									 Buffer::OutputWhat output, docstring & str,
+									 std::string const & format, bool master);
 	///
 	BufferView const * bv_;
 	///
 	QTextDocument * document_;
 	/// LaTeX syntax highlighter
 	LaTeXHighlighter * highlighter_;
-	///
-	bool force_getcontent_;
 	///
 	QString view_format_;
 	///

@@ -3510,11 +3510,12 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to)
 	}
 }
 
-
-void Buffer::getSourceCode(odocstream & os, string const & format,
+// returns NULL if id-to-row conversion is unsupported
+auto_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 			   pit_type par_begin, pit_type par_end,
 			   OutputWhat output, bool master) const
 {
+	auto_ptr<TexRow> texrow(NULL);
 	OutputParams runparams(&params().encoding());
 	runparams.nice = true;
 	runparams.flavor = params().getOutputFlavor(format);
@@ -3568,12 +3569,12 @@ void Buffer::getSourceCode(odocstream & os, string const & format,
 			LaTeXFeatures features(*this, params(), runparams);
 			params().validate(features);
 			runparams.use_polyglossia = features.usePolyglossia();
-			TexRow texrow;
-			texrow.reset();
-			texrow.newline();
-			texrow.newline();
+			texrow.reset(new TexRow());
+			texrow->reset();
+			texrow->newline();
+			texrow->newline();
 			// latex or literate
-			otexstream ots(os, texrow);
+			otexstream ots(os, *texrow);
 
 			// the real stuff
 			latexParagraphs(*this, text(), ots, runparams);
@@ -3611,15 +3612,17 @@ void Buffer::getSourceCode(odocstream & os, string const & format,
 				writeDocBookSource(os, absFileName(), runparams, output);
 		} else {
 			// latex or literate
-			d->texrow.reset();
-			d->texrow.newline();
-			d->texrow.newline();
-			otexstream ots(os, d->texrow);
+			texrow.reset(new TexRow());
+			texrow->reset();
+			texrow->newline();
+			texrow->newline();
+			otexstream ots(os, *texrow);
 			if (master)
 				runparams.is_child = true;
 			writeLaTeXSource(ots, string(), runparams, output);
 		}
 	}
+	return texrow;
 }
 
 

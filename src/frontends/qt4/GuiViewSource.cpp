@@ -17,13 +17,11 @@
 #include "LaTeXHighlighter.h"
 #include "qt_helpers.h"
 
-#include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Cursor.h"
 #include "Format.h"
 #include "Paragraph.h"
-#include "TexRow.h"
 
 #include "support/debug.h"
 #include "support/lassert.h"
@@ -34,6 +32,7 @@
 
 #include <QBoxLayout>
 #include <QComboBox>
+#include <QScrollBar>
 #include <QSettings>
 #include <QTextCursor>
 #include <QTextDocument>
@@ -47,7 +46,6 @@ namespace frontend {
 ViewSourceWidget::ViewSourceWidget()
 	:	bv_(0), document_(new QTextDocument(this)),
 		highlighter_(new LaTeXHighlighter(document_)),
-		force_getcontent_(true),
 		update_timer_(new QTimer(this))
 {
 	setupUi(this);
@@ -76,6 +74,8 @@ ViewSourceWidget::ViewSourceWidget()
 	// so we disable the signals here:
 	document_->blockSignals(true);
 	viewSourceTV->setDocument(document_);
+	// reset selections
+	setText();
 	document_->blockSignals(false);
 	viewSourceTV->setReadOnly(true);
 	///dialog_->viewSourceTV->setAcceptRichText(false);
@@ -89,21 +89,9 @@ ViewSourceWidget::ViewSourceWidget()
 }
 
 
-static size_t crcCheck(docstring const & s)
-{
-	boost::crc_32_type crc;
-	crc.process_bytes(&s[0], sizeof(char_type) * s.size());
-	return crc.checksum();
-}
-
-
-/** get the source code of selected paragraphs, or the whole document
-	\param fullSource get full source code
-	\return true if the content has changed since last call.
- */
-static bool getContent(BufferView const * view, Buffer::OutputWhat output,
-		       QString & qstr, string const & format, bool force_getcontent,
-		       bool master)
+auto_ptr<TexRow> ViewSourceWidget::getContent(BufferView const * view,
+			Buffer::OutputWhat output, docstring & str, string const & format,
+			bool master)
 {
 	// get the *top* level paragraphs that contain the cursor,
 	// or the selected text
@@ -120,28 +108,30 @@ static bool getContent(BufferView const * view, Buffer::OutputWhat output,
 	if (par_begin > par_end)
 		swap(par_begin, par_end);
 	odocstringstream ostr;
-	view->buffer().getSourceCode(ostr, format, par_begin, par_end + 1,
-				     output, master);
-	docstring s = ostr.str();
-	// FIXME THREAD
-	// Could this be private to this particular dialog? We could have
-	// more than one of these, in different windows.
-	static size_t crc = 0;
-	size_t newcrc = crcCheck(s);
-	if (newcrc == crc && !force_getcontent)
-		return false;
-	crc = newcrc;
-	qstr = toqstr(s);
-	return true;
+	auto_ptr<TexRow> texrow = view->buffer().getSourceCode(ostr, format,
+								    par_begin, par_end + 1, output, master);
+	str = ostr.str();
+	return texrow;
 }
 
 
 void ViewSourceWidget::setBufferView(BufferView const * bv)
 {
-	if (bv_ != bv)
-		force_getcontent_ = true;
-	bv_ = bv;
+	if (bv_ != bv) {
+		setText();
+		bv_ = bv;
+	}
 	setEnabled(bv ?  true : false);
+}
+
+
+bool ViewSourceWidget::setText(QString const & qstr)
+{
+	bool const changed = document_->toPlainText() != qstr;
+	viewSourceTV->setExtraSelections(QList<QTextEdit::ExtraSelection>());
+	if (changed)
+		document_->setPlainText(qstr);
+	return changed;
 }
 
 
@@ -176,16 +166,21 @@ void ViewSourceWidget::updateViewNow()
 void ViewSourceWidget::realUpdateView()
 {
 	if (!bv_) {
-		document_->setPlainText(QString());
+		setText();
 		setEnabled(false);
 		return;
 	}
 
 	setEnabled(true);
 
+	// we will try to get that much space around the cursor
+	int const v_margin = 3;
+	int const h_margin = 10;
+	// we will try to preserve this
+	int const h_scroll = viewSourceTV->horizontalScrollBar()->value();
+
 	string const format = fromqstr(view_format_);
 
-	QString content;
 	Buffer::OutputWhat output = Buffer::CurrentParagraph;
 	if (contentsCO->currentIndex() == 1)
 		output = Buffer::FullSource;
@@ -194,27 +189,121 @@ void ViewSourceWidget::realUpdateView()
 	else if (contentsCO->currentIndex() == 3)
 		output = Buffer::OnlyBody;
 
-	if (getContent(bv_, output, content, format,
-		      force_getcontent_, masterPerspectiveCB->isChecked()))
-		document_->setPlainText(content);
+	docstring content;
+	auto_ptr<TexRow> texrow = getContent(bv_, output, content, format,
+									   masterPerspectiveCB->isChecked());
+	QString old = document_->toPlainText();
+	QString qcontent = toqstr(content);
+	bool const changed = setText(qcontent);
 
-	CursorSlice beg = bv_->cursor().selectionBegin().bottom();
-	CursorSlice end = bv_->cursor().selectionEnd().bottom();
-	int const begrow = bv_->buffer().texrow().
-		getRowFromIdPos(beg.paragraph().id(), beg.pos());
-	int endrow = bv_->buffer().texrow().
-		getRowFromIdPos(end.paragraph().id(), end.pos());
-	int const nextendrow = bv_->buffer().texrow().
-		getRowFromIdPos(end.paragraph().id(), end.pos() + 1);
-	if (endrow != nextendrow)
-		endrow = nextendrow - 1;
+	if (changed && !texrow.get()) {
+		// position-to-row is unavailable
+		// we jump to the first modification
+		const QChar * oc = old.constData();
+		const QChar * nc = qcontent.constData();
+		int pos = 0;
+		while (*oc != '\0' && *nc != '\0' && *oc == *nc) {
+			++oc;
+			++nc;
+			++pos;
+		}
+		QTextCursor c = QTextCursor(viewSourceTV->document());
+		//get some space below the cursor
+		c.setPosition(pos);
+		c.movePosition(QTextCursor::Down, QTextCursor::MoveAnchor,v_margin);
+		viewSourceTV->setTextCursor(c);
+		//get some space on the right of the cursor
+		viewSourceTV->horizontalScrollBar()->setValue(h_scroll);
+		c.setPosition(pos);
+		const int block = c.blockNumber();
+		for (int i = h_margin; i && block == c.blockNumber(); --i) {
+			c.movePosition(QTextCursor::Right, QTextCursor::MoveAnchor);
+		}
+		c.movePosition(QTextCursor::Left, QTextCursor::MoveAnchor);
+		viewSourceTV->setTextCursor(c);
+		//back to the position
+		c.setPosition(pos);
+		//c.movePosition(QTextCursor::Right, QTextCursor::KeepAnchor,1);
+		viewSourceTV->setTextCursor(c);
 
-	QTextCursor c = QTextCursor(viewSourceTV->document());
-	c.movePosition(QTextCursor::NextBlock, QTextCursor::MoveAnchor, begrow);
-	c.select(QTextCursor::BlockUnderCursor);
-	c.movePosition(QTextCursor::NextBlock, QTextCursor::KeepAnchor,
-		endrow - begrow + 1);
-	viewSourceTV->setTextCursor(c);
+	} else if (texrow.get()) {
+		// Use the available position-to-row conversion to highlight
+		// the current selection in the source
+		//
+		// FIXME:
+		// * it is currently impossible to highlight the very last line
+		//   of a document, because TexRow gives the wrong data.
+		// * we currently only compute the top-level position, which
+		//   makes it impossible to highlight inside an inset. It is not
+		//   a limitation of TexRow,  but replacing bottom() with top()
+		//   works partially and causes segfaults with math. Solving
+		//   this could be seen as a solution to #4725.
+		// * even if we keep computing the top-level position, the data
+		//   given by TexRow is false if there is e.g. a float of a
+		//   footnote in the paragraph
+		CursorSlice beg = bv_->cursor().selectionBegin().bottom();
+		CursorSlice end = bv_->cursor().selectionEnd().bottom();
+		int const beg_par = beg.paragraph().id();
+		int const end_par = end.paragraph().id();
+		int const beg_pos = beg.pos();
+		int const end_pos = end.pos();
+		int const beg_row = texrow->getRowFromIdPos(beg_par, beg_pos);
+		int end_row, next_end_row;
+		if (beg_par != end_par || beg_pos != end_pos) {
+			end_row = texrow->getRowFromIdPos(end_par, max(0, end_pos - 1));
+			next_end_row = texrow->getRowFromIdPos(end_par, end_pos);
+		} else {
+			end_row = beg_row;
+			next_end_row = texrow->getRowFromIdPos(beg_par, beg_pos + 1);
+		}
+		if (end_row != next_end_row)
+			end_row = next_end_row - 1;
+
+		QTextCursor c = QTextCursor(viewSourceTV->document());
+
+		c.movePosition(QTextCursor::NextBlock, QTextCursor::MoveAnchor,
+					   beg_row - 1);
+		const int beg_sel = c.position();
+		//get some space above the cursor
+		c.movePosition(QTextCursor::PreviousBlock, QTextCursor::MoveAnchor,
+					   v_margin);
+		viewSourceTV->setTextCursor(c);
+		c.setPosition(beg_sel, QTextCursor::MoveAnchor);
+
+		c.movePosition(QTextCursor::NextBlock, QTextCursor::KeepAnchor,
+					   end_row - beg_row +1);
+		const int end_sel = c.position();
+		//get some space below the cursor
+		c.movePosition(QTextCursor::NextBlock, QTextCursor::KeepAnchor,
+					   v_margin - 1);
+		viewSourceTV->setTextCursor(c);
+		c.setPosition(end_sel, QTextCursor::KeepAnchor);
+
+		viewSourceTV->setTextCursor(c);
+
+		//the real highlighting is done with an ExtraSelection
+		QTextCharFormat format;
+		QPalette palette = viewSourceTV->palette();
+		//Alternative:
+		//  QColor bg = palette.color(QPalette::Active,QPalette::Highlight);
+		//  bg.setAlpha(64);
+		//  format.setBackground(QBrush(bg));
+		//Other alternatives:
+		//format.setBackground(palette.light());
+		//format.setBackground(palette.alternateBase());
+		format.setBackground(palette.toolTipBase());
+		format.setProperty(QTextFormat::FullWidthSelection, true);
+		QTextEdit::ExtraSelection sel;
+		sel.format = format;
+		sel.cursor = c;
+		viewSourceTV->setExtraSelections(
+			QList<QTextEdit::ExtraSelection>() << sel);
+
+		//clean up
+		c.clearSelection();
+		viewSourceTV->setTextCursor(c);
+		viewSourceTV->horizontalScrollBar()->setValue(h_scroll);
+	}
 }
 
 
@@ -340,6 +429,7 @@ QString GuiViewSource::title() const
 {
 	switch (docType()) {
 		case LATEX:
+			//FIXME: this is shown for LyXHTML source, LyX source, etc.
 			return qt_("LaTeX Source");
 		case DOCBOOK:
 			return qt_("DocBook Source");
