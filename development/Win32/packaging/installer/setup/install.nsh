@@ -77,6 +77,14 @@ Section -ProgramFiles SecProgramFiles
   SetOutPath "$INSTDIR"
   # recursively copy all files under Python
   File /r "${FILES_PYTHON}"
+  # register .py files if necessary
+  ReadRegStr $0 SHCTX "Software\Classes\Python.File\shell\open\command" ""
+  ${if} $0 == "" # if nothing was found
+   WriteRegStr SHCTX "Software\Classes\Python.File\shell\open\command" "" '"$INSTDIR\Python\python.exe" "%1" %*'
+   WriteRegStr SHCTX "Software\Classes\Python.File\DefaultIcon" "" "$INSTDIR\Python\DLLs\py.ico"
+   WriteRegStr SHCTX "Software\Classes\.py" "" "Python.File"
+   WriteRegStr SHCTX "Software\Classes\Python.File" "OnlyWithLyX" "Yes${APP_SERIES_KEY}" # special entry to test if they were registered by this LyX version
+  ${endif}
   
   # Compile all Pyton files to byte-code
   # The user using the scripts may not have write access

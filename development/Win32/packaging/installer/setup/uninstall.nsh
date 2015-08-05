@@ -25,6 +25,10 @@ Section "un.LyX" un.SecUnProgramFiles
   
   # Python
   RMDir /r "$INSTDIR\python"
+  ReadRegStr $0 SHCTX "Software\Classes\Python.File" "OnlyWithLyX" # test if it was registered by this LyX version
+  ${if} $0 == "Yes${APP_SERIES_KEY}"
+   DeleteRegKey SHCTX "Software\Classes\Python.File"
+  ${endif}
   
   # ImageMagick
   RMDir /r "$INSTDIR\imagemagick"
