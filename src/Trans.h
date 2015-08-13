@@ -42,6 +42,8 @@ enum tex_accent {
 	///
 	TEX_TILDE,
 	///
+	TEX_PERISPOMENI,
+	///
 	TEX_UNDERBAR,
 	///
 	TEX_CEDILLA,

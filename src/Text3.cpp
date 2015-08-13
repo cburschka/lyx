@@ -2268,6 +2268,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_ACCENT_GRAVE:
 	case LFUN_ACCENT_ACUTE:
 	case LFUN_ACCENT_TILDE:
+	case LFUN_ACCENT_PERISPOMENI:
 	case LFUN_ACCENT_CEDILLA:
 	case LFUN_ACCENT_MACRON:
 	case LFUN_ACCENT_DOT:
@@ -3153,6 +3154,9 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		break;
 
 	// FIXME: why are accent lfuns forbidden with pass_thru layouts?
+	//  Because they insert COMBINING DIACRITICAL Unicode characters,
+	//  that cannot be handled by LaTeX but must be converted according
+	//  to the definition in lib/unicodesymbols?
 	case LFUN_ACCENT_ACUTE:
 	case LFUN_ACCENT_BREVE:
 	case LFUN_ACCENT_CARON:
@@ -3166,6 +3170,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_ACCENT_OGONEK:
 	case LFUN_ACCENT_TIE:
 	case LFUN_ACCENT_TILDE:
+	case LFUN_ACCENT_PERISPOMENI:
 	case LFUN_ACCENT_UMLAUT:
 	case LFUN_ACCENT_UNDERBAR:
 	case LFUN_ACCENT_UNDERDOT:

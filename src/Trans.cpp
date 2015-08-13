@@ -71,7 +71,9 @@ static TeXAccent lyx_accent_table[] = {
 	{TEX_GRAVE,      0x0300, "grave",           LFUN_ACCENT_GRAVE},
 	{TEX_MACRON,     0x0304, "macron",          LFUN_ACCENT_MACRON},
 	{TEX_TILDE,      0x0303, "tilde",           LFUN_ACCENT_TILDE},
-	{TEX_UNDERBAR,   0x0320, "underbar",        LFUN_ACCENT_UNDERBAR},
+	{TEX_PERISPOMENI, 0x0342, "perispomeni",    LFUN_ACCENT_PERISPOMENI},
+	{TEX_UNDERBAR,   0x0320, "underbar",        LFUN_ACCENT_UNDERBAR}, // COMBINING MINUS SIGN BELOW or 0x0331 COMBINING MACRON BELOW ?
+
 	{TEX_CEDILLA,    0x0327, "cedilla",         LFUN_ACCENT_CEDILLA},
 	{TEX_UNDERDOT,   0x0323, "underdot",        LFUN_ACCENT_UNDERDOT},
 	{TEX_CIRCUMFLEX, 0x0302, "circumflex",      LFUN_ACCENT_CIRCUMFLEX},

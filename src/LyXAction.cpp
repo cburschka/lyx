@@ -200,6 +200,14 @@ void LyXAction::init()
  */
 		{ LFUN_ACCENT_OGONEK, "accent-ogonek", Noop, Edit },
 /*!
+ * \var lyx::FuncCode lyx::LFUN_ACCENT_PERISPOMENI
+ * \li Action: Adds a perispomeni (Greek circumflex)
+               over the next character typed.
+ * \li Syntax: accent-perispomeni
+ * \endvar
+ */
+		{ LFUN_ACCENT_PERISPOMENI, "accent-perispomeni", Noop, Edit },
+/*!
  * \var lyx::FuncCode lyx::LFUN_ACCENT_TIE
  * \li Action: Adds a tie \htmlonly (a&#865;)\endhtmlonly
                over the next two character typed.
