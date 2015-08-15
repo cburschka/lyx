@@ -983,6 +983,16 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 }
 
 
+namespace {
+	// Quote argument if it contains spaces
+	string quoteIfNeeded(string const & str) {
+		if (contains(str, ' '))
+			return "\"" + str + "\"";
+		return str;
+	}
+}
+
+
 void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 {
 	// The top of the file is written by the buffer.
@@ -995,11 +1005,12 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 		filepath.replace(0, sysdir.length(), "/systemlyxdir/");
 	else if (!lyxrc.save_origin)
 		filepath = "unavailable";
-	os << "\\origin " << filepath << '\n';
+	os << "\\origin " << quoteIfNeeded(filepath) << '\n';
 
 	// the textclass
-	os << "\\textclass " << buf->includedFilePath(addName(buf->layoutPos(),
-						baseClass()->name()), "layout")
+	os << "\\textclass "
+	   << quoteIfNeeded(buf->includedFilePath(addName(buf->layoutPos(),
+						baseClass()->name()), "layout"))
 	   << '\n';
 
 	// then the preamble
