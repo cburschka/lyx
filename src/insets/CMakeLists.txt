@@ -1,7 +1,7 @@
 # This file is part of LyX, the document processor.
 # Licence details can be found in the file COPYING.
 #
-# Copyright (c) 2006-2011 Peter Kümmel, <syntheticpp@gmx.net>
+# Copyright (c) 2006-2011 Peter Kï¿½mmel, <syntheticpp@gmx.net>
 #
 
 project(insets)
@@ -23,6 +23,8 @@ else()
 	add_library(insets ${library_type} ${_allinone_files})
 endif()
 set_target_properties(insets PROPERTIES FOLDER "applications/LyX")
+
+qt_use_modules(insets Gui)
 
 lyx_add_gcc_pch(insets)
 
