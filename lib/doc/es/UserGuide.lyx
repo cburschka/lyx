@@ -928,7 +928,7 @@ Copiar
 
 \begin_inset Info
 type  "shortcut"
-arg   "cut"
+arg   "copy"
 \end_inset
 
  o
@@ -964,7 +964,7 @@ Pegar
 , 
 \begin_inset Info
 type  "shortcut"
-arg   "cut"
+arg   "paste"
 \end_inset
 
  o
@@ -8312,14 +8312,12 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
-
 Esto es entorno literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8332,7 +8330,6 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
-
 Casi todo está permitido en entorno literal:"%&$§#~'`
 \backslash
 }][{|
