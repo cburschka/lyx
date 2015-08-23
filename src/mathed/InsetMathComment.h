@@ -25,6 +25,8 @@ public:
 	///
 	InsetMathComment(Buffer * buf);
 	///
+	InsetMathComment(MathData const & ar);
+	///
 	explicit InsetMathComment(Buffer * buf, docstring const &);
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;

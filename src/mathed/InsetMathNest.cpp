@@ -1657,12 +1657,17 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 			} else if (c == '^' && currentMode() == InsetMath::MATH_MODE) {
 				cur.backspace();
 				cur.niceInsert(createInsetMath("mathcircumflex", buf));
-			} else if (c == '{') {
+			} else if (c == '{' || c == '%') {
+				//using the saved selection as argument
+				InsetMathUnknown * p = cur.activeMacro();
+				p->finalize();
+				MathData sel(cur.buffer());
+				asArray(p->selection(), sel);
 				cur.backspace();
-				cur.niceInsert(MathAtom(new InsetMathBrace(buf)));
-			} else if (c == '%') {
-				cur.backspace();
-				cur.niceInsert(MathAtom(new InsetMathComment(buf)));
+				if (c == '{')
+					cur.niceInsert(MathAtom(new InsetMathBrace(sel)));
+				else
+					cur.niceInsert(MathAtom(new InsetMathComment(sel)));
 			} else if (c == '#') {
 				LASSERT(cur.activeMacro(), return false);
 				cur.activeMacro()->setName(name + docstring(1, c));
