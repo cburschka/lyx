@@ -1004,7 +1004,7 @@ contributors = [
                  u"Italian localization of the interface"),
 
      contributor(u"Scott Kostyshak",
-                 "skostysh@princeton.edu",
+                 "skostysh () princeton ! edu",
                  "GPL",
                  "GPL Statement",
                  "m=133076234031944",
@@ -1250,6 +1250,14 @@ contributors = [
                  "m=141381522413781",
                  "20 October 2014",
                  u"New lfun server-get-statistics"),
+
+     contributor(u"Guillaume Munch>",
+                 "gadmm () free ! fr",
+                 "GPL",
+                 "Re: -std=c++11 and [PATCH] Improve the display of the source (bugs #6501,#7359)",
+                 "m=143890980923229",
+                 "07 August 2015",
+                 u"Several bug fixes, mainly mathed"),
 
      contributor(u"Iñaki Larrañaga Murgoitio",
                  "dooteo () euskalgnu ! org",
