@@ -2179,6 +2179,7 @@ MathCompletionList::MathCompletionList(Cursor const & cur)
 	globals.push_back(from_ascii("\\mathclap"));
 	globals.push_back(from_ascii("\\mathllap"));
 	globals.push_back(from_ascii("\\mathrlap"));
+	globals.push_back(from_ascii("\\ensuremath"));
 	MathWordList const & words = mathedWordList();
 	MathWordList::const_iterator it2;
 	//lyxerr << "Globals completion commands: ";
