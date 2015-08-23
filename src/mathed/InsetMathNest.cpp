@@ -1010,7 +1010,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (currentMode() <= Inset::TEXT_MODE)
 			cur.plainInsert(MathAtom(new InsetMathEnsureMath(buffer_)));
 		else
-			cur.plainInsert(MathAtom(new InsetMathBox(buffer_, from_ascii("mbox"))));
+			cur.plainInsert(createInsetMath("text", buffer_));
 		cur.posBackward();
 		cur.pushBackward(*cur.nextInset());
 		cur.niceInsert(save_selection);
