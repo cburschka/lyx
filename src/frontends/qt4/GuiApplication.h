@@ -108,7 +108,8 @@ public:
 #ifdef Q_WS_X11
 	bool x11EventFilter(XEvent * ev);
 #elif defined(QPA_XCB)
-	virtual bool nativeEventFilter(const QByteArray & eventType, void * message, long * result);
+	virtual bool nativeEventFilter(const QByteArray & eventType, void * message,
+	                               long * result) Q_DECL_OVERRIDE;
 #endif
 	//@}
 

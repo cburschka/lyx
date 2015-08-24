@@ -3085,7 +3085,7 @@ bool GuiApplication::x11EventFilter(XEvent * xev)
 }
 #elif defined(QPA_XCB)
 bool GuiApplication::nativeEventFilter(const QByteArray & eventType,
-				       void * message, long *) Q_DECL_OVERRIDE
+				       void * message, long *)
 {
 	if (!current_view_ || eventType != "xcb_generic_event_t")
 		return false;
