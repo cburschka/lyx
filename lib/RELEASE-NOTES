@@ -118,7 +118,7 @@
 
 * LyX needs to be run under Python 2 and will not work properly on systems
   where Python 3 is the default binary. See bug #7030 to know how to fix
-  this properly, since simple sheebang conversion in *.py files will not
+  this properly, since simple shebang conversion in *.py files will not
   be enough.
 
 
@@ -129,4 +129,8 @@
   documents that compiled without error with a previous version now
   compile with error. However, because now in 2.2.x users can click on
   the "Show Output Anyway" button, the document can still be viewed.
+
+* With XeTeX and LuaTeX, missing characters in the output are now reported
+  as errors. This leads to error reports for documents that compiled without
+  error before. However, the error was always present but went undetected!
 
