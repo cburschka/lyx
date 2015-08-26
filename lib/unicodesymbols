@@ -717,7 +717,7 @@
 #0x032e ""                         "" "combining,force" # COMBINING BREVE BELOW
 0x032f "\\textsubarch"            "tipa" "combining,force" # COMBINING INVERTED BREVE BELOW
 0x0330 "\\textsubtilde"           "tipa" "combining,force" # COMBINING TILDE BELOW
-#0x0331 ""                         "" "combining,force" # COMBINING MACRON BELOW
+0x0331 "\\b"                      "" "combining,force" # COMBINING MACRON BELOW
 #0x0332 ""                         "" "combining,force" # COMBINING LOW LINE
 #0x0333 ""                         "" "combining,force" # COMBINING DOUBLE LOW LINE
 0x0334 "\\textsuperimposetilde"   "tipa" "combining,force" # COMBINING TILDE OVERLAY
