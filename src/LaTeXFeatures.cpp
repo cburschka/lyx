@@ -1171,17 +1171,7 @@ docstring const LaTeXFeatures::getMacros() const
 	        // ensure LGR font encoding is defined also if fontenc is not loaded by LyX
 	   	if (params_.font_encoding() == "default")
 			macros << textgreek_LGR_def;
-		// Avoid a LaTeX error if times fonts are used and the grtimes
-		// package is installed but actual fonts are not (bug 6469).
-		if (params_.fonts_roman == "times")
-			macros << subst(textgreek_def,
-					from_ascii("\\greektext #1"),
-					from_ascii("%\n  \\IfFileExists"
-						   "{grtm10.tfm}{}{\\fontfamily"
-						   "{cmr}}\\greektext #1"))
-			       << '\n';
-		else
-			macros << textgreek_def << '\n';
+		macros << textgreek_def << '\n';
 	}
 
 	if (!usePolyglossia() && mustProvide("textcyr"))

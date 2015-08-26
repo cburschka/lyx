@@ -134,3 +134,7 @@
   as errors. This leads to error reports for documents that compiled without
   error before. However, the error was always present but went undetected!
 
+* Documents using Times fonts and containing Greek characters may now fail
+  to compile under pdflatex for users of MikTeX due to an automatically
+  half-installed "grtimes" package. A workaround in LyX was removed as it
+  stands in the way of alternative approaches (see bug #6469).
