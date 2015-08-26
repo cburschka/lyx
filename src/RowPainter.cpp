@@ -631,11 +631,9 @@ void RowPainter::paintText()
 		case Row::VIRTUAL:
 			paintStringAndSel(e);
 
-			// Paint the spelling mark if needed.
-			if (lyxrc.spellcheck_continuously && pi_.do_spellcheck
-				&& par_.isMisspelled(e.pos)) {
+			// Paint the spelling marks if enabled.
+			if (lyxrc.spellcheck_continuously && pi_.do_spellcheck)
 				paintMisspelledMark(orig_x, e);
-			}
 			break;
 		case Row::INSET: {
 			// If outer row has changed, nested insets are repaint completely.
