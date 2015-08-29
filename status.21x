@@ -76,6 +76,9 @@ What's new
 - Reset cursor font when navigating with find or spellcheck (bug 9500).
 
 - Correctly update previews when cursor leaves inset (bug 6173).
+
+- Fix subscripts and superscripts of \overrightarrow and related macros
+  (bug 1996).
  
 
 * INTERNALS
