@@ -37,7 +37,9 @@ What's new
 
 * USER INTERFACE
 
-- Add \ensuremath to the list of math completions
+- Add \ensuremath to the list of math completions.
+
+- The entries in the outliner are no longer truncated at 40 chars. (bug 9579)
 
 
 
@@ -85,6 +87,9 @@ What's new
 
 - Fix a crash with the outliner when switching documents (bug 9754).
 
+- Repaired selection of text and search-and-replace in the presence of math
+  macros. The selection is no longer cleared unvolontarily. (bugs 6078, 9364)
+
 
 * INTERNALS
 
@@ -96,6 +101,9 @@ What's new
 * DOCUMENTATION AND LOCALIZATION
 
 - German UserGuide: fix many typos
+
+- French: "Rechercher" and "Remplacer" are no longer bound to the same
+  accelerator
 
 
 
