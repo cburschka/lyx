@@ -433,13 +433,8 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc,
 		if (oldDisplayMode == MathMacro::DISPLAY_NORMAL
 		    && (macroInset->arity() != macroNumArgs
 			|| macroInset->optionals() != macroOptionals
-			|| newDisplayMode == MathMacro::DISPLAY_UNFOLDED)) {
-
+			|| newDisplayMode == MathMacro::DISPLAY_UNFOLDED))
 			detachMacroParameters(cur, i);
-			// FIXME: proper anchor handling, this removes the selection
-			if (cur)
-				cur->clearSelection();
-		}
 
 		// the macro could have been copied while resizing this
 		macroInset = operator[](i).nucleus()->asMacro();
@@ -478,11 +473,8 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc,
 			attachMacroParameters(cur, i, macroNumArgs, macroOptionals,
 				fromInitToNormalMode, interactive, appetite);
 
-			if (cur) {
-				// FIXME: proper anchor handling, this removes the selection
+			if (cur)
 				cur->updateInsets(&cur->bottom().inset());
-				cur->clearSelection();
-			}
 		}
 
 		// Give macro the chance to adapt to new situation.
