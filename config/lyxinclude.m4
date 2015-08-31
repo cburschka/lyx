@@ -133,7 +133,7 @@ done
 ])dnl
 
 
-dnl Usage: LYX_PROG_CLANG: set lyx_cv_prog_clang to yes if the compiler is clang.
+dnl Usage: LYX_PROG_CLANG: set CLANG to yes if the compiler is clang.
 AC_DEFUN([LYX_PROG_CLANG],
 [AC_CACHE_CHECK([whether the compiler is clang],
                [lyx_cv_prog_clang],
@@ -143,6 +143,26 @@ AC_DEFUN([LYX_PROG_CLANG],
 #endif
 ],
 [lyx_cv_prog_clang=yes ; CLANG=yes], [lyx_cv_prog_clang=no ; CLANG=no])])
+])
+
+
+dnl Usage: LYX_CXX_CXX11: set lyx_use_cxx11 to yes if the compiler implements
+dnl the C++11 standard.
+AC_DEFUN([LYX_CXX_CXX11],
+[AC_CACHE_CHECK([whether the compiler implements C++11],
+               [lyx_cv_cxx_cxx11],
+ [save_CXXFLAGS=$CXXFLAGS
+  CXXFLAGS="$AM_CXXFLAGS $CXXFLAGS"
+  AC_LANG_PUSH(C++)
+  AC_TRY_COMPILE([], [
+#if __cplusplus >= 201103L || defined(__GXX_EXPERIMENTAL_CXX0X__)
+	    this is a c++11 compiler
+#endif
+  ],
+  [lyx_cv_cxx_cxx11=no], [lyx_cv_cxx_cxx11=yes ; lyx_flags="$lyx_flags c++11"])
+ AC_LANG_POP(C++)
+ CXXFLAGS=$save_CXXFLAGS])
+lyx_use_cxx11=$lyx_cv_cxx_cxx11
 ])
 
 
@@ -156,14 +176,6 @@ AC_DEFUN([LYX_LIB_STDCXX],
 #endif
 ],
 [lyx_cv_lib_stdcxx=yes], [lyx_cv_lib_stdcxx=no])])
-])
-
-
-dnl Usage: LYX_CXX_USE_CXX11(STD): pass option -std=STD to the C++ compiler
-dnl        and update lyxflags
-AC_DEFUN([LYX_CXX_USE_CXX11],
-[lyx_flags="$lyx_flags c++11"
- AM_CXXFLAGS="$AM_CXXFLAGS -std=$1"
 ])
 
 
@@ -257,8 +269,8 @@ AC_ARG_ENABLE(pch,
 lyx_pch_comp=no
 
 AC_ARG_ENABLE(cxx11,
-  AC_HELP_STRING([--enable-cxx11],[enable C++11 mode]),,
-  enable_cxx11=no;)
+  AC_HELP_STRING([--enable-cxx11],[enable C++11 mode (default: enabled for known good compilers)]),,
+  enable_cxx11=auto;)
 
 AC_ARG_ENABLE(assertions,
   AC_HELP_STRING([--enable-assertions],[add runtime sanity checks in the program]),,
@@ -333,35 +345,42 @@ if test x$GXX = xyes; then
 	;;
     esac
   fi
-  if test x$enable_cxx11 = xyes ; then
+  dnl enable_cxx11 can be yes/no/auto.
+  dnl By default, it is auto and we enable C++11 when possible
+  if test x$enable_cxx11 != xno ; then
     case $gxx_version in
-      4.0*|4.1*|4.2*) AC_ERROR([There is no C++11 support in gcc 4.2 or older]);;
+      4.0*|4.1*|4.2*)
+         if x$enable_cxx11 = xyes; then
+            AC_ERROR([There is no C++11 support in gcc 4.2 or older])
+         fi;;
       4.3*|4.4*|4.5*|4.6*)
         dnl Note that this will define __GXX_EXPERIMENTAL_CXX0X__.
         dnl The source code relies on that.
-        LYX_CXX_USE_CXX11(c++0x);;
+        AM_CXXFLAGS="$AM_CXXFLAGS -std=c++0x";;
       clang)
         dnl presumably all clang version support c++11.
 	dnl the deprecated-register warning is very annoying with Qt4.x right now.
-        LYX_CXX_USE_CXX11(c++11 -Wno-deprecated-register);;
+        AM_CXXFLAGS="$AM_CXXFLAGS -std=c++11 -Wno-deprecated-register";;
       *)
-        LYX_CXX_USE_CXX11(c++11);;
+        AM_CXXFLAGS="$AM_CXXFLAGS -std=c++11";;
     esac
+  fi
+
+  LYX_CXX_CXX11
+  if test $lyx_use_cxx11 = yes ; then
     if test x$CLANG = xno || test $lyx_cv_lib_stdcxx = yes; then
       dnl <regex> in gcc is unusable in versions less than 4.9.0
       dnl see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
       case $gxx_version in
         4.0*|4.1*|4.2*|4.3*|4.4*|4.5*|4.6*|4.7*|4.8*) ;;
-	*) lyx_flags="$lyx_flags stdregex"
-	   lyx_std_regex=yes
-           ;;
+        *) lyx_std_regex=yes ;;
       esac
     else
-      lyx_flags="$lyx_flags stdregex"
       lyx_std_regex=yes
     fi
 
     if test $lyx_std_regex = yes ; then
+      lyx_flags="$lyx_flags stdregex"
       AC_DEFINE([LYX_USE_STD_REGEX], 1, [define to 1 if std::regex should be preferred to boost::regex])
     fi
   fi

@@ -48,16 +48,18 @@ Requirements
 ------------
 
 First of all, you will need a recent C++ compiler, where recent means
-that the compilers are close to C++ standard conforming (gcc 4.x).
+that the compilers are close to C++ standard conforming like gcc (at
+least 4.x) or clang. Note that the compiler will be used in C++11 mode
+when possible.
 
 LyX makes great use of the C++ Standard Template Library (STL).
 This means that gcc users will have to install the relevant libstdc++
 library to be able to compile this version of LyX.
 
-For full LyX usability we suggest to use Qt 4.x and at least Qt 4.8 which 
+For full LyX usability we suggest to use Qt 4.x and at least Qt 4.8 which
 has been widely tested. For compilation you need to compile against at
 least Qt 4.5.0 and at Windows we advise at highest Qt 4.8.4. The only
-special point to make is that you must ensure that both LyX and the 
+special point to make is that you must ensure that both LyX and the
 Qt libraries are compiled with the same C++ compiler.
 
 To build LyX with spell checking capabilities included you have to
@@ -69,16 +71,12 @@ libraries. See the RELEASE-NOTES for details.
 
 If you make modifications to the source that affect any of the
 translations or you change the translation files themselves (po/*.po)
-files, you will need to have the GNU gettext package installed to 
+files, you will need to have the GNU gettext package installed to
 compile LyX with up-to-date translations (at least gettext version
 0.16.1 is needed). You can get the latest version from:
 	ftp://ftp.gnu.org/gnu/gettext/
 
 The two following programs should be available at configuration time:
-
-  o LaTeX2e should be correctly setup for the user you are logged in
-    as. Otherwise, LyX will not be able to run a number of tests. Note
-    that users can run these tests manually with Tools>Reconfigure.
 
   o Python 2.7 must be installed. Python is used for many simple tasks
     that are executed by external scripts, such as the automatic
@@ -113,7 +111,7 @@ flags:
     debug                            X           X           X       X
 
     The defaults are as follows in terms of version number
-    release: stable release (1.x.y)
+    release: stable release (2.x.y)
     prerelease: version number contains alpha, beta, rc or pre.
     development: version number contains dev.
 
@@ -209,6 +207,9 @@ The following options allow you to tweak the generated code more precisely (see 
     optimization of LyX. The compile may be much quicker with some
     compilers, but LyX will run more slowly.
 
+  o --disable-cxx11 forces the compiler in C++98 mode. The default is
+    to use C++11 mode for known good compilers.
+
   o --enable-debug will add debug information to your binary. This
     requires a lot more disk space, but is a must if you want to try
     to debug problems in LyX. There is no run-time penalty.
@@ -226,11 +227,6 @@ The following options allow you to tweak the generated code more precisely (see 
 
   o --enable-concept-checks adds some compile-time checks. There is no
     run-time penalty.
-
-  o --without-latex-config that disables the automatic detection of your
-    latex configuration.  This detection is automatically disabled if
-    latex cannot be found.  If you find that you have to use this
-    flag, please report it as a bug.
 
   o --enable-monolithic-build[=boost,client,insets,mathed,core,tex2lyx,frontend-qt4]
     that enables monolithic build of the given parts of the source
@@ -254,8 +250,9 @@ to strip the lyx binary. In this case replace "make install" with
 
   make install-strip
 
-BTW: in the images subdirectory there is also a small icon "lyx.png",
-that can be used to display lyx-documents in filemanagers.
+BTW: in the lib/images subdirectory there is also small icons
+`lyx.png' and `lyx.svg', that can be used to display LyX documents in
+filemanagers.
 
 If configure fails for some strange reason
 ------------------------------------------
