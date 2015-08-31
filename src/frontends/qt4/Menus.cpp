@@ -1312,27 +1312,49 @@ void MenuDefinition::expandToc(Buffer const * buf)
 			continue;
 
 		MenuDefinition submenu;
-		if (cit->second.size() >= 30) {
-			FuncRequest f(LFUN_DIALOG_SHOW, "toc " + cit->first);
-			submenu.add(MenuItem(MenuItem::Command, qt_("Open Navigator..."), f));
-		} else {
+		if (floatlist.typeExist(cit->first)) {
 			TocIterator ccit = cit->second.begin();
 			TocIterator eend = cit->second.end();
 			for (; ccit != eend; ++ccit) {
-				submenu.add(MenuItem(MenuItem::Command,
-					limitStringLength(ccit->str()) + '|',
-					FuncRequest(ccit->action())));
+				if (0 == ccit->depth()) {// omit subfloats
+					submenu.add(MenuItem(MenuItem::Command,
+										 limitStringLength(ccit->str()) + '|',
+										 FuncRequest(ccit->action())));
+				}
 			}
-		}
 
-		MenuItem item(MenuItem::Submenu, guiName(cit->first, buf->params()));
-		item.setSubmenu(submenu);
-		if (floatlist.typeExist(cit->first) || cit->first == "child") {
-			// Those two types deserve to be in the main menu.
+			FuncRequest f(LFUN_DIALOG_SHOW, "toc " + cit->first);
+			submenu.add(MenuItem(MenuItem::Separator));
+			submenu.add(MenuItem(MenuItem::Command, qt_("Open Navigator..."), f));
+			MenuItem item(MenuItem::Submenu, guiName(cit->first, buf->params()));
+			// deserves to be in the main menu.
 			item.setSubmenu(submenu);
 			add(item);
-		} else
-			other_lists.add(item);
+		} else {
+			if (cit->second.size() >= 30) {
+				// FIXME: the behaviour of the interface should not change
+				// arbitrarily. Each type should be audited to see if the list
+				// can be optimised like for floats above.
+				FuncRequest f(LFUN_DIALOG_SHOW, "toc " + cit->first);
+				submenu.add(MenuItem(MenuItem::Command, qt_("Open Navigator..."), f));
+			} else {
+				TocIterator ccit = cit->second.begin();
+				TocIterator eend = cit->second.end();
+				for (; ccit != eend; ++ccit) {
+					submenu.add(MenuItem(MenuItem::Command,
+										 limitStringLength(ccit->str()) + '|',
+										 FuncRequest(ccit->action())));
+				}
+			}
+
+			MenuItem item(MenuItem::Submenu, guiName(cit->first, buf->params()));
+			item.setSubmenu(submenu);
+			if (cit->first == "child") {
+				// deserves to be in the main menu.
+				add(item);
+			} else
+				other_lists.add(item);
+		}
 	}
 	if (!other_lists.empty()) {
 		MenuItem item(MenuItem::Submenu, qt_("Other Lists"));

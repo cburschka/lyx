@@ -102,7 +102,7 @@ void InsetCaption::addToToc(DocIterator const & cpit, bool output_active) const
 	docstring str = full_label_;
 	int length = output_active ? INT_MAX : TOC_ENTRY_LENGTH;
 	text().forOutliner(str, length);
-	toc.push_back(TocItem(pit, 0, str, output_active));
+	toc.push_back(TocItem(pit, is_subfloat_ ? 1 : 0, str, output_active));
 
 	// Proceed with the rest of the inset.
 	InsetText::addToToc(cpit, output_active);
@@ -379,7 +379,7 @@ void InsetCaption::updateBuffer(ParIterator const & it, UpdateType utype)
 		else
 			name = master.B_(tclass.floats().getType(type).name());
 		docstring counter = from_utf8(type);
-		if (cnts.isSubfloat()) {
+		if ((is_subfloat_ = cnts.isSubfloat())) {
 			// only standard captions allowed in subfloats
 			type_ = "Standard";
 			counter = "sub-" + from_utf8(type);
@@ -402,9 +402,9 @@ void InsetCaption::updateBuffer(ParIterator const & it, UpdateType utype)
 			sec += bformat(from_ascii("(%1$s)"), labelstring);
 		}
 		if (!sec.empty())
-			full_label_ = bformat(from_ascii("%1$s %2$s:"), name, sec);
+			full_label_ = bformat(from_ascii("%1$s %2$s: "), name, sec);
 		else
-			full_label_ = bformat(from_ascii("%1$s #:"), name);
+			full_label_ = bformat(from_ascii("%1$s #: "), name);
 	}
 
 	// Do the real work now.

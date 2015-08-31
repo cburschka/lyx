@@ -96,6 +96,8 @@ private:
 	///
 	std::string floattype_;
 	///
+	bool is_subfloat_;
+	///
 	std::string type_;
 	///
 	docstring custom_label_;
