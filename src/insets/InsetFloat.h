@@ -18,7 +18,8 @@
 
 namespace lyx {
 
-class InsetFloatParams {
+class InsetFloatParams
+{
 public:
 	///
 	InsetFloatParams() : wide(false), sideways(false), subfloat(false) {}
@@ -99,7 +100,9 @@ private:
 	bool inheritFont() const { return false; }
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
-	// Update the counters of this inset and of its contents
+	///
+	void addToToc(DocIterator const & di, bool output_active) const;
+	/// Update the counters of this inset and of its contents
 	void updateBuffer(ParIterator const &, UpdateType);
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);

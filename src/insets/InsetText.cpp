@@ -805,7 +805,8 @@ void InsetText::addToToc(DocIterator const & cdit, bool output_active) const
 void InsetText::iterateForToc(DocIterator const & cdit, bool output_active) const
 {
 	DocIterator dit = cdit;
-	Toc & toc = buffer().tocBackend().toc("tableofcontents");
+	// Ensure that any document has a table of contents
+	shared_ptr<Toc> toc = buffer().tocBackend().toc("tableofcontents");
 
 	BufferParams const & bufparams = buffer_->params();
 	int const min_toclevel = bufparams.documentClass().min_toclevel();
@@ -846,8 +847,8 @@ void InsetText::iterateForToc(DocIterator const & cdit, bool output_active) cons
 			} else
 				par.forOutliner(tocstring, length);
 			dit.pos() = 0;
-			toc.push_back(TocItem(dit, toclevel - min_toclevel,
-				tocstring, doing_output, tocstring));
+			toc->push_back(TocItem(dit, toclevel - min_toclevel,
+								  tocstring, doing_output, tocstring));
 		}
 		
 		// And now the list of changes.

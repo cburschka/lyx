@@ -474,7 +474,7 @@ void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer,
 	if (table_.empty())
 		return;
 
-	Toc & change_list = buffer.tocBackend().toc("change");
+	shared_ptr<Toc> change_list = buffer.tocBackend().toc("change");
 	AuthorList const & author_list = buffer.params().authors();
 	DocIterator dit = cdit;
 
@@ -500,18 +500,18 @@ void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer,
 			// the end of paragraph symbol from the Punctuation group
 			str.push_back(0x204B);
 		docstring const & author = author_list.get(it->change.author).name();
-		Toc::iterator it = change_list.item(0, author);
-		if (it == change_list.end()) {
-			change_list.push_back(TocItem(dit, 0, author, output_active));
-			change_list.push_back(TocItem(dit, 1, str, output_active,
+		Toc::iterator it = change_list->item(0, author);
+		if (it == change_list->end()) {
+			change_list->push_back(TocItem(dit, 0, author, output_active));
+			change_list->push_back(TocItem(dit, 1, str, output_active,
 				support::wrapParas(str, 4)));
 			continue;
 		}
-		for (++it; it != change_list.end(); ++it) {
+		for (++it; it != change_list->end(); ++it) {
 			if (it->depth() == 0 && it->str() != author)
 				break;
 		}
-		change_list.insert(it, TocItem(dit, 1, str, output_active,
+		change_list->insert(it, TocItem(dit, 1, str, output_active,
 			support::wrapParas(str, 4)));
 	}
 }

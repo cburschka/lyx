@@ -211,8 +211,8 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const & op) const {
 
 	// FIXME Do we need to check if it exists? If so, we need a new
 	// routine in TocBackend to do that.
-	Toc const & toc = buffer().tocBackend().toc(toctype);
-	if (toc.empty())
+	shared_ptr<Toc const> toc = buffer().tocBackend().toc(toctype);
+	if (toc->empty())
 		return docstring();
 
 	// we want to look like a chapter, section, or whatever.
@@ -249,8 +249,8 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const & op) const {
 		 << toclabel 
 		 << html::EndTag(tag);
 	
-	Toc::const_iterator it = toc.begin();
-	Toc::const_iterator const en = toc.end();
+	Toc::const_iterator it = toc->begin();
+	Toc::const_iterator const en = toc->end();
 	for (; it != en; ++it) {
 		Paragraph const & par = it->dit().innerParagraph();
 		string const attr = "class='lyxtoc-floats lyxtoc-" + toctype + "'";

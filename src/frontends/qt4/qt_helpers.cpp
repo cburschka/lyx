@@ -628,6 +628,8 @@ QString guiName(string const & type, BufferParams const & bp)
 		return qt_("Branches");
 	if (type == "change")
 		return qt_("Changes");
+	if (type == "senseless")
+		return qt_("Senseless");
 	if (prefixIs(type, "index:")) {
 		string const itype = split(type, ':');
 		IndicesList const & indiceslist = bp.indiceslist();

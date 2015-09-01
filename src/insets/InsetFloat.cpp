@@ -30,6 +30,7 @@
 #include "output_xhtml.h"
 #include "ParIterator.h"
 #include "TextClass.h"
+#include "TocBackend.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -199,6 +200,22 @@ bool InsetFloat::getStatus(Cursor & cur, FuncRequest const & cmd,
 	default:
 		return InsetCollapsable::getStatus(cur, cmd, flag);
 	}
+}
+
+
+void InsetFloat::addToToc(DocIterator const & cpit, bool output_active) const
+{
+	string const & type = params().type;
+	DocIterator pit = cpit;
+	pit.push_back(CursorSlice(const_cast<InsetFloat &>(*this)));
+	docstring str;
+	int length = output_active ? INT_MAX : TOC_ENTRY_LENGTH;
+	text().forOutliner(str, length);
+	shared_ptr<TocBuilder> builder = buffer().tocBackend().builder(type);
+	builder->pushItem(pit, str, output_active);
+	// Proceed with the rest of the inset.
+	InsetCollapsable::addToToc(cpit, output_active);
+	builder->pop();
 }
 
 

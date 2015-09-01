@@ -235,8 +235,9 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 		LASSERT(false, return docstring());
 	}
 
-	Toc const & toc = buffer().masterBuffer()->tocBackend().toc(cmd2type(command));
-	if (toc.empty())
+	shared_ptr<Toc const> toc =
+		buffer().masterBuffer()->tocBackend().toc(cmd2type(command));
+	if (toc->empty())
 		return docstring();
 
 	// we'll use our own stream, because we are going to defer everything.
@@ -264,9 +265,9 @@ docstring InsetTOC::xhtml(XHTMLStream &, OutputParams const & op) const
 
 	// Output of TOC
 	if (use_depth)
-		makeTOCWithDepth(xs, toc, op);
+		makeTOCWithDepth(xs, *toc, op);
 	else
-		makeTOCNoDepth(xs, toc, op);
+		makeTOCNoDepth(xs, *toc, op);
 
 	xs << html::EndTag("div") << html::CR();
 	return ods.str();

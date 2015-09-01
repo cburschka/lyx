@@ -7,6 +7,7 @@
  * \author Jean-Marc Lasgouttes
  * \author Angus Leeming
  * \author Abdelrazak Younes
+ * \author Guillaume Munch
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -16,10 +17,12 @@
 
 #include "DocIterator.h"
 
+#include "support/shared_ptr.h"
 #include "support/strfwd.h"
 
 #include <map>
 #include <vector>
+#include <stack>
 #include <string>
 
 
@@ -27,6 +30,34 @@ namespace lyx {
 
 class Buffer;
 class FuncRequest;
+
+
+/* FIXME: toc types are currently identified by strings. It cannot be converted
+ * into an enum because of the user-configurable indexing categories and
+ * the user-definable float types provided by layout files.
+ *
+ * I leave this for documentation purposes for the moment.
+ *
+enum TocType {
+	TABLE_OF_CONTENTS,//"tableofcontents"
+	CHILD,//"child"
+	GRAPHICS,//"graphics"
+	NOTE,//"note"
+	BRANCH,//"branch"
+	CHANGE,//"change"
+	LABEL,//"label"
+	CITATION,//"citation"
+	EQUATION,//"equation"
+	FOOTNOTE,//"footnote"
+	MARGINAL_NOTE,//"marginalnote"
+	INDEX,//"index", "index:<user-str>" (from interface)
+	NOMENCL,//"nomencl"
+	LISTING,//"listings"
+	FLOAT,//"figure", "table", "algorithm", user-defined (from layout?)
+	SENSELESS,//"senseless"
+	TOC_TYPE_COUNT
+}
+ */
 
 ///
 /**
@@ -51,15 +82,17 @@ public:
 	///
 	int id() const;
 	///
-	int depth() const;
+	int depth() const { return depth_; }
 	///
-	docstring const & str() const;
+	docstring const & str() const { return str_; }
+	///
+	void str(docstring const & s) { str_ = s; }
 	///
 	docstring const & tooltip() const;
 	///
 	docstring const asString() const;
 	///
-	DocIterator const & dit() const;
+	DocIterator const & dit() const { return dit_; }
 	///
 	bool isOutput() const { return output_; }
 
@@ -95,9 +128,57 @@ public:
 
 typedef Toc::const_iterator TocIterator;
 
+
+/// Caption-enabled TOC builders
+class TocBuilder
+{
+public:
+	TocBuilder(shared_ptr<Toc> const toc);
+	/// When entering a float
+	void pushItem(DocIterator const & dit, docstring const & s,
+				  bool output_active, bool is_captioned = false);
+	/// When encountering a caption
+	void captionItem(DocIterator const & dit, docstring const & s,
+					 bool output_active);
+	/// When exiting a float
+	void pop();
+private:
+	TocBuilder(){}
+	///
+	struct frame {
+		Toc::size_type const pos;
+		bool is_captioned;
+	};
+	///
+	shared_ptr<Toc> const toc_;
+	///
+	std::stack<frame> stack_;
+};
+
+
 /// The ToC list.
 /// A class and no typedef because we want to forward declare it.
-class TocList : public std::map<std::string, Toc> {};
+class TocList : public std::map<std::string, shared_ptr<Toc> >
+{
+private:
+	// this can create null pointers
+	using std::map<std::string, shared_ptr<Toc> >::operator[];
+};
+
+
+///
+class TocBuilderStore
+{
+public:
+	TocBuilderStore() {};
+	///
+	shared_ptr<TocBuilder> get(std::string const & type, shared_ptr<Toc> toc);
+	///
+	void clear() { map_.clear(); };
+private:
+	typedef std::map<std::string, shared_ptr<TocBuilder> > map_t;
+	map_t map_;
+};
 
 
 ///
@@ -114,15 +195,13 @@ public:
 	void update(bool output_active);
 	/// \return true if the item was updated.
 	bool updateItem(DocIterator const & pit);
-
 	///
 	TocList const & tocs() const { return tocs_; }
-	TocList & tocs() { return tocs_; }
-
-	///
-	Toc const & toc(std::string const & type) const;
-	Toc & toc(std::string const & type);
-
+	/// never null
+	shared_ptr<Toc const> toc(std::string const & type) const;
+	shared_ptr<Toc> toc(std::string const & type);
+	/// nevel null
+	shared_ptr<TocBuilder> builder(std::string const & type);
 	/// Return the first Toc Item before the cursor
 	TocIterator item(
 		std::string const & type, ///< Type of Toc.
@@ -137,19 +216,10 @@ private:
 	///
 	TocList tocs_;
 	///
+	TocBuilderStore builders_;
+	///
 	Buffer const * buffer_;
 }; // TocBackend
-
-inline bool operator==(TocItem const & a, TocItem const & b)
-{
-	return a.id() == b.id() && a.str() == b.str() && a.depth() == b.depth();
-}
-
-
-inline bool operator!=(TocItem const & a, TocItem const & b)
-{
-	return !(a == b);
-}
 
 
 } // namespace lyx

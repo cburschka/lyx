@@ -6,6 +6,7 @@
  * \author Jean-Marc Lasgouttes
  * \author Angus Leeming
  * \author Abdelrazak Younes
+ * \author Guillaume Munch
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -57,18 +58,6 @@ int TocItem::id() const
 }
 
 
-int TocItem::depth() const
-{
-	return depth_;
-}
-
-
-docstring const & TocItem::str() const
-{
-	return str_;
-}
-
-
 docstring const & TocItem::tooltip() const
 {
 	return tooltip_.empty() ? str_ : tooltip_;
@@ -78,12 +67,6 @@ docstring const & TocItem::tooltip() const
 docstring const TocItem::asString() const
 {
 	return docstring(4 * depth_, ' ') + str_;
-}
-
-
-DocIterator const & TocItem::dit() const
-{
-	return dit_;
 }
 
 
@@ -97,96 +80,9 @@ FuncRequest TocItem::action() const
 
 ///////////////////////////////////////////////////////////////////////////
 //
-// TocBackend implementation
+// Toc implementation
 //
 ///////////////////////////////////////////////////////////////////////////
-
-Toc const & TocBackend::toc(string const & type) const
-{
-	// Is the type already supported?
-	TocList::const_iterator it = tocs_.find(type);
-	LASSERT(it != tocs_.end(), { static Toc dummy; return dummy; });
-
-	return it->second;
-}
-
-
-Toc & TocBackend::toc(string const & type)
-{
-	return tocs_[type];
-}
-
-
-bool TocBackend::updateItem(DocIterator const & dit)
-{
-	if (dit.text()->getTocLevel(dit.pit()) == Layout::NOT_IN_TOC)
-		return false;
-
-	if (toc("tableofcontents").empty()) {
-		// FIXME: should not happen, 
-		// a call to TocBackend::update() is missing somewhere
-		LYXERR0("TocBackend::updateItem called but the TOC is empty!");
-		return false;
-	}
-
-	BufferParams const & bufparams = buffer_->params();
-	const int min_toclevel = bufparams.documentClass().min_toclevel();
-
-	TocIterator toc_item = item("tableofcontents", dit);
-
-	docstring tocstring;
-
-	// For each paragraph, traverse its insets and let them add
-	// their toc items
-	Paragraph & par = toc_item->dit_.paragraph();
-	InsetList::const_iterator it = par.insetList().begin();
-	InsetList::const_iterator end = par.insetList().end();
-	for (; it != end; ++it) {
-		Inset & inset = *it->inset;
-		if (inset.lyxCode() == ARG_CODE) {
-			if (!tocstring.empty())
-				break;
-			Paragraph const & inset_par =
-				*static_cast<InsetArgument&>(inset).paragraphs().begin();
-			if (!par.labelString().empty())
-				tocstring = par.labelString() + ' ';
-			tocstring += inset_par.asString(AS_STR_INSETS);
-			break;
-		}
-	}
-
-	int const toclevel = toc_item->dit_.text()->getTocLevel(toc_item->dit_.pit());
-	if (toclevel != Layout::NOT_IN_TOC && toclevel >= min_toclevel
-		&& tocstring.empty())
-			tocstring = par.asString(AS_STR_LABEL | AS_STR_INSETS);
-
-	const_cast<TocItem &>(*toc_item).str_ = tocstring;
-
-	buffer_->updateTocItem("tableofcontents", dit);
-	return true;
-}
-
-
-void TocBackend::update(bool output_active)
-{
-	tocs_.clear();
-	if (!buffer_->isInternal()) {
-		DocIterator dit;
-		buffer_->inset().addToToc(dit, output_active);
-	}
-}
-
-
-TocIterator TocBackend::item(string const & type,
-		DocIterator const & dit) const
-{
-	TocList::const_iterator toclist_it = tocs_.find(type);
-	// Is the type supported?
-	// We will try to make the best of it in release mode
-	LASSERT(toclist_it != tocs_.end(), toclist_it = tocs_.begin());
-	return toclist_it->second.item(dit);
-}
-
 
 TocIterator Toc::item(DocIterator const & dit) const
 {
@@ -233,13 +129,184 @@ Toc::iterator Toc::item(int depth, docstring const & str)
 }
 
 
+///////////////////////////////////////////////////////////////////////////
+//
+// TocBuilder implementation
+//
+///////////////////////////////////////////////////////////////////////////
+
+TocBuilder::TocBuilder(shared_ptr<Toc> toc)
+	: toc_(toc ? toc : make_shared<Toc>()),
+	  stack_()
+{
+	LATTEST(toc);
+}
+
+void TocBuilder::pushItem(DocIterator const & dit, docstring const & s,
+						  bool output_active, bool is_captioned)
+{
+	toc_->push_back(TocItem(dit, stack_.size(), s, output_active));
+	frame f = {
+		toc_->size() - 1, //pos
+		is_captioned, //is_captioned
+	};
+	stack_.push(f);
+}
+
+void TocBuilder::captionItem(DocIterator const & dit, docstring const & s,
+							 bool output_active)
+{
+	if (!stack_.empty() && !stack_.top().is_captioned) {
+		// The float we entered has not yet been assigned a caption.
+		// Assign the caption string to it.
+		(*toc_)[stack_.top().pos].str(s);
+		stack_.top().is_captioned = true;
+	} else {
+		// This is a new entry.
+		pop();
+		pushItem(dit, s, output_active, true);
+	}
+}
+
+void TocBuilder::pop()
+{
+	if (!stack_.empty())
+		stack_.pop();
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////
+//
+// TocBuilderStore implementation
+//
+///////////////////////////////////////////////////////////////////////////
+
+shared_ptr<TocBuilder> TocBuilderStore::get(string const & type,
+											shared_ptr<Toc> toc)
+{
+	map_t::const_iterator it = map_.find(type);
+	if (it == map_.end()) {
+		it = map_.insert(std::make_pair(type,
+										make_shared<TocBuilder>(toc))).first;
+	}
+	return it->second;
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////
+//
+// TocBackend implementation
+//
+///////////////////////////////////////////////////////////////////////////
+
+shared_ptr<Toc const> TocBackend::toc(string const & type) const
+{
+	// Is the type already supported?
+	TocList::const_iterator it = tocs_.find(type);
+	LASSERT(it != tocs_.end(), { return make_shared<Toc>(); });
+	return it->second;
+}
+
+
+shared_ptr<Toc> TocBackend::toc(string const & type)
+{
+	TocList::const_iterator it = tocs_.find(type);
+	if (it == tocs_.end()) {
+		it = tocs_.insert(std::make_pair(type, make_shared<Toc>())).first;
+	}
+	return it->second;
+}
+
+
+shared_ptr<TocBuilder> TocBackend::builder(string const & type)
+{
+	return builders_.get(type, toc(type));
+}
+
+
+bool TocBackend::updateItem(DocIterator const & dit)
+{
+	if (dit.text()->getTocLevel(dit.pit()) == Layout::NOT_IN_TOC)
+		return false;
+
+	if (toc("tableofcontents")->empty()) {
+		// FIXME: should not happen, 
+		// a call to TocBackend::update() is missing somewhere
+		LYXERR0("TocBackend::updateItem called but the TOC is empty!");
+		return false;
+	}
+
+	BufferParams const & bufparams = buffer_->params();
+	const int min_toclevel = bufparams.documentClass().min_toclevel();
+
+	TocIterator toc_item = item("tableofcontents", dit);
+
+	docstring tocstring;
+
+	// For each paragraph, traverse its insets and let them add
+	// their toc items
+	Paragraph & par = toc_item->dit_.paragraph();
+	InsetList::const_iterator it = par.insetList().begin();
+	InsetList::const_iterator end = par.insetList().end();
+	for (; it != end; ++it) {
+		Inset & inset = *it->inset;
+		if (inset.lyxCode() == ARG_CODE) {
+			if (!tocstring.empty())
+				break;
+			Paragraph const & inset_par =
+				*static_cast<InsetArgument&>(inset).paragraphs().begin();
+			if (!par.labelString().empty())
+				tocstring = par.labelString() + ' ';
+			tocstring += inset_par.asString(AS_STR_INSETS);
+			break;
+		}
+	}
+
+	int const toclevel = toc_item->dit_.text()->getTocLevel(toc_item->dit_.pit());
+	if (toclevel != Layout::NOT_IN_TOC && toclevel >= min_toclevel
+		&& tocstring.empty())
+			tocstring = par.asString(AS_STR_LABEL | AS_STR_INSETS);
+
+	const_cast<TocItem &>(*toc_item).str_ = tocstring;
+
+	buffer_->updateTocItem("tableofcontents", dit);
+	return true;
+}
+
+
+void TocBackend::update(bool output_active)
+{
+	for (TocList::iterator it = tocs_.begin(); it != tocs_.end(); ++it)
+		it->second->clear();
+	tocs_.clear();
+	builders_.clear();
+	if (!buffer_->isInternal()) {
+		DocIterator dit;
+		buffer_->inset().addToToc(dit, output_active);
+	}
+}
+
+
+TocIterator TocBackend::item(string const & type,
+		DocIterator const & dit) const
+{
+	TocList::const_iterator toclist_it = tocs_.find(type);
+	// Is the type supported?
+	// We will try to make the best of it in release mode
+	LASSERT(toclist_it != tocs_.end(), toclist_it = tocs_.begin());
+	return toclist_it->second->item(dit);
+}
+
+
 void TocBackend::writePlaintextTocList(string const & type,
         odocstringstream & os, size_t max_length) const
 {
 	TocList::const_iterator cit = tocs_.find(type);
 	if (cit != tocs_.end()) {
-		TocIterator ccit = cit->second.begin();
-		TocIterator end = cit->second.end();
+		TocIterator ccit = cit->second->begin();
+		TocIterator end = cit->second->end();
 		for (; ccit != end; ++ccit) {
 			os << ccit->asString() << from_utf8("\n");
 			if (os.str().size() > max_length)

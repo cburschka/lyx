@@ -2429,9 +2429,9 @@ void BufferView::gotoLabel(docstring const & label)
 		Buffer const * buf = *it;
 
 		// find label
-		Toc & toc = buf->tocBackend().toc("label");
-		TocIterator toc_it = toc.begin();
-		TocIterator end = toc.end();
+		shared_ptr<Toc> toc = buf->tocBackend().toc("label");
+		TocIterator toc_it = toc->begin();
+		TocIterator end = toc->end();
 		for (; toc_it != end; ++toc_it) {
 			if (label == toc_it->str()) {
 				lyx::dispatch(toc_it->action());

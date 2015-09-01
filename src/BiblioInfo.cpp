@@ -1005,9 +1005,9 @@ void BiblioInfo::collectCitedEntries(Buffer const & buf)
 	// FIXME We may want to collect these differently, in the first case,
 	// so that we might have them in order of appearance.
 	set<docstring> citekeys;
-	Toc const & toc = buf.tocBackend().toc("citation");
-	Toc::const_iterator it = toc.begin();
-	Toc::const_iterator const en = toc.end();
+	shared_ptr<Toc const> toc = buf.tocBackend().toc("citation");
+	Toc::const_iterator it = toc->begin();
+	Toc::const_iterator const en = toc->end();
 	for (; it != en; ++it) {
 		if (it->str().empty())
 			continue;

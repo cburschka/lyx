@@ -2163,9 +2163,9 @@ void Buffer::getLabelList(vector<docstring> & list) const
 	}
 
 	list.clear();
-	Toc & toc = d->toc_backend.toc("label");
-	TocIterator toc_it = toc.begin();
-	TocIterator end = toc.end();
+	shared_ptr<Toc> toc = d->toc_backend.toc("label");
+	TocIterator toc_it = toc->begin();
+	TocIterator end = toc->end();
 	for (; toc_it != end; ++toc_it) {
 		if (toc_it->depth() == 0)
 			list.push_back(toc_it->str());
@@ -4461,6 +4461,7 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 
 	d->bibinfo_cache_valid_ = true;
 	d->cite_labels_valid_ = true;
+	/// FIXME: Perf
 	cbuf.tocBackend().update(utype == OutputUpdate);
 	if (scope == UpdateMaster)
 		cbuf.structureChanged();

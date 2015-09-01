@@ -1137,29 +1137,30 @@ void InsetInclude::addToToc(DocIterator const & cpit, bool output_active) const
 		string caption = p.getParamValue("caption");
 		if (caption.empty())
 			return;
-		Toc & toc = backend.toc("listing");
-		docstring str = convert<docstring>(toc.size() + 1)
+		shared_ptr<Toc> toc = backend.toc("listing");
+		docstring str = convert<docstring>(toc->size() + 1)
 			+ ". " +  from_utf8(caption);
 		DocIterator pit = cpit;
-		toc.push_back(TocItem(pit, 0, str, output_active));
-		return;
+		toc->push_back(TocItem(pit, 0, str, output_active));
+	} else {
+		Buffer const * const childbuffer = getChildBuffer();
+		if (!childbuffer)
+			return;
+
+		shared_ptr<Toc> toc = backend.toc("child");
+		docstring str = childbuffer->fileName().displayName();
+		toc->push_back(TocItem(cpit, 0, str, output_active));
+
+		//TocList & toclist = backend.tocs();
+		childbuffer->tocBackend().update(output_active);
+		TocList const & childtoclist = childbuffer->tocBackend().tocs();
+		TocList::const_iterator it = childtoclist.begin();
+		TocList::const_iterator const end = childtoclist.end();
+		for(; it != end; ++it) {
+			shared_ptr<Toc> toc = backend.toc(it->first);
+			toc->insert(toc->end(), it->second->begin(), it->second->end());
+		}
 	}
-	Buffer const * const childbuffer = getChildBuffer();
-	if (!childbuffer)
-		return;
-
-	Toc & toc = backend.toc("child");
-	docstring str = childbuffer->fileName().displayName();
-	toc.push_back(TocItem(cpit, 0, str, output_active));
-
-	TocList & toclist = backend.tocs();
-	childbuffer->tocBackend().update(output_active);
-	TocList const & childtoclist = childbuffer->tocBackend().tocs();
-	TocList::const_iterator it = childtoclist.begin();
-	TocList::const_iterator const end = childtoclist.end();
-	for(; it != end; ++it)
-		toclist[it->first].insert(toclist[it->first].end(),
-			it->second.begin(), it->second.end());
 }
 
 

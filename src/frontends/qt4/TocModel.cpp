@@ -364,7 +364,7 @@ void TocModels::reset(BufferView const * bv)
 		iterator mod_it = models_.find(type);
 		if (mod_it == models_.end())
 			mod_it = models_.insert(type, new TocModel(this));
-		mod_it.value()->reset(it->second);
+		mod_it.value()->reset(*it->second);
 
 		// Fill in the names_ model.
 		QString const gui_name = guiName(it->first, bv->buffer().params());

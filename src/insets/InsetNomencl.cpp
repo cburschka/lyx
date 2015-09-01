@@ -135,7 +135,7 @@ void InsetNomencl::validate(LaTeXFeatures & features) const
 void InsetNomencl::addToToc(DocIterator const & cpit, bool output_active) const
 {
 	docstring const str = getParam("symbol");
-	buffer().tocBackend().toc("nomencl").push_back(TocItem(cpit, 0, str, output_active));
+	buffer().tocBackend().toc("nomencl")->push_back(TocItem(cpit, 0, str, output_active));
 }
 
 
@@ -190,11 +190,11 @@ typedef map<docstring, NomenclEntry > EntryMap;
 
 docstring InsetPrintNomencl::xhtml(XHTMLStream &, OutputParams const & op) const
 {
-	Toc const & toc = buffer().tocBackend().toc("nomencl");
+	shared_ptr<Toc const> toc = buffer().tocBackend().toc("nomencl");
 
 	EntryMap entries;
-	Toc::const_iterator it = toc.begin();
-	Toc::const_iterator const en = toc.end();
+	Toc::const_iterator it = toc->begin();
+	Toc::const_iterator const en = toc->end();
 	for (; it != en; ++it) {
 		DocIterator dit = it->dit();
 		Paragraph const & par = dit.innerParagraph();

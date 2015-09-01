@@ -1313,8 +1313,8 @@ void MenuDefinition::expandToc(Buffer const * buf)
 
 		MenuDefinition submenu;
 		if (floatlist.typeExist(cit->first)) {
-			TocIterator ccit = cit->second.begin();
-			TocIterator eend = cit->second.end();
+			TocIterator ccit = cit->second->begin();
+			TocIterator eend = cit->second->end();
 			for (; ccit != eend; ++ccit) {
 				if (0 == ccit->depth()) {// omit subfloats
 					submenu.add(MenuItem(MenuItem::Command,
@@ -1331,15 +1331,15 @@ void MenuDefinition::expandToc(Buffer const * buf)
 			item.setSubmenu(submenu);
 			add(item);
 		} else {
-			if (cit->second.size() >= 30) {
+			if (cit->second->size() >= 30) {
 				// FIXME: the behaviour of the interface should not change
 				// arbitrarily. Each type should be audited to see if the list
 				// can be optimised like for floats above.
 				FuncRequest f(LFUN_DIALOG_SHOW, "toc " + cit->first);
 				submenu.add(MenuItem(MenuItem::Command, qt_("Open Navigator..."), f));
 			} else {
-				TocIterator ccit = cit->second.begin();
-				TocIterator eend = cit->second.end();
+				TocIterator ccit = cit->second->begin();
+				TocIterator eend = cit->second->end();
 				for (; ccit != eend; ++ccit) {
 					submenu.add(MenuItem(MenuItem::Command,
 										 limitStringLength(ccit->str()) + '|',
@@ -1367,8 +1367,8 @@ void MenuDefinition::expandToc(Buffer const * buf)
 	if (cit == end)
 		LYXERR(Debug::GUI, "No table of contents.");
 	else {
-		if (!cit->second.empty())
-			expandToc2(cit->second, 0, cit->second.size(), 0);
+		if (!cit->second->empty())
+			expandToc2(* cit->second, 0, cit->second->size(), 0);
 		else
 			add(MenuItem(MenuItem::Info, qt_("<Empty Table of Contents>")));
 	}

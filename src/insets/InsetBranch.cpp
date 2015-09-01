@@ -353,10 +353,10 @@ void InsetBranch::addToToc(DocIterator const & cpit, bool output_active) const
 	DocIterator pit = cpit;
 	pit.push_back(CursorSlice(const_cast<InsetBranch &>(*this)));
 
-	Toc & toc = buffer().tocBackend().toc("branch");
+	shared_ptr<Toc> toc = buffer().tocBackend().toc("branch");
 	docstring str = params_.branch + ": ";
 	text().forOutliner(str, TOC_ENTRY_LENGTH);
-	toc.push_back(TocItem(pit, 0, str, output_active, toolTipText(docstring(), 3, 60)));
+	toc->push_back(TocItem(pit, 0, str, output_active, toolTipText(docstring(), 3, 60)));
 	// Proceed with the rest of the inset.
 	bool const doing_output = output_active && isBranchSelected();
 	InsetCollapsable::addToToc(cpit, doing_output);

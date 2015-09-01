@@ -301,14 +301,14 @@ void InsetMathHull::addToToc(DocIterator const & pit, bool output_active) const
 		return;
 	}
 
-	Toc & toc = buffer().tocBackend().toc("equation");
+	shared_ptr<Toc> toc = buffer().tocBackend().toc("equation");
 
 	for (row_type row = 0; row != nrows(); ++row) {
 		if (!numbered(row))
 			continue;
 		if (label_[row])
 			label_[row]->addToToc(pit, output_active);
-		toc.push_back(TocItem(pit, 0, nicelabel(row), output_active));
+		toc->push_back(TocItem(pit, 0, nicelabel(row), output_active));
 	}
 }
 

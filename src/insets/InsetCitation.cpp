@@ -339,8 +339,8 @@ void InsetCitation::addToToc(DocIterator const & cpit, bool output_active) const
 	// by both XHTML and plaintext output. So, if we change what goes into the TOC,
 	// then we will also need to change that routine.
 	docstring const tocitem = getParam("key");
-	Toc & toc = buffer().tocBackend().toc("citation");
-	toc.push_back(TocItem(cpit, 0, tocitem, output_active));
+	shared_ptr<Toc> toc = buffer().tocBackend().toc("citation");
+	toc->push_back(TocItem(cpit, 0, tocitem, output_active));
 }
 
 

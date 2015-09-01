@@ -358,7 +358,7 @@ void InsetIndex::addToToc(DocIterator const & cpit, bool output_active) const
 		type += ":" + to_utf8(params_.index);
 	// this is unlikely to be terribly long
 	text().forOutliner(str, INT_MAX);
-	buffer().tocBackend().toc(type).push_back(TocItem(pit, 0, str, output_active));
+	buffer().tocBackend().toc(type)->push_back(TocItem(pit, 0, str, output_active));
 	// Proceed with the rest of the inset.
 	InsetCollapsable::addToToc(cpit, output_active);
 }
@@ -689,13 +689,13 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 	if (bp.use_indices && getParam("type") != from_ascii("idx"))
 		return docstring();
 	
-	Toc const & toc = buffer().tocBackend().toc("index");
-	if (toc.empty())
+	shared_ptr<Toc const> toc = buffer().tocBackend().toc("index");
+	if (toc->empty())
 		return docstring();
 
 	// Collect the index entries in a form we can use them.
-	Toc::const_iterator it = toc.begin();
-	Toc::const_iterator const en = toc.end();
+	Toc::const_iterator it = toc->begin();
+	Toc::const_iterator const en = toc->end();
 	vector<IndexEntry> entries;
 	for (; it != en; ++it)
 		if (it->isOutput())
