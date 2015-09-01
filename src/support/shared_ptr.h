@@ -20,6 +20,7 @@
 #else
 
 #include <boost/shared_ptr.hpp>
+#include <boost/make_shared.hpp>
 #define LYX_SHAREDPTR_NS boost
 
 #endif
@@ -27,6 +28,7 @@
 namespace lyx
 {
 	using LYX_SHAREDPTR_NS::shared_ptr;
+	using LYX_SHAREDPTR_NS::make_shared;
 	using LYX_SHAREDPTR_NS::const_pointer_cast;
 }
 
