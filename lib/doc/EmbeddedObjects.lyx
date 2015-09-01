@@ -2,7 +2,7 @@
 \lyxformat 497
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % if pdflatex is used
@@ -666,7 +666,7 @@ reference "sec:Image-Formats"
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename clipart/mobius.eps
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/mobius.eps
 	scale 70
 	scaleBeforeRotation
 	rotateOrigin center
@@ -687,7 +687,7 @@ This is the same image like the one above but in draft mode:
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename clipart/mobius.eps
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/mobius.eps
 	scale 70
 	draft
 	scaleBeforeRotation
@@ -823,7 +823,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename clipart/platypus.eps
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/platypus.eps
 	width 50col%
 	scaleBeforeRotation
 	rotateOrigin center
@@ -884,7 +884,7 @@ M.C.
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename clipart/escher-lsd.eps
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/escher-lsd.eps
 	scale 80
 	scaleBeforeRotation
 	rotateOrigin center
@@ -1069,7 +1069,7 @@ Undefinable structure.
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename clipart/escher-lsd.eps
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/escher-lsd.eps
 	width 45col%
 	scaleBeforeRotation
 	groupId distorted
@@ -1111,7 +1111,7 @@ A Platypus.
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename clipart/platypus.eps
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/platypus.eps
 	width 45col%
 	scaleBeforeRotation
 	groupId distorted
@@ -24108,7 +24108,7 @@ reference "sec:Caption-Placement"
  left-clicking on the box label.
  A closed float box looks like this: 
 \begin_inset Graphics
-	filename clipart/floatQt4.png
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/floatQt4.png
 	scale 70
 	scaleBeforeRotation
 
@@ -24636,7 +24636,7 @@ arg   "label-insert"
 .
  A grey label box like this one: 
 \begin_inset Graphics
-	filename clipart/labelQt4.png
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/labelQt4.png
 	scale 85
 	scaleBeforeRotation
 
@@ -24681,7 +24681,7 @@ arg   "dialog-show-new-inset ref"
  You can now sort the labels alphabetically and then choose one.
  A grey cross-reference box like this one: 
 \begin_inset Graphics
-	filename clipart/referenceQt4.png
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/referenceQt4.png
 	scale 85
 	scaleBeforeRotation
 
@@ -26859,7 +26859,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename clipart/mobius.eps
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/mobius.eps
 	lyxscale 50
 	width 100col%
 	scaleBeforeRotation
@@ -26915,7 +26915,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename clipart/platypus.eps
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/platypus.eps
 	lyxscale 50
 	width 100col%
 	scaleBeforeRotation
@@ -27408,7 +27408,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename clipart/mobius.eps
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/mobius.eps
 	lyxscale 50
 	scale 50
 	scaleBeforeRotation
@@ -28798,7 +28798,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename clipart/escher-lsd.eps
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/escher-lsd.eps
 	scale 75
 	scaleBeforeRotation
 
@@ -29145,7 +29145,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename clipart/escher-lsd.eps
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/escher-lsd.eps
 	scale 75
 	scaleBeforeRotation
 
@@ -29225,7 +29225,7 @@ name "tab:cap-beside-tab-wider"
 
 \end_inset
 
-This caption is wider than the one in Table
+This caption that is wider than the one in Table
 \begin_inset space ~
 \end_inset
 
@@ -29621,7 +29621,7 @@ Note This note type is for internal notes that won't appear in the output.
 
 
 \begin_inset Graphics
-	filename clipart/LyXNoteImageQt4.png
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/LyXNoteImageQt4.png
 	display false
 	scale 85
 	scaleBeforeRotation
@@ -29663,7 +29663,7 @@ Export\SpecialChar menuseparator
 
 
 \begin_inset Graphics
-	filename clipart/CommentNoteImageQt4.png
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/CommentNoteImageQt4.png
 	display false
 	scale 85
 	scaleBeforeRotation
@@ -29700,7 +29700,7 @@ Out This note will appear in the output as grey text.
 
 
 \begin_inset Graphics
-	filename clipart/GreyedOutNoteImageQt4.png
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/GreyedOutNoteImageQt4.png
 	display false
 	scale 85
 	scaleBeforeRotation
@@ -29907,7 +29907,7 @@ Footnote
 .
  You will then see the following footnote-box: 
 \begin_inset Graphics
-	filename clipart/footnoteQt4.png
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/footnoteQt4.png
 	scale 80
 	scaleBeforeRotation
 
@@ -30962,7 +30962,7 @@ framebox{
 
 
 \begin_inset Graphics
-	filename clipart/without_fntright.pdf
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/without_fntright.pdf
 	width 100col%
 	scaleBeforeRotation
 
@@ -31027,7 +31027,7 @@ framebox{
 
 
 \begin_inset Graphics
-	filename clipart/with_fntright.pdf
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/with_fntright.pdf
 	width 100col%
 	scaleBeforeRotation
 
@@ -31168,7 +31168,7 @@ framebox{
 
 
 \begin_inset Graphics
-	filename clipart/endnotes.pdf
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/endnotes.pdf
 	scaleBeforeRotation
 
 \end_inset
@@ -32373,7 +32373,7 @@ Box (Minipage)
 \family default
 : 
 \begin_inset Graphics
-	filename clipart/BoxInsetDefaultQt4.png
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/BoxInsetDefaultQt4.png
 	scale 85
 	scaleBeforeRotation
 
@@ -35381,7 +35381,7 @@ rotatebox[origin=lb]{90}{
 
 
 \begin_inset Graphics
-	filename clipart/platypus.eps
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/platypus.eps
 	lyxscale 50
 	width 25col%
 
@@ -35953,7 +35953,7 @@ reflectbox{
 
 
 \begin_inset Graphics
-	filename clipart/platypus.eps
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/platypus.eps
 	lyxscale 50
 	width 25col%
 
@@ -36184,7 +36184,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename clipart/mobius.eps
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/mobius.eps
 	width 40col%
 	scaleBeforeRotation
 	rotateOrigin center
@@ -36455,7 +36455,7 @@ reference "sec:Wrap-Floats"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../images/dialog-show-new-inset_graphics.png
+	filename /cvs/lyx/lyx-devel/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -36521,7 +36521,7 @@ text
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../images/dialog-show-new-inset_graphics.png
+	filename /cvs/lyx/lyx-devel/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -36603,7 +36603,7 @@ text
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../images/dialog-show-new-inset_graphics.png
+	filename /cvs/lyx/lyx-devel/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -36669,7 +36669,7 @@ text
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../images/dialog-show-new-inset_graphics.png
+	filename /cvs/lyx/lyx-devel/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -36707,7 +36707,7 @@ text
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../images/dialog-show-new-inset_graphics.png
+	filename /cvs/lyx/lyx-devel/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -36812,7 +36812,7 @@ text
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../images/dialog-show-new-inset_graphics.png
+	filename /cvs/lyx/lyx-devel/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -36874,7 +36874,7 @@ text
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../images/dialog-show-new-inset_graphics.png
+	filename /cvs/lyx/lyx-devel/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -36970,7 +36970,7 @@ text
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../images/dialog-show-new-inset_graphics.png
+	filename /cvs/lyx/lyx-devel/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -37065,7 +37065,7 @@ text
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../images/dialog-show-new-inset_graphics.png
+	filename /cvs/lyx/lyx-devel/lib/images/dialog-show-new-inset_graphics.png
 	scale 70
 	scaleBeforeRotation
 
@@ -37172,7 +37172,7 @@ begin{window}[2,c,{
 
 
 \begin_inset Graphics
-	filename clipart/mobius.eps
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/mobius.eps
 	lyxscale 60
 	width 40col%
 	scaleBeforeRotation
@@ -38093,7 +38093,7 @@ Day-Month-Year
  This is a date inserted as external material: 
 \begin_inset External
 	template Date
-	filename .
+	filename /cvs/lyx/lyx-devel/lib/doc/
 
 \end_inset
 
@@ -38416,7 +38416,7 @@ Default
 Here is an included PDF which is rotated by -5°: 
 \begin_inset External
 	template PDFPages
-	filename clipart/Abstract.pdf
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/Abstract.pdf
 	extra LaTeX "noautoscale, pages=-"
 	rotateAngle -5
 	rotateOrigin bottomleft
@@ -38453,7 +38453,7 @@ reference "sec:Graphics-Dialog"
  Here is an inserted raster image: 
 \begin_inset External
 	template RasterImage
-	filename clipart/ToolbarEnvBox.png
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/ToolbarEnvBox.png
 
 \end_inset
 
@@ -38707,7 +38707,7 @@ External Material
 External material is displayed in \SpecialChar LyX
  either as a box like this: 
 \begin_inset Graphics
-	filename clipart/ExternalMaterialQt4.png
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/ExternalMaterialQt4.png
 	scale 85
 	scaleBeforeRotation
 
@@ -38807,7 +38807,7 @@ Class
 Included documents are displayed in \SpecialChar LyX
  as a box like this: 
 \begin_inset Graphics
-	filename clipart/ChildDocumentQt4.png
+	filename /cvs/lyx/lyx-devel/lib/doc/clipart/ChildDocumentQt4.png
 	scale 85
 	scaleBeforeRotation
 
