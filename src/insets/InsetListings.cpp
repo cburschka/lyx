@@ -51,7 +51,7 @@ namespace lyx {
 
 
 InsetListings::InsetListings(Buffer * buf, InsetListingsParams const & par)
-	: InsetCollapsable(buf)
+	: InsetCaptionable(buf,"listing")
 {
 	status_ = par.status();
 }
@@ -69,22 +69,6 @@ Inset::DisplayType InsetListings::display() const
 }
 
 
-void InsetListings::updateBuffer(ParIterator const & it, UpdateType utype)
-{
-	Counters & cnts =
-		buffer().masterBuffer()->params().documentClass().counters();
-	string const saveflt = cnts.current_float();
-
-	// Tell to captions what the current float is
-	cnts.current_float("listing");
-
-	InsetCollapsable::updateBuffer(it, utype);
-
-	//reset afterwards
-	cnts.current_float(saveflt);
-}
-
-
 void InsetListings::write(ostream & os) const
 {
 	os << "listings" << "\n";
@@ -97,7 +81,7 @@ void InsetListings::write(ostream & os) const
 		os << "inline true\n";
 	else
 		os << "inline false\n";
-	InsetCollapsable::write(os);
+	InsetCaptionable::write(os);
 }
 
 
@@ -119,7 +103,7 @@ void InsetListings::read(Lexer & lex)
 			break;
 		}
 	}
-	InsetCollapsable::read(lex);
+	InsetCaptionable::read(lex);
 }
 
 
@@ -334,7 +318,7 @@ void InsetListings::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		InsetCollapsable::doDispatch(cur, cmd);
+		InsetCaptionable::doDispatch(cur, cmd);
 		break;
 	}
 }
@@ -356,7 +340,7 @@ bool InsetListings::getStatus(Cursor & cur, FuncRequest const & cmd,
 			}
 		}
 		default:
-			return InsetCollapsable::getStatus(cur, cmd, status);
+			return InsetCaptionable::getStatus(cur, cmd, status);
 	}
 }
 
@@ -377,7 +361,7 @@ void InsetListings::validate(LaTeXFeatures & features) const
 	string param_string = params().params();
 	if (param_string.find("\\color") != string::npos)
 		features.require("color");
-	InsetCollapsable::validate(features);
+	InsetCaptionable::validate(features);
 }
 
 

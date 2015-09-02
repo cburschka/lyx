@@ -12,7 +12,7 @@
 #ifndef INSETLISTINGSPARAMS_H
 #define INSETLISTINGSPARAMS_H
 
-#include "InsetCollapsable.h"
+#include "InsetCaptionable.h"
 
 #include <map>
 

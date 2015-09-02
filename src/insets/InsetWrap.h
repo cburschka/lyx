@@ -12,7 +12,7 @@
 #ifndef INSETWRAP_H
 #define INSETWRAP_H
 
-#include "InsetCollapsable.h"
+#include "InsetCaptionable.h"
 #include "Length.h"
 
 
@@ -41,7 +41,7 @@ public:
 
 /** The wrap inset
  */
-class InsetWrap : public InsetCollapsable {
+class InsetWrap : public InsetCaptionable {
 public:
 	///
 	InsetWrap(Buffer *, std::string const &);
@@ -54,6 +54,8 @@ public:
 	///
 	static std::string params2string(InsetWrapParams const &);
 private:
+	///
+	void setCaptionType(std::string const & type);
 	///
 	void write(std::ostream & os) const;
 	///
@@ -79,7 +81,7 @@ private:
 	bool showInsetDialog(BufferView *) const;
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
-	/// Update the counters of this inset and of its contents
+	/// Update the label
 	void updateBuffer(ParIterator const &, UpdateType);
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);

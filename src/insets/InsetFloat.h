@@ -13,7 +13,7 @@
 #ifndef INSET_FLOAT_H
 #define INSET_FLOAT_H
 
-#include "InsetCollapsable.h"
+#include "InsetCaptionable.h"
 
 
 namespace lyx {
@@ -22,7 +22,7 @@ class InsetFloatParams
 {
 public:
 	///
-	InsetFloatParams() : wide(false), sideways(false), subfloat(false) {}
+	InsetFloatParams() : type("senseless"), wide(false), sideways(false), subfloat(false) {}
 	///
 	void write(std::ostream & os) const;
 	///
@@ -48,12 +48,10 @@ public:
 /////////////////////////////////////////////////////////////////////////
 
 /// Used for "floating" objects like tables, figures etc.
-class InsetFloat : public InsetCollapsable
+class InsetFloat : public InsetCaptionable
 {
 public:
-	///
 	InsetFloat(Buffer * buffer, std::string params_str);
-
 	///
 	static void string2params(std::string const &, InsetFloatParams &);
 	///
@@ -71,6 +69,8 @@ public:
 	///
 	bool allowsCaptionVariation(std::string const &) const;
 private:
+	///
+	void setCaptionType(std::string const & type);
 	///
 	docstring layoutName() const;
 	///
@@ -101,9 +101,7 @@ private:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
-	void addToToc(DocIterator const & di, bool output_active) const;
-	/// Update the counters of this inset and of its contents
-	void updateBuffer(ParIterator const &, UpdateType);
+	bool hasSubCaptions(ParIterator const & it) const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///

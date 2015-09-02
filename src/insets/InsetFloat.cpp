@@ -30,7 +30,6 @@
 #include "output_xhtml.h"
 #include "ParIterator.h"
 #include "TextClass.h"
-#include "TocBackend.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -114,9 +113,23 @@ namespace lyx {
 
 //FIXME: why do we set in stone the type here?
 InsetFloat::InsetFloat(Buffer * buf, string params_str)
-	: InsetCollapsable(buf)
+	: InsetCaptionable(buf)
 {
 	string2params(params_str, params_);
+	setCaptionType(params_.type);
+}
+
+
+// Enforce equality of float type and caption type.
+void InsetFloat::setCaptionType(std::string const & type)
+{
+	InsetCaptionable::setCaptionType(type);	
+	params_.type = captionType();
+	// check if the float type exists
+	if (buffer().params().documentClass().floats().typeExist(params_.type))
+		setLabel(_("float: ") + floatName(params_.type));
+	else
+		setLabel(bformat(_("ERROR: Unknown float type: %1$s"), from_utf8(params_.type)));
 }
 
 
@@ -129,7 +142,7 @@ docstring InsetFloat::layoutName() const
 docstring InsetFloat::toolTip(BufferView const & bv, int x, int y) const
 {
 	if (isOpen(bv))
-		return InsetCollapsable::toolTip(bv, x, y);
+		return InsetCaptionable::toolTip(bv, x, y);
 
 	OutputParams rp(&buffer().params().encoding());
 	return getCaptionText(rp);
@@ -152,10 +165,8 @@ void InsetFloat::doDispatch(Cursor & cur, FuncRequest & cmd)
 			params_.sideways  = params.sideways;
 		}
 		setNewLabel();
-		if (params_.type != params.type) {
-			params_.type = params.type;
-			cur.forceBufferUpdate();
-		}
+		if (params_.type != params.type)
+			setCaptionType(params.type);
 		// what we really want here is a TOC update, but that means
 		// a full buffer update
 		cur.forceBufferUpdate();
@@ -168,7 +179,7 @@ void InsetFloat::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	default:
-		InsetCollapsable::doDispatch(cur, cmd);
+		InsetCaptionable::doDispatch(cur, cmd);
 		break;
 	}
 }
@@ -185,7 +196,7 @@ bool InsetFloat::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	case LFUN_INSET_SETTINGS:
-		if (InsetCollapsable::getStatus(cur, cmd, flag)) {
+		if (InsetCaptionable::getStatus(cur, cmd, flag)) {
 			flag.setEnabled(flag.enabled() && !params_.subfloat);
 			return true;
 		} else
@@ -198,62 +209,25 @@ bool InsetFloat::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 
 	default:
-		return InsetCollapsable::getStatus(cur, cmd, flag);
+		return InsetCaptionable::getStatus(cur, cmd, flag);
 	}
 }
 
 
-void InsetFloat::addToToc(DocIterator const & cpit, bool output_active) const
+bool InsetFloat::hasSubCaptions(ParIterator const & it) const
 {
-	string const & type = params().type;
-	DocIterator pit = cpit;
-	pit.push_back(CursorSlice(const_cast<InsetFloat &>(*this)));
-	docstring str;
-	int length = output_active ? INT_MAX : TOC_ENTRY_LENGTH;
-	text().forOutliner(str, length);
-	shared_ptr<TocBuilder> builder = buffer().tocBackend().builder(type);
-	builder->pushItem(pit, str, output_active);
-	// Proceed with the rest of the inset.
-	InsetCollapsable::addToToc(cpit, output_active);
-	builder->pop();
-}
-
-
-void InsetFloat::updateBuffer(ParIterator const & it, UpdateType utype)
-{
-	Counters & cnts =
-		buffer().masterBuffer()->params().documentClass().counters();
-	if (utype == OutputUpdate) {
-		// counters are local to the float
-		cnts.saveLastCounter();
-	}
-	string const saveflt = cnts.current_float();
-	bool const savesubflt = cnts.isSubfloat();
-
-	bool const subflt = (it.innerInsetOfType(FLOAT_CODE)
-			     || it.innerInsetOfType(WRAP_CODE));
-	// floats can only embed subfloats of their own kind
-	if (subflt)
-		params_.type = saveflt;
-	setSubfloat(subflt);
-
-	// Tell to captions what the current float is
-	cnts.current_float(params().type);
-	cnts.isSubfloat(subflt);
-
-	InsetCollapsable::updateBuffer(it, utype);
-
-	//reset afterwards
-	cnts.current_float(saveflt);
-	if (utype == OutputUpdate)
-		cnts.restoreLastCounter();
-	cnts.isSubfloat(savesubflt);
+	return (it.innerInsetOfType(FLOAT_CODE) || it.innerInsetOfType(WRAP_CODE));
 }
 
 
 void InsetFloatParams::write(ostream & os) const
 {
-	os << type << '\n';
+	if (type.empty()) {
+		// Better this than creating a parse error. This in fact happens in the
+		// parameters dialog via InsetFloatParams::params2string.
+		os << "senseless" << '\n';
+	} else
+		os << type << '\n';
 
 	if (!placement.empty())
 		os << "placement " << placement << "\n";
@@ -285,19 +259,15 @@ void InsetFloat::write(ostream & os) const
 {
 	os << "Float ";
 	params_.write(os);
-	InsetCollapsable::write(os);
+	InsetCaptionable::write(os);
 }
 
 
 void InsetFloat::read(Lexer & lex)
 {
 	params_.read(lex);
-	InsetCollapsable::read(lex);
-	// check if the float type exists
-	if (buffer().params().documentClass().floats().typeExist(params_.type))
-		setLabel(_("float: ") + floatName(params_.type));
-	else
-		setLabel(bformat(_("ERROR: Unknown float type: %1$s"), from_utf8(params_.type)));
+	InsetCaptionable::read(lex);
+	setCaptionType(params_.type);
 }
 
 
@@ -314,7 +284,7 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 
 	features.useFloat(params_.type, features.inFloat());
 	features.inFloat(true);
-	InsetCollapsable::validate(features);
+	InsetCaptionable::validate(features);
 	features.inFloat(false);
 }
 
@@ -460,7 +430,7 @@ bool InsetFloat::insetAllowed(InsetCode code) const
 	case MARGIN_CODE:
 		return false;
 	default:
-		return InsetCollapsable::insetAllowed(code);
+		return InsetCaptionable::insetAllowed(code);
 	}
 }
 

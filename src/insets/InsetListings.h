@@ -25,8 +25,8 @@ class LaTeXFeatures;
 //
 /////////////////////////////////////////////////////////////////////////
 
-/// A collapsable text inset for program listings.
-class InsetListings : public InsetCollapsable
+/// A captionable and collapsable text inset for program listings.
+class InsetListings : public InsetCaptionable
 {
 public:
 	///
@@ -48,8 +48,6 @@ private:
 	DisplayType display() const;
 	///
 	docstring layoutName() const { return from_ascii("Listings"); }
-	// Update the counters of this inset and of its contents
-	void updateBuffer(ParIterator const &, UpdateType);
 	///
 	void write(std::ostream & os) const;
 	///

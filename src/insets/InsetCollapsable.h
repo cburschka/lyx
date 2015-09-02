@@ -148,8 +148,6 @@ public:
 	std::string contextMenu(BufferView const & bv, int x, int y) const;
 	///
 	std::string contextMenuName() const;
-	///
-	docstring floatName(std::string const & type) const;
 protected:
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);

@@ -15,18 +15,15 @@
 #include "InsetCollapsable.h"
 
 #include "Buffer.h"
-#include "BufferParams.h"
 #include "BufferView.h"
 #include "Cursor.h"
 #include "Dimension.h"
-#include "FloatList.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "InsetLayout.h"
 #include "Lexer.h"
 #include "MetricsInfo.h"
 #include "OutputParams.h"
-#include "TextClass.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
@@ -599,16 +596,6 @@ void InsetCollapsable::setStatus(Cursor & cur, CollapseStatus status)
 	setButtonLabel();
 	if (status_ == Collapsed)
 		cur.leaveInset(*this);
-}
-
-
-docstring InsetCollapsable::floatName(string const & type) const
-{
-	BufferParams const & bp = buffer().params();
-	FloatList const & floats = bp.documentClass().floats();
-	FloatList::const_iterator it = floats[type];
-	// FIXME UNICODE
-	return (it == floats.end()) ? from_ascii(type) : bp.B_(it->second.name());
 }
 
 

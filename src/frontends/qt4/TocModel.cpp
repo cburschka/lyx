@@ -80,8 +80,9 @@ public:
 
 TocModel::TocModel(QObject * parent)
 	: model_(new TocTypeModel(parent)),
-	sorted_model_(new QSortFilterProxyModel(parent)),
-	is_sorted_(false), toc_(0), maxdepth_(0), mindepth_(0)
+	  sorted_model_(new QSortFilterProxyModel(parent)),
+	  is_sorted_(false), toc_(make_shared<Toc const>()),
+	  maxdepth_(0), mindepth_(0)
 {
 	sorted_model_->setSortLocaleAware(true);
 	sorted_model_->setSourceModel(model_);
@@ -108,6 +109,7 @@ void TocModel::clear()
 {
 	model_->blockSignals(true);
 	model_->clear();
+	toc_ = make_shared<Toc const>();
 	model_->blockSignals(false);
 }
 
@@ -157,9 +159,9 @@ void TocModel::updateItem(DocIterator const & dit)
 }
 
 
-void TocModel::reset(Toc const & toc)
+void TocModel::reset(shared_ptr<Toc const> toc)
 {
-	toc_ = &toc;
+	toc_ = toc;
 	if (toc_->empty()) {
 		maxdepth_ = 0;
 		mindepth_ = 0;
@@ -364,7 +366,7 @@ void TocModels::reset(BufferView const * bv)
 		iterator mod_it = models_.find(type);
 		if (mod_it == models_.end())
 			mod_it = models_.insert(type, new TocModel(this));
-		mod_it.value()->reset(*it->second);
+		mod_it.value()->reset(it->second);
 
 		// Fill in the names_ model.
 		QString const gui_name = guiName(it->first, bv->buffer().params());

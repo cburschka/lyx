@@ -43,10 +43,9 @@ using namespace std;
 namespace lyx {
 
 InsetWrap::InsetWrap(Buffer * buf, string const & type)
-	: InsetCollapsable(buf)
+	: InsetCaptionable(buf)
 {
-	setLabel(_("wrap: ") + floatName(type));
-	params_.type = type;
+	setCaptionType(type);
 	params_.lines = 0;
 	params_.placement = "o";
 	params_.overhang = Length(0, Length::PCW);
@@ -60,6 +59,15 @@ InsetWrap::~InsetWrap()
 }
 
 
+// Enforce equality of float type and caption type.
+void InsetWrap::setCaptionType(std::string const & type)
+{
+	InsetCaptionable::setCaptionType(type);
+	params_.type = captionType();
+	setLabel(_("wrap: ") + floatName(type));
+}
+
+
 docstring InsetWrap::layoutName() const
 {
 	return "Wrap:" + from_utf8(params_.type);
@@ -69,7 +77,7 @@ docstring InsetWrap::layoutName() const
 docstring InsetWrap::toolTip(BufferView const & bv, int x, int y) const
 {
 	if (isOpen(bv))
-		return InsetCollapsable::toolTip(bv, x, y);
+		return InsetCaptionable::toolTip(bv, x, y);
 	OutputParams rp(&buffer().params().encoding());
 	docstring caption_tip = getCaptionText(rp);
 	if (!caption_tip.empty())
@@ -97,7 +105,7 @@ void InsetWrap::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		InsetCollapsable::doDispatch(cur, cmd);
+		InsetCaptionable::doDispatch(cur, cmd);
 		break;
 	}
 }
@@ -113,31 +121,14 @@ bool InsetWrap::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	default:
-		return InsetCollapsable::getStatus(cur, cmd, flag);
+		return InsetCaptionable::getStatus(cur, cmd, flag);
 	}
 }
 
 
 void InsetWrap::updateBuffer(ParIterator const & it, UpdateType utype)
 {
-	setLabel(_("wrap: ") + floatName(params_.type));
-	Counters & cnts =
-		buffer().masterBuffer()->params().documentClass().counters();
-	if (utype == OutputUpdate) {
-		// counters are local to the wrap
-		cnts.saveLastCounter();
-	}
-	string const saveflt = cnts.current_float();
-
-	// Tell to captions what the current float is
-	cnts.current_float(params().type);
-
-	InsetCollapsable::updateBuffer(it, utype);
-
-	// reset afterwards
-	cnts.current_float(saveflt);
-	if (utype == OutputUpdate)
-		cnts.restoreLastCounter();
+	InsetCaptionable::updateBuffer(it, utype);
 }
 
 
@@ -164,14 +155,14 @@ void InsetWrapParams::read(Lexer & lex)
 void InsetWrap::write(ostream & os) const
 {
 	params_.write(os);
-	InsetCollapsable::write(os);
+	InsetCaptionable::write(os);
 }
 
 
 void InsetWrap::read(Lexer & lex)
 {
 	params_.read(lex);
-	InsetCollapsable::read(lex);
+	InsetCaptionable::read(lex);
 }
 
 
@@ -179,7 +170,7 @@ void InsetWrap::validate(LaTeXFeatures & features) const
 {
 	features.require("wrapfig");
 	features.inFloat(true);
-	InsetCollapsable::validate(features);
+	InsetCaptionable::validate(features);
 	features.inFloat(false);
 }
 
@@ -248,7 +239,7 @@ bool InsetWrap::insetAllowed(InsetCode code) const
 	case MARGIN_CODE:
 		return false;
 	default:
-		return InsetCollapsable::insetAllowed(code);
+		return InsetCaptionable::insetAllowed(code);
 	}
 }
 

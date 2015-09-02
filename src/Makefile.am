@@ -573,6 +573,7 @@ SOURCEFILESINSETS = \
 	insets/InsetBox.cpp \
 	insets/InsetBranch.cpp \
 	insets/InsetCaption.cpp \
+	insets/InsetCaptionable.cpp \
 	insets/InsetCitation.cpp \
 	insets/InsetCollapsable.cpp \
 	insets/InsetCommand.cpp \
@@ -631,6 +632,7 @@ HEADERFILESINSETS = \
 	insets/InsetBox.h \
 	insets/InsetBranch.h \
 	insets/InsetCaption.h \
+	insets/InsetCaptionable.h \
 	insets/InsetCitation.h \
 	insets/InsetCode.h \
 	insets/InsetCollapsable.h \
