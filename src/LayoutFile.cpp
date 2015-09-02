@@ -301,9 +301,9 @@ LayoutFileIndex  LayoutFileList::addLocalLayout(
 	// which uses the following regex
 	//     \Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}
 	ifstream ifs(layout_file.toFilesystemEncoding().c_str());
-	static regex const reg("^#\\s*\\\\Declare(LaTeX|DocBook)Class\\s*"
+	static regex const reg("^\\s*#\\s*\\\\Declare(LaTeX|DocBook)Class\\s*"
 		"(?:\\[([^,]*)(?:,.*)*\\])*\\s*\\{(.*)\\}\\s*");
-	static regex const catreg("^#\\s*\\\\DeclareCategory\\{(.*)\\}");
+	static regex const catreg("^\\s*#\\s*\\\\DeclareCategory\\{(.*)\\}\\s*");
 	string line;
 	string class_name;
 	string class_prereq;
