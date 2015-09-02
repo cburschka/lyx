@@ -80,6 +80,9 @@ What's new
 
 * INTERNALS
 
+- Fix parsing problems of class and category declaration line in layout files
+  that could break the textclass detection (bug 9746).
+
 
 
 * DOCUMENTATION AND LOCALIZATION

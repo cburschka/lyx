@@ -1150,8 +1150,8 @@ def processLayoutFile(file, bool_docbook):
             return x.strip()
     classname = file.split(os.sep)[-1].split('.')[0]
     # return ('LaTeX', '[a,b]', 'a', ',b,c', 'article') for \DeclareLaTeXClass[a,b,c]{article}
-    p = re.compile(r'\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}')
-    q = re.compile(r'\DeclareCategory{(.*)}')
+    p = re.compile(r'^\s*#\s*\\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}\s*$')
+    q = re.compile(r'^\s*#\s*\\DeclareCategory{(.*)}\s*$')
     classdeclaration = ""
     categorydeclaration = '""'
     for line in open(file).readlines():
@@ -1246,8 +1246,8 @@ def checkLatexConfig(check_config, bool_docbook):
     # Construct the list of classes to test for.
     # build the list of available layout files and convert it to commands
     # for chkconfig.ltx
-    declare = re.compile(r'\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}')
-    category = re.compile(r'\DeclareCategory{(.*)}')
+    declare = re.compile(r'^\s*#\s*\\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}\s*$')
+    category = re.compile(r'^\s*#\s*\\DeclareCategory{(.*)}\s*$')
     empty = re.compile(r'^\s*$')
     testclasses = list()
     for file in glob.glob( os.path.join('layouts', '*.layout') ) + \
