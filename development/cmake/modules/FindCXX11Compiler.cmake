@@ -35,11 +35,11 @@ INCLUDE(CheckCXXSourceCompiles)
 INCLUDE(FindPackageHandleStandardArgs)
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "^[cC]lang$")
-  set(CXX11_FLAG_CANDIDATES "--std=c++11")
+  set(CXX11_FLAG_CANDIDATES "--std=c++11 -Wno-deprecated-register")
 else()
   set(CXX11_FLAG_CANDIDATES
-    "--std=gnu++11"
     "--std=c++11"
+    "--std=gnu++11"
     "--std=gnu++0x"
   )
 endif()
