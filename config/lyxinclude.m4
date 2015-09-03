@@ -160,11 +160,10 @@ AC_DEFUN([LYX_LIB_STDCXX],
 
 
 dnl Usage: LYX_CXX_USE_CXX11(STD): pass option -std=STD to the C++ compiler
-dnl        and define LYX_USE_CXX11.
+dnl        and update lyxflags
 AC_DEFUN([LYX_CXX_USE_CXX11],
-[lyx_flags="$lyx_flags c++11-mode"
+[lyx_flags="$lyx_flags c++11"
  AM_CXXFLAGS="$AM_CXXFLAGS -std=$1"
- AC_DEFINE([LYX_USE_CXX11], 1, [Define if LyX should use C++11 features])
 ])
 
 
@@ -338,13 +337,15 @@ if test x$GXX = xyes; then
     case $gxx_version in
       4.0*|4.1*|4.2*) AC_ERROR([There is no C++11 support in gcc 4.2 or older]);;
       4.3*|4.4*|4.5*|4.6*)
-        LYX_CXX_USE_CXX11(gnu++0x);;
+        dnl Note that this will define __GXX_EXPERIMENTAL_CXX0X__.
+        dnl The source code relies on that.
+        LYX_CXX_USE_CXX11(c++0x);;
       clang)
         dnl presumably all clang version support c++11.
 	dnl the deprecated-register warning is very annoying with Qt4.x right now.
         LYX_CXX_USE_CXX11(c++11 -Wno-deprecated-register);;
       *)
-        LYX_CXX_USE_CXX11(gnu++11);;
+        LYX_CXX_USE_CXX11(c++11);;
     esac
     if test x$CLANG = xno || test $lyx_cv_lib_stdcxx = yes; then
       dnl <regex> in gcc is unusable in versions less than 4.9.0
