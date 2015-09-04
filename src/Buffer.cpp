@@ -1782,7 +1782,7 @@ void Buffer::writeLaTeXSource(otexstream & os,
 				}
 				os << "\\makeatletter\n"
 				   << "\\def\\input@path{{"
-				   << docdir << "/}}\n"
+				   << docdir << "}}\n"
 				   << "\\makeatother\n";
 			}
 		}
