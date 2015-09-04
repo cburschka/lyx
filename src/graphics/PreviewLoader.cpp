@@ -411,8 +411,13 @@ PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 	: parent_(p), buffer_(b), finished_generating_(true)
 {
 	font_scaling_factor_ = int(buffer_.fontScalingFactor());
-	fg_color_ = strtol(theApp()->hexName(foregroundColor()).c_str(), 0, 16);
-	bg_color_ = strtol(theApp()->hexName(backgroundColor()).c_str(), 0, 16);
+	if (theApp()) {
+		fg_color_ = strtol(theApp()->hexName(foregroundColor()).c_str(), 0, 16);
+		bg_color_ = strtol(theApp()->hexName(backgroundColor()).c_str(), 0, 16);
+	} else {
+		fg_color_ = 0x0;
+		bg_color_ = 0xffffff;
+	}
 	if (!pconverter_)
 		pconverter_ = setConverter("lyxpreview");
 
@@ -439,8 +444,12 @@ PreviewImage const *
 PreviewLoader::Impl::preview(string const & latex_snippet) const
 {
 	int fs = int(buffer_.fontScalingFactor());
-	int fg = strtol(theApp()->hexName(foregroundColor()).c_str(), 0, 16);
-	int bg = strtol(theApp()->hexName(backgroundColor()).c_str(), 0, 16);
+	int fg = 0x0;
+	int bg = 0xffffff;
+	if (theApp()) {
+		fg = strtol(theApp()->hexName(foregroundColor()).c_str(), 0, 16);
+		bg = strtol(theApp()->hexName(backgroundColor()).c_str(), 0, 16);
+	}
 	if (font_scaling_factor_ != fs || fg_color_ != fg || bg_color_ != bg) {
 		// Schedule refresh of all previews on zoom or color changes.
 		// The previews are regenerated only after the zoom factor
