@@ -66,11 +66,9 @@ void GuiToc::dispatchParams()
 }
 
 
-void GuiToc::enableView(bool enable)
+void GuiToc::enableView(bool /*enable*/)
 {
-	if (!enable)
-		// In the opposite case, updateView() will be called anyway.
-		widget_->updateView();
+	widget_->updateViewForce();
 }
 
 
