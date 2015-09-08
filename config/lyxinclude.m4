@@ -362,7 +362,8 @@ if test x$GXX = xyes; then
 	dnl the deprecated-register warning is very annoying with Qt4.x right now.
         AM_CXXFLAGS="$AM_CXXFLAGS -std=c++11 -Wno-deprecated-register";;
       *)
-        AM_CXXFLAGS="$AM_CXXFLAGS -std=c++11";;
+        AM_CXXFLAGS="$AM_CXXFLAGS -std=c++11"
+        AS_CASE([$host], [*cygwin*], [AM_CXXFLAGS="$AM_CXXFLAGS -U__STRICT_ANSI__"]);;
     esac
   fi
 
