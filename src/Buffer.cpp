@@ -4949,7 +4949,8 @@ string Buffer::includedFilePath(string const & name, string const & ext) const
 	// old_position already contains a trailing path separator
 	string const absname = isabsolute ? name : d->old_position + name;
 
-	if (d->old_position.empty() || d->old_position == filePath()
+	if (d->old_position.empty()
+	    || equivalent(FileName(d->old_position), FileName(filePath()))
 	    || !FileName(addExtension(absname, ext)).exists())
 		return name;
 
