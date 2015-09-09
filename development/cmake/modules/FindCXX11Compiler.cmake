@@ -37,11 +37,15 @@ INCLUDE(FindPackageHandleStandardArgs)
 if (CMAKE_CXX_COMPILER_ID MATCHES "^[cC]lang$")
   set(CXX11_FLAG_CANDIDATES "--std=c++11 -Wno-deprecated-register")
 else()
-  set(CXX11_FLAG_CANDIDATES
-    "--std=c++11"
-    "--std=gnu++11"
-    "--std=gnu++0x"
-  )
+  if (CYGWIN)
+    set(CXX11_FLAG_CANDIDATES "--std=gnu++11")
+  else()
+    set(CXX11_FLAG_CANDIDATES
+      "--std=c++11"
+      "--std=gnu++11"
+      "--std=gnu++0x"
+    )
+  endif()
 endif()
 
 # sample openmp source code to test
