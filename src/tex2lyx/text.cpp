@@ -580,6 +580,16 @@ void output_ert_inset(ostream & os, string const & s, Context & context)
 }
 
 
+void output_comment(Parser & p, ostream & os, string const & s,
+                    Context & context)
+{
+	if (p.next_token().cat() == catNewline)
+		output_ert_inset(os, '%' + s, context);
+	else
+		output_ert_inset(os, '%' + s + '\n', context);
+}
+
+
 Layout const * findLayout(TextClass const & textclass, string const & name, bool command)
 {
 	Layout const * layout = findLayoutWithoutModule(textclass, name, command);
@@ -1189,13 +1199,13 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 		// LyX puts a % after the end of the minipage
 		if (p.next_token().cat() == catNewline && p.next_token().cs().size() > 1) {
 			// new paragraph
-			//output_ert_inset(os, "%dummy", parent_context);
+			//output_comment(p, os, "dummy", parent_context);
 			p.get_token();
 			p.skip_spaces();
 			parent_context.new_paragraph(os);
 		}
 		else if (p.next_token().cat() == catSpace || p.next_token().cat() == catNewline) {
-			//output_ert_inset(os, "%dummy", parent_context);
+			//output_comment(p, os, "dummy", parent_context);
 			p.get_token();
 			p.skip_spaces();
 			// We add a protected space if something real follows
@@ -1880,7 +1890,7 @@ void parse_comment(Parser & p, ostream & os, Token const & t, Context & context)
 	LASSERT(t.cat() == catComment, return);
 	if (!t.cs().empty()) {
 		context.check_layout(os);
-		output_ert_inset(os, '%' + t.cs(), context);
+		output_comment(p, os, t.cs(), context);
 		if (p.next_token().cat() == catNewline) {
 			// A newline after a comment line starts a new
 			// paragraph
@@ -2826,8 +2836,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			// FIXME: This is a hack to prevent paragraph
 			// deletion if it is empty. Handle this better!
-			output_ert_inset(os,
-				"%dummy comment inserted by tex2lyx to "
+			output_comment(p, os,
+				"dummy comment inserted by tex2lyx to "
 				"ensure that this paragraph is not empty",
 				context);
 			// Both measures above may generate an additional
