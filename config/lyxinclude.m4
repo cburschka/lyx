@@ -312,14 +312,7 @@ if test x$GXX = xyes; then
   fi
   dnl Warnings are for preprocessor too
   if test x$enable_warnings = xyes ; then
-      case $gxx_version in
-          4.0*|4.1*|4.2*|4.3*|4.4*|4.5*|4.6*|4.7*|4.8*|clang)
-              AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra"
-              ;;
-          *)
-              AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra -Wfloat-conversion"
-              ;;
-      esac
+      AM_CPPFLAGS="$AM_CPPFLAGS -Wall -Wextra"
   fi
   case $gxx_version in
       2.*|3.*) AC_ERROR([gcc 4.x is required]);;
