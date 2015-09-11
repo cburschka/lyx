@@ -223,7 +223,11 @@ The following options allow you to tweak the generated code more precisely (see 
 
   o --enable-stdlib-debug adds some debug code in the standard
     library; this slows down the code, but has been helpful in the
-    past to find bugs.
+    past to find bugs. Note that this is in general incompatible with
+    the system boost library (which is used when
+    --without-included-boost is specified). You may have to use
+    --disable-stdlib-debug when linking development versions against
+    your system's boost library.
 
   o --enable-concept-checks adds some compile-time checks. There is no
     run-time penalty.
