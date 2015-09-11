@@ -75,6 +75,8 @@ struct EndTag
 {
 	///
 	explicit EndTag(std::string tag) : tag_(tag) {}
+	///
+	virtual ~EndTag() {}
 	/// </tag_>
 	virtual docstring writeEndTag() const;
 	///
