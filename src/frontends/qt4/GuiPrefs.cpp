@@ -2869,10 +2869,11 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 		QList<QTreeWidgetItem*> const items = shortcutsTW->findItems(lfun_name,
 			Qt::MatchFlags(Qt::MatchExactly | Qt::MatchRecursive), 0);
 		for (int i = 0; i < items.size(); ++i) {
-			if (items[i]->text(1) == shortcut)
+			if (items[i]->text(1) == shortcut) {
 				newItem = items[i];
 				break;
 			}
+		}
 		// if not found, this unbind item is KeyMap::UserExtraUnbind
 		// Such an item is not displayed to avoid confusion (what is
 		// unmatched removed?).
