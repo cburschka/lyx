@@ -636,6 +636,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_CHAR_BACKWARD:
 	case LFUN_CHAR_FORWARD:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
+		// fall through
 	case LFUN_CHAR_RIGHT_SELECT:
 	case LFUN_CHAR_LEFT_SELECT:
 	case LFUN_CHAR_BACKWARD_SELECT:
@@ -696,6 +697,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_DOWN:
 	case LFUN_UP:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
+		// fall through
 	case LFUN_DOWN_SELECT:
 	case LFUN_UP_SELECT: {
 		// close active macro
@@ -744,6 +746,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_PARAGRAPH_UP:
 	case LFUN_PARAGRAPH_DOWN:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
+		// fall through
 	case LFUN_PARAGRAPH_UP_SELECT:
 	case LFUN_PARAGRAPH_DOWN_SELECT:
 		break;
@@ -752,6 +755,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_BACKWARD:
 	case LFUN_WORD_LEFT:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
+		// fall through
 	case LFUN_LINE_BEGIN_SELECT:
 	case LFUN_WORD_BACKWARD_SELECT:
 	case LFUN_WORD_LEFT_SELECT:
@@ -777,6 +781,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_RIGHT:
 	case LFUN_LINE_END:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
+		// fall through
 	case LFUN_WORD_FORWARD_SELECT:
 	case LFUN_WORD_RIGHT_SELECT:
 	case LFUN_LINE_END_SELECT:
@@ -993,11 +998,11 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_FONT_DEFAULT:
 		handleFont(cur, cmd.argument(), "textnormal");
 		break;
-
 	case LFUN_FONT_UNDERLINE:
 		cur.recordUndo();
 		cur.handleNest(createInsetMath("underline", cur.buffer()));
 		break;
+
 	case LFUN_MATH_MODE: {
 #if 1
 		// ignore math-mode on when already in math mode
