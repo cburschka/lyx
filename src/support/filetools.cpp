@@ -1219,13 +1219,16 @@ int fileLock(const char * lock_file)
 	int fd = -1;
 #if defined(HAVE_LOCKF)
 	fd = open(lock_file, O_CREAT|O_APPEND|O_SYNC|O_RDWR, 0666);
+	if (fd == -1)
+		return -1;
 	if (lockf(fd, F_LOCK, 0) != 0) {
 		close(fd);
-		return(-1);
+		return -1;
 	}
 #endif
-	return(fd);
+	return fd;
 }
+
 
 void fileUnlock(int fd, const char * /* lock_file*/)
 {
