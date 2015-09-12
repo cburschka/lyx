@@ -707,6 +707,7 @@ void Font::validate(LaTeXFeatures & features) const
 		case Color_teal:
 		case Color_violet:
 			features.require("xcolor");
+			break;
 		default:
 			features.require("color");
 			LYXERR(Debug::LATEX, "Color enabled. Font: " << to_utf8(stateText(0)));
