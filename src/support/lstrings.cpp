@@ -1074,11 +1074,11 @@ String const doSplit(String const & a, String & piece, Char delim)
 	size_t i = a.find(delim);
 	if (i == a.length() - 1) {
 		piece = a.substr(0, i);
-	} else if (i != String::npos) {
-		piece = a.substr(0, i);
-		tmp = a.substr(i + 1);
 	} else if (i == 0) {
 		piece.erase();
+		tmp = a.substr(i + 1);
+	} else if (i != String::npos) {
+		piece = a.substr(0, i);
 		tmp = a.substr(i + 1);
 	} else {
 		piece = a;
@@ -1086,6 +1086,8 @@ String const doSplit(String const & a, String & piece, Char delim)
 	return tmp;
 }
 
+
+// FIXME: why is this specialization needed?
 template<typename Char> inline
 docstring const doSplit(docstring const & a, docstring & piece, Char delim)
 {
@@ -1093,11 +1095,11 @@ docstring const doSplit(docstring const & a, docstring & piece, Char delim)
 	size_t i = a.find(delim);
 	if (i == a.length() - 1) {
 		piece = a.substr(0, i);
-	} else if (i != docstring::npos) {
-		piece = a.substr(0, i);
-		tmp = a.substr(i + 1);
 	} else if (i == 0) {
 		piece.erase();
+		tmp = a.substr(i + 1);
+	} else if (i != docstring::npos) {
+		piece = a.substr(0, i);
 		tmp = a.substr(i + 1);
 	} else {
 		piece = a;
