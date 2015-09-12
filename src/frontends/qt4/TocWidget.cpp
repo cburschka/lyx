@@ -160,6 +160,7 @@ bool TocWidget::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncRequest label_copy(LFUN_LABEL_COPY_AS_REFERENCE, item.asString());
 		if (inset)
 			return inset->getStatus(cur, label_copy, status);
+		break;
 	}
 
 	default:
