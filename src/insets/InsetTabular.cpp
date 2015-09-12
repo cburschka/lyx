@@ -3463,7 +3463,7 @@ docstring InsetTableCell::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 InsetTabular::InsetTabular(Buffer * buf, row_type rows,
 			   col_type columns)
 	: Inset(buf), tabular(buf, max(rows, row_type(1)), max(columns, col_type(1))),
-	  rowselect_(false), colselect_(false)
+	  first_visible_cell_(0), offset_valign_(0), rowselect_(false), colselect_(false)
 {
 }
 
@@ -3732,7 +3732,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	bool const original_selection_state = pi.selected;
 
 	idx_type idx = 0;
-	first_visible_cell = Tabular::npos;
+	first_visible_cell_ = Tabular::npos;
 
 	int yy = y + offset_valign_;
 	for (row_type r = 0; r < tabular.nrows(); ++r) {
@@ -3748,8 +3748,8 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 				continue;
 			}
 
-			if (first_visible_cell == Tabular::npos)
-				first_visible_cell = idx;
+			if (first_visible_cell_ == Tabular::npos)
+				first_visible_cell_ = idx;
 
 			pi.selected |= isCellSelected(cur, r, c);
 			int const cx = nx + tabular.textHOffset(idx);
@@ -4254,7 +4254,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 //		int const t =	cur.bv().top_y() + cur.bv().height();
 //		if (t < yo() + tabular.getHeightOfTabular()) {
 //			cur.bv().scrollDocView(t, true);
-//			cur.idx() = tabular.cellBelow(first_visible_cell) + col;
+//			cur.idx() = tabular.cellBelow(first_visible_cell_) + col;
 //		} else {
 //			cur.idx() = tabular.getFirstCellInRow(tabular.rows() - 1) + col;
 //		}
@@ -4273,7 +4273,7 @@ void InsetTabular::doDispatch(Cursor & cur, FuncRequest & cmd)
 //			if (yo() > 0)
 //				cur.idx() = col;
 //			else
-//				cur.idx() = tabular.cellBelow(first_visible_cell) + col;
+//				cur.idx() = tabular.cellBelow(first_visible_cell_) + col;
 //		} else {
 //			cur.idx() = col;
 //		}
