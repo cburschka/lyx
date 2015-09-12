@@ -64,11 +64,12 @@ docstring const user_email()
 	//The code after should be used only after user approval.
 	return docstring();
 
-	
+#if 0
 	string email = getEnv("EMAIL_ADDRESS");
 	if (email.empty())
 		email = getEnv("EMAIL");
 	return from_local8bit(email);
+#endif
 }
 
 } // namespace support
