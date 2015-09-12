@@ -1119,7 +1119,6 @@ namespace {
 				+ out.substr(k + 1);
 			//lyxerr << "output: " << out << endl;
 			i = out.find("\\mathchoice", i);
-			break;
 		}
 
 		i = out.find("\\over");
