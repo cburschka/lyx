@@ -1813,9 +1813,6 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 	// These should be treated differently when not in text mode:
 	if (cur.inRegexped()) {
 		switch (c) {
-		case '\\':
-			cur.niceInsert(createInsetMath("backslash", buf));
-			break;
 		case '^':
 			cur.niceInsert(createInsetMath("mathcircumflex", buf));
 			break;
