@@ -1122,12 +1122,10 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 			label += '|' + shortcut;
 
 		if (view_update) {
-			if (buf)
-				item.submenu().addWithStatusCheck(MenuItem(MenuItem::Command,
-					toqstr(label), FuncRequest(action, (*fit)->name())));
-			else
-				item.submenu().add(MenuItem(MenuItem::Command, toqstr(label),
-					FuncRequest(action, (*fit)->name())));
+			// note that at this point, we know that buf is not null
+			LATTEST(buf);
+			item.submenu().addWithStatusCheck(MenuItem(MenuItem::Command,
+				toqstr(label), FuncRequest(action, (*fit)->name())));
 		} else {
 			if (buf)
 				addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
