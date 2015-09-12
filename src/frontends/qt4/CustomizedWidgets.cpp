@@ -86,7 +86,7 @@ KeySequence const ShortcutWidget::getKeySequence() const
 }
 
 
-void ShortcutWidget::setKeySequence(lyx::KeySequence const s)
+void ShortcutWidget::setKeySequence(lyx::KeySequence const & s)
 {
 	keysequence_ = s;
 }

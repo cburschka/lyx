@@ -33,7 +33,7 @@ public:
 	void reset();
 	bool eventFilter(QObject*, QEvent* e );
 	KeySequence const getKeySequence() const;
-	void setKeySequence(lyx::KeySequence const s);
+	void setKeySequence(lyx::KeySequence const & s);
 	void removeFromSequence();
 protected Q_SLOTS:
 	bool event(QEvent* e);
