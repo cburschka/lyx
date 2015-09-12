@@ -204,21 +204,21 @@ ColorCode InsetBox::backgroundColor(PainterInfo const &) const
 	// we only support background color for 3 types
 	if (params_.type != "Shaded" && params_.type != "Frameless" && params_.type != "Boxed")
 		return getLayout().bgcolor();
+
 	if (params_.type == "Shaded") {
 		// FIXME: This hardcoded color is a hack!
 		if (buffer().params().boxbgcolor == lyx::rgbFromHexName("#ff0000"))
 			return getLayout().bgcolor();
-		
+
 		ColorCode c = lcolor.getFromLyXName("boxbgcolor");
 		if (c == Color_none)
 			return getLayout().bgcolor();
 		return c;
-	} else {
-		if (params_.backgroundcolor == "none")
-			return getLayout().bgcolor();
-		ColorCode boxbackground = lcolor.getFromLaTeXName(params_.backgroundcolor);
-		return boxbackground;
 	}
+
+	if (params_.backgroundcolor != "none")
+		return lcolor.getFromLaTeXName(params_.backgroundcolor);
+
 	return getLayout().bgcolor();
 }
 
