@@ -142,7 +142,7 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 			loader_.startMonitoring();
 	}
 
-	bool image_ready = displayGraphic(params_) && readyToDisplay(loader_);
+	bool const image_ready = displayGraphic(params_) && readyToDisplay(loader_);
 	if (image_ready) {
 		dim.wid = loader_.image()->width() + 2 * Inset::TEXT_TO_INSET_OFFSET;
 		dim.asc = loader_.image()->height();
@@ -150,7 +150,7 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 		return;
 	}
 
-	dim.asc = image_ready ? loader_.image()->height() : 50;
+	dim.asc = 50;
 	dim.des = 0;
 
 	int font_width = 0;
