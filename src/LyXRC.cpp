@@ -2300,8 +2300,6 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		os << "\n#\n"
 		   << "# LANGUAGE SUPPORT SECTION ##########################\n"
 		   << "#\n\n";
-		if (tag != RC_LAST)
-			break;
 
 	case RC_DEFAULT_DECIMAL_POINT:
 		if (ignore_system_lyxrc ||
