@@ -2700,7 +2700,9 @@ GuiShortcutDialog::GuiShortcutDialog(QWidget * parent) : QDialog(parent)
 
 
 PrefShortcuts::PrefShortcuts(GuiPreferences * form)
-	: PrefModule(catEditing, N_("Shortcuts"), form)
+	: PrefModule(catEditing, N_("Shortcuts"), form),
+	  editItem_(0), mathItem_(0), bufferItem_(0), layoutItem_(0),
+	  systemItem_(0)
 {
 	setupUi(this);
 
