@@ -2710,6 +2710,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_ACCEPT_COMPOUND:
 		if (lyxrc_orig.spellchecker_accept_compound != lyxrc_new.spellchecker_accept_compound)
 			if (theSpellChecker()) theSpellChecker()->advanceChangeNumber();
+		// fall through
 	case LyXRC::RC_ALT_LANG:
 	case LyXRC::RC_PLAINTEXT_LINELEN:
 	case LyXRC::RC_AUTOCORRECTION_MATH:
@@ -2753,6 +2754,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 			if (path.exists() && path.isDirectory())
 				package().document_dir() = FileName(lyxrc.document_path);
 		}
+		// fall through
 	case LyXRC::RC_EDITOR_ALTERNATIVES:
 	case LyXRC::RC_ESC_CHARS:
 	case LyXRC::RC_EXAMPLEPATH:
@@ -2794,6 +2796,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 			// Resets python path
 			support::os::python(true);
 		}
+		// fall through
 	case LyXRC::RC_PREVIEW:
 	case LyXRC::RC_PREVIEW_HASHED_LABELS:
 	case LyXRC::RC_PREVIEW_SCALE_FACTOR:
@@ -2820,6 +2823,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_SPELLCHECKER:
 		if (lyxrc_orig.spellchecker != lyxrc_new.spellchecker)
 			setSpellChecker();
+		// fall through
 	case LyXRC::RC_SPELLCHECK_CONTINUOUSLY:
 	case LyXRC::RC_SPELLCHECK_NOTES:
 	case LyXRC::RC_SPLITINDEX_COMMAND:
@@ -2830,6 +2834,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 		if (lyxrc_orig.windows_style_tex_paths != lyxrc_new.windows_style_tex_paths) {
 			os::windows_style_tex_paths(lyxrc_new.windows_style_tex_paths);
 		}
+		// fall through
 	case LyXRC::RC_TEXINPUTS_PREFIX:
 	case LyXRC::RC_THESAURUSDIRPATH:
 	case LyXRC::RC_UIFILE:
