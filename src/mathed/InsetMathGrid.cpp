@@ -1659,6 +1659,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_BACKWARD:
 	case LFUN_WORD_LEFT:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
+		// fall through
 	case LFUN_LINE_BEGIN_SELECT:
 	case LFUN_WORD_BACKWARD_SELECT:
 	case LFUN_WORD_LEFT_SELECT:
@@ -1684,6 +1685,7 @@ void InsetMathGrid::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_WORD_RIGHT:
 	case LFUN_LINE_END:
 		cur.screenUpdateFlags(Update::Decoration | Update::FitCursor);
+		// fall through
 	case LFUN_WORD_FORWARD_SELECT:
 	case LFUN_WORD_RIGHT_SELECT:
 	case LFUN_LINE_END_SELECT:
