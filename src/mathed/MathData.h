@@ -66,7 +66,8 @@ public:
 
 public:
 	///
-	MathData(Buffer * buf = 0) : buffer_(buf) {}
+	MathData(Buffer * buf = 0) : minasc_(0), mindes_(0), slevel_(0),
+				     sshift_(0), kerning_(0), buffer_(buf) {}
 	///
 	MathData(Buffer * buf, const_iterator from, const_iterator to);
 	///
