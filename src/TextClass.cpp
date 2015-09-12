@@ -802,7 +802,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 		return ERROR;
 
 	if (rt != BASECLASS)
-		return (error ? ERROR : OK);
+		return OK;
 
 	if (defaultlayout_.empty()) {
 		LYXERR0("Error: Textclass '" << name_
