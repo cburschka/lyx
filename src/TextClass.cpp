@@ -751,6 +751,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 
 		case TC_IFCOUNTER:
 			ifcounter = true;
+			// fall through
 		case TC_COUNTER:
 			if (lexrc.next()) {
 				docstring const name = lexrc.getDocString();
