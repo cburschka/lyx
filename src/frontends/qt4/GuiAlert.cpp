@@ -82,9 +82,9 @@ int doPrompt(docstring const & title0, docstring const & question,
 
 		lyxerr << "Assuming answer is ";
 		switch (default_button) {
-		case 0: lyxerr << b1 << endl;
-		case 1: lyxerr << b2 << endl;
-		case 2: lyxerr << b3 << endl;
+		case 0: lyxerr << b1 << endl; break;
+		case 1: lyxerr << b2 << endl; break;
+		case 2: lyxerr << b3 << endl; break;
 		case 3: lyxerr << b4 << endl;
 		}
 		if (!use_gui)
