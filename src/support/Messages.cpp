@@ -281,7 +281,7 @@ bool Messages::readMoFile()
 
 	if (header->magic != 0x950412de) {
 		LYXERR0("Wrong magic number for file " << filen
-			<< ".\nExpected 0x950412de, got 0x" << std::hex << header->magic);
+			<< ".\nExpected 0x950412de, got 0x" << std::hex << header->magic << std::dec);
 		return false;
 	}
 
