@@ -139,22 +139,16 @@ InsetLayout DocumentClass::plain_insetlayout_;
 /////////////////////////////////////////////////////////////////////////
 
 TextClass::TextClass()
+	: loaded_(false), tex_class_avail_(false),
+	  opt_enginetype_("authoryear|numerical"), opt_fontsize_("10|11|12"),
+	  opt_pagestyle_("empty|plain|headings|fancy"), pagestyle_("default"),
+	  columns_(1), sides_(OneSide), secnumdepth_(3), tocdepth_(3),
+	  outputType_(LATEX), outputFormat_("latex"),
+	  defaultfont_(sane_font),
+	  titletype_(TITLE_COMMAND_AFTER), titlename_("maketitle"),
+	  min_toclevel_(0), max_toclevel_(0),
+	  cite_full_author_list_(true)
 {
-	outputType_ = LATEX;
-	outputFormat_ = "latex";
-	columns_ = 1;
-	sides_ = OneSide;
-	secnumdepth_ = 3;
-	tocdepth_ = 3;
-	pagestyle_ = "default";
-	defaultfont_ = sane_font;
-	opt_enginetype_ = "authoryear|numerical";
-	opt_fontsize_ = "10|11|12";
-	opt_pagestyle_ = "empty|plain|headings|fancy";
-	cite_full_author_list_ = true;
-	titletype_ = TITLE_COMMAND_AFTER;
-	titlename_ = "maketitle";
-	loaded_ = false;
 }
 
 
