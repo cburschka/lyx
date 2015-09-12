@@ -1265,8 +1265,6 @@ void Layout::write(ostream & os) const
 		bool first = true;
 		os << "\tAlignPossible";
 		if (alignpossible & LYX_ALIGN_BLOCK) {
-			if (!first)
-				os << ',';
 			os << " Block";
 			first = false;
 		}
