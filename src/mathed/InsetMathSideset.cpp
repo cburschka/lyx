@@ -127,15 +127,8 @@ int InsetMathSideset::dybt(BufferView const & bv, int asc, int des, bool top) co
 int InsetMathSideset::dyb(BufferView const & bv) const
 {
 	int nd = ndes(bv);
-	int des = 0;
-	if (scriptl_ && scriptr_)
-		des = max(bl().dimension(bv).ascent(), br().dimension(bv).ascent());
-	else if (scriptl_)
-		des = bl().dimension(bv).ascent();
-	else if (scriptr_)
-		des = br().dimension(bv).ascent();
 	int na = nasc(bv);
-	des = dybt(bv, na, nd, false);
+	int des = dybt(bv, na, nd, false);
 	return des;
 }
 
@@ -143,15 +136,8 @@ int InsetMathSideset::dyb(BufferView const & bv) const
 int InsetMathSideset::dyt(BufferView const & bv) const
 {
 	int na = nasc(bv);
-	int asc = 0;
-	if (scriptl_ && scriptr_)
-		asc = max(tl().dimension(bv).descent(), tr().dimension(bv).descent());
-	else if (scriptl_)
-		asc = tl().dimension(bv).descent();
-	else if (scriptr_)
-		asc = tr().dimension(bv).descent();
 	int nd = ndes(bv);
-	asc = dybt(bv, na, nd, true);
+	int asc = dybt(bv, na, nd, true);
 	return asc;
 }
 
