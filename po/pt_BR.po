@@ -11,9 +11,8 @@ msgstr ""
 "Project-Id-Version: pt_BR 2.1.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2015-07-23 18:04-0400\n"
-"PO-Revision-Date: 2015-07-26 22:25-0300\n"
-"Last-Translator: Georger Araujo <georger underscore br pound yahoo dot com "
-"dot br>\n"
+"PO-Revision-Date: 2015-09-08 20:01-0300\n"
+"Last-Translator: Georger Araujo <georger_br@yahoo.com.br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br pound yahoo dot "
 "com dot br>\n"
 "Language: pt_BR\n"
@@ -2966,12 +2965,12 @@ msgstr "Cortar"
 #: src/frontends/qt4/ui/ExternalUi.ui:474
 #: src/frontends/qt4/ui/GraphicsUi.ui:309
 msgid "Clip to bounding box values"
-msgstr "Cortar para caber nos valores da caixa delimitadora"
+msgstr "Cortar nas dimensões da caixa delimitadora"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:477
 #: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to &bounding box"
-msgstr "Cortar para caber na caixa delimitadora"
+msgstr "Cortar no tamanho da caixa delimitadora"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:484
 #: src/frontends/qt4/ui/GraphicsUi.ui:345
@@ -3693,7 +3692,7 @@ msgstr "Nome do arquivo de imagem"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:284
 msgid "&Clipping"
-msgstr "&Recorte"
+msgstr "&Corte"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:393
 #: src/frontends/qt4/ui/GraphicsUi.ui:400
@@ -22189,11 +22188,11 @@ msgstr "EPS"
 
 #: lib/configure.py:653
 msgid "EPS (uncropped)"
-msgstr "EPS (não-recortado)"
+msgstr "EPS (não-cortado)"
 
 #: lib/configure.py:654
 msgid "EPS (cropped)"
-msgstr "EPS (recortado)"
+msgstr "EPS (cortado)"
 
 #: lib/configure.py:655
 msgid "Postscript"
@@ -22249,7 +22248,7 @@ msgstr "PDF (gráfico)"
 
 #: lib/configure.py:666
 msgid "PDF (cropped)"
-msgstr "PDF (recortado)"
+msgstr "PDF (cortado)"
 
 #: lib/configure.py:667
 msgid "PDF (lower resolution)"
@@ -23118,7 +23117,7 @@ msgstr ""
 "requer arquivos externos que não estão disponíveis.\n"
 "A classe de documento ainda pode ser usada, mas o\n"
 "documento não poderá ser compilado até que sejam\n"
-"instalados os pré-requisitos a seguir::\n"
+"instalados os pré-requisitos a seguir:\n"
 "\t%2$s\n"
 "Para mais informações, consulte a seção\n"
 "'Class Availability' do Guia do Usuário."
@@ -28662,7 +28661,7 @@ msgstr "Mais Idiomas ...|M"
 
 #: src/frontends/qt4/Menus.cpp:967 src/frontends/qt4/Menus.cpp:968
 msgid "Hidden|H"
-msgstr "Ocultos|H"
+msgstr "Ocultos|O"
 
 #: src/frontends/qt4/Menus.cpp:972
 msgid "<No Documents Open>"
@@ -29449,7 +29448,7 @@ msgid ""
 "%1$s."
 msgstr ""
 "Os caracteres a seguir em uma das listagens de programa não\n"
-"são representáveis na codificação atual e por isso foram omitidos::\n"
+"são representáveis na codificação atual e por isso foram omitidos:\n"
 "%1$s."
 
 #: src/insets/InsetListingsParams.cpp:121
