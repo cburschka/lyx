@@ -29,14 +29,14 @@ using namespace lyx::support;
 namespace lyx {
 
 InsetMathColor::InsetMathColor(Buffer * buf, bool oldstyle, ColorCode color)
-	: InsetMathNest(buf, 1), oldstyle_(oldstyle),
+	: InsetMathNest(buf, 1), w_(0), oldstyle_(oldstyle),
 	  color_(from_utf8(lcolor.getLaTeXName(color)))
 {}
 
 
 InsetMathColor::InsetMathColor(Buffer * buf, bool oldstyle,
 		docstring const & color)
-	: InsetMathNest(buf, 1), oldstyle_(oldstyle), color_(color)
+	: InsetMathNest(buf, 1), w_(0), oldstyle_(oldstyle), color_(color)
 {}
 
 

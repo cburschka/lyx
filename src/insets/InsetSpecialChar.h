@@ -53,7 +53,7 @@ public:
 	};
 
 	///
-	InsetSpecialChar() : Inset(0) {}
+	InsetSpecialChar() : Inset(0), kind_(HYPHENATION) {}
 	///
 	explicit InsetSpecialChar(Kind k);
 	///

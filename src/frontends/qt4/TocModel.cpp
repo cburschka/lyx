@@ -81,7 +81,7 @@ public:
 TocModel::TocModel(QObject * parent)
 	: model_(new TocTypeModel(parent)),
 	sorted_model_(new QSortFilterProxyModel(parent)),
-	is_sorted_(false), maxdepth_(0), mindepth_(0)
+	is_sorted_(false), toc_(0), maxdepth_(0), mindepth_(0)
 {
 	sorted_model_->setSortLocaleAware(true);
 	sorted_model_->setSourceModel(model_);

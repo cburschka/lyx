@@ -35,7 +35,7 @@ class TextMetrics
 {
 public:
 	/// Default constructor (only here for STL containers).
-	TextMetrics() : text_(0) {}
+	TextMetrics() : bv_(0), text_(0), main_text_(false), max_width_(0) {}
 	/// The only useful constructor.
 	TextMetrics(BufferView *, Text *);
 
@@ -178,7 +178,7 @@ public:
 	\param x,y are absolute screen coordinates.
 	\param assert_in_view if true the cursor will be set on a row
            that is completely visible
-    \param up whether we are going up or down (only used when
+	\param up whether we are going up or down (only used when
            assert_in_view is true
 	\retval inset is non-null if the cursor is positionned inside
 	*/

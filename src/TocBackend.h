@@ -38,7 +38,7 @@ class TocItem
 
 public:
 	/// Default constructor for STL containers.
-	TocItem() : dit_(0) {}
+	TocItem() : dit_(0), depth_(0), output_(false) {}
 	///
 	TocItem(DocIterator const & dit,
 		int depth,

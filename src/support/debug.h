@@ -142,7 +142,8 @@ inline void operator|=(Debug::Type & d1, Debug::Type d2)
 class LyXErr
 {
 public:
-	LyXErr(): dt_(Debug::NONE), enabled_(true), second_enabled_(false) {}
+	LyXErr(): dt_(Debug::NONE), stream_(0), enabled_(true),
+	          second_stream_(0), second_enabled_(false) {}
 	
 	/// Disable the stream completely
 	void disable();

@@ -37,7 +37,7 @@ namespace lyx {
 
 
 InsetMathDecoration::InsetMathDecoration(Buffer * buf, latexkeys const * key)
-	: InsetMathNest(buf, 1), key_(key)
+	: InsetMathNest(buf, 1), key_(key), dh_(0), dy_(0), dw_(0)
 {
 //	lyxerr << " creating deco " << key->name << endl;
 }

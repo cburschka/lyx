@@ -35,7 +35,7 @@ public:
 		NOLOCKING,
 	};
 
-	VCS(Buffer * b) : owner_(b) {}
+	VCS(Buffer * b) : vcstatus(NOLOCKING), owner_(b) {}
 	virtual ~VCS() {}
 
 	/// register a file for version control

@@ -106,6 +106,7 @@ public:
 struct LayoutBox::Private
 {
 	Private(LayoutBox * parent, GuiView & gv) : p(parent), owner_(gv),
+		inset_(0),
 		// set the layout model with two columns
 		// 1st: translated layout names
 		// 2nd: raw layout names

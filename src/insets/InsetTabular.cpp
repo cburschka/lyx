@@ -652,7 +652,7 @@ Tabular::ColumnData::ColumnData()
 
 
 Tabular::ltType::ltType()
-	: topDL(false),
+	: set(false), topDL(false),
 	  bottomDL(false),
 	  empty(false)
 {}

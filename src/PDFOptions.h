@@ -142,14 +142,6 @@ public:
 		* are checked.
 		*/
 	std::string quoted_options_check(std::string const & str) const;
-	
-	
-	/**
-		* Flag indicating whether user made some input into PDF preferences.
-		* We want to save options, when user decide to switch off PDF support
-		* for a while.
-		*/
-	bool store_options;
 };
 
 } // namespace lyx

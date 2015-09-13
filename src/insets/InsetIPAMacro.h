@@ -131,7 +131,7 @@ public:
 	};
 
 	///
-	InsetIPAChar() : Inset(0) {}
+	InsetIPAChar() : Inset(0), kind_(TONE_FALLING) {}
 	///
 	explicit InsetIPAChar(Kind k);
 	///

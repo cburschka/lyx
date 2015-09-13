@@ -334,6 +334,7 @@ void LyXRC::setDefaults()
 	full_screen_toolbars = true;
 	full_screen_tabbar = true;
 	full_screen_menubar = true;
+	full_screen_statusbar = true;
 	full_screen_scrollbar = true;
 	full_screen_width = 700;
 
