@@ -50,12 +50,13 @@ InsetGraphicsParams::InsetGraphicsParams(InsetGraphicsParams const & igp)
 }
 
 
-void InsetGraphicsParams::operator=(InsetGraphicsParams const & params)
+InsetGraphicsParams & InsetGraphicsParams::operator=(InsetGraphicsParams const & params)
 {
 	// Are we assigning the object into itself?
 	if (this == &params)
-		return;
+		return *this;
 	copy(params);
+	return *this;
 }
 
 

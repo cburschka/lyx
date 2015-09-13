@@ -68,7 +68,7 @@ public:
 	///
 	InsetGraphicsParams(InsetGraphicsParams const &);
 	///
-	void operator=(InsetGraphicsParams const &);
+	InsetGraphicsParams & operator=(InsetGraphicsParams const &);
 	/// Save the parameters in the LyX format stream.
 	/// Buffer is needed to figure out if a figure is embedded.
 	void Write(std::ostream & os, Buffer const & buf) const;
