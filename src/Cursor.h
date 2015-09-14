@@ -95,8 +95,6 @@ public:
 protected:
 	/// the anchor position
 	DocIterator anchor_;
-	///
-	mutable DispatchResult disp_;
 	/// do we have a selection?
 	bool selection_;
 	/// are we on the way to get one?

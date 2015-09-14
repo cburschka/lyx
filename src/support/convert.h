@@ -37,11 +37,11 @@ template<> std::string convert<std::string>(long l);
 template<> docstring convert<docstring>(long l);
 template<> std::string convert<std::string>(float f);
 template<> std::string convert<std::string>(double d);
-template<> int convert<int>(std::string const s);
-template<> int convert<int>(docstring const s);
-template<> unsigned int convert<unsigned int>(std::string const s);
-template<> unsigned long convert<unsigned long>(std::string const s);
-template<> double convert<double>(std::string const s);
+template<> int convert<int>(std::string const & s);
+template<> int convert<int>(docstring const & s);
+template<> unsigned int convert<unsigned int>(std::string const & s);
+template<> unsigned long convert<unsigned long>(std::string const & s);
+template<> double convert<double>(std::string const & s);
 template<> int convert<int>(char const * cptr);
 template<> double convert<double>(char const * cptr);
 
