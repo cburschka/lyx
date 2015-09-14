@@ -848,7 +848,104 @@ bool Cursor::posVisLeft(bool skip_inset)
 }
 
 
-void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
+namespace {
+
+// Return true on success
+bool findNonVirtual(Row const & row, Row::const_iterator & cit, bool onleft)
+{
+	if (onleft) {
+		while (cit != row.begin() && cit->isVirtual())
+			--cit;
+	} else {
+		while (cit != row.end() && cit->isVirtual())
+			++cit;
+	}
+	return cit != row.end() && !cit->isVirtual();
+}
+
+}
+
+void Cursor::getSurroundingPosNew(pos_type & left_pos, pos_type & right_pos) const
+{
+	// by default, we know nothing.
+	left_pos = -1;
+	right_pos = -1;
+
+	Row const & row = textRow();
+	TextMetrics const & tm = bv_->textMetrics(text());
+	double dummy = 0;
+	Row::const_iterator cit = tm.findRowElement(row, pos(), boundary(), dummy);
+	// Handle the case of empty row
+	if (cit == row.end()) {
+		if (paragraph().isRTL(buffer()->params()))
+			right_pos = row.pos();
+		else
+			left_pos = row.pos() - 1;
+		return;
+	}
+
+	// skip virtual elements and exit if no non-virtual one exists
+	if (!findNonVirtual(row, cit, !cit->isRTL()))
+		return;
+
+	// if the position is at the left side of the element, we have to
+	// look at the previous element
+	if (pos() == cit->left_pos()) {
+		LYXERR(Debug::RTL, "getSurroundingPos(" << pos() << (boundary() ? "b" : "")
+			   << "), AT LEFT of *cit=" << *cit);
+		// this one is easy (see common case below)
+		right_pos = pos() - (cit->isRTL() ? 1 : 0);
+		// at the left of the row
+		if (cit == row.begin())
+			return;
+		--cit;
+		if (!findNonVirtual(row, cit, true))
+			return;
+		// [...[ is the row element, | is cursor position (! with boundary)
+		// [ 1 2 [ is a ltr row element with pos=1 and endpos=3
+		// ] 2 1] is an rtl row element with pos=1 and endpos=3
+		//    [ 1 2 [  [|3 4 [ => (2, 3)
+		// or [ 1 2 [  ]!4 3 ] => (2, 4)
+		// or ] 2 1 ]  [|3 4 [ => (1, 3)
+		// or ] 4 3 ]  ]!2 1 ] => (3, 2)
+		left_pos = cit->right_pos() - (cit->isRTL() ? 0 : 1);
+		// happens with consecutive row of same direction
+		if (left_pos == right_pos) {
+			left_pos += cit->isRTL() ? 1 : -1;
+		}
+	}
+	// same code but with the element at the right
+	else if (pos() == cit->right_pos()) {
+		LYXERR(Debug::RTL, "getSurroundingPos(" << pos() << (boundary() ? "b" : "")
+			   << "), AT RIGHT of *cit=" << *cit);
+		// this one is easy (see common case below)
+		left_pos = pos() - (cit->isRTL() ? 0 : 1);
+		// at the right of the row
+		if (cit + 1 == row.end())
+			return;
+		++cit;
+		if (!findNonVirtual(row, cit, false))
+			return;
+		//    [ 1 2![  [ 3 4 [ => (2, 3)
+		// or [ 1 2![  ] 4 3 ] => (2, 4)
+		// or ] 2 1|]  [ 3 4 [ => (1, 3)
+		// or ] 4 3|]  ] 2 1 ] => (3, 2)
+		right_pos = cit->left_pos() - (cit->isRTL() ? 1 : 0);
+		// happens with consecutive row of same direction
+		if (right_pos == left_pos)
+			right_pos += cit->isRTL() ? -1 : 1;
+	}
+	// common case: both positions are inside the row element
+	else {
+		//    [ 1 2|3 [ => (2, 3)
+		// or ] 3|2 1 ] => (3, 2)
+		left_pos = pos() - (cit->isRTL() ? 0 : 1);
+		right_pos = pos() - (cit->isRTL() ? 1 : 0);
+	}
+}
+
+
+void Cursor::getSurroundingPosOrig(pos_type & left_pos, pos_type & right_pos) const
 {
 	// preparing bidi tables
 	Paragraph const & par = paragraph();
@@ -960,6 +1057,34 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos)
 		}
 	}
 	return;
+}
+
+
+void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos) const
+{
+	// Check result wrt old implementation
+	// FIXME: remove after correct testing.
+	pos_type lp, rp;
+	getSurroundingPosNew(lp, rp);
+	getSurroundingPosOrig(left_pos, right_pos);
+	if (lp != left_pos || rp != right_pos) {
+		Row const & row = textRow();
+		TextMetrics const & tm = bv_->textMetrics(text());
+		double dummy = 0;
+		Row::const_iterator cit = tm.findRowElement(row, pos(), boundary(), dummy);
+		if (cit != row.end())
+			LYXERR0("Wrong surroundingpos: old=(" << left_pos << ", " << right_pos
+					<< "), new=(" << lp << ", " << rp
+					<< ") *cit= " << *cit
+					<< "\ncur = " << *this << "\nrow =" << row);
+		else
+			LYXERR0("Wrong surroundingpos: old=(" << left_pos << ", " << right_pos
+					<< "), new=(" << lp << ", " << rp
+					<< ") in empty row"
+					<< "\ncur = " << *this << "\nrow =" << row);
+	}
+	LYXERR(Debug::RTL,"getSurroundingPos(" << pos() << (boundary() ? "b" : "")
+		   << ") => (" << left_pos << ", " << right_pos <<")");
 }
 
 

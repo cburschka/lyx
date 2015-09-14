@@ -1410,6 +1410,56 @@ Inset * TextMetrics::checkInsetHit(int x, int y)
 }
 
 
+Row::const_iterator const
+TextMetrics::findRowElement(Row const & row, pos_type const pos,
+                            bool const boundary, double & x) const
+{
+	/**
+	 * When boundary is true, position i is in the row element (pos, endpos)
+	 * if
+	 *    pos < i <= endpos
+	 * whereas, when boundary is false, the test is
+	 *    pos <= i < endpos
+	 * The correction below allows to handle both cases.
+	*/
+	int const boundary_corr = (boundary && pos) ? -1 : 0;
+
+	x = row.left_margin;
+
+	/** Early return in trivial cases
+	 * 1) the row is empty
+	 * 2) the position is the left-most position of the row; there
+	 * is a quirk here however: if the first element is virtual
+	 * (end-of-par marker for example), then we have to look
+	 * closer
+	 */
+	if (row.empty()
+	    || (pos == row.begin()->left_pos() && !boundary
+			&& !row.begin()->isVirtual()))
+		return row.begin();
+
+	Row::const_iterator cit = row.begin();
+	for ( ; cit != row.end() ; ++cit) {
+		/** Look whether the cursor is inside the element's
+		 * span. Note that it is necessary to take the
+		 * boundary into account, and to accept virtual
+		 * elements, which have pos == endpos.
+		 */
+		if (pos + boundary_corr >= cit->pos
+		    && (pos + boundary_corr < cit->endpos || cit->isVirtual())) {
+				x += cit->pos2x(pos);
+				break;
+		}
+		x += cit->full_width();
+	}
+
+	if (cit == row.end())
+		--cit;
+
+	return cit;
+}
+
+
 int TextMetrics::cursorX(CursorSlice const & sl,
 		bool boundary) const
 {
@@ -1421,46 +1471,10 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	Row const & row = pm.getRow(sl.pos(), boundary);
 	pos_type const pos = sl.pos();
 
-	/**
-	 * When boundary is true, position i is in the row element (pos, endpos)
-	 * if
-	 *    pos < i <= endpos
-	 * whereas, when boundary is false, the test is
-	 *    pos <= i < endpos
-	 * The correction below allows to handle both cases.
-	*/
-	int const boundary_corr = (boundary && pos) ? -1 : 0;
-
-	/** Early return in trivial cases
-	 * 1) the row is empty
-	 * 2) the position is the left-most position of the row; there
-	 * is a quirck herehowever: if the first element is virtual
-	 * (end-of-par marker for example), then we have to look
-	 * closer
-	 */
-	if (row.empty()
-	    || (pos == row.begin()->left_pos()
-		&& pos != row.begin()->right_pos()))
-		return row.left_margin;
-
-	Row::const_iterator cit = row.begin();
-	double x = row.left_margin;
-	for ( ; cit != row.end() ; ++cit) {
-		/** Look whether the cursor is inside the element's
-		 * span. Note that it is necessary to take the
-		 * boundary into account, and to accept virtual
-		 * elements, which have pos == endpos.
-		 */
-		if (pos + boundary_corr >= cit->pos
-		    && (pos + boundary_corr < cit->endpos
-			|| cit->pos == cit->endpos)) {
-				x += cit->pos2x(pos);
-				break;
-		}
-		x += cit->full_width();
-	}
-
+	double x = 0;
+	findRowElement(row, pos, boundary, x);
 	return int(x);
+
 }
 
 

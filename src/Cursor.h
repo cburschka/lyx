@@ -225,7 +225,9 @@ public:
 	 * If the cursor is at the edge of a row, the position which is "over the 
 	 * edge" will be returned as -1.
 	 */
-	void getSurroundingPos(pos_type & left_pos, pos_type & right_pos);
+	void getSurroundingPos(pos_type & left_pos, pos_type & right_pos) const;
+	void getSurroundingPosNew(pos_type & left_pos, pos_type & right_pos) const;
+	void getSurroundingPosOrig(pos_type & left_pos, pos_type & right_pos) const;
 	/// the row in the paragraph we're in
 	Row const & textRow() const;
 

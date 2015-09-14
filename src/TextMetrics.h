@@ -191,12 +191,16 @@ public:
 	/// x,y are screen coordinates
 	void setCursorFromCoordinates(Cursor & cur, int x, int y);
 
+	/// Helper function: find row element that contains pos, and
+	/// compute x offset.
+	Row::const_iterator const
+	findRowElement(Row const & row, pos_type const pos,
+                   bool const boundary, double & x) const;
+
 	///
-	int cursorX(CursorSlice const & cursor,
-		bool boundary) const;
+	int cursorX(CursorSlice const & cursor, bool boundary) const;
 	///
-	int cursorY(CursorSlice const & cursor,
-		bool boundary) const;
+	int cursorY(CursorSlice const & cursor, bool boundary) const;
 
 	///
 	bool cursorHome(Cursor & cur);

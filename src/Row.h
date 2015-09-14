@@ -89,6 +89,10 @@ public:
 
 		//
 		bool isRTL() const { return font.isVisibleRightToLeft(); }
+		// This is true for virtual elements.
+		// Note that we do not use the type here. The two definitions
+		// should be equivalent
+		bool isVirtual() const { return pos == endpos; }
 
 		// The kind of row element
 		Type type;
