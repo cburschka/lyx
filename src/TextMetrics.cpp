@@ -443,10 +443,11 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		breakRow(row, right_margin, pit);
 		setRowHeight(row, pit);
 		row.setChanged(false);
-		if (row_index || row.endpos() < par.size())
-			// If there is more than one row, expand the text to
-			// the full allowable width. This setting here is needed
-			// for the computeRowMetrics() below.
+		if (row_index || row.right_boundary() || row.endpos() < par.size())
+			// If there is more than one row or the row has been
+			// broken by a display inset or a newline, expand the text
+			// to the full allowable width. This setting here is
+			// needed for the computeRowMetrics() below.
 			dim_.wid = max_width_;
 		int const max_row_width = max(dim_.wid, row.width());
 		computeRowMetrics(pit, row, max_row_width);
