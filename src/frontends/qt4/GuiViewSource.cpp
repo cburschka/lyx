@@ -110,7 +110,8 @@ auto_ptr<TexRow> ViewSourceWidget::getContent(BufferView const * view,
 	odocstringstream ostr;
 	auto_ptr<TexRow> texrow = view->buffer().getSourceCode(ostr, format,
 								    par_begin, par_end + 1, output, master);
-	str = ostr.str();
+	//ensure that the last line can always be selected in its full width
+	str = ostr.str() + "\n";
 	return texrow;
 }
 
@@ -229,35 +230,20 @@ void ViewSourceWidget::realUpdateView()
 	} else if (texrow.get()) {
 		// Use the available position-to-row conversion to highlight
 		// the current selection in the source
-		//
-		// FIXME:
-		// * it is currently impossible to highlight the very last line
-		//   of a document, because TexRow gives the wrong data.
-		// * we currently only compute the top-level position, which
-		//   makes it impossible to highlight inside an inset. It is not
-		//   a limitation of TexRow,  but replacing bottom() with top()
-		//   works partially and causes segfaults with math. Solving
-		//   this could be seen as a solution to #4725.
-		// * even if we keep computing the top-level position, the data
-		//   given by TexRow is false if there is e.g. a float of a
-		//   footnote in the paragraph
-		CursorSlice beg = bv_->cursor().selectionBegin().bottom();
-		CursorSlice end = bv_->cursor().selectionEnd().bottom();
-		int const beg_par = beg.paragraph().id();
-		int const end_par = end.paragraph().id();
-		int const beg_pos = beg.pos();
-		int const end_pos = end.pos();
-		int const beg_row = texrow->getRowFromIdPos(beg_par, beg_pos);
-		int end_row, next_end_row;
-		if (beg_par != end_par || beg_pos != end_pos) {
-			end_row = texrow->getRowFromIdPos(end_par, max(0, end_pos - 1));
-			next_end_row = texrow->getRowFromIdPos(end_par, end_pos);
-		} else {
-			end_row = beg_row;
-			next_end_row = texrow->getRowFromIdPos(beg_par, beg_pos + 1);
+		int beg_row, end_row;
+		{
+			DocIterator beg = bv_->cursor().selectionBegin();
+			DocIterator end = bv_->cursor().selectionEnd();
+			std::pair<int,int> beg_rows = texrow->rowFromDocIterator(beg);
+			beg_row = beg_rows.first;
+			if (beg != end) {
+				end.backwardChar();
+				std::pair<int,int> end_rows = texrow->rowFromDocIterator(end);
+				end_row = end_rows.second;
+			} else {
+				end_row = beg_rows.second;
+			}
 		}
-		if (end_row != next_end_row)
-			end_row = next_end_row - 1;
 
 		QTextCursor c = QTextCursor(viewSourceTV->document());
 
@@ -303,7 +289,7 @@ void ViewSourceWidget::realUpdateView()
 		c.clearSelection();
 		viewSourceTV->setTextCursor(c);
 		viewSourceTV->horizontalScrollBar()->setValue(h_scroll);
-	}
+	} // else if (texrow)
 }
 
 

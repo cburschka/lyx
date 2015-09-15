@@ -14,11 +14,14 @@
 #ifndef TEXROW_H
 #define TEXROW_H
 
-#include <vector>
+#include "support/debug.h"
 
+#include <vector>
 
 namespace lyx {
 
+class LyXErr;
+class DocIterator;
 
 /// Represents the correspondence between paragraphs and the generated
 /// LaTeX file
@@ -26,10 +29,13 @@ namespace lyx {
 class TexRow {
 public:
 	///
-	TexRow() : lastid(-1), lastpos(-1), started(false) {}
+	TexRow(bool enable = true)
+		: lastid(-1), lastpos(-1), started(false), enabled_(enable) {}
 
 	/// Clears structure
-	void reset();
+	/// TexRow is often computed to be immediately discarded. Set enable to
+	/// false if texrow is not needed
+	void reset(bool enable = true);
 
 	/// Define what paragraph and position the next row will represent
 	void start(int id, int pos);
@@ -39,6 +45,9 @@ public:
 
 	/// Insert multiple nodes when zero or more lines are completed
 	void newlines(int num_lines);
+
+	/// Call when code generation is complete
+	void finalize();
 
 	/**
 	 * getIdFromRow - find pid and position for a given row
@@ -52,13 +61,9 @@ public:
 	 */
 	bool getIdFromRow(int row, int & id, int & pos) const;
 
-	/**
-	 * getRowFromIdPos - find row containing a given id and pos
-	 * @param id of the paragraph
-	 * @param pos a given position in that paragraph
-	 * @return the row number within the rowlist
-	 */
-	int getRowFromIdPos(int id, int pos) const;
+	/// Finds the best pair of rows for dit
+	/// returns (-1,-1) if not found.
+	std::pair<int,int> rowFromDocIterator(DocIterator const & dit) const;
 	
 	/// Returns the number of rows contained
 	int rows() const { return rowlist.size(); }
@@ -92,7 +97,11 @@ private:
 	int lastpos;
 	/// Is id/pos already registered for current row?
 	bool started;
+	/// 
+	bool enabled_;
 };
+
+LyXErr & operator<<(LyXErr &, TexRow &);
 
 
 } // namespace lyx

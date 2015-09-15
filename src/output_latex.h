@@ -27,7 +27,6 @@ class Encoding;
 class Layout;
 class Paragraph;
 class OutputParams;
-class TexRow;
 class Text;
 
 /** Export optional and required arguments of the paragraph \p par.

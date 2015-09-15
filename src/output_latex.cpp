@@ -24,7 +24,6 @@
 #include "Paragraph.h"
 #include "ParagraphParameters.h"
 #include "TextClass.h"
-#include "TexRow.h"
 
 #include "insets/InsetBibitem.h"
 #include "insets/InsetArgument.h"

@@ -729,7 +729,7 @@ private:
 static docstring buffer_to_latex(Buffer & buffer)
 {
 	OutputParams runparams(&buffer.params().encoding());
-	TexRow texrow;
+	TexRow texrow(false);
 	odocstringstream ods;
 	otexstream os(ods, texrow);
 	runparams.nice = true;
@@ -1051,7 +1051,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 	Buffer const & buf = *cur.buffer();
 	LBUFERR(buf.params().isLatex());
 
-	TexRow texrow;
+	TexRow texrow(false);
 	odocstringstream ods;
 	otexstream os(ods, texrow);
 	OutputParams runparams(&buf.params().encoding());
@@ -1399,7 +1399,7 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 		LYXERR(Debug::FIND, "After pasteParagraphList() cur=" << cur << endl);
 		sel_len = repl_buffer.paragraphs().begin()->size();
 	} else if (cur.inMathed()) {
-		TexRow texrow;
+		TexRow texrow(false);
 		odocstringstream ods;
 		otexstream os(ods, texrow);
 		OutputParams runparams(&repl_buffer.params().encoding());

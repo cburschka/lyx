@@ -1842,14 +1842,7 @@ void Buffer::writeLaTeXSource(otexstream & os,
 	}
 	runparams_in.encoding = runparams.encoding;
 
-	// Just to be sure. (Asger)
-	os.texrow().newline();
-
-	//for (int i = 0; i<d->texrow.rows(); i++) {
-	// int id,pos;
-	// if (d->texrow.getIdFromRow(i+1,id,pos) && id>0)
-	//	lyxerr << i+1 << ":" << id << ":" << getParFromID(id).paragraph().asString()<<"\n";
-	//}
+	os.texrow().finalize();
 
 	LYXERR(Debug::INFO, "Finished making LaTeX file.");
 	LYXERR(Debug::INFO, "Row count was " << os.texrow().rows() - 1 << '.');
@@ -1886,7 +1879,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 	LaTeXFeatures features(*this, params(), runparams);
 	validate(features);
 
-	d->texrow.reset();
+	d->texrow.reset(false);
 
 	DocumentClass const & tclass = params().documentClass();
 	string const & top_element = tclass.latexname();
@@ -3570,7 +3563,6 @@ auto_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 			params().validate(features);
 			runparams.use_polyglossia = features.usePolyglossia();
 			texrow.reset(new TexRow());
-			texrow->reset();
 			texrow->newline();
 			texrow->newline();
 			// latex or literate
@@ -3578,6 +3570,7 @@ auto_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 
 			// the real stuff
 			latexParagraphs(*this, text(), ots, runparams);
+			texrow->finalize();
 
 			// Restore the parenthood
 			if (!master)
@@ -3613,13 +3606,13 @@ auto_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 		} else {
 			// latex or literate
 			texrow.reset(new TexRow());
-			texrow->reset();
 			texrow->newline();
 			texrow->newline();
 			otexstream ots(os, *texrow);
 			if (master)
 				runparams.is_child = true;
 			writeLaTeXSource(ots, string(), runparams, output);
+			texrow->finalize();
 		}
 	}
 	return texrow;
