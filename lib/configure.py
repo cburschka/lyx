@@ -166,7 +166,7 @@ def checkUpgrade():
             logger.debug('previous = ' + previous)
             if os.path.isdir( previous ):
                 logger.info('Found directory "%s".', previous)
-                copy_tree( previous, cwd, true )
+                copy_tree( previous, cwd, True )
                 logger.info('Content copied to directory "%s".', cwd)
                 return
 
