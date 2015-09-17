@@ -67,6 +67,10 @@ TEST_RESULTS = \
 alltests: check alltests-recursive
 
 alltests-recursive: tex2lyx
+	if test "$(srcdir)" = "$(builddir)"; then \
+		echo "tex2lyx tests require a separate build directory"; \
+		exit 1; \
+	fi
 	@$(PYTHON) "$(srcdir)/test/runtests.py"; \
 	if test $$? -eq 0; then \
 		echo -e "=====================\ntex2lyx tests passed.\n====================="; \
