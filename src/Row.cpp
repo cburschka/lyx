@@ -52,18 +52,16 @@ double Row::Element::pos2x(pos_type const i) const
 	if (i < pos || i > endpos)
 		return 0;
 
-	bool const rtl = font.isVisibleRightToLeft();
-
 	double w = 0;
 	//handle first the two bounds of the element
 	if (i == endpos && type != VIRTUAL
 		&& !(inset && inset->lyxCode() == SEPARATOR_CODE))
-		w = rtl ? 0 : full_width();
+		w = isRTL() ? 0 : full_width();
 	else if (i == pos || type != STRING)
-		w = rtl ? full_width() : 0;
+		w = isRTL() ? full_width() : 0;
 	else {
 		FontMetrics const & fm = theFontMetrics(font);
-		w = fm.pos2x(str, i - pos, font.isVisibleRightToLeft(), extra);
+		w = fm.pos2x(str, i - pos, isRTL(), extra);
 	}
 
 	return w;
@@ -73,19 +71,18 @@ double Row::Element::pos2x(pos_type const i) const
 pos_type Row::Element::x2pos(int &x) const
 {
 	//lyxerr << "x2pos: x=" << x << " w=" << width() << " " << *this;
-	bool const rtl = font.isVisibleRightToLeft();
 	size_t i = 0;
 
 	switch (type) {
 	case STRING: {
 		FontMetrics const & fm = theFontMetrics(font);
-		i = fm.x2pos(str, x, rtl, extra);
+		i = fm.x2pos(str, x, isRTL(), extra);
 		break;
 	}
 	case VIRTUAL:
 		// those elements are actually empty (but they have a width)
 		i = 0;
-		x = rtl ? int(full_width()) : 0;
+		x = isRTL() ? int(full_width()) : 0;
 		break;
 	case INSET:
 	case SPACE:
@@ -93,10 +90,10 @@ pos_type Row::Element::x2pos(int &x) const
 		// the closest side.
 		if (x > full_width()) {
 			x = int(full_width());
-			i = !rtl;
+			i = !isRTL();
 		} else {
 			x = 0;
-			i = rtl;
+			i = isRTL();
 		}
 
 	}
@@ -111,10 +108,9 @@ bool Row::Element::breakAt(int w, bool force)
 	if (type != STRING || dim.wid <= w)
 		return false;
 
-	bool const rtl = font.isVisibleRightToLeft();
 	FontMetrics const & fm = theFontMetrics(font);
 	int x = w;
-	if(fm.breakAt(str, x, rtl, force)) {
+	if(fm.breakAt(str, x, isRTL(), force)) {
 		dim.wid = x;
 		endpos = pos + str.length();
 		//lyxerr << "breakAt(" << w << ")  Row element Broken at " << x << "(w(str)=" << fm.width(str) << "): e=" << *this << endl;
@@ -126,13 +122,13 @@ bool Row::Element::breakAt(int w, bool force)
 
 pos_type Row::Element::left_pos() const
 {
-	return font.isVisibleRightToLeft() ? endpos : pos;
+	return isRTL() ? endpos : pos;
 }
 
 
 pos_type Row::Element::right_pos() const
 {
-	return font.isVisibleRightToLeft() ? pos : endpos;
+	return isRTL() ? pos : endpos;
 }
 
 
@@ -217,7 +213,7 @@ bool Row::selection() const
 
 ostream & operator<<(ostream & os, Row::Element const & e)
 {
-	if (e.font.isVisibleRightToLeft())
+	if (e.isRTL())
 		os << e.endpos << "<<" << e.pos << " ";
 	else
 		os << e.pos << ">>" << e.endpos << " ";
@@ -480,9 +476,9 @@ void Row::reverseRTL(bool const rtl_par)
 	pos_type const end = elements_.size();
 	while (i < end) {
 		// gather a sequence of elements with the same direction
-		bool const rtl = elements_[i].font.isVisibleRightToLeft();
+		bool const rtl = elements_[i].isRTL();
 		pos_type j = i;
-		while (j < end && elements_[j].font.isVisibleRightToLeft() == rtl)
+		while (j < end && elements_[j].isRTL() == rtl)
 			++j;
 		// if the direction is not the same as the paragraph
 		// direction, the sequence has to be reverted.

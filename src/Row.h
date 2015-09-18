@@ -62,7 +62,7 @@ public:
 			  extra(0), font(f), change(ch), final(false) {}
 
 		// Return total width of element, including separator overhead
-		double full_width() const { return dim.wid + extra * countSeparators(); };
+		double full_width() const { return dim.wid + extra * countSeparators(); }
 		// Return the number of separator in the element (only STRING type)
 		int countSeparators() const;
 
@@ -86,6 +86,9 @@ public:
 		pos_type left_pos() const;
 		// Returns the position on right side of the element.
 		pos_type right_pos() const;
+
+		//
+		bool isRTL() const { return font.isVisibleRightToLeft(); }
 
 		// The kind of row element
 		Type type;

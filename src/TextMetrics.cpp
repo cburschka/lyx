@@ -1103,7 +1103,7 @@ pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 		 */
 		else if (pos == cit->endpos
 			 && cit + 1 != row.end()
-			 && cit->font.isVisibleRightToLeft() != (cit + 1)->font.isVisibleRightToLeft())
+			 && cit->isRTL() != (cit + 1)->isRTL())
 			boundary = true;
 	}
 
