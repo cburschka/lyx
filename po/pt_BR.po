@@ -11,8 +11,9 @@ msgstr ""
 "Project-Id-Version: pt_BR 2.1.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2015-07-23 18:04-0400\n"
-"PO-Revision-Date: 2015-09-08 20:01-0300\n"
-"Last-Translator: Georger Araujo <georger_br@yahoo.com.br>\n"
+"PO-Revision-Date: 2015-09-08 23:50-0300\n"
+"Last-Translator: Georger Araújo <georger underscore br pound yahoo dot com "
+"dot br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br pound yahoo dot "
 "com dot br>\n"
 "Language: pt_BR\n"
@@ -4304,7 +4305,7 @@ msgstr "Ao carregar o PDF, exibir em tela cheia"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:189
 msgid "H&yperlinks"
-msgstr "H&iperlinks"
+msgstr "Hiper&links"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:222
 msgid "Allows link text to break across lines."
@@ -4334,19 +4335,19 @@ msgstr "Referências com Listas de Páginas:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:281
 msgid "&Bookmarks"
-msgstr "&Marcadores"
+msgstr "&Indicadores"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:293
 msgid "G&enerate Bookmarks (ToC)"
-msgstr "&Gerar Marcadores (sumário)"
+msgstr "&Gerar Indicadores (sumário)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:314
 msgid "&Numbered bookmarks"
-msgstr "Marcadores &numerados"
+msgstr "Indicadores &numerados"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:321
 msgid "&Open bookmark tree"
-msgstr "Ár&vore de marcadores aberta"
+msgstr "Ár&vore de indicadores aberta"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:336
 #: src/frontends/qt4/ui/BulletsUi.ui:174
@@ -16491,15 +16492,15 @@ msgstr "Log do LaTeX|L"
 
 #: lib/ui/stdmenus.inc:517
 msgid "Start Appendix Here|x"
-msgstr "Começar Apêndice Aqui|p"
+msgstr "Começar Apêndice Aqui|q"
 
 #: lib/ui/stdmenus.inc:521
 msgid "View Master Document|M"
-msgstr "Visualizar Documento Mestre|M"
+msgstr "Visualizar Documento Mestre|i"
 
 #: lib/ui/stdmenus.inc:522
 msgid "Update Master Document|a"
-msgstr "Atualizar Documento Mestre|A"
+msgstr "Atualizar Documento Mestre|u"
 
 #: lib/ui/stdmenus.inc:524
 msgid "Compressed|o"
@@ -16551,7 +16552,7 @@ msgstr "Mostrar Alterações no Resultado|R"
 
 #: lib/ui/stdmenus.inc:542
 msgid "Bookmarks|B"
-msgstr "Marcadores|M"
+msgstr "Indicadores|I"
 
 #: lib/ui/stdmenus.inc:543
 msgid "Next Note|N"
@@ -16575,27 +16576,27 @@ msgstr "Localizar Adiante|L"
 
 #: lib/ui/stdmenus.inc:553
 msgid "Save Bookmark 1|S"
-msgstr "Salvar Marcador 1|S"
+msgstr "Salvar Indicador 1|S"
 
 #: lib/ui/stdmenus.inc:554
 msgid "Save Bookmark 2"
-msgstr "Salvar Marcador 2"
+msgstr "Salvar Indicador 2"
 
 #: lib/ui/stdmenus.inc:555
 msgid "Save Bookmark 3"
-msgstr "Salvar Marcador 3"
+msgstr "Salvar Indicador 3"
 
 #: lib/ui/stdmenus.inc:556
 msgid "Save Bookmark 4"
-msgstr "Salvar Marcador 4"
+msgstr "Salvar Indicador 4"
 
 #: lib/ui/stdmenus.inc:557
 msgid "Save Bookmark 5"
-msgstr "Salvar Marcador 5"
+msgstr "Salvar Indicador 5"
 
 #: lib/ui/stdmenus.inc:558
 msgid "Clear Bookmarks|C"
-msgstr "Limpar Marcadores|L"
+msgstr "Limpar Indicadores|L"
 
 #: lib/ui/stdmenus.inc:560
 msgid "Navigate Back|B"
@@ -16984,7 +16985,7 @@ msgstr "Editar Arquivo Incluído...|E"
 
 #: lib/ui/stdcontext.inc:315
 msgid "Jump Back to Saved Bookmark|B"
-msgstr "Voltar para Marcador Salvo|V"
+msgstr "Voltar para Indicador Salvo|V"
 
 #: lib/ui/stdcontext.inc:323
 msgid "Promote Section|r"
@@ -23193,7 +23194,7 @@ msgstr "Não há mais insets"
 
 #: src/BufferView.cpp:737
 msgid "Save bookmark"
-msgstr "Salvar marcador"
+msgstr "Salvar indicador"
 
 #: src/BufferView.cpp:962
 msgid "Converting document to new document class..."
@@ -28669,15 +28670,15 @@ msgstr "<Nenhum Documento Aberto>"
 
 #: src/frontends/qt4/Menus.cpp:1034
 msgid "<No Bookmarks Saved Yet>"
-msgstr "<Nenhum Marcador Salvo Ainda>"
+msgstr "<Nenhum Indicador Salvo Ainda>"
 
 #: src/frontends/qt4/Menus.cpp:1076
 msgid "View (Other Formats)|F"
-msgstr "Visualizar (Outros Formatos)|i"
+msgstr "Visualizar (Outros Formatos)|O"
 
 #: src/frontends/qt4/Menus.cpp:1077
 msgid "Update (Other Formats)|p"
-msgstr "Atualizar (Outros Formatos)|t"
+msgstr "Atualizar (Outros Formatos)|F"
 
 #: src/frontends/qt4/Menus.cpp:1107
 #, c-format
