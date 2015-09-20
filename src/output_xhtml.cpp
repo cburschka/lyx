@@ -495,7 +495,7 @@ XHTMLStream & XHTMLStream::operator<<(char_type c)
 XHTMLStream & XHTMLStream::operator<<(char c)
 {
 	clearTagDeque();
-	string const d = html::escapeChar(c, escape_);
+	os_ << html::escapeChar(c, escape_);
 	escape_ = ESCAPE_ALL;
 	return *this;
 }
