@@ -1997,7 +1997,7 @@ docstring Paragraph::expandParagraphLabel(Layout const & layout,
 			docstring parent(fmt, i + 1, j - i - 1);
 			docstring label = from_ascii("??");
 			if (tclass.hasLayout(parent))
-				docstring label = expandParagraphLabel(tclass[parent], bparams,
+				label = expandParagraphLabel(tclass[parent], bparams,
 						      process_appendix);
 			fmt = docstring(fmt, 0, i) + label
 				+ docstring(fmt, j + 1, docstring::npos);
