@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 495
+\lyxformat 497
 \begin_document
 \begin_header
 \origin /systemlyxdir/doc/
@@ -6243,6 +6243,10 @@ enumitem
  itemize, description).
  It is used by the Linguistics module to fine tune the appearance of numbered
  subexamples.
+
+\change_inserted -195340706 1442746477
+ The customization options are also supported directly by the Customisable
+ Lists (enumitem) module.
 \change_inserted -712698321 1429547340
 
 \end_layout
@@ -6281,8 +6285,6 @@ Notes: The package
 forest
 \family default
  provides support for generating linguistic structure trees.
-\change_inserted -712698321 1426533959
-
 \end_layout
 
 \begin_layout Subsection
@@ -6336,6 +6338,49 @@ babel
 caption
 \family default
  bundle.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -195340706 1442746713
+Paragraph Lists (paralist) module
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted -195340706 1442746713
+paralist
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -195340706 1442746713
+Found: 
+\begin_inset Info
+type  "package"
+arg   "paralist"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -195340706 1442746713
+CTAN: 
+\family typewriter
+macros/latex/contrib/paralist/
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -195340706 1442746713
+Notes: The package 
+\family sans
+paralist
+\family default
+ extends the standard list environments by versions that are typeset as
+ paragraphs, in paragraphs and as a more compact version.
 \end_layout
 
 \begin_layout Subsection

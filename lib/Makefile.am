@@ -2093,6 +2093,7 @@ dist_layouts_DATA =\
 	layouts/numreport.inc \
 	layouts/numrevtex.inc \
 	layouts/paper.layout \
+	layouts/paralist.module \
 	layouts/pdfcomment.module \
 	layouts/pdfform.module \
 	layouts/powerdot.layout \

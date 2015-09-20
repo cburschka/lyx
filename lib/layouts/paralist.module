@@ -1,0 +1,140 @@
+#\DeclareLyXModule[paralist.sty]{Paragraph Lists (paralist)}
+#DescriptionBegin
+# The package paralist provides some new list environments.
+# Itemized and enumerated lists can be typeset within paragraphs, as
+# paragraphs and in a compact version. Most environments have optional
+# arguments to format the labels. Additionally, the LaTeX environments
+# itemize and enumerate are extended to use a similar optional argument.
+#DescriptionEnd
+# Author: Georg Baum <baum@lyx.org>
+# (structuring taken from enumitem.module by Günter Milde)
+
+Format 54
+
+AddToPreamble
+	\usepackage{paralist}
+EndPreamble
+
+
+# Customisable Basic Lists
+# ------------------------
+
+# With paralist, the itemize and enumerate environments take an optional
+# argument. See paralist.pdf for possible values.
+
+IfStyle Itemize
+	Argument 1
+		LabelString   "Itemize Options"
+		Tooltip       "Optional arguments for this list (see paralist manual)"
+	EndArgument
+End
+
+IfStyle Enumerate
+	Argument 1
+		LabelString   "Enumerate Options"
+		Tooltip       "Optional arguments for this list (see paralist manual)"
+	EndArgument
+End
+
+
+# List Variants
+# -------------
+#
+# Styles defined by paralist.sty
+
+Style AsParagraphItem
+	CopyStyle             Itemize
+	LatexName             asparaitem
+	Argument 1
+		LabelString   "As Paragraph Itemize Options"
+		Tooltip       "Optional arguments for this list (see paralist manual)"
+	EndArgument
+End
+
+Style InParagraphItem
+	CopyStyle             Itemize
+	LatexName             inparaitem
+	Argument 1
+		LabelString   "In Paragraph Itemize Options"
+		Tooltip       "Optional arguments for this list (see paralist manual)"
+	EndArgument
+End
+
+Style CompactItem
+	CopyStyle             Itemize
+	LatexName             compactitem
+	TopSep                0.0
+	BottomSep             0.0
+	ParSep                0.0
+	Argument 1
+		LabelString   "Compact Itemize Options"
+		Tooltip       "Optional arguments for this list (see paralist manual)"
+	EndArgument
+End
+
+Style AsParagraphEnum
+	CopyStyle             Enumerate
+	LatexName             asparaenum
+	Argument 1
+		LabelString   "As Paragraph Enumerate Options"
+		Tooltip       "Optional arguments for this list (see paralist manual)"
+	EndArgument
+End
+
+Style InParagraphEnum
+	CopyStyle             Enumerate
+	LatexName             inparaenum
+	Argument 1
+		LabelString   "In Paragraph Enumerate Options"
+		Tooltip       "Optional arguments for this list (see paralist manual)"
+	EndArgument
+End
+
+Style CompactEnum
+	CopyStyle             Enumerate
+	LatexName             compactenum
+	TopSep                0.0
+	BottomSep             0.0
+	ParSep                0.0
+	Argument 1
+		LabelString   "Compact Enumerate Options"
+		Tooltip       "Optional arguments for this list (see paralist manual)"
+	EndArgument
+End
+
+Style AsParagraphDescr
+	CopyStyle             Description
+	LatexName             asparadescr
+	Argument 1
+		LabelString   "As Paragraph Description Options"
+		Tooltip       "Optional arguments for this list (see paralist manual)"
+	EndArgument
+End
+
+Style InParagraphDescr
+	CopyStyle             Description
+	LatexName             inparadescr
+	Argument 1
+		LabelString   "In Paragraph Description Options"
+		Tooltip       "Optional arguments for this list (see paralist manual)"
+	EndArgument
+End
+
+Style CompactDescr
+	CopyStyle             Description
+	LatexName             compactdescr
+	TopSep                0.0
+	BottomSep             0.0
+	ParSep                0.0
+	Argument 1
+		LabelString   "Compact Description Options"
+		Tooltip       "Optional arguments for this list (see paralist manual)"
+	EndArgument
+End
+
+# References
+# ----------
+#
+# .. paralist.pdf:
+#    http://dante.ctan.org/CTAN/macros/latex/contrib/paralist/paralist.pdf
+
