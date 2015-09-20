@@ -29,6 +29,7 @@
 #include "support/FileNameList.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
+#include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/os.h"
 #include "support/Package.h"
@@ -707,6 +708,8 @@ void Converters::buildGraph()
 	for (; it != end ; ++it) {
 		int const from = formats.getNumber(it->from());
 		int const to   = formats.getNumber(it->to());
+		LASSERT(from >= 0, continue);
+		LASSERT(to >= 0, continue);
 		G_.addEdge(from, to);
 	}
 }
