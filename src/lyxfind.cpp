@@ -348,10 +348,10 @@ bool lyxreplace(BufferView * bv,
 	bool forward       = parse_bool(howto);
 	bool findnext      = howto.empty() ? true : parse_bool(howto);
 
-	int replace_count = 0;
 	bool update = false;
 
 	if (!has_deleted) {
+		int replace_count = 0;
 		if (all) {
 			replace_count = replaceAll(bv, search, rplc, casesensitive, matchword);
 			update = replace_count > 0;

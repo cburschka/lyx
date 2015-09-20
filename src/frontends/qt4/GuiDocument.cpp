@@ -3506,14 +3506,13 @@ void GuiDocument::updateIncludeonlys()
 		masterChildModule->childrenTW->setEnabled(true);
 		masterChildModule->maintainAuxCB->setEnabled(true);
 	}
-	QTreeWidgetItem * item = 0;
 	ListOfBuffers children = buffer().getChildren();
 	ListOfBuffers::const_iterator it  = children.begin();
 	ListOfBuffers::const_iterator end = children.end();
 	bool has_unincluded = false;
 	bool all_unincluded = true;
 	for (; it != end; ++it) {
-		item = new QTreeWidgetItem(masterChildModule->childrenTW);
+		QTreeWidgetItem * item = new QTreeWidgetItem(masterChildModule->childrenTW);
 		// FIXME Unicode
 		string const name =
 			to_utf8(makeRelPath(from_utf8((*it)->fileName().absFileName()),

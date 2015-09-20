@@ -1186,7 +1186,6 @@ bool Text::cursorVisLeftOneWord(Cursor & cur)
 	LBUFERR(this == cur.text());
 
 	pos_type left_pos, right_pos;
-	bool left_is_letter, right_is_letter;
 
 	Cursor temp_cur = cur;
 
@@ -1195,9 +1194,9 @@ bool Text::cursorVisLeftOneWord(Cursor & cur)
 
 		// collect some information about current cursor position
 		temp_cur.getSurroundingPos(left_pos, right_pos);
-		left_is_letter =
+		bool left_is_letter =
 			(left_pos > -1 ? !temp_cur.paragraph().isWordSeparator(left_pos) : false);
-		right_is_letter =
+		bool right_is_letter =
 			(right_pos > -1 ? !temp_cur.paragraph().isWordSeparator(right_pos) : false);
 
 		// if we're not at a letter/non-letter boundary, continue moving
@@ -1223,7 +1222,6 @@ bool Text::cursorVisRightOneWord(Cursor & cur)
 	LBUFERR(this == cur.text());
 
 	pos_type left_pos, right_pos;
-	bool left_is_letter, right_is_letter;
 
 	Cursor temp_cur = cur;
 
@@ -1232,9 +1230,9 @@ bool Text::cursorVisRightOneWord(Cursor & cur)
 
 		// collect some information about current cursor position
 		temp_cur.getSurroundingPos(left_pos, right_pos);
-		left_is_letter =
+		bool left_is_letter =
 			(left_pos > -1 ? !temp_cur.paragraph().isWordSeparator(left_pos) : false);
-		right_is_letter =
+		bool right_is_letter =
 			(right_pos > -1 ? !temp_cur.paragraph().isWordSeparator(right_pos) : false);
 
 		// if we're not at a letter/non-letter boundary, continue moving

@@ -208,7 +208,6 @@ void TocModel::populate(unsigned int & index, QModelIndex const & parent)
 {
 	int curdepth = (*toc_)[index].depth() + 1;
 
-	int current_row;
 	QModelIndex child_item;
 	model_->insertColumns(0, 1, parent);
 
@@ -222,7 +221,7 @@ void TocModel::populate(unsigned int & index, QModelIndex const & parent)
 		}
 		maxdepth_ = max(maxdepth_, item.depth());
 		mindepth_ = min(mindepth_, item.depth());
-		current_row = model_->rowCount(parent);
+		int current_row = model_->rowCount(parent);
 		model_->insertRows(current_row, 1, parent);
 		child_item = model_->index(current_row, 0, parent);
 		model_->setData(child_item, toqstr(item.str()), Qt::DisplayRole);

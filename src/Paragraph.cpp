@@ -2041,14 +2041,12 @@ void Paragraph::setBeginOfBody()
 	pos_type end = size();
 	if (i < end && !(isNewline(i) || isEnvSeparator(i))) {
 		++i;
-		char_type previous_char = 0;
-		char_type temp = 0;
 		if (i < end) {
-			previous_char = d->text_[i];
+			char_type previous_char = d->text_[i];
 			if (!(isNewline(i) || isEnvSeparator(i))) {
 				++i;
 				while (i < end && previous_char != ' ') {
-					temp = d->text_[i];
+					char_type temp = d->text_[i];
 					if (isNewline(i) || isEnvSeparator(i))
 						break;
 					++i;

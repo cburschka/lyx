@@ -141,7 +141,6 @@ docstring sgml::cleanID(Buffer const & buf, OutputParams const & runparams,
 	static QThreadStorage<int> tMangleID;
 
 	MangledMap & mangledNames = tMangledNames.localData();
-	int & mangleID = tMangleID.localData();
 
 	MangledMap::const_iterator const known = mangledNames.find(orig);
 	if (known != mangledNames.end())
@@ -170,9 +169,10 @@ docstring sgml::cleanID(Buffer const & buf, OutputParams const & runparams,
 		}
 	}
 
-	if (mangle)
+	if (mangle) {
+		int & mangleID = tMangleID.localData();
 		content += "-" + convert<docstring>(mangleID++);
-	else if (isDigitASCII(content[content.size() - 1]))
+	} else if (isDigitASCII(content[content.size() - 1]))
 		content += ".";
 
 	mangledNames[orig] = content;

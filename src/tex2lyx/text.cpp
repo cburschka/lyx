@@ -2934,7 +2934,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// the syntax is \subfloat[list entry][sub caption]{content}
 			// if it is a table of figure depends on the surrounding float
 			// FIXME: second optional argument is not parsed
-			bool has_caption = false;
 			p.skip_spaces();
 			// do nothing if there is no outer float
 			if (!float_type.empty()) {
@@ -2946,6 +2945,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				   << "\nstatus collapsed\n\n";
 				// test for caption
 				string caption;
+				bool has_caption = false;
 				if (p.next_token().cat() != catEscape &&
 						p.next_token().character() == '[') {
 							p.get_token(); // eat '['

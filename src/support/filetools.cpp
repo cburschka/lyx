@@ -1007,7 +1007,6 @@ cmd_ret const runCommand(string const & cmd)
 	// variants ipstream, opstream
 
 #if defined (_WIN32)
-	int fno;
 	STARTUPINFO startup;
 	PROCESS_INFORMATION process;
 	SECURITY_ATTRIBUTES security;
@@ -1049,7 +1048,7 @@ cmd_ret const runCommand(string const & cmd)
 				0, 0, &startup, &process)) {
 
 			CloseHandle(process.hThread);
-			fno = _open_osfhandle((long)in, _O_RDONLY);
+			int fno = _open_osfhandle((long)in, _O_RDONLY);
 			CloseHandle(out);
 			inf = _fdopen(fno, "r");
 		}

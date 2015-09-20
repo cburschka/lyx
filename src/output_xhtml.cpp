@@ -980,9 +980,6 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		)
 			cnts.step(cntr, OutputUpdate);
 		ParagraphList::const_iterator send;
-		// this will be positive, if we want to skip the initial word
-		// (if it's been taken for the label).
-		pos_type sep = 0;
 
 		switch (style.latextype) {
 		case LATEX_ENVIRONMENT:
@@ -998,6 +995,9 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 					lastlay = 0;
 				}
 
+				// this will be positive, if we want to skip the
+				// initial word (if it's been taken for the label).
+				pos_type sep = 0;
 				bool const labelfirst = style.htmllabelfirst();
 				if (!labelfirst)
 					openItemTag(xs, style, par->params());
@@ -1018,7 +1018,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 							}
 							xs << html::CR();
 						}
-					}	else { // some kind of list
+					} else { // some kind of list
 						if (style.labeltype == LABEL_MANUAL) {
 							openLabelTag(xs, style);
 							sep = par->firstWordLyXHTML(xs, runparams);

@@ -206,10 +206,10 @@ void GuiBranches::on_renamePB_pressed()
 	if (!sel_branch.isEmpty()) {
 		docstring newname;
 		docstring const oldname = qstring_to_ucs4(sel_branch);
-		bool success = false;
 		if (Alert::askForText(newname, _("Enter new branch name"), oldname)) {
 			if (newname.empty() || oldname == newname)
 				return;
+			bool success = false;
 			if (branchlist_.find(newname)) {
 				docstring text = support::bformat(
 					_("A branch with the name \"%1$s\" already exists.\n"

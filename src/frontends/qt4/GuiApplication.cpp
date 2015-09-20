@@ -2473,13 +2473,12 @@ QAbstractItemModel * GuiApplication::languageModel()
 
 	QStandardItemModel * lang_model = new QStandardItemModel(this);
 	lang_model->insertColumns(0, 3);
-	int current_row;
 	QIcon speller(getPixmap("images/", "dialog-show_spellchecker", "svgz,png"));
 	QIcon saurus(getPixmap("images/", "thesaurus-entry", "svgz,png"));
 	Languages::const_iterator it = lyx::languages.begin();
 	Languages::const_iterator end = lyx::languages.end();
 	for (; it != end; ++it) {
-		current_row = lang_model->rowCount();
+		int current_row = lang_model->rowCount();
 		lang_model->insertRows(current_row, 1);
 		QModelIndex pl_item = lang_model->index(current_row, 0);
 		QModelIndex sp_item = lang_model->index(current_row, 1);

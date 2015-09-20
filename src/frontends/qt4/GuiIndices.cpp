@@ -233,11 +233,10 @@ void GuiIndices::on_renamePB_clicked()
 	if (!sel_index.isEmpty()) {
 		docstring newname;
 		docstring const oldname = qstring_to_ucs4(sel_index);
-		bool success = false;
 		if (Alert::askForText(newname, _("Enter new index name"), oldname)) {
 			if (newname.empty() || oldname == newname)
 				return;
-			success = indiceslist_.rename(qstring_to_ucs4(sel_index), newname);
+			bool success = indiceslist_.rename(qstring_to_ucs4(sel_index), newname);
 			newIndexLE->clear();
 			updateView();
 			if (!success)

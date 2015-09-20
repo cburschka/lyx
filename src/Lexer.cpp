@@ -320,12 +320,11 @@ bool Lexer::Pimpl::next(bool esc /* = false */)
 	}
 
 
-	unsigned char c = 0; // getc() returns an int
 	char cc = 0;
 	status = 0;
 	while (is && !status) {
 		is.get(cc);
-		c = cc;
+		unsigned char c = cc;
 
 		if (c == commentChar) {
 			// Read rest of line (fast :-)
@@ -348,9 +347,8 @@ bool Lexer::Pimpl::next(bool esc /* = false */)
 
 			if (esc) {
 
-				bool escaped = false;
 				do {
-					escaped = false;
+					bool escaped = false;
 					is.get(cc);
 					c = cc;
 					if (c == '\r') continue;

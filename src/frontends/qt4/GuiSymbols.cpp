@@ -227,9 +227,6 @@ public:
 		static QString const strCharacter = qt_("Character: ");
 		static QString const strCodePoint = qt_("Code Point: ");
 
-		// FIXME THREAD
-		static char codeName[10];
-
 		char_type c = symbols_.at(index.row()); 
 
 		if (role == Qt::TextAlignmentRole)
@@ -239,6 +236,9 @@ public:
 			return toqstr(c);
 
 		if (role == Qt::ToolTipRole) {
+			// FIXME THREAD
+			static char codeName[10];
+
 			sprintf(codeName, "0x%04x", c);
 			return strCharacter + toqstr(c) + '\n'
 				+ strCodePoint + QLatin1String(codeName);

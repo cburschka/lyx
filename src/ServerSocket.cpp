@@ -129,11 +129,11 @@ void ServerSocket::dataCallback(int fd)
 		return;
 	shared_ptr<LyXDataSocket> client = it->second;
 	string line;
-	size_t pos;
 	bool saidbye = false;
 	while (!saidbye && client->readln(line)) {
 		// The protocol must be programmed here
 		// Split the key and the data
+		size_t pos;
 		if ((pos = line.find(':')) == string::npos) {
 			client->writeln("ERROR:" + line + ":malformed message");
 			continue;
