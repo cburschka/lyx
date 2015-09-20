@@ -2095,7 +2095,6 @@ void copy_file(FileName const & src, string dstname)
 		dst = FileName(dstname);
 	else
 		dst = makeAbsPath(dstname, absParent);
-	string const absMaster = getMasterFilePath(false);
 	FileName const srcpath = src.onlyPath();
 	FileName const dstpath = dst.onlyPath();
 	if (equivalent(srcpath, dstpath))

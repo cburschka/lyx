@@ -671,8 +671,6 @@ void TeXOnePar(Buffer const & buf,
 		getPolyglossiaEnvName(par_language): par_language->babel();
 	string const prev_lang = use_polyglossia ?
 		getPolyglossiaEnvName(prev_language) : prev_language->babel();
-	string const doc_lang = use_polyglossia ?
-		getPolyglossiaEnvName(doc_language) : doc_language->babel();
 	string const outer_lang = use_polyglossia ?
 		getPolyglossiaEnvName(outer_language) : outer_language->babel();
 	string lang_begin_command = use_polyglossia ?

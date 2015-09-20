@@ -339,13 +339,12 @@ void InsetQuotes::forOutliner(docstring & os, size_t) const
 
 void InsetQuotes::validate(LaTeXFeatures & features) const
 {
-	bool const use_babel = features.useBabel();
 	char type = quote_char[quote_index[side_][language_]];
 
 #ifdef DO_USE_DEFAULT_LANGUAGE
 	if (features.bufferParams().language->lang() == "default"
 #else
-	if (!use_babel
+	if (!features.useBabel()
 #endif
 	    && lyxrc.fontenc != "T1") {
 		if (times_ == SingleQuotes)

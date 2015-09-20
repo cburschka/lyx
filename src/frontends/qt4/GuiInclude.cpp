@@ -296,7 +296,6 @@ void GuiInclude::edit()
 {
 	if (!isValid())
 		return;
-	string const file = fromqstr(filenameED->text());
 	if (bc().policy().buttonStatus(ButtonPolicy::OKAY)) {
 		slotOK();
 		applyView();
