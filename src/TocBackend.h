@@ -146,7 +146,7 @@ private:
 	TocBuilder(){}
 	///
 	struct frame {
-		Toc::size_type const pos;
+		Toc::size_type pos;
 		bool is_captioned;
 	};
 	///
