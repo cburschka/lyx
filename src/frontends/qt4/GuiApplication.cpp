@@ -2040,6 +2040,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			if (current_view_ == 0)
 				createView();
 		}
+		// fall through
 	}
 
 	default:
