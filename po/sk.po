@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-08-03 09:26+0200\n"
-"PO-Revision-Date: 2015-08-03 08:28+0000\n"
+"POT-Creation-Date: 2015-09-20 14:18+0200\n"
+"PO-Revision-Date: 2015-09-20 12:55+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
-"Language-Team: Slovak <lyx-docs@lists.lyx.org>\n"
+"Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13952,6 +13952,105 @@ msgstr "Noweb"
 #: lib/layouts/noweb.module:5
 msgid "Allows to use Noweb as a literate programming tool."
 msgstr "Dovoľuje použiť Noweb ako nástroj pre \"literate programming\"."
+
+#: lib/layouts/paralist.module:2
+msgid "Paragraph Lists (paralist)"
+msgstr "Odstavcové Listiny (paralist)"
+
+#: lib/layouts/paralist.module:9
+msgid ""
+"The package paralist provides some new list environments. Itemized and "
+"enumerated lists can be typeset within paragraphs, as paragraphs and in a "
+"compact version. Most environments have optional arguments to format the "
+"labels. Additionally, the LaTeX environments itemize and enumerate are "
+"extended to use a similar optional argument."
+msgstr ""
+"Balík paralist poskytuje niekoľké nové listinové prostredia. Položkové a "
+"číslované listiny môžu byť vysádzané vnútri odstavcov, ako odstavce a aj v "
+"kompaktnej verzii. Väčšina prostredí má voliteľné argumenty na formátovanie "
+"návestia. Dodatočne, LaTeX-ové prostredia itemize a enumerate sú rozšírené "
+"na použitie obdobného voliteľného argumentu."
+
+#: lib/layouts/paralist.module:28 lib/layouts/paralist.module:35
+#: lib/layouts/paralist.module:50 lib/layouts/paralist.module:59
+#: lib/layouts/paralist.module:71 lib/layouts/paralist.module:80
+#: lib/layouts/paralist.module:89 lib/layouts/paralist.module:101
+#: lib/layouts/paralist.module:110 lib/layouts/paralist.module:119
+#: lib/layouts/paralist.module:131
+msgid "Optional arguments for this list (see paralist manual)"
+msgstr "Voliteľné argumenty pre túto listinu (viď paralist manuál)"
+
+#: lib/layouts/paralist.module:45
+msgid "AsParagraphItem"
+msgstr "AsParagraphItem"
+
+#: lib/layouts/paralist.module:49
+msgid "As Paragraph Itemize Options"
+msgstr "Parametre pre odstavcové položky"
+
+#: lib/layouts/paralist.module:54
+msgid "InParagraphItem"
+msgstr "InParagraphItem"
+
+#: lib/layouts/paralist.module:58
+msgid "In Paragraph Itemize Options"
+msgstr "Parametre pre položky vnútri odstavca"
+
+#: lib/layouts/paralist.module:63
+msgid "CompactItem"
+msgstr "CompactItem"
+
+#: lib/layouts/paralist.module:70
+msgid "Compact Itemize Options"
+msgstr "Parametre pre kompaktné položky"
+
+#: lib/layouts/paralist.module:75
+msgid "AsParagraphEnum"
+msgstr "AsParagraphEnum"
+
+#: lib/layouts/paralist.module:79
+msgid "As Paragraph Enumerate Options"
+msgstr "Parametre pre odstavcové číslovanie"
+
+#: lib/layouts/paralist.module:84
+msgid "InParagraphEnum"
+msgstr "InParagraphEnum"
+
+#: lib/layouts/paralist.module:88
+msgid "In Paragraph Enumerate Options"
+msgstr "Parametre pre číslovanie vnútri odstavca"
+
+#: lib/layouts/paralist.module:93
+msgid "CompactEnum"
+msgstr "CompactEnum"
+
+#: lib/layouts/paralist.module:100
+msgid "Compact Enumerate Options"
+msgstr "Parametre pre kompaktné číslovanie"
+
+#: lib/layouts/paralist.module:105
+msgid "AsParagraphDescr"
+msgstr "AsParagraphDescr"
+
+#: lib/layouts/paralist.module:109
+msgid "As Paragraph Description Options"
+msgstr "Parametre pre odstavcový opis"
+
+#: lib/layouts/paralist.module:114
+msgid "InParagraphDescr"
+msgstr "InParagraphDescr"
+
+#: lib/layouts/paralist.module:118
+msgid "In Paragraph Description Options"
+msgstr "Parametre pre opis vnútri odstavca"
+
+#: lib/layouts/paralist.module:123
+msgid "CompactDescr"
+msgstr "CompactDescr"
+
+#: lib/layouts/paralist.module:130
+msgid "Compact Description Options"
+msgstr "Parametre pre kompaktný opis"
 
 #: lib/layouts/pdfcomment.module:2
 msgid "PDF Comments"
@@ -29302,6 +29401,10 @@ msgstr "Značky a Referencie"
 #: src/frontends/qt4/qt_helpers.cpp:620
 msgid "Changes"
 msgstr "Zmeny"
+
+#: src/frontends/qt4/qt_helpers.cpp:632
+msgid "Senseless"
+msgstr "Nezmyselné"
 
 #: src/insets/ExternalSupport.cpp:369 src/insets/InsetBibtex.cpp:298
 #: src/insets/InsetGraphics.cpp:605 src/insets/InsetInclude.cpp:547
