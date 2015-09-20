@@ -287,7 +287,7 @@ private:
 	bool goToFileRow(std::string const & argument);
 
 	///
-	struct GuiViewPrivate;
+	class GuiViewPrivate;
 	GuiViewPrivate & d;
 
 public:

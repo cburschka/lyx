@@ -27,6 +27,9 @@ namespace lyx {
 
 class Thesaurus
 {
+	/// noncopyable
+	Thesaurus(Thesaurus const &);
+	void operator=(Thesaurus const &);
 public:
 	///
 	Thesaurus();

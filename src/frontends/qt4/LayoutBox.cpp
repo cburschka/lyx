@@ -103,8 +103,12 @@ public:
 //
 /////////////////////////////////////////////////////////////////////
 
-struct LayoutBox::Private
+class LayoutBox::Private
 {
+	/// noncopyable
+	Private(Private const &);
+	void operator=(Private const &);
+public:
 	Private(LayoutBox * parent, GuiView & gv) : p(parent), owner_(gv),
 		inset_(0),
 		// set the layout model with two columns

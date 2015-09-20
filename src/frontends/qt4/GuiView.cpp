@@ -269,8 +269,12 @@ typedef shared_ptr<Dialog> DialogPtr;
 } // namespace anon
 
 
-struct GuiView::GuiViewPrivate
+class GuiView::GuiViewPrivate
 {
+	/// noncopyable
+	GuiViewPrivate(GuiViewPrivate const &);
+	void operator=(GuiViewPrivate const &);
+public:
 	GuiViewPrivate(GuiView * gv)
 		: gv_(gv), current_work_area_(0), current_main_work_area_(0),
 		layout_(0), autosave_timeout_(5000),

@@ -58,6 +58,9 @@ private:
 
 class Menus
 {
+	/// noncopyable
+	Menus(Menus const &);
+	void operator=(Menus const &);
 public:
 	Menus();
 	~Menus();

@@ -47,6 +47,9 @@ enum UndoKind {
 
 class Undo
 {
+	/// noncopyable
+	Undo(Undo const &);
+	void operator=(Undo const &);
 public:
 
 	Undo(Buffer &);

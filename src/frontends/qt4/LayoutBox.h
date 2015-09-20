@@ -61,7 +61,7 @@ private Q_SLOTS:
 
 private:
 	friend class LayoutItemDelegate;
-	struct Private;
+	class Private;
 	Private * const d;
 };
 

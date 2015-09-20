@@ -25,6 +25,9 @@ namespace lyx {
  */
 class FileDialog
 {
+	/// noncopyable
+	FileDialog(FileDialog const &);
+	void operator=(FileDialog const &);
 public:
 	/// label, directory path button
 	typedef std::pair<QString, QString> Button;

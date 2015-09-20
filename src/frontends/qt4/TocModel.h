@@ -34,6 +34,9 @@ class TocTypeModel;
 /// There is one TocModel per list in the TocBackend.
 class TocModel
 {
+	/// noncopyable
+	TocModel(TocModel const &);
+	void operator=(TocModel const &);
 public:
 	///
 	TocModel(QObject * parent);
