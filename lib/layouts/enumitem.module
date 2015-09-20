@@ -41,7 +41,6 @@ Format 54
 #       Preamble-Styling specific to this list type.
 
 AddToPreamble
-	\usepackage{enumitem}		% customizable list environments
 	\newlength{\lyxlabelwidth}      % auxiliary length 
 EndPreamble
 
@@ -57,6 +56,7 @@ IfStyle Itemize
 		LabelString   "Itemize Options"
 		Tooltip       "Optional arguments for this list (see enumitem manual)"
 	EndArgument
+	Requires enumitem
 End
 
 IfStyle Enumerate
@@ -64,6 +64,7 @@ IfStyle Enumerate
 		LabelString   "Enumerate Options"
 		Tooltip       "Optional arguments for this list (see enumitem manual)"
 	EndArgument
+	Requires enumitem
 End
 
 IfStyle Description
@@ -71,6 +72,7 @@ IfStyle Description
 		LabelString   "Description Options"
 		Tooltip       "Optional arguments for this list (see enumitem manual)"
 	EndArgument
+	Requires enumitem
 End
 
 
@@ -92,6 +94,7 @@ Style Labeling
 				leftmargin=\lyxlabelwidth,#1]}
 		{\end{description}}
 	EndPreamble
+	Requires enumitem
 End
 
 
@@ -112,6 +115,7 @@ Style Enumerate-Resume
 	LabelFont
 	  Color blue
 	EndFont
+	Requires enumitem
 End
 
 # References
