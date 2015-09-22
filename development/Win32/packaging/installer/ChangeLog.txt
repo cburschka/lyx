@@ -1,5 +1,9 @@
 ﻿Changelog for LyX-214-3:
 - updated to MiKTeX 2.9 build 5721
+- updated to Imagemagick 6.9.2-3
+- updated spell-checker dictionaries for English (GB and US)
+  (To benefit from them you must uninstall an already installed LyX 2.1.x and
+   then use this installer.)
 
 
 Changelog for LyX-214-2:
@@ -8,7 +12,7 @@ Changelog for LyX-214-2:
 - updated to Python 2.7.10 (fixes problems that LyX got erroneous if
   Python 2.7.10 was installed before LyX)
 - updated spell-checker dictionary for English (GB)
-  (To benefit from them you must uninstall an already installed LyX 2.1.x and
+  (To benefit from it you must uninstall an already installed LyX 2.1.x and
    then use this installer.)
 - updated thesaurus for Slovenian
   (you need to reinstall LyX to benefit from this)

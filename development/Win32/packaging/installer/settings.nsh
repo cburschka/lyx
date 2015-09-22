@@ -53,7 +53,7 @@ These typically need to be modified for each LyX release
 
 !define JabRefVersion "2.10"
 !define MiKTeXDeliveredVersion "2.9"
-!define ImageMagickVersion "6.8.0"
+!define ImageMagickVersion "6.9.2"
  
 # definitions for the Complete installer
 !if ${SETUPTYPE} == BUNDLE
