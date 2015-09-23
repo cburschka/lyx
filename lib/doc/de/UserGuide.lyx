@@ -149,12 +149,11 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\author 1556375488 "Stephan Witt" 
 \end_header
 
 \begin_body
@@ -2056,19 +2055,7 @@ ndigungsvorschläge verwendet wird.
 \end_layout
 
 \begin_layout Standard
-Die Eingabevervollständigung 
-\change_deleted 1556375488 1442159811
-wird
-\change_inserted 1556375488 1442159812
-kann
-\change_unchanged
- in de
-\change_deleted 1556375488 1442159815
-m
-\change_inserted 1556375488 1442159815
-n
-\change_unchanged
- \SpecialChar LyX
+Die Eingabevervollständigung kann in den \SpecialChar LyX
 -Grundeinstellungen (Menü 
 \family sans
 Werkzeuge\SpecialChar menuseparator
@@ -2595,15 +2582,9 @@ Alt
 
 \end_deeper
 \begin_layout Standard
-Mit der 
-\change_deleted 1556375488 1442159890
-z
-\change_inserted 1556375488 1442159890
-Z
-\change_unchanged
-eit werden Sie mehr und mehr Tastenkürzel von \SpecialChar LyX
- lernen und verwenden, denn
- meist wird das Kürzel zu einer Aktion in der Statusleiste von \SpecialChar LyX
+Mit der Zeit werden Sie mehr und mehr Tastenkürzel von \SpecialChar LyX
+ lernen und verwenden,
+ denn meist wird das Kürzel zu einer Aktion in der Statusleiste von \SpecialChar LyX
  angezeigt.
  Die \SpecialChar LyX
  Menüeinträge listen zudem die entsprechenden Tastenkürzel auf.
@@ -2737,11 +2718,7 @@ Dokument ! Einstellungen
 \end_inset
 
  auswählen.
- Danach können Sie die benötigten Optionen 
-\change_deleted 1556375488 1442159983
-fein
-\change_unchanged
-einstellen.
+ Danach können Sie die benötigten Optionen einstellen.
  Wenn Sie ans Ende der Auswahl gehen, sehen Sie einige Dokumentklassen,
  die \SpecialChar LyX
  zwar unterstützt, die aber bei Ihnen nicht installiert sind.
@@ -3083,12 +3060,8 @@ Anpassung
 
 \begin_layout Standard
 Obwohl \SpecialChar LyX
- viele verschiedene
-\change_deleted 1556375488 1442160079
-n
-\change_unchanged
- Dokumenttypen unterstützt, kann es nicht alle unterstützen, die man vielleicht
- benutzen möchte.
+ viele verschiedene Dokumenttypen unterstützt, kann es nicht alle
+ unterstützen, die man vielleicht benutzen möchte.
  Zum Beispiel stellen viele Universitäten \SpecialChar LaTeX
 -Dokumentklassen bereit, die man
  für Dissertationen verwenden muss.
@@ -4930,11 +4903,7 @@ Datum-Umgebung
  automatisch das Druckdatum einfügen.
  Wenn Sie kein Datum haben wollen, verwenden Sie die Option 
 \family sans
-Datum a
-\change_inserted 1556375488 1442160506
-u
-\change_unchanged
-f der Titelseite nicht anzeigen
+Datum auf der Titelseite nicht anzeigen
 \family default
  im Menü 
 \family sans
@@ -5324,15 +5293,7 @@ Inhaltsverzeichnis
 \family default
  können Sie mit den beiden Schiebereglern festlegen, wie viele Hierarchiestufen
  \SpecialChar LyX
- nummerieren soll und wie
-\change_inserted 1556375488 1442171501
- 
-\change_unchanged
-viel
-\change_deleted 1556375488 1442171486
-t
-\change_unchanged
-e im Inhaltsverzeichnis erscheinen sollen.
+ nummerieren soll und wie viele im Inhaltsverzeichnis erscheinen sollen.
  In der Tabelle darunter sehen Sie die Auswirkung der Reglerstellungen.
 \end_layout
 
@@ -6412,11 +6373,7 @@ reference "subsec:Benutzerdefinierte-Listen"
 \family sans
 Aufzählung
 \family default
--Umgebungen gibt es mehr als hier beschrieben
-\change_inserted 1556375488 1442171951
- zu sagen
-\change_unchanged
-.
+-Umgebungen gibt es mehr als hier beschrieben zu sagen.
  Sie sollten 
 \emph on
 wirklich
@@ -6767,11 +6724,7 @@ Marke
 \family default
  bestimmt die Standardmarkenbreite.
  Wenn Sie wollen, können Sie hier den Text Ihrer breitesten Marke eintragen
- oder stattdesse
-\change_inserted 1556375488 1442172114
-n
-\change_unchanged
- den Buchstaben 
+ oder stattdessen den Buchstaben 
 \begin_inset Quotes gld
 \end_inset
 
@@ -7508,13 +7461,7 @@ B.
 \begin_inset space ~
 \end_inset
 
- ist 
-\change_deleted 1556375488 1442172282
-i
-\change_inserted 1556375488 1442172282
-I
-\change_unchanged
-hrer Meinung nach zu viel Abstand in dieser Liste:
+ ist Ihrer Meinung nach zu viel Abstand in dieser Liste:
 \end_layout
 
 \begin_layout Itemize
@@ -7752,12 +7699,7 @@ status collapsed
 \end_inset
 
 .
- Für mehr Informationen siehe dessen Dokumentation
-\change_inserted 1556375488 1442172409
-.
-\change_deleted 1556375488 1442172408
-,
-\change_unchanged
+ Für mehr Informationen siehe dessen Dokumentation.
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -8469,11 +8411,8 @@ End-of-word
 \family sans
 Verbatim
 \family default
- sind die einzigen Umgebungen
-\change_deleted 1556375488 1442172837
-m
-\change_unchanged
- in denen die Leertaste mehrfach hintereinander benutzt werden kann.
+ sind die einzigen Umgebungen in denen die Leertaste mehrfach hintereinander
+ benutzt werden kann.
  Für Leerzeilen muss man 
 \family sans
 Strg+Eingabe
@@ -8623,10 +8562,6 @@ Hallo Welt!
 \family default
  hat einen Zweck: Code zu schreiben, zum Beispiel Quellcode, Shell-Skripte,
  usw.
-\change_deleted 1556375488 1442172959
-.
-
-\change_unchanged
  Benutzen Sie diese Umgebung nur in diesen Spezialfällen, wenn der Text
  aussehen soll, als wäre er mit einer Schreibmaschine geschrieben worden.
 \begin_inset Index idx
@@ -8713,11 +8648,7 @@ Verbatim
 \end_layout
 
 \begin_layout Itemize
-bestimmte Sprache und 
-\change_inserted 1556375488 1442173022
-k
-\change_unchanged
-einen Textstil haben
+bestimmte Sprache und keinen Textstil haben
 \end_layout
 
 \begin_layout Itemize
@@ -9021,11 +8952,7 @@ Nicht
 \end_inset
 
 schachtelbar Man kann sie nicht schachteln.
- Man kann nichts in sie hinein
-\change_inserted 1556375488 1442173336
- 
-\change_unchanged
-schachteln.
+ Man kann nichts in sie hinein schachteln.
 \begin_inset Separator parbreak
 \end_inset
 
@@ -9070,11 +8997,7 @@ Vollständig
 \end_inset
 
 schachtelbar Man kann sie schachteln.
- Man kann andere Dinge in sie hinein
-\change_inserted 1556375488 1442173331
- 
-\change_unchanged
-schachteln.
+ Man kann andere Dinge in sie hinein schachteln.
 \begin_inset Separator parbreak
 \end_inset
 
@@ -9152,11 +9075,7 @@ Teilweise
 \end_inset
 
 schachtelbar Man kann sie in andere Dinge schachteln.
- Man kann nichts in sie hinein
-\change_inserted 1556375488 1442173327
- 
-\change_unchanged
-schachteln.
+ Man kann nichts in sie hinein schachteln.
 \begin_inset Separator parbreak
 \end_inset
 
@@ -13327,11 +13246,8 @@ Traditionell verwendet \SpecialChar LaTeX
 -Schriften, freie und kommerziell
 e.
  \SpecialChar LyX
- unterstützt die Schriften, die eine freie Lizen
-\change_deleted 1556375488 1442174193
-t
-\change_unchanged
-z haben, direkt über die Dokumenteinstellungen (siehe Abschnitt
+ unterstützt die Schriften, die eine freie Lizenz haben, direkt über die
+ Dokumenteinstellungen (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -13343,18 +13259,11 @@ reference "subsec:Dokumentschrift-und-Schriftgröße"
 \end_inset
 
  für Details).
- Alle anderen Schriften sind dennoch 
-\change_deleted 1556375488 1442174210
-alle 
-\change_unchanged
-verfügbar
-\change_inserted 1556375488 1442174224
-,
-\change_unchanged
- wenn man den entsprechenden \SpecialChar LaTeX
+ Alle anderen Schriften sind dennoch verfügbar, wenn man den entsprechenden
+ \SpecialChar LaTeX
 -Code in den \SpecialChar LaTeX
--Vorspann einfügt (bitte lesen
- Sie dazu die Dokumentation der gewünschten Schrift).
+-Vorspann einfügt (bitte lesen Sie dazu die Dokumentation
+ der gewünschten Schrift).
 \end_layout
 
 \begin_layout Standard
@@ -13364,13 +13273,7 @@ Die neuesten Entwicklungen sind \SpecialChar LaTeX
  Dies sind die Interpreter Xe\SpecialChar TeX
  und Lua\SpecialChar TeX
 .
- Bei
-\change_deleted 1556375488 1442174247
-n
-\change_inserted 1556375488 1442174247
-d
-\change_unchanged
-e werden von \SpecialChar LyX
+ Beide werden von \SpecialChar LyX
  unterstützt.
  Damit kann man theoretisch jede installierte OpenType oder TrueType Schrift
  verwenden.
@@ -14032,15 +13935,7 @@ reference "subsec:Textstil-Dialog"
 \family sans
 Standard-Familie
 \family default
- kann d
-\change_inserted 1556375488 1442174545
-i
-\change_unchanged
-e
-\change_deleted 1556375488 1442174546
-r
-\change_unchanged
- Standard-Schriftfamilie eingestellt werden; Serifenschrift, Serifenlos
+ kann die Standard-Schriftfamilie eingestellt werden; Serifenschrift, Serifenlos
  oder Schreibmaschine.
  In den meisten Fällen ist 
 \family sans
@@ -14248,15 +14143,8 @@ Dokument ! Einstellungen
  Die Voreinstellung ist, dass \SpecialChar LyX
  automatisch eine Mathe-Schrift auswählt.
  In den allermeisten Fällen ist das die Mathe-Variante der \SpecialChar LaTeX
--Standard
-\change_inserted 1556375488 1442174633
--
-\change_deleted 1556375488 1442174635
-s
-\change_inserted 1556375488 1442174635
-S
-\change_unchanged
-chriftfamilie 
+-Standard-Schriftfami
+lie 
 \begin_inset Quotes gld
 \end_inset
 
@@ -15023,15 +14911,7 @@ Schriften ! Größe
 
 .
  Sie werden hier keine Zahlenwerte finden; alle möglichen Größen sind proportion
-al zur Standard
-\change_inserted 1556375488 1442174855
--
-\change_deleted 1556375488 1442174856
-s
-\change_inserted 1556375488 1442174856
-S
-\change_unchanged
-chriftgröße.
+al zur Standard-Schriftgröße.
  Noch einmal, Sie füttern \SpecialChar LyX
  nicht mit Details, sondern mit einer Beschreibung
  von dem, was Sie machen wollen.
@@ -15439,11 +15319,7 @@ noch einmal
  Die Schriftgröße müssen Sie so gut wie nie ändern.
  \SpecialChar LyX
  ändert die Schriftgröße für verschiedene Absatzumgebungen automatisch
- – das sollten Sie 
-\change_deleted 1556375488 1442174896
-be
-\change_unchanged
-nutzen.
+ – das sollten Sie nutzen.
  Dies ist nur für Feineinstellungen!
 \end_layout
 
@@ -15583,13 +15459,7 @@ W
 \end_inset
 
 Verwenden Sie dies nur wenn ein Journal unbedingt darauf besteht.
- 
-\change_deleted 1556375488 1442174946
-h
-\change_inserted 1556375488 1442174946
-H
-\change_unchanged
-alten Sie Tabletten gegen Übelkeit parat.
+ Halten Sie Tabletten gegen Übelkeit parat.
 \end_layout
 
 \begin_layout Labeling
@@ -16000,11 +15870,7 @@ Mittel
 \end_layout
 
 \begin_layout Standard
-Es wird zum Schluss nochmal
-\change_inserted 1556375488 1442175095
-s
-\change_unchanged
- gewarnt: Übertreiben Sie den Gebrauch von
+Es wird zum Schluss nochmals gewarnt: Übertreiben Sie den Gebrauch von
 \emph on
  
 \emph default
@@ -16231,36 +16097,12 @@ Dieses Dateiformat hat die Endung
 \end_inset
 
  und enthält alle Befehle, die von \SpecialChar LaTeX
- benötigt werden
-\change_inserted 1556375488 1443033173
-,
-\change_unchanged
- um das Dokument zu 
-\change_deleted 1556375488 1442175134
-prozessieren
-\change_inserted 1556375488 1442175136
-verarbeiten
-\change_unchanged
-.
- Wenn 
-\change_deleted 1556375488 1442175153
-d
-\change_inserted 1556375488 1442175153
-S
-\change_unchanged
-ie \SpecialChar LaTeX
+ benötigt werden, um das Dokument zu
+ verarbeiten.
+ Wenn Sie \SpecialChar LaTeX
  verstehen, können Sie so die Ursache von \SpecialChar LaTeX
--Fehler
-\change_inserted 1556375488 1442175159
-n
-\change_unchanged
- ergründen oder die Datei mit
-\change_deleted 1556375488 1442175196
-tels Konsolenbefehlen
-\change_inserted 1556375488 1442175200
- anderen Werkzeugen
-\change_unchanged
- bearbeiten.
+-Fehlern ergründen oder
+ die Datei mit anderen Werkzeugen bearbeiten.
  Die \SpecialChar LaTeX
 -Datei wird automatisch in \SpecialChar LyX
 ' temporärem Verzeichnis erstellt, wann
@@ -16342,13 +16184,7 @@ DVI-Dateien enthalten keine Bilder, sie verlinken diese nur.
 \end_layout
 
 \begin_layout Standard
-Sie können 
-\change_deleted 1556375488 1442537221
-i
-\change_inserted 1556375488 1442537221
-I
-\change_unchanged
-hr Dokument als DVI über das Menü 
+Sie können Ihr Dokument als DVI über das Menü 
 \family sans
 Datei\SpecialChar menuseparator
 Exportieren\SpecialChar menuseparator
@@ -16465,15 +16301,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-PostScript kann 
-\change_deleted 1556375488 1442537303
-nur 
-\change_unchanged
-Bilder 
-\change_inserted 1556375488 1442537306
-nur 
-\change_unchanged
-im Format 
+PostScript kann Bilder nur im Format 
 \begin_inset Quotes gld
 \end_inset
 
@@ -16516,13 +16344,7 @@ Konvertierungen durchführen, wenn Sie Ihr Dokument zum ersten Mal in der
  Dies kann Ihren Arbeitsfluss mit \SpecialChar LyX
  verlangsamen.
  Wenn Sie also planen, PostScript für die Ausgabe zu verwenden, sollten
- Sie alle Bilder direkt als EPS einfügen 
-\change_deleted 1556375488 1442537367
-und
-\change_inserted 1556375488 1442537367
-um
-\change_unchanged
- das Problem zu vermeiden.
+ Sie alle Bilder direkt als EPS einfügen um das Problem zu vermeiden.
 \end_layout
 
 \begin_layout Standard
@@ -16590,13 +16412,7 @@ Portable Document Format
 Adobe
 \family default
  von PostScript abgeleitet.
- Es ist komprimierter und verwendet weniger 
-\change_deleted 1556375488 1442537397
-b
-\change_inserted 1556375488 1442537397
-B
-\change_unchanged
-efehle als PostScript.
+ Es ist komprimierter und verwendet weniger Befehle als PostScript.
  Wie der Name 
 \begin_inset Quotes gld
 \end_inset
@@ -16665,11 +16481,7 @@ Portable Network Graphics
 ) enthalten.
  Sie können jedoch auch jedes andere Bildformat verwenden, denn \SpecialChar LyX
  konvertiert
- diese in eine
-\change_inserted 1556375488 1442537448
-s
-\change_unchanged
- der möglichen Formate.
+ diese in eines der möglichen Formate.
  Jedoch kann, wie im Abschnitt über PostScript beschrieben, die Bildkonvertierun
 g den Arbeitsfluss verlangsamen.
  Daher wird empfohlen, Bilder direkt in einem der drei erwähnten Formate
@@ -16677,13 +16489,7 @@ g den Arbeitsfluss verlangsamen.
 \end_layout
 
 \begin_layout Standard
-Sie können 
-\change_deleted 1556375488 1442537460
-i
-\change_inserted 1556375488 1442537460
-I
-\change_unchanged
-hr Dokument als PDF über das Menü 
+Sie können Ihr Dokument als PDF über das Menü 
 \family sans
 Datei\SpecialChar menuseparator
 Exportieren
@@ -16723,12 +16529,8 @@ Lua\SpecialChar TeX
 \family typewriter
 pdflatex
 \family default
- weiter
-\change_deleted 1556375488 1442537504
- 
-\change_unchanged
-entwickelt wurde und direkte Unterstützung für Unicode und für die Direktwahl
- von Schriften bietet (siehe Abschnitt
+ weiterentwickelt wurde und direkte Unterstützung für Unicode und für die
+ Direktwahl von Schriften bietet (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -16799,11 +16601,8 @@ PDF
 
 B.
  nützlich wenn man \SpecialChar LyX
- dazu benutzt, um gut
-\change_inserted 1556375488 1442537557
- 
-\change_unchanged
-aussehende Formeln zu erstellen, die man in anderen Programmen z.
+ dazu benutzt, um gut aussehende Formeln zu erstellen,
+ die man in anderen Programmen z.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -16876,17 +16675,8 @@ PDF
 
 (LuaTeX)
 \family default
- ausprobieren
-\change_inserted 1556375488 1442537709
-,
-\change_unchanged
- auch wenn 
-\change_deleted 1556375488 1442537658
-sie
-\change_inserted 1556375488 1442537661
-diese Konverter
-\change_unchanged
- noch nicht so ausentwickelt wie 
+ ausprobieren, auch wenn diese Konverter noch nicht so ausentwickelt wie
+ 
 \family typewriter
 pdflatex
 \family default
@@ -16930,15 +16720,7 @@ Dieses Dateiformat hat die Endung
 \begin_inset Quotes grd
 \end_inset
 
- und eignet sich besonders für die Ansicht in Web
-\change_inserted 1556375488 1442537735
--
-\change_deleted 1556375488 1442537737
-b
-\change_inserted 1556375488 1442537737
-B
-\change_unchanged
-rowsern.
+ und eignet sich besonders für die Ansicht in Web-Browsern.
  Es enthält keine Bilder, sondern verlinkt sie nur.
  Wenn \SpecialChar LyX
  XHTML erzeugt, werden Teile des Dokuments wenn nötig in Bilder umgewandel
@@ -16965,13 +16747,7 @@ Die XHTML-Ausgabe ist noch
 \begin_inset Quotes gld
 \end_inset
 
-
-\change_deleted 1556375488 1442537768
-unter
-\change_inserted 1556375488 1442537769
-in der
-\change_unchanged
- Entwicklung
+in der Entwicklung
 \begin_inset Quotes grd
 \end_inset
 
@@ -17035,11 +16811,7 @@ arg   "buffer-view"
 .
  Es wird sich dann ein Betrachtungsprogramm öffnen und das Dokument im voreinges
 tellten Ausgabeformat anzeigen.
- Für mehr 
-\change_inserted 1556375488 1442537884
-Informationen 
-\change_unchanged
-über die globale Voreinstellung siehe Abschnitt
+ Für mehr Informationen über die globale Voreinstellung siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -17050,11 +16822,7 @@ reference "sec:Dateiformate"
 
 \end_inset
 
-
-\change_inserted 1556375488 1442537923
-,
-\change_unchanged
- für die dokumentspezifische Einstellung siehe Abschnitt
+, für die dokumentspezifische Einstellung siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -17102,18 +16870,9 @@ Andere Formate aktualisieren
 \end_layout
 
 \begin_layout Standard
-Bei
-\change_inserted 1556375488 1442537983
- der
-\change_deleted 1556375488 1442537984
-m
-\change_unchanged
- Vorschau
-\change_deleted 1556375488 1442537986
-en
-\change_unchanged
- eines Dokuments wird die Ausgabedatei nur in \SpecialChar LyX
-' temporärem Verzeichnis erzeugt.
+Bei der Vorschau eines Dokuments wird die Ausgabedatei nur in \SpecialChar LyX
+' temporärem
+ Verzeichnis erzeugt.
  Für eine permanente Ausgabe muss das Dokument exportiert werden.
 \end_layout
 
@@ -19058,14 +18817,8 @@ Um eine Fußnote zu schließen, klickt man auf die Marke der Fußnoten-Box.
 \end_layout
 
 \begin_layout Standard
-Die Fußnote erscheint in der Ausgabe als 
-\change_deleted 1556375488 1442539065
-tief
-\change_inserted 1556375488 1442539066
-hoch
-\change_unchanged
-gestellte Nummer an der Position im Text, an der die Fußnoten-Box eingefügt
- wurde.
+Die Fußnote erscheint in der Ausgabe als hochgestellte Nummer an der Position
+ im Text, an der die Fußnoten-Box eingefügt wurde.
  Der Fußnotentext wird an das Ende der aktuellen Seite gesetzt.
  Die Fußnotennummer wird von \SpecialChar LyX
  entsprechend der Dokumentklasse berechnet.
@@ -19297,12 +19050,8 @@ In der Karteikarte
 \family sans
 Entwurfsmodus
 \family default
- hat den Effekt
-\change_inserted 1556375488 1442539170
-,
-\change_unchanged
- dass das Bild nicht in der Ausgabe erscheint, sondern nur ein Rahmen in
- der Größe des Bildes.
+ hat den Effekt, dass das Bild nicht in der Ausgabe erscheint, sondern nur
+ ein Rahmen in der Größe des Bildes.
  Die Option 
 \family sans
 Beim Exportieren nicht entpacken
@@ -19401,13 +19150,7 @@ Format nur bestimmte Grafikformate zulässt, benutzt \SpecialChar LyX
 ImageMagick
 \family default
  im Hintergrund, um die Bilder ins richtige Format zu konvertieren.
- In de
-\change_deleted 1556375488 1442539246
-n
-\change_inserted 1556375488 1442539246
-m
-\change_unchanged
- Abschnitt
+ In dem Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -19730,10 +19473,6 @@ status collapsed
 
 \end_inset
 
-
-\change_deleted 1556375488 1442539328
-,
-\change_unchanged
  und 
 \begin_inset Quotes gld
 \end_inset
@@ -20077,12 +19816,8 @@ Einstellungen
  Hier kann man die Einstellungen für Zellen, Zeilen und/oder Spalten vornehmen,
  in denen sich gerade der Cursor befindet.
  Die meisten der Dialogoptionen funktionieren auch für Auswahlen.
- Das bedeutet
-\change_inserted 1556375488 1442539456
-,
-\change_unchanged
- dass wenn mehrere Zellen, Spalten oder Zeilen ausgewählt sind, die Aktion
- für alle in der Auswahl durchgeführt wird.
+ Das bedeutet, dass wenn mehrere Zellen, Spalten oder Zeilen ausgewählt
+ sind, die Aktion für alle in der Auswahl durchgeführt wird.
 \end_layout
 
 \begin_layout Standard
@@ -20418,11 +20153,8 @@ Letzte
 \begin_inset space ~
 \end_inset
 
-Fußzeile: Die aktuelle Zeile wird als 
-\change_deleted 1556375488 1442539645
-eine die 
-\change_unchanged
-Fußzeile der letzten Seite einer mehrseitigen Tabelle definiert.
+Fußzeile: Die aktuelle Zeile wird als Fußzeile der letzten Seite einer mehrseiti
+gen Tabelle definiert.
 \end_layout
 
 \begin_layout Description
@@ -22610,11 +22342,7 @@ Franz
 \begin_layout Plain Layout
 
 \series bold
-End
-\change_inserted 1556375488 1442539736
-e
-\change_unchanged
-
+Ende
 \end_layout
 
 \end_inset
@@ -22911,11 +22639,7 @@ Gleitobjekte ermöglichen ein qualitativ hochwertiges Layout.
 
 der Tabelle zerstört, kann jedes Gleitobjekt im Text referenziert werden.
  Gleitobjekte sind daher nummeriert.
- Referenzierungen/Querverweise sind 
-\change_inserted 1556375488 1442539904
-im 
-\change_unchanged
-Abschnitt
+ Referenzierungen/Querverweise sind im Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -24501,11 +24225,7 @@ Mathe
 \family default
 Werkzeugleiste benutzen sondern können den Befehl direkt in die Formel eingeben.
  \SpecialChar LyX
- wird ihn in das entsprech
-\change_inserted 1556375488 1442540539
-e
-\change_unchanged
-nde Konstrukt oder Symbol konvertieren.
+ wird ihn in das entsprechende Konstrukt oder Symbol konvertieren.
 \end_layout
 
 \begin_layout Subsection
@@ -26369,11 +26089,7 @@ Bei all diesen Schriftstilen müssen Sie den Text sorgfältig eingeben.
 In AMS-\SpecialChar LaTeX
  ist es möglich, Zahlen und Spezialsymbole fett (aber nicht kursiv)
  zu schreiben.
- Um ein fett
-\change_inserted 1556375488 1442541090
- 
-\change_unchanged
-gedrucktes 
+ Um ein fett gedrucktes 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -26778,11 +26494,7 @@ Marke
  fragt nach einem Namen für die Marke.
  \SpecialChar LyX
  schlägt als Namen die ersten Wörter des Listeneintrags und zusätzlich
- einen Präfix
-\change_inserted 1556375488 1442656870
- vor
-\change_unchanged
-.
+ einen Präfix vor.
  In diesem Fall 
 \begin_inset Quotes gld
 \end_inset
@@ -27333,11 +27045,7 @@ reference "sec:Gleichungen-numerieren-markieren"
 \end_layout
 
 \begin_layout Standard
-Recht
-\change_inserted 1556375488 1442657089
-s
-\change_unchanged
--klicken auf einen Querverweis öffnet ein Kontextmenü.
+Rechts-klicken auf einen Querverweis öffnet ein Kontextmenü.
  Der Eintrag 
 \family sans
 Gehe
@@ -27359,11 +27067,7 @@ Gehe
 
 zurück
 \family default
- umbenannt, so dass man ihn benutze
-\change_inserted 1556375488 1442657107
-n
-\change_unchanged
- kann, um zum Querverweis zurückzukehren.
+ umbenannt, so dass man ihn benutzen kann, um zum Querverweis zurückzukehren.
  Man kann auch mit dem Werkzeugleistenknopf 
 \begin_inset Graphics
 	filename ../../images/bookmark-goto_0.png
@@ -27461,15 +27165,7 @@ Inhaltsverzeichnis
  eingefügt.
  An der Einfügestelle erscheint ein graues Kästchen mit der Aufschrift Inhaltsve
 rzeichnis.
- Wenn Sie d
-\change_inserted 1556375488 1442657147
-a
-\change_unchanged
-rauf
-\change_inserted 1556375488 1442657153
- 
-\change_unchanged
-klicken, erscheint das Gliederungsfenster, siehe auch Abschnitt
+ Wenn Sie darauf klicken, erscheint das Gliederungsfenster, siehe auch Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -27731,11 +27427,7 @@ Ziel
 Name
 \family default
  tragen Sie den Text ein, der im gedruckten Dokument erscheinen soll.
- Wenn Sie diese
-\change_inserted 1556375488 1442657226
-s
-\change_unchanged
- Feld leer lassen, wird der Text in 
+ Wenn Sie dieses Feld leer lassen, wird der Text in 
 \family sans
 Ziel
 \family default
@@ -28005,11 +27697,7 @@ ersten Zeile
 \emph default
  eines Absatzes werden Sie ein graues Kästchen mit einem Wort und einer
  Zahl in eckigen Klammern sehen.
- Wenn Sie darauf
-\change_inserted 1556375488 1442657431
- 
-\change_unchanged
-klicken, erscheint ein Menü, in dem Sie einen 
+ Wenn Sie darauf klicken, erscheint ein Menü, in dem Sie einen 
 \family sans
 Schlüssel
 \family default
@@ -28078,13 +27766,8 @@ OK
 \end_layout
 
 \begin_layout Standard
-Literaturverweise erscheinen i
-\change_deleted 1556375488 1442657480
-m
-\change_inserted 1556375488 1442657480
-n
-\change_unchanged
- der Ausgabe als Nummer des Literatureintrags in eckigen Klammern.
+Literaturverweise erscheinen in der Ausgabe als Nummer des Literatureintrags
+ in eckigen Klammern.
  Setzt man eine 
 \family sans
 Marke
@@ -28131,11 +27814,7 @@ key "lyxcredit"
 \end_layout
 
 \begin_layout Standard
-Um alle Literatureinträge au
-\change_inserted 1556375488 1442657548
-s
-\change_unchanged
-zurichten, kann man im Menü 
+Um alle Literatureinträge auszurichten, kann man im Menü 
 \family sans
 Bearbeiten\SpecialChar menuseparator
 Absatz-Einstellungen
@@ -28296,11 +27975,8 @@ Die Stildatei ist eine Textdatei mit der Endung
  Ihre \SpecialChar LaTeX
 -Distribution sollte mehrere anbieten, und viele Verleger liefern
  eigene Stildateien, so dass Sie sich um das Aussehen nicht kümmern müssen.
- Sie können 
-\change_deleted 1556375488 1442657609
-aber 
-\change_unchanged
-auch eine eigene Stildatei erstellen, aber das ist etwas für Experten.
+ Sie können auch eine eigene Stildatei erstellen, aber das ist etwas für
+ Experten.
 \begin_inset Foot
 status collapsed
 
@@ -28562,15 +28238,8 @@ arg   "index-insert"
 
  verwendet.
  Es wird dann eine Box eingefügt, die den Text des Stichworts enthält.
- Das Wort
-\change_inserted 1556375488 1442674946
-,
-\change_unchanged
- in dem sich der Cursor befindet
-\change_inserted 1556375488 1442674953
-,
-\change_unchanged
- oder markierter Text wird von \SpecialChar LyX
+ Das Wort, in dem sich der Cursor befindet, oder markierter Text wird von
+ \SpecialChar LyX
  als Stichwort vorgeschlagen.
 \end_layout
 
@@ -29973,14 +29642,8 @@ fett
 textbf
 \series default
 , für 
-\change_deleted 1556375488 1442683356
-
 \family typewriter
-s
-\change_inserted 1556375488 1442683356
-S
-\change_unchanged
-chreibmaschine
+Schreibmaschine
 \family default
  
 \series bold
@@ -30563,11 +30226,7 @@ Zweigen
 
 \begin_layout Standard
 Zuerst müssen Sie die verschiedenen Zweige definieren.
- Das machen 
-\change_inserted 1556375488 1442683527
-Sie 
-\change_unchanged
-entweder indem Sie das Menü 
+ Das machen Sie entweder indem Sie das Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
 Zweig\SpecialChar menuseparator
@@ -30607,16 +30266,8 @@ Farbe
 Entfernen
 \family default
 .
- Des Weiteren erlaubt es der Dialog
-\change_inserted 1556375488 1442683592
-,
-\change_unchanged
- zwei Zweige miteinander zu vereinen (einfach einen Zweig in den Namen eines
- and
-\change_inserted 1556375488 1442683601
-e
-\change_unchanged
-ren umbenennen) und 
+ Des Weiteren erlaubt es der Dialog, zwei Zweige miteinander zu vereinen
+ (einfach einen Zweig in den Namen eines anderen umbenennen) und 
 \begin_inset Quotes gld
 \end_inset
 
@@ -30776,13 +30427,7 @@ Antwort
 \begin_inset Quotes gld
 \end_inset
 
-Prüfung-Frage-An
-\change_deleted 1556375488 1442683705
-swer
-\change_inserted 1556375488 1442683706
-twort
-\change_unchanged
-.pdf
+Prüfung-Frage-Antwort.pdf
 \begin_inset Quotes grd
 \end_inset
 
@@ -31152,11 +30797,8 @@ Links
 
 einfärben
 \family default
- schalten beide die Ei
-\change_deleted 1556375488 1442684262
-n
-\change_unchanged
-genschaft aus, dass standardmäßig Rahmen um Links gezeichnet werden; 
+ schalten beide die Eigenschaft aus, dass standardmäßig Rahmen um Links
+ gezeichnet werden; 
 \family sans
 Links
 \begin_inset space ~
@@ -31183,13 +30825,7 @@ magenta
 \color red
 rot
 \color inherit
- für 
-\change_deleted 1556375488 1442684296
-l
-\change_inserted 1556375488 1442684296
-L
-\change_unchanged
-inks
+ für Links
 \end_layout
 
 \begin_layout Labeling
@@ -31702,17 +31338,7 @@ B.
 \family sans
 KOMA-Script
 \family default
- K
-\change_inserted 1556375488 1442684498
-l
-\change_unchanged
-asse, müssen 
-\change_deleted 1556375488 1442684503
-D
-\change_inserted 1556375488 1442684503
-S
-\change_unchanged
-ie das Paket 
+ Klasse, müssen Sie das Paket 
 \series bold
 caption
 \series default
@@ -32356,25 +31982,13 @@ thepage druckt die aktuelle Seitennummer
 \begin_layout Description
 
 \backslash
-Roman{page} druckt die aktuelle Seitennummer in 
-\change_inserted 1556375488 1442685004
-großen
-\change_deleted 1556375488 1442685007
-kleinen
-\change_unchanged
- römischen Ziffern
+Roman{page} druckt die aktuelle Seitennummer in großen römischen Ziffern
 \end_layout
 
 \begin_layout Description
 
 \backslash
-roman{page} druckt die aktuelle Seitennummer in 
-\change_deleted 1556375488 1442685011
-großen
-\change_inserted 1556375488 1442685011
-kleinen
-\change_unchanged
- römischen Ziffern
+roman{page} druckt die aktuelle Seitennummer in kleinen römischen Ziffern
 \end_layout
 
 \begin_layout Description
@@ -32506,13 +32120,7 @@ pt.
 Die Linien können auch gefärbt werden, aber die erfordert größeres Wissen
  über \SpecialChar LaTeX
 .
- Wenn Sie dies wirklich benötigen, schauen 
-\change_deleted 1556375488 1442685246
-s
-\change_inserted 1556375488 1442685246
-S
-\change_unchanged
-ie im Internet oder im Abschnitt
+ Wenn Sie dies wirklich benötigen, schauen Sie im Internet oder im Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -32531,22 +32139,10 @@ Mehrere Kopf/Fußzeilen
 \end_layout
 
 \begin_layout Standard
-Für den Fall
-\change_inserted 1556375488 1442685332
-,
-\change_unchanged
- dass man mehr als eine Textzeile als Kopf/Fußzeile benötigt, kann man einen
- normalen Zeilenumbruch in der Definition verwenden.
- Dennoch ist die Höhe der Kopf/Fußzeile nur die einer einzigen Textzeile
-\change_inserted 1556375488 1442685343
-.
-
-\change_unchanged
- Um die Höhe zu vergrößern, 
-\change_deleted 1556375488 1442685352
-re
-\change_unchanged
-definiert man die \SpecialChar LaTeX
+Für den Fall, dass man mehr als eine Textzeile als Kopf/Fußzeile benötigt,
+ kann man einen normalen Zeilenumbruch in der Definition verwenden.
+ Dennoch ist die Höhe der Kopf/Fußzeile nur die einer einzigen Textzeile.
+ Um die Höhe zu vergrößern, definiert man die \SpecialChar LaTeX
 -Länge 
 \series bold
 
@@ -32560,11 +32156,7 @@ headheight
 footheight
 \series default
  im \SpecialChar LaTeX
--Vorspann in folgendem Schema
-\change_inserted 1556375488 1442685376
- über
-\change_unchanged
-:
+-Vorspann in folgendem Schema über:
 \end_layout
 
 \begin_layout Standard
@@ -32578,17 +32170,7 @@ headheight}{Höhe}
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 1556375488 1442685387
-Wobei
-\change_inserted 1556375488 1442685393
-Dabei ist die
-\change_unchanged
- Höhe eine Größe in Standard-Einheiten
-\change_deleted 1556375488 1442685400
- ist
-\change_unchanged
-.
+Dabei ist die Höhe eine Größe in Standard-Einheiten.
  Weiß man nicht welche Höhe man benötigt, definiert man die Kopf/Fußzeilen
  und schaut das Dokument als PDF an.
  Anschließend öffnet man das \SpecialChar LaTeX
@@ -32631,13 +32213,8 @@ Dieses Beispiel
 
 \begin_layout Standard
 Dieses Beispiel demonstriert was man in Kopf/Fußzeilen machen kann.
- Verwenden Sie es nicht für 
-\change_deleted 1556375488 1442685430
-i
-\change_inserted 1556375488 1442685430
-I
-\change_unchanged
-hr Dokument, denn es ist ein nicht sehr sinnvolles Beispiel.
+ Verwenden Sie es nicht für Ihr Dokument, denn es ist ein nicht sehr sinnvolles
+ Beispiel.
  Es besteht aus der folgenden Definition:
 \end_layout
 
@@ -33264,14 +32841,11 @@ status collapsed
 \begin_layout Standard
 Falls \SpecialChar LyX
  keine Vorschau anzeigt, stellen Sie sicher, dass Sie Vorschauen,
- wie oben beschrieben, aktiviert haben, dass
-\change_inserted 1556375488 1442687327
- der
-\change_unchanged
- \SpecialChar TeX
--Code in der Vorschau-Einfügung korrekt ist und dass Sie die \SpecialChar LaTeX
--Pakete in
- der Dokumentpräambel geladen haben, die vom \SpecialChar TeX
+ wie oben beschrieben, aktiviert haben, dass der \SpecialChar TeX
+-Code in der Vorschau-Einfügung
+ korrekt ist und dass Sie die \SpecialChar LaTeX
+-Pakete in der Dokumentpräambel geladen haben,
+ die vom \SpecialChar TeX
 -Code benötigt werden.
  Wenn \SpecialChar LyX
  keine Vorschau erzeugen kann, werden Sie in den meisten Fällen auch
@@ -33880,12 +33454,9 @@ status open
 \color none
 Achtung:
 \series default
- Referenzen funktionieren 
-\change_inserted 1556375488 1442687749
-sowohl 
-\change_unchanged
-innerhalb einer Regexp als auch in mehreren Regexps, wobei die Nummerierung
- der referenzierten Unterausdrücke absolut ist.
+ Referenzen funktionieren sowohl innerhalb einer Regexp als auch in mehreren
+ Regexps, wobei die Nummerierung der referenzierten Unterausdrücke absolut
+ ist.
  Das heißt, dass 
 \begin_inset Formula $\backslash1$
 \end_inset
@@ -33922,19 +33493,7 @@ name "sec:Rechtschreibprüfung"
 \begin_layout Standard
 \SpecialChar LyX
  besitzt eine eigene Rechtschreibprüfung.
- 
-\change_deleted 1556375488 1442687758
-m
-\change_inserted 1556375488 1442687758
-M
-\change_unchanged
-an kann 
-\change_deleted 1556375488 1442687763
-S
-\change_inserted 1556375488 1442687763
-s
-\change_unchanged
-ie mit dem Menü 
+ Man kann sie mit dem Menü 
 \family sans
 Werkzeuge\SpecialChar menuseparator
 Rechtschreibprüfung
@@ -33956,21 +33515,15 @@ arg   "dialog-show spellchecker"
  Wort an und erlaubt es diese zu korrigieren.
  Wenn ein unbekanntes Wort gefunden wird, wird das Wort markiert und der
  Text gescrollt damit das Wort zu sehen ist.
- In der Rechtschreibprüfungs-Seitenleiste
-\change_deleted 1556375488 1442687803
-,
-\change_unchanged
- gibt es ein Feld mit Vorschlägen für die Korrektur.
+ In der Rechtschreibprüfungs-Seitenleiste gibt es ein Feld mit Vorschlägen
+ für die Korrektur.
  Klickt man auf einen Vorschlag, wird er ins 
 \family sans
 Ersetzung
 \family default
 s-Feld kopiert., ein Doppelklick ersetzt das Wort sofort.
- Unbekannte, aber richtig geschriebene
-\change_inserted 1556375488 1442687825
-,
-\change_unchanged
- Wörter können zum persönlichen Wörterbuch hinzugefügt werden.
+ Unbekannte, aber richtig geschriebene, Wörter können zum persönlichen Wörterbuc
+h hinzugefügt werden.
 \end_layout
 
 \begin_layout Standard
@@ -34104,13 +33657,9 @@ Enchant selbst ist eine Hüllbibliothek mit verschiedenen konfigurierbaren
 hunspell
 \family default
  verfügbar.
-
-\change_inserted 1556375488 1442688024
  LyX auf Mac OS X kann zusätzlich die mit dem Betriebssystem mitgelieferte
  Rechtschreibprüfung verwenden.
  Das ist dort auch die standardmäßig eingestellte Variante.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -34543,26 +34092,14 @@ he und bedeutungsverwandte Wörter an.
 \end_layout
 
 \begin_layout Standard
-Die Sprache
-\change_deleted 1556375488 1442688259
-n
-\change_unchanged
- wird automatisch von dem Wort übernommen, indem sich der Cursor befindet,
- aber man kann sie auch im Dialog umstellen, genauso wie man dort das Wort
- ändern kann.
+Die Sprache wird automatisch von dem Wort übernommen, indem sich der Cursor
+ befindet, aber man kann sie auch im Dialog umstellen, genauso wie man dort
+ das Wort ändern kann.
 \end_layout
 
 \begin_layout Standard
-Man beachte
-\change_inserted 1556375488 1442688276
-,
-\change_unchanged
- dass der Thesaurus
-\change_deleted 1556375488 1442688288
- kann
-\change_unchanged
- keine Phrasen handhaben kann (nur Zusammensetzungen, die im Wörterbuch
- stehen, so wie das obige
+Man beachte, dass der Thesaurus keine Phrasen handhaben kann (nur Zusammensetzun
+gen, die im Wörterbuch stehen, so wie das obige
 \emph on
  Baumdiagramm
 \emph default
@@ -34582,11 +34119,8 @@ berichtend
 Bericht
 \emph default
  gibt.
- Die beste Vorgehensweise ist es
-\change_inserted 1556375488 1442688316
-,
-\change_unchanged
- nur die relevanten Teile von Worten zu markieren (z.
+ Die beste Vorgehensweise ist es, nur die relevanten Teile von Worten zu
+ markieren (z.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -34601,14 +34135,8 @@ Berichte
 \emph default
 ).
  Dann bekommt man sofort Vorschläge ohne das Wort im Dialog erst anpassen
- zu müssen und auch 
-\change_deleted 1556375488 1442688331
-der
-\change_inserted 1556375488 1442688331
-die
-\change_unchanged
- Ersetzung wird dann wahrscheinlich sofort korrekt sein (nur der markierte
- Teil wird ersetzt).
+ zu müssen und auch die Ersetzung wird dann wahrscheinlich sofort korrekt
+ sein (nur der markierte Teil wird ersetzt).
 \end_layout
 
 \begin_layout Section
@@ -35467,10 +34995,6 @@ B.
 S.-Tastatur aber von Zeit zu Zeit auch deutsche Kurztexte.
  Sie können in diesem Fall eine eigene Tastaturzuordnung erstellen oder
  eine bestehende Tastaturtabelle ändern um spezielle Zeichen zu unterstützen.
-\change_deleted 1556375488 1442688553
-.
-
-\change_unchanged
  Diese und andere Anpassungen sind im Handbuch 
 \emph on
 Anpassungen
@@ -35851,11 +35375,7 @@ HTML
 \begin_inset space ~
 \end_inset
 
-Word) spezielles HTML-Format
-\change_inserted 1556375488 1442688705
-,
-\change_unchanged
- so dass der Ergebnis nach 
+Word) spezielles HTML-Format, so dass der Ergebnis nach 
 \family sans
 MS Word
 \family default
@@ -36280,13 +35800,8 @@ Beenden
 \end_layout
 
 \begin_layout Standard
-Fordert Sie auf alle 
-\change_deleted 1556375488 1442688793
-un
-\change_inserted 1556375488 1442688794
-nicht 
-\change_unchanged
-gespeicherten Dokumente zu schließen und beendet \SpecialChar LyX
+Fordert Sie auf alle nicht gespeicherten Dokumente zu schließen und beendet
+ \SpecialChar LyX
 .
 \end_layout
 
@@ -36653,13 +36168,7 @@ h.
 
 nach Fehlern im Programm zu suchen) oder um zu sehen, was im Hintergrund
  vor sich geht, während \SpecialChar LaTeX
- das Dokument 
-\change_deleted 1556375488 1442689061
-prozessiert
-\change_inserted 1556375488 1442689063
-verarbeitet
-\change_unchanged
-.
+ das Dokument verarbeitet.
 \end_layout
 
 \begin_layout Subsection
@@ -36941,11 +36450,7 @@ Alle
 
 anzeigen
 \family default
- werden alle Zeichen gleichzei
-\change_deleted 1556375488 1442724474
-ch
-\change_unchanged
-tig angezeigt.
+ werden alle Zeichen gleichzeitig angezeigt.
 \begin_inset Newline newline
 \end_inset
 
@@ -37395,10 +36900,7 @@ reference "subsec:Manueller-Seitenumbruch"
 \end_layout
 
 \begin_layout Description
-Seitenumbruch Fügt einen Seitenumbruch ein, der zusätzlich den gebrochene
-\change_inserted 1556375488 1442724595
-n
-\change_unchanged
+Seitenumbruch Fügt einen Seitenumbruch ein, der zusätzlich den gebrochenen
  Text bis zum Seitenrand streckt, wie in Abschnitt
 \begin_inset space ~
 \end_inset
@@ -37833,11 +37335,7 @@ Tabelle
 Öffnet einen Dialog, in dem man die Anzahl an Tabellenzeilen und -spalten
  festlegen kann.
  Fügt eine Tabelle ein.
- Tabelle
-\change_inserted 1556375488 1442724700
-n
-\change_unchanged
- sind in Abschnitt
+ Tabellen sind in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -37861,11 +37359,7 @@ Grafik
 
 \begin_layout Standard
 Fügt eine Grafik ein.
- Grafiken sind 
-\change_inserted 1556375488 1442724723
-im 
-\change_unchanged
-Abschnitt
+ Grafiken sind im Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -38202,13 +37696,8 @@ Gehe zur Marke
 \begin_layout Standard
 Nur aktiv, wenn sich der Cursor vor einem Querverweis befindet.
  Es setzt den Cursor vor die referenzierte Marke.
- (Ist dasselbe 
-\change_deleted 1556375488 1442724874
-als
-\change_inserted 1556375488 1442724874
-wie
-\change_unchanged
- wenn man mit rechts auf eine Querverweisbox klickt und 
+ (Ist dasselbe wie wenn man mit rechts auf eine Querverweisbox klickt und
+ 
 \family sans
 Gehe
 \begin_inset space ~
@@ -41193,13 +40682,8 @@ Vordefiniert
 \family default
  aufgelistet und Sie können entscheiden, ob Sie sie verwenden wollen oder
  nicht.
- Wenn Sie nicht genau wissen, was die Klassenoptionen bedeuten, ist es 
-\change_deleted 1556375488 1442927253
-empfohlen
-\change_inserted 1556375488 1442927254
-ratsam
-\change_unchanged
-, sie unverändert zu verwenden.
+ Wenn Sie nicht genau wissen, was die Klassenoptionen bedeuten, ist es ratsam,
+ sie unverändert zu verwenden.
  Der Grafiktreiber wird für \SpecialChar LaTeX
 s Grafik-, Farb- und Seitenlayoutpakete verwendet.
  Wenn 
@@ -41277,15 +40761,8 @@ Objekte
 \end_layout
 
 \begin_layout Standard
-Es gibt zudem noch eine Option
-\change_inserted 1556375488 1442927350
-,
-\change_unchanged
- um die Ausgabe des Datums zu unterdrücken und eine
-\change_inserted 1556375488 1442927377
- weitere,
-\change_unchanged
- um das \SpecialChar LaTeX
+Es gibt zudem noch eine Option, um die Ausgabe des Datums zu unterdrücken
+ und eine weitere, um das \SpecialChar LaTeX
 -Paket 
 \series bold
 refstyle
@@ -41548,13 +41025,9 @@ Voreinstellung der Sprache
 \family default
  problemlos ausgegeben werden (da \SpecialChar LyX
  die Zeichen in entsprechende Befehle
- umwandelt), dass 
-\change_deleted 1556375488 1442927523
-es 
-\change_unchanged
-aber eine UTF8-Kodierung Fehler produziert (da \SpecialChar LyX
- dort keine Zeichen in Befehle
- umwandelt, \SpecialChar LaTeX
+ umwandelt), dass aber eine UTF8-Kodierung Fehler produziert (da \SpecialChar LyX
+ dort keine
+ Zeichen in Befehle umwandelt, \SpecialChar LaTeX
  aber nicht alle Zeichen kennt).
  Mit neueren \SpecialChar TeX
 -Alternativen wir Xe\SpecialChar TeX
@@ -41890,11 +41363,8 @@ Chinesisch
 \begin_inset space ~
 \end_inset
 
-(GBK) für vereinfachtes Chinesisch, entspricht der 
-\change_inserted 1556375488 1442927649
-MS-
-\change_unchanged
-Windows-Zeichensatztabelle CP-936, mit Ausnahme des Eurozeichens.
+(GBK) für vereinfachtes Chinesisch, entspricht der Windows-Zeichensatztabelle
+ CP-936, mit Ausnahme des Eurozeichens.
  Seit 2001 ist diese Kodierung obsolet und von der Kodierung GB-18030 abgelöst.
  Da diese aber von \SpecialChar LaTeX
  noch nicht unterstützt wird, sollten Sie Unicode
@@ -43295,17 +42765,7 @@ LaTeX-Vorspann
 usepackage{textcomp}
 \series default
  zum Vorspann hinzufügen.
- Für die meisten mathematische
-\change_deleted 1556375488 1442927826
-s
-\change_inserted 1556375488 1442927826
-n
-\change_unchanged
- Symbole reicht es aus
-\change_inserted 1556375488 1442927832
-,
-\change_unchanged
- die Zeile 
+ Für die meisten mathematischen Symbole reicht es aus, die Zeile 
 \series bold
 
 \backslash
@@ -43772,11 +43232,7 @@ stdmenus.inc
 \begin_layout Standard
 Mit
 \family sans
- Symb
-\change_inserted 1556375488 1442927925
-o
-\change_unchanged
-ldesign
+ Symboldesign
 \family default
  kann das Aussehen von \SpecialChar LyX
 ' Werkzeugleisten geändert werden.
@@ -43801,13 +43257,7 @@ Die Option
 Tooltips im Hauptarbeitsbereich aktivieren
 \family default
  aktiviert Tooltips, die den Inhalt von geschlossenen Einfügungen wie Indexeintr
-ägen oder Fußnoten anzeig
-\change_inserted 1556375488 1442928084
-en
-\change_deleted 1556375488 1442928084
-t
-\change_unchanged
-.
+ägen oder Fußnoten anzeigen.
 \end_layout
 
 \begin_layout Subsubsection
@@ -44229,11 +43679,7 @@ n
  Dies führt zu einer besseren Performanz, besonders auf langsameren Rechnern.
  Allerdings könnten die Zeichen verpixelt aussehen.
  Ob es sich lohnt diese Option zu aktivieren, müssen Sie also ausprobieren.
- Man beachte
-\change_inserted 1556375488 1442928277
-,
-\change_unchanged
- dass der Pixmap Cache nur unter Mac
+ Man beachte, dass der Pixmap Cache nur unter Mac
 \begin_inset space ~
 \end_inset
 
@@ -44388,15 +43834,8 @@ Cursor folgt Scrollbar
 
 \begin_layout Standard
 Man kann die Dicke des Cursors einstellen.
- Wird die Dicke auf Null gesetzt, wird die Cursordicke re
-\change_inserted 1556375488 1442928330
-l
-\change_unchanged
-a
-\change_deleted 1556375488 1442928332
-l
-\change_unchanged
-tiv zum eingestellten Zoom der Bildschirmschriften skaliert.
+ Wird die Dicke auf Null gesetzt, wird die Cursordicke relativ zum eingestellten
+ Zoom der Bildschirmschriften skaliert.
 \end_layout
 
 \begin_layout Standard
@@ -44588,13 +44027,10 @@ Tastenkürzel ! bearbeiten
 \end_layout
 
 \begin_layout Standard
-Um ein Tastaturkürzel zu bearbeiten o
-\change_deleted 1556375488 1442928461
- 
-\change_unchanged
-der ein neues zu definieren, können Sie die Tabelle benutzen, die alle \SpecialChar LyX
--Funktion
-en und ihre Tastaturkürzel enthält.
+Um ein Tastaturkürzel zu bearbeiten oder ein neues zu definieren, können
+ Sie die Tabelle benutzen, die alle \SpecialChar LyX
+-Funktionen und ihre Tastaturkürzel
+ enthält.
  Um sie leichter zu finden, sind sie nach Funktionen gruppiert.
  Mit Hilfe von 
 \family sans
@@ -45307,14 +44743,8 @@ status collapsed
  Schriftsysteme voll ausnutzt.
  Außerdem gibt es auch noch spezifische Sprachpakete für Sprachen, die von
  
-\change_deleted 1556375488 1442928711
-babel
-\change_inserted 1556375488 1442928711
-
 \series bold
 babel
-\change_unchanged
-
 \series default
  (noch) nicht unterstützt werden.
  Die möglichen Einstellungen sind in Abschnitt
