@@ -8312,12 +8312,14 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
+
 Esto es entorno literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8330,6 +8332,7 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
+
 Casi todo está permitido en entorno literal:"%&$§#~'`
 \backslash
 }][{|
@@ -33298,6 +33301,13 @@ Enchant es una biblioteca envoltorio de diferentes entornos configurables.
 hunspell
 \family default
 .
+ 
+\lang english
+LyX on Mac
+\begin_inset space ~
+\end_inset
+
+OS can also use Mac's own spellchecker and will use it by default.
 \end_layout
 
 \begin_layout Description

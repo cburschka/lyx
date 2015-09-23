@@ -8471,12 +8471,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8489,6 +8491,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -34324,7 +34327,14 @@ man-page
 \family typewriter
 hunspell
 \family default
-;
+.
+ 
+\lang english
+LyX on Mac
+\begin_inset space ~
+\end_inset
+
+OS can also use Mac's own spellchecker and will use it by default;
 \end_layout
 
 \begin_layout Description

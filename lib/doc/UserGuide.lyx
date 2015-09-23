@@ -8022,12 +8022,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8040,6 +8042,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -32801,6 +32804,11 @@ Enchant itself is a wrapper library having different configurable back-ends.
 hunspell
 \family default
  is available.
+ LyX on Mac
+\begin_inset space ~
+\end_inset
+
+OS can also use Mac's own spellchecker and will use it by default.
 \end_layout
 
 \begin_layout Description
