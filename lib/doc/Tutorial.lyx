@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 497
 \begin_document
 \begin_header
+\origin unavailable
 \textclass book
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -114,18 +115,21 @@ logicalmkup
 \begin_body
 
 \begin_layout Title
-The LyX Tutorial
+/The \SpecialChar LyX
+ Tutorial
 \end_layout
 
 \begin_layout Author
-by the LyX Team
+by the \SpecialChar LyX
+ Team
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \noindent
 If you have comments on or corrections to this documentation, please send
- them to the LyX Documentation mailing list: 
+ them to the \SpecialChar LyX
+ Documentation mailing list: 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
@@ -155,17 +159,24 @@ Introduction
 \end_layout
 
 \begin_layout Section
-Welcome to LyX!
+Welcome to \SpecialChar LyX
+!
 \end_layout
 
 \begin_layout Standard
-This manual is designed for all of you who have never heard of LaTeX, or
- do not know it very well.
- Now, do not panic - you will not need to learn LaTeX to use LyX.
- That is, after all, the whole point of LyX: to provide an almost-WYSIWYG
- interface to LaTeX.
+This manual is designed for all of you who have never heard of \SpecialChar LaTeX
+, or do not
+ know it very well.
+ Now, do not panic - you will not need to learn \SpecialChar LaTeX
+ to use \SpecialChar LyX
+.
+ That is, after all, the whole point of \SpecialChar LyX
+: to provide an almost-WYSIWYG interface
+ to \SpecialChar LaTeX
+.
  There are some things you will need to learn, however, in order to use
- LyX effectively.
+ \SpecialChar LyX
+ effectively.
 \end_layout
 
 \begin_layout Standard
@@ -181,16 +192,19 @@ Some of you probably found your way to this document because you tried to
  or tried to put three blank lines between paragraphs.
  You found out you could not and, in fact, you will find out that most of
  the little tricks you are accustomed to use in word processors will not
- work in LyX.
+ work in \SpecialChar LyX
+.
  That is because most word processors you have used before allow you manually
  to enter all spacings, font changes, and so on.
  So you end up not only writing a document but typesetting it, too.
- LyX does the typesetting for you, in a consistent fashion, letting you
- focus on the important things, like the content of your writing.
+ \SpecialChar LyX
+ does the typesetting for you, in a consistent fashion, letting you focus
+ on the important things, like the content of your writing.
 \end_layout
 
 \begin_layout Standard
-So read on to learn more about LyX.
+So read on to learn more about \SpecialChar LyX
+.
  Reading this tutorial is definitely worth the time.
 \end_layout
 
@@ -247,12 +261,16 @@ This tutorial consists of examples and exercises.
 \end_layout
 
 \begin_layout Standard
-If you are familiar with LaTeX, you will probably be able to read the 
+If you are familiar with \SpecialChar LaTeX
+, you will probably be able to read the 
 \emph on
 Tutorial
 \emph default
- somewhat faster, since many LyX ideas are just LaTeX ideas in disguise.
- However, LyX has features you will want to learn about.
+ somewhat faster, since many \SpecialChar LyX
+ ideas are just \SpecialChar LaTeX
+ ideas in disguise.
+ However, \SpecialChar LyX
+ has features you will want to learn about.
  Even if you do not feel like reading the rest of the 
 \emph on
 Tutorial
@@ -268,7 +286,8 @@ reference "sec:latexusers"
 
 \end_inset
 
-, which is specifically written for experienced LaTeX users.
+, which is specifically written for experienced \SpecialChar LaTeX
+ users.
 \end_layout
 
 \begin_layout Subsection
@@ -280,7 +299,12 @@ will not
 \end_layout
 
 \begin_layout Itemize
-Detailed explanations of all of LyX's features.
+Detailed explanations of all of \SpecialChar LyX
+'s features.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -294,14 +318,21 @@ User's Guide
 
 \end_deeper
 \begin_layout Itemize
-Detailed explanations of LaTeX.
+Detailed explanations of \SpecialChar LaTeX
+.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 Unnecessary.
- If you want to learn some of the neat tricks you can do with LaTeX in LyX,
- you can have a look at the 
+ If you want to learn some of the neat tricks you can do with \SpecialChar LaTeX
+ in \SpecialChar LyX
+, you
+ can have a look at the 
 \emph on
 Embedded
 \begin_inset space ~
@@ -314,20 +345,22 @@ Objects
 
 \end_deeper
 \begin_layout Standard
-It is time to move on, time for your first document \SpecialChar \ldots{}
+It is time to move on, time for your first document \SpecialChar ldots
 
 \end_layout
 
 \begin_layout Chapter
-Getting started with LyX
+Getting started with \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Section
-Your first LyX document
+Your first \SpecialChar LyX
+ document
 \end_layout
 
 \begin_layout Standard
-OK\SpecialChar \@.
+OK\SpecialChar endofsentence
  You are ready to start writing.
  Before you do, there are a few things we need to mention, which will hopefully
  make the Tutorial more instructive and useful.
@@ -348,7 +381,8 @@ thing that you need to do is find the
 help files.
  This is very simple:
 \series default
- Start up LyX, select the 
+ Start up \SpecialChar LyX
+, select the 
 \emph on
 User's Guide
 \emph default
@@ -361,14 +395,16 @@ Help
 \emph on
 Tutorial
 \emph default
- as well (if you are not reading it within LyX already).
+ as well (if you are not reading it within \SpecialChar LyX
+ already).
  This way, you can read them while you are writing your own file.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 They can also serve as good examples of how to use the many features of
- LyX.
+ \SpecialChar LyX
+.
 \end_layout
 
 \end_inset
@@ -383,9 +419,12 @@ View
 
 \begin_layout Standard
 In this Tutorial, we are going to assume that you have a fully working version
- of LyX, as well as a LaTeX-distribution and a PDF-viewer.
+ of \SpecialChar LyX
+, as well as a \SpecialChar LaTeX
+-distribution and a PDF-viewer.
  This should be the case on all major Linux- and BSD-distributions, as well
- as on Windows, where this is setup by the LyX installers.
+ as on Windows, where this is setup by the \SpecialChar LyX
+ installers.
 \end_layout
 
 \begin_layout Standard
@@ -393,11 +432,14 @@ Finally, we have written a file called
 \family typewriter
 example_raw.lyx
 \family default
- to let you practice your LyX skills.
- Imagine that it was typed by someone who did not know about any of LyX's
- great features.
- As you learn new LyX functions, we will suggest that you fix those parts
- of 
+ to let you practice your \SpecialChar LyX
+ skills.
+ Imagine that it was typed by someone who did not know about any of \SpecialChar LyX
+'s great
+ features.
+ As you learn new \SpecialChar LyX
+ functions, we will suggest that you fix those parts of
+ 
 \family typewriter
 example_raw.lyx
 \family default
@@ -426,7 +468,8 @@ Notes
 \family typewriter
 example_lyxified.lyx
 \family default
- which contains the same text written and typeset by a LyX master.
+ which contains the same text written and typeset by a \SpecialChar LyX
+ master.
 \end_layout
 
 \begin_layout Standard
@@ -434,14 +477,15 @@ The example files can be found in the
 \family typewriter
 examples
 \family default
- directory of LyX's installation folder.
+ directory of \SpecialChar LyX
+'s installation folder.
  Open the document 
 \family typewriter
 example_raw.lyx
 \family default
  and use 
 \family sans
-File\SpecialChar \menuseparator
+File\SpecialChar menuseparator
 Save
 \begin_inset space ~
 \end_inset
@@ -459,9 +503,11 @@ By the way, the
 examples
 \family default
  directory contains lots of other examples files.
- They will show you how to do various fancy things with LyX.
+ They will show you how to do various fancy things with \SpecialChar LyX
+.
  After you have read the Tutorial, or when you are confused about how to
- do something fancy in LyX, take a look at these files.
+ do something fancy in \SpecialChar LyX
+, take a look at these files.
 \end_layout
 
 \begin_layout Subsection
@@ -471,32 +517,33 @@ Typing, Viewing, and Exporting
 \begin_layout Itemize
 Open a new file with 
 \family sans
-File\SpecialChar \menuseparator
+File\SpecialChar menuseparator
 New
 \end_layout
 
 \begin_layout Itemize
 Type a sentence like: 
 \family typewriter
-This is my first LyX document!
+This is my first \SpecialChar LyX
+ document!
 \end_layout
 
 \begin_layout Itemize
 Save your document with 
 \family sans
-File\SpecialChar \menuseparator
+File\SpecialChar menuseparator
 Save
 \begin_inset space ~
 \end_inset
 
-As\SpecialChar \@.
+As\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Itemize
 Create a PDF file, with 
 \family sans
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 View
 \family default
  or the toolbar button 
@@ -506,8 +553,9 @@ arg   "buffer-view"
 \end_inset
 
 .
- LyX will open a PDF-viewer program displaying your document as it will
- look when printed.
+ \SpecialChar LyX
+ will open a PDF-viewer program displaying your document as it will look
+ when printed.
 \begin_inset Foot
 status collapsed
 
@@ -515,7 +563,7 @@ status collapsed
 You can save time by leaving the PDF-viewer running in the background.
  Then, you can use 
 \family sans
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Update
 \family default
  or the toolbar button 
@@ -535,7 +583,7 @@ arg   "buffer-update"
 \begin_layout Itemize
 Export the ready to print document with 
 \family sans
-File\SpecialChar \menuseparator
+File\SpecialChar menuseparator
 Export
 \family default
  to a format you want
@@ -544,7 +592,8 @@ Export
 \end_layout
 
 \begin_layout Standard
-Congratulations! You have written your first LyX document.
+Congratulations! You have written your first \SpecialChar LyX
+ document.
  All of the rest is just details.
 \end_layout
 
@@ -553,18 +602,18 @@ Simple Operations
 \end_layout
 
 \begin_layout Standard
-LyX can of course do most of the things you are used to doing with a word
- processor.
+\SpecialChar LyX
+ can of course do most of the things you are used to doing with a word processor.
  It will word-wrap and indent paragraphs automatically.
  Here is a quick description of how to do some simple actions.
 \end_layout
 
 \begin_layout Description
-Undo LyX has multiple levels of undo, which means you can undo everything
- you have done since your current editing session started, by selecting
- 
+Undo \SpecialChar LyX
+ has multiple levels of undo, which means you can undo everything you
+ have done since your current editing session started, by selecting 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Undo
 \family default
  (toolbar button 
@@ -576,7 +625,7 @@ arg   "undo"
 ) over and over again.
  If you undo too much, just select 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Redo
 \family default
  (toolbar button 
@@ -586,6 +635,10 @@ arg   "redo"
 \end_inset
 
 ) to get it back.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -597,7 +650,7 @@ Currently, undo is limited to 100 steps.
 \begin_layout Description
 Cut/Paste/Copy Use 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Cut
 \family default
  (toolbar button 
@@ -608,7 +661,7 @@ arg   "cut"
 
 ), 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Copy
 \family default
  (toolbar button 
@@ -619,7 +672,7 @@ arg   "copy"
 
 ), and 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Paste
 \family default
  (toolbar button 
@@ -640,7 +693,7 @@ middle mouse button
 \begin_layout Description
 Find/Replace Use 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Find
 \begin_inset space ~
 \end_inset
@@ -677,9 +730,12 @@ status collapsed
 \begin_layout Plain Layout
 Close the window when you are done or leave it open if you find it more
  convenient.
- Most dialog boxes in LyX can operate like this.
+ Most dialog boxes in \SpecialChar LyX
+ can operate like this.
  Just be sure you have the right window in focus when you are trying to
- type in the main LyX window or a LyX dialog.
+ type in the main \SpecialChar LyX
+ window or a \SpecialChar LyX
+ dialog.
 \end_layout
 
 \end_inset
@@ -717,12 +773,12 @@ arg   "font-noun"
 , usually small caps, used for people's names), or use your own formatting
  by using the 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Text
 \begin_inset space ~
 \end_inset
 
-Style\SpecialChar \menuseparator
+Style\SpecialChar menuseparator
 Customized
 \family default
  dialog (toolbar button 
@@ -770,11 +826,13 @@ Of course, you have not yet written enough to make most of these functions
 \end_layout
 
 \begin_layout Subsection
-WYSIWYM: Whitespace in LyX
+WYSIWYM: Whitespace in \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
-One of the hardest things for new users to get used to is the way that LyX
+One of the hardest things for new users to get used to is the way that \SpecialChar LyX
+
  handles whitespace.
  As many times as you hit 
 \family sans
@@ -786,7 +844,8 @@ Return
 Space
 \family default
 , you will only get one space.
- On a blank line, LyX will not let you type even one space.
+ On a blank line, \SpecialChar LyX
+ will not let you type even one space.
  The 
 \family sans
 Tab
@@ -808,7 +867,8 @@ What You See Is What You Get.
 \begin_inset Quotes erd
 \end_inset
 
- LyX, on the other hand, is based on the principle that 
+ \SpecialChar LyX
+, on the other hand, is based on the principle that 
 \begin_inset Quotes eld
 \end_inset
 
@@ -820,8 +880,9 @@ Mean
 \begin_inset Quotes erd
 \end_inset
 
- You type what you mean and LyX will take care of typesetting it for you
- so that the output looks nice.
+ You type what you mean and \SpecialChar LyX
+ will take care of typesetting it for you so
+ that the output looks nice.
  A 
 \family sans
 Return
@@ -835,8 +896,10 @@ Space
 \family sans
 Tab
 \family default
- has no grammatical function at all - so LyX does not support it.
- Using LyX, you will spend more of your time worrying about the 
+ has no grammatical function at all - so \SpecialChar LyX
+ does not support it.
+ Using \SpecialChar LyX
+, you will spend more of your time worrying about the 
 \emph on
 content
 \emph default
@@ -853,8 +916,10 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-LyX does have (many) ways to fine-tune the formatting of your document.
- After all, LyX might not typeset 
+\SpecialChar LyX
+ does have (many) ways to fine-tune the formatting of your document.
+ After all, \SpecialChar LyX
+ might not typeset 
 \emph on
 exactly
 \emph default
@@ -902,7 +967,8 @@ What You See Is What You Mean
 \begin_inset Quotes erd
 \end_inset
 
- philosophy of LyX.
+ philosophy of \SpecialChar LyX
+.
  A given environment may require a certain font style, font size, indenting,
  line spacing, and more.
  This problem is aggravated, because the exact formatting for a given environmen
@@ -910,7 +976,8 @@ t may change: one journal may use boldface, 18 point, centered type for
  section titles while another uses italicized, 15 point, left justified
  type; different languages may have different standards for indenting; and
  bibliography formats can vary widely.
- LyX lets you avoid learning all the different formatting styles.
+ \SpecialChar LyX
+ lets you avoid learning all the different formatting styles.
 \end_layout
 
 \begin_layout Standard
@@ -951,7 +1018,8 @@ Type the word
 \family typewriter
 Introduction
 \family default
- on the first line of your new LyX file, and select 
+ on the first line of your new \SpecialChar LyX
+ file, and select 
 \family sans
 Section
 \family default
@@ -969,8 +1037,9 @@ You do not have to
 select
 \emph default
  the line.
- If nothing is selected, LyX changes the paragraph you are currently in
- to the selected environment.
+ If nothing is selected, \SpecialChar LyX
+ changes the paragraph you are currently in to
+ the selected environment.
  Alternatively, you can change several paragraphs to a different environment
  by selecting them before picking an environment.
 \end_layout
@@ -990,7 +1059,8 @@ not
 Section*
 \family default
 , which will be covered below.
- LyX numbers the section 
+ \SpecialChar LyX
+ numbers the section 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1003,7 +1073,7 @@ Section*
 \family sans
 Return
 \family default
-\SpecialChar \@.
+\SpecialChar endofsentence
  Note that the 
 \family sans
 Environment
@@ -1030,12 +1100,13 @@ Standard
 \family sans
 Return
 \family default
-\SpecialChar \@.
+\SpecialChar endofsentence
  Type the document introduction: 
 \end_layout
 
 \begin_layout LyX-Code
-This is an introduction to my first LyX document.
+This is an introduction to my first \SpecialChar LyX
+ document.
 \end_layout
 
 \begin_layout Standard
@@ -1052,7 +1123,8 @@ Section
 Environment
 \family default
  box again.
- LyX writes a 
+ \SpecialChar LyX
+ writes a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1077,7 +1149,8 @@ Stuff
 \begin_inset Quotes erd
 \end_inset
 
-, and you will see that LyX again sets it as a section title.
+, and you will see that \SpecialChar LyX
+ again sets it as a section title.
 \end_layout
 
 \begin_layout Standard
@@ -1090,7 +1163,8 @@ It gets better.
 \begin_inset Quotes eld
 \end_inset
 
-my first LyX document.
+my first \SpecialChar LyX
+ document.
 \begin_inset Quotes erd
 \end_inset
 
@@ -1107,7 +1181,8 @@ Section
 Environment
 \family default
  box again.
- Again, LyX writes 
+ Again, \SpecialChar LyX
+ writes 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1142,8 +1217,9 @@ More Stuff
 \end_inset
 
 3! In true WYSIWYM fashion, you just need to identify the text that makes
- up the section titles, and LyX takes care of numbering the sections and
- typesetting them.
+ up the section titles, and \SpecialChar LyX
+ takes care of numbering the sections and typesettin
+g them.
 \end_layout
 
 \begin_layout Standard
@@ -1188,7 +1264,8 @@ Subsection
 Environment
 \family default
  box.
- LyX numbers the subsection 
+ \SpecialChar LyX
+ numbers the subsection 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1203,7 +1280,8 @@ Environment
 Subsection
 \family default
  environment as well.
- As you probably expected, LyX automatically numbered the section 
+ As you probably expected, \SpecialChar LyX
+ automatically numbered the section 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1270,7 +1348,8 @@ Chapter
 Section
 \family default
 s, but you are only allowed to use them in certain types (text classes)
- of LyX documents (see Section
+ of \SpecialChar LyX
+ documents (see Section
 \begin_inset space ~
 \end_inset
 
@@ -1295,8 +1374,9 @@ Section*
 \family sans
 Environment
 \family default
- box to find it), LyX will use the same font size for the heading as it
- uses for a regular section, but it will not number that section.
+ box to find it), \SpecialChar LyX
+ will use the same font size for the heading as it uses
+ for a regular section, but it will not number that section.
  There are corresponding 
 \begin_inset Quotes eld
 \end_inset
@@ -1336,7 +1416,8 @@ Lists and sublists
 \end_layout
 
 \begin_layout Standard
-LyX has several different environments for typesetting lists.
+\SpecialChar LyX
+ has several different environments for typesetting lists.
  The various list environments free you from hitting 
 \family sans
 Tab
@@ -1387,14 +1468,16 @@ Description
 \end_layout
 
 \begin_layout Standard
-Let us write a list of reasons why LyX is better than other word processors.
+Let us write a list of reasons why \SpecialChar LyX
+ is better than other word processors.
  Somewhere in your document, type:
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
-LyX is better than other word processors because:
+\SpecialChar LyX
+ is better than other word processors because:
 \end_layout
 
 \begin_layout Standard
@@ -1418,7 +1501,8 @@ arg   "layout Itemize"
 \end_inset
 
 ).
- LyX writes a 
+ \SpecialChar LyX
+ writes a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1448,7 +1532,8 @@ List environments, unlike headings, do not end when you type
 Return
 \family default
 .
- Instead, LyX assumes you are going on to the next item in the list.
+ Instead, \SpecialChar LyX
+ assumes you are going on to the next item in the list.
  The above will therefore result in a three-item list.
  If you want more than one paragraph within one list 
 \emph on
@@ -1482,15 +1567,17 @@ arg   "layout Standard"
 
 \begin_layout Standard
 You now have a beautiful itemized list.
- You might want to run LaTeX to see how the list looks when printed out.
+ You might want to run \SpecialChar LaTeX
+ to see how the list looks when printed out.
  But what if you wanted to number the reasons? Well, just select the whole
  list
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-LyX will not let you select the first bullet (or the actual number in a
- numbered section title) unless you also select the paragraph 
+\SpecialChar LyX
+ will not let you select the first bullet (or the actual number in a numbered
+ section title) unless you also select the paragraph 
 \emph on
 before
 \emph default
@@ -1516,8 +1603,8 @@ arg   "layout Enumerate"
 \end_inset
 
 ).
- Pow! As we mentioned, if you add or delete a list item, LyX will fix the
- numbering.
+ Pow! As we mentioned, if you add or delete a list item, \SpecialChar LyX
+ will fix the numbering.
 \end_layout
 
 \begin_layout Standard
@@ -1645,7 +1732,8 @@ Quotation
  for longer ones.
  Computer code (the 
 \family sans
-LyX-Code
+\SpecialChar LyX
+-Code
 \family default
  environment 
 \begin_inset Foot
@@ -1661,8 +1749,9 @@ used in this Tutorial for the long typing examples
 \family typewriter
 typewriter
 \family default
- font; this environment is the only place in LyX where you are allowed to
- use multiple spaces to allow code indenting.
+ font; this environment is the only place in \SpecialChar LyX
+ where you are allowed to use
+ multiple spaces to allow code indenting.
  You can even write poetry using the 
 \family sans
 Verse
@@ -1680,7 +1769,8 @@ Ctrl+Return
 \emph on
 User's Guide
 \emph default
- for more complete descriptions of all of the available LyX environments.
+ for more complete descriptions of all of the available \SpecialChar LyX
+ environments.
 \end_layout
 
 \begin_layout Standard
@@ -1690,7 +1780,8 @@ Exercise
 \series default
 : Correctly typeset the 
 \family sans
-Quote, LyX-Code,
+Quote, \SpecialChar LyX
+-Code,
 \family default
  and 
 \family sans
@@ -1706,13 +1797,17 @@ Writing Documents
 \end_layout
 
 \begin_layout Standard
-The previous chapter hopefully allowed you to get used to writing in LyX.
- It introduced you to the basic editing operations in LyX, as well as the
- powerful method of writing with environments.
- Most people who use LyX, though, will want to write documents: papers,
- articles, books, manuals, or letters.
- This chapter is meant to take you from simply writing text with LyX to
- writing a complete document.
+The previous chapter hopefully allowed you to get used to writing in \SpecialChar LyX
+.
+ It introduced you to the basic editing operations in \SpecialChar LyX
+, as well as the powerful
+ method of writing with environments.
+ Most people who use \SpecialChar LyX
+, though, will want to write documents: papers, articles,
+ books, manuals, or letters.
+ This chapter is meant to take you from simply writing text with \SpecialChar LyX
+ to writing
+ a complete document.
  It will introduce you to text classes, which allow you to write different
  sorts of documents.
  It will then describe many of the additions that turn text into a document,
@@ -1738,7 +1833,8 @@ Different sorts of documents should be typeset differently.
  In addition, many documents contain special environments: letters contain
  some environments — such as the sender's address and the signature — which
  do not make sense in a book or article.
- The LyX 
+ The \SpecialChar LyX
+ 
 \emph on
 document class
 \emph default
@@ -1747,7 +1843,9 @@ document class
 status collapsed
 
 \begin_layout Plain Layout
-for LaTeX users: this is equivalent to the LaTeX document class
+for \SpecialChar LaTeX
+ users: this is equivalent to the \SpecialChar LaTeX
+ document class
 \end_layout
 
 \end_inset
@@ -1760,7 +1858,8 @@ Book
 \family default
  document class.
  Document classes are another major part of the WYSIWYM philosophy; they
- tell LyX how to typeset the document, so you do not need to know how.
+ tell \SpecialChar LyX
+ how to typeset the document, so you do not need to know how.
 \end_layout
 
 \begin_layout Standard
@@ -1780,7 +1879,7 @@ That is usually the default document class
 
  Try changing to other document classes (using the 
 \family sans
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Settings
 \family default
  dialog) to see how they are typeset differently.
@@ -1810,7 +1909,8 @@ Environment
 Font sizes, one- or two-column printing, and page headings are just some
  of the ways journals' typesettings differ from one another.
  As the Computer Age continues to mature, journals have begun accepting
- electronic submissions, creating LaTeX 
+ electronic submissions, creating \SpecialChar LaTeX
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1819,9 +1919,11 @@ style files
 \end_inset
 
  so that authors can submit correctly typeset articles.
- LyX is set up to support this as well.
- For example, LyX supports typesetting (and extra environments) for the
- American Mathematics Society journals using the 
+ \SpecialChar LyX
+ is set up to support this as well.
+ For example, \SpecialChar LyX
+ supports typesetting (and extra environments) for the American
+ Mathematics Society journals using the 
 \family sans
 Article
 \begin_inset space ~
@@ -1843,13 +1945,17 @@ Special Document Classes
 Additional Features
 \emph default
  manual for many more details.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -1986,7 +2092,7 @@ letter
 \begin_inset Text
 
 \begin_layout Plain Layout
-lots of extra environments for address, signature\SpecialChar \ldots{}
+lots of extra environments for address, signature\SpecialChar ldots
 
 \end_layout
 
@@ -2011,7 +2117,7 @@ Letter
 \family default
  class in the 
 \family sans
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Settings
 \family default
  dialog.
@@ -2019,7 +2125,8 @@ Settings
  work.
  Every time you write a business letter, you want to have your address,
  the address to which you are sending it, a body, a signature, etc.
- LyX therefore has a 
+ \SpecialChar LyX
+ therefore has a 
 \emph on
 template
 \emph default
@@ -2031,7 +2138,7 @@ template
 \begin_layout Standard
 Open a new file with 
 \family sans
-File\SpecialChar \menuseparator
+File\SpecialChar menuseparator
 New
 \begin_inset space ~
 \end_inset
@@ -2093,16 +2200,19 @@ Signature:
 Signature
 \family default
  line is placed.
- Remember, LyX is WYSIWYM; you can put the 
+ Remember, \SpecialChar LyX
+ is WYSIWYM; you can put the 
 \family sans
 Signature
 \family default
- environment anywhere you want, but LyX knows that in the printout, the
- signature should be at the end.
+ environment anywhere you want, but \SpecialChar LyX
+ knows that in the printout, the signature
+ should be at the end.
 \end_layout
 
 \begin_layout Standard
-A template is just a regular LyX file.
+A template is just a regular \SpecialChar LyX
+ file.
  This means you can fill in your address and signature and save the file
  as a new template.
  From now on, any time you want to write a letter, you can use the new template
@@ -2150,10 +2260,12 @@ Templates can be a huge time-saver, and we urge you to use them whenever
  possible.
  In addition, they can help a person learn how to use some of the fancier
  document classes.
- Finally, they may be useful for a person who is configuring LyX for a bunch
+ Finally, they may be useful for a person who is configuring \SpecialChar LyX
+ for a bunch
  of less computer-aware users.
- When they are first learning LyX, it will be less intimidating if they
- have a letter template customized for their company, for example.
+ When they are first learning \SpecialChar LyX
+, it will be less intimidating if they have
+ a letter template customized for their company, for example.
 \end_layout
 
 \begin_layout Section
@@ -2161,13 +2273,16 @@ Document Titles
 \end_layout
 
 \begin_layout Standard
-LyX (like LaTeX) considers the title — which may contain the actual title,
- the author, the date, and even an abstract of a paper — to be a separate
- part of the document.
+\SpecialChar LyX
+ (like \SpecialChar LaTeX
+) considers the title — which may contain the actual title, the author,
+ the date, and even an abstract of a paper — to be a separate part of the
+ document.
 \end_layout
 
 \begin_layout Standard
-Go back to your first LyX document and make sure it is using the 
+Go back to your first \SpecialChar LyX
+ document and make sure it is using the 
 \family sans
 Article
 \family default
@@ -2248,10 +2363,13 @@ Embedded Objects
  using cross-references.
  You can refer to a section's number, to the page on which the section begins
  or to both.
- As with section numbering, LyX also takes care of cross-reference numbering
+ As with section numbering, \SpecialChar LyX
+ also takes care of cross-reference numbering
  for you.
  Automatic management of labels and cross-references is among the most significa
-nt advantages of LyX (and LaTeX) over conventional word processors.
+nt advantages of \SpecialChar LyX
+ (and \SpecialChar LaTeX
+) over conventional word processors.
 \end_layout
 
 \begin_layout Subsection
@@ -2270,7 +2388,7 @@ About This Document
 .
  Click at the end of the section title line, and select 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Label
 \family default
  or the toolbar button 
@@ -2310,25 +2428,13 @@ Place the cursor somewhere in Section
 \end_layout
 
 \begin_layout LyX-Code
-If you want to know more about this document, then see 
-\begin_inset Newline newline
-\end_inset
-
-Section, which can be found on page.
+If you want to know more about this document, then see Section .
 \end_layout
 
 \begin_layout Standard
-Now, with the cursor after the word 
-\begin_inset Quotes eld
-\end_inset
-
-Section
-\begin_inset Quotes erd
-\end_inset
-
-, select 
+Now, with the cursor before the final period, select 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Cross
 \begin_inset space ~
 \end_inset
@@ -2418,7 +2524,7 @@ Copy as Reference
  The cross-reference to this label is now in the clipboard and can be copied
  to the actual cursor position via the menu 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Paste
 \family default
  (shortcut 
@@ -2430,8 +2536,9 @@ arg   "paste"
 ).
  In the printed document, this reference marker will be replaced with the
  section number and then the page number.
- Preview your document and you will see that LaTeX has been even cleverer
- than that.
+ Preview your document and you will see that \SpecialChar LaTeX
+ has been even cleverer than
+ that.
  It refers to 
 \begin_inset Quotes eld
 \end_inset
@@ -2477,7 +2584,8 @@ n
 
 \begin_layout Standard
 Conveniently, a cross-reference acts as a hyperlink when you are editing
- a document in LyX; clicking on it will pop up the 
+ a document in \SpecialChar LyX
+; clicking on it will pop up the 
 \family sans
 Cross-reference
 \family default
@@ -2501,7 +2609,8 @@ More fun with labels
 \end_layout
 
 \begin_layout Standard
-We told you that LyX takes care of numbering cross-references; now you can
+We told you that \SpecialChar LyX
+ takes care of numbering cross-references; now you can
  test this claim.
  Add a new section before Section
 \begin_inset space ~
@@ -2614,7 +2723,7 @@ arg   "footnote-insert"
 
  or the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Footnote
 \family default
 .
@@ -2622,18 +2731,21 @@ Footnote
 \begin_inset Quotes eld
 \end_inset
 
-LyX
+\SpecialChar LyX
+
 \begin_inset Quotes erd
 \end_inset
 
  somewhere in your document and insert a footnote.
  A footnote box appears where you can enter the text of the footnote.
- LyX should place the cursor at the beginning of the footnote box.
+ \SpecialChar LyX
+ should place the cursor at the beginning of the footnote box.
  Type
 \end_layout
 
 \begin_layout LyX-Code
-LyX is a typesetting word processor.
+\SpecialChar LyX
+ is a typesetting word processor.
 \end_layout
 
 \begin_layout Standard
@@ -2713,7 +2825,7 @@ Delete
 \begin_layout Standard
 Margin notes can be added using the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Marginal
 \begin_inset space ~
 \end_inset
@@ -2726,7 +2838,7 @@ type  "icon"
 arg   "marginalnote-insert"
 \end_inset
 
-\SpecialChar \@.
+\SpecialChar endofsentence
  Margin notes are like footnotes, except that: 
 \end_layout
 
@@ -2759,9 +2871,11 @@ margin notes are not numbered
 \end_layout
 
 \begin_layout Standard
-Change your LyX footnote back to text, then select and change it to a margin
+Change your \SpecialChar LyX
+ footnote back to text, then select and change it to a margin
  note.
- Run LaTeX again to see what the margin note looks like.
+ Run \SpecialChar LaTeX
+ again to see what the margin note looks like.
 \end_layout
 
 \begin_layout Standard
@@ -2789,9 +2903,10 @@ name "sec:bibliographies"
 Bibliographies are similar to cross-references.
  The bibliography contains a list of references at the end of the document,
  and they can be referenced from within the document.
- Like section titles, LyX and LaTeX make your job easier by automatically
- numbering the bibliography items and changing citations when the item numbers
- change.
+ Like section titles, \SpecialChar LyX
+ and \SpecialChar LaTeX
+ make your job easier by automatically numbering
+ the bibliography items and changing citations when the item numbers change.
 \end_layout
 
 \begin_layout Standard
@@ -2807,14 +2922,16 @@ Bibliography
 
 
 \family typewriter
-The Lyx Tutorial, by the LyX Documentation Team
+The Lyx Tutorial, by the \SpecialChar LyX
+ Documentation Team
 \family default
 
 \begin_inset Quotes erd
 \end_inset
 
  as your first reference.
- Note that LyX automatically puts a number in a box before each reference.
+ Note that \SpecialChar LyX
+ automatically puts a number in a box before each reference.
  Click on the boxed reference number, and the 
 \family sans
 Bibliography
@@ -2828,7 +2945,8 @@ item
 \family sans
 Key
 \family default
- is to refer to this reference within the LyX document, the 
+ is to refer to this reference within the \SpecialChar LyX
+ document, the 
 \family sans
 Label
 \family default
@@ -2857,7 +2975,7 @@ lyxtutorial
 Now pick somewhere in your document that you would like to insert a reference.
  Do so with 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Citation
 \family default
  or the toolbar button 
@@ -2968,7 +3086,8 @@ Table of Contents
 
 \begin_layout Standard
 You may want to put a table of contents at the beginning of your document.
- LyX makes this easy to do.
+ \SpecialChar LyX
+ makes this easy to do.
  Just hit 
 \family sans
 Return
@@ -2976,7 +3095,7 @@ Return
  after your document title and before your first section title and select
  
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 List
 \begin_inset space ~
 \end_inset
@@ -2985,7 +3104,7 @@ List
 \begin_inset space ~
 \end_inset
 
-TOC\SpecialChar \menuseparator
+TOC\SpecialChar menuseparator
 Table
 \begin_inset space ~
 \end_inset
@@ -3024,7 +3143,7 @@ The table of contents is not printed in the on-screen version of the document.
  But you can display the table of contents in a separate window by clicking
  on the table of contents button, or by using 
 \family sans
-View\SpecialChar \menuseparator
+View\SpecialChar menuseparator
 Outline
 \begin_inset space ~
 \end_inset
@@ -3045,8 +3164,9 @@ arg   "dialog-toggle toc"
 \family sans
 Outline
 \family default
- window will highlight that line and move the display (in the LyX editing
- window) to that place in the document.
+ window will highlight that line and move the display (in the \SpecialChar LyX
+ editing window)
+ to that place in the document.
  You can also use the arrow keys to move up and down in the table of contents.
  You may therefore find it convenient to leave this window open throughout
  editing sessions.
@@ -3077,15 +3197,21 @@ Using Math
 \end_layout
 
 \begin_layout Standard
-LaTeX is used by many scientists because it outputs great looking equations,
+\SpecialChar LaTeX
+ is used by many scientists because it outputs great looking equations,
  avoiding the control characters used by word processors and their equation
  editors.
  Many of these scientists are frustrated, however, because writing equations
- in LaTeX is more like programming than writing.
- Happily, LyX has WYSIWYM support for equations.
- If you are used to LaTeX, you will find that all of the usual LaTeX math
- commands can be typed in normally, but they will show up in a WYSIWYM fashion.
- If, on the other hand, you have never written in LaTeX, then the 
+ in \SpecialChar LaTeX
+ is more like programming than writing.
+ Happily, \SpecialChar LyX
+ has WYSIWYM support for equations.
+ If you are used to \SpecialChar LaTeX
+, you will find that all of the usual \SpecialChar LaTeX
+ math commands
+ can be typed in normally, but they will show up in a WYSIWYM fashion.
+ If, on the other hand, you have never written in \SpecialChar LaTeX
+, then the 
 \family sans
 Math
 \begin_inset space ~
@@ -3101,7 +3227,8 @@ Math Mode
 \end_layout
 
 \begin_layout Standard
-Somewhere in your LyX document, type: 
+Somewhere in your \SpecialChar LyX
+ document, type: 
 \end_layout
 
 \begin_layout LyX-Code
@@ -3110,7 +3237,8 @@ I like what Einstein said, E=mc^2, because it is so simple.
 \end_layout
 
 \begin_layout Standard
-Now, that equation does not look very good in LyX and in the output; there
+Now, that equation does not look very good in \SpecialChar LyX
+ and in the output; there
  is no space between the letters and the equals sign, and you would like
  to write an actual superscript for the 
 \begin_inset Quotes eld
@@ -3121,9 +3249,10 @@ Now, that equation does not look very good in LyX and in the output; there
 \end_inset
 
 .
- That bad typesetting happened because we did not tell LyX that we were
- writing a mathematical expression, so it typeset the equation like regular
- old text.
+ That bad typesetting happened because we did not tell \SpecialChar LyX
+ that we were writing
+ a mathematical expression, so it typeset the equation like regular old
+ text.
 \end_layout
 
 \begin_layout Standard
@@ -3136,8 +3265,8 @@ arg   "math-mode"
 
  or use the menu 
 \family sans
-Insert\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Inline
 \begin_inset space ~
 \end_inset
@@ -3145,8 +3274,9 @@ Inline
 Formula
 \family default
 .
- If nothing is highlighted LyX inserts a little blue square, which is an
- empty math formula.
+ If nothing is highlighted \SpecialChar LyX
+ inserts a little blue square, which is an empty
+ math formula.
  The expression appears in blue and the blue square disappears as soon as
  the formula is not empty.
  Now type 
@@ -3176,19 +3306,22 @@ Looking at the output you will notice that the expression was typeset nicely,
 
 \begin_layout Standard
 This math editor is another example of the WYSIWYM philosophy.
- In LaTeX, you write a mathematical expression using text and commands like
- 
+ In \SpecialChar LaTeX
+, you write a mathematical expression using text and commands like 
 \family typewriter
 
 \backslash
 sqrt
 \family default
 ; this can be frustrating, because you cannot see what an expression looks
- like until you run the file under LaTeX and you may have to spend time,
- for example, finding missing brackets.
- LyX does not attempt to get the expression to look perfect (WYSIWYG), but
+ like until you run the file under \SpecialChar LaTeX
+ and you may have to spend time, for
+ example, finding missing brackets.
+ \SpecialChar LyX
+ does not attempt to get the expression to look perfect (WYSIWYG), but
  it gives you an extremely good idea of what the expression will look like.
- LaTeX then takes care of the professional typesetting.
+ \SpecialChar LaTeX
+ then takes care of the professional typesetting.
 \end_layout
 
 \begin_layout Section
@@ -3229,7 +3362,7 @@ Right
 \family sans
 Esc
 \family default
- to leave the formula\SpecialChar \@.
+ to leave the formula\SpecialChar endofsentence
 
 \end_layout
 
@@ -3248,7 +3381,7 @@ Backspace
  Select text either with the arrow keys or with the mouse.
  
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Undo
 \family default
  works in math mode as well as cut and paste.
@@ -3369,7 +3502,8 @@ Toolbar
 \end_inset
 
 .
- LyX will place another blue rectangle in the superscript, so that whatever
+ \SpecialChar LyX
+ will place another blue rectangle in the superscript, so that whatever
  you write next will be superscripted, and in a smaller font size.
  Everything you type until you hit a 
 \family sans
@@ -3431,12 +3565,12 @@ toolbar
  operations.
  Many of these operations can be accomplished from the keyboard or the 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Math
 \family default
  or the 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Math
 \family default
  menus (the latter only appears when you are in Math mode).
@@ -3468,7 +3602,7 @@ toolbar
  is shown when the cursor is in a formula and can also be turned on manually
  in the menu 
 \family sans
-View\SpecialChar \menuseparator
+View\SpecialChar menuseparator
 Toolbars
 \family default
 .
@@ -3571,7 +3705,8 @@ arg   "math-insert \\sqrt"
  the square root.
  You can type variables, numbers, other square roots, fractions, whatever
  you want.
- LyX will automatically resize the square root to fit what is inside.
+ \SpecialChar LyX
+ will automatically resize the square root to fit what is inside.
 \end_layout
 
 \begin_layout Standard
@@ -3599,7 +3734,8 @@ arg   "math-insert \\hat"
 \end_inset
 
 .
- Click on a decoration, and LyX will insert that decoration with an insertion
+ Click on a decoration, and \SpecialChar LyX
+ will insert that decoration with an insertion
  point under (or over) it.
  Just type what you want in the insertion point.
  There are two sets of decorations: those that resize with the text you
@@ -3637,8 +3773,9 @@ Delimiter
 \begin_inset Quotes erd
 \end_inset
 
- (the empty delimiter is displayed as a broken line in LyX, but will not
- show up in the output).
+ (the empty delimiter is displayed as a broken line in \SpecialChar LyX
+, but will not show
+ up in the output).
 \end_layout
 
 \begin_layout Standard
@@ -3707,7 +3844,8 @@ Math
 Toolbar
 \family default
 .
- LyX writes two insertion points in a fraction.
+ \SpecialChar LyX
+ writes two insertion points in a fraction.
  As you would expect, you can use arrow keys or the mouse to move around
  a fraction.
  Click on the top square and type 
@@ -3764,7 +3902,8 @@ sin
 \begin_inset Quotes erd
 \end_inset
 
- in math mode, LyX thinks you are typing the product of the three variables
+ in math mode, \SpecialChar LyX
+ thinks you are typing the product of the three variables
  
 \begin_inset Formula $s$
 \end_inset
@@ -3788,7 +3927,8 @@ sin
 \end_inset
 
  typeset in Roman.
- In addition, LyX will not put a space between the word 
+ In addition, \SpecialChar LyX
+ will not put a space between the word 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3868,7 +4008,8 @@ sin
 \begin_inset Quotes erd
 \end_inset
 
- is displayed in LyX in black, and set in upright roman type.
+ is displayed in \SpecialChar LyX
+ in black, and set in upright roman type.
  The whole word is treated as one symbol, so if you type 
 \family sans
 Backspace
@@ -3957,7 +4098,8 @@ Toolbar
 OK
 \family default
 .
- LyX prints 6 insertion points in a 
+ \SpecialChar LyX
+ prints 6 insertion points in a 
 \begin_inset Formula $2\times3$
 \end_inset
 
@@ -3987,7 +4129,7 @@ Down
 \begin_layout Standard
 If you need to change the number of rows and columns, use the menu 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Rows
 \begin_inset space \thinspace{}
 \end_inset
@@ -4033,7 +4175,8 @@ User's Guide
  for information on how to change the horizontal alignment of each column,
  and how to change the vertical position of the whole matrix.
  Note that if you want to write a table containing text, you should use
- LyX's wonderful table support, rather than trying to write text in a matrix.
+ \SpecialChar LyX
+'s wonderful table support, rather than trying to write text in a matrix.
 \end_layout
 
 \begin_layout Subsection
@@ -4151,8 +4294,8 @@ status collapsed
 \begin_layout Plain Layout
 After you have  done it the hard way, give 
 \family sans
-Insert\SpecialChar \menuseparator
-Math\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+Math\SpecialChar menuseparator
 Cases
 \begin_inset space ~
 \end_inset
@@ -4185,7 +4328,8 @@ More Math Stuff
 
 \begin_layout Standard
 Now you are familiar with the basics.
- LyX's math editor can do a lot more.
+ \SpecialChar LyX
+'s math editor can do a lot more.
  You can refer to the 
 \emph on
 Math
@@ -4233,12 +4377,14 @@ Miscellaneous
 \end_layout
 
 \begin_layout Section
-Other major LyX Features
+Other major \SpecialChar LyX
+ Features
 \end_layout
 
 \begin_layout Standard
-We have not gone through all the possible commands in LyX, and we are not
- planning on it.
+We have not gone through all the possible commands in \SpecialChar LyX
+, and we are not planning
+ on it.
  As usual, see the 
 \emph on
 User's Guide
@@ -4252,14 +4398,16 @@ Embedded
 Objects
 \emph default
  manual for more information.
- We will just mention a couple more major things LyX can do:
+ We will just mention a couple more major things \SpecialChar LyX
+ can do:
 \end_layout
 
 \begin_layout Itemize
-LyX has WYSIWYM support for tables.
+\SpecialChar LyX
+ has WYSIWYM support for tables.
  Use the 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Table
 \family default
  (toolbar button 
@@ -4292,10 +4440,11 @@ arg   "toolbar-toggle table"
 \end_layout
 
 \begin_layout Itemize
-LyX also supports including pictures in any format within documents.
+\SpecialChar LyX
+ also supports including pictures in any format within documents.
  (You guessed it: 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Graphics
 \family default
  (toolbar button 
@@ -4306,44 +4455,51 @@ arg   "dialog-show-new-inset graphics"
 
 ).
  Then browse for the figure file, rotate or scale it, etc.) Tables and figures
- can have captions, and LyX will automatically generate lists of figures
- and/or tables.
+ can have captions, and \SpecialChar LyX
+ will automatically generate lists of figures and/or
+ tables.
 \end_layout
 
 \begin_layout Itemize
-LyX is heavily configurable.
- Everything from how the LyX window looks to how the output comes out can
- be configured in a number of ways.
+\SpecialChar LyX
+ is heavily configurable.
+ Everything from how the \SpecialChar LyX
+ window looks to how the output comes out can be
+ configured in a number of ways.
  Much configuration is done through 
 \family sans
-Tools\SpecialChar \menuseparator
+Tools\SpecialChar menuseparator
 Preferences
 \family default
 .
  For more information on this, check out 
 \family sans
-Help\SpecialChar \menuseparator
-Customization\SpecialChar \@.
+Help\SpecialChar menuseparator
+Customization\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Itemize
-LyX is being developed by a team of programmers on five continents.
- Therefore, LyX has better support for non-English languages (such as Dutch,
- German, French, Greek, Czech, Turkish, \SpecialChar \ldots{}
+\SpecialChar LyX
+ is being developed by a team of programmers on five continents.
+ Therefore, \SpecialChar LyX
+ has better support for non-English languages (such as Dutch,
+ German, French, Greek, Czech, Turkish, \SpecialChar ldots
 ) than many word processors.
  Even the right-to-left languages Arabic, Farsi, and Hebrew and the Asian
  languages Chinese Japanese, and Korean are supported.
- You can write documents in other languages and you can also configure LyX
+ You can write documents in other languages and you can also configure \SpecialChar LyX
+
  to show its menus and error messages in other languages.
  
 \end_layout
 
 \begin_layout Itemize
-The LyX menus feature keybindings.
+The \SpecialChar LyX
+ menus feature keybindings.
  This means that you can do 
 \family sans
-File\SpecialChar \menuseparator
+File\SpecialChar menuseparator
 Open
 \family default
  by pressing 
@@ -4364,13 +4520,15 @@ arg   "file-open"
  Keybindings are also configurable.
  For information on this, check out 
 \family sans
-Help\SpecialChar \menuseparator
-Customization\SpecialChar \@.
+Help\SpecialChar menuseparator
+Customization\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Itemize
-LyX can read LaTeX documents.
+\SpecialChar LyX
+ can read \SpecialChar LaTeX
+ documents.
  See section
 \begin_inset space ~
 \end_inset
@@ -4394,7 +4552,9 @@ Generation of indexes and nomenclatures/glossaries is supported.
 \end_layout
 
 \begin_layout Section
-LyX for LaTeX Users
+\SpecialChar LyX
+ for \SpecialChar LaTeX
+ Users
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:latexusers"
@@ -4405,23 +4565,33 @@ name "sec:latexusers"
 \end_layout
 
 \begin_layout Standard
-If you do not know anything about LaTeX, you do not have to read this section.
+If you do not know anything about \SpecialChar LaTeX
+, you do not have to read this section.
  Actually, you might want to 
 \emph on
 learn
 \emph default
- about LaTeX, and then read this chapter.
- However, some of those who begin to use LyX will be familiar with LaTeX.
- If you are such a person, you may be wondering if LyX can really do everything
- LaTeX can do.
- The short answer is that LyX can do pretty much everything LaTeX can do
- in one form or another, and it definitely simplifies most parts of writing
- a LaTeX document.
+ about \SpecialChar LaTeX
+, and then read this chapter.
+ However, some of those who begin to use \SpecialChar LyX
+ will be familiar with \SpecialChar LaTeX
+.
+ If you are such a person, you may be wondering if \SpecialChar LyX
+ can really do everything
+ \SpecialChar LaTeX
+ can do.
+ The short answer is that \SpecialChar LyX
+ can do pretty much everything \SpecialChar LaTeX
+ can do in one
+ form or another, and it definitely simplifies most parts of writing a \SpecialChar LaTeX
+
+ document.
 \end_layout
 
 \begin_layout Standard
 Because this is just a tutorial, we are only going to mention things that
- new LyX users will most likely be interested in.
+ new \SpecialChar LyX
+ users will most likely be interested in.
  In the interests of keeping the Tutorial short, we will give only minimal
  information here.
  The 
@@ -4440,21 +4610,31 @@ Embedded
 
 Objects
 \emph default
- manuals have a great deal of information on differences between LyX and
- LaTeX, and how to do various LaTeX tricks in LyX.
+ manuals have a great deal of information on differences between \SpecialChar LyX
+ and \SpecialChar LaTeX
+,
+ and how to do various \SpecialChar LaTeX
+ tricks in \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Subsection
-TeX Mode 
+\SpecialChar TeX
+ Mode 
 \end_layout
 
 \begin_layout Standard
-Anything that you enter in TeX mode will be passed straight to LaTeX, and
- will be displayed in red on the screen.
- You can use TeX commands in LyX by choosing 
+Anything that you enter in \SpecialChar TeX
+ mode will be passed straight to \SpecialChar LaTeX
+, and will be
+ displayed in red on the screen.
+ You can use \SpecialChar TeX
+ commands in \SpecialChar LyX
+ by choosing 
 \family sans
-Insert\SpecialChar \menuseparator
-TeX
+Insert\SpecialChar menuseparator
+\SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
@@ -4467,22 +4647,29 @@ arg   "ert-insert"
 \end_inset
 
 ).
- This creates a box where everything within it is passed straight to LaTeX.
+ This creates a box where everything within it is passed straight to \SpecialChar LaTeX
+.
 \end_layout
 
 \begin_layout Standard
-In a math formula, TeX mode is handled a bit differently.
- TeX mode is entered there by typing a backslash.
+In a math formula, \SpecialChar TeX
+ mode is handled a bit differently.
+ \SpecialChar TeX
+ mode is entered there by typing a backslash.
  The backslash is not written out, but anything you type afterwards will
  be in red.
- You exit TeX mode by typing 
+ You exit \SpecialChar TeX
+ mode by typing 
 \family sans
 Space
 \family default
  or some other non-alphabetic character, like a number, underscore, caret
  or parenthesis.
- Once you exit TeX mode, if LyX knows the TeX command you have typed in,
- it will convert it to WYSIWYM\SpecialChar \@.
+ Once you exit \SpecialChar TeX
+ mode, if \SpecialChar LyX
+ knows the \SpecialChar TeX
+ command you have typed in, it will
+ convert it to WYSIWYM\SpecialChar endofsentence
  So if you type 
 \begin_inset Quotes eld
 \end_inset
@@ -4501,7 +4688,8 @@ gamma
 \family sans
 Space
 \family default
-, LyX will change the red 
+, \SpecialChar LyX
+ will change the red 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4531,7 +4719,8 @@ Math
 
 Toolbar
 \family default
-, and will be especially convenient for experienced LaTeX users.
+, and will be especially convenient for experienced \SpecialChar LaTeX
+ users.
 \end_layout
 
 \begin_layout Standard
@@ -4559,12 +4748,19 @@ and
 \end_layout
 
 \begin_layout Standard
-LyX cannot do absolutely everything that LaTeX can do.
+\SpecialChar LyX
+ cannot do absolutely everything that \SpecialChar LaTeX
+ can do.
  Some fancy functions are not supported at all, while some work but are
  not WYSIWYM.
- TeX mode allows users to get the full flexibility of LaTeX, while having
- all the convenient features of LyX, like WYSIWYM math, tables, and editing.
- LyX could never support every LaTeX package.
+ \SpecialChar TeX
+ mode allows users to get the full flexibility of \SpecialChar LaTeX
+, while having all the
+ convenient features of \SpecialChar LyX
+, like WYSIWYM math, tables, and editing.
+ \SpecialChar LyX
+ could never support every \SpecialChar LaTeX
+ package.
  However, by typing 
 \family typewriter
 
@@ -4587,7 +4783,8 @@ reference "sec:preamble"
 \end_layout
 
 \begin_layout Subsection
-Importing LaTeX Documents — 
+Importing \SpecialChar LaTeX
+ Documents — 
 \family typewriter
 tex2lyx
 \family default
@@ -4602,23 +4799,28 @@ name "sec:tex2lyx"
 \end_layout
 
 \begin_layout Standard
-You can import a LaTeX file into LyX by using the 
+You can import a \SpecialChar LaTeX
+ file into \SpecialChar LyX
+ by using the 
 \family sans
-File\SpecialChar \menuseparator
-Import\SpecialChar \menuseparator
-LaTeX
+File\SpecialChar menuseparator
+Import\SpecialChar menuseparator
+\SpecialChar LaTeX
+
 \begin_inset space ~
 \end_inset
 
 (plain)
 \family default
- menu in LyX.
+ menu in \SpecialChar LyX
+.
  This will call the program 
 \family typewriter
 tex2lyx
 \family default
  which will create a file foo.lyx from the file foo.tex.
- LyX will then open that file.
+ \SpecialChar LyX
+ will then open that file.
  If the translation does not work, you can try calling 
 \family typewriter
 tex2lyx
@@ -4631,8 +4833,10 @@ Even when the translation does work,
 \family typewriter
 tex2lyx
 \family default
- may not translate everything, though it does handle most legal LaTeX.
- It will leave things it does not understand in TeX mode; so, after translating
+ may not translate everything, though it does handle most legal \SpecialChar LaTeX
+.
+ It will leave things it does not understand in \SpecialChar TeX
+ mode; so, after translating
  a file with 
 \family typewriter
 tex2lyx
@@ -4655,7 +4859,8 @@ man
 tex2lyx
 \family default
 .
- The manpage describes which LaTeX commands and environments are not supported,
+ The manpage describes which \SpecialChar LaTeX
+ commands and environments are not supported,
  what bugs you might run into (and how to get around them), and how to use
  the various options.
 \end_layout
@@ -4673,20 +4878,24 @@ known
 \begin_inset Quotes erd
 \end_inset
 
- to LyX, that is, for which there is a corresponding LyX 
+ to \SpecialChar LyX
+, that is, for which there is a corresponding \SpecialChar LyX
+ 
 \family sans
 layout file
 \family default
 .
  If there is no layout file, then you will get an error saying that the
  conversion could not be performed.
- So, unless you have a layout for the document class of your LaTeX file,
- 
+ So, unless you have a layout for the document class of your \SpecialChar LaTeX
+ file, 
 \family typewriter
 tex2lyx
 \family default
- simply will not know how to translate the LaTeX that it finds there into
- things LyX understands.
+ simply will not know how to translate the \SpecialChar LaTeX
+ that it finds there into things
+ \SpecialChar LyX
+ understands.
  More about layout files and how they are created is explained in detail
  in Chapter 5 of the 
 \emph on
@@ -4696,18 +4905,24 @@ Customization
 \end_layout
 
 \begin_layout Subsection
-Converting LyX Documents to LaTeX
+Converting \SpecialChar LyX
+ Documents to \SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Standard
-You might wish to convert a LyX Document to a LaTeX file.
- For example, a co-worker or co-author who does not have LyX might want
- to read it.
+You might wish to convert a \SpecialChar LyX
+ Document to a \SpecialChar LaTeX
+ file.
+ For example, a co-worker or co-author who does not have \SpecialChar LyX
+ might want to
+ read it.
  Select 
 \family sans
-File\SpecialChar \menuseparator
-Export\SpecialChar \menuseparator
-LaTeX
+File\SpecialChar menuseparator
+Export\SpecialChar menuseparator
+\SpecialChar LaTeX
+
 \family default
 .
  This will create a file 
@@ -4722,7 +4937,8 @@ whatever.lyx
 \end_layout
 
 \begin_layout Subsection
-LaTeX Preamble
+\SpecialChar LaTeX
+ Preamble
 \end_layout
 
 \begin_layout Subsubsection
@@ -4732,13 +4948,14 @@ Document Class
 \begin_layout Standard
 The 
 \family sans
-Document\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
 Settings
 \family default
  dialog takes care of the document-wide options, such as changing the document
  class, default font size and paper size.
- Document class options and also options for LaTeX packages can be entered
- there in the 
+ Document class options and also options for \SpecialChar LaTeX
+ packages can be entered there
+ in the 
 \family sans
 Class
 \begin_inset space ~
@@ -4761,13 +4978,16 @@ name "sec:preamble"
 \end_layout
 
 \begin_layout Standard
-If you have special commands to put in the preamble of a LaTeX file, you
- can use them in a LyX document as well.
+If you have special commands to put in the preamble of a \SpecialChar LaTeX
+ file, you can
+ use them in a \SpecialChar LyX
+ document as well.
  Select 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
-LaTeX
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+\SpecialChar LaTeX
+
 \begin_inset space ~
 \end_inset
 
@@ -4775,19 +4995,24 @@ Preamble
 \family default
  and type in the dialog window (or from the document settings dialog, depending
  on the frontend).
- Anything you type will (as with TeX mode) be sent directly to LaTeX.
+ Anything you type will (as with \SpecialChar TeX
+ mode) be sent directly to \SpecialChar LaTeX
+.
 \end_layout
 
 \begin_layout Subsection
-BibTeX
+Bib\SpecialChar TeX
+
 \end_layout
 
 \begin_layout Standard
-LyX has support for BibTeX, which allows you to build databases of bibliographic
-al references to be used in multiple documents.
+\SpecialChar LyX
+ has support for Bib\SpecialChar TeX
+, which allows you to build databases of bibliographical
+ references to be used in multiple documents.
  Select 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 List
 \begin_inset space \thinspace{}
 \end_inset
@@ -4796,8 +5021,9 @@ List
 \begin_inset space \thinspace{}
 \end_inset
 
-TOC\SpecialChar \menuseparator
-BibTeX
+TOC\SpecialChar menuseparator
+Bib\SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
@@ -4805,25 +5031,28 @@ Bibliography
 \family default
  to include a 
 \family typewriter
-BibTeX
+Bib\SpecialChar TeX
+
 \family default
  file.
  In the 
 \family sans
 Database
 \family default
- field you load BibTeX files, in the 
+ field you load Bib\SpecialChar TeX
+ files, in the 
 \family sans
 Style
 \family default
- field you can load BibTeX style files.
+ field you can load Bib\SpecialChar TeX
+ style files.
 \end_layout
 
 \begin_layout Standard
 After you have done this, you can use citations from any bibliographies
  you have included with 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Citation
 \family default
  (see Section
@@ -4844,7 +5073,8 @@ Citation
 \family default
  dialog will show a list of all the references in your 
 \family typewriter
-BibTeX
+Bib\SpecialChar TeX
+
 \family default
  file.
 \end_layout
@@ -4855,10 +5085,14 @@ Errors!
 
 \begin_layout Standard
 Sometimes when you try to view a document, there will be errors, things
- that LyX or LaTeX cannot understand.
- When this happens, LyX will open a 
+ that \SpecialChar LyX
+ or \SpecialChar LaTeX
+ cannot understand.
+ When this happens, \SpecialChar LyX
+ will open a 
 \family sans
-LaTeX
+\SpecialChar LaTeX
+
 \begin_inset space ~
 \end_inset
 
@@ -4866,8 +5100,10 @@ Errors
 \family default
  dialog.
  Clicking on individual errors in this dialog will take you to the place
- in the LyX document where the error occurs and also display the detailed
- LaTeX error message.
+ in the \SpecialChar LyX
+ document where the error occurs and also display the detailed \SpecialChar LaTeX
+
+ error message.
 \end_layout
 
 \end_body
