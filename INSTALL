@@ -106,7 +106,6 @@ flags:
     optimization        -O2         -O2         -O         -O2     -O2
     assertions                       X           X
     stdlib-debug                                 X
-    concept-checks                   X           X
     warnings                         X           X
     debug                            X           X           X       X
 
@@ -228,9 +227,6 @@ The following options allow you to tweak the generated code more precisely (see 
     --without-included-boost is specified). You may have to use
     --disable-stdlib-debug when linking development versions against
     your system's boost library.
-
-  o --enable-concept-checks adds some compile-time checks. There is no
-    run-time penalty.
 
   o --enable-monolithic-build[=boost,client,insets,mathed,core,tex2lyx,frontend-qt4]
     that enables monolithic build of the given parts of the source

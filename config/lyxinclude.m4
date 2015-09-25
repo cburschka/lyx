@@ -239,15 +239,6 @@ AC_ARG_ENABLE(stdlib-debug,
 	  [enable_stdlib_debug=no])]
 )
 
-AC_ARG_ENABLE(concept-checks,
-  AC_HELP_STRING([--enable-concept-checks],[enable concept checks]),,
-  [AS_CASE([$build_type], [dev*|pre*], [enable_concept_checks=yes], 
-	  [enable_concept_checks=no])]
-  if test x$USE_QT5 = xyes ; then
-      enable_concept_checks=no
-  fi
-)
-
 ### set up optimization
 AC_ARG_ENABLE(optimization,
     AC_HELP_STRING([--enable-optimization[=value]],[enable compiler optimisation]),,
@@ -323,15 +314,6 @@ if test x$GXX = xyes; then
         ;;
     esac
   fi
-  if test x$enable_concept_checks = xyes ; then
-    case $gxx_version in
-      4.*)
-        lyx_flags="$lyx_flags concept-checks"
-	dnl FIXME check whether this makes sense with clang/libc++
-	AC_DEFINE(_GLIBCXX_CONCEPT_CHECKS, 1, [libstdc++ concept checking])
-	;;
-    esac
-  fi
   dnl enable_cxx11 can be yes/no/auto.
   dnl By default, it is auto and we enable C++11 when possible
   if test x$enable_cxx11 != xno ; then
@@ -357,6 +339,7 @@ if test x$GXX = xyes; then
 
   LYX_CXX_CXX11
   if test $lyx_use_cxx11 = yes ; then
+    AC_CHECK_HEADER([regex], [lyx_std_regex=yes], [lyx_std_regex=no])
     if test x$CLANG = xno || test $lyx_cv_lib_stdcxx = yes; then
       dnl <regex> in gcc is unusable in versions less than 4.9.0
       dnl see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
@@ -367,12 +350,15 @@ if test x$GXX = xyes; then
     else
       lyx_std_regex=yes
     fi
-
-    if test $lyx_std_regex = yes ; then
-      lyx_flags="$lyx_flags stdregex"
-      AC_DEFINE([LYX_USE_STD_REGEX], 1, [define to 1 if std::regex should be preferred to boost::regex])
-    fi
   fi
+else
+  dnl This is not gcc, not sure what setup we can do
+  AC_CHECK_HEADER([regex], [lyx_std_regex=yes], [lyx_std_regex=no])
+fi
+
+if test $lyx_std_regex = yes ; then
+  lyx_flags="$lyx_flags stdregex"
+  AC_DEFINE([LYX_USE_STD_REGEX], 1, [define to 1 if std::regex should be preferred to boost::regex])
 fi
 AM_CONDITIONAL([LYX_USE_STD_REGEX], test $lyx_std_regex = yes)
 ])dnl
