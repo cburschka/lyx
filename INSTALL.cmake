@@ -156,7 +156,6 @@ Build options
     -- LYX_DEBUG_GLIBC          = OFF    : Enable libstdc++ debug mode
     -- LYX_DEBUG_GLIBC_PEDANTIC = OFF    : Enable libstdc++ pedantic debug mode
     -- LYX_STDLIB_DEBUG         = OFF    : Use debug stdlib
-    -- LYX_CONCEPT_CHECKS       = OFF    : Enable concept-checks
 
     # MSVC specific
     -- LYX_CONSOLE              = ON     : Show console on Windows
