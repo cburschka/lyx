@@ -4,7 +4,7 @@ BUILT_SOURCES = $(UIFILES:%.ui=ui_%.h)
 BUILT_SOURCES += $(MOCEDFILES)
 BUILT_SOURCES += Resources.cpp Resources.qrc
 
-CLEANFILES += $(BUILT_SOURCES)
+CLEANFILES = $(BUILT_SOURCES)
 
 #########################  Qt stuff  #############################
 # Use _() for localization instead of tr() or trUtf8()
@@ -374,9 +374,6 @@ liblyxqt4_a_SOURCES = \
 	$(MOCHEADER) \
 	$(NOMOCHEADER)
 
-EXTRA_DIST = pch.h CMakeLists.txt $(UIFILES:%=ui/%)
-BUILT_SOURCES += $(PCH_FILE)
-AM_CPPFLAGS += $(PCH_FLAGS)
-
+EXTRA_DIST = CMakeLists.txt $(UIFILES:%=ui/%)
 
 endif

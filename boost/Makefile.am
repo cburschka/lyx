@@ -2,11 +2,6 @@ include $(top_srcdir)/config/common.am
 
 noinst_LIBRARIES = liblyxboost.a
 
-# Using precompiled headers makes compilation >10% slower
-#EXTRA_DIST = pch.h
-#BUILT_SOURCES = $(PCH_FILE)
-#AM_CPPFLAGS += $(PCH_FLAGS)
-
 EXTRA_DIST = boost \
 	CMakeLists.txt \
 	libs/CMakeLists.txt \

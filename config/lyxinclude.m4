@@ -263,11 +263,6 @@ case $enable_optimization in
     *) lyx_optim=${enable_optimization};;
 esac
 
-AC_ARG_ENABLE(pch,
-  AC_HELP_STRING([--enable-pch],[enable precompiled headers]),,
-	enable_pch=no;)
-lyx_pch_comp=no
-
 AC_ARG_ENABLE(cxx11,
   AC_HELP_STRING([--disable-cxx11],[disable C++11 mode (default: enabled for known good compilers)]),,
   enable_cxx11=auto;)
@@ -316,7 +311,6 @@ if test x$GXX = xyes; then
   fi
   case $gxx_version in
       2.*|3.*) AC_ERROR([gcc 4.x is required]);;
-      *)  test $enable_pch = yes && lyx_pch_comp=yes ;;
   esac
   if test x$enable_stdlib_debug = xyes ; then
     dnl FIXME: for clang/libc++, one should define _LIBCPP_DEBUG2=0
@@ -381,8 +375,6 @@ if test x$GXX = xyes; then
   fi
 fi
 AM_CONDITIONAL([LYX_USE_STD_REGEX], test $lyx_std_regex = yes)
-test "$lyx_pch_comp" = yes && lyx_flags="$lyx_flags pch"
-AM_CONDITIONAL(LYX_BUILD_PCH, test "$lyx_pch_comp" = yes)
 ])dnl
 
 dnl Usage: LYX_USE_INCLUDED_BOOST : select if the included boost should

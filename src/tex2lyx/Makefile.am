@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-EXTRA_DIST = TODO.txt tex2lyx.1in $(TEST_FILES) $(TEST_RESULTS) pch.h \
+EXTRA_DIST = TODO.txt tex2lyx.1in $(TEST_FILES) $(TEST_RESULTS) \
 	CMakeLists.txt test/CMakeLists.txt
 
 #noinst_LIBRARIES = libtexparser.a
@@ -17,7 +17,7 @@ bin_PROGRAMS = tex2lyx
 
 DEFAULT_INCLUDES =
 
-AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src/tex2lyx \
+AM_CPPFLAGS += -I$(top_srcdir)/src/tex2lyx \
 	-I$(top_srcdir)/src -I$(top_builddir) -I$(top_builddir)/src \
 	$(BOOST_INCLUDES)
 
@@ -104,8 +104,6 @@ LINKED_FILES = \
 	../Spacing.cpp \
 	../TextClass.cpp \
 	../version.cpp
-
-BUILT_SOURCES = $(PCH_FILE)
 
 tex2lyx_SOURCES = \
 	$(LINKED_FILES) \

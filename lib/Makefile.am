@@ -12,7 +12,7 @@ dist_pkgdata_DATA = CREDITS autocorrect chkconfig.ltx external_templates \
 
 # We use DATA now instead of PYTHON because automake 1.11.2 complains.
 # Note that we "chmod 755" manually this file in install-data-hook.
-dist_pkgdata_DATA += configure.py 
+dist_pkgdata_DATA += configure.py
 
 dist_noinst_DATA = \
 	appdata.xml \
@@ -260,7 +260,7 @@ dist_springerexamples_DATA = \
 	examples/springer/svmult_part.lyx \
 	examples/springer/svmult_preface.lyx \
 	examples/springer/svmult_referenc.lyx
-	
+
 thesisexamplesdir = $(pkgdatadir)/examples/thesis
 dist_thesisexamples_DATA = \
 	examples/thesis/Acknowledgments.lyx \
@@ -1915,7 +1915,7 @@ dist_imagesclassic_DATA = \
 	images/classic/view-others.png
 
 imagescommandsdir = $(imagesdir)/commands
-dist_imagescommands_DATA = 
+dist_imagescommands_DATA =
 
 kbddir = $(pkgdatadir)/kbd
 dist_kbd_DATA = \
@@ -2309,8 +2309,8 @@ lyx@program_suffix@.desktop: lyx.desktop-temp
 desktopdir = $(datadir)/applications
 desktop_DATA = lyx@program_suffix@.desktop
 
-CLEANFILES += lyx@program_suffix@.desktop lyx.desktop-temp \
-              lyx@program_suffix@.svg lyx@program_suffix@.png
+CLEANFILES = lyx@program_suffix@.desktop lyx.desktop-temp \
+             lyx@program_suffix@.svg lyx@program_suffix@.png
 endif
 dist_noinst_DATA += lyx.desktop.in images/lyx.svg images/lyx.png
 

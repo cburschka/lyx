@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-CLEANFILES += $(man_MANS)
+CLEANFILES = $(man_MANS)
 
 man_MANS = lyxclient.1
 
@@ -31,7 +31,7 @@ SOURCEFILES = \
   boost.cpp \
   client.cpp
 
-HEADERFILES = 
+HEADERFILES =
 
 
 lyxclient.cpp:
@@ -46,10 +46,6 @@ CLEANFILES += lyxclient.cpp
 lyxclient_SOURCES = lyxclient.cpp $(HEADERFILES)
 
 else
-
-EXTRA_DIST += pch.h
-AM_CPPFLAGS += $(PCH_FLAGS)
-BUILT_SOURCES = $(PCH_FILE)
 
 lyxclient_SOURCES = $(SOURCEFILES) $(HEADERFILES)
 

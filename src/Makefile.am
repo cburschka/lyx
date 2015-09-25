@@ -2,7 +2,7 @@ include $(top_srcdir)/config/common.am
 
 ############################### Core  ##############################
 
-AM_CPPFLAGS += $(PCH_FLAGS) -I$(top_srcdir)/src $(BOOST_INCLUDES) $(ENCHANT_CFLAGS) $(HUNSPELL_CFLAGS)
+AM_CPPFLAGS += -I$(top_srcdir)/src $(BOOST_INCLUDES) $(ENCHANT_CFLAGS) $(HUNSPELL_CFLAGS)
 AM_CPPFLAGS += $(QT_CPPFLAGS) $(QT_CORE_INCLUDES)
 
 if BUILD_CLIENT_SUBDIR
@@ -12,7 +12,6 @@ endif
 SUBDIRS = support frontends . $(CLIENT) tex2lyx
 
 EXTRA_DIST = lyx_commit_hash.h.in \
-	pch.h \
 	CMakeLists.txt \
 	graphics/CMakeLists.txt \
 	insets/CMakeLists.txt \
@@ -50,8 +49,6 @@ lyx_LDFLAGS = -framework AppKit -framework ApplicationServices \
 endif
 
 #lyx_LDFLAGS=-Wl,-O1
-
-BUILT_SOURCES = $(PCH_FILE)
 
 if INSTALL_MACOSX
 APPLESPELL = AppleSpellChecker.cpp AppleSpellChecker.h
@@ -324,8 +321,8 @@ update_commit_hash:
 
 lyx_commit_hash.h: update_commit_hash
 
-BUILT_SOURCES += lyx_commit_hash.h
-CLEANFILES += lyx_commit_hash.h
+BUILT_SOURCES = lyx_commit_hash.h
+CLEANFILES = lyx_commit_hash.h
 
 lyxcore.cpp:
 	@echo -e '$(SOURCEFILESCORE:%=\n#include "%")\n' > $@

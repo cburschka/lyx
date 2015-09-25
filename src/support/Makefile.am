@@ -1,14 +1,10 @@
 include $(top_srcdir)/config/common.am
 
-CLEANFILES += $(BUILT_SOURCES)
-
-EXTRA_DIST = pch.h \
-	os_cygwin.cpp os_unix.cpp os_win32.cpp os_win32.h \
+EXTRA_DIST = os_cygwin.cpp os_unix.cpp os_win32.cpp os_win32.h \
 	CMakeLists.txt tests/CMakeLists.txt tests/supporttest.cmake
 
 noinst_LIBRARIES = liblyxsupport.a
 
-BUILT_SOURCES = $(PCH_FILE)
 
 #########################  Qt stuff  #############################
 #
@@ -19,8 +15,8 @@ MOCHEADER = \
 
 MOCEDFILES = $(MOCHEADER:%.h=moc_%.cpp)
 
-CLEANFILES += $(MOCEDFILES)
-BUILT_SOURCES += $(MOCEDFILES)
+CLEANFILES = $(MOCEDFILES)
+BUILT_SOURCES = $(MOCEDFILES)
 
 moc_%.cpp: %.h
 	$(QT_MOC) -o $@ $<
@@ -30,8 +26,7 @@ liblyxsupport_a_DEPENDENCIES = $(MOCEDFILES)
 #
 ##################################################################
 
-AM_CPPFLAGS += $(PCH_FLAGS) -I$(srcdir)/.. $(BOOST_INCLUDES)
-AM_CPPFLAGS += $(QT_CPPFLAGS) $(QT_INCLUDES)
+AM_CPPFLAGS += -I$(srcdir)/.. $(BOOST_INCLUDES) $(QT_CPPFLAGS) $(QT_INCLUDES)
 
 liblyxsupport_a_SOURCES = \
 	FileMonitor.h \

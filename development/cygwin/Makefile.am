@@ -19,7 +19,7 @@ lyxwin_SOURCES = lyxwin.c lyxwinres.rc
 lyxeditor_LDFLAGS=-mwindows -e _mainCRTStartup
 lyxwin_LDFLAGS=-mwindows -e _mainCRTStartup
 
-CLEANFILES += lyxeditor.sh lyx_32x32.ico lyx_doc_32x32.ico
+CLEANFILES = lyxeditor.sh lyx_32x32.ico lyx_doc_32x32.ico
 
 lyxeditor.sh:
 	cp $(top_srcdir)/development/tools/lyxeditor $@
