@@ -269,7 +269,7 @@ AC_ARG_ENABLE(pch,
 lyx_pch_comp=no
 
 AC_ARG_ENABLE(cxx11,
-  AC_HELP_STRING([--enable-cxx11],[enable C++11 mode (default: enabled for known good compilers)]),,
+  AC_HELP_STRING([--disable-cxx11],[disable C++11 mode (default: enabled for known good compilers)]),,
   enable_cxx11=auto;)
 
 AC_ARG_ENABLE(assertions,
