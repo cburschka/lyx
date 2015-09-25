@@ -88,7 +88,7 @@ public:
 	/**
 	 * This cursor takes precedence over what is passed to recordUndo.
 	 * In the case of nested groups, only the first cur_before is
-	 * taken in account. The cursor is reset at the end of the
+	 * taken into account. The cursor is reset at the end of the
 	 * top-level group.
 	 */
 	void beginUndoGroup(CursorData const & cur_before);

@@ -1448,7 +1448,7 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 	for ( ; cit != row.end() ; ++cit) {
 		/** Look whether the cursor is inside the element's
 		 * span. Note that it is necessary to take the
-		 * boundary in account, and to accept virtual
+		 * boundary into account, and to accept virtual
 		 * elements, which have pos == endpos.
 		 */
 		if (pos + boundary_corr >= cit->pos

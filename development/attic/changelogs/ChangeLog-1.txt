@@ -12035,7 +12035,7 @@
 
 	* src/Makefile.am (lyx_DEPENDENCIES): give the explicit object
 	file name in insets and mathed directories (otherwise the
-	dependency is not taken in account under cygwin).
+	dependency is not taken into account under cygwin).
 
 	* src/text2.C (InsertString[AB]): make sure that we do not try to
 	read characters past the string length.

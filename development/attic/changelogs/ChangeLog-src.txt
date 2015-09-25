@@ -822,7 +822,7 @@
 	* buffer_funcs.C (getItemDepth): renamed from incrementItemDepth
 	and changed to just return the value of the item depth; take a
 	ParIterator as argument; take the itemdepth at outer nesting level
-	in account if necessary; cleanup and comment the code.
+	into account if necessary; cleanup and comment the code.
 	(resetEnumCounterNeeded): renamed from resetEnumCounterIfNeeded
 	and changed to just return true if reset is needed; take a
 	ParIterator as argument; cleanup and comment the code.
@@ -13899,7 +13899,7 @@
 
 2002-03-05  Jos�Ab�io Oliveira Matos  <jamatos@novalis.fc.up.pt>
 
-	* buffer.C (makeLinuxDocFile, makeDocBookFile): take in account the
+	* buffer.C (makeLinuxDocFile, makeDocBookFile): take into account the
 	final location of file, for the included files, and graphics.
 
 2002-03-05  Juergen Vigna  <jug@sad.it>
@@ -16658,7 +16658,7 @@
 
 	* text2.C (insertInset):
 	* paragraph.C (insetAllowed):
-	* BufferView_pimpl.C (insertInset): update to take in account the
+	* BufferView_pimpl.C (insertInset): update to take into account the
 	renaming of insertInsetAllowed
 
 	* lyxfunc.C (getStatus): add support for LFUN_INSET_TOGGLE.

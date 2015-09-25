@@ -986,7 +986,7 @@ void BufferView::updateDocumentClass(DocumentClassConstPtr olddc)
 }
 
 
-/** Return the change status at cursor position, taking in account the
+/** Return the change status at cursor position, taking into account the
  * status at each level of the document iterator (a table in a deleted
  * footnote is deleted).
  * When \param outer is true, the top slice is not looked at.
