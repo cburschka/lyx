@@ -360,6 +360,15 @@ AC_DEFUN([LYX_USE_INCLUDED_BOOST],[
 			fi
 		fi
 		AC_SUBST(BOOST_MT)
+
+		dnl In general, system boost libraries are incompatible with
+		dnl the use of stdlib-debug in libstdc++. See ticket #9736 for
+		dnl details.
+		if test $enable_stdlib_debug = "yes" ; then
+			LYX_WARNING([Compiling LyX with stdlib-debug and system boost libraries may lead to
+   crashes. Consider using --disable-stdlib-debug or removing
+   --without-included-boost.])
+		fi
 	fi
 ])
 

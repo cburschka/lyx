@@ -113,3 +113,5 @@ What's new
 
 - Work around gcc 5 bug 67557.
 
+- Give a warning when system boost and stdlib-debug are used together
+  (bug 9736).
