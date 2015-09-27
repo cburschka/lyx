@@ -469,7 +469,7 @@ type=typewriter
  you can write a comment everywhere on the page with a virtual ’typewriter’.
  These PDF-Freetext annotations do have no frame and a transparent background
  for ’overwriting’ arbitrary parts of the page.
- Here is an example in form of a blue rectangle:
+ Here is an example in form of a yellow rectangle:
 \begin_inset Flex PDF-Freetext
 status open
 
@@ -811,6 +811,82 @@ Striked-out PDF-Markup
 
 \end_layout
 
+\begin_layout Description
+mathpopup Formula parts will be highlighted.
+
+\series bold
+ 
+\series default
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ The PDF-Markup inset cannot be used for this option!
+\end_layout
+
+\end_inset
+
+ Instead the command 
+\series bold
+
+\backslash
+pdfmarkupcomment
+\series default
+ woll be used in a formula with this scheme:
+\begin_inset Newline newline
+\end_inset
+
+Command:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+pdfmarkupcomment[style=mathpopup]
+\backslash
+{formula part}
+\begin_inset Formula $\to$
+\end_inset
+
+
+\backslash
+{
+\backslash
+text
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+optional comment}
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+Result:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\pdfmarkupcomment[style=mathpopup]{\sum_{i=1}^{n}i=\frac{1}{2}n\cdot(n+1)}{\text{little Gauss}}
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 The text for the comment is inserted with the inset option 
 \family sans
@@ -821,10 +897,6 @@ Comment
 
 \begin_layout Standard
 PDF-Markup has some limitations:
-\end_layout
-
-\begin_layout Itemize
-it is only suitable for text or inline math!
 \end_layout
 
 \begin_layout Itemize
@@ -974,8 +1046,8 @@ PDF-Sideline
 \begin_layout Standard
 This will typeset a comment in form of identical markers on every side of
  the page.
- The yellow arrows besides this text is an example without any options:
- 
+ The yellow arrows besides this text are an example of a PDF-Sideline without
+ any options: 
 \begin_inset Flex PDF-Sideline
 status open
 
@@ -1007,7 +1079,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 opacity=0.33,color=magenta,icolor=cyan,caption=inline,linebegin=
@@ -1102,8 +1174,8 @@ PDF-Sideline has some limitations:
 \end_layout
 
 \begin_layout Itemize
-the markup annotation should not be longer than one page, otherwise the
- recognition of the page could fail
+the comment should not be longer than one page, otherwise the recognition
+ of the page could fail
 \end_layout
 
 \begin_layout Itemize
@@ -1215,8 +1287,8 @@ All objects that can be set into a TeX-box to measure its size.
 \begin_layout Standard
 The PDF-Tooltip inset has a mandatory argument for the tooltip.
  The object that should be annotated is set into the PDF-Tooltip inset,
- the tooltip is written into the mandatory argument of the inset.
- Here is an example of a word with a tooltip: 
+ the tooltip is written into the mandatory argument.
+ Here is as example of a word with a tooltip: 
 \begin_inset Flex PDF-Tooltip
 status open
 
@@ -1232,7 +1304,7 @@ This is a tooltip!
 
 
 \color red
-words
+word
 \end_layout
 
 \end_inset
@@ -1241,8 +1313,8 @@ words
 \end_layout
 
 \begin_layout Standard
-As the object for the tooltip can be almost anything, we can also use it
- for chemical notations in math: 
+Since a tooltip can be used for almost any object, one can also use it for
+ chemical notations in math: 
 \begin_inset Flex PDF-Tooltip
 status open
 
@@ -1269,8 +1341,8 @@ Sulfuric acid
 \end_layout
 
 \begin_layout Standard
-The PDF-Tooltip inset has also an optional argument that is used to correct
- the size of tooltips for math (if necessary) or to disable an annotation.
+The PDF-Tooltip inset has also an option that is used to correct the size
+ of the tooltip for math (if necessary) or to disable an annotation.
  Here is an example with a mathstyle option:
 \end_layout
 
@@ -1312,7 +1384,7 @@ little Gauß
 \end_inset
 
 
-\begin_inset Formula $x^{2}+2xy+y^{2}\sum_{i=1}^{n}i=\frac{1}{2}n\cdot(n+1)$
+\begin_inset Formula $\sum_{i=1}^{n}i=\frac{1}{2}n\cdot(n+1)$
 \end_inset
 
 
@@ -1484,6 +1556,7 @@ markup=Highlight
 \end_layout
 
 \begin_layout Define PDF-Comment Style
+
 \begin_inset Argument 1
 status open
 
@@ -1626,6 +1699,10 @@ author={Oleg Testman}
 You might use a special icon to see at the first look which comments were
  made by you.
  You therefore add behind the author-statement, separated by a comma, 
+\begin_inset Quotes eld
+\end_inset
+
+
 \series bold
 icon=Check
 \series default
@@ -1662,6 +1739,7 @@ author={Oleg Testman},icon=Check,color=lime
 \end_layout
 
 \begin_layout Define Avatar
+
 \begin_inset Argument 1
 status open
 
@@ -1752,6 +1830,7 @@ Oleg also said: I hate to repeat myself.
 \end_layout
 
 \begin_layout Define Avatar
+
 \begin_inset Argument 1
 status open
 
@@ -1929,6 +2008,7 @@ you can set a list style in case it was changed before the list of comments.
 \end_layout
 
 \begin_layout Define PDF-Comment List Style
+
 \begin_inset Argument 1
 status open
 
@@ -1956,6 +2036,7 @@ makeatother
 \end_layout
 
 \begin_layout Set PDF-Comment List Style
+
 AuthorCommentDeadline
 \end_layout
 
