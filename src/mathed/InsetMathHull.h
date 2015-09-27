@@ -51,7 +51,8 @@ public:
 	///
 	void updateBuffer(ParIterator const &, UpdateType);
 	///
-	void addToToc(DocIterator const & di, bool output_active) const;
+	void addToToc(DocIterator const & di, bool output_active,
+				  UpdateType utype) const;
 	///
 	InsetMathHull & operator=(InsetMathHull const &);
 	///

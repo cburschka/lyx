@@ -292,7 +292,8 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype)
 }
 
 
-void InsetMathHull::addToToc(DocIterator const & pit, bool output_active) const
+void InsetMathHull::addToToc(DocIterator const & pit, bool output_active,
+							 UpdateType utype) const
 {
 	if (!buffer_) {
 		//FIXME: buffer_ should be set at creation for this inset! Problem is
@@ -307,7 +308,7 @@ void InsetMathHull::addToToc(DocIterator const & pit, bool output_active) const
 		if (!numbered(row))
 			continue;
 		if (label_[row])
-			label_[row]->addToToc(pit, output_active);
+			label_[row]->addToToc(pit, output_active, utype);
 		toc->push_back(TocItem(pit, 0, nicelabel(row), output_active));
 	}
 }

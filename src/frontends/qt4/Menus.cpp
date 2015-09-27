@@ -1219,7 +1219,7 @@ void MenuDefinition::expandFlexInsert(
 }
 
 
-size_t const max_number_of_items = 25;
+size_t const max_number_of_items = 30;
 
 void MenuDefinition::expandToc2(Toc const & toc_list,
 		size_t from, size_t to, int depth)
@@ -1236,7 +1236,7 @@ void MenuDefinition::expandToc2(Toc const & toc_list,
 	if (to - from <= max_number_of_items) {
 		for (size_t i = from; i < to; ++i) {
 			QString label(4 * max(0, toc_list[i].depth() - depth), ' ');
-			label += limitStringLength(toc_list[i].str());
+			label += limitStringLength(toc_list[i].asString());
 			if (toc_list[i].depth() == depth) {
 				label += '|';
 			    if (shortcut_count < 9) {
@@ -1246,6 +1246,9 @@ void MenuDefinition::expandToc2(Toc const & toc_list,
 			}
 			add(MenuItem(MenuItem::Command, label,
 					    FuncRequest(toc_list[i].action())));
+			// separator after the menu heading
+			if (toc_list[i].depth() < depth)
+				add(MenuItem(MenuItem::Separator));
 		}
 	} else {
 		size_t pos = from;
@@ -1255,7 +1258,7 @@ void MenuDefinition::expandToc2(Toc const & toc_list,
 				++new_pos;
 
 			QString label(4 * max(0, toc_list[pos].depth() - depth), ' ');
-			label += limitStringLength(toc_list[pos].str());
+			label += limitStringLength(toc_list[pos].asString());
 			if (toc_list[pos].depth() == depth) {
 				label += '|';
 			    if (shortcut_count < 9) {
@@ -1285,12 +1288,10 @@ void MenuDefinition::expandToc(Buffer const * buf)
 	// all MenuItem constructors and to expandToc2. However, we
 	// know that all the entries in a TOC will be have status_ ==
 	// OK, so we avoid this unnecessary overhead (JMarc)
-
 	if (!buf) {
-		add(MenuItem(MenuItem::Info, qt_("<No Document Open>")));
+		add(MenuItem(MenuItem::Info, qt_("(No Document Open)")));
 		return;
 	}
-
 	// Add an entry for the master doc if this is a child doc
 	Buffer const * const master = buf->masterBuffer();
 	if (buf != master) {
@@ -1301,68 +1302,36 @@ void MenuDefinition::expandToc(Buffer const * buf)
 	}
 
 	MenuDefinition other_lists;
-
 	FloatList const & floatlist = buf->params().documentClass().floats();
 	TocList const & toc_list = buf->tocBackend().tocs();
 	TocList::const_iterator cit = toc_list.begin();
 	TocList::const_iterator end = toc_list.end();
 	for (; cit != end; ++cit) {
-		// Handle this later
-		if (cit->first == "tableofcontents")
+		// Handle table of contents later
+		if (cit->first == "tableofcontents" || cit->second->empty())
 			continue;
-
 		MenuDefinition submenu;
-		if (floatlist.typeExist(cit->first)) {
-			TocIterator ccit = cit->second->begin();
-			TocIterator eend = cit->second->end();
-			for (; ccit != eend; ++ccit) {
-				if (0 == ccit->depth()) {// omit subfloats
-					submenu.add(MenuItem(MenuItem::Command,
-										 limitStringLength(ccit->str()) + '|',
-										 FuncRequest(ccit->action())));
-				}
-			}
-
-			FuncRequest f(LFUN_DIALOG_SHOW, "toc " + cit->first);
-			submenu.add(MenuItem(MenuItem::Separator));
-			submenu.add(MenuItem(MenuItem::Command, qt_("Open Navigator..."), f));
-			MenuItem item(MenuItem::Submenu, guiName(cit->first, buf->params()));
-			// deserves to be in the main menu.
-			item.setSubmenu(submenu);
+		// "Open outliner..." entry
+		FuncRequest f(LFUN_DIALOG_SHOW, "toc " + cit->first);
+		submenu.add(MenuItem(MenuItem::Command, qt_("Open outliner..."), f));
+		submenu.add(MenuItem(MenuItem::Separator));
+		// add entries
+		submenu.expandToc2(* cit->second, 0, cit->second->size(), 0);
+		MenuItem item(MenuItem::Submenu, guiName(cit->first, buf->params()));
+		item.setSubmenu(submenu);
+		// deserves to be in the main menu?
+		if (floatlist.typeExist(cit->first) || cit->first == "child")
 			add(item);
-		} else {
-			if (cit->second->size() >= 30) {
-				// FIXME: the behaviour of the interface should not change
-				// arbitrarily. Each type should be audited to see if the list
-				// can be optimised like for floats above.
-				FuncRequest f(LFUN_DIALOG_SHOW, "toc " + cit->first);
-				submenu.add(MenuItem(MenuItem::Command, qt_("Open Navigator..."), f));
-			} else {
-				TocIterator ccit = cit->second->begin();
-				TocIterator eend = cit->second->end();
-				for (; ccit != eend; ++ccit) {
-					submenu.add(MenuItem(MenuItem::Command,
-										 limitStringLength(ccit->str()) + '|',
-										 FuncRequest(ccit->action())));
-				}
-			}
-
-			MenuItem item(MenuItem::Submenu, guiName(cit->first, buf->params()));
-			item.setSubmenu(submenu);
-			if (cit->first == "child") {
-				// deserves to be in the main menu.
-				add(item);
-			} else
-				other_lists.add(item);
-		}
+		else
+			other_lists.add(item);
 	}
 	if (!other_lists.empty()) {
 		MenuItem item(MenuItem::Submenu, qt_("Other Lists"));
 		item.setSubmenu(other_lists);
 		add(item);
 	}
-
 	// Handle normal TOC
+	add(MenuItem(MenuItem::Separator));
 	cit = toc_list.find("tableofcontents");
 	if (cit == end)
 		LYXERR(Debug::GUI, "No table of contents.");
@@ -1370,7 +1339,7 @@ void MenuDefinition::expandToc(Buffer const * buf)
 		if (!cit->second->empty())
 			expandToc2(* cit->second, 0, cit->second->size(), 0);
 		else
-			add(MenuItem(MenuItem::Info, qt_("<Empty Table of Contents>")));
+			add(MenuItem(MenuItem::Info, qt_("(Empty Table of Contents)")));
 	}
 }
 

@@ -71,7 +71,8 @@ private:
 	/// should paragraph indendation be omitted in any case?
 	bool neverIndent() const { return true; }
 	///
-	void addToToc(DocIterator const & di, bool output_active) const;
+	void addToToc(DocIterator const & di, bool output_active,
+				  UpdateType utype) const;
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///

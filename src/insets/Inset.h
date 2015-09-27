@@ -74,7 +74,7 @@ std::string insetName(InsetCode);
 /// Eg, insetDisplayName(BRANCH_CODE) == _("Branch")
 docstring insetDisplayName(InsetCode);
 ///
-static int const TOC_ENTRY_LENGTH = 40;
+static int const TOC_ENTRY_LENGTH = 80;
 
 /// Common base class to all insets
 
@@ -493,7 +493,15 @@ public:
 	/// Add an entry to the TocList
 	/// Pass a DocIterator that points at the paragraph containing
 	/// the inset
-	virtual void addToToc(DocIterator const & /* di */, bool /* output_active */) const {}
+	///
+	/// \param output_active : is the inset active or is it in an inactive
+	/// branch or a note?
+	///
+	/// \param utype : is the toc being generated for use by the output
+	/// routines?
+	virtual void addToToc(DocIterator const & /* di */,
+						  bool /* output_active */,
+						  UpdateType /* utype*/) const {}
 	/// Collect BibTeX information
 	virtual void collectBibKeys(InsetIterator const &) const {}
 	/// Update the counters of this inset and of its contents.

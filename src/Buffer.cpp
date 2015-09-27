@@ -4462,7 +4462,7 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 	d->bibinfo_cache_valid_ = true;
 	d->cite_labels_valid_ = true;
 	/// FIXME: Perf
-	cbuf.tocBackend().update(utype == OutputUpdate);
+	cbuf.tocBackend().update(true, utype);
 	if (scope == UpdateMaster)
 		cbuf.structureChanged();
 }

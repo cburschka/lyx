@@ -331,7 +331,8 @@ void InsetCitation::updateBuffer(ParIterator const &, UpdateType)
 }
 
 
-void InsetCitation::addToToc(DocIterator const & cpit, bool output_active) const
+void InsetCitation::addToToc(DocIterator const & cpit, bool output_active,
+							 UpdateType) const
 {
 	// NOTE
 	// BiblioInfo::collectCitedEntries() uses the TOC to collect the citations 

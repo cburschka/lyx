@@ -90,17 +90,25 @@ void InsetCaption::setCustomLabel(docstring const & label)
 }
 
 
-void InsetCaption::addToToc(DocIterator const & cpit, bool output_active) const
+void InsetCaption::addToToc(DocIterator const & cpit, bool output_active,
+							UpdateType utype) const
 {
 	string const & type = floattype_.empty() ? "senseless" : floattype_;
 	DocIterator pit = cpit;
 	pit.push_back(CursorSlice(const_cast<InsetCaption &>(*this)));
-	docstring str = full_label_;
-	int length = output_active ? INT_MAX : TOC_ENTRY_LENGTH;
-	text().forOutliner(str, length);
+	int length = (utype == OutputUpdate) ?
+		// For output (e.g. xhtml) all (bug #8603) or nothing
+		(output_active ? INT_MAX : 0) :
+		// TOC for LyX interface
+		TOC_ENTRY_LENGTH;
+	docstring str;
+	if (length > 0) {
+		str = full_label_;
+		text().forOutliner(str, length);
+	}
 	buffer().tocBackend().builder(type)->captionItem(pit, str, output_active);
 	// Proceed with the rest of the inset.
-	InsetText::addToToc(cpit, output_active);
+	InsetText::addToToc(cpit, output_active, utype);
 }
 
 

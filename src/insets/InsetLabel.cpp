@@ -169,7 +169,8 @@ void InsetLabel::updateBuffer(ParIterator const & par, UpdateType utype)
 }
 
 
-void InsetLabel::addToToc(DocIterator const & cpit, bool output_active) const
+void InsetLabel::addToToc(DocIterator const & cpit, bool output_active,
+						  UpdateType) const
 {
 	docstring const & label = getParam("name");
 	shared_ptr<Toc> toc = buffer().tocBackend().toc("label");

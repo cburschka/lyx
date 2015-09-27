@@ -39,6 +39,7 @@ using namespace std;
 
 namespace lyx {
 
+
 ///////////////////////////////////////////////////////////////////////////
 //
 // TocItem implementation
@@ -46,8 +47,9 @@ namespace lyx {
 ///////////////////////////////////////////////////////////////////////////
 
 TocItem::TocItem(DocIterator const & dit, int d, docstring const & s,
-	bool output_active, docstring const & t) :
-  dit_(dit), depth_(d), str_(s), tooltip_(t), output_(output_active)
+			bool output_active, docstring const & t, FuncRequest action) :
+	dit_(dit), depth_(d), str_(s), tooltip_(t), output_(output_active),
+	action_(action)
 {
 }
 
@@ -66,15 +68,32 @@ docstring const & TocItem::tooltip() const
 
 docstring const TocItem::asString() const
 {
-	return docstring(4 * depth_, ' ') + str_;
+	// U+2327 X IN A RECTANGLE BOX
+	// char_type const cross = 0x2327;
+	// U+274E NEGATIVE SQUARED CROSS MARK
+	char_type const cross = 0x274e;
+	docstring prefix;
+	if (!output_) {
+		prefix += cross;
+		prefix += " ";
+	}
+	return prefix + str_;
 }
 
+// convert a DocIterator into an argument to LFUN_PARAGRAPH_GOTO 
+docstring paragraph_goto_arg(DocIterator const & dit)
+{
+	CursorSlice const & s = dit.innerTextSlice();
+	return convert<docstring>(s.paragraph().id()) + ' ' +
+		convert<docstring>(s.pos());
+}
 
 FuncRequest TocItem::action() const
 {
-	string const arg = convert<string>(dit_.paragraph().id())
-		+ ' ' + convert<string>(dit_.pos());
-	return FuncRequest(LFUN_PARAGRAPH_GOTO, arg);
+	if (action_.action() == LFUN_UNKNOWN_ACTION) {
+		return FuncRequest(LFUN_PARAGRAPH_GOTO, paragraph_goto_arg(dit_));
+	} else
+		return action_;
 }
 
 
@@ -156,15 +175,29 @@ void TocBuilder::pushItem(DocIterator const & dit, docstring const & s,
 void TocBuilder::captionItem(DocIterator const & dit, docstring const & s,
 							 bool output_active)
 {
+	// first show the float before moving to the caption
+	docstring arg = "paragraph-goto " + paragraph_goto_arg(dit);
+	if (!stack_.empty())
+		arg = "paragraph-goto " +
+			paragraph_goto_arg((*toc_)[stack_.top().pos].dit_) + ";" + arg;
+	FuncRequest func(LFUN_COMMAND_SEQUENCE, arg);
+	
 	if (!stack_.empty() && !stack_.top().is_captioned) {
 		// The float we entered has not yet been assigned a caption.
 		// Assign the caption string to it.
-		(*toc_)[stack_.top().pos].str(s);
+		TocItem & captionable = (*toc_)[stack_.top().pos];
+		captionable.str(s);
+		captionable.setAction(func);
 		stack_.top().is_captioned = true;
 	} else {
 		// This is a new entry.
 		pop();
-		pushItem(dit, s, output_active, true);
+		// the dit is at the float's level, e.g. for the contextual menu of
+		// outliner entries
+		DocIterator captionable_dit = dit;
+		captionable_dit.pop_back();
+		pushItem(captionable_dit, s, output_active, true);
+		(*toc_)[stack_.top().pos].setAction(func);
 	}
 }
 
@@ -269,14 +302,14 @@ bool TocBackend::updateItem(DocIterator const & dit)
 		&& tocstring.empty())
 			tocstring = par.asString(AS_STR_LABEL | AS_STR_INSETS);
 
-	const_cast<TocItem &>(*toc_item).str_ = tocstring;
+	const_cast<TocItem &>(*toc_item).str(tocstring);
 
 	buffer_->updateTocItem("tableofcontents", dit);
 	return true;
 }
 
 
-void TocBackend::update(bool output_active)
+void TocBackend::update(bool output_active, UpdateType utype)
 {
 	for (TocList::iterator it = tocs_.begin(); it != tocs_.end(); ++it)
 		it->second->clear();
@@ -284,7 +317,7 @@ void TocBackend::update(bool output_active)
 	builders_.clear();
 	if (!buffer_->isInternal()) {
 		DocIterator dit;
-		buffer_->inset().addToToc(dit, output_active);
+		buffer_->inset().addToToc(dit, output_active, utype);
 	}
 }
 

@@ -1125,13 +1125,14 @@ void InsetInclude::addPreview(DocIterator const & /*inset_pos*/,
 }
 
 
-void InsetInclude::addToToc(DocIterator const & cpit, bool output_active) const
+void InsetInclude::addToToc(DocIterator const & cpit, bool output_active,
+							UpdateType utype) const
 {
 	TocBackend & backend = buffer().tocBackend();
 
 	if (isListings(params())) {
 		if (label_)
-			label_->addToToc(cpit, output_active);
+			label_->addToToc(cpit, output_active, utype);
 
 		InsetListingsParams p(to_utf8(params()["lstparams"]));
 		string caption = p.getParamValue("caption");
@@ -1151,8 +1152,7 @@ void InsetInclude::addToToc(DocIterator const & cpit, bool output_active) const
 		docstring str = childbuffer->fileName().displayName();
 		toc->push_back(TocItem(cpit, 0, str, output_active));
 
-		//TocList & toclist = backend.tocs();
-		childbuffer->tocBackend().update(output_active);
+		childbuffer->tocBackend().update(output_active, utype);
 		TocList const & childtoclist = childbuffer->tocBackend().tocs();
 		TocList::const_iterator it = childtoclist.begin();
 		TocList::const_iterator const end = childtoclist.end();

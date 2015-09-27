@@ -132,7 +132,8 @@ void InsetNomencl::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetNomencl::addToToc(DocIterator const & cpit, bool output_active) const
+void InsetNomencl::addToToc(DocIterator const & cpit, bool output_active,
+							UpdateType) const
 {
 	docstring const str = getParam("symbol");
 	buffer().tocBackend().toc("nomencl")->push_back(TocItem(cpit, 0, str, output_active));

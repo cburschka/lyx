@@ -171,7 +171,8 @@ public:
 	///
 	void forOutliner(docstring &, size_t) const;
 	///
-	void addToToc(DocIterator const & di, bool output_active) const;
+	void addToToc(DocIterator const & di, bool output_active,
+				  UpdateType utype) const;
 	///
 	Inset * clone() const { return new InsetText(*this); }
 	///
@@ -217,7 +218,8 @@ protected:
 	///
 	docstring getCaptionHTML(OutputParams const &) const;
 	///
-	void iterateForToc(DocIterator const & cdit, bool output_active) const;
+	void iterateForToc(DocIterator const & cdit, bool output_active,
+					   UpdateType utype) const;
 private:
 	///
 	bool drawFrame_;

@@ -207,7 +207,8 @@ bool InsetNote::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetNote::addToToc(DocIterator const & cpit, bool output_active) const
+void InsetNote::addToToc(DocIterator const & cpit, bool output_active,
+						 UpdateType utype) const
 {
 	DocIterator pit = cpit;
 	pit.push_back(CursorSlice(const_cast<InsetNote &>(*this)));
@@ -220,7 +221,7 @@ void InsetNote::addToToc(DocIterator const & cpit, bool output_active) const
 
 	// Proceed with the rest of the inset.
 	bool doing_output = output_active && producesOutput();
-	InsetCollapsable::addToToc(cpit, doing_output);
+	InsetCollapsable::addToToc(cpit, doing_output, utype);
 }
 
 

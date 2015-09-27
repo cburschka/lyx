@@ -38,7 +38,8 @@ protected:
 	/// are our captions subcaptions?
 	virtual bool hasSubCaptions(ParIterator const &) const { return false; }
 	///
-	void addToToc(DocIterator const & di, bool output_active) const;
+	void addToToc(DocIterator const & di, bool output_active,
+				  UpdateType utype) const;
 	/// Update the counters of this inset and of its contents
 	void updateBuffer(ParIterator const &, UpdateType);
 	///

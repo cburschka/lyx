@@ -616,6 +616,8 @@ QString guiName(string const & type, BufferParams const & bp)
 		return qt_("Index Entries");
 	if (type == "marginalnote")
 		return qt_("Marginal notes");
+	if (type == "math-macro")
+		return qt_("Math macros");
 	if (type == "nomencl")
 		return qt_("Nomenclature Entries");
 	if (type == "note")

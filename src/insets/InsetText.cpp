@@ -797,18 +797,20 @@ void InsetText::forOutliner(docstring & os, size_t maxlen) const
 }
 
 
-void InsetText::addToToc(DocIterator const & cdit, bool output_active) const
+void InsetText::addToToc(DocIterator const & cdit, bool output_active,
+						 UpdateType utype) const
 {
 	DocIterator dit = cdit;
 	dit.push_back(CursorSlice(const_cast<InsetText &>(*this)));
-	iterateForToc(dit, output_active);
+	iterateForToc(dit, output_active, utype);
 }
 
 
-void InsetText::iterateForToc(DocIterator const & cdit, bool output_active) const
+void InsetText::iterateForToc(DocIterator const & cdit, bool output_active,
+							  UpdateType utype) const
 {
 	DocIterator dit = cdit;
-	// Ensure that any document has a table of contents
+	// This also ensures that any document has a table of contents
 	shared_ptr<Toc> toc = buffer().tocBackend().toc("tableofcontents");
 
 	BufferParams const & bufparams = buffer_->params();
@@ -832,7 +834,7 @@ void InsetText::iterateForToc(DocIterator const & cdit, bool output_active) cons
 			Inset & inset = *it->inset;
 			dit.pos() = it->pos;
 			//lyxerr << (void*)&inset << " code: " << inset.lyxCode() << std::endl;
-			inset.addToToc(dit, doing_output);
+			inset.addToToc(dit, doing_output, utype);
 			if (inset.lyxCode() == ARG_CODE)
 				arginset = inset.asInsetText();
 		}
@@ -841,7 +843,8 @@ void InsetText::iterateForToc(DocIterator const & cdit, bool output_active) cons
 		if (toclevel != Layout::NOT_IN_TOC && toclevel >= min_toclevel) {
 			// insert this into the table of contents
 			docstring tocstring;
-			int const length = doing_output ? INT_MAX : TOC_ENTRY_LENGTH;
+			int const length = (doing_output && utype == OutputUpdate) ?
+				INT_MAX : TOC_ENTRY_LENGTH;
 			if (arginset) {
 				tocstring = par.labelString();
 				if (!tocstring.empty())

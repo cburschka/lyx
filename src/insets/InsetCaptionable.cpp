@@ -45,17 +45,21 @@ docstring InsetCaptionable::floatName(string const & type) const
 }
 
 
-void InsetCaptionable::addToToc(DocIterator const & cpit, bool output_active) const
+void InsetCaptionable::addToToc(DocIterator const & cpit, bool output_active,
+								UpdateType utype) const
 {
 	DocIterator pit = cpit;
 	pit.push_back(CursorSlice(const_cast<InsetCaptionable &>(*this)));
 	docstring str;
-	int length = output_active ? INT_MAX : TOC_ENTRY_LENGTH;
-	text().forOutliner(str, length);
+	// Leave str empty if we generate for output (e.g. xhtml lists of figures).
+	// This ensures that there is a caption if and only if the string is
+	// non-empty.
+	if (utype != OutputUpdate)
+		text().forOutliner(str, TOC_ENTRY_LENGTH);
 	shared_ptr<TocBuilder> b = buffer().tocBackend().builder(caption_type_);
 	b->pushItem(pit, str, output_active);
 	// Proceed with the rest of the inset.
-	InsetCollapsable::addToToc(cpit, output_active);
+	InsetCollapsable::addToToc(cpit, output_active, utype);
 	b->pop();
 }
 

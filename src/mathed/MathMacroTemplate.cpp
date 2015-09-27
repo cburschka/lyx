@@ -34,6 +34,7 @@
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "Lexer.h"
+#include "TocBackend.h"
 
 #include "frontends/Painter.h"
 
@@ -1382,5 +1383,18 @@ string MathMacroTemplate::contextMenuName() const
 {
 	return "context-math-macro-definition";
 }
+
+void MathMacroTemplate::addToToc(DocIterator const & pit, bool output_active,
+								 UpdateType) const
+{
+	shared_ptr<Toc> toc = buffer().tocBackend().toc("math-macro");
+	docstring str;
+	if (!validMacro())
+		str = bformat(_("Invalid macro! \\%1$s"), name());
+	else
+		str = "\\" + name();
+	toc->push_back(TocItem(pit, 0, str, output_active));
+}
+
 
 } // namespace lyx

@@ -103,6 +103,9 @@ public:
 	void infoize(odocstream & os) const;
 	///
 	std::string contextMenuName() const;
+	///
+	void addToToc(DocIterator const & di, bool output_active,
+				  UpdateType utype) const;
 protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);

@@ -209,8 +209,6 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const & op) const {
 		                               op.local_font->language()->lang());
 	}
 
-	// FIXME Do we need to check if it exists? If so, we need a new
-	// routine in TocBackend to do that.
 	shared_ptr<Toc const> toc = buffer().tocBackend().toc(toctype);
 	if (toc->empty())
 		return docstring();
@@ -252,6 +250,8 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const & op) const {
 	Toc::const_iterator it = toc->begin();
 	Toc::const_iterator const en = toc->end();
 	for (; it != en; ++it) {
+		if (it->str().empty())
+			continue;
 		Paragraph const & par = it->dit().innerParagraph();
 		string const attr = "class='lyxtoc-floats lyxtoc-" + toctype + "'";
 		xs << html::StartTag("div", attr);

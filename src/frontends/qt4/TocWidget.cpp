@@ -119,16 +119,12 @@ Inset * TocWidget::itemInset() const
 
 	else if (current_type_ == "branch"
 			 || current_type_ == "index"
-			 || current_type_ == "change")
+			 || current_type_ == "change"
+			 || current_type_ == "table" 
+		     || current_type_ == "listing"
+		     || current_type_ == "figure")
 		inset = &dit.inset();
 
-	else if (current_type_ == "table" 
-		     || current_type_ == "listing"
-		     || current_type_ == "figure") {
-		DocIterator tmp_dit(dit);
-		tmp_dit.pop_back();
-		inset = &tmp_dit.inset();
-	}
 	return inset;
 }
 
@@ -157,7 +153,7 @@ bool TocWidget::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_LABEL_COPY_AS_REFERENCE: {
 		// For labels in math, we need to supply the label as a string
-		FuncRequest label_copy(LFUN_LABEL_COPY_AS_REFERENCE, item.asString());
+		FuncRequest label_copy(LFUN_LABEL_COPY_AS_REFERENCE, item.str());
 		if (inset)
 			return inset->getStatus(cur, label_copy, status);
 		break;
@@ -202,7 +198,7 @@ void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 
 	case LFUN_LABEL_COPY_AS_REFERENCE: {
 		// For labels in math, we need to supply the label as a string
-		FuncRequest label_copy(LFUN_LABEL_COPY_AS_REFERENCE, item.asString());
+		FuncRequest label_copy(LFUN_LABEL_COPY_AS_REFERENCE, item.str());
 		if (inset)
 			inset->dispatch(cur, label_copy);
 		break;

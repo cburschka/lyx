@@ -348,7 +348,8 @@ void InsetBranch::string2params(string const & in, InsetBranchParams & params)
 }
 
 
-void InsetBranch::addToToc(DocIterator const & cpit, bool output_active) const
+void InsetBranch::addToToc(DocIterator const & cpit, bool output_active,
+						   UpdateType utype) const
 {
 	DocIterator pit = cpit;
 	pit.push_back(CursorSlice(const_cast<InsetBranch &>(*this)));
@@ -359,7 +360,7 @@ void InsetBranch::addToToc(DocIterator const & cpit, bool output_active) const
 	toc->push_back(TocItem(pit, 0, str, output_active, toolTipText(docstring(), 3, 60)));
 	// Proceed with the rest of the inset.
 	bool const doing_output = output_active && isBranchSelected();
-	InsetCollapsable::addToToc(cpit, doing_output);
+	InsetCollapsable::addToToc(cpit, doing_output, utype);
 }
 
 

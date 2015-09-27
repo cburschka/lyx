@@ -154,7 +154,7 @@ void TocModel::updateItem(DocIterator const & dit)
 {
 	QModelIndex index = modelIndex(dit);
 	TocItem const & toc_item = tocItem(index);
-	model_->setData(index, toqstr(toc_item.str()), Qt::DisplayRole);
+	model_->setData(index, toqstr(toc_item.asString()), Qt::DisplayRole);
 	model_->setData(index, toqstr(toc_item.tooltip()), Qt::ToolTipRole);
 }
 
@@ -183,12 +183,12 @@ void TocModel::reset(shared_ptr<Toc const> toc)
 		int current_row = model_->rowCount();
 		model_->insertRows(current_row, 1);
 		QModelIndex top_level_item = model_->index(current_row, 0);
-		model_->setData(top_level_item, toqstr(item.str()), Qt::DisplayRole);
+		model_->setData(top_level_item, toqstr(item.asString()), Qt::DisplayRole);
 		model_->setData(top_level_item, index, Qt::UserRole);
 		model_->setData(top_level_item, toqstr(item.tooltip()), Qt::ToolTipRole);
 
 		LYXERR(Debug::GUI, "Toc: at depth " << item.depth()
-			<< ", added item " << item.str());
+			<< ", added item " << item.asString());
 
 		populate(index, top_level_item);
 		if (index >= end)
@@ -224,7 +224,7 @@ void TocModel::populate(unsigned int & index, QModelIndex const & parent)
 		int current_row = model_->rowCount(parent);
 		model_->insertRows(current_row, 1, parent);
 		child_item = model_->index(current_row, 0, parent);
-		model_->setData(child_item, toqstr(item.str()), Qt::DisplayRole);
+		model_->setData(child_item, toqstr(item.asString()), Qt::DisplayRole);
 		model_->setData(child_item, index, Qt::UserRole);
 		model_->setData(child_item, toqstr(item.tooltip()), Qt::ToolTipRole);
 		populate(index, child_item);
@@ -315,7 +315,7 @@ void TocModels::goTo(QString const & type, QModelIndex const & index) const
 	}
 	LASSERT(index.model() == it.value()->model(), return);
 	TocItem const item = it.value()->tocItem(index);
-	LYXERR(Debug::GUI, "TocModels::goTo " << item.str());
+	LYXERR(Debug::GUI, "TocModels::goTo " << item.asString());
 	dispatch(item.action());
 }
 

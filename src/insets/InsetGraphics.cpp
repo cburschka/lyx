@@ -1027,7 +1027,8 @@ void InsetGraphics::editGraphics(InsetGraphicsParams const & p) const
 }
 
 
-void InsetGraphics::addToToc(DocIterator const & cpit, bool output_active) const
+void InsetGraphics::addToToc(DocIterator const & cpit, bool output_active,
+							 UpdateType) const
 {
 	//FIXME UNICODE
 	docstring const str = from_utf8(params_.filename.onlyFileName());

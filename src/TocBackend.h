@@ -16,6 +16,8 @@
 #define TOC_BACKEND_H
 
 #include "DocIterator.h"
+#include "FuncRequest.h"
+#include "OutputEnums.h"
 
 #include "support/shared_ptr.h"
 #include "support/strfwd.h"
@@ -29,7 +31,6 @@
 namespace lyx {
 
 class Buffer;
-class FuncRequest;
 
 
 /* FIXME: toc types are currently identified by strings. It cannot be converted
@@ -66,6 +67,7 @@ class TocItem
 {
 	friend class Toc;
 	friend class TocBackend;
+	friend class TocBuilder;
 
 public:
 	/// Default constructor for STL containers.
@@ -75,7 +77,8 @@ public:
 		int depth,
 		docstring const & s,
 		bool output_active,
-		docstring const & t = docstring()
+		docstring const & t = docstring(),
+		FuncRequest action = FuncRequest(LFUN_UNKNOWN_ACTION)
 		);
 	///
 	~TocItem() {}
@@ -89,19 +92,22 @@ public:
 	void str(docstring const & s) { str_ = s; }
 	///
 	docstring const & tooltip() const;
-	///
+	/// String for display, e.g. it has a mark if output is inactive
 	docstring const asString() const;
 	///
 	DocIterator const & dit() const { return dit_; }
 	///
 	bool isOutput() const { return output_; }
-
-	/// the action corresponding to the goTo above
+	///
+	void setAction(FuncRequest a) { action_ = a; }
+	/// custom action, or the default one (paragraph-goto) if not customised
 	FuncRequest action() const;
 
 protected:
 	/// Current position of item.
 	DocIterator dit_;
+
+private:
 	/// nesting depth
 	int depth_;
 	/// Full item string
@@ -110,6 +116,8 @@ protected:
 	docstring tooltip_;
 	/// Is this item in a note, inactive branch, etc?
 	bool output_;
+	/// Custom action
+	FuncRequest action_;
 };
 
 
@@ -192,7 +200,7 @@ public:
 	///
 	void setBuffer(Buffer const * buffer) { buffer_ = buffer; }
 	///
-	void update(bool output_active);
+	void update(bool output_active, UpdateType utype);
 	/// \return true if the item was updated.
 	bool updateItem(DocIterator const & pit);
 	///

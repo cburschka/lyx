@@ -348,7 +348,8 @@ void InsetIndex::string2params(string const & in, InsetIndexParams & params)
 }
 
 
-void InsetIndex::addToToc(DocIterator const & cpit, bool output_active) const
+void InsetIndex::addToToc(DocIterator const & cpit, bool output_active,
+						  UpdateType utype) const
 {
 	DocIterator pit = cpit;
 	pit.push_back(CursorSlice(const_cast<InsetIndex &>(*this)));
@@ -360,7 +361,7 @@ void InsetIndex::addToToc(DocIterator const & cpit, bool output_active) const
 	text().forOutliner(str, INT_MAX);
 	buffer().tocBackend().toc(type)->push_back(TocItem(pit, 0, str, output_active));
 	// Proceed with the rest of the inset.
-	InsetCollapsable::addToToc(cpit, output_active);
+	InsetCollapsable::addToToc(cpit, output_active, utype);
 }
 
 
