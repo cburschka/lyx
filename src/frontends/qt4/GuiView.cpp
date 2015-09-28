@@ -1821,7 +1821,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_BUFFER_CHILD_OPEN:
-		enable = doc_buffer;
+		enable = doc_buffer != 0;
 		break;
 
 	case LFUN_BUFFER_WRITE:
@@ -1849,12 +1849,12 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_BUFFER_WRITE_AS:
 	case LFUN_BUFFER_EXPORT_AS:
-		enable = doc_buffer;
+		enable = doc_buffer != 0;
 		break;
 
 	case LFUN_BUFFER_CLOSE:
 	case LFUN_VIEW_CLOSE:
-		enable = doc_buffer;
+		enable = doc_buffer != 0;
 		break;
 
 	case LFUN_BUFFER_CLOSE_ALL:
@@ -1888,7 +1888,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	}
 
 	case LFUN_DROP_LAYOUTS_CHOICE:
-		enable = buf;
+		enable = buf != 0;
 		break;
 
 	case LFUN_UI_TOGGLE:
@@ -1988,7 +1988,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_BUFFER_ZOOM_IN:
-		enable = doc_buffer;
+		enable = doc_buffer != 0;
 		break;
 
 	case LFUN_BUFFER_MOVE_NEXT:
