@@ -155,7 +155,7 @@ Toc::iterator Toc::item(int depth, docstring const & str)
 ///////////////////////////////////////////////////////////////////////////
 
 TocBuilder::TocBuilder(shared_ptr<Toc> toc)
-	: toc_(toc ? toc : make_shared<Toc>()),
+	: toc_(toc ? toc : lyx::make_shared<Toc>()),
 	  stack_()
 {
 	LATTEST(toc);
@@ -221,7 +221,7 @@ shared_ptr<TocBuilder> TocBuilderStore::get(string const & type,
 	map_t::const_iterator it = map_.find(type);
 	if (it == map_.end()) {
 		it = map_.insert(std::make_pair(type,
-										make_shared<TocBuilder>(toc))).first;
+									lyx::make_shared<TocBuilder>(toc))).first;
 	}
 	return it->second;
 }
@@ -238,7 +238,7 @@ shared_ptr<Toc const> TocBackend::toc(string const & type) const
 {
 	// Is the type already supported?
 	TocList::const_iterator it = tocs_.find(type);
-	LASSERT(it != tocs_.end(), { return make_shared<Toc>(); });
+	LASSERT(it != tocs_.end(), { return lyx::make_shared<Toc>(); });
 	return it->second;
 }
 
@@ -247,7 +247,7 @@ shared_ptr<Toc> TocBackend::toc(string const & type)
 {
 	TocList::const_iterator it = tocs_.find(type);
 	if (it == tocs_.end()) {
-		it = tocs_.insert(std::make_pair(type, make_shared<Toc>())).first;
+		it = tocs_.insert(std::make_pair(type, lyx::make_shared<Toc>())).first;
 	}
 	return it->second;
 }

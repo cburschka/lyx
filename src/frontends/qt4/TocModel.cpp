@@ -81,7 +81,7 @@ public:
 TocModel::TocModel(QObject * parent)
 	: model_(new TocTypeModel(parent)),
 	  sorted_model_(new QSortFilterProxyModel(parent)),
-	  is_sorted_(false), toc_(make_shared<Toc const>()),
+	  is_sorted_(false), toc_(lyx::make_shared<Toc const>()),
 	  maxdepth_(0), mindepth_(0)
 {
 	sorted_model_->setSortLocaleAware(true);
@@ -109,7 +109,7 @@ void TocModel::clear()
 {
 	model_->blockSignals(true);
 	model_->clear();
-	toc_ = make_shared<Toc const>();
+	toc_ = lyx::make_shared<Toc const>();
 	model_->blockSignals(false);
 }
 
