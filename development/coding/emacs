@@ -1,0 +1,29 @@
+Sample configuration to match the coding style in use.
+
+In .emacs:
+
+(custom-set-variables
+ '(c-basic-indent 4)
+ '(safe-local-variable-values
+   (quote
+    ((c-set-offset
+      (quote innamespace)
+      0)
+     (c-set-style . "CC-MODE"))))
+)
+;; no indent in namespace
+(defun my-c-setup ()
+   (c-set-offset 'innamespace [0]))
+(add-hook 'c++-mode-hook 'my-c-setup)
+
+
+In .dir-local.el:
+
+((nil . ((indent-tabs-mode . t)
+         (tab-width . 4)
+         (fill-column . 80)))
+ (c-mode . ((c-basic-offset . 4)
+            (c-set-style . "CC-MODE")))
+ (c++-mode . ((c-basic-offset . 4)
+              (c-set-style . "CC-MODE")))
+ )
