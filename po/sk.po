@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2015-09-20 14:18+0200\n"
-"PO-Revision-Date: 2015-09-20 12:55+0000\n"
+"POT-Creation-Date: 2015-10-02 21:42+0200\n"
+"PO-Revision-Date: 2015-10-02 19:51+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -29231,25 +29231,25 @@ msgstr "Aktualizovať [%1$s]"
 msgid "No Custom Insets Defined!"
 msgstr "Niet Vlastných Definovaných Vložiek!"
 
-#: src/frontends/qt4/Menus.cpp:1290
-msgid "<No Document Open>"
-msgstr "<Žiadny Otvorený Dokument>"
+#: src/frontends/qt4/Menus.cpp:1292
+msgid "(No Document Open)"
+msgstr "(Bez Otvoreného Dokumentu)"
 
 #: src/frontends/qt4/Menus.cpp:1300
 msgid "Master Document"
 msgstr "Hlavný dokument"
 
-#: src/frontends/qt4/Menus.cpp:1317
-msgid "Open Navigator..."
-msgstr "Otvoriť navigátor..."
+#: src/frontends/qt4/Menus.cpp:1316
+msgid "Open outliner..."
+msgstr "Otvoriť prehľad..."
 
 #: src/frontends/qt4/Menus.cpp:1338
 msgid "Other Lists"
 msgstr "Iné Listiny"
 
-#: src/frontends/qt4/Menus.cpp:1351
-msgid "<Empty Table of Contents>"
-msgstr "<Prázdny Obsah>"
+#: src/frontends/qt4/Menus.cpp:1342
+msgid "(Empty Table of Contents)"
+msgstr "Prázdny Obsah Tabuliek"
 
 #: src/frontends/qt4/Menus.cpp:1386
 msgid "Other Toolbars"
@@ -30660,6 +30660,11 @@ msgstr "mat. makro"
 msgid "Math Macro: \\%1$s"
 msgstr "Mat. Makro: \\%1$s"
 
+#: src/mathed/MathMacroTemplate.cpp:1393
+#, c-format
+msgid "Invalid macro! \\%1$s"
+msgstr "Neplatné makro! \\%1$s"
+
 #: src/output.cpp:37
 #, c-format
 msgid ""
@@ -30977,6 +30982,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Open Navigator..."
+#~ msgstr "Otvoriť navigátor..."
 
 #~ msgid ""
 #~ "A bitmap file.\n"
@@ -34186,3 +34194,10 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "MS Word Office Open XML|W"
 #~ msgstr "MS-Word Office-Open XML|W"
+
+#: src/frontends/qt4/Menus.cpp:1290
+msgid "<No Document Open>"
+msgstr "<Žiadny Otvorený Dokument>"
+
+#~ msgid "<Empty Table of Contents>"
+#~ msgstr "<Prázdny Obsah>"
