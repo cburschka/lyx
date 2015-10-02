@@ -412,7 +412,7 @@ Buffer const & BufferView::buffer() const
 }
 
 
-bool BufferView::fitCursor()
+bool BufferView::needsFitCursor() const
 {
 	if (cursorStatus(d->cursor_) == CUR_INSIDE) {
 		frontend::FontMetrics const & fm =
@@ -443,6 +443,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	// Now do the first drawing step if needed. This consists on updating
 	// the CoordCache in updateMetrics().
 	// The second drawing step is done in WorkArea::redraw() if needed.
+	// FIXME: is this still true now that Buffer::changed() is used all over?
 
 	// Case when no explicit update is requested.
 	if (!flags) {
@@ -460,7 +461,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	if (flags == Update::FitCursor
 		|| flags == (Update::Decoration | Update::FitCursor)) {
 		// tell the frontend to update the screen if needed.
-		if (fitCursor()) {
+		if (needsFitCursor()) {
 			showCursor();
 			return;
 		}
@@ -492,7 +493,7 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	// This is done at draw() time. So we need a redraw!
 	buffer_.changed(false);
 
-	if (fitCursor()) {
+	if (needsFitCursor()) {
 		// The cursor is off screen so ensure it is visible.
 		// refresh it:
 		showCursor();
@@ -808,7 +809,7 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 		// paragraph position which is computed at draw() time.
 		// So we need a redraw!
 		buffer_.changed(false);
-		if (fitCursor())
+		if (needsFitCursor())
 			showCursor();
 	}
 

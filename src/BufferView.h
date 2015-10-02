@@ -117,9 +117,9 @@ public:
 	 */
 	void processUpdateFlags(Update::flags flags);
 
-	/// move the screen to fit the cursor.
+	/// return true if one shall move the screen to fit the cursor.
 	/// Only to be called with good y coordinates (after a bv::metrics)
-	bool fitCursor();
+	bool needsFitCursor() const;
 
 	// Returns the amount of horizontal scrolling applied to the
 	// top-level row where the cursor lies
@@ -167,11 +167,11 @@ public:
 	void recenter();
 	/// Ensure that the BufferView cursor is visible.
 	/// This method will automatically scroll and update the BufferView
-	/// if needed.
+	/// (metrics+drawing) if needed.
 	void showCursor();
 	/// Ensure the passed cursor \p dit is visible.
 	/// This method will automatically scroll and update the BufferView
-	/// if needed.
+	/// (metrics+drawing) if needed.
 	/// \param recenter Whether the cursor should be centered on screen
 	void showCursor(DocIterator const & dit, bool recenter,
 		bool update);
