@@ -55,6 +55,7 @@ enum TocType {
 	NOMENCL,//"nomencl"
 	LISTING,//"listings"
 	FLOAT,//"figure", "table", "algorithm", user-defined (from layout?)
+	MATH_MACRO,//"math-macro"
 	SENSELESS,//"senseless"
 	TOC_TYPE_COUNT
 }
