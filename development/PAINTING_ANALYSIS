@@ -1,4 +1,6 @@
-# -*- org-mode -*-
+# -*- org -*-
+Understanding the painting process
+
 This file tries to describe the state of the metrics/painting
 mechanism, and identify the improvements that could be made. The first
 section can be read alone, although the context for them is really
@@ -101,7 +103,7 @@ DecorationUpdate). It triggers a recomputation of the metrics when either:
  + Update::Force has been specified
  + Update::FitCursor has been specified and there is a need to scroll
    the display.
- + the current paragraph, after rebreak, has the same height as in
+ + the current paragraph, after rebreak, does not have the same height as in
    existing metrics. Note that the Update::SinglePar flag is *never*
    taken into account.
 
@@ -109,7 +111,7 @@ The screen is drawn (with appropriate update strategy), except when
 update flag is Update::None.
 
 
-** Metrics computation
+* Metrics computation
 
 This is triggered by bv::updateMetrics, which calls tm::redoParagraph for
   + all visible paragraphs
@@ -124,7 +126,7 @@ of text insets, this will invoke recursively tm::metrics, which redoes
 all the paragraphs of the inset.
 
 
-** Drawing the work area.
+* Drawing the work area.
 
 This is done in bv::draw. This method is triggered mainly by
 Buffer::changed, which draws all the work areas that show the given buffer.
