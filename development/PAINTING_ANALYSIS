@@ -18,14 +18,6 @@ tm::TextMetrics
 These questions are consequences of the description made in the
 following section. Some actions are proposed.
 
-** Inset cache
-
-Why do we store inset dimensions both in bv::coordCache and in
-pm::insetDimension? The later one is bad when same
-buffer is shown in different views.
-
-I propose to get rid of pm::insetDimension.
-
 ** SinglePar update
 
 The flag Update::SinglePar is set in many places but never acted on.
@@ -38,12 +30,6 @@ SingleParUpdate shall be removed.
 Moreover, I fail to see (yet) where the 'single' part of the program
 is acted on.
 
-** Two phase drawing
-
-Why is it necessary to set the inset positions in the drawing phase?
-It seems to me that everything can be done in the metrics phase (at
-least for non-math insets).
-
 ** Buffer::change issues
 
 When calling Buffer::changed outside of bv::processUpdateFlags,
@@ -54,24 +40,49 @@ a good value? NoScreenUpdate?
 On a related note, what is the semantics of a call to
 Buffer::changed(false)? What does the caller mean?
 
-** Metrics outside of visible area
-
-Why is it required to compute metrics on page above and below the
-visible area? Couldn't this be done on demand? I suspect this could be
-made transparent by doing it in the proper metrics-fetching method.
-
 ** What happens with FitCursor when the cursor is already OK?
 
 In this case, we invoke Buffer::change(false) with drawing disabled,
 which means that the paint machinery is invoked to update inset
-positions. Why is this necessary at all?
+positions.
+
+Actually, this was added as part of the horizontal scrolling GSoC
+work. We need to investigate how costly this is.
+
+
+* Proposals
+
+** get rid of pm::insetDimension.
+
+The information contained there is already in bv::coordCache.
+
+Effect: only code simplification.
+
+** set inset position during metrics phase
+
+This implies to set inset positions relative to outer isnet during
+metrics phase and then in a second loop to descend into insets and
+update positions correctly.
+
+Effect: avoid going through the painter machinery when it is not necessary.
 
 ** Merging bv::updateMetrics and tm::metrics
 
 While the full metrics computation tries hard to limit the number of
 paragraphs that are rebroken, the version that is used for inner inset
 does not try any such optimization. This can be very bad for very tall
-insets. How difficult would it be to re-use the bv::updateMetrics logic?
+insets. We should re-use the bv::updateMetrics logic:
+ + transfer all the logic of bv::updateMetrics to tm.
+ +  Main InsetText should not be special.
+
+** Metrics outside of visible area
+
+Currently metrics are computed for current visible paet of text, the
+page above and the page below. It should be possible to compute hidden
+rows ony on demand, although it might be a bit slow.
+
+There was a proposal to always compute _all_ rows, but this may become
+expensive for large files. This would though help scrolling.
 
 
 * Two phase drawing
