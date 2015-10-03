@@ -713,6 +713,23 @@ void InsetMathHull::preparePreview(DocIterator const & pos,
 	for (; it != end; ++it)
 		macro_preamble.append(*it);
 
+	// set the font series and size for this snippet
+	DocIterator dit = pos;
+	while (dit.inMathed())
+		dit.pop_back();
+	Paragraph const & par = dit.paragraph();
+	Font font = par.getFontSettings(buffer->params(), dit.pos());
+	font.fontInfo().realize(par.layout().font);
+	string const lsize = font.latexSize();
+	docstring setfont;
+	docstring endfont;
+	if (font.fontInfo().series() == BOLD_SERIES) {
+		setfont += from_ascii("\\textbf{");
+		endfont += '}';
+	}
+	if (lsize != "normalsize" && !prefixIs(lsize, "error"))
+		setfont += from_ascii("\\" + lsize + '\n'); 
+
 	docstring setcnt;
 	if (forexport && haveNumbers()) {
 		docstring eqstr = from_ascii("equation");
@@ -734,7 +751,8 @@ void InsetMathHull::preparePreview(DocIterator const & pos,
 				          '{' + convert<docstring>(num) + '}';
 		}
 	}
-	docstring const snippet = macro_preamble + setcnt + latexString(*this);
+	docstring const snippet = macro_preamble + setfont + setcnt
+	                          + latexString(*this) + endfont;
 	LYXERR(Debug::MACROS, "Preview snippet: " << snippet);
 	preview_->addPreview(snippet, *buffer, forexport);
 }
