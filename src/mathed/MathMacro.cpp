@@ -63,6 +63,8 @@ public:
 	///
 	void setOwner(MathMacro * mathMacro) { mathMacro_ = mathMacro; }
 	///
+	MathMacro const * owner() { return mathMacro_; }
+	///
 	InsetCode lyxCode() const { return ARGUMENT_PROXY_CODE; }
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const {
@@ -151,6 +153,9 @@ public:
 	/// This needs to be called every time a copy of the owner is created
 	/// (bug 9418).
 	void updateChildren(MathMacro * owner);
+	/// Recursively update the pointers of all expanded macros
+	/// appearing in the arguments of the current macro
+	void updateNestedChildren(MathMacro * owner, InsetMathNest * ni);
 	/// name of macro
 	docstring name_;
 	/// current display mode
@@ -190,13 +195,42 @@ void MathMacro::Private::updateChildren(MathMacro * owner)
 		ArgumentProxy * p = dynamic_cast<ArgumentProxy *>(expanded_[i].nucleus());
 		if (p)
 			p->setOwner(owner);
+
+		InsetMathNest * ni = expanded_[i].nucleus()->asNestInset();
+		if (ni)
+			updateNestedChildren(owner, ni);
 	}
 
-	if (macro_ && lyxrc.preview == LyXRC::PREVIEW_ON) {
-		// As MathData::metrics() is not called when instant preview is
-		// on, we have to update macro_ by ourselves. In this case, we
-		// simply let it point to the last known good copy of MacroData.
+	if (macro_) {
+		// The macro_ pointer is updated when MathData::metrics() is
+		// called. However, when instant preview is on or the macro is
+		// not on screen, MathData::metrics() is not called and we may
+		// have a dangling pointer. As a safety measure, when a macro
+		// is copied, always let macro_ point to the backup copy of the
+		// MacroData structure. This backup is updated every time the
+		// macro is changed, so it will not become stale.
 		macro_ = &macroBackup_;
+	}
+}
+
+
+void MathMacro::Private::updateNestedChildren(MathMacro * owner, InsetMathNest * ni)
+{
+	for (size_t i = 0; i < ni->nargs(); ++i) {
+		MathData & ar = ni->cell(i);
+		for (size_t j = 0; j < ar.size(); ++j) {
+			ArgumentProxy * ap = dynamic_cast
+				<ArgumentProxy *>(ar[j].nucleus());
+			if (ap) {
+				MathMacro::Private * md = ap->owner()->d;
+				if (md->macro_)
+					md->macro_ = &md->macroBackup_;
+				ap->setOwner(owner);
+			}
+			InsetMathNest * imn = ar[j].nucleus()->asNestInset();
+			if (imn)
+				updateNestedChildren(owner, imn);
+		}
 	}
 }
 
@@ -209,6 +243,7 @@ MathMacro::MathMacro(Buffer * buf, docstring const & name)
 MathMacro::MathMacro(MathMacro const & that)
 	: InsetMathNest(that), d(new Private(*that.d))
 {
+	setBuffer(*that.buffer_);
 	d->updateChildren(this);
 }
 
