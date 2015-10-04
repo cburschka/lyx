@@ -258,7 +258,7 @@ docstring Inset::toolTip(BufferView const &, int, int) const
 }
 
 
-void Inset::forOutliner(docstring &, size_t) const
+void Inset::forOutliner(docstring &, size_t const, bool const) const
 {
 }
 

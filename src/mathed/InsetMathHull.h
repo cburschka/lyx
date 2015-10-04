@@ -152,7 +152,7 @@ public:
 	/// 
 	void toString(odocstream &) const;
 	///
-	void forOutliner(docstring &, size_t) const;
+	void forOutliner(docstring &, size_t const, bool const) const;
 
 	/// get notification when the cursor leaves this inset
 	bool notifyCursorLeaves(Cursor const & old, Cursor & cur);

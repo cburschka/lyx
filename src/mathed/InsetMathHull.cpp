@@ -2381,11 +2381,13 @@ void InsetMathHull::toString(odocstream & os) const
 }
 
 
-void InsetMathHull::forOutliner(docstring & os, size_t) const
+void InsetMathHull::forOutliner(docstring & os, size_t const, bool const) const
 {
 	odocstringstream ods;
 	OutputParams op(0);
 	op.for_toc = true;
+	// FIXME: this results in spilling TeX into the LyXHTML output since the
+	// outliner is used to generate the LyXHTML list of figures/etc.
 	plaintext(ods, op);
 	os += ods.str();
 }

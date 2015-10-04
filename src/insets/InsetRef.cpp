@@ -260,7 +260,7 @@ void InsetRef::toString(odocstream & os) const
 }
 
 
-void InsetRef::forOutliner(docstring & os, size_t) const
+void InsetRef::forOutliner(docstring & os, size_t const, bool const) const
 {
 	// There's no need for details in the TOC, and a long label
 	// will just get in the way.
@@ -288,18 +288,13 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType)
 		label += getParam("name");
 	}
 	
-	screen_label_ = label;
-	bool shortened = false;
 	unsigned int const maxLabelChars = 24;
 	if (screen_label_.size() > maxLabelChars) {
-		screen_label_.erase(maxLabelChars - 3);
-		screen_label_ += "...";
-		shortened = true;
-	}
-	if (shortened)
 		tooltip_ = label;
-	else 
+		support::truncateWithEllipsis(label, maxLabelChars);
+	} else
 		tooltip_ = from_ascii("");
+	screen_label_ = label;
 }
 
 

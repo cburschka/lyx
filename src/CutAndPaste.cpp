@@ -811,22 +811,20 @@ vector<docstring> availableSelections(Buffer const * buf)
 		// we do not use cit-> here because gcc 2.9x does not
 		// like it (JMarc)
 		ParagraphList const & pars = (*cit).first;
-		docstring asciiSel;
+		docstring textSel;
 		ParagraphList::const_iterator pit = pars.begin();
 		ParagraphList::const_iterator pend = pars.end();
 		for (; pit != pend; ++pit) {
-			Paragraph par(*pit, 0, 26);
+			Paragraph par(*pit, 0, 46);
 			// adapt paragraph to current buffer.
 			par.setBuffer(const_cast<Buffer &>(*buf));
-			asciiSel += par.asString(AS_STR_INSETS);
-			if (asciiSel.size() > 25) {
-				asciiSel.replace(22, docstring::npos,
-						 from_ascii("..."));
+			textSel += par.asString(AS_STR_INSETS);
+			if (textSel.size() > 45) {
+				support::truncateWithEllipsis(textSel,45);
 				break;
 			}
 		}
-
-		selList.push_back(asciiSel);
+		selList.push_back(textSel);
 	}
 
 	return selList;

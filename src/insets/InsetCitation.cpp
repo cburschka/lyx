@@ -313,21 +313,13 @@ void InsetCitation::updateBuffer(ParIterator const &, UpdateType)
 {
 	if (!cache.recalculate && buffer().citeLabelsValid())
 		return;
-
 	// The label may have changed, so we have to re-create it.
 	docstring const glabel = generateLabel();
-
-	unsigned int const maxLabelChars = 45;
-
-	docstring label = glabel;
-	if (label.size() > maxLabelChars) {
-		label.erase(maxLabelChars - 3);
-		label += "...";
-	}
-
 	cache.recalculate = false;
 	cache.generated_label = glabel;
-	cache.screen_label = label;
+	unsigned int const maxLabelChars = 45;
+	cache.screen_label = glabel.substr(0, maxLabelChars);
+	support::truncateWithEllipsis(cache.screen_label, maxLabelChars);
 }
 
 
@@ -406,7 +398,7 @@ void InsetCitation::toString(odocstream & os) const
 }
 
 
-void InsetCitation::forOutliner(docstring & os, size_t) const
+void InsetCitation::forOutliner(docstring & os, size_t const, bool const) const
 {
 	os += screenLabel();
 }

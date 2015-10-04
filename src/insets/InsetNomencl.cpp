@@ -75,12 +75,8 @@ ParamInfo const & InsetNomencl::findInfo(string const & /* cmdName */)
 docstring InsetNomencl::screenLabel() const
 {
 	size_t const maxLabelChars = 25;
-
 	docstring label = _("Nom: ") + getParam("symbol");
-	if (label.size() > maxLabelChars) {
-		label.erase(maxLabelChars - 3);
-		label += "...";
-	}
+	support::truncateWithEllipsis(label, maxLabelChars);
 	return label;
 }
 

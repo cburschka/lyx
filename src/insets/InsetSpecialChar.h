@@ -78,7 +78,7 @@ public:
 	///
 	void toString(odocstream &) const;
 	///
-	void forOutliner(docstring &, size_t) const;
+	void forOutliner(docstring &, size_t const, bool const) const;
 	///
 	InsetCode lyxCode() const { return SPECIALCHAR_CODE; }
 	/// We don't need \begin_inset and \end_inset

@@ -88,7 +88,7 @@ public:
 	/// 
 	void toString(odocstream &) const;
 	///
-	void forOutliner(docstring &, size_t maxlen) const;
+	void forOutliner(docstring &, size_t const maxlen, bool const) const;
 
 	///
 	void validate(LaTeXFeatures &) const;

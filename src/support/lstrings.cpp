@@ -1201,6 +1201,17 @@ docstring const escape(docstring const & lab)
 }
 
 
+bool truncateWithEllipsis(docstring & str, size_t const len)
+{
+	if (str.size() <= len)
+		return false;
+	str.resize(len);
+	if (len > 0)
+		str[len - 1] = 0x2026;// HORIZONTAL ELLIPSIS
+	return true;
+}
+
+
 namespace {
 
 // this doesn't check whether str is empty, so do that first.
@@ -1224,7 +1235,7 @@ vector<docstring> wrapToVec(docstring const & str, int ind,
 		size_t const i = s.find_last_of(' ', width - 1);
 		if (i == docstring::npos || i <= size_t(ind)) {
 			// no space found
-			s = s.substr(0, width - 3) + "...";
+			truncateWithEllipsis(s, width);
 			break;
 		}
 		retval.push_back(s.substr(0, i));
@@ -1253,7 +1264,6 @@ docstring wrap(docstring const & str, int const ind, size_t const width)
 docstring wrapParas(docstring const & str, int const indent,
 		    size_t const width, size_t const maxlines)
 {
-	docstring const dots = from_ascii("...");
 	if (str.empty())
 		return docstring();
 
@@ -1272,15 +1282,15 @@ docstring wrapParas(docstring const & str, int const indent,
 			tmp.resize(maxlines - curlines);
 			docstring last = tmp.back();
 			size_t const lsize = last.size();
-			if (lsize > width - 3) {
-				size_t const i = last.find_last_of(' ', width - 3);
+			if (lsize > width - 1) {
+				size_t const i = last.find_last_of(' ', width - 1);
 				if (i == docstring::npos || i <= size_t(indent))
 					// no space found
-					last = last.substr(0, lsize - 3) + dots;
+					truncateWithEllipsis(last, lsize);
 				else
-					last = last.substr(0, i) + dots;
+					truncateWithEllipsis(last, i);
 			} else
-				last += dots;
+				last.push_back(0x2026);//HORIZONTAL ELLIPSIS
 			tmp.pop_back();
 			tmp.push_back(last);
 		}

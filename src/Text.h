@@ -123,14 +123,16 @@ public:
 	///
 	docstring asString(pit_type beg, pit_type end,
 		int options = AS_STR_NONE) const;
-	/// Appends a possibly abbreviated representation of our text
-	/// to \param os, where \param maxlen defines the maximum size
-	/// of \param os. If \param shorten is true, then we will shorten
-	/// \param os to maxlen chars and replace the final three by "...,
-	/// if \param os is longer than maxlen chars.
-	/// if \param maxlen is passed as 0, then it is ignored. (In fact,
-	/// it is reset to the maximum value for size_t.)
-	void forOutliner(docstring & os, size_t maxlen, bool shorten = true) const;
+
+	/// truncates str to maxlenwith an ellipsis and replaces the characters '\n'
+	/// and '\t' with spaces
+	static void shortenForOutliner(docstring & str, size_t const maxlen);
+		
+	/// Appends a possibly abbreviated representation of our text to \param os,
+	/// where \param maxlen defines the maximum size of \param os. If \param
+	/// shorten is true, then os is shortened as above
+	void forOutliner(docstring & os, size_t const maxlen,
+					 bool const shorten = true) const;
 
 	/// insert a character at cursor position
 	/// FIXME: replace Cursor with DocIterator.

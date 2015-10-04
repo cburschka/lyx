@@ -181,7 +181,8 @@ public:
 			   int options = AS_STR_NONE,
 			   const OutputParams *runparams = 0) const;
 	///
-	void forOutliner(docstring &, size_t maxlen) const;
+	void forOutliner(docstring &, size_t const maxlen,
+					 bool const shorten = true) const;
 
 	///
 	void write(std::ostream &, BufferParams const &,

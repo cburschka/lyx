@@ -756,8 +756,7 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 		ret = html::cleanAttr(ret);
 
 	// make sure it is not too big
-	if (ret.size() > maxsize)
-		ret = ret.substr(0, maxsize - 3) + from_ascii("...");
+	support::truncateWithEllipsis(ret, maxsize);
 	return ret;
 }
 
@@ -928,14 +927,9 @@ docstring const BiblioInfo::getLabel(vector<docstring> keys,
 			before, after, dialog, key + 1 != ken);
 	}
 
-	if (ret.size() > max_size) {
-		ret.resize(max_size - 3);
-		ret += "...";
-	} else if (too_many_keys) {
-		if (ret.size() > max_size - 3)
-			ret.resize(max_size - 3);
-		ret += "...";
-	}
+	if (too_many_keys)
+		ret.push_back(0x2026);//HORIZONTAL ELLIPSIS
+	support::truncateWithEllipsis(ret, max_size);
 	return ret;
 }
 

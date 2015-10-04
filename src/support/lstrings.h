@@ -266,6 +266,29 @@ docstring const rsplit(docstring const & a, char_type delim);
 /// problems in latex labels.
 docstring const escape(docstring const & lab);
 
+/// Truncates a string with an ellipsis at the end.  Leaves str unchanged and
+/// returns false if it is shorter than len. Otherwise resizes str to len, with
+/// U+2026 HORIZONTAL ELLIPSIS at the end, and returns true.
+///
+/// Warning (Unicode): The cases where we want to truncate the text and it does
+/// not end up converted into a QString for UI display must be really
+/// rare. Whenever possible, we should prefer calling QFontMetrics::elidedText()
+/// instead, which takes into account the actual length on the screen and the
+/// layout direction (RTL or LTR). Or a similar function taking into account the
+/// font metrics from the buffer view, which still has to be defined. Or set up
+/// the widgets such that Qt elides the string automatically with the exact
+/// needed width. Recall that not only graphemes vary greatly in width, but also
+/// can be made of several code points. See:
+/// <http://utf8everywhere.org/#myth.strlen>
+///
+/// What is acceptable is when we know that the string is probably going to be
+/// elided by Qt anyway, and len is chosen such that our own ellipsis will only
+/// be displayed in worst-case scenarios.
+///
+/// FIXME: apply those principles in the current code.
+/// 
+bool truncateWithEllipsis(docstring & str, size_t const len);
+
 /// Word-wraps the provided docstring, returning a line-broken string
 /// of width no wider than width, with the string broken at spaces. 
 /// If the string cannot be broken appropriately, it returns something 
@@ -274,6 +297,10 @@ docstring const escape(docstring const & lab);
 /// If indent is positive, then the first line is indented that many 
 /// spaces. If it is negative, then successive lines are indented, as
 /// if the first line were "outdented".
+///
+/// Warning (Unicode): uses truncateWithEllipsis() internally. Therefore it is
+/// subject to the same warning and FIXME as above.
+///
 docstring wrap(docstring const & str, int const indent = 0,
                size_t const width = 80);
 
@@ -281,6 +308,10 @@ docstring wrap(docstring const & str, int const indent = 0,
 /// that may contain embedded newlines.
 /// \param numlines Don't return more than numlines lines. If numlines
 ///    is 0, we return everything.
+///
+/// Warning (Unicode): uses truncateWithEllipsis() internally. Therefore it is
+/// subject to the same warning and FIXME as above.
+///
 docstring wrapParas(docstring const & str, int const indent = 0,
                     size_t const width = 80, size_t const maxlines = 10);
 

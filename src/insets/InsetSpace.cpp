@@ -845,7 +845,7 @@ void InsetSpace::toString(odocstream & os) const
 }
 
 
-void InsetSpace::forOutliner(docstring & os, size_t) const
+void InsetSpace::forOutliner(docstring & os, size_t const, bool const) const
 {
 	// There's no need to be cute here.
 	os += " ";

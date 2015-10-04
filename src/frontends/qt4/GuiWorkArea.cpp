@@ -1852,7 +1852,7 @@ public:
 
 		if (!dotted) {
 			if (dottedPrefix_ && !prefix_.isEmpty())
-				prefix_ += ".../";
+				prefix_ += ellipsisSlash_;
 			prefix_ += postfix_.front() + "/";
 		}
 		dottedPrefix_ = dotted && !prefix_.isEmpty();
@@ -1865,7 +1865,7 @@ public:
 			return filename_;
 
 		bool dots = dottedPrefix_ || !postfix_.isEmpty();
-		return prefix_ + (dots ? ".../" : "") + filename_;
+		return prefix_ + (dots ? ellipsisSlash_ : "") + filename_;
 	}
 	///
 	QString forecastPathString() const
@@ -1874,7 +1874,7 @@ public:
 			return displayString();
 
 		return prefix_
-			+ (dottedPrefix_ ? ".../" : "")
+			+ (dottedPrefix_ ? ellipsisSlash_ : "")
 			+ postfix_.front() + "/";
 	}
 	///
@@ -1883,6 +1883,8 @@ public:
 	int tab() const { return tab_; }
 
 private:
+	/// ".../"
+	static QString const ellipsisSlash_;
 	///
 	QString prefix_;
 	///
@@ -1896,6 +1898,9 @@ private:
 	///
 	bool dottedPrefix_;
 };
+
+
+QString const DisplayPath::ellipsisSlash_ = QString(QChar(0x2026)) + "/";
 
 
 ///

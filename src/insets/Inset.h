@@ -328,7 +328,8 @@ public:
 	/// Appends a potentially abbreviated version of the inset to
 	/// \param str. Intended for use by the TOC.
 	virtual void forOutliner(docstring & str,
-	                    size_t maxlen = TOC_ENTRY_LENGTH) const;
+							 size_t const maxlen = TOC_ENTRY_LENGTH,
+							 bool const shorten = true) const;
 
 	/// can the contents of the inset be edited on screen ?
 	// true for InsetCollapsables (not ButtonOnly) (not InsetInfo), InsetText

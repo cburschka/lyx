@@ -299,10 +299,11 @@ void InsetBranch::toString(odocstream & os) const
 }
 
 
-void InsetBranch::forOutliner(docstring & os, size_t maxlen) const
+void InsetBranch::forOutliner(docstring & os, size_t const maxlen,
+							  bool const shorten) const
 {
 	if (isBranchSelected())
-		InsetCollapsable::forOutliner(os, maxlen);
+		InsetCollapsable::forOutliner(os, maxlen, shorten);
 }
 
 

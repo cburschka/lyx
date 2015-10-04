@@ -26,6 +26,7 @@
 #include "version.h"
 
 #include "support/lassert.h"
+#include "support/lstrings.h"
 #include "support/debug.h"
 
 #include <QApplication>
@@ -394,9 +395,9 @@ void GuiCompleter::updateInline(Cursor const & cur, QString const & completion)
 	docstring postfix = qstring_to_ucs4(completion.mid(prefix.length()));
 	
 	// shorten it if necessary
-	if (lyxrc.completion_inline_dots != -1
-	    && postfix.size() > unsigned(lyxrc.completion_inline_dots))
-		postfix = postfix.substr(0, lyxrc.completion_inline_dots - 1) + "...";
+	if (lyxrc.completion_inline_dots != -1)
+		support::truncateWithEllipsis(postfix,
+									  unsigned(lyxrc.completion_inline_dots));
 
 	// set inline completion at cursor position
 	size_t uniqueTo = max(longestUniqueCompletion().size(), prefix.size());

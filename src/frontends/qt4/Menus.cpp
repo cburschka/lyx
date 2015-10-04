@@ -768,11 +768,9 @@ bool MenuDefinition::searchMenu(FuncRequest const & func, docstring_list & names
 QString limitStringLength(docstring const & str)
 {
 	size_t const max_item_length = 45;
-
-	if (str.size() > max_item_length)
-		return toqstr(str.substr(0, max_item_length - 3) + "...");
-
-	return toqstr(str);
+	docstring ret = str.substr(0, max_item_length + 1);
+	support::truncateWithEllipsis(ret, max_item_length);
+	return toqstr(ret);
 }
 
 

@@ -789,11 +789,12 @@ void InsetText::toString(odocstream & os) const
 }
 
 
-void InsetText::forOutliner(docstring & os, size_t maxlen) const
+void InsetText::forOutliner(docstring & os, size_t const maxlen,
+							bool const shorten) const
 {
 	if (!getLayout().isInToc())
 		return;
-	text().forOutliner(os, maxlen, false);
+	text().forOutliner(os, maxlen, shorten);
 }
 
 

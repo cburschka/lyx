@@ -2043,13 +2043,25 @@ docstring Text::asString(pit_type beg, pit_type end, int options) const
 }
 
 
-void Text::forOutliner(docstring & os, size_t maxlen, bool shorten) const
+void Text::shortenForOutliner(docstring & str, size_t const maxlen)
 {
-	LASSERT(maxlen >= 8, maxlen = TOC_ENTRY_LENGTH);
-	for (size_t i = 0; i != pars_.size() && os.length() < maxlen; ++i)
-		pars_[i].forOutliner(os, maxlen);
-	if (shorten && os.length() >= maxlen)
-		os = os.substr(0, maxlen - 3) + from_ascii("...");
+	support::truncateWithEllipsis(str, maxlen);
+	docstring::iterator it = str.begin();
+	docstring::iterator end = str.end();
+	for (; it != end; ++it)
+		if ((*it) == L'\n' || (*it) == L'\t')
+			(*it) = L' ';	
+}
+
+
+void Text::forOutliner(docstring & os, size_t const maxlen,
+					   bool const shorten) const
+{
+	size_t tmplen = shorten ? maxlen + 1 : maxlen;
+	for (size_t i = 0; i != pars_.size() && os.length() < tmplen; ++i)
+		pars_[i].forOutliner(os, tmplen, false);
+	if (shorten)
+		shortenForOutliner(os, maxlen);
 }
 
 

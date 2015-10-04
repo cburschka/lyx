@@ -542,7 +542,8 @@ void InsetSpecialChar::toString(odocstream & os) const
 }
 
 
-void InsetSpecialChar::forOutliner(docstring & os, size_t) const
+void InsetSpecialChar::forOutliner(docstring & os, size_t const,
+								   bool const) const
 {
 	odocstringstream ods;
 	plaintext(ods, OutputParams(0));

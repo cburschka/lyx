@@ -56,7 +56,7 @@ ParamInfo const & InsetHyperlink::findInfo(string const & /* cmdName */)
 
 docstring InsetHyperlink::screenLabel() const
 {
-	docstring const temp = from_ascii("Hyperlink: ");
+	docstring const temp = _("Hyperlink: ");
 
 	docstring url;
 
@@ -66,8 +66,9 @@ docstring InsetHyperlink::screenLabel() const
 
 	// elide if long
 	if (url.length() > 30) {
-		url = url.substr(0, 10) + "..."
-			+ url.substr(url.length() - 17, url.length());
+		docstring end = url.substr(url.length() - 17, url.length());
+		support::truncateWithEllipsis(url, 13);
+		url += end;
 	}
 	return temp + url;
 }
@@ -257,7 +258,7 @@ void InsetHyperlink::toString(odocstream & os) const
 }
 
 
-void InsetHyperlink::forOutliner(docstring & os, size_t) const
+void InsetHyperlink::forOutliner(docstring & os, size_t const, bool const) const
 {
 	docstring const & n = getParam("name");
 	if (!n.empty()) {

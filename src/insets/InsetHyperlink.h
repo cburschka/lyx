@@ -38,7 +38,7 @@ public:
 	///
 	void toString(odocstream &) const;
 	///
-	void forOutliner(docstring &, size_t) const;
+	void forOutliner(docstring &, size_t const, bool const) const;
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///

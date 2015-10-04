@@ -59,7 +59,7 @@ public:
 	///
 	void toString(odocstream &) const;
 	///
-	void forOutliner(docstring &, size_t) const;
+	void forOutliner(docstring &, size_t const, bool const) const;
 	///
 	void validate(LaTeXFeatures &) const {}
 	///

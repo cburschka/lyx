@@ -31,8 +31,8 @@
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/docstream.h"
-
 #include "support/lassert.h"
+#include "support/lstrings.h"
 
 using namespace std;
 
@@ -259,6 +259,11 @@ shared_ptr<TocBuilder> TocBackend::builder(string const & type)
 }
 
 
+// FIXME: This function duplicates functionality from InsetText::iterateForToc.
+// Both have their own way of computing the TocItem for "tableofcontents". The
+// TocItem creation and update should be made in a dedicated function and
+// updateItem should be rewritten to uniformly update the matching items from
+// all TOCs.
 bool TocBackend::updateItem(DocIterator const & dit)
 {
 	if (dit.text()->getTocLevel(dit.pit()) == Layout::NOT_IN_TOC)
@@ -280,28 +285,30 @@ bool TocBackend::updateItem(DocIterator const & dit)
 
 	// For each paragraph, traverse its insets and let them add
 	// their toc items
+	//
+	// FIXME: This is supposed to accomplish the same as the body of
+	// InsetText::iterateForToc(), probably
 	Paragraph & par = toc_item->dit_.paragraph();
 	InsetList::const_iterator it = par.insetList().begin();
 	InsetList::const_iterator end = par.insetList().end();
 	for (; it != end; ++it) {
 		Inset & inset = *it->inset;
 		if (inset.lyxCode() == ARG_CODE) {
+			tocstring = par.labelString();
 			if (!tocstring.empty())
-				break;
-			Paragraph const & inset_par =
-				*static_cast<InsetArgument&>(inset).paragraphs().begin();
-			if (!par.labelString().empty())
-				tocstring = par.labelString() + ' ';
-			tocstring += inset_par.asString(AS_STR_INSETS);
+				tocstring += ' ';
+			inset.asInsetText()->text().forOutliner(tocstring,TOC_ENTRY_LENGTH);
 			break;
 		}
 	}
 
-	int const toclevel = toc_item->dit_.text()->getTocLevel(toc_item->dit_.pit());
+	int const toclevel = toc_item->dit_.text()->
+		getTocLevel(toc_item->dit_.pit());
 	if (toclevel != Layout::NOT_IN_TOC && toclevel >= min_toclevel
 		&& tocstring.empty())
-			tocstring = par.asString(AS_STR_LABEL | AS_STR_INSETS);
+		par.forOutliner(tocstring, TOC_ENTRY_LENGTH);
 
+	support::truncateWithEllipsis(tocstring, TOC_ENTRY_LENGTH);
 	const_cast<TocItem &>(*toc_item).str(tocstring);
 
 	buffer_->updateTocItem("tableofcontents", dit);

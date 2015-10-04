@@ -3257,11 +3257,13 @@ docstring Paragraph::asString(pos_type beg, pos_type end, int options, const Out
 }
 
 
-void Paragraph::forOutliner(docstring & os, size_t maxlen) const
+void Paragraph::forOutliner(docstring & os, size_t const maxlen,
+							bool const shorten) const
 {
+	size_t tmplen = shorten ? maxlen + 1 : maxlen;
 	if (!d->params_.labelString().empty())
 		os += d->params_.labelString() + ' ';
-	for (pos_type i = 0; i < size() && os.length() < maxlen; ++i) {
+	for (pos_type i = 0; i < size() && os.length() < tmplen; ++i) {
 		if (isDeleted(i))
 			continue;
 		char_type const c = d->text_[i];
@@ -3270,8 +3272,10 @@ void Paragraph::forOutliner(docstring & os, size_t maxlen) const
 		else if (c == '\t' || c == '\n')
 			os += ' ';
 		else if (c == META_INSET)
-			getInset(i)->forOutliner(os, maxlen);
+			getInset(i)->forOutliner(os, tmplen, false);
 	}
+	if (shorten)
+		Text::shortenForOutliner(os, maxlen);
 }
 
 

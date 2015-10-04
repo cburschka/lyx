@@ -169,7 +169,7 @@ public:
 	///
 	void toString(odocstream &) const;
 	///
-	void forOutliner(docstring &, size_t) const;
+	void forOutliner(docstring &, size_t const, bool const) const;
 	///
 	void addToToc(DocIterator const & di, bool output_active,
 				  UpdateType utype) const;

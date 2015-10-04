@@ -317,8 +317,7 @@ docstring InsetScript::toolTip(BufferView const &, int, int) const
 	InsetText::plaintext(ods, rp, 200);
 	docstring content_tip = ods.str();
 	// shorten it if necessary
-	if (content_tip.size() >= 200)
-		content_tip = content_tip.substr(0, 197) + "...";
+	support::truncateWithEllipsis(content_tip, 200);
 	docstring res = scripttranslator_loc().find(params_.type);
 	if (!content_tip.empty())
 		res += from_ascii(": ") + content_tip;

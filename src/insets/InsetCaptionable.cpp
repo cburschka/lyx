@@ -40,8 +40,7 @@ docstring InsetCaptionable::floatName(string const & type) const
 	BufferParams const & bp = buffer().params();
 	FloatList const & floats = bp.documentClass().floats();
 	FloatList::const_iterator it = floats[type];
-	// FIXME UNICODE
-	return (it == floats.end()) ? from_ascii(type) : bp.B_(it->second.name());
+	return (it == floats.end()) ? from_utf8(type) : bp.B_(it->second.name());
 }
 
 

@@ -331,7 +331,7 @@ void InsetQuotes::toString(odocstream & os) const
 }
 
 
-void InsetQuotes::forOutliner(docstring & os, size_t) const
+void InsetQuotes::forOutliner(docstring & os, size_t const, bool const) const
 {
 	os += displayString();
 }
