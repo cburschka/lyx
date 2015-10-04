@@ -40,14 +40,22 @@ a good value? NoScreenUpdate?
 On a related note, what is the semantics of a call to
 Buffer::changed(false)? What does the caller mean?
 
-** What happens with FitCursor when the cursor is already OK?
+** How to avoid  redraw with FitCursor when the cursor is already OK?
 
-In this case, we invoke Buffer::change(false) with drawing disabled,
-which means that the paint machinery is invoked to update inset
-positions.
+In this case, we invoke Buffer::change(false) with drawing disabled
+and NoScreenUpdate strategy.
 
-Actually, this was added as part of the horizontal scrolling GSoC
-work. We need to investigate how costly this is.
+In the draw phase, bv::checkCursorScrollOffset (the horizontal
+scrolling machinery) will change the strategy to FullScreenUpdate if
+the current row needs further scrolling.
+
+When the update strategy it kept to NoScreenUpdate, there is currently
+a no-draw full repaint, which should not be necessary. It would be
+possible to avoid that if the call to checkCursorScrollOffset was done
+in bv::processUpdateFlags instead of bv::draw.
+
+The global idea would be to extend FitCursor to cover also horizontal
+cursor.
 
 
 * Proposals
@@ -85,7 +93,9 @@ There was a proposal to always compute _all_ rows, but this may become
 expensive for large files. This would though help scrolling.
 
 
-* Two phase drawing
+* Description of current drawing mechanism
+
+** Two phase drawing
 
 There are two parts to drawing the work area:
 
@@ -122,7 +132,7 @@ The screen is drawn (with appropriate update strategy), except when
 update flag is Update::None.
 
 
-* Metrics computation
+** Metrics computation
 
 This is triggered by bv::updateMetrics, which calls tm::redoParagraph for
   + all visible paragraphs
@@ -137,7 +147,7 @@ of text insets, this will invoke recursively tm::metrics, which redoes
 all the paragraphs of the inset.
 
 
-* Drawing the work area.
+** Drawing the work area.
 
 This is done in bv::draw. This method is triggered mainly by
 Buffer::changed, which draws all the work areas that show the given buffer.
