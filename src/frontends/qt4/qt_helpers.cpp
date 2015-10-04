@@ -608,6 +608,8 @@ QString guiName(string const & type, BufferParams const & bp)
 		return qt_("Graphics");
 	if (type == "equation")
 		return qt_("Equations");
+	if (type == "external")
+		return qt_("External material");
 	if (type == "footnote")
 		return qt_("Footnotes");
 	if (type == "listing")

@@ -80,6 +80,8 @@ docstring const TocItem::asString() const
 	return prefix + str_;
 }
 
+namespace {
+
 // convert a DocIterator into an argument to LFUN_PARAGRAPH_GOTO 
 docstring paragraph_goto_arg(DocIterator const & dit)
 {
@@ -87,6 +89,8 @@ docstring paragraph_goto_arg(DocIterator const & dit)
 	return convert<docstring>(s.paragraph().id()) + ' ' +
 		convert<docstring>(s.pos());
 }
+
+} // namespace anon
 
 FuncRequest TocItem::action() const
 {

@@ -30,6 +30,7 @@
 #include "MetricsInfo.h"
 #include "OutputParams.h"
 #include "output_latex.h"
+#include "TocBackend.h"
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
@@ -372,6 +373,33 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 }
 
 
+namespace {
+
+docstring screenLabel(InsetExternalParams const & params,
+			    Buffer const & buffer)
+{
+	external::Template const * const ptr =
+		external::getTemplatePtr(params);
+	if (!ptr)
+		// FIXME UNICODE
+		return bformat((_("External template %1$s is not installed")),
+					from_utf8(params.templatename()));
+	// FIXME UNICODE
+	docstring gui = _(ptr->guiName);
+	gui += ": ";
+
+	if (params.filename.empty())
+		gui += "???";
+	else
+		gui += from_utf8(params.filename.relFileName(buffer.filePath()));
+
+	return gui;
+}
+
+} // namespace anon
+
+
+
 InsetExternal::InsetExternal(Buffer * buf)
 	: Inset(buf), renderer_(new RenderButton)
 {
@@ -460,6 +488,17 @@ bool InsetExternal::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
+void InsetExternal::addToToc(DocIterator const & cpit, bool output_active,
+							 UpdateType) const
+{
+	DocIterator pit = cpit;
+	pit.push_back(CursorSlice(const_cast<InsetExternal &>(*this)));
+	shared_ptr<Toc> toc = buffer().tocBackend().toc("external");
+	docstring str = screenLabel(params_, buffer());
+	toc->push_back(TocItem(pit, 0, str, output_active));
+}
+
+
 bool InsetExternal::showInsetDialog(BufferView * bv) const
 {
 	bv->showDialog("external", params2string(params(), bv->buffer()),
@@ -496,28 +535,6 @@ graphics::Params get_grfx_params(InsetExternalParams const & eparams)
 	gparams.display = eparams.display;
 
 	return gparams;
-}
-
-
-docstring screenLabel(InsetExternalParams const & params,
-			    Buffer const & buffer)
-{
-	external::Template const * const ptr =
-		external::getTemplatePtr(params);
-	if (!ptr)
-		// FIXME UNICODE
-		return bformat((_("External template %1$s is not installed")),
-					from_utf8(params.templatename()));
-	// FIXME UNICODE
-	docstring gui = _(ptr->guiName);
-	gui += ": ";
-
-	if (params.filename.empty())
-		gui += "???";
-	else
-		gui += from_utf8(params.filename.relFileName(buffer.filePath()));
-
-	return gui;
 }
 
 } // namespace anon
