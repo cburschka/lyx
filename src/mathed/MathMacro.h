@@ -162,6 +162,9 @@ private:
 	bool editMode(BufferView const * bv) const;
 	/// Copy all members (except base class members)
 	void assign(MathMacro const &);
+	/// Recursively update the pointers of all expanded macros
+	/// appearing in the arguments of the current macro
+	void updateNestedChildren(MathMacro *, InsetMathNest *);
 	
 	/// name of macro
 	docstring name_;

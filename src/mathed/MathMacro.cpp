@@ -63,6 +63,8 @@ public:
 	///
 	void setOwner(MathMacro * mathMacro) { mathMacro_ = mathMacro; }
 	///
+	MathMacro * owner() { return mathMacro_; }
+	///
 	InsetCode lyxCode() const { return ARGUMENT_PROXY_CODE; }
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const {
@@ -138,6 +140,7 @@ MathMacro::MathMacro(Buffer * buf, docstring const & name)
 MathMacro::MathMacro(MathMacro const & that)
 	: InsetMathNest(that), expanded_(that.buffer_)
 {
+	setBuffer(*that.buffer_);
 	assign(that);
 }
 
@@ -175,12 +178,41 @@ void MathMacro::assign(MathMacro const & that)
 		ArgumentProxy * p = dynamic_cast<ArgumentProxy *>(expanded_.cell(0)[i].nucleus());
 		if (p)
 			p->setOwner(this);
+
+		InsetMathNest * ni = expanded_.cell(0)[i].nucleus()->asNestInset();
+		if (ni)
+			updateNestedChildren(this, ni);
 	}
-	if (macro_ && lyxrc.preview == LyXRC::PREVIEW_ON) {
-		// As MathData::metrics() is not called when instant preview is
-		// on, we have to update macro_ by ourselves. In this case, we
-		// simply let it point to the last known good copy of MacroData.
+	if (macro_) {
+		// The macro_ pointer is updated when MathData::metrics() is
+		// called. However, when instant preview is on or the macro is
+		// not on screen, MathData::metrics() is not called and we may
+		// have a dangling pointer. As a safety measure, when a macro
+		// is copied, always let macro_ point to the backup copy of the
+		// MacroData structure. This backup is updated every time the
+		// macro is changed, so it will not become stale.
 		macro_ = &macroBackup_;
+	}
+}
+
+
+void MathMacro::updateNestedChildren(MathMacro * owner, InsetMathNest * ni)
+{
+	for (size_t i = 0; i < ni->nargs(); ++i) {
+		MathData & ar = ni->cell(i);
+		for (size_t j = 0; j < ar.size(); ++j) {
+			ArgumentProxy * ap = dynamic_cast
+				<ArgumentProxy *>(ar[j].nucleus());
+			if (ap) {
+				MathMacro * mm = ap->owner();
+				if (mm->macro_)
+					mm->macro_ = &mm->macroBackup_;
+				ap->setOwner(owner);
+			}
+			InsetMathNest * imn = ar[j].nucleus()->asNestInset();
+			if (imn)
+				updateNestedChildren(owner, imn);
+		}
 	}
 }
 

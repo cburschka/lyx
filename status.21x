@@ -70,6 +70,8 @@ What's new
 
 * USER INTERFACE
 
+- Fix crash when unfolding/copying macros containing other macros (bug 9490).
+
 - Fix automatic insertion of longtable captions (bug 9692).
 
 - Fix setting of nested minipage via the dialog (bug 8716).
