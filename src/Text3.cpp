@@ -1614,7 +1614,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		case mouse_button::button1:
 			// Set the cursor
 			if (!bv->mouseSetCursor(cur, cmd.argument() == "region-select"))
-				cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
+				cur.screenUpdateFlags(Update::FitCursor);
 			if (bvcur.wordSelection())
 				selectWord(bvcur, WHOLE_WORD);
 			break;
@@ -1639,7 +1639,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				return;
 			}
 			if (!bv->mouseSetCursor(cur, false))
-				cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
+				cur.screenUpdateFlags(Update::FitCursor);
 			break;
 		}
 

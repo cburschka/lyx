@@ -2970,7 +2970,7 @@ void BufferView::setCurrentRowSlice(CursorSlice const & rowSlice)
 }
 
 
-void BufferView::checkCursorScrollOffset(PainterInfo & pi)
+void BufferView::checkCursorScrollOffset()
 {
 	CursorSlice rowSlice = d->cursor_.bottom();
 	TextMetrics const & tm = textMetrics(rowSlice.text());
@@ -2981,8 +2981,7 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 		return;
 	ParagraphMetrics const & pm = tm.parMetrics(rowSlice.pit());
 	Row const & row = pm.getRow(rowSlice.pos(),
-				    d->cursor_.boundary()
-				    && rowSlice == d->cursor_.top());
+	                            d->cursor_.boundary() && rowSlice == d->cursor_.top());
 	rowSlice.pos() = row.pos();
 
 	// Set the row on which the cursor lives.
@@ -2993,7 +2992,8 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 
 	// Horizontal scroll offset of the cursor row in pixels
 	int offset = d->horiz_scroll_offset_;
-	int const MARGIN = Length(2, Length::EM).inPixels(pi.base);
+	int const MARGIN = 2 * theFontMetrics(d->cursor_.real_current_font).em();
+	//lyxerr << "cur_x=" << cur_x << ", offset=" << offset << ", margin=" << MARGIN << endl;
 	if (cur_x < offset + MARGIN) {
 		// scroll right
 		offset = cur_x - MARGIN;
@@ -3034,7 +3034,7 @@ void BufferView::draw(frontend::Painter & pain)
 
 	// Check whether the row where the cursor lives needs to be scrolled.
 	// Update the drawing strategy if needed.
-	checkCursorScrollOffset(pi);
+	checkCursorScrollOffset();
 
 	switch (d->update_strategy_) {
 
