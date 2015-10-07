@@ -132,11 +132,14 @@ void InsetMathCases::write(WriteStream & os) const
 	MathEnsurer ensurer(os);
 	if (os.fragile())
 		os << "\\protect";
+	bool open = os.startOuterRow();
 	os << "\\begin{cases}\n";
 	InsetMathGrid::write(os);
 	if (os.fragile())
 		os << "\\protect";
 	os << "\\end{cases}";
+	if (open)
+		os.startOuterRow();
 }
 
 

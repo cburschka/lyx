@@ -1386,6 +1386,7 @@ void write(MathData const & dat, WriteStream & wi)
 	extractStrings(ar);
 	wi.firstitem() = true;
 	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it) {
+		//		wi.startOuterRow();
 		(*it)->write(wi);
 		wi.firstitem() = false;
 	}

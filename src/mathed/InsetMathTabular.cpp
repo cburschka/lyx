@@ -71,6 +71,7 @@ void InsetMathTabular::write(WriteStream & os) const
 	if (os.fragile())
 		os << "\\protect";
 	os << "\\begin{" << name_ << '}';
+	bool open = os.startOuterRow();
 
 	char const v = verticalAlignment();
 	if (v == 't' || v == 'b')
@@ -82,6 +83,8 @@ void InsetMathTabular::write(WriteStream & os) const
 	if (os.fragile())
 		os << "\\protect";
 	os << "\\end{" << name_ << '}';
+	if (open)
+		os.startOuterRow();
 	// adding a \n here is bad if the tabular is the last item
 	// in an \eqnarray...
 }

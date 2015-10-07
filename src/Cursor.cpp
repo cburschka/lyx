@@ -1684,7 +1684,9 @@ void Cursor::normalize()
 			<< pos() << ' ' << lastpos() <<  " in idx: " << idx()
 		       << " in atom: '";
 		odocstringstream os;
-		WriteStream wi(os, false, true, WriteStream::wsDefault);
+		TexRow texrow(false);
+		otexrowstream ots(os,texrow);
+		WriteStream wi(ots, false, true, WriteStream::wsDefault);
 		inset().asInsetMath()->write(wi);
 		lyxerr << to_utf8(os.str()) << endl;
 		pos() = lastpos();

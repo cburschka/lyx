@@ -104,6 +104,7 @@ void InsetMathSplit::write(WriteStream & ws) const
 	if (!numbered_ && name_ == "align")
 		suffix = from_ascii("*");
 	ws << "\\begin{" << name_ << suffix << '}';
+	bool open = ws.startOuterRow();
 	if (name_ != "split" && name_ != "align" && verticalAlignment() != 'c')
 		ws << '[' << verticalAlignment() << ']';
 	if (name_ == "alignedat")
@@ -112,6 +113,8 @@ void InsetMathSplit::write(WriteStream & ws) const
 	if (ws.fragile())
 		ws << "\\protect";
 	ws << "\\end{" << name_ << suffix << "}\n";
+	if (open)
+		ws.startOuterRow();
 }
 
 

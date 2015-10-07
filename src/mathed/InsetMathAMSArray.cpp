@@ -134,8 +134,11 @@ void InsetMathAMSArray::write(WriteStream & os) const
 {
 	MathEnsurer ensurer(os);
 	os << "\\begin{" << name_ << '}';
+	bool open = os.startOuterRow();
 	InsetMathGrid::write(os);
 	os << "\\end{" << name_ << '}';
+	if (open)
+		os.startOuterRow();
 }
 
 

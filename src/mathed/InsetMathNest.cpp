@@ -250,7 +250,9 @@ bool InsetMathNest::idxLast(Cursor & cur) const
 void InsetMathNest::dump() const
 {
 	odocstringstream oss;
-	WriteStream os(oss);
+	TexRow texrow(false);
+	otexrowstream ots(oss,texrow);
+	WriteStream os(ots);
 	os << "---------------------------------------------\n";
 	write(os);
 	os << "\n";
@@ -376,8 +378,11 @@ void InsetMathNest::write(WriteStream & os) const
 	ModeSpecifier specifier(os, currentMode(), lockedMode());
 	docstring const latex_name = name();
 	os << '\\' << latex_name;
-	for (size_t i = 0; i < nargs(); ++i)
+	for (size_t i = 0; i < nargs(); ++i) {
+		os.pushRowEntry(TexRow::mathEntry(id(),i));
 		os << '{' << cell(i) << '}';
+		os.popRowEntry();
+	}
 	if (nargs() == 0)
 		os.pendingSpace(true);
 	if (lock_ && !os.latex()) {
@@ -398,22 +403,20 @@ void InsetMathNest::normalize(NormalStream & os) const
 
 void InsetMathNest::latex(otexstream & os, OutputParams const & runparams) const
 {
-	WriteStream wi(os.os(), runparams.moving_arg, true,
-		       runparams.dryrun ? WriteStream::wsDryrun : WriteStream::wsDefault,
-		       runparams.encoding);
+	WriteStream wi(os, runparams.moving_arg, true,
+			runparams.dryrun ? WriteStream::wsDryrun : WriteStream::wsDefault,
+			runparams.encoding);
 	wi.canBreakLine(os.canBreakLine());
-	write(wi);
+	if (runparams.lastid != -1) {
+		wi.pushRowEntry(os.texrow().textEntry(runparams.lastid,
+											  runparams.lastpos));
+		write(wi);
+		wi.popRowEntry();
+	} else
+		write(wi);
 	// Reset parbreak status after a math inset.
 	os.lastChar(0);
 	os.canBreakLine(wi.canBreakLine());
-
-	int lf = wi.line();
-	if (lf > 0 && runparams.lastid != -1) {
-		--lf;
-		os.texrow().newline();
-		os.texrow().start(runparams.lastid, runparams.lastpos);
-	}
-	os.texrow().newlines(lf);
 }
 
 

@@ -575,7 +575,9 @@ void InsetMathHull::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
 		InsetMathGrid::metricsT(mi, dim);
 	} else {
 		odocstringstream os;
-		WriteStream wi(os, false, true, WriteStream::wsDefault);
+		TexRow texrow(false);
+		otexrowstream ots(os,texrow);
+		WriteStream wi(ots, false, true, WriteStream::wsDefault);
 		write(wi);
 		dim.wid = os.str().size();
 		dim.asc = 1;
@@ -590,7 +592,9 @@ void InsetMathHull::drawT(TextPainter & pain, int x, int y) const
 		InsetMathGrid::drawT(pain, x, y);
 	} else {
 		odocstringstream os;
-		WriteStream wi(os, false, true, WriteStream::wsDefault);
+		TexRow texrow(false);
+		otexrowstream ots(os,texrow);
+		WriteStream wi(ots, false, true, WriteStream::wsDefault);
 		write(wi);
 		pain.draw(x, y, os.str().c_str());
 	}
@@ -608,7 +612,9 @@ static docstring latexString(InsetMathHull const & inset)
 	static Encoding const * encoding = 0;
 	if (inset.isBufferValid())
 		encoding = &(inset.buffer().params().encoding());
-	WriteStream wi(ls, false, true, WriteStream::wsPreview, encoding);
+	TexRow texrow(false);
+	otexrowstream ots(ls,texrow);
+	WriteStream wi(ots, false, true, WriteStream::wsPreview, encoding);
 	inset.write(wi);
 	return ls.str();
 }
@@ -921,22 +927,25 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 void InsetMathHull::header_write(WriteStream & os) const
 {
 	bool n = numberedType();
-
+	
 	switch(type_) {
 	case hullNone:
 		break;
 
 	case hullSimple:
 		os << '$';
+		os.startOuterRow();
 		if (cell(0).empty())
 			os << ' ';
 		break;
 
 	case hullEquation:
+		os << "\n";
+		os.startOuterRow();
 		if (n)
-			os << "\n\\begin{equation" << star(n) << "}\n";
+			os << "\\begin{equation" << star(n) << "}\n";
 		else
-			os << "\n\\[\n";
+			os << "\\[\n";
 		break;
 
 	case hullEqnArray:
@@ -944,17 +953,23 @@ void InsetMathHull::header_write(WriteStream & os) const
 	case hullFlAlign:
 	case hullGather:
 	case hullMultline:
-		os << "\n\\begin{" << hullName(type_) << star(n) << "}\n";
+		os << "\n";
+		os.startOuterRow();
+		os << "\\begin{" << hullName(type_) << star(n) << "}\n";
 		break;
 
 	case hullAlignAt:
 	case hullXAlignAt:
-		os << "\n\\begin{" << hullName(type_) << star(n) << '}'
+		os << "\n";
+		os.startOuterRow();
+		os << "\\begin{" << hullName(type_) << star(n) << '}'
 		  << '{' << static_cast<unsigned int>((ncols() + 1)/2) << "}\n";
 		break;
 
 	case hullXXAlignAt:
-		os << "\n\\begin{" << hullName(type_) << '}'
+		os << "\n";
+		os.startOuterRow();
+		os << "\\begin{" << hullName(type_) << '}'
 		  << '{' << static_cast<unsigned int>((ncols() + 1)/2) << "}\n";
 		break;
 
@@ -963,7 +978,9 @@ void InsetMathHull::header_write(WriteStream & os) const
 		break;
 
 	default:
-		os << "\n\\begin{unknown" << star(n) << "}\n";
+		os << "\n";
+		os.startOuterRow();
+		os << "\\begin{unknown" << star(n) << "}\n";
 		break;
 	}
 }
@@ -983,10 +1000,12 @@ void InsetMathHull::footer_write(WriteStream & os) const
 		break;
 
 	case hullEquation:
+		os << "\n";
+		os.startOuterRow();
 		if (n)
-			os << "\n\\end{equation" << star(n) << "}\n";
+			os << "\\end{equation" << star(n) << "}\n";
 		else
-			os << "\n\\]\n";
+			os << "\\]\n";
 		break;
 
 	case hullEqnArray:
@@ -996,11 +1015,15 @@ void InsetMathHull::footer_write(WriteStream & os) const
 	case hullXAlignAt:
 	case hullGather:
 	case hullMultline:
-		os << "\n\\end{" << hullName(type_) << star(n) << "}\n";
+		os << "\n";
+		os.startOuterRow();
+		os << "\\end{" << hullName(type_) << star(n) << "}\n";
 		break;
 
 	case hullXXAlignAt:
-		os << "\n\\end{" << hullName(type_) << "}\n";
+		os << "\n";
+		os.startOuterRow();
+		os << "\\end{" << hullName(type_) << "}\n";
 		break;
 
 	case hullRegexp:
@@ -1009,7 +1032,9 @@ void InsetMathHull::footer_write(WriteStream & os) const
 		break;
 
 	default:
-		os << "\n\\end{unknown" << star(n) << "}\n";
+		os << "\n";
+		os.startOuterRow();
+		os << "\\end{unknown" << star(n) << "}\n";
 		break;
 	}
 }
@@ -1366,7 +1391,6 @@ docstring InsetMathHull::eolString(row_type row, bool fragile, bool latex,
 	last_eoln = false;
 	return res + InsetMathGrid::eolString(row, fragile, latex, last_eoln);
 }
-
 
 void InsetMathHull::write(WriteStream & os) const
 {
@@ -2004,7 +2028,9 @@ bool InsetMathHull::searchForward(BufferView * bv, string const & str,
 void InsetMathHull::write(ostream & os) const
 {
 	odocstringstream oss;
-	WriteStream wi(oss, false, false, WriteStream::wsDefault);
+	TexRow texrow(false);
+	otexrowstream ots(oss,texrow);
+	WriteStream wi(ots, false, false, WriteStream::wsDefault);
 	oss << "Formula ";
 	write(wi);
 	os << to_utf8(oss.str());
@@ -2046,8 +2072,10 @@ int InsetMathHull::plaintext(odocstringstream & os,
 	}
 
 	odocstringstream oss;
+	TexRow texrow(false);
+	otexrowstream ots(oss,texrow);
 	Encoding const * const enc = encodings.fromLyXName("utf8");
-	WriteStream wi(oss, false, true, WriteStream::wsDefault, enc);
+	WriteStream wi(ots, false, true, WriteStream::wsDefault, enc);
 
 	// Fix Bug #6139
 	if (type_ == hullRegexp)
@@ -2087,12 +2115,14 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 	++ms.tab(); ms.cr(); ms.os() << '<' << bname << '>';
 
 	odocstringstream ls;
+	TexRow texrow;
+	otexstream ols(ls, texrow);
 	if (runparams.flavor == OutputParams::XML) {
 		ms << MTag("alt role='tex' ");
 		// Workaround for db2latex: db2latex always includes equations with
 		// \ensuremath{} or \begin{display}\end{display}
 		// so we strip LyX' math environment
-		WriteStream wi(ls, false, false, WriteStream::wsDefault, runparams.encoding);
+		WriteStream wi(ols, false, false, WriteStream::wsDefault, runparams.encoding);
 		InsetMathGrid::write(wi);
 		ms << from_utf8(subst(subst(to_utf8(ls.str()), "&", "&amp;"), "<", "&lt;"));
 		ms << ETag("alt");
@@ -2102,9 +2132,6 @@ int InsetMathHull::docbook(odocstream & os, OutputParams const & runparams) cons
 		InsetMathGrid::mathmlize(ms);
 		ms << ETag("math");
 	} else {
-		TexRow texrow;
-		texrow.reset();
-		otexstream ols(ls, texrow);
 		ms << MTag("alt role='tex'");
 		latex(ols, runparams);
 		res = texrow.rows();
@@ -2354,7 +2381,9 @@ docstring InsetMathHull::xhtml(XHTMLStream & xs, OutputParams const & op) const
 		// Unfortunately, we cannot use latexString() because we do not want
 		// $...$ or whatever.
 		odocstringstream ls;
-		WriteStream wi(ls, false, true, WriteStream::wsPreview);
+		TexRow texrow(false);
+		otexrowstream ots(ls,texrow);
+		WriteStream wi(ots, false, true, WriteStream::wsPreview);
 		ModeSpecifier specifier(wi, MATH_MODE);
 		mathAsLatex(wi);
 		docstring const latex = ls.str();

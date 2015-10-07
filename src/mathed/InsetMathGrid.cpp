@@ -1266,9 +1266,16 @@ void InsetMathGrid::write(WriteStream & os,
 				emptyline = false;
 			}
 		}
-		for (col_type col = beg_col; col < lastcol;) {
+		for (col_type col = beg_col; col < end_col;) {
 			int nccols = 1;
 			idx_type const idx = index(row, col);
+			TexRow::RowEntry entry = os.texrow().mathEntry(id(),idx);
+			os.texrow().startMath(id(),idx);
+			if (col >= lastcol) {
+				++col;
+				continue;
+			}
+			os.pushRowEntry(entry);
 			if (cellinfo_[idx].multi_ == CELL_BEGIN_OF_MULTICOLUMN) {
 				size_t s = col + 1;
 				while (s < ncols() &&
@@ -1286,6 +1293,7 @@ void InsetMathGrid::write(WriteStream & os,
 				os << '}';
 			os << eocString(col + nccols - 1, lastcol);
 			col += nccols;
+			os.popRowEntry();
 		}
 		eol = eolString(row, os.fragile(), os.latex(), last_eoln);
 		os << eol;

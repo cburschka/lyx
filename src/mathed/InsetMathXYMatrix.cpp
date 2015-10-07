@@ -57,6 +57,7 @@ void InsetMathXYMatrix::write(WriteStream & os) const
 {
 	MathEnsurer ensurer(os);
 	os << "\\xymatrix";
+	bool open = os.startOuterRow();
 	if (equal_spacing_) {
 		os << "@!";
 		switch (spacing_code_) {
@@ -83,7 +84,10 @@ void InsetMathXYMatrix::write(WriteStream & os) const
 	}
 	os << '{';
 	InsetMathGrid::write(os);
-	os << "}\n";
+	os << "}";
+	if (open)
+		os.startOuterRow();
+	os << "\n";
 }
 
 

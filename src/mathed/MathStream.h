@@ -17,6 +17,7 @@
 #include "InsetMath.h"
 // FIXME: Move to individual insets
 #include "MetricsInfo.h"
+#include "texstream.h"
 
 
 namespace lyx {
@@ -39,10 +40,10 @@ public:
 		wsPreview
 	};
 	///
-	WriteStream(odocstream & os, bool fragile, bool latex, OutputType output,
-		Encoding const * encoding = 0);
+	WriteStream(otexrowstream & os, bool fragile, bool latex, OutputType output,
+				Encoding const * encoding = 0);
 	///
-	explicit WriteStream(odocstream & os);
+	explicit WriteStream(otexrowstream & os);
 	///
 	~WriteStream();
 	///
@@ -54,7 +55,9 @@ public:
 	///
 	OutputType output() const { return output_; }
 	///
-	odocstream & os() { return os_; }
+	otexrowstream & os() { return os_; }
+	///
+	TexRow & texrow() { return os_.texrow(); }
 	///
 	bool & firstitem() { return firstitem_; }
 	///
@@ -85,9 +88,18 @@ public:
 	bool asciiOnly() const { return ascii_; }
 	/// LaTeX encoding
 	Encoding const * encoding() const { return encoding_; }
+
+	/// maintains a stack of texrow informations about outer math insets.
+	/// push an entry
+	void pushRowEntry(TexRow::RowEntry entry);
+	/// pop an entry
+	void popRowEntry();
+	/// TexRow::starts the innermost outer math inset
+	/// returns true if the outer row entry will appear at this line
+	bool startOuterRow();
 private:
 	///
-	odocstream & os_;
+	otexrowstream & os_;
 	/// do we have to write \\protect sometimes
 	bool fragile_;
 	/// are we at the beginning of an MathData?
@@ -112,6 +124,8 @@ private:
 	int line_;
 	///
 	Encoding const * encoding_;
+	///
+	std::vector<TexRow::RowEntry> outer_row_entries_;
 };
 
 ///

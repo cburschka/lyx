@@ -121,8 +121,8 @@ WriteStream & operator<<(WriteStream & ws, docstring const & s)
 }
 
 
-WriteStream::WriteStream(odocstream & os, bool fragile, bool latex, OutputType output,
-			Encoding const * encoding)
+WriteStream::WriteStream(otexrowstream & os, bool fragile, bool latex,
+						 OutputType output, Encoding const * encoding)
 	: os_(os), fragile_(fragile), firstitem_(false), latex_(latex),
 	  output_(output), pendingspace_(false), pendingbrace_(false),
 	  textmode_(false), locked_(0), ascii_(0), canbreakline_(true),
@@ -130,11 +130,11 @@ WriteStream::WriteStream(odocstream & os, bool fragile, bool latex, OutputType o
 {}
 
 
-WriteStream::WriteStream(odocstream & os)
+WriteStream::WriteStream(otexrowstream & os)
 	: os_(os), fragile_(false), firstitem_(false), latex_(false),
 	  output_(wsDefault), pendingspace_(false), pendingbrace_(false),
 	  textmode_(false), locked_(0), ascii_(0), canbreakline_(true),
-	  line_(0), encoding_(0)
+	  line_(0), encoding_(0) 
 {}
 
 
@@ -180,6 +180,29 @@ void WriteStream::lockedMode(bool locked)
 void WriteStream::asciiOnly(bool ascii)
 {
 	ascii_ = ascii;
+}
+
+
+void WriteStream::pushRowEntry(TexRow::RowEntry entry)
+{
+	outer_row_entries_.push_back(entry);
+}
+
+
+void WriteStream::popRowEntry()
+{
+	if (!outer_row_entries_.empty())
+		outer_row_entries_.pop_back();
+}
+
+
+bool WriteStream::startOuterRow()
+{
+	size_t n = outer_row_entries_.size();
+	if (n > 0)
+		return texrow().start(outer_row_entries_[n - 1]);
+	else
+		return false;
 }
 
 

@@ -56,9 +56,12 @@ void InsetMathDiagram::write(WriteStream & os) const
 {
 	MathEnsurer ensurer(os);
 	os << "\\Diagram";
+	bool open = os.startOuterRow();
 	os << '{';
 	InsetMathGrid::write(os);
 	os << "}\n";
+	if (open)
+		os.startOuterRow();
 }
 
 

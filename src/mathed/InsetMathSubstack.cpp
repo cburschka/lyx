@@ -107,8 +107,11 @@ void InsetMathSubstack::write(WriteStream & os) const
 {
 	MathEnsurer ensurer(os);
 	os << "\\substack{";
+	bool open = os.startOuterRow();
 	InsetMathGrid::write(os);
 	os << "}\n";
+	if (open)
+		os.startOuterRow();
 }
 
 
