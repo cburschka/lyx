@@ -19,7 +19,44 @@ namespace lyx {
 
 /** Wrapper class for odocstream.
     This class is used to automatically count the lines of the exported latex
-    code and also to ensure that no blank lines may be inadvertently output.
+    code.
+  */
+
+class otexrowstream {
+public:
+	///
+	otexrowstream(odocstream & os, TexRow & texrow)
+		: os_(os), texrow_(texrow) {}
+	///
+	odocstream & os() { return os_; }
+	///
+	TexRow & texrow() { return texrow_; }
+	///
+	void put(char_type const & c);
+private:
+	///
+	odocstream & os_;
+	///
+	TexRow & texrow_;
+};
+
+///
+otexrowstream & operator<<(otexrowstream &, odocstream_manip);
+///
+otexrowstream & operator<<(otexrowstream &, docstring const &);
+///
+otexrowstream & operator<<(otexrowstream &, std::string const &);
+///
+otexrowstream & operator<<(otexrowstream &, char const *);
+///
+otexrowstream & operator<<(otexrowstream &, char);
+///
+template <typename Type>
+otexrowstream & operator<<(otexrowstream & ots, Type value);
+
+
+/** Subclass for otexrowstream.
+    This class is used to ensure that no blank lines may be inadvertently output.
     To this end, use the special variables "breakln" and "safebreakln" as if
     they were iomanip's to ensure that the next output will start at the
     beginning of a line. Using "breakln", a '\n' char will be output if needed,
@@ -28,16 +65,12 @@ namespace lyx {
     a paragraph break was just output.
   */
 
-class otexstream {
+class otexstream : public otexrowstream {
 public:
 	///
 	otexstream(odocstream & os, TexRow & texrow)
-		: os_(os), texrow_(texrow), canbreakline_(false),
+		: otexrowstream(os, texrow), canbreakline_(false),
 		  protectspace_(false), parbreak_(true), lastchar_(0) {}
-	///
-	odocstream & os() { return os_; }
-	///
-	TexRow & texrow() { return texrow_; }
 	///
 	void put(char_type const & c);
 	///
@@ -60,10 +93,6 @@ public:
 	///
 	bool afterParbreak() const { return parbreak_; }
 private:
-	///
-	odocstream & os_;
-	///
-	TexRow & texrow_;
 	///
 	bool canbreakline_;
 	///

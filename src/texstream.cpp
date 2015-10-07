@@ -29,17 +29,22 @@ using lyx::support::split;
 
 namespace lyx {
 
+void otexrowstream::put(char_type const & c)
+{
+	os_.put(c);
+	if (c == '\n')
+		texrow_.newline();
+}
+
 void otexstream::put(char_type const & c)
 {
 	if (protectspace_) {
 		if (!canbreakline_ && c == ' ')
-			os_ << "{}";
+			os() << "{}";
 		protectspace_ = false;
 	}
-	os_.put(c);
+	otexrowstream::put(c);
 	lastChar(c);
-	if (c == '\n')
-		texrow_.newline();
 }
 
 
@@ -50,9 +55,8 @@ SafeBreakLine safebreakln;
 otexstream & operator<<(otexstream & ots, BreakLine)
 {
 	if (ots.canBreakLine()) {
-		ots.os().put('\n');
+		ots.otexrowstream::put('\n');
 		ots.lastChar('\n');
-		ots.texrow().newline();
 	}
 	ots.protectSpace(false);
 	return ots;
@@ -61,23 +65,40 @@ otexstream & operator<<(otexstream & ots, BreakLine)
 
 otexstream & operator<<(otexstream & ots, SafeBreakLine)
 {
+	otexrowstream & otrs = ots;
 	if (ots.canBreakLine()) {
-		ots.os() << "%\n";
+		otrs << "%\n";
 		ots.lastChar('\n');
-		ots.texrow().newline();
 	}
 	ots.protectSpace(false);
 	return ots;
 }
 
 
-otexstream & operator<<(otexstream & ots, odocstream_manip pf)
+otexrowstream & operator<<(otexrowstream & ots, odocstream_manip pf)
 {
 	ots.os() << pf;
 	if (pf == static_cast<odocstream_manip>(endl)) {
-		ots.lastChar('\n');
 		ots.texrow().newline();
 	}
+	return ots;
+}
+
+otexstream & operator<<(otexstream & ots, odocstream_manip pf)
+{
+	otexrowstream & otrs = ots;
+	otrs << pf;
+	if (pf == static_cast<odocstream_manip>(endl)) {
+		ots.lastChar('\n');
+	}
+	return ots;
+}
+
+
+otexrowstream & operator<<(otexrowstream & ots, docstring const & s)
+{
+	ots.os() << s;
+	ots.texrow().newlines(count(s.begin(), s.end(), '\n'));
 	return ots;
 }
 
@@ -89,10 +110,10 @@ otexstream & operator<<(otexstream & ots, docstring const & s)
 	// Check whether there's something to output
 	if (len == 0)
 		return ots;
-
+	otexrowstream & otrs = ots;
 	if (ots.protectSpace()) {
 		if (!ots.canBreakLine() && s[0] == ' ')
-			ots.os() << "{}";
+			otrs << "{}";
 		ots.protectSpace(false);
 	}
 
@@ -106,7 +127,7 @@ otexstream & operator<<(otexstream & ots, docstring const & s)
 		docstring s2 = split(s, s1, 0xF0000);
 		while (true) {
 			if (!s1.empty())
-				ots.os() << s1;
+				otrs << s1;
 			if (s2.empty())
 				break;
 			docstring enc;
@@ -114,22 +135,35 @@ otexstream & operator<<(otexstream & ots, docstring const & s)
 			if (!contains(s2, 0xF0001))
 				s2 = split(enc, s1, 0xF0000);
 			else {
-				ots.os() << setEncoding(to_ascii(enc));
+				otrs << setEncoding(to_ascii(enc));
 				s2 = split(s3, s1, 0xF0000);
 			}
 		}
 	} else
-		ots.os() << s;
+		otrs << s;
 
 	if (len > 1)
 		ots.canBreakLine(s[len - 2] != '\n');
 	ots.lastChar(s[len - 1]);
-	ots.texrow().newlines(count(s.begin(), s.end(), '\n'));
+	return ots;
+}
+
+
+otexrowstream & operator<<(otexrowstream & ots, string const & s)
+{
+	ots << from_utf8(s);
 	return ots;
 }
 
 
 otexstream & operator<<(otexstream & ots, string const & s)
+{
+	ots << from_utf8(s);
+	return ots;
+}
+
+
+otexrowstream & operator<<(otexrowstream & ots, char const * s)
 {
 	ots << from_utf8(s);
 	return ots;
@@ -143,19 +177,34 @@ otexstream & operator<<(otexstream & ots, char const * s)
 }
 
 
-otexstream & operator<<(otexstream & ots, char c)
+otexrowstream & operator<<(otexrowstream & ots, char c)
 {
-	if (ots.protectSpace()) {
-		if (!ots.canBreakLine() && c == ' ')
-			ots.os() << "{}";
-		ots.protectSpace(false);
-	}
-	ots.os() << c;
-	ots.lastChar(c);
-	if (c == '\n')
-		ots.texrow().newline();
+	ots.put(c);
 	return ots;
 }
+
+
+otexstream & operator<<(otexstream & ots, char c)
+{
+	ots.put(c);
+	return ots;
+}
+
+
+template <typename Type>
+otexrowstream & operator<<(otexrowstream & ots, Type value)
+{
+	ots.os() << value;
+	return ots;
+}
+
+template otexrowstream & operator<< <SetEnc>(otexrowstream & os, SetEnc);
+template otexrowstream & operator<< <double>(otexrowstream &, double);
+template otexrowstream & operator<< <int>(otexrowstream &, int);
+template otexrowstream & operator<< <unsigned int>(otexrowstream &,
+												   unsigned int);
+template otexrowstream & operator<< <unsigned long>(otexrowstream &,
+													unsigned long);
 
 
 template <typename Type>
