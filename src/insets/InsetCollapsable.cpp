@@ -213,6 +213,11 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 	case TopButton:
 	case LeftButton:
 	case ButtonOnly:
+		if (hasFixedWidth()){
+			const int mindim=button_dim.x2-button_dim.x1;
+			if (mi.base.textwidth<mindim)
+				mi.base.textwidth=mindim;
+		}
 		dim = dimensionCollapsed(bv);
 		if (geometry(bv) == TopButton 
 			  || geometry(bv) == LeftButton) {
