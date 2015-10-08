@@ -1556,7 +1556,6 @@ markup=Highlight
 \end_layout
 
 \begin_layout Define PDF-Comment Style
-
 \begin_inset Argument 1
 status open
 
@@ -1677,11 +1676,15 @@ Oleg Testman
 \begin_inset Quotes erd
 \end_inset
 
- you can define an avatar for your using the environment Define
+ you can define an avatar for your name using the environment 
+\family sans
+Define
 \begin_inset space ~
 \end_inset
 
-Avatar.
+Avatar
+\family default
+.
  Its mandatory option is the name.
  In your case, name it 
 \series bold
@@ -1739,7 +1742,6 @@ author={Oleg Testman},icon=Check,color=lime
 \end_layout
 
 \begin_layout Define Avatar
-
 \begin_inset Argument 1
 status open
 
@@ -1830,7 +1832,6 @@ Oleg also said: I hate to repeat myself.
 \end_layout
 
 \begin_layout Define Avatar
-
 \begin_inset Argument 1
 status open
 
@@ -1881,10 +1882,13 @@ List of PDF comments
 \end_layout
 
 \begin_layout Standard
-You can insert a list with all PDF comments using the environment List of
- PDF comments.
+You can insert a list with all PDF comments using the environment 
+\family sans
+List of PDF comments
+\family default
+.
  By specifying options for it you can determine what parts of the comments
- shpuld appear in the list.
+ should appear in the list.
  Here is the list for this document where only the comments of a defined
  author are printed:
 \end_layout
@@ -2004,11 +2008,10 @@ Style
 
 
 \family default
-you can set a list style in case it was changed before the list of comments.
+you can set a list style.
 \end_layout
 
 \begin_layout Define PDF-Comment List Style
-
 \begin_inset Argument 1
 status open
 
@@ -2036,7 +2039,6 @@ makeatother
 \end_layout
 
 \begin_layout Set PDF-Comment List Style
-
 AuthorCommentDeadline
 \end_layout
 
