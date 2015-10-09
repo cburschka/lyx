@@ -102,6 +102,9 @@ What's new
 - Fix parsing problems of class and category declaration line in layout files
   that could break the textclass detection (bug 9746).
 
+- Another attempt to fix NSAutoreleasePool related crashes within LinkBack
+  driver. Now there is no global static pool used anymore (bug 8637).
+
 
 
 * DOCUMENTATION AND LOCALIZATION

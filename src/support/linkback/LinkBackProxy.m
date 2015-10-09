@@ -16,8 +16,6 @@
 
 ///////////////////////////////////////////////////////////////////////
 
-static NSAutoreleasePool * pool = nil;
-
 @interface LyXLinkBackClient : NSObject <LinkBackClientDelegate> {
 	NSMutableSet * keys;
 }
@@ -173,42 +171,32 @@ static NSAutoreleasePool * pool = nil;
 
 static LyXLinkBackClient * linkBackClient = nil;
 
-void checkAutoReleasePool()
-{
-	if (pool == nil)
-		pool = [[NSAutoreleasePool alloc] init];
-}
-
 int isLinkBackDataInPasteboard()
 {
-	checkAutoReleasePool() ;
-	{
-		NSArray * linkBackType = [NSArray arrayWithObjects: LinkBackPboardType, nil];
-		NSString * ret = [[NSPasteboard generalPasteboard] availableTypeFromArray:linkBackType];
-		return ret != nil;
-	}
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+	NSArray * linkBackType = [NSArray arrayWithObjects: LinkBackPboardType, nil];
+	NSString * ret = [[NSPasteboard generalPasteboard] availableTypeFromArray:linkBackType];
+	[pool release];
+	return ret != nil;
 }
 
 
 void getLinkBackData(void const * * buf, unsigned * len)
 {
-	checkAutoReleasePool() ;
-	{
-		// get linkback data from pasteboard
-		NSPasteboard * pboard = [NSPasteboard generalPasteboard];
-		id linkBackData = [pboard propertyListForType:LinkBackPboardType];
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+	// get linkback data from pasteboard
+	NSPasteboard * pboard = [NSPasteboard generalPasteboard];
+	id linkBackData = [pboard propertyListForType:LinkBackPboardType];
 		
-		NSData * nsdata
-		= [NSArchiver archivedDataWithRootObject:linkBackData];
-		if (nsdata == nil) {
-			*buf = 0;
-			*len = 0;
-			return;
-		}
-
+	NSData * nsdata = [NSArchiver archivedDataWithRootObject:linkBackData];
+	if (nsdata == nil) {
+		*buf = 0;
+		*len = 0;
+	} else {
 		*buf = [nsdata bytes];
 		*len = [nsdata length];
 	}
+	[pool release];
 }
 
 
@@ -217,11 +205,12 @@ int editLinkBackFile(char const * docName)
 	// setup Obj-C and our client
 	if (linkBackClient == nil)
 		linkBackClient = [[LyXLinkBackClient alloc] init];
-	checkAutoReleasePool() ;
-	
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 	// FIXME: really UTF8 here?
 	NSString * nsDocName = [NSString stringWithUTF8String:docName];
-	return [linkBackClient edit:nsDocName] == YES;
+	int result = [linkBackClient edit:nsDocName] == YES;
+	[pool release];
+	return result;
 }
 
 
@@ -230,11 +219,6 @@ void closeAllLinkBackLinks()
 	if (linkBackClient != nil) {
 		[linkBackClient release];
 		linkBackClient = nil;
-	}
-
-	if (pool != nil) {
-		[pool drain];
-		pool = nil;
 	}
 }
 
