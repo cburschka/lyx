@@ -106,7 +106,7 @@ int InsetMathGrid::RowInfo::skipPixels(MetricsInfo const & mi) const
 
 
 InsetMathGrid::ColInfo::ColInfo()
-	: align_('c'), lines_(0)
+	: align_('c'), lines_(0), skip_(0)
 {}
 
 
