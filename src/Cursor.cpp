@@ -957,9 +957,8 @@ bool Cursor::posVisToNewRow(bool movingLeft)
 
 	// Inside a table, determining whether to move to the next or
 	// previous row should be done based on the table's direction.
-	int s = depth() - 1;
-	if (s >= 1 && (*this)[s].inset().asInsetTabular()) {
-		par_is_LTR = !(*this)[s].inset().asInsetTabular()->isRightToLeft(*this);
+	if (inset().asInsetTabular()) {
+		par_is_LTR = !inset().asInsetTabular()->isRightToLeft(*this);
 		LYXERR(Debug::RTL, "Inside table! par_is_LTR=" << (par_is_LTR ? 1 : 0));
 	}
 
