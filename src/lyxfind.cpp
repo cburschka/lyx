@@ -1299,6 +1299,7 @@ static bool allNonLowercase(Cursor const & cur, int len)
 	if (len > cur.lastpos() + 1 - beg_pos) {
 		LYXERR(Debug::FIND, "This should not happen, more debug needed");
 		len = cur.lastpos() + 1 - beg_pos;
+		end_pos = beg_pos + len;
 	}
 	for (pos_type pos = beg_pos; pos != end_pos; ++pos)
 		if (isLowerCase(cur.paragraph().getChar(pos)))
