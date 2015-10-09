@@ -18,10 +18,10 @@ Building LyX with CMake
         If you use Qt 5, use -DLYX_USE_QT=QT5, otherwise Qt 4 will be searched.
 
     When you want to run LyX without installing from an out-of-source
-    build directory you have to set the environment variable LYX_DIR_21x
+    build directory you have to set the environment variable LYX_DIR_22x
     and it must point to the lib dir in the source tree.
-        Linux/Unix: export LYX_DIR_21x=<lyx-source>/lib
-        Windows   : set LYX_DIR_21x=<lyx-source>\lib
+        Linux/Unix: export LYX_DIR_22x=<lyx-source>/lib
+        Windows   : set LYX_DIR_22x=<lyx-source>\lib
 
     Windows specific
 
