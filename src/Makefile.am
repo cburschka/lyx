@@ -101,7 +101,6 @@ endif
 
 SOURCEFILESCORE = \
 	Author.cpp \
-	Bidi.cpp \
 	boost.cpp \
 	BranchList.cpp \
 	Buffer.cpp \
@@ -196,7 +195,6 @@ SOURCEFILESCORE = \
 
 HEADERFILESCORE = \
 	Author.h \
-	Bidi.h \
 	BranchList.h \
 	buffer_funcs.h \
 	Buffer.h \

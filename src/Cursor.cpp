@@ -14,7 +14,6 @@
 
 #include <config.h>
 
-#include "Bidi.h"
 #include "Buffer.h"
 #include "BufferView.h"
 #include "CoordCache.h"
@@ -865,7 +864,7 @@ bool findNonVirtual(Row const & row, Row::const_iterator & cit, bool onleft)
 
 }
 
-void Cursor::getSurroundingPosNew(pos_type & left_pos, pos_type & right_pos) const
+void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos) const
 {
 	// by default, we know nothing.
 	left_pos = -1;
@@ -942,147 +941,8 @@ void Cursor::getSurroundingPosNew(pos_type & left_pos, pos_type & right_pos) con
 		left_pos = pos() - (cit->isRTL() ? 0 : 1);
 		right_pos = pos() - (cit->isRTL() ? 1 : 0);
 	}
-}
 
-
-void Cursor::getSurroundingPosOrig(pos_type & left_pos, pos_type & right_pos) const
-{
-	// preparing bidi tables
-	Paragraph const & par = paragraph();
-	Buffer const & buf = *buffer();
-	Row const & row = textRow();
-	Bidi bidi;
-	bidi.computeTables(par, buf, row);
-
-	LYXERR(Debug::RTL, "bidi: " << row.pos() << "--" << row.endpos());
-
-	// The cursor is painted *before* the character at pos(), or,
-	// if 'boundary' is true, *after* the character at (pos() -
-	// 1). So we already have one known position around the
-	// cursor:
-	pos_type const known_pos = boundary() && pos() > 0 ? pos() - 1 : pos();
-
-	// edge case: if we're at the end of the paragraph, things are
-	// a little different (because lastpos is a position which
-	// does not really "exist" --- there's no character there
-	// yet).
-	if (known_pos == lastpos()) {
-		if (par.isRTL(buf.params())) {
-			left_pos = -1;
-			right_pos = bidi.vis2log(row.pos());
-		} else {
-			// LTR paragraph
-			right_pos = -1;
-			left_pos = bidi.vis2log(row.endpos() - 1);
-		}
-		return;
-	}
-
-	// Whether 'known_pos' is to the left or to the right of the
-	// cursor depends on whether it is an RTL or LTR character...
-	bool const cur_is_RTL =
-		par.getFontSettings(buf.params(), known_pos).isVisibleRightToLeft();
-	// ... in the following manner:
-	// For an RTL character, "before"
-	// means "to the right" and "after" means "to the left"; and
-	// for LTR, it's the reverse. So, 'known_pos' is to the right
-	// of the cursor if (RTL && boundary) or (!RTL && !boundary):
-	bool const known_pos_on_right = cur_is_RTL == boundary();
-
-	// So we now know one of the positions surrounding the cursor.
-	// Let's determine the other one:
-	if (known_pos_on_right) {
-		right_pos = known_pos;
-		// *visual* position of 'left_pos':
-		pos_type v_left_pos = bidi.log2vis(right_pos) - 1;
-		// If the position we just identified as 'left_pos' is
-		// a "skipped separator" (a separator which is at the
-		// logical end of a row, except for the last row in a
-		// paragraph; such separators are not painted, so they
-		// "are not really there"; note that in bidi text,
-		// such a separator could appear visually in the
-		// middle of a row), set 'left_pos' to the *next*
-		// position to the left.
-		if (bidi.inRange(v_left_pos)
-				&& bidi.vis2log(v_left_pos) + 1 == row.endpos()
-				&& row.endpos() < lastpos()
-				&& par.isSeparator(bidi.vis2log(v_left_pos)))
-			--v_left_pos;
-
-		// calculate the logical position of 'left_pos', if in row
-		if (!bidi.inRange(v_left_pos))
-			left_pos = -1;
-		else
-			left_pos = bidi.vis2log(v_left_pos);
-		// If the position we identified as 'right_pos' is a
-		// "skipped separator", set 'right_pos' to the *next*
-		// position to the right.
-		if (right_pos + 1 == row.endpos() && row.endpos() < lastpos()
-				&& par.isSeparator(right_pos)) {
-			pos_type const v_right_pos = bidi.log2vis(right_pos) + 1;
-			if (!bidi.inRange(v_right_pos))
-				right_pos = -1;
-			else
-				right_pos = bidi.vis2log(v_right_pos);
-		}
-	} else {
-		// known_pos is on the left
-		left_pos = known_pos;
-		// *visual* position of 'right_pos'
-		pos_type v_right_pos = bidi.log2vis(left_pos) + 1;
-		// If the position we just identified as 'right_pos'
-		// is a "skipped separator", set 'right_pos' to the
-		// *next* position to the right.
-		if (bidi.inRange(v_right_pos)
-				&& bidi.vis2log(v_right_pos) + 1 == row.endpos()
-				&& row.endpos() < lastpos()
-				&& par.isSeparator(bidi.vis2log(v_right_pos)))
-			++v_right_pos;
-
-		// calculate the logical position of 'right_pos', if in row
-		if (!bidi.inRange(v_right_pos))
-			right_pos = -1;
-		else
-			right_pos = bidi.vis2log(v_right_pos);
-		// If the position we identified as 'left_pos' is a
-		// "skipped separator", set 'left_pos' to the *next*
-		// position to the left.
-		if (left_pos + 1 == row.endpos() && row.endpos() < lastpos()
-				&& par.isSeparator(left_pos)) {
-			pos_type const v_left_pos = bidi.log2vis(left_pos) - 1;
-			if (!bidi.inRange(v_left_pos))
-				left_pos = -1;
-			else
-				left_pos = bidi.vis2log(v_left_pos);
-		}
-	}
-	return;
-}
-
-
-void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos) const
-{
-	// Check result wrt old implementation
-	// FIXME: remove after correct testing.
-	pos_type lp, rp;
-	getSurroundingPosNew(lp, rp);
-	getSurroundingPosOrig(left_pos, right_pos);
-	if (lp != left_pos || rp != right_pos) {
-		Row const & row = textRow();
-		TextMetrics const & tm = bv_->textMetrics(text());
-		double dummy = 0;
-		Row::const_iterator cit = tm.findRowElement(row, pos(), boundary(), dummy);
-		if (cit != row.end())
-			LYXERR0("Wrong surroundingpos: old=(" << left_pos << ", " << right_pos
-					<< "), new=(" << lp << ", " << rp
-					<< ") *cit= " << *cit
-					<< "\ncur = " << *this << "\nrow =" << row);
-		else
-			LYXERR0("Wrong surroundingpos: old=(" << left_pos << ", " << right_pos
-					<< "), new=(" << lp << ", " << rp
-					<< ") in empty row"
-					<< "\ncur = " << *this << "\nrow =" << row);
-	}
+	// Note that debug message does not catch all early returns above
 	LYXERR(Debug::RTL,"getSurroundingPos(" << pos() << (boundary() ? "b" : "")
 		   << ") => (" << left_pos << ", " << right_pos <<")");
 }
