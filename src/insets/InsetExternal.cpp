@@ -617,7 +617,7 @@ void InsetExternal::setParams(InsetExternalParams const & p)
 		break;
 	case PREVIEW_INSTANT: {
 		renderer_.reset(new RenderMonitoredPreview(this));
-		RenderMonitoredPreview * preview_ptr = preview_ptr = renderer_->asMonitoredPreview();
+		RenderMonitoredPreview * preview_ptr = renderer_->asMonitoredPreview();
 		preview_ptr->fileChanged(bind(&InsetExternal::fileChanged, this));
 		if (preview_ptr->monitoring())
 			preview_ptr->stopMonitoring();
