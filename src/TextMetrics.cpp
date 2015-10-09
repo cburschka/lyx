@@ -28,6 +28,7 @@
 #include "CutAndPaste.h"
 #include "HSpace.h"
 #include "InsetList.h"
+#include "Language.h"
 #include "Layout.h"
 #include "LyXRC.h"
 #include "MetricsInfo.h"
@@ -819,8 +820,17 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 		} else if (c == '\t')
 			row.addSpace(i, theFontMetrics(*fi).width(from_ascii("    ")),
 				     *fi, par.lookupChange(i));
-		else
+		else {
+			// FIXME: please someone fix the Hebrew/Arabic parenthesis mess!
+			// see also Paragraph::getUChar.
+			if (fi->language()->lang() == "hebrew") {
+				if (c == '(')
+					c = ')';
+				else if (c == ')')
+					c = '(';
+			}
 			row.add(i, c, *fi, par.lookupChange(i));
+		}
 
 		// add inline completion width
 		// draw logically behind the previous character
