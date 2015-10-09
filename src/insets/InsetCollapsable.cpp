@@ -348,7 +348,6 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 			int const ww = max(textdim.wid, w);
 			pi.pain.rectText(x + (ww - w) / 2, y + desc + a,
 				buttonLabel(bv), font, Color_none, Color_none);
-			desc += d;
 		}
 
 		// a visual cue when the cursor is inside the inset

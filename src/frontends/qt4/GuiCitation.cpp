@@ -260,9 +260,6 @@ void GuiCitation::updateStyles(BiblioInfo const & bi)
 		return;
 	}
 
-	if (!selectedLV->selectionModel()->selectedIndexes().empty())
-		curr = selectedLV->selectionModel()->selectedIndexes()[0].row();
-
 	static const size_t max_length = 80;
 	QStringList sty = citationStyles(bi, max_length);
 

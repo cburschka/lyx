@@ -592,7 +592,6 @@ string escape_for_regex(string s, bool match_latex)
 		}
 		if (end_pos == s.size()) {
 			s.replace(new_pos, end_pos - new_pos, t);
-			pos = s.size();
 			LYXERR(Debug::FIND, "Regexp after \\regexp{} removal: " << s);
 			break;
 		}
@@ -1224,12 +1223,10 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match)
 		return 0;
 	cur.backwardPos();
 	DocIterator cur_orig(cur);
-	bool found_match;
 	bool pit_changed = false;
-	found_match = false;
 	do {
 		cur.pos() = 0;
-		found_match = match(cur, -1, false);
+		bool found_match = match(cur, -1, false);
 
 		if (found_match) {
 			if (pit_changed)

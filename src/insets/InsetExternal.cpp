@@ -616,10 +616,8 @@ void InsetExternal::setParams(InsetExternalParams const & p)
 		LASSERT(false, return);
 		break;
 	case PREVIEW_INSTANT: {
-		//FIXME: why is the value below immediately forgotten?
-		RenderMonitoredPreview * preview_ptr = renderer_->asMonitoredPreview();
 		renderer_.reset(new RenderMonitoredPreview(this));
-		preview_ptr = renderer_->asMonitoredPreview();
+		RenderMonitoredPreview * preview_ptr = preview_ptr = renderer_->asMonitoredPreview();
 		preview_ptr->fileChanged(bind(&InsetExternal::fileChanged, this));
 		if (preview_ptr->monitoring())
 			preview_ptr->stopMonitoring();

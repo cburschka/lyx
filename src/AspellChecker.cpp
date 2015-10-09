@@ -219,7 +219,7 @@ AspellConfig * AspellChecker::Private::getConfig(string const & lang, string con
 	}
 	if (!have_dict) {
 		// check for package data of OS installation
-		have_dict = checkAspellData(config, osPackageBase(), osPackageDataDirectory(), osPackageDictDirectory(), lang, variety);
+		checkAspellData(config, osPackageBase(), osPackageDataDirectory(), osPackageDictDirectory(), lang, variety);
 	}
 	return config ;
 }

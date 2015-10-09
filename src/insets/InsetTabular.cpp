@@ -6231,7 +6231,6 @@ bool InsetTabular::insertPlaintextString(BufferView & bv, docstring const & buf,
 	if (usePaste) {
 		paste_tabular.reset(new Tabular(buffer_, rows, maxCols));
 		loctab = paste_tabular.get();
-		cols = 0;
 		dirtyTabularStack(true);
 	} else {
 		loctab = &tabular;

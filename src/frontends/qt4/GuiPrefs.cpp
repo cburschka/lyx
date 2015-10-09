@@ -2863,7 +2863,6 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 	QString const lfun_name = toqstr(from_utf8(action_name)
 			+ ' ' + lfun.argument());
 	QString const shortcut = toqstr(seq.print(KeySequence::ForGui));
-	KeyMap::ItemType item_tag = tag;
 
 	QTreeWidgetItem * newItem = 0;
 	// for unbind items, try to find an existing item in the system bind list
@@ -2880,7 +2879,6 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 		// Such an item is not displayed to avoid confusion (what is
 		// unmatched removed?).
 		if (!newItem) {
-			item_tag = KeyMap::UserExtraUnbind;
 			return 0;
 		}
 	}
@@ -2913,7 +2911,7 @@ QTreeWidgetItem * PrefShortcuts::insertShortcutItem(FuncRequest const & lfun,
 	newItem->setText(1, shortcut);
 	// record BindFile representation to recover KeySequence when needed.
 	newItem->setData(1, Qt::UserRole, toqstr(seq.print(KeySequence::BindFile)));
-	setItemType(newItem, item_tag);
+	setItemType(newItem, tag);
 	return newItem;
 }
 

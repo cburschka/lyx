@@ -413,8 +413,8 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 		}
 
 		// used below to track whether we are in an IfStyle or IfCounter tag.
-		bool ifstyle    = false;
-		bool ifcounter  = false;
+		bool ifstyle   = false;
+		bool ifcounter = false;
 
 		switch (static_cast<TextClassTags>(le)) {
 
@@ -508,9 +508,6 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				Layout lay;
 				readStyle(lexrc, lay);
 			}
-
-			// reset flag
-			ifstyle = false;
 			break;
 		}
 
@@ -764,8 +761,6 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				lexrc.printError("No name given for style: `$$Token'.");
 				error = true;
 			}
-			// reset flag
-			ifcounter = false;
 			break;
 
 		case TC_TITLELATEXTYPE:
