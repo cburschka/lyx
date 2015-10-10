@@ -90,6 +90,8 @@ extern TeXAccent get_accent(FuncCode action);
 
 ///
 struct Keyexc {
+	///
+	Keyexc() : c('\0'), combined(false), accent(TEX_NOACCENT) {}
 	/// character to make exception
 	char_type c;
 	/// exception data
@@ -106,6 +108,8 @@ typedef std::list<Keyexc> KmodException;
 ///
 class KmodInfo {
 public:
+	///
+	KmodInfo() : accent(TEX_NOACCENT) {}
 	///
 	docstring data;
 	///

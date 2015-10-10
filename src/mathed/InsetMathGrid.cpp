@@ -81,7 +81,7 @@ static void resetGrid(InsetMathGrid & grid)
 
 
 InsetMathGrid::CellInfo::CellInfo()
-	: multi_(CELL_NORMAL)
+	: multi_(CELL_NORMAL), glue_(0), begin_(0), end_(0)
 {}
 
 
@@ -90,7 +90,8 @@ InsetMathGrid::CellInfo::CellInfo()
 
 
 InsetMathGrid::RowInfo::RowInfo()
-	: lines_(0), skip_(0), allow_newpage_(true)
+	: descent_(0), ascent_(0), offset_(0), lines_(0), skip_(0),
+	  allow_newpage_(true)
 {}
 
 
@@ -106,7 +107,7 @@ int InsetMathGrid::RowInfo::skipPixels(MetricsInfo const & mi) const
 
 
 InsetMathGrid::ColInfo::ColInfo()
-	: align_('c'), lines_(0), skip_(0)
+	: align_('c'), width_(0), offset_(0), lines_(0), skip_(0)
 {}
 
 

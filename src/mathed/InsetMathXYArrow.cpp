@@ -22,7 +22,7 @@ namespace lyx {
 
 
 InsetMathXYArrow::InsetMathXYArrow()
-	: InsetMathNest(2)
+	: InsetMathNest(2), up_(false), target_(0)
 {}
 
 

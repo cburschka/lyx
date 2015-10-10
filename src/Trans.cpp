@@ -429,10 +429,9 @@ tex_accent getkeymod(string const & p)
 
 
 // TransFSMData
-TransFSMData::TransFSMData()
+TransFSMData::TransFSMData() : deadkey_(0), deadkey2_(0), init_state_(0),
+	deadkey_state_(0), combined_state_(0), currentState(0)
 {
-	deadkey_ = deadkey2_ = 0;
-	deadkey_info_.accent = deadkey2_info_.accent = TEX_NOACCENT;
 }
 
 

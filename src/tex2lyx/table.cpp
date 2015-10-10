@@ -144,7 +144,7 @@ public:
 class ltType {
 public:
 	// constructor
-	ltType() : topDL(false), bottomDL(false), empty(false) {}
+	ltType() : set(false), topDL(false), bottomDL(false), empty(false) {}
 	// we have this header type (is set in the getLT... functions)
 	bool set;
 	// double borders on top

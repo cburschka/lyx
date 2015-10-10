@@ -132,7 +132,9 @@ namespace frontend {
 
 class CursorWidget {
 public:
-	CursorWidget() {
+	CursorWidget() : rtl_(false), l_shape_(false), completable_(false),
+		show_(false), x_(0), cursor_width_(0)
+	{
 		recomputeWidth();
 	}
 
@@ -244,10 +246,11 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 
 GuiWorkArea::Private::Private(GuiWorkArea * parent)
-: p(parent), screen_(0), buffer_view_(0), lyx_view_(0), cursor_visible_(false),
+: p(parent), screen_(0), buffer_view_(0), read_only_(false), lyx_view_(0),
+cursor_visible_(false), cursor_(0),
 need_resize_(false), schedule_redraw_(false), preedit_lines_(1),
 pixel_ratio_(1.0),
-completer_(new GuiCompleter(p, p))
+completer_(new GuiCompleter(p, p)), dialog_mode_(false)
 {
 }
 

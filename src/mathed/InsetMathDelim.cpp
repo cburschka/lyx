@@ -43,13 +43,13 @@ static docstring convertDelimToLatexName(docstring const & name)
 
 InsetMathDelim::InsetMathDelim(Buffer * buf, docstring const & l,
 		docstring const & r)
-	: InsetMathNest(buf, 1), left_(l), right_(r)
+	: InsetMathNest(buf, 1), left_(l), right_(r), dw_(0)
 {}
 
 
 InsetMathDelim::InsetMathDelim(Buffer * buf, docstring const & l, docstring const & r,
 	MathData const & ar)
-	: InsetMathNest(buf, 1), left_(l), right_(r)
+	: InsetMathNest(buf, 1), left_(l), right_(r), dw_(0)
 {
 	cell(0) = ar;
 }

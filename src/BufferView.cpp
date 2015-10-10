@@ -234,7 +234,9 @@ struct BufferView::Private
 		mouse_position_cache_(),
 		bookmark_edit_position_(-1), gui_(0),
 		horiz_scroll_offset_(0)
-	{}
+	{
+		xsel_cache_.set = false;
+	}
 
 	///
 	ScrollbarParameters scrollbarParameters_;

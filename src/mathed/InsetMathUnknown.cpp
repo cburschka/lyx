@@ -23,7 +23,8 @@ namespace lyx {
 
 InsetMathUnknown::InsetMathUnknown(docstring const & nm,
 	docstring const & selection, bool final, bool black)
-	: name_(nm), final_(final), black_(black), selection_(selection)
+	: name_(nm), final_(final), black_(black), kerning_(0),
+	  selection_(selection)
 {}
 
 
