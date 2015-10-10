@@ -1893,7 +1893,7 @@ bool GuiDocument::completeFontset() const
 	return (fontModule->fontsSansCO->itemData(
 			fontModule->fontsSansCO->currentIndex()).toString() == "default"
 		&& fontModule->fontsSansCO->itemData(
-			fontModule->fontsSansCO->currentIndex()).toString() == "default");
+			fontModule->fontsTypewriterCO->currentIndex()).toString() == "default");
 }
 
 
