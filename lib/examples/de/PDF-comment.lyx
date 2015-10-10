@@ -1,0 +1,2234 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass scrartcl
+\begin_preamble
+% to be able to use all color settings of pdfcomment
+\usepackage[svgnames,rgb]{xcolor}
+
+% if pdflatex is used
+\usepackage{ifpdf}
+\ifpdf
+
+% set fonts for nicer pdf view
+\IfFileExists{lmodern.sty}
+ {\usepackage{lmodern}}{}
+
+\fi % end if pdflatex is used
+\end_preamble
+\options BCOR8mm,pagesize
+\use_default_options false
+\begin_modules
+pdfcomment
+\end_modules
+\maintain_unincluded_children false
+\language ngerman
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command bibtex
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_title "Beschreibung des Moduls PDF-Kommentare"
+\pdf_author "Uwe Stöhr"
+\pdf_subject "PDF-Kommentare"
+\pdf_keywords "LyX, PDF-Kommentare, pdfcomment"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 2
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue, pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\notefontcolor #0000ff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation skip
+\defskip medskip
+\quotes_language german
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Flex PDF-Comment-Setup
+status open
+
+\begin_layout Plain Layout
+color=yellow
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Dies setzt gelb als voreingestellte Farbe für neue PDF-Kommentare, siehe
+ Kap.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:PDF-Kommentar-Einstellung"
+
+\end_inset
+
+ für die Beschreibung.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Beschreibung des Moduls PDF-Kommentare
+\end_layout
+
+\begin_layout Author
+Uwe Stöhr
+\end_layout
+
+\begin_layout Standard
+Das LaTeX-Paket 
+\series bold
+pdfcomment
+\series default
+ bietet vollen Zugriff auf PDF-Kommentare.
+ Man kann normale Kommentare sowie Randkommentare, Unterstreichungen usw.
+\begin_inset space \space{}
+\end_inset
+
+hinzufügen.
+ Man kann außerdem ein spezielles Layout für für einen Kommentar definieren,
+ den man mehrfach im Dokument verwenden kann.
+ Dieses Dokument ist nur ein Auszug aus der Dokumentation von 
+\series bold
+pdfcomment
+\series default
+; siehe dessen Dokumentation für alle Informationen:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/pdfcomment/doc/pdfcomment.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Die verschiedenen Kommentar-Typen
+\end_layout
+
+\begin_layout Standard
+Die verschiedenen Kommentar-Typen werden über das Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+Benutzerdefinierte Einfügungen
+\family default
+ eingefügt.
+ Man kann einen der folgenden Typen auswählen:
+\end_layout
+
+\begin_layout Subsection
+PDF-Anmerkungen
+\end_layout
+
+\begin_layout Standard
+Dies ist der Standard-PDF-Kommentar.
+ Hier ist ein Beispiel: 
+\begin_inset Flex PDF-Annotation
+status open
+
+\begin_layout Plain Layout
+Dies ist eine einfache PDF-Anmerkung.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wie bei allen PDF-Kommentar-Typen kann man viele Dinge zu den Optionen der
+ Einfügung hinzufügen.
+ Um eine Optionen-Einfügung zu erstellen, setzt man den Cursor in die Kommentar-
+Einfügung und verwendet das Menü 
+\family sans
+Einfügen\SpecialChar \menuseparator
+PDF-Kommentar-Optionen
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ Alle geschweiften und eckigen Klammern in Kommentar-Optionen müssen als
+ TeX-Code eingefügt werden!
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hier ist eine Beispiel PDF-Anmerkung bei der der Autor auf 
+\begin_inset Quotes gld
+\end_inset
+
+Daisy Duck
+\begin_inset Quotes grd
+\end_inset
+
+ gesetzt wurde: 
+\begin_inset Flex PDF-Annotation
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+author=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Daisy Duck
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+,color=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+0.234 0.867 0.211
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+,voffset=8pt,opacity=0.5
+\end_layout
+
+\end_inset
+
+Dies ist an Anmerkung mit einer komplexen Option.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Um zu vermeiden, dieselben Optionen wie den Autor wieder und wieder schreiben
+ zu müssen, kann man einen sogenannten 
+\begin_inset Quotes eld
+\end_inset
+
+Avatar
+\begin_inset Quotes erd
+\end_inset
+
+ für jede Person und/oder Kommentarstil erstellen.
+ Siehe 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Avatare"
+
+\end_inset
+
+ für weitere Informationen.
+\end_layout
+
+\begin_layout Standard
+Für eine volle Liste mit möglichen Optionen, siehe die Dokumentation von
+ 
+\series bold
+pdfcomment
+\series default
+.
+\end_layout
+
+\begin_layout Subsection
+PDF-Kreis
+\end_layout
+
+\begin_layout Standard
+Dies erzeugt einen Kommentar in Form eines Kreises oder einer Ellipse.
+ Hier ist ein Beispiel ohne Optionen: 
+\begin_inset Flex PDF-Circle
+status open
+
+\begin_layout Plain Layout
+ein einfacher Kreis-Kommentar
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Auf der rechten Seite sieht man einen großen, elliptischen Kommentar als
+ Beispiel für einen PDF-Kreis mit Optionen.
+ 
+\begin_inset Flex PDF-Circle
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+id=1,color=blue,height=2.5cm,width=5.8cm,voffset=-2.8cm,hoffset=8cm,opacity=1.0,just
+ification=right,icolor=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+yellow
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+,linewidth=12pt,borderstyle=dashed,dashstyle=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+10 5
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ein Kreis-Kommentar in Form einer großen Ellipse
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+PDF-Freitext
+\end_layout
+
+\begin_layout Standard
+Dies fügt einen Kommentar in Form einer frei positionierbaren Box ein.
+ Mit der Option 
+\series bold
+type=callout
+\series default
+ bekommt die Box eine zusätzliche, sogenannte Callout-Linie, um die Box
+ an ein bestimmtes Element der Seite zu binden.
+ Mit der Option 
+\series bold
+type=typewriter
+\series default
+ kann man einen Kommentar überall auf der Seite mit einer virtuellen 
+\begin_inset Quotes gld
+\end_inset
+
+Schreibmaschine
+\begin_inset Quotes grd
+\end_inset
+
+ schreiben.
+ Diese PDF-Freetext Anmerkungen sind rahmenlos und haben einen transparenten
+ Hintergrund, um beliebigen Teile auf der Seite 
+\begin_inset Quotes gld
+\end_inset
+
+überschreiben
+\begin_inset Quotes grd
+\end_inset
+
+ zu können.
+ Hier ist ein Beispiel in Form eines gelben Rechtecks:
+\begin_inset Flex PDF-Freetext
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+height=3cm,type=freetext,subject={freetext},width=4.5cm,voffset=-3.2cm,hoffset=-3.2
+cm,opacity=0.9,justification=right
+\end_layout
+
+\end_inset
+
+Dies ist auch ein Kommentar, aber es ist eine PDF-Freitext Anmerkung.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+PDF-Linie
+\end_layout
+
+\begin_layout Standard
+Dies erstellt einen Kommentar in Form einer Line, eines Polygonzug oder
+ eines Polygons.
+ Hier ist ein Beispiel ohne Optionen: 
+\begin_inset Flex PDF-Line
+status open
+
+\begin_layout Plain Layout
+ein einfacher PDF-Linie Kommentar
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wie man sieht, ist ein PDF-Linie Kommentar ohne Optionen nutzlos.
+\end_layout
+
+\begin_layout Standard
+Der grüne Pfeil auf der linken Seite dieser Seite ist ein Beispiel für einen
+ PDF-Linie Kommentar mit Optionen.
+ 
+\begin_inset Flex PDF-Line
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+type=line,opacity=1,line=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+50 480 50 180
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+,color=green,icolor=blue,caption=top,linebegin=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+/ROpenArrow
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+,lineend=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+/OpenArrow
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+,linewidth=2bp,captionhoffset=-5pt,captionvoffset=15pt
+\end_layout
+
+\end_inset
+
+ein PDF-Linie Kommentar mit Optionen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+PDF-Randnotiz
+\end_layout
+
+\begin_layout Standard
+Dies setzt eine Anmerkung in den Seitenrand.
+ Rechts neben diesem Text ist ein Beispiel ohne Optionen: 
+\begin_inset Flex PDF-Margin
+status open
+
+\begin_layout Plain Layout
+ein einfacher PDF-Randnotiz Kommentar
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die rote Randnotiz ist ein Beispiel für eine PDF-Randnotiz mit Optionen.
+ 
+\begin_inset Flex PDF-Margin
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+icon=Note,color=red,open=true,hspace=100pt
+\end_layout
+
+\end_inset
+
+ein PDF-Randnotiz Kommentar mit Optionen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+PDF-Markierung
+\end_layout
+
+\begin_layout Standard
+Dies erstellt eine sogenannte PDF Text-Markierung für Text oder Formeln.
+ Hier ist eine Markierung ohne Optionen: 
+\begin_inset Flex PDF-Markup
+status open
+
+\begin_layout Plain Layout
+einfache PDF-Markierung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mögliche Typen für die Option 
+\series bold
+markup
+\series default
+ sind:
+\end_layout
+
+\begin_layout Description
+Highlight Der markierte Text wird hervorgehoben: 
+\begin_inset Flex PDF-Markup
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+id=1,
+\end_layout
+
+\end_inset
+
+markup=Highlight
+\end_layout
+
+\end_inset
+
+Hervorgehobene PDF-Markierung
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+ein Kommentar
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+siehe den nächsten Abschnitt für die Beschreibung der Option 
+\series bold
+id=1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Underline Der markierte Text wird unterstrichen: 
+\begin_inset Flex PDF-Markup
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+markup=Underline
+\end_layout
+
+\end_inset
+
+Unterstrichene PDF-Markierung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Squiggly Der markierte Text wird wellig unterstrichen: 
+\begin_inset Flex PDF-Markup
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+markup=Squiggly
+\end_layout
+
+\end_inset
+
+Wellig unterstrichene PDF-Markierung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+StrikeOut Der markierte Text wird durchgestrichen: 
+\begin_inset Flex PDF-Markup
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+markup=StrikeOut
+\end_layout
+
+\end_inset
+
+Durchgestrichene PDF-Markierung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+mathpopup Formelteile werden hervorgehoben.
+
+\series bold
+ 
+\series default
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Für diese Option kann die PDF-Markierung Einfügung nicht verwendet werden!
+\end_layout
+
+\end_inset
+
+ Es wird stattdessen der Befehl 
+\series bold
+
+\backslash
+pdfmarkupcomment
+\series default
+ mit diesem Schema in einer Formel verwendet:
+\begin_inset Newline newline
+\end_inset
+
+Befehl:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+pdfmarkupcomment[style=mathpopup]
+\backslash
+{Formelteil}
+\begin_inset Formula $\to$
+\end_inset
+
+
+\backslash
+{
+\backslash
+text
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+optionaler Kommentar}
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+Ergebnis:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\pdfmarkupcomment[style=mathpopup]{\sum_{i=1}^{n}i=\frac{1}{2}n\cdot(n+1)}{\text{Gauß-Summenformel}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der Text für den Kommentar wird mit der Einfügungsoption 
+\family sans
+Kommentar
+\family default
+ eingefügt.
+\end_layout
+
+\begin_layout Standard
+PDF-Markierung hat einige Einschränkungen:
+\end_layout
+
+\begin_layout Itemize
+Der hervorgehobene Text darf nicht länger als ein Paragraph sein.
+\end_layout
+
+\begin_layout Itemize
+Die PDF-Markierung darf nicht länger als eine Seite sein, sonst wird der
+ Seitenumbruch nicht erkannt.
+\end_layout
+
+\begin_layout Itemize
+Verwendet man XeTeX, muss man sicherstellen, dass die Seitengröße intern
+ ausgegeben wird, z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+\begin_inset space \space{}
+\end_inset
+
+mit der Dokumentklassen-Option 
+\series bold
+pagesize
+\series default
+ für KOMA-Script Klassen oder mit der Option 
+\series bold
+pagesize
+\series default
+ für das LaTeX-Paket 
+\series bold
+typearea
+\series default
+.
+\end_layout
+
+\begin_layout Subsection
+PDF-Antwort
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Aufgrund technischer Limitierungen funktioniert PDF-Antwort nur, wenn man
+ pdflatex verwendet.
+ Bei manchen LaTeX-Installationen funktioniert es überhaupt nicht!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mit einer PDF-Antwort kann man Antworten auf PDF-Kommentare erzeugen.
+ Die Option 
+\series bold
+replyto
+\series default
+ bietet eine Referenz auf den Kommentar, auf den sich die Antwort bezieht.
+\end_layout
+
+\begin_layout Standard
+Als Beispiel siehe die Antwort auf die Highlight-PDF-Markierung des vorigen
+ Abschnitts.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex PDF-Reply
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+id=2,replyto=1,date=D:20101211161247+01'00'
+\end_layout
+
+\end_inset
+
+Dies ist eine Antwort.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Sie erscheint in diesem PDF-Markierung-Kommentar.
+ Um eine PDF-Markierung zu referenzieren, wurde die Option 
+\series bold
+id=1
+\series default
+ zu den Optionen hinzugefügt.
+ Die PDF-Antwort bekam die Option 
+\series bold
+replyto=1
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Man kann auch auf eine Antworten antworten indem man eine 
+\series bold
+id
+\series default
+ Option zu der Antwort hinzufügt, auf die man antworten will.
+ Als Beispiel siehe die Antwort auf die Antwort zur PDF-Markierung.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex PDF-Reply
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+replyto=2,date=D:20101212095321+01'00'
+\end_layout
+
+\end_inset
+
+Natürlich kann man auf eine Antwort antworten.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+PDF-Antwort hat Einschränkungen:
+\end_layout
+
+\begin_layout Itemize
+Seitenumbrüche werden nicht unterstützt.
+\end_layout
+
+\begin_layout Itemize
+Die Antworten erscheinen nur in den PDF-Anmerkungen auf der zweiten Seite.
+ (Antworten auf Kommentare ohne Seitenumbruch funktionieren ohne Probleme.)
+\end_layout
+
+\begin_layout Subsection
+PDF-Randlinie
+\end_layout
+
+\begin_layout Standard
+Dies erstellt einen Kommentar in Form von identischen Markierungen auf beiden
+ Seiten der Seite.
+ Die gelben Pfeile neben dem Text sind ein Beispiel für eine PDF-Randlinie
+ ohne Optionen: 
+\begin_inset Flex PDF-Sideline
+status open
+
+\begin_layout Plain Layout
+eine einfache PDF-Randlinie
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wie man sieht, ist der PDF-Randlinie Kommentar ohne Optionen relativ nutzlos.
+ PDF-Randlinie ist hilfreich, wenn man komplette Teile einer einer Seite
+ hervorheben will.
+ Die Einfügungsoptionen definieren das Aussehen der Markierungen, wobei
+ der der normale Inhalt der Einfügung der Text ist, der von den Markierungen
+ umgeben ist.
+ Der Inhalt der der Einfügungsoption 
+\family sans
+Kommentar
+\family default
+ wird entlang der beiden Markierungen ausgegeben.
+ Hier ist ein Beispiel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex PDF-Sideline
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+opacity=0.33,color=magenta,icolor=cyan,caption=inline,linebegin=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+/Butt
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+,lineend=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+/Square
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+,linewidth=3bp,linesep=0.7cm
+\end_layout
+
+\end_inset
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+\end_layout
+
+\begin_layout Plain Layout
+At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+ eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+ voluptua.
+ At vero eos et accusam et justo duo dolores et ea rebum.
+ Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+ sit amet.
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Kommentartext
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+PDF-Randlinie hat einige Einschränkungen:
+\end_layout
+
+\begin_layout Itemize
+Der Kommentar darf nicht länger als eine Seite sein, sonst wird der Seitenumbruc
+h nicht erkannt.
+\end_layout
+
+\begin_layout Itemize
+Verwendet man XeTeX, muss man sicherstellen, dass die Seitengröße intern
+ ausgegeben wird, z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+\begin_inset space \space{}
+\end_inset
+
+mit der Dokumentklassen-Option 
+\series bold
+pagesize
+\series default
+ für KOMA-Script Klassen oder mit der Option 
+\series bold
+pagesize
+\series default
+ für das LaTeX-Paket 
+\series bold
+typearea
+\series default
+.
+\end_layout
+
+\begin_layout Subsection
+PDF-Rechteck
+\end_layout
+
+\begin_layout Standard
+Dies erzeugt eine rechteckige Box.
+ Hier ist ein Beispiel ohne Optionen: 
+\begin_inset Flex PDF-Square
+status open
+
+\begin_layout Plain Layout
+ein einfacher PDF-Rechteck Kommentar
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Unter diesem Text sieht man einen rechteckigen Kommentar mit einer welligen
+ Außenlinie als Beispiel eines PDF-Rechtecks mit Optionen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex PDF-Square
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+height=2cm,width=4.8cm,voffset=-2cm,hoffset=1cm,opacity=1.0,justification=right,ic
+olor=CornflowerBlue,bse=cloudy,bsei=2.5,linewidth=8pt
+\end_layout
+
+\end_inset
+
+Ein ausgefallener PDF-Rechteck Kommentar
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+PDF-Tooltip
+\end_layout
+
+\begin_layout Standard
+Damit kann jedes Objekt mit einem Tooltip versehen werden.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Jedes Objekt, dass man in eine TeX-Box setzen kann, um seine Größe zu messen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die PDF-Tooltip Einfügung hat ein obligatorisches Argument für den Tooltip.
+ Das Objekt, das mit einem Tooltip versehen werden soll, wird in die PDF-Tooltip
+ Einfügung gesetzt.
+ Der Tooltip wird in das obligatorisches Argument geschrieben.
+ Hier ist als Beispiel ein Wort mit einem Tooltip: 
+\begin_inset Flex PDF-Tooltip
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+Dies ist ein Tooltip!
+\end_layout
+
+\end_inset
+
+
+\color red
+Wort
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Da ein Tooltip für so gut wie jedes Objekt verwendet werden kann, kann man
+ es auch für chemische Formeln verwenden: 
+\begin_inset Flex PDF-Tooltip
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+Schwefelsäure
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\ce{H2SO4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die PDF-Tooltip Einfügung hat Optionen, die verwendet werden, um die Größe
+ des Tooltips für Formeln zu korrigieren (falls nötig) oder um eine Anmerkung
+ zu deaktivieren.
+ Hier ist ein Beispiel mit der Option 
+\family sans
+mathstyle
+\family default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex PDF-Tooltip
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+mathstyle=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+displaystyle
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+Gauß-Summenformel
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\sum_{i=1}^{n}i=\frac{1}{2}n\cdot(n+1)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section
+Kommentar-Definitionen
+\end_layout
+
+\begin_layout Standard
+Das Paket 
+\series bold
+pdfcomment
+\series default
+ stellt folgende Umgebungen bereit, um PDF-Kommentare zu definieren oder
+ zu ändern:
+\end_layout
+
+\begin_layout Subsection
+PDF-Kommentar-Einstellung
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:PDF-Kommentar-Einstellung"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mit dieser Einfügung kann man die globalen (dokumentweiten) Optionen jederzeit
+ ändern.
+ So ist zum Beispiel die voreingestellte Farbe für neue PDF-Kommentare blau.
+ Um Adobe Readers gelbe Notizen für alle Kommentare im Dokument zu erhalten,
+ fügt man eine PDF-Kommentar-Einstellung zu Beginn des Dokuments ein und
+ fügt darin die Option 
+\series bold
+color=yellow
+\series default
+ ein.
+ Dies wurde auch in diesem Dokument getan.
+\end_layout
+
+\begin_layout Standard
+Verwendet man die optionale Option 
+\series bold
+local
+\series default
+ , kann man die Änderung lokal begrenzen, indem man es in TeX-Klammern setzt.
+ Will man z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ die Farbe nur für zwei aufeinanderfolgende Kommentare ändern, setzt man
+ die PDF-Kommentar-Einstellung und die zwei Kommentare in TeX-Klammern.
+ Hier ist ein Beispiel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex PDF-Comment-Setup
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+local
+\end_layout
+
+\end_inset
+
+color=Orange
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex PDF-Markup
+status collapsed
+
+\begin_layout Plain Layout
+PDF-Markierung in orange
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Flex PDF-Annotation
+status collapsed
+
+\begin_layout Plain Layout
+PDF-Anmerkung in orange
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex PDF-Margin
+status collapsed
+
+\begin_layout Plain Layout
+voreingestellte PDF-Randnotiz
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+PDF-Kommentar Stil
+\end_layout
+
+\begin_layout Standard
+Diese Umgebung ermöglicht es, einen Stil für PDF-Kommentare zu definieren,
+ der von verschiedenen Kommentaren verwendet werden kann.
+\end_layout
+
+\begin_layout Standard
+Angenommen man will ein Mathe-Handbuch schreiben und darin im PDF Erklärungen
+ für bestimmte Ausdrücke aufpoppen lassen, dann fügt man die PDF-Kommentar
+ Stil-Umgebung vor der ersten Formel ein.
+ Man nennt sie zum Beispiel 
+\series bold
+MathePopup
+\series default
+, setzt die Farbe auf weiß mit 
+\series bold
+color=white
+\series default
+ und hebt die komplette Formel mit 
+\series bold
+markup=Highlight
+\series default
+ hervor.
+\end_layout
+
+\begin_layout Define PDF-Comment Style
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+MathePopup
+\end_layout
+
+\end_inset
+
+color=white,markup=Highlight
+\end_layout
+
+\begin_layout Standard
+Im Kommentare verwendet man die Option 
+\series bold
+style=MathePopup
+\series default
+ um den Stil anzuwenden.
+ Hier ist ein Beispiel:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex PDF-Markup
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+style=
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+MathePopup
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $P(E)$
+\end_inset
+
+
+\begin_inset Argument post:1
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Wahrscheinlichkeit von Ereignis E
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Avatare"
+
+\end_inset
+
+Avatare
+\end_layout
+
+\begin_layout Standard
+Wenn man z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ ein Dokument gegenliest, muss man seinen Namen bei jedem Kommentar angeben.
+ Verwendet man ein spezielles Layout der Kommentare, würde das einen hohen
+ Kopieren/Einfügen-Aufwand erfordern.
+ Dies kann vermieden werden, wenn man für jeden Kommentar-Autor einen Avatar
+ definiert.
+\end_layout
+
+\begin_layout Standard
+Angenommen Ihr Name ist 
+\begin_inset Quotes gld
+\end_inset
+
+Oleg Testmann
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Sie können einen Avatar für Ihren Namen mit der Umgebung 
+\family sans
+Avatar
+\begin_inset space ~
+\end_inset
+
+definieren
+\family default
+.
+ Dessen obligatorische Option ist der Name.
+ In Ihrem Fall, z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\series bold
+Oleg
+\series default
+.
+ Fügen Sie nach dem Avatarnamen Ihren Namen ein, indem sie schreiben: 
+\series bold
+author={Oleg Testmann}
+\series default
+.
+\begin_inset Newline newline
+\end_inset
+
+Vielleicht wollen sie ein spezielles Icon verwenden, um auf den ersten Blick
+ zu sehen, welche Kommentare von Ihnen stammen.
+ In diesem Fall fügt man nach der Autor-Definition 
+\begin_inset Quotes gld
+\end_inset
+
+
+\series bold
+icon=Check
+\series default
+
+\begin_inset Quotes grd
+\end_inset
+
+ ein (durch ein Komma getrennt).
+ Dies gibt eine Haken als Icon.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Für alle möglichen Icons, siehe das Handbuch von 
+\series bold
+pdfcomment
+\series default
+.
+\end_layout
+
+\end_inset
+
+ Der Haken soll grün sein, weswegen Sie 
+\series bold
+color=lime
+\series default
+ zur Avatar-Definition hinzufügen.
+ Ihre komplette Definition ist nun
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+author={Oleg Testmann},icon=Check,color=lime
+\end_layout
+
+\begin_layout Define Avatar
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Oleg
+\end_layout
+
+\end_inset
+
+author={Oleg Testmann},icon=Check,color=lime
+\end_layout
+
+\begin_layout Standard
+Um Ihren Avatar für PDF-Kommentare zu nutzen, haben sie zwei Möglichkeiten:
+\end_layout
+
+\begin_layout Enumerate
+Man legt fest, dass alle PDF-Kommentare im Dokument den Avatar verwenden.
+ Dazu fügt man eine 
+\family sans
+PDF-Kommentar-Einstellung
+\family default
+ vor dem ersten Kommentar im Dokument ein.
+ In diese Einfügung schreibt man 
+\series bold
+avatar=Oleg
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+Man fügt 
+\series bold
+avatar=Oleg
+\series default
+ zu den Optionen eines bestimmten PDF-Kommentars hinzu.
+ Der Avatar wird dann nur für diesen Kommentar verwendet.
+\end_layout
+
+\begin_layout Standard
+Hier ist ein Beispiel für die 
+\family sans
+PDF-Kommentar-Einstellungen
+\family default
+ Methode:
+\begin_inset Flex PDF-Comment-Setup
+status open
+
+\begin_layout Plain Layout
+avatar=Oleg
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex PDF-Annotation
+status open
+
+\begin_layout Plain Layout
+Oleg sagt: Wow, das ist toll!
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+und hier ist ein weiterer Kommentar:
+\begin_inset Flex PDF-Annotation
+status open
+
+\begin_layout Plain Layout
+Oleg sagte auch: Ich hasse es, mich zu wiederholen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Define Avatar
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Dolittle
+\end_layout
+
+\end_inset
+
+color=NavyBlue,opacity=0.5,open=false,icon=Circle,author={Dr.
+ Dolittle}
+\end_layout
+
+\begin_layout Standard
+Hier ist ein Beispiel in dem ein weiterer Avatar 
+\begin_inset Quotes gld
+\end_inset
+
+Dolittle
+\begin_inset Quotes grd
+\end_inset
+
+ nur für diesen Kommentar verwendet wird:
+\begin_inset Flex PDF-Margin
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+avatar=Dolittle
+\end_layout
+
+\end_inset
+
+Ich bin Dr.
+ Dolittle! Respektiere meine Autorität!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Liste der PDF-Kommentare
+\end_layout
+
+\begin_layout Standard
+Man kann eine Liste mit allen PDF-Kommentaren einfügen, indem man die Umgebung
+ 
+\family sans
+Liste der PDF-Kommentare
+\family default
+ verwendet.
+ In deren Optionen kann man festlegen, welche Kommentarteile in der Liste
+ erscheinen sollen.
+ Hier ist die Liste für dieses Dokument, in der nur Kommentare von definierten
+ Autoren erscheinen:
+\end_layout
+
+\begin_layout List of PDF Comments
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+liststyle=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+AuthorComment
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, heading =
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Liste der PDF-Kommentare
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Man kann auch seinen eigenen Stil mit der Umgebung
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+PDF-Kommentar-Listenstil
+\begin_inset space ~
+\end_inset
+
+definieren
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+definieren, wenn man genug über die komplizierte LaTeX-Interna kennt.
+ Mit der Umgebung
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+PDF-Kommentar-Listenstil
+\begin_inset space ~
+\end_inset
+
+festlegen
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+kann man einen Stil für Liste festlegen.
+\end_layout
+
+\begin_layout Define PDF-Comment List Style
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+MeinStil
+\end_layout
+
+\end_inset
+
+
+\backslash
+makeatletter
+\backslash
+pc@lopt@author
+\backslash
+ - 
+\backslash
+pc@lopt@subject
+\backslash
+ (
+\backslash
+pc@lopt@deadline)
+\backslash
+makeatother
+\end_layout
+
+\begin_layout Set PDF-Comment List Style
+
+AuthorCommentDeadline
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Es kann nur eine Kommentarliste im PDF ausgegeben werden.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Allgemeine Hinweise
+\end_layout
+
+\begin_layout Itemize
+Um alle Farben und Farbdefinitionen verwenden zu können, muss das LaTeX-Paket
+ 
+\series bold
+xcolor
+\series default
+ im LaTeX-Vorspann des Dokuments folgendermaßen geladen sein:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+usepackage[svgnames,rgb]{xcolor}
+\end_layout
+
+\begin_layout Itemize
+Hat man zwei aufeinanderfolgende PDF-Kommentare, erscheinen sie im PDF aufeinand
+er:
+\begin_inset Flex PDF-Comment-Setup
+status open
+
+\begin_layout Plain Layout
+avatar=Oleg
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex PDF-Annotation
+status open
+
+\begin_layout Plain Layout
+Oleg sagte: Wow, das ist toll!
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex PDF-Annotation
+status open
+
+\begin_layout Plain Layout
+Oleg sagte auch: Ich hasse es, mich zu wiederholen.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Um das zu verhindern, trennt man sie mit Leerraum wie z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ geschützten Leerzeichen:
+\begin_inset Flex PDF-Annotation
+status open
+
+\begin_layout Plain Layout
+Oleg sagte: Wow, das ist toll!
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Flex PDF-Annotation
+status open
+
+\begin_layout Plain Layout
+Oleg sagte auch: Ich hasse es, mich zu wiederholen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Man kann keine nicht-lateinischen Zeichen in Kommentaren und in Autorennamen
+ verwenden.
+ Der Grund ist, dass PDF eine spezielle Zeichenkodierung verwendet, die
+ nicht mit der von LaTeX kompatibel ist.
+\end_layout
+
+\end_body
+\end_document
