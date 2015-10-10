@@ -229,6 +229,8 @@ bool addCol(InsetMathGrid & grid, InsetMathGrid::col_type & cellcol)
  * \endverbatim
  * will result in a grid with 3 rows (+ the dummy row that is always present),
  * because the last '\\' opens a new row.
+ * Do never delete a row that contains a multicolumn, even if all cells empty,
+ * since the multicolumn information would get lost otherwise.
  * Note that this is only needed for inner-hull grid types, such as array
  * or aligned, but not for outer-hull grid types, such as eqnarray or align.
  */
@@ -236,7 +238,9 @@ void delEmptyLastRow(InsetMathGrid & grid)
 {
 	InsetMathGrid::row_type const row = grid.nrows() - 1;
 	for (InsetMathGrid::col_type col = 0; col < grid.ncols(); ++col) {
-		if (!grid.cell(grid.index(row, col)).empty())
+		InsetMathGrid::idx_type const idx = grid.index(row, col);
+		if (!grid.cell(idx).empty() ||
+		    grid.cellinfo(idx).multi_ != InsetMathGrid::CELL_NORMAL)
 			return;
 	}
 	// Copy the row information of the empty row (which would contain the
@@ -1385,12 +1389,10 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				error("can't extract number of multicolumn cells");
 			}
 			// resize the table if necessary
-			size_t first = 0;
-			for (int i = 0; i < cols; ++i) {
+			size_t first = grid.index(cellrow, cellcol);
+			for (int i = 1; i < cols; ++i) {
 				if (addCol(grid, cellcol)) {
 					size_t const idx = grid.index(cellrow, cellcol);
-					if (i == 0)
-						first = idx;
 					grid.cellinfo(idx).multi_ =
 						InsetMathGrid::CELL_PART_OF_MULTICOLUMN;
 				}
@@ -1401,7 +1403,9 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			grid.cellinfo(first).multi_ = InsetMathGrid::CELL_BEGIN_OF_MULTICOLUMN;
 
 			// read special alignment
-			grid.cellinfo(first).align_ = parse_verbatim_item();
+			MathData align;
+			parse(align, FLAG_ITEM, mode);
+			grid.cellinfo(first).align_ = asString(align);
 
 			// parse the remaining contents into the "real" cell
 			parse(*cell, FLAG_ITEM, mode);

@@ -1256,12 +1256,11 @@ void InsetMathGrid::write(WriteStream & os,
 		bool last_eoln = true;
 		for (col_type col = beg_col; col < end_col; ++col) {
 			idx_type const idx = index(row, col);
-			if (cellinfo_[idx].multi_ == CELL_PART_OF_MULTICOLUMN)
-				continue;
 			bool const empty_cell = cell(idx).empty();
-			if (!empty_cell)
+			if (!empty_cell || cellinfo_[idx].multi_ != CELL_NORMAL)
 				last_eoln = false;
-			if (!empty_cell || colinfo_[col + 1].lines_) {
+			if (!empty_cell || cellinfo_[idx].multi_ != CELL_NORMAL ||
+			    colinfo_[col + 1].lines_) {
 				lastcol = col + 1;
 				emptyline = false;
 			}
@@ -1284,7 +1283,7 @@ void InsetMathGrid::write(WriteStream & os,
 				ModeSpecifier specifier(os, TEXT_MODE);
 			if (cellinfo_[idx].multi_ == CELL_BEGIN_OF_MULTICOLUMN)
 				os << '}';
-			os << eocString(col, lastcol);
+			os << eocString(col + nccols - 1, lastcol);
 			col += nccols;
 		}
 		eol = eolString(row, os.fragile(), os.latex(), last_eoln);
