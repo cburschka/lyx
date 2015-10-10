@@ -466,7 +466,6 @@ Filter::Filter(docstring const & description, string const & globs)
 	string const expanded_globs = convert_brace_glob(globs);
 
 	// Split into individual globs.
-	vector<string> matches;
 	Tokenizer const tokens(expanded_globs, separator);
 	globs_ = vector<string>(tokens.begin(), tokens.end());
 }

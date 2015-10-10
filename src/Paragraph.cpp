@@ -2193,7 +2193,6 @@ int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
 			corrected_env(os, begin_tag, "flushright", code, lastpar, column);
 		break;
 	} case LYX_ALIGN_RIGHT: {
-		string output;
 		if (owner_->getParLanguage(bparams)->babel() != "hebrew")
 			corrected_env(os, begin_tag, "flushright", code, lastpar, column);
 		else

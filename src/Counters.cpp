@@ -525,8 +525,6 @@ docstring Counters::flattenLabelString(docstring const & counter,
 				       string const & lang,
 				       vector<docstring> & callers) const
 {
-	docstring label;
-
 	if (find(callers.begin(), callers.end(), counter) != callers.end()) {
 		// recursion detected
 		lyxerr << "Warning: Recursion in label for counter `"

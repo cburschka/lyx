@@ -1008,7 +1008,6 @@ docstring stringifyFromCursor(DocIterator const & cur, int len)
 		pos_type end = ( len == -1 || cur.pos() + len > int(par.size()) ) ?
 			int(par.size()) : cur.pos() + len;
 		OutputParams runparams(&cur.buffer()->params().encoding());
-		odocstringstream os;
 		runparams.nice = true;
 		runparams.flavor = OutputParams::LATEX;
 		runparams.linelen = 100000; //lyxrc.plaintext_linelen;

@@ -45,7 +45,6 @@ InsetSeparator::InsetSeparator(InsetSeparatorParams const & params)
 
 void InsetSeparatorParams::write(ostream & os) const
 {
-	string command;
 	switch (kind) {
 	case InsetSeparatorParams::PLAIN:
 		os <<  "plain";

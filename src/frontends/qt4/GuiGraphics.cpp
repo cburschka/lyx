@@ -654,7 +654,6 @@ void GuiGraphics::applyView()
 	// the bb section
 	igp.bbox = graphics::BoundingBox();
 	if (bbChanged) {
-		string bb;
 		string lbXs = widgetToDoubleStr(lbX);
 		string lbYs = widgetToDoubleStr(lbY);
 		string rtXs = widgetToDoubleStr(rtX);

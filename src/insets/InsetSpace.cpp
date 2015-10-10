@@ -387,7 +387,6 @@ void InsetSpace::draw(PainterInfo & pi, int x, int y) const
 
 void InsetSpaceParams::write(ostream & os) const
 {
-	string command;
 	switch (kind) {
 	case InsetSpaceParams::NORMAL:
 		os << "\\space{}";

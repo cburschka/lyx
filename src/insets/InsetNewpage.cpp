@@ -47,7 +47,6 @@ InsetNewpage::InsetNewpage(InsetNewpageParams const & params)
 
 void InsetNewpageParams::write(ostream & os) const
 {
-	string command;
 	switch (kind) {
 	case InsetNewpageParams::NEWPAGE:
 		os << "newpage";

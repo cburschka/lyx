@@ -136,7 +136,6 @@ ParagraphList::const_iterator makeEnvironment(
 
 	Layout const & defaultstyle = buf.params().documentClass().defaultLayout();
 	Layout const & bstyle = par->layout();
-	string item_tag;
 
 	// Opening outter tag
 	sgml::openTag(buf, os, runparams, *pbegin);
@@ -238,7 +237,7 @@ ParagraphList::const_iterator makeEnvironment(
 	if (bstyle.latextype == LATEX_ENVIRONMENT && bstyle.pass_thru)
 		os << "]]>";
 
-	// Closing outter tag
+	// Closing outer tag
 	sgml::closeTag(os, *pbegin);
 
 	return pend;

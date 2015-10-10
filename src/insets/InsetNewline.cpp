@@ -40,7 +40,6 @@ InsetNewline::InsetNewline() : Inset(0)
 
 void InsetNewlineParams::write(ostream & os) const
 {
-	string command;
 	switch (kind) {
 	case InsetNewlineParams::NEWLINE:
 		os << "newline";
