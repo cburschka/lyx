@@ -761,7 +761,16 @@ status open
 status open
 
 \begin_layout Plain Layout
-id=1,markup=Highlight
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+id=1,
+\end_layout
+
+\end_inset
+
+markup=Highlight
 \end_layout
 
 \end_inset
@@ -912,6 +921,26 @@ Réponse PDF
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Nota:
+\series default
+ pour des limitations techniques, la Réponse PDF ne fonctionne qu'avec pdflatex.
+ 
+\lang english
+On some LaTeX installations it won't even work in general.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Avec ce commentaire, vous pouvez répondre aux commentaires PDF.
  L'option 
 \series bold
@@ -931,6 +960,10 @@ Mise en évidence
 
  de la section précédente.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Flex PDF-Reply
 status open
 
@@ -945,6 +978,11 @@ id=2,replyto=1,date=D:20101211161247+01'00'
 \end_inset
 
 ceci est une réponse.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -970,6 +1008,10 @@ id
  à la réponse.
  En tant qu'exemple, voyez cette réponse à la réponse au balisage PDF.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Flex PDF-Reply
 status open
 
@@ -991,25 +1033,13 @@ Naturellement, vous pouvez répondre à une réponse.
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Nota:
-\series default
- pour des raisons techniques, la Réponse PDF ne fonctionne qu'avec pdflatex.
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-La réponse PDF a également quelques imitations:
+La réponse PDF a limitations:
 \end_layout
 
 \begin_layout Itemize
@@ -1848,7 +1878,11 @@ Liste des commentaires PDF
 
 \begin_layout Standard
 Vous pouvez insérer une liste de tous les commentaires PDF grâce à l’environneme
-nt Liste des commentaires PDF.
+nt 
+\family sans
+Liste des commentaires PDF
+\family default
+.
  Les options vous permettent de préciser quelles parties de commentaires
  peuvent apparaître dans la liste.
  Voici par exemple une liste où seuls les commentaires signés par un auteur
