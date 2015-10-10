@@ -1072,7 +1072,7 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 		// Retrieve the math environment type, and add '$' or '$[' or others (\begin{equation}) accordingly
 		for (int s = cur.depth() - 1; s >= 0; --s) {
 			CursorSlice const & cs = cur[s];
-			if (cs.asInsetMath() && cs.asInsetMath() && cs.asInsetMath()->asHullInset()) {
+			if (cs.asInsetMath() && cs.asInsetMath()->asHullInset()) {
 				WriteStream ws(ods);
 				cs.asInsetMath()->asHullInset()->header_write(ws);
 				break;
