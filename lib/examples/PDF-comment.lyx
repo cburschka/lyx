@@ -707,7 +707,16 @@ status open
 status open
 
 \begin_layout Plain Layout
-id=1,markup=Highlight
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+id=1,
+\end_layout
+
+\end_inset
+
+markup=Highlight
 \end_layout
 
 \end_inset
@@ -938,6 +947,24 @@ PDF-Reply
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Attention:
+\series default
+ Due to technical limitations PDF-Reply only works when using pdflatex.
+ On some LaTeX installations it won't even work in general.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 With a PDF-Reply you can compose replies to PDF comments.
  The option 
 \series bold
@@ -949,6 +976,10 @@ replyto
 \begin_layout Standard
 As example see the reply to the Highlight PDF-Markup from the previous section.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Flex PDF-Reply
 status open
 
@@ -963,6 +994,11 @@ id=2,replyto=1,date=D:20101211161247+01'00'
 \end_inset
 
 This is a reply.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -988,6 +1024,10 @@ id
  option to the reply that should be replied to.
  As example see the reply to the reply to the PDF-Markup.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Flex PDF-Reply
 status open
 
@@ -1009,25 +1049,13 @@ Of course, you can reply to a reply.
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- Due to technical reasons PDF-Reply only works when using pdflatex.
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-PDF-Reply has some further limitations:
+PDF-Reply has limitations:
 \end_layout
 
 \begin_layout Itemize
@@ -1363,12 +1391,12 @@ status collapsed
 
 
 \backslash
-
+displaystyle
 \end_layout
 
 \end_inset
 
-displaystyle
+ 
 \end_layout
 
 \end_inset
@@ -1664,7 +1692,8 @@ If you are for example reviewing a document, you need to add your name to
  every of your comments.
  In case you use a special layout of your annotations, you would have to
  do a lot of copy-paste work.
- But this can be avoided if you define for every person a special avatar.
+ But this can be avoided if you define for every comment author a special
+ avatar.
 \end_layout
 
 \begin_layout Standard
@@ -1759,7 +1788,7 @@ To use now your avatar for PDF comments you have two choices:
 \end_layout
 
 \begin_layout Enumerate
-You set up ALL PDF comments in the document using your avatar.
+You set up that all PDF comments in the document use your avatar.
  This is done by inserting the custom inset 
 \family sans
 PDF
