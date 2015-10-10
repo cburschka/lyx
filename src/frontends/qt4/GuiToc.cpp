@@ -75,7 +75,7 @@ void GuiToc::enableView(bool /*enable*/)
 void GuiToc::closeEvent(QCloseEvent * /*event*/)
 {
 	is_closing_ = true;
-	((GuiView *)parent())->updateToolbars();
+	static_cast<GuiView *>(parent())->updateToolbars();
 	is_closing_ = false;
 }
 

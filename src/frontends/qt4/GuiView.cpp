@@ -1378,7 +1378,7 @@ GuiWorkArea * GuiView::workArea(Buffer & buffer)
 {
 	if (currentWorkArea()
 		&& &currentWorkArea()->bufferView().buffer() == &buffer)
-		return (GuiWorkArea *) currentWorkArea();
+		return currentWorkArea();
 	if (TabWorkArea * twa = d.currentTabWorkArea())
 		return twa->workArea(buffer);
 	return 0;
