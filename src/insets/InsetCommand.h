@@ -39,6 +39,8 @@ public:
 	///
 	InsetCommand(InsetCommand const & rhs);
 	///
+	InsetCommand & operator=(InsetCommand const & rhs);
+	///
 	virtual ~InsetCommand();
 	///
 	InsetCommand * asInsetCommand() { return this; }

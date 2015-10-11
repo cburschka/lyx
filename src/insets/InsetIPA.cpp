@@ -54,6 +54,18 @@ InsetIPA::InsetIPA(InsetIPA const & other)
 }
 
 
+InsetIPA & InsetIPA::operator=(InsetIPA const & other)
+{
+	if (&other == this)
+		return *this;
+
+	InsetText::operator=(other);
+	preview_.reset(new RenderPreview(*other.preview_, this));
+
+	return *this;
+}
+
+
 void InsetIPA::write(ostream & os) const
 {
 	os << "IPA" << "\n";

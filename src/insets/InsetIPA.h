@@ -36,6 +36,8 @@ public:
 	~InsetIPA();
 	///
 	InsetIPA(InsetIPA const & other);
+	///
+	InsetIPA & operator=(InsetIPA const & other);
 
 	/// \name Methods inherited from Inset class
 	//@{

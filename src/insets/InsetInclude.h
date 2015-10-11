@@ -35,6 +35,10 @@ namespace support {
 
 /// for including tex/lyx files
 class InsetInclude : public InsetCommand {
+	// Disable assignment operator, since it is not used, and cannot be
+	// implemented consistently with the copy constructor, because
+	// include_label is const.
+	InsetInclude & operator=(InsetInclude const &);
 public:
 	///
 	InsetInclude(Buffer * buf, InsetCommandParams const &);

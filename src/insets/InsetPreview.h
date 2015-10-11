@@ -36,6 +36,8 @@ public:
 	~InsetPreview();
 	///
 	InsetPreview(InsetPreview const & other);
+	///
+	InsetPreview & operator=(InsetPreview const & other);
 
 	/// \name Methods inherited from Inset class
 	//@{

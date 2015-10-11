@@ -65,6 +65,20 @@ InsetCommand::InsetCommand(InsetCommand const & rhs)
 {}
 
 
+InsetCommand & InsetCommand::operator=(InsetCommand const & rhs)
+{
+	if (&rhs == this)
+		return *this;
+
+	Inset::operator=(rhs);
+	p_ = rhs.p_;
+	mouse_hover_.clear();
+	button_ = RenderButton();
+
+	return *this;
+}
+
+
 InsetCommand::~InsetCommand()
 {
 	if (p_.code() != NO_CODE)

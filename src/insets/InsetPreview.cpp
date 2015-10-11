@@ -54,6 +54,18 @@ InsetPreview::InsetPreview(InsetPreview const & other)
 }
 
 
+InsetPreview & InsetPreview::operator=(InsetPreview const & other)
+{
+	if (&other == this)
+		return *this;
+
+	InsetText::operator=(other);
+	preview_.reset(new RenderPreview(*other.preview_, this));
+
+	return *this;
+}
+
+
 void InsetPreview::write(ostream & os) const
 {
 	os << "Preview" << "\n";
