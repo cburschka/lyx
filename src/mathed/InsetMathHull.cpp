@@ -927,7 +927,7 @@ void InsetMathHull::validate(LaTeXFeatures & features) const
 void InsetMathHull::header_write(WriteStream & os) const
 {
 	bool n = numberedType();
-	
+
 	switch(type_) {
 	case hullNone:
 		break;

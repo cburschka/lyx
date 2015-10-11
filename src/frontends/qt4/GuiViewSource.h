@@ -62,6 +62,8 @@ public Q_SLOTS:
 	void updateDefaultFormat();
 	///
 	void contentsChanged();
+	///
+	void gotoCursor();
 
 private Q_SLOTS:
 	/// update content
@@ -69,10 +71,8 @@ private Q_SLOTS:
 
 private:
 	/// Get the source code of selected paragraphs, or the whole document.
-	/// If TexRow is unavailable for the format then t is null.
-	std::auto_ptr<TexRow> getContent(BufferView const * view,
-									 Buffer::OutputWhat output, docstring & str,
-									 std::string const & format, bool master);
+	void getContent(BufferView const * view, Buffer::OutputWhat output,
+			   docstring & str, std::string const & format, bool master);
 	///
 	BufferView const * bv_;
 	///
@@ -83,6 +83,9 @@ private:
 	QString view_format_;
 	///
 	QTimer * update_timer_;
+	/// TexRow information from the last source view. If TexRow is unavailable
+	/// for the last format then texrow_ is null.
+	std::auto_ptr<TexRow> texrow_;
 };
 
 

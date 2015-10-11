@@ -26,6 +26,7 @@
 #include "support/debug.h"
 #include "support/lassert.h"
 #include "support/docstream.h"
+#include "support/docstring_list.h"
 #include "support/gettext.h"
 
 #include <boost/crc.hpp>
@@ -64,6 +65,11 @@ ViewSourceWidget::ViewSourceWidget()
 		this, SLOT(setViewFormat(int)));
 	connect(outputFormatCO, SIGNAL(activated(int)),
 		this, SLOT(contentsChanged()));
+#ifdef DEVEL_VERSION
+	if (lyx::lyxerr.debugging(Debug::LATEX))
+		connect(viewSourceTV, SIGNAL(cursorPositionChanged()),
+				this, SLOT(gotoCursor()));
+#endif
 
 	// setting the update timer
 	update_timer_->setSingleShot(true);
@@ -89,7 +95,7 @@ ViewSourceWidget::ViewSourceWidget()
 }
 
 
-auto_ptr<TexRow> ViewSourceWidget::getContent(BufferView const * view,
+void ViewSourceWidget::getContent(BufferView const * view,
 			Buffer::OutputWhat output, docstring & str, string const & format,
 			bool master)
 {
@@ -108,11 +114,10 @@ auto_ptr<TexRow> ViewSourceWidget::getContent(BufferView const * view,
 	if (par_begin > par_end)
 		swap(par_begin, par_end);
 	odocstringstream ostr;
-	auto_ptr<TexRow> texrow = view->buffer().getSourceCode(ostr, format,
-								    par_begin, par_end + 1, output, master);
+	texrow_ = view->buffer().getSourceCode(ostr, format,
+										par_begin, par_end + 1, output, master);
 	//ensure that the last line can always be selected in its full width
 	str = ostr.str() + "\n";
-	return texrow;
 }
 
 
@@ -164,6 +169,23 @@ void ViewSourceWidget::updateViewNow()
 	update_timer_->start(0);
 }
 
+namespace {
+
+QString prependTexRow(TexRow const & texrow, QString const & content)
+{
+	QStringList list = content.split(QChar('\n'));
+	docstring_list dlist;
+	for (QStringList::const_iterator it = list.begin(); it != list.end(); ++it)
+		dlist.push_back(from_utf8(fromqstr(*it)));
+	texrow.prepend(dlist);
+	QString qstr;
+	for (docstring_list::iterator it = dlist.begin(); it != dlist.end(); ++it)
+		qstr += toqstr(*it) + '\n';
+	return qstr;
+}
+
+} // anon namespace
+
 void ViewSourceWidget::realUpdateView()
 {
 	if (!bv_) {
@@ -191,13 +213,18 @@ void ViewSourceWidget::realUpdateView()
 		output = Buffer::OnlyBody;
 
 	docstring content;
-	auto_ptr<TexRow> texrow = getContent(bv_, output, content, format,
-									   masterPerspectiveCB->isChecked());
+	getContent(bv_, output, content, format, masterPerspectiveCB->isChecked());
 	QString old = document_->toPlainText();
 	QString qcontent = toqstr(content);
+#ifdef DEVEL_VERSION
+	if (texrow_.get() && lyx::lyxerr.debugging(Debug::LATEX))
+		qcontent = prependTexRow(*texrow_, qcontent);
+#endif
+	// prevent gotoCursor()
+	viewSourceTV->blockSignals(true);
 	bool const changed = setText(qcontent);
 
-	if (changed && !texrow.get()) {
+	if (changed && !texrow_.get()) {
 		// position-to-row is unavailable
 		// we jump to the first modification
 		const QChar * oc = old.constData();
@@ -227,18 +254,18 @@ void ViewSourceWidget::realUpdateView()
 		//c.movePosition(QTextCursor::Right, QTextCursor::KeepAnchor,1);
 		viewSourceTV->setTextCursor(c);
 
-	} else if (texrow.get()) {
+	} else if (texrow_.get()) {
 		// Use the available position-to-row conversion to highlight
 		// the current selection in the source
 		int beg_row, end_row;
 		{
 			DocIterator beg = bv_->cursor().selectionBegin();
 			DocIterator end = bv_->cursor().selectionEnd();
-			std::pair<int,int> beg_rows = texrow->rowFromDocIterator(beg);
+			std::pair<int,int> beg_rows = texrow_->rowFromDocIterator(beg);
 			beg_row = beg_rows.first;
 			if (beg != end) {
 				end.backwardChar();
-				std::pair<int,int> end_rows = texrow->rowFromDocIterator(end);
+				std::pair<int,int> end_rows = texrow_->rowFromDocIterator(end);
 				end_row = end_rows.second;
 			} else {
 				end_row = beg_rows.second;
@@ -290,7 +317,20 @@ void ViewSourceWidget::realUpdateView()
 		viewSourceTV->setTextCursor(c);
 		viewSourceTV->horizontalScrollBar()->setValue(h_scroll);
 	} // else if (texrow)
+	viewSourceTV->blockSignals(false);
 }
+
+
+// only used in DEVEL_MODE for debugging
+// need a proper LFUN if we want to implement it in release mode
+void ViewSourceWidget::gotoCursor()
+{
+	if (!bv_ || !texrow_.get())
+		return;
+	int row = viewSourceTV->textCursor().blockNumber() + 1;
+	const_cast<BufferView *>(bv_)->setCursorFromRow(row, *texrow_);
+}
+
 
 
 void ViewSourceWidget::updateDefaultFormat()

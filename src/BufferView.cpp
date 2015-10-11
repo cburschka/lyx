@@ -2366,12 +2366,18 @@ int BufferView::scrollUp(int offset)
 
 void BufferView::setCursorFromRow(int row)
 {
+	setCursorFromRow(row, buffer_.texrow());
+}
+
+
+void BufferView::setCursorFromRow(int row, TexRow const & texrow)
+{
 	int tmpid;
 	int tmppos;
 	pit_type newpit = 0;
 	pos_type newpos = 0;
 
-	buffer_.texrow().getIdFromRow(row, tmpid, tmppos);
+	texrow.getIdFromRow(row, tmpid, tmppos);
 
 	bool posvalid = (tmpid != -1);
 	if (posvalid) {

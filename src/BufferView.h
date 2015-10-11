@@ -44,6 +44,7 @@ class PainterInfo;
 class ParIterator;
 class ParagraphMetrics;
 class Point;
+class TexRow;
 class Text;
 class TextMetrics;
 
@@ -159,6 +160,8 @@ public:
 
 	/// set the cursor based on the given TeX source row.
 	void setCursorFromRow(int row);
+	///
+	void setCursorFromRow(int row, TexRow const & texrow);
 
 	/// set cursor to the given inset. Return true if found.
 	bool setCursorFromInset(Inset const *);
