@@ -96,6 +96,9 @@ class RenderBase;
 ///
 class InsetExternal : public Inset, public boost::signals::trackable
 {
+	// Disable assignment operator, since it is not used, and it is too
+	// complicated to implement it consistently with the copy constructor
+	InsetExternal & operator=(InsetExternal const &);
 public:
 	InsetExternal(Buffer *);
 	///
