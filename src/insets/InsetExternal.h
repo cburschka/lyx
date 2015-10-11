@@ -22,13 +22,6 @@
 #include <boost/signals/trackable.hpp>
 
 
-/** No two InsetExternalParams variables can have the same temporary file.
- *  This class has copy-semantics but the copy constructor
- *  and assignment operator simply call the default constructor.
- *  Use of this class enables us to use the compiler-generated
- *  copy constructor and assignment operator for the
- *  InsetExternalParams class.
- */
 namespace lyx {
 
 namespace support {
@@ -37,6 +30,13 @@ class TempFile;
 
 namespace external {
 
+/** No two InsetExternalParams variables can have the same temporary file.
+ *  This class has copy-semantics but the copy constructor
+ *  and assignment operator simply call the default constructor.
+ *  Use of this class enables us to use the compiler-generated
+ *  copy constructor and assignment operator for the
+ *  InsetExternalParams class.
+ */
 class TempName {
 public:
 	TempName();
