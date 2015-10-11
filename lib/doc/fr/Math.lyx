@@ -10541,7 +10541,7 @@ i
 \end_inset
 
 
-\lang german
+\lang ngerman
 
 \begin_inset Formula $"i$
 \end_inset
@@ -30603,10 +30603,8 @@ arg   "label-insert"
 \family sans
 Étiquette d'équation
 \family default
-\lang english
 .
 
-\lang french
  Une fenêtre de dialogue apparaît affichant le préfixe 
 \series bold
 eq:
@@ -32757,7 +32755,6 @@ hyphen$Cl}
 
 \begin_layout Standard
 
-\lang english
 \begin_inset Note Greyedout
 status open
 
@@ -37551,7 +37548,6 @@ i}
 
 \begin_layout Subsection
 
-\lang english
 Commentaires LaTeX dans les formules
 \end_layout
 
@@ -37598,13 +37594,11 @@ target "http://www.lyx.org/trac/ticket/9002"
  vous ne pouvez pas écrire du texte normal à l'intérieur du commentaire,
  même en utilisant du texte mathématique, vous verrez les commandes LaTeX
  dans la sortie LaTeX.
-\lang english
 
 \begin_inset Newline newline
 \end_inset
 
 
-\lang french
 Ceci est une formule avec un commentaire LaTeX :
 \begin_inset Formula 
 \[
