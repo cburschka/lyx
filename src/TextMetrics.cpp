@@ -1323,11 +1323,28 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 	cur.setTargetX(x);
 
 	// Try to descend recursively inside the inset.
-	inset = inset->editXY(cur, x, yy);
+	Inset * edited = inset->editXY(cur, x, yy);
+	if (edited == inset && cur.pos() == it->pos) {
+		// non-editable inset, set cursor after the inset if x is
+		// nearer to that position (bug 9628)
+		ParagraphMetrics const & pm = par_metrics_[pit];
+		Dimension const & dim = pm.insetDimension(inset);
+		Point p = bv_->coordCache().getInsets().xy(inset);
+		bool const is_rtl = text_->isRTL(text_->getPar(pit));
+		if (is_rtl) {
+			// "in front of" == "right of"
+			if (abs(p.x_ - x) < abs(p.x_ + dim.wid - x))
+				cur.posForward();
+		} else {
+			// "in front of" == "left of"
+			if (abs(p.x_ + dim.wid - x) < abs(p.x_ - x))
+				cur.posForward();
+		}
+	}
 
 	if (cur.top().text() == text_)
 		cur.setCurrentFont();
-	return inset;
+	return edited;
 }
 
 
