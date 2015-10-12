@@ -38,6 +38,9 @@ void octave(MathData const &, OctaveStream &);
 bool extractNumber(MathData const & ar, int & i);
 bool extractNumber(MathData const & ar, double & i);
 
+/// Write \p s (which may contain math or text contents in LaTeX syntax) to \p os
+void writeString(docstring const & s, WriteStream & os);
+
 MathData pipeThroughExtern(std::string const & language,
 	docstring const & extra, MathData const & ar);
 

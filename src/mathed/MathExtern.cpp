@@ -35,12 +35,16 @@
 #include "MathParser.h"
 #include "MathStream.h"
 
+#include "Encoding.h"
+
 #include "support/debug.h"
 #include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
+#include "support/gettext.h"
 #include "support/lstrings.h"
 #include "support/TempFile.h"
+#include "support/textutils.h"
 
 #include <algorithm>
 #include <sstream>
@@ -1382,13 +1386,118 @@ namespace {
 
 void write(MathData const & dat, WriteStream & wi)
 {
-	MathData ar = dat;
-	extractStrings(ar);
 	wi.firstitem() = true;
-	for (MathData::const_iterator it = ar.begin(); it != ar.end(); ++it) {
-		//		wi.startOuterRow();
-		(*it)->write(wi);
+	docstring s;
+	for (MathData::const_iterator it = dat.begin(); it != dat.end(); ++it) {
+		InsetMathChar const * const c = (*it)->asCharInset();
+		if (c)
+			s += c->getChar();
+		else {
+			if (!s.empty()) {
+				writeString(s, wi);
+				s.clear();
+			}
+			(*it)->write(wi);
+			wi.firstitem() = false;
+		}
+	}
+	if (!s.empty()) {
+		writeString(s, wi);
 		wi.firstitem() = false;
+	}
+}
+
+
+void writeString(docstring const & s, WriteStream & os)
+{
+	if (!os.latex() || os.lockedMode()) {
+		os << (os.asciiOnly() ? escape(s) : s);
+		return;
+	}
+
+	docstring::const_iterator cit = s.begin();
+	docstring::const_iterator end = s.end();
+
+	// We may already be inside an \ensuremath command.
+	bool in_forced_mode = os.pendingBrace();
+
+	// We will take care of matching braces.
+	os.pendingBrace(false);
+
+	while (cit != end) {
+		bool mathmode = in_forced_mode ? os.textMode() : !os.textMode();
+		char_type const c = *cit;
+		docstring command(1, c);
+		try {
+			bool termination = false;
+			if (isASCII(c) ||
+			    Encodings::latexMathChar(c, mathmode, os.encoding(), command, termination)) {
+				if (os.textMode()) {
+					if (in_forced_mode) {
+						// we were inside \lyxmathsym
+						os << '}';
+						os.textMode(false);
+						in_forced_mode = false;
+					}
+					if (!isASCII(c) && os.textMode()) {
+						os << "\\ensuremath{";
+						os.textMode(false);
+						in_forced_mode = true;
+					}
+				} else if (isASCII(c) && in_forced_mode) {
+					// we were inside \ensuremath
+					os << '}';
+					os.textMode(true);
+					in_forced_mode = false;
+				}
+			} else if (!os.textMode()) {
+					if (in_forced_mode) {
+						// we were inside \ensuremath
+						os << '}';
+						in_forced_mode = false;
+					} else {
+						os << "\\lyxmathsym{";
+						in_forced_mode = true;
+					}
+					os.textMode(true);
+			}
+			os << command;
+			// We may need a space if the command contains a macro
+			// and the last char is ASCII.
+			if (termination)
+				os.pendingSpace(true);
+		} catch (EncodingException const & e) {
+			switch (os.output()) {
+			case WriteStream::wsDryrun: {
+				os << "<" << _("LyX Warning: ")
+				   << _("uncodable character") << " '";
+				os << docstring(1, e.failed_char);
+				os << "'>";
+				break;
+			}
+			case WriteStream::wsPreview: {
+				// indicate the encoding error by a boxed '?'
+				os << "{\\fboxsep=1pt\\fbox{?}}";
+				LYXERR0("Uncodable character" << " '"
+					<< docstring(1, e.failed_char)
+					<< "'");
+				break;
+			}
+			case WriteStream::wsDefault:
+			default:
+				// throw again
+				throw(e);
+			}
+		}
+		++cit;
+	}
+
+	if (in_forced_mode && os.textMode()) {
+		// We have to care for closing \lyxmathsym
+		os << '}';
+		os.textMode(false);
+	} else {
+		os.pendingBrace(in_forced_mode);
 	}
 }
 
