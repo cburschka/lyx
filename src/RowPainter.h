@@ -63,7 +63,7 @@ private:
 	void paintStringAndSel(Row::Element const & e);
 	void paintMisspelledMark(double orig_x, Row::Element const & e) const;
 	void paintChange(double orig_x , Font const & font, Change const & change) const;
-	int paintAppendixStart(int y) const;
+	void paintAppendixStart(int y) const;
 	void paintInset(Inset const * inset, Font const & font,
                     Change const & change, pos_type const pos);
 

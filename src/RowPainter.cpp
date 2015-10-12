@@ -357,7 +357,7 @@ void RowPainter::paintDepthBar() const
 }
 
 
-int RowPainter::paintAppendixStart(int y) const
+void RowPainter::paintAppendixStart(int y) const
 {
 	FontInfo pb_font = sane_font;
 	pb_font.setColor(Color_appendix);
@@ -377,8 +377,6 @@ int RowPainter::paintAppendixStart(int y) const
 
 	pi_.pain.line(int(xo_ + 1), y, text_start, y, Color_appendix);
 	pi_.pain.line(text_end, y, int(xo_ + width_ - 2), y, Color_appendix);
-
-	return 3 * defaultRowHeight();
 }
 
 
@@ -401,40 +399,21 @@ void RowPainter::paintTooLargeMarks(bool const left, bool const right) const
 
 void RowPainter::paintFirst() const
 {
-	BufferParams const & bparams = pi_.base.bv->buffer().params();
 	Layout const & layout = par_.layout();
-
-	int y_top = 0;
 
 	// start of appendix?
 	if (par_.params().startOfAppendix())
-		y_top += paintAppendixStart(yo_ - row_.ascent() + 2 * defaultRowHeight());
-
-	if (bparams.paragraph_separation == BufferParams::ParagraphSkipSeparation
-		&& pit_ != 0) {
-		if (layout.latextype == LATEX_PARAGRAPH
-		    && !par_.getDepth()) {
-			y_top += bparams.getDefSkip().inPixels(*pi_.base.bv);
-		} else {
-			Layout const & playout = pars_[pit_ - 1].layout();
-			if (playout.latextype == LATEX_PARAGRAPH
-			    && !pars_[pit_ - 1].getDepth()) {
-				// is it right to use defskip here, too? (AS)
-				y_top += bparams.getDefSkip().inPixels(*pi_.base.bv);
-			}
-		}
-	}
+	    paintAppendixStart(yo_ - row_.ascent() + 2 * defaultRowHeight());
 
 	bool const is_first =
 		text_.isFirstInSequence(pit_) || !layout.isParagraphGroup();
 	//lyxerr << "paintFirst: " << par_.id() << " is_seq: " << is_seq << endl;
 
 	if (layout.labelIsInline()
-			&& (layout.labeltype != LABEL_STATIC || is_first)) {
+	    && (layout.labeltype != LABEL_STATIC || is_first))
 		paintLabel();
-	} else if (is_first && layout.labelIsAbove()) {
+	else if (is_first && layout.labelIsAbove())
 		paintTopLevelLabel();
-	}
 }
 
 
