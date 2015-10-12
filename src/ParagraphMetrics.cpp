@@ -119,24 +119,6 @@ void ParagraphMetrics::setPosition(int position)
 }
 
 
-Dimension const & ParagraphMetrics::insetDimension(Inset const * inset) const
-{
-	InsetDims::const_iterator it = inset_dims_.find(inset);
-	if (it != inset_dims_.end())
-		return it->second;
-
-	static Dimension dummy;
-	return dummy;
-}
-
-
-void ParagraphMetrics::setInsetDimension(Inset const * inset,
-		Dimension const & dim)
-{
-	inset_dims_[inset] = dim;
-}
-
-
 Row & ParagraphMetrics::getRow(pos_type pos, bool boundary)
 {
 	LBUFERR(!rows().empty());
@@ -209,25 +191,6 @@ int ParagraphMetrics::rightMargin(BufferView const & bv) const
 		* 4 / (par_->getDepth() + 4);
 
 	return r_margin;
-}
-
-
-int ParagraphMetrics::singleWidth(pos_type pos, Font const & font) const
-{
-	// The most special cases are handled first.
-	if (Inset const * inset = par_->getInset(pos))
-		return insetDimension(inset).wid;
-
-	char_type const c = par_->getChar(pos);
-
-	if (c == '\t')
-		return 4 * theFontMetrics(font).width(' ');
-
-	// Note that this function is only called in
-	// RowPainter::paintText, and only used for characters that do
-	// not require handling of compose chars or ligatures. It can
-	// therefore be kept simple.
-	return theFontMetrics(font).width(c);
 }
 
 

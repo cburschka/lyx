@@ -167,10 +167,10 @@ private:
  * All points cached in this cache are only valid between subsequent
  * updates. (x,y) == (0,0) is the upper left screen corner, x increases
  * to the right, y increases downwords.
- * The dimension part is built in BufferView::updateMetrics() and the 
+ * The dimension part is built in BufferView::updateMetrics() and the
  * diverse Inset::metrics() calls.
  * The individual points are added at drawing time in
- * BufferView::updateMetrics(). The math inset position are cached in
+ * BufferView::draw(). The math inset position are cached in
  * the diverse InsetMathXXX::draw() calls and the in-text inset position
  * are cached in RowPainter::paintInset().
  * FIXME: For mathed, it would be nice if the insets did not saves their
@@ -182,19 +182,21 @@ public:
 	void clear();
 
 	/// A map from MathData to position on the screen
-	CoordCacheBase<MathData> & arrays() { return arrays_; }
-	CoordCacheBase<MathData> const & getArrays() const { return arrays_; }
+	typedef CoordCacheBase<MathData> Arrays;
+	Arrays & arrays() { return arrays_; }
+	Arrays const & getArrays() const { return arrays_; }
 	/// A map from insets to positions on the screen
-	CoordCacheBase<Inset> & insets() { return insets_; }
-	CoordCacheBase<Inset> const & getInsets() const { return insets_; }
+	typedef CoordCacheBase<Inset> Insets;
+	Insets & insets() { return insets_; }
+	Insets const & getInsets() const { return insets_; }
 
 	/// Dump the contents of the cache to lyxerr in debugging form
 	void dump() const;
 private:
 	/// MathDatas
-	CoordCacheBase<MathData> arrays_;
+	Arrays arrays_;
 	// All insets
-	CoordCacheBase<Inset> insets_;
+	Insets insets_;
 };
 
 } // namespace lyx

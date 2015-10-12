@@ -266,7 +266,7 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = 0;
 	dim.wid = 0;
 	Dimension d;
-	CoordCacheBase<Inset> & coords = mi.base.bv->coordCache().insets();
+	CoordCache::Insets & coords = mi.base.bv->coordCache().insets();
 	for (pos_type i = 0, n = size(); i != n; ++i) {
 		MathAtom const & at = operator[](i);
 		at->metrics(mi, d);
@@ -318,7 +318,7 @@ void MathData::draw(PainterInfo & pi, int x, int y) const
 	if (inlineCompletionPos.inMathed())
 		inlineCompletionData = &inlineCompletionPos.cell();
 
-	CoordCacheBase<Inset> & coords = pi.base.bv->coordCache().insets();
+	CoordCache::Insets & coords = pi.base.bv->coordCache().insets();
 	for (size_t i = 0, n = size(); i != n; ++i) {
 		MathAtom const & at = operator[](i);
 		coords.add(at.nucleus(), x, y);
@@ -850,7 +850,7 @@ int MathData::pos2x(BufferView const * bv, size_type pos, int glue) const
 {
 	int x = 0;
 	size_type target = min(pos, size());
-	CoordCacheBase<Inset> const & coords = bv->coordCache().getInsets();
+	CoordCache::Insets const & coords = bv->coordCache().getInsets();
 	for (size_type i = 0; i < target; ++i) {
 		const_iterator it = begin() + i;
 		if ((*it)->getChar() == ' ')
@@ -874,7 +874,7 @@ MathData::size_type MathData::x2pos(BufferView const * bv, int targetx, int glue
 	const_iterator it = begin();
 	int lastx = 0;
 	int currx = 0;
-	CoordCacheBase<Inset> const & coords = bv->coordCache().getInsets();
+	CoordCache::Insets const & coords = bv->coordCache().getInsets();
 	// find first position after targetx
 	for (; currx < targetx && it != end(); ++it) {
 		lastx = currx;

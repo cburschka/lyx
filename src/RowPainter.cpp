@@ -139,7 +139,7 @@ void RowPainter::paintInset(Inset const * inset, Font const & font,
 	inset->drawSelection(pi_, x1, yo_);
 	inset->draw(pi_, x1, yo_);
 
-	Dimension const & dim = pm_.insetDimension(inset);
+	Dimension const & dim = pi_.base.bv->coordCache().insets().dim(inset);
 
 	paintForeignMark(x_, font.language(), dim.descent());
 

@@ -400,6 +400,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 
 	// redo insets
 	Font const bufferfont = buffer.params().getFont();
+	CoordCache::Insets & insetCache = bv_->coordCache().insets();
 	InsetList::const_iterator ii = par.insetList().begin();
 	InsetList::const_iterator iend = par.insetList().end();
 	for (; ii != iend; ++ii) {
@@ -425,9 +426,8 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		MacroContext mc(&buffer, parPos);
 		MetricsInfo mi(bv_, font.fontInfo(), w, mc);
 		ii->inset->metrics(mi, dim);
-		Dimension const & old_dim = pm.insetDimension(ii->inset);
-		if (old_dim != dim) {
-			pm.setInsetDimension(ii->inset, dim);
+		if (!insetCache.has(ii->inset) || insetCache.dim(ii->inset) != dim) {
+			insetCache.add(ii->inset, dim);
 			changed = true;
 		}
 	}
@@ -621,6 +621,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	    && (body_pos > endpos || !par.isLineSeparator(body_pos - 1)))
 		body_pos = 0;
 	ParagraphMetrics & pm = par_metrics_[pit];
+	CoordCache::Insets & insetCache = bv_->coordCache().insets();
 	Row::iterator cit = row.begin();
 	Row::iterator const cend = row.end();
 	for ( ; cit != cend; ++cit) {
@@ -635,8 +636,7 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 		else
 			cit->dim.wid = 5;
 		// Cache the inset dimension.
-		bv_->coordCache().insets().add(cit->inset, cit->dim);
-		pm.setInsetDimension(cit->inset, cit->dim);
+		insetCache.add(cit->inset, cit->dim);
 	}
 }
 
@@ -778,7 +778,6 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 		return;
 	}
 
-	ParagraphMetrics const & pm = par_metrics_[pit];
 	ParagraphList const & pars = text_->paragraphs();
 
 #if 0
@@ -804,7 +803,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 		// The most special cases are handled first.
 		if (par.isInset(i)) {
 			Inset const * ins = par.getInset(i);
-			Dimension dim = pm.insetDimension(ins);
+			Dimension dim = bv_->coordCache().insets().dim(ins);
 			row.add(i, ins, dim, *fi, par.lookupChange(i));
 		} else if (c == ' ' && i + 1 == body_pos) {
 			// There is a space at i, but it should not be
@@ -929,12 +928,12 @@ void TextMetrics::setRowHeight(Row & row, pit_type const pit,
 	int maxdesc = int(fontmetrics.maxDescent() * spacing_val);
 
 	// insets may be taller
-	ParagraphMetrics const & pm = par_metrics_[pit];
+	CoordCache::Insets const & insetCache = bv_->coordCache().getInsets();
 	Row::const_iterator cit = row.begin();
 	Row::const_iterator cend = row.end();
 	for ( ; cit != cend; ++cit) {
 		if (cit->inset) {
-			Dimension const & dim = pm.insetDimension(cit->inset);
+			Dimension const & dim = insetCache.dim(cit->inset);
 			maxasc  = max(maxasc,  dim.ascent());
 			maxdesc = max(maxdesc, dim.descent());
 		}
@@ -1327,9 +1326,9 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 	if (edited == inset && cur.pos() == it->pos) {
 		// non-editable inset, set cursor after the inset if x is
 		// nearer to that position (bug 9628)
-		ParagraphMetrics const & pm = par_metrics_[pit];
-		Dimension const & dim = pm.insetDimension(inset);
-		Point p = bv_->coordCache().getInsets().xy(inset);
+		CoordCache::Insets const & insetCache = bv_->coordCache().getInsets();
+		Dimension const & dim = insetCache.dim(inset);
+		Point p = insetCache.xy(inset);
 		bool const is_rtl = text_->isRTL(text_->getPar(pit));
 		if (is_rtl) {
 			// "in front of" == "right of"
@@ -1389,7 +1388,7 @@ void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const 
 InsetList::InsetTable * TextMetrics::checkInsetHit(pit_type pit, int x, int y)
 {
 	Paragraph const & par = text_->paragraphs()[pit];
-	ParagraphMetrics const & pm = par_metrics_[pit];
+	CoordCache::Insets const & insetCache = bv_->coordCache().getInsets();
 
 	LYXERR(Debug::DEBUG, "x: " << x << " y: " << y << "  pit: " << pit);
 
@@ -1400,13 +1399,13 @@ InsetList::InsetTable * TextMetrics::checkInsetHit(pit_type pit, int x, int y)
 
 		LYXERR(Debug::DEBUG, "examining inset " << inset);
 
-		if (!bv_->coordCache().getInsets().has(inset)) {
+		if (!insetCache.has(inset)) {
 			LYXERR(Debug::DEBUG, "inset has no cached position");
 			return 0;
 		}
 
-		Dimension const & dim = pm.insetDimension(inset);
-		Point p = bv_->coordCache().getInsets().xy(inset);
+		Dimension const & dim = insetCache.dim(inset);
+		Point p = insetCache.xy(inset);
 
 		LYXERR(Debug::DEBUG, "xo: " << p.x_ << "..." << p.x_ + dim.wid
 			<< " yo: " << p.y_ - dim.asc << "..." << p.y_ + dim.des);

@@ -42,7 +42,7 @@ void CoordCache::clear()
 void CoordCache::dump() const
 {
 	LYXERR0("InsetCache contains:");
-	CoordCacheBase<Inset>::cache_type::const_iterator it =
+	CoordCache::Insets::cache_type::const_iterator it =
 		getInsets().data_.begin();
 	for (; it != getInsets().data_.end(); ++it) {
 		// Warning: it is not guaranteed that inset is a valid pointer

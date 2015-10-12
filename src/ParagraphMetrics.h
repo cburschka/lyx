@@ -78,8 +78,6 @@ public:
 	RowList const & rows() const { return rows_; }
 	///
 	int rightMargin(BufferView const & bv) const;
-	///
-	int singleWidth(pos_type pos, Font const & Font) const;
 
 	/// dump some information to lyxerr
 	void dump() const;
@@ -94,11 +92,6 @@ public:
 	int position() const { return position_; }
 	void setPosition(int position);
 
-	///
-	Dimension const & insetDimension(Inset const * inset) const;
-	///
-	void setInsetDimension(Inset const *, Dimension const & dim);
-
 private:
 	///
 	int position_;
@@ -108,10 +101,6 @@ private:
 	Dimension dim_;
 	///
 	Paragraph const * par_;
-	
-	typedef std::map<Inset const *, Dimension> InsetDims;
-	///
-	InsetDims inset_dims_;
 };
 
 } // namespace lyx

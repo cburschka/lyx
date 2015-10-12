@@ -33,14 +33,14 @@ is acted on.
 ** Buffer::change issues
 
 When calling Buffer::changed outside of bv::processUpdateFlags,
-how do we now that the update strategy is set correctly? It is
+how do we know that the update strategy is set correctly? It is
 possible to reset the strategy at the end of bv::draw. What would be
 a good value? NoScreenUpdate?
 
 On a related note, what is the semantics of a call to
 Buffer::changed(false)? What does the caller mean?
 
-** How to avoid  redraw with FitCursor when the cursor is already OK?
+** How to avoid redraw with FitCursor when the cursor is already OK?
 
 In this case, we invoke Buffer::change(false) with drawing disabled
 and NoScreenUpdate strategy.
@@ -60,15 +60,9 @@ cursor.
 
 * Proposals
 
-** get rid of pm::insetDimension.
-
-The information contained there is already in bv::coordCache.
-
-Effect: only code simplification.
-
 ** set inset position during metrics phase
 
-This implies to set inset positions relative to outer isnet during
+This implies to set inset positions relative to outer inset during
 metrics phase and then in a second loop to descend into insets and
 update positions correctly.
 
@@ -95,21 +89,19 @@ expensive for large files. This would though help scrolling.
 
 * Description of current drawing mechanism
 
-** Two phase drawing
+** Two stage drawing
 
 There are two parts to drawing the work area:
 
  + the metrics phase computes the size of insets and breaks the
    paragraphs into rows. It stores the dimension of insets (both
-   normal and math) in bv::coordCache, and the size of normal
-   insets in pm::insetDimension.
+   normal and math) in bv::coordCache.
 
  + the drawing phase draws the contents and caches the inset
    positions. Since the caching of positions is useful in itself,
    there is a provision for drawing "without" drawing when the only
    thing we want is to cache inset positions
    (Painter::setDrawingEnabled).
-
 
 The machinery is controlled via bv::processUpdateFlags. This method is
 called at the end of bv::mouseEventDispatch and in

@@ -2847,8 +2847,7 @@ Point BufferView::coordOffset(DocIterator const & dit) const
 			// FIXME (Abdel 23/09/2007): this is a bit messy because of the
 			// elimination of Inset::dim_ cache. This coordOffset() method needs
 			// to be rewritten in light of the new design.
-			Dimension const & dim = parMetrics(dit[i - 1].text(),
-				dit[i - 1].pit()).insetDimension(&sl.inset());
+			Dimension const & dim = coordCache().getInsets().dim(&sl.inset());
 			lastw = dim.wid;
 		} else {
 			Dimension const dim = sl.inset().dimension(*this);
