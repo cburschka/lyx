@@ -377,9 +377,8 @@ int GuiPainter::text(int x, int y, docstring const & s,
 
 			// Draw the new cached pixmap.
 			drawPixmap(x + lb, y - mA, pm);
-
-			return textwidth;
 		}
+		return textwidth;
 	}
 
 	// don't use the pixmap cache,
