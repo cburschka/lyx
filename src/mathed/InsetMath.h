@@ -17,6 +17,8 @@
 
 #include "insets/Inset.h"
 
+#include "TexRow.h"
+
 
 namespace lyx {
 
@@ -44,7 +46,7 @@ Abstract base class for all math objects.  A math insets is for use of the
 math editor only, it isn't a general LyX inset. It's used to represent all
 the math objects.
 
-Math insets do not know there parents, a cursor position or things
+Math insets do not know their parents, a cursor position or things
 like that. They are dumb objects that are contained in other math insets
 (InsetMathNests, in fact) thus forming a tree. The root of this tree is
 always a InsetMathHull, which provides an interface to the Outer World by
@@ -225,6 +227,8 @@ public:
 	bool isInToc() const { return true; }
 	///
 	InsetCode lyxCode() const { return MATH_CODE; }
+	///
+	uid_type id() const { return this; }
 };
 
 ///

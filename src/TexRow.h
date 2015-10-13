@@ -23,6 +23,8 @@ namespace lyx {
 class LyXErr;
 class DocIterator;
 
+typedef void const * uid_type;
+
 /// Represents the correspondence between paragraphs and the generated
 /// LaTeX file
 

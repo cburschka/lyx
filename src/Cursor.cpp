@@ -1179,8 +1179,6 @@ void Cursor::info(odocstream & os) const
 		if (inset)
 			prevInset()->infoize2(os);
 	}
-	// overwite old message
-	os << "                    ";
 }
 
 
@@ -2106,6 +2104,13 @@ docstring Cursor::currentState() const
 	if (inMathed()) {
 		odocstringstream os;
 		info(os);
+#ifdef DEVEL_VERSION
+		InsetMath * math = inset().asInsetMath();
+		if (math)
+			os << _(", Inset: ") << math->id();
+		os << _(", Cell: ") << idx();
+		os << _(", Position: ") << pos();
+#endif
 		return os.str();
 	}
 
