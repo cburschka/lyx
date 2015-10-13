@@ -510,6 +510,8 @@ Paragraph::Private::Private(Paragraph * owner, Layout const & layout)
 // FIXME: There should be a more intelligent way to generate and use the
 // paragraph ids per buffer instead a global static counter for all InsetText
 // in the running program.
+// However, this per-session id is used in LFUN_PARAGRAPH_GOTO to
+// switch to a different buffer, as used in the outliner for instance.
 static int paragraph_id = -1;
 
 Paragraph::Private::Private(Private const & p, Paragraph * owner)
