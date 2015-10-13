@@ -2572,6 +2572,9 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 		shared_ptr<InsetTableCell> inset = cellInset(cell);
 
 		Paragraph const & par = inset->paragraphs().front();
+
+		os.texrow().forceStart(par.id(), 0);
+
 		bool rtl = par.isRTL(buffer().params())
 			&& !par.empty()
 			&& getPWidth(cell).zero()

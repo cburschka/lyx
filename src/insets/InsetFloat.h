@@ -109,6 +109,8 @@ private:
 	///
 	docstring getCaption(OutputParams const &) const;
 	///
+	void getCaption(otexstream & os, OutputParams const & runparams) const;
+
 	InsetFloatParams params_;
 };
 

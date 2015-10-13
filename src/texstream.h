@@ -33,6 +33,8 @@ public:
 	TexRow & texrow() { return texrow_; }
 	///
 	void put(char_type const & c);
+	///
+	void append(docstring const &, TexRow const &);
 private:
 	///
 	odocstream & os_;

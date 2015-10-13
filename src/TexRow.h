@@ -12,6 +12,19 @@
  * Full author contact details are available in file CREDITS.
  */
 
+/* Note about debugging options:
+ *
+ * When compiled in devel mode and run with the option -dbg latex, two ways
+ * of debugging TexRow are available:
+ *
+ * 1. The source view panel prepends the full TexRow information to the LaTeX
+ *    output.
+ *
+ * 2. Clicking on any line in the source view moves the buffer to the location
+ *    recognised by TexRow.
+ *
+ */
+
 #ifndef TEXROW_H
 #define TEXROW_H
 
@@ -53,11 +66,11 @@ public:
 		};
 	};
 
-	// For each row we store a list of one TextEntry and several
-	// MathEntries. (The order is important.)  We only want one text entry
+	// For each row we store a list of one special TextEntry and several
+	// RowEntries. (The order is important.)  We only want one text entry
 	// because we do not want to store every position in the lyx file. On the
-	// other hand we want to record all math cells positions for enough
-	// precision. Usually the count of math cells is easier to handle.
+	// other hand we want to record all math and table cells positions for
+	// enough precision. Usually the count of cells is easier to handle.
 	class RowEntryList : public std::vector<RowEntry> {
 	public:
 		RowEntryList() : std::vector<RowEntry>(), text_entry_(-1) {}
@@ -65,11 +78,18 @@ public:
 		// returns true if the row entry will appear in the row entry list
 		bool addEntry(RowEntry const &);
 
+		// the row entry will appear in the row entry list, but it never counts
+		// as a proper text entry.
+		void forceAddEntry(RowEntry const &);
+
 		// returns the TextEntry or TexRow::text_none if none
 		TextEntry getTextEntry() const;
 
 		// returns the first entry, or TexRow::row_none if none
 		RowEntry entry() const;
+
+		// appends a row
+		void append(RowEntryList const &);
 
 	private:
 		size_t text_entry_;
@@ -79,7 +99,7 @@ public:
 	static bool isNone(RowEntry const &);
 	static const TextEntry text_none;
 	static const RowEntry row_none;
-	
+
 	/// Returns true if TextEntry is devoid of information
 	static bool isNone(TextEntry const &);
 
@@ -118,9 +138,16 @@ public:
 	/// returns true if this entry will appear on the current row
 	bool start(int id, int pos);
 
-	/// Defines a cell and position for the current line
-	/// returns true if this entry will appear on the current row
-	bool startMath(uid_type id, idx_type cell);
+	/// Defines a cell and position for the current line.  Always appear in the
+	/// current row.
+	void startMath(uid_type id, idx_type cell);
+
+	/// Defines the paragraph for the current cell-like inset.  Always appears
+	/// in the current row like a math cell, but is detached from the normal
+	/// text flow. Note: since the cell idx is not recorded it does not work as
+	/// well as for math grids; if we were to do that properly we would need to
+	/// access the id of the parent Tabular inset from the CursorSlice.
+	void forceStart(int id, int pos);
 
 	/// Insert node when line is completed
 	void newline();
@@ -154,6 +181,10 @@ public:
 	
 	/// Returns the number of rows contained
 	int rows() const { return rowlist_.size(); }
+
+	/// appends texrow. the final line of this is merged with the first line of
+	/// texrow.
+	void append(TexRow const & texrow);
 
 	/// for debugging purpose
 	void prepend(docstring_list &) const;

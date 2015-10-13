@@ -29,12 +29,21 @@ using lyx::support::split;
 
 namespace lyx {
 
+
+void otexrowstream::append(docstring const & str, TexRow const & texrow)
+{
+	os_ << str;
+	texrow_.append(texrow);
+}
+
+
 void otexrowstream::put(char_type const & c)
 {
 	os_.put(c);
 	if (c == '\n')
 		texrow_.newline();
 }
+
 
 void otexstream::put(char_type const & c)
 {

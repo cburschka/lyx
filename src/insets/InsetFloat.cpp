@@ -327,12 +327,11 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 
 		OutputParams rp = runparams_in;
 		rp.moving_arg = true;
-		docstring const caption = getCaption(rp);
-		if (!caption.empty()) {
-			os << caption;
-		}
+		getCaption(os, rp);
 		os << '{';
 		// The main argument is the contents of the float. This is not a moving argument.
+		if (!paragraphs().empty())
+			os.texrow().forceStart(paragraphs()[0].id(), 0);
 		rp.moving_arg = false;
 		rp.inFloat = OutputParams::SUBFLOAT;
 		InsetText::latex(os, rp);
@@ -494,28 +493,37 @@ bool InsetFloat::allowsCaptionVariation(std::string const & newtype) const
 
 docstring InsetFloat::getCaption(OutputParams const & runparams) const
 {
+	TexRow texrow(false);
+	odocstringstream ods;
+	otexstream os(ods, texrow);
+	getCaption(os, runparams);
+	return ods.str();
+}
+
+
+void InsetFloat::getCaption(otexstream & os,
+							OutputParams const & runparams) const
+{
 	if (paragraphs().empty())
-		return docstring();
+		return;
 
 	InsetCaption const * ins = getCaptionInset();
 	if (ins == 0)
-		return docstring();
+		return;
 
+	ins->getArgs(os, runparams);
+
+	os << '[';
 	TexRow texrow;
 	odocstringstream ods;
-	otexstream os(ods, texrow);
-	ins->getArgs(os, runparams);
-	ods << '[';
-	odocstringstream odss;
-	otexstream oss(odss, texrow);
+	otexstream oss(ods, texrow);
 	ins->getArgument(oss, runparams);
-	docstring arg = odss.str();
+	docstring arg = ods.str();
 	// Protect ']'
 	if (arg.find(']') != docstring::npos)
 		arg = '{' + arg + '}';
-	ods << arg;
-	ods << ']';
-	return ods.str();
+	os.append(arg, texrow);
+	os << ']';
 }
 
 

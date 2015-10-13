@@ -38,9 +38,15 @@ bool TexRow::RowEntryList::addEntry(RowEntry const & entry)
 		else
 			text_entry_ = size();
 	}
+	forceAddEntry(entry);
+	return true;
+}
+
+
+void TexRow::RowEntryList::forceAddEntry(RowEntry const & entry)
+{
 	if (size() == 0 || !(operator[](size() - 1) == entry))
 		push_back(RowEntry(entry));
-	return true;
 }
 
 
@@ -57,6 +63,14 @@ TexRow::RowEntry TexRow::RowEntryList::entry() const
 	if (0 < size())
 		return operator[](0);
 	return TexRow::row_none;
+}
+
+
+void TexRow::RowEntryList::append(RowEntryList const & row)
+{
+	if (text_entry_ >= size())
+		text_entry_ = row.text_entry_ + size();
+	insert(end(), row.begin(), row.end());
 }
 
 
@@ -130,9 +144,17 @@ bool TexRow::start(int id, int pos)
 }
 
 
-bool TexRow::startMath(uid_type id, idx_type cell)
+void TexRow::forceStart(int id, int pos)
 {
-	return start(mathEntry(id,cell));
+	if (!enabled_)
+		return;
+	return current_row_.forceAddEntry(textEntry(id,pos));
+}
+
+
+void TexRow::startMath(uid_type id, idx_type cell)
+{
+	start(mathEntry(id,cell));
 }
 
 
@@ -159,6 +181,24 @@ void TexRow::finalize()
 		return;
 	newline();
 }
+
+
+void TexRow::append(TexRow const & texrow)
+{
+	if (!enabled_ || !texrow.enabled_)
+		return;
+	RowList::const_iterator it = texrow.rowlist_.begin();
+	RowList::const_iterator const end = texrow.rowlist_.end();
+	if (it == end) {
+		current_row_.append(texrow.current_row_);
+	} else {
+		current_row_.append(*it++);
+		rowlist_.push_back(current_row_);
+		rowlist_.insert(rowlist_.end(), it, end);
+		current_row_ = texrow.current_row_;
+	}
+}
+
 
 
 bool TexRow::getIdFromRow(int row, int & id, int & pos) const
@@ -267,8 +307,8 @@ public:
 	{
 		return row_it_ == row_end_;
 	}
-	
-	
+
+
 	bool operator==(RowListIterator const & a) const
 	{
 		return row_it_ == a.row_it_ && ((atEnd() && a.atEnd()) || it_ == a.it_);
@@ -353,7 +393,7 @@ std::pair<int,int> TexRow::rowFromDocIterator(DocIterator const & dit) const
 				end_offset = 1;
 				break;
 			case -1: {
-				// ...or it is the row preceding the first that matches pos+1 
+				// ...or it is the row preceding the first that matches pos+1
 				if (!end_is_next) {
 					end_is_next = true;
 					if (it.row() != best_end_entry.row())
@@ -406,8 +446,13 @@ std::pair<int,int> TexRow::rowFromCursor(Cursor const & cur) const
 	std::pair<int,int> beg_rows = rowFromDocIterator(beg);
 	if (cur.selection()) {
 		DocIterator end = cur.selectionEnd();
-		if (!cur.selIsMultiCell())
-			end.top().backwardPos();	
+		if (!cur.selIsMultiCell()
+			// backwardPos asserts without the following test, IMO it's not my
+			// duty to check this.
+			&& (end.top().pit() != 0
+				|| end.top().idx() != 0
+				|| end.top().pos() != 0))
+			end.top().backwardPos();
 		std::pair<int,int> end_rows = rowFromDocIterator(end);
 		return std::make_pair(std::min(beg_rows.first, end_rows.first),
 							  std::max(beg_rows.second, end_rows.second));
@@ -460,7 +505,7 @@ LyXErr & operator<<(LyXErr & l, TexRow & texrow)
 		for (int i = 0; i < texrow.rows(); i++) {
 			int id,pos;
 			if (texrow.getIdFromRow(i+1,id,pos) && id>0)
-			l << i+1 << ":" << id << ":" << pos << "\n";
+				l << i+1 << ":" << id << ":" << pos << "\n";
 		}
 	}
 	return l;

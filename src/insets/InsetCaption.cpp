@@ -329,6 +329,8 @@ void InsetCaption::getArgument(otexstream & os,
 	rp.par_end = paragraphs().size();
 
 	// Output the contents of the inset
+	if (!paragraphs().empty())
+		os.texrow().forceStart(paragraphs()[0].id(), 0);
 	latexParagraphs(buffer(), text(), os, rp);
 	runparams.encoding = rp.encoding;
 
