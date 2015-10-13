@@ -257,20 +257,9 @@ void ViewSourceWidget::realUpdateView()
 	} else if (texrow_.get()) {
 		// Use the available position-to-row conversion to highlight
 		// the current selection in the source
-		int beg_row, end_row;
-		{
-			DocIterator beg = bv_->cursor().selectionBegin();
-			DocIterator end = bv_->cursor().selectionEnd();
-			std::pair<int,int> beg_rows = texrow_->rowFromDocIterator(beg);
-			beg_row = beg_rows.first;
-			if (beg != end) {
-				end.backwardChar();
-				std::pair<int,int> end_rows = texrow_->rowFromDocIterator(end);
-				end_row = end_rows.second;
-			} else {
-				end_row = beg_rows.second;
-			}
-		}
+		std::pair<int,int> rows = texrow_->rowFromCursor(bv_->cursor());
+		int const beg_row = rows.first;
+		int const end_row = rows.second;
 
 		QTextCursor c = QTextCursor(viewSourceTV->document());
 

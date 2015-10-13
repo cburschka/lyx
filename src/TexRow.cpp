@@ -13,7 +13,7 @@
 
 #include <config.h>
 
-#include "DocIterator.h"
+#include "Cursor.h"
 #include "Paragraph.h"
 #include "TexRow.h"
 
@@ -397,6 +397,22 @@ std::pair<int,int> TexRow::rowFromDocIterator(DocIterator const & dit) const
 	int const best_end_row = distance(rowlist_.begin(),
 									  best_end_entry.row()) + end_offset;
 	return std::make_pair(best_beg_row, best_end_row);
+}
+
+
+std::pair<int,int> TexRow::rowFromCursor(Cursor const & cur) const
+{
+	DocIterator beg = cur.selectionBegin();
+	std::pair<int,int> beg_rows = rowFromDocIterator(beg);
+	if (cur.selection()) {
+		DocIterator end = cur.selectionEnd();
+		if (!cur.selIsMultiCell())
+			end.top().backwardPos();	
+		std::pair<int,int> end_rows = rowFromDocIterator(end);
+		return std::make_pair(std::min(beg_rows.first, end_rows.first),
+							  std::max(beg_rows.second, end_rows.second));
+	} else
+		return std::make_pair(beg_rows.first, beg_rows.second);
 }
 
 

@@ -23,6 +23,7 @@
 namespace lyx {
 
 class LyXErr;
+class Cursor;
 class CursorSlice;
 class DocIterator;
 class docstring_list;
@@ -145,6 +146,11 @@ public:
 	/// Finds the best pair of rows for dit
 	/// returns (-1,-1) if not found.
 	std::pair<int,int> rowFromDocIterator(DocIterator const & dit) const;
+
+	/// Finds the best pair of rows for cursor, taking the selection into
+	/// account
+	/// returns (-1,-1) if not found.
+	std::pair<int,int> rowFromCursor(Cursor const & dit) const;
 	
 	/// Returns the number of rows contained
 	int rows() const { return rowlist_.size(); }
