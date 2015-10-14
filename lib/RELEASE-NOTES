@@ -104,8 +104,12 @@
 
 !!Changes with respect to external programs and libraries in 2.2:
 
-* LyX is not yet supposed to work with Qt5. It is advised to compile and
-  run LyX against Qt 4.8.x. On Windows Qt 4.8.6 or newer is advised.
+* LyX 2.2.0 and the following 2.2.x releases will continue to work well with
+  Qt 4.8.6 but will also support Qt 5.6, which brings some advantages most
+  notably for users with HiDPI displays. Note that if you compile LyX with a
+  Qt 5 release before 5.6 you are likely to run into several regressions with
+  respect to Qt 4.8.6. See #9215 for a list of bugs related to compiling LyX
+  with different versions of Qt.
 
 * LyX now gives an error if the underlying LaTeX command exited with error.
 
