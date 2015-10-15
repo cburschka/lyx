@@ -362,13 +362,13 @@ int InsetScript::plaintext(odocstringstream & os,
 
 int InsetScript::docbook(odocstream & os, OutputParams const & runparams) const
 {
-	string cmdname;
+	docstring cmdname;
 	switch (params_.type) {
 	case InsetScriptParams::Subscript:
-		cmdname = "subscript";
+		cmdname = from_ascii("subscript");
 		break;
 	case InsetScriptParams::Superscript:
-		cmdname = "superscript";
+		cmdname = from_ascii("superscript");
 		break;
 	}
 	os << '<' + cmdname + '>';

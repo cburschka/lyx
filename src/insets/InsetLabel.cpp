@@ -295,8 +295,8 @@ docstring InsetLabel::xhtml(XHTMLStream & xs, OutputParams const &) const
 	// id here to get the document to validate as XHTML 1.1. This will cause a 
 	// problem with some browsers, though, I'm sure. (Guess which!) So we will
 	// have to figure out what to do about this later. 
-	string const attr = "id=\"" + html::cleanAttr(to_utf8(getParam("name"))) + "\"";
-	xs << html::CompTag("a", attr);
+	docstring const attr = "id=\"" + html::cleanAttr(getParam("name")) + '"';
+	xs << html::CompTag("a", to_utf8(attr));
 	return docstring();
 }
 

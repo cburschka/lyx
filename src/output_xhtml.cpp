@@ -85,53 +85,10 @@ docstring htmlize(docstring const & str, XHTMLStream::EscapeSettings e)
 }
 
 
-string escapeChar(char c, XHTMLStream::EscapeSettings e)
+docstring escapeChar(char c, XHTMLStream::EscapeSettings e)
 {
-	string str;
-	switch (e) {
-	case XHTMLStream::ESCAPE_NONE:
-		str += c;
-		break;
-	case XHTMLStream::ESCAPE_ALL:
-		if (c == '<') {
-			str += "&lt;";
-			break;
-		} else if (c == '>') {
-			str += "&gt;";
-			break;
-		}
-	// fall through
-	case XHTMLStream::ESCAPE_AND:
-		if (c == '&')
-			str += "&amp;";
-		else
-			str	+=c ;
-		break;
-	}
-	return str;
-}
-
-
-// escape what needs escaping
-string htmlize(string const & str, XHTMLStream::EscapeSettings e)
-{
-	ostringstream d;
-	string::const_iterator it = str.begin();
-	string::const_iterator en = str.end();
-	for (; it != en; ++it)
-		d << escapeChar(*it, e);
-	return d.str();
-}
-
-
-string cleanAttr(string const & str)
-{
-	string newname;
-	string::const_iterator it = str.begin();
-	string::const_iterator en = str.end();
-	for (; it != en; ++it)
-		newname += isAlnumASCII(*it) ? *it : '_';
-	return newname;
+	LATTEST(static_cast<unsigned char>(c) < 0x80);
+	return escapeChar(static_cast<char_type>(c), e);
 }
 
 
@@ -150,11 +107,11 @@ docstring cleanAttr(docstring const & str)
 
 docstring StartTag::writeTag() const
 {
-	string output = "<" + tag_;
+	docstring output = '<' + from_utf8(tag_);
 	if (!attr_.empty())
-		output += " " + html::htmlize(attr_, XHTMLStream::ESCAPE_NONE);
+		output += ' ' + html::htmlize(from_utf8(attr_), XHTMLStream::ESCAPE_NONE);
 	output += ">";
-	return from_utf8(output);
+	return output;
 }
 
 
@@ -193,11 +150,11 @@ docstring ParTag::writeTag() const
 
 docstring CompTag::writeTag() const
 {
-	string output = "<" + tag_;
+	docstring output = '<' + from_utf8(tag_);
 	if (!attr_.empty())
-		output += " " + html::htmlize(attr_, XHTMLStream::ESCAPE_NONE);
+		output += ' ' + html::htmlize(from_utf8(attr_), XHTMLStream::ESCAPE_NONE);
 	output += " />";
-	return from_utf8(output);
+	return output;
 }
 
 

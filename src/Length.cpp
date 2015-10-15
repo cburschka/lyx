@@ -75,7 +75,8 @@ docstring const Length::asDocstring() const
 {
 	odocstringstream os;
 	if (unit_ != UNIT_NONE)
-		os << formatFPNumber(val_) << unit_name[unit_]; // setw?
+		os << from_ascii(formatFPNumber(val_))
+		   << from_ascii(unit_name[unit_]); // setw?
 	return os.str();
 }
 

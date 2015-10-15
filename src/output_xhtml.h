@@ -41,8 +41,8 @@ struct StartTag
 	///
 	explicit StartTag(std::string const & tag) : tag_(tag), keepempty_(false) {}
 	///
-	explicit StartTag(std::string const & tag, std::string const & attr, 
-		bool keepempty = false) 
+	explicit StartTag(std::string const & tag, std::string const & attr,
+		bool keepempty = false)
 		: tag_(tag), attr_(attr), keepempty_(keepempty) {}
 	///
 	virtual ~StartTag() {}
@@ -210,10 +210,10 @@ public:
 	/// because they are "blocked" by open non-font tags on the stack.
 	bool closeFontTags();
 	/// call at start of paragraph. sets a mark so we know what tags
-	/// to close at the end. 
+	/// to close at the end.
 	void startParagraph(bool keep_empty);
 	/// call at end of paragraph to clear that mark. note that this
-	/// will also close any tags still open. 
+	/// will also close any tags still open.
 	void endParagraph();
 	///
 	XHTMLStream & operator<<(docstring const &);
@@ -265,11 +265,11 @@ private:
 	void writeError(std::string const &) const;
 	///
 	odocstream & os_;
-	/// 
+	///
 	EscapeSettings escape_;
 	// What we would really like to do here is simply use a
 	// deque<StartTag>. But we want to store both StartTags and
-	// sub-classes thereof on this stack, which means we run into the 
+	// sub-classes thereof on this stack, which means we run into the
 	// so-called polymorphic class problem with the STL. We therefore have
 	// to use a deque<StartTag *>, which leads to the question who will
 	// own these pointers and how they will be deleted, so we use shared
@@ -278,8 +278,8 @@ private:
 	typedef shared_ptr<html::StartTag> TagPtr;
 	typedef std::deque<TagPtr> TagDeque;
 	///
-	template <typename T> 
-	shared_ptr<T> makeTagPtr(T const & tag) 
+	template <typename T>
+	shared_ptr<T> makeTagPtr(T const & tag)
 		{ return shared_ptr<T>(new T(tag)); }
 	///
 	TagDeque pending_tags_;
@@ -305,12 +305,8 @@ docstring htmlize(docstring const & str, XHTMLStream::EscapeSettings e);
 /// cleans \param str for use as an atttribute by replacing
 /// all non-alnum by "_"
 docstring cleanAttr(docstring const & str);
-///
-std::string escapeChar(char c, XHTMLStream::EscapeSettings e);
-/// 
-std::string htmlize(std::string const & str, XHTMLStream::EscapeSettings e);
-/// 
-std::string cleanAttr(std::string const & str);
+/// \p c must be ASCII
+docstring escapeChar(char c, XHTMLStream::EscapeSettings e);
 
 } // namespace html
 } // namespace lyx

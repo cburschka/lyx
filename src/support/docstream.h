@@ -85,7 +85,15 @@ typedef odocstream & (*odocstream_manip)(odocstream &);
 
 /// Helper struct for changing stream encoding
 struct SetEnc {
-	SetEnc(std::string const & e) : encoding(e) {}
+	/**
+	 * It is important that this constructor is explicit.
+	 * Otherwise the attempt to output a std::string to an odocstream
+	 * would compile, but cause a (probably failing) encoding change
+	 * instead of string output (we do not define
+	 * operator<<(odocstream &, std::string) since we want to avoid
+	 * outputting strings with unspecified encoding)
+	 */
+	explicit SetEnc(std::string const & e) : encoding(e) {}
 	std::string encoding;
 };
 

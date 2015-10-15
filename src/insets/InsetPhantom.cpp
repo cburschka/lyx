@@ -359,13 +359,13 @@ int InsetPhantom::plaintext(odocstringstream & os,
 
 int InsetPhantom::docbook(odocstream & os, OutputParams const & runparams) const
 {
-	string cmdname;
+	docstring cmdname;
 	switch (params_.type) {
 	case InsetPhantomParams::Phantom:
 	case InsetPhantomParams::HPhantom:
 	case InsetPhantomParams::VPhantom:
 	default:
-		cmdname = "phantom";
+		cmdname = from_ascii("phantom");
 		break;
 	}
 	os << "<" + cmdname + ">";

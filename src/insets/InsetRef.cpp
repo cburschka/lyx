@@ -244,8 +244,8 @@ docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const & op) const
 	// FIXME What we'd really like to do is to be able to output some
 	// appropriate sort of text here. But to do that, we need to associate
 	// some sort of counter with the label, and we don't have that yet.
-	string const attr = "href=\"#" + html::cleanAttr(to_utf8(ref)) + "\"";
-	xs << html::StartTag("a", attr);
+	docstring const attr = "href=\"#" + html::cleanAttr(ref) + '"';
+	xs << html::StartTag("a", to_utf8(attr));
 	xs << display_string;
 	xs << html::EndTag("a");
 	return docstring();
