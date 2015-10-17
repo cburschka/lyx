@@ -163,7 +163,7 @@ void InsetBox::setButtonLabel()
 	if (btype == Boxed)
 		setFrameColor(lcolor.getFromLaTeXName(params_.framecolor));
 	else
-		setFrameColor(Color_collapsableframe);	
+		setFrameColor(Color_collapsableframe);
 }
 
 
@@ -510,7 +510,7 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 
 	// \framebox and \makebox handle hor_pos their own way
 	// hor_pos is senseless for \mbox and \fbox
-	if (!(params_.use_makebox)
+	if (!params_.use_makebox
 		&& !(btype == Boxed && !params_.inner_box)) {
 			switch (params_.hor_pos) {
 			case 'l':
