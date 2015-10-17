@@ -2249,6 +2249,15 @@ void BufferView::mouseEventDispatch(FuncRequest const & cmd0)
 
 	// Build temporary cursor.
 	Inset * inset = d->text_metrics_[&buffer_.text()].editXY(cur, cmd.x(), cmd.y());
+	if (inset) {
+		// If inset is not editable, cur.pos() might point behind the
+		// inset (depending on cmd.x(), cmd.y()). This is needed for
+		// editing to fix bug 9628, but e.g. the context menu needs a
+		// cursor in front of the inset.
+		if (inset->hasSettings() &&
+		    cur.nextInset() != inset && cur.prevInset() == inset)
+			cur.backwardPos();
+	}
 
 	// Put anchor at the same position.
 	cur.resetAnchor();
