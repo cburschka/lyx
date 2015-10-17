@@ -2,11 +2,11 @@ LyX file-format changes
 -----------------------
 
 Please keep the entries informative enough, i.e. try to indicate what
-changes happened in particular if possible. A good example would be 
-2010-01-10 entry. 
+changes happened in particular if possible. A good example would be
+2010-01-10 entry.
 
-Please also indicate the revision at which your change was committed. 
-This will help later people understand what you did, especially as 
+Please also indicate the revision at which your change was committed.
+This will help later people understand what you did, especially as
 adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 -----------------------
@@ -54,7 +54,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 2015-05-11 Uwe Stöhr <uwestoehr@web.de>
  	* Format incremented to 489: support to set line thickness, box separation
- 	      and shadow size in the box dialog 
+ 	      and shadow size in the box dialog
  	  New box parameters:
  	  - thickness
  	  - separation
@@ -133,7 +133,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 2014-08-25 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 478: support for the LaTeX math commands
 	  \x***arrow
-	  
+
 2014-07-05 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 477
 	  New language swiss german (old spelling):
@@ -216,7 +216,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 2013-02-15 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 462: Support for recent libertine LaTeX fonts
 	  a.) Support Libertine Mono:
-	  \usepackage[scaled=$val]{libertineMono-type1} 
+	  \usepackage[scaled=$val]{libertineMono-type1}
 	   => \font_typewriter libertine-mono
 	  b.) Support Biolinum scaling:
 	  \usepackage[scaled=$val]{biolinum-type1}
@@ -226,7 +226,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	* Format incremented to 461: support for kurier fonts
 	  new supported sansserif fonts "kurier", "kurierl", "kurierc"
 	  and "kurierlc" and the math font "kurier-math"
-	  
+
 2013-02-09 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 460: support for IEEE conference articles
 	  No changes in the file format
@@ -274,7 +274,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 2012-12-09 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 452: Support for beamer block arguments:
 	  \begin{block}<overlay>{title}
-	
+
 	* Format incremented to 451: Native support for beamer action/overlay arguments.
 	  \command<overlay> => \begin_inset Argument 1
 
@@ -283,7 +283,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	  - \usepackage{garamondx} > \font_serif garamondx
 	     - [osf], [osfI] > \font_osf true
 	  - \usepackage[garamondx]{newtxmath} > \font_math garamondx-ntxm
-	  Also (fallback): 
+	  Also (fallback):
 	  - \renewcommand{\sffamily}{ugm} > \font_serif garamondx
 
 2012-11-29 Jürgen Spitzmüller <spitz@lyx.org>
@@ -388,14 +388,14 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	  * "eulervm": use the eulervm package (\usepackage{eulervm}.
 
 2012-09-19 Jürgen Spitzmüller <spitz@lyx.org>
-	* Format incremented to 439 
+	* Format incremented to 439
 	  Support for the MinionPro LaTeX font.
 	  - \usepackage{MinionPro} > \font_roman minionpro
 	  - [osf], [oldstyle], no option > \font_osf true
 	  - [lf], [lining] > \font_osf false
 
 2012-08-23 Jürgen Spitzmüller <spitz@lyx.org>
-	* Format incremented to 438 
+	* Format incremented to 438
 	  Support for some IPA macros that are not unicoded.
 	  (1) tone symbols from tipa's "tone" subpackage:
 	  -- \tone{51} => \IPAChar \tone{51}
@@ -424,7 +424,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	      \end_inset
 
 2012-08-19 Jürgen Spitzmüller <spitz@lyx.org>
-	* Format incremented to 437 
+	* Format incremented to 437
 	  Support for the TeX Gyre LaTeX fonts.
 	  - \usepackage{tgadventor} > \font_sans tgadventor
 	  - \usepackage{tgbonum} > \font_roman tgbonum
@@ -436,19 +436,19 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	  - \usepackage{tgtermes} > \font_roman tgtermes
 
 2012-08-18 Jürgen Spitzmüller <spitz@lyx.org>
-	* Format incremented to 436 
+	* Format incremented to 436
 	  Support for the mathdesign LaTeX fonts.
 	  - \usepackage[mdbch]{mathdesign} > \font_roman md-charter
 	  - \usepackage[mdput]{mathdesign} > \font_roman md-utopia
 	  - \usepackage[mdugm]{mathdesign} > \font_roman md-garamond
 
 2012-08-17 Jürgen Spitzmüller <spitz@lyx.org>
-	* Format incremented to 435 
+	* Format incremented to 435
 	  Support for the txtt LaTeX font.
 	  - \renewcommand{\ttdefault}{txtt} > \font_typewriter txtt
 
 2012-08-17 Jürgen Spitzmüller <spitz@lyx.org>
-	* Format incremented to 434 
+	* Format incremented to 434
 	  Support for the libertine LaTeX font.
 	  - \usepackage{libertine-type1} > \font_roman libertine
 	     - [lf], [lining] > \font_osf false
@@ -459,11 +459,11 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 	     - [osf] > \font_osf true
 
 2012-06-22 Uwe Stöhr <uwestoehr@web.de>
-	* Format incremented to 433 
+	* Format incremented to 433
 	  switch the Armenian language support from ArmTeX to XeTeX/polyglossia
 
 2012-06-08 Uwe Stöhr <uwestoehr@web.de>
-	* Format incremented to 432 
+	* Format incremented to 432
 	  support for the document languages ancientgreek, coptic, divehi, hindi,
 	  kurmanji, lao, marathi, occitan, sanskrit, syriac, tamil, telugu and urdu
 
@@ -592,7 +592,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 2010-11-06 Jean-Marc Lasgouttes <lasgouttes@lyx.org>
 	* Format incremented to 406 (r36163)
-	  Proper ERT behaviour for normal layouts. Paragraph breaks 
+	  Proper ERT behaviour for normal layouts. Paragraph breaks
 	  generate single \n in latex output when ParbreakIsNewline
 	  is true.
 
@@ -616,8 +616,8 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 2010-10-12 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 403 (r35608)
 	  Renaming of flex insets.
-	  Changed 
-	    \begin_inset Flex TAG:Style 
+	  Changed
+	    \begin_inset Flex TAG:Style
 	  to
 	    \begin_inset Flex Style
 	  where TAG is Custom, CharStyle, or Element
@@ -657,7 +657,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 		new commands nameref and Nameref for InsetRef
 
 2010-07-13 Uwe Stöhr <uwestoehr@web.de>
-	* Format incremented to 395 (r34883) 
+	* Format incremented to 395 (r34883)
 	  Support for ISO C-series paper format.
 	  New parameter \papersize cxpaper with (x = 0 - 6).
 
@@ -669,11 +669,11 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 2010-06-07 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 393 (r34619)
 		Renaming in LyX format: \begin_inset OptArg becomes
-	  \begin_inset Argument.	
+	  \begin_inset Argument.
 
 2010-06-07 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 392 (r34615)
-	  Dummy format change permitting Beamer files to be converted to 
+	  Dummy format change permitting Beamer files to be converted to
 		a new, more useful format.
 
 2010-06-05 Edwin Leuven <e.leuven@uva.nl>
@@ -721,7 +721,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 2010-03-28: Vincent van Ravesteijn <vfr@lyx.org>
 	* Format incremented to 380: introduction of InsetPreview.
-	
+
 2010-03-18: Richard Heck <rgheck@lyx.org>
 	* Format incremented to 379: revise format 374
 	  Replace boolean \html_use_mathml with \html_math_output,
@@ -783,7 +783,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 
 2009-07-22 Vincent van Ravesteijn <vfr@lyx.org>
 	* Format incremented to 369: add the author ids to the list of
-	  authors and let the numbering start with 1 in stead of 0.	
+	  authors and let the numbering start with 1 in stead of 0.
 
 2009-07-21 Jürgen Spitzmüller <spitz@lyx.org>, Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 368: allow to use glue lengths for
@@ -813,7 +813,7 @@ adjustments are made to tex2lyx and bugs are fixed in lyx2lyx.
 2009-07-11 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 363: support for horizontal longtable
 	  alignment.
-  
+
 2009-06-11 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 362: support for the applemac encoding.
 
