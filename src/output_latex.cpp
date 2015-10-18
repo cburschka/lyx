@@ -60,7 +60,7 @@ struct OutputState
 		        prev_env_language_(0), open_polyglossia_lang_("")
 	{
 	}
-	int open_encoding_;
+	OpenEncoding open_encoding_;
 	int cjk_inherited_;
 	Language const * prev_env_language_;
 	string open_polyglossia_lang_;
@@ -1240,7 +1240,7 @@ void latexParagraphs(Buffer const & buf,
 	}
 
 	// if "auto end" is switched off, explicitly close the language at the end
-	// but only if the last par is in a babel language
+	// but only if the last par is in a babel or polyglossia language
 	string const lang_end_command = runparams.use_polyglossia ?
 		"\\end{$$lang}" : lyxrc.language_command_end;
 	if (maintext && !lyxrc.language_auto_end && !mainlang.empty() &&
@@ -1259,7 +1259,10 @@ void latexParagraphs(Buffer const & buf,
 	}
 	// Likewise for polyglossia
 	if (maintext && !is_child && state->open_polyglossia_lang_ != "") {
-		os << "\\end{" << state->open_polyglossia_lang_ << "}\n";
+		os << from_utf8(subst(lang_end_command,
+					"$$lang",
+					state->open_polyglossia_lang_))
+		   << '\n';
 		state->open_polyglossia_lang_ = "";
 	}
 
