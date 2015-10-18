@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 497
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/fr/
 \textclass scrbook
 \begin_preamble
 % if pdflatex is used
@@ -70,7 +71,7 @@
 % used for colored tables
 \@ifundefined{textcolor}
  {\usepackage{color}}{}
-\definecolor{darkgreen}{cmyk}{0.5, 0, 1, 0.5}
+\definecolor{vertfonce}{cmyk}{0.5, 0, 1, 0.5}
 \definecolor{lightgrey}{gray}{0.8}
 
 % check for package colortbl
@@ -80,9 +81,6 @@
  {\usepackage{colortbl}
   \setboolean{colortbl}{true}}
  {\setboolean{colortbl}{false}}
-
-% used for colored table rows
-\usepackage[table]{xcolor}
 
 % used to have extra space in table cells
 \@ifundefined{extrarowheight}
@@ -166,9 +164,11 @@
  {\setboolean{diagbox}{false}}
 
 % use normal list environments also in French documents
+\@ifpackageloaded{babel}{%
 \frenchbsetup{StandardLayout}
+}{}
 \end_preamble
-\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames,table
 \use_default_options false
 \begin_modules
 initials
@@ -255,18 +255,21 @@ initials
 
 \begin_layout Title
 Manuel détaillé pour les figures, les tableaux, les flottants, les notes,
- les boîtes et les objets externes de LyX
+ les boîtes et les objets externes de \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Author
-par l'Équipe LyX
+par l'Équipe \SpecialChar LyX
+
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \noindent
 Merci d'envoyer vos commentaires et corrections à la liste de diffusion
- de la documentation de LyX: 
+ de la documentation de \SpecialChar LyX
+: 
 \begin_inset CommandInset href
 LatexCommand href
 name "lyx-docs@lists.lyx.org"
@@ -335,7 +338,7 @@ LatexCommand tableofcontents
 status open
 
 \begin_layout Plain Layout
-Pour pouvoir exporter ce document en PDF, PS ou DVI, les paquetages LaTeX
+Pour pouvoir exporter ce document en PDF, PS ou DVI, les paquetages \SpecialChar LaTeX
  
 \series bold
 arydshln
@@ -365,7 +368,8 @@ Vous pouvez trouver la dernière version au format PDF de ce manuel ici :
 
 
 \series bold
-http://wiki.lyx.org/LyX/DocumentationDevelopment#EmbeddedObjects
+http://wiki.lyx.org/\SpecialChar LyX
+/DocumentationDevelopment#EmbeddedObjects
 \end_layout
 
 \end_inset
@@ -449,7 +453,7 @@ arg   "dialog-show-new-inset graphics"
 
  dans la barre d'outils, ou faites 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Graphique
 \family default
 .
@@ -505,7 +509,8 @@ Figures ! Pivotées
 
 Vous pouvez faire pivoter vos images dans le sens inverse des aiguilles
  d'une montre, en donnant l'angle de rotation et la position du pivot.
- L'image apparaîtra pivotée dans LyX.
+ L'image apparaîtra pivotée dans \SpecialChar LyX
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -569,7 +574,8 @@ fichiers
 \family sans
 Préférences
 \family default
- de LyX.
+ de \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Description
@@ -630,7 +636,8 @@ Options
 \begin_inset space ~
 \end_inset
 
-LaTeX
+\SpecialChar LaTeX
+
 \begin_inset space ~
 \end_inset
 
@@ -638,11 +645,14 @@ et
 \begin_inset space ~
 \end_inset
 
-LyX
+\SpecialChar LyX
+
 \family default
- Avec cet onglet, vous pouvez modifier l'apparence de l'image dans LyX et
- les experts ès-LaTeX pourront fournir des options supplémentaires pour
- LaTeX
+ Avec cet onglet, vous pouvez modifier l'apparence de l'image dans \SpecialChar LyX
+ et les
+ experts ès-\SpecialChar LaTeX
+ pourront fournir des options supplémentaires pour \SpecialChar LaTeX
+
 \begin_inset Newline newline
 \end_inset
 
@@ -652,87 +662,6 @@ Mode brouillon
 \family default
  fait que l'image apparaîtra sur la sortie sous la forme d'un cadre vide
  avec la taille de l'image.
-\begin_inset Newline newline
-\end_inset
-
-L'option 
-\family sans
-Ne
-\begin_inset space ~
-\end_inset
-
-pas
-\begin_inset space ~
-\end_inset
-
-décompresser
-\begin_inset space ~
-\end_inset
-
-à
-\begin_inset space ~
-\end_inset
-
-l'exportation
-\family default
- n'affectera que les graphiques EPS zippés, par exemple 
-\family typewriter
-x.eps.gz
-\family default
-.
- Quand cette option est activée, les images ne sont pas décompressées à
- l'exportation, vu que LaTeX peut les traiter telles-quelles
-\begin_inset Newline newline
-\end_inset
-
-Les graphiques EPS zippés sont utiles pour économiser de la place sur les
- disques quand on utilise PostScript comme format de sortie, voir l'annexe
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:PostScript"
-
-\end_inset
-
-.
- Pour zipper un graphique EPS, utilisez les commandes suivantes dans un
- terminal UNIX ou une console Windows:
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-gzip x.eps
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-zgrep %%Bounding x.eps.gz > x.eps.bb
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-La seconde commande va créer le fichier contenant la description de la boîte
- de délimitation 
-\begin_inset Quotes fld
-\end_inset
-
-
-\family typewriter
-x.eps.bb
-\family default
-
-\begin_inset Quotes frd
-\end_inset
-
- qui est indispensable pour que LaTeX puisse traiter un fichier compressé.
 \begin_inset Newline newline
 \end_inset
 
@@ -809,6 +738,10 @@ reference "sec:Image-Formats"
 
  qui se trouve dans son propre paragraphe, ce dernier étant centré horizontaleme
 nt:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -826,6 +759,10 @@ nt:
 
 \begin_layout Standard
 Et voici la même image mais en mode brouillon:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -898,8 +835,8 @@ arg   "float-insert figure"
 
  de la barre d'outils et le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
-Flottant\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
+Flottant\SpecialChar menuseparator
 Figure
 \family default
  insèrent un flottant avec l'étiquette 
@@ -1077,7 +1014,7 @@ reference "fig:escher"
 \family sans
 Insertion
 \family default
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \family sans
 Étiquette
@@ -1091,7 +1028,7 @@ arg   "label-insert"
  de la barre d'outils.
  On peut alors faire référence à cette étiquette en utilisant le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Référence
 \begin_inset space ~
 \end_inset
@@ -1114,7 +1051,8 @@ la figure ci-dessous
 \begin_inset Quotes frd
 \end_inset
 
-, puisque LaTeX va repositionner la figure dans le document final.
+, puisque \SpecialChar LaTeX
+ va repositionner la figure dans le document final.
  Votre figure risque de ne plus être ci-dessous du tout !
 \begin_inset Newline newline
 \end_inset
@@ -1350,7 +1288,8 @@ reference "cha:Formats-fichiers-graphiques"
 
 , chaque format pour la sortie du document ne va accepter qu'un petit nombre
  de formats d'images.
- Pour s'en sortir LyX utilise le programme 
+ Pour s'en sortir \SpecialChar LyX
+ utilise le programme 
 \family typewriter
 ImageMagick
 \family default
@@ -1902,7 +1841,7 @@ arg   "tabular-insert"
 
  soit 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Tableau
 \family default
 .
@@ -1921,13 +1860,17 @@ Le tableau a implicitement une bordure au dessus et à gauche de chaque case,
  En plus, la rangée supérieure a aussi une bordure en bas, ce qui fait qu'elle
  apparaît séparée du reste du tableau.
  Voici un exemple :
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -2121,7 +2064,7 @@ Plus...
  la ligne dans laquelle le curseur se trouve.
  Le menu contextuel 
 \family sans
-Plus...\SpecialChar \menuseparator
+Plus...\SpecialChar menuseparator
 Paramètres...
 
 \family default
@@ -2194,7 +2137,7 @@ décimal
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Alignements-de-cellules"
+reference "subsec:Alignements-de-cellules"
 
 \end_inset
 
@@ -2209,7 +2152,7 @@ reference "sub:Alignements-de-cellules"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Lignes-multiple-dans-cellule"
+reference "subsec:Lignes-multiple-dans-cellule"
 
 \end_inset
 
@@ -2227,7 +2170,7 @@ Vous pouvez aussi marquer une ou plusieurs cellules d'une ligne comme étant
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Multicolonnes"
+reference "subsec:Multicolonnes"
 
 \end_inset
 
@@ -2238,7 +2181,7 @@ reference "sub:Multicolonnes"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Multi-lignes"
+reference "subsec:Multi-lignes"
 
 \end_inset
 
@@ -2288,8 +2231,9 @@ de
 90°
 \family default
  fait pivoter tout le tableau.
- Ces rotations ne sont pas visibles dans LyX, mais devraient l'être dans
- la sortie finale.
+ Ces rotations ne sont pas visibles dans \SpecialChar LyX
+, mais devraient l'être dans la
+ sortie finale.
  Pour plus d'information voir la section
 \begin_inset space ~
 \end_inset
@@ -2297,7 +2241,7 @@ de
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Rotated-Table-Cells"
+reference "sec:Pivotement-des-cellules"
 
 \end_inset
 
@@ -2335,7 +2279,7 @@ Le paramètre global d'alignement vertical dans la ligne sert pour les tableaux
 Une ligne avec des tableaux alignés de différentes manières: 
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="top">
+<features tabularvalignment="top">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
 <row>
@@ -2385,7 +2329,7 @@ A
  
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -2435,7 +2379,7 @@ A
  
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="bottom">
+<features tabularvalignment="bottom">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
 <row>
@@ -2486,15 +2430,16 @@ A
 \begin_inset Newline newline
 \end_inset
 
-On peut aussi entrer des paramètres LaTeX pour obtenir des mise en formes
- spéciales pour le tableau, voir les sections
+On peut aussi entrer des paramètres \SpecialChar LaTeX
+ pour obtenir des mise en formes spéciales
+ pour le tableau, voir les sections
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Calculs-multicolonnes"
+reference "subsec:Calculs-multicolonnes"
 
 \end_inset
 
@@ -2551,7 +2496,7 @@ Vous pouvez aussi utiliser cet onglet pour ajouter un espacement vertical
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Espacement-lignes"
+reference "subsec:Espacement-lignes"
 
 \end_inset
 
@@ -2615,17 +2560,18 @@ Tableau ! Barre d'outils
 \begin_layout Standard
 La barre d'outils tableau est une alternative à la fenêtre de dialogue qui
  permet de modifier plus rapidement les tableaux.
- Elle apparaît normalement en bas de la fenêtre principale de LyX quand
- le curseur se trouve à l'intérieur d'un tableau.
+ Elle apparaît normalement en bas de la fenêtre principale de \SpecialChar LyX
+ quand le
+ curseur se trouve à l'intérieur d'un tableau.
  Vous pouvez aussi choisir de la faire apparaître de façon permanente grâce
  au menu 
 \family sans
-Visualiser\SpecialChar \menuseparator
+Visualiser\SpecialChar menuseparator
 Barres
 \begin_inset space ~
 \end_inset
 
-d'outils\SpecialChar \menuseparator
+d'outils\SpecialChar menuseparator
 Tableau
 \family default
 .
@@ -2947,7 +2893,7 @@ Tableau ! Menu Édition
 En plus de la fenêtre de dialogue et de la barre d'outils tableau, le menu
  
 \family sans
-Édition\SpecialChar \menuseparator
+Édition\SpecialChar menuseparator
 Tableau
 \family default
  vous permet d'ajouter ou de supprimer les lignes de bordure de la colonne
@@ -3031,7 +2977,7 @@ Un flottant de tableau.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -3149,8 +3095,8 @@ c & d
 \begin_layout Standard
 Les flottants de tableau sont insérés en utilisant le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
-Flottant\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
+Flottant\SpecialChar menuseparator
 Tableau
 \family default
  ou le bouton 
@@ -3197,7 +3143,8 @@ reference "tab:Flottant-de-tableau"
 
 \begin_layout Standard
 On met habituellement la légende au dessus des tableaux, mais cette règle
- n'est malheureusement pas respectée par certaines classes standard de LaTeX.
+ n'est malheureusement pas respectée par certaines classes standard de \SpecialChar LaTeX
+.
  Cela signifie que si vous utilisez un document appartenant aux classes
  
 \family sans
@@ -3217,7 +3164,8 @@ letter
 \family default
  il n'y aura pas d'espace entre la légende et le tableau.
  Pour insérer l'espace nécessaire vous devez ajouter l'option suivante à
- la commande de chargement du paquetage LaTeX 
+ la commande de chargement du paquetage \SpecialChar LaTeX
+ 
 \series bold
 caption
 \series default
@@ -3226,7 +3174,8 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! caption
+Paquetages \SpecialChar LaTeX
+ ! caption
 \end_layout
 
 \end_inset
@@ -3296,7 +3245,7 @@ References@Références ! à des Tableaux
 \family sans
 Insertion
 \family default
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \family sans
 Étiquette
@@ -3310,7 +3259,7 @@ arg   "label-insert"
  de la barre d'outils.
  On peut alors faire référence à cette étiquette en utilisant le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Référence
 \begin_inset space ~
 \end_inset
@@ -3477,7 +3426,7 @@ Légende La ligne courante contient la légende du tableau.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Tableaux-longs-légende"
+reference "subsec:Tableaux-longs-légende"
 
 \end_inset
 
@@ -3487,13 +3436,17 @@ reference "sub:Tableaux-longs-légende"
 \begin_layout Standard
 Vous pouvez aussi préciser une ligne où le tableau devra être coupé.
  Voyez le tableau long qui suit pour voir comment ça marche :
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="69" columns="3">
-<features rotate="0" islongtable="true" longtabularalignment="center">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -5663,7 +5616,7 @@ Voyez la première note grisée de la section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Tableaux-longs-légende"
+reference "subsec:Tableaux-longs-légende"
 
 \end_inset
 
@@ -5679,7 +5632,7 @@ reference "sub:Tableaux-longs-légende"
 Notes de bas de page dans les tableaux longs
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Notes-dans-tableau-long"
+name "subsec:Notes-dans-tableau-long"
 
 \end_inset
 
@@ -5747,7 +5700,8 @@ et
 \backslash
 LTright
 \series default
- en insérant la ligne suivante sous forme de code TeX avant le tableau long
+ en insérant la ligne suivante sous forme de code \SpecialChar TeX
+ avant le tableau long
  concerné :
 \end_layout
 
@@ -5798,7 +5752,8 @@ LTright
 \backslash
 fill
 \series default
-, ce qui dans ce cas correspond à un ressort horizontal dans LyX.
+, ce qui dans ce cas correspond à un ressort horizontal dans \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -5837,7 +5792,7 @@ columnwidth}
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features rotate="0" islongtable="true" longtabularalignment="center">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -6124,7 +6079,7 @@ Voyez la première note grisée de la section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Tableaux-longs-légende"
+reference "subsec:Tableaux-longs-légende"
 
 \end_inset
 
@@ -6150,7 +6105,7 @@ Tableaux longs ! Legendes@Légendes
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Tableaux-longs-légende"
+name "subsec:Tableaux-longs-légende"
 
 \end_inset
 
@@ -6186,7 +6141,7 @@ Voici un petit Tableau long pour voir comment ça marche :
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
-<features rotate="0" islongtable="true" longtabularalignment="center">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -6528,8 +6483,9 @@ Note
 
 2.1 dans la liste des tableaux, si entre les deux il y a deux tableaux longs
  sans légende.
- Pour éviter ce problème, vous pouvez ajouter cette commande en code TeX
- après chaque tableau long sans légende :
+ Pour éviter ce problème, vous pouvez ajouter cette commande en code \SpecialChar TeX
+ après
+ chaque tableau long sans légende :
 \end_layout
 
 \begin_layout Plain Layout
@@ -6596,7 +6552,8 @@ hyperref
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! hyperref
+Paquetages \SpecialChar LaTeX
+ ! hyperref
 \end_layout
 
 \end_inset
@@ -6643,7 +6600,7 @@ Tableaux longs ! Références
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
-<features rotate="0" islongtable="true" longtabularalignment="center">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -6975,7 +6932,8 @@ reference "tab:RefExemple"
 
 \begin_layout Standard
 La mise en forme de la légende peut être ajustée avec celle de toutes les
- autres légendes de votre document en utilisant le paquetage LaTeX 
+ autres légendes de votre document en utilisant le paquetage \SpecialChar LaTeX
+ 
 \series bold
 caption
 \series default
@@ -6984,7 +6942,8 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! caption
+Paquetages \SpecialChar LaTeX
+ ! caption
 \end_layout
 
 \end_inset
@@ -7031,7 +6990,8 @@ LTcapwidth
 
 in.
  Pour la changer, vous pouvez ajouter la commande suivante dans le préambule
- de votre document ou en tant que code TeX directement dans votre document
+ de votre document ou en tant que code \SpecialChar TeX
+ directement dans votre document
  avant le tableau qui doit être affectée.
 \end_layout
 
@@ -7067,7 +7027,7 @@ Les tableaux suivants montrent la différence :
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
-<features rotate="0" islongtable="true" longtabularalignment="center">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -7399,7 +7359,7 @@ LTcapwidth}{5cm}
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="5">
-<features rotate="0" islongtable="true" longtabularalignment="center">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -7763,7 +7723,8 @@ status open
 \series bold
 Note:
 \series default
- Quand on utilise la paquetage LaTeX 
+ Quand on utilise la paquetage \SpecialChar LaTeX
+ 
 \series bold
 caption
 \series default
@@ -7772,7 +7733,8 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! caption
+Paquetages \SpecialChar LaTeX
+ ! caption
 \end_layout
 
 \end_inset
@@ -7798,7 +7760,8 @@ in de large, vous pouvez soit prendre une valeur très légèrement différente,
 \begin_inset space \thinspace{}
 \end_inset
 
-in, soit utiliser la commande LaTeX 
+in, soit utiliser la commande \SpecialChar LaTeX
+ 
 \series bold
 
 \backslash
@@ -7862,13 +7825,17 @@ reference "tab:Légendes-tableau-différentes"
 
  est un exemple de tableau long avec des légendes différentes et où la seconde
  légende ne contient pas le numéro du tableau.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="59" columns="3">
-<features rotate="0" islongtable="true" longtabularalignment="center">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -8096,7 +8063,7 @@ TÉL.
 \begin_inset Text
 
 \begin_layout Plain Layout
-suite page suivante\SpecialChar \ldots{}
+suite page suivante\SpecialChar ldots
 
 \end_layout
 
@@ -9786,10 +9753,12 @@ Tableaux longs ! Calculs
 \end_layout
 
 \begin_layout Standard
-LaTeX calcule la hauteur de chaque page de tableau et leurs sauts de page
- en utilisant des blocs (chunks).
+\SpecialChar LaTeX
+ calcule la hauteur de chaque page de tableau et leurs sauts de page en
+ utilisant des blocs (chunks).
  Ces blocs sont des portions de tableau qui tiennent en une fois dans la
- mémoire de LaTeX.
+ mémoire de \SpecialChar LaTeX
+.
  La valeur implicite est fixée pour des raisons historiques à seulement
  20 lignes de tableau.
  Si vous utilisez des tableaux longs couvrant de nombreuses pages, ceci
@@ -9826,12 +9795,12 @@ Il peut y avoir des problèmes quand un flottant apparaît sur la page où
  commence un tableau long.
  Pour éviter une telle situation, insérez un saut de page (menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Typographie
 \begin_inset space ~
 \end_inset
 
-spéciale\SpecialChar \menuseparator
+spéciale\SpecialChar menuseparator
 Saut de page (vide le tampon)
 \family default
 
@@ -9858,8 +9827,9 @@ Tableaux longs ! Sauts de pages forcés
 \begin_layout Standard
 Implicitement les tableaux ne peuvent être coupés qu'entre deux lignes.
  Si vous avez une cellule avec plusieurs lignes et que vous voulez avoir
- un saut de page à l'intérieur de cette cellule, insérez la commande LaTeX
- de saut de ligne 
+ un saut de page à l'intérieur de cette cellule, insérez la commande \SpecialChar LaTeX
+ de
+ saut de ligne 
 \begin_inset Quotes fld
 \end_inset
 
@@ -9871,7 +9841,8 @@ Implicitement les tableaux ne peuvent être coupés qu'entre deux lignes.
 \begin_inset Quotes frd
 \end_inset
 
- en code TeX à l'endroit de la cellule où vous voulez qu'elle soit coupée.
+ en code \SpecialChar TeX
+ à l'endroit de la cellule où vous voulez qu'elle soit coupée.
  Avant la commande 
 \begin_inset Quotes fld
 \end_inset
@@ -9884,7 +9855,8 @@ Implicitement les tableaux ne peuvent être coupés qu'entre deux lignes.
 \begin_inset Quotes frd
 \end_inset
 
-, vous devez insérer en code TeX, autant de caractères 
+, vous devez insérer en code \SpecialChar TeX
+, autant de caractères 
 \begin_inset Quotes fld
 \end_inset
 
@@ -9902,7 +9874,8 @@ Implicitement les tableaux ne peuvent être coupés qu'entre deux lignes.
 \end_inset
 
  sert à séparer les colonnes d'un tableau.
- Écrivez en code-TeX, après chaque 
+ Écrivez en code-\SpecialChar TeX
+, après chaque 
 \begin_inset Quotes fld
 \end_inset
 
@@ -9942,7 +9915,8 @@ reference "tab:Tableau-saut-de-page"
 
  la cellule qui doit être coupée est dans la deuxième colonne et elle est
  suivie par une autre colonne.
- La commande suivante a donc été insérée en code TeX dans la cellule après
+ La commande suivante a donc été insérée en code \SpecialChar TeX
+ dans la cellule après
  le mot 
 \begin_inset Quotes fld
 \end_inset
@@ -10032,13 +10006,17 @@ parfillskip}{0pt}
 au début de la cellule.
  Cela assure que la portion de la cellule qui va se trouver affichée sur
  la page suivante le sera avec toute la largeur de la cellule.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="38" columns="3">
-<features rotate="0" islongtable="true" lastFootEmpty="true" longtabularalignment="center">
+<features islongtable="true" lastFootEmpty="true" longtabularalignment="center">
 <column alignment="left" valignment="top" width="0cm">
 <column alignment="left" valignment="top" width="3cm">
 <column alignment="center" valignment="top" width="0pt">
@@ -10274,7 +10252,7 @@ TÉL.
 \begin_inset Text
 
 \begin_layout Plain Layout
-suite page suivante\SpecialChar \ldots{}
+suite page suivante\SpecialChar ldots
 
 \end_layout
 
@@ -11308,7 +11286,7 @@ Colonnes et lignes à lignes multiples
 Lignes multiples dans une cellule de tableau
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Lignes-multiple-dans-cellule"
+name "subsec:Lignes-multiple-dans-cellule"
 
 \end_inset
 
@@ -11365,7 +11343,7 @@ Tableau avec des lignes multiples dans une cellule
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="2.5cm">
 <column alignment="center" valignment="middle">
 <column alignment="center" valignment="middle">
@@ -11514,8 +11492,9 @@ ement découpé en plusieurs lignes.
 \end_layout
 
 \begin_layout Standard
-Si vous avez un mot long dans une cellule de largeur fixée, LaTeX ne peut
- pas effectuer de césure si c'est le premier élément de la cellule.
+Si vous avez un mot long dans une cellule de largeur fixée, \SpecialChar LaTeX
+ ne peut pas
+ effectuer de césure si c'est le premier élément de la cellule.
  Vous devez donc insérer quelque chose avant pour qu'il ne soit plus le
  premier élément : Ajoutez un espace horizontal de 0
 \begin_inset space \thinspace{}
@@ -11569,7 +11548,7 @@ Tableau avec et sans césure.
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="2.5cm">
 <column alignment="center" valignment="middle">
 <column alignment="center" valignment="middle">
@@ -11671,7 +11650,7 @@ i
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="2.5cm">
 <column alignment="center" valignment="middle">
 <column alignment="center" valignment="middle">
@@ -11786,7 +11765,7 @@ i
 Multi-colonnes
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Multicolonnes"
+name "subsec:Multicolonnes"
 
 \end_inset
 
@@ -11827,8 +11806,8 @@ arg   "inset-modify tabular multicolumn"
 
  de la barre d'outils tableau, ou le menu 
 \family sans
-Édition\SpecialChar \menuseparator
-Tableau\SpecialChar \menuseparator
+Édition\SpecialChar menuseparator
+Tableau\SpecialChar menuseparator
 Multi-colonnes
 \family default
 , ou encore faites un clic droit sur les cellules sélectionnées et choisissez
@@ -11845,13 +11824,17 @@ Les multi-colonnes ont leurs propres paramètres de cellule.
  de la cellule, cela n'affecte que la cellule multi-colonnes.
  Voici un exemple de tableau avec une cellule multi-colonnes dans la première
  ligne et une cellule sans bordure supérieure dans la dernière ligne :
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
-<features rotate="0" firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
+<features firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="middle">
 <column alignment="center" valignment="top" width="0in">
@@ -11981,7 +11964,7 @@ D
 Calculs avec les multi-colonnes
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Calculs-multicolonnes"
+name "subsec:Calculs-multicolonnes"
 
 \end_inset
 
@@ -11999,8 +11982,9 @@ Multi-colonnes ! Calculs
 \end_layout
 
 \begin_layout Standard
-LyX gère directement les multi-colonnes, mais nous devons faire attention
- à la largeur des cellules couvertes par la cellule multi-colonnes.
+\SpecialChar LyX
+ gère directement les multi-colonnes, mais nous devons faire attention à
+ la largeur des cellules couvertes par la cellule multi-colonnes.
 \end_layout
 
 \begin_layout Standard
@@ -12043,7 +12027,7 @@ Tableau avec multi-colonnes parfaite
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle" special=">{\centering}m{1.25cm-6.2pt}">
 <column alignment="center" valignment="middle">
 <column alignment="center" valignment="top">
@@ -12249,7 +12233,7 @@ Tableau avec multi-colonnes pas parfaite
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="1.25cm">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -12436,7 +12420,8 @@ W_{g\,2}=1.25\,\mathrm{cm}-6.2\,\mathrm{pt}
 \end_layout
 
 \begin_layout Standard
-Pour permettre des calculs avec LaTeX, vous devez charger le paquetage LaTeX
+Pour permettre des calculs avec \SpecialChar LaTeX
+, vous devez charger le paquetage \SpecialChar LaTeX
  
 \series bold
 calc
@@ -12446,7 +12431,8 @@ calc
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! calc
+Paquetages \SpecialChar LaTeX
+ ! calc
 \end_layout
 
 \end_inset
@@ -12463,10 +12449,12 @@ usepackage{calc}
 \end_layout
 
 \begin_layout Standard
-LyX ne permet pas d'effectuer des calculs dans le champ largeur de la fenêtre
+\SpecialChar LyX
+ ne permet pas d'effectuer des calculs dans le champ largeur de la fenêtre
  de dialogue.
- Vous devez donc for mater la colonne en insérant un paramètre LaTeX dans
- la fenêtre de dialogue.
+ Vous devez donc for mater la colonne en insérant un paramètre \SpecialChar LaTeX
+ dans la
+ fenêtre de dialogue.
  Voici un aperçu de ces paramètres :
 \end_layout
 
@@ -12498,8 +12486,9 @@ b{largeur}
 \end_layout
 
 \begin_layout Standard
-En entrant un paramètre LaTeX, tous les réglages de cellule donnés dans
- la fenêtre de dialogue sont ignorés.
+En entrant un paramètre \SpecialChar LaTeX
+, tous les réglages de cellule donnés dans la fenêtre
+ de dialogue sont ignorés.
 \end_layout
 
 \begin_layout Standard
@@ -12511,7 +12500,8 @@ status open
 \series bold
 Note:
 \series default
- À cause d'un bug, LyX affiche quand même les réglages qui ne sont pas pris
+ À cause d'un bug, \SpecialChar LyX
+ affiche quand même les réglages qui ne sont pas pris
  en compte.
 \end_layout
 
@@ -12528,8 +12518,9 @@ Comme le texte doit être centré horizontalement, on ajoute la commande
 centering
 \series default
 .
- Vous pouvez maintenant ajouter le paramètre LaTeX suivant pour la première
- des colonnes recouvertes :
+ Vous pouvez maintenant ajouter le paramètre \SpecialChar LaTeX
+ suivant pour la première des
+ colonnes recouvertes :
 \end_layout
 
 \begin_layout Standard
@@ -12552,9 +12543,11 @@ La commande
 \begin_layout Standard
 Bien que nous ayons choisi un alignement centré pour le texte de la cellule
  multi-colonnes, il est toujours aligné à gauche.
- Cela vient du fait que LyX applique l'alignement seulement à des colonnes
+ Cela vient du fait que \SpecialChar LyX
+ applique l'alignement seulement à des colonnes
  isolées.
- Nous devons donc utiliser le paramètre LaTeX suivant pour la multi-colonnes
+ Nous devons donc utiliser le paramètre \SpecialChar LaTeX
+ suivant pour la multi-colonnes
 \end_layout
 
 \begin_layout Standard
@@ -12569,7 +12562,7 @@ centering}m{2.5cm}
 Multi-lignes
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Multi-lignes"
+name "subsec:Multi-lignes"
 
 \end_inset
 
@@ -12606,8 +12599,8 @@ arg   "inset-modify tabular multirow"
 
  de la barre d'outils tableau, ou le menu 
 \family sans
-Édition\SpecialChar \menuseparator
-Tableau\SpecialChar \menuseparator
+Édition\SpecialChar menuseparator
+Tableau\SpecialChar menuseparator
 Multi-lignes
 \family default
 , ou encore faites un clic droit sur les cellules sélectionnées et choisissez
@@ -12620,13 +12613,17 @@ Multi-lignes
 
 \begin_layout Standard
 Voici un exemple de tableau avec une cellule multi-lignes en première colonne:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -12769,8 +12766,9 @@ dans le préambule du document.
  Après ça, tous les contenus de cellules multi-lignes du document seront
  centrés.
  Si vous ne souhaitez utiliser des contenus centrés que pour quelques tableaux,
- vous pouvez redéfinir la commande en l'insérant sous forme de code TeX
- juste avant le tableau concerné, plutôt que dans le préambule.
+ vous pouvez redéfinir la commande en l'insérant sous forme de code \SpecialChar TeX
+ juste
+ avant le tableau concerné, plutôt que dans le préambule.
  Si le texte doit être aligné à droite, remplacez 
 \series bold
 
@@ -12808,6 +12806,10 @@ cm de large
 \end_inset
 
 :
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -12832,7 +12834,7 @@ raggedleft}
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="3cm">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -12992,6 +12994,10 @@ Ctrl+Entrée
 
 ) mais dans ce cas les limites de cellules ne seront pas respectées comme
  on le voit dans ce tableau :
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -12999,7 +13005,7 @@ Ctrl+Entrée
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="middle" width="2cm">
 <column alignment="center" valignment="top">
 <row>
@@ -13090,7 +13096,8 @@ Pour instruire le lecteur de la signification ds titres de lignes et de
  colonnes dans un tableau, il est pratique de partager le première cellule
  du tableau à l'aide d'une ou deux lignes diagonales.
  Ceci peut être obtenu ne chargeant dans le préambule du document les paquetage
- LaTeX
+ \SpecialChar LaTeX
+
 \series bold
 \lang english
  diagbox
@@ -13101,7 +13108,8 @@ Pour instruire le lecteur de la signification ds titres de lignes et de
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! diagbox
+Paquetages \SpecialChar LaTeX
+ ! diagbox
 \end_layout
 
 \end_inset
@@ -13115,7 +13123,8 @@ Paquetages LaTeX ! diagbox
 diagbox
 \series default
 \lang french
- que l'on peut insérer en mode TeX et qui peut avoir 2 ou 3 arguments:
+ que l'on peut insérer en mode \SpecialChar TeX
+ et qui peut avoir 2 ou 3 arguments:
 \end_layout
 
 \begin_layout Standard
@@ -13165,7 +13174,8 @@ status open
 
 \begin_layout Plain Layout
 La section suivante ne s'affichera que si vous avez installé le paquetage
- LaTeX 
+ \SpecialChar LaTeX
+ 
 \series bold
 diagbox
 \series default
@@ -13206,7 +13216,7 @@ dans la première cellule:
 \lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -13411,6 +13421,10 @@ Pro transparent
 \begin_layout Standard
 La forme à 3 arguments est utile par exemple pour les tableaux croisés de
  sport ou les distances:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -13418,7 +13432,7 @@ La forme à 3 arguments est utile par exemple pour les tableaux croisés de
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -13520,7 +13534,7 @@ Tigres
 \begin_inset Text
 
 \begin_layout Plain Layout
----
+—
 \end_layout
 
 \end_inset
@@ -13567,7 +13581,7 @@ Panthères
 \begin_inset Text
 
 \begin_layout Plain Layout
----
+—
 \end_layout
 
 \end_inset
@@ -13614,7 +13628,7 @@ Faucons
 \begin_inset Text
 
 \begin_layout Plain Layout
----
+—
 \end_layout
 
 \end_inset
@@ -13630,6 +13644,10 @@ Faucons
 \begin_layout Standard
 Pour des tableaux croisés plus grands on peut utiliser des diagonales dans
  2 coins ou plus du tableau comme ici:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -13637,7 +13655,7 @@ Pour des tableaux croisés plus grands on peut utiliser des diagonales dans
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -13783,7 +13801,7 @@ Tigres
 \begin_inset Text
 
 \begin_layout Plain Layout
----
+—
 \end_layout
 
 \end_inset
@@ -13839,7 +13857,7 @@ Panthères
 \begin_inset Text
 
 \begin_layout Plain Layout
----
+—
 \end_layout
 
 \end_inset
@@ -13895,7 +13913,7 @@ Faucons
 \begin_inset Text
 
 \begin_layout Plain Layout
----
+—
 \end_layout
 
 \end_inset
@@ -14128,6 +14146,10 @@ Si aucune direction n'est spécifiée, elle est implicitement NW.
 La largeur nécessaire pour le partage des cellules est calculée automatiquement.
  De ce fait, si vous fixez une largeur de colonne plus petite que nécessaire,
  le contenu de la cellule va déborder:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -14135,7 +14157,7 @@ La largeur nécessaire pour le partage des cellules est calculée automatiquemen
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="3cm">
 <column alignment="center" valignment="top">
 <row>
@@ -14270,7 +14292,8 @@ diagbox
 \lang french
 , il faut donc créer une nouvelle longueur qui pourra être utilisée dans
  la suite.
- Ceci se fait via les commandes en code TeX:
+ Ceci se fait via les commandes en code \SpecialChar TeX
+:
 \end_layout
 
 \begin_layout Standard
@@ -14323,8 +14346,9 @@ tabcolsep}
 \end_layout
 
 \begin_layout Standard
-Pour permettre les calculs en LaTeX, il faut charger dans le préambule du
- document le paquetage 
+Pour permettre les calculs en \SpecialChar LaTeX
+, il faut charger dans le préambule du document
+ le paquetage 
 \series bold
 calc
 \series default
@@ -14333,7 +14357,8 @@ calc
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! calc
+Paquetages \SpecialChar LaTeX
+ ! calc
 \end_layout
 
 \end_inset
@@ -14357,6 +14382,10 @@ diagtest]{A}{B}
 
 \begin_layout Standard
 dans la première cellule:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -14364,7 +14393,7 @@ dans la première cellule:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="4cm">
 <column alignment="center" valignment="top">
 <row>
@@ -14454,6 +14483,10 @@ Vert parfait
 Noter que la cellule partagée doit être la plus large de la colonne, sinon
  la longueur de la diagonale ne peut pas être calculée correctement comme
  dans ce tableau:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -14461,7 +14494,7 @@ Noter que la cellule partagée doit être la plus large de la colonne, sinon
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
 <row>
@@ -14566,6 +14599,10 @@ diagbox
 tabcolsep puisque la largeur de cellule est maintenant la largeur de la
  colonne.
  Ici une largeur de 3cm est utilisée:
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -14573,7 +14610,7 @@ tabcolsep puisque la largeur de cellule est maintenant la largeur de la
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
 <row>
@@ -14714,6 +14751,10 @@ Couper les lignes via Ctrl+Entrée n'est possible que pour des colonnes de
 \end_inset
 
 .
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -14721,7 +14762,7 @@ Couper les lignes via Ctrl+Entrée n'est possible que pour des colonnes de
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -14853,7 +14894,8 @@ else
 status open
 
 \begin_layout Plain Layout
-Ce qui suit sera affiché si le paquetage LaTeX 
+Ce qui suit sera affiché si le paquetage \SpecialChar LaTeX
+ 
 \series bold
 diagbox
 \series default
@@ -14866,7 +14908,8 @@ diagbox
 \end_layout
 
 \begin_layout Standard
-Vous devez installer le paquetage LaTeX 
+Vous devez installer le paquetage \SpecialChar LaTeX
+ 
 \series bold
 diagbox
 \series default
@@ -14890,7 +14933,8 @@ fi
 \end_layout
 
 \begin_layout Standard
-Pour en savoir plus sur le paquetage LaTeX 
+Pour en savoir plus sur le paquetage \SpecialChar LaTeX
+ 
 \series bold
 \lang english
 diagbox
@@ -15006,7 +15050,7 @@ Exemple de tableau formel
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="4">
-<features rotate="0" booktabs="true" tabularvalignment="middle">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -15401,7 +15445,7 @@ tableau
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Espacement-lignes"
+reference "subsec:Espacement-lignes"
 
 \end_inset
 
@@ -15497,7 +15541,8 @@ reference "cha:Unités-de-longueur"
 \begin_layout Standard
 On peut aussi créer des lignes qui ne font pas toute la largeur du tableau
  en mettant une ligne pour une cellule multi-colonnes.
- LyX va utiliser en interne la commande 
+ \SpecialChar LyX
+ va utiliser en interne la commande 
 \series bold
 
 \backslash
@@ -15522,15 +15567,18 @@ Les options de la commande
 \backslash
 cmidrule
 \series default
- ne sont pas actuellement gérées par LyX, vous devez donc utiliser du code
- TeX pour pouvoir les utiliser.
+ ne sont pas actuellement gérées par \SpecialChar LyX
+, vous devez donc utiliser du code
+ \SpecialChar TeX
+ pour pouvoir les utiliser.
  On peut créer manuellement des lignes 
 \series bold
 
 \backslash
 mitrales
 \series default
- en insérant la commande en code TeX comme le premier élément de la première
+ en insérant la commande en code \SpecialChar TeX
+ comme le premier élément de la première
  cellule de la ligne.
  La ligne est alors affichée dans la sortie imprimée au dessus de la ligne
  en question.
@@ -15667,7 +15715,8 @@ reference "tab:Tableau-booktabs-special"
 \end_inset
 
 .
- On obtient ce résultat en utilisant la commande suivante en code TeX
+ On obtient ce résultat en utilisant la commande suivante en code \SpecialChar TeX
+
 \end_layout
 
 \begin_layout Standard
@@ -15746,7 +15795,8 @@ specialrule{largeur}{espace au dessus}{espace en dessous}
 
 \begin_layout Standard
 Pour plus d'informations sur ces spécialités, nous vous renvoyons au manuel
- du paquetage LaTeX 
+ du paquetage \SpecialChar LaTeX
+ 
 \series bold
 booktabs
 \series default
@@ -15762,7 +15812,8 @@ key "booktabs"
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! booktabs
+Paquetages \SpecialChar LaTeX
+ ! booktabs
 \end_layout
 
 \end_inset
@@ -15799,7 +15850,7 @@ Tableau formel spécial
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="4">
-<features rotate="0" booktabs="true" tabularvalignment="middle">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -16282,12 +16333,17 @@ width "15col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -16414,12 +16470,17 @@ width "15col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -16546,12 +16607,17 @@ width "15col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -16667,12 +16733,17 @@ width "15col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -16799,12 +16870,17 @@ width "15col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -16935,7 +17011,7 @@ Les boîtes élévatrices (raiseboxes) sont décrites dans la section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Alignement-Vertical"
+reference "subsec:Alignement-Vertical"
 
 \end_inset
 
@@ -16946,7 +17022,8 @@ reference "sub:Alignement-Vertical"
 
 .
  Dans l'exemple précédent, le deuxième tableau de la première ligne est
- aligné en utilisant la commande en code TeX suivante 
+ aligné en utilisant la commande en code \SpecialChar TeX
+ suivante 
 \end_layout
 
 \begin_layout Standard
@@ -16961,7 +17038,8 @@ baselineskip}{
 
 \begin_layout Standard
 placée juste avant la boîte minipage.
- Après la boîte on insère l'accolade fermante en code TeX.
+ Après la boîte on insère l'accolade fermante en code \SpecialChar TeX
+.
  Pour le deuxième tableau de la dernière ligne, la commande 
 \end_layout
 
@@ -17093,7 +17171,7 @@ Tableau sans colortbl
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -17218,7 +17296,7 @@ i
 Si vous voulez seulement avoir du texte en couleur, sélectionnez les cellules
  et choisissez une couleur dans le menu 
 \family sans
-Édition\SpecialChar \menuseparator
+Édition\SpecialChar menuseparator
 Style
 \begin_inset space ~
 \end_inset
@@ -17242,7 +17320,8 @@ reference "tab:Tableau-coloré-sans-colortbl"
 \end_inset
 
 .
- Dans tous les autres cas vous aurez à utiliser le paquetage LaTeX 
+ Dans tous les autres cas vous aurez à utiliser le paquetage \SpecialChar LaTeX
+ 
 \series bold
 colortbl
 \series default
@@ -17251,7 +17330,8 @@ colortbl
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! colortbl
+Paquetages \SpecialChar LaTeX
+ ! colortbl
 \end_layout
 
 \end_inset
@@ -17278,7 +17358,8 @@ status open
 
 \begin_layout Plain Layout
 La section qui suit ne sera affichée que si vous avez installé le paquetage
- LaTeX 
+ \SpecialChar LaTeX
+ 
 \series bold
 colortbl
 \series default
@@ -17335,7 +17416,7 @@ columncolor{nom de couleur}
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Calculs-multicolonnes"
+reference "subsec:Calculs-multicolonnes"
 
 \end_inset
 
@@ -17569,14 +17650,15 @@ cellcolor{nom de la couleur}
 \end_layout
 
 \begin_layout Standard
-Les deux commandes sont insérées au début d'une cellule comme du code TeX.
+Les deux commandes sont insérées au début d'une cellule comme du code \SpecialChar TeX
+.
 \end_layout
 
 \begin_layout Standard
 Pour colorer de caractères dans un tableau, sélectionnez les cellules et
  choisissez une couleur dans le menu 
 \family sans
-Édition\SpecialChar \menuseparator
+Édition\SpecialChar menuseparator
 Style
 \begin_inset space ~
 \end_inset
@@ -17588,8 +17670,11 @@ de
 Texte
 \family default
 .
- Si une cellule contient du code TeX, faites bien attention à ne colorer
- que le texte, sinon le code TeX coloré provoquera des erreurs LaTeX.
+ Si une cellule contient du code \SpecialChar TeX
+, faites bien attention à ne colorer que
+ le texte, sinon le code \SpecialChar TeX
+ coloré provoquera des erreurs \SpecialChar LaTeX
+.
 \end_layout
 
 \begin_layout Standard
@@ -17648,8 +17733,10 @@ centering}c
 \end_layout
 
 \begin_layout Standard
-en code TeX pour cette colonne.
- La première ligne doit être bleue clair, d'où la commande en code TeX
+en code \SpecialChar TeX
+ pour cette colonne.
+ La première ligne doit être bleue clair, d'où la commande en code \SpecialChar TeX
+
 \end_layout
 
 \begin_layout Standard
@@ -17667,7 +17754,8 @@ qui est insérée dans la première cellule de cette ligne.
 \series bold
  
 \series default
-en insérant en code TeX la commande
+en insérant en code \SpecialChar TeX
+ la commande
 \end_layout
 
 \begin_layout Standard
@@ -17681,7 +17769,7 @@ cellcolor{Maroon}
 \begin_layout Standard
 Les caractères peuvent maintenant être colorés en utilisant le menu 
 \family sans
-Édition\SpecialChar \menuseparator
+Édition\SpecialChar menuseparator
 Style
 \begin_inset space ~
 \end_inset
@@ -17738,8 +17826,8 @@ Tableau avec colortbl
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" special=">{\columncolor{darkgreen}\centering}c">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt" special=">{\columncolor{vertfonce}\centering}c">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -17973,7 +18061,8 @@ xcolor
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! xcolor
+Paquetages \SpecialChar LaTeX
+ ! xcolor
 \begin_inset ERT
 status collapsed
 
@@ -18016,7 +18105,8 @@ colortbl
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! colortbl
+Paquetages \SpecialChar LaTeX
+ ! colortbl
 \end_layout
 
 \end_inset
@@ -18025,7 +18115,8 @@ Paquetages LaTeX ! colortbl
 \series bold
  colortbl
 \series default
- existe dans votre distribution LaTeX, sinon vous aurez des erreurs.
+ existe dans votre distribution \SpecialChar LaTeX
+, sinon vous aurez des erreurs.
 \end_layout
 
 \begin_layout Standard
@@ -18047,7 +18138,8 @@ status open
 
 \begin_layout Plain Layout
 La section qui suit ne sera affichée que si vous avez installé le paquetage
- LaTeX 
+ \SpecialChar LaTeX
+ 
 \series bold
 colortbl
 \series default
@@ -18073,7 +18165,8 @@ rowcolors[commandes]{numéro de ligne}{couleur ligne impaire}{couleur ligne
 \end_layout
 
 \begin_layout Standard
-insérée soit dans le préambule du document, soit en code TeX avant le premier
+insérée soit dans le préambule du document, soit en code \SpecialChar TeX
+ avant le premier
  tableau nécessitant la coloration alternative des lignes.
  
 \series bold
@@ -18217,7 +18310,7 @@ Tableau avec une colonne sur deux en gris clair.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -18401,7 +18494,7 @@ Tableau avec une colonne sur deux en cyan et avec un filet entre chaque
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="0pt">
@@ -18657,7 +18750,7 @@ Comme c'est décrit dans la section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Epaisseur-filets"
+reference "subsec:Epaisseur-filets"
 
 \end_inset
 
@@ -18701,7 +18794,7 @@ Pour colorer les filets verticaux, par exemple en vert, créez le format
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Formats-personnalisés"
+reference "subsec:Formats-personnalisés"
 
 \end_inset
 
@@ -18732,7 +18825,8 @@ reference "tab:Tableau-filets-verticaux-colorés"
 
 \end_inset
 
- le paramètre LaTeX
+ le paramètre \SpecialChar LaTeX
+
 \series bold
  WcW
 \series default
@@ -18776,7 +18870,7 @@ Tableau avec filets verticaux colorés
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" special="Wc">
 <column alignment="center" valignment="top" special="Wc">
 <column alignment="center" valignment="top" special="WcW">
@@ -18894,8 +18988,9 @@ reference "tab:Tableau-filet-horizontaux-colorés"
 
 \end_inset
 
-, insérez les commandes suivantes en code TeX juste avant le tableau ou
- le flottant de tableau :
+, insérez les commandes suivantes en code \SpecialChar TeX
+ juste avant le tableau ou le
+ flottant de tableau :
 \end_layout
 
 \begin_layout Standard
@@ -19009,7 +19104,7 @@ Tableau avec filets horizontaux colorés
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -19114,7 +19209,8 @@ sd
 
 \begin_layout Standard
 Pour revenir à la couleur noire implicite, insérez la commande suivante
- en code TeX, juste après le tableau ou le flottant de tableau :
+ en code \SpecialChar TeX
+, juste après le tableau ou le flottant de tableau :
 \end_layout
 
 \begin_layout Standard
@@ -19173,7 +19269,7 @@ Tableau avec filets horizontaux et verticaux colorés
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" special="Wc">
 <column alignment="center" valignment="top" special="Wc">
 <column alignment="center" valignment="top" special="WcW">
@@ -19318,7 +19414,7 @@ arrayrulewidth}{0.4pt}
 Pivotement des cellules
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Rotated-Table-Cells"
+name "sec:Pivotement-des-cellules"
 
 \end_inset
 
@@ -19370,7 +19466,7 @@ Le tableau
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-with-rotated-multi"
+reference "tab:Tableau-incluant-des"
 
 \end_inset
 
@@ -19382,8 +19478,6 @@ reference "tab:Table-with-rotated-multi"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float table
 placement h
 wide false
@@ -19391,21 +19485,15 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-with-rotated"
+name "tab:Tableau-incluant-des"
 
 \end_inset
 
-
-\lang french
 Tableau incluant des cellules pivotées dans la première ligne.
 \end_layout
 
@@ -19419,7 +19507,7 @@ Tableau incluant des cellules pivotées dans la première ligne.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -19494,8 +19582,6 @@ plats
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
@@ -19522,7 +19608,7 @@ arg   "newline-insert newline"
 Si vous voulez faire pivoter des cellules avec des ruptures de ligne, il
  faut encapsuler le contenu de la cellule dans une minipage ou une parbox.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Pour en savoir plus sur ces boîtes, voir les sections
@@ -19557,7 +19643,7 @@ reference "sec:Parboxes"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-with-rotated-multi"
+reference "tab:Tableau-incluant-une"
 
 \end_inset
 
@@ -19570,8 +19656,6 @@ cm.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float table
 placement h
 wide false
@@ -19579,21 +19663,15 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-with-rotated-multi"
+name "tab:Tableau-incluant-une"
 
 \end_inset
 
-
-\lang french
 Tableau incluant une cellule multi-lignes pivotée.
 \end_layout
 
@@ -19605,11 +19683,9 @@ Tableau incluant une cellule multi-lignes pivotée.
 \begin_layout Plain Layout
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top">
@@ -19618,8 +19694,6 @@ Tableau incluant une cellule multi-lignes pivotée.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 a
 \end_layout
 
@@ -19629,8 +19703,6 @@ a
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -19642,6 +19714,11 @@ width "3cm"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -19663,8 +19740,6 @@ avec saut de ligne
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 e
 \end_layout
 
@@ -19676,8 +19751,6 @@ e
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 b
 \end_layout
 
@@ -19687,8 +19760,6 @@ b
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 c
 \end_layout
 
@@ -19698,8 +19769,6 @@ c
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 d
 \end_layout
 
@@ -19747,7 +19816,8 @@ La largeur du tableau
 \end_inset
 
  (que le contenu est autorisé à occuper), plus deux fois la largeur de la
- séparation entre le contenu de la colonne et sa bordure (la longueur LaTeX
+ séparation entre le contenu de la colonne et sa bordure (la longueur \SpecialChar LaTeX
+
 \series bold
  
 \backslash
@@ -19757,7 +19827,8 @@ tabcolsep
 \begin_inset space \thinspace{}
 \end_inset
 
-pt), plus la largeur du filet de bordure (la longueur LaTeX 
+pt), plus la largeur du filet de bordure (la longueur \SpecialChar LaTeX
+ 
 \series bold
 
 \backslash
@@ -19790,7 +19861,8 @@ L_{\mathrm{tableau}}=n\left(L_{\mathrm{colonne}}+2\backslash\mbox{tabcolsep}+\ba
 \begin_layout Standard
 La largeur disponible pour placer un tableau est la distance entre les marges
  de la page ou la largeur de la colonne de texte (pour un document présenté
- sur 2 colonnes), c'est-à-dire la longueur LaTeX 
+ sur 2 colonnes), c'est-à-dire la longueur \SpecialChar LaTeX
+ 
 \series bold
 
 \backslash
@@ -19815,7 +19887,8 @@ columnwidth,
 \end_layout
 
 \begin_layout Standard
-Pour pouvoir faire des calculs, il faut charger le paquetage LaTeX 
+Pour pouvoir faire des calculs, il faut charger le paquetage \SpecialChar LaTeX
+ 
 \series bold
 calc
 \series default
@@ -19824,7 +19897,8 @@ calc
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! calc
+Paquetages \SpecialChar LaTeX
+ ! calc
 \end_layout
 
 \end_inset
@@ -19833,7 +19907,8 @@ Paquetages LaTeX ! calc
  Pour fixer la largeur d'une colonne dans la fenêtre de dialogue du tableau,
  il faut utiliser le champ
 \family sans
- Argument LaTeX
+ Argument \SpecialChar LaTeX
+
 \family default
 .
  Le principe des commandes qui peuvent être saisies dans ce champ est celui
@@ -19844,7 +19919,7 @@ Paquetages LaTeX ! calc
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Calculs-multicolonnes"
+reference "subsec:Calculs-multicolonnes"
 
 \end_inset
 
@@ -19926,7 +20001,7 @@ est utilisée pour les plus étroites:
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="20col%" special=">{\centering}p{(1\columnwidth-62.4pt)/\real{4.5}}">
 <column alignment="center" valignment="top" width="0pt" special=">{\centering}p{(1\columnwidth-62.4pt)/\real{4.5}*\real{0.75}}">
 <column alignment="center" valignment="top" width="20col%" special=">{\centering}p{(1\columnwidth-62.4pt)/\real{4.5}}">
@@ -20061,7 +20136,7 @@ Personnalisation des tableaux
 Espacement des lignes
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Espacement-lignes"
+name "subsec:Espacement-lignes"
 
 \end_inset
 
@@ -20131,7 +20206,8 @@ reference "sec:Tableaux-Formels"
 
 \end_inset
 
- LyX va insérer implicitement un espace de 0.5
+ \SpecialChar LyX
+ va insérer implicitement un espace de 0.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -20157,7 +20233,7 @@ em.
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="1">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -20231,7 +20307,8 @@ de
 \end_inset
 
 ligne va ajouter de l'espace sous les caractères de la ligne.
- Si le tableau est un tableau formel LyX va insérer implicitement un espace
+ Si le tableau est un tableau formel \SpecialChar LyX
+ va insérer implicitement un espace
  de 0.5
 \begin_inset space \thinspace{}
 \end_inset
@@ -20253,7 +20330,8 @@ les
 \end_inset
 
 lignes ajoute l'espace entre la ligne courante et la ligne suivante.
- Si le tableau est un tableau formel LyX va insérer implicitement un espace
+ Si le tableau est un tableau formel \SpecialChar LyX
+ va insérer implicitement un espace
  de 0.5
 \begin_inset space \thinspace{}
 \end_inset
@@ -20280,7 +20358,7 @@ em.
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="1">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -20415,7 +20493,8 @@ Mais ceci présente le défaut que le texte des cellules de tableau n'est
 \series bold
 array 
 \series default
-sera chargé automatiquement par LyX quand vous utilisez des formats de tableaux
+sera chargé automatiquement par \SpecialChar LyX
+ quand vous utilisez des formats de tableaux
  auto-définis.
  C'est pour éviter qu'il soit chargé deux fois que l'on utilise la commande
  
@@ -20440,7 +20519,8 @@ Si vous utilisez des polices de taille plus grande que la taille normale,
 \backslash
 strut
 \series default
- en code TeX au debut d'une ligne du tableau.
+ en code \SpecialChar TeX
+ au debut d'une ligne du tableau.
  Le tableau
 \begin_inset space ~
 \end_inset
@@ -20508,7 +20588,7 @@ Tableau normal.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="1">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -20628,7 +20708,7 @@ strut
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="1">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <row>
 <cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -20800,7 +20880,7 @@ Huger
 Alignements de cellules spéciaux
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Alignements-de-cellules"
+name "subsec:Alignements-de-cellules"
 
 \end_inset
 
@@ -20881,7 +20961,7 @@ Les cellules d'une colonnes sont centrées sur le séparateur décimal.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="1">
-<features rotate="0" booktabs="true" tabularvalignment="middle">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="decimal" decimal_point="," valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
@@ -20968,7 +21048,7 @@ Les cellules d'une colonnes sont centrées sur les opérateurs.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" booktabs="true" tabularvalignment="middle">
+<features booktabs="true" tabularvalignment="middle">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt" special="@{}l">
 <row>
@@ -21105,8 +21185,8 @@ reference "tab:Tableau-centré-sur-séparateur-2"
  Un petit espace a été ajouté au début de toutes les cellules de la deuxième
  colonne pour obtenir l'espace que l'on a d'habitude autour d'un opérateur.
  Pour éviter l'espace qui est normalement placé entre deux colonnes d'un
- tableau, le paramètre LaTeX suivant a été utilisé pour la deuxième colonne
- :
+ tableau, le paramètre \SpecialChar LaTeX
+ suivant a été utilisé pour la deuxième colonne :
 \end_layout
 
 \begin_layout Standard
@@ -21171,7 +21251,7 @@ Plusieurs exemples d'alignement de cellules.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="6">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top">
 <column alignment="left" valignment="top" special="@{}l">
 <column alignment="right" valignment="top">
@@ -21467,7 +21547,7 @@ cm
 Formats de cellule et de colonne personnalisés
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Formats-personnalisés"
+name "subsec:Formats-personnalisés"
 
 \end_inset
 
@@ -21504,7 +21584,7 @@ reference "sec:Table-Width-Calculation"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Calculs-multicolonnes"
+reference "subsec:Calculs-multicolonnes"
 
 \end_inset
 
@@ -21592,7 +21672,7 @@ hspace{0pt}
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Lignes-multiple-dans-cellule"
+reference "subsec:Lignes-multiple-dans-cellule"
 
 \end_inset
 
@@ -21607,8 +21687,9 @@ M{width}
 \end_layout
 
 \begin_layout Standard
-comme paramètre LaTeX dans la fenêtre de dialogue de tableau pour créer
- une multi-colonnes.
+comme paramètre \SpecialChar LaTeX
+ dans la fenêtre de dialogue de tableau pour créer une multi-col
+onnes.
 \end_layout
 
 \begin_layout Standard
@@ -21684,7 +21765,8 @@ S{largeur de la cellule multi-colonnes}{nombre de colonnes couvertes}
 \end_layout
 
 \begin_layout Standard
-comme paramètre LaTeX de la colonne.
+comme paramètre \SpecialChar LaTeX
+ de la colonne.
 \end_layout
 
 \begin_layout Standard
@@ -21731,7 +21813,8 @@ K{nom de couleur}
 \end_layout
 
 \begin_layout Standard
-comme paramètre LaTeX.
+comme paramètre \SpecialChar LaTeX
+.
 \end_layout
 
 \begin_layout Standard
@@ -21753,7 +21836,8 @@ reference "tab:Tableau-formats-personnalisés"
 
 \end_inset
 
- utilisez les paramètres LaTeX
+ utilisez les paramètres \SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Standard
@@ -21815,7 +21899,7 @@ Tableau utilisant des formats personnalisés
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="2.5cm" special="M{2.5cm}">
 <column alignment="center" valignment="middle" special="S{2.5cm}{2}">
 <column alignment="center" valignment="middle">
@@ -21950,7 +22034,7 @@ k
 Épaisseur des filets
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Epaisseur-filets"
+name "subsec:Epaisseur-filets"
 
 \end_inset
 
@@ -22005,7 +22089,8 @@ arrayrulewidth}{1.5pt}
 \end_layout
 
 \begin_layout Standard
-en code TeX avant le tableau ou le flottant de tableau.
+en code \SpecialChar TeX
+ avant le tableau ou le flottant de tableau.
  La nouvelle épaisseur de filet reste valable pour tous les tableaux qui
  suivent.
  pour revenir aux valeurs implicites, mettez 
@@ -22018,7 +22103,8 @@ arrayrulewidth
 \begin_inset space \thinspace{}
 \end_inset
 
-pt en utilisant du code LaTeX après le tableau ou le flottant de tableau.
+pt en utilisant du code \SpecialChar LaTeX
+ après le tableau ou le flottant de tableau.
 \end_layout
 
 \begin_layout Standard
@@ -22068,7 +22154,7 @@ pt
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -22205,7 +22291,8 @@ reference "tab:Tableau-filets-horizontaux-1.5pt"
 
 \end_inset
 
-, insérez les commandes suivantes en code TeX avant le tableau ou le flottant
+, insérez les commandes suivantes en code \SpecialChar TeX
+ avant le tableau ou le flottant
  de tableau :
 \end_layout
 
@@ -22253,7 +22340,8 @@ arrayrulewidth 0.4pt}}
 
 \begin_layout Standard
 Pour revenir à l'épaisseur de filet implicite, insérez les commandes suivantes
- en code TeX après le tableau ou le flottant de tableau :
+ en code \SpecialChar TeX
+ après le tableau ou le flottant de tableau :
 \end_layout
 
 \begin_layout Standard
@@ -22350,7 +22438,7 @@ pt
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -22486,7 +22574,7 @@ pt, créez le format de colonne suivant dans le préambule, en suivant la
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Formats-personnalisés"
+reference "subsec:Formats-personnalisés"
 
 \end_inset
 
@@ -22515,7 +22603,8 @@ reference "tab:Tableau-filets-verticaux-1.5pt"
 
 \end_inset
 
- le paramètre LaTeX 
+ le paramètre \SpecialChar LaTeX
+ 
 \end_layout
 
 \begin_layout Standard
@@ -22570,7 +22659,7 @@ pt
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" special="Vc">
 <column alignment="center" valignment="top" special="Vc">
 <column alignment="center" valignment="top" special="VcV">
@@ -22706,7 +22795,8 @@ status open
 
 \begin_layout Plain Layout
 La section suivante ne s'affichera que si vous avez installé le paquetage
- LaTeX 
+ \SpecialChar LaTeX
+ 
 \series bold
 arydshln
 \series default
@@ -22747,7 +22837,7 @@ Tableau avec des filets à traits interrompus
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top" special=":c">
@@ -23025,9 +23115,12 @@ x
 \end_layout
 
 \begin_layout Standard
-LyX ne gère pas de façon native les filets à lignes interrompues, vous devez
- donc employer du code TeX.
- Mais avant il faut charger le paquetage LaTeX 
+\SpecialChar LyX
+ ne gère pas de façon native les filets à lignes interrompues, vous devez
+ donc employer du code \SpecialChar TeX
+.
+ Mais avant il faut charger le paquetage \SpecialChar LaTeX
+ 
 \series bold
 arydshln
 \series default
@@ -23036,7 +23129,8 @@ arydshln
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! arydshln
+Paquetages \SpecialChar LaTeX
+ ! arydshln
 \end_layout
 
 \end_inset
@@ -23062,8 +23156,9 @@ Pour faire un filet vertical avec un trait interrompu, mettez deux points
 \begin_inset Quotes frd
 \end_inset
 
- avec le caractère décrivant l'alignement horizontal comme paramètre LaTeX
- dans la fenêtre de dialogue de paramètre du tableau.
+ avec le caractère décrivant l'alignement horizontal comme paramètre \SpecialChar LaTeX
+ dans
+ la fenêtre de dialogue de paramètre du tableau.
 \end_layout
 
 \begin_layout Standard
@@ -23079,8 +23174,8 @@ hdashline
 \end_layout
 
 \begin_layout Standard
-en code TeX comme premier élément de la première cellule de la ligne de
- tableau.
+en code \SpecialChar TeX
+ comme premier élément de la première cellule de la ligne de tableau.
 \end_layout
 
 \begin_layout Standard
@@ -23099,7 +23194,8 @@ numéros de colonnes}
 \end_layout
 
 \begin_layout Standard
-en code TeX comme premier élément de la première cellule de la ligne.
+en code \SpecialChar TeX
+ comme premier élément de la première cellule de la ligne.
  Si par exemple, vous avez une cellule multi-colonnes qui couvre les colonnes
  2 à 4 et que vous voulez un filet interrompu au dessus, ajoutez la commande
 \end_layout
@@ -23148,15 +23244,18 @@ reference "tab:Tableau-filets-tirets"
 \begin_inset Quotes frd
 \end_inset
 
- comme paramètre LaTeX pour la troisième colonne.
- La commande en code TeX 
+ comme paramètre \SpecialChar LaTeX
+ pour la troisième colonne.
+ La commande en code \SpecialChar TeX
+ 
 \series bold
 
 \backslash
 hdashline
 \series default
  a été insérée dans la première cellule de la troisième ligne et la commande
- en code TeX 
+ en code \SpecialChar TeX
+ 
 \series bold
 
 \backslash
@@ -23368,8 +23467,8 @@ Tableau coloré avec filets interropus
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt" special=">{\columncolor{darkgreen}\centering}c">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt" special=">{\columncolor{vertfonce}\centering}c">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt" special=":c">
 <column alignment="center" valignment="top">
@@ -23933,7 +24032,8 @@ arrayrulecolor{black}}
 
 \begin_layout Standard
 Pour revenir à un filet noir, il faut insérer les commandes suivantes en
- code TeX après le tableau,
+ code \SpecialChar TeX
+ après le tableau,
 \end_layout
 
 \begin_layout Standard
@@ -23989,7 +24089,8 @@ dashgapcolor{couleur}
 \end_layout
 
 \begin_layout Standard
-peut être insérée en code TeX avant un tableau.
+peut être insérée en code \SpecialChar TeX
+ avant un tableau.
  
 \series bold
 couleur
@@ -24075,7 +24176,8 @@ status open
 \series bold
 Nota:
 \series default
- le paquetage LaTeX 
+ le paquetage \SpecialChar LaTeX
+ 
 \series bold
 arydshln
 \series default
@@ -24092,7 +24194,8 @@ colortbl
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! colortbl
+Paquetages \SpecialChar LaTeX
+ ! colortbl
 \end_layout
 
 \end_inset
@@ -24123,7 +24226,8 @@ else
 status open
 
 \begin_layout Plain Layout
-Ce qui suit sera affiché si le paquetage LaTeX 
+Ce qui suit sera affiché si le paquetage \SpecialChar LaTeX
+ 
 \series bold
 arydshln
 \series default
@@ -24136,7 +24240,8 @@ arydshln
 \end_layout
 
 \begin_layout Standard
-Vous devez installer le paquetage LaTeX 
+Vous devez installer le paquetage \SpecialChar LaTeX
+ 
 \series bold
 arydshln
 \series default
@@ -24292,7 +24397,7 @@ reference "sec:Referencer-les-Flottants"
 \begin_layout Standard
 Pour insérer un flottant, on utilise un des sous menus du menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Flottant
 \family default
  (barre d'outils 
@@ -24340,7 +24445,8 @@ reference "sec:Placement-légende"
 \end_inset
 
 .
- Pour améliorer la lisibilité de votre document dans LyX, vous pouvez fermer
+ Pour améliorer la lisibilité de votre document dans \SpecialChar LyX
+, vous pouvez fermer
  ou ouvrir la boîte de votre flottant en cliquant avec le bouton de gauche
  sur la boîte grise qui se trouve en haut à gauche de celui-ci.
  Une boîte de flottant fermée ressemble à ceci : 
@@ -24355,8 +24461,9 @@ reference "sec:Placement-légende"
 
 \begin_layout Standard
 Il est recommandé d'insérer les flottants comme des paragraphes séparés
- pour éviter des erreurs avec LaTeX, quand le texte qui entoure le flottant
- est formaté de façon particulière.
+ pour éviter des erreurs avec \SpecialChar LaTeX
+, quand le texte qui entoure le flottant est
+ formaté de façon particulière.
 \end_layout
 
 \begin_layout Section
@@ -24383,7 +24490,8 @@ reference "sec:Table-Floats"
 
 \end_inset
 
-, LyX offre aussi les types 
+, \SpecialChar LyX
+ offre aussi les types 
 \family sans
 Algorithme
 \family default
@@ -24414,13 +24522,6 @@ status collapsed
 \begin_layout Plain Layout
 Flottants ! Algorithmes
 \end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Flottant-d'Algorithme"
 
 \end_inset
 
@@ -24476,8 +24577,8 @@ end loop
 \begin_layout Standard
 Ce type de flottant est inséré à l'aide du menu 
 \family sans
-Insertion\SpecialChar \menuseparator
-Flottant\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
+Flottant\SpecialChar menuseparator
 Algorithme
 \family default
 .
@@ -24499,7 +24600,8 @@ reference "cha:Program-Code-Listings"
 \begin_inset space ~
 \end_inset
 
-LyX qui est décrit dans le 
+\SpecialChar LyX
+ qui est décrit dans le 
 \emph on
 Guide
 \emph default
@@ -24515,7 +24617,8 @@ de
 
 l'Utilisateur
 \emph default
- de LyX.
+ de \SpecialChar LyX
+.
  l'algorithme
 \begin_inset space ~
 \end_inset
@@ -24581,7 +24684,7 @@ algorithme
 \begin_layout Standard
 Pour insérer la liste des algorithmes, vous pouvez utiliser le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Listes
 \begin_inset space ~
 \end_inset
@@ -24590,7 +24693,7 @@ Listes
 \begin_inset space ~
 \end_inset
 
-TdM\SpecialChar \menuseparator
+TdM\SpecialChar menuseparator
 Liste
 \begin_inset space ~
 \end_inset
@@ -24601,9 +24704,11 @@ des
 
 algorithmes
 \family default
- si votre document est en la même langue que les menus de LyX.
+ si votre document est en la même langue que les menus de \SpecialChar LyX
+.
  Pour les documents qui ne sont pas en anglais, utilisez la commande suivante
- en code TeX à la place:
+ en code \SpecialChar TeX
+ à la place:
 \end_layout
 
 \begin_layout Standard
@@ -24872,7 +24977,7 @@ Veuillez aussi jeter un coup d'œil à la section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Numerotation-notes-bas-de-page"
+reference "subsec:Numerotation-notes-bas-de-page"
 
 \end_inset
 
@@ -24914,7 +25019,7 @@ References@Références ! à des Flottants
 Pour faire référence à un flottant, insérez une étiquette dans sa légende
  en utilisant le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Étiquette
 \family default
  ou le bouton 
@@ -24935,7 +25040,8 @@ arg   "label-insert"
 
  sera insérée et la fenêtre de l'étiquette s'ouvrira pour vous permettre
  de saisir le texte de l'étiquette.
- LyX propose comme texte pour l'étiquette les premiers mots de la légendes
+ \SpecialChar LyX
+ propose comme texte pour l'étiquette les premiers mots de la légendes
  précédés d'un préfixe.
  Ce préfixe dépend du type de flottant, par exemple, pour une figure le
  préfixe sera 
@@ -24957,7 +25063,7 @@ fig:
 L'étiquette sert à la fois de point d'ancrage et de nom pour la référence.
  Vous pouvez faire référence à cette étiquette en utilisant le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Référence
 \begin_inset space ~
 \end_inset
@@ -24973,9 +25079,10 @@ arg   "dialog-show-new-inset ref"
  de la barre d'outils.
  La fenêtre de référence croisée va s'ouvrir et montrer toutes les étiquettes
  définies dans votre document.
- Si vous avez plusieurs documents LyX ouverts, vous pouvez choisir celui
- que vous voulez utiliser avec la liste déroulante qui se trouve en haut
- de la fenêtre de dialogue.
+ Si vous avez plusieurs documents \SpecialChar LyX
+ ouverts, vous pouvez choisir celui que
+ vous voulez utiliser avec la liste déroulante qui se trouve en haut de
+ la fenêtre de dialogue.
  Vous pouvez trier les étiquettes par ordre alphabétique et ensuite en choisir
  une.
  Une boîte grise de référence croisée comme celle-ci : 
@@ -25033,7 +25140,7 @@ Revenir
 Formats de références croisées
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Formats-Références-Croisées"
+name "subsec:Formats-Références-Croisées"
 
 \end_inset
 
@@ -25210,7 +25317,8 @@ status open
 Note:
 \series default
  Ce type de référence croisée n'est disponible que si vous avez installé
- le paquetage LaTeX 
+ le paquetage \SpecialChar LaTeX
+ 
 \series bold
 prettyref
 \series default
@@ -25223,7 +25331,8 @@ refstyle
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! prettyref
+Paquetages \SpecialChar LaTeX
+ ! prettyref
 \end_layout
 
 \end_inset
@@ -25233,7 +25342,8 @@ Paquetages LaTeX ! prettyref
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! refstyle
+Paquetages \SpecialChar LaTeX
+ ! refstyle
 \end_layout
 
 \end_inset
@@ -25247,15 +25357,16 @@ Paquetages LaTeX ! refstyle
 \begin_inset Newline newline
 \end_inset
 
-Vous pouvez choisir le paquetage LaTeX qui doit être utilisé pour cette
- fonction en utilisant l'option 
+Vous pouvez choisir le paquetage \SpecialChar LaTeX
+ qui doit être utilisé pour cette fonction
+ en utilisant l'option 
 \family sans
 Utiliser refstyle (à la place de prettyref) pour les références croisées
 \family default
  dans le menu 
 \family sans
-Document\SpecialChar \menuseparator
-Paramètres\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
 Classe de document
 \family default
 .
@@ -25361,7 +25472,8 @@ n'affichera rien au sujet de la page si l'étiquette se trouve sur la même
 
 \begin_layout Standard
 Le numéro affecté à une étiquette et le numéro de la page sur laquelle elle
- se trouve sont calculés automatiquement par LaTeX.
+ se trouve sont calculés automatiquement par \SpecialChar LaTeX
+.
  Vous choisissez une des six variétés de références dans le champ Format
  de la fenêtre de référence croisée qui s'ouvre quand vous cliquez sur la
  boîte de la référence croisée.
@@ -25376,7 +25488,8 @@ status open
 \series bold
 Note:
 \series default
- L'utilisation du paquetage LaTeX 
+ L'utilisation du paquetage \SpecialChar LaTeX
+ 
 \series bold
 refstyle
 \series default
@@ -25385,7 +25498,8 @@ refstyle
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! refstyle
+Paquetages \SpecialChar LaTeX
+ ! refstyle
 \end_layout
 
 \end_inset
@@ -25399,7 +25513,8 @@ prettyref
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! prettyref
+Paquetages \SpecialChar LaTeX
+ ! prettyref
 \end_layout
 
 \end_inset
@@ -25416,8 +25531,9 @@ fig:
 \begin_inset Quotes frd
 \end_inset
 
- est par exemple le raccourci LyX pour les étiquettes dans les légendes
- de figures,.
+ est par exemple le raccourci \SpecialChar LyX
+ pour les étiquettes dans les légendes de
+ figures,.
 \end_layout
 
 \end_inset
@@ -25439,12 +25555,14 @@ status open
 \series bold
 Note:
 \series default
- Du fait d'un bogue dans la paquetage LaTeX 
+ Du fait d'un bogue dans la paquetage \SpecialChar LaTeX
+ 
 \series bold
 varioref
 \series default
- (version 1.4w), certaines références croisées produiront des erreurs LaTeX
- si la langue du document est le français.
+ (version 1.4w), certaines références croisées produiront des erreurs \SpecialChar LaTeX
+ si
+ la langue du document est le français.
  Pour contourner ce bogue, voir
 \begin_inset Newline newline
 \end_inset
@@ -25479,7 +25597,8 @@ References@Références ! Nommage automatique
 \end_layout
 
 \begin_layout Standard
-Le paquetage LaTeX 
+Le paquetage \SpecialChar LaTeX
+ 
 \series bold
 hyperref
 \series default
@@ -25488,7 +25607,8 @@ hyperref
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! hyperref
+Paquetages \SpecialChar LaTeX
+ ! hyperref
 \end_layout
 
 \end_inset
@@ -25684,7 +25804,7 @@ forme
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Formats-Références-Croisées"
+reference "subsec:Formats-Références-Croisées"
 
 \end_inset
 
@@ -25708,7 +25828,7 @@ Math
 Positionnement des références 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Reference-Position"
+name "subsec:Reference-Position"
 
 \end_inset
 
@@ -25745,7 +25865,8 @@ Paramètres du document,
  pourrez voir l'image sans faire défiler le texte.
  Ce problème vient du fait que le point d'ancrage de la référence se situe
  à l'endroit de l'étiquette.
- En utilisant le paquetage LaTeX 
+ En utilisant le paquetage \SpecialChar LaTeX
+ 
 \series bold
 hypcap
 \series default
@@ -25754,12 +25875,14 @@ hypcap
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! hypcap
+Paquetages \SpecialChar LaTeX
+ ! hypcap
 \end_layout
 
 \end_inset
 
-, qui fait partie du paquetage LaTeX 
+, qui fait partie du paquetage \SpecialChar LaTeX
+ 
 \series bold
 oberdiek
 \series default
@@ -25768,7 +25891,8 @@ oberdiek
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! oberdiek
+Paquetages \SpecialChar LaTeX
+ ! oberdiek
 \end_layout
 
 \end_inset
@@ -25861,8 +25985,8 @@ Settings
 \family default
 \lang french
  on ouvre une fenêtre de dialogue dans laquelle vous pouvez modifier le
- paramètres de placement que LaTeX utilise pour déterminer où placer le
- flottant.
+ paramètres de placement que \SpecialChar LaTeX
+ utilise pour déterminer où placer le flottant.
 \begin_inset Newline newline
 \end_inset
 
@@ -25937,7 +26061,8 @@ si
 \end_inset
 
 possible: essaie de placer le flottant à la position où il a été inséré
- dans LyX
+ dans \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Description
@@ -25986,13 +26111,15 @@ flottants: essaie de placer le flottant sur une page à part, éventuellement
 \end_layout
 
 \begin_layout Standard
-LaTeX utilise
+\SpecialChar LaTeX
+ utilise
 \emph on
  toujours 
 \emph default
 les options dans l'ordre donné ci-dessus.
- Ce qui veut dire que si vous utilisez le placement implicite, LaTeX va
- d'abord essayer 
+ Ce qui veut dire que si vous utilisez le placement implicite, \SpecialChar LaTeX
+ va d'abord
+ essayer 
 \family sans
 Ici
 \begin_inset space ~
@@ -26021,7 +26148,8 @@ la
 page
 \family default
 , et ainsi de suite.
- Si vous n'utilisez pas le placement implicite, LaTeX va essayer les options
+ Si vous n'utilisez pas le placement implicite, \SpecialChar LaTeX
+ va essayer les options
  que vous avez cochées, mais dans l'ordre donné ci-dessus.
  Si aucune des quatre options de placement n'est possible, la procédure
  est répétée avec la possibilité de mettre les flottant sur la page suivante.
@@ -26124,7 +26252,8 @@ règles
 \begin_inset space ~
 \end_inset
 
-LaTeX
+\SpecialChar LaTeX
+
 \family default
 \lang english
 .
@@ -26133,8 +26262,9 @@ LaTeX
 
 
 \lang french
-Vous pouvez aussi redéfinir les règles avec les commandes LaTeX qui sont
- données entre parenthèses après les descriptions des règles données ci-dessus.
+Vous pouvez aussi redéfinir les règles avec les commandes \SpecialChar LaTeX
+ qui sont données
+ entre parenthèses après les descriptions des règles données ci-dessus.
  Par exemple, pour augmenter à 50
 \begin_inset space \thinspace{}
 \end_inset
@@ -26200,7 +26330,8 @@ On peut parfois se trouver dans la situation où un flottant est placé en
  haut d'une page alors que la section concernée ne commence qu'au milieu
  de la page, ce qui fait que le lecteur peut penser qu'il fait partie de
  la section précédente.
- On peut utiliser la commande LaTeX 
+ On peut utiliser la commande \SpecialChar LaTeX
+ 
 \series bold
 
 \backslash
@@ -26242,8 +26373,9 @@ mySection}
 Vous pouvez définir la même chose pour tous les types d'en-têtes de section,
  comme les chapitres et les sous-sections.
  Il n'est pas recommandé d'utiliser cette définition avec des portions de
- texte trop petites comme les sous-sous-sections parce que LaTeX pourrait
- ensuite avoir du mal à trouver un positionnement correct.
+ texte trop petites comme les sous-sous-sections parce que \SpecialChar LaTeX
+ pourrait ensuite
+ avoir du mal à trouver un positionnement correct.
 \end_layout
 
 \begin_layout Standard
@@ -26252,7 +26384,8 @@ Vous pouvez définir la même chose pour tous les types d'en-têtes de section,
 
 Dans certains cas il est demandé de placer toutes les figures et tous les
  tableaux à la fin du document.
- C'est pour de telles situations que le paquetage LaTeX 
+ C'est pour de telles situations que le paquetage \SpecialChar LaTeX
+ 
 \series bold
 endfloat
 \series default
@@ -26261,7 +26394,8 @@ endfloat
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! endfloat
+Paquetages \SpecialChar LaTeX
+ ! endfloat
 \end_layout
 
 \end_inset
@@ -26391,7 +26525,8 @@ ss
 \begin_inset Quotes frd
 \end_inset
 
- en code TeX à la place du 
+ en code \SpecialChar TeX
+ à la place du 
 \begin_inset Quotes fld
 \end_inset
 
@@ -26412,7 +26547,8 @@ ss
 \end_inset
 
 Pour plus d'information sur les manières de placer les flottants, jetez
- un coup d'œil aux livres sur LaTeX, 
+ un coup d'œil aux livres sur \SpecialChar LaTeX
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion,latexguide,latexbook"
@@ -26548,7 +26684,7 @@ name "tab:Tableau-pivoté"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -26743,7 +26879,7 @@ Le sous-tableau a
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -26837,7 +26973,7 @@ Le sous-tableau b.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -26959,7 +27095,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -27037,7 +27173,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -27215,6 +27351,11 @@ width "45col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -27266,6 +27407,11 @@ width "45col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -27350,7 +27496,8 @@ Légende
 flottants
 \family default
 .
- Dans la fenêtre de LyX les légendes apparaissent comme une étiquette comme
+ Dans la fenêtre de \SpecialChar LyX
+ les légendes apparaissent comme une étiquette comme
  par exemple 
 \begin_inset Quotes fld
 \end_inset
@@ -27381,7 +27528,8 @@ Figure #:
 
 \begin_layout Standard
 Pour modifier le format implicite des légendes, il faut charger le paquetage
- LaTeX 
+ \SpecialChar LaTeX
+ 
 \series bold
 caption
 \series default
@@ -27390,7 +27538,8 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! caption
+Paquetages \SpecialChar LaTeX
+ ! caption
 \end_layout
 
 \end_inset
@@ -27531,7 +27680,8 @@ KOMA-Script
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! KOMA-Script
+Paquetages \SpecialChar LaTeX
+ ! KOMA-Script
 \end_layout
 
 \end_inset
@@ -27631,7 +27781,8 @@ KOMA-Script
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! KOMA-Script
+Paquetages \SpecialChar LaTeX
+ ! KOMA-Script
 \end_layout
 
 \end_inset
@@ -27826,7 +27977,7 @@ Ceci est un exemple de légende de tableau qui est plus longue qu'une ligne
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -27943,8 +28094,9 @@ Tableau
 \end_layout
 
 \begin_layout Standard
-Malheureusement les classes standard de LaTeX ne gèrent pas les légendes
- au dessus des tableaux.
+Malheureusement les classes standard de \SpecialChar LaTeX
+ ne gèrent pas les légendes au dessus
+ des tableaux.
  Ce qui fait que si vous utilisez une des classes de document 
 \family sans
 article
@@ -27966,7 +28118,8 @@ report
 \lang english
 load
 \lang french
- le paquetage LaTeX 
+ le paquetage \SpecialChar LaTeX
+ 
 \series bold
 caption
 \series default
@@ -27975,7 +28128,8 @@ caption
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! caption
+Paquetages \SpecialChar LaTeX
+ ! caption
 \end_layout
 
 \end_inset
@@ -28024,7 +28178,8 @@ KOMA-Script
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! KOMA-Script
+Paquetages \SpecialChar LaTeX
+ ! KOMA-Script
 \end_layout
 
 \end_inset
@@ -28139,7 +28294,7 @@ Une légende positionnée sous le tableau par le menu contextuel
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -28282,7 +28437,7 @@ Une légende de tableau standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -28402,7 +28557,8 @@ c & d
 \end_inset
 
 On peut aussi mettre la légende à côté d'une figure ou d'un tableau.
- Pour cela, vous devez charger le paquetage LaTeX 
+ Pour cela, vous devez charger le paquetage \SpecialChar LaTeX
+ 
 \series bold
 sidecap
 \series default
@@ -28411,7 +28567,8 @@ sidecap
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! sidecap
+Paquetages \SpecialChar LaTeX
+ ! sidecap
 \end_layout
 
 \end_inset
@@ -28467,7 +28624,8 @@ ifsidecap
 status open
 
 \begin_layout Plain Layout
-La section suivante ne sera affichée que si le paquetage LaTeX 
+La section suivante ne sera affichée que si le paquetage \SpecialChar LaTeX
+ 
 \series bold
 sidecap
 \series default
@@ -28799,7 +28957,8 @@ FigBesBeg
 \end_layout
 
 \begin_layout Standard
-en code TeX avant le flottant.
+en code \SpecialChar TeX
+ avant le flottant.
  Et insérez la commande
 \end_layout
 
@@ -28812,8 +28971,9 @@ FigBesEnd
 \end_layout
 
 \begin_layout Standard
-en code TeX à l'endroit où vous voulez revenir à la définition originale
- du flottant.
+en code \SpecialChar TeX
+ à l'endroit où vous voulez revenir à la définition originale du
+ flottant.
 \end_layout
 
 \begin_layout Standard
@@ -28875,7 +29035,8 @@ sidecaptionvpos{type flottant}{placement}
 \end_layout
 
 \begin_layout Standard
-dans le préambule du document ou en code TeX juste avant le flottant visé.
+dans le préambule du document ou en code \SpecialChar TeX
+ juste avant le flottant visé.
  Le type du flottant est soit 
 \family sans
 figure
@@ -29100,7 +29261,8 @@ status open
 \series bold
 Note:
 \series default
- Le paquetage LaTeX 
+ Le paquetage \SpecialChar LaTeX
+ 
 \series bold
 hypcap
 \series default
@@ -29109,7 +29271,8 @@ hypcap
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! hypcap
+Paquetages \SpecialChar LaTeX
+ ! hypcap
 \end_layout
 
 \end_inset
@@ -29121,7 +29284,7 @@ Paquetages LaTeX ! hypcap
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Reference-Position"
+reference "subsec:Reference-Position"
 
 \end_inset
 
@@ -29248,7 +29411,7 @@ Une légende à côté d'un tableau.
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -29613,7 +29776,7 @@ reference "tab:legende-à-coté-tableau"
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -29853,7 +30016,8 @@ else
 status open
 
 \begin_layout Plain Layout
-Ce qui suit sera affiché si le paquetage LaTeX 
+Ce qui suit sera affiché si le paquetage \SpecialChar LaTeX
+ 
 \series bold
 sidecap
 \series default
@@ -29866,7 +30030,8 @@ sidecap
 \end_layout
 
 \begin_layout Standard
-Vous devez installer le paquetage LaTeX 
+Vous devez installer le paquetage \SpecialChar LaTeX
+ 
 \series bold
 sidecap
 \series default
@@ -29909,7 +30074,7 @@ De la même façon que la table des matières fait la liste des sections du
  exemple pour les figures du document.
  Vous pouvez les insérer en utilisant le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Listes
 \begin_inset space ~
 \end_inset
@@ -29939,12 +30104,14 @@ Notes
 \end_layout
 
 \begin_layout Section
-Les notes de LyX
+Les notes de \SpecialChar LyX
+
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Notes ! Notes LyX 
+Notes ! Notes \SpecialChar LyX
+ 
 \end_layout
 
 \end_inset
@@ -29961,7 +30128,7 @@ arg   "note-insert"
 
  de la barre d'outils ou avec le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Note
 \family default
 .
@@ -29973,8 +30140,8 @@ Note
 \begin_inset space ~
 \end_inset
 
-LyX Ce type de note est à usage interne et n'apparaîtra pas sur la sortie
- finale.
+\SpecialChar LyX
+ Ce type de note est à usage interne et n'apparaîtra pas sur la sortie finale.
  La boîte de cette note ressemble à ceci :
 \begin_inset Newline newline
 \end_inset
@@ -30007,12 +30174,15 @@ Le texte de cette note n'apparaîtra pas à l'impression.
 
 \begin_layout Description
 Commentaire Ce type de note n'apparaît pas non plus à l'impression, mais
- il est inséré comme un commentaire LaTeX quand vous exportez votre document
- vers un fichier au format LaTeX avec le menu 
+ il est inséré comme un commentaire \SpecialChar LaTeX
+ quand vous exportez votre document
+ vers un fichier au format \SpecialChar LaTeX
+ avec le menu 
 \family sans
-Fichier\SpecialChar \menuseparator
-Exporter\SpecialChar \menuseparator
-LaTeX (pdflatex) / (plain)
+Fichier\SpecialChar menuseparator
+Exporter\SpecialChar menuseparator
+\SpecialChar LaTeX
+ (pdflatex) / (plain)
 \family default
 .
  La boîte de cette note ressemble à ceci :
@@ -30038,7 +30208,8 @@ status open
 
 \begin_layout Plain Layout
 Le texte de cette note n'apparaîtra que comme commentaire dans un fichier
- LaTeX.
+ \SpecialChar LaTeX
+.
 \end_layout
 
 \end_inset
@@ -30146,7 +30317,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Ici, on a redéfini la note grisée pour qu'elle apparaisse avec la définition
- originale qu'elle a dans LyX.
+ originale qu'elle a dans \SpecialChar LyX
+.
  En effet, dans ce document les notes grisées sont redéfinies dans le préambule,
  comme c'est décrit plus loin, pour apparaître avec le texte en bleu.
 \end_layout
@@ -30181,7 +30353,8 @@ Note
 \begin_inset space ~
 \end_inset
 
-LyX
+\SpecialChar LyX
+
 \family default
 .
  
@@ -30214,8 +30387,8 @@ Suppr.
 \begin_layout Standard
 Vous pouvez changer la couleur des notes grisées dans le menu 
 \family sans
-Document\SpecialChar \menuseparator
-Paramètres\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
 Couleurs
 \family default
 .
@@ -30262,7 +30435,7 @@ arg   "footnote-insert"
 
  de la barre d'outils, soit en utilisant le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Note
 \begin_inset space ~
 \end_inset
@@ -30383,7 +30556,8 @@ La note de bas de page apparaîtra dans la sortie imprimée sous la forme
  d'un numéro en exposant à la position qu'occupe dans le texte la boîte
  de note.
  Le texte de la note est placé en bas de la page courante.
- Le numéro de note est calculé par LaTeX, et les numéros se suivent.
+ Le numéro de note est calculé par \SpecialChar LaTeX
+, et les numéros se suivent.
  Selon votre classe de document les numéros de notes pourront être réinitialisés
  à chaque nouveau chapitre.
 \end_layout
@@ -30440,7 +30614,8 @@ Footnotes in title environments are usually not numbered with symbols and
 
 \begin_layout Standard
 Le notes de bas de page se trouvant dans des tableaux ne sont pas imprimées
- par LaTeX pour des raisons techniques.
+ par \SpecialChar LaTeX
+ pour des raisons techniques.
  Il existe pourtant une autre méthode pour les imprimer : on insère la commande
  
 \series bold
@@ -30448,8 +30623,10 @@ Le notes de bas de page se trouvant dans des tableaux ne sont pas imprimées
 \backslash
 footnotemark{}
 \series default
- en code TeX à la place de la note de bas de page.
- Le texte de la note est mis en argument de la commande TeX 
+ en code \SpecialChar TeX
+ à la place de la note de bas de page.
+ Le texte de la note est mis en argument de la commande \SpecialChar TeX
+ 
 \series bold
 
 \backslash
@@ -30479,7 +30656,7 @@ Note de bas de page de tableau imprimée.
 \lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="1">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
@@ -30573,7 +30750,7 @@ Les notes de bas de page dans des tableaux longs sont décrites dans la section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Notes-dans-tableau-long"
+reference "subsec:Notes-dans-tableau-long"
 
 \end_inset
 
@@ -30626,6 +30803,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -30706,14 +30888,16 @@ Pour faire référence plusieurs fois à la même note sans avoir à la duplique
 \backslash
 footnotemark[number]
 \series default
- en code TeX.
+ en code \SpecialChar TeX
+.
 \begin_inset Newline newline
 \end_inset
 
 Comme vous ne connaissez pas le numéro de la note au moment où vous écrivez
  votre texte, vous devez enregistrer son numéro.
  Dans l'exemple de marque de note de bas de page suivant, ces commandes
- ont été insérées en code TeX après la note
+ ont été insérées en code \SpecialChar TeX
+ après la note
 \begin_inset space ~
 \end_inset
 
@@ -30830,7 +31014,7 @@ thefootnote]
 Numérotation de notes de bas de page
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Numerotation-notes-bas-de-page"
+name "subsec:Numerotation-notes-bas-de-page"
 
 \end_inset
 
@@ -31291,7 +31475,8 @@ reference "fig:Position-note-avec-ftnright"
 
 \end_inset
 
-, utilisez le paquetage LaTeX 
+, utilisez le paquetage \SpecialChar LaTeX
+ 
 \series bold
 ftnright
 \series default
@@ -31300,7 +31485,8 @@ ftnright
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! ftnright
+Paquetages \SpecialChar LaTeX
+ ! ftnright
 \end_layout
 
 \end_inset
@@ -31435,7 +31621,8 @@ name "fig:Position-note-avec-ftnright"
 \end_inset
 
 Positionnement de notes de bas de page dans un document à deux colonnes
- en utilisant le paquetage LaTeX 
+ en utilisant le paquetage \SpecialChar LaTeX
+ 
 \series bold
 ftnright
 \series default
@@ -31495,8 +31682,8 @@ Note de bas de page en fin de document
 \family default
  à partir de 
 \family sans
-Document\SpecialChar \menuseparator
-Paramètres\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
 Modules
 \family default
 .
@@ -31512,7 +31699,8 @@ theendnotes
 \end_layout
 
 \begin_layout Standard
-en code TeX à la fin d'une section ou d'un chapitre.
+en code \SpecialChar TeX
+ à la fin d'une section ou d'un chapitre.
 \end_layout
 
 \begin_layout Standard
@@ -31646,7 +31834,7 @@ La numérotation des notes de fin peut être modifiée comme celle des notes
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Numerotation-notes-bas-de-page"
+reference "subsec:Numerotation-notes-bas-de-page"
 
 \end_inset
 
@@ -31676,7 +31864,7 @@ theendnote
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Numerotation-notes-bas-de-page"
+reference "subsec:Numerotation-notes-bas-de-page"
 
 \end_inset
 
@@ -31723,7 +31911,8 @@ reference "sec:Notes-bas-de-page"
 \end_inset
 
  Les notes de bas de page peuvent être mise dans la marge de la page et
- l'alignement du texte des notes peut être modifié, voyez le paquetage LaTeX
+ l'alignement du texte des notes peut être modifié, voyez le paquetage \SpecialChar LaTeX
+
  
 \series bold
 footmisc
@@ -31733,7 +31922,8 @@ footmisc
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! footmisc
+Paquetages \SpecialChar LaTeX
+ ! footmisc
 \end_layout
 
 \end_inset
@@ -31750,7 +31940,8 @@ key "footmisc"
 
 \begin_layout Standard
 Pour plein d'autres problèmes de mises en formes des notes de bas de page,
- voyez les livres sur LaTeX, 
+ voyez les livres sur \SpecialChar LaTeX
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion,latexguide,latexbook"
@@ -31767,7 +31958,8 @@ KOMA-Script
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! KOMA-Script
+Paquetages \SpecialChar LaTeX
+ ! KOMA-Script
 \end_layout
 
 \end_inset
@@ -31798,11 +31990,12 @@ Notes ! Notes en Marge
 \end_layout
 
 \begin_layout Standard
-Les notes en marge dans LyX ressemblent aux notes en bas de page et se comporten
-t de la même façon.
+Les notes en marge dans \SpecialChar LyX
+ ressemblent aux notes en bas de page et se comportent
+ de la même façon.
  Quand vous insérez une note en marge avec 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Note
 \begin_inset space ~
 \end_inset
@@ -31839,7 +32032,8 @@ C'est une note en marge.
 
 \end_inset
 
- Cette boîte est la représentation de votre note dans LyX.
+ Cette boîte est la représentation de votre note dans \SpecialChar LyX
+.
  Vous pouvez y entrer votre texte.
 \end_layout
 
@@ -31879,7 +32073,8 @@ reversemarginpar
 \end_layout
 
 \begin_layout Standard
-sous forme de code TeX avant votre note de marge.
+sous forme de code \SpecialChar TeX
+ avant votre note de marge.
  Le nouveau positionnement est pris en compte pour toutes les notes en marge
  qui suivent 
 \begin_inset ERT
@@ -31943,7 +32138,8 @@ normalmarginpar
 \end_layout
 
 \begin_layout Standard
-sous forme de code TeX.
+sous forme de code \SpecialChar TeX
+.
 \begin_inset ERT
 status collapsed
 
@@ -32005,7 +32201,7 @@ UnTrèsLongMotEnMarge sans césure.
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Lignes-multiple-dans-cellule"
+reference "subsec:Lignes-multiple-dans-cellule"
 
 \end_inset
 
@@ -32082,7 +32278,8 @@ ifmarginnote
 status open
 
 \begin_layout Plain Layout
-La section suivante ne sera affichée que si le paquetage LaTeX 
+La section suivante ne sera affichée que si le paquetage \SpecialChar LaTeX
+ 
 \series bold
 marginnote
 \series default
@@ -32095,7 +32292,8 @@ marginnote
 \end_layout
 
 \begin_layout Standard
-Cette restriction peut être évitée en utilisant le paquetage LaTeX 
+Cette restriction peut être évitée en utilisant le paquetage \SpecialChar LaTeX
+ 
 \series bold
 marginnote
 \series default
@@ -32104,14 +32302,16 @@ marginnote
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! marginnote
+Paquetages \SpecialChar LaTeX
+ ! marginnote
 \end_layout
 
 \end_inset
 
 .
  En ajoutant les deux lignes suivantes au préambule de votre document, la
- commande que LyX utilise pour les notes de marge est redéfinie pour utiliser
+ commande que \SpecialChar LyX
+ utilise pour les notes de marge est redéfinie pour utiliser
  la commande fournie par le paquetage 
 \series bold
 marginnote
@@ -32147,8 +32347,10 @@ marginnote
  C'est souvent nécessaire quand vous avez trop de notes en marge et qu'elles
  sont trop proches les unes des autres ou que vous voulez améliorer la mise
  en page.
- Le décalage est inséré dans LyX sous forme de code TeX directement après
- la note sous la forme
+ Le décalage est inséré dans \SpecialChar LyX
+ sous forme de code \SpecialChar TeX
+ directement après la note
+ sous la forme
 \end_layout
 
 \begin_layout Standard
@@ -32177,7 +32379,8 @@ reference "cha:Unités-de-longueur"
 \begin_inset space \thinspace{}
 \end_inset
 
-cm avec la commande en code TeX 
+cm avec la commande en code \SpecialChar TeX
+ 
 \begin_inset Quotes fld
 \end_inset
 
@@ -32593,7 +32796,8 @@ else
 status open
 
 \begin_layout Plain Layout
-Ce qui suit sera affiché si le paquetage LaTeX 
+Ce qui suit sera affiché si le paquetage \SpecialChar LaTeX
+ 
 \series bold
 marginnote
 \series default
@@ -32606,7 +32810,8 @@ marginnote
 \end_layout
 
 \begin_layout Standard
-Vous devez installer le paquetage LaTeX 
+Vous devez installer le paquetage \SpecialChar LaTeX
+ 
 \series bold
 marginnote
 \series default
@@ -32690,7 +32895,7 @@ reference "sec:Empêcher-césure"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Alignement-Vertical"
+reference "subsec:Alignement-Vertical"
 
 \end_inset
 
@@ -32711,7 +32916,7 @@ reference "sec:Boîtes-colorées"
 \begin_layout Standard
 On peut insérer une boîte en utilisant le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Boîte
 \family default
  ou avec le bouton 
@@ -33002,6 +33207,11 @@ width "12col%"
 special "none"
 height "1in"
 height_special "depth"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -33041,6 +33251,11 @@ width "20col%"
 special "none"
 height "2in"
 height_special "height"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -33082,6 +33297,11 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -33115,6 +33335,11 @@ width "12col%"
 special "none"
 height "1in"
 height_special "width"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -33171,6 +33396,11 @@ width "12col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status collapsed
 
 \begin_layout Plain Layout
@@ -33197,6 +33427,11 @@ width "12col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status collapsed
 
 \begin_layout Plain Layout
@@ -33223,6 +33458,11 @@ width "12col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status collapsed
 
 \begin_layout Plain Layout
@@ -33299,6 +33539,11 @@ width "12col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status collapsed
 
 \begin_layout Plain Layout
@@ -33325,6 +33570,11 @@ width "12col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status collapsed
 
 \begin_layout Plain Layout
@@ -33351,6 +33601,11 @@ width "12col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status collapsed
 
 \begin_layout Plain Layout
@@ -33377,6 +33632,11 @@ width "12col%"
 special "none"
 height "1.5in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status collapsed
 
 \begin_layout Plain Layout
@@ -33451,6 +33711,11 @@ width "15col%"
 special "none"
 height "1.25in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -33484,6 +33749,10 @@ Intérieure
 \family default
 , vous pouvez allonger le contenu de la boîte horizontalement avec la fenêtre
  de dialogue de boîte.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -33499,6 +33768,11 @@ width "90col%"
 special "none"
 height "1.25in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -33563,12 +33837,10 @@ rectangulaire
 \end_inset
 
 simple Ceci dessine un cadre rectangulaire autour de la boîte.
- L'épaisseur du trait de ce cadre est donnée par la variable  
-\series bold
-
-\backslash
-fboxrule
-\series default
+ L'épaisseur du trait de ce cadre 
+\lang english
+can be specified
+\lang french
 .
 \begin_inset Newline newline
 \end_inset
@@ -33585,6 +33857,11 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -33624,6 +33901,11 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -33663,6 +33945,11 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -33685,17 +33972,11 @@ en
 \end_inset
 
 relief Ceci dessine un cadre rectangulaire avec une ombre autour de la boîte.
- L'épaisseur du trait de ce cadre est donnée par la variable  
-\series bold
-
-\backslash
-fboxrule
-\series default
-, l'ombre a une épaisseur de  4
-\begin_inset space \thinspace{}
-\end_inset
-
-pt.
+ L'épaisseur du trait de ce cadre et l'ombre 
+\lang english
+can be specified
+\lang french
+.
  
 \begin_inset Box Shadowbox
 position "c"
@@ -33708,6 +33989,11 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -33760,6 +34046,11 @@ width "50col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -33786,34 +34077,40 @@ dédoublé Ceci dessine un cadre rectangulaire à deux traits autour de la
 \begin_inset space \thinspace{}
 \end_inset
 
+épaisseur
+\begin_inset space ~
+\end_inset
 
-\series bold
+du
+\begin_inset space ~
+\end_inset
 
-\backslash
-fboxrule
-\series default
-, l'épaisseur du trait du cadre externe est de 1.5
+trait, l'épaisseur du trait du cadre externe est de 1.5
 \begin_inset space \thinspace{}
 \end_inset
 
+épaisseur
+\begin_inset space ~
+\end_inset
 
-\series bold
+du
+\begin_inset space ~
+\end_inset
 
-\backslash
-fboxrule
-\series default
-.
- La distance entre les deux cadres est de  1.5
+trait.
+ La distance entre les deux cadres est de 1.5
 \begin_inset space \thinspace{}
 \end_inset
 
+épaisseur
+\begin_inset space ~
+\end_inset
 
-\series bold
+du
+\begin_inset space ~
+\end_inset
 
-\backslash
-fboxrule
-\series default
-
+trait
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -33838,6 +34135,11 @@ width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -33854,10 +34156,12 @@ Boîte double
 \begin_inset VSpace bigskip
 \end_inset
 
-L'étiquette qui se trouve sur la boîte dans LyX s'adapte pour montrer le
- style de boîte utilisé.
+L'étiquette qui se trouve sur la boîte dans \SpecialChar LyX
+ s'adapte pour montrer le style
+ de boîte utilisé.
  Pour pouvoir utiliser ces différents types de cadres, vous devez installer
- le paquetage LaTeX 
+ le paquetage \SpecialChar LaTeX
+ 
 \series bold
 fancybox
 \series default
@@ -33866,7 +34170,8 @@ fancybox
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! fancybox
+Paquetages \SpecialChar LaTeX
+ ! fancybox
 \end_layout
 
 \end_inset
@@ -33885,28 +34190,8 @@ cadre rectangulaire simple
  sans boîte intérieure, vous pouvez autoriser les sauts de page à l'intérieur
  de la boîte.
  Notez que dans ce cas, contrairement aux autres boîtes avec cadre, le cadre
- prendra toute la largeur de la colonne, la boîte sera considérée comme
- son propre paragraphe et 
-\series bold
-
-\backslash
-fboxrule
-\series default
- et 
-\series bold
-
-\backslash
-fboxsep
-\series default
- n'ont aucun effet sur ce type de boîte.
- L'épaisseur de la ligne du cadre a la valeur de 
-\series bold
-
-\backslash
-FrameRule
-\series default
-.
- 
+ prendra toute la largeur de la colonne et la boîte sera considérée comme
+ son propre paragraphe: 
 \begin_inset Box Framed
 position "t"
 hor_pos "c"
@@ -33918,6 +34203,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status collapsed
 
 \begin_layout Plain Layout
@@ -33944,221 +34234,6 @@ Boîtes! Personnalisation
 \end_layout
 
 \begin_layout Standard
-La valeur implicite pour la variable 
-\series bold
-
-\backslash
-fboxrule
-\series default
- est 0.4
-\begin_inset space \thinspace{}
-\end_inset
-
-pt.
- Elle peut être modifiée avec la commande suivante en code TeX, par exemple
- pour avoir 2
-\begin_inset space \thinspace{}
-\end_inset
-
-pt :
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-setlength{
-\backslash
-fboxrule}{2pt}
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength{
-\backslash
-fboxrule}{2pt}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Boxed
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-use_makebox 0
-width "25col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-\align center
-Boîte rectangulaire avec 
-\series bold
-
-\backslash
-fboxrule
-\series default
-
-\begin_inset space \thinspace{}
-\end_inset
-
-=
-\begin_inset space \thinspace{}
-\end_inset
-
-2
-\begin_inset space \thinspace{}
-\end_inset
-
-pt
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength{
-\backslash
-fboxrule}{0.4pt}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-L'espace entre le cadre et le contenu de la boîte est le même pour tous
- les types de cadres, implicitement il est de 3
-\begin_inset space \thinspace{}
-\end_inset
-
-pt.
- Vous pouvez le modifier en donnant une autre valeur à la variable 
-\series bold
-
-\backslash
-fboxsep
-\series default
-.
- Par exemple la commande
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-setlength{
-\backslash
-fboxsep}{10pt}
-\end_layout
-
-\begin_layout Standard
-met une valeur de 10
-\begin_inset space \thinspace{}
-\end_inset
-
-pt, comme celle utilisée pour cette boîte :
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength{
-\backslash
-fboxsep}{10pt}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Boxed
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-use_makebox 0
-width "25col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-\align center
-Boîte rectangulaire avec 
-\series bold
-
-\backslash
-fboxsep
-\series default
-
-\begin_inset space \thinspace{}
-\end_inset
-
-=
-\begin_inset space \thinspace{}
-\end_inset
-
-10
-\begin_inset space \thinspace{}
-\end_inset
-
-pt
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength{
-\backslash
-fboxsep}{3pt}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
 Le diamètre des coins arrondis des boîtes ovalisées peut être modifié par
  la commande 
 \series bold
@@ -34243,6 +34318,11 @@ width "25col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -34290,239 +34370,11 @@ cornersize{0.5}
 \begin_inset VSpace bigskip
 \end_inset
 
-La taille de l'ombre peut être ajustée en changeant la valeur de la variable
- 
-\series bold
-
-\backslash
-shadowsize
-\series default
-.
- Elle est fixée à 2
-\begin_inset space \thinspace{}
-\end_inset
-
-pt pour la boîte suivante par la commande :
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-setlength{
-\backslash
-shadowsize}{2pt}
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength{
-\backslash
-shadowsize}{2pt}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Shadowbox
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-use_makebox 0
-width "25col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-\align center
-Boîte ombrée avec 
-\series bold
-
-\backslash
-shadowsize
-\series default
-
-\begin_inset space \thinspace{}
-\end_inset
-
-=
-\begin_inset space \thinspace{}
-\end_inset
-
-2
-\begin_inset space \thinspace{}
-\end_inset
-
-pt
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength{
-\backslash
-shadowsize}{4pt}
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-La valeur implicite pour la longueur 
-\series bold
-
-\backslash
-FrameRule
-\series default
- est 0,4
-\begin_inset space \thinspace{}
-\end_inset
-
-pt.
- L'espacement implicite entre le contenu de la note et le cadre est de 9
-\begin_inset space \thinspace{}
-\end_inset
-
-pt et il peut être modifié en utilisant la valeur de 
-\series bold
-
-\backslash
-FrameSep
-\series default
-.
- Par exemple, l'apparence de la boîte suivante a été modifiée avec les commandes
- suivantes en code TeX
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-setlength{
-\backslash
-FrameRule}{5pt}
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-setlength{
-\backslash
-FrameSep}{0.5cm}
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength{
-\backslash
-FrameRule}{5pt}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength{
-\backslash
-FrameSep}{0.5cm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Framed
-position "t"
-hor_pos "c"
-has_inner_box 0
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status open
-
-\begin_layout Plain Layout
-Ceci est un texte dans une boîte autorisant les 
-\family sans
-sauts de page
-\family default
-.
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength{
-\backslash
-FrameRule}{0.4pt}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength{
-\backslash
-FrameSep}{9pt}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Pour les boîtes à 
+La couleur rouge utilisée implicitement pour les boîtes à 
 \family sans
 Fond
 \begin_inset space ~
@@ -34530,20 +34382,7 @@ Fond
 
 ombré
 \family default
-, l'espacement implicite entre le contenu de la boîte et son cadre est de
- 3
-\begin_inset space \thinspace{}
-\end_inset
-
-pt et il peut être modifié avec la valeur de 
-\series bold
-
-\backslash
-fboxsep
-\series default
-.
- La couleur rouge utilisée implicitement pour le fond peut soit être modifiée
- localement avec la commande 
+ peut soit être modifiée localement avec la commande 
 \series bold
 
 \backslash
@@ -34551,13 +34390,13 @@ definecolor{shadecolor}
 \series default
 , soit globalement avec le menu 
 \family sans
-Outils\SpecialChar \menuseparator
+Outils\SpecialChar menuseparator
 Préférences
 \family default
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \family sans
-Couleurs\SpecialChar \menuseparator
+Couleurs\SpecialChar menuseparator
 boîte
 \begin_inset space ~
 \end_inset
@@ -34582,7 +34421,7 @@ reference "sec:Tableaux-Colorés"
 
 \end_inset
 
-
+.
 \begin_inset Foot
 status collapsed
 
@@ -34593,7 +34432,8 @@ Notez que l'utilisation de
 \backslash
 definecolor
 \series default
- ne peut se faire sans le paquetage LaTeX 
+ ne peut se faire sans le paquetage \SpecialChar LaTeX
+ 
 \series bold
 color
 \series default
@@ -34614,27 +34454,16 @@ reference "sec:Boîtes-colorées"
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
 Par exemple l'apparence de la note à fond ombré suivante a été modifié avec
- les commandes en code TeX suivantes
+ le commande en code \SpecialChar TeX
+ suivantes
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-
-\backslash
-setlength{
-\backslash
-fboxsep}{0.5cm}
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
 
 \series bold
 
@@ -34645,15 +34474,6 @@ definecolor{shadecolor}{cmyk}{0.5,0,1,0.5}
 \begin_layout Standard
 \begin_inset ERT
 status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-setlength{
-\backslash
-fboxsep}{0.5cm}
-\end_layout
 
 \begin_layout Plain Layout
 
@@ -34676,6 +34496,11 @@ width "100col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -34705,15 +34530,6 @@ status collapsed
 
 
 \backslash
-setlength{
-\backslash
-fboxsep}{3pt}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
 definecolor{shadecolor}{rgb}{1,0,0}
 \end_layout
 
@@ -34730,8 +34546,8 @@ definecolor{shadecolor}{rgb}{1,0,0}
 \end_layout
 
 \begin_layout Standard
-Les longueurs et les largeurs ainsi modifiées restent valables pour toutes
- les boîtes qui suivent la commandes qui les a changées.
+Les largeurs et culeurs ainsi modifiées restent valables pour toutes les
+ boîtes qui suivent la commandes qui les a changées.
 \end_layout
 
 \begin_layout Section
@@ -34756,8 +34572,9 @@ Boîtes ! Minipages
 \end_layout
 
 \begin_layout Standard
-LaTeX fournit un mécanisme qui, en fait, permet de produire une page à l'intérie
-ur d'une page.
+\SpecialChar LaTeX
+ fournit un mécanisme qui, en fait, permet de produire une page à l'intérieur
+ d'une page.
  On parle alors d'une minipage, et à l'intérieur de celle-ci, toutes les
  règles d'indentation, de saut de ligne, etc.
  s'appliquent.
@@ -34777,12 +34594,12 @@ Ci-dessous, vous avez deux exemples de minipages côte-à-côte.
 col% et elles sont séparées par un ressort horizontal, qui a été inséré
  via le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Typographie
 \begin_inset space ~
 \end_inset
 
-spéciale\SpecialChar \menuseparator
+spéciale\SpecialChar menuseparator
 Ressort
 \begin_inset space ~
 \end_inset
@@ -34804,6 +34621,11 @@ width "45col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -34848,6 +34670,11 @@ width "45col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -34910,7 +34737,7 @@ Les minipages peuvent être utilisées pour changer la couleur de fond d'une
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Couleur-pour-les-Paragraphes"
+reference "sec:Boîtes-colorées"
 
 \end_inset
 
@@ -34960,6 +34787,10 @@ Boîtes ! Parboxes
 \begin_layout Standard
 Les parboxes ressemblent beaucoup aux minipages à la différence qu'elles
  ne peuvent avoir de note de bas de page.
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -34975,6 +34806,11 @@ width "33col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -35107,6 +34943,11 @@ width ""
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -35140,7 +34981,8 @@ Une autre méthode consiste à mettre la commande
 \begin_inset Quotes frd
 \end_inset
 
- en code TeX, juste avant le mot :
+ en code \SpecialChar TeX
+, juste avant le mot :
 \end_layout
 
 \begin_layout Standard
@@ -35173,12 +35015,12 @@ motTrèsTrèsLong
 Bien sûr, maintenant le mot dépasse dans la marge latérale.
  Pour éviter cela, ajoutez un saut de ligne avant le mot avec le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Typographie
 \begin_inset space ~
 \end_inset
 
-spéciale\SpecialChar \menuseparator
+spéciale\SpecialChar menuseparator
 Passage
 \begin_inset space ~
 \end_inset
@@ -35217,6 +35059,11 @@ width ""
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -35239,7 +35086,7 @@ motTrèsTrèsLong
 Alignement vertical
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Alignement-Vertical"
+name "subsec:Alignement-Vertical"
 
 \end_inset
 
@@ -35368,7 +35215,8 @@ depth}{
 \end_layout
 
 \begin_layout Standard
-en code TeX avant le mot.
+en code \SpecialChar TeX
+ avant le mot.
  Insérez après le mot l'accolade fermante 
 \begin_inset Quotes fld
 \end_inset
@@ -35381,7 +35229,8 @@ en code TeX avant le mot.
 \begin_inset Quotes frd
 \end_inset
 
- en code TeX.
+ en code \SpecialChar TeX
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -35563,6 +35412,10 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
+
+\begin_inset Newline newline
+\end_inset
+
 Cette ligne de texte contient le mot 
 \begin_inset ERT
 status collapsed
@@ -35619,107 +35472,168 @@ Boîtes ! Couleur
 
 \end_layout
 
-\begin_layout Subsection
-De la couleur pour le texte
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Couleur ! Pour le texte
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Pour pouvoir colorer la couleur de fond d'un texte, il faut le mettre dans
- une boîte appelée 
-\begin_inset Quotes fld
-\end_inset
-
-colorbox
-\begin_inset Quotes frd
-\end_inset
-
-.
- Cela demande que le paquetage LaTeX 
-\series bold
-color
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Paquetages LaTeX ! color
-\end_layout
-
-\end_inset
-
- soit chargé dans le préambule du document avec la commande
-\end_layout
-
 \begin_layout Standard
 
-\series bold
-
-\backslash
-@ifundefined{textcolor}
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Phantom HPhantom
+\lang english
+To color the background of a box just select the color you like in the box
+ dialog.
+ This is for example a box with orange background: 
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "orange"
 status open
 
 \begin_layout Plain Layout
 
-\series bold
+\lang english
+Box with orange background
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you use the decoration 
+\family sans
+\lang french
+Cadre
+\begin_inset space ~
+\end_inset
+
+rectangulaire
+\begin_inset space ~
+\end_inset
+
+simple
+\family default
+\lang english
+ you can set a frame color.
+ In this case you must also specify a background color (LyX sets white as
+ default).
+ Here is an example: 
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "teal"
+backgroundcolor "yellow"
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Box with teal frame color and yellow background color
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\lang english
+Of course you can also have colored text inside a colored box:
+\lang french
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 0
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "cyan"
+backgroundcolor "magenta"
+status open
+
+\begin_layout Plain Layout
+
+\color yellow
+Ce texte est coloré dans une boîte colorée et encadrée.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If you need another color than the predefined ones,
+\lang french
+ vous pouvez définir vos propres couleurs comme c'est décrit dans la section
 \begin_inset space ~
 \end_inset
 
 
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Tableaux-Colorés"
 
 \end_inset
 
-{
-\backslash
-usepackage{color}}{}
-\end_layout
-
-\begin_layout Standard
-Le paquetage 
-\series bold
-color
-\series default
- sera chargé automatiquement par LyX dès que vous colorez du texte.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-C'est pour éviter qu'il soit chargé deux fois que l'on utilise la commande
- 
-\series bold
-
-\backslash
-@ifundefined
-\series default
 .
-\end_layout
 
-\end_inset
-
-
+\lang english
+ To use your own color you must typeset the box by using TeX code:
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
 
-Les boîtes colorées sont créées par la commande 
+\lang english
+Colored boxes without frame
+\lang french
+sont créées par la commande 
 \series bold
 
 \backslash
@@ -35739,70 +35653,8 @@ colorbox{couleur}{contenu de la boîte}
 
 \begin_layout Standard
 Le contenu de la boîte peut aussi être une boîte et les boîtes colorées
- peuvent être placées à l'intérieur d'autres boîtes.
-\end_layout
-
-\begin_layout Standard
-Les couleurs suivantes sont prédéfinies ::
-\begin_inset Newline newline
-\end_inset
-
-
-\family sans
-black
-\family default
- (noir), 
-\family sans
-blue
-\family default
- (bleu), 
-\family sans
-cyan
-\family default
-\series bold
-,
-\series default
- 
-\family sans
-green
-\family default
- (vert), 
-\family sans
-magenta
-\family default
-, 
-\family sans
-red
-\family default
- (rouge), 
-\family sans
-white
-\family default
- (blanc), and 
-\family sans
-yellow
-\family default
- (jaune).
-\begin_inset Newline newline
-\end_inset
-
-Vous pouvez aussi définir vos propres couleurs comme c'est décrit dans la
- section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Tableaux-Colorés"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Par exemple, pour avoir un mot sur fond rouge, insérez la commande 
+ peuvent être placées à l'intérieur d'autres boîtes.Par exemple, pour avoir
+ un mot sur fond vertfonce, insérez la commande 
 \end_layout
 
 \begin_layout Standard
@@ -35810,11 +35662,12 @@ Par exemple, pour avoir un mot sur fond rouge, insérez la commande
 \series bold
 
 \backslash
-colorbox{red}{
+colorbox{vertfonce}{
 \end_layout
 
 \begin_layout Standard
-avant le mot en code TeX.
+avant le mot en code \SpecialChar TeX
+.
  Insérez l'accolade fermante 
 \begin_inset Quotes fld
 \end_inset
@@ -35823,7 +35676,8 @@ avant le mot en code TeX.
 \begin_inset Quotes frd
 \end_inset
 
- après le mot, en code TeX.
+ après le mot, en code \SpecialChar TeX
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -35839,7 +35693,7 @@ status collapsed
 
 
 \backslash
-colorbox{red}{
+colorbox{vertfonce}{
 \end_layout
 
 \end_inset
@@ -35863,15 +35717,15 @@ status collapsed
 
 \end_inset
 
- sur fond rouge.
+ sur fond vertfonce.
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
 
-Si vous voulez que la boîte soit entourée d'une bordure dans une autre couleur,
- vous pouvez utiliser la commande 
+\lang english
+Framed, colored boxes are created
+\lang french
+ avec la commande 
 \series bold
 
 \backslash
@@ -35888,426 +35742,14 @@ fcolorbox
 fcolorbox{couleur du cadre}{couleur de la boîte}{contenu de la boîte}
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-
-\backslash
-fcolorbox
-\series default
- est une extension de 
-\series bold
-
-\backslash
-colorbox
-\series default
-.
- L'épaisseur du cadre et l'espace entre le cadre et le contenu de la boîte
- peuvent être modifiés avec les variables 
-\series bold
-
-\backslash
-fboxrule
-\series default
- et 
-\series bold
-
-\backslash
-fboxsep
-\series default
-, comme c'est décrit dans la section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Décorations"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Pour l'exemple suivant, on a utilisé la commande
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-fcolorbox{cyan}{magenta}{
-\end_layout
-
-\begin_layout Standard
-Voici un exemple où l'épaisseur de la ligne du cadre a été mise à 1
-\begin_inset space \thinspace{}
-\end_inset
-
-mm:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-fboxrule 1mm 
-\backslash
-fboxsep 1mm
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-fcolorbox{cyan}{magenta}{
-\end_layout
-
-\end_inset
-
-Ce texte est dans une boîte encadrée et colorée.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-Bien sûr, vous pouvez avoir du texte coloré dans une boîte colorée (attention,
- les yeux ! - NdT) :
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-fcolorbox{cyan}{magenta}{
-\end_layout
-
-\end_inset
-
-
-\color yellow
-Ce texte est coloré dans une boîte colorée et encadrée.
-\color inherit
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-fboxrule 0.4pt 
-\backslash
-fboxsep 3pt
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- Le texte qui se trouve dans une boîte colorée ne peut pas avoir de sauts
- de ligne.
- Pour colorer plusieurs lignes de texte ou un paragraphe, utilisez une boîte
- à l'intérieur d'une boîte colorée comme c'est décrit dans ce qui suit.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-De la couleur pour les paragraphes
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Couleur-pour-les-Paragraphes"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Couleur ! Pour les  paragraphes
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Pour modifier la couleur de fond de plus d'une ligne de texte, mettez le
- texte dans une minipage.
- Avant la minipage, insérez la commande 
-\series bold
-
-\backslash
-colorbox
-\series default
- 
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-colorbox{color}{
-\end_layout
-
-\begin_layout Standard
-en code TeX.
- Après la minipage, insérez l'accolade fermante 
-\begin_inset Quotes fld
-\end_inset
-
-}
-\begin_inset Quotes frd
-\end_inset
-
- en code TeX.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-colorbox{lightgrey}{
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-status collapsed
-
-\begin_layout Plain Layout
-Ce texte a un fond coloré.
- Ce texte a un fond coloré.
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset VSpace defskip
-\end_inset
-
-Le texte peut avoir des notes de bas de page
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Un autre exemple de note de bas de page
-\end_layout
-
-\end_inset
-
- et contenir des figures et des tableaux.
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-a
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-!
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-3
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-<
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-b2
-\begin_inset Quotes erd
-\end_inset
-
-|
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
->
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-§
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-c
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Les boîtes pivotées et redimensionnées
 \end_layout
 
 \begin_layout Standard
 Pour pouvoir utiliser les commandes décrites dans cette section, vous devez
- charger le paquetage LaTeX 
+ charger le paquetage \SpecialChar LaTeX
+ 
 \series bold
 graphicx
 \series default
@@ -36316,7 +35758,8 @@ graphicx
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! graphicx
+Paquetages \SpecialChar LaTeX
+ ! graphicx
 \end_layout
 
 \end_inset
@@ -36425,7 +35868,8 @@ Pour faire tourner des objets, vous pouvez les mettre dans une boîte pivotante
 \backslash
 rotatebox
 \series default
- en code TeX avec la syntaxe
+ en code \SpecialChar TeX
+ avec la syntaxe
 \end_layout
 
 \begin_layout Standard
@@ -36502,7 +35946,8 @@ Dans l'exemple qui suit, la commande
 \backslash
 rotatebox[origin=c]{60}{
 \series default
- a été insérée en code TeX juste avant le texte 
+ a été insérée en code \SpecialChar TeX
+ juste avant le texte 
 \begin_inset Quotes fld
 \end_inset
 
@@ -36519,7 +35964,8 @@ pivoté de 90°
 \begin_inset Quotes frd
 \end_inset
 
- en code TeX.
+ en code \SpecialChar TeX
+.
 \end_layout
 
 \begin_layout Standard
@@ -36580,6 +36026,11 @@ width "1in"
 special "width"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status collapsed
 
 \begin_layout Plain Layout
@@ -36683,7 +36134,7 @@ rotatebox[origin=l]{-90}{
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -36801,7 +36252,8 @@ scalebox
 \backslash
 resizebox
 \series default
- insérées sous forme de code TeX.
+ insérées sous forme de code \SpecialChar TeX
+.
 \end_layout
 
 \begin_layout Standard
@@ -37113,9 +36565,9 @@ scalebox
 \backslash
 resizebox
 \series default
- sont mis à zéro, il ne se produit pas d'erreur LaTeX quand on exporte le
- document, mais le document exporté peut ne pas s'afficher ou s'afficher
- partiellement.
+ sont mis à zéro, il ne se produit pas d'erreur \SpecialChar LaTeX
+ quand on exporte le document,
+ mais le document exporté peut ne pas s'afficher ou s'afficher partiellement.
 \end_layout
 
 \end_inset
@@ -37151,6 +36603,10 @@ reflectbox{Bonjour}}}
 
 \series default
 produit :
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -37189,6 +36645,10 @@ status collapsed
 \noindent
 Les images, les tableaux et les formules sont autorisées comme contenu de
  boîte :
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -37248,7 +36708,7 @@ reflectbox{
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -37476,15 +36936,16 @@ Ceci est une figure habillée.
  de sorte qu'elle n'occupe plus qu'une partie de la largeur de la colonne.
  Vous pouvez en insérer un en utilisant le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
-Flottant\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
+Flottant\SpecialChar menuseparator
 Flottant
 \begin_inset space ~
 \end_inset
 
 d'enrobage
 \family default
- à la condition que le paquetage LaTeX 
+ à la condition que le paquetage \SpecialChar LaTeX
+ 
 \series bold
 wrapfig
 \series default
@@ -37493,7 +36954,8 @@ wrapfig
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! wrapfig
+Paquetages \SpecialChar LaTeX
+ ! wrapfig
 \end_layout
 
 \end_inset
@@ -37509,9 +36971,11 @@ Configuration
 \begin_inset space ~
 \end_inset
 
-LaTeX 
+\SpecialChar LaTeX
+ 
 \emph default
-comment installer des paquetages LaTeX.
+comment installer des paquetages \SpecialChar LaTeX
+.
 \end_layout
 
 \end_inset
@@ -37540,7 +37004,8 @@ Porté de la ligne
  besoin.
  Cette dernière valeur est parfois difficile à évaluer, il vaut mieux ne
  l'utiliser que si on rencontre des problème avec le positionnement du flottant.
- Vous pouvez aussi décider si vous autorisez LaTeX à faire flotter le flottant
+ Vous pouvez aussi décider si vous autorisez \SpecialChar LaTeX
+ à faire flotter le flottant
  à l'intérieur du paragraphe ou vers les autres paragraphes.
  La figure
 \begin_inset space ~
@@ -37657,6 +37122,10 @@ reference "sec:Flottant-d'enrobage"
 \end_inset
 
  prennent les positions suivantes dans le paragraphe :
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -37664,7 +37133,7 @@ reference "sec:Flottant-d'enrobage"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -37721,7 +37190,7 @@ texte
  ou 
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -37792,7 +37261,7 @@ Pour avoir un objet exactement à la position à laquelle il a été inséré,
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -37849,7 +37318,7 @@ texte
  
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -37906,7 +37375,7 @@ texte
  
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -37982,7 +37451,7 @@ texte
  
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -38063,7 +37532,7 @@ texte
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -38140,7 +37609,7 @@ texte
  
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -38245,7 +37714,7 @@ texte
  
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -38323,7 +37792,8 @@ texte
 \end_layout
 
 \begin_layout Standard
-vous pouvez utiliser la paquetage LaTeX 
+vous pouvez utiliser la paquetage \SpecialChar LaTeX
+ 
 \end_layout
 
 \begin_layout Standard
@@ -38337,7 +37807,8 @@ picinpar
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! picinpar
+Paquetages \SpecialChar LaTeX
+ ! picinpar
 \end_layout
 
 \end_inset
@@ -38364,7 +37835,8 @@ ifpicinpar
 status open
 
 \begin_layout Plain Layout
-La section suivante ne sera affichée que si le paquetage LaTeX 
+La section suivante ne sera affichée que si le paquetage \SpecialChar LaTeX
+ 
 \series bold
 picinpar
 \series default
@@ -38510,7 +37982,8 @@ begin{window}[2,c,{
 \end_layout
 
 \begin_layout Standard
-en code TeX au debut du paragraphe.
+en code \SpecialChar TeX
+ au debut du paragraphe.
  Le premier paramètre du crochet, ici '2', définit le nombre de lignes au
  dessus de l'objet, le second, ici 'c', la position de l'objet.
  Les positions 'l', 'c' et 'r' ( respectivement pour gauche, centré et droite
@@ -38614,7 +38087,8 @@ else
 status open
 
 \begin_layout Plain Layout
-Ce qui suit sera affiché si le paquetage LaTeX 
+Ce qui suit sera affiché si le paquetage \SpecialChar LaTeX
+ 
 \series bold
 picinpar
 \series default
@@ -38627,7 +38101,8 @@ picinpar
 \end_layout
 
 \begin_layout Standard
-Vous devez installer le paquetage LaTeX 
+Vous devez installer le paquetage \SpecialChar LaTeX
+ 
 \series bold
 picinpar
 \series default
@@ -38675,7 +38150,8 @@ Entouré par du texte ! Lettrines
 \end_layout
 
 \begin_layout Standard
-Pour utiliser des lettrines, le paquetage LaTeX 
+Pour utiliser des lettrines, le paquetage \SpecialChar LaTeX
+ 
 \series bold
 lettrine
 \series default
@@ -38684,7 +38160,8 @@ lettrine
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! lettrine
+Paquetages \SpecialChar LaTeX
+ ! lettrine
 \end_layout
 
 \end_inset
@@ -38695,8 +38172,8 @@ Paquetages LaTeX ! lettrine
 
 menu 
 \family sans
-Document\SpecialChar \menuseparator
-Paramètres\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
 Modules
 \family default
 
@@ -38802,7 +38279,8 @@ iflettrine
 status open
 
 \begin_layout Plain Layout
-La section suivante ne sera affichée que si le paquetage LaTeX 
+La section suivante ne sera affichée que si le paquetage \SpecialChar LaTeX
+ 
 \series bold
 lettrine
 \series default
@@ -38821,6 +38299,10 @@ Pas de paramètre optionnel, la lettre initiale est un 'I' dans la police
 \end_inset
 
 :
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -38866,6 +38348,10 @@ L'initiale est entourée par une seule ligne et est formée de deux lettres
 \end_inset
 
 :
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -39045,6 +38531,12 @@ white
 {
 \backslash
 usepackage{color}}{}
+\series default
+
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -39143,7 +38635,8 @@ else
 status open
 
 \begin_layout Plain Layout
-Ce qui suit sera affiché si le paquetage LaTeX 
+Ce qui suit sera affiché si le paquetage \SpecialChar LaTeX
+ 
 \series bold
 lettrine
 \series default
@@ -39156,7 +38649,8 @@ lettrine
 \end_layout
 
 \begin_layout Standard
-Vous devez installer le paquetage LaTeX 
+Vous devez installer le paquetage \SpecialChar LaTeX
+ 
 \series bold
 lettrine
 \series default
@@ -39196,7 +38690,7 @@ Trucs externes
 \begin_layout Standard
 Avec le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Fichier
 \family default
  vous pouvez insérer un contenu externe à votre document.
@@ -39208,8 +38702,9 @@ Document
 \begin_inset space ~
 \end_inset
 
-LyX Un autre document LyX ; son contenu est directement inséré dans votre
- document.
+\SpecialChar LyX
+ Un autre document \SpecialChar LyX
+ ; son contenu est directement inséré dans votre document.
 \end_layout
 
 \begin_layout Description
@@ -39247,7 +38742,9 @@ Externe Fichiers de formats variés.
 \end_layout
 
 \begin_layout Description
-Sous-document Documents LyX ou LaTeX.
+Sous-document Documents \SpecialChar LyX
+ ou \SpecialChar LaTeX
+.
 \end_layout
 
 \begin_layout Section
@@ -39267,10 +38764,12 @@ Trucs externes ! Objets Externes
 \begin_layout Standard
 La fonction d'insertion d'objets externes vous permet d'insérer le contenu
  de fichiers dans votre document sans avoir à convertir ces derniers en
- un format qui soit compatible avec le format de sortie, puisque c'est LyX
+ un format qui soit compatible avec le format de sortie, puisque c'est \SpecialChar LyX
+
  qui va s'occuper des conversions.
  Ce mécanisme est semblable à celui qui permet d'insérer dans un document
- LyX des images dans des formats divers.
+ \SpecialChar LyX
+ des images dans des formats divers.
  Quand vous avez activé 
 \family sans
 Aperçu
@@ -39287,13 +38786,15 @@ le
 
 vif
 \family default
- dans le menu des préférences de LyX, dans la rubrique 
+ dans le menu des préférences de \SpecialChar LyX
+, dans la rubrique 
 \family sans
-Apparence\SpecialChar \menuseparator
+Apparence\SpecialChar menuseparator
 Graphiques
 \family default
 , les objets externes de type Dia et Xfig sont affichés directement dans
- LyX.
+ \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -39307,8 +38808,8 @@ Externe
 \family default
  qui est accessible via le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
-Fichiers\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
+Fichiers\SpecialChar menuseparator
 Objet
 \begin_inset space ~
 \end_inset
@@ -39371,19 +38872,22 @@ Retirer l'espace protégé quand le bug 4398 sera résolu !
 \begin_inset Newline newline
 \end_inset
 
-La date n'apparaîtra pas dans LyX, mais seulement dans la sortie imprimée.
+La date n'apparaîtra pas dans \SpecialChar LyX
+, mais seulement dans la sortie imprimée.
  Il y a deux autre méthodes pour insérer une date : Avec le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Date
 \family default
- et avec la commande LaTeX 
+ et avec la commande \SpecialChar LaTeX
+ 
 \series bold
 
 \backslash
 today
 \series default
- entrée comme code TeX.
+ entrée comme code \SpecialChar TeX
+.
  Ces différentes méthodes sont comparée dans le tableau
 \begin_inset space ~
 \end_inset
@@ -39453,7 +38957,8 @@ target "http://fr.wikipedia.org/wiki/Office_Open_XML"
 \end_inset
 
 .
- Pour cette fonction, LyX doit pouvoir trouver le programme 
+ Pour cette fonction, \SpecialChar LyX
+ doit pouvoir trouver le programme 
 \family typewriter
 ssconvert
 \family default
@@ -39461,7 +38966,8 @@ ssconvert
  Ce programme fait partie de gnumeric, vous devez donc aussi installer gnumeric,
  même si vous n'avez pas de tableaux au format gnumeric.
  Pour des exemples et les limitations possibles, jetez un œil au fichier
- LyX d'exemple, 
+ \SpecialChar LyX
+ d'exemple, 
 \emph on
 spreadsheet.lyx
 \emph default
@@ -39484,7 +38990,8 @@ target "http://fr.wikipedia.org/wiki/GNU_LilyPond"
 \series default
 .
  Pour plus d'information sur la gestion étendue de LilyPond, jetez un oeil
- au fichier LyX d'exemple 
+ au fichier \SpecialChar LyX
+ d'exemple 
 \emph on
 lilypond.lyx
 \emph default
@@ -39504,7 +39011,9 @@ Option
 \family default
  dans l'onglet 
 \family sans
-Options LaTeX et LyX
+Options \SpecialChar LaTeX
+ et \SpecialChar LyX
+
 \family default
 .
  L'argument de cette option est une liste d'éléments séparés par des virgules,
@@ -39630,7 +39139,8 @@ noautoscale
 \series default
  sera neutralisée.
  Pour plus d'information sur les options possibles, jetez un œil sur la
- documentation du paquetage LaTeX 
+ documentation du paquetage \SpecialChar LaTeX
+ 
 \series bold
 pdfpages
 \series default
@@ -39646,7 +39156,8 @@ key "pdfpages"
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! pdfpages
+Paquetages \SpecialChar LaTeX
+ ! pdfpages
 \end_layout
 
 \end_inset
@@ -39663,8 +39174,9 @@ Beamer
 \family sans
 FinCadre
 \family default
- et dans la suite, dans un paragraphe, une boîte de code TeX contenant la
- commande 
+ et dans la suite, dans un paragraphe, une boîte de code \SpecialChar TeX
+ contenant la commande
+ 
 \series bold
 
 \backslash
@@ -39712,7 +39224,7 @@ Externe
  comme les images qui sont habituellement incorporées en utilisant le menu
  
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Graphique
 \family default
 , comme c'est décrit dans la section
@@ -39789,7 +39301,7 @@ Comparaison des méthodes d'insertion de la date.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -39814,7 +39326,7 @@ Objet
 \begin_inset space ~
 \end_inset
 
-Externe\SpecialChar \menuseparator
+Externe\SpecialChar menuseparator
 Date
 \end_layout
 
@@ -39826,7 +39338,7 @@ Date
 \begin_layout Plain Layout
 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Date
 \end_layout
 
@@ -39851,7 +39363,8 @@ today
 \begin_inset Text
 
 \begin_layout Plain Layout
-LyX
+\SpecialChar LyX
+
 \end_layout
 
 \end_inset
@@ -39878,7 +39391,8 @@ comme date
 \begin_inset Text
 
 \begin_layout Plain Layout
-comme boîte de code TeX
+comme boîte de code \SpecialChar TeX
+
 \end_layout
 
 \end_inset
@@ -39889,7 +39403,8 @@ comme boîte de code TeX
 \begin_inset Text
 
 \begin_layout Plain Layout
-LaTeX
+\SpecialChar LaTeX
+
 \end_layout
 
 \end_inset
@@ -39993,7 +39508,8 @@ Externe
 \begin_inset Newline newline
 \end_inset
 
-Les objets externes apparaissent dans LyX, soit comme une boîte comme celle-ci
+Les objets externes apparaissent dans \SpecialChar LyX
+, soit comme une boîte comme celle-ci
  : 
 \begin_inset Graphics
 	filename ../clipart/ExternalMaterialQt4.png
@@ -40012,11 +39528,14 @@ dans
 \begin_inset space ~
 \end_inset
 
-LyX
+\SpecialChar LyX
+
 \family default
  de l'onglet 
 \family sans
-Options LaTeX et LyX
+Options \SpecialChar LaTeX
+ et \SpecialChar LyX
+
 \family default
  de la fenêtre de dialogue.
 \end_layout
@@ -40071,7 +39590,8 @@ Les sous-documents sont utilisés quand on a un document très long qui peut
  un document maître les relie pour imprimer le document complet ou seulement
  une partie de celui-ci.
  Un sous-document hérite du contenu de son maître, par exemple le préambule
- LaTeX, la bibliographie, et les étiquettes pour les références croisées.
+ \SpecialChar LaTeX
+, la bibliographie, et les étiquettes pour les références croisées.
 \end_layout
 
 \begin_layout Standard
@@ -40079,18 +39599,20 @@ Pour pouvoir travailler sur un sous-document sans avoir à ouvrir le document
  maître, précisez dans le sous-document le document maître dans le menu
  
 \family sans
-Document\SpecialChar \menuseparator
-Paramètres\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
 Classe de document
 \family default
 .
- Ce document maître sera par la suite utilisé de façon cachée par LyX à
- chaque fois que vous modifierez le sous-document.
+ Ce document maître sera par la suite utilisé de façon cachée par \SpecialChar LyX
+ à chaque
+ fois que vous modifierez le sous-document.
 \end_layout
 
 \begin_layout Standard
-Les documents inclus sont visualisés dans LyX sous la forme d'une boîte
- comme celle-ci : 
+Les documents inclus sont visualisés dans \SpecialChar LyX
+ sous la forme d'une boîte comme
+ celle-ci : 
 \begin_inset Graphics
 	filename clipart/ChildDocumentQt4.png
 	lyxscale 70
@@ -40102,8 +39624,8 @@ Les documents inclus sont visualisés dans LyX sous la forme d'une boîte
  Pour inclure des sous-documents dans un document maître , on utilise le
  menu 
 \family sans
-Insertion\SpecialChar \menuseparator
-Fichier\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
+Fichier\SpecialChar menuseparator
 Sous-document
 \family default
 .
@@ -40116,7 +39638,9 @@ Inclus
 \begin_inset space ~
 \end_inset
 
-(include) Vous pouvez inclure des documents LyX et LaTeX.
+(include) Vous pouvez inclure des documents \SpecialChar LyX
+ et \SpecialChar LaTeX
+.
  Quand vous cliquez sur le bouton 
 \family sans
 Modifier
@@ -40125,8 +39649,9 @@ Modifier
 \family sans
 Sous-document
 \family default
-, le document inclus est ouvert dans LyX dans un nouvel onglet pour que
- vous puissiez le modifier.
+, le document inclus est ouvert dans \SpecialChar LyX
+ dans un nouvel onglet pour que vous
+ puissiez le modifier.
 \begin_inset Newline newline
 \end_inset
 
@@ -40161,7 +39686,7 @@ La numérotation des sections va prendre en compte les sections des fichiers
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Sous-section-externe-1"
+reference "subsec:Sous-section-externe-1"
 
 \end_inset
 
@@ -40186,10 +39711,12 @@ status open
 \series bold
 Note:
 \series default
- Quand vous avez inclus un fichier LyX ou LaTeX, et que ce dernier utilise
- une classe de document différente de celle du document maître, vous recevez
- un avertissement quand vous tentez de le visionner ou de l'exporter, vu
- que cela peut produire des résultats inattendus sur la sortie imprimée.
+ Quand vous avez inclus un fichier \SpecialChar LyX
+ ou \SpecialChar LaTeX
+, et que ce dernier utilise une classe
+ de document différente de celle du document maître, vous recevez un avertisseme
+nt quand vous tentez de le visionner ou de l'exporter, vu que cela peut
+ produire des résultats inattendus sur la sortie imprimée.
 \end_layout
 
 \end_inset
@@ -40204,6 +39731,10 @@ Incorporé
 
 (input) Cette méthode est très semblable à la méthode Inclus, les différences
  sont :
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -40213,7 +39744,8 @@ Les fichiers incorporés ne commencent pas une nouvelle page ni ne sont suivis
 \end_layout
 
 \begin_layout Itemize
-Les fichiers incorporés peuvent être prévisualisés dans LyX quand l'option
+Les fichiers incorporés peuvent être prévisualisés dans \SpecialChar LyX
+ quand l'option
  
 \family sans
 Aperçu
@@ -40232,7 +39764,7 @@ vif
 \family default
  est activée dans les préférences dans la rubrique 
 \family sans
-Apparence\SpecialChar \menuseparator
+Apparence\SpecialChar menuseparator
 Graphique
 \family default
 .
@@ -40241,8 +39773,8 @@ Graphique
 \begin_layout Itemize
 Vous ne pouvez pas exclure des fichiers incorporés via le menu 
 \family sans
-Document\SpecialChar \menuseparator
-Paramètres\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
 Sous-documents
 \family default
 .
@@ -40270,7 +39802,8 @@ Voici un sous-document
 \emph on
 input
 \emph default
- comme LaTeX source:
+ comme \SpecialChar LaTeX
+ source:
 \end_layout
 
 \begin_layout Quote
@@ -40285,9 +39818,11 @@ filename "DocumentTexteBidon.txt"
 
 \begin_layout Description
 Verbatim Avec cette méthode tous les fichiers textes peuvent être inclus.
- Si c'est un fichier LyX ou LaTeX, le contenu sera affiché dans la sortie
- sous forme de code source et aucune des commandes éventuellement présentes
- ne sera exécutée.
+ Si c'est un fichier \SpecialChar LyX
+ ou \SpecialChar LaTeX
+, le contenu sera affiché dans la sortie sous forme
+ de code source et aucune des commandes éventuellement présentes ne sera
+ exécutée.
  Vous pouvez utiliser l'option 
 \family sans
 Marquer
@@ -40325,15 +39860,16 @@ textvisiblespace
  .
  La différence avec la méthode qui consiste à utiliser le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
-Fichier\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
+Fichier\SpecialChar menuseparator
 Texte
 \begin_inset space ~
 \end_inset
 
 brut
 \family default
- est que le contenu du document n'apparaît pas dans LyX.
+ est que le contenu du document n'apparaît pas dans \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -40425,7 +39961,8 @@ status open
 Note:
 \series default
  Inclure le même document deux fois dans un même document peut poser des
- problèmes avec LaTeX.
+ problèmes avec \SpecialChar LaTeX
+.
 \end_layout
 
 \end_inset
@@ -40440,8 +39977,8 @@ Si vous ne voulez visualiser ou exporter que certains des sous-documents
  vous êtes en train d'écrire, vous pouvez exclure des sous-documents de
  la sortie en utilisant le menu 
 \family sans
-Document\SpecialChar \menuseparator
-Paramètres\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
 Sous-documents
 \family default
 .
@@ -40480,11 +40017,13 @@ incorporé
 \family sans
 Assurer la cohérence des compteurs et des références
 \family default
-, LyX va s'assurer que tous les numéros de pages, références etc...
+, \SpecialChar LyX
+ va s'assurer que tous les numéros de pages, références etc...
  sont corrects comme si tous le document avait été traité.
  C'est utile si vous voulez que les sous-documents choisis aient exactement
  le même aspect que s'il étaient dans le document complet.
- Pour réaliser cette condition, il faut que LyX traite de façon silencieuse
+ Pour réaliser cette condition, il faut que \SpecialChar LyX
+ traite de façon silencieuse
  la totalité du document.
  Ce qui fait que si vous voulez diminuer les temps de compilation, et que
  les compteurs et autres références n'ont pas à être à tout prix valides,
@@ -40506,7 +40045,8 @@ Branches
 \emph on
 Guide de l'utilisateur
 \emph default
- de LyX.
+ de \SpecialChar LyX
+.
 \end_layout
 
 \end_inset
@@ -40579,7 +40119,7 @@ Listings
 \family sans
 Insertion
 \family default
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \family sans
 Listing
@@ -40597,7 +40137,8 @@ Code
 Source
 \family default
 .
- Le paquetage LaTeX 
+ Le paquetage \SpecialChar LaTeX
+ 
 \series bold
 listings
 \series default
@@ -40606,7 +40147,8 @@ listings
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! listings
+Paquetages \SpecialChar LaTeX
+ ! listings
 \end_layout
 
 \end_inset
@@ -40752,7 +40294,7 @@ Flottant
 \begin_layout Standard
 Vous pouvez ajouter une légende à un listing avec le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Légende
 \family default
 .
@@ -40772,7 +40314,7 @@ reference "lst:Listing-exemple"
  Une liste des listings qui contient tous les listings légendés peut être
  créée par le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Listes
 \begin_inset space ~
 \end_inset
@@ -40781,7 +40323,7 @@ Listes
 \begin_inset space ~
 \end_inset
 
-TdM\SpecialChar \menuseparator
+TdM\SpecialChar menuseparator
 Liste des listings
 \family default
 .
@@ -40865,8 +40407,8 @@ chasse fixe
 , c'est que votre police ne contient probablement pas de série grasse.
  Dans ce cas choisissez une police différente dans le menu 
 \family sans
-Document\SpecialChar \menuseparator
-Paramètres\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
 Polices
 \family default
 .
@@ -41099,8 +40641,8 @@ Il est aussi possible d'imprimer les lignes d'un fichier sous la forme d'un
  listing.
  Pour le faire, il suffit d'utiliser le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
-Fichier\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
+Fichier\SpecialChar menuseparator
 Sous-document
 \family default
  et de choisir le type 
@@ -41163,7 +40705,7 @@ Pour faire référence à un sous-document de type listing, tapez une étiquette
  dans le champ correspondant de la fenêtre de dialogue.
  On peut alors faire référence à cette étiquette en utilisant le menu 
 \family sans
-Insertion\SpecialChar \menuseparator
+Insertion\SpecialChar menuseparator
 Référence
 \begin_inset space ~
 \end_inset
@@ -41193,7 +40735,8 @@ reference "lst:listing-fichier"
 \begin_inset space \thinspace{}
 \end_inset
 
-15 de ce fichier LyX sont listées.
+15 de ce fichier \SpecialChar LyX
+ sont listées.
 \end_layout
 
 \begin_layout Standard
@@ -41338,8 +40881,8 @@ frac{1}{x^{2}}$
 Les paramètres globaux pour les listings peuvent être modifiés avec la fenêtre
  de dialogue 
 \family sans
-Document\SpecialChar \menuseparator
-Paramètres\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
 Listings
 \family default
 .
@@ -41379,7 +40922,8 @@ key "listings"
 
 \begin_layout Chapter
 \start_of_appendix
-Unités de longueur utilisables avec LyX
+Unités de longueur utilisables avec \SpecialChar LyX
+
 \begin_inset Argument 1
 status collapsed
 
@@ -41422,7 +40966,8 @@ reference "tab:Unités"
 
 \end_inset
 
-décrit les unités utilisées par LyX.
+décrit les unités utilisées par \SpecialChar LyX
+.
 \begin_inset Float table
 placement h
 wide false
@@ -41458,7 +41003,7 @@ Unités de longueur
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="20" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -41485,7 +41030,8 @@ nom/description
 \begin_inset Text
 
 \begin_layout Plain Layout
-commande LaTeX
+commande \SpecialChar LaTeX
+
 \end_layout
 
 \end_inset
@@ -42271,8 +41817,8 @@ z le DVI puisque la visionneuse doit convertir les images en tâche de fond
 Vous pouvez exporter votre document comme un fichier DVI en utilisant le
  menu 
 \family sans
-Fichier\SpecialChar \menuseparator
-Exporter\SpecialChar \menuseparator
+Fichier\SpecialChar menuseparator
+Exporter\SpecialChar menuseparator
 DVI.
 
 \family default
@@ -42285,13 +41831,6 @@ Visualiser
 
 \begin_layout Section
 PostScript
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:PostScript"
-
-\end_inset
-
-
 \begin_inset Index idx
 status collapsed
 
@@ -42372,7 +41911,8 @@ status collapsed
 
 \begin_layout Plain Layout
 Si vous souhaitez en apprendre plus à ce sujet, jetez un coup d'œil au paquetage
- LaTeX 
+ \SpecialChar LaTeX
+ 
 \series bold
 pstricks
 \series default
@@ -42412,10 +41952,12 @@ PostScript Encapsulé
 .eps
 \family default
 ).
- Comme LyX vous permet n'importe quel format d'image connu dans votre document,
+ Comme \SpecialChar LyX
+ vous permet n'importe quel format d'image connu dans votre document,
  il doit les convertir en interne en EPS.
- Si vous avez par exemple 50 images dans votre document, LyX doit faire
- 50 conversions à chaque fois que vous visualisez ou que vous exportez votre
+ Si vous avez par exemple 50 images dans votre document, \SpecialChar LyX
+ doit faire 50
+ conversions à chaque fois que vous visualisez ou que vous exportez votre
  document.
  Cela risque de ralentir de façon importante votre rythme de travail.
  En conclusion, si vous prévoyez d'utiliser PostScript, vous pouvez insérer
@@ -42426,8 +41968,8 @@ PostScript Encapsulé
 Vous pouvez exporter votre document comme un fichier PostScript en utilisant
  le menu 
 \family sans
-Fichier\SpecialChar \menuseparator
-Exporter\SpecialChar \menuseparator
+Fichier\SpecialChar menuseparator
+Exporter\SpecialChar menuseparator
 PostScript.
 
 \family default
@@ -42534,7 +42076,8 @@ Portable Network Graphics
 .png
 \family default
 ).
- Vous pouvez quand même utiliser d'autres formats puisque LyX les convertit
+ Vous pouvez quand même utiliser d'autres formats puisque \SpecialChar LyX
+ les convertit
  dans un de ces formats.
  Mais comme il est dit dans la section sur PostScript, les conversions d'images
  vont ralentir votre travail.
@@ -42545,7 +42088,7 @@ Portable Network Graphics
 Vous pouvez exporter votre document comme un fichier PDF en utilisant le
  menu 
 \family sans
-Fichier\SpecialChar \menuseparator
+Fichier\SpecialChar menuseparator
 Exporter 
 \family default
 de trois façons différentes:
@@ -42637,7 +42180,7 @@ name "chap:Liste-de-noms-de-couleur-dvips"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -46169,7 +45712,8 @@ où
 \backslash
 tabcolsep
 \series default
- est la largeur utilisée par LaTeX entre le texte de la cellule et la bordure,
+ est la largeur utilisée par \SpecialChar LaTeX
+ entre le texte de la cellule et la bordure,
  sa valeur implicite est 6
 \begin_inset space \thinspace{}
 \end_inset
@@ -46267,7 +45811,8 @@ key "latexcompanion"
 
 Frank Mittelbach and Michel Goossens: 
 \emph on
-The LaTeX Companion Second Edition.
+The \SpecialChar LaTeX
+ Companion Second Edition.
 
 \emph default
  Addison-Wesley, 2004
@@ -46283,7 +45828,8 @@ key "latexguide"
 Helmut Kopka and Patrick W.
  Daly: 
 \emph on
-A Guide to LaTeX Fourth Edition.
+A Guide to \SpecialChar LaTeX
+ Fourth Edition.
 
 \emph default
  Addison-Wesley, 2003
@@ -46298,7 +45844,8 @@ key "latexbook"
 
 Leslie Lamport: 
 \emph on
-LaTeX: A Document Preparation System.
+\SpecialChar LaTeX
+: A Document Preparation System.
 
 \emph default
  Addison-Wesley, second edition, 1994
@@ -46311,7 +45858,8 @@ key "arydshln"
 
 \end_inset
 
-Documentation du paquetage LaTeX
+Documentation du paquetage \SpecialChar LaTeX
+
 \series bold
  
 \begin_inset CommandInset href
@@ -46328,7 +45876,8 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/arydshln/arydshl
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! arydshln
+Paquetages \SpecialChar LaTeX
+ ! arydshln
 \end_layout
 
 \end_inset
@@ -46343,7 +45892,8 @@ key "booktabs"
 
 \end_inset
 
-Documentation du paquetage LaTeX 
+Documentation du paquetage \SpecialChar LaTeX
+ 
 \series bold
 
 \begin_inset CommandInset href
@@ -46360,7 +45910,8 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/booktabs/booktab
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! booktabs
+Paquetages \SpecialChar LaTeX
+ ! booktabs
 \end_layout
 
 \end_inset
@@ -46375,7 +45926,8 @@ key "caption"
 
 \end_inset
 
-Documentation du paquetage LaTeX 
+Documentation du paquetage \SpecialChar LaTeX
+ 
 \series bold
 
 \begin_inset CommandInset href
@@ -46392,7 +45944,8 @@ target "http://mirrors.ctan.org/macros/latex/contrib/caption/caption-eng.pdf"
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! caption
+Paquetages \SpecialChar LaTeX
+ ! caption
 \end_layout
 
 \end_inset
@@ -46407,7 +45960,8 @@ key "diagbox"
 
 \end_inset
 
-Documentation du paquetage LaTeX 
+Documentation du paquetage \SpecialChar LaTeX
+ 
 \series bold
 
 \begin_inset CommandInset href
@@ -46424,7 +45978,8 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/diagbox/diagbox.
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! diagbox
+Paquetages \SpecialChar LaTeX
+ ! diagbox
 \end_layout
 
 \end_inset
@@ -46439,7 +45994,8 @@ key "endfloat"
 
 \end_inset
 
-Documentation du paquetage LaTeX 
+Documentation du paquetage \SpecialChar LaTeX
+ 
 \series bold
 
 \begin_inset CommandInset href
@@ -46456,7 +46012,8 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/endfloat/endfloa
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! endfloat
+Paquetages \SpecialChar LaTeX
+ ! endfloat
 \end_layout
 
 \end_inset
@@ -46471,7 +46028,8 @@ key "footmisc"
 
 \end_inset
 
-Documentation du paquetage LaTeX 
+Documentation du paquetage \SpecialChar LaTeX
+ 
 \series bold
 
 \begin_inset CommandInset href
@@ -46488,7 +46046,8 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/footmisc/footmis
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! footmisc
+Paquetages \SpecialChar LaTeX
+ ! footmisc
 \end_layout
 
 \end_inset
@@ -46503,7 +46062,8 @@ key "hypcap"
 
 \end_inset
 
-Documentation du paquetage LaTeX 
+Documentation du paquetage \SpecialChar LaTeX
+ 
 \series bold
 
 \begin_inset CommandInset href
@@ -46520,7 +46080,8 @@ target "http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/hypcap.pdf
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! hyperref
+Paquetages \SpecialChar LaTeX
+ ! hyperref
 \end_layout
 
 \end_inset
@@ -46535,7 +46096,8 @@ key "hyperref"
 
 \end_inset
 
-Documentation du paquetage LaTeX 
+Documentation du paquetage \SpecialChar LaTeX
+ 
 \series bold
 
 \begin_inset CommandInset href
@@ -46552,7 +46114,8 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperre
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! hyperref
+Paquetages \SpecialChar LaTeX
+ ! hyperref
 \end_layout
 
 \end_inset
@@ -46567,7 +46130,8 @@ key "KOMA-Script"
 
 \end_inset
 
-Documentation du paquetage LaTeX 
+Documentation du paquetage \SpecialChar LaTeX
+ 
 \series bold
 
 \begin_inset CommandInset href
@@ -46584,7 +46148,8 @@ target "http://mirror.ctan.org/macros/latex/contrib/koma-script/doc/scrguien.pdf
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! KOMA-Script
+Paquetages \SpecialChar LaTeX
+ ! KOMA-Script
 \end_layout
 
 \end_inset
@@ -46599,7 +46164,8 @@ key "lettrine"
 
 \end_inset
 
-Documentation du paquetage LaTeX 
+Documentation du paquetage \SpecialChar LaTeX
+ 
 \series bold
 
 \begin_inset CommandInset href
@@ -46624,7 +46190,8 @@ target "http://mirrors.ctan.org/macros/latex/contrib/lettrine/doc/demo.pdf"
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! lettrine
+Paquetages \SpecialChar LaTeX
+ ! lettrine
 \end_layout
 
 \end_inset
@@ -46639,7 +46206,8 @@ key "listings"
 
 \end_inset
 
-Documentation du paquetage LaTeX 
+Documentation du paquetage \SpecialChar LaTeX
+ 
 \series bold
 
 \begin_inset CommandInset href
@@ -46656,7 +46224,8 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/listings/listing
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! listings
+Paquetages \SpecialChar LaTeX
+ ! listings
 \end_layout
 
 \end_inset
@@ -46671,7 +46240,8 @@ key "marginnote"
 
 \end_inset
 
-Documentation du paquetage LaTeX 
+Documentation du paquetage \SpecialChar LaTeX
+ 
 \series bold
 
 \begin_inset CommandInset href
@@ -46688,7 +46258,8 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/marginnote/margi
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! marginnote
+Paquetages \SpecialChar LaTeX
+ ! marginnote
 \end_layout
 
 \end_inset
@@ -46703,7 +46274,8 @@ key "pdfpages"
 
 \end_inset
 
-Documentation du paquetage LaTeX 
+Documentation du paquetage \SpecialChar LaTeX
+ 
 \series bold
 
 \begin_inset CommandInset href
@@ -46720,7 +46292,8 @@ target "http://www.ctan.org/tex-archive/macros/latex/contrib/pdfpages/pdfpages.p
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! pdfpages
+Paquetages \SpecialChar LaTeX
+ ! pdfpages
 \end_layout
 
 \end_inset
@@ -46735,7 +46308,8 @@ key "prettyref"
 
 \end_inset
 
-Documentation du paquetage LaTeX
+Documentation du paquetage \SpecialChar LaTeX
+
 \series bold
  
 \begin_inset CommandInset href
@@ -46752,7 +46326,8 @@ target "http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! prettyref
+Paquetages \SpecialChar LaTeX
+ ! prettyref
 \end_layout
 
 \end_inset
@@ -46767,7 +46342,8 @@ key "pstricks"
 
 \end_inset
 
-Page Web du paquetage LaTeX 
+Page Web du paquetage \SpecialChar LaTeX
+ 
 \series bold
 
 \begin_inset CommandInset href
@@ -46784,7 +46360,8 @@ target "http://tug.org/PSTricks/"
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! PSTricks
+Paquetages \SpecialChar LaTeX
+ ! PSTricks
 \end_layout
 
 \end_inset
@@ -46799,7 +46376,8 @@ key "refstyle"
 
 \end_inset
 
-Documentation du paquetage LaTeX
+Documentation du paquetage \SpecialChar LaTeX
+
 \series bold
  
 \begin_inset CommandInset href
@@ -46816,7 +46394,8 @@ target "http://mirrors.ctan.org/macros/latex/contrib/refstyle/refstyle.pdf"
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! refstyle
+Paquetages \SpecialChar LaTeX
+ ! refstyle
 \end_layout
 
 \end_inset
@@ -46831,7 +46410,8 @@ key "sidecap"
 
 \end_inset
 
-Documentation du paquetage LaTeX 
+Documentation du paquetage \SpecialChar LaTeX
+ 
 \series bold
 
 \begin_inset CommandInset href
@@ -46848,7 +46428,8 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/sidecap/sidecap.
 status collapsed
 
 \begin_layout Plain Layout
-Paquetages LaTeX ! sidecap
+Paquetages \SpecialChar LaTeX
+ ! sidecap
 \end_layout
 
 \end_inset
@@ -46873,7 +46454,8 @@ target "http://wiki.lyx.org/LyX/NewInLyX20"
 
  au sujet des nouveautés de 
 \family sans
-LyX 2.0
+\SpecialChar LyX
+ 2.0
 \family default
 .
 \end_layout
