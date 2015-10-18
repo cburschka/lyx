@@ -8551,14 +8551,12 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
-
 Esto es entorno literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8571,7 +8569,6 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
-
 Casi todo está permitido en entorno literal:"%&$§#~'`
 \backslash
 }][{|
@@ -46459,8 +46456,9 @@ Unidades
 \noindent
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="20" columns="2">
+<lyxtabular version="3" rows="20" columns="3">
 <features tabularvalignment="middle">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -46473,11 +46471,21 @@ unidad
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 nombre/descripción
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+comando \SpecialChar LaTeX
+
 \end_layout
 
 \end_inset
@@ -46493,11 +46501,20 @@ mm
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 milímetro
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
 \end_layout
 
 \end_inset
@@ -46513,11 +46530,20 @@ cm
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 centímetro
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
 \end_layout
 
 \end_inset
@@ -46533,11 +46559,20 @@ in
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 pulgada
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
 \end_layout
 
 \end_inset
@@ -46553,7 +46588,7 @@ pt
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -46570,6 +46605,15 @@ in)
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -46581,7 +46625,7 @@ pc
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -46598,6 +46642,15 @@ pt)
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -46609,11 +46662,11 @@ sp
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-punto escalado (65536
+punto a escala (65536
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -46622,6 +46675,15 @@ sp = 1
 \end_inset
 
 pt)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
 \end_layout
 
 \end_inset
@@ -46637,7 +46699,7 @@ bp
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -46654,6 +46716,15 @@ in)
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -46665,7 +46736,7 @@ dd
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -46686,6 +46757,15 @@ mm)
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -46697,7 +46777,7 @@ cc
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -46714,56 +46794,42 @@ dd)
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-escala
-\begin_inset space \thinspace{}
-\end_inset
 
-%
+\lang english
+Scale Graphics %
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset space \thinspace{}
-\end_inset
-
 % del tamaño original de la imagen
 \end_layout
 
 \end_inset
 </cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-texto
-\begin_inset space \thinspace{}
-\end_inset
-
-%
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset space \thinspace{}
-\end_inset
 
-% del ancho de texto
 \end_layout
 
 \end_inset
@@ -46774,11 +46840,18 @@ texto
 \begin_inset Text
 
 \begin_layout Plain Layout
-columna
-\begin_inset space \thinspace{}
-\end_inset
 
-%
+\lang english
+Text Width %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% de anchura de texto
 \end_layout
 
 \end_inset
@@ -46787,10 +46860,9 @@ columna
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset space \thinspace{}
-\end_inset
 
-% del ancho de columna
+\backslash
+textwidth
 \end_layout
 
 \end_inset
@@ -46801,11 +46873,18 @@ columna
 \begin_inset Text
 
 \begin_layout Plain Layout
-página
-\begin_inset space \thinspace{}
-\end_inset
 
-%
+\lang english
+Column Width %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% de anchura de columna
 \end_layout
 
 \end_inset
@@ -46814,10 +46893,9 @@ página
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset space \thinspace{}
-\end_inset
 
-% del ancho de página
+\backslash
+columnwidth
 \end_layout
 
 \end_inset
@@ -46828,11 +46906,18 @@ página
 \begin_inset Text
 
 \begin_layout Plain Layout
-línea
-\begin_inset space \thinspace{}
-\end_inset
 
-%
+\lang english
+Page Width %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% de anchura de página
 \end_layout
 
 \end_inset
@@ -46841,10 +46926,9 @@ línea
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset space \thinspace{}
-\end_inset
 
-% del ancho de línea
+\backslash
+paperwidth
 \end_layout
 
 \end_inset
@@ -46855,11 +46939,18 @@ línea
 \begin_inset Text
 
 \begin_layout Plain Layout
-alt_texto
-\begin_inset space \thinspace{}
-\end_inset
 
-%
+\lang english
+Line Width %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% de anchura de línea
 \end_layout
 
 \end_inset
@@ -46868,25 +46959,64 @@ alt_texto
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset space \thinspace{}
-\end_inset
 
+\backslash
+linewidth
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\lang english
+Text Height %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 % de altura de texto
 \end_layout
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+textheight
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-alt_página
-\begin_inset space \thinspace{}
-\end_inset
 
-%
+\lang english
+Page Height %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% de altura de página
 \end_layout
 
 \end_inset
@@ -46895,10 +47025,9 @@ alt_página
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset space \thinspace{}
-\end_inset
 
-% de altura de página
+\backslash
+paperheight
 \end_layout
 
 \end_inset
@@ -46914,15 +47043,24 @@ ex
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+altura de letra 
+\emph on
+x
+\emph default
+ en tipografía actual
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-altura de la letra 
-\emph on
-x
-\emph default
- en la tipografía actual
+-
 \end_layout
 
 \end_inset
@@ -46938,15 +47076,24 @@ em
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+anchura de letra 
+\emph on
+M
+\emph default
+ en tipografía actual
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-ancho de la letra 
-\emph on
-M
-\emph default
- en la tipografía actual
+-
 \end_layout
 
 \end_inset
@@ -46962,7 +47109,7 @@ mu
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -46975,6 +47122,15 @@ mu = 1/18
 \end_inset
 
 em)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
 \end_layout
 
 \end_inset
