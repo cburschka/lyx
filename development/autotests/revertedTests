@@ -107,3 +107,5 @@ export/examples/he/(example_lyxified|example_raw|splash)_pdf4_texF
 # Inside these two files, we state that they should only be expected
 # to work with pdflatex and possibly lualatex.
 export/examples/PDF-(comment|form)_(dvi.*|pdf[^25]*)
+#
+export/templates/IUCr-article_pdf4_systemF
