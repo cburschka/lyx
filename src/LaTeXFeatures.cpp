@@ -1174,11 +1174,12 @@ docstring const LaTeXFeatures::getMacros() const
 		macros << textgreek_def << '\n';
 	}
 
-	if (!usePolyglossia() && mustProvide("textcyr"))
-	        // ensure T2A font encoding is set up also if fontenc is not loaded by LyX
-	   	if (params_.font_encoding() == "default")
+	if (!usePolyglossia() && mustProvide("textcyr")) {
+		// ensure T2A font encoding is set up also if fontenc is not loaded by LyX
+		if (params_.font_encoding() == "default")
 			macros << textcyr_T2A_def;
 		macros << textcyr_def << '\n';
+	}
 
         // non-standard text accents:
 	if (mustProvide("textcommaabove") || mustProvide("textcommaaboveright") ||
