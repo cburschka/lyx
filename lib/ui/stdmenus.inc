@@ -606,6 +606,7 @@ Menuset
 	Menu "examples"
 		Item "Beamer Presentations|B" "help-open beamer"
 		Item "Braille|a" "help-open Braille"
+		Item "Colored boxes|C" "help-open colored-boxes"
 		Item "Feynman-diagram|F" "help-open FeynmanDiagrams"
 		Item "Knitr|K" "help-open knitr"
 		Item "LilyPond|P" "help-open lilypond"

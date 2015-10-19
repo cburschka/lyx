@@ -1,9 +1,10 @@
-#\DeclareLyXModule[tcolorbox.sty]{Fancy Colored Boxes}
+#\DeclareLyXModule[tcolorbox.sty,environ.sty,etoolbox.sty,pgf.sty]{Fancy Colored Boxes}
 #DescriptionBegin
 #Adds custom insets that support colored boxes via the tcolorbox package.
 #See the tcolorbox documentation for details.
 #DescriptionEnd
-#Authors: Jürgen Spitzmüller
+#Author: Jürgen Spitzmüller
+#        Uwe Stöhr <uwestoehr@lyx.org>
 
 Format 54
 
@@ -17,36 +18,39 @@ InsetLayout Flex:Color_Box
   Argument 1
     LabelString         "Color Box Options"
     Tooltip             "Insert the color box options here (see tcolorbox manual)"
+    PassThruChars		"\[]{}"
   EndArgument
   ResetsFont            true
 End
 
 InsetLayout Flex:Dynamic_Color_Box
-  LyXType               custom
-  Decoration            classic
-  LabelString           "Color Box (Dynamic)"
+  CopyStyle			    Flex:Color_Box
   LatexType             command
+  LabelString           "Color Box (Dynamic)"
   LatexName             tcbox
-  Requires              tcolorbox
-  Argument 1
-    LabelString         "Color Box Options"
-    Tooltip             "Insert the color box options here (see tcolorbox manual)"
-  EndArgument
-  ResetsFont            true
 End
 
 InsetLayout Flex:Fit_Color_Box
-  LyXType               custom
-  Decoration            classic
+  CopyStyle			    Flex:Dynamic_Color_Box
   LabelString           "Color Box (Fit Contents)"
-  LatexType             command
   LatexName             tcboxfit
-  Requires              tcolorbox
+End
+
+InsetLayout Flex:Raster_Color_Box
+  CopyStyle			    Flex:Color_Box
+  LabelString           "Raster Color Box"
+  LatexName             tcbraster
+End
+
+InsetLayout Flex:Subtitle
+  CopyStyle			Flex:Dynamic_Color_Box
+  LatexName			tcbsubtitle
+  LabelString		"Subtitle"
   Argument 1
-    LabelString         "Color Box Options"
-    Tooltip             "Insert the color box options here (see tcolorbox manual)"
+    LabelString		"Subtitle Options"
+    ToolTip			"Insert the options here"
+    PassThruChars	"\[]{}"
   EndArgument
-  ResetsFont            true
 End
 
 Style Color_Box_Separator
@@ -111,3 +115,72 @@ Style Color_Box_Setup
   Spellcheck       0
 End
 
+Style New_Color_Box_Type
+  CopyStyle	       Color_Box_Setup
+  LatexName        newtcolorbox
+  LabelString      "New Color Box Type"
+  Font
+    Family         roman
+  EndFont
+  LabelFont
+    Color          green
+  EndFont
+  Argument 1
+    LabelString    "New Box Options"
+    Tooltip        "Options for the new box type (optional)"
+    PassThruChars  "\[]{}"
+  EndArgument
+  Argument 2
+    LabelString    "Name"
+    Tooltip        "Name of the new box type"
+    Mandatory      1
+    AutoInsert     1    
+  EndArgument
+  Argument 3
+    LabelString    "Arguments"
+    Tooltip        "Number of arguments (remove this inset if none!)"
+    Requires       4
+  EndArgument
+  Argument 4
+    LabelString    "Default Value"
+    Tooltip        "Default value for argument (keep empty!)"
+    Requires       3
+  EndArgument
+End
+
+# define 5 different box environments that can be customized by the user
+
+InsetLayout Flex:Custom_Color_Box_1
+  CopyStyle        Flex:Color_Box
+  LabelString      "Custom Color Box 1"
+  LatexName        cBoxA
+  Argument 2
+    LabelString    "More Color Box Options"
+    Tooltip        "Insert more color box options here"
+    Mandatory      1
+  EndArgument
+End
+
+InsetLayout Flex:Custom_Color_Box_2
+  CopyStyle        Flex:Custom_Color_Box_1
+  LabelString      "Custom Color Box 2"
+  LatexName        cBoxB
+End
+
+InsetLayout Flex:Custom_Color_Box_3
+  CopyStyle        Flex:Custom_Color_Box_1
+  LabelString      "Custom Color Box 3"
+  LatexName        cBoxC
+End
+
+InsetLayout Flex:Custom_Color_Box_4
+  CopyStyle        Flex:Custom_Color_Box_1
+  LabelString      "Custom Color Box 4"
+  LatexName        cBoxD
+End
+
+InsetLayout Flex:Custom_Color_Box_5
+  CopyStyle        Flex:Custom_Color_Box_1
+  LabelString      "Custom Color Box 5"
+  LatexName        cBoxE
+End

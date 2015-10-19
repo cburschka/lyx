@@ -309,6 +309,7 @@ dist_examples_DATA = \
 	examples/biblioExample.bib \
 	examples/chess-article.lyx \
 	examples/chessgame.lyx \
+	examples/colored-boxes.lyx \
 	examples/docbook_article.lyx \
 	examples/europeCV.lyx \
 	examples/europassCV.lyx \

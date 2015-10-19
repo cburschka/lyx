@@ -39,6 +39,65 @@ from parser_tools import find_token, find_token_backwards, find_re, \
      find_end_of_inset, find_end_of_layout, find_nonempty_line, \
      get_containing_layout, get_value, check_token
 
+####################################################################
+# Private helper functions
+
+def revert_Argument_to_TeX_brace(document, line, endline, n, nmax, environment, opt, nolastopt):
+    '''
+    Reverts an InsetArgument to TeX-code
+    usage:
+    revert_Argument_to_TeX_brace(document, LineOfBegin, LineOfEnd, StartArgument, EndArgument, isEnvironment, isOpt, notLastOpt)
+    LineOfBegin is the line  of the \begin_layout or \begin_inset statement
+    LineOfEnd is the line  of the \end_layout or \end_inset statement, if "0" is given, the end of the file is used instead
+    StartArgument is the number of the first argument that needs to be converted
+    EndArgument is the number of the last argument that needs to be converted or the last defined one
+    isEnvironment must be true, if the layout is for a LaTeX environment
+    isOpt must be true, if the argument is an optional one
+    notLastOpt must be true if the argument is mandatory and followed by optional ones
+    '''
+    lineArg = 0
+    wasOpt = False
+    while lineArg != -1 and n < nmax + 1:
+      lineArg = find_token(document.body, "\\begin_inset Argument " + str(n), line)
+      if lineArg > endline and endline != 0:
+        return wasOpt
+      if lineArg != -1:
+        beginPlain = find_token(document.body, "\\begin_layout Plain Layout", lineArg)
+        # we have to assure that no other inset is in the Argument
+        beginInset = find_token(document.body, "\\begin_inset", beginPlain)
+        endInset = find_token(document.body, "\\end_inset", beginPlain)
+        k = beginPlain + 1
+        l = k
+        while beginInset < endInset and beginInset != -1:
+          beginInset = find_token(document.body, "\\begin_inset", k)
+          endInset = find_token(document.body, "\\end_inset", l)
+          k = beginInset + 1
+          l = endInset + 1
+        if environment == False:
+          if opt == False:
+            if nolastopt == False:
+              document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}{")
+            else:
+              document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}") 
+            del(document.body[lineArg : beginPlain + 1])
+            wasOpt = False
+          else:
+            document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("]")
+            document.body[lineArg : beginPlain + 1] = put_cmd_in_ert("[")
+            wasOpt = True
+        else:
+          if opt == False:
+            document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}")
+            document.body[lineArg : beginPlain + 1] = put_cmd_in_ert("{")
+            wasOpt = False
+          else:
+            document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("]")
+            document.body[lineArg : beginPlain + 1] = put_cmd_in_ert("[")
+            wasOpt = True
+        n += 1
+    return wasOpt
+
+
 ###############################################################################
 ###
 ### Conversion and reversion routines
@@ -1566,6 +1625,193 @@ def revert_external_bbox(document):
     convert_revert_external_bbox(document, False)
 
 
+def revert_tcolorbox_1(document):
+  " Reverts the Flex:Subtitle inset of tcolorbox to TeX-code "
+  i = -1
+  while True:
+    i = find_token(document.header, "tcolorbox", i)
+    if i == -1:
+      break
+    else:    
+      flex = 0
+      flexEnd = -1
+      flex = find_token(document.body, "\\begin_inset Flex Subtitle", flex)
+      if flex == -1:
+        return flexEnd
+      flexEnd = find_end_of_inset(document.body, flex)
+      wasOpt = revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, False, True, False)
+      revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, False, False, False)
+      flexEnd = find_end_of_inset(document.body, flex)
+      if wasOpt == True:
+        document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\tcbsubtitle")
+      else:
+        document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\tcbsubtitle{")
+      document.body[flexEnd + 4 : flexEnd + 7] = put_cmd_in_ert("}")
+      flex += 1
+
+
+def revert_tcolorbox_2(document):
+  " Reverts the Flex:Raster_Color_Box inset of tcolorbox to TeX-code "
+  i = -1
+  while True:
+    i = find_token(document.header, "tcolorbox", i)
+    if i == -1:
+      break
+    else:    
+      flex = 0
+      flexEnd = -1
+      flex = find_token(document.body, "\\begin_inset Flex Raster Color Box", flex)
+      if flex == -1:
+        return flexEnd
+      flexEnd = find_end_of_inset(document.body, flex)
+      revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
+      flexEnd = find_end_of_inset(document.body, flex)
+      document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\begin{tcbraster}")
+      document.body[flexEnd + 4 : flexEnd + 7] = put_cmd_in_ert("\\end{tcbraster}")
+      flex += 1
+
+
+def revert_tcolorbox_3(document):
+  " Reverts the Flex:Custom_Color_Box_1 inset of tcolorbox to TeX-code "
+  i = -1
+  while True:
+    i = find_token(document.header, "tcolorbox", i)
+    if i == -1:
+      break
+    else:    
+      flex = 0
+      flexEnd = -1
+      flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 1", flex)
+      if flex == -1:
+        return flexEnd
+      flexEnd = find_end_of_inset(document.body, flex)
+      revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
+      revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
+      flexEnd = find_end_of_inset(document.body, flex)
+      document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\begin{cBoxA}")
+      document.body[flexEnd + 4 : flexEnd + 7] = put_cmd_in_ert("{}\\end{cBoxA}")
+      flex += 1
+
+
+def revert_tcolorbox_4(document):
+  " Reverts the Flex:Custom_Color_Box_2 inset of tcolorbox to TeX-code "
+  i = -1
+  while True:
+    i = find_token(document.header, "tcolorbox", i)
+    if i == -1:
+      break
+    else:    
+      flex = 0
+      flexEnd = -1
+      flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 2", flex)
+      if flex == -1:
+        return flexEnd
+      flexEnd = find_end_of_inset(document.body, flex)
+      revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
+      revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
+      flexEnd = find_end_of_inset(document.body, flex)
+      document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\begin{cBoxB}")
+      document.body[flexEnd + 4 : flexEnd + 7] = put_cmd_in_ert("{}\\end{cBoxB}")
+      flex += 1
+
+
+def revert_tcolorbox_5(document):
+  " Reverts the Flex:Custom_Color_Box_3 inset of tcolorbox to TeX-code "
+  i = -1
+  while True:
+    i = find_token(document.header, "tcolorbox", i)
+    if i == -1:
+      break
+    else:    
+      flex = 0
+      flexEnd = -1
+      flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 3", flex)
+      if flex == -1:
+        return flexEnd
+      flexEnd = find_end_of_inset(document.body, flex)
+      revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
+      revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
+      flexEnd = find_end_of_inset(document.body, flex)
+      document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\begin{cBoxC}")
+      document.body[flexEnd + 4 : flexEnd + 7] = put_cmd_in_ert("{}\\end{cBoxC}")
+      flex += 1
+
+
+def revert_tcolorbox_6(document):
+  " Reverts the Flex:Custom_Color_Box_4 inset of tcolorbox to TeX-code "
+  i = -1
+  while True:
+    i = find_token(document.header, "tcolorbox", i)
+    if i == -1:
+      break
+    else:    
+      flex = 0
+      flexEnd = -1
+      flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 4", flex)
+      if flex == -1:
+        return flexEnd
+      flexEnd = find_end_of_inset(document.body, flex)
+      revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
+      revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
+      flexEnd = find_end_of_inset(document.body, flex)
+      document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\begin{cBoxD}")
+      document.body[flexEnd + 4 : flexEnd + 7] = put_cmd_in_ert("{}\\end{cBoxD}")
+      flex += 1
+
+
+def revert_tcolorbox_7(document):
+  " Reverts the Flex:Custom_Color_Box_5 inset of tcolorbox to TeX-code "
+  i = -1
+  while True:
+    i = find_token(document.header, "tcolorbox", i)
+    if i == -1:
+      break
+    else:    
+      flex = 0
+      flexEnd = -1
+      flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 5", flex)
+      if flex == -1:
+        return flexEnd
+      flexEnd = find_end_of_inset(document.body, flex)
+      revert_Argument_to_TeX_brace(document, flex, flexEnd, 1, 1, True, True, False)
+      revert_Argument_to_TeX_brace(document, flex, 0, 2, 2, True, False, False)
+      flexEnd = find_end_of_inset(document.body, flex)
+      document.body[flex + 0 : flex + 4] = put_cmd_in_ert("\\begin{cBoxE}")
+      document.body[flexEnd + 4 : flexEnd + 7] = put_cmd_in_ert("{}\\end{cBoxE}")
+      flex += 1
+
+
+def revert_tcolorbox_8(document):
+  " Reverts the layout New Color Box Type of tcolorbox to TeX-code "
+  i = 0
+  j = 0
+  k = 0
+  while True:
+    if i != -1:
+      i = find_token(document.body, "\\begin_layout New Color Box Type", i)
+    if i != -1:
+      j = find_end_of_layout(document.body, i)
+      wasOpt = revert_Argument_to_TeX_brace(document, i, j, 1, 1, False, True, False)
+      revert_Argument_to_TeX_brace(document, i, 0, 2, 2, False, False, True)
+      revert_Argument_to_TeX_brace(document, i, 0, 3, 4, False, True, False)
+      document.body[i] = document.body[i].replace("\\begin_layout New Color Box Type", "\\begin_layout Standard")
+      if wasOpt == True:
+        document.body[i + 1 : i + 1] = put_cmd_in_ert("\\newtcolorbox")
+      else:
+        document.body[i + 1 : i + 1] = put_cmd_in_ert("\\newtcolorbox{")
+      k = find_end_of_inset(document.body, j)
+      k = find_token(document.body, "\\end_inset", k + 1)
+      k = find_token(document.body, "\\end_inset", k + 1)
+      if wasOpt == True:
+        k = find_token(document.body, "\\end_inset", k + 1)
+      document.body[k + 2 : j + 2] = put_cmd_in_ert("{")
+      j = find_token(document.body, "\\begin_layout Standard", j + 1)
+      document.body[j - 2 : j - 2] = put_cmd_in_ert("}")
+      i += 1
+    if i == -1:
+      return
+
+
 ##
 # Conversion hub
 #
@@ -1597,10 +1843,14 @@ convert = [
            [494, []],
            [495, [convert_subref]],
            [496, [convert_nounzip]],
-           [497, [convert_external_bbox]]
+           [497, [convert_external_bbox]],
+           [498, []]
           ]
 
 revert =  [
+           [497, [revert_tcolorbox_1, revert_tcolorbox_2,
+                  revert_tcolorbox_3, revert_tcolorbox_4, revert_tcolorbox_5,
+                  revert_tcolorbox_6, revert_tcolorbox_7, revert_tcolorbox_8]],
            [496, [revert_external_bbox]],
            [495, []], # nothing to do since the noUnzip parameter was optional
            [494, [revert_subref]],
