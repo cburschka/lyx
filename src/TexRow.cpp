@@ -204,15 +204,12 @@ void TexRow::append(TexRow const & texrow)
 bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 {
 	TextEntry t = text_none;
-	bool ret = false;
 	if (row <= int(rowlist_.size()))
 		while (row > 0 && isNone(t = rowlist_[row - 1].getTextEntry()))
 			--row;
-	if (row > 0)
-		ret = true;
 	id = t.id;
 	pos = t.pos;
-	return ret;
+	return !isNone(t);
 }
 
 
