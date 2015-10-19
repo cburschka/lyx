@@ -71,3 +71,4 @@ add_custom_command(
 )
 
 add_custom_target(updatetex2lyxtests DEPENDS LyxTestFiles)
+set_target_properties(updatetex2lyxtests PROPERTIES FOLDER "tests/tex2lyx")
