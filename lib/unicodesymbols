@@ -700,7 +700,7 @@
 0x031d "\\textraising"            "tipa" "combining,force" # COMBINING UP TACK BELOW
 0x031e "\\textlowering"           "tipa" "combining,force" # COMBINING DOWN TACK BELOW
 0x031f "\\textsubplus"            "tipa" "combining,force" # COMBINING PLUS SIGN BELOW
-0x0320 "\\b"                      "" "combining,force,tipashortcut=\\=*" # COMBINING MINUS SIGN BELOW
+0x0320 "\\textsubbar"             "tipa" "combining,force,tipashortcut=\\=*" # COMBINING MINUS SIGN BELOW
 #0x0321 ""                         "" "combining,force" # COMBINING PALATALIZED HOOK BELOW
 #0x0322 ""                         "" "combining,force" # COMBINING RETROFLEX HOOK BELOW
 0x0323 "\\d"                      "" "combining,force" # COMBINING DOT BELOW
@@ -718,7 +718,7 @@
 0x032f "\\textsubarch"            "tipa" "combining,force" # COMBINING INVERTED BREVE BELOW
 0x0330 "\\textsubtilde"           "tipa" "combining,force" # COMBINING TILDE BELOW
 0x0331 "\\b"                      "" "combining,force" # COMBINING MACRON BELOW
-#0x0332 ""                         "" "combining,force" # COMBINING LOW LINE
+0x0332 "\\underbar"               "" "combining,force" # COMBINING LOW LINE # \underline for math?
 #0x0333 ""                         "" "combining,force" # COMBINING DOUBLE LOW LINE
 0x0334 "\\textsuperimposetilde"   "tipa" "combining,force" # COMBINING TILDE OVERLAY
 #0x0335 ""                         "" "combining,force" # COMBINING SHORT STROKE OVERLAY
