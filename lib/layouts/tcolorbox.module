@@ -3,8 +3,8 @@
 #Adds custom insets that support colored boxes via the tcolorbox package.
 #See the tcolorbox documentation for details.
 #DescriptionEnd
-#Author: Jürgen Spitzmüller
-#        Uwe Stöhr <uwestoehr@lyx.org>
+#Authors: Jürgen Spitzmüller
+#         Uwe Stöhr <uwestoehr@lyx.org>
 
 Format 54
 
@@ -18,38 +18,38 @@ InsetLayout Flex:Color_Box
   Argument 1
     LabelString         "Color Box Options"
     Tooltip             "Insert the color box options here (see tcolorbox manual)"
-    PassThruChars		"\[]{}"
+    PassThruChars       "\[]{}"
   EndArgument
   ResetsFont            true
 End
 
 InsetLayout Flex:Dynamic_Color_Box
-  CopyStyle			    Flex:Color_Box
+  CopyStyle             Flex:Color_Box
   LatexType             command
   LabelString           "Color Box (Dynamic)"
   LatexName             tcbox
 End
 
 InsetLayout Flex:Fit_Color_Box
-  CopyStyle			    Flex:Dynamic_Color_Box
+  CopyStyle             Flex:Dynamic_Color_Box
   LabelString           "Color Box (Fit Contents)"
   LatexName             tcboxfit
 End
 
 InsetLayout Flex:Raster_Color_Box
-  CopyStyle			    Flex:Color_Box
+  CopyStyle             Flex:Color_Box
   LabelString           "Raster Color Box"
   LatexName             tcbraster
 End
 
 InsetLayout Flex:Subtitle
-  CopyStyle			Flex:Dynamic_Color_Box
-  LatexName			tcbsubtitle
-  LabelString		"Subtitle"
+  CopyStyle            Flex:Dynamic_Color_Box
+  LatexName            tcbsubtitle
+  LabelString          "Subtitle"
   Argument 1
-    LabelString		"Subtitle Options"
-    ToolTip			"Insert the options here"
-    PassThruChars	"\[]{}"
+    LabelString        "Subtitle Options"
+    ToolTip            "Insert the options here"
+    PassThruChars      "\[]{}"
   EndArgument
 End
 
