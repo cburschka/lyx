@@ -289,6 +289,41 @@ int GuiPainter::text(int x, int y, char_type c, FontInfo const & f)
 }
 
 
+void GuiPainter::do_drawText(int x, int y, QString str, bool rtl, FontInfo const & f, QFont ff)
+{
+	setQPainterPen(computeColor(f.realColor()));
+	if (font() != ff)
+		setFont(ff);
+
+	 /* In LyX, the character direction is forced by the language.
+	  * Therefore, we have to signal that fact to Qt.
+	  */
+#if 1
+	/* Use unicode override characters to enforce drawing direction
+	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
+	 */
+	if (rtl)
+		// Right-to-left override: forces to draw text right-to-left
+		str = QChar(0x202E) + str;
+	else
+		// Left-to-right override: forces to draw text left-to-right
+		str =  QChar(0x202D) + str;
+	drawText(x, y, str);
+#else
+	/* This looks like a cleaner solution, but it has drawbacks
+	 * - does not work reliably (Mac OS X, ...)
+	 * - it is not really documented
+	 * Keep it here for now, in case it can be helpful
+	 */
+	//This is much stronger than setLayoutDirection.
+	int flag = rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight;
+	drawText(x + (rtl ? textwidth : 0), y - fm.maxAscent(), 0, 0,
+		 flag | Qt::TextDontClip,
+		 str);
+#endif
+}
+
+
 int GuiPainter::text(int x, int y, docstring const & s,
                      FontInfo const & f, bool const rtl,
                      double const wordspacing)
@@ -324,7 +359,8 @@ int GuiPainter::text(int x, int y, docstring const & s,
 	// Here we use the font width cache instead of
 	//   textwidth = fontMetrics().width(str);
 	// because the above is awfully expensive on MacOSX
-	int const textwidth = fm.width(s);
+	// Note that we have to take in account space stretching (word spacing)
+	int const textwidth = fm.width(s) + count(s.begin(), s.end(), ' ') * wordspacing;
 
 	if (!isDrawingEnabled())
 		return textwidth;
@@ -341,6 +377,8 @@ int GuiPainter::text(int x, int y, docstring const & s,
 		// Only the left bearing of the first character is important
 		// as we always write from left to right, even for
 		// right-to-left languages.
+		// FIXME: this is probably broken for RTL now that we draw full strings.
+		// Morover the first/last element is possibly not the right one since the glyph may have changed.
 		int const lb = min(fm.lbearing(s[0]), 0);
 		int const mA = fm.maxAscent();
 		if (QPixmapCache::find(key, pm)) {
@@ -364,12 +402,7 @@ int GuiPainter::text(int x, int y, docstring const & s,
 #endif
 			pm.fill(Qt::transparent);
 			GuiPainter p(&pm, pixelRatio());
-			p.setQPainterPen(computeColor(f.realColor()));
-			if (p.font() != ff)
-				p.setFont(ff);
-			// We need to draw the text as LTR as we use our own bidi code.
-			p.setLayoutDirection(Qt::LeftToRight);
-			p.drawText(-lb, mA, str);
+			p.do_drawText(-lb, mA, str, rtl, f, ff);
 			QPixmapCache::insert(key, pm);
 			//LYXERR(Debug::PAINTING, "h=" << h << "  mA=" << mA << "  mD=" << mD
 			//	<< "  w=" << w << "  lb=" << lb << "  tw=" << textwidth
@@ -377,42 +410,13 @@ int GuiPainter::text(int x, int y, docstring const & s,
 
 			// Draw the new cached pixmap.
 			drawPixmap(x + lb, y - mA, pm);
+			//rectangle(x-lb, y-mA, w, h, Color_green);
 		}
 		return textwidth;
 	}
 
 	// don't use the pixmap cache,
-	// draw directly onto the painting device
-	setQPainterPen(computeColor(f.realColor()));
-	if (font() != ff)
-		setFont(ff);
-
-	 /* In LyX, the character direction is forced by the language.
-	  * Therefore, we have to signal that fact to Qt.
-	  */
-#if 1
-	/* Use unicode override characters to enforce drawing direction
-	 * Source: http://www.iamcal.com/understanding-bidirectional-text/
-	 */
-	if (rtl)
-		// Right-to-left override: forces to draw text right-to-left
-		str = QChar(0x202E) + str;
-	else
-		// Left-to-right override: forces to draw text left-to-right
-		str =  QChar(0x202D) + str;
-	drawText(x, y, str);
-#else
-	/* This looks like a cleaner solution, but it has drawbacks
-	 * - does not work reliably (Mac OS X, ...)
-	 * - it is not really documented
-	 * Keep it here for now, in case it can be helpful
-	 */
-	//This is much stronger than setLayoutDirection.
-	int flag = rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight;
-	drawText(x + (rtl ? textwidth : 0), y - fm.maxAscent(), 0, 0,
-		 flag | Qt::TextDontClip,
-		 str);
-#endif
+	do_drawText(x, y, str, rtl, f, ff);
 	//LYXERR(Debug::PAINTING, "draw " << string(str.toUtf8())
 	//	<< " at " << x << "," << y);
 	return textwidth;

@@ -168,6 +168,9 @@ private:
 	void setQPainterPen(QColor const & col,
 		line_style ls = line_solid, int lw = thin_line);
 
+	// Helper for text() method
+	void do_drawText(int x, int y, QString str, bool rtl, FontInfo const & f, QFont ff);
+
 	QColor current_color_;
 	Painter::line_style current_ls_;
 	int current_lw_;
