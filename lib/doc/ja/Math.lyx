@@ -2483,7 +2483,7 @@ uproot{距離}
 
 \begin_layout Standard
 ここで「距離」は、指数を左あるいは上に動かす、Big Point(単位bp；
-\begin_inset Formula $\mathrm{72\, bp=1}$
+\begin_inset Formula $\mathrm{72\,bp=1}$
 \end_inset
 
 インチ)での数値です。これらのコマンドは、指数に書き込みます。このようにして、コマンド
@@ -6858,7 +6858,7 @@ biggm
 。このコマンドでは、物理ベクトル
 \begin_inset Formula 
 \[
-\left\langle \phi\:\biggm|\: J=\frac{3}{2}\,,\, M_{J}\right\rangle 
+\left\langle \phi\:\biggm|\:J=\frac{3}{2}\,,\,M_{J}\right\rangle 
 \]
 
 \end_inset
@@ -7600,7 +7600,7 @@ reference "sec:多行数式"
 節に説明されているように、次のような多行数式を使わなくてはなりません。
 \begin_inset Formula 
 \begin{eqnarray*}
-A & = & \underbrace{gggg+bbqq}_{r}+\: dddd\\
+A & = & \underbrace{gggg+bbqq}_{r}+\:dddd\\
  &  & \hphantom{gggg+\:}\underbrace{\hphantom{bbqq+dddd}}_{s}
 \end{eqnarray*}
 
@@ -7718,7 +7718,7 @@ jot}{-6pt}
 \begin_inset Formula 
 \begin{eqnarray*}
  &  & \hphantom{gggg+\:}\overbrace{\hphantom{bbqq+dddd}}^{s}\\
-A & = & \underbrace{gggg+bbqq}_{r}+\: dddd
+A & = & \underbrace{gggg+bbqq}_{r}+\:dddd
 \end{eqnarray*}
 
 \end_inset
@@ -11245,7 +11245,7 @@ Space
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\, B$
+\begin_inset Formula $A\,B$
 \end_inset
 
 
@@ -11279,7 +11279,7 @@ Space
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\: B$
+\begin_inset Formula $A\:B$
 \end_inset
 
 
@@ -11313,7 +11313,7 @@ Space
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\; B$
+\begin_inset Formula $A\;B$
 \end_inset
 
 
@@ -11603,7 +11603,7 @@ hspace{1em}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\! B$
+\begin_inset Formula $A\!B$
 \end_inset
 
 
@@ -28216,7 +28216,7 @@ jot
 \end_inset
 
 変数を変更します。定義は、
-\begin_inset Formula $\mbox{行間}=\mathrm{6\, pt+\backslash jot}$
+\begin_inset Formula $\mbox{行間}=\mathrm{6\,pt+\backslash jot}$
 \end_inset
 
 となっています。
@@ -31580,7 +31580,7 @@ status collapsed
 を形成します。この化学式は以下のようになります。
 \begin_inset Formula 
 \begin{equation}
-\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:chem-reaction}
+\mathrm{2\,Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:chem-reaction}
 \end{equation}
 
 \end_inset
@@ -31680,7 +31680,7 @@ ce
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="2">
+<lyxtabular version="3" rows="10" columns="2">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -31878,7 +31878,7 @@ D
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -31901,11 +31901,52 @@ Th+
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Formula $\raisebox{5mm}{}\ce{_{90}^{227}Th+}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\backslash
+mu
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\backslash
+hyphen
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+Cl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}\ce{\ensuremath{\mu\hyphen}Cl}\raisebox{-2mm}{}$
 \end_inset
 
 
@@ -32016,49 +32057,6 @@ beta]
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-【註】
-\backslash
-ce
-\series default
-ボックスに数式を入れようとすると、LaTeXエラーが発生します。このような場合には、
-\series bold
-
-\backslash
-ce{$
-\backslash
-mu
-\backslash
-hyphen$Cl}
-\series default
-(
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ce{$
-\backslash
-mu
-\backslash
-hyphen$Cl}
-\end_layout
-
-\end_inset
-
-)のようにTeXコードを使わなくてはなりません。
-\end_layout
-
-\end_inset
-
-
 \begin_inset Note Greyedout
 status open
 
@@ -33476,6 +33474,7 @@ qG
 
 \begin_inset Graphics
 	filename ../clipart/macrouse.png
+	scale 75
 
 \end_inset
 
@@ -34701,7 +34700,7 @@ Braket
 コマンドを使うと、以下のように、すべての縦棒がそれを囲む括弧と同じ大きさに設定されます。
 \begin_inset Formula 
 \[
-\Braket{\phi|J=\frac{3}{2}\,,\, M_{J}}
+\Braket{\phi|J=\frac{3}{2}\,,\,M_{J}}
 \]
 
 \end_inset

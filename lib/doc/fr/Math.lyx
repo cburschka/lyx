@@ -2508,7 +2508,7 @@ distance
 Big
 \emph default
  Points (unité bp; 
-\begin_inset Formula $\mathrm{72\, bp=1\, pouce}$
+\begin_inset Formula $\mathrm{72\,bp=1\,pouce}$
 \end_inset
 
 ), dont le degré doit être déplacé, respectivement vers la gauche ou vers
@@ -6881,7 +6881,7 @@ middle
  de la physique quantique:
 \begin_inset Formula 
 \[
-\left\langle \phi\:\middle|\: J=\frac{3}{2}\,,\, M_{J}\right\rangle 
+\left\langle \phi\:\middle|\:J=\frac{3}{2}\,,\,M_{J}\right\rangle 
 \]
 
 \end_inset
@@ -7619,7 +7619,7 @@ Quand des accolades doivent se chevaucher les unes les autres, on doit utiliser
  des formules multi-lignes, comme c'est décrit en :
 \begin_inset Formula 
 \begin{eqnarray*}
-A & = & \underbrace{gggg+bbqq}_{r}+\: dddd\\
+A & = & \underbrace{gggg+bbqq}_{r}+\:dddd\\
  &  & \hphantom{gggg+\:}\underbrace{\hphantom{bbqq+dddd}}_{s}
 \end{eqnarray*}
 
@@ -7779,7 +7779,7 @@ jot}{-6pt}
 \begin_inset Formula 
 \begin{eqnarray*}
  &  & \hphantom{gggg+\:}\overbrace{\hphantom{bbqq+dddd}}^{s}\\
-A & = & \underbrace{gggg+bbqq}_{r}+\: dddd
+A & = & \underbrace{gggg+bbqq}_{r}+\:dddd
 \end{eqnarray*}
 
 \end_inset
@@ -11383,7 +11383,7 @@ Résultat
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\, B$
+\begin_inset Formula $A\,B$
 \end_inset
 
 
@@ -11417,7 +11417,7 @@ Résultat
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\: B$
+\begin_inset Formula $A\:B$
 \end_inset
 
 
@@ -11451,7 +11451,7 @@ Résultat
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\; B$
+\begin_inset Formula $A\;B$
 \end_inset
 
 
@@ -11739,7 +11739,7 @@ hspace{1em}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\! B$
+\begin_inset Formula $A\!B$
 \end_inset
 
 
@@ -30604,7 +30604,6 @@ arg   "label-insert"
 Étiquette d'équation
 \family default
 .
-
  Une fenêtre de dialogue apparaît affichant le préfixe 
 \series bold
 eq:
@@ -32278,7 +32277,7 @@ réagit avec deux ions
  La réaction chimique peut être mise sous la forme:
 \begin_inset Formula 
 \begin{equation}
-\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:reaction-chimique}
+\mathrm{2\,Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:reaction-chimique}
 \end{equation}
 
 \end_inset
@@ -32366,7 +32365,7 @@ ce
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="2">
+<lyxtabular version="3" rows="10" columns="2">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -32564,7 +32563,7 @@ D
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -32587,11 +32586,52 @@ Th+
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Formula $\raisebox{5mm}{}\ce{_{90}^{227}Th+}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\backslash
+mu
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\backslash
+hyphen
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+Cl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}\ce{\ensuremath{\mu\hyphen}Cl}\raisebox{-2mm}{}$
 \end_inset
 
 
@@ -32711,59 +32751,6 @@ status open
 \color none
 Nota:
 \series default
- l'insertion d'une formule mathématique dans une boîte 
-\series bold
-
-\backslash
-ce
-\series default
- va provoquer une erreur LaTeX.
- Dans ce cas le code TeX devra être utilisé comme par exemple pour 
-\series bold
-
-\backslash
-ce{$
-\backslash
-mu
-\backslash
-hyphen$Cl}
-\series default
-: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ce{$
-\backslash
-mu
-\backslash
-hyphen$Cl}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color none
-Nota:
-\series default
  il n'est pas possible avec LyX d'utiliser le caractère ^ pour obtenir une
  flèche vers le haut, comme il est expliqué dans le manuel de 
 \series bold
@@ -32776,7 +32763,11 @@ mhchem
 \backslash
 uparrow
 \series default
-: 
+:
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Formula $\ce{Fe + 2H+ -> Fe^{2+} + H2\negthinspace\uparrow}$
 \end_inset
 
@@ -32961,6 +32952,13 @@ amscd
  xymatrix
 \series default
  qui sont décrits dans ce qui suit.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -34115,6 +34113,7 @@ arg   "math-macro newmacroname_newcommand"
 
 \begin_inset Graphics
 	filename ../clipart/macrobox.png
+	scale 75
 
 \end_inset
 
@@ -34252,6 +34251,7 @@ qG
 
 \begin_inset Graphics
 	filename ../clipart/macrouse.png
+	scale 75
 
 \end_inset
 
@@ -35632,7 +35632,7 @@ Braket
  englobants:
 \begin_inset Formula 
 \[
-\Braket{\phi|J=\frac{3}{2}\,,\, M_{J}}
+\Braket{\phi|J=\frac{3}{2}\,,\,M_{J}}
 \]
 
 \end_inset
@@ -37547,7 +37547,6 @@ i}
 \end_layout
 
 \begin_layout Subsection
-
 Commentaires LaTeX dans les formules
 \end_layout
 
@@ -37594,10 +37593,8 @@ target "http://www.lyx.org/trac/ticket/9002"
  vous ne pouvez pas écrire du texte normal à l'intérieur du commentaire,
  même en utilisant du texte mathématique, vous verrez les commandes LaTeX
  dans la sortie LaTeX.
-
 \begin_inset Newline newline
 \end_inset
-
 
 Ceci est une formule avec un commentaire LaTeX :
 \begin_inset Formula 

@@ -2489,7 +2489,7 @@ Big Points
 \end_inset
 
 , unidad bp; 
-\begin_inset Formula $\mathrm{72\, bp=1\, pulgada}$
+\begin_inset Formula $\mathrm{72\,bp=1\,pulgada}$
 \end_inset
 
 ) que debería moverse el índice a la izquierda o arriba, respectivamente.
@@ -6863,7 +6863,7 @@ middle
 e., para vectores cuánticos: 
 \begin_inset Formula 
 \[
-\left\langle \phi\;\middle|\; J=\frac{3}{2}\,,\, M_{J}\right\rangle 
+\left\langle \phi\;\middle|\;J=\frac{3}{2}\,,\,M_{J}\right\rangle 
 \]
 
 \end_inset
@@ -7641,7 +7641,7 @@ reference "sec:Ecuaciones-multilínea"
 :
 \begin_inset Formula 
 \begin{eqnarray*}
-A & = & \underbrace{gggg+bbqq}_{r}+\: dddd\\
+A & = & \underbrace{gggg+bbqq}_{r}+\:dddd\\
  &  & \hphantom{gggg+\:}\underbrace{\hphantom{bbqq+dddd}}_{s}
 \end{eqnarray*}
 
@@ -7784,7 +7784,7 @@ jot}{-6pt}
 \begin_inset Formula 
 \begin{eqnarray*}
  &  & \hphantom{gggg+\:}\overbrace{\hphantom{bbqq+dddd}}^{s}\\
-A & = & \underbrace{gggg+bbqq}_{r}+\: dddd
+A & = & \underbrace{gggg+bbqq}_{r}+\:dddd
 \end{eqnarray*}
 
 \end_inset
@@ -11403,7 +11403,7 @@ Resultado
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\, B$
+\begin_inset Formula $A\,B$
 \end_inset
 
 
@@ -11437,7 +11437,7 @@ Resultado
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\: B$
+\begin_inset Formula $A\:B$
 \end_inset
 
 
@@ -11471,7 +11471,7 @@ Resultado
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\; B$
+\begin_inset Formula $A\;B$
 \end_inset
 
 
@@ -11759,7 +11759,7 @@ hspace{1em}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\! B$
+\begin_inset Formula $A\!B$
 \end_inset
 
 
@@ -16666,7 +16666,6 @@ Paquetes ! mathtools
 \end_layout
 
 \end_inset
-
 
  
 \series bold
@@ -26204,7 +26203,7 @@ sgn(x)+B
 A
 \backslash
 ,
-\begin_inset Formula $\underbrace{\textrm{sgn}}_{\mathsf{Alt+M\, M}}$
+\begin_inset Formula $\underbrace{\textrm{sgn}}_{\mathsf{Alt+M\,M}}$
 \end_inset
 
 (x)+B
@@ -28731,7 +28730,7 @@ jot
 
 .
  La definición es: 
-\begin_inset Formula $\mbox{separación de línea}=\mathrm{6\, pt+\backslash jot}$
+\begin_inset Formula $\mbox{separación de línea}=\mathrm{6\,pt+\backslash jot}$
 \end_inset
 
 .
@@ -30431,8 +30430,7 @@ shortintertext
 
 \end_inset
 
- en lugar de
- 
+ en lugar de 
 \series bold
 
 \backslash
@@ -32377,7 +32375,7 @@ El ion
  La ecuación química es:
 \begin_inset Formula 
 \begin{equation}
-\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:reaccion-quimica}
+\mathrm{2\,Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:reaccion-quimica}
 \end{equation}
 
 \end_inset
@@ -32463,7 +32461,7 @@ ce
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="2">
+<lyxtabular version="3" rows="10" columns="2">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -32661,7 +32659,7 @@ D
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -32684,11 +32682,52 @@ Th+
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Formula $\raisebox{5mm}{}\ce{_{90}^{227}Th+}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\backslash
+mu
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\backslash
+hyphen
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+Cl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}\ce{\ensuremath{\mu\hyphen}Cl}\raisebox{-2mm}{}$
 \end_inset
 
 
@@ -32801,58 +32840,6 @@ beta]
 \begin_layout Standard
 \begin_inset Note Greyedout
 status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color none
-Nota:
-\series default
- Insertar modo matemático en un marco 
-\series bold
-
-\backslash
-ce
-\series default
- provocará errores de LaTeX.
- En estos casos hay que usar código TeX, como en 
-\series bold
-
-\backslash
-ce{$
-\backslash
-mu
-\backslash
-hyphen$Cl}
-\series default
-: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ce{$
-\backslash
-mu
-\backslash
-hyphen$Cl}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status collapsed
 
 \begin_layout Plain Layout
 
@@ -34247,6 +34234,7 @@ arg   "math-macro newmacroname_newcommand"
 
 \begin_inset Graphics
 	filename ../clipart/macrobox.png
+	scale 75
 
 \end_inset
 
@@ -34389,6 +34377,7 @@ qG
 
 \begin_inset Graphics
 	filename ../clipart/macrouse.png
+	scale 75
 
 \end_inset
 
@@ -35529,7 +35518,7 @@ Braket
  circundantes:
 \begin_inset Formula 
 \[
-\Braket{\phi|J=\frac{3}{2}\,,\, M_{J}}
+\Braket{\phi|J=\frac{3}{2}\,,\,M_{J}}
 \]
 
 \end_inset
