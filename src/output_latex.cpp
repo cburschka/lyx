@@ -703,6 +703,8 @@ void TeXOnePar(Buffer const & buf,
 				"$$lang",
 				prev_lang))
 			   << lang_command_termination;
+			if (prev_lang == state->open_polyglossia_lang_)
+				state->open_polyglossia_lang_ = "";
 		}
 
 		// We need to open a new language if we couldn't close the previous
@@ -1249,6 +1251,8 @@ void latexParagraphs(Buffer const & buf,
 					"$$lang",
 					mainlang))
 			<< '\n';
+		if (state->open_polyglossia_lang_ == mainlang)
+			state->open_polyglossia_lang_ = "";
 	}
 
 	// If the last paragraph is an environment, we'll have to close
