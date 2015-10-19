@@ -314,7 +314,7 @@ char const * const known_tipa_marks[] = {"textsubwedge", "textsubumlaut",
 "textovercross", "textsubarch", "textsuperimposetilde", "textraising",
 "textlowering", "textadvancing", "textretracting", "textdoublegrave",
 "texthighrise", "textlowrise", "textrisefall", "textsyllabic",
-"textsubring", 0};
+"textsubring", "textsubbar", 0};
 
 /// TIPA tones that need special handling
 char const * const known_tones[] = {"15", "51", "45", "12", "454", 0};
@@ -4786,7 +4786,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					// fromLaTeXCommand() does not yet
 					// recognize tipa short cuts
 					p.get_token();
-					name = "\\b";
+					name = "\\textsubbar";
 				} else if (name == "\\textdoublevertline") {
 					// FIXME: This is not correct,
 					// \textvertline is higher than \textbardbl
