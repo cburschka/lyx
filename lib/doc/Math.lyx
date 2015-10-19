@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 497
+\lyxformat 498
 \begin_document
 \begin_header
 \origin /systemlyxdir/doc/
@@ -32398,7 +32398,7 @@ ce
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="2">
+<lyxtabular version="3" rows="10" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -32596,7 +32596,7 @@ D
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -32619,11 +32619,52 @@ Th+
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Formula $\raisebox{5mm}{}\ce{_{90}^{227}Th+}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\backslash
+mu
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\backslash
+hyphen
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+Cl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}\ce{\ensuremath{\mu\hyphen}Cl}\raisebox{-2mm}{}$
 \end_inset
 
 
@@ -32727,81 +32768,6 @@ beta]
 </cell>
 </row>
 </lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color none
-Note:
-\series default
- Inserting a formula to a 
-\series bold
-
-\backslash
-ce
-\series default
- box will lead to \SpecialChar LaTeX
- errors due to a \SpecialChar LyX
- bug.
-\color inherit
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset CommandInset href
-LatexCommand href
-name "LyX-bug #8566"
-target "http://www.lyx.org/trac/ticket/8566"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\color none
- In this case \SpecialChar TeX
- code has to be used like for 
-\series bold
-
-\backslash
-ce{$
-\backslash
-mu
-\backslash
-hyphen$Cl}
-\series default
-: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ce{$
-\backslash
-mu
-\backslash
-hyphen$Cl}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
 
 \end_inset
 
@@ -34172,6 +34138,7 @@ arg   "math-macro newmacroname_newcommand"
 
 \begin_inset Graphics
 	filename clipart/macrobox.png
+	scale 75
 
 \end_inset
 
@@ -34326,6 +34293,7 @@ qG
 
 \begin_inset Graphics
 	filename clipart/macrouse.png
+	scale 75
 
 \end_inset
 

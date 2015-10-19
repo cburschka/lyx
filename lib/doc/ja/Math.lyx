@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 498
 \begin_document
 \begin_header
+\origin /systemlyxdir/doc/ja/
 \textclass scrartcl
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -158,21 +159,21 @@ BgColor		none
 LabelString		"ルビ"
 Decoration		Conglomerate
 Argument post:1
-      LabelString	"ルビ文"
-      MenuString	"ルビ文(S)|S"
-      Decoration	Conglomerate
-      Font
-            Size		tiny
-      EndFont
-      LabelFont
-            Size		tiny
-      EndFont
-      Mandatory	1
+LabelString	"ルビ文"
+MenuString	"ルビ文(S)|S"
+Decoration	Conglomerate
+Font
+Size		tiny
+EndFont
+LabelFont
+Size		tiny
+EndFont
+Mandatory	1
 EndArgument
 Preamble
 \IfFileExists{okumacro.sty}
- {\usepackage{okumacro}}
- {\newcommand{\ruby}[2]{#2}}
+{\usepackage{okumacro}}
+{\newcommand{\ruby}[2]{#2}}
 EndPreamble
 End
 \end_local_layout
@@ -260,17 +261,20 @@ End
 \begin_body
 
 \begin_layout Title
-LyXの数式詳細説明書
+\SpecialChar LyX
+の数式詳細説明書
 \end_layout
 
 \begin_layout Author
-LyXプロジェクトチーム
+\SpecialChar LyX
+プロジェクトチーム
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \noindent
-コメントや誤りの修正などがございましたら、LyX文書化メーリングリスト
+コメントや誤りの修正などがございましたら、\SpecialChar LyX
+文書化メーリングリスト
 \family typewriter
 
 \begin_inset CommandInset href
@@ -325,7 +329,8 @@ LatexCommand tableofcontents
 status open
 
 \begin_layout Plain Layout
-この文書をPDFやPS、DVIに書き出すには、LaTeXパッケージの
+この文書をPDFやPS、DVIに書き出すには、\SpecialChar LaTeX
+パッケージの
 \series bold
 braket
 \series default
@@ -367,7 +372,8 @@ mhchem
 
 
 \series bold
-http://wiki.lyx.org/LyX/DocumentationDevelopment#Math
+http://wiki.lyx.org/\SpecialChar LyX
+/DocumentationDevelopment#Math
 \begin_inset Newline newline
 \end_inset
 
@@ -393,8 +399,10 @@ http://wiki.lyx.org/LyX/DocumentationDevelopment#Math
 \end_layout
 
 \begin_layout Standard
-この文書は、LyXの数式機能の説明書であると同時に、なによりも数式記号および数式要素に使用されるLaTeXコマンドのコレクションでもあります。説明は、コマンドの
-使用を念頭に置いています。したがって、ユーザーの手引きの
+この文書は、\SpecialChar LyX
+の数式機能の説明書であると同時に、なによりも数式記号および数式要素に使用される\SpecialChar LaTeX
+コマンドのコレクションでもあります。説明は、コマンドの使用を念頭に置い
+ています。したがって、ユーザーの手引きの
 \family typewriter
 数式
 \family default
@@ -404,7 +412,7 @@ http://wiki.lyx.org/LyX/DocumentationDevelopment#Math
 \begin_layout Standard
 この説明書で説明されている、ほとんどの数式記号と、数式要素の多くは、
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 数式
 \family default
 メニューか
@@ -418,8 +426,8 @@ http://wiki.lyx.org/LyX/DocumentationDevelopment#Math
 \begin_layout Standard
 とくに断らなければ、コマンドは数式内からのみ利用可能です。この文書で説明されているすべてのコマンドを利用できるようにするためには、文書設定(
 \family sans
-文書\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
 数式オプション
 \family default
 メニュー)で
@@ -435,7 +443,8 @@ status collapsed
 \family sans
 AMS mathパッケージを自動的に使う
 \family default
-オプションは、LyXでサポートされている数式要素が見つかったときのみ、
+オプションは、\SpecialChar LyX
+でサポートされている数式要素が見つかったときのみ、
 \begin_inset ERT
 status collapsed
 
@@ -500,7 +509,8 @@ target "ftp://ftp.ams.org/pub/tex/doc/amstex/amsguide.pdf"
 
 
 \family default
-ファイルに収録されています。このファイルは、すべてのLaTeX標準頒布版に含まれています。
+ファイルに収録されています。このファイルは、すべての\SpecialChar LaTeX
+標準頒布版に含まれています。
 \end_layout
 
 \end_inset
@@ -587,8 +597,8 @@ arg   "math-mode"
 
 のいずれかの捷径か、
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
 数式の表記を変更
 \family default
 メニューを使用して下さい。同じ方法が、行内数式を別行立て数式に変更するのにも使用できます。
@@ -629,7 +639,7 @@ displaystyle
 \family default
 は、
 \family sans
-表示\SpecialChar \menuseparator
+表示\SpecialChar menuseparator
 ツールバー
 \family default
 メニューで表示することができます。そのメニューで「数式」をクリックすると、ツールバーが下部に永続的に表示されます。この状態は、
@@ -645,12 +655,14 @@ displaystyle
 \end_layout
 
 \begin_layout Standard
-TeXモード
+\SpecialChar TeX
+モード
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-T exもーど@TeXモード
+T exもーど@\SpecialChar TeX
+モード
 \end_layout
 
 \end_inset
@@ -663,7 +675,7 @@ arg   "ert-insert"
 
 を押すか、
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 Te
 \begin_inset ERT
 status collapsed
@@ -688,8 +700,13 @@ arg   "ert-insert"
 status collapsed
 
 \begin_layout Plain Layout
-LyXには、出力においては上付き文字と下付き文字とで表示される三つの「固有名詞」、TeX・LaTeX・LyXがあります。これらの名称が、固有名詞として認識される
-のを防ぐために、ここではTeX括弧が挿入されています。
+\SpecialChar LyX
+には、出力においては上付き文字と下付き文字とで表示される三つの「固有名詞」、\SpecialChar TeX
+・\SpecialChar LaTeX
+・\SpecialChar LyX
+があります。これらの名称が、固有名詞として認識されるのを防ぐために、ここでは\SpecialChar TeX
+括弧
+が挿入されています。
 \end_layout
 
 \end_inset
@@ -698,20 +715,22 @@ LyXには、出力においては上付き文字と下付き文字とで表示�
 \end_layout
 
 \begin_layout Standard
-LaTeXプリアンブル
+\SpecialChar LaTeX
+プリアンブル
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-L atexぷりあんぶる@LaTeXプリアンブル
+L atexぷりあんぶる@\SpecialChar LaTeX
+プリアンブル
 \end_layout
 
 \end_inset
 
 を変更するには、
 \family sans
-文書\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
 LaT
 \begin_inset ERT
 status collapsed
@@ -731,12 +750,12 @@ eXプリアンブル
 \begin_layout Standard
 行列や場合分け、多行数式を続けて編集するには、
 \family sans
-編集\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
 数式
 \family default
 メニューと
 \family sans
-編集\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
 行と列
 \family default
 メニューを使うか、表ツールバーを使用することができます。メニューから行や列を交換するように指定されたときには、カーソルのある列や行は、それぞれ右側の列や下の行と
@@ -758,7 +777,7 @@ intertext
 コマンドが使用されます。
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:多行数式中のテキスト"
+reference "subsec:多行数式中のテキスト"
 
 \end_inset
 
@@ -815,8 +834,9 @@ text
 
 \end_inset
 
-コマンドを挿入することで入ることができます。テキストは、LyX中では黒字で表示されるので、青字で表示される他の数式部分とは区別することができます。出力においては
-、数式テキストは、他の数式部分とは違って、アップライト体に組まれます。
+コマンドを挿入することで入ることができます。テキストは、\SpecialChar LyX
+中では黒字で表示されるので、青字で表示される他の数式部分とは区別することができます。出力においては、数式
+テキストは、他の数式部分とは違って、アップライト体に組まれます。
 \end_layout
 
 \begin_layout Subsection*
@@ -824,7 +844,8 @@ text
 \end_layout
 
 \begin_layout Standard
-数式要素に使われるほとんどのLaTeXコマンドは、以下のような構成になっています。
+数式要素に使われるほとんどの\SpecialChar LaTeX
+コマンドは、以下のような構成になっています。
 \end_layout
 
 \begin_layout Standard
@@ -842,28 +863,39 @@ text
 \backslash
 
 \series default
-」で始まります。非必須の引数を省略するときには、随伴する括弧も省略しなくてはなりません。必須引数の前後の括弧は、この文書中では、TeX括弧
+」で始まります。非必須の引数を省略するときには、随伴する括弧も省略しなくてはなりません。必須引数の前後の括弧は、この文書中では、\SpecialChar TeX
+括弧
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-T exかっこ@TeX括弧
+T exかっこ@\SpecialChar TeX
+括弧
 \end_layout
 
 \end_inset
 
-と呼ぶことにします。数式中でコマンド名に左括弧を付けると、LyXは自動的にTeX括弧を生成します。数式中ではそれ以外に、
+と呼ぶことにします。数式中でコマンド名に左括弧を付けると、\SpecialChar LyX
+は自動的に\SpecialChar TeX
+括弧を生成します。数式中ではそれ以外に、
 \series bold
 
 \backslash
 {
 \series default
-コマンドを使えば、つねにTeX括弧を生成することができます。LyX中で、青字で表示される通常の括弧とは違って、TeX括弧は赤字で表示されます。TeXモード中では
-、TeX括弧を得るのに、とくにコマンドは必要としません。また、TeX括弧は出力中では表示されません。
+コマンドを使えば、つねに\SpecialChar TeX
+括弧を生成することができます。\SpecialChar LyX
+中で、青字で表示される通常の括弧とは違って、\SpecialChar TeX
+括弧は赤字で表示されます。\SpecialChar TeX
+モード中では、\SpecialChar TeX
+括弧を得るのに、とくに
+コマンドは必要としません。また、\SpecialChar TeX
+括弧は出力中では表示されません。
 \end_layout
 
 \begin_layout Standard
-記号のコマンドのように引数のないコマンドをTeXモードに入力するときには、コマンドの終わりを表すために、コマンドの後に空白が
+記号のコマンドのように引数のないコマンドを\SpecialChar TeX
+モードに入力するときには、コマンドの終わりを表すために、コマンドの後に空白が
 \emph on
 かならず
 \emph default
@@ -978,7 +1010,7 @@ name "tab:使用できる単位"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -1430,13 +1462,17 @@ arg   "math-superscript"
 \end_inset
 
 を使って入力することができます。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -1578,7 +1614,7 @@ Space
 分数
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:分数"
+name "subsec:分数"
 
 \end_inset
 
@@ -1695,13 +1731,17 @@ dfrac
 \end_inset
 
 を含む行です。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -2042,13 +2082,15 @@ cfracleft
 \backslash
 cfracright
 \series default
-は、生粋のLaTeXコマンドではなく、実体は、コマンド
+は、生粋の\SpecialChar LaTeX
+コマンドではなく、実体は、コマンド
 \series bold
 
 \backslash
 cfrac[揃え位置]{分子}{分母}
 \series default
-です。したがって、これらをTeXモードで使うことはできません。
+です。したがって、これらを\SpecialChar TeX
+モードで使うことはできません。
 \end_layout
 
 \end_inset
@@ -2156,7 +2198,8 @@ status open
 \backslash
 unitfracthree
 \series default
-は生粋のLaTeXコマンドではなく、実体は
+は生粋の\SpecialChar LaTeX
+コマンドではなく、実体は
 \begin_inset Newline newline
 \end_inset
 
@@ -2166,7 +2209,8 @@ unitfracthree
 \backslash
 unitfrac[自然数]{分子}{分母}
 \series default
-というコマンドなので、TeXコードでは使用できません。
+というコマンドなので、\SpecialChar TeX
+コードでは使用できません。
 \end_layout
 
 \end_inset
@@ -2178,7 +2222,7 @@ unitfrac[自然数]{分子}{分母}
 分数線を変更できるような独自の分数の定義のしかたは、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:自己定義の分数"
+reference "subsec:自己定義の分数"
 
 \end_inset
 
@@ -2189,7 +2233,7 @@ reference "sub:自己定義の分数"
 多行分数の説明は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Multiline-Fractions"
+reference "subsec:Multiline-Fractions"
 
 \end_inset
 
@@ -2292,13 +2336,17 @@ arg   "math-insert \\root"
 \end_inset
 
 で作成することができます。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -2483,7 +2531,7 @@ uproot{距離}
 
 \begin_layout Standard
 ここで「距離」は、指数を左あるいは上に動かす、Big Point(単位bp；
-\begin_inset Formula $\mathrm{72\, bp=1}$
+\begin_inset Formula $\mathrm{72\,bp=1}$
 \end_inset
 
 インチ)での数値です。これらのコマンドは、指数に書き込みます。このようにして、コマンド
@@ -2653,13 +2701,17 @@ brack
 \end_inset
 
 があります。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -2888,7 +2940,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -3063,8 +3115,8 @@ cases
 \series default
 は、
 \family sans
-挿入\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
+数式\SpecialChar menuseparator
 Cases環境
 \family default
 メニューで挿入することもできます。
@@ -3104,13 +3156,17 @@ not
 \end_inset
 
 を挿入することで、すべての文字を取り消し形で表示できます。文字はスラッシュを上書きされた形になります。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -3223,7 +3279,7 @@ parallel
 最後の例が示すように、すべての否定形がきれいに出力されるわけではありません。このことから、否定形に専用のコマンドを持つものもあります(第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:数学記号"
+reference "subsec:数学記号"
 
 \end_inset
 
@@ -3241,7 +3297,7 @@ reference "sec:関係子"
 埋め草
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:埋め草"
+name "subsec:埋め草"
 
 \end_inset
 
@@ -3341,7 +3397,7 @@ status collapsed
 同位体と化学記号の組版に関しては、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:化学記号と化学式"
+reference "subsec:化学記号と化学式"
 
 \end_inset
 
@@ -3351,13 +3407,17 @@ reference "sub:化学記号と化学式"
 \end_inset
 
 を表示しようとすると、次のような問題が起こります。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -3485,13 +3545,17 @@ phantom
 phantom
 \series default
 の作る文字は、箱の中身の文字の大きさを持つ埋め草となります。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -3767,7 +3831,7 @@ int
 コマンドは、積分記号を生成します。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:大演算子"
+reference "subsec:大演算子"
 
 \end_inset
 
@@ -3779,7 +3843,7 @@ reference "sub:大演算子"
 が最大高の文字なので、積分記号の高さを持つ空白を作ります。実際の適用例については、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:多行にわたる括弧"
+reference "subsec:多行にわたる括弧"
 
 \end_inset
 
@@ -3789,8 +3853,8 @@ reference "sub:多行にわたる括弧"
 \begin_layout Standard
 埋め草は、メニュー
 \family sans
-挿入\SpecialChar \menuseparator
-整形\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
+整形\SpecialChar menuseparator
 埋め草
 \family default
 を使えば、以下のように本文中でも使用することができます。
@@ -3874,7 +3938,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -4148,8 +4212,8 @@ rule{2cm}{1pt}
 \backslash
 ruleは、メニュー
 \family sans
-挿入\SpecialChar \menuseparator
-整形\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
+整形\SpecialChar menuseparator
 水平線
 \family default
 を使っても、本文に挿入することができます。
@@ -4172,7 +4236,7 @@ height "1pt"
 省略符号
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:省略符号"
+name "subsec:省略符号"
 
 \end_inset
 
@@ -4260,14 +4324,19 @@ dots
 
 \end_inset
 
-コマンドを使うと、LaTeXは次に来る文字がどのような種類の文字であるかによって、自動的にどの種類を使うかを選択します。
+コマンドを使うと、\SpecialChar LaTeX
+は次に来る文字がどのような種類の文字であるかによって、自動的にどの種類を使うかを選択します。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -4538,7 +4607,7 @@ A_{n1} & \cdots & A_{nm}
 \begin_layout Standard
 
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 省略符号
 \family default
 メニューで挿入される省略符号は
@@ -4641,7 +4710,8 @@ q & w & e & r
 
 \end_inset
 
-省略符号を広げる対象となる行列フィールドは空白にしておく必要があることに注意して下さい。さもないとLaTeXエラーが発生します。
+省略符号を広げる対象となる行列フィールドは空白にしておく必要があることに注意して下さい。さもないと\SpecialChar LaTeX
+エラーが発生します。
 \end_layout
 
 \begin_layout Standard
@@ -4675,7 +4745,7 @@ hfill
 と同様のものです。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:可変長の空白"
+reference "subsec:可変長の空白"
 
 \end_inset
 
@@ -4739,7 +4809,8 @@ hrulefill
 \end_layout
 
 \begin_layout Standard
-があります。これらのコマンドを本文で使用するには、これらのコマンドはTeXモードで挿入される必要があります。
+があります。これらのコマンドを本文で使用するには、これらのコマンドは\SpecialChar TeX
+モードで挿入される必要があります。
 \end_layout
 
 \begin_layout Section
@@ -4772,8 +4843,8 @@ arg   "dialog-show mathmatrix"
 
 か
 \family sans
-挿入\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
+数式\SpecialChar menuseparator
 行列
 \family default
 メニューで挿入することができます。すると、行列の行数・列数・配置方法・装飾を尋ねられます。ここで垂直配置は、行内数式内の行列でのみ意味を持ちます。
@@ -4894,7 +4965,7 @@ arg   "inset-modify tabular delete-row"
 
 などや
 \family sans
-編集\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
 行と列
 \family default
 メニューを使用することができます。また、行は
@@ -4985,7 +5056,7 @@ Alt+M
 )。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:自動の括弧丈"
+reference "subsec:自動の括弧丈"
 
 \end_inset
 
@@ -5003,7 +5074,7 @@ reference "sub:自動の括弧丈"
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -5161,7 +5232,7 @@ pmatrix
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -5323,7 +5394,7 @@ vmatrix
 じつは多行数式はすべて行列なので、行列の各列の間隔を変更するには、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:列間"
+reference "subsec:列間"
 
 \end_inset
 
@@ -5481,7 +5552,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
-------
+——
 \end_layout
 
 \end_inset
@@ -5496,7 +5567,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -5723,7 +5794,7 @@ lfloor
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -5966,7 +6037,8 @@ status open
 \series bold
 【註】
 \series default
-TeXモードでは、
+\SpecialChar TeX
+モードでは、
 \backslash
 
 \backslash
@@ -6024,7 +6096,7 @@ rangle
 手動の括弧丈
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:手動の括弧丈"
+name "subsec:手動の括弧丈"
 
 \end_inset
 
@@ -6042,7 +6114,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-括弧の丈は、LaTeXコマンドの
+括弧の丈は、\SpecialChar LaTeX
+コマンドの
 \series bold
 
 \backslash
@@ -6095,13 +6168,17 @@ Bigg
 
 \begin_layout Standard
 これらのコマンドは、括弧の階層を強調するのに使われます。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -6191,6 +6268,10 @@ C
 
 \begin_layout Standard
 以下は、すべての括弧丈の羅列です。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6322,13 +6403,17 @@ r
 
 \begin_layout Standard
 以下の表は、これらの派生型の比較です。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle">
 <column alignment="center" valignment="middle">
 <row>
@@ -6530,7 +6615,7 @@ bigr(
 自動の括弧丈
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:自動の括弧丈"
+name "subsec:自動の括弧丈"
 
 \end_inset
 
@@ -6603,6 +6688,10 @@ left
 right
 \series default
 の直後には、必要とする括弧を挿入しなくてはなりません。すると、括弧丈は出力時に自動的に計算されます。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6716,7 +6805,8 @@ Alt+M
 
 括弧
 \family default
-を使うこともできます。これを使うと、LyX中で即座に実際の括弧丈を確認することができるという利点と、対応する右括弧も生成されるという利点があります。
+を使うこともできます。これを使うと、\SpecialChar LyX
+中で即座に実際の括弧丈を確認することができるという利点と、対応する右括弧も生成されるという利点があります。
 \begin_inset Newline newline
 \end_inset
 
@@ -6790,14 +6880,18 @@ left
 \backslash
 right
 \series default
-コマンドは、文書が再度読み込まれたときには、LyXによって正しい丈の括弧に変換され、省略された括弧は、点線として表示されます。
+コマンドは、文書が再度読み込まれたときには、\SpecialChar LyX
+によって正しい丈の括弧に変換され、省略された括弧は、点線として表示されます。
 \end_layout
 
 \begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
-著名なLaTeX頒布版は、すべてLaTeXの拡張であるeTeXを使用しているので、これらの頒布版では、すべての括弧および極限に対して
+著名な\SpecialChar LaTeX
+頒布版は、すべて\SpecialChar LaTeX
+の拡張であるe\SpecialChar TeX
+を使用しているので、これらの頒布版では、すべての括弧および極限に対して
 \series bold
 
 \backslash
@@ -6824,7 +6918,8 @@ status collapsed
 \series bold
 【訳註】
 \series default
-pLaTeXでは、標準では
+p\SpecialChar LaTeX
+では、標準では
 \series bold
 
 \backslash
@@ -6858,7 +6953,7 @@ biggm
 。このコマンドでは、物理ベクトル
 \begin_inset Formula 
 \[
-\left\langle \phi\:\biggm|\: J=\frac{3}{2}\,,\, M_{J}\right\rangle 
+\left\langle \phi\:\biggm|\:J=\frac{3}{2}\,,\,M_{J}\right\rangle 
 \]
 
 \end_inset
@@ -6866,11 +6961,12 @@ biggm
 で必要とされるように、次に続く文字の高さは、囲まれる括弧の高さに調節されます。物理ベクトルに関しては、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:物理ベクトル"
+reference "subsec:物理ベクトル"
 
 \end_inset
 
-節に説明されているように特殊なLaTeXパッケージがあります。
+節に説明されているように特殊な\SpecialChar LaTeX
+パッケージがあります。
 \end_layout
 
 \begin_layout Subsection
@@ -6883,7 +6979,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
-------
+——
 \end_layout
 
 \end_inset
@@ -6895,7 +6991,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -7183,13 +7279,17 @@ status collapsed
 常に読み込み
 \family default
 オプションを設定すると、以下のような角括弧が利用可能になります。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -7426,13 +7526,17 @@ overbracket
 underbracket
 \series default
 に関しては、コマンドに続く角括弧中に、希望する厚みを指定すれば、以下のように、角括弧の筆跡の厚みに変更を加えることができます。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -7600,7 +7704,7 @@ reference "sec:多行数式"
 節に説明されているように、次のような多行数式を使わなくてはなりません。
 \begin_inset Formula 
 \begin{eqnarray*}
-A & = & \underbrace{gggg+bbqq}_{r}+\: dddd\\
+A & = & \underbrace{gggg+bbqq}_{r}+\:dddd\\
  &  & \hphantom{gggg+\:}\underbrace{\hphantom{bbqq+dddd}}_{s}
 \end{eqnarray*}
 
@@ -7614,7 +7718,7 @@ status collapsed
 空白コマンドは第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:定義済みの空白"
+reference "subsec:定義済みの空白"
 
 \end_inset
 
@@ -7645,7 +7749,7 @@ status collapsed
 これは、括弧が文字として取り扱われないためです。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:二項演算子"
+reference "subsec:二項演算子"
 
 \end_inset
 
@@ -7680,7 +7784,7 @@ hphantom
 に関する詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:埋め草"
+reference "subsec:埋め草"
 
 \end_inset
 
@@ -7718,7 +7822,7 @@ jot}{-6pt}
 \begin_inset Formula 
 \begin{eqnarray*}
  &  & \hphantom{gggg+\:}\overbrace{\hphantom{bbqq+dddd}}^{s}\\
-A & = & \underbrace{gggg+bbqq}_{r}+\: dddd
+A & = & \underbrace{gggg+bbqq}_{r}+\:dddd
 \end{eqnarray*}
 
 \end_inset
@@ -7739,7 +7843,8 @@ jot}{3pt}
 \end_inset
 
 最初の数式行は、括弧が上に来ていること以外は、先の例の第二行と同じです。二行目には、二つめの括弧と一緒に数式が入っています。一行目の括弧と数式のあいだに余白が入
-ることを防ぐために、行間を減らさなくてはならないのですが、これはLyXのバグ
+ることを防ぐために、行間を減らさなくてはならないのですが、これは\SpecialChar LyX
+のバグ
 \begin_inset Foot
 status collapsed
 
@@ -7756,7 +7861,8 @@ target "http://www.lyx.org/trac/ticket/1505"
 
 \end_inset
 
-のせいで簡単にはできません。この問題を回避するためには、数式直前にTeXモードで
+のせいで簡単にはできません。この問題を回避するためには、数式直前に\SpecialChar TeX
+モードで
 \series bold
 setlength{
 \backslash
@@ -7797,7 +7903,7 @@ jot
 ptに戻します。数式中の行間について、詳しくは第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:行間"
+reference "subsec:行間"
 
 \end_inset
 
@@ -7849,7 +7955,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8058,7 +8164,7 @@ hookleftarrow
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8274,7 +8380,7 @@ hookrightarrow
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8438,7 +8544,7 @@ rightleftharpoons
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8657,7 +8763,7 @@ vspace{4mm}
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -8823,6 +8929,10 @@ status collapsed
 \end_inset
 
 
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -8833,7 +8943,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9033,7 +9143,7 @@ xhookrightarrow
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9235,13 +9345,17 @@ xrightleftharpoons
 
 \begin_layout Standard
 これらの矢印は、すべて以下のようなコマンドスキームを取ります。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9349,7 +9463,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9533,7 +9647,7 @@ downarrow
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -9674,14 +9788,14 @@ nwarrow
 垂直矢印は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:手動の括弧丈"
+reference "subsec:手動の括弧丈"
 
 \end_inset
 
 節および第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:自動の括弧丈"
+reference "subsec:自動の括弧丈"
 
 \end_inset
 
@@ -9741,7 +9855,7 @@ status collapsed
 本文中のアクセントについては、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:文章中のアクセント"
+reference "subsec:文章中のアクセント"
 
 \end_inset
 
@@ -9785,7 +9899,7 @@ texorpdfstring
 についての詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:節見出し中の数式"
+reference "subsec:節見出し中の数式"
 
 \end_inset
 
@@ -9797,7 +9911,7 @@ reference "sub:節見出し中の数式"
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:一文字に付けるアクセント"
+name "subsec:一文字に付けるアクセント"
 
 \end_inset
 
@@ -9821,7 +9935,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -10084,7 +10198,7 @@ A
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -10312,7 +10426,8 @@ status collapsed
 
 \end_inset
 
-のようなアクセントは、数式に直接入れることができます。LyXは、それを対応するアクセントコマンドに変換します。ウムラウト
+のようなアクセントは、数式に直接入れることができます。\SpecialChar LyX
+は、それを対応するアクセントコマンドに変換します。ウムラウト
 \begin_inset Index idx
 status collapsed
 
@@ -10322,8 +10437,9 @@ status collapsed
 
 \end_inset
 
-に関しては、母音の前に引用符を挿入する方法の方がよいでしょう。ウムラウトのある数式部分がドイツ語に指定してあれば、LaTeXは、引用符と母音をまとめて一つの文字
-として取り扱います。
+に関しては、母音の前に引用符を挿入する方法の方がよいでしょう。ウムラウトのある数式部分がドイツ語に指定してあれば、\SpecialChar LaTeX
+は、引用符と母音をまとめて一つの文字として取り
+扱います。
 \series bold
 
 \backslash
@@ -10343,7 +10459,7 @@ ddot
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -10478,7 +10594,9 @@ ddot
 \end_layout
 
 \begin_layout Standard
-LyXは、LaTeXパッケージ
+\SpecialChar LyX
+は、\SpecialChar LaTeX
+パッケージ
 \series bold
 undertilde
 \series default
@@ -10517,9 +10635,14 @@ status open
 \series bold
 undertilde
 \series default
- LaTeXパッケージが導入済みのときのみ表示されます。
+ \SpecialChar LaTeX
+パッケージが導入済みのときのみ表示されます。
 \end_layout
 
+\end_inset
+
+
+\begin_inset Separator parbreak
 \end_inset
 
 
@@ -10530,7 +10653,7 @@ undertilde
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -10611,7 +10734,8 @@ status open
 \series bold
 undertilde
 \series default
- LaTeXパッケージが導入されていないときのみ表示されます。
+ \SpecialChar LaTeX
+パッケージが導入されていないときのみ表示されます。
 \end_layout
 
 \end_inset
@@ -10624,7 +10748,8 @@ undertilde
 \series bold
 undertilde
 \series default
- LaTeXパッケージを導入する必要があります。
+ \SpecialChar LaTeX
+パッケージを導入する必要があります。
 \end_layout
 
 \begin_layout Standard
@@ -10671,7 +10796,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -10837,7 +10962,7 @@ A=B
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -11080,7 +11205,7 @@ A=B
 空白
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:空白"
+name "subsec:空白"
 
 \end_inset
 
@@ -11093,7 +11218,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
-------
+——
 \end_layout
 
 \end_inset
@@ -11105,7 +11230,7 @@ status collapsed
 定義済みの空白
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:定義済みの空白"
+name "subsec:定義済みの空白"
 
 \end_inset
 
@@ -11118,7 +11243,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
------- ! ていぎずみ@定義済み
+—— ! ていぎずみ@定義済み
 \end_layout
 
 \end_inset
@@ -11176,6 +11301,10 @@ arg   "math-insert \\space"
 Space
 \family default
 を押すことによって、長さを変更することができます。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -11183,7 +11312,7 @@ Space
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="15col%">
 <column alignment="center" valignment="top">
@@ -11245,7 +11374,7 @@ Space
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\, B$
+\begin_inset Formula $A\,B$
 \end_inset
 
 
@@ -11279,7 +11408,7 @@ Space
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\: B$
+\begin_inset Formula $A\:B$
 \end_inset
 
 
@@ -11313,7 +11442,7 @@ Space
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\; B$
+\begin_inset Formula $A\;B$
 \end_inset
 
 
@@ -11401,7 +11530,7 @@ qquad
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top" width="15col%">
 <column alignment="center" valignment="top">
@@ -11603,7 +11732,7 @@ hspace{1em}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $A\! B$
+\begin_inset Formula $A\!B$
 \end_inset
 
 
@@ -11628,7 +11757,7 @@ hspace{1em}
 
 
 \lang japanese
---
+–
 \lang english
 
 \begin_inset space \thinspace{}
@@ -11643,19 +11772,24 @@ Space
 を押した場合は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:可変長の空白"
+reference "subsec:可変長の空白"
 
 \end_inset
 
-節に説明されているように、可変空白となります。9回押した場合は、一見、空白を生まないように見えます。実はこれは負の長さなので、他の長さと異なり、LyX中では赤で
-表示されます。以下のように、他にもう二つ、負の長さの空白があります。
+節に説明されているように、可変空白となります。9回押した場合は、一見、空白を生まないように見えます。実はこれは負の長さなので、他の長さと異なり、\SpecialChar LyX
+中では赤で表示さ
+れます。以下のように、他にもう二つ、負の長さの空白があります。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="6.8cm">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -11769,13 +11903,17 @@ Space
 
 \begin_layout Standard
 負の空白を使うと、文字が重なってしまうことがあります。これを利用して、合字処理を強制することができます。これは、たとえば以下のように、和演算子に使えます。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -11895,14 +12033,19 @@ f_kl
 
 \begin_layout Standard
 \noindent
-イコール記号などの関係子は、つねに空白を前後に伴うようになっていますが、これを抑制するには、イコール記号をTeX括弧で囲みます。以下の例にこれを示します。
+イコール記号などの関係子は、つねに空白を前後に伴うようになっていますが、これを抑制するには、イコール記号を\SpecialChar TeX
+括弧で囲みます。以下の例にこれを示します。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -11996,8 +12139,8 @@ B
 \begin_inset VSpace bigskip
 \end_inset
 
-物理単位には、値と単位のあいだに通常の空白ではなく、最小の空白を入れる必要があるために、それに適した空白が必要です。本文中の単位には、挿入\SpecialChar \menuseparator
-整形\SpecialChar \menuseparator
+物理単位には、値と単位のあいだに通常の空白ではなく、最小の空白を入れる必要があるために、それに適した空白が必要です。本文中の単位には、挿入\SpecialChar menuseparator
+整形\SpecialChar menuseparator
 小空白メニュー(
 \begin_inset Flex Ruby
 status collapsed
@@ -12034,7 +12177,7 @@ arg   "space-insert thin"
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <row>
@@ -12118,7 +12261,7 @@ status collapsed
 数式中の垂直方向の空白については、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:行間"
+reference "subsec:行間"
 
 \end_inset
 
@@ -12154,7 +12297,7 @@ texorpdfstringは、PDFのしおりに脚注が現れるのを防ぐために使
 texorpdfstringについての詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:節見出し中の数式"
+reference "subsec:節見出し中の数式"
 
 \end_inset
 
@@ -12166,7 +12309,7 @@ reference "sub:節見出し中の数式"
 
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:可変長の空白"
+name "subsec:可変長の空白"
 
 \end_inset
 
@@ -12179,7 +12322,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
------- ! かへんちょう@可変長
+—— ! かへんちょう@可変長
 \end_layout
 
 \end_inset
@@ -12285,7 +12428,7 @@ hfill
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -12465,7 +12608,7 @@ hrulefill
 といったコマンドがあります。用例については第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:省略符号"
+reference "subsec:省略符号"
 
 \end_inset
 
@@ -12475,8 +12618,8 @@ reference "sub:省略符号"
 \begin_layout Standard
 本文中では、可変長空白は、
 \family sans
-挿入\SpecialChar \menuseparator
-整形\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
+整形\SpecialChar menuseparator
 水平方向の空白
 \family default
 メニューで挿入することができます。
@@ -12594,7 +12737,8 @@ mathsurround}{5mm}
 \end_layout
 
 \begin_layout Standard
-をTeXモードで挿入します。すると、5
+を\SpecialChar TeX
+モードで挿入します。すると、5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -12719,7 +12863,7 @@ status collapsed
 枠付きボックス
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:枠付きボックス"
+name "subsec:枠付きボックス"
 
 \end_inset
 
@@ -12732,7 +12876,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
-------
+——
 \end_layout
 
 \end_inset
@@ -12902,13 +13046,17 @@ framebox
 fbox
 \series default
 同様、数式の断片を入れるためのものです。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -13117,7 +13265,8 @@ B
 \end_layout
 
 \begin_layout Standard
-枠の厚みも調節可能です。そのためには、以下のコマンドを数式の前にTeXモードで挿入しなくてはなりません。
+枠の厚みも調節可能です。そのためには、以下のコマンドを数式の前に\SpecialChar TeX
+モードで挿入しなくてはなりません。
 \end_layout
 
 \begin_layout Standard
@@ -13215,7 +13364,8 @@ fboxsep
 \end_layout
 
 \begin_layout Standard
-というコマンドが、TeXモードで挿入されています。ここで与えられた値は、以後のすべてのボックスに適用されます。
+というコマンドが、\SpecialChar TeX
+モードで挿入されています。ここで与えられた値は、以後のすべてのボックスに適用されます。
 \end_layout
 
 \begin_layout Standard
@@ -13262,14 +13412,15 @@ fboxsep 3pt
 \end_layout
 
 \begin_layout Standard
-というコマンドを、次の数式が始まる前にTeXモードで挿入しておきます。
+というコマンドを、次の数式が始まる前に\SpecialChar TeX
+モードで挿入しておきます。
 \end_layout
 
 \begin_layout Subsection
 枠なしボックス
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:枠なしボックス"
+name "subsec:枠なしボックス"
 
 \end_inset
 
@@ -13282,7 +13433,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
-------
+——
 \end_layout
 
 \end_inset
@@ -13398,7 +13549,8 @@ raisebox
 \family sans
 Ctrl+M
 \family default
-を一回でなく二回押すことによって、もう一段数式をいれています。これは、LyXが
+を一回でなく二回押すことによって、もう一段数式をいれています。これは、\SpecialChar LyX
+が
 \series bold
 
 \backslash
@@ -13410,13 +13562,17 @@ raisebox
 \end_inset
 
 
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -13589,7 +13745,7 @@ framebox
 色付きボックス
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:色付きボックス"
+name "subsec:色付きボックス"
 
 \end_inset
 
@@ -13602,7 +13758,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
-------
+——
 \end_layout
 
 \end_inset
@@ -13611,7 +13767,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-本節で説明されているコマンドをすべて使えるようにするためには、LaTeXプリアンブルに
+本節で説明されているコマンドをすべて使えるようにするためには、\SpecialChar LaTeX
+プリアンブルに
 \end_layout
 
 \begin_layout Standard
@@ -13628,7 +13785,9 @@ usepackage{color}
 status collapsed
 
 \begin_layout Plain Layout
-定義済みの色を使って、文書中のどこかで文章に色を付けてある場合、LyXは、自動的にLaTeXパッケージ
+定義済みの色を使って、文書中のどこかで文章に色を付けてある場合、\SpecialChar LyX
+は、自動的に\SpecialChar LaTeX
+パッケージ
 \series bold
 color
 \series default
@@ -13642,12 +13801,14 @@ color
 status collapsed
 
 \begin_layout Plain Layout
-本パッケージが二度読み込まれることを防ぐために、LaTeXプリアンブルにマクロを挿入してあります。
+本パッケージが二度読み込まれることを防ぐために、\SpecialChar LaTeX
+プリアンブルにマクロを挿入してあります。
 \end_layout
 
 \end_inset
 
-を書き加えて、LaTeXパッケージの
+を書き加えて、\SpecialChar LaTeX
+パッケージの
 \series bold
 color
 \series default
@@ -13656,11 +13817,13 @@ color
 status collapsed
 
 \begin_layout Plain Layout
-LaTeXパッケージ
+\SpecialChar LaTeX
+パッケージ
 \series bold
 color
 \series default
-は、すべての標準的なLaTeX頒布版に含まれています。
+は、すべての標準的な\SpecialChar LaTeX
+頒布版に含まれています。
 \end_layout
 
 \end_inset
@@ -13785,13 +13948,17 @@ yellow
 
 \begin_layout Standard
 があります。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -13975,8 +14142,8 @@ arg   "dialog-show character"
 
 か
 \family sans
-編集\SpecialChar \menuseparator
-文字様式\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+文字様式\SpecialChar menuseparator
 任意設定
 \family default
 メニューで開くことができます。すると、数式番号も数式と同じ色になります。数式番号が数式の文字とは別の色になるようにするには、数式内部で色を変えなくてはなりません
@@ -14175,7 +14342,8 @@ fcolorbox{cyan
 \series bold
 darkgreen
 \series default
-」という色を定義するには、LaTeXプリアンブルに
+」という色を定義するには、\SpecialChar LaTeX
+プリアンブルに
 \end_layout
 
 \begin_layout Standard
@@ -14375,7 +14543,7 @@ textcolor{色}{色付けをする文}
 段落ボックス
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:段落ボックス"
+name "subsec:段落ボックス"
 
 \end_inset
 
@@ -14388,7 +14556,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
-------
+——
 \end_layout
 
 \end_inset
@@ -14399,7 +14567,7 @@ status collapsed
 \begin_layout Standard
 いくつかの行や段落を含む、いわゆる段落ボックス(parbox)は、
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 ボックス
 \family default
 メニューかツールバーボタン
@@ -14431,6 +14599,11 @@ width "5cm"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -14485,7 +14658,8 @@ cm、
 \begin_inset VSpace medskip
 \end_inset
 
-LaTeXでは、parboxは、以下の書式を持つ
+\SpecialChar LaTeX
+では、parboxは、以下の書式を持つ
 \series bold
 
 \backslash
@@ -14550,7 +14724,8 @@ op)は、これを最初の行に合わせます。位置を指定しない時�
 \begin_inset VSpace bigskip
 \end_inset
 
-数式番号を含めて、数式を完全に枠で囲むためには、数式をparbox内に収めなくてはなりません。こうするには、数式前にTeXモードで
+数式番号を含めて、数式を完全に枠で囲むためには、数式をparbox内に収めなくてはなりません。こうするには、数式前に\SpecialChar TeX
+モードで
 \series bold
 parbox{
 \backslash
@@ -14595,7 +14770,10 @@ target "http://www.lyx.org/trac/ticket/4483"
 
 \end_inset
 
-のせいでLyXはこれを自動的に行いませんので、TeXモードを使用する必要があります。引数中で掛け算や引き算を行うためには、LaTeXパッケージの
+のせいで\SpecialChar LyX
+はこれを自動的に行いませんので、\SpecialChar TeX
+モードを使用する必要があります。引数中で掛け算や引き算を行うためには、\SpecialChar LaTeX
+パッケージの
 \series bold
 calc
 \series default
@@ -14608,7 +14786,8 @@ status collapsed
 \series bold
 calc
 \series default
-は、標準的LaTeX頒布版のすべてに含まれています。
+は、標準的\SpecialChar LaTeX
+頒布版のすべてに含まれています。
 \end_layout
 
 \end_inset
@@ -14623,7 +14802,8 @@ status collapsed
 
 \end_inset
 
-を、LaTeXプリアンブル中で
+を、\SpecialChar LaTeX
+プリアンブル中で
 \end_layout
 
 \begin_layout Standard
@@ -14635,7 +14815,8 @@ usepackage{calc}
 \end_layout
 
 \begin_layout Standard
-のように読み込んでおく必要があります。数式の後では、TeXモードで
+のように読み込んでおく必要があります。数式の後では、\SpecialChar TeX
+モードで
 \series bold
 }}
 \series default
@@ -14765,7 +14946,7 @@ tag
 についての詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:自己定義番号"
+reference "subsec:自己定義番号"
 
 \end_inset
 
@@ -14816,13 +14997,15 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-LyXは、まだ数式中での
+\SpecialChar LyX
+は、まだ数式中での
 \series bold
 
 \backslash
 parbox
 \series default
-コマンドをサポートしていないので、上のような数式は、完全にTeXモードで挿入しなくてはなりません。この数式は、以下のようなコマンド列を使って作ってあります。
+コマンドをサポートしていないので、上のような数式は、完全に\SpecialChar TeX
+モードで挿入しなくてはなりません。この数式は、以下のようなコマンド列を使って作ってあります。
 \end_layout
 
 \begin_layout Standard
@@ -14838,7 +15021,8 @@ tag*
 \backslash
 parbox{5cm}{
 \series default
-というコマンドをTeXモードで挿入します
+というコマンドを\SpecialChar TeX
+モードで挿入します
 \begin_inset Foot
 status collapsed
 
@@ -14879,7 +15063,8 @@ reference "sec:数式様式"
 \backslash
 ]
 \series default
-をTeXモードで挿入します。ここで
+を\SpecialChar TeX
+モードで挿入します。ここで
 \series bold
 
 \backslash
@@ -14930,7 +15115,7 @@ status collapsed
 大演算子
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:大演算子"
+name "subsec:大演算子"
 
 \end_inset
 
@@ -14943,7 +15128,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
-------
+——
 \end_layout
 
 \end_inset
@@ -14990,7 +15175,7 @@ esintパッケージを自動的に使う
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -15289,7 +15474,7 @@ bigcup
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -15637,7 +15822,7 @@ int
 とは範囲の表示のしかたが異なります。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:演算子の範囲"
+reference "subsec:演算子の範囲"
 
 \end_inset
 
@@ -15691,7 +15876,7 @@ status collapsed
 文字様式については、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:書体様式"
+reference "subsec:書体様式"
 
 \end_inset
 
@@ -15748,7 +15933,7 @@ status open
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -15873,7 +16058,7 @@ sqiint
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -15986,7 +16171,7 @@ dotsint
 演算子の範囲
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:演算子の範囲"
+name "subsec:演算子の範囲"
 
 \end_inset
 
@@ -16005,13 +16190,17 @@ status collapsed
 
 \begin_layout Standard
 範囲は、上付き文字と下付き文字とで作成することができます。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -16103,8 +16292,8 @@ A(x)
 \begin_layout Standard
 範囲が演算子の横に表示されるように強制するには、カーソルを当該演算子の直後において、
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
 範囲の表記を変更
 \family default
 メニューで
@@ -16317,7 +16506,7 @@ k
 \family default
 か
 \family sans
-編集\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
 行と列
 \family default
 メニューで変更することができますが、右揃えにするには、行頭に
@@ -16569,7 +16758,7 @@ adjustlimits
 一つの範囲を複数の演算子に用いる方法が、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:自己定義演算子"
+reference "subsec:自己定義演算子"
 
 \end_inset
 
@@ -16675,7 +16864,8 @@ sideset
 \backslash
 sidesetn
 \series default
-は、演算子の前後に文字を置くのに用います(この派生版は、LaTeXの元々の
+は、演算子の前後に文字を置くのに用います(この派生版は、\SpecialChar LaTeX
+の元々の
 \series bold
 
 \backslash
@@ -16819,7 +17009,7 @@ a
 二項演算子
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:二項演算子"
+name "subsec:二項演算子"
 
 \end_inset
 
@@ -16832,7 +17022,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
-------
+——
 \end_layout
 
 \end_inset
@@ -16855,7 +17045,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -17222,7 +17412,7 @@ bullet
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -17556,7 +17746,7 @@ vee
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -17933,7 +18123,7 @@ nabla
 \begin_layout Standard
 
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 特殊文字
 \family default
 メニューの
@@ -17953,7 +18143,7 @@ triangleright
 自己定義演算子
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:自己定義演算子"
+name "subsec:自己定義演算子"
 
 \end_inset
 
@@ -17966,7 +18156,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
-------
+——
 \end_layout
 
 \end_inset
@@ -17975,7 +18165,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-LaTeXプリアンブルで
+\SpecialChar LaTeX
+プリアンブルで
 \series bold
 
 \backslash
@@ -18010,7 +18201,7 @@ DeclareMathOperator{新規コマンド}{表示}
 です。「表示」は、出力での演算子の表示され方を定義する文字や記号です。大演算子を定義するには、コマンドの後に「*」を置きます。自己定義の大演算子は、すべて第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:演算子の範囲"
+reference "subsec:演算子の範囲"
 
 \end_inset
 
@@ -18018,7 +18209,8 @@ reference "sub:演算子の範囲"
 \end_layout
 
 \begin_layout Standard
-たとえば、以下のようなLaTeXプリアンブル行
+たとえば、以下のような\SpecialChar LaTeX
+プリアンブル行
 \end_layout
 
 \begin_layout Standard
@@ -18037,7 +18229,7 @@ blacklozenge}
 は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:その他の記号"
+reference "subsec:その他の記号"
 
 \end_inset
 
@@ -18262,7 +18454,7 @@ status collapsed
 書体様式
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:書体様式"
+name "subsec:書体様式"
 
 \end_inset
 
@@ -18291,7 +18483,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -18626,7 +18818,7 @@ AbC
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -18922,7 +19114,8 @@ mathnormal
 \backslash
 textrm
 \series default
-様式で表示されます。数式テキストの様式を文字様式ダイアログで設定することができないのは、LyXのバグです
+様式で表示されます。数式テキストの様式を文字様式ダイアログで設定することができないのは、\SpecialChar LyX
+のバグです
 \begin_inset Foot
 status collapsed
 
@@ -18945,8 +19138,8 @@ target "http://www.lyx.org/trac/ticket/4629"
 \begin_layout Standard
 書体様式コマンドの代わりに、
 \family sans
-編集\SpecialChar \menuseparator
-数学\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数学\SpecialChar menuseparator
 文字様式
 \family default
 ダイアログや、
@@ -18962,7 +19155,7 @@ arg   "math-insert \\font"
 ボールド体の数式
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:ボールド体の数式"
+name "subsec:ボールド体の数式"
 
 \end_inset
 
@@ -19020,7 +19213,8 @@ boldsymbol
 \series bold
 boldmath環境
 \series default
-に設定する方法もあります。この環境は、TeXモードで
+に設定する方法もあります。この環境は、\SpecialChar TeX
+モードで
 \series bold
 
 \backslash
@@ -19056,7 +19250,8 @@ unboldmath
 
 
 \series default
-コマンドをTeXモードで挿入します。
+コマンドを\SpecialChar TeX
+モードで挿入します。
 \begin_inset ERT
 status collapsed
 
@@ -19123,7 +19318,7 @@ status collapsed
 第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:色付きボックス"
+reference "subsec:色付きボックス"
 
 \end_inset
 
@@ -19145,7 +19340,8 @@ textcolor
 
 \end_inset
 
-TeXコードコマンドで適用することができます。
+\SpecialChar TeX
+コードコマンドで適用することができます。
 \end_layout
 
 \begin_layout Standard
@@ -19196,7 +19392,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-LyXのバグのため、自己定義色は数式全体に対してしか使用することができません
+\SpecialChar LyX
+のバグのため、自己定義色は数式全体に対してしか使用することができません
 \begin_inset Foot
 status collapsed
 
@@ -19220,7 +19417,7 @@ target "http://www.lyx.org/trac/ticket/5269"
 書体寸法
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:書体寸法"
+name "subsec:書体寸法"
 
 \end_inset
 
@@ -19340,7 +19537,9 @@ huge
 \end_layout
 
 \begin_layout Standard
-ある場所以降のすべての数式と本文文字を変更するには、書体寸法コマンドをTeXモードで挿入します。元の書体寸法に戻すには、数式の後にTeXモードで
+ある場所以降のすべての数式と本文文字を変更するには、書体寸法コマンドを\SpecialChar TeX
+モードで挿入します。元の書体寸法に戻すには、数式の後に\SpecialChar TeX
+モードで
 \series bold
 
 \backslash
@@ -19357,6 +19556,10 @@ arg   "math-insert \\style"
 \end_inset
 
 を使用して、寸法を変更することができます。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -19364,7 +19567,7 @@ arg   "math-insert \\style"
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -19718,7 +19921,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -20002,7 +20205,7 @@ vartheta
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="12" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -20309,7 +20512,7 @@ rho
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -20604,7 +20807,7 @@ omega
 アップライト体のギリシャ文字を作成する方法は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:アップライト体ギリシャ小文字"
+reference "subsec:アップライト体ギリシャ小文字"
 
 \end_inset
 
@@ -20632,7 +20835,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -20834,7 +21037,7 @@ Pi
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -21015,7 +21218,8 @@ Omega
 \begin_inset VSpace medskip
 \end_inset
 
-大文字のギリシャ文字が立体で表示されるのは、TeXの開発途上に生じたデザイン上のバグによるものです。正しいイタリック体の大文字を得るためには、各コマンドの頭に
+大文字のギリシャ文字が立体で表示されるのは、\SpecialChar TeX
+の開発途上に生じたデザイン上のバグによるものです。正しいイタリック体の大文字を得るためには、各コマンドの頭に
 \series bold
 var
 \series default
@@ -21042,7 +21246,8 @@ status collapsed
 \series bold
 fixmath
 \series default
-は、LaTeXパッケージ
+は、\SpecialChar LaTeX
+パッケージ
 \series bold
 was
 \series default
@@ -21084,7 +21289,8 @@ status collapsed
 
 \end_inset
 
-をLaTeXプリアンブル行に
+を\SpecialChar LaTeX
+プリアンブル行に
 \end_layout
 
 \begin_layout Standard
@@ -21133,13 +21339,17 @@ boldsymbol
 \end_inset
 
 。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -21246,7 +21456,8 @@ texorpdfstring{
 status collapsed
 
 \begin_layout Plain Layout
-各LaTeXパッケージに含まれる全記号をほとんど網羅した一覧が、
+各\SpecialChar LaTeX
+パッケージに含まれる全記号をほとんど網羅した一覧が、
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Symbols"
@@ -21285,7 +21496,7 @@ texorpdfstringは、PDFのしおりに脚注が現れるのを防ぐために使
 texorpdfstringについての詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:節見出し中の数式"
+reference "subsec:節見出し中の数式"
 
 \end_inset
 
@@ -21327,7 +21538,7 @@ arg   "math-insert \\digamma"
 数学記号
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:数学記号"
+name "subsec:数学記号"
 
 \end_inset
 
@@ -21351,7 +21562,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -21610,7 +21821,7 @@ jmath
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -21909,7 +22120,7 @@ Bbbk
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -22172,7 +22383,7 @@ bot
 その他の記号
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:その他の記号"
+name "subsec:その他の記号"
 
 \end_inset
 
@@ -22194,7 +22405,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -22463,7 +22674,7 @@ $
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -22736,7 +22947,7 @@ bullet
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -23016,7 +23227,7 @@ diagdown
 ここにある以上の記号が、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:他の特殊文字"
+reference "subsec:他の特殊文字"
 
 \end_inset
 
@@ -23027,7 +23238,7 @@ reference "sub:他の特殊文字"
 寸法を変えて表示することのできる記号もあります。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:書体寸法"
+reference "subsec:書体寸法"
 
 \end_inset
 
@@ -23072,7 +23283,8 @@ officialeuro
 \end_layout
 
 \begin_layout Standard
-ユーロ通貨記号を数式で使用するには、LaTeXパッケージ
+ユーロ通貨記号を数式で使用するには、\SpecialChar LaTeX
+パッケージ
 \series bold
 eurosym
 \series default
@@ -23086,7 +23298,8 @@ status collapsed
 
 \end_inset
 
-が導入されていて、以下のようなLaTeXプリアンブル行によって読み込まれていなくてはなりません。
+が導入されていて、以下のような\SpecialChar LaTeX
+プリアンブル行によって読み込まれていなくてはなりません。
 \end_layout
 
 \begin_layout Standard
@@ -23134,7 +23347,8 @@ eurosym
 \backslash
 euro
 \series default
-はTeXモードでも挿入することができます。また、正式な通貨記号を
+は\SpecialChar TeX
+モードでも挿入することができます。また、正式な通貨記号を
 \series bold
 
 \backslash
@@ -23152,7 +23366,8 @@ officialeuro
 
 \end_inset
 
-コマンド(これはTeXモードでのみ使用することができます)で挿入することができます。
+コマンド(これは\SpecialChar TeX
+モードでのみ使用することができます)で挿入することができます。
 \end_layout
 
 \begin_layout Standard
@@ -23173,7 +23388,8 @@ ifeurosym
 status open
 
 \begin_layout Plain Layout
-以下の表は、LaTeXパッケージ
+以下の表は、\SpecialChar LaTeX
+パッケージ
 \series bold
 eurosym
 \series default
@@ -23187,13 +23403,17 @@ eurosym
 
 \begin_layout Standard
 以下は、各ユーロ通貨記号のまとめです。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -23294,7 +23514,8 @@ euro
 \begin_inset Text
 
 \begin_layout Plain Layout
-TeXモード
+\SpecialChar TeX
+モード
 \end_layout
 
 \end_inset
@@ -23357,7 +23578,8 @@ else
 status open
 
 \begin_layout Plain Layout
-以下は、LaTeXパッケージ
+以下は、\SpecialChar LaTeX
+パッケージ
 \series bold
 eurosym
 \series default
@@ -23370,7 +23592,8 @@ eurosym
 \end_layout
 
 \begin_layout Standard
-本節の残りを出力としてみるためには、LaTeXパッケージ
+本節の残りを出力としてみるためには、\SpecialChar LaTeX
+パッケージ
 \series bold
 eurosym
 \series default
@@ -23463,7 +23686,7 @@ arg   "math-insert \\leq"
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -23898,7 +24121,7 @@ nmid
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -24330,7 +24553,7 @@ widehat=
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -24815,7 +25038,8 @@ triangleright
 \end_layout
 
 \begin_layout Standard
-LyXは、特殊な関係子を多くサポートしています。これらの関係子一覧を見るには、ツールバーボタン
+\SpecialChar LyX
+は、特殊な関係子を多くサポートしています。これらの関係子一覧を見るには、ツールバーボタン
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\leqq"
@@ -24848,13 +25072,17 @@ stackrel
 \end_inset
 
 コマンドを使うと、以下のように、ラベル付きの関係子を作ることができます。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -24959,7 +25187,7 @@ B
 定義済み関数
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:定義済み函数"
+name "subsec:定義済み函数"
 
 \end_inset
 
@@ -24991,13 +25219,17 @@ status collapsed
 
 であるかのように誤解させる恐れがあるためです。そのために、定義済み関数が存在し、これらは先行する要素よりも少し離れて配置されます。定義済み関数は、関数名の前にバ
 ックスラッシュを加えたコマンドとして挿入します。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -25108,7 +25340,7 @@ sin(x)+B
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -25555,7 +25787,8 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-以下の行をLaTeXプリアンブルに加えることによって関数を定義します。
+以下の行を\SpecialChar LaTeX
+プリアンブルに加えることによって関数を定義します。
 \begin_inset Foot
 status collapsed
 
@@ -25569,7 +25802,7 @@ DeclareMathOperator
 についての詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:自己定義演算子"
+reference "subsec:自己定義演算子"
 
 \end_inset
 
@@ -25647,19 +25880,24 @@ sgn
 status collapsed
 
 \begin_layout Plain Layout
-LyX上では、自己定義関数は赤で表示され、定義済み関数は黒で表示されます。
+\SpecialChar LyX
+上では、自己定義関数は赤で表示され、定義済み関数は黒で表示されます。
 \end_layout
 
 \end_inset
 
 。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -25793,13 +26031,17 @@ liminf
 limsup
 \series default
 の他に、以下の関数があります。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -25960,7 +26202,7 @@ varinjlim
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -26068,7 +26310,7 @@ x=B
 極限の組版を調整する仕方については、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:演算子の範囲"
+reference "subsec:演算子の範囲"
 
 \end_inset
 
@@ -26143,7 +26385,8 @@ status collapsed
 
 \begin_layout Standard
 行内数式では、すべての派生型で、関数名の前の余白がすこし小さく設定されます。既定では、剰余関数は、続く一文字目だけを考慮します。二文字以上を使いたい時には、下記
-のように文字をTeX括弧で囲みます。
+のように文字を\SpecialChar TeX
+括弧で囲みます。
 \begin_inset Formula 
 \begin{align*}
 \underline{\textrm{コマンド}\raisebox{-0.9mm}{}} &  & \underline{\textrm{出力}}\\
@@ -26174,6 +26417,10 @@ status collapsed
 ^および_の各文字は、通常、上付き文字や下付き文字を生成してしまいます。これらの文字自体を得るには、その前に
 \backslash
 を付けなくてはなりません。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -26181,7 +26428,7 @@ status collapsed
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="block" valignment="top">
 <column alignment="block" valignment="top">
 <row>
@@ -26270,7 +26517,8 @@ _
 \end_layout
 
 \begin_layout Standard
-以下の各コマンドは、数式テキストかTeXモード中でのみ使用することができます。
+以下の各コマンドは、数式テキストか\SpecialChar TeX
+モード中でのみ使用することができます。
 \end_layout
 
 \begin_layout Standard
@@ -26280,7 +26528,7 @@ _
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="block" valignment="top">
 <column alignment="block" valignment="top">
 <row>
@@ -26514,7 +26762,7 @@ i
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="block" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -26787,14 +27035,15 @@ arg   "math-insert \\digamma"
 
 `
 \series default
-の各コマンドで、これらは直接LyX中の本文に入れることができます。
+の各コマンドで、これらは直接\SpecialChar LyX
+中の本文に入れることができます。
 \end_layout
 
 \begin_layout Subsection
 文章中のアクセント
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:文章中のアクセント"
+name "subsec:文章中のアクセント"
 
 \end_inset
 
@@ -26812,7 +27061,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-以下に挙げる各コマンドを使えば、すべての文字にアクセントを付けることができます。これらのコマンドは、TeXモードで入れなくてはなりません。
+以下に挙げる各コマンドを使えば、すべての文字にアクセントを付けることができます。これらのコマンドは、\SpecialChar TeX
+モードで入れなくてはなりません。
 \end_layout
 
 \begin_layout Standard
@@ -26822,7 +27072,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="block" valignment="top">
 <column alignment="block" valignment="top">
 <row>
@@ -27114,7 +27364,7 @@ t ee
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="block" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -27461,7 +27711,8 @@ t sz
 \series bold
 ^
 \series default
- の各アクセントは、TeXモードを使わなくても、母音といっしょに直接キーボードから入力することもできます。チルダ
+ の各アクセントは、\SpecialChar TeX
+モードを使わなくても、母音といっしょに直接キーボードから入力することもできます。チルダ
 \begin_inset Foot
 status collapsed
 
@@ -27537,7 +27788,7 @@ v
 。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:一文字に付けるアクセント"
+reference "subsec:一文字に付けるアクセント"
 
 \end_inset
 
@@ -27566,15 +27817,14 @@ textcircled
 
 \end_inset
 
-コマンドを使えば、著作権マークのように、あらゆる数字や文字を丸で囲む---敢えて言えば、丸囲みでアクセントを付けるようなものといえるでしょう---ことができます
-。
+コマンドを使えば、著作権マークのように、あらゆる数字や文字を丸で囲む—敢えて言えば、丸囲みでアクセントを付けるようなものといえるでしょう—ことができます。
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -27727,7 +27977,7 @@ status collapsed
 第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:書体寸法"
+reference "subsec:書体寸法"
 
 \end_inset
 
@@ -27750,7 +28000,7 @@ status collapsed
 第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:枠なしボックス"
+reference "subsec:枠なしボックス"
 
 \end_inset
 
@@ -27795,7 +28045,8 @@ oldstylenums
 
 \end_inset
 
-コマンドで作成することができます。このコマンドは、数式中でもTeXモード中でも使うことができます。コマンド書式は、
+コマンドで作成することができます。このコマンドは、数式中でも\SpecialChar TeX
+モード中でも使うことができます。コマンド書式は、
 \end_layout
 
 \begin_layout Standard
@@ -27843,6 +28094,10 @@ status collapsed
 
 \begin_layout Itemize
 以下の二つの配置様式があります。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -27853,7 +28108,7 @@ status collapsed
 \begin_layout Description
 行頭下げ これを使うには、
 \family sans
-文書\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
 設定
 \family default
 メニューの
@@ -27894,7 +28149,8 @@ mathindent
 \begin_inset space \thinspace{}
 \end_inset
 
-mmにするには、LaTeXプリアンブルに以下のコマンドを入れておきます。
+mmにするには、\SpecialChar LaTeX
+プリアンブルに以下のコマンドを入れておきます。
 \end_layout
 
 \begin_layout Standard
@@ -27924,6 +28180,10 @@ ptが適用されます。
 \end_deeper
 \begin_layout Itemize
 また、以下の二つの連番様式があります。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -27934,7 +28194,7 @@ ptが適用されます。
 \begin_layout Description
 左 これを使うには、
 \family sans
-文書\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
 設定
 \family default
 メニューの
@@ -27969,7 +28229,7 @@ leqno
 様式を指定するようにします。そして、行頭下げにしたい数式は、flalign環境に指定するようにします。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:flalign環境"
+reference "subsec:flalign環境"
 
 \end_inset
 
@@ -27993,7 +28253,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
-------
+——
 \end_layout
 
 \end_inset
@@ -28006,7 +28266,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-LyXでは、多行数式は、数式中で
+\SpecialChar LyX
+では、多行数式は、数式中で
 \begin_inset Info
 type  "shortcut"
 arg   "newline-insert newline"
@@ -28015,7 +28276,7 @@ arg   "newline-insert newline"
 を押すことで作られます。この操作によって、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:eqnarray環境"
+reference "subsec:eqnarray環境"
 
 \end_inset
 
@@ -28030,7 +28291,7 @@ AMS mathパッケージを使う
 オプションが選択されている場合には、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:標準align環境"
+reference "subsec:標準align環境"
 
 \end_inset
 
@@ -28044,7 +28305,7 @@ align環境
 \begin_layout Standard
 他にも、
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 数式
 \family default
 メニューで作ることのできる多行数式環境があります。これらの環境は、以下の各節で説明します。
@@ -28071,7 +28332,7 @@ arg   "inset-modify tabular delete-row"
 
 を使うか、
 \family sans
-編集\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
 行と列
 \family default
 メニューを使うことができます。
@@ -28081,7 +28342,7 @@ arg   "inset-modify tabular delete-row"
 行間
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:行間"
+name "subsec:行間"
 
 \end_inset
 
@@ -28094,7 +28355,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
------- ! ぎょうかん@行間
+—— ! ぎょうかん@行間
 \end_layout
 
 \end_inset
@@ -28116,7 +28377,9 @@ B^{2}(B^{2}-2r_{g}^{2}+2x_{0}^{2}-2r_{k}^{2})+4x_{0}^{2}x^{2}+4x_{0}xD & = & \te
 \end_layout
 
 \begin_layout Standard
-LaTeXにおいて行間を付け加えるには、新規行コマンドに非必須の引数をとらせて指定しますが、これはまだLyXには実装されていない
+\SpecialChar LaTeX
+において行間を付け加えるには、新規行コマンドに非必須の引数をとらせて指定しますが、これはまだ\SpecialChar LyX
+には実装されていない
 \begin_inset Foot
 status collapsed
 
@@ -28133,7 +28396,8 @@ target "http://www.lyx.org/trac/ticket/1505"
 
 \end_inset
 
-ので、数式全体をTeXモードで入れなくてはなりません。上記の例の行間を大きくするには、最初の行の最後に
+ので、数式全体を\SpecialChar TeX
+モードで入れなくてはなりません。上記の例の行間を大きくするには、最初の行の最後に
 \series bold
 
 \backslash
@@ -28216,7 +28480,7 @@ jot
 \end_inset
 
 変数を変更します。定義は、
-\begin_inset Formula $\mbox{行間}=\mathrm{6\, pt+\backslash jot}$
+\begin_inset Formula $\mbox{行間}=\mathrm{6\,pt+\backslash jot}$
 \end_inset
 
 となっています。
@@ -28247,7 +28511,9 @@ jot}{3mm+3pt}
 \end_layout
 
 \begin_layout Standard
-というコマンドを、数式直前にTeXモードで入れておきます。これを行うには、LaTeXプリアンブルに
+というコマンドを、数式直前に\SpecialChar TeX
+モードで入れておきます。これを行うには、\SpecialChar LaTeX
+プリアンブルに
 \end_layout
 
 \begin_layout Standard
@@ -28259,7 +28525,8 @@ usepackage{calc}
 \end_layout
 
 \begin_layout Standard
-という行を入れて、LaTeXパッケージ
+という行を入れて、\SpecialChar LaTeX
+パッケージ
 \series bold
 calc
 \series default
@@ -28272,7 +28539,8 @@ status collapsed
 \series bold
 calc
 \series default
-は標準的なLaTeX頒布版のすべてに付属しています。
+は標準的な\SpecialChar LaTeX
+頒布版のすべてに付属しています。
 \end_layout
 
 \end_inset
@@ -28346,7 +28614,7 @@ ptに戻します。
 列間
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:列間"
+name "subsec:列間"
 
 \end_inset
 
@@ -28359,7 +28627,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
------- ! れつかん@列間
+—— ! れつかん@列間
 \end_layout
 
 \end_inset
@@ -28423,7 +28691,8 @@ arraycolsep}{1cm}
 \end_layout
 
 \begin_layout Standard
-というコマンドをTeXモードで入れると、ここから後のすべての数式の列間が2
+というコマンドを\SpecialChar TeX
+モードで入れると、ここから後のすべての数式の列間が2
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -28549,7 +28818,7 @@ hspace
 に関しての詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:可変長の空白"
+reference "subsec:可変長の空白"
 
 \end_inset
 
@@ -28647,7 +28916,8 @@ lefteqn
 \end_layout
 
 \begin_layout Itemize
-LyXのバグによって、最初の行にマウスでカーソルを入れることはできません
+\SpecialChar LyX
+のバグによって、最初の行にマウスでカーソルを入れることはできません
 \begin_inset Foot
 status collapsed
 
@@ -28696,14 +28966,14 @@ status collapsed
 長い数式を組む他の方法として、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:multline環境"
+reference "subsec:multline環境"
 
 \end_inset
 
 節と第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:数式の一部の多行化"
+reference "subsec:数式の一部の多行化"
 
 \end_inset
 
@@ -28714,7 +28984,7 @@ reference "sub:数式の一部の多行化"
 多行にわたる分数
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:多行にわたる分数"
+name "subsec:多行にわたる分数"
 
 \end_inset
 
@@ -28826,7 +29096,7 @@ splitfrac{xy+xy+xy+xy+xy
 多行にわたる括弧
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:多行にわたる括弧"
+name "subsec:多行にわたる括弧"
 
 \end_inset
 
@@ -28903,7 +29173,7 @@ right
 に関する詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:自動の括弧丈"
+reference "subsec:自動の括弧丈"
 
 \end_inset
 
@@ -29013,13 +29283,13 @@ align環境には列があり、奇数列は右揃え、偶数列は左揃えに
 \begin_layout Standard
 align環境は、
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 数式
 \family default
 メニューから作ることができます。
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
 数式の表記を変更
 \family default
 メニューを使えば、既存の数式をalign環境に変更することができます。
@@ -29040,7 +29310,7 @@ arg   "inset-modify tabular delete-column"
 
 を使うか、
 \family sans
-編集\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
 行と列
 \family default
 メニューを使います。
@@ -29050,7 +29320,7 @@ arg   "inset-modify tabular delete-column"
 標準align環境
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:標準align環境"
+name "subsec:標準align環境"
 
 \end_inset
 
@@ -29063,7 +29333,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
------- ! alignかんきょう@align環境
+—— ! alignかんきょう@align環境
 \end_layout
 
 \end_inset
@@ -29080,8 +29350,8 @@ arg   "newline-insert newline"
 
 を押すか、
 \family sans
-挿入\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
+数式\SpecialChar menuseparator
 AMS align環境
 \family default
 メニューで作ることができます。
@@ -29115,7 +29385,7 @@ hfill
 に関する詳細は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:可変長の空白"
+reference "subsec:可変長の空白"
 
 \end_inset
 
@@ -29170,7 +29440,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
------- ! alignatかんきょう@alignat環境
+—— ! alignatかんきょう@alignat環境
 \end_layout
 
 \end_inset
@@ -29182,7 +29452,7 @@ status collapsed
 alignat環境には、事前に設定された列間が存在しません。列間は、必要ならば、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:空白"
+reference "subsec:空白"
 
 \end_inset
 
@@ -29210,7 +29480,7 @@ C & \ne A & B & \ne D
 flalign環境
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:flalign環境"
+name "subsec:flalign環境"
 
 \end_inset
 
@@ -29223,7 +29493,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
------- ! flalignかんきょう@flalign環境
+—— ! flalignかんきょう@flalign環境
 \end_layout
 
 \end_inset
@@ -29245,7 +29515,8 @@ X & =\textrm{-}1 & Y & =\textrm{-}2 & Z & =4
 \end_layout
 
 \begin_layout Standard
-奇数列のflalign環境を作成し、最後の列に空のTeX括弧を入れておくと、数式様式として
+奇数列のflalign環境を作成し、最後の列に空の\SpecialChar TeX
+括弧を入れておくと、数式様式として
 \series bold
 中央揃え
 \series default
@@ -29275,7 +29546,7 @@ ptの空白が第1列の頭に入れてあります。
 eqnarray環境
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:eqnarray環境"
+name "subsec:eqnarray環境"
 
 \end_inset
 
@@ -29288,7 +29559,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
------- ! eqnarrayかんきょう@eqnarray環境
+—— ! eqnarrayかんきょう@eqnarray環境
 \end_layout
 
 \end_inset
@@ -29321,7 +29592,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
------- ! gatherかんきょう@gather環境
+—— ! gatherかんきょう@gather環境
 \end_layout
 
 \end_inset
@@ -29346,7 +29617,7 @@ X=\textrm{-}1
 multline環境
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:multline環境"
+name "subsec:multline環境"
 
 \end_inset
 
@@ -29359,7 +29630,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
------- ! multlineかんきょう@multpline環境
+—— ! multlineかんきょう@multpline環境
 \end_layout
 
 \end_inset
@@ -29504,7 +29775,8 @@ multlinegap}{2cm}
 \end_layout
 
 \begin_layout Standard
-というコマンドを、TeXモードで直前に挿入した例です。
+というコマンドを、\SpecialChar TeX
+モードで直前に挿入した例です。
 \begin_inset ERT
 status collapsed
 
@@ -29557,7 +29829,7 @@ shoveleft
 数式の一部の多行化
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:数式の一部の多行化"
+name "subsec:数式の一部の多行化"
 
 \end_inset
 
@@ -29570,7 +29842,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
------- ! すうしきのいちぶ@数式の一部
+—— ! すうしきのいちぶ@数式の一部
 \end_layout
 
 \end_inset
@@ -29597,7 +29869,7 @@ split
 \series default
 のうちのいずれかの環境を使用します。これらは、
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 数式
 \family default
 メニューか、本節で解説している各コマンドを使用して挿入することができます。
@@ -29741,7 +30013,7 @@ split
 多行数式中のテキスト
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:多行数式中のテキスト"
+name "subsec:多行数式中のテキスト"
 
 \end_inset
 
@@ -29764,7 +30036,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
------- ! てきすと @ テキスト
+—— ! てきすと @ テキスト
 \end_layout
 
 \end_inset
@@ -29804,7 +30076,8 @@ intertext{テキスト}
 \end_layout
 
 \begin_layout Standard
-テキストのハイフネーションを行うことはできないので、テキストは一行に収めなくてはなりません。LyXは、現時点では
+テキストのハイフネーションを行うことはできないので、テキストは一行に収めなくてはなりません。\SpecialChar LyX
+は、現時点では
 \series bold
 
 \backslash
@@ -29946,8 +30219,8 @@ status collapsed
 \begin_layout Standard
 付番数式は、
 \family sans
-挿入\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
+数式\SpecialChar menuseparator
 付番数式
 \family default
 メニュー(
@@ -29980,8 +30253,8 @@ N
 \family default
 )で作ることができます。既存の数式に番号を振るには、
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
 数式全体を付番
 \family default
 メニュー(捷径：
@@ -29990,14 +30263,15 @@ type  "shortcut"
 arg   "math-number-toggle"
 \end_inset
 
-)を使います。LyX中において数式番号は、数式の後に括弧に囲まれた「#」で表されます。「#」は、実際の出力では数式番号に置き換えられます。
+)を使います。\SpecialChar LyX
+中において数式番号は、数式の後に括弧に囲まれた「#」で表されます。「#」は、実際の出力では数式番号に置き換えられます。
 \end_layout
 
 \begin_layout Standard
 多行数式で付番が有効になっているときには、すべての行に番号が振られます。ただし、
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
 この行を付番
 \family default
 メニュー(捷径：
@@ -30037,7 +30311,7 @@ status collapsed
 \begin_layout Standard
 ラベルを付けた数式は、すべて相互参照することができます。ラベルは、
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 ラベル
 \family default
 メニューか、ツールバーボタンの
@@ -30053,20 +30327,21 @@ eq:と
 いう接頭語の入ったダイアログが現れるので、接頭語の後にラベルを挿入します。この既定の接頭辞は「equation(数式)」を意味し、こうして数式ラベルであるとの標
 を付けることによって、節ラベルなどから区別し、大きな文書の中でラベルを見つけるのを容易にします。ラベルを変更するには、
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 ラベル
 \family default
 メニューをもういちど使って下さい。
 \end_layout
 
 \begin_layout Standard
-LyX中でラベル名は、数式の後ろに、二つの括弧に囲まれて表示されます。ラベル付きの数式はつねに付番されます。
+\SpecialChar LyX
+中でラベル名は、数式の後ろに、二つの括弧に囲まれて表示されます。ラベル付きの数式はつねに付番されます。
 \end_layout
 
 \begin_layout Standard
 相互参照は、
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 相互参照
 \family default
 メニューかツールバーボタンの
@@ -30083,7 +30358,8 @@ arg   "dialog-show-new-inset ref"
 \begin_inset Newline newline
 \end_inset
 
-LyX中で相互参照を右クリックすると、参照先の数式に移動することができます。
+\SpecialChar LyX
+中で相互参照を右クリックすると、参照先の数式に移動することができます。
 \end_layout
 
 \begin_layout Standard
@@ -30153,7 +30429,7 @@ tag
 は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:自己定義番号"
+reference "subsec:自己定義番号"
 
 \end_inset
 
@@ -30167,7 +30443,7 @@ reference "sub:自己定義番号"
 の引数が、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:段落ボックス"
+reference "subsec:段落ボックス"
 
 \end_inset
 
@@ -30201,7 +30477,8 @@ begin{subequations}
 \backslash
 end{subequations}
 \series default
-コマンドを使うと、数式に細目番号を付けることができます。これらのコマンドは、TeXモードで入れます。
+コマンドを使うと、数式に細目番号を付けることができます。これらのコマンドは、\SpecialChar TeX
+モードで入れます。
 \end_layout
 
 \begin_layout Standard
@@ -30353,7 +30630,7 @@ end
 \begin_inset Newline linebreak
 \end_inset
 
-c\SpecialChar \ldots{}
+c\SpecialChar ldots
 のように細目番号が振られます。多行数式の場合は、すべての行に細目番号が振られます。細目番号が振られた数式はすべて、
 \emph on
 ひとつの
@@ -30414,7 +30691,8 @@ reference "eq:f"
 \end_layout
 
 \begin_layout Standard
-上記のように、コマンドをTeXモードで入れると、最初の二つの数式のあいだに空白が生じてしまいます。これを戻すために、-5
+上記のように、コマンドを\SpecialChar TeX
+モードで入れると、最初の二つの数式のあいだに空白が生じてしまいます。これを戻すために、-5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -30500,7 +30778,7 @@ end{subequations}
 自己定義番号
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:自己定義番号"
+name "subsec:自己定義番号"
 
 \end_inset
 
@@ -30527,7 +30805,8 @@ status collapsed
 
 \end_inset
 
-標準の付番では、数式番号の周りに括弧が表示されます。括弧をたとえば縦棒に置き換えるには、LaTeXプリアンブルに以下の行を付け加えます。
+標準の付番では、数式番号の周りに括弧が表示されます。括弧をたとえば縦棒に置き換えるには、\SpecialChar LaTeX
+プリアンブルに以下の行を付け加えます。
 \end_layout
 
 \begin_layout Standard
@@ -30562,7 +30841,8 @@ maketag@@@{
 status collapsed
 
 \begin_layout Plain Layout
-このマクロは、テスト用にLaTeXプリアンブルで既に宣言されています。これを有効にするには、最初のパーセント記号を取り除いて下さい。
+このマクロは、テスト用に\SpecialChar LaTeX
+プリアンブルで既に宣言されています。これを有効にするには、最初のパーセント記号を取り除いて下さい。
 \end_layout
 
 \end_inset
@@ -30715,19 +30995,22 @@ addtoreset
 \end_layout
 
 \begin_layout Standard
-これらのコマンドをTeXモードで使えるようにするためには、
+これらのコマンドを\SpecialChar TeX
+モードで使えるようにするためには、
 \series bold
 
 \backslash
 makeatletter
 \series default
-コマンドで「@」字をLaTeX中で「有効」にしてやらなくてはなりません。一方、
+コマンドで「@」字を\SpecialChar LaTeX
+中で「有効」にしてやらなくてはなりません。一方、
 \series bold
 
 \backslash
 makeatother
 \series default
-コマンドはこれを無効にします。したがって、TeXモード中での上記コマンド列は、
+コマンドはこれを無効にします。したがって、\SpecialChar TeX
+モード中での上記コマンド列は、
 \end_layout
 
 \begin_layout Standard
@@ -30757,7 +31040,8 @@ makeatother
 \end_layout
 
 \begin_layout Standard
-LaTeXプリアンブル中では、
+\SpecialChar LaTeX
+プリアンブル中では、
 \series bold
 
 \backslash
@@ -30769,7 +31053,8 @@ makeatletter
 \backslash
 makeatother
 \series default
-は、LyXが内部的に自動で挿入するので省略してかまいません。
+は、\SpecialChar LyX
+が内部的に自動で挿入するので省略してかまいません。
 \end_layout
 
 \begin_layout Standard
@@ -30779,7 +31064,8 @@ makeatother
 \backslash
 @addtoreset
 \series default
-を戻すには、まずLaTeXプリアンブル中に
+を戻すには、まず\SpecialChar LaTeX
+プリアンブル中に
 \end_layout
 
 \begin_layout Standard
@@ -30804,7 +31090,8 @@ status collapsed
 \series bold
 remreset
 \series default
-は、LaTeXパッケージの
+は、\SpecialChar LaTeX
+パッケージの
 \series bold
 carlisle
 \series default
@@ -30818,7 +31105,8 @@ status collapsed
 
 \end_inset
 
-の一部として含まれており、LaTeX標準頒布版には含まれています。
+の一部として含まれており、\SpecialChar LaTeX
+標準頒布版には含まれています。
 \end_layout
 
 \end_inset
@@ -30946,7 +31234,9 @@ numberwithin{カウンタ}{節階層}
 \end_layout
 
 \begin_layout Standard
-したがって、ここではLaTeXプリアンブルかTeXコードで
+したがって、ここでは\SpecialChar LaTeX
+プリアンブルか\SpecialChar TeX
+コードで
 \end_layout
 
 \begin_layout Standard
@@ -31064,7 +31354,9 @@ arabic{table}}
 \end_layout
 
 \begin_layout Standard
-というコマンドをTeXコードとして入れるか、LaTeXプリアンブルに入れます。
+というコマンドを\SpecialChar TeX
+コードとして入れるか、\SpecialChar LaTeX
+プリアンブルに入れます。
 \series bold
 
 \backslash
@@ -31131,7 +31423,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-数式は、ローマ数字やラテン文字を使って付番することもできます。たとえば、小文字のローマ数字を使って付番するには、数式の前にTeXモードで
+数式は、ローマ数字やラテン文字を使って付番することもできます。たとえば、小文字のローマ数字を使って付番するには、数式の前に\SpecialChar TeX
+モードで
 \end_layout
 
 \begin_layout Standard
@@ -31191,7 +31484,7 @@ renewcommand
 コマンドは、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:newcommandコマンド"
+reference "subsec:newcommandコマンド"
 
 \end_inset
 
@@ -31216,7 +31509,8 @@ equation
 \backslash
 the
 \series default
-をカウンタの接頭辞として使用すると、カウンタの値がアラビア数字として出力されます。数式に番号を振ると、LaTeXは、内部的に
+をカウンタの接頭辞として使用すると、カウンタの値がアラビア数字として出力されます。数式に番号を振ると、\SpecialChar LaTeX
+は、内部的に
 \series bold
 
 \backslash
@@ -31524,7 +31818,7 @@ target "run:Formula-numbering.lyx"
 化学記号と化学式
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:化学記号と化学式"
+name "subsec:化学記号と化学式"
 
 \end_inset
 
@@ -31580,7 +31874,7 @@ status collapsed
 を形成します。この化学式は以下のようになります。
 \begin_inset Formula 
 \begin{equation}
-\mathrm{2\, Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:chem-reaction}
+\mathrm{2\,Na^{+}+SO_{4}^{2-}\longrightarrow Na_{2}SO_{4}}\label{eq:chem-reaction}
 \end{equation}
 
 \end_inset
@@ -31623,7 +31917,7 @@ status collapsed
 フォント様式に関しては、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:書体様式"
+reference "subsec:書体様式"
 
 \end_inset
 
@@ -31636,7 +31930,8 @@ reference "sub:書体様式"
 \end_layout
 
 \begin_layout Standard
-化学式を組版するのにもう少し便利な方法は、LaTeXパッケージ
+化学式を組版するのにもう少し便利な方法は、\SpecialChar LaTeX
+パッケージ
 \series bold
 mhchem
 \series default
@@ -31675,13 +31970,17 @@ ce
 ce
 \series default
 を数式に入力すると、新しい青いボックスが現れ、直感的に化学式を入力することができます。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="9" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<lyxtabular version="3" rows="10" columns="2">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -31878,7 +32177,7 @@ D
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -31901,11 +32200,52 @@ Th+
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Formula $\raisebox{5mm}{}\ce{_{90}^{227}Th+}\raisebox{-2mm}{}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+ce
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\backslash
+mu
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+
+\backslash
+hyphen
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+Cl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\raisebox{4.5mm}{}\ce{\ensuremath{\mu\hyphen}Cl}\raisebox{-2mm}{}$
 \end_inset
 
 
@@ -32023,51 +32363,9 @@ status open
 
 \series bold
 【註】
-\backslash
-ce
 \series default
-ボックスに数式を入れようとすると、LaTeXエラーが発生します。このような場合には、
-\series bold
-
-\backslash
-ce{$
-\backslash
-mu
-\backslash
-hyphen$Cl}
-\series default
-(
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ce{$
-\backslash
-mu
-\backslash
-hyphen$Cl}
-\end_layout
-
-\end_inset
-
-)のようにTeXコードを使わなくてはなりません。
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-【註】
-\series default
-LyXでは、
+\SpecialChar LyX
+では、
 \series bold
 mhchem
 \series default
@@ -32240,7 +32538,8 @@ key "mhchem"
 \end_layout
 
 \begin_layout Standard
-LyXは、二つの型の可換図
+\SpecialChar LyX
+は、二つの型の可換図
 \series bold
 amscd
 \series default
@@ -32377,7 +32676,8 @@ arg   "newline-insert newline"
 
 \begin_layout Itemize
 縦矢印に付ける文章を、第1・第2の「A」ないし「V」のあいだに入れると、この文章は矢印の左に表示されます。第2・第3のもののあいだに入れると、矢印の右に表示され
-ます。文章中に「A」や「V」の文字があるときには、これらはTeX括弧の中に入れなくてはなりません。
+ます。文章中に「A」や「V」の文字があるときには、これらは\SpecialChar TeX
+括弧の中に入れなくてはなりません。
 \end_layout
 
 \begin_layout Standard
@@ -32519,7 +32819,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-xymatricesを使うには、LaTeXパッケージの
+xymatricesを使うには、\SpecialChar LaTeX
+パッケージの
 \series bold
 xypic
 \series default
@@ -32542,8 +32843,8 @@ reference "sec:行列"
 \begin_layout Standard
 amscd図解とは異なり、xymatricesは、対角矢印や曲がった矢印など多様なサポートをしています。作ることのできる可換図と装飾は、
 \family sans
-ヘルプ\SpecialChar \menuseparator
-用途別説明書\SpecialChar \menuseparator
+ヘルプ\SpecialChar menuseparator
+用途別説明書\SpecialChar menuseparator
 XY-pic説明書
 \family default
 メニューにある
@@ -32570,7 +32871,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-ファインマン図を使うには、LaTeXパッケージ
+ファインマン図を使うには、\SpecialChar LaTeX
+パッケージ
 \series bold
 feyn
 \series default
@@ -32591,9 +32893,10 @@ reference "sec:行列"
 \end_layout
 
 \begin_layout Standard
-LyXでのファインマン図の作り方は、メニュー
+\SpecialChar LyX
+でのファインマン図の作り方は、メニュー
 \family sans
-ヘルプ\SpecialChar \menuseparator
+ヘルプ\SpecialChar menuseparator
 用途別説明書
 \family default
 内の『
@@ -32636,7 +32939,7 @@ status open
 newcommandコマンド
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:newcommandコマンド"
+name "subsec:newcommandコマンド"
 
 \end_inset
 
@@ -32668,7 +32971,8 @@ newcommand
 \end_layout
 
 \begin_layout Standard
-頻繁に用いるには、長すぎるLaTeXコマンドはたくさんありますが、
+頻繁に用いるには、長すぎる\SpecialChar LaTeX
+コマンドはたくさんありますが、
 \series bold
 
 \backslash
@@ -32726,7 +33030,8 @@ status open
 \series bold
 【註】
 \series default
-新コマンド名が、使用中の文書や呼び出しているLaTeXパッケージで、既に使用されていないことを確認して下さい。たとえば、
+新コマンド名が、使用中の文書や呼び出している\SpecialChar LaTeX
+パッケージで、既に使用されていないことを確認して下さい。たとえば、
 \series bold
 
 \backslash
@@ -32790,7 +33095,8 @@ Longrightarrow
 \backslash
 gr
 \series default
-というコマンドを定義するには、LaTeXプリアンブルに以下の行を加えます。
+というコマンドを定義するには、\SpecialChar LaTeX
+プリアンブルに以下の行を加えます。
 \begin_inset VSpace medskip
 \end_inset
 
@@ -32907,7 +33213,7 @@ framebox
 が必要とする内部の数式を作り出します。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:枠付きボックス"
+reference "subsec:枠付きボックス"
 
 \end_inset
 
@@ -32962,13 +33268,17 @@ white
 
 \begin_layout Standard
 以下は、上で定義したコマンドの動作テストです。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -33249,7 +33559,8 @@ status collapsed
 \begin_inset Formula $\lambda$
 \end_inset
 
-の指数をオプションとして与えることができるような、解の公式のコマンドを定義するには、以下のようなLaTeXプリアンブル行を加えます。
+の指数をオプションとして与えることができるような、解の公式のコマンドを定義するには、以下のような\SpecialChar LaTeX
+プリアンブル行を加えます。
 \begin_inset Newline newline
 \end_inset
 
@@ -33319,14 +33630,18 @@ lambda
 \end_layout
 
 \begin_layout Standard
-新コマンドを定義する方法は、たとえばLaTeX中で分数は
+新コマンドを定義する方法は、たとえば\SpecialChar LaTeX
+中で分数は
 \series bold
 
 \backslash
 frac{分子}{分母}
 \series default
-の形で入れなくてはならないことなど、使用するすべてのLaTeXコマンドの書式を知っている必要があるので、直感的ではありません。さらに、定義中で中括弧を入れ忘れる
-ことはよくあり、それをやってしまうと、LyXからは新コマンドが何をやらかしているか確認しにくくなってしまいます。これらの問題を回避するために、LyXは、
+の形で入れなくてはならないことなど、使用するすべての\SpecialChar LaTeX
+コマンドの書式を知っている必要があるので、直感的ではありません。さらに、定義中で中括弧を入れ忘れることはよく
+あり、それをやってしまうと、\SpecialChar LyX
+からは新コマンドが何をやらかしているか確認しにくくなってしまいます。これらの問題を回避するために、\SpecialChar LyX
+は、
 \series bold
 
 \backslash
@@ -33338,8 +33653,8 @@ newcommand
 \begin_layout Standard
 数式マクロは、
 \family sans
-挿入\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
+数式\SpecialChar menuseparator
 マクロ
 \family default
 メニューか、ツールバーボタンの
@@ -33408,8 +33723,9 @@ type  "icon"
 arg   "math-macro-make-optional"
 \end_inset
 
-を使って、非必須引数にすることができます。二つ目の青枠には、LyX中でのマクロの表示のしかたを定義することができます。通常は、定義したとおりに表示された方が便利
-なので、この枠は空白にしておきます。しかし、画面の過半を占拠してしまうようなマクロを作ってしまった場合には、たとえばこの枠に
+を使って、非必須引数にすることができます。二つ目の青枠には、\SpecialChar LyX
+中でのマクロの表示のしかたを定義することができます。通常は、定義したとおりに表示された方が便利なので
+、この枠は空白にしておきます。しかし、画面の過半を占拠してしまうようなマクロを作ってしまった場合には、たとえばこの枠に
 \begin_inset Newline newline
 \end_inset
 
@@ -33445,14 +33761,15 @@ qG:
 
 
 \series default
-のように入れることができます。このようにすると、マクロ名と引数のみがLyX上に表示され、見通しが良くなります。一方、出力での数式は、最初の枠で定義したように表示
-されます。
+のように入れることができます。このようにすると、マクロ名と引数のみが\SpecialChar LyX
+上に表示され、見通しが良くなります。一方、出力での数式は、最初の枠で定義したように表示されま
+す。
 \begin_inset Newline newline
 \end_inset
 
 さらに、数式中のマクロ表示は、マクロの中にカーソルを置いて、
 \family sans
-表示\SpecialChar \menuseparator
+表示\SpecialChar menuseparator
 数式マクロを展開(畳む)
 \family default
 メニューを使うことで、マクロ毎に変えることができます。
@@ -33465,7 +33782,8 @@ qG:
 \backslash
 qG
 \series default
-とします。このマクロは、LyX中では以下のように表示されます。
+とします。このマクロは、\SpecialChar LyX
+中では以下のように表示されます。
 \begin_inset Newline newline
 \end_inset
 
@@ -33476,6 +33794,7 @@ qG
 
 \begin_inset Graphics
 	filename ../clipart/macrouse.png
+	scale 75
 
 \end_inset
 
@@ -33514,11 +33833,12 @@ qG
 \end_layout
 
 \begin_layout Standard
-LyXは、
+\SpecialChar LyX
+は、
 \family sans
-ツール\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
-編集\SpecialChar \menuseparator
+ツール\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+編集\SpecialChar menuseparator
 制御
 \family default
 メニューで、マクロを編集するのに複数の様式を用意しています。あなたに最も合った様式を見つけるには、様式を選択してから、違いを見るために数式マクロにカーソルを合わ
@@ -33538,7 +33858,8 @@ newcommand
 \backslash
 newcommand
 \series default
-コマンドは、LaTeXプリアンブルには置かれませんので、マクロは、文書中、マクロ定義ボックスよりも後の数式でのみ使うことができます。
+コマンドは、\SpecialChar LaTeX
+プリアンブルには置かれませんので、マクロは、文書中、マクロ定義ボックスよりも後の数式でのみ使うことができます。
 \end_layout
 
 \begin_layout Standard
@@ -33548,7 +33869,8 @@ newcommand
 \backslash
 newcommand
 \series default
-コマンドから直接作ることもできます。たとえば、LyX中に通常の文章として、
+コマンドから直接作ることもできます。たとえば、\SpecialChar LyX
+中に通常の文章として、
 \series bold
 
 \begin_inset Newline newline
@@ -33596,14 +33918,15 @@ Ctrl+M
 \backslash
 newcommand
 \series default
-コマンドが正しく入力されていることに気をつけなくてはなりません。さもないと、間違ったマクロが作られてしまって、LaTeXエラーが発生します。
+コマンドが正しく入力されていることに気をつけなくてはなりません。さもないと、間違ったマクロが作られてしまって、\SpecialChar LaTeX
+エラーが発生します。
 \end_layout
 
 \begin_layout Standard
 数式マクロには、まだ、マクロ定義中に再帰的に数式を入れてしまうと、正しく処理されないという問題が残っています。したがって、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:newcommandコマンド"
+reference "subsec:newcommandコマンド"
 
 \end_inset
 
@@ -33617,7 +33940,8 @@ fb
 \end_layout
 
 \begin_layout Standard
-カーソルがマクロ定義ボックスの中にあるとき、LyX中に以下のようなマクロツールバーが表示されます。
+カーソルがマクロ定義ボックスの中にあるとき、\SpecialChar LyX
+中に以下のようなマクロツールバーが表示されます。
 \end_layout
 
 \begin_layout Standard
@@ -33667,7 +33991,7 @@ status collapsed
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
-<features rotate="0" islongtable="true" longtabularalignment="center">
+<features islongtable="true" longtabularalignment="center">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top" width="85col%">
 <row interlinespace="2.5mm">
@@ -33691,9 +34015,9 @@ arg   "math-macro-remove-param"
 \begin_layout Plain Layout
 
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
-マクロ定義\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
+マクロ定義\SpecialChar menuseparator
 最後の引数を削除
 \end_layout
 
@@ -33721,9 +34045,9 @@ arg   "math-macro-add-param"
 \begin_layout Plain Layout
 
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
-マクロ定義\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
+マクロ定義\SpecialChar menuseparator
 引数を追加
 \end_layout
 
@@ -33751,9 +34075,9 @@ arg   "math-macro-make-optional"
 \begin_layout Plain Layout
 
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
-マクロ定義\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
+マクロ定義\SpecialChar menuseparator
 最初の必須引数を
 \begin_inset Newline newline
 \end_inset
@@ -33765,9 +34089,9 @@ status open
 \begin_layout Plain Layout
 
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
-マクロ定義\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
+マクロ定義\SpecialChar menuseparator
 
 \end_layout
 
@@ -33800,9 +34124,9 @@ arg   "math-macro-make-nonoptional"
 \begin_layout Plain Layout
 
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
-マクロ定義\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
+マクロ定義\SpecialChar menuseparator
 最後の非必須引数を
 \begin_inset Newline newline
 \end_inset
@@ -33814,9 +34138,9 @@ status open
 \begin_layout Plain Layout
 
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
-マクロ定義\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
+マクロ定義\SpecialChar menuseparator
 
 \end_layout
 
@@ -33849,9 +34173,9 @@ arg   "math-macro-remove-optional-param"
 \begin_layout Plain Layout
 
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
-マクロ定義\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
+マクロ定義\SpecialChar menuseparator
 非必須引数を削除
 \end_layout
 
@@ -33879,9 +34203,9 @@ arg   "math-macro-add-optional-param"
 \begin_layout Plain Layout
 
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
-マクロ定義\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
+マクロ定義\SpecialChar menuseparator
 非必須引数を挿入
 \end_layout
 
@@ -33909,9 +34233,9 @@ arg   "math-macro-remove-greedy-param"
 \begin_layout Plain Layout
 
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
-マクロ定義\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
+マクロ定義\SpecialChar menuseparator
 右に吐き出す形で
 \begin_inset Newline newline
 \end_inset
@@ -33923,9 +34247,9 @@ status open
 \begin_layout Plain Layout
 
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
-マクロ定義\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
+マクロ定義\SpecialChar menuseparator
 
 \end_layout
 
@@ -33958,9 +34282,9 @@ arg   "math-macro-append-greedy-param"
 \begin_layout Plain Layout
 
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
-マクロ定義\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
+マクロ定義\SpecialChar menuseparator
 右から喰う形で
 \begin_inset Newline newline
 \end_inset
@@ -33972,9 +34296,9 @@ status open
 \begin_layout Plain Layout
 
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
-マクロ定義\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
+マクロ定義\SpecialChar menuseparator
 
 \end_layout
 
@@ -34007,9 +34331,9 @@ arg   "math-macro-add-greedy-optional-param"
 \begin_layout Plain Layout
 
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
-マクロ定義\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
+マクロ定義\SpecialChar menuseparator
 右から喰う形で
 \begin_inset Newline newline
 \end_inset
@@ -34021,9 +34345,9 @@ status open
 \begin_layout Plain Layout
 
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
-マクロ定義\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
+マクロ定義\SpecialChar menuseparator
 
 \end_layout
 
@@ -34047,7 +34371,9 @@ status open
 \end_layout
 
 \begin_layout Standard
-LyXでは、LyXの数式エディタで書かれた数式表現と、外部プログラムやユーザ定義スクリプトとの間のやり取りが可能です。現在サポートされているプログラムは、
+\SpecialChar LyX
+では、\SpecialChar LyX
+の数式エディタで書かれた数式表現と、外部プログラムやユーザ定義スクリプトとの間のやり取りが可能です。現在サポートされているプログラムは、
 \family sans
 Maple
 \family default
@@ -34073,8 +34399,8 @@ Octave
 \begin_layout Standard
 数式表現を書いた後、
 \family sans
-編集\SpecialChar \menuseparator
-数式\SpecialChar \menuseparator
+編集\SpecialChar menuseparator
+数式\SpecialChar menuseparator
 コンピュータ代数システムを使用
 \family default
 メニューで、コンピュータに導入済みのプログラムを選択します。その後、計算結果が、数式表現の右に「=」演算子とともに表示されます。
@@ -34156,10 +34482,12 @@ status collapsed
 \family sans
 math-extern
 \family default
- LyX関数にバインドすることは容易です(取扱説明書『
+ \SpecialChar LyX
+関数にバインドすることは容易です(取扱説明書『
 \family sans
 \emph on
-LyX関数篇
+\SpecialChar LyX
+関数篇
 \family default
 \emph default
 』参照)。例えば、数式エディタ中で
@@ -34238,13 +34566,17 @@ status collapsed
 
 \begin_layout Standard
 以下は、この問題を示す例です。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="right" valignment="top">
 <column alignment="left" valignment="top">
 <row>
@@ -34367,7 +34699,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-LaTeXでは、英語の慣習にしたがい、数式中のコンマを数字の位区切りに使用します。よって、数式中のコンマの後ろには、つねに空白が加わります。
+\SpecialChar LaTeX
+では、英語の慣習にしたがい、数式中のコンマを数字の位区切りに使用します。よって、数式中のコンマの後ろには、つねに空白が加わります。
 \end_layout
 
 \begin_layout Standard
@@ -34401,7 +34734,8 @@ arg   "math-mode"
 \end_layout
 
 \begin_layout Standard
-文書中の数式コンマを、すべて小数点として使うには、LaTeXプリアンブルに
+文書中の数式コンマを、すべて小数点として使うには、\SpecialChar LaTeX
+プリアンブルに
 \end_layout
 
 \begin_layout Standard
@@ -34426,7 +34760,8 @@ status collapsed
 \series bold
 icomma
 \series default
-は、LaTeXパッケージ
+は、\SpecialChar LaTeX
+パッケージ
 \series bold
 was
 \series default
@@ -34475,7 +34810,7 @@ status collapsed
 物理ベクトル
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:物理ベクトル"
+name "subsec:物理ベクトル"
 
 \end_inset
 
@@ -34488,7 +34823,7 @@ status collapsed
 \begin_inset space \thinspace{}
 \end_inset
 
-------
+——
 \end_layout
 
 \end_inset
@@ -34497,7 +34832,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-LaTeXパッケージ
+\SpecialChar LaTeX
+パッケージ
 \series bold
 braket
 \series default
@@ -34510,7 +34846,8 @@ status collapsed
 \series bold
 braket
 \series default
- は標準的LaTeX頒布版のすべてに含まれています。
+ は標準的\SpecialChar LaTeX
+頒布版のすべてに含まれています。
 \end_layout
 
 \end_inset
@@ -34537,7 +34874,8 @@ usepackage{braket}
 \end_layout
 
 \begin_layout Standard
-というLaTeXプリアンブル行で読み込むことができます。
+という\SpecialChar LaTeX
+プリアンブル行で読み込むことができます。
 \end_layout
 
 \begin_layout Standard
@@ -34562,19 +34900,24 @@ status open
 \series bold
 braket
 \series default
- LaTeXパッケージが導入済みのときのみ表示されます。
+ \SpecialChar LaTeX
+パッケージが導入済みのときのみ表示されます。
 \end_layout
 
 \end_inset
 
 以下のコマンドが定義されています。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -34701,7 +35044,7 @@ Braket
 コマンドを使うと、以下のように、すべての縦棒がそれを囲む括弧と同じ大きさに設定されます。
 \begin_inset Formula 
 \[
-\Braket{\phi|J=\frac{3}{2}\,,\, M_{J}}
+\Braket{\phi|J=\frac{3}{2}\,,\,M_{J}}
 \]
 
 \end_inset
@@ -34728,7 +35071,8 @@ status open
 \series bold
 braket
 \series default
- LaTeXパッケージが導入されていないときには、以下が表示されます。
+ \SpecialChar LaTeX
+パッケージが導入されていないときには、以下が表示されます。
 \end_layout
 
 \end_inset
@@ -34741,7 +35085,8 @@ braket
 \series bold
 braket
 \series default
- LaTeXパッケージを導入する必要があります。
+ \SpecialChar LaTeX
+パッケージを導入する必要があります。
 \end_layout
 
 \begin_layout Standard
@@ -34770,7 +35115,7 @@ Braket
 と同じ効果は、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:自動の括弧丈"
+reference "subsec:自動の括弧丈"
 
 \end_inset
 
@@ -34787,7 +35132,7 @@ middle
 自己定義の分数
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:自己定義の分数"
+name "subsec:自己定義の分数"
 
 \end_inset
 
@@ -34862,13 +35207,17 @@ genfrac
 \end_inset
 
 3の範囲の数字です。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -35003,7 +35352,7 @@ ptが用いられます。
 たとえば、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:分数"
+reference "subsec:分数"
 
 \end_inset
 
@@ -35058,7 +35407,8 @@ genfrac{(}{)}{0pt}{1}{#1}{#2}}
 \begin_inset VSpace medskip
 \end_inset
 
-分数線の厚みを非必須の引数として与えることのできる分数を定義するには、LaTeXプリアンブルに
+分数線の厚みを非必須の引数として与えることのできる分数を定義するには、\SpecialChar LaTeX
+プリアンブルに
 \end_layout
 
 \begin_layout Standard
@@ -35106,6 +35456,10 @@ status collapsed
 
 \begin_layout Standard
 数式の全体もしくは一部を消去するには、4つの方法があります。
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -35127,7 +35481,8 @@ ifcancel
 status open
 
 \begin_layout Plain Layout
-下記の表は、LaTeXパッケージ
+下記の表は、\SpecialChar LaTeX
+パッケージ
 \series bold
 cancel
 \series default
@@ -35143,7 +35498,7 @@ cancel
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -35368,7 +35723,8 @@ PassOptionsToPackage{オプション}{cancel}
 \end_layout
 
 \begin_layout Standard
-という行をLaTeXプリアンブルに書き加えてください。ここで、
+という行を\SpecialChar LaTeX
+プリアンブルに書き加えてください。ここで、
 \series bold
 オプション
 \series default
@@ -35384,7 +35740,8 @@ Smaller
 \end_layout
 
 \begin_layout Standard
-取り消し線に色を付けるには、TeXコードで以下のコマンドを書き加えてください。
+取り消し線に色を付けるには、\SpecialChar TeX
+コードで以下のコマンドを書き加えてください。
 \end_layout
 
 \begin_layout Standard
@@ -35511,7 +35868,8 @@ else
 status open
 
 \begin_layout Plain Layout
-下記の表は、LaTeXパッケージ
+下記の表は、\SpecialChar LaTeX
+パッケージ
 \series bold
 cancel
 \series default
@@ -35524,7 +35882,8 @@ cancel
 \end_layout
 
 \begin_layout Standard
-本小節の続きを見るには、LaTeXパッケージ
+本小節の続きを見るには、\SpecialChar LaTeX
+パッケージ
 \series bold
 cancel
 \series default
@@ -35551,7 +35910,7 @@ fi
 節見出し中の数式
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:節見出し中の数式"
+name "subsec:節見出し中の数式"
 
 \end_inset
 
@@ -35607,7 +35966,7 @@ status collapsed
 \begin_layout Standard
 これらの問題は、
 \family sans
-挿入\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
 短縮タイトル
 \family default
 メニューを使って、問題となる節見出しの最後に短縮タイトルを入れることで解決することができます。短縮タイトルは、目次が美しく整形されるように、多行にわたる節見出し
@@ -35643,7 +36002,8 @@ texorpdfstring
 \end_layout
 
 \begin_layout Standard
-というコマンドをTeXモードで使う方法があります。
+というコマンドを\SpecialChar TeX
+モードで使う方法があります。
 \end_layout
 
 \begin_layout Standard
@@ -35757,7 +36117,7 @@ status collapsed
 第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:ボールド体の数式"
+reference "subsec:ボールド体の数式"
 
 \end_inset
 
@@ -35797,7 +36157,8 @@ status collapsed
 \series bold
 multicol
 \series default
-は、標準的LaTeX頒布版のすべてに含まれています。
+は、標準的\SpecialChar LaTeX
+頒布版のすべてに含まれています。
 \end_layout
 
 \end_inset
@@ -35812,7 +36173,8 @@ status collapsed
 
 \end_inset
 
- LaTeXパッケージを、
+ \SpecialChar LaTeX
+パッケージを、
 \end_layout
 
 \begin_layout Standard
@@ -35824,7 +36186,8 @@ usepackage{multicol}
 \end_layout
 
 \begin_layout Standard
-というLaTeXプリアンブル行を書いて読み込むことで、実現できます。
+という\SpecialChar LaTeX
+プリアンブル行を書いて読み込むことで、実現できます。
 \end_layout
 
 \begin_layout Standard
@@ -35834,7 +36197,7 @@ status open
 \begin_layout Plain Layout
 ここで、
 \family sans
-文書\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
 設定
 \family default
 メニューの
@@ -35870,7 +36233,8 @@ begin{multicols}{段数}
 \end_layout
 
 \begin_layout Standard
-というコマンドをTeXモードで書き入れます。「段数」は、2
+というコマンドを\SpecialChar TeX
+モードで書き入れます。「段数」は、2
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -35890,7 +36254,8 @@ end{multicols}
 \end_layout
 
 \begin_layout Standard
-というコマンドをTeXモードで入れます。
+というコマンドを\SpecialChar TeX
+モードで入れます。
 \end_layout
 
 \begin_layout Standard
@@ -36110,7 +36475,7 @@ status collapsed
 フォント寸法に関しては、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:書体寸法"
+reference "subsec:書体寸法"
 
 \end_inset
 
@@ -36168,7 +36533,7 @@ hfill
 様式のときのみ機能します。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:可変長の空白"
+reference "subsec:可変長の空白"
 
 \end_inset
 
@@ -36188,7 +36553,7 @@ reference "sub:可変長の空白"
 を使っている場合、数式を字下げするには、第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:flalign環境"
+reference "subsec:flalign環境"
 
 \end_inset
 
@@ -36199,7 +36564,8 @@ reference "eq:within"
 
 \end_inset
 
-式には5列があり、最初の2列には数式、3列めには行列、最終列には空のTeX括弧が入っています。
+式には5列があり、最初の2列には数式、3列めには行列、最終列には空の\SpecialChar TeX
+括弧が入っています。
 \begin_inset Formula 
 \begin{flalign}
 \hspace{30pt}F_{A} & =\rho·V·g & \footnotesize\begin{array}{ll}
@@ -36218,7 +36584,7 @@ g & \textrm{gravitational acceleration}
 アップライト体のギリシャ小文字
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:アップライト体ギリシャ小文字"
+name "subsec:アップライト体ギリシャ小文字"
 
 \end_inset
 
@@ -36280,7 +36646,8 @@ vspace{4mm}
 
 \end_inset
 
- LaTeXパッケージの一部です。
+ \SpecialChar LaTeX
+パッケージの一部です。
 \end_layout
 
 \end_inset
@@ -36307,7 +36674,8 @@ usepackage{upgreek}
 \end_layout
 
 \begin_layout Standard
-というLaTeXプリアンブル行で読み込めば、これらが提供されるようになります。
+という\SpecialChar LaTeX
+プリアンブル行で読み込めば、これらが提供されるようになります。
 \begin_inset ERT
 status collapsed
 
@@ -36329,7 +36697,8 @@ status open
 \series bold
 upgreek
 \series default
- LaTeXパッケージが導入済みのときのみ表示されます。
+ \SpecialChar LaTeX
+パッケージが導入済みのときのみ表示されます。
 \end_layout
 
 \end_inset
@@ -36393,7 +36762,8 @@ status open
 \series bold
 upgreek
 \series default
- LaTeXパッケージが導入されていないときのみ表示されます。
+ \SpecialChar LaTeX
+パッケージが導入されていないときのみ表示されます。
 \end_layout
 
 \end_inset
@@ -36406,7 +36776,8 @@ upgreek
 \series bold
 upgreek
 \series default
- LaTeXパッケージを導入する必要があります。
+ \SpecialChar LaTeX
+パッケージを導入する必要があります。
 \end_layout
 
 \begin_layout Standard
@@ -36429,7 +36800,7 @@ fi
 数式中のテキスト文字
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:数式中のテキスト文字"
+name "subsec:数式中のテキスト文字"
 
 \end_inset
 
@@ -36465,7 +36836,7 @@ status collapsed
 第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:二項演算子"
+reference "subsec:二項演算子"
 
 \end_inset
 
@@ -36492,19 +36863,20 @@ else
 \backslash
 textperiodcentered
 \backslash
-f\SpecialChar \textcompwordmark{}
+f\SpecialChar ligaturebreak
 i}
 \end_layout
 
 \begin_layout Standard
-というLaTeXプリアンブル行を使えば、エンコーディングに変更を加えることができます。
+という\SpecialChar LaTeX
+プリアンブル行を使えば、エンコーディングに変更を加えることができます。
 \end_layout
 
 \begin_layout Standard
 文字エンコーディング(
 \family sans
-文書\SpecialChar \menuseparator
-設定\SpecialChar \menuseparator
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
 言語
 \family default
 メニュー)は、キーボード上の
@@ -36533,8 +36905,9 @@ status collapsed
 \backslash
 textperiodcentered
 \series default
-コマンドが使用されます。しかし、このコマンドは数式中では使えないので、LaTeXエラーが発生するのです。変更後のエンコーディングでは、文字が数式中に挿入されたか
-否かによって、正しいコマンドが自動的に選択されます。
+コマンドが使用されます。しかし、このコマンドは数式中では使えないので、\SpecialChar LaTeX
+エラーが発生するのです。変更後のエンコーディングでは、文字が数式中に挿入されたか否かによっ
+て、正しいコマンドが自動的に選択されます。
 \end_layout
 
 \begin_layout Standard
@@ -36542,12 +36915,14 @@ textperiodcentered
 \series bold
 latin9
 \series default
-エンコーディングは、LaTeXがインストールされたフォルダにある
+エンコーディングは、\SpecialChar LaTeX
+がインストールされたフォルダにある
 \series bold
 latin9.def
 \series default
-ファイルに定義されています。エンコーディングは、LaTeXプリアンブルで変更するべきであって、定義ファイルを変更してはなりません。さもないと、自分の作成した文書
-は、他のコンピューターで作業をしている他のユーザーによっては編集することができなくなってしまいます。
+ファイルに定義されています。エンコーディングは、\SpecialChar LaTeX
+プリアンブルで変更するべきであって、定義ファイルを変更してはなりません。さもないと、自分の作成した文書は、他のコ
+ンピューターで作業をしている他のユーザーによっては編集することができなくなってしまいます。
 \end_layout
 
 \begin_layout Standard
@@ -36558,12 +36933,14 @@ latin9.def
 \begin_inset Formula $^{\circ}$
 \end_inset
 
-」が、数式に直接入れることができるよう、以下のようなLaTeXプリアンブル行で定義されています
+」が、数式に直接入れることができるよう、以下のような\SpecialChar LaTeX
+プリアンブル行で定義されています
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-【訳註】pLaTeXでは、これらの定義は必要ないので、コメントアウトして無効にしてあります。
+【訳註】p\SpecialChar LaTeX
+では、これらの定義は必要ないので、コメントアウトして無効にしてあります。
 \end_layout
 
 \end_inset
@@ -36586,17 +36963,19 @@ else
 \backslash
 textdegree
 \backslash
-f\SpecialChar \textcompwordmark{}
+f\SpecialChar ligaturebreak
 i}
 \end_layout
 
 \begin_layout Subsection
-数式中のLaTeXコメント
+数式中の\SpecialChar LaTeX
+コメント
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-L atexこめんと@LaTeXコメント
+L atexこめんと@\SpecialChar LaTeX
+コメント
 \end_layout
 
 \end_inset
@@ -36605,16 +36984,17 @@ L atexこめんと@LaTeXコメント
 \end_layout
 
 \begin_layout Standard
-本文中では、ファイルのLaTeXソースコードでのみ見ることのできるコメントを、
+本文中では、ファイルの\SpecialChar LaTeX
+ソースコードでのみ見ることのできるコメントを、
 \family sans
 挿入
 \lang english
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \lang japanese
 注釈
 \lang english
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \lang japanese
 コメント
@@ -36631,8 +37011,9 @@ L atexこめんと@LaTeXコメント
 \end_layout
 
 \begin_layout Standard
-というコマンドを使えば、LaTeXコメントを挿入することができます。このコマンドを打ち込むと、コメントを書き込むことのできるボックスが生成されます。LyXのバグ
-のせいで
+というコマンドを使えば、\SpecialChar LaTeX
+コメントを挿入することができます。このコマンドを打ち込むと、コメントを書き込むことのできるボックスが生成されます。\SpecialChar LyX
+のバグのせいで
 \begin_inset Foot
 status collapsed
 
@@ -36649,7 +37030,9 @@ target "http://www.lyx.org/trac/ticket/9002"
 
 \end_inset
 
-、コメント中に、通常の本文や数式内本文そのものを書くことはできませんが、LaTeX出力中に、LaTeXコマンドの形では見ることができます。
+、コメント中に、通常の本文や数式内本文そのものを書くことはできませんが、\SpecialChar LaTeX
+出力中に、\SpecialChar LaTeX
+コマンドの形では見ることができます。
 \lang english
 
 \begin_inset Newline newline
@@ -36657,7 +37040,8 @@ target "http://www.lyx.org/trac/ticket/9002"
 
 
 \lang japanese
-下記は、LaTeXコメントを持つ数式の例です。
+下記は、\SpecialChar LaTeX
+コメントを持つ数式の例です。
 \begin_inset Formula 
 \[
 A=B%\text{これはコメントです。}
@@ -36713,7 +37097,7 @@ status collapsed
 書体様式で指定します。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:書体様式"
+reference "subsec:書体様式"
 
 \end_inset
 
@@ -36733,7 +37117,7 @@ km/h
 値と単位の間には、最小空白を入れます。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:定義済みの空白"
+reference "subsec:定義済みの空白"
 
 \end_inset
 
@@ -36762,13 +37146,15 @@ unittwo
 \backslash
 unittwo
 \series default
-は、LaTeXコマンドの実体ではなく、
+は、\SpecialChar LaTeX
+コマンドの実体ではなく、
 \series bold
 
 \backslash
 unit[値]{単位}
 \series default
-というコマンドです。したがって、これをTeXコード中で使用することはできません。
+というコマンドです。したがって、これを\SpecialChar TeX
+コード中で使用することはできません。
 \end_layout
 
 \begin_layout Itemize
@@ -36831,8 +37217,8 @@ times
 \series default
 コマンドか、
 \family sans
-挿入\SpecialChar \menuseparator
-特殊文字\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
+特殊文字\SpecialChar menuseparator
 記号
 \family default
 メニューから入れることができます。
@@ -36842,7 +37228,7 @@ times
 いくつかの文字を含む関数名は、混乱を防ぐためにアップライト体にします。第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:定義済み函数"
+reference "subsec:定義済み函数"
 
 \end_inset
 
@@ -36898,9 +37284,9 @@ mathscr
 
 か
 \family sans
-挿入\SpecialChar \menuseparator
-特殊文字\SpecialChar \menuseparator
-記号\SpecialChar \menuseparator
+挿入\SpecialChar menuseparator
+特殊文字\SpecialChar menuseparator
+記号\SpecialChar menuseparator
 文字様記号
 \family default
 メニューの
@@ -36946,7 +37332,7 @@ status collapsed
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="12" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -37276,7 +37662,7 @@ vert
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="12" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -37597,7 +37983,8 @@ Mittelbach, F.
 \shape default
 : 
 \shape italic
-The LaTeX Companion
+The \SpecialChar LaTeX
+ Companion
 \shape default
 , 2nd ed.
  Addison Wesley, 2004
@@ -37610,7 +37997,8 @@ key "Mathmode"
 
 \end_inset
 
-LaTeXの数式能力の
+\SpecialChar LaTeX
+の数式能力の
 \begin_inset CommandInset href
 LatexCommand href
 name "説明"
@@ -37641,7 +38029,8 @@ AmS
 
 \end_inset
 
--LaTeXの
+-\SpecialChar LaTeX
+の
 \begin_inset CommandInset href
 LatexCommand href
 name "説明"
@@ -37659,7 +38048,8 @@ key "Symbols"
 
 \end_inset
 
-LaTeXパッケージで利用できる記号の
+\SpecialChar LaTeX
+パッケージで利用できる記号の
 \begin_inset CommandInset href
 LatexCommand href
 name "全覧"
@@ -37677,7 +38067,8 @@ key "cancel"
 
 \end_inset
 
-LaTeX 
+\SpecialChar LaTeX
+ 
 \series bold
 cancel
 \series default
@@ -37709,7 +38100,8 @@ key "hyperref"
 
 \end_inset
 
-LaTeX 
+\SpecialChar LaTeX
+ 
 \series bold
 hyperref
 \series default
@@ -37741,7 +38133,8 @@ key "mhchem"
 
 \end_inset
 
-LaTeX 
+\SpecialChar LaTeX
+ 
 \series bold
 mhchem
 \series default
