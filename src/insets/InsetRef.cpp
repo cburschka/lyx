@@ -289,7 +289,7 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType)
 	}
 	
 	unsigned int const maxLabelChars = 24;
-	if (screen_label_.size() > maxLabelChars) {
+	if (label.size() > maxLabelChars) {
 		tooltip_ = label;
 		support::truncateWithEllipsis(label, maxLabelChars);
 	} else
