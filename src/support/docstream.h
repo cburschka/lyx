@@ -14,13 +14,6 @@
 
 #include "support/docstring.h"
 
-#if defined(_MSC_VER) && (_MSC_VER >= 1600) 
-// Ugly workaround for MSVC10 STL bug:
-// std::numpunct has a hardcoded dllimport in definition, but we wanna it with 32 bit 
-// so we can't import it and must define it but then the compiler complains.
-#include "support/numpunct_lyx_char_type.h"
-#endif
-
 #include <fstream>
 #include <sstream>
 
