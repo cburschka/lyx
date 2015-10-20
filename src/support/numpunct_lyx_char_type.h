@@ -41,11 +41,9 @@ namespace std
 		string grouping() const
 		{ return numpunct<char>::grouping(); }
 
-		string_type truename() const
-		{ return lyx::from_ascii(numpunct<char>::truename()); }
-
-		string_type falsename() const
-		{ return lyx::from_ascii(numpunct<char>::falsename()); }
+		// Implementation can be found in docstream.cpp
+		string_type truename() const;
+		string_type falsename() const;
 
 
 	protected:

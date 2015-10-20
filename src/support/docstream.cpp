@@ -28,7 +28,24 @@ using lyx::ucs4_codeset;
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1600)
 std::locale::id numpunct<lyx::char_type>::id;
-#endif
+
+namespace std {
+// Implementation of numpunct<lyx::char_type> defined in numpunct_lyx_char_type.h
+typedef basic_string<lyx::char_type> string_type;
+	
+string_type numpunct<lyx::char_type>::truename() const
+{ 
+	return lyx::from_ascii(numpunct<char>::truename()); 
+}
+	
+string_type numpunct<lyx::char_type>::falsename() const
+{ 
+	return lyx::from_ascii(numpunct<char>::falsename()); 
+}
+
+} // namespace std
+
+#endif // _MSC_VER >= 1600
 
 
 namespace {
