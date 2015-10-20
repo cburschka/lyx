@@ -134,9 +134,9 @@
   compile with error. However, because now in 2.2.x users can click on
   the "Show Output Anyway" button, the document can still be viewed.
 
-* With XeTeX and LuaTeX, missing characters in the output are now reported
-  as errors. This leads to error reports for documents that compiled without
-  error before. However, the error was always present but went undetected!
+* Missing characters in the output are now reported as errors. This leads
+  to error reports for documents that compiled without error before.
+  However, the error was always present but went undetected!
 
 * Documents using Times fonts and containing Greek characters may now fail
   to compile under pdflatex for users of MikTeX due to an automatically
