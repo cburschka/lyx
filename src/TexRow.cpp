@@ -463,12 +463,12 @@ std::pair<int,int> TexRow::rowFromCursor(Cursor const & cur) const
 ///
 docstring TexRow::asString(RowEntry const & entry)
 {
-	std::ostringstream t;
+	odocstringstream os;
 	if (entry.is_math)
-		t << "(1," << entry.math.id << "," << entry.math.cell << ")";
+		os << "(1," << entry.math.id << "," << entry.math.cell << ")";
 	else
-		t << "(0," << entry.text.id << "," << entry.text.pos << ")";
-	return from_utf8( t.str() );
+		os << "(0," << entry.text.id << "," << entry.text.pos << ")";
+	return os.str();
 }
 
 
