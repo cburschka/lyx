@@ -248,7 +248,7 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 		state->prev_env_language_ = data.par_language;
 		if (runparams.encoding != data.prev_encoding) {
 			runparams.encoding = data.prev_encoding;
-			if (!runparams.isFullUnicode())
+			if (!runparams.isFullUnicode()) // FIXME: test for UseTeXFonts
 				os << setEncoding(data.prev_encoding->iconvName());
 		}
 	}
@@ -258,7 +258,7 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 		state->prev_env_language_ = data.par_language;
 		if (runparams.encoding != data.prev_encoding) {
 			runparams.encoding = data.prev_encoding;
-			if (!runparams.isFullUnicode())
+			if (!runparams.isFullUnicode()) // FIXME: test for UseTeXFonts
 				os << setEncoding(data.prev_encoding->iconvName());
 		}
 	}
@@ -878,7 +878,7 @@ void TeXOnePar(Buffer const & buf,
 			latexArgInsets(par, os, runparams, style.postcommandargs(), "post:");
 		if (runparams.encoding != prev_encoding) {
 			runparams.encoding = prev_encoding;
-			if (!runparams.isFullUnicode())
+			if (!runparams.isFullUnicode()) // FIXME: test for UseTeXFonts
 				os << setEncoding(prev_encoding->iconvName());
 		}
 	}
@@ -1040,12 +1040,11 @@ void TeXOnePar(Buffer const & buf,
 	// If this is the last paragraph, and a local_font was set upon entering
 	// the inset, and we're using "auto" or "default" encoding, the encoding
 	// should be set back to that local_font's encoding.
-	// However, do not change the encoding when a fully unicode aware backend
-	// such as XeTeX is used.
+	// However, do not change the encoding when non-TeX fonts are used.
 	if (runparams.isLastPar && runparams_in.local_font != 0
 	    && runparams_in.encoding != runparams_in.local_font->language()->encoding()
 	    && (bparams.inputenc == "auto" || bparams.inputenc == "default")
-	    && (!runparams.isFullUnicode())) {
+	    && (!runparams.isFullUnicode())) { // FIXME: test for UseTeXFonts
 		runparams_in.encoding = runparams_in.local_font->language()->encoding();
 		os << setEncoding(runparams_in.encoding->iconvName());
 	}

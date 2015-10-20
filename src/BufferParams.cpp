@@ -2307,7 +2307,7 @@ string BufferParams::bufferFormat() const
 	string format = documentClass().outputFormat();
 	if (format == "latex") {
 		if (useNonTeXFonts)
-			return "xetex";
+			return "xetex"; // FIXME: why not "luatex"?
 		if (encoding().package() == Encoding::japanese)
 			return "platex";
 	}
@@ -2927,20 +2927,16 @@ docstring BufferParams::getGraphicsDriver(string const & package) const
 void BufferParams::writeEncodingPreamble(otexstream & os,
 					 LaTeXFeatures & features) const
 {
-	// XeTeX does not need this
+	// "inputenc" package not required with non-TeX fonts.
+	if (useNonTeXFonts)
+		return;
+	// "inputenc"  fails with XeTeX (even in 8-bit compatiblitly mode) and with TeX fonts,
+	// (this is a bug in the "inputenc" package see #9740).
 	if (features.runparams().flavor == OutputParams::XETEX)
 		return;
-	// LuaTeX neither, but with tex fonts, we need to load
-	// the luainputenc package.
-	if (features.runparams().flavor == OutputParams::LUATEX
-		|| features.runparams().flavor == OutputParams::DVILUATEX) {
-		if (!useNonTeXFonts && inputenc != "default"
-		    && ((inputenc == "auto" && language->encoding()->package() == Encoding::inputenc)
-		        || (inputenc != "auto" && encoding().package() == Encoding::inputenc))) {
-			os << "\\usepackage[utf8]{luainputenc}\n";
-		}
-		return;
-	}
+	// For LuaTeX with TeX fonts, we can load
+	// the "luainputenc" package with the specified encoding(s) (see below).
+
 	if (inputenc == "auto") {
 		string const doc_encoding =
 			language->encoding()->latexName();
@@ -2972,7 +2968,11 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 					os << ',';
 				os << from_ascii(doc_encoding);
 			}
-			os << "]{inputenc}\n";
+		   	if (features.runparams().flavor == OutputParams::LUATEX
+			    || features.runparams().flavor == OutputParams::DVILUATEX)
+				os << "]{luainputenc}\n";
+			else
+				os << "]{inputenc}\n";
 		}
 		if (package == Encoding::CJK || features.mustProvide("CJK")) {
 			if (language->encoding()->name() == "utf8-cjk"
@@ -2992,8 +2992,12 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			if (features.isRequired("japanese")
 			    || features.isProvided("inputenc"))
 				break;
-			os << "\\usepackage[" << from_ascii(encoding().latexName())
-			   << "]{inputenc}\n";
+			os << "\\usepackage[" << from_ascii(encoding().latexName());
+		   	if (features.runparams().flavor == OutputParams::LUATEX
+			    || features.runparams().flavor == OutputParams::DVILUATEX)
+				os << "]{luainputenc}\n";
+			else
+				os << "]{inputenc}\n";
 			break;
 		case Encoding::CJK:
 			if (encoding().name() == "utf8-cjk"
@@ -3123,10 +3127,10 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 
 Encoding const & BufferParams::encoding() const
 {
-	// FIXME: actually, we should check for the flavor
-	// or runparams.isFullyUnicode() here:
-	// This check will not work with XeTeX/LuaTeX and tex fonts.
-	// Thus we have to reset the encoding in Buffer::makeLaTeXFile
+	// FIXME: additionally, we must check for runparams().flavor == XeTeX
+	// or runparams.isFullUnicode() to care for the combination
+	// of XeTeX and TeX-fonts (see #9740).
+	// Currently, we reset the encoding in Buffer::makeLaTeXFile
 	// (for export) and Buffer::writeLaTeXSource (for preview).
 	if (useNonTeXFonts)
 		return *(encodings.fromLyXName("utf8-plain"));

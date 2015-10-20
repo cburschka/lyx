@@ -1586,10 +1586,10 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 {
 	OutputParams runparams = runparams_in;
 
-	// This is necessary for LuaTeX/XeTeX with tex fonts.
-	// See FIXME in BufferParams::encoding()
-	if (runparams.isFullUnicode())
-		runparams.encoding = encodings.fromLyXName("utf8-plain");
+	// XeTeX with TeX fonts is only safe with ASCII encoding,
+	// See #9740 and FIXME in BufferParams::encoding()
+	if (params().useNonTeXFonts && (runparams.flavor == OutputParams::XETEX))
+		runparams.encoding = encodings.fromLyXName("ascii");
 
 	string const encoding = runparams.encoding->iconvName();
 	LYXERR(Debug::LATEX, "makeLaTeXFile encoding: " << encoding << ", fname=" << fname.realPath());
@@ -1673,10 +1673,10 @@ void Buffer::writeLaTeXSource(otexstream & os,
 
 	OutputParams runparams = runparams_in;
 
-	// This is necessary for LuaTeX/XeTeX with tex fonts.
-	// See FIXME in BufferParams::encoding()
-	if (runparams.isFullUnicode())
-		runparams.encoding = encodings.fromLyXName("utf8-plain");
+	// XeTeX with TeX fonts is only safe with ASCII encoding,
+	// See #9740 and FIXME in BufferParams::encoding()
+	if (params().useNonTeXFonts && (runparams.flavor == OutputParams::XETEX))
+		runparams.encoding = encodings.fromLyXName("ascii");
 
 	// If we are compiling a file standalone, even if this is the
 	// child of some other buffer, let's cut the link here, so the

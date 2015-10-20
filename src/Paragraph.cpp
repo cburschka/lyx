@@ -2567,7 +2567,7 @@ void Paragraph::latex(BufferParams const & bparams,
 	if (allowcust && d->endTeXParParams(bparams, os, runparams)
 	    && runparams.encoding != prev_encoding) {
 		runparams.encoding = prev_encoding;
-		if (!runparams.isFullUnicode())
+		if (!runparams.isFullUnicode()) // FIXME: test for UseTeXFonts
 			os << setEncoding(prev_encoding->iconvName());
 	}
 

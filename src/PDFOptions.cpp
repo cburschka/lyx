@@ -176,7 +176,7 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 
 	// hyperref expects utf8!
 	if (need_unicode && enc && enc->iconvName() != "UTF-8"
-	    &&!runparams.isFullUnicode()) {
+	    &&!runparams.isFullUnicode()) { // FIXME: check must be done for useNonTeXFonts!
 		os << "\\inputencoding{utf8}\n"
 		   << setEncoding("UTF-8");
 	}
@@ -196,7 +196,7 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 		os << from_utf8(opt);
 
 	if (need_unicode && enc && enc->iconvName() != "UTF-8"
-	    &&!runparams.isFullUnicode()) {
+	    &&!runparams.isFullUnicode()) { // FIXME: check for useNonTeXFonts!
 		os << setEncoding(enc->iconvName())
 		   << "\\inputencoding{" << from_ascii(enc->latexName()) << "}\n";
 	}
