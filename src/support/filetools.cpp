@@ -942,11 +942,11 @@ docstring const makeDisplayPath(string const & path, unsigned int threshold)
 	if (dstr.empty()) {
 		// Yes, filename itself is too long.
 		// Pick the start and the end of the filename.
-		dstr = from_utf8(onlyFileName(path));
-		docstring::size_type const len = dstr.length();
-		if (len >= threshold)
-			dstr = support::truncateWithEllipsis(dstr, threshold / 2) +
-				dstr.substr(len - threshold / 2 - 2, len - 1);
+		docstring fstr = from_utf8(onlyFileName(path));
+		dstr = fstr;
+		if (support::truncateWithEllipsis(dstr, threshold / 2))
+			dstr += fstr.substr(fstr.length() - threshold / 2 - 2,
+								docstring::npos);
 	}
 
 	return from_utf8(os::external_path(prefix + to_utf8(dstr)));
