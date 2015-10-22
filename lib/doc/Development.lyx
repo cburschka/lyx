@@ -461,6 +461,14 @@ src/tex2lyx/TODO.txt
  recommendation were related to mixed version syntax, not ERT.
 \end_layout
 
+\begin_layout Enumerate
+It would be nice if you could create a .lyx test file which contains instances
+ of all changed or added features.
+ This could then be used to test lyxl2yx and tex2lyx.
+ Unfortunately it has not yet been decided how to collect such examples,
+ so please ask on the development list if you want to create one.
+\end_layout
+
 \begin_layout Section
 Backporting new styles to the stable version
 \end_layout
