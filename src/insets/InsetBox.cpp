@@ -508,23 +508,6 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		os << "\\begin{shaded}%\n";
 	}
 
-	// \framebox and \makebox handle hor_pos their own way
-	// hor_pos is senseless for \mbox and \fbox
-	if (!params_.use_makebox
-		&& !(btype == Boxed && !params_.inner_box)) {
-			switch (params_.hor_pos) {
-			case 'l':
-				// do nothing because this is LaTeX's default
-				break;
-			case 'c':
-				os << "\\centering ";
-				break;
-			case 'r':
-				os << "\\raggedleft ";
-				break;
-			}
-	}
-
 	InsetText::latex(os, runparams);
 
 	if (btype == Shaded)

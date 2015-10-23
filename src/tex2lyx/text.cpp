@@ -127,7 +127,6 @@ string parse_text_snippet(Parser & p, unsigned flags, const bool outer,
 string fboxrule = "";
 string fboxsep = "";
 string shadow_size = "";
-bool wasBoxAlign = false;
 
 char const * const known_ref_commands[] = { "ref", "pageref", "vref",
  "vpageref", "prettyref", "nameref", "eqref", 0 };
@@ -1019,37 +1018,6 @@ void parse_box(Parser & p, ostream & os, unsigned outer_flags,
 			// something is between the end of the inner box and
 			// the end of the outer box, so we need to use ERT.
 			use_ert = true;
-		}
-		p.popPosition();
-	}
-
-	// try to determine the box content alignment
-	// first handle the simple case of "{\centering..."
-	if (p.next_token().asInput() == "\\raggedright") {
-		wasBoxAlign = true;
-		hor_pos = "l";
-	} else if (p.next_token().asInput() == "\\centering") {
-		wasBoxAlign = true;
-		hor_pos = "c";
-	} else if (p.next_token().asInput() == "\\raggedleft") {
-		wasBoxAlign = true;
-		hor_pos = "r";
-	} else {
-		// now handle the cases "{%catNewline\centering..."
-		// and "{catNewline\centering..."
-		p.pushPosition();
-		p.get_token().asInput();
-		if (p.next_token().cat() == catComment || p.next_token().cat() == catNewline)
-			p.get_token().asInput();
-		if (p.next_token().asInput() == "\\raggedright") {
-			wasBoxAlign = true;
-			hor_pos = "l";
-		} else if (p.next_token().asInput() == "\\centering") {
-			wasBoxAlign = true;
-			hor_pos = "c";
-		} else if (p.next_token().asInput() == "\\raggedleft") {
-			wasBoxAlign = true;
-			hor_pos = "r";
 		}
 		p.popPosition();
 	}
@@ -4308,17 +4276,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 						shadow_size = shadow_size + p.get_token().asInput();
 				}
 			} else {
-				// we only handle them if they are in a box
-				if (wasBoxAlign) {
-					// LyX will add a space after outputting the
-					// alignment command, so eat any space which
-					// might follow. Otherwise the paragraph
-					// might start with an unneeded space.
-					p.skip_spaces(true);
-				} else
-					output_ert_inset(os, t.asInput(), context);
+				output_ert_inset(os, t.asInput(), context);
 			}
-			wasBoxAlign = false;
 		}
 
 		//\framebox() is part of the picture environment and different from \framebox{}

@@ -344,8 +344,10 @@ void GuiBox::paramsToDialog(Inset const * inset)
 	ialignCO->setEnabled(ibox);
 	setSpecial(ibox);
 
-	// halign is only allowed if a width is used
-	halignCO->setEnabled(widthCB->isChecked());
+	// halign is only allowed without inner box and if a width is used and if
+	// pagebreak is not used
+	halignCO->setEnabled(!pagebreakCB->isChecked() && widthCB->isChecked()
+	                     && ((!ibox && type == "Boxed") || inner_type == "makebox"));
 	// add the entry "Stretch" if the box is \makebox or \framebox and if not already there
 	if ((inner_type == "makebox" || (type == "Boxed" && inner_type == "none"))
 		&& halignCO->count() < 4)
@@ -557,8 +559,10 @@ bool GuiBox::checkWidgets(bool readonly) const
 			widthED->setEnabled(false);
 			widthUnitsLC->setEnabled(false);
 		}
-		// halign is only allowed if a width is used
-		halignCO->setEnabled(widthCB->isChecked());
+		// halign is only allowed without inner box and if a width is used and if
+		// pagebreak is not used
+		halignCO->setEnabled(!pagebreakCB->isChecked() && widthCB->isChecked()
+		                     && ((!ibox && outer == "Boxed") || itype == "makebox"));
 		// add the entry "Stretch" if the box is \makebox or \framebox and if not already there
 		if ((itype == "makebox" || (outer == "Boxed" && itype == "none"))
 			&& halignCO->count() < 4)

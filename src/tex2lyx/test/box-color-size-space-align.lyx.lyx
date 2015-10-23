@@ -1266,7 +1266,7 @@ status collapsed
 
 \begin_inset Box Shadowbox
 position "c"
-hor_pos "c"
+hor_pos "l"
 has_inner_box 0
 inner_pos "c"
 use_parbox 0
@@ -1284,7 +1284,19 @@ status open
 
 
 \begin_layout Standard
-www
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ www
 \end_layout
 
 \end_inset
@@ -1306,7 +1318,7 @@ status collapsed
 
 \begin_inset Box Frameless
 position "t"
-hor_pos "c"
+hor_pos "l"
 has_inner_box 1
 inner_pos "t"
 use_parbox 1
@@ -1324,7 +1336,19 @@ status open
 
 
 \begin_layout Plain Layout
-www
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ www
 \end_layout
 
 \end_inset
@@ -1358,7 +1382,7 @@ raggedleft
  
 \begin_inset Box Frameless
 position "t"
-hor_pos "c"
+hor_pos "l"
 has_inner_box 1
 inner_pos "t"
 use_parbox 1
@@ -1376,6 +1400,18 @@ status open
 
 
 \begin_layout Plain Layout
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
  www
 \end_layout
 
