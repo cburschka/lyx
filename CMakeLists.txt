@@ -134,6 +134,7 @@ LYX_OPTION(BUNDLE           "Build bundle  (experimental) " OFF ALL)
 LYX_OPTION(ENABLE_URLTESTS  "Enable for URL tests" OFF ALL)
 LYX_OPTION(ENABLE_EXPORT_TESTS "Enable for export tests" OFF ALL)
 LYX_OPTION(ASAN             "Use address sanitizer" OFF ALL)
+LYX_COMBO(USE_QT            "Use Qt version as frontend" QT4 QT5)
 
 # GCC specific
 LYX_OPTION(PROFILE              "Build profile version" OFF GCC)
@@ -155,11 +156,6 @@ LYX_OPTION(DEPENDENCIES_DOWNLOAD "Download dependencies for MSVC 10" OFF MSVC)
 # APPLE specific
 LYX_OPTION(DMG                   "Build as Mac bundle, needed for .dmg  (experimental) " OFF MAC)
 LYX_OPTION(COCOA                 "Use Cocoa on Mac" OFF MAC)
-if(LYX_XMINGW)
-  LYX_COMBO(USE_QT               "Use Qt version as frontend for MINGW" QT4)
-else()
-  LYX_COMBO(USE_QT               "Use Qt version as frontend" QT4 QT5)
-endif()
 
 
 if(help OR HELP)
