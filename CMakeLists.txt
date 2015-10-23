@@ -47,6 +47,7 @@ if(COMMAND cmake_policy)
 		# COMPILE_DEFINITIONS are not used yet. Enable new behavior.
 		cmake_policy(SET CMP0043 NEW)
 	endif()
+	cmake_policy(SET CMP0020 OLD)
 endif()
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
