@@ -44,18 +44,8 @@ Style Title
 	EndFont
 End
 
-Style "Plain Title"
-	CopyStyle			Title
-	LatexName			Plaintitle
-End
-
 Style Author
 	InPreamble			1
-End
-
-Style "Plain Author"
-	CopyStyle			Author
-	LatexName			Plainauthor
 End
 
 Style Abstract
@@ -120,10 +110,22 @@ Style "Plain Keywords"
 	LabelString			"Plain Keywords:"
 End
 
+Style "Plain Title"
+	CopyStyle			Keywords
+	LatexName			Plaintitle
+	LabelString			"Plain Title:"
+End
+
 Style "Short Title"
 	CopyStyle			Keywords
 	LatexName			Shorttitle
 	LabelString			"Short Title:"
+End
+
+Style "Plain Author"
+	CopyStyle			Keywords
+	LatexName			Plainauthor
+	LabelString			"Plain Author:"
 End
 
 InsetLayout "Flex:Pkg"
