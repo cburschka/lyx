@@ -246,7 +246,7 @@ endif()
 
 set(LYX_GCC11_MODE)
 if(UNIX OR MINGW)
-	execute_process(COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
+	execute_process(COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION OUTPUT_STRIP_TRAILING_WHITESPACE)
 	message(STATUS "Using GCC version ${GCC_VERSION}")
 	if(GCC_VERSION VERSION_LESS 4.9)
 		# <regex> in gcc is unusable in versions less than 4.9.0
