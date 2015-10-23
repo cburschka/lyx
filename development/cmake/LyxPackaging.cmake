@@ -43,8 +43,14 @@ elseif(WIN32)
     if(MINGW)
         get_filename_component(MINGW_BIN_PATH ${CMAKE_CXX_COMPILER} PATH)
         if(LYX_XMINGW)
+            if(LYX_USE_QT MATCHES "QT4")
                 get_filename_component(mingw_name ${LYX_XMINGW} NAME)
                 set(MINGW_BIN_PATH ${MINGW_BIN_PATH}/../${mingw_name}/lib)
+                set(MINGW_LIB_PATH ${MINGW_BIN_PATH})
+            else()
+                set(MINGW_BIN_PATH /usr/lib/gcc/${LYX_XMINGW}/${GCC_VERSION})
+                set(MINGW_LIB_PATH /usr/${LYX_XMINGW}/lib)
+            endif()
         endif()
         if(EXISTS ${MINGW_BIN_PATH}/libgcc_s_sjlj-1.dll)
             list(APPEND runtime ${MINGW_BIN_PATH}/libgcc_s_sjlj-1.dll)
@@ -56,25 +62,63 @@ elseif(WIN32)
         if(EXISTS ${MINGW_BIN_PATH}/libstdc++-6.dll)
             list(APPEND runtime ${MINGW_BIN_PATH}/libstdc++-6.dll)
         endif()
-        if(EXISTS ${MINGW_BIN_PATH}/libwinpthread-1.dll)
-            list(APPEND runtime ${MINGW_BIN_PATH}/libwinpthread-1.dll)
+        if(EXISTS ${MINGW_LIB_PATH}/libwinpthread-1.dll)
+            list(APPEND runtime ${MINGW_LIB_PATH}/libwinpthread-1.dll)
         endif()
         if(NOT runtime)
-                message(FATAL_ERROR "No mingw runtime found in ${MINGW_BIN_PATH}")
+            message(FATAL_ERROR "No mingw runtime found in ${MINGW_BIN_PATH}")
         endif()
 
-        install(FILES
-                    ${runtime}
-                    ${QT_BINARY_DIR}/QtCore4.dll
-                    ${QT_BINARY_DIR}/QtGui4.dll
-                    ${QT_BINARY_DIR}/QtNetwork4.dll
-                    ${QT_PLUGINS_DIR}/imageformats/qgif4.dll
-                    ${QT_PLUGINS_DIR}/imageformats/qico4.dll
-                    ${QT_PLUGINS_DIR}/imageformats/qmng4.dll
-                    ${QT_PLUGINS_DIR}/imageformats/qsvg4.dll
-                    ${QT_PLUGINS_DIR}/imageformats/qtga4.dll
-                    ${QT_PLUGINS_DIR}/imageformats/qtiff4.dll
+        if(LYX_USE_QT MATCHES "QT5")
+            get_target_property(qmakebin Qt5::qmake IMPORTED_LOCATION)
+            get_filename_component(QT_BINARY_DIR ${qmakebin} PATH)
+            install(FILES
+                ${runtime}
+                ${QT_BINARY_DIR}/Qt5Core.dll
+                ${QT_BINARY_DIR}/Qt5Network.dll
+                ${QT_BINARY_DIR}/Qt5Gui.dll
+                ${QT_BINARY_DIR}/Qt5Widgets.dll
+                ${QT_BINARY_DIR}/Qt5Concurrent.dll
+                ${QT_BINARY_DIR}/Qt5OpenGL.dll
+                ${QT_BINARY_DIR}/Qt5PrintSupport.dll
+                ${QT_BINARY_DIR}/Qt5Svg.dll
+                ${QT_BINARY_DIR}/Qt5WinExtras.dll
+                DESTINATION bin
+                CONFIGURATIONS Release)
+            install(FILES
+                ${QT_BINARY_DIR}/../plugins/platforms/qminimal.dll
+                ${QT_BINARY_DIR}/../plugins/platforms/qwindows.dll
+                DESTINATION bin/platforms
+                CONFIGURATIONS Release)
+            install(FILES
+                ${QT_BINARY_DIR}/../plugins/printsupport/windowsprintersupport.dll
+                DESTINATION bin/printsupport
+                CONFIGURATIONS Release)
+            install(FILES
+                ${QT_BINARY_DIR}/../plugins/imageformats/qgif.dll
+                ${QT_BINARY_DIR}/../plugins/imageformats/qjpeg.dll
+                ${QT_BINARY_DIR}/../plugins/imageformats/qsvg.dll
+                ${QT_BINARY_DIR}/../plugins/imageformats/qico.dll
+                DESTINATION bin/imageformats
+                CONFIGURATIONS Release)
+            install(FILES
+                ${QT_BINARY_DIR}/../plugins/iconengines/qsvgicon.dll
+                DESTINATION bin/iconengines
+                CONFIGURATIONS Release)
+        else()
+            install(FILES
+                ${runtime}
+                ${QT_BINARY_DIR}/QtCore4.dll
+                ${QT_BINARY_DIR}/QtGui4.dll
+                ${QT_BINARY_DIR}/QtNetwork4.dll
+                ${QT_PLUGINS_DIR}/imageformats/qgif4.dll
+                ${QT_PLUGINS_DIR}/imageformats/qico4.dll
+                ${QT_PLUGINS_DIR}/imageformats/qmng4.dll
+                ${QT_PLUGINS_DIR}/imageformats/qsvg4.dll
+                ${QT_PLUGINS_DIR}/imageformats/qtga4.dll
+                ${QT_PLUGINS_DIR}/imageformats/qtiff4.dll
                 DESTINATION bin CONFIGURATIONS Release)
+        endif()
     endif()
 else()
 	# needed by rpm
