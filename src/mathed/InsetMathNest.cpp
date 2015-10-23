@@ -2164,6 +2164,7 @@ MathCompletionList::MathCompletionList(Cursor const & cur)
 	globals.push_back(from_ascii("\\sqrt"));
 	globals.push_back(from_ascii("\\root"));
 	globals.push_back(from_ascii("\\tabular"));
+	globals.push_back(from_ascii("\\sideset"));
 	globals.push_back(from_ascii("\\stackrel"));
 	globals.push_back(from_ascii("\\stackrelthree"));
 	globals.push_back(from_ascii("\\binom"));
