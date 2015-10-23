@@ -32,14 +32,16 @@
   \myTOC
   \mainmatter }
 
-% increase link area for cross-references and autoname them,
-\AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
-\addto\extrasspanish{%
- \renewcommand*{\equationautorefname}[1]{}%
- \renewcommand{\sectionautorefname}{sec.\negthinspace}%
- \renewcommand{\subsectionautorefname}{sec.\negthinspace}%
- \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}%
-}
+\@ifpackageloaded{babel}{
+ % increase link area for cross-references and autoname them,
+ \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
+ \addto\extrasspanish{%
+  \renewcommand*{\equationautorefname}[1]{}%
+  \renewcommand{\sectionautorefname}{sec.\negthinspace}%
+  \renewcommand{\subsectionautorefname}{sec.\negthinspace}%
+  \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}%
+ }
+}{}
 \end_preamble
 \options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false

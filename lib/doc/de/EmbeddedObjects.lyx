@@ -1,5 +1,5 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 497
+\lyxformat 498
 \begin_document
 \begin_header
 \origin /systemlyxdir/doc/de/
@@ -160,8 +160,10 @@
   \setboolean{diagbox}{true}}
  {\setboolean{diagbox}{false}}
 
-% Damit der Index den Namen "Stichwortverzeichnis" erhält
-\addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
+\@ifpackageloaded{babel}{
+ % Damit der Index den Namen "Stichwortverzeichnis" erhält
+ \addto\captionsngerman{\renewcommand{\indexname}{Stichwortverzeichnis}}
+}{}
 \end_preamble
 \options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading,usenames,dvipsnames,table
 \use_default_options false

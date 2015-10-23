@@ -15,15 +15,17 @@
 
 \fi % end if pdflatex is used
 
-% increase link area for cross-references and autoname them,
-\AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
-\@ifundefined{extrasenglish}{\usepackage[english]{babel}}{}
-\addto\extrasenglish{%
- \renewcommand*{\equationautorefname}[1]{}%
- \renewcommand{\sectionautorefname}{sec.\negthinspace}%
- \renewcommand{\subsectionautorefname}{sec.\negthinspace}%
- \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}%
-}
+\@ifpackageloaded{babel}{
+ % increase link area for cross-references and autoname them,
+ \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
+ \@ifundefined{extrasenglish}{\usepackage[english]{babel}}{}
+ \addto\extrasenglish{%
+  \renewcommand*{\equationautorefname}[1]{}%
+  \renewcommand{\sectionautorefname}{sec.\negthinspace}%
+  \renewcommand{\subsectionautorefname}{sec.\negthinspace}%
+  \renewcommand{\subsubsectionautorefname}{sec.\negthinspace}%
+ }
+}{}
 \end_preamble
 \options BCOR8mm, most, usenames, dvipsnames
 \use_default_options false
@@ -1234,7 +1236,6 @@ Default Value
 \end_layout
 
 \begin_layout New Color Box Type
-
 \begin_inset Argument 2
 status open
 
@@ -1413,7 +1414,6 @@ Box
 \end_layout
 
 \begin_layout New Color Box Type
-
 \begin_inset Argument 1
 status open
 
@@ -1652,7 +1652,6 @@ More Color Box Options
 \end_layout
 
 \begin_layout New Color Box Type
-
 \begin_inset Argument 1
 status open
 

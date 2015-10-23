@@ -35,12 +35,14 @@
 
 % Linkfläche für Querverweise vergrößern und automatisch benennen,
 \AtBeginDocument{\renewcommand{\ref}[1]{\mbox{\autoref{#1}}}}
-\addto\extrasngerman{%
- \renewcommand*{\equationautorefname}[1]{}%
- \renewcommand{\sectionautorefname}{Kap.\negthinspace}%
- \renewcommand{\subsectionautorefname}{Kap.\negthinspace}%
- \renewcommand{\subsubsectionautorefname}{Kap.\negthinspace}%
-}
+\@ifpackageloaded{babel}{
+ \addto\extrasngerman{%
+  \renewcommand*{\equationautorefname}[1]{}%
+  \renewcommand{\sectionautorefname}{Kap.\negthinspace}%
+  \renewcommand{\subsectionautorefname}{Kap.\negthinspace}%
+  \renewcommand{\subsubsectionautorefname}{Kap.\negthinspace}%
+ }
+}{}
 
 % Makros damit Pakete nicht doppelt geladen werden.
 % siehe erste Fußnote in Kap. 9.3
@@ -97,10 +99,12 @@
 % Beispielmakro aus Kap. 19.4
 %\def\tagform@#1{\maketag@@@{|#1|}}
 
-% Damit der Index einen anderen Namen erhält.
-\addto\captionsngerman
-{\renewcommand{\indexname}
-{Stichwort- und Befehlsverzeichnis}}
+\@ifpackageloaded{babel}{
+ % Damit der Index einen anderen Namen erhält.
+ \addto\captionsngerman
+ {\renewcommand{\indexname}
+ {Stichwort- und Befehlsverzeichnis}}
+}{}
 
 
 % ------------------------------------

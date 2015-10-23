@@ -42,12 +42,10 @@ export/doc/uk/Intro_dvi3_systemF
 # it is unlikely that a user would want to use system fonts to view LyX's
 # documents, fixing these would provide further tests for LyX's handling of
 # XeTeX/LuaTeX with system fonts.
-export/doc/(|de/|es/|fr/)Customization_pdf4_systemF
+export/doc/(de/|es/|fr/)Customization_pdf4_systemF
 export/doc/(es/|fr/)Math_dvi3_systemF
-export/doc/(|de/|es/)Math_pdf4_systemF
-# es would be in here also but it is set to "always babel".
-export/doc/de/EmbeddedObjects_pdf4_systemF
-export/doc/(de|es|fr|id)/UserGuide_pdf4_systemF
+export/doc/(es/)Math_pdf4_systemF
+export/doc/(es|fr|id)/UserGuide_pdf4_systemF
 export/doc/es/Tutorial_pdf4_systemF
 export/doc/gl/Tutorial_dvi3_systemF
 export/doc/(nb|sk)/Intro_pdf4_systemF
