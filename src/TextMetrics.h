@@ -136,8 +136,8 @@ private:
 	/// for example, the pos after which isNewLine(pos) == true
 	void breakRow(Row & row, int right_margin, pit_type const pit) const;
 
-	// Expand the alignment of paragraph \param par at position \param pos
-	LyXAlignment getAlign(Paragraph const & par, pos_type pos) const;
+	// Expand the alignment of row \param row in paragraph \param par
+	LyXAlignment getAlign(Paragraph const & par, Row const & row) const;
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
 	void computeRowMetrics(pit_type pit, Row & row, int width) const;

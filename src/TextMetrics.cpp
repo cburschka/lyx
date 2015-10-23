@@ -486,7 +486,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 }
 
 
-LyXAlignment TextMetrics::getAlign(Paragraph const & par, pos_type const pos) const
+LyXAlignment TextMetrics::getAlign(Paragraph const & par, Row const & row) const
 {
 	Layout const & layout = par.layout();
 
@@ -498,7 +498,14 @@ LyXAlignment TextMetrics::getAlign(Paragraph const & par, pos_type const pos) co
 
 	// handle alignment inside tabular cells
 	Inset const & owner = text_->inset();
+	bool forced_block = false;
 	switch (owner.contentAlignment()) {
+	case LYX_ALIGN_BLOCK:
+		// In general block align is the default state, but here it is
+		// an explicit choice. Therefore it should not be overridden
+		// later.
+		forced_block = true;
+		// fall through
 	case LYX_ALIGN_CENTER:
 	case LYX_ALIGN_LEFT:
 	case LYX_ALIGN_RIGHT:
@@ -511,7 +518,7 @@ LyXAlignment TextMetrics::getAlign(Paragraph const & par, pos_type const pos) co
 	}
 
 	// Display-style insets should always be on a centered row
-	if (Inset const * inset = par.getInset(pos)) {
+	if (Inset const * inset = par.getInset(row.pos())) {
 		switch (inset->display()) {
 		case Inset::AlignLeft:
 			align = LYX_ALIGN_BLOCK;
@@ -528,10 +535,17 @@ LyXAlignment TextMetrics::getAlign(Paragraph const & par, pos_type const pos) co
 		}
 	}
 
-	// Has the user requested we not justify stuff?
-	if (!bv_->buffer().params().justification
-	    && align == LYX_ALIGN_BLOCK)
-		align = LYX_ALIGN_LEFT;
+	if (align == LYX_ALIGN_BLOCK) {
+		// If this row has been broken abruptly by a display inset, or
+		// it is the end of the paragraph, or the user requested we
+		// not justify stuff, then don't stretch.
+		// A forced block alignment can only be overridden the 'no
+		// justification on screen' setting.
+		if (((row.right_boundary() || row.endpos() == par.size())
+		     && !forced_block)
+		    || !bv_->buffer().params().justification)
+			align = text_->isRTL(par) ? LYX_ALIGN_RIGHT : LYX_ALIGN_LEFT;
+	}
 
 	return align;
 }
@@ -581,14 +595,11 @@ void TextMetrics::computeRowMetrics(pit_type const pit,
 	} else if (int(row.width()) < max_width_) {
 		// is it block, flushleft or flushright?
 		// set x how you need it
-		switch (getAlign(par, row.pos())) {
+		switch (getAlign(par, row)) {
 		case LYX_ALIGN_BLOCK: {
 			int const ns = row.countSeparators();
-			/** If we have separators, and this row has
-			 * not be broken abruptly by a display inset
-			 * or newline, then stretch it */
-			if (ns && !row.right_boundary()
-			    && row.endpos() != par.size()) {
+			// If we have separators, then stretch the row
+			if (ns) {
 				row.setSeparatorExtraWidth(double(w) / ns);
 				row.dimension().wid += w;
 			} else if (text_->isRTL(par)) {

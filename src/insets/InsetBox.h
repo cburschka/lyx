@@ -115,6 +115,8 @@ public:
 	///
 	ColorCode backgroundColor(PainterInfo const &) const;
 	///
+	LyXAlignment contentAlignment() const;
+	///
 	bool allowParagraphCustomization(idx_type = 0) const { return !forcePlainLayout(); }
 	///
 	bool allowMultiPar() const;

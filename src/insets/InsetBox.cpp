@@ -223,6 +223,31 @@ ColorCode InsetBox::backgroundColor(PainterInfo const &) const
 }
 
 
+LyXAlignment InsetBox::contentAlignment() const
+{
+	if (!params_.use_makebox)
+		return LYX_ALIGN_NONE;
+
+	// The default value below is actually irrelevant
+	LyXAlignment align = LYX_ALIGN_NONE;
+	switch (params_.hor_pos) {
+	case 'l':
+		align = LYX_ALIGN_LEFT;
+		break;
+	case 'c':
+		align = LYX_ALIGN_CENTER;
+		break;
+	case 'r':
+		align = LYX_ALIGN_RIGHT;
+		break;
+	case 's':
+		align = LYX_ALIGN_BLOCK;
+		break;
+	}
+	return align;
+}
+
+
 void InsetBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action()) {
@@ -380,6 +405,7 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 			} else
 				os << '[' << from_ascii(width_string)
 				   << ']';
+			// default horizontal alignment is 'c'
 			if (params_.hor_pos != 'c')
 				os << "[" << params_.hor_pos << "]";
 		} else {
