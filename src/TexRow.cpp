@@ -75,7 +75,7 @@ void TexRow::RowEntryList::append(RowEntryList const & row)
 
 
 TexRow::TextEntry const TexRow::text_none = { -1, 0 };
-TexRow::RowEntry const TexRow::row_none = { false, TexRow::text_none };
+TexRow::RowEntry const TexRow::row_none = { false, { TexRow::text_none } };
 
 
 bool TexRow::isNone(TextEntry const & t)
