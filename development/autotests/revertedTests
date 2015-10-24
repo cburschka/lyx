@@ -1,17 +1,20 @@
 # Hebrew docs do not currently work with LuaTeX
 export/.*/he/(Intro|Tutorial|example).*(pdf5|dvi3)_.*
 export/.*/he/(splash).*(dvi3)_.*
+export/examples/he/splash_pdf5_texF
 #
 # FIXME
 # After LyX 2.1 is released, apply the patch and remove these
 # See http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
 export/.*/id/.*(dvi3)_.*
+export/.*/id/.*(pdf5)_texF
 export/doc/id/UserGuide_pdf5_systemF
 #
 # FIXME
 # Similar to the Indonesian support, see:
 # http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181595.html
 export/.*/hu/.*(dvi3)_.*
+export/.*/hu/.*(pdf5)_texF
 #
 export/.*/es/europeCV_pdf_texF
 #
