@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "KeySymbol.h"
+#include "GuiApplication.h"
 
 #include "qt_helpers.h"
 
@@ -744,14 +745,24 @@ bool KeySymbol::operator==(KeySymbol const & ks) const
 KeyModifier q_key_state(Qt::KeyboardModifiers state)
 {
 	KeyModifier k = NoModifier;
-	if (state & Qt::ControlModifier)
+#if defined(Q_OS_MAC) && QT_VERSION > 0x050000
+	/// Additional check for Control and Meta modifier swap state.
+	/// Starting with Qt 5 the modifiers aren't reported correctly.
+	/// Until this is fixed a correction is required.
+	const bool dontSwapCtrlAndMeta =
+		frontend::theGuiApp()->testAttribute(Qt::AA_MacDontSwapCtrlAndMeta);
+#else
+	const bool dontSwapCtrlAndMeta = false;
+#endif
+
+	if (state & (dontSwapCtrlAndMeta ? Qt::MetaModifier : Qt::ControlModifier))
 		k |= ControlModifier;
 	if (state & Qt::ShiftModifier)
 		k |= ShiftModifier;
 	if (state & Qt::AltModifier)
 		k |= AltModifier;
 #if defined(USE_MACOSX_PACKAGING) || defined(USE_META_KEYBINDING)
-	if (state & Qt::MetaModifier)
+	if (state & (dontSwapCtrlAndMeta ? Qt::ControlModifier : Qt::MetaModifier))
 		k |= MetaModifier;
 #else
 	if (state & Qt::MetaModifier)
