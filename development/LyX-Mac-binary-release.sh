@@ -62,6 +62,14 @@ case "${QtVersion}:${QtAPI}" in
 	QtConfigureOptions="${QtConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
 	QtMajorVersion=qt5
 	;;
+5.6*)
+	QtConfigureOptions="${QtConfigureOptions} -no-strip"
+	QtConfigureOptions="${QtConfigureOptions} -no-kms -no-pkg-config"
+	QtConfigureOptions="${QtConfigureOptions} -nomake examples -nomake tools"
+	QtConfigureOptions="${QtConfigureOptions} -skip qtconnectivity -skip qtscript"
+	QtConfigureOptions="${QtConfigureOptions} -skip qtquickcontrols -skip qtdeclarative"
+	QtMajorVersion=qt5
+	;;
 5.*)
 	QtConfigureOptions="${QtConfigureOptions} -no-strip"
 	QtConfigureOptions="${QtConfigureOptions} -no-kms -no-pkg-config"
