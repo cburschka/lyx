@@ -21445,10 +21445,6 @@ Símbolos ! matemáticos
 \end_layout
 
 \begin_layout Standard
-\begin_inset space \hfill{}
-\end_inset
-
-
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
 <features rotate="0" tabularvalignment="middle">
@@ -22259,10 +22255,6 @@ bot
 </row>
 </lyxtabular>
 
-\end_inset
-
-
-\begin_inset space \hfill{}
 \end_inset
 
 
@@ -23509,10 +23501,6 @@ arg   "math-insert \\leq"
 \end_layout
 
 \begin_layout Standard
-\begin_inset space \hfill{}
-\end_inset
-
-
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="2">
 <features rotate="0" tabularvalignment="middle">
@@ -24802,10 +24790,6 @@ nparallel
 </row>
 </lyxtabular>
 
-\end_inset
-
-
-\begin_inset space \hfill{}
 \end_inset
 
 
@@ -26477,7 +26461,7 @@ La función módulo es especial, porque existe en cuatro variantes.
 En una ecuación presentada:
 \begin_inset Formula 
 \begin{align*}
-\underline{\textrm{Comando}} &  & \underline{\textrm{Resultado}}\\
+\underline{\textrm{Comando}\raisebox{-0.9mm}{}} &  & \underline{\textrm{Resultado}}\\
 \mathrm{a\backslash mod\textrm{␣}b} &  & a\mod b\\
 \mathrm{a\backslash pmod\textrm{␣}b} &  & a\pmod b\\
 \mathrm{a\backslash bmod\textrm{␣}b} &  & a\bmod b\\
