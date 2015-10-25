@@ -97,6 +97,12 @@ export/templates/aa_(dvi3|pdf4|pdf5)_(texF|systemF)
 export/doc/he/(Intro|Tutorial)_pdf4_texF
 export/examples/he/(example_lyxified|example_raw|splash)_pdf4_texF
 #
+# These exports correctly fail now that we've switched to polyglossia. Although
+# they compiled without error with babel, the resulting PDFs had gibberish.
+export/doc/ru/Intro_pdf5_systemF
+export/doc/ru/Tutorial_pdf5_systemF
+export/doc/el/Intro_pdf5_systemF
+#
 # Inside these two files, we state that they should only be expected
 # to work with pdflatex and possibly lualatex.
 export/examples/PDF-(comment|form)_(dvi.*|pdf[^25]*)
