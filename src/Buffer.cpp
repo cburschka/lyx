@@ -1588,7 +1588,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 
 	// XeTeX with TeX fonts is only safe with ASCII encoding,
 	// See #9740 and FIXME in BufferParams::encoding()
-	if (params().useNonTeXFonts && (runparams.flavor == OutputParams::XETEX))
+	if (!params().useNonTeXFonts && (runparams.flavor == OutputParams::XETEX))
 		runparams.encoding = encodings.fromLyXName("ascii");
 
 	string const encoding = runparams.encoding->iconvName();
