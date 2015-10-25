@@ -459,6 +459,7 @@ dist_images_DATA1X = \
 	images/href-insert.png \
 	images/hidetab.png \
 	images/index-insert.png \
+	images/info-insert.png \
 	images/info-insert_buffer_vcs-revision.png \
 	images/label-insert.png \
 	images/layout.png \
@@ -502,6 +503,11 @@ dist_images_DATA1X = \
 	images/reload.png \
 	images/script-insert_subscript.png \
 	images/script-insert_superscript.png \
+	images/specialchar-insert_latex.png \
+	images/specialchar-insert_latex2e.png \
+	images/specialchar-insert_lyx.png \
+	images/specialchar-insert_menu-separator.png \
+	images/specialchar-insert_tex.png \
 	images/spelling-continuously.png \
 	images/view-split_horizontal.png \
 	images/view-split_vertical.png \
