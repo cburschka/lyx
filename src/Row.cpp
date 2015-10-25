@@ -259,6 +259,35 @@ ostream & operator<<(ostream & os, Row const & row)
 }
 
 
+int Row::left_x() const
+{
+	double x = left_margin;
+	const_iterator const end = elements_.end();
+	const_iterator cit = elements_.begin();
+	while (cit != end && cit->isVirtual()) {
+		x += cit->full_width();
+		++cit;
+	}
+	return int(x + 0.5);
+}
+
+
+int Row::right_x() const
+{
+	double x = dim_.wid;
+	const_iterator const begin = elements_.begin();
+	const_iterator cit = elements_.end();
+	while (cit != begin) {
+		--cit;
+		if (cit->isVirtual())
+			x -= cit->full_width();
+		else
+			break;
+	}
+	return int(x + 0.5);
+}
+
+
 int Row::countSeparators() const
 {
 	int n = 0;

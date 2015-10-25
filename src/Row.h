@@ -170,6 +170,11 @@ public:
 	///
 	int descent() const { return dim_.des; }
 
+	/// The offset of the left-most cursor position on the row
+	int left_x() const;
+	/// The offset of the right-most cursor position on the row
+	int right_x() const;
+
 	// Return the number of separators in the row
 	int countSeparators() const;
 	// Set the extra spacing for every separator in STRING elements
