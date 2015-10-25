@@ -57,8 +57,8 @@ Section "un.LyX" un.SecUnProgramFiles
     #DeleteRegKey SHCTX "Software\Classes\${APP_EXT}15"
     #DeleteRegKey SHCTX "Software\Classes\${APP_EXT}16"
     #DeleteRegKey SHCTX "Software\Classes\${APP_EXT}20"
-    #DeleteRegKey SHCTX "Software\Classes\${APP_EXT}" enable this for LyX 2.1 final!
-    #DeleteRegKey SHCTX "Software\Classes\${APP_REGNAME_DOC}"
+    DeleteRegKey SHCTX "Software\Classes\${APP_EXT}"
+    DeleteRegKey SHCTX "Software\Classes\${APP_REGNAME_DOC}"
    ${endif}
   ${endif}
   ${if} $MultiUser.Privileges == "Admin"
@@ -136,7 +136,7 @@ Section "un.JabRef" un.SecUnJabRef
   ${else}
    # in this case we can only read the start menu location and then start the linked uninstaller
    ReadRegStr $1 HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef ${JabRefVersion}" "StartMenu"
-   StrCpy $1 "$1\Uninstall JabRef 2.8.lnk"
+   StrCpy $1 "$1\Uninstall JabRef "${JabRefVersion}".lnk"
    ExecShell "" "$1" # run JabRef's uninstaller
   ${endif}
  ${endif}
