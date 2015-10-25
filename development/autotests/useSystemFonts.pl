@@ -79,7 +79,12 @@ if ($source =~ /\/([a-z][a-z](_[A-Z][A-Z])?)\//) {
   $lang = $1;
 }
 if ($fontT eq "systemF") {
-  if ($lang =~ /^(he|el|ru|uk|main)$/) {
+  if ($lang =~ /^(ru|uk)$/) {
+    $font{roman} = "DejaVu Serif";
+    $font{sans} = "DejaVu Sans";
+    $font{typewriter} = "DejaVu Sans Mono";
+  }
+  elsif ($lang =~ /^(he|el)$/) {
     $font{roman} = "FreeSans";
     $font{sans} = "FreeSans";
     $font{typewriter} = "FreeSans";
