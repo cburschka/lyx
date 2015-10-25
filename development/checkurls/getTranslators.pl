@@ -141,7 +141,7 @@ else {
 
 for my $lang (sort keys %list) {
   for my $rentry (@{$list{$lang}}) {
-    my $prefix = sprintf("(%02d%) ", "$rentry->{fract}");
+    my $prefix = sprintf("(%03d%) ", "$rentry->{fract}");
     if (defined($rentry->{error})) {
       $errors++;
       $prefix .= sprintf("%-24s", "$rentry->{error}:");
@@ -268,10 +268,10 @@ sub text($$)
   }
   if ($status{Tag_td} == 6) {
     if (&actual_tag() eq "a") {
-      $page_row{name} = $text;
+      $page_row{name} .= $text;	# '.=' because text can be splitted
     }
     elsif (&actual_tag() eq "td") { # name without associated e-mail
-      $page_row{name} = $text;
+      $page_row{name} .= $text;
     }
   }
 }
