@@ -2,7 +2,7 @@
 \lyxformat 498
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/es/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % if pdflatex is used
@@ -24801,7 +24801,7 @@ Formato
 
 \begin_layout Standard
 \begin_inset Note Greyedout
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -24859,42 +24859,6 @@ fig:
 
  posibles en \SpecialChar LyX
  y no está internacionalizado.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Nota:
-\series default
- Debido a un fallo en el paquete \SpecialChar LaTeX
- 
-\series bold
-varioref
-\series default
- versión 1.4w, algunos formatos de las referencias cruzadas provocarán errores
- de \SpecialChar LaTeX
- en documentos cuyo idioma haga activo el carácter punto (como el francés).
- Para una solución provisional, véase 
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-target "http://wiki.lyx.org/LaTeX/LatexBugs#toc5"
-
-\end_inset
-
-.
 \end_layout
 
 \end_inset

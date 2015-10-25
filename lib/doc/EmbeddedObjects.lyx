@@ -1,8 +1,8 @@
 #LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 497
+\lyxformat 498
 \begin_document
 \begin_header
-\origin /systemlyxdir/doc/
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % if pdflatex is used
@@ -25087,42 +25087,6 @@ fig:
 \end_inset
 
  and is not internationalized.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note:
-\series default
- Due to a bug in the \SpecialChar LaTeX
--package 
-\series bold
-varioref
-\series default
- version 1.4w, some cross-reference formats will cause \SpecialChar LaTeX
- errors for document
- languages that make the period character active (like French).
- For a workaround, see
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-target "http://wiki.lyx.org/LaTeX/LatexBugs#toc5"
-
-\end_inset
-
-.
 \end_layout
 
 \end_inset
