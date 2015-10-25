@@ -138,8 +138,9 @@ endmacro()
 loadTestList(revertedTests revertedTests)
 loadTestList(ignoredTests ignoredTests)
 
-foreach(libsubfolder doc examples templates)
-  set(LIBSUB_SRC_DIR "${TOP_SRC_DIR}/lib/${libsubfolder}")
+foreach(libsubfolderx lib/doc lib/examples lib/templates development/mathmacros)
+  set(LIBSUB_SRC_DIR "${TOP_SRC_DIR}/${libsubfolderx}")
+  string(REGEX REPLACE "^(lib|development)/" "" libsubfolder "${libsubfolderx}")
   file(GLOB_RECURSE lyx_files RELATIVE "${LIBSUB_SRC_DIR}" "${LIBSUB_SRC_DIR}/*.lyx")
   list(SORT lyx_files)
   # Now create 2 lists. One for files in a language dir, one without
