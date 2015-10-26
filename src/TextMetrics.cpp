@@ -1956,7 +1956,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 			rp.paintLast();
 		if (i == 0 && is_rtl)
 			rp.paintFirst();
-		rp.paintTooLargeMarks(row_x < row.left_x(),
+		rp.paintTooLargeMarks(row_x + row.left_x() < 0,
 				      row_x + row.right_x() > bv_->workWidth());
 		y += row.descent();
 
