@@ -1,7 +1,8 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 498
 \begin_document
 \begin_header
+\origin unavailable
 \textclass moderncv
 \begin_preamble
 %\renewcommand{\familydefault}{\sfdefault}    % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
@@ -85,7 +86,8 @@ status open
 \begin_layout Plain Layout
 The moderncv class offers lots of customization possibilities; some are
  explained in the preamble of this document; for more information look at
- the documentation of the LaTeX-package 
+ the documentation of the \SpecialChar LaTeX
+-package 
 \series bold
 moderncv
 \series default
@@ -118,7 +120,7 @@ casual
 status open
 
 \begin_layout Plain Layout
-required, possible styles are 'casual' (default), 'classic', 'oldstyle'
+required, possible styles are 'casual' (default), 'classic', 'fancy', 'oldstyle'
  and 'banking'
 \end_layout
 
@@ -134,7 +136,7 @@ status open
 
 \begin_layout Plain Layout
 required, possible colors are 'blue' (default), 'orange', 'green', 'red',
- 'purple', 'grey' and 'black'
+ 'purple', 'burgundy', 'grey' and 'black'
 \end_layout
 
 \end_inset
@@ -260,27 +262,6 @@ testman@testman.xx
 www.johndoe.com
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-The Social style can be enabled if 
-\series bold
-moderncv
-\series default
- version 1.5.0 or newer is installed.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Social
 \begin_inset Argument 1
 status open
@@ -340,11 +321,6 @@ github
 \end_inset
 
 ptestman
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout ExtraInfo
@@ -422,7 +398,7 @@ Education
 status open
 
 \begin_layout Plain Layout
-2003--2006
+2003–2006
 \end_layout
 
 \end_inset
@@ -475,7 +451,7 @@ Description
 status open
 
 \begin_layout Plain Layout
-2001--2003
+2001–2003
 \end_layout
 
 \end_inset
@@ -596,7 +572,7 @@ Experience
 status open
 
 \begin_layout Plain Layout
-2006--
+2006–
 \begin_inset Newline newline
 \end_inset
 
@@ -628,6 +604,10 @@ Note:
 \emph on
 banking
 \emph default
+ or the 
+\emph on
+fancy
+\emph default
  theme, no linebreaks are allowed in entries.
 \end_layout
 
@@ -641,7 +621,7 @@ banking
 status open
 
 \begin_layout Plain Layout
-2005--2006
+2005–2006
 \end_layout
 
 \end_inset
@@ -851,7 +831,9 @@ Typography
 
 \end_inset
 
-LaTeX, ConTeXt, Scribus, QuarkXPress
+\SpecialChar LaTeX
+, Con\SpecialChar TeX
+t, Scribus, QuarkXPress
 \end_layout
 
 \begin_layout DoubleItem
@@ -1123,7 +1105,7 @@ Everything can be the content
 \noindent
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="1">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
@@ -1254,7 +1236,10 @@ Back to moderncv layout, without making a new section
 You can use bibitems:
 \end_layout
 
-\begin_layout --Separator--
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1334,7 +1319,8 @@ key "latexguide"
 Helmut Kopka and Patrick W.
  Daly: 
 \emph on
-A Guide to LaTeX Fourth Edition.
+A Guide to \SpecialChar LaTeX
+ Fourth Edition.
 
 \emph default
  Addison-Wesley, 2003
@@ -1349,7 +1335,8 @@ key "latexbook"
 
 Leslie Lamport: 
 \emph on
-LaTeX: A Document Preparation System.
+\SpecialChar LaTeX
+: A Document Preparation System.
 
 \emph default
  Addison-Wesley, second edition, 1994
@@ -1359,7 +1346,8 @@ LaTeX: A Document Preparation System.
 \begin_inset Newpage newpage
 \end_inset
 
-or BibTeX references:
+or Bib\SpecialChar TeX
+ references:
 \end_layout
 
 \begin_layout Standard
