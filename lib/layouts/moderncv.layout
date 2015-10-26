@@ -1,5 +1,5 @@
 #% Do not delete the line below; configure depends on this
-#  \DeclareLaTeXClass[moderncv,color.sty,ebgaramond.sty,fancyhdr.sty,fontawesome.sty,hyperref.sty,ifpdf.sty,marvosym.sty,suffix.sty]{Modern CV}
+#  \DeclareLaTeXClass[moderncv,ebgaramond.sty,fancyhdr.sty,fontawesome.sty,ifpdf.sty,marvosym.sty]{Modern CV}
 #  \DeclareCategory{Curricula Vitae}
 # textclass definition file for modernCV 2.0.x
 # (also works with modernCV 1.5.x)
@@ -110,16 +110,14 @@ Style Address
 	BottomSep	0.3
 	TopSep		0
 	Argument 1
-	  LeftDelim	{
-	  RightDelim	}
 	  LabelString	"Line 1"
 	  Tooltip	"Optional address line"
+	  Mandatory	1
 	EndArgument
 	Argument 2
-	  LeftDelim	{
-	  RightDelim	}
 	  LabelString	"Line 2"
 	  Tooltip	"Optional address line"
+	  Mandatory	1
 	EndArgument
 End
 
