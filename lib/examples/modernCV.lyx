@@ -5,10 +5,6 @@
 \origin unavailable
 \textclass moderncv
 \begin_preamble
-% to adjust the page margins
-% scale=1.0 leads to no margins and scale=0.1 would be huge margins
-\usepackage[scale=0.75]{geometry}
-
 % uncomment if you want to change the width of the column with the dates:
 %\setlength{\hintscolumnwidth}{3cm} 
 \end_preamble
@@ -37,7 +33,7 @@
 \spacing single
 \use_hyperref false
 \papersize a4paper
-\use_geometry false
+\use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 0
@@ -61,6 +57,8 @@
 \shortcut idx
 \color #008000
 \end_index
+\leftmargin 2.5cm
+\rightmargin 2.5cm
 \secnumdepth 0
 \tocdepth -1
 \paragraph_separation skip
@@ -83,9 +81,9 @@
 status open
 
 \begin_layout Plain Layout
-The moderncv class offers lots of customization possibilities; some are
- explained in the preamble of this document; for more information look at
- the documentation of the \SpecialChar LaTeX
+The moderncv class offers lots of customization possibilities; one is explained
+ in the preamble of this document; for more information look at the documentatio
+n of the \SpecialChar LaTeX
 -package 
 \series bold
 moderncv
@@ -120,7 +118,7 @@ status open
 
 \begin_layout Plain Layout
 required, possible styles are 'casual' (default), 'classic', 'fancy' ('fancy'
- requires modernCV 2.0), 'oldstyle' and 'banking'
+ requires moderncv 2.0), 'oldstyle' and 'banking'
 \end_layout
 
 \end_inset
@@ -135,7 +133,7 @@ status open
 
 \begin_layout Plain Layout
 required, possible colors are 'blue' (default), 'orange', 'green', 'red',
- 'purple', 'burgundy' ('burgundy' requires modernCV 2.0), 'grey' and 'black'
+ 'purple', 'burgundy' ('burgundy' requires moderncv 2.0), 'grey' and 'black'
 \end_layout
 
 \end_inset
@@ -152,6 +150,52 @@ status collapsed
 optional, controls how the PDF will be shown; use either 'UseNone' (only
  the document), 'UseThumbs' (show thumbnails), 'UseOutlines' (show bookmarks)
  or 'FullScreen' (open in fullscreen mode).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+General hints:
+\end_layout
+
+\begin_layout Itemize
+To suppress the page numbering, enable the option 
+\family sans
+Suppress default date on front page
+\family default
+ in the document settings under 
+\family sans
+Document Class.
+\end_layout
+
+\begin_layout Itemize
+The default page margins are left and right 3.5
+\begin_inset space \thinspace{}
+\end_inset
+
+cm.
+ To get smaller ones, use the 
+\family sans
+Page Margins
+\family default
+ section of the document settings like it is done in this example.
+\end_layout
+
+\begin_layout Itemize
+To get for example sans-serif fonts for the whole CV, set them as 
+\family sans
+Default Family
+\family default
+ in the document settings under 
+\family sans
+Fonts.
 \end_layout
 
 \end_inset
