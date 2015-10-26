@@ -1236,6 +1236,7 @@ Default Value
 \end_layout
 
 \begin_layout New Color Box Type
+
 \begin_inset Argument 2
 status open
 
@@ -1414,6 +1415,7 @@ Box
 \end_layout
 
 \begin_layout New Color Box Type
+
 \begin_inset Argument 1
 status open
 
@@ -1652,6 +1654,7 @@ More Color Box Options
 \end_layout
 
 \begin_layout New Color Box Type
+
 \begin_inset Argument 1
 status open
 
@@ -4458,7 +4461,7 @@ arc=5
 \begin_inset space \thinspace{}
 \end_inset
 
-mm
+mm,
 \series default
  
 \series bold
@@ -4565,7 +4568,7 @@ A 3.5
 \begin_inset space \thinspace{}
 \end_inset
 
-cm wide circular box.
+cm wide circular arc box.
 \end_layout
 
 \end_inset
@@ -4574,7 +4577,7 @@ cm wide circular box.
 \end_layout
 
 \begin_layout Standard
-As you can see circular box looks ugly when the box is wider than high.
+As you can see circular arc box looks ugly when the box is wider than high.
  It is therefore recommended to add the option 
 \series bold
 square
@@ -4588,7 +4591,7 @@ reference "subsec:Height"
 
 , to get the same width and height.
  The result is a perfect circle.
- The center the text in the box use the text alignment options described
+ To center the text in the box use the text alignment options described
  in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4617,7 +4620,7 @@ A 4
 \begin_inset space \thinspace{}
 \end_inset
 
-cm wide circular box.
+cm wide circular arc box.
 \end_layout
 
 \end_inset
@@ -4756,7 +4759,7 @@ The option
 octogon arc
 \series default
  is useful to get an octagon.
- For an octagon one needs a square box and the options 
+ For an octagon one needs a square box and the option 
 \series bold
 arc is angular
 \series default
@@ -5287,7 +5290,7 @@ A vertically centered box.
 \end_layout
 
 \begin_layout Description
-scale the content is vertically centered to fit the height
+scale the content is vertically scaled to fit the height
 \begin_inset Flex Color Box
 status open
 
@@ -5498,7 +5501,7 @@ The color is specified in one of these schemes:
 Name
 \series default
 
-\begin_inset Newline newline
+\begin_inset VSpace 3mm
 \end_inset
 
 
@@ -5550,10 +5553,10 @@ red
 \begin_layout Enumerate
 
 \series bold
-Name1!PercentOfName1
+Name!PercentOfName
 \series default
 
-\begin_inset Newline newline
+\begin_inset VSpace 3mm
 \end_inset
 
 
@@ -5584,7 +5587,7 @@ geen!30
 \begin_inset Quotes eld
 \end_inset
 
-transparence
+transparency
 \begin_inset Quotes erd
 \end_inset
 
@@ -5624,7 +5627,7 @@ green!30
 Name1!PercentOfName1!Name2
 \series default
 
-\begin_inset Newline newline
+\begin_inset VSpace 3mm
 \end_inset
 
 
@@ -5687,7 +5690,7 @@ red!30!blue
 Name1!PercentName1!Name2!PercentName3!Name3
 \series default
 
-\begin_inset Newline newline
+\begin_inset VSpace 3mm
 \end_inset
 
 
@@ -7146,12 +7149,12 @@ status open
 status open
 
 \begin_layout Plain Layout
-enhanced, drop fuzzy shadow, nobeforeafter
+enhanced, drop fuzzy shadow=purple, nobeforeafter
 \end_layout
 
 \end_inset
 
-A box with a fuzzy shadow
+A box with a fuzzy, purple shadow
 \end_layout
 
 \end_inset
