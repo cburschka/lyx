@@ -5,13 +5,12 @@
 \origin unavailable
 \textclass moderncv
 \begin_preamble
-%\renewcommand{\familydefault}{\sfdefault}    % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
-%\nopagenumbers{}                             % uncomment to suppress automatic page numbering for CVs longer than one page
-
-% adjust the page margins
+% to adjust the page margins
+% scale=1.0 leads to no margins and scale=0.1 would be huge margins
 \usepackage[scale=0.75]{geometry}
-%\setlength{\hintscolumnwidth}{3cm}           % if you want to change the width of the column with the dates
-%\setlength{\makecvtitlenamewidth}{10cm}      % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% uncomment if you want to change the width of the column with the dates:
+%\setlength{\hintscolumnwidth}{3cm} 
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -120,8 +119,8 @@ casual
 status open
 
 \begin_layout Plain Layout
-required, possible styles are 'casual' (default), 'classic', 'fancy', 'oldstyle'
- and 'banking'
+required, possible styles are 'casual' (default), 'classic', 'fancy' ('fancy'
+ requires modernCV 2.0), 'oldstyle' and 'banking'
 \end_layout
 
 \end_inset
@@ -136,7 +135,7 @@ status open
 
 \begin_layout Plain Layout
 required, possible colors are 'blue' (default), 'orange', 'green', 'red',
- 'purple', 'burgundy', 'grey' and 'black'
+ 'purple', 'burgundy' ('burgundy' requires modernCV 2.0), 'grey' and 'black'
 \end_layout
 
 \end_inset
